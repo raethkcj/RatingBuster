@@ -1,0 +1,36 @@
+------------------------------------------------------------------------
+r355 | mikk | 2012-04-25 19:24:09 +0000 (Wed, 25 Apr 2012) | 1 line
+Changed paths:
+   A /tags/1.6.7 (from /trunk:354)
+
+Tagging as 1.6.7 to pull in new LibStatLogic with fixed gem scanner (would error on settings gems if an equipment slot was empty)
+------------------------------------------------------------------------
+r354 | mikk | 2012-04-23 21:23:47 +0000 (Mon, 23 Apr 2012) | 1 line
+Changed paths:
+   M /trunk/RatingBuster.lua
+
+- Figure out max level automagically so it doesn't get forgotten again (using MAX_PLAYER_LEVEL_TABLE)
+------------------------------------------------------------------------
+r353 | mikk | 2012-04-23 01:10:36 +0000 (Mon, 23 Apr 2012) | 1 line
+Changed paths:
+   M /trunk/RatingBuster.lua
+
+- max level is 85, not 80
+------------------------------------------------------------------------
+r351 | mikk | 2012-04-22 22:10:39 +0000 (Sun, 22 Apr 2012) | 4 lines
+Changed paths:
+   M /trunk/RatingBuster.toc
+
+- TOC 40300
+Also pulling in new LibStatLogic-1.2:
+- Will now pick up new gems in 4.3 (belatedly)
+- Added code to always understand gems that already exist in your gear regardless of addon updated-ness
+------------------------------------------------------------------------
+r350 | lightsfuryuther | 2012-01-10 00:39:00 +0000 (Tue, 10 Jan 2012) | 2 lines
+Changed paths:
+   M /trunk/RatingBuster-Locale-enUS.lua
+   M /trunk/RatingBuster.lua
+
+- Added an option to disable integration with the Reforging UI
+- Added English localization strings for the new configuration entries. Other locales will need to be updated.
+------------------------------------------------------------------------

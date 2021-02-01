@@ -1,0 +1,40 @@
+﻿## Interface: 20400
+## Title: RatingBuster |cff7fff7f -Ace2-|r
+## Notes: Item stat breakdown, analysis and comparation
+## Notes-zhTW: 裝備數值解析與比較
+## Author: Whitetooth
+## X-eMail: hotdogee [at] gmail [dot] com
+## SavedVariables: RatingBusterDB
+## OptionalDeps: Ace2, TipHookerLib, StatLogicLib, UTF8, LibBabble-Inventory-3.0, Waterfall-1.0, TankPoints
+## X-Embeds: Ace2, TipHookerLib, StatLogicLib, UTF8, LibBabble-Inventory-3.0, Waterfall-1.0
+## X-Category: Interface Enhancements
+## X-RelSite-WoWI: 5819
+## X-RelSite-Curse: 4991
+## X-License: GPL v2
+## X-Encoding: UTF-8
+
+#####################
+# Non-Ace Libraries #
+#####################
+UTF8\utf8data.lua
+UTF8\utf8.lua
+
+#################
+# Ace Libraries #
+#################
+embeds.xml
+
+######################
+# Localization Files #
+######################
+RatingBuster-Locale-enUS.lua
+RatingBuster-Locale-zhCN.lua
+RatingBuster-Locale-zhTW.lua
+RatingBuster-Locale-deDE.lua
+RatingBuster-Locale-frFR.lua
+RatingBuster-Locale-koKR.lua
+
+########
+# Core #
+########
+RatingBuster.lua
