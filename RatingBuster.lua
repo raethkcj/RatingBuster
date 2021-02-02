@@ -1709,7 +1709,7 @@ end
 
 -- event = PLAYER_LEVEL_UP
 -- arg1 = New player level
-function RatingBuster:PLAYER_LEVEL_UP(newlevel)
+function RatingBuster:PLAYER_LEVEL_UP(event, newlevel)
 	playerLevel = newlevel
 	clearCache()
 end
