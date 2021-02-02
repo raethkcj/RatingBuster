@@ -245,11 +245,11 @@ local defaults = {
 -- Slash Command Options --
 ---------------------------
 
-local function getProfileOption(key)
-	return profileDB[key]
+local function getProfileOption(info, value)
+	return profileDB[info[#info]]
 end
-local function setProfileOptionAndClearCache(key, value)
-	profileDB[key] = value
+local function setProfileOptionAndClearCache(info, value)
+	profileDB[info[#info]] = value
 	clearCache()
 end
 local function getGem(key)
@@ -292,21 +292,9 @@ local function setGem(key, value)
 	end
 end
 
-local consoleOptions = {
+local options = {
 	type = 'group',
 	args = {
-		win = {
-			type = "execute",
-			name = L["Options Window"],
-			desc = L["Shows the Options Window"],
-			func = function()
-				if Waterfall then
-					Waterfall:Open("RatingBuster")
-				else
-					RatingBuster:Print(L["Waterfall-1.0 is required to access the GUI."])
-				end
-			end,
-		},
 		statmod = {
 			type = 'toggle',
 			name = L["Enable Stat Mods"],
@@ -644,10 +632,10 @@ local consoleOptions = {
 					},
 				},
 				diffstyle = {
-					type = 'text',
+					type = 'select',
 					name = L["Display style for diff value"],
 					desc = L["Display diff values in the main tooltip or only in compare tooltips"],
-					validate = {"comp", "main"},
+					values = {"comp", "main"},
 					passValue = "sumDiffStyle",
 					get = getProfileOption,
 					set = setProfileOptionAndClearCache,
@@ -1258,7 +1246,7 @@ local consoleOptions = {
 					desc = L["Auto fill empty gem slots"],
 					args = {
 						red = {
-							type = 'text',
+							type = 'input',
 							name = L["Red Socket"],
 							desc = L["ItemID or Link of the gem you would like to auto fill"],
 							usage = L["<ItemID|Link>"],
@@ -1268,7 +1256,7 @@ local consoleOptions = {
 							order = 1,
 						},
 						yellow = {
-							type = 'text',
+							type = 'input',
 							name = L["Yellow Socket"],
 							desc = L["ItemID or Link of the gem you would like to auto fill"],
 							usage = L["<ItemID|Link>"],
@@ -1278,7 +1266,7 @@ local consoleOptions = {
 							order = 2,
 						},
 						blue = {
-							type = 'text',
+							type = 'input',
 							name = L["Blue Socket"],
 							desc = L["ItemID or Link of the gem you would like to auto fill"],
 							usage = L["<ItemID|Link>"],
@@ -1288,7 +1276,7 @@ local consoleOptions = {
 							order = 3,
 						},
 						meta = {
-							type = 'text',
+							type = 'input',
 							name = L["Meta Socket"],
 							desc = L["ItemID or Link of the gem you would like to auto fill"],
 							usage = L["<ItemID|Link>"],
@@ -1310,7 +1298,7 @@ local tpLocale
 if TankPoints and (tonumber(strsub(TankPoints.version, 1, 3)) >= 2.6) then
 	tpSupport = true
 	tpLocale = LibStub("AceLocale-3.0"):GetLocale("TankPoints", true)
-	consoleOptions.args.sum.args.tank.args.tp = {
+	options.args.sum.args.tank.args.tp = {
 		type = 'toggle',
 		name = L["Sum TankPoints"],
 		desc = L["TankPoints <- Health, Total Reduction"],
@@ -1318,7 +1306,7 @@ if TankPoints and (tonumber(strsub(TankPoints.version, 1, 3)) >= 2.6) then
 		get = getProfileOption,
 		set = setProfileOptionAndClearCache,
 	}
-	consoleOptions.args.sum.args.tank.args.tr = {
+	options.args.sum.args.tank.args.tr = {
 		type = 'toggle',
 		name = L["Sum Total Reduction"],
 		desc = L["Total Reduction <- Armor, Dodge, Parry, Block, Block Value, Defense, Resilience, MobMiss, MobCrit, MobCrush, DamageTakenMods"],
@@ -1327,7 +1315,7 @@ if TankPoints and (tonumber(strsub(TankPoints.version, 1, 3)) >= 2.6) then
 		set = setProfileOptionAndClearCache,
 	}
 	--[[
-	consoleOptions.args.sum.args.tank.args.avoid = {
+	options.args.sum.args.tank.args.avoid = {
 		type = 'toggle',
 		name = L["Sum Avoidance"],
 		desc = L["Avoidance <- Dodge, Parry, MobMiss"],
@@ -1361,7 +1349,7 @@ if class == "DRUID" then
 	defaults.profile.showHealingFromInt = true
 	defaults.profile.showMP5FromInt = true -- Dreamstate (Rank 3) - 1,17
 	defaults.profile.showMP5FromSpi = true
-	consoleOptions.args.stat.args.agi.args.heal = { -- Nurturing Instinct (Rank 2) - 2,14
+	options.args.stat.args.agi.args.heal = { -- Nurturing Instinct (Rank 2) - 2,14
 		type = 'toggle',
 		name = L["Show Healing"].." ("..tostring(GetSpellInfo(47180) or "nil")..")",						-- ["Nurturing Instinct"]
 		desc = L["Show Healing from Agility"].." ("..tostring(GetSpellInfo(47180) or "nil")..")",			-- ["Nurturing Instinct"]
@@ -1369,7 +1357,7 @@ if class == "DRUID" then
 		get = getProfileOption,
 		set = setProfileOptionAndClearCache,
 	}
-	consoleOptions.args.stat.args.int.args.dmg = { -- Lunar Guidance (Rank 3) - 1,12
+	options.args.stat.args.int.args.dmg = { -- Lunar Guidance (Rank 3) - 1,12
 		type = 'toggle',
 		name = L["Show Spell Damage"].." ("..tostring(GetSpellInfo(33591) or "nil")..")",					-- ["Lunar Guidance"]
 		desc = L["Show Spell Damage from Intellect"].." ("..tostring(GetSpellInfo(33591) or "nil")..")",	-- ["Lunar Guidance"]
@@ -1377,7 +1365,7 @@ if class == "DRUID" then
 		get = getProfileOption,
 		set = setProfileOptionAndClearCache,
 	}
-	consoleOptions.args.stat.args.int.args.heal = { -- Lunar Guidance (Rank 3) - 1,12
+	options.args.stat.args.int.args.heal = { -- Lunar Guidance (Rank 3) - 1,12
 		type = 'toggle',
 		name = L["Show Healing"].." ("..tostring(GetSpellInfo(33591) or "nil")..")",
 		desc = L["Show Healing from Intellect"].." ("..tostring(GetSpellInfo(33591) or "nil")..")",
@@ -1385,7 +1373,7 @@ if class == "DRUID" then
 		get = getProfileOption,
 		set = setProfileOptionAndClearCache,
 	}
-	consoleOptions.args.stat.args.spi.args.mp5 = { -- Intensity (Rank 3) - 3,6
+	options.args.stat.args.spi.args.mp5 = { -- Intensity (Rank 3) - 3,6
 		type = 'toggle',
 		name = L["Show Mana Regen"].." ("..tostring(GetSpellInfo(35359) or "nil")..")",
 		desc = L["Show Mana Regen while casting from Spirit"].." ("..tostring(GetSpellInfo(35359) or "nil")..")",
@@ -1407,7 +1395,7 @@ if class == "HUNTER" then
 	defaults.profile.showDodgeFromAgi = false
 	defaults.profile.showSpellCritFromInt = false
 	defaults.profile.showRAPFromInt = true
-	consoleOptions.args.stat.args.int.args.rap = { -- Careful Aim
+	options.args.stat.args.int.args.rap = { -- Careful Aim
 		type = 'toggle',
 		name = L["Show Ranged Attack Power"].." ("..tostring(GetSpellInfo(34484) or "nil")..")",
 		desc = L["Show Ranged Attack Power from Intellect"].." ("..tostring(GetSpellInfo(34484) or "nil")..")",
@@ -1431,7 +1419,7 @@ if class == "MAGE" then
 	defaults.profile.showArmorFromInt = true
 	defaults.profile.showMP5FromInt = true
 	defaults.profile.showMP5FromSpi = true
-	consoleOptions.args.stat.args.int.args.dmg = { -- Mind Mastery (Rank 5) - 1,22
+	options.args.stat.args.int.args.dmg = { -- Mind Mastery (Rank 5) - 1,22
 		type = 'toggle',
 		name = L["Show Spell Damage"].." ("..tostring(GetSpellInfo(31588) or "nil")..")",
 		desc = L["Show Spell Damage from Intellect"].." ("..tostring(GetSpellInfo(31588) or "nil")..")",
@@ -1439,7 +1427,7 @@ if class == "MAGE" then
 		get = getProfileOption,
 		set = setProfileOptionAndClearCache,
 	}
-	consoleOptions.args.stat.args.int.args.armor = { -- Arcane Fortitude - 1,9
+	options.args.stat.args.int.args.armor = { -- Arcane Fortitude - 1,9
 		type = 'toggle',
 		name = L["Show Armor"].." ("..tostring(GetSpellInfo(28574) or "nil")..")",
 		desc = L["Show Armor from Intellect"].." ("..tostring(GetSpellInfo(28574) or "nil")..")",
@@ -1447,7 +1435,7 @@ if class == "MAGE" then
 		get = getProfileOption,
 		set = setProfileOptionAndClearCache,
 	}
-	consoleOptions.args.stat.args.spi.args.mp5 = { -- Arcane Meditation (Rank 3) - 1,12
+	options.args.stat.args.spi.args.mp5 = { -- Arcane Meditation (Rank 3) - 1,12
 		type = 'toggle',
 		name = L["Show Mana Regen"].." ("..tostring(GetSpellInfo(18464) or "nil")..")",
 		desc = L["Show Mana Regen while casting from Spirit"].." ("..tostring(GetSpellInfo(18464) or "nil")..")",
@@ -1472,7 +1460,7 @@ if class == "PALADIN" then
 	defaults.profile.sumMP5 = true
 	defaults.profile.showSpellDmgFromInt = true
 	defaults.profile.showHealingFromInt = true
-	consoleOptions.args.stat.args.int.args.dmg = { -- Holy Guidance (Rank 5) - 1,19
+	options.args.stat.args.int.args.dmg = { -- Holy Guidance (Rank 5) - 1,19
 		type = 'toggle',
 		name = L["Show Spell Damage"].." ("..tostring(GetSpellInfo(31841) or "nil")..")",
 		desc = L["Show Spell Damage from Intellect"].." ("..tostring(GetSpellInfo(31841) or "nil")..")",
@@ -1480,7 +1468,7 @@ if class == "PALADIN" then
 		get = getProfileOption,
 		set = setProfileOptionAndClearCache,
 	}
-	consoleOptions.args.stat.args.int.args.heal = { -- Holy Guidance (Rank 5) - 1,19
+	options.args.stat.args.int.args.heal = { -- Holy Guidance (Rank 5) - 1,19
 		type = 'toggle',
 		name = L["Show Healing"].." ("..tostring(GetSpellInfo(31841) or "nil")..")",
 		desc = L["Show Healing from Intellect"].." ("..tostring(GetSpellInfo(31841) or "nil")..")",
@@ -1505,7 +1493,7 @@ if class == "PRIEST" then
 	defaults.profile.showMP5FromSpi = true
 	defaults.profile.showSpellDmgFromSpi = true
 	defaults.profile.showHealingFromSpi = true
-	consoleOptions.args.stat.args.spi.args.mp5 = { -- Meditation (Rank 3) - 1,9
+	options.args.stat.args.spi.args.mp5 = { -- Meditation (Rank 3) - 1,9
 		type = 'toggle',
 		name = L["Show Mana Regen"].." ("..tostring(GetSpellInfo(38346) or "nil")..")",
 		desc = L["Show Mana Regen while casting from Spirit"].." ("..tostring(GetSpellInfo(38346) or "nil")..")",
@@ -1513,7 +1501,7 @@ if class == "PRIEST" then
 		get = getProfileOption,
 		set = setProfileOptionAndClearCache,
 	}
-	consoleOptions.args.stat.args.spi.args.dmg = { -- Spiritual Guidance (Rank 5) - 2,14, Improved Divine Spirit (Rank 2) - 1,15 - Buff
+	options.args.stat.args.spi.args.dmg = { -- Spiritual Guidance (Rank 5) - 2,14, Improved Divine Spirit (Rank 2) - 1,15 - Buff
 		type = 'toggle',
 		name = L["Show Spell Damage"].." ("..tostring(GetSpellInfo(15031) or "nil")..", "..tostring(GetSpellInfo(33182) or "nil")..")",
 		desc = L["Show Spell Damage from Spirit"].." ("..tostring(GetSpellInfo(15031) or "nil")..", "..tostring(GetSpellInfo(33182) or "nil")..")",
@@ -1521,7 +1509,7 @@ if class == "PRIEST" then
 		get = getProfileOption,
 		set = setProfileOptionAndClearCache,
 	}
-	consoleOptions.args.stat.args.spi.args.heal = { -- Spiritual Guidance (Rank 5) - 2,14, Improved Divine Spirit (Rank 2) - 1,15 - Buff
+	options.args.stat.args.spi.args.heal = { -- Spiritual Guidance (Rank 5) - 2,14, Improved Divine Spirit (Rank 2) - 1,15 - Buff
 		type = 'toggle',
 		name = L["Show Healing"].." ("..tostring(GetSpellInfo(15031) or "nil")..", "..tostring(GetSpellInfo(33182) or "nil")..")",
 		desc = L["Show Healing from Spirit"].." ("..tostring(GetSpellInfo(15031) or "nil")..", "..tostring(GetSpellInfo(33182) or "nil")..")",
@@ -1555,7 +1543,7 @@ if class == "SHAMAN" then
 	defaults.profile.showSpellDmgFromInt = true
 	defaults.profile.showHealingFromInt = true
 	defaults.profile.showMP5FromInt = true
-	consoleOptions.args.stat.args.str.args.dmg = { -- Mental Quickness (Rank 3) - 2,15
+	options.args.stat.args.str.args.dmg = { -- Mental Quickness (Rank 3) - 2,15
 		type = 'toggle',
 		name = L["Show Spell Damage"].." ("..tostring(GetSpellInfo(30814) or "nil")..")",
 		desc = L["Show Spell Damage from Strength"].." ("..tostring(GetSpellInfo(30814) or "nil")..")",
@@ -1563,7 +1551,7 @@ if class == "SHAMAN" then
 		get = getProfileOption,
 		set = setProfileOptionAndClearCache,
 	}
-	consoleOptions.args.stat.args.str.args.heal = { -- Mental Quickness (Rank 3) - 2,15
+	options.args.stat.args.str.args.heal = { -- Mental Quickness (Rank 3) - 2,15
 		type = 'toggle',
 		name = L["Show Healing"].." ("..tostring(GetSpellInfo(30814) or "nil")..")",
 		desc = L["Show Healing from Strength"].." ("..tostring(GetSpellInfo(30814) or "nil")..")",
@@ -1571,7 +1559,7 @@ if class == "SHAMAN" then
 		get = getProfileOption,
 		set = setProfileOptionAndClearCache,
 	}
-	consoleOptions.args.stat.args.int.args.dmg = { -- Nature's Blessing (Rank 3) - 3,18
+	options.args.stat.args.int.args.dmg = { -- Nature's Blessing (Rank 3) - 3,18
 		type = 'toggle',
 		name = L["Show Spell Damage"].." ("..tostring(GetSpellInfo(30869) or "nil")..")",
 		desc = L["Show Spell Damage from Intellect"].." ("..tostring(GetSpellInfo(30869) or "nil")..")",
@@ -1579,7 +1567,7 @@ if class == "SHAMAN" then
 		get = getProfileOption,
 		set = setProfileOptionAndClearCache,
 	}
-	consoleOptions.args.stat.args.int.args.heal = { -- Nature's Blessing (Rank 3) - 3,18
+	options.args.stat.args.int.args.heal = { -- Nature's Blessing (Rank 3) - 3,18
 		type = 'toggle',
 		name = L["Show Healing"].." ("..tostring(GetSpellInfo(30869) or "nil")..")",
 		desc = L["Show Healing from Intellect"].." ("..tostring(GetSpellInfo(30869) or "nil")..")",
@@ -1600,7 +1588,7 @@ if class == "WARLOCK" then
 	defaults.profile.showDodgeFromAgi = false
 	defaults.profile.showSpellDmgFromSta = true
 	defaults.profile.showSpellDmgFromInt = true
-	consoleOptions.args.stat.args.sta.args.dmg = { -- Demonic Knowledge (Rank 3) - 2,20 - UnitExists("pet")
+	options.args.stat.args.sta.args.dmg = { -- Demonic Knowledge (Rank 3) - 2,20 - UnitExists("pet")
 		type = 'toggle',
 		name = L["Show Spell Damage"].." ("..tostring(GetSpellInfo(35693) or "nil")..")",
 		desc = L["Show Spell Damage from Stamina"].." ("..tostring(GetSpellInfo(35693) or "nil")..")",
@@ -1608,7 +1596,7 @@ if class == "WARLOCK" then
 		get = getProfileOption,
 		set = setProfileOptionAndClearCache,
 	}
-	consoleOptions.args.stat.args.int.args.dmg = { -- Demonic Knowledge (Rank 3) - 2,20 - UnitExists("pet")
+	options.args.stat.args.int.args.dmg = { -- Demonic Knowledge (Rank 3) - 2,20 - UnitExists("pet")
 		type = 'toggle',
 		name = L["Show Spell Damage"].." ("..tostring(GetSpellInfo(35693) or "nil")..")",
 		desc = L["Show Spell Damage from Intellect"].." ("..tostring(GetSpellInfo(35693) or "nil")..")",
@@ -1680,11 +1668,12 @@ function RatingBuster:OnInitialize()
 
 	profileDB = self.db.profile
 
-	self:RegisterChatCommand("/rb", "/ratingbuster", consoleOptions, "RATINGBUSTER")
+	AceConfig = LibStub("AceConfig-3.0")
+	AceConfig:RegisterOptionsTable("RatingBuster", options, {"rb", "ratingbuster"})
 
 	if Waterfall then
 		Waterfall:Register("RatingBuster",
-		"aceOptions", consoleOptions,
+		"aceOptions", options,
 		"title", L["RatingBuster Options"])
 	end
 end

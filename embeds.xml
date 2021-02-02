@@ -18,6 +18,7 @@
 <Script file="libs\AceDB-3.0\AceDB-3.0.lua"/>
 <!-- AceAddon: LibStub, AceOO, AceEvent, AceConsole (optional) -->
 <Script file="libs\AceAddon-3.0\AceAddon-3.0.lua"/>
+<Script file="libs\AceConfig-3.0\AceConfig-3.0.lua"/>
 <!-- StatLogic: LibStub, AceLocale-3.0, LibBabble-Spell-3.0 -->
 <Include file="libs\StatLogic-1.0\StatLogic-1.0.xml"/>
 <!-- Waterfall: LibStub, AceOO -->
