@@ -54,25 +54,17 @@ SLASH_STATLOGICDEBUG1 = "/sldebug";
 -- D:EnableDebugging()
 
 -- Add all lower case strings to ["StatIDLookup"]
---local strutf8lower = string.utf8lower
---for n, l in pairs(PatternLocale) do
---	if type(l) == "table" and type(l.StatIDLookup) == "table" then
---		local temp = {}
---		for k, v in pairs(l.StatIDLookup) do
---			temp[strutf8lower(k)] = v
---		end
---		for k, v in pairs(temp) do
---			l.StatIDLookup[k] = v
---		end
---	end
---	-- Register AceLocale-3.0 translations
---	L:RegisterTranslations(n, function() return l end)
---end
---for n, l in pairs(DisplayLocale) do
---	-- Register AceLocale-3.0 translations
---	D:RegisterTranslations(n, function() return l end)
---end
---
+local strutf8lower = string.utf8lower
+if type(L) == "table" and type(L["StatIDLookup"]) == "table" then
+	local temp = {}
+	for k, v in pairs(L["StatIDLookup"]) do
+		temp[strutf8lower(k)] = v
+	end
+	for k, v in pairs(temp) do
+		L["StatIDLookup"][k] = v
+	end
+end
+
 --L:Debug()
 
 --------------------
