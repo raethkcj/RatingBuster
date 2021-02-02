@@ -1,36 +1,28 @@
 --[[
 Name: RatingBuster
 Revision: $Revision: 78903 $
-Author: Whitetooth
-Email: hotdogee [at] gmail [dot] com
+Author: Whitetooth, raethkcj
 Description: Converts combat ratings in tooltips into normal percentages.
 ]]
 
 ---------------
 -- Libraries --
 ---------------
-local TipHooker = AceLibrary("TipHooker-1.0")
-local StatLogic = AceLibrary("StatLogic-1.0")
-local Waterfall = AceLibrary:HasInstance("Waterfall-1.0") and AceLibrary("Waterfall-1.0")
-local L = AceLibrary("AceLocale-2.2"):new("RatingBuster")
-local BI = AceLibrary("LibBabble-Inventory-3.0"):GetLookupTable()
+local TipHooker = LibStub("TipHooker-1.0")
+local StatLogic = LibStub("StatLogic-1.0")
+local Waterfall = LibStub("Waterfall-1.0")
+local L = LibStub("AceLocale-3.0"):GetLocale("RatingBuster")
+local BI = LibStub("LibBabble-Inventory-3.0"):GetLookupTable()
 
 
 --------------------
 -- AceAddon Setup --
 --------------------
 -- AceAddon Initialization
-RatingBuster = AceLibrary("AceAddon-2.0"):new("AceDB-2.0", "AceConsole-2.0", "AceEvent-2.0", "AceDebug-2.0")
+RatingBuster = LibStub("AceAddon-3.0"):NewAddon("RatingBuster", "AceConsole-3.0", "AceEvent-3.0")
 RatingBuster.title = "Rating Buster"
 RatingBuster.version = "1.3.8 (r"..gsub("$Revision: 78903 $", "(%d+)", "%1")..")"
 RatingBuster.date = gsub("$Date: 2008-07-22 15:35:19 +0800 (星期二, 22 七月 2008) $", "^.-(%d%d%d%d%-%d%d%-%d%d).-$", "%1")
-
-
--------------------
--- Set Debugging --
--------------------
-RatingBuster:SetDebugging(false)
-
 
 -----------
 -- Cache --
@@ -87,164 +79,164 @@ local GetBlockChance = GetBlockChance
 ---------------------
 -- Saved Variables --
 ---------------------
--- Register DB
-RatingBuster:RegisterDB("RatingBusterDB", nil, "class")
 -- Default values
-local profileDefault = {
-	showItemLevel = true,
-	showItemID = false,
-	useRequiredLevel = true,
-	customLevel = 0,
-	textColor = {r = 1.0, g = 0.996,  b = 0.545, hex = "|cfffffe8b"},
-	enableTextColor = true,
-	enableStatMods = true,
-	showRatings = true,
-	detailedConversionText = false,
-	defBreakDown = false,
-	wpnBreakDown = false,
-	expBreakDown = false,
-	showStats = true,
-	showSum = true,
-	sumIgnoreUnused = true,
-	sumIgnoreEquipped = false,
-	sumIgnoreEnchant = true,
-	sumIgnoreGems = false,
-	sumBlankLine = true,
-	sumBlankLineAfter = false,
-	sumShowIcon = true,
-	sumShowTitle = true,
-	sumDiffStyle = "main",
-	sumSortAlpha = false,
-	sumAvoidWithBlock = false,
-	showZeroValueStat = false,
-	calcDiff = true,
-	calcSum = true,
---[[
-Str -> AP, Block, Healing
-Agi -> Crit, Dodge, AP, RAP, Armor
-Sta -> Health, SpellDmg
-Int -> Mana, SpellCrit, SpellDmg, Healing, MP5, RAP, Armor
-Spi -> MP5, MP5NC, HP5, SpellDmg, Healing
---]]
-	-- Base stat conversions
-	showAPFromStr = false,
-	showBlockValueFromStr = false,
-	
-	showCritFromAgi = true,
-	showDodgeFromAgi = true,
-	showAPFromAgi = false,
-	showRAPFromAgi = false,
-	showArmorFromAgi = false,
-	showHealingFromAgi = false, -- Druid - Nurturing Instinct
-	
-	showHealthFromSta = false,
-	showSpellDmgFromSta = false, -- Warlock
-	
-	showManaFromInt = false,
-	showSpellCritFromInt = true,
-	showSpellDmgFromInt = false, -- Druid, Mage, Paladin, Shaman, Warlock
-	showHealingFromInt = false, -- Druid, Paladin, Shaman
-	showMP5FromInt = false, 
-	showMP5NCFromInt = false,
-	showRAPFromInt = false, -- Hunter
-	showArmorFromInt = false, -- Mage
-	
-	showMP5FromSpi = false, -- Druid, Mage, Priest
-	showMP5NCFromSpi = false,
-	showHP5FromSpi = false,
-	showSpellDmgFromSpi = false, -- Priest
-	showHealingFromSpi = false, -- Priest
-	------------------
-	-- Stat Summary --
-	------------------
-	-- Basic
-	sumHP = false,
-	sumMP = false,
-	sumMP5 = false,
-	sumMP5NC = false,
-	sumHP5 = false,
-	sumHP5OC = false,
-	sumStr = false,
-	sumAgi = false,
-	sumSta = false,
-	sumInt = false,
-	sumSpi = false,
-	-- Physical
-	sumAP = false,
-	sumRAP = false,
-	sumFAP = false,
-	sumHit = false,
-	sumHitRating = false, -- new
-	sumCrit = false,
-	sumCritRating = false, -- new
-	sumHaste = false, -- new
-	sumHasteRating = false, -- new
-	sumExpertise = false,
-	sumWeaponSkill = false,
-	sumDodgeNeglect = false,
-	sumParryNeglect = false,
-	sumBlockNeglect = false,
-	sumWeaponMaxDamage = false,
-	sumWeaponDPS = false,
-	sumIgnoreArmor = false, -- new
-	-- Spell
-	sumSpellDmg = false,
-	sumArcaneDmg = false,
-	sumFrostDmg = false,
-	sumNatureDmg = false,
-	sumFireDmg = false,
-	sumShadowDmg = false,
-	sumHolyDmg = false,
-	sumHealing = false,
-	sumSpellHit = false,
-	sumSpellHitRating = false, -- new
-	sumSpellCrit = false,
-	sumSpellCritRating = false, -- new
-	sumSpellHaste = false, -- new
-	sumSpellHasteRating = false, -- new
-	sumPenetration = false, -- new
-	-- Tank
-	sumArmor = false,
-	sumDodge = false,
-	sumDodgeRating = false, -- new
-	sumParry = false,
-	sumParryRating = false, -- new
-	sumBlock = false,
-	sumBlockRating = false, -- new
-	sumBlockValue = false,
-	sumHitAvoid = false,
-	sumCritAvoid = false,
-	sumArcaneResist = false,
-	sumFrostResist = false,
-	sumNatureResist = false,
-	sumFireResist = false,
-	sumShadowResist = false,
-	sumResilience = false, -- new
-	sumDefense = false,
-	sumTankPoints = false,
-	sumTotalReduction = false,
-	sumAvoidance = false,
-	-- Gems
-	sumGemRed = {
-		itemID = nil,
-		gemID = nil,
-		gemText = nil,
-	};
-	sumGemYellow = {
-		itemID = nil,
-		gemID = nil,
-		gemText = nil,
-	};
-	sumGemBlue = {
-		itemID = nil,
-		gemID = nil,
-		gemText = nil,
-	};
-	sumGemMeta = {
-		itemID = nil,
-		gemID = nil,
-		gemText = nil,
-	};
+local defaults = {
+	profile = {
+		showItemLevel = true,
+		showItemID = false,
+		useRequiredLevel = true,
+		customLevel = 0,
+		textColor = {r = 1.0, g = 0.996,  b = 0.545, hex = "|cfffffe8b"},
+		enableTextColor = true,
+		enableStatMods = true,
+		showRatings = true,
+		detailedConversionText = false,
+		defBreakDown = false,
+		wpnBreakDown = false,
+		expBreakDown = false,
+		showStats = true,
+		showSum = true,
+		sumIgnoreUnused = true,
+		sumIgnoreEquipped = false,
+		sumIgnoreEnchant = true,
+		sumIgnoreGems = false,
+		sumBlankLine = true,
+		sumBlankLineAfter = false,
+		sumShowIcon = true,
+		sumShowTitle = true,
+		sumDiffStyle = "main",
+		sumSortAlpha = false,
+		sumAvoidWithBlock = false,
+		showZeroValueStat = false,
+		calcDiff = true,
+		calcSum = true,
+		--[[
+		Str -> AP, Block, Healing
+		Agi -> Crit, Dodge, AP, RAP, Armor
+		Sta -> Health, SpellDmg
+		Int -> Mana, SpellCrit, SpellDmg, Healing, MP5, RAP, Armor
+		Spi -> MP5, MP5NC, HP5, SpellDmg, Healing
+		--]]
+		-- Base stat conversions
+		showAPFromStr = false,
+		showBlockValueFromStr = false,
+
+		showCritFromAgi = true,
+		showDodgeFromAgi = true,
+		showAPFromAgi = false,
+		showRAPFromAgi = false,
+		showArmorFromAgi = false,
+		showHealingFromAgi = false, -- Druid - Nurturing Instinct
+
+		showHealthFromSta = false,
+		showSpellDmgFromSta = false, -- Warlock
+
+		showManaFromInt = false,
+		showSpellCritFromInt = true,
+		showSpellDmgFromInt = false, -- Druid, Mage, Paladin, Shaman, Warlock
+		showHealingFromInt = false, -- Druid, Paladin, Shaman
+		showMP5FromInt = false, 
+		showMP5NCFromInt = false,
+		showRAPFromInt = false, -- Hunter
+		showArmorFromInt = false, -- Mage
+
+		showMP5FromSpi = false, -- Druid, Mage, Priest
+		showMP5NCFromSpi = false,
+		showHP5FromSpi = false,
+		showSpellDmgFromSpi = false, -- Priest
+		showHealingFromSpi = false, -- Priest
+		------------------
+		-- Stat Summary --
+		------------------
+		-- Basic
+		sumHP = false,
+		sumMP = false,
+		sumMP5 = false,
+		sumMP5NC = false,
+		sumHP5 = false,
+		sumHP5OC = false,
+		sumStr = false,
+		sumAgi = false,
+		sumSta = false,
+		sumInt = false,
+		sumSpi = false,
+		-- Physical
+		sumAP = false,
+		sumRAP = false,
+		sumFAP = false,
+		sumHit = false,
+		sumHitRating = false, -- new
+		sumCrit = false,
+		sumCritRating = false, -- new
+		sumHaste = false, -- new
+		sumHasteRating = false, -- new
+		sumExpertise = false,
+		sumWeaponSkill = false,
+		sumDodgeNeglect = false,
+		sumParryNeglect = false,
+		sumBlockNeglect = false,
+		sumWeaponMaxDamage = false,
+		sumWeaponDPS = false,
+		sumIgnoreArmor = false, -- new
+		-- Spell
+		sumSpellDmg = false,
+		sumArcaneDmg = false,
+		sumFrostDmg = false,
+		sumNatureDmg = false,
+		sumFireDmg = false,
+		sumShadowDmg = false,
+		sumHolyDmg = false,
+		sumHealing = false,
+		sumSpellHit = false,
+		sumSpellHitRating = false, -- new
+		sumSpellCrit = false,
+		sumSpellCritRating = false, -- new
+		sumSpellHaste = false, -- new
+		sumSpellHasteRating = false, -- new
+		sumPenetration = false, -- new
+		-- Tank
+		sumArmor = false,
+		sumDodge = false,
+		sumDodgeRating = false, -- new
+		sumParry = false,
+		sumParryRating = false, -- new
+		sumBlock = false,
+		sumBlockRating = false, -- new
+		sumBlockValue = false,
+		sumHitAvoid = false,
+		sumCritAvoid = false,
+		sumArcaneResist = false,
+		sumFrostResist = false,
+		sumNatureResist = false,
+		sumFireResist = false,
+		sumShadowResist = false,
+		sumResilience = false, -- new
+		sumDefense = false,
+		sumTankPoints = false,
+		sumTotalReduction = false,
+		sumAvoidance = false,
+		-- Gems
+		sumGemRed = {
+			itemID = nil,
+			gemID = nil,
+			gemText = nil,
+		};
+		sumGemYellow = {
+			itemID = nil,
+			gemID = nil,
+			gemText = nil,
+		};
+		sumGemBlue = {
+			itemID = nil,
+			gemID = nil,
+			gemText = nil,
+		};
+		sumGemMeta = {
+			itemID = nil,
+			gemID = nil,
+			gemText = nil,
+		};
+	}
 }
 
 
@@ -1317,7 +1309,7 @@ local tpSupport
 local tpLocale
 if TankPoints and (tonumber(strsub(TankPoints.version, 1, 3)) >= 2.6) then
 	tpSupport = true
-	tpLocale = AceLibrary("AceLocale-2.2"):new("TankPoints")
+	tpLocale = LibStub("AceLocale-3.0"):GetLocale("TankPoints", true)
 	consoleOptions.args.sum.args.tank.args.tp = {
 		type = 'toggle',
 		name = L["Sum TankPoints"],
@@ -1348,298 +1340,293 @@ end
 
 -- Class specific settings
 if class == "DRUID" then
-	profileDefault.sumHP = true
-	profileDefault.sumMP = true
-	profileDefault.sumFAP = true
-	profileDefault.sumHit = true
-	profileDefault.sumCrit = true
-	profileDefault.sumHaste = true
-	profileDefault.sumExpertise = true
-	profileDefault.sumDodge = true
-	profileDefault.sumArmor = true
-	profileDefault.sumResilience = true
-	profileDefault.sumSpellDmg = true
-	profileDefault.sumSpellHit = true
-	profileDefault.sumSpellCrit = true
-	profileDefault.sumSpellHaste = true
-	profileDefault.sumHealing = true
-	profileDefault.sumMP5 = true
-	profileDefault.showHealingFromAgi = true
-	profileDefault.showSpellDmgFromInt = true
-	profileDefault.showHealingFromInt = true
-	profileDefault.showMP5FromInt = true -- Dreamstate (Rank 3) - 1,17
-	profileDefault.showMP5FromSpi = true
+	defaults.profile.sumHP = true
+	defaults.profile.sumMP = true
+	defaults.profile.sumFAP = true
+	defaults.profile.sumHit = true
+	defaults.profile.sumCrit = true
+	defaults.profile.sumHaste = true
+	defaults.profile.sumExpertise = true
+	defaults.profile.sumDodge = true
+	defaults.profile.sumArmor = true
+	defaults.profile.sumResilience = true
+	defaults.profile.sumSpellDmg = true
+	defaults.profile.sumSpellHit = true
+	defaults.profile.sumSpellCrit = true
+	defaults.profile.sumSpellHaste = true
+	defaults.profile.sumHealing = true
+	defaults.profile.sumMP5 = true
+	defaults.profile.showHealingFromAgi = true
+	defaults.profile.showSpellDmgFromInt = true
+	defaults.profile.showHealingFromInt = true
+	defaults.profile.showMP5FromInt = true -- Dreamstate (Rank 3) - 1,17
+	defaults.profile.showMP5FromSpi = true
 	consoleOptions.args.stat.args.agi.args.heal = { -- Nurturing Instinct (Rank 2) - 2,14
 		type = 'toggle',
-		name = L["Show Healing"].." ("..GetSpellInfo(47180)..")",						-- ["Nurturing Instinct"]
-		desc = L["Show Healing from Agility"].." ("..GetSpellInfo(47180)..")",			-- ["Nurturing Instinct"]
+		name = L["Show Healing"].." ("..tostring(GetSpellInfo(47180) or "nil")..")",						-- ["Nurturing Instinct"]
+		desc = L["Show Healing from Agility"].." ("..tostring(GetSpellInfo(47180) or "nil")..")",			-- ["Nurturing Instinct"]
 		passValue = "showHealingFromAgi",
 		get = getProfileOption,
 		set = setProfileOptionAndClearCache,
 	}
 	consoleOptions.args.stat.args.int.args.dmg = { -- Lunar Guidance (Rank 3) - 1,12
 		type = 'toggle',
-		name = L["Show Spell Damage"].." ("..GetSpellInfo(33591)..")",					-- ["Lunar Guidance"]
-		desc = L["Show Spell Damage from Intellect"].." ("..GetSpellInfo(33591)..")",	-- ["Lunar Guidance"]
+		name = L["Show Spell Damage"].." ("..tostring(GetSpellInfo(33591) or "nil")..")",					-- ["Lunar Guidance"]
+		desc = L["Show Spell Damage from Intellect"].." ("..tostring(GetSpellInfo(33591) or "nil")..")",	-- ["Lunar Guidance"]
 		passValue = "showSpellDmgFromInt",
 		get = getProfileOption,
 		set = setProfileOptionAndClearCache,
 	}
 	consoleOptions.args.stat.args.int.args.heal = { -- Lunar Guidance (Rank 3) - 1,12
 		type = 'toggle',
-		name = L["Show Healing"].." ("..GetSpellInfo(33591)..")",
-		desc = L["Show Healing from Intellect"].." ("..GetSpellInfo(33591)..")",
+		name = L["Show Healing"].." ("..tostring(GetSpellInfo(33591) or "nil")..")",
+		desc = L["Show Healing from Intellect"].." ("..tostring(GetSpellInfo(33591) or "nil")..")",
 		passValue = "showHealingFromInt",
 		get = getProfileOption,
 		set = setProfileOptionAndClearCache,
 	}
 	consoleOptions.args.stat.args.spi.args.mp5 = { -- Intensity (Rank 3) - 3,6
 		type = 'toggle',
-		name = L["Show Mana Regen"].." ("..GetSpellInfo(35359)..")",
-		desc = L["Show Mana Regen while casting from Spirit"].." ("..GetSpellInfo(35359)..")",
+		name = L["Show Mana Regen"].." ("..tostring(GetSpellInfo(35359) or "nil")..")",
+		desc = L["Show Mana Regen while casting from Spirit"].." ("..tostring(GetSpellInfo(35359) or "nil")..")",
 		passValue = "showMP5FromSpi",
 		get = getProfileOption,
 		set = setProfileOptionAndClearCache,
 	}
 end
 if class == "HUNTER" then
-	profileDefault.sumHP = true
-	profileDefault.sumMP = true
-	profileDefault.sumResilience = true
-	profileDefault.sumRAP = true
-	profileDefault.sumHit = true
-	profileDefault.sumCrit = true
-	profileDefault.sumHaste = true
-	profileDefault.sumMP5 = true
-	profileDefault.showMP5FromInt = true -- Aspect of the Viper
-	profileDefault.showDodgeFromAgi = false
-	profileDefault.showSpellCritFromInt = false
-	profileDefault.showRAPFromInt = true
+	defaults.profile.sumHP = true
+	defaults.profile.sumMP = true
+	defaults.profile.sumResilience = true
+	defaults.profile.sumRAP = true
+	defaults.profile.sumHit = true
+	defaults.profile.sumCrit = true
+	defaults.profile.sumHaste = true
+	defaults.profile.sumMP5 = true
+	defaults.profile.showMP5FromInt = true -- Aspect of the Viper
+	defaults.profile.showDodgeFromAgi = false
+	defaults.profile.showSpellCritFromInt = false
+	defaults.profile.showRAPFromInt = true
 	consoleOptions.args.stat.args.int.args.rap = { -- Careful Aim
 		type = 'toggle',
-		name = L["Show Ranged Attack Power"].." ("..GetSpellInfo(34484)..")",
-		desc = L["Show Ranged Attack Power from Intellect"].." ("..GetSpellInfo(34484)..")",
+		name = L["Show Ranged Attack Power"].." ("..tostring(GetSpellInfo(34484) or "nil")..")",
+		desc = L["Show Ranged Attack Power from Intellect"].." ("..tostring(GetSpellInfo(34484) or "nil")..")",
 		passValue = "showRAPFromInt",
 		get = getProfileOption,
 		set = setProfileOptionAndClearCache,
 	}
 end
 if class == "MAGE" then
-	profileDefault.sumHP = true
-	profileDefault.sumMP = true
-	profileDefault.sumResilience = true
-	profileDefault.sumSpellDmg = true
-	profileDefault.sumSpellHit = true
-	profileDefault.sumSpellCrit = true
-	profileDefault.sumSpellHaste = true
-	profileDefault.sumMP5 = true
-	profileDefault.showCritFromAgi = false
-	profileDefault.showDodgeFromAgi = false
-	profileDefault.showSpellDmgFromInt = true
-	profileDefault.showArmorFromInt = true
-	profileDefault.showMP5FromInt = true
-	profileDefault.showMP5FromSpi = true
+	defaults.profile.sumHP = true
+	defaults.profile.sumMP = true
+	defaults.profile.sumResilience = true
+	defaults.profile.sumSpellDmg = true
+	defaults.profile.sumSpellHit = true
+	defaults.profile.sumSpellCrit = true
+	defaults.profile.sumSpellHaste = true
+	defaults.profile.sumMP5 = true
+	defaults.profile.showCritFromAgi = false
+	defaults.profile.showDodgeFromAgi = false
+	defaults.profile.showSpellDmgFromInt = true
+	defaults.profile.showArmorFromInt = true
+	defaults.profile.showMP5FromInt = true
+	defaults.profile.showMP5FromSpi = true
 	consoleOptions.args.stat.args.int.args.dmg = { -- Mind Mastery (Rank 5) - 1,22
 		type = 'toggle',
-		name = L["Show Spell Damage"].." ("..GetSpellInfo(31588)..")",
-		desc = L["Show Spell Damage from Intellect"].." ("..GetSpellInfo(31588)..")",
+		name = L["Show Spell Damage"].." ("..tostring(GetSpellInfo(31588) or "nil")..")",
+		desc = L["Show Spell Damage from Intellect"].." ("..tostring(GetSpellInfo(31588) or "nil")..")",
 		passValue = "showSpellDmgFromInt",
 		get = getProfileOption,
 		set = setProfileOptionAndClearCache,
 	}
 	consoleOptions.args.stat.args.int.args.armor = { -- Arcane Fortitude - 1,9
 		type = 'toggle',
-		name = L["Show Armor"].." ("..GetSpellInfo(28574)..")",
-		desc = L["Show Armor from Intellect"].." ("..GetSpellInfo(28574)..")",
+		name = L["Show Armor"].." ("..tostring(GetSpellInfo(28574) or "nil")..")",
+		desc = L["Show Armor from Intellect"].." ("..tostring(GetSpellInfo(28574) or "nil")..")",
 		passValue = "showArmorFromInt",
 		get = getProfileOption,
 		set = setProfileOptionAndClearCache,
 	}
 	consoleOptions.args.stat.args.spi.args.mp5 = { -- Arcane Meditation (Rank 3) - 1,12
 		type = 'toggle',
-		name = L["Show Mana Regen"].." ("..GetSpellInfo(18464)..")",
-		desc = L["Show Mana Regen while casting from Spirit"].." ("..GetSpellInfo(18464)..")",
+		name = L["Show Mana Regen"].." ("..tostring(GetSpellInfo(18464) or "nil")..")",
+		desc = L["Show Mana Regen while casting from Spirit"].." ("..tostring(GetSpellInfo(18464) or "nil")..")",
 		passValue = "showMP5FromSpi",
 		get = getProfileOption,
 		set = setProfileOptionAndClearCache,
 	}
 end
 if class == "PALADIN" then
-	profileDefault.sumHP = true
-	profileDefault.sumMP = true
-	profileDefault.sumResilience = true
-	profileDefault.sumHit = true
-	profileDefault.sumCrit = true
-	profileDefault.sumHaste = true
-	profileDefault.sumExpertise = true
-	profileDefault.sumHolyDmg = true
-	profileDefault.sumSpellHit = true
-	profileDefault.sumSpellCrit = true
-	profileDefault.sumSpellHaste = true
-	profileDefault.sumHealing = true
-	profileDefault.sumMP5 = true
-	profileDefault.showSpellDmgFromInt = true
-	profileDefault.showHealingFromInt = true
+	defaults.profile.sumHP = true
+	defaults.profile.sumMP = true
+	defaults.profile.sumResilience = true
+	defaults.profile.sumHit = true
+	defaults.profile.sumCrit = true
+	defaults.profile.sumHaste = true
+	defaults.profile.sumExpertise = true
+	defaults.profile.sumHolyDmg = true
+	defaults.profile.sumSpellHit = true
+	defaults.profile.sumSpellCrit = true
+	defaults.profile.sumSpellHaste = true
+	defaults.profile.sumHealing = true
+	defaults.profile.sumMP5 = true
+	defaults.profile.showSpellDmgFromInt = true
+	defaults.profile.showHealingFromInt = true
 	consoleOptions.args.stat.args.int.args.dmg = { -- Holy Guidance (Rank 5) - 1,19
 		type = 'toggle',
-		name = L["Show Spell Damage"].." ("..GetSpellInfo(31841)..")",
-		desc = L["Show Spell Damage from Intellect"].." ("..GetSpellInfo(31841)..")",
+		name = L["Show Spell Damage"].." ("..tostring(GetSpellInfo(31841) or "nil")..")",
+		desc = L["Show Spell Damage from Intellect"].." ("..tostring(GetSpellInfo(31841) or "nil")..")",
 		passValue = "showSpellDmgFromInt",
 		get = getProfileOption,
 		set = setProfileOptionAndClearCache,
 	}
 	consoleOptions.args.stat.args.int.args.heal = { -- Holy Guidance (Rank 5) - 1,19
 		type = 'toggle',
-		name = L["Show Healing"].." ("..GetSpellInfo(31841)..")",
-		desc = L["Show Healing from Intellect"].." ("..GetSpellInfo(31841)..")",
+		name = L["Show Healing"].." ("..tostring(GetSpellInfo(31841) or "nil")..")",
+		desc = L["Show Healing from Intellect"].." ("..tostring(GetSpellInfo(31841) or "nil")..")",
 		passValue = "showHealingFromInt",
 		get = getProfileOption,
 		set = setProfileOptionAndClearCache,
 	}
 end
 if class == "PRIEST" then
-	profileDefault.sumHP = true
-	profileDefault.sumMP = true
-	profileDefault.sumResilience = true
-	profileDefault.sumSpellDmg = true
-	profileDefault.sumSpellHit = true
-	profileDefault.sumSpellCrit = true
-	profileDefault.sumSpellHaste = true
-	profileDefault.sumHealing = true
-	profileDefault.sumMP5 = true
-	profileDefault.showCritFromAgi = false
-	profileDefault.showDodgeFromAgi = false
-	profileDefault.showMP5FromInt = true
-	profileDefault.showMP5FromSpi = true
-	profileDefault.showSpellDmgFromSpi = true
-	profileDefault.showHealingFromSpi = true
+	defaults.profile.sumHP = true
+	defaults.profile.sumMP = true
+	defaults.profile.sumResilience = true
+	defaults.profile.sumSpellDmg = true
+	defaults.profile.sumSpellHit = true
+	defaults.profile.sumSpellCrit = true
+	defaults.profile.sumSpellHaste = true
+	defaults.profile.sumHealing = true
+	defaults.profile.sumMP5 = true
+	defaults.profile.showCritFromAgi = false
+	defaults.profile.showDodgeFromAgi = false
+	defaults.profile.showMP5FromInt = true
+	defaults.profile.showMP5FromSpi = true
+	defaults.profile.showSpellDmgFromSpi = true
+	defaults.profile.showHealingFromSpi = true
 	consoleOptions.args.stat.args.spi.args.mp5 = { -- Meditation (Rank 3) - 1,9
 		type = 'toggle',
-		name = L["Show Mana Regen"].." ("..GetSpellInfo(38346)..")",
-		desc = L["Show Mana Regen while casting from Spirit"].." ("..GetSpellInfo(38346)..")",
+		name = L["Show Mana Regen"].." ("..tostring(GetSpellInfo(38346) or "nil")..")",
+		desc = L["Show Mana Regen while casting from Spirit"].." ("..tostring(GetSpellInfo(38346) or "nil")..")",
 		passValue = "showMP5FromSpi",
 		get = getProfileOption,
 		set = setProfileOptionAndClearCache,
 	}
 	consoleOptions.args.stat.args.spi.args.dmg = { -- Spiritual Guidance (Rank 5) - 2,14, Improved Divine Spirit (Rank 2) - 1,15 - Buff
 		type = 'toggle',
-		name = L["Show Spell Damage"].." ("..GetSpellInfo(15031)..", "..GetSpellInfo(33182)..")",
-		desc = L["Show Spell Damage from Spirit"].." ("..GetSpellInfo(15031)..", "..GetSpellInfo(33182)..")",
+		name = L["Show Spell Damage"].." ("..tostring(GetSpellInfo(15031) or "nil")..", "..tostring(GetSpellInfo(33182) or "nil")..")",
+		desc = L["Show Spell Damage from Spirit"].." ("..tostring(GetSpellInfo(15031) or "nil")..", "..tostring(GetSpellInfo(33182) or "nil")..")",
 		passValue = "showSpellDmgFromSpi",
 		get = getProfileOption,
 		set = setProfileOptionAndClearCache,
 	}
 	consoleOptions.args.stat.args.spi.args.heal = { -- Spiritual Guidance (Rank 5) - 2,14, Improved Divine Spirit (Rank 2) - 1,15 - Buff
 		type = 'toggle',
-		name = L["Show Healing"].." ("..GetSpellInfo(15031)..", "..GetSpellInfo(33182)..")",
-		desc = L["Show Healing from Spirit"].." ("..GetSpellInfo(15031)..", "..GetSpellInfo(33182)..")",
+		name = L["Show Healing"].." ("..tostring(GetSpellInfo(15031) or "nil")..", "..tostring(GetSpellInfo(33182) or "nil")..")",
+		desc = L["Show Healing from Spirit"].." ("..tostring(GetSpellInfo(15031) or "nil")..", "..tostring(GetSpellInfo(33182) or "nil")..")",
 		passValue = "showHealingFromSpi",
 		get = getProfileOption,
 		set = setProfileOptionAndClearCache,
 	}
 end
 if class == "ROGUE" then
-	profileDefault.sumHP = true
-	profileDefault.sumResilience = true
-	profileDefault.sumAP = true
-	profileDefault.sumHit = true
-	profileDefault.sumCrit = true
-	profileDefault.sumHaste = true
-	profileDefault.sumExpertise = true
-	profileDefault.showSpellCritFromInt = false
+	defaults.profile.sumHP = true
+	defaults.profile.sumResilience = true
+	defaults.profile.sumAP = true
+	defaults.profile.sumHit = true
+	defaults.profile.sumCrit = true
+	defaults.profile.sumHaste = true
+	defaults.profile.sumExpertise = true
+	defaults.profile.showSpellCritFromInt = false
 end
 if class == "SHAMAN" then
-	profileDefault.sumHP = true
-	profileDefault.sumMP = true
-	profileDefault.sumResilience = true
-	profileDefault.sumSpellDmg = true
-	profileDefault.sumSpellHit = true
-	profileDefault.sumSpellCrit = true
-	profileDefault.sumSpellHaste = true
-	profileDefault.sumHealing = true
-	profileDefault.sumMP5 = true
-	profileDefault.showSpellDmgFromStr = true
-	profileDefault.showHealingFromStr = true
-	profileDefault.showSpellDmgFromInt = true
-	profileDefault.showHealingFromInt = true
-	profileDefault.showMP5FromInt = true
+	defaults.profile.sumHP = true
+	defaults.profile.sumMP = true
+	defaults.profile.sumResilience = true
+	defaults.profile.sumSpellDmg = true
+	defaults.profile.sumSpellHit = true
+	defaults.profile.sumSpellCrit = true
+	defaults.profile.sumSpellHaste = true
+	defaults.profile.sumHealing = true
+	defaults.profile.sumMP5 = true
+	defaults.profile.showSpellDmgFromStr = true
+	defaults.profile.showHealingFromStr = true
+	defaults.profile.showSpellDmgFromInt = true
+	defaults.profile.showHealingFromInt = true
+	defaults.profile.showMP5FromInt = true
 	consoleOptions.args.stat.args.str.args.dmg = { -- Mental Quickness (Rank 3) - 2,15
 		type = 'toggle',
-		name = L["Show Spell Damage"].." ("..GetSpellInfo(30814)..")",
-		desc = L["Show Spell Damage from Strength"].." ("..GetSpellInfo(30814)..")",
+		name = L["Show Spell Damage"].." ("..tostring(GetSpellInfo(30814) or "nil")..")",
+		desc = L["Show Spell Damage from Strength"].." ("..tostring(GetSpellInfo(30814) or "nil")..")",
 		passValue = "showSpellDmgFromStr",
 		get = getProfileOption,
 		set = setProfileOptionAndClearCache,
 	}
 	consoleOptions.args.stat.args.str.args.heal = { -- Mental Quickness (Rank 3) - 2,15
 		type = 'toggle',
-		name = L["Show Healing"].." ("..GetSpellInfo(30814)..")",
-		desc = L["Show Healing from Strength"].." ("..GetSpellInfo(30814)..")",
+		name = L["Show Healing"].." ("..tostring(GetSpellInfo(30814) or "nil")..")",
+		desc = L["Show Healing from Strength"].." ("..tostring(GetSpellInfo(30814) or "nil")..")",
 		passValue = "showHealingFromStr",
 		get = getProfileOption,
 		set = setProfileOptionAndClearCache,
 	}
 	consoleOptions.args.stat.args.int.args.dmg = { -- Nature's Blessing (Rank 3) - 3,18
 		type = 'toggle',
-		name = L["Show Spell Damage"].." ("..GetSpellInfo(30869)..")",
-		desc = L["Show Spell Damage from Intellect"].." ("..GetSpellInfo(30869)..")",
+		name = L["Show Spell Damage"].." ("..tostring(GetSpellInfo(30869) or "nil")..")",
+		desc = L["Show Spell Damage from Intellect"].." ("..tostring(GetSpellInfo(30869) or "nil")..")",
 		passValue = "showSpellDmgFromInt",
 		get = getProfileOption,
 		set = setProfileOptionAndClearCache,
 	}
 	consoleOptions.args.stat.args.int.args.heal = { -- Nature's Blessing (Rank 3) - 3,18
 		type = 'toggle',
-		name = L["Show Healing"].." ("..GetSpellInfo(30869)..")",
-		desc = L["Show Healing from Intellect"].." ("..GetSpellInfo(30869)..")",
+		name = L["Show Healing"].." ("..tostring(GetSpellInfo(30869) or "nil")..")",
+		desc = L["Show Healing from Intellect"].." ("..tostring(GetSpellInfo(30869) or "nil")..")",
 		passValue = "showHealingFromInt",
 		get = getProfileOption,
 		set = setProfileOptionAndClearCache,
 	}
 end
 if class == "WARLOCK" then
-	profileDefault.sumHP = true
-	profileDefault.sumMP = true
-	profileDefault.sumResilience = true
-	profileDefault.sumSpellDmg = true
-	profileDefault.sumSpellHit = true
-	profileDefault.sumSpellCrit = true
-	profileDefault.sumSpellHaste = true
-	profileDefault.showCritFromAgi = false
-	profileDefault.showDodgeFromAgi = false
-	profileDefault.showSpellDmgFromSta = true
-	profileDefault.showSpellDmgFromInt = true
+	defaults.profile.sumHP = true
+	defaults.profile.sumMP = true
+	defaults.profile.sumResilience = true
+	defaults.profile.sumSpellDmg = true
+	defaults.profile.sumSpellHit = true
+	defaults.profile.sumSpellCrit = true
+	defaults.profile.sumSpellHaste = true
+	defaults.profile.showCritFromAgi = false
+	defaults.profile.showDodgeFromAgi = false
+	defaults.profile.showSpellDmgFromSta = true
+	defaults.profile.showSpellDmgFromInt = true
 	consoleOptions.args.stat.args.sta.args.dmg = { -- Demonic Knowledge (Rank 3) - 2,20 - UnitExists("pet")
 		type = 'toggle',
-		name = L["Show Spell Damage"].." ("..GetSpellInfo(35693)..")",
-		desc = L["Show Spell Damage from Stamina"].." ("..GetSpellInfo(35693)..")",
+		name = L["Show Spell Damage"].." ("..tostring(GetSpellInfo(35693) or "nil")..")",
+		desc = L["Show Spell Damage from Stamina"].." ("..tostring(GetSpellInfo(35693) or "nil")..")",
 		passValue = "showSpellDmgFromSta",
 		get = getProfileOption,
 		set = setProfileOptionAndClearCache,
 	}
 	consoleOptions.args.stat.args.int.args.dmg = { -- Demonic Knowledge (Rank 3) - 2,20 - UnitExists("pet")
 		type = 'toggle',
-		name = L["Show Spell Damage"].." ("..GetSpellInfo(35693)..")",
-		desc = L["Show Spell Damage from Intellect"].." ("..GetSpellInfo(35693)..")",
+		name = L["Show Spell Damage"].." ("..tostring(GetSpellInfo(35693) or "nil")..")",
+		desc = L["Show Spell Damage from Intellect"].." ("..tostring(GetSpellInfo(35693) or "nil")..")",
 		passValue = "showSpellDmgFromInt",
 		get = getProfileOption,
 		set = setProfileOptionAndClearCache,
 	}
 end
 if class == "WARRIOR" then
-	profileDefault.sumHP = true
-	profileDefault.sumResilience = true
-	profileDefault.sumAP = true
-	profileDefault.sumHit = true
-	profileDefault.sumCrit = true
-	profileDefault.sumHaste = true
-	profileDefault.sumExpertise = true
-	profileDefault.showSpellCritFromInt = false
+	defaults.profile.sumHP = true
+	defaults.profile.sumResilience = true
+	defaults.profile.sumAP = true
+	defaults.profile.sumHit = true
+	defaults.profile.sumCrit = true
+	defaults.profile.sumHaste = true
+	defaults.profile.sumExpertise = true
+	defaults.profile.showSpellCritFromInt = false
 end
-
--- Register Defaults
-RatingBuster:RegisterDefaults("profile", profileDefault)
-RatingBuster:RegisterDefaults("class", profileDefault)
-RatingBuster:RegisterDefaults("char", profileDefault)
 
 -----------
 -- Tools --
@@ -1685,6 +1672,12 @@ function RatingBuster:OnProfileEnable()
 end
 
 function RatingBuster:OnInitialize()
+	self.db = LibStub("AceDB-3.0"):New("RatingBusterDB", defaults, true)
+
+	-- Register Defaults
+	-- self.db.class:RegisterDefaults(defaults)
+	-- self.db.char:RegisterDefaults(defaults)
+
 	profileDB = self.db.profile
 
 	self:RegisterChatCommand("/rb", "/ratingbuster", consoleOptions, "RATINGBUSTER")
@@ -1706,7 +1699,7 @@ function RatingBuster:OnEnable()
 	self:RegisterEvent("PLAYER_LEVEL_UP")
 	-- Events that require cache clearing
 	self:RegisterEvent("CHARACTER_POINTS_CHANGED", clearCache) -- talent point changed
-	self:RegisterEvent("UNIT_AURA", 1) -- fire at most once every 1 second
+	self:RegisterEvent("UNIT_AURA") -- fire at most once every 1 second
 end
 
 function RatingBuster:OnDisable()

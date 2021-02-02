@@ -7,21 +7,15 @@ Website: http://www.wowace.com/
 Documentation: http://www.wowace.com/index.php/AceOO-2.0
 SVN: http://svn.wowace.com/root/trunk/Ace2/AceOO-2.0
 Description: Library to provide an object-orientation framework.
-Dependencies: AceLibrary
+Dependencies: LibStub
 License: MIT
 ]]
 
 local MAJOR_VERSION = "AceOO-2.0"
 local MINOR_VERSION = "$Revision: 38641 $"
 
--- This ensures the code is only executed if the libary doesn't already exist, or is a newer version
-if not AceLibrary then error(MAJOR_VERSION .. " requires AceLibrary.") end
-if not AceLibrary:IsNewVersion(MAJOR_VERSION, MINOR_VERSION) then return end
-
-local AceOO = {
-	error = AceLibrary.error,
-	argCheck = AceLibrary.argCheck
-}
+local AceOO =LibStub:NewLibrary(MAJOR_VERSION, MINOR_VERSION)
+AceOO.error = LibStub.error
 
 -- @function	getuid
 -- @brief		Obtain a unique string identifier for the object in question.
@@ -42,10 +36,10 @@ local function getlibrary(o)
 	if type(o) == "table" then
 		return o
 	elseif type(o) == "string" then
-		if not AceLibrary:HasInstance(o) then
+		if not LibStub:HasInstance(o) then
 			AceOO:error("Library %q does not exist.", o)
 		end
-		return AceLibrary(o)
+		return LibStub(o)
 	end
 end
 
@@ -213,13 +207,13 @@ end
 local function inherits(object, parent)
 	object = getlibrary(object)
 	if type(parent) == "string" then
-		if not AceLibrary:HasInstance(parent) then
+		if not LibStub:HasInstance(parent) then
 			return false
 		else
-			parent = AceLibrary(parent)
+			parent = LibStub(parent)
 		end
 	end
-	AceOO:argCheck(parent, 2, "table")
+	assert(type(parent) == "table", "Bad argument #2 to :inherits (table expected)")
 	if type(object) ~= "table" then
 		return false
 	end
@@ -739,7 +733,7 @@ do
 	end
 	
 	function Mixin.prototype:init(export, ...)
-		AceOO:argCheck(export, 2, "table")
+		assert(type(export) == "table", "Bad argument #1 to :init (table expected)")
 		for k,v in pairs(export) do
 			if type(k) ~= "number" then
 				AceOO:error("All keys to argument #2 must be numbers.")
@@ -819,7 +813,7 @@ do
 	end
 	function Interface.prototype:init(interface, ...)
 		Interface.super.prototype.init(self)
-		AceOO:argCheck(interface, 2, "table")
+		assert(type(interface) == "table", "Bad argument #1 to :init (table expected)")
 		for k,v in pairs(interface) do
 			if type(k) ~= "string" then
 				AceOO:error("All keys to argument #2 must be numbers.")
@@ -975,6 +969,3 @@ local function activate(self, oldLib, oldDeactivate)
 		oldDeactivate(oldLib)
 	end
 end
-
-AceLibrary:Register(AceOO, MAJOR_VERSION, MINOR_VERSION, activate)
-AceOO = AceLibrary(MAJOR_VERSION)

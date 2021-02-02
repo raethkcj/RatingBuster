@@ -28,10 +28,7 @@ For a complete item scanning solution to stat scanning you can use ItemBonusLib,
 local MAJOR_VERSION = "TipHooker-1.0"
 local MINOR_VERSION = tonumber(("$Revision: 67029 $"):sub(12, -3))
 
-if not AceLibrary then error(MAJOR_VERSION.." requires AceLibrary") end
-if not AceLibrary:IsNewVersion(MAJOR_VERSION, MINOR_VERSION) then return end
-
-local TipHooker = {}
+local TipHooker = LibStub:NewLibrary(MAJOR_VERSION, MINOR_VERSION)
 local VariablesLoaded
 
 -----------
@@ -248,7 +245,7 @@ local function InitializeHook(tipType)
 								hooksecurefunc(tooltip, methodName, Set[tipType])
 							end
 						end
-						tinsert(_G.TipHooker.SupportedTooltips, tooltip)
+						tinsert(TipHooker.SupportedTooltips, tooltip)
 						break
 					end
 		        end
@@ -411,7 +408,3 @@ function TipHooker:IsHooked(handler, tipType)
 		return HandlerList[tipType][handler]
 	end
 end
-
-AceLibrary:Register(TipHooker, MAJOR_VERSION, MINOR_VERSION, activate)
-
-_G.TipHooker = AceLibrary("TipHooker-1.0")

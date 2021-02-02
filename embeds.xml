@@ -2,28 +2,25 @@
 ..\FrameXML\UI.xsd">
 
 <Script file="libs\LibStub\LibStub.lua"/>
-<Script file="libs\AceLibrary\AceLibrary.lua"/>
-<!-- AceLocale: AceLibrary -->
-<Script file="libs\AceLocale-2.2\AceLocale-2.2.lua"/>
-<!-- TipHooker: AceLibrary -->
+<!-- AceLocale: LibStub -->
+<Script file="libs\AceLocale-3.0\AceLocale-3.0.lua"/>
+<!-- TipHooker: LibStub -->
 <Script file="libs\TipHooker-1.0\TipHooker-1.0.lua"/>
-<!-- AceOO: AceLibrary -->
+<!-- AceOO: LibStub -->
 <Script file="libs\AceOO-2.0\AceOO-2.0.lua"/>
-<!-- Babble-Inventory: AceLibrary, AceLocale-2.2 -->
+<!-- Babble-Inventory: LibStub, AceLocale-3.0 -->
 <Include file="libs\LibBabble-Inventory-3.0\lib.xml"/>
-<!-- AceConsole: AceLibrary, AceOO -->
-<Script file="libs\AceConsole-2.0\AceConsole-2.0.lua"/>
-<!-- AceEvent: AceLibrary, AceOO -->
-<Script file="libs\AceEvent-2.0\AceEvent-2.0.lua"/>
-<!-- AceDebug: AceLibrary, AceOO -->
-<Script file="libs\AceDebug-2.0\AceDebug-2.0.lua"/>
-<!-- AceDB: AceLibrary, AceOO, AceEvent -->
-<Script file="libs\AceDB-2.0\AceDB-2.0.lua"/>
-<!-- AceAddon: AceLibrary, AceOO, AceEvent, AceConsole (optional) -->
-<Script file="libs\AceAddon-2.0\AceAddon-2.0.lua"/>
-<!-- StatLogic: AceLibrary, AceLocale-2.2, LibBabble-Spell-3.0 -->
-<Script file="libs\StatLogic-1.0\StatLogic-1.0.lua"/>
-<!-- Waterfall: AceLibrary, AceOO -->
+<!-- AceConsole: LibStub, AceOO -->
+<Script file="libs\AceConsole-3.0\AceConsole-3.0.lua"/>
+<!-- AceEvent: LibStub, AceOO -->
+<Script file="libs\AceEvent-3.0\AceEvent-3.0.lua"/>
+<!-- AceDB: LibStub, AceOO, AceEvent -->
+<Script file="libs\AceDB-3.0\AceDB-3.0.lua"/>
+<!-- AceAddon: LibStub, AceOO, AceEvent, AceConsole (optional) -->
+<Script file="libs\AceAddon-3.0\AceAddon-3.0.lua"/>
+<!-- StatLogic: LibStub, AceLocale-3.0, LibBabble-Spell-3.0 -->
+<Include file="libs\StatLogic-1.0\StatLogic-1.0.xml"/>
+<!-- Waterfall: LibStub, AceOO -->
 <Script file="libs\Waterfall-1.0\Waterfall-1.0.lua"/>
 
 </Ui>

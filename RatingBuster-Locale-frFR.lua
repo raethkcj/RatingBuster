@@ -6,7 +6,7 @@ Translated by:
 - Silaor
 - renchap
 ]]
-local L = AceLibrary("AceLocale-2.2"):new("RatingBuster")
+local L = AceLibrary("AceLocale-3.0"):new("RatingBuster")
 ----
 -- This file is coded in UTF-8
 -- If you don't have a editor that can save in UTF-8, I recommend Ultraedit

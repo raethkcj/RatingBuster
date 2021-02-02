@@ -1,0 +1,13 @@
+<Ui xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://www.blizzard.com/wow/ui/" xsi:schemaLocation="http://www.blizzard.com/wow/ui/
+	..\FrameXML\UI.xsd">
+
+<Script file="StatLogic-Locale-enUS.lua"/>
+	<!--
+		<Script file="StatLogic-Locale-deDE.lua"/>
+		<Script file="StatLogic-Locale-frFR.lua"/>
+		<Script file="StatLogic-Locale-koKR.lua"/>
+		<Script file="StatLogic-Locale-zhCN.lua"/>
+		<Script file="StatLogic-Locale-zhTW.lua"/>
+	-->
+		<Script file="StatLogic-1.0.lua"/>
+	</Ui>

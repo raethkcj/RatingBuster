@@ -17,14 +17,11 @@ local MINOR_VERSION = "$Revision: 78661 $"
 local CONTROL_LIMIT = 250
 local _
 
-if not AceLibrary then error(MAJOR_VERSION .. " requires AceLibrary") end
-if not AceLibrary:IsNewVersion(MAJOR_VERSION, MINOR_VERSION) then return end
+local AceOO = LibStub("AceOO-2.0")
 
-if not AceLibrary:HasInstance("AceOO-2.0") then error(MAJOR_VERSION .. " requires AceOO-2.0.") end
+local Waterfall = LibStub:NewLibrary(MAJOR_VERSION, MINOR_VERSION)
 
-local AceOO = AceLibrary("AceOO-2.0")
-
-local Waterfall = {}
+Waterfall.registry = {}
 
 local currentframe
 
@@ -4634,17 +4631,3 @@ function WaterfallTreeSection.prototype:CleanUp()
 	self.colorG = 0.6
 	self.colorB = 0
 end
-
-local function activate(self, oldLib, oldDeactivate)
-	if oldLib and oldLib.registry then
-		self.registry = oldLib.registry
-	else
-		self.registry = {}
-	end
-	if oldDeactivate then
-		oldDeactivate(oldLib)
-	end
-end
-
-AceLibrary:Register(Waterfall, MAJOR_VERSION, MINOR_VERSION, activate)
-Waterfall = AceLibrary("Waterfall-1.0")
