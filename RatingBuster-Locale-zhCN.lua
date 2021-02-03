@@ -14,11 +14,7 @@ local L = AceLibrary("AceLocale-3.0"):new("RatingBuster")
 -- Before: ["Show Item ID"] = true,
 -- After:  ["Show Item ID"] = "顯示物品編號",
 L:RegisterTranslations("zhCN", function() return {
-	---------------
-	-- Waterfall --
-	---------------
 	["RatingBuster Options"] = "RatingBuster选项",
-	["Waterfall-1.0 is required to access the GUI."] = "这个GUI需要Waterfall库",
 	---------------------------
 	-- Slash Command Options --
 	---------------------------

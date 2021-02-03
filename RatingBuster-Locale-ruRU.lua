@@ -13,9 +13,6 @@ if not L then return end
 -- To translate AceLocale strings, replace true with the translation string
 -- Before: L["Show Item ID"] = true,
 -- After:  L["Show Item ID"] = "Показывать ID",
----------------
--- Waterfall --
----------------
 L["RatingBuster Options"] = "Окно настроек"
 L["Enabled"] = "Включён"
 L["Suspend/resume this addon"] = "Отключить/Запустить аддон"

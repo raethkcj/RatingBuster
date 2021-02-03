@@ -6,11 +6,7 @@ Translated by:
 ]]
 
 local L = LibStub("AceLocale-3.0"):NewLocale("RatingBuster", "enUS", true)
----------------
--- Waterfall --
----------------
 L["RatingBuster Options"] = true
-L["Waterfall-1.0 is required to access the GUI."] = true
 ---------------------------
 -- Slash Command Options --
 ---------------------------

@@ -10,7 +10,6 @@ Description: Converts combat ratings in tooltips into normal percentages.
 ---------------
 local TipHooker = LibStub("TipHooker-1.0")
 local StatLogic = LibStub("StatLogic-1.0")
-local Waterfall = LibStub("Waterfall-1.0")
 local L = LibStub("AceLocale-3.0"):GetLocale("RatingBuster")
 local BI = LibStub("LibBabble-Inventory-3.0"):GetLookupTable()
 
@@ -283,7 +282,6 @@ local function setGem(key, value)
 		profileDB[key].gemText = gemText
 		clearCache()
 		local socket = strsub(key, 7).." Socket"
-		-- Check to see if we are called by AceConsole or Waterfall
 		if not debugstack():find("AceConsole") then
 			RatingBuster:Print(L["%s is now set to %s"]:format(L[socket], link))
 		end
@@ -1543,12 +1541,6 @@ function RatingBuster:OnInitialize()
 
 	AceConfig = LibStub("AceConfig-3.0")
 	AceConfig:RegisterOptionsTable("RatingBuster", options, {"rb", "ratingbuster"})
-
-	if Waterfall then
-		Waterfall:Register("RatingBuster",
-		"aceOptions", options,
-		"title", L["RatingBuster Options"])
-	end
 end
 
 -- OnEnable() called at PLAYER_LOGIN

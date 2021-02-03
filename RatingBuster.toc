@@ -4,8 +4,8 @@
 ## Notes-zhTW: 裝備數值解析與比較
 ## Author: Whitetooth, raethkcj
 ## SavedVariables: RatingBusterDB
-## OptionalDeps: Ace2, TipHookerLib, StatLogicLib, UTF8, LibBabble-Inventory-3.0, Waterfall-1.0, TankPoints
-## X-Embeds: Ace2, TipHookerLib, StatLogicLib, UTF8, LibBabble-Inventory-3.0, Waterfall-1.0
+## OptionalDeps: Ace2, TipHookerLib, StatLogicLib, UTF8, LibBabble-Inventory-3.0, TankPoints
+## X-Embeds: Ace2, TipHookerLib, StatLogicLib, UTF8, LibBabble-Inventory-3.0
 ## X-Category: Interface Enhancements
 ## X-License: GPL v2
 ## X-Encoding: UTF-8

@@ -14,11 +14,7 @@ local L = AceLibrary("AceLocale-3.0"):new("RatingBuster")
 -- Before: ["Show Item ID"] = true,
 -- After:  ["Show Item ID"] = "顯示物品編號",
 L:RegisterTranslations("koKR", function() return {
-	---------------
-	-- Waterfall --
-	---------------
 	["RatingBuster Options"] = "RatingBuster 설정",
-	["Waterfall-1.0 is required to access the GUI."] = "GUI를 표시하려면 Waterfall-1.0 라이브러리가 필요합니다.",
 	---------------------------
 	-- Slash Command Options --
 	---------------------------

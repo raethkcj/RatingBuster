@@ -21,7 +21,5 @@
 <Script file="libs\AceConfig-3.0\AceConfig-3.0.lua"/>
 <!-- StatLogic: LibStub, AceLocale-3.0, LibBabble-Spell-3.0 -->
 <Include file="libs\StatLogic-1.0\StatLogic-1.0.xml"/>
-<!-- Waterfall: LibStub, AceOO -->
-<Script file="libs\Waterfall-1.0\Waterfall-1.0.lua"/>
 
 </Ui>
