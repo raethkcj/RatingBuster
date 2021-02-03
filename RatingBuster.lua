@@ -295,43 +295,38 @@ end
 local options = {
 	type = 'group',
 	args = {
-		statmod = {
+		enableStatMods = {
 			type = 'toggle',
 			name = L["Enable Stat Mods"],
 			desc = L["Enable support for Stat Mods"],
-			passValue = "enableStatMods",
 			get = getProfileOption,
 			set = setProfileOptionAndClearCache,
 		},
-		itemid = {
+		showItemID = {
 			type = 'toggle',
 			name = L["Show ItemID"],
 			desc = L["Show the ItemID in tooltips"],
-			passValue = "showItemID",
 			get = getProfileOption,
 			set = setProfileOptionAndClearCache,
 		},
-		itemlevel = {
+		showItemLevel = {
 			type = 'toggle',
 			name = L["Show ItemLevel"],
 			desc = L["Show the ItemLevel in tooltips"],
-			passValue = "showItemLevel",
 			get = getProfileOption,
 			set = setProfileOptionAndClearCache,
 		},
-		usereqlv = {
+		useRequiredLevel = {
 			type = 'toggle',
 			name = L["Use required level"],
 			desc = L["Calculate using the required level if you are below the required level"],
-			passValue = "useRequiredLevel",
 			get = getProfileOption,
 			set = setProfileOptionAndClearCache,
 		},
-		level = {
+		customLevel = {
 			type = 'range',
 			name = L["Set level"],
 			desc = L["Set the level used in calculations (0 = your level)"],
-			passValue = "customLevel",
 			get = getProfileOption,
 			set = setProfileOptionAndClearCache,
 			min = 0,
@@ -343,43 +338,38 @@ local options = {
 			name = L["Rating"],
 			desc = L["Options for Rating display"],
 			args = {
-				show = {
+				showRatings = {
 					type = 'toggle',
 					name = L["Show Rating conversions"],
 					desc = L["Show Rating conversions in tooltips"],
-					passValue = "showRatings",
 					get = getProfileOption,
 					set = setProfileOptionAndClearCache,
 				},
-				detail = {
+				detailedConversionText = {
 					type = 'toggle',
 					name = L["Show detailed conversions text"],
 					desc = L["Show detailed text for Resiliance and Expertise conversions"],
-					passValue = "detailedConversionText",
 					get = getProfileOption,
 					set = setProfileOptionAndClearCache,
 				},
-				def = {
+				defBreakDown = {
 					type = 'toggle',
 					name = L["Defense breakdown"],
 					desc = L["Convert Defense into Crit Avoidance, Hit Avoidance, Dodge, Parry and Block"],
-					passValue = "defBreakDown",
 					get = getProfileOption,
 					set = setProfileOptionAndClearCache,
 				},
-				wpn = {
+				wpnBreakDown = {
 					type = 'toggle',
 					name = L["Weapon Skill breakdown"],
 					desc = L["Convert Weapon Skill into Crit, Hit, Dodge Neglect, Parry Neglect and Block Neglect"],
-					passValue = "wpnBreakDown",
 					get = getProfileOption,
 					set = setProfileOptionAndClearCache,
 				},
-				exp = {
+				expBreakDown = {
 					type = 'toggle',
 					name = L["Expertise breakdown"],
 					desc = L["Convert Expertise into Dodge Neglect and Parry Neglect"],
-					passValue = "expBreakDown",
 					get = getProfileOption,
 					set = setProfileOptionAndClearCache,
 				},
@@ -405,11 +395,10 @@ local options = {
 								ColorPickerFrame:Show()
 							end,
 						},
-						enable = {
+						enableTextColor = {
 							type = 'toggle',
 							name = L["Enable color"],
 							desc = L["Enable colored text"],
-							passValue = "enableTextColor",
 							get = getProfileOption,
 							set = setProfileOptionAndClearCache,
 						},
@@ -422,11 +411,10 @@ local options = {
 			name = L["Stat Breakdown"],
 			desc = L["Changes the display of base stats"],
 			args = {
-				show = {
+				showStats = {
 					type = 'toggle',
 					name = L["Show base stat conversions"],
 					desc = L["Show base stat conversions in tooltips"],
-					passValue = "showStats",
 					get = getProfileOption,
 					set = setProfileOptionAndClearCache,
 				},
@@ -435,19 +423,17 @@ local options = {
 					name = L["Strength"],
 					desc = L["Changes the display of Strength"],
 					args = {
-						ap = {
+						showAPFromStr = {
 							type = 'toggle',
 							name = L["Show Attack Power"],
 							desc = L["Show Attack Power from Strength"],
-							passValue = "showAPFromStr",
 							get = getProfileOption,
 							set = setProfileOptionAndClearCache,
 						},
-						block = {
+						showBlockValueFromStr = {
 							type = 'toggle',
 							name = L["Show Block Value"],
 							desc = L["Show Block Value from Strength"],
-							passValue = "showBlockValueFromStr",
 							get = getProfileOption,
 							set = setProfileOptionAndClearCache,
 						},
@@ -458,43 +444,38 @@ local options = {
 					name = L["Agility"],
 					desc = L["Changes the display of Agility"],
 					args = {
-						crit = {
+						showCritFromAgi = {
 							type = 'toggle',
 							name = L["Show Crit"],
 							desc = L["Show Crit chance from Agility"],
-							passValue = "showCritFromAgi",
 							get = getProfileOption,
 							set = setProfileOptionAndClearCache,
 						},
-						dodge = {
+						showDodgeFromAgi = {
 							type = 'toggle',
 							name = L["Show Dodge"],
 							desc = L["Show Dodge chance from Agility"],
-							passValue = "showDodgeFromAgi",
 							get = getProfileOption,
 							set = setProfileOptionAndClearCache,
 						},
-						ap = {
+						showAPFromAgi = {
 							type = 'toggle',
 							name = L["Show Attack Power"],
 							desc = L["Show Attack Power from Agility"],
-							passValue = "showAPFromAgi",
 							get = getProfileOption,
 							set = setProfileOptionAndClearCache,
 						},
-						rap = {
+						showRAPFromAgi = {
 							type = 'toggle',
 							name = L["Show Ranged Attack Power"],
 							desc = L["Show Ranged Attack Power from Agility"],
-							passValue = "showRAPFromAgi",
 							get = getProfileOption,
 							set = setProfileOptionAndClearCache,
 						},
-						armor = {
+						showArmorFromAgi = {
 							type = 'toggle',
 							name = L["Show Armor"],
 							desc = L["Show Armor from Agility"],
-							passValue = "showArmorFromAgi",
 							get = getProfileOption,
 							set = setProfileOptionAndClearCache,
 						},
@@ -505,11 +486,10 @@ local options = {
 					name = L["Stamina"],
 					desc = L["Changes the display of Stamina"],
 					args = {
-						hp = {
+						showHealthFromSta = {
 							type = 'toggle',
 							name = L["Show Health"],
 							desc = L["Show Health from Stamina"],
-							passValue = "showHealthFromSta",
 							get = getProfileOption,
 							set = setProfileOptionAndClearCache,
 						},
@@ -520,35 +500,31 @@ local options = {
 					name = L["Intellect"],
 					desc = L["Changes the display of Intellect"],
 					args = {
-						spellcrit = {
+						showSpellCritFromInt = {
 							type = 'toggle',
 							name = L["Show Spell Crit"],
 							desc = L["Show Spell Crit chance from Intellect"],
-							passValue = "showSpellCritFromInt",
 							get = getProfileOption,
 							set = setProfileOptionAndClearCache,
 						},
-						mp = {
+						showManaFromInt = {
 							type = 'toggle',
 							name = L["Show Mana"],
 							desc = L["Show Mana from Intellect"],
-							passValue = "showManaFromInt",
 							get = getProfileOption,
 							set = setProfileOptionAndClearCache,
 						},
-						mp5 = {
+						showMP5FromInt = {
 							type = 'toggle',
 							name = L["Show Mana Regen"],
 							desc = L["Show Mana Regen while casting from Intellect"],
-							passValue = "showMP5FromInt",
 							get = getProfileOption,
 							set = setProfileOptionAndClearCache,
 						},
-						mp5nc = {
+						showMP5NCFromInt = {
 							type = 'toggle',
 							name = L["Show Mana Regen while NOT casting"],
 							desc = L["Show Mana Regen while NOT casting from Intellect"],
-							passValue = "showMP5NCFromInt",
 							get = getProfileOption,
 							set = setProfileOptionAndClearCache,
 						},
@@ -559,19 +535,17 @@ local options = {
 					name = L["Spirit"],
 					desc = L["Changes the display of Spirit"],
 					args = {
-						mp5nc = {
+						showMP5NCFromSpi = {
 							type = 'toggle',
 							name = L["Show Mana Regen while NOT casting"],
 							desc = L["Show Mana Regen while NOT casting from Spirit"],
-							passValue = "showMP5NCFromSpi",
 							get = getProfileOption,
 							set = setProfileOptionAndClearCache,
 						},
-						hp5 = {
+						showHP5FromSpi = {
 							type = 'toggle',
 							name = L["Show Health Regen"],
 							desc = L["Show Health Regen from Spirit"],
-							passValue = "showHP5FromSpi",
 							get = getProfileOption,
 							set = setProfileOptionAndClearCache,
 						},
@@ -584,11 +558,10 @@ local options = {
 			name = L["Stat Summary"],
 			desc = L["Options for stat summary"],
 			args = {
-				show = {
+				showSum = {
 					type = 'toggle',
 					name = L["Show stat summary"],
 					desc = L["Show stat summary in tooltips"],
-					passValue = "showSum",
 					get = getProfileOption,
 					set = setProfileOptionAndClearCache,
 				},
@@ -597,46 +570,41 @@ local options = {
 					name = L["Ignore settings"],
 					desc = L["Ignore stuff when calculating the stat summary"],
 					args = {
-						unused = {
+						sumIgnoreUnused = {
 							type = 'toggle',
 							name = L["Ignore unused items types"],
 							desc = L["Show stat summary only for highest level armor type and items you can use with uncommon quality and up"],
-							passValue = "sumIgnoreUnused",
 							get = getProfileOption,
 							set = setProfileOptionAndClearCache,
 						},
-						equipped = {
+						sumIgnoreEquipped = {
 							type = 'toggle',
 							name = L["Ignore equipped items"],
 							desc = L["Hide stat summary for equipped items"],
-							passValue = "sumIgnoreEquipped",
 							get = getProfileOption,
 							set = setProfileOptionAndClearCache,
 						},
-						enchant = {
+						sumIgnoreEnchant = {
 							type = 'toggle',
 							name = L["Ignore enchants"],
 							desc = L["Ignore enchants on items when calculating the stat summary"],
-							passValue = "sumIgnoreEnchant",
 							get = getProfileOption,
 							set = setProfileOptionAndClearCache,
 						},
-						gem = {
+						sumIgnoreGems = {
 							type = 'toggle',
 							name = L["Ignore gems"],
 							desc = L["Ignore gems on items when calculating the stat summary"],
-							passValue = "sumIgnoreGems",
 							get = getProfileOption,
 							set = setProfileOptionAndClearCache,
 						},
 					},
 				},
-				diffstyle = {
+				sumDiffStyle = {
 					type = 'select',
 					name = L["Display style for diff value"],
 					desc = L["Display diff values in the main tooltip or only in compare tooltips"],
 					values = {"comp", "main"},
-					passValue = "sumDiffStyle",
 					get = getProfileOption,
 					set = setProfileOptionAndClearCache,
 				},
@@ -645,77 +613,68 @@ local options = {
 					name = L["Add empty line"],
 					desc = L["Add a empty line before or after stat summary"],
 					args = {
-						before = {
+						sumBlankLine = {
 							type = 'toggle',
 							name = L["Add before summary"],
 							desc = L["Add a empty line before stat summary"],
-							passValue = "sumBlankLine",
 							get = getProfileOption,
 							set = setProfileOptionAndClearCache,
 						},
-						after = {
+						sumBlankLineAfter = {
 							type = 'toggle',
 							name = L["Add after summary"],
 							desc = L["Add a empty line after stat summary"],
-							passValue = "sumBlankLineAfter",
 							get = getProfileOption,
 							set = setProfileOptionAndClearCache,
 						},
 					},
 				},
-				icon = {
+				sumShowIcon = {
 					type = 'toggle',
 					name = L["Show icon"],
 					desc = L["Show the sigma icon before summary listing"],
-					passValue = "sumShowIcon",
 					get = getProfileOption,
 					set = setProfileOptionAndClearCache,
 				},
-				title = {
+				sumShowTitle = {
 					type = 'toggle',
 					name = L["Show title text"],
 					desc = L["Show the title text before summary listing"],
-					passValue = "sumShowTitle",
 					get = getProfileOption,
 					set = setProfileOptionAndClearCache,
 				},
-				showzerostat = {
+				showZeroValueStat = {
 					type = 'toggle',
 					name = L["Show zero value stats"],
 					desc = L["Show zero value stats in summary for consistancy"],
-					passValue = "showZeroValueStat",
 					get = getProfileOption,
 					set = setProfileOptionAndClearCache,
 				},
-				calcsum = {
+				calcSum = {
 					type = 'toggle',
 					name = L["Calculate stat sum"],
 					desc = L["Calculate the total stats for the item"],
-					passValue = "calcSum",
 					get = getProfileOption,
 					set = setProfileOptionAndClearCache,
 				},
-				calcdiff = {
+				calcDiff = {
 					type = 'toggle',
 					name = L["Calculate stat diff"],
 					desc = L["Calculate the stat difference for the item and equipped items"],
-					passValue = "calcDiff",
 					get = getProfileOption,
 					set = setProfileOptionAndClearCache,
 				},
-				sort = {
+				sumSortAlpha = {
 					type = 'toggle',
 					name = L["Sort StatSummary alphabetically"],
 					desc = L["Enable to sort StatSummary alphabetically, disable to sort according to stat type(basic, physical, spell, tank)"],
-					passValue = "sumSortAlpha",
 					get = getProfileOption,
 					set = setProfileOptionAndClearCache,
 				},
-				avoidhasblock = {
+				sumAvoidWithBlock = {
 					type = 'toggle',
 					name = L["Include block chance in Avoidance summary"],
 					desc = L["Enable to include block chance in Avoidance summary, Disable for only dodge, parry, miss"],
-					passValue = "sumAvoidWithBlock",
 					get = getProfileOption,
 					set = setProfileOptionAndClearCache,
 				},
@@ -724,91 +683,80 @@ local options = {
 					name = L["Stat - Basic"],
 					desc = L["Choose basic stats for summary"],
 					args = {
-						hp = {
+						sumHP = {
 							type = 'toggle',
 							name = L["Sum Health"],
 							desc = L["Health <- Health, Stamina"],
-							passValue = "sumHP",
 							get = getProfileOption,
 							set = setProfileOptionAndClearCache,
 						},
-						mp = {
+						sumMP = {
 							type = 'toggle',
 							name = L["Sum Mana"],
 							desc = L["Mana <- Mana, Intellect"],
-							passValue = "sumMP",
 							get = getProfileOption,
 							set = setProfileOptionAndClearCache,
 						},
-						mp5 = {
+						sumMP5 = {
 							type = 'toggle',
 							name = L["Sum Mana Regen"],
 							desc = L["Mana Regen <- Mana Regen, Spirit"],
-							passValue = "sumMP5",
 							get = getProfileOption,
 							set = setProfileOptionAndClearCache,
 						},
-						mp5nc = {
+						sumMP5NC = {
 							type = 'toggle',
 							name = L["Sum Mana Regen while not casting"],
 							desc = L["Mana Regen while not casting <- Spirit"],
-							passValue = "sumMP5NC",
 							get = getProfileOption,
 							set = setProfileOptionAndClearCache,
 						},
-						hp5 = {
+						sumHP5 = {
 							type = 'toggle',
 							name = L["Sum Health Regen"],
 							desc = L["Health Regen <- Health Regen"],
-							passValue = "sumHP5",
 							get = getProfileOption,
 							set = setProfileOptionAndClearCache,
 						},
-						hp5oc = {
+						sumHP5OC = {
 							type = 'toggle',
 							name = L["Sum Health Regen when out of combat"],
 							desc = L["Health Regen when out of combat <- Spirit"],
-							passValue = "sumHP5OC",
 							get = getProfileOption,
 							set = setProfileOptionAndClearCache,
 						},
-						str = {
+						sumStr = {
 							type = 'toggle',
 							name = L["Sum Strength"],
 							desc = L["Strength Summary"],
-							passValue = "sumStr",
 							get = getProfileOption,
 							set = setProfileOptionAndClearCache,
 						},
-						agi = {
+						sumAgi = {
 							type = 'toggle',
 							name = L["Sum Agility"],
 							desc = L["Agility Summary"],
-							passValue = "sumAgi",
 							get = getProfileOption,
 							set = setProfileOptionAndClearCache,
 						},
-						sta = {
+						sumSta = {
 							type = 'toggle',
 							name = L["Sum Stamina"],
 							desc = L["Stamina Summary"],
-							passValue = "sumSta",
 							get = getProfileOption,
 							set = setProfileOptionAndClearCache,
 						},
-						int = {
+						sumInt = {
 							type = 'toggle',
 							name = L["Sum Intellect"],
 							desc = L["Intellect Summary"],
-							passValue = "sumInt",
 							get = getProfileOption,
 							set = setProfileOptionAndClearCache,
 						},
-						spi = {
+						sumSpi = {
 							type = 'toggle',
 							name = L["Sum Spirit"],
 							desc = L["Spirit Summary"],
-							passValue = "sumSpi",
 							get = getProfileOption,
 							set = setProfileOptionAndClearCache,
 						},
@@ -819,144 +767,128 @@ local options = {
 					name = L["Stat - Physical"],
 					desc = L["Choose physical damage stats for summary"],
 					args = {
-						ap = {
+						sumAP = {
 							type = 'toggle',
 							name = L["Sum Attack Power"],
 							desc = L["Attack Power <- Attack Power, Strength, Agility"],
-							passValue = "sumAP",
 							get = getProfileOption,
 							set = setProfileOptionAndClearCache,
 						},
-						rap = {
+						sumRAP = {
 							type = 'toggle',
 							name = L["Sum Ranged Attack Power"],
 							desc = L["Ranged Attack Power <- Ranged Attack Power, Intellect, Attack Power, Strength, Agility"],
-							passValue = "sumRAP",
 							get = getProfileOption,
 							set = setProfileOptionAndClearCache,
 						},
-						fap = {
+						sumFAP = {
 							type = 'toggle',
 							name = L["Sum Feral Attack Power"],
 							desc = L["Feral Attack Power <- Feral Attack Power, Attack Power, Strength, Agility"],
-							passValue = "sumFAP",
 							get = getProfileOption,
 							set = setProfileOptionAndClearCache,
 						},
-						hit = {
+						sumHit = {
 							type = 'toggle',
 							name = L["Sum Hit Chance"],
 							desc = L["Hit Chance <- Hit Rating, Weapon Skill Rating"],
-							passValue = "sumHit",
 							get = getProfileOption,
 							set = setProfileOptionAndClearCache,
 						},
-						hitrating = {
+						sumHitRating = {
 							type = 'toggle',
 							name = L["Sum Hit Rating"],
 							desc = L["Hit Rating Summary"],
-							passValue = "sumHitRating",
 							get = getProfileOption,
 							set = setProfileOptionAndClearCache,
 						},
-						crit = {
+						sumCrit = {
 							type = 'toggle',
 							name = L["Sum Crit Chance"],
 							desc = L["Crit Chance <- Crit Rating, Agility, Weapon Skill Rating"],
-							passValue = "sumCrit",
 							get = getProfileOption,
 							set = setProfileOptionAndClearCache,
 						},
-						critrating = {
+						sumCritRating = {
 							type = 'toggle',
 							name = L["Sum Crit Rating"],
 							desc = L["Crit Rating Summary"],
-							passValue = "sumCritRating",
 							get = getProfileOption,
 							set = setProfileOptionAndClearCache,
 						},
-						haste = {
+						sumHaste = {
 							type = 'toggle',
 							name = L["Sum Haste"],
 							desc = L["Haste <- Haste Rating"],
-							passValue = "sumHaste",
 							get = getProfileOption,
 							set = setProfileOptionAndClearCache,
 						},
-						hasterating = {
+						sumHasteRating = {
 							type = 'toggle',
 							name = L["Sum Haste Rating"],
 							desc = L["Haste Rating Summary"],
-							passValue = "sumHasteRating",
 							get = getProfileOption,
 							set = setProfileOptionAndClearCache,
 						},
-						neglectdodge = {
+						sumDodgeNeglect = {
 							type = 'toggle',
 							name = L["Sum Dodge Neglect"],
 							desc = L["Dodge Neglect <- Expertise, Weapon Skill Rating"],
-							passValue = "sumDodgeNeglect",
 							get = getProfileOption,
 							set = setProfileOptionAndClearCache,
 						},
-						neglectparry = {
+						sumParryNeglect = {
 							type = 'toggle',
 							name = L["Sum Parry Neglect"],
 							desc = L["Parry Neglect <- Expertise, Weapon Skill Rating"],
-							passValue = "sumParryNeglect",
 							get = getProfileOption,
 							set = setProfileOptionAndClearCache,
 						},
-						neglectblock = {
+						sumBlockNeglect = {
 							type = 'toggle',
 							name = L["Sum Block Neglect"],
 							desc = L["Block Neglect <- Weapon Skill Rating"],
-							passValue = "sumBlockNeglect",
 							get = getProfileOption,
 							set = setProfileOptionAndClearCache,
 						},
-						wpn = {
+						sumWeaponSkill = {
 							type = 'toggle',
 							name = L["Sum Weapon Skill"],
 							desc = L["Weapon Skill <- Weapon Skill Rating"],
-							passValue = "sumWeaponSkill",
 							get = getProfileOption,
 							set = setProfileOptionAndClearCache,
 						},
-						exp = {
+						sumExpertise = {
 							type = 'toggle',
 							name = L["Sum Expertise"],
 							desc = L["Expertise <- Expertise Rating"],
-							passValue = "sumExpertise",
 							get = getProfileOption,
 							set = setProfileOptionAndClearCache,
 						},
-						maxdamage = {
+						sumWeaponMaxDamage = {
 							type = 'toggle',
 							name = L["Sum Weapon Max Damage"],
 							desc = L["Weapon Max Damage Summary"],
-							passValue = "sumWeaponMaxDamage",
 							get = getProfileOption,
 							set = setProfileOptionAndClearCache,
 						},
 						--[[
 						weapondps = {
-							type = 'toggle',
-							name = L["Sum Weapon DPS"],
-							desc = L["Weapon DPS Summary"],
-							get = function() return profileDB.sumWeaponDPS end,
-							set = function(v)
-								profileDB.sumWeaponDPS = v
-								-- clear cache
-								clearCache()
-							end,
+						type = 'toggle',
+						name = L["Sum Weapon DPS"],
+						desc = L["Weapon DPS Summary"],
+						get = function() return profileDB.sumWeaponDPS end,
+						set = function(v)
+						profileDB.sumWeaponDPS = v
+						-- clear cache
+						clearCache()
+						end,
 						},
 						--]]
-						ignorearmor = {
+						sumIgnoreArmor = {
 							type = 'toggle',
 							name = L["Sum Ignore Armor"],
 							desc = L["Ignore Armor Summary"],
-							passValue = "sumIgnoreArmor",
 							get = getProfileOption,
 							set = setProfileOptionAndClearCache,
 						},
@@ -967,123 +899,108 @@ local options = {
 					name = L["Stat - Spell"],
 					desc = L["Choose spell damage and healing stats for summary"],
 					args = {
-						dmg = {
+						sumSpellDmg = {
 							type = 'toggle',
 							name = L["Sum Spell Damage"],
 							desc = L["Spell Damage <- Spell Damage, Intellect, Spirit, Stamina"],
-							passValue = "sumSpellDmg",
 							get = getProfileOption,
 							set = setProfileOptionAndClearCache,
 						},
-						dmgholy = {
+						sumHolyDmg = {
 							type = 'toggle',
 							name = L["Sum Holy Spell Damage"],
 							desc = L["Holy Spell Damage <- Holy Spell Damage, Spell Damage, Intellect, Spirit"],
-							passValue = "sumHolyDmg",
 							get = getProfileOption,
 							set = setProfileOptionAndClearCache,
 						},
-						dmgarcane = {
+						sumArcaneDmg = {
 							type = 'toggle',
 							name = L["Sum Arcane Spell Damage"],
 							desc = L["Arcane Spell Damage <- Arcane Spell Damage, Spell Damage, Intellect"],
-							passValue = "sumArcaneDmg",
 							get = getProfileOption,
 							set = setProfileOptionAndClearCache,
 						},
-						dmgfire = {
+						sumFireDmg = {
 							type = 'toggle',
 							name = L["Sum Fire Spell Damage"],
 							desc = L["Fire Spell Damage <- Fire Spell Damage, Spell Damage, Intellect, Stamina"],
-							passValue = "sumFireDmg",
 							get = getProfileOption,
 							set = setProfileOptionAndClearCache,
 						},
-						dmgnature = {
+						sumNatureDmg = {
 							type = 'toggle',
 							name = L["Sum Nature Spell Damage"],
 							desc = L["Nature Spell Damage <- Nature Spell Damage, Spell Damage, Intellect"],
-							passValue = "sumNatureDmg",
 							get = getProfileOption,
 							set = setProfileOptionAndClearCache,
 						},
-						dmgfrost = {
+						sumFrostDmg = {
 							type = 'toggle',
 							name = L["Sum Frost Spell Damage"],
 							desc = L["Frost Spell Damage <- Frost Spell Damage, Spell Damage, Intellect"],
-							passValue = "sumFrostDmg",
 							get = getProfileOption,
 							set = setProfileOptionAndClearCache,
 						},
-						dmgshadow = {
+						sumShadowDmg = {
 							type = 'toggle',
 							name = L["Sum Shadow Spell Damage"],
 							desc = L["Shadow Spell Damage <- Shadow Spell Damage, Spell Damage, Intellect, Spirit, Stamina"],
-							passValue = "sumShadowDmg",
 							get = getProfileOption,
 							set = setProfileOptionAndClearCache,
 						},
-						heal = {
+						sumHealing = {
 							type = 'toggle',
 							name = L["Sum Healing"],
 							desc = L["Healing <- Healing, Intellect, Spirit, Agility, Strength"],
-							passValue = "sumHealing",
 							get = getProfileOption,
 							set = setProfileOptionAndClearCache,
 						},
-						hitspell = {
+						sumSpellHit = {
 							type = 'toggle',
 							name = L["Sum Spell Hit Chance"],
 							desc = L["Spell Hit Chance <- Spell Hit Rating"],
-							passValue = "sumSpellHit",
 							get = getProfileOption,
 							set = setProfileOptionAndClearCache,
 						},
-						hitspellrating = {
+						sumSpellHitRating = {
 							type = 'toggle',
 							name = L["Sum Spell Hit Rating"],
 							desc = L["Spell Hit Rating Summary"],
-							passValue = "sumSpellHitRating",
 							get = getProfileOption,
 							set = setProfileOptionAndClearCache,
 						},
-						critspell = {
+						sumSpellCrit = {
 							type = 'toggle',
 							name = L["Sum Spell Crit Chance"],
 							desc = L["Spell Crit Chance <- Spell Crit Rating, Intellect"],
-							passValue = "sumSpellCrit",
 							get = getProfileOption,
 							set = setProfileOptionAndClearCache,
 						},
-						critspellrating = {
+						sumSpellCritRating = {
 							type = 'toggle',
 							name = L["Sum Spell Crit Rating"],
 							desc = L["Spell Crit Rating Summary"],
-							passValue = "sumSpellCritRating",
 							get = getProfileOption,
 							set = setProfileOptionAndClearCache,
 						},
-						hastespell = {
+						sumSpellHaste = {
 							type = 'toggle',
 							name = L["Sum Spell Haste"],
 							desc = L["Spell Haste <- Spell Haste Rating"],
-							passValue = "sumSpellHaste",
 							get = getProfileOption,
 							set = setProfileOptionAndClearCache,
 						},
-						hastespellrating = {
+						sumSpellHasteRating = {
 							type = 'toggle',
 							name = L["Sum Spell Haste Rating"],
 							desc = L["Spell Haste Rating Summary"],
-							passValue = "sumSpellHasteRating",
 							get = getProfileOption,
 							set = setProfileOptionAndClearCache,
 						},
-						pen = {
+						sumPenetration = {
 							type = 'toggle',
 							name = L["Sum Penetration"],
 							desc = L["Spell Penetration Summary"],
-							passValue = "sumPenetration",
 							get = getProfileOption,
 							set = setProfileOptionAndClearCache,
 						},
@@ -1094,147 +1011,129 @@ local options = {
 					name = L["Stat - Tank"],
 					desc = L["Choose tank stats for summary"],
 					args = {
-						armor = {
+						sumArmor = {
 							type = 'toggle',
 							name = L["Sum Armor"],
 							desc = L["Armor <- Armor from items, Armor from bonuses, Agility, Intellect"],
-							passValue = "sumArmor",
 							get = getProfileOption,
 							set = setProfileOptionAndClearCache,
 						},
-						def = {
+						sumDefense = {
 							type = 'toggle',
 							name = L["Sum Defense"],
 							desc = L["Defense <- Defense Rating"],
-							passValue = "sumDefense",
 							get = getProfileOption,
 							set = setProfileOptionAndClearCache,
 						},
-						dodge = {
+						sumDodge = {
 							type = 'toggle',
 							name = L["Sum Dodge Chance"],
 							desc = L["Dodge Chance <- Dodge Rating, Agility, Defense Rating"],
-							passValue = "sumDodge",
 							get = getProfileOption,
 							set = setProfileOptionAndClearCache,
 						},
-						dodgerating = {
+						sumDodgeRating = {
 							type = 'toggle',
 							name = L["Sum Dodge Rating"],
 							desc = L["Dodge Rating Summary"],
-							passValue = "sumDodgeRating",
 							get = getProfileOption,
 							set = setProfileOptionAndClearCache,
 						},
-						parry = {
+						sumParry = {
 							type = 'toggle',
 							name = L["Sum Parry Chance"],
 							desc = L["Parry Chance <- Parry Rating, Defense Rating"],
-							passValue = "sumParry",
 							get = getProfileOption,
 							set = setProfileOptionAndClearCache,
 						},
-						parryrating = {
+						sumParryRating = {
 							type = 'toggle',
 							name = L["Sum Parry Rating"],
 							desc = L["Parry Rating Summary"],
-							passValue = "sumParryRating",
 							get = getProfileOption,
 							set = setProfileOptionAndClearCache,
 						},
-						block = {
+						sumBlock = {
 							type = 'toggle',
 							name = L["Sum Block Chance"],
 							desc = L["Block Chance <- Block Rating, Defense Rating"],
-							passValue = "sumBlock",
 							get = getProfileOption,
 							set = setProfileOptionAndClearCache,
 						},
-						blockrating = {
+						sumBlockRating = {
 							type = 'toggle',
 							name = L["Sum Block Rating"],
 							desc = L["Block Rating Summary"],
-							passValue = "sumBlockRating",
 							get = getProfileOption,
 							set = setProfileOptionAndClearCache,
 						},
-						blockvalue = {
+						sumBlockValue = {
 							type = 'toggle',
 							name = L["Sum Block Value"],
 							desc = L["Block Value <- Block Value, Strength"],
-							passValue = "sumBlockValue",
 							get = getProfileOption,
 							set = setProfileOptionAndClearCache,
 						},
-						avoidhit = {
+						sumHitAvoid = {
 							type = 'toggle',
 							name = L["Sum Hit Avoidance"],
 							desc = L["Hit Avoidance <- Defense Rating"],
-							passValue = "sumHitAvoid",
 							get = getProfileOption,
 							set = setProfileOptionAndClearCache,
 						},
-						avoidcrit = {
+						sumCritAvoid = {
 							type = 'toggle',
 							name = L["Sum Crit Avoidance"],
 							desc = L["Crit Avoidance <- Defense Rating, Resilience"],
-							passValue = "sumCritAvoid",
 							get = getProfileOption,
 							set = setProfileOptionAndClearCache,
 						},
-						res = {
+						sumResilience = {
 							type = 'toggle',
 							name = L["Sum Resilience"],
 							desc = L["Resilience Summary"],
-							passValue = "sumResilience",
 							get = getProfileOption,
 							set = setProfileOptionAndClearCache,
 						},
-						resarcane = {
+						sumArcaneResist = {
 							type = 'toggle',
 							name = L["Sum Arcane Resistance"],
 							desc = L["Arcane Resistance Summary"],
-							passValue = "sumArcaneResist",
 							get = getProfileOption,
 							set = setProfileOptionAndClearCache,
 						},
-						resfire = {
+						sumFireResist = {
 							type = 'toggle',
 							name = L["Sum Fire Resistance"],
 							desc = L["Fire Resistance Summary"],
-							passValue = "sumFireResist",
 							get = getProfileOption,
 							set = setProfileOptionAndClearCache,
 						},
-						resnature = {
+						sumNatureResist = {
 							type = 'toggle',
 							name = L["Sum Nature Resistance"],
 							desc = L["Nature Resistance Summary"],
-							passValue = "sumNatureResist",
 							get = getProfileOption,
 							set = setProfileOptionAndClearCache,
 						},
-						resfrost = {
+						sumFrostResist = {
 							type = 'toggle',
 							name = L["Sum Frost Resistance"],
 							desc = L["Frost Resistance Summary"],
-							passValue = "sumFrostResist",
 							get = getProfileOption,
 							set = setProfileOptionAndClearCache,
 						},
-						resshadow = {
+						sumShadowResist = {
 							type = 'toggle',
 							name = L["Sum Shadow Resistance"],
 							desc = L["Shadow Resistance Summary"],
-							passValue = "sumShadowResist",
 							get = getProfileOption,
 							set = setProfileOptionAndClearCache,
 						},
-						avoid = {
+						sumAvoidance = {
 							type = 'toggle',
 							name = L["Sum Avoidance"],
 							desc = L["Avoidance <- Dodge, Parry, MobMiss, Block(Optional)"],
-							passValue = "sumAvoidance",
 							get = getProfileOption,
 							set = setProfileOptionAndClearCache,
 						},
@@ -1245,42 +1144,38 @@ local options = {
 					name = L["Gems"],
 					desc = L["Auto fill empty gem slots"],
 					args = {
-						red = {
+						sumGemRed = {
 							type = 'input',
 							name = L["Red Socket"],
 							desc = L["ItemID or Link of the gem you would like to auto fill"],
 							usage = L["<ItemID|Link>"],
-							passValue = "sumGemRed",
 							get = getGem,
 							set = setGem,
 							order = 1,
 						},
-						yellow = {
+						sumGemYellow = {
 							type = 'input',
 							name = L["Yellow Socket"],
 							desc = L["ItemID or Link of the gem you would like to auto fill"],
 							usage = L["<ItemID|Link>"],
-							passValue = "sumGemYellow",
 							get = getGem,
 							set = setGem,
 							order = 2,
 						},
-						blue = {
+						sumGemBlue = {
 							type = 'input',
 							name = L["Blue Socket"],
 							desc = L["ItemID or Link of the gem you would like to auto fill"],
 							usage = L["<ItemID|Link>"],
-							passValue = "sumGemBlue",
 							get = getGem,
 							set = setGem,
 							order = 3,
 						},
-						meta = {
+						sumGemMeta = {
 							type = 'input',
 							name = L["Meta Socket"],
 							desc = L["ItemID or Link of the gem you would like to auto fill"],
 							usage = L["<ItemID|Link>"],
-							passValue = "sumGemMeta",
 							get = getGem,
 							set = setGem,
 							order = 4,
@@ -1298,28 +1193,25 @@ local tpLocale
 if TankPoints and (tonumber(strsub(TankPoints.version, 1, 3)) >= 2.6) then
 	tpSupport = true
 	tpLocale = LibStub("AceLocale-3.0"):GetLocale("TankPoints", true)
-	options.args.sum.args.tank.args.tp = {
+	options.args.sum.args.tank.args.sumTankPoints = {
 		type = 'toggle',
 		name = L["Sum TankPoints"],
 		desc = L["TankPoints <- Health, Total Reduction"],
-		passValue = "sumTankPoints",
 		get = getProfileOption,
 		set = setProfileOptionAndClearCache,
 	}
-	options.args.sum.args.tank.args.tr = {
+	options.args.sum.args.tank.args.sumTotalReduction = {
 		type = 'toggle',
 		name = L["Sum Total Reduction"],
 		desc = L["Total Reduction <- Armor, Dodge, Parry, Block, Block Value, Defense, Resilience, MobMiss, MobCrit, MobCrush, DamageTakenMods"],
-		passValue = "sumTotalReduction",
 		get = getProfileOption,
 		set = setProfileOptionAndClearCache,
 	}
 	--[[
-	options.args.sum.args.tank.args.avoid = {
+	options.args.sum.args.tank.args.sumAvoidance = {
 		type = 'toggle',
 		name = L["Sum Avoidance"],
 		desc = L["Avoidance <- Dodge, Parry, MobMiss"],
-		passValue = "sumAvoidance",
 		get = getProfileOption,
 		set = setProfileOptionAndClearCache,
 	}
@@ -1349,35 +1241,31 @@ if class == "DRUID" then
 	defaults.profile.showHealingFromInt = true
 	defaults.profile.showMP5FromInt = true -- Dreamstate (Rank 3) - 1,17
 	defaults.profile.showMP5FromSpi = true
-	options.args.stat.args.agi.args.heal = { -- Nurturing Instinct (Rank 2) - 2,14
+	options.args.stat.args.agi.args.showHealingFromAgi = { -- Nurturing Instinct (Rank 2) - 2,14
 		type = 'toggle',
 		name = L["Show Healing"].." ("..tostring(GetSpellInfo(47180) or "nil")..")",						-- ["Nurturing Instinct"]
 		desc = L["Show Healing from Agility"].." ("..tostring(GetSpellInfo(47180) or "nil")..")",			-- ["Nurturing Instinct"]
-		passValue = "showHealingFromAgi",
 		get = getProfileOption,
 		set = setProfileOptionAndClearCache,
 	}
-	options.args.stat.args.int.args.dmg = { -- Lunar Guidance (Rank 3) - 1,12
+	options.args.stat.args.int.args.showSpellDmgFromInt = { -- Lunar Guidance (Rank 3) - 1,12
 		type = 'toggle',
 		name = L["Show Spell Damage"].." ("..tostring(GetSpellInfo(33591) or "nil")..")",					-- ["Lunar Guidance"]
 		desc = L["Show Spell Damage from Intellect"].." ("..tostring(GetSpellInfo(33591) or "nil")..")",	-- ["Lunar Guidance"]
-		passValue = "showSpellDmgFromInt",
 		get = getProfileOption,
 		set = setProfileOptionAndClearCache,
 	}
-	options.args.stat.args.int.args.heal = { -- Lunar Guidance (Rank 3) - 1,12
+	options.args.stat.args.int.args.showHealingFromInt = { -- Lunar Guidance (Rank 3) - 1,12
 		type = 'toggle',
 		name = L["Show Healing"].." ("..tostring(GetSpellInfo(33591) or "nil")..")",
 		desc = L["Show Healing from Intellect"].." ("..tostring(GetSpellInfo(33591) or "nil")..")",
-		passValue = "showHealingFromInt",
 		get = getProfileOption,
 		set = setProfileOptionAndClearCache,
 	}
-	options.args.stat.args.spi.args.mp5 = { -- Intensity (Rank 3) - 3,6
+	options.args.stat.args.spi.args.showMP5FromSpi = { -- Intensity (Rank 3) - 3,6
 		type = 'toggle',
 		name = L["Show Mana Regen"].." ("..tostring(GetSpellInfo(35359) or "nil")..")",
 		desc = L["Show Mana Regen while casting from Spirit"].." ("..tostring(GetSpellInfo(35359) or "nil")..")",
-		passValue = "showMP5FromSpi",
 		get = getProfileOption,
 		set = setProfileOptionAndClearCache,
 	}
@@ -1395,11 +1283,10 @@ if class == "HUNTER" then
 	defaults.profile.showDodgeFromAgi = false
 	defaults.profile.showSpellCritFromInt = false
 	defaults.profile.showRAPFromInt = true
-	options.args.stat.args.int.args.rap = { -- Careful Aim
+	options.args.stat.args.int.args.showRAPFromInt = { -- Careful Aim
 		type = 'toggle',
 		name = L["Show Ranged Attack Power"].." ("..tostring(GetSpellInfo(34484) or "nil")..")",
 		desc = L["Show Ranged Attack Power from Intellect"].." ("..tostring(GetSpellInfo(34484) or "nil")..")",
-		passValue = "showRAPFromInt",
 		get = getProfileOption,
 		set = setProfileOptionAndClearCache,
 	}
@@ -1419,27 +1306,24 @@ if class == "MAGE" then
 	defaults.profile.showArmorFromInt = true
 	defaults.profile.showMP5FromInt = true
 	defaults.profile.showMP5FromSpi = true
-	options.args.stat.args.int.args.dmg = { -- Mind Mastery (Rank 5) - 1,22
+	options.args.stat.args.int.args.showSpellDmgFromInt = { -- Mind Mastery (Rank 5) - 1,22
 		type = 'toggle',
 		name = L["Show Spell Damage"].." ("..tostring(GetSpellInfo(31588) or "nil")..")",
 		desc = L["Show Spell Damage from Intellect"].." ("..tostring(GetSpellInfo(31588) or "nil")..")",
-		passValue = "showSpellDmgFromInt",
 		get = getProfileOption,
 		set = setProfileOptionAndClearCache,
 	}
-	options.args.stat.args.int.args.armor = { -- Arcane Fortitude - 1,9
+	options.args.stat.args.int.args.showArmorFromInt = { -- Arcane Fortitude - 1,9
 		type = 'toggle',
 		name = L["Show Armor"].." ("..tostring(GetSpellInfo(28574) or "nil")..")",
 		desc = L["Show Armor from Intellect"].." ("..tostring(GetSpellInfo(28574) or "nil")..")",
-		passValue = "showArmorFromInt",
 		get = getProfileOption,
 		set = setProfileOptionAndClearCache,
 	}
-	options.args.stat.args.spi.args.mp5 = { -- Arcane Meditation (Rank 3) - 1,12
+	options.args.stat.args.spi.args.showMP5FromSpi = { -- Arcane Meditation (Rank 3) - 1,12
 		type = 'toggle',
 		name = L["Show Mana Regen"].." ("..tostring(GetSpellInfo(18464) or "nil")..")",
 		desc = L["Show Mana Regen while casting from Spirit"].." ("..tostring(GetSpellInfo(18464) or "nil")..")",
-		passValue = "showMP5FromSpi",
 		get = getProfileOption,
 		set = setProfileOptionAndClearCache,
 	}
@@ -1460,19 +1344,17 @@ if class == "PALADIN" then
 	defaults.profile.sumMP5 = true
 	defaults.profile.showSpellDmgFromInt = true
 	defaults.profile.showHealingFromInt = true
-	options.args.stat.args.int.args.dmg = { -- Holy Guidance (Rank 5) - 1,19
+	options.args.stat.args.int.args.showSpellDmgFromInt = { -- Holy Guidance (Rank 5) - 1,19
 		type = 'toggle',
 		name = L["Show Spell Damage"].." ("..tostring(GetSpellInfo(31841) or "nil")..")",
 		desc = L["Show Spell Damage from Intellect"].." ("..tostring(GetSpellInfo(31841) or "nil")..")",
-		passValue = "showSpellDmgFromInt",
 		get = getProfileOption,
 		set = setProfileOptionAndClearCache,
 	}
-	options.args.stat.args.int.args.heal = { -- Holy Guidance (Rank 5) - 1,19
+	options.args.stat.args.int.args.showHealingFromInt = { -- Holy Guidance (Rank 5) - 1,19
 		type = 'toggle',
 		name = L["Show Healing"].." ("..tostring(GetSpellInfo(31841) or "nil")..")",
 		desc = L["Show Healing from Intellect"].." ("..tostring(GetSpellInfo(31841) or "nil")..")",
-		passValue = "showHealingFromInt",
 		get = getProfileOption,
 		set = setProfileOptionAndClearCache,
 	}
@@ -1493,27 +1375,24 @@ if class == "PRIEST" then
 	defaults.profile.showMP5FromSpi = true
 	defaults.profile.showSpellDmgFromSpi = true
 	defaults.profile.showHealingFromSpi = true
-	options.args.stat.args.spi.args.mp5 = { -- Meditation (Rank 3) - 1,9
+	options.args.stat.args.spi.args.showMP5FromSpi = { -- Meditation (Rank 3) - 1,9
 		type = 'toggle',
 		name = L["Show Mana Regen"].." ("..tostring(GetSpellInfo(38346) or "nil")..")",
 		desc = L["Show Mana Regen while casting from Spirit"].." ("..tostring(GetSpellInfo(38346) or "nil")..")",
-		passValue = "showMP5FromSpi",
 		get = getProfileOption,
 		set = setProfileOptionAndClearCache,
 	}
-	options.args.stat.args.spi.args.dmg = { -- Spiritual Guidance (Rank 5) - 2,14, Improved Divine Spirit (Rank 2) - 1,15 - Buff
+	options.args.stat.args.spi.args.showSpellDmgFromSpi = { -- Spiritual Guidance (Rank 5) - 2,14, Improved Divine Spirit (Rank 2) - 1,15 - Buff
 		type = 'toggle',
 		name = L["Show Spell Damage"].." ("..tostring(GetSpellInfo(15031) or "nil")..", "..tostring(GetSpellInfo(33182) or "nil")..")",
 		desc = L["Show Spell Damage from Spirit"].." ("..tostring(GetSpellInfo(15031) or "nil")..", "..tostring(GetSpellInfo(33182) or "nil")..")",
-		passValue = "showSpellDmgFromSpi",
 		get = getProfileOption,
 		set = setProfileOptionAndClearCache,
 	}
-	options.args.stat.args.spi.args.heal = { -- Spiritual Guidance (Rank 5) - 2,14, Improved Divine Spirit (Rank 2) - 1,15 - Buff
+	options.args.stat.args.spi.args.showHealingFromSpi = { -- Spiritual Guidance (Rank 5) - 2,14, Improved Divine Spirit (Rank 2) - 1,15 - Buff
 		type = 'toggle',
 		name = L["Show Healing"].." ("..tostring(GetSpellInfo(15031) or "nil")..", "..tostring(GetSpellInfo(33182) or "nil")..")",
 		desc = L["Show Healing from Spirit"].." ("..tostring(GetSpellInfo(15031) or "nil")..", "..tostring(GetSpellInfo(33182) or "nil")..")",
-		passValue = "showHealingFromSpi",
 		get = getProfileOption,
 		set = setProfileOptionAndClearCache,
 	}
@@ -1543,35 +1422,31 @@ if class == "SHAMAN" then
 	defaults.profile.showSpellDmgFromInt = true
 	defaults.profile.showHealingFromInt = true
 	defaults.profile.showMP5FromInt = true
-	options.args.stat.args.str.args.dmg = { -- Mental Quickness (Rank 3) - 2,15
+	options.args.stat.args.str.args.showSpellDmgFromStr = { -- Mental Quickness (Rank 3) - 2,15
 		type = 'toggle',
 		name = L["Show Spell Damage"].." ("..tostring(GetSpellInfo(30814) or "nil")..")",
 		desc = L["Show Spell Damage from Strength"].." ("..tostring(GetSpellInfo(30814) or "nil")..")",
-		passValue = "showSpellDmgFromStr",
 		get = getProfileOption,
 		set = setProfileOptionAndClearCache,
 	}
-	options.args.stat.args.str.args.heal = { -- Mental Quickness (Rank 3) - 2,15
+	options.args.stat.args.str.args.showHealingFromStr = { -- Mental Quickness (Rank 3) - 2,15
 		type = 'toggle',
 		name = L["Show Healing"].." ("..tostring(GetSpellInfo(30814) or "nil")..")",
 		desc = L["Show Healing from Strength"].." ("..tostring(GetSpellInfo(30814) or "nil")..")",
-		passValue = "showHealingFromStr",
 		get = getProfileOption,
 		set = setProfileOptionAndClearCache,
 	}
-	options.args.stat.args.int.args.dmg = { -- Nature's Blessing (Rank 3) - 3,18
+	options.args.stat.args.int.args.showSpellDmgFromInt = { -- Nature's Blessing (Rank 3) - 3,18
 		type = 'toggle',
 		name = L["Show Spell Damage"].." ("..tostring(GetSpellInfo(30869) or "nil")..")",
 		desc = L["Show Spell Damage from Intellect"].." ("..tostring(GetSpellInfo(30869) or "nil")..")",
-		passValue = "showSpellDmgFromInt",
 		get = getProfileOption,
 		set = setProfileOptionAndClearCache,
 	}
-	options.args.stat.args.int.args.heal = { -- Nature's Blessing (Rank 3) - 3,18
+	options.args.stat.args.int.args.showHealingFromInt = { -- Nature's Blessing (Rank 3) - 3,18
 		type = 'toggle',
 		name = L["Show Healing"].." ("..tostring(GetSpellInfo(30869) or "nil")..")",
 		desc = L["Show Healing from Intellect"].." ("..tostring(GetSpellInfo(30869) or "nil")..")",
-		passValue = "showHealingFromInt",
 		get = getProfileOption,
 		set = setProfileOptionAndClearCache,
 	}
@@ -1588,19 +1463,17 @@ if class == "WARLOCK" then
 	defaults.profile.showDodgeFromAgi = false
 	defaults.profile.showSpellDmgFromSta = true
 	defaults.profile.showSpellDmgFromInt = true
-	options.args.stat.args.sta.args.dmg = { -- Demonic Knowledge (Rank 3) - 2,20 - UnitExists("pet")
+	options.args.stat.args.sta.args.showSpellDmgFromSta = { -- Demonic Knowledge (Rank 3) - 2,20 - UnitExists("pet")
 		type = 'toggle',
 		name = L["Show Spell Damage"].." ("..tostring(GetSpellInfo(35693) or "nil")..")",
 		desc = L["Show Spell Damage from Stamina"].." ("..tostring(GetSpellInfo(35693) or "nil")..")",
-		passValue = "showSpellDmgFromSta",
 		get = getProfileOption,
 		set = setProfileOptionAndClearCache,
 	}
-	options.args.stat.args.int.args.dmg = { -- Demonic Knowledge (Rank 3) - 2,20 - UnitExists("pet")
+	options.args.stat.args.int.args.showSpellDmgFromInt = { -- Demonic Knowledge (Rank 3) - 2,20 - UnitExists("pet")
 		type = 'toggle',
 		name = L["Show Spell Damage"].." ("..tostring(GetSpellInfo(35693) or "nil")..")",
 		desc = L["Show Spell Damage from Intellect"].." ("..tostring(GetSpellInfo(35693) or "nil")..")",
-		passValue = "showSpellDmgFromInt",
 		get = getProfileOption,
 		set = setProfileOptionAndClearCache,
 	}
