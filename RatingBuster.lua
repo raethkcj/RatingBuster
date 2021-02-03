@@ -1539,8 +1539,10 @@ function RatingBuster:OnInitialize()
 
 	profileDB = self.db.profile
 
-	AceConfig = LibStub("AceConfig-3.0")
+	local AceConfig = LibStub("AceConfig-3.0")
 	AceConfig:RegisterOptionsTable("RatingBuster", options, {"rb", "ratingbuster"})
+
+	LibStub("AceConfigDialog-3.0"):AddToBlizOptions("RatingBuster", "RatingBuster")
 end
 
 -- OnEnable() called at PLAYER_LOGIN
