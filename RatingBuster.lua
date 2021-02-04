@@ -2314,6 +2314,7 @@ local summaryCalcData = {
 				end
 			end
 			return s + StatLogic:GetEffectFromRating((sum["MELEE_HIT_RATING"] or 0), "MELEE_HIT_RATING", calcLevel)
+			+ (sum["MELEE_HIT"] or 0)
 		end,
 		ispercent = true,
 	},
@@ -2336,7 +2337,8 @@ local summaryCalcData = {
 				end
 			end
 			return s + StatLogic:GetEffectFromRating((sum["MELEE_CRIT_RATING"] or 0), "MELEE_CRIT_RATING", calcLevel)
-					 + StatLogic:GetCritFromAgi(sum["AGI"], class, calcLevel)
+			+ StatLogic:GetCritFromAgi(sum["AGI"], class, calcLevel)
+			+ (sum["MELEE_CRIT"] or 0)
 		end,
 		ispercent = true,
 	},
@@ -2512,7 +2514,9 @@ local summaryCalcData = {
 	{
 		option = "sumSpellHit",
 		name = "SPELL_HIT",
-		func = function(sum) return StatLogic:GetEffectFromRating((sum["SPELL_HIT_RATING"] or 0), "SPELL_HIT_RATING", calcLevel) end,
+		func = function(sum) return StatLogic:GetEffectFromRating((sum["SPELL_HIT_RATING"] or 0), "SPELL_HIT_RATING", calcLevel)
+			+ (sum["SPELL_HIT"] or 0)
+		end,
 		ispercent = true,
 	},
 	-- Spell Hit Rating - SPELL_HIT_RATING
@@ -2526,7 +2530,9 @@ local summaryCalcData = {
 		option = "sumSpellCrit",
 		name = "SPELL_CRIT",
 		func = function(sum) return StatLogic:GetEffectFromRating((sum["SPELL_CRIT_RATING"] or 0), "SPELL_CRIT_RATING", calcLevel)
-			 + StatLogic:GetSpellCritFromInt(sum["INT"], class, calcLevel) end,
+			 + StatLogic:GetSpellCritFromInt(sum["INT"], class, calcLevel)
+			 + (sum["SPELL_CRIT"] or 0)
+		end,
 		ispercent = true,
 	},
 	-- Spell Crit Rating - SPELL_CRIT_RATING

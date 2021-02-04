@@ -392,11 +392,13 @@ L["StatIDLookup"] = {
 	["Increases your block rating"] = {"BLOCK_RATING",},
 	["Increases your shield block rating"] = {"BLOCK_RATING",},
 
+	["Improves your chance to hit%"] = {"MELEE_HIT"},
 	["Hit Rating"] = {"MELEE_HIT_RATING",},
 	["Improves hit rating"] = {"MELEE_HIT_RATING",}, -- ITEM_MOD_HIT_RATING
 	["Improves melee hit rating"] = {"MELEE_HIT_RATING",}, -- ITEM_MOD_HIT_MELEE_RATING
 	["Increases your hit rating"] = {"MELEE_HIT_RATING",},
 	["Spell Hit"] = {"SPELL_HIT_RATING",}, -- Presence of Sight +18 Healing and Spell Damage/+8 Spell Hit http://wow.allakhazam.com/db/spell.html?wspell=24164
+	["Improves your chance to hit with spells%"] = {"SPELL_HIT"},
 	["Spell Hit Rating"] = {"SPELL_HIT_RATING",},
 	["Improves spell hit rating"] = {"SPELL_HIT_RATING",}, -- ITEM_MOD_HIT_SPELL_RATING
 	["Increases your spell hit rating"] = {"SPELL_HIT_RATING",},
@@ -404,6 +406,7 @@ L["StatIDLookup"] = {
 	["Improves ranged hit rating"] = {"RANGED_HIT_RATING",}, -- ITEM_MOD_HIT_RANGED_RATING
 	["Increases your ranged hit rating"] = {"RANGED_HIT_RATING",},
 
+	["Improves your chance to get a critical strike by%"] = {"MELEE_CRIT"},
 	["Crit Rating"] = {"MELEE_CRIT_RATING",},
 	["Critical Rating"] = {"MELEE_CRIT_RATING",},
 	["Critical Strike Rating"] = {"MELEE_CRIT_RATING",},
@@ -411,6 +414,7 @@ L["StatIDLookup"] = {
 	["Increases your critical strike rating"] = {"MELEE_CRIT_RATING",},
 	["Improves critical strike rating"] = {"MELEE_CRIT_RATING",},
 	["Improves melee critical strike rating"] = {"MELEE_CRIT_RATING",}, -- [Cloak of Darkness] ID:33122
+	["Improves your chance to get a critical strike with spells%"] = {"SPELL_CRIT"},
 	["Spell Critical Strike Rating"] = {"SPELL_CRIT_RATING",},
 	["Spell Critical strike rating"] = {"SPELL_CRIT_RATING",},
 	["Spell Critical Rating"] = {"SPELL_CRIT_RATING",},
