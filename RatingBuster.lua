@@ -18,7 +18,7 @@ local BI = LibStub("LibBabble-Inventory-3.0"):GetLookupTable()
 -- AceAddon Setup --
 --------------------
 -- AceAddon Initialization
-RatingBuster = LibStub("AceAddon-3.0"):NewAddon("RatingBuster", "AceConsole-3.0", "AceEvent-3.0")
+RatingBuster = LibStub("AceAddon-3.0"):NewAddon("RatingBuster", "AceConsole-3.0", "AceEvent-3.0", "AceBucket-3.0")
 RatingBuster.title = "Rating Buster"
 RatingBuster.version = "1.3.8 (r"..gsub("$Revision: 78903 $", "(%d+)", "%1")..")"
 RatingBuster.date = gsub("$Date: 2008-07-22 15:35:19 +0800 (星期二, 22 七月 2008) $", "^.-(%d%d%d%d%-%d%d%-%d%d).-$", "%1")
@@ -1555,7 +1555,7 @@ function RatingBuster:OnEnable()
 	self:RegisterEvent("PLAYER_LEVEL_UP")
 	-- Events that require cache clearing
 	self:RegisterEvent("CHARACTER_POINTS_CHANGED", clearCache) -- talent point changed
-	self:RegisterEvent("UNIT_AURA") -- fire at most once every 1 second
+	self:RegisterBucketEvent("UNIT_AURA", 1) -- fire at most once every 1 second
 end
 
 function RatingBuster:OnDisable()
@@ -1571,10 +1571,11 @@ function RatingBuster:PLAYER_LEVEL_UP(event, newlevel)
 end
 
 -- event = UNIT_AURA
--- arg1 = the UnitID of the entity
-function RatingBuster:UNIT_AURA(unit)
-	if unit ~= "player" then return end
-	clearCache()
+-- arg1 = List of UnitIDs in the AceBucket interval
+function RatingBuster:UNIT_AURA(units)
+	if units.player then
+		clearCache()
+	end
 end
 
 --------------------------
