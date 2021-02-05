@@ -5,7 +5,7 @@ Translated by:
 - Kuja
 ]]
 
-local L = AceLibrary("AceLocale-3.0"):new("RatingBuster")
+local L = LibStub("AceLocale-3.0"):NewLocale("RatingBuster", "deDE")
 ----
 -- This file is coded in UTF-8
 -- If you don't have a editor that can save in UTF-8, I recommend Ultraedit

@@ -7,7 +7,6 @@ LastUpdate: $Date: 2008-03-30 13:22:17 +0800 (星期日, 30 三月 2008) $
 Website:
 Documentation:
 SVN: $URL: http://svn.wowace.com/wowace/trunk/TipHookerLib/TipHooker-1.0/TipHooker-1.0.lua $
-Dependencies: AceLibrary
 License: LGPL v2.1
 ]]
 
