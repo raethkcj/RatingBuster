@@ -1,0 +1,326 @@
+------------------------------------------------------------------------
+r355 | mikk | 2012-04-25 19:24:09 +0000 (Wed, 25 Apr 2012) | 1 line
+Changed paths:
+   A /tags/1.6.7 (from /trunk:354)
+
+Tagging as 1.6.7 to pull in new LibStatLogic with fixed gem scanner (would error on settings gems if an equipment slot was empty)
+------------------------------------------------------------------------
+r354 | mikk | 2012-04-23 21:23:47 +0000 (Mon, 23 Apr 2012) | 1 line
+Changed paths:
+   M /trunk/RatingBuster.lua
+
+- Figure out max level automagically so it doesn't get forgotten again (using MAX_PLAYER_LEVEL_TABLE)
+------------------------------------------------------------------------
+r353 | mikk | 2012-04-23 01:10:36 +0000 (Mon, 23 Apr 2012) | 1 line
+Changed paths:
+   M /trunk/RatingBuster.lua
+
+- max level is 85, not 80
+------------------------------------------------------------------------
+r351 | mikk | 2012-04-22 22:10:39 +0000 (Sun, 22 Apr 2012) | 4 lines
+Changed paths:
+   M /trunk/RatingBuster.toc
+
+- TOC 40300
+Also pulling in new LibStatLogic-1.2:
+- Will now pick up new gems in 4.3 (belatedly)
+- Added code to always understand gems that already exist in your gear regardless of addon updated-ness
+------------------------------------------------------------------------
+r350 | lightsfuryuther | 2012-01-10 00:39:00 +0000 (Tue, 10 Jan 2012) | 2 lines
+Changed paths:
+   M /trunk/RatingBuster-Locale-enUS.lua
+   M /trunk/RatingBuster.lua
+
+- Added an option to disable integration with the Reforging UI
+- Added English localization strings for the new configuration entries. Other locales will need to be updated.
+------------------------------------------------------------------------
+1.3.8
+- NEW: Support for negative stats
+- Update for 2.4.3: Parry Rating, Defense Rating, and Block Rating: Low-level players will now convert these ratings into their corresponding defensive stats at the same rate as level 34 players
+- Fixed: Better JewelTips support
+- Fixed: Druid - Nurturing Instinct (Str->Agi)
+- Fixed: Mage - Arcane Fortitude (50% -> 100% Armor from Int)
+- Optimized library usage
+- Updated localizations 
+1.3.7a
+- Fixed: Loading error
+1.3.7
+- Changed: Will only show stat breakdown options your class can use
+- Changed: Class specific stat breakdown options will show the talents required
+- Added: Stat breakdown support for Mental Quickness (Shaman)
+- Fixed: Support for new Demonic Knowledge(Warlock) and Nurturing Instinct(Druid)
+- Fixed: Library errors
+1.3.6
+- Updated toc to 20400
+- Fixed: Able to clear default gem settings
+- Fixed: Deadly Fire Opal now shows rating conversion
+1.3.5
+- NEW: Default gems for empty sockets! Set the gems to use for each socket using /rb sum gem
+- In 2.4.0: Spirit-Based Mana Regeneration: This system has been adjusted so that as your intellect rises, you will regenerate more mana per point of spirit.
+- Fixed: Will now work with [Insightful Earthstorm Diamond]
+- Fixed: Profiles should now work
+- Changed: Use "/rb win" to open the options window instead of "/rb optionswin"
+1.3.1
+- Fixed: Spell Haste summary works now
+- Fixed: Doesn't match percentages anymore (ex: Increases healing by up to 10% of your total Intellect)
+- Fixed: Error when sorting StatSummary alphabetically
+- Updated localizations: Taiwan, French, China, German, Spanish
+1.3.0
+- Updated: TOC to 20300
+- Updated localizations: Taiwan, Korean, China, German
+- Fixed: Socketed gem stat text color after percentage conversion is no longer yellow
+- Fixed: "+X healing and +X spell damage" type gems and enchants now gives correct healing summary
+- NEW: Categorized StatSummery Options in to Basic, Physical damage, Spell damage and healing, Tank
+- NEW: StatSummary is sorted(basic, physical damage, spell damage and healing, tank in that order)
+- NEW: Option to sort StatSummary alphabetically instead of the above
+- NEW: Option to include block chance in Avoidance summary
+- StatSummary Added:
+	Resilience
+	Haste
+	Haste Rating
+	Spell Haste
+	Spell Haste Rating
+	Penetration
+	IgnoreArmor
+	HitRating
+	CritRating
+	SpellHitRating
+	SpellCritRating
+	DodgeRating
+	ParryRating
+	BlockRating
+1.2.8
+- Fixed: +X Spell Power gives healing too
+- In 2.3.0: Support for Spell Damage bonus in +Healing stats
+1.2.7
+- NEW: Option to Show detail text for Resilience and Expertise conversions
+- NEW: Option to Show Avoidance Summary <- Dodge, Parry, MobMiss
+- NEW: TankPoints support, if you have TankPoints loaded you get 2 new summary options: TankPoints and Total Reduction
+- In 2.3.0: Added Expertise stat support
+- In 2.3.0: Heart of the Wild (Druid Feral Combat talent) provides 2/4/6/8/10% bonus attack power in Cat form instead
+- In 2.3.0: Intensity (Druid Restoration talent) increased to 10/20/30% mana regeneration
+- In 2.3.0: Arcane Meditation (Mage Arcane talent) increased to 10/20/30% mana regeneration
+- In 2.3.0: Meditation (Priest Discipline talent) increased to 10/20/30% mana regeneration
+- In 2.3.0: Weapon Expertise (Paladin Protection talent) renamed Combat Expertise, now increases expertise by 1/2/3/4/5 and total Stamina by 2/4/6/8/10%
+- In 2.3.0: Mental Quickness (Shaman Enhancement talent) now also increases spell damage and healing equal to 10/20/30% of your attack power
+- All 2.3.0 Changes will only take affect when using a 2.3.0 client.
+- Updated: German localization
+1.2.6
+- Fixed: Ranged AP Calculations
+1.2.5
+- Updated: toc to 20200
+- Fixed: Haste rating change in 2.2.0
+- Fixed: Hunter Survival Instincts talent support
+- Fixed: Armor multiplier no longer apply to Armor from enchants
+- NEW: Added China localization by iceburn(candykiss)
+- Updated: Taiwan localization
+- Updated: Korean localization by fenlis
+- Updated: German localization by Dleh
+- Code optimizations
+- Updated: Libs
+1.2.4
+- Fixed: Error when difftype is set to comp
+- Made Waterfall-1.0 optional
+1.2.3
+- NEW: You can now open the options window using /rb optionswin
+- Updated Taiwan localization
+- Updated Korean localizations by fenlis
+1.2.2
+- New option to hide the StatSummary title
+- New option to hide the sigma icon in the StatSummary title
+- New option to add a empty line after the StatSummary
+- Updated Taiwan localization
+- Other localizations needs to be updated
+1.2.1
+- Updated Taiwan localization
+- Improved stat scanning
+- Updated German localization
+1.2.0
+- Updated French localization by Tixu and Silaor, now supports StatSummary
+- Fixed a bug causing StatSummary not showing correctly for languages other then English
+- Fixed Parry/SpellHaste rating conversions
+- Updated libs
+1.1.9
+- Pre updated the TOC to 2.1.0
+- Improved the Sigma icon
+- Updated readme file
+1.1.8
+- StatSummary: "Mana Regen while Not casting" now shows the correct value
+- StatSummary: "Health Regen while Out of Combat" now shows the correct value
+- StatSummary: fixed lines with "and" counting stats twice
+- Added support for Gnome +5% Intellect Racial
+- Added support for Human +10% Spirit Racial
+- Fixed StatLogic line 6285 strfind error (thanks to everyone that helped)
+- Updated Korean localizations by fenlis
+1.1.7
+- Minor bug fixes
+- Updated Taiwan localizations by mcc
+- Updated Korean localizations by fenlis
+- Updated French localizations by renchap
+1.1.6
+- Stat Summary now has the option to show resistances
+- Fixed Feral Attack Power name
+- /rb sum ignore unused now shows leather for hunters
+- Fixed an error when mousing over items that goes into a slot you currently have no equipment in when you have the ignore enchant or gem option on
+1.1.5
+- Fixed MP5NC, HP5OC summary
+- Changed default diff style from comp to main, since not everyone uses a compare addon
+- Attempt to fix some more funny bugs
+1.1.4
+- Option to display Weapon Max Damage in summary
+- Improved option for ignoring enchants and gems, they are now 2 different options
+- Fixed some classes not showing summary for cloaks
+- Fixed incorrect shield diffs
+- Improved diff style code should fix funny errors
+1.1.3
+- Fixed EQCompare, tekKompare support
+- Updated Taiwan localizations
+1.1.2
+- Option to Display diff values in the main tooltip or only in compare tooltips for readability
+- Option to Ignore enchants and gems on items when calculating the stat summary
+- /rb sum ignore unused now shows all armor types they are use for druids, paladins and shamans
+- Updated Taiwan localizations
+- Code clean up
+1.1.1
+- Option to Show stat summary only for highest level armor type and items you can use with uncommon quality and up
+- Option to Hide stat summary for equipped items
+- Option to Add a blank line before stat summary for readability
+- Mage, Warlock, Shaman now shows spellcrit as default summary instead of crit 
+- Updated Taiwan localizations
+- Minor bug fixes
+1.1.0
+- NEW: Stat Summary - Display the sum of stats of the item and/or the stat difference of the item and your equipped items
+- Choose the stats you really care about to be show in the summary
+- Composite stats are broken down and added into base stats, and supports talent/buff mods, Ex: "Spell Crit Chance" is calculated from "Spell Crit Rating" and "Intellect"
+- Option descriptions now show class names for class specific stat conversions
+- Added support for Aspect of the Viper
+- Option to hide rating conversions
+- Option to hide all base stat conversions
+- Option to further breakdown Defense into Crit Avoidance, Hit Avoidance, Dodge, Parry and Block
+- Option to further breakdown Weapon Skills into Crit, Hit, Dodge Neglect, Parry Neglect, Block Neglect
+- Fixed Taiwan and French localization errors
+- Fixed locale registering twice error
+- Fixed mp5 and hp5 calculations for Shaman, Druid, Mage, Warlock
+- Agi -> Dodge only works for your current level, for best results turn off /rb usereqlv, and set /rb level 0
+1.0.0
+- Support for talents and buffs that modify your stats
+- Supports the following stat conversions
+- Str -> AP, Block, Healing(Talent)
+- Agi -> Crit, Dodge, AP, RAP, Armor
+- Sta -> Health, SpellDmg(Talent)
+- Int -> Mana, SpellCrit, SpellDmg(Talent), Healing(Talent), MP5(Talent), RAP(Talent), Armor(Talent)
+- Spi -> MP5(Talent), MP5NC, HP5, SpellDmg(Talent), Healing(Talent)
+- If you need a GUI config window for RatingBuster, use Niagara (Download at: http://files.wowace.com/)
+0.9.5
+- Fixed library error
+0.9.4
+- Added Taiwan localizations by CuteMiyu
+0.9.3
+- Updated Korean localization by kcgcom
+0.9.2
+- Code clean up
+- Finally removed Compost
+0.9.1a
+- Really fixed locales
+0.9.1
+- Fixed locales
+- Added Korean localization by kcgcom
+0.9.0
+- Optimized parsing algorithm to use fewer resources
+- showCritFromAgi and showSpellCritFromInt will now correctly save as per class data
+- /rb level will now save
+- No longer scans buffs
+- Code clean up
+0.8.6
+- tekKompare support
+- Sniff support
+0.8.5
+- AtlasLoot support
+- ItemMagic support
+- Fixed line 785 error
+0.8.4
+- Spell Crit from Intellect defaults off for Hunters too
+0.8.3
+- Fixed color picker bug
+- Updated French localization (Tixu)
+0.8.2
+- Fixed % signs showing before some periods bug
+0.8.1
+- Option to enable colored text (/rb color)
+- Fixed Defense showing the % sign bug
+- Fixed Haste Rating conversion
+- Updated French localization (Tixu)
+0.8.0
+- Option to show Crit from Agility, Ex: "+15 Agility (+0.72% Crit)"
+- Option to show Spell Crit from Intellect, Ex: "+23 Intellect (+0.35% Spell Crit)"
+- Support for "grant you xx stat" type pattern, ex: Quel'Serrar, Assassination Armor set
+- "+14 (1.21%) Rating" type strings changed to "+14 Rating (+1.21%)"
+- Recoded tooltip scanner is now more easily extendable and has support for multiple separators for better accuracy.
+0.7.6
+- The amount of haste granted by a point of haste rating has been increased by 50% (Patch 2.0.7)
+- Fixed Mutltitips support
+- Minor code tweaks
+0.7.5
+- Fixed double conversion bug
+- Fixed GetItem error
+- Support for Hit Avoidance Rating (assuming its the same as melee Hit Rating)
+0.7.1
+- Fixed a hooking bug
+0.7.0
+- Now uses the OnTooltipSetItem script handler instead of hooking all the SetX methods,
+  this combined with the new Tooltip:GetItem() method should also fix problems where
+  RatingBuster doesn't always work, like at the mailbox.
+0.6.6
+- MultiTips support
+0.6.5
+- LinkWrangler support
+0.6.4
+- Updated Libs
+0.6.3
+- Use required level defaults to true
+- Support for EQCompare
+- Changed toc to 20003 for TBC (It will show up as out-of-date until TBC goes live, enable loading out-of-date to load it)
+0.6.2
+- Added German localization by Runenstetter@Nathrezim.EU
+- Fixed French localization
+0.6.1
+- Added French localization by Tixu
+0.6
+- Added option to calculate using the required level if you are below the required level
+- Redesigned the tooltip scanner to be more locale friendly, should be easier to do translations now.
+0.5.1
+- Fixed line 457 error
+0.5
+- Improved ItemLevel and ItemID algorithm, will now work on most tooltips
+- Updated Libs
+0.4.3
+- Fixed line 499 error
+- Temporarily removed ItemLevel and ID support for Bagnon, working on a better implementation
+0.4.2
+- Fixed a rare error in line 487
+- Updated Libs
+0.4.1
+- Inspect frame support for ItemLevel and ItemID
+- Two-Handed skill ratings now works
+0.4
+- Bagnon support for ItemLevel and ItemID
+- Fixed some errors
+- Updated libs
+0.3.2
+- Fixed auction house bug
+0.3.1
+- Fixed keyring bug
+0.3
+- Works with enchant links
+- Works with keyring items
+0.2.1
+- Fixed AceConsole error
+0.2
+- Simplified the localization file for easier localization
+- Added keyword "spell crit"
+- Added Item Level, Item ID support for profession trainer items
+- Set Debugging to false
+0.1.1
+- Removed AceHook2.1 cause it was causing problems with other Ace2 addons
+0.1
+- Initial release
