@@ -1,44 +1,36 @@
-RatingBuster - A tool for item comparison
-
-************************
-** About RatingBuster **
-************************
+# RatingBuster
 
 RatingBuster started out as an addon that converts combat ratings in your tooltips into percentages, so that you have more meaningful information when comparing different items.
 
 The design aim of RatingBuster is to provide detailed, meaningful and customizable information about items so you can easily decide for yourself which item is better.
 
 
-**************
-** Features **
-**************
+## Features
 
-- Rating Conversion:
-  Converts combat ratings into percentages.
+Rating Conversion:
+  * Converts combat ratings into percentages.
 
-- Stat Breakdown:
-  Breakdown Strength, Agility, Stamina, Intellect and Spirit into base stats.
-  Supports talents, buffs and racials that give you extra bonuses.
-  Ex talent: Lunar Guidance - "Increases your spell damage and healing by 8%/16%/25% of your total Intellect."
-  Ex talent: Heart of the Wild - "Increases your Intellect by 4%/8%/12%/16%/20%. In addition, ......etc"
-  Ex: +13 Intellect (+234 Mana, +0.18% Spell Crit, +3.9 Dmg)
+Stat Breakdown:
+  * Breakdown Strength, Agility, Stamina, Intellect and Spirit into base stats.
+  * Supports talents, buffs and racials that give you extra bonuses.
+  * Ex talent: Lunar Guidance - "Increases your spell damage and healing by 8%/16%/25% of your total Intellect."
+  * Ex talent: Heart of the Wild - "Increases your Intellect by 4%/8%/12%/16%/20%. In addition, ......etc"
+  * Ex: +13 Intellect (+234 Mana, +0.18% Spell Crit, +3.9 Dmg)
 
-- Stat Summary:
-  Summarizes all the stats from the item itself, enchants and gems, converts them to base stats and displays the total value and/or difference from your current equipped item.
-  Ex: Crit Chance - Adds up agility and crit rating from the item, enchant and gem. Converts agility and crit rating to crit chance, and displays the total in a single value.
+Stat Summary:
+  * Summarizes all the stats from the item itself, enchants and gems, converts them to base stats and displays the total value and/or difference from your current equipped item.
+  * Ex: Crit Chance - Adds up agility and crit rating from the item, enchant and gem. Converts agility and crit rating to crit chance, and displays the total in a single value.
 
-- Item Level and Item ID:
-  Item Level is obtained from the WoW API, not a calculated value.
-  Item ID is useful for advanced users.
+Item Level and Item ID:
+  * Item Level is obtained from the WoW API, not a calculated value.
+  * Item ID is useful for advanced users.
 
-- Supports talents, buffs and racials that modify your stats for all classes.
+Supports talents, buffs and racials that modify your stats for all classes.
 
-- Fully customizable, decide what you need to see and what you don't want.
+Fully customizable, decide what you need to see and what you don't want.
 
 
-*************************************
-** Auto fill gems in empty sockets **
-*************************************
+## Auto fill gems in empty sockets
 1. You can set the default gems for each type of empty socket using "/rb sum gem <red|yellow|blue|meta> <ItemID|Link>" or using the options window.
 2. To specify the gem of your choice, you will need to give RatingBuster the ItemLink or the ItemID of the gem.
 3. ItemLink example: type "/rb sum gem blue " (last char is a space) and link the gem (from your bags, AH, ItemSync or whatever), then press <enter>.
@@ -53,9 +45,7 @@ Note4: Empty sockets filled by RatingBuster will keep the "Empty Socket Icon" so
 Note5: Gem text filled by RatingBuster will be shown in gray color to differentiate from real gems.
 
 
-**********************
-** Supported Addons **
-**********************
+## Supported Addons
 
 EquipCompare, EQCompare, tekKompare.
 LinkWrangler, MultiTips, Links.
@@ -64,9 +54,7 @@ AtlasLoot, ItemMagic, Sniff.
 will work with all bag mods too!
 
 
-********************
-** Options **
-********************
+## Options
 
 Type /rb or /ratingbuster
 
