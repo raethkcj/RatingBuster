@@ -155,7 +155,6 @@ local UnitLevel = UnitLevel
 local UnitStat = UnitStat
 local GetShapeshiftForm = GetShapeshiftForm
 local GetShapeshiftFormInfo = GetShapeshiftFormInfo
-local GetPlayerBuffName = GetPlayerBuffName
 local GetTalentInfo = GetTalentInfo
 wowBuildNo = select(2, GetBuildInfo()) -- need a global for loadstring
 local wowBuildNo = wowBuildNo
@@ -2739,7 +2738,7 @@ function StatLogic:GetStatMod(stat, school)
 			local ok = true
 			if school and not case[school] then ok = nil end
 			if ok and case.condition and not loadstring("return "..case.condition)() then ok = nil end
-			if ok and case.buff and not GetPlayerBuffName(case.buff) then ok = nil end
+			if ok and case.buff and not AuraUtil.FindAuraByName(case.buff, "player") then ok = nil end
 			if ok and case.stance and case.stance ~= GetStanceIcon() then ok = nil end
 			if ok then
 				local r, _
@@ -3150,7 +3149,7 @@ function StatLogic:GetAPPerAgi(class)
 		class = ClassNameToID[playerClass]
 	end
 	-- Check druid cat form
-	if (class == 9) and GetPlayerBuffName((GetSpellInfo(32356))) then		-- ["Cat Form"]
+	if (class == 9) and GetShapeshiftForm() == 2 then		-- ["Cat Form"]
 		return 1
 	end
 	return APPerAgi[class], "AP"
