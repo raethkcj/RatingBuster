@@ -1295,10 +1295,17 @@ function RatingBuster:OnInitialize()
 
 	profileDB = self.db.profile
 
-	local AceConfig = LibStub("AceConfig-3.0")
-	AceConfig:RegisterOptionsTable("RatingBuster", options, {"rb", "ratingbuster"})
-
+	LibStub("AceConfig-3.0"):RegisterOptionsTable("RatingBuster", options, {"rb", "ratingbuster"})
 	LibStub("AceConfigDialog-3.0"):AddToBlizOptions("RatingBuster", "RatingBuster")
+end
+
+SLASH_RATINGBUSTER1, SLASH_RATINGBUSTER2 = "/ratingbuster", "/rb"
+function SlashCmdList.RATINGBUSTER(input)
+  if not input or input:trim() == "" then
+    LibStub("AceConfigDialog-3.0"):Open("RatingBuster")
+  else
+    RatingBuster:HandleCommand("rb", "RatingBuster", input)
+  end
 end
 
 -- OnEnable() called at PLAYER_LOGIN
