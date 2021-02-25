@@ -24,12 +24,12 @@ embeds.xml
 ######################
 # Localization Files #
 ######################
-locales/RatingBuster-Locale-enUS.lua
-# locales/RatingBuster-Locale-zhCN.lua
-# locales/RatingBuster-Locale-zhTW.lua
-# locales/RatingBuster-Locale-deDE.lua
-# locales/RatingBuster-Locale-frFR.lua
-# locales/RatingBuster-Locale-koKR.lua
+locales/enUS.lua
+# locales/zhCN.lua
+# locales/zhTW.lua
+# locales/deDE.lua
+# locales/frFR.lua
+# locales/koKR.lua
 
 ########
 # Core #
