@@ -1902,6 +1902,8 @@ end
 local classArmorTypes = {
 	WARRIOR = {
 		[BI["Plate"]] = true,
+		[BI["Mail"]] = true,
+		[BI["Leather"]] = true,
 	},
 	PALADIN = {
 		[BI["Plate"]] = true,
