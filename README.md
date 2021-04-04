@@ -1,5 +1,7 @@
 # RatingBuster
 
+Originally written by Whitetooth (https://github.com/hotdogee)
+
 RatingBuster started out as an addon that converts combat ratings in your tooltips into percentages, so that you have more meaningful information when comparing different items.
 
 The design aim of RatingBuster is to provide detailed, meaningful and customizable information about items so you can easily decide for yourself which item is better.
