@@ -1,4 +1,4 @@
-﻿## Interface: 11306
+﻿## Interface: 11307
 ## Title: RatingBuster
 ## Notes: Item stat breakdown, analysis and comparing
 ## Notes-zhTW: 裝備數值解析與比較
@@ -10,26 +10,17 @@
 ## X-License: GPL v2
 ## X-Encoding: UTF-8
 
-#####################
-# Non-Ace Libraries #
-#####################
+#############
+# Libraries #
+#############
 UTF8\utf8data.lua
 UTF8\utf8.lua
-
-#################
-# Ace Libraries #
-#################
 embeds.xml
 
-######################
-# Localization Files #
-######################
-locales/enUS.lua
-# locales/zhCN.lua
-# locales/zhTW.lua
-# locales/deDE.lua
-# locales/frFR.lua
-# locales/koKR.lua
+################
+# Localization #
+################
+locales\locales.xml
 
 ########
 # Core #
