@@ -6,18 +6,16 @@
 <Script file="libs\AceLocale-3.0\AceLocale-3.0.lua"/>
 <!-- TipHooker: LibStub -->
 <Script file="libs\TipHooker-1.0\TipHooker-1.0.lua"/>
-<!-- AceOO: LibStub -->
-<Script file="libs\AceOO-2.0\AceOO-2.0.lua"/>
 <!-- Babble-Inventory: LibStub, AceLocale-3.0 -->
 <Include file="libs\LibBabble-Inventory-3.0\lib.xml"/>
-<!-- AceConsole: LibStub, AceOO -->
+<!-- AceConsole: LibStub -->
 <Script file="libs\AceConsole-3.0\AceConsole-3.0.lua"/>
-<!-- AceEvent: LibStub, AceOO -->
+<!-- AceEvent: LibStub -->
 <Script file="libs\AceEvent-3.0\AceEvent-3.0.lua"/>
 <Include file="libs\AceBucket-3.0\AceBucket-3.0.xml"/>
-<!-- AceDB: LibStub, AceOO, AceEvent -->
+<!-- AceDB: LibStub, AceEvent -->
 <Script file="libs\AceDB-3.0\AceDB-3.0.lua"/>
-<!-- AceAddon: LibStub, AceOO, AceEvent, AceConsole (optional) -->
+<!-- AceAddon: LibStub, AceEvent, AceConsole (optional) -->
 <Script file="libs\AceAddon-3.0\AceAddon-3.0.lua"/>
 <Script file="libs\AceConfig-3.0\AceConfig-3.0.lua"/>
 <!-- StatLogic: LibStub, AceLocale-3.0, LibBabble-Spell-3.0 -->
