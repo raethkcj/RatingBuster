@@ -9,6 +9,7 @@ Translated by:
 ]]
 
 local L = LibStub("AceLocale-3.0"):NewLocale("RatingBuster", "zhTW")
+if not L then return end
 ----
 -- This file is coded in UTF-8
 -- If you don't have a editor that can save in UTF-8, I recommend Ultraedit
@@ -58,10 +59,10 @@ L["Show detailed conversions text"] = "顯示詳細轉換文字"
 L["Show detailed text for Resiliance and Expertise conversions"] = "顯示韌性和熟練技能的詳細轉換文字"
 -- /rb rating def
 L["Defense breakdown"] = "分析防禦"
-L["Convert Defense into Crit Avoidance Hit Avoidance, Dodge, Parry and Block"] = "將防禦分為避免致命、避免命中、閃躲、招架和格擋",
+L["Convert Defense into Crit Avoidance Hit Avoidance, Dodge, Parry and Block"] = "將防禦分為避免致命、避免命中、閃躲、招架和格擋"
 -- /rb rating wpn
 L["Weapon Skill breakdown"] = "分析武器技能"
-L["Convert Weapon Skill into Crit Hit, Dodge Neglect, Parry Neglect and Block Neglect"] = "將武器技能分為致命、擊中、防止被閃躲、防止被招架和防止被格擋",
+L["Convert Weapon Skill into Crit Hit, Dodge Neglect, Parry Neglect and Block Neglect"] = "將武器技能分為致命、擊中、防止被閃躲、防止被招架和防止被格擋"
 -- /rb rating exp -- 2.3.0
 L["Expertise breakdown"] = "分析熟練技能"
 L["Convert Expertise into Dodge Neglect and Parry Neglect"] = "將熟練技能分為防止被閃躲、防止被招架"
@@ -217,10 +218,10 @@ L["Calculate stat diff"] = "計算統計差異"
 L["Calculate the stat difference for the item and equipped items"] = "計算物品和已裝備物品的統計差異"
 -- /rb sum sort
 L["Sort StatSummary alphabetically"] = "依字幕順序排列屬性統計"
-L["Enable to sort StatSummary alphabetically disable to sort according to stat type(basic, physical, spell, tank)"] = "開啟時依字幕順序排列，關閉時依屬性種類排列(基本、物理、魔法、坦克)",
+L["Enable to sort StatSummary alphabetically disable to sort according to stat type(basic, physical, spell, tank)"] = "開啟時依字幕順序排列，關閉時依屬性種類排列(基本、物理、魔法、坦克)"
 -- /rb sum avoidhasblock
 L["Include block chance in Avoidance summary"] = "傷害迴避包含格檔率"
-L["Enable to include block chance in Avoidance summary Disable for only dodge, parry, miss"] = "開啟時傷害迴避包含格檔率，關閉時有閃躲、招架、未擊中",
+L["Enable to include block chance in Avoidance summary Disable for only dodge, parry, miss"] = "開啟時傷害迴避包含格檔率，關閉時有閃躲、招架、未擊中"
 -- /rb sum basic
 L["Stat - Basic"] = "統計基本屬性"
 L["Choose basic stats for summary"] = "自訂基本屬性統計項目"
@@ -235,55 +236,55 @@ L["Stat - Tank"] = "統計坦克屬性"
 L["Choose tank stats for summary"] = "自訂坦克屬性統計項目"
 -- /rb sum stat hp
 L["Sum Health"] = "統計生命力"
-L["Health <- Health Stamina"] = "生命力 ← 生命力、耐力",
+L["Health <- Health Stamina"] = "生命力 ← 生命力、耐力"
 -- /rb sum stat mp
 L["Sum Mana"] = "統計法力"
-L["Mana <- Mana Intellect"] = "法力 ← 法力、智力",
+L["Mana <- Mana Intellect"] = "法力 ← 法力、智力"
 -- /rb sum stat ap
 L["Sum Attack Power"] = "統計攻擊強度"
-L["Attack Power <- Attack Power Strength, Agility"] = "攻擊強度 ← 攻擊強度、力量、敏捷",
+L["Attack Power <- Attack Power Strength, Agility"] = "攻擊強度 ← 攻擊強度、力量、敏捷"
 -- /rb sum stat rap
 L["Sum Ranged Attack Power"] = "統計遠程攻擊強度"
-L["Ranged Attack Power <- Ranged Attack Power Intellect, Attack Power, Strength, Agility"] = "遠程攻擊強度 ← 遠程攻擊強度、智力、攻擊強度、力量、敏捷",
+L["Ranged Attack Power <- Ranged Attack Power Intellect, Attack Power, Strength, Agility"] = "遠程攻擊強度 ← 遠程攻擊強度、智力、攻擊強度、力量、敏捷"
 -- /rb sum stat fap
 L["Sum Feral Attack Power"] = "統計野性攻擊強度"
-L["Feral Attack Power <- Feral Attack Power Attack Power, Strength, Agility"] = "野性攻擊強度 ← 野性攻擊強度、攻擊強度、力量、敏捷",
+L["Feral Attack Power <- Feral Attack Power Attack Power, Strength, Agility"] = "野性攻擊強度 ← 野性攻擊強度、攻擊強度、力量、敏捷"
 -- /rb sum stat dmg
 L["Sum Spell Damage"] = "統計法術傷害"
-L["Spell Damage <- Spell Damage Intellect, Spirit, Stamina"] = "法術傷害 ← 法術傷害、智力、精神、耐力",
+L["Spell Damage <- Spell Damage Intellect, Spirit, Stamina"] = "法術傷害 ← 法術傷害、智力、精神、耐力"
 -- /rb sum stat dmgholy
 L["Sum Holy Spell Damage"] = "統計神聖法術傷害"
-L["Holy Spell Damage <- Holy Spell Damage Spell Damage, Intellect, Spirit"] = "神聖法術傷害 ← 神聖法術傷害、法術傷害、智力、精神",
+L["Holy Spell Damage <- Holy Spell Damage Spell Damage, Intellect, Spirit"] = "神聖法術傷害 ← 神聖法術傷害、法術傷害、智力、精神"
 -- /rb sum stat dmgarcane
 L["Sum Arcane Spell Damage"] = "統計秘法法術傷害"
-L["Arcane Spell Damage <- Arcane Spell Damage Spell Damage, Intellect"] = "秘法法術傷害 ← 秘法法術傷害、法術傷害、智力",
+L["Arcane Spell Damage <- Arcane Spell Damage Spell Damage, Intellect"] = "秘法法術傷害 ← 秘法法術傷害、法術傷害、智力"
 -- /rb sum stat dmgfire
 L["Sum Fire Spell Damage"] = "統計火焰法術傷害"
-L["Fire Spell Damage <- Fire Spell Damage Spell Damage, Intellect, Stamina"] = "火焰法術傷害 ← 火焰法術傷害、法術傷害、智力、耐力",
+L["Fire Spell Damage <- Fire Spell Damage Spell Damage, Intellect, Stamina"] = "火焰法術傷害 ← 火焰法術傷害、法術傷害、智力、耐力"
 -- /rb sum stat dmgnature
 L["Sum Nature Spell Damage"] = "統計自然法術傷害"
-L["Nature Spell Damage <- Nature Spell Damage Spell Damage, Intellect"] = "自然法術傷害 ← 自然法術傷害、法術傷害、智力",
+L["Nature Spell Damage <- Nature Spell Damage Spell Damage, Intellect"] = "自然法術傷害 ← 自然法術傷害、法術傷害、智力"
 -- /rb sum stat dmgfrost
 L["Sum Frost Spell Damage"] = "統計冰霜法術傷害"
-L["Frost Spell Damage <- Frost Spell Damage Spell Damage, Intellect"] = "冰霜法術傷害 ← 冰霜法術傷害、法術傷害、智力",
+L["Frost Spell Damage <- Frost Spell Damage Spell Damage, Intellect"] = "冰霜法術傷害 ← 冰霜法術傷害、法術傷害、智力"
 -- /rb sum stat dmgshadow
 L["Sum Shadow Spell Damage"] = "統計暗影法術傷害"
-L["Shadow Spell Damage <- Shadow Spell Damage Spell Damage, Intellect, Spirit, Stamina"] = "暗影法術傷害 ← 暗影法術傷害、法術傷害、智力、精神、耐力",
+L["Shadow Spell Damage <- Shadow Spell Damage Spell Damage, Intellect, Spirit, Stamina"] = "暗影法術傷害 ← 暗影法術傷害、法術傷害、智力、精神、耐力"
 -- /rb sum stat heal
 L["Sum Healing"] = "統計治療"
-L["Healing <- Healing Intellect, Spirit, Agility, Strength"] = "治療 ← 治療、智力、精神、敏捷、力量",
+L["Healing <- Healing Intellect, Spirit, Agility, Strength"] = "治療 ← 治療、智力、精神、敏捷、力量"
 -- /rb sum stat hit
 L["Sum Hit Chance"] = "統計命中機率"
-L["Hit Chance <- Hit Rating Weapon Skill Rating"] = "命中機率 ← 命中等級、武器技能等級",
+L["Hit Chance <- Hit Rating Weapon Skill Rating"] = "命中機率 ← 命中等級、武器技能等級"
 -- /rb sum stat crit
 L["Sum Crit Chance"] = "統計致命一擊機率"
-L["Crit Chance <- Crit Rating Agility, Weapon Skill Rating"] = "致命一擊機率 ← 致命一擊等級、敏捷、武器技能等級",
+L["Crit Chance <- Crit Rating Agility, Weapon Skill Rating"] = "致命一擊機率 ← 致命一擊等級、敏捷、武器技能等級"
 -- /rb sum stat haste
 L["Sum Haste"] = "統計加速"
 L["Haste <- Haste Rating"] = "加速 ← 加速等級"
 -- /rb sum stat critspell
 L["Sum Spell Crit Chance"] = "統計法術致命一擊機率"
-L["Spell Crit Chance <- Spell Crit Rating Intellect"] = "法術致命一擊機率 ← 法術致命一擊等級、智力",
+L["Spell Crit Chance <- Spell Crit Rating Intellect"] = "法術致命一擊機率 ← 法術致命一擊等級、智力"
 -- /rb sum stat hitspell
 L["Sum Spell Hit Chance"] = "統計法術命中機率"
 L["Spell Hit Chance <- Spell Hit Rating"] = "法術命中機率 ← 法術命中機率"
@@ -292,7 +293,7 @@ L["Sum Spell Haste"] = "統計法術加速"
 L["Spell Haste <- Spell Haste Rating"] = "法術加速 ← 法術加速等級"
 -- /rb sum stat mp5
 L["Sum Mana Regen"] = "統計法力恢復"
-L["Mana Regen <- Mana Regen Spirit"] = "法力恢復 ← 法力恢復、精神",
+L["Mana Regen <- Mana Regen Spirit"] = "法力恢復 ← 法力恢復、精神"
 -- /rb sum stat mp5nc
 L["Sum Mana Regen while not casting"] = "統計法力恢復 (未施法時)"
 L["Mana Regen while not casting <- Spirit"] = "法力恢復 (未施法時) ← 精神"
@@ -304,31 +305,31 @@ L["Sum Health Regen when out of combat"] = "統計生命恢復 (未戰鬥時)"
 L["Health Regen when out of combat <- Spirit"] = "生命恢復 (未戰鬥時) ← 精神"
 -- /rb sum stat armor
 L["Sum Armor"] = "統計裝甲值"
-L["Armor <- Armor from items Armor from bonuses, Agility, Intellect"] = "裝甲值 ← 物品裝甲、裝甲加成、敏捷、智力",
+L["Armor <- Armor from items Armor from bonuses, Agility, Intellect"] = "裝甲值 ← 物品裝甲、裝甲加成、敏捷、智力"
 -- /rb sum stat blockvalue
 L["Sum Block Value"] = "統計格擋值"
-L["Block Value <- Block Value Strength"] = "格擋值 ← 格擋值、力量",
+L["Block Value <- Block Value Strength"] = "格擋值 ← 格擋值、力量"
 -- /rb sum stat dodge
 L["Sum Dodge Chance"] = "統計閃躲機率"
-L["Dodge Chance <- Dodge Rating Agility, Defense Rating"] = "閃躲機率 ← 閃躲等級、敏捷、防禦等級",
+L["Dodge Chance <- Dodge Rating Agility, Defense Rating"] = "閃躲機率 ← 閃躲等級、敏捷、防禦等級"
 -- /rb sum stat parry
 L["Sum Parry Chance"] = "統計招架機率"
-L["Parry Chance <- Parry Rating Defense Rating"] = "招架機率 ← 招架等級、防禦等級",
+L["Parry Chance <- Parry Rating Defense Rating"] = "招架機率 ← 招架等級、防禦等級"
 -- /rb sum stat block
 L["Sum Block Chance"] = "統計格擋機率"
-L["Block Chance <- Block Rating Defense Rating"] = "格擋機率 ← 格擋等級、防禦等級",
+L["Block Chance <- Block Rating Defense Rating"] = "格擋機率 ← 格擋等級、防禦等級"
 -- /rb sum stat avoidhit
 L["Sum Hit Avoidance"] = "統計迴避命中"
 L["Hit Avoidance <- Defense Rating"] = "迴避命中 ← 防禦等級"
 -- /rb sum stat avoidcrit
 L["Sum Crit Avoidance"] = "統計迴避致命一擊"
-L["Crit Avoidance <- Defense Rating Resilience"] = "迴避致命一擊 ← 防禦等級、韌性",
+L["Crit Avoidance <- Defense Rating Resilience"] = "迴避致命一擊 ← 防禦等級、韌性"
 -- /rb sum stat neglectdodge
 L["Sum Dodge Neglect"] = "統計防止被閃躲"
-L["Dodge Neglect <- Expertise Weapon Skill Rating"] = "防止被閃躲 ← 熟練技能、武器技能等級", -- 2.3.0
+L["Dodge Neglect <- Expertise Weapon Skill Rating"] = "防止被閃躲 ← 熟練技能、武器技能等級" -- 2.3.0
 -- /rb sum stat neglectparry
 L["Sum Parry Neglect"] = "統計防止被招架"
-L["Parry Neglect <- Expertise Weapon Skill Rating"] = "防止被招架 ← 熟練技能、武器技能等級", -- 2.3.0
+L["Parry Neglect <- Expertise Weapon Skill Rating"] = "防止被招架 ← 熟練技能、武器技能等級" -- 2.3.0
 -- /rb sum stat neglectblock
 L["Sum Block Neglect"] = "統計防止被格擋"
 L["Block Neglect <- Weapon Skill Rating"] = "防止被格擋 ← 武器技能等級"
@@ -415,13 +416,13 @@ L["Sum Expertise"] = "統計熟練技能"
 L["Expertise <- Expertise Rating"] = "熟練技能 ← 熟練等級"
 -- /rb sum statcomp tp
 L["Sum TankPoints"] = "統計坦克點"
-L["TankPoints <- Health Total Reduction"] = "坦克點 ← 生命力、傷害減免總值",
+L["TankPoints <- Health Total Reduction"] = "坦克點 ← 生命力、傷害減免總值"
 -- /rb sum statcomp tr
 L["Sum Total Reduction"] = "統計傷害減免總值"
-L["Total Reduction <- Armor Dodge, Parry, Block, Block Value, Defense, Resilience, MobMiss, MobCrit, MobCrush, DamageTakenMods"] = "傷害減免總值 ← 護甲、閃躲、招架、格擋、格檔值、防禦、韌性、怪物未擊中、怪物致命、怪物輾壓、DamageTakenMods (?)",
+L["Total Reduction <- Armor Dodge, Parry, Block, Block Value, Defense, Resilience, MobMiss, MobCrit, MobCrush, DamageTakenMods"] = "傷害減免總值 ← 護甲、閃躲、招架、格擋、格檔值、防禦、韌性、怪物未擊中、怪物致命、怪物輾壓、DamageTakenMods (?)"
 -- /rb sum statcomp avoid
 L["Sum Avoidance"] = "統計傷害迴避"
-L["Avoidance <- Dodge Parry, MobMiss, Block(Optional)"] = "傷害迴避 ← 閃躲、招架、怪物未擊中、格擋(選項)",
+L["Avoidance <- Dodge Parry, MobMiss, Block(Optional)"] = "傷害迴避 ← 閃躲、招架、怪物未擊中、格擋(選項)"
 -- /rb sum gem
 L["Gems"] = "預設寶石"
 L["Auto fill empty gem slots"] = "空寶石插槽的預設寶石"
@@ -491,17 +492,17 @@ L["ItemID: "] = "物品編號: "
 -- or you can type /rb debug to enable it in game
 --
 -- Tip2: The strings are passed into string.find, so you should escape the magic characters ^$()%.[]*+-? with a %
-["numberPatterns"] = {
+L["numberPatterns"] = {
 	{pattern = "提高.-(%d+)", addInfo = "AfterNumber",},
 	{pattern = "提升.-(%d+)", addInfo = "AfterNumber",}, -- [奎克米瑞之眼] ID:27683
 	{pattern = "(%d+)。", addInfo = "AfterNumber",},
 	{pattern = "([%+%-]%d+)", addInfo = "AfterStat",},
 	{pattern = "佩戴者.-(%d+)", addInfo = "AfterNumber",}, -- for "grant you xx stat" type pattern, ex: Quel'Serrar, Assassination Armor set
 	{pattern = "(%d+)([^%d%%|]+)", addInfo = "AfterStat",}, -- [發光的暗影卓奈石] +6法術傷害及5耐力
-},
-["separators"] = {
+}
+L["separators"] = {
 	"/", "和", ",", "。", " 持續 ", "&", "及", "並", "，",
-},
+}
 --[[ Rating ID
 CR_WEAPON_SKILL = 1;
 CR_DEFENSE_SKILL = 2;
@@ -534,7 +535,7 @@ SPELL_STAT3_NAME = "Stamina"
 SPELL_STAT4_NAME = "Intellect"
 SPELL_STAT5_NAME = "Spirit"
 --]]
-["statList"] = {
+L["statList"] = {
 	{pattern = string.lower(SPELL_STAT1_NAME), id = SPELL_STAT1_NAME}, -- Strength
 	{pattern = string.lower(SPELL_STAT2_NAME), id = SPELL_STAT2_NAME}, -- Agility
 	{pattern = string.lower(SPELL_STAT3_NAME), id = SPELL_STAT3_NAME}, -- Stamina
@@ -580,7 +581,7 @@ SPELL_STAT5_NAME = "Spirit"
 	{pattern = "two%-handed maces skill rating", id = CR_WEAPON_SKILL},
 	{pattern = "fist weapons skill rating", id = CR_WEAPON_SKILL},
 	--]]
-},
+}
 -------------------------
 -- Added info patterns --
 -------------------------
