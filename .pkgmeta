@@ -1,23 +1,23 @@
 package-as: RatingBuster
 
 externals:
-  libs/LibStub/LibStub.lua:
+  libs/LibStub:
     url: https://repos.wowace.com/wow/libstub/trunk
-  libs/AceLocale-3.0/AceLocale-3.0.lua:
+  libs/AceLocale-3.0:
     url: https://repos.wowace.com/wow/ace3/trunk/AceLocale-3.0
-  libs/LibBabble-Inventory-3.0/lib.xml:
+  libs/LibBabble-Inventory-3.0:
     url: https://repos.wowace.com/wow/libbabble-inventory-3-0/trunk
-  libs/AceConsole-3.0/AceConsole-3.0.lua:
+  libs/AceConsole-3.0:
     url: https://repos.wowace.com/wow/ace3/trunk/AceConsole-3.0
-  libs/AceEvent-3.0/AceEvent-3.0.lua:
+  libs/AceEvent-3.0:
     url: https://repos.wowace.com/wow/ace3/trunk/AceEvent-3.0
-  libs/AceBucket-3.0/AceBucket-3.0.xml:
+  libs/AceBucket-3.0:
     url: https://repos.wowace.com/wow/ace3/trunk/AceBucket-3.0
-  libs/AceDB-3.0/AceDB-3.0.lua:
+  libs/AceDB-3.0:
     url: https://repos.wowace.com/wow/ace3/trunk/AceDB-3.0
-  libs/AceAddon-3.0/AceAddon-3.0.lua:
+  libs/AceAddon-3.0:
     url: https://repos.wowace.com/wow/ace3/trunk/AceAddon-3.0
-  libs/AceConfig-3.0/AceConfig-3.0.lua:
+  libs/AceConfig-3.0:
     url: https://repos.wowace.com/wow/ace3/trunk/AceConfig-3.0
 
 ignore:
