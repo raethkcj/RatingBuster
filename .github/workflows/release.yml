@@ -9,6 +9,7 @@ on:
   push:
     tags:
       - '**'
+  workflow_dispatch:
 
 # a workflow is built up as jobs, and within these jobs are steps
 jobs:
