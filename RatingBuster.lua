@@ -1417,6 +1417,10 @@ function RatingBuster.ProcessTooltip(tooltip, name, link)
 				fontString:SetText(text)
 			end
 		end
+		local width = fontString:GetWrappedWidth()
+		if width > tooltip:GetMinimumWidth() then
+			tooltip:SetMinimumWidth(math.ceil(width))
+		end
 	end
 	----------------------------
 	-- Item Level and Item ID --
