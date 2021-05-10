@@ -2918,7 +2918,7 @@ function RatingBuster:StatSummary(tooltip, name, link)
 		end
 		if not skip then
 			if calcSum and calcDiff then
-				local d = ((not s) or ((s - floor(s)) == 0)) and ((not d1) or ((d1 - floor(d1)) == 0)) and ((not d2) or ((d2 - floor(d2)) == 0))
+				local d = ((not s) or ((s - floor(s)) == 0)) and ((not d1) or ((d1 - floor(d1)) == 0)) and ((not d2) or ((d2 - floor(d2)) == 0)) and not ispercent
 				if s then
 					if d then
 						s = format("%d", s)
