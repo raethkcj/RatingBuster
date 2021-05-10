@@ -2345,7 +2345,7 @@ local summaryCalcData = {
 		option = "sumDodge",
 		name = "DODGE",
 		func = function(sum) return StatLogic:GetEffectFromRating((sum["DODGE_RATING"] or 0), "DODGE_RATING", calcLevel)
-			 + StatLogic:GetEffectFromRating((sum["DEFENSE_RATING"] or 0), "DEFENSE_RATING", calcLevel) * 0.04
+			 + (StatLogic:GetEffectFromRating((sum["DEFENSE_RATING"] or 0), "DEFENSE_RATING", calcLevel) + (sum["DEFENSE"] or 0)) * 0.04
 			 + StatLogic:GetDodgeFromAgi(sum["AGI"]) end,
 		ispercent = true,
 	},
@@ -2362,7 +2362,7 @@ local summaryCalcData = {
 		func = function(sum)
 			if GetParryChance() == 0 then return 0 end
 			return StatLogic:GetEffectFromRating((sum["PARRY_RATING"] or 0), "PARRY_RATING", calcLevel)
-				 + StatLogic:GetEffectFromRating((sum["DEFENSE_RATING"] or 0), "DEFENSE_RATING", calcLevel) * 0.04
+				 + (StatLogic:GetEffectFromRating((sum["DEFENSE_RATING"] or 0), "DEFENSE_RATING", calcLevel) + (sum["DEFENSE"] or 0)) * 0.04
 		end,
 		ispercent = true,
 	},
@@ -2379,7 +2379,7 @@ local summaryCalcData = {
 		func = function(sum)
 			if GetBlockChance() == 0 then return 0 end
 			return StatLogic:GetEffectFromRating((sum["BLOCK_RATING"] or 0), "BLOCK_RATING", calcLevel)
-				 + StatLogic:GetEffectFromRating((sum["DEFENSE_RATING"] or 0), "DEFENSE_RATING", calcLevel) * 0.04
+				 + (StatLogic:GetEffectFromRating((sum["DEFENSE_RATING"] or 0), "DEFENSE_RATING", calcLevel) + (sum["DEFENSE"] or 0)) * 0.04
 		end,
 		ispercent = true,
 	},
@@ -2404,7 +2404,7 @@ local summaryCalcData = {
 		option = "sumHitAvoid",
 		name = "MELEE_HIT_AVOID",
 		func = function(sum) return StatLogic:GetEffectFromRating((sum["MELEE_HIT_AVOID_RATING"] or 0), "MELEE_HIT_AVOID_RATING", calcLevel)
-			 + StatLogic:GetEffectFromRating((sum["DEFENSE_RATING"] or 0), "DEFENSE_RATING", calcLevel) * 0.04 end,
+			 + (StatLogic:GetEffectFromRating((sum["DEFENSE_RATING"] or 0), "DEFENSE_RATING", calcLevel) + (sum["DEFENSE"] or 0)) * 0.04 end,
 		ispercent = true,
 	},
 	-- Crit Avoidance - DEFENSE_RATING, RESILIENCE_RATING, MELEE_CRIT_AVOID_RATING
@@ -2413,7 +2413,7 @@ local summaryCalcData = {
 		name = "MELEE_CRIT_AVOID",
 		func = function(sum) return StatLogic:GetEffectFromRating((sum["MELEE_CRIT_AVOID_RATING"] or 0), "MELEE_CRIT_AVOID_RATING", calcLevel)
 			 + StatLogic:GetEffectFromRating((sum["RESILIENCE_RATING"] or 0), "RESILIENCE_RATING", calcLevel)
-			 + StatLogic:GetEffectFromRating((sum["DEFENSE_RATING"] or 0), "DEFENSE_RATING", calcLevel) * 0.04 end,
+			 + (StatLogic:GetEffectFromRating((sum["DEFENSE_RATING"] or 0), "DEFENSE_RATING", calcLevel) + (sum["DEFENSE"] or 0)) * 0.04 end,
 		ispercent = true,
 	},
 	-- Resilience - RESILIENCE_RATING
@@ -2468,19 +2468,20 @@ local summaryCalcData = {
 			if GetParryChance() == 0 then
 				parry = 0
 			else
+				--parry = summaryCalcData["PARRY"].func(sum)
 				parry = StatLogic:GetEffectFromRating((sum["PARRY_RATING"] or 0), "PARRY_RATING", calcLevel)
-				 + StatLogic:GetEffectFromRating((sum["DEFENSE_RATING"] or 0), "DEFENSE_RATING", calcLevel) * 0.04
+				 + (StatLogic:GetEffectFromRating((sum["DEFENSE_RATING"] or 0), "DEFENSE_RATING", calcLevel) + (sum["DEFENSE"] or 0)) * 0.04
 			end
 			dodge = StatLogic:GetEffectFromRating((sum["DODGE_RATING"] or 0), "DODGE_RATING", calcLevel)
-			 + StatLogic:GetEffectFromRating((sum["DEFENSE_RATING"] or 0), "DEFENSE_RATING", calcLevel) * 0.04
+			 + (StatLogic:GetEffectFromRating((sum["DEFENSE_RATING"] or 0), "DEFENSE_RATING", calcLevel) + (sum["DEFENSE"] or 0)) * 0.04
 			 + StatLogic:GetDodgeFromAgi(sum["AGI"])
-			mobMiss = StatLogic:GetEffectFromRating((sum["DEFENSE_RATING"] or 0), "DEFENSE_RATING", calcLevel) * 0.04
+			mobMiss = (StatLogic:GetEffectFromRating((sum["DEFENSE_RATING"] or 0), "DEFENSE_RATING", calcLevel) + (sum["DEFENSE"] or 0)) * 0.04
 			if profileDB.sumAvoidWithBlock then
 				if GetBlockChance() == 0 then
 					block = 0
 				else
 					block = StatLogic:GetEffectFromRating((sum["BLOCK_RATING"] or 0), "BLOCK_RATING", calcLevel)
-					 + StatLogic:GetEffectFromRating((sum["DEFENSE_RATING"] or 0), "DEFENSE_RATING", calcLevel) * 0.04
+					 + (StatLogic:GetEffectFromRating((sum["DEFENSE_RATING"] or 0), "DEFENSE_RATING", calcLevel) + (sum["DEFENSE"] or 0)) * 0.04
 				end
 				return parry + dodge + mobMiss + block
 			end
