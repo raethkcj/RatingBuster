@@ -1,4 +1,5 @@
-﻿## Interface: 11307
+﻿## Interface: 20501
+## Interface-Classic: 11307
 ## Title: RatingBuster
 ## Notes: Item stat breakdown, analysis and comparing
 ## Notes-zhTW: 裝備數值解析與比較

@@ -39,5 +39,10 @@ jobs:
           fetch-depth: 50
 
       # once cloned, we just run the GitHub Action for the packager project
-      - name: Package and release
+      - name: Package and release BCC
         uses: BigWigsMods/packager@master
+
+      - name: Package and release Classic
+        uses: BigWigsMods/packager@master
+        with:
+          args: -g classic
