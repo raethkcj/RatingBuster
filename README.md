@@ -6,6 +6,7 @@ RatingBuster started out as an addon that converts combat ratings in your toolti
 
 The design aim of RatingBuster is to provide detailed, meaningful and customizable information about items so you can easily decide for yourself which item is better.
 
+![image](https://user-images.githubusercontent.com/7716908/118906676-d70d6b80-b8e3-11eb-80fa-001034491a32.png)
 
 ## Features
 
