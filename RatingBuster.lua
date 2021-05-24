@@ -251,25 +251,25 @@ local function setProfileOptionAndClearCache(info, value)
 	profileDB[info[#info]] = value
 	clearCache()
 end
-local function getGem(key)
-	return profileDB[key].gemLink
+local function getGem(info)
+	return profileDB[info[#info]].gemLink
 end
-local function setGem(key, value)
+local function setGem(info, value)
 	if value == "" then
-		profileDB[key].itemID = nil
-		profileDB[key].gemID = nil
-		profileDB[key].gemName = nil
-		profileDB[key].gemLink = nil
+		profileDB[info[#info]].itemID = nil
+		profileDB[info[#info]].gemID = nil
+		profileDB[info[#info]].gemName = nil
+		profileDB[info[#info]].gemLink = nil
 		return
 	end
 	local gemID, gemText = StatLogic:GetGemID(value)
 	if gemID and gemText then
 		local name, link = GetItemInfo(value)
 		local itemID = link:match("item:(%d+)")
-		profileDB[key].itemID = itemID
-		profileDB[key].gemID = gemID
-		profileDB[key].gemName = name
-		profileDB[key].gemLink = link
+		profileDB[info[#info]].itemID = itemID
+		profileDB[info[#info]].gemID = gemID
+		profileDB[info[#info]].gemName = name
+		profileDB[info[#info]].gemLink = link
 		-- Trim spaces
 		gemText = strtrim(gemText)
 		-- Strip color codes
@@ -279,9 +279,9 @@ local function setGem(key, value)
 		if strfind(strsub(gemText, 1, 10), "|c%x%x%x%x%x%x%x%x") then
 			gemText = strsub(gemText, 11)
 		end
-		profileDB[key].gemText = gemText
+		profileDB[info[#info]].gemText = gemText
 		clearCache()
-		local socket = strsub(key, 7).." Socket"
+		local socket = strsub(info[#info], 7).." Socket"
 		if not debugstack():find("AceConsole") then
 			RatingBuster:Print(L["%s is now set to %s"]:format(L[socket], link))
 		end
