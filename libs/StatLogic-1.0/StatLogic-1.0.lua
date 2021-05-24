@@ -4054,6 +4054,7 @@ function StatLogic:GetGemID(item)
 		end
 		itemID = tonumber(itemID)
 	end
+
 	-- Check if item is in local cache
 	local name, link, _, _, reqLv, _, _, _, itemType = GetItemInfo(item)
 	if not name then
@@ -4064,22 +4065,21 @@ function StatLogic:GetGemID(item)
 		return
 	end
 	itemID = link:match("item:(%d+)")
+
 	if not GetItemInfo(6948) then -- Hearthstone
 		-- Query server for Hearthstone
 		tipMiner:SetHyperlink("item:"..itemID);
 		return
 	end
+
+	-- Scan tooltip for gem text
 	local gemScanLink = "item:6948:0:%d:0:0:0:0:0"
-	local gemID
-	-- Start GemID scan
-	for gemID = 4000, 1, -1 do
-		local itemLink = gemScanLink:format(gemID)
-		local _, gem1Link = GetItemGem(itemLink, 1)
-		if gem1Link and itemID == gem1Link:match("item:(%d+)") then
-			tipMiner:ClearLines() -- this is required or SetX won't work the second time its called
-			tipMiner:SetHyperlink(itemLink);
-			return gemID, StatLogicMinerTooltipTextLeft4:GetText()
-		end
+	local itemLink = gemScanLink:format(itemID)
+	local _, gem1Link = GetItemGem(itemLink, 1)
+	if gem1Link then
+		tipMiner:ClearLines() -- this is required or SetX won't work the second time its called
+		tipMiner:SetHyperlink(itemLink);
+		return itemID, StatLogicMinerTooltipTextLeft4:GetText()
 	end
 end
 
