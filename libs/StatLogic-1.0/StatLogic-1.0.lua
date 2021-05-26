@@ -4008,10 +4008,10 @@ function StatLogic:BuildGemmedTooltip(item, red, yellow, blue, meta)
 	if #socketList == 0 then return link end
 	-- link breakdown
 	local linkType, itemId, enchantId, jewelId1, jewelId2, jewelId3, jewelId4, suffixId, uniqueId = strsplit(":", link)
-	if socketList[1] and (not jewelId1 or jewelId1 == "0") then jewelId1 = socketList[1] end
-	if socketList[2] and (not jewelId2 or jewelId2 == "0") then jewelId2 = socketList[2] end
-	if socketList[3] and (not jewelId3 or jewelId3 == "0") then jewelId3 = socketList[3] end
-	if socketList[4] and (not jewelId4 or jewelId4 == "0") then jewelId4 = socketList[4] end
+	if socketList[1] and (not jewelId1 or jewelId1 == "0" or jewelId1 == "") then jewelId1 = socketList[1] end
+	if socketList[2] and (not jewelId2 or jewelId2 == "0" or jewelId2 == "") then jewelId2 = socketList[2] end
+	if socketList[3] and (not jewelId3 or jewelId3 == "0" or jewelId3 == "") then jewelId3 = socketList[3] end
+	if socketList[4] and (not jewelId4 or jewelId4 == "0" or jewelId4 == "") then jewelId4 = socketList[4] end
 	return strjoin(":", linkType, itemId, enchantId, jewelId1, jewelId2, jewelId3, jewelId4, suffixId, uniqueId)
 end
 
