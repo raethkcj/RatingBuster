@@ -15,6 +15,7 @@
 <Include file="libs\AceBucket-3.0\AceBucket-3.0.xml"/>
 <!-- AceDB: LibStub, AceEvent -->
 <Script file="libs\AceDB-3.0\AceDB-3.0.lua"/>
+<Script file="libs\AceDBOptions-3.0\AceDBOptions-3.0.lua"/>
 <!-- AceAddon: LibStub, AceEvent, AceConsole (optional) -->
 <Script file="libs\AceAddon-3.0\AceAddon-3.0.lua"/>
 <Script file="libs\AceConfig-3.0\AceConfig-3.0.lua"/>

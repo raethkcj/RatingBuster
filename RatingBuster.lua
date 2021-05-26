@@ -1281,19 +1281,18 @@ PLAYER_LOGIN - Most information about the game world should now be available to 
 }
 --]]
 -- OnInitialize(name) called at ADDON_LOADED
-function RatingBuster:OnProfileEnable()
-	-- this is called every time our profile changes (after the change)
+function RatingBuster:RefreshConfig()
 	profileDB = self.db.profile
 end
 
 function RatingBuster:OnInitialize()
-	self.db = LibStub("AceDB-3.0"):New("RatingBusterDB", defaults, true)
-
-	-- Register Defaults
-	-- self.db.class:RegisterDefaults(defaults)
-	-- self.db.char:RegisterDefaults(defaults)
-
+	self.db = LibStub("AceDB-3.0"):New("RatingBusterDB", defaults, "profile")
+	self.db.RegisterCallback(self, "OnProfileChanged", "RefreshConfig")
+	self.db.RegisterCallback(self, "OnProfileCopied", "RefreshConfig")
+	self.db.RegisterCallback(self, "OnProfileReset", "RefreshConfig")
 	profileDB = self.db.profile
+
+	options.args.profiles = LibStub("AceDBOptions-3.0"):GetOptionsTable(self.db)
 
 	LibStub("AceConfig-3.0"):RegisterOptionsTable("RatingBuster", options, {"rb", "ratingbuster"})
 	LibStub("AceConfigDialog-3.0"):AddToBlizOptions("RatingBuster", "RatingBuster")
