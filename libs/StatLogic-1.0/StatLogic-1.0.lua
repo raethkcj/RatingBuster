@@ -3885,7 +3885,7 @@ end
 
 function StatLogic:RemoveEnchant(link)
 	-- check link
-	if not strfind(link, "item:%d+:%d+:%d+:%d+:%d+:%d+:%-?%d+:%-?%d+") then
+	if not strfind(link, "item:%d*:%d*:%d*:%d*:%d*:%d*:%-?%d*:%-?%d*") then
 		return link
 	end
 	local linkType, itemId, enchantId, jewelId1, jewelId2, jewelId3, jewelId4, suffixId, uniqueId = strsplit(":", link)
@@ -3894,7 +3894,7 @@ end
 
 function StatLogic:RemoveGem(link)
 	-- check link
-	if not strfind(link, "item:%d+:%d+:%d+:%d+:%d+:%d+:%-?%d+:%-?%d+") then
+	if not strfind(link, "item:%d*:%d*:%d*:%d*:%d*:%d*:%-?%d*:%-?%d*") then
 		return link
 	end
 	local linkType, itemId, enchantId, jewelId1, jewelId2, jewelId3, jewelId4, suffixId, uniqueId = strsplit(":", link)
@@ -3903,7 +3903,7 @@ end
 
 function StatLogic:RemoveEnchantGem(link)
 	-- check link
-	if not strfind(link, "item:%d+:%d+:%d+:%d+:%d+:%d+:%-?%d+:%-?%d+") then
+	if not strfind(link, "item:%d*:%d*:%d*:%d*:%d*:%d*:%-?%d*:%-?%d*") then
 		return link
 	end
 	local linkType, itemId, enchantId, jewelId1, jewelId2, jewelId3, jewelId4, suffixId, uniqueId = strsplit(":", link)
