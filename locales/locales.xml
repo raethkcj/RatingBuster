@@ -7,5 +7,6 @@
 	<Script file="deDE.lua" />
 	<Script file="frFR.lua" />
 	<Script file="koKR.lua" />
+	<Script file="esES.lua" />
 
 </Ui>
