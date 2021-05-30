@@ -295,6 +295,14 @@ local options = {
 	get = getProfileOption,
 	set = setProfileOptionAndClearCache,
 	args = {
+		help = {
+			type = 'execute',
+			name = L["Help"],
+			desc = L["Show this help message"],
+			func = function()
+				LibStub("AceConfigCmd-3.0").HandleCommand("RatingBuster", "rb", "RatingBuster", "")
+			end
+		},
 		enableStatMods = {
 			type = 'toggle',
 			name = L["Enable Stat Mods"],
@@ -1294,16 +1302,20 @@ function RatingBuster:OnInitialize()
 
 	options.args.profiles = LibStub("AceDBOptions-3.0"):GetOptionsTable(self.db)
 
-	LibStub("AceConfig-3.0"):RegisterOptionsTable("RatingBuster", options, {"rb", "ratingbuster"})
+	LibStub("AceConfig-3.0"):RegisterOptionsTable("RatingBuster", options)
 	LibStub("AceConfigDialog-3.0"):AddToBlizOptions("RatingBuster", "RatingBuster")
 end
 
 SLASH_RATINGBUSTER1, SLASH_RATINGBUSTER2 = "/ratingbuster", "/rb"
 function SlashCmdList.RATINGBUSTER(input)
   if not input or input:trim() == "" then
-    LibStub("AceConfigDialog-3.0"):Open("RatingBuster")
+		if not LibStub("AceConfigDialog-3.0").OpenFrames["RatingBuster"] then
+			LibStub("AceConfigDialog-3.0"):Open("RatingBuster")
+		else
+			LibStub("AceConfigDialog-3.0"):Close("RatingBuster")
+		end
   else
-    RatingBuster:HandleCommand("rb", "RatingBuster", input)
+    LibStub("AceConfigCmd-3.0").HandleCommand("RatingBuster", "rb", "RatingBuster", input)
   end
 end
 

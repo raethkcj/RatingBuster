@@ -10,6 +10,9 @@ L["RatingBuster Options"] = true
 ---------------------------
 -- Slash Command Options --
 ---------------------------
+-- /rb help
+L["Help"] = true
+L["Show this help message"] = true
 -- /rb win
 L["Options Window"] = true
 L["Shows the Options Window"] = true

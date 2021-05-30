@@ -59,85 +59,130 @@ will work with all bag mods too!
 
 ## Options
 
-Type /rb or /ratingbuster
+Type `/rb` or `/ratingbuster` to open the options menu GUI, or add a slash command:
 
-/rb : Display command help
-/rb standby : Toggle disable/enable RatingBuster in game, defaults Enable
-/rb level (0-73) : Set the level used in calculations, defaults 0 (0 = your level)
-/rb itemlevel : Toggle show/hide ItemLevel, defaults Show
-/rb itemid : Toggle show/hide ItemID, defaults Hide
-/rb usereqlv : Toggle calculate using the required level if you are below the required level, defaults Off
-/rb statmod : Toggle support for talent and buff mods, defaults On
-
-/rb rating : Options for Rating Conversion
-/rb rating show : Toggle show/hide Rating Conversion in tooltips, defaults Show
-/rb rating def : Toggle Defense breakdown, Convert Defense into Crit Avoidance, Hit Avoidance, Dodge, Parry and Block, defaults Off
-/rb rating wpn : Toggle Weapon Skill breakdown, Convert Weapon Skill into Crit, Hit, Dodge Neglect, Parry Neglect and Block Neglect, defaults Off
-/rb rating color enable : Toggle enable/disable colored text, defaults On
-/rb rating color pick : Choose a color for the added text, defaults Light Yellow
-
-/rb stat : Options for Stat Breakdown
-/rb stat show : Toggle show/hide Stat Breakdown in tooltips, defaults Show
-/rb stat str : Options for Strength breakdown -> AP, Block, Healing(Talent)
-/rb stat agi : Options for Agility breakdown -> Crit, Dodge, AP, RAP, Armor
-/rb stat sta : Options for Stamina breakdown -> Health, SpellDmg(Talent)
-/rb stat int : Options for Intellect breakdown -> Mana, SpellCrit, SpellDmg(Talent), Healing(Talent), MP5(Talent), RAP(Talent), Armor(Talent)
-/rb stat spi : Options for Spirit breakdown -> MP5(Talent), MP5NC, HP5, SpellDmg(Talent), Healing(Talent)
-
-/rb sum : Options for Stat Summary
-/rb sum show : Toggle show/hide Stat Summary in tooltips, defaults Show
-/rb sum ignore unused : Show stat summary only for armor types you will and can use, and on items with uncommon quality and up, defaults On
-/rb sum ignore equipped : Hide stat summary for equipped items, defaults Off
-/rb sum ignore enchant : Ignore enchants on items when calculating the stat summary, defaults Off
-/rb sum ignore gem : Ignore gems on items when calculating the stat summary, defaults Off
-/rb sum diffstyle : Display diff values in the main tooltip or only in compare tooltips, defaults Main
-/rb sum space : Add a blank line before stat summary for readability, defaults On
-/rb sum showzerostat : Show zero value stats in summary for consistency, defaults Off
-/rb sum calcsum : Calculate the total stats for the item, defaults On
-/rb sum calcdiff : Calculate the stat difference for the item and equipped items, defaults On
-/rb sum stat : Choose which base stats you'd like to see in the summary
-	- Health - HEALTH, STA
-	- Mana - MANA, INT
-	- Attack Power - AP, STR, AGI
-	- Ranged Attack Power - RANGED_AP, INT, AP, STR, AGI
-	- Feral Attack Power - FERAL_AP, AP, STR, AGI (Note: Shows Cat AP when in Cat form, and Bear AP in other forms)
-	- Spell Damage - SPELL_DMG, STA, INT, SPI
-	- Holy Damage - HOLY_SPELL_DMG, SPELL_DMG, INT, SPI
-	- Arcane Damage - ARCANE_SPELL_DMG, SPELL_DMG, INT
-	- Fire Damage - FIRE_SPELL_DMG, SPELL_DMG, STA, INT
-	- Nature Damage - NATURE_SPELL_DMG, SPELL_DMG, INT
-	- Frost Damage - FROST_SPELL_DMG, SPELL_DMG, INT
-	- Shadow Damage - SHADOW_SPELL_DMG, SPELL_DMG, STA, INT, SPI
-	- Healing - HEAL, STR, INT, SPI
-	- Hit Chance - MELEE_HIT_RATING, WEAPON_RATING
-	- Crit Chance - MELEE_CRIT_RATING, WEAPON_RATING, AGI
-	- Spell Hit Chance - SPELL_HIT_RATING
-	- Spell Crit Chance - SPELL_CRIT_RATING, INT
-	- Mana Regen - MANA_REG, SPI
-	- Health Regen - HEALTH_REG
-	- Mana Regen Not Casting - MANA_REG, SPI
-	- Health Regen While Casting - HEALTH_REG, SPI
-	- Armor - ARMOR, ARMOR_BONUS, AGI, INT
-	- Block Value - BLOCK_VALUE, STR
-	- Dodge Chance - DODGE_RATING, DEFENSE_RATING, AGI
-	- Parry Chance - PARRY_RATING, DEFENSE_RATING
-	- Block Chance - BLOCK_RATING, DEFENSE_RATING
-	- Hit Avoidance - DEFENSE_RATING, MELEE_HIT_AVOID_RATING
-	- Crit Avoidance - DEFENSE_RATING, RESILIENCE_RATING, MELEE_CRIT_AVOID_RATING
-	- Dodge Neglect - WEAPON_RATING
-	- Parry Neglect - WEAPON_RATING
-	- Block Neglect - WEAPON_RATING
-	- Arcane Resistance - ARCANE_RES
-	- Fire Resistance - FIRE_RES
-	- Nature Resistance - NATURE_RES
-	- Frost Resistance - FROST_RES
-	- Shadow Resistance - SHADOW_RES
-	- Weapon Max Damage - MAX_DAMAGE
-/rb sum statcomp : Choose which composite stats you'd like to see in the summary
-	- Strength - STR
-	- Agility - AGI
-	- Stamina - STA
-	- Intellect - INT
-	- Spirit - SPI
-	- Defense - DEFENSE_RATING
-	- Weapon Skill - WEAPON_RATING
+- `help` - Show help message
+- `enableStatMods` - Enable support for Stat Mods
+- `showItemID` - Show the ItemID in tooltips
+- `showItemLevel` - Show the ItemLevel in tooltips
+- `useRequiredLevel` - Calculate using the required level if you are below the required level
+- `customLevel` - Set the level used in calculations (0 = your level)
+- `rating` - Options for Rating display
+	- `showRatings` - Show Rating conversions in tooltips
+	- `detailedConversionText` - Show detailed text for Resiliance and Expertise conversions
+	- `defBreakDown` - Convert Defense into Crit Avoidance, Hit Avoidance, Dodge, Parry and Block
+	- `wpnBreakDown` - Convert Weapon Skill into Crit, Hit, Dodge Neglect, Parry Neglect and Block Neglect
+	- `expBreakDown` - Convert Expertise into Dodge Neglect and Parry Neglect
+	- `color` - Changes the color of added text
+		- `pick` - Pick a color
+		- `enableTextColor` - Enable colored text
+- `stat` - Changes the display of base stats
+	- `showStats` - Show base stat conversions in tooltips
+	- `str` - Changes the display of Strength
+		- `showAPFromStr` - Show Attack Power from Strength
+		- `showBlockValueFromStr` - Show Block Value from Strength
+- `agi` - Changes the display of Agility
+	- `showCritFromAgi` - Show Crit chance from Agility
+	- `showDodgeFromAgi` - Show Dodge chance from Agility
+	- `showAPFromAgi` - Show Attack Power from Agility
+	- `showRAPFromAgi` - Show Ranged Attack Power from Agility
+	- `showArmorFromAgi` - Show Armor from Agility
+- `sta` - Changes the display of Stamina
+	- `showHealthFromSta` - Show Health from Stamina
+- `int` - Changes the display of Intellect
+	- `showSpellCritFromInt` - Show Spell Crit chance from Intellect
+	- `showManaFromInt` - Show Mana from Intellect
+	- `showMP5FromInt` - Show Mana Regen while casting from Intellect
+	- `showMP5NCFromInt` - Show Mana Regen while NOT casting from Intellect
+- `spi` - Changes the display of Spirit
+	- `showMP5NCFromSpi` - Show Mana Regen while NOT casting from Spirit
+	- `showHP5FromSpi` - Show Health Regen from Spirit
+- `sum` - Options for stat summary
+	- `showSum` - Show stat summary in tooltips
+	- `ignore` - Ignore stuff when calculating the stat summary
+		- `sumIgnoreUnused` - Show stat summary only for highest level armor type and items you can use with uncommon quality and up
+		- `sumIgnoreEquipped` - Hide stat summary for equipped items
+		- `sumIgnoreEnchant` - Ignore enchants on items when calculating the stat summary
+		- `sumIgnoreGems` - Ignore gems on items when calculating the stat summary
+- `sumDiffStyle` - Display diff values in the main tooltip or only in compare tooltips
+	values"comp", "main"}
+- `space` - Add a empty line before or after stat summary
+	- `sumBlankLine` - Add a empty line before stat summary
+	- `sumBlankLineAfter` - Add a empty line after stat summary
+- `sumShowIcon` - Show the sigma icon before summary listing
+- `sumShowTitle` - Show the title text before summary listing
+- `showZeroValueStat` - Show zero value stats in summary for consistancy
+- `calcSum` - Calculate the total stats for the item
+- `calcDiff` - Calculate the stat difference for the item and equipped items
+- `sumSortAlpha` - Enable to sort StatSummary alphabetically, disable to sort according to stat type(basic, physical, spell, tank)
+- `sumAvoidWithBlock` - Enable to include block chance in Avoidance summary, Disable for only dodge, parry, miss
+- `basic` - Choose basic stats for summary
+	- `sumHP` - Health <- Health, Stamina
+	- `sumMP` - Mana <- Mana, Intellect
+	- `sumMP5` - Mana Regen <- Mana Regen, Spirit
+	- `sumMP5NC` - Mana Regen while not casting <- Spirit
+	- `sumHP5` - Health Regen <- Health Regen
+	- `sumHP5OC` - Health Regen when out of combat <- Spirit
+	- `sumStr` - Strength Summary
+	- `sumAgi` - Agility Summary
+	- `sumSta` - Stamina Summary
+	- `sumInt` - Intellect Summary
+	- `sumSpi` - Spirit Summary
+- `physical` - Choose physical damage stats for summary
+	- `sumAP` - Attack Power <- Attack Power, Strength, Agility
+	- `sumRAP` - Ranged Attack Power <- Ranged Attack Power, Intellect, Attack Power, Strength, Agility
+	- `sumFAP` - Feral Attack Power <- Feral Attack Power, Attack Power, Strength, Agility
+	- `sumHit` - Hit Chance <- Hit Rating, Weapon Skill Rating
+	- `sumHitRating` - Hit Rating Summary
+	- `sumCrit` - Crit Chance <- Crit Rating, Agility, Weapon Skill Rating
+	- `sumCritRating` - Crit Rating Summary
+	- `sumHaste` - Haste <- Haste Rating
+	- `sumHasteRating` - Haste Rating Summary
+	- `sumDodgeNeglect` - Dodge Neglect <- Expertise, Weapon Skill Rating
+	- `sumParryNeglect` - Parry Neglect <- Expertise, Weapon Skill Rating
+	- `sumBlockNeglect` - Block Neglect <- Weapon Skill Rating
+	- `sumWeaponSkill` - Weapon Skill <- Weapon Skill Rating
+	- `sumExpertise` - Expertise <- Expertise Rating
+	- `sumWeaponMaxDamage` - Weapon Max Damage Summary
+		- `weapondps` - Weapon DPS Summary
+		- `sumIgnoreArmor` - Ignore Armor Summary
+- `spell` - Choose spell damage and healing stats for summary
+	- `sumSpellDmg` - Spell Damage <- Spell Damage, Intellect, Spirit, Stamina
+	- `sumHolyDmg` - Holy Spell Damage <- Holy Spell Damage, Spell Damage, Intellect, Spirit
+	- `sumArcaneDmg` - Arcane Spell Damage <- Arcane Spell Damage, Spell Damage, Intellect
+	- `sumFireDmg` - Fire Spell Damage <- Fire Spell Damage, Spell Damage, Intellect, Stamina
+	- `sumNatureDmg` - Nature Spell Damage <- Nature Spell Damage, Spell Damage, Intellect
+	- `sumFrostDmg` - Frost Spell Damage <- Frost Spell Damage, Spell Damage, Intellect
+	- `sumShadowDmg` - Shadow Spell Damage <- Shadow Spell Damage, Spell Damage, Intellect, Spirit, Stamina
+	- `sumHealing` - Healing <- Healing, Intellect, Spirit, Agility, Strength
+	- `sumSpellHit` - Spell Hit Chance <- Spell Hit Rating
+	- `sumSpellHitRating` - Spell Hit Rating Summary
+	- `sumSpellCrit` - Spell Crit Chance <- Spell Crit Rating, Intellect
+	- `sumSpellCritRating` - Spell Crit Rating Summary
+	- `sumSpellHaste` - Spell Haste <- Spell Haste Rating
+	- `sumSpellHasteRating` - Spell Haste Rating Summary
+	- `sumPenetration` - Spell Penetration Summary
+- `tank` - Choose tank stats for summary
+	- `sumArmor` - Armor <- Armor from items, Armor from bonuses, Agility, Intellect
+	- `sumDefense` - Defense <- Defense Rating
+	- `sumDodge` - Dodge Chance <- Dodge Rating, Agility, Defense Rating
+	- `sumDodgeRating` - Dodge Rating Summary
+	- `sumParry` - Parry Chance <- Parry Rating, Defense Rating
+	- `sumParryRating` - Parry Rating Summary
+	- `sumBlock` - Block Chance <- Block Rating, Defense Rating
+	- `sumBlockRating` - Block Rating Summary
+	- `sumBlockValue` - Block Value <- Block Value, Strength
+	- `sumHitAvoid` - Hit Avoidance <- Defense Rating
+	- `sumCritAvoid` - Crit Avoidance <- Defense Rating, Resilience
+	- `sumResilience` - Resilience Summary
+	- `sumArcaneResist` - Arcane Resistance Summary
+	- `sumFireResist` - Fire Resistance Summary
+	- `sumNatureResist` - Nature Resistance Summary
+	- `sumFrostResist` - Frost Resistance Summary
+	- `sumShadowResist` - Shadow Resistance Summary
+	- `sumAvoidance` - Avoidance <- Dodge, Parry, MobMiss, Block(Optional)
+- `gem` - Auto fill empty gem slots
+	- `sumGemRed` - ItemID or Link of the gem you would like to auto fill
+	- `sumGemYellow` - ItemID or Link of the gem you would like to auto fill
+	- `sumGemBlue` - ItemID or Link of the gem you would like to auto fill
+	- `sumGemMeta` - ItemID or Link of the gem you would like to auto fill
