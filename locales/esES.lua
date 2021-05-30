@@ -1,8 +1,9 @@
 --[[
 Name: RatingBuster esES locale
-Revision: $Revision: 73696 $
+Revision: $Revision: 73697 $
 Translated by:
 - carahuevo@Curse
+- Zendor@Mandokir
 ]]
 
 local L = LibStub("AceLocale-3.0"):NewLocale("RatingBuster", "esES")
@@ -80,8 +81,8 @@ L["Show Attack Power from Strength"] = "Motrar Poder Ataque de Fuerza"
 L["Show Block Value"] = "Mostrar Valor Bloqueo"
 L["Show Block Value from Strength"] = "Muestra el Valor Bloqueo de Fuerza"
 -- /rb stat str dmg
-L["Show Spell Damage"] = "Mostrar Dano Hech"
-L["Show Spell Damage from Strength"] = "Muestra el Dano de Hechizo de Fuerza"
+L["Show Spell Damage"] = "Mostrar Daño Hech"
+L["Show Spell Damage from Strength"] = "Muestra el Daño de Hechizo de Fuerza"
 -- /rb stat str heal
 L["Show Healing"] = "Mostrar Sanacion"
 L["Show Healing from Strength"] = "Muestra la Sanacion de Fuerza"
@@ -91,7 +92,7 @@ L["Agility"] = "Agilidad"
 L["Changes the display of Agility"] = "Cambia la visualizacion de Agilidad"
 -- /rb stat agi crit
 L["Show Crit"] = "Mostrar Crit"
-L["Show Crit chance from Agility"] = "Muestra la prob. de critico de Agilidad"
+L["Show Crit chance from Agility"] = "Muestra la prob. de crítico de Agilidad"
 -- /rb stat agi dodge
 L["Show Dodge"] = "Mostrar Esquivar"
 L["Show Dodge chance from Agility"] = "Muestra la prob. de Esquivar de Agilidad"
@@ -115,8 +116,8 @@ L["Changes the display of Stamina"] = "Cambia la visualizacion de Aguante"
 L["Show Health"] = "Mostrar Salud"
 L["Show Health from Stamina"] = "Muestra la Salud de Aguante"
 -- /rb stat sta dmg
-L["Show Spell Damage"] = "Mostrar Dano Hech"
-L["Show Spell Damage from Stamina"] = "Muestra el Dano de Hechizo de Aguante"
+L["Show Spell Damage"] = "Mostrar Daño Hech"
+L["Show Spell Damage from Stamina"] = "Muestra el Daño de Hechizo de Aguante"
 
 -- /rb stat int
 L["Intellect"] = "Intelecto"
@@ -128,8 +129,8 @@ L["Show Spell Crit chance from Intellect"] = "Muestra la prob. de Crit. de Hechi
 L["Show Mana"] = "Mostrar Mana"
 L["Show Mana from Intellect"] = "Muestra el Mana de Intelecto"
 -- /rb stat int dmg
-L["Show Spell Damage"] = "Mostrar Dano Hech"
-L["Show Spell Damage from Intellect"] = "Muestra el Dano de Hechizo de Intelecto"
+L["Show Spell Damage"] = "Mostrar Daño Hech"
+L["Show Spell Damage from Intellect"] = "Muestra el Daño de Hechizo de Intelecto"
 -- /rb stat int heal
 L["Show Healing"] = "Mostrar Sanacion"
 L["Show Healing from Intellect"] = "Muestra la Sanacion de Intelecto"
@@ -147,23 +148,23 @@ L["Show Armor"] = "Mostrar Armadura"
 L["Show Armor from Intellect"] = "Muestra la Armadura de Intelecto"
 
 -- /rb stat spi
-L["Spirit"] = "Espiritu"
-L["Changes the display of Spirit"] = "Cambia la visualizacion de Espiritu"
+L["Spirit"] = "Espíritu"
+L["Changes the display of Spirit"] = "Cambia la visualizacion de Espíritu"
 -- /rb stat spi mp5
 L["Show Mana Regen"] = "Mostrar Regen.Mana"
-L["Show Mana Regen while casting from Spirit"] = "Muestra la Regen.Mana de Espiritu"
+L["Show Mana Regen while casting from Spirit"] = "Muestra la Regen.Mana de Espíritu"
 -- /rb stat spi mp5nc
 L["Show Mana Regen while NOT casting"] = "Mostrar Regen.Mana NO lanzando"
-L["Show Mana Regen while NOT casting from Spirit"] = "Muestra la Regen.Mana NO lanzando de Espiritu"
+L["Show Mana Regen while NOT casting from Spirit"] = "Muestra la Regen.Mana NO lanzando de Espíritu"
 -- /rb stat spi hp5
 L["Show Health Regen"] = "Mostrar Regen.Salud"
-L["Show Health Regen from Spirit"] = "Muestra la Regen. de Salud de Espiritu"
+L["Show Health Regen from Spirit"] = "Muestra la Regen. de Salud de Espíritu"
 -- /rb stat spi dmg
-L["Show Spell Damage"] = "Mostrar Dano Hech"
-L["Show Spell Damage from Spirit"] = "Muestra el Dano de Hechizos de Espiritu"
+L["Show Spell Damage"] = "Mostrar Daño Hech"
+L["Show Spell Damage from Spirit"] = "Muestra el Daño de Hechizos de Espíritu"
 -- /rb stat spi heal
 L["Show Healing"] = "Mostrar Sanacion"
-L["Show Healing from Spirit"] = "Muestra la Sanacion de Espiritu"
+L["Show Healing from Spirit"] = "Muestra la Sanacion de Espíritu"
 
 -- /rb sum
 L["Stat Summary"] = "Resumen Estad"
@@ -224,10 +225,10 @@ L["Stat - Basic"] = "Estad. - Basica"
 L["Choose basic stats for summary"] = "Escoge las estad. basicas para el resumen"
 -- /rb sum physical
 L["Stat - Physical"] = "Estad. - Fisico"
-L["Choose physical damage stats for summary"] = "Escoge las estad. de dano fisico para el resumen"
+L["Choose physical damage stats for summary"] = "Escoge las estad. de daño fisico para el resumen"
 -- /rb sum spell
 L["Stat - Spell"] = "Estad. - Fisico"
-L["Choose spell damage and healing stats for summary"] = "Escoge las estad. de dano de hechizo y sanacion para el resumen"
+L["Choose spell damage and healing stats for summary"] = "Escoge las estad. de daño de hechizo y sanacion para el resumen"
 -- /rb sum tank
 L["Stat - Tank"] = "Estad. - Tanque"
 L["Choose tank stats for summary"] = "Escoge las estad. de tanque para el resumen"
@@ -247,59 +248,59 @@ L["Ranged Attack Power <- Ranged Attack Power Intellect, Attack Power, Strength,
 L["Sum Feral Attack Power"] = "Res. P.Ataque feral"
 L["Feral Attack Power <- Feral Attack Power Attack Power, Strength, Agility"] = "P.Ataque feral <- P.Ataque feral, P.Ataque, Fuerza, Agilidad"
 -- /rb sum stat dmg
-L["Sum Spell Damage"] = "Res. Dano Hech."
-L["Spell Damage <- Spell Damage Intellect, Spirit, Stamina"] = "Dano Hech. <- Dano Hech., Intelecto, Espiritu, Aguante"
+L["Sum Spell Damage"] = "Res. Daño Hech."
+L["Spell Damage <- Spell Damage Intellect, Spirit, Stamina"] = "Daño Hech. <- Daño Hech., Intelecto, Espíritu, Aguante"
 -- /rb sum stat dmgholy
-L["Sum Holy Spell Damage"] = "Res. Dano Hech. Sagrado"
-L["Holy Spell Damage <- Holy Spell Damage Spell Damage, Intellect, Spirit"] = "Dano Hech. Sagrado <- Dano Hech. Sagrado, Dano Hech., Intelecto, Espiritu"
+L["Sum Holy Spell Damage"] = "Res. Daño Hech. Sagrado"
+L["Holy Spell Damage <- Holy Spell Damage Spell Damage, Intellect, Spirit"] = "Daño Hech. Sagrado <- Daño Hech. Sagrado, Daño Hech., Intelecto, Espíritu"
 -- /rb sum stat dmgarcane
-L["Sum Arcane Spell Damage"] = "Res. Dano Hech. Arcano"
-L["Arcane Spell Damage <- Arcane Spell Damage Spell Damage, Intellect"] = "Dano Hech. Arcano <- Dano Hech. Arcano, Dano Hech., Intelecto"
+L["Sum Arcane Spell Damage"] = "Res. Daño Hech. Arcano"
+L["Arcane Spell Damage <- Arcane Spell Damage Spell Damage, Intellect"] = "Daño Hech. Arcano <- Daño Hech. Arcano, Daño Hech., Intelecto"
 -- /rb sum stat dmgfire
-L["Sum Fire Spell Damage"] = "Res. Dano Hech. Fuego"
-L["Fire Spell Damage <- Fire Spell Damage Spell Damage, Intellect, Stamina"] = "Dano Hech. Arcano <- Dano Hech. Arcano, Dano Hech., Intelecto, Aguante"
+L["Sum Fire Spell Damage"] = "Res. Daño Hech. Fuego"
+L["Fire Spell Damage <- Fire Spell Damage Spell Damage, Intellect, Stamina"] = "Daño Hech. Arcano <- Daño Hech. Arcano, Daño Hech., Intelecto, Aguante"
 -- /rb sum stat dmgnature
-L["Sum Nature Spell Damage"] = "Res. Dano Hech. Naturaleza"
-L["Nature Spell Damage <- Nature Spell Damage Spell Damage, Intellect"] = "Dano Hech. Naturaleza <- Dano Hech. Naturaleza, Dano Hech., Intelecto"
+L["Sum Nature Spell Damage"] = "Res. Daño Hech. Naturaleza"
+L["Nature Spell Damage <- Nature Spell Damage Spell Damage, Intellect"] = "Daño Hech. Naturaleza <- Daño Hech. Naturaleza, Daño Hech., Intelecto"
 -- /rb sum stat dmgfrost
-L["Sum Frost Spell Damage"] = "Res. Dano Hech. Frio"
-L["Frost Spell Damage <- Frost Spell Damage Spell Damage, Intellect"] = "Dano Hech. Frio <- Dano Hech. Frio, Dano Hech., Intelecto"
+L["Sum Frost Spell Damage"] = "Res. Daño Hech. Frio"
+L["Frost Spell Damage <- Frost Spell Damage Spell Damage, Intellect"] = "Daño Hech. Frio <- Daño Hech. Frio, Daño Hech., Intelecto"
 -- /rb sum stat dmgshadow
-L["Sum Shadow Spell Damage"] = "Res. Dano Hech. Sombras"
-L["Shadow Spell Damage <- Shadow Spell Damage Spell Damage, Intellect, Spirit, Stamina"] = "Dano Hech. Sombras <- Dano Hech. Sombras, Dano Hech., Intelecto, Espiritu, Aguante"
+L["Sum Shadow Spell Damage"] = "Res. Daño Hech. Sombras"
+L["Shadow Spell Damage <- Shadow Spell Damage Spell Damage, Intellect, Spirit, Stamina"] = "Daño Hech. Sombras <- Daño Hech. Sombras, Daño Hech., Intelecto, Espíritu, Aguante"
 -- /rb sum stat heal
 L["Sum Healing"] = "Res. Sanacion"
-L["Healing <- Healing Intellect, Spirit, Agility, Strength"] = "Sanacion <- Sanacion, Intelecto, Espiritu, Agilidad, Fuerza"
+L["Healing <- Healing Intellect, Spirit, Agility, Strength"] = "Sanacion <- Sanacion, Intelecto, Espíritu, Agilidad, Fuerza"
 -- /rb sum stat hit
 L["Sum Hit Chance"] = "Res. prob. Golpe"
-L["Hit Chance <- Hit Rating Weapon Skill Rating"] = "prob. Golpe <- Indice Golpe, Indice pericia"
+L["Hit Chance <- Hit Rating Weapon Skill Rating"] = "prob. Golpe <- Índice Golpe, Índice pericia"
 -- /rb sum stat hitspell
 L["Sum Spell Hit Chance"] = "Res. prob. Golpe Hech."
-L["Spell Hit Chance <- Spell Hit Rating"] = "prob. Golpe Hech. <- Indice Golpe Hech."
+L["Spell Hit Chance <- Spell Hit Rating"] = "prob. Golpe Hech. <- Índice Golpe Hech."
 -- /rb sum stat crit
 L["Sum Crit Chance"] = "prob. Critico"
-L["Crit Chance <- Crit Rating Agility, Weapon Skill Rating"] = "prob. Critico <- Indice Critico, Agilidad, Indice de pericia"
+L["Crit Chance <- Crit Rating Agility, Weapon Skill Rating"] = "prob. Critico <- Índice Critico, Agilidad, índice de pericia"
 -- /rb sum stat haste
 L["Sum Haste"] = "Res. Velocidad"
-L["Haste <- Haste Rating"] = "Velocidad <- Indice Velocidad"
+L["Haste <- Haste Rating"] = "Velocidad <- Índice Velocidad"
 -- /rb sum stat critspell
 L["Sum Spell Crit Chance"] = "Res. prob. Critico Hech."
-L["Spell Crit Chance <- Spell Crit Rating Intellect"] = "prob. Critico Hech. <- Indice Critico Hech., Intelecto"
+L["Spell Crit Chance <- Spell Crit Rating Intellect"] = "prob. Critico Hech. <- Índice Critico Hech., Intelecto"
 -- /rb sum stat hastespell
 L["Sum Spell Haste"] = "Res. velocidad Hech."
-L["Spell Haste <- Spell Haste Rating"] = "Velocidad Hech. <- Indice Velocidad Hech."
+L["Spell Haste <- Spell Haste Rating"] = "Velocidad Hech. <- Índice Velocidad Hech."
 -- /rb sum stat mp5
 L["Sum Mana Regen"] = "Res. Regen. mana"
-L["Mana Regen <- Mana Regen Spirit"] = "Regen. mana <- Regen. mana, Espiritu"
+L["Mana Regen <- Mana Regen Spirit"] = "Regen. mana <- Regen. mana, Espíritu"
 -- /rb sum stat mp5nc
 L["Sum Mana Regen while not casting"] = "Res. Regen. mana mientras no se lanza"
-L["Mana Regen while not casting <- Spirit"] = "Regen. mana mientras no se lanza <- Espiritu"
+L["Mana Regen while not casting <- Spirit"] = "Regen. mana mientras no se lanza <- Espíritu"
 -- /rb sum stat hp5
 L["Sum Health Regen"] = "Res. Regen. salud"
 L["Health Regen <- Health Regen"] = "Regen. salud <- Regen. salud"
 -- /rb sum stat hp5oc
 L["Sum Health Regen when out of combat"] = "Res. Regen. salud fuera de combate"
-L["Health Regen when out of combat <- Spirit"] = "Regen. salud fuera de combate <- Espiritu"
+L["Health Regen when out of combat <- Spirit"] = "Regen. salud fuera de combate <- Espíritu"
 -- /rb sum stat armor
 L["Sum Armor"] = "Res. Armadura"
 L["Armor <- Armor from items Armor from bonuses, Agility, Intellect"] = "Armadura <- Armadura de items, Armadura de bonus, Agilidad, Intelecto"
@@ -308,28 +309,28 @@ L["Sum Block Value"] = "Res. Valor Bloqueo"
 L["Block Value <- Block Value Strength"] = "Valor Bloqueo <- Valor Bloqueo, Fuerza"
 -- /rb sum stat dodge
 L["Sum Dodge Chance"] = "Res. prob. Esquivar"
-L["Dodge Chance <- Dodge Rating Agility, Defense Rating"] = "Prob. Esquivar <- Indice Esquivar, Agilidad, Indice Defensa"
+L["Dodge Chance <- Dodge Rating Agility, Defense Rating"] = "Prob. Esquivar <- Índice Esquivar, Agilidad, índice defensa"
 -- /rb sum stat parry
 L["Sum Parry Chance"] = "Res. prob. Parar"
-L["Parry Chance <- Parry Rating Defense Rating"] = "Prob. Parar <- Indice Parar, Indice Defensa"
+L["Parry Chance <- Parry Rating Defense Rating"] = "Prob. Parar <- Índice Parar, índice defensa"
 -- /rb sum stat block
 L["Sum Block Chance"] = "Res. prob Bloqueo"
-L["Block Chance <- Block Rating Defense Rating"] = "Prob. Bloqueo <- Indice Bloqueo, Indice Defensa"
+L["Block Chance <- Block Rating Defense Rating"] = "Prob. Bloqueo <- Índice Bloqueo, índice defensa"
 -- /rb sum stat avoidhit
 L["Sum Hit Avoidance"] = "Res. Elusion golpe"
-L["Hit Avoidance <- Defense Rating"] = "Elusion golpe <- Indice Defensa"
+L["Hit Avoidance <- Defense Rating"] = "Elusion golpe <- índice defensa"
 -- /rb sum stat avoidcrit
 L["Sum Crit Avoidance"] = "Res. Elusion Critico"
-L["Crit Avoidance <- Defense Rating Resilience"] = "Elusion Critico <- Indice Defensa, Temple"
+L["Crit Avoidance <- Defense Rating Resilience"] = "Elusion Critico <- índice defensa, Temple"
 -- /rb sum stat neglectdodge
 L["Sum Dodge Neglect"] = "Res. fallo Esquivar"
-L["Dodge Neglect <- Expertise Weapon Skill Rating"] = "Fallo Esquivar <- Pericia, Indice habilidad arma" -- 2.3.0
+L["Dodge Neglect <- Expertise Weapon Skill Rating"] = "Fallo Esquivar <- Pericia, Índice habilidad arma" -- 2.3.0
 -- /rb sum stat neglectparry
 L["Sum Parry Neglect"] = "Res. fallo Parar"
-L["Parry Neglect <- Expertise Weapon Skill Rating"] = "Fallo Parar <- Pericia, Indice habilidad arma" -- 2.3.0
+L["Parry Neglect <- Expertise Weapon Skill Rating"] = "Fallo Parar <- Pericia, Índice habilidad arma" -- 2.3.0
 -- /rb sum stat neglectblock
 L["Sum Block Neglect"] = "Res. fallo Bloquear"
-L["Block Neglect <- Weapon Skill Rating"] = "Fallo Bloquear <- Indice habilidad arma"
+L["Block Neglect <- Weapon Skill Rating"] = "Fallo Bloquear <- Índice habilidad arma"
 -- /rb sum stat resarcane
 L["Sum Arcane Resistance"] = "Res. Resist. Arcana"
 L["Arcane Resistance Summary"] = "Resumen Resistencia Arcana"
@@ -346,8 +347,8 @@ L["Frost Resistance Summary"] = "Resumen Resistencia Frio"
 L["Sum Shadow Resistance"] = "Res. Resist. Sombras"
 L["Shadow Resistance Summary"] = "Resumen Resistencia Sombras"
 -- /rb sum stat maxdamage
-L["Sum Weapon Max Damage"] = "Res. Max Dano Arma"
-L["Weapon Max Damage Summary"] = "Resumen de Maximo Dano Arma"
+L["Sum Weapon Max Damage"] = "Res. Max Daño Arma"
+L["Weapon Max Damage Summary"] = "Resumen de Maximo Daño Arma"
 -- /rb sum stat pen
 L["Sum Penetration"] = "Res. Penetracion"
 L["Spell Penetration Summary"] = "Resumen Penetracion Hechizos"
@@ -370,53 +371,53 @@ L["Stamina Summary"] = "Resumen Aguante"
 L["Sum Intellect"] = "Res. Intelecto"
 L["Intellect Summary"] = "Resumen Intelecto"
 -- /rb sum statcomp spi
-L["Sum Spirit"] = "Res. Espiritu"
-L["Spirit Summary"] = "Resumen Espiritu"
+L["Sum Spirit"] = "Res. Espíritu"
+L["Spirit Summary"] = "Resumen Espíritu"
 -- /rb sum statcomp hitrating
-L["Sum Hit Rating"] = "Res. Indice Golpe"
-L["Hit Rating Summary"] = "Resumen Indice Golpe"
+L["Sum Hit Rating"] = "Res. Índice Golpe"
+L["Hit Rating Summary"] = "Resumen Índice Golpe"
 -- /rb sum statcomp critrating
-L["Sum Crit Rating"] = "Res. Indice Critico"
-L["Crit Rating Summary"] = "Resumen Indice Critico"
+L["Sum Crit Rating"] = "Res. Índice Critico"
+L["Crit Rating Summary"] = "Resumen Índice Critico"
 -- /rb sum statcomp hasterating
-L["Sum Haste Rating"] = "Res. Indice Velocidad"
-L["Haste Rating Summary"] = "Resumen Indice Velocidad"
+L["Sum Haste Rating"] = "Res. Índice Velocidad"
+L["Haste Rating Summary"] = "Resumen Índice Velocidad"
 -- /rb sum statcomp hitspellrating
 L["Sum Spell Hit Rating"] = "Res. Golpe Hech."
 L["Spell Hit Rating Summary"] = "Resumen Golpe Hech."
 -- /rb sum statcomp critspellrating
-L["Sum Spell Crit Rating"] = "Res. Indice Critico Hech."
-L["Spell Crit Rating Summary"] = "Resumen Indice Critico Hech."
+L["Sum Spell Crit Rating"] = "Res. Índice Critico Hech."
+L["Spell Crit Rating Summary"] = "Resumen Índice Critico Hech."
 -- /rb sum statcomp hastespellrating
-L["Sum Spell Haste Rating"] = "Res. Indice Velocidad Hech."
-L["Spell Haste Rating Summary"] = "Resumen Indice Velocidad Hech."
+L["Sum Spell Haste Rating"] = "Res. Índice Velocidad Hech."
+L["Spell Haste Rating Summary"] = "Resumen Índice Velocidad Hech."
 -- /rb sum statcomp dodgerating
-L["Sum Dodge Rating"] = "Res. Indice Esquivar"
-L["Dodge Rating Summary"] = "Resumen Indice Esquivar"
+L["Sum Dodge Rating"] = "Res. Índice Esquivar"
+L["Dodge Rating Summary"] = "Resumen Índice Esquivar"
 -- /rb sum statcomp parryrating
-L["Sum Parry Rating"] = "Res. Indice Parar"
-L["Parry Rating Summary"] = "Resumen Indice Parar"
+L["Sum Parry Rating"] = "Res. Índice Parar"
+L["Parry Rating Summary"] = "Resumen Índice Parar"
 -- /rb sum statcomp blockrating
-L["Sum Block Rating"] = "Res. Indice Bloquear"
-L["Block Rating Summary"] = "Resumen Indice Bloquear"
+L["Sum Block Rating"] = "Res. Índice Bloquear"
+L["Block Rating Summary"] = "Resumen Índice Bloquear"
 -- /rb sum statcomp res
 L["Sum Resilience"] = "Res. Temple"
 L["Resilience Summary"] = "Resumen Temple"
 -- /rb sum statcomp def
 L["Sum Defense"] = "Res. Defensa"
-L["Defense <- Defense Rating"] = "Defensa <- Indice Defensa"
+L["Defense <- Defense Rating"] = "Defensa <- índice defensa"
 -- /rb sum statcomp wpn
 L["Sum Weapon Skill"] = "Res. Habilidad Arma"
-L["Weapon Skill <- Weapon Skill Rating"] = "Habilidad Arma <- Indice Habilidad Arma"
+L["Weapon Skill <- Weapon Skill Rating"] = "Habilidad Arma <- Índice Habilidad Arma"
 -- /rb sum statcomp exp -- 2.3.0
 L["Sum Expertise"] = "Res. Pericia"
-L["Expertise <- Expertise Rating"] = "Pericia <- Indice Pericia"
+L["Expertise <- Expertise Rating"] = "Pericia <- Índice Pericia"
 -- /rb sum statcomp tp
 L["Sum TankPoints"] = "Res. Ptos. Tanque"
 L["TankPoints <- Health Total Reduction"] = "Ptos. Tanque <- Salud, Total Reduccion"
 -- /rb sum statcomp tr
 L["Sum Total Reduction"] = "Res. Total Reduccion"
-L["Total Reduction <- Armor Dodge, Parry, Block, Block Value, Defense, Resilience, MobMiss, MobCrit, MobCrush, DamageTakenMods"] = "Total Reduccion <- Armadura, Esquivar, Parar, Bloquear, Valor bloqueo, Defensa, Temple, FalloEnemigo, CriticoEnemigo, AplastamientoEnemigo, Modifics.DanoRecibido"
+L["Total Reduction <- Armor Dodge, Parry, Block, Block Value, Defense, Resilience, MobMiss, MobCrit, MobCrush, DamageTakenMods"] = "Total Reduccion <- Armadura, Esquivar, Parar, Bloquear, Valor bloqueo, Defensa, Temple, FalloEnemigo, CriticoEnemigo, AplastamientoEnemigo, Modifics.DañoRecibido"
 -- /rb sum statcomp avoid
 L["Sum Avoidance"] = "Res. Elusion"
 L["Avoidance <- Dodge Parry, MobMiss, Block(Optional)"] = "Elusion <- Esquivar, Parar, FalloEnemigo, Bloqueo(Opcional)"
@@ -539,49 +540,49 @@ L["statList"] = {
 	{pattern = string.lower(SPELL_STAT3_NAME), id = SPELL_STAT3_NAME}, -- Stamina
 	{pattern = string.lower(SPELL_STAT4_NAME), id = SPELL_STAT4_NAME}, -- Intellect
 	{pattern = string.lower(SPELL_STAT5_NAME), id = SPELL_STAT5_NAME}, -- Spirit
-	{pattern = "indice de defensa rating, id = CR_DEFENSE_SKILL"},
-	{pattern = "indice de esquivar", id = CR_DODGE},
-	{pattern = "indice de bloqueo", id = CR_BLOCK}, -- block enchant: "+10 Shield Block Rating"
-	{pattern = "indice de parada", id = CR_PARRY},
+	{pattern = "índice de defensa", id = CR_DEFENSE_SKILL},
+	{pattern = "índice de esquivar", id = CR_DODGE},
+	{pattern = "índice de bloqueo", id = CR_BLOCK}, -- block enchant: "+10 Shield Block Rating"
+	{pattern = "índice de parada", id = CR_PARRY},
 
-	{pattern = "indice de golpe critico con hechizos", id = CR_CRIT_SPELL},
-	{pattern = "indice de golpe critico a distancia", id = CR_CRIT_RANGED},
-	{pattern = "indice de golpe critico cuerpo a cuerpo", id = CR_CRIT_MELEE},
-	{pattern = "indice de golpe", id = CR_CRIT_MELEE},
+	{pattern = "índice de golpe crítico con hechizos", id = CR_CRIT_SPELL},
+	{pattern = "índice de golpe crítico a distancia", id = CR_CRIT_RANGED},
+	{pattern = "índice de golpe crítico cuerpo a cuerpo", id = CR_CRIT_MELEE},
+	{pattern = "índice de golpe crítico", id = CR_CRIT_MELEE},
 
-	{pattern = "indice de golpe con hechizo", id = CR_HIT_SPELL},
-	{pattern = "indice de golpe a distancia", id = CR_HIT_RANGED},
-	{pattern = "indice de golpe cuerpo a cuerpo", id = CR_HIT_MELEE},
-	{pattern = "indice de golpe", id = CR_HIT_MELEE},
+	{pattern = "índice de golpe con hechizo", id = CR_HIT_SPELL},
+	{pattern = "índice de golpe a distancia", id = CR_HIT_RANGED},
+	{pattern = "índice de golpe cuerpo a cuerpo", id = CR_HIT_MELEE},
+	{pattern = "índice de golpe", id = CR_HIT_MELEE},
 
-	{pattern = "indice de temple", id = CR_CRIT_TAKEN_MELEE}, -- resilience is implicitly a rating
+	{pattern = "índice de temple", id = CR_CRIT_TAKEN_MELEE}, -- resilience is implicitly a rating
 
-	{pattern = "indice de celeridad con hechizos", id = CR_HASTE_SPELL},
-	{pattern = "indice de celeridad a distancia", id = CR_HASTE_RANGED},
-	{pattern = "indice de celeridad con cuerpo a cuerpo", id = CR_HASTE_MELEE},
-	{pattern = "indice de celeridad", id = CR_HASTE_MELEE},
-	{pattern = "Aumenta el indice de velocidad de lanzamiento de ataques y de ataque de los miembros del grupo cercanos", id = CR_HASTE_MELEE}, -- [Drums of Battle]
+	{pattern = "índice de celeridad con hechizos", id = CR_HASTE_SPELL},
+	{pattern = "índice de celeridad a distancia", id = CR_HASTE_RANGED},
+	{pattern = "índice de celeridad con cuerpo a cuerpo", id = CR_HASTE_MELEE},
+	{pattern = "índice de celeridad", id = CR_HASTE_MELEE},
+	{pattern = "Aumenta el índice de velocidad de lanzamiento de ataques y de ataque de los miembros del grupo cercanos", id = CR_HASTE_MELEE}, -- [Drums of Battle]
 
-	{pattern = "indice de habilidad", id = CR_WEAPON_SKILL},
-	{pattern = "indice de pericia", id = CR_EXPERTISE},
+	{pattern = "índice de habilidad", id = CR_WEAPON_SKILL},
+	{pattern = "índice de pericia", id = CR_EXPERTISE},
 
-	{pattern = "indice de evasion de golpes cuerpo a cuerpo", id = CR_HIT_TAKEN_MELEE},
-	{pattern = "indice de evasion", id = CR_HIT_TAKEN_MELEE},
+	{pattern = "índice de evasion de golpes cuerpo a cuerpo", id = CR_HIT_TAKEN_MELEE},
+	{pattern = "índice de evasion", id = CR_HIT_TAKEN_MELEE},
 	--[[
-	{pattern = "indice de habilidad con dagas", id = CR_WEAPON_SKILL},
-	{pattern = "indice de habilidad con espadas", id = CR_WEAPON_SKILL},
-	{pattern = "indice de habilidad con espadas de dos manos", id = CR_WEAPON_SKILL},
-	{pattern = "indice de habilidad con hachas", id = CR_WEAPON_SKILL},
-	{pattern = "indice de habilidad con arcos", id = CR_WEAPON_SKILL},
-	{pattern = "indice de habilidad con ballesta", id = CR_WEAPON_SKILL},
-	{pattern = "indice de habilidad con armas de fuego", id = CR_WEAPON_SKILL},
-	{pattern = "indice de habilidad en combate feral", id = CR_WEAPON_SKILL},
-	{pattern = "indice de habilidad con mazas", id = CR_WEAPON_SKILL},
-	{pattern = "indice de habilidad con armas de asta", id = CR_WEAPON_SKILL},
-	{pattern = "indice de habilidad con bastones", id = CR_WEAPON_SKILL},
-	{pattern = "indice de habilidad con hachas de dos manos", id = CR_WEAPON_SKILL},
-	{pattern = "indice de habilidad con mazas de dos manos", id = CR_WEAPON_SKILL},
-	{pattern = "indice de habilidad sin armas", id = CR_WEAPON_SKILL},
+	{pattern = "índice de habilidad con dagas", id = CR_WEAPON_SKILL},
+	{pattern = "índice de habilidad con espadas", id = CR_WEAPON_SKILL},
+	{pattern = "índice de habilidad con espadas de dos manos", id = CR_WEAPON_SKILL},
+	{pattern = "índice de habilidad con hachas", id = CR_WEAPON_SKILL},
+	{pattern = "índice de habilidad con arcos", id = CR_WEAPON_SKILL},
+	{pattern = "índice de habilidad con ballesta", id = CR_WEAPON_SKILL},
+	{pattern = "índice de habilidad con armas de fuego", id = CR_WEAPON_SKILL},
+	{pattern = "índice de habilidad en combate feral", id = CR_WEAPON_SKILL},
+	{pattern = "índice de habilidad con mazas", id = CR_WEAPON_SKILL},
+	{pattern = "índice de habilidad con armas de asta", id = CR_WEAPON_SKILL},
+	{pattern = "índice de habilidad con bastones", id = CR_WEAPON_SKILL},
+	{pattern = "índice de habilidad con hachas de dos manos", id = CR_WEAPON_SKILL},
+	{pattern = "índice de habilidad con mazas de dos manos", id = CR_WEAPON_SKILL},
+	{pattern = "índice de habilidad sin armas", id = CR_WEAPON_SKILL},
 	--]]
 }
 -------------------------
@@ -597,7 +598,7 @@ L["$value HP"] = "$value Vida"
 L["$value MP"] = "$value Mana"
 L["$value AP"] = "$value P.At"
 L["$value RAP"] = "$value P.At Dist"
-L["$value Dmg"] = "$value Dano"
+L["$value Dmg"] = "$value Daño"
 L["$value Heal"] = "$value Sanacion"
 L["$value Armor"] = "$value Armadura"
 L["$value Block"] = "$value Bloqueo"
@@ -606,8 +607,8 @@ L["$value MP5(NC)"] = "$value Mana/5sec(SL)"
 L["$value HP5"] = "$value Vida/5sec"
 L["$value to be Dodged/Parried"] = "$value Esquivado/Parado"
 L["$value to be Crit"] = "$value recibir Crit"
-L["$value Crit Dmg Taken"] = "$value Dano crit recib"
-L["$value DOT Dmg Taken"] = "$value Dano por tiempo recib"
+L["$value Crit Dmg Taken"] = "$value Daño crit recib"
+L["$value DOT Dmg Taken"] = "$value Daño por tiempo recib"
 
 ------------------
 -- Stat Summary --
