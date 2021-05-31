@@ -709,6 +709,7 @@ L["statList"] = {
 	{pattern = "рейтинг меткости %(заклинания%)", id = CR_HIT_SPELL},
 	{pattern = "рейтингу меткости %(заклинания%)", id = CR_HIT_SPELL},
 	{pattern = "рейтинга меткости %(заклинания%)", id = CR_HIT_SPELL},
+	{pattern = "рейтинга меткости заклинаний", id = CR_HIT_SPELL},
 	{pattern = "рейтингу меткости заклинаний", id = CR_HIT_SPELL},
 	{pattern = "Рейтинг меткости (оруж. дальн. боя)", id = CR_HIT_RANGED},
 	{pattern = "рейтинга нанесения удара ближнего боя", id = CR_HIT_MELEE},
