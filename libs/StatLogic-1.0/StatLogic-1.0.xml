@@ -6,5 +6,6 @@
 	<Script file="koKR.lua"/>
 	<Script file="zhCN.lua"/>
 	<Script file="zhTW.lua"/>
+	<Script file="esES.lua"/>
 	<Script file="StatLogic-1.0.lua"/>
 </Ui>
