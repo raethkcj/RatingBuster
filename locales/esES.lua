@@ -442,8 +442,8 @@ L["Meta Socket"] = EMPTY_SOCKET_META
 -----------------------
 -- Item Level and ID --
 -----------------------
-L["ItemLevel: "] = "NivelItem"
-L["ItemID: "] = "IDItem"
+L["ItemLevel: "] = "Nivel de objeto "
+L["ItemID: "] = "ItemID: "
 -----------------------
 -- Matching Patterns --
 -----------------------
