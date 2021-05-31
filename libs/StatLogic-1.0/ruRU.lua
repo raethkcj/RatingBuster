@@ -247,11 +247,11 @@ L["StatIDLookup"] = {
 	["Increases mount speed%"] = {"MOUNT_SPEED"}, -- [Highlander's Plate Greaves] ID: 20048
 
 	["All Stats"] = {"STR", "AGI", "STA", "INT", "SPI",},
-	["Strength"] = {"STR",},
-	["Agility"] = {"AGI",},
-	["Stamina"] = {"STA",},
-	["Intellect"] = {"INT",},
-	["Spirit"] = {"SPI",},
+	["к силе"] = {"STR",},
+	["к ловкости"] = {"AGI",},
+	["к выносливости"] = {"STA",},
+	["к интеллекту"] = {"INT",},
+	["к духу"] = {"SPI",},
 
 	["Arcane Resistance"] = {"ARCANE_RES",},
 	["Fire Resistance"] = {"FIRE_RES",},
