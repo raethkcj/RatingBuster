@@ -550,7 +550,10 @@ local options = {
 					type = 'select',
 					name = L["Display style for diff value"],
 					desc = L["Display diff values in the main tooltip or only in compare tooltips"],
-					values = {"comp", "main"},
+					values = {
+						["comp"] = "Compare",
+						["main"] = "Main"
+					},
 				},
 				space = {
 					type = 'group',
