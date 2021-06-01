@@ -150,12 +150,12 @@ local MethodList = {
 		-- socketing interface
 		"SetSocketGem",
 		"SetExistingSocketGem",
-		-- 2.1.0
-		"SetHyperlinkCompareItem",
 		-- 2.3.0
 		"SetGuildBankItem",
 		-- 4.2.0
 		"SetItemByID",
+		-- 6.0.2
+		"SetCompareItem",
 	},
 	buff = {
 		"SetPlayerBuff",
