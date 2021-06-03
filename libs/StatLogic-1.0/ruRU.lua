@@ -47,16 +47,16 @@ L["Exclude"] = {
 	[ITEM_DISENCHANT_NOT_DISENCHANTABLE] = true, -- ITEM_DISENCHANT_NOT_DISENCHANTABLE = "Cannot be disenchanted"; -- Items which cannot be disenchanted ever
 	["Disen"] = true, -- ITEM_DISENCHANT_ANY_SKILL = "Disenchantable"; -- Items that can be disenchanted at any skill level
 	-- ITEM_DISENCHANT_MIN_SKILL = "Disenchanting requires %s (%d)"; -- Minimum enchanting skill needed to disenchant
-	["Durat"] = true, -- ITEM_DURATION_DAYS = "Duration: %d days";
-	["<Made"] = true, -- ITEM_CREATED_BY = "|cff00ff00<Made by %s>|r"; -- %s is the creator of the item
-	["Coold"] = true, -- ITEM_COOLDOWN_TIME_DAYS = "Cooldown remaining: %d day";
-	["Uniqu"] = true, -- Unique (20) -- ITEM_UNIQUE = "Unique"; -- Item is unique -- ITEM_UNIQUE_MULTIPLE = "Unique (%d)"; -- Item is unique
-	["Requi"] = true, -- Requires Level xx -- ITEM_MIN_LEVEL = "Requires Level %d"; -- Required level to use the item
-	["\nRequ"] = true, -- Requires Level xx -- ITEM_MIN_SKILL = "Requires %s (%d)"; -- Required skill rank to use the item
-	["Class"] = true, -- Classes: xx -- ITEM_CLASSES_ALLOWED = "Classes: %s"; -- Lists the classes allowed to use this item
-	["Races:"] = true, -- Races: xx (vendor mounts) -- ITEM_RACES_ALLOWED = "Races: %s"; -- Lists the races allowed to use this item
-	["Use: "] = true, -- Use: -- ITEM_SPELL_TRIGGER_ONUSE = "Use:";
-	["Chanc"] = true, -- Chance On Hit: -- ITEM_SPELL_TRIGGER_ONPROC = "Chance on hit:";
+	["Durat"] = true, -- ITEM_DURATION_DAYS = "Длительность, дней: %d";
+	["<Made"] = true, -- ITEM_CREATED_BY = "|cff00ff00<Создатель: %s>|r"; -- %s is the creator of the item
+	["Coold"] = true, -- ITEM_COOLDOWN_TIME_DAYS = "Откат, дней: %d day";
+	["Uniqu"] = true, -- Unique (20) -- ITEM_UNIQUE = "Уникальная"; -- Item is unique -- ITEM_UNIQUE_MULTIPLE = "Уникальная (%d)"; -- Item is unique
+	["Requi"] = true, -- Requires Level xx -- ITEM_MIN_LEVEL = "Требуется уровень %d"; -- Required level to use the item
+	["\nRequ"] = true, -- Requires Level xx -- ITEM_MIN_SKILL = "Требуется %s (%d)"; -- Required skill rank to use the item
+	["Class"] = true, -- Classes: xx -- ITEM_CLASSES_ALLOWED = "Класс: %s"; -- Lists the classes allowed to use this item
+	["Races:"] = true, -- Races: xx (vendor mounts) -- ITEM_RACES_ALLOWED = "Раса: %s"; -- Lists the races allowed to use this item
+	["Use: "] = true, -- Use: -- ITEM_SPELL_TRIGGER_ONUSE = "Использование:";
+	["Chanc"] = true, -- Chance On Hit: -- ITEM_SPELL_TRIGGER_ONPROC = "Шанс при ударе:";
 	-- Set Bonuses
 	-- ITEM_SET_BONUS = "Set: %s";
 	-- ITEM_SET_BONUS_GRAY = "(%d) Set: %s";
@@ -70,7 +70,7 @@ L["Exclude"] = {
 	["(7) S"] = true,
 	["(8) S"] = true,
 	-- Equip type
-	["Projectile"] = true, -- Ice Threaded Arrow ID:19316
+	["Снаряд"] = true, -- Ice Threaded Arrow ID:19316
 	[INVTYPE_AMMO] = true,
 	[INVTYPE_HEAD] = true,
 	[INVTYPE_NECK] = true,
@@ -134,40 +134,41 @@ L["WholeTextLookup"] = {
 	[EMPTY_SOCKET_BLUE] = {["EMPTY_SOCKET_BLUE"] = 1}, -- EMPTY_SOCKET_BLUE = "Blue Socket";
 	[EMPTY_SOCKET_META] = {["EMPTY_SOCKET_META"] = 1}, -- EMPTY_SOCKET_META = "Meta Socket";
 
-	["Minor Wizard Oil"] = {["SPELL_DMG"] = 8, ["HEAL"] = 8}, -- ID: 20744
-	["Lesser Wizard Oil"] = {["SPELL_DMG"] = 16, ["HEAL"] = 16}, -- ID: 20746
-	["Wizard Oil"] = {["SPELL_DMG"] = 24, ["HEAL"] = 24}, -- ID: 20750
-	["Brilliant Wizard Oil"] = {["SPELL_DMG"] = 36, ["HEAL"] = 36, ["SPELL_CRIT_RATING"] = 14}, -- ID: 20749
-	["Superior Wizard Oil"] = {["SPELL_DMG"] = 42, ["HEAL"] = 42}, -- ID: 22522
-	["Blessed Wizard Oil"] = {["SPELL_DMG_UNDEAD"] = 60}, -- ID: 23123
+	["Слабое волшебное масло"] = {["SPELL_DMG"] = 8, ["HEAL"] = 8}, -- ID: 20744
+	["Простое волшебное масло"] = {["SPELL_DMG"] = 16, ["HEAL"] = 16}, -- ID: 20746
+	["Волшебное масло"] = {["SPELL_DMG"] = 24, ["HEAL"] = 24}, -- ID: 20750
+	["Блестящее волшебное масло"] = {["SPELL_DMG"] = 36, ["HEAL"] = 36, ["SPELL_CRIT_RATING"] = 14}, -- ID: 20749
+	["Превосходное волшебное масло"] = {["SPELL_DMG"] = 42, ["HEAL"] = 42}, -- ID: 22522
+	["Благословленное волшебное масло"] = {["SPELL_DMG_UNDEAD"] = 60}, -- ID: 23123
 
-	["Minor Mana Oil"] = {["MANA_REG"] = 4}, -- ID: 20745
-	["Lesser Mana Oil"] = {["MANA_REG"] = 8}, -- ID: 20747
-	["Brilliant Mana Oil"] = {["MANA_REG"] = 12, ["HEAL"] = 25}, -- ID: 20748
-	["Superior Mana Oil"] = {["MANA_REG"] = 14}, -- ID: 22521
+	["Слабое масло маны"] = {["MANA_REG"] = 4}, -- ID: 20745
+	["Простое масло маны"] = {["MANA_REG"] = 8}, -- ID: 20747
+	["Блестящее масло маны"] = {["MANA_REG"] = 12, ["HEAL"] = 25}, -- ID: 20748
+	["Превосходное масло маны"] = {["MANA_REG"] = 14}, -- ID: 22521
 
-	["Eternium Line"] = {["FISHING"] = 5}, --
-	["Savagery"] = {["AP"] = 70}, --
-	["Vitality"] = {["MANA_REG"] = 4, ["HEALTH_REG"] = 4}, -- Enchant Boots - Vitality http://wow.allakhazam.com/db/spell.html?wspell=27948
-	["Soulfrost"] = {["SHADOW_SPELL_DMG"] = 54, ["FROST_SPELL_DMG"] = 54}, --
-	["Sunfire"] = {["ARCANE_SPELL_DMG"] = 50, ["FIRE_SPELL_DMG"] = 50}, --
+	["Этерниевая леска"] = {["FISHING"] = 5}, --
+	["Жестокость"] = {["AP"] = 70}, --
+	["Живучесть I"] = {["MANA_REG"] = 4, ["HEALTH_REG"] = 4}, -- Enchant Boots - Vitality http://wow.allakhazam.com/db/spell.html?wspell=27948
+	["Ледяная душа"] = {["SHADOW_SPELL_DMG"] = 54, ["FROST_SPELL_DMG"] = 54}, --
+	["Солнечный огонь"] = {["ARCANE_SPELL_DMG"] = 50, ["FIRE_SPELL_DMG"] = 50}, --
 
-	["Mithril Spurs"] = {["MOUNT_SPEED"] = 4}, -- Mithril Spurs
-	["Minor Mount Speed Increase"] = {["MOUNT_SPEED"] = 2}, -- Enchant Gloves - Riding Skill
-	["Equip: Run speed increased slightly."] = {["RUN_SPEED"] = 8}, -- [Highlander's Plate Greaves] ID: 20048
-	["Run speed increased slightly"] = {["RUN_SPEED"] = 8}, --
-	["Minor Speed Increase"] = {["RUN_SPEED"] = 8}, -- Enchant Boots - Minor Speed "Minor Speed Increase" http://wow.allakhazam.com/db/spell.html?wspell=13890
-	["Minor Speed"] = {["RUN_SPEED"] = 8}, -- Enchant Boots - Cat's Swiftness "Minor Speed and +6 Agility" http://wow.allakhazam.com/db/spell.html?wspell=34007
-	["Surefooted"] = {["MELEE_HIT_RATING"] = 10}, -- Enchant Boots - Surefooted "Surefooted" http://wow.allakhazam.com/db/spell.html?wspell=27954
+	["Мифриловые шпоры"] = {["MOUNT_SPEED"] = 4}, -- Mithril Spurs
+	["Небольшое ускорение верховой езды"] = {["MOUNT_SPEED"] = 2}, -- Enchant Gloves - Riding Skill
+	["Надето: небольшое ускорение бега."] = {["RUN_SPEED"] = 8}, -- [Highlander's Plate Greaves] ID: 20048
+	["Небольшое ускорениеускорение бега"] = {["RUN_SPEED"] = 8}, --
+	["Небольшое увеличение скорости"] = {["RUN_SPEED"] = 8}, -- Enchant Boots - Minor Speed "Minor Speed Increase" http://wow.allakhazam.com/db/spell.html?wspell=13890
+	["Небольшое увеличение скорости и +6 к ловкости"] = {["RUN_SPEED"] = 8}, -- Enchant Boots - Cat's Swiftness "Minor Speed and +6 Agility" http://wow.allakhazam.com/db/spell.html?wspell=34007
+	["Верный шаг"] = {["MELEE_HIT_RATING"] = 10}, -- Enchant Boots - Surefooted "Surefooted" http://wow.allakhazam.com/db/spell.html?wspell=27954
 
-	["Subtlety"] = {["THREAT_MOD"] = -2}, -- Enchant Cloak - Subtlety
-	["2% Reduced Threat"] = {["THREAT_MOD"] = -2}, -- StatLogic:GetSum("item:23344:2832")
-	["Equip: Allows underwater breathing."] = false, -- [Band of Icy Depths] ID: 21526
-	["Allows underwater breathing"] = false, --
-	["Equip: Immune to Disarm."] = false, -- [Stronghold Gauntlets] ID: 12639
-	["Immune to Disarm"] = false, --
-	["Crusader"] = false, -- Enchant Crusader
-	["Lifestealing"] = false, -- Enchant Crusader
+	["Скрытность"] = {["THREAT_MOD"] = -2}, -- Enchant Cloak - Subtlety
+	["На 2% уменьшена угроза"] = {["THREAT_MOD"] = -2}, -- StatLogic:GetSum("item:23344:2832")
+	["Надето: Позволяет дышать под водой."] = false, -- [Band of Icy Depths] ID: 21526
+	["Позволяет дышать под водой"] = false, --
+	--	["Equip: Immune to Disarm."] = false, -- [Stronghold Gauntlets] ID: 12639 -- Fixed for TBC Classic 2.5.1: no longer immune.
+	["Надето: Сокращает время разоружения на 50%."] = false, -- [Stronghold Gauntlets] ID: 12639
+	["Сокращает время разоружения на 50%"] = false, --
+	["Рыцарь"] = false, -- Enchant Crusader
+	["Вампиризм"] = false, -- Enchant Crusader
 }
 ----------------------------
 -- Single Plus Stat Check --
@@ -185,7 +186,7 @@ L["SinglePlusStatCheck"] = "^([%+%-]%d+) (.-)%.?$"
 -- stat1, value, stat2 = strfind
 -- stat = stat1..stat2
 -- "^Equip: (.-) by u?p? ?t?o? ?(%d+) ?(.-)%.?$"
-L["SingleEquipStatCheck"] = "^Equip: (.-) by u?p? ?t?o? ?(%d+) ?(.-)%.?$"
+L["SingleEquipStatCheck"] = "^Надето: (.-) by u?p? ?t?o? ?(%d+) ?(.-)%.?$"
 -------------
 -- PreScan --
 -------------
