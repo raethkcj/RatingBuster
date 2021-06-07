@@ -235,7 +235,7 @@ local function InitializeHook(tipType)
 	-- Walk through all frames
 	local tooltip = EnumerateFrames()
 	while tooltip do
-	    if tooltip:GetObjectType() == "GameTooltip" then
+	    if tooltip.GetObjectType and tooltip:GetObjectType() == "GameTooltip" then
 	        local name = tooltip:GetName()
 	        if name then
 		        for _, v in ipairs(TooltipList[tipType]) do
