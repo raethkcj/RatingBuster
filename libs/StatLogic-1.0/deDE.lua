@@ -343,6 +343,7 @@ L["StatIDLookup"] = {
 	["kritische Trefferwertung"] = {"MELEE_CRIT_RATING",},
 	["Erhöht kritische Trefferwertung"] = {"MELEE_CRIT_RATING",},
 	["Erhöht Eure kritische Trefferwertung"] = {"MELEE_CRIT_RATING",},
+	["Erhöht die kritische Trefferwertung"] = {"MELEE_CRIT_RATING",},
 	["kritische Zaubertrefferwertung"] = {"SPELL_CRIT_RATING",},
 	["Erhöht kritische Zaubertrefferwertung"] = {"SPELL_CRIT_RATING",},
 	["Erhöht Eure kritische Zaubertrefferwertung"] = {"SPELL_CRIT_RATING",},
