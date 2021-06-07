@@ -1883,7 +1883,7 @@ function RatingBuster:ProcessText(text)
 						-- Build replacement string
 						if num.addInfo == "AfterNumber" then -- Add after number
 							infoString = gsub(infoString, "%%", "%%%%%%%%") -- sub "%" with "%%%%"
-							infoString = gsub(strsub(text, s, e), "%d+", "%0 "..infoString, 1) -- sub "33" with "33 (3.33%)"
+							infoString = gsub(strsub(text, s, e), num.pattern, "%0 "..infoString, 1) -- sub "33" with "33 (3.33%)"
 						else -- Add after stat
 							infoString = gsub(infoString, "%%", "%%%%")
 							s, e = strfind(lowerText, stat.pattern)
