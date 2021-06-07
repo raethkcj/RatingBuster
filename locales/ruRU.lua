@@ -689,6 +689,8 @@ L["statList"] = {
 	{pattern = "рейтинга критического удара заклинаниями", id = CR_CRIT_SPELL},
 	{pattern = "рейтингу критического удара заклинаниями", id = CR_CRIT_SPELL},
 	{pattern = "рейтинг критического удара заклинаниями", id = CR_CRIT_SPELL},
+	{pattern = "критический удар %(заклинания%)", id = CR_CRIT_SPELL},
+	{pattern = "меткость %(заклинания%)", id = CR_HIT_SPELL},
 	{pattern = "spell critical hit rating", id = CR_CRIT_SPELL},
 	{pattern = "spell critical rating", id = CR_CRIT_SPELL},
 	{pattern = "spell crit rating", id = CR_CRIT_SPELL},
