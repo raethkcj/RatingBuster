@@ -3149,7 +3149,7 @@ function StatLogic:GetAPPerAgi(class)
 		class = ClassNameToID[playerClass]
 	end
 	-- Check druid cat form
-	if (class == 9) and GetShapeshiftForm() == 2 then		-- ["Cat Form"]
+	if (class == 9) and GetShapeshiftForm() == 2 or GetShapeshiftForm() == 3 then		-- ["Cat Form"]
 		return 1
 	end
 	return APPerAgi[class], "AP"
