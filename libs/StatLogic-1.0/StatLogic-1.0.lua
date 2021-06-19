@@ -155,6 +155,7 @@ local UnitLevel = UnitLevel
 local UnitStat = UnitStat
 local GetShapeshiftForm = GetShapeshiftForm
 local GetShapeshiftFormInfo = GetShapeshiftFormInfo
+local GetShapeShiftFormID = GetShapeShiftFormID
 local GetTalentInfo = GetTalentInfo
 wowBuildNo = select(2, GetBuildInfo()) -- need a global for loadstring
 local wowBuildNo = wowBuildNo
@@ -3149,7 +3150,7 @@ function StatLogic:GetAPPerAgi(class)
 		class = ClassNameToID[playerClass]
 	end
 	-- Check druid cat form
-	if (class == 9) and GetShapeshiftForm() == 2 then		-- ["Cat Form"]
+	if (class == 9) and (GetShapeshiftFormID() == CAT_FORM) then		-- ["Cat Form"]
 		return 1
 	end
 	return APPerAgi[class], "AP"
