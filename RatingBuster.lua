@@ -63,7 +63,7 @@ local strjoin = strjoin
 local unpack = unpack
 local tonumber = tonumber
 local UnitStat = UnitStat
-local wowBuildNo = select(2, GetBuildInfo())
+local tocversion = select(4, GetBuildInfo())
 
 local GetItemInfoCached = setmetatable({}, { __index = function(self, n)
 	self[n] = {GetItemInfo(n)} -- store in cache
@@ -1780,7 +1780,7 @@ function RatingBuster:ProcessText(text)
 						end
 						if profileDB.showMP5FromInt then
 							local effect
-							if wowBuildNo >= '7897' then -- 2.4.0
+							if tocversion >= 20400 then -- 2.4.0
 								local _, int = UnitStat("player", 4)
 								local _, spi = UnitStat("player", 5)
 								effect = value * StatLogic:GetStatMod("ADD_MANA_REG_MOD_INT") + (StatLogic:GetNormalManaRegenFromSpi(spi, int + value, calcLevel) - StatLogic:GetNormalManaRegenFromSpi(spi, int, calcLevel)) * StatLogic:GetStatMod("ADD_MANA_REG_MOD_NORMAL_MANA_REG")
@@ -1793,7 +1793,7 @@ function RatingBuster:ProcessText(text)
 						end
 						if profileDB.showMP5NCFromInt then
 							local effect
-							if wowBuildNo >= '7897' then -- 2.4.0
+							if tocversion >= 20400 then -- 2.4.0
 								local _, int = UnitStat("player", 4)
 								local _, spi = UnitStat("player", 5)
 								effect = value * StatLogic:GetStatMod("ADD_MANA_REG_MOD_INT") + StatLogic:GetNormalManaRegenFromSpi(spi, int + value, calcLevel) - StatLogic:GetNormalManaRegenFromSpi(spi, int, calcLevel)
@@ -1831,7 +1831,7 @@ function RatingBuster:ProcessText(text)
 						if profileDB.showMP5FromSpi then
 							local mod = StatLogic:GetStatMod("ADD_MANA_REG_MOD_NORMAL_MANA_REG")
 							local effect
-							if wowBuildNo >= '7897' then -- 2.4.0
+							if tocversion >= 20400 then -- 2.4.0
 								effect = StatLogic:GetNormalManaRegenFromSpi(value, nil, calcLevel) * mod
 							else
 								effect = StatLogic:GetNormalManaRegenFromSpi(value, class) * mod
@@ -1842,7 +1842,7 @@ function RatingBuster:ProcessText(text)
 						end
 						if profileDB.showMP5NCFromSpi then
 							local effect
-							if wowBuildNo >= '7897' then -- 2.4.0
+							if tocversion >= 20400 then -- 2.4.0
 								effect = StatLogic:GetNormalManaRegenFromSpi(value, nil, calcLevel)
 							else
 								effect = StatLogic:GetNormalManaRegenFromSpi(value, class)
@@ -2027,7 +2027,7 @@ local summaryCalcData = {
 		option = "sumMP5",
 		name = "MANA_REG",
 		func = function(sum)
-			if wowBuildNo >= '7897' then -- 2.4.0
+			if tocversion >= 20400 then -- 2.4.0
 				local _, int = UnitStat("player", 4)
 				local _, spi = UnitStat("player", 5)
 				return (sum["MANA_REG"] or 0)
@@ -2046,7 +2046,7 @@ local summaryCalcData = {
 		option = "sumMP5NC",
 		name = "MANA_REG_NOT_CASTING",
 		func = function(sum)
-			if wowBuildNo >= '7897' then -- 2.4.0
+			if tocversion >= 20400 then -- 2.4.0
 				local _, int = UnitStat("player", 4)
 				local _, spi = UnitStat("player", 5)
 				return (sum["MANA_REG"] or 0)
