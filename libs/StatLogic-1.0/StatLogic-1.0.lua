@@ -157,8 +157,8 @@ local GetShapeshiftForm = GetShapeshiftForm
 local GetShapeshiftFormInfo = GetShapeshiftFormInfo
 local GetShapeShiftFormID = GetShapeShiftFormID
 local GetTalentInfo = GetTalentInfo
-wowBuildNo = select(2, GetBuildInfo()) -- need a global for loadstring
-local wowBuildNo = wowBuildNo
+tocversion = select(4, GetBuildInfo()) -- need a global for loadstring
+local tocversion = tocversion
 
 -- Cached GetItemInfo
 local GetItemInfoCached = setmetatable({}, { __index = function(self, n)
@@ -1049,7 +1049,7 @@ local StatModTable = {
 				["rank"] = {
 					0.05, 0.10, 0.15,
 				},
-				["condition"] = "wowBuildNo < '7382'",
+				["condition"] = "tocversion < 20300",
 			},
 			[2] = {
 				["tab"] = 3,
@@ -1057,7 +1057,7 @@ local StatModTable = {
 				["rank"] = {
 					0.1, 0.2, 0.3,
 				},
-				["condition"] = "wowBuildNo >= '7382'",
+				["condition"] = "tocversion >= 20300",
 			},
 		},
 		-- Druid: Dreamstate (Rank 3) - 1,17
@@ -1233,7 +1233,7 @@ local StatModTable = {
 					0.04, 0.08, 0.12, 0.16, 0.2,
 				},
 				["buff"] = GetSpellInfo(32356),		-- ["Cat Form"],
-				["condition"] = "wowBuildNo < '7382'",
+				["condition"] = "tocversion < 20300",
 			},
 			[2] = {
 				["tab"] = 2,
@@ -1254,7 +1254,7 @@ local StatModTable = {
 					0.02, 0.04, 0.06, 0.08, 0.1,
 				},
 				["buff"] = GetSpellInfo(32356),		-- ["Cat Form"],
-				["condition"] = "wowBuildNo >= '7382'",
+				["condition"] = "tocversion >= 20300",
 			},
 		},
 		-- Druid: Survival of the Fittest (Rank 3) - 2,16
@@ -1506,7 +1506,7 @@ local StatModTable = {
 				["rank"] = {
 					0.05, 0.1, 0.15,
 				},
-				["condition"] = "wowBuildNo < '7382'",
+				["condition"] = "tocversion < 20300",
 			},
 			[2] = {
 				["tab"] = 1,
@@ -1514,7 +1514,7 @@ local StatModTable = {
 				["rank"] = {
 					0.1, 0.2, 0.3,
 				},
-				["condition"] = "wowBuildNo >= '7382'",
+				["condition"] = "tocversion >= 20300",
 			},
 		},
 		-- Mage: Mind Mastery (Rank 5) - 1,22
@@ -1761,7 +1761,7 @@ local StatModTable = {
 				["rank"] = {
 					0.02, 0.04, 0.06, 0.08, 0.1,
 				},
-				["condition"] = "wowBuildNo >= '7382'",
+				["condition"] = "tocversion >= 20300",
 			},
 		},
 		-- Paladin: Divine Intellect (Rank 5) - 1,2
@@ -1798,7 +1798,7 @@ local StatModTable = {
 				["rank"] = {
 					0.05, 0.1, 0.15,
 				},
-				["condition"] = "wowBuildNo < '7382'",
+				["condition"] = "tocversion < 20300",
 			},
 			[2] = {
 				["tab"] = 1,
@@ -1806,7 +1806,7 @@ local StatModTable = {
 				["rank"] = {
 					0.1, 0.2, 0.3,
 				},
-				["condition"] = "wowBuildNo >= '7382'",
+				["condition"] = "tocversion >= 20300",
 			},
 		},
 		-- Priest: Spiritual Guidance (Rank 5) - 2,14
@@ -3701,7 +3701,7 @@ end
 
 -- New mana regen from spirit code for 2.4
 local BaseManaRegenPerSpi
-if wowBuildNo >= '7897' then
+if tocversion >= 20400 then
 	--[[---------------------------------
 	{	:GetNormalManaRegenFromSpi(spi, [int], [level])
 	-------------------------------------
