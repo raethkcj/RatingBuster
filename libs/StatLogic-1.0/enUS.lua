@@ -419,6 +419,7 @@ L["StatIDLookup"] = {
 	["Spell Critical strike rating"] = {"SPELL_CRIT_RATING",},
 	["Spell Critical Rating"] = {"SPELL_CRIT_RATING",},
 	["Spell Crit Rating"] = {"SPELL_CRIT_RATING",},
+	["Spell Critical"] = {"SPELL_CRIT_RATING",},
 	["Increases your spell critical strike rating"] = {"SPELL_CRIT_RATING",},
 	["Increases the spell critical strike rating of all party members within 30 yards"] = {"SPELL_CRIT_RATING",},
 	["Improves spell critical strike rating"] = {"SPELL_CRIT_RATING",},

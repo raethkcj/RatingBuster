@@ -543,6 +543,7 @@ L["statList"] = {
 	{pattern = "spell critical hit rating", id = CR_CRIT_SPELL},
 	{pattern = "spell critical rating", id = CR_CRIT_SPELL},
 	{pattern = "spell crit rating", id = CR_CRIT_SPELL},
+	{pattern = "spell critical", id = CR_CRIT_SPELL},
 	{pattern = "ranged critical strike rating", id = CR_CRIT_RANGED},
 	{pattern = "ranged critical hit rating", id = CR_CRIT_RANGED},
 	{pattern = "ranged critical rating", id = CR_CRIT_RANGED},
