@@ -333,6 +333,7 @@ L["StatIDLookup"] = {
 	["Trefferwertung"] = {"MELEE_HIT_RATING",},
 	["Erhöht Trefferwertung"] = {"MELEE_HIT_RATING",}, -- ITEM_MOD_HIT_RATING
 	["Erhöht Eure Trefferwertung"] = {"MELEE_HIT_RATING",}, -- ITEM_MOD_HIT_MELEE_RATING
+	["Erhöht die Trefferwertung"] = {"MELEE_HIT_RATING",},
 	["Zaubertrefferwertung"] = {"SPELL_HIT_RATING",},
 	["Erhöht Zaubertrefferwertung"] = {"SPELL_HIT_RATING",}, -- ITEM_MOD_HIT_SPELL_RATING
 	["Erhöht Eure Zaubertrefferwertung"] = {"SPELL_HIT_RATING",},
