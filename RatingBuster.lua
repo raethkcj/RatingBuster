@@ -1294,6 +1294,7 @@ PLAYER_LOGIN - Most information about the game world should now be available to 
 -- OnInitialize(name) called at ADDON_LOADED
 function RatingBuster:RefreshConfig()
 	profileDB = self.db.profile
+	wipe(cache)
 end
 
 function RatingBuster:OnInitialize()
