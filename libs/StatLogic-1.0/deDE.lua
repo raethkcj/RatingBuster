@@ -348,6 +348,7 @@ L["StatIDLookup"] = {
 	["kritische Zaubertrefferwertung"] = {"SPELL_CRIT_RATING",},
 	["Erhöht kritische Zaubertrefferwertung"] = {"SPELL_CRIT_RATING",},
 	["Erhöht Eure kritische Zaubertrefferwertung"] = {"SPELL_CRIT_RATING",},
+	["Erhöht die kritische Zaubertrefferwertung"] = {"SPELL_CRIT_RATING",},
 	["Erhöht die kritische Zaubertrefferwertung aller Gruppenmitglieder innerhalb von 30 Metern"] = {"SPELL_CRIT_RATING",},
 	["Erhöht Eure kritische Distanztrefferwertung"] = {"RANGED_CRIT_RATING",}, -- Fletcher's Gloves ID:7348
 
