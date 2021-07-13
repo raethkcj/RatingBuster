@@ -337,6 +337,7 @@ L["StatIDLookup"] = {
 	["Zaubertrefferwertung"] = {"SPELL_HIT_RATING",},
 	["Erhöht Zaubertrefferwertung"] = {"SPELL_HIT_RATING",}, -- ITEM_MOD_HIT_SPELL_RATING
 	["Erhöht Eure Zaubertrefferwertung"] = {"SPELL_HIT_RATING",},
+	["Erhöht die Zaubertrefferwertung"] = {"SPELL_HIT_RATING",},
 	["Distanztrefferwertung"] = {"RANGED_HIT_RATING",},
 	["Erhöht Distanztrefferwertung"] = {"RANGED_HIT_RATING",}, -- ITEM_MOD_HIT_RANGED_RATING
 	["Erhöht Eure Distanztrefferwertung"] = {"RANGED_HIT_RATING",},
