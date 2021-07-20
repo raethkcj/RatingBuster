@@ -155,6 +155,7 @@ L["PreScanPatterns"] = {
 	["^Équipé\194\160: Rend (%d+) points de mana toutes les 5 seco?n?d?e?s?%.?$"]= "MANA_REG",
 	["Renforcé %(%+(%d+) Armure%)"]= "ARMOR_BONUS",
 	["Lunette %(%+(%d+) points? de dégâts?%)"]="RANGED_AP",
+	["^Dégâts : %+?%d+ %- (%d+)$"] = "MAX_DAMAGE",
 	["^%(([%d%,]+) dégâts par seconde%)$"] = "DPS",
 
 	-- Exclude
@@ -438,10 +439,7 @@ L["StatIDLookup"] = {
 	["le score de compétence combat farouche"] = {"FERAL_WEAPON_RATING"},
 	["le score de la compétence mains nues"] = {"FIST_WEAPON_RATING"},
 
-	--ToDo
-	--["Increases gun skill rating"] = {"GUN_WEAPON_RATING"},
-	--["Increases Crossbow skill rating"] = {"CROSSBOW_WEAPON_RATING"},
-	--["Increases Bow skill rating"] = {"BOW_WEAPON_RATING"},
+	["le score d’expertise"] = {"EXPERTISE_RATING"},
 
 	--ToDo
 	-- Exclude
