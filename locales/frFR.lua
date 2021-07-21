@@ -2,6 +2,7 @@
 Name: RatingBuster frFR locale (incomplete)
 Revision: $Revision: 73696 $
 Translated by: Tixu@Curse, Silaor, renchap
+
 --]]
 
 local L = LibStub("AceLocale-3.0"):NewLocale("RatingBuster", "frFR")
@@ -47,17 +48,17 @@ L["Options for Rating display"] = "Sélectionne les différents bonus liés aux 
 L["Show Rating conversions"] = "Aperçu conversion"
 L["Show Rating conversions in tooltips"] = "Ajoute la conversion des valeurs des différents scores dans les info-bulles des objets.\n\nCette case est requise pour l'affichage des scores détaillés."
 -- /rb rating detail
-L["Show detailed conversions text"] = "Résilience détaillée" --couldn't make this setting to apply to expertise, therefore i'm wording it for resilience only for now
-L["Show detailed text for Resiliance and Expertise conversions"] = "Convertis le score de résilience en pourcentage de réduction de coups critiques, réduction des dégâts critiques et réduction des dégâts périodiques."
+L["Show detailed conversions text"] = "Textes plus détaillés" 
+L["Show detailed text for Resiliance and Expertise conversions"] = "Rend la conversion des score de résilience et d'expertise plus précise.\n\nLa résilience indiquera le pourcentage d'évitement des coups critiques, réduction des dégâts critiques et réduction des dégâts périodiques.\n\nL'expertise indiquera le pourcentage de réduction du risque d'être esquivé et paré."
 -- /rb rating def
 L["Defense breakdown"] = "Défense détaillée"
-L["Convert Defense into Crit Avoidance, Hit Avoidance, Dodge, Parry and Block"] = "Convertis le score de défense en pourcentage de chance d'esquive, parade, blocage, réduction de coups critiques et réduction de toucher."
+L["Convert Defense into Crit Avoidance, Hit Avoidance, Dodge, Parry and Block"] = "Convertis le score de défense en pourcentage de chance d'esquive, parade, blocage, évitement des coups et évitement des coups critiques."
 -- /rb rating wpn
 L["Weapon Skill breakdown"] = "Comp. d'arme détaillée"
 L["Convert Weapon Skill into Crit, Hit, Dodge Neglect, Parry Neglect and Block Neglect"] = "Convertis le score de compétence d'arme en pourcentage de coups critiques, toucher, réduction d'esquive, réduction de parade et réduction de blocage."
 -- /rb rating exp -- 2.3.0
 L["Expertise breakdown"] = "Expertise détaillée"
-L["Convert Expertise into Dodge Neglect and Parry Neglect"] = "Convertis le score d'expertise en pourcentage de réduction d'esquive et réduction de parade."
+L["Convert Expertise into Dodge Neglect and Parry Neglect"] = "Convertis le score d'expertise en un pourcentage de réduction d'esquive et de parade."
 
 -- /rb stat
 L["Stat Breakdown"] = "Détail des caractéristiques"
@@ -75,8 +76,8 @@ L["Show Attack Power from Strength"] = "Affiche la Puissance d'attaque apportée
 L["Show Block Value"] = "Valeur de blocage"
 L["Show Block Value from Strength"] = "Affiche la Valeur de blocage apportée par la Force."
 -- /rb stat str dmg
-L["Show Spell Damage"] = "Puissance des sorts"
-L["Show Spell Damage from Strength"] = "Affiche la Puissance des sorts apportée par la Force."
+L["Show Spell Damage"] = "Dégâts des sorts"
+L["Show Spell Damage from Strength"] = "Affiche les Dégâts des sorts apportée par la Force."
 -- /rb stat str heal
 L["Show Healing"] = "Puissance des soins"
 L["Show Healing from Strength"] = "Affiche la Puissance des soins apportée par la Force."
@@ -110,8 +111,8 @@ L["Changes the display of Stamina"] = "Sélectionne les différents bonus liés 
 L["Show Health"] = "Points de vie"
 L["Show Health from Stamina"] = "Affiche les points de vie liés à l'Endurance."
 -- /rb stat sta dmg
-L["Show Spell Damage"] = "Puissance des sorts"
-L["Show Spell Damage from Stamina"] = "Affiche la Puissance des sorts apportée par l'Endurance."
+L["Show Spell Damage"] = "Dégâts des sorts"
+L["Show Spell Damage from Stamina"] = "Affiche les Dégâts des sorts apportée par l'Endurance."
 
 -- /rb stat int
 L["Intellect"] = "Intelligence"
@@ -123,8 +124,8 @@ L["Show Spell Crit chance from Intellect"] = "Affiche le pourcentage de Coups cr
 L["Show Mana"] = "Points de mana"
 L["Show Mana from Intellect"] = "Affiche les points de mana apportés par l'Intelligence."
 -- /rb stat int dmg
-L["Show Spell Damage"] = "Puissance des sorts"
-L["Show Spell Damage from Intellect"] = "Affiche la Puissance des sorts apportée par l'Intelligence."
+L["Show Spell Damage"] = "Dégâts des sorts"
+L["Show Spell Damage from Intellect"] = "Affiche les Dégâts des sorts apportée par l'Intelligence."
 -- /rb stat int heal
 L["Show Healing"] = "Puissance des soins"
 L["Show Healing from Intellect"] = "Affiche la Puissance des soins apportée par l'Intelligence."
@@ -154,8 +155,8 @@ L["Show Mana Regen while NOT casting from Spirit"] = "Affiche la Régénération
 L["Show Health Regen"] = "Hp5 (repos)"
 L["Show Health Regen from Spirit"] = "Affiche la Régénération de santé hors combat apportée par l'Esprit."
 -- /rb stat spi dmg
-L["Show Spell Damage"] = "Puissance des sorts"
-L["Show Spell Damage from Spirit"] = "Affiche la Puissance des sorts apportée par l'Esprit."
+L["Show Spell Damage"] = "Dégâts des sorts"
+L["Show Spell Damage from Spirit"] = "Affiche les Dégâts des sorts apportée par l'Esprit."
 -- /rb stat spi heal
 L["Show Healing"] = "Puissance des soins"
 L["Show Healing from Spirit"] = "Affiche la Puissance des soins apportée par l'Esprit."
@@ -165,7 +166,7 @@ L["Stat Summary"] = "Résumé des Stats"
 L["Options for stat summary"] = "Le résumé des différents bonus cumulés apportés par les statistiques peut être inclu dans les info-bulles des objets."
 -- /rb sum show
 L["Show stat summary"] = "Afficher le résumé"
-L["Show stat summary in tooltips"] = "Ajoute le résumé de tous les bonus provenant des différentes statistiques dans les info-bulle des objets."
+L["Show stat summary in tooltips"] = "Ajoute le résumé de tous les bonus provenant des différentes statistiques dans les info-bulles des objets."
 -- /rb sum ignore
 L["Ignore settings"] = "Valeurs à ignorer"
 L["Ignore stuff when calculating the stat summary"] = "Sélectionne les valeurs à ignorer lors des calculs du résumé."
@@ -212,8 +213,8 @@ L["Calculate the stat difference for the item and equipped items"] = "Ajoute une
 L["Sort StatSummary alphabetically"] = "Ordre alphabétique"
 L["Enable to sort StatSummary alphabetically, disable to sort according to stat type(basic, physical, spell, tank)"] = "Tri les statistiques par ordre alphabétique, plutôt que par ordre fixe (Basiques, Magiques, Physiques, Tank)."
 -- /rb sum avoidhasblock
-L["Include block chance in Avoidance summary"] = "Blocage dans Avoidance"
-L["Enable to include block chance in Avoidance summary, Disable for only dodge, parry, miss"] = "Inclue les chances de blocage au résumé Avoidance, en plus de l'esquive, de la parade et du raté.\n\nUtile pour les spécialisations tank disposant d'un bouclier."
+L["Include block chance in Avoidance summary"] = "Blocage dans Évitement"
+L["Enable to include block chance in Avoidance summary, Disable for only dodge, parry, miss"] = "Inclue les chances de blocage au résumé Évitement, en plus de l'esquive, de la parade et du raté.\n\nUtile pour les spécialisations tank disposant d'un bouclier."
 -- /rb sum basic
 L["Stat - Basic"] = "Stats - Basiques"
 L["Choose basic stats for summary"] = "Sélectionne les différentes caractéristiques basiques à prendre en compte lors des calculs du résumé."
@@ -242,26 +243,26 @@ L["Ranged Attack Power <- Ranged Attack Power, Intellect, Attack Power, Strength
 L["Sum Feral Attack Power"] = "PA farouche"
 L["Feral Attack Power <- Feral Attack Power, Attack Power, Strength, Agility"] = "Total Puissance d'attaque farouche = Puissance d'attaque farouche + Puissance d'attaque + Force + Agilité"
 -- /rb sum stat dmg
-L["Sum Spell Damage"] = "Puissance des sorts"
-L["Spell Damage <- Spell Damage, Intellect, Spirit, Stamina"] = "Total Puissance des sorts = Puissance des sorts + Intelligence + Esprit + Endurance"
+L["Sum Spell Damage"] = "Dégâts des sorts"
+L["Spell Damage <- Spell Damage, Intellect, Spirit, Stamina"] = "Total Dégâts des sorts = Dégâts des sorts + Intelligence + Esprit + Endurance"
 -- /rb sum stat dmgholy
-L["Sum Holy Spell Damage"] = "Puissance : sacré"
-L["Holy Spell Damage <- Holy Spell Damage, Spell Damage, Intellect, Spirit"] = "Total Puissance : sacré = Puissance : sacré + Puissance des sorts + Intelligence + Esprit"
+L["Sum Holy Spell Damage"] = "Dégâts : sacré"
+L["Holy Spell Damage <- Holy Spell Damage, Spell Damage, Intellect, Spirit"] = "Total Dégâts : sacré = Dégâts : sacré + Dégâts des sorts + Intelligence + Esprit"
 -- /rb sum stat dmgarcane
-L["Sum Arcane Spell Damage"] = "Puissance : arcanes"
-L["Arcane Spell Damage <- Arcane Spell Damage, Spell Damage, Intellect"] = "Total Puissance : arcanes = Puissance : arcanes + Puissance des sorts + Intelligence"
+L["Sum Arcane Spell Damage"] = "Dégâts : arcanes"
+L["Arcane Spell Damage <- Arcane Spell Damage, Spell Damage, Intellect"] = "Total Dégâts : arcanes = Dégâts : arcanes + Dégâts des sorts + Intelligence"
 -- /rb sum stat dmgfire
-L["Sum Fire Spell Damage"] = "Puissance : feu"
-L["Fire Spell Damage <- Fire Spell Damage, Spell Damage, Intellect, Stamina"] = "Total Puissance : feu = Puissance : feu + Puissance des sorts + Intelligence + Endurance"
+L["Sum Fire Spell Damage"] = "Dégâts : feu"
+L["Fire Spell Damage <- Fire Spell Damage, Spell Damage, Intellect, Stamina"] = "Total Dégâts : feu = Dégâts : feu + Dégâts des sorts + Intelligence + Endurance"
 -- /rb sum stat dmgnature
-L["Sum Nature Spell Damage"] = "Puissance : nature"
-L["Nature Spell Damage <- Nature Spell Damage, Spell Damage, Intellect"] = "Total Puissance : nature = Puissance : nature + Puissance des sorts + Intelligence"
+L["Sum Nature Spell Damage"] = "Dégâts : nature"
+L["Nature Spell Damage <- Nature Spell Damage, Spell Damage, Intellect"] = "Total Dégâts : nature = Dégâts : nature + Dégâts des sorts + Intelligence"
 -- /rb sum stat dmgfrost
-L["Sum Frost Spell Damage"] = "Puissance : givre"
-L["Frost Spell Damage <- Frost Spell Damage, Spell Damage, Intellect"] = "Total Puissance : givre = Puissance : givre + Puissance des sorts + Intelligence"
+L["Sum Frost Spell Damage"] = "Dégâts : givre"
+L["Frost Spell Damage <- Frost Spell Damage, Spell Damage, Intellect"] = "Total Dégâts : givre = Dégâts : givre + Dégâts des sorts + Intelligence"
 -- /rb sum stat dmgshadow
-L["Sum Shadow Spell Damage"] = "Puissance : ombre"
-L["Shadow Spell Damage <- Shadow Spell Damage, Spell Damage, Intellect, Spirit, Stamina"] = "Total Puissance : Ombre = Puissance : Ombre + Puissance des sorts + Intelligence + Esprit + Endurance"
+L["Sum Shadow Spell Damage"] = "Dégâts : ombre"
+L["Shadow Spell Damage <- Shadow Spell Damage, Spell Damage, Intellect, Spirit, Stamina"] = "Total Dégâts : Ombre = Dégâts : Ombre + Dégâts des sorts + Intelligence + Esprit + Endurance"
 -- /rb sum stat heal
 L["Sum Healing"] = "Puissance des soins"
 L["Healing <- Healing, Intellect, Spirit, Agility, Strength"] = "Total Puissance des soins = Puissance des soins + Intelligence + Esprit + Agilité + Force"
@@ -311,11 +312,11 @@ L["Parry Chance <- Parry Rating, Defense Rating"] = "Total Parade = Score de par
 L["Sum Block Chance"] = "Chance de blocage"
 L["Block Chance <- Block Rating, Defense Rating"] = "Total Chance de blocage = Score de blocage + Score de défense"
 -- /rb sum stat avoidhit
-L["Sum Hit Avoidance"] = "Raté"
-L["Hit Avoidance <- Defense Rating"] = "Total Raté = Score de défense"
+L["Sum Hit Avoidance"] = "Évitement des coups"
+L["Hit Avoidance <- Defense Rating"] = "Total Évitement des coups = Score de défense"
 -- /rb sum stat avoidcrit
-L["Sum Crit Avoidance"] = "Réduction Critique"
-L["Crit Avoidance <- Defense Rating, Resilience"] = "Total Réduction des Coups critiques = Score de défense + Résilience"
+L["Sum Crit Avoidance"] = "Évitement CC"
+L["Crit Avoidance <- Defense Rating, Resilience"] = "Total Évitement des Coups critiques = Score de défense + Résilience"
 -- /rb sum stat neglectdodge
 L["Sum Dodge Neglect"] = "Réduction Esquive"
 L["Dodge Neglect <- Expertise, Weapon Skill Rating"] = "Total Réduction d'esquive = Expertise + Compétence d'arme"
@@ -413,8 +414,8 @@ L["TankPoints <- Health, Total Reduction"] = "TankPoints = Vie + Réduction tota
 L["Sum Total Reduction"] = "Réduction complète"
 L["Total Reduction <- Armor, Dodge, Parry, Block, Block Value, Defense, Resilience, MobMiss, MobCrit, MobCrush, DamageTakenMods"] = "Total Réduction complète = Armure + Equive + Parade + Blocage + Valeur de blocage + Défense + Résilience + MobMiss, MobCrit, MobCrush, DamageTakenMods"
 -- /rb sum statcomp avoid
-L["Sum Avoidance"] = "Avoidance"
-L["Avoidance <- Dodge, Parry, MobMiss, Block(Optional)"] = "Total Avoidance = Esquive + Parade + Raté + Blocage(optionnel)"
+L["Sum Avoidance"] = "Évitement"
+L["Avoidance <- Dodge, Parry, MobMiss, Block(Optional)"] = "Total Évitement = Esquive + Parade + Raté + Blocage(optionnel)"
 -- /rb sum gem
 L["Gems"] = "Gemmes"
 L["Auto fill empty gem slots"] = "Remplir automatiquement les châsses."
@@ -560,8 +561,8 @@ L["statList"] = {
 	{pattern = "score de hâte des sorts", id = CR_HASTE_SPELL},
 	{pattern = "score de hâte à distance", id = CR_HASTE_RANGED},
 	{pattern = "score de hâte", id = CR_HASTE_MELEE},
-	{pattern = "score de hâte en mêlée", id = CR_HASTE_MELEE}, -- [Tambours de Bataille]
-
+	{pattern = "score de hâte en mêlée", id = CR_HASTE_MELEE}, -- [Tambours de Bataille] doesn't work
+	--{pattern = "score de hâte en mêlée, à distance et avec les sorts", id = CR_HASTE_SPELL}, --complete line for drums buff, doesn't work
 	{pattern = "score d’expertise", id = CR_EXPERTISE},
 	{pattern = "score d'expertise", id = CR_EXPERTISE},
 	{pattern = "score d'évitement des coups", id = CR_HIT_TAKEN_MELEE},
