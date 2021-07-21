@@ -342,8 +342,8 @@ L["Frost Resistance Summary"] = "Inclure la Résistance au givre."
 L["Sum Shadow Resistance"] = "Résistance : ombre"
 L["Shadow Resistance Summary"] = "Inclure la Résistance à l'ombre."
 -- /rb sum stat maxdamage
-L["Sum Weapon Max Damage"] = "Dégâts des armes"
-L["Weapon Max Damage Summary"] = "Inclure les dégâts des armes."
+L["Sum Weapon Max Damage"] = "Dégâts des armes max"
+L["Weapon Max Damage Summary"] = "Inclure la valeur la plus haute de la plage de dégâts des armes."
 -- /rb sum stat pen
 L["Sum Penetration"] = "Pénétration des sorts"
 L["Spell Penetration Summary"] = "Inclure la Pénétration des sorts."
