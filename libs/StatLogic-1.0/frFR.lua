@@ -414,6 +414,7 @@ L["StatIDLookup"] = {
 
 	["score de hâte"] = {"MELEE_HASTE_RATING"},
 	["score de hâte des sorts"] = {"SPELL_HASTE_RATING"},
+	["le score de hâte des sorts"] = {"SPELL_HASTE_RATING"},
 	["score de hâte à distance"] = {"RANGED_HASTE_RATING"},
 	--["Improves haste rating"] = {"MELEE_HASTE_RATING"},
 	--["Improves melee haste rating"] = {"MELEE_HASTE_RATING"},
