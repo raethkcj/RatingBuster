@@ -310,6 +310,7 @@ L["StatIDLookup"] = {
 	["dégâts des sorts"] = {"SPELL_DMG",},
 	["aux sorts de soins"] = {"HEAL",},
 	["aux soins"] = {"HEAL",},
+	["aux soins et dégâts des sorts"] = {"HEAL", "SPELL_DMG"}, --shaman ZG enchant
 	["soins"] = {"HEAL",},
 	["les soins prodigués par les sorts et effets d’un maximum"] = {"HEAL",},
 
