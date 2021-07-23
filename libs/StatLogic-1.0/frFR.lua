@@ -438,11 +438,8 @@ L["StatIDLookup"] = {
 	["le score de la compétence armes de pugilat"] = {"FIST_WEAPON_RATING"},
 	["le score de compétence combat farouche"] = {"FERAL_WEAPON_RATING"},
 	["le score de la compétence mains nues"] = {"FIST_WEAPON_RATING"},
+
 	["le score d’expertise"] = {"EXPERTISE_RATING"},
-	--ToDo
-	--["Increases gun skill rating"] = {"GUN_WEAPON_RATING"},
-	--["Increases Crossbow skill rating"] = {"CROSSBOW_WEAPON_RATING"},
-	--["Increases Bow skill rating"] = {"BOW_WEAPON_RATING"},
 
 	--ToDo
 	-- Exclude
