@@ -380,6 +380,12 @@ local options = {
 								end
 								ColorPickerFrame:SetColorRGB(profileDB.textColor.r, profileDB.textColor.g, profileDB.textColor.b);
 								ColorPickerFrame.previousValues = {r = profileDB.textColor.r, g = profileDB.textColor.g, b = profileDB.textColor.b};
+								ColorPickerFrame:SetFrameStrata("FULLSCREEN_DIALOG")
+								ColorPickerFrame:SetMovable(true)
+								ColorPickerFrame:EnableMouse(true)
+								ColorPickerFrame:RegisterForDrag("LeftButton")
+								ColorPickerFrame:SetScript("OnDragStart", ColorPickerFrame.StartMoving)
+								ColorPickerFrame:SetScript("OnDragStop", ColorPickerFrame.StopMovingOrSizing)
 								ColorPickerFrame:Show()
 							end,
 						},
