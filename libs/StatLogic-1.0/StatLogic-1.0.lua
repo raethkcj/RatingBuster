@@ -4144,8 +4144,13 @@ function StatLogic:GetSum(item, table)
 	table = table or new()
 	setmetatable(table, statTableMetatable)
 
+	tip:ClearLines() -- this is required or SetX won't work the second time its called
+	tip:SetHyperlink(link)
+
+	local numLines = tip:NumLines()
+
 	-- Get data from cache if available
-	if cache[link] then
+	if cache[link] and cache[link].numLines == numLines then
 		copyTable(table, cache[link])
 		return table
 	end
@@ -4153,6 +4158,7 @@ function StatLogic:GetSum(item, table)
 	-- Set metadata
 	table.itemType = itemType
 	table.link = link
+	table.numLines = numLines
 
 	-- Don't scan Relics because they don't have general stats
 	if itemType == "INVTYPE_RELIC" then
@@ -4161,8 +4167,6 @@ function StatLogic:GetSum(item, table)
 	end
 
 	-- Start parsing
-	tip:ClearLines() -- this is required or SetX won't work the second time its called
-	tip:SetHyperlink(link)
 	print(link)
 	for i = 2, tip:NumLines() do
 		local text = tip[i]:GetText()

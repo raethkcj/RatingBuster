@@ -2767,9 +2767,11 @@ function RatingBuster:StatSummary(tooltip, name, link)
 	else
 		id = StatLogic:GetDiffID(link, profileDB.sumIgnoreEnchant, profileDB.sumIgnoreGems, red, yellow, blue, meta)
 	end
+
+	local numLines = tooltip:NumLines()
 	
 	-- Check Cache
-	if cache[id] then
+	if cache[id] and cache[id].numLines == numLines then
 		if table.maxn(cache[id]) == 0 then return end
 		-- Write Tooltip
 		if profileDB.sumBlankLine then
@@ -2929,6 +2931,7 @@ function RatingBuster:StatSummary(tooltip, name, link)
 	------------------------
 	-- Build Output Table --
 	local output = {}
+	output.numLines = numLines
 	for _, t in ipairs(summary) do
 		local n, s, d1, d2, ispercent = t.name, t.sum, t.diff1, t.diff2, t.ispercent
 		local right, left
