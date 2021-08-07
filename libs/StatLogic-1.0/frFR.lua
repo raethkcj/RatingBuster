@@ -576,6 +576,7 @@ D["StatIDToName"] = {
 	["DODGE"] = {"Esquive (%)", "Esquive (%)"},
 	["PARRY"] = {"Parade (%)", "Parade (%)"},
 	["BLOCK"] = {"Blocage (%)", "Blocage (%)"},
+	["AVOIDANCE"] = {"Évitement(%)", "Évitement(%)"},
 	["MELEE_HIT"] = {"Toucher en mêlée (%)", "Toucher (mêlée)(%)"},
 	["RANGED_HIT"] = {"Toucher à distance (%)", " Toucher (dist.)(%)"},
 	["SPELL_HIT"] = {"Toucher des sorts (%)", "Toucher (sorts)(%)"},
