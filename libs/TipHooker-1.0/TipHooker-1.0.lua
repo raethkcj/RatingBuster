@@ -267,12 +267,12 @@ local function CreateFrameHook(frameType, name, parent, inheritFrame)
 		        	local tooltip = _G[name]
 					for _, methodName in ipairs(MethodList[tipType]) do
 						-- prevent double hooking by checking HookedFrames table
-						if (type(tooltip[methodName]) == "function") and (not _G.TipHooker.HookedFrames[name]) then
-							_G.TipHooker.HookedFrames[name] = true
+						if (type(tooltip[methodName]) == "function") and (not TipHooker.HookedFrames[name]) then
+							TipHooker.HookedFrames[name] = true
 							hooksecurefunc(tooltip, methodName, Set[tipType])
 						end
 					end
-					tinsert(_G.TipHooker.SupportedTooltips, tooltip)
+					tinsert(TipHooker.SupportedTooltips, tooltip)
 					break
 				end
 	        end
