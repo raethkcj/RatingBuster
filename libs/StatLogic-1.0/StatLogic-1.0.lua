@@ -1516,6 +1516,15 @@ local StatModTable = {
 				},
 				["condition"] = "tocversion >= 20300",
 			},
+			[3] = {
+				-- All ranks of Mage Armor give 30% regen
+				["rank"] = setmetatable({}, {
+					__index = function(t, k)
+						return k and 0.3
+					end
+				}),
+				["buff"] = GetSpellInfo(6117),		-- ["Mage Armor"],
+			},
 		},
 		-- Mage: Mind Mastery (Rank 5) - 1,22
 		--       Increases spell damage by up to 5%/10%/15%/20%/25% of your total Intellect.
