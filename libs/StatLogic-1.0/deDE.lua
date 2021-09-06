@@ -389,6 +389,8 @@ L["StatIDLookup"] = {
 	["Erhöht die Fertigkeitswertung für unbewaffneten Kampf"] = {"FIST_WEAPON_RATING"}, -- Demonblood Eviscerator ID:27533
 
 	["Erhöht die Waffenkundewertung"] = {"EXPERTISE_RATING"},
+	["Erhöht Eure Waffenkundewertung"] = {"EXPERTISE_RATING"},
+
 	-- Exclude
 	["Sek"] = false,
 	["bis"] = false,
