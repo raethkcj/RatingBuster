@@ -121,6 +121,47 @@ for i = 1, 30 do
 	end
 end
 
+--------------------
+-- Item Set Cache --
+--------------------
+-- Maps ItemID to SetID
+local item_set_cache = {}
+-- Maps SetID to number of equipped pieces
+local equipped_sets = setmetatable({}, {
+	__index = function(t, set)
+		local name = GetItemSetInfo(set)
+		for i = 1, INVSLOT_LAST_EQUIPPED do
+			local itemID = GetInventoryItemID("player", i)
+			local cached_set = item_set_cache[itemID]
+			if cached_set and cached_set > 0 then
+				t[cached_set] = (t[cached_set] or 0) + 1
+				rawset(t, cached_set, (rawget(t, cached_set) or 0) + 1)
+			else
+				local itemLink = GetInventoryItemLink("player", i)
+				tip:ClearLines()
+				if itemLink then tip:SetHyperlink(itemLink) end
+				for j = 1, tip:NumLines() do
+					local text = StatLogicTooltip[j]:GetText()
+					if text:find(name) then
+						print("Found", set_name, "piece", itemLink)
+						item_set_cache[itemID] = set
+						rawset(t, set, (rawget(t, set) or 0) + 1)
+					end
+				end
+			end
+		end
+		return rawget(t, set)
+	end
+})
+
+do
+	local f = CreateFrame("Frame")
+	f:RegisterUnitEvent("UNIT_INVENTORY_CHANGED", "player")
+	f:SetScript("OnEvent", function()
+		DevTools_Dump(equipped_sets)
+		wipe(equipped_sets)
+	end)
+end
 
 ---------------------
 -- Local Variables --
@@ -2734,6 +2775,39 @@ local StatModTable = {
 				["race"] = "Human",
 			},
 		},
+		-- Whitemend Wisdom
+		-- Increases healing by up to 10% of your total Intellect.
+		["ADD_HEALING_MOD_INT"] = {
+			[1] = {
+				["rank"] = {
+					0.1,
+				},
+				["set"] = 571,
+				["pieces"] = 2,
+			}
+		},
+		-- Wrath of Spellfire
+		-- Increases spell damage by up to 7% of your total Intellect.
+		["ADD_SPELL_DMG_MOD_INT"] = {
+			[1] = {
+				["rank"] = {
+					0.07,
+				},
+				["set"] = 552,
+				["pieces"] = 3,
+			},
+		},
+		-- Primal Mooncloth
+		-- Allow 5% of your Mana regeneration to continue while casting.
+		["ADD_MANA_REG_MOD_NORMAL_MANA_REG"] = {
+			[1] = {
+				["rank"] = {
+					0.05,
+				},
+				["set"] = 554,
+				["pieces"] = 3,
+			},
+		},
 	},
 }
 
@@ -2781,6 +2855,7 @@ function StatLogic:GetStatMod(stat, school)
 			if ok and case.buff and not AuraUtil.FindAuraByName(case.buff, "player") then ok = nil end
 			if ok and case.stance and case.stance ~= GetStanceIcon() then ok = nil end
 			if ok and case.race and case.race ~= playerRace then ok = nil end
+			if ok and case.set and (not equipped_sets[case.set] or equipped_sets[case.set] < case.pieces) then ok = nil end
 			if ok then
 				local r
 				-- there are no talants in non class specific mods
