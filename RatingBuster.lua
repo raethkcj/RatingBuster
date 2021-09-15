@@ -1650,9 +1650,9 @@ function RatingBuster:ProcessText(text)
 							local mod = StatLogic:GetStatMod("MOD_AP") * StatLogic:GetStatMod("MOD_SPELL_DMG")
 							local effect = value * StatLogic:GetAPPerStr(class) * StatLogic:GetStatMod("ADD_SPELL_DMG_MOD_AP") * mod
 							if (mod ~= 1 or statmod ~= 1) and floor(abs(effect) * 10 + 0.5) > 0 then
-								tinsert(infoTable, (gsub(L["$value Dmg"], "$value", format("%+.1f", effect))))
+								tinsert(infoTable, (gsub(L["$value Spell Dmg"], "$value", format("%+.1f", effect))))
 							elseif floor(abs(effect) + 0.5) > 0 then
-								tinsert(infoTable, (gsub(L["$value Dmg"], "$value", format("%+.0f", effect))))
+								tinsert(infoTable, (gsub(L["$value Spell Dmg"], "$value", format("%+.0f", effect))))
 							end
 						end
 						if profileDB.showHealingFromStr then -- Shaman: Mental Quickness (Rank 3) - 2,15
@@ -1742,7 +1742,7 @@ function RatingBuster:ProcessText(text)
 							local mod = StatLogic:GetStatMod("MOD_SPELL_DMG")
 							local effect = value * StatLogic:GetStatMod("ADD_SPELL_DMG_MOD_STA") * mod
 							if floor(abs(effect) * 10 + 0.5) > 0 then
-								tinsert(infoTable, (gsub(L["$value Dmg"], "$value", format("%+.1f", effect))))
+								tinsert(infoTable, (gsub(L["$value Spell Dmg"], "$value", format("%+.1f", effect))))
 							end
 						end
 						infoString = strjoin(", ", unpack(infoTable))
@@ -1775,7 +1775,7 @@ function RatingBuster:ProcessText(text)
 							local mod = StatLogic:GetStatMod("MOD_SPELL_DMG")
 							local effect = value * StatLogic:GetStatMod("ADD_SPELL_DMG_MOD_INT") * mod
 							if floor(abs(effect) * 10 + 0.5) > 0 then
-								tinsert(infoTable, (gsub(L["$value Dmg"], "$value", format("%+.1f", effect))))
+								tinsert(infoTable, (gsub(L["$value Spell Dmg"], "$value", format("%+.1f", effect))))
 							end
 						end
 						if profileDB.showHealingFromInt then
@@ -1868,7 +1868,7 @@ function RatingBuster:ProcessText(text)
 							local mod = StatLogic:GetStatMod("MOD_SPELL_DMG")
 							local effect = value * StatLogic:GetStatMod("ADD_SPELL_DMG_MOD_SPI") * mod
 							if floor(abs(effect) * 10 + 0.5) > 0 then
-								tinsert(infoTable, (gsub(L["$value Dmg"], "$value", format("%+.1f", effect))))
+								tinsert(infoTable, (gsub(L["$value Spell Dmg"], "$value", format("%+.1f", effect))))
 							end
 						end
 						if profileDB.showHealingFromSpi then
