@@ -92,7 +92,6 @@ end
 local cache = {}
 setmetatable(cache, {__mode = "kv"}) -- weak table to enable garbage collection
 
-
 --------------
 -- Activate --
 --------------
@@ -126,29 +125,32 @@ end
 --------------------
 -- Maps ItemID to SetID
 local item_set_cache = {}
+
 -- Maps SetID to number of equipped pieces
 local equipped_sets = setmetatable({}, {
 	__index = function(t, set)
-		local name = GetItemSetInfo(set)
 		for i = 1, INVSLOT_LAST_EQUIPPED do
 			local itemID = GetInventoryItemID("player", i)
-			local cached_set = item_set_cache[itemID]
-			if cached_set and cached_set > 0 then
-				t[cached_set] = (t[cached_set] or 0) + 1
-				rawset(t, cached_set, (rawget(t, cached_set) or 0) + 1)
+			if item_set_cache[itemID] == set then
+				t[set] = (rawget(t, set) or 0) + 1
 			else
+				local name = GetItemSetInfo(set)
 				local itemLink = GetInventoryItemLink("player", i)
 				tip:ClearLines()
 				if itemLink then tip:SetHyperlink(itemLink) end
 				for j = 1, tip:NumLines() do
 					local text = StatLogicTooltip[j]:GetText()
 					if text:find(name) then
-						print("Found", set_name, "piece", itemLink)
 						item_set_cache[itemID] = set
-						rawset(t, set, (rawget(t, set) or 0) + 1)
+						t[set] = (rawget(t, set) or 0) + 1
+						break
 					end
 				end
 			end
+		end
+		if not rawget(t, set) then
+			-- Set to zero so we don't scan again until next UNIT_INVENTORY_CHANGED
+			t[set] = 0
 		end
 		return rawget(t, set)
 	end
@@ -158,7 +160,6 @@ do
 	local f = CreateFrame("Frame")
 	f:RegisterUnitEvent("UNIT_INVENTORY_CHANGED", "player")
 	f:SetScript("OnEvent", function()
-		DevTools_Dump(equipped_sets)
 		wipe(equipped_sets)
 	end)
 end
@@ -2855,7 +2856,7 @@ function StatLogic:GetStatMod(stat, school)
 			if ok and case.buff and not AuraUtil.FindAuraByName(case.buff, "player") then ok = nil end
 			if ok and case.stance and case.stance ~= GetStanceIcon() then ok = nil end
 			if ok and case.race and case.race ~= playerRace then ok = nil end
-			if ok and case.set and (not equipped_sets[case.set] or equipped_sets[case.set] < case.pieces) then ok = nil end
+			if ok and case.set and (equipped_sets[case.set] == nil or equipped_sets[case.set] < case.pieces) then ok = nil end
 			if ok then
 				local r
 				-- there are no talants in non class specific mods
@@ -2863,7 +2864,7 @@ function StatLogic:GetStatMod(stat, school)
 				if case.buff then
 					r = GetPlayerBuffRank(case.buff)
 				-- no talant but all other given conditions are statisfied
-				elseif case.condition or case.stance or case.race then
+				elseif case.condition or case.stance or case.race or case.set then
 					r = 1
 				end
 				if r and r ~= 0 and case.rank[r] then
