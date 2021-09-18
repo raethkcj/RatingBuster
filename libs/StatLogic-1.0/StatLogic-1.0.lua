@@ -1383,8 +1383,7 @@ local StatModTable = {
 			},
 		},
 		-- Hunter: Survival Instincts (Rank 2) - 3,14
-		--         Reduces all damage taken by 2%/4%.
-		-- 2.1.0 "Survival Instincts" now also increase attack power by 2/4%.
+		--         Reduces all damage taken by 2%/4% and increases attack power by 2%/4%.
 		["MOD_AP"] = {
 			[1] = {
 				["tab"] = 3,
@@ -1396,6 +1395,8 @@ local StatModTable = {
 		},
 		-- Hunter: Master Marksman (Rank 5) - 2,19
 		--         Increases your ranged attack power by 2%/4%/6%/8%/10%.
+		-- Hunter: Survival Instincts (Rank 2) - 3,14
+		--         Reduces all damage taken by 2%/4% and increases attack power by 2%/4%.
 		["MOD_RANGED_AP"] = {
 			[1] = {
 				["tab"] = 2,
@@ -1403,6 +1404,13 @@ local StatModTable = {
 				["rank"] = {
 					0.02, 0.04, 0.06, 0.08, 0.1,
 				},
+			},
+			[2] = {
+				["tab"] = 3,
+				["num"] = 14,
+				["rank"] = {
+					0.02, 0.04,
+				}
 			},
 		},
 		-- Hunter: Catlike Reflexes (Rank 3) - 1,19
