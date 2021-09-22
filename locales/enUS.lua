@@ -539,6 +539,7 @@ L["statList"] = {
 	{pattern = "block rating", id = CR_BLOCK}, -- block enchant: "+10 Shield Block Rating"
 	{pattern = "parry rating", id = CR_PARRY},
 
+	{pattern = "spell critical hit chance", id = nil}, -- Chain of the Twilight Owl
 	{pattern = "spell critical strike rating", id = CR_CRIT_SPELL},
 	{pattern = "spell critical hit rating", id = CR_CRIT_SPELL},
 	{pattern = "spell critical rating", id = CR_CRIT_SPELL},
