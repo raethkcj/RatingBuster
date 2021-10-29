@@ -135,16 +135,20 @@ local equipped_sets = setmetatable({}, {
 				t[set] = (rawget(t, set) or 0) + 1
 			else
 				local name = GetItemSetInfo(set)
-				local itemLink = GetInventoryItemLink("player", i)
-				tip:ClearLines()
-				if itemLink then tip:SetHyperlink(itemLink) end
-				for j = 1, tip:NumLines() do
-					local text = StatLogicTooltip[j]:GetText()
-					if text:find(name) then
-						item_set_cache[itemID] = set
-						t[set] = (rawget(t, set) or 0) + 1
-						break
+				if name then
+					local itemLink = GetInventoryItemLink("player", i)
+					tip:ClearLines()
+					if itemLink then tip:SetHyperlink(itemLink) end
+					for j = 1, tip:NumLines() do
+						local text = StatLogicTooltip[j]:GetText()
+						if text:find(name) then
+							item_set_cache[itemID] = set
+							t[set] = (rawget(t, set) or 0) + 1
+							break
+						end
 					end
+				else
+					t[set] = 0
 				end
 			end
 		end
