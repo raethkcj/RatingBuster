@@ -120,42 +120,7 @@ local TooltipList = {
 
 local MethodList = {
 	item = {
-		"SetHyperlink",
-		"SetBagItem",
-		"SetInventoryItem",
-		-- auction
-		"SetAuctionItem",
-		"SetAuctionSellItem",
-		-- loot
-		"SetLootItem",
-		"SetLootRollItem",
-		-- crafting
-		"SetCraftSpell",
-		"SetCraftItem",
-		"SetTradeSkillItem",
-		"SetTrainerService",
-		-- mail
-		"SetInboxItem",
-		"SetSendMailItem",
-		-- quest log
-		"SetQuestItem",
-		"SetQuestLogItem",
-		-- trade
-		"SetTradePlayerItem",
-		"SetTradeTargetItem",
-		-- vendor tooltip
-		"SetMerchantItem",
-		"SetBuybackItem",
-		"SetMerchantCostItem",
-		-- socketing interface
-		"SetSocketGem",
-		"SetExistingSocketGem",
-		-- 2.3.0
-		"SetGuildBankItem",
-		-- 4.2.0
-		"SetItemByID",
-		-- 6.0.2
-		"SetCompareItem",
+		"OnTooltipSetItem"
 	},
 	buff = {
 		"SetPlayerBuff",
@@ -244,6 +209,8 @@ local function InitializeHook(tipType)
 						for _, methodName in ipairs(MethodList[tipType]) do
 							if type(tooltip[methodName]) == "function" then
 								hooksecurefunc(tooltip, methodName, Set[tipType])
+							elseif tooltip:HasScript(methodName) then
+								tooltip:HookScript(methodName, Set[tipType])
 							end
 						end
 						tinsert(TipHooker.SupportedTooltips, tooltip)
