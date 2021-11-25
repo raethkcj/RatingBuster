@@ -3318,16 +3318,15 @@ end
 -----------------------------------]]
 
 local RAPPerAgi = {
-	1, 0, 1, 1, 0, 0, 0, 0, 0,
-	--["WARRIOR"] = 1,
-	--["PALADIN"] = 0,
-	--["HUNTER"] = 1,
-	--["ROGUE"] = 1,
-	--["PRIEST"] = 0,
-	--["SHAMAN"] = 0,
-	--["MAGE"] = 0,
-	--["WARLOCK"] = 0,
-	--["DRUID"] = 0,
+	[ClassNameToID["WARRIOR"]] = 1,
+	[ClassNameToID["PALADIN"]] = 0,
+	[ClassNameToID["HUNTER"]] = tocversion >= 20100 and 1 or 2,
+	[ClassNameToID["ROGUE"]] = 1,
+	[ClassNameToID["PRIEST"]] = 0,
+	[ClassNameToID["SHAMAN"]] = 0,
+	[ClassNameToID["MAGE"]] = 0,
+	[ClassNameToID["WARLOCK"]] = 0,
+	[ClassNameToID["DRUID"]] = 0,
 }
 
 function StatLogic:GetRAPPerAgi(class)
