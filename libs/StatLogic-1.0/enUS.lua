@@ -385,12 +385,15 @@ L["StatIDLookup"] = {
 	["Increases defense rating"] = {"DEFENSE_RATING",},
 	["Dodge Rating"] = {"DODGE_RATING",},
 	["Increases your dodge rating"] = {"DODGE_RATING",},
+	["Increases your chance to dodge an attack%"] = {"DODGE",},
 	["Parry Rating"] = {"PARRY_RATING",},
 	["Increases your parry rating"] = {"PARRY_RATING",},
+	["Increases your chance to parry an attack%"] = {"PARRY",},
 	["Shield Block Rating"] = {"BLOCK_RATING",}, -- Enchant Shield - Lesser Block +10 Shield Block Rating http://wow.allakhazam.com/db/spell.html?wspell=13689
 	["Block Rating"] = {"BLOCK_RATING",},
 	["Increases your block rating"] = {"BLOCK_RATING",},
 	["Increases your shield block rating"] = {"BLOCK_RATING",},
+	["Increases your chance to block attacks with a shield%"] = {"BLOCK_CHANCE",},
 
 	["Improves your chance to hit%"] = {"MELEE_HIT"},
 	["Hit Rating"] = {"MELEE_HIT_RATING",},
