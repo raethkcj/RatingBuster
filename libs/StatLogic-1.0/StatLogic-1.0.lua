@@ -228,6 +228,9 @@ end
 ---------------
 -- metatable for stat tables
 local statTableMetatable = {
+	__index = function()
+		return 0
+	end,
 	__add = function(op1, op2)
 		if type(op2) == "table" then
 			for k, v in pairs(op2) do
@@ -251,7 +254,7 @@ local statTableMetatable = {
 					end
 				elseif k == "itemType" then
 					local i = 1
-					while op1["diffItemType"..i] do
+					while rawget(op1, "diffItemType"..i) do
 						i = i + 1
 					end
 					op1["diffItemType"..i] = op2.itemType
