@@ -371,7 +371,7 @@ L["StatIDLookup"] = {
 	--["Critical Rating"] = {"MELEE_CRIT_RATING",},
 	["índice de golpe crítico"] = {"MELEE_CRIT_RATING",},
 	["Aumenta tu índice de golpe crítico"] = {"MELEE_CRIT_RATING",},
-	["Mejora tu índice de golpe crítico"] = {"MELEE_CRIT_RATING",},
+	["Mejora el índice de golpe crítico"] = {"MELEE_CRIT_RATING",},
 	["Mejora el índice de golpe crítico cuerpo a cuerpo"] = {"MELEE_CRIT_RATING",}, -- [Cloak of Darkness] ID:33122
 	["Mejora tu probabilidad de conseguir un golpe crítico en % con los hechizos"] = {"SPELL_CRIT"},
 	["índice de golpe crítico con hechizos"] = {"SPELL_CRIT_RATING",},
@@ -541,7 +541,7 @@ D["StatIDToName"] = {
 	["FIST_WEAPON_RATING"] = {"Unarmed "..SKILL.." "..RATING, "Unarmed "..RATING},
 	["STAFF_WEAPON_RATING"] = {"Staff "..SKILL.." "..RATING, "Staff "..RATING}, -- Leggings of the Fang ID:10410
 	--["EXPERTISE_RATING"] = {STAT_EXPERTISE.." "..RATING, STAT_EXPERTISE.." "..RATING},
-	["EXPERTISE_RATING"] = {"Expertise".." "..RATING, "Expertise".." "..RATING},
+	["EXPERTISE_RATING"] = {"Pericia".." "..RATING, "Pericia".." "..RATING},
 
 	---------------------------------------------------------------------------
 	-- Tier2 Stats - Stats that only show up when broken down from a Tier1 stat
@@ -590,7 +590,7 @@ D["StatIDToName"] = {
 	["FIST_WEAPON"] = {"Unarmed "..SKILL, "Unarmed"},
 	["STAFF_WEAPON"] = {"Staff "..SKILL, "Staff"}, -- Leggings of the Fang ID:10410
 	--["EXPERTISE"] = {STAT_EXPERTISE, STAT_EXPERTISE},
-	["EXPERTISE"] = {"Expertise", "Expertise"},
+	["EXPERTISE"] = {"Pericia", "Pericia"},
 
 	---------------------------------------------------------------------------
 	-- Tier3 Stats - Stats that only show up when broken down from a Tier2 stat
