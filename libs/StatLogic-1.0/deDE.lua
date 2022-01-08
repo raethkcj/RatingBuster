@@ -369,10 +369,12 @@ L["StatIDLookup"] = {
 	["Zaubertempowertung"] = {"SPELL_HASTE_RATING"},
 	["Distanzangriffstempowertung"] = {"RANGED_HASTE_RATING"},
 	["Erhöht Tempowertung"] = {"MELEE_HASTE_RATING"}, -- [Pfeilabwehrender Brustschutz] ID:33328
+	["Erhöht die Tempowertung"] = {"MELEE_HASTE_RATING"},
 	["Erhöht Angriffstempowertung"] = {"MELEE_HASTE_RATING"},
 	["Erhöht Eure Angriffstempowertung"] = {"MELEE_HASTE_RATING"},
 	["Erhöht Eure Distanzangriffstempowertung"] = {"RANGED_HASTE_RATING"},
 	["Erhöht Zaubertempowertung"] = {"SPELL_HASTE_RATING"},
+	["Erhöht die Zaubertempowertung"] = {"SPELL_HASTE_RATING"},
 
 	["Erhöht die Fertigkeitswertung für Dolche"] = {"DAGGER_WEAPON_RATING"},
 	["Erhöht die Fertigkeitswertung für Schwerter"] = {"SWORD_WEAPON_RATING"},
