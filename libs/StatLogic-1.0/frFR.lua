@@ -363,6 +363,10 @@ L["StatIDLookup"] = {
 	["le score d'esquive"] = {"DODGE_RATING",},
 	["au score d'esquive"] = {"DODGE_RATING",},
 	["votre score d'esquive"] = {"DODGE_RATING",},
+	["score d’esquive"] = {"DODGE_RATING",},
+	["le score d’esquive"] = {"DODGE_RATING",},
+	["au score d’esquive"] = {"DODGE_RATING",},
+	["votre score d’esquive"] = {"DODGE_RATING",},
 
 	["score de parade"] = {"PARRY_RATING",},
 	["au score de parade"] = {"PARRY_RATING",},
