@@ -444,6 +444,7 @@ L["StatIDLookup"] = {
 	["le score de la compétence armes de pugilat"] = {"FIST_WEAPON_RATING"},
 	["le score de compétence combat farouche"] = {"FERAL_WEAPON_RATING"},
 	["le score de la compétence mains nues"] = {"FIST_WEAPON_RATING"},
+	
 	["le score d’expertise"] = {"EXPERTISE_RATING"},
 
 	--ToDo
@@ -560,6 +561,9 @@ D["StatIDToName"] = {
 	["BOW_WEAPON_RATING"] = {"Compétence en Arcs", "Arcs"},
 	["FERAL_WEAPON_RATING"] = {"Compétence en Combat farouche", "Combat farouche"}, --found Changeforme too
 	["FIST_WEAPON_RATING"] = {"Compétence en Armes de pugilat", "Armes de pugilat"}, --fist weapon =/= unarmed
+	["STAFF_WEAPON_RATING"] = {"Compétence en Bâtons", "Compétence en Bâtons"}, -- Leggings of the Fang ID:10410
+	--["EXPERTISE_RATING"] = {STAT_EXPERTISE.." "..RATING, STAT_EXPERTISE.." "..RATING},
+	["EXPERTISE_RATING"] = {"Score d'Expertise", "Score d'Expertise"},
 	--["UNARMED_WEAPON_RATING"] = {"Compétence en Mains nues", "Mains nues"},
 	--["POLEARMS_WEAPON_RATING"] = {"Compétence en Armes d'hast", "Armes d'hast"}, --may be useless but better have it than not
 
@@ -608,6 +612,8 @@ D["StatIDToName"] = {
 	["BOW_WEAPON"] = {"Compétence en Arcs", "Arcs"},
 	["FERAL_WEAPON"] = {"Compétence en Combat farouche", "Combat farouche"},
 	["FIST_WEAPON"] = {"Compétence en Armes de pugilat", "Armes de pugilat"},
+	--["EXPERTISE"] = {STAT_EXPERTISE, STAT_EXPERTISE},
+	["EXPERTISE"] = {"Expertise", "Expertise"},
 	--["UNARMED_WEAPON"] = {"Compétence en Mains nues", "Mains nues"},
 	--["POLEARMS_WEAPON"] = {"Compétence en Armes d'hast", "Armes d'hast"},
 
