@@ -120,6 +120,21 @@ for i = 1, 30 do
 	end
 end
 
+local mt = getmetatable(tip)
+local tipExtension = {
+	__index = function(tip, i)
+		if type(i) ~= "number" then
+			return mt.__index[i]
+		else
+			local textLeft = _G[tip:GetName().."TextLeft"..i]
+			tip[i] = textLeft
+			return textLeft
+		end
+	end
+}
+setmetatable(tip, tipExtension)
+setmetatable(tipMiner, tipExtension)
+
 --------------------
 -- Item Set Cache --
 --------------------
