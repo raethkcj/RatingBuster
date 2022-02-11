@@ -1385,6 +1385,18 @@ local currentColorCode
 function RatingBuster.ProcessTooltip(tooltip, name, link)
 	-- Check if we're in standby mode
 	--if not RatingBuster:IsActive() then return end
+
+	-- Process recipes only once
+	local itemType = select(6, GetItemInfoInstant(link))
+	if itemType == Enum.ItemClass.Recipe then
+		if not tooltip.ratingBusterProcessedRecipe then
+			tooltip.ratingBusterProcessedRecipe = true
+		else
+			tooltip.ratingBusterProcessedRecipe = false
+			return
+		end
+	end
+
 	---------------------------
 	-- Set calculation level --
 	---------------------------
