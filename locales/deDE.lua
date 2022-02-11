@@ -491,7 +491,7 @@ L["Meta Socket"] = EMPTY_SOCKET_META
 --
 -- Tip2: The strings are passed into string.find, so you should escape the magic characters ^$()%.[]*+-? with a %
 L["numberPatterns"] = {
-	{pattern = " um (%d+)", addInfo = "AfterNumber",},
+	{pattern = " um (%d+)[^%%]", addInfo = "AfterNumber",},
 	{pattern = "([%+%-]%d+)", addInfo = "AfterStat",},
 	{pattern = "verleiht.-(%d+)", addInfo = "AfterNumber",}, -- for "grant you xx stat" type pattern, ex: Quel'Serrar, Assassination Armor set
 	{pattern = "(%d+) erhöhen.", addInfo = "AfterNumber",}, -- for "add xx stat" type pattern, ex: Adamantite Sharpening Stone
