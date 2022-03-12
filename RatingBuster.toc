@@ -10,6 +10,7 @@
 ## X-Category: Interface Enhancements
 ## X-License: GPL v2
 ## X-Encoding: UTF-8
+## X-WoWI-ID: 26235
 
 #############
 # Libraries #
