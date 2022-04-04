@@ -1385,6 +1385,18 @@ local currentColorCode
 function RatingBuster.ProcessTooltip(tooltip, name, link)
 	-- Check if we're in standby mode
 	--if not RatingBuster:IsActive() then return end
+
+	-- Process recipes only once
+	local itemType = select(6, GetItemInfoInstant(link))
+	if itemType == Enum.ItemClass.Recipe then
+		if not tooltip.ratingBusterProcessedRecipe then
+			tooltip.ratingBusterProcessedRecipe = true
+		else
+			tooltip.ratingBusterProcessedRecipe = false
+			return
+		end
+	end
+
 	---------------------------
 	-- Set calculation level --
 	---------------------------
@@ -1888,7 +1900,11 @@ function RatingBuster:ProcessText(text)
 						-- Build replacement string
 						if num.addInfo == "AfterNumber" then -- Add after number
 							infoString = gsub(infoString, "%%", "%%%%%%%%") -- sub "%" with "%%%%"
-							infoString = gsub(strsub(text, s, e), num.pattern, "%0 "..infoString, 1) -- sub "33" with "33 (3.33%)"
+							-- Only substitue the number pattern's actual captured number
+							-- This allows checking for invalid characters after the digits,
+							-- while still placing the infoString directly after the digits.
+							local numPattern = num.pattern:match(".-%)")
+							infoString = gsub(strsub(text, s, e), numPattern, "%0 "..infoString, 1) -- sub "33" with "33 (3.33%)"
 						else -- Add after stat
 							infoString = gsub(infoString, "%%", "%%%%")
 							s, e = strfind(lowerText, stat.pattern)

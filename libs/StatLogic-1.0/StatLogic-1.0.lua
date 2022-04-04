@@ -120,43 +120,39 @@ for i = 1, 30 do
 	end
 end
 
+local mt = getmetatable(tip)
+local tipExtension = {
+	__index = function(tip, i)
+		if type(i) ~= "number" then
+			return mt.__index[i]
+		else
+			local textLeft = _G[tip:GetName().."TextLeft"..i]
+			tip[i] = textLeft
+			return textLeft
+		end
+	end
+}
+setmetatable(tip, tipExtension)
+setmetatable(tipMiner, tipExtension)
+
 --------------------
 -- Item Set Cache --
 --------------------
--- Maps ItemID to SetID
-local item_set_cache = {}
 
 -- Maps SetID to number of equipped pieces
 local equipped_sets = setmetatable({}, {
 	__index = function(t, set)
+		local equipped = 0
+
 		for i = 1, INVSLOT_LAST_EQUIPPED do
 			local itemID = GetInventoryItemID("player", i)
-			if item_set_cache[itemID] == set then
-				t[set] = (rawget(t, set) or 0) + 1
-			else
-				local name = GetItemSetInfo(set)
-				if name then
-					local itemLink = GetInventoryItemLink("player", i)
-					tip:ClearLines()
-					if itemLink then tip:SetHyperlink(itemLink) end
-					for j = 1, tip:NumLines() do
-						local text = StatLogicTooltip[j]:GetText()
-						if text:find(name) then
-							item_set_cache[itemID] = set
-							t[set] = (rawget(t, set) or 0) + 1
-							break
-						end
-					end
-				else
-					t[set] = 0
-				end
+			if itemID and select(16, GetItemInfo(itemID)) == set then
+				equipped = equipped + 1
 			end
 		end
-		if not rawget(t, set) then
-			-- Set to zero so we don't scan again until next UNIT_INVENTORY_CHANGED
-			t[set] = 0
-		end
-		return rawget(t, set)
+
+		t[set] = equipped
+		return equipped
 	end
 })
 

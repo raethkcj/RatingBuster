@@ -1,5 +1,5 @@
-﻿## Interface: 20501
-## Interface-Classic: 11307
+﻿## Interface: 20503
+## Interface-Classic: 11402
 ## Title: RatingBuster
 ## Notes: Item stat breakdown, analysis and comparing
 ## Notes-zhTW: 裝備數值解析與比較
@@ -10,6 +10,7 @@
 ## X-Category: Interface Enhancements
 ## X-License: GPL v2
 ## X-Encoding: UTF-8
+## X-WoWI-ID: 26235
 
 #############
 # Libraries #

@@ -486,7 +486,8 @@ L["ItemID: "] = "ID Objet : "
 --
 -- Tip2: The strings are passed into string.find, so you should escape the magic characters ^$()%.[]*+-? with a %
 L["numberPatterns"] = {
-	{pattern = " de (%d+)", addInfo = "AfterNumber",},
+	{pattern = " de (%d+)$", addInfo = "AfterNumber",},
+	{pattern = " de (%d+)[^%%]", addInfo = "AfterNumber",},
 	{pattern = "([%+%-]%d+)", addInfo = "AfterStat",},
 	{pattern = "augmente.-(%d+)", addInfo = "AfterNumber",}, -- for "grant you xx stat" type pattern, ex: Quel'Serrar, Assassination Armor set
 	{pattern = "ajoute (%d+) (à|au))", addInfo = "AfterNumber",}, -- for "add xx stat" type pattern, ex: Adamantite Sharpening Stone
@@ -495,7 +496,7 @@ L["numberPatterns"] = {
 	{pattern = "(%d+)([^%d%%|]+)", addInfo = "AfterStat",}, -- [發光的暗影卓奈石] +6法術傷害及5耐力
 }
 L["separators"] = {
-	"/", " et ", ",", "%. ", " pour ", "&", " : "
+	"/", " et ", ",", "%. ", " pour ", "&", " : "
 }
 --[[ Rating ID
 CR_WEAPON_SKILL = 1;
