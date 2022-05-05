@@ -1382,19 +1382,28 @@ local EmptySocketLookup = {
 }
 -- Color code (used to fix gem text color)
 local currentColorCode
+
+-- Utilities for checking nested recipes
+local ITEM_MIN_LEVEL_PATTERN = ITEM_MIN_LEVEL:gsub("%%d", "%%d+")
+local colorPrecision = 0.0001
+local AreColorsEqual = function(a, b)
+	return math.abs(a.r - b.r) < colorPrecision
+	  and math.abs(a.g - b.g) < colorPrecision
+	  and math.abs(a.b - b.b) < colorPrecision
+	  and math.abs(a.a - b.a) < colorPrecision
+end
+
 function RatingBuster.ProcessTooltip(tooltip, name, link)
 	-- Check if we're in standby mode
 	--if not RatingBuster:IsActive() then return end
 
-	-- Process recipes only once
+	-- Process nested recipes only once
 	local itemType = select(6, GetItemInfoInstant(link))
-	if itemType == Enum.ItemClass.Recipe then
-		if not tooltip.ratingBusterProcessedRecipe then
-			tooltip.ratingBusterProcessedRecipe = true
-		else
-			tooltip.ratingBusterProcessedRecipe = false
-			return
-		end
+	local isRecipe = itemType == Enum.ItemClass.Recipe
+
+	if isRecipe and tooltip.rb_processed_nested_recipe then
+		tooltip.rb_processed_nested_recipe = false
+		return
 	end
 
 	---------------------------
@@ -1420,6 +1429,25 @@ function RatingBuster.ProcessTooltip(tooltip, name, link)
 		local fontString = _G[tipTextLeft..i]
 		local text = fontString:GetText()
 		if text then
+			if isRecipe and not tooltip.rb_processed_nested_recipe and i > 2 then
+				-- Workaround to detect nested items from recipes
+				-- Epic Gem recipes have quality colors but no required level
+				-- Brilliant Wizard Oil recipe is white quality but has required level
+				local color = CreateColor(fontString:GetTextColor())
+				local quality = false
+				for j = 2,7 do
+					if AreColorsEqual(ITEM_QUALITY_COLORS[j].color, color) then
+						quality = true
+						break
+					end
+				end
+				if quality
+				or text:find(ITEM_MIN_LEVEL_PATTERN)
+				then
+					tooltip.rb_processed_nested_recipe = true
+				end
+			end
+
 			-- Get data from cache if available
 			local cacheID = text..calcLevel
 			local cacheText = cache[cacheID]
