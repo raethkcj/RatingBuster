@@ -1203,21 +1203,15 @@ local StatModTable = {
 				},
 			},
 			[2] = {
-				["rank"] = {
-					2.8,
-				},
+				["value"] = 2.8,
 				["buff"] = GetSpellInfo(32357),		-- ["Bear Form"],
 			},
 			[3] = {
-				["rank"] = {
-					5,
-				},
+				["value"] = 5,
 				["buff"] = GetSpellInfo(9634),		-- ["Dire Bear Form"],
 			},
 			[4] = {
-				["rank"] = {
-					5,
-				},
+				["value"] = 5,
 				["buff"] = GetSpellInfo(24858),		-- ["Moonkin Form"],
 			},
 		},
@@ -1254,15 +1248,11 @@ local StatModTable = {
 				},
 			},
 			[4] = { -- Bear Form / Dire Bear Form: +25% stamina
-				["rank"] = {
-					0.25,
-				},
+				["value"] = 0.25,
 				["buff"] = GetSpellInfo(32357),		-- ["Bear Form"],
 			},
 			[5] = { -- Bear Form / Dire Bear Form: +25% stamina
-				["rank"] = {
-					0.25,
-				},
+				["value"] = 0.25,
 				["buff"] = GetSpellInfo(9634),		-- ["Dire Bear Form"],
 			},
 		},
@@ -1368,9 +1358,7 @@ local StatModTable = {
 		-- every 5 sec. 
 		["ADD_MANA_REG_MOD_INT"] = {
 			[1] = {
-				["rank"] = {
-					0.25,
-				},
+				["value"] = 0.25,
 				["buff"] = GetSpellInfo(34074),			-- ["Aspect of the Viper"],
 			},
 		},
@@ -1433,9 +1421,7 @@ local StatModTable = {
 				},
 			},
 			[2] = {
-				["rank"] = {
-					8,
-				},
+				["value"] = 8,
 				["buff"] = GetSpellInfo(13163),		-- ["Aspect of the Monkey"],
 			},
 			[3] = {
@@ -1447,9 +1433,7 @@ local StatModTable = {
 				["buff"] = GetSpellInfo(13163),		-- ["Aspect of the Monkey"],
 			},
 			[4] = {
-				["rank"] = {
-					25,
-				},
+				["value"] = 25,
 				["buff"] = GetSpellInfo(31567),		-- ["Deterrence"],
 			},
 		},
@@ -1938,9 +1922,7 @@ local StatModTable = {
 			[1] = {
 				["MELEE"] = true,
 				["RANGED"] = true,
-				["rank"] = {
-					20,
-				},
+				["value"] = 20,
 				["buff"] = GetSpellInfo(2651),		-- ["Elune's Grace"],
 			},
 		},
@@ -1992,9 +1974,7 @@ local StatModTable = {
 				["FROST"] = true,
 				["SHADOW"] = true,
 				["ARCANE"] = true,
-				["rank"] = {
-					-0.4,
-				},
+				["value"] = -0.4,
 				["buff"] = GetSpellInfo(33206),		-- ["Pain Suppression"],
 			},
 		},
@@ -2085,9 +2065,7 @@ local StatModTable = {
 				["buff"] = GetSpellInfo(26669),		-- ["Evasion"],
 			},
 			[3] = {
-				["rank"] = {
-					15,
-				},
+				["value"] = 15,
 				["buff"] = GetSpellInfo(31022),		-- ["Ghostly Strike"],
 			},
 		},
@@ -2132,9 +2110,7 @@ local StatModTable = {
 				["FROST"] = true,
 				["SHADOW"] = true,
 				["ARCANE"] = true,
-				["rank"] = {
-					-0.9,
-				},
+				["value"] = -0.9,
 				["buff"] = GetSpellInfo(39666),		-- ["Cloak of Shadows"],
 			},
 			[3] = {
@@ -2204,9 +2180,7 @@ local StatModTable = {
 				["FROST"] = true,
 				["SHADOW"] = true,
 				["ARCANE"] = true,
-				["rank"] = {
-					-0.3,
-				},
+				["value"] = -0.3,
 				["buff"] = GetSpellInfo(30823),		-- ["Shamanistic Rage"],
 			},
 		},
@@ -2408,9 +2382,7 @@ local StatModTable = {
 				["FROST"] = true,
 				["SHADOW"] = true,
 				["ARCANE"] = true,
-				["rank"] = {
-					-0.2,
-				},
+				["value"] = -0.2,
 				["buff"] = GetSpellInfo(25228),		-- ["Soul Link"],
 			},
 		},
@@ -2494,9 +2466,7 @@ local StatModTable = {
 				["FROST"] = true,
 				["SHADOW"] = true,
 				["ARCANE"] = true,
-				["rank"] = {
-					-0.75,
-				},
+				["value"] = -0.75,
 				["buff"] = GetSpellInfo(41196),		-- ["Shield Wall"],
 			},
 			[2] = {
@@ -2508,9 +2478,7 @@ local StatModTable = {
 				["FROST"] = true,
 				["SHADOW"] = true,
 				["ARCANE"] = true,
-				["rank"] = {
-					-0.1,
-				},
+				["value"] = -0.1,
 				["stance"] = "Interface\\Icons\\Ability_Warrior_DefensiveStance",
 			},
 			[3] = {
@@ -2522,9 +2490,7 @@ local StatModTable = {
 				["FROST"] = true,
 				["SHADOW"] = true,
 				["ARCANE"] = true,
-				["rank"] = {
-					0.1,
-				},
+				["value"] = 0.1,
 				["stance"] = "Interface\\Icons\\Ability_Racial_Avatar",
 			},
 			[4] = {
@@ -2536,9 +2502,7 @@ local StatModTable = {
 				["FROST"] = true,
 				["SHADOW"] = true,
 				["ARCANE"] = true,
-				["rank"] = {
-					0.05,
-				},
+				["value"] = 0.05,
 				["buff"] = GetSpellInfo(12292),		-- ["Death Wish"],
 			},
 			[5] = {
@@ -2550,9 +2514,7 @@ local StatModTable = {
 				["FROST"] = true,
 				["SHADOW"] = true,
 				["ARCANE"] = true,
-				["rank"] = {
-					0.2,
-				},
+				["value"] = 0.2,
 				["buff"] = GetSpellInfo(13847),		-- ["Recklessness"],
 			},
 			[6] = {
@@ -2619,9 +2581,7 @@ local StatModTable = {
 		--         Infuses the target with power, increasing their spell damage and healing by 20%. Lasts 15 sec.
 		["MOD_SPELL_DMG"] = {
 			[1] = {
-				["rank"] = {
-					0.2,
-				},
+				["value"] = 0.2,
 				["buff"] = GetSpellInfo(37274),		-- ["Power Infusion"],
 			},
 		},
@@ -2629,9 +2589,7 @@ local StatModTable = {
 		--         Infuses the target with power, increasing their spell damage and healing by 20%. Lasts 15 sec.
 		["MOD_HEALING"] = {
 			[1] = {
-				["rank"] = {
-					0.2,
-				},
+				["value"] = 0.2,
 				["buff"] = GetSpellInfo(37274),		-- ["Power Infusion"],
 			},
 		},
@@ -2639,10 +2597,8 @@ local StatModTable = {
 		--             Dodge chance increased by 1%.
 		["ADD_DODGE"] = {
 			[1] = {
-				["rank"] = {
-					1,
-				},
 				["race"] = "NightElf",
+				["value"] = 1,
 			},
 		},
 		-- Paladin: Lay on Hands (Rank 1/2) - Buff
@@ -2675,10 +2631,8 @@ local StatModTable = {
 		--         Total Health increased by 5%.
 		["MOD_HEALTH"] = {
 			[1] = {
-				["rank"] = {
-					1.05,
-				},
 				["race"] = "Tauren",
+				["value"] = 1.05,
 			},
 		},
 		-- Blessing of Kings - Buff
@@ -2687,15 +2641,11 @@ local StatModTable = {
 		-- Increases stats by 10%.
 		["MOD_STR"] = {
 			[1] = {
-				["rank"] = {
-					0.1,
-				},
+				["value"] = 0.1,
 				["buff"] = GetSpellInfo(20217),		-- ["Blessing of Kings"],
 			},
 			[2] = {
-				["rank"] = {
-					0.1,
-				},
+				["value"] = 0.1,
 				["buff"] = GetSpellInfo(25898),		-- ["Greater Blessing of Kings"],
 			},
 		},
@@ -2705,15 +2655,11 @@ local StatModTable = {
 		-- Increases stats by 10%.
 		["MOD_AGI"] = {
 			[1] = {
-				["rank"] = {
-					0.1,
-				},
+				["value"] = 0.1,
 				["buff"] = GetSpellInfo(20217),		-- ["Blessing of Kings"],
 			},
 			[2] = {
-				["rank"] = {
-					0.1,
-				},
+				["value"] = 0.1,
 				["buff"] = GetSpellInfo(25898),		-- ["Greater Blessing of Kings"],
 			},
 		},
@@ -2723,15 +2669,11 @@ local StatModTable = {
 		-- Increases stats by 10%.
 		["MOD_STA"] = {
 			[1] = {
-				["rank"] = {
-					0.1,
-				},
+				["value"] = 0.1,
 				["buff"] = GetSpellInfo(20217),		-- ["Blessing of Kings"],
 			},
 			[2] = {
-				["rank"] = {
-					0.1,
-				},
+				["value"] = 0.1,
 				["buff"] = GetSpellInfo(25898),		-- ["Greater Blessing of Kings"],
 			},
 		},
@@ -2743,22 +2685,16 @@ local StatModTable = {
 		--        Increase Intelligence by 5%.
 		["MOD_INT"] = {
 			[1] = {
-				["rank"] = {
-					0.1,
-				},
+				["value"] = 0.1,
 				["buff"] = GetSpellInfo(20217),		-- ["Blessing of Kings"],
 			},
 			[2] = {
-				["rank"] = {
-					0.1,
-				},
+				["value"] = 0.1,
 				["buff"] = GetSpellInfo(25898),		-- ["Greater Blessing of Kings"],
 			},
 			[3] = {
-				["rank"] = {
-					0.05,
-				},
 				["race"] = "Gnome",
+				["value"] = 0.05,
 			},
 		},
 		-- Blessing of Kings - Buff
@@ -2769,59 +2705,106 @@ local StatModTable = {
 		--        Increase Spirit by 10%.
 		["MOD_SPI"] = {
 			[1] = {
-				["rank"] = {
-					0.1,
-				},
+				["value"] = 0.1,
 				["buff"] = GetSpellInfo(20217),		-- ["Blessing of Kings"],
 			},
 			[2] = {
-				["rank"] = {
-					0.1,
-				},
+				["value"] = 0.1,
 				["buff"] = GetSpellInfo(25898),		-- ["Greater Blessing of Kings"],
 			},
 			[3] = {
-				["rank"] = {
-					0.1,
-				},
 				["race"] = "Human",
+				["value"] = 0.1,
 			},
 		},
 		-- Whitemend Wisdom
 		-- Increases healing by up to 10% of your total Intellect.
 		["ADD_HEALING_MOD_INT"] = {
 			[1] = {
-				["rank"] = {
-					0.1,
-				},
 				["set"] = 571,
 				["pieces"] = 2,
+				["value"] = 0.1,
 			}
 		},
 		-- Wrath of Spellfire
 		-- Increases spell damage by up to 7% of your total Intellect.
 		["ADD_SPELL_DMG_MOD_INT"] = {
 			[1] = {
-				["rank"] = {
-					0.07,
-				},
 				["set"] = 552,
 				["pieces"] = 3,
+				["value"] = 0.07,
 			},
 		},
 		-- Primal Mooncloth
 		-- Allow 5% of your Mana regeneration to continue while casting.
 		["ADD_MANA_REG_MOD_NORMAL_MANA_REG"] = {
 			[1] = {
-				["rank"] = {
-					0.05,
-				},
 				["set"] = 554,
 				["pieces"] = 3,
+				["value"] = 0.05,
 			},
 		},
 	},
 }
+
+local StatModValidators = {
+	condition = function(case)
+		return loadstring("return "..case.condition)()
+	end,
+	buff = function(case)
+		return AuraUtil.FindAuraByName(case.buff, "player")
+	end,
+	stance = function(case)
+		return case.stance == GetStanceIcon()
+	end,
+	race = function(case)
+		return case.race == playerRace
+	end,
+	set = function(case)
+		return equipped_sets[case.set] and equipped_sets[case.set] >= case.pieces
+	end
+}
+
+local function ValidateStatMod(case, school)
+	if school and not case[school] then return false end
+	for k,v in pairs(case) do
+		local validator = StatModValidators[k]
+		if validator then
+			if not validator(case) then
+				return false
+			end
+		end
+	end
+	return true
+end
+
+local GetStatModValue = function(mod, case, initialValue, school)
+	if not ValidateStatMod(case, school) then
+		return mod
+	end
+
+	local value
+	if case.tab and case.num then
+		-- Talent Rank
+		local r = select(5, GetTalentInfo(case.tab, case.num))
+		value = case.rank[r]
+	elseif case.buff and case.rank then
+		local r = GetPlayerBuffRank(case.buff)
+		value = case.rank[r]
+	elseif case.value then
+		value = case.value
+	end
+
+	if value then
+		if initialValue == 0 then
+			mod = mod + value
+		else
+			mod = mod * value
+		end
+	end
+
+	return mod
+end
 
 function StatLogic:GetStatMod(stat, school)
 	local statModInfo = StatModInfo[stat]
@@ -2831,61 +2814,13 @@ function StatLogic:GetStatMod(stat, school)
 	-- Class specific mods
 	if type(StatModTable[playerClass][stat]) == "table" then
 		for _, case in ipairs(StatModTable[playerClass][stat]) do
-			local ok = true
-			if school and not case[school] then ok = nil end
-			if ok and case.condition and not loadstring("return "..case.condition)() then ok = nil end
-			if ok and case.buff and not AuraUtil.FindAuraByName(case.buff, "player") then ok = nil end
-			if ok and case.stance and case.stance ~= GetStanceIcon() then ok = nil end
-			if ok then
-				local r, _
-				-- if talant field
-				if case.tab and case.num then
-					_, _, _, _, r = GetTalentInfo(case.tab, case.num)
-				-- no talant but buff is given
-				elseif case.buff then
-					r = GetPlayerBuffRank(case.buff)
-				-- no talant but all other given conditions are statisfied
-				elseif case.condition or case.stance then
-					r = 1
-				end
-				if r and r ~= 0 and case.rank[r] then
-					if statModInfo.initialValue == 0 then
-						mod = mod + case.rank[r]
-					else
-						mod = mod * case.rank[r]
-					end
-				end
-			end
+			mod = GetStatModValue(mod, case, statModInfo.initialValue, school)
 		end
 	end
 	-- Non class specific mods
 	if type(StatModTable["ALL"][stat]) == "table" then
 		for _, case in ipairs(StatModTable["ALL"][stat]) do
-			local ok = true
-			if school and not case[school] then ok = nil end
-			if ok and case.condition and not loadstring("return "..case.condition)() then ok = nil end
-			if ok and case.buff and not AuraUtil.FindAuraByName(case.buff, "player") then ok = nil end
-			if ok and case.stance and case.stance ~= GetStanceIcon() then ok = nil end
-			if ok and case.race and case.race ~= playerRace then ok = nil end
-			if ok and case.set and (equipped_sets[case.set] == nil or equipped_sets[case.set] < case.pieces) then ok = nil end
-			if ok then
-				local r
-				-- there are no talants in non class specific mods
-				-- check buff
-				if case.buff then
-					r = GetPlayerBuffRank(case.buff)
-				-- no talant but all other given conditions are statisfied
-				elseif case.condition or case.stance or case.race or case.set then
-					r = 1
-				end
-				if r and r ~= 0 and case.rank[r] then
-					if statModInfo.initialValue == 0 then
-						mod = mod + case.rank[r]
-					else
-						mod = mod * case.rank[r]
-					end
-				end
-			end
+			mod = GetStatModValue(mod, case, statModInfo.initialValue, school)
 		end
 	end
 
