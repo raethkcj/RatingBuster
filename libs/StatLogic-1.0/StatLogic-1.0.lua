@@ -161,7 +161,7 @@ local equipped_meta_gem
 do
 	local update_meta_gem = function()
 		local link = GetInventoryItemLink("player", 1)
-		local str = select(4, strsplit(":", link))
+		local str = link and select(4, strsplit(":", link))
 		equipped_meta_gem = str and tonumber(str) or 0
 	end
 
