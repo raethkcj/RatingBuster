@@ -156,11 +156,25 @@ local equipped_sets = setmetatable({}, {
 	end
 })
 
+local equipped_meta_gem
+
 do
+	local update_meta_gem = function()
+		local link = GetInventoryItemLink("player", 1)
+		local str = select(4, strsplit(":", link))
+		equipped_meta_gem = str and tonumber(str) or 0
+	end
+
 	local f = CreateFrame("Frame")
 	f:RegisterUnitEvent("UNIT_INVENTORY_CHANGED", "player")
-	f:SetScript("OnEvent", function()
+	f:RegisterEvent("PLAYER_ENTERING_WORLD")
+	f:SetScript("OnEvent", function(self, event)
 		wipe(equipped_sets)
+		update_meta_gem()
+
+		if event == "PLAYER_ENTERING_WORLD" then
+			self:UnregisterEvent(event)
+		end
 	end)
 end
 
@@ -2683,6 +2697,8 @@ local StatModTable = {
 		-- Increases stats by 10%.
 		-- Gnome: Expansive Mind - Racial
 		--        Increase Intelligence by 5%.
+		-- Ember Skyfire Diamond
+		-- 2% Intellect
 		["MOD_INT"] = {
 			[1] = {
 				["value"] = 0.1,
@@ -2695,6 +2711,10 @@ local StatModTable = {
 			[3] = {
 				["race"] = "Gnome",
 				["value"] = 0.05,
+			},
+			[4] = {
+				["meta_gem"] = 35503,
+				["value"] = 0.02,
 			},
 		},
 		-- Blessing of Kings - Buff
@@ -2762,6 +2782,9 @@ local StatModValidators = {
 	end,
 	set = function(case)
 		return equipped_sets[case.set] and equipped_sets[case.set] >= case.pieces
+	end,
+	meta_gem = function(case)
+		return case.meta_gem == equipped_meta_gem
 	end
 }
 
