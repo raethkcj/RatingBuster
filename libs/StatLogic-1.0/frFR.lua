@@ -424,8 +424,16 @@ L["StatIDLookup"] = {
 	["votre score de coup critique à distance"] = {"RANGED_CRIT_RATING"}, -- [Gants de fléchier] ID:7348
 
 	["le score de hâte"] = {"MELEE_HASTE_RATING", "RANGED_HASTE_RATING"},
+	["score de hâte"] = {"MELEE_HASTE_RATING", "RANGED_HASTE_RATING"},
+	["au score de hâte"] = {"MELEE_HASTE_RATING", "RANGED_HASTE_RATING"},
+
 	["le score de hâte des sorts"] = {"SPELL_HASTE_RATING"},
+	["score de hâte des sorts"] = {"SPELL_HASTE_RATING"},
+	["au score de hâte des sorts"] = {"SPELL_HASTE_RATING"},
+
 	["le score de hâte à distance"] = {"RANGED_HASTE_RATING"},
+	["score de hâte à distance"] = {"RANGED_HASTE_RATING"},
+	["au score de hâte à distance"] = {"RANGED_HASTE_RATING"},
 
 	["le score de la compétence dagues"] = {"DAGGER_WEAPON_RATING"},
 	["score de la compétence dagues"] = {"DAGGER_WEAPON_RATING"},
