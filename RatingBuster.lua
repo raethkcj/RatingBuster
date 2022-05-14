@@ -1385,6 +1385,7 @@ local currentColorCode
 
 -- Utilities for checking nested recipes
 local ITEM_MIN_LEVEL_PATTERN = ITEM_MIN_LEVEL:gsub("%%d", "%%d+")
+local BIND_TRADE_PATTERN = BIND_TRADE_TIME_REMAINING:gsub("%%s", ".*")
 local colorPrecision = 0.0001
 local AreColorsEqual = function(a, b)
 	return math.abs(a.r - b.r) < colorPrecision
@@ -1431,12 +1432,14 @@ function RatingBuster.ProcessTooltip(tooltip, name, link)
 		if text then
 			if isRecipe and not tooltip.rb_processed_nested_recipe and i > 2 then
 				-- Workaround to detect nested items from recipes
-				-- Epic Gem recipes have quality colors but no required level
-				-- Brilliant Wizard Oil recipe is white quality but has required level
+				-- Check if any line after the 3rd either
+				-- a) matches any uncommon or higher item quality color (and is not BIND_TRADE_PATTERN)
+				-- b) has a minimum required level
 				local color = CreateColor(fontString:GetTextColor())
 				local quality = false
 				for j = 2,7 do
-					if AreColorsEqual(ITEM_QUALITY_COLORS[j].color, color) then
+					if AreColorsEqual(ITEM_QUALITY_COLORS[j].color, color)
+					and not (j == 7 and text:match(BIND_TRADE_PATTERN)) then
 						quality = true
 						break
 					end
