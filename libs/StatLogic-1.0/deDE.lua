@@ -186,8 +186,13 @@ L["DeepScanSeparators"] = {
 	"/", -- "+10 Defense Rating/+10 Stamina/+15 Block Value": ZG Enchant
 	" & ", -- "+26 Healing Spells & 2% Reduced Threat": Bracing Earthstorm Diamond ID:25897
 	", ", -- "+6 Spell Damage, +5 Spell Crit Rating": Potent Ornate Topaz ID: 28123
-	"[^ ][^S][^e][^k]%. ",  -- "Equip: Increases attack power by 81 when fighting Undead. It also allows the acquisition of Scourgestones on behalf of the Argent Dawn.": Seal of the Dawn
-	-- Importent for deDE to not separate "alle 5 Sek. 2 Mana"
+	{
+		pattern = "([^ ][^S][^e][^k])(%.) ",  -- "Equip: Increases attack power by 81 when fighting Undead. It also allows the acquisition of Scourgestones on behalf of the Argent Dawn.": Seal of the Dawn
+		-- Importent for deDE to not separate "alle 5 Sek. 2 Mana"
+		repl = function(prefix, sep)
+			return prefix .. "@"
+		end
+	}
 }
 L["DeepScanWordSeparators"] = {
 	" und ", -- "Critical Rating +6 and Dodge Rating +5": Assassin's Fire Opal ID:30565

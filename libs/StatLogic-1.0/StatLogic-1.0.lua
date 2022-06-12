@@ -4395,8 +4395,14 @@ function StatLogic:GetSum(item, table)
 				end
 				-- Replace separators with @
 				for _, sep in ipairs(L.DeepScanSeparators) do
+					local repl = "@"
+					if type(sep) == "table" then
+						repl = sep.repl
+						sep = sep.pattern
+					end
 					if strfind(text, sep) then
-						text = gsub(text, sep, "@")
+						print(repl)
+						text = gsub(text, sep, repl)
 					end
 				end
 				-- Split text using @
