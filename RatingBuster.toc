@@ -1,4 +1,4 @@
-﻿## Interface: 20503
+﻿## Interface: 20504
 ## Interface-Classic: 11402
 ## Title: RatingBuster
 ## Notes: Item stat breakdown, analysis and comparing
