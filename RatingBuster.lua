@@ -1430,9 +1430,9 @@ function RatingBuster.ProcessTooltip(tooltip, name, link)
 		local fontString = _G[tipTextLeft..i]
 		local text = fontString:GetText()
 		if text then
-			if isRecipe and not tooltip.rb_processed_nested_recipe and i > 2 then
+			if isRecipe and not tooltip.rb_processed_nested_recipe and i > 5 then
 				-- Workaround to detect nested items from recipes
-				-- Check if any line after the 3rd either
+				-- Check if any line after the 5th either
 				-- a) matches any uncommon or higher item quality color (and is not BIND_TRADE_PATTERN)
 				-- b) has a minimum required level
 				local color = CreateColor(fontString:GetTextColor())
