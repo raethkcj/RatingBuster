@@ -30,6 +30,9 @@ ignore:
   - *.txt
   - *.jpg
 
+plain-copy:
+  - LICENSE.txt
+
 embedded-libraries:
   - TipHooker-1.0
   - StatLogic-1.0
