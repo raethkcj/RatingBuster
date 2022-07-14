@@ -2,12 +2,13 @@ package-as: RatingBuster
 enable-toc-creation: yes
 
 externals:
-  libs/LibStub:
+  libs/StatLogic/libs/LibStub:
     url: https://repos.wowace.com/wow/libstub/trunk
+  libs/StatLogic/libs/AceLocale-3.0:
+    url: https://repos.wowace.com/wow/ace3/trunk/AceLocale-3.0
+
   libs/CallbackHandler-1.0:
     url: https://repos.wowace.com/wow/callbackhandler/trunk
-  libs/AceLocale-3.0:
-    url: https://repos.wowace.com/wow/ace3/trunk/AceLocale-3.0
   libs/AceConsole-3.0:
     url: https://repos.wowace.com/wow/ace3/trunk/AceConsole-3.0
   libs/AceEvent-3.0:
@@ -27,6 +28,9 @@ externals:
   libs/AceConfig-3.0:
     url: https://repos.wowace.com/wow/ace3/trunk/AceConfig-3.0
 
+move-folders:
+  RatingBuster/libs/StatLogic: StatLogic
+
 ignore:
   - *.txt
   - *.jpg
@@ -36,4 +40,3 @@ plain-copy:
 
 embedded-libraries:
   - TipHooker-1.0
-  - StatLogic-1.0
