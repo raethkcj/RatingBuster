@@ -11,8 +11,6 @@ Description: Converts combat ratings in tooltips into normal percentages.
 local TipHooker = LibStub("TipHooker-1.0")
 local StatLogic = LibStub("StatLogic-1.0")
 local L = LibStub("AceLocale-3.0"):GetLocale("RatingBuster")
-local BI = LibStub("LibBabble-Inventory-3.0"):GetLookupTable()
-
 
 --------------------
 -- AceAddon Setup --
@@ -1971,48 +1969,48 @@ end
 -- Used armor type each class uses
 local classArmorTypes = {
 	WARRIOR = {
-		[BI["Plate"]] = true,
-		[BI["Mail"]] = true,
-		[BI["Leather"]] = true,
+		[Enum.ItemArmorSubclass["Plate"]] = true,
+		[Enum.ItemArmorSubclass["Mail"]] = true,
+		[Enum.ItemArmorSubclass["Leather"]] = true,
 	},
 	PALADIN = {
-		[BI["Plate"]] = true,
-		[BI["Mail"]] = true,
-		[BI["Leather"]] = true,
-		[BI["Cloth"]] = true,
+		[Enum.ItemArmorSubclass["Plate"]] = true,
+		[Enum.ItemArmorSubclass["Mail"]] = true,
+		[Enum.ItemArmorSubclass["Leather"]] = true,
+		[Enum.ItemArmorSubclass["Cloth"]] = true,
 	},
 	HUNTER = {
-		[BI["Mail"]] = true,
-		[BI["Leather"]] = true,
+		[Enum.ItemArmorSubclass["Mail"]] = true,
+		[Enum.ItemArmorSubclass["Leather"]] = true,
 	},
 	ROGUE = {
-		[BI["Leather"]] = true,
+		[Enum.ItemArmorSubclass["Leather"]] = true,
 	},
 	PRIEST = {
-		[BI["Cloth"]] = true,
+		[Enum.ItemArmorSubclass["Cloth"]] = true,
 	},
 	SHAMAN = {
-		[BI["Mail"]] = true,
-		[BI["Leather"]] = true,
-		[BI["Cloth"]] = true,
+		[Enum.ItemArmorSubclass["Mail"]] = true,
+		[Enum.ItemArmorSubclass["Leather"]] = true,
+		[Enum.ItemArmorSubclass["Cloth"]] = true,
 	},
 	MAGE = {
-		[BI["Cloth"]] = true,
+		[Enum.ItemArmorSubclass["Cloth"]] = true,
 	},
 	WARLOCK = {
-		[BI["Cloth"]] = true,
+		[Enum.ItemArmorSubclass["Cloth"]] = true,
 	},
 	DRUID = {
-		[BI["Leather"]] = true,
-		[BI["Cloth"]] = true,
+		[Enum.ItemArmorSubclass["Leather"]] = true,
+		[Enum.ItemArmorSubclass["Cloth"]] = true,
 	},
 }
 
 local armorTypes = {
-	[BI["Plate"]] = true,
-	[BI["Mail"]] = true,
-	[BI["Leather"]] = true,
-	[BI["Cloth"]] = true,
+	[Enum.ItemArmorSubclass["Plate"]] = true,
+	[Enum.ItemArmorSubclass["Mail"]] = true,
+	[Enum.ItemArmorSubclass["Leather"]] = true,
+	[Enum.ItemArmorSubclass["Cloth"]] = true,
 }
 
 
@@ -2725,7 +2723,7 @@ function RatingBuster:StatSummary(tooltip, name, link)
 	
 	-- Show stat summary only for highest level armor type and items you can use with uncommon quality and up
 	if profileDB.sumIgnoreUnused then
-		local _, _, itemRarity, _, _, _, itemSubType, _, itemEquipLoc = GetItemInfo(link)
+		local _, _, itemRarity, _, _, _, _, _, itemEquipLoc, _, _, _, subclassID = GetItemInfo(link)
 		
 		-- Check rarity
 		if not itemRarity or itemRarity < 2 then
@@ -2733,8 +2731,7 @@ function RatingBuster:StatSummary(tooltip, name, link)
 		end
 
 		-- Check armor type
-		if armorTypes[itemSubType] and (not classArmorTypes[class][itemSubType]) and itemEquipLoc ~= "INVTYPE_CLOAK" then
-			--self:Print("Check armor type", itemSubType)
+		if armorTypes[subclassID] and (not classArmorTypes[class][subclassID]) and itemEquipLoc ~= "INVTYPE_CLOAK" then
 			return
 		end
 		
