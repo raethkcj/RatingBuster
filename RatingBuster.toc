@@ -1,5 +1,6 @@
-﻿## Interface: 20504
-## Interface-Classic: 11403
+﻿## Interface_Vanilla: 11403
+## Interface_TBC: 20504
+## Interface_Wrath: 30400
 ## Title: RatingBuster
 ## Notes: Item stat breakdown, analysis and comparing
 ## Notes-zhTW: 裝備數值解析與比較
