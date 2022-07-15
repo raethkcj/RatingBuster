@@ -9,7 +9,7 @@ Description: Converts combat ratings in tooltips into normal percentages.
 -- Libraries --
 ---------------
 local TipHooker = LibStub("TipHooker-1.0")
-local StatLogic = LibStub("StatLogic-1.0")
+local StatLogic = LibStub("StatLogic")
 local L = LibStub("AceLocale-3.0"):GetLocale("RatingBuster")
 
 --------------------
