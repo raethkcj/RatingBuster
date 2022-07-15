@@ -1099,24 +1099,14 @@ local StatModTable = {
 			},
 		},
 		-- Druid: Intensity (Rank 3) - 3,6
-		--        Allows 5%/10%/15% of your Mana regeneration to continue while casting and causes your Enrage ability to instantly generate 10 rage.
-		-- 2.3.0 increased to 10/20/30% mana regeneration.
+		--        Allows 10/20/30% of your Mana regeneration to continue while casting and causes your Enrage ability to instantly generate 10 rage.
 		["ADD_MANA_REG_MOD_NORMAL_MANA_REG"] = {
 			[1] = {
 				["tab"] = 3,
 				["num"] = 6,
 				["rank"] = {
-					0.05, 0.10, 0.15,
-				},
-				["condition"] = "tocversion < 20300",
-			},
-			[2] = {
-				["tab"] = 3,
-				["num"] = 6,
-				["rank"] = {
 					0.1, 0.2, 0.3,
 				},
-				["condition"] = "tocversion >= 20300",
 			},
 		},
 		-- Druid: Dreamstate (Rank 3) - 1,17
@@ -1270,21 +1260,10 @@ local StatModTable = {
 				["buff"] = GetSpellInfo(9634),		-- ["Dire Bear Form"],
 			},
 		},
-		-- Druid: Heart of the Wild (Rank 5) - 2,15
-		--        Increases your Intellect by 4%/8%/12%/16%/20%. In addition, while in Bear or Dire Bear Form your Stamina is increased by 4%/8%/12%/16%/20% and while in Cat Form your Strength is increased by 4%/8%/12%/16%/20%.
 		-- Druid: Survival of the Fittest (Rank 3) - 2,16
 		--        Increases all attributes by 1%/2%/3% and reduces the chance you'll be critically hit by melee attacks by 1%/2%/3%.
 		["MOD_STR"] = {
 			[1] = {
-				["tab"] = 2,
-				["num"] = 15,
-				["rank"] = {
-					0.04, 0.08, 0.12, 0.16, 0.2,
-				},
-				["buff"] = GetSpellInfo(32356),		-- ["Cat Form"],
-				["condition"] = "tocversion < 20300",
-			},
-			[2] = {
 				["tab"] = 2,
 				["num"] = 16,
 				["rank"] = {
@@ -1303,7 +1282,6 @@ local StatModTable = {
 					0.02, 0.04, 0.06, 0.08, 0.1,
 				},
 				["buff"] = GetSpellInfo(32356),		-- ["Cat Form"],
-				["condition"] = "tocversion >= 20300",
 			},
 		},
 		-- Druid: Survival of the Fittest (Rank 3) - 2,16
@@ -1548,24 +1526,14 @@ local StatModTable = {
 			},
 		},
 		-- Mage: Arcane Meditation (Rank 3) - 1,12
-		--       Allows 5%/10%/15% of your Mana regeneration to continue while casting.
-		-- 2.3.0 increased to 10/20/30% mana regeneration.
+		--       Allows 10/20/30% of your Mana regeneration to continue while casting.
 		["ADD_MANA_REG_MOD_NORMAL_MANA_REG"] = {
 			[1] = {
 				["tab"] = 1,
 				["num"] = 12,
 				["rank"] = {
-					0.05, 0.1, 0.15,
-				},
-				["condition"] = "tocversion < 20300",
-			},
-			[2] = {
-				["tab"] = 1,
-				["num"] = 12,
-				["rank"] = {
 					0.1, 0.2, 0.3,
 				},
-				["condition"] = "tocversion >= 20300",
 			},
 			[3] = {
 				-- All ranks of Mage Armor give 30% regen
@@ -1821,7 +1789,6 @@ local StatModTable = {
 				["rank"] = {
 					0.02, 0.04, 0.06, 0.08, 0.1,
 				},
-				["condition"] = "tocversion >= 20300",
 			},
 		},
 		-- Paladin: Divine Intellect (Rank 5) - 1,2
@@ -1849,24 +1816,14 @@ local StatModTable = {
 	},
 	["PRIEST"] = {
 		-- Priest: Meditation (Rank 3) - 1,9
-		--         Allows 5%/10%/15% of your Mana regeneration to continue while casting.
-		-- 2.3.0 increased to 10/20/30% mana regeneration.
+		--         Allows 10/20/30% of your Mana regeneration to continue while casting.
 		["ADD_MANA_REG_MOD_NORMAL_MANA_REG"] = {
 			[1] = {
 				["tab"] = 1,
 				["num"] = 9,
 				["rank"] = {
-					0.05, 0.1, 0.15,
-				},
-				["condition"] = "tocversion < 20300",
-			},
-			[2] = {
-				["tab"] = 1,
-				["num"] = 9,
-				["rank"] = {
 					0.1, 0.2, 0.3,
 				},
-				["condition"] = "tocversion >= 20300",
 			},
 		},
 		-- Priest: Spiritual Guidance (Rank 5) - 2,14
@@ -3277,7 +3234,7 @@ end
 local RAPPerAgi = {
 	[ClassNameToID["WARRIOR"]] = 1,
 	[ClassNameToID["PALADIN"]] = 0,
-	[ClassNameToID["HUNTER"]] = tocversion >= 20100 and 1 or 2,
+	[ClassNameToID["HUNTER"]] = 1,
 	[ClassNameToID["ROGUE"]] = 1,
 	[ClassNameToID["PRIEST"]] = 0,
 	[ClassNameToID["SHAMAN"]] = 0,
