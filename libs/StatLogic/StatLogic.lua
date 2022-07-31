@@ -184,8 +184,8 @@ end
 -- Local Variables --
 ---------------------
 -- Player info
-local _, playerClass = UnitClass("player")
-local _, playerRace = UnitRace("player")
+addonTable.playerClass = select(2, UnitClass("player"))
+addonTable.playerRace = select(2, UnitRace("player"))
 
 -- Localize globals
 local _G = getfenv(0)
@@ -527,7 +527,7 @@ local RatingNameToID = {
 	["ARMOR_PENETRATION_RATING"] = CR_ARMOR_PENETRATION,
 }
 
-function StatLogic:GetRatingIDFromName(rating)
+function StatLogic:GetRatingIdOrStatId(rating)
 	return RatingNameToID[rating]
 end
 
@@ -1112,8 +1112,8 @@ local GetStatModValue = function(mod, case, initialValue, school)
 end
 
 local StatModCategories = {
-	playerClass,
-	playerRace,
+	addonTable.playerClass,
+	addonTable.playerRace,
 	"ALL",
 }
 
@@ -1311,7 +1311,7 @@ function StatLogic:GetAPPerStr(class)
 		class = ClassNameToID[strupper(class)]
 	-- if class is invalid input, default to player class
 	elseif type(class) ~= "number" or class < 1 or class > 9 then
-		class = ClassNameToID[playerClass]
+		class = ClassNameToID[addonTable.playerClass]
 	end
 	return APPerStr[class], "AP"
 end
@@ -1348,7 +1348,7 @@ function StatLogic:GetAPFromStr(str, class)
 		class = ClassNameToID[strupper(class)]
 	-- if class is invalid input, default to player class
 	elseif type(class) ~= "number" or class < 1 or class > 9 then
-		class = ClassNameToID[playerClass]
+		class = ClassNameToID[addonTable.playerClass]
 	end
 	-- Calculate
 	return str * APPerStr[class], "AP"
@@ -1397,7 +1397,7 @@ function StatLogic:GetBlockValuePerStr(class)
 		class = ClassNameToID[strupper(class)]
 	-- if class is invalid input, default to player class
 	elseif type(class) ~= "number" or class < 1 or class > 9 then
-		class = ClassNameToID[playerClass]
+		class = ClassNameToID[addonTable.playerClass]
 	end
 	return BlockValuePerStr[class], "BLOCK_VALUE"
 end
@@ -1436,7 +1436,7 @@ function StatLogic:GetBlockValueFromStr(str, class)
 		class = ClassNameToID[strupper(class)]
 	-- if class is invalid input, default to player class
 	elseif type(class) ~= "number" or class < 1 or class > 9 then
-		class = ClassNameToID[playerClass]
+		class = ClassNameToID[addonTable.playerClass]
 	end
 	-- Calculate
 	return str * BlockValuePerStr[class], "BLOCK_VALUE"
@@ -1486,7 +1486,7 @@ function StatLogic:GetAPPerAgi(class)
 		class = ClassNameToID[strupper(class)]
 	-- if class is invalid input, default to player class
 	elseif type(class) ~= "number" or class < 1 or class > 9 then
-		class = ClassNameToID[playerClass]
+		class = ClassNameToID[addonTable.playerClass]
 	end
 	-- Check druid cat form
 	if (class == 9) and (GetShapeshiftFormID() == CAT_FORM) then		-- ["Cat Form"]
@@ -1530,7 +1530,7 @@ function StatLogic:GetAPFromAgi(agi, class)
 		class = ClassNameToID[strupper(class)]
 	-- if class is invalid input, default to player class
 	elseif type(class) ~= "number" or class < 1 or class > 9 then
-		class = ClassNameToID[playerClass]
+		class = ClassNameToID[addonTable.playerClass]
 	end
 	-- Calculate
 	return agi * APPerAgi[class], "AP"
@@ -1579,7 +1579,7 @@ function StatLogic:GetRAPPerAgi(class)
 		class = ClassNameToID[strupper(class)]
 	-- if class is invalid input, default to player class
 	elseif type(class) ~= "number" or class < 1 or class > 9 then
-		class = ClassNameToID[playerClass]
+		class = ClassNameToID[addonTable.playerClass]
 	end
 	return RAPPerAgi[class], "RANGED_AP"
 end
@@ -1619,7 +1619,7 @@ function StatLogic:GetRAPFromAgi(agi, class)
 		class = ClassNameToID[strupper(class)]
 	-- if class is invalid input, default to player class
 	elseif type(class) ~= "number" or class < 1 or class > 9 then
-		class = ClassNameToID[playerClass]
+		class = ClassNameToID[addonTable.playerClass]
 	end
 	-- Calculate
 	return agi * RAPPerAgi[class], "RANGED_AP"
@@ -1669,7 +1669,7 @@ function StatLogic:GetBaseDodge(class)
 		class = ClassNameToID[strupper(class)]
 	-- if class is invalid input, default to player class
 	elseif type(class) ~= "number" or class < 1 or class > 9 then
-		class = ClassNameToID[playerClass]
+		class = ClassNameToID[addonTable.playerClass]
 	end
 	return BaseDodge[class], "DODGE"
 end
@@ -1695,7 +1695,7 @@ end
 
 function StatLogic:GetDodgePerAgi()
 	local _, agility = UnitStat("player", 2)
-	local class = ClassNameToID[playerClass]
+	local class = ClassNameToID[addonTable.playerClass]
 	-- dodgeFromAgi is %
 	local dodgeFromAgi = GetDodgeChance() - self:GetStatMod("ADD_DODGE") - self:GetEffectFromRating(GetCombatRating(CR_DODGE), CR_DODGE, UnitLevel("player")) - self:GetEffectFromDefense(GetTotalDefense("player"), UnitLevel("player"))
 	return (dodgeFromAgi - BaseDodge[class]) / agility, "DODGE"
@@ -1769,7 +1769,7 @@ function StatLogic:GetCritFromAgi(agi, class, level)
 		class = ClassNameToID[strupper(class)]
 	-- if class is invalid input, default to player class
 	elseif type(class) ~= "number" or class < 1 or class > GetNumClasses() then
-		class = ClassNameToID[playerClass]
+		class = ClassNameToID[addonTable.playerClass]
 	end
 	-- if level is invalid input, default to player level
 	if type(level) ~= "number" or level < 1 or level > GetMaxPlayerLevel() then
@@ -1818,7 +1818,7 @@ function StatLogic:GetSpellCritFromInt(int, class, level)
 		class = ClassNameToID[strupper(class)]
 	-- if class is invalid input, default to player class
 	elseif type(class) ~= "number" or class < 1 or class > GetNumClasses() then
-		class = ClassNameToID[playerClass]
+		class = ClassNameToID[addonTable.playerClass]
 	end
 	-- if level is invalid input, default to player level
 	if type(level) ~= "number" or level < 1 or level > GetMaxPlayerLevel() then
@@ -1876,7 +1876,7 @@ function StatLogic:GetHealthRegenFromSpi(spi, class)
 		class = ClassNameToID[strupper(class)]
 	-- if class is invalid input, default to player class
 	elseif type(class) ~= "number" or class < 1 or class > 9 then
-		class = ClassNameToID[playerClass]
+		class = ClassNameToID[addonTable.playerClass]
 	end
 	-- Calculate
 	return spi * HealthRegenPerSpi[class] * 5, "HEALTH_REG_OUT_OF_COMBAT"

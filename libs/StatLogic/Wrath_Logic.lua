@@ -312,3 +312,3469 @@ addonTable.SpellCritPerInt = {
 		0.0116, 0.0108, 0.0101, 0.0093, 0.0087, 0.0081, 0.0075, 0.0070, 0.0065, 0.0060,
 	},
 }
+
+addonTable.StatModTable = {}
+if playerClass == "DRUID" then
+	addonTable.StatModTable["DRUID"] = {
+		-- Druid: Master Shapeshifter (Rank 2) - 3,9
+		--        Moonkin Form - Increases spell damage by 2%/4%.
+		--      * Does not affect char window stats
+		-- Druid: Earth and Moon (Rank 5) - 1,27
+		--        Also increases your spell damage by 1%/2%/3%/4%/5%.
+		--      * Does not affect char window stats
+		--[[
+		["MOD_SPELL_DMG"] = {
+		{
+		["rank"] = {
+		0.02, 0.04,
+		},
+		["buff"] = 24858,		-- ["Moonkin Form"],
+		},
+		{
+		["tab"] = 1,
+		["num"] = 27,
+		["rank"] = {
+		0.01, 0.02, 0.03, 0.04, 0.05,
+		},
+		},
+		},
+		--]]
+		-- Druid: Master Shapeshifter (Rank 2) - 3,9
+		--        Tree of Life Form - Increases healing by 2%/4%.
+		--      * Does not affect char window stats
+		--[[
+		["MOD_HEALING"] = {
+		{
+		["rank"] = {
+		0.02, 0.04,
+		},
+		["buff"] = 33891,		-- ["Tree of Life"],
+		},
+		},
+		--]]
+		-- Druid: Improved Moonkin Form (Rank 3) - 1,19
+		--        Your Moonkin Aura also causes affected targets to gain 1%/2%/3% haste and you to gain 10/20/30% of your spirit as additional spell damage.
+		["ADD_SPELL_DMG_MOD_SPI"] = {
+			{
+				["tab"] = 1,
+				["num"] = 19,
+				["rank"] = {
+					0.1, 0.2, 0.3,
+				},
+				["buff"] = 24858, -- ["Moonkin Form"],
+			},
+		},
+		-- Druid: Improved Tree of Life (Rank 3) - 3,24
+		--        Increases your Armor while in Tree of Life Form by 33%/66%/100%, and increases your healing spell power by 5%/10%/15% of your spirit while in Tree of Life Form.
+		["ADD_HEALING_MOD_SPI"] = {
+			{
+				["tab"] = 3,
+				["num"] = 24,
+				["rank"] = {
+					0.05, 0.10, 0.15,
+				},
+				["buff"] = 33891, -- ["Tree of Life"],
+			},
+		},
+		-- Druid: Lunar Guidance (Rank 3) - 1,12
+		--        Increases your spell damage and healing by 8%/16%/25% of your total Intellect.
+		-- 3.0.1: Increases your spell damage and healing by 4%/8%/12% of your total Intellect.
+		["ADD_SPELL_DMG_MOD_INT"] = {
+			{
+				["tab"] = 1,
+				["num"] = 12,
+				["rank"] = {
+					0.04, 0.08, 0.12,
+				},
+			},
+		},
+		-- Druid: Lunar Guidance (Rank 3) - 1,12
+		--        Increases your spell damage and healing by 8%/16%/25% of your total Intellect.
+		-- 3.0.1: Increases your spell damage and healing by 4%/8%/12% of your total Intellect.
+		["ADD_HEALING_MOD_INT"] = {
+			{
+				["tab"] = 1,
+				["num"] = 12,
+				["rank"] = {
+					0.04, 0.08, 0.12,
+				},
+			},
+		},
+		-- Druid: Nurturing Instinct (Rank 2) - 2,14
+		--        Increases your healing spells by up to 25%/50% of your Strength.
+		-- 2.4.0: Increases your healing spells by up to 50%/100% of your Agility, and increases healing done to you by 10%/20% while in Cat form.
+		-- 3.0.1: 2,15: Increases your healing spells by up to 35%/70% of your Agility, and increases healing done to you by 10%/20% while in Cat form.
+		["ADD_HEALING_MOD_AGI"] = {
+			{
+				["tab"] = 2,
+				["num"] = 15,
+				["rank"] = {
+					0.35, 0.7,
+				},
+			},
+		},
+		-- Druid: Intensity (Rank 3) - 3,6
+		--        Allows 17/33/50% of your Mana regeneration to continue while casting and causes your Enrage ability to instantly generate 10 rage.
+		["ADD_MANA_REG_MOD_NORMAL_MANA_REG"] = {
+			{
+				["tab"] = 3,
+				["num"] = 7,
+				["rank"] = {
+					0.17, 0.33, 0.50,
+				},
+			},
+		},
+		-- Druid: Dreamstate (Rank 3) - 1,15
+		--        Regenerate mana equal to 4%/7%/10% of your Intellect every 5 sec, even while casting.
+		["ADD_MANA_REG_MOD_INT"] = {
+			{
+				["tab"] = 1,
+				["num"] = 15,
+				["rank"] = {
+					0.04, 0.07, 0.10,
+				},
+			},
+		},
+		-- Druid: Feral Swiftness (Rank 2) - 2,6
+		--        Increases your movement speed by 15%/30% while outdoors in Cat Form and increases your chance to dodge while in Cat Form, Bear Form and Dire Bear Form by 2%/4%.
+		-- Druid: Natural Reaction (Rank 3) - 2,16
+		--        Increases your dodge while in Bear Form or Dire Bear Form by 2%/4%/6%, and you regenerate 3 rage every time you dodge while in Bear Form or Dire Bear Form.
+		["ADD_DODGE"] = {
+			{
+				["tab"] = 2,
+				["num"] = 6,
+				["rank"] = {
+					2, 4,
+				},
+				["buff"] = 32357,		-- ["Bear Form"],
+			},
+			{
+				["tab"] = 2,
+				["num"] = 6,
+				["rank"] = {
+					2, 4,
+				},
+				["buff"] = 9634,		-- ["Dire Bear Form"],
+			},
+			{
+				["tab"] = 2,
+				["num"] = 6,
+				["rank"] = {
+					2, 4,
+				},
+				["buff"] = 32356,		-- ["Cat Form"],
+			},
+			{
+				["tab"] = 2,
+				["num"] = 16,
+				["rank"] = {
+					2, 4, 6,
+				},
+				["buff"] = 32357,		-- ["Bear Form"],
+			},
+			{
+				["tab"] = 2,
+				["num"] = 16,
+				["rank"] = {
+					2, 4, 6,
+				},
+				["buff"] = 9634,		-- ["Dire Bear Form"],
+			},
+		},
+		-- Druid: Survival of the Fittest (Rank 3) - 2,18
+		--        Increases all attributes by 2%/4%/6% and reduces the chance you'll be critically hit by melee attacks by 2%/4%/6%.
+		["ADD_CRIT_TAKEN"] = {
+			{
+				["MELEE"] = true,
+				["tab"] = 2,
+				["num"] = 18,
+				["rank"] = {
+					-0.02, -0.04, -0.06,
+				},
+			},
+		},
+		-- Druid: Barkskin - Buff
+		--        All damage taken is reduced by 20%.
+		-- Druid: Improved Barkskin (Rank 2) - 3,25
+		--        Increases the damage reduction granted by your Barkskin spell by 5/10%
+		-- Druid: Natural Perfection (Rank 3) - 3,19
+		--        Your critical strike chance with all spells is increased by 3% and critical strikes against you
+		--        give you the Natural Perfection effect reducing all damage taken by 2/3/4%.  Stacks up to 3 times.  Lasts 8 sec.
+		-- Druid: Protector of the Pack (Rank 5) - 2,22
+		--        Increases your attack power in Bear Form and Dire Bear Form by 2%/4%/6%, and for each friendly player
+		--        in your party when you enter Bear Form or Dire Bear Form, damage you take is reduced while in Bear Form and Dire Bear Form by 1%/2%/3%.
+		-- Druid: Balance of Power (Rank 2) - 1,17
+		--        Increases your chance to hit with all spells by 2%/4% and reduces the damage taken by all spells by 3%/6%.
+		["MOD_DMG_TAKEN"] = {
+			-- Barkskin
+			{
+				["MELEE"] = true,
+				["RANGED"] = true,
+				["HOLY"] = true,
+				["FIRE"] = true,
+				["NATURE"] = true,
+				["FROST"] = true,
+				["SHADOW"] = true,
+				["ARCANE"] = true,
+				["rank"] = {
+					-0.2,
+				},
+				["buff"] = 22812,		-- ["Barkskin"],
+			},
+			-- Improved Barkskin
+			{
+				["MELEE"] = true,
+				["RANGED"] = true,
+				["HOLY"] = true,
+				["FIRE"] = true,
+				["NATURE"] = true,
+				["FROST"] = true,
+				["SHADOW"] = true,
+				["ARCANE"] = true,
+				["tab"] = 3,
+				["num"] = 25,
+				["rank"] = {
+					-0.05, -0.1,
+				},
+				["buff"] = 22812,		-- ["Barkskin"],
+			},
+			{
+				["MELEE"] = true,
+				["RANGED"] = true,
+				["HOLY"] = true,
+				["FIRE"] = true,
+				["NATURE"] = true,
+				["FROST"] = true,
+				["SHADOW"] = true,
+				["ARCANE"] = true,
+				["tab"] = 3,
+				["num"] = 19,
+				["rank"] = {
+					-0.02, -0.03, -0.04,
+				},
+				["buff"] = 45283,		-- ["Natural Perfection"],
+				["buffStack"] = 3, -- max number of stacks
+			},
+			{
+				["MELEE"] = true,
+				["RANGED"] = true,
+				["HOLY"] = true,
+				["FIRE"] = true,
+				["NATURE"] = true,
+				["FROST"] = true,
+				["SHADOW"] = true,
+				["ARCANE"] = true,
+				["tab"] = 2,
+				["num"] = 22,
+				["rank"] = {
+					-0.01, -0.02, -0.03,
+				},
+				["buff"] = 32357,		-- ["Bear Form"],
+				["condition"] = "GetNumPartyMembers() == 1",
+			},
+			{
+				["MELEE"] = true,
+				["RANGED"] = true,
+				["HOLY"] = true,
+				["FIRE"] = true,
+				["NATURE"] = true,
+				["FROST"] = true,
+				["SHADOW"] = true,
+				["ARCANE"] = true,
+				["tab"] = 2,
+				["num"] = 22,
+				["rank"] = {
+					-0.02, -0.04, -0.06,
+				},
+				["buff"] = 32357,		-- ["Bear Form"],
+				["condition"] = "GetNumPartyMembers() == 2",
+			},
+			{
+				["MELEE"] = true,
+				["RANGED"] = true,
+				["HOLY"] = true,
+				["FIRE"] = true,
+				["NATURE"] = true,
+				["FROST"] = true,
+				["SHADOW"] = true,
+				["ARCANE"] = true,
+				["tab"] = 2,
+				["num"] = 22,
+				["rank"] = {
+					-0.03, -0.06, -0.09,
+				},
+				["buff"] = 32357,		-- ["Bear Form"],
+				["condition"] = "GetNumPartyMembers() == 3",
+			},
+			{
+				["MELEE"] = true,
+				["RANGED"] = true,
+				["HOLY"] = true,
+				["FIRE"] = true,
+				["NATURE"] = true,
+				["FROST"] = true,
+				["SHADOW"] = true,
+				["ARCANE"] = true,
+				["tab"] = 2,
+				["num"] = 22,
+				["rank"] = {
+					-0.04, -0.08, -0.12,
+				},
+				["buff"] = 32357,		-- ["Bear Form"],
+				["condition"] = "GetNumPartyMembers() == 4",
+			},
+			{
+				["MELEE"] = true,
+				["RANGED"] = true,
+				["HOLY"] = true,
+				["FIRE"] = true,
+				["NATURE"] = true,
+				["FROST"] = true,
+				["SHADOW"] = true,
+				["ARCANE"] = true,
+				["tab"] = 2,
+				["num"] = 22,
+				["rank"] = {
+					-0.01, -0.02, -0.03,
+				},
+				["buff"] = 9634,		-- ["Dire Bear Form"],
+				["condition"] = "GetNumPartyMembers() == 1",
+			},
+			{
+				["MELEE"] = true,
+				["RANGED"] = true,
+				["HOLY"] = true,
+				["FIRE"] = true,
+				["NATURE"] = true,
+				["FROST"] = true,
+				["SHADOW"] = true,
+				["ARCANE"] = true,
+				["tab"] = 2,
+				["num"] = 22,
+				["rank"] = {
+					-0.02, -0.04, -0.06,
+				},
+				["buff"] = 9634,		-- ["Dire Bear Form"],
+				["condition"] = "GetNumPartyMembers() == 2",
+			},
+			{
+				["MELEE"] = true,
+				["RANGED"] = true,
+				["HOLY"] = true,
+				["FIRE"] = true,
+				["NATURE"] = true,
+				["FROST"] = true,
+				["SHADOW"] = true,
+				["ARCANE"] = true,
+				["tab"] = 2,
+				["num"] = 22,
+				["rank"] = {
+					-0.03, -0.06, -0.09,
+				},
+				["buff"] = 9634,		-- ["Dire Bear Form"],
+				["condition"] = "GetNumPartyMembers() == 3",
+			},
+			{
+				["MELEE"] = true,
+				["RANGED"] = true,
+				["HOLY"] = true,
+				["FIRE"] = true,
+				["NATURE"] = true,
+				["FROST"] = true,
+				["SHADOW"] = true,
+				["ARCANE"] = true,
+				["tab"] = 2,
+				["num"] = 22,
+				["rank"] = {
+					-0.04, -0.08, -0.12,
+				},
+				["buff"] = 9634,		-- ["Dire Bear Form"],
+				["condition"] = "GetNumPartyMembers() == 4",
+			},
+			--Balance of Power
+			{
+				["HOLY"] = true,
+				["FIRE"] = true,
+				["NATURE"] = true,
+				["FROST"] = true,
+				["SHADOW"] = true,
+				["ARCANE"] = true,
+				["tab"] = 1,
+				["num"] = 17,
+				["rank"] = {
+					-0.03, -0.06,
+				},
+				["new"] = 10147,
+			},
+		},
+		-- Druid: Balance of Power (Rank 2) - 1,17
+		--        Increases your chance to hit with all spells by 2%/4% and reduces the damage taken by all spells by 3%/6%.
+		["ADD_HIT_TAKEN"] = {
+			{
+				["HOLY"] = true,
+				["FIRE"] = true,
+				["NATURE"] = true,
+				["FROST"] = true,
+				["SHADOW"] = true,
+				["ARCANE"] = true,
+				["tab"] = 1,
+				["num"] = 17,
+				["rank"] = {
+					-0.02, -0.04,
+				},
+				["old"] = 10147,
+			},
+		},
+		-- Druid: Thick Hide (Rank 3) - 2,5
+		--        Increases your Armor contribution from items by 4%/7%/10%.
+		-- Druid: Bear Form - buff (didn't use stance because Bear Form and Dire Bear Form has the same icon)
+		--        Shapeshift into a bear, increasing melee attack power by 30, armor contribution from items by 180%, and stamina by 25%.
+		-- Druid: Dire Bear Form - Buff
+		--        Shapeshift into a dire bear, increasing melee attack power by 120, armor contribution from items by 370%, and stamina by 25%.
+		-- Druid: Moonkin Form - Buff
+		--        While in this form the armor contribution from items is increased by 370% and
+		--        all party and raid members within 45 yards have their spell critical chance increased by 5%.
+		--        Spell critical strikes in this form have a chance to instantly regenerate 2% of your total mana.
+		-- Druid: Improved Tree of Life (Rank 3) - 3,24
+		--        Increases your Armor while in Tree of Life Form by 67%/133%/200%
+		-- Druid: Survival of the Fittest (Rank 3) - 2,18
+		--        Increases all attributes by 2%/4%/6% and reduces the chance you'll be critically hit by melee attacks by 2%/4%/6%.
+		--        , and increases your armor contribution from cloth and leather items in Bear Form and Dire Bear Form by 11/22/33%.
+		["MOD_ARMOR"] = {
+			{
+				["tab"] = 2,
+				["num"] = 5,
+				["rank"] = {
+					0.04, 0.07, 0.1,
+				},
+			},
+			{
+				["rank"] = {
+					1.8,
+				},
+				["buff"] = 32357,		-- ["Bear Form"],
+			},
+			{
+				["rank"] = {
+					3.7,
+				},
+				["buff"] = 9634,		-- ["Dire Bear Form"],
+			},
+			{
+				["rank"] = {
+					3.7,
+				},
+				["buff"] = 24858,		-- ["Moonkin Form"],
+			},
+			{
+				["tab"] = 3,
+				["num"] = 24,
+				["rank"] = {
+					0.67, 1.33, 2,
+				},
+				["buff"] = 33891,		-- ["Tree of Life"],
+			},
+			{
+				["tab"] = 2,
+				["num"] = 18,
+				["rank"] = {
+					0.11, 0.22, 0.33,
+				},
+				["buff"] = 32357,		-- ["Bear Form"],
+			},
+			{
+				["tab"] = 2,
+				["num"] = 18,
+				["rank"] = {
+					0.11, 0.22, 0.33,
+				},
+				["buff"] = 9634,		-- ["Dire Bear Form"],
+			},
+		},
+		-- Druid: Survival Instincts - Buff
+		--        Health increased by 30% of maximum while in Bear Form, Cat Form, or Dire Bear Form.
+		["MOD_HEALTH"] = {
+			{
+				["rank"] = {
+					0.3,
+				},
+				["buff"] = 50322,		-- ["Survival Instincts"],
+				["buff2"] = 32357,		-- ["Bear Form"],
+			},
+			{
+				["rank"] = {
+					0.3,
+				},
+				["buff"] = 50322,		-- ["Survival Instincts"],
+				["buff2"] = 9634,		-- ["Dire Bear Form"],
+			},
+			{
+				["rank"] = {
+					0.3,
+				},
+				["buff"] = 50322,		-- ["Survival Instincts"],
+				["buff2"] = 32356,		-- ["Cat Form"],
+			},
+		},
+		-- Druid: Improved Mark of the Wild (Rank 2) - 3,1
+		--        increases all of your total attributes by 1/2%.
+		-- Druid: Heart of the Wild (Rank 5) - 2,17
+		--        Increases your Intellect by 4%/8%/12%/16%/20%. In addition,
+		--        while in Bear or Dire Bear Form your Stamina is increased by 2/4/6/8/10% and
+		--        while in Cat Form your attack power is increased by 2/4/6/8/10%.
+		-- Druid: Bear Form - Stance (use stance because bear and dire bear increases are the same)
+		--        Shapeshift into a bear, increasing melee attack power by 30, armor contribution from items by 180%, and stamina by 25%.
+		-- Druid: Dire Bear Form - Stance (use stance because bear and dire bear increases are the same)
+		--        Shapeshift into a dire bear, increasing melee attack power by 120, armor contribution from items by 400%, and stamina by 25%.
+		-- 9038:  Shapeshift into a dire bear, increasing melee attack power by 120, armor contribution from items by 370%, and stamina by 25%.
+		-- Druid: Survival of the Fittest (Rank 3) - 2,18
+		--        Increases all attributes by 2%/4%/6% and reduces the chance you'll be critically hit by melee attacks by 2%/4%/6%.
+		["MOD_STA"] = {
+			-- Improved Mark of the Wild
+			{
+				["tab"] = 3,
+				["num"] = 1,
+				["rank"] = {
+					0.01, 0.02,
+				},
+			},
+			-- Heart of the Wild: +2/4/6/8/10% stamina in bear / dire bear
+			{
+				["tab"] = 2,
+				["num"] = 17,
+				["rank"] = {
+					0.02, 0.04, 0.06, 0.08, 0.1,
+				},
+				["buff"] = 32357,		-- ["Bear Form"],
+			},
+			{
+				["tab"] = 2,
+				["num"] = 17,
+				["rank"] = {
+					0.02, 0.04, 0.06, 0.08, 0.1,
+				},
+				["buff"] = 9634,		-- ["Dire Bear Form"],
+			},
+			-- Survival of the Fittest: 2%/4%/6% all stats
+			{
+				["tab"] = 2,
+				["num"] = 18,
+				["rank"] = {
+					0.02, 0.04, 0.06,
+				},
+			},
+			-- Bear Form / Dire Bear Form: +25% stamina
+			{
+				["rank"] = {
+					0.25,
+				},
+				["buff"] = 32357,		-- ["Bear Form"],
+			},
+			-- Bear Form / Dire Bear Form: +25% stamina
+			{
+				["rank"] = {
+					0.25,
+				},
+				["buff"] = 9634,		-- ["Dire Bear Form"],
+			},
+		},
+		-- Druid: Improved Mark of the Wild (Rank 2) - 3,1
+		--        increases all of your total attributes by 1/2%.
+		-- Druid: Survival of the Fittest (Rank 3) - 2,18
+		--        Increases all attributes by 2%/4%/6% and reduces the chance you'll be critically hit by melee attacks by 2%/4%/6%.
+		["MOD_STR"] = {
+			-- Improved Mark of the Wild
+			{
+				["tab"] = 3,
+				["num"] = 1,
+				["rank"] = {
+					0.01, 0.02,
+				},
+			},
+			{
+				["tab"] = 2,
+				["num"] = 18,
+				["rank"] = {
+					0.02, 0.04, 0.06,
+				},
+			},
+		},
+		-- Druid: Improved Mark of the Wild (Rank 2) - 3,1
+		--        increases all of your total attributes by 1/2%.
+		-- Druid: Heart of the Wild (Rank 5) - 2,17
+		--        Increases your Intellect by 4%/8%/12%/16%/20%. In addition,
+		--        while in Bear or Dire Bear Form your Stamina is increased by 2/4/6/8/10% and
+		--        while in Cat Form your attack power is increased by 2/4/6/8/10%.
+		-- Druid: Protector of the Pack (Rank 5) - 2,22
+		--        Increases your attack power in Bear Form and Dire Bear Form by 2%/4%/6%, and for each friendly player in your party when you enter Bear Form or Dire Bear Form, damage you take is reduced while in Bear Form and Dire Bear Form by 1%/2%/3%.
+		["MOD_AP"] = {
+			-- Improved Mark of the Wild
+			{
+				["tab"] = 3,
+				["num"] = 1,
+				["rank"] = {
+					0.01, 0.02,
+				},
+			},
+			{
+				["tab"] = 2,
+				["num"] = 17,
+				["rank"] = {
+					0.02, 0.04, 0.06, 0.08, 0.1,
+				},
+				["buff"] = 32356,		-- ["Cat Form"],
+			},
+			{
+				["tab"] = 2,
+				["num"] = 22,
+				["rank"] = {
+					0.02, 0.04, 0.06,
+				},
+				["buff"] = 32357,		-- ["Bear Form"],
+			},
+			{
+				["tab"] = 2,
+				["num"] = 22,
+				["rank"] = {
+					0.02, 0.04, 0.06,
+				},
+				["buff"] = 9634,		-- ["Dire Bear Form"],
+			},
+		},
+		-- Druid: Improved Mark of the Wild (Rank 2) - 3,1
+		--        increases all of your total attributes by 1/2%.
+		-- Druid: Survival of the Fittest (Rank 3) - 2,18
+		--        Increases all attributes by 2%/4%/6% and reduces the chance you'll be critically hit by melee attacks by 2%/4%/6%.
+		["MOD_AGI"] = {
+			-- Improved Mark of the Wild
+			{
+				["tab"] = 3,
+				["num"] = 1,
+				["rank"] = {
+					0.01, 0.02,
+				},
+			},
+			{
+				["tab"] = 2,
+				["num"] = 18,
+				["rank"] = {
+					0.02, 0.04, 0.06,
+				},
+			},
+		},
+		-- Druid: Improved Mark of the Wild (Rank 2) - 3,1
+		--        increases all of your total attributes by 1/2%.
+		-- Druid: Heart of the Wild (Rank 5) - 2,17
+		--        Increases your Intellect by 4%/8%/12%/16%/20%. In addition,
+		--        while in Bear or Dire Bear Form your Stamina is increased by 2/4/6/8/10% and
+		--        while in Cat Form your attack power is increased by 2/4/6/8/10%.
+		-- Druid: Survival of the Fittest (Rank 3) - 2,18
+		--        Increases all attributes by 2%/4%/6% and reduces the chance you'll be critically hit by melee attacks by 2%/4%/6%.
+		-- Druid: Furor (Rank 5) - 3,3
+		--        Increases your total Intellect while in Moonkin form by 2%/4%/6%/8%/10%.
+		["MOD_INT"] = {
+			-- Improved Mark of the Wild
+			{
+				["tab"] = 3,
+				["num"] = 1,
+				["rank"] = {
+					0.01, 0.02,
+				},
+			},
+			{
+				["tab"] = 2,
+				["num"] = 17,
+				["rank"] = {
+					0.04, 0.08, 0.12, 0.16, 0.2,
+				},
+			},
+			{
+				["tab"] = 2,
+				["num"] = 18,
+				["rank"] = {
+					0.02, 0.04, 0.06,
+				},
+			},
+			{
+				["tab"] = 3,
+				["num"] = 3,
+				["rank"] = {
+					0.02, 0.04, 0.06, 0.08, 0.1,
+				},
+				["buff"] = 24858,		-- ["Moonkin Form"],
+			},
+		},
+		-- Druid: Improved Mark of the Wild (Rank 2) - 3,1
+		--        increases all of your total attributes by 1/2%.
+		-- Druid: Living Spirit (Rank 3) - 3,17
+		--        Increases your total Spirit by 5%/10%/15%.
+		-- Druid: Survival of the Fittest (Rank 3) - 2,18
+		--        Increases all attributes by 2%/4%/6% and reduces the chance you'll be critically hit by melee attacks by 2%/4%/6%.
+		["MOD_SPI"] = {
+			-- Improved Mark of the Wild
+			{
+				["tab"] = 3,
+				["num"] = 1,
+				["rank"] = {
+					0.01, 0.02,
+				},
+			},
+			{
+				["tab"] = 3,
+				["num"] = 17,
+				["rank"] = {
+					0.05, 0.1, 0.15,
+				},
+			},
+			{
+				["tab"] = 2,
+				["num"] = 18,
+				["rank"] = {
+					0.02, 0.04, 0.06,
+				},
+			},
+		},
+	}
+elseif playerClass == "DEATHKNIGHT" then
+	addonTable.StatModTable["DEATHKNIGHT"] = {
+		-- Death Knight: Forceful Deflection - Passive
+		--               Increases your Parry Rating by 25% of your total Strength.
+		["ADD_CR_PARRY_MOD_STR"] = {
+			{
+				["rank"] = {
+					0.25,
+				},
+			},
+		},
+		-- Death Knight: Bladed Armor (Rank 5) - 1,4
+		--               You gain 5/10/15/20/25 attack power for every 1000 points of your armor value.
+		--         9014: Increases your attack power by 1/2/3/4/5 for every 180 armor value you have.
+		["ADD_AP_MOD_ARMOR"] = {
+			{
+				["tab"] = 1,
+				["num"] = 4,
+				["rank"] = {
+					1/180, 2/180, 3/180, 4/180, 5/180,
+				},
+			},
+		},
+		-- Death Knight: Blade Barrier - Buff - 1,3
+		--               Whenever your Blood Runes are on cooldown, you gain the Blade Barrier effect, which decreases damage taken by 1/2/3/4/5% for the next 10 sec.
+		-- Death Knight: Icebound Fortitude - Buff
+		--               Damage taken reduced by 30%+def*0.15.
+		-- Death Knight: Glyph of Icebound Fortitude - Major Glyph
+		--               Your Icebound Fortitude now always grants at least 30% damage reduction, regardless of your defense skill.
+		-- Death Knight: Bone Shield - Buff
+		--               Damage reduced by 20%.
+		-- Death Knight: Anti-Magic Shell - Buff
+		--               Spell damage reduced by 75%.
+		-- Death Knight: Frost Presence - Buff
+		--               Increasing Stamina by 6%, armor contribution from cloth, leather, mail and plate items by 60%, and reducing damage taken by 8%.
+		-- Death Knight: Will of the Necropolis (Rank 3) - 1,24
+		--               Damage that would take you below 35% health or taken while you are at 35% health is reduced by 5%/10%/15%
+		-- Death Knight: Magic Suppression (Rank 3) - 3,17
+		--               You take 2%/4%/6% less damage from all magic.
+		--        3.2.0: 3,18
+		-- Enchant: Rune of Spellshattering - EnchantID: 3367
+		--          Deflects 4% of all spell damage to 2h weapon
+		-- Enchant: Rune of Spellbreaking - EnchantID: 3595
+		--          Deflects 2% of all spell damage to 1h weapon
+		-- Death Knight: Improved Frost Presence (Rank 2) - 2,21
+		--               While in Blood Presence or Unholy Presence, you retain 3/6% stamina from Frost Presence,
+		--               and damage done to you is decreased by an additional 1/2% in Frost Presence.
+		["MOD_DMG_TAKEN"] = {
+			{
+				["MELEE"] = true,
+				["RANGED"] = true,
+				["HOLY"] = true,
+				["FIRE"] = true,
+				["NATURE"] = true,
+				["FROST"] = true,
+				["SHADOW"] = true,
+				["ARCANE"] = true,
+				["tab"] = 1,
+				["num"] = 3,
+				["rank"] = {
+					-0.01, -0.02, -0.03, -0.04, -0.05,
+				},
+				["buff"] = 55226,		-- ["Blade Barrier"],
+			},
+			{
+				["MELEE"] = true,
+				["RANGED"] = true,
+				["HOLY"] = true,
+				["FIRE"] = true,
+				["NATURE"] = true,
+				["FROST"] = true,
+				["SHADOW"] = true,
+				["ARCANE"] = true,
+				["rank"] = {
+					-0.30,
+				},
+				["buff"] = 48792,		-- ["Icebound Fortitude"],
+			},
+			{
+				["MELEE"] = true,
+				["RANGED"] = true,
+				["HOLY"] = true,
+				["FIRE"] = true,
+				["NATURE"] = true,
+				["FROST"] = true,
+				["SHADOW"] = true,
+				["ARCANE"] = true,
+				["rank"] = {
+					-0.10,
+				},
+				["buff"] = 48792,		-- ["Icebound Fortitude"],
+				["glyph"] = 58625, -- Glyph of Icebound Fortitude
+			},
+			{
+				["MELEE"] = true,
+				["RANGED"] = true,
+				["HOLY"] = true,
+				["FIRE"] = true,
+				["NATURE"] = true,
+				["FROST"] = true,
+				["SHADOW"] = true,
+				["ARCANE"] = true,
+				["rank"] = {
+					-0.20,
+				},
+				["buff"] = 49222,		-- ["Bone Shield"],
+			},
+			{
+				["HOLY"] = true,
+				["FIRE"] = true,
+				["NATURE"] = true,
+				["FROST"] = true,
+				["SHADOW"] = true,
+				["ARCANE"] = true,
+				["rank"] = {
+					-0.75,
+				},
+				["buff"] = 48707,		-- ["Anti-Magic Shell"],
+			},
+			{
+				["MELEE"] = true,
+				["RANGED"] = true,
+				["HOLY"] = true,
+				["FIRE"] = true,
+				["NATURE"] = true,
+				["FROST"] = true,
+				["SHADOW"] = true,
+				["ARCANE"] = true,
+				["rank"] = {
+					-0.05,
+				},
+				["stance"] = "Interface\\Icons\\Spell_Deathknight_FrostPresence",
+				["old"] = 10371,
+			},
+			{
+				["MELEE"] = true,
+				["RANGED"] = true,
+				["HOLY"] = true,
+				["FIRE"] = true,
+				["NATURE"] = true,
+				["FROST"] = true,
+				["SHADOW"] = true,
+				["ARCANE"] = true,
+				["rank"] = {
+					-0.08,
+				},
+				["stance"] = "Interface\\Icons\\Spell_Deathknight_FrostPresence",
+				["new"] = 10371,
+			},
+			--Will of the Necropolis (Rank 3) - 1,24
+			{
+				["MELEE"] = true,
+				["RANGED"] = true,
+				["HOLY"] = true,
+				["FIRE"] = true,
+				["NATURE"] = true,
+				["FROST"] = true,
+				["SHADOW"] = true,
+				["ARCANE"] = true,
+				["tab"] = 1,
+				["num"] = 24,
+				["rank"] = {
+					-0.05, -0.1, -0.15,
+				},
+				["condition"] = "((UnitHealth('player') / UnitHealthMax('player')) < 0.35)",
+			},
+			--Magic Suppression (Rank 3) - 3,17
+			{
+				["HOLY"] = true,
+				["FIRE"] = true,
+				["NATURE"] = true,
+				["FROST"] = true,
+				["SHADOW"] = true,
+				["ARCANE"] = true,
+				["tab"] = 3,
+				["num"] = 17,
+				["rank"] = {
+					-0.02, -0.04, -0.06,
+				},
+				["old"] = 10147,
+			},
+			--Magic Suppression (Rank 3) - 3,18
+			{
+				["HOLY"] = true,
+				["FIRE"] = true,
+				["NATURE"] = true,
+				["FROST"] = true,
+				["SHADOW"] = true,
+				["ARCANE"] = true,
+				["tab"] = 3,
+				["num"] = 18,
+				["rank"] = {
+					-0.02, -0.04, -0.06,
+				},
+				["new"] = 10147,
+			},
+			-- Rune of Spellshattering
+			{
+				["HOLY"] = true,
+				["FIRE"] = true,
+				["NATURE"] = true,
+				["FROST"] = true,
+				["SHADOW"] = true,
+				["ARCANE"] = true,
+				["rank"] = {
+					-0.04,
+				},
+				["slot"] = 16, -- main hand slot
+				["enchant"] = 3367,
+			},
+			-- Rune of Spellbreaking
+			{
+				["HOLY"] = true,
+				["FIRE"] = true,
+				["NATURE"] = true,
+				["FROST"] = true,
+				["SHADOW"] = true,
+				["ARCANE"] = true,
+				["rank"] = {
+					-0.02,
+				},
+				["slot"] = 16, -- main hand slot
+				["enchant"] = 3595,
+			},
+			-- Rune of Spellbreaking
+			{
+				["HOLY"] = true,
+				["FIRE"] = true,
+				["NATURE"] = true,
+				["FROST"] = true,
+				["SHADOW"] = true,
+				["ARCANE"] = true,
+				["rank"] = {
+					-0.02,
+				},
+				["slot"] = 17, -- off hand slot
+				["enchant"] = 3595,
+			},
+			-- Improved Frost Presence
+			{
+				["MELEE"] = true,
+				["RANGED"] = true,
+				["HOLY"] = true,
+				["FIRE"] = true,
+				["NATURE"] = true,
+				["FROST"] = true,
+				["SHADOW"] = true,
+				["ARCANE"] = true,
+				["tab"] = 2,
+				["num"] = 21,
+				["rank"] = {
+					-0.01, -0.02,
+				},
+				["stance"] = "Interface\\Icons\\Spell_Deathknight_FrostPresence",
+			},
+		},
+		-- Death Knight: Anticipation (Rank 5) - 3,3
+		--               Increases your Dodge chance by 1%/2%/3%/4%/5%.
+		["ADD_DODGE"] = {
+			{
+				["tab"] = 3,
+				["num"] = 3,
+				["rank"] = {
+					1, 2, 3, 4, 5,
+				},
+			},
+		},
+		-- Death Knight: Frigid Dreadplate (Rank 3) - 2,13
+		--               Reduces the chance melee attacks will hit you by 1%/2%/3%.
+		["ADD_HIT_TAKEN"] = {
+			{
+				["tab"] = 2,
+				["num"] = 13,
+				["rank"] = {
+					-0.01, -0.02, -0.03,
+				},
+			},
+		},
+		-- Death Knight: Toughness (Rank 5) - 2,3
+		--               Increases your armor value from items by 2/4/6/8/10% and reduces the duration of all movement slowing effects by 50%.
+		-- Death Knight: Unbreakable Armor - Buff
+		--               Increases your armor by 25%, your total Strength by 20%
+		-- Death Knight: Glyph of Unbreakable Armor - Major Glyph
+		--               Increases the armor granted by Unbreakable Armor by 20%.
+		-- Death Knight: Frost Presence - Buff
+		--               Increasing Stamina by 6%, armor contribution from cloth, leather, mail and plate items by 60%, and reducing damage taken by 5%.
+		["MOD_ARMOR"] = {
+			{
+				["tab"] = 2,
+				["num"] = 3,
+				["rank"] = {
+					0.03, 0.06, 0.09, 0.12, 0.15,
+				},
+				["old"] = 10147,
+			},
+			{
+				["tab"] = 2,
+				["num"] = 3,
+				["rank"] = {
+					0.02, 0.04, 0.06, 0.08, 0.1,
+				},
+				["new"] = 10147,
+			},
+			{
+				["rank"] = {
+					0.25,
+				},
+				["buff"] = 51271,		-- ["Unbreakable Armor"],
+				["new"] = 10371,
+			},
+			{
+				["rank"] = {
+					0.2,
+				},
+				["buff"] = 51271,		-- ["Unbreakable Armor"],
+				["glyph"] = 58635,		-- ["Glyph of Unbreakable Armor"],
+			},
+			{
+				["rank"] = {
+					0.6,
+				},
+				["stance"] = "Interface\\Icons\\Spell_Deathknight_FrostPresence",
+			},
+		},
+		-- Death Knight: Frost Presence - Buff
+		--               Increasing Stamina by 6%, armor contribution from cloth, leather, mail
+		--               and plate items by 60%, and reducing damage taken by 5%.
+		-- Death Knight: Improved Frost Presence (Rank 2) - 2,21
+		--               While in Blood Presence or Unholy Presence, you retain 3/6% stamina from Frost Presence,
+		--               and damage done to you is decreased by an additional 1/2% in Frost Presence.
+		["MOD_HEALTH"] = {
+			{
+				["rank"] = {
+					0.1,
+				},
+				["stance"] = "Interface\\Icons\\Spell_Deathknight_FrostPresence",
+				["old"] = 10147,
+			},
+			{
+				["tab"] = 2,
+				["num"] = 21,
+				["rank"] = {
+					0.05, 0.1,
+				},
+				["stance"] = "Interface\\Icons\\Spell_Deathknight_BloodPresence",
+				["old"] = 10147,
+			},
+			{
+				["tab"] = 2,
+				["num"] = 21,
+				["rank"] = {
+					0.05, 0.1,
+				},
+				["stance"] = "Interface\\Icons\\Spell_Deathknight_UnholyPresence",
+				["old"] = 10147,
+			},
+		},
+		-- Death Knight: Veteran of the Third War (Rank 3) - 1,14
+		--               Increases your total Strength by 2%/4%/6% and your total Stamina by 1%/2%/3%.
+		-- Enchant: Rune of the Stoneskin Gargoyle - EnchantID: 3847
+		--          +25 Defense and +2% Stamina to 2h weapon
+		-- Death Knight: Frost Presence - Buff
+		--               Increasing Stamina by 8%, armor contribution from cloth, leather, mail
+		--               and plate items by 60%, and reducing damage taken by 5%.
+		-- Death Knight: Improved Frost Presence (Rank 2) - 2,21
+		--               While in Blood Presence or Unholy Presence, you retain 3/6% stamina from Frost Presence,
+		--               and damage done to you is decreased by an additional 1/2% in Frost Presence.
+		-- Death Knight: Endless Winter (Rank 2) - 2,12
+		--               Your strength is increased by 2%/4%.
+		["MOD_STA"] = {
+			{
+				["tab"] = 1,
+				["num"] = 14,
+				["rank"] = {
+					0.02, 0.04, 0.06,
+				},
+				["old"] = 10147,
+			},
+			{
+				["tab"] = 1,
+				["num"] = 14,
+				["rank"] = {
+					0.01, 0.02, 0.03,
+				},
+				["new"] = 10147,
+			},
+			{
+				["rank"] = {
+					0.02,
+				},
+				["slot"] = 16, -- 2h weapon
+				["enchant"] = 3847,
+			},
+			{
+				["rank"] = {
+					0.08,
+				},
+				["stance"] = "Interface\\Icons\\Spell_Deathknight_FrostPresence",
+				["new"] = 10147,
+			},
+			{
+				["tab"] = 2,
+				["num"] = 21,
+				["rank"] = {
+					0.03, 0.06,
+				},
+				["stance"] = "Interface\\Icons\\Spell_Deathknight_BloodPresence",
+				["new"] = 10147,
+			},
+			{
+				["tab"] = 2,
+				["num"] = 21,
+				["rank"] = {
+					0.03, 0.06,
+				},
+				["stance"] = "Interface\\Icons\\Spell_Deathknight_UnholyPresence",
+				["new"] = 10147,
+			},
+			-- Endless Winter
+			{
+				["tab"] = 2,
+				["num"] = 12,
+				["rank"] = {
+					0.02, 0.04,
+				},
+				["new"] = 11685,
+			},
+		},
+		-- Death Knight: Veteran of the Third War (Rank 3) - 1,14
+		--               Increases your total Strength by 6% and your total Stamina by 3%.
+		-- Death Knight: Unbreakable Armor - Buff
+		--               Increasing your armor by 25% and increasing your Strength by 20% for 20 sec.
+		-- Death Knight: Ravenous Dead (Rank 3) - 3,7
+		--               Increases your total Strength 1%/2%/3% and the contribution your Ghouls get from your Strength and Stamina by 20%/40%/60%
+		-- Death Knight: Abomination's Might - 1,17
+		--               Also increases your total Strength by 1%/2%.
+		["MOD_STR"] = {
+			{
+				["tab"] = 1,
+				["num"] = 14,
+				["rank"] = {
+					0.02, 0.04, 0.06,
+				},
+			},
+			{
+				["rank"] = {
+					0.1,
+				},
+				["buff"] = 51271,		-- ["Unbreakable Armor"],
+				["old"] = 11685,
+			},
+			{
+				["rank"] = {
+					0.2,
+				},
+				["buff"] = 51271,		-- ["Unbreakable Armor"],
+				["new"] = 11685,
+			},
+			{
+				["tab"] = 3,
+				["num"] = 7,
+				["rank"] = {
+					0.01, 0.02, 0.03,
+				},
+			},
+			{
+				["tab"] = 1,
+				["num"] = 17,
+				["rank"] = {
+					0.01, 0.02,
+				},
+			},
+		},
+	}
+elseif playerClass == "HUNTER" then
+	addonTable.StatModTable["HUNTER"] = {
+		-- Hunter: Hunter vs. Wild (Rank 3) - 3,14
+		--         Increases you and your pet's attack power and ranged attack power equal to 10%/20%/30% of your total Stamina.
+		["ADD_AP_MOD_STA"] = {
+			{
+				["tab"] = 3,
+				["num"] = 14,
+				["rank"] = {
+					0.1, 0.2, 0.3,
+				},
+			},
+		},
+		-- Hunter: Careful Aim (Rank 3) - 2,4
+		--         Increases your ranged attack power by an amount equal to 33%/66%/100% of your total Intellect.
+		["ADD_RANGED_AP_MOD_INT"] = {
+			{
+				["tab"] = 2,
+				["num"] = 4,
+				["rank"] = {
+					0.33, 0.66, 1,
+				},
+			},
+		},
+		-- Hunter: Catlike Reflexes (Rank 3) - 1,19
+		--         Increases your chance to dodge by 1%/2%/3% and your pet's chance to dodge by an additional 3%/6%/9%.
+		-- Hunter: Aspect of the Monkey - Buff
+		--         The hunter takes on the aspects of a monkey, increasing chance to dodge by 18%. Only one Aspect can be active at a time.
+		-- Hunter: Improved Aspect of the Monkey (Rank 3) - 1,4
+		--         Increases the Dodge bonus of your Aspect of the Monkey and Aspect of the Dragonhawk by 2%/4%/6%.
+		-- Hunter: Aspect of the Dragonhawk (Rank 2) - Buff
+		--         The hunter takes on the aspects of a dragonhawk, increasing ranged attack power by 300 and chance to dodge by 18%.
+		["ADD_DODGE"] = {
+			{
+				["tab"] = 1,
+				["num"] = 19,
+				["rank"] = {
+					1, 2, 3,
+				},
+			},
+			{
+				["rank"] = {
+					18,
+				},
+				["buff"] = 13163,		-- ["Aspect of the Monkey"],
+			},
+			{
+				["tab"] = 1,
+				["num"] = 4,
+				["rank"] = {
+					2, 4, 6,
+				},
+				["buff"] = 13163,		-- ["Aspect of the Monkey"],
+			},
+			{
+				["rank"] = {
+					18, 18,
+				},
+				["buff"] = 61846,		-- ["Aspect of the Dragonhawk"],
+			},
+			{
+				["tab"] = 1,
+				["num"] = 4,
+				["rank"] = {
+					2, 4, 6,
+				},
+				["buff"] = 61846,		-- ["Aspect of the Dragonhawk"],
+			},
+		},
+		-- Hunter: Survival Instincts (Rank 2) - 3,7
+		--         Reduces all damage taken by 2%/4% and increases the critical strike chance of your Arcane Shot, Steady Shot, and Explosive Shot by 2%/4%.
+		-- Hunter: Aspect Mastery - 1,8
+		--         Aspect of the Monkey - Reduces the damage done to you while active by 5%.
+		["MOD_DMG_TAKEN"] = {
+			{
+				["MELEE"] = true,
+				["RANGED"] = true,
+				["HOLY"] = true,
+				["FIRE"] = true,
+				["NATURE"] = true,
+				["FROST"] = true,
+				["SHADOW"] = true,
+				["ARCANE"] = true,
+				["tab"] = 3,
+				["num"] = 7,
+				["rank"] = {
+					-0.02, -0.04,
+				},
+			},
+			{
+				["MELEE"] = true,
+				["RANGED"] = true,
+				["HOLY"] = true,
+				["FIRE"] = true,
+				["NATURE"] = true,
+				["FROST"] = true,
+				["SHADOW"] = true,
+				["ARCANE"] = true,
+				["tab"] = 1,
+				["num"] = 8,
+				["rank"] = {
+					-0.05,
+				},
+				["buff"] = 13163,		-- ["Aspect of the Monkey"],
+			},
+		},
+		-- Hunter: Thick Hide (Rank 3) - 1,5
+		--         Increases the armor rating of your pets by 20% and your armor contribution from items by 4%/7%/10%.
+		["MOD_ARMOR"] = {
+			{
+				["tab"] = 1,
+				["num"] = 5,
+				["rank"] = {
+					0.04, 0.07, 0.1,
+				},
+			},
+		},
+		-- Hunter: Endurance Training (Rank 5) - 1,2
+		--         Increases the Health of your pet by 2%/4%/6%/8%/10% and your total health by 1%/2%/3%/4%/5%.
+		["MOD_HEALTH"] = {
+			{
+				["tab"] = 1,
+				["num"] = 2,
+				["rank"] = {
+					0.01, 0.02, 0.03, 0.04, 0.05,
+				},
+			},
+		},
+		-- Hunter: Survivalist (Rank 5) - 3,8
+		--         Increases your Stamina by 2%/4%/6%/8%/10%.
+		["MOD_STA"] = {
+			{
+				["tab"] = 3,
+				["num"] = 8,
+				["rank"] = {
+					0.02, 0.04, 0.06, 0.08, 0.1,
+				},
+			},
+		},
+		-- Hunter: Hunting Party (Rank 3) - 3,27
+		--         Increases your total Agility by an additional 1/2/3%
+		-- Hunter: Combat Experience (Rank 2) - 2,16
+		--         Increases your total Agility and Intellect by 2%/4%.
+		-- Hunter: Lightning Reflexes (Rank 5) - 3,17
+		--         Increases your Agility by 3%/6%/9%/12%/15%.
+		["MOD_AGI"] = {
+			{
+				["tab"] = 3,
+				["num"] = 27,
+				["rank"] = {
+					0.01, 0.02, 0.03,
+				},
+			},
+			{
+				["tab"] = 2,
+				["num"] = 16,
+				["rank"] = {
+					0.02, 0.04,
+				},
+			},
+			{
+				["tab"] = 3,
+				["num"] = 17,
+				["rank"] = {
+					0.03, 0.06, 0.09, 0.12, 0.15,
+				},
+			},
+		},
+		-- Hunter: Combat Experience (Rank 2) - 2,16
+		--         Increases your total Agility and Intellect by 2%/4%.
+		["MOD_INT"] = {
+			{
+				["tab"] = 2,
+				["num"] = 16,
+				["rank"] = {
+					0.02, 0.04,
+				},
+			},
+		},
+	}
+elseif playerClass == "MAGE" then
+	addonTable.StatModTable["MAGE"] = {
+		-- Mage: Molten Armor (Rank 3) - Buff
+		--       increases your critical strike rating by 35% of your spirit
+		-- Mage: Glyph of Molten Armor - Major Glyph
+		--       Your Molten Armor grants an additional 20% of your spirit as critical strike rating.
+		-- Mage: Khadgar's Regalia(843), Sunstrider's Regalia(844) 2pc - Item Set
+		--       Increases the armor you gain from Ice Armor by 20%, the mana regeneration you gain from Mage Armor by 10%,
+		--       and converts an additional 15% of your spirit into critical strike rating when Molten Armor is active.
+		["ADD_SPELL_CRIT_RATING_MOD_SPI"] = {
+			{
+				["rank"] = {
+					0.35, 0.35, 0.35, 0.35, 0.35, 0.35, -- 3 ranks
+				},
+				["buff"] = 30482, -- ["Molten Armor"],
+			},
+			{
+				["rank"] = {
+					0.2, 0.2, 0.2, 0.2, 0.2, 0.2, -- 3 ranks
+				},
+				["buff"] = 30482, -- ["Molten Armor"],
+				["glyph"] = 56382, -- Glyph of Molten Armor,
+			},
+			{
+				["rank"] = {
+					0.15, 0.15, 0.15, 0.15, 0.15, 0.15, -- 3 ranks
+				},
+				["buff"] = 30482, -- ["Molten Armor"],
+				["itemset"] = {843, 2}, -- Khadgar's Regalia,
+			},
+			{
+				["rank"] = {
+					0.15, 0.15, 0.15, 0.15, 0.15, 0.15, -- 3 ranks
+				},
+				["buff"] = 30482, -- ["Molten Armor"],
+				["itemset"] = {844, 2}, -- Sunstrider's Regalia,
+			},
+		},
+		-- Mage: Arcane Fortitude - 1,4
+		--       Increases your armor by an amount equal to 50%/100%/150% of your Intellect.
+		["ADD_ARMOR_MOD_INT"] = {
+			{
+				["tab"] = 1,
+				["num"] = 4,
+				["rank"] = {
+					0.5, 1, 1.5,
+				},
+			},
+		},
+		-- Mage: Arcane Meditation (Rank 3) - 1,13
+		--       Allows 17/33/50% of your Mana regeneration to continue while casting.
+		-- Mage: Mage Armor (Rank 6) - Buff
+		--       Resistance to all magic schools increased by 40 and allows 50% of your mana regeneration to continue while casting.
+		-- Mage: Khadgar's Regalia(843), Sunstrider's Regalia(844) 2pc - Item Set
+		--       Increases the armor you gain from Ice Armor by 20%, the mana regeneration you gain from Mage Armor by 10%,
+		--       and converts an additional 15% of your spirit into critical strike rating when Molten Armor is active.
+		-- Mage: Glyph of Mage Armor - Major Glyph
+		--       Your Mage Armor spell grants an additional 20% mana regeneration while casting.
+		-- Mage: Pyromaniac (Rank 3) - 2,19
+		--       Increases chance to critically hit by 1%/2%/3% and allows 17/33/50% of your mana regeneration to continue while casting.
+		["ADD_MANA_REG_MOD_NORMAL_MANA_REG"] = {
+			{
+				["tab"] = 1,
+				["num"] = 13,
+				["rank"] = {
+					0.17, 0.33, 0.5,
+				},
+			},
+			{
+				["rank"] = {
+					0.5, 0.5, 0.5, 0.5, 0.5, 0.5, -- 6 ranks
+				},
+				["buff"] = 6117, -- ["Mage Armor"],
+			},
+			{
+				["rank"] = {
+					0.1, 0.1, 0.1, 0.1, 0.1, 0.1, -- 3 ranks
+				},
+				["buff"] = 6117, -- ["Mage Armor"],
+				["itemset"] = {843, 2}, -- Khadgar's Regalia,
+			},
+			{
+				["rank"] = {
+					0.1, 0.1, 0.1, 0.1, 0.1, 0.1, -- 3 ranks
+				},
+				["buff"] = 6117, -- ["Mage Armor"],
+				["itemset"] = {844, 2}, -- Sunstrider's Regalia,
+			},
+			{
+				["rank"] = {
+					0.2, 0.2, 0.2, 0.2, 0.2, 0.2, -- 6 ranks
+				},
+				["buff"] = 6117, -- ["Mage Armor"],
+				["glyph"] = 56383, -- Glyph of Mage Armor,
+			},
+			{
+				["tab"] = 2,
+				["num"] = 19,
+				["rank"] = {
+					0.17, 0.33, 0.5,
+				},
+			},
+		},
+		-- Mage: Mind Mastery (Rank 5) - 1,25
+		--       Increases spell damage by up to 3%/6%/9%/12%/15% of your total Intellect.
+		["ADD_SPELL_DMG_MOD_INT"] = {
+			{
+				["tab"] = 1,
+				["num"] = 25,
+				["rank"] = {
+					0.03, 0.06, 0.09, 0.12, 0.15,
+				},
+			},
+		},
+		["ADD_HEALING_MOD_INT"] = {
+			{
+				["tab"] = 1,
+				["num"] = 25,
+				["rank"] = {
+					0.03, 0.06, 0.09, 0.12, 0.15,
+				},
+			},
+		},
+		-- Mage: Arctic Winds (Rank 5) - 3,20
+		--       Reduces the chance melee and ranged attacks will hit you by 1%/2%/3%/4%/5%.
+		-- 3.0.1: 3,21
+		-- Mage: Improved Blink (Rank 2) - Buff - 1,13
+		--       Chance to be hit by all attacks and spells reduced by 13%/25%.
+		-- 3.0.1: 1,15: Chance to be hit by all attacks and spells reduced by 15%/30%.
+		["ADD_HIT_TAKEN"] = {
+			{
+				["MELEE"] = true,
+				["RANGED"] = true,
+				["tab"] = 3,
+				["num"] = 21,
+				["rank"] = {
+					-0.01, -0.02, -0.03, -0.04, -0.05,
+				},
+			},
+			{
+				["MELEE"] = true,
+				["RANGED"] = true,
+				["HOLY"] = true,
+				["FIRE"] = true,
+				["NATURE"] = true,
+				["FROST"] = true,
+				["SHADOW"] = true,
+				["ARCANE"] = true,
+				["tab"] = 1,
+				["num"] = 15,
+				["rank"] = {
+					-0.15, -0.30,
+				},
+				["buff"] = 46989,		-- ["Improved Blink"],
+			},
+		},
+		-- Mage: Prismatic Cloak (Rank 3) - 1,16
+		--       Reduces all damage taken by 2%/4%.
+		-- 3.0.1: 1,18: Reduces all damage taken by 2%/4%/6%.
+		-- Mage: Playing with Fire (Rank 3) - 2,13
+		--       Increases all spell damage caused by 1%/2%/3%(doesn't effect char tab stat) and all spell damage taken by 1%/2%/3%.
+		-- 3.0.1: 2,14
+		-- Mage: Frozen Core (Rank 3) - 3,14
+		--       Reduces the damage taken by Frost and Fire effects by 2%/4%/6%.
+		-- 3.0.1: 3,16
+		-- 8962: Reduces the damage taken from all spells by 2%/4%/6%.
+		["MOD_DMG_TAKEN"] = {
+			{
+				["MELEE"] = true,
+				["RANGED"] = true,
+				["HOLY"] = true,
+				["FIRE"] = true,
+				["NATURE"] = true,
+				["FROST"] = true,
+				["SHADOW"] = true,
+				["ARCANE"] = true,
+				["tab"] = 1,
+				["num"] = 18,
+				["rank"] = {
+					-0.02, -0.04, -0.06,
+				},
+			},
+			{
+				["HOLY"] = true,
+				["FIRE"] = true,
+				["NATURE"] = true,
+				["FROST"] = true,
+				["SHADOW"] = true,
+				["ARCANE"] = true,
+				["tab"] = 2,
+				["num"] = 14,
+				["rank"] = {
+					-0.01, -0.02, -0.03,
+				},
+			},
+			{
+				["HOLY"] = true,
+				["FIRE"] = true,
+				["NATURE"] = true,
+				["FROST"] = true,
+				["SHADOW"] = true,
+				["ARCANE"] = true,
+				["tab"] = 3,
+				["num"] = 16,
+				["rank"] = {
+					-0.02, -0.04, -0.06,
+				},
+			},
+		},
+		-- Mage: Arcane Instability (Rank 3) - 1,19
+		--       Increases your spell damage and critical strike chance by 1%/2%/3%.
+		-- This does not increase spell power
+		-- ["MOD_SPELL_DMG"] = {
+		-- {
+		-- ["tab"] = 1,
+		-- ["num"] = 19,
+		-- ["rank"] = {
+		-- 0.01, 0.02, 0.03,
+		-- },
+		-- },
+		-- },
+		-- Mage: Arcane Mind (Rank 5) - 1,15
+		--       Increases your total Intellect by 3%/6%/9%/12%/15%.
+		-- 3.0.1: 1,17
+		["MOD_INT"] = {
+			{
+				["tab"] = 1,
+				["num"] = 17,
+				["rank"] = {
+					0.03, 0.06, 0.09, 0.12, 0.15,
+				},
+			},
+		},
+		-- Mage: Student of the Mind (Rank 3) - 1,9
+		--       Increases your total Spirit by 4%/7%/10%.
+		["MOD_SPI"] = {
+			{
+				["tab"] = 1,
+				["num"] = 9,
+				["rank"] = {
+					0.04, 0.07, 0.1,
+				},
+			},
+		},
+	}
+elseif playerClass == "PALADIN" then
+	addonTable.StatModTable["PALADIN"] = {
+		-- Paladin: Sheath of Light (Rank 3) - 3,24
+		--          Increases your spell power by an amount equal to 10%/20%/30% of your attack power
+		--   3.1.0: 3,24
+		["ADD_SPELL_DMG_MOD_AP"] = {
+			{
+				["tab"] = 3,
+				["num"] = 24,
+				["rank"] = {
+					0.1, 0.2, 0.3,
+				},
+			},
+		},
+		["ADD_HEALING_MOD_AP"] = {
+			{
+				["tab"] = 3,
+				["num"] = 24,
+				["rank"] = {
+					0.1, 0.2, 0.3,
+				},
+			},
+		},
+		-- Paladin: Touched by the Light (Rank 3) - 2,21
+		--          Increases your spell power by an amount equal to 20/40/60% of your Strength
+		["ADD_SPELL_DMG_MOD_STR"] = {
+			{
+				["tab"] = 2,
+				["num"] = 21,
+				["rank"] = {
+					0.2, 0.4, 0.6,
+				},
+				["new"] = 10371,
+			},
+		},
+		["ADD_HEALING_MOD_STR"] = {
+			{
+				["tab"] = 2,
+				["num"] = 20,
+				["rank"] = {
+					0.2, 0.4, 0.6,
+				},
+				["new"] = 10371,
+			},
+		},
+		["ADD_SPELL_DMG_MOD_STA"] = {
+			{
+				["tab"] = 2,
+				["num"] = 21,
+				["rank"] = {
+					0.1, 0.2, 0.3,
+				},
+				["old"] = 10371,
+			},
+		},
+		["ADD_HEALING_MOD_STA"] = {
+			{
+				["tab"] = 2,
+				["num"] = 20,
+				["rank"] = {
+					0.1, 0.2, 0.3,
+				},
+				["old"] = 10371,
+			},
+		},
+		-- Paladin: Holy Guidance (Rank 5) - 1,21
+		--          Increases your spell power by 4%/8%/12%/16%/20% of your total Intellect.
+		["ADD_SPELL_DMG_MOD_INT"] = {
+			{
+				["tab"] = 1,
+				["num"] = 21,
+				["rank"] = {
+					0.04, 0.08, 0.12, 0.16, 0.2,
+				},
+			},
+		},
+		-- Paladin: Holy Guidance (Rank 5) - 1,21
+		--          Increases your spell damage and healing by 7%/14%/21%/28%/35% of your total Intellect.
+		["ADD_HEALING_MOD_INT"] = {
+			{
+				["tab"] = 1,
+				["num"] = 21,
+				["rank"] = {
+					0.04, 0.08, 0.12, 0.16, 0.2,
+				},
+			},
+		},
+		-- Paladin: Anticipation (Rank 5) - 2,5
+		--          Increases your chance to dodge by 1%/2%/3%/4%/5%.
+		["ADD_DODGE"] = {
+			{
+				["tab"] = 2,
+				["num"] = 5,
+				["rank"] = {
+					1, 2, 3, 4, 5,
+				},
+			},
+		},
+		-- Paladin: Divine Purpose (Rank 2) - 3,16
+		--          Reduces your chance to be hit by spells and ranged attacks by 2%/4% and
+		--          gives your Hand of Freedom spell a 50%/100% chance to remove any Stun effects on the target.
+		["ADD_HIT_TAKEN"] = {
+			{
+				["RANGED"] = true,
+				["HOLY"] = true,
+				["FIRE"] = true,
+				["NATURE"] = true,
+				["FROST"] = true,
+				["SHADOW"] = true,
+				["ARCANE"] = true,
+				["tab"] = 3,
+				["num"] = 16,
+				["rank"] = {
+					-0.02, -0.04,
+				},
+			},
+		},
+		-- Paladin: Blessed Life (Rank 3) - 1,19
+		--          All attacks against you have a 4%/7%/10% chance to cause half damage.
+		-- Paladin: Ardent Defender (Rank 3) - 2,18
+		--          When you have less than 35% health, all damage taken is reduced by 7/13/20%.
+		-- Paladin: Improved Righteous Fury (Rank 3) - 2,7
+		--          While Righteous Fury is active, all damage taken is reduced by 2%/4%/6%.
+		-- Paladin: Guarded by the Light (Rank 2) - 2,23
+		--          Reduces spell damage taken by 3%/6% and reduces the mana cost of your Holy Shield, Avenger's Shield and Shield of Righteousness spells by 15%/30%.
+		-- Paladin: Shield of the Templar (Rank 3) - 2,24
+		--          Reduces all damage taken by 1/2/3%
+		-- Paladin: Glyph of Divine Plea - Major Glyph
+		--          While Divine Plea is active, you take 3% reduced damage from all sources.
+		["MOD_DMG_TAKEN"] = {
+			{
+				["MELEE"] = true,
+				["RANGED"] = true,
+				["HOLY"] = true,
+				["FIRE"] = true,
+				["NATURE"] = true,
+				["FROST"] = true,
+				["SHADOW"] = true,
+				["ARCANE"] = true,
+				["tab"] = 1,
+				["num"] = 19,
+				["rank"] = {
+					-0.02, -0.035, -0.05,
+				},
+			},
+			-- Ardent Defender
+			{
+				["MELEE"] = true,
+				["RANGED"] = true,
+				["HOLY"] = true,
+				["FIRE"] = true,
+				["NATURE"] = true,
+				["FROST"] = true,
+				["SHADOW"] = true,
+				["ARCANE"] = true,
+				["tab"] = 2,
+				["num"] = 18,
+				["rank"] = {
+					-0.1, -0.2, -0.3,
+				},
+				["condition"] = "((UnitHealth('player') / UnitHealthMax('player')) < 0.35)",
+				["old"] = 10371,
+			},
+			-- Ardent Defender
+			{
+				["MELEE"] = true,
+				["RANGED"] = true,
+				["HOLY"] = true,
+				["FIRE"] = true,
+				["NATURE"] = true,
+				["FROST"] = true,
+				["SHADOW"] = true,
+				["ARCANE"] = true,
+				["tab"] = 2,
+				["num"] = 18,
+				["rank"] = {
+					-0.07, -0.13, -0.2,
+				},
+				["condition"] = "((UnitHealth('player') / UnitHealthMax('player')) < 0.35)",
+				["new"] = 10371,
+			},
+			-- Improved Righteous Fury
+			{
+				["MELEE"] = true,
+				["RANGED"] = true,
+				["HOLY"] = true,
+				["FIRE"] = true,
+				["NATURE"] = true,
+				["FROST"] = true,
+				["SHADOW"] = true,
+				["ARCANE"] = true,
+				["tab"] = 2,
+				["num"] = 7,
+				["rank"] = {
+					-0.02, -0.04, -0.06,
+				},
+				["buff"] = 25781,		-- ["Righteous Fury"],
+			},
+			-- Guarded by the Light
+			{
+				["HOLY"] = true,
+				["FIRE"] = true,
+				["NATURE"] = true,
+				["FROST"] = true,
+				["SHADOW"] = true,
+				["ARCANE"] = true,
+				["tab"] = 2,
+				["num"] = 23,
+				["rank"] = {
+					-0.03, -0.06,
+				},
+			},
+			-- Shield of the Templar
+			{
+				["MELEE"] = true,
+				["RANGED"] = true,
+				["HOLY"] = true,
+				["FIRE"] = true,
+				["NATURE"] = true,
+				["FROST"] = true,
+				["SHADOW"] = true,
+				["ARCANE"] = true,
+				["tab"] = 2,
+				["num"] = 24,
+				["rank"] = {
+					-0.01, -0.02, -0.03,
+				},
+			},
+			-- Glyph of Divine Plea
+			{
+				["MELEE"] = true,
+				["RANGED"] = true,
+				["HOLY"] = true,
+				["FIRE"] = true,
+				["NATURE"] = true,
+				["FROST"] = true,
+				["SHADOW"] = true,
+				["ARCANE"] = true,
+				["rank"] = {
+					-0.03,
+				},
+				["buff"] = 54428,		-- ["Divine Plea"],
+				["glyph"] = 63223, -- Glyph of Shield Wall,
+			},
+		},
+		-- Paladin: Toughness (Rank 5) - 2,8
+		--          Increases your armor value from items by 2%/4%/6%/8%/10%.
+		["MOD_ARMOR"] = {
+			{
+				["tab"] = 2,
+				["num"] = 8,
+				["rank"] = {
+					0.02, 0.04, 0.06, 0.08, 0.1,
+				},
+			},
+		},
+		-- Paladin: Divine Strength (Rank 5) - 2,2
+		--          Increases your total Strength by 3%/6%/9%/12%/15%.
+		["MOD_STR"] = {
+			{
+				["tab"] = 2,
+				["num"] = 2,
+				["rank"] = {
+					0.03, 0.06, 0.09, 0.12, 0.15,
+				},
+			},
+		},
+		-- Paladin: Sacred Duty (Rank 2) - 2,14
+		--          Increases your total Stamina by 4%/8%
+		--          Sacred Duty now provides 2 / 4% Stamina, down from 4 / 8% Stamina.
+		-- Paladin: Combat Expertise (Rank 3) - 2,20
+		--          Increases your expertise by 2/4/6, total Stamina and chance to critically hit by 2%/4%/6%.
+		["MOD_STA"] = {
+			{
+				["tab"] = 2,
+				["num"] = 14,
+				["rank"] = {
+					0.02, 0.04,
+				},
+			},
+			{
+				["tab"] = 2,
+				["num"] = 20,
+				["rank"] = {
+					0.02, 0.04, 0.06,
+				},
+			},
+		},
+		-- Paladin: Divine Intellect (Rank 5) - 1,4
+		--          Increases your total Intellect by 2/4/6/8/10%.
+		["MOD_INT"] = {
+			{
+				["tab"] = 1,
+				["num"] = 4,
+				["rank"] = {
+					0.03, 0.06, 0.09, 0.12, 0.15,
+				},
+				["old"] = 10147,
+			},
+			{
+				["tab"] = 1,
+				["num"] = 4,
+				["rank"] = {
+					0.02, 0.04, 0.06, 0.08, 0.1,
+				},
+				["new"] = 10147,
+			},
+		},
+		-- Paladin: Redoubt (Rank 3) - 2,19
+		--          Increases your block value by 10%/20%/30% and
+		--          damaging melee and ranged attacks against you have a 10% chance to increase your chance to block by 30%.  Lasts 10 sec or 5 blocks.
+		["MOD_BLOCK_VALUE"] = {
+			{
+				["tab"] = 2,
+				["num"] = 19,
+				["rank"] = {
+					0.1, 0.2, 0.3,
+				},
+			},
+		},
+	}
+elseif playerClass == "PRIEST" then
+	addonTable.StatModTable["PRIEST"] = {
+		-- Priest: Focused Power (Rank 2) - 1,16
+		--         Increases your total spell damage and healing done by 2%/4%.
+		-- ["MOD_SPELL_DMG"] = {
+		-- {
+		-- ["tab"] = 1,
+		-- ["num"] = 16,
+		-- ["rank"] = {
+		-- 0.02, 0.04,
+		-- },
+		-- },
+		-- },
+		-- Priest: Focused Power (Rank 2) - 1,16
+		--         Increases your total spell damage and healing done by 2%/4%.
+		-- ["MOD_HEALING"] = {
+		-- {
+		-- ["tab"] = 1,
+		-- ["num"] = 16,
+		-- ["rank"] = {
+		-- 0.02, 0.04,
+		-- },
+		-- },
+		-- },
+		-- Priest: Meditation (Rank 3) - 1,7
+		--         Allows 17/33/50% of your Mana regeneration to continue while casting.
+		["ADD_MANA_REG_MOD_NORMAL_MANA_REG"] = {
+			{
+				["tab"] = 1,
+				["num"] = 7,
+				["rank"] = {
+					0.17, 0.33, 0.5,
+				},
+			},
+		},
+		-- Priest: Spiritual Guidance (Rank 5) - 2,14
+		--         Increases spell power by up to 5%/10%/15%/20%/25% of your total Spirit.
+		-- Priest: Twisted Faith (Rank 5) - 3,26
+		--         Increases your spell power by 4/8/12/16/20% of your total Spirit
+		["ADD_SPELL_DMG_MOD_SPI"] = {
+			{
+				["tab"] = 2,
+				["num"] = 14,
+				["rank"] = {
+					0.05, 0.1, 0.15, 0.2, 0.25,
+				},
+			},
+			{
+				["tab"] = 3,
+				["num"] = 26,
+				["rank"] = {
+					0.02, 0.04, 0.06, 0.08, 0.1,
+				},
+				["old"] = 10371,
+			},
+			{
+				["tab"] = 3,
+				["num"] = 26,
+				["rank"] = {
+					0.04, 0.08, 0.12, 0.16, 0.2,
+				},
+				["new"] = 10371,
+			},
+		},
+		-- Priest: Spiritual Guidance (Rank 5) - 2,14
+		--         Increases spell power by up to 5%/10%/15%/20%/25% of your total Spirit.
+		-- Priest: Twisted Faith (Rank 5) - 3,26
+		--         Increases your spell power by 4/8/12/16/20% of your total Spirit
+		["ADD_HEALING_MOD_SPI"] = {
+			{
+				["tab"] = 2,
+				["num"] = 14,
+				["rank"] = {
+					0.05, 0.1, 0.15, 0.2, 0.25,
+				},
+			},
+			{
+				["tab"] = 3,
+				["num"] = 26,
+				["rank"] = {
+					0.02, 0.04, 0.06, 0.08, 0.1,
+				},
+				["old"] = 10371,
+			},
+			{
+				["tab"] = 3,
+				["num"] = 26,
+				["rank"] = {
+					0.04, 0.08, 0.12, 0.16, 0.2,
+				},
+				["new"] = 10371,
+			},
+		},
+		-- Priest: Spell Warding (Rank 5) - 2,4
+		--         Reduces all spell damage taken by 2%/4%/6%/8%/10%.
+		-- Priest: Dispersion - Buff
+		--         Reduces all damage by 90%
+		["MOD_DMG_TAKEN"] = {
+			{
+				["HOLY"] = true,
+				["FIRE"] = true,
+				["NATURE"] = true,
+				["FROST"] = true,
+				["SHADOW"] = true,
+				["ARCANE"] = true,
+				["tab"] = 2,
+				["num"] = 4,
+				["rank"] = {
+					-0.02, -0.04, -0.06, -0.08, -0.1,
+				},
+			},
+			{
+				["MELEE"] = true,
+				["RANGED"] = true,
+				["HOLY"] = true,
+				["FIRE"] = true,
+				["NATURE"] = true,
+				["FROST"] = true,
+				["SHADOW"] = true,
+				["ARCANE"] = true,
+				["rank"] = {
+					-0.9,
+				},
+				["buff"] = 47585,		-- ["Dispersion"],
+			},
+		},
+		-- Priest: Enlightenment (Rank 5) - 1,17
+		--         Increases your total Stamina and Spirit by 1%/2%/3%/4%/5% and increases your spell haste by 1%/2%/3%/4%/5%.
+		-- Priest: Improved Power Word: Fortitude (Rank 2) - 1,5
+		--         Increases your total Stamina by 2/4%.
+		["MOD_STA"] = {
+			{
+				["tab"] = 1,
+				["num"] = 17,
+				["rank"] = {
+					0.01, 0.02, 0.03, 0.04, 0.05,
+				},
+			},
+			{
+				["tab"] = 1,
+				["num"] = 5,
+				["rank"] = {
+					0.02, 0.04,
+				},
+			},
+		},
+		-- Priest: Mental Strength (Rank 5) - 1,14
+		--         Increases your total Intellect by 3%/6%/9%/12%/15%.
+		["MOD_INT"] = {
+			{
+				["tab"] = 1,
+				["num"] = 14,
+				["rank"] = {
+					0.03, 0.06, 0.09, 0.12, 0.15,
+				},
+			},
+		},
+		-- Priest: Enlightenment (Rank 5) - 1,17
+		--         Increases your total Stamina and Spirit by 1%/2%/3%/4%/5% and increases your spell haste by 1%/2%/3%/4%/5%.
+		-- Priest: Spirit of Redemption - 2,13
+		--         Increases total Spirit by 5% and upon death, the priest becomes the Spirit of Redemption for 15 sec.
+		["MOD_SPI"] = {
+			{
+				["tab"] = 1,
+				["num"] = 17,
+				["rank"] = {
+					0.01, 0.02, 0.03, 0.04, 0.05,
+				},
+			},
+			{
+				["tab"] = 2,
+				["num"] = 13,
+				["rank"] = {
+					0.05,
+				},
+			},
+		},
+	}
+elseif playerClass == "ROGUE" then
+	addonTable.StatModTable["ROGUE"] = {
+		-- Rogue: Deadliness (Rank 5) - 3,18
+		--        Increases your attack power by 2%/4%/6%/8%/10%.
+		-- Rogue: Savage Combat (Rank 2) - 2,26
+		--        Increases your total attack power by 2%/4%.
+		["MOD_AP"] = {
+			{
+				["tab"] = 3,
+				["num"] = 18,
+				["rank"] = {
+					0.02, 0.04, 0.06, 0.08, 0.1,
+				},
+			},
+			{
+				["tab"] = 2,
+				["num"] = 26,
+				["rank"] = {
+					0.02, 0.04,
+				},
+			},
+		},
+		-- Rogue: Lightning Reflexes (Rank 5) - 2,12
+		--        Increases your Dodge chance by 2/4/6% and gives you 4/7/10% melee haste.
+		-- Rogue: Evasion (Rank 1/2) - Buff
+		--        Dodge chance increased by 50%/50% and chance ranged attacks hit you reduced by 0%/25%.
+		-- Rogue: Ghostly Strike - Buff
+		--        Dodge chance increased by 15%.
+		["ADD_DODGE"] = {
+			{
+				["tab"] = 2,
+				["num"] = 12,
+				["rank"] = {
+					2, 4, 6,
+				},
+			},
+			{
+				["rank"] = {
+					50, 50,
+				},
+				["buff"] = 26669,		-- ["Evasion"],
+			},
+			{
+				["rank"] = {
+					15,
+				},
+				["buff"] = 31022,		-- ["Ghostly Strike"],
+			},
+		},
+		-- Rogue: Sleight of Hand (Rank 2) - 3,4
+		--        Reduces the chance you are critically hit by melee and ranged attacks by 1%/2% and increases the threat reduction of your Feint ability by 10%/20%.
+		["ADD_CRIT_TAKEN"] = {
+			{
+				["MELEE"] = true,
+				["RANGED"] = true,
+				["tab"] = 3,
+				["num"] = 4,
+				["rank"] = {
+					-0.01, -0.02,
+				},
+			},
+		},
+		-- Rogue: Heightened Senses (Rank 2) - 3,13
+		--        Increases your Stealth detection and reduces the chance you are hit by spells and ranged attacks by 2%/4%.
+		-- Rogue: Cloak of Shadows - buff
+		--        Instantly removes all existing harmful spell effects and increases your chance to resist all spells by 90% for 5 sec. Does not remove effects that prevent you from using Cloak of Shadows.
+		-- Rogue: Evasion (Rank 1/2) - Buff
+		--        Dodge chance increased by 50%/50% and chance ranged attacks hit you reduced by 0%/25%.
+		["ADD_HIT_TAKEN"] = {
+			{
+				["RANGED"] = true,
+				["HOLY"] = true,
+				["FIRE"] = true,
+				["NATURE"] = true,
+				["FROST"] = true,
+				["SHADOW"] = true,
+				["ARCANE"] = true,
+				["tab"] = 3,
+				["num"] = 13,
+				["rank"] = {
+					-0.02, -0.04,
+				},
+			},
+			{
+				["HOLY"] = true,
+				["FIRE"] = true,
+				["NATURE"] = true,
+				["FROST"] = true,
+				["SHADOW"] = true,
+				["ARCANE"] = true,
+				["rank"] = {
+					-0.9,
+				},
+				["buff"] = 39666,		-- ["Cloak of Shadows"],
+			},
+			{
+				["RANGED"] = true,
+				["rank"] = {
+					0, -0.25,
+				},
+				["buff"] = 26669,		-- ["Evasion"],
+			},
+		},
+		-- Rogue: Deadened Nerves (Rank 3) - 1,20
+		--        Reduces all damage taken by 2%/4%/6%.
+		["MOD_DMG_TAKEN"] = {
+			{
+				["MELEE"] = true,
+				["RANGED"] = true,
+				["HOLY"] = true,
+				["FIRE"] = true,
+				["NATURE"] = true,
+				["FROST"] = true,
+				["SHADOW"] = true,
+				["ARCANE"] = true,
+				["tab"] = 1,
+				["num"] = 20,
+				["rank"] = {
+					-0.02, -0.04, -0.06,
+				},
+			},
+		},
+		-- Rogue: Sinister Calling (Rank 5) - 3,22
+		--        Increases your total Agility by 3%/6%/9%/12%/15%.
+		["MOD_AGI"] = {
+			{
+				["tab"] = 3,
+				["num"] = 22,
+				["rank"] = {
+					0.03, 0.06, 0.09, 0.12, 0.15,
+				},
+			},
+		},
+		-- Rogue: Endurance (Rank 2) - 2,7
+		--        increases your total Stamina by 2%/4%.
+		["MOD_STA"] = {
+			{
+				["tab"] = 2,
+				["num"] = 7,
+				["rank"] = {
+					0.02, 0.04,
+				},
+			},
+		},
+	}
+elseif playerClass == "SHAMAN" then
+	addonTable.StatModTable["SHAMAN"] = {
+		-- Shaman: Mental Dexterity (Rank 3) - 2,15
+		--         Increases your Attack Power by 33%/66%/100% of your Intellect.
+		["ADD_AP_MOD_INT"] = {
+			{
+				["tab"] = 2,
+				["num"] = 15,
+				["rank"] = {
+					0.33, 0.66, 1,
+				},
+			},
+		},
+		-- Shaman: Mental Quickness (Rank 3) - 2,25
+		--         Reduces the mana cost of your instant cast spells by 2%/4%/6% and increases your spell power equal to 10%/20%/30% of your attack power.
+		--  3.1.0: 2,25
+		["ADD_SPELL_DMG_MOD_AP"] = {
+			{
+				["tab"] = 2,
+				["num"] = 25,
+				["rank"] = {
+					0.1, 0.2, 0.3,
+				},
+			},
+		},
+		-- Shaman: Mental Quickness (Rank 3) - 2,25
+		--         Reduces the mana cost of your instant cast spells by 2%/4%/6% and increases your spell power equal to 10%/20%/30% of your attack power.
+		--  3.1.0: 2,25
+		["ADD_HEALING_MOD_AP"] = {
+			{
+				["tab"] = 2,
+				["num"] = 25,
+				["rank"] = {
+					0.1, 0.2, 0.3,
+				},
+			},
+		},
+		-- Shaman: Unrelenting Storm (Rank 3) - 1,13
+		--         Regenerate mana equal to 4%/8%/12% of your Intellect every 5 sec, even while casting.
+		["ADD_MANA_REG_MOD_INT"] = {
+			{
+				["tab"] = 1,
+				["num"] = 13,
+				["rank"] = {
+					0.04, 0.08, 0.12,
+				},
+			},
+		},
+		-- Shaman: Nature's Blessing (Rank 3) - 3,21
+		--         Increases your healing by an amount equal to 5%/10%/15% of your Intellect.
+		["ADD_HEALING_MOD_INT"] = {
+			{
+				["tab"] = 3,
+				["num"] = 21,
+				["rank"] = {
+					0.05, 0.1, 0.15,
+				},
+			},
+		},
+		-- Shaman: Anticipation (Rank 5) - 2,10
+		--         Increases your chance to dodge by an additional 1%/2%/3%
+		["ADD_DODGE"] = {
+			{
+				["tab"] = 2,
+				["num"] = 10,
+				["rank"] = {
+					1, 2, 3,
+				},
+			},
+		},
+		-- Shaman: Elemental Warding (Rank 3) - 1,4
+		--         Now reduces all damage taken by 2/4/6%.
+		-- Shaman: Shamanistic Rage - Buff
+		--         Reduces all damage taken by 30% and gives your successful melee attacks a chance to regenerate mana equal to 15% of your attack power. Lasts 30 sec.
+		-- Shaman: Astral Shift - Buff
+		--         When stunned, feared or silenced you shift into the Astral Plane reducing all damage taken by 30% for the duration of the stun, fear or silence effect.
+		["MOD_DMG_TAKEN"] = {
+			{
+				["MELEE"] = true,
+				["RANGED"] = true,
+				["HOLY"] = true,
+				["FIRE"] = true,
+				["NATURE"] = true,
+				["FROST"] = true,
+				["SHADOW"] = true,
+				["ARCANE"] = true,
+				["tab"] = 1,
+				["num"] = 4,
+				["rank"] = {
+					-0.02, -0.04, -0.06,
+				},
+			},
+			{
+				["MELEE"] = true,
+				["RANGED"] = true,
+				["HOLY"] = true,
+				["FIRE"] = true,
+				["NATURE"] = true,
+				["FROST"] = true,
+				["SHADOW"] = true,
+				["ARCANE"] = true,
+				["rank"] = {
+					-0.3,
+				},
+				["buff"] = 30823,		-- ["Shamanistic Rage"],
+			},
+			{
+				["MELEE"] = true,
+				["RANGED"] = true,
+				["HOLY"] = true,
+				["FIRE"] = true,
+				["NATURE"] = true,
+				["FROST"] = true,
+				["SHADOW"] = true,
+				["ARCANE"] = true,
+				["rank"] = {
+					-0.3,
+				},
+				["buff"] = 51479,		-- ["Astral Shift"],
+			},
+		},
+		-- Shaman: Toughness (Rank 5) - 2,12
+		--         Increases your total stamina by 2/4/6/8/10%.
+		["MOD_STA"] = {
+			{
+				["tab"] = 2,
+				["num"] = 12,
+				["rank"] = {
+					0.02, 0.04, 0.06, 0.08, 0.1,
+				},
+			},
+		},
+		-- Shaman: Ancestral Knowledge (Rank 5) - 2,3
+		--         Increases your intellect by 2%/4%/6%/8%/10%.
+		["MOD_INT"] = {
+			{
+				["tab"] = 2,
+				["num"] = 3,
+				["rank"] = {
+					0.02, 0.04, 0.06, 0.08, 0.1,
+				},
+			},
+		},
+	}
+elseif playerClass == "WARLOCK" then
+	addonTable.StatModTable["WARLOCK"] = {
+		-- Warlock: Metamorphosis - Buff
+		--          This form increases your armor by 600%, damage by 20%, reduces the chance you'll be critically hit by melee attacks by 6% and reduces the duration of stun and snare effects by 50%.
+		["ADD_CRIT_TAKEN"] = {
+			{
+				["MELEE"] = true,
+				["rank"] = {
+					-0.06,
+				},
+				["buff"] = 47241,		-- ["Metamorphosis"],
+			},
+		},
+		-- Warlock: Metamorphosis - Buff
+		--          This form increases your armor by 600%, damage by 20%, reduces the chance you'll be critically hit by melee attacks by 6% and reduces the duration of stun and snare effects by 50%.
+		["MOD_ARMOR"] = {
+			{
+				["rank"] = {
+					6,
+				},
+				["buff"] = 47241,		-- ["Metamorphosis"],
+			},
+		},
+		-- Warlock: Demonic Pact - 2,26
+		--          Your pet's criticals apply the Demonic Pact effect to your party or raid members. Demonic Pact increases spell power by 2%/4%/6%/8%/10% of your Spell Damage for 12 sec.
+		-- Warlock: Malediction (Rank 3) - 1,23
+		--          Increases the damage bonus effect of your Curse of the Elements spell by an additional 3%, and increases your spell damage by 1%/2%/3%.
+		--        * Does not affect char window stats
+		["MOD_SPELL_DMG"] = {
+			{
+				["tab"] = 2,
+				["num"] = 26,
+				["rank"] = {
+					0.02, 0.04, 0.06, 0.08, 0.1,
+				},
+				["buff"] = 47240,		-- ["Demonic Pact"],
+			},
+		},
+		-- Warlock: Demonic Pact - 2,26
+		--          Your pet's criticals apply the Demonic Pact effect to your party or raid members. Demonic Pact increases spell power by 2%/4%/6%/8%/10% of your Spell Damage for 12 sec.
+		["MOD_HEALING"] = {
+			{
+				["tab"] = 2,
+				["num"] = 26,
+				["rank"] = {
+					0.02, 0.04, 0.06, 0.08, 0.1,
+				},
+				["buff"] = 47240,		-- ["Demonic Pact"],
+			},
+		},
+		-- Warlock: Fel Armor (Rank 4) - Buff
+		--          Surrounds the caster with fel energy, increasing spell power by 50/100/150/180 plus additional spell power equal to 30% of your Spirit.
+		-- Warlock: Demonic Aegis (Rank 3) - 2,11
+		--          Increases the effectiveness of your Demon Armor and Fel Armor spells by 10%/20%/30%.
+		-- Warlock: Glyph of Life Tap - Major Glyph
+		--          When you use Life Tap, you gain 20% of your Spirit as spell power for 40 sec.
+		--          Life Tap - Buff
+		["ADD_SPELL_DMG_MOD_SPI"] = {
+			{
+				["rank"] = {
+					0.3, 0.3, 0.3, 0.3, -- 4 ranks
+				},
+				["buff"] = 28176, -- ["Fel Armor"],
+			},
+			{
+				["tab"] = 2,
+				["num"] = 11,
+				["rank"] = {
+					0.03, 0.06, 0.09,
+				},
+				["buff"] = 28176, -- ["Fel Armor"],
+			},
+			{
+				["rank"] = {
+					0.2,
+				},
+				["buff"] = 63321, -- ["Life Tap"],
+			},
+		},
+		-- Warlock: Fel Armor (Rank 4) - Buff
+		--          Surrounds the caster with fel energy, increasing spell power by 50/100/150/180 plus additional spell power equal to 30% of your Spirit.
+		-- Warlock: Demonic Aegis (Rank 3) - 2,11
+		--          Increases the effectiveness of your Demon Armor and Fel Armor spells by 10%/20%/30%.
+		--   3.1.0: 2,11
+		["ADD_HEALING_MOD_SPI"] = {
+			{
+				["rank"] = {
+					0.3, 0.3, 0.3, 0.3, -- 4 ranks
+				},
+				["buff"] = 28176,		-- ["Fel Armor"],
+			},
+			{
+				["tab"] = 2,
+				["num"] = 11,
+				["rank"] = {
+					0.03, 0.06, 0.09,
+				},
+				["buff"] = 28176,		-- ["Fel Armor"],
+			},
+			{
+				["rank"] = {
+					0.2,
+				},
+				["buff"] = 63321, -- ["Life Tap"],
+			},
+		},
+		-- 3.3.0 Imp stam total 233: pet base 118, player base 90, pet sta from player sta 0.75, pet kings 1.1, fel vitality 1.15
+		-- /dump floor((118+floor(90*0.75))*1.1)*1.05 = 233.45 match
+		-- /dump (118+floor(90*0.75))*1.1*1.05 = 224.025 wrong
+		-- Warlock: Fel Vitality (Rank 3) - 2,7
+		--          Increases the Stamina and Intellect of your Imp, Voidwalker, Succubus, Felhunter and Felguard by 15% and increases your maximum health and mana by 1%/2%/3%.
+		["ADD_PET_STA_MOD_STA"] = {
+			-- Base
+			{
+				["rank"] = {
+					0.75-1,
+				},
+				["condition"] = "UnitExists('pet')",
+			},
+			-- Blessings on pet: floor() * 1.1
+			{
+				["rank"] = {
+					0.1,
+				}, -- BoK, BoSanc
+				["condition"] = "UnitBuff('pet', GetSpellInfo(20217)) or UnitBuff('pet', GetSpellInfo(25898)) or UnitBuff('pet', GetSpellInfo(20911)) or UnitBuff('pet', GetSpellInfo(25899))",
+			},
+			-- Fel Vitality: floor() * 1.15
+			{
+				["tab"] = 2,
+				["num"] = 7,
+				["rank"] = {
+					0.05, 0.1, 0.15,
+				},
+				["condition"] = "UnitExists('pet')",
+			},
+		},
+		["ADD_PET_INT_MOD_INT"] = {
+			-- Base
+			{
+				["rank"] = {
+					0.3-1,
+				},
+				["condition"] = "UnitExists('pet')",
+			},
+			-- Blessings on pet
+			{
+				["rank"] = {
+					0.1,
+				},
+				["condition"] = "UnitBuff('pet', GetSpellInfo(20217)) or UnitBuff('pet', GetSpellInfo(25898)) or UnitBuff('pet', GetSpellInfo(20911)) or UnitBuff('pet', GetSpellInfo(25899))",
+			},
+			-- Fel Vitality
+			{
+				["tab"] = 2,
+				["num"] = 7,
+				["rank"] = {
+					0.05, 0.1, 0.15,
+				},
+				["condition"] = "UnitExists('pet')",
+			},
+		},
+		-- Warlock: Demonic Knowledge (Rank 3) - 2,20 - UnitExists("pet") - WARLOCK_PET_BONUS["PET_BONUS_STAM"] = 0.3; its actually 0.75
+		--          Increases your spell damage by an amount equal to 4/8/12% of the total of your active demon's Stamina plus Intellect.
+		["ADD_SPELL_DMG_MOD_PET_STA"] = {
+			{
+				["tab"] = 2,
+				["num"] = 20,
+				["rank"] = {
+					0.04, 0.08, 0.12,
+				},
+				["condition"] = "UnitExists('pet')",
+			},
+		},
+		-- Warlock: Demonic Knowledge (Rank 3) - 2,20 - UnitExists("pet") - WARLOCK_PET_BONUS["PET_BONUS_INT"] = 0.3;
+		--          Increases your spell damage by an amount equal to 4/8/12% of the total of your active demon's Stamina plus Intellect.
+		["ADD_SPELL_DMG_MOD_PET_INT"] = {
+			{
+				["tab"] = 2,
+				["num"] = 20,
+				["rank"] = {
+					0.04, 0.08, 0.12,
+				},
+				["condition"] = "UnitExists('pet')",
+			},
+		},
+		-- Warlock: Demonic Resilience (Rank 3) - 2,18
+		--          Reduces the chance you'll be critically hit by melee and spells by 1%/2%/3% and reduces all damage your summoned demon takes by 15%.
+		["ADD_CRIT_TAKEN"] = {
+			{
+				["MELEE"] = true,
+				["HOLY"] = true,
+				["FIRE"] = true,
+				["NATURE"] = true,
+				["FROST"] = true,
+				["SHADOW"] = true,
+				["ARCANE"] = true,
+				["tab"] = 2,
+				["num"] = 18,
+				["rank"] = {
+					-0.01, -0.02, -0.03,
+				},
+			},
+		},
+		-- Warlock: Master Demonologist (Rank 5) - 2,16
+		--          Voidwalker - Reduces physical damage taken by 2%/4%/6%/8%/10%.
+		--          Felhunter - Reduces all spell damage taken by 2%/4%/6%/8%/10%.
+		--          Felguard - Increases all damage done by 5%, and reduces all damage taken by 1%/2%/3%/4%/5%.
+		-- Warlock: Soul Link (Rank 1) - Buff
+		--          When active, 15% of all damage taken by the caster is taken by your Imp, Voidwalker, Succubus, Felhunter, Felguard, or enslaved demon instead.  That damage cannot be prevented. Lasts as long as the demon is active and controlled.
+		["MOD_DMG_TAKEN"] = {
+			-- Voidwalker
+			{
+				["MELEE"] = true,
+				["RANGED"] = true,
+				["tab"] = 2,
+				["num"] = 16,
+				["rank"] = {
+					-0.02, -0.04, -0.06, -0.08, -0.1,
+				},
+				["condition"] = "IsUsableSpell('"..(GetSpellInfo(27490) or "").."')" -- ["Torment"]
+			},
+			-- Felhunter
+			{
+				["HOLY"] = true,
+				["FIRE"] = true,
+				["NATURE"] = true,
+				["FROST"] = true,
+				["SHADOW"] = true,
+				["ARCANE"] = true,
+				["tab"] = 2,
+				["num"] = 16,
+				["rank"] = {
+					-0.02, -0.04, -0.06, -0.08, -0.1,
+				},
+				["condition"] = "IsUsableSpell('"..(GetSpellInfo(27496) or "").."')" -- ["Devour Magic"]
+			},
+			-- Felguard
+			{
+				["MELEE"] = true,
+				["RANGED"] = true,
+				["HOLY"] = true,
+				["FIRE"] = true,
+				["NATURE"] = true,
+				["FROST"] = true,
+				["SHADOW"] = true,
+				["ARCANE"] = true,
+				["tab"] = 2,
+				["num"] = 16,
+				["rank"] = {
+					-0.01, -0.02, -0.03, -0.04, -0.05,
+				},
+				["condition"] = "IsUsableSpell('"..(GetSpellInfo(47993) or "").."')" -- ["Anguish"]
+			},
+			{
+				["MELEE"] = true,
+				["RANGED"] = true,
+				["HOLY"] = true,
+				["FIRE"] = true,
+				["NATURE"] = true,
+				["FROST"] = true,
+				["SHADOW"] = true,
+				["ARCANE"] = true,
+				["rank"] = {
+					-0.15,
+				},
+				["buff"] = 25228,		-- ["Soul Link"],
+			},
+		},
+		-- Warlock: Fel Vitality (Rank 3) - 2,7
+		--          Increases the Stamina and Intellect of your Imp, Voidwalker, Succubus, Felhunter and Felguard by 5%/10%/15% and increases your maximum health and mana by 1%/2%/3%.
+		["MOD_HEALTH"] = {
+			{
+				["tab"] = 2,
+				["num"] = 7,
+				["rank"] = {
+					0.01, 0.02, 0.03,
+				},
+			},
+		},
+		-- Warlock: Fel Vitality (Rank 3) - 2,7
+		--          Increases the Stamina and Intellect of your Imp, Voidwalker, Succubus, Felhunter and Felguard by 15% and increases your maximum health and mana by 1%/2%/3%.
+		["MOD_MANA"] = {
+			{
+				["tab"] = 2,
+				["num"] = 7,
+				["rank"] = {
+					0.01, 0.02, 0.03,
+				},
+			},
+		},
+		-- Warlock: Demonic Embrace (Rank 5) - 2,3
+		--          Increases your total Stamina by 4/7/10%.
+		["MOD_STA"] = {
+			{
+				["tab"] = 2,
+				["num"] = 3,
+				["rank"] = {
+					0.04, 0.07, 0.1,
+				},
+			},
+		},
+	}
+elseif playerClass == "WARRIOR" then
+	addonTable.StatModTable["WARRIOR"] = {
+		-- Warrior: Improved Spell Reflection (Rank 2) - 3,10
+		--          Reduces the chance you'll be hit by spells by 2%/4%
+		["ADD_HIT_TAKEN"] = {
+			{
+				["HOLY"] = true,
+				["FIRE"] = true,
+				["NATURE"] = true,
+				["FROST"] = true,
+				["SHADOW"] = true,
+				["ARCANE"] = true,
+				["tab"] = 3,
+				["num"] = 10,
+				["rank"] = {
+					-0.02, -0.04,
+				},
+			},
+		},
+		-- Warrior: Armored to the Teeth (Rank 3) - 2,1
+		--          Increases your attack power by 1/2/3 for every 108 armor value you have.
+		["ADD_AP_MOD_ARMOR"] = {
+			{
+				["tab"] = 2,
+				["num"] = 1,
+				["rank"] = {
+					1/180, 2/180, 3/180,
+				},
+				["old"] = 10147,
+			},
+			{
+				["tab"] = 2,
+				["num"] = 1,
+				["rank"] = {
+					1/108, 2/108, 3/108,
+				},
+				["new"] = 10147,
+			},
+		},
+		-- Warrior: Anticipation (Rank 5) - 3,5
+		--          Increases your Dodge chance by 1%/2%/3%/4%/5%.
+		["ADD_DODGE"] = {
+			{
+				["tab"] = 3,
+				["num"] = 5,
+				["rank"] = {
+					1, 2, 3, 4, 5,
+				},
+			},
+		},
+		-- Warrior: Shield Wall - Buff
+		--          All damage taken reduced by 60%.
+		-- Warrior: Glyph of Shield Wall - Major Glyph
+		--          Reduces the cooldown on Shield Wall by 2 min, but Shield Wall now only reduces damage taken by 40%.
+		-- Warrior: Defensive Stance - stance
+		--          A defensive combat stance. Decreases damage taken by 10% and damage caused by 10%. Increases threat generated.
+		-- Warrior: Berserker Stance - stance
+		--          An aggressive stance. Critical hit chance is increased by 3% and all damage taken is increased by 5%.
+		-- Warrior: Death Wish - Buff
+		--          When activated, increases your physical damage by 20% and makes you immune to Fear effects, but increases all damage taken by 5%. Lasts 30 sec.
+		-- Warrior: Recklessness - Buff
+		--          The warrior will cause critical hits with most attacks and will be immune to Fear effects for the next 15 sec, but all damage taken is increased by 20%.
+		-- Warrior: Improved Defensive Stance (Rank 2) - 3,17
+		--          While in Defensive Stance all spell damage is reduced by 3%/6%.
+		["MOD_DMG_TAKEN"] = {
+			{
+				["MELEE"] = true,
+				["RANGED"] = true,
+				["HOLY"] = true,
+				["FIRE"] = true,
+				["NATURE"] = true,
+				["FROST"] = true,
+				["SHADOW"] = true,
+				["ARCANE"] = true,
+				["rank"] = {
+					-0.6,
+				},
+				["buff"] = 41196,		-- ["Shield Wall"],
+			},
+			{
+				["MELEE"] = true,
+				["RANGED"] = true,
+				["HOLY"] = true,
+				["FIRE"] = true,
+				["NATURE"] = true,
+				["FROST"] = true,
+				["SHADOW"] = true,
+				["ARCANE"] = true,
+				["rank"] = {
+					0.2,
+				},
+				["buff"] = 41196,		-- ["Shield Wall"],
+				["glyph"] = 63329, -- Glyph of Shield Wall,
+			},
+			{
+				["MELEE"] = true,
+				["RANGED"] = true,
+				["HOLY"] = true,
+				["FIRE"] = true,
+				["NATURE"] = true,
+				["FROST"] = true,
+				["SHADOW"] = true,
+				["ARCANE"] = true,
+				["rank"] = {
+					-0.1,
+				},
+				["stance"] = "Interface\\Icons\\Ability_Warrior_DefensiveStance",
+			},
+			{
+				["MELEE"] = true,
+				["RANGED"] = true,
+				["HOLY"] = true,
+				["FIRE"] = true,
+				["NATURE"] = true,
+				["FROST"] = true,
+				["SHADOW"] = true,
+				["ARCANE"] = true,
+				["rank"] = {
+					0.05,
+				},
+				["stance"] = "Interface\\Icons\\Ability_Racial_Avatar",
+			},
+			{
+				["MELEE"] = true,
+				["RANGED"] = true,
+				["HOLY"] = true,
+				["FIRE"] = true,
+				["NATURE"] = true,
+				["FROST"] = true,
+				["SHADOW"] = true,
+				["ARCANE"] = true,
+				["rank"] = {
+					0.05,
+				},
+				["buff"] = 12292,		-- ["Death Wish"],
+			},
+			{
+				["MELEE"] = true,
+				["RANGED"] = true,
+				["HOLY"] = true,
+				["FIRE"] = true,
+				["NATURE"] = true,
+				["FROST"] = true,
+				["SHADOW"] = true,
+				["ARCANE"] = true,
+				["rank"] = {
+					0.2,
+				},
+				["buff"] = 13847,		-- ["Recklessness"],
+			},
+			-- Improved Defensive Stance
+			{
+				["HOLY"] = true,
+				["FIRE"] = true,
+				["NATURE"] = true,
+				["FROST"] = true,
+				["SHADOW"] = true,
+				["ARCANE"] = true,
+				["tab"] = 3,
+				["num"] = 17,
+				["rank"] = {
+					-0.03, -0.06,
+				},
+			},
+		},
+		-- Warrior: Last Stand - Buff
+		--          When activated, this ability temporarily grants you 30% of your maximum health for 20 sec.
+		["MOD_HEALTH"] = {
+			{
+				["rank"] = {
+					0.3,
+				},
+				["buff"] = 12975,		-- ["Last Stand"],
+			},
+		},
+		-- Warrior: Toughness (Rank 5) - 3,9
+		--          Increases your armor value from items by 2%/4%/6%/8%/10%.
+		["MOD_ARMOR"] = {
+			{
+				["tab"] = 3,
+				["num"] = 9,
+				["rank"] = {
+					0.02, 0.04, 0.06, 0.08, 0.1,
+				},
+			},
+		},
+		-- Warrior: Vitality (Rank 3) - 3,20
+		--          Increases your total Strength and Stamina by 3/6/9% and your Expertise by 2/4/6.
+		-- Warrior: Strength of Arms (Rank 2) - 1,22
+		--          Increases your total Strength and Stamina by 2%/4% and your Expertise by 2/4.
+		["MOD_STA"] = {
+			{
+				["tab"] = 3,
+				["num"] = 20,
+				["rank"] = {
+					0.02, 0.04, 0.06,
+				},
+				["old"] = 11685,
+			},
+			{
+				["tab"] = 3,
+				["num"] = 20,
+				["rank"] = {
+					0.03, 0.06, 0.09,
+				},
+				["new"] = 11685,
+			},
+			{
+				["tab"] = 1,
+				["num"] = 22,
+				["rank"] = {
+					0.02, 0.04,
+				},
+			},
+		},
+		-- Warrior: Vitality (Rank 3) - 3,20
+		--          Increases your total Strength and Stamina by 2%/4%/6% and your Expertise by 2/4/6.
+		-- Warrior: Strength of Arms (Rank 2) - 1,22
+		--          Increases your total Strength and total health by 2%/4%.
+		-- Warrior: Improved Berserker Stance (Rank 5) - 2,22 - Stance
+		--          Increases strength by 4/8/12/16/20% while in Berserker Stance.
+		--   3.1.0: Increases strength by 4/8/12/16/20% while in Berserker Stance.
+		["MOD_STR"] = {
+			{
+				["tab"] = 3,
+				["num"] = 20,
+				["rank"] = {
+					0.02, 0.04, 0.06,
+				},
+			},
+			{
+				["tab"] = 1,
+				["num"] = 22,
+				["rank"] = {
+					0.02, 0.04,
+				},
+			},
+			{
+				["tab"] = 2,
+				["num"] = 22,
+				["rank"] = {
+					0.04, 0.08, 0.12, 0.16, 0.2,
+				},
+				["stance"] = "Interface\\Icons\\Ability_Racial_Avatar",
+			},
+		},
+		-- Warrior: Shield Mastery (Rank 2) - 3,8
+		--          Increases your block value by 15%/30% and reduces the cooldown of your Shield Block ability by 10/20 sec.
+		["MOD_BLOCK_VALUE"] = {
+			{
+				["tab"] = 3,
+				["num"] = 8,
+				["rank"] = {
+					0.15, 0.3,
+				},
+			},
+		},
+	}
+end
+
+if addonTable.playerRace == "NightElf" then
+	addonTable.StatModTable["NightElf"] = {
+		["ADD_HIT_TAKEN"] = {
+			-- Night Elf : Quickness - Racial
+			--             Reduces the chance that melee and ranged attackers will hit you by 2%.
+			{
+				["MELEE"] = true,
+				["RANGED"] = true,
+				["rank"] = {
+					-0.02,
+				},
+				["race"] = "NightElf",
+			},
+		}
+	}
+elseif addonTable.playerRace == "Gnome" then
+	addonTable.StatModTable["Gnome"] = {
+		["MOD_INT"] = {
+			-- Gnome: Expansive Mind - Racial
+			--        Increase Intelligence by 5%.
+			{
+				["rank"] = {
+					0.05,
+				},
+				["race"] = "Gnome",
+			},
+		}
+	}
+elseif addonTable.playerRace == "Human" then
+	addonTable.StatModTable["Human"] = {
+		["MOD_SPIRIT"] = {
+			-- Human: The Human Spirit - Racial
+			--        Increase Spirit by 3%.
+			{
+				["rank"] = {
+					0.03,
+				},
+				["race"] = "Human",
+			},
+		}
+	}
+end
+
+addonTable.StatModTable["ALL"] = {
+	-- ICC: Chill of the Throne
+	--      Chance to dodge reduced by 20%.
+	["ADD_DODGE"] = {
+		{
+			["rank"] = {
+				-20,
+			},
+			["buff"] = 69127,		-- ["Chill of the Throne"],
+		},
+	},
+	-- Replenishment - Buff
+	--   Replenishes 1% of maximum mana per 5 sec.
+	-- Priest: Vampiric Touch
+	--         Priest's party or raid members gain 1% of their maximum mana per 5 sec when the priest deals damage from Mind Blast.
+	-- Paladin: Judgements of the Wise
+	--          Your damaging Judgement spells have a 100% chance to grant the Replenishment effect to
+	--          up to 10 party or raid members mana regeneration equal to 1% of their maximum mana per 5 sec for 15 sec
+	-- Hunter: Hunting Party
+	--         Your Arcane Shot, Explosive Shot and Steady Shot critical strikes have a 100% chance to
+	--         grant up to 10 party or raid members mana regeneration equal to 1% of the maximum mana per 5 sec.
+	["ADD_MANA_REG_MOD_MANA"] = {
+		{
+			["rank"] = {
+				0.01,
+			},
+			["buff"] = 57669,		-- ["Replenishment"],
+		},
+	},
+	-- Priest: Pain Suppression - Buff
+	--         Instantly reduces a friendly target's threat by 5%, reduces all damage taken by 40% and increases resistance to Dispel mechanics by 65% for 8 sec.
+	-- Priest: Grace - Buff
+	--         Reduces damage taken by 1%.
+	-- Warrior: Vigilance - Buff
+	--          Damage taken reduced by 3% and 10% of all threat transferred to warrior.
+	-- Paladin: Blessing of Sanctuary - Buff
+	--          Damage taken reduced by up to 3%, strength and stamina increased by 10%.
+	-- MetaGem: Effulgent Skyflare Diamond - 41377
+	--          +32 Stamina and Reduce Spell Damage Taken by 2%
+	-- Paladin: Lay on Hands (Rank 1/2) - Buff
+	--          Physical damage taken reduced by 10/20%.
+	-- Priest: Inspiration (Rank 1/2/3) - Buff
+	--         Reduces physical damage taken by 3/7/10%.
+	-- Shaman: Ancestral Fortitude (Rank 1/2/3) - Buff
+	--         Reduces physical damage taken by 3/7/10%.
+	["MOD_DMG_TAKEN"] = {
+		-- Pain Suppression
+		{
+			["MELEE"] = true,
+			["RANGED"] = true,
+			["HOLY"] = true,
+			["FIRE"] = true,
+			["NATURE"] = true,
+			["FROST"] = true,
+			["SHADOW"] = true,
+			["ARCANE"] = true,
+			["rank"] = {
+				-0.4,
+			},
+			["buff"] = 33206,		-- ["Pain Suppression"],
+		},
+		-- Grace
+		{
+			["MELEE"] = true,
+			["RANGED"] = true,
+			["HOLY"] = true,
+			["FIRE"] = true,
+			["NATURE"] = true,
+			["FROST"] = true,
+			["SHADOW"] = true,
+			["ARCANE"] = true,
+			["rank"] = {
+				-0.01,
+			},
+			["buff"] = 47930,		-- ["Grace"],
+		},
+		-- Vigilance
+		{
+			["MELEE"] = true,
+			["RANGED"] = true,
+			["HOLY"] = true,
+			["FIRE"] = true,
+			["NATURE"] = true,
+			["FROST"] = true,
+			["SHADOW"] = true,
+			["ARCANE"] = true,
+			["rank"] = {
+				-0.03,
+			},
+			["buff"] = 50720,		-- ["Vigilance"],
+		},
+		-- Blessing of Sanctuary
+		{
+			["MELEE"] = true,
+			["RANGED"] = true,
+			["HOLY"] = true,
+			["FIRE"] = true,
+			["NATURE"] = true,
+			["FROST"] = true,
+			["SHADOW"] = true,
+			["ARCANE"] = true,
+			["rank"] = {
+				-0.03,
+			},
+			["buff"] = 20911,		-- ["Blessing of Sanctuary"],
+		},
+		-- Greater Blessing of Sanctuary
+		{
+			["MELEE"] = true,
+			["RANGED"] = true,
+			["HOLY"] = true,
+			["FIRE"] = true,
+			["NATURE"] = true,
+			["FROST"] = true,
+			["SHADOW"] = true,
+			["ARCANE"] = true,
+			["rank"] = {
+				-0.03,
+			},
+			["buff"] = 25899,		-- ["Greater Blessing of Sanctuary"],
+		},
+		-- Effulgent Skyflare Diamond
+		{
+			["HOLY"] = true,
+			["FIRE"] = true,
+			["NATURE"] = true,
+			["FROST"] = true,
+			["SHADOW"] = true,
+			["ARCANE"] = true,
+			["rank"] = {
+				-0.02,
+			},
+			["meta"] = 41377,
+		},
+		-- Lay on Hands
+		{
+			["MELEE"] = true,
+			["RANGED"] = true,
+			["rank"] = {
+				-0.1, -0.2,
+			},
+			["buff"] = 20236,		-- ["Lay on Hands"],
+			["new"] = 10147,
+		},
+		{
+			["MELEE"] = true,
+			["RANGED"] = true,
+			["rank"] = {
+				-0.03, -0.07, -0.1,
+			},
+			["buff"] = 15363,		-- ["Inspiration"],
+			["group"] = ["Reduced Physical Damage Taken"],
+			["new"] = 10147,
+		},
+		{
+			["MELEE"] = true,
+			["RANGED"] = true,
+			["rank"] = {
+				-0.03, -0.07, -0.1,
+			},
+			["buff"] = 16237,		-- ["Ancestral Fortitude"],
+			["group"] = ["Reduced Physical Damage Taken"],
+			["new"] = 10147,
+		},
+	},
+	-- MetaGem: Eternal Earthsiege Diamond - 41396
+	--          +21 Defense Rating and +5% Shield Block Value
+	-- MetaGem: Eternal Earthstorm Diamond - 35501
+	--          +12 Defense Rating and +5% Shield Block Value
+	["MOD_BLOCK_VALUE"] = {
+		{
+			["rank"] = {
+				0.05,
+			},
+			["meta"] = 41396,
+		},
+		{
+			["rank"] = {
+				0.05,
+			},
+			["meta"] = 35501,
+		},
+	},
+	-- Paladin: Lay on Hands (Rank 1/2) - Buff
+	--          Physical damage taken reduced by 10%/20%.
+	-- Priest: Inspiration (Rank 1/2/3) - Buff
+	--         Reduces physical damage taken by 3/7/10%.
+	-- Shaman: Ancestral Fortitude (Rank 1/2/3) - Buff
+	--         Reduces physical damage taken by 3/7/10%.
+	-- MetaGem: Austere Earthsiege Diamond - 41380
+	--          +32 Stamina and 2% Increased Armor Value from Items
+	["MOD_ARMOR"] = {
+		{
+			["rank"] = {
+				0.15, 0.30,
+			},
+			["buff"] = 20236,		-- ["Lay on Hands"],
+			["old"] = 10147,
+		},
+		{
+			["rank"] = {
+				0.08, 0.16, 0.25,
+			},
+			["buff"] = 15363,		-- ["Inspiration"],
+			["old"] = 10147,
+		},
+		{
+			["rank"] = {
+				0.08, 0.16, 0.25,
+			},
+			["buff"] = 16237,		-- ["Ancestral Fortitude"],
+			["old"] = 10147,
+		},
+		{
+			["rank"] = {
+				0.02,
+			},
+			["meta"] = 41380,
+		},
+	},
+	-- Hunter: Trueshot Aura - Buff
+	--         Attack power increased by 10%.
+	-- Death Knight: Abomination's Might - Buff
+	--               Attack power increased by 5/10%.
+	-- Shaman: Unleashed Rage - Buff
+	--         Melee attack power increased by 4/7/10%.
+	["MOD_AP"] = {
+		{
+			["rank"] = {
+				0.1,
+			},
+			["buff"] = 19506,		-- ["Trueshot Aura"],
+			["group"] = "MOD_AP",
+		},
+		{
+			["rank"] = {
+				0.05, 0.1,
+			},
+			["buff"] = 55972,		-- ["Abominable Might"],
+			["group"] = "MOD_AP",
+		},
+		{
+			["rank"] = {
+				0.04, 0.07, 0.1,
+			},
+			["buff"] = 30809,		-- ["Unleashed Rage"],
+			["group"] = "MOD_AP",
+		},
+	},
+	-- MetaGem: Beaming Earthsiege Diamond - 41389
+	--          +21 Critical Strike Rating and +2% Mana
+	["MOD_MANA"] = {
+		{
+			["rank"] = {
+				0.02,
+			},
+			["meta"] = 41389,
+		},
+	},
+	-- Paladin: Blessing of Kings, Greater Blessing of Kings - Buff
+	--          Increases stats by 10%.
+	-- Paladin: Blessing of Sanctuary, Greater Blessing of Sanctuary - Buff
+	--          Damage taken reduced by up to 3%, strength and stamina increased by 10%. Does not stack with Blessing of Kings.
+	-- Leatherworking: Blessing of Forgotten Kings - Buff
+	--                 Increases stats by 8%.
+	["MOD_STR"] = {
+		{
+			["rank"] = {
+				0.1,
+			},
+			["buff"] = 20217,		-- ["Blessing of Kings"],
+			["group"] = "MOD_STATS",
+		},
+		{
+			["rank"] = {
+				0.1,
+			},
+			["buff"] = 25898,		-- ["Greater Blessing of Kings"],
+			["group"] = "MOD_STATS",
+		},
+		-- Blessing of Sanctuary
+		{
+			["rank"] = {
+				0.1,
+			},
+			["buff"] = 20911,		-- ["Blessing of Sanctuary"],
+			["new"] = 10371,
+			["group"] = "MOD_STATS",
+		},
+		-- Greater Blessing of Sanctuary
+		{
+			["rank"] = {
+				0.1,
+			},
+			["buff"] = 25899,		-- ["Greater Blessing of Sanctuary"],
+			["new"] = 10371,
+			["group"] = "MOD_STATS",
+		},
+		{
+			["rank"] = {
+				0.08,
+			},
+			["buff"] = 69378,		-- ["Blessing of Forgotten Kings"],
+			["group"] = "MOD_STATS",
+		},
+	},
+	-- Paladin: Blessing of Kings, Greater Blessing of Kings - Buff
+	--          Increases stats by 10%.
+	-- Leatherworking: Blessing of Forgotten Kings - Buff
+	--                 Increases stats by 8%.
+	["MOD_AGI"] = {
+		{
+			["rank"] = {
+				0.1,
+			},
+			["buff"] = 20217,		-- ["Blessing of Kings"],
+			["group"] = "MOD_STATS",
+		},
+		{
+			["rank"] = {
+				0.1,
+			},
+			["buff"] = 25898,		-- ["Greater Blessing of Kings"],
+			["group"] = "MOD_STATS",
+		},
+		{
+			["rank"] = {
+				0.08,
+			},
+			["buff"] = 69378,		-- ["Blessing of Forgotten Kings"],
+			["group"] = "MOD_STATS",
+		},
+	},
+	-- Paladin: Blessing of Kings, Greater Blessing of Kings - Buff
+	--          Increases stats by 10%.
+	-- Paladin: Blessing of Sanctuary, Greater Blessing of Sanctuary - Buff
+	--          Damage taken reduced by up to 3%, strength and stamina increased by 10%. Does not stack with Blessing of Kings.
+	-- Leatherworking: Blessing of Forgotten Kings - Buff
+	--                 Increases stats by 8%.
+	["MOD_STA"] = {
+		{
+			["rank"] = {
+				0.1,
+			},
+			["buff"] = 20217,		-- ["Blessing of Kings"],
+			["group"] = "MOD_STATS",
+		},
+		{
+			["rank"] = {
+				0.1,
+			},
+			["buff"] = 25898,		-- ["Greater Blessing of Kings"],
+			["group"] = "MOD_STATS",
+		},
+		-- Blessing of Sanctuary
+		{
+			["rank"] = {
+				0.1,
+			},
+			["buff"] = 20911,		-- ["Blessing of Sanctuary"],
+			["new"] = 10147,
+			["condition"] = "not (UnitBuff('player', GetSpellInfo(20217)) or UnitBuff('player', GetSpellInfo(25898)))",
+		},
+		-- Greater Blessing of Sanctuary
+		{
+			["rank"] = {
+				0.1,
+			},
+			["buff"] = 25899,		-- ["Greater Blessing of Sanctuary"],
+			["new"] = 10147,
+			["group"] = "MOD_STATS",
+		},
+		{
+			["rank"] = {
+				0.08,
+			},
+			["buff"] = 69378,		-- ["Blessing of Forgotten Kings"],
+			["group"] = "MOD_STATS",
+		},
+	},
+	-- Paladin: Blessing of Kings, Greater Blessing of Kings - Buff
+	--          Increases stats by 10%.
+	-- Leatherworking: Blessing of Forgotten Kings - Buff
+	--                 Increases stats by 8%.
+	-- MetaGem: Ember Skyfire Diamond - 35503
+	--          +14 Spell Power and +2% Intellect
+	-- MetaGem: Ember Skyflare Diamond - 41333
+	--          +25 Spell Power and +2% Intellect
+	["MOD_INT"] = {
+		{
+			["rank"] = {
+				0.1,
+			},
+			["buff"] = 20217,		-- ["Blessing of Kings"],
+			["group"] = "MOD_STATS",
+		},
+		{
+			["rank"] = {
+				0.1,
+			},
+			["buff"] = 25898,		-- ["Greater Blessing of Kings"],
+			["group"] = "MOD_STATS",
+		},
+		{
+			["rank"] = {
+				0.08,
+			},
+			["buff"] = 69378,		-- ["Blessing of Forgotten Kings"],
+			["group"] = "MOD_STATS",
+		},
+		{
+			["rank"] = {
+				0.02,
+			},
+			["meta"] = 35503,
+		},
+		{
+			["rank"] = {
+				0.02,
+			},
+			["meta"] = 41333,
+		},
+	},
+	-- Paladin: Blessing of Kings, Greater Blessing of Kings - Buff
+	--          Increases stats by 10%.
+	-- Leatherworking: Blessing of Forgotten Kings - Buff
+	--                 Increases stats by 8%.
+	["MOD_SPI"] = {
+		{
+			["rank"] = {
+				0.1,
+			},
+			["buff"] = 20217,		-- ["Blessing of Kings"],
+			["group"] = "MOD_STATS",
+		},
+		{
+			["rank"] = {
+				0.1,
+			},
+			["buff"] = 25898,		-- ["Greater Blessing of Kings"],
+			["group"] = "MOD_STATS",
+		},
+		{
+			["rank"] = {
+				0.08,
+			},
+			["buff"] = 69378,		-- ["Blessing of Forgotten Kings"],
+			["group"] = "MOD_STATS",
+		},
+	},
+}
