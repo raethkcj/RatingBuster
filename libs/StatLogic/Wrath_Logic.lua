@@ -313,6 +313,12 @@ addonTable.SpellCritPerInt = {
 	},
 }
 
+local BuffGroup = {
+	MOD_PHYS_DMG_TAKEN = 1,
+	MOD_AP = 2,
+	MOD_STATS = 3,
+}
+
 addonTable.StatModTable = {}
 if playerClass == "DRUID" then
 	addonTable.StatModTable["DRUID"] = {
@@ -3478,7 +3484,7 @@ addonTable.StatModTable["ALL"] = {
 				-0.03, -0.07, -0.1,
 			},
 			["buff"] = 15363,		-- ["Inspiration"],
-			["group"] = ["Reduced Physical Damage Taken"],
+			["group"] = BuffGroup.MOD_PHYS_DMG_TAKEN,
 			["new"] = 10147,
 		},
 		{
@@ -3488,7 +3494,7 @@ addonTable.StatModTable["ALL"] = {
 				-0.03, -0.07, -0.1,
 			},
 			["buff"] = 16237,		-- ["Ancestral Fortitude"],
-			["group"] = ["Reduced Physical Damage Taken"],
+			["group"] = BuffGroup.MOD_PHYS_DMG_TAKEN,
 			["new"] = 10147,
 		},
 	},
@@ -3559,21 +3565,21 @@ addonTable.StatModTable["ALL"] = {
 				0.1,
 			},
 			["buff"] = 19506,		-- ["Trueshot Aura"],
-			["group"] = "MOD_AP",
+			["group"] = BuffGroup.MOD_AP,
 		},
 		{
 			["rank"] = {
 				0.05, 0.1,
 			},
 			["buff"] = 55972,		-- ["Abominable Might"],
-			["group"] = "MOD_AP",
+			["group"] = BuffGroup.MOD_AP,
 		},
 		{
 			["rank"] = {
 				0.04, 0.07, 0.1,
 			},
 			["buff"] = 30809,		-- ["Unleashed Rage"],
-			["group"] = "MOD_AP",
+			["group"] = BuffGroup.MOD_AP,
 		},
 	},
 	-- MetaGem: Beaming Earthsiege Diamond - 41389
@@ -3598,14 +3604,14 @@ addonTable.StatModTable["ALL"] = {
 				0.1,
 			},
 			["buff"] = 20217,		-- ["Blessing of Kings"],
-			["group"] = "MOD_STATS",
+			["group"] = BuffGroup.MOD_STATS,
 		},
 		{
 			["rank"] = {
 				0.1,
 			},
 			["buff"] = 25898,		-- ["Greater Blessing of Kings"],
-			["group"] = "MOD_STATS",
+			["group"] = BuffGroup.MOD_STATS,
 		},
 		-- Blessing of Sanctuary
 		{
@@ -3614,7 +3620,7 @@ addonTable.StatModTable["ALL"] = {
 			},
 			["buff"] = 20911,		-- ["Blessing of Sanctuary"],
 			["new"] = 10371,
-			["group"] = "MOD_STATS",
+			["group"] = BuffGroup.MOD_STATS,
 		},
 		-- Greater Blessing of Sanctuary
 		{
@@ -3623,14 +3629,14 @@ addonTable.StatModTable["ALL"] = {
 			},
 			["buff"] = 25899,		-- ["Greater Blessing of Sanctuary"],
 			["new"] = 10371,
-			["group"] = "MOD_STATS",
+			["group"] = BuffGroup.MOD_STATS,
 		},
 		{
 			["rank"] = {
 				0.08,
 			},
 			["buff"] = 69378,		-- ["Blessing of Forgotten Kings"],
-			["group"] = "MOD_STATS",
+			["group"] = BuffGroup.MOD_STATS,
 		},
 	},
 	-- Paladin: Blessing of Kings, Greater Blessing of Kings - Buff
@@ -3643,21 +3649,21 @@ addonTable.StatModTable["ALL"] = {
 				0.1,
 			},
 			["buff"] = 20217,		-- ["Blessing of Kings"],
-			["group"] = "MOD_STATS",
+			["group"] = BuffGroup.MOD_STATS,
 		},
 		{
 			["rank"] = {
 				0.1,
 			},
 			["buff"] = 25898,		-- ["Greater Blessing of Kings"],
-			["group"] = "MOD_STATS",
+			["group"] = BuffGroup.MOD_STATS,
 		},
 		{
 			["rank"] = {
 				0.08,
 			},
 			["buff"] = 69378,		-- ["Blessing of Forgotten Kings"],
-			["group"] = "MOD_STATS",
+			["group"] = BuffGroup.MOD_STATS,
 		},
 	},
 	-- Paladin: Blessing of Kings, Greater Blessing of Kings - Buff
@@ -3672,14 +3678,14 @@ addonTable.StatModTable["ALL"] = {
 				0.1,
 			},
 			["buff"] = 20217,		-- ["Blessing of Kings"],
-			["group"] = "MOD_STATS",
+			["group"] = BuffGroup.MOD_STATS,
 		},
 		{
 			["rank"] = {
 				0.1,
 			},
 			["buff"] = 25898,		-- ["Greater Blessing of Kings"],
-			["group"] = "MOD_STATS",
+			["group"] = BuffGroup.MOD_STATS,
 		},
 		-- Blessing of Sanctuary
 		{
@@ -3697,14 +3703,14 @@ addonTable.StatModTable["ALL"] = {
 			},
 			["buff"] = 25899,		-- ["Greater Blessing of Sanctuary"],
 			["new"] = 10147,
-			["group"] = "MOD_STATS",
+			["group"] = BuffGroup.MOD_STATS,
 		},
 		{
 			["rank"] = {
 				0.08,
 			},
 			["buff"] = 69378,		-- ["Blessing of Forgotten Kings"],
-			["group"] = "MOD_STATS",
+			["group"] = BuffGroup.MOD_STATS,
 		},
 	},
 	-- Paladin: Blessing of Kings, Greater Blessing of Kings - Buff
@@ -3721,21 +3727,21 @@ addonTable.StatModTable["ALL"] = {
 				0.1,
 			},
 			["buff"] = 20217,		-- ["Blessing of Kings"],
-			["group"] = "MOD_STATS",
+			["group"] = BuffGroup.MOD_STATS,
 		},
 		{
 			["rank"] = {
 				0.1,
 			},
 			["buff"] = 25898,		-- ["Greater Blessing of Kings"],
-			["group"] = "MOD_STATS",
+			["group"] = BuffGroup.MOD_STATS,
 		},
 		{
 			["rank"] = {
 				0.08,
 			},
 			["buff"] = 69378,		-- ["Blessing of Forgotten Kings"],
-			["group"] = "MOD_STATS",
+			["group"] = BuffGroup.MOD_STATS,
 		},
 		{
 			["rank"] = {
@@ -3760,21 +3766,21 @@ addonTable.StatModTable["ALL"] = {
 				0.1,
 			},
 			["buff"] = 20217,		-- ["Blessing of Kings"],
-			["group"] = "MOD_STATS",
+			["group"] = BuffGroup.MOD_STATS,
 		},
 		{
 			["rank"] = {
 				0.1,
 			},
 			["buff"] = 25898,		-- ["Greater Blessing of Kings"],
-			["group"] = "MOD_STATS",
+			["group"] = BuffGroup.MOD_STATS,
 		},
 		{
 			["rank"] = {
 				0.08,
 			},
 			["buff"] = 69378,		-- ["Blessing of Forgotten Kings"],
-			["group"] = "MOD_STATS",
+			["group"] = BuffGroup.MOD_STATS,
 		},
 	},
 }
