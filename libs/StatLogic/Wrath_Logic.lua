@@ -313,6 +313,32 @@ addonTable.SpellCritPerInt = {
 	},
 }
 
+addonTable.APPerStr = {
+	[StatLogic:GetClassIdOrName("WARRIOR")] = 2,
+	[StatLogic:GetClassIdOrName("PALADIN")] = 2,
+	[StatLogic:GetClassIdOrName("HUNTER")] = 1,
+	[StatLogic:GetClassIdOrName("ROGUE")] = 1,
+	[StatLogic:GetClassIdOrName("PRIEST")] = 1,
+	[StatLogic:GetClassIdOrName("DEATHKNIGHT")] = 2,
+	[StatLogic:GetClassIdOrName("SHAMAN")] = 1,
+	[StatLogic:GetClassIdOrName("MAGE")] = 1,
+	[StatLogic:GetClassIdOrName("WARLOCK")] = 1,
+	[StatLogic:GetClassIdOrName("DRUID")] = 2,
+}
+
+addonTable.APPerAgi = {
+	[StatLogic:GetClassIdOrName("WARRIOR")] = 0,
+	[StatLogic:GetClassIdOrName("PALADIN")] = 0,
+	[StatLogic:GetClassIdOrName("HUNTER")] = 1,
+	[StatLogic:GetClassIdOrName("ROGUE")] = 1,
+	[StatLogic:GetClassIdOrName("PRIEST")] = 0,
+	[StatLogic:GetClassIdOrName("DEATHKNIGHT")] = 0,
+	[StatLogic:GetClassIdOrName("SHAMAN")] = 1,
+	[StatLogic:GetClassIdOrName("MAGE")] = 0,
+	[StatLogic:GetClassIdOrName("WARLOCK")] = 0,
+	[StatLogic:GetClassIdOrName("DRUID")] = 0,
+}
+
 local BuffGroup = {
 	MOD_PHYS_DMG_TAKEN = 1,
 	MOD_AP = 2,

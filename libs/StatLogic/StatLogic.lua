@@ -1291,29 +1291,16 @@ end
 }
 -----------------------------------]]
 
-local APPerStr = {
-	2, 2, 1, 1, 1, 2, 1, 1, 2,
-	--["WARRIOR"] = 2,
-	--["PALADIN"] = 2,
-	--["HUNTER"] = 1,
-	--["ROGUE"] = 1,
-	--["PRIEST"] = 1,
-	--["SHAMAN"] = 2,
-	--["MAGE"] = 1,
-	--["WARLOCK"] = 1,
-	--["DRUID"] = 2,
-}
-
 function StatLogic:GetAPPerStr(class)
 	assert(type(class)=="string" or type(class)=="number", "Expected string or number as arg #1 to GetAPPerStr, got "..type(class))
 	-- if class is a class string, convert to class id
 	if type(class) == "string" and ClassNameToID[strupper(class)] ~= nil then
 		class = ClassNameToID[strupper(class)]
 	-- if class is invalid input, default to player class
-	elseif type(class) ~= "number" or class < 1 or class > 9 then
+	elseif type(class) ~= "number" or class < 1 or class > GetNumClasses() then
 		class = ClassNameToID[addonTable.playerClass]
 	end
-	return APPerStr[class], "AP"
+	return addonTable.APPerStr[class], "AP"
 end
 
 
@@ -1347,7 +1334,7 @@ function StatLogic:GetAPFromStr(str, class)
 	if type(class) == "string" and ClassNameToID[strupper(class)] ~= nil then
 		class = ClassNameToID[strupper(class)]
 	-- if class is invalid input, default to player class
-	elseif type(class) ~= "number" or class < 1 or class > 9 then
+	elseif type(class) ~= "number" or class < 1 or class > GetNumClasses() then
 		class = ClassNameToID[addonTable.playerClass]
 	end
 	-- Calculate
@@ -1396,7 +1383,7 @@ function StatLogic:GetBlockValuePerStr(class)
 	if type(class) == "string" and ClassNameToID[strupper(class)] ~= nil then
 		class = ClassNameToID[strupper(class)]
 	-- if class is invalid input, default to player class
-	elseif type(class) ~= "number" or class < 1 or class > 9 then
+	elseif type(class) ~= "number" or class < 1 or class > GetNumClasses() then
 		class = ClassNameToID[addonTable.playerClass]
 	end
 	return BlockValuePerStr[class], "BLOCK_VALUE"
@@ -1435,7 +1422,7 @@ function StatLogic:GetBlockValueFromStr(str, class)
 	if type(class) == "string" and ClassNameToID[strupper(class)] ~= nil then
 		class = ClassNameToID[strupper(class)]
 	-- if class is invalid input, default to player class
-	elseif type(class) ~= "number" or class < 1 or class > 9 then
+	elseif type(class) ~= "number" or class < 1 or class > GetNumClasses() then
 		class = ClassNameToID[addonTable.playerClass]
 	end
 	-- Calculate
@@ -1466,33 +1453,20 @@ end
 }
 -----------------------------------]]
 
-local APPerAgi = {
-	0, 0, 1, 1, 0, 0, 0, 0, 0,
-	--["WARRIOR"] = 0,
-	--["PALADIN"] = 0,
-	--["HUNTER"] = 1,
-	--["ROGUE"] = 1,
-	--["PRIEST"] = 0,
-	--["SHAMAN"] = 0,
-	--["MAGE"] = 0,
-	--["WARLOCK"] = 0,
-	--["DRUID"] = 0,
-}
-
 function StatLogic:GetAPPerAgi(class)
 	assert(type(class)=="string" or type(class)=="number", "Expected string or number as arg #1 to GetAPPerAgi, got "..type(class))
 	-- if class is a class string, convert to class id
 	if type(class) == "string" and ClassNameToID[strupper(class)] ~= nil then
 		class = ClassNameToID[strupper(class)]
 	-- if class is invalid input, default to player class
-	elseif type(class) ~= "number" or class < 1 or class > 9 then
+	elseif type(class) ~= "number" or class < 1 or class > GetNumClasses() then
 		class = ClassNameToID[addonTable.playerClass]
 	end
 	-- Check druid cat form
 	if (class == 9) and (GetShapeshiftFormID() == CAT_FORM) then		-- ["Cat Form"]
 		return 1
 	end
-	return APPerAgi[class], "AP"
+	return addonTable.APPerAgi[class], "AP"
 end
 
 
@@ -1529,7 +1503,7 @@ function StatLogic:GetAPFromAgi(agi, class)
 	if type(class) == "string" and ClassNameToID[strupper(class)] ~= nil then
 		class = ClassNameToID[strupper(class)]
 	-- if class is invalid input, default to player class
-	elseif type(class) ~= "number" or class < 1 or class > 9 then
+	elseif type(class) ~= "number" or class < 1 or class > GetNumClasses() then
 		class = ClassNameToID[addonTable.playerClass]
 	end
 	-- Calculate
@@ -1578,7 +1552,7 @@ function StatLogic:GetRAPPerAgi(class)
 	if type(class) == "string" and ClassNameToID[strupper(class)] ~= nil then
 		class = ClassNameToID[strupper(class)]
 	-- if class is invalid input, default to player class
-	elseif type(class) ~= "number" or class < 1 or class > 9 then
+	elseif type(class) ~= "number" or class < 1 or class > GetNumClasses() then
 		class = ClassNameToID[addonTable.playerClass]
 	end
 	return RAPPerAgi[class], "RANGED_AP"
@@ -1618,7 +1592,7 @@ function StatLogic:GetRAPFromAgi(agi, class)
 	if type(class) == "string" and ClassNameToID[strupper(class)] ~= nil then
 		class = ClassNameToID[strupper(class)]
 	-- if class is invalid input, default to player class
-	elseif type(class) ~= "number" or class < 1 or class > 9 then
+	elseif type(class) ~= "number" or class < 1 or class > GetNumClasses() then
 		class = ClassNameToID[addonTable.playerClass]
 	end
 	-- Calculate
@@ -1668,7 +1642,7 @@ function StatLogic:GetBaseDodge(class)
 	if type(class) == "string" and ClassNameToID[strupper(class)] ~= nil then
 		class = ClassNameToID[strupper(class)]
 	-- if class is invalid input, default to player class
-	elseif type(class) ~= "number" or class < 1 or class > 9 then
+	elseif type(class) ~= "number" or class < 1 or class > GetNumClasses() then
 		class = ClassNameToID[addonTable.playerClass]
 	end
 	return BaseDodge[class], "DODGE"
@@ -1875,7 +1849,7 @@ function StatLogic:GetHealthRegenFromSpi(spi, class)
 	if type(class) == "string" and ClassNameToID[strupper(class)] ~= nil then
 		class = ClassNameToID[strupper(class)]
 	-- if class is invalid input, default to player class
-	elseif type(class) ~= "number" or class < 1 or class > 9 then
+	elseif type(class) ~= "number" or class < 1 or class > GetNumClasses() then
 		class = ClassNameToID[addonTable.playerClass]
 	end
 	-- Calculate
