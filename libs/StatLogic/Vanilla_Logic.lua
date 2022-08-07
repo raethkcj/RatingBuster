@@ -216,6 +216,18 @@ addonTable.APPerStr = {
 addonTable.APPerAgi = {
 	[StatLogic:GetClassIdOrName("WARRIOR")] = 0,
 	[StatLogic:GetClassIdOrName("PALADIN")] = 0,
+	[StatLogic:GetClassIdOrName("HUNTER")] = 1,
+	[StatLogic:GetClassIdOrName("ROGUE")] = 1,
+	[StatLogic:GetClassIdOrName("PRIEST")] = 0,
+	[StatLogic:GetClassIdOrName("SHAMAN")] = 0,
+	[StatLogic:GetClassIdOrName("MAGE")] = 0,
+	[StatLogic:GetClassIdOrName("WARLOCK")] = 0,
+	[StatLogic:GetClassIdOrName("DRUID")] = 0,
+}
+
+addonTable.RAPPerAgi = {
+	[StatLogic:GetClassIdOrName("WARRIOR")] = 1,
+	[StatLogic:GetClassIdOrName("PALADIN")] = 0,
 	[StatLogic:GetClassIdOrName("HUNTER")] = 2,
 	[StatLogic:GetClassIdOrName("ROGUE")] = 1,
 	[StatLogic:GetClassIdOrName("PRIEST")] = 0,
@@ -223,6 +235,19 @@ addonTable.APPerAgi = {
 	[StatLogic:GetClassIdOrName("MAGE")] = 0,
 	[StatLogic:GetClassIdOrName("WARLOCK")] = 0,
 	[StatLogic:GetClassIdOrName("DRUID")] = 0,
+}
+
+-- TODO: These are TBC values
+addonTable.BaseDodge = {
+	[StatLogic:GetClassIdOrName("WARRIOR")] = 0.7580,
+	[StatLogic:GetClassIdOrName("PALADIN")] = 0.6520,
+	[StatLogic:GetClassIdOrName("HUNTER")] = -5.4500,
+	[StatLogic:GetClassIdOrName("ROGUE")] = -0.5900,
+	[StatLogic:GetClassIdOrName("PRIEST")] = 3.1830,
+	[StatLogic:GetClassIdOrName("SHAMAN")] = 1.6750,
+	[StatLogic:GetClassIdOrName("MAGE")] = 3.4575,
+	[StatLogic:GetClassIdOrName("WARLOCK")] = 2.0350,
+	[StatLogic:GetClassIdOrName("DRUID")] = -1.8720,
 }
 
 addonTable.StatModTable = {}

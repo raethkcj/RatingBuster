@@ -345,6 +345,32 @@ local BuffGroup = {
 	MOD_STATS = 3,
 }
 
+addonTable.RAPPerAgi = {
+	[StatLogic:GetClassIdOrName("WARRIOR")] = 1,
+	[StatLogic:GetClassIdOrName("PALADIN")] = 0,
+	[StatLogic:GetClassIdOrName("HUNTER")] = 1,
+	[StatLogic:GetClassIdOrName("ROGUE")] = 1,
+	[StatLogic:GetClassIdOrName("PRIEST")] = 0,
+	[StatLogic:GetClassIdOrName("DEATHKNIGHT")] = 0,
+	[StatLogic:GetClassIdOrName("SHAMAN")] = 0,
+	[StatLogic:GetClassIdOrName("MAGE")] = 0,
+	[StatLogic:GetClassIdOrName("WARLOCK")] = 0,
+	[StatLogic:GetClassIdOrName("DRUID")] = 0,
+}
+
+addonTable.BaseDodge = {
+	[StatLogic:GetClassIdOrName("WARRIOR")] =     3.6640,
+	[StatLogic:GetClassIdOrName("PALADIN")] =     3.4943,
+	[StatLogic:GetClassIdOrName("HUNTER")] =     -4.0873,
+	[StatLogic:GetClassIdOrName("ROGUE")] =       2.0957,
+	[StatLogic:GetClassIdOrName("PRIEST")] =      3.4178,
+	[StatLogic:GetClassIdOrName("DEATHKNIGHT")] = 3.6640,
+	[StatLogic:GetClassIdOrName("SHAMAN")] =      2.1080,
+	[StatLogic:GetClassIdOrName("MAGE")] =        3.6587,
+	[StatLogic:GetClassIdOrName("WARLOCK")] =     2.4211,
+	[StatLogic:GetClassIdOrName("DRUID")] =       5.6097,
+}
+
 addonTable.StatModTable = {}
 if addonTable.playerClass == "DRUID" then
 	addonTable.StatModTable["DRUID"] = {

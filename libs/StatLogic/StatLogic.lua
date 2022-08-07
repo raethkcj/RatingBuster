@@ -1338,7 +1338,7 @@ function StatLogic:GetAPFromStr(str, class)
 		class = ClassNameToID[addonTable.playerClass]
 	end
 	-- Calculate
-	return str * APPerStr[class], "AP"
+	return str * addonTable.APPerStr[class], "AP"
 end
 
 
@@ -1365,16 +1365,15 @@ end
 -----------------------------------]]
 
 local BlockValuePerStr = {
-	0.05, 0.05, 0, 0, 0, 0.05, 0, 0, 0,
-	--["WARRIOR"] = 0.05,
-	--["PALADIN"] = 0.05,
-	--["HUNTER"] = 0,
-	--["ROGUE"] = 0,
-	--["PRIEST"] = 0,
-	--["SHAMAN"] = 0.05,
-	--["MAGE"] = 0,
-	--["WARLOCK"] = 0,
-	--["DRUID"] = 0,
+	[ClassNameToID["WARRIOR"]] = BLOCK_PER_STRENGTH,
+	[ClassNameToID["PALADIN"]] = BLOCK_PER_STRENGTH,
+	[ClassNameToID["HUNTER"]] = 0,
+	[ClassNameToID["ROGUE"]] = 0,
+	[ClassNameToID["PRIEST"]] = 0,
+	[ClassNameToID["SHAMAN"]] = BLOCK_PER_STRENGTH,
+	[ClassNameToID["MAGE"]] = 0,
+	[ClassNameToID["WARLOCK"]] = 0,
+	[ClassNameToID["DRUID"]] = 0,
 }
 
 function StatLogic:GetBlockValuePerStr(class)
@@ -1507,7 +1506,7 @@ function StatLogic:GetAPFromAgi(agi, class)
 		class = ClassNameToID[addonTable.playerClass]
 	end
 	-- Calculate
-	return agi * APPerAgi[class], "AP"
+	return agi * addonTable.APPerAgi[class], "AP"
 end
 
 
@@ -1533,18 +1532,6 @@ end
 }
 -----------------------------------]]
 
-local RAPPerAgi = {
-	[ClassNameToID["WARRIOR"]] = 1,
-	[ClassNameToID["PALADIN"]] = 0,
-	[ClassNameToID["HUNTER"]] = 1,
-	[ClassNameToID["ROGUE"]] = 1,
-	[ClassNameToID["PRIEST"]] = 0,
-	[ClassNameToID["SHAMAN"]] = 0,
-	[ClassNameToID["MAGE"]] = 0,
-	[ClassNameToID["WARLOCK"]] = 0,
-	[ClassNameToID["DRUID"]] = 0,
-}
-
 function StatLogic:GetRAPPerAgi(class)
 	-- argCheck for invalid input
 	self:argCheck(class, 2, "nil", "string", "number")
@@ -1555,7 +1542,7 @@ function StatLogic:GetRAPPerAgi(class)
 	elseif type(class) ~= "number" or class < 1 or class > GetNumClasses() then
 		class = ClassNameToID[addonTable.playerClass]
 	end
-	return RAPPerAgi[class], "RANGED_AP"
+	return addonTable.RAPPerAgi[class], "RANGED_AP"
 end
 
 
@@ -1596,7 +1583,7 @@ function StatLogic:GetRAPFromAgi(agi, class)
 		class = ClassNameToID[addonTable.playerClass]
 	end
 	-- Calculate
-	return agi * RAPPerAgi[class], "RANGED_AP"
+	return agi * addonTable.RAPPerAgi[class], "RANGED_AP"
 end
 
 
@@ -1621,20 +1608,6 @@ end
 }
 -----------------------------------]]
 
--- Numbers derived by Whitetooth@Cenarius(US) (hotdogee [at] gmail [dot] com)
-local BaseDodge = {
-	0.7580, 0.6520, -5.4500, -0.5900, 3.1830, 1.6750, 3.4575, 2.0350, -1.8720,
-	--["WARRIOR"] = 0.7580,
-	--["PALADIN"] = 0.6520,
-	--["HUNTER"] = -5.4500,
-	--["ROGUE"] = -0.5900,
-	--["PRIEST"] = 3.1830,
-	--["SHAMAN"] = 1.6750,
-	--["MAGE"] = 3.4575,
-	--["WARLOCK"] = 2.0350,
-	--["DRUID"] = -1.8720,
-}
-
 function StatLogic:GetBaseDodge(class)
 	-- argCheck for invalid input
 	self:argCheck(class, 2, "nil", "string", "number")
@@ -1645,7 +1618,7 @@ function StatLogic:GetBaseDodge(class)
 	elseif type(class) ~= "number" or class < 1 or class > GetNumClasses() then
 		class = ClassNameToID[addonTable.playerClass]
 	end
-	return BaseDodge[class], "DODGE"
+	return addonTable.BaseDodge[class], "DODGE"
 end
 
 
@@ -1672,7 +1645,7 @@ function StatLogic:GetDodgePerAgi()
 	local class = ClassNameToID[addonTable.playerClass]
 	-- dodgeFromAgi is %
 	local dodgeFromAgi = GetDodgeChance() - self:GetStatMod("ADD_DODGE") - self:GetEffectFromRating(GetCombatRating(CR_DODGE), CR_DODGE, UnitLevel("player")) - self:GetEffectFromDefense(GetTotalDefense("player"), UnitLevel("player"))
-	return (dodgeFromAgi - BaseDodge[class]) / agility, "DODGE"
+	return (dodgeFromAgi - addonTable.BaseDodge[class]) / agility, "DODGE"
 end
 
 
