@@ -570,7 +570,7 @@ local function GetPlayerBuffRank(buff)
 	local spellID = select(10, AuraUtil.FindAuraByName(buff, "player"))
 	local rank = GetSpellSubtext(spellID)
 	if spellID then
-		return rank and strmatch(rank, "(%d+)") or 1
+		return rank and tonumber(strmatch(rank, "(%d+)")) or 1
 	end
 end
 
