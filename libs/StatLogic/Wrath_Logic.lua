@@ -825,27 +825,26 @@ if addonTable.playerClass == "DRUID" then
 		},
 		-- Druid: Survival Instincts - Buff
 		--        Health increased by 30% of maximum while in Bear Form, Cat Form, or Dire Bear Form.
+		--        Patch 3.0.8: The extra health from this ability now persists in all forms,
+		--        but the ability can only be activated in Cat Form, Bear Form, or Dire Bear Form.
 		["MOD_HEALTH"] = {
 			{
 				["rank"] = {
 					0.3,
 				},
 				["buff"] = GetSpellInfo(50322),		-- ["Survival Instincts"],
-				["buff2"] = 32357,		-- ["Bear Form"],
 			},
 			{
 				["rank"] = {
 					0.3,
 				},
 				["buff"] = GetSpellInfo(50322),		-- ["Survival Instincts"],
-				["buff2"] = 9634,		-- ["Dire Bear Form"],
 			},
 			{
 				["rank"] = {
 					0.3,
 				},
 				["buff"] = GetSpellInfo(50322),		-- ["Survival Instincts"],
-				["buff2"] = 32356,		-- ["Cat Form"],
 			},
 		},
 		-- Druid: Improved Mark of the Wild (Rank 2) - 3,1
