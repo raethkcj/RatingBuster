@@ -51,7 +51,7 @@ end
 SlashCmdList["STATLOGICDEBUG"] = CmdHandler
 SLASH_STATLOGICDEBUG1 = "/sldebug";
 
--- Uncomment below to print out print out every missing translation for each locale
+-- Uncomment below to log out log out every missing translation for each locale
 -- L:EnableDebugging()
 -- D:EnableDebugging()
 
@@ -390,9 +390,9 @@ local function copyTable(to, from)
 end
 
 
-local function print(text)
+local function log(...)
 	if DEBUG == true then
-		DEFAULT_CHAT_FRAME:AddMessage(text)
+		print(...)
 	end
 end
 
@@ -2144,7 +2144,7 @@ function StatLogic:GetSum(item, table)
 	end
 
 	-- Start parsing
-	print(link)
+	log(link)
 	for i = 2, tip:NumLines() do
 		local text = tip[i]:GetText()
 
@@ -2168,19 +2168,19 @@ function StatLogic:GetSum(item, table)
 		local idTable = L.WholeTextLookup[text]
 		if idTable == false then
 			found = true
-			print("|cffadadad".."  WholeText Exclude: "..text)
+			log("|cffadadad".."  WholeText Exclude: "..text)
 		elseif idTable then
 			found = true
 			for id, value in pairs(L.WholeTextLookup[text]) do
 				-- sum stat
 				table[id] = (table[id] or 0) + value
-				print("|cffff5959".."  WholeText: ".."|cffffc259"..text..", ".."|cffffff59"..tostring(id).."="..tostring(value))
+				log("|cffff5959".."  WholeText: ".."|cffffc259"..text..", ".."|cffffff59"..tostring(id).."="..tostring(value))
 			end
 		end
 		-- Fast Exclude --
 		-- Exclude obvious strings that do not need to be checked, also exclude lines that are not white and green and normal (normal for Frozen Wrath bonus)
 		if not (found or L.Exclude[text] or L.Exclude[strutf8sub(text, 1, L.ExcludeLen)] or strsub(text, 1, 1) == '"' or g < 0.8 or (b < 0.99 and b > 0.1)) then
-			--print(text.." = ")
+			--log(text.." = ")
 			-- Strip enchant time
 			-- ITEM_ENCHANT_TIME_LEFT_DAYS = "%s (%d day)";
 			-- ITEM_ENCHANT_TIME_LEFT_DAYS_P1 = "%s (%d days)";
@@ -2190,7 +2190,7 @@ function StatLogic:GetSum(item, table)
 			-- ITEM_ENCHANT_TIME_LEFT_SEC = "%s (%d sec)"; -- Enchantment name, followed by the time left in seconds
 			--[[ Seems temp enchants such as mana oil can't be seen from item links, so commented out
 			if strfind(text, "%)") then
-				print("test")
+				log("test")
 				text = gsub(text, gsub(gsub(ITEM_ENCHANT_TIME_LEFT_DAYS, "%%s ", ""), "%%", "%%%%"), "")
 				text = gsub(text, gsub(gsub(ITEM_ENCHANT_TIME_LEFT_DAYS_P1, "%%s ", ""), "%%", "%%%%"), "")
 				text = gsub(text, gsub(gsub(ITEM_ENCHANT_TIME_LEFT_HOURS, "%%s ", ""), "%%", "%%%%"), "")
@@ -2215,17 +2215,17 @@ function StatLogic:GetSum(item, table)
 					local idTable = L.StatIDLookup[statText]
 					if idTable == false then
 						found = true
-						print("|cffadadad".."  SinglePlus Exclude: "..text)
+						log("|cffadadad".."  SinglePlus Exclude: "..text)
 					elseif idTable then
 						found = true
 						local debugText = "|cffff5959".."  SinglePlus: ".."|cffffc259"..text
 						for _, id in ipairs(idTable) do
-							--print("  '"..value.."', '"..id.."'")
+							--log("  '"..value.."', '"..id.."'")
 							-- sum stat
 							table[id] = (table[id] or 0) + tonumber(value)
 							debugText = debugText..", ".."|cffffff59"..tostring(id).."="..tostring(value)
 						end
-						print(debugText)
+						log(debugText)
 					else
 						-- pattern match but not found in L.StatIDLookup, keep looking
 					end
@@ -2243,17 +2243,17 @@ function StatLogic:GetSum(item, table)
 					local idTable = L.StatIDLookup[strutf8lower(statText)]
 					if idTable == false then
 						found = true
-						print("|cffadadad".."  SingleEquip Exclude: "..text)
+						log("|cffadadad".."  SingleEquip Exclude: "..text)
 					elseif idTable then
 						found = true
 						local debugText = "|cffff5959".."  SingleEquip: ".."|cffffc259"..text
 						for _, id in ipairs(idTable) do
-							--print("  '"..value.."', '"..id.."'")
+							--log("  '"..value.."', '"..id.."'")
 							-- sum stat
 							table[id] = (table[id] or 0) + tonumber(value)
 							debugText = debugText..", ".."|cffffff59"..tostring(id).."="..tostring(value)
 						end
-						print(debugText)
+						log(debugText)
 					else
 						-- pattern match but not found in L.StatIDLookup, keep looking
 					end
@@ -2269,13 +2269,13 @@ function StatLogic:GetSum(item, table)
 						--found = true
 						if id ~= false then
 							local debugText = "|cffff5959".."  PreScan: ".."|cffffc259"..text
-							--print("  '"..value.."' = '"..id.."'")
+							--log("  '"..value.."' = '"..id.."'")
 							-- sum stat
 							table[id] = (table[id] or 0) + tonumber(value)
 							debugText = debugText..", ".."|cffffff59"..tostring(id).."="..tostring(value)
-							print(debugText)
+							log(debugText)
 						else
-							print("|cffadadad".."  PreScan Exclude: "..text)
+							log("|cffadadad".."  PreScan Exclude: "..text)
 						end
 						break
 					end
@@ -2325,7 +2325,7 @@ function StatLogic:GetSum(item, table)
 						sep = sep.pattern
 					end
 					if strfind(text, sep) then
-						print(repl)
+						log(repl)
 						text = gsub(text, sep, repl)
 					end
 				end
@@ -2338,21 +2338,21 @@ function StatLogic:GetSum(item, table)
 					if strutf8sub(text, -1) == L["."] then
 						text = strutf8sub(text, 1, -2)
 					end
-					print("|cff008080".."S"..i..": ".."'"..text.."'")
+					log("|cff008080".."S"..i..": ".."'"..text.."'")
 					-- Whole Text Lookup
 					local foundWholeText = false
 					local idTable = L.WholeTextLookup[text]
 					if idTable == false then
 						foundWholeText = true
 						found = true
-						print("|cffadadad".."  DeepScan WholeText Exclude: "..text)
+						log("|cffadadad".."  DeepScan WholeText Exclude: "..text)
 					elseif idTable then
 						foundWholeText = true
 						found = true
 						for id, value in pairs(L.WholeTextLookup[text]) do
 							-- sum stat
 							table[id] = (table[id] or 0) + value
-							print("|cffff5959".."  DeepScan WholeText: ".."|cffffc259"..text..", ".."|cffffff59"..tostring(id).."="..tostring(value))
+							log("|cffff5959".."  DeepScan WholeText: ".."|cffffc259"..text..", ".."|cffffff59"..tostring(id).."="..tostring(value))
 						end
 					else
 						-- pattern match but not found in L.WholeTextLookup, keep looking
@@ -2367,18 +2367,18 @@ function StatLogic:GetSum(item, table)
 								found = true
 								local debugText = "|cffff5959".."  DeepScan DualStat: ".."|cffffc259"..text
 								for _, id in ipairs(dualStat[1]) do
-									--print("  '"..value.."', '"..id.."'")
+									--log("  '"..value.."', '"..id.."'")
 									-- sum stat
 									table[id] = (table[id] or 0) + tonumber(value1)
 									debugText = debugText..", ".."|cffffff59"..tostring(id).."="..tostring(value1)
 								end
 								for _, id in ipairs(dualStat[2]) do
-									--print("  '"..value.."', '"..id.."'")
+									--log("  '"..value.."', '"..id.."'")
 									-- sum stat
 									table[id] = (table[id] or 0) + tonumber(value2)
 									debugText = debugText..", ".."|cffffff59"..tostring(id).."="..tostring(value2)
 								end
-								print(debugText)
+								log(debugText)
 								if dEnd ~= string.len(lowered) then
 									foundWholeText = false
 									text = string.sub(text, dEnd + 1)
@@ -2399,19 +2399,19 @@ function StatLogic:GetSum(item, table)
 								if idTable == false then
 									foundDeepScan1 = true
 									found = true
-									print("|cffadadad".."  DeepScan Exclude: "..text)
+									log("|cffadadad".."  DeepScan Exclude: "..text)
 									break -- break out of pattern loop and go to the next separated text
 								elseif idTable then
 									foundDeepScan1 = true
 									found = true
 									local debugText = "|cffff5959".."  DeepScan: ".."|cffffc259"..text
 									for _, id in ipairs(idTable) do
-										--print("  '"..value.."', '"..id.."'")
+										--log("  '"..value.."', '"..id.."'")
 										-- sum stat
 										table[id] = (table[id] or 0) + tonumber(value)
 										debugText = debugText..", ".."|cffffff59"..tostring(id).."="..tostring(value)
 									end
-									print(debugText)
+									log(debugText)
 									break -- break out of pattern loop and go to the next separated text
 								else
 									-- Not matching pattern
@@ -2436,21 +2436,21 @@ function StatLogic:GetSum(item, table)
 							if strutf8sub(text, -1) == L["."] then
 								text = strutf8sub(text, 1, -2)
 							end
-							print("|cff008080".."S"..i.."-"..j..": ".."'"..text.."'")
+							log("|cff008080".."S"..i.."-"..j..": ".."'"..text.."'")
 							-- Whole Text Lookup
 							local foundWholeText = false
 							local idTable = L.WholeTextLookup[text]
 							if idTable == false then
 								foundWholeText = true
 								found = true
-								print("|cffadadad".."  DeepScan2 WholeText Exclude: "..text)
+								log("|cffadadad".."  DeepScan2 WholeText Exclude: "..text)
 							elseif idTable then
 								foundWholeText = true
 								found = true
 								for id, value in pairs(L.WholeTextLookup[text]) do
 									-- sum stat
 									table[id] = (table[id] or 0) + value
-									print("|cffff5959".."  DeepScan2 WholeText: ".."|cffffc259"..text..", ".."|cffffff59"..tostring(id).."="..tostring(value))
+									log("|cffff5959".."  DeepScan2 WholeText: ".."|cffffc259"..text..", ".."|cffffff59"..tostring(id).."="..tostring(value))
 								end
 							else
 								-- pattern match but not found in L.WholeTextLookup, keep looking
@@ -2465,18 +2465,18 @@ function StatLogic:GetSum(item, table)
 										found = true
 										local debugText = "|cffff5959".."  DeepScan2 DualStat: ".."|cffffc259"..text
 										for _, id in ipairs(dualStat[1]) do
-											--print("  '"..value.."', '"..id.."'")
+											--log("  '"..value.."', '"..id.."'")
 											-- sum stat
 											table[id] = (table[id] or 0) + tonumber(value1)
 											debugText = debugText..", ".."|cffffff59"..tostring(id).."="..tostring(value1)
 										end
 										for _, id in ipairs(dualStat[2]) do
-											--print("  '"..value.."', '"..id.."'")
+											--log("  '"..value.."', '"..id.."'")
 											-- sum stat
 											table[id] = (table[id] or 0) + tonumber(value2)
 											debugText = debugText..", ".."|cffffff59"..tostring(id).."="..tostring(value2)
 										end
-										print(debugText)
+										log(debugText)
 										break
 									end
 								end
@@ -2493,29 +2493,29 @@ function StatLogic:GetSum(item, table)
 										if idTable == false then
 											foundDeepScan2 = true
 											found = true
-											print("|cffadadad".."  DeepScan2 Exclude: "..text)
+											log("|cffadadad".."  DeepScan2 Exclude: "..text)
 											break
 										elseif idTable then
 											foundDeepScan2 = true
 											found = true
 											local debugText = "|cffff5959".."  DeepScan2: ".."|cffffc259"..text
 											for _, id in ipairs(idTable) do
-												--print("  '"..value.."', '"..id.."'")
+												--log("  '"..value.."', '"..id.."'")
 												-- sum stat
 												table[id] = (table[id] or 0) + tonumber(value)
 												debugText = debugText..", ".."|cffffff59"..tostring(id).."="..tostring(value)
 											end
-											print(debugText)
+											log(debugText)
 											break
 										else
 											-- pattern match but not found in L.StatIDLookup, keep looking
-											print("  DeepScan2 Lookup Fail: |cffffd4d4'"..statText.."'|r, pattern = |cff72ff59'"..pattern.."'")
+											log("  DeepScan2 Lookup Fail: |cffffd4d4'"..statText.."'|r, pattern = |cff72ff59'"..pattern.."'")
 										end
 									end
 								end -- for
 							end
 							if not foundWholeText and not foundDeepScan2 then
-								print("  DeepScan2 Fail: |cffff0000'"..text.."'")
+								log("  DeepScan2 Fail: |cffff0000'"..text.."'")
 							end
 						end
 					end -- if not foundWholeText and not foundDeepScan1 then
@@ -2523,13 +2523,13 @@ function StatLogic:GetSum(item, table)
 			end
 
 			if not found then
-				print("  No Match: |cffff0000'"..text.."'")
+				log("  No Match: |cffff0000'"..text.."'")
 				if DEBUG and RatingBuster then
 					RatingBuster.db.profile.test = text
 				end
 			end
 		else
-			--print("Excluded: "..text)
+			--log("Excluded: "..text)
 		end
 	end
 	cache[link] = copy(table)
