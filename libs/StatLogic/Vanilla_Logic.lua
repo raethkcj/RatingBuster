@@ -283,7 +283,7 @@ if playerClass == "DRUID" then
 				["tab"] = 2,
 				["num"] = 5,
 				["rank"] = {
-					1.02, 1.04, 1.06, 1.08, 1.10,
+					0.02, 0.04, 0.06, 0.08, 0.10,
 				},
 			},
 			-- Druid: Bear Form - buff (didn't use stance because Bear Form and Dire Bear Form has the same icon)
@@ -382,7 +382,7 @@ elseif playerClass == "HUNTER" then
 				["tab"] = 3,
 				["num"] = 8,
 				["rank"] = {
-					1.02, 1.04, 1.06, 1.08, 1.10,
+					0.02, 0.04, 0.06, 0.08, 0.10,
 				},
 			},
 		},
@@ -439,7 +439,7 @@ elseif playerClass == "MAGE" then
 				["tab"] = 1,
 				["num"] = 14,
 				["rank"] = {
-					1.02, 1.04, 1.06, 1.08, 1.10,
+					0.02, 0.04, 0.06, 0.08, 0.10,
 				},
 			},
 		},
@@ -453,7 +453,7 @@ elseif playerClass == "PALADIN" then
 				["tab"] = 2,
 				["num"] = 5,
 				["rank"] = {
-					1.02, 1.04, 1.06, 1.08, 1.1,
+					0.02, 0.04, 0.06, 0.08, 0.1,
 				},
 			},
 		},
@@ -558,7 +558,7 @@ elseif playerClass == "PRIEST" then
 				["tab"] = 1,
 				["num"] = 12,
 				["rank"] = {
-					1.02, 1.04, 1.06, 1.08, 1.10,
+					0.02, 0.04, 0.06, 0.08, 0.10,
 				},
 			},
 		},
@@ -667,7 +667,7 @@ elseif playerClass == "SHAMAN" then
 				["tab"] = 2,
 				["num"] = 11,
 				["rank"] = {
-					1.02, 1.04, 1.06, 1.08, 1.10,
+					0.02, 0.04, 0.06, 0.08, 0.10,
 				},
 			},
 		},
@@ -678,7 +678,7 @@ elseif playerClass == "SHAMAN" then
 				["tab"] = 2,
 				["num"] = 1,
 				["rank"] = {
-					1.01, 1.02, 1.03, 1.04, 1.05,
+					0.01, 0.02, 0.03, 0.04, 0.05,
 				},
 			},
 		},
@@ -814,7 +814,7 @@ elseif playerClass == "WARRIOR" then
 				["tab"] = 3,
 				["num"] = 4,
 				["rank"] = {
-					1.02, 1.04, 1.06, 1.08, 1.10,
+					0.02, 0.04, 0.06, 0.08, 0.10,
 				},
 			},
 			-- Warrior: Death Wish - Buff
@@ -854,7 +854,7 @@ elseif addonTable.playerRace == "Tauren" then
 		--         Total Health increased by 5%.
 		["MOD_HEALTH"] = {
 			{
-				["value"] = 1.05,
+				["value"] = 0.05,
 			}
 		}
 	}
@@ -886,7 +886,7 @@ addonTable.StatModTable["ALL"] = {
 		--          Armor increased by 15%/30%.
 		{
 			["rank"] = {
-				1.15, 1.30,
+				0.15, 0.30,
 			},
 			["buff"] = GetSpellInfo(27154),		-- ["Lay on Hands"],
 		},
@@ -894,7 +894,7 @@ addonTable.StatModTable["ALL"] = {
 		--         Increases armor by 8%/16%/25%.
 		{
 			["rank"] = {
-				1.08, 1.16, 1.25,
+				0.08, 0.16, 0.25,
 			},
 			["buff"] = GetSpellInfo(15363),		-- ["Inspiration"],
 		},
@@ -902,7 +902,7 @@ addonTable.StatModTable["ALL"] = {
 		--         Increases your armor value by 8%/16%/25%.
 		{
 			["rank"] = {
-				1.08, 1.16, 1.25,
+				0.08, 0.16, 0.25,
 			},
 			["buff"] = GetSpellInfo(16237),		-- ["Ancestral Fortitude"],
 		},

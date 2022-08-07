@@ -1104,7 +1104,7 @@ local GetStatModValue = function(mod, case, initialValue, school)
 		if initialValue == 0 then
 			mod = mod + value
 		else
-			mod = mod * value
+			mod = mod * (value + 1)
 		end
 	end
 

@@ -472,7 +472,7 @@ if addonTable.playerClass == "DRUID" then
 				["tab"] = 2,
 				["num"] = 5,
 				["rank"] = {
-					1.04, 1.07, 1.1,
+					0.04, 0.07, 0.1,
 				},
 			},
 			{
@@ -726,7 +726,7 @@ elseif addonTable.playerClass == "HUNTER" then
 				["tab"] = 1,
 				["num"] = 5,
 				["rank"] = {
-					1.04, 1.07, 1.1,
+					0.04, 0.07, 0.1,
 				},
 			},
 		},
@@ -739,14 +739,14 @@ elseif addonTable.playerClass == "HUNTER" then
 				["tab"] = 3,
 				["num"] = 9,
 				["rank"] = {
-					1.02, 1.04, 1.06, 1.08, 1.1,
+					0.02, 0.04, 0.06, 0.08, 0.1,
 				},
 			},
 			{
 				["tab"] = 1,
 				["num"] = 2,
 				["rank"] = {
-					1.01, 1.02, 1.03, 1.04, 1.05,
+					0.01, 0.02, 0.03, 0.04, 0.05,
 				},
 			},
 		},
@@ -1028,7 +1028,7 @@ elseif addonTable.playerClass == "PALADIN" then
 				["tab"] = 2,
 				["num"] = 5,
 				["rank"] = {
-					1.02, 1.04, 1.06, 1.08, 1.1,
+					0.02, 0.04, 0.06, 0.08, 0.1,
 				},
 			},
 		},
@@ -1229,7 +1229,7 @@ elseif addonTable.playerClass == "PRIEST" then
 				["tab"] = 1,
 				["num"] = 13,
 				["rank"] = {
-					1.02, 1.04, 1.06, 1.08, 1.1,
+					0.02, 0.04, 0.06, 0.08, 0.1,
 				},
 			},
 		},
@@ -1530,7 +1530,7 @@ elseif addonTable.playerClass == "SHAMAN" then
 				["tab"] = 2,
 				["num"] = 11,
 				["rank"] = {
-					1.02, 1.04, 1.06, 1.08, 1.1,
+					0.02, 0.04, 0.06, 0.08, 0.1,
 				},
 			},
 		},
@@ -1541,7 +1541,7 @@ elseif addonTable.playerClass == "SHAMAN" then
 				["tab"] = 2,
 				["num"] = 1,
 				["rank"] = {
-					1.01, 1.02, 1.03, 1.04, 1.05,
+					0.01, 0.02, 0.03, 0.04, 0.05,
 				},
 			},
 		},
@@ -1640,7 +1640,7 @@ elseif addonTable.playerClass == "WARLOCK" then
 				["tab"] = 2,
 				["num"] = 9,
 				["rank"] = {
-					1.01, 1.02, 1.03,
+					0.01, 0.02, 0.03,
 				},
 			},
 		},
@@ -1651,7 +1651,7 @@ elseif addonTable.playerClass == "WARLOCK" then
 				["tab"] = 2,
 				["num"] = 6,
 				["rank"] = {
-					1.01, 1.02, 1.03,
+					0.01, 0.02, 0.03,
 				},
 			},
 		},
@@ -1786,7 +1786,7 @@ elseif addonTable.playerClass == "WARRIOR" then
 				["tab"] = 3,
 				["num"] = 5,
 				["rank"] = {
-					1.02, 1.04, 1.06, 1.08, 1.1,
+					0.02, 0.04, 0.06, 0.08, 0.1,
 				},
 			},
 		},
@@ -1842,7 +1842,7 @@ elseif addonTable.playerRace == "Tauren" then
 		--         Total Health increased by 5%.
 		["MOD_HEALTH"] = {
 			{
-				["value"] = 1.05,
+				["value"] = 0.05,
 			},
 		},
 	}
@@ -1878,19 +1878,19 @@ addonTable.StatModTable["ALL"] = {
 	["MOD_ARMOR"] = {
 		{
 			["rank"] = {
-				1.15, 1.30,
+				0.15, 0.30,
 			},
 			["buff"] = GetSpellInfo(27154),		-- ["Lay on Hands"],
 		},
 		{
 			["rank"] = {
-				1.08, 1.16, 1.25,
+				0.08, 0.16, 0.25,
 			},
 			["buff"] = GetSpellInfo(15363),		-- ["Inspiration"],
 		},
 		{
 			["rank"] = {
-				1.08, 1.16, 1.25,
+				0.08, 0.16, 0.25,
 			},
 			["buff"] = GetSpellInfo(16237),		-- ["Ancestral Fortitude"],
 		},

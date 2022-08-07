@@ -855,7 +855,7 @@ if addonTable.playerClass == "DRUID" then
 		--        but the ability can only be activated in Cat Form, Bear Form, or Dire Bear Form.
 		["MOD_HEALTH"] = {
 			{
-				["value"] = 1.3,
+				["value"] = 0.3,
 				["buff"] = GetSpellInfo(50322),		-- ["Survival Instincts"],
 			},
 		},
