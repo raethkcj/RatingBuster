@@ -912,33 +912,19 @@ local StatModInfo = {
 	------------------------------------------------------------------------------
 	-- school: school arg is required for these mods
 	------------------------------------------------------------------------------
-	["ADD_CRIT_TAKEN"] = {
-		initialValue = 0,
-		finalAdjust = 0,
-		school = true,
-	},
-	["ADD_HIT_TAKEN"] = {
-		initialValue = 0,
-		finalAdjust = 0,
-		school = true,
-	},
-	["ADD_DODGE"] = {
+	["ADD_AP_MOD_ARMOR"] = {
 		initialValue = 0,
 		finalAdjust = 0,
 	},
-	["ADD_SPELL_DMG_MOD_INT"] = {
+	["ADD_AP_MOD_INT"] = {
 		initialValue = 0,
 		finalAdjust = 0,
 	},
-	["ADD_HEALING_MOD_INT"] = {
+	["ADD_AP_MOD_SPELL_DMG"] = {
 		initialValue = 0,
 		finalAdjust = 0,
 	},
-	["ADD_MANA_REG_MOD_INT"] = {
-		initialValue = 0,
-		finalAdjust = 0,
-	},
-	["ADD_RANGED_AP_MOD_INT"] = {
+	["ADD_AP_MOD_STA"] = {
 		initialValue = 0,
 		finalAdjust = 0,
 	},
@@ -946,15 +932,28 @@ local StatModInfo = {
 		initialValue = 0,
 		finalAdjust = 0,
 	},
-	["ADD_SPELL_DMG_MOD_STA"] = {
+	["ADD_CRIT_TAKEN"] = {
+		initialValue = 0,
+		finalAdjust = 0,
+		school = true,
+	},
+	["ADD_CR_PARRY_MOD_STR"] = {
 		initialValue = 0,
 		finalAdjust = 0,
 	},
-	["ADD_SPELL_DMG_MOD_SPI"] = {
+	["ADD_DODGE"] = {
 		initialValue = 0,
 		finalAdjust = 0,
 	},
-	["ADD_SPELL_DMG_MOD_AP"] = {
+	["ADD_HEALING_MOD_AGI"] = {
+		initialValue = 0,
+		finalAdjust = 0,
+	},
+	["ADD_HEALING_MOD_AP"] = {
+		initialValue = 0,
+		finalAdjust = 0,
+	},
+	["ADD_HEALING_MOD_INT"] = {
 		initialValue = 0,
 		finalAdjust = 0,
 	},
@@ -966,11 +965,16 @@ local StatModInfo = {
 		initialValue = 0,
 		finalAdjust = 0,
 	},
-	["ADD_HEALING_MOD_AGI"] = { -- Nurturing Instinct
+	["ADD_HIT_TAKEN"] = {
+		initialValue = 0,
+		finalAdjust = 0,
+		school = true,
+	},
+	["ADD_MANA_REG_MOD_INT"] = {
 		initialValue = 0,
 		finalAdjust = 0,
 	},
-	["ADD_HEALING_MOD_AP"] = {
+	["ADD_MANA_REG_MOD_MANA"] = {
 		initialValue = 0,
 		finalAdjust = 0,
 	},
@@ -978,17 +982,77 @@ local StatModInfo = {
 		initialValue = 0,
 		finalAdjust = 0,
 	},
-	["MOD_CRIT_DAMAGE_TAKEN"] = {
+	["ADD_PET_INT_MOD_INT"] = {
+		initialValue = 1,
+		finalAdjust = 0,
+	},
+	["ADD_PET_STA_MOD_STA"] = {
+		initialValue = 1,
+		finalAdjust = 0,
+	},
+	["ADD_RANGED_AP_MOD_INT"] = {
 		initialValue = 0,
-		finalAdjust = 1,
+		finalAdjust = 0,
+	},
+	["ADD_SCHOOL_SP_MOD_SPI"] = {
+		initialValue = 0,
+		finalAdjust = 0,
 		school = true,
 	},
-	["MOD_DMG_TAKEN"] = {
+	["ADD_SPELL_CRIT_RATING_MOD_SPI"] = {
+		initialValue = 0,
+		finalAdjust = 0,
+	},
+	["ADD_SPELL_DMG_MOD_AP"] = {
+		initialValue = 0,
+		finalAdjust = 0,
+	},
+	["ADD_SPELL_DMG_MOD_INT"] = {
+		initialValue = 0,
+		finalAdjust = 0,
+	},
+	["ADD_SPELL_DMG_MOD_PET_INT"] = {
+		initialValue = 0,
+		finalAdjust = 0,
+	},
+	["ADD_SPELL_DMG_MOD_PET_STA"] = {
+		initialValue = 0,
+		finalAdjust = 0,
+	},
+	["ADD_SPELL_DMG_MOD_SPI"] = {
+		initialValue = 0,
+		finalAdjust = 0,
+	},
+	["ADD_SPELL_DMG_MOD_STA"] = {
+		initialValue = 0,
+		finalAdjust = 0,
+	},
+	["ADD_SPELL_DMG_MOD_STR"] = {
+		initialValue = 0,
+		finalAdjust = 0,
+	},
+	["MOD_AGI"] = {
 		initialValue = 0,
 		finalAdjust = 1,
-		school = true,
+	},
+	["MOD_AP"] = {
+		initialValue = 0,
+		finalAdjust = 1,
+	},
+	["MOD_ARMOR"] = {
+		initialValue = 1,
+		finalAdjust = 0,
+	},
+	["MOD_BLOCK_VALUE"] = {
+		initialValue = 0,
+		finalAdjust = 1,
 	},
 	["MOD_CRIT_DAMAGE"] = {
+		initialValue = 0,
+		finalAdjust = 1,
+		school = true,
+	},
+	["MOD_CRIT_DAMAGE_TAKEN"] = {
 		initialValue = 0,
 		finalAdjust = 1,
 		school = true,
@@ -998,45 +1062,26 @@ local StatModInfo = {
 		finalAdjust = 1,
 		school = true,
 	},
-	["MOD_ARMOR"] = {
-		initialValue = 1,
-		finalAdjust = 0,
+	["MOD_DMG_TAKEN"] = {
+		initialValue = 0,
+		finalAdjust = 1,
+		school = true,
+	},
+	["MOD_HEALING"] = {
+		initialValue = 0,
+		finalAdjust = 1,
 	},
 	["MOD_HEALTH"] = {
 		initialValue = 1,
 		finalAdjust = 0,
 	},
-	["MOD_MANA"] = {
-		initialValue = 1,
-		finalAdjust = 0,
-	},
-	["MOD_STR"] = {
-		initialValue = 0,
-		finalAdjust = 1,
-	},
-	["MOD_AGI"] = {
-		initialValue = 0,
-		finalAdjust = 1,
-	},
-	["MOD_STA"] = {
-		initialValue = 0,
-		finalAdjust = 1,
-	},
 	["MOD_INT"] = {
 		initialValue = 0,
 		finalAdjust = 1,
 	},
-	["MOD_SPI"] = {
-		initialValue = 0,
-		finalAdjust = 1,
-	},
-	["MOD_BLOCK_VALUE"] = {
-		initialValue = 0,
-		finalAdjust = 1,
-	},
-	["MOD_AP"] = {
-		initialValue = 0,
-		finalAdjust = 1,
+	["MOD_MANA"] = {
+		initialValue = 1,
+		finalAdjust = 0,
 	},
 	["MOD_RANGED_AP"] = {
 		initialValue = 0,
@@ -1046,7 +1091,15 @@ local StatModInfo = {
 		initialValue = 0,
 		finalAdjust = 1,
 	},
-	["MOD_HEALING"] = {
+	["MOD_SPI"] = {
+		initialValue = 0,
+		finalAdjust = 1,
+	},
+	["MOD_STA"] = {
+		initialValue = 0,
+		finalAdjust = 1,
+	},
+	["MOD_STR"] = {
 		initialValue = 0,
 		finalAdjust = 1,
 	},
