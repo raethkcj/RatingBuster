@@ -1124,6 +1124,11 @@ local StatModValidators = {
 	glyph = function(case)
 		return IsPlayerSpell(case.glyph)
 	end,
+	enchant = function(case)
+		local slotLink = case.slot and GetInventoryItemLink("player", case.slot)
+		local pattern = "item:%d+:" .. case.enchant
+		return slotLink and slotLink:find(pattern)
+	end
 }
 
 local function ValidateStatMod(case, school)
