@@ -574,9 +574,7 @@ if addonTable.playerClass == "DRUID" then
 				["FROST"] = true,
 				["SHADOW"] = true,
 				["ARCANE"] = true,
-				["rank"] = {
-					-0.2,
-				},
+				["value"] = -0.2,
 				["buff"] = GetSpellInfo(22812),		-- ["Barkskin"],
 			},
 			-- Improved Barkskin
@@ -788,21 +786,15 @@ if addonTable.playerClass == "DRUID" then
 				},
 			},
 			{
-				["rank"] = {
-					1.8,
-				},
+				["value"] = 1.8,
 				["buff"] = GetSpellInfo(32357),		-- ["Bear Form"],
 			},
 			{
-				["rank"] = {
-					3.7,
-				},
+				["value"] = 3.7,
 				["buff"] = GetSpellInfo(9634),		-- ["Dire Bear Form"],
 			},
 			{
-				["rank"] = {
-					3.7,
-				},
+				["value"] = 3.7,
 				["buff"] = GetSpellInfo(24858),		-- ["Moonkin Form"],
 			},
 			{
@@ -889,16 +881,12 @@ if addonTable.playerClass == "DRUID" then
 			},
 			-- Bear Form / Dire Bear Form: +25% stamina
 			{
-				["rank"] = {
-					0.25,
-				},
+				["value"] = 0.25,
 				["buff"] = GetSpellInfo(32357),		-- ["Bear Form"],
 			},
 			-- Bear Form / Dire Bear Form: +25% stamina
 			{
-				["rank"] = {
-					0.25,
-				},
+				["value"] = 0.25,
 				["buff"] = GetSpellInfo(9634),		-- ["Dire Bear Form"],
 			},
 		},
@@ -1065,9 +1053,7 @@ elseif addonTable.playerClass == "DEATHKNIGHT" then
 		--               Increases your Parry Rating by 25% of your total Strength.
 		["ADD_CR_PARRY_MOD_STR"] = {
 			{
-				["rank"] = {
-					0.25,
-				},
+				["value"] = 0.25,
 			},
 		},
 		-- Death Knight: Bladed Armor (Rank 5) - 1,4
@@ -1132,9 +1118,7 @@ elseif addonTable.playerClass == "DEATHKNIGHT" then
 				["FROST"] = true,
 				["SHADOW"] = true,
 				["ARCANE"] = true,
-				["rank"] = {
-					-0.30,
-				},
+				["value"] = -0.30,
 				["buff"] = GetSpellInfo(48792),		-- ["Icebound Fortitude"],
 			},
 			{
@@ -1146,9 +1130,7 @@ elseif addonTable.playerClass == "DEATHKNIGHT" then
 				["FROST"] = true,
 				["SHADOW"] = true,
 				["ARCANE"] = true,
-				["rank"] = {
-					-0.10,
-				},
+				["value"] = -0.10,
 				["buff"] = GetSpellInfo(48792),		-- ["Icebound Fortitude"],
 				["glyph"] = 58625, -- Glyph of Icebound Fortitude
 			},
@@ -1161,9 +1143,7 @@ elseif addonTable.playerClass == "DEATHKNIGHT" then
 				["FROST"] = true,
 				["SHADOW"] = true,
 				["ARCANE"] = true,
-				["rank"] = {
-					-0.20,
-				},
+				["value"] = -0.20,
 				["buff"] = GetSpellInfo(49222),		-- ["Bone Shield"],
 			},
 			{
@@ -1173,9 +1153,7 @@ elseif addonTable.playerClass == "DEATHKNIGHT" then
 				["FROST"] = true,
 				["SHADOW"] = true,
 				["ARCANE"] = true,
-				["rank"] = {
-					-0.75,
-				},
+				["value"] = -0.75,
 				["buff"] = GetSpellInfo(48707),		-- ["Anti-Magic Shell"],
 			},
 			{
@@ -1187,9 +1165,7 @@ elseif addonTable.playerClass == "DEATHKNIGHT" then
 				["FROST"] = true,
 				["SHADOW"] = true,
 				["ARCANE"] = true,
-				["rank"] = {
-					-0.08,
-				},
+				["value"] = -0.08,
 				["stance"] = "Interface\\Icons\\Spell_Deathknight_FrostPresence",
 			},
 			--Will of the Necropolis (Rank 3) - 1,24
@@ -1231,10 +1207,8 @@ elseif addonTable.playerClass == "DEATHKNIGHT" then
 				["FROST"] = true,
 				["SHADOW"] = true,
 				["ARCANE"] = true,
-				["rank"] = {
-					-0.04,
-				},
-				["slot"] = 16, -- main hand slot
+				["value"] = -0.04,
+				["slot"] = INVSLOT_MAINHAND,
 				["enchant"] = 3367,
 			},
 			-- Rune of Spellbreaking
@@ -1245,10 +1219,8 @@ elseif addonTable.playerClass == "DEATHKNIGHT" then
 				["FROST"] = true,
 				["SHADOW"] = true,
 				["ARCANE"] = true,
-				["rank"] = {
-					-0.02,
-				},
-				["slot"] = 16, -- main hand slot
+				["value"] = -0.02,
+				["slot"] = INVSLOT_MAINHAND,
 				["enchant"] = 3595,
 			},
 			-- Rune of Spellbreaking
@@ -1259,10 +1231,8 @@ elseif addonTable.playerClass == "DEATHKNIGHT" then
 				["FROST"] = true,
 				["SHADOW"] = true,
 				["ARCANE"] = true,
-				["rank"] = {
-					-0.02,
-				},
-				["slot"] = 17, -- off hand slot
+				["value"] = -0.02,
+				["slot"] = INVSLOT_OFFHAND,
 				["enchant"] = 3595,
 			},
 			-- Improved Frost Presence
@@ -1322,22 +1292,16 @@ elseif addonTable.playerClass == "DEATHKNIGHT" then
 				},
 			},
 			{
-				["rank"] = {
-					0.25,
-				},
+				["value"] = 0.25,
 				["buff"] = GetSpellInfo(51271),		-- ["Unbreakable Armor"],
 			},
 			{
-				["rank"] = {
-					0.2,
-				},
+				["value"] = 0.2,
 				["buff"] = GetSpellInfo(51271),		-- ["Unbreakable Armor"],
 				["glyph"] = 58635,		-- ["Glyph of Unbreakable Armor"],
 			},
 			{
-				["rank"] = {
-					0.6,
-				},
+				["value"] = 0.6,
 				["stance"] = "Interface\\Icons\\Spell_Deathknight_FrostPresence",
 			},
 		},
@@ -1360,16 +1324,12 @@ elseif addonTable.playerClass == "DEATHKNIGHT" then
 				},
 			},
 			{
-				["rank"] = {
-					0.02,
-				},
-				["slot"] = 16, -- 2h weapon
+				["value"] = 0.02,
+				["slot"] = INVSLOT_MAINHAND,
 				["enchant"] = 3847,
 			},
 			{
-				["rank"] = {
-					0.08,
-				},
+				["value"] = 0.08,
 				["stance"] = "Interface\\Icons\\Spell_Deathknight_FrostPresence",
 			},
 			{
@@ -1408,9 +1368,7 @@ elseif addonTable.playerClass == "DEATHKNIGHT" then
 				},
 			},
 			{
-				["rank"] = {
-					0.2,
-				},
+				["value"] = 0.2,
 				["buff"] = GetSpellInfo(51271),		-- ["Unbreakable Armor"],
 			},
 			{
@@ -1478,9 +1436,7 @@ elseif addonTable.playerClass == "HUNTER" then
 				},
 			},
 			{
-				["rank"] = {
-					18,
-				},
+				["value"] = 18,
 				["buff"] = GetSpellInfo(13163),		-- ["Aspect of the Monkey"],
 			},
 			{
@@ -1537,9 +1493,7 @@ elseif addonTable.playerClass == "HUNTER" then
 				["ARCANE"] = true,
 				["tab"] = 1,
 				["num"] = 8,
-				["rank"] = {
-					-0.05,
-				},
+				["value"] = -0.05,
 				["buff"] = GetSpellInfo(13163),		-- ["Aspect of the Monkey"],
 			},
 		},
@@ -2059,9 +2013,7 @@ elseif addonTable.playerClass == "PALADIN" then
 				["FROST"] = true,
 				["SHADOW"] = true,
 				["ARCANE"] = true,
-				["rank"] = {
-					-0.03,
-				},
+				["value"] = -0.03,
 				["buff"] = GetSpellInfo(54428),		-- ["Divine Plea"],
 				["glyph"] = 63223, -- Glyph of Shield Wall,
 			},
@@ -2235,9 +2187,7 @@ elseif addonTable.playerClass == "PRIEST" then
 				["FROST"] = true,
 				["SHADOW"] = true,
 				["ARCANE"] = true,
-				["rank"] = {
-					-0.9,
-				},
+				["value"] = -0.9,
 				["buff"] = GetSpellInfo(47585),		-- ["Dispersion"],
 			},
 		},
@@ -2287,9 +2237,7 @@ elseif addonTable.playerClass == "PRIEST" then
 			{
 				["tab"] = 2,
 				["num"] = 13,
-				["rank"] = {
-					0.05,
-				},
+				["value"] = 0.05,
 			},
 		},
 	}
@@ -2336,9 +2284,7 @@ elseif addonTable.playerClass == "ROGUE" then
 				["buff"] = GetSpellInfo(26669),		-- ["Evasion"],
 			},
 			{
-				["rank"] = {
-					15,
-				},
+				["value"] = 15,
 				["buff"] = GetSpellInfo(31022),		-- ["Ghostly Strike"],
 			},
 		},
@@ -2383,9 +2329,7 @@ elseif addonTable.playerClass == "ROGUE" then
 				["FROST"] = true,
 				["SHADOW"] = true,
 				["ARCANE"] = true,
-				["rank"] = {
-					-0.9,
-				},
+				["value"] = -0.9,
 				["buff"] = GetSpellInfo(39666),		-- ["Cloak of Shadows"],
 			},
 			{
@@ -2539,9 +2483,7 @@ elseif addonTable.playerClass == "SHAMAN" then
 				["FROST"] = true,
 				["SHADOW"] = true,
 				["ARCANE"] = true,
-				["rank"] = {
-					-0.3,
-				},
+				["value"] = -0.3,
 				["buff"] = GetSpellInfo(30823),		-- ["Shamanistic Rage"],
 			},
 			{
@@ -2553,9 +2495,7 @@ elseif addonTable.playerClass == "SHAMAN" then
 				["FROST"] = true,
 				["SHADOW"] = true,
 				["ARCANE"] = true,
-				["rank"] = {
-					-0.3,
-				},
+				["value"] = -0.3,
 				["buff"] = GetSpellInfo(51479),		-- ["Astral Shift"],
 			},
 		},
@@ -2589,9 +2529,7 @@ elseif addonTable.playerClass == "WARLOCK" then
 		["ADD_CRIT_TAKEN"] = {
 			{
 				["MELEE"] = true,
-				["rank"] = {
-					-0.06,
-				},
+				["value"] = -0.06,
 				["buff"] = GetSpellInfo(47241),		-- ["Metamorphosis"],
 			},
 		},
@@ -2599,9 +2537,7 @@ elseif addonTable.playerClass == "WARLOCK" then
 		--          This form increases your armor by 600%, damage by 20%, reduces the chance you'll be critically hit by melee attacks by 6% and reduces the duration of stun and snare effects by 50%.
 		["MOD_ARMOR"] = {
 			{
-				["rank"] = {
-					6,
-				},
+				["value"] = 6,
 				["buff"] = GetSpellInfo(47241),		-- ["Metamorphosis"],
 			},
 		},
@@ -2655,9 +2591,7 @@ elseif addonTable.playerClass == "WARLOCK" then
 				["buff"] = GetSpellInfo(28176), -- ["Fel Armor"],
 			},
 			{
-				["rank"] = {
-					0.2,
-				},
+				["value"] = 0.2,
 				["buff"] = GetSpellInfo(63321), -- ["Life Tap"],
 			},
 		},
@@ -2682,9 +2616,7 @@ elseif addonTable.playerClass == "WARLOCK" then
 				["buff"] = GetSpellInfo(28176),		-- ["Fel Armor"],
 			},
 			{
-				["rank"] = {
-					0.2,
-				},
+				["value"] = 0.2,
 				["buff"] = GetSpellInfo(63321), -- ["Life Tap"],
 			},
 		},
@@ -2696,16 +2628,12 @@ elseif addonTable.playerClass == "WARLOCK" then
 		["ADD_PET_STA_MOD_STA"] = {
 			-- Base
 			{
-				["rank"] = {
-					0.75-1,
-				},
+				["value"] = 0.75-1,
 				["condition"] = "UnitExists('pet')",
 			},
 			-- Blessings on pet: floor() * 1.1
 			{
-				["rank"] = {
-					0.1,
-				}, -- BoK, BoSanc
+				["value"] = 0.1, -- BoK, BoSanc
 				["condition"] = "UnitBuff('pet', GetSpellInfo(20217)) or UnitBuff('pet', GetSpellInfo(25898)) or UnitBuff('pet', GetSpellInfo(20911)) or UnitBuff('pet', GetSpellInfo(25899))",
 			},
 			-- Fel Vitality: floor() * 1.15
@@ -2721,16 +2649,12 @@ elseif addonTable.playerClass == "WARLOCK" then
 		["ADD_PET_INT_MOD_INT"] = {
 			-- Base
 			{
-				["rank"] = {
-					0.3-1,
-				},
+				["value"] = 0.3-1,
 				["condition"] = "UnitExists('pet')",
 			},
 			-- Blessings on pet
 			{
-				["rank"] = {
-					0.1,
-				},
+				["value"] = 0.1,
 				["condition"] = "UnitBuff('pet', GetSpellInfo(20217)) or UnitBuff('pet', GetSpellInfo(25898)) or UnitBuff('pet', GetSpellInfo(20911)) or UnitBuff('pet', GetSpellInfo(25899))",
 			},
 			-- Fel Vitality
@@ -2844,9 +2768,7 @@ elseif addonTable.playerClass == "WARLOCK" then
 				["FROST"] = true,
 				["SHADOW"] = true,
 				["ARCANE"] = true,
-				["rank"] = {
-					-0.15,
-				},
+				["value"] = -0.15,
 				["buff"] = GetSpellInfo(25228),		-- ["Soul Link"],
 			},
 		},
@@ -2949,9 +2871,7 @@ elseif addonTable.playerClass == "WARRIOR" then
 				["FROST"] = true,
 				["SHADOW"] = true,
 				["ARCANE"] = true,
-				["rank"] = {
-					-0.6,
-				},
+				["value"] = -0.6,
 				["buff"] = GetSpellInfo(41196),		-- ["Shield Wall"],
 			},
 			{
@@ -2963,9 +2883,7 @@ elseif addonTable.playerClass == "WARRIOR" then
 				["FROST"] = true,
 				["SHADOW"] = true,
 				["ARCANE"] = true,
-				["rank"] = {
-					0.2,
-				},
+				["value"] = 0.2,
 				["buff"] = GetSpellInfo(41196),		-- ["Shield Wall"],
 				["glyph"] = 63329, -- Glyph of Shield Wall,
 			},
@@ -2978,9 +2896,7 @@ elseif addonTable.playerClass == "WARRIOR" then
 				["FROST"] = true,
 				["SHADOW"] = true,
 				["ARCANE"] = true,
-				["rank"] = {
-					-0.1,
-				},
+				["value"] = -0.1,
 				["stance"] = "Interface\\Icons\\Ability_Warrior_DefensiveStance",
 			},
 			{
@@ -2992,9 +2908,7 @@ elseif addonTable.playerClass == "WARRIOR" then
 				["FROST"] = true,
 				["SHADOW"] = true,
 				["ARCANE"] = true,
-				["rank"] = {
-					0.05,
-				},
+				["value"] = 0.05,
 				["stance"] = "Interface\\Icons\\Ability_Racial_Avatar",
 			},
 			{
@@ -3006,9 +2920,7 @@ elseif addonTable.playerClass == "WARRIOR" then
 				["FROST"] = true,
 				["SHADOW"] = true,
 				["ARCANE"] = true,
-				["rank"] = {
-					0.05,
-				},
+				["value"] = 0.05,
 				["buff"] = GetSpellInfo(12292),		-- ["Death Wish"],
 			},
 			{
@@ -3020,9 +2932,7 @@ elseif addonTable.playerClass == "WARRIOR" then
 				["FROST"] = true,
 				["SHADOW"] = true,
 				["ARCANE"] = true,
-				["rank"] = {
-					0.2,
-				},
+				["value"] = 0.2,
 				["buff"] = GetSpellInfo(13847),		-- ["Recklessness"],
 			},
 			-- Improved Defensive Stance
@@ -3044,9 +2954,7 @@ elseif addonTable.playerClass == "WARRIOR" then
 		--          When activated, this ability temporarily grants you 30% of your maximum health for 20 sec.
 		["MOD_HEALTH"] = {
 			{
-				["rank"] = {
-					0.3,
-				},
+				["value"] = 0.3,
 				["buff"] = GetSpellInfo(12975),		-- ["Last Stand"],
 			},
 		},
@@ -3133,9 +3041,7 @@ if addonTable.playerRace == "NightElf" then
 			{
 				["MELEE"] = true,
 				["RANGED"] = true,
-				["rank"] = {
-					-0.02,
-				},
+				["value"] = -0.02,
 				["race"] = "NightElf",
 			},
 		}
@@ -3146,9 +3052,7 @@ elseif addonTable.playerRace == "Gnome" then
 			-- Gnome: Expansive Mind - Racial
 			--        Increase Intelligence by 5%.
 			{
-				["rank"] = {
-					0.05,
-				},
+				["value"] = 0.05,
 				["race"] = "Gnome",
 			},
 		}
@@ -3159,9 +3063,7 @@ elseif addonTable.playerRace == "Human" then
 			-- Human: The Human Spirit - Racial
 			--        Increase Spirit by 3%.
 			{
-				["rank"] = {
-					0.03,
-				},
+				["value"] = 0.03,
 				["race"] = "Human",
 			},
 		}
@@ -3173,9 +3075,7 @@ addonTable.StatModTable["ALL"] = {
 	--      Chance to dodge reduced by 20%.
 	["ADD_DODGE"] = {
 		{
-			["rank"] = {
-				-20,
-			},
+			["value"] = -20,
 			["buff"] = GetSpellInfo(69127),		-- ["Chill of the Throne"],
 		},
 	},
@@ -3191,9 +3091,7 @@ addonTable.StatModTable["ALL"] = {
 	--         grant up to 10 party or raid members mana regeneration equal to 1% of the maximum mana per 5 sec.
 	["ADD_MANA_REG_MOD_MANA"] = {
 		{
-			["rank"] = {
-				0.01,
-			},
+			["value"] = 0.01,
 			["buff"] = GetSpellInfo(57669),		-- ["Replenishment"],
 		},
 	},
@@ -3224,9 +3122,7 @@ addonTable.StatModTable["ALL"] = {
 			["FROST"] = true,
 			["SHADOW"] = true,
 			["ARCANE"] = true,
-			["rank"] = {
-				-0.4,
-			},
+			["value"] = -0.4,
 			["buff"] = GetSpellInfo(33206),		-- ["Pain Suppression"],
 		},
 		-- Grace
@@ -3239,9 +3135,7 @@ addonTable.StatModTable["ALL"] = {
 			["FROST"] = true,
 			["SHADOW"] = true,
 			["ARCANE"] = true,
-			["rank"] = {
-				-0.01,
-			},
+			["value"] = -0.01,
 			["buff"] = GetSpellInfo(47930),		-- ["Grace"],
 		},
 		-- Vigilance
@@ -3254,9 +3148,7 @@ addonTable.StatModTable["ALL"] = {
 			["FROST"] = true,
 			["SHADOW"] = true,
 			["ARCANE"] = true,
-			["rank"] = {
-				-0.03,
-			},
+			["value"] = -0.03,
 			["buff"] = GetSpellInfo(50720),		-- ["Vigilance"],
 		},
 		-- Blessing of Sanctuary
@@ -3269,9 +3161,7 @@ addonTable.StatModTable["ALL"] = {
 			["FROST"] = true,
 			["SHADOW"] = true,
 			["ARCANE"] = true,
-			["rank"] = {
-				-0.03,
-			},
+			["value"] = -0.03,
 			["buff"] = GetSpellInfo(20911),		-- ["Blessing of Sanctuary"],
 		},
 		-- Greater Blessing of Sanctuary
@@ -3284,9 +3174,7 @@ addonTable.StatModTable["ALL"] = {
 			["FROST"] = true,
 			["SHADOW"] = true,
 			["ARCANE"] = true,
-			["rank"] = {
-				-0.03,
-			},
+			["value"] = -0.03,
 			["buff"] = GetSpellInfo(25899),		-- ["Greater Blessing of Sanctuary"],
 		},
 		-- Effulgent Skyflare Diamond
@@ -3297,9 +3185,7 @@ addonTable.StatModTable["ALL"] = {
 			["FROST"] = true,
 			["SHADOW"] = true,
 			["ARCANE"] = true,
-			["rank"] = {
-				-0.02,
-			},
+			["value"] = -0.02,
 			["meta"] = 41377,
 		},
 		-- Lay on Hands
@@ -3336,15 +3222,11 @@ addonTable.StatModTable["ALL"] = {
 	--          +12 Defense Rating and +5% Shield Block Value
 	["MOD_BLOCK_VALUE"] = {
 		{
-			["rank"] = {
-				0.05,
-			},
+			["value"] = 0.05,
 			["meta"] = 41396,
 		},
 		{
-			["rank"] = {
-				0.05,
-			},
+			["value"] = 0.05,
 			["meta"] = 35501,
 		},
 	},
@@ -3370,9 +3252,7 @@ addonTable.StatModTable["ALL"] = {
 	--         Melee attack power increased by 4/7/10%.
 	["MOD_AP"] = {
 		{
-			["rank"] = {
-				0.1,
-			},
+			["value"] = 0.1,
 			["buff"] = GetSpellInfo(19506),		-- ["Trueshot Aura"],
 			["group"] = BuffGroup.MOD_AP,
 		},
@@ -3395,9 +3275,7 @@ addonTable.StatModTable["ALL"] = {
 	--          +21 Critical Strike Rating and +2% Mana
 	["MOD_MANA"] = {
 		{
-			["rank"] = {
-				0.02,
-			},
+			["value"] = 0.02,
 			["meta"] = 41389,
 		},
 	},
@@ -3409,39 +3287,29 @@ addonTable.StatModTable["ALL"] = {
 	--                 Increases stats by 8%.
 	["MOD_STR"] = {
 		{
-			["rank"] = {
-				0.1,
-			},
+			["value"] = 0.1,
 			["buff"] = GetSpellInfo(20217),		-- ["Blessing of Kings"],
 			["group"] = BuffGroup.MOD_STATS,
 		},
 		{
-			["rank"] = {
-				0.1,
-			},
+			["value"] = 0.1,
 			["buff"] = GetSpellInfo(25898),		-- ["Greater Blessing of Kings"],
 			["group"] = BuffGroup.MOD_STATS,
 		},
 		-- Blessing of Sanctuary
 		{
-			["rank"] = {
-				0.1,
-			},
+			["value"] = 0.1,
 			["buff"] = GetSpellInfo(20911),		-- ["Blessing of Sanctuary"],
 			["group"] = BuffGroup.MOD_STATS,
 		},
 		-- Greater Blessing of Sanctuary
 		{
-			["rank"] = {
-				0.1,
-			},
+			["value"] = 0.1,
 			["buff"] = GetSpellInfo(25899),		-- ["Greater Blessing of Sanctuary"],
 			["group"] = BuffGroup.MOD_STATS,
 		},
 		{
-			["rank"] = {
-				0.08,
-			},
+			["value"] = 0.08,
 			["buff"] = GetSpellInfo(69378),		-- ["Blessing of Forgotten Kings"],
 			["group"] = BuffGroup.MOD_STATS,
 		},
@@ -3452,23 +3320,17 @@ addonTable.StatModTable["ALL"] = {
 	--                 Increases stats by 8%.
 	["MOD_AGI"] = {
 		{
-			["rank"] = {
-				0.1,
-			},
+			["value"] = 0.1,
 			["buff"] = GetSpellInfo(20217),		-- ["Blessing of Kings"],
 			["group"] = BuffGroup.MOD_STATS,
 		},
 		{
-			["rank"] = {
-				0.1,
-			},
+			["value"] = 0.1,
 			["buff"] = GetSpellInfo(25898),		-- ["Greater Blessing of Kings"],
 			["group"] = BuffGroup.MOD_STATS,
 		},
 		{
-			["rank"] = {
-				0.08,
-			},
+			["value"] = 0.08,
 			["buff"] = GetSpellInfo(69378),		-- ["Blessing of Forgotten Kings"],
 			["group"] = BuffGroup.MOD_STATS,
 		},
@@ -3481,39 +3343,29 @@ addonTable.StatModTable["ALL"] = {
 	--                 Increases stats by 8%.
 	["MOD_STA"] = {
 		{
-			["rank"] = {
-				0.1,
-			},
+			["value"] = 0.1,
 			["buff"] = GetSpellInfo(20217),		-- ["Blessing of Kings"],
 			["group"] = BuffGroup.MOD_STATS,
 		},
 		{
-			["rank"] = {
-				0.1,
-			},
+			["value"] = 0.1,
 			["buff"] = GetSpellInfo(25898),		-- ["Greater Blessing of Kings"],
 			["group"] = BuffGroup.MOD_STATS,
 		},
 		-- Blessing of Sanctuary
 		{
-			["rank"] = {
-				0.1,
-			},
+			["value"] = 0.1,
 			["buff"] = GetSpellInfo(20911),		-- ["Blessing of Sanctuary"],
 			["group"] = BuffGroup.MOD_STATS,
 		},
 		-- Greater Blessing of Sanctuary
 		{
-			["rank"] = {
-				0.1,
-			},
+			["value"] = 0.1,
 			["buff"] = GetSpellInfo(25899),		-- ["Greater Blessing of Sanctuary"],
 			["group"] = BuffGroup.MOD_STATS,
 		},
 		{
-			["rank"] = {
-				0.08,
-			},
+			["value"] = 0.08,
 			["buff"] = GetSpellInfo(69378),		-- ["Blessing of Forgotten Kings"],
 			["group"] = BuffGroup.MOD_STATS,
 		},
@@ -3528,36 +3380,26 @@ addonTable.StatModTable["ALL"] = {
 	--          +25 Spell Power and +2% Intellect
 	["MOD_INT"] = {
 		{
-			["rank"] = {
-				0.1,
-			},
+			["value"] = 0.1,
 			["buff"] = GetSpellInfo(20217),		-- ["Blessing of Kings"],
 			["group"] = BuffGroup.MOD_STATS,
 		},
 		{
-			["rank"] = {
-				0.1,
-			},
+			["value"] = 0.1,
 			["buff"] = GetSpellInfo(25898),		-- ["Greater Blessing of Kings"],
 			["group"] = BuffGroup.MOD_STATS,
 		},
 		{
-			["rank"] = {
-				0.08,
-			},
+			["value"] = 0.08,
 			["buff"] = GetSpellInfo(69378),		-- ["Blessing of Forgotten Kings"],
 			["group"] = BuffGroup.MOD_STATS,
 		},
 		{
-			["rank"] = {
-				0.02,
-			},
+			["value"] = 0.02,
 			["meta"] = 35503,
 		},
 		{
-			["rank"] = {
-				0.02,
-			},
+			["value"] = 0.02,
 			["meta"] = 41333,
 		},
 	},
@@ -3567,23 +3409,17 @@ addonTable.StatModTable["ALL"] = {
 	--                 Increases stats by 8%.
 	["MOD_SPI"] = {
 		{
-			["rank"] = {
-				0.1,
-			},
+			["value"] = 0.1,
 			["buff"] = GetSpellInfo(20217),		-- ["Blessing of Kings"],
 			["group"] = BuffGroup.MOD_STATS,
 		},
 		{
-			["rank"] = {
-				0.1,
-			},
+			["value"] = 0.1,
 			["buff"] = GetSpellInfo(25898),		-- ["Greater Blessing of Kings"],
 			["group"] = BuffGroup.MOD_STATS,
 		},
 		{
-			["rank"] = {
-				0.08,
-			},
+			["value"] = 0.08,
 			["buff"] = GetSpellInfo(69378),		-- ["Blessing of Forgotten Kings"],
 			["group"] = BuffGroup.MOD_STATS,
 		},
