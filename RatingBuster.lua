@@ -1991,6 +1991,11 @@ local classArmorTypes = {
 	PRIEST = {
 		[Enum.ItemArmorSubclass["Cloth"]] = true,
 	},
+	DEATHKNIGHT = {
+		[Enum.ItemArmorSubclass["Plate"]] = true,
+		[Enum.ItemArmorSubclass["Mail"]] = true,
+		[Enum.ItemArmorSubclass["Leather"]] = true,
+	},
 	SHAMAN = {
 		[Enum.ItemArmorSubclass["Mail"]] = true,
 		[Enum.ItemArmorSubclass["Leather"]] = true,
