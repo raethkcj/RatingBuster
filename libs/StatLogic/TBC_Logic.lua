@@ -1953,7 +1953,7 @@ addonTable.StatModTable["ALL"] = {
 			["buff"] = GetSpellInfo(25898),		-- ["Greater Blessing of Kings"],
 		},
 		{
-			["meta_gem"] = 35503,
+			["meta"] = 35503,
 			["value"] = 0.02,
 		},
 	},

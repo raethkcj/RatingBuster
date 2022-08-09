@@ -762,25 +762,6 @@ if addonTable.playerClass == "DRUID" then
 				["rank"] = {
 					-0.03, -0.06,
 				},
-				["new"] = 10147,
-			},
-		},
-		-- Druid: Balance of Power (Rank 2) - 1,17
-		--        Increases your chance to hit with all spells by 2%/4% and reduces the damage taken by all spells by 3%/6%.
-		["ADD_HIT_TAKEN"] = {
-			{
-				["HOLY"] = true,
-				["FIRE"] = true,
-				["NATURE"] = true,
-				["FROST"] = true,
-				["SHADOW"] = true,
-				["ARCANE"] = true,
-				["tab"] = 1,
-				["num"] = 17,
-				["rank"] = {
-					-0.02, -0.04,
-				},
-				["old"] = 10147,
 			},
 		},
 		-- Druid: Thick Hide (Rank 3) - 2,5
@@ -1207,25 +1188,9 @@ elseif addonTable.playerClass == "DEATHKNIGHT" then
 				["SHADOW"] = true,
 				["ARCANE"] = true,
 				["rank"] = {
-					-0.05,
-				},
-				["stance"] = "Interface\\Icons\\Spell_Deathknight_FrostPresence",
-				["old"] = 10371,
-			},
-			{
-				["MELEE"] = true,
-				["RANGED"] = true,
-				["HOLY"] = true,
-				["FIRE"] = true,
-				["NATURE"] = true,
-				["FROST"] = true,
-				["SHADOW"] = true,
-				["ARCANE"] = true,
-				["rank"] = {
 					-0.08,
 				},
 				["stance"] = "Interface\\Icons\\Spell_Deathknight_FrostPresence",
-				["new"] = 10371,
 			},
 			--Will of the Necropolis (Rank 3) - 1,24
 			{
@@ -1244,21 +1209,6 @@ elseif addonTable.playerClass == "DEATHKNIGHT" then
 				},
 				["condition"] = "((UnitHealth('player') / UnitHealthMax('player')) < 0.35)",
 			},
-			--Magic Suppression (Rank 3) - 3,17
-			{
-				["HOLY"] = true,
-				["FIRE"] = true,
-				["NATURE"] = true,
-				["FROST"] = true,
-				["SHADOW"] = true,
-				["ARCANE"] = true,
-				["tab"] = 3,
-				["num"] = 17,
-				["rank"] = {
-					-0.02, -0.04, -0.06,
-				},
-				["old"] = 10147,
-			},
 			--Magic Suppression (Rank 3) - 3,18
 			{
 				["HOLY"] = true,
@@ -1272,7 +1222,6 @@ elseif addonTable.playerClass == "DEATHKNIGHT" then
 				["rank"] = {
 					-0.02, -0.04, -0.06,
 				},
-				["new"] = 10147,
 			},
 			-- Rune of Spellshattering
 			{
@@ -1369,24 +1318,14 @@ elseif addonTable.playerClass == "DEATHKNIGHT" then
 				["tab"] = 2,
 				["num"] = 3,
 				["rank"] = {
-					0.03, 0.06, 0.09, 0.12, 0.15,
+					0.02, 0.04, 0.06, 0.08, 0.10,
 				},
-				["old"] = 10147,
-			},
-			{
-				["tab"] = 2,
-				["num"] = 3,
-				["rank"] = {
-					0.02, 0.04, 0.06, 0.08, 0.1,
-				},
-				["new"] = 10147,
 			},
 			{
 				["rank"] = {
 					0.25,
 				},
 				["buff"] = GetSpellInfo(51271),		-- ["Unbreakable Armor"],
-				["new"] = 10371,
 			},
 			{
 				["rank"] = {
@@ -1402,39 +1341,6 @@ elseif addonTable.playerClass == "DEATHKNIGHT" then
 				["stance"] = "Interface\\Icons\\Spell_Deathknight_FrostPresence",
 			},
 		},
-		-- Death Knight: Frost Presence - Buff
-		--               Increasing Stamina by 6%, armor contribution from cloth, leather, mail
-		--               and plate items by 60%, and reducing damage taken by 5%.
-		-- Death Knight: Improved Frost Presence (Rank 2) - 2,21
-		--               While in Blood Presence or Unholy Presence, you retain 3/6% stamina from Frost Presence,
-		--               and damage done to you is decreased by an additional 1/2% in Frost Presence.
-		["MOD_HEALTH"] = {
-			{
-				["rank"] = {
-					0.1,
-				},
-				["stance"] = "Interface\\Icons\\Spell_Deathknight_FrostPresence",
-				["old"] = 10147,
-			},
-			{
-				["tab"] = 2,
-				["num"] = 21,
-				["rank"] = {
-					0.05, 0.1,
-				},
-				["stance"] = "Interface\\Icons\\Spell_Deathknight_BloodPresence",
-				["old"] = 10147,
-			},
-			{
-				["tab"] = 2,
-				["num"] = 21,
-				["rank"] = {
-					0.05, 0.1,
-				},
-				["stance"] = "Interface\\Icons\\Spell_Deathknight_UnholyPresence",
-				["old"] = 10147,
-			},
-		},
 		-- Death Knight: Veteran of the Third War (Rank 3) - 1,14
 		--               Increases your total Strength by 2%/4%/6% and your total Stamina by 1%/2%/3%.
 		-- Enchant: Rune of the Stoneskin Gargoyle - EnchantID: 3847
@@ -1443,26 +1349,15 @@ elseif addonTable.playerClass == "DEATHKNIGHT" then
 		--               Increasing Stamina by 8%, armor contribution from cloth, leather, mail
 		--               and plate items by 60%, and reducing damage taken by 5%.
 		-- Death Knight: Improved Frost Presence (Rank 2) - 2,21
-		--               While in Blood Presence or Unholy Presence, you retain 3/6% stamina from Frost Presence,
+		--               While in Blood Presence or Unholy Presence, you retain 4/8% stamina from Frost Presence,
 		--               and damage done to you is decreased by an additional 1/2% in Frost Presence.
-		-- Death Knight: Endless Winter (Rank 2) - 2,12
-		--               Your strength is increased by 2%/4%.
 		["MOD_STA"] = {
-			{
-				["tab"] = 1,
-				["num"] = 14,
-				["rank"] = {
-					0.02, 0.04, 0.06,
-				},
-				["old"] = 10147,
-			},
 			{
 				["tab"] = 1,
 				["num"] = 14,
 				["rank"] = {
 					0.01, 0.02, 0.03,
 				},
-				["new"] = 10147,
 			},
 			{
 				["rank"] = {
@@ -1476,34 +1371,22 @@ elseif addonTable.playerClass == "DEATHKNIGHT" then
 					0.08,
 				},
 				["stance"] = "Interface\\Icons\\Spell_Deathknight_FrostPresence",
-				["new"] = 10147,
 			},
 			{
 				["tab"] = 2,
 				["num"] = 21,
 				["rank"] = {
-					0.03, 0.06,
+					0.04, 0.08,
 				},
 				["stance"] = "Interface\\Icons\\Spell_Deathknight_BloodPresence",
-				["new"] = 10147,
 			},
 			{
 				["tab"] = 2,
 				["num"] = 21,
 				["rank"] = {
-					0.03, 0.06,
+					0.04, 0.08,
 				},
 				["stance"] = "Interface\\Icons\\Spell_Deathknight_UnholyPresence",
-				["new"] = 10147,
-			},
-			-- Endless Winter
-			{
-				["tab"] = 2,
-				["num"] = 12,
-				["rank"] = {
-					0.02, 0.04,
-				},
-				["new"] = 11685,
 			},
 		},
 		-- Death Knight: Veteran of the Third War (Rank 3) - 1,14
@@ -1514,6 +1397,8 @@ elseif addonTable.playerClass == "DEATHKNIGHT" then
 		--               Increases your total Strength 1%/2%/3% and the contribution your Ghouls get from your Strength and Stamina by 20%/40%/60%
 		-- Death Knight: Abomination's Might - 1,17
 		--               Also increases your total Strength by 1%/2%.
+		-- Death Knight: Endless Winter (Rank 2) - 2,12
+		--               Your strength is increased by 2%/4%.
 		["MOD_STR"] = {
 			{
 				["tab"] = 1,
@@ -1524,17 +1409,9 @@ elseif addonTable.playerClass == "DEATHKNIGHT" then
 			},
 			{
 				["rank"] = {
-					0.1,
-				},
-				["buff"] = GetSpellInfo(51271),		-- ["Unbreakable Armor"],
-				["old"] = 11685,
-			},
-			{
-				["rank"] = {
 					0.2,
 				},
 				["buff"] = GetSpellInfo(51271),		-- ["Unbreakable Armor"],
-				["new"] = 11685,
 			},
 			{
 				["tab"] = 3,
@@ -1548,6 +1425,14 @@ elseif addonTable.playerClass == "DEATHKNIGHT" then
 				["num"] = 17,
 				["rank"] = {
 					0.01, 0.02,
+				},
+			},
+			-- Endless Winter
+			{
+				["tab"] = 2,
+				["num"] = 12,
+				["rank"] = {
+					0.02, 0.04,
 				},
 			},
 		},
@@ -2009,7 +1894,6 @@ elseif addonTable.playerClass == "PALADIN" then
 				["rank"] = {
 					0.2, 0.4, 0.6,
 				},
-				["new"] = 10371,
 			},
 		},
 		["ADD_HEALING_MOD_STR"] = {
@@ -2019,27 +1903,6 @@ elseif addonTable.playerClass == "PALADIN" then
 				["rank"] = {
 					0.2, 0.4, 0.6,
 				},
-				["new"] = 10371,
-			},
-		},
-		["ADD_SPELL_DMG_MOD_STA"] = {
-			{
-				["tab"] = 2,
-				["num"] = 21,
-				["rank"] = {
-					0.1, 0.2, 0.3,
-				},
-				["old"] = 10371,
-			},
-		},
-		["ADD_HEALING_MOD_STA"] = {
-			{
-				["tab"] = 2,
-				["num"] = 20,
-				["rank"] = {
-					0.1, 0.2, 0.3,
-				},
-				["old"] = 10371,
 			},
 		},
 		-- Paladin: Holy Guidance (Rank 5) - 1,21
@@ -2135,28 +1998,9 @@ elseif addonTable.playerClass == "PALADIN" then
 				["tab"] = 2,
 				["num"] = 18,
 				["rank"] = {
-					-0.1, -0.2, -0.3,
-				},
-				["condition"] = "((UnitHealth('player') / UnitHealthMax('player')) < 0.35)",
-				["old"] = 10371,
-			},
-			-- Ardent Defender
-			{
-				["MELEE"] = true,
-				["RANGED"] = true,
-				["HOLY"] = true,
-				["FIRE"] = true,
-				["NATURE"] = true,
-				["FROST"] = true,
-				["SHADOW"] = true,
-				["ARCANE"] = true,
-				["tab"] = 2,
-				["num"] = 18,
-				["rank"] = {
 					-0.07, -0.13, -0.2,
 				},
 				["condition"] = "((UnitHealth('player') / UnitHealthMax('player')) < 0.35)",
-				["new"] = 10371,
 			},
 			-- Improved Righteous Fury
 			{
@@ -2272,17 +2116,8 @@ elseif addonTable.playerClass == "PALADIN" then
 				["tab"] = 1,
 				["num"] = 4,
 				["rank"] = {
-					0.03, 0.06, 0.09, 0.12, 0.15,
+					0.02, 0.04, 0.06, 0.08, 0.10,
 				},
-				["old"] = 10147,
-			},
-			{
-				["tab"] = 1,
-				["num"] = 4,
-				["rank"] = {
-					0.02, 0.04, 0.06, 0.08, 0.1,
-				},
-				["new"] = 10147,
 			},
 		},
 		-- Paladin: Redoubt (Rank 3) - 2,19
@@ -2349,17 +2184,8 @@ elseif addonTable.playerClass == "PRIEST" then
 				["tab"] = 3,
 				["num"] = 26,
 				["rank"] = {
-					0.02, 0.04, 0.06, 0.08, 0.1,
-				},
-				["old"] = 10371,
-			},
-			{
-				["tab"] = 3,
-				["num"] = 26,
-				["rank"] = {
 					0.04, 0.08, 0.12, 0.16, 0.2,
 				},
-				["new"] = 10371,
 			},
 		},
 		-- Priest: Spiritual Guidance (Rank 5) - 2,14
@@ -2378,17 +2204,8 @@ elseif addonTable.playerClass == "PRIEST" then
 				["tab"] = 3,
 				["num"] = 26,
 				["rank"] = {
-					0.02, 0.04, 0.06, 0.08, 0.1,
-				},
-				["old"] = 10371,
-			},
-			{
-				["tab"] = 3,
-				["num"] = 26,
-				["rank"] = {
 					0.04, 0.08, 0.12, 0.16, 0.2,
 				},
-				["new"] = 10371,
 			},
 		},
 		-- Priest: Spell Warding (Rank 5) - 2,4
@@ -3093,17 +2910,8 @@ elseif addonTable.playerClass == "WARRIOR" then
 				["tab"] = 2,
 				["num"] = 1,
 				["rank"] = {
-					1/180, 2/180, 3/180,
-				},
-				["old"] = 10147,
-			},
-			{
-				["tab"] = 2,
-				["num"] = 1,
-				["rank"] = {
 					1/108, 2/108, 3/108,
 				},
-				["new"] = 10147,
 			},
 		},
 		-- Warrior: Anticipation (Rank 5) - 3,5
@@ -3254,7 +3062,7 @@ elseif addonTable.playerClass == "WARRIOR" then
 			},
 		},
 		-- Warrior: Vitality (Rank 3) - 3,20
-		--          Increases your total Strength and Stamina by 3/6/9% and your Expertise by 2/4/6.
+		--          Increases your total Strength by 2%/4%/6%, Stamina by 3/6/9% and your Expertise by 2/4/6.
 		-- Warrior: Strength of Arms (Rank 2) - 1,22
 		--          Increases your total Strength and Stamina by 2%/4% and your Expertise by 2/4.
 		["MOD_STA"] = {
@@ -3262,17 +3070,8 @@ elseif addonTable.playerClass == "WARRIOR" then
 				["tab"] = 3,
 				["num"] = 20,
 				["rank"] = {
-					0.02, 0.04, 0.06,
-				},
-				["old"] = 11685,
-			},
-			{
-				["tab"] = 3,
-				["num"] = 20,
-				["rank"] = {
 					0.03, 0.06, 0.09,
 				},
-				["new"] = 11685,
 			},
 			{
 				["tab"] = 1,
@@ -3283,12 +3082,11 @@ elseif addonTable.playerClass == "WARRIOR" then
 			},
 		},
 		-- Warrior: Vitality (Rank 3) - 3,20
-		--          Increases your total Strength and Stamina by 2%/4%/6% and your Expertise by 2/4/6.
+		--          Increases your total Strength by 2%/4%/6%, Stamina by 3/6/9% and your Expertise by 2/4/6.
 		-- Warrior: Strength of Arms (Rank 2) - 1,22
 		--          Increases your total Strength and total health by 2%/4%.
 		-- Warrior: Improved Berserker Stance (Rank 5) - 2,22 - Stance
 		--          Increases strength by 4/8/12/16/20% while in Berserker Stance.
-		--   3.1.0: Increases strength by 4/8/12/16/20% while in Berserker Stance.
 		["MOD_STR"] = {
 			{
 				["tab"] = 3,
@@ -3512,7 +3310,6 @@ addonTable.StatModTable["ALL"] = {
 				-0.1, -0.2,
 			},
 			["buff"] = GetSpellInfo(20236),		-- ["Lay on Hands"],
-			["new"] = 10147,
 		},
 		{
 			["MELEE"] = true,
@@ -3522,7 +3319,6 @@ addonTable.StatModTable["ALL"] = {
 			},
 			["buff"] = GetSpellInfo(15363),		-- ["Inspiration"],
 			["group"] = BuffGroup.MOD_PHYS_DMG_TAKEN,
-			["new"] = 10147,
 		},
 		{
 			["MELEE"] = true,
@@ -3532,7 +3328,6 @@ addonTable.StatModTable["ALL"] = {
 			},
 			["buff"] = GetSpellInfo(16237),		-- ["Ancestral Fortitude"],
 			["group"] = BuffGroup.MOD_PHYS_DMG_TAKEN,
-			["new"] = 10147,
 		},
 	},
 	-- MetaGem: Eternal Earthsiege Diamond - 41396
@@ -3563,30 +3358,7 @@ addonTable.StatModTable["ALL"] = {
 	--          +32 Stamina and 2% Increased Armor Value from Items
 	["MOD_ARMOR"] = {
 		{
-			["rank"] = {
-				0.15, 0.30,
-			},
-			["buff"] = GetSpellInfo(20236),		-- ["Lay on Hands"],
-			["old"] = 10147,
-		},
-		{
-			["rank"] = {
-				0.08, 0.16, 0.25,
-			},
-			["buff"] = GetSpellInfo(15363),		-- ["Inspiration"],
-			["old"] = 10147,
-		},
-		{
-			["rank"] = {
-				0.08, 0.16, 0.25,
-			},
-			["buff"] = GetSpellInfo(16237),		-- ["Ancestral Fortitude"],
-			["old"] = 10147,
-		},
-		{
-			["rank"] = {
-				0.02,
-			},
+			["value"] = 0.02,
 			["meta"] = 41380,
 		},
 	},
@@ -3656,7 +3428,6 @@ addonTable.StatModTable["ALL"] = {
 				0.1,
 			},
 			["buff"] = GetSpellInfo(20911),		-- ["Blessing of Sanctuary"],
-			["new"] = 10371,
 			["group"] = BuffGroup.MOD_STATS,
 		},
 		-- Greater Blessing of Sanctuary
@@ -3665,7 +3436,6 @@ addonTable.StatModTable["ALL"] = {
 				0.1,
 			},
 			["buff"] = GetSpellInfo(25899),		-- ["Greater Blessing of Sanctuary"],
-			["new"] = 10371,
 			["group"] = BuffGroup.MOD_STATS,
 		},
 		{
@@ -3730,8 +3500,7 @@ addonTable.StatModTable["ALL"] = {
 				0.1,
 			},
 			["buff"] = GetSpellInfo(20911),		-- ["Blessing of Sanctuary"],
-			["new"] = 10147,
-			["condition"] = "not (UnitBuff('player', GetSpellInfo(20217)) or UnitBuff('player', GetSpellInfo(25898)))",
+			["group"] = BuffGroup.MOD_STATS,
 		},
 		-- Greater Blessing of Sanctuary
 		{
@@ -3739,7 +3508,6 @@ addonTable.StatModTable["ALL"] = {
 				0.1,
 			},
 			["buff"] = GetSpellInfo(25899),		-- ["Greater Blessing of Sanctuary"],
-			["new"] = 10147,
 			["group"] = BuffGroup.MOD_STATS,
 		},
 		{

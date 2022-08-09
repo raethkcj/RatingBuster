@@ -1118,8 +1118,8 @@ local StatModValidators = {
 	set = function(case)
 		return equipped_sets[case.set] and equipped_sets[case.set] >= case.pieces
 	end,
-	meta_gem = function(case)
-		return case.meta_gem == equipped_meta_gem
+	meta = function(case)
+		return case.meta == equipped_meta_gem
 	end
 }
 
