@@ -1420,17 +1420,14 @@ end
 }
 -----------------------------------]]
 
-local BlockValuePerStr = {
+local BlockValuePerStr = setmetatable({
 	[ClassNameToID["WARRIOR"]] = BLOCK_PER_STRENGTH,
 	[ClassNameToID["PALADIN"]] = BLOCK_PER_STRENGTH,
-	[ClassNameToID["HUNTER"]] = 0,
-	[ClassNameToID["ROGUE"]] = 0,
-	[ClassNameToID["PRIEST"]] = 0,
 	[ClassNameToID["SHAMAN"]] = BLOCK_PER_STRENGTH,
-	[ClassNameToID["MAGE"]] = 0,
-	[ClassNameToID["WARLOCK"]] = 0,
-	[ClassNameToID["DRUID"]] = 0,
-}
+},
+{
+	__index = function() return 0 end
+})
 
 function StatLogic:GetBlockValuePerStr(class)
 	assert(type(class)=="string" or type(class)=="number", "Expected string or number as arg #1 to GetBlockValuePerStr, got "..type(class))
