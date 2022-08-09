@@ -1120,7 +1120,10 @@ local StatModValidators = {
 	end,
 	meta = function(case)
 		return case.meta == equipped_meta_gem
-	end
+	end,
+	glyph = function(case)
+		return IsPlayerSpell(case.glyph)
+	end,
 }
 
 local function ValidateStatMod(case, school)
