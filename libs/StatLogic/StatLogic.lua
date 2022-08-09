@@ -1113,7 +1113,7 @@ local StatModValidators = {
 		return AuraUtil.FindAuraByName(case.buff, "player")
 	end,
 	stance = function(case)
-		return case.stance == GetStanceIcon()
+		return GetFileIDFromPath(case.stance) == GetShapeshiftFormInfo(GetShapeshiftForm())
 	end,
 	set = function(case)
 		return equipped_sets[case.set] and equipped_sets[case.set] >= case.pieces
