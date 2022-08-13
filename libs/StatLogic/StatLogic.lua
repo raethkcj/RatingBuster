@@ -1425,14 +1425,11 @@ end
 }
 -----------------------------------]]
 
-local BlockValuePerStr = setmetatable({
-	[ClassNameToID["WARRIOR"]] = BLOCK_PER_STRENGTH,
-	[ClassNameToID["PALADIN"]] = BLOCK_PER_STRENGTH,
-	[ClassNameToID["SHAMAN"]] = BLOCK_PER_STRENGTH,
-},
-{
-	__index = function() return 0 end
-})
+local BlockClasses = {
+	[ClassNameToID["WARRIOR"]] = true,
+	[ClassNameToID["PALADIN"]] = true,
+	[ClassNameToID["SHAMAN"]] = true,
+}
 
 function StatLogic:GetBlockValuePerStr(class)
 	assert(type(class)=="string" or type(class)=="number", "Expected string or number as arg #1 to GetBlockValuePerStr, got "..type(class))
@@ -1443,7 +1440,8 @@ function StatLogic:GetBlockValuePerStr(class)
 	elseif type(class) ~= "number" or class < 1 or class > GetNumClasses() then
 		class = ClassNameToID[addonTable.playerClass]
 	end
-	return BlockValuePerStr[class], "BLOCK_VALUE"
+	local blockValue = BlockClasses[class] and BLOCK_PER_STRENGTH or 0
+	return blockValue, "BLOCK_VALUE"
 end
 
 
@@ -1482,8 +1480,9 @@ function StatLogic:GetBlockValueFromStr(str, class)
 	elseif type(class) ~= "number" or class < 1 or class > GetNumClasses() then
 		class = ClassNameToID[addonTable.playerClass]
 	end
+	local blockValue = BlockClasses[class] and BLOCK_PER_STRENGTH or 0
 	-- Calculate
-	return str * BlockValuePerStr[class], "BLOCK_VALUE"
+	return str * blockValue, "BLOCK_VALUE"
 end
 
 
@@ -1860,16 +1859,16 @@ end
 
 -- Numbers reverse engineered by Whitetooth@Cenarius(US) (hotdogee [at] gmail [dot] com)
 local HealthRegenPerSpi = {
-	0.5, 0.125, 0.125, 0.333333, 0.041667, 0.071429, 0.041667, 0.045455, 0.0625,
-	--["WARRIOR"] = 0.5,
-	--["PALADIN"] = 0.125,
-	--["HUNTER"] = 0.125,
-	--["ROGUE"] = 0.333333,
-	--["PRIEST"] = 0.041667,
-	--["SHAMAN"] = 0.071429,
-	--["MAGE"] = 0.041667,
-	--["WARLOCK"] = 0.045455,
-	--["DRUID"] = 0.0625,
+	[ClassNameToID["WARRIOR"]] = 0.5,
+	[ClassNameToID["PALADIN"]] = 0.125,
+	[ClassNameToID["HUNTER"]] = 0.125,
+	[ClassNameToID["ROGUE"]] = 0.333333,
+	[ClassNameToID["PRIEST"]] = 0.041667,
+	[ClassNameToID["DEATHKNIGHT"]] = 0.5,
+	[ClassNameToID["SHAMAN"]] = 0.071429,
+	[ClassNameToID["MAGE"]] = 0.041667,
+	[ClassNameToID["WARLOCK"]] = 0.045455,
+	[ClassNameToID["DRUID"]] = 0.0625,
 }
 
 function StatLogic:GetHealthRegenFromSpi(spi, class)
