@@ -1201,6 +1201,16 @@ end
 -- Stat Conversion --
 --=================--
 function StatLogic:GetReductionFromArmor(armor, attackerLevel)
+	self:argCheck(armor, 2, "nil", "number")
+	self:argCheck(attackerLevel, 3, "nil", "number")
+	if not armor then
+		armor = select(2, UnitArmor("player"))
+	end
+
+	if not attackerLevel then
+		attackerLevel = UnitLevel("player")
+	end
+
 	local levelModifier = attackerLevel
 	if ( levelModifier > 59 ) then
 		levelModifier = levelModifier + (4.5 * (levelModifier - 59))
@@ -1218,6 +1228,15 @@ function StatLogic:GetReductionFromArmor(armor, attackerLevel)
 end
 
 function StatLogic:GetEffectFromDefense(defense, attackerLevel)
+	self:argCheck(defense, 2, "nil", "number")
+	self:argCheck(attackerLevel, 3, "nil", "number")
+	if not defense then
+		local base, add = UnitDefense("player")
+		defense = base + add
+	end
+	if not attackerLevel then
+		attackerLevel = UnitLevel("player")
+	end
 	return (defense - attackerLevel * 5) * 0.04
 end
 
