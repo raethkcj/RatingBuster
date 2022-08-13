@@ -1144,6 +1144,30 @@ local function ValidateStatMod(case, school)
 	return true
 end
 
+-- As of Classic Patch 3.4.0, GetTalentInfo indices no longer correlate
+-- to their positions in the tree. Building a talent cache ordered by
+-- tier then column allows us to replicate the previous behavior,
+-- and keep StatModTables human-readable.
+local orderedTalentCache = {}
+do
+	local temp = {}
+	for tab = 1, GetNumTalentTabs() do
+		temp[tab] = {}
+		for i = 1,GetNumTalents(tab) do
+			local name, _, tier, column = GetTalentInfo(2,i)
+			local product = (tier - 1) * 4 + column
+			temp[tab][product] = i
+		end
+
+		orderedTalentCache[tab] = {}
+		local j = 1
+		for product, i in pairs(temp[tab]) do
+			orderedTalentCache[tab][j] = i
+			j = j + 1
+		end
+	end
+end
+
 local GetStatModValue = function(mod, case, initialValue, school)
 	if not ValidateStatMod(case, school) then
 		return mod
@@ -1152,7 +1176,7 @@ local GetStatModValue = function(mod, case, initialValue, school)
 	local value
 	if case.tab and case.num then
 		-- Talent Rank
-		local r = select(5, GetTalentInfo(case.tab, case.num))
+		local r = select(5, GetTalentInfo(case.tab, orderedTalentCache[case.tab][case.num]))
 		value = case.rank[r]
 	elseif case.buff and case.rank then
 		local r = GetPlayerBuffRank(case.buff)
