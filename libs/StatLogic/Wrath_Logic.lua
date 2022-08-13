@@ -1,6 +1,46 @@
 local addonName, addonTable = ...
 local StatLogic = LibStub:GetLibrary(addonName)
 
+-- 3.1.0
+-- Haste Rating: Shamans, Paladins, Druids, and Death Knights now receive 30% more melee haste from Haste Rating.
+local ExtraHasteClasses = {
+	["PALADIN"] = true,
+	["DEATHKNIGHT"] = true,
+	["SHAMAN"] = true,
+	["DRUID"] = true,
+}
+local extraHaste = ExtraHasteClasses[addonTable.playerClass] and 1.3 or 1
+
+-- Level 60 rating base
+addonTable.RatingBase = {
+	[CR_WEAPON_SKILL] = 2.5,
+	[CR_DEFENSE_SKILL] = 1.5,
+	[CR_DODGE] = 13.8,
+	[CR_PARRY] = 13.8,
+	[CR_BLOCK] = 5,
+	[CR_HIT_MELEE] = 10,
+	[CR_HIT_RANGED] = 10,
+	[CR_HIT_SPELL] = 8,
+	[CR_CRIT_MELEE] = 14,
+	[CR_CRIT_RANGED] = 14,
+	[CR_CRIT_SPELL] = 14,
+	[CR_HIT_TAKEN_MELEE] = 10, -- hit avoidance
+	[CR_HIT_TAKEN_RANGED] = 10,
+	[CR_HIT_TAKEN_SPELL] = 8,
+	[CR_CRIT_TAKEN_MELEE] = 28.75, -- resilience
+	[CR_CRIT_TAKEN_RANGED] = 28.75,
+	[CR_CRIT_TAKEN_SPELL] = 28.75,
+	[CR_HASTE_MELEE] = 10 / extraHaste,
+	[CR_HASTE_RANGED] = 10,
+	[CR_HASTE_SPELL] = 10,
+	[CR_WEAPON_SKILL_MAINHAND] = 2.5,
+	[CR_WEAPON_SKILL_OFFHAND] = 2.5,
+	[CR_WEAPON_SKILL_RANGED] = 2.5,
+	[CR_EXPERTISE] = 2.5,
+	[CR_ARMOR_PENETRATION] = 4.69512176513672 / 1.1,
+}
+addonTable.SetCRMax()
+
 --[[---------------------------------
 	:GetNormalManaRegenFromSpi(spi, [int], [level])
 -------------------------------------

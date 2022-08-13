@@ -1246,86 +1246,47 @@ end
 }
 -----------------------------------]]
 
---[[ Rating ID as definded in PaperDollFrame.lua
-CR_WEAPON_SKILL = 1;
-CR_DEFENSE_SKILL = 2;
-CR_DODGE = 3;
-CR_PARRY = 4;
-CR_BLOCK = 5;
-CR_HIT_MELEE = 6;
-CR_HIT_RANGED = 7;
-CR_HIT_SPELL = 8;
-CR_CRIT_MELEE = 9;
-CR_CRIT_RANGED = 10;
-CR_CRIT_SPELL = 11;
-CR_HIT_TAKEN_MELEE = 12;
-CR_HIT_TAKEN_RANGED = 13;
-CR_HIT_TAKEN_SPELL = 14;
-CR_CRIT_TAKEN_MELEE = 15;
-CR_CRIT_TAKEN_RANGED = 16;
-CR_CRIT_TAKEN_SPELL = 17;
-CR_HASTE_MELEE = 18;
-CR_HASTE_RANGED = 19;
-CR_HASTE_SPELL = 20;
-CR_WEAPON_SKILL_MAINHAND = 21;
-CR_WEAPON_SKILL_OFFHAND = 22;
-CR_WEAPON_SKILL_RANGED = 23;
-CR_EXPERTISE = 24;
---]]
-
--- Level 60 rating base
-local RatingBase = {
-	[CR_WEAPON_SKILL] = 2.5,
-	[CR_DEFENSE_SKILL] = 1.5,
-	[CR_DODGE] = 12,
-	[CR_PARRY] = 15,
-	[CR_BLOCK] = 5,
-	[CR_HIT_MELEE] = 10,
-	[CR_HIT_RANGED] = 10,
-	[CR_HIT_SPELL] = 8,
-	[CR_CRIT_MELEE] = 14,
-	[CR_CRIT_RANGED] = 14,
-	[CR_CRIT_SPELL] = 14,
-	[CR_HIT_TAKEN_MELEE] = 10, -- hit avoidance
-	[CR_HIT_TAKEN_RANGED] = 10,
-	[CR_HIT_TAKEN_SPELL] = 8,
-	[CR_CRIT_TAKEN_MELEE] = 25, -- resilience
-	[CR_CRIT_TAKEN_RANGED] = 25,
-	[CR_CRIT_TAKEN_SPELL] = 25,
-	[CR_HASTE_MELEE] = 10, -- changed in 2.2
-	[CR_HASTE_RANGED] = 10, -- changed in 2.2
-	[CR_HASTE_SPELL] = 10, -- changed in 2.2
-	[CR_WEAPON_SKILL_MAINHAND] = 2.5,
-	[CR_WEAPON_SKILL_OFFHAND] = 2.5,
-	[CR_WEAPON_SKILL_RANGED] = 2.5,
-	[CR_EXPERTISE] = 2.5,
+--2.4.3  Parry Rating, Defense Rating, and Block Rating: Low-level players
+--   will now convert these ratings into their corresponding defensive
+--   stats at the same rate as level 34 players.
+--   Dodge and Resilience were not mentioned, but were nerfed as well
+local Level34Ratings = {
+	[CR_DEFENSE_SKILL] = true,
+	[CR_DODGE] = true,
+	[CR_PARRY] = true,
+	[CR_BLOCK] = true,
+	[CR_CRIT_TAKEN_MELEE] = true,
+	[CR_CRIT_TAKEN_RANGED] = true,
+	[CR_CRIT_TAKEN_SPELL] = true,
 }
 
--- Formula reverse engineered by Whitetooth@Cenarius(US) (hotdogee [at] gmail [dot] com)
---  Parry Rating, Defense Rating, and Block Rating: Low-level players 
---   will now convert these ratings into their corresponding defensive 
---   stats at the same rate as level 34 players.
+local CR_MAX = 0
+addonTable.SetCRMax = function()
+	for _ in pairs(addonTable.RatingBase) do
+		CR_MAX = CR_MAX + 1
+	end
+end
+
 function StatLogic:GetEffectFromRating(rating, id, level)
 	-- if id is stringID then convert to numberID
 	if type(id) == "string" and RatingNameToID[id] then
 		id = RatingNameToID[id]
 	end
 	-- check for invalid input
-	if type(rating) ~= "number" or id < 1 or id > 24 then return 0 end
+	if type(rating) ~= "number" or id < 1 or id > CR_MAX then return 0 end
 	-- defaults to player level if not given
 	level = level or UnitLevel("player")
-	--2.4.3  Parry Rating, Defense Rating, and Block Rating: Low-level players 
-	--   will now convert these ratings into their corresponding defensive 
-	--   stats at the same rate as level 34 players.
-	if (id == CR_DEFENSE_SKILL or id == CR_PARRY or id == CR_BLOCK) and level < 34 then
+	if level < 34 and Level34Ratings[id] then
 		level = 34
 	end
-	if level >= 60 then
-		return rating/RatingBase[id]*((-3/82)*level+(131/41)), RatingIDToConvertedStat[id]
+	if level >= 70 then
+		return rating/addonTable.RatingBase[id]/((82/52)*(131/63)^((level-70)/10)), RatingIDToConvertedStat[id]
+	elseif level >= 60 then
+		return rating/addonTable.RatingBase[id]*((-3/82)*level+(131/41)), RatingIDToConvertedStat[id]
 	elseif level >= 10 then
-		return rating/RatingBase[id]/((1/52)*level-(8/52)), RatingIDToConvertedStat[id]
+		return rating/addonTable.RatingBase[id]/((1/52)*level-(8/52)), RatingIDToConvertedStat[id]
 	else
-		return rating/RatingBase[id]/((1/52)*10-(8/52)), RatingIDToConvertedStat[id]
+		return rating/addonTable.RatingBase[id]/((1/52)*10-(8/52)), RatingIDToConvertedStat[id]
 	end
 end
 

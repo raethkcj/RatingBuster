@@ -1,6 +1,35 @@
 local addonName, addonTable = ...
 local StatLogic = LibStub:GetLibrary(addonName)
 
+-- Level 60 rating base
+addonTable.RatingBase = {
+	[CR_WEAPON_SKILL] = 2.5,
+	[CR_DEFENSE_SKILL] = 1.5,
+	[CR_DODGE] = 12,
+	[CR_PARRY] = 15,
+	[CR_BLOCK] = 5,
+	[CR_HIT_MELEE] = 10,
+	[CR_HIT_RANGED] = 10,
+	[CR_HIT_SPELL] = 8,
+	[CR_CRIT_MELEE] = 14,
+	[CR_CRIT_RANGED] = 14,
+	[CR_CRIT_SPELL] = 14,
+	[CR_HIT_TAKEN_MELEE] = 10, -- hit avoidance
+	[CR_HIT_TAKEN_RANGED] = 10,
+	[CR_HIT_TAKEN_SPELL] = 8,
+	[CR_CRIT_TAKEN_MELEE] = 25, -- resilience
+	[CR_CRIT_TAKEN_RANGED] = 25,
+	[CR_CRIT_TAKEN_SPELL] = 25,
+	[CR_HASTE_MELEE] = 10,
+	[CR_HASTE_RANGED] = 10,
+	[CR_HASTE_SPELL] = 10,
+	[CR_WEAPON_SKILL_MAINHAND] = 2.5,
+	[CR_WEAPON_SKILL_OFFHAND] = 2.5,
+	[CR_WEAPON_SKILL_RANGED] = 2.5,
+	[CR_EXPERTISE] = 2.5,
+}
+addonTable.SetCRMax()
+
 --[[---------------------------------
 {	:GetNormalManaRegenFromSpi(spi, [int], [level])
 -------------------------------------
