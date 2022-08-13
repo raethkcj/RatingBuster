@@ -1150,22 +1150,26 @@ end
 -- and keep StatModTables human-readable.
 local orderedTalentCache = {}
 do
-	local temp = {}
-	for tab = 1, GetNumTalentTabs() do
-		temp[tab] = {}
-		for i = 1,GetNumTalents(tab) do
-			local name, _, tier, column = GetTalentInfo(2,i)
-			local product = (tier - 1) * 4 + column
-			temp[tab][product] = i
-		end
+	local f = CreateFrame("Frame")
+	f:RegisterEvent("SPELLS_CHANGED")
+	f:SetScript("OnEvent", function()
+		local temp = {}
+		for tab = 1, GetNumTalentTabs() do
+			temp[tab] = {}
+			for i = 1,GetNumTalents(tab) do
+				local name, _, tier, column = GetTalentInfo(2,i)
+				local product = (tier - 1) * 4 + column
+				temp[tab][product] = i
+			end
 
-		orderedTalentCache[tab] = {}
-		local j = 1
-		for product, i in pairs(temp[tab]) do
-			orderedTalentCache[tab][j] = i
-			j = j + 1
+			orderedTalentCache[tab] = {}
+			local j = 1
+			for product, i in pairs(temp[tab]) do
+				orderedTalentCache[tab][j] = i
+				j = j + 1
+			end
 		end
-	end
+	end)
 end
 
 local GetStatModValue = function(mod, case, initialValue, school)
