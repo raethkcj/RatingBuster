@@ -1,3 +1,5 @@
+local addonName, addonTable = ...
+
 --[[
 Name: RatingBuster
 Revision: $Revision: 78903 $
@@ -1382,6 +1384,12 @@ local EmptySocketLookup = {
 }
 -- Color code (used to fix gem text color)
 local currentColorCode
+
+-- Avoidance Diminishing Returns
+local summaryFunc = {}
+local equippedSum = {}
+local equippedDodge, equippedParry, equippedMissed
+local processedDodge, processedParry, processedMissed
 
 -- Utilities for checking nested recipes
 local ITEM_MIN_LEVEL_PATTERN = ITEM_MIN_LEVEL:gsub("%%d", "%%d+")
@@ -2805,6 +2813,12 @@ if tpSupport == true then
 	--]]
 end
 
+-- Build summaryFunc
+addonTable.GenerateSummaryFunc = function()
+	for _, calcData in pairs(summaryCalcData) do
+		summaryFunc[calcData.name] = calcData.func
+	end
+end
 
 function sumSortAlphaComp(a, b)
 	return a[1] < b[1]
