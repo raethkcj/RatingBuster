@@ -415,7 +415,11 @@ local function StripGlobalStrings(text)
 	return text
 end
 
-local ClassNameToID = {}
+local ClassNameToID = setmetatable({}, {
+	__index = function(t, k)
+		return 0
+	end
+})
 
 for i = 1, GetNumClasses(), 1 do
 	local _, classFile = GetClassInfo(i)
