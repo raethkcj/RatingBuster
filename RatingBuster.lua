@@ -412,16 +412,19 @@ local options = {
 					type = 'group',
 					name = L["Strength"],
 					desc = L["Changes the display of Strength"],
+					width = "full",
 					args = {
 						showAPFromStr = {
 							type = 'toggle',
 							name = L["Show Attack Power"],
 							desc = L["Show Attack Power from Strength"],
+							width = "full",
 						},
 						showBlockValueFromStr = {
 							type = 'toggle',
 							name = L["Show Block Value"],
 							desc = L["Show Block Value from Strength"],
+							width = "full",
 						},
 					},
 				},
@@ -429,31 +432,37 @@ local options = {
 					type = 'group',
 					name = L["Agility"],
 					desc = L["Changes the display of Agility"],
+					width = "full",
 					args = {
 						showCritFromAgi = {
 							type = 'toggle',
 							name = L["Show Crit"],
 							desc = L["Show Crit chance from Agility"],
+							width = "full",
 						},
 						showDodgeFromAgi = {
 							type = 'toggle',
 							name = L["Show Dodge"],
 							desc = L["Show Dodge chance from Agility"],
+							width = "full",
 						},
 						showAPFromAgi = {
 							type = 'toggle',
 							name = L["Show Attack Power"],
 							desc = L["Show Attack Power from Agility"],
+							width = "full",
 						},
 						showRAPFromAgi = {
 							type = 'toggle',
 							name = L["Show Ranged Attack Power"],
 							desc = L["Show Ranged Attack Power from Agility"],
+							width = "full",
 						},
 						showArmorFromAgi = {
 							type = 'toggle',
 							name = L["Show Armor"],
 							desc = L["Show Armor from Agility"],
+							width = "full",
 						},
 					},
 				},
@@ -461,11 +470,13 @@ local options = {
 					type = 'group',
 					name = L["Stamina"],
 					desc = L["Changes the display of Stamina"],
+					width = "full",
 					args = {
 						showHealthFromSta = {
 							type = 'toggle',
 							name = L["Show Health"],
 							desc = L["Show Health from Stamina"],
+							width = "full",
 						},
 					},
 				},
@@ -473,26 +484,31 @@ local options = {
 					type = 'group',
 					name = L["Intellect"],
 					desc = L["Changes the display of Intellect"],
+					width = "full",
 					args = {
 						showSpellCritFromInt = {
 							type = 'toggle',
 							name = L["Show Spell Crit"],
 							desc = L["Show Spell Crit chance from Intellect"],
+							width = "full",
 						},
 						showManaFromInt = {
 							type = 'toggle',
 							name = L["Show Mana"],
 							desc = L["Show Mana from Intellect"],
+							width = "full",
 						},
 						showMP5FromInt = {
 							type = 'toggle',
 							name = L["Show Mana Regen"],
 							desc = L["Show Mana Regen while casting from Intellect"],
+							width = "full",
 						},
 						showMP5NCFromInt = {
 							type = 'toggle',
 							name = L["Show Mana Regen while NOT casting"],
 							desc = L["Show Mana Regen while NOT casting from Intellect"],
+							width = "full",
 						},
 					},
 				},
@@ -500,16 +516,19 @@ local options = {
 					type = 'group',
 					name = L["Spirit"],
 					desc = L["Changes the display of Spirit"],
+					width = "full",
 					args = {
 						showMP5NCFromSpi = {
 							type = 'toggle',
 							name = L["Show Mana Regen while NOT casting"],
 							desc = L["Show Mana Regen while NOT casting from Spirit"],
+							width = "full",
 						},
 						showHP5FromSpi = {
 							type = 'toggle',
 							name = L["Show Health Regen"],
 							desc = L["Show Health Regen from Spirit"],
+							width = "full",
 						},
 					},
 				},
