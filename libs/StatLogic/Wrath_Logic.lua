@@ -1893,7 +1893,7 @@ elseif addonTable.playerClass == "PALADIN" then
 		["ADD_HEALING_MOD_STR"] = {
 			{
 				["tab"] = 2,
-				["num"] = 20,
+				["num"] = 21,
 				["rank"] = {
 					0.2, 0.4, 0.6,
 				},
