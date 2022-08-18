@@ -411,9 +411,9 @@ addonTable.BaseDodge = {
 	[StatLogic:GetClassIdOrName("DRUID")] =       5.6097,
 }
 
-addonTable.StatModTable = {}
+StatLogic.StatModTable = {}
 if addonTable.playerClass == "DRUID" then
-	addonTable.StatModTable["DRUID"] = {
+	StatLogic.StatModTable["DRUID"] = {
 		-- Druid: Master Shapeshifter (Rank 2) - 3,9
 		--        Moonkin Form - Increases spell damage by 2%/4%.
 		--      * Does not affect char window stats
@@ -1088,7 +1088,7 @@ if addonTable.playerClass == "DRUID" then
 		},
 	}
 elseif addonTable.playerClass == "DEATHKNIGHT" then
-	addonTable.StatModTable["DEATHKNIGHT"] = {
+	StatLogic.StatModTable["DEATHKNIGHT"] = {
 		-- Death Knight: Forceful Deflection - Passive
 		--               Increases your Parry Rating by 25% of your total Strength.
 		["ADD_CR_PARRY_MOD_STR"] = {
@@ -1436,7 +1436,7 @@ elseif addonTable.playerClass == "DEATHKNIGHT" then
 		},
 	}
 elseif addonTable.playerClass == "HUNTER" then
-	addonTable.StatModTable["HUNTER"] = {
+	StatLogic.StatModTable["HUNTER"] = {
 		-- Hunter: Hunter vs. Wild (Rank 3) - 3,14
 		--         Increases you and your pet's attack power and ranged attack power equal to 10%/20%/30% of your total Stamina.
 		["ADD_AP_MOD_STA"] = {
@@ -1613,7 +1613,7 @@ elseif addonTable.playerClass == "HUNTER" then
 	}
 elseif addonTable.playerClass == "MAGE" then
 	print("Initiating mage StatModTable")
-	addonTable.StatModTable["MAGE"] = {
+	StatLogic.StatModTable["MAGE"] = {
 		["ADD_SPELL_CRIT_RATING_MOD_SPI"] = {
 			-- Mage: Molten Armor (Rank 3) - Buff
 			--       increases your critical strike rating by 35% of your spirit
@@ -1857,7 +1857,7 @@ elseif addonTable.playerClass == "MAGE" then
 		},
 	}
 elseif addonTable.playerClass == "PALADIN" then
-	addonTable.StatModTable["PALADIN"] = {
+	StatLogic.StatModTable["PALADIN"] = {
 		-- Paladin: Sheath of Light (Rank 3) - 3,24
 		--          Increases your spell power by an amount equal to 10%/20%/30% of your attack power
 		--   3.1.0: 3,24
@@ -2126,7 +2126,7 @@ elseif addonTable.playerClass == "PALADIN" then
 		},
 	}
 elseif addonTable.playerClass == "PRIEST" then
-	addonTable.StatModTable["PRIEST"] = {
+	StatLogic.StatModTable["PRIEST"] = {
 		-- Priest: Focused Power (Rank 2) - 1,16
 		--         Increases your total spell damage and healing done by 2%/4%.
 		-- ["MOD_SPELL_DMG"] = {
@@ -2282,7 +2282,7 @@ elseif addonTable.playerClass == "PRIEST" then
 		},
 	}
 elseif addonTable.playerClass == "ROGUE" then
-	addonTable.StatModTable["ROGUE"] = {
+	StatLogic.StatModTable["ROGUE"] = {
 		-- Rogue: Deadliness (Rank 5) - 3,18
 		--        Increases your attack power by 2%/4%/6%/8%/10%.
 		-- Rogue: Savage Combat (Rank 2) - 2,26
@@ -2423,7 +2423,7 @@ elseif addonTable.playerClass == "ROGUE" then
 		},
 	}
 elseif addonTable.playerClass == "SHAMAN" then
-	addonTable.StatModTable["SHAMAN"] = {
+	StatLogic.StatModTable["SHAMAN"] = {
 		-- Shaman: Mental Dexterity (Rank 3) - 2,15
 		--         Increases your Attack Power by 33%/66%/100% of your Intellect.
 		["ADD_AP_MOD_INT"] = {
@@ -2563,7 +2563,7 @@ elseif addonTable.playerClass == "SHAMAN" then
 		},
 	}
 elseif addonTable.playerClass == "WARLOCK" then
-	addonTable.StatModTable["WARLOCK"] = {
+	StatLogic.StatModTable["WARLOCK"] = {
 		-- Warlock: Metamorphosis - Buff
 		--          This form increases your armor by 600%, damage by 20%, reduces the chance you'll be critically hit by melee attacks by 6% and reduces the duration of stun and snare effects by 50%.
 		["ADD_CRIT_TAKEN"] = {
@@ -2847,7 +2847,7 @@ elseif addonTable.playerClass == "WARLOCK" then
 		},
 	}
 elseif addonTable.playerClass == "WARRIOR" then
-	addonTable.StatModTable["WARRIOR"] = {
+	StatLogic.StatModTable["WARRIOR"] = {
 		-- Warrior: Improved Spell Reflection (Rank 2) - 3,10
 		--          Reduces the chance you'll be hit by spells by 2%/4%
 		["ADD_HIT_TAKEN"] = {
@@ -3074,7 +3074,7 @@ elseif addonTable.playerClass == "WARRIOR" then
 end
 
 if addonTable.playerRace == "NightElf" then
-	addonTable.StatModTable["NightElf"] = {
+	StatLogic.StatModTable["NightElf"] = {
 		["ADD_HIT_TAKEN"] = {
 			-- Night Elf : Quickness - Racial
 			--             Reduces the chance that melee and ranged attackers will hit you by 2%.
@@ -3087,7 +3087,7 @@ if addonTable.playerRace == "NightElf" then
 		}
 	}
 elseif addonTable.playerRace == "Gnome" then
-	addonTable.StatModTable["Gnome"] = {
+	StatLogic.StatModTable["Gnome"] = {
 		["MOD_INT"] = {
 			-- Gnome: Expansive Mind - Racial
 			--        Increase Intelligence by 5%.
@@ -3098,7 +3098,7 @@ elseif addonTable.playerRace == "Gnome" then
 		}
 	}
 elseif addonTable.playerRace == "Human" then
-	addonTable.StatModTable["Human"] = {
+	StatLogic.StatModTable["Human"] = {
 		["MOD_SPIRIT"] = {
 			-- Human: The Human Spirit - Racial
 			--        Increase Spirit by 3%.
@@ -3110,7 +3110,7 @@ elseif addonTable.playerRace == "Human" then
 	}
 end
 
-addonTable.StatModTable["ALL"] = {
+StatLogic.StatModTable["ALL"] = {
 	-- ICC: Chill of the Throne
 	--      Chance to dodge reduced by 20%.
 	["ADD_DODGE"] = {

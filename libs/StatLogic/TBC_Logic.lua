@@ -359,9 +359,9 @@ addonTable.BaseDodge = {
 	[StatLogic:GetClassIdOrName("DRUID")] = -1.8720,
 }
 
-addonTable.StatModTable = {}
+StatLogic.StatModTable = {}
 if addonTable.playerClass == "DRUID" then
-	addonTable.StatModTable["DRUID"] = {
+	StatLogic.StatModTable["DRUID"] = {
 		-- Druid: Lunar Guidance (Rank 3) - 1,12
 		--        Increases your spell damage and healing by 8%/16%/25% of your total Intellect.
 		["ADD_SPELL_DMG_MOD_INT"] = {
@@ -635,7 +635,7 @@ if addonTable.playerClass == "DRUID" then
 		},
 	}
 elseif addonTable.playerClass == "HUNTER" then
-	addonTable.StatModTable["HUNTER"] = {
+	StatLogic.StatModTable["HUNTER"] = {
 		-- Hunter: Aspect of the Viper - Buff
 		--         The hunter takes on the aspects of a viper, regenerating mana equal to 25% of his Intellect every 5 sec.
 		-- TODO: Gronnstalker's Armor, (2) Set: Increases the mana you gain from your Aspect of the Viper by an additional 5% of your Intellect.
@@ -812,7 +812,7 @@ elseif addonTable.playerClass == "HUNTER" then
 		},
 	}
 elseif addonTable.playerClass == "MAGE" then
-	addonTable.StatModTable["MAGE"] = {
+	StatLogic.StatModTable["MAGE"] = {
 		-- Mage: Arcane Fortitude - 1,9
 		--       Increases your armor by an amount equal to 50% of your Intellect.
 		-- 2.4.0 Increases your armor by an amount equal to 100% of your Intellect.
@@ -927,7 +927,7 @@ elseif addonTable.playerClass == "MAGE" then
 		},
 	}
 elseif addonTable.playerClass == "PALADIN" then
-	addonTable.StatModTable["PALADIN"] = {
+	StatLogic.StatModTable["PALADIN"] = {
 		-- Paladin: Pursuit of Justice (Rank 2) - 3,9
 		--          Reduces the chance you'll be hit by spells by 1%/2%/3% and increases movement and mounted movement speed by 5%/10%/15%. This does not stack with other movement speed increasing effects.
 		["ADD_HIT_TAKEN"] = {
@@ -1116,7 +1116,7 @@ elseif addonTable.playerClass == "PALADIN" then
 		},
 	}
 elseif addonTable.playerClass == "PRIEST" then
-	addonTable.StatModTable["PRIEST"] = {
+	StatLogic.StatModTable["PRIEST"] = {
 		-- Priest: Meditation (Rank 3) - 1,9
 		--         Allows 10/20/30% of your Mana regeneration to continue while casting.
 		["ADD_MANA_REG_MOD_NORMAL_MANA_REG"] = {
@@ -1306,7 +1306,7 @@ elseif addonTable.playerClass == "PRIEST" then
 		},
 	}
 elseif addonTable.playerClass == "ROGUE" then
-	addonTable.StatModTable["ROGUE"] = {
+	StatLogic.StatModTable["ROGUE"] = {
 		-- Rogue: Deadliness (Rank 5) - 3,17
 		--        Increases your attack power by 2%/4%/6%/8%/10%.
 		["MOD_AP"] = {
@@ -1441,7 +1441,7 @@ elseif addonTable.playerClass == "ROGUE" then
 		},
 	}
 elseif addonTable.playerClass == "SHAMAN" then
-	addonTable.StatModTable["SHAMAN"] = {
+	StatLogic.StatModTable["SHAMAN"] = {
 		-- Shaman: Shamanistic Rage - Buff
 		--         Reduces all damage taken by 30% and gives your successful melee attacks a chance to regenerate mana equal to 15% of your attack power. Lasts 30 sec.
 		-- 2.3.0 Shamanistic Rage (Enhancement) now also reduces all damage taken by 30% for the duration.
@@ -1587,7 +1587,7 @@ elseif addonTable.playerClass == "SHAMAN" then
 		},
 	}
 elseif addonTable.playerClass == "WARLOCK" then
-	addonTable.StatModTable["WARLOCK"] = {
+	StatLogic.StatModTable["WARLOCK"] = {
 		-- Warlock: Demonic Knowledge (Rank 3) - 2,20 - UnitExists("pet")
 		--          Increases your spell damage by an amount equal to 5%/10%/15% of the total of your active demon's Stamina plus Intellect.
 		-- WARLOCK_PET_BONUS["PET_BONUS_INT"] = 0.3;
@@ -1708,7 +1708,7 @@ elseif addonTable.playerClass == "WARLOCK" then
 		},
 	}
 elseif addonTable.playerClass == "WARRIOR" then
-	addonTable.StatModTable["WARRIOR"] = {
+	StatLogic.StatModTable["WARRIOR"] = {
 		-- Warrior: Improved Berserker Stance (Rank 5) - 2,20 - Stance
 		--          Increases attack power by 2%/4%/6%/8%/10% while in Berserker Stance.
 		["MOD_AP"] = {
@@ -1856,7 +1856,7 @@ elseif addonTable.playerClass == "WARRIOR" then
 end
 
 if addonTable.playerRace == "NightElf" then
-	addonTable.StatModTable["NightElf"] = {
+	StatLogic.StatModTable["NightElf"] = {
 		-- Night Elf : Quickness - Racial
 		--             Dodge chance increased by 1%.
 		["ADD_DODGE"] = {
@@ -1866,7 +1866,7 @@ if addonTable.playerRace == "NightElf" then
 		},
 	}
 elseif addonTable.playerRace == "Tauren" then
-	addonTable.StatModTable["Tauren"] = {
+	StatLogic.StatModTable["Tauren"] = {
 		-- Tauren: Endurance - Racial
 		--         Total Health increased by 5%.
 		["MOD_HEALTH"] = {
@@ -1876,7 +1876,7 @@ elseif addonTable.playerRace == "Tauren" then
 		},
 	}
 elseif addonTable.playerRace == "Gnome" then
-	addonTable.StatModTable["Gnome"] = {
+	StatLogic.StatModTable["Gnome"] = {
 		-- Gnome: Expansive Mind - Racial
 		--        Increase Intelligence by 5%.
 		["MOD_INT"] = {
@@ -1886,7 +1886,7 @@ elseif addonTable.playerRace == "Gnome" then
 		},
 	}
 elseif addonTable.playerRace == "Human" then
-	addonTable.StatModTable["Human"] = {
+	StatLogic.StatModTable["Human"] = {
 		-- Human: The Human Spirit - Racial
 		--        Increase Spirit by 10%.
 		["MOD_SPIRIT"] = {
@@ -1897,7 +1897,7 @@ elseif addonTable.playerRace == "Human" then
 	}
 end
 
-addonTable.StatModTable["ALL"] = {
+StatLogic.StatModTable["ALL"] = {
 	-- Paladin: Lay on Hands (Rank 1/2) - Buff
 	--          Armor increased by 15%/30%.
 	-- Priest: Inspiration (Rank 1/2/3) - Buff

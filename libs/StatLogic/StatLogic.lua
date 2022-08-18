@@ -903,7 +903,7 @@ Apply Aura: Mod Skill Talent (Defense)
 --"MOD_COOLDOWN"
 --]]
 
-local StatModInfo = {
+StatLogic.StatModInfo = {
 	------------------------------------------------------------------------------
 	-- initialValue: sets the initial value for the stat mod
 	-- if initialValue == 0, inter-mod operations are done with addition,
@@ -1224,13 +1224,13 @@ local StatModCategories = {
 }
 
 function StatLogic:GetStatMod(stat, school)
-	local statModInfo = StatModInfo[stat]
+	local statModInfo = StatLogic.StatModInfo[stat]
 	local mod = statModInfo.initialValue
 	-- if school is required for this statMod but not given
 	if statModInfo.school and not school then return mod end
 	-- Class specific mods
 	for _, statModCategory in ipairs(StatModCategories) do
-		local categoryTable = addonTable.StatModTable[statModCategory]
+		local categoryTable = StatLogic.StatModTable[statModCategory]
 		if categoryTable and type(categoryTable[stat]) == "table" then
 			for _, case in ipairs(categoryTable[stat]) do
 				mod = GetStatModValue(mod, case, statModInfo.initialValue, school)

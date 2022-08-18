@@ -250,9 +250,9 @@ addonTable.BaseDodge = {
 	[StatLogic:GetClassIdOrName("DRUID")] = -1.8720,
 }
 
-addonTable.StatModTable = {}
+StatLogic.StatModTable = {}
 if playerClass == "DRUID" then
-	addonTable.StatModTable["DRUID"] = {
+	StatLogic.StatModTable["DRUID"] = {
 		-- Druid: Reflection - 3,6
 		--        Allows 5/10/15% of your Mana regeneration to continue while casting
 		["ADD_MANA_REG_MOD_NORMAL_MANA_REG"] = {
@@ -350,7 +350,7 @@ if playerClass == "DRUID" then
 		},
 	}
 elseif playerClass == "HUNTER" then
-	addonTable.StatModTable["HUNTER"] = {
+	StatLogic.StatModTable["HUNTER"] = {
 		["ADD_DODGE"] = {
 			-- Hunter: Aspect of the Monkey - Buff
 			--         The hunter takes on the aspects of a monkey, increasing chance to dodge by 8%. Only one Aspect can be active at a time.
@@ -399,7 +399,7 @@ elseif playerClass == "HUNTER" then
 		},
 	}
 elseif playerClass == "MAGE" then
-	addonTable.StatModTable["MAGE"] = {
+	StatLogic.StatModTable["MAGE"] = {
 		-- Mage: Arcane Fortitude - 1,9
 		--       Increases your armor by an amount equal to 50% of your Intellect.
 		["ADD_ARMOR_MOD_INT"] = {
@@ -445,7 +445,7 @@ elseif playerClass == "MAGE" then
 		},
 	}
 elseif playerClass == "PALADIN" then
-	addonTable.StatModTable["PALADIN"] = {
+	StatLogic.StatModTable["PALADIN"] = {
 		-- Paladin: Toughness (Rank 5) - 2,5
 		--          Increases your armor value from items by 2%/4%/6%/8%/10%.
 		["MOD_ARMOR"] = {
@@ -492,7 +492,7 @@ elseif playerClass == "PALADIN" then
 		},
 	}
 elseif playerClass == "PRIEST" then
-	addonTable.StatModTable["PRIEST"] = {
+	StatLogic.StatModTable["PRIEST"] = {
 		-- Priest: Meditation (Rank 3) - 1,8
 		--         Allows 5/10/15% of your Mana regeneration to continue while casting.
 		["ADD_MANA_REG_MOD_NORMAL_MANA_REG"] = {
@@ -564,7 +564,7 @@ elseif playerClass == "PRIEST" then
 		},
 	}
 elseif playerClass == "ROGUE" then
-	addonTable.StatModTable["ROGUE"] = {
+	StatLogic.StatModTable["ROGUE"] = {
 		-- Rogue: Deadliness (Rank 5) - 3,16
 		--        Increases your attack power by 2%/4%/6%/8%/10%.
 		["MOD_AP"] = {
@@ -634,7 +634,7 @@ elseif playerClass == "ROGUE" then
 		},
 	}
 elseif playerClass == "SHAMAN" then
-	addonTable.StatModTable["SHAMAN"] = {
+	StatLogic.StatModTable["SHAMAN"] = {
 		-- Shaman: Anticipation (Rank 5) - 2,9
 		--         Increases your chance to dodge by an additional 1%/2%/3%/4%/5%.
 		["ADD_DODGE"] = {
@@ -695,7 +695,7 @@ elseif playerClass == "SHAMAN" then
 		},
 	}
 elseif playerClass == "WARLOCK" then
-	addonTable.StatModTable["WARLOCK"] = {
+	StatLogic.StatModTable["WARLOCK"] = {
 		-- Warlock: Master Demonologist (Rank 5) - 2,15
 		--          Voidwalker - Reduces physical damage taken by 2%/4%/6%/8%/10%.
 		-- Warlock: Soul Link (Rank 1) - 2,19
@@ -748,7 +748,7 @@ elseif playerClass == "WARLOCK" then
 		},
 	}
 elseif playerClass == "WARRIOR" then
-	addonTable.StatModTable["WARRIOR"] = {
+	StatLogic.StatModTable["WARRIOR"] = {
 		["MOD_DMG_TAKEN"] = {
 			-- Warrior: Shield Wall - Buff
 			--          Reduces the Physical and magical damage taken by the caster by 75% for 10 sec.
@@ -839,7 +839,7 @@ elseif playerClass == "WARRIOR" then
 end
 
 if addonTable.playerRace == "NightElf" then
-	addonTable.StatModTable["NightElf"] = {
+	StatLogic.StatModTable["NightElf"] = {
 		-- Night Elf : Quickness - Racial
 		--             Dodge chance increased by 1%.
 		["ADD_DODGE"] = {
@@ -849,7 +849,7 @@ if addonTable.playerRace == "NightElf" then
 		},
 	}
 elseif addonTable.playerRace == "Tauren" then
-	addonTable.StatModTable["Tauren"] = {
+	StatLogic.StatModTable["Tauren"] = {
 		-- Tauren: Endurance - Racial
 		--         Total Health increased by 5%.
 		["MOD_HEALTH"] = {
@@ -859,7 +859,7 @@ elseif addonTable.playerRace == "Tauren" then
 		}
 	}
 elseif addonTable.playerRace == "Gnome" then
-	addonTable.StatModTable["Gnome"] = {
+	StatLogic.StatModTable["Gnome"] = {
 		-- Gnome: Expansive Mind - Racial
 		--        Increase Intelligence by 5%.
 		["MOD_INT"] = {
@@ -869,7 +869,7 @@ elseif addonTable.playerRace == "Gnome" then
 		}
 	}
 elseif addonTable.playerRace == "Human" then
-	addonTable.StatModTable["Human"] = {
+	StatLogic.StatModTable["Human"] = {
 		-- Human: The Human Spirit - Racial
 		--        Increase Spirit by 5%.
 		["MOD_SPIRIT"] = {
@@ -880,7 +880,7 @@ elseif addonTable.playerRace == "Human" then
 	}
 end
 
-addonTable.StatModTable["ALL"] = {
+StatLogic.StatModTable["ALL"] = {
 	["MOD_ARMOR"] = {
 		-- Paladin: Lay on Hands (Rank 1/2) - Buff
 		--          Armor increased by 15%/30%.
