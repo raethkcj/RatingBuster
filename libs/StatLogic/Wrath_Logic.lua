@@ -2643,20 +2643,6 @@ elseif addonTable.playerClass == "WARLOCK" then
 		--   3.1.0: 2,11
 		["ADD_HEALING_MOD_SPI"] = {
 			{
-				["rank"] = {
-					0.3, 0.3, 0.3, 0.3, -- 4 ranks
-				},
-				["buff"] = GetSpellInfo(28176),		-- ["Fel Armor"],
-			},
-			{
-				["tab"] = 2,
-				["num"] = 11,
-				["rank"] = {
-					0.03, 0.06, 0.09,
-				},
-				["buff"] = GetSpellInfo(28176),		-- ["Fel Armor"],
-			},
-			{
 				["value"] = 0.2,
 				["glyph"] = 63320,
 				["buff"] = GetSpellInfo(63321), -- ["Life Tap"],
