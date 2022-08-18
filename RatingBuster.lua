@@ -1091,8 +1091,7 @@ if class == "DRUID" then
 		name = L["Show Mana Regen"].." ("..tostring(GetSpellInfo(35359) or "nil")..")",
 		desc = L["Show Mana Regen while casting from Spirit"].." ("..tostring(GetSpellInfo(35359) or "nil")..")",
 	}
-end
-if class == "HUNTER" then
+elseif class == "HUNTER" then
 	defaults.profile.sumHP = true
 	defaults.profile.sumMP = true
 	defaults.profile.sumResilience = true
@@ -1110,8 +1109,7 @@ if class == "HUNTER" then
 		name = L["Show Ranged Attack Power"].." ("..tostring(GetSpellInfo(34484) or "nil")..")",
 		desc = L["Show Ranged Attack Power from Intellect"].." ("..tostring(GetSpellInfo(34484) or "nil")..")",
 	}
-end
-if class == "MAGE" then
+elseif class == "MAGE" then
 	defaults.profile.sumHP = true
 	defaults.profile.sumMP = true
 	defaults.profile.sumResilience = true
@@ -1141,8 +1139,7 @@ if class == "MAGE" then
 		name = L["Show Mana Regen"].." ("..tostring(GetSpellInfo(18464) or "nil")..")",
 		desc = L["Show Mana Regen while casting from Spirit"].." ("..tostring(GetSpellInfo(18464) or "nil")..")",
 	}
-end
-if class == "PALADIN" then
+elseif class == "PALADIN" then
 	defaults.profile.sumHP = true
 	defaults.profile.sumMP = true
 	defaults.profile.sumResilience = true
@@ -1168,8 +1165,7 @@ if class == "PALADIN" then
 		name = L["Show Healing"].." ("..tostring(GetSpellInfo(31841) or "nil")..")",
 		desc = L["Show Healing from Intellect"].." ("..tostring(GetSpellInfo(31841) or "nil")..")",
 	}
-end
-if class == "PRIEST" then
+elseif class == "PRIEST" then
 	defaults.profile.sumHP = true
 	defaults.profile.sumMP = true
 	defaults.profile.sumResilience = true
@@ -1200,8 +1196,7 @@ if class == "PRIEST" then
 		name = L["Show Healing"].." ("..tostring(GetSpellInfo(15031) or "nil")..", "..tostring(GetSpellInfo(33182) or "nil")..")",
 		desc = L["Show Healing from Spirit"].." ("..tostring(GetSpellInfo(15031) or "nil")..", "..tostring(GetSpellInfo(33182) or "nil")..")",
 	}
-end
-if class == "ROGUE" then
+elseif class == "ROGUE" then
 	defaults.profile.sumHP = true
 	defaults.profile.sumResilience = true
 	defaults.profile.sumAP = true
@@ -1210,8 +1205,7 @@ if class == "ROGUE" then
 	defaults.profile.sumHaste = true
 	defaults.profile.sumExpertise = true
 	defaults.profile.showSpellCritFromInt = false
-end
-if class == "SHAMAN" then
+elseif class == "SHAMAN" then
 	defaults.profile.sumHP = true
 	defaults.profile.sumMP = true
 	defaults.profile.sumResilience = true
@@ -1246,8 +1240,7 @@ if class == "SHAMAN" then
 		name = L["Show Healing"].." ("..tostring(GetSpellInfo(30869) or "nil")..")",
 		desc = L["Show Healing from Intellect"].." ("..tostring(GetSpellInfo(30869) or "nil")..")",
 	}
-end
-if class == "WARLOCK" then
+elseif class == "WARLOCK" then
 	defaults.profile.sumHP = true
 	defaults.profile.sumMP = true
 	defaults.profile.sumResilience = true
@@ -1269,8 +1262,7 @@ if class == "WARLOCK" then
 		name = L["Show Spell Damage"].." ("..tostring(GetSpellInfo(35693) or "nil")..")",
 		desc = L["Show Spell Damage from Intellect"].." ("..tostring(GetSpellInfo(35693) or "nil")..")",
 	}
-end
-if class == "WARRIOR" then
+elseif class == "WARRIOR" then
 	defaults.profile.sumHP = true
 	defaults.profile.sumResilience = true
 	defaults.profile.sumAP = true
