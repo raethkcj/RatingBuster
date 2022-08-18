@@ -2632,6 +2632,7 @@ elseif addonTable.playerClass == "WARLOCK" then
 			},
 			{
 				["value"] = 0.2,
+				["glyph"] = 63320,
 				["buff"] = GetSpellInfo(63321), -- ["Life Tap"],
 			},
 		},
@@ -2657,6 +2658,7 @@ elseif addonTable.playerClass == "WARLOCK" then
 			},
 			{
 				["value"] = 0.2,
+				["glyph"] = 63320,
 				["buff"] = GetSpellInfo(63321), -- ["Life Tap"],
 			},
 		},
