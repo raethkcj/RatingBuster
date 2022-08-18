@@ -1160,20 +1160,29 @@ do
 		local temp = {}
 		for tab = 1, GetNumTalentTabs() do
 			temp[tab] = {}
+			local products = {}
 			for i = 1,GetNumTalents(tab) do
-				local name, _, tier, column = GetTalentInfo(2,i)
+				local name, _, tier, column = GetTalentInfo(tab,i)
 				local product = (tier - 1) * 4 + column
 				temp[tab][product] = i
+				table.insert(products, product)
 			end
+
+			table.sort(products)
 
 			orderedTalentCache[tab] = {}
 			local j = 1
-			for product, i in pairs(temp[tab]) do
-				orderedTalentCache[tab][j] = i
+			for _, product in ipairs(products) do
+				orderedTalentCache[tab][j] = temp[tab][product]
 				j = j + 1
 			end
 		end
+		f:UnregisterEvent("SPELLS_CHANGED")
 	end)
+end
+
+function StatLogic:GetOrderedTalentInfo(tab, num)
+	return GetTalentInfo(tab, orderedTalentCache[tab][num])
 end
 
 local GetStatModValue = function(mod, case, initialValue, school)
@@ -1184,8 +1193,12 @@ local GetStatModValue = function(mod, case, initialValue, school)
 	local value
 	if case.tab and case.num then
 		-- Talent Rank
-		local r = select(5, GetTalentInfo(case.tab, orderedTalentCache[case.tab][case.num]))
-		value = case.rank[r]
+		local r = select(5, StatLogic:GetOrderedTalentInfo(case.tab, case.num))
+		if case.rank then
+			value = case.rank[r]
+		elseif r > 0 then
+			value = case.value
+		end
 	elseif case.buff and case.rank then
 		local r = GetPlayerBuffRank(case.buff)
 		value = case.rank[r]
