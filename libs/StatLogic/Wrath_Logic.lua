@@ -2659,10 +2659,10 @@ elseif addonTable.playerClass == "WARLOCK" then
 				["condition"] = "UnitExists('pet')",
 			},
 			-- Blessings on pet: floor() * 1.1
-			{
-				["value"] = 0.1, -- BoK, BoSanc
-				["condition"] = "UnitBuff('pet', GetSpellInfo(20217)) or UnitBuff('pet', GetSpellInfo(25898)) or UnitBuff('pet', GetSpellInfo(20911)) or UnitBuff('pet', GetSpellInfo(25899))",
-			},
+			--{
+			--	["value"] = 0.1, -- BoK, BoSanc
+			--	["condition"] = "UnitBuff('pet', GetSpellInfo(20217)) or UnitBuff('pet', GetSpellInfo(25898)) or UnitBuff('pet', GetSpellInfo(20911)) or UnitBuff('pet', GetSpellInfo(25899))",
+			--},
 			-- Fel Vitality: floor() * 1.15
 			{
 				["tab"] = 2,
@@ -2680,10 +2680,10 @@ elseif addonTable.playerClass == "WARLOCK" then
 				["condition"] = "UnitExists('pet')",
 			},
 			-- Blessings on pet
-			{
-				["value"] = 0.1,
-				["condition"] = "UnitBuff('pet', GetSpellInfo(20217)) or UnitBuff('pet', GetSpellInfo(25898)) or UnitBuff('pet', GetSpellInfo(20911)) or UnitBuff('pet', GetSpellInfo(25899))",
-			},
+			--{
+			--	["value"] = 0.1,
+			--	["condition"] = "UnitBuff('pet', GetSpellInfo(20217)) or UnitBuff('pet', GetSpellInfo(25898)) or UnitBuff('pet', GetSpellInfo(20911)) or UnitBuff('pet', GetSpellInfo(25899))",
+			--},
 			-- Fel Vitality
 			{
 				["tab"] = 2,
