@@ -916,56 +916,12 @@ StatLogic.StatModInfo = {
 	------------------------------------------------------------------------------
 	-- school: school arg is required for these mods
 	------------------------------------------------------------------------------
-	["ADD_AP_MOD_ARMOR"] = {
-		initialValue = 0,
-		finalAdjust = 0,
-	},
-	["ADD_AP_MOD_INT"] = {
-		initialValue = 0,
-		finalAdjust = 0,
-	},
-	["ADD_AP_MOD_SPELL_DMG"] = {
-		initialValue = 0,
-		finalAdjust = 0,
-	},
-	["ADD_AP_MOD_STA"] = {
-		initialValue = 0,
-		finalAdjust = 0,
-	},
-	["ADD_ARMOR_MOD_INT"] = {
-		initialValue = 0,
-		finalAdjust = 0,
-	},
 	["ADD_CRIT_TAKEN"] = {
 		initialValue = 0,
 		finalAdjust = 0,
 		school = true,
 	},
-	["ADD_CR_PARRY_MOD_STR"] = {
-		initialValue = 0,
-		finalAdjust = 0,
-	},
 	["ADD_DODGE"] = {
-		initialValue = 0,
-		finalAdjust = 0,
-	},
-	["ADD_HEALING_MOD_AGI"] = {
-		initialValue = 0,
-		finalAdjust = 0,
-	},
-	["ADD_HEALING_MOD_AP"] = {
-		initialValue = 0,
-		finalAdjust = 0,
-	},
-	["ADD_HEALING_MOD_INT"] = {
-		initialValue = 0,
-		finalAdjust = 0,
-	},
-	["ADD_HEALING_MOD_SPI"] = {
-		initialValue = 0,
-		finalAdjust = 0,
-	},
-	["ADD_HEALING_MOD_STR"] = {
 		initialValue = 0,
 		finalAdjust = 0,
 	},
@@ -974,65 +930,12 @@ StatLogic.StatModInfo = {
 		finalAdjust = 0,
 		school = true,
 	},
-	["ADD_MANA_REG_MOD_INT"] = {
-		initialValue = 0,
-		finalAdjust = 0,
-	},
-	["ADD_MANA_REG_MOD_MANA"] = {
-		initialValue = 0,
-		finalAdjust = 0,
-	},
-	["ADD_MANA_REG_MOD_NORMAL_MANA_REG"] = {
-		initialValue = 0,
-		finalAdjust = 0,
-	},
 	["ADD_PET_INT_MOD_INT"] = {
 		initialValue = 1,
 		finalAdjust = 0,
 	},
 	["ADD_PET_STA_MOD_STA"] = {
 		initialValue = 1,
-		finalAdjust = 0,
-	},
-	["ADD_RANGED_AP_MOD_INT"] = {
-		initialValue = 0,
-		finalAdjust = 0,
-	},
-	["ADD_SCHOOL_SP_MOD_SPI"] = {
-		initialValue = 0,
-		finalAdjust = 0,
-		school = true,
-	},
-	["ADD_SPELL_CRIT_RATING_MOD_SPI"] = {
-		initialValue = 0,
-		finalAdjust = 0,
-	},
-	["ADD_SPELL_DMG_MOD_AP"] = {
-		initialValue = 0,
-		finalAdjust = 0,
-	},
-	["ADD_SPELL_DMG_MOD_INT"] = {
-		initialValue = 0,
-		finalAdjust = 0,
-	},
-	["ADD_SPELL_DMG_MOD_PET_INT"] = {
-		initialValue = 0,
-		finalAdjust = 0,
-	},
-	["ADD_SPELL_DMG_MOD_PET_STA"] = {
-		initialValue = 0,
-		finalAdjust = 0,
-	},
-	["ADD_SPELL_DMG_MOD_SPI"] = {
-		initialValue = 0,
-		finalAdjust = 0,
-	},
-	["ADD_SPELL_DMG_MOD_STA"] = {
-		initialValue = 0,
-		finalAdjust = 0,
-	},
-	["ADD_SPELL_DMG_MOD_STR"] = {
-		initialValue = 0,
 		finalAdjust = 0,
 	},
 	["MOD_AGI"] = {
@@ -1108,6 +1011,153 @@ StatLogic.StatModInfo = {
 		finalAdjust = 1,
 	},
 }
+
+-- StatMods used by RatingBuster to dynamically add options for stat breakdowns
+local addedInfoMods = {
+	{
+		add = "AP",
+		mod = "ARMOR",
+		initialValue = 0,
+		finalAdjust = 0,
+	},
+	{
+		add = "AP",
+		mod = "INT",
+		initialValue = 0,
+		finalAdjust = 0,
+	},
+	{
+		add = "AP",
+		mod = "SPELL_DMG",
+		initialValue = 0,
+		finalAdjust = 0,
+	},
+	{
+		add = "AP",
+		mod = "STA",
+		initialValue = 0,
+		finalAdjust = 0,
+	},
+	{
+		add = "ARMOR",
+		mod = "INT",
+		initialValue = 0,
+		finalAdjust = 0,
+	},
+	{
+		add = "HEALING",
+		mod = "AGI",
+		initialValue = 0,
+		finalAdjust = 0,
+	},
+	{
+		add = "HEALING",
+		mod = "AP",
+		initialValue = 0,
+		finalAdjust = 0,
+	},
+	{
+		add = "HEALING",
+		mod = "INT",
+		initialValue = 0,
+		finalAdjust = 0,
+	},
+	{
+		add = "HEALING",
+		mod = "SPI",
+		initialValue = 0,
+		finalAdjust = 0,
+	},
+	{
+		add = "HEALING",
+		mod = "STR",
+		initialValue = 0,
+		finalAdjust = 0,
+	},
+	{
+		add = "MANA_REG",
+		mod = "INT",
+		initialValue = 0,
+		finalAdjust = 0,
+	},
+	{
+		add = "MANA_REG",
+		mod = "MANA",
+		initialValue = 0,
+		finalAdjust = 0,
+	},
+	{
+		add = "MANA_REG",
+		mod = "NORMAL_MANA_REG",
+		initialValue = 0,
+		finalAdjust = 0,
+	},
+	{
+		add = "PARRY_RATING",
+		mod = "STR",
+		initialValue = 0,
+		finalAdjust = 0,
+	},
+	{
+		add = "RANGED_AP",
+		mod = "INT",
+		initialValue = 0,
+		finalAdjust = 0,
+	},
+	{
+		add = "SPELL_CRIT_RATING",
+		mod = "SPI",
+		initialValue = 0,
+		finalAdjust = 0,
+	},
+	{
+		add = "SPELL_DMG",
+		mod = "AP",
+		initialValue = 0,
+		finalAdjust = 0,
+	},
+	{
+		add = "SPELL_DMG",
+		mod = "INT",
+		initialValue = 0,
+		finalAdjust = 0,
+	},
+	{
+		add = "SPELL_DMG",
+		mod = "PET_INT",
+		initialValue = 0,
+		finalAdjust = 0,
+	},
+	{
+		add = "SPELL_DMG",
+		mod = "PET_STA",
+		initialValue = 0,
+		finalAdjust = 0,
+	},
+	{
+		add = "SPELL_DMG",
+		mod = "SPI",
+		initialValue = 0,
+		finalAdjust = 0,
+	},
+	{
+		add = "SPELL_DMG",
+		mod = "STA",
+		initialValue = 0,
+		finalAdjust = 0,
+	},
+	{
+		add = "SPELL_DMG",
+		mod = "STR",
+		initialValue = 0,
+		finalAdjust = 0,
+	},
+}
+
+for _, statMod in ipairs(addedInfoMods) do
+	local name = string.format("ADD_%s_MOD_%s", statMod.add, statMod.mod)
+	StatLogic.StatModInfo[name] = statMod
+end
 
 local StatModValidators = {
 	condition = function(case)

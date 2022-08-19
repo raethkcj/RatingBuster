@@ -532,6 +532,15 @@ local options = {
 						},
 					},
 				},
+				armor = {
+					type = 'group',
+					order = 7,
+					name = "Armor",
+					desc = "Changes the display of Armor",
+					args = {},
+					-- Only show for DK + Warrior who scale from Armor
+					hidden = not StatLogic.StatModTable[class]["ADD_AP_MOD_ARMOR"],
+				},
 			},
 		},
 		sum = {
@@ -1048,6 +1057,95 @@ if TankPoints and (tonumber(strsub(TankPoints.version, 1, 3)) >= 2.6) then
 	--]]
 end
 
+do
+	-- Mostly for backwards compatibility
+	local statToOptionKey = setmetatable({
+		["AP"] = "AP",
+		["MANA_REG"] = "MP5",
+		["RANGED_AP"] = "RAP",
+	},
+	{
+		__index = function(table, statMod)
+			-- Remove underscores, PascalCase
+			return string.gsub(statMod, "[%W_]*(%w+)[%W_]*", function(word)
+				return word:lower():gsub("^%l", string.upper)
+			end)
+		end
+	})
+
+	local addStatModOption = function(add, mod, sources)
+		-- ADD_HEALING_MOD_INT -> showHealingFromInt
+		local key = "show" .. statToOptionKey[add] .. "From" .. statToOptionKey[mod]
+
+		local option = options.args.stat.args[mod:lower()].args[key]
+		if not option then
+			option = {
+				type = "toggle",
+				width = "full",
+			}
+		else
+			sources = option.desc .. ", " .. sources
+		end
+
+		option.name = L.statModOptionDesc(SHOW, L[add], L["from"], L[mod])
+		option.desc = sources
+
+		options.args.stat.args[mod:lower()].args[key] = option
+	end
+
+	local f = CreateFrame("Frame")
+	f:RegisterEvent("SPELLS_CHANGED")
+	f:SetScript("OnEvent", function()
+		for statMod, cases in pairs(StatLogic.StatModTable[class]) do
+			local add = StatLogic.StatModInfo[statMod].add
+			local mod = StatLogic.StatModInfo[statMod].mod
+
+			if add and mod then
+				local sources = ""
+				local firstSource = true
+				for _, case in ipairs(cases) do
+					if not firstSource then
+						sources = sources .. ", "
+					end
+					local source = ""
+					if case.buff then
+						source = case.buff
+					elseif case.tab then
+						source = StatLogic:GetOrderedTalentInfo(case.tab, case.num)
+					elseif case.glyph then
+						source = GetSpellInfo(case.glyph)
+					end
+					sources = sources .. source
+					firstSource = false
+				end
+
+				-- Molten Armor and Forceful Deflection give rating,
+				-- but we show it to the user as the converted stat
+				add = add:gsub("_RATING", "")
+
+				if mod == "NORMAL_MANA_REG" then
+					-- "Normal mana regen" is added from both int and spirit
+					addStatModOption(add, "INT", sources)
+					mod = "SPI"
+				elseif mod == "AP" then
+					-- TODO: This is for Enh Shaman's Mental Quickness.
+					-- Their AP can also come from AGI and INT in Wrath (not TBC),
+					-- but 3.3.5 RatingBuster only showed it from STR.
+					-- Ret has SPELL_DMG/HEALING from AP but only gets AP from STR
+					mod = "STR"
+				end
+
+				-- Demonic Knowledge technically scales with pet stats,
+				-- but we compute the scaling from player's stats
+				mod = mod:gsub("^PET_", "")
+
+				addStatModOption(add, mod, sources)
+			end
+		end
+		f:UnregisterEvent("SPELLS_CHANGED")
+	end)
+end
+
 -- Class specific settings
 if class == "DRUID" then
 	defaults.profile.sumHP = true
@@ -1071,26 +1169,6 @@ if class == "DRUID" then
 	defaults.profile.showHealingFromInt = true
 	defaults.profile.showMP5FromInt = true -- Dreamstate (Rank 3) - 1,17
 	defaults.profile.showMP5FromSpi = true
-	options.args.stat.args.agi.args.showHealingFromAgi = { -- Nurturing Instinct (Rank 2) - 2,14
-		type = 'toggle',
-		name = L["Show Healing"].." ("..tostring(GetSpellInfo(47180) or "nil")..")",						-- ["Nurturing Instinct"]
-		desc = L["Show Healing from Agility"].." ("..tostring(GetSpellInfo(47180) or "nil")..")",			-- ["Nurturing Instinct"]
-	}
-	options.args.stat.args.int.args.showSpellDmgFromInt = { -- Lunar Guidance (Rank 3) - 1,12
-		type = 'toggle',
-		name = L["Show Spell Damage"].." ("..tostring(GetSpellInfo(33591) or "nil")..")",					-- ["Lunar Guidance"]
-		desc = L["Show Spell Damage from Intellect"].." ("..tostring(GetSpellInfo(33591) or "nil")..")",	-- ["Lunar Guidance"]
-	}
-	options.args.stat.args.int.args.showHealingFromInt = { -- Lunar Guidance (Rank 3) - 1,12
-		type = 'toggle',
-		name = L["Show Healing"].." ("..tostring(GetSpellInfo(33591) or "nil")..")",
-		desc = L["Show Healing from Intellect"].." ("..tostring(GetSpellInfo(33591) or "nil")..")",
-	}
-	options.args.stat.args.spi.args.showMP5FromSpi = { -- Intensity (Rank 3) - 3,6
-		type = 'toggle',
-		name = L["Show Mana Regen"].." ("..tostring(GetSpellInfo(35359) or "nil")..")",
-		desc = L["Show Mana Regen while casting from Spirit"].." ("..tostring(GetSpellInfo(35359) or "nil")..")",
-	}
 elseif class == "HUNTER" then
 	defaults.profile.sumHP = true
 	defaults.profile.sumMP = true
@@ -1104,11 +1182,6 @@ elseif class == "HUNTER" then
 	defaults.profile.showDodgeFromAgi = false
 	defaults.profile.showSpellCritFromInt = false
 	defaults.profile.showRAPFromInt = true
-	options.args.stat.args.int.args.showRAPFromInt = { -- Careful Aim
-		type = 'toggle',
-		name = L["Show Ranged Attack Power"].." ("..tostring(GetSpellInfo(34484) or "nil")..")",
-		desc = L["Show Ranged Attack Power from Intellect"].." ("..tostring(GetSpellInfo(34484) or "nil")..")",
-	}
 elseif class == "MAGE" then
 	defaults.profile.sumHP = true
 	defaults.profile.sumMP = true
@@ -1124,21 +1197,6 @@ elseif class == "MAGE" then
 	defaults.profile.showArmorFromInt = true
 	defaults.profile.showMP5FromInt = true
 	defaults.profile.showMP5FromSpi = true
-	options.args.stat.args.int.args.showSpellDmgFromInt = { -- Mind Mastery (Rank 5) - 1,22
-		type = 'toggle',
-		name = L["Show Spell Damage"].." ("..tostring(GetSpellInfo(31588) or "nil")..")",
-		desc = L["Show Spell Damage from Intellect"].." ("..tostring(GetSpellInfo(31588) or "nil")..")",
-	}
-	options.args.stat.args.int.args.showArmorFromInt = { -- Arcane Fortitude - 1,9
-		type = 'toggle',
-		name = L["Show Armor"].." ("..tostring(GetSpellInfo(28574) or "nil")..")",
-		desc = L["Show Armor from Intellect"].." ("..tostring(GetSpellInfo(28574) or "nil")..")",
-	}
-	options.args.stat.args.spi.args.showMP5FromSpi = { -- Arcane Meditation (Rank 3) - 1,12
-		type = 'toggle',
-		name = L["Show Mana Regen"].." ("..tostring(GetSpellInfo(18464) or "nil")..")",
-		desc = L["Show Mana Regen while casting from Spirit"].." ("..tostring(GetSpellInfo(18464) or "nil")..")",
-	}
 elseif class == "PALADIN" then
 	defaults.profile.sumHP = true
 	defaults.profile.sumMP = true
@@ -1155,16 +1213,6 @@ elseif class == "PALADIN" then
 	defaults.profile.sumMP5 = true
 	defaults.profile.showSpellDmgFromInt = true
 	defaults.profile.showHealingFromInt = true
-	options.args.stat.args.int.args.showSpellDmgFromInt = { -- Holy Guidance (Rank 5) - 1,19
-		type = 'toggle',
-		name = L["Show Spell Damage"].." ("..tostring(GetSpellInfo(31841) or "nil")..")",
-		desc = L["Show Spell Damage from Intellect"].." ("..tostring(GetSpellInfo(31841) or "nil")..")",
-	}
-	options.args.stat.args.int.args.showHealingFromInt = { -- Holy Guidance (Rank 5) - 1,19
-		type = 'toggle',
-		name = L["Show Healing"].." ("..tostring(GetSpellInfo(31841) or "nil")..")",
-		desc = L["Show Healing from Intellect"].." ("..tostring(GetSpellInfo(31841) or "nil")..")",
-	}
 elseif class == "PRIEST" then
 	defaults.profile.sumHP = true
 	defaults.profile.sumMP = true
@@ -1181,21 +1229,6 @@ elseif class == "PRIEST" then
 	defaults.profile.showMP5FromSpi = true
 	defaults.profile.showSpellDmgFromSpi = true
 	defaults.profile.showHealingFromSpi = true
-	options.args.stat.args.spi.args.showMP5FromSpi = { -- Meditation (Rank 3) - 1,9
-		type = 'toggle',
-		name = L["Show Mana Regen"].." ("..tostring(GetSpellInfo(38346) or "nil")..")",
-		desc = L["Show Mana Regen while casting from Spirit"].." ("..tostring(GetSpellInfo(38346) or "nil")..")",
-	}
-	options.args.stat.args.spi.args.showSpellDmgFromSpi = { -- Spiritual Guidance (Rank 5) - 2,14, Improved Divine Spirit (Rank 2) - 1,15 - Buff
-		type = 'toggle',
-		name = L["Show Spell Damage"].." ("..tostring(GetSpellInfo(15031) or "nil")..", "..tostring(GetSpellInfo(33182) or "nil")..")",
-		desc = L["Show Spell Damage from Spirit"].." ("..tostring(GetSpellInfo(15031) or "nil")..", "..tostring(GetSpellInfo(33182) or "nil")..")",
-	}
-	options.args.stat.args.spi.args.showHealingFromSpi = { -- Spiritual Guidance (Rank 5) - 2,14, Improved Divine Spirit (Rank 2) - 1,15 - Buff
-		type = 'toggle',
-		name = L["Show Healing"].." ("..tostring(GetSpellInfo(15031) or "nil")..", "..tostring(GetSpellInfo(33182) or "nil")..")",
-		desc = L["Show Healing from Spirit"].." ("..tostring(GetSpellInfo(15031) or "nil")..", "..tostring(GetSpellInfo(33182) or "nil")..")",
-	}
 elseif class == "ROGUE" then
 	defaults.profile.sumHP = true
 	defaults.profile.sumResilience = true
@@ -1220,26 +1253,6 @@ elseif class == "SHAMAN" then
 	defaults.profile.showSpellDmgFromInt = true
 	defaults.profile.showHealingFromInt = true
 	defaults.profile.showMP5FromInt = true
-	options.args.stat.args.str.args.showSpellDmgFromStr = { -- Mental Quickness (Rank 3) - 2,15
-		type = 'toggle',
-		name = L["Show Spell Damage"].." ("..tostring(GetSpellInfo(30814) or "nil")..")",
-		desc = L["Show Spell Damage from Strength"].." ("..tostring(GetSpellInfo(30814) or "nil")..")",
-	}
-	options.args.stat.args.str.args.showHealingFromStr = { -- Mental Quickness (Rank 3) - 2,15
-		type = 'toggle',
-		name = L["Show Healing"].." ("..tostring(GetSpellInfo(30814) or "nil")..")",
-		desc = L["Show Healing from Strength"].." ("..tostring(GetSpellInfo(30814) or "nil")..")",
-	}
-	options.args.stat.args.int.args.showSpellDmgFromInt = { -- Nature's Blessing (Rank 3) - 3,18
-		type = 'toggle',
-		name = L["Show Spell Damage"].." ("..tostring(GetSpellInfo(30869) or "nil")..")",
-		desc = L["Show Spell Damage from Intellect"].." ("..tostring(GetSpellInfo(30869) or "nil")..")",
-	}
-	options.args.stat.args.int.args.showHealingFromInt = { -- Nature's Blessing (Rank 3) - 3,18
-		type = 'toggle',
-		name = L["Show Healing"].." ("..tostring(GetSpellInfo(30869) or "nil")..")",
-		desc = L["Show Healing from Intellect"].." ("..tostring(GetSpellInfo(30869) or "nil")..")",
-	}
 elseif class == "WARLOCK" then
 	defaults.profile.sumHP = true
 	defaults.profile.sumMP = true
@@ -1252,16 +1265,6 @@ elseif class == "WARLOCK" then
 	defaults.profile.showDodgeFromAgi = false
 	defaults.profile.showSpellDmgFromSta = true
 	defaults.profile.showSpellDmgFromInt = true
-	options.args.stat.args.sta.args.showSpellDmgFromSta = { -- Demonic Knowledge (Rank 3) - 2,20 - UnitExists("pet")
-		type = 'toggle',
-		name = L["Show Spell Damage"].." ("..tostring(GetSpellInfo(35693) or "nil")..")",
-		desc = L["Show Spell Damage from Stamina"].." ("..tostring(GetSpellInfo(35693) or "nil")..")",
-	}
-	options.args.stat.args.int.args.showSpellDmgFromInt = { -- Demonic Knowledge (Rank 3) - 2,20 - UnitExists("pet")
-		type = 'toggle',
-		name = L["Show Spell Damage"].." ("..tostring(GetSpellInfo(35693) or "nil")..")",
-		desc = L["Show Spell Damage from Intellect"].." ("..tostring(GetSpellInfo(35693) or "nil")..")",
-	}
 elseif class == "WARRIOR" then
 	defaults.profile.sumHP = true
 	defaults.profile.sumResilience = true

@@ -1091,7 +1091,7 @@ elseif addonTable.playerClass == "DEATHKNIGHT" then
 	StatLogic.StatModTable["DEATHKNIGHT"] = {
 		-- Death Knight: Forceful Deflection - Passive
 		--               Increases your Parry Rating by 25% of your total Strength.
-		["ADD_CR_PARRY_MOD_STR"] = {
+		["ADD_PARRY_RATING_MOD_STR"] = {
 			{
 				["value"] = 0.25,
 			},
@@ -1612,7 +1612,6 @@ elseif addonTable.playerClass == "HUNTER" then
 		},
 	}
 elseif addonTable.playerClass == "MAGE" then
-	print("Initiating mage StatModTable")
 	StatLogic.StatModTable["MAGE"] = {
 		["ADD_SPELL_CRIT_RATING_MOD_SPI"] = {
 			-- Mage: Molten Armor (Rank 3) - Buff
