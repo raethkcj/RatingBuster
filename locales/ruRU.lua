@@ -760,39 +760,18 @@ L["statList"] = {
 	{pattern = "рейтинга скорости", id = CR_HASTE_MELEE},
 	{pattern = "speed rating", id = CR_HASTE_MELEE}, -- [Drums of Battle]
 
-	{pattern = "рейтинг владения", id = CR_WEAPON_SKILL},
-	{pattern = "рейтингу владения", id = CR_WEAPON_SKILL},
-	{pattern = "рейтинга владения", id = CR_WEAPON_SKILL},
 	{pattern = "рейтинг мастерства", id = CR_EXPERTISE},
 	{pattern = "рейтингу мастерства", id = CR_EXPERTISE},
 	{pattern = "рейтинга мастерства", id = CR_EXPERTISE},
 
-	{pattern = "рейтинг уклонения от удара", id = CR_HIT_TAKEN_MELEE},
-	{pattern = "Рейтингу уклонения от удара", id = CR_HIT_TAKEN_MELEE},
-	{pattern = "рейтинга уклонения от удара", id = CR_HIT_TAKEN_MELEE},
 	{pattern = "рейтинг пробивания брони", id = CR_ARMOR_PENETRATION},
 	{pattern = "рейтингу пробивания брони", id = CR_ARMOR_PENETRATION},
 	{pattern = "рейтинга пробивания брони", id = CR_ARMOR_PENETRATION},
+	{pattern = string.lower(ARMOR), id = ARMOR},
+
 	{pattern = "рейтинг искусности", id = CR_MASTERY},
 	{pattern = "рейтингу искусности", id = CR_MASTERY},
 	{pattern = "рейтинга искусности", id = CR_MASTERY},
-	{pattern = string.lower(ARMOR), id = ARMOR},
-	--[[
-	{pattern = "dagger skill rating", id = CR_WEAPON_SKILL},
-	{pattern = "sword skill rating", id = CR_WEAPON_SKILL},
-	{pattern = "two%-handed swords skill rating", id = CR_WEAPON_SKILL},
-	{pattern = "axe skill rating", id = CR_WEAPON_SKILL},
-	{pattern = "bow skill rating", id = CR_WEAPON_SKILL},
-	{pattern = "crossbow skill rating", id = CR_WEAPON_SKILL},
-	{pattern = "gun skill rating", id = CR_WEAPON_SKILL},
-	{pattern = "feral combat skill rating", id = CR_WEAPON_SKILL},
-	{pattern = "mace skill rating", id = CR_WEAPON_SKILL},
-	{pattern = "polearm skill rating", id = CR_WEAPON_SKILL},
-	{pattern = "staff skill rating", id = CR_WEAPON_SKILL},
-	{pattern = "two%-handed axes skill rating", id = CR_WEAPON_SKILL},
-	{pattern = "two%-handed maces skill rating", id = CR_WEAPON_SKILL},
-	{pattern = "fist weapons skill rating", id = CR_WEAPON_SKILL},
-	--]]
 }
 -------------------------
 -- Added info patterns --
@@ -824,6 +803,11 @@ L["$value Parry"] = "$value парирование"
 -- (+1.21%, +0.98% S)
 L["$value Spell"] = "$value закл."
 L["$value Spell Hit"] = "$value метк. закл."
+L["$value% Parry"] = "$value% парирование"
+-- for hit rating showing both physical and spell conversions
+-- (+1.21%, S+0.98%)
+-- (+1.21%, +0.98% S)
+L["$value Spell"] = "$value закл."
 
 ------------------
 -- Stat Summary --

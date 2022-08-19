@@ -188,6 +188,14 @@ L["Show Spell Damage from Spirit"] = "Zeige Zauberschaden resultierend aus Wille
 L["Show Healing"] = "Zeige Heilung"
 L["Show Healing from Spirit"] = "Zeige Heilung resultierend aus Willenskraft"
 
+---------------------------------------------------------------------------
+-- /rb stat armor
+L["Armor"] = "Rüstung"
+L["Changes the display of Armor"] = "Ändert die Anzeige von Rüstung"
+-- /rb stat armor ap
+L["Show Attack Power"] = "Zeige Angriffskraft"
+L["Show Attack Power from Armor"] = "Zeige Angriffskraft, resultierend aus Rüstung"
+---------------------------------------------------------------------------
 -- /rb sum
 L["Stat Summary"] = "Werteübersicht"
 L["Options for stat summary"] = "Optionen für die Werteübersicht"
@@ -592,26 +600,10 @@ L["statList"] = {
 	{pattern = "nahkampftempowertung", id = CR_HASTE_MELEE},
 	{pattern = "tempowertung", id = CR_HASTE_MELEE}, -- [Drums of Battle]
 
-	--		{pattern = "skill rating", id = CR_WEAPON_SKILL}, -- seit 2.3.0 entfernt denke ich..
 	{pattern = "waffenkundewertung", id = CR_EXPERTISE},
 
-	--		{pattern = "hit avoidance rating", id = CR_HIT_TAKEN_MELEE}, - seit 2.0.10 gibt es kein item mehr damit
-	--[[
-	{pattern = "dagger skill rating", id = CR_WEAPON_SKILL},
-	{pattern = "sword skill rating", id = CR_WEAPON_SKILL},
-	{pattern = "two%-handed swords skill rating", id = CR_WEAPON_SKILL},
-	{pattern = "axe skill rating", id = CR_WEAPON_SKILL},
-	{pattern = "bow skill rating", id = CR_WEAPON_SKILL},
-	{pattern = "crossbow skill rating", id = CR_WEAPON_SKILL},
-	{pattern = "gun skill rating", id = CR_WEAPON_SKILL},
-	{pattern = "feral combat skill rating", id = CR_WEAPON_SKILL},
-	{pattern = "mace skill rating", id = CR_WEAPON_SKILL},
-	{pattern = "polearm skill rating", id = CR_WEAPON_SKILL},
-	{pattern = "staff skill rating", id = CR_WEAPON_SKILL},
-	{pattern = "two%-handed axes skill rating", id = CR_WEAPON_SKILL},
-	{pattern = "two%-handed maces skill rating", id = CR_WEAPON_SKILL},
-	{pattern = "fist weapons skill rating", id = CR_WEAPON_SKILL},
-	--]]
+	{pattern = "rüstungsdurchschlagwertung", id = CR_ARMOR_PENETRATION},
+	{pattern = string.lower(ARMOR), id = ARMOR},
 }
 -------------------------
 -- Added info patterns --
@@ -637,6 +629,11 @@ L["$value to be Dodged/Parried"] = "$value wird Ausgewichen/Pariert"
 L["$value to be Crit"] = "$value wird kritisch"
 L["$value Crit Dmg Taken"] = "$value erlittener Schaden"
 L["$value DOT Dmg Taken"] = "$value erlittener Schaden durch DOTs"
+L["$value% Parry"] = "$value% Parieren"
+-- for hit rating showing both physical and spell conversions
+-- (+1.21%, S+0.98%)
+-- (+1.21%, +0.98% S)
+L["$value Spell"] = "$value Zauber"
 
 ------------------
 -- Stat Summary --

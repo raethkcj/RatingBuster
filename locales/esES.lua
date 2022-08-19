@@ -586,27 +586,10 @@ L["statList"] = {
 	{pattern = "índice de celeridad", id = CR_HASTE_MELEE},
 	{pattern = "Aumenta el índice de velocidad de lanzamiento de ataques y de ataque de los miembros del grupo cercanos", id = CR_HASTE_MELEE}, -- [Drums of Battle]
 
-	{pattern = "índice de habilidad", id = CR_WEAPON_SKILL},
 	{pattern = "índice de pericia", id = CR_EXPERTISE},
 
-	{pattern = "índice de evasion de golpes cuerpo a cuerpo", id = CR_HIT_TAKEN_MELEE},
-	{pattern = "índice de evasion", id = CR_HIT_TAKEN_MELEE},
-	--[[
-	{pattern = "índice de habilidad con dagas", id = CR_WEAPON_SKILL},
-	{pattern = "índice de habilidad con espadas", id = CR_WEAPON_SKILL},
-	{pattern = "índice de habilidad con espadas de dos manos", id = CR_WEAPON_SKILL},
-	{pattern = "índice de habilidad con hachas", id = CR_WEAPON_SKILL},
-	{pattern = "índice de habilidad con arcos", id = CR_WEAPON_SKILL},
-	{pattern = "índice de habilidad con ballesta", id = CR_WEAPON_SKILL},
-	{pattern = "índice de habilidad con armas de fuego", id = CR_WEAPON_SKILL},
-	{pattern = "índice de habilidad en combate feral", id = CR_WEAPON_SKILL},
-	{pattern = "índice de habilidad con mazas", id = CR_WEAPON_SKILL},
-	{pattern = "índice de habilidad con armas de asta", id = CR_WEAPON_SKILL},
-	{pattern = "índice de habilidad con bastones", id = CR_WEAPON_SKILL},
-	{pattern = "índice de habilidad con hachas de dos manos", id = CR_WEAPON_SKILL},
-	{pattern = "índice de habilidad con mazas de dos manos", id = CR_WEAPON_SKILL},
-	{pattern = "índice de habilidad sin armas", id = CR_WEAPON_SKILL},
-	--]]
+	{pattern = "índice de penetración de armadura", id = CR_ARMOR_PENETRATION},
+	{pattern = string.lower(ARMOR), id = ARMOR},
 }
 -------------------------
 -- Added info patterns --
@@ -632,6 +615,11 @@ L["$value to be Dodged/Parried"] = "$value Esquivado/Parado"
 L["$value to be Crit"] = "$value recibir Crit"
 L["$value Crit Dmg Taken"] = "$value Daño crit recib"
 L["$value DOT Dmg Taken"] = "$value Daño por tiempo recib"
+L["$value% Parry"] = "$value Parada"
+-- for hit rating showing both physical and spell conversions
+-- (+1.21%, S+0.98%)
+-- (+1.21%, +0.98% S)
+L["$value Spell"] = "$value Hech."
 
 ------------------
 -- Stat Summary --

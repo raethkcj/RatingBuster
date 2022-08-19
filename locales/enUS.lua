@@ -183,6 +183,14 @@ L["Show Spell Damage from Spirit"] = true
 L["Show Healing"] = true
 L["Show Healing from Spirit"] = true
 
+---------------------------------------------------------------------------
+-- /rb stat armor
+L["Armor"] = true
+L["Changes the display of Armor"] = true
+-- /rb stat armor ap
+L["Show Attack Power"] = true
+L["Show Attack Power from Armor"] = true
+---------------------------------------------------------------------------
 -- /rb sum
 L["Stat Summary"] = true
 L["Options for stat summary"] = true
@@ -587,28 +595,11 @@ L["statList"] = {
 	{pattern = "spell haste rating", id = CR_HASTE_SPELL},
 	{pattern = "ranged haste rating", id = CR_HASTE_RANGED},
 	{pattern = "haste rating", id = CR_HASTE_MELEE},
-	{pattern = "speed rating", id = CR_HASTE_MELEE}, -- [Drums of Battle]
 
-	{pattern = "skill rating", id = CR_WEAPON_SKILL},
 	{pattern = "expertise rating", id = CR_EXPERTISE},
 
-	{pattern = "hit avoidance rating", id = CR_HIT_TAKEN_MELEE},
-	--[[
-	{pattern = "dagger skill rating", id = CR_WEAPON_SKILL},
-	{pattern = "sword skill rating", id = CR_WEAPON_SKILL},
-	{pattern = "two%-handed swords skill rating", id = CR_WEAPON_SKILL},
-	{pattern = "axe skill rating", id = CR_WEAPON_SKILL},
-	{pattern = "bow skill rating", id = CR_WEAPON_SKILL},
-	{pattern = "crossbow skill rating", id = CR_WEAPON_SKILL},
-	{pattern = "gun skill rating", id = CR_WEAPON_SKILL},
-	{pattern = "feral combat skill rating", id = CR_WEAPON_SKILL},
-	{pattern = "mace skill rating", id = CR_WEAPON_SKILL},
-	{pattern = "polearm skill rating", id = CR_WEAPON_SKILL},
-	{pattern = "staff skill rating", id = CR_WEAPON_SKILL},
-	{pattern = "two%-handed axes skill rating", id = CR_WEAPON_SKILL},
-	{pattern = "two%-handed maces skill rating", id = CR_WEAPON_SKILL},
-	{pattern = "fist weapons skill rating", id = CR_WEAPON_SKILL},
-	--]]
+	{pattern = "armor penetration rating", id = CR_ARMOR_PENETRATION},
+	{pattern = string.lower(ARMOR), id = ARMOR},
 }
 -------------------------
 -- Added info patterns --
@@ -634,6 +625,11 @@ L["$value to be Dodged/Parried"] = true
 L["$value to be Crit"] = true
 L["$value Crit Dmg Taken"] = true
 L["$value DOT Dmg Taken"] = true
+L["$value% Parry"] = true
+-- for hit rating showing both physical and spell conversions
+-- (+1.21%, S+0.98%)
+-- (+1.21%, +0.98% S)
+L["$value Spell"] = true
 
 ------------------
 -- Stat Summary --

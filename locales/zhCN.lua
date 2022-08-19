@@ -585,26 +585,10 @@ L["statList"] = {
 	{pattern = "急速等级", id = CR_HASTE_MELEE},
 	{pattern = "加速等级", id = CR_HASTE_MELEE}, -- [Drums of Battle]
 
-	{pattern = "武器技能等级", id = CR_WEAPON_SKILL},
 	{pattern = "精准等级", id = CR_EXPERTISE},
 
-	{pattern = "命中躲闪等级", id = CR_HIT_TAKEN_MELEE},
-	--[[
-	{pattern = "dagger skill rating", id = CR_WEAPON_SKILL},
-	{pattern = "sword skill rating", id = CR_WEAPON_SKILL},
-	{pattern = "two%-handed swords skill rating", id = CR_WEAPON_SKILL},
-	{pattern = "axe skill rating", id = CR_WEAPON_SKILL},
-	{pattern = "bow skill rating", id = CR_WEAPON_SKILL},
-	{pattern = "crossbow skill rating", id = CR_WEAPON_SKILL},
-	{pattern = "gun skill rating", id = CR_WEAPON_SKILL},
-	{pattern = "feral combat skill rating", id = CR_WEAPON_SKILL},
-	{pattern = "mace skill rating", id = CR_WEAPON_SKILL},
-	{pattern = "polearm skill rating", id = CR_WEAPON_SKILL},
-	{pattern = "staff skill rating", id = CR_WEAPON_SKILL},
-	{pattern = "two%-handed axes skill rating", id = CR_WEAPON_SKILL},
-	{pattern = "two%-handed maces skill rating", id = CR_WEAPON_SKILL},
-	{pattern = "fist weapons skill rating", id = CR_WEAPON_SKILL},
-	--]]
+	{pattern = "护甲穿透等级", id = CR_ARMOR_PENETRATION},
+	{pattern = string.lower(ARMOR), id = ARMOR},
 }
 -------------------------
 -- Added info patterns --
@@ -630,6 +614,11 @@ L["$value to be Dodged/Parried"] = "$value 被躲闪/被招架"
 L["$value to be Crit"] = "$value 被致命一击"
 L["$value Crit Dmg Taken"] = "$value 致命一击伤害减免"
 L["$value DOT Dmg Taken"] = "$value 持续伤害减免"
+L["$value% Parry"] = "$value% 招架"
+-- for hit rating showing both physical and spell conversions
+-- (+1.21%, S+0.98%)
+-- (+1.21%, +0.98% S)
+L["$value Spell"] = "$value 法术"
 
 ------------------
 -- Stat Summary --

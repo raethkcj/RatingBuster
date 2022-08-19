@@ -538,8 +538,8 @@ local options = {
 				armor = {
 					type = 'group',
 					order = 7,
-					name = "Armor",
-					desc = "Changes the display of Armor",
+					name = L["Armor"],
+					desc = L["Changes the display of Armor"],
 					args = {},
 					-- Only show for DK + Warrior who scale from Armor
 					hidden = not StatLogic.StatModTable[class]["ADD_AP_MOD_ARMOR"],
@@ -1712,23 +1712,44 @@ function RatingBuster:ProcessText(text)
 								tinsert(infoTable, (gsub(L["$value Block"], "$value", format("%+.1f", effect))))
 							end
 						end
-						if profileDB.showSpellDmgFromStr then -- Shaman: Mental Quickness (Rank 3) - 2,15
-							local mod = StatLogic:GetStatMod("MOD_AP") * StatLogic:GetStatMod("MOD_SPELL_DMG")
-							local effect = value * StatLogic:GetAPPerStr(class) * StatLogic:GetStatMod("ADD_SPELL_DMG_MOD_AP") * mod
+						-- Shaman: Mental Quickness
+						-- Paladin: Sheath of Light, Touched by the Light
+						if profileDB.showSpellDmgFromStr then
+							local mod = GSM("MOD_AP") * GSM("MOD_SPELL_DMG")
+							local effect = (value * StatLogic:GetAPPerStr(class) * GSM("ADD_SPELL_DMG_MOD_AP")
+								+ value * GSM("ADD_SPELL_DMG_MOD_STR")) * mod
 							if (mod ~= 1 or statmod ~= 1) and floor(abs(effect) * 10 + 0.5) > 0 then
-								tinsert(infoTable, (gsub(L["$value Spell Dmg"], "$value", format("%+.1f", effect))))
+								tinsert(infoTable, (gsub(L["$value Dmg"], "$value", format("%+.1f", effect))))
 							elseif floor(abs(effect) + 0.5) > 0 then
-								tinsert(infoTable, (gsub(L["$value Spell Dmg"], "$value", format("%+.0f", effect))))
+								tinsert(infoTable, (gsub(L["$value Dmg"], "$value", format("%+.0f", effect))))
 							end
 						end
-						if profileDB.showHealingFromStr then -- Shaman: Mental Quickness (Rank 3) - 2,15
-							local mod = StatLogic:GetStatMod("MOD_AP") * StatLogic:GetStatMod("MOD_HEALING")
-							local effect = value * StatLogic:GetAPPerStr(class) * StatLogic:GetStatMod("ADD_HEALING_MOD_AP") * mod
+						if profileDB.showHealingFromStr then
+							local mod = GSM("MOD_AP") * GSM("MOD_HEALING")
+							local effect = (value * StatLogic:GetAPPerStr(class) * GSM("ADD_HEALING_MOD_AP")
+								+ value * GSM("ADD_HEALING_MOD_STR")) * mod
 							if (mod ~= 1 or statmod ~= 1) and floor(abs(effect) * 10 + 0.5) > 0 then
 								tinsert(infoTable, (gsub(L["$value Heal"], "$value", format("%+.1f", effect))))
 							elseif floor(abs(effect) + 0.5) > 0 then
 								tinsert(infoTable, (gsub(L["$value Heal"], "$value", format("%+.0f", effect))))
 							end
+						end
+						-- Death Knight: Forceful Deflection - Passive
+						if profileDB.showParryFromStr then
+							local rating = value * GSM("ADD_PARRY_RATING_MOD_STR")
+							local effect = StatLogic:GetEffectFromRating(rating, 4, calcLevel)
+							if profileDB.enableAvoidanceDiminishingReturns then
+								local effectNoDR = effect
+								effect = StatLogic:GetAvoidanceGainAfterDR("PARRY", processedParry + effect) - StatLogic:GetAvoidanceGainAfterDR("PARRY", processedParry)
+								processedParry = processedParry + effectNoDR
+							end
+							if effect > 0 then
+								tinsert(infoTable, (gsub(L["$value% Parry"], "$value", format("%+.2f", effect))))
+							end
+						else
+							local rating = value * GSM("ADD_PARRY_RATING_MOD_STR")
+							local effect = StatLogic:GetEffectFromRating(rating, 4, calcLevel)
+							processedParry = processedParry + effect
 						end
 						infoString = strjoin(", ", unpack(infoTable))
 					elseif stat.id == SPELL_STAT2_NAME and profileDB.showStats then
@@ -1812,6 +1833,16 @@ function RatingBuster:ProcessText(text)
 								tinsert(infoTable, (gsub(L["$value Spell Dmg"], "$value", format("%+.1f", effect))))
 							end
 						end
+						-- "ADD_AP_MOD_STA" -- Hunter: Hunter vs. Wild
+						if profileDB.showAPFromSta then
+							local mod = GSM("MOD_AP")
+							local effect = value * GSM("ADD_AP_MOD_STA") * mod
+							if (mod ~= 1 or statmod ~= 1) and floor(abs(effect) * 10 + 0.5) > 0 then
+								tinsert(infoTable, (gsub(L["$value AP"], "$value", format("%+.1f", effect))))
+							elseif floor(abs(effect) + 0.5) > 0 then
+								tinsert(infoTable, (gsub(L["$value AP"], "$value", format("%+.0f", effect))))
+							end
+						end
 						infoString = strjoin(", ", unpack(infoTable))
 					elseif stat.id == SPELL_STAT4_NAME and profileDB.showStats then
 						---------------
@@ -1890,6 +1921,16 @@ function RatingBuster:ProcessText(text)
 							local effect = value * GSM("ADD_ARMOR_MOD_INT")
 							if floor(abs(effect) + 0.5) > 0 then
 								tinsert(infoTable, (gsub(L["$value Armor"], "$value", format("%+.0f", effect))))
+							end
+						end
+						-- "ADD_AP_MOD_INT" -- Shaman: Mental Dexterity
+						if profileDB.showAPFromInt then
+							local mod = GSM("MOD_AP")
+							local effect = value * GSM("ADD_AP_MOD_INT") * mod
+							if (mod ~= 1 or statmod ~= 1) and floor(abs(effect) * 10 + 0.5) > 0 then
+								tinsert(infoTable, (gsub(L["$value AP"], "$value", format("%+.1f", effect))))
+							elseif floor(abs(effect) + 0.5) > 0 then
+								tinsert(infoTable, (gsub(L["$value AP"], "$value", format("%+.0f", effect))))
 							end
 						end
 						infoString = strjoin(", ", unpack(infoTable))

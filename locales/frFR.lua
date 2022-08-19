@@ -585,27 +585,11 @@ L["statList"] = {
 	{pattern = "score de hâte à distance", id = CR_HASTE_RANGED},
 	{pattern = "score de hâte", id = CR_HASTE_MELEE},
 	{pattern = "score de hâte en mêlée", id = CR_HASTE_MELEE}, -- [Tambours de Bataille] "score de hâte en mêlée, à distance et avec les sorts" complete drums line
-	--{pattern = "skill rating", id = CR_WEAPON_SKILL},
 	{pattern = "score d’expertise", id = CR_EXPERTISE},
 	{pattern = "score d'expertise", id = CR_EXPERTISE},
-	{pattern = "score d'évitement des coups", id = CR_HIT_TAKEN_MELEE},
 
-	--[[
-	{pattern = "score de la compétence dagues", id = CR_WEAPON_SKILL}, {pattern = "Dagues augmentées", id = CR_WEAPON_SKILL},
-	{pattern = "score de la compétence epées", id = CR_WEAPON_SKILL}, {pattern = "Epées augmentées", id = CR_WEAPON_SKILL},
-	{pattern = "score de la compétence epées à deux mains", id = CR_WEAPON_SKILL},
-	{pattern = "score de la compétence haches", id = CR_WEAPON_SKILL},
-	{pattern = "score de la compétence arcs", id = CR_WEAPON_SKILL},
-	{pattern = "score de la compétence arbalètes", id = CR_WEAPON_SKILL},
-	{pattern = "score de la compétence fusils", id = CR_WEAPON_SKILL},
-	{pattern = "score de la compétence combat farouche", id = CR_WEAPON_SKILL},
-	{pattern = "score de la compétence masses", id = CR_WEAPON_SKILL},
-	{pattern = "score de la compétence armes d'hast", id = CR_WEAPON_SKILL},
-	{pattern = "score de la compétence bâton", id = CR_WEAPON_SKILL},	
-	{pattern = "score de la compétence haches à deux mains", id = CR_WEAPON_SKILL},
-	{pattern = "score de la compétence masses à deux mains", id = CR_WEAPON_SKILL},
-	{pattern = "score de la compétence armes de pugilat", id = CR_WEAPON_SKILL},
-	--]]
+	{pattern = "score de pénétration d'armure", id = CR_ARMOR_PENETRATION},
+	{pattern = string.lower(ARMOR), id = ARMOR},
 }
 -------------------------
 -- Added info patterns --
@@ -631,6 +615,11 @@ L["$value to be Dodged/Parried"] = "$value esquivé/paré"
 L["$value to be Crit"] = "$value recevoir CC"
 L["$value Crit Dmg Taken"] = "$value dégâts CC"
 L["$value DOT Dmg Taken"] = "$value dégâts DoT"
+L["$value% Parry"] = "$value% parer"
+-- for hit rating showing both physical and spell conversions
+-- (+1.21%, S+0.98%)
+-- (+1.21%, +0.98% S)
+L["$value Spell"] = "$value% Sort"
 
 ------------------
 -- Stat Summary --

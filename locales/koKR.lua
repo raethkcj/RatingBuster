@@ -590,26 +590,10 @@ L["statList"] = {
 	{pattern = "공격 가속도", id = CR_HASTE_MELEE},
 	{pattern = "가속도", id = CR_HASTE_MELEE}, -- [Drums of Battle]
 
-	{pattern = "무기 숙련도", id = CR_WEAPON_SKILL},
 	{pattern = "숙련도", id = CR_EXPERTISE},
 
-	{pattern = "근접 공격 회피", id = CR_HIT_TAKEN_MELEE},
-	--[[
-	{pattern = "dagger skill rating", id = CR_WEAPON_SKILL},
-	{pattern = "sword skill rating", id = CR_WEAPON_SKILL},
-	{pattern = "two%-handed swords skill rating", id = CR_WEAPON_SKILL},
-	{pattern = "axe skill rating", id = CR_WEAPON_SKILL},
-	{pattern = "bow skill rating", id = CR_WEAPON_SKILL},
-	{pattern = "crossbow skill rating", id = CR_WEAPON_SKILL},
-	{pattern = "gun skill rating", id = CR_WEAPON_SKILL},
-	{pattern = "feral combat skill rating", id = CR_WEAPON_SKILL},
-	{pattern = "mace skill rating", id = CR_WEAPON_SKILL},
-	{pattern = "polearm skill rating", id = CR_WEAPON_SKILL},
-	{pattern = "staff skill rating", id = CR_WEAPON_SKILL},
-	{pattern = "two%-handed axes skill rating", id = CR_WEAPON_SKILL},
-	{pattern = "two%-handed maces skill rating", id = CR_WEAPON_SKILL},
-	{pattern = "fist weapons skill rating", id = CR_WEAPON_SKILL},
-	--]]
+	{pattern = "방어구 관통력", id = CR_ARMOR_PENETRATION},	--armor penetration rating
+	{pattern = string.lower(ARMOR), id = ARMOR},
 }
 -------------------------
 -- Added info patterns --
@@ -635,6 +619,11 @@ L["$value to be Dodged/Parried"] = "이후 회피 감소/무기막기 감소 $va
 L["$value to be Crit"] = "이후 치명타 $value"
 L["$value Crit Dmg Taken"] = "가질 치명타 데미지 $value"
 L["$value DOT Dmg Taken"] = "가질 DOT 데미지 $value"
+L["$value% Parry"] = "무막 $value%"
+-- for hit rating showing both physical and spell conversions
+-- (+1.21%, S+0.98%)
+-- (+1.21%, +0.98% S)
+L["$value Spell"] = "주문 $value"
 
 ------------------
 -- Stat Summary --
