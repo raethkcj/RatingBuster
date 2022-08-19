@@ -12,6 +12,9 @@ Description: Converts combat ratings in tooltips into normal percentages.
 ---------------
 local TipHooker = LibStub("TipHooker-1.0")
 local StatLogic = LibStub("StatLogic")
+local GSM = function(...)
+	return StatLogic:GetStatMod(...)
+end
 local L = LibStub("AceLocale-3.0"):GetLocale("RatingBuster")
 
 --------------------
@@ -1690,12 +1693,12 @@ function RatingBuster:ProcessText(text)
 						--------------
 						local statmod = 1
 						if profileDB.enableStatMods then
-							statmod = StatLogic:GetStatMod("MOD_STR")
+							statmod = GSM("MOD_STR")
 							value = value * statmod
 						end
 						local infoTable = {}
 						if profileDB.showAPFromStr then
-							local mod = StatLogic:GetStatMod("MOD_AP")
+							local mod = GSM("MOD_AP")
 							local effect = value * StatLogic:GetAPPerStr(class) * mod
 							if (mod ~= 1 or statmod ~= 1) and floor(abs(effect) * 10 + 0.5) > 0 then
 								tinsert(infoTable, (gsub(L["$value AP"], "$value", format("%+.1f", effect))))
@@ -1734,12 +1737,12 @@ function RatingBuster:ProcessText(text)
 						-------------
 						local statmod = 1
 						if profileDB.enableStatMods then
-							statmod = StatLogic:GetStatMod("MOD_AGI")
+							statmod = GSM("MOD_AGI")
 							value = value * statmod
 						end
 						local infoTable = {}
 						if profileDB.showAPFromAgi then
-							local mod = StatLogic:GetStatMod("MOD_AP")
+							local mod = GSM("MOD_AP")
 							local effect = value * StatLogic:GetAPPerAgi(class) * mod
 							if (mod ~= 1 or statmod ~= 1) and floor(abs(effect) * 10 + 0.5) > 0 then
 								tinsert(infoTable, (gsub(L["$value AP"], "$value", format("%+.1f", effect))))
@@ -1748,7 +1751,7 @@ function RatingBuster:ProcessText(text)
 							end
 						end
 						if profileDB.showRAPFromAgi then
-							local mod = StatLogic:GetStatMod("MOD_RANGED_AP")
+							local mod = GSM("MOD_RANGED_AP")
 							local effect = value * StatLogic:GetRAPPerAgi(class) * mod
 							if (mod ~= 1 or statmod ~= 1) and floor(abs(effect) * 10 + 0.5) > 0 then
 								tinsert(infoTable, (gsub(L["$value RAP"], "$value", format("%+.1f", effect))))
@@ -1775,8 +1778,8 @@ function RatingBuster:ProcessText(text)
 							end
 						end
 						if profileDB.showHealingFromAgi then
-							local mod = StatLogic:GetStatMod("MOD_HEALING")
-							local effect = value * StatLogic:GetStatMod("ADD_HEALING_MOD_AGI") * mod
+							local mod = GSM("MOD_HEALING")
+							local effect = value * GSM("ADD_HEALING_MOD_AGI") * mod
 							if floor(abs(effect) * 10 + 0.5) > 0 then
 								tinsert(infoTable, (gsub(L["$value Heal"], "$value", format("%+.1f", effect))))
 							end
@@ -1788,12 +1791,12 @@ function RatingBuster:ProcessText(text)
 						-------------
 						local statmod = 1
 						if profileDB.enableStatMods then
-							statmod = StatLogic:GetStatMod("MOD_STA")
+							statmod = GSM("MOD_STA")
 							value = value * statmod
 						end
 						local infoTable = {}
 						if profileDB.showHealthFromSta then
-							local mod = StatLogic:GetStatMod("MOD_HEALTH")
+							local mod = GSM("MOD_HEALTH")
 							local effect = value * 10 * mod -- 10 Health per Sta
 							if (mod ~= 1 or statmod ~= 1) and floor(abs(effect) * 10 + 0.5) > 0 then
 								tinsert(infoTable, (gsub(L["$value HP"], "$value", format("%+.1f", effect))))
@@ -1802,8 +1805,9 @@ function RatingBuster:ProcessText(text)
 							end
 						end
 						if profileDB.showSpellDmgFromSta then
-							local mod = StatLogic:GetStatMod("MOD_SPELL_DMG")
-							local effect = value * StatLogic:GetStatMod("ADD_SPELL_DMG_MOD_STA") * mod
+							local mod = GSM("MOD_SPELL_DMG")
+							local effect = value * mod * (GSM("ADD_SPELL_DMG_MOD_STA")
+								+ GSM("ADD_SPELL_DMG_MOD_PET_STA") * GSM("ADD_PET_STA_MOD_STA"))
 							if floor(abs(effect) * 10 + 0.5) > 0 then
 								tinsert(infoTable, (gsub(L["$value Spell Dmg"], "$value", format("%+.1f", effect))))
 							end
@@ -1815,12 +1819,12 @@ function RatingBuster:ProcessText(text)
 						---------------
 						local statmod = 1
 						if profileDB.enableStatMods then
-							statmod = StatLogic:GetStatMod("MOD_INT")
+							statmod = GSM("MOD_INT")
 							value = value * statmod
 						end
 						local infoTable = {}
 						if profileDB.showManaFromInt then
-							local mod = StatLogic:GetStatMod("MOD_MANA")
+							local mod = GSM("MOD_MANA")
 							local effect = value * 15 * mod -- 15 Mana per Int
 							if (mod ~= 1 or statmod ~= 1) and floor(abs(effect) * 10 + 0.5) > 0 then
 								tinsert(infoTable, (gsub(L["$value MP"], "$value", format("%+.1f", effect))))
@@ -1835,15 +1839,16 @@ function RatingBuster:ProcessText(text)
 							end
 						end
 						if profileDB.showSpellDmgFromInt then
-							local mod = StatLogic:GetStatMod("MOD_SPELL_DMG")
-							local effect = value * StatLogic:GetStatMod("ADD_SPELL_DMG_MOD_INT") * mod
+							local mod = GSM("MOD_SPELL_DMG")
+							local effect = value * mod * (GSM("ADD_SPELL_DMG_MOD_INT")
+								+ GSM("ADD_SPELL_DMG_MOD_PET_INT") * GSM("ADD_PET_INT_MOD_INT"))
 							if floor(abs(effect) * 10 + 0.5) > 0 then
 								tinsert(infoTable, (gsub(L["$value Spell Dmg"], "$value", format("%+.1f", effect))))
 							end
 						end
 						if profileDB.showHealingFromInt then
-							local mod = StatLogic:GetStatMod("MOD_HEALING")
-							local effect = value * StatLogic:GetStatMod("ADD_HEALING_MOD_INT") * mod
+							local mod = GSM("MOD_HEALING")
+							local effect = value * GSM("ADD_HEALING_MOD_INT") * mod
 							if floor(abs(effect) * 10 + 0.5) > 0 then
 								tinsert(infoTable, (gsub(L["$value Heal"], "$value", format("%+.1f", effect))))
 							end
@@ -1853,9 +1858,9 @@ function RatingBuster:ProcessText(text)
 							if tocversion >= 20400 then -- 2.4.0
 								local _, int = UnitStat("player", 4)
 								local _, spi = UnitStat("player", 5)
-								effect = value * StatLogic:GetStatMod("ADD_MANA_REG_MOD_INT") + (StatLogic:GetNormalManaRegenFromSpi(spi, int + value, calcLevel) - StatLogic:GetNormalManaRegenFromSpi(spi, int, calcLevel)) * StatLogic:GetStatMod("ADD_MANA_REG_MOD_NORMAL_MANA_REG")
+								effect = value * GSM("ADD_MANA_REG_MOD_INT") + (StatLogic:GetNormalManaRegenFromSpi(spi, int + value, calcLevel) - StatLogic:GetNormalManaRegenFromSpi(spi, int, calcLevel)) * GSM("ADD_MANA_REG_MOD_NORMAL_MANA_REG")
 							else
-								effect = value * StatLogic:GetStatMod("ADD_MANA_REG_MOD_INT")
+								effect = value * GSM("ADD_MANA_REG_MOD_INT")
 							end
 							if floor(abs(effect) * 10 + 0.5) > 0 then
 								tinsert(infoTable, (gsub(L["$value MP5"], "$value", format("%+.1f", effect))))
@@ -1866,23 +1871,23 @@ function RatingBuster:ProcessText(text)
 							if tocversion >= 20400 then -- 2.4.0
 								local _, int = UnitStat("player", 4)
 								local _, spi = UnitStat("player", 5)
-								effect = value * StatLogic:GetStatMod("ADD_MANA_REG_MOD_INT") + StatLogic:GetNormalManaRegenFromSpi(spi, int + value, calcLevel) - StatLogic:GetNormalManaRegenFromSpi(spi, int, calcLevel)
+								effect = value * GSM("ADD_MANA_REG_MOD_INT") + StatLogic:GetNormalManaRegenFromSpi(spi, int + value, calcLevel) - StatLogic:GetNormalManaRegenFromSpi(spi, int, calcLevel)
 							else
-								effect = value * StatLogic:GetStatMod("ADD_MANA_REG_MOD_INT")
+								effect = value * GSM("ADD_MANA_REG_MOD_INT")
 							end
 							if floor(abs(effect) * 10 + 0.5) > 0 then
 								tinsert(infoTable, (gsub(L["$value MP5(NC)"], "$value", format("%+.1f", effect))))
 							end
 						end
 						if profileDB.showRAPFromInt then
-							local mod = StatLogic:GetStatMod("MOD_RANGED_AP")
-							local effect = value * StatLogic:GetStatMod("ADD_RANGED_AP_MOD_INT") * mod
+							local mod = GSM("MOD_RANGED_AP")
+							local effect = value * GSM("ADD_RANGED_AP_MOD_INT") * mod
 							if floor(abs(effect) * 10 + 0.5) > 0 then
 								tinsert(infoTable, (gsub(L["$value RAP"], "$value", format("%+.1f", effect))))
 							end
 						end
 						if profileDB.showArmorFromInt then
-							local effect = value * StatLogic:GetStatMod("ADD_ARMOR_MOD_INT")
+							local effect = value * GSM("ADD_ARMOR_MOD_INT")
 							if floor(abs(effect) + 0.5) > 0 then
 								tinsert(infoTable, (gsub(L["$value Armor"], "$value", format("%+.0f", effect))))
 							end
@@ -1894,12 +1899,12 @@ function RatingBuster:ProcessText(text)
 						------------
 						local statmod = 1
 						if profileDB.enableStatMods then
-							statmod = StatLogic:GetStatMod("MOD_SPI")
+							statmod = GSM("MOD_SPI")
 							value = value * statmod
 						end
 						local infoTable = {}
 						if profileDB.showMP5FromSpi then
-							local mod = StatLogic:GetStatMod("ADD_MANA_REG_MOD_NORMAL_MANA_REG")
+							local mod = GSM("ADD_MANA_REG_MOD_NORMAL_MANA_REG")
 							local effect
 							if tocversion >= 20400 then -- 2.4.0
 								effect = StatLogic:GetNormalManaRegenFromSpi(value, nil, calcLevel) * mod
@@ -1928,15 +1933,15 @@ function RatingBuster:ProcessText(text)
 							end
 						end
 						if profileDB.showSpellDmgFromSpi then
-							local mod = StatLogic:GetStatMod("MOD_SPELL_DMG")
-							local effect = value * StatLogic:GetStatMod("ADD_SPELL_DMG_MOD_SPI") * mod
+							local mod = GSM("MOD_SPELL_DMG")
+							local effect = value * GSM("ADD_SPELL_DMG_MOD_SPI") * mod
 							if floor(abs(effect) * 10 + 0.5) > 0 then
 								tinsert(infoTable, (gsub(L["$value Spell Dmg"], "$value", format("%+.1f", effect))))
 							end
 						end
 						if profileDB.showHealingFromSpi then
-							local mod = StatLogic:GetStatMod("MOD_HEALING")
-							local effect = value * StatLogic:GetStatMod("ADD_HEALING_MOD_SPI") * mod
+							local mod = GSM("MOD_HEALING")
+							local effect = value * GSM("ADD_HEALING_MOD_SPI") * mod
 							if floor(abs(effect) * 10 + 0.5) > 0 then
 								tinsert(infoTable, (gsub(L["$value Heal"], "$value", format("%+.1f", effect))))
 							end
@@ -2092,7 +2097,7 @@ local summaryCalcData = {
 		option = "sumHP",
 		name = "HEALTH",
 		func = function(sum)
-			return (sum["HEALTH"] + (sum["STA"] * 10)) * StatLogic:GetStatMod("MOD_HEALTH")
+			return (sum["HEALTH"] + (sum["STA"] * 10)) * GSM("MOD_HEALTH")
 		end,
 	},
 	-- Mana - MANA, INT
@@ -2100,7 +2105,7 @@ local summaryCalcData = {
 		option = "sumMP",
 		name = "MANA",
 		func = function(sum)
-			return (sum["MANA"] + (sum["INT"] * 15)) * StatLogic:GetStatMod("MOD_MANA")
+			return (sum["MANA"] + (sum["INT"] * 15)) * GSM("MOD_MANA")
 		end,
 	},
 	-- Health Regen - HEALTH_REG
@@ -2128,13 +2133,13 @@ local summaryCalcData = {
 				local _, int = UnitStat("player", 4)
 				local _, spi = UnitStat("player", 5)
 				return sum["MANA_REG"]
-				 + (sum["INT"] * StatLogic:GetStatMod("ADD_MANA_REG_MOD_INT"))
+				 + (sum["INT"] * GSM("ADD_MANA_REG_MOD_INT"))
 				 + (StatLogic:GetNormalManaRegenFromSpi(spi + sum["SPI"], int + sum["INT"], calcLevel)
-				 - StatLogic:GetNormalManaRegenFromSpi(spi, int, calcLevel)) * StatLogic:GetStatMod("ADD_MANA_REG_MOD_NORMAL_MANA_REG")
+				 - StatLogic:GetNormalManaRegenFromSpi(spi, int, calcLevel)) * GSM("ADD_MANA_REG_MOD_NORMAL_MANA_REG")
 			else
 				return sum["MANA_REG"]
-				 + (sum["INT"] * StatLogic:GetStatMod("ADD_MANA_REG_MOD_INT"))
-				 + (StatLogic:GetNormalManaRegenFromSpi(sum["SPI"], class) * StatLogic:GetStatMod("ADD_MANA_REG_MOD_NORMAL_MANA_REG"))
+				 + (sum["INT"] * GSM("ADD_MANA_REG_MOD_INT"))
+				 + (StatLogic:GetNormalManaRegenFromSpi(sum["SPI"], class) * GSM("ADD_MANA_REG_MOD_NORMAL_MANA_REG"))
 			end
 		end,
 	},
@@ -2147,12 +2152,12 @@ local summaryCalcData = {
 				local _, int = UnitStat("player", 4)
 				local _, spi = UnitStat("player", 5)
 				return sum["MANA_REG"]
-				 + (sum["INT"] * StatLogic:GetStatMod("ADD_MANA_REG_MOD_INT"))
+				 + (sum["INT"] * GSM("ADD_MANA_REG_MOD_INT"))
 				 + StatLogic:GetNormalManaRegenFromSpi(spi + sum["SPI"], int + sum["INT"], calcLevel)
 				 - StatLogic:GetNormalManaRegenFromSpi(spi, int, calcLevel)
 			else
 				return sum["MANA_REG"]
-				 + (sum["INT"] * StatLogic:GetStatMod("ADD_MANA_REG_MOD_INT"))
+				 + (sum["INT"] * GSM("ADD_MANA_REG_MOD_INT"))
 				 + StatLogic:GetNormalManaRegenFromSpi(sum["SPI"], class)
 			end
 		end,
@@ -2165,7 +2170,7 @@ local summaryCalcData = {
 		option = "sumAP",
 		name = "AP",
 		func = function(sum)
-			return (sum["AP"] + (sum["STR"] * StatLogic:GetAPPerStr(class)) + (sum["AGI"] * StatLogic:GetAPPerAgi(class))) * StatLogic:GetStatMod("MOD_AP")
+			return (sum["AP"] + (sum["STR"] * StatLogic:GetAPPerStr(class)) + (sum["AGI"] * StatLogic:GetAPPerAgi(class))) * GSM("MOD_AP")
 		end,
 	},
 	-- Ranged Attack Power - RANGED_AP, AP, AGI, INT
@@ -2173,7 +2178,7 @@ local summaryCalcData = {
 		option = "sumRAP",
 		name = "RANGED_AP",
 		func = function(sum)
-			return (sum["RANGED_AP"] + sum["AP"] + (sum["AGI"] * StatLogic:GetRAPPerAgi(class)) + (sum["INT"] * StatLogic:GetStatMod("ADD_RANGED_AP_MOD_INT"))) * (StatLogic:GetStatMod("MOD_RANGED_AP") + StatLogic:GetStatMod("MOD_AP") - 1)
+			return (sum["RANGED_AP"] + sum["AP"] + (sum["AGI"] * StatLogic:GetRAPPerAgi(class)) + (sum["INT"] * GSM("ADD_RANGED_AP_MOD_INT"))) * (GSM("MOD_RANGED_AP") + GSM("MOD_AP") - 1)
 		end,
 	},
 	-- Feral Attack Power - FERAL_AP, AP, STR, AGI
@@ -2181,7 +2186,7 @@ local summaryCalcData = {
 		option = "sumFAP",
 		name = "FERAL_AP",
 		func = function(sum)
-			return (sum["FERAL_AP"] + sum["AP"] + (sum["STR"] * StatLogic:GetAPPerStr(class)) + (sum["AGI"] * StatLogic:GetAPPerAgi(class))) * StatLogic:GetStatMod("MOD_AP")
+			return (sum["FERAL_AP"] + sum["AP"] + (sum["STR"] * StatLogic:GetAPPerStr(class)) + (sum["AGI"] * StatLogic:GetAPPerAgi(class))) * GSM("MOD_AP")
 		end,
 	},
 	-- Hit Chance - MELEE_HIT_RATING, WEAPON_RATING
@@ -2331,11 +2336,11 @@ local summaryCalcData = {
 		name = "SPELL_DMG",
 		func = function(sum)
 			local ap = (sum["AP"] + (sum["STR"] * StatLogic:GetAPPerStr(class))
-			 + (sum["AGI"] * StatLogic:GetAPPerAgi(class))) * StatLogic:GetStatMod("MOD_AP")
-			return (sum["SPELL_DMG"] + (sum["STA"] * StatLogic:GetStatMod("ADD_SPELL_DMG_MOD_STA"))
-			 + (sum["INT"] * StatLogic:GetStatMod("ADD_SPELL_DMG_MOD_INT"))
-			 + (sum["SPI"] * StatLogic:GetStatMod("ADD_SPELL_DMG_MOD_SPI"))
-			 + (ap * StatLogic:GetStatMod("ADD_SPELL_DMG_MOD_AP"))) * StatLogic:GetStatMod("MOD_SPELL_DMG")
+			 + (sum["AGI"] * StatLogic:GetAPPerAgi(class))) * GSM("MOD_AP")
+			return (sum["SPELL_DMG"] + (sum["STA"] * GSM("ADD_SPELL_DMG_MOD_STA"))
+			 + (sum["INT"] * GSM("ADD_SPELL_DMG_MOD_INT"))
+			 + (sum["SPI"] * GSM("ADD_SPELL_DMG_MOD_SPI"))
+			 + (ap * GSM("ADD_SPELL_DMG_MOD_AP"))) * GSM("MOD_SPELL_DMG")
 		end,
 	},
 	-- Holy Damage - HOLY_SPELL_DMG, SPELL_DMG, INT, SPI
@@ -2344,9 +2349,9 @@ local summaryCalcData = {
 		name = "HOLY_SPELL_DMG",
 		func = function(sum)
 			return (sum["HOLY_SPELL_DMG"] + sum["SPELL_DMG"]
-			 + (sum["STA"] * StatLogic:GetStatMod("ADD_SPELL_DMG_MOD_STA"))
-			 + (sum["INT"] * StatLogic:GetStatMod("ADD_SPELL_DMG_MOD_INT"))
-			 + (sum["SPI"] * StatLogic:GetStatMod("ADD_SPELL_DMG_MOD_SPI"))) * StatLogic:GetStatMod("MOD_SPELL_DMG")
+			 + (sum["STA"] * GSM("ADD_SPELL_DMG_MOD_STA"))
+			 + (sum["INT"] * GSM("ADD_SPELL_DMG_MOD_INT"))
+			 + (sum["SPI"] * GSM("ADD_SPELL_DMG_MOD_SPI"))) * GSM("MOD_SPELL_DMG")
 		 end,
 	},
 	-- Arcane Damage - ARCANE_SPELL_DMG, SPELL_DMG, INT
@@ -2355,9 +2360,9 @@ local summaryCalcData = {
 		name = "ARCANE_SPELL_DMG",
 		func = function(sum)
 			return (sum["ARCANE_SPELL_DMG"] + sum["SPELL_DMG"]
-			 + (sum["STA"] * StatLogic:GetStatMod("ADD_SPELL_DMG_MOD_STA"))
-			 + (sum["INT"] * StatLogic:GetStatMod("ADD_SPELL_DMG_MOD_INT"))
-			 + (sum["SPI"] * StatLogic:GetStatMod("ADD_SPELL_DMG_MOD_SPI"))) * StatLogic:GetStatMod("MOD_SPELL_DMG")
+			 + (sum["STA"] * GSM("ADD_SPELL_DMG_MOD_STA"))
+			 + (sum["INT"] * GSM("ADD_SPELL_DMG_MOD_INT"))
+			 + (sum["SPI"] * GSM("ADD_SPELL_DMG_MOD_SPI"))) * GSM("MOD_SPELL_DMG")
 		 end,
 	},
 	-- Fire Damage - FIRE_SPELL_DMG, SPELL_DMG, STA, INT
@@ -2366,9 +2371,9 @@ local summaryCalcData = {
 		name = "FIRE_SPELL_DMG",
 		func = function(sum)
 			return (sum["FIRE_SPELL_DMG"] + sum["SPELL_DMG"]
-			 + (sum["STA"] * StatLogic:GetStatMod("ADD_SPELL_DMG_MOD_STA"))
-			 + (sum["INT"] * StatLogic:GetStatMod("ADD_SPELL_DMG_MOD_INT"))
-			 + (sum["SPI"] * StatLogic:GetStatMod("ADD_SPELL_DMG_MOD_SPI"))) * StatLogic:GetStatMod("MOD_SPELL_DMG")
+			 + (sum["STA"] * GSM("ADD_SPELL_DMG_MOD_STA"))
+			 + (sum["INT"] * GSM("ADD_SPELL_DMG_MOD_INT"))
+			 + (sum["SPI"] * GSM("ADD_SPELL_DMG_MOD_SPI"))) * GSM("MOD_SPELL_DMG")
 		 end,
 	},
 	-- Nature Damage - NATURE_SPELL_DMG, SPELL_DMG, INT
@@ -2377,9 +2382,9 @@ local summaryCalcData = {
 		name = "NATURE_SPELL_DMG",
 		func = function(sum)
 			return (sum["NATURE_SPELL_DMG"] + sum["SPELL_DMG"]
-			 + (sum["STA"] * StatLogic:GetStatMod("ADD_SPELL_DMG_MOD_STA"))
-			 + (sum["INT"] * StatLogic:GetStatMod("ADD_SPELL_DMG_MOD_INT"))
-			 + (sum["SPI"] * StatLogic:GetStatMod("ADD_SPELL_DMG_MOD_SPI"))) * StatLogic:GetStatMod("MOD_SPELL_DMG")
+			 + (sum["STA"] * GSM("ADD_SPELL_DMG_MOD_STA"))
+			 + (sum["INT"] * GSM("ADD_SPELL_DMG_MOD_INT"))
+			 + (sum["SPI"] * GSM("ADD_SPELL_DMG_MOD_SPI"))) * GSM("MOD_SPELL_DMG")
 		 end,
 	},
 	-- Frost Damage - FROST_SPELL_DMG, SPELL_DMG, INT
@@ -2388,9 +2393,9 @@ local summaryCalcData = {
 		name = "FROST_SPELL_DMG",
 		func = function(sum)
 			return (sum["FROST_SPELL_DMG"] + sum["SPELL_DMG"]
-			 + (sum["STA"] * StatLogic:GetStatMod("ADD_SPELL_DMG_MOD_STA"))
-			 + (sum["INT"] * StatLogic:GetStatMod("ADD_SPELL_DMG_MOD_INT"))
-			 + (sum["SPI"] * StatLogic:GetStatMod("ADD_SPELL_DMG_MOD_SPI"))) * StatLogic:GetStatMod("MOD_SPELL_DMG")
+			 + (sum["STA"] * GSM("ADD_SPELL_DMG_MOD_STA"))
+			 + (sum["INT"] * GSM("ADD_SPELL_DMG_MOD_INT"))
+			 + (sum["SPI"] * GSM("ADD_SPELL_DMG_MOD_SPI"))) * GSM("MOD_SPELL_DMG")
 		 end,
 	},
 	-- Shadow Damage - SHADOW_SPELL_DMG, SPELL_DMG, STA, INT, SPI
@@ -2399,9 +2404,9 @@ local summaryCalcData = {
 		name = "SHADOW_SPELL_DMG",
 		func = function(sum)
 			return (sum["SHADOW_SPELL_DMG"] + sum["SPELL_DMG"]
-			 + (sum["STA"] * StatLogic:GetStatMod("ADD_SPELL_DMG_MOD_STA"))
-			 + (sum["INT"] * StatLogic:GetStatMod("ADD_SPELL_DMG_MOD_INT"))
-			 + (sum["SPI"] * StatLogic:GetStatMod("ADD_SPELL_DMG_MOD_SPI"))) * StatLogic:GetStatMod("MOD_SPELL_DMG")
+			 + (sum["STA"] * GSM("ADD_SPELL_DMG_MOD_STA"))
+			 + (sum["INT"] * GSM("ADD_SPELL_DMG_MOD_INT"))
+			 + (sum["SPI"] * GSM("ADD_SPELL_DMG_MOD_SPI"))) * GSM("MOD_SPELL_DMG")
 		 end,
 	},
 	-- Healing - HEAL, AGI, STR, INT, SPI
@@ -2410,13 +2415,13 @@ local summaryCalcData = {
 		name = "HEAL",
 		func = function(sum)
 			local ap = (sum["AP"] + (sum["STR"] * StatLogic:GetAPPerStr(class))
-			 + (sum["AGI"] * StatLogic:GetAPPerAgi(class))) * StatLogic:GetStatMod("MOD_AP")
+			 + (sum["AGI"] * StatLogic:GetAPPerAgi(class))) * GSM("MOD_AP")
 			return (sum["HEAL"]
-			 + (sum["STR"] * StatLogic:GetStatMod("ADD_HEALING_MOD_STR"))
-			 + (sum["INT"] * StatLogic:GetStatMod("ADD_HEALING_MOD_INT"))
-			 + (sum["SPI"] * StatLogic:GetStatMod("ADD_HEALING_MOD_SPI"))
-			 + (sum["AGI"] * StatLogic:GetStatMod("ADD_HEALING_MOD_AGI"))
-			 + (ap * StatLogic:GetStatMod("ADD_HEALING_MOD_AP"))) * StatLogic:GetStatMod("MOD_SPELL_DMG")
+			 + (sum["STR"] * GSM("ADD_HEALING_MOD_STR"))
+			 + (sum["INT"] * GSM("ADD_HEALING_MOD_INT"))
+			 + (sum["SPI"] * GSM("ADD_HEALING_MOD_SPI"))
+			 + (sum["AGI"] * GSM("ADD_HEALING_MOD_AGI"))
+			 + (ap * GSM("ADD_HEALING_MOD_AP"))) * GSM("MOD_SPELL_DMG")
 		end,
 	},
 	-- Spell Hit Chance - SPELL_HIT_RATING
@@ -2489,9 +2494,9 @@ local summaryCalcData = {
 		option = "sumArmor",
 		name = "ARMOR",
 		func = function(sum)
-			return sum["ARMOR"] * StatLogic:GetStatMod("MOD_ARMOR")
+			return sum["ARMOR"] * GSM("MOD_ARMOR")
 			 + sum["ARMOR_BONUS"] + (sum["AGI"] * 2)
-			 + (sum["INT"] * StatLogic:GetStatMod("ADD_ARMOR_MOD_INT"))
+			 + (sum["INT"] * GSM("ADD_ARMOR_MOD_INT"))
 		 end,
 	},
 	-- Dodge Chance - DODGE_RATING, DEFENSE_RATING, AGI
@@ -2557,7 +2562,7 @@ local summaryCalcData = {
 		name = "BLOCK_VALUE",
 		func = function(sum)
 			if GetBlockChance() == 0 then return 0 end
-			return sum["BLOCK_VALUE"] * StatLogic:GetStatMod("MOD_BLOCK_VALUE")
+			return sum["BLOCK_VALUE"] * GSM("MOD_BLOCK_VALUE")
 				 + (sum["STR"] * StatLogic:GetBlockValuePerStr(class))
 		end,
 	},
@@ -2988,11 +2993,11 @@ function RatingBuster:StatSummary(tooltip, name, link)
 	end
 	if profileDB.enableStatMods then
 		for _, v in pairs(statData) do
-			v["STR"] = v["STR"] * StatLogic:GetStatMod("MOD_STR")
-			v["AGI"] = v["AGI"] * StatLogic:GetStatMod("MOD_AGI")
-			v["STA"] = v["STA"] * StatLogic:GetStatMod("MOD_STA")
-			v["INT"] = v["INT"] * StatLogic:GetStatMod("MOD_INT")
-			v["SPI"] = v["SPI"] * StatLogic:GetStatMod("MOD_SPI")
+			v["STR"] = v["STR"] * GSM("MOD_STR")
+			v["AGI"] = v["AGI"] * GSM("MOD_AGI")
+			v["STA"] = v["STA"] * GSM("MOD_STA")
+			v["INT"] = v["INT"] * GSM("MOD_INT")
+			v["SPI"] = v["SPI"] * GSM("MOD_SPI")
 		end
 	end
 	-- Summary Table
@@ -3005,7 +3010,7 @@ function RatingBuster:StatSummary(tooltip, name, link)
 	if profileDB.sumHP then
 		local d = {name = "HEALTH"}
 		for k, sum in pairs(data) do
-			d[k] = (sum["HEALTH"] + (sum["STA"] * 10)) * StatLogic:GetStatMod("MOD_HEALTH")
+			d[k] = (sum["HEALTH"] + (sum["STA"] * 10)) * GSM("MOD_HEALTH")
 		end
 		tinsert(summary, d)
 	end
@@ -3014,7 +3019,7 @@ function RatingBuster:StatSummary(tooltip, name, link)
 		sumHP = {
 			name = "HEALTH",
 			func = function(sum)
-				return (sum["HEALTH"] + (sum["STA"] * 10)) * StatLogic:GetStatMod("MOD_HEALTH")
+				return (sum["HEALTH"] + (sum["STA"] * 10)) * GSM("MOD_HEALTH")
 			end,
 			ispercent = false,
 		},
