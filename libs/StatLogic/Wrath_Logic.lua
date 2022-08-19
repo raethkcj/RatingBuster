@@ -862,6 +862,19 @@ if addonTable.playerClass == "DRUID" then
 				["buff"] = GetSpellInfo(9634),		-- ["Dire Bear Form"],
 			},
 		},
+		--if class == "DRUID" and select(5, GetTalentInfo(2, 10)) > 0 and weaponItemEquipLoc[select(9, GetItemInfo(link))] then
+		-- Druid: Predatory Strikes (Rank 3) - 2,10
+		--				Increases your melee attack power in Cat, Bear and Dire Bear Forms by
+		--				7,14,20% of any attack power on your equipped weapon.
+		["MOD_FAP"] = {
+			{
+				["tab"] = 2,
+				["num"] = 10,
+				["rank"] = {
+					0.07, 0.14, 0.20,
+				},
+			},
+		},
 		-- Druid: Survival Instincts - Buff
 		--        Health increased by 30% of maximum while in Bear Form, Cat Form, or Dire Bear Form.
 		--        Patch 3.0.8: The extra health from this ability now persists in all forms,

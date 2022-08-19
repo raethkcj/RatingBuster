@@ -290,8 +290,8 @@ L["StatIDLookup"] = {
 	["la puissance d'attaque lorsque vous combattez des morts-vivants. Permet aussi l'acquisition de Pierres du Fléau pour l'Aube d'argent."] = {"AP_UNDEAD"}, -- [Sceau de l'Aube] ID:13209
 	["la puissance d'attaque lorsque vous combattez les démons"] = {"AP_DEMON"},
 	["la puissance d'attaque lorsque vous combattez des morts-vivants et des démons"] = {"AP_UNDEAD", "AP_DEMON"}, -- [Marque du champion] ID:23206
-	["à la puissance d'attaque pour les formes de félin, d'ours et d'ours redoutable uniquement"] = {"FERAL_AP"}, -- version pre-TBC
-	["la puissance d'attaque pour les formes de félin, d'ours, d'ours redoutable et de sélénien uniquement"] = {"FERAL_AP"}, -- version TBC+
+	["à la puissance d'attaque pour les formes de félin"] = {"FERAL_AP"}, -- version pre-TBC
+	["la puissance d'attaque pour les formes de félin"] = {"FERAL_AP"}, -- version TBC+
 	["à la puissance des attaques à distance."] = {"RANGED_AP"}, -- [Arbalète de grand seigneur de guerre] ID: 18837 -- version pre-TBC
 	["la puissance des attaques à distance"] = {"RANGED_AP"}, -- [Arbalète de grand seigneur de guerre] ID: 18837 -- version TBC+
 

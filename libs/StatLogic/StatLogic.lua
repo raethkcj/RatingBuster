@@ -974,6 +974,10 @@ StatLogic.StatModInfo = {
 		finalAdjust = 1,
 		school = true,
 	},
+	["MOD_FAP"] = {
+		initialValue = 0,
+		finalAdjust = 1,
+	},
 	["MOD_HEALING"] = {
 		initialValue = 0,
 		finalAdjust = 1,
@@ -1594,8 +1598,8 @@ function StatLogic:GetAPPerAgi(class)
 		class = ClassNameToID[addonTable.playerClass]
 	end
 	-- Check druid cat form
-	if (class == 9) and (GetShapeshiftFormID() == CAT_FORM) then		-- ["Cat Form"]
-		return 1
+	if (class == ClassNameToID["DRUID"]) and (GetShapeshiftFormID() == CAT_FORM) then		-- ["Cat Form"]
+		return 1, "AP"
 	end
 	return addonTable.APPerAgi[class], "AP"
 end

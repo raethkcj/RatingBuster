@@ -260,8 +260,8 @@ L["StatIDLookup"] = {
 	["Aumenta enel poder de ataque al enfrentarte a no-muertos. También permite conseguir Piedras de la Plaga en nombre de El Alba Argenta"] = {"AP_UNDEAD",}, -- [Seal of the Dawn] ID:13209
 	["Aumenta enel poder de ataque al enfrentarte a demonios"] = {"AP_DEMON",},
 	["Aumenta enel poder de ataque al enfrentarte a no-muertos y demonios"] = {"AP_UNDEAD", "AP_DEMON",}, -- [Mark of the Champion] ID:23206
-	["Poder de ataque bajo formas felinas, de oso, de oso temible"] = {"FERAL_AP",},
-	["Aumenta enel poder de ataque bajo formas felinas, de oso, de oso temible y de lechúcico lunar"] = {"FERAL_AP",},
+	["Poder de ataque bajo formas felinas"] = {"FERAL_AP",},
+	["Aumenta enel poder de ataque bajo formas felinas"] = {"FERAL_AP",},
 	["Poder de ataque a distancia"] = {"RANGED_AP",},
 	["Aumenta enel poder de ataque a distancia"] = {"RANGED_AP",}, -- [High Warlord's Crossbow] ID: 18837
 
