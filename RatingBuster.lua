@@ -1480,8 +1480,6 @@ function RatingBuster.ProcessTooltip(tooltip, name, link)
 			end
 
 		end
-		-- Workaround for strange spell power truncation bug
-		fontString:SetWidth(math.ceil(fontString:GetWidth()))
 	end
 	----------------------------
 	-- Item Level and Item ID --
