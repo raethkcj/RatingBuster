@@ -1462,9 +1462,9 @@ function RatingBuster.ProcessTooltip(tooltip, name, link)
 				-- b) has a minimum required level
 				local color = CreateColor(fontString:GetTextColor())
 				local quality = false
-				for j = 2,7 do
+				for j = Enum.ItemQuality.Good, Enum.ItemQuality.Heirloom do
 					if AreColorsEqual(ITEM_QUALITY_COLORS[j].color, color)
-					and not (j == 7 and text:match(BIND_TRADE_PATTERN)) then
+					and not (j == Enum.ItemQuality.Heirloom and text:match(BIND_TRADE_PATTERN)) then
 						quality = true
 						break
 					end
