@@ -1,5 +1,4 @@
 package-as: RatingBuster
-enable-toc-creation: yes
 
 externals:
   libs/StatLogic/libs/LibStub:
