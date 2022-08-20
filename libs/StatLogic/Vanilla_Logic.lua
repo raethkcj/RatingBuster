@@ -45,11 +45,11 @@ function StatLogic:GetNormalManaRegenFromSpi(spi, class)
 	self:argCheck(spi, 2, "number")
 	self:argCheck(class, 3, "nil", "string", "number")
 	-- if class is a class string, convert to class id
-	if type(class) == "string" and ClassNameToID[strupper(class)] ~= nil then
-		class = ClassNameToID[strupper(class)]
+	if type(class) == "string" and StatLogic:GetClassIdOrName(strupper(class)) ~= nil then
+		class = StatLogic:GetClassIdOrName(strupper(class))
 	-- if class is invalid input, default to player class
 	elseif type(class) ~= "number" or class < 1 or class > 9 then
-		class = ClassNameToID[playerClass]
+		class = StatLogic:GetClassIdOrName(addonTable.playerClass)
 	end
 	-- Calculate
 	return spi * NormalManaRegenPerSpi[class] * 5, "MANA_REG_NOT_CASTING"
@@ -251,7 +251,7 @@ addonTable.BaseDodge = {
 }
 
 StatLogic.StatModTable = {}
-if playerClass == "DRUID" then
+if addonTable.playerClass == "DRUID" then
 	StatLogic.StatModTable["DRUID"] = {
 		-- Druid: Reflection - 3,6
 		--        Allows 5/10/15% of your Mana regeneration to continue while casting
@@ -349,7 +349,7 @@ if playerClass == "DRUID" then
 			},
 		},
 	}
-elseif playerClass == "HUNTER" then
+elseif addonTable.playerClass == "HUNTER" then
 	StatLogic.StatModTable["HUNTER"] = {
 		["ADD_DODGE"] = {
 			-- Hunter: Aspect of the Monkey - Buff
@@ -398,7 +398,7 @@ elseif playerClass == "HUNTER" then
 			},
 		},
 	}
-elseif playerClass == "MAGE" then
+elseif addonTable.playerClass == "MAGE" then
 	StatLogic.StatModTable["MAGE"] = {
 		-- Mage: Arcane Fortitude - 1,9
 		--       Increases your armor by an amount equal to 50% of your Intellect.
@@ -444,7 +444,7 @@ elseif playerClass == "MAGE" then
 			},
 		},
 	}
-elseif playerClass == "PALADIN" then
+elseif addonTable.playerClass == "PALADIN" then
 	StatLogic.StatModTable["PALADIN"] = {
 		-- Paladin: Toughness (Rank 5) - 2,5
 		--          Increases your armor value from items by 2%/4%/6%/8%/10%.
@@ -491,7 +491,7 @@ elseif playerClass == "PALADIN" then
 			},
 		},
 	}
-elseif playerClass == "PRIEST" then
+elseif addonTable.playerClass == "PRIEST" then
 	StatLogic.StatModTable["PRIEST"] = {
 		-- Priest: Meditation (Rank 3) - 1,8
 		--         Allows 5/10/15% of your Mana regeneration to continue while casting.
@@ -563,7 +563,7 @@ elseif playerClass == "PRIEST" then
 			},
 		},
 	}
-elseif playerClass == "ROGUE" then
+elseif addonTable.playerClass == "ROGUE" then
 	StatLogic.StatModTable["ROGUE"] = {
 		-- Rogue: Deadliness (Rank 5) - 3,16
 		--        Increases your attack power by 2%/4%/6%/8%/10%.
@@ -633,7 +633,7 @@ elseif playerClass == "ROGUE" then
 			},
 		},
 	}
-elseif playerClass == "SHAMAN" then
+elseif addonTable.playerClass == "SHAMAN" then
 	StatLogic.StatModTable["SHAMAN"] = {
 		-- Shaman: Anticipation (Rank 5) - 2,9
 		--         Increases your chance to dodge by an additional 1%/2%/3%/4%/5%.
@@ -694,7 +694,7 @@ elseif playerClass == "SHAMAN" then
 			},
 		},
 	}
-elseif playerClass == "WARLOCK" then
+elseif addonTable.playerClass == "WARLOCK" then
 	StatLogic.StatModTable["WARLOCK"] = {
 		-- Warlock: Master Demonologist (Rank 5) - 2,15
 		--          Voidwalker - Reduces physical damage taken by 2%/4%/6%/8%/10%.
@@ -747,7 +747,7 @@ elseif playerClass == "WARLOCK" then
 			},
 		},
 	}
-elseif playerClass == "WARRIOR" then
+elseif addonTable.playerClass == "WARRIOR" then
 	StatLogic.StatModTable["WARRIOR"] = {
 		["MOD_DMG_TAKEN"] = {
 			-- Warrior: Shield Wall - Buff
