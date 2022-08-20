@@ -1500,7 +1500,7 @@ function RatingBuster.ProcessTooltip(tooltip, name, link)
 					end
 				end
 				-- SplitDoJoin
-				text = RatingBuster:SplitDoJoin(text, separatorTable)
+				text = RatingBuster:SplitDoJoin(text, separatorTable, item)
 				cache[cacheID] = text
 				-- SetText
 				fontString:SetText(text)
@@ -1605,7 +1605,7 @@ end
 -- separatorTable = {"/", " and ", ","}
 -- RatingBuster:SplitDoJoin("+24 Agility/+4 Stamina, +4 Dodge and +4 Spell Crit/+5 Spirit", {"/", " and ", ",", "%. ", " for ", "&"})
 -- RatingBuster:SplitDoJoin("+6法術傷害及5耐力", {"/", "和", ",", "。", " 持續 ", "&", "及",})
-function RatingBuster:SplitDoJoin(text, separatorTable)
+function RatingBuster:SplitDoJoin(text, separatorTable, item)
 	if type(separatorTable) == "table" and table.maxn(separatorTable) > 0 then
 		local sep = tremove(separatorTable, 1)
 		text =  gsub(text, sep, "@")
@@ -1615,18 +1615,18 @@ function RatingBuster:SplitDoJoin(text, separatorTable)
 		for _, t in ipairs(text) do
 			--self:Print(t[1])
 			copyTable(tempTable, separatorTable)
-			tinsert(processedText, self:SplitDoJoin(t, tempTable))
+			tinsert(processedText, self:SplitDoJoin(t, tempTable, item))
 		end
 		-- Join text
 		return (gsub(strjoin("@", unpack(processedText)), "@", sep))
 	else
 		--self:Print(cacheID)
-		return self:ProcessText(text)
+		return self:ProcessText(text, item)
 	end
 end
 
 
-function RatingBuster:ProcessText(text)
+function RatingBuster:ProcessText(text, item)
 	--self:Print(text)
 	-- Check if test has a matching pattern
 	for _, num in ipairs(L["numberPatterns"]) do

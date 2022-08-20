@@ -2645,6 +2645,58 @@ function StatLogic:GetSum(item, table)
 	return table
 end
 
+local bonusArmorItemEquipLoc = {
+	["INVTYPE_WEAPON"] = true,
+	["INVTYPE_2HWEAPON"] = true,
+	["INVTYPE_WEAPONMAINHAND"] = true,
+	["INVTYPE_WEAPONOFFHAND"] = true,
+	["INVTYPE_HOLDABLE"] = true,
+	["INVTYPE_RANGED"] = true,
+	["INVTYPE_THROWN"] = true,
+	["INVTYPE_RANGEDRIGHT"] = true,
+	["INVTYPE_NECK"] = true,
+	["INVTYPE_FINGER"] = true,
+	["INVTYPE_TRINKET"] = true,
+}
+
+function StatLogic:GetFinalArmor(item, text)
+	-- Locale check
+	if noPatternLocale then return end
+	local _
+	-- Check item
+	if (type(item) == "string") or (type(item) == "number") then -- common case first
+	elseif type(item) == "table" and type(item.GetItem) == "function" then
+		-- Get the link
+		_, item = item:GetItem()
+		if type(item) ~= "string" then return end
+	else
+		return
+	end
+	-- Check if item is in local cache
+	local name, _, rarity , ilvl, _, _, armorType, _, itemType = GetItemInfo(item)
+	if not name then return end
+
+	for pattern, id in pairs(L.PreScanPatterns) do
+		if id == "ARMOR" or id == "ARMOR_BONUS" then
+			local found, _, value = strfind(text, pattern)
+			if found then
+				local armor = 0
+				local bonus_armor = 0
+				if id == "ARMOR" then
+					armor = baseArmorTable[rarity][itemType][armorType][ilvl]
+					bonus_armor = tonumber(value) - baseArmorTable[rarity][itemType][armorType][ilvl]
+				else
+					armor = tonumber(value)
+				end
+				if bonusArmorItemEquipLoc[itemType] then
+					bonus_armor = bonus_armor + armor
+					armor = 0
+				end
+				return armor * self:GetStatMod("MOD_ARMOR") + bonus_armor
+			end
+		end
+	end
+end
 
 --[[---------------------------------
 {	:GetDiffID(item, [ignoreEnchant], [ignoreGem], [red], [yellow], [blue], [meta])
