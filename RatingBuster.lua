@@ -2614,19 +2614,38 @@ local summaryCalcData = {
 		option = "sumArmor",
 		name = "ARMOR",
 		func = function(sum)
-			return sum["ARMOR"] * GSM("MOD_ARMOR")
-			 + sum["ARMOR_BONUS"] + (sum["AGI"] * 2)
-			 + (sum["INT"] * GSM("ADD_ARMOR_MOD_INT"))
+			return GSM("MOD_ARMOR") * sum["ARMOR"]
+				+ sum["ARMOR_BONUS"]
+				+ sum["AGI"] * ARMOR_PER_AGILITY
+				+ sum["INT"] * GSM("ADD_ARMOR_MOD_INT")
 		 end,
 	},
-	-- Dodge Chance - DODGE_RATING, DEFENSE_RATING, AGI
+	-- Dodge Chance Before DR - DODGE, DODGE_RATING, DEFENSE, AGI
+	{
+		option = "sumDodgeBeforeDR",
+		name = "DODGE_NO_DR",
+		func = function(sum)
+			return sum["DODGE"]
+				+ StatLogic:GetEffectFromRating(sum["DODGE_RATING"], "DODGE_RATING", calcLevel)
+				+ summaryFunc["DEFENSE"](sum) + DODGE_PARRY_BLOCK_PERCENT_PER_DEFENSE
+				+ StatLogic:GetDodgeFromAgi(sum["AGI"])
+		end,
+		ispercent = true,
+	},
+	-- Dodge Chance
 	{
 		option = "sumDodge",
 		name = "DODGE",
-		func = function(sum)
-			return StatLogic:GetEffectFromRating(sum["DODGE_RATING"], "DODGE_RATING", calcLevel)
-			 + (StatLogic:GetEffectFromRating(sum["DEFENSE_RATING"], "DEFENSE_RATING", calcLevel) + sum["DEFENSE"]) * 0.04
-			 + StatLogic:GetDodgeFromAgi(sum["AGI"]) + sum["DODGE"]
+		func = function(sum, sumType, link)
+			local dodge = summaryFunc["DODGE_NO_DR"](sum)
+			if profileDB.enableAvoidanceDiminishingReturns then
+				if (sumType == "diff1") or (sumType == "diff2") then
+					dodge = StatLogic:GetAvoidanceGainAfterDR("DODGE", dodge)
+				elseif sumType == "sum" then
+					dodge = StatLogic:GetAvoidanceGainAfterDR("DODGE", equippedDodge + dodge) - StatLogic:GetAvoidanceGainAfterDR("DODGE", equippedDodge)
+				end
+			end
+			return dodge
 		 end,
 		ispercent = true,
 	},
@@ -2638,15 +2657,34 @@ local summaryCalcData = {
 			return sum["DODGE_RATING"]
 		end,
 	},
-	-- Parry Chance - PARRY_RATING, DEFENSE_RATING
+	-- Parry Chance Before DR - PARRY, PARRY_RATING, DEFENSE
+	{
+		option = "sumParryBeforeDR",
+		name = "PARRY_NO_DR",
+		func = function(sum)
+			return GetParryChance() > 0 and (
+				sum["PARRY"]
+				+ StatLogic:GetEffectFromRating(summaryFunc["PARRY_RATING"](sum), "PARRY_RATING", calcLevel)
+				+ summaryFunc["DEFENSE"](sum) + DODGE_PARRY_BLOCK_PERCENT_PER_DEFENSE
+			)
+		end,
+		ispercent = true,
+	},
+	-- Parry Chance
 	{
 		option = "sumParry",
 		name = "PARRY",
-		func = function(sum)
-			if GetParryChance() == 0 then return 0 end
-			return StatLogic:GetEffectFromRating(sum["PARRY_RATING"], "PARRY_RATING", calcLevel)
-				 + (StatLogic:GetEffectFromRating(sum["DEFENSE_RATING"], "DEFENSE_RATING", calcLevel) + sum["DEFENSE"]) * 0.04 + sum["PARRY"]
-		end,
+		func = function(sum, sumType, link)
+			local parry = summaryFunc["PARRY_NO_DR"](sum)
+			if profileDB.enableAvoidanceDiminishingReturns then
+				if (sumType == "diff1") or (sumType == "diff2") then
+					parry = StatLogic:GetAvoidanceGainAfterDR("PARRY", parry)
+				elseif sumType == "sum" then
+					parry = StatLogic:GetAvoidanceGainAfterDR("PARRY", equippedParry + parry) - StatLogic:GetAvoidanceGainAfterDR("PARRY", equippedParry)
+				end
+			end
+			return parry
+		 end,
 		ispercent = true,
 	},
 	-- Parry Rating - PARRY_RATING
@@ -2655,16 +2693,19 @@ local summaryCalcData = {
 		name = "PARRY_RATING",
 		func = function(sum)
 			return sum["PARRY_RATING"]
+				+ sum["STR"] * GSM("ADD_PARRY_RATING_MOD_STR")
 		end,
 	},
-	-- Block Chance - BLOCK_RATING, DEFENSE_RATING
+	-- Block Chance - BLOCK, BLOCK_RATING, DEFENSE
 	{
 		option = "sumBlock",
 		name = "BLOCK",
 		func = function(sum)
-			if GetBlockChance() == 0 then return 0 end
-			return StatLogic:GetEffectFromRating(sum["BLOCK_RATING"], "BLOCK_RATING", calcLevel)
-				 + (StatLogic:GetEffectFromRating(sum["DEFENSE_RATING"], "DEFENSE_RATING", calcLevel) + sum["DEFENSE"]) * 0.04 + sum["BLOCK_CHANCE"]
+			return GetBlockChance() > 0 and (
+				sum["BLOCK"]
+				+ StatLogic:GetEffectFromRating(sum["BLOCK_RATING"], "BLOCK_RATING", calcLevel)
+				+ summaryFunc["DEFENSE"](sum) + DODGE_PARRY_BLOCK_PERCENT_PER_DEFENSE
+			)
 		end,
 		ispercent = true,
 	},
@@ -2681,29 +2722,73 @@ local summaryCalcData = {
 		option = "sumBlockValue",
 		name = "BLOCK_VALUE",
 		func = function(sum)
-			if GetBlockChance() == 0 then return 0 end
-			return sum["BLOCK_VALUE"] * GSM("MOD_BLOCK_VALUE")
-				 + (sum["STR"] * StatLogic:GetBlockValuePerStr(class))
+			return GetBlockChance() > 0 and (
+				GSM("MOD_BLOCK_VALUE") * (
+					sum["BLOCK_VALUE"]
+					+ sum["STR"] * StatLogic:GetBlockValuePerStr(class)
+				)
+			)
 		end,
 	},
-	-- Hit Avoidance - DEFENSE_RATING, MELEE_HIT_AVOID_RATING
+	-- Hit Avoidance Before DR - DEFENSE
+	{
+		option = "sumHitAvoidBeforeDR",
+		name = "MELEE_HIT_AVOID_NO_DR",
+		func = function(sum)
+			return summaryFunc["DEFENSE"](sum) + DODGE_PARRY_BLOCK_PERCENT_PER_DEFENSE
+		end,
+		ispercent = true,
+	},
+	-- Hit Avoidance
 	{
 		option = "sumHitAvoid",
 		name = "MELEE_HIT_AVOID",
-		func = function(sum)
-			return StatLogic:GetEffectFromRating(sum["MELEE_HIT_AVOID_RATING"], "MELEE_HIT_AVOID_RATING", calcLevel)
-			 + (StatLogic:GetEffectFromRating(sum["DEFENSE_RATING"], "DEFENSE_RATING", calcLevel) + sum["DEFENSE"]) * 0.04
+		func = function(sum, sumType, link)
+			local missed = summaryFunc["MELEE_HIT_AVOID_NO_DR"](sum)
+			if profileDB.enableAvoidanceDiminishingReturns then
+				if (sumType == "diff1") or (sumType == "diff2") then
+					missed = StatLogic:GetAvoidanceGainAfterDR("MELEE_HIT_AVOID", missed)
+				elseif sumType == "sum" then
+					missed = StatLogic:GetAvoidanceGainAfterDR("MELEE_HIT_AVOID", equippedMissed + missed) - StatLogic:GetAvoidanceGainAfterDR("MELEE_HIT_AVOID", equippedMissed)
+				end
+			end
+			return missed
 		 end,
 		ispercent = true,
 	},
-	-- Crit Avoidance - DEFENSE_RATING, RESILIENCE_RATING, MELEE_CRIT_AVOID_RATING
+	-- Defense - DEFENSE_RATING
+	{
+		option = "sumDefense",
+		name = "DEFENSE",
+		func = function(sum)
+			return sum["DEFENSE"]
+				+ StatLogic:GetEffectFromRating(sum["DEFENSE_RATING"], "DEFENSE_RATING", calcLevel)
+		end,
+	},
+	-- Avoidance - DODGE, PARRY, MELEE_HIT_AVOID, BLOCK(Optional)
+	{
+		option = "sumAvoidance",
+		name = "AVOIDANCE",
+		ispercent = true,
+		func = function(sum, sumType, link)
+			local dodge = summaryFunc["DODGE"](sum, sumType, link)
+			local parry = summaryFunc["PARRY"](sum, sumType, link)
+			local missed = summaryFunc["MELEE_HIT_AVOID"](sum, sumType, link)
+			local block = 0
+			if profileDB.sumAvoidWithBlock then
+				block = summaryFunc["BLOCK"](sum, sumType, link)
+			end
+			return parry + dodge + missed + block
+		end,
+		ispercent = true,
+	},
+	-- Crit Avoidance - RESILIENCE_RATING, DEFENSE
 	{
 		option = "sumCritAvoid",
 		name = "MELEE_CRIT_AVOID",
 		func = function(sum)
-			return StatLogic:GetEffectFromRating(sum["MELEE_CRIT_AVOID_RATING"], "MELEE_CRIT_AVOID_RATING", calcLevel)
-			 + StatLogic:GetEffectFromRating(sum["RESILIENCE_RATING"], "RESILIENCE_RATING", calcLevel)
-			 + (StatLogic:GetEffectFromRating(sum["DEFENSE_RATING"], "DEFENSE_RATING", calcLevel) + sum["DEFENSE"]) * 0.04
+			return StatLogic:GetEffectFromRating(sum["RESILIENCE_RATING"], "RESILIENCE_RATING", calcLevel)
+				+ summaryFunc["DEFENSE"](sum) + DODGE_PARRY_BLOCK_PERCENT_PER_DEFENSE
 		 end,
 		ispercent = true,
 	},
@@ -2754,45 +2839,6 @@ local summaryCalcData = {
 		func = function(sum)
 			return sum["SHADOW_RES"]
 		end,
-	},
-	-- Defense - DEFENSE_RATING
-	{
-		option = "sumDefense",
-		name = "DEFENSE",
-		func = function(sum)
-			return StatLogic:GetEffectFromRating(sum["DEFENSE_RATING"], "DEFENSE_RATING", calcLevel)
-		end,
-	},
-	-- Avoidance - PARRY, DODGE, MOBMISS
-	{
-		option = "sumAvoidance",
-		name = "AVOIDANCE",
-		ispercent = true,
-		func = function(sum)
-			local dodge, parry, mobMiss, block
-			if GetParryChance() == 0 then
-				parry = 0
-			else
-				--parry = summaryCalcData["PARRY"].func(sum)
-				parry = StatLogic:GetEffectFromRating(sum["PARRY_RATING"], "PARRY_RATING", calcLevel)
-				 + (StatLogic:GetEffectFromRating(sum["DEFENSE_RATING"], "DEFENSE_RATING", calcLevel) + sum["DEFENSE"]) * 0.04
-			end
-			dodge = StatLogic:GetEffectFromRating(sum["DODGE_RATING"], "DODGE_RATING", calcLevel)
-			 + (StatLogic:GetEffectFromRating(sum["DEFENSE_RATING"], "DEFENSE_RATING", calcLevel) + sum["DEFENSE"]) * 0.04
-			 + StatLogic:GetDodgeFromAgi(sum["AGI"])
-			mobMiss = (StatLogic:GetEffectFromRating(sum["DEFENSE_RATING"], "DEFENSE_RATING", calcLevel) + sum["DEFENSE"]) * 0.04
-			if profileDB.sumAvoidWithBlock then
-				if GetBlockChance() == 0 then
-					block = 0
-				else
-					block = StatLogic:GetEffectFromRating(sum["BLOCK_RATING"], "BLOCK_RATING", calcLevel)
-					 + (StatLogic:GetEffectFromRating(sum["DEFENSE_RATING"], "DEFENSE_RATING", calcLevel) + sum["DEFENSE"]) * 0.04
-				end
-				return parry + dodge + mobMiss + block
-			end
-			return parry + dodge + mobMiss
-		end,
-		ispercent = true,
 	},
 }
 if tpSupport == true then
