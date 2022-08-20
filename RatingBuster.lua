@@ -1987,6 +1987,30 @@ function RatingBuster:ProcessText(text)
 								tinsert(infoTable, (gsub(L["$value Heal"], "$value", format("%+.1f", effect))))
 							end
 						end
+						if profileDB.showSpellCritFromSpi then
+							local mod = GSM("ADD_SPELL_CRIT_RATING_MOD_SPI")
+							local effect = StatLogic:GetEffectFromRating(value * mod, CR_CRIT_SPELL, calcLevel)
+							if effect > 0 then
+								tinsert(infoTable, (gsub(L["$value% Spell Crit"], "$value", format("%+.2f", effect))))
+							end
+						end
+						infoString = strjoin(", ", unpack(infoTable))
+					elseif profileDB.showAPFromArmor and stat.id == ARMOR then
+						-----------
+						-- Armor --
+						-----------
+						local statmod = 1
+						if profileDB.enableStatMods then
+							--local finalArmor = StatLogic:GetFinalArmor(item, lowerText)
+							--if finalArmor then
+							--	value = finalArmor
+							--end
+						end
+						local infoTable = {}
+						local effect = value * GSM("ADD_AP_MOD_ARMOR") * GSM("MOD_AP")
+						if floor(abs(effect) * 10 + 0.5) > 0 then
+							tinsert(infoTable, (gsub(L["$value AP"], "$value", format("%+.1f", effect))))
+						end
 						infoString = strjoin(", ", unpack(infoTable))
 					end
 					if infoString ~= "" then
