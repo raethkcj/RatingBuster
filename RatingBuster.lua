@@ -2460,12 +2460,12 @@ local summaryCalcData = {
 		option = "sumSpellDmg",
 		name = "SPELL_DMG",
 		func = function(sum)
-			local ap = (sum["AP"] + (sum["STR"] * StatLogic:GetAPPerStr(class))
-			 + (sum["AGI"] * StatLogic:GetAPPerAgi(class))) * GSM("MOD_AP")
-			return (sum["SPELL_DMG"] + (sum["STA"] * GSM("ADD_SPELL_DMG_MOD_STA"))
-			 + (sum["INT"] * GSM("ADD_SPELL_DMG_MOD_INT"))
-			 + (sum["SPI"] * GSM("ADD_SPELL_DMG_MOD_SPI"))
-			 + (ap * GSM("ADD_SPELL_DMG_MOD_AP"))) * GSM("MOD_SPELL_DMG")
+			return sum["SPELL_DMG"]
+				+ sum["STR"] * GSM("ADD_SPELL_DMG_MOD_STR")
+				+ sum["STA"] * (GSM("ADD_SPELL_DMG_MOD_STA") + GSM("ADD_SPELL_DMG_MOD_PET_STA") * GSM("ADD_PET_STA_MOD_STA"))
+				+ sum["INT"] * (GSM("ADD_SPELL_DMG_MOD_INT") + GSM("ADD_SPELL_DMG_MOD_PET_INT") * GSM("ADD_PET_INT_MOD_INT"))
+				+ sum["SPI"] * GSM("ADD_SPELL_DMG_MOD_SPI")
+				+ summaryFunc["AP"](sum) * GSM("ADD_SPELL_DMG_MOD_AP")
 		end,
 	},
 	-- Holy Damage - HOLY_SPELL_DMG, SPELL_DMG, INT, SPI
@@ -2473,10 +2473,9 @@ local summaryCalcData = {
 		option = "sumHolyDmg",
 		name = "HOLY_SPELL_DMG",
 		func = function(sum)
-			return (sum["HOLY_SPELL_DMG"] + sum["SPELL_DMG"]
-			 + (sum["STA"] * GSM("ADD_SPELL_DMG_MOD_STA"))
-			 + (sum["INT"] * GSM("ADD_SPELL_DMG_MOD_INT"))
-			 + (sum["SPI"] * GSM("ADD_SPELL_DMG_MOD_SPI"))) * GSM("MOD_SPELL_DMG")
+			return GSM("MOD_SPELL_DMG") * (
+				sum["HOLY_SPELL_DMG"]
+			) + summaryFunc["SPELL_DMG"](sum)
 		 end,
 	},
 	-- Arcane Damage - ARCANE_SPELL_DMG, SPELL_DMG, INT
@@ -2484,10 +2483,9 @@ local summaryCalcData = {
 		option = "sumArcaneDmg",
 		name = "ARCANE_SPELL_DMG",
 		func = function(sum)
-			return (sum["ARCANE_SPELL_DMG"] + sum["SPELL_DMG"]
-			 + (sum["STA"] * GSM("ADD_SPELL_DMG_MOD_STA"))
-			 + (sum["INT"] * GSM("ADD_SPELL_DMG_MOD_INT"))
-			 + (sum["SPI"] * GSM("ADD_SPELL_DMG_MOD_SPI"))) * GSM("MOD_SPELL_DMG")
+			return GSM("MOD_SPELL_DMG") * (
+				sum["ARCANE_SPELL_DMG"]
+			) + summaryFunc["SPELL_DMG"](sum)
 		 end,
 	},
 	-- Fire Damage - FIRE_SPELL_DMG, SPELL_DMG, STA, INT
@@ -2495,10 +2493,9 @@ local summaryCalcData = {
 		option = "sumFireDmg",
 		name = "FIRE_SPELL_DMG",
 		func = function(sum)
-			return (sum["FIRE_SPELL_DMG"] + sum["SPELL_DMG"]
-			 + (sum["STA"] * GSM("ADD_SPELL_DMG_MOD_STA"))
-			 + (sum["INT"] * GSM("ADD_SPELL_DMG_MOD_INT"))
-			 + (sum["SPI"] * GSM("ADD_SPELL_DMG_MOD_SPI"))) * GSM("MOD_SPELL_DMG")
+			return GSM("MOD_SPELL_DMG") * (
+				sum["FIRE_SPELL_DMG"]
+			) + summaryFunc["SPELL_DMG"](sum)
 		 end,
 	},
 	-- Nature Damage - NATURE_SPELL_DMG, SPELL_DMG, INT
@@ -2506,10 +2503,9 @@ local summaryCalcData = {
 		option = "sumNatureDmg",
 		name = "NATURE_SPELL_DMG",
 		func = function(sum)
-			return (sum["NATURE_SPELL_DMG"] + sum["SPELL_DMG"]
-			 + (sum["STA"] * GSM("ADD_SPELL_DMG_MOD_STA"))
-			 + (sum["INT"] * GSM("ADD_SPELL_DMG_MOD_INT"))
-			 + (sum["SPI"] * GSM("ADD_SPELL_DMG_MOD_SPI"))) * GSM("MOD_SPELL_DMG")
+			return GSM("MOD_SPELL_DMG") * (
+				sum["NATURE_SPELL_DMG"]
+			) + summaryFunc["SPELL_DMG"](sum)
 		 end,
 	},
 	-- Frost Damage - FROST_SPELL_DMG, SPELL_DMG, INT
@@ -2517,10 +2513,9 @@ local summaryCalcData = {
 		option = "sumFrostDmg",
 		name = "FROST_SPELL_DMG",
 		func = function(sum)
-			return (sum["FROST_SPELL_DMG"] + sum["SPELL_DMG"]
-			 + (sum["STA"] * GSM("ADD_SPELL_DMG_MOD_STA"))
-			 + (sum["INT"] * GSM("ADD_SPELL_DMG_MOD_INT"))
-			 + (sum["SPI"] * GSM("ADD_SPELL_DMG_MOD_SPI"))) * GSM("MOD_SPELL_DMG")
+			return GSM("MOD_SPELL_DMG") * (
+				sum["FROST_SPELL_DMG"]
+			) + summaryFunc["SPELL_DMG"](sum)
 		 end,
 	},
 	-- Shadow Damage - SHADOW_SPELL_DMG, SPELL_DMG, STA, INT, SPI
@@ -2528,25 +2523,24 @@ local summaryCalcData = {
 		option = "sumShadowDmg",
 		name = "SHADOW_SPELL_DMG",
 		func = function(sum)
-			return (sum["SHADOW_SPELL_DMG"] + sum["SPELL_DMG"]
-			 + (sum["STA"] * GSM("ADD_SPELL_DMG_MOD_STA"))
-			 + (sum["INT"] * GSM("ADD_SPELL_DMG_MOD_INT"))
-			 + (sum["SPI"] * GSM("ADD_SPELL_DMG_MOD_SPI"))) * GSM("MOD_SPELL_DMG")
+			return GSM("MOD_SPELL_DMG") * (
+				sum["SHADOW_SPELL_DMG"]
+			) + summaryFunc["SPELL_DMG"](sum)
 		 end,
 	},
-	-- Healing - HEAL, AGI, STR, INT, SPI
+	-- Healing - HEAL, AGI, STR, INT, SPI, AP
 	{
 		option = "sumHealing",
 		name = "HEAL",
 		func = function(sum)
-			local ap = (sum["AP"] + (sum["STR"] * StatLogic:GetAPPerStr(class))
-			 + (sum["AGI"] * StatLogic:GetAPPerAgi(class))) * GSM("MOD_AP")
-			return (sum["HEAL"]
-			 + (sum["STR"] * GSM("ADD_HEALING_MOD_STR"))
-			 + (sum["INT"] * GSM("ADD_HEALING_MOD_INT"))
-			 + (sum["SPI"] * GSM("ADD_HEALING_MOD_SPI"))
-			 + (sum["AGI"] * GSM("ADD_HEALING_MOD_AGI"))
-			 + (ap * GSM("ADD_HEALING_MOD_AP"))) * GSM("MOD_SPELL_DMG")
+			return GSM("MOD_HEALING") * (
+				sum["HEAL"]
+				+ (sum["STR"] * GSM("ADD_HEALING_MOD_STR"))
+				+ (sum["AGI"] * GSM("ADD_HEALING_MOD_AGI"))
+				+ (sum["INT"] * GSM("ADD_HEALING_MOD_INT"))
+				+ (sum["SPI"] * GSM("ADD_HEALING_MOD_SPI"))
+				+ (summaryFunc["AP"](sum) * GSM("ADD_HEALING_MOD_AP"))
+			)
 		end,
 	},
 	-- Spell Hit Chance - SPELL_HIT_RATING
@@ -2554,8 +2548,8 @@ local summaryCalcData = {
 		option = "sumSpellHit",
 		name = "SPELL_HIT",
 		func = function(sum)
-			return StatLogic:GetEffectFromRating(sum["SPELL_HIT_RATING"], "SPELL_HIT_RATING", calcLevel)
-			+ sum["SPELL_HIT"]
+			return sum["SPELL_HIT"]
+				+ StatLogic:GetEffectFromRating(sum["SPELL_HIT_RATING"], "SPELL_HIT_RATING", calcLevel)
 		end,
 		ispercent = true,
 	},
@@ -2572,9 +2566,9 @@ local summaryCalcData = {
 		option = "sumSpellCrit",
 		name = "SPELL_CRIT",
 		func = function(sum)
-			return StatLogic:GetEffectFromRating(sum["SPELL_CRIT_RATING"], "SPELL_CRIT_RATING", calcLevel)
-			 + StatLogic:GetSpellCritFromInt(sum["INT"], class, calcLevel)
-			 + sum["SPELL_CRIT"]
+			return sum["SPELL_CRIT"]
+				+ StatLogic:GetEffectFromRating(summaryFunc["SPELL_CRIT_RATING"](sum), "SPELL_CRIT_RATING", calcLevel)
+				+ StatLogic:GetSpellCritFromInt(sum["INT"], class, calcLevel)
 		end,
 		ispercent = true,
 	},
@@ -2584,6 +2578,7 @@ local summaryCalcData = {
 		name = "SPELL_CRIT_RATING",
 		func = function(sum)
 			return sum["SPELL_CRIT_RATING"]
+				+ sum["SPI"] * GSM("ADD_SPELL_CRIT_RATING_MOD_SPI")
 		end,
 	},
 	-- Spell Haste - SPELL_HASTE_RATING
@@ -2958,10 +2953,8 @@ if tpSupport == true then
 end
 
 -- Build summaryFunc
-addonTable.GenerateSummaryFunc = function()
-	for _, calcData in pairs(summaryCalcData) do
-		summaryFunc[calcData.name] = calcData.func
-	end
+for _, calcData in pairs(summaryCalcData) do
+	summaryFunc[calcData.name] = calcData.func
 end
 
 function sumSortAlphaComp(a, b)
