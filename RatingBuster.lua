@@ -2627,7 +2627,7 @@ local summaryCalcData = {
 		func = function(sum)
 			return sum["DODGE"]
 				+ StatLogic:GetEffectFromRating(sum["DODGE_RATING"], "DODGE_RATING", calcLevel)
-				+ summaryFunc["DEFENSE"](sum) + DODGE_PARRY_BLOCK_PERCENT_PER_DEFENSE
+				+ summaryFunc["DEFENSE"](sum) * DODGE_PARRY_BLOCK_PERCENT_PER_DEFENSE
 				+ StatLogic:GetDodgeFromAgi(sum["AGI"])
 		end,
 		ispercent = true,
@@ -2665,7 +2665,7 @@ local summaryCalcData = {
 			return GetParryChance() > 0 and (
 				sum["PARRY"]
 				+ StatLogic:GetEffectFromRating(summaryFunc["PARRY_RATING"](sum), "PARRY_RATING", calcLevel)
-				+ summaryFunc["DEFENSE"](sum) + DODGE_PARRY_BLOCK_PERCENT_PER_DEFENSE
+				+ summaryFunc["DEFENSE"](sum) * DODGE_PARRY_BLOCK_PERCENT_PER_DEFENSE
 			) or 0
 		end,
 		ispercent = true,
@@ -2704,7 +2704,7 @@ local summaryCalcData = {
 			return GetBlockChance() > 0 and (
 				sum["BLOCK"]
 				+ StatLogic:GetEffectFromRating(sum["BLOCK_RATING"], "BLOCK_RATING", calcLevel)
-				+ summaryFunc["DEFENSE"](sum) + DODGE_PARRY_BLOCK_PERCENT_PER_DEFENSE
+				+ summaryFunc["DEFENSE"](sum) * DODGE_PARRY_BLOCK_PERCENT_PER_DEFENSE
 			) or 0
 		end,
 		ispercent = true,
@@ -2735,7 +2735,7 @@ local summaryCalcData = {
 		option = "sumHitAvoidBeforeDR",
 		name = "MELEE_HIT_AVOID_NO_DR",
 		func = function(sum)
-			return summaryFunc["DEFENSE"](sum) + DODGE_PARRY_BLOCK_PERCENT_PER_DEFENSE
+			return summaryFunc["DEFENSE"](sum) * DODGE_PARRY_BLOCK_PERCENT_PER_DEFENSE
 		end,
 		ispercent = true,
 	},
@@ -2788,7 +2788,7 @@ local summaryCalcData = {
 		name = "MELEE_CRIT_AVOID",
 		func = function(sum)
 			return StatLogic:GetEffectFromRating(sum["RESILIENCE_RATING"], "RESILIENCE_RATING", calcLevel)
-				+ summaryFunc["DEFENSE"](sum) + DODGE_PARRY_BLOCK_PERCENT_PER_DEFENSE
+				+ summaryFunc["DEFENSE"](sum) * DODGE_PARRY_BLOCK_PERCENT_PER_DEFENSE
 		 end,
 		ispercent = true,
 	},
