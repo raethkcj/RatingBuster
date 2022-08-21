@@ -2666,7 +2666,7 @@ local summaryCalcData = {
 				sum["PARRY"]
 				+ StatLogic:GetEffectFromRating(summaryFunc["PARRY_RATING"](sum), "PARRY_RATING", calcLevel)
 				+ summaryFunc["DEFENSE"](sum) + DODGE_PARRY_BLOCK_PERCENT_PER_DEFENSE
-			)
+			) or 0
 		end,
 		ispercent = true,
 	},
@@ -2705,7 +2705,7 @@ local summaryCalcData = {
 				sum["BLOCK"]
 				+ StatLogic:GetEffectFromRating(sum["BLOCK_RATING"], "BLOCK_RATING", calcLevel)
 				+ summaryFunc["DEFENSE"](sum) + DODGE_PARRY_BLOCK_PERCENT_PER_DEFENSE
-			)
+			) or 0
 		end,
 		ispercent = true,
 	},
@@ -2727,7 +2727,7 @@ local summaryCalcData = {
 					sum["BLOCK_VALUE"]
 					+ sum["STR"] * StatLogic:GetBlockValuePerStr(class)
 				)
-			)
+			) or 0
 		end,
 	},
 	-- Hit Avoidance Before DR - DEFENSE
