@@ -408,10 +408,10 @@ L["StatIDLookup"] = {
 	["使盾牌格挡等级"] = {"BLOCK_RATING",},
 	["使你的盾牌格挡等级"] = {"BLOCK_RATING",},
 
-	["命中等级"] = {"MELEE_HIT_RATING",},
-	["提高命中等级"] = {"MELEE_HIT_RATING",}, -- ITEM_MOD_HIT_RATING
+	["命中等级"] = {"HIT_RATING",},
+	["提高命中等级"] = {"HIT_RATING",}, -- ITEM_MOD_HIT_RATING
+	["使你的命中等级"] = {"HIT_RATING",},
 	["提高近战命中等级"] = {"MELEE_HIT_RATING",}, -- ITEM_MOD_HIT_MELEE_RATING
-	["使你的命中等级"] = {"MELEE_HIT_RATING",},
 
 	["法术命中等级"] = {"SPELL_HIT_RATING",},
 	["提高法术命中等级"] = {"SPELL_HIT_RATING",}, -- ITEM_MOD_HIT_SPELL_RATING
@@ -421,9 +421,9 @@ L["StatIDLookup"] = {
 	["提高远程命中等级"] = {"RANGED_HIT_RATING",}, -- ITEM_MOD_HIT_RANGED_RATING
 	["使你的远程命中等级"] = {"RANGED_HIT_RATING",},
 
-	["爆击等级"] = {"MELEE_CRIT_RATING",},
-	["提高爆击等级"] = {"MELEE_CRIT_RATING",},
-	["使你的爆击等级"] = {"MELEE_CRIT_RATING",},
+	["爆击等级"] = {"CRIT_RATING",},
+	["提高爆击等级"] = {"CRIT_RATING",},
+	["使你的爆击等级"] = {"CRIT_RATING",},
 
 	["近战爆击等级"] = {"MELEE_CRIT_RATING",},
 	["提高近战爆击等级"] = {"MELEE_CRIT_RATING",}, -- [屠杀者腰带] ID:21639
@@ -444,11 +444,11 @@ L["StatIDLookup"] = {
 	["韧性等级"] = {"RESILIENCE_RATING",},
 	["使你的韧性等级"] = {"RESILIENCE_RATING",},
 
-	["急速等级"] = {"MELEE_HASTE_RATING"}, -- Enchant Gloves
-	["攻击速度"] = {"MELEE_HASTE_RATING"},
+	["急速等级"] = {"HASTE_RATING"}, -- Enchant Gloves
+	["攻击速度"] = {"HASTE_RATING"},
+	["提高急速等级"] = {"HASTE_RATING"},
 	["法术急速等级"] = {"SPELL_HASTE_RATING"},
 	["远程急速等级"] = {"RANGED_HASTE_RATING"},
-	["提高急速等级"] = {"MELEE_HASTE_RATING"},
 	["提高近战急速等级"] = {"MELEE_HASTE_RATING"},
 	["提高法术急速等级"] = {"SPELL_HASTE_RATING"},
 	["提高远程急速等级"] = {"RANGED_HASTE_RATING"},

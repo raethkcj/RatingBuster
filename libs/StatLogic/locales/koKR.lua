@@ -350,8 +350,8 @@ L["StatIDLookup"] = {
 	["방패 막기 숙련도가 증가합니다"] = {"BLOCK_RATING",},
 	["방패 막기 숙련도가 증가합니다"] = {"BLOCK_RATING",},
 
-	["적중도"] = {"MELEE_HIT_RATING",},
-	["적중도가 증가합니다"] = {"MELEE_HIT_RATING",}, -- ITEM_MOD_HIT_RATING
+	["적중도"] = {"HIT_RATING",},
+	["적중도가 증가합니다"] = {"HIT_RATING",}, -- ITEM_MOD_HIT_RATING
 	["근접 적중도가 증가합니다"] = {"MELEE_HIT_RATING",}, -- ITEM_MOD_HIT_MELEE_RATING
 	["주문 적중"] = {"SPELL_HIT_RATING",}, -- Presence of Sight +18 Healing and Spell Damage/+8 Spell Hit http://wow.allakhazam.com/db/spell.html?wspell=24164
 	["주문 적중도"] = {"SPELL_HIT_RATING",},
@@ -360,8 +360,8 @@ L["StatIDLookup"] = {
 	["원거리 적중도"] = {"RANGED_HIT_RATING",},
 	["원거리 적중도가 증가합니다"] = {"RANGED_HIT_RATING",}, -- ITEM_MOD_HIT_RANGED_RATING
 
-	["치명타 적중도"] = {"MELEE_CRIT_RATING",},
-	["치명타 적중도가 증가합니다"] = {"MELEE_CRIT_RATING",},
+	["치명타 적중도"] = {"CRIT_RATING",},
+	["치명타 적중도가 증가합니다"] = {"CRIT_RATING",},
 	["근접 치명타 적중도가 증가합니다"] = {"MELEE_CRIT_RATING",},
 	["주문 극대화 적중도"] = {"SPELL_CRIT_RATING",},
 	["주문의 극대화 적중도"] = {"SPELL_CRIT_RATING",},
@@ -374,10 +374,10 @@ L["StatIDLookup"] = {
 	["탄력도"] = {"RESILIENCE_RATING",}, -- Enchant Chest - Major Resilience "+15 Resilience Rating" http://wow.allakhazam.com/db/spell.html?wspell=33992
 	["탄력도가 증가합니다"] = {"RESILIENCE_RATING",},
 
-	["공격 가속도"] = {"MELEE_HASTE_RATING"},
+	["공격 가속도"] = {"HASTE_RATING"},
+	["공격 가속도가 증가합니다"] = {"HASTE_RATING"},
 	["주문 시전 가속도"] = {"SPELL_HASTE_RATING"},
 	["원거리 공격 가속도"] = {"RANGED_HASTE_RATING"},
-	["공격 가속도가 증가합니다"] = {"MELEE_HASTE_RATING"},
 	["근접 공격 가속도가 증가합니다"] = {"MELEE_HASTE_RATING"},
 	["주문 시전 가속도가 증가합니다"] = {"SPELL_HASTE_RATING"},
 	["원거리 공격 가속도가 증가합니다"] = {"RANGED_HASTE_RATING"},
