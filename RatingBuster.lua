@@ -1411,7 +1411,9 @@ local EmptySocketLookup = {
 
 -- Avoidance Diminishing Returns
 local summaryFunc = {}
-local equippedSum = {}
+local equippedSum = setmetatable({}, {
+	__index = function() return 0 end
+})
 local equippedDodge, equippedParry, equippedMissed
 local processedDodge, processedParry, processedMissed
 
