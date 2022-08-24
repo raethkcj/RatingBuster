@@ -52,7 +52,7 @@ L["Exclude"] = {
 	["(7) C"] = true,
 	["(8) C"] = true,
 	-- Equip type
-	["Proyectil"] = true, -- Ice Threaded Arrow ID:19316
+	[GetItemClassInfo(Enum.ItemClass.Projectile)] = true, -- Ice Threaded Arrow ID:19316
 	[INVTYPE_AMMO] = true,
 	[INVTYPE_HEAD] = true,
 	[INVTYPE_NECK] = true,
@@ -75,7 +75,7 @@ L["Exclude"] = {
 	[INVTYPE_WEAPONOFFHAND] = true,
 	[INVTYPE_HOLDABLE] = true,
 	[INVTYPE_RANGED] = true,
-	[INVTYPE_THROWN] = true,
+	[GetItemSubClassInfo(Enum.ItemClass.Weapon, Enum.ItemWeaponSubclass.Thrown)] = true,
 	[INVTYPE_RELIC] = true,
 	[INVTYPE_TABARD] = true,
 	[INVTYPE_BAG] = true,
@@ -381,17 +381,9 @@ L["StatIDLookup"] = {
 	["Mejora el índice de golpe con hechizos"] = {"SPELL_CRIT_RATING",},
 	["Aumenta tu índice de golpe crítico a distancia"] = {"RANGED_CRIT_RATING",}, -- Fletcher's Gloves ID:7348
 
-	["Mejora el índice de evasión"] = {"MELEE_HIT_AVOID_RATING"}, -- ITEM_MOD_HIT_TAKEN_RATING
-	["Mejora el índice de evasión de golpes cuerpo a cuerpo"] = {"MELEE_HIT_AVOID_RATING"}, -- ITEM_MOD_HIT_TAKEN_MELEE_RATING
-	["Mejora el índice de evasión de golpes a distancia"] = {"RANGED_HIT_AVOID_RATING"}, -- ITEM_MOD_HIT_TAKEN_RANGED_RATING
-	["Mejora el índice de evasión de golpes con hechizos"] = {"SPELL_HIT_AVOID_RATING"}, -- ITEM_MOD_HIT_TAKEN_SPELL_RATING
 	["temple"] = {"RESILIENCE_RATING",},
 	["índice de temple"] = {"RESILIENCE_RATING",}, -- Enchant Chest - Major Resilience "+15 Resilience Rating" http://wow.allakhazam.com/db/spell.html?wspell=33992
 	["Mejora tu índice de temple"] = {"RESILIENCE_RATING",},
-	["Mejora el índice de evasión crítico"] = {"MELEE_CRIT_AVOID_RATING",},
-	["Mejora el índice de evasión de golpes críticos cuerpo a cuerpo"] = {"MELEE_CRIT_AVOID_RATING",},
-	["Mejora el índice de evasión de golpes críticos a distancia"] = {"RANGED_CRIT_AVOID_RATING",},
-	["Mejora el índice de evasión de golpes críticos con hechizos"] = {"SPELL_CRIT_AVOID_RATING",},
 
 	["índice de celeridad"] = {"MELEE_HASTE_RATING"},
 	["Mejora el índice de celeridad"] = {"HASTE_RATING"},

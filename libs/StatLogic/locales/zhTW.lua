@@ -59,7 +59,7 @@ L["Exclude"] = {
 	["(7)"] = true,
 	["(8)"] = true,
 	-- Equip type
-	["彈藥"] = true, -- Ice Threaded Arrow ID:19316
+	[GetItemClassInfo(Enum.ItemClass.Projectile)] = true, -- Ice Threaded Arrow ID:19316
 	[INVTYPE_AMMO] = true,
 	[INVTYPE_HEAD] = true,
 	[INVTYPE_NECK] = true,
@@ -82,7 +82,7 @@ L["Exclude"] = {
 	[INVTYPE_WEAPONOFFHAND] = true,
 	[INVTYPE_HOLDABLE] = true,
 	[INVTYPE_RANGED] = true,
-	[INVTYPE_THROWN] = true,
+	[GetItemSubClassInfo(Enum.ItemClass.Weapon, Enum.ItemWeaponSubclass.Thrown)] = true,
 	[INVTYPE_RELIC] = true,
 	[INVTYPE_TABARD] = true,
 	[INVTYPE_BAG] = true,
@@ -425,17 +425,9 @@ L["StatIDLookup"] = {
 	["提高遠程致命一擊等級"] = {"RANGED_CRIT_RATING",},
 	["使你的遠程致命一擊等級"] = {"RANGED_CRIT_RATING",},
 
-	["提高命中迴避率"] = {"MELEE_HIT_AVOID_RATING"}, -- ITEM_MOD_HIT_TAKEN_RATING, Necklace of Trophies ID: 31275 (Patch 2.0.10 changed it to Hit Rating)
-	["提高近戰命中迴避率"] = {"MELEE_HIT_AVOID_RATING"}, -- ITEM_MOD_HIT_TAKEN_MELEE_RATING
-	["提高遠距命中迴避率"] = {"RANGED_HIT_AVOID_RATING"}, -- ITEM_MOD_HIT_TAKEN_RANGED_RATING
-	["提高法術命中迴避率"] = {"SPELL_HIT_AVOID_RATING"}, -- ITEM_MOD_HIT_TAKEN_SPELL_RATING
 	["韌性"] = {"RESILIENCE_RATING",},
 	["韌性等級"] = {"RESILIENCE_RATING",},
 	["使你的韌性等級"] = {"RESILIENCE_RATING",},
-	["提高致命一擊等級迴避率"] = {"MELEE_CRIT_AVOID_RATING",},
-	["提高近戰致命一擊等級迴避率"] = {"MELEE_CRIT_AVOID_RATING",},
-	["提高遠距致命一擊等級迴避率"] = {"RANGED_CRIT_AVOID_RATING",},
-	["提高法術致命一擊等級迴避率"] = {"SPELL_CRIT_AVOID_RATING",},
 
 	["加速等級"] = {"MELEE_HASTE_RATING"}, -- Enchant Gloves
 	["攻擊速度"] = {"MELEE_HASTE_RATING"},
@@ -567,15 +559,9 @@ D["StatIDToName"] = {
 	["MELEE_HIT_RATING"] = {COMBAT_RATING_NAME6, COMBAT_RATING_NAME6}, -- COMBAT_RATING_NAME6 = "Hit Rating"
 	["RANGED_HIT_RATING"] = {"遠程命中等級", "遠程命中等級"}, -- PLAYERSTAT_RANGED_COMBAT = "Ranged"
 	["SPELL_HIT_RATING"] = {"法術命中等級", "法術命中等級"}, -- PLAYERSTAT_SPELL_COMBAT = "Spell"
-	["MELEE_HIT_AVOID_RATING"] = {"避免命中等級", "避免命中等級"},
-	["RANGED_HIT_AVOID_RATING"] = {"避免遠程命中等級", "避免遠程命中等級"},
-	["SPELL_HIT_AVOID_RATING"] = {"避免法術命中等級", "避免法術命中等級"},
 	["MELEE_CRIT_RATING"] = {COMBAT_RATING_NAME9, COMBAT_RATING_NAME9}, -- COMBAT_RATING_NAME9 = "Crit Rating"
 	["RANGED_CRIT_RATING"] = {"遠程致命等級", "遠程致命等級"},
 	["SPELL_CRIT_RATING"] = {"法術致命等級", "法術致命等級"},
-	["MELEE_CRIT_AVOID_RATING"] = {"避免致命等級", "避免致命等級"},
-	["RANGED_CRIT_AVOID_RATING"] = {"避免遠程致命等級", "避免遠程致命等級"},
-	["SPELL_CRIT_AVOID_RATING"] = {"避免法術致命等級", "避免法術致命等級"},
 	["RESILIENCE_RATING"] = {COMBAT_RATING_NAME15, COMBAT_RATING_NAME15}, -- COMBAT_RATING_NAME15 = "Resilience"
 	["MELEE_HASTE_RATING"] = {"攻擊加速等級", "攻擊加速等級"}, --
 	["RANGED_HASTE_RATING"] = {"遠程加速等級", "遠程加速等級"},
@@ -616,15 +602,9 @@ D["StatIDToName"] = {
 	["MELEE_HIT"] = {"命中(%)", "命中(%)"},
 	["RANGED_HIT"] = {"遠程命中(%)", "遠程命中(%)"},
 	["SPELL_HIT"] = {"法術命中(%)", "法術命中(%)"},
-	["MELEE_HIT_AVOID"] = {"迴避命中(%)", "迴避命中(%)"},
-	["RANGED_HIT_AVOID"] = {"迴避遠程命中(%)", "迴避遠程命中(%)"},
-	["SPELL_HIT_AVOID"] = {"迴避法術命中(%)", "迴避法術命中(%)"},
 	["MELEE_CRIT"] = {"致命(%)", "致命(%)"}, -- MELEE_CRIT_CHANCE = "Crit Chance"
 	["RANGED_CRIT"] = {"遠程致命(%)", "遠程致命(%)"},
 	["SPELL_CRIT"] = {"法術致命(%)", "法術致命(%)"},
-	["MELEE_CRIT_AVOID"] = {"迴避致命(%)", "迴避致命(%)"},
-	["RANGED_CRIT_AVOID"] = {"迴避遠程致命(%)", "迴避遠程致命(%)"},
-	["SPELL_CRIT_AVOID"] = {"迴避法術致命(%)", "迴避法術致命(%)"},
 	["MELEE_HASTE"] = {"攻擊加速(%)", "攻擊加速(%)"}, --
 	["RANGED_HASTE"] = {"遠程加速(%)", "遠程加速(%)"},
 	["SPELL_HASTE"] = {"法術加速(%)", "法術加速(%)"},

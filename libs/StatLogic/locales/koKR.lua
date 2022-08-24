@@ -49,7 +49,7 @@ L["Exclude"] = {
 	["(7)"] = true,
 	["(8)"] = true,
 	-- Equip type
-	["투사체"] = true, -- Ice Threaded Arrow ID:19316
+	[GetItemClassInfo(Enum.ItemClass.Projectile)] = true, -- Ice Threaded Arrow ID:19316
 	[INVTYPE_AMMO] = true,
 	[INVTYPE_HEAD] = true,
 	[INVTYPE_NECK] = true,
@@ -72,7 +72,7 @@ L["Exclude"] = {
 	[INVTYPE_WEAPONOFFHAND] = true,
 	[INVTYPE_HOLDABLE] = true,
 	[INVTYPE_RANGED] = true,
-	[INVTYPE_THROWN] = true,
+	[GetItemSubClassInfo(Enum.ItemClass.Weapon, Enum.ItemWeaponSubclass.Thrown)] = true,
 	[INVTYPE_RELIC] = true,
 	[INVTYPE_TABARD] = true,
 	[INVTYPE_BAG] = true,
@@ -353,41 +353,26 @@ L["StatIDLookup"] = {
 	["적중도"] = {"MELEE_HIT_RATING",},
 	["적중도가 증가합니다"] = {"MELEE_HIT_RATING",}, -- ITEM_MOD_HIT_RATING
 	["근접 적중도가 증가합니다"] = {"MELEE_HIT_RATING",}, -- ITEM_MOD_HIT_MELEE_RATING
-	["Increases your hit rating"] = {"MELEE_HIT_RATING",},
 	["주문 적중"] = {"SPELL_HIT_RATING",}, -- Presence of Sight +18 Healing and Spell Damage/+8 Spell Hit http://wow.allakhazam.com/db/spell.html?wspell=24164
 	["주문 적중도"] = {"SPELL_HIT_RATING",},
 	["주문의 적중도"] = {"SPELL_HIT_RATING",}, -- ITEM_MOD_HIT_SPELL_RATING
 	["주문 적중도가 증가합니다"] = {"SPELL_HIT_RATING",},
 	["원거리 적중도"] = {"RANGED_HIT_RATING",},
 	["원거리 적중도가 증가합니다"] = {"RANGED_HIT_RATING",}, -- ITEM_MOD_HIT_RANGED_RATING
-	["Increases your ranged hit rating"] = {"RANGED_HIT_RATING",},
 
 	["치명타 적중도"] = {"MELEE_CRIT_RATING",},
-	["Critical Rating"] = {"MELEE_CRIT_RATING",},
-	["Critical Strike Rating"] = {"MELEE_CRIT_RATING",},
 	["치명타 적중도가 증가합니다"] = {"MELEE_CRIT_RATING",},
 	["근접 치명타 적중도가 증가합니다"] = {"MELEE_CRIT_RATING",},
-	["Improves critical strike rating"] = {"MELEE_CRIT_RATING",},
 	["주문 극대화 적중도"] = {"SPELL_CRIT_RATING",},
 	["주문의 극대화 적중도"] = {"SPELL_CRIT_RATING",},
-	["Spell Critical Rating"] = {"SPELL_CRIT_RATING",},
-	["Spell Crit Rating"] = {"SPELL_CRIT_RATING",},
 	["주문의 극대화 적중도가 증가합니다"] = {"SPELL_CRIT_RATING",},
 	["주위 30미터 반경에 있는 모든 파티원의 주문 극대화 적중도가 증가합니다"] = {"SPELL_CRIT_RATING",},
 	["주문 극대화 적중도가 증가합니다"] = {"SPELL_CRIT_RATING",},
 	["원거리 치명타 적중도가 증가합니다"] = {"RANGED_CRIT_RATING",}, -- Fletcher's Gloves ID:7348
 
-	["공격 회피 숙련도가 증가합니다"] = {"MELEE_HIT_AVOID_RATING"}, -- ITEM_MOD_HIT_TAKEN_RATING
-	["근접 공격 회피 숙련도가 증가합니다"] = {"MELEE_HIT_AVOID_RATING"}, -- ITEM_MOD_HIT_TAKEN_MELEE_RATING
-	["원거리 공격 회피 숙련도가 증가합니다"] = {"RANGED_HIT_AVOID_RATING"}, -- ITEM_MOD_HIT_TAKEN_RANGED_RATING
-	["주문 공격 회피 숙련도가 증가합니다"] = {"SPELL_HIT_AVOID_RATING"}, -- ITEM_MOD_HIT_TAKEN_SPELL_RATING
 	["탄력도"] = {"RESILIENCE_RATING",},
 	["탄력도"] = {"RESILIENCE_RATING",}, -- Enchant Chest - Major Resilience "+15 Resilience Rating" http://wow.allakhazam.com/db/spell.html?wspell=33992
 	["탄력도가 증가합니다"] = {"RESILIENCE_RATING",},
-	["치명타 회피 숙련도가 증가합니다"] = {"MELEE_CRIT_AVOID_RATING",},
-	["근접 치명타 회피 숙련도가 증가합니다"] = {"MELEE_CRIT_AVOID_RATING",},
-	["원거리 치명타 회피 숙련도가 증가합니다"] = {"RANGED_CRIT_AVOID_RATING",},
-	["주문 치명타 회피 숙련도가 증가합니다"] = {"SPELL_CRIT_AVOID_RATING",},
 
 	["공격 가속도"] = {"MELEE_HASTE_RATING"},
 	["주문 시전 가속도"] = {"SPELL_HASTE_RATING"},

@@ -49,7 +49,7 @@ L["Exclude"] = {
 	["(7) 套装"] = true,
 	["(8) 套装"] = true,
 	-- Equip type
-	["弹药"] = true, -- Ice Threaded Arrow ID:19316
+	[GetItemClassInfo(Enum.ItemClass.Projectile)] = true, -- Ice Threaded Arrow ID:19316
 	[INVTYPE_AMMO] = true,
 	[INVTYPE_HEAD] = true,
 	[INVTYPE_NECK] = true,
@@ -72,7 +72,7 @@ L["Exclude"] = {
 	[INVTYPE_WEAPONOFFHAND] = true,
 	[INVTYPE_HOLDABLE] = true,
 	[INVTYPE_RANGED] = true,
-	[INVTYPE_THROWN] = true,
+	[GetItemSubClassInfo(Enum.ItemClass.Weapon, Enum.ItemWeaponSubclass.Thrown)] = true,
 	[INVTYPE_RELIC] = true,
 	[INVTYPE_TABARD] = true,
 	[INVTYPE_BAG] = true,
@@ -439,18 +439,10 @@ L["StatIDLookup"] = {
 	["提高远程爆击等级"] = {"RANGED_CRIT_RATING",},
 	["使你的远程爆击等级"] = {"RANGED_CRIT_RATING",},
 
-	["提高命中躲闪等级"] = {"MELEE_HIT_AVOID_RATING"}, -- ITEM_MOD_HIT_TAKEN_RATING, Necklace of Trophies ID: 31275 (Patch 2.0.10 changed it to Hit Rating)
-	["提高近战命中躲闪等级"] = {"MELEE_HIT_AVOID_RATING"}, -- ITEM_MOD_HIT_TAKEN_MELEE_RATING
-	["提高远程命中躲闪等级"] = {"RANGED_HIT_AVOID_RATING"}, -- ITEM_MOD_HIT_TAKEN_RANGED_RATING
-	["提高法术命中躲闪等级"] = {"SPELL_HIT_AVOID_RATING"}, -- ITEM_MOD_HIT_TAKEN_SPELL_RATING
 
 	["韧性"] = {"RESILIENCE_RATING",},
 	["韧性等级"] = {"RESILIENCE_RATING",},
 	["使你的韧性等级"] = {"RESILIENCE_RATING",},
-	["提高爆击躲闪等级"] = {"MELEE_CRIT_AVOID_RATING",},
-	["提高近战爆击躲闪等级"] = {"MELEE_CRIT_AVOID_RATING",},
-	["提高远程爆击躲闪等级"] = {"RANGED_CRIT_AVOID_RATING",},
-	["提高法术爆击躲闪等级"] = {"SPELL_CRIT_AVOID_RATING",},
 
 	["急速等级"] = {"MELEE_HASTE_RATING"}, -- Enchant Gloves
 	["攻击速度"] = {"MELEE_HASTE_RATING"},
@@ -580,15 +572,9 @@ D["StatIDToName"] = {
 	["MELEE_HIT_RATING"] = {COMBAT_RATING_NAME6, COMBAT_RATING_NAME6}, -- COMBAT_RATING_NAME6 = "Hit Rating"
 	["RANGED_HIT_RATING"] = {"远程命中等级", "远程命中"}, -- PLAYERSTAT_RANGED_COMBAT = "Ranged"
 	["SPELL_HIT_RATING"] = {"法术命中等级", "法术命中"}, -- PLAYERSTAT_SPELL_COMBAT = "Spell"
-	["MELEE_HIT_AVOID_RATING"] = {"近战命中躲闪等级", "近战命中躲闪"},
-	["RANGED_HIT_AVOID_RATING"] = {"远程命中躲闪等级", "远程命中躲闪"},
-	["SPELL_HIT_AVOID_RATING"] = {"法术命中躲闪等级", "法术命中躲闪"},
 	["MELEE_CRIT_RATING"] = {COMBAT_RATING_NAME9, COMBAT_RATING_NAME9}, -- COMBAT_RATING_NAME9 = "Crit Rating"
 	["RANGED_CRIT_RATING"] = {"远程爆击等级", "远程爆击"},
 	["SPELL_CRIT_RATING"] = {"法术爆击等级", "法术爆击"},
-	["MELEE_CRIT_AVOID_RATING"] = {"爆击躲闪等级", "近战爆击躲闪"},
-	["RANGED_CRIT_AVOID_RATING"] = {"远程爆击躲闪等级", "远程爆击躲闪"},
-	["SPELL_CRIT_AVOID_RATING"] = {"法术爆击躲闪等级", "法术爆击躲闪"},
 	["RESILIENCE_RATING"] = {COMBAT_RATING_NAME15, COMBAT_RATING_NAME15}, -- COMBAT_RATING_NAME15 = "Resilience"
 	["MELEE_HASTE_RATING"] = {"近战急速等级", "近战急速"}, --
 	["RANGED_HASTE_RATING"] = {"远程急速等级", "远程急速"},
@@ -629,15 +615,9 @@ D["StatIDToName"] = {
 	["MELEE_HIT"] = {"物理命中(%)", "命中(%)"},
 	["RANGED_HIT"] = {"远程命中(%)", "远程命中(%)"},
 	["SPELL_HIT"] = {"法术命中(%)", "法术命中(%)"},
-	["MELEE_HIT_AVOID"] = {"躲闪命中(%)", "躲闪命中(%)"},
-	["RANGED_HIT_AVOID"] = {"躲闪远程命中(%)", "躲闪远程命中(%)"},
-	["SPELL_HIT_AVOID"] = {"躲闪法术命中(%)", "躲闪法术命中(%)"},
 	["MELEE_CRIT"] = {"物理爆击(%)", "物理爆击(%)"}, -- MELEE_CRIT_CHANCE = "Crit Chance"
 	["RANGED_CRIT"] = {"远程爆击(%)", "远程爆击(%)"},
 	["SPELL_CRIT"] = {"法术爆击(%)", "法术爆击(%)"},
-	["MELEE_CRIT_AVOID"] = {"躲闪近战爆击(%)", "躲闪爆击(%)"},
-	["RANGED_CRIT_AVOID"] = {"躲闪远程爆击(%)", "躲闪远程爆击(%)"},
-	["SPELL_CRIT_AVOID"] = {"躲闪法术爆击(%)", "躲闪法术爆击(%)"},
 	["MELEE_HASTE"] = {"近战急速(%)", "近战急速(%)"}, --
 	["RANGED_HASTE"] = {"远程急速(%)", "远程急速(%)"},
 	["SPELL_HASTE"] = {"法术急速(%)", "法术急速(%)"},
