@@ -70,7 +70,7 @@ L["Exclude"] = {
 	["(7) S"] = true,
 	["(8) S"] = true,
 	-- Equip type
-	["Projectile"] = true, -- Ice Threaded Arrow ID:19316
+	[GetItemClassInfo(Enum.ItemClass.Projectile)] = true, -- Ice Threaded Arrow ID:19316
 	[INVTYPE_AMMO] = true,
 	[INVTYPE_HEAD] = true,
 	[INVTYPE_NECK] = true,
@@ -93,8 +93,7 @@ L["Exclude"] = {
 	[INVTYPE_WEAPONOFFHAND] = true,
 	[INVTYPE_HOLDABLE] = true,
 	[INVTYPE_RANGED] = true,
-	--[INVTYPE_THROWN] = true,
-	--[INVTYPE_RANGEDRIGHT] = true,
+	[GetItemSubClassInfo(Enum.ItemClass.Weapon, Enum.ItemWeaponSubclass.Thrown)] = true,
 	[INVTYPE_RELIC] = true,
 	[INVTYPE_TABARD] = true,
 	[INVTYPE_BAG] = true,
@@ -430,6 +429,7 @@ L["StatIDLookup"] = {
 
 	["Resilience"] = {"RESILIENCE_RATING",},
 	["Resilience Rating"] = {"RESILIENCE_RATING",}, -- Enchant Chest - Major Resilience "+15 Resilience Rating" http://wow.allakhazam.com/db/spell.html?wspell=33992
+	["Improves your resilience rating"] = {"RESILIENCE_RATING",},
 
 	["Haste Rating"] = {"HASTE_RATING"},
 	["Ranged Haste Rating"] = {"HASTE_RATING"},
