@@ -1003,7 +1003,7 @@ StatLogic.StatModTable["ALL"] = {
 	["MOD_SPELL_DMG"] = {
 		[1] = {
 			["value"] = 0.2,
-			["buff"] = GetSpellInfo(37274),		-- ["Power Infusion"],
+			["buff"] = GetSpellInfo(10060),		-- ["Power Infusion"],
 		},
 	},
 	-- Priest: Power Infusion - Buff
@@ -1011,7 +1011,7 @@ StatLogic.StatModTable["ALL"] = {
 	["MOD_HEALING"] = {
 		[1] = {
 			["value"] = 0.2,
-			["buff"] = GetSpellInfo(37274),		-- ["Power Infusion"],
+			["buff"] = GetSpellInfo(10060),		-- ["Power Infusion"],
 		},
 	},
 }
