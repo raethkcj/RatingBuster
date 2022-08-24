@@ -1399,8 +1399,6 @@ local EmptySocketLookup = {
 	[EMPTY_SOCKET_BLUE] = "sumGemBlue", -- EMPTY_SOCKET_BLUE = "Blue Socket";
 	[EMPTY_SOCKET_META] = "sumGemMeta", -- EMPTY_SOCKET_META = "Meta Socket";
 }
--- Color code (used to fix gem text color)
-local currentColorCode
 
 -- Avoidance Diminishing Returns
 local summaryFunc = {}
@@ -1476,38 +1474,11 @@ function RatingBuster.ProcessTooltip(tooltip, name, link)
 				end
 			end
 
-			-- Get data from cache if available
-			local cacheID = text..calcLevel
-			local cacheText = cache[cacheID]
-			if cacheText then
-				if cacheText ~= text then
-					fontString:SetText(cacheText)
-				end
-			elseif EmptySocketLookup[text] and profileDB[EmptySocketLookup[text]].gemText then -- Replace empty sockets with gem text
-				text = profileDB[EmptySocketLookup[text]].gemText
-				cache[cacheID] = text
-				-- SetText
-				fontString:SetText(text)
-			elseif strfind(text, "%d") then -- do nothing if we don't find a number
-				-- Find and set color code (used to fix gem text color) pattern:|cxxxxxxxx
-				currentColorCode = select(3, strfind(text, "(|c%x%x%x%x%x%x%x%x)")) or "|r"
-				-- Initial pattern check, do nothing if not found
-				-- Check for separators and bulid separatorTable
-				local separatorTable = {}
-				for _, sep in ipairs(L["separators"]) do
-					if strfind(text, sep) then
-						tinsert(separatorTable, sep)
-					end
-				end
-				-- SplitDoJoin
-				text = RatingBuster:SplitDoJoin(text, separatorTable, item)
-				cache[cacheID] = text
-				-- SetText
+			text = RatingBuster:ProcessLine(text, link)
+			if text then
 				fontString:SetText(text)
 			end
 		end
-		-- Workaround for strange spell power truncation bug
-		fontString:SetWidth(math.ceil(fontString:GetWidth()))
 	end
 	----------------------------
 	-- Item Level and Item ID --
@@ -1597,6 +1568,38 @@ function RatingBuster.ProcessTooltip(tooltip, name, link)
 	tooltip:Show()
 end
 
+
+function RatingBuster:ProcessLine(text, link)
+	-- Get data from cache if available
+	local cacheID = text..calcLevel
+	local cacheText = cache[cacheID]
+	if cacheText then
+		if cacheText ~= text then
+			return cacheText
+		end
+	elseif EmptySocketLookup[text] and profileDB[EmptySocketLookup[text]].gemText then -- Replace empty sockets with gem text
+		text = profileDB[EmptySocketLookup[text]].gemText
+		cache[cacheID] = text
+		-- SetText
+		return text
+	elseif strfind(text, "%d") then -- do nothing if we don't find a number
+		-- Initial pattern check, do nothing if not found
+		-- Check for separators and bulid separatorTable
+		local separatorTable = {}
+		for _, sep in ipairs(L["separators"]) do
+			if strfind(text, sep) then
+				tinsert(separatorTable, sep)
+			end
+		end
+		-- SplitDoJoin
+		text = RatingBuster:SplitDoJoin(text, separatorTable, link)
+		cache[cacheID] = text
+		-- SetText
+		return text
+	end
+end
+
+
 ---------------------------------------------------------------------------------
 -- Recursive algorithm that divides a string into pieces using the separators in separatorTable,
 -- processes them separately, then joins them back together
@@ -1605,7 +1608,7 @@ end
 -- separatorTable = {"/", " and ", ","}
 -- RatingBuster:SplitDoJoin("+24 Agility/+4 Stamina, +4 Dodge and +4 Spell Crit/+5 Spirit", {"/", " and ", ",", "%. ", " for ", "&"})
 -- RatingBuster:SplitDoJoin("+6法術傷害及5耐力", {"/", "和", ",", "。", " 持續 ", "&", "及",})
-function RatingBuster:SplitDoJoin(text, separatorTable, item)
+function RatingBuster:SplitDoJoin(text, separatorTable, link)
 	if type(separatorTable) == "table" and table.maxn(separatorTable) > 0 then
 		local sep = tremove(separatorTable, 1)
 		text =  gsub(text, sep, "@")
@@ -1615,19 +1618,21 @@ function RatingBuster:SplitDoJoin(text, separatorTable, item)
 		for _, t in ipairs(text) do
 			--self:Print(t[1])
 			copyTable(tempTable, separatorTable)
-			tinsert(processedText, self:SplitDoJoin(t, tempTable, item))
+			tinsert(processedText, self:SplitDoJoin(t, tempTable, link))
 		end
 		-- Join text
 		return (gsub(strjoin("@", unpack(processedText)), "@", sep))
 	else
 		--self:Print(cacheID)
-		return self:ProcessText(text, item)
+		return self:ProcessText(text, link)
 	end
 end
 
 
-function RatingBuster:ProcessText(text, item)
+function RatingBuster:ProcessText(text, link)
 	--self:Print(text)
+	-- Find and set color code (used to fix gem text color) pattern:|cxxxxxxxx
+	local currentColorCode = select(3, strfind(text, "(|c%x%x%x%x%x%x%x%x)")) or "|r"
 	-- Check if test has a matching pattern
 	for _, num in ipairs(L["numberPatterns"]) do
 		-- Convert text to lower so we don't have to worry about same ratings with different cases
@@ -2001,7 +2006,7 @@ function RatingBuster:ProcessText(text, item)
 						-----------
 						local statmod = 1
 						if profileDB.enableStatMods then
-							--local finalArmor = StatLogic:GetFinalArmor(item, lowerText)
+							--local finalArmor = StatLogic:GetFinalArmor(link, lowerText)
 							--if finalArmor then
 							--	value = finalArmor
 							--end
