@@ -164,14 +164,17 @@ L["PreScanPatterns"] = {
 	["Verstärkte %(%+(%d+) Rüstung%)"] = "ARMOR_BUFF",
 	["Mana Regeneration (%d+) alle 5 Sek%.$"] = "MANA_REG",
 	["^%+?%d+ %- (%d+) .-[Ss]chaden$"] = "MAX_DAMAGE",
-	["^%(([%d%,]+) Schaden pro Sekunde%)$"] = "DPS",
+	["^%(([%d%.]+) Schaden pro Sekunde%)$"] = "DPS",
+	-- These fail DeepScan in deDE because of the commas
+	["Anlegen: Erhöht Eure Chance, einen kritischen Treffer durch Zauber zu erzielen, um (%d)%%\."] = "SPELL_CRIT",
+	["Anlegen: Erhöht Eure Chance, einen kritischen Treffer zu erzielen, um (%d)%%\."] = "CRIT",
 	-- Exclude
 	["^(%d+) Slot"] = false, -- Set Name (0/9)
 	["^[%a '%-]+%((%d+)/%d+%)$"] = false, -- Set Name (0/9)
 	["|cff808080"] = false, -- Gray text "  |cff808080Requires at least 2 Yellow gems|r\n  |cff808080Requires at least 1 Red gem|r"
 	-- Procs
-	["[Cc]hance"] = false, -- [Mark of Defiance] ID:27924 -- [Staff of the Qiraji Prophets] ID:21128
-	["[Ee]s besteht eine Chance"] = false, -- [Darkmoon Card: Heroism] ID:19287
+	["[Cc]hance bei"] = false, -- [Mark of Defiance] ID:27924 -- [Staff of the Qiraji Prophets] ID:21128
+	["eine Chance"] = false, -- [Darkmoon Card: Heroism] ID:19287
 	["[Ff]ügt dem Angreifer"] = false, -- [Essence of the Pure Flame] ID: 18815
 }
 --------------
@@ -335,10 +338,12 @@ L["StatIDLookup"] = {
 	["Erhöht Eure Blockwertung"] = {"BLOCK_RATING",},
 	["Erhöt den Blockwet Eures Schildes"] = {"BLOCK_RATING",},
 
-	["Trefferwertung"] = {"MELEE_HIT_RATING",},
-	["Erhöht Trefferwertung"] = {"MELEE_HIT_RATING",}, -- ITEM_MOD_HIT_RATING
-	["Erhöht Eure Trefferwertung"] = {"MELEE_HIT_RATING",}, -- ITEM_MOD_HIT_MELEE_RATING
-	["Erhöht die Trefferwertung"] = {"MELEE_HIT_RATING",},
+	["verbessert eure trefferchance%"] = {"MELEE_HIT", "RANGED_HIT",},
+	["erhöht eure chance mit zaubern zu treffen%"] = {"SPELL_HIT",},
+	["Trefferwertung"] = {"HIT_RATING",},
+	["Erhöht Trefferwertung"] = {"HIT_RATING",}, -- ITEM_MOD_HIT_RATING
+	["Erhöht Eure Trefferwertung"] = {"HIT_RATING",}, -- ITEM_MOD_HIT_MELEE_RATING
+	["Erhöht die Trefferwertung"] = {"HIT_RATING",},
 	["Zaubertrefferwertung"] = {"SPELL_HIT_RATING",},
 	["Erhöht Zaubertrefferwertung"] = {"SPELL_HIT_RATING",}, -- ITEM_MOD_HIT_SPELL_RATING
 	["Erhöht Eure Zaubertrefferwertung"] = {"SPELL_HIT_RATING",},
@@ -347,10 +352,10 @@ L["StatIDLookup"] = {
 	["Erhöht Distanztrefferwertung"] = {"RANGED_HIT_RATING",}, -- ITEM_MOD_HIT_RANGED_RATING
 	["Erhöht Eure Distanztrefferwertung"] = {"RANGED_HIT_RATING",},
 
-	["kritische Trefferwertung"] = {"MELEE_CRIT_RATING",},
-	["Erhöht kritische Trefferwertung"] = {"MELEE_CRIT_RATING",},
-	["Erhöht Eure kritische Trefferwertung"] = {"MELEE_CRIT_RATING",},
-	["Erhöht die kritische Trefferwertung"] = {"MELEE_CRIT_RATING",},
+	["kritische Trefferwertung"] = {"CRIT_RATING",},
+	["Erhöht kritische Trefferwertung"] = {"CRIT_RATING",},
+	["Erhöht Eure kritische Trefferwertung"] = {"CRIT_RATING",},
+	["Erhöht die kritische Trefferwertung"] = {"CRIT_RATING",},
 	["kritische Zaubertrefferwertung"] = {"SPELL_CRIT_RATING",},
 	["Erhöht kritische Zaubertrefferwertung"] = {"SPELL_CRIT_RATING",},
 	["Erhöht Eure kritische Zaubertrefferwertung"] = {"SPELL_CRIT_RATING",},
@@ -370,11 +375,11 @@ L["StatIDLookup"] = {
 	--	["Improves ranged critical avoidance rating"] = {"RANGED_CRIT_AVOID_RATING",},
 	--	["Improves spell critical avoidance rating"] = {"SPELL_CRIT_AVOID_RATING",},
 
+	["Erhöht Tempowertung"] = {"HASTE_RATING"}, -- [Pfeilabwehrender Brustschutz] ID:33328
+	["Erhöht die Tempowertung"] = {"HASTE_RATING"},
 	["Angriffstempowertung"] = {"MELEE_HASTE_RATING"},
 	["Zaubertempowertung"] = {"SPELL_HASTE_RATING"},
 	["Distanzangriffstempowertung"] = {"RANGED_HASTE_RATING"},
-	["Erhöht Tempowertung"] = {"MELEE_HASTE_RATING"}, -- [Pfeilabwehrender Brustschutz] ID:33328
-	["Erhöht die Tempowertung"] = {"MELEE_HASTE_RATING"},
 	["Erhöht Angriffstempowertung"] = {"MELEE_HASTE_RATING"},
 	["Erhöht Eure Angriffstempowertung"] = {"MELEE_HASTE_RATING"},
 	["Erhöht Eure Distanzangriffstempowertung"] = {"RANGED_HASTE_RATING"},

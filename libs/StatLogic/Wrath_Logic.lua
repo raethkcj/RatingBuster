@@ -41,6 +41,24 @@ addonTable.RatingBase = {
 }
 addonTable.SetCRMax()
 
+addonTable.genericStatMap = {
+	["HIT_RATING"] = {
+		"MELEE_HIT_RATING",
+		"RANGED_HIT_RATING",
+		"SPELL_HIT_RATING",
+	},
+	["CRIT_RATING"] = {
+		"MELEE_CRIT_RATING",
+		"RANGED_CRIT_RATING",
+		"SPELL_CRIT_RATING",
+	},
+	["HASTE_RATING"] = {
+		"MELEE_HASTE_RATING",
+		"RANGED_HASTE_RATING",
+		"SPELL_HASTE_RATING",
+	},
+}
+
 --[[---------------------------------
 	:GetNormalManaRegenFromSpi(spi, [int], [level])
 -------------------------------------

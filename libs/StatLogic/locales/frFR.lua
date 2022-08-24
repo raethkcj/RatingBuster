@@ -384,17 +384,17 @@ L["StatIDLookup"] = {
 	["votre score de blocage"] = {"BLOCK_RATING"},
 	["au score de blocage"] = {"BLOCK_RATING"}, -- Ench. de bouclier (Blocage inférieur) "+10 au score de blocage" -- ID: 13689
 
-	["score de toucher"] = {"MELEE_HIT_RATING"},
-	["le score de toucher"] = {"MELEE_HIT_RATING"},
-	["votre score de toucher"] = {"MELEE_HIT_RATING"},
-	["au score de toucher"] = {"MELEE_HIT_RATING"},
+	["score de toucher"] = {"HIT_RATING"},
+	["le score de toucher"] = {"HIT_RATING"},
+	["votre score de toucher"] = {"HIT_RATING"},
+	["au score de toucher"] = {"HIT_RATING"},
 
-	["score de coup critique"] = {"MELEE_CRIT_RATING"},
-	["score de critique"] = {"MELEE_CRIT_RATING"},
-	["au score de coup critique"] = {"MELEE_CRIT_RATING"},
-	["au score de critique"] = {"MELEE_CRIT_RATING"},
-	["le score de coup critique"] = {"MELEE_CRIT_RATING"},
-	["votre score de coup critique"] = {"MELEE_CRIT_RATING"},
+	["score de coup critique"] = {"CRIT_RATING"},
+	["score de critique"] = {"CRIT_RATING"},
+	["au score de coup critique"] = {"CRIT_RATING"},
+	["au score de critique"] = {"CRIT_RATING"},
+	["le score de coup critique"] = {"CRIT_RATING"},
+	["votre score de coup critique"] = {"CRIT_RATING"},
 	["le score de coup critique en mêlée"] = {"MELEE_CRIT_RATING"}, -- [Cape des ténèbres] "Augmente de 24 le score de coup critique en mêlée." ID: 33122
 
 	["score de résilience"] = {"RESILIENCE_RATING"},
@@ -423,9 +423,9 @@ L["StatIDLookup"] = {
 	--["Increases your ranged hit rating"] = {"RANGED_HIT_RATING"},
 	["votre score de coup critique à distance"] = {"RANGED_CRIT_RATING"}, -- [Gants de fléchier] ID:7348
 
-	["le score de hâte"] = {"MELEE_HASTE_RATING", "RANGED_HASTE_RATING"},
-	["score de hâte"] = {"MELEE_HASTE_RATING", "RANGED_HASTE_RATING"},
-	["au score de hâte"] = {"MELEE_HASTE_RATING", "RANGED_HASTE_RATING"},
+	["le score de hâte"] = {"HASTE_RATING"},
+	["score de hâte"] = {"HASTE_RATING"},
+	["au score de hâte"] = {"HASTE_RATING"},
 
 	["le score de hâte des sorts"] = {"SPELL_HASTE_RATING"},
 	["score de hâte des sorts"] = {"SPELL_HASTE_RATING"},

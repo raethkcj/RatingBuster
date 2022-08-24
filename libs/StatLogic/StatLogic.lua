@@ -2170,6 +2170,16 @@ function StatLogic:GetGemID(item)
 	end
 end
 
+local ConvertGenericRatings = function(table)
+	for generic, ratings in pairs(addonTable.genericStatMap) do
+		if table[generic] then
+			for _, rating in ipairs(ratings) do
+				table[rating] = table[generic]
+			end
+			table[generic] = nil
+		end
+	end
+end
 
 -- ================== --
 -- Stat Summarization --
@@ -2641,6 +2651,10 @@ function StatLogic:GetSum(item, table)
 			--log("Excluded: "..text)
 		end
 	end
+
+	-- Tooltip scanning done, do post processing
+	ConvertGenericRatings(table)
+
 	cache[link] = copy(table)
 	return table
 end
