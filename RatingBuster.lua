@@ -91,6 +91,7 @@ local defaults = {
 		textColor = {r = 1.0, g = 0.996,  b = 0.545, hex = "|cfffffe8b"},
 		enableTextColor = true,
 		enableStatMods = true,
+		enableAvoidanceDiminishingReturns = StatLogic.GetAvoidanceAfterDR and true or false,
 		showRatings = true,
 		detailedConversionText = false,
 		defBreakDown = false,
@@ -1447,6 +1448,30 @@ function RatingBuster.ProcessTooltip(tooltip, name, link)
 	---------------------
 	-- Tooltip Scanner --
 	---------------------
+	-- Get equipped item avoidances
+	if profileDB.enableAvoidanceDiminishingReturns then
+		local red = profileDB.sumGemRed.gemID
+		local yellow = profileDB.sumGemYellow.gemID
+		local blue = profileDB.sumGemBlue.gemID
+		local meta = profileDB.sumGemMeta.gemID
+		local _, mainlink, difflink1, difflink2 = StatLogic:GetDiffID(tooltip, profileDB.sumIgnoreEnchant, profileDB.sumIgnoreGems, red, yellow, blue, meta, profileDB.sumIgnorePris)
+		StatLogic:GetSum(difflink1, equippedSum)
+		equippedSum["STR"] = equippedSum["STR"] * GSM("MOD_STR")
+		equippedSum["AGI"] = equippedSum["AGI"] * GSM("MOD_AGI")
+		equippedDodge = summaryFunc["DODGE_NO_DR"](equippedSum, "sum", difflink1) * -1
+		equippedParry = summaryFunc["PARRY_NO_DR"](equippedSum, "sum", difflink1) * -1
+		equippedMissed = summaryFunc["MELEE_HIT_AVOID_NO_DR"](equippedSum, "sum", difflink1) * -1
+		processedDodge = equippedDodge
+		processedParry = equippedParry
+		processedMissed = equippedMissed
+	else
+		equippedDodge = 0
+		equippedParry = 0
+		equippedMissed = 0
+		processedDodge = 0
+		processedParry = 0
+		processedMissed = 0
+	end
 	-- Loop through tooltip lines starting at line 2
 	local tipTextLeft = tooltip:GetName().."TextLeft"
 	for i = 2, tooltip:NumLines() do
@@ -1659,14 +1684,24 @@ function RatingBuster:ProcessText(text, link)
 						-- If rating is resilience, add a minus sign
 						if strID == "DEFENSE" and profileDB.defBreakDown then
 							effect = effect * 0.04
+							processedDodge = processedDodge + effect
+							processedMissed = processedMissed + effect
 							local numStats = 5
 							if GetParryChance() == 0 then
 								numStats = numStats - 1
+							else
+								processedParry = processedParry + effect
 							end
 							if GetBlockChance() == 0 then
 								numStats = numStats - 1
 							end
 							infoString = format("%+.2f%% x"..numStats, effect)
+						elseif strID == "DODGE" and profileDB.enableAvoidanceDiminishingReturns then
+							infoString = format("%+.2f%%", StatLogic:GetAvoidanceGainAfterDR("DODGE", processedDodge + effect) - StatLogic:GetAvoidanceGainAfterDR("DODGE", processedDodge))
+							processedDodge = processedDodge + effect
+						elseif strID == "PARRY" and profileDB.enableAvoidanceDiminishingReturns then
+							infoString = format("%+.2f%%", StatLogic:GetAvoidanceGainAfterDR("PARRY", processedParry + effect) - StatLogic:GetAvoidanceGainAfterDR("PARRY", processedParry))
+							processedParry = processedParry + effect
 						elseif strID == "WEAPON_SKILL" and profileDB.wpnBreakDown then
 							effect = effect * 0.04
 							infoString = format("%+.2f%% x5", effect)
