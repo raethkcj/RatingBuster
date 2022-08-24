@@ -3514,43 +3514,40 @@ k is is a value that changes with class.
 -----------------------------------]]
 -- The following K, C_p, C_d are calculated by Whitetooth (hotdogee [at] gmail [dot] com)
 local K = {
-	0.956, 0.956, 0.988, 0.988, 0.983, 0.956, 0.988, 0.983, 0.983, 0.972,
-	--["WARRIOR"]     = 0.956,
-	--["PALADIN"]     = 0.956,
-	--["HUNTER"]      = 0.988,
-	--["ROGUE"]       = 0.988,
-	--["PRIEST"]      = 0.983,
-	--["DEATHKNIGHT"] = 0.956,
-	--["SHAMAN"]      = 0.988,
-	--["MAGE"]        = 0.983,
-	--["WARLOCK"]     = 0.983,
-	--["DRUID"]       = 0.972,
+	[StatLogic:GetClassIdOrName("WARRIOR")]     = 0.956,
+	[StatLogic:GetClassIdOrName("PALADIN")]     = 0.956,
+	[StatLogic:GetClassIdOrName("HUNTER")]      = 0.988,
+	[StatLogic:GetClassIdOrName("ROGUE")]       = 0.988,
+	[StatLogic:GetClassIdOrName("PRIEST")]      = 0.983,
+	[StatLogic:GetClassIdOrName("DEATHKNIGHT")] = 0.956,
+	[StatLogic:GetClassIdOrName("SHAMAN")]      = 0.988,
+	[StatLogic:GetClassIdOrName("MAGE")]        = 0.983,
+	[StatLogic:GetClassIdOrName("WARLOCK")]     = 0.983,
+	[StatLogic:GetClassIdOrName("DRUID")]       = 0.972,
 }
 local C_p = {
-	1/0.021275, 1/0.021275, 1/0.006870, 1/0.006870, 1/0.021275, 1/0.021275, 1/0.006870, 1/0.021275, 1/0.021275, 1/0.021275,
-	--["WARRIOR"]     = 1/0.021275,
-	--["PALADIN"]     = 1/0.021275,
-	--["HUNTER"]      = 1/0.006870,
-	--["ROGUE"]       = 1/0.006870,
-	--["PRIEST"]      = 0, --use tank stats
-	--["DEATHKNIGHT"] = 1/0.021275,
-	--["SHAMAN"]      = 1/0.006870,
-	--["MAGE"]        = 0, --use tank stats
-	--["WARLOCK"]     = 0, --use tank stats
-	--["DRUID"]       = 0, --use tank stats
+	[StatLogic:GetClassIdOrName("WARRIOR")]     = 1/0.021275,
+	[StatLogic:GetClassIdOrName("PALADIN")]     = 1/0.021275,
+	[StatLogic:GetClassIdOrName("HUNTER")]      = 1/0.006870,
+	[StatLogic:GetClassIdOrName("ROGUE")]       = 1/0.006870,
+	[StatLogic:GetClassIdOrName("PRIEST")]      = 0, --use tank stats
+	[StatLogic:GetClassIdOrName("DEATHKNIGHT")] = 1/0.021275,
+	[StatLogic:GetClassIdOrName("SHAMAN")]      = 1/0.006870,
+	[StatLogic:GetClassIdOrName("MAGE")]        = 0, --use tank stats
+	[StatLogic:GetClassIdOrName("WARLOCK")]     = 0, --use tank stats
+	[StatLogic:GetClassIdOrName("DRUID")]       = 0, --use tank stats
 }
 local C_d = {
-	1/0.011347, 1/0.011347, 1/0.006870, 1/0.006870, 1/0.006650, 1/0.011347, 1/0.006870, 1/0.006650, 1/0.006650, 1/0.008555,
-	--["WARRIOR"]     = 1/0.011347,
-	--["PALADIN"]     = 1/0.011347,
-	--["HUNTER"]      = 1/0.006870,
-	--["ROGUE"]       = 1/0.006870,
-	--["PRIEST"]      = 1/0.006650,
-	--["DEATHKNIGHT"] = 1/0.011347,
-	--["SHAMAN"]      = 1/0.006870,
-	--["MAGE"]        = 1/0.006650,
-	--["WARLOCK"]     = 1/0.006650,
-	--["DRUID"]       = 1/0.008555,
+	[StatLogic:GetClassIdOrName("WARRIOR")]     = 1/0.011347,
+	[StatLogic:GetClassIdOrName("PALADIN")]     = 1/0.011347,
+	[StatLogic:GetClassIdOrName("HUNTER")]      = 1/0.006870,
+	[StatLogic:GetClassIdOrName("ROGUE")]       = 1/0.006870,
+	[StatLogic:GetClassIdOrName("PRIEST")]      = 1/0.006650,
+	[StatLogic:GetClassIdOrName("DEATHKNIGHT")] = 1/0.011347,
+	[StatLogic:GetClassIdOrName("SHAMAN")]      = 1/0.006870,
+	[StatLogic:GetClassIdOrName("MAGE")]        = 1/0.006650,
+	[StatLogic:GetClassIdOrName("WARLOCK")]     = 1/0.006650,
+	[StatLogic:GetClassIdOrName("DRUID")]       = 1/0.008555,
 }
 
 -- I've done extensive tests that show the miss cap is 16% for warriors.
