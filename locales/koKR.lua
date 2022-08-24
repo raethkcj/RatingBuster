@@ -24,6 +24,9 @@ L["Shows the Options Window"] = "설정창을 표시합니다."
 -- /rb statmod
 L["Enable Stat Mods"] = "능력치 애드온 사용"
 L["Enable support for Stat Mods"] = "능력치 애드온 지원을 사용합니다."
+-- /rb avoidancedr
+L["Enable Avoidance Diminishing Returns"] = "방어행동 점감 효과 사용"
+L["Dodge, Parry, Miss Avoidance values will be calculated using the avoidance deminishing return formula with your current stats"] = "회피, 무기 막기, 빗맞힘 수치를 현재 능력치에서 점감 효과를 적용하여 계산합니다."
 -- /rb itemid
 L["Show ItemID"] = "아이템 ID 표시"
 L["Show the ItemID in tooltips"] = "툴팁에 아이템 ID를 표시합니다."

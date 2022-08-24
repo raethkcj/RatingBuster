@@ -20,6 +20,9 @@ L["Shows the Options Window"] = "Affiche la fenêtre des options"
 -- /rb statmod
 L["Enable Stat Mods"] = "Activer les Stat Mods"
 L["Enable support for Stat Mods"] = "Active le support pour Stat Mods"
+-- /rb avoidancedr
+L["Enable Avoidance Diminishing Returns"] = true -- à traduire
+L["Dodge, Parry, Miss Avoidance values will be calculated using the avoidance deminishing return formula with your current stats"] = true -- à traduire
 -- /rb itemid
 L["Show ItemID"] = "ID des objets"
 L["Show the ItemID in tooltips"] = "Affiche l'ID des objets dans les info-bulles."

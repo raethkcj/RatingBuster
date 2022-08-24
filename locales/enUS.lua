@@ -19,6 +19,9 @@ L["Shows the Options Window"] = true
 -- /rb statmod
 L["Enable Stat Mods"] = true
 L["Enable support for Stat Mods"] = true
+L["Enable Avoidance Diminishing Returns"] = true
+L["Dodge, Parry, Miss Avoidance values will be calculated using the avoidance deminishing return formula with your current stats"] = true
+
 -- /rb itemid
 L["Show ItemID"] = true
 L["Show the ItemID in tooltips"] = true

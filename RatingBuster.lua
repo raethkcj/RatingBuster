@@ -312,6 +312,14 @@ local options = {
 			name = L["Enable Stat Mods"],
 			desc = L["Enable support for Stat Mods"],
 		},
+		enableAvoidanceDiminishingReturns = {
+			type = 'toggle',
+			name = L["Enable Avoidance Diminishing Returns"],
+			desc = L["Dodge, Parry, Miss Avoidance values will be calculated using the avoidance deminishing return formula with your current stats"],
+			hidden = function()
+				return not StatLogic.GetAvoidanceAfterDR
+			end,
+		},
 		showItemID = {
 			type = 'toggle',
 			name = L["Show ItemID"],

@@ -27,6 +27,9 @@ L["Shows the Options Window"] = "顯示選項視窗"
 -- /rb statmod
 L["Enable Stat Mods"] = "屬性加成"
 L["Enable support for Stat Mods"] = "啟用屬性加成計算"
+-- /rb avoidancedr
+L["Enable Avoidance Diminishing Returns"] = "啟用迴避遞減效應"
+L["Dodge, Parry, Miss Avoidance values will be calculated using the avoidance deminishing return formula with your current stats"] = "你的閃避、招架、避免命中值會被計算在迴避遞減效應中"
 -- /rb itemid
 L["Show ItemID"] = "顯示物品編號"
 L["Show the ItemID in tooltips"] = "顯示物品編號"

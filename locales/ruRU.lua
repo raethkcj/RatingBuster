@@ -53,6 +53,9 @@ L["Set the level used in calculations (0 = your level)"] = "Задать уро�
 -- /rb ilvlid itemlevelall
 --L["Show Item Level on all items"] = ""
 --L["Display the Item Level on all items instead of just on equippable items"] = ""
+-- /rb avoidancedr
+L["Enable Avoidance Diminishing Returns"] = "Включить убывания уклонений от удара"
+L["Dodge, Parry, Miss Avoidance values will be calculated using the avoidance deminishing return formula with your current stats"] = "Значения уклонения, парирования, уклонений от удара при расчетах будет использоваться формула убывания (deminishing return) уклонений от удара по вашим текущим данным"
 -- /rb ilvlid itemid
 --L["Show Item ID"] = ""
 --L["Display the Item ID on all items"] = ""
