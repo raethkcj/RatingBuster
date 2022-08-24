@@ -2152,6 +2152,10 @@ local armorTypes = {
 	[Enum.ItemArmorSubclass["Cloth"]] = true,
 }
 
+-- Interface_<Expansion>/FrameXML/PaperDollFrame.lua Compatibility
+if not ARMOR_PER_AGILITY then ARMOR_PER_AGILITY = 2 end
+if not BLOCK_PER_STRENGTH then BLOCK_PER_STRENGTH = 0.05 end
+if not DODGE_PARRY_BLOCK_PERCENT_PER_DEFENSE then DODGE_PARRY_BLOCK_PERCENT_PER_DEFENSE = 0.04 end
 
 local summaryCalcData = {
 	-----------
