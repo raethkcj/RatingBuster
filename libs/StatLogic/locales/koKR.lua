@@ -49,7 +49,7 @@ L["Exclude"] = {
 	["(7)"] = true,
 	["(8)"] = true,
 	-- Equip type
-	[GetItemClassInfo(Enum.ItemClass.Projectile)] = true, -- Ice Threaded Arrow ID:19316
+	["투사체"] = true, -- Ice Threaded Arrow ID:19316
 	[INVTYPE_AMMO] = true,
 	[INVTYPE_HEAD] = true,
 	[INVTYPE_NECK] = true,
@@ -72,7 +72,7 @@ L["Exclude"] = {
 	[INVTYPE_WEAPONOFFHAND] = true,
 	[INVTYPE_HOLDABLE] = true,
 	[INVTYPE_RANGED] = true,
-	[GetItemSubClassInfo(Enum.ItemClass.Weapon, Enum.ItemWeaponSubclass.Thrown)] = true,
+	[INVTYPE_THROWN] = true,
 	[INVTYPE_RELIC] = true,
 	[INVTYPE_TABARD] = true,
 	[INVTYPE_BAG] = true,
@@ -353,18 +353,25 @@ L["StatIDLookup"] = {
 	["적중도"] = {"MELEE_HIT_RATING",},
 	["적중도가 증가합니다"] = {"MELEE_HIT_RATING",}, -- ITEM_MOD_HIT_RATING
 	["근접 적중도가 증가합니다"] = {"MELEE_HIT_RATING",}, -- ITEM_MOD_HIT_MELEE_RATING
+	["Increases your hit rating"] = {"MELEE_HIT_RATING",},
 	["주문 적중"] = {"SPELL_HIT_RATING",}, -- Presence of Sight +18 Healing and Spell Damage/+8 Spell Hit http://wow.allakhazam.com/db/spell.html?wspell=24164
 	["주문 적중도"] = {"SPELL_HIT_RATING",},
 	["주문의 적중도"] = {"SPELL_HIT_RATING",}, -- ITEM_MOD_HIT_SPELL_RATING
 	["주문 적중도가 증가합니다"] = {"SPELL_HIT_RATING",},
 	["원거리 적중도"] = {"RANGED_HIT_RATING",},
 	["원거리 적중도가 증가합니다"] = {"RANGED_HIT_RATING",}, -- ITEM_MOD_HIT_RANGED_RATING
+	["Increases your ranged hit rating"] = {"RANGED_HIT_RATING",},
 
 	["치명타 적중도"] = {"MELEE_CRIT_RATING",},
+	["Critical Rating"] = {"MELEE_CRIT_RATING",},
+	["Critical Strike Rating"] = {"MELEE_CRIT_RATING",},
 	["치명타 적중도가 증가합니다"] = {"MELEE_CRIT_RATING",},
 	["근접 치명타 적중도가 증가합니다"] = {"MELEE_CRIT_RATING",},
+	["Improves critical strike rating"] = {"MELEE_CRIT_RATING",},
 	["주문 극대화 적중도"] = {"SPELL_CRIT_RATING",},
 	["주문의 극대화 적중도"] = {"SPELL_CRIT_RATING",},
+	["Spell Critical Rating"] = {"SPELL_CRIT_RATING",},
+	["Spell Crit Rating"] = {"SPELL_CRIT_RATING",},
 	["주문의 극대화 적중도가 증가합니다"] = {"SPELL_CRIT_RATING",},
 	["주위 30미터 반경에 있는 모든 파티원의 주문 극대화 적중도가 증가합니다"] = {"SPELL_CRIT_RATING",},
 	["주문 극대화 적중도가 증가합니다"] = {"SPELL_CRIT_RATING",},
@@ -488,15 +495,9 @@ D["StatIDToName"] = {
 	["MELEE_HIT_RATING"] = {COMBAT_RATING_NAME6, COMBAT_RATING_NAME6}, -- COMBAT_RATING_NAME6 = "Hit Rating"
 	["RANGED_HIT_RATING"] = {PLAYERSTAT_RANGED_COMBAT.." "..COMBAT_RATING_NAME6, PLAYERSTAT_RANGED_COMBAT.." "..COMBAT_RATING_NAME6}, -- PLAYERSTAT_RANGED_COMBAT = "Ranged"
 	["SPELL_HIT_RATING"] = {PLAYERSTAT_SPELL_COMBAT.." "..COMBAT_RATING_NAME6, PLAYERSTAT_SPELL_COMBAT.." "..COMBAT_RATING_NAME6}, -- PLAYERSTAT_SPELL_COMBAT = "Spell"
-	["MELEE_HIT_AVOID_RATING"] = {"근접 공격 회피 "..RATING, "Hit Avoidance "..RATING},
-	["RANGED_HIT_AVOID_RATING"] = {PLAYERSTAT_RANGED_COMBAT.." 공격 회피 "..RATING, PLAYERSTAT_RANGED_COMBAT.." Hit Avoidance "..RATING},
-	["SPELL_HIT_AVOID_RATING"] = {PLAYERSTAT_SPELL_COMBAT.." 공격 회피 "..RATING, PLAYERSTAT_SPELL_COMBAT.." Hit Avoidance "..RATING},
 	["MELEE_CRIT_RATING"] = {COMBAT_RATING_NAME9, COMBAT_RATING_NAME9}, -- COMBAT_RATING_NAME9 = "Crit Rating"
 	["RANGED_CRIT_RATING"] = {PLAYERSTAT_RANGED_COMBAT.." "..COMBAT_RATING_NAME9, PLAYERSTAT_RANGED_COMBAT.." "..COMBAT_RATING_NAME9},
 	["SPELL_CRIT_RATING"] = {PLAYERSTAT_SPELL_COMBAT.." "..COMBAT_RATING_NAME9, PLAYERSTAT_SPELL_COMBAT.." "..COMBAT_RATING_NAME9},
-	["MELEE_CRIT_AVOID_RATING"] = {"근접 치명타 공격 회피 "..RATING, "Crit Avoidance "..RATING},
-	["RANGED_CRIT_AVOID_RATING"] = {PLAYERSTAT_RANGED_COMBAT.." 치명타 공격 회피 "..RATING, PLAYERSTAT_RANGED_COMBAT.." Crit Avoidance "..RATING},
-	["SPELL_CRIT_AVOID_RATING"] = {PLAYERSTAT_SPELL_COMBAT.." 치명타 공격 회피 "..RATING, PLAYERSTAT_SPELL_COMBAT.." Crit Avoidance "..RATING},
 	["RESILIENCE_RATING"] = {COMBAT_RATING_NAME15, COMBAT_RATING_NAME15}, -- COMBAT_RATING_NAME15 = "Resilience"
 	["MELEE_HASTE_RATING"] = {"가속도 "..RATING, "Haste "..RATING}, --
 	["RANGED_HASTE_RATING"] = {PLAYERSTAT_RANGED_COMBAT.." 가속도 "..RATING, PLAYERSTAT_RANGED_COMBAT.." Haste "..RATING},
@@ -539,14 +540,10 @@ D["StatIDToName"] = {
 	["RANGED_HIT"] = {PLAYERSTAT_RANGED_COMBAT.." 적중률(%)", PLAYERSTAT_RANGED_COMBAT.." Hit(%)"},
 	["SPELL_HIT"] = {PLAYERSTAT_SPELL_COMBAT.." 적중률(%)", PLAYERSTAT_SPELL_COMBAT.." Hit(%)"},
 	["MELEE_HIT_AVOID"] = {"근접 공격 회피(%)", "Hit Avd(%)"},
-	["RANGED_HIT_AVOID"] = {PLAYERSTAT_RANGED_COMBAT.." 공격 회피(%)", PLAYERSTAT_RANGED_COMBAT.." Hit Avd(%)"},
-	["SPELL_HIT_AVOID"] = {PLAYERSTAT_SPELL_COMBAT.." 공격 회피(%)", PLAYERSTAT_SPELL_COMBAT.." Hit Avd(%)"},
 	["MELEE_CRIT"] = {MELEE_CRIT_CHANCE.."(%)", "Crit(%)"}, -- MELEE_CRIT_CHANCE = "Crit Chance"
 	["RANGED_CRIT"] = {PLAYERSTAT_RANGED_COMBAT.." "..MELEE_CRIT_CHANCE.."(%)", PLAYERSTAT_RANGED_COMBAT.." Crit(%)"},
 	["SPELL_CRIT"] = {PLAYERSTAT_SPELL_COMBAT.." "..MELEE_CRIT_CHANCE.."(%)", PLAYERSTAT_SPELL_COMBAT.." Crit(%)"},
 	["MELEE_CRIT_AVOID"] = {"근접 치명타 공격 회피(%)", "Crit Avd(%)"},
-	["RANGED_CRIT_AVOID"] = {PLAYERSTAT_RANGED_COMBAT.." 치명타 공격 회피(%)", PLAYERSTAT_RANGED_COMBAT.." Crit Avd(%)"},
-	["SPELL_CRIT_AVOID"] = {PLAYERSTAT_SPELL_COMBAT.." 치명타 공격 회피(%)", PLAYERSTAT_SPELL_COMBAT.." Crit Avd(%)"},
 	["MELEE_HASTE"] = {"가속도(%)", "Haste(%)"}, --
 	["RANGED_HASTE"] = {PLAYERSTAT_RANGED_COMBAT.." 가속도(%)", PLAYERSTAT_RANGED_COMBAT.." Haste(%)"},
 	["SPELL_HASTE"] = {PLAYERSTAT_SPELL_COMBAT.." 가속도(%)", PLAYERSTAT_SPELL_COMBAT.." Haste(%)"},
