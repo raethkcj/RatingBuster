@@ -398,7 +398,11 @@ L["StatIDLookup"] = {
 	["맨손 전투 숙련도가 증가합니다"] = {"FIST_WEAPON_RATING"}, -- Demonblood Eviscerator ID:27533
 	["지팡이류 숙련도가 증가합니다."] = {"STAFF_WEAPON_RATING"}, -- Leggings of the Fang ID:10410
 
+	["숙련"] = {"EXPERTISE_RATING"}, -- gems
 	["숙련도가 증가합니다"] = {"EXPERTISE_RATING"},
+	["방어구 관통력"] = {"ARMOR_PENETRATION_RATING"}, -- gems
+	["방어구 관통력이 증가합니다"] = {"ARMOR_PENETRATION_RATING"},
+
 	-- Exclude
 	["초"] = false,
 	["to"] = false,
@@ -508,8 +512,8 @@ D["StatIDToName"] = {
 	["FERAL_WEAPON_RATING"] = {"야생 "..SKILL.." "..RATING, "Feral "..RATING},
 	["FIST_WEAPON_RATING"] = {"장착 무기류 "..SKILL.." "..RATING, "Unarmed "..RATING},
 	["STAFF_WEAPON_RATING"] = {"지팡이류 "..SKILL.." "..RATING, "Staff "..RATING}, -- Leggings of the Fang ID:10410
-	--["EXPERTISE_RATING"] = {STAT_EXPERTISE.." "..RATING, STAT_EXPERTISE.." "..RATING},
 	["EXPERTISE_RATING"] = {"숙련 ".." "..RATING, "Expertise".." "..RATING},
+	["ARMOR_PENETRATION_RATING"] = {"방어구 관통력", "방어구 관통력"},
 
 	---------------------------------------------------------------------------
 	-- Tier2 Stats - Stats that only show up when broken down from a Tier1 stat

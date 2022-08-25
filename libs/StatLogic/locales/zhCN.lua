@@ -484,7 +484,13 @@ L["StatIDLookup"] = {
 	["拳套技能"] = {"FIST_WEAPON_RATING"},
 	["拳套技能等级"] = {"FIST_WEAPON_RATING"}, -- Demonblood Eviscerator ID:27533
 
+	["熟練等級"] = {"EXPERTISE_RATING"},
 	["使你的精准等级提高"] = {"EXPERTISE_RATING"},
+	["提高精准等级"] = {"EXPERTISE_RATING",},
+	["精准等级提高"] = {"EXPERTISE_RATING",},
+	["护甲穿透等级"] = {"ARMOR_PENETRATION_RATING"},
+	["护甲穿透等级提高"] = {"ARMOR_PENETRATION_RATING"},
+
 	-- Exclude
 	["秒"] = false,
 	["到"] = false,
@@ -593,6 +599,7 @@ D["StatIDToName"] = {
 	["FIST_WEAPON_RATING"] = {"徒手技能等级", "徒手等级"},
 	["STAFF_WEAPON_RATING"] = {"法杖技能等级", "法杖等级"}, -- Leggings of the Fang ID:10410
 	["EXPERTISE_RATING"] = {"精准等级", "精准等级"},
+	["ARMOR_PENETRATION_RATING"] = {"护甲穿透等级", "护甲穿透等级"},
 
 	---------------------------------------------------------------------------
 	-- Tier2 Stats - Stats that only show up when broken down from a Tier1 stat

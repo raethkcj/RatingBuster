@@ -452,7 +452,10 @@ L["StatIDLookup"] = {
 	["Increases unarmed skill rating"] = {"FIST_WEAPON_RATING"}, -- Demonblood Eviscerator ID:27533
 	["Increases staff skill rating"] = {"STAFF_WEAPON_RATING"}, -- Leggings of the Fang ID:10410
 
-	["Increases your expertise rating"] = {"EXPERTISE_RATING"},
+	["рейтинг мастерства"] = {"EXPERTISE_RATING"},
+	["к рейтингу мастерства"] = {"EXPERTISE_RATING"},
+	["Повышает рейтинг пробивания брони на"] = {"ARMOR_PENETRATION_RATING"},
+
 	-- Exclude
 	["sec"] = false,
 	["to"] = false,
@@ -561,7 +564,6 @@ D["StatIDToName"] = {
 	["FERAL_WEAPON_RATING"] = {"Feral "..SKILL.." "..RATING, "Feral "..RATING},
 	["FIST_WEAPON_RATING"] = {"Unarmed "..SKILL.." "..RATING, "Unarmed "..RATING},
 	["STAFF_WEAPON_RATING"] = {"Staff "..SKILL.." "..RATING, "Staff "..RATING}, -- Leggings of the Fang ID:10410
-	--["EXPERTISE_RATING"] = {STAT_EXPERTISE.." "..RATING, STAT_EXPERTISE.." "..RATING},
 	["EXPERTISE_RATING"] = {"Expertise".." "..RATING, "Expertise".." "..RATING},
 
 	---------------------------------------------------------------------------

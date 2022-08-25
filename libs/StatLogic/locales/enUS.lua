@@ -455,7 +455,12 @@ L["StatIDLookup"] = {
 	["Increases unarmed skill rating"] = {"FIST_WEAPON_RATING"}, -- Demonblood Eviscerator ID:27533
 	["Increases staff skill rating"] = {"STAFF_WEAPON_RATING"}, -- Leggings of the Fang ID:10410
 
+	["expertise rating"] = {"EXPERTISE_RATING"}, -- gems
 	["Increases your expertise rating"] = {"EXPERTISE_RATING"},
+	["armor penetration rating"] = {"ARMOR_PENETRATION_RATING"}, -- gems
+	["Increases armor penetration rating"] = {"ARMOR_PENETRATION_RATING"},
+	["Increases your armor penetration rating"] = {"ARMOR_PENETRATION_RATING"}, -- ID:43178
+
 	-- Exclude
 	["sec"] = false,
 	["to"] = false,
@@ -564,8 +569,8 @@ D["StatIDToName"] = {
 	["FERAL_WEAPON_RATING"] = {"Feral "..SKILL.." "..RATING, "Feral "..RATING},
 	["FIST_WEAPON_RATING"] = {"Unarmed "..SKILL.." "..RATING, "Unarmed "..RATING},
 	["STAFF_WEAPON_RATING"] = {"Staff "..SKILL.." "..RATING, "Staff "..RATING}, -- Leggings of the Fang ID:10410
-	--["EXPERTISE_RATING"] = {STAT_EXPERTISE.." "..RATING, STAT_EXPERTISE.." "..RATING},
 	["EXPERTISE_RATING"] = {"Expertise".." "..RATING, "Expertise".." "..RATING},
+	["ARMOR_PENETRATION_RATING"] = {"Armor Penetration".." "..RATING, "ArP".." "..RATING},
 
 	---------------------------------------------------------------------------
 	-- Tier2 Stats - Stats that only show up when broken down from a Tier1 stat

@@ -455,6 +455,9 @@ L["StatIDLookup"] = {
 
 	["le score d’expertise"] = {"EXPERTISE_RATING"},
 	["score d’expertise"] = {"EXPERTISE_RATING"},
+	["score de pénétration d'armure"] = {"ARMOR_PENETRATION_RATING"},
+	["le score de pénétration d'armure"] = {"ARMOR_PENETRATION_RATING"},
+	["votre score de pénétration d'armure"] = {"ARMOR_PENETRATION_RATING"},
 
 	--ToDo
 	-- Exclude
@@ -566,8 +569,7 @@ D["StatIDToName"] = {
 	["FIST_WEAPON_RATING"] = {"Compétence en Armes de pugilat", "Armes de pugilat"}, 
 	["STAFF_WEAPON_RATING"] = {"Compétence en Bâtons", "Bâtons"}, -- [Jambières du Croc] ID:10410
 	["EXPERTISE_RATING"] = {"Score d'Expertise", "Score d'Expertise"},
-	--["UNARMED_WEAPON_RATING"] = {"Compétence en Mains nues", "Mains nues"},
-	--["POLEARMS_WEAPON_RATING"] = {"Compétence en Armes d'hast", "Armes d'hast"},
+	["ARMOR_PENETRATION_RATING"] = {"Pénétration d'armure".." "..RATING, "ArP".." "..RATING},
 
 	---------------------------------------------------------------------------
 	-- Tier2 Stats - Stats that only show up when broken down from a Tier1 stat

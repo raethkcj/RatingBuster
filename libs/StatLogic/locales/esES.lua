@@ -415,6 +415,11 @@ L["StatIDLookup"] = {
 	["Maderas curvas aumentadas"] = {"STAFF_WEAPON_RATING"}, -- Leggings of the Fang ID:10410
 
 	["Aumenta tu índice de pericia"] = {"EXPERTISE_RATING"},
+	["tu índice de pericia"] = {"EXPERTISE_RATING"},
+	["el índice de pericia"] = {"EXPERTISE_RATING"},
+	["índice de penetración de armadura"] = {"ARMOR_PENETRATION_RATING"}, -- gems
+	["Aumenta tu índice de penetración de armadurap"] = {"ARMOR_PENETRATION_RATING"}, -- ID:43178
+
 		-- Exclude
 	["seg"] = false,
 	["para"] = false,
@@ -524,8 +529,8 @@ D["StatIDToName"] = {
 	["FERAL_WEAPON_RATING"] = {"Feral "..SKILL.." "..RATING, "Feral "..RATING},
 	["FIST_WEAPON_RATING"] = {"Unarmed "..SKILL.." "..RATING, "Unarmed "..RATING},
 	["STAFF_WEAPON_RATING"] = {"Staff "..SKILL.." "..RATING, "Staff "..RATING}, -- Leggings of the Fang ID:10410
-	--["EXPERTISE_RATING"] = {STAT_EXPERTISE.." "..RATING, STAT_EXPERTISE.." "..RATING},
 	["EXPERTISE_RATING"] = {"Pericia".." "..RATING, "Pericia".." "..RATING},
+	["ARMOR_PENETRATION_RATING"] = {"Penetración de Armadura".." "..RATING, "ArP".." "..RATING},
 
 	---------------------------------------------------------------------------
 	-- Tier2 Stats - Stats that only show up when broken down from a Tier1 stat

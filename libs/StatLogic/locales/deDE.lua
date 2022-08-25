@@ -392,8 +392,13 @@ L["StatIDLookup"] = {
 	["Erhöht die Fertigkeitswertung für Faustwaffen"] = {"FIST_WEAPON_RATING"}, -- Demonblood Eviscerator
 	["Erhöht die Fertigkeitswertung für unbewaffneten Kampf"] = {"FIST_WEAPON_RATING"}, -- Demonblood Eviscerator ID:27533
 
+	["Waffenkundewertung"] = {"EXPERTISE_RATING"}, -- gem
 	["Erhöht die Waffenkundewertung"] = {"EXPERTISE_RATING"},
 	["Erhöht Eure Waffenkundewertung"] = {"EXPERTISE_RATING"},
+	["Rüstungsdurchschlagwertung"] = {"ARMOR_PENETRATION_RATING"}, -- gem
+	["Erhöht den Rüstungsdurchschlagwert um"] = {"ARMOR_PENETRATION_RATING"},
+	["Erhöht die Rüstungsdurchschlagwertung um"] = {"ARMOR_PENETRATION_RATING"},
+	["Erhöht Eure Rüstungsdurchschlagwertung um"] = {"ARMOR_PENETRATION_RATING"}, -- ID:43178
 
 	-- Exclude
 	["Sek"] = false,
@@ -491,7 +496,6 @@ D["StatIDToName"] = {
 	["MELEE_HASTE_RATING"] = {"Hast "..RATING, "Hast  "..RATING}, --
 	["RANGED_HASTE_RATING"] = {PLAYERSTAT_RANGED_COMBAT.." Hast  "..RATING, PLAYERSTAT_RANGED_COMBAT.." Hast  "..RATING},
 	["SPELL_HASTE_RATING"] = {PLAYERSTAT_SPELL_COMBAT.." Hast  "..RATING, PLAYERSTAT_SPELL_COMBAT.." Hast  "..RATING},
-	["EXPERTISE_RATING"] = {"Waffenkundewertung", "Waffenkundewertung"},
 	["DAGGER_WEAPON_RATING"] = {"Dagger "..SKILL.." "..RATING, "Dagger "..RATING}, -- SKILL = "Skill"
 	["SWORD_WEAPON_RATING"] = {"Sword "..SKILL.." "..RATING, "Sword "..RATING},
 	["2H_SWORD_WEAPON_RATING"] = {"Two-Handed Sword "..SKILL.." "..RATING, "2H Sword "..RATING},
@@ -504,6 +508,8 @@ D["StatIDToName"] = {
 	["BOW_WEAPON_RATING"] = {"Bow "..SKILL.." "..RATING, "Bow "..RATING},
 	["FERAL_WEAPON_RATING"] = {"Feral "..SKILL.." "..RATING, "Feral "..RATING},
 	["FIST_WEAPON_RATING"] = {"Unarmed "..SKILL.." "..RATING, "Unarmed "..RATING},
+	["EXPERTISE_RATING"] = {"Waffenkundewertung", "Waffenkundewertung"},
+	["ARMOR_PENETRATION_RATING"] = {"Rüstungsdurchschlag".." "..RATING, "ArP".." "..RATING},
 
 	---------------------------------------------------------------------------
 	-- Tier2 Stats - Stats that only show up when broken down from a Tier1 stat
