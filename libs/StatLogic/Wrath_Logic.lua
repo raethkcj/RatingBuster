@@ -3318,14 +3318,14 @@ StatLogic.StatModTable["ALL"] = {
 			["rank"] = {
 				0.05, 0.1,
 			},
-			["buff"] = GetSpellInfo(55972),		-- ["Abominable Might"],
+			["buff"] = GetSpellInfo(53137),		-- ["Abomination's Might"],
 			["group"] = BuffGroup.MOD_AP,
 		},
 		{
 			["rank"] = {
 				0.04, 0.07, 0.1,
 			},
-			["buff"] = GetSpellInfo(30809),		-- ["Unleashed Rage"],
+			["buff"] = GetSpellInfo(30802),		-- ["Unleashed Rage"],
 			["group"] = BuffGroup.MOD_AP,
 		},
 	},
