@@ -615,8 +615,8 @@ D["StatIDToName"] = {
 	["FERAL_WEAPON"] = {"Feral "..SKILL, "Feral"},
 	["FIST_WEAPON"] = {"Unarmed "..SKILL, "Unarmed"},
 	["STAFF_WEAPON"] = {"Staff "..SKILL, "Staff"}, -- Leggings of the Fang ID:10410
-	--["EXPERTISE"] = {STAT_EXPERTISE, STAT_EXPERTISE},
 	["EXPERTISE"] = {"Expertise", "Expertise"},
+	["ARMOR_PENETRATION"] = {"Armor Penetration(%)", "ArP(%)"},
 
 	---------------------------------------------------------------------------
 	-- Tier3 Stats - Stats that only show up when broken down from a Tier2 stat

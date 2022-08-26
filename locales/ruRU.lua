@@ -410,6 +410,12 @@ L["Ranged Haste <- Haste Rating, Ranged Haste Rating"] = "Скорости да�
 -- /rb sum physical rangedhasterating
 L["Sum Ranged Haste Rating"] = "Сумма рейтинга скорости дальнего боя"
 L["Ranged Haste Rating Summary"] = "Суммировать рейтинг скорости дальнего боя"
+L["Sum Ignore Armor"] = "Сумма игнорирования брони"
+L["Ignore Armor Summary"] = "Суммировать игнорирование брони"
+L["Sum Armor Penetration"] = "Сумма пробивание брони"
+L["Armor Penetration Summary"] = "Суммировать пробивание брони"
+L["Sum Armor Penetration Rating"] = "Сумма рейтинга пробивание брони"
+L["Armor Penetration Rating Summary"] = "Суммировать рейтинг пробивания брони"
 -- /rb sum physical maxdamage
 L["Sum Weapon Max Damage"] = "Сумма макс урона оружия"
 L["Weapon Max Damage Summary"] = "Суммировать макс урон уружия"

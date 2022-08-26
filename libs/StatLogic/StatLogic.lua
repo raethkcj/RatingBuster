@@ -1339,6 +1339,9 @@ function StatLogic:GetEffectFromDefense(defense, attackerLevel)
 	return (defense - attackerLevel * 5) * 0.04
 end
 
+function StatLogic:RatingExists(id)
+	return not not addonTable.RatingBase[id]
+end
 
 --[[---------------------------------
 {	:GetEffectFromRating(rating, id, [level])

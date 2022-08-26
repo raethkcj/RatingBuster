@@ -614,10 +614,8 @@ D["StatIDToName"] = {
 	["FERAL_WEAPON"] = {"Compétence en Combat farouche", "Combat farouche"},
 	["FIST_WEAPON"] = {"Compétence en Armes de pugilat", "Armes de pugilat"},
 	["STAFF_WEAPON"] = {"Compétence en Bâtons", "Bâtons"}, -- [Jambières du Croc] ID:10410
-	--["EXPERTISE"] = {STAT_EXPERTISE, STAT_EXPERTISE},
 	["EXPERTISE"] = {"Expertise", "Expertise"},
-	--["UNARMED_WEAPON"] = {"Compétence en Mains nues", "Mains nues"},
-	--["POLEARMS_WEAPON"] = {"Compétence en Armes d'hast", "Armes d'hast"},
+	["ARMOR_PENETRATION"] = {"Pénétration d'armure(%)", "PenAr(%)"},
 
 	---------------------------------------------------------------------------
 	-- Tier3 Stats - Stats that only show up when broken down from a Tier2 stat

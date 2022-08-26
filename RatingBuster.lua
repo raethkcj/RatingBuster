@@ -814,7 +814,26 @@ local options = {
 							type = 'toggle',
 							name = L["Sum Ignore Armor"],
 							desc = L["Ignore Armor Summary"],
+							hidden = function()
+								return StatLogic:RatingExists(CR_ARMOR_PENETRATION)
+							end
 						},
+						sumArmorPenetration = {
+							type = 'toggle',
+							name = L["Sum Armor Penetration"],
+							desc = L["Armor Penetration Summary"],
+							hidden = function()
+								return not StatLogic:RatingExists(CR_ARMOR_PENETRATION)
+							end
+						},
+						sumArmorPenetrationRating = {
+							type = 'toggle',
+							name = L["Sum Armor Penetration Rating"],
+							desc = L["Armor Penetration Rating Summary"],
+							hidden = function()
+								return not StatLogic:RatingExists(CR_ARMOR_PENETRATION)
+							end
+						}
 					},
 				},
 				spell = {

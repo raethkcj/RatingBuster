@@ -645,6 +645,7 @@ D["StatIDToName"] = {
 	["FIST_WEAPON"] = {"徒手战斗技能", "徒手"},
 	["STAFF_WEAPON_RATING"] = {"法杖技能", "法杖"}, -- Leggings of the Fang ID:10410
 	["EXPERTISE"] = {"精准", "精准"},
+	["ARMOR_PENETRATION"] = {"护甲穿透(%)", "护甲穿透(%)"},
 
 	---------------------------------------------------------------------------
 	-- Tier3 Stats - Stats that only show up when broken down from a Tier2 stat

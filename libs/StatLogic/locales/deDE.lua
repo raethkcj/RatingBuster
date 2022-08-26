@@ -543,7 +543,6 @@ D["StatIDToName"] = {
 	["MELEE_HASTE"] = {"Hast(%)", "Hast(%)"}, --
 	["RANGED_HASTE"] = {PLAYERSTAT_RANGED_COMBAT.." Hast(%)", PLAYERSTAT_RANGED_COMBAT.." Hast(%)"},
 	["SPELL_HASTE"] = {PLAYERSTAT_SPELL_COMBAT.." Hast(%)", PLAYERSTAT_SPELL_COMBAT.." Hast(%)"},
-	["EXPERTISE"] = {"Waffenkunde", "Waffenkunde"},
 	["DAGGER_WEAPON"] = {"Dagger "..SKILL, "Dagger"}, -- SKILL = "Skill"
 	["SWORD_WEAPON"] = {"Sword "..SKILL, "Sword"},
 	["2H_SWORD_WEAPON"] = {"Two-Handed Sword "..SKILL, "2H Sword"},
@@ -556,6 +555,8 @@ D["StatIDToName"] = {
 	["BOW_WEAPON"] = {"Bow "..SKILL, "Bow"},
 	["FERAL_WEAPON"] = {"Feral "..SKILL, "Feral"},
 	["FIST_WEAPON"] = {"Unarmed "..SKILL, "Unarmed"},
+	["EXPERTISE"] = {"Waffenkunde", "Waffenkunde"},
+	["ARMOR_PENETRATION"] = {"Rüstungsdurchschlag(%)", "ArP(%)"},
 
 	---------------------------------------------------------------------------
 	-- Tier3 Stats - Stats that only show up when broken down from a Tier2 stat

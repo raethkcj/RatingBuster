@@ -558,8 +558,8 @@ D["StatIDToName"] = {
 	["FERAL_WEAPON"] = {"야생 "..SKILL, "Feral"},
 	["FIST_WEAPON"] = {"장착 무기류 "..SKILL, "Unarmed"},
 	["STAFF_WEAPON"] = {"지팡이류 "..SKILL, "Staff"}, -- Leggings of the Fang ID:10410
-	--["EXPERTISE"] = {STAT_EXPERTISE, STAT_EXPERTISE},
 	["EXPERTISE"] = {"숙련 ", "Expertise"},
+	["ARMOR_PENETRATION"] = {"방어구 관통(%)", "방어구 관통(%)"},
 
 	---------------------------------------------------------------------------
 	-- Tier3 Stats - Stats that only show up when broken down from a Tier2 stat

@@ -380,6 +380,10 @@ L["Spell Penetration Summary"] = "주문 관통력 요약"
 -- /rb sum stat ignorearmor
 L["Sum Ignore Armor"] = "방어도 무시"
 L["Ignore Armor Summary"] = "방어도 무시 요약"
+L["Sum Armor Penetration"] = "방어도 관통력 합계"
+L["Armor Penetration Summary"] = "방어도 관통력 요약"
+L["Sum Armor Penetration Rating"] = "방어도 관통도 합계"
+L["Armor Penetration Rating Summary"] = "방어도 관통도 요약"
 -- /rb sum stat weapondps
 --["Sum Weapon DPS"] = true,
 --["Weapon DPS Summary"] = true,

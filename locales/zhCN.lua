@@ -380,6 +380,10 @@ L["Spell Penetration Summary"] = "统计法术穿透"
 -- /rb sum stat ignorearmor
 L["Sum Ignore Armor"] = "统计忽略护甲"
 L["Ignore Armor Summary"] = "统计忽略护甲效果"
+L["Sum Armor Penetration"] = "统计护甲穿透"
+L["Armor Penetration Summary"] = "统计无视护甲穿透"
+L["Sum Armor Penetration Rating"] = "统计无视护甲穿透等级"
+L["Armor Penetration Rating Summary"] = "统计无视护甲穿透等级"
 -- /rb sum stat weapondps
 --["Sum Weapon DPS"] = true,
 --["Weapon DPS Summary"] = true,

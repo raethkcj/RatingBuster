@@ -388,6 +388,10 @@ L["Spell Penetration Summary"] = "Durchschlagsübersicht"
 -- /rb sum stat ignorearmor
 L["Sum Ignore Armor"] = "Rüstungsmissachtung zusammenrechnen"
 L["Ignore Armor Summary"] = "Rüstungsmissachtungsübersicht"
+L["Sum Armor Penetration"] = "Rüstungsdurchlag zusammenrechnen"
+L["Armor Penetration Summary"] = "Rüstungsdurchlagsübersicht"
+L["Sum Armor Penetration Rating"] = "Rüstungsdurchlagwertung zusammenrechnen"
+L["Armor Penetration Rating Summary"] = "Rüstungsdurchlagwertungsübersicht"
 -- /rb sum stat weapondps
 --["Sum Weapon DPS"] = true,
 --["Weapon DPS Summary"] = true,
