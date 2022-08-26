@@ -321,6 +321,7 @@ L["StatIDLookup"] = {
 	["治疗和法术伤害"] = {"SPELL_DMG", "HEAL",},
 	["法术伤害"] = {"SPELL_DMG",},
 	["提高法术和魔法效果所造成的伤害和治疗效果"] = {"SPELL_DMG", "HEAL"},
+	["法术强度"] = {"SPELL_DMG", "HEAL"},
 	["使周围半径30码范围内的所有小队成员的法术和魔法效果所造成的伤害和治疗效果"] = {"SPELL_DMG", "HEAL"}, -- Atiesh, ID: 22630
 	["提高所有法术和魔法效果所造成的伤害和治疗效果"] = {"SPELL_DMG", "HEAL"},		--StatLogic:GetSum("22630")
 	["提高所有法术和魔法效果所造成的伤害和治疗效果，最多"] = {"SPELL_DMG", "HEAL"},

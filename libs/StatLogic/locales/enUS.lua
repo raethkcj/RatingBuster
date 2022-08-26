@@ -336,6 +336,7 @@ L["StatIDLookup"] = {
 	["Damage"] = {"SPELL_DMG",},
 	["Increases your spell damage"] = {"SPELL_DMG",}, -- Atiesh ID:22630, 22631, 22632, 22589
 	["Spell Power"] = {"SPELL_DMG", "HEAL",},
+	["Increases spell power"] = {"SPELL_DMG", "HEAL",}, -- WotLK
 	["Holy Damage"] = {"HOLY_SPELL_DMG",},
 	["Arcane Damage"] = {"ARCANE_SPELL_DMG",},
 	["Fire Damage"] = {"FIRE_SPELL_DMG",},

@@ -297,6 +297,7 @@ L["StatIDLookup"] = {
 	["Daño"] = {"SPELL_DMG",},
 	["Aumenta el daño con hechizos"] = {"SPELL_DMG",}, -- Atiesh ID:22630, 22631, 22632, 22589
 	["Poder con hechizos"] = {"SPELL_DMG", "HEAL",},
+	["Aumenta el poder con hechizos"] = {"SPELL_DMG", "HEAL",},
 	["Daño Sagrado"] = {"HOLY_SPELL_DMG",},
 	["Daño Arcano"] = {"ARCANE_SPELL_DMG",},
 	["Daño de Fuego"] = {"FIRE_SPELL_DMG",},
