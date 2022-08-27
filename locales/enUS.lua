@@ -49,6 +49,12 @@ L["Options for Rating display"] = true
 -- /rb rating show
 L["Show Rating conversions"] = true
 L["Show Rating conversions in tooltips"] = true
+-- /rb rating spell
+L["Show Spell Hit/Haste"] = true
+L["Show Spell Hit/Haste from Hit/Haste Rating"] = true
+-- /rb rating physical
+L["Show Physical Hit/Haste"] = true
+L["Show Physical Hit/Haste from Hit/Haste Rating"] = true
 -- /rb rating detail
 L["Show detailed conversions text"] = true
 L["Show detailed text for Resiliance and Expertise conversions"] = true
@@ -588,20 +594,20 @@ L["statList"] = {
 	{pattern = "ranged critical hit rating", id = CR_CRIT_RANGED},
 	{pattern = "ranged critical rating", id = CR_CRIT_RANGED},
 	{pattern = "ranged crit rating", id = CR_CRIT_RANGED},
-	{pattern = "critical strike rating", id = CR_CRIT_MELEE},
-	{pattern = "critical hit rating", id = CR_CRIT_MELEE},
-	{pattern = "critical rating", id = CR_CRIT_MELEE},
-	{pattern = "crit rating", id = CR_CRIT_MELEE},
+	{pattern = "critical strike rating", id = CR_CRIT},
+	{pattern = "critical hit rating", id = CR_CRIT},
+	{pattern = "critical rating", id = CR_CRIT},
+	{pattern = "crit rating", id = CR_CRIT},
 
 	{pattern = "spell hit rating", id = CR_HIT_SPELL},
 	{pattern = "ranged hit rating", id = CR_HIT_RANGED},
-	{pattern = "hit rating", id = CR_HIT_MELEE},
+	{pattern = "hit rating", id = CR_HIT},
 
 	{pattern = "resilience", id = CR_CRIT_TAKEN_MELEE}, -- resilience is implicitly a rating
 
 	{pattern = "spell haste rating", id = CR_HASTE_SPELL},
 	{pattern = "ranged haste rating", id = CR_HASTE_RANGED},
-	{pattern = "haste rating", id = CR_HASTE_MELEE},
+	{pattern = "haste rating", id = CR_HASTE},
 
 	{pattern = "expertise rating", id = CR_EXPERTISE},
 

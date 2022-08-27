@@ -54,6 +54,13 @@ L["Options for Rating display"] = "Optionen für die Bewertungsanzeige"
 -- /rb rating show
 L["Show Rating conversions"] = "Zeige Bewertungsumrechnung"
 L["Show Rating conversions in tooltips"] = "Zeige Bewertungsumrechnung im Tooltip"
+-- TODO
+-- /rb rating spell
+L["Show Spell Hit/Haste"] = true
+L["Show Spell Hit/Haste from Hit/Haste Rating"] = true
+-- /rb rating physical
+L["Show Physical Hit/Haste"] = true
+L["Show Physical Hit/Haste from Hit/Haste Rating"] = true
 -- /rb rating detail
 L["Show detailed conversions text"] = "Zeige detaillierten Umrechnungtext"
 L["Show detailed text for Resiliance and Expertise conversions"] = "Zeige detaillierten Text für Abhärtungs- und Waffenkundumrechnung"
@@ -582,30 +589,21 @@ L["statList"] = {
 	{pattern = "blockwertung", id = CR_BLOCK}, -- block enchant: "+10 Shield Block Rating"
 	{pattern = "parierwertung", id = CR_PARRY},
 
-	-- Falls jemand ein Item mit den unten auskommentierten Patterns hat, die nicht der Übersetzung entsprechen soll er mir bescheid sagen, ich habe nix gefunden...
 	{pattern = "kritische zaubertrefferwertung", id = CR_CRIT_SPELL},
-	--		{pattern = "spell critical hit rating", id = CR_CRIT_SPELL},
-	--		{pattern = "spell critical rating", id = CR_CRIT_SPELL},
-	--		{pattern = "spell crit rating", id = CR_CRIT_SPELL},
 	{pattern = "kritische distanztrefferwertung", id = CR_CRIT_RANGED},
-	--		{pattern = "ranged critical hit rating", id = CR_CRIT_RANGED},
-	--		{pattern = "ranged critical rating", id = CR_CRIT_RANGED},
-	--		{pattern = "ranged crit rating", id = CR_CRIT_RANGED},
-	{pattern = "kritische trefferwertung", id = CR_CRIT_MELEE},
-	--		{pattern = "critical hit rating", id = CR_CRIT_MELEE},
-	--		{pattern = "crit rating", id = CR_CRIT_MELEE},
+	{pattern = "kritische trefferwertung", id = CR_CRIT},
 
 	{pattern = "zaubertrefferwertung", id = CR_HIT_SPELL},
 	{pattern = "trefferwertung", id = CR_HIT_RANGED},
-	{pattern = "trefferwertung", id = CR_HIT_MELEE},
+	{pattern = "trefferwertung", id = CR_HIT},
 
 	{pattern = "abhärtungswertung", id = CR_CRIT_TAKEN_MELEE}, -- resilience is implicitly a rating
 
 	{pattern = "zaubertempowertung", id = CR_HASTE_SPELL},
 	{pattern = "distanztempowertung", id = CR_HASTE_RANGED},
-	{pattern = "angriffstempowertung", id = CR_HASTE_MELEE},
+	{pattern = "angriffstempowertung", id = CR_HASTE},
 	{pattern = "nahkampftempowertung", id = CR_HASTE_MELEE},
-	{pattern = "tempowertung", id = CR_HASTE_MELEE}, -- [Drums of Battle]
+	{pattern = "tempowertung", id = CR_HASTE}, -- [Drums of Battle]
 
 	{pattern = "waffenkundewertung", id = CR_EXPERTISE},
 

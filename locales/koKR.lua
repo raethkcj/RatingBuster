@@ -54,6 +54,13 @@ L["Options for Rating display"] = "평점 표시에 대한 설정입니다."
 -- /rb rating show
 L["Show Rating conversions"] = "평점 변화 표시"
 L["Show Rating conversions in tooltips"] = "툴팁에 평점 변화를 표시합니다."
+-- TODO
+-- /rb rating spell
+L["Show Spell Hit/Haste"] = true
+L["Show Spell Hit/Haste from Hit/Haste Rating"] = true
+-- /rb rating physical
+L["Show Physical Hit/Haste"] = true
+L["Show Physical Hit/Haste from Hit/Haste Rating"] = true
 -- /rb rating detail
 L["Show detailed conversions text"] = "세부적인 평점 변화 표시"
 L["Show detailed text for Resiliance and Expertise conversions"] = "탄력도와 숙련의 세부적인 평점 변화 표시를 사용합니다."
@@ -575,27 +582,21 @@ L["statList"] = {
 
 	{pattern = "주문 극대화 적중도", id = CR_CRIT_SPELL},
 	{pattern = "주문의 극대화 적중도", id = CR_CRIT_SPELL},
-	--		{pattern = "spell critical rating", id = CR_CRIT_SPELL},
-	--		{pattern = "spell crit rating", id = CR_CRIT_SPELL},
 	{pattern = "원거리 치명타 적중도", id = CR_CRIT_RANGED},
-	--		{pattern = "ranged critical hit rating", id = CR_CRIT_RANGED},
-	--		{pattern = "ranged critical rating", id = CR_CRIT_RANGED},
-	--		{pattern = "ranged crit rating", id = CR_CRIT_RANGED},
-	{pattern = "치명타 적중도", id = CR_CRIT_MELEE},
+	{pattern = "치명타 적중도", id = CR_CRIT},
 	{pattern = "근접 치명타 적중도", id = CR_CRIT_MELEE},
-	--		{pattern = "crit rating", id = CR_CRIT_MELEE},
 
 	--		{pattern = "주문의 적중도", id = CR_HIT_SPELL},
 	{pattern = "주문 적중도", id = CR_HIT_SPELL},
 	{pattern = "원거리 적중도", id = CR_HIT_RANGED},
-	{pattern = "적중도", id = CR_HIT_MELEE},
+	{pattern = "적중도", id = CR_HIT},
 
 	{pattern = "탄력도", id = CR_CRIT_TAKEN_MELEE}, -- resilience is implicitly a rating
 
 	{pattern = "주문 시전 가속도", id = CR_HASTE_SPELL},
 	{pattern = "원거리 공격 가속도", id = CR_HASTE_RANGED},
-	{pattern = "공격 가속도", id = CR_HASTE_MELEE},
-	{pattern = "가속도", id = CR_HASTE_MELEE}, -- [Drums of Battle]
+	{pattern = "공격 가속도", id = CR_HASTE},
+	{pattern = "가속도", id = CR_HASTE}, -- [Drums of Battle]
 
 	{pattern = "숙련도", id = CR_EXPERTISE},
 

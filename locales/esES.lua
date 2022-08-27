@@ -55,6 +55,13 @@ L["Options for Rating display"] = "Opciones de visualizacion"
 -- /rb rating show
 L["Show Rating conversions"] = "Mostrar conversion calificacion"
 L["Show Rating conversions in tooltips"] = "Mostrar conversion calificacion en tooltips"
+-- TODO
+-- /rb rating spell
+L["Show Spell Hit/Haste"] = true
+L["Show Spell Hit/Haste from Hit/Haste Rating"] = true
+-- /rb rating physical
+L["Show Physical Hit/Haste"] = true
+L["Show Physical Hit/Haste from Hit/Haste Rating"] = true
 -- /rb rating detail
 L["Show detailed conversions text"] = "Mostrar texto detallado conversiones"
 L["Show detailed text for Resiliance and Expertise conversions"] = "Mostrar texto detallado de conversiones de Temple y Pericia"
@@ -578,20 +585,20 @@ L["statList"] = {
 	{pattern = "índice de golpe crítico con hechizos", id = CR_CRIT_SPELL},
 	{pattern = "índice de golpe crítico a distancia", id = CR_CRIT_RANGED},
 	{pattern = "índice de golpe crítico cuerpo a cuerpo", id = CR_CRIT_MELEE},
-	{pattern = "índice de golpe crítico", id = CR_CRIT_MELEE},
+	{pattern = "índice de golpe crítico", id = CR_CRIT},
 
 	{pattern = "índice de golpe con hechizo", id = CR_HIT_SPELL},
 	{pattern = "índice de golpe a distancia", id = CR_HIT_RANGED},
 	{pattern = "índice de golpe cuerpo a cuerpo", id = CR_HIT_MELEE},
-	{pattern = "índice de golpe", id = CR_HIT_MELEE},
+	{pattern = "índice de golpe", id = CR_HIT},
 
 	{pattern = "índice de temple", id = CR_CRIT_TAKEN_MELEE}, -- resilience is implicitly a rating
 
 	{pattern = "índice de celeridad con hechizos", id = CR_HASTE_SPELL},
 	{pattern = "índice de celeridad a distancia", id = CR_HASTE_RANGED},
 	{pattern = "índice de celeridad con cuerpo a cuerpo", id = CR_HASTE_MELEE},
-	{pattern = "índice de celeridad", id = CR_HASTE_MELEE},
-	{pattern = "Aumenta el índice de velocidad de lanzamiento de ataques y de ataque de los miembros del grupo cercanos", id = CR_HASTE_MELEE}, -- [Drums of Battle]
+	{pattern = "índice de celeridad", id = CR_HASTE},
+	{pattern = "Aumenta el índice de velocidad de lanzamiento de ataques y de ataque de los miembros del grupo cercanos", id = CR_HASTE}, -- [Drums of Battle]
 
 	{pattern = "índice de pericia", id = CR_EXPERTISE},
 

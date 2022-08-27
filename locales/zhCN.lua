@@ -54,6 +54,12 @@ L["Options for Rating display"] = "设定属性等级显示"
 -- /rb rating show
 L["Show Rating conversions"] = "显示属性等级转换"
 L["Show Rating conversions in tooltips"] = "在提示框架中显示属性等级转换结果"
+-- /rb rating spell
+L["Show Spell Hit/Haste"] = "显示法术命中/急速"
+L["Show Spell Hit/Haste from Hit/Haste Rating"] = "显示命中/急速等级给的法术命中/急速加成"
+-- /rb rating physical
+L["Show Physical Hit/Haste"] = "显示物理命中"
+L["Show Physical Hit/Haste from Hit/Haste Rating"] = "显示命中/急速等级给的物理命中/急速加成"
 -- /rb rating detail
 L["Show detailed conversions text"] = "显示详细转换文本"
 L["Show detailed text for Resiliance and Expertise conversions"] = "显示详细的抗性和精准等级转换"
@@ -579,18 +585,18 @@ L["statList"] = {
 	{pattern = "远程爆击命中等级", id = CR_CRIT_RANGED},
 	{pattern = "远程爆击等级", id = CR_CRIT_RANGED},
 	{pattern = "近战爆击等级", id = CR_CRIT_MELEE},
-	{pattern = "爆击等级", id = CR_CRIT_MELEE},
+	{pattern = "爆击等级", id = CR_CRIT},
 
 	{pattern = "法术命中等级", id = CR_HIT_SPELL},
 	{pattern = "远程命中等级", id = CR_HIT_RANGED},
-	{pattern = "命中等级", id = CR_HIT_MELEE},
+	{pattern = "命中等级", id = CR_HIT},
 
 	{pattern = "韧性等级", id = CR_CRIT_TAKEN_MELEE}, -- resilience is implicitly a rating
 
 	{pattern = "法术急速等级", id = CR_HASTE_SPELL},
 	{pattern = "远程急速等级", id = CR_HASTE_RANGED},
-	{pattern = "急速等级", id = CR_HASTE_MELEE},
-	{pattern = "加速等级", id = CR_HASTE_MELEE}, -- [Drums of Battle]
+	{pattern = "急速等级", id = CR_HASTE},
+	{pattern = "加速等级", id = CR_HASTE}, -- [Drums of Battle]
 
 	{pattern = "精准等级", id = CR_EXPERTISE},
 

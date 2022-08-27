@@ -57,6 +57,12 @@ L["Options for Rating display"] = "設定屬性等級顯示"
 -- /rb rating show
 L["Show Rating conversions"] = "顯示屬性等級轉換"
 L["Show Rating conversions in tooltips"] = "在提示框架中顯示屬性等級轉換結果"
+-- /rb rating spell
+L["Show Spell Hit/Haste"] = "顯示法術命中/加速"
+L["Show Spell Hit/Haste from Hit/Haste Rating"] = "顯示命中/加速給的法術命中/加速"
+-- /rb rating physical
+L["Show Physical Hit/Haste"] = "顯示物理命中/加速"
+L["Show Physical Hit/Haste from Hit/Haste Rating"] = "顯示命中/加速給的物理命中/加速"
 -- /rb rating detail
 L["Show detailed conversions text"] = "顯示詳細轉換文字"
 L["Show detailed text for Resiliance and Expertise conversions"] = "顯示韌性和熟練技能的詳細轉換文字"
@@ -578,18 +584,18 @@ L["statList"] = {
 
 	{pattern = "法術致命一擊等級", id = CR_CRIT_SPELL},
 	{pattern = "遠程攻擊致命一擊等級", id = CR_CRIT_RANGED},
-	{pattern = "致命一擊等級", id = CR_CRIT_MELEE},
+	{pattern = "致命一擊等級", id = CR_CRIT},
 
 	{pattern = "法術命中等級", id = CR_HIT_SPELL},
 	{pattern = "遠程命中等級", id = CR_HIT_RANGED},
-	{pattern = "命中等級", id = CR_HIT_MELEE},
+	{pattern = "命中等級", id = CR_HIT},
 
 	{pattern = "韌性", id = CR_CRIT_TAKEN_MELEE}, -- resilience is implicitly a rating
 
 	{pattern = "法術加速等級", id = CR_HASTE_SPELL},
 	{pattern = "遠程攻擊加速等級", id = CR_HASTE_RANGED},
-	{pattern = "加速等級", id = CR_HASTE_MELEE},
-	{pattern = "攻擊速度等級", id = CR_HASTE_MELEE}, -- [Drums of Battle]
+	{pattern = "加速等級", id = CR_HASTE},
+	{pattern = "攻擊速度等級", id = CR_HASTE}, -- [Drums of Battle]
 
 	{pattern = "熟練等級", id = CR_EXPERTISE}, -- 2.3
 
