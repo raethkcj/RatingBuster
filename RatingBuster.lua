@@ -1803,7 +1803,7 @@ function RatingBuster:ProcessText(text, link)
 							--self:Debug(text..", "..tostring(effect)..", "..value..", "..stat.id..", "..calcLevel)
 							-- Build info string
 							infoString = format("%+.2f", effect)
-							if stat.id > 2 and stat.id < 21 then -- if rating is a percentage
+							if stat.id > 2 and stat.id < 21 or stat.id == 25 then -- if rating is a percentage
 								infoString = infoString.."%"
 							end
 						end
