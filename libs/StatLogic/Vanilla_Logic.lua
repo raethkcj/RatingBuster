@@ -1,20 +1,7 @@
 local addonName, addonTable = ...
 local StatLogic = LibStub:GetLibrary(addonName)
 
-addonTable.genericStatMap = {
-	["HIT"] = {
-		"MELEE_HIT",
-		"RANGED_HIT",
-	},
-	["CRIT"] = {
-		"MELEE_CRIT",
-		"RANGED_CRIT",
-	},
-	["HASTE"] = {
-		"MELEE_HASTE",
-		"RANGED_HASTE",
-	},
-}
+StatLogic.GenericStatMap = {}
 
 --[[---------------------------------
 {	:GetNormalManaRegenFromSpi(spi, [class])

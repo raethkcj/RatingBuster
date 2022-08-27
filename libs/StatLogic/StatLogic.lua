@@ -439,6 +439,10 @@ function StatLogic:GetStatNameFromID(stat)
 	return unpack(name)
 end
 
+if not CR_HIT then CR_HIT = -6 end;
+if not CR_CRIT then CR_CRIT = -9 end;
+if not CR_HASTE then CR_HASTE = -18 end;
+
 if not CR_WEAPON_SKILL then CR_WEAPON_SKILL = 1 end;
 if not CR_DEFENSE_SKILL then CR_DEFENSE_SKILL = 2 end;
 if not CR_DODGE then CR_DODGE = 3 end;
@@ -466,6 +470,9 @@ if not CR_EXPERTISE then CR_EXPERTISE = 24 end;
 if not CR_ARMOR_PENETRATION then CR_ARMOR_PENETRATION = 25 end;
 
 local RatingNameToID = {
+	[CR_HIT] = "HIT_RATING",
+	[CR_CRIT] = "CRIT_RATING",
+	[CR_HASTE] = "HASTE_RATING",
 	[CR_WEAPON_SKILL] = "WEAPON_RATING",
 	[CR_DEFENSE_SKILL] = "DEFENSE_RATING",
 	[CR_DODGE] = "DODGE_RATING",
@@ -491,6 +498,9 @@ local RatingNameToID = {
 	[CR_WEAPON_SKILL_RANGED] = "RANGED_WEAPON_RATING",
 	[CR_EXPERTISE] = "EXPERTISE_RATING",
 	[CR_ARMOR_PENETRATION] = "ARMOR_PENETRATION_RATING",
+	["HIT_RATING"] = CR_HIT,
+	["CRIT_RATING"] = CR_CRIT,
+	["HASTE_RATING"] = CR_HASTE,
 	["DEFENSE_RATING"] = CR_DEFENSE_SKILL,
 	["DODGE_RATING"] = CR_DODGE,
 	["PARRY_RATING"] = CR_PARRY,
@@ -531,7 +541,7 @@ local RatingNameToID = {
 	["ARMOR_PENETRATION_RATING"] = CR_ARMOR_PENETRATION,
 }
 
-function StatLogic:GetRatingIdOrStatId(rating)
+function StatLogic:GetRatingIdOrName(rating)
 	return RatingNameToID[rating]
 end
 
@@ -2174,12 +2184,14 @@ function StatLogic:GetGemID(item)
 end
 
 local ConvertGenericRatings = function(table)
-	for generic, ratings in pairs(addonTable.genericStatMap) do
-		if table[generic] then
-			for _, rating in ipairs(ratings) do
-				table[rating] = table[generic]
+	for generic, ratings in pairs(StatLogic.GenericStatMap) do
+		local genericName = StatLogic:GetRatingIdOrName(generic)
+		if table[genericName] then
+			for rating in pairs(ratings) do
+				local ratingName = StatLogic:GetRatingIdOrName(rating)
+				table[ratingName] = table[genericName]
 			end
-			table[generic] = nil
+			table[genericName] = nil
 		end
 	end
 end

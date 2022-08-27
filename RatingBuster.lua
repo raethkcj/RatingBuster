@@ -353,6 +353,20 @@ local options = {
 					name = L["Show Rating conversions"],
 					desc = L["Show Rating conversions in tooltips"],
 				},
+				ratingSpell = {
+					type = 'toggle',
+					name = L["Show Spell Hit/Haste"],
+					desc = L["Show Spell Hit/Haste from Hit/Haste Rating"],
+					hidden = function()
+						local genericHit = StatLogic.GenericStatMap[CR_HIT]
+						return (not genericHit) or (not genericHit[CR_HIT_SPELL])
+					end
+				},
+				ratingPhysical = {
+					type = 'toggle',
+					name = L["Show Physical Hit/Haste"],
+					desc = L["Show Physical Hit/Haste from Hit/Haste Rating"],
+				},
 				detailedConversionText = {
 					type = 'toggle',
 					name = L["Show detailed conversions text"],
@@ -1200,6 +1214,8 @@ if class == "DRUID" then
 	defaults.profile.showHealingFromInt = true
 	defaults.profile.showMP5FromInt = true -- Dreamstate (Rank 3) - 1,17
 	defaults.profile.showMP5FromSpi = true
+	defaults.profile.ratingPhysical = true
+	defaults.profile.ratingSpell = true
 elseif class == "HUNTER" then
 	defaults.profile.sumHP = true
 	defaults.profile.sumMP = true
@@ -1213,6 +1229,7 @@ elseif class == "HUNTER" then
 	defaults.profile.showDodgeFromAgi = false
 	defaults.profile.showSpellCritFromInt = false
 	defaults.profile.showRAPFromInt = true
+	defaults.profile.ratingPhysical = true
 elseif class == "MAGE" then
 	defaults.profile.sumHP = true
 	defaults.profile.sumMP = true
@@ -1228,6 +1245,7 @@ elseif class == "MAGE" then
 	defaults.profile.showArmorFromInt = true
 	defaults.profile.showMP5FromInt = true
 	defaults.profile.showMP5FromSpi = true
+	defaults.profile.ratingSpell = true
 elseif class == "PALADIN" then
 	defaults.profile.sumHP = true
 	defaults.profile.sumMP = true
@@ -1244,6 +1262,8 @@ elseif class == "PALADIN" then
 	defaults.profile.sumMP5 = true
 	defaults.profile.showSpellDmgFromInt = true
 	defaults.profile.showHealingFromInt = true
+	defaults.profile.ratingPhysical = true
+	defaults.profile.ratingSpell = true
 elseif class == "PRIEST" then
 	defaults.profile.sumHP = true
 	defaults.profile.sumMP = true
@@ -1260,6 +1280,7 @@ elseif class == "PRIEST" then
 	defaults.profile.showMP5FromSpi = true
 	defaults.profile.showSpellDmgFromSpi = true
 	defaults.profile.showHealingFromSpi = true
+	defaults.profile.ratingSpell = true
 elseif class == "ROGUE" then
 	defaults.profile.sumHP = true
 	defaults.profile.sumResilience = true
@@ -1269,6 +1290,7 @@ elseif class == "ROGUE" then
 	defaults.profile.sumHaste = true
 	defaults.profile.sumExpertise = true
 	defaults.profile.showSpellCritFromInt = false
+	defaults.profile.ratingPhysical = true
 elseif class == "SHAMAN" then
 	defaults.profile.sumHP = true
 	defaults.profile.sumMP = true
@@ -1284,6 +1306,8 @@ elseif class == "SHAMAN" then
 	defaults.profile.showSpellDmgFromInt = true
 	defaults.profile.showHealingFromInt = true
 	defaults.profile.showMP5FromInt = true
+	defaults.profile.ratingPhysical = true
+	defaults.profile.ratingSpell = true
 elseif class == "WARLOCK" then
 	defaults.profile.sumHP = true
 	defaults.profile.sumMP = true
@@ -1296,6 +1320,7 @@ elseif class == "WARLOCK" then
 	defaults.profile.showDodgeFromAgi = false
 	defaults.profile.showSpellDmgFromSta = true
 	defaults.profile.showSpellDmgFromInt = true
+	defaults.profile.ratingSpell = true
 elseif class == "WARRIOR" then
 	defaults.profile.sumHP = true
 	defaults.profile.sumResilience = true
@@ -1305,6 +1330,7 @@ elseif class == "WARRIOR" then
 	defaults.profile.sumHaste = true
 	defaults.profile.sumExpertise = true
 	defaults.profile.showSpellCritFromInt = false
+	defaults.profile.ratingPhysical = true
 end
 
 -----------
@@ -1703,7 +1729,7 @@ function RatingBuster:ProcessText(text, link)
 				if (not partialtext and strfind(lowerText, stat.pattern)) or (partialtext and strfind(partialtext, stat.pattern)) then
 					value = tonumber(value)
 					local infoString = ""
-					if type(stat.id) == "number" and stat.id >= 1 and stat.id <= 24 and profileDB.showRatings then
+					if type(stat.id) == "number" and profileDB.showRatings then
 						--------------------
 						-- Combat Ratings --
 						--------------------
@@ -1748,6 +1774,31 @@ function RatingBuster:ProcessText(text, link)
 							else
 								infoString = format("%+.2f%%", effect)
 							end
+						elseif StatLogic.GenericStatMap[stat.id] then
+							-- CR_HIT, CR_CRIT, CR_HASTE
+							local infoTable = {}
+
+							local pattern = "%+.2f%%"
+							local patternSpell = pattern
+							if profileDB.ratingPhysical and profileDB.ratingSpell then
+								patternSpell = L["$value Spell"]:gsub("$value", "%%+.2f%%%%")
+							end
+
+							local ratingMelee = stat.id * -1
+							if profileDB.ratingPhysical then
+								effect = StatLogic:GetEffectFromRating(value, ratingMelee, calcLevel)
+								tinsert(infoTable, pattern:format(effect))
+							end
+
+							local ratingSpell = ratingMelee + 2
+							if profileDB.ratingSpell and StatLogic.GenericStatMap[stat.id][ratingSpell] then
+								local effectSpell = StatLogic:GetEffectFromRating(value, ratingSpell, calcLevel)
+								if effectSpell ~= effect then
+									tinsert(infoTable, patternSpell:format(effectSpell))
+								end
+							end
+
+							infoString = strjoin(", ", unpack(infoTable))
 						else
 							--self:Debug(text..", "..tostring(effect)..", "..value..", "..stat.id..", "..calcLevel)
 							-- Build info string
