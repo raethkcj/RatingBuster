@@ -9,6 +9,7 @@
 ## X-Category: Interface Enhancements
 ## X-License: GPL v2
 ## X-WoWI-ID: 26235
+## X-Wago-ID: RaN0eM6j
 
 # Libraries
 embeds.xml
