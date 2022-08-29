@@ -397,12 +397,6 @@ addonTable.APPerAgi = {
 	[StatLogic:GetClassIdOrName("DRUID")] = 0,
 }
 
-local BuffGroup = {
-	MOD_PHYS_DMG_TAKEN = 1,
-	MOD_AP = 2,
-	MOD_STATS = 3,
-}
-
 addonTable.RAPPerAgi = {
 	[StatLogic:GetClassIdOrName("WARRIOR")] = 1,
 	[StatLogic:GetClassIdOrName("PALADIN")] = 0,
@@ -427,6 +421,26 @@ addonTable.BaseDodge = {
 	[StatLogic:GetClassIdOrName("MAGE")] =        3.6587,
 	[StatLogic:GetClassIdOrName("WARLOCK")] =     2.4211,
 	[StatLogic:GetClassIdOrName("DRUID")] =       5.6097,
+}
+
+addonTable.bonusArmorItemEquipLoc = {
+	["INVTYPE_WEAPON"] = true,
+	["INVTYPE_2HWEAPON"] = true,
+	["INVTYPE_WEAPONMAINHAND"] = true,
+	["INVTYPE_WEAPONOFFHAND"] = true,
+	["INVTYPE_HOLDABLE"] = true,
+	["INVTYPE_RANGED"] = true,
+	["INVTYPE_THROWN"] = true,
+	["INVTYPE_RANGEDRIGHT"] = true,
+	["INVTYPE_NECK"] = true,
+	["INVTYPE_FINGER"] = true,
+	["INVTYPE_TRINKET"] = true,
+}
+
+local BuffGroup = {
+	MOD_PHYS_DMG_TAKEN = 1,
+	MOD_AP = 2,
+	MOD_STATS = 3,
 }
 
 StatLogic.StatModTable = {}

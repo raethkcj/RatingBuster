@@ -2674,20 +2674,6 @@ function StatLogic:GetSum(item, table)
 	return table
 end
 
-local bonusArmorItemEquipLoc = {
-	["INVTYPE_WEAPON"] = true,
-	["INVTYPE_2HWEAPON"] = true,
-	["INVTYPE_WEAPONMAINHAND"] = true,
-	["INVTYPE_WEAPONOFFHAND"] = true,
-	["INVTYPE_HOLDABLE"] = true,
-	["INVTYPE_RANGED"] = true,
-	["INVTYPE_THROWN"] = true,
-	["INVTYPE_RANGEDRIGHT"] = true,
-	["INVTYPE_NECK"] = true,
-	["INVTYPE_FINGER"] = true,
-	["INVTYPE_TRINKET"] = true,
-}
-
 function StatLogic:GetFinalArmor(item, text)
 	-- Locale check
 	if noPatternLocale then return end
@@ -2708,18 +2694,17 @@ function StatLogic:GetFinalArmor(item, text)
 	for pattern, id in pairs(L.PreScanPatterns) do
 		if id == "ARMOR" or id == "ARMOR_BONUS" then
 			local found, _, value = strfind(text, pattern)
+			value = tonumber(value)
 			if found then
 				local armor = 0
 				local bonus_armor = 0
-				if id == "ARMOR" then
+				if addonTable.bonusArmorItemEquipLoc[itemType] then
+					bonus_armor = value
+				elseif id == "ARMOR" and baseArmorTable then
 					armor = baseArmorTable[rarity][itemType][armorType][ilvl]
-					bonus_armor = tonumber(value) - baseArmorTable[rarity][itemType][armorType][ilvl]
+					bonus_armor = value - armor
 				else
-					armor = tonumber(value)
-				end
-				if bonusArmorItemEquipLoc[itemType] then
-					bonus_armor = bonus_armor + armor
-					armor = 0
+					armor = value
 				end
 				return armor * self:GetStatMod("MOD_ARMOR") + bonus_armor
 			end
