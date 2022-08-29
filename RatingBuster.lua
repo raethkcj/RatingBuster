@@ -46,7 +46,7 @@ end
 local _
 local _, class = UnitClass("player")
 local calcLevel, playerLevel
-local profileDB, profileDB -- Initialized in :OnInitialize()
+local profileDB -- Initialized in :OnInitialize()
 
 
 -- Localize globals
@@ -78,181 +78,23 @@ end
 local GetParryChance = GetParryChance
 local GetBlockChance = GetBlockChance
 
----------------------
--- Saved Variables --
----------------------
--- Default values
-local defaults = {
-	profile = {
-		showItemLevel = true,
-		showItemID = false,
-		useRequiredLevel = true,
-		customLevel = 0,
-		textColor = {r = 1.0, g = 0.996,  b = 0.545, hex = "|cfffffe8b"},
-		enableTextColor = true,
-		enableStatMods = true,
-		enableAvoidanceDiminishingReturns = StatLogic.GetAvoidanceAfterDR and true or false,
-		showRatings = true,
-		detailedConversionText = false,
-		defBreakDown = false,
-		wpnBreakDown = false,
-		expBreakDown = false,
-		showStats = true,
-		showSum = true,
-		sumIgnoreUnused = true,
-		sumIgnoreEquipped = false,
-		sumIgnoreEnchant = true,
-		sumIgnoreGems = false,
-		sumBlankLine = true,
-		sumBlankLineAfter = false,
-		sumShowIcon = true,
-		sumShowTitle = true,
-		sumDiffStyle = "main",
-		sumSortAlpha = false,
-		sumAvoidWithBlock = false,
-		showZeroValueStat = false,
-		calcDiff = true,
-		calcSum = true,
-		--[[
-		Str -> AP, Block, Healing
-		Agi -> Crit, Dodge, AP, RAP, Armor
-		Sta -> Health, SpellDmg
-		Int -> Mana, SpellCrit, SpellDmg, Healing, MP5, RAP, Armor
-		Spi -> MP5, MP5NC, HP5, SpellDmg, Healing
-		--]]
-		-- Base stat conversions
-		showAPFromStr = false,
-		showBlockValueFromStr = false,
-
-		showCritFromAgi = true,
-		showDodgeFromAgi = true,
-		showAPFromAgi = false,
-		showRAPFromAgi = false,
-		showArmorFromAgi = false,
-		showHealingFromAgi = false, -- Druid - Nurturing Instinct
-
-		showHealthFromSta = false,
-		showSpellDmgFromSta = false, -- Warlock
-
-		showManaFromInt = false,
-		showSpellCritFromInt = true,
-		showSpellDmgFromInt = false, -- Druid, Mage, Paladin, Shaman, Warlock
-		showHealingFromInt = false, -- Druid, Paladin, Shaman
-		showMP5FromInt = false, 
-		showMP5NCFromInt = false,
-		showRAPFromInt = false, -- Hunter
-		showArmorFromInt = false, -- Mage
-
-		showMP5FromSpi = false, -- Druid, Mage, Priest
-		showMP5NCFromSpi = false,
-		showHP5FromSpi = false,
-		showSpellDmgFromSpi = false, -- Priest
-		showHealingFromSpi = false, -- Priest
-		------------------
-		-- Stat Summary --
-		------------------
-		-- Basic
-		sumHP = false,
-		sumMP = false,
-		sumMP5 = false,
-		sumMP5NC = false,
-		sumHP5 = false,
-		sumHP5OC = false,
-		sumStr = false,
-		sumAgi = false,
-		sumSta = false,
-		sumInt = false,
-		sumSpi = false,
-		-- Physical
-		sumAP = false,
-		sumRAP = false,
-		sumFAP = false,
-		sumHit = false,
-		sumHitRating = false, -- new
-		sumCrit = false,
-		sumCritRating = false, -- new
-		sumHaste = false, -- new
-		sumHasteRating = false, -- new
-		sumExpertise = false,
-		sumWeaponSkill = false,
-		sumDodgeNeglect = false,
-		sumParryNeglect = false,
-		sumBlockNeglect = false,
-		sumWeaponMaxDamage = false,
-		sumWeaponDPS = false,
-		sumIgnoreArmor = false, -- new
-		-- Spell
-		sumSpellDmg = false,
-		sumArcaneDmg = false,
-		sumFrostDmg = false,
-		sumNatureDmg = false,
-		sumFireDmg = false,
-		sumShadowDmg = false,
-		sumHolyDmg = false,
-		sumHealing = false,
-		sumSpellHit = false,
-		sumSpellHitRating = false, -- new
-		sumSpellCrit = false,
-		sumSpellCritRating = false, -- new
-		sumSpellHaste = false, -- new
-		sumSpellHasteRating = false, -- new
-		sumPenetration = false, -- new
-		-- Tank
-		sumArmor = false,
-		sumDodge = false,
-		sumDodgeRating = false, -- new
-		sumParry = false,
-		sumParryRating = false, -- new
-		sumBlock = false,
-		sumBlockRating = false, -- new
-		sumBlockValue = false,
-		sumHitAvoid = false,
-		sumCritAvoid = false,
-		sumArcaneResist = false,
-		sumFrostResist = false,
-		sumNatureResist = false,
-		sumFireResist = false,
-		sumShadowResist = false,
-		sumResilience = false, -- new
-		sumDefense = false,
-		sumTankPoints = false,
-		sumTotalReduction = false,
-		sumAvoidance = false,
-		-- Gems
-		sumGemRed = {
-			itemID = nil,
-			gemID = nil,
-			gemText = nil,
-		};
-		sumGemYellow = {
-			itemID = nil,
-			gemID = nil,
-			gemText = nil,
-		};
-		sumGemBlue = {
-			itemID = nil,
-			gemID = nil,
-			gemText = nil,
-		};
-		sumGemMeta = {
-			itemID = nil,
-			gemID = nil,
-			gemText = nil,
-		};
-	}
-}
-
-
-
 ---------------------------
 -- Slash Command Options --
 ---------------------------
 
-local function getProfileOption(info, value)
-	return profileDB[info[#info]]
+local function getOption(info, value)
+	if type(globalDB[info[#info]]) ~= "nil" then
+		return globalDB[info[#info]]
+	else
+		return profileDB[info[#info]]
+	end
 end
-local function setProfileOptionAndClearCache(info, value)
-	profileDB[info[#info]] = value
+local function setOptionAndClearCache(info, value)
+	if type(globalDB[info[#info]]) ~= "nil" then
+		globalDB[info[#info]] = value
+	else
+		profileDB[info[#info]] = value
+	end
 	clearCache()
 end
 local function getGem(info)
@@ -296,8 +138,8 @@ end
 
 local options = {
 	type = 'group',
-	get = getProfileOption,
-	set = setProfileOptionAndClearCache,
+	get = getOption,
+	set = setOptionAndClearCache,
 	args = {
 		help = {
 			type = 'execute',
@@ -311,14 +153,6 @@ local options = {
 			type = 'toggle',
 			name = L["Enable Stat Mods"],
 			desc = L["Enable support for Stat Mods"],
-		},
-		enableAvoidanceDiminishingReturns = {
-			type = 'toggle',
-			name = L["Enable Avoidance Diminishing Returns"],
-			desc = L["Dodge, Parry, Miss Avoidance values will be calculated using the avoidance deminishing return formula with your current stats"],
-			hidden = function()
-				return not StatLogic.GetAvoidanceAfterDR
-			end,
 		},
 		showItemID = {
 			type = 'toggle',
@@ -347,6 +181,7 @@ local options = {
 			type = 'group',
 			name = L["Rating"],
 			desc = L["Options for Rating display"],
+			order = 1,
 			args = {
 				showRatings = {
 					type = 'toggle',
@@ -387,6 +222,14 @@ local options = {
 					name = L["Expertise breakdown"],
 					desc = L["Convert Expertise into Dodge Neglect and Parry Neglect"],
 				},
+				enableAvoidanceDiminishingReturns = {
+					type = 'toggle',
+					name = L["Enable Avoidance Diminishing Returns"],
+					desc = L["Dodge, Parry, Miss Avoidance values will be calculated using the avoidance deminishing return formula with your current stats"],
+					hidden = function()
+						return not StatLogic.GetAvoidanceAfterDR
+					end,
+				},
 				color = {
 					type = 'group',
 					name = L["Change text color"],
@@ -399,13 +242,13 @@ local options = {
 							func = function()
 								CloseMenus()
 								ColorPickerFrame.func = function()
-									profileDB.textColor.r, profileDB.textColor.g, profileDB.textColor.b = ColorPickerFrame:GetColorRGB();
-									profileDB.textColor.hex = "|cff"..string.format("%02x%02x%02x", profileDB.textColor.r * 255, profileDB.textColor.g * 255, profileDB.textColor.b * 255)
+									globalDB.textColor.r, globalDB.textColor.g, globalDB.textColor.b = ColorPickerFrame:GetColorRGB();
+									globalDB.textColor.hex = "|cff"..string.format("%02x%02x%02x", globalDB.textColor.r * 255, globalDB.textColor.g * 255, globalDB.textColor.b * 255)
 									-- clear cache
 									clearCache()
 								end
-								ColorPickerFrame:SetColorRGB(profileDB.textColor.r, profileDB.textColor.g, profileDB.textColor.b);
-								ColorPickerFrame.previousValues = {r = profileDB.textColor.r, g = profileDB.textColor.g, b = profileDB.textColor.b};
+								ColorPickerFrame:SetColorRGB(globalDB.textColor.r, globalDB.textColor.g, globalDB.textColor.b);
+								ColorPickerFrame.previousValues = {r = globalDB.textColor.r, g = globalDB.textColor.g, b = globalDB.textColor.b};
 								ColorPickerFrame:SetFrameStrata("FULLSCREEN_DIALOG")
 								ColorPickerFrame:SetMovable(true)
 								ColorPickerFrame:EnableMouse(true)
@@ -428,6 +271,7 @@ local options = {
 			type = 'group',
 			name = L["Stat Breakdown"],
 			desc = L["Changes the display of base stats"],
+			order = 2,
 			args = {
 				showStats = {
 					type = 'toggle',
@@ -573,6 +417,7 @@ local options = {
 			type = 'group',
 			name = L["Stat Summary"],
 			desc = L["Options for stat summary"],
+			order = 3,
 			args = {
 				showSum = {
 					type = 'toggle',
@@ -662,11 +507,6 @@ local options = {
 					name = L["Sort StatSummary alphabetically"],
 					desc = L["Enable to sort StatSummary alphabetically, disable to sort according to stat type(basic, physical, spell, tank)"],
 				},
-				sumAvoidWithBlock = {
-					type = 'toggle',
-					name = L["Include block chance in Avoidance summary"],
-					desc = L["Enable to include block chance in Avoidance summary, Disable for only dodge, parry, miss"],
-				},
 				basic = {
 					type = 'group',
 					name = L["Stat - Basic"],
@@ -676,56 +516,67 @@ local options = {
 							type = 'toggle',
 							name = L["Sum Health"],
 							desc = L["Health <- Health, Stamina"],
+							order = 1,
 						},
 						sumMP = {
 							type = 'toggle',
 							name = L["Sum Mana"],
 							desc = L["Mana <- Mana, Intellect"],
+							order = 2,
 						},
 						sumMP5 = {
 							type = 'toggle',
 							name = L["Sum Mana Regen"],
 							desc = L["Mana Regen <- Mana Regen, Spirit"],
+							order = 3,
 						},
 						sumMP5NC = {
 							type = 'toggle',
 							name = L["Sum Mana Regen while not casting"],
 							desc = L["Mana Regen while not casting <- Spirit"],
+							order = 4,
 						},
 						sumHP5 = {
 							type = 'toggle',
 							name = L["Sum Health Regen"],
 							desc = L["Health Regen <- Health Regen"],
+							order = 5,
 						},
 						sumHP5OC = {
 							type = 'toggle',
 							name = L["Sum Health Regen when out of combat"],
 							desc = L["Health Regen when out of combat <- Spirit"],
+							order = 6,
 						},
 						sumStr = {
 							type = 'toggle',
 							name = L["Sum Strength"],
 							desc = L["Strength Summary"],
+							order = 7,
 						},
 						sumAgi = {
 							type = 'toggle',
 							name = L["Sum Agility"],
 							desc = L["Agility Summary"],
+							order = 8,
 						},
 						sumSta = {
 							type = 'toggle',
 							name = L["Sum Stamina"],
 							desc = L["Stamina Summary"],
+							order = 9,
 						},
 						sumInt = {
 							type = 'toggle',
 							name = L["Sum Intellect"],
 							desc = L["Intellect Summary"],
+							order = 10,
 						},
 						sumSpi = {
 							type = 'toggle',
 							name = L["Sum Spirit"],
 							desc = L["Spirit Summary"],
+							order = 11,
 						},
 					},
 				},
@@ -937,95 +788,119 @@ local options = {
 					name = L["Stat - Tank"],
 					desc = L["Choose tank stats for summary"],
 					args = {
-						sumArmor = {
+						sumAvoidance = {
 							type = 'toggle',
-							name = L["Sum Armor"],
-							desc = L["Armor <- Armor from items, Armor from bonuses, Agility, Intellect"],
+							name = L["Sum Avoidance"],
+							desc = L["Avoidance <- Dodge, Parry, MobMiss, Block(Optional)"],
+							order = 1,
 						},
-						sumDefense = {
+						sumAvoidWithBlock = {
 							type = 'toggle',
-							name = L["Sum Defense"],
-							desc = L["Defense <- Defense Rating"],
+							name = L["Include block chance in Avoidance summary"],
+							desc = L["Enable to include block chance in Avoidance summary, Disable for only dodge, parry, miss"],
+							order = 2,
 						},
 						sumDodge = {
 							type = 'toggle',
 							name = L["Sum Dodge Chance"],
 							desc = L["Dodge Chance <- Dodge Rating, Agility, Defense Rating"],
+							order = 3,
 						},
 						sumDodgeRating = {
 							type = 'toggle',
 							name = L["Sum Dodge Rating"],
 							desc = L["Dodge Rating Summary"],
-						},
-						sumParry = {
-							type = 'toggle',
-							name = L["Sum Parry Chance"],
-							desc = L["Parry Chance <- Parry Rating, Defense Rating"],
-						},
-						sumParryRating = {
-							type = 'toggle',
-							name = L["Sum Parry Rating"],
-							desc = L["Parry Rating Summary"],
+							order = 4,
 						},
 						sumBlock = {
 							type = 'toggle',
 							name = L["Sum Block Chance"],
 							desc = L["Block Chance <- Block Rating, Defense Rating"],
+							order = 5,
 						},
 						sumBlockRating = {
 							type = 'toggle',
 							name = L["Sum Block Rating"],
 							desc = L["Block Rating Summary"],
+							order = 6,
 						},
 						sumBlockValue = {
 							type = 'toggle',
 							name = L["Sum Block Value"],
 							desc = L["Block Value <- Block Value, Strength"],
+							order = 7,
+						},
+						sumParry = {
+							type = 'toggle',
+							name = L["Sum Parry Chance"],
+							desc = L["Parry Chance <- Parry Rating, Defense Rating"],
+							order = 8,
+						},
+						sumParryRating = {
+							type = 'toggle',
+							name = L["Sum Parry Rating"],
+							desc = L["Parry Rating Summary"],
+							order = 9,
 						},
 						sumHitAvoid = {
 							type = 'toggle',
 							name = L["Sum Hit Avoidance"],
 							desc = L["Hit Avoidance <- Defense Rating"],
+							order = 10,
+						},
+						sumArmor = {
+							type = 'toggle',
+							name = L["Sum Armor"],
+							desc = L["Armor <- Armor from items, Armor from bonuses, Agility, Intellect"],
+							order = 11,
+						},
+						sumDefense = {
+							type = 'toggle',
+							name = L["Sum Defense"],
+							desc = L["Defense <- Defense Rating"],
+							order = 12,
 						},
 						sumCritAvoid = {
 							type = 'toggle',
 							name = L["Sum Crit Avoidance"],
 							desc = L["Crit Avoidance <- Defense Rating, Resilience"],
+							order = 13,
 						},
 						sumResilience = {
 							type = 'toggle',
 							name = L["Sum Resilience"],
 							desc = L["Resilience Summary"],
+							order = 14,
 						},
 						sumArcaneResist = {
 							type = 'toggle',
 							name = L["Sum Arcane Resistance"],
 							desc = L["Arcane Resistance Summary"],
+							order = 15,
 						},
 						sumFireResist = {
 							type = 'toggle',
 							name = L["Sum Fire Resistance"],
 							desc = L["Fire Resistance Summary"],
+							order = 16,
 						},
 						sumNatureResist = {
 							type = 'toggle',
 							name = L["Sum Nature Resistance"],
 							desc = L["Nature Resistance Summary"],
+							order = 17,
 						},
 						sumFrostResist = {
 							type = 'toggle',
 							name = L["Sum Frost Resistance"],
 							desc = L["Frost Resistance Summary"],
+							order = 18,
 						},
 						sumShadowResist = {
 							type = 'toggle',
 							name = L["Sum Shadow Resistance"],
 							desc = L["Shadow Resistance Summary"],
-						},
-						sumAvoidance = {
-							type = 'toggle',
-							name = L["Sum Avoidance"],
-							desc = L["Avoidance <- Dodge, Parry, MobMiss, Block(Optional)"],
+							order = 19,
 						},
 					},
 				},
@@ -1102,6 +977,272 @@ if TankPoints and (tonumber(strsub(TankPoints.version, 1, 3)) >= 2.6) then
 	--]]
 end
 
+---------------------
+-- Saved Variables --
+---------------------
+-- Default values
+local defaults = {
+	global = {
+		showItemLevel = false,
+		showItemID = false,
+		useRequiredLevel = true,
+		customLevel = 0,
+		textColor = {r = 1.0, g = 0.996,  b = 0.545, hex = "|cfffffe8b"},
+		enableTextColor = true,
+		showSum = true,
+		sumIgnoreUnused = true,
+		sumIgnoreEquipped = false,
+		sumIgnoreEnchant = true,
+		sumIgnoreGems = false,
+		sumBlankLine = true,
+		sumBlankLineAfter = false,
+		sumShowIcon = true,
+		sumShowTitle = true,
+		sumDiffStyle = "main",
+		sumSortAlpha = false,
+		calcDiff = true,
+		calcSum = true,
+	},
+	profile = {
+		enableStatMods = true,
+		enableAvoidanceDiminishingReturns = StatLogic.GetAvoidanceAfterDR and true or false,
+		showRatings = true,
+		detailedConversionText = false,
+		defBreakDown = false,
+		wpnBreakDown = false,
+		expBreakDown = false,
+		showStats = true,
+		sumAvoidWithBlock = false,
+		showZeroValueStat = false,
+		--[[
+		Str -> AP, Block
+		Agi -> Crit, Dodge, AP, RAP, Armor
+		Sta -> Health
+		Int -> Mana, SpellCrit, MP5NC
+		Spi -> MP5NC, HP5
+		--]]
+		-- Base stat conversions
+		showAPFromStr = false,
+		showBlockValueFromStr = false,
+
+		showCritFromAgi = true,
+		showDodgeFromAgi = true,
+		showAPFromAgi = false,
+		showRAPFromAgi = false,
+		showArmorFromAgi = false,
+
+		showHealthFromSta = false,
+
+		showManaFromInt = false,
+		showSpellCritFromInt = true,
+		showMP5NCFromInt = false,
+
+		showMP5NCFromSpi = false,
+		showHP5FromSpi = false,
+		------------------
+		-- Stat Summary --
+		------------------
+		-- Basic
+		sumHP = true,
+		sumMP = true,
+		sumMP5 = true,
+		sumMP5NC = false,
+		sumHP5 = false,
+		sumHP5OC = false,
+		sumStr = false,
+		sumAgi = false,
+		sumSta = false,
+		sumInt = false,
+		sumSpi = false,
+		-- Physical
+		sumAP = false,
+		sumRAP = false,
+		sumFAP = false,
+		sumHit = false,
+		sumHitRating = false, -- new
+		sumCrit = false,
+		sumCritRating = false, -- new
+		sumHaste = false, -- new
+		sumHasteRating = false, -- new
+		sumExpertise = false,
+		sumWeaponSkill = false,
+		sumDodgeNeglect = false,
+		sumParryNeglect = false,
+		sumBlockNeglect = false,
+		sumWeaponMaxDamage = false,
+		sumWeaponDPS = false,
+		sumIgnoreArmor = false, -- new
+		-- Spell
+		sumSpellDmg = false,
+		sumArcaneDmg = false,
+		sumFrostDmg = false,
+		sumNatureDmg = false,
+		sumFireDmg = false,
+		sumShadowDmg = false,
+		sumHolyDmg = false,
+		sumHealing = false,
+		sumSpellHit = false,
+		sumSpellHitRating = false, -- new
+		sumSpellCrit = false,
+		sumSpellCritRating = false, -- new
+		sumSpellHaste = false, -- new
+		sumSpellHasteRating = false, -- new
+		sumPenetration = false, -- new
+		-- Tank
+		sumArmor = false,
+		sumDodge = false,
+		sumDodgeRating = false, -- new
+		sumParry = false,
+		sumParryRating = false, -- new
+		sumBlock = false,
+		sumBlockRating = false, -- new
+		sumBlockValue = false,
+		sumHitAvoid = false,
+		sumCritAvoid = false,
+		sumArcaneResist = false,
+		sumFrostResist = false,
+		sumNatureResist = false,
+		sumFireResist = false,
+		sumShadowResist = false,
+		sumResilience = true, -- new
+		sumDefense = false,
+		sumTankPoints = false,
+		sumTotalReduction = false,
+		sumAvoidance = false,
+		-- Gems
+		sumGemRed = {
+			itemID = nil,
+			gemID = nil,
+			gemText = nil,
+		};
+		sumGemYellow = {
+			itemID = nil,
+			gemID = nil,
+			gemText = nil,
+		};
+		sumGemBlue = {
+			itemID = nil,
+			gemID = nil,
+			gemText = nil,
+		};
+		sumGemMeta = {
+			itemID = nil,
+			gemID = nil,
+			gemText = nil,
+		};
+	}
+}
+
+-- Class specific settings
+if class == "DEATHKNIGHT" then
+	defaults.profile.sumAvoidance = true
+	defaults.profile.sumArmor = true
+	defaults.profile.sumMP = false
+	defaults.profile.sumMP5 = false
+	defaults.profile.sumAP = true
+	defaults.profile.sumHit = true
+	defaults.profile.sumCrit = true
+	defaults.profile.sumHaste = true
+	defaults.profile.sumExpertise = true
+	defaults.profile.showSpellCritFromInt = false
+	defaults.profile.ratingPhysical = true
+elseif class == "DRUID" then
+	defaults.profile.sumFAP = true
+	defaults.profile.sumHit = true
+	defaults.profile.sumCrit = true
+	defaults.profile.sumHaste = true
+	defaults.profile.sumExpertise = true
+	defaults.profile.sumAvoidance = true
+	defaults.profile.sumArmor = true
+	defaults.profile.sumSpellDmg = true
+	defaults.profile.sumSpellHit = true
+	defaults.profile.sumSpellCrit = true
+	defaults.profile.sumSpellHaste = true
+	defaults.profile.sumHealing = true
+	defaults.profile.ratingPhysical = true
+	defaults.profile.ratingSpell = true
+elseif class == "HUNTER" then
+	defaults.profile.sumRAP = true
+	defaults.profile.sumHit = true
+	defaults.profile.sumCrit = true
+	defaults.profile.sumHaste = true
+	defaults.profile.showMP5FromInt = true -- Aspect of the Viper
+	defaults.profile.showDodgeFromAgi = false
+	defaults.profile.showSpellCritFromInt = false
+	defaults.profile.showRAPFromInt = true
+	defaults.profile.ratingPhysical = true
+elseif class == "MAGE" then
+	defaults.profile.sumSpellDmg = true
+	defaults.profile.sumSpellHit = true
+	defaults.profile.sumSpellCrit = true
+	defaults.profile.sumSpellHaste = true
+	defaults.profile.showCritFromAgi = false
+	defaults.profile.showDodgeFromAgi = false
+	defaults.profile.ratingSpell = true
+elseif class == "PALADIN" then
+	defaults.profile.sumAvoidance = true
+	defaults.profile.sumArmor = true
+	defaults.profile.sumHit = true
+	defaults.profile.sumCrit = true
+	defaults.profile.sumHaste = true
+	defaults.profile.sumExpertise = true
+	defaults.profile.sumHolyDmg = true
+	defaults.profile.sumSpellHit = true
+	defaults.profile.sumSpellCrit = true
+	defaults.profile.sumSpellHaste = true
+	defaults.profile.sumHealing = true
+	defaults.profile.ratingPhysical = true
+	defaults.profile.ratingSpell = true
+elseif class == "PRIEST" then
+	defaults.profile.sumSpellDmg = true
+	defaults.profile.sumSpellHit = true
+	defaults.profile.sumSpellCrit = true
+	defaults.profile.sumSpellHaste = true
+	defaults.profile.sumHealing = true
+	defaults.profile.showCritFromAgi = false
+	defaults.profile.showDodgeFromAgi = false
+	defaults.profile.ratingSpell = true
+elseif class == "ROGUE" then
+	defaults.profile.sumMP = false
+	defaults.profile.sumMP5 = false
+	defaults.profile.sumAP = true
+	defaults.profile.sumHit = true
+	defaults.profile.sumCrit = true
+	defaults.profile.sumHaste = true
+	defaults.profile.sumExpertise = true
+	defaults.profile.showSpellCritFromInt = false
+	defaults.profile.ratingPhysical = true
+elseif class == "SHAMAN" then
+	defaults.profile.sumSpellDmg = true
+	defaults.profile.sumSpellHit = true
+	defaults.profile.sumSpellCrit = true
+	defaults.profile.sumSpellHaste = true
+	defaults.profile.sumHealing = true
+	defaults.profile.ratingPhysical = true
+	defaults.profile.ratingSpell = true
+elseif class == "WARLOCK" then
+	defaults.profile.sumSpellDmg = true
+	defaults.profile.sumSpellHit = true
+	defaults.profile.sumSpellCrit = true
+	defaults.profile.sumSpellHaste = true
+	defaults.profile.showCritFromAgi = false
+	defaults.profile.showDodgeFromAgi = false
+	defaults.profile.ratingSpell = true
+elseif class == "WARRIOR" then
+	defaults.profile.sumAvoidance = true
+	defaults.profile.sumArmor = true
+	defaults.profile.sumMP = false
+	defaults.profile.sumMP5 = false
+	defaults.profile.sumAP = true
+	defaults.profile.sumHit = true
+	defaults.profile.sumCrit = true
+	defaults.profile.sumHaste = true
+	defaults.profile.sumExpertise = true
+	defaults.profile.showSpellCritFromInt = false
+	defaults.profile.ratingPhysical = true
+end
+
+-- Generate options from expansion-specific StatModTables in StatLogic
 do
 	-- Mostly for backwards compatibility
 	local statToOptionKey = setmetatable({
@@ -1121,6 +1262,7 @@ do
 	local addStatModOption = function(add, mod, sources)
 		-- ADD_HEALING_MOD_INT -> showHealingFromInt
 		local key = "show" .. statToOptionKey[add] .. "From" .. statToOptionKey[mod]
+		defaults.profile[key] = true
 
 		local option = options.args.stat.args[mod:lower()].args[key]
 		if not option then
@@ -1187,150 +1329,19 @@ do
 				addStatModOption(add, mod, sources)
 			end
 		end
+
+		RatingBuster.db = LibStub("AceDB-3.0"):New("RatingBusterDB", defaults, class)
+		RatingBuster.db.RegisterCallback(RatingBuster, "OnProfileChanged", "RefreshConfig")
+		RatingBuster.db.RegisterCallback(RatingBuster, "OnProfileCopied", "RefreshConfig")
+		RatingBuster.db.RegisterCallback(RatingBuster, "OnProfileReset", "RefreshConfig")
+		profileDB = RatingBuster.db.profile
+		globalDB = RatingBuster.db.global
+
+		options.args.profiles = LibStub("AceDBOptions-3.0"):GetOptionsTable(RatingBuster.db)
+		options.args.profiles.order = 4
+
 		f:UnregisterEvent("SPELLS_CHANGED")
 	end)
-end
-
--- Class specific settings
-if class == "DRUID" then
-	defaults.profile.sumHP = true
-	defaults.profile.sumMP = true
-	defaults.profile.sumFAP = true
-	defaults.profile.sumHit = true
-	defaults.profile.sumCrit = true
-	defaults.profile.sumHaste = true
-	defaults.profile.sumExpertise = true
-	defaults.profile.sumDodge = true
-	defaults.profile.sumArmor = true
-	defaults.profile.sumResilience = true
-	defaults.profile.sumSpellDmg = true
-	defaults.profile.sumSpellHit = true
-	defaults.profile.sumSpellCrit = true
-	defaults.profile.sumSpellHaste = true
-	defaults.profile.sumHealing = true
-	defaults.profile.sumMP5 = true
-	defaults.profile.showHealingFromAgi = true
-	defaults.profile.showSpellDmgFromInt = true
-	defaults.profile.showHealingFromInt = true
-	defaults.profile.showMP5FromInt = true -- Dreamstate (Rank 3) - 1,17
-	defaults.profile.showMP5FromSpi = true
-	defaults.profile.ratingPhysical = true
-	defaults.profile.ratingSpell = true
-elseif class == "HUNTER" then
-	defaults.profile.sumHP = true
-	defaults.profile.sumMP = true
-	defaults.profile.sumResilience = true
-	defaults.profile.sumRAP = true
-	defaults.profile.sumHit = true
-	defaults.profile.sumCrit = true
-	defaults.profile.sumHaste = true
-	defaults.profile.sumMP5 = true
-	defaults.profile.showMP5FromInt = true -- Aspect of the Viper
-	defaults.profile.showDodgeFromAgi = false
-	defaults.profile.showSpellCritFromInt = false
-	defaults.profile.showRAPFromInt = true
-	defaults.profile.ratingPhysical = true
-elseif class == "MAGE" then
-	defaults.profile.sumHP = true
-	defaults.profile.sumMP = true
-	defaults.profile.sumResilience = true
-	defaults.profile.sumSpellDmg = true
-	defaults.profile.sumSpellHit = true
-	defaults.profile.sumSpellCrit = true
-	defaults.profile.sumSpellHaste = true
-	defaults.profile.sumMP5 = true
-	defaults.profile.showCritFromAgi = false
-	defaults.profile.showDodgeFromAgi = false
-	defaults.profile.showSpellDmgFromInt = true
-	defaults.profile.showArmorFromInt = true
-	defaults.profile.showMP5FromInt = true
-	defaults.profile.showMP5FromSpi = true
-	defaults.profile.ratingSpell = true
-elseif class == "PALADIN" then
-	defaults.profile.sumHP = true
-	defaults.profile.sumMP = true
-	defaults.profile.sumResilience = true
-	defaults.profile.sumHit = true
-	defaults.profile.sumCrit = true
-	defaults.profile.sumHaste = true
-	defaults.profile.sumExpertise = true
-	defaults.profile.sumHolyDmg = true
-	defaults.profile.sumSpellHit = true
-	defaults.profile.sumSpellCrit = true
-	defaults.profile.sumSpellHaste = true
-	defaults.profile.sumHealing = true
-	defaults.profile.sumMP5 = true
-	defaults.profile.showSpellDmgFromInt = true
-	defaults.profile.showHealingFromInt = true
-	defaults.profile.ratingPhysical = true
-	defaults.profile.ratingSpell = true
-elseif class == "PRIEST" then
-	defaults.profile.sumHP = true
-	defaults.profile.sumMP = true
-	defaults.profile.sumResilience = true
-	defaults.profile.sumSpellDmg = true
-	defaults.profile.sumSpellHit = true
-	defaults.profile.sumSpellCrit = true
-	defaults.profile.sumSpellHaste = true
-	defaults.profile.sumHealing = true
-	defaults.profile.sumMP5 = true
-	defaults.profile.showCritFromAgi = false
-	defaults.profile.showDodgeFromAgi = false
-	defaults.profile.showMP5FromInt = true
-	defaults.profile.showMP5FromSpi = true
-	defaults.profile.showSpellDmgFromSpi = true
-	defaults.profile.showHealingFromSpi = true
-	defaults.profile.ratingSpell = true
-elseif class == "ROGUE" then
-	defaults.profile.sumHP = true
-	defaults.profile.sumResilience = true
-	defaults.profile.sumAP = true
-	defaults.profile.sumHit = true
-	defaults.profile.sumCrit = true
-	defaults.profile.sumHaste = true
-	defaults.profile.sumExpertise = true
-	defaults.profile.showSpellCritFromInt = false
-	defaults.profile.ratingPhysical = true
-elseif class == "SHAMAN" then
-	defaults.profile.sumHP = true
-	defaults.profile.sumMP = true
-	defaults.profile.sumResilience = true
-	defaults.profile.sumSpellDmg = true
-	defaults.profile.sumSpellHit = true
-	defaults.profile.sumSpellCrit = true
-	defaults.profile.sumSpellHaste = true
-	defaults.profile.sumHealing = true
-	defaults.profile.sumMP5 = true
-	defaults.profile.showSpellDmgFromStr = true
-	defaults.profile.showHealingFromStr = true
-	defaults.profile.showSpellDmgFromInt = true
-	defaults.profile.showHealingFromInt = true
-	defaults.profile.showMP5FromInt = true
-	defaults.profile.ratingPhysical = true
-	defaults.profile.ratingSpell = true
-elseif class == "WARLOCK" then
-	defaults.profile.sumHP = true
-	defaults.profile.sumMP = true
-	defaults.profile.sumResilience = true
-	defaults.profile.sumSpellDmg = true
-	defaults.profile.sumSpellHit = true
-	defaults.profile.sumSpellCrit = true
-	defaults.profile.sumSpellHaste = true
-	defaults.profile.showCritFromAgi = false
-	defaults.profile.showDodgeFromAgi = false
-	defaults.profile.showSpellDmgFromSta = true
-	defaults.profile.showSpellDmgFromInt = true
-	defaults.profile.ratingSpell = true
-elseif class == "WARRIOR" then
-	defaults.profile.sumHP = true
-	defaults.profile.sumResilience = true
-	defaults.profile.sumAP = true
-	defaults.profile.sumHit = true
-	defaults.profile.sumCrit = true
-	defaults.profile.sumHaste = true
-	defaults.profile.sumExpertise = true
-	defaults.profile.showSpellCritFromInt = false
-	defaults.profile.ratingPhysical = true
 end
 
 -----------
@@ -1377,14 +1388,6 @@ function RatingBuster:RefreshConfig()
 end
 
 function RatingBuster:OnInitialize()
-	self.db = LibStub("AceDB-3.0"):New("RatingBusterDB", defaults, "profile")
-	self.db.RegisterCallback(self, "OnProfileChanged", "RefreshConfig")
-	self.db.RegisterCallback(self, "OnProfileCopied", "RefreshConfig")
-	self.db.RegisterCallback(self, "OnProfileReset", "RefreshConfig")
-	profileDB = self.db.profile
-
-	options.args.profiles = LibStub("AceDBOptions-3.0"):GetOptionsTable(self.db)
-
 	LibStub("AceConfig-3.0"):RegisterOptionsTable("RatingBuster", options)
 	LibStub("AceConfigDialog-3.0"):AddToBlizOptions("RatingBuster", "RatingBuster")
 end
@@ -1489,11 +1492,11 @@ function RatingBuster.ProcessTooltip(tooltip, name, link)
 	---------------------------
 	-- Set calculation level --
 	---------------------------
-	calcLevel = profileDB.customLevel or 0
+	calcLevel = globalDB.customLevel or 0
 	if calcLevel == 0 then
 		calcLevel = playerLevel
 	end
-	if profileDB.useRequiredLevel and link then
+	if globalDB.useRequiredLevel and link then
 		local _, _, _, _, reqLevel = GetItemInfo(link)
 		--RatingBuster:Print(link..", "..calcLevel)
 		if reqLevel and calcLevel < reqLevel then
@@ -1509,7 +1512,7 @@ function RatingBuster.ProcessTooltip(tooltip, name, link)
 		local yellow = profileDB.sumGemYellow.gemID
 		local blue = profileDB.sumGemBlue.gemID
 		local meta = profileDB.sumGemMeta.gemID
-		local _, mainlink, difflink1, difflink2 = StatLogic:GetDiffID(tooltip, profileDB.sumIgnoreEnchant, profileDB.sumIgnoreGems, red, yellow, blue, meta, profileDB.sumIgnorePris)
+		local _, mainlink, difflink1, difflink2 = StatLogic:GetDiffID(tooltip, globalDB.sumIgnoreEnchant, globalDB.sumIgnoreGems, red, yellow, blue, meta, profileDB.sumIgnorePris)
 		StatLogic:GetSum(difflink1, equippedSum)
 		equippedSum["STR"] = equippedSum["STR"] * GSM("MOD_STR")
 		equippedSum["AGI"] = equippedSum["AGI"] * GSM("MOD_AGI")
@@ -1564,7 +1567,7 @@ function RatingBuster.ProcessTooltip(tooltip, name, link)
 	-- Item Level and Item ID --
 	----------------------------
 	-- Check for ItemLevel addon, do nothing if found
-	if not ItemLevel_AddInfo and (profileDB.showItemLevel or profileDB.showItemID) and link then
+	if not ItemLevel_AddInfo and (globalDB.showItemLevel or globalDB.showItemID) and link then
 		if cache[link] then
 			tooltip:AddLine(cache[link])
 		else
@@ -1573,10 +1576,10 @@ function RatingBuster.ProcessTooltip(tooltip, name, link)
 			if link then
 				local _, _, id = strfind(link, "item:(%d+)")
 				local newLine = ""
-				if level and profileDB.showItemLevel then
+				if level and globalDB.showItemLevel then
 					newLine = newLine..L["ItemLevel: "]..level
 				end
-				if id and profileDB.showItemID then
+				if id and globalDB.showItemID then
 					if newLine ~= "" then
 						newLine = newLine..", "
 					end
@@ -1639,7 +1642,7 @@ function RatingBuster.ProcessTooltip(tooltip, name, link)
 	-- Weapon Skill - WEAPON_RATING
 	-- Expertise - EXPERTISE_RATING
 	--]]
-	if profileDB.showSum then
+	if globalDB.showSum then
 		RatingBuster:StatSummary(tooltip, name, link)
 	end
 	---------------------
@@ -2137,8 +2140,8 @@ function RatingBuster:ProcessText(text, link)
 						-- Add parenthesis
 						infoString = "("..infoString..")"
 						-- Add Color
-						if profileDB.enableTextColor then
-							infoString = profileDB.textColor.hex..infoString..currentColorCode
+						if globalDB.enableTextColor then
+							infoString = globalDB.textColor.hex..infoString..currentColorCode
 						end
 						-- Build replacement string
 						if num.addInfo == "AfterNumber" then -- Add after number
@@ -3133,10 +3136,10 @@ end
 
 function RatingBuster:StatSummary(tooltip, name, link)
 	-- Hide stat summary for equipped items
-	if profileDB.sumIgnoreEquipped and IsEquippedItem(link) then return end
+	if globalDB.sumIgnoreEquipped and IsEquippedItem(link) then return end
 	
 	-- Show stat summary only for highest level armor type and items you can use with uncommon quality and up
-	if profileDB.sumIgnoreUnused then
+	if globalDB.sumIgnoreUnused then
 		local _, _, itemRarity, _, _, _, _, _, itemEquipLoc, _, _, _, subclassID = GetItemInfo(link)
 		
 		-- Check rarity
@@ -3175,10 +3178,10 @@ function RatingBuster:StatSummary(tooltip, name, link)
 	local blue = profileDB.sumGemBlue.gemID
 	local meta = profileDB.sumGemMeta.gemID
 	
-	if profileDB.sumIgnoreEnchant then
+	if globalDB.sumIgnoreEnchant then
 		link = StatLogic:RemoveEnchant(link)
 	end
-	if profileDB.sumIgnoreGems then
+	if globalDB.sumIgnoreGems then
 		link = StatLogic:RemoveGem(link)
 	else
 		link = StatLogic:BuildGemmedTooltip(link, red, yellow, blue, meta)
@@ -3192,7 +3195,7 @@ function RatingBuster:StatSummary(tooltip, name, link)
 	local tooltipLevel = 0
 	local mainTooltip = tooltip
 	-- Determine tooltipLevel and id
-	if profileDB.calcDiff and (profileDB.sumDiffStyle == "comp") then
+	if globalDB.calcDiff and (globalDB.sumDiffStyle == "comp") then
 		-- Obtain main tooltip
 		for _, t in pairs(TipHooker.SupportedTooltips) do
 			if mainTooltip:IsOwned(t) then
@@ -3207,7 +3210,7 @@ function RatingBuster:StatSummary(tooltip, name, link)
 			end
 		end
 		-- Detemine tooltip level
-		local _, mainlink, difflink1, difflink2 = StatLogic:GetDiffID(mainTooltip, profileDB.sumIgnoreEnchant, profileDB.sumIgnoreGems, red, yellow, blue, meta)
+		local _, mainlink, difflink1, difflink2 = StatLogic:GetDiffID(mainTooltip, globalDB.sumIgnoreEnchant, globalDB.sumIgnoreGems, red, yellow, blue, meta)
 		if link == mainlink then
 			tooltipLevel = 0
 		elseif link == difflink1 then
@@ -3222,7 +3225,7 @@ function RatingBuster:StatSummary(tooltip, name, link)
 			id = "sum"..link
 		end
 	else
-		id = StatLogic:GetDiffID(link, profileDB.sumIgnoreEnchant, profileDB.sumIgnoreGems, red, yellow, blue, meta)
+		id = StatLogic:GetDiffID(link, globalDB.sumIgnoreEnchant, globalDB.sumIgnoreGems, red, yellow, blue, meta)
 	end
 
 	local numLines = tooltip:NumLines()
@@ -3231,19 +3234,19 @@ function RatingBuster:StatSummary(tooltip, name, link)
 	if cache[id] and cache[id].numLines == numLines then
 		if table.maxn(cache[id]) == 0 then return end
 		-- Write Tooltip
-		if profileDB.sumBlankLine then
+		if globalDB.sumBlankLine then
 			tooltip:AddLine(" ")
 		end
-		if profileDB.sumShowTitle then
+		if globalDB.sumShowTitle then
 			tooltip:AddLine(HIGHLIGHT_FONT_COLOR_CODE..L["Stat Summary"]..FONT_COLOR_CODE_CLOSE)
-			if profileDB.sumShowIcon then
+			if globalDB.sumShowIcon then
 				tooltip:AddTexture("Interface\\AddOns\\RatingBuster\\images\\Sigma")
 			end
 		end
 		for _, o in ipairs(cache[id]) do
 			tooltip:AddDoubleLine(o[1], o[2])
 		end
-		if profileDB.sumBlankLineAfter then
+		if globalDB.sumBlankLineAfter then
 			tooltip:AddLine(" ")
 		end
 		return
@@ -3254,7 +3257,7 @@ function RatingBuster:StatSummary(tooltip, name, link)
 	local statData = {}
 	statData.sum = StatLogic:GetSum(link)
 	if not statData.sum then return end
-	if not profileDB.calcSum then
+	if not globalDB.calcSum then
 		statData.sum = nil
 	end
 	
@@ -3262,13 +3265,13 @@ function RatingBuster:StatSummary(tooltip, name, link)
 	if not StatLogic:GetDiff(link) then return end
 	
 	-- Get Diff Data
-	if profileDB.calcDiff then
-		if profileDB.sumDiffStyle == "comp" then
+	if globalDB.calcDiff then
+		if globalDB.sumDiffStyle == "comp" then
 			if tooltipLevel > 0 then
-				statData.diff1 = select(tooltipLevel, StatLogic:GetDiff(mainTooltip, nil, nil, profileDB.sumIgnoreEnchant, profileDB.sumIgnoreGems, red, yellow, blue, meta))
+				statData.diff1 = select(tooltipLevel, StatLogic:GetDiff(mainTooltip, nil, nil, globalDB.sumIgnoreEnchant, globalDB.sumIgnoreGems, red, yellow, blue, meta))
 			end
 		else
-			statData.diff1, statData.diff2 = StatLogic:GetDiff(link, nil, nil, profileDB.sumIgnoreEnchant, profileDB.sumIgnoreGems, red, yellow, blue, meta)
+			statData.diff1, statData.diff2 = StatLogic:GetDiff(link, nil, nil, globalDB.sumIgnoreEnchant, globalDB.sumIgnoreGems, red, yellow, blue, meta)
 		end
 	end
 	-- Apply Base Stat Mods
@@ -3331,8 +3334,8 @@ function RatingBuster:StatSummary(tooltip, name, link)
 		end
 	end
 	
-	local calcSum = profileDB.calcSum
-	local calcDiff = profileDB.calcDiff
+	local calcSum = globalDB.calcSum
+	local calcDiff = globalDB.calcDiff
 	-- Weapon Skill - WEAPON_RATING
 	if profileDB.sumWeaponSkill then
 		local weapon = {}
@@ -3513,7 +3516,7 @@ function RatingBuster:StatSummary(tooltip, name, link)
 		end
 	end
 	-- sort alphabetically if option enabled
-	if profileDB.sumSortAlpha then
+	if globalDB.sumSortAlpha then
 		tsort(output, sumSortAlphaComp)
 	end
 	-- Write cache
@@ -3521,19 +3524,19 @@ function RatingBuster:StatSummary(tooltip, name, link)
 	if table.maxn(output) == 0 then return end
 	-------------------
 	-- Write Tooltip --
-	if profileDB.sumBlankLine then
+	if globalDB.sumBlankLine then
 		tooltip:AddLine(" ")
 	end
-	if profileDB.sumShowTitle then
+	if globalDB.sumShowTitle then
 		tooltip:AddLine(HIGHLIGHT_FONT_COLOR_CODE..L["Stat Summary"]..FONT_COLOR_CODE_CLOSE)
-		if profileDB.sumShowIcon then
+		if globalDB.sumShowIcon then
 			tooltip:AddTexture("Interface\\AddOns\\RatingBuster\\images\\Sigma")
 		end
 	end
 	for _, o in ipairs(output) do
 		tooltip:AddDoubleLine(o[1], o[2])
 	end
-	if profileDB.sumBlankLineAfter then
+	if globalDB.sumBlankLineAfter then
 		tooltip:AddLine(" ")
 	end
 end
