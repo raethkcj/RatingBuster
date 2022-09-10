@@ -7,4 +7,5 @@
 	<Script file="zhCN.lua"/>
 	<Script file="zhTW.lua"/>
 	<Script file="esES.lua"/>
+	<Script file="ruRU.lua"/>
 </Ui>
