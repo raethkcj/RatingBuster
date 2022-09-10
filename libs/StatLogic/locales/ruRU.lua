@@ -212,8 +212,8 @@ L["PreScanPatterns"] = {
 -- DeepScan --
 --------------
 -- Strip leading "Equip: ", "Socket Bonus: "
-L["Equip: "] = "Equip: " -- ITEM_SPELL_TRIGGER_ONEQUIP = "Equip:";
-L["Socket Bonus: "] = "Socket Bonus: " -- ITEM_SOCKET_BONUS = "Socket Bonus: %s"; -- Tooltip tag for socketed item matched socket bonuses
+L["Equip: "] = "Если на персонаже: " -- ITEM_SPELL_TRIGGER_ONEQUIP = "Equip:";
+L["Socket Bonus: "] = "При соответствии цвета: " -- ITEM_SOCKET_BONUS = "Socket Bonus: %s"; -- Tooltip tag for socketed item matched socket bonuses
 -- Strip trailing "."
 L["."] = "."
 L["DeepScanSeparators"] = {
@@ -223,7 +223,7 @@ L["DeepScanSeparators"] = {
 	"%. ", -- "Equip: Increases attack power by 81 when fighting Undead. It also allows the acquisition of Scourgestones on behalf of the Argent Dawn.": Seal of the Dawn
 }
 L["DeepScanWordSeparators"] = {
-	" and ", -- "Critical Rating +6 and Dodge Rating +5": Assassin's Fire Opal ID:30565
+	" и ", -- "Critical Rating +6 and Dodge Rating +5": Assassin's Fire Opal ID:30565
 }
 L["DualStatPatterns"] = { 
 	-- all lower case
@@ -232,7 +232,7 @@ L["DualStatPatterns"] = {
 	["^increases healing done by up to (%d+) and damage done by up to (%d+) for all magical spells and effects$"] = {{"HEAL",}, {"SPELL_DMG",},},
 }
 L["DeepScanPatterns"] = {
-	"^(.-) by u?p? ?t?o? ?(%d+) ?(.-)$", -- "xxx by up to 22 xxx" (scan first)
+	"^(.-) на ?(%d+) ?(.-)$", -- "xxx by up to 22 xxx" (scan first)
 	"^(.-) ?([%+%-]%d+) ?(.-)$", -- "xxx xxx +22" or "+22 xxx xxx" or "xxx +22 xxx" (scan 2ed)
 	"^(.-) ?([%d%.]+) ?(.-)$", -- 22.22 xxx xxx (scan last)
 }
