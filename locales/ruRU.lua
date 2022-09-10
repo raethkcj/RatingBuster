@@ -627,8 +627,8 @@ L["ItemID: "] = "ID предмета: "
 --
 -- Tip2: The strings are passed into string.find, so you should escape the magic characters ^$()%.[]*+-? with a %
 L["numberPatterns"] = {
-	{pattern = " на (%d+)[^%%]?$", addInfo = "AfterNumber", space = " ", },
-	{pattern = "([%+%-]%d+)", addInfo = "AfterNumber", space = " ", },
+	{pattern = " на (%d+)%f[^%d%%]", addInfo = "AfterNumber", space = " ", },
+	{pattern = "([%+%-]%d+)%f[^%d%%] к", addInfo = "AfterStat",},
 	{pattern = " увеличена на (%d+)", addInfo = "AfterNumber", space = " ", },
 	{pattern = "(%d+) к ", addInfo = "AfterNumber", space = " ", }, -- тест
 	{pattern = "увеличение (%d+)", addInfo = "AfterNumber", space = " ", }, -- for "grant you xx stat" type pattern, ex: Quel'Serrar, Assassination Armor set
