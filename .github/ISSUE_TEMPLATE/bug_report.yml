@@ -1,0 +1,107 @@
+name: Bug Report
+description: File a bug report
+title: "[Bug]: "
+labels: ["bug"]
+body:
+  - type: textarea
+    id: description
+    attributes:
+      label: Describe the bug
+      placeholder: A clear and concise description of what the bug is.
+    validations:
+      required: true
+  - type: dropdown
+    id: source
+    attributes:
+      label: Addon Source
+      description: Where did you download the addon?
+      options:
+        - WoWInterface
+        - Wago Addons
+        - WowUp
+        - GitHub Releases
+        - Curseforge
+    validations:
+      required: true
+  - type: input
+    id: version
+    attributes:
+      label: Version
+      description: What version of the addon do you have installed?
+      placeholder: 1.0.0
+    validations:
+      required: true
+  - type: dropdown
+    id: locale
+    attributes:
+      label: Locale
+      description: What locale (language) do you play WoW in?
+      options:
+        - English
+        - Chinese (China)
+        - Chinese (Taiwan)
+        - French
+        - German
+        - Korean
+        - Russian
+        - Spanish
+    validations:
+      required: true
+  - type: dropdown
+    id: specialization
+    attributes:
+      label: Talent Specialization
+      description: What is your character's talent specialization?
+      multiple: true
+      options:
+        - Blood Death Knight
+        - Frost Death Knight
+        - Unholy Death Knight
+        - Balance Druid
+        - Feral Druid
+        - Restoration Druid
+        - Beast Mastery Hunter
+        - Marksmanship Hunter
+        - Survival Hunter
+        - Arcane Mage
+        - Fire Mage
+        - Frost Mage
+        - Holy Paladin
+        - Protection Paladin
+        - Retribution Paladin
+        - Discipline Priest
+        - Holy Priest
+        - Shadow Priest
+        - Assassination Rogue
+        - Combat Rogue
+        - Subtlety Rogue
+        - Elemental Shaman
+        - Enhancement Shaman
+        - Restoration Shaman
+        - Affliction Warlock
+        - Demonology Warlock
+        - Destruction Warlock
+        - Arms Warrior
+        - Fury Warrior
+        - Protection Warrior
+    validations:
+      required: true
+  - type: dropdown
+    id: race
+    attributes:
+      label: Race
+      description: What is your character's race?
+      multiple: true
+      options:
+        - Draenei
+        - Dwarf
+        - Gnome
+        - Human
+        - Night Elf
+        - Blood Elf
+        - Orc
+        - Tauren
+        - Troll
+        - Undead
+    validations:
+      required: true
