@@ -23,7 +23,13 @@ local L = LibStub("AceLocale-3.0"):GetLocale("RatingBuster")
 -- AceAddon Initialization
 RatingBuster = LibStub("AceAddon-3.0"):NewAddon("RatingBuster", "AceConsole-3.0", "AceEvent-3.0", "AceBucket-3.0")
 RatingBuster.title = "Rating Buster"
-RatingBuster.version = "1.3.8 (r"..gsub("$Revision: 78903 $", "(%d+)", "%1")..")"
+--[===[@non-debug@
+RatingBuster.version = "@project-version@"
+--@end-non-debug@]===]
+--@debug@
+RatingBuster.version = "(development)"
+--@end-debug@
+addonNameWithVersion = string.format("%s %s", addonName, RatingBuster.version)
 RatingBuster.date = gsub("$Date: 2008-07-22 15:35:19 +0800 (星期二, 22 七月 2008) $", "^.-(%d%d%d%d%-%d%d%-%d%d).-$", "%1")
 
 -----------
@@ -146,7 +152,7 @@ local options = {
 			name = L["Help"],
 			desc = L["Show this help message"],
 			func = function()
-				LibStub("AceConfigCmd-3.0").HandleCommand("RatingBuster", "rb", "RatingBuster", "")
+				LibStub("AceConfigCmd-3.0").HandleCommand(RatingBuster, "rb", addonNameWithVersion, "")
 			end
 		},
 		enableStatMods = {
@@ -1388,20 +1394,20 @@ function RatingBuster:RefreshConfig()
 end
 
 function RatingBuster:OnInitialize()
-	LibStub("AceConfig-3.0"):RegisterOptionsTable("RatingBuster", options)
-	LibStub("AceConfigDialog-3.0"):AddToBlizOptions("RatingBuster", "RatingBuster")
+	LibStub("AceConfig-3.0"):RegisterOptionsTable(addonNameWithVersion, options)
+	LibStub("AceConfigDialog-3.0"):AddToBlizOptions(addonNameWithVersion, addonName)
 end
 
 SLASH_RATINGBUSTER1, SLASH_RATINGBUSTER2 = "/ratingbuster", "/rb"
 function SlashCmdList.RATINGBUSTER(input)
   if not input or input:trim() == "" then
-		if not LibStub("AceConfigDialog-3.0").OpenFrames["RatingBuster"] then
-			LibStub("AceConfigDialog-3.0"):Open("RatingBuster")
+		if not LibStub("AceConfigDialog-3.0").OpenFrames[addonNameWithVersion] then
+			LibStub("AceConfigDialog-3.0"):Open(addonNameWithVersion)
 		else
-			LibStub("AceConfigDialog-3.0"):Close("RatingBuster")
+			LibStub("AceConfigDialog-3.0"):Close(addonNameWithVersion)
 		end
   else
-    LibStub("AceConfigCmd-3.0").HandleCommand("RatingBuster", "rb", "RatingBuster", input)
+    LibStub("AceConfigCmd-3.0").HandleCommand(RatingBuster, "rb", addonNameWithVersion, input)
   end
 end
 
