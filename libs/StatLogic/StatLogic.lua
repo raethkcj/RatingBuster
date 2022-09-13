@@ -137,49 +137,6 @@ local tipExtension = {
 setmetatable(tip, tipExtension)
 setmetatable(tipMiner, tipExtension)
 
---------------------
--- Item Set Cache --
---------------------
-
--- Maps SetID to number of equipped pieces
-local equipped_sets = setmetatable({}, {
-	__index = function(t, set)
-		local equipped = 0
-
-		for i = 1, INVSLOT_LAST_EQUIPPED do
-			local itemID = GetInventoryItemID("player", i)
-			if itemID and select(16, GetItemInfo(itemID)) == set then
-				equipped = equipped + 1
-			end
-		end
-
-		t[set] = equipped
-		return equipped
-	end
-})
-
-local equipped_meta_gem
-
-do
-	local update_meta_gem = function()
-		local link = GetInventoryItemLink("player", 1)
-		local str = link and select(4, strsplit(":", link))
-		equipped_meta_gem = str and tonumber(str) or 0
-	end
-
-	local f = CreateFrame("Frame")
-	f:RegisterUnitEvent("UNIT_INVENTORY_CHANGED", "player")
-	f:RegisterEvent("PLAYER_ENTERING_WORLD")
-	f:SetScript("OnEvent", function(self, event)
-		wipe(equipped_sets)
-		update_meta_gem()
-
-		if event == "PLAYER_ENTERING_WORLD" then
-			self:UnregisterEvent(event)
-		end
-	end)
-end
-
 ---------------------
 -- Local Variables --
 ---------------------
@@ -1173,48 +1130,181 @@ for _, statMod in ipairs(addedInfoMods) do
 	StatLogic.StatModInfo[name] = statMod
 end
 
-local StatModValidators = {
-	condition = function(case)
-		return loadstring("return "..case.condition)()
-	end,
-	buff = function(case)
-		return AuraUtil.FindAuraByName(case.buff, "player")
-	end,
-	stance = function(case)
-		local form = GetShapeshiftForm()
-		if form and form > 0 then
-			return GetFileIDFromPath(case.stance) == GetShapeshiftFormInfo(form)
-		else
-			return false
+--------------------
+-- Item Set Cache --
+--------------------
+
+-- Maps SetID to number of equipped pieces
+local equipped_sets = setmetatable({}, {
+	__index = function(t, set)
+		local equipped = 0
+
+		for i = 1, INVSLOT_LAST_EQUIPPED do
+			local itemID = GetInventoryItemID("player", i)
+			if itemID and select(16, GetItemInfo(itemID)) == set then
+				equipped = equipped + 1
+			end
 		end
-	end,
-	set = function(case)
-		return equipped_sets[case.set] and equipped_sets[case.set] >= case.pieces
-	end,
-	meta = function(case)
-		return case.meta == equipped_meta_gem
-	end,
-	glyph = function(case)
-		return IsPlayerSpell(case.glyph)
-	end,
-	enchant = function(case)
-		local slotLink = case.slot and GetInventoryItemLink("player", case.slot)
-		local pattern = "item:%d+:" .. case.enchant
-		return slotLink and slotLink:find(pattern)
+
+		t[set] = equipped
+		return equipped
 	end
+})
+
+local equipped_meta_gem
+
+do
+	local update_meta_gem = function()
+		local link = GetInventoryItemLink("player", 1)
+		local str = link and select(4, strsplit(":", link))
+		equipped_meta_gem = str and tonumber(str) or 0
+	end
+
+	local f = CreateFrame("Frame")
+	f:RegisterUnitEvent("UNIT_INVENTORY_CHANGED", "player")
+	f:RegisterEvent("PLAYER_ENTERING_WORLD")
+	f:SetScript("OnEvent", function(self, event)
+		wipe(equipped_sets)
+		update_meta_gem()
+
+		if event == "PLAYER_ENTERING_WORLD" then
+			self:UnregisterEvent(event)
+		end
+	end)
+end
+
+local StatModValidators = {
+	-- Conditions have no events, so any mods using them will not be cached.
+	-- Ideally they will be removed entirely.
+	condition = {
+		validate = function(case)
+			return loadstring("return "..case.condition)()
+		end,
+	},
+	buff = {
+		validate = function(case)
+			return AuraUtil.FindAuraByName(case.buff, "player")
+		end,
+		events = {
+			["UNIT_AURA"] = "player",
+		},
+	},
+	stance = {
+		validate = function(case)
+			local form = GetShapeshiftForm()
+			if form and form > 0 then
+				return GetFileIDFromPath(case.stance) == GetShapeshiftFormInfo(form)
+			else
+				return false
+			end
+		end,
+		events = {
+			["UPDATE_SHAPESHIFT_FORM"] = true,
+		},
+	},
+	set = {
+		validate = function(case)
+			return equipped_sets[case.set] and equipped_sets[case.set] >= case.pieces
+		end,
+		events = {
+			["UNIT_INVENTORY_CHANGED"] = "player",
+		},
+	},
+	meta = {
+		validate = function(case)
+			return case.meta == equipped_meta_gem
+		end,
+		events = {
+			["UNIT_INVENTORY_CHANGED"] = "player",
+		},
+	},
+	glyph = {
+		validate = function(case)
+			return IsPlayerSpell(case.glyph)
+		end,
+		events = {
+			["GLYPH_ADDED"] = true,
+			["GLYPH_REMOVED"] = true,
+		}
+	},
+	enchant = {
+		validate = function(case)
+			local slotLink = case.slot and GetInventoryItemLink("player", case.slot)
+			local pattern = "item:%d+:" .. case.enchant
+			return slotLink and slotLink:find(pattern)
+		end,
+		events = {
+			["UNIT_INVENTORY_CHANGED"] = "player",
+		},
+	},
 }
 
-local function ValidateStatMod(case, school)
-	if school and not case[school] then return false end
-	for k,v in pairs(case) do
-		local validator = StatModValidators[k]
-		if validator then
-			if not validator(case) then
-				return false
+-- Cache the results of GetStatMod, and build a table that
+-- maps events defined on Validators to the StatMods that depend on them.
+local StatModCache = {}
+local StatModCacheInvalidators = {}
+
+-- Talents are not a Validator, but we still
+-- need to invalidate cache when they change
+StatModCacheInvalidators["CHARACTER_POINTS_CHANGED"] = {}
+StatModCacheInvalidators["PLAYER_TALENT_UPDATE"] = StatModCacheInvalidators["CHARACTER_POINTS_CHANGED"]
+
+do
+	local f = CreateFrame("Frame")
+	for validatorType, validator in pairs(StatModValidators) do
+		if validator.events then
+			for event, unit in pairs(validator.events) do
+				if type(unit) == "string" then
+					f:RegisterUnitEvent(event, unit)
+				else
+					f:RegisterEvent(event)
+				end
 			end
 		end
 	end
-	return true
+
+	f:RegisterEvent("CHARACTER_POINTS_CHANGED")
+	f:RegisterEvent("PLAYER_TALENT_UPDATE")
+
+	f:SetScript("OnEvent", function(self, event, unit)
+		local key = event
+		if type(unit) == "string" then
+			key = event .. unit
+		end
+		local stats = StatModCacheInvalidators[key]
+		if stats then
+			for _, stat in pairs(stats) do
+				StatModCache[stat] = nil
+			end
+		end
+	end)
+end
+
+local function ValidateStatMod(stat, school, case)
+	if school and not case[school] then return false, false end
+	local shouldCache = true
+	for k,v in pairs(case) do
+		local validator = StatModValidators[k]
+		if validator then
+			if validator.events then
+				for event, unit in pairs(validator.events) do
+					local key = event
+					if type(unit) == "string" then
+						key = event .. unit
+					end
+					StatModCacheInvalidators[key] = StatModCacheInvalidators[key] or {}
+					table.insert(StatModCacheInvalidators[key], stat)
+				end
+			else
+				shouldCache = false
+			end
+
+			if not validator.validate(case) then
+				return false, shouldCache
+			end
+		end
+	end
+	return true, shouldCache
 end
 
 -- As of Classic Patch 3.4.0, GetTalentInfo indices no longer correlate
@@ -1254,9 +1344,10 @@ function StatLogic:GetOrderedTalentInfo(tab, num)
 	return GetTalentInfo(tab, orderedTalentCache[tab][num])
 end
 
-local GetStatModValue = function(mod, case, initialValue, school)
-	if not ValidateStatMod(case, school) then
-		return mod
+local GetStatModValue = function(stat, school, mod, case, initialValue)
+	local valid, shouldCache = ValidateStatMod(stat, school, case)
+	if not valid then
+		return mod, shouldCache
 	end
 
 	local value
@@ -1268,6 +1359,7 @@ local GetStatModValue = function(mod, case, initialValue, school)
 		elseif r > 0 then
 			value = case.value
 		end
+		table.insert(StatModCacheInvalidators["PLAYER_TALENT_UPDATE"], stat)
 	elseif case.buff and case.rank then
 		local r = GetPlayerBuffRank(case.buff)
 		value = case.rank[r]
@@ -1283,7 +1375,7 @@ local GetStatModValue = function(mod, case, initialValue, school)
 		end
 	end
 
-	return mod
+	return mod, shouldCache
 end
 
 local StatModCategories = {
@@ -1293,21 +1385,33 @@ local StatModCategories = {
 }
 
 function StatLogic:GetStatMod(stat, school)
-	local statModInfo = StatLogic.StatModInfo[stat]
-	local mod = statModInfo.initialValue
-	-- if school is required for this statMod but not given
-	if statModInfo.school and not school then return mod end
-	-- Class specific mods
-	for _, statModCategory in ipairs(StatModCategories) do
-		local categoryTable = StatLogic.StatModTable[statModCategory]
-		if categoryTable and type(categoryTable[stat]) == "table" then
-			for _, case in ipairs(categoryTable[stat]) do
-				mod = GetStatModValue(mod, case, statModInfo.initialValue, school)
+	local mod = StatModCache[stat]
+
+	local shouldCache = true
+	if not mod then
+		local statModInfo = StatLogic.StatModInfo[stat]
+		mod = statModInfo.initialValue
+		-- if school is required for this statMod but not given
+		if statModInfo.school and not school then return mod end
+		for statModCategory, categoryTable in pairs(StatLogic.StatModTable) do
+			if categoryTable[stat] then
+				for _, case in ipairs(categoryTable[stat]) do
+					mod, shouldCacheCase = GetStatModValue(stat, school, mod, case, statModInfo.initialValue)
+					if not shouldCacheCase then
+						-- If *any* cases should not be cached, don't cache this mod
+						shouldCache = false
+					end
+				end
 			end
+		end
+
+		mod = mod + statModInfo.finalAdjust
+		if shouldCache then
+			StatModCache[stat] = mod
 		end
 	end
 
-	return mod + statModInfo.finalAdjust
+	return mod, shouldCache
 end
 
 
