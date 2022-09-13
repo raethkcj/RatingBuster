@@ -1989,39 +1989,11 @@ end
 ----------
 
 function StatLogic:RemoveEnchant(link)
-	-- check link
-	if not strfind(link, "item:%d*:%d*:%d*:%d*:%d*:%d*:%-?%d*:%-?%d*") then
-		return link
-	end
-	local linkType, itemId, enchantId, jewelId1, jewelId2, jewelId3, jewelId4, suffixId, uniqueId = strsplit(":", link)
-	return strjoin(":", linkType, itemId, 0, jewelId1, jewelId2, jewelId3, jewelId4, suffixId, uniqueId)
+	return link:gsub("(item:%d+):%d+","%1:0")
 end
 
 function StatLogic:RemoveGem(link)
-	-- check link
-	if not strfind(link, "item:%d*:%d*:%d*:%d*:%d*:%d*:%-?%d*:%-?%d*") then
-		return link
-	end
-	local linkType, itemId, enchantId, jewelId1, jewelId2, jewelId3, jewelId4, suffixId, uniqueId = strsplit(":", link)
-	return strjoin(":", linkType, itemId, enchantId, 0, 0, 0, 0, suffixId, uniqueId)
-end
-
-function StatLogic:RemoveEnchantGem(link)
-	-- check link
-	if not strfind(link, "item:%d*:%d*:%d*:%d*:%d*:%d*:%-?%d*:%-?%d*") then
-		return link
-	end
-	local linkType, itemId, enchantId, jewelId1, jewelId2, jewelId3, jewelId4, suffixId, uniqueId = strsplit(":", link)
-	return strjoin(":", linkType, itemId, 0, 0, 0, 0, 0, suffixId, uniqueId)
-end
-
-function StatLogic:ModEnchantGem(link, enc, gem1, gem2, gem3, gem4)
-	-- check link
-	if not strfind(link, "item:%d+") then
-		return
-	end
-	local linkType, itemId, enchantId, jewelId1, jewelId2, jewelId3, jewelId4, suffixId, uniqueId = strsplit(":", link)
-	return strjoin(":", linkType, itemId, enc or enchantId or 0, gem1 or jewelId1 or 0, gem2 or jewelId2 or 0, gem3 or jewelId3 or 0, gem4 or jewelId4 or 0, suffixId or 0, uniqueId or 0)
+	return link:gsub("(item:%d+:%d*):%d*:%d*:%d*:%d*","%1:0:0:0:0")
 end
 
 --[[---------------------------------
@@ -2080,6 +2052,17 @@ function StatLogic:BuildGemmedTooltip(item, red, yellow, blue, meta)
 	if not blue or not tonumber(blue) then blue = 0 end
 	if not meta or not tonumber(meta) then meta = 0 end
 	if red == 0 and yellow == 0 and blue == 0 and meta == 0 then return link end -- nothing to modify
+
+	-- Check if any gems are already socketed
+	local linkType, itemId, enchantId, jewelId1, jewelId2, jewelId3, jewelId4, suffixId, uniqueId = strsplit(":", link)
+	if (jewelId1 and jewelId1 ~= "" and jewelId1 ~= "0")
+		or (jewelId2 and jewelId2 ~= "" and jewelId2 ~= "0")
+		or (jewelId3 and jewelId3 ~= "" and jewelId3 ~= "0")
+		or (jewelId4 and jewelId4 ~= "" and jewelId4 ~= "0")
+	then
+		return link
+	end
+
 	-- Fill EmptySocketLookup
 	EmptySocketLookup[EMPTY_SOCKET_RED] = red
 	EmptySocketLookup[EMPTY_SOCKET_YELLOW] = yellow
@@ -2088,8 +2071,6 @@ function StatLogic:BuildGemmedTooltip(item, red, yellow, blue, meta)
 	
 	-- Build socket list
 	local socketList = {}
-	-- Get a link without any socketed gems
-	local cleanLink = link:match("(item:%d+)")
 	-- Start parsing
 	tip:ClearLines() -- this is required or SetX won't work the second time its called
 	tip:SetHyperlink(link)
@@ -2112,11 +2093,10 @@ function StatLogic:BuildGemmedTooltip(item, red, yellow, blue, meta)
 	-- If there are no sockets
 	if #socketList == 0 then return link end
 	-- link breakdown
-	local linkType, itemId, enchantId, jewelId1, jewelId2, jewelId3, jewelId4, suffixId, uniqueId = strsplit(":", link)
-	if socketList[1] and (not jewelId1 or jewelId1 == "0" or jewelId1 == "") then jewelId1 = socketList[1] end
-	if socketList[2] and (not jewelId2 or jewelId2 == "0" or jewelId2 == "") then jewelId2 = socketList[2] end
-	if socketList[3] and (not jewelId3 or jewelId3 == "0" or jewelId3 == "") then jewelId3 = socketList[3] end
-	if socketList[4] and (not jewelId4 or jewelId4 == "0" or jewelId4 == "") then jewelId4 = socketList[4] end
+	if socketList[1]  then jewelId1 = socketList[1] end
+	if socketList[2]  then jewelId2 = socketList[2] end
+	if socketList[3]  then jewelId3 = socketList[3] end
+	if socketList[4]  then jewelId4 = socketList[4] end
 	return strjoin(":", linkType, itemId, enchantId, jewelId1, jewelId2, jewelId3, jewelId4, suffixId, uniqueId)
 end
 
