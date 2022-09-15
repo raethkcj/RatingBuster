@@ -1,3 +1,4 @@
+--ruRU localization by YujiTFD, thehallowedfire
 local L = LibStub("AceLocale-3.0"):NewLocale("StatLogic", "ruRU")
 if not L then return end
 
@@ -48,20 +49,20 @@ L["Exclude"] = {
 	["Disen"] = true, -- ITEM_DISENCHANT_ANY_SKILL = "Disenchantable"; -- Items that can be disenchanted at any skill level
 	-- ITEM_DISENCHANT_MIN_SKILL = "Disenchanting requires %s (%d)"; -- Minimum enchanting skill needed to disenchant
 	["Durat"] = true, -- ITEM_DURATION_DAYS = "Длительность, дней: %d";
-	["<Made"] = true, -- ITEM_CREATED_BY = "|cff00ff00<Создатель: %s>|r"; -- %s is the creator of the item
-	["Coold"] = true, -- ITEM_COOLDOWN_TIME_DAYS = "Откат, дней: %d day";
-	["Uniqu"] = true, -- Unique (20) -- ITEM_UNIQUE = "Уникальная"; -- Item is unique -- ITEM_UNIQUE_MULTIPLE = "Уникальная (%d)"; -- Item is unique
-	["Requi"] = true, -- Requires Level xx -- ITEM_MIN_LEVEL = "Требуется уровень %d"; -- Required level to use the item
-	["\nRequ"] = true, -- Requires Level xx -- ITEM_MIN_SKILL = "Требуется %s (%d)"; -- Required skill rank to use the item
-	["Class"] = true, -- Classes: xx -- ITEM_CLASSES_ALLOWED = "Класс: %s"; -- Lists the classes allowed to use this item
-	["Races:"] = true, -- Races: xx (vendor mounts) -- ITEM_RACES_ALLOWED = "Раса: %s"; -- Lists the races allowed to use this item
-	["Use: "] = true, -- Use: -- ITEM_SPELL_TRIGGER_ONUSE = "Использование:";
+	["<Изго"] = true, -- ITEM_CREATED_BY = "|cff00ff00<Создатель: %s>|r"; -- %s is the creator of the item
+	["Восст"] = true, -- ITEM_COOLDOWN_TIME_DAYS = "Откат, дней: %d day";
+	["Уника"] = true, -- Unique (20) -- ITEM_UNIQUE = "Уникальная"; -- Item is unique -- ITEM_UNIQUE_MULTIPLE = "Уникальная (%d)"; -- Item is unique
+	["Требу"] = true, -- Requires Level xx -- ITEM_MIN_LEVEL = "Требуется уровень %d"; -- Required level to use the item
+	["\nТре"] = true, -- Requires Level xx -- ITEM_MIN_SKILL = "Требуется %s (%d)"; -- Required skill rank to use the item
+	["Класс"] = true, -- Classes: xx -- ITEM_CLASSES_ALLOWED = "Класс: %s"; -- Lists the classes allowed to use this item
+	["Расы:"] = true, -- Races: xx (vendor mounts) -- ITEM_RACES_ALLOWED = "Раса: %s"; -- Lists the races allowed to use this item
+	["Испол"] = true, -- Use: -- ITEM_SPELL_TRIGGER_ONUSE = "Использование:";
 	["Chanc"] = true, -- Chance On Hit: -- ITEM_SPELL_TRIGGER_ONPROC = "Шанс при ударе:";
 	-- Set Bonuses
 	-- ITEM_SET_BONUS = "Set: %s";
 	-- ITEM_SET_BONUS_GRAY = "(%d) Set: %s";
 	-- ITEM_SET_NAME = "%s (%d/%d)"; -- Set name (2/5)
-	["Set: "] = true,
+	["Компл"] = true,
 	["(2) S"] = true,
 	["(3) S"] = true,
 	["(4) S"] = true,
@@ -156,7 +157,8 @@ L["WholeTextLookup"] = {
 	["Надето: небольшое ускорение бега."] = {["RUN_SPEED"] = 8}, -- [Highlander's Plate Greaves] ID: 20048
 	["Небольшое ускорениеускорение бега"] = {["RUN_SPEED"] = 8}, --
 	["Небольшое увеличение скорости"] = {["RUN_SPEED"] = 8}, -- Enchant Boots - Minor Speed "Minor Speed Increase" http://wow.allakhazam.com/db/spell.html?wspell=13890
-	["Небольшое увеличение скорости и +6 к ловкости"] = {["RUN_SPEED"] = 8}, -- Enchant Boots - Cat's Swiftness "Minor Speed and +6 Agility" http://wow.allakhazam.com/db/spell.html?wspell=34007
+	["Небольшое увеличение скорости и +6 к ловкости"] = {["RUN_SPEED"] = 8, ["AGI"] = 6}, -- Enchant Boots - Cat's Swiftness "Minor Speed and +6 Agility" http://wow.allakhazam.com/db/spell.html?wspell=34007
+	["Небольшое увеличение скорости и +9 к выносливости"] = {["RUN_SPEED"] = 8, ["STA"] = 9}, -- Enchant Boots - Boar's Speed "Minor Speed and +9 Stamina"
 	["Верный шаг"] = {["MELEE_HIT_RATING"] = 10}, -- Enchant Boots - Surefooted "Surefooted" http://wow.allakhazam.com/db/spell.html?wspell=27954
 
 	["Скрытность"] = {["THREAT_MOD"] = -2}, -- Enchant Cloak - Subtlety
@@ -240,64 +242,66 @@ L["DeepScanPatterns"] = {
 -- Stat Lookup Table --
 -----------------------
 L["StatIDLookup"] = {
-	["Your attacks ignoreof your opponent's armor"] = {"IGNORE_ARMOR"}, -- StatLogic:GetSum("item:33733")
+	["Эффективность брони противника против ваших атак снижена на"] = {"IGNORE_ARMOR"}, -- StatLogic:GetSum("item:33733") (used tbc text)
 	["% Threat"] = {"THREAT_MOD"}, -- StatLogic:GetSum("item:23344:2613")
-	["Increases your effective stealth level"] = {"STEALTH_LEVEL"}, -- [Nightscape Boots] ID: 8197
+	["Увеличение уровня эффективного действия незаметности"] = {"STEALTH_LEVEL"}, -- [Nightscape Boots] ID: 8197
 	["Weapon Damage"] = {"MELEE_DMG"}, -- Enchant
 	["Increases mount speed%"] = {"MOUNT_SPEED"}, -- [Highlander's Plate Greaves] ID: 20048
 
-	["All Stats"] = {"STR", "AGI", "STA", "INT", "SPI",},
+	["ко всем характеристикам"] = {"STR", "AGI", "STA", "INT", "SPI",},
 	["к силе"] = {"STR",},
+	["силу цели"] = {"STR",}, -- (Added new line)
 	["к ловкости"] = {"AGI",},
 	["к выносливости"] = {"STA",},
 	["к интеллекту"] = {"INT",},
 	["к духу"] = {"SPI",},
 
-	["Arcane Resistance"] = {"ARCANE_RES",},
-	["Fire Resistance"] = {"FIRE_RES",},
-	["Nature Resistance"] = {"NATURE_RES",},
-	["Frost Resistance"] = {"FROST_RES",},
-	["Shadow Resistance"] = {"SHADOW_RES",},
-	["Arcane Resist"] = {"ARCANE_RES",}, -- Arcane Armor Kit +8 Arcane Resist
-	["Fire Resist"] = {"FIRE_RES",}, -- Flame Armor Kit +8 Fire Resist
-	["Nature Resist"] = {"NATURE_RES",}, -- Frost Armor Kit +8 Frost Resist
-	["Frost Resist"] = {"FROST_RES",}, -- Nature Armor Kit +8 Nature Resist
-	["Shadow Resist"] = {"SHADOW_RES",}, -- Shadow Armor Kit +8 Shadow Resist
-	["Shadow resistance"] = {"SHADOW_RES",}, -- Demons Blood ID: 10779
-	["All Resistances"] = {"ARCANE_RES", "FIRE_RES", "FROST_RES", "NATURE_RES", "SHADOW_RES",},
-	["Resist All"] = {"ARCANE_RES", "FIRE_RES", "FROST_RES", "NATURE_RES", "SHADOW_RES",},
+	["Сопротивление тайной магии"] = {"ARCANE_RES",},
+	["Сопротивление огню"] = {"FIRE_RES",},
+	["Сопротивление силам природы"] = {"NATURE_RES",},
+	["Сопротивление магии льда"] = {"FROST_RES",},
+	["Сопротивление темной магии"] = {"SHADOW_RES",},
+	["сопротивления тайной магии"] = {"ARCANE_RES",}, -- Arcane Armor Kit +8 Arcane Resist
+	["сопротивления огню"] = {"FIRE_RES",}, -- Flame Armor Kit +8 Fire Resist
+	["сопротивление силам природы"] = {"NATURE_RES",}, -- Frost Armor Kit +8 Frost Resist (wrong comment?)
+	["сопротивление магии льда"] = {"FROST_RES",}, -- Nature Armor Kit +8 Nature Resist (wrong comment?)
+	["сопротивления темной магии"] = {"SHADOW_RES",}, -- Shadow Armor Kit +8 Shadow Resist
+	["Shadow resistance"] = {"SHADOW_RES",}, -- Demons Blood ID: 10779 (this item doesn't have stats in WotLK)
+	["сопротивление всем видам магии"] = {"ARCANE_RES", "FIRE_RES", "FROST_RES", "NATURE_RES", "SHADOW_RES",},
+	["Resist All"] = {"ARCANE_RES", "FIRE_RES", "FROST_RES", "NATURE_RES", "SHADOW_RES",}, -- (what is this?)
 
-	["Fishing"] = {"FISHING",}, -- Fishing enchant ID:846
-	["Fishing Skill"] = {"FISHING",}, -- Fishing lure
-	["Increased Fishing"] = {"FISHING",}, -- Equip: Increased Fishing +20.
-	["Mining"] = {"MINING",}, -- Mining enchant ID:844
-	["Herbalism"] = {"HERBALISM",}, -- Heabalism enchant ID:845
-	["Skinning"] = {"SKINNING",}, -- Skinning enchant ID:865
+	["к рыбной ловле"] = {"FISHING",}, -- Fishing enchant ID:846
+	["рыбная ловля"] = {"FISHING",}, -- Fishing lure
+	["Рыбная ловля"] = {"FISHING",}, -- Equip: Increased Fishing +20. (it actually looks like: Увеличение навыка "Рыбная ловля" на +20)
+	["к горному делу"] = {"MINING",}, -- Mining enchant ID:844
+	["к травничеству"] = {"HERBALISM",}, -- Heabalism enchant ID:845
+	["к снятию шкур"] = {"SKINNING",}, -- Skinning enchant ID:865
 
-	["Armor"] = {"ARMOR_BONUS",},
-	["Defense"] = {"DEFENSE",},
+	["Броня"] = {"ARMOR_BONUS",},
+	["Защита"] = {"DEFENSE",},
 	["Increased Defense"] = {"DEFENSE",},
-	["Block"] = {"BLOCK_VALUE",}, -- +22 Block Value
-	["Block Value"] = {"BLOCK_VALUE",}, -- +22 Block Value
-	["Shield Block Value"] = {"BLOCK_VALUE",}, -- +10% Shield Block Value [Eternal Earthstorm Diamond] http://www.wowhead.com/?item=35501
-	["Increases the block value of your shield"] = {"BLOCK_VALUE",},
+	["Блок"] = {"BLOCK_VALUE",}, -- +22 Block Value (block value or chance? item example)
+	["Block Value"] = {"BLOCK_VALUE",}, -- +22 Block Value (block value or chance? item example)
+	["к показателю блокирования щита"] = {"BLOCK_VALUE",}, -- +10% Shield Block Value [Eternal Earthstorm Diamond] http://www.wowhead.com/?item=35501
+	["Increases the block value of your shield"] = {"BLOCK_VALUE",}, -- (what item?)
 
-	["Health"] = {"HEALTH",},
-	["HP"] = {"HEALTH",},
-	["Mana"] = {"MANA",},
+	["Здоровье"] = {"HEALTH",},
+	["HP"] = {"HEALTH",}, -- (example please)
+	["Мана"] = {"MANA",},
 
-	["Attack Power"] = {"AP",},
-	["Increases attack power"] = {"AP",},
-	["Attack Power when fighting Undead"] = {"AP_UNDEAD",},
+	["Сила атаки"] = {"AP",},
+	["Увеличивает силу атаки на"] = {"AP",},
+	["повышает силу атаки на"] = {"AP",}, -- (Added new line)
+	["силы атаки нав бою с нежитью"] = {"AP_UNDEAD",}, -- Actually looks like "Увеличение силы атаки на 45 ед. в бою с нежитью"
 	-- [Wristwraps of Undead Slaying] ID:23093
-	["Increases attack powerwhen fighting Undead"] = {"AP_UNDEAD",}, -- [Seal of the Dawn] ID:13209
-	["Increases attack powerwhen fighting Undead.  It also allows the acquisition of Scourgestones on behalf of the Argent Dawn"] = {"AP_UNDEAD",}, -- [Seal of the Dawn] ID:13209
-	["Increases attack powerwhen fighting Demons"] = {"AP_DEMON",},
-	["Increases attack powerwhen fighting Undead and Demons"] = {"AP_UNDEAD", "AP_DEMON",}, -- [Mark of the Champion] ID:23206
-	["Attack Power in Cat, Bear, and Dire Bear forms only"] = {"FERAL_AP",},
-	["Increases attack powerin Cat, Bear, Dire Bear, and Moonkin forms only"] = {"FERAL_AP",},
-	["Ranged Attack Power"] = {"RANGED_AP",},
-	["Increases ranged attack power"] = {"RANGED_AP",}, -- [High Warlord's Crossbow] ID: 18837
+	["Увеличение силы атаки наед. в битве с нежитью"] = {"AP_UNDEAD",}, -- [Seal of the Dawn] ID:13209
+	["Увеличение силы атаки наед. в бою с нежитью. Также позволяет собирать камни Плети от имени и по поручению Серебряного Рассвета"] = {"AP_UNDEAD",}, -- [Seal of the Dawn] ID:13209
+	["Increases attack powerwhen fighting Demons"] = {"AP_DEMON",}, -- (item example please)
+	["Увеличение силы атаки наед. в бою с нежитью и демонами"] = {"AP_UNDEAD", "AP_DEMON",}, -- [Mark of the Champion] ID:23206
+	["Attack Power in Cat, Bear, and Dire Bear forms only"] = {"FERAL_AP",}, -- (can't find an item with a such text)
+	["Увеличивает силу атаки нав облике кошки, медведя, лютого медведя и лунного совуха"] = {"FERAL_AP",},
+	["Сила атаки дальнего боя"] = {"RANGED_AP",},
+	["Увеличивает силу атак дальнего боя"] = {"RANGED_AP",}, -- [High Warlord's Crossbow] ID: 18837
 
 	["Health Regen"] = {"MANA_REG",},
 	["Health per"] = {"HEALTH_REG",},
@@ -320,12 +324,13 @@ L["StatIDLookup"] = {
 	["Mana per 5 sec"] = {"MANA_REG",}, -- [Cyclone Shoulderpads] ID: 29031
 	["mana per 5 sec"] = {"MANA_REG",}, -- [Royal Tanzanite] ID: 30603
 	["Restoresmana per 5 sec"] = {"MANA_REG",}, -- [Resurgence Rod] ID:17743
+	["восполнениеед. маны за 5 сек."] = {"MANA_REG",}, -- (Added new line)
 	["Mana restored per 5 seconds"] = {"MANA_REG",}, -- Magister's Armor Kit +3 Mana restored per 5 seconds http://wow.allakhazam.com/db/spell.html?wspell=32399
 	["Mana Regenper 5 sec"] = {"MANA_REG",}, -- Enchant Bracer - Mana Regeneration "Mana Regen 4 per 5 sec." http://wow.allakhazam.com/db/spell.html?wspell=23801
 	["Mana per 5 Sec"] = {"MANA_REG",}, -- Enchant Bracer - Restore Mana Prime "6 Mana per 5 Sec." http://wow.allakhazam.com/db/spell.html?wspell=27913
 
-	["Spell Penetration"] = {"SPELLPEN",}, -- Enchant Cloak - Spell Penetration "+20 Spell Penetration" http://wow.allakhazam.com/db/spell.html?wspell=34003
-	["Increases your spell penetration"] = {"SPELLPEN",},
+	["проникающей способности заклинаний"] = {"SPELLPEN",}, -- Enchant Cloak - Spell Penetration "+20 Spell Penetration" http://wow.allakhazam.com/db/spell.html?wspell=34003
+	["увеличивает проникающую способность заклинаний на"] = {"SPELLPEN",},
 
 	["Healing and Spell Damage"] = {"SPELL_DMG", "HEAL",}, -- Arcanum of Focus +8 Healing and Spell Damage http://wow.allakhazam.com/db/spell.html?wspell=22844
 	["Damage and Healing Spells"] = {"SPELL_DMG", "HEAL",},
@@ -336,8 +341,9 @@ L["StatIDLookup"] = {
 	["Spell Damage and Healing"] = {"SPELL_DMG", "HEAL",}, --StatLogic:GetSum("item:22630")
 	["Damage"] = {"SPELL_DMG",},
 	["Increases your spell damage"] = {"SPELL_DMG",}, -- Atiesh ID:22630, 22631, 22632, 22589
-	["силе заклинаний"] = {"SPELL_DMG", "HEAL",},
+	["к силе заклинаний"] = {"SPELL_DMG", "HEAL",},
 	["Увеличивает силу заклинаний"] = {"SPELL_DMG", "HEAL",},
+	["увеличивает силу заклинаний на"] = {"SPELL_DMG", "HEAL",},
 	["Holy Damage"] = {"HOLY_SPELL_DMG",},
 	["Arcane Damage"] = {"ARCANE_SPELL_DMG",},
 	["Fire Damage"] = {"FIRE_SPELL_DMG",},
@@ -398,10 +404,10 @@ L["StatIDLookup"] = {
 	["Повышает меткость"] = {"MELEE_HIT_RATING",}, -- ITEM_MOD_HIT_RATING
 	["Меткость в ближнем бою"] = {"MELEE_HIT_RATING",}, -- ITEM_MOD_HIT_MELEE_RATING
 	["Повышает рейтинг меткости"] = {"MELEE_HIT_RATING",},
-	["Spell Hit"] = {"SPELL_HIT_RATING",}, -- Presence of Sight +18 Healing and Spell Damage/+8 Spell Hit http://wow.allakhazam.com/db/spell.html?wspell=24164
+	["к рейтингу меткости"] = {"SPELL_HIT_RATING",}, -- Presence of Sight +18 Healing and Spell Damage/+8 Spell Hit http://wow.allakhazam.com/db/spell.html?wspell=24164
 	["Improves your chance to hit with spells%"] = {"SPELL_HIT"},
 	["Spell Hit Rating"] = {"SPELL_HIT_RATING",},
-	["Improves spell hit rating"] = {"SPELL_HIT_RATING",}, -- ITEM_MOD_HIT_SPELL_RATING
+	["повышает рейтинг меткости на"] = {"SPELL_HIT_RATING",}, -- ITEM_MOD_HIT_SPELL_RATING
 	["Increases your spell hit rating"] = {"SPELL_HIT_RATING",},
 	["Ranged Hit Rating"] = {"RANGED_HIT_RATING",},
 	["Improves ranged hit rating"] = {"RANGED_HIT_RATING",}, -- ITEM_MOD_HIT_RANGED_RATING
@@ -410,29 +416,30 @@ L["StatIDLookup"] = {
 	["Improves your chance to get a critical strike by%"] = {"MELEE_CRIT", "RANGED_CRIT"},
 	["Crit Rating"] = {"CRIT_RATING",},
 	["Critical Rating"] = {"CRIT_RATING",},
-	["Critical Strike Rating"] = {"CRIT_RATING",},
+	["Рейтинг критического удара"] = {"CRIT_RATING",},
 	["Increases your critical hit rating"] = {"CRIT_RATING",},
 	["Increases your critical strike rating"] = {"CRIT_RATING",},
-	["Improves critical strike rating"] = {"CRIT_RATING",},
+	["повышает рейтинг критического удара на"] = {"CRIT_RATING",},
 	["Improves melee critical strike rating"] = {"MELEE_CRIT_RATING",}, -- [Cloak of Darkness] ID:33122
 	["Improves your chance to get a critical strike with spells%"] = {"SPELL_CRIT"},
 	["Spell Critical Strike Rating"] = {"SPELL_CRIT_RATING",},
 	["Spell Critical strike rating"] = {"SPELL_CRIT_RATING",},
 	["Spell Critical Rating"] = {"SPELL_CRIT_RATING",},
 	["Spell Crit Rating"] = {"SPELL_CRIT_RATING",},
-	["Spell Critical"] = {"SPELL_CRIT_RATING",}, -- TBC Chaotic Skyfire Diamond
+	["к рейтингу критического удара"] = {"SPELL_CRIT_RATING",}, -- TBC Chaotic Skyfire Diamond
 	["Increases your spell critical strike rating"] = {"SPELL_CRIT_RATING",},
 	["Increases the spell critical strike rating of all party members within 30 yards"] = {"SPELL_CRIT_RATING",},
 	["Improves spell critical strike rating"] = {"SPELL_CRIT_RATING",},
 	["Increases your ranged critical strike rating"] = {"RANGED_CRIT_RATING",}, -- Fletcher's Gloves ID:7348
 
-	["Resilience"] = {"RESILIENCE_RATING",},
-	["Resilience Rating"] = {"RESILIENCE_RATING",}, -- Enchant Chest - Major Resilience "+15 Resilience Rating" http://wow.allakhazam.com/db/spell.html?wspell=33992
-	["Improves your resilience rating"] = {"RESILIENCE_RATING",},
+	["Устойчивость"] = {"RESILIENCE_RATING",},
+	["Рейтинг устойчивости"] = {"RESILIENCE_RATING",}, -- Enchant Chest - Major Resilience "+15 Resilience Rating" http://wow.allakhazam.com/db/spell.html?wspell=33992
+	["повышает рейтинг устойчивости на"] = {"RESILIENCE_RATING",},
 
 	["Haste Rating"] = {"HASTE_RATING"},
+	["рейтингу скорости"] = {"HASTE_RATING"}, -- (added this line)
 	["Ranged Haste Rating"] = {"HASTE_RATING"},
-	["Improves haste rating"] = {"HASTE_RATING"},
+	["повышает рейтинг скорости боя на"] = {"HASTE_RATING"},
 	["Spell Haste Rating"] = {"SPELL_HASTE_RATING"},
 	["Improves melee haste rating"] = {"MELEE_HASTE_RATING"},
 	["Improves spell haste rating"] = {"SPELL_HASTE_RATING"},
