@@ -198,9 +198,9 @@ L["PreScanPatterns"] = {
 	["^(%d+) Block$"] = "BLOCK_VALUE",
 	["^Броня: (%d+)$"] = "ARMOR",
 	["Reinforced %(%+(%d+) Armor%)"] = "ARMOR_BONUS",
-	["Mana Regen (%d+) per 5 sec%.$"] = "MANA_REG",
-	["^%+?%d+ %- (%d+) .-Damage$"] = "MAX_DAMAGE",
-	["^%(([%d%.]+) damage per second%)$"] = "DPS",
+	["Восполнение (%d+) ед. маны за 5 сек%.$"] = "MANA_REG",
+	["^Урон: %+?%d+%-(%d+)$"] = "MAX_DAMAGE",
+	["^%(([%d%.]+) ед. урона в секунду%)$"] = "DPS",
 	-- Exclude
 	["^(%d+) Slot"] = false, -- Set Name (0/9)
 	["^[%a '%-]+%((%d+)/%d+%)$"] = false, -- Set Name (0/9)
