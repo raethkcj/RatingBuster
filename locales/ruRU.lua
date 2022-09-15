@@ -694,8 +694,8 @@ L["statList"] = {
 	{pattern = string.lower("Ловкости"), id = SPELL_STAT2_NAME},
 	{pattern = string.lower(SPELL_STAT3_NAME), id = SPELL_STAT3_NAME}, -- Stamina
 	{pattern = string.lower("Выносливости"), id = SPELL_STAT3_NAME},
-	{pattern = string.lower(SPELL_STAT4_NAME), id = SPELL_STAT4_NAME}, -- Intellect
 	{pattern = string.lower("Интеллекту"), id = SPELL_STAT4_NAME},
+	{pattern = string.lower(SPELL_STAT4_NAME), id = SPELL_STAT4_NAME}, -- Intellect
 	{pattern = string.lower(SPELL_STAT5_NAME), id = SPELL_STAT5_NAME}, -- Spirit
 	{pattern = string.lower("Духу"), id = SPELL_STAT5_NAME},
 
