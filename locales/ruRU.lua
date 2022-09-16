@@ -689,15 +689,16 @@ L["statList"] = {
 	{pattern = string.lower("Силе заклинаний"), id = SPELL_STAT1115_NAME}, -- конец левых строчек
 
 	{pattern = string.lower(SPELL_STAT1_NAME), id = SPELL_STAT1_NAME}, -- Strength
-	{pattern = string.lower("Силе"), id = SPELL_STAT1_NAME},
+	{pattern = "силу", id = SPELL_STAT1_NAME}, -- Strength
+	{pattern = "силе", id = SPELL_STAT1_NAME}, -- Strength
 	{pattern = string.lower(SPELL_STAT2_NAME), id = SPELL_STAT2_NAME}, -- Agility
-	{pattern = string.lower("Ловкости"), id = SPELL_STAT2_NAME},
+	{pattern = "ловкости", id = SPELL_STAT2_NAME}, -- Agility
 	{pattern = string.lower(SPELL_STAT3_NAME), id = SPELL_STAT3_NAME}, -- Stamina
-	{pattern = string.lower("Выносливости"), id = SPELL_STAT3_NAME},
+	{pattern = "выносливости", id = SPELL_STAT3_NAME}, -- Stamina
+	{pattern = "интеллекту", id = SPELL_STAT4_NAME}, -- Intellect
 	{pattern = string.lower(SPELL_STAT4_NAME), id = SPELL_STAT4_NAME}, -- Intellect
-	{pattern = string.lower("Интеллекту"), id = SPELL_STAT4_NAME},
+	{pattern = "Духу", id = SPELL_STAT5_NAME}, -- Spirit
 	{pattern = string.lower(SPELL_STAT5_NAME), id = SPELL_STAT5_NAME}, -- Spirit
-	{pattern = string.lower("Духу"), id = SPELL_STAT5_NAME},
 
 	{pattern = "рейтинг защиты", id = CR_DEFENSE_SKILL},
 	{pattern = "рейтингу защиты", id = CR_DEFENSE_SKILL},
