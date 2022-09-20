@@ -141,6 +141,29 @@ local function setGem(info, value)
 		RatingBuster:Print(L["Queried server for Gem: %s. Try again in 5 secs."]:format(value))
 	end
 end
+local function getColor(info, r, g, b)
+	local color = globalDB[info[#info]]
+	if not color then
+		color = profileDB[info[#info]]
+	end
+	return color:GetRGB()
+end
+local function setColor(info, r, g, b)
+	local color = globalDB[info[#info]]
+	if not color then
+		color = profileDB[info[#info]]
+	end
+	color:SetRGB(r, g, b)
+	clearCache()
+end
+
+ColorPickerFrame:SetFrameStrata("FULLSCREEN_DIALOG")
+ColorPickerFrame:SetMovable(true)
+ColorPickerFrame:EnableMouse(true)
+ColorPickerFrame:RegisterForDrag("LeftButton")
+ColorPickerFrame:SetScript("OnDragStart", ColorPickerFrame.StartMoving)
+ColorPickerFrame:SetScript("OnDragStop", ColorPickerFrame.StopMovingOrSizing)
+ColorPickerFrame:Show()
 
 local options = {
 	type = 'group',
@@ -236,41 +259,6 @@ local options = {
 						return not StatLogic.GetAvoidanceAfterDR
 					end,
 				},
-				color = {
-					type = 'group',
-					name = L["Change text color"],
-					desc = L["Changes the color of added text"],
-					args = {
-						pick = {
-							type = 'execute',
-							name = L["Pick color"],
-							desc = L["Pick a color"],
-							func = function()
-								CloseMenus()
-								ColorPickerFrame.func = function()
-									globalDB.textColor.r, globalDB.textColor.g, globalDB.textColor.b = ColorPickerFrame:GetColorRGB();
-									globalDB.textColor.hex = "|cff"..string.format("%02x%02x%02x", globalDB.textColor.r * 255, globalDB.textColor.g * 255, globalDB.textColor.b * 255)
-									-- clear cache
-									clearCache()
-								end
-								ColorPickerFrame:SetColorRGB(globalDB.textColor.r, globalDB.textColor.g, globalDB.textColor.b);
-								ColorPickerFrame.previousValues = {r = globalDB.textColor.r, g = globalDB.textColor.g, b = globalDB.textColor.b};
-								ColorPickerFrame:SetFrameStrata("FULLSCREEN_DIALOG")
-								ColorPickerFrame:SetMovable(true)
-								ColorPickerFrame:EnableMouse(true)
-								ColorPickerFrame:RegisterForDrag("LeftButton")
-								ColorPickerFrame:SetScript("OnDragStart", ColorPickerFrame.StartMoving)
-								ColorPickerFrame:SetScript("OnDragStop", ColorPickerFrame.StopMovingOrSizing)
-								ColorPickerFrame:Show()
-							end,
-						},
-						enableTextColor = {
-							type = 'toggle',
-							name = L["Enable color"],
-							desc = L["Enable colored text"],
-						},
-					},
-				},
 			},
 		},
 		stat = {
@@ -283,6 +271,16 @@ local options = {
 					type = 'toggle',
 					name = L["Show base stat conversions"],
 					desc = L["Show base stat conversions in tooltips"],
+					width = "full",
+					order = 1,
+				},
+				textColor = {
+					type = 'color',
+					name = L["Change text color"],
+					desc = L["Changes the color of added text"],
+					get = getColor,
+					set = setColor,
+					order = 2,
 				},
 				str = {
 					type = 'group',
@@ -993,8 +991,7 @@ local defaults = {
 		showItemID = false,
 		useRequiredLevel = true,
 		customLevel = 0,
-		textColor = {r = 1.0, g = 0.996,  b = 0.545, hex = "|cfffffe8b"},
-		enableTextColor = true,
+		textColor = CreateColor(1.0, 0.996, 0.545),
 		showSum = true,
 		sumIgnoreUnused = true,
 		sumIgnoreEquipped = false,
@@ -2145,10 +2142,17 @@ function RatingBuster:ProcessText(text, link)
 					if infoString ~= "" then
 						-- Add parenthesis
 						infoString = "("..infoString..")"
-						-- Add Color
-						if globalDB.enableTextColor then
-							infoString = globalDB.textColor.hex..infoString..currentColorCode
+						if not globalDB.textColor.GenerateHexColorMarkup then
+							-- Backwards Compatibility
+							local old = globalDB.textColor
+							if type(old) == "table" and old.r and old.g and old.b then
+								globalDB.textColor = CreateColor(old.r, old.g, old.b)
+							else
+								globalDB.textColor = defaults.global.textColor
+							end
 						end
+						-- Add Color
+						infoString = globalDB.textColor:GenerateHexColorMarkup()..infoString..currentColorCode
 						-- Build replacement string
 						if num.addInfo == "AfterNumber" then -- Add after number
 							infoString = gsub(infoString, "%%", "%%%%%%%%") -- sub "%" with "%%%%"
