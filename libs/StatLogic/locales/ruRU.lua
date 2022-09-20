@@ -200,6 +200,7 @@ L["PreScanPatterns"] = {
 	["Reinforced %(%+(%d+) Armor%)"] = "ARMOR_BONUS",
 	["Восполнение (%d+) ед. маны за 5 сек%.$"] = "MANA_REG",
 	["^Урон: %+?%d+%-(%d+)$"] = "MAX_DAMAGE",
+	["^%d+ %- (%d+) ед%. урона от .-$"] = "MAX_DAMAGE", -- Wands: "123 - 321 ед. урона от светлой магии"
 	["^%(([%d%.]+) ед. урона в секунду%)$"] = "DPS",
 	-- Exclude
 	["^(%d+) Slot"] = false, -- Set Name (0/9)
