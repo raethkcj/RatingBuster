@@ -161,7 +161,13 @@ ColorPickerFrame:SetFrameStrata("FULLSCREEN_DIALOG")
 ColorPickerFrame:SetMovable(true)
 ColorPickerFrame:EnableMouse(true)
 ColorPickerFrame:RegisterForDrag("LeftButton")
-ColorPickerFrame:SetScript("OnDragStart", ColorPickerFrame.StartMoving)
+ColorPickerFrame:SetScript("OnDragStart", function(self, button)
+	for _, frame in ipairs(C_System.GetFrameStack()) do
+		if frame == ColorPickerFrameHeader then
+			ColorPickerFrame:StartMoving()
+		end
+	end
+end)
 ColorPickerFrame:SetScript("OnDragStop", ColorPickerFrame.StopMovingOrSizing)
 ColorPickerFrame:Show()
 
