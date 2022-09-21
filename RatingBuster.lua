@@ -433,6 +433,88 @@ local options = {
 					type = 'toggle',
 					name = L["Show stat summary"],
 					desc = L["Show stat summary in tooltips"],
+					order = 1,
+				},
+				calcSum = {
+					type = 'toggle',
+					name = L["Calculate stat sum"],
+					desc = L["Calculate the total stats for the item"],
+					order = 2,
+				},
+				calcDiff = {
+					type = 'toggle',
+					name = L["Calculate stat diff"],
+					desc = L["Calculate the stat difference for the item and equipped items"],
+					order = 3,
+				},
+				sumDiffStyle = {
+					type = 'select',
+					name = L["Display style for diff value"],
+					desc = L["Display diff values in the main tooltip or only in compare tooltips"],
+					values = {
+						["comp"] = "Compare",
+						["main"] = "Main"
+					},
+					order = 4,
+				},
+				sumShowIcon = {
+					type = 'toggle',
+					name = L["Show icon"],
+					desc = L["Show the sigma icon before summary listing"],
+					order = 5,
+				},
+				sumShowTitle = {
+					type = 'toggle',
+					name = L["Show title text"],
+					desc = L["Show the title text before summary listing"],
+					order = 6,
+				},
+				showZeroValueStat = {
+					type = 'toggle',
+					name = L["Show zero value stats"],
+					desc = L["Show zero value stats in summary for consistancy"],
+					order = 7,
+				},
+				sumSortAlpha = {
+					type = 'toggle',
+					name = L["Sort StatSummary alphabetically"],
+					desc = L["Enable to sort StatSummary alphabetically, disable to sort according to stat type(basic, physical, spell, tank)"],
+					order = 8,
+				},
+				space = {
+					type = 'group',
+					name = L["Add empty line"],
+					inline = true,
+					args = {
+						sumBlankLine = {
+							type = 'toggle',
+							name = L["Add before summary"],
+							desc = L["Add a empty line before stat summary"],
+							order = 10,
+						},
+						sumBlankLineAfter = {
+							type = 'toggle',
+							name = L["Add after summary"],
+							desc = L["Add a empty line after stat summary"],
+							order = 11,
+						},
+					},
+				},
+				sumStatColor = {
+					type = 'color',
+					name = L["Change text color"],
+					desc = L["Changes the color of added text"],
+					get = getColor,
+					set = setColor,
+					order = 13,
+				},
+				sumValueColor = {
+					type = 'color',
+					name = L["Change number color"],
+					desc = L["Changes the color of added text"],
+					get = getColor,
+					set = setColor,
+					order = 14,
 				},
 				ignore = {
 					type = 'group',
@@ -460,62 +542,6 @@ local options = {
 							desc = L["Ignore gems on items when calculating the stat summary"],
 						},
 					},
-				},
-				sumDiffStyle = {
-					type = 'select',
-					name = L["Display style for diff value"],
-					desc = L["Display diff values in the main tooltip or only in compare tooltips"],
-					values = {
-						["comp"] = "Compare",
-						["main"] = "Main"
-					},
-				},
-				space = {
-					type = 'group',
-					name = L["Add empty line"],
-					desc = L["Add a empty line before or after stat summary"],
-					args = {
-						sumBlankLine = {
-							type = 'toggle',
-							name = L["Add before summary"],
-							desc = L["Add a empty line before stat summary"],
-						},
-						sumBlankLineAfter = {
-							type = 'toggle',
-							name = L["Add after summary"],
-							desc = L["Add a empty line after stat summary"],
-						},
-					},
-				},
-				sumShowIcon = {
-					type = 'toggle',
-					name = L["Show icon"],
-					desc = L["Show the sigma icon before summary listing"],
-				},
-				sumShowTitle = {
-					type = 'toggle',
-					name = L["Show title text"],
-					desc = L["Show the title text before summary listing"],
-				},
-				showZeroValueStat = {
-					type = 'toggle',
-					name = L["Show zero value stats"],
-					desc = L["Show zero value stats in summary for consistancy"],
-				},
-				calcSum = {
-					type = 'toggle',
-					name = L["Calculate stat sum"],
-					desc = L["Calculate the total stats for the item"],
-				},
-				calcDiff = {
-					type = 'toggle',
-					name = L["Calculate stat diff"],
-					desc = L["Calculate the stat difference for the item and equipped items"],
-				},
-				sumSortAlpha = {
-					type = 'toggle',
-					name = L["Sort StatSummary alphabetically"],
-					desc = L["Enable to sort StatSummary alphabetically, disable to sort according to stat type(basic, physical, spell, tank)"],
 				},
 				basic = {
 					type = 'group',
@@ -1005,6 +1031,8 @@ local defaults = {
 		sumIgnoreGems = false,
 		sumBlankLine = true,
 		sumBlankLineAfter = false,
+		sumStatColor = CreateColor(NORMAL_FONT_COLOR:GetRGBA()),
+		sumValueColor = CreateColor(NORMAL_FONT_COLOR:GetRGBA()),
 		sumShowIcon = true,
 		sumShowTitle = true,
 		sumDiffStyle = "main",
@@ -3150,6 +3178,26 @@ function sumSortAlphaComp(a, b)
 	return a[1] < b[1]
 end
 
+local function WriteSummary(tooltip, output)
+	if globalDB.sumBlankLine then
+		tooltip:AddLine(" ")
+	end
+	if globalDB.sumShowTitle then
+		tooltip:AddLine(HIGHLIGHT_FONT_COLOR_CODE..L["Stat Summary"]..FONT_COLOR_CODE_CLOSE)
+		if globalDB.sumShowIcon then
+			tooltip:AddTexture("Interface\\AddOns\\RatingBuster\\images\\Sigma")
+		end
+	end
+	local statR, statG, statB = globalDB.sumStatColor:GetRGB()
+	local valueR, valueG, valueB = globalDB.sumValueColor:GetRGB()
+	for _, o in ipairs(output) do
+		tooltip:AddDoubleLine(o[1], o[2], statR, statG, statB, valueR, valueG, valueB)
+	end
+	if globalDB.sumBlankLineAfter then
+		tooltip:AddLine(" ")
+	end
+end
+
 function RatingBuster:StatSummary(tooltip, name, link)
 	-- Hide stat summary for equipped items
 	if globalDB.sumIgnoreEquipped and IsEquippedItem(link) then return end
@@ -3249,22 +3297,7 @@ function RatingBuster:StatSummary(tooltip, name, link)
 	-- Check Cache
 	if cache[id] and cache[id].numLines == numLines then
 		if table.maxn(cache[id]) == 0 then return end
-		-- Write Tooltip
-		if globalDB.sumBlankLine then
-			tooltip:AddLine(" ")
-		end
-		if globalDB.sumShowTitle then
-			tooltip:AddLine(HIGHLIGHT_FONT_COLOR_CODE..L["Stat Summary"]..FONT_COLOR_CODE_CLOSE)
-			if globalDB.sumShowIcon then
-				tooltip:AddTexture("Interface\\AddOns\\RatingBuster\\images\\Sigma")
-			end
-		end
-		for _, o in ipairs(cache[id]) do
-			tooltip:AddDoubleLine(o[1], o[2])
-		end
-		if globalDB.sumBlankLineAfter then
-			tooltip:AddLine(" ")
-		end
+		WriteSummary(tooltip, cache[id])
 		return
 	end
 	
@@ -3538,23 +3571,7 @@ function RatingBuster:StatSummary(tooltip, name, link)
 	-- Write cache
 	cache[id] = output
 	if table.maxn(output) == 0 then return end
-	-------------------
-	-- Write Tooltip --
-	if globalDB.sumBlankLine then
-		tooltip:AddLine(" ")
-	end
-	if globalDB.sumShowTitle then
-		tooltip:AddLine(HIGHLIGHT_FONT_COLOR_CODE..L["Stat Summary"]..FONT_COLOR_CODE_CLOSE)
-		if globalDB.sumShowIcon then
-			tooltip:AddTexture("Interface\\AddOns\\RatingBuster\\images\\Sigma")
-		end
-	end
-	for _, o in ipairs(output) do
-		tooltip:AddDoubleLine(o[1], o[2])
-	end
-	if globalDB.sumBlankLineAfter then
-		tooltip:AddLine(" ")
-	end
+	WriteSummary(tooltip, output)
 end
 
 

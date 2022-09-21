@@ -42,12 +42,7 @@ L["Set the level used in calculations (0 = your level)"] = "계산에 적용할 
 -- /rb color
 L["Change text color"] = "글자 색상 변경"
 L["Changes the color of added text"] = "추가된 글자의 색상을 변경합니다."
--- /rb color pick
-L["Pick color"] = "색상 선택"
-L["Pick a color"] = "색상을 선택합니다."
--- /rb color enable
-L["Enable color"] = "색상 사용"
-L["Enable colored text"] = "글자에 색상을 사용합니다."
+L["Change number color"] = true
 -- /rb rating
 L["Rating"] = "평점"
 L["Options for Rating display"] = "평점 표시에 대한 설정입니다."

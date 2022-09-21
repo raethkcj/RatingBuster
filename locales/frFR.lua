@@ -38,12 +38,7 @@ L["Set the level used in calculations (0 = your level)"] = "Définis le niveau u
 -- /rb color
 L["Change text color"] = "Couleur du texte"
 L["Changes the color of added text"] = "Change la couleur du texte ajouté."
--- /rb color pick
-L["Pick color"] = "Choix de la couleur"
-L["Pick a color"] = "Choisissez une couleur"
--- /rb color enable
-L["Enable color"] = "Activer la couleur"
-L["Enable colored text"] = "Active le texte coloré"
+L["Change number color"] = true
 -- /rb rating
 L["Rating"] = "Détail des scores"
 L["Options for Rating display"] = "Sélectionne les différents bonus liés aux scores à inclure dans les info-bulles des objets."

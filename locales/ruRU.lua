@@ -106,12 +106,7 @@ end
 -- /rb rating color
 L["Change Text Color"] = "Изменить цвет текста"
 L["Changes the color of added text"] = "Изменить цвет добавляемого текста"
--- /rb rating color pick
-L["Pick Color"] = "Выбрать цвет"
-L["Pick a color"] = "Выбрать цвет"
--- /rb rating color enable
-L["Enable Color"] = "Включить цвет текста"
-L["Enable colored text"] = "Включить цвет текста"
+L["Change number color"] = true
 ---------------------------------------------------------------------------
 -- /rb stat
 L["Stat Breakdown"] = "Настройки статов"

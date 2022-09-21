@@ -42,12 +42,7 @@ L["Set the level used in calculations (0 = your level)"] = "设定换算等级 (
 -- /rb color
 L["Change text color"] = "设定文字颜色"
 L["Changes the color of added text"] = "设定RB所增加的文字的颜色"
--- /rb color pick
-L["Pick color"] = "挑选颜色"
-L["Pick a color"] = "挑选颜色"
--- /rb color enable
-L["Enable color"] = "启用文字颜色"
-L["Enable colored text"] = "启用文字颜色"
+L["Change number color"] = true
 -- /rb rating
 L["Rating"] = "属性等级"
 L["Options for Rating display"] = "设定属性等级显示"

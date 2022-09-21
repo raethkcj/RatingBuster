@@ -37,12 +37,7 @@ L["Set the level used in calculations (0 = your level)"] = true
 -- /rb color
 L["Change text color"] = true
 L["Changes the color of added text"] = true
--- /rb color pick
-L["Pick color"] = true
-L["Pick a color"] = true
--- /rb color enable
-L["Enable color"] = true
-L["Enable colored text"] = true
+L["Change number color"] = true
 -- /rb rating
 L["Rating"] = true
 L["Options for Rating display"] = true
