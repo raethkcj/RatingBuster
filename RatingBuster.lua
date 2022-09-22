@@ -3376,7 +3376,7 @@ function RatingBuster:StatSummary(tooltip, name, link)
 				if tpSupport and ((calcData.name == "TANKPOINTS") or (calcData.name == "TOTALREDUCTION")) and (statDataType == "sum") then
 					entry[statDataType] = nil
 				else
-					entry[statDataType] = calcData.func(statTable)
+					entry[statDataType] = calcData.func(statTable, statDataType, link)
 				end
 			end
 			tinsert(summary, entry)
