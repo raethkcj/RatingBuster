@@ -457,6 +457,13 @@ local options = {
 					},
 					order = 4,
 				},
+				hideBlizzardComparisons = {
+					type = 'toggle',
+					name = L["Hide Blizzard Item Comparisons"],
+					desc = L["Disable Blizzard stat change summary when using the built-in comparison tooltip"],
+					width = "double",
+					order = 4.5,
+				},
 				sumShowIcon = {
 					type = 'toggle',
 					name = L["Show icon"],
@@ -1039,6 +1046,7 @@ local defaults = {
 		sumSortAlpha = false,
 		calcDiff = true,
 		calcSum = true,
+		hideBlizzardComparisons = true,
 	},
 	profile = {
 		enableStatMods = true,
@@ -2211,6 +2219,46 @@ function RatingBuster:ProcessText(text, link)
 	return text
 end
 
+local blizzardComparisonPatterns = {
+	[ITEM_DELTA_DESCRIPTION] = true,
+	[ITEM_DELTA_MULTIPLE_COMPARISON_DESCRIPTION] = true,
+}
+
+local function RemoveBlizzardItemComparisons(tooltip)
+	if not globalDB.hideBlizzardComparisons then return end
+	local tipTextLeft = tooltip:GetName().."TextLeft"
+	local tipTextRight = tooltip:GetName().."TextRight"
+	local isBlizzardComparison = false
+	local first, last
+	for i = 2, tooltip:NumLines() do
+		local fontString = _G[tipTextLeft..i]
+		local text = fontString:GetText()
+		if text then
+			if not isBlizzardComparison and blizzardComparisonPatterns[text] then
+				--print("Found blizz compare starting at line", i, "of", tooltip:GetName())
+				isBlizzardComparison = true
+			elseif isBlizzardComparison then
+				if not text:find("^|cffff2020%-") and not text:find("^|cff00ff00%+") then
+					isBlizzardComparison = false
+					print("Ending blizz comparison at", i, "with text", text)
+				end
+			end
+			if isBlizzardComparison then
+				fontString:SetText("")
+				fontString:Hide()
+				fontString:SetWidth(0)
+				fontString = _G[tipTextRight..i]
+				fontString:SetText("")
+				fontString:Hide()
+				fontString:SetWidth(0)
+			end
+		end
+	end
+	tooltip:Show()
+end
+
+ShoppingTooltip1:HookScript("OnUpdate", RemoveBlizzardItemComparisons)
+ShoppingTooltip2:HookScript("OnUpdate", RemoveBlizzardItemComparisons)
 
 -- Color Numbers
 local GREEN_FONT_COLOR_CODE = GREEN_FONT_COLOR_CODE -- "|cff20ff20" Green
