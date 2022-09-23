@@ -152,7 +152,8 @@ L["WholeTextLookup"] = {
 	["Жестокость"] = {["AP"] = 70}, --
 	["Живучесть I"] = {["MANA_REG"] = 4, ["HEALTH_REG"] = 4}, -- Enchant Boots - Vitality http://wow.allakhazam.com/db/spell.html?wspell=27948
 	["Ледяная душа"] = {["SHADOW_SPELL_DMG"] = 54, ["FROST_SPELL_DMG"] = 54}, --
-	["Солнечный огонь"] = {["ARCANE_SPELL_DMG"] = 50, ["FIRE_SPELL_DMG"] = 50}, --
+	["Солнечный огонь"] = {["ARCANE_SPELL_DMG"] = 50, ["FIRE_SPELL_DMG"] = 50},
+	["+50 к силе заклинаний огня и тайной магии"] = {["ARCANE_SPELL_DMG"] = 50, ["FIRE_SPELL_DMG"] = 50},
 
 	["Мифриловые шпоры"] = {["MOUNT_SPEED"] = 4}, -- Mithril Spurs
 	["Небольшое ускорение верховой езды"] = {["MOUNT_SPEED"] = 2}, -- Enchant Gloves - Riding Skill
