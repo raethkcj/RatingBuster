@@ -2235,12 +2235,10 @@ local function RemoveBlizzardItemComparisons(tooltip)
 		local text = fontString:GetText()
 		if text then
 			if not isBlizzardComparison and blizzardComparisonPatterns[text] then
-				--print("Found blizz compare starting at line", i, "of", tooltip:GetName())
 				isBlizzardComparison = true
 			elseif isBlizzardComparison then
 				if not text:find("^|cffff2020%-") and not text:find("^|cff00ff00%+") then
 					isBlizzardComparison = false
-					print("Ending blizz comparison at", i, "with text", text)
 				end
 			end
 			if isBlizzardComparison then
