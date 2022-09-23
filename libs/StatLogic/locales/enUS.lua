@@ -167,6 +167,10 @@ L["WholeTextLookup"] = {
 	["Immune to Disarm"] = false, --
 	["Crusader"] = false, -- Enchant Crusader
 	["Lifestealing"] = false, -- Enchant Crusader
+	["Equip: Inflicts the will of the Ashbringer upon the wielder."] = false, -- Corrupted Ashbringer
+	["Equip: Your melee and ranged attacks have a chance to call on the power of the Arcane if you're exalted with the Scryers, or the Light if you're exalted with the Aldor."] = false,
+	["Equip: Your spells have a chance to call on the power of the Arcane if you're exalted with the Scryers, or the Light if you're exalted with the Aldor."] = false,
+	["Equip: Your heals have a chance to call on the power of the Arcane if you're exalted with the Scryers, or the Light if you're exalted with the Aldor."] = false,
 }
 ----------------------------
 -- Single Plus Stat Check --
