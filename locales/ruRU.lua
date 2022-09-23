@@ -29,9 +29,6 @@ L["Profiles"] = "Профили"
 -- /rb win
 L["Options Window"] = "Окно настроек"
 L["Shows the Options Window"] = "Показать окно настроек"
--- /rb hidebzcomp
-L["Hide Blizzard Item Comparisons"] = "Скрыть сравнение от Blizzard"
-L["Disable Blizzard stat change summary when using the built-in comparison tooltip"] = "Отключить сравнение предметов Blizzard, если используется метод сравнения RatingBuster"
 -- /rb statmod
 L["Enable Stat Mods"] = "Включить модуль статистики"
 L["Enable support for Stat Mods"] = "Включает поддержку модуля статистики"
@@ -286,6 +283,8 @@ L["Ignore gems in prismatic sockets when calculating the stat summary"] = "Иг�
 -- /rb sum diffstyle
 L["Display Style For Diff Value"] = "Стиль отображения отличия значений"
 L["Display diff values in the main tooltip or only in compare tooltips"] = "Отображения различных значений в главной подсказке или только в сравнительных подсказках"
+L["Hide Blizzard Item Comparisons"] = "Скрыть сравнение от Blizzard"
+L["Disable Blizzard stat change summary when using the built-in comparison tooltip"] = "Отключить сравнение предметов Blizzard, если используется метод сравнения RatingBuster"
 -- /rb sum space
 L["Add empty line"] = "Добавить пустую линию"
 L["Add a empty line before or after stat summary"] = "Добавить пустую линию перед или после итогов"

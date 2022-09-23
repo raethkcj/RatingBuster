@@ -218,6 +218,8 @@ L["Ignore gems on items when calculating the stat summary"] = "Ignorar gemas en 
 -- /rb sum diffstyle
 L["Display style for diff value"] = "Mostrar estilo para el valor de diferencia"
 L["Display diff values in the main tooltip or only in compare tooltips"] = "Mostrar diferencia valores en el tooltip principal o solo en los de comparacion"
+L["Hide Blizzard Item Comparisons"] = true
+L["Disable Blizzard stat change summary when using the built-in comparison tooltip"] = true
 -- /rb sum space
 L["Add empty line"] = "Anadir linea vacia"
 L["Add a empty line before or after stat summary"] = "Anade una linea vacia antes o despues del resumen"

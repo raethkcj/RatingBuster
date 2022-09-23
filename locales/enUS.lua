@@ -219,6 +219,8 @@ L["Ignore gems on items when calculating the stat summary"] = true
 -- /rb sum diffstyle
 L["Display style for diff value"] = true
 L["Display diff values in the main tooltip or only in compare tooltips"] = true
+L["Hide Blizzard Item Comparisons"] = true
+L["Disable Blizzard stat change summary when using the built-in comparison tooltip"] = true
 -- /rb sum space
 L["Add empty line"] = true
 L["Add a empty line before or after stat summary"] = true

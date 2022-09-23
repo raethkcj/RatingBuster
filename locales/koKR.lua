@@ -217,6 +217,8 @@ L["Ignore gems on items when calculating the stat summary"] = "능력치 요약 
 -- /rb sum diffstyle
 L["Display style for diff value"] = "차이값 표시 형식"
 L["Display diff values in the main tooltip or only in compare tooltips"] = "주요 툴팁 이나 비교 툴팁에만 차이값을 표시합니다."
+L["Hide Blizzard Item Comparisons"] = "기본 아이템 비교 숨김"
+L["Disable Blizzard stat change summary when using the built-in comparison tooltip"] = "툴팁에 블리자드의 기본 아이템 비교를 숨깁니다."
 -- /rb sum space
 L["Add empty line"] = "구분선 추가"
 L["Add a empty line before or after stat summary"] = "능력치 요약 앞 혹은 뒤에 구분선을 추가합니다."
