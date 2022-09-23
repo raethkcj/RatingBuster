@@ -1621,14 +1621,18 @@ function RatingBuster.ProcessTooltip(tooltip, name, link)
 			if link then
 				local _, _, id = strfind(link, "item:(%d+)")
 				local newLine = ""
+				local statColor = globalDB.sumStatColor
+				local valueColor = globalDB.sumValueColor
 				if level and globalDB.showItemLevel then
-					newLine = newLine..L["ItemLevel: "]..level
+					newLine = newLine .. statColor:WrapTextInColorCode(L["ItemLevel: "])
+					newLine = newLine .. valueColor:WrapTextInColorCode(level)
 				end
 				if id and globalDB.showItemID then
 					if newLine ~= "" then
 						newLine = newLine..", "
 					end
-					newLine = newLine..L["ItemID: "]..id
+					newLine = newLine .. statColor:WrapTextInColorCode(L["ItemID: "])
+					newLine = newLine .. valueColor:WrapTextInColorCode(id)
 				end
 				if newLine ~= "" then
 					cache[link] = newLine
