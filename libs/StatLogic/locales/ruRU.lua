@@ -421,13 +421,13 @@ L["StatIDLookup"] = {
 
 	["Improves your chance to hit%"] = {"MELEE_HIT"},
 	["Hit Rating"] = {"MELEE_HIT_RATING",},
-	["Повышает меткость"] = {"MELEE_HIT_RATING",}, -- ITEM_MOD_HIT_RATING
-	["Меткость в ближнем бою"] = {"MELEE_HIT_RATING",}, -- ITEM_MOD_HIT_MELEE_RATING
-	["Повышает рейтинг меткости"] = {"MELEE_HIT_RATING",},
-	["к рейтингу меткости"] = {"SPELL_HIT_RATING",}, -- Presence of Sight +18 Healing and Spell Damage/+8 Spell Hit http://wow.allakhazam.com/db/spell.html?wspell=24164
+	["повышает меткость"] = {"HIT_RATING",}, -- ITEM_MOD_HIT_RATING
+	["меткость в ближнем бою"] = {"MELEE_HIT_RATING",}, -- ITEM_MOD_HIT_MELEE_RATING
+	["повышает рейтинг меткости"] = {"HIT_RATING",},
+	["к рейтингу меткости"] = {"HIT_RATING",},
 	["Improves your chance to hit with spells%"] = {"SPELL_HIT"},
 	["Spell Hit Rating"] = {"SPELL_HIT_RATING",},
-	["повышает рейтинг меткости на"] = {"SPELL_HIT_RATING",}, -- ITEM_MOD_HIT_SPELL_RATING
+	["повышает рейтинг меткости на"] = {"HIT_RATING",},
 	["Increases your spell hit rating"] = {"SPELL_HIT_RATING",},
 	["Ranged Hit Rating"] = {"RANGED_HIT_RATING",},
 	["Improves ranged hit rating"] = {"RANGED_HIT_RATING",}, -- ITEM_MOD_HIT_RANGED_RATING
