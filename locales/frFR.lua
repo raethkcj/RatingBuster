@@ -21,8 +21,8 @@ L["Shows the Options Window"] = "Affiche la fenêtre des options"
 L["Enable Stat Mods"] = "Activer les Stat Mods"
 L["Enable support for Stat Mods"] = "Active le support pour Stat Mods"
 -- /rb avoidancedr
-L["Enable Avoidance Diminishing Returns"] = true -- à traduire
-L["Dodge, Parry, Miss Avoidance values will be calculated using the avoidance deminishing return formula with your current stats"] = true -- à traduire
+L["Enable Avoidance Diminishing Returns"] = "Rendements décroissants de l'Évitement"
+L["Dodge, Parry, Miss Avoidance values will be calculated using the avoidance deminishing return formula with your current stats"] = "Les valeurs d'Évitement; Esquive, Parade, Raté, seront calculées en utilisant la formule de rendements décroissants d'Évitement avec vos stats actuelles."
 -- /rb itemid
 L["Show ItemID"] = "ID des objets"
 L["Show the ItemID in tooltips"] = "Affiche l'ID des objets dans les info-bulles."
@@ -38,7 +38,7 @@ L["Set the level used in calculations (0 = your level)"] = "Définis le niveau u
 -- /rb color
 L["Change text color"] = "Couleur du texte"
 L["Changes the color of added text"] = "Change la couleur du texte ajouté."
-L["Change number color"] = true
+L["Change number color"] = "Couleur des chiffres"
 -- /rb rating
 L["Rating"] = "Détail des scores"
 L["Options for Rating display"] = "Sélectionne les différents bonus liés aux scores à inclure dans les info-bulles des objets."
@@ -47,11 +47,11 @@ L["Show Rating conversions"] = "Aperçu pourcentage"
 L["Show Rating conversions in tooltips"] = "Ajoute la conversion en pourcentage des différents scores dans les info-bulles des objets.\n\nCette case est requise pour l'affichage des scores détaillés."
 -- TODO
 -- /rb rating spell
-L["Show Spell Hit/Haste"] = true
-L["Show Spell Hit/Haste from Hit/Haste Rating"] = true
+L["Show Spell Hit/Haste"] = "Toucher/Hâte des sorts"
+L["Show Spell Hit/Haste from Hit/Haste Rating"] = "Affiche le Toucher/Hâte des sorts provenant des scores de Toucher/Hâte."
 -- /rb rating physical
-L["Show Physical Hit/Haste"] = true
-L["Show Physical Hit/Haste from Hit/Haste Rating"] = true
+L["Show Physical Hit/Haste"] = "Toucher/Hâte de mêlée"
+L["Show Physical Hit/Haste from Hit/Haste Rating"] = "Affiche le Toucher/Hâte de mêlée provenant des scores de Toucher/Hâte."
 -- /rb rating detail
 L["Show detailed conversions text"] = "Textes plus détaillés" 
 L["Show detailed text for Resiliance and Expertise conversions"] = "Rend la conversion des scores de résilience et d'expertise plus précise.\n\nLa résilience indiquera l'évitement des coups critiques, la diminution des dégâts critiques et la diminution des dégâts périodiques.\n\nL'expertise indiquera la diminution du risque que vos attaques soient esquivées et parées."
@@ -189,6 +189,14 @@ L["Show Spell Damage from Spirit"] = "Affiche les Dégâts des sorts apportés p
 L["Show Healing"] = "Puissance des soins"
 L["Show Healing from Spirit"] = "Affiche la Puissance des soins apportée par l'Esprit."
 
+---------------------------------------------------------------------------
+-- /rb stat armor
+L["Armor"] = "Armure"
+L["Changes the display of Armor"] = "Sélectionne les différents bonus liés à l'Armure."
+-- /rb stat armor ap
+L["Show Attack Power"] = "Puissance d'attaque"
+L["Show Attack Power from Armor"] = "Affiche la Puissance d'attaque apportée par l'Armure."
+---------------------------------------------------------------------------
 -- /rb sum
 L["Stat Summary"] = "Résumé des Stats"
 L["Options for stat summary"] = "Un résumé des différents bonus apportés par les statistiques peut être inclu dans les info-bulles des objets."
@@ -214,7 +222,7 @@ L["Ignore gems on items when calculating the stat summary"] = "Ignorer les gemme
 L["Display style for diff value"] = "Mode d'affichage du comparatif"
 L["Display diff values in the main tooltip or only in compare tooltips"] = "Détermine si le comparatif s'ajoute à l'info-bulle principale ou à l'info-bulle de la pièce comparée."
 L["Hide Blizzard Item Comparisons"] = "Masquer la comparaison d'objet de Blizzard"
-L["Disable Blizzard stat change summary when using the built-in comparison tooltip"] = true -- à traduire
+L["Disable Blizzard stat change summary when using the built-in comparison tooltip"] = "Désactive le comparateur de statistiques de Blizzard dans les info-bulles de comparaison des équipements."
 -- /rb sum space
 L["Add empty line"] = "Ajouter une ligne vide"
 L["Add a empty line before or after stat summary"] = "Ajoute une ligne vide avant et/ou après le résumé."
@@ -381,10 +389,10 @@ L["Spell Penetration Summary"] = "Inclure la Pénétration des sorts."
 L["Sum Ignore Armor"] = "Pénétration d'armure"
 L["Ignore Armor Summary"] = "Inclure la Pénétration d'armure."
 -- TODO
-L["Sum Armor Penetration"] = true
-L["Armor Penetration Summary"] = true
-L["Sum Armor Penetration Rating"] = true
-L["Armor Penetration Rating Summary"] = true
+L["Sum Armor Penetration"] = "Pénétration d'armure"
+L["Armor Penetration Summary"] = "Inclure la Pénétration d'armure."
+L["Sum Armor Penetration Rating"] = "Score de pénétration d'armure"
+L["Armor Penetration Rating Summary"] = "Inclure le score de Pénétration d'armure."
 -- /rb sum stat weapondps
 --["Sum Weapon DPS"] = true,
 --["Weapon DPS Summary"] = true,
