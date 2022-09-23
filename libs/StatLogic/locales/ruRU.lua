@@ -175,6 +175,11 @@ L["WholeTextLookup"] = {
 	["Рыцарь"] = false, -- Enchant Crusader
 	["Вампиризм"] = false,
 	["Мангуст"] = false, -- Enchant Mongoose
+	["Если на персонаже: Подчинение владельца воле Испепелителя."] = false, -- Corrupted Ashbringer
+	-- Shattered Sun Offensive necks
+	["Если на персонаже: Если вас превозносят Провидцы, у ваших атак ближнего и дальнего боя появляется шанс придать вам силу тайной магии, а при превознесении со стороны Алдоров – силу Света."] = false,
+	["Если на персонаже: Если вас превозносят Провидцы, у ваших заклинаний появляется шанс придать вам силу тайной магии, а при превознесении со стороны Алдоров – силу Света."] = false,
+	["Если на персонаже: Если вас превозносят Провидцы, у ваших целительных заклинаний появляется шанс придать вам силу тайной магии, а при превознесении со стороны Алдоров – силу Света."] = false,
 }
 ----------------------------
 -- Single Plus Stat Check --
@@ -213,9 +218,12 @@ L["PreScanPatterns"] = {
 	["^.+%((%d+)/%d+%)$"] = false, -- Set Name (0/9)
 	["|cff808080"] = false, -- Gray text "  |cff808080Requires at least 2 Yellow gems|r\n  |cff808080Requires at least 1 Red gem|r"
 	-- Procs
-	--["[Cc]hance"] = false, -- [Mark of Defiance] ID:27924 -- [Staff of the Qiraji Prophets] ID:21128 -- Commented out because it was blocking [Insightful Earthstorm Diamond] 
+	--["[Cc]hance"] = false, -- [Mark of Defiance] ID:27924 -- [Staff of the Qiraji Prophets] ID:21128 -- Commented out because it was blocking [Insightful Earthstorm Diamond]
 	["[Ss]ometimes"] = false, -- [Darkmoon Card: Heroism] ID:19287
 	["[Ww]hen struck in combat"] = false, -- [Essence of the Pure Flame] ID: 18815
+	["[Вв]озможный эффект"] = false, -- Sulfuras, Hand of Ragnaros
+	["[Шш]анс увеличить"] = false, -- Mana-Etched Regalia
+	["с вероятностью"] = false,
 }
 --------------
 -- DeepScan --
