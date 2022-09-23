@@ -46,7 +46,7 @@ L["Exclude"] = {
 	[ITEM_CANT_BE_DESTROYED] = true, -- ITEM_CANT_BE_DESTROYED = "That item cannot be destroyed."; -- Attempted to destroy a NO_DESTROY item
 	[ITEM_CONJURED] = true, -- ITEM_CONJURED = "Conjured Item"; -- Item expires
 	[ITEM_DISENCHANT_NOT_DISENCHANTABLE] = true, -- ITEM_DISENCHANT_NOT_DISENCHANTABLE = "Cannot be disenchanted"; -- Items which cannot be disenchanted ever
-	["Disen"] = true, -- ITEM_DISENCHANT_ANY_SKILL = "Disenchantable"; -- Items that can be disenchanted at any skill level
+	["Для ра"] = true, -- ITEM_DISENCHANT_ANY_SKILL = "Disenchantable"; -- Items that can be disenchanted at any skill level
 	-- ITEM_DISENCHANT_MIN_SKILL = "Disenchanting requires %s (%d)"; -- Minimum enchanting skill needed to disenchant
 	["Durat"] = true, -- ITEM_DURATION_DAYS = "Длительность, дней: %d";
 	["<Изго"] = true, -- ITEM_CREATED_BY = "|cff00ff00<Создатель: %s>|r"; -- %s is the creator of the item
@@ -55,21 +55,23 @@ L["Exclude"] = {
 	["Требу"] = true, -- Requires Level xx -- ITEM_MIN_LEVEL = "Требуется уровень %d"; -- Required level to use the item
 	["\nТре"] = true, -- Requires Level xx -- ITEM_MIN_SKILL = "Требуется %s (%d)"; -- Required skill rank to use the item
 	["Класс"] = true, -- Classes: xx -- ITEM_CLASSES_ALLOWED = "Класс: %s"; -- Lists the classes allowed to use this item
+	["Тольк"] = true, -- Only for Horde/Alliance (PvP trinkets)
 	["Расы:"] = true, -- Races: xx (vendor mounts) -- ITEM_RACES_ALLOWED = "Раса: %s"; -- Lists the races allowed to use this item
 	["Испол"] = true, -- Use: -- ITEM_SPELL_TRIGGER_ONUSE = "Использование:";
-	["Chanc"] = true, -- Chance On Hit: -- ITEM_SPELL_TRIGGER_ONPROC = "Шанс при ударе:";
+	["Шанс "] = true, -- Chance On Hit: -- ITEM_SPELL_TRIGGER_ONPROC = "Шанс при ударе:";
+	["Транс"] = true, -- Mount;
 	-- Set Bonuses
 	-- ITEM_SET_BONUS = "Set: %s";
 	-- ITEM_SET_BONUS_GRAY = "(%d) Set: %s";
 	-- ITEM_SET_NAME = "%s (%d/%d)"; -- Set name (2/5)
 	["Компл"] = true,
-	["(2) S"] = true,
-	["(3) S"] = true,
-	["(4) S"] = true,
-	["(5) S"] = true,
-	["(6) S"] = true,
-	["(7) S"] = true,
-	["(8) S"] = true,
+	["(2) Н"] = true,
+	["(3) Н"] = true,
+	["(4) Н"] = true,
+	["(5) Н"] = true,
+	["(6) Н"] = true,
+	["(7) Н"] = true,
+	["(8) Н"] = true,
 	-- Equip type
 	[GetItemClassInfo(Enum.ItemClass.Projectile)] = true, -- Ice Threaded Arrow ID:19316
 	[INVTYPE_AMMO] = true,
@@ -150,7 +152,8 @@ L["WholeTextLookup"] = {
 	["Жестокость"] = {["AP"] = 70}, --
 	["Живучесть I"] = {["MANA_REG"] = 4, ["HEALTH_REG"] = 4}, -- Enchant Boots - Vitality http://wow.allakhazam.com/db/spell.html?wspell=27948
 	["Ледяная душа"] = {["SHADOW_SPELL_DMG"] = 54, ["FROST_SPELL_DMG"] = 54}, --
-	["Солнечный огонь"] = {["ARCANE_SPELL_DMG"] = 50, ["FIRE_SPELL_DMG"] = 50}, --
+	["Солнечный огонь"] = {["ARCANE_SPELL_DMG"] = 50, ["FIRE_SPELL_DMG"] = 50},
+	["+50 к силе заклинаний огня и тайной магии"] = {["ARCANE_SPELL_DMG"] = 50, ["FIRE_SPELL_DMG"] = 50},
 
 	["Мифриловые шпоры"] = {["MOUNT_SPEED"] = 4}, -- Mithril Spurs
 	["Небольшое ускорение верховой езды"] = {["MOUNT_SPEED"] = 2}, -- Enchant Gloves - Riding Skill
@@ -163,13 +166,20 @@ L["WholeTextLookup"] = {
 
 	["Скрытность"] = {["THREAT_MOD"] = -2}, -- Enchant Cloak - Subtlety
 	["На 2% уменьшена угроза"] = {["THREAT_MOD"] = -2}, -- StatLogic:GetSum("item:23344:2832")
+	["+2% угрозы"] = {["THREAT_MOD"] = 2}, -- Formula: Enchant Gloves - Threat
 	["Надето: Позволяет дышать под водой."] = false, -- [Band of Icy Depths] ID: 21526
 	["Позволяет дышать под водой"] = false, --
 	--	["Equip: Immune to Disarm."] = false, -- [Stronghold Gauntlets] ID: 12639 -- Fixed for TBC Classic 2.5.1: no longer immune.
 	["Надето: Сокращает время разоружения на 50%."] = false, -- [Stronghold Gauntlets] ID: 12639
 	["Сокращает время разоружения на 50%"] = false, --
 	["Рыцарь"] = false, -- Enchant Crusader
-	["Вампиризм"] = false, -- Enchant Crusader
+	["Вампиризм"] = false,
+	["Мангуст"] = false, -- Enchant Mongoose
+	["Если на персонаже: Подчинение владельца воле Испепелителя."] = false, -- Corrupted Ashbringer
+	-- Shattered Sun Offensive necks
+	["Если на персонаже: Если вас превозносят Провидцы, у ваших атак ближнего и дальнего боя появляется шанс придать вам силу тайной магии, а при превознесении со стороны Алдоров – силу Света."] = false,
+	["Если на персонаже: Если вас превозносят Провидцы, у ваших заклинаний появляется шанс придать вам силу тайной магии, а при превознесении со стороны Алдоров – силу Света."] = false,
+	["Если на персонаже: Если вас превозносят Провидцы, у ваших целительных заклинаний появляется шанс придать вам силу тайной магии, а при превознесении со стороны Алдоров – силу Света."] = false,
 }
 ----------------------------
 -- Single Plus Stat Check --
@@ -208,9 +218,12 @@ L["PreScanPatterns"] = {
 	["^.+%((%d+)/%d+%)$"] = false, -- Set Name (0/9)
 	["|cff808080"] = false, -- Gray text "  |cff808080Requires at least 2 Yellow gems|r\n  |cff808080Requires at least 1 Red gem|r"
 	-- Procs
-	--["[Cc]hance"] = false, -- [Mark of Defiance] ID:27924 -- [Staff of the Qiraji Prophets] ID:21128 -- Commented out because it was blocking [Insightful Earthstorm Diamond] 
+	--["[Cc]hance"] = false, -- [Mark of Defiance] ID:27924 -- [Staff of the Qiraji Prophets] ID:21128 -- Commented out because it was blocking [Insightful Earthstorm Diamond]
 	["[Ss]ometimes"] = false, -- [Darkmoon Card: Heroism] ID:19287
 	["[Ww]hen struck in combat"] = false, -- [Essence of the Pure Flame] ID: 18815
+	["[Вв]озможный эффект"] = false, -- Sulfuras, Hand of Ragnaros
+	["[Шш]анс увеличить"] = false, -- Mana-Etched Regalia
+	["с вероятностью"] = false,
 }
 --------------
 -- DeepScan --
@@ -229,7 +242,7 @@ L["DeepScanSeparators"] = {
 L["DeepScanWordSeparators"] = {
 	" и ", -- "Critical Rating +6 and Dodge Rating +5": Assassin's Fire Opal ID:30565
 }
-L["DualStatPatterns"] = { 
+L["DualStatPatterns"] = {
 	-- all lower case
 	["^%+(%d+) healing and %+(%d+) spell damage$"] = {{"HEAL",}, {"SPELL_DMG",},},
 	["^%+(%d+) healing %+(%d+) spell damage$"] = {{"HEAL",}, {"SPELL_DMG",},},
@@ -248,62 +261,65 @@ L["StatIDLookup"] = {
 	["% Threat"] = {"THREAT_MOD"}, -- StatLogic:GetSum("item:23344:2613")
 	["Увеличение уровня эффективного действия незаметности"] = {"STEALTH_LEVEL"}, -- [Nightscape Boots] ID: 8197
 	["Weapon Damage"] = {"MELEE_DMG"}, -- Enchant
-	["Increases mount speed%"] = {"MOUNT_SPEED"}, -- [Highlander's Plate Greaves] ID: 20048
+	["увеличение скорости передвижения верхом на%"] = {"MOUNT_SPEED"}, -- [Highlander's Plate Greaves] ID: 20048
 
 	["ко всем характеристикам"] = {"STR", "AGI", "STA", "INT", "SPI",},
 	["к силе"] = {"STR",},
-	["силу цели"] = {"STR",}, -- (Added new line)
+	["силу цели"] = {"STR",},
 	["к ловкости"] = {"AGI",},
 	["к выносливости"] = {"STA",},
 	["к интеллекту"] = {"INT",},
 	["к духу"] = {"SPI",},
 
-	["Сопротивление тайной магии"] = {"ARCANE_RES",},
-	["Сопротивление огню"] = {"FIRE_RES",},
-	["Сопротивление силам природы"] = {"NATURE_RES",},
-	["Сопротивление магии льда"] = {"FROST_RES",},
-	["Сопротивление темной магии"] = {"SHADOW_RES",},
-	["сопротивления тайной магии"] = {"ARCANE_RES",}, -- Arcane Armor Kit +8 Arcane Resist
-	["сопротивления огню"] = {"FIRE_RES",}, -- Flame Armor Kit +8 Fire Resist
-	["сопротивление силам природы"] = {"NATURE_RES",}, -- Frost Armor Kit +8 Frost Resist (wrong comment?)
-	["сопротивление магии льда"] = {"FROST_RES",}, -- Nature Armor Kit +8 Nature Resist (wrong comment?)
-	["сопротивления темной магии"] = {"SHADOW_RES",}, -- Shadow Armor Kit +8 Shadow Resist
-	["Shadow resistance"] = {"SHADOW_RES",}, -- Demons Blood ID: 10779 (this item doesn't have stats in WotLK)
+	["сопротивление тайной магии"] = {"ARCANE_RES",},
+	["к сопротивлению тайной магии"] = {"ARCANE_RES",},
+	["сопротивление огню"] = {"FIRE_RES",},
+	["к сопротивлению огню"] = {"FIRE_RES",},
+	["сопротивление силам природы"] = {"NATURE_RES",},
+	["к сопротивлению силам природы"] = {"NATURE_RES",},
+	["сопротивление магии льда"] = {"FROST_RES",},
+	["к сопротивлению магии льда"] = {"FROST_RES",},
+	["сопротивление темной магии"] = {"SHADOW_RES",},
+	["к сопротивлению темной магии"] = {"SHADOW_RES",},
+	["сопротивления темной магии"] = {"SHADOW_RES",},
 	["сопротивление всем видам магии"] = {"ARCANE_RES", "FIRE_RES", "FROST_RES", "NATURE_RES", "SHADOW_RES",},
-	["Resist All"] = {"ARCANE_RES", "FIRE_RES", "FROST_RES", "NATURE_RES", "SHADOW_RES",}, -- (what is this?)
+	["ко всем видам сопротивления"] = {"ARCANE_RES", "FIRE_RES", "FROST_RES", "NATURE_RES", "SHADOW_RES",},
+	["Resist All"] = {"ARCANE_RES", "FIRE_RES", "FROST_RES", "NATURE_RES", "SHADOW_RES",},
 
 	["к рыбной ловле"] = {"FISHING",}, -- Fishing enchant ID:846
-	["рыбная ловля"] = {"FISHING",}, -- Fishing lure
-	["Рыбная ловля"] = {"FISHING",}, -- Equip: Increased Fishing +20. (it actually looks like: Увеличение навыка "Рыбная ловля" на +20)
+	["рыбная ловля"] = {"FISHING",}, -- Equip: Increased Fishing +20. (it actually looks like: Увеличение навыка "Рыбная ловля" на +20)
+	["к навыку рыбной ловли"] = {"FISHING",},
+	["навык рыбной ловли увеличивается на"] = {"FISHING",},
 	["к горному делу"] = {"MINING",}, -- Mining enchant ID:844
 	["к травничеству"] = {"HERBALISM",}, -- Heabalism enchant ID:845
 	["к снятию шкур"] = {"SKINNING",}, -- Skinning enchant ID:865
 
-	["Броня"] = {"ARMOR_BONUS",},
-	["Защита"] = {"DEFENSE",},
+	["броня"] = {"ARMOR_BONUS",},
+	["к броне"] = {"ARMOR_BONUS",},
+	["защита"] = {"DEFENSE",},
 	["Increased Defense"] = {"DEFENSE",},
-	["Блок"] = {"BLOCK_VALUE",}, -- +22 Block Value (block value or chance? item example)
-	["Block Value"] = {"BLOCK_VALUE",}, -- +22 Block Value (block value or chance? item example)
+	["блок"] = {"BLOCK_VALUE",},
+	["блокирование:"] = {"BLOCK_VALUE",},
 	["к показателю блокирования щита"] = {"BLOCK_VALUE",}, -- +10% Shield Block Value [Eternal Earthstorm Diamond] http://www.wowhead.com/?item=35501
-	["Increases the block value of your shield"] = {"BLOCK_VALUE",}, -- (what item?)
+	["увеличивает показатель блокирования вашего щита наед"] = {"BLOCK_VALUE",},
 
-	["Здоровье"] = {"HEALTH",},
-	["HP"] = {"HEALTH",}, -- (example please)
-	["Мана"] = {"MANA",},
+	["здоровье"] = {"HEALTH",},
+	["к здоровью"] = {"HEALTH",},
+	["HP"] = {"HEALTH",},
+	["мана"] = {"MANA",},
 
-	["Сила атаки"] = {"AP",},
-	["Увеличивает силу атаки на"] = {"AP",},
-	["повышает силу атаки на"] = {"AP",}, -- (Added new line)
+	["сила атаки"] = {"AP",},
+	["увеличивает силу атаки на"] = {"AP",},
+	["повышает силу атаки на"] = {"AP",},
 	["силы атаки нав бою с нежитью"] = {"AP_UNDEAD",}, -- Actually looks like "Увеличение силы атаки на 45 ед. в бою с нежитью"
 	-- [Wristwraps of Undead Slaying] ID:23093
-	["Увеличение силы атаки наед. в битве с нежитью"] = {"AP_UNDEAD",}, -- [Seal of the Dawn] ID:13209
-	["Увеличение силы атаки наед. в бою с нежитью. Также позволяет собирать камни Плети от имени и по поручению Серебряного Рассвета"] = {"AP_UNDEAD",}, -- [Seal of the Dawn] ID:13209
+	["увеличение силы атаки наед. в битве с нежитью"] = {"AP_UNDEAD",}, -- [Seal of the Dawn] ID:13209
+	["увеличение силы атаки наед. в бою с нежитью. Также позволяет собирать камни Плети от имени и по поручению Серебряного Рассвета"] = {"AP_UNDEAD",}, -- [Seal of the Dawn] ID:13209
 	["Increases attack powerwhen fighting Demons"] = {"AP_DEMON",}, -- (item example please)
-	["Увеличение силы атаки наед. в бою с нежитью и демонами"] = {"AP_UNDEAD", "AP_DEMON",}, -- [Mark of the Champion] ID:23206
-	["Attack Power in Cat, Bear, and Dire Bear forms only"] = {"FERAL_AP",}, -- (can't find an item with a such text)
-	["Увеличивает силу атаки нав облике кошки, медведя, лютого медведя и лунного совуха"] = {"FERAL_AP",},
-	["Сила атаки дальнего боя"] = {"RANGED_AP",},
-	["Увеличивает силу атак дальнего боя"] = {"RANGED_AP",}, -- [High Warlord's Crossbow] ID: 18837
+	["увеличение силы атаки наед. в бою с нежитью и демонами"] = {"AP_UNDEAD", "AP_DEMON",}, -- [Mark of the Champion] ID:23206
+	["увеличивает силу атаки нав облике кошки, медведя, лютого медведя и лунного совуха"] = {"FERAL_AP",},
+	["сила атаки дальнего боя"] = {"RANGED_AP",},
+	["увеличивает силу атак дальнего боя"] = {"RANGED_AP",}, -- [High Warlord's Crossbow] ID: 18837
 
 	["Health Regen"] = {"MANA_REG",},
 	["Health per"] = {"HEALTH_REG",},
@@ -312,21 +328,21 @@ L["StatIDLookup"] = {
 	["health every"] = {"HEALTH_REG",}, -- [Resurgence Rod] ID:17743
 	["your normal health regeneration"] = {"HEALTH_REG",}, -- Demons Blood ID: 10779
 	["Restoreshealth per 5 sec"] = {"HEALTH_REG",}, -- [Onyxia Blood Talisman] ID: 18406
-	["Restoreshealth every 5 sec"] = {"HEALTH_REG",}, -- [Resurgence Rod] ID:17743
+	["восполняетед. здоровья каждые 5 секунд"] = {"HEALTH_REG",}, -- [Resurgence Rod] ID:17743
 	["Mana Regen"] = {"MANA_REG",}, -- Prophetic Aura +4 Mana Regen/+10 Stamina/+24 Healing Spells http://wow.allakhazam.com/db/spell.html?wspell=24167
 	["Mana per"] = {"MANA_REG",},
 	["mana per"] = {"MANA_REG",}, -- Resurgence Rod ID:17743 Most common
 	["Mana every"] = {"MANA_REG",},
 	["mana every"] = {"MANA_REG",},
-	["Mana every 5 seconds"] = {"MANA_REG",}, -- [Royal Nightseye] ID: 24057
 	["Mana every 5 Sec"] = {"MANA_REG",}, --
 	["mana every 5 sec"] = {"MANA_REG",}, -- Enchant Chest - Restore Mana Prime "+6 mana every 5 sec." http://wow.allakhazam.com/db/spell.html?wspell=33991
 	["Mana per 5 Seconds"] = {"MANA_REG",}, -- [Royal Shadow Draenite] ID: 23109
 	["Mana Per 5 sec"] = {"MANA_REG",}, -- [Royal Shadow Draenite] ID: 23109
 	["Mana per 5 sec"] = {"MANA_REG",}, -- [Cyclone Shoulderpads] ID: 29031
 	["mana per 5 sec"] = {"MANA_REG",}, -- [Royal Tanzanite] ID: 30603
-	["Restoresmana per 5 sec"] = {"MANA_REG",}, -- [Resurgence Rod] ID:17743
-	["восполнениеед. маны за 5 сек."] = {"MANA_REG",}, -- (Added new line)
+	["восполнениеед. маны в 5 секунд"] = {"MANA_REG",},
+	["восполнениеед. маны за 5 сек."] = {"MANA_REG",},
+	["восполнениеед. маны раз в 5 секунд"] = {"MANA_REG",},
 	["Mana restored per 5 seconds"] = {"MANA_REG",}, -- Magister's Armor Kit +3 Mana restored per 5 seconds http://wow.allakhazam.com/db/spell.html?wspell=32399
 	["Mana Regenper 5 sec"] = {"MANA_REG",}, -- Enchant Bracer - Mana Regeneration "Mana Regen 4 per 5 sec." http://wow.allakhazam.com/db/spell.html?wspell=23801
 	["Mana per 5 Sec"] = {"MANA_REG",}, -- Enchant Bracer - Restore Mana Prime "6 Mana per 5 Sec." http://wow.allakhazam.com/db/spell.html?wspell=27913
@@ -339,12 +355,11 @@ L["StatIDLookup"] = {
 	["Spell Damage and Healing"] = {"SPELL_DMG", "HEAL",},
 	["Spell Damage"] = {"SPELL_DMG", "HEAL",},
 	["Increases damage and healing done by magical spells and effects"] = {"SPELL_DMG", "HEAL"},
-	["Increases damage and healing done by magical spells and effects of all party members within 30 yards"] = {"SPELL_DMG", "HEAL"}, -- Atiesh
+	["повышает рейтинг критичекого поражения заклинаний всех участников группы в радиусе 30 м. на"] = {"SPELL_DMG", "HEAL"}, -- Atiesh
 	["Spell Damage and Healing"] = {"SPELL_DMG", "HEAL",}, --StatLogic:GetSum("item:22630")
 	["Damage"] = {"SPELL_DMG",},
 	["Increases your spell damage"] = {"SPELL_DMG",}, -- Atiesh ID:22630, 22631, 22632, 22589
 	["к силе заклинаний"] = {"SPELL_DMG", "HEAL",},
-	["Увеличивает силу заклинаний"] = {"SPELL_DMG", "HEAL",},
 	["увеличивает силу заклинаний на"] = {"SPELL_DMG", "HEAL",},
 	["Holy Damage"] = {"HOLY_SPELL_DMG",},
 	["Arcane Damage"] = {"ARCANE_SPELL_DMG",},
@@ -371,7 +386,7 @@ L["StatIDLookup"] = {
 	["Increases the damage done by Nature spells and effects"] = {"NATURE_SPELL_DMG",}, -- Added just in case
 	["Increases the damage done by Shadow spells and effects"] = {"SHADOW_SPELL_DMG",}, -- Added just in case
 
-	["Increases damage done to Undead by magical spells and effects"] = {"SPELL_DMG_UNDEAD"}, -- [Robe of Undead Cleansing] ID:23085
+	["увеличивает силу заклинаний, применяемых против нежити, на"] = {"SPELL_DMG_UNDEAD"}, -- [Robe of Undead Cleansing] ID:23085
 	["Increases damage done to Undead by magical spells and effects.  It also allows the acquisition of Scourgestones on behalf of the Argent Dawn"] = {"SPELL_DMG_UNDEAD"}, -- [Rune of the Dawn] ID:19812
 	["Increases damage done to Undead and Demons by magical spells and effects"] = {"SPELL_DMG_UNDEAD", "SPELL_DMG_DEMON"}, -- [Mark of the Champion] ID:23207
 
@@ -391,25 +406,28 @@ L["StatIDLookup"] = {
 	["Addsdamage per second"] = {"DPS",}, -- [Thorium Shells] ID: 15977
 
 	["Defense Rating"] = {"DEFENSE_RATING",},
-	["Increases defense rating"] = {"DEFENSE_RATING",},
+	["повышает рейтинг защиты на"] = {"DEFENSE_RATING",},
 	["Dodge Rating"] = {"DODGE_RATING",},
-	["Increases your dodge rating"] = {"DODGE_RATING",},
+	["к рейтингу уклонения"] = {"DODGE_RATING",},
+	["увеличивает рейтинг уклонения"] = {"DODGE_RATING",},
+	["увеличивает рейтинг уклонения на"] = {"DODGE_RATING",},
+	["повышает рейтинг уклонения на"] = {"DODGE_RATING",},
 	["Parry Rating"] = {"PARRY_RATING",},
-	["Increases your parry rating"] = {"PARRY_RATING",},
+	["повышает рейтинг парирования на"] = {"PARRY_RATING",},
 	["Shield Block Rating"] = {"BLOCK_RATING",}, -- Enchant Shield - Lesser Block +10 Shield Block Rating http://wow.allakhazam.com/db/spell.html?wspell=13689
 	["Block Rating"] = {"BLOCK_RATING",},
-	["Increases your block rating"] = {"BLOCK_RATING",},
-	["Increases your shield block rating"] = {"BLOCK_RATING",},
+	["увеличение рейтинга блока наед"] = {"BLOCK_RATING",},
+	["увеличивает рейтинг блокирования щитом на"] = {"BLOCK_RATING",},
 
 	["Improves your chance to hit%"] = {"MELEE_HIT"},
 	["Hit Rating"] = {"MELEE_HIT_RATING",},
-	["Повышает меткость"] = {"MELEE_HIT_RATING",}, -- ITEM_MOD_HIT_RATING
-	["Меткость в ближнем бою"] = {"MELEE_HIT_RATING",}, -- ITEM_MOD_HIT_MELEE_RATING
-	["Повышает рейтинг меткости"] = {"MELEE_HIT_RATING",},
-	["к рейтингу меткости"] = {"SPELL_HIT_RATING",}, -- Presence of Sight +18 Healing and Spell Damage/+8 Spell Hit http://wow.allakhazam.com/db/spell.html?wspell=24164
+	["повышает меткость"] = {"HIT_RATING",}, -- ITEM_MOD_HIT_RATING
+	["меткость в ближнем бою"] = {"MELEE_HIT_RATING",}, -- ITEM_MOD_HIT_MELEE_RATING
+	["повышает рейтинг меткости"] = {"HIT_RATING",},
+	["к рейтингу меткости"] = {"HIT_RATING",},
 	["Improves your chance to hit with spells%"] = {"SPELL_HIT"},
 	["Spell Hit Rating"] = {"SPELL_HIT_RATING",},
-	["повышает рейтинг меткости на"] = {"SPELL_HIT_RATING",}, -- ITEM_MOD_HIT_SPELL_RATING
+	["повышает рейтинг меткости на"] = {"HIT_RATING",},
 	["Increases your spell hit rating"] = {"SPELL_HIT_RATING",},
 	["Ranged Hit Rating"] = {"RANGED_HIT_RATING",},
 	["Improves ranged hit rating"] = {"RANGED_HIT_RATING",}, -- ITEM_MOD_HIT_RANGED_RATING
@@ -418,7 +436,7 @@ L["StatIDLookup"] = {
 	["Improves your chance to get a critical strike by%"] = {"MELEE_CRIT", "RANGED_CRIT"},
 	["Crit Rating"] = {"CRIT_RATING",},
 	["Critical Rating"] = {"CRIT_RATING",},
-	["Рейтинг критического удара"] = {"CRIT_RATING",},
+	["рейтинг критического удара"] = {"CRIT_RATING",},
 	["Increases your critical hit rating"] = {"CRIT_RATING",},
 	["Increases your critical strike rating"] = {"CRIT_RATING",},
 	["повышает рейтинг критического удара на"] = {"CRIT_RATING",},
@@ -434,12 +452,13 @@ L["StatIDLookup"] = {
 	["Improves spell critical strike rating"] = {"SPELL_CRIT_RATING",},
 	["Increases your ranged critical strike rating"] = {"RANGED_CRIT_RATING",}, -- Fletcher's Gloves ID:7348
 
-	["Устойчивость"] = {"RESILIENCE_RATING",},
-	["Рейтинг устойчивости"] = {"RESILIENCE_RATING",}, -- Enchant Chest - Major Resilience "+15 Resilience Rating" http://wow.allakhazam.com/db/spell.html?wspell=33992
+	["устойчивость"] = {"RESILIENCE_RATING",},
+	["рейтинг устойчивости"] = {"RESILIENCE_RATING",}, -- Enchant Chest - Major Resilience "+15 Resilience Rating" http://wow.allakhazam.com/db/spell.html?wspell=33992
 	["повышает рейтинг устойчивости на"] = {"RESILIENCE_RATING",},
+	["к рейтингу устойчивости"] = {"RESILIENCE_RATING",},
 
 	["Haste Rating"] = {"HASTE_RATING"},
-	["рейтингу скорости"] = {"HASTE_RATING"}, -- (added this line)
+	["к рейтингу скорости"] = {"HASTE_RATING"}, -- (added this line)
 	["Ranged Haste Rating"] = {"HASTE_RATING"},
 	["повышает рейтинг скорости боя на"] = {"HASTE_RATING"},
 	["Spell Haste Rating"] = {"SPELL_HASTE_RATING"},
@@ -465,7 +484,10 @@ L["StatIDLookup"] = {
 
 	["рейтинг мастерства"] = {"EXPERTISE_RATING"},
 	["к рейтингу мастерства"] = {"EXPERTISE_RATING"},
+	["повышает рейтинг мастерства на"] = {"EXPERTISE_RATING"},
 	["Повышает рейтинг пробивания брони на"] = {"ARMOR_PENETRATION_RATING"},
+	["увеличивает рейтинг пробивания брони на"] = {"ARMOR_PENETRATION_RATING"},
+	["снижает эффективность брони противника против ваших атак на"] = {"ARMOR_PENETRATION_RATING"},
 
 	-- Exclude
 	["sec"] = false,
@@ -474,9 +496,10 @@ L["StatIDLookup"] = {
 	["Slot Quiver"] = false,
 	["Slot Ammo Pouch"] = false,
 	["Increases ranged attack speed"] = false, -- AV quiver
+	["на 3% увеличенный критический урон"] = false, -- Chaotic Skyflare Diamond second effect
 }
 
-local D = LibStub("AceLocale-3.0"):NewLocale("StatLogicD", "enUS", true)
+local D = LibStub("AceLocale-3.0"):NewLocale("StatLogicD", "ruRU")
 ----------------
 -- Stat Names --
 ----------------
@@ -499,69 +522,69 @@ D["StatIDToName"] = {
 	["MOUNT_SPEED"] = {"Mount Speed(%)", "Mount Spd(%)"},
 	["RUN_SPEED"] = {"Run Speed(%)", "Run Spd(%)"},
 
-	["STR"] = {SPELL_STAT1_NAME, "Str"},
-	["AGI"] = {SPELL_STAT2_NAME, "Agi"},
-	["STA"] = {SPELL_STAT3_NAME, "Sta"},
-	["INT"] = {SPELL_STAT4_NAME, "Int"},
-	["SPI"] = {SPELL_STAT5_NAME, "Spi"},
-	["ARMOR"] = {ARMOR, ARMOR},
+	["STR"] = {"Сила", "Str"},
+	["AGI"] = {"Ловкость", "Agi"},
+	["STA"] = {"Выносливость", "Sta"},
+	["INT"] = {"Интеллект", "Int"},
+	["SPI"] = {"Дух", "Spi"},
+	["ARMOR"] = {"Броня", ARMOR},
 	["ARMOR_BONUS"] = {ARMOR.." from bonus", ARMOR.."(Bonus)"},
 
-	["FIRE_RES"] = {RESISTANCE2_NAME, "FR"},
-	["NATURE_RES"] = {RESISTANCE3_NAME, "NR"},
-	["FROST_RES"] = {RESISTANCE4_NAME, "FrR"},
-	["SHADOW_RES"] = {RESISTANCE5_NAME, "SR"},
-	["ARCANE_RES"] = {RESISTANCE6_NAME, "AR"},
+	["FIRE_RES"] = {"Сопротивление огню", "FR"},
+	["NATURE_RES"] = {"Сопротивление силам природы", "NR"},
+	["FROST_RES"] = {"Сопротивление магии льда", "FrR"},
+	["SHADOW_RES"] = {"Сопротивление темной магии", "SR"},
+	["ARCANE_RES"] = {"Сопротивление тайной магии", "AR"},
 
-	["FISHING"] = {"Fishing", "Fishing"},
-	["MINING"] = {"Mining", "Mining"},
-	["HERBALISM"] = {"Herbalism", "Herbalism"},
-	["SKINNING"] = {"Skinning", "Skinning"},
+	["FISHING"] = {"Рыбная ловля", "Fishing"},
+	["MINING"] = {"Горное дело", "Mining"},
+	["HERBALISM"] = {"Травничество", "Herbalism"},
+	["SKINNING"] = {"Снятие шкур", "Skinning"},
 
-	["BLOCK_VALUE"] = {"Block Value", "Block Value"},
+	["BLOCK_VALUE"] = {"Показатель блокирования", "Block Value"},
 
-	["AP"] = {ATTACK_POWER_TOOLTIP, "AP"},
-	["RANGED_AP"] = {RANGED_ATTACK_POWER, "RAP"},
-	["FERAL_AP"] = {"Feral "..ATTACK_POWER_TOOLTIP, "Feral AP"},
-	["AP_UNDEAD"] = {ATTACK_POWER_TOOLTIP.." (Undead)", "AP(Undead)"},
-	["AP_DEMON"] = {ATTACK_POWER_TOOLTIP.." (Demon)", "AP(Demon)"},
+	["AP"] = {"Сила атаки", "AP"},
+	["RANGED_AP"] = {"Сила атаки дальнего боя", "RAP"},
+	["FERAL_AP"] = {"Сила атаки в облике зверя", "Feral AP"},
+	["AP_UNDEAD"] = {"Сила атаки (против нежити)", "AP(Undead)"},
+	["AP_DEMON"] = {"Сила атаки (против демонов)", "AP(Demon)"},
 
-	["HEAL"] = {"Healing", "Heal"},
+	["HEAL"] = {"Исцеление", "Heal"},
 
-	["SPELL_DMG"] = {PLAYERSTAT_SPELL_COMBAT.." "..DAMAGE, PLAYERSTAT_SPELL_COMBAT.." Dmg"},
-	["SPELL_DMG_UNDEAD"] = {PLAYERSTAT_SPELL_COMBAT.." "..DAMAGE.." (Undead)", PLAYERSTAT_SPELL_COMBAT.." Dmg".."(Undead)"},
-	["SPELL_DMG_DEMON"] = {PLAYERSTAT_SPELL_COMBAT.." "..DAMAGE.." (Demon)", PLAYERSTAT_SPELL_COMBAT.." Dmg".."(Demon)"},
-	["HOLY_SPELL_DMG"] = {SPELL_SCHOOL1_CAP.." "..DAMAGE, SPELL_SCHOOL1_CAP.." Dmg"},
-	["FIRE_SPELL_DMG"] = {SPELL_SCHOOL2_CAP.." "..DAMAGE, SPELL_SCHOOL2_CAP.." Dmg"},
-	["NATURE_SPELL_DMG"] = {SPELL_SCHOOL3_CAP.." "..DAMAGE, SPELL_SCHOOL3_CAP.." Dmg"},
-	["FROST_SPELL_DMG"] = {SPELL_SCHOOL4_CAP.." "..DAMAGE, SPELL_SCHOOL4_CAP.." Dmg"},
-	["SHADOW_SPELL_DMG"] = {SPELL_SCHOOL5_CAP.." "..DAMAGE, SPELL_SCHOOL5_CAP.." Dmg"},
-	["ARCANE_SPELL_DMG"] = {SPELL_SCHOOL6_CAP.." "..DAMAGE, SPELL_SCHOOL6_CAP.." Dmg"},
+	["SPELL_DMG"] = {"Сила заклинаний", PLAYERSTAT_SPELL_COMBAT.." Dmg"},
+	["SPELL_DMG_UNDEAD"] = {"Сила заклинаний (против нежити)", PLAYERSTAT_SPELL_COMBAT.." Dmg".."(Undead)"},
+	["SPELL_DMG_DEMON"] = {"Сила заклинаний (против демонов)", PLAYERSTAT_SPELL_COMBAT.." Dmg".."(Demon)"},
+	["HOLY_SPELL_DMG"] = {"Сила заклинаний (светлая магия)", SPELL_SCHOOL1_CAP.." Dmg"},
+	["FIRE_SPELL_DMG"] = {"Сила заклинаний (огонь)", SPELL_SCHOOL2_CAP.." Dmg"},
+	["NATURE_SPELL_DMG"] = {"Сила заклинаний (природа)", SPELL_SCHOOL3_CAP.." Dmg"},
+	["FROST_SPELL_DMG"] = {"Сила заклинаний (лед)", SPELL_SCHOOL4_CAP.." Dmg"},
+	["SHADOW_SPELL_DMG"] = {"Сила заклинаний (темная магия)", SPELL_SCHOOL5_CAP.." Dmg"},
+	["ARCANE_SPELL_DMG"] = {"Сила заклинаний (тайная магия)", SPELL_SCHOOL6_CAP.." Dmg"},
 
-	["SPELLPEN"] = {PLAYERSTAT_SPELL_COMBAT.." "..SPELL_PENETRATION, SPELL_PENETRATION},
+	["SPELLPEN"] = {"Проникающая способность заклинаний", SPELL_PENETRATION},
 
-	["HEALTH"] = {HEALTH, HP},
-	["MANA"] = {MANA, MP},
-	["HEALTH_REG"] = {HEALTH.." Regen", "HP5"},
-	["MANA_REG"] = {MANA.." Regen", "MP5"},
+	["HEALTH"] = {"Здоровье", HP},
+	["MANA"] = {"Мана", MP},
+	["HEALTH_REG"] = {"Восстановление здоровья раз в 5 сек.", "HP5"},
+	["MANA_REG"] = {"Восстановление маны раз в 5 сек.", "MP5"},
 
 	["MAX_DAMAGE"] = {"Max Damage", "Max Dmg"},
-	["DPS"] = {"Damage Per Second", "DPS"},
+	["DPS"] = {"Урон в секунду", "DPS"},
 
-	["DEFENSE_RATING"] = {COMBAT_RATING_NAME2, COMBAT_RATING_NAME2}, -- COMBAT_RATING_NAME2 = "Defense Rating"
-	["DODGE_RATING"] = {COMBAT_RATING_NAME3, COMBAT_RATING_NAME3}, -- COMBAT_RATING_NAME3 = "Dodge Rating"
-	["PARRY_RATING"] = {COMBAT_RATING_NAME4, COMBAT_RATING_NAME4}, -- COMBAT_RATING_NAME4 = "Parry Rating"
-	["BLOCK_RATING"] = {COMBAT_RATING_NAME5, COMBAT_RATING_NAME5}, -- COMBAT_RATING_NAME5 = "Block Rating"
-	["MELEE_HIT_RATING"] = {COMBAT_RATING_NAME6, COMBAT_RATING_NAME6}, -- COMBAT_RATING_NAME6 = "Hit Rating"
-	["RANGED_HIT_RATING"] = {PLAYERSTAT_RANGED_COMBAT.." "..COMBAT_RATING_NAME6, PLAYERSTAT_RANGED_COMBAT.." "..COMBAT_RATING_NAME6}, -- PLAYERSTAT_RANGED_COMBAT = "Ranged"
-	["SPELL_HIT_RATING"] = {PLAYERSTAT_SPELL_COMBAT.." "..COMBAT_RATING_NAME6, PLAYERSTAT_SPELL_COMBAT.." "..COMBAT_RATING_NAME6}, -- PLAYERSTAT_SPELL_COMBAT = "Spell"
-	["MELEE_CRIT_RATING"] = {COMBAT_RATING_NAME9, COMBAT_RATING_NAME9}, -- COMBAT_RATING_NAME9 = "Crit Rating"
-	["RANGED_CRIT_RATING"] = {PLAYERSTAT_RANGED_COMBAT.." "..COMBAT_RATING_NAME9, PLAYERSTAT_RANGED_COMBAT.." "..COMBAT_RATING_NAME9},
-	["SPELL_CRIT_RATING"] = {PLAYERSTAT_SPELL_COMBAT.." "..COMBAT_RATING_NAME9, PLAYERSTAT_SPELL_COMBAT.." "..COMBAT_RATING_NAME9},
-	["RESILIENCE_RATING"] = {COMBAT_RATING_NAME15, COMBAT_RATING_NAME15}, -- COMBAT_RATING_NAME15 = "Resilience"
-	["MELEE_HASTE_RATING"] = {"Haste "..RATING, "Haste "..RATING}, --
-	["RANGED_HASTE_RATING"] = {PLAYERSTAT_RANGED_COMBAT.." Haste "..RATING, PLAYERSTAT_RANGED_COMBAT.." Haste "..RATING},
-	["SPELL_HASTE_RATING"] = {PLAYERSTAT_SPELL_COMBAT.." Haste "..RATING, PLAYERSTAT_SPELL_COMBAT.." Haste "..RATING},
+	["DEFENSE_RATING"] = {"Рейтинг защиты", COMBAT_RATING_NAME2}, -- COMBAT_RATING_NAME2 = "Defense Rating"
+	["DODGE_RATING"] = {"Рейтинг уклонения", COMBAT_RATING_NAME3}, -- COMBAT_RATING_NAME3 = "Dodge Rating"
+	["PARRY_RATING"] = {"Рейтинг парирования", COMBAT_RATING_NAME4}, -- COMBAT_RATING_NAME4 = "Parry Rating"
+	["BLOCK_RATING"] = {"Рейтинг блокирования", COMBAT_RATING_NAME5}, -- COMBAT_RATING_NAME5 = "Block Rating"
+	["MELEE_HIT_RATING"] = {"Рейтинг меткости", COMBAT_RATING_NAME6}, -- COMBAT_RATING_NAME6 = "Hit Rating"
+	["RANGED_HIT_RATING"] = {"Рейтинг меткости", PLAYERSTAT_RANGED_COMBAT.." "..COMBAT_RATING_NAME6}, -- PLAYERSTAT_RANGED_COMBAT = "Ranged"
+	["SPELL_HIT_RATING"] = {"Рейтинг меткости", PLAYERSTAT_SPELL_COMBAT.." "..COMBAT_RATING_NAME6}, -- PLAYERSTAT_SPELL_COMBAT = "Spell"
+	["MELEE_CRIT_RATING"] = {"Рейтинг крит. удара", COMBAT_RATING_NAME9}, -- COMBAT_RATING_NAME9 = "Crit Rating"
+	["RANGED_CRIT_RATING"] = {"Рейтинг крит. удара", PLAYERSTAT_RANGED_COMBAT.." "..COMBAT_RATING_NAME9},
+	["SPELL_CRIT_RATING"] = {"Рейтинг крит. удара", PLAYERSTAT_SPELL_COMBAT.." "..COMBAT_RATING_NAME9},
+	["RESILIENCE_RATING"] = {"Рейтинг устойчивости", COMBAT_RATING_NAME15}, -- COMBAT_RATING_NAME15 = "Resilience"
+	["MELEE_HASTE_RATING"] = {"Рейтинг скорости", "Haste "..RATING}, --
+	["RANGED_HASTE_RATING"] = {"Рейтинг скорости", PLAYERSTAT_RANGED_COMBAT.." Haste "..RATING},
+	["SPELL_HASTE_RATING"] = {"Рейтинг скорости", PLAYERSTAT_SPELL_COMBAT.." Haste "..RATING},
 	["DAGGER_WEAPON_RATING"] = {"Dagger "..SKILL.." "..RATING, "Dagger "..RATING}, -- SKILL = "Skill"
 	["SWORD_WEAPON_RATING"] = {"Sword "..SKILL.." "..RATING, "Sword "..RATING},
 	["2H_SWORD_WEAPON_RATING"] = {"Two-Handed Sword "..SKILL.." "..RATING, "2H Sword "..RATING},
@@ -575,7 +598,7 @@ D["StatIDToName"] = {
 	["FERAL_WEAPON_RATING"] = {"Feral "..SKILL.." "..RATING, "Feral "..RATING},
 	["FIST_WEAPON_RATING"] = {"Unarmed "..SKILL.." "..RATING, "Unarmed "..RATING},
 	["STAFF_WEAPON_RATING"] = {"Staff "..SKILL.." "..RATING, "Staff "..RATING}, -- Leggings of the Fang ID:10410
-	["EXPERTISE_RATING"] = {"Expertise".." "..RATING, "Expertise".." "..RATING},
+	["EXPERTISE_RATING"] = {"Рейтинг мастерства", "Expertise".." "..RATING},
 
 	---------------------------------------------------------------------------
 	-- Tier2 Stats - Stats that only show up when broken down from a Tier1 stat
@@ -585,27 +608,27 @@ D["StatIDToName"] = {
 	-- Int -> Mana, Spell Crit
 	-- Spi -> mp5nc, hp5oc
 	-- Ratings -> Effect
-	["HEALTH_REG_OUT_OF_COMBAT"] = {HEALTH.." Regen (Out of combat)", "HP5(OC)"},
-	["MANA_REG_NOT_CASTING"] = {MANA.." Regen (Not casting)", "MP5(NC)"},
-	["MELEE_CRIT_DMG_REDUCTION"] = {"Crit Damage Reduction(%)", "Crit Dmg Reduc(%)"},
-	["RANGED_CRIT_DMG_REDUCTION"] = {PLAYERSTAT_RANGED_COMBAT.." Crit Damage Reduction(%)", PLAYERSTAT_RANGED_COMBAT.." Crit Dmg Reduc(%)"},
-	["SPELL_CRIT_DMG_REDUCTION"] = {PLAYERSTAT_SPELL_COMBAT.." Crit Damage Reduction(%)", PLAYERSTAT_SPELL_COMBAT.." Crit Dmg Reduc(%)"},
-	["DEFENSE"] = {DEFENSE, "Def"},
-	["DODGE"] = {DODGE.."(%)", DODGE.."(%)"},
-	["PARRY"] = {PARRY.."(%)", PARRY.."(%)"},
-	["BLOCK"] = {BLOCK.."(%)", BLOCK.."(%)"},
-	["AVOIDANCE"] = {"Avoidance(%)", "Avoidance(%)"},
-	["MELEE_HIT"] = {"Hit Chance(%)", "Hit(%)"},
-	["RANGED_HIT"] = {PLAYERSTAT_RANGED_COMBAT.." Hit Chance(%)", PLAYERSTAT_RANGED_COMBAT.." Hit(%)"},
-	["SPELL_HIT"] = {PLAYERSTAT_SPELL_COMBAT.." Hit Chance(%)", PLAYERSTAT_SPELL_COMBAT.." Hit(%)"},
+	["HEALTH_REG_OUT_OF_COMBAT"] = {"Восстановление здоровья раз в 5 сек. (вне боя)", "ХП5 (вне боя)"},
+	["MANA_REG_NOT_CASTING"] = {"Восстановление маны раз в 5 сек. (вне каста)", "МП5 (вне каста)"},
+	["MELEE_CRIT_DMG_REDUCTION"] = {"Понижение входящего урона от крит. ударов (%)", "Crit Dmg Reduc(%)"},
+	["RANGED_CRIT_DMG_REDUCTION"] = {"Понижение входящего урона от крит. ударов (%)", PLAYERSTAT_RANGED_COMBAT.." Crit Dmg Reduc(%)"},
+	["SPELL_CRIT_DMG_REDUCTION"] = {"Понижение входящего урона от крит. ударов (%)", PLAYERSTAT_SPELL_COMBAT.." Crit Dmg Reduc(%)"},
+	["DEFENSE"] = {"Защита", "Def"},
+	["DODGE"] = {"Уклонение (%)", DODGE.."(%)"},
+	["PARRY"] = {"Парирование (%)", PARRY.."(%)"},
+	["BLOCK"] = {"Блокирование (%)", BLOCK.."(%)"},
+	["AVOIDANCE"] = {"Избегание атак (%)", "Avoidance(%)"},
+	["MELEE_HIT"] = {"Меткость (%)", "Hit(%)"},
+	["RANGED_HIT"] = {"Меткость (%)", PLAYERSTAT_RANGED_COMBAT.." Hit(%)"},
+	["SPELL_HIT"] = {"Меткость (%)", PLAYERSTAT_SPELL_COMBAT.." Hit(%)"},
 	["MELEE_HIT_AVOID"] = {"Hit Avoidance(%)", "Hit Avd(%)"},
-	["MELEE_CRIT"] = {MELEE_CRIT_CHANCE.."(%)", "Crit(%)"}, -- MELEE_CRIT_CHANCE = "Crit Chance"
-	["RANGED_CRIT"] = {PLAYERSTAT_RANGED_COMBAT.." "..MELEE_CRIT_CHANCE.."(%)", PLAYERSTAT_RANGED_COMBAT.." Crit(%)"},
-	["SPELL_CRIT"] = {PLAYERSTAT_SPELL_COMBAT.." "..MELEE_CRIT_CHANCE.."(%)", PLAYERSTAT_SPELL_COMBAT.." Crit(%)"},
+	["MELEE_CRIT"] = {"Вероятность крит. удара (%)", "Crit(%)"}, -- MELEE_CRIT_CHANCE = "Crit Chance"
+	["RANGED_CRIT"] = {"Вероятность крит. удара (%)", PLAYERSTAT_RANGED_COMBAT.." Crit(%)"},
+	["SPELL_CRIT"] = {"Вероятность крит. удара (%)", PLAYERSTAT_SPELL_COMBAT.." Crit(%)"},
 	["MELEE_CRIT_AVOID"] = {"Crit Avoidance(%)", "Crit Avd(%)"},
-	["MELEE_HASTE"] = {"Haste(%)", "Haste(%)"}, --
-	["RANGED_HASTE"] = {PLAYERSTAT_RANGED_COMBAT.." Haste(%)", PLAYERSTAT_RANGED_COMBAT.." Haste(%)"},
-	["SPELL_HASTE"] = {PLAYERSTAT_SPELL_COMBAT.." Haste(%)", PLAYERSTAT_SPELL_COMBAT.." Haste(%)"},
+	["MELEE_HASTE"] = {"Скорость (%)", "Haste(%)"}, --
+	["RANGED_HASTE"] = {"Скорость (%)", PLAYERSTAT_RANGED_COMBAT.." Haste(%)"},
+	["SPELL_HASTE"] = {"Скорость (%)", PLAYERSTAT_SPELL_COMBAT.." Haste(%)"},
 	["DAGGER_WEAPON"] = {"Dagger "..SKILL, "Dagger"}, -- SKILL = "Skill"
 	["SWORD_WEAPON"] = {"Sword "..SKILL, "Sword"},
 	["2H_SWORD_WEAPON"] = {"Two-Handed Sword "..SKILL, "2H Sword"},
@@ -620,16 +643,16 @@ D["StatIDToName"] = {
 	["FIST_WEAPON"] = {"Unarmed "..SKILL, "Unarmed"},
 	["STAFF_WEAPON"] = {"Staff "..SKILL, "Staff"}, -- Leggings of the Fang ID:10410
 	--["EXPERTISE"] = {STAT_EXPERTISE, STAT_EXPERTISE},
-	["EXPERTISE"] = {"Expertise", "Expertise"},
+	["EXPERTISE"] = {"Мастерство", "Expertise"},
 
 	---------------------------------------------------------------------------
 	-- Tier3 Stats - Stats that only show up when broken down from a Tier2 stat
 	-- Defense -> Crit Avoidance, Hit Avoidance, Dodge, Parry, Block
 	-- Weapon Skill -> Crit, Hit, Dodge Neglect, Parry Neglect, Block Neglect
 	-- Expertise -> Dodge Neglect, Parry Neglect
-	["DODGE_NEGLECT"] = {DODGE.." Neglect(%)", DODGE.." Neglect(%)"},
-	["PARRY_NEGLECT"] = {PARRY.." Neglect(%)", PARRY.." Neglect(%)"},
-	["BLOCK_NEGLECT"] = {BLOCK.." Neglect(%)", BLOCK.." Neglect(%)"},
+	["DODGE_NEGLECT"] = {"Снижение вер. противника уклониться (%)", DODGE.." Neglect(%)"},
+	["PARRY_NEGLECT"] = {"Снижение вер. противника парировать (%)", PARRY.." Neglect(%)"},
+	["BLOCK_NEGLECT"] = {"Снижение вер. противника блокировать (%)", BLOCK.." Neglect(%)"},
 
 	---------------------------------------------------------------------------
 	-- Talants
