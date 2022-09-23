@@ -3567,7 +3567,11 @@ local C_d = {
 -- I've done extensive tests that show the miss cap is 16% for warriors.
 -- Because the only tank I have with 150 pieces of epic gear required for the tests is a warrior,
 -- Until someone that has the will and gear to preform the tests for other classes, I'm going to assume the cap is the same(which most likely isn't)
-local C_m = {16, 16, 16, 16, 16, 16, 16, 16, 16, 16, }
+local C_m = setmetatable({}, {
+	__index = function()
+		return 16
+	end
+})
 
 function StatLogic:GetMissedChanceBeforeDR()
 	local baseDefense, additionalDefense = UnitDefense("player")
