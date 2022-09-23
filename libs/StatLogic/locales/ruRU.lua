@@ -233,7 +233,7 @@ L["DeepScanSeparators"] = {
 L["DeepScanWordSeparators"] = {
 	" и ", -- "Critical Rating +6 and Dodge Rating +5": Assassin's Fire Opal ID:30565
 }
-L["DualStatPatterns"] = { 
+L["DualStatPatterns"] = {
 	-- all lower case
 	["^%+(%d+) healing and %+(%d+) spell damage$"] = {{"HEAL",}, {"SPELL_DMG",},},
 	["^%+(%d+) healing %+(%d+) spell damage$"] = {{"HEAL",}, {"SPELL_DMG",},},
@@ -263,13 +263,13 @@ L["StatIDLookup"] = {
 	["к духу"] = {"SPI",},
 
 	["сопротивление тайной магии"] = {"ARCANE_RES",},
-	["к сопротивлению тайной магии"] = {"ARCANE_RES",},	
+	["к сопротивлению тайной магии"] = {"ARCANE_RES",},
 	["сопротивление огню"] = {"FIRE_RES",},
-	["к сопротивлению огню"] = {"FIRE_RES",},	
+	["к сопротивлению огню"] = {"FIRE_RES",},
 	["сопротивление силам природы"] = {"NATURE_RES",},
 	["к сопротивлению силам природы"] = {"NATURE_RES",},
 	["сопротивление магии льда"] = {"FROST_RES",},
-	["к сопротивлению магии льда"] = {"FROST_RES",},	
+	["к сопротивлению магии льда"] = {"FROST_RES",},
 	["сопротивление темной магии"] = {"SHADOW_RES",},
 	["к сопротивлению темной магии"] = {"SHADOW_RES",},
 	["сопротивления темной магии"] = {"SHADOW_RES",},
