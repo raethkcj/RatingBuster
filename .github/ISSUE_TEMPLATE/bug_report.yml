@@ -45,6 +45,7 @@ body:
         - Korean
         - Russian
         - Spanish
+        - Other
     validations:
       required: true
   - type: dropdown
