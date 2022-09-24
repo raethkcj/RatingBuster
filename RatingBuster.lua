@@ -2228,39 +2228,47 @@ local blizzardComparisonPatterns = {
 	[ITEM_DELTA_MULTIPLE_COMPARISON_DESCRIPTION] = true,
 }
 
-local function RemoveBlizzardItemComparisons(tooltip)
-	if not globalDB.hideBlizzardComparisons then return end
-	local tipTextLeft = tooltip:GetName().."TextLeft"
-	local tipTextRight = tooltip:GetName().."TextRight"
-	local isBlizzardComparison = false
-	local first, last
-	for i = 2, tooltip:NumLines() do
-		local fontString = _G[tipTextLeft..i]
-		local text = fontString:GetText()
-		if text then
-			if not isBlizzardComparison and blizzardComparisonPatterns[text] then
-				isBlizzardComparison = true
-			elseif isBlizzardComparison then
-				if not text:find("^|cffff2020%-") and not text:find("^|cff00ff00%+") then
-					isBlizzardComparison = false
-				end
-			end
-			if isBlizzardComparison then
-				fontString:SetText("")
-				fontString:Hide()
-				fontString:SetWidth(0)
-				fontString = _G[tipTextRight..i]
-				fontString:SetText("")
-				fontString:Hide()
-				fontString:SetWidth(0)
-			end
-		end
-	end
-	tooltip:Show()
+local function RemoveFontString(fontString)
+	fontString:SetText("")
+	fontString:Hide()
+	fontString:SetWidth(0)
 end
 
-ShoppingTooltip1:HookScript("OnUpdate", RemoveBlizzardItemComparisons)
-ShoppingTooltip2:HookScript("OnUpdate", RemoveBlizzardItemComparisons)
+local function RemoveBlizzardItemComparisons(tooltip)
+	if not globalDB.hideBlizzardComparisons then return end
+
+	for _, shoppingTooltip in pairs(tooltip.shoppingTooltips) do
+		local tipTextLeft = shoppingTooltip:GetName().."TextLeft"
+		local tipTextRight = shoppingTooltip:GetName().."TextRight"
+		local isBlizzardComparison = false
+
+		for i = 2, shoppingTooltip:NumLines() do
+			local fontString = _G[tipTextLeft..i]
+			local text = fontString:GetText()
+			if text then
+				if not isBlizzardComparison and blizzardComparisonPatterns[text] then
+					isBlizzardComparison = true
+					local previousFontString = _G[tipTextLeft .. (i-1)]
+					if previousFontString:GetText():find("^%s*") then
+						RemoveFontString(previousFontString)
+					end
+				elseif isBlizzardComparison then
+					if not text:find("^|cffff2020%-") and not text:find("^|cff00ff00%+") then
+						isBlizzardComparison = false
+					end
+				end
+
+				if isBlizzardComparison then
+					RemoveFontString(fontString)
+					RemoveFontString(_G[tipTextRight..i])
+				end
+			end
+		end
+		shoppingTooltip:Show()
+	end
+end
+
+hooksecurefunc("GameTooltip_ShowCompareItem", RemoveBlizzardItemComparisons)
 
 -- Color Numbers
 local GREEN_FONT_COLOR_CODE = GREEN_FONT_COLOR_CODE -- "|cff20ff20" Green
