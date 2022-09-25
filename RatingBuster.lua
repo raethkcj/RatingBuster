@@ -2235,7 +2235,7 @@ local function RemoveFontString(fontString)
 end
 
 local function RemoveBlizzardItemComparisons(tooltip)
-	if not globalDB.hideBlizzardComparisons then return end
+	if not tooltip or not globalDB.hideBlizzardComparisons then return end
 
 	for _, shoppingTooltip in pairs(tooltip.shoppingTooltips) do
 		local tipTextLeft = shoppingTooltip:GetName().."TextLeft"
