@@ -30,16 +30,15 @@ StatLogic.GenericStatMap = {}
 
 -- Numbers reverse engineered by Whitetooth@Cenarius(US) (hotdogee [at] gmail [dot] com)
 local NormalManaRegenPerSpi = {
-	0, 0.1, 0.1, 0, 0.125, 0.1, 0.125, 0.1, 0.1125,
-	--["WARRIOR"] = 0,
-	--["PALADIN"] = 0.1,
-	--["HUNTER"] = 0.1,
-	--["ROGUE"] = 0,
-	--["PRIEST"] = 0.125,
-	--["SHAMAN"] = 0.1,
-	--["MAGE"] = 0.125,
-	--["WARLOCK"] = 0.1,
-	--["DRUID"] = 0.1125,
+	[StatLogic:GetClassIdOrName("WARRIOR")] = 0,
+	[StatLogic:GetClassIdOrName("PALADIN")] = 0.1,
+	[StatLogic:GetClassIdOrName("HUNTER")] = 0.1,
+	[StatLogic:GetClassIdOrName("ROGUE")] = 0,
+	[StatLogic:GetClassIdOrName("PRIEST")] = 0.125,
+	[StatLogic:GetClassIdOrName("SHAMAN")] = 0.1,
+	[StatLogic:GetClassIdOrName("MAGE")] = 0.125,
+	[StatLogic:GetClassIdOrName("WARLOCK")] = 0.1,
+	[StatLogic:GetClassIdOrName("DRUID")] = 0.1125,
 }
 
 function StatLogic:GetNormalManaRegenFromSpi(spi, class)
