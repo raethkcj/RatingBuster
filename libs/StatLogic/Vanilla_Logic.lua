@@ -252,6 +252,8 @@ addonTable.BaseDodge = {
 	[StatLogic:GetClassIdOrName("DRUID")] = -1.8720,
 }
 
+addonTable.RegisterValidatorEvents()
+
 StatLogic.StatModTable = {}
 if addonTable.playerClass == "DRUID" then
 	StatLogic.StatModTable["DRUID"] = {

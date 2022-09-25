@@ -1173,7 +1173,7 @@ do
 	end)
 end
 
-local StatModValidators = {
+addonTable.StatModValidators = {
 	-- Conditions have no events, so any mods using them will not be cached.
 	-- Ideally they will be removed entirely.
 	condition = {
@@ -1218,15 +1218,6 @@ local StatModValidators = {
 			["UNIT_INVENTORY_CHANGED"] = "player",
 		},
 	},
-	glyph = {
-		validate = function(case)
-			return IsPlayerSpell(case.glyph)
-		end,
-		events = {
-			["GLYPH_ADDED"] = true,
-			["GLYPH_REMOVED"] = true,
-		}
-	},
 	enchant = {
 		validate = function(case)
 			local slotLink = case.slot and GetInventoryItemLink("player", case.slot)
@@ -1242,16 +1233,15 @@ local StatModValidators = {
 -- Cache the results of GetStatMod, and build a table that
 -- maps events defined on Validators to the StatMods that depend on them.
 local StatModCache = {}
-local StatModCacheInvalidators = {}
+addonTable.StatModCacheInvalidators = {}
 
 -- Talents are not a Validator, but we still
 -- need to invalidate cache when they change
-StatModCacheInvalidators["CHARACTER_POINTS_CHANGED"] = {}
-StatModCacheInvalidators["PLAYER_TALENT_UPDATE"] = StatModCacheInvalidators["CHARACTER_POINTS_CHANGED"]
+addonTable.StatModCacheInvalidators["CHARACTER_POINTS_CHANGED"] = {}
 
-do
+addonTable.RegisterValidatorEvents = function()
 	local f = CreateFrame("Frame")
-	for validatorType, validator in pairs(StatModValidators) do
+	for validatorType, validator in pairs(addonTable.StatModValidators) do
 		if validator.events then
 			for event, unit in pairs(validator.events) do
 				if type(unit) == "string" then
@@ -1263,15 +1253,16 @@ do
 		end
 	end
 
-	f:RegisterEvent("CHARACTER_POINTS_CHANGED")
-	f:RegisterEvent("PLAYER_TALENT_UPDATE")
+	for event, _ in pairs(addonTable.StatModCacheInvalidators) do
+		f:RegisterEvent(event)
+	end
 
 	f:SetScript("OnEvent", function(self, event, unit)
 		local key = event
 		if type(unit) == "string" then
 			key = event .. unit
 		end
-		local stats = StatModCacheInvalidators[key]
+		local stats = addonTable.StatModCacheInvalidators[key]
 		if stats then
 			for _, stat in pairs(stats) do
 				StatModCache[stat] = nil
@@ -1284,7 +1275,7 @@ local function ValidateStatMod(stat, school, case)
 	if school and not case[school] then return false, false end
 	local shouldCache = true
 	for k,v in pairs(case) do
-		local validator = StatModValidators[k]
+		local validator = addonTable.StatModValidators[k]
 		if validator then
 			if validator.events then
 				for event, unit in pairs(validator.events) do
@@ -1292,8 +1283,8 @@ local function ValidateStatMod(stat, school, case)
 					if type(unit) == "string" then
 						key = event .. unit
 					end
-					StatModCacheInvalidators[key] = StatModCacheInvalidators[key] or {}
-					table.insert(StatModCacheInvalidators[key], stat)
+					addonTable.StatModCacheInvalidators[key] = addonTable.StatModCacheInvalidators[key] or {}
+					table.insert(addonTable.StatModCacheInvalidators[key], stat)
 				end
 			else
 				shouldCache = false
@@ -1359,7 +1350,7 @@ local GetStatModValue = function(stat, school, mod, case, initialValue)
 		elseif r > 0 then
 			value = case.value
 		end
-		table.insert(StatModCacheInvalidators["PLAYER_TALENT_UPDATE"], stat)
+		table.insert(addonTable.StatModCacheInvalidators["CHARACTER_POINTS_CHANGED"], stat)
 	elseif case.buff and case.rank then
 		local r = GetPlayerBuffRank(case.buff)
 		value = case.rank[r]

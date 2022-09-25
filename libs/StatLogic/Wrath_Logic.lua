@@ -423,6 +423,18 @@ addonTable.BaseDodge = {
 	[StatLogic:GetClassIdOrName("DRUID")] =       5.6097,
 }
 
+addonTable.StatModValidators.glyph = {
+	validate = function(case)
+		return IsPlayerSpell(case.glyph)
+	end,
+	events = {
+		["GLYPH_ADDED"] = true,
+		["GLYPH_REMOVED"] = true,
+	}
+}
+addonTable.StatModCacheInvalidators["PLAYER_TALENT_UPDATE"] = addonTable.StatModCacheInvalidators["CHARACTER_POINTS_CHANGED"]
+addonTable.RegisterValidatorEvents()
+
 addonTable.bonusArmorItemEquipLoc = {
 	["INVTYPE_WEAPON"] = true,
 	["INVTYPE_2HWEAPON"] = true,
