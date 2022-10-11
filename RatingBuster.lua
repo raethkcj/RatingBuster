@@ -157,7 +157,6 @@ local function setColor(info, r, g, b)
 	clearCache()
 end
 
-ColorPickerFrame:SetFrameStrata("FULLSCREEN_DIALOG")
 ColorPickerFrame:SetMovable(true)
 ColorPickerFrame:EnableMouse(true)
 ColorPickerFrame:RegisterForDrag("LeftButton")
@@ -169,7 +168,6 @@ ColorPickerFrame:SetScript("OnDragStart", function(self, button)
 	end
 end)
 ColorPickerFrame:SetScript("OnDragStop", ColorPickerFrame.StopMovingOrSizing)
-ColorPickerFrame:Show()
 
 local options = {
 	type = 'group',
