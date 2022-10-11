@@ -273,9 +273,6 @@ L["Attack Power <- Attack Power Strength, Agility"] = "전투력 <- 전투력, �
 -- /rb sum stat rap
 L["Sum Ranged Attack Power"] = "원거리 전투력"
 L["Ranged Attack Power <- Ranged Attack Power Intellect, Attack Power, Strength, Agility"] = "원거리 전투력 <- 원거리 전투력, 지능, 전투력, 힘, 민첩성"
--- /rb sum stat fap
-L["Sum Feral Attack Power"] = "야생 전투력"
-L["Feral Attack Power <- Feral Attack Power Attack Power, Strength, Agility"] = "야생 전투력 <- 야생 전투력, 전투력, 힘, 민첩성"
 -- /rb sum stat dmg
 L["Sum Spell Damage"] = "주문 공격력"
 L["Spell Damage <- Spell Damage Intellect, Spirit, Stamina"] = "주문 공격력 <- 주문 공격력, 지능, 정신력, 체력"

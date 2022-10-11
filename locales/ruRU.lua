@@ -368,9 +368,6 @@ L["Attack Power <- Attack Power, Strength, Agility"] = "Сила атаки, с�
 -- /rb sum physical rap
 L["Sum Ranged Attack Power"] = "Сила атаки дальнего боя"
 L["Ranged Attack Power <- Ranged Attack Power, Intellect, Attack Power, Strength, Agility"] = "Сила атаки дальнего боя, интеллект, сила атаки, сила, ловкость -> Сила атаки дальнего боя"
--- /rb sum physical fap
-L["Sum Feral Attack Power"] = "Сила атаки в облике зверя"
-L["Feral Attack Power <- Feral Attack Power, Attack Power, Strength, Agility"] = "Сила атаки в облике зверя, сила атаки, сила, ловкость -> Сила атаки в облике зверя"
 -- /rb sum physical hit
 L["Sum Hit Chance"] = "Вероятность попадания"
 L["Hit Chance <- Hit Rating"] = "Рейтинг меткости -> Вероятность поподания"

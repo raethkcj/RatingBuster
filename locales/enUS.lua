@@ -275,9 +275,6 @@ L["Attack Power <- Attack Power, Strength, Agility"] = true
 -- /rb sum stat rap
 L["Sum Ranged Attack Power"] = true
 L["Ranged Attack Power <- Ranged Attack Power, Intellect, Attack Power, Strength, Agility"] = true
--- /rb sum stat fap
-L["Sum Feral Attack Power"] = true
-L["Feral Attack Power <- Feral Attack Power, Attack Power, Strength, Agility"] = true
 -- /rb sum stat dmg
 L["Sum Spell Damage"] = true
 L["Spell Damage <- Spell Damage, Intellect, Spirit, Stamina"] = true

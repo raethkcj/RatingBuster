@@ -272,9 +272,6 @@ L["Attack Power <- Attack Power Strength, Agility"] = "近战攻击强度 ← �
 -- /rb sum stat rap
 L["Sum Ranged Attack Power"] = "统计远程攻击强度"
 L["Ranged Attack Power <- Ranged Attack Power Intellect, Attack Power, Strength, Agility"] = "远程攻击强度 ← 远程攻击强度、智力、攻击强度、力量、敏捷"
--- /rb sum stat fap
-L["Sum Feral Attack Power"] = "统计野性攻击强度"
-L["Feral Attack Power <- Feral Attack Power Attack Power, Strength, Agility"] = "野性攻击强度 ← 野性攻击强度、攻击强度、力量、敏捷"
 -- /rb sum stat dmg
 L["Sum Spell Damage"] = "统计法术伤害"
 L["Spell Damage <- Spell Damage Intellect, Spirit, Stamina"] = "法术伤害 ← 法术伤害、智力、精神、耐力"

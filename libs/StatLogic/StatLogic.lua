@@ -892,6 +892,10 @@ StatLogic.StatModInfo = {
 		initialValue = 0,
 		finalAdjust = 0,
 	},
+	["ADD_AP_MOD_FAP"] = {
+		initialValue = 0,
+		finalAdjust = 0,
+	},
 	["ADD_HIT_TAKEN"] = {
 		initialValue = 0,
 		finalAdjust = 0,

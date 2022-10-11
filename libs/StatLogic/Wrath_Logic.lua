@@ -910,6 +910,20 @@ if addonTable.playerClass == "DRUID" then
 		-- Druid: Predatory Strikes (Rank 3) - 2,10
 		--				Increases your melee attack power in Cat, Bear and Dire Bear Forms by
 		--				7,14,20% of any attack power on your equipped weapon.
+		["ADD_AP_MOD_FAP"] = {
+			{
+				["value"] = 1,
+				["buff"] = GetSpellInfo(32356),		-- ["Cat Form"],
+			},
+			{
+				["value"] = 1,
+				["buff"] = GetSpellInfo(32357),		-- ["Bear Form"],
+			},
+			{
+				["value"] = 1,
+				["buff"] = GetSpellInfo(9634),		-- ["Dire Bear Form"],
+			},
+		},
 		["MOD_FAP"] = {
 			{
 				["tab"] = 2,
@@ -917,6 +931,23 @@ if addonTable.playerClass == "DRUID" then
 				["rank"] = {
 					0.07, 0.14, 0.20,
 				},
+				["buff"] = GetSpellInfo(32356),		-- ["Cat Form"],
+			},
+			{
+				["tab"] = 2,
+				["num"] = 10,
+				["rank"] = {
+					0.07, 0.14, 0.20,
+				},
+				["buff"] = GetSpellInfo(32357),		-- ["Bear Form"],
+			},
+			{
+				["tab"] = 2,
+				["num"] = 10,
+				["rank"] = {
+					0.07, 0.14, 0.20,
+				},
+				["buff"] = GetSpellInfo(9634),		-- ["Dire Bear Form"],
 			},
 		},
 		-- Druid: Survival Instincts - Buff
@@ -1017,14 +1048,6 @@ if addonTable.playerClass == "DRUID" then
 		-- Druid: Protector of the Pack (Rank 5) - 2,22
 		--        Increases your attack power in Bear Form and Dire Bear Form by 2%/4%/6%, and for each friendly player in your party when you enter Bear Form or Dire Bear Form, damage you take is reduced while in Bear Form and Dire Bear Form by 1%/2%/3%.
 		["MOD_AP"] = {
-			-- Improved Mark of the Wild
-			{
-				["tab"] = 3,
-				["num"] = 1,
-				["rank"] = {
-					0.01, 0.02,
-				},
-			},
 			{
 				["tab"] = 2,
 				["num"] = 17,

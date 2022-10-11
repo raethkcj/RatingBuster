@@ -281,9 +281,6 @@ L["Attack Power <- Attack Power Strength, Agility"] = "Angriffskraft <- Angriffs
 -- /rb sum stat rap
 L["Sum Ranged Attack Power"] = "Distanzangriffskraft (RAP) zusammenrechnen"
 L["Ranged Attack Power <- Ranged Attack Power Intellect, Attack Power, Strength, Agility"] = "Distanzangriffskraft <- Distanzangriffskraft, Intelligenz, Angriffskraft, Stärke, Beweglichkeit"
--- /rb sum stat fap
-L["Sum Feral Attack Power"] = "Feral Angriffskraft zusammenrechnen"
-L["Feral Attack Power <- Feral Attack Power Attack Power, Strength, Agility"] = "Feral Angriffskraft <- Feral Angriffskraft, Angriffskraft, Stärke, Beweglichkeit"
 -- /rb sum stat dmg
 L["Sum Spell Damage"] = "Zauberschaden zusammenrechnen"
 L["Spell Damage <- Spell Damage Intellect, Spirit, Stamina"] = "Zauberschaden <- Zauberschaden, Intelligenz, Willenskraft, Ausdauer"

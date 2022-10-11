@@ -277,9 +277,6 @@ L["Attack Power <- Attack Power, Strength, Agility"] = "Inclure la Puissance d'a
 -- /rb sum stat rap
 L["Sum Ranged Attack Power"] = "Puis. d'att. à distance"
 L["Ranged Attack Power <- Ranged Attack Power, Intellect, Attack Power, Strength, Agility"] = "Inclure la Puissance d'attaque à distance conférée par : Puissance d'attaque à distance + Intelligence + Puissance d'attaque + Force + Agilité."
--- /rb sum stat fap
-L["Sum Feral Attack Power"] = "Puis. d'att. farouche"
-L["Feral Attack Power <- Feral Attack Power, Attack Power, Strength, Agility"] = "Inclure la Puissance d'attaque farouche conférée par : Puissance d'attaque farouche + Puissance d'attaque + Force + Agilité."
 -- /rb sum stat dmg
 L["Sum Spell Damage"] = "Dégâts des sorts"
 L["Spell Damage <- Spell Damage, Intellect, Spirit, Stamina"] = "Inclure les Dégâts des sorts conférés par : Dégâts des sorts + Intelligence + Esprit + Endurance."
