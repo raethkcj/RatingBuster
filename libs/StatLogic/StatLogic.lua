@@ -2870,6 +2870,13 @@ local getSlotID = {
 	INVTYPE_TABARD         = 19,
 }
 
+local function HasTitansGrip()
+	if addonTable.playerClass == "WARRIOR" then
+		local _, _, _, _, r = StatLogic:GetOrderedTalentInfo(2, 27)
+		return r > 0
+	end
+end
+
 function StatLogic:GetDiffID(item, ignoreEnchant, ignoreGem, red, yellow, blue, meta)
 	local name, itemType, link, linkDiff1, linkDiff2
 	-- Check item
@@ -2896,7 +2903,7 @@ function StatLogic:GetDiffID(item, ignoreEnchant, ignoreGem, red, yellow, blue, 
 		if IsUsableSpell(GetSpellInfo(674)) then		-- ["Dual Wield"]
 			local _, _, _, _, _, _, _, _, eqItemType = GetItemInfo(linkDiff1)
 			-- If 2h is equipped, copy diff1 to diff2
-			if eqItemType == "INVTYPE_2HWEAPON" then
+			if eqItemType == "INVTYPE_2HWEAPON" and not HasTitansGrip() then
 				linkDiff2 = linkDiff1
 			else
 				linkDiff2 = GetInventoryItemLink("player", 17) or "NOITEM"
@@ -3029,7 +3036,7 @@ function StatLogic:GetDiff(item, diff1, diff2, ignoreEnchant, ignoreGem, red, ye
 	if not itemSum then return end
 	local itemType = itemSum.itemType
 
-	if itemType == "INVTYPE_2HWEAPON" then
+	if itemType == "INVTYPE_2HWEAPON" and not HasTitansGrip() then
 		local equippedSum1, equippedSum2
 		-- Get main hand item sum
 		if linkDiff1 == "NOITEM" then
