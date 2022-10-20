@@ -193,6 +193,11 @@ L["Show Spell Damage from Spirit"] = "정신력에 의한 주문 공격력을 �
 L["Show Healing"] = "치유량 표시"
 L["Show Healing from Spirit"] = "정신력에 의한 치유량을 표시합니다."
 
+L["Armor"] = "Armor"
+L["Changes the display of Armor"] = "Changes the display of Armor"
+L["Attack Power"] = "Attack Power"
+L["Changes the display of Attack Power"] = "Changes the display of Attack Power"
+
 -- /rb sum
 L["Stat Summary"] = "능력치 요약"
 L["Options for stat summary"] = "능력치 요약에 대한 설정입니다."
@@ -596,6 +601,7 @@ L["statList"] = {
 
 	{pattern = "방어구 관통력", id = CR_ARMOR_PENETRATION},	--armor penetration rating
 	{pattern = string.lower(ARMOR), id = ARMOR},
+	{pattern = "전투력이", id = ATTACK_POWER},
 }
 -------------------------
 -- Added info patterns --

@@ -234,6 +234,8 @@ L["Show Spell Hit from Spirit"] = "Показывать расчет метко�
 -- /rb stat armor
 L["Armor"] = "Броня"
 L["Changes the display of Armor"] = "Показывать расчет брони"
+L["Attack Power"] = "Attack Power"
+L["Changes the display of Attack Power"] = "Changes the display of Attack Power"
 -- /rb stat armor ap
 L["Show Attack Power"] = "Сила атаки"
 L["Show Attack Power from Armor"] = "Показывать расчет силы атаки от брони"
@@ -761,6 +763,7 @@ L["statList"] = {
 	{pattern = "рейтингу пробивания брони", id = CR_ARMOR_PENETRATION},
 	{pattern = "рейтинга пробивания брони", id = CR_ARMOR_PENETRATION},
 	{pattern = string.lower(ARMOR), id = ARMOR},
+	{pattern = "силу атаки", id = ATTACK_POWER},
 
 	{pattern = "рейтинг искусности", id = CR_MASTERY},
 	{pattern = "рейтингу искусности", id = CR_MASTERY},

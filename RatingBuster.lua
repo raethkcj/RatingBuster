@@ -291,6 +291,7 @@ local options = {
 					name = L["Strength"],
 					desc = L["Changes the display of Strength"],
 					width = "full",
+					order = 3,
 					args = {
 						showAPFromStr = {
 							type = 'toggle',
@@ -311,6 +312,7 @@ local options = {
 					name = L["Agility"],
 					desc = L["Changes the display of Agility"],
 					width = "full",
+					order = 4,
 					args = {
 						showCritFromAgi = {
 							type = 'toggle',
@@ -349,6 +351,7 @@ local options = {
 					name = L["Stamina"],
 					desc = L["Changes the display of Stamina"],
 					width = "full",
+					order = 5,
 					args = {
 						showHealthFromSta = {
 							type = 'toggle',
@@ -363,6 +366,7 @@ local options = {
 					name = L["Intellect"],
 					desc = L["Changes the display of Intellect"],
 					width = "full",
+					order = 6,
 					args = {
 						showSpellCritFromInt = {
 							type = 'toggle',
@@ -395,6 +399,7 @@ local options = {
 					name = L["Spirit"],
 					desc = L["Changes the display of Spirit"],
 					width = "full",
+					order = 7,
 					args = {
 						showMP5NCFromSpi = {
 							type = 'toggle',
@@ -410,14 +415,21 @@ local options = {
 						},
 					},
 				},
+				ap = {
+					type = 'group',
+					name = L["Attack Power"],
+					desc = L["Changes the display of Attack Power"],
+					order = 8,
+					args = {},
+					hidden = true,
+				},
 				armor = {
 					type = 'group',
-					order = 7,
 					name = L["Armor"],
 					desc = L["Changes the display of Armor"],
+					order = 9,
 					args = {},
-					-- Only show for DK + Warrior who scale from Armor
-					hidden = not StatLogic.StatModTable[class]["ADD_AP_MOD_ARMOR"],
+					hidden = true,
 				},
 			},
 		},
@@ -1255,6 +1267,7 @@ elseif class == "SHAMAN" then
 	defaults.profile.sumSpellCrit = true
 	defaults.profile.sumSpellHaste = true
 	defaults.profile.sumHealing = true
+	defaults.profile.showDodgeFromAgi = false
 	defaults.profile.ratingPhysical = true
 	defaults.profile.ratingSpell = true
 elseif class == "WARLOCK" then
@@ -1301,7 +1314,12 @@ do
 		local key = "show" .. statToOptionKey[add] .. "From" .. statToOptionKey[mod]
 		defaults.profile[key] = true
 
-		local option = options.args.stat.args[mod:lower()].args[key]
+		-- Override Armor and Attack Power being hidden by default,
+		-- since most classes have no useful breakdowns from them.
+		local group = options.args.stat.args[mod:lower()]
+		group.hidden = false
+
+		local option = group.args[key]
 		if not option then
 			option = {
 				type = "toggle",
@@ -1352,11 +1370,15 @@ do
 					addStatModOption(add, "INT", sources)
 					mod = "SPI"
 				elseif mod == "AP" then
-					-- TODO: This is for Enh Shaman's Mental Quickness.
-					-- Their AP can also come from AGI and INT in Wrath (not TBC),
-					-- but 3.3.5 RatingBuster only showed it from STR.
-					-- Ret has SPELL_DMG/HEALING from AP but only gets AP from STR
-					mod = "STR"
+					-- Paladin's Sheathe of Light, Touched by the Light
+					-- Shaman's Mental Quickness.
+					-- TODO: Shaman AP can also come from INT in Wrath
+					if StatLogic:GetAPPerStr(class) > 0 then
+						addStatModOption(add, "STR", sources)
+					end
+					if StatLogic:GetAPPerAgi(class) > 0 then
+						addStatModOption(add, "AGI", sources)
+					end
 				end
 
 				-- Demonic Knowledge technically scales with pet stats,
@@ -1962,11 +1984,26 @@ function RatingBuster:ProcessText(text, link)
 								tinsert(infoTable, (gsub(L["$value Armor"], "$value", format("%+.0f", effect))))
 							end
 						end
+						-- Shaman: Mental Quickness
+						-- Paladin: Sheath of Light, Touched by the Light
+						if profileDB.showSpellDmgFromAgi then
+							local mod = GSM("MOD_AP") * GSM("MOD_SPELL_DMG")
+							local effect = (value * StatLogic:GetAPPerAgi(class) * GSM("ADD_SPELL_DMG_MOD_AP")) * mod
+							if (mod ~= 1 or statmod ~= 1) and floor(abs(effect) * 10 + 0.5) > 0 then
+								tinsert(infoTable, (gsub(L["$value Spell Dmg"], "$value", format("%+.1f", effect))))
+							elseif floor(abs(effect) + 0.5) > 0 then
+								tinsert(infoTable, (gsub(L["$value Spell Dmg"], "$value", format("%+.0f", effect))))
+							end
+						end
+						-- Druid: Nurturing Instinct
 						if profileDB.showHealingFromAgi then
-							local mod = GSM("MOD_HEALING")
-							local effect = value * GSM("ADD_HEALING_MOD_AGI") * mod
-							if floor(abs(effect) * 10 + 0.5) > 0 then
+							local mod = GSM("MOD_AP") * GSM("MOD_HEALING")
+							local effect = (value * StatLogic:GetAPPerAgi(class) * GSM("ADD_HEALING_MOD_AP")
+								+ value * GSM("ADD_HEALING_MOD_AGI") / GSM("MOD_AP")) * mod
+							if (mod ~= 1 or statmod ~= 1) and floor(abs(effect) * 10 + 0.5) > 0 then
 								tinsert(infoTable, (gsub(L["$value Heal"], "$value", format("%+.1f", effect))))
+							elseif floor(abs(effect) + 0.5) > 0 then
+								tinsert(infoTable, (gsub(L["$value Heal"], "$value", format("%+.0f", effect))))
 							end
 						end
 						infoString = strjoin(", ", unpack(infoTable))
@@ -2174,6 +2211,37 @@ function RatingBuster:ProcessText(text, link)
 						local effect = value * GSM("ADD_AP_MOD_ARMOR") * GSM("MOD_AP")
 						if floor(abs(effect) * 10 + 0.5) > 0 then
 							tinsert(infoTable, (gsub(L["$value AP"], "$value", format("%+.1f", effect))))
+						end
+						infoString = strjoin(", ", unpack(infoTable))
+					elseif stat.id == ATTACK_POWER then
+						------------------
+						-- Attack Power --
+						------------------
+						local statmod = 1
+						if profileDB.enableStatMods then
+							statmod = GSM("MOD_AP")
+							value = value * statmod
+						end
+						local infoTable = {}
+						-- Shaman: Mental Quickness
+						-- Paladin: Sheath of Light, Touched by the Light
+						if profileDB.showSpellDmgFromAP then
+							local mod = GSM("MOD_AP") * GSM("MOD_SPELL_DMG")
+							local effect = (value * GSM("ADD_SPELL_DMG_MOD_AP")) * mod
+							if (mod ~= 1 or statmod ~= 1) and floor(abs(effect) * 10 + 0.5) > 0 then
+								tinsert(infoTable, (gsub(L["$value Spell Dmg"], "$value", format("%+.1f", effect))))
+							elseif floor(abs(effect) + 0.5) > 0 then
+								tinsert(infoTable, (gsub(L["$value Spell Dmg"], "$value", format("%+.0f", effect))))
+							end
+						end
+						if profileDB.showHealingFromAP then
+							local mod = GSM("MOD_AP") * GSM("MOD_HEALING")
+							local effect = (value * GSM("ADD_HEALING_MOD_AP")) * mod
+							if (mod ~= 1 or statmod ~= 1) and floor(abs(effect) * 10 + 0.5) > 0 then
+								tinsert(infoTable, (gsub(L["$value Heal"], "$value", format("%+.1f", effect))))
+							elseif floor(abs(effect) + 0.5) > 0 then
+								tinsert(infoTable, (gsub(L["$value Heal"], "$value", format("%+.0f", effect))))
+							end
 						end
 						infoString = strjoin(", ", unpack(infoTable))
 					end

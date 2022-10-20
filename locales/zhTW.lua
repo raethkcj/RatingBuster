@@ -195,6 +195,11 @@ L["Show Spell Damage from Spirit"] = "顯示精神給的法術傷害加成"
 L["Show Healing"] = "顯示治療"
 L["Show Healing from Spirit"] = "顯示精神給的治療加成"
 
+L["Armor"] = "Armor"
+L["Changes the display of Armor"] = "Changes the display of Armor"
+L["Attack Power"] = "Attack Power"
+L["Changes the display of Attack Power"] = "Changes the display of Attack Power"
+
 -- /rb sum
 L["Stat Summary"] = "屬性統計"
 L["Options for stat summary"] = "自訂屬性選項"
@@ -595,6 +600,7 @@ L["statList"] = {
 
 	{pattern = "護甲穿透等級", id = CR_ARMOR_PENETRATION},
 	{pattern = string.lower(ARMOR), id = ARMOR},
+	{pattern = "攻击强度", id = ATTACK_POWER},
 }
 -------------------------
 -- Added info patterns --

@@ -193,6 +193,8 @@ L["Show Healing from Spirit"] = "Affiche la Puissance des soins apportée par l'
 -- /rb stat armor
 L["Armor"] = "Armure"
 L["Changes the display of Armor"] = "Sélectionne les différents bonus liés à l'Armure."
+L["Attack Power"] = "Puissance d'attaque"
+L["Changes the display of Attack Power"] = "Sélectionne les différents bonus liés à la Puissance d'attaque."
 -- /rb stat armor ap
 L["Show Attack Power"] = "Puissance d'attaque"
 L["Show Attack Power from Armor"] = "Affiche la Puissance d'attaque apportée par l'Armure."
@@ -607,6 +609,7 @@ L["statList"] = {
 
 	{pattern = "score de pénétration d'armure", id = CR_ARMOR_PENETRATION},
 	{pattern = string.lower(ARMOR), id = ARMOR},
+	{pattern = "puissance d'attaque", id = ATTACK_POWER},
 }
 -------------------------
 -- Added info patterns --

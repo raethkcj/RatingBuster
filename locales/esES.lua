@@ -194,6 +194,11 @@ L["Show Spell Damage from Spirit"] = "Muestra el Daño de Hechizos de Espíritu"
 L["Show Healing"] = "Mostrar Sanacion"
 L["Show Healing from Spirit"] = "Muestra la Sanacion de Espíritu"
 
+L["Armor"] = true
+L["Changes the display of Armor"] = true
+L["Attack Power"] = true
+L["Changes the display of Attack Power"] = true
+
 -- /rb sum
 L["Stat Summary"] = "Resumen Estad"
 L["Options for stat summary"] = "Opciones de Resumen Estad."
@@ -598,6 +603,7 @@ L["statList"] = {
 
 	{pattern = "índice de penetración de armadura", id = CR_ARMOR_PENETRATION},
 	{pattern = string.lower(ARMOR), id = ARMOR},
+	{pattern = "poder de ataque", id = ATTACK_POWER},
 }
 -------------------------
 -- Added info patterns --

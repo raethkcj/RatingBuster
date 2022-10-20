@@ -191,6 +191,8 @@ L["Show Healing from Spirit"] = true
 -- /rb stat armor
 L["Armor"] = true
 L["Changes the display of Armor"] = true
+L["Attack Power"] = true
+L["Changes the display of Attack Power"] = true
 -- /rb stat armor ap
 L["Show Attack Power"] = true
 L["Show Attack Power from Armor"] = true
@@ -607,6 +609,7 @@ L["statList"] = {
 
 	{pattern = "armor penetration rating", id = CR_ARMOR_PENETRATION},
 	{pattern = string.lower(ARMOR), id = ARMOR},
+	{pattern = "attack power", id = ATTACK_POWER},
 }
 -------------------------
 -- Added info patterns --
