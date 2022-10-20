@@ -402,6 +402,7 @@ L["StatIDLookup"] = {
 	["Erhöht den Rüstungsdurchschlagwert um"] = {"ARMOR_PENETRATION_RATING"},
 	["Erhöht die Rüstungsdurchschlagwertung um"] = {"ARMOR_PENETRATION_RATING"},
 	["Erhöht Eure Rüstungsdurchschlagwertung um"] = {"ARMOR_PENETRATION_RATING"}, -- ID:43178
+	["erhöht den rüstungsdurchschlag"] = {"ARMOR_PENETRATION_RATING"},
 
 	-- Exclude
 	["Sek"] = false,

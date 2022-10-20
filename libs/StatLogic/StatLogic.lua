@@ -2778,8 +2778,8 @@ function StatLogic:GetFinalArmor(item, text)
 	for pattern, id in pairs(L.PreScanPatterns) do
 		if id == "ARMOR" or id == "ARMOR_BONUS" then
 			local found, _, value = strfind(text, pattern)
-			value = tonumber(value)
 			if found then
+				value = tonumber(value)
 				local armor = 0
 				local bonus_armor = 0
 				if addonTable.bonusArmorItemEquipLoc[itemType] then
