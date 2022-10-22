@@ -466,7 +466,8 @@ L["StatIDLookup"] = {
 	["Increases your expertise rating"] = {"EXPERTISE_RATING"},
 	["armor penetration rating"] = {"ARMOR_PENETRATION_RATING"}, -- gems
 	["Increases armor penetration rating"] = {"ARMOR_PENETRATION_RATING"},
-	["Increases your armor penetration rating"] = {"ARMOR_PENETRATION_RATING"}, -- ID:43178
+	["Increases your armor penetration rating"] = {"ARMOR_PENETRATION_RATING"}, -- Anarchy ID:39420
+	["increases your armor penetration"] = {"ARMOR_PENETRATION_RATING"}, -- Ring of Foul Mojo ID:43178
 
 	-- Exclude
 	["sec"] = false,

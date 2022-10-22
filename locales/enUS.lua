@@ -607,7 +607,7 @@ L["statList"] = {
 
 	{pattern = "expertise rating", id = CR_EXPERTISE},
 
-	{pattern = "armor penetration rating", id = CR_ARMOR_PENETRATION},
+	{pattern = "armor penetration", id = CR_ARMOR_PENETRATION},
 	{pattern = string.lower(ARMOR), id = ARMOR},
 	{pattern = "attack power", id = ATTACK_POWER},
 }
