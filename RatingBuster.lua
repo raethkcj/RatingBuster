@@ -2308,10 +2308,6 @@ local function RemoveBlizzardItemComparisons(tooltip)
 					if previousFontString:GetText():find("^%s*") then
 						RemoveFontString(previousFontString)
 					end
-				elseif isBlizzardComparison then
-					if not text:find("^|cffff2020%-") and not text:find("^|cff00ff00%+") then
-						isBlizzardComparison = false
-					end
 				end
 
 				if isBlizzardComparison then
