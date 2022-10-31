@@ -207,7 +207,7 @@ local options = {
 			name = L["Set level"],
 			desc = L["Set the level used in calculations (0 = your level)"],
 			min = 0,
-			max = 73, -- set to level cap + 3
+			max = GetMaxPlayerLevel(),
 			step = 1,
 		},
 		rating = {
