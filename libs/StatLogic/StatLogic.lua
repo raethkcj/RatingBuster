@@ -2580,7 +2580,8 @@ function StatLogic:GetSum(item, table)
 						for pattern, dualStat in pairs(L.DualStatPatterns) do
 							local lowered = strutf8lower(text)
 							local _, dEnd, value1, value2 = strfind(lowered, pattern)
-							value1, value2 = tonumber(value1), tonumber(value2)
+							value1 = value1 and tonumber(value1)
+							value2 = value2 and tonumber(value2)
 							if value1 and value2 then
 								foundWholeText = true
 								found = true
