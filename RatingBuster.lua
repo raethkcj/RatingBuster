@@ -1523,6 +1523,7 @@ local processedDodge, processedParry, processedMissed
 -- Utilities for checking nested recipes
 local ITEM_MIN_LEVEL_PATTERN = ITEM_MIN_LEVEL:gsub("%%d", "%%d+")
 local BIND_TRADE_PATTERN = BIND_TRADE_TIME_REMAINING:gsub("%%s", ".*")
+local BEGIN_ITEM_SPELL_TRIGGER_ONUSE = "^" .. ITEM_SPELL_TRIGGER_ONUSE
 local colorPrecision = 0.0001
 local AreColorsEqual = function(a, b)
 	return math.abs(a.r - b.r) < colorPrecision
@@ -1591,22 +1592,34 @@ function RatingBuster.ProcessTooltip(tooltip, name, link)
 		local fontString = _G[tipTextLeft..i]
 		local text = fontString:GetText()
 		if text then
-			if isRecipe and not tooltip.rb_processed_nested_recipe and i > 5 then
+			if isRecipe and not tooltip.rb_processed_nested_recipe then
 				-- Workaround to detect nested items from recipes
-				-- Check if any line after the 5th either
-				-- a) matches any uncommon or higher item quality color (and is not BIND_TRADE_PATTERN)
-				-- b) has a minimum required level
-				local color = CreateColor(fontString:GetTextColor())
+				-- Check if any line is:
+				-- a) Fourth or higher and:
+				--	1) Matches any uncommon or higher item quality color
+				--	2) Is neither BIND_TRADE_PATTERN nor ITEM_SPELL_TRIGGER_ONUSE
+				-- b) Sixth or higher and:
+				--	1) Has a minimum required level
+				--
+				--	Items to test:
+				--	Classic/TBC [Grimoire of Blood Pact (Rank 2)] 16322
+				--	TBC/Wrath [Design: Glinting Pyrestone] 32306
 				local quality = false
-				for j = Enum.ItemQuality.Good, Enum.ItemQuality.Heirloom do
-					if AreColorsEqual(ITEM_QUALITY_COLORS[j].color, color)
-					and not (j == Enum.ItemQuality.Heirloom and text:match(BIND_TRADE_PATTERN)) then
-						quality = true
-						break
+				if i > 3 then
+					local color = CreateColor(fontString:GetTextColor())
+					for j = Enum.ItemQuality.Good, Enum.ItemQuality.Heirloom do
+						if AreColorsEqual(ITEM_QUALITY_COLORS[j].color, color)
+						and not (
+							(j == Enum.ItemQuality.Heirloom and text:match(BIND_TRADE_PATTERN))
+							or (j == Enum.ItemQuality.Good and text:match(BEGIN_ITEM_SPELL_TRIGGER_ONUSE))
+						) then
+							quality = true
+							break
+						end
 					end
 				end
 				if quality
-				or text:find(ITEM_MIN_LEVEL_PATTERN)
+				or i > 5 and text:find(ITEM_MIN_LEVEL_PATTERN)
 				then
 					tooltip.rb_processed_nested_recipe = true
 				end
