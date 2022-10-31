@@ -379,9 +379,10 @@ L["Frost Resistance Summary"] = "統計冰霜抗性"
 -- /rb sum stat resshadow
 L["Sum Shadow Resistance"] = "統計暗影抗性"
 L["Shadow Resistance Summary"] = "統計暗影抗性"
--- /rb sum stat maxdamage
-L["Sum Weapon Max Damage"] = "統計武器最大傷害"
-L["Weapon Max Damage Summary"] = "統計武器最大傷害"
+L["Sum Weapon Average Damage"] = true
+L["Weapon Average Damage Summary"] = true
+L["Sum Weapon DPS"] = true
+L["Weapon DPS Summary"] = true
 -- /rb sum stat pen
 L["Sum Penetration"] = "統計法術穿透力"
 L["Spell Penetration Summary"] = "統計法術穿透力"
@@ -392,9 +393,6 @@ L["Sum Armor Penetration"] = "統計護甲穿透"
 L["Armor Penetration Summary"] = "統計無視護甲穿透"
 L["Sum Armor Penetration Rating"] = "統計無視護甲穿透等級"
 L["Armor Penetration Rating Summary"] = "統計無視護甲穿透等級"
--- /rb sum stat weapondps
---["Sum Weapon DPS"] = true,
---["Weapon DPS Summary"] = true,
 -- /rb sum statcomp str
 L["Sum Strength"] = "統計力量"
 L["Strength Summary"] = "統計力量"

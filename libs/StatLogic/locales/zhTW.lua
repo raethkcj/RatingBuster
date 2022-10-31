@@ -553,7 +553,7 @@ D["StatIDToName"] = {
 	["HEALTH_REG"] = {"生命恢復", "HP5"},
 	["MANA_REG"] = {"法力恢復", "MP5"},
 
-	["MAX_DAMAGE"] = {"最大傷害", "大傷"},
+	["AVERAGE_DAMAGE"] = {"Average Damage", "Avg Dmg"},
 	["DPS"] = {"每秒傷害", "DPS"},
 
 	["DEFENSE_RATING"] = {COMBAT_RATING_NAME2, COMBAT_RATING_NAME2}, -- COMBAT_RATING_NAME2 = "Defense Rating"

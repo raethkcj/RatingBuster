@@ -210,7 +210,6 @@ L["PreScanPatterns"] = {
 	["Reinforced %(%+(%d+) Armor%)"] = "ARMOR_BONUS",
 	["Восполнение (%d+) ед. маны за 5 сек%.$"] = "MANA_REG",
 	["Восполняет (%d+) ед%. здоровья каждые 5 секунд%."] = "HEALTH_REG",
-	["^%d+ %- (%d+) ед%. урона от .-$"] = "MAX_DAMAGE", -- Wands: "123 - 321 ед. урона от светлой магии"
 	-- Exclude
 	["^(%d+) Slot"] = false, -- Set Name (0/9)
 	["^.+%((%d+)/%d+%)$"] = false, -- Set Name (0/9)
@@ -566,7 +565,7 @@ D["StatIDToName"] = {
 	["HEALTH_REG"] = {"Восстановление здоровья раз в 5 сек.", "HP5"},
 	["MANA_REG"] = {"Восстановление маны раз в 5 сек.", "MP5"},
 
-	["MAX_DAMAGE"] = {"Max Damage", "Max Dmg"},
+	["AVERAGE_DAMAGE"] = {"Average Damage", "Avg Dmg"},
 	["DPS"] = {"Урон в секунду", "DPS"},
 
 	["DEFENSE_RATING"] = {"Рейтинг защиты", COMBAT_RATING_NAME2}, -- COMBAT_RATING_NAME2 = "Defense Rating"

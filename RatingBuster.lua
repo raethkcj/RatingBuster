@@ -703,24 +703,15 @@ local options = {
 							name = L["Sum Expertise"],
 							desc = L["Expertise <- Expertise Rating"],
 						},
-						sumWeaponMaxDamage = {
+						sumWeaponAverageDamage = {
 							type = 'toggle',
-							name = L["Sum Weapon Max Damage"],
-							desc = L["Weapon Max Damage Summary"],
+							name = L["Sum Weapon Average Damage"],
+							desc = L["Weapon Average Damage Summary"],
 						},
-						--[[
-						weapondps = {
-						type = 'toggle',
-						name = L["Sum Weapon DPS"],
-						desc = L["Weapon DPS Summary"],
-						get = function()
-							return profileDB.sumWeaponDPS
-						end,
-						set = function(v)
-						profileDB.sumWeaponDPS = v
-						-- clear cache
-						clearCache()
-						end,
+						sumWeaponDPS = {
+							type = 'toggle',
+							name = L["Sum Weapon DPS"],
+							desc = L["Weapon DPS Summary"],
 						},
 						--]]
 						sumIgnoreArmor = {
@@ -1118,7 +1109,7 @@ local defaults = {
 		sumDodgeNeglect = false,
 		sumParryNeglect = false,
 		sumBlockNeglect = false,
-		sumWeaponMaxDamage = false,
+		sumWeaponAverageDamage = false,
 		sumWeaponDPS = false,
 		sumIgnoreArmor = false, -- new
 		-- Spell
@@ -1184,6 +1175,7 @@ local defaults = {
 
 -- Class specific settings
 if class == "DEATHKNIGHT" then
+	defaults.profile.sumWeaponAverageDamage = true
 	defaults.profile.sumAvoidance = true
 	defaults.profile.sumArmor = true
 	defaults.profile.sumMP = false
@@ -1229,6 +1221,7 @@ elseif class == "MAGE" then
 	defaults.profile.showDodgeFromAgi = false
 	defaults.profile.ratingSpell = true
 elseif class == "PALADIN" then
+	defaults.profile.sumWeaponAverageDamage = true
 	defaults.profile.sumAvoidance = true
 	defaults.profile.sumArmor = true
 	defaults.profile.sumHit = true
@@ -1252,6 +1245,7 @@ elseif class == "PRIEST" then
 	defaults.profile.showDodgeFromAgi = false
 	defaults.profile.ratingSpell = true
 elseif class == "ROGUE" then
+	defaults.profile.sumWeaponAverageDamage = true
 	defaults.profile.sumMP = false
 	defaults.profile.sumMP5 = false
 	defaults.profile.sumAP = true
@@ -1262,6 +1256,7 @@ elseif class == "ROGUE" then
 	defaults.profile.showSpellCritFromInt = false
 	defaults.profile.ratingPhysical = true
 elseif class == "SHAMAN" then
+	defaults.profile.sumWeaponAverageDamage = true
 	defaults.profile.sumSpellDmg = true
 	defaults.profile.sumSpellHit = true
 	defaults.profile.sumSpellCrit = true
@@ -1279,6 +1274,7 @@ elseif class == "WARLOCK" then
 	defaults.profile.showDodgeFromAgi = false
 	defaults.profile.ratingSpell = true
 elseif class == "WARRIOR" then
+	defaults.profile.sumWeaponAverageDamage = true
 	defaults.profile.sumAvoidance = true
 	defaults.profile.sumArmor = true
 	defaults.profile.sumMP = false
@@ -2697,12 +2693,20 @@ local summaryCalcData = {
 		end,
 		ispercent = true,
 	},
-	-- Weapon Max Damage - MAX_DAMAGE
+	-- Weapon Average Damage - MIN_DAMAGE, MAX_DAMAGE
 	{
-		option = "sumWeaponMaxDamage",
-		name = "MAX_DAMAGE",
+		option = "sumWeaponAverageDamage",
+		name = "AVERAGE_DAMAGE",
 		func = function(sum)
-			return sum["MAX_DAMAGE"]
+			return (sum["MIN_DAMAGE"] + sum["MAX_DAMAGE"]) / 2
+		end,
+	},
+	-- Weapon DPS - DPS
+	{
+		option = "sumWeaponDPS",
+		name = "DPS",
+		func = function(sum)
+			return sum["DPS"]
 		end,
 	},
 	-- Ignore Armor - IGNORE_ARMOR

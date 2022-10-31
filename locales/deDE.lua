@@ -382,9 +382,10 @@ L["Frost Resistance Summary"] = "Frostwiderstandsübersicht"
 -- /rb sum stat resshadow
 L["Sum Shadow Resistance"] = "Schattenwiderstand zusammenrechnen"
 L["Shadow Resistance Summary"] = "Schattenwiderstandsübersicht"
--- /rb sum stat maxdamage
-L["Sum Weapon Max Damage"] = "Waffenmaximalschaden zusammenrechnen"
-L["Weapon Max Damage Summary"] = "Waffenmaximalschadensübersicht"
+L["Sum Weapon Average Damage"] = true
+L["Weapon Average Damage Summary"] = true
+L["Sum Weapon DPS"] = true
+L["Weapon DPS Summary"] = true
 -- /rb sum stat pen
 L["Sum Penetration"] = "Durchschlag zusammenrechnen"
 L["Spell Penetration Summary"] = "Durchschlagsübersicht"
@@ -395,9 +396,6 @@ L["Sum Armor Penetration"] = "Rüstungsdurchlag zusammenrechnen"
 L["Armor Penetration Summary"] = "Rüstungsdurchlagsübersicht"
 L["Sum Armor Penetration Rating"] = "Rüstungsdurchlagwertung zusammenrechnen"
 L["Armor Penetration Rating Summary"] = "Rüstungsdurchlagwertungsübersicht"
--- /rb sum stat weapondps
---["Sum Weapon DPS"] = true,
---["Weapon DPS Summary"] = true,
 -- /rb sum statcomp str
 L["Sum Strength"] = "Stärke zusammenrechnen"
 L["Strength Summary"] = "Stärkeübersicht"

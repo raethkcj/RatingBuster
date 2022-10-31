@@ -412,12 +412,10 @@ L["Sum Armor Penetration"] = "Пробивание брони"
 L["Armor Penetration Summary"] = "Суммировать пробивание брони"
 L["Sum Armor Penetration Rating"] = "Рейтинг пробивания брони"
 L["Armor Penetration Rating Summary"] = "Суммировать рейтинг пробивания брони"
--- /rb sum physical maxdamage
-L["Sum Weapon Max Damage"] = "Макс. урон оружия"
-L["Weapon Max Damage Summary"] = "Суммировать макс. урон оружия"
--- /rb sum physical weapondps
---L["Sum Weapon DPS"] = "Сумма УВС оружия"
---L["Weapon DPS Summary"] = "Суммировать урон в секунду от оружия"
+L["Sum Weapon Average Damage"] = true
+L["Weapon Average Damage Summary"] = true
+L["Sum Weapon DPS"] = "Сумма УВС оружия"
+L["Weapon DPS Summary"] = "Суммировать урон в секунду от оружия"
 -- /rb sum physical wpn
 L["Sum Weapon Skill"] = "Оружейный навык"
 L["Weapon Skill <- Weapon Skill Rating"] = "Рейтинг владения оружием -> Оружейный навык"

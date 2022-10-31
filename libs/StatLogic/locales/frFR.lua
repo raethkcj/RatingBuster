@@ -537,7 +537,7 @@ D["StatIDToName"] = {
 	["HEALTH_REG"] = {"Régén. vie (combat)", "Régén. vie (combat)"},
 	["MANA_REG"] = {"Régén. mana (incantation)", "Régén. mana (incantation)"},
 
-	["MAX_DAMAGE"] = {"Dégâts maximum", "Dégâts Max"},
+	["AVERAGE_DAMAGE"] = {"Average Damage", "Avg Dmg"},
 	["DPS"] = {"Dégâts par seconde", "DPS"},
 
 	["DEFENSE_RATING"] = {"Score de défense", "Défense"},

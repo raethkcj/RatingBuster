@@ -10,4 +10,7 @@ end
 
 L.PreScanPatterns[Escape(DPS_TEMPLATE)] = "DPS"
 
+L.DualStatPatterns[Escape(PLUS_DAMAGE_TEMPLATE_WITH_SCHOOL)] = {{"MIN_DAMAGE"}, {"MAX_DAMAGE"}}
+L.DualStatPatterns[Escape(PLUS_DAMAGE_TEMPLATE)] = {{"MIN_DAMAGE"}, {"MAX_DAMAGE"}}
+L.DualStatPatterns[Escape(DAMAGE_TEMPLATE_WITH_SCHOOL)] = {{"MIN_DAMAGE"}, {"MAX_DAMAGE"}}
 L.DualStatPatterns[Escape(DAMAGE_TEMPLATE)] = {{"MIN_DAMAGE"}, {"MAX_DAMAGE"}}

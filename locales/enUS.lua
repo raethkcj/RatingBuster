@@ -376,9 +376,10 @@ L["Frost Resistance Summary"] = true
 -- /rb sum stat resshadow
 L["Sum Shadow Resistance"] = true
 L["Shadow Resistance Summary"] = true
--- /rb sum stat maxdamage
-L["Sum Weapon Max Damage"] = true
-L["Weapon Max Damage Summary"] = true
+L["Sum Weapon Average Damage"] = true
+L["Weapon Average Damage Summary"] = true
+L["Sum Weapon DPS"] = true
+L["Weapon DPS Summary"] = true
 -- /rb sum stat pen
 L["Sum Penetration"] = true
 L["Spell Penetration Summary"] = true
@@ -389,9 +390,6 @@ L["Sum Armor Penetration"] = true
 L["Armor Penetration Summary"] = true
 L["Sum Armor Penetration Rating"] = true
 L["Armor Penetration Rating Summary"] = true
--- /rb sum stat weapondps
---["Sum Weapon DPS"] = true,
---["Weapon DPS Summary"] = true,
 -- /rb sum statcomp str
 L["Sum Strength"] = true
 L["Strength Summary"] = true

@@ -481,7 +481,7 @@ D["StatIDToName"] = {
 	["HEALTH_REG"] = {HEALTH.." 재생", "HP5"},
 	["MANA_REG"] = {MANA.." 재생", "MP5"},
 
-	["MAX_DAMAGE"] = {"최대 공격력", "Max Dmg"},
+	["AVERAGE_DAMAGE"] = {"Average Damage", "Avg Dmg"},
 	["DPS"] = {"초당 공격력", "DPS"},
 
 	["DEFENSE_RATING"] = {COMBAT_RATING_NAME2, COMBAT_RATING_NAME2}, -- COMBAT_RATING_NAME2 = "Defense Rating"
