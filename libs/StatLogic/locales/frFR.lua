@@ -166,8 +166,6 @@ L["PreScanPatterns"] = {
 	["Renforcé %(%+(%d+) Armure%)"] = "ARMOR_BONUS",
 	["^Équipé\194\160: Rend (%d+) points de vie toutes les 5 seco?n?d?e?s?%.?$"]= "HEAL_REG",
 	["^Équipé\194\160: Rend (%d+) points de mana toutes les 5 seco?n?d?e?s?%.?$"]= "MANA_REG",
-	["^Dégâts : %+?%d+ %- (%d+)$"] = "MAX_DAMAGE",
-	["^%(([%d%,]+) dégâts par seconde%)$"] = "DPS",
 	--["Lunette %(%+(%d+) points? de dégâts?%)"] = "RANGED_AP",
 	-- Exclude
 	["^(%d+) Slot"] = false, -- Set Name (0/9)

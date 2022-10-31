@@ -162,8 +162,6 @@ L["PreScanPatterns"] = {
 	["regen. de maná (%d+) p. cada 5 s%.$"] = "MANA_REG",
 	["Restaura (%d+) p. de maná cada 5 s%.?$"]= "MANA_REG",
 	["Restaura (%d+) p. de maná cada 5 s de todos los miembros del grupo que estén a 30 m%.?$"]= "MANA_REG",
-	["^%+?%d+ %- (%d+) .-[Dd]año$"] = "MAX_DAMAGE",
-	["^%(([%d%,]+) daño por segundo%)$"] = "DPS",
 	-- Exclude
 	["^(%d+) Slot"] = false, -- Set Name (0/9)
 	["^[%a '%-]+%((%d+)/%d+%)$"] = false, -- Set Name (0/9)

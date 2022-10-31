@@ -202,8 +202,6 @@ L["PreScanPatterns"] = {
 	["^(%d+) Armor$"] = "ARMOR",
 	["Reinforced %(%+(%d+) Armor%)"] = "ARMOR_BONUS",
 	["Mana Regen (%d+) per 5 sec%.$"] = "MANA_REG",
-	["^%+?%d+ %- (%d+) .-Damage$"] = "MAX_DAMAGE",
-	["^%(([%d%.]+) damage per second%)$"] = "DPS",
 	-- Exclude
 	["^(%d+) Slot"] = false, -- Set Name (0/9)
 	["^[%a '%-]+%((%d+)/%d+%)$"] = false, -- Set Name (0/9)

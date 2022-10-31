@@ -152,8 +152,6 @@ L["PreScanPatterns"] = {
 	["방어도 보강 %(%+(%d+)%)"] = "ARMOR_BONUS",
 	["매 5초마다 (%d+)의 생명력이 회복됩니다.$"] = "HEALTH_REG",
 	["매 5초마다 (%d+)의 마나가 회복됩니다.$"] = "MANA_REG",
-	["^.-공격력 %+?%d+ %- (%d+)$"] = "MAX_DAMAGE",
-	["^%(초당 공격력 ([%d%.]+)%)$"] = "DPS",
 	-- Exclude
 	["^(%d+)칸"] = false, -- Set Name (0/9)
 	["^[%D ]+ %((%d+)/%d+%)$"] = false, -- Set Name (0/9)

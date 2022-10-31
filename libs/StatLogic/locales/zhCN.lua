@@ -186,8 +186,6 @@ L["PreScanPatterns"] = {
 	["每5秒回复(%d+)点法力值。$"] = "MANA_REG",
 	["每5秒回复(%d+)点法力值$"] = "MANA_REG",
 	["每5秒回复(%d+)点生命值。$"] = "HEALTH_REG",
-	["^%+?%d+ %- (%d+).-伤害$"] = "MAX_DAMAGE",
-	["^（每秒伤害([%d%.]+)）$"] = "DPS",
 	-- Exclude
 	["^(%d+)格.-包"] = false, -- # of slots and bag type
 	["^(%d+)格.-袋"] = false, -- # of slots and bag type

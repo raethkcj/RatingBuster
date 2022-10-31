@@ -187,8 +187,6 @@ L["PreScanPatterns"] = {
 	["^(%d+)格擋$"] = "BLOCK_VALUE",
 	["^(%d+)點護甲$"] = "ARMOR",
 	["強化護甲 %+(%d+)"] = "ARMOR_BONUS",
-	["^%+?%d+ %- (%d+).-傷害$"] = "MAX_DAMAGE",
-	["^%(每秒傷害([%d%.]+)%)$"] = "DPS",
 	-- Exclude
 	["^(%d+)格.-包"] = false, -- # of slots and bag type
 	["^(%d+)格.-袋"] = false, -- # of slots and bag type
