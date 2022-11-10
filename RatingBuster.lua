@@ -1403,9 +1403,10 @@ do
 			-- Talents are not guaranteed to exist on SPELLS_CHANGED,
 			-- and there is no definite event for when they will exist.
 			-- Recheck every 1 second after SPELLS_CHANGED until they exist.
-			local ticker = C_Timer.NewTicker(1, function()
-				GenerateStatModOptions()
+			local ticker
+			ticker = C_Timer.NewTicker(1, function()
 				if StatLogic:TalentCacheExists() then
+					GenerateStatModOptions()
 					ticker:Cancel()
 				end
 			end)

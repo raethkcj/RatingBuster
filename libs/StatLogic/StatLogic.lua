@@ -1352,7 +1352,8 @@ do
 			-- Recheck every 1 second after SPELLS_CHANGED until they exist.
 			-- TODO: Remove debug prints
 			print(GetTime(), "StatLogic: Initial talent cache failed. Retrying in 1...")
-			local ticker = C_Timer.NewTicker(1, function()
+			local ticker
+			ticker = C_Timer.NewTicker(1, function()
 				GenerateOrderedTalents()
 				if talentCacheExists then
 					print(GetTime(), "StatLogic: Talent cache succeeded.")
