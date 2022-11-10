@@ -52,7 +52,7 @@ end
 local _
 local _, class = UnitClass("player")
 local calcLevel, playerLevel
-local profileDB -- Initialized in :OnInitialize()
+local profileDB, globalDB -- Initialized in :OnInitialize()
 
 
 -- Localize globals
