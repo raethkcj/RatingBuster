@@ -1350,16 +1350,11 @@ do
 			-- Talents are not guaranteed to exist on SPELLS_CHANGED,
 			-- and there is no definite event for when they will exist.
 			-- Recheck every 1 second after SPELLS_CHANGED until they exist.
-			-- TODO: Remove debug prints
-			print(GetTime(), "StatLogic: Initial talent cache failed. Retrying in 1...")
 			local ticker
 			ticker = C_Timer.NewTicker(1, function()
 				GenerateOrderedTalents()
 				if talentCacheExists then
-					print(GetTime(), "StatLogic: Talent cache succeeded.")
 					ticker:Cancel()
-				else
-					print(GetTime(), "StatLogic: Talent cache failed again. Retrying in 1...")
 				end
 			end)
 		end
