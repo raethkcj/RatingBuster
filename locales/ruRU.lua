@@ -675,24 +675,21 @@ SPELL_STAT5_NAME = "Spirit"
 --
 
 L["statList"] = {
-	{pattern = string.lower("Силе атаки"), id = SPELL_STAT1115_NAME}, --чтобы Сила атаки и сила заклинаний не распознавалась как Сила
-	{pattern = string.lower("Сила атаки"), id = SPELL_STAT1115_NAME}, -- строки SPELL_STAT1115_NAME должны быть впереди
-	{pattern = string.lower("Силу атаки"), id = SPELL_STAT1115_NAME},
-	{pattern = string.lower("Сила заклинаний"), id = SPELL_STAT1115_NAME},
-	{pattern = string.lower("Силу заклинаний"), id = SPELL_STAT1115_NAME},
-	{pattern = string.lower("Силе заклинаний"), id = SPELL_STAT1115_NAME}, -- конец левых строчек
-
-	{pattern = string.lower(SPELL_STAT1_NAME), id = SPELL_STAT1_NAME}, -- Strength
+	{pattern = "броня", id = ARMOR},
+	{pattern = "брони", id = ARMOR},
+	{pattern = "броню", id = ARMOR},
+	{pattern = "броне", id = ARMOR},
+	{pattern = "сила", id = SPELL_STAT1_NAME}, -- Strength
 	{pattern = "силу", id = SPELL_STAT1_NAME}, -- Strength
 	{pattern = "силе", id = SPELL_STAT1_NAME}, -- Strength
-	{pattern = string.lower(SPELL_STAT2_NAME), id = SPELL_STAT2_NAME}, -- Agility
+	{pattern = "ловкость", id = SPELL_STAT2_NAME}, -- Agility
 	{pattern = "ловкости", id = SPELL_STAT2_NAME}, -- Agility
-	{pattern = string.lower(SPELL_STAT3_NAME), id = SPELL_STAT3_NAME}, -- Stamina
+	{pattern = "выносливость", id = SPELL_STAT3_NAME}, -- Stamina
 	{pattern = "выносливости", id = SPELL_STAT3_NAME}, -- Stamina
 	{pattern = "интеллекту", id = SPELL_STAT4_NAME}, -- Intellect
-	{pattern = string.lower(SPELL_STAT4_NAME), id = SPELL_STAT4_NAME}, -- Intellect
+	{pattern = "интеллект", id = SPELL_STAT4_NAME}, -- Intellect
 	{pattern = "духу", id = SPELL_STAT5_NAME}, -- Spirit
-	{pattern = string.lower(SPELL_STAT5_NAME), id = SPELL_STAT5_NAME}, -- Spirit
+	{pattern = "дух", id = SPELL_STAT5_NAME}, -- Spirit
 
 	{pattern = "рейтинг защиты", id = CR_DEFENSE_SKILL},
 	{pattern = "рейтингу защиты", id = CR_DEFENSE_SKILL},
@@ -760,7 +757,6 @@ L["statList"] = {
 	{pattern = "рейтинг пробивания брони", id = CR_ARMOR_PENETRATION},
 	{pattern = "рейтингу пробивания брони", id = CR_ARMOR_PENETRATION},
 	{pattern = "рейтинга пробивания брони", id = CR_ARMOR_PENETRATION},
-	{pattern = string.lower(ARMOR), id = ARMOR},
 	{pattern = "силу атаки", id = ATTACK_POWER},
 
 	{pattern = "рейтинг искусности", id = CR_MASTERY},
