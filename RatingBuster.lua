@@ -1331,9 +1331,7 @@ do
 		options.args.stat.args[mod:lower()].args[key] = option
 	end
 
-	local f = CreateFrame("Frame")
-	f:RegisterEvent("SPELLS_CHANGED")
-	f:SetScript("OnEvent", function()
+	local function GenerateStatModOptions()
 		for statMod, cases in pairs(StatLogic.StatModTable[class]) do
 			local add = StatLogic.StatModInfo[statMod].add
 			local mod = StatLogic.StatModInfo[statMod].mod
@@ -1394,7 +1392,24 @@ do
 
 		options.args.profiles = LibStub("AceDBOptions-3.0"):GetOptionsTable(RatingBuster.db)
 		options.args.profiles.order = 4
+	end
 
+	local f = CreateFrame("Frame")
+	f:RegisterEvent("SPELLS_CHANGED")
+	f:SetScript("OnEvent", function()
+		if StatLogic:TalentCacheExists() then
+			GenerateStatModOptions()
+		else
+			-- Talents are not guaranteed to exist on SPELLS_CHANGED,
+			-- and there is no definite event for when they will exist.
+			-- Recheck every 1 second after SPELLS_CHANGED until they exist.
+			local ticker = C_Timer.NewTicker(1, function()
+				GenerateStatModOptions()
+				if StatLogic:TalentCacheExists() then
+					ticker:Cancel()
+				end
+			end)
+		end
 		f:UnregisterEvent("SPELLS_CHANGED")
 	end)
 end

@@ -1307,12 +1307,20 @@ end
 -- tier then column allows us to replicate the previous behavior,
 -- and keep StatModTables human-readable.
 local orderedTalentCache = {}
+function StatLogic:GetOrderedTalentInfo(tab, num)
+	return GetTalentInfo(tab, orderedTalentCache[tab][num])
+end
+
+local talentCacheExists = false
+function StatLogic:TalentCacheExists()
+	return talentCacheExists
+end
+
 do
-	local f = CreateFrame("Frame")
-	f:RegisterEvent("SPELLS_CHANGED")
-	f:SetScript("OnEvent", function()
+	local function GenerateOrderedTalents()
 		local temp = {}
-		for tab = 1, GetNumTalentTabs() do
+		local numTabs = GetNumTalentTabs()
+		for tab = 1, numTabs do
 			temp[tab] = {}
 			local products = {}
 			for i = 1,GetNumTalents(tab) do
@@ -1331,12 +1339,31 @@ do
 				j = j + 1
 			end
 		end
-		f:UnregisterEvent("SPELLS_CHANGED")
-	end)
-end
+		talentCacheExists = orderedTalentCache[numTabs] and #orderedTalentCache[numTabs] > 0
+	end
 
-function StatLogic:GetOrderedTalentInfo(tab, num)
-	return GetTalentInfo(tab, orderedTalentCache[tab][num])
+	local f = CreateFrame("Frame")
+	f:RegisterEvent("SPELLS_CHANGED")
+	f:SetScript("OnEvent", function(self)
+		GenerateOrderedTalents()
+		if not talentCacheExists then
+			-- Talents are not guaranteed to exist on SPELLS_CHANGED,
+			-- and there is no definite event for when they will exist.
+			-- Recheck every 1 second after SPELLS_CHANGED until they exist.
+			-- TODO: Remove debug prints
+			print(GetTime(), "StatLogic: Initial talent cache failed. Retrying in 1...")
+			local ticker = C_Timer.NewTicker(1, function()
+				GenerateOrderedTalents()
+				if talentCacheExists then
+					print(GetTime(), "StatLogic: Talent cache succeeded.")
+					ticker:Cancel()
+				else
+					print(GetTime(), "StatLogic: Talent cache failed again. Retrying in 1...")
+				end
+			end)
+		end
+		self:UnregisterEvent("SPELLS_CHANGED")
+	end)
 end
 
 local GetStatModValue = function(stat, school, mod, case, initialValue)
