@@ -675,7 +675,12 @@ SPELL_STAT5_NAME = "Spirit"
 --
 
 L["statList"] = {
-	{pattern = "броня", id = ARMOR},
+	{pattern = "силу атаки", id = ATTACK_POWER},
+	{pattern = "к силе атаки", id = ATTACK_POWER},
+	{pattern = "рейтинг пробивания брони", id = CR_ARMOR_PENETRATION},
+	{pattern = "рейтингу пробивания брони", id = CR_ARMOR_PENETRATION},
+	{pattern = "рейтинга пробивания брони", id = CR_ARMOR_PENETRATION},
+	{pattern = "Броня", id = ARMOR},
 	{pattern = "брони", id = ARMOR},
 	{pattern = "броню", id = ARMOR},
 	{pattern = "броне", id = ARMOR},
@@ -694,6 +699,7 @@ L["statList"] = {
 	{pattern = "рейтинг защиты", id = CR_DEFENSE_SKILL},
 	{pattern = "рейтингу защиты", id = CR_DEFENSE_SKILL},
 	{pattern = "рейтинга защиты", id = CR_DEFENSE_SKILL},
+	{pattern = "к защите", id = CR_DEFENSE_SKILL},
 	{pattern = "рейтинг уклонения", id = CR_DODGE},
 	{pattern = "рейтингу уклонения", id = CR_DODGE},
 	{pattern = "рейтинга уклонения", id = CR_DODGE},
@@ -718,7 +724,7 @@ L["statList"] = {
 	{pattern = "меткость %(заклинания%)", id = CR_HIT_SPELL},
 	{pattern = "к критическому удару в дальнем бою", id = CR_CRIT_RANGED}, -- [Heartseeker Scope]
 	{pattern = "рейтинг критического удара", id = CR_CRIT},
-	{pattern = "рейтинг критического эффекта", id = CR_CRIT},
+	{pattern = "к рейтингу критического эффекта", id = CR_CRIT},
 	{pattern = "рейтингу критического удара", id = CR_CRIT},
 	{pattern = "рейтинга критического удара", id = CR_CRIT},
 	{pattern = "рейтинг крит. удара оруж. ближнего боя", id = CR_CRIT_MELEE},
@@ -754,11 +760,6 @@ L["statList"] = {
 	{pattern = "рейтингу мастерства", id = CR_EXPERTISE},
 	{pattern = "рейтинга мастерства", id = CR_EXPERTISE},
 
-	{pattern = "рейтинг пробивания брони", id = CR_ARMOR_PENETRATION},
-	{pattern = "рейтингу пробивания брони", id = CR_ARMOR_PENETRATION},
-	{pattern = "рейтинга пробивания брони", id = CR_ARMOR_PENETRATION},
-	{pattern = "силу атаки", id = ATTACK_POWER},
-
 	{pattern = "рейтинг искусности", id = CR_MASTERY},
 	{pattern = "рейтингу искусности", id = CR_MASTERY},
 	{pattern = "рейтинга искусности", id = CR_MASTERY},
@@ -779,7 +780,7 @@ L["$value RAP"] = "$value к силе атаки дал. боя"
 L["$value Spell Dmg"] = "$value к силе заклинаний"
 L["$value Heal"] = "$value к исцелению"
 L["$value Armor"] = "$value к броне"
-L["$value Block"] = "$value% к вер. блокирования"
+L["$value Block"] = "$value Блок"
 L["$value MP5"] = "$value маны раз в 5 сек."
 L["$value MP5(OC)"] = "$value маны раз в 5 сек. (вне боя)"
 L["$value MP5(NC)"] = "$value маны раз в 5 сек. (вне каста)"
