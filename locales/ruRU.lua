@@ -629,10 +629,10 @@ L["numberPatterns"] = {
 	{pattern = "дополнительно (%d+)", addInfo = "AfterNumber", space = " ", }, -- for "add xx stat" type pattern, ex: Adamantite Sharpening Stone
 	-- Added [^%%] so that it doesn't match strings like "Increases healing by up to 10% of your total Intellect." [Whitemend Pants] ID: 24261
 	-- Added [^|] so that it doesn't match enchant strings (JewelTips)
-	{pattern = "на (%d+)([^%d%%|]+)", addInfo = "AfterNumber", space = " ", }, -- [發光的暗影卓奈石] +6法術傷害及5耐力
+	{pattern = "(%d+)%f[^%d%%|]", addInfo = "AfterNumber", space = " ", }, -- [發光的暗影卓奈石] +6法術傷害及5耐力
 }
 L["separators"] = {
-	"/", " и ", ",", "%. ", " для ", "&", ":",
+	"/", " и ", ",", "%. ", " для ", "&", ": %f[^%d]",
 	-- Fix for [Mirror of Truth]
 	-- Equip: Chance on melee and ranged critical strike to increase your attack power by 1000 for 10 secs.
 	-- 1000 was falsely detected detected as ranged critical strike
@@ -680,7 +680,7 @@ L["statList"] = {
 	{pattern = "рейтинг пробивания брони", id = CR_ARMOR_PENETRATION},
 	{pattern = "рейтингу пробивания брони", id = CR_ARMOR_PENETRATION},
 	{pattern = "рейтинга пробивания брони", id = CR_ARMOR_PENETRATION},
-	{pattern = "Броня", id = ARMOR},
+	{pattern = "броня", id = ARMOR},
 	{pattern = "брони", id = ARMOR},
 	{pattern = "броню", id = ARMOR},
 	{pattern = "броне", id = ARMOR},
