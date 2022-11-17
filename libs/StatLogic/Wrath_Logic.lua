@@ -449,6 +449,237 @@ addonTable.bonusArmorItemEquipLoc = {
 	["INVTYPE_TRINKET"] = true,
 }
 
+-- Generated from https://github.com/wowsims/wotlk/blob/master/assets/item_data/all_item_tooltips.csv
+addonTable.baseArmorTable = {
+	[Enum.ItemQuality.Epic] = {
+		[BACKSLOT] = {
+			[Enum.ItemArmorSubclass.Cloth] = {
+				[264] = 177,
+				[232] = 159,
+				[213] = 154,
+				[200] = 150,
+				[128] = 108,
+				[115] = 97,
+				[110] = 93,
+				[105] = 89,
+				[83] = 72,
+				[77] = 67,
+			},
+		},
+		[CHESTSLOT] = {
+			[Enum.ItemArmorSubclass.Cloth] = {
+				[159] = 266,
+				[146] = 244,
+				[136] = 228,
+				[88] = 151,
+				[85] = 147,
+			},
+			[Enum.ItemArmorSubclass.Leather] = {
+				[159] = 499,
+				[146] = 459,
+				[136] = 428,
+				[123] = 389,
+				[105] = 333,
+				[83] = 276,
+				[75] = 254,
+			},
+			[Enum.ItemArmorSubclass.Plate] = {
+				[277] = 2756,
+				[264] = 2641,
+				[251] = 2526,
+			},
+		},
+		[FEETSLOT] = {
+			[Enum.ItemArmorSubclass.Cloth] = {
+				[159] = 183,
+				[146] = 168,
+				[78] = 93,
+			},
+			[Enum.ItemArmorSubclass.Leather] = {
+				[159] = 343,
+				[146] = 315,
+				[136] = 294,
+				[123] = 267,
+				[83] = 190,
+				[77] = 178,
+			},
+		},
+		[HANDSSLOT] = {
+			[Enum.ItemArmorSubclass.Cloth] = {
+				[159] = 166,
+				[146] = 153,
+				[136] = 143,
+			},
+			[Enum.ItemArmorSubclass.Leather] = {
+				[159] = 312,
+				[146] = 287,
+				[136] = 268,
+				[123] = 243,
+				[105] = 208,
+				[81] = 169,
+				[78] = 164,
+			},
+			[Enum.ItemArmorSubclass.Plate] = {
+				[277] = 1723,
+				[264] = 1650,
+				[251] = 1579,
+			},
+		},
+		[HEADSLOT] = {
+			[Enum.ItemArmorSubclass.Cloth] = {
+				[159] = 216,
+				[146] = 199,
+				[136] = 185,
+				[81] = 114,
+			},
+			[Enum.ItemArmorSubclass.Leather] = {
+				[159] = 405,
+				[146] = 373,
+				[136] = 348,
+				[123] = 316,
+				[105] = 271,
+				[75] = 206,
+			},
+			[Enum.ItemArmorSubclass.Plate] = {
+				[105] = 1080,
+			},
+		},
+		[LEGSSLOT] = {
+			[Enum.ItemArmorSubclass.Cloth] = {
+				[159] = 232,
+				[146] = 214,
+				[136] = 200,
+				[81] = 123,
+			},
+			[Enum.ItemArmorSubclass.Leather] = {
+				[159] = 436,
+				[146] = 401,
+				[136] = 375,
+				[123] = 340,
+				[105] = 292,
+			},
+			[Enum.ItemArmorSubclass.Plate] = {
+				[264] = 2310,
+				[226] = 2054,
+			},
+		},
+		[SECONDARYHANDSLOT] = {
+			[Enum.ItemArmorSubclass.Shield] = {
+				[90] = 3854,
+			},
+		},
+		[SHOULDERSLOT] = {
+			[Enum.ItemArmorSubclass.Cloth] = {
+				[159] = 199,
+				[146] = 183,
+				[136] = 171,
+				[78] = 102,
+			},
+			[Enum.ItemArmorSubclass.Leather] = {
+				[159] = 374,
+				[146] = 344,
+				[136] = 321,
+				[123] = 291,
+				[105] = 250,
+			},
+		},
+		[WRISTSLOT] = {
+			[Enum.ItemArmorSubclass.Cloth] = {
+				[154] = 113,
+				[141] = 103,
+			},
+			[Enum.ItemArmorSubclass.Leather] = {
+				[154] = 211,
+				[141] = 194,
+				[126] = 174,
+				[113] = 157,
+			},
+			[Enum.ItemArmorSubclass.Plate] = {
+				[264] = 1155,
+				[251] = 1105,
+			},
+		},
+		[WAISTSLOT] = {
+			[Enum.ItemArmorSubclass.Cloth] = {
+				[159] = 149,
+				[146] = 138,
+			},
+			[Enum.ItemArmorSubclass.Leather] = {
+				[159] = 280,
+				[146] = 258,
+				[136] = 241,
+				[123] = 219,
+				[76] = 144,
+			},
+			[Enum.ItemArmorSubclass.Plate] = {
+				[264] = 1485,
+			},
+		},
+	},
+	[Enum.ItemQuality.Rare] = {
+		[BACKSLOT] = {
+			[Enum.ItemArmorSubclass.Cloth] = {
+				[187] = 140,
+				[167] = 127,
+				[115] = 78,
+				[112] = 76,
+			},
+		},
+		[CHESTSLOT] = {
+			[Enum.ItemArmorSubclass.Leather] = {
+				[115] = 292,
+			},
+		},
+		[HANDSSLOT] = {
+			[Enum.ItemArmorSubclass.Leather] = {
+				[115] = 183,
+			},
+			[Enum.ItemArmorSubclass.Plate] = {
+				[114] = 722,
+			},
+		},
+		[HEADSLOT] = {
+			[Enum.ItemArmorSubclass.Leather] = {
+				[115] = 237,
+			},
+			[Enum.ItemArmorSubclass.Plate] = {
+				[115] = 946,
+			},
+		},
+		[LEGSSLOT] = {
+			[Enum.ItemArmorSubclass.Leather] = {
+				[115] = 256,
+			},
+			[Enum.ItemArmorSubclass.Plate] = {
+				[166] = 1650,
+				[114] = 1010,
+			},
+		},
+		[SHOULDERSLOT] = {
+			[Enum.ItemArmorSubclass.Leather] = {
+				[115] = 219,
+			},
+		},
+		[WAISTSLOT] = {
+			[Enum.ItemArmorSubclass.Cloth] = {
+				[115] = 88,
+			},
+		},
+	},
+	[Enum.ItemQuality.Good] = {
+		[HEADSLOT] = {
+			[Enum.ItemArmorSubclass.Cloth] = {
+				[114] = 114,
+			},
+		},
+		[WAISTSLOT] = {
+			[Enum.ItemArmorSubclass.Plate] = {
+				[174] = 889,
+			},
+		},
+	},
+}
+
 local BuffGroup = {
 	MOD_PHYS_DMG_TAKEN = 1,
 	MOD_AP = 2,

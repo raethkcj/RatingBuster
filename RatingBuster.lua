@@ -1540,13 +1540,6 @@ local processedDodge, processedParry, processedMissed
 local ITEM_MIN_LEVEL_PATTERN = ITEM_MIN_LEVEL:gsub("%%d", "%%d+")
 local BIND_TRADE_PATTERN = BIND_TRADE_TIME_REMAINING:gsub("%%s", ".*")
 local BEGIN_ITEM_SPELL_TRIGGER_ONUSE = "^" .. ITEM_SPELL_TRIGGER_ONUSE
-local colorPrecision = 0.0001
-local AreColorsEqual = function(a, b)
-	return math.abs(a.r - b.r) < colorPrecision
-	  and math.abs(a.g - b.g) < colorPrecision
-	  and math.abs(a.b - b.b) < colorPrecision
-	  and math.abs(a.a - b.a) < colorPrecision
-end
 
 function RatingBuster.ProcessTooltip(tooltip, name, link)
 	-- Check if we're in standby mode
@@ -1608,6 +1601,7 @@ function RatingBuster.ProcessTooltip(tooltip, name, link)
 		local fontString = _G[tipTextLeft..i]
 		local text = fontString:GetText()
 		if text then
+			local color = CreateColor(fontString:GetTextColor())
 			if isRecipe and not tooltip.rb_processed_nested_recipe then
 				-- Workaround to detect nested items from recipes
 				-- Check if any line is:
@@ -1622,9 +1616,8 @@ function RatingBuster.ProcessTooltip(tooltip, name, link)
 				--	TBC/Wrath [Design: Glinting Pyrestone] 32306
 				local quality = false
 				if i > 3 then
-					local color = CreateColor(fontString:GetTextColor())
 					for j = Enum.ItemQuality.Good, Enum.ItemQuality.Heirloom do
-						if AreColorsEqual(ITEM_QUALITY_COLORS[j].color, color)
+						if StatLogic.AreColorsEqual(ITEM_QUALITY_COLORS[j].color, color)
 						and not (
 							(j == Enum.ItemQuality.Heirloom and text:match(BIND_TRADE_PATTERN))
 							or (j == Enum.ItemQuality.Good and text:match(BEGIN_ITEM_SPELL_TRIGGER_ONUSE))
@@ -1641,7 +1634,7 @@ function RatingBuster.ProcessTooltip(tooltip, name, link)
 				end
 			end
 
-			text = RatingBuster:ProcessLine(text, link)
+			text = RatingBuster:ProcessLine(text, link, color)
 			if text then
 				fontString:SetText(text)
 			end
@@ -1740,7 +1733,7 @@ function RatingBuster.ProcessTooltip(tooltip, name, link)
 end
 
 
-function RatingBuster:ProcessLine(text, link)
+function RatingBuster:ProcessLine(text, link, color)
 	-- Get data from cache if available
 	local cacheID = text..calcLevel
 	local cacheText = cache[cacheID]
@@ -1763,7 +1756,7 @@ function RatingBuster:ProcessLine(text, link)
 			end
 		end
 		-- SplitDoJoin
-		text = RatingBuster:SplitDoJoin(text, separatorTable, link)
+		text = RatingBuster:SplitDoJoin(text, separatorTable, link, color)
 		cache[cacheID] = text
 		-- SetText
 		return text
@@ -1779,7 +1772,7 @@ end
 -- separatorTable = {"/", " and ", ","}
 -- RatingBuster:SplitDoJoin("+24 Agility/+4 Stamina, +4 Dodge and +4 Spell Crit/+5 Spirit", {"/", " and ", ",", "%. ", " for ", "&"})
 -- RatingBuster:SplitDoJoin("+6法術傷害及5耐力", {"/", "和", ",", "。", " 持續 ", "&", "及",})
-function RatingBuster:SplitDoJoin(text, separatorTable, link)
+function RatingBuster:SplitDoJoin(text, separatorTable, link, color)
 	if type(separatorTable) == "table" and table.maxn(separatorTable) > 0 then
 		local sep = tremove(separatorTable, 1)
 		text =  gsub(text, sep, "@")
@@ -1789,18 +1782,18 @@ function RatingBuster:SplitDoJoin(text, separatorTable, link)
 		for _, t in ipairs(text) do
 			--self:Print(t[1])
 			copyTable(tempTable, separatorTable)
-			tinsert(processedText, self:SplitDoJoin(t, tempTable, link))
+			tinsert(processedText, self:SplitDoJoin(t, tempTable, link, color))
 		end
 		-- Join text
 		return (gsub(strjoin("@", unpack(processedText)), "@", sep))
 	else
 		--self:Print(cacheID)
-		return self:ProcessText(text, link)
+		return self:ProcessText(text, link, color)
 	end
 end
 
 
-function RatingBuster:ProcessText(text, link)
+function RatingBuster:ProcessText(text, link, color)
 	--self:Print(text)
 	-- Find and set color code (used to fix gem text color) pattern:|cxxxxxxxx
 	local currentColorCode = select(3, strfind(text, "(|c%x%x%x%x%x%x%x%x)")) or "|r"
@@ -2227,7 +2220,7 @@ function RatingBuster:ProcessText(text, link)
 						-----------
 						local statmod = 1
 						if profileDB.enableStatMods then
-							local finalArmor = StatLogic:GetFinalArmor(link, text)
+							local finalArmor = StatLogic:GetFinalArmor(link, text, color)
 							if finalArmor then
 								value = finalArmor
 							end

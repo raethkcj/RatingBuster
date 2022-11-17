@@ -173,23 +173,6 @@ local GetShapeshiftFormInfo = GetShapeshiftFormInfo
 local GetShapeShiftFormID = GetShapeShiftFormID
 local GetTalentInfo = GetTalentInfo
 
--- Cached GetItemInfo
-local GetItemInfoCached = setmetatable({}, { __index = function(self, n)
-		local itemName, itemLink, itemRarity, itemLevel, itemMinLevel, itemType, itemSubType, itemCount, itemEquipLoc, itemTexture = GetItemInfo(n)
-		if itemName then
-				-- store in cache only if it exists in the local cache
-				self[n] = {itemName, itemLink, itemRarity, itemLevel, itemMinLevel, itemType, itemSubType, itemCount, itemEquipLoc, itemTexture}
-				return self[n] -- return result
-		end
-end })
-local GetItemInfo = function(item)
-	local info = GetItemInfoCached[item]
-	if info then
-		return unpack(info)
-	end
-end
-
-
 ---------------
 -- Lua Tools --
 ---------------
@@ -2783,21 +2766,27 @@ function StatLogic:GetSum(item, table)
 	return table
 end
 
-function StatLogic:GetFinalArmor(item, text)
-	-- Locale check
-	if noPatternLocale then return end
-	local _
+local colorPrecision = 0.0001
+function StatLogic.AreColorsEqual(a, b)
+	return math.abs(a.r - b.r) < colorPrecision
+	  and math.abs(a.g - b.g) < colorPrecision
+	  and math.abs(a.b - b.b) < colorPrecision
+end
+
+local BONUS_ARMOR_COLOR = CreateColorFromHexString(GREENCOLORCODE:sub(3))
+function StatLogic:GetFinalArmor(item, text, color)
 	-- Check item
 	if (type(item) == "string") or (type(item) == "number") then -- common case first
 	elseif type(item) == "table" and type(item.GetItem) == "function" then
 		-- Get the link
+		local _
 		_, item = item:GetItem()
 		if type(item) ~= "string" then return end
 	else
 		return
 	end
 	-- Check if item is in local cache
-	local name, _, rarity , ilvl, _, _, armorType, _, itemType = GetItemInfo(item)
+	local name, _, itemQuality, itemLevel, _, _, _, _, itemEquipLoc, _, _, _, armorSubclass = GetItemInfo(item)
 	if not name then return end
 
 	for pattern, id in pairs(L.PreScanPatterns) do
@@ -2805,15 +2794,18 @@ function StatLogic:GetFinalArmor(item, text)
 			local found, _, value = strfind(text, pattern)
 			if found then
 				value = tonumber(value)
-				local armor = 0
+				local armor = value
 				local bonus_armor = 0
-				if addonTable.bonusArmorItemEquipLoc[itemType] then
+				if addonTable.bonusArmorItemEquipLoc[itemEquipLoc] then
+					armor = 0
 					bonus_armor = value
-				elseif id == "ARMOR" and baseArmorTable then
-					armor = baseArmorTable[rarity][itemType][armorType][ilvl]
+				elseif id == "ARMOR" and StatLogic.AreColorsEqual(color, BONUS_ARMOR_COLOR) and addonTable.baseArmorTable then
+					local qualityTable = addonTable.baseArmorTable[itemQuality]
+					local itemEquipLocTable = qualityTable and qualityTable[_G[itemEquipLoc]]
+					local armorSubclassTable = itemEquipLocTable and itemEquipLocTable[armorSubclass]
+
+					armor = armorSubclassTable and armorSubclassTable[itemLevel] or armor
 					bonus_armor = value - armor
-				else
-					armor = value
 				end
 				return armor * self:GetStatMod("MOD_ARMOR") + bonus_armor
 			end
