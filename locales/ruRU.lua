@@ -675,11 +675,20 @@ SPELL_STAT5_NAME = "Spirit"
 --
 
 L["statList"] = {
+	{pattern = "сила атаки", id = ATTACK_POWER},
 	{pattern = "силу атаки", id = ATTACK_POWER},
+	{pattern = "силы атаки", id = ATTACK_POWER},
+	{pattern = "силы вашей атаки", id = ATTACK_POWER},
 	{pattern = "к силе атаки", id = ATTACK_POWER},
+	{pattern = "силам природы", id = NATURE_RES},
+	{pattern = "сила заклинаний", id = SPELL_DMG},
+	{pattern = "силу заклинаний", id = SPELL_DMG},
+	{pattern = "силы заклинаний", id = SPELL_DMG},
+	{pattern = "к силе заклинаний", id = SPELL_DMG},
 	{pattern = "рейтинг пробивания брони", id = CR_ARMOR_PENETRATION},
 	{pattern = "рейтингу пробивания брони", id = CR_ARMOR_PENETRATION},
 	{pattern = "рейтинга пробивания брони", id = CR_ARMOR_PENETRATION},
+	{pattern = "эффективность брони противника", id = CR_ARMOR_PENETRATION},
 	{pattern = "броня", id = ARMOR},
 	{pattern = "брони", id = ARMOR},
 	{pattern = "броню", id = ARMOR},
@@ -687,6 +696,7 @@ L["statList"] = {
 	{pattern = "сила", id = SPELL_STAT1_NAME}, -- Strength
 	{pattern = "силу", id = SPELL_STAT1_NAME}, -- Strength
 	{pattern = "силе", id = SPELL_STAT1_NAME}, -- Strength
+	{pattern = "силы", id = SPELL_STAT1_NAME}, -- Strength
 	{pattern = "ловкость", id = SPELL_STAT2_NAME}, -- Agility
 	{pattern = "ловкости", id = SPELL_STAT2_NAME}, -- Agility
 	{pattern = "выносливость", id = SPELL_STAT3_NAME}, -- Stamina
@@ -786,14 +796,14 @@ L["$value MP5"] = "$value мп5"
 L["$value MP5(OC)"] = "$value мп5 (вне боя)"
 L["$value MP5(NC)"] = "$value мп5 (вне каста)"
 L["$value HP5"] = "$value ХП раз в 5 сек."
-L["$value to be Dodged/Parried"] = "$value% к вер. уклонения/парирования"
+L["$value to be Dodged/Parried"] = "$value Уклонения/Парирования"
 L["$value to be Crit"] = "$value% к вер. получения Крита"
 L["$value Crit Dmg Taken"] = "$value к получ. крит. урону"
 L["$value DOT Dmg Taken"] = "$value к получ. урону от ДоТ"
 -- for hit rating showing both physical and spell conversions
 -- (+1.21%, S+0.98%)
 -- (+1.21%, +0.98% S)
-L["$value Spell"] = "$value к силе заклинаний"
+L["$value Spell"] = "$value для заклинаний"
 
 ------------------
 -- Stat Summary --
