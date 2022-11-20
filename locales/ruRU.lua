@@ -713,6 +713,7 @@ L["statList"] = {
 	{pattern = "рейтинг уклонения", id = CR_DODGE},
 	{pattern = "рейтингу уклонения", id = CR_DODGE},
 	{pattern = "рейтинга уклонения", id = CR_DODGE},
+	{pattern = "эффективность уклонения", id = CR_DODGE},
 	{pattern = "рейтинг блокирования щитом", id = CR_BLOCK}, -- block enchant: "+10 Shield Block Rating"
 	{pattern = "рейтинга блокирования щитом", id = CR_BLOCK},
 	{pattern = "рейтингу блокирования щитом", id = CR_BLOCK},
