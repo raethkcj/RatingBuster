@@ -315,6 +315,7 @@ L["StatIDLookup"] = {
 	["Increases attack powerwhen fighting Demons"] = {"AP_DEMON",}, -- (item example please)
 	["увеличение силы атаки наед. в бою с нежитью и демонами"] = {"AP_UNDEAD", "AP_DEMON",}, -- [Mark of the Champion] ID:23206
 	["увеличивает силу атаки нав облике кошки, медведя, лютого медведя и лунного совуха"] = {"FERAL_AP",},
+	["увеличивает силу атаки нав облике кошки"] = {"FERAL_AP",},
 	["сила атаки дальнего боя"] = {"RANGED_AP",},
 	["увеличивает силу атак дальнего боя"] = {"RANGED_AP",}, -- [High Warlord's Crossbow] ID: 18837
 
