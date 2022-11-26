@@ -770,6 +770,7 @@ L["statList"] = {
 	{pattern = "рейтинг мастерства", id = CR_EXPERTISE},
 	{pattern = "рейтингу мастерства", id = CR_EXPERTISE},
 	{pattern = "рейтинга мастерства", id = CR_EXPERTISE},
+	{pattern = "уровень мастерства", id = CR_EXPERTISE},
 
 	{pattern = "рейтинг искусности", id = CR_MASTERY},
 	{pattern = "рейтингу искусности", id = CR_MASTERY},
