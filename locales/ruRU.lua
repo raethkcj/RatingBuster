@@ -682,6 +682,7 @@ L["statList"] = {
 	{pattern = "к силе атаки", id = ATTACK_POWER},
 	{pattern = "силам природы", id = NATURE_RES},
 	{pattern = "сила заклинаний", id = SPELL_DMG},
+	{pattern = "сила ваших заклинаний", id = SPELL_DMG},
 	{pattern = "силу заклинаний", id = SPELL_DMG},
 	{pattern = "силы заклинаний", id = SPELL_DMG},
 	{pattern = "к силе заклинаний", id = SPELL_DMG},
