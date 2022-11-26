@@ -781,26 +781,26 @@ L["statList"] = {
 -- $value will be replaced with the number
 -- EX: "$value% Crit" -> "+1.34% Crit"
 -- EX: "Crit $value%" -> "Crit +1.34%"
-L["$value% Crit"] = "$value% Крит"
-L["$value% Spell Crit"] = "$value% Крит"
-L["$value% Dodge"] = "$value% Уклонение"
-L["$value% Parry"] = "$value% Парирование"
-L["$value HP"] = "$value ХП"
-L["$value MP"] = "$value Маны"
-L["$value AP"] = "$value АП"
-L["$value RAP"] = "$value РАП"
+L["$value% Crit"] = "$value% к крит. удару"
+L["$value% Spell Crit"] = "$value% к крит. удару"
+L["$value% Dodge"] = "$value% к уклонению"
+L["$value% Parry"] = "$value% к парированию"
+L["$value HP"] = "$value к здоровью"
+L["$value MP"] = "$value к мане"
+L["$value AP"] = "$value к силе атаки"
+L["$value RAP"] = "$value к силе атаки" -- Removed word Ranged because it's irrelevant in WotLK
 L["$value Spell Dmg"] = "$value к силе заклинаний"
-L["$value Heal"] = "$value к исцелению"
-L["$value Armor"] = "$value брони"
-L["$value Block"] = "$value Блок"
-L["$value MP5"] = "$value мп5"
-L["$value MP5(OC)"] = "$value мп5 (вне боя)"
-L["$value MP5(NC)"] = "$value мп5 (вне каста)"
-L["$value HP5"] = "$value ХП раз в 5 сек."
-L["$value to be Dodged/Parried"] = "$value Уклонения/Парирования"
-L["$value to be Crit"] = "$value% к вер. получения Крита"
-L["$value Crit Dmg Taken"] = "$value к получ. крит. урону"
-L["$value DOT Dmg Taken"] = "$value к получ. урону от ДоТ"
+L["$value Heal"] = "$value к силе заклинаний"
+L["$value Armor"] = "$value к броне"
+L["$value Block"] = "$value к показателю блокирования" -- Block value
+L["$value MP5"] = "$value маны раз в 5 сек."
+L["$value MP5(OC)"] = "$value маны раз в 5 сек. (вне боя)"
+L["$value MP5(NC)"] = "$value маны раз в 5 сек. (вне каста)"
+L["$value HP5"] = "$value здоровья раз в 5 сек."
+L["$value to be Dodged/Parried"] = "$value уклонения/парирования" -- Target's dodges/parrys against your attacks
+L["$value to be Crit"] = "$value% к получению крит. удара" -- Your chance to get critical hit from target
+L["$value Crit Dmg Taken"] = "$value к получению крит. урона"
+L["$value DOT Dmg Taken"] = "$value к получению урона от ДоТ"
 -- for hit rating showing both physical and spell conversions
 -- (+1.21%, S+0.98%)
 -- (+1.21%, +0.98% S)
