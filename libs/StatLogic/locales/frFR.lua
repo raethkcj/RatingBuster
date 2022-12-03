@@ -457,6 +457,7 @@ L["StatIDLookup"] = {
 	["score de pénétration d'armure"] = {"ARMOR_PENETRATION_RATING"},
 	["le score de pénétration d'armure"] = {"ARMOR_PENETRATION_RATING"},
 	["votre score de pénétration d'armure"] = {"ARMOR_PENETRATION_RATING"},
+	["la pénétration d'armure"] = {"ARMOR_PENETRATION_RATING"},
 
 	--ToDo
 	-- Exclude
