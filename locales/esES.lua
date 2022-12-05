@@ -548,19 +548,13 @@ CR_HIT_SPELL = 8;
 CR_CRIT_MELEE = 9;
 CR_CRIT_RANGED = 10;
 CR_CRIT_SPELL = 11;
-CR_HIT_TAKEN_MELEE = 12;
-CR_HIT_TAKEN_RANGED = 13;
-CR_HIT_TAKEN_SPELL = 14;
-CR_CRIT_TAKEN_MELEE = 15;
-CR_CRIT_TAKEN_RANGED = 16;
-CR_CRIT_TAKEN_SPELL = 17;
+CR_RESILIENCE_CRIT_TAKEN = 15;
+CR_RESILIENCE_PLAYER_DAMAGE_TAKEN = 16;
 CR_HASTE_MELEE = 18;
 CR_HASTE_RANGED = 19;
 CR_HASTE_SPELL = 20;
-CR_WEAPON_SKILL_MAINHAND = 21;
-CR_WEAPON_SKILL_OFFHAND = 22;
-CR_WEAPON_SKILL_RANGED = 23;
 CR_EXPERTISE = 24;
+CR_ARMOR_PENETRATION = 25;
 --
 SPELL_STAT1_NAME = "Strength"
 SPELL_STAT2_NAME = "Agility"
@@ -589,7 +583,7 @@ L["statList"] = {
 	{pattern = "índice de golpe cuerpo a cuerpo", id = CR_HIT_MELEE},
 	{pattern = "índice de golpe", id = CR_HIT},
 
-	{pattern = "índice de temple", id = CR_CRIT_TAKEN_MELEE}, -- resilience is implicitly a rating
+	{pattern = "índice de temple", id = CR_RESILIENCE_CRIT_TAKEN}, -- resilience is implicitly a rating
 
 	{pattern = "índice de celeridad con hechizos", id = CR_HASTE_SPELL},
 	{pattern = "índice de celeridad a distancia", id = CR_HASTE_RANGED},

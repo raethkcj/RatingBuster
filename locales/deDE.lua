@@ -552,19 +552,13 @@ CR_HIT_SPELL = 8;
 CR_CRIT_MELEE = 9;
 CR_CRIT_RANGED = 10;
 CR_CRIT_SPELL = 11;
-CR_HIT_TAKEN_MELEE = 12;
-CR_HIT_TAKEN_RANGED = 13;
-CR_HIT_TAKEN_SPELL = 14;
-CR_CRIT_TAKEN_MELEE = 15;
-CR_CRIT_TAKEN_RANGED = 16;
-CR_CRIT_TAKEN_SPELL = 17;
+CR_RESILIENCE_CRIT_TAKEN = 15;
+CR_RESILIENCE_PLAYER_DAMAGE_TAKEN = 16;
 CR_HASTE_MELEE = 18;
 CR_HASTE_RANGED = 19;
 CR_HASTE_SPELL = 20;
-CR_WEAPON_SKILL_MAINHAND = 21;
-CR_WEAPON_SKILL_OFFHAND = 22;
-CR_WEAPON_SKILL_RANGED = 23;
 CR_EXPERTISE = 24;
+CR_ARMOR_PENETRATION = 25;
 --
 SPELL_STAT1_NAME = "Stärke"
 SPELL_STAT2_NAME = "Beweglichkeit"
@@ -591,7 +585,7 @@ L["statList"] = {
 	{pattern = "trefferwertung", id = CR_HIT_RANGED},
 	{pattern = "trefferwertung", id = CR_HIT},
 
-	{pattern = "abhärtungswertung", id = CR_CRIT_TAKEN_MELEE}, -- resilience is implicitly a rating
+	{pattern = "abhärtungswertung", id = CR_RESILIENCE_CRIT_TAKEN}, -- resilience is implicitly a rating
 
 	{pattern = "zaubertempowertung", id = CR_HASTE_SPELL},
 	{pattern = "distanztempowertung", id = CR_HASTE_RANGED},

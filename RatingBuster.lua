@@ -1851,7 +1851,7 @@ function RatingBuster:ProcessText(text, link, color)
 							else
 								infoString = format("%+.2f%%", effect)
 							end
-						elseif stat.id >= 15 and stat.id <= 17 then -- Resilience
+						elseif stat.id == CR_RESILIENCE_CRIT_TAKEN then -- Resilience
 							effect = effect * -1
 							if profileDB.detailedConversionText then
 								infoString = gsub(L["$value to be Crit"], "$value", format("%+.2f%%%%", effect))..", "..gsub(L["$value Crit Dmg Taken"], "$value", format("%+.2f%%%%", effect * 2))..", "..gsub(L["$value DOT Dmg Taken"], "$value", format("%+.2f%%%%", effect))
