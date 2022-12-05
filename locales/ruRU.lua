@@ -784,6 +784,7 @@ L["$value to be Dodged/Parried"] = "$value% к вер. уклонения/пар
 L["$value to be Crit"] = "$value% к вер. получения Крита"
 L["$value Crit Dmg Taken"] = "$value к получ. крит. урону"
 L["$value DOT Dmg Taken"] = "$value к получ. урону от ДоТ"
+L["$value Dmg Taken"] = true
 -- for hit rating showing both physical and spell conversions
 -- (+1.21%, S+0.98%)
 -- (+1.21%, +0.98% S)

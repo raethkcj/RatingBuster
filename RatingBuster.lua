@@ -1854,7 +1854,21 @@ function RatingBuster:ProcessText(text, link, color)
 						elseif stat.id == CR_RESILIENCE_CRIT_TAKEN then -- Resilience
 							effect = effect * -1
 							if profileDB.detailedConversionText then
-								infoString = gsub(L["$value to be Crit"], "$value", format("%+.2f%%%%", effect))..", "..gsub(L["$value Crit Dmg Taken"], "$value", format("%+.2f%%%%", effect * 2))..", "..gsub(L["$value DOT Dmg Taken"], "$value", format("%+.2f%%%%", effect))
+								local infoTable = {}
+
+								if tocversion >= 30000 then
+									-- Wrath
+									tinsert(infoTable, (L["$value to be Crit"]:gsub("$value", format("%+.2f%%%%", effect))))
+									tinsert(infoTable, (L["$value Crit Dmg Taken"]:gsub("$value", format("%+.2f%%%%", effect * RESILIENCE_CRIT_CHANCE_TO_DAMAGE_REDUCTION_MULTIPLIER))))
+									tinsert(infoTable, (L["$value Dmg Taken"]:gsub("$value", format("%+.2f%%%%", effect * RESILIENCE_CRIT_CHANCE_TO_CONSTANT_DAMAGE_REDUCTION_MULTIPLIER))))
+								elseif tocversion >= 20000 then
+									-- TBC
+									tinsert(infoTable, (L["$value to be Crit"]:gsub("$value", format("%+.2f%%%%", effect))))
+									tinsert(infoTable, (L["$value Crit Dmg Taken"]:gsub("$value", format("%+.2f%%%%", effect * 2))))
+									tinsert(infoTable, (L["$value DOT Dmg Taken"]:gsub("$value", format("%+.2f%%%%", effect))))
+								end
+
+								infoString = strjoin(", ", unpack(infoTable))
 							else
 								infoString = format("%+.2f%%", effect)
 							end

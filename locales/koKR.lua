@@ -619,6 +619,7 @@ L["$value to be Dodged/Parried"] = "이후 회피 감소/무기막기 감소 $va
 L["$value to be Crit"] = "이후 치명타 $value"
 L["$value Crit Dmg Taken"] = "가질 치명타 데미지 $value"
 L["$value DOT Dmg Taken"] = "가질 DOT 데미지 $value"
+L["$value Dmg Taken"] = true
 L["$value% Parry"] = "무막 $value%"
 -- for hit rating showing both physical and spell conversions
 -- (+1.21%, S+0.98%)

@@ -621,6 +621,7 @@ L["$value to be Dodged/Parried"] = "$value Esquivado/Parado"
 L["$value to be Crit"] = "$value recibir Crit"
 L["$value Crit Dmg Taken"] = "$value Daño crit recib"
 L["$value DOT Dmg Taken"] = "$value Daño por tiempo recib"
+L["$value Dmg Taken"] = "$value Daño recib"
 L["$value% Parry"] = "$value Parada"
 -- for hit rating showing both physical and spell conversions
 -- (+1.21%, S+0.98%)
