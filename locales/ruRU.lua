@@ -671,11 +671,25 @@ SPELL_STAT5_NAME = "Spirit"
 L["statList"] = {
 	{pattern = "ослабление брони противника", id = nil}, -- Annihilator
 
+	{pattern = "сила атаки", id = ATTACK_POWER},
 	{pattern = "силу атаки", id = ATTACK_POWER},
+	{pattern = "силы атаки", id = ATTACK_POWER},
+	{pattern = "силы вашей атаки", id = ATTACK_POWER},
 	{pattern = "к силе атаки", id = ATTACK_POWER},
+
+	-- Resistance and Spell Damage aren't used for breakdowns,
+	-- but are needed to prevent false matches of other stats
+	{pattern = "силам природы", id = NATURE_RES},
+	{pattern = "сила заклинаний", id = SPELL_DMG},
+	{pattern = "сила ваших заклинаний", id = SPELL_DMG},
+	{pattern = "силу заклинаний", id = SPELL_DMG},
+	{pattern = "силы заклинаний", id = SPELL_DMG},
+	{pattern = "к силе заклинаний", id = SPELL_DMG},
+
 	{pattern = "рейтинг пробивания брони", id = CR_ARMOR_PENETRATION},
 	{pattern = "рейтингу пробивания брони", id = CR_ARMOR_PENETRATION},
 	{pattern = "рейтинга пробивания брони", id = CR_ARMOR_PENETRATION},
+	{pattern = "эффективность брони противника", id = CR_ARMOR_PENETRATION},
 	{pattern = "броня", id = ARMOR},
 	{pattern = "брони", id = ARMOR},
 	{pattern = "броню", id = ARMOR},
@@ -683,6 +697,7 @@ L["statList"] = {
 	{pattern = "сила", id = SPELL_STAT1_NAME}, -- Strength
 	{pattern = "силу", id = SPELL_STAT1_NAME}, -- Strength
 	{pattern = "силе", id = SPELL_STAT1_NAME}, -- Strength
+	{pattern = "силы", id = SPELL_STAT1_NAME}, -- Strength
 	{pattern = "ловкость", id = SPELL_STAT2_NAME}, -- Agility
 	{pattern = "ловкости", id = SPELL_STAT2_NAME}, -- Agility
 	{pattern = "выносливость", id = SPELL_STAT3_NAME}, -- Stamina
@@ -699,6 +714,7 @@ L["statList"] = {
 	{pattern = "рейтинг уклонения", id = CR_DODGE},
 	{pattern = "рейтингу уклонения", id = CR_DODGE},
 	{pattern = "рейтинга уклонения", id = CR_DODGE},
+	{pattern = "эффективность уклонения", id = CR_DODGE},
 	{pattern = "рейтинг блокирования щитом", id = CR_BLOCK}, -- block enchant: "+10 Shield Block Rating"
 	{pattern = "рейтинга блокирования щитом", id = CR_BLOCK},
 	{pattern = "рейтингу блокирования щитом", id = CR_BLOCK},
@@ -755,6 +771,7 @@ L["statList"] = {
 	{pattern = "рейтинг мастерства", id = CR_EXPERTISE},
 	{pattern = "рейтингу мастерства", id = CR_EXPERTISE},
 	{pattern = "рейтинга мастерства", id = CR_EXPERTISE},
+	{pattern = "уровень мастерства", id = CR_EXPERTISE},
 
 	{pattern = "рейтинг искусности", id = CR_MASTERY},
 	{pattern = "рейтингу искусности", id = CR_MASTERY},
@@ -766,31 +783,31 @@ L["statList"] = {
 -- $value will be replaced with the number
 -- EX: "$value% Crit" -> "+1.34% Crit"
 -- EX: "Crit $value%" -> "Crit +1.34%"
-L["$value% Crit"] = "$value% Крит"
-L["$value% Spell Crit"] = "$value% Крит"
-L["$value% Dodge"] = "$value% Уклонение"
-L["$value% Parry"] = "$value% Парирование"
-L["$value HP"] = "$value ХП"
-L["$value MP"] = "$value Маны"
-L["$value AP"] = "$value АП"
-L["$value RAP"] = "$value РАП"
-L["$value Spell Dmg"] = "$value СПД"
-L["$value Heal"] = "$value БХ"
-L["$value Armor"] = "$value брони"
-L["$value Block"] = "$value Блок"
-L["$value MP5"] = "$value мп5"
-L["$value MP5(OC)"] = "$value мп5 (вне боя)"
-L["$value MP5(NC)"] = "$value мп5 (вне каста)"
-L["$value HP5"] = "$value ХП раз в 5 сек."
-L["$value to be Dodged/Parried"] = "$value% к вер. уклонения/парирования"
-L["$value to be Crit"] = "$value% к вер. получения Крита"
-L["$value Crit Dmg Taken"] = "$value к получ. крит. урону"
-L["$value DOT Dmg Taken"] = "$value к получ. урону от ДоТ"
+L["$value% Crit"] = "$value% к крит. удару"
+L["$value% Spell Crit"] = "$value% к крит. удару"
+L["$value% Dodge"] = "$value% к уклонению"
+L["$value% Parry"] = "$value% к парированию"
+L["$value HP"] = "$value к здоровью"
+L["$value MP"] = "$value к мане"
+L["$value AP"] = "$value к силе атаки"
+L["$value RAP"] = "к силе атаки дальнего боя"
+L["$value Spell Dmg"] = "$value к силе заклинаний"
+L["$value Heal"] = "$value к силе заклинаний"
+L["$value Armor"] = "$value к броне"
+L["$value Block"] = "$value к показателю блокирования" -- Block value
+L["$value MP5"] = "$value маны раз в 5 сек."
+L["$value MP5(OC)"] = "$value маны раз в 5 сек. (вне боя)"
+L["$value MP5(NC)"] = "$value маны раз в 5 сек. (вне каста)"
+L["$value HP5"] = "$value здоровья раз в 5 сек."
+L["$value to be Dodged/Parried"] = "$value уклонения/парирования" -- Target's dodges/parrys against your attacks
+L["$value to be Crit"] = "$value% к получению крит. удара" -- Your chance to get critical hit from target
+L["$value Crit Dmg Taken"] = "$value к получению крит. урона"
+L["$value DOT Dmg Taken"] = "$value к получению урона от ДоТ"
 L["$value Dmg Taken"] = true
 -- for hit rating showing both physical and spell conversions
 -- (+1.21%, S+0.98%)
 -- (+1.21%, +0.98% S)
-L["$value Spell"] = "$value к силе заклинаний"
+L["$value Spell"] = "$value для заклинаний"
 
 ------------------
 -- Stat Summary --
