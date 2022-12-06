@@ -534,7 +534,7 @@ L["numberPatterns"] = {
 	{pattern = "(%d+)([^%d%%|]+)", addInfo = "AfterStat",}, -- [????????] +6?????5??
 }
 L["separators"] = {
-	"/", " y ", ",", "%. ", " durante ", "&"
+	"/", " y ", ",", "%. ", " durante ", "&", "\n"
 }
 --[[ Rating ID
 CR_WEAPON_SKILL = 1;

@@ -632,7 +632,7 @@ L["numberPatterns"] = {
 	{pattern = "(%d+)%f[^%d%%|]", addInfo = "AfterNumber", space = " ", }, -- [發光的暗影卓奈石] +6法術傷害及5耐力
 }
 L["separators"] = {
-	"/", " и ", ",", "%. ", " для ", "&", ": %f[^%d]",
+	"/", " и ", ",", "%. ", " для ", "&", ": %f[^%d]", "\n",
 	-- Fix for [Mirror of Truth]
 	-- Equip: Chance on melee and ranged critical strike to increase your attack power by 1000 for 10 secs.
 	-- 1000 was falsely detected detected as ranged critical strike
