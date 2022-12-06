@@ -669,6 +669,8 @@ SPELL_STAT5_NAME = "Spirit"
 --
 
 L["statList"] = {
+	{pattern = "ослабление брони противника", id = nil}, -- Annihilator
+
 	{pattern = "силу атаки", id = ATTACK_POWER},
 	{pattern = "к силе атаки", id = ATTACK_POWER},
 	{pattern = "рейтинг пробивания брони", id = CR_ARMOR_PENETRATION},
