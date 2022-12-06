@@ -676,12 +676,16 @@ L["statList"] = {
 	{pattern = "силы атаки", id = ATTACK_POWER},
 	{pattern = "силы вашей атаки", id = ATTACK_POWER},
 	{pattern = "к силе атаки", id = ATTACK_POWER},
+
+	-- Resistance and Spell Damage aren't used for breakdowns,
+	-- but are needed to prevent false matches of other stats
 	{pattern = "силам природы", id = NATURE_RES},
 	{pattern = "сила заклинаний", id = SPELL_DMG},
 	{pattern = "сила ваших заклинаний", id = SPELL_DMG},
 	{pattern = "силу заклинаний", id = SPELL_DMG},
 	{pattern = "силы заклинаний", id = SPELL_DMG},
 	{pattern = "к силе заклинаний", id = SPELL_DMG},
+
 	{pattern = "рейтинг пробивания брони", id = CR_ARMOR_PENETRATION},
 	{pattern = "рейтингу пробивания брони", id = CR_ARMOR_PENETRATION},
 	{pattern = "рейтинга пробивания брони", id = CR_ARMOR_PENETRATION},
