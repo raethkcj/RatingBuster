@@ -1382,16 +1382,6 @@ do
 				addStatModOption(add, mod, sources)
 			end
 		end
-
-		RatingBuster.db = LibStub("AceDB-3.0"):New("RatingBusterDB", defaults, class)
-		RatingBuster.db.RegisterCallback(RatingBuster, "OnProfileChanged", "RefreshConfig")
-		RatingBuster.db.RegisterCallback(RatingBuster, "OnProfileCopied", "RefreshConfig")
-		RatingBuster.db.RegisterCallback(RatingBuster, "OnProfileReset", "RefreshConfig")
-		profileDB = RatingBuster.db.profile
-		globalDB = RatingBuster.db.global
-
-		options.args.profiles = LibStub("AceDBOptions-3.0"):GetOptionsTable(RatingBuster.db)
-		options.args.profiles.order = 4
 	end
 
 	local f = CreateFrame("Frame")
@@ -1399,6 +1389,7 @@ do
 	f:SetScript("OnEvent", function()
 		if StatLogic:TalentCacheExists() then
 			GenerateStatModOptions()
+			RatingBuster:InitializeDatabase()
 		else
 			-- Talents are not guaranteed to exist on SPELLS_CHANGED,
 			-- and there is no definite event for when they will exist.
@@ -1461,6 +1452,23 @@ end
 function RatingBuster:OnInitialize()
 	LibStub("AceConfig-3.0"):RegisterOptionsTable(addonNameWithVersion, options)
 	LibStub("AceConfigDialog-3.0"):AddToBlizOptions(addonNameWithVersion, addonName)
+end
+
+function RatingBuster:InitializeDatabase()
+	RatingBuster.db = LibStub("AceDB-3.0"):New("RatingBusterDB", defaults, class)
+	RatingBuster.db.RegisterCallback(RatingBuster, "OnProfileChanged", "RefreshConfig")
+	RatingBuster.db.RegisterCallback(RatingBuster, "OnProfileCopied", "RefreshConfig")
+	RatingBuster.db.RegisterCallback(RatingBuster, "OnProfileReset", "RefreshConfig")
+	profileDB = RatingBuster.db.profile
+	globalDB = RatingBuster.db.global
+
+	options.args.profiles = LibStub("AceDBOptions-3.0"):GetOptionsTable(RatingBuster.db)
+	options.args.profiles.order = 4
+
+	local LibDualSpec = LibStub('LibDualSpec-1.0')
+
+	LibDualSpec:EnhanceDatabase(RatingBuster.db, "RatingBusterDB")
+	LibDualSpec:EnhanceOptions(options.args.profiles, RatingBuster.db)
 end
 
 SLASH_RATINGBUSTER1, SLASH_RATINGBUSTER2 = "/ratingbuster", "/rb"
