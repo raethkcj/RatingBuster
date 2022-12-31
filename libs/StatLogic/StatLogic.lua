@@ -1147,7 +1147,7 @@ do
 						if not mod.tab and mod.rank then -- not a talent, so the rank is the buff rank
 							aura.rank = #(mod.rank)
 						end
-						aura.stack = mod.buffStack or 1
+						aura.stacks = mod.buffStack or 1
 						always_buffed_aura_info[mod.buff] = aura
 					end
 				end
