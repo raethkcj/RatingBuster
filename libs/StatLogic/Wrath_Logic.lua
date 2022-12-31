@@ -2389,12 +2389,28 @@ elseif addonTable.playerClass == "PRIEST" then
 					0.17, 0.33, 0.5,
 				},
 			},
+			-- Priest: Spirit Tap (Rank 3) - 3,1
+			--	For the duration, your mana will regenerate at a 83% rate while casting.
+			{
+				["tab"] = 3,
+				["num"] = 1,
+				["buff"] = GetSpellInfo(15271),
+				["value"] = 0.83,
+			},
+			-- Priest: Improved Spirit Tap (Rank 2) - 3,2
+			--	For the duration, your mana will regenerate at a 33% rate while casting.
+			{
+				["tab"] = 3,
+				["num"] = 2,
+				["buff"] = GetSpellInfo(59000),
+				["rank"] = {
+					0.17, 0.33,
+				},
+			},
 		},
-		-- Priest: Spiritual Guidance (Rank 5) - 2,14
-		--         Increases spell power by up to 5%/10%/15%/20%/25% of your total Spirit.
-		-- Priest: Twisted Faith (Rank 5) - 3,26
-		--         Increases your spell power by 4/8/12/16/20% of your total Spirit
 		["ADD_SPELL_DMG_MOD_SPI"] = {
+			-- Priest: Spiritual Guidance (Rank 5) - 2,14
+			--         Increases spell power by up to 5%/10%/15%/20%/25% of your total Spirit.
 			{
 				["tab"] = 2,
 				["num"] = 14,
@@ -2402,12 +2418,22 @@ elseif addonTable.playerClass == "PRIEST" then
 					0.05, 0.1, 0.15, 0.2, 0.25,
 				},
 			},
+			-- Priest: Twisted Faith (Rank 5) - 3,26
+			--         Increases your spell power by 4/8/12/16/20% of your total Spirit
 			{
 				["tab"] = 3,
 				["num"] = 26,
 				["rank"] = {
 					0.04, 0.08, 0.12, 0.16, 0.2,
 				},
+			},
+			-- Priest: Glyph of Shadow
+			--	While in Shadowform, your non-periodic spell critical strikes increase 
+			--	your spell power by 30% of your Spirit for 10 sec.
+			{
+				["glyph"] = 55689,
+				["buff"] = GetSpellInfo(61792),
+				["value"] = 0.30,
 			},
 		},
 		-- Priest: Spiritual Guidance (Rank 5) - 2,14
@@ -2492,11 +2518,9 @@ elseif addonTable.playerClass == "PRIEST" then
 				},
 			},
 		},
-		-- Priest: Enlightenment (Rank 5) - 1,17
-		--         Increases your total Stamina and Spirit by 1%/2%/3%/4%/5% and increases your spell haste by 1%/2%/3%/4%/5%.
-		-- Priest: Spirit of Redemption - 2,13
-		--         Increases total Spirit by 5% and upon death, the priest becomes the Spirit of Redemption for 15 sec.
 		["MOD_SPI"] = {
+			-- Priest: Enlightenment (Rank 5) - 1,17
+			--         Increases your total Stamina and Spirit by 1%/2%/3%/4%/5% and increases your spell haste by 1%/2%/3%/4%/5%.
 			{
 				["tab"] = 1,
 				["num"] = 17,
@@ -2504,10 +2528,33 @@ elseif addonTable.playerClass == "PRIEST" then
 					0.01, 0.02, 0.03, 0.04, 0.05,
 				},
 			},
+			-- Priest: Spirit of Redemption - 2,13
+			--         Increases total Spirit by 5% and upon death, the priest becomes the Spirit of Redemption for 15 sec.
 			{
 				["tab"] = 2,
 				["num"] = 13,
 				["value"] = 0.05,
+			},
+			-- Priest: Spirit Tap (Rank 3) - 3,1
+			--	Gives you a 100% chance to gain a 100% bonus to your Spirit
+			--	after killing a target that yields experience or honor.
+			{
+				["tab"] = 3,
+				["num"] = 1,
+				["buff"] = GetSpellInfo(15271),
+				["value"] = 1.00,
+			},
+			-- Priest: Improved Spirit Tap (Rank 2) - 3,2
+			--	Your Mind Blast and Shadow Word: Death critical strikes
+			--	have a 100% chance and your Mind Flay critical strikes
+			--	have a 50% chance to increase your total Spirit by 10%.
+			{
+				["tab"] = 3,
+				["num"] = 2,
+				["buff"] = GetSpellInfo(59000),
+				["rank"] = {
+					0.05, 0.10,
+				},
 			},
 		},
 	}
