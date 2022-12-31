@@ -53,7 +53,7 @@ local _
 local _, class = UnitClass("player")
 local calcLevel, playerLevel
 local profileDB, globalDB -- Initialized in :OnInitialize()
-
+local AuraInfo
 
 -- Localize globals
 local _G = getfenv(0)
@@ -988,6 +988,47 @@ local options = {
 				},
 			},
 		},
+		alwaysBuffed = {
+			type = "group",
+			name = "AlwaysBuffed",
+			order = 4,
+			get = function(info)
+				local db = RatingBuster.db:GetNamespace("AlwaysBuffed")
+				return db.profile[info[#info]]
+			end,
+			set = function(info, v)
+				local db = RatingBuster.db:GetNamespace("AlwaysBuffed")
+				db.profile[info[#info]] = v
+				clearCache()
+				StatLogic:InvalidateEvent("UNIT_AURA", "player")
+			end,
+      args = {
+        description = {
+					type = "description",
+          name = L["Enables RatingBuster to calculate selected buff effects even if you don't really have them"],
+          order = 1,
+        },
+        description2 = {
+					type = "description",
+          name = " ",
+          order = 2,
+        },
+        [class] = {
+					type = "group",
+					dialogInline = true,
+          name = gsub(L["$class Self Buffs"], "$class", (UnitClass("player"))),
+          order = 5,
+					args = {},
+        },
+        ALL = {
+					type = "group",
+					dialogInline = true,
+          name = L["Raid Buffs"],
+          order = 6,
+					args = {},
+        },
+      },
+		},
 	},
 }
 
@@ -1384,11 +1425,30 @@ do
 		end
 	end
 
+	local function GenerateAuraOptions()
+		for modType, modList in pairs(StatLogic.StatModTable) do
+			for modName, mods in pairs(modList) do
+				for key, mod in pairs(mods) do
+					if mod.buff then
+						local _, _, icon = GetSpellInfo(mod.buff)
+						if not icon then icon = "" end
+						options.args.alwaysBuffed.args[modType].args[mod.buff] = {
+							type = 'toggle',
+							name = "|T"..icon..":25:25:-2:0|t"..mod.buff,
+							desc = GetSpellDescription(mod.buff)
+						}
+					end
+				end
+			end
+		end
+	end
+
 	local f = CreateFrame("Frame")
 	f:RegisterEvent("SPELLS_CHANGED")
 	f:SetScript("OnEvent", function()
 		if StatLogic:TalentCacheExists() then
 			GenerateStatModOptions()
+			GenerateAuraOptions()
 			RatingBuster:InitializeDatabase()
 		else
 			-- Talents are not guaranteed to exist on SPELLS_CHANGED,
@@ -1398,6 +1458,8 @@ do
 			ticker = C_Timer.NewTicker(1, function()
 				if StatLogic:TalentCacheExists() then
 					GenerateStatModOptions()
+					GenerateAuraOptions()
+					RatingBuster:InitializeDatabase()
 					ticker:Cancel()
 				end
 			end)
@@ -1463,12 +1525,19 @@ function RatingBuster:InitializeDatabase()
 	globalDB = RatingBuster.db.global
 
 	options.args.profiles = LibStub("AceDBOptions-3.0"):GetOptionsTable(RatingBuster.db)
-	options.args.profiles.order = 4
+	options.args.profiles.order = 5
 
 	local LibDualSpec = LibStub('LibDualSpec-1.0')
 
 	LibDualSpec:EnhanceDatabase(RatingBuster.db, "RatingBusterDB")
 	LibDualSpec:EnhanceOptions(options.args.profiles, RatingBuster.db)
+
+	local always_buffed = RatingBuster.db:RegisterNamespace("AlwaysBuffed", {
+		profile = {
+			['*'] = false
+		}
+	})
+	StatLogic:SetupAuraInfo(always_buffed.profile)
 end
 
 SLASH_RATINGBUSTER1, SLASH_RATINGBUSTER2 = "/ratingbuster", "/rb"

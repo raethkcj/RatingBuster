@@ -1137,23 +1137,45 @@ do
 	end)
 
 	-- AuraInfo is a layer on top of aura_cache to hold Always Buffed settings.
-	StatLogic.AuraInfo = setmetatable({}, {
-		__index = function(self, buff)
-			if needs_update then
-				local i = 1
-				repeat
-					local aura, name = {}
-					name, _, aura.stacks, _, _, _, _, _, _, aura.spellId = UnitBuff("player", i)
-					if name then
-						aura_cache[name] = aura
+	local always_buffed_aura_info = {}
+	function StatLogic:SetupAuraInfo(always_buffed)
+		for class, tables in pairs(StatLogic.StatModTable) do
+			for modName, mods in pairs(tables) do
+				for key, mod in pairs(mods) do
+					if mod.buff then -- if we got a buff
+						local aura = {}
+						if not mod.tab and mod.rank then -- not a talent, so the rank is the buff rank
+							aura.rank = #(mod.rank)
+						end
+						aura.stack = mod.buffStack or 1
+						always_buffed_aura_info[mod.buff] = aura
 					end
-					i = i+1
-				until not name
-				needs_update = false
+				end
 			end
-			return aura_cache[buff]
 		end
-	})
+
+		StatLogic.AuraInfo = setmetatable({}, {
+			__index = function(self, buff)
+				if always_buffed[buff] then
+					return always_buffed_aura_info[buff]
+				else
+					if needs_update then
+						local i = 1
+						repeat
+							local aura, name = {}
+							name, _, aura.stacks, _, _, _, _, _, _, aura.spellId = UnitBuff("player", i)
+							if name then
+								aura_cache[name] = aura
+							end
+							i = i+1
+						until not name
+						needs_update = false
+					end
+					return aura_cache[buff]
+				end
+			end
+		})
+	end
 end
 
 --------------------
@@ -1269,6 +1291,19 @@ addonTable.StatModCacheInvalidators = {}
 -- need to invalidate cache when they change
 addonTable.StatModCacheInvalidators["CHARACTER_POINTS_CHANGED"] = {}
 
+function StatLogic:InvalidateEvent(event, unit)
+	local key = event
+	if type(unit) == "string" then
+		key = event .. unit
+	end
+	local stats = addonTable.StatModCacheInvalidators[key]
+	if stats then
+		for _, stat in pairs(stats) do
+			StatModCache[stat] = nil
+		end
+	end
+end
+
 addonTable.RegisterValidatorEvents = function()
 	local f = CreateFrame("Frame")
 	for validatorType, validator in pairs(addonTable.StatModValidators) do
@@ -1288,16 +1323,7 @@ addonTable.RegisterValidatorEvents = function()
 	end
 
 	f:SetScript("OnEvent", function(self, event, unit)
-		local key = event
-		if type(unit) == "string" then
-			key = event .. unit
-		end
-		local stats = addonTable.StatModCacheInvalidators[key]
-		if stats then
-			for _, stat in pairs(stats) do
-				StatModCache[stat] = nil
-			end
-		end
+		StatLogic:InvalidateEvent(event, unit)
 	end)
 end
 
