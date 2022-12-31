@@ -481,6 +481,14 @@ L["Meta Socket"] = EMPTY_SOCKET_META
 -----------------------
 --	["ItemLevel: "] = true,
 --	["ItemID: "] = true,
+
+-------------------
+-- Always Buffed --
+-------------------
+L["Enables RatingBuster to calculate selected buff effects even if you don't really have them"] = "Erlaubt RatingBuster gewählte Buffs zu berechnen, auch wenn du diese nicht wirklich hast"
+L["$class Self Buffs"] = "Eigenbuffs"
+L["Raid Buffs"] = "Raidbuffs"
+
 -----------------------
 -- Matching Patterns --
 -----------------------

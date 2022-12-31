@@ -477,6 +477,14 @@ L["Meta Socket"] = EMPTY_SOCKET_META
 -----------------------
 L["ItemLevel: "] = "物品等級: "
 L["ItemID: "] = "物品編號: "
+
+-------------------
+-- Always Buffed --
+-------------------
+L["Enables RatingBuster to calculate selected buff effects even if you don't really have them"] = "指定常駐buff，就算身上沒有buff，RatingBuster也會當成有來計算"
+L["$class Self Buffs"] = "$class個人Buff"
+L["Raid Buffs"] = "團隊Buff"
+
 -----------------------
 -- Matching Patterns --
 -----------------------

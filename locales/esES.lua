@@ -478,6 +478,14 @@ L["Meta Socket"] = EMPTY_SOCKET_META
 -----------------------
 L["ItemLevel: "] = "Nivel de objeto "
 L["ItemID: "] = "ItemID: "
+
+-------------------
+-- Always Buffed --
+-------------------
+L["Enables RatingBuster to calculate selected buff effects even if you don't really have them"] = true
+L["$class Self Buffs"] = true -- $class will be replaced with localized player class
+L["Raid Buffs"] = true
+
 -----------------------
 -- Matching Patterns --
 -----------------------

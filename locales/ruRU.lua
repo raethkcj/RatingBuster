@@ -572,6 +572,14 @@ L["Can't use the same modifier as Gem Set 2"] = "Нельзя использов
 -----------------------
 L["ItemLevel: "] = "Уровень предмета: "
 L["ItemID: "] = "ID предмета: "
+
+-------------------
+-- Always Buffed --
+-------------------
+L["Enables RatingBuster to calculate selected buff effects even if you don't really have them"] = true
+L["$class Self Buffs"] = true -- $class will be replaced with localized player class
+L["Raid Buffs"] = true
+
 -----------------------
 -- Matching Patterns --
 -----------------------
