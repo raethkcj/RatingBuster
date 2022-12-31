@@ -521,7 +521,7 @@ local function GetStanceIcon()
 end
 
 local function GetPlayerBuffRank(buff)
-	local spellID = StatLogic.AuraInfo[buff]
+	local spellID = StatLogic.AuraInfo[buff].spellId
 	local rank = GetSpellSubtext(spellID)
 	if spellID and rank then
 		return tonumber(strmatch(rank, "(%d+)")) or 1
