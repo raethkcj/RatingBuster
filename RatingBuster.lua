@@ -1428,15 +1428,17 @@ do
 	local function GenerateAuraOptions()
 		for modType, modList in pairs(StatLogic.StatModTable) do
 			for modName, mods in pairs(modList) do
-				for key, mod in pairs(mods) do
-					if mod.buff then
-						local _, _, icon = GetSpellInfo(mod.buff)
-						if not icon then icon = "" end
-						options.args.alwaysBuffed.args[modType].args[mod.buff] = {
-							type = 'toggle',
-							name = "|T"..icon..":25:25:-2:0|t"..mod.buff,
-							desc = GetSpellDescription(mod.buff)
-						}
+				if modName ~= "MOD_DMG_TAKEN" then
+					for key, mod in pairs(mods) do
+						if mod.buff then
+							local _, _, icon = GetSpellInfo(mod.buff)
+							if not icon then icon = "" end
+							options.args.alwaysBuffed.args[modType].args[mod.buff] = {
+								type = 'toggle',
+								name = "|T"..icon..":25:25:-2:0|t"..mod.buff,
+								desc = GetSpellDescription(mod.buff)
+							}
+						end
 					end
 				end
 			end
