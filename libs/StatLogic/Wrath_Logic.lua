@@ -689,42 +689,6 @@ local BuffGroup = {
 StatLogic.StatModTable = {}
 if addonTable.playerClass == "DRUID" then
 	StatLogic.StatModTable["DRUID"] = {
-		-- Druid: Master Shapeshifter (Rank 2) - 3,9
-		--        Moonkin Form - Increases spell damage by 2%/4%.
-		--      * Does not affect char window stats
-		-- Druid: Earth and Moon (Rank 5) - 1,27
-		--        Also increases your spell damage by 1%/2%/3%/4%/5%.
-		--      * Does not affect char window stats
-		--[[
-		["MOD_SPELL_DMG"] = {
-		{
-		["rank"] = {
-		0.02, 0.04,
-		},
-		["buff"] = GetSpellInfo(24858),		-- ["Moonkin Form"],
-		},
-		{
-		["tab"] = 1,
-		["num"] = 27,
-		["rank"] = {
-		0.01, 0.02, 0.03, 0.04, 0.05,
-		},
-		},
-		},
-		--]]
-		-- Druid: Master Shapeshifter (Rank 2) - 3,9
-		--        Tree of Life Form - Increases healing by 2%/4%.
-		--      * Does not affect char window stats
-		--[[
-		["MOD_HEALING"] = {
-		{
-		["rank"] = {
-		0.02, 0.04,
-		},
-		["buff"] = GetSpellInfo(33891),		-- ["Tree of Life"],
-		},
-		},
-		--]]
 		-- Druid: Improved Moonkin Form (Rank 3) - 1,19
 		--        Your Moonkin Aura also causes affected targets to gain 1%/2%/3% haste and you to gain 10/20/30% of your spirit as additional spell damage.
 		["ADD_SPELL_DMG_MOD_SPI"] = {
@@ -1799,9 +1763,7 @@ elseif addonTable.playerClass == "HUNTER" then
 				["buff"] = GetSpellInfo(13163),		-- ["Aspect of the Monkey"],
 			},
 			{
-				["rank"] = {
-					18, 18,
-				},
+				["value"] = 18,
 				["buff"] = GetSpellInfo(61846),		-- ["Aspect of the Dragonhawk"],
 			},
 			{
@@ -1928,35 +1890,27 @@ elseif addonTable.playerClass == "MAGE" then
 			-- Mage: Molten Armor (Rank 3) - Buff
 			--       increases your critical strike rating by 35% of your spirit
 			{
-				["rank"] = {
-					0.35, 0.35, 0.35, 0.35, 0.35, 0.35, -- 3 ranks
-				},
+				["value"] = 0.35,
 				["buff"] = GetSpellInfo(30482), -- ["Molten Armor"],
 			},
 			-- Mage: Glyph of Molten Armor - Major Glyph
 			--       Your Molten Armor grants an additional 20% of your spirit as critical strike rating.
 			{
-				["rank"] = {
-					0.2, 0.2, 0.2, 0.2, 0.2, 0.2, -- 3 ranks
-				},
+				["value"] = 0.2,
 				["buff"] = GetSpellInfo(30482), -- ["Molten Armor"],
 				["glyph"] = 56382, -- Glyph of Molten Armor,
 			},
 			-- Mage: Khadgar's Regalia(843), Sunstrider's Regalia(844) 2pc - Item Set
 			--       converts an additional 15% of your spirit into critical strike rating when Molten Armor is active.
 			{
-				["rank"] = {
-					0.15, 0.15, 0.15, 0.15, 0.15, 0.15, -- 3 ranks
-				},
+				["value"] = 0.15,
 				["buff"] = GetSpellInfo(30482), -- ["Molten Armor"],
 				-- Khadgar's Regalia
 				["set"] = 843,
 				["pieces"] = 2,
 			},
 			{
-				["rank"] = {
-					0.15, 0.15, 0.15, 0.15, 0.15, 0.15, -- 3 ranks
-				},
+				["value"] = 0.15,
 				["buff"] = GetSpellInfo(30482), -- ["Molten Armor"],
 				-- Sunstrider's Regalia
 				["set"] = 844,
@@ -2130,18 +2084,6 @@ elseif addonTable.playerClass == "MAGE" then
 				},
 			},
 		},
-		-- Mage: Arcane Instability (Rank 3) - 1,19
-		--       Increases your spell damage and critical strike chance by 1%/2%/3%.
-		-- This does not increase spell power
-		-- ["MOD_SPELL_DMG"] = {
-		-- {
-		-- ["tab"] = 1,
-		-- ["num"] = 19,
-		-- ["rank"] = {
-		-- 0.01, 0.02, 0.03,
-		-- },
-		-- },
-		-- },
 		-- Mage: Arcane Mind (Rank 5) - 1,15
 		--       Increases your total Intellect by 3%/6%/9%/12%/15%.
 		-- 3.0.1: 1,17
@@ -2437,28 +2379,6 @@ elseif addonTable.playerClass == "PALADIN" then
 	}
 elseif addonTable.playerClass == "PRIEST" then
 	StatLogic.StatModTable["PRIEST"] = {
-		-- Priest: Focused Power (Rank 2) - 1,16
-		--         Increases your total spell damage and healing done by 2%/4%.
-		-- ["MOD_SPELL_DMG"] = {
-		-- {
-		-- ["tab"] = 1,
-		-- ["num"] = 16,
-		-- ["rank"] = {
-		-- 0.02, 0.04,
-		-- },
-		-- },
-		-- },
-		-- Priest: Focused Power (Rank 2) - 1,16
-		--         Increases your total spell damage and healing done by 2%/4%.
-		-- ["MOD_HEALING"] = {
-		-- {
-		-- ["tab"] = 1,
-		-- ["num"] = 16,
-		-- ["rank"] = {
-		-- 0.02, 0.04,
-		-- },
-		-- },
-		-- },
 		-- Priest: Meditation (Rank 3) - 1,7
 		--         Allows 17/33/50% of your Mana regeneration to continue while casting.
 		["ADD_MANA_REG_MOD_NORMAL_MANA_REG"] = {
@@ -2628,9 +2548,7 @@ elseif addonTable.playerClass == "ROGUE" then
 				},
 			},
 			{
-				["rank"] = {
-					50, 50,
-				},
+				["value"] = 50,
 				["buff"] = GetSpellInfo(26669),		-- ["Evasion"],
 			},
 			{
@@ -2927,9 +2845,7 @@ elseif addonTable.playerClass == "WARLOCK" then
 		--          Life Tap - Buff
 		["ADD_SPELL_DMG_MOD_SPI"] = {
 			{
-				["rank"] = {
-					0.3, 0.3, 0.3, 0.3, -- 4 ranks
-				},
+				["rank"] = 0.3,
 				["buff"] = GetSpellInfo(28176), -- ["Fel Armor"],
 			},
 			{

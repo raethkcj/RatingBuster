@@ -426,12 +426,7 @@ elseif addonTable.playerClass == "MAGE" then
 			},
 			{
 				-- Mage: Mage Armor - Buff
-				--			Allows 30% of your mana regeneration to continue while casting.
-				["rank"] = setmetatable({}, {
-					__index = function(t, k)
-						return k and 0.3
-					end
-				}),
+				["value"] = 0.3,
 				["buff"] = GetSpellInfo(6117),		-- ["Mage Armor"],
 			},
 		},
@@ -594,9 +589,7 @@ elseif addonTable.playerClass == "ROGUE" then
 				},
 			},
 			{
-				["rank"] = {
-					50
-				},
+				["value"] = 50,
 				["buff"] = GetSpellInfo(26669),		-- ["Evasion"],
 			},
 			{

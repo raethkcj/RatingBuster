@@ -542,37 +542,41 @@ if addonTable.playerClass == "DRUID" then
 		--        Shapeshift into a dire bear, increasing melee attack power by 120, armor contribution from items by 400%, and stamina by 25%.
 		-- Druid: Survival of the Fittest (Rank 3) - 2,16
 		--        Increases all attributes by 1%/2%/3% and reduces the chance you'll be critically hit by melee attacks by 1%/2%/3%.
-		["MOD_STA"] = { -- Heart of the Wild: +4%/8%/12%/16%/20% stamina in bear / dire bear
-		{
-			["tab"] = 2,
-			["num"] = 15,
-			["rank"] = {
-				0.04, 0.08, 0.12, 0.16, 0.2,
+		-- Heart of the Wild: +4%/8%/12%/16%/20% stamina in bear / dire bear
+		["MOD_STA"] = {
+			{
+				["tab"] = 2,
+				["num"] = 15,
+				["rank"] = {
+					0.04, 0.08, 0.12, 0.16, 0.2,
+				},
+				["buff"] = GetSpellInfo(32357),		-- ["Bear Form"],
 			},
-			["buff"] = GetSpellInfo(32357),		-- ["Bear Form"],
-		},
-		{
-			["tab"] = 2,
-			["num"] = 15,
-			["rank"] = {
-				0.04, 0.08, 0.12, 0.16, 0.2,
+			{
+				["tab"] = 2,
+				["num"] = 15,
+				["rank"] = {
+					0.04, 0.08, 0.12, 0.16, 0.2,
+				},
+				["buff"] = GetSpellInfo(9634),		-- ["Dire Bear Form"],
 			},
-			["buff"] = GetSpellInfo(9634),		-- ["Dire Bear Form"],
-		},
-		{ -- Survival of the Fittest: +1%/2%/3% all stats
-		["tab"] = 2,
-		["num"] = 16,
-		["rank"] = {
-			0.01, 0.02, 0.03,
-		},
-	},
-	{ -- Bear Form / Dire Bear Form: +25% stamina
-	["value"] = 0.25,
-	["buff"] = GetSpellInfo(32357),		-- ["Bear Form"],
-},
-{ -- Bear Form / Dire Bear Form: +25% stamina
-["value"] = 0.25,
-["buff"] = GetSpellInfo(9634),		-- ["Dire Bear Form"],
+			-- Survival of the Fittest: +1%/2%/3% all stats
+			{
+				["tab"] = 2,
+				["num"] = 16,
+				["rank"] = {
+					0.01, 0.02, 0.03,
+				},
+			},
+			-- Bear Form / Dire Bear Form: +25% stamina
+			{
+				["value"] = 0.25,
+				["buff"] = GetSpellInfo(32357),		-- ["Bear Form"],
+			},
+			-- Bear Form / Dire Bear Form: +25% stamina
+			{
+				["value"] = 0.25,
+				["buff"] = GetSpellInfo(9634),		-- ["Dire Bear Form"],
 			},
 		},
 		-- Druid: Survival of the Fittest (Rank 3) - 2,16
@@ -853,12 +857,7 @@ elseif addonTable.playerClass == "MAGE" then
 				},
 			},
 			{
-				-- All ranks of Mage Armor give 30% regen
-				["rank"] = setmetatable({}, {
-					__index = function(t, k)
-						return k and 0.3
-					end
-				}),
+				["value"] = 0.3,
 				["buff"] = GetSpellInfo(6117),		-- ["Mage Armor"],
 			},
 		},
@@ -1350,9 +1349,7 @@ elseif addonTable.playerClass == "ROGUE" then
 				},
 			},
 			{
-				["rank"] = {
-					50, 50,
-				},
+				["value"] = 50,
 				["buff"] = GetSpellInfo(26669),		-- ["Evasion"],
 			},
 			{
