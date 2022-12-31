@@ -1118,6 +1118,45 @@ for _, statMod in ipairs(addedInfoMods) do
 end
 
 --------------------
+-- Unit Aura Cache --
+--------------------
+
+do
+	-- Aura Cache is a cache of our actual auras, wiped on UNIT_AURA
+	-- and not populated until we try to access it. This is for
+	-- performance during combat, when many auras will be updating,
+	-- but the user is unlikely to be checking item tooltips.
+	local aura_cache = {}
+
+	local needs_update = true
+	local f = CreateFrame("Frame")
+	f:RegisterUnitEvent("UNIT_AURA", "player")
+	f:SetScript("OnEvent", function()
+		wipe(aura_cache)
+		needs_update = true
+	end)
+
+	-- AuraInfo is a layer on top of aura_cache to hold Always Buffed settings.
+	StatLogic.AuraInfo = setmetatable({}, {
+		__index = function(self, buff)
+			if needs_update then
+				local i = 1
+				repeat
+					local aura, name = {}
+					name, _, aura.stacks, _, _, _, _, _, _, aura.spellId = UnitBuff("player", i)
+					if name then
+						aura_cache[name] = aura
+					end
+					i = i+1
+				until not name
+				needs_update = false
+			end
+			return aura_cache[buff]
+		end
+	})
+end
+
+--------------------
 -- Item Set Cache --
 --------------------
 
@@ -1137,6 +1176,10 @@ local equipped_sets = setmetatable({}, {
 		return equipped
 	end
 })
+
+--------------------
+-- Meta Gem Cache --
+--------------------
 
 local equipped_meta_gem
 
@@ -1170,7 +1213,7 @@ addonTable.StatModValidators = {
 	},
 	buff = {
 		validate = function(case)
-			return AuraUtil.FindAuraByName(case.buff, "player")
+			return StatLogic.AuraInfo[case.buff]
 		end,
 		events = {
 			["UNIT_AURA"] = "player",
