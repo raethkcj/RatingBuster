@@ -3972,7 +3972,11 @@ function StatLogic:GetAvoidanceAfterDR(avoidanceType, avoidanceBeforeDR, class)
 		C = C_m
 	end
 
-	return 1 / (1 / C[class] + K[class] / avoidanceBeforeDR)
+	if avoidanceBeforeDR > 0 then
+		return 1 / (1 / C[class] + K[class] / avoidanceBeforeDR)
+	else
+		return 0
+	end
 end
 
 --[[---------------------------------
