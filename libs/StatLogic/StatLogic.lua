@@ -521,9 +521,8 @@ local function GetStanceIcon()
 end
 
 local function GetPlayerBuffRank(buff)
-	local spellID = StatLogic.AuraInfo[buff].spellId
-	local rank = GetSpellSubtext(spellID)
-	if spellID and rank then
+	local rank = GetSpellSubtext(buff)
+	if rank then
 		return tonumber(strmatch(rank, "(%d+)")) or 1
 	end
 end
@@ -1139,8 +1138,8 @@ do
 	-- AuraInfo is a layer on top of aura_cache to hold Always Buffed settings.
 	local always_buffed_aura_info = {}
 	function StatLogic:SetupAuraInfo(always_buffed)
-		for class, tables in pairs(StatLogic.StatModTable) do
-			for modName, mods in pairs(tables) do
+		for modType, modList in pairs(StatLogic.StatModTable) do
+			for modName, mods in pairs(modList) do
 				for key, mod in pairs(mods) do
 					if mod.buff then -- if we got a buff
 						local aura = {}
@@ -1148,7 +1147,7 @@ do
 							aura.rank = #(mod.rank)
 						end
 						aura.stacks = mod.buffStack or 1
-						always_buffed_aura_info[mod.buff] = aura
+						always_buffed_aura_info[GetSpellInfo(mod.buff)] = aura
 					end
 				end
 			end
@@ -1235,7 +1234,7 @@ addonTable.StatModValidators = {
 	},
 	buff = {
 		validate = function(case)
-			return StatLogic.AuraInfo[case.buff]
+			return StatLogic.AuraInfo[GetSpellInfo(case.buff)]
 		end,
 		events = {
 			["UNIT_AURA"] = "player",

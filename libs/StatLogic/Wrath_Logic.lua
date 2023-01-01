@@ -698,7 +698,7 @@ if addonTable.playerClass == "DRUID" then
 				["rank"] = {
 					0.1, 0.2, 0.3,
 				},
-				["buff"] = GetSpellInfo(24858), -- ["Moonkin Form"],
+				["buff"] = 24858, -- ["Moonkin Form"],
 			},
 		},
 		-- Druid: Improved Tree of Life (Rank 3) - 3,24
@@ -710,7 +710,7 @@ if addonTable.playerClass == "DRUID" then
 				["rank"] = {
 					0.05, 0.10, 0.15,
 				},
-				["buff"] = GetSpellInfo(33891), -- ["Tree of Life"],
+				["buff"] = 33891, -- ["Tree of Life"],
 			},
 		},
 		-- Druid: Lunar Guidance (Rank 3) - 1,12
@@ -783,7 +783,7 @@ if addonTable.playerClass == "DRUID" then
 				["rank"] = {
 					2, 4,
 				},
-				["buff"] = GetSpellInfo(32357),		-- ["Bear Form"],
+				["buff"] = 32357,		-- ["Bear Form"],
 			},
 			{
 				["tab"] = 2,
@@ -791,7 +791,7 @@ if addonTable.playerClass == "DRUID" then
 				["rank"] = {
 					2, 4,
 				},
-				["buff"] = GetSpellInfo(9634),		-- ["Dire Bear Form"],
+				["buff"] = 9634,		-- ["Dire Bear Form"],
 			},
 			{
 				["tab"] = 2,
@@ -799,7 +799,7 @@ if addonTable.playerClass == "DRUID" then
 				["rank"] = {
 					2, 4,
 				},
-				["buff"] = GetSpellInfo(32356),		-- ["Cat Form"],
+				["buff"] = 32356,		-- ["Cat Form"],
 			},
 			{
 				["tab"] = 2,
@@ -807,7 +807,7 @@ if addonTable.playerClass == "DRUID" then
 				["rank"] = {
 					2, 4, 6,
 				},
-				["buff"] = GetSpellInfo(32357),		-- ["Bear Form"],
+				["buff"] = 32357,		-- ["Bear Form"],
 			},
 			{
 				["tab"] = 2,
@@ -815,7 +815,7 @@ if addonTable.playerClass == "DRUID" then
 				["rank"] = {
 					2, 4, 6,
 				},
-				["buff"] = GetSpellInfo(9634),		-- ["Dire Bear Form"],
+				["buff"] = 9634,		-- ["Dire Bear Form"],
 			},
 		},
 		-- Druid: Survival of the Fittest (Rank 3) - 2,18
@@ -854,7 +854,7 @@ if addonTable.playerClass == "DRUID" then
 				["SHADOW"] = true,
 				["ARCANE"] = true,
 				["value"] = -0.2,
-				["buff"] = GetSpellInfo(22812),		-- ["Barkskin"],
+				["buff"] = 22812,		-- ["Barkskin"],
 			},
 			-- Improved Barkskin
 			{
@@ -871,7 +871,7 @@ if addonTable.playerClass == "DRUID" then
 				["rank"] = {
 					-0.05, -0.1,
 				},
-				["buff"] = GetSpellInfo(22812),		-- ["Barkskin"],
+				["buff"] = 22812,		-- ["Barkskin"],
 			},
 			{
 				["MELEE"] = true,
@@ -887,7 +887,7 @@ if addonTable.playerClass == "DRUID" then
 				["rank"] = {
 					-0.02, -0.03, -0.04,
 				},
-				["buff"] = GetSpellInfo(45283),		-- ["Natural Perfection"],
+				["buff"] = 45283,		-- ["Natural Perfection"],
 				["buffStack"] = 3, -- max number of stacks
 			},
 			{
@@ -904,7 +904,7 @@ if addonTable.playerClass == "DRUID" then
 				["rank"] = {
 					-0.01, -0.02, -0.03,
 				},
-				["buff"] = GetSpellInfo(32357),		-- ["Bear Form"],
+				["buff"] = 32357,		-- ["Bear Form"],
 				["condition"] = "GetNumPartyMembers() == 1",
 			},
 			{
@@ -921,7 +921,7 @@ if addonTable.playerClass == "DRUID" then
 				["rank"] = {
 					-0.02, -0.04, -0.06,
 				},
-				["buff"] = GetSpellInfo(32357),		-- ["Bear Form"],
+				["buff"] = 32357,		-- ["Bear Form"],
 				["condition"] = "GetNumPartyMembers() == 2",
 			},
 			{
@@ -938,7 +938,7 @@ if addonTable.playerClass == "DRUID" then
 				["rank"] = {
 					-0.03, -0.06, -0.09,
 				},
-				["buff"] = GetSpellInfo(32357),		-- ["Bear Form"],
+				["buff"] = 32357,		-- ["Bear Form"],
 				["condition"] = "GetNumPartyMembers() == 3",
 			},
 			{
@@ -955,7 +955,7 @@ if addonTable.playerClass == "DRUID" then
 				["rank"] = {
 					-0.04, -0.08, -0.12,
 				},
-				["buff"] = GetSpellInfo(32357),		-- ["Bear Form"],
+				["buff"] = 32357,		-- ["Bear Form"],
 				["condition"] = "GetNumPartyMembers() == 4",
 			},
 			{
@@ -972,7 +972,7 @@ if addonTable.playerClass == "DRUID" then
 				["rank"] = {
 					-0.01, -0.02, -0.03,
 				},
-				["buff"] = GetSpellInfo(9634),		-- ["Dire Bear Form"],
+				["buff"] = 9634,		-- ["Dire Bear Form"],
 				["condition"] = "GetNumPartyMembers() == 1",
 			},
 			{
@@ -989,7 +989,7 @@ if addonTable.playerClass == "DRUID" then
 				["rank"] = {
 					-0.02, -0.04, -0.06,
 				},
-				["buff"] = GetSpellInfo(9634),		-- ["Dire Bear Form"],
+				["buff"] = 9634,		-- ["Dire Bear Form"],
 				["condition"] = "GetNumPartyMembers() == 2",
 			},
 			{
@@ -1006,7 +1006,7 @@ if addonTable.playerClass == "DRUID" then
 				["rank"] = {
 					-0.03, -0.06, -0.09,
 				},
-				["buff"] = GetSpellInfo(9634),		-- ["Dire Bear Form"],
+				["buff"] = 9634,		-- ["Dire Bear Form"],
 				["condition"] = "GetNumPartyMembers() == 3",
 			},
 			{
@@ -1023,7 +1023,7 @@ if addonTable.playerClass == "DRUID" then
 				["rank"] = {
 					-0.04, -0.08, -0.12,
 				},
-				["buff"] = GetSpellInfo(9634),		-- ["Dire Bear Form"],
+				["buff"] = 9634,		-- ["Dire Bear Form"],
 				["condition"] = "GetNumPartyMembers() == 4",
 			},
 			--Balance of Power
@@ -1066,15 +1066,15 @@ if addonTable.playerClass == "DRUID" then
 			},
 			{
 				["value"] = 1.8,
-				["buff"] = GetSpellInfo(32357),		-- ["Bear Form"],
+				["buff"] = 32357,		-- ["Bear Form"],
 			},
 			{
 				["value"] = 3.7,
-				["buff"] = GetSpellInfo(9634),		-- ["Dire Bear Form"],
+				["buff"] = 9634,		-- ["Dire Bear Form"],
 			},
 			{
 				["value"] = 3.7,
-				["buff"] = GetSpellInfo(24858),		-- ["Moonkin Form"],
+				["buff"] = 24858,		-- ["Moonkin Form"],
 			},
 			{
 				["tab"] = 3,
@@ -1082,7 +1082,7 @@ if addonTable.playerClass == "DRUID" then
 				["rank"] = {
 					0.67, 1.33, 2,
 				},
-				["buff"] = GetSpellInfo(33891),		-- ["Tree of Life"],
+				["buff"] = 33891,		-- ["Tree of Life"],
 			},
 			{
 				["tab"] = 2,
@@ -1090,7 +1090,7 @@ if addonTable.playerClass == "DRUID" then
 				["rank"] = {
 					0.11, 0.22, 0.33,
 				},
-				["buff"] = GetSpellInfo(32357),		-- ["Bear Form"],
+				["buff"] = 32357,		-- ["Bear Form"],
 			},
 			{
 				["tab"] = 2,
@@ -1098,7 +1098,7 @@ if addonTable.playerClass == "DRUID" then
 				["rank"] = {
 					0.11, 0.22, 0.33,
 				},
-				["buff"] = GetSpellInfo(9634),		-- ["Dire Bear Form"],
+				["buff"] = 9634,		-- ["Dire Bear Form"],
 			},
 		},
 		--if class == "DRUID" and select(5, GetTalentInfo(2, 10)) > 0 and weaponItemEquipLoc[select(9, GetItemInfo(link))] then
@@ -1108,15 +1108,15 @@ if addonTable.playerClass == "DRUID" then
 		["ADD_AP_MOD_FAP"] = {
 			{
 				["value"] = 1,
-				["buff"] = GetSpellInfo(32356),		-- ["Cat Form"],
+				["buff"] = 32356,		-- ["Cat Form"],
 			},
 			{
 				["value"] = 1,
-				["buff"] = GetSpellInfo(32357),		-- ["Bear Form"],
+				["buff"] = 32357,		-- ["Bear Form"],
 			},
 			{
 				["value"] = 1,
-				["buff"] = GetSpellInfo(9634),		-- ["Dire Bear Form"],
+				["buff"] = 9634,		-- ["Dire Bear Form"],
 			},
 		},
 		["MOD_FAP"] = {
@@ -1126,7 +1126,7 @@ if addonTable.playerClass == "DRUID" then
 				["rank"] = {
 					0.07, 0.14, 0.20,
 				},
-				["buff"] = GetSpellInfo(32356),		-- ["Cat Form"],
+				["buff"] = 32356,		-- ["Cat Form"],
 			},
 			{
 				["tab"] = 2,
@@ -1134,7 +1134,7 @@ if addonTable.playerClass == "DRUID" then
 				["rank"] = {
 					0.07, 0.14, 0.20,
 				},
-				["buff"] = GetSpellInfo(32357),		-- ["Bear Form"],
+				["buff"] = 32357,		-- ["Bear Form"],
 			},
 			{
 				["tab"] = 2,
@@ -1142,7 +1142,7 @@ if addonTable.playerClass == "DRUID" then
 				["rank"] = {
 					0.07, 0.14, 0.20,
 				},
-				["buff"] = GetSpellInfo(9634),		-- ["Dire Bear Form"],
+				["buff"] = 9634,		-- ["Dire Bear Form"],
 			},
 		},
 		-- Druid: Survival Instincts - Buff
@@ -1152,7 +1152,7 @@ if addonTable.playerClass == "DRUID" then
 		["MOD_HEALTH"] = {
 			{
 				["value"] = 0.3,
-				["buff"] = GetSpellInfo(50322),		-- ["Survival Instincts"],
+				["buff"] = 50322,		-- ["Survival Instincts"],
 			},
 		},
 		-- Druid: Improved Mark of the Wild (Rank 2) - 3,1
@@ -1184,7 +1184,7 @@ if addonTable.playerClass == "DRUID" then
 				["rank"] = {
 					0.02, 0.04, 0.06, 0.08, 0.1,
 				},
-				["buff"] = GetSpellInfo(32357),		-- ["Bear Form"],
+				["buff"] = 32357,		-- ["Bear Form"],
 			},
 			{
 				["tab"] = 2,
@@ -1192,7 +1192,7 @@ if addonTable.playerClass == "DRUID" then
 				["rank"] = {
 					0.02, 0.04, 0.06, 0.08, 0.1,
 				},
-				["buff"] = GetSpellInfo(9634),		-- ["Dire Bear Form"],
+				["buff"] = 9634,		-- ["Dire Bear Form"],
 			},
 			-- Survival of the Fittest: 2%/4%/6% all stats
 			{
@@ -1205,12 +1205,12 @@ if addonTable.playerClass == "DRUID" then
 			-- Bear Form / Dire Bear Form: +25% stamina
 			{
 				["value"] = 0.25,
-				["buff"] = GetSpellInfo(32357),		-- ["Bear Form"],
+				["buff"] = 32357,		-- ["Bear Form"],
 			},
 			-- Bear Form / Dire Bear Form: +25% stamina
 			{
 				["value"] = 0.25,
-				["buff"] = GetSpellInfo(9634),		-- ["Dire Bear Form"],
+				["buff"] = 9634,		-- ["Dire Bear Form"],
 			},
 		},
 		-- Druid: Improved Mark of the Wild (Rank 2) - 3,1
@@ -1249,7 +1249,7 @@ if addonTable.playerClass == "DRUID" then
 				["rank"] = {
 					0.02, 0.04, 0.06, 0.08, 0.1,
 				},
-				["buff"] = GetSpellInfo(32356),		-- ["Cat Form"],
+				["buff"] = 32356,		-- ["Cat Form"],
 			},
 			{
 				["tab"] = 2,
@@ -1257,7 +1257,7 @@ if addonTable.playerClass == "DRUID" then
 				["rank"] = {
 					0.02, 0.04, 0.06,
 				},
-				["buff"] = GetSpellInfo(32357),		-- ["Bear Form"],
+				["buff"] = 32357,		-- ["Bear Form"],
 			},
 			{
 				["tab"] = 2,
@@ -1265,7 +1265,7 @@ if addonTable.playerClass == "DRUID" then
 				["rank"] = {
 					0.02, 0.04, 0.06,
 				},
-				["buff"] = GetSpellInfo(9634),		-- ["Dire Bear Form"],
+				["buff"] = 9634,		-- ["Dire Bear Form"],
 			},
 		},
 		-- Druid: Improved Mark of the Wild (Rank 2) - 3,1
@@ -1328,7 +1328,7 @@ if addonTable.playerClass == "DRUID" then
 				["rank"] = {
 					0.02, 0.04, 0.06, 0.08, 0.1,
 				},
-				["buff"] = GetSpellInfo(24858),		-- ["Moonkin Form"],
+				["buff"] = 24858,		-- ["Moonkin Form"],
 			},
 		},
 		-- Druid: Improved Mark of the Wild (Rank 2) - 3,1
@@ -1422,7 +1422,7 @@ elseif addonTable.playerClass == "DEATHKNIGHT" then
 				["rank"] = {
 					-0.01, -0.02, -0.03, -0.04, -0.05,
 				},
-				["buff"] = GetSpellInfo(55226),		-- ["Blade Barrier"],
+				["buff"] = 55226,		-- ["Blade Barrier"],
 			},
 			{
 				["MELEE"] = true,
@@ -1434,7 +1434,7 @@ elseif addonTable.playerClass == "DEATHKNIGHT" then
 				["SHADOW"] = true,
 				["ARCANE"] = true,
 				["value"] = -0.30,
-				["buff"] = GetSpellInfo(48792),		-- ["Icebound Fortitude"],
+				["buff"] = 48792,		-- ["Icebound Fortitude"],
 			},
 			{
 				["MELEE"] = true,
@@ -1446,7 +1446,7 @@ elseif addonTable.playerClass == "DEATHKNIGHT" then
 				["SHADOW"] = true,
 				["ARCANE"] = true,
 				["value"] = -0.10,
-				["buff"] = GetSpellInfo(48792),		-- ["Icebound Fortitude"],
+				["buff"] = 48792,		-- ["Icebound Fortitude"],
 				["glyph"] = 58625, -- Glyph of Icebound Fortitude
 			},
 			{
@@ -1459,7 +1459,7 @@ elseif addonTable.playerClass == "DEATHKNIGHT" then
 				["SHADOW"] = true,
 				["ARCANE"] = true,
 				["value"] = -0.20,
-				["buff"] = GetSpellInfo(49222),		-- ["Bone Shield"],
+				["buff"] = 49222,		-- ["Bone Shield"],
 			},
 			{
 				["HOLY"] = true,
@@ -1469,7 +1469,7 @@ elseif addonTable.playerClass == "DEATHKNIGHT" then
 				["SHADOW"] = true,
 				["ARCANE"] = true,
 				["value"] = -0.75,
-				["buff"] = GetSpellInfo(48707),		-- ["Anti-Magic Shell"],
+				["buff"] = 48707,		-- ["Anti-Magic Shell"],
 			},
 			{
 				["MELEE"] = true,
@@ -1608,11 +1608,11 @@ elseif addonTable.playerClass == "DEATHKNIGHT" then
 			},
 			{
 				["value"] = 0.25,
-				["buff"] = GetSpellInfo(51271),		-- ["Unbreakable Armor"],
+				["buff"] = 51271,		-- ["Unbreakable Armor"],
 			},
 			{
 				["value"] = 0.2,
-				["buff"] = GetSpellInfo(51271),		-- ["Unbreakable Armor"],
+				["buff"] = 51271,		-- ["Unbreakable Armor"],
 				["glyph"] = 58635,		-- ["Glyph of Unbreakable Armor"],
 			},
 			{
@@ -1684,7 +1684,7 @@ elseif addonTable.playerClass == "DEATHKNIGHT" then
 			},
 			{
 				["value"] = 0.2,
-				["buff"] = GetSpellInfo(51271),		-- ["Unbreakable Armor"],
+				["buff"] = 51271,		-- ["Unbreakable Armor"],
 			},
 			{
 				["tab"] = 3,
@@ -1752,7 +1752,7 @@ elseif addonTable.playerClass == "HUNTER" then
 			},
 			{
 				["value"] = 18,
-				["buff"] = GetSpellInfo(13163),		-- ["Aspect of the Monkey"],
+				["buff"] = 13163,		-- ["Aspect of the Monkey"],
 			},
 			{
 				["tab"] = 1,
@@ -1760,11 +1760,11 @@ elseif addonTable.playerClass == "HUNTER" then
 				["rank"] = {
 					2, 4, 6,
 				},
-				["buff"] = GetSpellInfo(13163),		-- ["Aspect of the Monkey"],
+				["buff"] = 13163,		-- ["Aspect of the Monkey"],
 			},
 			{
 				["value"] = 18,
-				["buff"] = GetSpellInfo(61846),		-- ["Aspect of the Dragonhawk"],
+				["buff"] = 61846,		-- ["Aspect of the Dragonhawk"],
 			},
 			{
 				["tab"] = 1,
@@ -1772,7 +1772,7 @@ elseif addonTable.playerClass == "HUNTER" then
 				["rank"] = {
 					2, 4, 6,
 				},
-				["buff"] = GetSpellInfo(61846),		-- ["Aspect of the Dragonhawk"],
+				["buff"] = 61846,		-- ["Aspect of the Dragonhawk"],
 			},
 		},
 		-- Hunter: Survival Instincts (Rank 2) - 3,7
@@ -1807,7 +1807,7 @@ elseif addonTable.playerClass == "HUNTER" then
 				["tab"] = 1,
 				["num"] = 8,
 				["value"] = -0.05,
-				["buff"] = GetSpellInfo(13163),		-- ["Aspect of the Monkey"],
+				["buff"] = 13163,		-- ["Aspect of the Monkey"],
 			},
 		},
 		-- Hunter: Thick Hide (Rank 3) - 1,5
@@ -1891,27 +1891,27 @@ elseif addonTable.playerClass == "MAGE" then
 			--       increases your critical strike rating by 35% of your spirit
 			{
 				["value"] = 0.35,
-				["buff"] = GetSpellInfo(30482), -- ["Molten Armor"],
+				["buff"] = 30482, -- ["Molten Armor"],
 			},
 			-- Mage: Glyph of Molten Armor - Major Glyph
 			--       Your Molten Armor grants an additional 20% of your spirit as critical strike rating.
 			{
 				["value"] = 0.2,
-				["buff"] = GetSpellInfo(30482), -- ["Molten Armor"],
+				["buff"] = 30482, -- ["Molten Armor"],
 				["glyph"] = 56382, -- Glyph of Molten Armor,
 			},
 			-- Mage: Khadgar's Regalia(843), Sunstrider's Regalia(844) 2pc - Item Set
 			--       converts an additional 15% of your spirit into critical strike rating when Molten Armor is active.
 			{
 				["value"] = 0.15,
-				["buff"] = GetSpellInfo(30482), -- ["Molten Armor"],
+				["buff"] = 30482, -- ["Molten Armor"],
 				-- Khadgar's Regalia
 				["set"] = 843,
 				["pieces"] = 2,
 			},
 			{
 				["value"] = 0.15,
-				["buff"] = GetSpellInfo(30482), -- ["Molten Armor"],
+				["buff"] = 30482, -- ["Molten Armor"],
 				-- Sunstrider's Regalia
 				["set"] = 844,
 				["pieces"] = 2,
@@ -1949,25 +1949,25 @@ elseif addonTable.playerClass == "MAGE" then
 			},
 			{
 				["value"] = 0.5,
-				["buff"] = GetSpellInfo(6117), -- ["Mage Armor"],
+				["buff"] = 6117, -- ["Mage Armor"],
 			},
 			{
 				["value"] = 0.1,
-				["buff"] = GetSpellInfo(6117), -- ["Mage Armor"],
+				["buff"] = 6117, -- ["Mage Armor"],
 				-- Khadgar's Regalia
 				["set"] = 843,
 				["pieces"] = 2,
 			},
 			{
 				["value"] = 0.1,
-				["buff"] = GetSpellInfo(6117), -- ["Mage Armor"],
+				["buff"] = 6117, -- ["Mage Armor"],
 				-- Sunstrider's Regalia
 				["set"] = 844,
 				["pieces"] = 2,
 			},
 			{
 				["value"] = 0.2,
-				["buff"] = GetSpellInfo(6117), -- ["Mage Armor"],
+				["buff"] = 6117, -- ["Mage Armor"],
 				["glyph"] = 56383, -- Glyph of Mage Armor,
 			},
 			{
@@ -2028,7 +2028,7 @@ elseif addonTable.playerClass == "MAGE" then
 				["rank"] = {
 					-0.15, -0.30,
 				},
-				["buff"] = GetSpellInfo(46989),		-- ["Improved Blink"],
+				["buff"] = 46989,		-- ["Improved Blink"],
 			},
 		},
 		-- Mage: Prismatic Cloak (Rank 3) - 1,16
@@ -2263,7 +2263,7 @@ elseif addonTable.playerClass == "PALADIN" then
 				["rank"] = {
 					-0.02, -0.04, -0.06,
 				},
-				["buff"] = GetSpellInfo(25781),		-- ["Righteous Fury"],
+				["buff"] = 25781,		-- ["Righteous Fury"],
 			},
 			-- Guarded by the Light
 			{
@@ -2306,7 +2306,7 @@ elseif addonTable.playerClass == "PALADIN" then
 				["SHADOW"] = true,
 				["ARCANE"] = true,
 				["value"] = -0.03,
-				["buff"] = GetSpellInfo(54428),		-- ["Divine Plea"],
+				["buff"] = 54428,		-- ["Divine Plea"],
 				["glyph"] = 63223, -- Glyph of Shield Wall,
 			},
 		},
@@ -2394,7 +2394,7 @@ elseif addonTable.playerClass == "PRIEST" then
 			{
 				["tab"] = 3,
 				["num"] = 1,
-				["buff"] = GetSpellInfo(15271),
+				["buff"] = 15271,
 				["value"] = 0.83,
 			},
 			-- Priest: Improved Spirit Tap (Rank 2) - 3,2
@@ -2402,7 +2402,7 @@ elseif addonTable.playerClass == "PRIEST" then
 			{
 				["tab"] = 3,
 				["num"] = 2,
-				["buff"] = GetSpellInfo(59000),
+				["buff"] = 59000,
 				["rank"] = {
 					0.17, 0.33,
 				},
@@ -2432,7 +2432,7 @@ elseif addonTable.playerClass == "PRIEST" then
 			--	your spell power by 30% of your Spirit for 10 sec.
 			{
 				["glyph"] = 55689,
-				["buff"] = GetSpellInfo(61792),
+				["buff"] = 61792,
 				["value"] = 0.30,
 			},
 		},
@@ -2484,7 +2484,7 @@ elseif addonTable.playerClass == "PRIEST" then
 				["SHADOW"] = true,
 				["ARCANE"] = true,
 				["value"] = -0.9,
-				["buff"] = GetSpellInfo(47585),		-- ["Dispersion"],
+				["buff"] = 47585,		-- ["Dispersion"],
 			},
 		},
 		-- Priest: Enlightenment (Rank 5) - 1,17
@@ -2541,7 +2541,7 @@ elseif addonTable.playerClass == "PRIEST" then
 			{
 				["tab"] = 3,
 				["num"] = 1,
-				["buff"] = GetSpellInfo(15271),
+				["buff"] = 15271,
 				["value"] = 1.00,
 			},
 			-- Priest: Improved Spirit Tap (Rank 2) - 3,2
@@ -2551,7 +2551,7 @@ elseif addonTable.playerClass == "PRIEST" then
 			{
 				["tab"] = 3,
 				["num"] = 2,
-				["buff"] = GetSpellInfo(59000),
+				["buff"] = 59000,
 				["rank"] = {
 					0.05, 0.10,
 				},
@@ -2596,11 +2596,11 @@ elseif addonTable.playerClass == "ROGUE" then
 			},
 			{
 				["value"] = 50,
-				["buff"] = GetSpellInfo(26669),		-- ["Evasion"],
+				["buff"] = 26669,		-- ["Evasion"],
 			},
 			{
 				["value"] = 15,
-				["buff"] = GetSpellInfo(31022),		-- ["Ghostly Strike"],
+				["buff"] = 31022,		-- ["Ghostly Strike"],
 			},
 		},
 		-- Rogue: Sleight of Hand (Rank 2) - 3,4
@@ -2645,14 +2645,14 @@ elseif addonTable.playerClass == "ROGUE" then
 				["SHADOW"] = true,
 				["ARCANE"] = true,
 				["value"] = -0.9,
-				["buff"] = GetSpellInfo(39666),		-- ["Cloak of Shadows"],
+				["buff"] = 39666,		-- ["Cloak of Shadows"],
 			},
 			{
 				["RANGED"] = true,
 				["rank"] = {
 					0, -0.25,
 				},
-				["buff"] = GetSpellInfo(26669),		-- ["Evasion"],
+				["buff"] = 26669,		-- ["Evasion"],
 			},
 		},
 		-- Rogue: Deadened Nerves (Rank 3) - 1,20
@@ -2799,7 +2799,7 @@ elseif addonTable.playerClass == "SHAMAN" then
 				["SHADOW"] = true,
 				["ARCANE"] = true,
 				["value"] = -0.3,
-				["buff"] = GetSpellInfo(30823),		-- ["Shamanistic Rage"],
+				["buff"] = 30823,		-- ["Shamanistic Rage"],
 			},
 			{
 				["MELEE"] = true,
@@ -2811,7 +2811,7 @@ elseif addonTable.playerClass == "SHAMAN" then
 				["SHADOW"] = true,
 				["ARCANE"] = true,
 				["value"] = -0.3,
-				["buff"] = GetSpellInfo(51479),		-- ["Astral Shift"],
+				["buff"] = 51479,		-- ["Astral Shift"],
 			},
 		},
 		-- Shaman: Toughness (Rank 5) - 2,12
@@ -2845,7 +2845,7 @@ elseif addonTable.playerClass == "WARLOCK" then
 			{
 				["MELEE"] = true,
 				["value"] = -0.06,
-				["buff"] = GetSpellInfo(47241),		-- ["Metamorphosis"],
+				["buff"] = 47241,		-- ["Metamorphosis"],
 			},
 		},
 		-- Warlock: Metamorphosis - Buff
@@ -2853,7 +2853,7 @@ elseif addonTable.playerClass == "WARLOCK" then
 		["MOD_ARMOR"] = {
 			{
 				["value"] = 6,
-				["buff"] = GetSpellInfo(47241),		-- ["Metamorphosis"],
+				["buff"] = 47241,		-- ["Metamorphosis"],
 			},
 		},
 		-- Warlock: Demonic Pact - 2,26
@@ -2868,7 +2868,7 @@ elseif addonTable.playerClass == "WARLOCK" then
 				["rank"] = {
 					0.02, 0.04, 0.06, 0.08, 0.1,
 				},
-				["buff"] = GetSpellInfo(47240),		-- ["Demonic Pact"],
+				["buff"] = 47240,		-- ["Demonic Pact"],
 			},
 		},
 		-- Warlock: Demonic Pact - 2,26
@@ -2880,7 +2880,7 @@ elseif addonTable.playerClass == "WARLOCK" then
 				["rank"] = {
 					0.02, 0.04, 0.06, 0.08, 0.1,
 				},
-				["buff"] = GetSpellInfo(47240),		-- ["Demonic Pact"],
+				["buff"] = 47240,		-- ["Demonic Pact"],
 			},
 		},
 		-- Warlock: Fel Armor (Rank 4) - Buff
@@ -2893,7 +2893,7 @@ elseif addonTable.playerClass == "WARLOCK" then
 		["ADD_SPELL_DMG_MOD_SPI"] = {
 			{
 				["rank"] = 0.3,
-				["buff"] = GetSpellInfo(28176), -- ["Fel Armor"],
+				["buff"] = 28176, -- ["Fel Armor"],
 			},
 			{
 				["tab"] = 2,
@@ -2901,12 +2901,12 @@ elseif addonTable.playerClass == "WARLOCK" then
 				["rank"] = {
 					0.03, 0.06, 0.09,
 				},
-				["buff"] = GetSpellInfo(28176), -- ["Fel Armor"],
+				["buff"] = 28176, -- ["Fel Armor"],
 			},
 			{
 				["value"] = 0.2,
 				["glyph"] = 63320,
-				["buff"] = GetSpellInfo(63321), -- ["Life Tap"],
+				["buff"] = 63321, -- ["Life Tap"],
 			},
 		},
 		-- Warlock: Fel Armor (Rank 4) - Buff
@@ -2918,7 +2918,7 @@ elseif addonTable.playerClass == "WARLOCK" then
 			{
 				["value"] = 0.2,
 				["glyph"] = 63320,
-				["buff"] = GetSpellInfo(63321), -- ["Life Tap"],
+				["buff"] = 63321, -- ["Life Tap"],
 			},
 		},
 		-- 3.3.0 Imp stam total 233: pet base 118, player base 90, pet sta from player sta 0.75, pet kings 1.1, fel vitality 1.15
@@ -3070,7 +3070,7 @@ elseif addonTable.playerClass == "WARLOCK" then
 				["SHADOW"] = true,
 				["ARCANE"] = true,
 				["value"] = -0.15,
-				["buff"] = GetSpellInfo(25228),		-- ["Soul Link"],
+				["buff"] = 25228,		-- ["Soul Link"],
 			},
 		},
 		-- Warlock: Fel Vitality (Rank 3) - 2,7
@@ -3173,7 +3173,7 @@ elseif addonTable.playerClass == "WARRIOR" then
 				["SHADOW"] = true,
 				["ARCANE"] = true,
 				["value"] = -0.6,
-				["buff"] = GetSpellInfo(41196),		-- ["Shield Wall"],
+				["buff"] = 41196,		-- ["Shield Wall"],
 			},
 			{
 				["MELEE"] = true,
@@ -3185,7 +3185,7 @@ elseif addonTable.playerClass == "WARRIOR" then
 				["SHADOW"] = true,
 				["ARCANE"] = true,
 				["value"] = 0.2,
-				["buff"] = GetSpellInfo(41196),		-- ["Shield Wall"],
+				["buff"] = 41196,		-- ["Shield Wall"],
 				["glyph"] = 63329, -- Glyph of Shield Wall,
 			},
 			{
@@ -3222,7 +3222,7 @@ elseif addonTable.playerClass == "WARRIOR" then
 				["SHADOW"] = true,
 				["ARCANE"] = true,
 				["value"] = 0.05,
-				["buff"] = GetSpellInfo(12292),		-- ["Death Wish"],
+				["buff"] = 12292,		-- ["Death Wish"],
 			},
 			{
 				["MELEE"] = true,
@@ -3234,7 +3234,7 @@ elseif addonTable.playerClass == "WARRIOR" then
 				["SHADOW"] = true,
 				["ARCANE"] = true,
 				["value"] = 0.2,
-				["buff"] = GetSpellInfo(13847),		-- ["Recklessness"],
+				["buff"] = 13847,		-- ["Recklessness"],
 			},
 			-- Improved Defensive Stance
 			{
@@ -3256,7 +3256,7 @@ elseif addonTable.playerClass == "WARRIOR" then
 		["MOD_HEALTH"] = {
 			{
 				["value"] = 0.3,
-				["buff"] = GetSpellInfo(12975),		-- ["Last Stand"],
+				["buff"] = 12975,		-- ["Last Stand"],
 			},
 		},
 		-- Warrior: Toughness (Rank 5) - 3,9
@@ -3377,7 +3377,7 @@ StatLogic.StatModTable["ALL"] = {
 	["ADD_DODGE"] = {
 		{
 			["value"] = -20,
-			["buff"] = GetSpellInfo(69127),		-- ["Chill of the Throne"],
+			["buff"] = 69127,		-- ["Chill of the Throne"],
 		},
 	},
 	-- Replenishment - Buff
@@ -3393,7 +3393,7 @@ StatLogic.StatModTable["ALL"] = {
 	["ADD_MANA_REG_MOD_MANA"] = {
 		{
 			["value"] = 0.01,
-			["buff"] = GetSpellInfo(57669),		-- ["Replenishment"],
+			["buff"] = 57669,		-- ["Replenishment"],
 		},
 	},
 	-- Priest: Pain Suppression - Buff
@@ -3424,7 +3424,7 @@ StatLogic.StatModTable["ALL"] = {
 			["SHADOW"] = true,
 			["ARCANE"] = true,
 			["value"] = -0.4,
-			["buff"] = GetSpellInfo(33206),		-- ["Pain Suppression"],
+			["buff"] = 33206,		-- ["Pain Suppression"],
 		},
 		-- Grace
 		{
@@ -3437,7 +3437,7 @@ StatLogic.StatModTable["ALL"] = {
 			["SHADOW"] = true,
 			["ARCANE"] = true,
 			["value"] = -0.01,
-			["buff"] = GetSpellInfo(47930),		-- ["Grace"],
+			["buff"] = 47930,		-- ["Grace"],
 		},
 		-- Vigilance
 		{
@@ -3450,7 +3450,7 @@ StatLogic.StatModTable["ALL"] = {
 			["SHADOW"] = true,
 			["ARCANE"] = true,
 			["value"] = -0.03,
-			["buff"] = GetSpellInfo(50720),		-- ["Vigilance"],
+			["buff"] = 50720,		-- ["Vigilance"],
 		},
 		-- Blessing of Sanctuary
 		{
@@ -3463,7 +3463,7 @@ StatLogic.StatModTable["ALL"] = {
 			["SHADOW"] = true,
 			["ARCANE"] = true,
 			["value"] = -0.03,
-			["buff"] = GetSpellInfo(20911),		-- ["Blessing of Sanctuary"],
+			["buff"] = 20911,		-- ["Blessing of Sanctuary"],
 		},
 		-- Greater Blessing of Sanctuary
 		{
@@ -3476,7 +3476,7 @@ StatLogic.StatModTable["ALL"] = {
 			["SHADOW"] = true,
 			["ARCANE"] = true,
 			["value"] = -0.03,
-			["buff"] = GetSpellInfo(25899),		-- ["Greater Blessing of Sanctuary"],
+			["buff"] = 25899,		-- ["Greater Blessing of Sanctuary"],
 		},
 		-- Effulgent Skyflare Diamond
 		{
@@ -3496,7 +3496,7 @@ StatLogic.StatModTable["ALL"] = {
 			["rank"] = {
 				-0.1, -0.2,
 			},
-			["buff"] = GetSpellInfo(20236),		-- ["Lay on Hands"],
+			["buff"] = 20236,		-- ["Lay on Hands"],
 		},
 		{
 			["MELEE"] = true,
@@ -3504,7 +3504,7 @@ StatLogic.StatModTable["ALL"] = {
 			["rank"] = {
 				-0.03, -0.07, -0.1,
 			},
-			["buff"] = GetSpellInfo(15363),		-- ["Inspiration"],
+			["buff"] = 15363,		-- ["Inspiration"],
 			["group"] = BuffGroup.MOD_PHYS_DMG_TAKEN,
 		},
 		{
@@ -3513,7 +3513,7 @@ StatLogic.StatModTable["ALL"] = {
 			["rank"] = {
 				-0.03, -0.07, -0.1,
 			},
-			["buff"] = GetSpellInfo(16237),		-- ["Ancestral Fortitude"],
+			["buff"] = 16237,		-- ["Ancestral Fortitude"],
 			["group"] = BuffGroup.MOD_PHYS_DMG_TAKEN,
 		},
 	},
@@ -3554,21 +3554,21 @@ StatLogic.StatModTable["ALL"] = {
 	["MOD_AP"] = {
 		{
 			["value"] = 0.1,
-			["buff"] = GetSpellInfo(19506),		-- ["Trueshot Aura"],
+			["buff"] = 19506,		-- ["Trueshot Aura"],
 			["group"] = BuffGroup.MOD_AP,
 		},
 		{
 			["rank"] = {
 				0.05, 0.1,
 			},
-			["buff"] = GetSpellInfo(53137),		-- ["Abomination's Might"],
+			["buff"] = 53138,		-- ["Abomination's Might"],
 			["group"] = BuffGroup.MOD_AP,
 		},
 		{
 			["rank"] = {
 				0.04, 0.07, 0.1,
 			},
-			["buff"] = GetSpellInfo(30802),		-- ["Unleashed Rage"],
+			["buff"] = 30809,		-- ["Unleashed Rage"],
 			["group"] = BuffGroup.MOD_AP,
 		},
 	},
@@ -3589,29 +3589,29 @@ StatLogic.StatModTable["ALL"] = {
 	["MOD_STR"] = {
 		{
 			["value"] = 0.1,
-			["buff"] = GetSpellInfo(20217),		-- ["Blessing of Kings"],
+			["buff"] = 20217,		-- ["Blessing of Kings"],
 			["group"] = BuffGroup.MOD_STATS,
 		},
 		{
 			["value"] = 0.1,
-			["buff"] = GetSpellInfo(25898),		-- ["Greater Blessing of Kings"],
+			["buff"] = 25898,		-- ["Greater Blessing of Kings"],
 			["group"] = BuffGroup.MOD_STATS,
 		},
 		-- Blessing of Sanctuary
 		{
 			["value"] = 0.1,
-			["buff"] = GetSpellInfo(20911),		-- ["Blessing of Sanctuary"],
+			["buff"] = 20911,		-- ["Blessing of Sanctuary"],
 			["group"] = BuffGroup.MOD_STATS,
 		},
 		-- Greater Blessing of Sanctuary
 		{
 			["value"] = 0.1,
-			["buff"] = GetSpellInfo(25899),		-- ["Greater Blessing of Sanctuary"],
+			["buff"] = 25899,		-- ["Greater Blessing of Sanctuary"],
 			["group"] = BuffGroup.MOD_STATS,
 		},
 		{
 			["value"] = 0.08,
-			["buff"] = GetSpellInfo(69378),		-- ["Blessing of Forgotten Kings"],
+			["buff"] = 69378,		-- ["Blessing of Forgotten Kings"],
 			["group"] = BuffGroup.MOD_STATS,
 		},
 	},
@@ -3622,17 +3622,17 @@ StatLogic.StatModTable["ALL"] = {
 	["MOD_AGI"] = {
 		{
 			["value"] = 0.1,
-			["buff"] = GetSpellInfo(20217),		-- ["Blessing of Kings"],
+			["buff"] = 20217,		-- ["Blessing of Kings"],
 			["group"] = BuffGroup.MOD_STATS,
 		},
 		{
 			["value"] = 0.1,
-			["buff"] = GetSpellInfo(25898),		-- ["Greater Blessing of Kings"],
+			["buff"] = 25898,		-- ["Greater Blessing of Kings"],
 			["group"] = BuffGroup.MOD_STATS,
 		},
 		{
 			["value"] = 0.08,
-			["buff"] = GetSpellInfo(69378),		-- ["Blessing of Forgotten Kings"],
+			["buff"] = 69378,		-- ["Blessing of Forgotten Kings"],
 			["group"] = BuffGroup.MOD_STATS,
 		},
 	},
@@ -3645,29 +3645,29 @@ StatLogic.StatModTable["ALL"] = {
 	["MOD_STA"] = {
 		{
 			["value"] = 0.1,
-			["buff"] = GetSpellInfo(20217),		-- ["Blessing of Kings"],
+			["buff"] = 20217,		-- ["Blessing of Kings"],
 			["group"] = BuffGroup.MOD_STATS,
 		},
 		{
 			["value"] = 0.1,
-			["buff"] = GetSpellInfo(25898),		-- ["Greater Blessing of Kings"],
+			["buff"] = 25898,		-- ["Greater Blessing of Kings"],
 			["group"] = BuffGroup.MOD_STATS,
 		},
 		-- Blessing of Sanctuary
 		{
 			["value"] = 0.1,
-			["buff"] = GetSpellInfo(20911),		-- ["Blessing of Sanctuary"],
+			["buff"] = 20911,		-- ["Blessing of Sanctuary"],
 			["group"] = BuffGroup.MOD_STATS,
 		},
 		-- Greater Blessing of Sanctuary
 		{
 			["value"] = 0.1,
-			["buff"] = GetSpellInfo(25899),		-- ["Greater Blessing of Sanctuary"],
+			["buff"] = 25899,		-- ["Greater Blessing of Sanctuary"],
 			["group"] = BuffGroup.MOD_STATS,
 		},
 		{
 			["value"] = 0.08,
-			["buff"] = GetSpellInfo(69378),		-- ["Blessing of Forgotten Kings"],
+			["buff"] = 69378,		-- ["Blessing of Forgotten Kings"],
 			["group"] = BuffGroup.MOD_STATS,
 		},
 	},
@@ -3682,17 +3682,17 @@ StatLogic.StatModTable["ALL"] = {
 	["MOD_INT"] = {
 		{
 			["value"] = 0.1,
-			["buff"] = GetSpellInfo(20217),		-- ["Blessing of Kings"],
+			["buff"] = 20217,		-- ["Blessing of Kings"],
 			["group"] = BuffGroup.MOD_STATS,
 		},
 		{
 			["value"] = 0.1,
-			["buff"] = GetSpellInfo(25898),		-- ["Greater Blessing of Kings"],
+			["buff"] = 25898,		-- ["Greater Blessing of Kings"],
 			["group"] = BuffGroup.MOD_STATS,
 		},
 		{
 			["value"] = 0.08,
-			["buff"] = GetSpellInfo(69378),		-- ["Blessing of Forgotten Kings"],
+			["buff"] = 69378,		-- ["Blessing of Forgotten Kings"],
 			["group"] = BuffGroup.MOD_STATS,
 		},
 		{
@@ -3711,17 +3711,17 @@ StatLogic.StatModTable["ALL"] = {
 	["MOD_SPI"] = {
 		{
 			["value"] = 0.1,
-			["buff"] = GetSpellInfo(20217),		-- ["Blessing of Kings"],
+			["buff"] = 20217,		-- ["Blessing of Kings"],
 			["group"] = BuffGroup.MOD_STATS,
 		},
 		{
 			["value"] = 0.1,
-			["buff"] = GetSpellInfo(25898),		-- ["Greater Blessing of Kings"],
+			["buff"] = 25898,		-- ["Greater Blessing of Kings"],
 			["group"] = BuffGroup.MOD_STATS,
 		},
 		{
 			["value"] = 0.08,
-			["buff"] = GetSpellInfo(69378),		-- ["Blessing of Forgotten Kings"],
+			["buff"] = 69378,		-- ["Blessing of Forgotten Kings"],
 			["group"] = BuffGroup.MOD_STATS,
 		},
 	},

@@ -276,7 +276,7 @@ if addonTable.playerClass == "DRUID" then
 				["rank"] = {
 					2, 4,
 				},
-				["buff"] = GetSpellInfo(32356),		-- ["Cat Form"],
+				["buff"] = 32356,		-- ["Cat Form"],
 			},
 		},
 		["MOD_ARMOR"] = {
@@ -293,19 +293,19 @@ if addonTable.playerClass == "DRUID" then
 			--        Shapeshift into a bear, increasing melee attack power by 120, armor contribution from items by 180%, and health by 560.
 			{
 				["value"] = 2.8,
-				["buff"] = GetSpellInfo(5487),		-- ["Bear Form"],
+				["buff"] = 5487,		-- ["Bear Form"],
 			},
 			-- Druid: Dire Bear Form - Buff
 			--        Shapeshift into a dire bear, increasing melee attack power by 180, armor contribution from items by 360%, and health by 1240.
 			{
 				["value"] = 4.6,
-				["buff"] = GetSpellInfo(9634),		-- ["Dire Bear Form"],
+				["buff"] = 9634,		-- ["Dire Bear Form"],
 			},
 			-- Druid: Moonkin Form - Buff
 			--        While in this form the armor contribution from items is increased by 360%, and all party members within 30 yards have their spell critical chance increased by 3%.
 			{
 				["value"] = 4.6,
-				["buff"] = GetSpellInfo(24858),		-- ["Moonkin Form"],
+				["buff"] = 24858,		-- ["Moonkin Form"],
 			},
 		},
 		-- Druid: Heart of the Wild (Rank 5) - 2,15
@@ -317,7 +317,7 @@ if addonTable.playerClass == "DRUID" then
 				["rank"] = {
 					0.04, 0.08, 0.12, 0.16, 0.20,
 				},
-				["buff"] = GetSpellInfo(32357),		-- ["Bear Form"],
+				["buff"] = 32357,		-- ["Bear Form"],
 			},
 			{
 				["tab"] = 2,
@@ -325,7 +325,7 @@ if addonTable.playerClass == "DRUID" then
 				["rank"] = {
 					0.04, 0.08, 0.12, 0.16, 0.20,
 				},
-				["buff"] = GetSpellInfo(9634),		-- ["Dire Bear Form"],
+				["buff"] = 9634,		-- ["Dire Bear Form"],
 			},
 		},
 		-- Druid: Heart of the Wild (Rank 5) - 2,15
@@ -337,7 +337,7 @@ if addonTable.playerClass == "DRUID" then
 				["rank"] = {
 					0.04, 0.08, 0.12, 0.16, 0.20,
 				},
-				["buff"] = GetSpellInfo(32356),		-- ["Cat Form"],
+				["buff"] = 32356,		-- ["Cat Form"],
 			},
 		},
 		-- Druid: Heart of the Wild (Rank 5) - 2,15
@@ -359,7 +359,7 @@ elseif addonTable.playerClass == "HUNTER" then
 			--         The hunter takes on the aspects of a monkey, increasing chance to dodge by 8%. Only one Aspect can be active at a time.
 			{
 				["value"] = 8,
-				["buff"] = GetSpellInfo(13163),		-- ["Aspect of the Monkey"],
+				["buff"] = 13163,		-- ["Aspect of the Monkey"],
 			},
 			-- Hunter: Improved Aspect of the Monkey (Rank 5) - 1,4
 			--         Increases the Dodge bonus of your Aspect of the Monkey by 1/2/3/4/5%.
@@ -369,13 +369,13 @@ elseif addonTable.playerClass == "HUNTER" then
 				["rank"] = {
 					1, 2, 3, 4, 5,
 				},
-				["buff"] = GetSpellInfo(13163),		-- ["Aspect of the Monkey"],
+				["buff"] = 13163,		-- ["Aspect of the Monkey"],
 			},
 			-- Hunter: Deterrence - Buff
 			--         Dodge and Parry chance increased by 25%.
 			{
 				["value"] = 25,
-				["buff"] = GetSpellInfo(31567),		-- ["Deterrence"],
+				["buff"] = 31567,		-- ["Deterrence"],
 			},
 		},
 		-- Hunter: Survivalist (Rank 5) - 3,8
@@ -427,7 +427,7 @@ elseif addonTable.playerClass == "MAGE" then
 			{
 				-- Mage: Mage Armor - Buff
 				["value"] = 0.3,
-				["buff"] = GetSpellInfo(6117),		-- ["Mage Armor"],
+				["buff"] = 6117,		-- ["Mage Armor"],
 			},
 		},
 		-- Mage: Arcane Mind (Rank 5) - 1,14
@@ -529,7 +529,7 @@ elseif addonTable.playerClass == "PRIEST" then
 		["ADD_DODGE"] = {
 			{
 				["value"] = 10,
-				["buff"] = GetSpellInfo(2651),		-- ["Elune's Grace"],
+				["buff"] = 2651,		-- ["Elune's Grace"],
 			},
 		},
 		-- Priest: Spell Warding (Rank 5) - 2,4
@@ -590,11 +590,11 @@ elseif addonTable.playerClass == "ROGUE" then
 			},
 			{
 				["value"] = 50,
-				["buff"] = GetSpellInfo(26669),		-- ["Evasion"],
+				["buff"] = 26669,		-- ["Evasion"],
 			},
 			{
 				["value"] = 15,
-				["buff"] = GetSpellInfo(31022),		-- ["Ghostly Strike"],
+				["buff"] = 31022,		-- ["Ghostly Strike"],
 			},
 		},
 		-- Rogue: Sleight of Hand (Rank 2) - 3,3
@@ -717,7 +717,7 @@ elseif addonTable.playerClass == "WARLOCK" then
 				["SHADOW"] = true,
 				["ARCANE"] = true,
 				["value"] = -0.3,
-				["buff"] = GetSpellInfo(25228),		-- ["Soul Link"],
+				["buff"] = 25228,		-- ["Soul Link"],
 			},
 		},
 		-- Warlock: Demonic Embrace (Rank 5) - 2,3
@@ -758,7 +758,7 @@ elseif addonTable.playerClass == "WARRIOR" then
 				["SHADOW"] = true,
 				["ARCANE"] = true,
 				["value"] = -0.75,
-				["buff"] = GetSpellInfo(41196),		-- ["Shield Wall"],
+				["buff"] = 41196,		-- ["Shield Wall"],
 			},
 			-- Warrior: Defensive Stance - stance
 			--          A defensive combat stance. Decreases damage taken by 10% and damage caused by 10%. Increases threat generated.
@@ -800,7 +800,7 @@ elseif addonTable.playerClass == "WARRIOR" then
 				["SHADOW"] = true,
 				["ARCANE"] = true,
 				["value"] = 0.2,
-				["buff"] = GetSpellInfo(13847),		-- ["Recklessness"],
+				["buff"] = 13847,		-- ["Recklessness"],
 			},
 		},
 		["MOD_ARMOR"] = {
@@ -817,7 +817,7 @@ elseif addonTable.playerClass == "WARRIOR" then
 			--          When activated, increases your physical damage by 20% and makes you immune to Fear effects, but lowers your armor and all resistances by 20%.  Lasts 30 sec.
 			{
 				["value"] = 0.8,
-				["buff"] = GetSpellInfo(12292),		-- ["Death Wish"],
+				["buff"] = 12292,		-- ["Death Wish"],
 			},
 		},
 		-- Warrior: Vitality (Rank 5) - 3,21
@@ -884,7 +884,7 @@ StatLogic.StatModTable["ALL"] = {
 			["rank"] = {
 				0.15, 0.30,
 			},
-			["buff"] = GetSpellInfo(27154),		-- ["Lay on Hands"],
+			["buff"] = 27154,		-- ["Lay on Hands"],
 		},
 		-- Priest: Inspiration (Rank 1/2/3) - Buff
 		--         Increases armor by 8%/16%/25%.
@@ -892,7 +892,7 @@ StatLogic.StatModTable["ALL"] = {
 			["rank"] = {
 				0.08, 0.16, 0.25,
 			},
-			["buff"] = GetSpellInfo(15363),		-- ["Inspiration"],
+			["buff"] = 15363,		-- ["Inspiration"],
 		},
 		-- Shaman: Ancestral Fortitude (Rank 1/2/3) - Buff
 		--         Increases your armor value by 8%/16%/25%.
@@ -900,7 +900,7 @@ StatLogic.StatModTable["ALL"] = {
 			["rank"] = {
 				0.08, 0.16, 0.25,
 			},
-			["buff"] = GetSpellInfo(16237),		-- ["Ancestral Fortitude"],
+			["buff"] = 16237,		-- ["Ancestral Fortitude"],
 		},
 	},
 	-- Blessing of Kings - Buff
@@ -910,11 +910,11 @@ StatLogic.StatModTable["ALL"] = {
 	["MOD_STR"] = {
 		{
 			["value"] = 0.1,
-			["buff"] = GetSpellInfo(20217),		-- ["Blessing of Kings"],
+			["buff"] = 20217,		-- ["Blessing of Kings"],
 		},
 		{
 			["value"] = 0.1,
-			["buff"] = GetSpellInfo(25898),		-- ["Greater Blessing of Kings"],
+			["buff"] = 25898,		-- ["Greater Blessing of Kings"],
 		},
 	},
 	-- Blessing of Kings - Buff
@@ -924,11 +924,11 @@ StatLogic.StatModTable["ALL"] = {
 	["MOD_AGI"] = {
 		{
 			["value"] = 0.1,
-			["buff"] = GetSpellInfo(20217),		-- ["Blessing of Kings"],
+			["buff"] = 20217,		-- ["Blessing of Kings"],
 		},
 		{
 			["value"] = 0.1,
-			["buff"] = GetSpellInfo(25898),		-- ["Greater Blessing of Kings"],
+			["buff"] = 25898,		-- ["Greater Blessing of Kings"],
 		},
 	},
 	-- Blessing of Kings - Buff
@@ -938,11 +938,11 @@ StatLogic.StatModTable["ALL"] = {
 	["MOD_STA"] = {
 		{
 			["value"] = 0.1,
-			["buff"] = GetSpellInfo(20217),		-- ["Blessing of Kings"],
+			["buff"] = 20217,		-- ["Blessing of Kings"],
 		},
 		{
 			["value"] = 0.1,
-			["buff"] = GetSpellInfo(25898),		-- ["Greater Blessing of Kings"],
+			["buff"] = 25898,		-- ["Greater Blessing of Kings"],
 		},
 	},
 	-- Blessing of Kings - Buff
@@ -954,11 +954,11 @@ StatLogic.StatModTable["ALL"] = {
 	["MOD_INT"] = {
 		{
 			["value"] = 0.1,
-			["buff"] = GetSpellInfo(20217),		-- ["Blessing of Kings"],
+			["buff"] = 20217,		-- ["Blessing of Kings"],
 		},
 		{
 			["value"] = 0.1,
-			["buff"] = GetSpellInfo(25898),		-- ["Greater Blessing of Kings"],
+			["buff"] = 25898,		-- ["Greater Blessing of Kings"],
 		},
 		{
 			["meta_gem"] = 35503,
@@ -972,11 +972,11 @@ StatLogic.StatModTable["ALL"] = {
 	["MOD_SPI"] = {
 		{
 			["value"] = 0.1,
-			["buff"] = GetSpellInfo(20217),		-- ["Blessing of Kings"],
+			["buff"] = 20217,		-- ["Blessing of Kings"],
 		},
 		{
 			["value"] = 0.1,
-			["buff"] = GetSpellInfo(25898),		-- ["Greater Blessing of Kings"],
+			["buff"] = 25898,		-- ["Greater Blessing of Kings"],
 		},
 	},
 	-- Priest: Power Infusion - Buff
@@ -984,7 +984,7 @@ StatLogic.StatModTable["ALL"] = {
 	["MOD_SPELL_DMG"] = {
 		[1] = {
 			["value"] = 0.2,
-			["buff"] = GetSpellInfo(10060),		-- ["Power Infusion"],
+			["buff"] = 10060,		-- ["Power Infusion"],
 		},
 	},
 	-- Priest: Power Infusion - Buff
@@ -992,7 +992,7 @@ StatLogic.StatModTable["ALL"] = {
 	["MOD_HEALING"] = {
 		[1] = {
 			["value"] = 0.2,
-			["buff"] = GetSpellInfo(10060),		-- ["Power Infusion"],
+			["buff"] = 10060,		-- ["Power Infusion"],
 		},
 	},
 }

@@ -53,7 +53,6 @@ local _
 local _, class = UnitClass("player")
 local calcLevel, playerLevel
 local profileDB, globalDB -- Initialized in :OnInitialize()
-local AuraInfo
 
 -- Localize globals
 local _G = getfenv(0)
@@ -1018,6 +1017,7 @@ local options = {
 					dialogInline = true,
           name = gsub(L["$class Self Buffs"], "$class", (UnitClass("player"))),
           order = 5,
+					hidden = true,
 					args = {},
         },
         ALL = {
@@ -1386,7 +1386,7 @@ do
 					end
 					local source = ""
 					if case.buff then
-						source = case.buff
+						source = GetSpellInfo(case.buff)
 					elseif case.tab then
 						source = StatLogic:GetOrderedTalentInfo(case.tab, case.num)
 					elseif case.glyph then
@@ -1425,19 +1425,32 @@ do
 		end
 	end
 
+	-- Ignore Stat Mods that mostly exist for Tank Points
+	local ignoredStatMods = {
+		["MOD_DMG_TAKEN"] = true,
+		["ADD_DODGE"] = true,
+		["ADD_HIT_TAKEN"] = true,
+	}
 	local function GenerateAuraOptions()
 		for modType, modList in pairs(StatLogic.StatModTable) do
 			for modName, mods in pairs(modList) do
-				if modName ~= "MOD_DMG_TAKEN" then
+				if not ignoredStatMods[modName] then
 					for key, mod in pairs(mods) do
 						if mod.buff then
-							local _, _, icon = GetSpellInfo(mod.buff)
-							if not icon then icon = "" end
-							options.args.alwaysBuffed.args[modType].args[mod.buff] = {
+							local name, _, icon = GetSpellInfo(mod.buff)
+							local option = {
 								type = 'toggle',
-								name = "|T"..icon..":25:25:-2:0|t"..mod.buff,
-								desc = GetSpellDescription(mod.buff)
+								name = "|T"..icon..":25:25:-2:0|t"..name,
 							}
+							options.args.alwaysBuffed.args[modType].args[name] = option
+							options.args.alwaysBuffed.args[modType].hidden = false
+
+							-- If it's a spell the player knows, use the highest rank for the description
+							local spellId = select(7,GetSpellInfo(name)) or mod.buff
+							local spell = Spell:CreateFromSpellID(spellId)
+							spell:ContinueOnSpellLoad(function()
+								option.desc = spell:GetSpellDescription()
+							end)
 						end
 					end
 				end
