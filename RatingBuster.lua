@@ -1446,7 +1446,10 @@ do
 							options.args.alwaysBuffed.args[modType].hidden = false
 
 							-- If it's a spell the player knows, use the highest rank for the description
-							local spellId = select(7,GetSpellInfo(name)) or mod.buff
+							local spellId = mod.buff
+							if IsPlayerSpell(spellId) then
+								spellId = select(7,GetSpellInfo(name))
+							end
 							local spell = Spell:CreateFromSpellID(spellId)
 							spell:ContinueOnSpellLoad(function()
 								option.desc = spell:GetSpellDescription()

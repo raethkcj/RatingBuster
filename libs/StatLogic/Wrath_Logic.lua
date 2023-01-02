@@ -2858,9 +2858,6 @@ elseif addonTable.playerClass == "WARLOCK" then
 		},
 		-- Warlock: Demonic Pact - 2,26
 		--          Your pet's criticals apply the Demonic Pact effect to your party or raid members. Demonic Pact increases spell power by 2%/4%/6%/8%/10% of your Spell Damage for 12 sec.
-		-- Warlock: Malediction (Rank 3) - 1,23
-		--          Increases the damage bonus effect of your Curse of the Elements spell by an additional 3%, and increases your spell damage by 1%/2%/3%.
-		--        * Does not affect char window stats
 		["MOD_SPELL_DMG"] = {
 			{
 				["tab"] = 2,
@@ -2892,7 +2889,7 @@ elseif addonTable.playerClass == "WARLOCK" then
 		--          Life Tap - Buff
 		["ADD_SPELL_DMG_MOD_SPI"] = {
 			{
-				["rank"] = 0.3,
+				["value"] = 0.3,
 				["buff"] = 28176, -- ["Fel Armor"],
 			},
 			{
