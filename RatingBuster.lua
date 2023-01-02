@@ -2214,7 +2214,10 @@ function RatingBuster:ProcessText(text, link, color)
 							if tocversion >= 20400 then -- 2.4.0
 								local _, int = UnitStat("player", 4)
 								local _, spi = UnitStat("player", 5)
-								effect = value * GSM("ADD_MANA_REG_MOD_INT") + (StatLogic:GetNormalManaRegenFromSpi(spi, int + value, calcLevel) - StatLogic:GetNormalManaRegenFromSpi(spi, int, calcLevel)) * GSM("ADD_MANA_REG_MOD_NORMAL_MANA_REG")
+								effect = value * GSM("ADD_MANA_REG_MOD_INT")
+									+ (StatLogic:GetNormalManaRegenFromSpi(spi, int + value, calcLevel)
+									- StatLogic:GetNormalManaRegenFromSpi(spi, int, calcLevel)) * GSM("ADD_MANA_REG_MOD_NORMAL_MANA_REG")
+									+ value * 15 * GSM("MOD_MANA") * GSM("ADD_MANA_REG_MOD_MANA") -- Replenishment
 							else
 								effect = value * GSM("ADD_MANA_REG_MOD_INT")
 							end
@@ -2227,7 +2230,10 @@ function RatingBuster:ProcessText(text, link, color)
 							if tocversion >= 20400 then -- 2.4.0
 								local _, int = UnitStat("player", 4)
 								local _, spi = UnitStat("player", 5)
-								effect = value * GSM("ADD_MANA_REG_MOD_INT") + StatLogic:GetNormalManaRegenFromSpi(spi, int + value, calcLevel) - StatLogic:GetNormalManaRegenFromSpi(spi, int, calcLevel)
+								effect = value * GSM("ADD_MANA_REG_MOD_INT")
+									+ StatLogic:GetNormalManaRegenFromSpi(spi, int + value, calcLevel)
+									- StatLogic:GetNormalManaRegenFromSpi(spi, int, calcLevel)
+									+ value * 15 * GSM("MOD_MANA") * GSM("ADD_MANA_REG_MOD_MANA") -- Replenishment
 							else
 								effect = value * GSM("ADD_MANA_REG_MOD_INT")
 							end
@@ -2610,6 +2616,7 @@ local summaryCalcData = {
 				 + (sum["INT"] * GSM("ADD_MANA_REG_MOD_INT"))
 				 + (StatLogic:GetNormalManaRegenFromSpi(spi + sum["SPI"], int + sum["INT"], calcLevel)
 				 - StatLogic:GetNormalManaRegenFromSpi(spi, int, calcLevel)) * GSM("ADD_MANA_REG_MOD_NORMAL_MANA_REG")
+				 + summaryFunc["MANA"](sum) * GSM("ADD_MANA_REG_MOD_MANA")
 			else
 				return sum["MANA_REG"]
 				 + (sum["INT"] * GSM("ADD_MANA_REG_MOD_INT"))
@@ -2629,6 +2636,7 @@ local summaryCalcData = {
 				 + (sum["INT"] * GSM("ADD_MANA_REG_MOD_INT"))
 				 + StatLogic:GetNormalManaRegenFromSpi(spi + sum["SPI"], int + sum["INT"], calcLevel)
 				 - StatLogic:GetNormalManaRegenFromSpi(spi, int, calcLevel)
+				 + summaryFunc["MANA"](sum) * GSM("ADD_MANA_REG_MOD_MANA")
 			else
 				return sum["MANA_REG"]
 				 + (sum["INT"] * GSM("ADD_MANA_REG_MOD_INT"))
