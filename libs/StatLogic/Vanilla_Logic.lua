@@ -884,7 +884,7 @@ StatLogic.StatModTable["ALL"] = {
 			["rank"] = {
 				0.15, 0.30,
 			},
-			["buff"] = 27154,		-- ["Lay on Hands"],
+			["buff"] = 20236,		-- ["Lay on Hands"],
 		},
 		-- Priest: Inspiration (Rank 1/2/3) - Buff
 		--         Increases armor by 8%/16%/25%.
