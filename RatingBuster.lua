@@ -1545,10 +1545,12 @@ function RatingBuster:InitializeDatabase()
 	options.args.profiles = LibStub("AceDBOptions-3.0"):GetOptionsTable(RatingBuster.db)
 	options.args.profiles.order = 5
 
-	local LibDualSpec = LibStub('LibDualSpec-1.0')
+	local LibDualSpec = LibStub('LibDualSpec-1.0', true)
 
-	LibDualSpec:EnhanceDatabase(RatingBuster.db, "RatingBusterDB")
-	LibDualSpec:EnhanceOptions(options.args.profiles, RatingBuster.db)
+	if LibDualSpec then
+		LibDualSpec:EnhanceDatabase(RatingBuster.db, "RatingBusterDB")
+		LibDualSpec:EnhanceOptions(options.args.profiles, RatingBuster.db)
+	end
 
 	local always_buffed = RatingBuster.db:RegisterNamespace("AlwaysBuffed", {
 		profile = {
