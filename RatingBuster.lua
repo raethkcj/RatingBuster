@@ -1448,7 +1448,7 @@ do
 							-- If it's a spell the player knows, use the highest rank for the description
 							local spellId = mod.buff
 							if IsPlayerSpell(spellId) then
-								spellId = select(7,GetSpellInfo(name))
+								spellId = select(7,GetSpellInfo(name)) or spellId
 							end
 							local spell = Spell:CreateFromSpellID(spellId)
 							spell:ContinueOnSpellLoad(function()
