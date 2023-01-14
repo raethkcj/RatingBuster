@@ -23,6 +23,9 @@ body:
         - Curseforge
     validations:
       required: true
+  - type: markdown
+    attributes:
+      value: NOTE: This version of the addon is not distributed on Cursefoge.
   - type: input
     id: version
     attributes:
