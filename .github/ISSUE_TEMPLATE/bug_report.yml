@@ -24,7 +24,7 @@ body:
       required: true
   - type: markdown
     attributes:
-      value: "NOTE: This version of the addon is not distributed on Cursefoge."
+      value: "NOTE: This version of the addon is not distributed on Curseforge."
   - type: input
     id: version
     attributes:
