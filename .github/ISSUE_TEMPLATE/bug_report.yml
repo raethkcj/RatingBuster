@@ -20,7 +20,6 @@ body:
         - Wago Addons
         - WowUp
         - GitHub Releases
-        - Curseforge
     validations:
       required: true
   - type: markdown
