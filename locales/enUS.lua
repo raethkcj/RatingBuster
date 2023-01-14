@@ -52,7 +52,7 @@ L["Show Physical Hit/Haste"] = true
 L["Show Physical Hit/Haste from Hit/Haste Rating"] = true
 -- /rb rating detail
 L["Show detailed conversions text"] = true
-L["Show detailed text for Resiliance and Expertise conversions"] = true
+L["Show detailed text for Resilience and Expertise conversions"] = true
 -- /rb rating def
 L["Defense breakdown"] = true
 L["Convert Defense into Crit Avoidance, Hit Avoidance, Dodge, Parry and Block"] = true

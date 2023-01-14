@@ -237,7 +237,7 @@ local options = {
 				detailedConversionText = {
 					type = 'toggle',
 					name = L["Show detailed conversions text"],
-					desc = L["Show detailed text for Resiliance and Expertise conversions"],
+					desc = L["Show detailed text for Resilience and Expertise conversions"],
 				},
 				defBreakDown = {
 					type = 'toggle',

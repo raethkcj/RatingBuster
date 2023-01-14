@@ -76,7 +76,7 @@ Type `/rb` or `/ratingbuster` to open the options menu GUI, or add a slash comma
 - `customLevel` - Set the level used in calculations (0 = your level)
 - `rating` - Options for Rating display
 	- `showRatings` - Show Rating conversions in tooltips
-	- `detailedConversionText` - Show detailed text for Resiliance and Expertise conversions
+	- `detailedConversionText` - Show detailed text for Resilience and Expertise conversions
 	- `defBreakDown` - Convert Defense into Crit Avoidance, Hit Avoidance, Dodge, Parry and Block
 	- `wpnBreakDown` - Convert Weapon Skill into Crit, Hit, Dodge Neglect, Parry Neglect and Block Neglect
 	- `expBreakDown` - Convert Expertise into Dodge Neglect and Parry Neglect

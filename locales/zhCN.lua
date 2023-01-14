@@ -57,7 +57,7 @@ L["Show Physical Hit/Haste"] = "显示物理命中"
 L["Show Physical Hit/Haste from Hit/Haste Rating"] = "显示命中/急速等级给的物理命中/急速加成"
 -- /rb rating detail
 L["Show detailed conversions text"] = "显示详细转换文本"
-L["Show detailed text for Resiliance and Expertise conversions"] = "显示详细的抗性和精准等级转换"
+L["Show detailed text for Resilience and Expertise conversions"] = "显示详细的抗性和精准等级转换"
 -- /rb rating def
 L["Defense breakdown"] = "分析防御"
 L["Convert Defense into Crit Avoidance Hit Avoidance, Dodge, Parry and Block"] = "将防御分为避免爆击、避免击中、躲闪、招架和格挡"
