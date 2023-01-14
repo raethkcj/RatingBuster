@@ -2392,7 +2392,7 @@ end
 -----------------------------------]]
 
 do
-	local statTable
+	local statTable, currentColor
 
 	local function ParseIDTable(idTable, text, value, scanner)
 		local found = false
@@ -2403,6 +2403,13 @@ do
 			found = true
 			local debugText = "|cffff5959  ".. scanner .. ": |cffffc259"..text
 			for _, id in ipairs(idTable) do
+				if id == "ARMOR" then
+					local base, bonus = StatLogic:GetArmorDistribution(statTable.link, value, currentColor)
+					value = base
+					local bonusID = "ARMOR_BONUS"
+					statTable[bonusID] = (statTable[bonusID] or 0) + bonus
+					debugText = debugText..", ".."|cffffff59"..tostring(bonusID).."="..tostring(bonus)
+				end
 				statTable[id] = (statTable[id] or 0) + tonumber(value)
 				debugText = debugText..", ".."|cffffff59"..tostring(id).."="..tostring(value)
 			end
@@ -2471,7 +2478,8 @@ do
 				text = strsub(text, 11)
 			end
 
-			local _, g, b = tip[i]:GetTextColor()
+			currentColor = CreateColor(tip[i]:GetTextColor())
+			local _, g, b = currentColor:GetRGB()
 			-----------------------
 			-- Whole Text Lookup --
 			-----------------------
@@ -2761,7 +2769,7 @@ function StatLogic.AreColorsEqual(a, b)
 end
 
 local BONUS_ARMOR_COLOR = CreateColorFromHexString(GREENCOLORCODE:sub(3))
-function StatLogic:GetFinalArmor(item, text, color)
+function StatLogic:GetArmorDistribution(item, value, color)
 	-- Check item
 	if (type(item) == "string") or (type(item) == "number") then -- common case first
 	elseif type(item) == "table" and type(item.GetItem) == "function" then
@@ -2774,30 +2782,24 @@ function StatLogic:GetFinalArmor(item, text, color)
 	end
 	-- Check if item is in local cache
 	local name, _, itemQuality, itemLevel, _, _, _, _, itemEquipLoc, _, _, _, armorSubclass = GetItemInfo(item)
-	if not name then return end
 
-	for pattern, id in pairs(L.PreScanPatterns) do
-		if id == "ARMOR" or id == "ARMOR_BONUS" then
-			local found, _, value = strfind(text, pattern)
-			if found then
-				value = tonumber(value)
-				local armor = value
-				local bonus_armor = 0
-				if addonTable.bonusArmorItemEquipLoc[itemEquipLoc] then
-					armor = 0
-					bonus_armor = value
-				elseif id == "ARMOR" and StatLogic.AreColorsEqual(color, BONUS_ARMOR_COLOR) and addonTable.baseArmorTable then
-					local qualityTable = addonTable.baseArmorTable[itemQuality]
-					local itemEquipLocTable = qualityTable and qualityTable[_G[itemEquipLoc]]
-					local armorSubclassTable = itemEquipLocTable and itemEquipLocTable[armorSubclass]
+	local armor = value
+	local bonus_armor = 0
+	if name then
+		if addonTable.bonusArmorItemEquipLoc[itemEquipLoc] then
+			armor = 0
+			bonus_armor = value
+		elseif StatLogic.AreColorsEqual(color, BONUS_ARMOR_COLOR) and addonTable.baseArmorTable then
+			local qualityTable = addonTable.baseArmorTable[itemQuality]
+			local itemEquipLocTable = qualityTable and qualityTable[_G[itemEquipLoc]]
+			local armorSubclassTable = itemEquipLocTable and itemEquipLocTable[armorSubclass]
 
-					armor = armorSubclassTable and armorSubclassTable[itemLevel] or armor
-					bonus_armor = value - armor
-				end
-				return armor * self:GetStatMod("MOD_ARMOR") + bonus_armor
-			end
+			armor = armorSubclassTable and armorSubclassTable[itemLevel] or armor
+			bonus_armor = value - armor
 		end
 	end
+
+	return armor, bonus_armor
 end
 
 --[[---------------------------------

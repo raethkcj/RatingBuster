@@ -2337,10 +2337,8 @@ function RatingBuster:ProcessText(text, link, color)
 						-----------
 						local statmod = 1
 						if profileDB.enableStatMods then
-							local finalArmor = StatLogic:GetFinalArmor(link, text, color)
-							if finalArmor then
-								value = finalArmor
-							end
+							local base, bonus = StatLogic:GetArmorDistribution(link, value, color)
+							value = base * GSM("MOD_ARMOR") + bonus
 						end
 						local infoTable = {}
 						local effect = value * GSM("ADD_AP_MOD_ARMOR") * GSM("MOD_AP")
