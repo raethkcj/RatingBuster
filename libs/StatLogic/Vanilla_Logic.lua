@@ -276,7 +276,7 @@ if addonTable.playerClass == "DRUID" then
 				["rank"] = {
 					2, 4,
 				},
-				["buff"] = 32356,		-- ["Cat Form"],
+				["buff"] = 768,		-- ["Cat Form"],
 			},
 		},
 		["MOD_ARMOR"] = {
@@ -317,7 +317,7 @@ if addonTable.playerClass == "DRUID" then
 				["rank"] = {
 					0.04, 0.08, 0.12, 0.16, 0.20,
 				},
-				["buff"] = 32357,		-- ["Bear Form"],
+				["buff"] = 5487,		-- ["Bear Form"],
 			},
 			{
 				["tab"] = 2,
@@ -337,7 +337,7 @@ if addonTable.playerClass == "DRUID" then
 				["rank"] = {
 					0.04, 0.08, 0.12, 0.16, 0.20,
 				},
-				["buff"] = 32356,		-- ["Cat Form"],
+				["buff"] = 768,		-- ["Cat Form"],
 			},
 		},
 		-- Druid: Heart of the Wild (Rank 5) - 2,15
