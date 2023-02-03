@@ -2786,7 +2786,7 @@ function StatLogic:GetArmorDistribution(item, value, color)
 	local armor = value
 	local bonus_armor = 0
 	if name then
-		if addonTable.bonusArmorItemEquipLoc[itemEquipLoc] then
+		if addonTable.bonusArmorItemEquipLoc and addonTable.bonusArmorItemEquipLoc[itemEquipLoc] then
 			armor = 0
 			bonus_armor = value
 		elseif StatLogic.AreColorsEqual(color, BONUS_ARMOR_COLOR) and addonTable.baseArmorTable then
