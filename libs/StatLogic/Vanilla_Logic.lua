@@ -758,7 +758,7 @@ elseif addonTable.playerClass == "WARRIOR" then
 				["SHADOW"] = true,
 				["ARCANE"] = true,
 				["value"] = -0.75,
-				["buff"] = 41196,		-- ["Shield Wall"],
+				["buff"] = 871,		-- ["Shield Wall"],
 			},
 			-- Warrior: Defensive Stance - stance
 			--          A defensive combat stance. Decreases damage taken by 10% and damage caused by 10%. Increases threat generated.
