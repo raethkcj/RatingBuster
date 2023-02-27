@@ -1140,11 +1140,11 @@ local defaults = {
 		sumAP = false,
 		sumRAP = false,
 		sumHit = false,
-		sumHitRating = false, -- new
+		sumHitRating = false,
 		sumCrit = false,
-		sumCritRating = false, -- new
-		sumHaste = false, -- new
-		sumHasteRating = false, -- new
+		sumCritRating = false,
+		sumHaste = false,
+		sumHasteRating = false,
 		sumExpertise = false,
 		sumWeaponSkill = false,
 		sumDodgeNeglect = false,
@@ -1152,7 +1152,8 @@ local defaults = {
 		sumBlockNeglect = false,
 		sumWeaponAverageDamage = false,
 		sumWeaponDPS = false,
-		sumIgnoreArmor = false, -- new
+		sumIgnoreArmor = false,
+		sumArmorPenetration = false,
 		-- Spell
 		sumSpellDmg = false,
 		sumArcaneDmg = false,
@@ -1228,6 +1229,7 @@ if class == "DEATHKNIGHT" then
 	defaults.profile.sumExpertise = true
 	defaults.profile.showSpellCritFromInt = false
 	defaults.profile.ratingPhysical = true
+	defaults.profile.sumArmorPenetration = true
 elseif class == "DRUID" then
 	defaults.profile.sumAP = true
 	defaults.profile.sumHit = true
@@ -1243,16 +1245,19 @@ elseif class == "DRUID" then
 	defaults.profile.sumHealing = true
 	defaults.profile.ratingPhysical = true
 	defaults.profile.ratingSpell = true
+	defaults.profile.sumArmorPenetration = true
 elseif class == "HUNTER" then
 	defaults.profile.sumRAP = true
 	defaults.profile.sumHit = true
 	defaults.profile.sumCrit = true
 	defaults.profile.sumHaste = true
 	defaults.profile.showMP5FromInt = true -- Aspect of the Viper
+	defaults.profile.showRAPFromAgi = true
 	defaults.profile.showDodgeFromAgi = false
 	defaults.profile.showSpellCritFromInt = false
 	defaults.profile.showRAPFromInt = true
 	defaults.profile.ratingPhysical = true
+	defaults.profile.sumArmorPenetration = true
 elseif class == "MAGE" then
 	defaults.profile.sumSpellDmg = true
 	defaults.profile.sumSpellHit = true
@@ -1296,6 +1301,7 @@ elseif class == "ROGUE" then
 	defaults.profile.sumExpertise = true
 	defaults.profile.showSpellCritFromInt = false
 	defaults.profile.ratingPhysical = true
+	defaults.profile.sumArmorPenetration = true
 elseif class == "SHAMAN" then
 	defaults.profile.sumWeaponAverageDamage = true
 	defaults.profile.sumSpellDmg = true
@@ -1327,6 +1333,7 @@ elseif class == "WARRIOR" then
 	defaults.profile.sumExpertise = true
 	defaults.profile.showSpellCritFromInt = false
 	defaults.profile.ratingPhysical = true
+	defaults.profile.sumArmorPenetration = true
 end
 
 -- Generate options from expansion-specific StatModTables in StatLogic
