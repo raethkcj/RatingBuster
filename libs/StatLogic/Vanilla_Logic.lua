@@ -820,17 +820,6 @@ elseif addonTable.playerClass == "WARRIOR" then
 				["buff"] = 12292,		-- ["Death Wish"],
 			},
 		},
-		-- Warrior: Vitality (Rank 5) - 3,21
-		--          Increases your total Stamina by 1%/2%/3%/4%/5% and your total Strength by 2%/4%/6%/8%/10%.
-		["MOD_STA"] = {
-			{
-				["tab"] = 3,
-				["num"] = 21,
-				["rank"] = {
-					0.01, 0.02, 0.03, 0.04, 0.05,
-				},
-			},
-		},
 	}
 end
 
