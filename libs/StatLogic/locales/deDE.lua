@@ -164,8 +164,8 @@ L["PreScanPatterns"] = {
 	["Verstärkte %(%+(%d+) Rüstung%)"] = "ARMOR_BUFF",
 	["Mana Regeneration (%d+) alle 5 Sek%.$"] = "MANA_REG",
 	-- These fail DeepScan in deDE because of the commas
-	["Anlegen: Erhöht Eure Chance, einen kritischen Treffer durch Zauber zu erzielen, um (%d)%%\."] = "SPELL_CRIT",
-	["Anlegen: Erhöht Eure Chance, einen kritischen Treffer zu erzielen, um (%d)%%\."] = "CRIT",
+	["Anlegen: Erhöht Eure Chance, einen kritischen Treffer durch Zauber zu erzielen, um (%d)%%%."] = "SPELL_CRIT",
+	["Anlegen: Erhöht Eure Chance, einen kritischen Treffer zu erzielen, um (%d)%%%."] = "CRIT",
 	-- Exclude
 	["^(%d+) Slot"] = false, -- Set Name (0/9)
 	["^[%a '%-]+%((%d+)/%d+%)$"] = false, -- Set Name (0/9)
