@@ -2,3 +2,4 @@ libs/*
 !libs/TipHooker-1.0
 !libs/StatLogic
 .release
+.vscode
