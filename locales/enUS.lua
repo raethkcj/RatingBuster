@@ -582,6 +582,7 @@ L["statList"] = {
 	{pattern = "block rating", id = CR_BLOCK}, -- block enchant: "+10 Shield Block Rating"
 	{pattern = "parry rating", id = CR_PARRY},
 
+	{pattern = "spell power", id = nil}, -- Shiffar's Nexus-Horn
 	{pattern = "spell critical strikes", id = nil}, -- Cyclone Regalia, Tirisfal Regalia
 	{pattern = "spell critical strike rating", id = CR_CRIT_SPELL},
 	{pattern = "spell critical hit rating", id = CR_CRIT_SPELL},
