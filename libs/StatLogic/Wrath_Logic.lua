@@ -9,7 +9,7 @@ local ExtraHasteClasses = {
 	["SHAMAN"] = true,
 	["DRUID"] = true,
 }
-local extraHaste = ExtraHasteClasses[addonTable.playerClass] and 1.3 or 1
+local extraHaste = ExtraHasteClasses[addonTable.class] and 1.3 or 1
 
 -- Level 60 rating base
 addonTable.RatingBase = {
@@ -186,7 +186,7 @@ end
 
 -- Numbers reverse engineered by Whitetooth (hotdogee [at] gmail [dot] com)
 addonTable.CritPerAgi = {
-	[StatLogic:GetClassIdOrName("WARRIOR")] = {
+	["WARRIOR"] = {
 		0.2587, 0.2264, 0.2264, 0.2264, 0.2264, 0.2012, 0.2012, 0.2012, 0.2012, 0.2012,
 		0.1811, 0.1811, 0.1646, 0.1646, 0.1509, 0.1509, 0.1509, 0.1393, 0.1393, 0.1293,
 		0.1293, 0.1293, 0.1207, 0.1132, 0.1132, 0.1065, 0.1065, 0.1006, 0.1006, 0.0953,
@@ -196,7 +196,7 @@ addonTable.CritPerAgi = {
 		0.0477, 0.0453, 0.0431, 0.0421, 0.0402, 0.0385, 0.0370, 0.0355, 0.0342, 0.0335,
 		0.0312, 0.0287, 0.0266, 0.0248, 0.0232, 0.0216, 0.0199, 0.0185, 0.0172, 0.0160,
 	},
-	[StatLogic:GetClassIdOrName("PALADIN")] = {
+	["PALADIN"] = {
 		0.2164, 0.2164, 0.2164, 0.1924, 0.1924, 0.1924, 0.1924, 0.1732, 0.1732, 0.1732,
 		0.1732, 0.1732, 0.1574, 0.1574, 0.1443, 0.1443, 0.1443, 0.1332, 0.1332, 0.1237,
 		0.1237, 0.1237, 0.1154, 0.1082, 0.1082, 0.1082, 0.1019, 0.1019, 0.0962, 0.0962,
@@ -206,7 +206,7 @@ addonTable.CritPerAgi = {
 		0.0495, 0.0481, 0.0468, 0.0456, 0.0444, 0.0444, 0.0422, 0.0422, 0.0412, 0.0403,
 		0.0368, 0.0346, 0.0321, 0.0299, 0.0275, 0.0258, 0.0240, 0.0222, 0.0206, 0.0192,
 	},
-	[StatLogic:GetClassIdOrName("HUNTER")] = {
+	["HUNTER"] = {
 		0.2840, 0.2834, 0.2711, 0.2530, 0.2430, 0.2337, 0.2251, 0.2171, 0.2051, 0.1984,
 		0.1848, 0.1670, 0.1547, 0.1441, 0.1330, 0.1267, 0.1194, 0.1117, 0.1060, 0.0998,
 		0.0962, 0.0910, 0.0872, 0.0829, 0.0797, 0.0767, 0.0734, 0.0709, 0.0680, 0.0654,
@@ -216,7 +216,7 @@ addonTable.CritPerAgi = {
 		0.0297, 0.0290, 0.0284, 0.0279, 0.0273, 0.0270, 0.0264, 0.0259, 0.0254, 0.0250,
 		0.0232, 0.0216, 0.0201, 0.0187, 0.0173, 0.0161, 0.0150, 0.0139, 0.0129, 0.0120,
 	},
-	[StatLogic:GetClassIdOrName("ROGUE")] = {
+	["ROGUE"] = {
 		0.4476, 0.4290, 0.4118, 0.3813, 0.3677, 0.3550, 0.3321, 0.3217, 0.3120, 0.2941,
 		0.2640, 0.2394, 0.2145, 0.1980, 0.1775, 0.1660, 0.1560, 0.1450, 0.1355, 0.1271,
 		0.1197, 0.1144, 0.1084, 0.1040, 0.0980, 0.0936, 0.0903, 0.0865, 0.0830, 0.0792,
@@ -226,7 +226,7 @@ addonTable.CritPerAgi = {
 		0.0334, 0.0322, 0.0307, 0.0296, 0.0286, 0.0276, 0.0268, 0.0262, 0.0256, 0.0250,
 		0.0232, 0.0216, 0.0201, 0.0187, 0.0173, 0.0161, 0.0150, 0.0139, 0.0129, 0.0120,
 	},
-	[StatLogic:GetClassIdOrName("PRIEST")] = {
+	["PRIEST"] = {
 		0.0912, 0.0912, 0.0912, 0.0868, 0.0868, 0.0868, 0.0868, 0.0829, 0.0829, 0.0829,
 		0.0829, 0.0793, 0.0793, 0.0793, 0.0793, 0.0760, 0.0760, 0.0760, 0.0729, 0.0729,
 		0.0729, 0.0729, 0.0701, 0.0701, 0.0701, 0.0675, 0.0675, 0.0675, 0.0651, 0.0651,
@@ -236,7 +236,7 @@ addonTable.CritPerAgi = {
 		0.0445, 0.0446, 0.0443, 0.0434, 0.0427, 0.0421, 0.0415, 0.0413, 0.0412, 0.0401,
 		0.0372, 0.0344, 0.0320, 0.0299, 0.0276, 0.0257, 0.0240, 0.0222, 0.0207, 0.0192,
 	},
-	[StatLogic:GetClassIdOrName("DEATHKNIGHT")] = {
+	["DEATHKNIGHT"] = {
 		0.2587, 0.2264, 0.2264, 0.2264, 0.2264, 0.2012, 0.2012, 0.2012, 0.2012, 0.2012,
 		0.1811, 0.1811, 0.1646, 0.1646, 0.1509, 0.1509, 0.1509, 0.1393, 0.1393, 0.1293,
 		0.1293, 0.1293, 0.1207, 0.1132, 0.1132, 0.1065, 0.1065, 0.1006, 0.1006, 0.0953,
@@ -246,7 +246,7 @@ addonTable.CritPerAgi = {
 		0.0477, 0.0453, 0.0431, 0.0421, 0.0402, 0.0385, 0.0370, 0.0355, 0.0342, 0.0335,
 		0.0312, 0.0287, 0.0266, 0.0248, 0.0232, 0.0216, 0.0199, 0.0185, 0.0172, 0.0160,
 	},
-	[StatLogic:GetClassIdOrName("SHAMAN")] = {
+	["SHAMAN"] = {
 		0.1039, 0.1039, 0.0990, 0.0990, 0.0945, 0.0945, 0.0945, 0.0903, 0.0903, 0.0866,
 		0.0866, 0.0831, 0.0831, 0.0799, 0.0770, 0.0742, 0.0742, 0.0717, 0.0717, 0.0670,
 		0.0670, 0.0649, 0.0649, 0.0630, 0.0611, 0.0594, 0.0594, 0.0577, 0.0577, 0.0547,
@@ -256,7 +256,7 @@ addonTable.CritPerAgi = {
 		0.0310, 0.0304, 0.0294, 0.0285, 0.0281, 0.0273, 0.0267, 0.0261, 0.0255, 0.0250,
 		0.0232, 0.0216, 0.0201, 0.0187, 0.0173, 0.0161, 0.0150, 0.0139, 0.0129, 0.0120,
 	},
-	[StatLogic:GetClassIdOrName("MAGE")] = {
+	["MAGE"] = {
 		0.0773, 0.0773, 0.0773, 0.0736, 0.0736, 0.0736, 0.0736, 0.0736, 0.0736, 0.0703,
 		0.0703, 0.0703, 0.0703, 0.0703, 0.0672, 0.0672, 0.0672, 0.0672, 0.0672, 0.0644,
 		0.0644, 0.0644, 0.0644, 0.0618, 0.0618, 0.0618, 0.0618, 0.0618, 0.0595, 0.0595,
@@ -266,7 +266,7 @@ addonTable.CritPerAgi = {
 		0.0442, 0.0442, 0.0429, 0.0429, 0.0429, 0.0418, 0.0418, 0.0418, 0.0407, 0.0407,
 		0.0377, 0.0351, 0.0329, 0.0303, 0.0281, 0.0262, 0.0242, 0.0227, 0.0209, 0.0196,
 	},
-	[StatLogic:GetClassIdOrName("WARLOCK")] = {
+	["WARLOCK"] = {
 		0.1189, 0.1189, 0.1132, 0.1132, 0.1132, 0.1081, 0.1081, 0.1081, 0.1034, 0.1034,
 		0.0991, 0.0991, 0.0991, 0.0959, 0.0944, 0.0928, 0.0914, 0.0899, 0.0885, 0.0871,
 		0.0857, 0.0844, 0.0831, 0.0818, 0.0805, 0.0792, 0.0780, 0.0768, 0.0756, 0.0745,
@@ -276,7 +276,7 @@ addonTable.CritPerAgi = {
 		0.0469, 0.0462, 0.0455, 0.0449, 0.0442, 0.0436, 0.0430, 0.0424, 0.0418, 0.0412,
 		0.0384, 0.0355, 0.0330, 0.0309, 0.0287, 0.0264, 0.0245, 0.0229, 0.0212, 0.0198,
 	},
-	[StatLogic:GetClassIdOrName("DRUID")] = {
+	["DRUID"] = {
 		0.1262, 0.1262, 0.1202, 0.1202, 0.1148, 0.1148, 0.1098, 0.1098, 0.1052, 0.0971,
 		0.0935, 0.0935, 0.0902, 0.0902, 0.0842, 0.0842, 0.0814, 0.0789, 0.0789, 0.0701,
 		0.0701, 0.0682, 0.0664, 0.0664, 0.0631, 0.0631, 0.0616, 0.0601, 0.0601, 0.0549,
@@ -296,8 +296,8 @@ local zero = setmetatable({}, {
 
 -- Numbers reverse engineered by Whitetooth (hotdogee [at] gmail [dot] com)
 addonTable.SpellCritPerInt = {
-	[StatLogic:GetClassIdOrName("WARRIOR")] = zero,
-	[StatLogic:GetClassIdOrName("PALADIN")] = {
+	["WARRIOR"] = zero,
+	["PALADIN"] = {
 		0.0832, 0.0793, 0.0793, 0.0757, 0.0757, 0.0724, 0.0694, 0.0694, 0.0666, 0.0666,
 		0.0640, 0.0616, 0.0594, 0.0574, 0.0537, 0.0537, 0.0520, 0.0490, 0.0490, 0.0462,
 		0.0450, 0.0438, 0.0427, 0.0416, 0.0396, 0.0387, 0.0387, 0.0370, 0.0362, 0.0347,
@@ -307,7 +307,7 @@ addonTable.SpellCritPerInt = {
 		0.0159, 0.0154, 0.0149, 0.0145, 0.0140, 0.0136, 0.0134, 0.0131, 0.0128, 0.0125,
 		0.0116, 0.0108, 0.0101, 0.0093, 0.0087, 0.0081, 0.0075, 0.0070, 0.0065, 0.0060,
 	},
-	[StatLogic:GetClassIdOrName("HUNTER")] = {
+	["HUNTER"] = {
 		0.0699, 0.0666, 0.0666, 0.0635, 0.0635, 0.0608, 0.0608, 0.0583, 0.0583, 0.0559,
 		0.0559, 0.0538, 0.0499, 0.0499, 0.0466, 0.0466, 0.0451, 0.0424, 0.0424, 0.0399,
 		0.0388, 0.0388, 0.0368, 0.0358, 0.0350, 0.0341, 0.0333, 0.0325, 0.0318, 0.0304,
@@ -317,8 +317,8 @@ addonTable.SpellCritPerInt = {
 		0.0157, 0.0154, 0.0150, 0.0144, 0.0141, 0.0137, 0.0133, 0.0130, 0.0128, 0.0125,
 		0.0116, 0.0108, 0.0101, 0.0093, 0.0087, 0.0081, 0.0075, 0.0070, 0.0065, 0.0060,
 	},
-	[StatLogic:GetClassIdOrName("ROGUE")] = zero,
-	[StatLogic:GetClassIdOrName("PRIEST")] = {
+	["ROGUE"] = zero,
+	["PRIEST"] = {
 		0.1710, 0.1636, 0.1568, 0.1505, 0.1394, 0.1344, 0.1297, 0.1254, 0.1214, 0.1140,
 		0.1045, 0.0941, 0.0875, 0.0784, 0.0724, 0.0684, 0.0627, 0.0597, 0.0562, 0.0523,
 		0.0502, 0.0470, 0.0453, 0.0428, 0.0409, 0.0392, 0.0376, 0.0362, 0.0348, 0.0333,
@@ -328,8 +328,8 @@ addonTable.SpellCritPerInt = {
 		0.0148, 0.0145, 0.0143, 0.0139, 0.0137, 0.0134, 0.0132, 0.0130, 0.0127, 0.0125,
 		0.0116, 0.0108, 0.0101, 0.0093, 0.0087, 0.0081, 0.0075, 0.0070, 0.0065, 0.0060,
 	},
-	[StatLogic:GetClassIdOrName("DEATHKNIGHT")] = zero,
-	[StatLogic:GetClassIdOrName("SHAMAN")] = {
+	["DEATHKNIGHT"] = zero,
+	["SHAMAN"] = {
 		0.1333, 0.1272, 0.1217, 0.1217, 0.1166, 0.1120, 0.1077, 0.1037, 0.1000, 0.1000,
 		0.0933, 0.0875, 0.0800, 0.0756, 0.0700, 0.0666, 0.0636, 0.0596, 0.0571, 0.0538,
 		0.0518, 0.0500, 0.0474, 0.0459, 0.0437, 0.0424, 0.0412, 0.0394, 0.0383, 0.0368,
@@ -339,7 +339,7 @@ addonTable.SpellCritPerInt = {
 		0.0164, 0.0159, 0.0152, 0.0147, 0.0142, 0.0138, 0.0134, 0.0131, 0.0128, 0.0125,
 		0.0116, 0.0108, 0.0101, 0.0093, 0.0087, 0.0081, 0.0075, 0.0070, 0.0065, 0.0060,
 	},
-	[StatLogic:GetClassIdOrName("MAGE")] = {
+	["MAGE"] = {
 		0.1637, 0.1574, 0.1516, 0.1411, 0.1364, 0.1320, 0.1279, 0.1240, 0.1169, 0.1137,
 		0.1049, 0.0930, 0.0871, 0.0731, 0.0671, 0.0639, 0.0602, 0.0568, 0.0538, 0.0505,
 		0.0487, 0.0460, 0.0445, 0.0422, 0.0405, 0.0390, 0.0372, 0.0338, 0.0325, 0.0312,
@@ -349,7 +349,7 @@ addonTable.SpellCritPerInt = {
 		0.0143, 0.0143, 0.0143, 0.0143, 0.0142, 0.0138, 0.0134, 0.0131, 0.0128, 0.0125,
 		0.0116, 0.0108, 0.0101, 0.0093, 0.0087, 0.0081, 0.0075, 0.0070, 0.0065, 0.0060,
 	},
-	[StatLogic:GetClassIdOrName("WARLOCK")] = {
+	["WARLOCK"] = {
 		0.1500, 0.1435, 0.1375, 0.1320, 0.1269, 0.1222, 0.1179, 0.1138, 0.1100, 0.1065,
 		0.0971, 0.0892, 0.0825, 0.0767, 0.0717, 0.0688, 0.0635, 0.0600, 0.0569, 0.0541,
 		0.0516, 0.0493, 0.0471, 0.0446, 0.0429, 0.0418, 0.0398, 0.0384, 0.0367, 0.0355,
@@ -359,7 +359,7 @@ addonTable.SpellCritPerInt = {
 		0.0159, 0.0154, 0.0148, 0.0143, 0.0138, 0.0135, 0.0130, 0.0127, 0.0126, 0.0125,
 		0.0116, 0.0108, 0.0101, 0.0093, 0.0087, 0.0081, 0.0075, 0.0070, 0.0065, 0.0060,
 	},
-	[StatLogic:GetClassIdOrName("DRUID")] = {
+	["DRUID"] = {
 		0.1431, 0.1369, 0.1312, 0.1259, 0.1211, 0.1166, 0.1124, 0.1124, 0.1086, 0.0984,
 		0.0926, 0.0851, 0.0807, 0.0750, 0.0684, 0.0656, 0.0617, 0.0594, 0.0562, 0.0516,
 		0.0500, 0.0477, 0.0463, 0.0437, 0.0420, 0.0409, 0.0394, 0.0384, 0.0366, 0.0346,
@@ -372,55 +372,55 @@ addonTable.SpellCritPerInt = {
 }
 
 addonTable.APPerStr = {
-	[StatLogic:GetClassIdOrName("WARRIOR")] = 2,
-	[StatLogic:GetClassIdOrName("PALADIN")] = 2,
-	[StatLogic:GetClassIdOrName("HUNTER")] = 1,
-	[StatLogic:GetClassIdOrName("ROGUE")] = 1,
-	[StatLogic:GetClassIdOrName("PRIEST")] = 1,
-	[StatLogic:GetClassIdOrName("DEATHKNIGHT")] = 2,
-	[StatLogic:GetClassIdOrName("SHAMAN")] = 1,
-	[StatLogic:GetClassIdOrName("MAGE")] = 1,
-	[StatLogic:GetClassIdOrName("WARLOCK")] = 1,
-	[StatLogic:GetClassIdOrName("DRUID")] = 2,
+	["WARRIOR"] = 2,
+	["PALADIN"] = 2,
+	["HUNTER"] = 1,
+	["ROGUE"] = 1,
+	["PRIEST"] = 1,
+	["DEATHKNIGHT"] = 2,
+	["SHAMAN"] = 1,
+	["MAGE"] = 1,
+	["WARLOCK"] = 1,
+	["DRUID"] = 2,
 }
 
 addonTable.APPerAgi = {
-	[StatLogic:GetClassIdOrName("WARRIOR")] = 0,
-	[StatLogic:GetClassIdOrName("PALADIN")] = 0,
-	[StatLogic:GetClassIdOrName("HUNTER")] = 1,
-	[StatLogic:GetClassIdOrName("ROGUE")] = 1,
-	[StatLogic:GetClassIdOrName("PRIEST")] = 0,
-	[StatLogic:GetClassIdOrName("DEATHKNIGHT")] = 0,
-	[StatLogic:GetClassIdOrName("SHAMAN")] = 1,
-	[StatLogic:GetClassIdOrName("MAGE")] = 0,
-	[StatLogic:GetClassIdOrName("WARLOCK")] = 0,
-	[StatLogic:GetClassIdOrName("DRUID")] = 0,
+	["WARRIOR"] = 0,
+	["PALADIN"] = 0,
+	["HUNTER"] = 1,
+	["ROGUE"] = 1,
+	["PRIEST"] = 0,
+	["DEATHKNIGHT"] = 0,
+	["SHAMAN"] = 1,
+	["MAGE"] = 0,
+	["WARLOCK"] = 0,
+	["DRUID"] = 0,
 }
 
 addonTable.RAPPerAgi = {
-	[StatLogic:GetClassIdOrName("WARRIOR")] = 1,
-	[StatLogic:GetClassIdOrName("PALADIN")] = 0,
-	[StatLogic:GetClassIdOrName("HUNTER")] = 1,
-	[StatLogic:GetClassIdOrName("ROGUE")] = 1,
-	[StatLogic:GetClassIdOrName("PRIEST")] = 0,
-	[StatLogic:GetClassIdOrName("DEATHKNIGHT")] = 0,
-	[StatLogic:GetClassIdOrName("SHAMAN")] = 0,
-	[StatLogic:GetClassIdOrName("MAGE")] = 0,
-	[StatLogic:GetClassIdOrName("WARLOCK")] = 0,
-	[StatLogic:GetClassIdOrName("DRUID")] = 0,
+	["WARRIOR"] = 1,
+	["PALADIN"] = 0,
+	["HUNTER"] = 1,
+	["ROGUE"] = 1,
+	["PRIEST"] = 0,
+	["DEATHKNIGHT"] = 0,
+	["SHAMAN"] = 0,
+	["MAGE"] = 0,
+	["WARLOCK"] = 0,
+	["DRUID"] = 0,
 }
 
 addonTable.BaseDodge = {
-	[StatLogic:GetClassIdOrName("WARRIOR")] =     3.6640,
-	[StatLogic:GetClassIdOrName("PALADIN")] =     3.4943,
-	[StatLogic:GetClassIdOrName("HUNTER")] =     -4.0873,
-	[StatLogic:GetClassIdOrName("ROGUE")] =       2.0957,
-	[StatLogic:GetClassIdOrName("PRIEST")] =      3.4178,
-	[StatLogic:GetClassIdOrName("DEATHKNIGHT")] = 3.6640,
-	[StatLogic:GetClassIdOrName("SHAMAN")] =      2.1080,
-	[StatLogic:GetClassIdOrName("MAGE")] =        3.6587,
-	[StatLogic:GetClassIdOrName("WARLOCK")] =     2.4211,
-	[StatLogic:GetClassIdOrName("DRUID")] =       5.6097,
+	["WARRIOR"] =     3.6640,
+	["PALADIN"] =     3.4943,
+	["HUNTER"] =     -4.0873,
+	["ROGUE"] =       2.0957,
+	["PRIEST"] =      3.4178,
+	["DEATHKNIGHT"] = 3.6640,
+	["SHAMAN"] =      2.1080,
+	["MAGE"] =        3.6587,
+	["WARLOCK"] =     2.4211,
+	["DRUID"] =       5.6097,
 }
 
 addonTable.StatModValidators.glyph = {
@@ -687,7 +687,7 @@ local BuffGroup = {
 }
 
 StatLogic.StatModTable = {}
-if addonTable.playerClass == "DRUID" then
+if addonTable.class == "DRUID" then
 	StatLogic.StatModTable["DRUID"] = {
 		-- Druid: Improved Moonkin Form (Rank 3) - 1,19
 		--        Your Moonkin Aura also causes affected targets to gain 1%/2%/3% haste and you to gain 10/20/30% of your spirit as additional spell damage.
@@ -1362,7 +1362,7 @@ if addonTable.playerClass == "DRUID" then
 			},
 		},
 	}
-elseif addonTable.playerClass == "DEATHKNIGHT" then
+elseif addonTable.class == "DEATHKNIGHT" then
 	StatLogic.StatModTable["DEATHKNIGHT"] = {
 		-- Death Knight: Forceful Deflection - Passive
 		--               Increases your Parry Rating by 25% of your total Strength.
@@ -1710,7 +1710,7 @@ elseif addonTable.playerClass == "DEATHKNIGHT" then
 			},
 		},
 	}
-elseif addonTable.playerClass == "HUNTER" then
+elseif addonTable.class == "HUNTER" then
 	StatLogic.StatModTable["HUNTER"] = {
 		-- Hunter: Hunter vs. Wild (Rank 3) - 3,14
 		--         Increases you and your pet's attack power and ranged attack power equal to 10%/20%/30% of your total Stamina.
@@ -1884,7 +1884,7 @@ elseif addonTable.playerClass == "HUNTER" then
 			},
 		},
 	}
-elseif addonTable.playerClass == "MAGE" then
+elseif addonTable.class == "MAGE" then
 	StatLogic.StatModTable["MAGE"] = {
 		["ADD_SPELL_CRIT_RATING_MOD_SPI"] = {
 			-- Mage: Molten Armor (Rank 3) - Buff
@@ -2108,7 +2108,7 @@ elseif addonTable.playerClass == "MAGE" then
 			},
 		},
 	}
-elseif addonTable.playerClass == "PALADIN" then
+elseif addonTable.class == "PALADIN" then
 	StatLogic.StatModTable["PALADIN"] = {
 		-- Paladin: Sheath of Light (Rank 3) - 3,24
 		--          Increases your spell power by an amount equal to 10%/20%/30% of your attack power
@@ -2377,7 +2377,7 @@ elseif addonTable.playerClass == "PALADIN" then
 			},
 		},
 	}
-elseif addonTable.playerClass == "PRIEST" then
+elseif addonTable.class == "PRIEST" then
 	StatLogic.StatModTable["PRIEST"] = {
 		-- Priest: Meditation (Rank 3) - 1,7
 		--         Allows 17/33/50% of your Mana regeneration to continue while casting.
@@ -2558,7 +2558,7 @@ elseif addonTable.playerClass == "PRIEST" then
 			},
 		},
 	}
-elseif addonTable.playerClass == "ROGUE" then
+elseif addonTable.class == "ROGUE" then
 	StatLogic.StatModTable["ROGUE"] = {
 		-- Rogue: Deadliness (Rank 5) - 3,18
 		--        Increases your attack power by 2%/4%/6%/8%/10%.
@@ -2697,7 +2697,7 @@ elseif addonTable.playerClass == "ROGUE" then
 			},
 		},
 	}
-elseif addonTable.playerClass == "SHAMAN" then
+elseif addonTable.class == "SHAMAN" then
 	StatLogic.StatModTable["SHAMAN"] = {
 		-- Shaman: Mental Dexterity (Rank 3) - 2,15
 		--         Increases your Attack Power by 33%/66%/100% of your Intellect.
@@ -2837,7 +2837,7 @@ elseif addonTable.playerClass == "SHAMAN" then
 			},
 		},
 	}
-elseif addonTable.playerClass == "WARLOCK" then
+elseif addonTable.class == "WARLOCK" then
 	StatLogic.StatModTable["WARLOCK"] = {
 		["ADD_CRIT_TAKEN"] = {
 			-- Warlock: Metamorphosis - Buff
@@ -3102,7 +3102,7 @@ elseif addonTable.playerClass == "WARLOCK" then
 			},
 		},
 	}
-elseif addonTable.playerClass == "WARRIOR" then
+elseif addonTable.class == "WARRIOR" then
 	StatLogic.StatModTable["WARRIOR"] = {
 		-- Warrior: Improved Spell Reflection (Rank 2) - 3,10
 		--          Reduces the chance you'll be hit by spells by 2%/4%
@@ -3752,40 +3752,40 @@ k is is a value that changes with class.
 -----------------------------------]]
 -- The following K, C_p, C_d are calculated by Whitetooth (hotdogee [at] gmail [dot] com)
 local K = {
-	[StatLogic:GetClassIdOrName("WARRIOR")]     = 0.956,
-	[StatLogic:GetClassIdOrName("PALADIN")]     = 0.956,
-	[StatLogic:GetClassIdOrName("HUNTER")]      = 0.988,
-	[StatLogic:GetClassIdOrName("ROGUE")]       = 0.988,
-	[StatLogic:GetClassIdOrName("PRIEST")]      = 0.983,
-	[StatLogic:GetClassIdOrName("DEATHKNIGHT")] = 0.956,
-	[StatLogic:GetClassIdOrName("SHAMAN")]      = 0.988,
-	[StatLogic:GetClassIdOrName("MAGE")]        = 0.983,
-	[StatLogic:GetClassIdOrName("WARLOCK")]     = 0.983,
-	[StatLogic:GetClassIdOrName("DRUID")]       = 0.972,
+	["WARRIOR"]     = 0.956,
+	["PALADIN"]     = 0.956,
+	["HUNTER"]      = 0.988,
+	["ROGUE"]       = 0.988,
+	["PRIEST"]      = 0.983,
+	["DEATHKNIGHT"] = 0.956,
+	["SHAMAN"]      = 0.988,
+	["MAGE"]        = 0.983,
+	["WARLOCK"]     = 0.983,
+	["DRUID"]       = 0.972,
 }
 local C_p = {
-	[StatLogic:GetClassIdOrName("WARRIOR")]     = 1/0.021275,
-	[StatLogic:GetClassIdOrName("PALADIN")]     = 1/0.021275,
-	[StatLogic:GetClassIdOrName("HUNTER")]      = 1/0.006870,
-	[StatLogic:GetClassIdOrName("ROGUE")]       = 1/0.006870,
-	[StatLogic:GetClassIdOrName("PRIEST")]      = 0, --use tank stats
-	[StatLogic:GetClassIdOrName("DEATHKNIGHT")] = 1/0.021275,
-	[StatLogic:GetClassIdOrName("SHAMAN")]      = 1/0.006870,
-	[StatLogic:GetClassIdOrName("MAGE")]        = 0, --use tank stats
-	[StatLogic:GetClassIdOrName("WARLOCK")]     = 0, --use tank stats
-	[StatLogic:GetClassIdOrName("DRUID")]       = 0, --use tank stats
+	["WARRIOR"]     = 1/0.021275,
+	["PALADIN"]     = 1/0.021275,
+	["HUNTER"]      = 1/0.006870,
+	["ROGUE"]       = 1/0.006870,
+	["PRIEST"]      = 0, --use tank stats
+	["DEATHKNIGHT"] = 1/0.021275,
+	["SHAMAN"]      = 1/0.006870,
+	["MAGE"]        = 0, --use tank stats
+	["WARLOCK"]     = 0, --use tank stats
+	["DRUID"]       = 0, --use tank stats
 }
 local C_d = {
-	[StatLogic:GetClassIdOrName("WARRIOR")]     = 1/0.011347,
-	[StatLogic:GetClassIdOrName("PALADIN")]     = 1/0.011347,
-	[StatLogic:GetClassIdOrName("HUNTER")]      = 1/0.006870,
-	[StatLogic:GetClassIdOrName("ROGUE")]       = 1/0.006870,
-	[StatLogic:GetClassIdOrName("PRIEST")]      = 1/0.006650,
-	[StatLogic:GetClassIdOrName("DEATHKNIGHT")] = 1/0.011347,
-	[StatLogic:GetClassIdOrName("SHAMAN")]      = 1/0.006870,
-	[StatLogic:GetClassIdOrName("MAGE")]        = 1/0.006650,
-	[StatLogic:GetClassIdOrName("WARLOCK")]     = 1/0.006650,
-	[StatLogic:GetClassIdOrName("DRUID")]       = 1/0.008555,
+	["WARRIOR"]     = 1/0.011347,
+	["PALADIN"]     = 1/0.011347,
+	["HUNTER"]      = 1/0.006870,
+	["ROGUE"]       = 1/0.006870,
+	["PRIEST"]      = 1/0.006650,
+	["DEATHKNIGHT"] = 1/0.011347,
+	["SHAMAN"]      = 1/0.006870,
+	["MAGE"]        = 1/0.006650,
+	["WARLOCK"]     = 1/0.006650,
+	["DRUID"]       = 1/0.008555,
 }
 
 -- I've done extensive tests that show the miss cap is 16% for warriors.
@@ -3867,7 +3867,7 @@ local ModAgiClasses = {
 
 function StatLogic:GetDodgePerAgi()
 	local level = UnitLevel("player")
-	local class = StatLogic:GetClassIdOrName(addonTable.playerClass)
+	local class = addonTable.class
 	if level == 80 and DodgePerAgiStatic[class] then
 		return DodgePerAgiStatic[class], "DODGE"
 	end
@@ -3882,7 +3882,7 @@ function StatLogic:GetDodgePerAgi()
 	-- Talents that modify AGI will not add to posBuff, so we need to calculate baseAgi
 	-- But Kings added AGi will add to posBuff, so we need to check for Kings
 	local modAgi = 1
-	if ModAgiClasses[addonTable.playerClass] then
+	if ModAgiClasses[class] then
 		modAgi = self:GetStatMod("MOD_AGI")
 		-- (Greater) Blessing of Kings
 		if StatLogic.AuraInfo[20217] or StatLogic.AuraInfo[25898] then
@@ -3931,8 +3931,6 @@ Example:
 	local modDodge, drFreeDodge = StatLogic:GetDodgeChanceBeforeDR()
 -----------------------------------]]
 function StatLogic:GetDodgeChanceBeforeDR()
-	local class = StatLogic:GetClassIdOrName(addonTable.playerClass)
-
 	-- drFreeDodge
 	local stat, effectiveStat, posBuff, negBuff = UnitStat("player", 2) -- 2 = Agility
 	local baseAgi = stat - posBuff - negBuff
@@ -3947,7 +3945,7 @@ function StatLogic:GetDodgeChanceBeforeDR()
 	local dodgeFromAdditionalAgi = dodgePerAgi * (effectiveStat - baseAgi)
 	local modDodge = dodgeFromDodgeRating + dodgeFromDefenceRating + dodgeFromAdditionalAgi
 
-	local drFreeDodge = GetDodgeChance() - self:GetAvoidanceAfterDR("DODGE", modDodge, class)
+	local drFreeDodge = GetDodgeChance() - self:GetAvoidanceAfterDR("DODGE", modDodge, addonTable.class)
 
 	return modDodge, drFreeDodge
 end
@@ -3976,15 +3974,13 @@ Example:
 	local modParry, drFreeParry = StatLogic:GetParryChanceBeforeDR()
 -----------------------------------]]
 function StatLogic:GetParryChanceBeforeDR()
-	local class = StatLogic:GetClassIdOrName(addonTable.playerClass)
-
 	-- Defense is floored
 	local parryFromParryRating = self:GetEffectFromRating(GetCombatRating(CR_PARRY), CR_PARRY)
 	local parryFromDefenceRating = floor(self:GetEffectFromRating(GetCombatRating(CR_DEFENSE_SKILL), CR_DEFENSE_SKILL)) * 0.04
 	local modParry = parryFromParryRating + parryFromDefenceRating
 
 	-- drFreeParry
-	local drFreeParry = GetParryChance() - self:GetAvoidanceAfterDR("PARRY", modParry, class)
+	local drFreeParry = GetParryChance() - self:GetAvoidanceAfterDR("PARRY", modParry, addonTable.class)
 
 	return modParry, drFreeParry
 end
@@ -4054,13 +4050,7 @@ function StatLogic:GetAvoidanceAfterDR(avoidanceType, avoidanceBeforeDR, class)
 	self:argCheck(avoidanceType, 2, "string")
 	self:argCheck(avoidanceBeforeDR, 3, "number")
 	self:argCheck(class, 4, "nil", "string", "number")
-	-- if class is a class string, convert to class id
-	if type(class) == "string" and StatLogic:GetClassIdOrName(strupper(class)) ~= nil then
-		class = StatLogic:GetClassIdOrName(strupper(class))
-	-- if class is invalid input, default to player class
-	elseif type(class) ~= "number" or class < 1 or class > 10 then
-		class = StatLogic:GetClassIdOrName(addonTable.playerClass)
-	end
+	class = self:ValidateClass(class)
 
 	local C = C_d
 	if avoidanceType == "PARRY" then

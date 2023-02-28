@@ -141,8 +141,35 @@ setmetatable(tipMiner, tipExtension)
 -- Local Variables --
 ---------------------
 -- Player info
-addonTable.playerClass = select(2, UnitClass("player"))
+addonTable.class = select(2, UnitClass("player"))
 addonTable.playerRace = select(2, UnitRace("player"))
+
+do
+	local ClassNameToID = {}
+
+	for i = 1, GetNumClasses(), 1 do
+		local _, classFile = GetClassInfo(i)
+		if classFile then
+			ClassNameToID[classFile] = i
+			ClassNameToID[i] = classFile
+		end
+	end
+
+	function StatLogic:GetClassIdOrName(class)
+		return ClassNameToID[class]
+	end
+end
+
+function StatLogic:ValidateClass(class)
+	if type(class) == "number" and StatLogic:GetClassIdOrName(class) then
+		-- if class is a class id, convert to class string
+		class = StatLogic:GetClassIdOrName(class)
+	elseif type(class) ~= "string" or not StatLogic:GetClassIdOrName(class) then
+		-- if class is not a string, or doesn't correspond to a class id, default to player class
+		class = addonTable.class
+	end
+	return class
+end
 
 -- Localize globals
 local _G = getfenv(0)
@@ -337,24 +364,6 @@ local function StripGlobalStrings(text)
 	text = gsub(text, " ?%%%d?%.?%d?%$?[cdsgf]", "") -- delete "%d", "%s", "%c", "%g", "%2$d", "%.2f" and a space in front of it if found
 	-- So StripGlobalStrings(ITEM_SOCKET_BONUS) = "Socket Bonus:"
 	return text
-end
-
-local ClassNameToID = setmetatable({}, {
-	__index = function()
-		return 0
-	end
-})
-
-for i = 1, GetNumClasses(), 1 do
-	local _, classFile = GetClassInfo(i)
-	if classFile then
-		ClassNameToID[classFile] = i
-		ClassNameToID[i] = classFile
-	end
-end
-
-function StatLogic:GetClassIdOrName(class)
-	return ClassNameToID[class]
 end
 
 function StatLogic:GetStatNameFromID(stat)
@@ -1597,13 +1606,7 @@ end
 
 function StatLogic:GetAPPerStr(class)
 	assert(type(class)=="string" or type(class)=="number", "Expected string or number as arg #1 to GetAPPerStr, got "..type(class))
-	-- if class is a class string, convert to class id
-	if type(class) == "string" and ClassNameToID[strupper(class)] ~= nil then
-		class = ClassNameToID[strupper(class)]
-	-- if class is invalid input, default to player class
-	elseif type(class) ~= "number" or class < 1 or class > GetNumClasses() then
-		class = ClassNameToID[addonTable.playerClass]
-	end
+	class = self:ValidateClass(class)
 	return addonTable.APPerStr[class], "AP"
 end
 
@@ -1632,15 +1635,9 @@ Examples:
 	StatLogic:GetAPFromStr(10, "WARRIOR")
 -----------------------------------]]
 function StatLogic:GetAPFromStr(str, class)
-	assert(type(str)=="number", "Expected number as arg #1 to GetAPFromStr, got "..type(class))
-	assert(type(str)=="string", "Expected string as arg #2 to GetAPFromStr, got "..type(class))
-	-- if class is a class string, convert to class id
-	if type(class) == "string" and ClassNameToID[strupper(class)] ~= nil then
-		class = ClassNameToID[strupper(class)]
-	-- if class is invalid input, default to player class
-	elseif type(class) ~= "number" or class < 1 or class > GetNumClasses() then
-		class = ClassNameToID[addonTable.playerClass]
-	end
+	assert(type(str)=="number", "Expected number as arg #1 to GetAPFromStr, got "..type(str))
+	assert(type(class)=="string" or type(class)=="number", "Expected string or number as arg #2 to GetAPFromStr, got "..type(class))
+	class = self:ValidateClass(class)
 	-- Calculate
 	return str * addonTable.APPerStr[class], "AP"
 end
@@ -1669,20 +1666,14 @@ end
 -----------------------------------]]
 
 local BlockClasses = {
-	[ClassNameToID["WARRIOR"]] = true,
-	[ClassNameToID["PALADIN"]] = true,
-	[ClassNameToID["SHAMAN"]] = true,
+	["WARRIOR"] = true,
+	["PALADIN"] = true,
+	["SHAMAN"] = true,
 }
 
 function StatLogic:GetBlockValuePerStr(class)
 	assert(type(class)=="string" or type(class)=="number", "Expected string or number as arg #1 to GetBlockValuePerStr, got "..type(class))
-	-- if class is a class string, convert to class id
-	if type(class) == "string" and ClassNameToID[strupper(class)] ~= nil then
-		class = ClassNameToID[strupper(class)]
-	-- if class is invalid input, default to player class
-	elseif type(class) ~= "number" or class < 1 or class > GetNumClasses() then
-		class = ClassNameToID[addonTable.playerClass]
-	end
+	class = self:ValidateClass(class)
 	local blockValue = BlockClasses[class] and BLOCK_PER_STRENGTH or 0
 	return blockValue, "BLOCK_VALUE"
 end
@@ -1716,13 +1707,7 @@ end
 function StatLogic:GetBlockValueFromStr(str, class)
 	assert(type(str)=="number", "Expected number as arg #1 to GetBlockValueFromStr, got "..type(str))
 	assert(type(class)=="string" or type(class)=="number", "Expected string or number as arg #2 to GetBlockValueFromStr, got "..type(class))
-	-- if class is a class string, convert to class id
-	if type(class) == "string" and ClassNameToID[strupper(class)] ~= nil then
-		class = ClassNameToID[strupper(class)]
-	-- if class is invalid input, default to player class
-	elseif type(class) ~= "number" or class < 1 or class > GetNumClasses() then
-		class = ClassNameToID[addonTable.playerClass]
-	end
+	class = self:ValidateClass(class)
 	local blockValue = BlockClasses[class] and BLOCK_PER_STRENGTH or 0
 	-- Calculate
 	return str * blockValue, "BLOCK_VALUE"
@@ -1754,15 +1739,9 @@ end
 
 function StatLogic:GetAPPerAgi(class)
 	assert(type(class)=="string" or type(class)=="number", "Expected string or number as arg #1 to GetAPPerAgi, got "..type(class))
-	-- if class is a class string, convert to class id
-	if type(class) == "string" and ClassNameToID[strupper(class)] ~= nil then
-		class = ClassNameToID[strupper(class)]
-	-- if class is invalid input, default to player class
-	elseif type(class) ~= "number" or class < 1 or class > GetNumClasses() then
-		class = ClassNameToID[addonTable.playerClass]
-	end
+	class = self:ValidateClass(class)
 	-- Check druid cat form
-	if (class == ClassNameToID["DRUID"]) and (GetShapeshiftFormID() == CAT_FORM) then		-- ["Cat Form"]
+	if class == "DRUID" and (GetShapeshiftFormID() == CAT_FORM) then		-- ["Cat Form"]
 		return 1, "AP"
 	end
 	return addonTable.APPerAgi[class], "AP"
@@ -1798,13 +1777,7 @@ function StatLogic:GetAPFromAgi(agi, class)
 	-- argCheck for invalid input
 	self:argCheck(agi, 2, "number")
 	self:argCheck(class, 3, "nil", "string", "number")
-	-- if class is a class string, convert to class id
-	if type(class) == "string" and ClassNameToID[strupper(class)] ~= nil then
-		class = ClassNameToID[strupper(class)]
-	-- if class is invalid input, default to player class
-	elseif type(class) ~= "number" or class < 1 or class > GetNumClasses() then
-		class = ClassNameToID[addonTable.playerClass]
-	end
+	class = self:ValidateClass(class)
 	-- Calculate
 	return agi * addonTable.APPerAgi[class], "AP"
 end
@@ -1835,13 +1808,7 @@ end
 function StatLogic:GetRAPPerAgi(class)
 	-- argCheck for invalid input
 	self:argCheck(class, 2, "nil", "string", "number")
-	-- if class is a class string, convert to class id
-	if type(class) == "string" and ClassNameToID[strupper(class)] ~= nil then
-		class = ClassNameToID[strupper(class)]
-	-- if class is invalid input, default to player class
-	elseif type(class) ~= "number" or class < 1 or class > GetNumClasses() then
-		class = ClassNameToID[addonTable.playerClass]
-	end
+	class = self:ValidateClass(class)
 	return addonTable.RAPPerAgi[class], "RANGED_AP"
 end
 
@@ -1875,13 +1842,7 @@ function StatLogic:GetRAPFromAgi(agi, class)
 	-- argCheck for invalid input
 	self:argCheck(agi, 2, "number")
 	self:argCheck(class, 3, "nil", "string", "number")
-	-- if class is a class string, convert to class id
-	if type(class) == "string" and ClassNameToID[strupper(class)] ~= nil then
-		class = ClassNameToID[strupper(class)]
-	-- if class is invalid input, default to player class
-	elseif type(class) ~= "number" or class < 1 or class > GetNumClasses() then
-		class = ClassNameToID[addonTable.playerClass]
-	end
+	class = self:ValidateClass(class)
 	-- Calculate
 	return agi * addonTable.RAPPerAgi[class], "RANGED_AP"
 end
@@ -1911,13 +1872,7 @@ end
 function StatLogic:GetBaseDodge(class)
 	-- argCheck for invalid input
 	self:argCheck(class, 2, "nil", "string", "number")
-	-- if class is a class string, convert to class id
-	if type(class) == "string" and ClassNameToID[strupper(class)] ~= nil then
-		class = ClassNameToID[strupper(class)]
-	-- if class is invalid input, default to player class
-	elseif type(class) ~= "number" or class < 1 or class > GetNumClasses() then
-		class = ClassNameToID[addonTable.playerClass]
-	end
+	class = self:ValidateClass(class)
 	return addonTable.BaseDodge[class], "DODGE"
 end
 
@@ -1942,10 +1897,9 @@ end
 
 function StatLogic:GetDodgePerAgi()
 	local _, agility = UnitStat("player", 2)
-	local class = ClassNameToID[addonTable.playerClass]
 	-- dodgeFromAgi is %
 	local dodgeFromAgi = GetDodgeChance() - self:GetStatMod("ADD_DODGE") - self:GetEffectFromRating(GetCombatRating(CR_DODGE), CR_DODGE, UnitLevel("player")) - self:GetEffectFromDefense(GetTotalDefense("player"), UnitLevel("player"))
-	return (dodgeFromAgi - addonTable.BaseDodge[class]) / agility, "DODGE"
+	return (dodgeFromAgi - addonTable.BaseDodge[addonTable.class]) / agility, "DODGE"
 end
 
 
@@ -2011,13 +1965,7 @@ function StatLogic:GetCritFromAgi(agi, class, level)
 	self:argCheck(agi, 2, "number")
 	self:argCheck(class, 3, "nil", "string", "number")
 	self:argCheck(level, 4, "nil", "number")
-	-- if class is a class string, convert to class id
-	if type(class) == "string" and ClassNameToID[strupper(class)] ~= nil then
-		class = ClassNameToID[strupper(class)]
-	-- if class is invalid input, default to player class
-	elseif type(class) ~= "number" or class < 1 or class > GetNumClasses() then
-		class = ClassNameToID[addonTable.playerClass]
-	end
+	class = self:ValidateClass(class)
 	-- if level is invalid input, default to player level
 	if type(level) ~= "number" or level < 1 or level > GetMaxPlayerLevel() then
 		level = UnitLevel("player")
@@ -2060,13 +2008,7 @@ function StatLogic:GetSpellCritFromInt(int, class, level)
 	self:argCheck(int, 2, "number")
 	self:argCheck(class, 3, "nil", "string", "number")
 	self:argCheck(level, 4, "nil", "number")
-	-- if class is a class string, convert to class id
-	if type(class) == "string" and ClassNameToID[strupper(class)] ~= nil then
-		class = ClassNameToID[strupper(class)]
-	-- if class is invalid input, default to player class
-	elseif type(class) ~= "number" or class < 1 or class > GetNumClasses() then
-		class = ClassNameToID[addonTable.playerClass]
-	end
+	class = self:ValidateClass(class)
 	-- if level is invalid input, default to player level
 	if type(level) ~= "number" or level < 1 or level > GetMaxPlayerLevel() then
 		level = UnitLevel("player")
@@ -2102,29 +2044,23 @@ end
 
 -- Numbers reverse engineered by Whitetooth@Cenarius(US) (hotdogee [at] gmail [dot] com)
 local HealthRegenPerSpi = {
-	[ClassNameToID["WARRIOR"]] = 0.5,
-	[ClassNameToID["PALADIN"]] = 0.125,
-	[ClassNameToID["HUNTER"]] = 0.125,
-	[ClassNameToID["ROGUE"]] = 0.333333,
-	[ClassNameToID["PRIEST"]] = 0.041667,
-	[ClassNameToID["DEATHKNIGHT"]] = 0.5,
-	[ClassNameToID["SHAMAN"]] = 0.071429,
-	[ClassNameToID["MAGE"]] = 0.041667,
-	[ClassNameToID["WARLOCK"]] = 0.045455,
-	[ClassNameToID["DRUID"]] = 0.0625,
+	["WARRIOR"] = 0.5,
+	["PALADIN"] = 0.125,
+	["HUNTER"] = 0.125,
+	["ROGUE"] = 0.333333,
+	["PRIEST"] = 0.041667,
+	["DEATHKNIGHT"] = 0.5,
+	["SHAMAN"] = 0.071429,
+	["MAGE"] = 0.041667,
+	["WARLOCK"] = 0.045455,
+	["DRUID"] = 0.0625,
 }
 
 function StatLogic:GetHealthRegenFromSpi(spi, class)
 	-- argCheck for invalid input
 	self:argCheck(spi, 2, "number")
 	self:argCheck(class, 3, "nil", "string", "number")
-	-- if class is a class string, convert to class id
-	if type(class) == "string" and ClassNameToID[strupper(class)] ~= nil then
-		class = ClassNameToID[strupper(class)]
-	-- if class is invalid input, default to player class
-	elseif type(class) ~= "number" or class < 1 or class > GetNumClasses() then
-		class = ClassNameToID[addonTable.playerClass]
-	end
+	class = self:ValidateClass(class)
 	-- Calculate
 	return spi * HealthRegenPerSpi[class] * 5, "HEALTH_REG_OUT_OF_COMBAT"
 end
@@ -2858,7 +2794,7 @@ local getSlotID = {
 }
 
 local function HasTitansGrip()
-	if addonTable.playerClass == "WARRIOR" then
+	if addonTable.class == "WARRIOR" then
 		local _, _, _, _, r = StatLogic:GetOrderedTalentInfo(2, 27)
 		return r > 0
 	end
