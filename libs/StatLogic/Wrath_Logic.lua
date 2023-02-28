@@ -2428,7 +2428,7 @@ elseif addonTable.playerClass == "PRIEST" then
 				},
 			},
 			-- Priest: Glyph of Shadow
-			--	While in Shadowform, your non-periodic spell critical strikes increase 
+			--	While in Shadowform, your non-periodic spell critical strikes increase
 			--	your spell power by 30% of your Spirit for 10 sec.
 			{
 				["glyph"] = 55689,
@@ -2839,13 +2839,29 @@ elseif addonTable.playerClass == "SHAMAN" then
 	}
 elseif addonTable.playerClass == "WARLOCK" then
 	StatLogic.StatModTable["WARLOCK"] = {
-		-- Warlock: Metamorphosis - Buff
-		--          This form increases your armor by 600%, damage by 20%, reduces the chance you'll be critically hit by melee attacks by 6% and reduces the duration of stun and snare effects by 50%.
 		["ADD_CRIT_TAKEN"] = {
+			-- Warlock: Metamorphosis - Buff
+			--          This form increases your armor by 600%, damage by 20%, reduces the chance you'll be critically hit by melee attacks by 6% and reduces the duration of stun and snare effects by 50%.
 			{
 				["MELEE"] = true,
 				["value"] = -0.06,
 				["buff"] = 47241,		-- ["Metamorphosis"],
+			},
+			-- Warlock: Demonic Resilience (Rank 3) - 2,18
+			--          Reduces the chance you'll be critically hit by melee and spells by 1%/2%/3% and reduces all damage your summoned demon takes by 15%.
+			{
+				["MELEE"] = true,
+				["HOLY"] = true,
+				["FIRE"] = true,
+				["NATURE"] = true,
+				["FROST"] = true,
+				["SHADOW"] = true,
+				["ARCANE"] = true,
+				["tab"] = 2,
+				["num"] = 18,
+				["rank"] = {
+					-0.01, -0.02, -0.03,
+				},
 			},
 		},
 		-- Warlock: Metamorphosis - Buff
@@ -2987,24 +3003,6 @@ elseif addonTable.playerClass == "WARLOCK" then
 					0.04, 0.08, 0.12,
 				},
 				["condition"] = "UnitExists('pet')",
-			},
-		},
-		-- Warlock: Demonic Resilience (Rank 3) - 2,18
-		--          Reduces the chance you'll be critically hit by melee and spells by 1%/2%/3% and reduces all damage your summoned demon takes by 15%.
-		["ADD_CRIT_TAKEN"] = {
-			{
-				["MELEE"] = true,
-				["HOLY"] = true,
-				["FIRE"] = true,
-				["NATURE"] = true,
-				["FROST"] = true,
-				["SHADOW"] = true,
-				["ARCANE"] = true,
-				["tab"] = 2,
-				["num"] = 18,
-				["rank"] = {
-					-0.01, -0.02, -0.03,
-				},
 			},
 		},
 		-- Warlock: Master Demonologist (Rank 5) - 2,16
@@ -3829,7 +3827,6 @@ Returns:
 Example:
 	local modDodge, drFreeDodge = StatLogic:GetDodgeChanceBeforeDR()
 -----------------------------------]]
-local BaseDodge
 function StatLogic:GetDodgeChanceBeforeDR()
 	local class = StatLogic:GetClassIdOrName(addonTable.playerClass)
 
@@ -3995,7 +3992,6 @@ Example:
 function StatLogic:GetAvoidanceGainAfterDR(avoidanceType, gainBeforeDR)
 	-- argCheck for invalid input
 	self:argCheck(gainBeforeDR, 2, "number")
-	local class = StatLogic:GetClassIdOrName(addonTable.playerClass)
 
 	if avoidanceType == "PARRY" then
 		local modAvoidance, drFreeAvoidance = self:GetParryChanceBeforeDR()

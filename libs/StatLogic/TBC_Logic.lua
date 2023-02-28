@@ -1456,10 +1456,9 @@ elseif addonTable.playerClass == "ROGUE" then
 	}
 elseif addonTable.playerClass == "SHAMAN" then
 	StatLogic.StatModTable["SHAMAN"] = {
-		-- Shaman: Shamanistic Rage - Buff
-		--         Reduces all damage taken by 30% and gives your successful melee attacks a chance to regenerate mana equal to 15% of your attack power. Lasts 30 sec.
-		-- 2.3.0 Shamanistic Rage (Enhancement) now also reduces all damage taken by 30% for the duration.
 		["MOD_DMG_TAKEN"] = {
+			-- Shaman: Shamanistic Rage - Buff
+			--         Reduces all damage taken by 30% and gives your successful melee attacks a chance to regenerate mana equal to 15% of your attack power. Lasts 30 sec.
 			{
 				["MELEE"] = true,
 				["RANGED"] = true,
@@ -1471,6 +1470,18 @@ elseif addonTable.playerClass == "SHAMAN" then
 				["ARCANE"] = true,
 				["value"] = -0.3,
 				["buff"] = 30823,		-- ["Shamanistic Rage"],
+			},
+			-- Shaman: Elemental Warding (Rank 3) - 1,4
+			--         Reduces damage taken from Fire, Frost and Nature effects by 4%/7%/10%.
+			{
+				["FIRE"] = true,
+				["NATURE"] = true,
+				["FROST"] = true,
+				["tab"] = 1,
+				["num"] = 14,
+				["rank"] = {
+					-0.04, -0.07, -0.1,
+				},
 			},
 		},
 		-- Shaman: Mental Quickness (Rank 3) - 2,15
@@ -1549,20 +1560,6 @@ elseif addonTable.playerClass == "SHAMAN" then
 				["num"] = 18,
 				["rank"] = {
 					-0.02, -0.04, -0.06,
-				},
-			},
-		},
-		-- Shaman: Elemental Warding (Rank 3) - 1,4
-		--         Reduces damage taken from Fire, Frost and Nature effects by 4%/7%/10%.
-		["MOD_DMG_TAKEN"] = {
-			{
-				["FIRE"] = true,
-				["NATURE"] = true,
-				["FROST"] = true,
-				["tab"] = 1,
-				["num"] = 14,
-				["rank"] = {
-					-0.04, -0.07, -0.1,
 				},
 			},
 		},
