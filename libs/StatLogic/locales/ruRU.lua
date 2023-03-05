@@ -586,6 +586,7 @@ D["FERAL_WEAPON_RATING"] = { "Feral " .. SKILL .. " " .. RATING, "Feral " .. RAT
 D["FIST_WEAPON_RATING"] = { "Unarmed " .. SKILL.." "..RATING, "Unarmed "..RATING}
 D["STAFF_WEAPON_RATING"] = {"Staff "..SKILL.." "..RATING, "Staff "..RATING} -- Leggings of the Fang ID:10410
 D["EXPERTISE_RATING"] = {"Рейтинг мастерства", "Expertise".." "..RATING}
+D["ARMOR_PENETRATION_RATING"] = {RATING .. " пробиванию брони", "ArP".." "..RATING}
 -- Tier2 Stats - Stats that only show up when broken down from a Tier1 stat
 -- Str -> AP, Block Value
 -- Agi -> AP, Crit, Dodge
@@ -628,6 +629,7 @@ D["FERAL_WEAPON"] = {"Feral "..SKILL, "Feral"}
 D["FIST_WEAPON"] = {"Unarmed "..SKILL, "Unarmed"}
 D["STAFF_WEAPON"] = {"Staff "..SKILL, "Staff"} -- Leggings of the Fang ID:10410
 D["EXPERTISE"] = {"Мастерство", "Expertise"}
+D["ARMOR_PENETRATION"] = {"Пробивание брони (%)", "ArP(%)"}
 -- Tier3 Stats - Stats that only show up when broken down from a Tier2 stat
 -- Defense -> Crit Avoidance, Hit Avoidance, Dodge, Parry, Block
 -- Weapon Skill -> Crit, Hit, Dodge Neglect, Parry Neglect, Block Neglect

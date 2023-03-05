@@ -575,7 +575,7 @@ D["FERAL_WEAPON_RATING"] = {"Feral "..SKILL.." "..RATING, "Feral "..RATING}
 D["FIST_WEAPON_RATING"] = {"Unarmed "..SKILL.." "..RATING, "Unarmed "..RATING}
 D["STAFF_WEAPON_RATING"] = {"Staff "..SKILL.." "..RATING, "Staff "..RATING} -- Leggings of the Fang ID:10410
 D["EXPERTISE_RATING"] = {"Expertise".." "..RATING, "Expertise".." "..RATING}
-D["ARMOR_PENETRATION_RATING"] = {"Armor Penetration".." "..RATING, "ArP".." "..RATING}
+D["ARMOR_PENETRATION_RATING"] = {ITEM_MOD_ARMOR_PENETRATION_RATING_SHORT, "ArP".." "..RATING}
 -- Tier2 Stats - Stats that only show up when broken down from a Tier1 stat
 -- Str -> AP, Block Value
 -- Agi -> AP, Crit, Dodge
