@@ -367,7 +367,7 @@ local function StripGlobalStrings(text)
 end
 
 function StatLogic:GetStatNameFromID(stat)
-	local name = D.StatIDToName[stat]
+	local name = D[stat]
 	if not name then return end
 	return unpack(name)
 end

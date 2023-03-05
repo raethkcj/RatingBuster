@@ -506,205 +506,190 @@ local D = LibStub("AceLocale-3.0"):NewLocale("StatLogicD", "zhCN")
 -- Please localize these strings too, global strings were used in the enUS locale just to have minimum
 -- localization effect when a locale is not available for that language, you don't have to use global
 -- strings in your localization.
-D["StatIDToName"] = {
-	--[StatID] = {FullName, ShortName},
-	---------------------------------------------------------------------------
-	-- Tier1 Stats - Stats parsed directly off items
-	["EMPTY_SOCKET_RED"] = {EMPTY_SOCKET_RED, EMPTY_SOCKET_RED}, -- EMPTY_SOCKET_RED = "Red Socket";
-	["EMPTY_SOCKET_YELLOW"] = {EMPTY_SOCKET_YELLOW, EMPTY_SOCKET_YELLOW}, -- EMPTY_SOCKET_YELLOW = "Yellow Socket";
-	["EMPTY_SOCKET_BLUE"] = {EMPTY_SOCKET_BLUE, EMPTY_SOCKET_BLUE}, -- EMPTY_SOCKET_BLUE = "Blue Socket";
-	["EMPTY_SOCKET_META"] = {EMPTY_SOCKET_META, EMPTY_SOCKET_META}, -- EMPTY_SOCKET_META = "Meta Socket";
+--[StatID] = {FullName, ShortName},
+---------------------------------------------------------------------------
+-- Tier1 Stats - Stats parsed directly off items
+D["EMPTY_SOCKET_RED"] = {EMPTY_SOCKET_RED, EMPTY_SOCKET_RED} -- EMPTY_SOCKET_RED = "Red Socket";
+D["EMPTY_SOCKET_YELLOW"] = {EMPTY_SOCKET_YELLOW, EMPTY_SOCKET_YELLOW} -- EMPTY_SOCKET_YELLOW = "Yellow Socket";
+D["EMPTY_SOCKET_BLUE"] = {EMPTY_SOCKET_BLUE, EMPTY_SOCKET_BLUE} -- EMPTY_SOCKET_BLUE = "Blue Socket";
+D["EMPTY_SOCKET_META"] = {EMPTY_SOCKET_META, EMPTY_SOCKET_META} -- EMPTY_SOCKET_META = "Meta Socket";
 
-	["STEALTH_LEVEL"] = {"潜行等级", "潜行"},
-	["IGNORE_ARMOR"] = {"你的攻击无视目标的 %d+ 点护甲值。", "忽略护甲"},
-	["MELEE_DMG"] = {"近战伤害", "近战伤害"}, -- DAMAGE = "Damage"
-	["MOUNT_SPEED"] = {"骑乘速度(%)", "骑速(%)"},
-	["RUN_SPEED"] = {"移动速度(%)", "跑速(%)"},
+D["STEALTH_LEVEL"] = {"潜行等级", "潜行"}
+D["IGNORE_ARMOR"] = {"你的攻击无视目标的 %d+ 点护甲值。", "忽略护甲"}
+D["MELEE_DMG"] = {"近战伤害", "近战伤害"} -- DAMAGE = "Damage"
+D["MOUNT_SPEED"] = {"骑乘速度(%)", "骑速(%)"}
+D["RUN_SPEED"] = {"移动速度(%)", "跑速(%)"}
 
-	["STR"] = {SPELL_STAT1_NAME, "力"},
-	["AGI"] = {SPELL_STAT2_NAME, "敏"},
-	["STA"] = {SPELL_STAT3_NAME, "耐"},
-	["INT"] = {SPELL_STAT4_NAME, "智"},
-	["SPI"] = {SPELL_STAT5_NAME, "精"},
-	["ARMOR"] = {ARMOR, ARMOR},
-	["ARMOR_BONUS"] = {"护甲加成", "护甲"},
+D["STR"] = {SPELL_STAT1_NAME, "力"}
+D["AGI"] = {SPELL_STAT2_NAME, "敏"}
+D["STA"] = {SPELL_STAT3_NAME, "耐"}
+D["INT"] = {SPELL_STAT4_NAME, "智"}
+D["SPI"] = {SPELL_STAT5_NAME, "精"}
+D["ARMOR"] = {ARMOR, ARMOR}
+D["ARMOR_BONUS"] = {"护甲加成", "护甲"}
 
-	["FIRE_RES"] = {RESISTANCE2_NAME, "火抗"},
-	["NATURE_RES"] = {RESISTANCE3_NAME, "自然抗"},
-	["FROST_RES"] = {RESISTANCE4_NAME, "冰抗"},
-	["SHADOW_RES"] = {RESISTANCE5_NAME, "暗抗"},
-	["ARCANE_RES"] = {RESISTANCE6_NAME, "奥抗"},
+D["FIRE_RES"] = {RESISTANCE2_NAME, "火抗"}
+D["NATURE_RES"] = {RESISTANCE3_NAME, "自然抗"}
+D["FROST_RES"] = {RESISTANCE4_NAME, "冰抗"}
+D["SHADOW_RES"] = {RESISTANCE5_NAME, "暗抗"}
+D["ARCANE_RES"] = {RESISTANCE6_NAME, "奥抗"}
 
-	["FISHING"] = {"钓鱼", "钓鱼"},
-	["MINING"] = {"采矿", "采矿"},
-	["HERBALISM"] = {"草药学", "草药"},
-	["SKINNING"] = {"剥皮", "剥皮"},
+D["FISHING"] = {"钓鱼", "钓鱼"}
+D["MINING"] = {"采矿", "采矿"}
+D["HERBALISM"] = {"草药学", "草药"}
+D["SKINNING"] = {"剥皮", "剥皮"}
 
-	["BLOCK_VALUE"] = {"盾牌格挡值", "格挡值"},
+D["BLOCK_VALUE"] = {"盾牌格挡值", "格挡值"}
 
-	["AP"] = {ATTACK_POWER_TOOLTIP, "攻强"},
-	["RANGED_AP"] = {RANGED_ATTACK_POWER, "远攻强度"},
-	["FERAL_AP"] = {"野性"..ATTACK_POWER_TOOLTIP, "野性强度"},
-	["AP_UNDEAD"] = {ATTACK_POWER_TOOLTIP.."(亡灵)", "攻强(亡灵)"},
-	["AP_DEMON"] = {ATTACK_POWER_TOOLTIP.."(恶魔)", "攻强(恶魔)"},
+D["AP"] = {ATTACK_POWER_TOOLTIP, "攻强"}
+D["RANGED_AP"] = {RANGED_ATTACK_POWER, "远攻强度"}
+D["FERAL_AP"] = {"野性"..ATTACK_POWER_TOOLTIP, "野性强度"}
+D["AP_UNDEAD"] = {ATTACK_POWER_TOOLTIP.."(亡灵)", "攻强(亡灵)"}
+D["AP_DEMON"] = {ATTACK_POWER_TOOLTIP.."(恶魔)", "攻强(恶魔)"}
 
-	["HEAL"] = {"法术治疗", "治疗"},
+D["HEAL"] = {"法术治疗", "治疗"}
 
-	["SPELL_DMG"] = {"法术伤害", "法伤"},
-	["SPELL_DMG_UNDEAD"] = {"法术伤害(亡灵)", PLAYERSTAT_SPELL_COMBAT.."法伤".."(亡灵)"},
-	["SPELL_DMG_DEMON"] = {"法术伤害(恶魔)", PLAYERSTAT_SPELL_COMBAT.."法伤".."(亡灵)"},
-	["HOLY_SPELL_DMG"] = {"神圣法术伤害", SPELL_SCHOOL1_CAP.."法伤"},
-	["FIRE_SPELL_DMG"] = {"火焰法术伤害", SPELL_SCHOOL2_CAP.."法伤"},
-	["NATURE_SPELL_DMG"] = {"自然法术伤害", SPELL_SCHOOL3_CAP.."法伤"},
-	["FROST_SPELL_DMG"] = {"冰霜法术伤害", SPELL_SCHOOL4_CAP.."法伤"},
-	["SHADOW_SPELL_DMG"] = {"暗影法术伤害", SPELL_SCHOOL5_CAP.."法伤"},
-	["ARCANE_SPELL_DMG"] = {"奥术法术伤害", SPELL_SCHOOL6_CAP.."法伤"},
+D["SPELL_DMG"] = {"法术伤害", "法伤"}
+D["SPELL_DMG_UNDEAD"] = {"法术伤害(亡灵)", PLAYERSTAT_SPELL_COMBAT.."法伤".."(亡灵)"}
+D["SPELL_DMG_DEMON"] = {"法术伤害(恶魔)", PLAYERSTAT_SPELL_COMBAT.."法伤".."(亡灵)"}
+D["HOLY_SPELL_DMG"] = {"神圣法术伤害", SPELL_SCHOOL1_CAP.."法伤"}
+D["FIRE_SPELL_DMG"] = {"火焰法术伤害", SPELL_SCHOOL2_CAP.."法伤"}
+D["NATURE_SPELL_DMG"] = {"自然法术伤害", SPELL_SCHOOL3_CAP.."法伤"}
+D["FROST_SPELL_DMG"] = {"冰霜法术伤害", SPELL_SCHOOL4_CAP.."法伤"}
+D["SHADOW_SPELL_DMG"] = {"暗影法术伤害", SPELL_SCHOOL5_CAP.."法伤"}
+D["ARCANE_SPELL_DMG"] = {"奥术法术伤害", SPELL_SCHOOL6_CAP.."法伤"}
 
-	["SPELLPEN"] = {"法术穿透", SPELL_PENETRATION},
+D["SPELLPEN"] = {"法术穿透", SPELL_PENETRATION}
 
-	["HEALTH"] = {HEALTH, HP},
-	["MANA"] = {MANA, MP},
-	["HEALTH_REG"] = {"生命恢复", "HP5"},
-	["MANA_REG"] = {"法力恢复", "MP5"},
+D["HEALTH"] = {HEALTH, HP}
+D["MANA"] = {MANA, MP}
+D["HEALTH_REG"] = {"生命恢复", "HP5"}
+D["MANA_REG"] = {"法力恢复", "MP5"}
 
-	["AVERAGE_DAMAGE"] = {"Average Damage", "Avg Dmg"},
-	["DPS"] = {"每秒伤害", "DPS"},
+D["AVERAGE_DAMAGE"] = {"Average Damage", "Avg Dmg"}
+D["DPS"] = {"每秒伤害", "DPS"}
 
-	["DEFENSE_RATING"] = {COMBAT_RATING_NAME2, COMBAT_RATING_NAME2}, -- COMBAT_RATING_NAME2 = "Defense Rating"
-	["DODGE_RATING"] = {COMBAT_RATING_NAME3, COMBAT_RATING_NAME3}, -- COMBAT_RATING_NAME3 = "Dodge Rating"
-	["PARRY_RATING"] = {COMBAT_RATING_NAME4, COMBAT_RATING_NAME4}, -- COMBAT_RATING_NAME4 = "Parry Rating"
-	["BLOCK_RATING"] = {COMBAT_RATING_NAME5, COMBAT_RATING_NAME5}, -- COMBAT_RATING_NAME5 = "Block Rating"
-	["MELEE_HIT_RATING"] = {COMBAT_RATING_NAME6, COMBAT_RATING_NAME6}, -- COMBAT_RATING_NAME6 = "Hit Rating"
-	["RANGED_HIT_RATING"] = {"远程命中等级", "远程命中"}, -- PLAYERSTAT_RANGED_COMBAT = "Ranged"
-	["SPELL_HIT_RATING"] = {"法术命中等级", "法术命中"}, -- PLAYERSTAT_SPELL_COMBAT = "Spell"
-	["MELEE_CRIT_RATING"] = {COMBAT_RATING_NAME9, COMBAT_RATING_NAME9}, -- COMBAT_RATING_NAME9 = "Crit Rating"
-	["RANGED_CRIT_RATING"] = {"远程爆击等级", "远程爆击"},
-	["SPELL_CRIT_RATING"] = {"法术爆击等级", "法术爆击"},
-	["RESILIENCE_RATING"] = {COMBAT_RATING_NAME15, COMBAT_RATING_NAME15}, -- COMBAT_RATING_NAME15 = "Resilience"
-	["MELEE_HASTE_RATING"] = {"近战急速等级", "近战急速"}, --
-	["RANGED_HASTE_RATING"] = {"远程急速等级", "远程急速"},
-	["SPELL_HASTE_RATING"] = {"法术急速等级", "法术急速"},
-	["DAGGER_WEAPON_RATING"] = {"匕首技能等级", "匕首等级"}, -- SKILL = "Skill"
-	["SWORD_WEAPON_RATING"] = {"剑类武器技能等级", "剑等级"},
-	["2H_SWORD_WEAPON_RATING"] = {"双手剑技能等级", "双手剑等级"},
-	["AXE_WEAPON_RATING"] = {"斧类武器技能等级", "斧等级"},
-	["2H_AXE_WEAPON_RATING"] = {"双手斧技能等级", "双手斧等级"},
-	["MACE_WEAPON_RATING"] = {"锤类武器技能等级", "锤等级"},
-	["2H_MACE_WEAPON_RATING"] = {"双手锤技能等级", "双手锤等级"},
-	["GUN_WEAPON_RATING"] = {"枪械技能等级", "枪等级"},
-	["CROSSBOW_WEAPON_RATING"] = {"弩技能等级", "弩等级"},
-	["BOW_WEAPON_RATING"] = {"弓技能等级", "弓等级"},
-	["FERAL_WEAPON_RATING"] = {"野性技能等级", "野性等级"},
-	["FIST_WEAPON_RATING"] = {"徒手技能等级", "徒手等级"},
-	["STAFF_WEAPON_RATING"] = {"法杖技能等级", "法杖等级"}, -- Leggings of the Fang ID:10410
-	["EXPERTISE_RATING"] = {"精准等级", "精准等级"},
-	["ARMOR_PENETRATION_RATING"] = {"护甲穿透等级", "护甲穿透等级"},
-
-	---------------------------------------------------------------------------
-	-- Tier2 Stats - Stats that only show up when broken down from a Tier1 stat
-	-- Str -> AP, Block Value
-	-- Agi -> AP, Crit, Dodge
-	-- Sta -> Health
-	-- Int -> Mana, Spell Crit
-	-- Spi -> mp5nc, hp5oc
-	-- Ratings -> Effect
-	["HEALTH_REG_OUT_OF_COMBAT"] = {"正常回血", "正常回血"},
-	["MANA_REG_NOT_CASTING"] = {"正常回魔", "正常回魔"},
-	["MELEE_CRIT_DMG_REDUCTION"] = {"爆击减伤(%)", "爆击减伤(%)"},
-	["RANGED_CRIT_DMG_REDUCTION"] = {"远程爆击减伤(%)", "远程爆击减伤(%)"},
-	["SPELL_CRIT_DMG_REDUCTION"] = {"法术爆击减伤(%)", "法术爆击减伤(%)"},
-	["DEFENSE"] = {DEFENSE, DEFENSE},
-	["DODGE"] = {DODGE.."(%)", DODGE.."(%)"},
-	["PARRY"] = {PARRY.."(%)", PARRY.."(%)"},
-	["BLOCK"] = {BLOCK.."(%)", BLOCK.."(%)"},
-	["AVOIDANCE"] = {"完全豁免(%)", "豁免(%)"},
-	["MELEE_HIT"] = {"物理命中(%)", "命中(%)"},
-	["RANGED_HIT"] = {"远程命中(%)", "远程命中(%)"},
-	["SPELL_HIT"] = {"法术命中(%)", "法术命中(%)"},
-	["MELEE_HIT_AVOID"] = {"躲闪命中(%)", "躲闪命中(%)"},
-	["MELEE_CRIT"] = {"物理爆击(%)", "物理爆击(%)"}, -- MELEE_CRIT_CHANCE = "Crit Chance"
-	["RANGED_CRIT"] = {"远程爆击(%)", "远程爆击(%)"},
-	["SPELL_CRIT"] = {"法术爆击(%)", "法术爆击(%)"},
-	["MELEE_CRIT_AVOID"] = {"躲闪近战爆击(%)", "躲闪爆击(%)"},
-	["MELEE_HASTE"] = {"近战急速(%)", "近战急速(%)"}, --
-	["RANGED_HASTE"] = {"远程急速(%)", "远程急速(%)"},
-	["SPELL_HASTE"] = {"法术急速(%)", "法术急速(%)"},
-	["DAGGER_WEAPON"] = {"匕首技能", "匕首"}, -- SKILL = "Skill"
-	["SWORD_WEAPON"] = {"剑技能", "剑"},
-	["2H_SWORD_WEAPON"] = {"双手剑技能", "双手剑"},
-	["AXE_WEAPON"] = {"斧技能", "斧"},
-	["2H_AXE_WEAPON"] = {"双手斧技能", "双手斧"},
-	["MACE_WEAPON"] = {"锤技能", "锤"},
-	["2H_MACE_WEAPON"] = {"双手锤技能", "双手锤"},
-	["GUN_WEAPON"] = {"枪械技能", "枪械"},
-	["CROSSBOW_WEAPON"] = {"弩技能", "弩"},
-	["BOW_WEAPON"] = {"弓技能", "弓"},
-	["FERAL_WEAPON"] = {"野性技能", "野性"},
-	["FIST_WEAPON"] = {"徒手战斗技能", "徒手"},
-	["STAFF_WEAPON_RATING"] = {"法杖技能", "法杖"}, -- Leggings of the Fang ID:10410
-	["EXPERTISE"] = {"精准", "精准"},
-	["ARMOR_PENETRATION"] = {"护甲穿透(%)", "护甲穿透(%)"},
-
-	---------------------------------------------------------------------------
-	-- Tier3 Stats - Stats that only show up when broken down from a Tier2 stat
-	-- Defense -> Crit Avoidance, Hit Avoidance, Dodge, Parry, Block
-	-- Weapon Skill -> Crit, Hit, Dodge Neglect, Parry Neglect, Block Neglect
-	-- Expertise -> Dodge Neglect, Parry Neglect
-	["DODGE_NEGLECT"] = {"防止被躲闪(%)", "防止被躲闪(%)"},
-	["PARRY_NEGLECT"] = {"防止被招架(%)", "防止被招架(%)"},
-	["BLOCK_NEGLECT"] = {"防止被格挡(%)", "防止被格挡(%)"},
-
-	---------------------------------------------------------------------------
-	-- Talants
-	["MELEE_CRIT_DMG"] = {"物理爆击(%)", "爆击(%)"},
-	["RANGED_CRIT_DMG"] = {"远程爆击(%)", "远程爆击(%)"},
-	["SPELL_CRIT_DMG"] = {"法术爆击(%)", "法爆(%)"},
-
-	---------------------------------------------------------------------------
-	-- Spell Stats
-	-- These values can be prefixed with a @ and spell name, using reverse translation to english from Babble-Spell-2.2
-	-- Ex: "Heroic Strike@RAGE_COST" for Heroic Strike rage cost
-	-- Ex: "Heroic Strike@THREAT" for Heroic Strike threat value
-	-- Use strsplit("@", text) to seperate the spell name and statid
-	["THREAT"] = {"威胁值", "威胁"},
-	["CAST_TIME"] = {"施法时间", "施法时间"},
-	["MANA_COST"] = {"消耗法力", "消耗法力"},
-	["RAGE_COST"] = {"消耗怒气", "消耗怒气"},
-	["ENERGY_COST"] = {"消耗能量", "消耗能量"},
-	["COOLDOWN"] = {"冷却时间", "冷却"},
-
-	---------------------------------------------------------------------------
-	-- Stats Mods
-	["MOD_STR"] = {"修正力量(%)", "修正力量(%)"},
-	["MOD_AGI"] = {"修正敏捷(%)", "修正敏捷(%)"},
-	["MOD_STA"] = {"修正耐力(%)", "修正耐力(%)"},
-	["MOD_INT"] = {"修正智力(%)", "修正智力(%)"},
-	["MOD_SPI"] = {"修正精神(%)", "修正精神(%)"},
-	["MOD_HEALTH"] = {"修正生命(%)", "修正生命(%)"},
-	["MOD_MANA"] = {"修正法力(%)", "修正法力(%)"},
-	["MOD_ARMOR"] = {"修正护甲(%)", "修正装甲(%)"},
-	["MOD_BLOCK_VALUE"] = {"修正格挡值(%)", "修正格挡值(%)"},
-	["MOD_DMG"] = {"修正伤害(%)", "修正伤害(%)"},
-	["MOD_DMG_TAKEN"] = {"修正承受伤害(%)", "修正受伤害(%)"},
-	["MOD_CRIT_DAMAGE"] = {"修正爆击(%)", "修正爆击(%)"},
-	["MOD_CRIT_DAMAGE_TAKEN"] = {"修正承受爆击(%)", "修正受爆击(%)"},
-	["MOD_THREAT"] = {"修正威胁(%)", "修正威胁(%)"},
-	["MOD_AP"] = {"修正近战攻击强度(%)", "修正攻强(%)"},
-	["MOD_RANGED_AP"] = {"修正远程攻击强度(%)", "修正远攻强度(%)"},
-	["MOD_SPELL_DMG"] = {"修正法术伤害(%)", "修正法伤(%)"},
-	["MOD_HEALING"] = {"修正法术治疗(%)", "修正治疗(%)"},
-	["MOD_CAST_TIME"] = {"修正施法时间(%)", "修正施法时间(%)"},
-	["MOD_MANA_COST"] = {"修正消耗法力(%)", "修正消耗法力(%)"},
-	["MOD_RAGE_COST"] = {"修正消耗怒气(%)", "修正消耗怒气(%)"},
-	["MOD_ENERGY_COST"] = {"修正消耗能量(%)", "修正消耗能量(%)"},
-	["MOD_COOLDOWN"] = {"修正技能冷却(%)", "修正技能冷却(%)"},
-
-	---------------------------------------------------------------------------
-	-- Misc Stats
-	["WEAPON_RATING"] = {"武器技能等级", "武器技能等级"},
-	["WEAPON_SKILL"] = {"武器技能", "武器技能"},
-	["MAINHAND_WEAPON_RATING"] = {"主手武器技能等级", "主手武器技能等级"},
-	["OFFHAND_WEAPON_RATING"] = {"副手武器技能等级", "副手武器技能等级"},
-	["RANGED_WEAPON_RATING"] = {"远程武器技能等级", "远程武器技能等级"},
-}
-
+D["DEFENSE_RATING"] = {COMBAT_RATING_NAME2, COMBAT_RATING_NAME2} -- COMBAT_RATING_NAME2 = "Defense Rating"
+D["DODGE_RATING"] = {COMBAT_RATING_NAME3, COMBAT_RATING_NAME3} -- COMBAT_RATING_NAME3 = "Dodge Rating"
+D["PARRY_RATING"] = {COMBAT_RATING_NAME4, COMBAT_RATING_NAME4} -- COMBAT_RATING_NAME4 = "Parry Rating"
+D["BLOCK_RATING"] = {COMBAT_RATING_NAME5, COMBAT_RATING_NAME5} -- COMBAT_RATING_NAME5 = "Block Rating"
+D["MELEE_HIT_RATING"] = {COMBAT_RATING_NAME6, COMBAT_RATING_NAME6} -- COMBAT_RATING_NAME6 = "Hit Rating"
+D["RANGED_HIT_RATING"] = {"远程命中等级", "远程命中"} -- PLAYERSTAT_RANGED_COMBAT = "Ranged"
+D["SPELL_HIT_RATING"] = {"法术命中等级", "法术命中"} -- PLAYERSTAT_SPELL_COMBAT = "Spell"
+D["MELEE_CRIT_RATING"] = {COMBAT_RATING_NAME9, COMBAT_RATING_NAME9} -- COMBAT_RATING_NAME9 = "Crit Rating"
+D["RANGED_CRIT_RATING"] = {"远程爆击等级", "远程爆击"}
+D["SPELL_CRIT_RATING"] = {"法术爆击等级", "法术爆击"}
+D["RESILIENCE_RATING"] = {COMBAT_RATING_NAME15, COMBAT_RATING_NAME15} -- COMBAT_RATING_NAME15 = "Resilience"
+D["MELEE_HASTE_RATING"] = {"近战急速等级", "近战急速"} --
+D["RANGED_HASTE_RATING"] = {"远程急速等级", "远程急速"}
+D["SPELL_HASTE_RATING"] = {"法术急速等级", "法术急速"}
+D["DAGGER_WEAPON_RATING"] = {"匕首技能等级", "匕首等级"} -- SKILL = "Skill"
+D["SWORD_WEAPON_RATING"] = {"剑类武器技能等级", "剑等级"}
+D["2H_SWORD_WEAPON_RATING"] = {"双手剑技能等级", "双手剑等级"}
+D["AXE_WEAPON_RATING"] = {"斧类武器技能等级", "斧等级"}
+D["2H_AXE_WEAPON_RATING"] = {"双手斧技能等级", "双手斧等级"}
+D["MACE_WEAPON_RATING"] = {"锤类武器技能等级", "锤等级"}
+D["2H_MACE_WEAPON_RATING"] = {"双手锤技能等级", "双手锤等级"}
+D["GUN_WEAPON_RATING"] = {"枪械技能等级", "枪等级"}
+D["CROSSBOW_WEAPON_RATING"] = {"弩技能等级", "弩等级"}
+D["BOW_WEAPON_RATING"] = {"弓技能等级", "弓等级"}
+D["FERAL_WEAPON_RATING"] = {"野性技能等级", "野性等级"}
+D["FIST_WEAPON_RATING"] = {"徒手技能等级", "徒手等级"}
+D["STAFF_WEAPON_RATING"] = {"法杖技能等级", "法杖等级"} -- Leggings of the Fang ID:10410
+D["EXPERTISE_RATING"] = {"精准等级", "精准等级"}
+D["ARMOR_PENETRATION_RATING"] = {"护甲穿透等级", "护甲穿透等级"}
+-- Tier2 Stats - Stats that only show up when broken down from a Tier1 stat
+-- Str -> AP, Block Value
+-- Agi -> AP, Crit, Dodge
+-- Sta -> Health
+-- Int -> Mana, Spell Crit
+-- Spi -> mp5nc, hp5oc
+-- Ratings -> Effect
+D["HEALTH_REG_OUT_OF_COMBAT"] = {"正常回血", "正常回血"}
+D["MANA_REG_NOT_CASTING"] = {"正常回魔", "正常回魔"}
+D["MELEE_CRIT_DMG_REDUCTION"] = {"爆击减伤(%)", "爆击减伤(%)"}
+D["RANGED_CRIT_DMG_REDUCTION"] = {"远程爆击减伤(%)", "远程爆击减伤(%)"}
+D["SPELL_CRIT_DMG_REDUCTION"] = {"法术爆击减伤(%)", "法术爆击减伤(%)"}
+D["DEFENSE"] = {DEFENSE, DEFENSE}
+D["DODGE"] = {DODGE.."(%)", DODGE.."(%)"}
+D["PARRY"] = {PARRY.."(%)", PARRY.."(%)"}
+D["BLOCK"] = {BLOCK.."(%)", BLOCK.."(%)"}
+D["AVOIDANCE"] = {"完全豁免(%)", "豁免(%)"}
+D["MELEE_HIT"] = {"物理命中(%)", "命中(%)"}
+D["RANGED_HIT"] = {"远程命中(%)", "远程命中(%)"}
+D["SPELL_HIT"] = {"法术命中(%)", "法术命中(%)"}
+D["MELEE_HIT_AVOID"] = {"躲闪命中(%)", "躲闪命中(%)"}
+D["MELEE_CRIT"] = {"物理爆击(%)", "物理爆击(%)"} -- MELEE_CRIT_CHANCE = "Crit Chance"
+D["RANGED_CRIT"] = {"远程爆击(%)", "远程爆击(%)"}
+D["SPELL_CRIT"] = {"法术爆击(%)", "法术爆击(%)"}
+D["MELEE_CRIT_AVOID"] = {"躲闪近战爆击(%)", "躲闪爆击(%)"}
+D["MELEE_HASTE"] = {"近战急速(%)", "近战急速(%)"} --
+D["RANGED_HASTE"] = {"远程急速(%)", "远程急速(%)"}
+D["SPELL_HASTE"] = {"法术急速(%)", "法术急速(%)"}
+D["DAGGER_WEAPON"] = {"匕首技能", "匕首"} -- SKILL = "Skill"
+D["SWORD_WEAPON"] = {"剑技能", "剑"}
+D["2H_SWORD_WEAPON"] = {"双手剑技能", "双手剑"}
+D["AXE_WEAPON"] = {"斧技能", "斧"}
+D["2H_AXE_WEAPON"] = {"双手斧技能", "双手斧"}
+D["MACE_WEAPON"] = {"锤技能", "锤"}
+D["2H_MACE_WEAPON"] = {"双手锤技能", "双手锤"}
+D["GUN_WEAPON"] = {"枪械技能", "枪械"}
+D["CROSSBOW_WEAPON"] = {"弩技能", "弩"}
+D["BOW_WEAPON"] = {"弓技能", "弓"}
+D["FERAL_WEAPON"] = {"野性技能", "野性"}
+D["FIST_WEAPON"] = {"徒手战斗技能", "徒手"}
+D["STAFF_WEAPON_RATING"] = {"法杖技能", "法杖"} -- Leggings of the Fang ID:10410
+D["EXPERTISE"] = {"精准", "精准"}
+D["ARMOR_PENETRATION"] = {"护甲穿透(%)", "护甲穿透(%)"}
+-- Tier3 Stats - Stats that only show up when broken down from a Tier2 stat
+-- Defense -> Crit Avoidance, Hit Avoidance, Dodge, Parry, Block
+-- Weapon Skill -> Crit, Hit, Dodge Neglect, Parry Neglect, Block Neglect
+-- Expertise -> Dodge Neglect, Parry Neglect
+D["DODGE_NEGLECT"] = {"防止被躲闪(%)", "防止被躲闪(%)"}
+D["PARRY_NEGLECT"] = {"防止被招架(%)", "防止被招架(%)"}
+D["BLOCK_NEGLECT"] = {"防止被格挡(%)", "防止被格挡(%)"}
+-- Talents
+D["MELEE_CRIT_DMG"] = {"物理爆击(%)", "爆击(%)"}
+D["RANGED_CRIT_DMG"] = {"远程爆击(%)", "远程爆击(%)"}
+D["SPELL_CRIT_DMG"] = {"法术爆击(%)", "法爆(%)"}
+-- Spell Stats
+-- These values can be prefixed with a @ and spell name, using reverse translation to english from Babble-Spell-2.2
+-- Ex: "Heroic Strike@RAGE_COST" for Heroic Strike rage cost
+-- Ex: "Heroic Strike@THREAT" for Heroic Strike threat value
+-- Use strsplit("@", text) to seperate the spell name and statid
+D["THREAT"] = {"威胁值", "威胁"}
+D["CAST_TIME"] = {"施法时间", "施法时间"}
+D["MANA_COST"] = {"消耗法力", "消耗法力"}
+D["RAGE_COST"] = {"消耗怒气", "消耗怒气"}
+D["ENERGY_COST"] = {"消耗能量", "消耗能量"}
+D["COOLDOWN"] = {"冷却时间", "冷却"}
+-- Stats Mods
+D["MOD_STR"] = {"修正力量(%)", "修正力量(%)"}
+D["MOD_AGI"] = {"修正敏捷(%)", "修正敏捷(%)"}
+D["MOD_STA"] = {"修正耐力(%)", "修正耐力(%)"}
+D["MOD_INT"] = {"修正智力(%)", "修正智力(%)"}
+D["MOD_SPI"] = {"修正精神(%)", "修正精神(%)"}
+D["MOD_HEALTH"] = {"修正生命(%)", "修正生命(%)"}
+D["MOD_MANA"] = {"修正法力(%)", "修正法力(%)"}
+D["MOD_ARMOR"] = {"修正护甲(%)", "修正装甲(%)"}
+D["MOD_BLOCK_VALUE"] = {"修正格挡值(%)", "修正格挡值(%)"}
+D["MOD_DMG"] = {"修正伤害(%)", "修正伤害(%)"}
+D["MOD_DMG_TAKEN"] = {"修正承受伤害(%)", "修正受伤害(%)"}
+D["MOD_CRIT_DAMAGE"] = {"修正爆击(%)", "修正爆击(%)"}
+D["MOD_CRIT_DAMAGE_TAKEN"] = {"修正承受爆击(%)", "修正受爆击(%)"}
+D["MOD_THREAT"] = {"修正威胁(%)", "修正威胁(%)"}
+D["MOD_AP"] = {"修正近战攻击强度(%)", "修正攻强(%)"}
+D["MOD_RANGED_AP"] = {"修正远程攻击强度(%)", "修正远攻强度(%)"}
+D["MOD_SPELL_DMG"] = {"修正法术伤害(%)", "修正法伤(%)"}
+D["MOD_HEALING"] = {"修正法术治疗(%)", "修正治疗(%)"}
+D["MOD_CAST_TIME"] = {"修正施法时间(%)", "修正施法时间(%)"}
+D["MOD_MANA_COST"] = {"修正消耗法力(%)", "修正消耗法力(%)"}
+D["MOD_RAGE_COST"] = {"修正消耗怒气(%)", "修正消耗怒气(%)"}
+D["MOD_ENERGY_COST"] = {"修正消耗能量(%)", "修正消耗能量(%)"}
+D["MOD_COOLDOWN"] = {"修正技能冷却(%)", "修正技能冷却(%)"}
+-- Misc Stats
+D["WEAPON_RATING"] = {"武器技能等级", "武器技能等级"}
+D["WEAPON_SKILL"] = {"武器技能", "武器技能"}
+D["MAINHAND_WEAPON_RATING"] = {"主手武器技能等级", "主手武器技能等级"}
+D["OFFHAND_WEAPON_RATING"] = {"副手武器技能等级", "副手武器技能等级"}
+D["RANGED_WEAPON_RATING"] = {"远程武器技能等级", "远程武器技能等级"}

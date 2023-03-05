@@ -476,205 +476,191 @@ local D = LibStub("AceLocale-3.0"):NewLocale("StatLogicD", "frFR")
 -- Please localize these strings too, global strings were used in the enUS locale just to have minimum
 -- localization effect when a locale is not available for that language, you don't have to use global
 -- strings in your localization.
-D["StatIDToName"] = {
-	--[StatID] = {FullName, ShortName},
-	---------------------------------------------------------------------------
-	-- Tier1 Stats - Stats parsed directly off items
-	["EMPTY_SOCKET_RED"] = {"Châsse rouge", "Châsse rouge"},
-	["EMPTY_SOCKET_YELLOW"] = {"Châsse jaune", "Châsse jaune"},
-	["EMPTY_SOCKET_BLUE"] = {"Châsse bleue", "Châsse bleue"},
-	["EMPTY_SOCKET_META"] = {"Méta-châsse", "Méta-châsse"},
+--[StatID] = {FullName, ShortName}
+---------------------------------------------------------------------------
+-- Tier1 Stats - Stats parsed directly off items
+D["EMPTY_SOCKET_RED"] = {"Châsse rouge", "Châsse rouge"}
+D["EMPTY_SOCKET_YELLOW"] = {"Châsse jaune", "Châsse jaune"}
+D["EMPTY_SOCKET_BLUE"] = {"Châsse bleue", "Châsse bleue"}
+D["EMPTY_SOCKET_META"] = {"Méta-châsse", "Méta-châsse"}
 
-	["IGNORE_ARMOR"] = {"Armure ignorée", "Armure ignorée"},
-	["THREAT_MOD"] = {"Menace (%)", "Menace (%)"},
-	["STEALTH_LEVEL"] = {"Niveau de camouflage", "Camouflage"},
-	["MELEE_DMG"] = {"Dégâts de l'arme", "Dégâts Arme"},
-	["MOUNT_SPEED"] = {"Vitesse de monte (%)", "Vit. de monte (%)"},
-	["RUN_SPEED"] = {"Vitesse (%)","Vit. (%)"},
+D["IGNORE_ARMOR"] = {"Armure ignorée", "Armure ignorée"}
+D["THREAT_MOD"] = {"Menace (%)", "Menace (%)"}
+D["STEALTH_LEVEL"] = {"Niveau de camouflage", "Camouflage"}
+D["MELEE_DMG"] = {"Dégâts de l'arme", "Dégâts Arme"}
+D["MOUNT_SPEED"] = {"Vitesse de monte (%)", "Vit. de monte (%)"}
+D["RUN_SPEED"] = {"Vitesse (%)","Vit. (%)"}
 
-	["STR"] = {"Force", "For"},
-	["AGI"] = {"Agilité", "Agi"},
-	["STA"] = {"Endurance", "End"},
-	["INT"] = {"Intelligence", "Int"},
-	["SPI"] = {"Esprit", "Esp"},
-	["ARMOR"] = {"Armure", "Armure"},
-	["ARMOR_BONUS"] = {"Armure bonus", "Armure bonus"},
+D["STR"] = {"Force", "For"}
+D["AGI"] = {"Agilité", "Agi"}
+D["STA"] = {"Endurance", "End"}
+D["INT"] = {"Intelligence", "Int"}
+D["SPI"] = {"Esprit", "Esp"}
+D["ARMOR"] = {"Armure", "Armure"}
+D["ARMOR_BONUS"] = {"Armure bonus", "Armure bonus"}
 
-	["FIRE_RES"] = {"Résistance au Feu", "RF"},
-	["NATURE_RES"] = {"Résistance à la Nature", "RN"},
-	["FROST_RES"] = {"Résistance au Givre", "RG"},
-	["SHADOW_RES"] = {"Résistance à l'Ombre", "RO"},
-	["ARCANE_RES"] = {"Résistance aux Arcanes", "RA"},
+D["FIRE_RES"] = {"Résistance au Feu", "RF"}
+D["NATURE_RES"] = {"Résistance à la Nature", "RN"}
+D["FROST_RES"] = {"Résistance au Givre", "RG"}
+D["SHADOW_RES"] = {"Résistance à l'Ombre", "RO"}
+D["ARCANE_RES"] = {"Résistance aux Arcanes", "RA"}
 
-	["FISHING"] = {"Pêche", "Pêche"},
-	["MINING"] = {"Minage", "Minage"},
-	["HERBALISM"] = {"Herboristerie", "Herboristerie"},
-	["SKINNING"] = {"Dépeçage", "Dépeçage"},
+D["FISHING"] = {"Pêche", "Pêche"}
+D["MINING"] = {"Minage", "Minage"}
+D["HERBALISM"] = {"Herboristerie", "Herboristerie"}
+D["SKINNING"] = {"Dépeçage", "Dépeçage"}
 
-	["BLOCK_VALUE"] = {"Valeur de blocage", "Valeur de blocage"},
+D["BLOCK_VALUE"] = {"Valeur de blocage", "Valeur de blocage"}
 
-	["AP"] = {"Puissance d'attaque", "PA"},
-	["RANGED_AP"] = {"Puissance d'attaque à distance", "PA Dist."},
-	["FERAL_AP"] = {"Puissance d'attaque Farouche", "PA Farouche"},
-	["AP_UNDEAD"] = {"Puissance d'attaque (Mort-vivant)", "PA (Mort-vivant)"},
-	["AP_DEMON"] = {"Puissance d'attaque (Démon)", "PA (Démon)"},
+D["AP"] = {"Puissance d'attaque", "PA"}
+D["RANGED_AP"] = {"Puissance d'attaque à distance", "PA Dist."}
+D["FERAL_AP"] = {"Puissance d'attaque Farouche", "PA Farouche"}
+D["AP_UNDEAD"] = {"Puissance d'attaque (Mort-vivant)", "PA (Mort-vivant)"}
+D["AP_DEMON"] = {"Puissance d'attaque (Démon)", "PA (Démon)"}
 
-	["HEAL"] = {"Puissance des soins", "Soins"},
+D["HEAL"] = {"Puissance des soins", "Soins"}
 
-	["SPELL_DMG"] = {"Dégâts des sorts", "Dégâts"},
-	["SPELL_DMG_UNDEAD"] = {"Dégâts des sorts (Mort-vivant)", "Dégâts (Mort-vivant)"},
-	["SPELL_DMG_DEMON"] = {"Dégâts des sorts (Démon)", "Dégâts (Démon)"},
-	["HOLY_SPELL_DMG"] = {"Dégâts des sorts du Sacré", "Dégâts Sacré"},
-	["FIRE_SPELL_DMG"] = {"Dégâts des sorts de Feu", "Dégâts Feu"},
-	["NATURE_SPELL_DMG"] = {"Dégâts des sorts de Nature", "Dégâts Nature"},
-	["FROST_SPELL_DMG"] = {"Dégâts des sorts de Givre", "Dégâts Givre"},
-	["SHADOW_SPELL_DMG"] = {"Dégâts des sorts d'Ombre", "Dégâts Ombre"},
-	["ARCANE_SPELL_DMG"] = {"Dégâts des sorts des Arcanes", "Dégâts Arcanes"},
+D["SPELL_DMG"] = {"Dégâts des sorts", "Dégâts"}
+D["SPELL_DMG_UNDEAD"] = {"Dégâts des sorts (Mort-vivant)", "Dégâts (Mort-vivant)"}
+D["SPELL_DMG_DEMON"] = {"Dégâts des sorts (Démon)", "Dégâts (Démon)"}
+D["HOLY_SPELL_DMG"] = {"Dégâts des sorts du Sacré", "Dégâts Sacré"}
+D["FIRE_SPELL_DMG"] = {"Dégâts des sorts de Feu", "Dégâts Feu"}
+D["NATURE_SPELL_DMG"] = {"Dégâts des sorts de Nature", "Dégâts Nature"}
+D["FROST_SPELL_DMG"] = {"Dégâts des sorts de Givre", "Dégâts Givre"}
+D["SHADOW_SPELL_DMG"] = {"Dégâts des sorts d'Ombre", "Dégâts Ombre"}
+D["ARCANE_SPELL_DMG"] = {"Dégâts des sorts des Arcanes", "Dégâts Arcanes"}
 
-	["SPELLPEN"] = {"Pénétration des sorts", "Pénétration"},
+D["SPELLPEN"] = {"Pénétration des sorts", "Pénétration"}
 
-	["HEALTH"] = {"Points de vie", "PV"},
-	["MANA"] = {"Points de mana", "Mana"},
-	["HEALTH_REG"] = {"Régén. vie (combat)", "Régén. vie (combat)"},
-	["MANA_REG"] = {"Régén. mana (incantation)", "Régén. mana (incantation)"},
+D["HEALTH"] = {"Points de vie", "PV"}
+D["MANA"] = {"Points de mana", "Mana"}
+D["HEALTH_REG"] = {"Régén. vie (combat)", "Régén. vie (combat)"}
+D["MANA_REG"] = {"Régén. mana (incantation)", "Régén. mana (incantation)"}
 
-	["AVERAGE_DAMAGE"] = {"Average Damage", "Avg Dmg"},
-	["DPS"] = {"Dégâts par seconde", "DPS"},
+D["AVERAGE_DAMAGE"] = {"Average Damage", "Avg Dmg"}
+D["DPS"] = {"Dégâts par seconde", "DPS"}
 
-	["DEFENSE_RATING"] = {"Score de défense", "Défense"},
-	["DODGE_RATING"] = {"Score d'esquive", "Esquive"},
-	["PARRY_RATING"] = {"Score de parade", "Parade"},
-	["BLOCK_RATING"] = {"Score de blocage", "Blocage"},
-	["MELEE_HIT_RATING"] = {"Score de toucher", "Score de toucher"},
-	["RANGED_HIT_RATING"] = {"Score de toucher à distance", "Score de toucher à distance"},
-	["SPELL_HIT_RATING"] = {"Score de toucher des sorts", "Score de toucher des sorts"},
-	["MELEE_CRIT_RATING"] = {"Score de coup critique", "Score de coup critique"},
-	["RANGED_CRIT_RATING"] = {"Score de coup critique à distance", "Score de coup critique à distance"},
-	["SPELL_CRIT_RATING"] = {"Score de coup critique des sorts", "Score de coup critique des sorts"},
-	["RESILIENCE_RATING"] = {"Score de résilience", "Résilience"},
-	["MELEE_HASTE_RATING"] = {"Score de hâte", "Hâte"},
-	["RANGED_HASTE_RATING"] = {"Score de hâte à distance", "Score de hâte à distance"},
-	["SPELL_HASTE_RATING"] = {"Score de hâte des sorts","Score de hâte des sorts"},
-	["DAGGER_WEAPON_RATING"] = {"Compétence en Dagues", "Dagues"},
-	["SWORD_WEAPON_RATING"] = {"Compétence en Epées à une main", "Epées à une main"},
-	["2H_SWORD_WEAPON_RATING"] = {"Compétence en Epées à deux mains", "Epées à deux mains"},
-	["AXE_WEAPON_RATING"] = {"Compétence en Haches à une main", "Haches à une main"},
-	["2H_AXE_WEAPON_RATING"] = {"Compétence en Haches à deux mains", "Haches à deux mains"},
-	["MACE_WEAPON_RATING"] = {"Compétence en Masses à une main", "Masses à une main"},
-	["2H_MACE_WEAPON_RATING"] = {"Compétence en Masses à deux mains", "Masses à deux mains"},
-	["GUN_WEAPON_RATING"] = {"Compétence en Armes à feu", "Armes à feu"},
-	["CROSSBOW_WEAPON_RATING"] = {"Compétence en Arbalètes", "Arbalètes"},
-	["BOW_WEAPON_RATING"] = {"Compétence en Arcs", "Arcs"},
-	["FERAL_WEAPON_RATING"] = {"Compétence en Combat farouche", "Combat farouche"},
-	["FIST_WEAPON_RATING"] = {"Compétence en Armes de pugilat", "Armes de pugilat"}, 
-	["STAFF_WEAPON_RATING"] = {"Compétence en Bâtons", "Bâtons"}, -- [Jambières du Croc] ID:10410
-	["EXPERTISE_RATING"] = {"Score d'Expertise", "Score d'Expertise"},
-	["ARMOR_PENETRATION_RATING"] = {"Pénétration d'armure".." "..RATING, "ArP".." "..RATING},
-
-	---------------------------------------------------------------------------
-	-- Tier2 Stats - Stats that only show up when broken down from a Tier1 stat
-	-- Str -> AP, Block Value
-	-- Agi -> AP, Crit, Dodge
-	-- Sta -> Health
-	-- Int -> Mana, Spell Crit
-	-- Spi -> mp5nc, hp5oc
-	-- Ratings -> Effect
-	["HEALTH_REG_OUT_OF_COMBAT"] = {"Régén. vie (hors combat)", "Régén. vie (hors combat)"},
-	["MANA_REG_NOT_CASTING"] = {"Régén. mana (hors incantation)", "Régén. mana (hors incantation)"},
-	["MELEE_CRIT_DMG_REDUCTION"] = {"Diminution des dégâts des coups critiques en mêlée (%)", "Dim. dégâts crit. (mêlée)(%)"},
-	["RANGED_CRIT_DMG_REDUCTION"] = {"Diminution des dégâts des coups critiques à distance (%)", "Dim. dégâts crit. (dist.)(%)"},
-	["SPELL_CRIT_DMG_REDUCTION"] = {"Diminution des dégâts des coups critiques des sorts (%)", "Dim. dégâts crit. (sorts)(%)"},
-	["DEFENSE"] = {"Défense", "Défense"},
-	["DODGE"] = {"Esquive (%)", "Esquive (%)"},
-	["PARRY"] = {"Parade (%)", "Parade (%)"},
-	["BLOCK"] = {"Blocage (%)", "Blocage (%)"},
-	["AVOIDANCE"] = {"Évitement (%)", "Évitement (%)"},
-	["MELEE_HIT"] = {"Toucher (%)", "Toucher(%)"},
-	["RANGED_HIT"] = {"Toucher à distance (%)", " Toucher (dist.)(%)"},
-	["SPELL_HIT"] = {"Toucher des sorts (%)", "Toucher (sorts)(%)"},
-	["MELEE_HIT_AVOID"] = {"Score d'évitement des coups en mêlée (%)", "Évi. des coups (mêlée)(%)"},
-	["MELEE_CRIT"] = {"Critiques (%)", "Crit.(%)"},
-	["RANGED_CRIT"] = {"Critiques à distance (%)", "Crit. (dist.)(%)"},
-	["SPELL_CRIT"] = {"Critiques des sorts (%)", "Crit. (sorts)(%)"},
-	["MELEE_CRIT_AVOID"] = {"Évitement des critiques en mêlée", "Évi. des crit. (mêlée)(%)"},
-	["MELEE_HASTE"] = {"Hâte (%)", "Hâte(%)"}, --
-	["RANGED_HASTE"] = {"Hâte à distance (%)", "Hâte (dist.)(%)"},
-	["SPELL_HASTE"] = {"Hâte des sorts (%)", " Hâte (sorts)(%)"},
-	["DAGGER_WEAPON"] = {"Compétence en Dagues", "Dagues"},
-	["SWORD_WEAPON"] = {"Compétence en Epées à une main", "Epées à une main"},
-	["2H_SWORD_WEAPON"] = {"Compétence en Epées à deux mains", "Epées à deux mains"},
-	["AXE_WEAPON"] = {"Compétence en Haches à une main", "Haches à une main"},
-	["2H_AXE_WEAPON"] = {"Compétence en Haches à deux mains", "Haches à deux mains"},
-	["MACE_WEAPON"] = {"Compétence en Masses à une main", "Masses à une main"},
-	["2H_MACE_WEAPON"] = {"Compétence en Masses à deux mains", "Masses à deux mains"},
-	["GUN_WEAPON"] = {"Compétence en Armes à feu", "Armes à feu"},
-	["CROSSBOW_WEAPON"] = {"Compétence en Arbalètes", "Arbalètes"},
-	["BOW_WEAPON"] = {"Compétence en Arcs", "Arcs"},
-	["FERAL_WEAPON"] = {"Compétence en Combat farouche", "Combat farouche"},
-	["FIST_WEAPON"] = {"Compétence en Armes de pugilat", "Armes de pugilat"},
-	["STAFF_WEAPON"] = {"Compétence en Bâtons", "Bâtons"}, -- [Jambières du Croc] ID:10410
-	["EXPERTISE"] = {"Expertise", "Expertise"},
-	["ARMOR_PENETRATION"] = {"Pénétration d'armure(%)", "PenAr(%)"},
-
-	---------------------------------------------------------------------------
-	-- Tier3 Stats - Stats that only show up when broken down from a Tier2 stat
-	-- Defense -> Crit Avoidance, Hit Avoidance, Dodge, Parry, Block
-	-- Weapon Skill -> Crit, Hit, Dodge Neglect, Parry Neglect, Block Neglect
-	-- Expertise -> Dodge Neglect, Parry Neglect
-	["DODGE_NEGLECT"] = {"Diminution d'Esquive (%)", "Diminution d'Esquive (%)"},
-	["PARRY_NEGLECT"] = {"Diminution de Parade (%)", "Diminution de Parade (%)"},
-	["BLOCK_NEGLECT"] = {"Diminution de Blocage (%)", "Diminution de Blocage (%)"},
-
-	---------------------------------------------------------------------------
-	-- Talants
-	["MELEE_CRIT_DMG"] = {"Dégâts des critiques en mêlée(%)", "Dégâts crit. (mêlée)(%)"},
-	["RANGED_CRIT_DMG"] = {"Dégâts des critiques à distance(%)", "Dégâts crit. (distance)(%)"},
-	["SPELL_CRIT_DMG"] = {"Dégâts des critiques des sorts(%)", "Dégâts crit. (sorts)(%)"},
-
-	---------------------------------------------------------------------------
-	-- Spell Stats
-	-- These values can be prefixed with a @ and spell name, using reverse translation to english from Babble-Spell-2.2
-	-- Ex: "Heroic Strike@RAGE_COST" for Heroic Strike rage cost
-	-- Ex: "Heroic Strike@THREAT" for Heroic Strike threat value
-	-- Use strsplit("@", text) to seperate the spell name and statid
-	["THREAT"] = {"Menace", "Menace"},
-	["CAST_TIME"] = {"Temps d'incantation", "Temps d'incantation"},
-	["MANA_COST"] = {"Coût en mana", "Coût Mana"},
-	["RAGE_COST"] = {"Coût en rage", "Coût Rage"},
-	["ENERGY_COST"] = {"Coût en énergie", "Coût Énergie"},
-	["COOLDOWN"] = {"Temps de recharge", "CD"},
-
-	---------------------------------------------------------------------------
-	-- Stats Mods
-	["MOD_STR"] = {"Mod Force (%)", "Mod For (%)"},
-	["MOD_AGI"] = {"Mod Agilité (%)", "Mod Agi (%)"},
-	["MOD_STA"] = {"Mod Endurance (%)", "Mod End (%)"},
-	["MOD_INT"] = {"Mod Intelligence (%)", "Mod Int (%)"},
-	["MOD_SPI"] = {"Mod Esprit (%)", "Mod Esp (%)"},
-	["MOD_HEALTH"] = {"Mod Points de vie (%)", "Mod PV (%)"},
-	["MOD_MANA"] = {"Mod Points de mana (%)", "Mod PM (%)"},
-	["MOD_ARMOR"] = {"Mod Armure des objets (%)", "Mod Armure (objets)(%)"},
-	["MOD_BLOCK_VALUE"] = {"Mod Valeur de blocage (%)", "Mod Valeur de blocage (%)"},
-	["MOD_DMG"] = {"Mod Damage (%)", "Mod Dmg (%)"},
-	["MOD_DMG_TAKEN"] = {"Mod Dégâts subis (%)", "Mod Dégâts subis (%)"},
-	["MOD_CRIT_DAMAGE"] = {"Mod Dégâts critiques (%)", "Mod Dégâts crit. (%)"},
-	["MOD_CRIT_DAMAGE_TAKEN"] = {"Mod Dégâts critiques subis (%)", "Mod Dégâts crit. subis (%)"},
-	["MOD_THREAT"] = {"Mod Menace (%)", "Mod Menace (%)"},
-	["MOD_AP"] = {"Mod Puissance d'attaque (%)", "Mod PA (%)"},
-	["MOD_RANGED_AP"] = {"Mod Puissance d'attaque à distance (%)", "Mod PA (dist.) (%)"},
-	["MOD_SPELL_DMG"] = {"Mod Dégâts des sorts (%)", "Mod Dégâts des sorts (%)"},
-	["MOD_HEALING"] = {"Mod Soins (%)", "Mod Soins (%)"},
-	["MOD_CAST_TIME"] = {"Mod Temps d'incantation (%)", "Mod Temps d'incantation (%)"},
-	["MOD_MANA_COST"] = {"Mod Coût en mana (%)", "Mod Coût Mana (%)"},
-	["MOD_RAGE_COST"] = {"Mod Coût en rage (%)", "Mod Coût Rage (%)"},
-	["MOD_ENERGY_COST"] = {"Mod Coût en énergie (%)", "Mod Coût Énergie (%)"},
-	["MOD_COOLDOWN"] = {"Mod Temps de recharge (%)", "Mod CD (%)"},
-
-	---------------------------------------------------------------------------
-	-- Misc Stats
-	["WEAPON_RATING"] = {"Compétence d'arme", "Comp. d'arme"},
-	["WEAPON_SKILL"] = {"Compétence d'arme", "Comp. d'arme"},
-	["MAINHAND_WEAPON_RATING"] = {"Compétence d'arme en main droite", "Comp. d'arme main droite"},
-	["OFFHAND_WEAPON_RATING"] = {"Compétence d'arme en main gauche", "Comp. d'arme main gauche"},
-	["RANGED_WEAPON_RATING"] = {"Compétence d'arme à distance", "Comp. d'arme à distance"},
-}
+D["DEFENSE_RATING"] = {"Score de défense", "Défense"}
+D["DODGE_RATING"] = {"Score d'esquive", "Esquive"}
+D["PARRY_RATING"] = {"Score de parade", "Parade"}
+D["BLOCK_RATING"] = {"Score de blocage", "Blocage"}
+D["MELEE_HIT_RATING"] = {"Score de toucher", "Score de toucher"}
+D["RANGED_HIT_RATING"] = {"Score de toucher à distance", "Score de toucher à distance"}
+D["SPELL_HIT_RATING"] = {"Score de toucher des sorts", "Score de toucher des sorts"}
+D["MELEE_CRIT_RATING"] = {"Score de coup critique", "Score de coup critique"}
+D["RANGED_CRIT_RATING"] = {"Score de coup critique à distance", "Score de coup critique à distance"}
+D["SPELL_CRIT_RATING"] = {"Score de coup critique des sorts", "Score de coup critique des sorts"}
+D["RESILIENCE_RATING"] = {"Score de résilience", "Résilience"}
+D["MELEE_HASTE_RATING"] = {"Score de hâte", "Hâte"}
+D["RANGED_HASTE_RATING"] = {"Score de hâte à distance", "Score de hâte à distance"}
+D["SPELL_HASTE_RATING"] = {"Score de hâte des sorts","Score de hâte des sorts"}
+D["DAGGER_WEAPON_RATING"] = {"Compétence en Dagues", "Dagues"}
+D["SWORD_WEAPON_RATING"] = {"Compétence en Epées à une main", "Epées à une main"}
+D["2H_SWORD_WEAPON_RATING"] = {"Compétence en Epées à deux mains", "Epées à deux mains"}
+D["AXE_WEAPON_RATING"] = {"Compétence en Haches à une main", "Haches à une main"}
+D["2H_AXE_WEAPON_RATING"] = {"Compétence en Haches à deux mains", "Haches à deux mains"}
+D["MACE_WEAPON_RATING"] = {"Compétence en Masses à une main", "Masses à une main"}
+D["2H_MACE_WEAPON_RATING"] = {"Compétence en Masses à deux mains", "Masses à deux mains"}
+D["GUN_WEAPON_RATING"] = {"Compétence en Armes à feu", "Armes à feu"}
+D["CROSSBOW_WEAPON_RATING"] = {"Compétence en Arbalètes", "Arbalètes"}
+D["BOW_WEAPON_RATING"] = {"Compétence en Arcs", "Arcs"}
+D["FERAL_WEAPON_RATING"] = {"Compétence en Combat farouche", "Combat farouche"}
+D["FIST_WEAPON_RATING"] = {"Compétence en Armes de pugilat", "Armes de pugilat"}
+D["STAFF_WEAPON_RATING"] = {"Compétence en Bâtons", "Bâtons"} -- [Jambières du Croc] ID:10410
+D["EXPERTISE_RATING"] = {"Score d'Expertise", "Score d'Expertise"}
+D["ARMOR_PENETRATION_RATING"] = {"Pénétration d'armure".." "..RATING, "ArP".." "..RATING}
+-- Tier2 Stats - Stats that only show up when broken down from a Tier1 stat
+-- Str -> AP, Block Value
+-- Agi -> AP, Crit, Dodge
+-- Sta -> Health
+-- Int -> Mana, Spell Crit
+-- Spi -> mp5nc, hp5oc
+-- Ratings -> Effect
+D["HEALTH_REG_OUT_OF_COMBAT"] = {"Régén. vie (hors combat)", "Régén. vie (hors combat)"}
+D["MANA_REG_NOT_CASTING"] = {"Régén. mana (hors incantation)", "Régén. mana (hors incantation)"}
+D["MELEE_CRIT_DMG_REDUCTION"] = {"Diminution des dégâts des coups critiques en mêlée (%)", "Dim. dégâts crit. (mêlée)(%)"}
+D["RANGED_CRIT_DMG_REDUCTION"] = {"Diminution des dégâts des coups critiques à distance (%)", "Dim. dégâts crit. (dist.)(%)"}
+D["SPELL_CRIT_DMG_REDUCTION"] = {"Diminution des dégâts des coups critiques des sorts (%)", "Dim. dégâts crit. (sorts)(%)"}
+D["DEFENSE"] = {"Défense", "Défense"}
+D["DODGE"] = {"Esquive (%)", "Esquive (%)"}
+D["PARRY"] = {"Parade (%)", "Parade (%)"}
+D["BLOCK"] = {"Blocage (%)", "Blocage (%)"}
+D["AVOIDANCE"] = {"Évitement (%)", "Évitement (%)"}
+D["MELEE_HIT"] = {"Toucher (%)", "Toucher(%)"}
+D["RANGED_HIT"] = {"Toucher à distance (%)", " Toucher (dist.)(%)"}
+D["SPELL_HIT"] = {"Toucher des sorts (%)", "Toucher (sorts)(%)"}
+D["MELEE_HIT_AVOID"] = {"Score d'évitement des coups en mêlée (%)", "Évi. des coups (mêlée)(%)"}
+D["MELEE_CRIT"] = {"Critiques (%)", "Crit.(%)"}
+D["RANGED_CRIT"] = {"Critiques à distance (%)", "Crit. (dist.)(%)"}
+D["SPELL_CRIT"] = {"Critiques des sorts (%)", "Crit. (sorts)(%)"}
+D["MELEE_CRIT_AVOID"] = {"Évitement des critiques en mêlée", "Évi. des crit. (mêlée)(%)"}
+D["MELEE_HASTE"] = {"Hâte (%)", "Hâte(%)"} --
+D["RANGED_HASTE"] = {"Hâte à distance (%)", "Hâte (dist.)(%)"}
+D["SPELL_HASTE"] = {"Hâte des sorts (%)", " Hâte (sorts)(%)"}
+D["DAGGER_WEAPON"] = {"Compétence en Dagues", "Dagues"}
+D["SWORD_WEAPON"] = {"Compétence en Epées à une main", "Epées à une main"}
+D["2H_SWORD_WEAPON"] = {"Compétence en Epées à deux mains", "Epées à deux mains"}
+D["AXE_WEAPON"] = {"Compétence en Haches à une main", "Haches à une main"}
+D["2H_AXE_WEAPON"] = {"Compétence en Haches à deux mains", "Haches à deux mains"}
+D["MACE_WEAPON"] = {"Compétence en Masses à une main", "Masses à une main"}
+D["2H_MACE_WEAPON"] = {"Compétence en Masses à deux mains", "Masses à deux mains"}
+D["GUN_WEAPON"] = {"Compétence en Armes à feu", "Armes à feu"}
+D["CROSSBOW_WEAPON"] = {"Compétence en Arbalètes", "Arbalètes"}
+D["BOW_WEAPON"] = {"Compétence en Arcs", "Arcs"}
+D["FERAL_WEAPON"] = {"Compétence en Combat farouche", "Combat farouche"}
+D["FIST_WEAPON"] = {"Compétence en Armes de pugilat", "Armes de pugilat"}
+D["STAFF_WEAPON"] = {"Compétence en Bâtons", "Bâtons"} -- [Jambières du Croc] ID:10410
+D["EXPERTISE"] = {"Expertise", "Expertise"}
+D["ARMOR_PENETRATION"] = {"Pénétration d'armure(%)", "PenAr(%)"}
+-- Tier3 Stats - Stats that only show up when broken down from a Tier2 stat
+-- Defense -> Crit Avoidance, Hit Avoidance, Dodge, Parry, Block
+-- Weapon Skill -> Crit, Hit, Dodge Neglect, Parry Neglect, Block Neglect
+-- Expertise -> Dodge Neglect, Parry Neglect
+D["DODGE_NEGLECT"] = {"Diminution d'Esquive (%)", "Diminution d'Esquive (%)"}
+D["PARRY_NEGLECT"] = {"Diminution de Parade (%)", "Diminution de Parade (%)"}
+D["BLOCK_NEGLECT"] = {"Diminution de Blocage (%)", "Diminution de Blocage (%)"}
+-- Talents
+D["MELEE_CRIT_DMG"] = {"Dégâts des critiques en mêlée(%)", "Dégâts crit. (mêlée)(%)"}
+D["RANGED_CRIT_DMG"] = {"Dégâts des critiques à distance(%)", "Dégâts crit. (distance)(%)"}
+D["SPELL_CRIT_DMG"] = {"Dégâts des critiques des sorts(%)", "Dégâts crit. (sorts)(%)"}
+-- Spell Stats
+-- These values can be prefixed with a @ and spell name, using reverse translation to english from Babble-Spell-2.2
+-- Ex: "Heroic Strike@RAGE_COST" for Heroic Strike rage cost
+-- Ex: "Heroic Strike@THREAT" for Heroic Strike threat value
+-- Use strsplit("@", text) to seperate the spell name and statid
+D["THREAT"] = {"Menace", "Menace"}
+D["CAST_TIME"] = {"Temps d'incantation", "Temps d'incantation"}
+D["MANA_COST"] = {"Coût en mana", "Coût Mana"}
+D["RAGE_COST"] = {"Coût en rage", "Coût Rage"}
+D["ENERGY_COST"] = {"Coût en énergie", "Coût Énergie"}
+D["COOLDOWN"] = {"Temps de recharge", "CD"}
+-- Stats Mods
+D["MOD_STR"] = {"Mod Force (%)", "Mod For (%)"}
+D["MOD_AGI"] = {"Mod Agilité (%)", "Mod Agi (%)"}
+D["MOD_STA"] = {"Mod Endurance (%)", "Mod End (%)"}
+D["MOD_INT"] = {"Mod Intelligence (%)", "Mod Int (%)"}
+D["MOD_SPI"] = {"Mod Esprit (%)", "Mod Esp (%)"}
+D["MOD_HEALTH"] = {"Mod Points de vie (%)", "Mod PV (%)"}
+D["MOD_MANA"] = {"Mod Points de mana (%)", "Mod PM (%)"}
+D["MOD_ARMOR"] = {"Mod Armure des objets (%)", "Mod Armure (objets)(%)"}
+D["MOD_BLOCK_VALUE"] = {"Mod Valeur de blocage (%)", "Mod Valeur de blocage (%)"}
+D["MOD_DMG"] = {"Mod Damage (%)", "Mod Dmg (%)"}
+D["MOD_DMG_TAKEN"] = {"Mod Dégâts subis (%)", "Mod Dégâts subis (%)"}
+D["MOD_CRIT_DAMAGE"] = {"Mod Dégâts critiques (%)", "Mod Dégâts crit. (%)"}
+D["MOD_CRIT_DAMAGE_TAKEN"] = {"Mod Dégâts critiques subis (%)", "Mod Dégâts crit. subis (%)"}
+D["MOD_THREAT"] = {"Mod Menace (%)", "Mod Menace (%)"}
+D["MOD_AP"] = {"Mod Puissance d'attaque (%)", "Mod PA (%)"}
+D["MOD_RANGED_AP"] = {"Mod Puissance d'attaque à distance (%)", "Mod PA (dist.) (%)"}
+D["MOD_SPELL_DMG"] = {"Mod Dégâts des sorts (%)", "Mod Dégâts des sorts (%)"}
+D["MOD_HEALING"] = {"Mod Soins (%)", "Mod Soins (%)"}
+D["MOD_CAST_TIME"] = {"Mod Temps d'incantation (%)", "Mod Temps d'incantation (%)"}
+D["MOD_MANA_COST"] = {"Mod Coût en mana (%)", "Mod Coût Mana (%)"}
+D["MOD_RAGE_COST"] = {"Mod Coût en rage (%)", "Mod Coût Rage (%)"}
+D["MOD_ENERGY_COST"] = {"Mod Coût en énergie (%)", "Mod Coût Énergie (%)"}
+D["MOD_COOLDOWN"] = {"Mod Temps de recharge (%)", "Mod CD (%)"}
+-- Misc Stats
+D["WEAPON_RATING"] = {"Compétence d'arme", "Comp. d'arme"}
+D["WEAPON_SKILL"] = {"Compétence d'arme", "Comp. d'arme"}
+D["MAINHAND_WEAPON_RATING"] = {"Compétence d'arme en main droite", "Comp. d'arme main droite"}
+D["OFFHAND_WEAPON_RATING"] = {"Compétence d'arme en main gauche", "Comp. d'arme main gauche"}
+D["RANGED_WEAPON_RATING"] = {"Compétence d'arme à distance", "Comp. d'arme à distance"}

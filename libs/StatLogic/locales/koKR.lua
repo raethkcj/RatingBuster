@@ -419,206 +419,191 @@ local D = LibStub("AceLocale-3.0"):NewLocale("StatLogicD", "koKR")
 -- Please localize these strings too, global strings were used in the enUS locale just to have minimum
 -- localization effect when a locale is not available for that language, you don't have to use global
 -- strings in your localization.
-D["StatIDToName"] = {
-	--[StatID] = {FullName, ShortName},
-	---------------------------------------------------------------------------
-	-- Tier1 Stats - Stats parsed directly off items
-	["EMPTY_SOCKET_RED"] = {EMPTY_SOCKET_RED, EMPTY_SOCKET_RED}, -- EMPTY_SOCKET_RED = "Red Socket";
-	["EMPTY_SOCKET_YELLOW"] = {EMPTY_SOCKET_YELLOW, EMPTY_SOCKET_YELLOW}, -- EMPTY_SOCKET_YELLOW = "Yellow Socket";
-	["EMPTY_SOCKET_BLUE"] = {EMPTY_SOCKET_BLUE, EMPTY_SOCKET_BLUE}, -- EMPTY_SOCKET_BLUE = "Blue Socket";
-	["EMPTY_SOCKET_META"] = {EMPTY_SOCKET_META, EMPTY_SOCKET_META}, -- EMPTY_SOCKET_META = "Meta Socket";
+--[StatID] = {FullName, ShortName}
+---------------------------------------------------------------------------
+-- Tier1 Stats - Stats parsed directly off items
+D["EMPTY_SOCKET_RED"] = {EMPTY_SOCKET_RED, EMPTY_SOCKET_RED} -- EMPTY_SOCKET_RED = "Red Socket";
+D["EMPTY_SOCKET_YELLOW"] = {EMPTY_SOCKET_YELLOW, EMPTY_SOCKET_YELLOW} -- EMPTY_SOCKET_YELLOW = "Yellow Socket";
+D["EMPTY_SOCKET_BLUE"] = {EMPTY_SOCKET_BLUE, EMPTY_SOCKET_BLUE} -- EMPTY_SOCKET_BLUE = "Blue Socket";
+D["EMPTY_SOCKET_META"] = {EMPTY_SOCKET_META, EMPTY_SOCKET_META} -- EMPTY_SOCKET_META = "Meta Socket";
 
-	["IGNORE_ARMOR"] = {"방어도 무시", "Ignore Armor"},
-	["THREAT_MOD"] = {"위협(%)", "Threat(%)"},
-	["STEALTH_LEVEL"] = {"은신 등급", "Stealth"},
-	["MELEE_DMG"] = {"근접 무기 "..DAMAGE, "Wpn Dmg"}, -- DAMAGE = "Damage"
-	["MOUNT_SPEED"] = {"탈것 속도(%)", "Mount Spd(%)"},
-	["RUN_SPEED"] = {"이동 속도(%)", "Run Spd(%)"},
+D["IGNORE_ARMOR"] = {"방어도 무시", "Ignore Armor"}
+D["THREAT_MOD"] = {"위협(%)", "Threat(%)"}
+D["STEALTH_LEVEL"] = {"은신 등급", "Stealth"}
+D["MELEE_DMG"] = {"근접 무기 "..DAMAGE, "Wpn Dmg"} -- DAMAGE = "Damage"
+D["MOUNT_SPEED"] = {"탈것 속도(%)", "Mount Spd(%)"}
+D["RUN_SPEED"] = {"이동 속도(%)", "Run Spd(%)"}
 
-	["STR"] = {SPELL_STAT1_NAME, "Str"},
-	["AGI"] = {SPELL_STAT2_NAME, "Agi"},
-	["STA"] = {SPELL_STAT3_NAME, "Sta"},
-	["INT"] = {SPELL_STAT4_NAME, "Int"},
-	["SPI"] = {SPELL_STAT5_NAME, "Spi"},
-	["ARMOR"] = {ARMOR, ARMOR},
-	["ARMOR_BONUS"] = {"효과에 의한"..ARMOR, ARMOR.."(Bonus)"},
+D["STR"] = {SPELL_STAT1_NAME, "Str"}
+D["AGI"] = {SPELL_STAT2_NAME, "Agi"}
+D["STA"] = {SPELL_STAT3_NAME, "Sta"}
+D["INT"] = {SPELL_STAT4_NAME, "Int"}
+D["SPI"] = {SPELL_STAT5_NAME, "Spi"}
+D["ARMOR"] = {ARMOR, ARMOR}
+D["ARMOR_BONUS"] = {"효과에 의한"..ARMOR, ARMOR.."(Bonus)"}
 
-	["FIRE_RES"] = {RESISTANCE2_NAME, "FR"},
-	["NATURE_RES"] = {RESISTANCE3_NAME, "NR"},
-	["FROST_RES"] = {RESISTANCE4_NAME, "FrR"},
-	["SHADOW_RES"] = {RESISTANCE5_NAME, "SR"},
-	["ARCANE_RES"] = {RESISTANCE6_NAME, "AR"},
+D["FIRE_RES"] = {RESISTANCE2_NAME, "FR"}
+D["NATURE_RES"] = {RESISTANCE3_NAME, "NR"}
+D["FROST_RES"] = {RESISTANCE4_NAME, "FrR"}
+D["SHADOW_RES"] = {RESISTANCE5_NAME, "SR"}
+D["ARCANE_RES"] = {RESISTANCE6_NAME, "AR"}
 
-	["FISHING"] = {"낚시", "Fishing"},
-	["MINING"] = {"채광", "Mining"},
-	["HERBALISM"] = {"약초채집", "Herbalism"},
-	["SKINNING"] = {"무두질", "Skinning"},
+D["FISHING"] = {"낚시", "Fishing"}
+D["MINING"] = {"채광", "Mining"}
+D["HERBALISM"] = {"약초채집", "Herbalism"}
+D["SKINNING"] = {"무두질", "Skinning"}
 
-	["BLOCK_VALUE"] = {"피해 방어량", "Block Value"},
+D["BLOCK_VALUE"] = {"피해 방어량", "Block Value"}
 
-	["AP"] = {"전투력", "AP"},
-	["RANGED_AP"] = {RANGED_ATTACK_POWER, "RAP"},
-	["FERAL_AP"] = {"야생 전투력", "Feral AP"},
-	["AP_UNDEAD"] = {"전투력 (언데드)", "AP(Undead)"},
-	["AP_DEMON"] = {"전투력 (악마)", "AP(Demon)"},
+D["AP"] = {"전투력", "AP"}
+D["RANGED_AP"] = {RANGED_ATTACK_POWER, "RAP"}
+D["FERAL_AP"] = {"야생 전투력", "Feral AP"}
+D["AP_UNDEAD"] = {"전투력 (언데드)", "AP(Undead)"}
+D["AP_DEMON"] = {"전투력 (악마)", "AP(Demon)"}
 
-	["HEAL"] = {"치유량", "Heal"},
+D["HEAL"] = {"치유량", "Heal"}
 
-	["SPELL_DMG"] = {PLAYERSTAT_SPELL_COMBAT.." "..DAMAGE, PLAYERSTAT_SPELL_COMBAT.." Dmg"},
-	["SPELL_DMG_UNDEAD"] = {PLAYERSTAT_SPELL_COMBAT.." "..DAMAGE.." (언데드)", PLAYERSTAT_SPELL_COMBAT.." Dmg".."(Undead)"},
-	["SPELL_DMG_DEMON"] = {PLAYERSTAT_SPELL_COMBAT.." "..DAMAGE.." (악마)", PLAYERSTAT_SPELL_COMBAT.." Dmg".."(Demon)"},
-	["HOLY_SPELL_DMG"] = {SPELL_SCHOOL1_CAP.." "..DAMAGE, SPELL_SCHOOL1_CAP.." Dmg"},
-	["FIRE_SPELL_DMG"] = {SPELL_SCHOOL2_CAP.." "..DAMAGE, SPELL_SCHOOL2_CAP.." Dmg"},
-	["NATURE_SPELL_DMG"] = {SPELL_SCHOOL3_CAP.." "..DAMAGE, SPELL_SCHOOL3_CAP.." Dmg"},
-	["FROST_SPELL_DMG"] = {SPELL_SCHOOL4_CAP.." "..DAMAGE, SPELL_SCHOOL4_CAP.." Dmg"},
-	["SHADOW_SPELL_DMG"] = {SPELL_SCHOOL5_CAP.." "..DAMAGE, SPELL_SCHOOL5_CAP.." Dmg"},
-	["ARCANE_SPELL_DMG"] = {SPELL_SCHOOL6_CAP.." "..DAMAGE, SPELL_SCHOOL6_CAP.." Dmg"},
+D["SPELL_DMG"] = {PLAYERSTAT_SPELL_COMBAT.." "..DAMAGE, PLAYERSTAT_SPELL_COMBAT.." Dmg"}
+D["SPELL_DMG_UNDEAD"] = {PLAYERSTAT_SPELL_COMBAT.." "..DAMAGE.." (언데드)", PLAYERSTAT_SPELL_COMBAT.." Dmg".."(Undead)"}
+D["SPELL_DMG_DEMON"] = {PLAYERSTAT_SPELL_COMBAT.." "..DAMAGE.." (악마)", PLAYERSTAT_SPELL_COMBAT.." Dmg".."(Demon)"}
+D["HOLY_SPELL_DMG"] = {SPELL_SCHOOL1_CAP.." "..DAMAGE, SPELL_SCHOOL1_CAP.." Dmg"}
+D["FIRE_SPELL_DMG"] = {SPELL_SCHOOL2_CAP.." "..DAMAGE, SPELL_SCHOOL2_CAP.." Dmg"}
+D["NATURE_SPELL_DMG"] = {SPELL_SCHOOL3_CAP.." "..DAMAGE, SPELL_SCHOOL3_CAP.." Dmg"}
+D["FROST_SPELL_DMG"] = {SPELL_SCHOOL4_CAP.." "..DAMAGE, SPELL_SCHOOL4_CAP.." Dmg"}
+D["SHADOW_SPELL_DMG"] = {SPELL_SCHOOL5_CAP.." "..DAMAGE, SPELL_SCHOOL5_CAP.." Dmg"}
+D["ARCANE_SPELL_DMG"] = {SPELL_SCHOOL6_CAP.." "..DAMAGE, SPELL_SCHOOL6_CAP.." Dmg"}
 
-	["SPELLPEN"] = {PLAYERSTAT_SPELL_COMBAT.." "..SPELL_PENETRATION, SPELL_PENETRATION},
+D["SPELLPEN"] = {PLAYERSTAT_SPELL_COMBAT.." "..SPELL_PENETRATION, SPELL_PENETRATION}
 
-	["HEALTH"] = {HEALTH, HP},
-	["MANA"] = {MANA, MP},
-	["HEALTH_REG"] = {HEALTH.." 재생", "HP5"},
-	["MANA_REG"] = {MANA.." 재생", "MP5"},
+D["HEALTH"] = {HEALTH, HP}
+D["MANA"] = {MANA, MP}
+D["HEALTH_REG"] = {HEALTH.." 재생", "HP5"}
+D["MANA_REG"] = {MANA.." 재생", "MP5"}
 
-	["AVERAGE_DAMAGE"] = {"Average Damage", "Avg Dmg"},
-	["DPS"] = {"초당 공격력", "DPS"},
+D["AVERAGE_DAMAGE"] = {"Average Damage", "Avg Dmg"}
+D["DPS"] = {"초당 공격력", "DPS"}
 
-	["DEFENSE_RATING"] = {COMBAT_RATING_NAME2, COMBAT_RATING_NAME2}, -- COMBAT_RATING_NAME2 = "Defense Rating"
-	["DODGE_RATING"] = {COMBAT_RATING_NAME3, COMBAT_RATING_NAME3}, -- COMBAT_RATING_NAME3 = "Dodge Rating"
-	["PARRY_RATING"] = {COMBAT_RATING_NAME4, COMBAT_RATING_NAME4}, -- COMBAT_RATING_NAME4 = "Parry Rating"
-	["BLOCK_RATING"] = {COMBAT_RATING_NAME5, COMBAT_RATING_NAME5}, -- COMBAT_RATING_NAME5 = "Block Rating"
-	["MELEE_HIT_RATING"] = {COMBAT_RATING_NAME6, COMBAT_RATING_NAME6}, -- COMBAT_RATING_NAME6 = "Hit Rating"
-	["RANGED_HIT_RATING"] = {PLAYERSTAT_RANGED_COMBAT.." "..COMBAT_RATING_NAME6, PLAYERSTAT_RANGED_COMBAT.." "..COMBAT_RATING_NAME6}, -- PLAYERSTAT_RANGED_COMBAT = "Ranged"
-	["SPELL_HIT_RATING"] = {PLAYERSTAT_SPELL_COMBAT.." "..COMBAT_RATING_NAME6, PLAYERSTAT_SPELL_COMBAT.." "..COMBAT_RATING_NAME6}, -- PLAYERSTAT_SPELL_COMBAT = "Spell"
-	["MELEE_CRIT_RATING"] = {COMBAT_RATING_NAME9, COMBAT_RATING_NAME9}, -- COMBAT_RATING_NAME9 = "Crit Rating"
-	["RANGED_CRIT_RATING"] = {PLAYERSTAT_RANGED_COMBAT.." "..COMBAT_RATING_NAME9, PLAYERSTAT_RANGED_COMBAT.." "..COMBAT_RATING_NAME9},
-	["SPELL_CRIT_RATING"] = {PLAYERSTAT_SPELL_COMBAT.." "..COMBAT_RATING_NAME9, PLAYERSTAT_SPELL_COMBAT.." "..COMBAT_RATING_NAME9},
-	["RESILIENCE_RATING"] = {COMBAT_RATING_NAME15, COMBAT_RATING_NAME15}, -- COMBAT_RATING_NAME15 = "Resilience"
-	["MELEE_HASTE_RATING"] = {"가속도 "..RATING, "Haste "..RATING}, --
-	["RANGED_HASTE_RATING"] = {PLAYERSTAT_RANGED_COMBAT.." 가속도 "..RATING, PLAYERSTAT_RANGED_COMBAT.." Haste "..RATING},
-	["SPELL_HASTE_RATING"] = {PLAYERSTAT_SPELL_COMBAT.." 가속도 "..RATING, PLAYERSTAT_SPELL_COMBAT.." Haste "..RATING},
-	["DAGGER_WEAPON_RATING"] = {"단검류 "..SKILL.." "..RATING, "Dagger "..RATING}, -- SKILL = "Skill"
-	["SWORD_WEAPON_RATING"] = {"도검류 "..SKILL.." "..RATING, "Sword "..RATING},
-	["2H_SWORD_WEAPON_RATING"] = {"양손 도검류 "..SKILL.." "..RATING, "2H Sword "..RATING},
-	["AXE_WEAPON_RATING"] = {"도끼류 "..SKILL.." "..RATING, "Axe "..RATING},
-	["2H_AXE_WEAPON_RATING"] = {"양손 도끼류 "..SKILL.." "..RATING, "2H Axe "..RATING},
-	["MACE_WEAPON_RATING"] = {"둔기류 "..SKILL.." "..RATING, "Mace "..RATING},
-	["2H_MACE_WEAPON_RATING"] = {"양손 둔기류 "..SKILL.." "..RATING, "2H Mace "..RATING},
-	["GUN_WEAPON_RATING"] = {"총기류 "..SKILL.." "..RATING, "Gun "..RATING},
-	["CROSSBOW_WEAPON_RATING"] = {"석궁류 "..SKILL.." "..RATING, "Crossbow "..RATING},
-	["BOW_WEAPON_RATING"] = {"활류 "..SKILL.." "..RATING, "Bow "..RATING},
-	["FERAL_WEAPON_RATING"] = {"야생 "..SKILL.." "..RATING, "Feral "..RATING},
-	["FIST_WEAPON_RATING"] = {"장착 무기류 "..SKILL.." "..RATING, "Unarmed "..RATING},
-	["STAFF_WEAPON_RATING"] = {"지팡이류 "..SKILL.." "..RATING, "Staff "..RATING}, -- Leggings of the Fang ID:10410
-	["EXPERTISE_RATING"] = {"숙련 ".." "..RATING, "Expertise".." "..RATING},
-	["ARMOR_PENETRATION_RATING"] = {"방어구 관통력", "방어구 관통력"},
-
-	---------------------------------------------------------------------------
-	-- Tier2 Stats - Stats that only show up when broken down from a Tier1 stat
-	-- Str -> AP, Block Value
-	-- Agi -> AP, Crit, Dodge
-	-- Sta -> Health
-	-- Int -> Mana, Spell Crit
-	-- Spi -> mp5nc, hp5oc
-	-- Ratings -> Effect
-	["HEALTH_REG_OUT_OF_COMBAT"] = {HEALTH.." 재생 (비전투)", "HP5(OC)"},
-	["MANA_REG_NOT_CASTING"] = {MANA.." 재생 (미시전)", "MP5(NC)"},
-	["MELEE_CRIT_DMG_REDUCTION"] = {"치명타 피해 감소(%)", "Crit Dmg Reduc(%)"},
-	["RANGED_CRIT_DMG_REDUCTION"] = {PLAYERSTAT_RANGED_COMBAT.." 치명타 피해 감소(%)", PLAYERSTAT_RANGED_COMBAT.." Crit Dmg Reduc(%)"},
-	["SPELL_CRIT_DMG_REDUCTION"] = {PLAYERSTAT_SPELL_COMBAT.." 치명타 피해 감소(%)", PLAYERSTAT_SPELL_COMBAT.." Crit Dmg Reduc(%)"},
-	["DEFENSE"] = {DEFENSE, "Def"},
-	["DODGE"] = {DODGE.."(%)", DODGE.."(%)"},
-	["PARRY"] = {PARRY.."(%)", PARRY.."(%)"},
-	["BLOCK"] = {BLOCK.."(%)", BLOCK.."(%)"},
-	["AVOIDANCE"] = {"공격 회피(%)", "Avoidance(%)"},
-	["MELEE_HIT"] = {"적중률(%)", "Hit(%)"},
-	["RANGED_HIT"] = {PLAYERSTAT_RANGED_COMBAT.." 적중률(%)", PLAYERSTAT_RANGED_COMBAT.." Hit(%)"},
-	["SPELL_HIT"] = {PLAYERSTAT_SPELL_COMBAT.." 적중률(%)", PLAYERSTAT_SPELL_COMBAT.." Hit(%)"},
-	["MELEE_HIT_AVOID"] = {"근접 공격 회피(%)", "Hit Avd(%)"},
-	["MELEE_CRIT"] = {MELEE_CRIT_CHANCE.."(%)", "Crit(%)"}, -- MELEE_CRIT_CHANCE = "Crit Chance"
-	["RANGED_CRIT"] = {PLAYERSTAT_RANGED_COMBAT.." "..MELEE_CRIT_CHANCE.."(%)", PLAYERSTAT_RANGED_COMBAT.." Crit(%)"},
-	["SPELL_CRIT"] = {PLAYERSTAT_SPELL_COMBAT.." "..MELEE_CRIT_CHANCE.."(%)", PLAYERSTAT_SPELL_COMBAT.." Crit(%)"},
-	["MELEE_CRIT_AVOID"] = {"근접 치명타 공격 회피(%)", "Crit Avd(%)"},
-	["MELEE_HASTE"] = {"가속도(%)", "Haste(%)"}, --
-	["RANGED_HASTE"] = {PLAYERSTAT_RANGED_COMBAT.." 가속도(%)", PLAYERSTAT_RANGED_COMBAT.." Haste(%)"},
-	["SPELL_HASTE"] = {PLAYERSTAT_SPELL_COMBAT.." 가속도(%)", PLAYERSTAT_SPELL_COMBAT.." Haste(%)"},
-	["DAGGER_WEAPON"] = {"단검류 "..SKILL, "Dagger"}, -- SKILL = "Skill"
-	["SWORD_WEAPON"] = {"도검류 "..SKILL, "Sword"},
-	["2H_SWORD_WEAPON"] = {"양손 도검류 "..SKILL, "2H Sword"},
-	["AXE_WEAPON"] = {"도끼류 "..SKILL, "Axe"},
-	["2H_AXE_WEAPON"] = {"양손 도끼류 "..SKILL, "2H Axe"},
-	["MACE_WEAPON"] = {"둔기류 "..SKILL, "Mace"},
-	["2H_MACE_WEAPON"] = {"양손 둔기류 "..SKILL, "2H Mace"},
-	["GUN_WEAPON"] = {"총기류 "..SKILL, "Gun"},
-	["CROSSBOW_WEAPON"] = {"석궁류 "..SKILL, "Crossbow"},
-	["BOW_WEAPON"] = {"활류 "..SKILL, "Bow"},
-	["FERAL_WEAPON"] = {"야생 "..SKILL, "Feral"},
-	["FIST_WEAPON"] = {"장착 무기류 "..SKILL, "Unarmed"},
-	["STAFF_WEAPON"] = {"지팡이류 "..SKILL, "Staff"}, -- Leggings of the Fang ID:10410
-	["EXPERTISE"] = {"숙련 ", "Expertise"},
-	["ARMOR_PENETRATION"] = {"방어구 관통(%)", "방어구 관통(%)"},
-
-	---------------------------------------------------------------------------
-	-- Tier3 Stats - Stats that only show up when broken down from a Tier2 stat
-	-- Defense -> Crit Avoidance, Hit Avoidance, Dodge, Parry, Block
-	-- Weapon Skill -> Crit, Hit, Dodge Neglect, Parry Neglect, Block Neglect
-	-- Expertise -> Dodge Neglect, Parry Neglect
-	["DODGE_NEGLECT"] = {DODGE.." 무시(%)", DODGE.." Neglect(%)"},
-	["PARRY_NEGLECT"] = {PARRY.." 무시(%)", PARRY.." Neglect(%)"},
-	["BLOCK_NEGLECT"] = {BLOCK.." 무시(%)", BLOCK.." Neglect(%)"},
-
-	---------------------------------------------------------------------------
-	-- Talants
-	["MELEE_CRIT_DMG"] = {"치명타 공격력(%)", "Crit Dmg(%)"},
-	["RANGED_CRIT_DMG"] = {PLAYERSTAT_RANGED_COMBAT.." 치명타 공격력(%)", PLAYERSTAT_RANGED_COMBAT.." Crit Dmg(%)"},
-	["SPELL_CRIT_DMG"] = {PLAYERSTAT_SPELL_COMBAT.." 치명타 공격력(%)", PLAYERSTAT_SPELL_COMBAT.." Crit Dmg(%)"},
-
-	---------------------------------------------------------------------------
-	-- Spell Stats
-	-- These values can be prefixed with a @ and spell name, using reverse translation to english from Babble-Spell-2.2
-	-- Ex: "Heroic Strike@RAGE_COST" for Heroic Strike rage cost
-	-- Ex: "Heroic Strike@THREAT" for Heroic Strike threat value
-	-- Use strsplit("@", text) to seperate the spell name and statid
-	["THREAT"] = {"위협", "Threat"},
-	["CAST_TIME"] = {"시전 시간", "Cast Time"},
-	["MANA_COST"] = {"마나 소모량", "Mana Cost"},
-	["RAGE_COST"] = {"분노 소모량", "Rage Cost"},
-	["ENERGY_COST"] = {"기력 소모량", "Energy Cost"},
-	["COOLDOWN"] = {"재사용 대기 시간", "CD"},
-
-	---------------------------------------------------------------------------
-	-- Stats Mods
-	["MOD_STR"] = {"Mod "..SPELL_STAT1_NAME.."(%)", "Mod Str(%)"},
-	["MOD_AGI"] = {"Mod "..SPELL_STAT2_NAME.."(%)", "Mod Agi(%)"},
-	["MOD_STA"] = {"Mod "..SPELL_STAT3_NAME.."(%)", "Mod Sta(%)"},
-	["MOD_INT"] = {"Mod "..SPELL_STAT4_NAME.."(%)", "Mod Int(%)"},
-	["MOD_SPI"] = {"Mod "..SPELL_STAT5_NAME.."(%)", "Mod Spi(%)"},
-	["MOD_HEALTH"] = {"Mod "..HEALTH.."(%)", "Mod "..HP.."(%)"},
-	["MOD_MANA"] = {"Mod "..MANA.."(%)", "Mod "..MP.."(%)"},
-	["MOD_ARMOR"] = {"Mod 아이템에 의한 "..ARMOR.."(%)", "Mod "..ARMOR.."(Items)".."(%)"},
-	["MOD_BLOCK_VALUE"] = {"Mod 피해 방어량".."(%)", "Mod Block Value".."(%)"},
-	["MOD_DMG"] = {"Mod 피해".."(%)", "Mod Dmg".."(%)"},
-	["MOD_DMG_TAKEN"] = {"Mod 피해량".."(%)", "Mod Dmg Taken".."(%)"},
-	["MOD_CRIT_DAMAGE"] = {"Mod 치명타 피해".."(%)", "Mod Crit Dmg".."(%)"},
-	["MOD_CRIT_DAMAGE_TAKEN"] = {"Mod 치명타 피해량".."(%)", "Mod Crit Dmg Taken".."(%)"},
-	["MOD_THREAT"] = {"Mod 위협".."(%)", "Mod Threat".."(%)"},
-	["MOD_AP"] = {"Mod ".."전투력".."(%)", "Mod AP".."(%)"},
-	["MOD_RANGED_AP"] = {"Mod "..PLAYERSTAT_RANGED_COMBAT.." ".."전투력".."(%)", "Mod RAP".."(%)"},
-	["MOD_SPELL_DMG"] = {"Mod "..PLAYERSTAT_SPELL_COMBAT.." "..DAMAGE.."(%)", "Mod "..PLAYERSTAT_SPELL_COMBAT.." Dmg".."(%)"},
-	["MOD_HEALING"] = {"Mod 치유량".."(%)", "Mod Heal".."(%)"},
-	["MOD_CAST_TIME"] = {"Mod 시전 시간".."(%)", "Mod Cast Time".."(%)"},
-	["MOD_MANA_COST"] = {"Mod 마나 소모량".."(%)", "Mod Mana Cost".."(%)"},
-	["MOD_RAGE_COST"] = {"Mod 분노 소모량".."(%)", "Mod Rage Cost".."(%)"},
-	["MOD_ENERGY_COST"] = {"Mod 기력 소모량".."(%)", "Mod Energy Cost".."(%)"},
-	["MOD_COOLDOWN"] = {"Mod 재사용 대기 시간".."(%)", "Mod CD".."(%)"},
-
-	---------------------------------------------------------------------------
-	-- Misc Stats
-	["WEAPON_RATING"] = {"무기 "..SKILL.." "..RATING, "Weapon"..SKILL.." "..RATING},
-	["WEAPON_SKILL"] = {"무기 "..SKILL, "Weapon"..SKILL},
-	["MAINHAND_WEAPON_RATING"] = {"주 장비 "..SKILL.." "..RATING, "MH Weapon"..SKILL.." "..RATING},
-	["OFFHAND_WEAPON_RATING"] = {"보조 장비 "..SKILL.." "..RATING, "OH Weapon"..SKILL.." "..RATING},
-	["RANGED_WEAPON_RATING"] = {"원거리 무기 "..SKILL.." "..RATING, "Ranged Weapon"..SKILL.." "..RATING},
-}
-
+D["DEFENSE_RATING"] = {COMBAT_RATING_NAME2, COMBAT_RATING_NAME2} -- COMBAT_RATING_NAME2 = "Defense Rating"
+D["DODGE_RATING"] = {COMBAT_RATING_NAME3, COMBAT_RATING_NAME3} -- COMBAT_RATING_NAME3 = "Dodge Rating"
+D["PARRY_RATING"] = {COMBAT_RATING_NAME4, COMBAT_RATING_NAME4} -- COMBAT_RATING_NAME4 = "Parry Rating"
+D["BLOCK_RATING"] = {COMBAT_RATING_NAME5, COMBAT_RATING_NAME5} -- COMBAT_RATING_NAME5 = "Block Rating"
+D["MELEE_HIT_RATING"] = {COMBAT_RATING_NAME6, COMBAT_RATING_NAME6} -- COMBAT_RATING_NAME6 = "Hit Rating"
+D["RANGED_HIT_RATING"] = {PLAYERSTAT_RANGED_COMBAT.." "..COMBAT_RATING_NAME6, PLAYERSTAT_RANGED_COMBAT.." "..COMBAT_RATING_NAME6} -- PLAYERSTAT_RANGED_COMBAT = "Ranged"
+D["SPELL_HIT_RATING"] = {PLAYERSTAT_SPELL_COMBAT.." "..COMBAT_RATING_NAME6, PLAYERSTAT_SPELL_COMBAT.." "..COMBAT_RATING_NAME6} -- PLAYERSTAT_SPELL_COMBAT = "Spell"
+D["MELEE_CRIT_RATING"] = {COMBAT_RATING_NAME9, COMBAT_RATING_NAME9} -- COMBAT_RATING_NAME9 = "Crit Rating"
+D["RANGED_CRIT_RATING"] = {PLAYERSTAT_RANGED_COMBAT.." "..COMBAT_RATING_NAME9, PLAYERSTAT_RANGED_COMBAT.." "..COMBAT_RATING_NAME9}
+D["SPELL_CRIT_RATING"] = {PLAYERSTAT_SPELL_COMBAT.." "..COMBAT_RATING_NAME9, PLAYERSTAT_SPELL_COMBAT.." "..COMBAT_RATING_NAME9}
+D["RESILIENCE_RATING"] = {COMBAT_RATING_NAME15, COMBAT_RATING_NAME15} -- COMBAT_RATING_NAME15 = "Resilience"
+D["MELEE_HASTE_RATING"] = {"가속도 "..RATING, "Haste "..RATING} --
+D["RANGED_HASTE_RATING"] = {PLAYERSTAT_RANGED_COMBAT.." 가속도 "..RATING, PLAYERSTAT_RANGED_COMBAT.." Haste "..RATING}
+D["SPELL_HASTE_RATING"] = {PLAYERSTAT_SPELL_COMBAT.." 가속도 "..RATING, PLAYERSTAT_SPELL_COMBAT.." Haste "..RATING}
+D["DAGGER_WEAPON_RATING"] = {"단검류 "..SKILL.." "..RATING, "Dagger "..RATING} -- SKILL = "Skill"
+D["SWORD_WEAPON_RATING"] = {"도검류 "..SKILL.." "..RATING, "Sword "..RATING}
+D["2H_SWORD_WEAPON_RATING"] = {"양손 도검류 "..SKILL.." "..RATING, "2H Sword "..RATING}
+D["AXE_WEAPON_RATING"] = {"도끼류 "..SKILL.." "..RATING, "Axe "..RATING}
+D["2H_AXE_WEAPON_RATING"] = {"양손 도끼류 "..SKILL.." "..RATING, "2H Axe "..RATING}
+D["MACE_WEAPON_RATING"] = {"둔기류 "..SKILL.." "..RATING, "Mace "..RATING}
+D["2H_MACE_WEAPON_RATING"] = {"양손 둔기류 "..SKILL.." "..RATING, "2H Mace "..RATING}
+D["GUN_WEAPON_RATING"] = {"총기류 "..SKILL.." "..RATING, "Gun "..RATING}
+D["CROSSBOW_WEAPON_RATING"] = {"석궁류 "..SKILL.." "..RATING, "Crossbow "..RATING}
+D["BOW_WEAPON_RATING"] = {"활류 "..SKILL.." "..RATING, "Bow "..RATING}
+D["FERAL_WEAPON_RATING"] = {"야생 "..SKILL.." "..RATING, "Feral "..RATING}
+D["FIST_WEAPON_RATING"] = {"장착 무기류 "..SKILL.." "..RATING, "Unarmed "..RATING}
+D["STAFF_WEAPON_RATING"] = {"지팡이류 "..SKILL.." "..RATING, "Staff "..RATING} -- Leggings of the Fang ID:10410
+D["EXPERTISE_RATING"] = {"숙련 ".." "..RATING, "Expertise".." "..RATING}
+D["ARMOR_PENETRATION_RATING"] = {"방어구 관통력", "방어구 관통력"}
+-- Tier2 Stats - Stats that only show up when broken down from a Tier1 stat
+-- Str -> AP, Block Value
+-- Agi -> AP, Crit, Dodge
+-- Sta -> Health
+-- Int -> Mana, Spell Crit
+-- Spi -> mp5nc, hp5oc
+-- Ratings -> Effect
+D["HEALTH_REG_OUT_OF_COMBAT"] = {HEALTH.." 재생 (비전투)", "HP5(OC)"}
+D["MANA_REG_NOT_CASTING"] = {MANA.." 재생 (미시전)", "MP5(NC)"}
+D["MELEE_CRIT_DMG_REDUCTION"] = {"치명타 피해 감소(%)", "Crit Dmg Reduc(%)"}
+D["RANGED_CRIT_DMG_REDUCTION"] = {PLAYERSTAT_RANGED_COMBAT.." 치명타 피해 감소(%)", PLAYERSTAT_RANGED_COMBAT.." Crit Dmg Reduc(%)"}
+D["SPELL_CRIT_DMG_REDUCTION"] = {PLAYERSTAT_SPELL_COMBAT.." 치명타 피해 감소(%)", PLAYERSTAT_SPELL_COMBAT.." Crit Dmg Reduc(%)"}
+D["DEFENSE"] = {DEFENSE, "Def"}
+D["DODGE"] = {DODGE.."(%)", DODGE.."(%)"}
+D["PARRY"] = {PARRY.."(%)", PARRY.."(%)"}
+D["BLOCK"] = {BLOCK.."(%)", BLOCK.."(%)"}
+D["AVOIDANCE"] = {"공격 회피(%)", "Avoidance(%)"}
+D["MELEE_HIT"] = {"적중률(%)", "Hit(%)"}
+D["RANGED_HIT"] = {PLAYERSTAT_RANGED_COMBAT.." 적중률(%)", PLAYERSTAT_RANGED_COMBAT.." Hit(%)"}
+D["SPELL_HIT"] = {PLAYERSTAT_SPELL_COMBAT.." 적중률(%)", PLAYERSTAT_SPELL_COMBAT.." Hit(%)"}
+D["MELEE_HIT_AVOID"] = {"근접 공격 회피(%)", "Hit Avd(%)"}
+D["MELEE_CRIT"] = {MELEE_CRIT_CHANCE.."(%)", "Crit(%)"} -- MELEE_CRIT_CHANCE = "Crit Chance"
+D["RANGED_CRIT"] = {PLAYERSTAT_RANGED_COMBAT.." "..MELEE_CRIT_CHANCE.."(%)", PLAYERSTAT_RANGED_COMBAT.." Crit(%)"}
+D["SPELL_CRIT"] = {PLAYERSTAT_SPELL_COMBAT.." "..MELEE_CRIT_CHANCE.."(%)", PLAYERSTAT_SPELL_COMBAT.." Crit(%)"}
+D["MELEE_CRIT_AVOID"] = {"근접 치명타 공격 회피(%)", "Crit Avd(%)"}
+D["MELEE_HASTE"] = {"가속도(%)", "Haste(%)"} --
+D["RANGED_HASTE"] = {PLAYERSTAT_RANGED_COMBAT.." 가속도(%)", PLAYERSTAT_RANGED_COMBAT.." Haste(%)"}
+D["SPELL_HASTE"] = {PLAYERSTAT_SPELL_COMBAT.." 가속도(%)", PLAYERSTAT_SPELL_COMBAT.." Haste(%)"}
+D["DAGGER_WEAPON"] = {"단검류 "..SKILL, "Dagger"} -- SKILL = "Skill"
+D["SWORD_WEAPON"] = {"도검류 "..SKILL, "Sword"}
+D["2H_SWORD_WEAPON"] = {"양손 도검류 "..SKILL, "2H Sword"}
+D["AXE_WEAPON"] = {"도끼류 "..SKILL, "Axe"}
+D["2H_AXE_WEAPON"] = {"양손 도끼류 "..SKILL, "2H Axe"}
+D["MACE_WEAPON"] = {"둔기류 "..SKILL, "Mace"}
+D["2H_MACE_WEAPON"] = {"양손 둔기류 "..SKILL, "2H Mace"}
+D["GUN_WEAPON"] = {"총기류 "..SKILL, "Gun"}
+D["CROSSBOW_WEAPON"] = {"석궁류 "..SKILL, "Crossbow"}
+D["BOW_WEAPON"] = {"활류 "..SKILL, "Bow"}
+D["FERAL_WEAPON"] = {"야생 "..SKILL, "Feral"}
+D["FIST_WEAPON"] = {"장착 무기류 "..SKILL, "Unarmed"}
+D["STAFF_WEAPON"] = {"지팡이류 "..SKILL, "Staff"} -- Leggings of the Fang ID:10410
+D["EXPERTISE"] = {"숙련 ", "Expertise"}
+D["ARMOR_PENETRATION"] = {"방어구 관통(%)", "방어구 관통(%)"}
+-- Tier3 Stats - Stats that only show up when broken down from a Tier2 stat
+-- Defense -> Crit Avoidance, Hit Avoidance, Dodge, Parry, Block
+-- Weapon Skill -> Crit, Hit, Dodge Neglect, Parry Neglect, Block Neglect
+-- Expertise -> Dodge Neglect, Parry Neglect
+D["DODGE_NEGLECT"] = {DODGE.." 무시(%)", DODGE.." Neglect(%)"}
+D["PARRY_NEGLECT"] = {PARRY.." 무시(%)", PARRY.." Neglect(%)"}
+D["BLOCK_NEGLECT"] = {BLOCK.." 무시(%)", BLOCK.." Neglect(%)"}
+-- Talents
+D["MELEE_CRIT_DMG"] = {"치명타 공격력(%)", "Crit Dmg(%)"}
+D["RANGED_CRIT_DMG"] = {PLAYERSTAT_RANGED_COMBAT.." 치명타 공격력(%)", PLAYERSTAT_RANGED_COMBAT.." Crit Dmg(%)"}
+D["SPELL_CRIT_DMG"] = {PLAYERSTAT_SPELL_COMBAT.." 치명타 공격력(%)", PLAYERSTAT_SPELL_COMBAT.." Crit Dmg(%)"}
+-- Spell Stats
+-- These values can be prefixed with a @ and spell name, using reverse translation to english from Babble-Spell-2.2
+-- Ex: "Heroic Strike@RAGE_COST" for Heroic Strike rage cost
+-- Ex: "Heroic Strike@THREAT" for Heroic Strike threat value
+-- Use strsplit("@", text) to seperate the spell name and statid
+D["THREAT"] = {"위협", "Threat"}
+D["CAST_TIME"] = {"시전 시간", "Cast Time"}
+D["MANA_COST"] = {"마나 소모량", "Mana Cost"}
+D["RAGE_COST"] = {"분노 소모량", "Rage Cost"}
+D["ENERGY_COST"] = {"기력 소모량", "Energy Cost"}
+D["COOLDOWN"] = {"재사용 대기 시간", "CD"}
+-- Stats Mods
+D["MOD_STR"] = {"Mod "..SPELL_STAT1_NAME.."(%)", "Mod Str(%)"}
+D["MOD_AGI"] = {"Mod "..SPELL_STAT2_NAME.."(%)", "Mod Agi(%)"}
+D["MOD_STA"] = {"Mod "..SPELL_STAT3_NAME.."(%)", "Mod Sta(%)"}
+D["MOD_INT"] = {"Mod "..SPELL_STAT4_NAME.."(%)", "Mod Int(%)"}
+D["MOD_SPI"] = {"Mod "..SPELL_STAT5_NAME.."(%)", "Mod Spi(%)"}
+D["MOD_HEALTH"] = {"Mod "..HEALTH.."(%)", "Mod "..HP.."(%)"}
+D["MOD_MANA"] = {"Mod "..MANA.."(%)", "Mod "..MP.."(%)"}
+D["MOD_ARMOR"] = {"Mod 아이템에 의한 "..ARMOR.."(%)", "Mod "..ARMOR.."(Items)".."(%)"}
+D["MOD_BLOCK_VALUE"] = {"Mod 피해 방어량".."(%)", "Mod Block Value".."(%)"}
+D["MOD_DMG"] = {"Mod 피해".."(%)", "Mod Dmg".."(%)"}
+D["MOD_DMG_TAKEN"] = {"Mod 피해량".."(%)", "Mod Dmg Taken".."(%)"}
+D["MOD_CRIT_DAMAGE"] = {"Mod 치명타 피해".."(%)", "Mod Crit Dmg".."(%)"}
+D["MOD_CRIT_DAMAGE_TAKEN"] = {"Mod 치명타 피해량".."(%)", "Mod Crit Dmg Taken".."(%)"}
+D["MOD_THREAT"] = {"Mod 위협".."(%)", "Mod Threat".."(%)"}
+D["MOD_AP"] = {"Mod ".."전투력".."(%)", "Mod AP".."(%)"}
+D["MOD_RANGED_AP"] = {"Mod "..PLAYERSTAT_RANGED_COMBAT.." ".."전투력".."(%)", "Mod RAP".."(%)"}
+D["MOD_SPELL_DMG"] = {"Mod "..PLAYERSTAT_SPELL_COMBAT.." "..DAMAGE.."(%)", "Mod "..PLAYERSTAT_SPELL_COMBAT.." Dmg".."(%)"}
+D["MOD_HEALING"] = {"Mod 치유량".."(%)", "Mod Heal".."(%)"}
+D["MOD_CAST_TIME"] = {"Mod 시전 시간".."(%)", "Mod Cast Time".."(%)"}
+D["MOD_MANA_COST"] = {"Mod 마나 소모량".."(%)", "Mod Mana Cost".."(%)"}
+D["MOD_RAGE_COST"] = {"Mod 분노 소모량".."(%)", "Mod Rage Cost".."(%)"}
+D["MOD_ENERGY_COST"] = {"Mod 기력 소모량".."(%)", "Mod Energy Cost".."(%)"}
+D["MOD_COOLDOWN"] = {"Mod 재사용 대기 시간".."(%)", "Mod CD".."(%)"}
+-- Misc Stats
+D["WEAPON_RATING"] = {"무기 "..SKILL.." "..RATING, "Weapon"..SKILL.." "..RATING}
+D["WEAPON_SKILL"] = {"무기 "..SKILL, "Weapon"..SKILL}
+D["MAINHAND_WEAPON_RATING"] = {"주 장비 "..SKILL.." "..RATING, "MH Weapon"..SKILL.." "..RATING}
+D["OFFHAND_WEAPON_RATING"] = {"보조 장비 "..SKILL.." "..RATING, "OH Weapon"..SKILL.." "..RATING}
+D["RANGED_WEAPON_RATING"] = {"원거리 무기 "..SKILL.." "..RATING, "Ranged Weapon"..SKILL.." "..RATING}
