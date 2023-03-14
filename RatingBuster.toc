@@ -10,6 +10,7 @@
 ## X-License: GPL v2
 ## X-WoWI-ID: 26235
 ## X-Wago-ID: RaN0eM6j
+## X-Curse-Project-ID: 837687
 
 # Libraries
 embeds.xml
