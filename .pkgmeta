@@ -40,4 +40,4 @@ plain-copy:
   - LICENSE.txt
 
 embedded-libraries:
-  - TipHooker-1.0
+  - TipHookerLib
