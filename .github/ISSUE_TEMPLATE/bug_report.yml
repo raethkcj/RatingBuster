@@ -22,9 +22,6 @@ body:
         - GitHub Releases
     validations:
       required: true
-  - type: markdown
-    attributes:
-      value: "NOTE: This version of the addon is not distributed on Curseforge."
   - type: input
     id: version
     attributes:
