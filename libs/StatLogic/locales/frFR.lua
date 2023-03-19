@@ -316,6 +316,7 @@ L["StatIDLookup"] = {
 	["aux sorts de soins"] = {"HEAL"},
 	["aux soins"] = {"HEAL"},
 	["à la puissance des sorts"] = {"SPELL_DMG", "HEAL",},
+	["la puissance des sorts"] = {"SPELL_DMG", "HEAL",},
 	["augmente la puissance des sorts"] = {"SPELL_DMG", "HEAL",},
 	["les dégâts et les soins produits par les sorts et effets magiques"] = {"SPELL_DMG", "HEAL"},
 	["les soins prodigués par les sorts et effets d’un maximum"] = {"HEAL"},
