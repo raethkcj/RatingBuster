@@ -1,4 +1,5 @@
 local addonName, addonTable = ...
+---@class StatLogic
 local StatLogic = LibStub:GetLibrary(addonName)
 
 --[[---------------------------------

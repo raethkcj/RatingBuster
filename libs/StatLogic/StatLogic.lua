@@ -1,4 +1,4 @@
-﻿local addonName, addonTable = ...
+local addonName, addonTable = ...
 
 --[[
 Name: StatLogic-1.0
@@ -72,6 +72,7 @@ end
 --------------------
 -- Initialization --
 --------------------
+---@class StatLogic
 local StatLogic = LibStub:NewLibrary(MAJOR_VERSION, MINOR_VERSION)
 
 function StatLogic:argCheck(argument, number, ...)
