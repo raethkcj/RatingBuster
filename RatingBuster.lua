@@ -225,7 +225,7 @@ local options = {
 					desc = L["Show Spell Hit/Haste from Hit/Haste Rating"],
 					hidden = function()
 						local genericHit = StatLogic.GenericStatMap[StatLogic.GenericStats.CR_HIT]
-						return (not genericHit) or (not table.contains(genericHit, CR_HIT_SPELL))
+						return (not genericHit) or (not tContains(genericHit, CR_HIT_SPELL))
 					end
 				},
 				ratingPhysical = {
