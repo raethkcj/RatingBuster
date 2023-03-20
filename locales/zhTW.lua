@@ -599,6 +599,8 @@ L["statList"] = {
 
 	{pattern = "熟練等級", id = CR_EXPERTISE}, -- 2.3
 
+	{pattern = string.lower(SPELL_STATALL), id = StatLogic.GenericStats.ALL_STATS},
+
 	{pattern = "護甲穿透等級", id = CR_ARMOR_PENETRATION},
 	{pattern = string.lower(ARMOR), id = ARMOR},
 	{pattern = "攻击强度", id = ATTACK_POWER},

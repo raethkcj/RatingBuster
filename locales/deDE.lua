@@ -604,6 +604,8 @@ L["statList"] = {
 
 	{pattern = "waffenkundewertung", id = CR_EXPERTISE},
 
+	{pattern = string.lower(SPELL_STATALL), id = StatLogic.GenericStats.ALL_STATS},
+
 	{pattern = "rüstungsdurchschlagwertung", id = CR_ARMOR_PENETRATION},
 	{pattern = "rüstungsdurchschlag", id = CR_ARMOR_PENETRATION},
 	{pattern = string.lower(ARMOR), id = ARMOR},

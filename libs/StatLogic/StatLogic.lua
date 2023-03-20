@@ -380,6 +380,7 @@ do
 		"CR_HIT",
 		"CR_CRIT",
 		"CR_HASTE",
+		"ALL_STATS",
 	}
 	
 	StatLogic.GenericStats = {}
@@ -388,7 +389,15 @@ do
 	end
 end
 
-StatLogic.GenericStatMap = {}
+StatLogic.GenericStatMap = {
+	[StatLogic.GenericStats.ALL_STATS] = {
+		SPELL_STAT1_NAME, -- Strength
+		SPELL_STAT2_NAME, -- Agility
+		SPELL_STAT3_NAME, -- Stamina
+		SPELL_STAT4_NAME, -- Intellect
+		SPELL_STAT5_NAME, -- Spirit
+	}
+}
 
 if not CR_WEAPON_SKILL then CR_WEAPON_SKILL = 1 end;
 if not CR_DEFENSE_SKILL then CR_DEFENSE_SKILL = 2 end;
@@ -2267,7 +2276,7 @@ end
 local function ConvertGenericRatings(table)
 	for generic, ratings in pairs(StatLogic.GenericStatMap) do
 		local genericName = StatLogic:GetRatingIdOrName(generic)
-		if table[genericName] then
+		if genericName and table[genericName] then
 			for rating in pairs(ratings) do
 				local ratingName = StatLogic:GetRatingIdOrName(rating)
 				table[ratingName] = table[genericName]

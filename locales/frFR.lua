@@ -608,6 +608,8 @@ L["statList"] = {
 	{pattern = "score d’expertise", id = CR_EXPERTISE},
 	{pattern = "score d'expertise", id = CR_EXPERTISE},
 
+	{pattern = string.lower(SPELL_STATALL), id = StatLogic.GenericStats.ALL_STATS},
+
 	{pattern = "pénétration d'armure", id = CR_ARMOR_PENETRATION},
 	{pattern = string.lower(ARMOR), id = ARMOR},
 	{pattern = "puissance d'attaque", id = ATTACK_POWER},

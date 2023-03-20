@@ -782,6 +782,8 @@ L["statList"] = {
 	{pattern = "рейтинга мастерства", id = CR_EXPERTISE},
 	{pattern = "уровень мастерства", id = CR_EXPERTISE},
 
+	{pattern = string.lower(SPELL_STATALL), id = StatLogic.GenericStats.ALL_STATS},
+
 	{pattern = "рейтинг искусности", id = CR_MASTERY},
 	{pattern = "рейтингу искусности", id = CR_MASTERY},
 	{pattern = "рейтинга искусности", id = CR_MASTERY},

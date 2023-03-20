@@ -612,11 +612,12 @@ L["statList"] = {
 
 	{pattern = "expertise rating", id = CR_EXPERTISE},
 
+	{pattern = string.lower(SPELL_STATALL), id = StatLogic.GenericStats.ALL_STATS},
+	{pattern = "health", id = nil}, -- Scroll of Enchant Chest - Health (prevents matching Armor)
+
 	{pattern = "armor penetration", id = CR_ARMOR_PENETRATION},
 	{pattern = string.lower(ARMOR), id = ARMOR},
 	{pattern = "attack power", id = ATTACK_POWER},
-
-	{pattern = "all stats", id = nil}
 }
 -------------------------
 -- Added info patterns --
