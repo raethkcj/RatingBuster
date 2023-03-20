@@ -2807,10 +2807,7 @@ local getSlotID = {
 }
 
 local function HasTitansGrip()
-	if addonTable.class == "WARRIOR" then
-		local _, _, _, _, r = StatLogic:GetOrderedTalentInfo(2, 27)
-		return r > 0
-	end
+	return addonTable.class == "WARRIOR" and IsPlayerSpell(46917)
 end
 
 function StatLogic:GetDiffID(item, ignoreEnchant, ignoreGem, red, yellow, blue, meta)
