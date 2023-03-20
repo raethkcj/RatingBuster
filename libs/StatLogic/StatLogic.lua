@@ -372,9 +372,22 @@ function StatLogic:GetStatNameFromID(stat)
 	return unpack(name)
 end
 
-if not CR_HIT then CR_HIT = -6 end;
-if not CR_CRIT then CR_CRIT = -9 end;
-if not CR_HASTE then CR_HASTE = -18 end;
+StatLogic.ExtraHasteClasses = {}
+
+do
+	local GenericStats = {
+		"CR_HIT",
+		"CR_CRIT",
+		"CR_HASTE",
+	}
+	
+	StatLogic.GenericStats = {}
+	for i,v in ipairs(GenericStats) do
+		StatLogic.GenericStats[v] = -i
+	end
+end
+
+StatLogic.GenericStatMap = {}
 
 if not CR_WEAPON_SKILL then CR_WEAPON_SKILL = 1 end;
 if not CR_DEFENSE_SKILL then CR_DEFENSE_SKILL = 2 end;
@@ -403,9 +416,9 @@ if not CR_EXPERTISE then CR_EXPERTISE = 24 end;
 if not CR_ARMOR_PENETRATION then CR_ARMOR_PENETRATION = 25 end;
 
 local RatingNameToID = {
-	[CR_HIT] = "HIT_RATING",
-	[CR_CRIT] = "CRIT_RATING",
-	[CR_HASTE] = "HASTE_RATING",
+	[StatLogic.GenericStats.CR_HIT] = "HIT_RATING",
+	[StatLogic.GenericStats.CR_CRIT] = "CRIT_RATING",
+	[StatLogic.GenericStats.CR_HASTE] = "HASTE_RATING",
 	[CR_WEAPON_SKILL] = "WEAPON_RATING",
 	[CR_DEFENSE_SKILL] = "DEFENSE_RATING",
 	[CR_DODGE] = "DODGE_RATING",
@@ -431,9 +444,9 @@ local RatingNameToID = {
 	[CR_WEAPON_SKILL_RANGED] = "RANGED_WEAPON_RATING",
 	[CR_EXPERTISE] = "EXPERTISE_RATING",
 	[CR_ARMOR_PENETRATION] = "ARMOR_PENETRATION_RATING",
-	["HIT_RATING"] = CR_HIT,
-	["CRIT_RATING"] = CR_CRIT,
-	["HASTE_RATING"] = CR_HASTE,
+	["HIT_RATING"] = StatLogic.GenericStats.CR_HIT,
+	["CRIT_RATING"] = StatLogic.GenericStats.CR_CRIT,
+	["HASTE_RATING"] = StatLogic.GenericStats.CR_HASTE,
 	["DEFENSE_RATING"] = CR_DEFENSE_SKILL,
 	["DODGE_RATING"] = CR_DODGE,
 	["PARRY_RATING"] = CR_PARRY,

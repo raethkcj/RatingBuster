@@ -30,19 +30,17 @@ addonTable.RatingBase = {
 }
 addonTable.SetCRMax()
 
-StatLogic.GenericStatMap = {
-	[CR_HIT] = {
-		[CR_HIT_MELEE] = true,
-		[CR_HIT_RANGED] = true,
-	},
-	[CR_CRIT] = {
-		[CR_CRIT_MELEE] = true,
-		[CR_CRIT_RANGED] = true,
-	},
-	[CR_HASTE] = {
-		[CR_HASTE_MELEE] = true,
-		[CR_HASTE_RANGED] = true,
-	},
+StatLogic.GenericStatMap[StatLogic.GenericStats.CR_HIT] = {
+	CR_HIT_MELEE,
+	CR_HIT_RANGED,
+}
+StatLogic.GenericStatMap[StatLogic.GenericStats.CR_CRIT] = {
+	CR_CRIT_MELEE,
+	CR_CRIT_RANGED,
+}
+StatLogic.GenericStatMap[StatLogic.GenericStats.CR_HASTE] = {
+	CR_HASTE_MELEE,
+	CR_HASTE_RANGED,
 }
 
 --[[---------------------------------

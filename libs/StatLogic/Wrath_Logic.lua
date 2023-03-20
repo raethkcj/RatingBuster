@@ -3,13 +3,11 @@ local StatLogic = LibStub:GetLibrary(addonName)
 
 -- 3.1.0
 -- Haste Rating: Shamans, Paladins, Druids, and Death Knights now receive 30% more melee haste from Haste Rating.
-local ExtraHasteClasses = {
-	["PALADIN"] = true,
-	["DEATHKNIGHT"] = true,
-	["SHAMAN"] = true,
-	["DRUID"] = true,
-}
-local extraHaste = ExtraHasteClasses[addonTable.class] and 1.3 or 1
+StatLogic.ExtraHasteClasses["PALADIN"] = true
+StatLogic.ExtraHasteClasses["DEATHKNIGHT"] = true
+StatLogic.ExtraHasteClasses["SHAMAN"] = true
+StatLogic.ExtraHasteClasses["DRUID"] = true
+local extraHaste = StatLogic.ExtraHasteClasses[addonTable.class] and 1.3 or 1
 
 -- Level 60 rating base
 addonTable.RatingBase = {
@@ -41,22 +39,20 @@ addonTable.RatingBase = {
 }
 addonTable.SetCRMax()
 
-StatLogic.GenericStatMap = {
-	[CR_HIT] = {
-		[CR_HIT_MELEE] = true,
-		[CR_HIT_RANGED] = true,
-		[CR_HIT_SPELL] = true,
-	},
-	[CR_CRIT] = {
-		[CR_CRIT_MELEE] = true,
-		[CR_CRIT_RANGED] = true,
-		[CR_CRIT_SPELL] = true,
-	},
-	[CR_HASTE] = {
-		[CR_HASTE_MELEE] = true,
-		[CR_HASTE_RANGED] = true,
-		[CR_HASTE_SPELL] = true,
-	},
+StatLogic.GenericStatMap[StatLogic.GenericStats.CR_HIT] = {
+	CR_HIT_MELEE,
+	CR_HIT_RANGED,
+	CR_HIT_SPELL,
+}
+StatLogic.GenericStatMap[StatLogic.GenericStats.CR_CRIT] = {
+	CR_CRIT_MELEE,
+	CR_CRIT_RANGED,
+	CR_CRIT_SPELL,
+}
+StatLogic.GenericStatMap[StatLogic.GenericStats.CR_HASTE] = {
+	CR_HASTE_MELEE,
+	CR_HASTE_RANGED,
+	CR_HASTE_SPELL,
 }
 
 --[[---------------------------------

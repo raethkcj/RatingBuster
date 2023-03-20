@@ -7,6 +7,7 @@ Translated by:
 
 local L = LibStub("AceLocale-3.0"):NewLocale("RatingBuster", "enUS", true)
 L["RatingBuster Options"] = true
+local StatLogic = LibStub("StatLogic")
 ---------------------------
 -- Slash Command Options --
 ---------------------------
@@ -593,26 +594,28 @@ L["statList"] = {
 	{pattern = "ranged critical hit rating", id = CR_CRIT_RANGED},
 	{pattern = "ranged critical rating", id = CR_CRIT_RANGED},
 	{pattern = "ranged crit rating", id = CR_CRIT_RANGED},
-	{pattern = "critical strike rating", id = CR_CRIT},
-	{pattern = "critical hit rating", id = CR_CRIT},
-	{pattern = "critical rating", id = CR_CRIT},
-	{pattern = "crit rating", id = CR_CRIT},
+	{pattern = "critical strike rating", id = StatLogic.GenericStats.CR_CRIT},
+	{pattern = "critical hit rating", id = StatLogic.GenericStats.CR_CRIT},
+	{pattern = "critical rating", id = StatLogic.GenericStats.CR_CRIT},
+	{pattern = "crit rating", id = StatLogic.GenericStats.CR_CRIT},
 
 	{pattern = "spell hit rating", id = CR_HIT_SPELL},
 	{pattern = "ranged hit rating", id = CR_HIT_RANGED},
-	{pattern = "hit rating", id = CR_HIT},
+	{pattern = "hit rating", id = StatLogic.GenericStats.CR_HIT},
 
 	{pattern = "resilience", id = CR_RESILIENCE_CRIT_TAKEN}, -- resilience is implicitly a rating
 
 	{pattern = "spell haste rating", id = CR_HASTE_SPELL},
 	{pattern = "ranged haste rating", id = CR_HASTE_RANGED},
-	{pattern = "haste rating", id = CR_HASTE},
+	{pattern = "haste rating", id = StatLogic.GenericStats.CR_HASTE},
 
 	{pattern = "expertise rating", id = CR_EXPERTISE},
 
 	{pattern = "armor penetration", id = CR_ARMOR_PENETRATION},
 	{pattern = string.lower(ARMOR), id = ARMOR},
 	{pattern = "attack power", id = ATTACK_POWER},
+
+	{pattern = "all stats", id = nil}
 }
 -------------------------
 -- Added info patterns --

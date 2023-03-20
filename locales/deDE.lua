@@ -7,6 +7,7 @@ Translated by:
 
 local L = LibStub("AceLocale-3.0"):NewLocale("RatingBuster", "deDE")
 if not L then return end
+local StatLogic = LibStub("StatLogic")
 ----
 -- This file is coded in UTF-8
 -- If you don't have a editor that can save in UTF-8, I recommend Ultraedit
@@ -587,19 +588,19 @@ L["statList"] = {
 
 	{pattern = "kritische zaubertrefferwertung", id = CR_CRIT_SPELL},
 	{pattern = "kritische distanztrefferwertung", id = CR_CRIT_RANGED},
-	{pattern = "kritische trefferwertung", id = CR_CRIT},
+	{pattern = "kritische trefferwertung", id = StatLogic.GenericStats.CR_CRIT},
 
 	{pattern = "zaubertrefferwertung", id = CR_HIT_SPELL},
 	{pattern = "trefferwertung", id = CR_HIT_RANGED},
-	{pattern = "trefferwertung", id = CR_HIT},
+	{pattern = "trefferwertung", id = StatLogic.GenericStats.CR_HIT},
 
 	{pattern = "abhärtungswertung", id = CR_RESILIENCE_CRIT_TAKEN}, -- resilience is implicitly a rating
 
 	{pattern = "zaubertempowertung", id = CR_HASTE_SPELL},
 	{pattern = "distanztempowertung", id = CR_HASTE_RANGED},
-	{pattern = "angriffstempowertung", id = CR_HASTE},
+	{pattern = "angriffstempowertung", id = StatLogic.GenericStats.CR_HASTE},
 	{pattern = "nahkampftempowertung", id = CR_HASTE_MELEE},
-	{pattern = "tempowertung", id = CR_HASTE}, -- [Drums of Battle]
+	{pattern = "tempowertung", id = StatLogic.GenericStats.CR_HASTE}, -- [Drums of Battle]
 
 	{pattern = "waffenkundewertung", id = CR_EXPERTISE},
 

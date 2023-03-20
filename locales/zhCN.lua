@@ -7,6 +7,7 @@ Translated by:
 
 local L = LibStub("AceLocale-3.0"):NewLocale("RatingBuster", "zhCN")
 if not L then return end
+local StatLogic = LibStub("StatLogic")
 ----
 -- This file is coded in UTF-8
 -- If you don't have a editor that can save in UTF-8, I recommend Ultraedit
@@ -584,18 +585,18 @@ L["statList"] = {
 	{pattern = "远程爆击命中等级", id = CR_CRIT_RANGED},
 	{pattern = "远程爆击等级", id = CR_CRIT_RANGED},
 	{pattern = "近战爆击等级", id = CR_CRIT_MELEE},
-	{pattern = "爆击等级", id = CR_CRIT},
+	{pattern = "爆击等级", id = StatLogic.GenericStats.CR_CRIT},
 
 	{pattern = "法术命中等级", id = CR_HIT_SPELL},
 	{pattern = "远程命中等级", id = CR_HIT_RANGED},
-	{pattern = "命中等级", id = CR_HIT},
+	{pattern = "命中等级", id = StatLogic.GenericStats.CR_HIT},
 
 	{pattern = "韧性等级", id = CR_RESILIENCE_CRIT_TAKEN}, -- resilience is implicitly a rating
 
 	{pattern = "法术急速等级", id = CR_HASTE_SPELL},
 	{pattern = "远程急速等级", id = CR_HASTE_RANGED},
-	{pattern = "急速等级", id = CR_HASTE},
-	{pattern = "加速等级", id = CR_HASTE}, -- [Drums of Battle]
+	{pattern = "急速等级", id = StatLogic.GenericStats.CR_HASTE},
+	{pattern = "加速等级", id = StatLogic.GenericStats.CR_HASTE}, -- [Drums of Battle]
 
 	{pattern = "精准等级", id = CR_EXPERTISE},
 

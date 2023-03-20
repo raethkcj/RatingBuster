@@ -224,8 +224,8 @@ local options = {
 					name = L["Show Spell Hit/Haste"],
 					desc = L["Show Spell Hit/Haste from Hit/Haste Rating"],
 					hidden = function()
-						local genericHit = StatLogic.GenericStatMap[CR_HIT]
-						return (not genericHit) or (not genericHit[CR_HIT_SPELL])
+						local genericHit = StatLogic.GenericStatMap[StatLogic.GenericStats.CR_HIT]
+						return (not genericHit) or (not table.contains(genericHit, CR_HIT_SPELL))
 					end
 				},
 				ratingPhysical = {
@@ -1912,474 +1912,7 @@ function RatingBuster:ProcessText(text, link, color)
 			for _, stat in ipairs(L["statList"]) do
 				if (not partialtext and strfind(lowerText, stat.pattern)) or (partialtext and strfind(partialtext, stat.pattern)) then
 					value = tonumber(value)
-					local infoString = ""
-					if type(stat.id) == "number" and profileDB.showRatings then
-						--------------------
-						-- Combat Ratings --
-						--------------------
-						-- Calculate stat value
-						local effect, strID = StatLogic:GetEffectFromRating(value, stat.id, calcLevel)
-						--self:Debug(reversedAmount..", "..amount..", "..v[2]..", "..RatingBuster.targetLevel)-- debug
-						-- If rating is resilience, add a minus sign
-						if strID == "DEFENSE" and profileDB.defBreakDown then
-							effect = effect * 0.04
-							processedDodge = processedDodge + effect
-							processedMissed = processedMissed + effect
-							local numStats = 5
-							if GetParryChance() == 0 then
-								numStats = numStats - 1
-							else
-								processedParry = processedParry + effect
-							end
-							if GetBlockChance() == 0 then
-								numStats = numStats - 1
-							end
-							infoString = format("%+.2f%% x"..numStats, effect)
-						elseif strID == "DODGE" and profileDB.enableAvoidanceDiminishingReturns then
-							infoString = format("%+.2f%%", StatLogic:GetAvoidanceGainAfterDR("DODGE", processedDodge + effect) - StatLogic:GetAvoidanceGainAfterDR("DODGE", processedDodge))
-							processedDodge = processedDodge + effect
-						elseif strID == "PARRY" and profileDB.enableAvoidanceDiminishingReturns then
-							infoString = format("%+.2f%%", StatLogic:GetAvoidanceGainAfterDR("PARRY", processedParry + effect) - StatLogic:GetAvoidanceGainAfterDR("PARRY", processedParry))
-							processedParry = processedParry + effect
-						elseif strID == "WEAPON_SKILL" and profileDB.wpnBreakDown then
-							effect = effect * 0.04
-							infoString = format("%+.2f%% x5", effect)
-						elseif strID == "EXPERTISE" and profileDB.expBreakDown then
-							effect = floor(effect) * -0.25
-							if profileDB.detailedConversionText then
-								infoString = gsub(L["$value to be Dodged/Parried"], "$value", format("%+.2f%%%%", effect))
-							else
-								infoString = format("%+.2f%%", effect)
-							end
-						elseif stat.id == CR_RESILIENCE_CRIT_TAKEN then -- Resilience
-							effect = effect * -1
-							if profileDB.detailedConversionText then
-								local infoTable = {}
-
-								if tocversion >= 30000 then
-									-- Wrath
-									tinsert(infoTable, (L["$value to be Crit"]:gsub("$value", format("%+.2f%%%%", effect))))
-									tinsert(infoTable, (L["$value Crit Dmg Taken"]:gsub("$value", format("%+.2f%%%%", effect * RESILIENCE_CRIT_CHANCE_TO_DAMAGE_REDUCTION_MULTIPLIER))))
-									tinsert(infoTable, (L["$value Dmg Taken"]:gsub("$value", format("%+.2f%%%%", effect * RESILIENCE_CRIT_CHANCE_TO_CONSTANT_DAMAGE_REDUCTION_MULTIPLIER))))
-								elseif tocversion >= 20000 then
-									-- TBC
-									tinsert(infoTable, (L["$value to be Crit"]:gsub("$value", format("%+.2f%%%%", effect))))
-									tinsert(infoTable, (L["$value Crit Dmg Taken"]:gsub("$value", format("%+.2f%%%%", effect * 2))))
-									tinsert(infoTable, (L["$value DOT Dmg Taken"]:gsub("$value", format("%+.2f%%%%", effect))))
-								end
-
-								infoString = strjoin(", ", unpack(infoTable))
-							else
-								infoString = format("%+.2f%%", effect)
-							end
-						elseif StatLogic.GenericStatMap[stat.id] then
-							-- CR_HIT, CR_CRIT, CR_HASTE
-							local infoTable = {}
-
-							local pattern = "%+.2f%%"
-							local patternSpell = pattern
-							if profileDB.ratingPhysical and profileDB.ratingSpell then
-								patternSpell = L["$value Spell"]:gsub("$value", "%%+.2f%%%%")
-							end
-
-							local ratingMelee = stat.id * -1
-							if profileDB.ratingPhysical then
-								effect = StatLogic:GetEffectFromRating(value, ratingMelee, calcLevel)
-								tinsert(infoTable, pattern:format(effect))
-							end
-
-							local ratingSpell = ratingMelee + 2
-							if profileDB.ratingSpell and StatLogic.GenericStatMap[stat.id][ratingSpell] then
-								local effectSpell = StatLogic:GetEffectFromRating(value, ratingSpell, calcLevel)
-								if effectSpell ~= effect then
-									tinsert(infoTable, patternSpell:format(effectSpell))
-								end
-							end
-
-							infoString = strjoin(", ", unpack(infoTable))
-						else
-							--self:Debug(text..", "..tostring(effect)..", "..value..", "..stat.id..", "..calcLevel)
-							-- Build info string
-							infoString = format("%+.2f", effect)
-							if stat.id > 2 and stat.id < 21 or stat.id == 25 then -- if rating is a percentage
-								infoString = infoString.."%"
-							end
-						end
-					elseif stat.id == SPELL_STAT1_NAME and profileDB.showStats then
-						--------------
-						-- Strength --
-						--------------
-						local statmod = 1
-						if profileDB.enableStatMods then
-							statmod = GSM("MOD_STR")
-							value = value * statmod
-						end
-						local infoTable = {}
-						if profileDB.showAPFromStr then
-							local mod = GSM("MOD_AP")
-							local effect = value * StatLogic:GetAPPerStr(class) * mod
-							if (mod ~= 1 or statmod ~= 1) and floor(abs(effect) * 10 + 0.5) > 0 then
-								tinsert(infoTable, (gsub(L["$value AP"], "$value", format("%+.1f", effect))))
-							elseif floor(abs(effect) + 0.5) > 0 then -- so we don't get +0 AP when effect < 0.5
-								tinsert(infoTable, (gsub(L["$value AP"], "$value", format("%+.0f", effect))))
-							end
-						end
-						if profileDB.showBlockValueFromStr then
-							local effect = value * StatLogic:GetBlockValuePerStr(class)
-							if floor(abs(effect) * 10 + 0.5) > 0 then
-								tinsert(infoTable, (gsub(L["$value Block"], "$value", format("%+.1f", effect))))
-							end
-						end
-						-- Shaman: Mental Quickness
-						-- Paladin: Sheath of Light, Touched by the Light
-						if profileDB.showSpellDmgFromStr then
-							local mod = GSM("MOD_AP") * GSM("MOD_SPELL_DMG")
-							local effect = (value * StatLogic:GetAPPerStr(class) * GSM("ADD_SPELL_DMG_MOD_AP")
-								+ value * GSM("ADD_SPELL_DMG_MOD_STR")) * mod
-							if (mod ~= 1 or statmod ~= 1) and floor(abs(effect) * 10 + 0.5) > 0 then
-								tinsert(infoTable, (gsub(L["$value Spell Dmg"], "$value", format("%+.1f", effect))))
-							elseif floor(abs(effect) + 0.5) > 0 then
-								tinsert(infoTable, (gsub(L["$value Spell Dmg"], "$value", format("%+.0f", effect))))
-							end
-						end
-						if profileDB.showHealingFromStr then
-							local mod = GSM("MOD_AP") * GSM("MOD_HEALING")
-							local effect = (value * StatLogic:GetAPPerStr(class) * GSM("ADD_HEALING_MOD_AP")
-								+ value * GSM("ADD_HEALING_MOD_STR")) * mod
-							if (mod ~= 1 or statmod ~= 1) and floor(abs(effect) * 10 + 0.5) > 0 then
-								tinsert(infoTable, (gsub(L["$value Heal"], "$value", format("%+.1f", effect))))
-							elseif floor(abs(effect) + 0.5) > 0 then
-								tinsert(infoTable, (gsub(L["$value Heal"], "$value", format("%+.0f", effect))))
-							end
-						end
-						-- Death Knight: Forceful Deflection - Passive
-						if profileDB.showParryFromStr then
-							local rating = value * GSM("ADD_PARRY_RATING_MOD_STR")
-							local effect = StatLogic:GetEffectFromRating(rating, 4, calcLevel)
-							if profileDB.enableAvoidanceDiminishingReturns then
-								local effectNoDR = effect
-								effect = StatLogic:GetAvoidanceGainAfterDR("PARRY", processedParry + effect) - StatLogic:GetAvoidanceGainAfterDR("PARRY", processedParry)
-								processedParry = processedParry + effectNoDR
-							end
-							if effect > 0 then
-								tinsert(infoTable, (gsub(L["$value% Parry"], "$value", format("%+.2f", effect))))
-							end
-						else
-							local rating = value * GSM("ADD_PARRY_RATING_MOD_STR")
-							local effect = StatLogic:GetEffectFromRating(rating, 4, calcLevel)
-							processedParry = processedParry + effect
-						end
-						infoString = strjoin(", ", unpack(infoTable))
-					elseif stat.id == SPELL_STAT2_NAME and profileDB.showStats then
-						-------------
-						-- Agility --
-						-------------
-						local statmod = 1
-						if profileDB.enableStatMods then
-							statmod = GSM("MOD_AGI")
-							value = value * statmod
-						end
-						local infoTable = {}
-						if profileDB.showAPFromAgi then
-							local mod = GSM("MOD_AP")
-							local effect = value * StatLogic:GetAPPerAgi(class) * mod
-							if (mod ~= 1 or statmod ~= 1) and floor(abs(effect) * 10 + 0.5) > 0 then
-								tinsert(infoTable, (gsub(L["$value AP"], "$value", format("%+.1f", effect))))
-							elseif floor(abs(effect) + 0.5) > 0 then
-								tinsert(infoTable, (gsub(L["$value AP"], "$value", format("%+.0f", effect))))
-							end
-						end
-						if profileDB.showRAPFromAgi then
-							local mod = GSM("MOD_RANGED_AP")
-							local effect = value * StatLogic:GetRAPPerAgi(class) * mod
-							if (mod ~= 1 or statmod ~= 1) and floor(abs(effect) * 10 + 0.5) > 0 then
-								tinsert(infoTable, (gsub(L["$value RAP"], "$value", format("%+.1f", effect))))
-							elseif floor(abs(effect) + 0.5) > 0 then
-								tinsert(infoTable, (gsub(L["$value RAP"], "$value", format("%+.0f", effect))))
-							end
-						end
-						if profileDB.showCritFromAgi then
-							local effect = StatLogic:GetCritFromAgi(value, class, calcLevel)
-							if effect > 0 then
-								tinsert(infoTable, (gsub(L["$value% Crit"], "$value", format("%+.2f", effect))))
-							end
-						end
-						if profileDB.showDodgeFromAgi and (calcLevel == playerLevel) then
-							local effect = StatLogic:GetDodgeFromAgi(value)
-							if effect > 0 then
-								tinsert(infoTable, (gsub(L["$value% Dodge"], "$value", format("%+.2f", effect))))
-							end
-						end
-						if profileDB.showArmorFromAgi then
-							local effect = value * 2
-							if effect > 0 then
-								tinsert(infoTable, (gsub(L["$value Armor"], "$value", format("%+.0f", effect))))
-							end
-						end
-						-- Shaman: Mental Quickness
-						-- Paladin: Sheath of Light, Touched by the Light
-						if profileDB.showSpellDmgFromAgi then
-							local mod = GSM("MOD_AP") * GSM("MOD_SPELL_DMG")
-							local effect = (value * StatLogic:GetAPPerAgi(class) * GSM("ADD_SPELL_DMG_MOD_AP")) * mod
-							if (mod ~= 1 or statmod ~= 1) and floor(abs(effect) * 10 + 0.5) > 0 then
-								tinsert(infoTable, (gsub(L["$value Spell Dmg"], "$value", format("%+.1f", effect))))
-							elseif floor(abs(effect) + 0.5) > 0 then
-								tinsert(infoTable, (gsub(L["$value Spell Dmg"], "$value", format("%+.0f", effect))))
-							end
-						end
-						-- Druid: Nurturing Instinct
-						if profileDB.showHealingFromAgi then
-							local mod = GSM("MOD_AP") * GSM("MOD_HEALING")
-							local effect = (value * StatLogic:GetAPPerAgi(class) * GSM("ADD_HEALING_MOD_AP")
-								+ value * GSM("ADD_HEALING_MOD_AGI") / GSM("MOD_AP")) * mod
-							if (mod ~= 1 or statmod ~= 1) and floor(abs(effect) * 10 + 0.5) > 0 then
-								tinsert(infoTable, (gsub(L["$value Heal"], "$value", format("%+.1f", effect))))
-							elseif floor(abs(effect) + 0.5) > 0 then
-								tinsert(infoTable, (gsub(L["$value Heal"], "$value", format("%+.0f", effect))))
-							end
-						end
-						infoString = strjoin(", ", unpack(infoTable))
-					elseif stat.id == SPELL_STAT3_NAME and profileDB.showStats then
-						-------------
-						-- Stamina --
-						-------------
-						local statmod = 1
-						if profileDB.enableStatMods then
-							statmod = GSM("MOD_STA")
-							value = value * statmod
-						end
-						local infoTable = {}
-						if profileDB.showHealthFromSta then
-							local mod = GSM("MOD_HEALTH")
-							local effect = value * 10 * mod -- 10 Health per Sta
-							if (mod ~= 1 or statmod ~= 1) and floor(abs(effect) * 10 + 0.5) > 0 then
-								tinsert(infoTable, (gsub(L["$value HP"], "$value", format("%+.1f", effect))))
-							elseif floor(abs(effect) + 0.5) > 0 then
-								tinsert(infoTable, (gsub(L["$value HP"], "$value", format("%+.0f", effect))))
-							end
-						end
-						if profileDB.showSpellDmgFromSta then
-							local mod = GSM("MOD_SPELL_DMG")
-							local effect = value * mod * (GSM("ADD_SPELL_DMG_MOD_STA")
-								+ GSM("ADD_SPELL_DMG_MOD_PET_STA") * GSM("ADD_PET_STA_MOD_STA"))
-							if floor(abs(effect) * 10 + 0.5) > 0 then
-								tinsert(infoTable, (gsub(L["$value Spell Dmg"], "$value", format("%+.1f", effect))))
-							end
-						end
-						-- "ADD_AP_MOD_STA" -- Hunter: Hunter vs. Wild
-						if profileDB.showAPFromSta then
-							local mod = GSM("MOD_AP")
-							local effect = value * GSM("ADD_AP_MOD_STA") * mod
-							if (mod ~= 1 or statmod ~= 1) and floor(abs(effect) * 10 + 0.5) > 0 then
-								tinsert(infoTable, (gsub(L["$value AP"], "$value", format("%+.1f", effect))))
-							elseif floor(abs(effect) + 0.5) > 0 then
-								tinsert(infoTable, (gsub(L["$value AP"], "$value", format("%+.0f", effect))))
-							end
-						end
-						infoString = strjoin(", ", unpack(infoTable))
-					elseif stat.id == SPELL_STAT4_NAME and profileDB.showStats then
-						---------------
-						-- Intellect --
-						---------------
-						local statmod = 1
-						if profileDB.enableStatMods then
-							statmod = GSM("MOD_INT")
-							value = value * statmod
-						end
-						local infoTable = {}
-						if profileDB.showManaFromInt then
-							local mod = GSM("MOD_MANA")
-							local effect = value * 15 * mod -- 15 Mana per Int
-							if (mod ~= 1 or statmod ~= 1) and floor(abs(effect) * 10 + 0.5) > 0 then
-								tinsert(infoTable, (gsub(L["$value MP"], "$value", format("%+.1f", effect))))
-							elseif floor(abs(effect) + 0.5) > 0 then
-								tinsert(infoTable, (gsub(L["$value MP"], "$value", format("%+.0f", effect))))
-							end
-						end
-						if profileDB.showSpellCritFromInt then
-							local effect = StatLogic:GetSpellCritFromInt(value, class, calcLevel)
-							if effect > 0 then
-								tinsert(infoTable, (gsub(L["$value% Spell Crit"], "$value", format("%+.2f", effect))))
-							end
-						end
-						if profileDB.showSpellDmgFromInt then
-							local mod = GSM("MOD_SPELL_DMG")
-							local effect = value * mod * (GSM("ADD_SPELL_DMG_MOD_INT")
-								+ GSM("ADD_SPELL_DMG_MOD_PET_INT") * GSM("ADD_PET_INT_MOD_INT"))
-							if floor(abs(effect) * 10 + 0.5) > 0 then
-								tinsert(infoTable, (gsub(L["$value Spell Dmg"], "$value", format("%+.1f", effect))))
-							end
-						end
-						if profileDB.showHealingFromInt then
-							local mod = GSM("MOD_HEALING")
-							local effect = value * GSM("ADD_HEALING_MOD_INT") * mod
-							if floor(abs(effect) * 10 + 0.5) > 0 then
-								tinsert(infoTable, (gsub(L["$value Heal"], "$value", format("%+.1f", effect))))
-							end
-						end
-						if profileDB.showMP5FromInt then
-							local effect
-							if tocversion >= 20400 then -- 2.4.0
-								local _, int = UnitStat("player", 4)
-								local _, spi = UnitStat("player", 5)
-								effect = value * GSM("ADD_MANA_REG_MOD_INT")
-									+ (StatLogic:GetNormalManaRegenFromSpi(spi, int + value, calcLevel)
-									- StatLogic:GetNormalManaRegenFromSpi(spi, int, calcLevel)) * GSM("ADD_MANA_REG_MOD_NORMAL_MANA_REG")
-									+ value * 15 * GSM("MOD_MANA") * GSM("ADD_MANA_REG_MOD_MANA") -- Replenishment
-							else
-								effect = value * GSM("ADD_MANA_REG_MOD_INT")
-							end
-							if floor(abs(effect) * 10 + 0.5) > 0 then
-								tinsert(infoTable, (gsub(L["$value MP5"], "$value", format("%+.1f", effect))))
-							end
-						end
-						if profileDB.showMP5NCFromInt then
-							local effect
-							if tocversion >= 20400 then -- 2.4.0
-								local _, int = UnitStat("player", 4)
-								local _, spi = UnitStat("player", 5)
-								effect = value * GSM("ADD_MANA_REG_MOD_INT")
-									+ StatLogic:GetNormalManaRegenFromSpi(spi, int + value, calcLevel)
-									- StatLogic:GetNormalManaRegenFromSpi(spi, int, calcLevel)
-									+ value * 15 * GSM("MOD_MANA") * GSM("ADD_MANA_REG_MOD_MANA") -- Replenishment
-							else
-								effect = value * GSM("ADD_MANA_REG_MOD_INT")
-							end
-							if floor(abs(effect) * 10 + 0.5) > 0 then
-								tinsert(infoTable, (gsub(L["$value MP5(NC)"], "$value", format("%+.1f", effect))))
-							end
-						end
-						if profileDB.showRAPFromInt then
-							local mod = GSM("MOD_RANGED_AP")
-							local effect = value * GSM("ADD_RANGED_AP_MOD_INT") * mod
-							if floor(abs(effect) * 10 + 0.5) > 0 then
-								tinsert(infoTable, (gsub(L["$value RAP"], "$value", format("%+.1f", effect))))
-							end
-						end
-						if profileDB.showArmorFromInt then
-							local effect = value * GSM("ADD_ARMOR_MOD_INT")
-							if floor(abs(effect) + 0.5) > 0 then
-								tinsert(infoTable, (gsub(L["$value Armor"], "$value", format("%+.0f", effect))))
-							end
-						end
-						-- "ADD_AP_MOD_INT" -- Shaman: Mental Dexterity
-						if profileDB.showAPFromInt then
-							local mod = GSM("MOD_AP")
-							local effect = value * GSM("ADD_AP_MOD_INT") * mod
-							if (mod ~= 1 or statmod ~= 1) and floor(abs(effect) * 10 + 0.5) > 0 then
-								tinsert(infoTable, (gsub(L["$value AP"], "$value", format("%+.1f", effect))))
-							elseif floor(abs(effect) + 0.5) > 0 then
-								tinsert(infoTable, (gsub(L["$value AP"], "$value", format("%+.0f", effect))))
-							end
-						end
-						infoString = strjoin(", ", unpack(infoTable))
-					elseif stat.id == SPELL_STAT5_NAME and profileDB.showStats then
-						------------
-						-- Spirit --
-						------------
-						local statmod = 1
-						if profileDB.enableStatMods then
-							statmod = GSM("MOD_SPI")
-							value = value * statmod
-						end
-						local infoTable = {}
-						if profileDB.showMP5FromSpi then
-							local mod = GSM("ADD_MANA_REG_MOD_NORMAL_MANA_REG")
-							local effect
-							if tocversion >= 20400 then -- 2.4.0
-								effect = StatLogic:GetNormalManaRegenFromSpi(value, nil, calcLevel) * mod
-							else
-								effect = StatLogic:GetNormalManaRegenFromSpi(value, class) * mod
-							end
-							if floor(abs(effect) * 10 + 0.5) > 0 then
-								tinsert(infoTable, (gsub(L["$value MP5"], "$value", format("%+.1f", effect))))
-							end
-						end
-						if profileDB.showMP5NCFromSpi then
-							local effect
-							if tocversion >= 20400 then -- 2.4.0
-								effect = StatLogic:GetNormalManaRegenFromSpi(value, nil, calcLevel)
-							else
-								effect = StatLogic:GetNormalManaRegenFromSpi(value, class)
-							end
-							if floor(abs(effect) * 10 + 0.5) > 0 then
-								tinsert(infoTable, (gsub(L["$value MP5(NC)"], "$value", format("%+.1f", effect))))
-							end
-						end
-						if profileDB.showHP5FromSpi then
-							local effect = StatLogic:GetHealthRegenFromSpi(value, class)
-							if floor(abs(effect) * 10 + 0.5) > 0 then
-								tinsert(infoTable, (gsub(L["$value HP5"], "$value", format("%+.1f", effect))))
-							end
-						end
-						if profileDB.showSpellDmgFromSpi then
-							local mod = GSM("MOD_SPELL_DMG")
-							local effect = value * GSM("ADD_SPELL_DMG_MOD_SPI") * mod
-							if floor(abs(effect) * 10 + 0.5) > 0 then
-								tinsert(infoTable, (gsub(L["$value Spell Dmg"], "$value", format("%+.1f", effect))))
-							end
-						end
-						if profileDB.showHealingFromSpi then
-							local mod = GSM("MOD_HEALING")
-							local effect = value * GSM("ADD_HEALING_MOD_SPI") * mod
-							if floor(abs(effect) * 10 + 0.5) > 0 then
-								tinsert(infoTable, (gsub(L["$value Heal"], "$value", format("%+.1f", effect))))
-							end
-						end
-						if profileDB.showSpellCritFromSpi then
-							local mod = GSM("ADD_SPELL_CRIT_RATING_MOD_SPI")
-							local effect = StatLogic:GetEffectFromRating(value * mod, CR_CRIT_SPELL, calcLevel)
-							if effect > 0 then
-								tinsert(infoTable, (gsub(L["$value% Spell Crit"], "$value", format("%+.2f", effect))))
-							end
-						end
-						infoString = strjoin(", ", unpack(infoTable))
-					elseif profileDB.showAPFromArmor and stat.id == ARMOR then
-						-----------
-						-- Armor --
-						-----------
-						if profileDB.enableStatMods then
-							local base, bonus = StatLogic:GetArmorDistribution(link, value, color)
-							value = base * GSM("MOD_ARMOR") + bonus
-						end
-						local infoTable = {}
-						local effect = value * GSM("ADD_AP_MOD_ARMOR") * GSM("MOD_AP")
-						if floor(abs(effect) * 10 + 0.5) > 0 then
-							tinsert(infoTable, (gsub(L["$value AP"], "$value", format("%+.1f", effect))))
-						end
-						infoString = strjoin(", ", unpack(infoTable))
-					elseif stat.id == ATTACK_POWER then
-						------------------
-						-- Attack Power --
-						------------------
-						local statmod = 1
-						if profileDB.enableStatMods then
-							statmod = GSM("MOD_AP")
-							value = value * statmod
-						end
-						local infoTable = {}
-						-- Shaman: Mental Quickness
-						-- Paladin: Sheath of Light, Touched by the Light
-						if profileDB.showSpellDmgFromAP then
-							local mod = GSM("MOD_AP") * GSM("MOD_SPELL_DMG")
-							local effect = (value * GSM("ADD_SPELL_DMG_MOD_AP")) * mod
-							if (mod ~= 1 or statmod ~= 1) and floor(abs(effect) * 10 + 0.5) > 0 then
-								tinsert(infoTable, (gsub(L["$value Spell Dmg"], "$value", format("%+.1f", effect))))
-							elseif floor(abs(effect) + 0.5) > 0 then
-								tinsert(infoTable, (gsub(L["$value Spell Dmg"], "$value", format("%+.0f", effect))))
-							end
-						end
-						if profileDB.showHealingFromAP then
-							local mod = GSM("MOD_AP") * GSM("MOD_HEALING")
-							local effect = (value * GSM("ADD_HEALING_MOD_AP")) * mod
-							if (mod ~= 1 or statmod ~= 1) and floor(abs(effect) * 10 + 0.5) > 0 then
-								tinsert(infoTable, (gsub(L["$value Heal"], "$value", format("%+.1f", effect))))
-							elseif floor(abs(effect) + 0.5) > 0 then
-								tinsert(infoTable, (gsub(L["$value Heal"], "$value", format("%+.0f", effect))))
-							end
-						end
-						infoString = strjoin(", ", unpack(infoTable))
-					end
+					local infoString = RatingBuster:ProcessStat(stat.id, value)
 					if infoString ~= "" then
 						-- Add parenthesis
 						infoString = "("..infoString..")"
@@ -2416,6 +1949,513 @@ function RatingBuster:ProcessText(text, link, color)
 		end
 	end
 	return text
+end
+
+do
+	local RatingType = {
+		Melee = {
+			[CR_HIT_MELEE] = true,
+			[CR_CRIT_MELEE] = true,
+			[CR_HASTE_MELEE] = true,
+		},
+		Ranged = {
+			[CR_HIT_RANGED] = true,
+			[CR_CRIT_RANGED] = true,
+			[CR_HASTE_RANGED] = true,
+		},
+		Spell = {
+			[CR_HIT_SPELL] = true,
+			[CR_CRIT_SPELL] = true,
+			[CR_HASTE_SPELL] = true,
+		},
+		Decimal = {
+			[CR_WEAPON_SKILL] = true,
+			[CR_DEFENSE_SKILL] = true,
+			[CR_WEAPON_SKILL_MAINHAND] = true,
+			[CR_WEAPON_SKILL_OFFHAND] = true,
+			[CR_WEAPON_SKILL_RANGED] = true,
+			[CR_EXPERTISE] = true,
+		}
+	}
+	
+	function RatingBuster:ProcessStat(statID, value)
+		local infoString = ""
+		if StatLogic.GenericStatMap[statID] then
+			local statList = StatLogic.GenericStatMap[statID]
+			local first = true
+			for _, convertedStatID in ipairs(statList) do
+				local result = RatingBuster:ProcessStat(convertedStatID, value)
+				if result and result ~= "" then
+					if not first then
+						infoString = infoString .. ", "
+					end
+					infoString = infoString .. result
+					first = false
+				end
+			end
+		elseif type(statID) == "number" and profileDB.showRatings then
+			--------------------
+			-- Combat Ratings --
+			--------------------
+			-- Calculate stat value
+			local effect, strID = StatLogic:GetEffectFromRating(value, statID, calcLevel)
+			--self:Debug(reversedAmount..", "..amount..", "..v[2]..", "..RatingBuster.targetLevel)-- debug
+			-- If rating is resilience, add a minus sign
+			if strID == "DEFENSE" and profileDB.defBreakDown then
+				effect = effect * 0.04
+				processedDodge = processedDodge + effect
+				processedMissed = processedMissed + effect
+				local numStats = 5
+				if GetParryChance() == 0 then
+					numStats = numStats - 1
+				else
+					processedParry = processedParry + effect
+				end
+				if GetBlockChance() == 0 then
+					numStats = numStats - 1
+				end
+				infoString = format("%+.2f%% x"..numStats, effect)
+			elseif strID == "DODGE" and profileDB.enableAvoidanceDiminishingReturns then
+				infoString = format("%+.2f%%", StatLogic:GetAvoidanceGainAfterDR("DODGE", processedDodge + effect) - StatLogic:GetAvoidanceGainAfterDR("DODGE", processedDodge))
+				processedDodge = processedDodge + effect
+			elseif strID == "PARRY" and profileDB.enableAvoidanceDiminishingReturns then
+				infoString = format("%+.2f%%", StatLogic:GetAvoidanceGainAfterDR("PARRY", processedParry + effect) - StatLogic:GetAvoidanceGainAfterDR("PARRY", processedParry))
+				processedParry = processedParry + effect
+			elseif strID == "WEAPON_SKILL" and profileDB.wpnBreakDown then
+				effect = effect * 0.04
+				infoString = format("%+.2f%% x5", effect)
+			elseif strID == "EXPERTISE" and profileDB.expBreakDown then
+				effect = floor(effect) * -0.25
+				if profileDB.detailedConversionText then
+					infoString = gsub(L["$value to be Dodged/Parried"], "$value", format("%+.2f%%%%", effect))
+				else
+					infoString = format("%+.2f%%", effect)
+				end
+			elseif statID == CR_RESILIENCE_CRIT_TAKEN then -- Resilience
+				effect = effect * -1
+				if profileDB.detailedConversionText then
+					local infoTable = {}
+					
+					if tocversion >= 30000 then
+						-- Wrath
+						tinsert(infoTable, (L["$value to be Crit"]:gsub("$value", format("%+.2f%%%%", effect))))
+						tinsert(infoTable, (L["$value Crit Dmg Taken"]:gsub("$value", format("%+.2f%%%%", effect * RESILIENCE_CRIT_CHANCE_TO_DAMAGE_REDUCTION_MULTIPLIER))))
+						tinsert(infoTable, (L["$value Dmg Taken"]:gsub("$value", format("%+.2f%%%%", effect * RESILIENCE_CRIT_CHANCE_TO_CONSTANT_DAMAGE_REDUCTION_MULTIPLIER))))
+					elseif tocversion >= 20000 then
+						-- TBC
+						tinsert(infoTable, (L["$value to be Crit"]:gsub("$value", format("%+.2f%%%%", effect))))
+						tinsert(infoTable, (L["$value Crit Dmg Taken"]:gsub("$value", format("%+.2f%%%%", effect * 2))))
+						tinsert(infoTable, (L["$value DOT Dmg Taken"]:gsub("$value", format("%+.2f%%%%", effect))))
+					end
+					
+					infoString = strjoin(", ", unpack(infoTable))
+				else
+					infoString = format("%+.2f%%", effect)
+				end
+			else
+				local pattern = "%+.2f%%"
+				local show = false
+				if RatingType.Melee[statID] then
+					if profileDB.ratingPhysical then
+						show = true
+					end
+				elseif RatingType.Spell[statID] then
+					if profileDB.ratingSpell then
+						if not profileDB.ratingPhysical then
+							show = true
+						elseif ( statID == CR_HIT_SPELL or (statID == CR_HASTE_SPELL and StatLogic.ExtraHasteClasses[class])) then
+							show = true
+							pattern = L["$value Spell"]:gsub("$value", "%%+.2f%%%%")
+						end
+					end
+				elseif RatingType.Decimal[statID] then
+					show = true
+					pattern = "%+.2f"
+				elseif not RatingType.Ranged[statID] then
+					show = true
+				end
+
+				if show then
+					infoString = format(pattern, effect)
+				end
+			end
+		elseif statID == SPELL_STAT1_NAME and profileDB.showStats then
+			--------------
+			-- Strength --
+			--------------
+			local statmod = 1
+			if profileDB.enableStatMods then
+				statmod = GSM("MOD_STR")
+				value = value * statmod
+			end
+			local infoTable = {}
+			if profileDB.showAPFromStr then
+				local mod = GSM("MOD_AP")
+				local effect = value * StatLogic:GetAPPerStr(class) * mod
+				if (mod ~= 1 or statmod ~= 1) and floor(abs(effect) * 10 + 0.5) > 0 then
+					tinsert(infoTable, (gsub(L["$value AP"], "$value", format("%+.1f", effect))))
+				elseif floor(abs(effect) + 0.5) > 0 then -- so we don't get +0 AP when effect < 0.5
+					tinsert(infoTable, (gsub(L["$value AP"], "$value", format("%+.0f", effect))))
+				end
+			end
+			if profileDB.showBlockValueFromStr then
+				local effect = value * StatLogic:GetBlockValuePerStr(class)
+				if floor(abs(effect) * 10 + 0.5) > 0 then
+					tinsert(infoTable, (gsub(L["$value Block"], "$value", format("%+.1f", effect))))
+				end
+			end
+			-- Shaman: Mental Quickness
+			-- Paladin: Sheath of Light, Touched by the Light
+			if profileDB.showSpellDmgFromStr then
+				local mod = GSM("MOD_AP") * GSM("MOD_SPELL_DMG")
+				local effect = (value * StatLogic:GetAPPerStr(class) * GSM("ADD_SPELL_DMG_MOD_AP")
+				+ value * GSM("ADD_SPELL_DMG_MOD_STR")) * mod
+				if (mod ~= 1 or statmod ~= 1) and floor(abs(effect) * 10 + 0.5) > 0 then
+					tinsert(infoTable, (gsub(L["$value Spell Dmg"], "$value", format("%+.1f", effect))))
+				elseif floor(abs(effect) + 0.5) > 0 then
+					tinsert(infoTable, (gsub(L["$value Spell Dmg"], "$value", format("%+.0f", effect))))
+				end
+			end
+			if profileDB.showHealingFromStr then
+				local mod = GSM("MOD_AP") * GSM("MOD_HEALING")
+				local effect = (value * StatLogic:GetAPPerStr(class) * GSM("ADD_HEALING_MOD_AP")
+				+ value * GSM("ADD_HEALING_MOD_STR")) * mod
+				if (mod ~= 1 or statmod ~= 1) and floor(abs(effect) * 10 + 0.5) > 0 then
+					tinsert(infoTable, (gsub(L["$value Heal"], "$value", format("%+.1f", effect))))
+				elseif floor(abs(effect) + 0.5) > 0 then
+					tinsert(infoTable, (gsub(L["$value Heal"], "$value", format("%+.0f", effect))))
+				end
+			end
+			-- Death Knight: Forceful Deflection - Passive
+			if profileDB.showParryFromStr then
+				local rating = value * GSM("ADD_PARRY_RATING_MOD_STR")
+				local effect = StatLogic:GetEffectFromRating(rating, 4, calcLevel)
+				if profileDB.enableAvoidanceDiminishingReturns then
+					local effectNoDR = effect
+					effect = StatLogic:GetAvoidanceGainAfterDR("PARRY", processedParry + effect) - StatLogic:GetAvoidanceGainAfterDR("PARRY", processedParry)
+					processedParry = processedParry + effectNoDR
+				end
+				if effect > 0 then
+					tinsert(infoTable, (gsub(L["$value% Parry"], "$value", format("%+.2f", effect))))
+				end
+			else
+				local rating = value * GSM("ADD_PARRY_RATING_MOD_STR")
+				local effect = StatLogic:GetEffectFromRating(rating, 4, calcLevel)
+				processedParry = processedParry + effect
+			end
+			infoString = strjoin(", ", unpack(infoTable))
+		elseif statID == SPELL_STAT2_NAME and profileDB.showStats then
+			-------------
+			-- Agility --
+			-------------
+			local statmod = 1
+			if profileDB.enableStatMods then
+				statmod = GSM("MOD_AGI")
+				value = value * statmod
+			end
+			local infoTable = {}
+			if profileDB.showAPFromAgi then
+				local mod = GSM("MOD_AP")
+				local effect = value * StatLogic:GetAPPerAgi(class) * mod
+				if (mod ~= 1 or statmod ~= 1) and floor(abs(effect) * 10 + 0.5) > 0 then
+					tinsert(infoTable, (gsub(L["$value AP"], "$value", format("%+.1f", effect))))
+				elseif floor(abs(effect) + 0.5) > 0 then
+					tinsert(infoTable, (gsub(L["$value AP"], "$value", format("%+.0f", effect))))
+				end
+			end
+			if profileDB.showRAPFromAgi then
+				local mod = GSM("MOD_RANGED_AP")
+				local effect = value * StatLogic:GetRAPPerAgi(class) * mod
+				if (mod ~= 1 or statmod ~= 1) and floor(abs(effect) * 10 + 0.5) > 0 then
+					tinsert(infoTable, (gsub(L["$value RAP"], "$value", format("%+.1f", effect))))
+				elseif floor(abs(effect) + 0.5) > 0 then
+					tinsert(infoTable, (gsub(L["$value RAP"], "$value", format("%+.0f", effect))))
+				end
+			end
+			if profileDB.showCritFromAgi then
+				local effect = StatLogic:GetCritFromAgi(value, class, calcLevel)
+				if effect > 0 then
+					tinsert(infoTable, (gsub(L["$value% Crit"], "$value", format("%+.2f", effect))))
+				end
+			end
+			if profileDB.showDodgeFromAgi and (calcLevel == playerLevel) then
+				local effect = StatLogic:GetDodgeFromAgi(value)
+				if effect > 0 then
+					tinsert(infoTable, (gsub(L["$value% Dodge"], "$value", format("%+.2f", effect))))
+				end
+			end
+			if profileDB.showArmorFromAgi then
+				local effect = value * 2
+				if effect > 0 then
+					tinsert(infoTable, (gsub(L["$value Armor"], "$value", format("%+.0f", effect))))
+				end
+			end
+			-- Shaman: Mental Quickness
+			-- Paladin: Sheath of Light, Touched by the Light
+			if profileDB.showSpellDmgFromAgi then
+				local mod = GSM("MOD_AP") * GSM("MOD_SPELL_DMG")
+				local effect = (value * StatLogic:GetAPPerAgi(class) * GSM("ADD_SPELL_DMG_MOD_AP")) * mod
+				if (mod ~= 1 or statmod ~= 1) and floor(abs(effect) * 10 + 0.5) > 0 then
+					tinsert(infoTable, (gsub(L["$value Spell Dmg"], "$value", format("%+.1f", effect))))
+				elseif floor(abs(effect) + 0.5) > 0 then
+					tinsert(infoTable, (gsub(L["$value Spell Dmg"], "$value", format("%+.0f", effect))))
+				end
+			end
+			-- Druid: Nurturing Instinct
+			if profileDB.showHealingFromAgi then
+				local mod = GSM("MOD_AP") * GSM("MOD_HEALING")
+				local effect = (value * StatLogic:GetAPPerAgi(class) * GSM("ADD_HEALING_MOD_AP")
+				+ value * GSM("ADD_HEALING_MOD_AGI") / GSM("MOD_AP")) * mod
+				if (mod ~= 1 or statmod ~= 1) and floor(abs(effect) * 10 + 0.5) > 0 then
+					tinsert(infoTable, (gsub(L["$value Heal"], "$value", format("%+.1f", effect))))
+				elseif floor(abs(effect) + 0.5) > 0 then
+					tinsert(infoTable, (gsub(L["$value Heal"], "$value", format("%+.0f", effect))))
+				end
+			end
+			infoString = strjoin(", ", unpack(infoTable))
+		elseif statID == SPELL_STAT3_NAME and profileDB.showStats then
+			-------------
+			-- Stamina --
+			-------------
+			local statmod = 1
+			if profileDB.enableStatMods then
+				statmod = GSM("MOD_STA")
+				value = value * statmod
+			end
+			local infoTable = {}
+			if profileDB.showHealthFromSta then
+				local mod = GSM("MOD_HEALTH")
+				local effect = value * 10 * mod -- 10 Health per Sta
+				if (mod ~= 1 or statmod ~= 1) and floor(abs(effect) * 10 + 0.5) > 0 then
+					tinsert(infoTable, (gsub(L["$value HP"], "$value", format("%+.1f", effect))))
+				elseif floor(abs(effect) + 0.5) > 0 then
+					tinsert(infoTable, (gsub(L["$value HP"], "$value", format("%+.0f", effect))))
+				end
+			end
+			if profileDB.showSpellDmgFromSta then
+				local mod = GSM("MOD_SPELL_DMG")
+				local effect = value * mod * (GSM("ADD_SPELL_DMG_MOD_STA")
+				+ GSM("ADD_SPELL_DMG_MOD_PET_STA") * GSM("ADD_PET_STA_MOD_STA"))
+				if floor(abs(effect) * 10 + 0.5) > 0 then
+					tinsert(infoTable, (gsub(L["$value Spell Dmg"], "$value", format("%+.1f", effect))))
+				end
+			end
+			-- "ADD_AP_MOD_STA" -- Hunter: Hunter vs. Wild
+			if profileDB.showAPFromSta then
+				local mod = GSM("MOD_AP")
+				local effect = value * GSM("ADD_AP_MOD_STA") * mod
+				if (mod ~= 1 or statmod ~= 1) and floor(abs(effect) * 10 + 0.5) > 0 then
+					tinsert(infoTable, (gsub(L["$value AP"], "$value", format("%+.1f", effect))))
+				elseif floor(abs(effect) + 0.5) > 0 then
+					tinsert(infoTable, (gsub(L["$value AP"], "$value", format("%+.0f", effect))))
+				end
+			end
+			infoString = strjoin(", ", unpack(infoTable))
+		elseif statID == SPELL_STAT4_NAME and profileDB.showStats then
+			---------------
+			-- Intellect --
+			---------------
+			local statmod = 1
+			if profileDB.enableStatMods then
+				statmod = GSM("MOD_INT")
+				value = value * statmod
+			end
+			local infoTable = {}
+			if profileDB.showManaFromInt then
+				local mod = GSM("MOD_MANA")
+				local effect = value * 15 * mod -- 15 Mana per Int
+				if (mod ~= 1 or statmod ~= 1) and floor(abs(effect) * 10 + 0.5) > 0 then
+					tinsert(infoTable, (gsub(L["$value MP"], "$value", format("%+.1f", effect))))
+				elseif floor(abs(effect) + 0.5) > 0 then
+					tinsert(infoTable, (gsub(L["$value MP"], "$value", format("%+.0f", effect))))
+				end
+			end
+			if profileDB.showSpellCritFromInt then
+				local effect = StatLogic:GetSpellCritFromInt(value, class, calcLevel)
+				if effect > 0 then
+					tinsert(infoTable, (gsub(L["$value% Spell Crit"], "$value", format("%+.2f", effect))))
+				end
+			end
+			if profileDB.showSpellDmgFromInt then
+				local mod = GSM("MOD_SPELL_DMG")
+				local effect = value * mod * (GSM("ADD_SPELL_DMG_MOD_INT")
+				+ GSM("ADD_SPELL_DMG_MOD_PET_INT") * GSM("ADD_PET_INT_MOD_INT"))
+				if floor(abs(effect) * 10 + 0.5) > 0 then
+					tinsert(infoTable, (gsub(L["$value Spell Dmg"], "$value", format("%+.1f", effect))))
+				end
+			end
+			if profileDB.showHealingFromInt then
+				local mod = GSM("MOD_HEALING")
+				local effect = value * GSM("ADD_HEALING_MOD_INT") * mod
+				if floor(abs(effect) * 10 + 0.5) > 0 then
+					tinsert(infoTable, (gsub(L["$value Heal"], "$value", format("%+.1f", effect))))
+				end
+			end
+			if profileDB.showMP5FromInt then
+				local effect
+				if tocversion >= 20400 then -- 2.4.0
+					local _, int = UnitStat("player", 4)
+					local _, spi = UnitStat("player", 5)
+					effect = value * GSM("ADD_MANA_REG_MOD_INT")
+					+ (StatLogic:GetNormalManaRegenFromSpi(spi, int + value, calcLevel)
+					- StatLogic:GetNormalManaRegenFromSpi(spi, int, calcLevel)) * GSM("ADD_MANA_REG_MOD_NORMAL_MANA_REG")
+					+ value * 15 * GSM("MOD_MANA") * GSM("ADD_MANA_REG_MOD_MANA") -- Replenishment
+				else
+					effect = value * GSM("ADD_MANA_REG_MOD_INT")
+				end
+				if floor(abs(effect) * 10 + 0.5) > 0 then
+					tinsert(infoTable, (gsub(L["$value MP5"], "$value", format("%+.1f", effect))))
+				end
+			end
+			if profileDB.showMP5NCFromInt then
+				local effect
+				if tocversion >= 20400 then -- 2.4.0
+					local _, int = UnitStat("player", 4)
+					local _, spi = UnitStat("player", 5)
+					effect = value * GSM("ADD_MANA_REG_MOD_INT")
+					+ StatLogic:GetNormalManaRegenFromSpi(spi, int + value, calcLevel)
+					- StatLogic:GetNormalManaRegenFromSpi(spi, int, calcLevel)
+					+ value * 15 * GSM("MOD_MANA") * GSM("ADD_MANA_REG_MOD_MANA") -- Replenishment
+				else
+					effect = value * GSM("ADD_MANA_REG_MOD_INT")
+				end
+				if floor(abs(effect) * 10 + 0.5) > 0 then
+					tinsert(infoTable, (gsub(L["$value MP5(NC)"], "$value", format("%+.1f", effect))))
+				end
+			end
+			if profileDB.showRAPFromInt then
+				local mod = GSM("MOD_RANGED_AP")
+				local effect = value * GSM("ADD_RANGED_AP_MOD_INT") * mod
+				if floor(abs(effect) * 10 + 0.5) > 0 then
+					tinsert(infoTable, (gsub(L["$value RAP"], "$value", format("%+.1f", effect))))
+				end
+			end
+			if profileDB.showArmorFromInt then
+				local effect = value * GSM("ADD_ARMOR_MOD_INT")
+				if floor(abs(effect) + 0.5) > 0 then
+					tinsert(infoTable, (gsub(L["$value Armor"], "$value", format("%+.0f", effect))))
+				end
+			end
+			-- "ADD_AP_MOD_INT" -- Shaman: Mental Dexterity
+			if profileDB.showAPFromInt then
+				local mod = GSM("MOD_AP")
+				local effect = value * GSM("ADD_AP_MOD_INT") * mod
+				if (mod ~= 1 or statmod ~= 1) and floor(abs(effect) * 10 + 0.5) > 0 then
+					tinsert(infoTable, (gsub(L["$value AP"], "$value", format("%+.1f", effect))))
+				elseif floor(abs(effect) + 0.5) > 0 then
+					tinsert(infoTable, (gsub(L["$value AP"], "$value", format("%+.0f", effect))))
+				end
+			end
+			infoString = strjoin(", ", unpack(infoTable))
+		elseif statID == SPELL_STAT5_NAME and profileDB.showStats then
+			------------
+			-- Spirit --
+			------------
+			local statmod = 1
+			if profileDB.enableStatMods then
+				statmod = GSM("MOD_SPI")
+				value = value * statmod
+			end
+			local infoTable = {}
+			if profileDB.showMP5FromSpi then
+				local mod = GSM("ADD_MANA_REG_MOD_NORMAL_MANA_REG")
+				local effect
+				if tocversion >= 20400 then -- 2.4.0
+					effect = StatLogic:GetNormalManaRegenFromSpi(value, nil, calcLevel) * mod
+				else
+					effect = StatLogic:GetNormalManaRegenFromSpi(value, class) * mod
+				end
+				if floor(abs(effect) * 10 + 0.5) > 0 then
+					tinsert(infoTable, (gsub(L["$value MP5"], "$value", format("%+.1f", effect))))
+				end
+			end
+			if profileDB.showMP5NCFromSpi then
+				local effect
+				if tocversion >= 20400 then -- 2.4.0
+					effect = StatLogic:GetNormalManaRegenFromSpi(value, nil, calcLevel)
+				else
+					effect = StatLogic:GetNormalManaRegenFromSpi(value, class)
+				end
+				if floor(abs(effect) * 10 + 0.5) > 0 then
+					tinsert(infoTable, (gsub(L["$value MP5(NC)"], "$value", format("%+.1f", effect))))
+				end
+			end
+			if profileDB.showHP5FromSpi then
+				local effect = StatLogic:GetHealthRegenFromSpi(value, class)
+				if floor(abs(effect) * 10 + 0.5) > 0 then
+					tinsert(infoTable, (gsub(L["$value HP5"], "$value", format("%+.1f", effect))))
+				end
+			end
+			if profileDB.showSpellDmgFromSpi then
+				local mod = GSM("MOD_SPELL_DMG")
+				local effect = value * GSM("ADD_SPELL_DMG_MOD_SPI") * mod
+				if floor(abs(effect) * 10 + 0.5) > 0 then
+					tinsert(infoTable, (gsub(L["$value Spell Dmg"], "$value", format("%+.1f", effect))))
+				end
+			end
+			if profileDB.showHealingFromSpi then
+				local mod = GSM("MOD_HEALING")
+				local effect = value * GSM("ADD_HEALING_MOD_SPI") * mod
+				if floor(abs(effect) * 10 + 0.5) > 0 then
+					tinsert(infoTable, (gsub(L["$value Heal"], "$value", format("%+.1f", effect))))
+				end
+			end
+			if profileDB.showSpellCritFromSpi then
+				local mod = GSM("ADD_SPELL_CRIT_RATING_MOD_SPI")
+				local effect = StatLogic:GetEffectFromRating(value * mod, CR_CRIT_SPELL, calcLevel)
+				if effect > 0 then
+					tinsert(infoTable, (gsub(L["$value% Spell Crit"], "$value", format("%+.2f", effect))))
+				end
+			end
+			infoString = strjoin(", ", unpack(infoTable))
+		elseif profileDB.showAPFromArmor and statID == ARMOR then
+			-----------
+			-- Armor --
+			-----------
+			if profileDB.enableStatMods then
+				local base, bonus = StatLogic:GetArmorDistribution(link, value, color)
+				value = base * GSM("MOD_ARMOR") + bonus
+			end
+			local infoTable = {}
+			local effect = value * GSM("ADD_AP_MOD_ARMOR") * GSM("MOD_AP")
+			if floor(abs(effect) * 10 + 0.5) > 0 then
+				tinsert(infoTable, (gsub(L["$value AP"], "$value", format("%+.1f", effect))))
+			end
+			infoString = strjoin(", ", unpack(infoTable))
+		elseif statID == ATTACK_POWER then
+			------------------
+			-- Attack Power --
+			------------------
+			local statmod = 1
+			if profileDB.enableStatMods then
+				statmod = GSM("MOD_AP")
+				value = value * statmod
+			end
+			local infoTable = {}
+			-- Shaman: Mental Quickness
+			-- Paladin: Sheath of Light, Touched by the Light
+			if profileDB.showSpellDmgFromAP then
+				local mod = GSM("MOD_AP") * GSM("MOD_SPELL_DMG")
+				local effect = (value * GSM("ADD_SPELL_DMG_MOD_AP")) * mod
+				if (mod ~= 1 or statmod ~= 1) and floor(abs(effect) * 10 + 0.5) > 0 then
+					tinsert(infoTable, (gsub(L["$value Spell Dmg"], "$value", format("%+.1f", effect))))
+				elseif floor(abs(effect) + 0.5) > 0 then
+					tinsert(infoTable, (gsub(L["$value Spell Dmg"], "$value", format("%+.0f", effect))))
+				end
+			end
+			if profileDB.showHealingFromAP then
+				local mod = GSM("MOD_AP") * GSM("MOD_HEALING")
+				local effect = (value * GSM("ADD_HEALING_MOD_AP")) * mod
+				if (mod ~= 1 or statmod ~= 1) and floor(abs(effect) * 10 + 0.5) > 0 then
+					tinsert(infoTable, (gsub(L["$value Heal"], "$value", format("%+.1f", effect))))
+				elseif floor(abs(effect) + 0.5) > 0 then
+					tinsert(infoTable, (gsub(L["$value Heal"], "$value", format("%+.0f", effect))))
+				end
+			end
+			infoString = strjoin(", ", unpack(infoTable))
+		end
+		return infoString
+	end
 end
 
 local blizzardComparisonPatterns = {
