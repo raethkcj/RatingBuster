@@ -7,17 +7,6 @@ local StatLogic = LibStub:GetLibrary(addonName)
 -------------------------------------
 -- Description
 	Calculates the mana regen per 5 seconds while NOT casting from spirit for any class.
--- Args
-	spi
-			number - spirit
-	[class] - (defaults: PlayerClass)
-			string - english class name
-			number - class id
--- Returns
-	[mp5nc]
-		number - mana regen per 5 seconds when out of combat
-	[statid]
-		string - "MANA_REG_NOT_CASTING"
 -- Remarks
 	Player level does not effect mana regen per spirit.
 -- Examples
@@ -40,6 +29,11 @@ local NormalManaRegenPerSpi = {
 	["DRUID"] = 0.1125,
 }
 
+---@param spi integer
+---@param class? string Defaults to player class
+---@return number mp5nc Mana regen per 5 seconds when out of combat
+---@return string statid
+---@diagnostic disable-next-line:duplicate-set-field
 function StatLogic:GetNormalManaRegenFromSpi(spi, class)
 	-- argCheck for invalid input
 	self:argCheck(spi, 2, "number")

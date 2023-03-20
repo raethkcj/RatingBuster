@@ -64,13 +64,6 @@ Notes:
 	* Calculates the mana regen per 5 seconds from spirit when out of 5 second rule for given intellect and level.
 	* Player class is no longer a parameter
 	* ManaRegen(SPI, INT, LEVEL) = (0.001+SPI*BASE_REGEN[LEVEL]*(INT^0.5))*5
-Arguments:
-	number - Spirit
-	[optional] number - Intellect. Default: player's intellect
-	[optional] number - Level used in calculations. Default: player's level
-Returns:
-	; mp5o5sr : number - Mana regen per 5 seconds when out of 5 second rule
-	; statid : string - "MANA_REG_NOT_CASTING"
 Example:
 	local mp5o5sr = StatLogic:GetNormalManaRegenFromSpi(1) -- GetNormalManaRegenPerSpi
 	local mp5o5sr = StatLogic:GetNormalManaRegenFromSpi(10, 15)
@@ -161,6 +154,12 @@ local BaseManaRegenPerSpi = {
 	[80] = 0.003345,
 }
 
+---@param spi integer
+---@param int? string Defaults to player class
+---@param level? integer Defaults to player level
+---@return number mp5nc Mana regen per 5 seconds when out of combat
+---@return string statid
+---@diagnostic disable-next-line:duplicate-set-field
 function StatLogic:GetNormalManaRegenFromSpi(spi, int, level)
 	-- argCheck for invalid input
 	self:argCheck(spi, 2, "number")
