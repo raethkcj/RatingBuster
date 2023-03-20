@@ -1912,7 +1912,7 @@ function RatingBuster:ProcessText(text, link, color)
 			for _, stat in ipairs(L["statList"]) do
 				if (not partialtext and strfind(lowerText, stat.pattern)) or (partialtext and strfind(partialtext, stat.pattern)) then
 					value = tonumber(value)
-					local infoString = RatingBuster:ProcessStat(stat.id, value)
+					local infoString = RatingBuster:ProcessStat(stat.id, value, link, color)
 					if infoString ~= "" then
 						-- Add parenthesis
 						infoString = "("..infoString..")"
@@ -1978,7 +1978,7 @@ do
 		}
 	}
 	
-	function RatingBuster:ProcessStat(statID, value)
+	function RatingBuster:ProcessStat(statID, value, link, color)
 		local infoString = ""
 		if StatLogic.GenericStatMap[statID] then
 			local statList = StatLogic.GenericStatMap[statID]
