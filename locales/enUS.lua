@@ -5,6 +5,7 @@ Translated by:
 - Whitetooth (hotdogee [at] gmail [dot] com)
 ]]
 
+---@class RatingBusterLocale
 local L = LibStub("AceLocale-3.0"):NewLocale("RatingBuster", "enUS", true)
 L["RatingBuster Options"] = true
 local StatLogic = LibStub("StatLogic")

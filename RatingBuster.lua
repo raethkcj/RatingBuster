@@ -20,7 +20,7 @@ local L = LibStub("AceLocale-3.0"):GetLocale("RatingBuster")
 --------------------
 -- AceAddon Setup --
 --------------------
--- AceAddon Initialization
+---@class RatingBuster: AceAddon, AceConsole-3.0, AceEvent-3.0, AceBucket-3.0
 RatingBuster = LibStub("AceAddon-3.0"):NewAddon("RatingBuster", "AceConsole-3.0", "AceEvent-3.0", "AceBucket-3.0")
 RatingBuster.title = "Rating Buster"
 --[===[@non-debug@

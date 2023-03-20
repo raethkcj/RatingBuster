@@ -1,3 +1,4 @@
+---@class StatLogicLocale
 local L = LibStub("AceLocale-3.0"):NewLocale("StatLogic", "enUS", true)
 if not L then return end
 
@@ -476,6 +477,7 @@ L["StatIDLookup"] = {
 	["Increases ranged attack speed"] = false, -- AV quiver
 }
 
+---@class StatLogicDisplayLocale
 local D = LibStub("AceLocale-3.0"):NewLocale("StatLogicD", "enUS", true)
 ----------------
 -- Stat Names --
