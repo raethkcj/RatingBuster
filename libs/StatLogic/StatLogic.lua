@@ -2277,7 +2277,7 @@ local function ConvertGenericRatings(table)
 	for generic, ratings in pairs(StatLogic.GenericStatMap) do
 		local genericName = StatLogic:GetRatingIdOrName(generic)
 		if genericName and table[genericName] then
-			for rating in pairs(ratings) do
+			for _, rating in ipairs(ratings) do
 				local ratingName = StatLogic:GetRatingIdOrName(rating)
 				table[ratingName] = table[genericName]
 			end
