@@ -102,7 +102,7 @@ local tip, tipMiner
 
 tip = CreateFrame("GameTooltip", "StatLogicTooltip", nil, "GameTooltipTemplate")
 StatLogic.tip = tip
-tip:SetOwner(UIParent, "ANCHOR_NONE")
+tip:SetOwner(WorldFrame, "ANCHOR_NONE")
 for i = 1, 30 do
 	tip[i] = _G["StatLogicTooltipTextLeft"..i]
 	if not tip[i] then
@@ -114,7 +114,7 @@ end
 -- Create a custom tooltip for data mining
 tipMiner = CreateFrame("GameTooltip", "StatLogicMinerTooltip", nil, "GameTooltipTemplate")
 StatLogic.tipMiner = tipMiner
-tipMiner:SetOwner(UIParent, "ANCHOR_NONE")
+tipMiner:SetOwner(WorldFrame, "ANCHOR_NONE")
 for i = 1, 30 do
 	tipMiner[i] = _G["StatLogicMinerTooltipTextLeft"..i]
 	if not tipMiner[i] then
