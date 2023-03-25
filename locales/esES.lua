@@ -316,6 +316,24 @@ L["Crit Chance <- Crit Rating Agility, Weapon Skill Rating"] = "prob. Critico <-
 -- /rb sum stat haste
 L["Sum Haste"] = "Res. Velocidad"
 L["Haste <- Haste Rating"] = "Velocidad <- Índice Velocidad"
+L["Sum Ranged Hit Chance"] = "Res. Prob. Golpe a Distancia"
+L["Ranged Hit Chance <- Hit Rating, Weapon Skill Rating, Ranged Hit Rating"] = true
+-- /rb sum physical rangedhitrating
+L["Sum Ranged Hit Rating"] = "Res. Indice Golpe a Distancia"
+L["Ranged Hit Rating Summary"] = true
+-- /rb sum physical rangedcrit
+L["Sum Ranged Crit Chance"] = "Res. Prob. Critico a Distancia"
+L["Ranged Crit Chance <- Crit Rating, Agility, Weapon Skill Rating, Ranged Crit Rating"] = true
+-- /rb sum physical rangedcritrating
+L["Sum Ranged Crit Rating"] = true
+L["Ranged Crit Rating Summary"] = true
+-- /rb sum physical rangedhaste
+L["Sum Ranged Haste"] = true
+L["Ranged Haste <- Haste Rating, Ranged Haste Rating"] = true
+-- /rb sum physical rangedhasterating
+L["Sum Ranged Haste Rating"] = true
+L["Ranged Haste Rating Summary"] = true
+
 -- /rb sum stat critspell
 L["Sum Spell Crit Chance"] = "Res. prob. Critico Hech."
 L["Spell Crit Chance <- Spell Crit Rating Intellect"] = "prob. Critico Hech. <- Índice Critico Hech., Intelecto"

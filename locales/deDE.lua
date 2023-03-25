@@ -317,6 +317,24 @@ L["Crit Chance <- Crit Rating Agility, Weapon Skill Rating"] = "kritische Treffe
 -- /rb sum stat haste
 L["Sum Haste"] = "Tempo zusammenrechnen"
 L["Haste <- Haste Rating"] = "Tempo <- Tempowertung"
+L["Sum Ranged Hit Chance"] = "Distanztrefferchance zusammenrechnen"
+L["Ranged Hit Chance <- Hit Rating, Weapon Skill Rating, Ranged Hit Rating"] = "Distanztrefferchance <- Trefferwertung, Waffenfertigkeitswertung, Distanztrefferwertung"
+-- /rb sum physical rangedhitrating
+L["Sum Ranged Hit Rating"] = "Distanztrefferwertung zusammenrechnen"
+L["Ranged Hit Rating Summary"] = "Distanztrefferwertungsübersicht"
+-- /rb sum physical rangedcrit
+L["Sum Ranged Crit Chance"] = "Kritische Distanztrefferchance zusammenrechnen"
+L["Ranged Crit Chance <- Crit Rating, Agility, Weapon Skill Rating, Ranged Crit Rating"] = "Kritische Distanztrefferchance <- kritische Trefferwertung, Beweglichkeit, Waffenfertigkeitswertung, kritische Distanztrefferwertung"
+-- /rb sum physical rangedcritrating
+L["Sum Ranged Crit Rating"] = "Kritische Distanztrefferwertung zusammenrechnen"
+L["Ranged Crit Rating Summary"] = "Kritische Distanztrefferwertungsübersicht"
+-- /rb sum physical rangedhaste
+L["Sum Ranged Haste"] = "Distanztempo zusammenrechnen"
+L["Ranged Haste <- Haste Rating, Ranged Haste Rating"] = "Distanztempo <- Tempowertung, Distanztempowertung"
+-- /rb sum physical rangedhasterating
+L["Sum Ranged Haste Rating"] = "Distanztempowertung zusammenrechnen"
+L["Ranged Haste Rating Summary"] = "Distanztempowertungsübersicht"
+
 -- /rb sum stat critspell
 L["Sum Spell Crit Chance"] = "kritische Zaubertrefferchance zusammenrechnen"
 L["Spell Crit Chance <- Spell Crit Rating Intellect"] = "kritische Zaubertrefferchance <- kritische Zaubertrefferwertung, Intelligenz"

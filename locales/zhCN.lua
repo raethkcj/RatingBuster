@@ -311,6 +311,24 @@ L["Crit Chance <- Crit Rating Agility, Weapon Skill Rating"] = "物理爆击几�
 -- /rb sum stat haste
 L["Sum Haste"] = "统计急速"
 L["Haste <- Haste Rating"] = "急速 ← 急速等级"
+L["Sum Ranged Hit Chance"] = "统计远程命中几率"
+L["Ranged Hit Chance <- Hit Rating, Weapon Skill Rating, Ranged Hit Rating"] = "远程米中几率 ← 命中等级、武器技能等级、远程命中等级"
+-- /rb sum physical rangedhitrating
+L["Sum Ranged Hit Rating"] = "统计远程命中等级"
+L["Ranged Hit Rating Summary"] = "统计远程命中等级"
+-- /rb sum physical rangedcrit
+L["Sum Ranged Crit Chance"] = "统计远爆击几率"
+L["Ranged Crit Chance <- Crit Rating, Agility, Weapon Skill Rating, Ranged Crit Rating"] = "远程爆击几率 ← 爆击等级、敏捷、武器技能等级、远程爆击等级"
+-- /rb sum physical rangedcritrating
+L["Sum Ranged Crit Rating"] = "统计远程爆击等级"
+L["Ranged Crit Rating Summary"] = "统计远程爆击等级"
+-- /rb sum physical rangedhaste
+L["Sum Ranged Haste"] = "统计远程急速"
+L["Ranged Haste <- Haste Rating, Ranged Haste Rating"] = "远程急速 ← 急速等级、远程急速等级"
+-- /rb sum physical rangedhasterating
+L["Sum Ranged Haste Rating"] = "统计远程急速等级"
+L["Ranged Haste Rating Summary"] = "统计远程急速等级"
+
 -- /rb sum stat critspell
 L["Sum Spell Crit Chance"] = "统计法术爆击几率"
 L["Spell Crit Chance <- Spell Crit Rating Intellect"] = "法术爆击几率 ← 法术爆击等级、智力"

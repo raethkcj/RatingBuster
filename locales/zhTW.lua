@@ -314,6 +314,24 @@ L["Crit Chance <- Crit Rating Agility, Weapon Skill Rating"] = "致命一擊機�
 -- /rb sum stat haste
 L["Sum Haste"] = "統計加速"
 L["Haste <- Haste Rating"] = "加速 ← 加速等級"
+L["Sum Ranged Hit Chance"] = "統計遠程命中機率"
+L["Ranged Hit Chance <- Hit Rating, Weapon Skill Rating, Ranged Hit Rating"] = "遠程命中機率 ← 命中等級、武器技能等級、遠程命中等級"
+-- /rb sum physical rangedhitrating
+L["Sum Ranged Hit Rating"] = "統計遠程命中等級"
+L["Ranged Hit Rating Summary"] = "統計遠程命中等級"
+-- /rb sum physical rangedcrit
+L["Sum Ranged Crit Chance"] = "統計遠程致命一級機率"
+L["Ranged Crit Chance <- Crit Rating, Agility, Weapon Skill Rating, Ranged Crit Rating"] = "遠程致命一擊機率 ← 致命一擊等級、敏捷、武器技能等級、遠程致命一級等級"
+-- /rb sum physical rangedcritrating
+L["Sum Ranged Crit Rating"] = "統計遠程致命一級等級"
+L["Ranged Crit Rating Summary"] = "統計遠程致命一級等級"
+-- /rb sum physical rangedhaste
+L["Sum Ranged Haste"] = "統計遠程加速"
+L["Ranged Haste <- Haste Rating, Ranged Haste Rating"] = "遠程加速 ← 加速等級、遠程加速等級"
+-- /rb sum physical rangedhasterating
+L["Sum Ranged Haste Rating"] = "統計遠程加速等級"
+L["Ranged Haste Rating Summary"] = "統計遠程加速等級"
+
 -- /rb sum stat critspell
 L["Sum Spell Crit Chance"] = "統計法術致命一擊機率"
 L["Spell Crit Chance <- Spell Crit Rating Intellect"] = "法術致命一擊機率 ← 法術致命一擊等級、智力"
