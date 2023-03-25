@@ -676,6 +676,36 @@ local options = {
 							name = L["Sum Haste Rating"],
 							desc = L["Haste Rating Summary"],
 						},
+						sumRangedHit = {
+							type = 'toggle',
+							name = L["Sum Ranged Hit Chance"],
+							desc = L["Ranged Hit Chance <- Hit Rating, Weapon Skill Rating, Ranged Hit Rating"],
+						},
+						sumRangedHitRating = {
+							type = 'toggle',
+							name = L["Sum Ranged Hit Rating"],
+							desc = L["Ranged Hit Rating Summary"],
+						},
+						sumRangedCrit = {
+							type = 'toggle',
+							name = L["Sum Ranged Crit Chance"],
+							desc = L["Ranged Crit Chance <- Crit Rating, Agility, Weapon Skill Rating, Ranged Crit Rating"],
+						},
+						sumRangedCritRating = {
+							type = 'toggle',
+							name = L["Sum Ranged Crit Rating"],
+							desc = L["Ranged Crit Rating Summary"],
+						},
+						sumRangedHaste = {
+							type = 'toggle',
+							name = L["Sum Ranged Haste"],
+							desc = L["Ranged Haste <- Haste Rating, Ranged Haste Rating"],
+						},
+						sumRangedHasteRating = {
+							type = 'toggle',
+							name = L["Sum Ranged Haste Rating"],
+							desc = L["Ranged Haste Rating Summary"],
+						},
 						sumDodgeNeglect = {
 							type = 'toggle',
 							name = L["Sum Dodge Neglect"],
