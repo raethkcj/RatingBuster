@@ -261,6 +261,8 @@ L["Choose basic stats for summary"] = true
 -- /rb sum physical
 L["Stat - Physical"] = true
 L["Choose physical damage stats for summary"] = true
+L["Ranged"] = true
+L["Weapon"] = true
 -- /rb sum spell
 L["Stat - Spell"] = true
 L["Choose spell damage and healing stats for summary"] = true

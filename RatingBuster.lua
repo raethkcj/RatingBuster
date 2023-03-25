@@ -640,115 +640,53 @@ local options = {
 							type = 'toggle',
 							name = L["Sum Attack Power"],
 							desc = L["Attack Power <- Attack Power, Strength, Agility"],
-						},
-						sumRAP = {
-							type = 'toggle',
-							name = L["Sum Ranged Attack Power"],
-							desc = L["Ranged Attack Power <- Ranged Attack Power, Intellect, Attack Power, Strength, Agility"],
+							width = "double",
+							order = 1,
 						},
 						sumHit = {
 							type = 'toggle',
 							name = L["Sum Hit Chance"],
 							desc = L["Hit Chance <- Hit Rating, Weapon Skill Rating"],
+							order = 2,
 						},
 						sumHitRating = {
 							type = 'toggle',
 							name = L["Sum Hit Rating"],
 							desc = L["Hit Rating Summary"],
+							order = 3,
 						},
 						sumCrit = {
 							type = 'toggle',
 							name = L["Sum Crit Chance"],
 							desc = L["Crit Chance <- Crit Rating, Agility, Weapon Skill Rating"],
+							order = 4,
 						},
 						sumCritRating = {
 							type = 'toggle',
 							name = L["Sum Crit Rating"],
 							desc = L["Crit Rating Summary"],
+							order = 5,
 						},
 						sumHaste = {
 							type = 'toggle',
 							name = L["Sum Haste"],
 							desc = L["Haste <- Haste Rating"],
+							order = 6,
 						},
 						sumHasteRating = {
 							type = 'toggle',
 							name = L["Sum Haste Rating"],
 							desc = L["Haste Rating Summary"],
+							order = 7,
 						},
-						sumRangedHit = {
-							type = 'toggle',
-							name = L["Sum Ranged Hit Chance"],
-							desc = L["Ranged Hit Chance <- Hit Rating, Weapon Skill Rating, Ranged Hit Rating"],
-						},
-						sumRangedHitRating = {
-							type = 'toggle',
-							name = L["Sum Ranged Hit Rating"],
-							desc = L["Ranged Hit Rating Summary"],
-						},
-						sumRangedCrit = {
-							type = 'toggle',
-							name = L["Sum Ranged Crit Chance"],
-							desc = L["Ranged Crit Chance <- Crit Rating, Agility, Weapon Skill Rating, Ranged Crit Rating"],
-						},
-						sumRangedCritRating = {
-							type = 'toggle',
-							name = L["Sum Ranged Crit Rating"],
-							desc = L["Ranged Crit Rating Summary"],
-						},
-						sumRangedHaste = {
-							type = 'toggle',
-							name = L["Sum Ranged Haste"],
-							desc = L["Ranged Haste <- Haste Rating, Ranged Haste Rating"],
-						},
-						sumRangedHasteRating = {
-							type = 'toggle',
-							name = L["Sum Ranged Haste Rating"],
-							desc = L["Ranged Haste Rating Summary"],
-						},
-						sumDodgeNeglect = {
-							type = 'toggle',
-							name = L["Sum Dodge Neglect"],
-							desc = L["Dodge Neglect <- Expertise, Weapon Skill Rating"],
-						},
-						sumParryNeglect = {
-							type = 'toggle',
-							name = L["Sum Parry Neglect"],
-							desc = L["Parry Neglect <- Expertise, Weapon Skill Rating"],
-						},
-						sumBlockNeglect = {
-							type = 'toggle',
-							name = L["Sum Block Neglect"],
-							desc = L["Block Neglect <- Weapon Skill Rating"],
-						},
-						sumWeaponSkill = {
-							type = 'toggle',
-							name = L["Sum Weapon Skill"],
-							desc = L["Weapon Skill <- Weapon Skill Rating"],
-						},
-						sumExpertise = {
-							type = 'toggle',
-							name = L["Sum Expertise"],
-							desc = L["Expertise <- Expertise Rating"],
-						},
-						sumWeaponAverageDamage = {
-							type = 'toggle',
-							name = L["Sum Weapon Average Damage"],
-							desc = L["Weapon Average Damage Summary"],
-						},
-						sumWeaponDPS = {
-							type = 'toggle',
-							name = L["Sum Weapon DPS"],
-							desc = L["Weapon DPS Summary"],
-						},
-						--]]
 						sumIgnoreArmor = {
 							type = 'toggle',
 							name = L["Sum Ignore Armor"],
 							desc = L["Ignore Armor Summary"],
 							hidden = function()
 								return StatLogic:RatingExists(CR_ARMOR_PENETRATION)
-							end
+							end,
+							order = 8,
 						},
 						sumArmorPenetration = {
 							type = 'toggle',
@@ -756,7 +694,8 @@ local options = {
 							desc = L["Armor Penetration Summary"],
 							hidden = function()
 								return not StatLogic:RatingExists(CR_ARMOR_PENETRATION)
-							end
+							end,
+							order = 9,
 						},
 						sumArmorPenetrationRating = {
 							type = 'toggle',
@@ -764,8 +703,104 @@ local options = {
 							desc = L["Armor Penetration Rating Summary"],
 							hidden = function()
 								return not StatLogic:RatingExists(CR_ARMOR_PENETRATION)
-							end
-						}
+							end,
+							order = 10,
+						},
+						ranged = {
+							type = 'header',
+							name = L["Ranged"],
+							order = 11,
+						},
+						sumRAP = {
+							type = 'toggle',
+							name = L["Sum Ranged Attack Power"],
+							desc = L["Ranged Attack Power <- Ranged Attack Power, Intellect, Attack Power, Strength, Agility"],
+							width = "double",
+							order = 12,
+						},
+						sumRangedHit = {
+							type = 'toggle',
+							name = L["Sum Ranged Hit Chance"],
+							desc = L["Ranged Hit Chance <- Hit Rating, Weapon Skill Rating, Ranged Hit Rating"],
+							order = 13,
+						},
+						sumRangedHitRating = {
+							type = 'toggle',
+							name = L["Sum Ranged Hit Rating"],
+							desc = L["Ranged Hit Rating Summary"],
+							order = 14,
+						},
+						sumRangedCrit = {
+							type = 'toggle',
+							name = L["Sum Ranged Crit Chance"],
+							desc = L["Ranged Crit Chance <- Crit Rating, Agility, Weapon Skill Rating, Ranged Crit Rating"],
+							order = 15,
+						},
+						sumRangedCritRating = {
+							type = 'toggle',
+							name = L["Sum Ranged Crit Rating"],
+							desc = L["Ranged Crit Rating Summary"],
+							order = 16,
+						},
+						sumRangedHaste = {
+							type = 'toggle',
+							name = L["Sum Ranged Haste"],
+							desc = L["Ranged Haste <- Haste Rating, Ranged Haste Rating"],
+							order = 17,
+						},
+						sumRangedHasteRating = {
+							type = 'toggle',
+							name = L["Sum Ranged Haste Rating"],
+							desc = L["Ranged Haste Rating Summary"],
+							order = 18,
+						},
+						weapon = {
+							type = 'header',
+							name = L["Weapon"],
+							order = 19,
+						},
+						sumWeaponAverageDamage = {
+							type = 'toggle',
+							name = L["Sum Weapon Average Damage"],
+							desc = L["Weapon Average Damage Summary"],
+							order = 20,
+						},
+						sumWeaponDPS = {
+							type = 'toggle',
+							name = L["Sum Weapon DPS"],
+							desc = L["Weapon DPS Summary"],
+							order = 21,
+						},
+						sumDodgeNeglect = {
+							type = 'toggle',
+							name = L["Sum Dodge Neglect"],
+							desc = L["Dodge Neglect <- Expertise, Weapon Skill Rating"],
+							order = 22,
+						},
+						sumParryNeglect = {
+							type = 'toggle',
+							name = L["Sum Parry Neglect"],
+							desc = L["Parry Neglect <- Expertise, Weapon Skill Rating"],
+							order = 23,
+						},
+						sumBlockNeglect = {
+							type = 'toggle',
+							name = L["Sum Block Neglect"],
+							desc = L["Block Neglect <- Weapon Skill Rating"],
+							order = 24,
+						},
+						sumWeaponSkill = {
+							type = 'toggle',
+							name = L["Sum Weapon Skill"],
+							desc = L["Weapon Skill <- Weapon Skill Rating"],
+							order = 25,
+						},
+						sumExpertise = {
+							type = 'toggle',
+							name = L["Sum Expertise"],
+							desc = L["Expertise <- Expertise Rating"],
+							order = 26,
+						},
 					},
 				},
 				spell = {
