@@ -2817,7 +2817,6 @@ local summaryCalcData = {
 		name = "RANGED_HIT",
 		func = function(sum)
 			return StatLogic:GetEffectFromRating(sum["RANGED_HIT_RATING"], "RANGED_HIT_RATING", calcLevel)
-				+ summaryFunc["MELEE_HIT"](sum)
 		end,
 		ispercent = true,
 	},
@@ -2827,7 +2826,6 @@ local summaryCalcData = {
 		name = "RANGED_HIT_RATING",
 		func = function(sum)
 			return sum["RANGED_HIT_RATING"]
-				+ sum["MELEE_HIT_RATING"]
 		end,
 	},
 	-- Crit Chance - MELEE_CRIT, MELEE_CRIT_RATING, AGI
@@ -2855,7 +2853,6 @@ local summaryCalcData = {
 		name = "RANGED_CRIT",
 		func = function(sum)
 			return StatLogic:GetEffectFromRating(sum["RANGED_CRIT_RATING"], "RANGED_CRIT_RATING", calcLevel)
-				+ summaryFunc["MELEE_CRIT"](sum)
 		end,
 		ispercent = true,
 	},
@@ -2865,7 +2862,6 @@ local summaryCalcData = {
 		name = "RANGED_CRIT_RATING",
 		func = function(sum)
 			return sum["RANGED_CRIT_RATING"]
-				+ sum["MELEE_CRIT_RATING"]
 		end,
 	},
 	-- Haste - MELEE_HASTE_RATING
