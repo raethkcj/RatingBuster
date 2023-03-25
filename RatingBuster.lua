@@ -1984,13 +1984,15 @@ do
 			local statList = StatLogic.GenericStatMap[statID]
 			local first = true
 			for _, convertedStatID in ipairs(statList) do
-				local result = RatingBuster:ProcessStat(convertedStatID, value)
-				if result and result ~= "" then
-					if not first then
-						infoString = infoString .. ", "
+				if not RatingType.Ranged[convertedStatID] then
+					local result = RatingBuster:ProcessStat(convertedStatID, value)
+					if result and result ~= "" then
+						if not first then
+							infoString = infoString .. ", "
+						end
+						infoString = infoString .. result
+						first = false
 					end
-					infoString = infoString .. result
-					first = false
 				end
 			end
 		elseif type(statID) == "number" and profileDB.showRatings then
@@ -2071,7 +2073,7 @@ do
 				elseif RatingType.Decimal[statID] then
 					show = true
 					pattern = "%+.2f"
-				elseif not RatingType.Ranged[statID] then
+				else
 					show = true
 				end
 
