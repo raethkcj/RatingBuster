@@ -2825,7 +2825,8 @@ local summaryCalcData = {
 		option = "sumRangedHit",
 		name = "RANGED_HIT",
 		func = function(sum)
-			return StatLogic:GetEffectFromRating(sum["RANGED_HIT_RATING"], "RANGED_HIT_RATING", calcLevel)
+			return sum["RANGED_HIT"]
+				+ StatLogic:GetEffectFromRating(sum["RANGED_HIT_RATING"], "RANGED_HIT_RATING", calcLevel)
 		end,
 		ispercent = true,
 	},
@@ -2861,7 +2862,9 @@ local summaryCalcData = {
 		option = "sumRangedCrit",
 		name = "RANGED_CRIT",
 		func = function(sum)
-			return StatLogic:GetEffectFromRating(sum["RANGED_CRIT_RATING"], "RANGED_CRIT_RATING", calcLevel)
+			return sum["RANGED_CRIT"]
+				+ StatLogic:GetEffectFromRating(sum["RANGED_CRIT_RATING"], "RANGED_CRIT_RATING", calcLevel)
+				+ StatLogic:GetCritFromAgi(sum["AGI"], class, calcLevel)
 		end,
 		ispercent = true,
 	},
