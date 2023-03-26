@@ -1202,22 +1202,30 @@ local defaults = {
 		sumSpi = false,
 		-- Physical
 		sumAP = false,
-		sumRAP = false,
 		sumHit = false,
 		sumHitRating = false,
 		sumCrit = false,
 		sumCritRating = false,
 		sumHaste = false,
 		sumHasteRating = false,
+		sumIgnoreArmor = false,
+		sumArmorPenetration = false,
+		-- Ranged
+		sumRAP = false,
+		sumRangedHit = false,
+		sumRangedHitRating = false,
+		sumRangedCrit = false,
+		sumRangedCritRating = false,
+		sumRangedHaste = false,
+		sumRangedHasteRating = false,
+		-- Weapon
+		sumWeaponAverageDamage = false,
+		sumWeaponDPS = false,
 		sumExpertise = false,
 		sumWeaponSkill = false,
 		sumDodgeNeglect = false,
 		sumParryNeglect = false,
 		sumBlockNeglect = false,
-		sumWeaponAverageDamage = false,
-		sumWeaponDPS = false,
-		sumIgnoreArmor = false,
-		sumArmorPenetration = false,
 		-- Spell
 		sumSpellDmg = false,
 		sumArcaneDmg = false,
@@ -1311,10 +1319,11 @@ elseif class == "DRUID" then
 	defaults.profile.ratingSpell = true
 	defaults.profile.sumArmorPenetration = true
 elseif class == "HUNTER" then
+	defaults.profile.sumWeaponAverageDamage = true
 	defaults.profile.sumRAP = true
-	defaults.profile.sumHit = true
-	defaults.profile.sumCrit = true
-	defaults.profile.sumHaste = true
+	defaults.profile.sumRangedHit = true
+	defaults.profile.sumRangedCrit = true
+	defaults.profile.sumRangedHaste = true
 	defaults.profile.showMP5FromInt = true -- Aspect of the Viper
 	defaults.profile.showRAPFromAgi = true
 	defaults.profile.showDodgeFromAgi = false
