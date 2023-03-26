@@ -364,7 +364,7 @@ elseif addonTable.class == "HUNTER" then
 			--         Dodge and Parry chance increased by 25%.
 			{
 				["value"] = 25,
-				["buff"] = 31567,		-- ["Deterrence"],
+				["buff"] = 19263,		-- ["Deterrence"],
 			},
 		},
 		-- Hunter: Survivalist (Rank 5) - 3,8
