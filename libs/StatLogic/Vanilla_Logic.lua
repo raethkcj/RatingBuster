@@ -2,6 +2,8 @@ local addonName, addonTable = ...
 ---@class StatLogic
 local StatLogic = LibStub:GetLibrary(addonName)
 
+addonTable.RatingBase = {}
+
 --[[---------------------------------
 {	:GetNormalManaRegenFromSpi(spi, [class])
 -------------------------------------
