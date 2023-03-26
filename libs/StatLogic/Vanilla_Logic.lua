@@ -806,7 +806,7 @@ elseif addonTable.class == "WARRIOR" then
 			--          When activated, increases your physical damage by 20% and makes you immune to Fear effects, but lowers your armor and all resistances by 20%.  Lasts 30 sec.
 			{
 				["value"] = 0.8,
-				["buff"] = 12292,		-- ["Death Wish"],
+				["buff"] = 12328,		-- ["Death Wish"],
 			},
 		},
 	}
