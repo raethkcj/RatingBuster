@@ -432,13 +432,14 @@ L["StatIDLookup"] = {
 	["Increases the spell critical strike rating of all party members within 30 yards"] = {"SPELL_CRIT_RATING",},
 	["Improves spell critical strike rating"] = {"SPELL_CRIT_RATING",},
 	["Increases your ranged critical strike rating"] = {"RANGED_CRIT_RATING",}, -- Fletcher's Gloves ID:7348
+	["ranged critical strike"] = {"RANGED_CRIT_RATING",},
 
 	["Resilience"] = {"RESILIENCE_RATING",},
 	["Resilience Rating"] = {"RESILIENCE_RATING",}, -- Enchant Chest - Major Resilience "+15 Resilience Rating" http://wow.allakhazam.com/db/spell.html?wspell=33992
 	["Improves your resilience rating"] = {"RESILIENCE_RATING",},
 
 	["Haste Rating"] = {"HASTE_RATING"},
-	["Ranged Haste Rating"] = {"HASTE_RATING"},
+	["Ranged Haste Rating"] = {"RANGED_HASTE_RATING"},
 	["Improves haste rating"] = {"HASTE_RATING"},
 	["Spell Haste Rating"] = {"SPELL_HASTE_RATING"},
 	["Improves melee haste rating"] = {"MELEE_HASTE_RATING"},
