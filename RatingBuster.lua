@@ -1924,6 +1924,10 @@ function RatingBuster:ProcessLine(text, link, color)
 		-- SetText
 		return text
 	elseif strfind(text, "%d") then -- do nothing if we don't find a number
+		-- Temporarily replace exclusions
+		for exclusion, replacement in pairs(L["exclusions"]) do
+			text = text:gsub(exclusion, replacement)
+		end
 		-- Initial pattern check, do nothing if not found
 		-- Check for separators and bulid separatorTable
 		local separatorTable = {}
@@ -1934,6 +1938,10 @@ function RatingBuster:ProcessLine(text, link, color)
 		end
 		-- SplitDoJoin
 		text = RatingBuster:SplitDoJoin(text, separatorTable, link, color)
+		-- Revert exclusions
+		for exclusion, replacement in pairs(L["exclusions"]) do
+			text = text:gsub(replacement, exclusion)
+		end
 		cache[cacheID] = text
 		-- SetText
 		return text

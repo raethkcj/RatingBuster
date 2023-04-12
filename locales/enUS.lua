@@ -560,6 +560,12 @@ L["numberPatterns"] = {
 	-- Added [^%%] so that it doesn't match strings like "Increases healing by up to 10% of your total Intellect." [Whitemend Pants] ID: 24261
 	-- Added [^|] so that it doesn't match enchant strings (JewelTips)
 	{pattern = "(%d+)([^%d%%|]+)", addInfo = "AfterStat",}, -- [發光的暗影卓奈石] +6法術傷害及5耐力
+	{pattern = "chest, legs, hands or feet by (%d+)"},
+}
+-- Exclusions are used to ignore instances of separators that should not get separated
+L["exclusions"] = {
+	["head, chest, shoulders, legs,"] = "head chest shoulders legs", -- Borean Armor Kit
+	["chest, legs,"] = "chest legs", -- Vindicator's Armor Kit
 }
 L["separators"] = {
 	"/", " and ", ",", "%. ", " for ", "&", ":", "\n"

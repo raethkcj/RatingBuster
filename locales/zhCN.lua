@@ -556,6 +556,9 @@ L["numberPatterns"] = {
 	{pattern = "提高.-(%d+)", addInfo = "AfterNumber",},
 	{pattern = "(%d+)([^%d%%|]+)", addInfo = "AfterStat",}, -- [发光的暗影卓奈石] +6法术伤害及5耐力
 }
+-- Exclusions are used to ignore instances of separators that should not get separated
+L["exclusions"] = {
+}
 L["separators"] = {
 	"/", "和", ",", "。", " 持续 ", "&", "及", "并", "，","、", "\n"
 }

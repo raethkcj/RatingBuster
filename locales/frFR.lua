@@ -560,6 +560,9 @@ L["numberPatterns"] = {
 	-- Added [^|] so that it doesn't match enchant strings (JewelTips)
 	{pattern = "(%d+)([^%d%%|]+)", addInfo = "AfterStat",}, -- [發光的暗影卓奈石] +6法術傷害及5耐力
 }
+-- Exclusions are used to ignore instances of separators that should not get separated
+L["exclusions"] = {
+}
 L["separators"] = {
 	"/", " et ", ",", "%. ", " pour ", "&", " : ", "\n"
 }

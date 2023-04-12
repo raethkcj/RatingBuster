@@ -560,6 +560,9 @@ L["numberPatterns"] = {
 	{pattern = "aumenta.-(%d+)", addInfo = "AfterNumber",}, -- for "add xx stat" type pattern, ex: Adamantite Sharpening Stone
 	{pattern = "(%d+)([^%d%%|]+)", addInfo = "AfterStat",}, -- [????????] +6?????5??
 }
+-- Exclusions are used to ignore instances of separators that should not get separated
+L["exclusions"] = {
+}
 L["separators"] = {
 	"/", " y ", ",", "%. ", " durante ", "&", "\n"
 }
