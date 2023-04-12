@@ -13,7 +13,7 @@ Originally written by Whitetooth (https://github.com/hotdogee)
 ## Installation:
 Available for download at:
 
-[WoWInterface](https://www.wowinterface.com/downloads/info26235-RatingBusterClassic.html#info) | [Wago Addons](https://addons.wago.io/addons/ratingbuster) | [WowUp](https://wowup.io/addons/54151) | [GitHub Releases](https://github.com/raethkcj/RatingBuster/releases/latest)
+[CurseForge](https://www.curseforge.com/wow/addons/ratingbuster-classic) | [WoWInterface](https://www.wowinterface.com/downloads/info26235-RatingBusterClassic.html#info) | [Wago Addons](https://addons.wago.io/addons/ratingbuster) | [WowUp](https://wowup.io/addons/54151) | [GitHub Releases](https://github.com/raethkcj/RatingBuster/releases/latest)
 
 ## Features
 
