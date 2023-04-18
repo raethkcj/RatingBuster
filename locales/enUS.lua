@@ -607,6 +607,7 @@ L["statList"] = {
 	{pattern = string.lower(SPELL_STAT5_NAME), id = SPELL_STAT5_NAME}, -- Spirit
 	{pattern = "defense rating", id = CR_DEFENSE_SKILL},
 	{pattern = "dodge rating", id = CR_DODGE},
+	{pattern = "increases dodge", id = CR_DODGE},
 	{pattern = "block rating", id = CR_BLOCK}, -- block enchant: "+10 Shield Block Rating"
 	{pattern = "parry rating", id = CR_PARRY},
 
