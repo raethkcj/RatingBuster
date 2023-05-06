@@ -1423,69 +1423,99 @@ do
 	end)
 end
 
-local GetStatModValue = function(stat, school, mod, case, initialValue)
-	local valid, shouldCache = ValidateStatMod(stat, school, case)
-	if not valid then
-		return mod, shouldCache
-	end
+do
+	local BuffGroupCache = {}
 
-	local value
-	if case.tab and case.num then
-		-- Talent Rank
-		local r = select(5, StatLogic:GetOrderedTalentInfo(case.tab, case.num))
-		if case.rank then
-			value = case.rank[r]
-		elseif r > 0 then
-			value = case.value
-		end
-		table.insert(addonTable.StatModCacheInvalidators["CHARACTER_POINTS_CHANGED"], stat)
-	elseif case.buff and case.rank then
-		local r = GetPlayerBuffRank(case.buff)
-		value = case.rank[r]
-	elseif case.value then
-		value = case.value
-	end
-
-	if value then
+	local function ApplyMod(mod, value, initialValue)
 		if initialValue == 0 then
 			mod = mod + value
 		else
 			mod = mod * (value + 1)
 		end
+		return mod
 	end
 
-	return mod, shouldCache
-end
+	local function RemoveMod(mod, value, initialValue)
+		if initialValue == 0 then
+			mod = mod - value
+		else
+			mod = mod / (value + 1)
+		end
+		return mod
+	end
 
-function StatLogic:GetStatMod(stat, school)
-	local mod = StatModCache[stat]
+	local GetStatModValue = function(stat, school, mod, case, initialValue)
+		local valid, shouldCache = ValidateStatMod(stat, school, case)
+		if not valid then
+			return mod, shouldCache
+		end
 
-	local shouldCache = true
-	if not mod then
-		local statModInfo = StatLogic.StatModInfo[stat]
-		mod = statModInfo.initialValue
-		-- if school is required for this statMod but not given
-		if statModInfo.school and not school then return mod end
-		for _, categoryTable in pairs(StatLogic.StatModTable) do
-			if categoryTable[stat] then
-				for _, case in ipairs(categoryTable[stat]) do
-					local shouldCacheCase
-					mod, shouldCacheCase = GetStatModValue(stat, school, mod, case, statModInfo.initialValue)
-					if not shouldCacheCase then
-						-- If *any* cases should not be cached, don't cache this mod
-						shouldCache = false
-					end
+		local value
+		if case.tab and case.num then
+			-- Talent Rank
+			local r = select(5, StatLogic:GetOrderedTalentInfo(case.tab, case.num))
+			if case.rank then
+				value = case.rank[r]
+			elseif r > 0 then
+				value = case.value
+			end
+			table.insert(addonTable.StatModCacheInvalidators["CHARACTER_POINTS_CHANGED"], stat)
+		elseif case.buff and case.rank then
+			local r = GetPlayerBuffRank(case.buff)
+			value = case.rank[r]
+		elseif case.value then
+			value = case.value
+		end
+
+		if value then
+			if case.group then
+				local oldValue = BuffGroupCache[case.group]
+				if oldValue and value > oldValue then
+					mod = RemoveMod(mod, oldValue, initialValue)
 				end
+				if not oldValue or value > oldValue then
+					mod = ApplyMod(mod, value, initialValue)
+					BuffGroupCache[case.group] = value
+				end
+			else
+				mod = ApplyMod(mod, value, initialValue)
 			end
 		end
 
-		mod = mod + statModInfo.finalAdjust
-		if shouldCache then
-			StatModCache[stat] = mod
-		end
+		return mod, shouldCache
 	end
 
-	return mod, shouldCache
+	function StatLogic:GetStatMod(stat, school)
+		local mod = StatModCache[stat]
+
+		local shouldCache = true
+		if not mod then
+			wipe(BuffGroupCache)
+			local statModInfo = StatLogic.StatModInfo[stat]
+			mod = statModInfo.initialValue
+			-- if school is required for this statMod but not given
+			if statModInfo.school and not school then return mod end
+			for _, categoryTable in pairs(StatLogic.StatModTable) do
+				if categoryTable[stat] then
+					for _, case in ipairs(categoryTable[stat]) do
+						local shouldCacheCase
+						mod, shouldCacheCase = GetStatModValue(stat, school, mod, case, statModInfo.initialValue)
+						if not shouldCacheCase then
+							-- If *any* cases should not be cached, don't cache this mod
+							shouldCache = false
+						end
+					end
+				end
+			end
+
+			mod = mod + statModInfo.finalAdjust
+			if shouldCache then
+				StatModCache[stat] = mod
+			end
+		end
+
+		return mod, shouldCache
+	end
 end
 
 
