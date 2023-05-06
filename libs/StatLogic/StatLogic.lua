@@ -382,7 +382,7 @@ do
 		"CR_HASTE",
 		"ALL_STATS",
 	}
-	
+
 	StatLogic.GenericStats = {}
 	for i,v in ipairs(GenericStats) do
 		StatLogic.GenericStats[v] = -i
