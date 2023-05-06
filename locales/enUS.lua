@@ -618,6 +618,7 @@ L["statList"] = {
 	{pattern = "spell critical rating", id = CR_CRIT_SPELL},
 	{pattern = "spell crit rating", id = CR_CRIT_SPELL},
 	{pattern = "spell critical", id = CR_CRIT_SPELL},
+	{pattern = "attack power", id = ATTACK_POWER},
 	{pattern = "ranged critical strike", id = CR_CRIT_RANGED},
 	{pattern = "ranged critical hit rating", id = CR_CRIT_RANGED},
 	{pattern = "ranged critical rating", id = CR_CRIT_RANGED},
@@ -644,7 +645,6 @@ L["statList"] = {
 
 	{pattern = "armor penetration", id = CR_ARMOR_PENETRATION},
 	{pattern = string.lower(ARMOR), id = ARMOR},
-	{pattern = "attack power", id = ATTACK_POWER},
 }
 -------------------------
 -- Added info patterns --
