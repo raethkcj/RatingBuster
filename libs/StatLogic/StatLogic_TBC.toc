@@ -13,5 +13,6 @@ libs\UTF8\utf8.lua
 
 locales\locales.xml
 
+Stats.lua
 StatLogic.lua
 TBC_Logic.lua
