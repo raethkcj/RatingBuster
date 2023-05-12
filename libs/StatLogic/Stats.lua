@@ -20,7 +20,6 @@ function Stat:new(stat)
 	return stat
 end
 
----@type { [string]: Stat }
 StatLogic.Stats = {
 	-- Basic Attributes
 	Strength = Stat:new(),
