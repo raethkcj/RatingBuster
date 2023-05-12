@@ -13,6 +13,7 @@ libs\UTF8\utf8.lua
 
 locales\locales.xml
 
+Init.lua
 Stats.lua
 StatLogic.lua
 Wrath_Logic.lua

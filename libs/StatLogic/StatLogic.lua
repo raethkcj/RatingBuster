@@ -1,36 +1,7 @@
 local addonName, addonTable = ...
 
---[[
-Name: StatLogic-1.0
-Description: A Library for stat conversion, calculation and summarization.
-Revision: $Revision: 78899 $
-Author: Whitetooth
-Email: hotdogee [at] gmail [dot] com
-LastUpdate: $Date: 2008-07-22 14:29:37 +0800 (星期二, 22 七月 2008) $
-Website:
-Documentation:
-SVN: $URL: http://svn.wowace.com/wowace/trunk/StatLogicLib/StatLogic-1.0/StatLogic-1.0.lua $
-Dependencies: LibStub, AceLocale-3.0, UTF8
-License: LGPL v2.1
-Features:
-	StatConversion -
-		Ratings -> Effect
-		Str -> AP, Block
-		Agi -> Crit, Dodge, AP, RAP, Armor
-		Sta -> Health, SpellDmg(Talant)
-		Int -> Mana, SpellCrit
-		Spi -> MP5, HP5
-		and more!
-	StatMods - Get stat mods from talants and buffs for every class
-	BaseStats - for all classes and levels
-	ItemStatParser - Fast multi level indexing algorithm instead of calling strfind for every stat
-]]
-
--- This library is still in early development, please consider not using this library until the documentation is writen on wowace.
--- Unless you don't mind putting up with breaking changes that may or may not happen during early development.
-
-local MAJOR_VERSION = addonName
-local MINOR_VERSION = tonumber(("$Revision: 78899 $"):sub(12, -3))
+---@class StatLogic
+local StatLogic = LibStub(addonName)
 
 ---------------
 -- Libraries --
@@ -39,7 +10,6 @@ local MINOR_VERSION = tonumber(("$Revision: 78899 $"):sub(12, -3))
 local L = LibStub("AceLocale-3.0"):GetLocale(addonName)
 -- Display text
 local D = LibStub("AceLocale-3.0"):GetLocale(addonName.."D")
-
 
 -------------------
 -- Set Debugging --
@@ -66,14 +36,6 @@ if type(L) == "table" and type(L["StatIDLookup"]) == "table" then
 		L["StatIDLookup"][k] = v
 	end
 end
-
---L:Debug()
-
---------------------
--- Initialization --
---------------------
----@class StatLogic
-local StatLogic = LibStub:NewLibrary(MAJOR_VERSION, MINOR_VERSION)
 
 function StatLogic:argCheck(argument, number, ...)
 	local arg = {...}
