@@ -335,8 +335,6 @@ function StatLogic:GetStatNameFromID(stat)
 	return unpack(name)
 end
 
-StatLogic.Stats = addonTable.Stats
-
 StatLogic.ExtraHasteClasses = {}
 
 do

@@ -26,11 +26,11 @@ Features:
 -- Unless you don't mind putting up with breaking changes that may or may not happen during early development.
 
 --[===[@non-debug@
--- Add 80000 to always supercede Whitetooth's revision
+-- Add 80000 to always supercede Whitetooth's revisions
 local MINOR_VERSION = 80000 + @project-revision@
 --@end-non-debug@]===]
 --@debug@
-local MINOR_VERSION = math.huge
+local MINOR_VERSION = 2 ^ 32 -- LibStub doesn't accept math.huge as a number
 --@end-debug@
 
 ---@class StatLogic
