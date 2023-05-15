@@ -11,9 +11,10 @@
 libs\UTF8\utf8data.lua
 libs\UTF8\utf8.lua
 
-locales\locales.xml
-
 Init.lua
 Stats.lua
+
+locales\locales.xml
+
 StatLogic.lua
 Vanilla_Logic.lua
