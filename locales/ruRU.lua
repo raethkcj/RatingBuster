@@ -706,18 +706,18 @@ L["statList"] = {
 	{pattern = "брони", id = ARMOR},
 	{pattern = "броню", id = ARMOR},
 	{pattern = "броне", id = ARMOR},
-	{pattern = "сила", id = SPELL_STAT1_NAME}, -- Strength
-	{pattern = "силу", id = SPELL_STAT1_NAME}, -- Strength
-	{pattern = "силе", id = SPELL_STAT1_NAME}, -- Strength
-	{pattern = "силы", id = SPELL_STAT1_NAME}, -- Strength
-	{pattern = "ловкость", id = SPELL_STAT2_NAME}, -- Agility
-	{pattern = "ловкости", id = SPELL_STAT2_NAME}, -- Agility
-	{pattern = "выносливость", id = SPELL_STAT3_NAME}, -- Stamina
-	{pattern = "выносливости", id = SPELL_STAT3_NAME}, -- Stamina
-	{pattern = "интеллекту", id = SPELL_STAT4_NAME}, -- Intellect
-	{pattern = "интеллект", id = SPELL_STAT4_NAME}, -- Intellect
-	{pattern = "духу", id = SPELL_STAT5_NAME}, -- Spirit
-	{pattern = "дух", id = SPELL_STAT5_NAME}, -- Spirit
+	{pattern = "сила", id = StatLogic.Stats.Strength}, -- Strength
+	{pattern = "силу", id = StatLogic.Stats.Strength}, -- Strength
+	{pattern = "силе", id = StatLogic.Stats.Strength}, -- Strength
+	{pattern = "силы", id = StatLogic.Stats.Strength}, -- Strength
+	{pattern = "ловкость", id = StatLogic.Stats.Agility}, -- Agility
+	{pattern = "ловкости", id = StatLogic.Stats.Agility}, -- Agility
+	{pattern = "выносливость", id = StatLogic.Stats.Stamina}, -- Stamina
+	{pattern = "выносливости", id = StatLogic.Stats.Stamina}, -- Stamina
+	{pattern = "интеллекту", id = StatLogic.Stats.Intellect}, -- Intellect
+	{pattern = "интеллект", id = StatLogic.Stats.Intellect}, -- Intellect
+	{pattern = "духу", id = StatLogic.Stats.Spirit}, -- Spirit
+	{pattern = "дух", id = StatLogic.Stats.Spirit}, -- Spirit
 
 	{pattern = "рейтинг защиты", id = CR_DEFENSE_SKILL},
 	{pattern = "рейтингу защиты", id = CR_DEFENSE_SKILL},

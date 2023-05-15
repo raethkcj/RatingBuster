@@ -2066,7 +2066,7 @@ do
 			[CR_EXPERTISE] = true,
 		}
 	}
-	
+
 	function RatingBuster:ProcessStat(statID, value, link, color)
 		local infoString = ""
 		if StatLogic.GenericStatMap[statID] then
@@ -2126,7 +2126,7 @@ do
 				effect = effect * -1
 				if profileDB.detailedConversionText then
 					local infoTable = {}
-					
+
 					if tocversion >= 30000 then
 						-- Wrath
 						tinsert(infoTable, (L["$value to be Crit"]:gsub("$value", format("%+.2f%%%%", effect))))
@@ -2138,7 +2138,7 @@ do
 						tinsert(infoTable, (L["$value Crit Dmg Taken"]:gsub("$value", format("%+.2f%%%%", effect * 2))))
 						tinsert(infoTable, (L["$value DOT Dmg Taken"]:gsub("$value", format("%+.2f%%%%", effect))))
 					end
-					
+
 					infoString = strjoin(", ", unpack(infoTable))
 				else
 					infoString = format("%+.2f%%", effect)
@@ -2170,7 +2170,7 @@ do
 					infoString = format(pattern, effect)
 				end
 			end
-		elseif statID == SPELL_STAT1_NAME and profileDB.showStats then
+		elseif statID == StatLogic.Stats.Strength and profileDB.showStats then
 			--------------
 			-- Strength --
 			--------------
@@ -2235,7 +2235,7 @@ do
 				processedParry = processedParry + effect
 			end
 			infoString = strjoin(", ", unpack(infoTable))
-		elseif statID == SPELL_STAT2_NAME and profileDB.showStats then
+		elseif statID == StatLogic.Stats.Agility and profileDB.showStats then
 			-------------
 			-- Agility --
 			-------------
@@ -2304,7 +2304,7 @@ do
 				end
 			end
 			infoString = strjoin(", ", unpack(infoTable))
-		elseif statID == SPELL_STAT3_NAME and profileDB.showStats then
+		elseif statID == StatLogic.Stats.Stamina and profileDB.showStats then
 			-------------
 			-- Stamina --
 			-------------
@@ -2342,7 +2342,7 @@ do
 				end
 			end
 			infoString = strjoin(", ", unpack(infoTable))
-		elseif statID == SPELL_STAT4_NAME and profileDB.showStats then
+		elseif statID == StatLogic.Stats.Intellect and profileDB.showStats then
 			---------------
 			-- Intellect --
 			---------------
@@ -2438,7 +2438,7 @@ do
 				end
 			end
 			infoString = strjoin(", ", unpack(infoTable))
-		elseif statID == SPELL_STAT5_NAME and profileDB.showStats then
+		elseif statID == StatLogic.Stats.Spirit and profileDB.showStats then
 			------------
 			-- Spirit --
 			------------

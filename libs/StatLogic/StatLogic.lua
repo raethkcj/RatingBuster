@@ -353,11 +353,11 @@ end
 
 StatLogic.GenericStatMap = {
 	[StatLogic.GenericStats.ALL_STATS] = {
-		SPELL_STAT1_NAME, -- Strength
-		SPELL_STAT2_NAME, -- Agility
-		SPELL_STAT3_NAME, -- Stamina
-		SPELL_STAT4_NAME, -- Intellect
-		SPELL_STAT5_NAME, -- Spirit
+		StatLogic.Stats.Strength, -- Strength
+		StatLogic.Stats.Agility, -- Agility
+		StatLogic.Stats.Stamina, -- Stamina
+		StatLogic.Stats.Intellect, -- Intellect
+		StatLogic.Stats.Spirit, -- Spirit
 	}
 }
 

@@ -593,11 +593,11 @@ SPELL_STAT4_NAME = "Intellect"
 SPELL_STAT5_NAME = "Spirit"
 --]]
 L["statList"] = {
-	{pattern = string.lower(SPELL_STAT1_NAME), id = SPELL_STAT1_NAME}, -- Strength
-	{pattern = string.lower(SPELL_STAT2_NAME), id = SPELL_STAT2_NAME}, -- Agility
-	{pattern = string.lower(SPELL_STAT3_NAME), id = SPELL_STAT3_NAME}, -- Stamina
-	{pattern = string.lower(SPELL_STAT4_NAME), id = SPELL_STAT4_NAME}, -- Intellect
-	{pattern = string.lower(SPELL_STAT5_NAME), id = SPELL_STAT5_NAME}, -- Spirit
+	{pattern = string.lower(SPELL_STAT1_NAME), id = StatLogic.Stats.Strength}, -- Strength
+	{pattern = string.lower(SPELL_STAT2_NAME), id = StatLogic.Stats.Agility}, -- Agility
+	{pattern = string.lower(SPELL_STAT3_NAME), id = StatLogic.Stats.Stamina}, -- Stamina
+	{pattern = string.lower(SPELL_STAT4_NAME), id = StatLogic.Stats.Intellect}, -- Intellect
+	{pattern = string.lower(SPELL_STAT5_NAME), id = StatLogic.Stats.Spirit}, -- Spirit
 	{pattern = "防禦等級", id = CR_DEFENSE_SKILL},
 	{pattern = "閃躲等級", id = CR_DODGE},
 	{pattern = "格擋等級", id = CR_BLOCK}, -- block enchant: "+10 Shield Block Rating"

@@ -1,7 +1,7 @@
 ﻿--[[
 Name: RatingBuster enUS locale
 Revision: $Revision: 73696 $
-Translated by: 
+Translated by:
 - Whitetooth (hotdogee [at] gmail [dot] com)
 ]]
 
@@ -523,7 +523,7 @@ L["Raid Buffs"] = true
 -- Equip: Increases the spell critical strike rating of all party members within 30 yards by 28.
 --------------------
 -- [Brilliant Wizard Oil]
--- Use: While applied to target weapon it increases spell damage by up to 36 and increases spell critical strike rating by 14 . Lasts for 30 minutes. 
+-- Use: While applied to target weapon it increases spell damage by up to 36 and increases spell critical strike rating by 14 . Lasts for 30 minutes.
 ----------------------------------------------------------------------------------------------------
 -- I redesigned the tooltip scanner using a more locale friendly, 2 pass matching matching algorithm.
 --
@@ -536,11 +536,11 @@ L["Raid Buffs"] = true
 --
 -- The second pass searches for the rating name, the names are read from ["statList"] here,
 -- It will look through the table in order, so you can put common strings at the begining to speed up the search,
--- and longer strings should be listed first, like "spell critical strike" should be listed before "critical strike", 
+-- and longer strings should be listed first, like "spell critical strike" should be listed before "critical strike",
 -- this way "spell critical strike" does get matched by "critical strike".
 -- Strings need to be in lower case letters, because string.lower is called on lookup
 --
--- IMPORTANT: there may not exist a one-to-one correspondence, meaning you can't just translate this file, 
+-- IMPORTANT: there may not exist a one-to-one correspondence, meaning you can't just translate this file,
 -- but will need to go in game and find out what needs to be put in here.
 -- For example, in english I found 3 different strings that maps to CR_CRIT_MELEE: "critical strike", "critical hit" and "crit".
 -- You will need to find out every string that represents CR_CRIT_MELEE, and so on.
@@ -600,11 +600,11 @@ L["statList"] = {
 	{pattern = "lowers intellect of target", id = nil}, -- Brain Hacker
 	{pattern = "reduces an enemy's armor", id = nil}, -- Annihilator
 
-	{pattern = string.lower(SPELL_STAT1_NAME), id = SPELL_STAT1_NAME}, -- Strength
-	{pattern = string.lower(SPELL_STAT2_NAME), id = SPELL_STAT2_NAME}, -- Agility
-	{pattern = string.lower(SPELL_STAT3_NAME), id = SPELL_STAT3_NAME}, -- Stamina
-	{pattern = string.lower(SPELL_STAT4_NAME), id = SPELL_STAT4_NAME}, -- Intellect
-	{pattern = string.lower(SPELL_STAT5_NAME), id = SPELL_STAT5_NAME}, -- Spirit
+	{pattern = string.lower(SPELL_STAT1_NAME), id = StatLogic.Stats.Strength}, -- Strength
+	{pattern = string.lower(SPELL_STAT2_NAME), id = StatLogic.Stats.Agility}, -- Agility
+	{pattern = string.lower(SPELL_STAT3_NAME), id = StatLogic.Stats.Stamina}, -- Stamina
+	{pattern = string.lower(SPELL_STAT4_NAME), id = StatLogic.Stats.Intellect}, -- Intellect
+	{pattern = string.lower(SPELL_STAT5_NAME), id = StatLogic.Stats.Spirit}, -- Spirit
 	{pattern = "defense rating", id = CR_DEFENSE_SKILL},
 	{pattern = "dodge rating", id = CR_DODGE},
 	{pattern = "increases dodge", id = CR_DODGE},
