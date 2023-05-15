@@ -1,6 +1,7 @@
 -- esES localization by Zendor@Mandokir
 local L = LibStub("AceLocale-3.0"):NewLocale("StatLogic", "esES")
 if not L then return end
+local StatLogic = LibStub("StatLogic")
 
 L["tonumber"] = function(s)
 	local n = tonumber(s)
@@ -210,12 +211,12 @@ L["StatIDLookup"] = {
 	["Daño de arma"] = {"MELEE_DMG"}, -- Enchant
 	["Aumenta la velocidad de la montura%"] = {"MOUNT_SPEED"}, -- [Highlander's Plate Greaves] ID: 20048
 
-	["Todas las Estadísticas."] = {"STR", "AGI", "STA", "INT", "SPI",},
-	["Fuerza"] = {"STR",},
-	["Agilidad"] = {"AGI",},
-	["Aguante"] = {"STA",},
-	["Intelecto"] = {"INT",},
-	["Espíritu"] = {"SPI",},
+	["Todas las Estadísticas."] = {StatLogic.Stats.Strength, StatLogic.Stats.Agility, StatLogic.Stats.Stamina, StatLogic.Stats.Intellect, StatLogic.Stats.Spirit,},
+	["Fuerza"] = {StatLogic.Stats.Strength,},
+	["Agilidad"] = {StatLogic.Stats.Agility,},
+	["Aguante"] = {StatLogic.Stats.Stamina,},
+	["Intelecto"] = {StatLogic.Stats.Intellect,},
+	["Espíritu"] = {StatLogic.Stats.Spirit,},
 
 	["Resistencia a lo Arcano"] = {"ARCANE_RES",},
 	["Resistencia al Fuego"] = {"FIRE_RES",},
@@ -263,14 +264,14 @@ L["StatIDLookup"] = {
 	["Poder de ataque a distancia"] = {"RANGED_AP",},
 	["Aumenta enel poder de ataque a distancia"] = {"RANGED_AP",}, -- [High Warlord's Crossbow] ID: 18837
 
-	
+
 	["Salud cada"] = {"HEALTH_REG",},
 	["salud cada"] = {"HEALTH_REG",}, -- Frostwolf Insignia Rank 6 ID:17909
 	["la regeneración de salud normal"] = {"HEALTH_REG",}, -- Demons Blood ID: 10779
 	["Restaurade salud cada 5 s."] = {"HEALTH_REG",}, -- [Onyxia Blood Talisman] ID: 18406
 	["de Maná cada"] = {"MANA_REG",}, -- Resurgence Rod ID:17743 Most common
 	["regen. de maná"] = {"MANA_REG",}, -- Prophetic Aura +4 Mana Regen/+10 Stamina/+24 Healing Spells http://wow.allakhazam.com/db/spell.html?wspell=24167
-	["de maná cada"] = {"MANA_REG",}, 
+	["de maná cada"] = {"MANA_REG",},
 	["de Maná cada 5 s"] = {"MANA_REG",}, -- [Royal Nightseye] ID: 24057
 	["de maná cada 5 s"] = {"MANA_REG",}, -- Enchant Chest - Restore Mana Prime "+6 mana every 5 sec." http://wow.allakhazam.com/db/spell.html?wspell=33991
 	["Mana per 5 Seconds"] = {"MANA_REG",}, -- [Royal Shadow Draenite] ID: 23109
@@ -451,11 +452,11 @@ D["MELEE_DMG"] = {"Melee Weapon "..DAMAGE, "Wpn Dmg"} -- DAMAGE = "Damage"
 D["MOUNT_SPEED"] = {"Mount Speed(%)", "Mount Spd(%)"}
 D["RUN_SPEED"] = {"Run Speed(%)", "Run Spd(%)"}
 
-D["STR"] = {SPELL_STAT1_NAME, "Str"}
-D["AGI"] = {SPELL_STAT2_NAME, "Agi"}
-D["STA"] = {SPELL_STAT3_NAME, "Sta"}
-D["INT"] = {SPELL_STAT4_NAME, "Int"}
-D["SPI"] = {SPELL_STAT5_NAME, "Spi"}
+D[StatLogic.Stats.Strength] = {SPELL_STAT1_NAME, StatLogic.Stats.Strength}
+D[StatLogic.Stats.Agility] = {SPELL_STAT2_NAME, StatLogic.Stats.Agility}
+D[StatLogic.Stats.Stamina] = {SPELL_STAT3_NAME, StatLogic.Stats.Stamina}
+D[StatLogic.Stats.Intellect] = {SPELL_STAT4_NAME, StatLogic.Stats.Intellect}
+D[StatLogic.Stats.Spirit] = {SPELL_STAT5_NAME, StatLogic.Stats.Spirit}
 D["ARMOR"] = {ARMOR, ARMOR}
 D["ARMOR_BONUS"] = {ARMOR.." from bonus", ARMOR.."(Bonus)"}
 

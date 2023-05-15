@@ -1,6 +1,7 @@
 -- koKR localization by fenlis
 local L = LibStub("AceLocale-3.0"):NewLocale("StatLogic", "koKR")
 if not L then return end
+local StatLogic = LibStub("StatLogic")
 
 L["tonumber"] = tonumber
 ------------------
@@ -202,12 +203,12 @@ L["StatIDLookup"] = {
 	["무기 공격력"] = {"MELEE_DMG"}, -- Enchant
 	["탈것의 속도가%만큼 증가합니다"] = {"MOUNT_SPEED"}, -- [Highlander's Plate Greaves] ID: 20048
 
-	["모든 능력치"] = {"STR", "AGI", "STA", "INT", "SPI",},
-	["힘"] = {"STR",},
-	["민첩성"] = {"AGI",},
-	["체력"] = {"STA",},
-	["지능"] = {"INT",},
-	["정신력"] = {"SPI",},
+	["모든 능력치"] = {StatLogic.Stats.Strength, StatLogic.Stats.Agility, StatLogic.Stats.Stamina, StatLogic.Stats.Intellect, StatLogic.Stats.Spirit,},
+	["힘"] = {StatLogic.Stats.Strength,},
+	["민첩성"] = {StatLogic.Stats.Agility,},
+	["체력"] = {StatLogic.Stats.Stamina,},
+	["지능"] = {StatLogic.Stats.Intellect,},
+	["정신력"] = {StatLogic.Stats.Spirit,},
 
 	["비전 저항력"] = {"ARCANE_RES",},
 	["화염 저항력"] = {"FIRE_RES",},
@@ -434,11 +435,11 @@ D["MELEE_DMG"] = {"근접 무기 "..DAMAGE, "Wpn Dmg"} -- DAMAGE = "Damage"
 D["MOUNT_SPEED"] = {"탈것 속도(%)", "Mount Spd(%)"}
 D["RUN_SPEED"] = {"이동 속도(%)", "Run Spd(%)"}
 
-D["STR"] = {SPELL_STAT1_NAME, "Str"}
-D["AGI"] = {SPELL_STAT2_NAME, "Agi"}
-D["STA"] = {SPELL_STAT3_NAME, "Sta"}
-D["INT"] = {SPELL_STAT4_NAME, "Int"}
-D["SPI"] = {SPELL_STAT5_NAME, "Spi"}
+D[StatLogic.Stats.Strength] = {SPELL_STAT1_NAME, StatLogic.Stats.Strength}
+D[StatLogic.Stats.Agility] = {SPELL_STAT2_NAME, StatLogic.Stats.Agility}
+D[StatLogic.Stats.Stamina] = {SPELL_STAT3_NAME, StatLogic.Stats.Stamina}
+D[StatLogic.Stats.Intellect] = {SPELL_STAT4_NAME, StatLogic.Stats.Intellect}
+D[StatLogic.Stats.Spirit] = {SPELL_STAT5_NAME, StatLogic.Stats.Spirit}
 D["ARMOR"] = {ARMOR, ARMOR}
 D["ARMOR_BONUS"] = {"효과에 의한"..ARMOR, ARMOR.."(Bonus)"}
 

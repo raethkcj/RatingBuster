@@ -1,6 +1,7 @@
 -- frFR localization by Tixu
 local L = LibStub("AceLocale-3.0"):NewLocale("StatLogic", "frFR")
 if not L then return end
+local StatLogic = LibStub("StatLogic")
 
 L["tonumber"] = function(s)
 	local n = tonumber(s)
@@ -172,7 +173,7 @@ L["PreScanPatterns"] = {
 	["^[%a '%-]+%((%d+)/%d+%)$"] = false, -- Set Name (0/9) -- anciennement : ["^.- %(%d+/%d+%)$"] = false, -- Set Name (0/9)
 	["|cff808080"] = false, -- Gray text "  |cff808080Requires at least 2 Yellow gems|r\n  |cff808080Requires at least 1 Red gem|r"
 	-- Procs
-	--["[Cc]hance"] = false, -- [Marque de défiance] ID:27924 -- [Bâton des prophètes qiraji] ID:21128 -- Commented out because it was blocking [Insightful Earthstorm Diamond] 
+	--["[Cc]hance"] = false, -- [Marque de défiance] ID:27924 -- [Bâton des prophètes qiraji] ID:21128 -- Commented out because it was blocking [Insightful Earthstorm Diamond]
 	["[Rr]end parfois"] = false, -- [Carte de Sombrelune : Héroïsme] ID:19287
 	["[Ll]orsque vous êtes touché en combat"] = false, -- [Essence of the Pure Flame] ID: 18815
 	--["[Cc]onfère une chance"] = false, -- [Marque de défiance] ID:27924
@@ -235,13 +236,13 @@ L["StatIDLookup"] = {
 	["aux dégâts en mêlée"] = {"MELEE_DMG"},
 	["dégâts de l'arme"] = {"MELEE_DMG"},
 
-	["à toutes les caractéristiques"] = {"STR", "AGI", "STA", "INT", "SPI"},
-	["Force"] = {"STR"},
-	["Agilité"] = {"AGI"},
-	["Endurance"] = {"STA"},
-	["en endurance"] = {"STA"},
-	["Intelligence"] = {"INT"},
-	["Esprit"] = {"SPI"},
+	["à toutes les caractéristiques"] = {StatLogic.Stats.Strength, StatLogic.Stats.Agility, StatLogic.Stats.Stamina, StatLogic.Stats.Intellect, StatLogic.Stats.Spirit},
+	["Force"] = {StatLogic.Stats.Strength},
+	["Agilité"] = {StatLogic.Stats.Agility},
+	["Endurance"] = {StatLogic.Stats.Stamina},
+	["en endurance"] = {StatLogic.Stats.Stamina},
+	["Intelligence"] = {StatLogic.Stats.Intellect},
+	["Esprit"] = {StatLogic.Stats.Spirit},
 
 	["à la résistance Arcanes"] = {"ARCANE_RES"},
 	["à la résistance aux Arcanes"] = {"ARCANE_RES"},
@@ -249,7 +250,7 @@ L["StatIDLookup"] = {
 	["à la résistance Feu"] = {"FIRE_RES"},
 	["à la résistance au Feu"] = {"FIRE_RES"},
 
-	["à la résistance Givre"] = {"FROST_RES"},	
+	["à la résistance Givre"] = {"FROST_RES"},
 	["à la résistance au Givre"] = {"FROST_RES"},
 
 	["à la résistance Nature"] = {"NATURE_RES"},
@@ -269,7 +270,7 @@ L["StatIDLookup"] = {
 
 	["Armure"] = {"ARMOR_BONUS"},
 	["Défense"] = {"DEFENSE"},
-	--["Increased Defense"] = {"DEFENSE"},	
+	--["Increased Defense"] = {"DEFENSE"},
 	["Valeur de blocage"] = {"BLOCK_VALUE"},
 	["à la valeur de blocage"] = {"BLOCK_VALUE"},
 	["à la valeur de blocage au bouclier"] = {"BLOCK_VALUE"}, -- "+10% à la valeur de blocage au bouclier" [Diamant tonneterre éternel] ID: 35501
@@ -299,7 +300,7 @@ L["StatIDLookup"] = {
 	["points de mana rendus toutes les 5 secondes"] = {"MANA_REG"}, -- [Renfort d'armure de magistère] ID: 32399
 	["mana toutes les 5 secondes"] = {"MANA_REG"},
 	["régén. de mana"] = {"MANA_REG"},
-	
+
 	["points de vie toutes les 5 secondes"] = {"HEALTH_REG"},
 	["point de vie toutes les 5 secondes"] = {"HEALTH_REG"},
 	["points de vie toutes les 5 sec"] = {"HEALTH_REG"},
@@ -492,11 +493,11 @@ D["MELEE_DMG"] = {"Dégâts de l'arme", "Dégâts Arme"}
 D["MOUNT_SPEED"] = {"Vitesse de monte (%)", "Vit. de monte (%)"}
 D["RUN_SPEED"] = {"Vitesse (%)","Vit. (%)"}
 
-D["STR"] = {"Force", "For"}
-D["AGI"] = {"Agilité", "Agi"}
-D["STA"] = {"Endurance", "End"}
-D["INT"] = {"Intelligence", "Int"}
-D["SPI"] = {"Esprit", "Esp"}
+D[StatLogic.Stats.Strength] = {"Force", "For"}
+D[StatLogic.Stats.Agility] = {"Agilité", StatLogic.Stats.Agility}
+D[StatLogic.Stats.Stamina] = {"Endurance", "End"}
+D[StatLogic.Stats.Intellect] = {"Intelligence", StatLogic.Stats.Intellect}
+D[StatLogic.Stats.Spirit] = {"Esprit", "Esp"}
 D["ARMOR"] = {"Armure", "Armure"}
 D["ARMOR_BONUS"] = {"Armure bonus", "Armure bonus"}
 

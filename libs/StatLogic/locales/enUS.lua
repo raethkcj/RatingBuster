@@ -1,6 +1,7 @@
 ---@class StatLogicLocale
 local L = LibStub("AceLocale-3.0"):NewLocale("StatLogic", "enUS", true)
 if not L then return end
+local StatLogic = LibStub("StatLogic")
 
 L["tonumber"] = tonumber
 --[[
@@ -208,7 +209,7 @@ L["PreScanPatterns"] = {
 	["^[%a '%-]+%((%d+)/%d+%)$"] = false, -- Set Name (0/9)
 	["|cff808080"] = false, -- Gray text "  |cff808080Requires at least 2 Yellow gems|r\n  |cff808080Requires at least 1 Red gem|r"
 	-- Procs
-	--["[Cc]hance"] = false, -- [Mark of Defiance] ID:27924 -- [Staff of the Qiraji Prophets] ID:21128 -- Commented out because it was blocking [Insightful Earthstorm Diamond] 
+	--["[Cc]hance"] = false, -- [Mark of Defiance] ID:27924 -- [Staff of the Qiraji Prophets] ID:21128 -- Commented out because it was blocking [Insightful Earthstorm Diamond]
 	["[Ss]ometimes"] = false, -- [Darkmoon Card: Heroism] ID:19287
 	["[Ww]hen struck in combat"] = false, -- [Essence of the Pure Flame] ID: 18815
 }
@@ -229,7 +230,7 @@ L["DeepScanSeparators"] = {
 L["DeepScanWordSeparators"] = {
 	" and ", -- "Critical Rating +6 and Dodge Rating +5": Assassin's Fire Opal ID:30565
 }
-L["DualStatPatterns"] = { 
+L["DualStatPatterns"] = {
 	-- all lower case
 	["^%+(%d+) healing and %+(%d+) spell damage$"] = {{"HEAL",}, {"SPELL_DMG",},},
 	["^%+(%d+) healing %+(%d+) spell damage$"] = {{"HEAL",}, {"SPELL_DMG",},},
@@ -250,12 +251,12 @@ L["StatIDLookup"] = {
 	["Weapon Damage"] = {"MELEE_DMG"}, -- Enchant
 	["Increases mount speed%"] = {"MOUNT_SPEED"}, -- [Highlander's Plate Greaves] ID: 20048
 
-	["All Stats"] = {"STR", "AGI", "STA", "INT", "SPI",},
-	["Strength"] = {"STR",},
-	["Agility"] = {"AGI",},
-	["Stamina"] = {"STA",},
-	["Intellect"] = {"INT",},
-	["Spirit"] = {"SPI",},
+	["All Stats"] = {StatLogic.Stats.Strength, StatLogic.Stats.Agility, StatLogic.Stats.Stamina, StatLogic.Stats.Intellect, StatLogic.Stats.Spirit,},
+	["Strength"] = {StatLogic.Stats.Strength,},
+	["Agility"] = {StatLogic.Stats.Agility,},
+	["Stamina"] = {StatLogic.Stats.Stamina,},
+	["Intellect"] = {StatLogic.Stats.Intellect,},
+	["Spirit"] = {StatLogic.Stats.Spirit,},
 
 	["Arcane Resistance"] = {"ARCANE_RES",},
 	["Fire Resistance"] = {"FIRE_RES",},
@@ -501,11 +502,11 @@ D["MELEE_DMG"] = {"Melee Weapon "..DAMAGE, "Wpn Dmg"} -- DAMAGE = "Damage"
 D["MOUNT_SPEED"] = {"Mount Speed(%)", "Mount Spd(%)"}
 D["RUN_SPEED"] = {"Run Speed(%)", "Run Spd(%)"}
 
-D["STR"] = {SPELL_STAT1_NAME, "Str"}
-D["AGI"] = {SPELL_STAT2_NAME, "Agi"}
-D["STA"] = {SPELL_STAT3_NAME, "Sta"}
-D["INT"] = {SPELL_STAT4_NAME, "Int"}
-D["SPI"] = {SPELL_STAT5_NAME, "Spi"}
+D[StatLogic.Stats.Strength] = {SPELL_STAT1_NAME, StatLogic.Stats.Strength}
+D[StatLogic.Stats.Agility] = {SPELL_STAT2_NAME, StatLogic.Stats.Agility}
+D[StatLogic.Stats.Stamina] = {SPELL_STAT3_NAME, StatLogic.Stats.Stamina}
+D[StatLogic.Stats.Intellect] = {SPELL_STAT4_NAME, StatLogic.Stats.Intellect}
+D[StatLogic.Stats.Spirit] = {SPELL_STAT5_NAME, StatLogic.Stats.Spirit}
 D["ARMOR"] = {ARMOR, ARMOR}
 D["ARMOR_BONUS"] = {ARMOR.." from bonus", ARMOR.."(Bonus)"}
 

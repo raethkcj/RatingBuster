@@ -1,6 +1,7 @@
 -- zhTW localization by CuteMiyu, Ryuji
 local L = LibStub("AceLocale-3.0"):NewLocale("StatLogic", "zhTW")
 if not L then return end
+local StatLogic = LibStub("StatLogic")
 
 L["tonumber"] = tonumber
 --["Dual Wield"] = "雙武器",
@@ -146,7 +147,7 @@ L["WholeTextLookup"] = {
 	["略微提高奔跑速度"] = {["RUN_SPEED"] = 8}, --
 	["移動速度略微提升"] = {["RUN_SPEED"] = 8}, -- Enchant Boots - Minor Speed
 	["初級速度"] = {["RUN_SPEED"] = 8}, -- Enchant Boots - Minor Speed
-	["穩固"] = {["MELEE_HIT_RATING"] = 10}, -- Enchant Boots - Surefooted "Surefooted" http://wow.allakhazam.com/db/spell.html?wspell=27954 
+	["穩固"] = {["MELEE_HIT_RATING"] = 10}, -- Enchant Boots - Surefooted "Surefooted" http://wow.allakhazam.com/db/spell.html?wspell=27954
 
 	["狡詐"] = {["THREAT_MOD"] = -2}, -- Enchant Cloak - Subtlety
 	["威脅值降低2%"] = {["THREAT_MOD"] = -2}, -- StatLogic:GetSum("item:23344:2832")
@@ -201,7 +202,7 @@ L["PreScanPatterns"] = {
 	["被擊中之後"] = false, -- [Essence of the Pure Flame] ID: 18815
 	["在你殺死一個敵人"] = false, -- [注入精華的蘑菇] ID:28109
 	["每當你的"] = false, -- [電光相容器] ID: 28785
-	["被擊中時"] = false, -- 
+	["被擊中時"] = false, --
 }
 --------------
 -- DeepScan --
@@ -227,19 +228,19 @@ L["DualStatPatterns"] = {
 	["^使法術和魔法效果所造成的治療效果提高最多(%d+)點，法術傷害提高最多(%d+)點$"] = {{"HEAL",}, {"SPELL_DMG",},},
 }
 L["DeepScanPatterns"] = {
-	"^(.-)提高最多([%d%.]+)點(.-)$", -- 
-	"^(.-)提高最多([%d%.]+)(.-)$", -- 
-	"^(.-)，最多([%d%.]+)點(.-)$", -- 
-	"^(.-)，最多([%d%.]+)(.-)$", -- 
-	"^(.-)最多([%d%.]+)點(.-)$", -- 
-	"^(.-)最多([%d%.]+)(.-)$", -- 
-	"^(.-)提高([%d%.]+)點(.-)$", -- 
-	"^(.-)提高([%d%.]+)(.-)$", -- 
-	"^(.-)([%d%.]+)點(.-)$", -- 
-	"^(.-) ?([%+%-][%d%.]+) ?點(.-)$", -- 
-	"^(.-) ?([%+%-][%d%.]+) ?(.-)$", -- 
-	"^(.-) ?([%d%.]+) ?點(.-)$", -- 
-	"^(.-) ?([%d%.]+) ?(.-)$", -- 
+	"^(.-)提高最多([%d%.]+)點(.-)$", --
+	"^(.-)提高最多([%d%.]+)(.-)$", --
+	"^(.-)，最多([%d%.]+)點(.-)$", --
+	"^(.-)，最多([%d%.]+)(.-)$", --
+	"^(.-)最多([%d%.]+)點(.-)$", --
+	"^(.-)最多([%d%.]+)(.-)$", --
+	"^(.-)提高([%d%.]+)點(.-)$", --
+	"^(.-)提高([%d%.]+)(.-)$", --
+	"^(.-)([%d%.]+)點(.-)$", --
+	"^(.-) ?([%+%-][%d%.]+) ?點(.-)$", --
+	"^(.-) ?([%+%-][%d%.]+) ?(.-)$", --
+	"^(.-) ?([%d%.]+) ?點(.-)$", --
+	"^(.-) ?([%d%.]+) ?(.-)$", --
 }
 -----------------------
 -- Stat Lookup Table --
@@ -252,12 +253,12 @@ L["StatIDLookup"] = {
 	["武器傷害"] = {"MELEE_DMG"}, -- Enchant
 	["使坐騎速度提高%"] = {"MOUNT_SPEED"}, -- [Highlander's Plate Greaves] ID: 20048
 
-	["所有屬性"] = {"STR", "AGI", "STA", "INT", "SPI",},
-	["力量"] = {"STR",},
-	["敏捷"] = {"AGI",},
-	["耐力"] = {"STA",},
-	["智力"] = {"INT",},
-	["精神"] = {"SPI",},
+	["所有屬性"] = {StatLogic.Stats.Strength, StatLogic.Stats.Agility, StatLogic.Stats.Stamina, StatLogic.Stats.Intellect, StatLogic.Stats.Spirit,},
+	["力量"] = {StatLogic.Stats.Strength,},
+	["敏捷"] = {StatLogic.Stats.Agility,},
+	["耐力"] = {StatLogic.Stats.Stamina,},
+	["智力"] = {StatLogic.Stats.Intellect,},
+	["精神"] = {StatLogic.Stats.Spirit,},
 
 	["秘法抗性"] = {"ARCANE_RES",},
 	["火焰抗性"] = {"FIRE_RES",},
@@ -297,7 +298,7 @@ L["StatIDLookup"] = {
 	["對不死生物和惡魔的攻擊強度"] = {"AP_UNDEAD", "AP_DEMON",}, -- [勇士徽章] ID:23206
 	["對惡魔的攻擊強度"] = {"AP_DEMON",},
 	["在獵豹、熊、巨熊和梟獸形態下的攻擊強度"] = {"FERAL_AP",}, -- Atiesh ID:22632
-	["在獵豹、熊、巨熊還有梟獸形態下的攻擊強度"] = {"FERAL_AP",}, -- 
+	["在獵豹、熊、巨熊還有梟獸形態下的攻擊強度"] = {"FERAL_AP",}, --
 	["遠程攻擊強度"] = {"RANGED_AP",}, -- [High Warlord's Crossbow] ID: 18837
 
 	["每5秒恢復生命力"] = {"HEALTH_REG",}, -- [Resurgence Rod] ID:17743
@@ -506,11 +507,11 @@ D["MELEE_DMG"] = {"近戰傷害", "近戰"} -- DAMAGE = "Damage"
 D["MOUNT_SPEED"] = {"騎乘速度(%)", "騎速(%)"}
 D["RUN_SPEED"] = {"奔跑速度(%)", "跑速(%)"}
 
-D["STR"] = {SPELL_STAT1_NAME, "力量"}
-D["AGI"] = {SPELL_STAT2_NAME, "敏捷"}
-D["STA"] = {SPELL_STAT3_NAME, "耐力"}
-D["INT"] = {SPELL_STAT4_NAME, "智力"}
-D["SPI"] = {SPELL_STAT5_NAME, "精神"}
+D[StatLogic.Stats.Strength] = {SPELL_STAT1_NAME, "力量"}
+D[StatLogic.Stats.Agility] = {SPELL_STAT2_NAME, "敏捷"}
+D[StatLogic.Stats.Stamina] = {SPELL_STAT3_NAME, "耐力"}
+D[StatLogic.Stats.Intellect] = {SPELL_STAT4_NAME, "智力"}
+D[StatLogic.Stats.Spirit] = {SPELL_STAT5_NAME, "精神"}
 D["ARMOR"] = {ARMOR, ARMOR}
 D["ARMOR_BONUS"] = {"裝甲加成", "裝甲加成"}
 

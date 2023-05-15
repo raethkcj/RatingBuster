@@ -1,6 +1,7 @@
 -- deDE localization by Gailly, Dleh
 local L = LibStub("AceLocale-3.0"):NewLocale("StatLogic", "deDE")
 if not L then return end
+local StatLogic = LibStub("StatLogic")
 
 L["tonumber"] = function(s)
 	local n = tonumber(s)
@@ -220,12 +221,12 @@ L["StatIDLookup"] = {
 	["Waffenschaden"] = {"MELEE_DMG"}, -- Enchant
 	["Erhöht das Reittiertempo%"] = {"MOUNT_SPEED"}, -- [Highlander's Plate Greaves] ID: 20048
 
-	["Alle Werte"] = {"STR", "AGI", "STA", "INT", "SPI",},
-	["Stärke"] = {"STR",},
-	["Beweglichkeit"] = {"AGI",},
-	["Ausdauer"] = {"STA",},
-	["Intelligenz"] = {"INT",},
-	["Willenskraft"] = {"SPI",},
+	["Alle Werte"] = {StatLogic.Stats.Strength, StatLogic.Stats.Agility, StatLogic.Stats.Stamina, StatLogic.Stats.Intellect, StatLogic.Stats.Spirit,},
+	["Stärke"] = {StatLogic.Stats.Strength,},
+	["Beweglichkeit"] = {StatLogic.Stats.Agility,},
+	["Ausdauer"] = {StatLogic.Stats.Stamina,},
+	["Intelligenz"] = {StatLogic.Stats.Intellect,},
+	["Willenskraft"] = {StatLogic.Stats.Spirit,},
 
 	["Arkanwiderstand"] = {"ARCANE_RES",},
 	["Feuerwiderstand"] = {"FIRE_RES",},
@@ -434,11 +435,11 @@ D["MELEE_DMG"] = {"Waffenschaden", "Waffenschaden"} -- DAMAGE = "Damage"
 D["MOUNT_SPEED"] = {"Reitgeschwindigkeit(%)", "Reitgeschw.(%)"}
 D["RUN_SPEED"] = {"Laufgeschwindigkeit(%)", "Laufgeschw.(%)"}
 
-D["STR"] = {SPELL_STAT1_NAME, "Stärke"}
-D["AGI"] = {SPELL_STAT2_NAME, "Bewegl"}
-D["STA"] = {SPELL_STAT3_NAME, "Ausdauer"}
-D["INT"] = {SPELL_STAT4_NAME, "Int"}
-D["SPI"] = {SPELL_STAT5_NAME, "Wille"}
+D[StatLogic.Stats.Strength] = {SPELL_STAT1_NAME, "Stärke"}
+D[StatLogic.Stats.Agility] = {SPELL_STAT2_NAME, "Bewegl"}
+D[StatLogic.Stats.Stamina] = {SPELL_STAT3_NAME, "Ausdauer"}
+D[StatLogic.Stats.Intellect] = {SPELL_STAT4_NAME, StatLogic.Stats.Intellect}
+D[StatLogic.Stats.Spirit] = {SPELL_STAT5_NAME, "Wille"}
 D["ARMOR"] = {ARMOR, ARMOR}
 D["ARMOR_BONUS"] = {ARMOR.." von Bonus", ARMOR.."(Bonus)"}
 

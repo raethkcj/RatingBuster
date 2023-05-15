@@ -1,6 +1,7 @@
 --ruRU localization by YujiTFD, thehallowedfire
 local L = LibStub("AceLocale-3.0"):NewLocale("StatLogic", "ruRU")
 if not L then return end
+local StatLogic = LibStub("StatLogic")
 
 L["tonumber"] = tonumber
 --[[
@@ -160,8 +161,8 @@ L["WholeTextLookup"] = {
 	["Надето: небольшое ускорение бега."] = {["RUN_SPEED"] = 8}, -- [Highlander's Plate Greaves] ID: 20048
 	["Небольшое ускорениеускорение бега"] = {["RUN_SPEED"] = 8}, --
 	["Небольшое увеличение скорости"] = {["RUN_SPEED"] = 8}, -- Enchant Boots - Minor Speed "Minor Speed Increase" http://wow.allakhazam.com/db/spell.html?wspell=13890
-	["Небольшое увеличение скорости и +6 к ловкости"] = {["RUN_SPEED"] = 8, ["AGI"] = 6}, -- Enchant Boots - Cat's Swiftness "Minor Speed and +6 Agility" http://wow.allakhazam.com/db/spell.html?wspell=34007
-	["Небольшое увеличение скорости и +9 к выносливости"] = {["RUN_SPEED"] = 8, ["STA"] = 9}, -- Enchant Boots - Boar's Speed "Minor Speed and +9 Stamina"
+	["Небольшое увеличение скорости и +6 к ловкости"] = {["RUN_SPEED"] = 8, [StatLogic.Stats.Agility] = 6}, -- Enchant Boots - Cat's Swiftness "Minor Speed and +6 Agility" http://wow.allakhazam.com/db/spell.html?wspell=34007
+	["Небольшое увеличение скорости и +9 к выносливости"] = {["RUN_SPEED"] = 8, [StatLogic.Stats.Stamina] = 9}, -- Enchant Boots - Boar's Speed "Minor Speed and +9 Stamina"
 	["Верный шаг"] = {["MELEE_HIT_RATING"] = 10}, -- Enchant Boots - Surefooted "Surefooted" http://wow.allakhazam.com/db/spell.html?wspell=27954
 
 	["Скрытность"] = {["THREAT_MOD"] = -2}, -- Enchant Cloak - Subtlety
@@ -260,13 +261,13 @@ L["StatIDLookup"] = {
 	["Weapon Damage"] = {"MELEE_DMG"}, -- Enchant
 	["увеличение скорости передвижения верхом на%"] = {"MOUNT_SPEED"}, -- [Highlander's Plate Greaves] ID: 20048
 
-	["ко всем характеристикам"] = {"STR", "AGI", "STA", "INT", "SPI",},
-	["к силе"] = {"STR",},
-	["силу цели"] = {"STR",},
-	["к ловкости"] = {"AGI",},
-	["к выносливости"] = {"STA",},
-	["к интеллекту"] = {"INT",},
-	["к духу"] = {"SPI",},
+	["ко всем характеристикам"] = {StatLogic.Stats.Strength, StatLogic.Stats.Agility, StatLogic.Stats.Stamina, StatLogic.Stats.Intellect, StatLogic.Stats.Spirit,},
+	["к силе"] = {StatLogic.Stats.Strength,},
+	["силу цели"] = {StatLogic.Stats.Strength,},
+	["к ловкости"] = {StatLogic.Stats.Agility,},
+	["к выносливости"] = {StatLogic.Stats.Stamina,},
+	["к интеллекту"] = {StatLogic.Stats.Intellect,},
+	["к духу"] = {StatLogic.Stats.Spirit,},
 
 	["сопротивление тайной магии"] = {"ARCANE_RES",},
 	["к сопротивлению тайной магии"] = {"ARCANE_RES",},
@@ -517,11 +518,11 @@ D["STEALTH_LEVEL"] = { "Stealth Level", "Stealth" }
 D["MELEE_DMG"] = { "Melee Weapon " .. DAMAGE, "Wpn Dmg" } -- DAMAGE = "Damage"
 D["MOUNT_SPEED"] = { "Mount Speed(%)", "Mount Spd(%)" }
 D["RUN_SPEED"] = { "Run Speed(%)", "Run Spd(%)" }
-D["STR"] = { "Сила", "Str" }
-D["AGI"] = { "Ловкость", "Agi" }
-D["STA"] = { "Выносливость", "Sta" }
-D["INT"] = { "Интеллект", "Int" }
-D["SPI"] = { "Дух", "Spi" }
+D[StatLogic.Stats.Strength] = { "Сила", StatLogic.Stats.Strength }
+D[StatLogic.Stats.Agility] = { "Ловкость", StatLogic.Stats.Agility }
+D[StatLogic.Stats.Stamina] = { "Выносливость", StatLogic.Stats.Stamina }
+D[StatLogic.Stats.Intellect] = { "Интеллект", StatLogic.Stats.Intellect }
+D[StatLogic.Stats.Spirit] = { "Дух", StatLogic.Stats.Spirit }
 D["ARMOR"] = { "Броня", ARMOR }
 D["ARMOR_BONUS"] = { ARMOR .. " from bonus", ARMOR .. "(Bonus)" }
 D["FIRE_RES"] = { "Сопротивление огню", "FR" }

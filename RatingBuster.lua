@@ -1483,7 +1483,7 @@ do
 				if mod == "NORMAL_MANA_REG" then
 					-- "Normal mana regen" is added from both int and spirit
 					addStatModOption(add, "INT", sources)
-					mod = "SPI"
+					mod = StatLogic.Stats.Spirit
 				elseif mod == "AP" then
 					-- Paladin's Sheathe of Light, Touched by the Light
 					-- Shaman's Mental Quickness.
@@ -1756,8 +1756,8 @@ function RatingBuster.ProcessTooltip(tooltip, name, link)
 		local meta = profileDB.sumGemMeta.gemID
 		local _, mainlink, difflink1, difflink2 = StatLogic:GetDiffID(tooltip, globalDB.sumIgnoreEnchant, globalDB.sumIgnoreGems, red, yellow, blue, meta, profileDB.sumIgnorePris)
 		StatLogic:GetSum(difflink1, equippedSum)
-		equippedSum["STR"] = equippedSum["STR"] * GSM("MOD_STR")
-		equippedSum["AGI"] = equippedSum["AGI"] * GSM("MOD_AGI")
+		equippedSum[StatLogic.Stats.Strength] = equippedSum[StatLogic.Stats.Strength] * GSM("MOD_STR")
+		equippedSum[StatLogic.Stats.Agility] = equippedSum[StatLogic.Stats.Agility] * GSM("MOD_AGI")
 		equippedDodge = summaryFunc["DODGE_NO_DR"](equippedSum, "sum", difflink1) * -1
 		equippedParry = summaryFunc["PARRY_NO_DR"](equippedSum, "sum", difflink1) * -1
 		equippedMissed = summaryFunc["MELEE_HIT_AVOID_NO_DR"](equippedSum, "sum", difflink1) * -1
@@ -2671,41 +2671,41 @@ local summaryCalcData = {
 	-- Strength - STR
 	{
 		option = "sumStr",
-		name = "STR",
+		name = StatLogic.Stats.Strength,
 		func = function(sum)
-			return sum["STR"]
+			return sum[StatLogic.Stats.Strength]
 		end,
 	},
 	-- Agility - AGI
 	{
 		option = "sumAgi",
-		name = "AGI",
+		name = StatLogic.Stats.Agility,
 		func = function(sum)
-			return sum["AGI"]
+			return sum[StatLogic.Stats.Agility]
 		end,
 	},
 	-- Stamina - STA
 	{
 		option = "sumSta",
-		name = "STA",
+		name = StatLogic.Stats.Stamina,
 		func = function(sum)
-			return sum["STA"]
+			return sum[StatLogic.Stats.Stamina]
 		end,
 	},
 	-- Intellect - INT
 	{
 		option = "sumInt",
-		name = "INT",
+		name = StatLogic.Stats.Intellect,
 		func = function(sum)
-			return sum["INT"]
+			return sum[StatLogic.Stats.Intellect]
 		end,
 	},
 	-- Spirit - SPI
 	{
 		option = "sumSpi",
-		name = "SPI",
+		name = StatLogic.Stats.Spirit,
 		func = function(sum)
-			return sum["SPI"]
+			return sum[StatLogic.Stats.Spirit]
 		end,
 	},
 	-- Health - HEALTH, STA
@@ -2713,7 +2713,7 @@ local summaryCalcData = {
 		option = "sumHP",
 		name = "HEALTH",
 		func = function(sum)
-			return (sum["HEALTH"] + (sum["STA"] * 10)) * GSM("MOD_HEALTH")
+			return (sum["HEALTH"] + (sum[StatLogic.Stats.Stamina] * 10)) * GSM("MOD_HEALTH")
 		end,
 	},
 	-- Mana - MANA, INT
@@ -2721,7 +2721,7 @@ local summaryCalcData = {
 		option = "sumMP",
 		name = "MANA",
 		func = function(sum)
-			return (sum["MANA"] + (sum["INT"] * 15)) * GSM("MOD_MANA")
+			return (sum["MANA"] + (sum[StatLogic.Stats.Intellect] * 15)) * GSM("MOD_MANA")
 		end,
 	},
 	-- Health Regen - HEALTH_REG
@@ -2737,7 +2737,7 @@ local summaryCalcData = {
 		option = "sumHP5OC",
 		name = "HEALTH_REG_OUT_OF_COMBAT",
 		func = function(sum)
-			return sum["HEALTH_REG"] + StatLogic:GetHealthRegenFromSpi(sum["SPI"], class)
+			return sum["HEALTH_REG"] + StatLogic:GetHealthRegenFromSpi(sum[StatLogic.Stats.Spirit], class)
 		end,
 	},
 	-- Mana Regen - MANA_REG, SPI, INT
@@ -2749,14 +2749,14 @@ local summaryCalcData = {
 				local _, int = UnitStat("player", 4)
 				local _, spi = UnitStat("player", 5)
 				return sum["MANA_REG"]
-				 + (sum["INT"] * GSM("ADD_MANA_REG_MOD_INT"))
-				 + (StatLogic:GetNormalManaRegenFromSpi(spi + sum["SPI"], int + sum["INT"], calcLevel)
+				 + (sum[StatLogic.Stats.Intellect] * GSM("ADD_MANA_REG_MOD_INT"))
+				 + (StatLogic:GetNormalManaRegenFromSpi(spi + sum[StatLogic.Stats.Spirit], int + sum[StatLogic.Stats.Intellect], calcLevel)
 				 - StatLogic:GetNormalManaRegenFromSpi(spi, int, calcLevel)) * GSM("ADD_MANA_REG_MOD_NORMAL_MANA_REG")
 				 + summaryFunc["MANA"](sum) * GSM("ADD_MANA_REG_MOD_MANA")
 			else
 				return sum["MANA_REG"]
-				 + (sum["INT"] * GSM("ADD_MANA_REG_MOD_INT"))
-				 + (StatLogic:GetNormalManaRegenFromSpi(sum["SPI"], class) * GSM("ADD_MANA_REG_MOD_NORMAL_MANA_REG"))
+				 + (sum[StatLogic.Stats.Intellect] * GSM("ADD_MANA_REG_MOD_INT"))
+				 + (StatLogic:GetNormalManaRegenFromSpi(sum[StatLogic.Stats.Spirit], class) * GSM("ADD_MANA_REG_MOD_NORMAL_MANA_REG"))
 			end
 		end,
 	},
@@ -2769,14 +2769,14 @@ local summaryCalcData = {
 				local _, int = UnitStat("player", 4)
 				local _, spi = UnitStat("player", 5)
 				return sum["MANA_REG"]
-				 + (sum["INT"] * GSM("ADD_MANA_REG_MOD_INT"))
-				 + StatLogic:GetNormalManaRegenFromSpi(spi + sum["SPI"], int + sum["INT"], calcLevel)
+				 + (sum[StatLogic.Stats.Intellect] * GSM("ADD_MANA_REG_MOD_INT"))
+				 + StatLogic:GetNormalManaRegenFromSpi(spi + sum[StatLogic.Stats.Spirit], int + sum[StatLogic.Stats.Intellect], calcLevel)
 				 - StatLogic:GetNormalManaRegenFromSpi(spi, int, calcLevel)
 				 + summaryFunc["MANA"](sum) * GSM("ADD_MANA_REG_MOD_MANA")
 			else
 				return sum["MANA_REG"]
-				 + (sum["INT"] * GSM("ADD_MANA_REG_MOD_INT"))
-				 + StatLogic:GetNormalManaRegenFromSpi(sum["SPI"], class)
+				 + (sum[StatLogic.Stats.Intellect] * GSM("ADD_MANA_REG_MOD_INT"))
+				 + StatLogic:GetNormalManaRegenFromSpi(sum[StatLogic.Stats.Spirit], class)
 			end
 		end,
 	},
@@ -2793,10 +2793,10 @@ local summaryCalcData = {
 				(sum["FERAL_AP"] > 0 and GSM("MOD_FAP") or 1) * (
 					sum["AP"]
 					+ sum["FERAL_AP"] * GSM("ADD_AP_MOD_FAP")
-				) + sum["STR"] * StatLogic:GetAPPerStr(class)
-				+ sum["AGI"] * StatLogic:GetAPPerAgi(class)
-				+ sum["STA"] * GSM("ADD_AP_MOD_STA")
-				+ sum["INT"] * GSM("ADD_AP_MOD_INT")
+				) + sum[StatLogic.Stats.Strength] * StatLogic:GetAPPerStr(class)
+				+ sum[StatLogic.Stats.Agility] * StatLogic:GetAPPerAgi(class)
+				+ sum[StatLogic.Stats.Stamina] * GSM("ADD_AP_MOD_STA")
+				+ sum[StatLogic.Stats.Intellect] * GSM("ADD_AP_MOD_INT")
 				+ summaryFunc["ARMOR"](sum) * GSM("ADD_AP_MOD_ARMOR")
 			)
 		end,
@@ -2809,9 +2809,9 @@ local summaryCalcData = {
 			return (GSM("MOD_RANGED_AP") + GSM("MOD_AP") - 1) * (
 				sum["RANGED_AP"]
 				+ sum["AP"]
-				+ sum["AGI"] * StatLogic:GetRAPPerAgi(class)
-				+ sum["INT"] * GSM("ADD_RANGED_AP_MOD_INT")
-				+ sum["STA"] * GSM("ADD_AP_MOD_STA")
+				+ sum[StatLogic.Stats.Agility] * StatLogic:GetRAPPerAgi(class)
+				+ sum[StatLogic.Stats.Intellect] * GSM("ADD_RANGED_AP_MOD_INT")
+				+ sum[StatLogic.Stats.Stamina] * GSM("ADD_AP_MOD_STA")
 				+ summaryFunc["ARMOR"](sum) * GSM("ADD_AP_MOD_ARMOR")
 			)
 		end,
@@ -2860,7 +2860,7 @@ local summaryCalcData = {
 		func = function(sum)
 			return sum["MELEE_CRIT"]
 				+ StatLogic:GetEffectFromRating(sum["MELEE_CRIT_RATING"], "MELEE_CRIT_RATING", calcLevel)
-				+ StatLogic:GetCritFromAgi(sum["AGI"], class, calcLevel)
+				+ StatLogic:GetCritFromAgi(sum[StatLogic.Stats.Agility], class, calcLevel)
 		end,
 		ispercent = true,
 	},
@@ -2879,7 +2879,7 @@ local summaryCalcData = {
 		func = function(sum)
 			return sum["RANGED_CRIT"]
 				+ StatLogic:GetEffectFromRating(sum["RANGED_CRIT_RATING"], "RANGED_CRIT_RATING", calcLevel)
-				+ StatLogic:GetCritFromAgi(sum["AGI"], class, calcLevel)
+				+ StatLogic:GetCritFromAgi(sum[StatLogic.Stats.Agility], class, calcLevel)
 		end,
 		ispercent = true,
 	},
@@ -3010,10 +3010,10 @@ local summaryCalcData = {
 		name = "SPELL_DMG",
 		func = function(sum)
 			return sum["SPELL_DMG"]
-				+ sum["STR"] * GSM("ADD_SPELL_DMG_MOD_STR")
-				+ sum["STA"] * (GSM("ADD_SPELL_DMG_MOD_STA") + GSM("ADD_SPELL_DMG_MOD_PET_STA") * GSM("ADD_PET_STA_MOD_STA"))
-				+ sum["INT"] * (GSM("ADD_SPELL_DMG_MOD_INT") + GSM("ADD_SPELL_DMG_MOD_PET_INT") * GSM("ADD_PET_INT_MOD_INT"))
-				+ sum["SPI"] * GSM("ADD_SPELL_DMG_MOD_SPI")
+				+ sum[StatLogic.Stats.Strength] * GSM("ADD_SPELL_DMG_MOD_STR")
+				+ sum[StatLogic.Stats.Stamina] * (GSM("ADD_SPELL_DMG_MOD_STA") + GSM("ADD_SPELL_DMG_MOD_PET_STA") * GSM("ADD_PET_STA_MOD_STA"))
+				+ sum[StatLogic.Stats.Intellect] * (GSM("ADD_SPELL_DMG_MOD_INT") + GSM("ADD_SPELL_DMG_MOD_PET_INT") * GSM("ADD_PET_INT_MOD_INT"))
+				+ sum[StatLogic.Stats.Spirit] * GSM("ADD_SPELL_DMG_MOD_SPI")
 				+ summaryFunc["AP"](sum) * GSM("ADD_SPELL_DMG_MOD_AP")
 		end,
 	},
@@ -3084,10 +3084,10 @@ local summaryCalcData = {
 		func = function(sum)
 			return GSM("MOD_HEALING") * (
 				sum["HEAL"]
-				+ (sum["STR"] * GSM("ADD_HEALING_MOD_STR"))
-				+ (sum["AGI"] * GSM("ADD_HEALING_MOD_AGI"))
-				+ (sum["INT"] * GSM("ADD_HEALING_MOD_INT"))
-				+ (sum["SPI"] * GSM("ADD_HEALING_MOD_SPI"))
+				+ (sum[StatLogic.Stats.Strength] * GSM("ADD_HEALING_MOD_STR"))
+				+ (sum[StatLogic.Stats.Agility] * GSM("ADD_HEALING_MOD_AGI"))
+				+ (sum[StatLogic.Stats.Intellect] * GSM("ADD_HEALING_MOD_INT"))
+				+ (sum[StatLogic.Stats.Spirit] * GSM("ADD_HEALING_MOD_SPI"))
 				+ (summaryFunc["AP"](sum) * GSM("ADD_HEALING_MOD_AP"))
 			)
 		end,
@@ -3117,7 +3117,7 @@ local summaryCalcData = {
 		func = function(sum)
 			return sum["SPELL_CRIT"]
 				+ StatLogic:GetEffectFromRating(summaryFunc["SPELL_CRIT_RATING"](sum), "SPELL_CRIT_RATING", calcLevel)
-				+ StatLogic:GetSpellCritFromInt(sum["INT"], class, calcLevel)
+				+ StatLogic:GetSpellCritFromInt(sum[StatLogic.Stats.Intellect], class, calcLevel)
 		end,
 		ispercent = true,
 	},
@@ -3127,7 +3127,7 @@ local summaryCalcData = {
 		name = "SPELL_CRIT_RATING",
 		func = function(sum)
 			return sum["SPELL_CRIT_RATING"]
-				+ sum["SPI"] * GSM("ADD_SPELL_CRIT_RATING_MOD_SPI")
+				+ sum[StatLogic.Stats.Spirit] * GSM("ADD_SPELL_CRIT_RATING_MOD_SPI")
 		end,
 	},
 	-- Spell Haste - SPELL_HASTE_RATING
@@ -3165,8 +3165,8 @@ local summaryCalcData = {
 		func = function(sum)
 			return GSM("MOD_ARMOR") * sum["ARMOR"]
 				+ sum["ARMOR_BONUS"]
-				+ sum["AGI"] * ARMOR_PER_AGILITY
-				+ sum["INT"] * GSM("ADD_ARMOR_MOD_INT")
+				+ sum[StatLogic.Stats.Agility] * ARMOR_PER_AGILITY
+				+ sum[StatLogic.Stats.Intellect] * GSM("ADD_ARMOR_MOD_INT")
 		 end,
 	},
 	-- Dodge Chance Before DR - DODGE, DODGE_RATING, DEFENSE, AGI
@@ -3177,7 +3177,7 @@ local summaryCalcData = {
 			return sum["DODGE"]
 				+ StatLogic:GetEffectFromRating(sum["DODGE_RATING"], "DODGE_RATING", calcLevel)
 				+ summaryFunc["DEFENSE"](sum) * DODGE_PARRY_BLOCK_PERCENT_PER_DEFENSE
-				+ StatLogic:GetDodgeFromAgi(sum["AGI"])
+				+ StatLogic:GetDodgeFromAgi(sum[StatLogic.Stats.Agility])
 		end,
 		ispercent = true,
 	},
@@ -3242,7 +3242,7 @@ local summaryCalcData = {
 		name = "PARRY_RATING",
 		func = function(sum)
 			return sum["PARRY_RATING"]
-				+ sum["STR"] * GSM("ADD_PARRY_RATING_MOD_STR")
+				+ sum[StatLogic.Stats.Strength] * GSM("ADD_PARRY_RATING_MOD_STR")
 		end,
 	},
 	-- Block Chance - BLOCK, BLOCK_RATING, DEFENSE
@@ -3274,7 +3274,7 @@ local summaryCalcData = {
 			return GetBlockChance() > 0 and (
 				GSM("MOD_BLOCK_VALUE") * (
 					sum["BLOCK_VALUE"]
-					+ sum["STR"] * StatLogic:GetBlockValuePerStr(class)
+					+ sum[StatLogic.Stats.Strength] * StatLogic:GetBlockValuePerStr(class)
 				)
 			) or 0
 		end,
@@ -3696,19 +3696,19 @@ function RatingBuster:StatSummary(tooltip, name, link)
 	end
 	-- Apply Base Stat Mods
 	for _, v in pairs(statData) do
-		v["STR"] = (v["STR"] or 0)
-		v["AGI"] = (v["AGI"] or 0)
-		v["STA"] = (v["STA"] or 0)
-		v["INT"] = (v["INT"] or 0)
-		v["SPI"] = (v["SPI"] or 0)
+		v[StatLogic.Stats.Strength] = (v[StatLogic.Stats.Strength] or 0)
+		v[StatLogic.Stats.Agility] = (v[StatLogic.Stats.Agility] or 0)
+		v[StatLogic.Stats.Stamina] = (v[StatLogic.Stats.Stamina] or 0)
+		v[StatLogic.Stats.Intellect] = (v[StatLogic.Stats.Intellect] or 0)
+		v[StatLogic.Stats.Spirit] = (v[StatLogic.Stats.Spirit] or 0)
 	end
 	if profileDB.enableStatMods then
 		for _, v in pairs(statData) do
-			v["STR"] = v["STR"] * GSM("MOD_STR")
-			v["AGI"] = v["AGI"] * GSM("MOD_AGI")
-			v["STA"] = v["STA"] * GSM("MOD_STA")
-			v["INT"] = v["INT"] * GSM("MOD_INT")
-			v["SPI"] = v["SPI"] * GSM("MOD_SPI")
+			v[StatLogic.Stats.Strength] = v[StatLogic.Stats.Strength] * GSM("MOD_STR")
+			v[StatLogic.Stats.Agility] = v[StatLogic.Stats.Agility] * GSM("MOD_AGI")
+			v[StatLogic.Stats.Stamina] = v[StatLogic.Stats.Stamina] * GSM("MOD_STA")
+			v[StatLogic.Stats.Intellect] = v[StatLogic.Stats.Intellect] * GSM("MOD_INT")
+			v[StatLogic.Stats.Spirit] = v[StatLogic.Stats.Spirit] * GSM("MOD_SPI")
 		end
 	end
 	-- Summary Table
@@ -3721,7 +3721,7 @@ function RatingBuster:StatSummary(tooltip, name, link)
 	if profileDB.sumHP then
 		local d = {name = "HEALTH"}
 		for k, sum in pairs(data) do
-			d[k] = (sum["HEALTH"] + (sum["STA"] * 10)) * GSM("MOD_HEALTH")
+			d[k] = (sum["HEALTH"] + (sum[StatLogic.Stats.Stamina] * 10)) * GSM("MOD_HEALTH")
 		end
 		tinsert(summary, d)
 	end
@@ -3730,7 +3730,7 @@ function RatingBuster:StatSummary(tooltip, name, link)
 		sumHP = {
 			name = "HEALTH",
 			func = function(sum)
-				return (sum["HEALTH"] + (sum["STA"] * 10)) * GSM("MOD_HEALTH")
+				return (sum["HEALTH"] + (sum[StatLogic.Stats.Stamina] * 10)) * GSM("MOD_HEALTH")
 			end,
 			ispercent = false,
 		},

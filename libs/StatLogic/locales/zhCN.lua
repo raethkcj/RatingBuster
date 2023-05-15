@@ -1,6 +1,7 @@
 -- zhCN localization by iceburn
 local L = LibStub("AceLocale-3.0"):NewLocale("StatLogic", "zhCN")
 if not L then return end
+local StatLogic = LibStub("StatLogic")
 
 L["tonumber"] = tonumber
 ------------------
@@ -139,7 +140,7 @@ L["WholeTextLookup"] = {
 	["略微提高奔跑速度"] = {["RUN_SPEED"] = 8}, --
 	["移动速度略微提升"] = {["RUN_SPEED"] = 8}, -- Enchant Boots - Minor Speed
 	["初级速度"] = {["RUN_SPEED"] = 8}, -- Enchant Boots - Minor Speed
-	["稳固"] = {["MELEE_HIT_RATING"] = 10}, -- Enchant Boots - Surefooted "Surefooted" 
+	["稳固"] = {["MELEE_HIT_RATING"] = 10}, -- Enchant Boots - Surefooted "Surefooted"
 
 	["狡诈"] = {["THREAT_MOD"] = -2}, -- Enchant Cloak - Subtlety
 	["威胁减少2%"] = {["THREAT_MOD"] = -2}, -- StatLogic:GetSum("item:23344:2832")
@@ -194,14 +195,14 @@ L["PreScanPatterns"] = {
 	["|cff808080"] = false, -- Gray text "  |cff808080Requires at least 2 Yellow gems|r\n  |cff808080Requires at least 1 Red gem|r"
 	-- Procs
 	["几率"] = false, --[挑战印记] ID:27924
-	["机率"] = false, 
+	["机率"] = false,
 	["有一定几率"] = false, -- [Mark of Defiance] ID:27924 -- [Staff of the Qiraji Prophets] ID:21128
 	["有可能"] = false, -- [Darkmoon Card: Heroism] ID:19287
 	["命中时"] = false, -- [黑色摧毁者手套] ID:22194
 	["被击中之后"] = false, -- [Essence of the Pure Flame] ID: 18815
 	["在杀死一个敌人"] = false, -- [注入精华的蘑菇] ID:28109
 	["每当你的"] = false, -- [电光相容器] ID: 28785
-	["被击中时"] = false, -- 
+	["被击中时"] = false, --
 	["你每施放一次法术，此增益的效果就降低17点伤害和34点治疗效果"] = false, --赞达拉英雄护符 ID:19950
 }
 --------------
@@ -217,25 +218,25 @@ L["DeepScanSeparators"] = {
 	" & ", -- "+26 Healing Spells & 2% Reduced Threat": Bracing Earthstorm Diamond ID:25897
 	", ", -- "+6 Spell Damage, +5 Spell Crit Rating": Potent Ornate Topaz ID: 28123
 	"、", -- 防御者雕文
-	"。", 
+	"。",
 }
 L["DeepScanWordSeparators"] = {
 	"及", "和", "并", "，","以及", "持续 "-- [发光的暗影卓奈石] ID:25894 "+24 攻击强度及略微提高奔跑速度", [刺客的火焰蛋白石] ID:30565 "爆击等级 +6 及躲闪等级 +5"
 }
 L["DeepScanPatterns"] = {
-	"^(.-)提高最多([%d%.]+)点(.-)$", -- 
-	"^(.-)提高最多([%d%.]+)(.-)$", -- 
-	"^(.-)，最多([%d%.]+)点(.-)$", -- 
-	"^(.-)，最多([%d%.]+)(.-)$", -- 
-	"^(.-)最多([%d%.]+)点(.-)$", -- 
-	"^(.-)最多([%d%.]+)(.-)$", -- 
-	"^(.-)提高([%d%.]+)点(.-)$", -- 
-	"^(.-)提高([%d%.]+)(.-)$", -- 
-	"^(.-)([%d%.]+)点(.-)$", -- 
-	"^(.-) ?([%+%-][%d%.]+) ?点(.-)$", -- 
-	"^(.-) ?([%+%-][%d%.]+) ?(.-)$", -- 
-	"^(.-) ?([%d%.]+) ?点(.-)$", -- 
-	"^(.-) ?([%d%.]+) ?(.-)$", -- 
+	"^(.-)提高最多([%d%.]+)点(.-)$", --
+	"^(.-)提高最多([%d%.]+)(.-)$", --
+	"^(.-)，最多([%d%.]+)点(.-)$", --
+	"^(.-)，最多([%d%.]+)(.-)$", --
+	"^(.-)最多([%d%.]+)点(.-)$", --
+	"^(.-)最多([%d%.]+)(.-)$", --
+	"^(.-)提高([%d%.]+)点(.-)$", --
+	"^(.-)提高([%d%.]+)(.-)$", --
+	"^(.-)([%d%.]+)点(.-)$", --
+	"^(.-) ?([%+%-][%d%.]+) ?点(.-)$", --
+	"^(.-) ?([%+%-][%d%.]+) ?(.-)$", --
+	"^(.-) ?([%d%.]+) ?点(.-)$", --
+	"^(.-) ?([%d%.]+) ?(.-)$", --
 }
 -----------------------
 -- Stat Lookup Table --
@@ -250,12 +251,12 @@ L["StatIDLookup"] = {
 	["使坐骑速度提高%"] = {"MOUNT_SPEED"}, -- [Highlander's Plate Greaves] ID: 20048
 	["坐骑速度"] = {"MOUNT_SPEED"}, -- [Highlander's Plate Greaves] ID: 20048
 
-	["所有属性"] = {"STR", "AGI", "STA", "INT", "SPI",},
-	["力量"] = {"STR",},
-	["敏捷"] = {"AGI",},
-	["耐力"] = {"STA",},
-	["智力"] = {"INT",},
-	["精神"] = {"SPI",},
+	["所有属性"] = {StatLogic.Stats.Strength, StatLogic.Stats.Agility, StatLogic.Stats.Stamina, StatLogic.Stats.Intellect, StatLogic.Stats.Spirit,},
+	["力量"] = {StatLogic.Stats.Strength,},
+	["敏捷"] = {StatLogic.Stats.Agility,},
+	["耐力"] = {StatLogic.Stats.Stamina,},
+	["智力"] = {StatLogic.Stats.Intellect,},
+	["精神"] = {StatLogic.Stats.Spirit,},
 
 	["奥术抗性"] = {"ARCANE_RES",},
 	["火焰抗性"] = {"FIRE_RES",},
@@ -298,16 +299,16 @@ L["StatIDLookup"] = {
 	["远程攻击强度"] = {"RANGED_AP",}, -- [High Warlord's Crossbow] ID: 18837
 
 	["每5秒恢复(%d+)点生命值"] = {"HEALTH_REG",}, -- [Resurgence Rod] ID:17743
-	["每5秒回复(%d+)点生命值"] = {"HEALTH_REG",}, 
+	["每5秒回复(%d+)点生命值"] = {"HEALTH_REG",},
 	["生命值恢复速度"] = {"HEALTH_REG",}, -- [Demons Blood] ID: 10779
 
 	["每5秒法力"] = {"MANA_REG",}, --
 	["每5秒恢复法力"] = {"MANA_REG",}, -- [Royal Tanzanite] ID: 30603
-	["每5秒恢复(%d+)点法力值"] = {"MANA_REG",}, 
-	["每5秒回复(%d+)点法力值"] = {"MANA_REG",}, 
-	["每5秒法力回复"] = {"MANA_REG",}, 
-	["法力恢复"] = {"MANA_REG",}, 
-	["法力回复"] = {"MANA_REG",}, 
+	["每5秒恢复(%d+)点法力值"] = {"MANA_REG",},
+	["每5秒回复(%d+)点法力值"] = {"MANA_REG",},
+	["每5秒法力回复"] = {"MANA_REG",},
+	["法力恢复"] = {"MANA_REG",},
+	["法力回复"] = {"MANA_REG",},
 	["使周围半径30码范围内的所有小队成员每5秒恢复(%d+)点法力值"] = {"MANA_REG",}, --
 
 	["法术穿透"] = {"SPELLPEN",},
@@ -520,11 +521,11 @@ D["MELEE_DMG"] = {"近战伤害", "近战伤害"} -- DAMAGE = "Damage"
 D["MOUNT_SPEED"] = {"骑乘速度(%)", "骑速(%)"}
 D["RUN_SPEED"] = {"移动速度(%)", "跑速(%)"}
 
-D["STR"] = {SPELL_STAT1_NAME, "力"}
-D["AGI"] = {SPELL_STAT2_NAME, "敏"}
-D["STA"] = {SPELL_STAT3_NAME, "耐"}
-D["INT"] = {SPELL_STAT4_NAME, "智"}
-D["SPI"] = {SPELL_STAT5_NAME, "精"}
+D[StatLogic.Stats.Strength] = {SPELL_STAT1_NAME, "力"}
+D[StatLogic.Stats.Agility] = {SPELL_STAT2_NAME, "敏"}
+D[StatLogic.Stats.Stamina] = {SPELL_STAT3_NAME, "耐"}
+D[StatLogic.Stats.Intellect] = {SPELL_STAT4_NAME, "智"}
+D[StatLogic.Stats.Spirit] = {SPELL_STAT5_NAME, "精"}
 D["ARMOR"] = {ARMOR, ARMOR}
 D["ARMOR_BONUS"] = {"护甲加成", "护甲"}
 
