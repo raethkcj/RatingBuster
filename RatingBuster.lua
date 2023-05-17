@@ -1483,7 +1483,7 @@ do
 				if mod == "NORMAL_MANA_REG" then
 					-- "Normal mana regen" is added from both int and spirit
 					addStatModOption(add, "INT", sources)
-					mod = StatLogic.Stats.Spirit
+					mod = "SPI"
 				elseif mod == "AP" then
 					-- Paladin's Sheathe of Light, Touched by the Light
 					-- Shaman's Mental Quickness.
