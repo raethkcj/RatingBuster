@@ -1718,9 +1718,16 @@ local ITEM_MIN_LEVEL_PATTERN = ITEM_MIN_LEVEL:gsub("%%d", "%%d+")
 local BIND_TRADE_PATTERN = BIND_TRADE_TIME_REMAINING:gsub("%%s", ".*")
 local BEGIN_ITEM_SPELL_TRIGGER_ONUSE = "^" .. ITEM_SPELL_TRIGGER_ONUSE
 
+local scanningParents = {
+	["WorldFrame"] = true,
+	["UIParent"] = true,
+}
+
 function RatingBuster.ProcessTooltip(tooltip, name, link)
 	-- Do nothing if the tooltip is being used as a hidden scanning tooltip
-	if not tooltip:GetPoint() then return end
+	if tooltip:GetAnchorType() == "ANCHOR_NONE" and scanningParents[tooltip:GetOwner():GetName()] then
+		return
+	end
 
 	-- Process nested recipes only once
 	local itemType = select(6, GetItemInfoInstant(link))
