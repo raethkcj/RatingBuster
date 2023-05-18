@@ -1719,8 +1719,8 @@ local BIND_TRADE_PATTERN = BIND_TRADE_TIME_REMAINING:gsub("%%s", ".*")
 local BEGIN_ITEM_SPELL_TRIGGER_ONUSE = "^" .. ITEM_SPELL_TRIGGER_ONUSE
 
 function RatingBuster.ProcessTooltip(tooltip, name, link)
-	-- Check if we're in standby mode
-	--if not RatingBuster:IsActive() then return end
+	-- Do nothing if the tooltip is being used as a hidden scanning tooltip
+	if not tooltip:GetPoint() then return end
 
 	-- Process nested recipes only once
 	local itemType = select(6, GetItemInfoInstant(link))
