@@ -579,11 +579,11 @@ elseif addonTable.class == "ROGUE" then
 			},
 			{
 				["value"] = 50,
-				["buff"] = 26669,		-- ["Evasion"],
+				["buff"] = 5277,		-- ["Evasion"],
 			},
 			{
 				["value"] = 15,
-				["buff"] = 31022,		-- ["Ghostly Strike"],
+				["buff"] = 14278,		-- ["Ghostly Strike"],
 			},
 		},
 		-- Rogue: Sleight of Hand (Rank 2) - 3,3
