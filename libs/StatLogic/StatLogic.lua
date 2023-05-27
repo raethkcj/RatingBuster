@@ -291,9 +291,6 @@ local function copyTable(to, from)
 		to = new()
 	end
 	for k,v in pairs(from) do
-		if type(k) == "table" then
-			k = copyTable(new(), k)
-		end
 		if type(v) == "table" then
 			v = copyTable(new(), v)
 		end
