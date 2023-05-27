@@ -1877,8 +1877,8 @@ function RatingBuster.ProcessTooltip(tooltip, name, link)
 	-- Frost Damage - FROST_SPELL_DMG, SPELL_DMG, INT
 	-- Shadow Damage - SHADOW_SPELL_DMG, SPELL_DMG, STA, INT, SPI
 	-- Healing - HEAL, STR, INT, SPI
-	-- Hit Chance - MELEE_HIT_RATING, WEAPON_RATING
-	-- Crit Chance - MELEE_CRIT_RATING, WEAPON_RATING, AGI
+	-- Hit Chance - MELEE_HIT_RATING
+	-- Crit Chance - MELEE_CRIT_RATING, AGI
 	-- Spell Hit Chance - SPELL_HIT_RATING
 	-- Spell Crit Chance - SPELL_CRIT_RATING, INT
 	-- Mana Regen - MANA_REG, SPI
@@ -1892,9 +1892,8 @@ function RatingBuster.ProcessTooltip(tooltip, name, link)
 	-- Block Chance - BLOCK_RATING, DEFENSE_RATING
 	-- Hit Avoidance - DEFENSE_RATING, MELEE_HIT_AVOID_RATING
 	-- Crit Avoidance - DEFENSE_RATING, RESILIENCE_RATING, MELEE_CRIT_AVOID_RATING
-	-- Dodge Neglect - EXPERTISE_RATING, WEAPON_RATING
-	-- Parry Neglect - EXPERTISE_RATING, WEAPON_RATING
-	-- Block Neglect - WEAPON_RATING
+	-- Dodge Neglect - EXPERTISE_RATING
+	-- Parry Neglect - EXPERTISE_RATING
 	---------------------
 	-- Composite Stats --
 	---------------------
@@ -1904,7 +1903,7 @@ function RatingBuster.ProcessTooltip(tooltip, name, link)
 	-- Intellect - INT
 	-- Spirit - SPI
 	-- Defense - DEFENSE_RATING
-	-- Weapon Skill - WEAPON_RATING
+	-- Weapon Skill
 	-- Expertise - EXPERTISE_RATING
 	--]]
 	if globalDB.showSum then
@@ -3763,58 +3762,6 @@ function RatingBuster:StatSummary(tooltip, name, link)
 
 	local calcSum = globalDB.calcSum
 	local calcDiff = globalDB.calcDiff
-	-- Weapon Skill - WEAPON_RATING
-	if profileDB.sumWeaponSkill then
-		local weapon = {}
-		if calcSum then
-			for id, v in pairs(statData.sum) do
-				if strsub(id, -13) == "WEAPON_RATING" then
-					weapon[id] = true
-					local entry = {
-						name = strsub(id, 1, -8),
-					}
-					entry.sum = StatLogic:GetEffectFromRating(v, CR_WEAPON_SKILL, calcLevel)
-					if calcDiff and statData.diff1 then
-						entry.diff1 = StatLogic:GetEffectFromRating((statData.diff1[id] or 0), CR_WEAPON_SKILL, calcLevel)
-						if statData.diff2 then
-							entry.diff2 = StatLogic:GetEffectFromRating((statData.diff2[id] or 0), CR_WEAPON_SKILL, calcLevel)
-						end
-					end
-					tinsert(summary, entry)
-				end
-			end
-		end
-		if calcDiff and statData.diff1 then
-			for id, v in pairs(statData.diff1) do
-				if (strsub(id, -13) == "WEAPON_RATING") and not weapon[id] then
-					weapon[id] = true
-					local entry = {
-						name = strsub(id, 1, -8),
-						sum = 0,
-					}
-					entry.diff1 = StatLogic:GetEffectFromRating(v, CR_WEAPON_SKILL, calcLevel)
-					if statData.diff2 then
-						entry.diff2 = StatLogic:GetEffectFromRating((statData.diff2[id] or 0), CR_WEAPON_SKILL, calcLevel)
-					end
-					tinsert(summary, entry)
-				end
-			end
-			if statData.diff2 then
-				for id, v in pairs(statData.diff2) do
-					if (strsub(id, -13) == "WEAPON_RATING") and not weapon[id] then
-						weapon[id] = true
-						local entry = {
-							name = strsub(id, 1, -8),
-							sum = 0,
-							diff1 = 0,
-						}
-						entry.diff2 = StatLogic:GetEffectFromRating(v, CR_WEAPON_SKILL, calcLevel)
-						tinsert(summary, entry)
-					end
-				end
-			end
-		end
-	end
 
 	local showZeroValueStat = profileDB.showZeroValueStat
 	------------------------

@@ -382,21 +382,6 @@ L["StatIDLookup"] = {
 	["주문 시전 가속도가 증가합니다"] = {"SPELL_HASTE_RATING"},
 	["원거리 공격 가속도가 증가합니다"] = {"RANGED_HASTE_RATING"},
 
-	["단검류 숙련도가 증가합니다"] = {"DAGGER_WEAPON_RATING"},
-	["한손 도검류 숙련도가 증가합니다"] = {"SWORD_WEAPON_RATING"},
-	["양손 도검류 숙련도가 증가합니다"] = {"2H_SWORD_WEAPON_RATING"},
-	["한손 도끼류 숙련도가 증가합니다"] = {"AXE_WEAPON_RATING"},
-	["양손 도끼류 숙련도가 증가합니다"] = {"2H_AXE_WEAPON_RATING"},
-	["Increases two-handed axes skill rating"] = {"2H_AXE_WEAPON_RATING"},
-	["한손 둔기류 숙련도가 증가합니다"] = {"MACE_WEAPON_RATING"},
-	["양손 둔기류 숙련도가 증가합니다"] = {"2H_MACE_WEAPON_RATING"},
-	["총기류 숙련도가 증가합니다"] = {"GUN_WEAPON_RATING"},
-	["석궁류 숙련도가 증가합니다"] = {"CROSSBOW_WEAPON_RATING"},
-	["활류 숙련도가 증가합니다"] = {"BOW_WEAPON_RATING"},
-	["야생 전투 숙련도가 증가합니다"] = {"FERAL_WEAPON_RATING"},
-	["장착 무기류 숙련도가 증가합니다"] = {"FIST_WEAPON_RATING"}, -- Demonblood Eviscerator
-	["맨손 전투 숙련도가 증가합니다"] = {"FIST_WEAPON_RATING"}, -- Demonblood Eviscerator ID:27533
-	["지팡이류 숙련도가 증가합니다."] = {"STAFF_WEAPON_RATING"}, -- Leggings of the Fang ID:10410
 
 	["숙련"] = {"EXPERTISE_RATING"}, -- gems
 	["숙련도가 증가합니다"] = {"EXPERTISE_RATING"},
@@ -498,19 +483,6 @@ D["RESILIENCE_RATING"] = {COMBAT_RATING_NAME15, COMBAT_RATING_NAME15} -- COMBAT_
 D["MELEE_HASTE_RATING"] = {"가속도 "..RATING, "Haste "..RATING} --
 D["RANGED_HASTE_RATING"] = {PLAYERSTAT_RANGED_COMBAT.." 가속도 "..RATING, PLAYERSTAT_RANGED_COMBAT.." Haste "..RATING}
 D["SPELL_HASTE_RATING"] = {PLAYERSTAT_SPELL_COMBAT.." 가속도 "..RATING, PLAYERSTAT_SPELL_COMBAT.." Haste "..RATING}
-D["DAGGER_WEAPON_RATING"] = {"단검류 "..SKILL.." "..RATING, "Dagger "..RATING} -- SKILL = "Skill"
-D["SWORD_WEAPON_RATING"] = {"도검류 "..SKILL.." "..RATING, "Sword "..RATING}
-D["2H_SWORD_WEAPON_RATING"] = {"양손 도검류 "..SKILL.." "..RATING, "2H Sword "..RATING}
-D["AXE_WEAPON_RATING"] = {"도끼류 "..SKILL.." "..RATING, "Axe "..RATING}
-D["2H_AXE_WEAPON_RATING"] = {"양손 도끼류 "..SKILL.." "..RATING, "2H Axe "..RATING}
-D["MACE_WEAPON_RATING"] = {"둔기류 "..SKILL.." "..RATING, "Mace "..RATING}
-D["2H_MACE_WEAPON_RATING"] = {"양손 둔기류 "..SKILL.." "..RATING, "2H Mace "..RATING}
-D["GUN_WEAPON_RATING"] = {"총기류 "..SKILL.." "..RATING, "Gun "..RATING}
-D["CROSSBOW_WEAPON_RATING"] = {"석궁류 "..SKILL.." "..RATING, "Crossbow "..RATING}
-D["BOW_WEAPON_RATING"] = {"활류 "..SKILL.." "..RATING, "Bow "..RATING}
-D["FERAL_WEAPON_RATING"] = {"야생 "..SKILL.." "..RATING, "Feral "..RATING}
-D["FIST_WEAPON_RATING"] = {"장착 무기류 "..SKILL.." "..RATING, "Unarmed "..RATING}
-D["STAFF_WEAPON_RATING"] = {"지팡이류 "..SKILL.." "..RATING, "Staff "..RATING} -- Leggings of the Fang ID:10410
 D["EXPERTISE_RATING"] = {"숙련 ".." "..RATING, "Expertise".." "..RATING}
 D["ARMOR_PENETRATION_RATING"] = {"방어구 관통력", "방어구 관통력"}
 -- Tier2 Stats - Stats that only show up when broken down from a Tier1 stat
@@ -603,8 +575,4 @@ D["MOD_RAGE_COST"] = {"Mod 분노 소모량".."(%)", "Mod Rage Cost".."(%)"}
 D["MOD_ENERGY_COST"] = {"Mod 기력 소모량".."(%)", "Mod Energy Cost".."(%)"}
 D["MOD_COOLDOWN"] = {"Mod 재사용 대기 시간".."(%)", "Mod CD".."(%)"}
 -- Misc Stats
-D["WEAPON_RATING"] = {"무기 "..SKILL.." "..RATING, "Weapon"..SKILL.." "..RATING}
 D["WEAPON_SKILL"] = {"무기 "..SKILL, "Weapon"..SKILL}
-D["MAINHAND_WEAPON_RATING"] = {"주 장비 "..SKILL.." "..RATING, "MH Weapon"..SKILL.." "..RATING}
-D["OFFHAND_WEAPON_RATING"] = {"보조 장비 "..SKILL.." "..RATING, "OH Weapon"..SKILL.." "..RATING}
-D["RANGED_WEAPON_RATING"] = {"원거리 무기 "..SKILL.." "..RATING, "Ranged Weapon"..SKILL.." "..RATING}

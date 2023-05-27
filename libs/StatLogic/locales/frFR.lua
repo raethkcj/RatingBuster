@@ -435,24 +435,7 @@ L["StatIDLookup"] = {
 	["score de hâte à distance"] = {"RANGED_HASTE_RATING"},
 	["au score de hâte à distance"] = {"RANGED_HASTE_RATING"},
 
-	["le score de la compétence dagues"] = {"DAGGER_WEAPON_RATING"},
-	["score de la compétence dagues"] = {"DAGGER_WEAPON_RATING"},
-	["le score de la compétence epées"] = {"SWORD_WEAPON_RATING"},
-	["score de la compétence epées"] = {"SWORD_WEAPON_RATING"},
-	["le score de la compétence epées à deux mains"] = {"2H_SWORD_WEAPON_RATING"},
-	["score de la compétence epées à deux mains"] = {"2H_SWORD_WEAPON_RATING"},
-	["le score de la compétence masses"]= {"MACE_WEAPON_RATING"},
-	["score de la compétence masses"]= {"MACE_WEAPON_RATING"},
-	["le score de la compétence masses à deux mains"]= {"2H_MACE_WEAPON_RATING"},
-	["score de la compétence masses à deux mains"]= {"2H_MACE_WEAPON_RATING"},
-	["le score de la compétence haches"] = {"AXE_WEAPON_RATING"},
-	["score de la compétence haches"] = {"AXE_WEAPON_RATING"},
-	["le score de la compétence haches à deux mains"] = {"2H_AXE_WEAPON_RATING"},
-	["score de la compétence haches à deux mains"] = {"2H_AXE_WEAPON_RATING"},
 
-	["le score de la compétence armes de pugilat"] = {"FIST_WEAPON_RATING"},
-	["le score de compétence combat farouche"] = {"FERAL_WEAPON_RATING"},
-	["le score de la compétence mains nues"] = {"FIST_WEAPON_RATING"},
 
 	["le score d’expertise"] = {"EXPERTISE_RATING"},
 	["score d’expertise"] = {"EXPERTISE_RATING"},
@@ -556,19 +539,6 @@ D["RESILIENCE_RATING"] = {"Score de résilience", "Résilience"}
 D["MELEE_HASTE_RATING"] = {"Score de hâte", "Hâte"}
 D["RANGED_HASTE_RATING"] = {"Score de hâte à distance", "Score de hâte à distance"}
 D["SPELL_HASTE_RATING"] = {"Score de hâte des sorts","Score de hâte des sorts"}
-D["DAGGER_WEAPON_RATING"] = {"Compétence en Dagues", "Dagues"}
-D["SWORD_WEAPON_RATING"] = {"Compétence en Epées à une main", "Epées à une main"}
-D["2H_SWORD_WEAPON_RATING"] = {"Compétence en Epées à deux mains", "Epées à deux mains"}
-D["AXE_WEAPON_RATING"] = {"Compétence en Haches à une main", "Haches à une main"}
-D["2H_AXE_WEAPON_RATING"] = {"Compétence en Haches à deux mains", "Haches à deux mains"}
-D["MACE_WEAPON_RATING"] = {"Compétence en Masses à une main", "Masses à une main"}
-D["2H_MACE_WEAPON_RATING"] = {"Compétence en Masses à deux mains", "Masses à deux mains"}
-D["GUN_WEAPON_RATING"] = {"Compétence en Armes à feu", "Armes à feu"}
-D["CROSSBOW_WEAPON_RATING"] = {"Compétence en Arbalètes", "Arbalètes"}
-D["BOW_WEAPON_RATING"] = {"Compétence en Arcs", "Arcs"}
-D["FERAL_WEAPON_RATING"] = {"Compétence en Combat farouche", "Combat farouche"}
-D["FIST_WEAPON_RATING"] = {"Compétence en Armes de pugilat", "Armes de pugilat"}
-D["STAFF_WEAPON_RATING"] = {"Compétence en Bâtons", "Bâtons"} -- [Jambières du Croc] ID:10410
 D["EXPERTISE_RATING"] = {"Score d'Expertise", "Score d'Expertise"}
 D["ARMOR_PENETRATION_RATING"] = {"Pénétration d'armure".." "..RATING, "ArP".." "..RATING}
 -- Tier2 Stats - Stats that only show up when broken down from a Tier1 stat
@@ -661,8 +631,4 @@ D["MOD_RAGE_COST"] = {"Mod Coût en rage (%)", "Mod Coût Rage (%)"}
 D["MOD_ENERGY_COST"] = {"Mod Coût en énergie (%)", "Mod Coût Énergie (%)"}
 D["MOD_COOLDOWN"] = {"Mod Temps de recharge (%)", "Mod CD (%)"}
 -- Misc Stats
-D["WEAPON_RATING"] = {"Compétence d'arme", "Comp. d'arme"}
 D["WEAPON_SKILL"] = {"Compétence d'arme", "Comp. d'arme"}
-D["MAINHAND_WEAPON_RATING"] = {"Compétence d'arme en main droite", "Comp. d'arme main droite"}
-D["OFFHAND_WEAPON_RATING"] = {"Compétence d'arme en main gauche", "Comp. d'arme main gauche"}
-D["RANGED_WEAPON_RATING"] = {"Compétence d'arme à distance", "Comp. d'arme à distance"}

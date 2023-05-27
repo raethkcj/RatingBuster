@@ -447,22 +447,6 @@ L["StatIDLookup"] = {
 	["Improves spell haste rating"] = {"SPELL_HASTE_RATING"},
 	["Improves ranged haste rating"] = {"RANGED_HASTE_RATING"},
 
-	["Increases dagger skill rating"] = {"DAGGER_WEAPON_RATING"},
-	["Increases sword skill rating"] = {"SWORD_WEAPON_RATING"}, -- [Warblade of the Hakkari] ID:19865
-	["Increases Two-Handed Swords skill rating"] = {"2H_SWORD_WEAPON_RATING"},
-	["Increases axe skill rating"] = {"AXE_WEAPON_RATING"},
-	["Two-Handed Axe Skill Rating"] = {"2H_AXE_WEAPON_RATING"}, -- [Ethereum Nexus-Reaver] ID:30722
-	["Increases two-handed axes skill rating"] = {"2H_AXE_WEAPON_RATING"},
-	["Increases mace skill rating"] = {"MACE_WEAPON_RATING"},
-	["Increases two-handed maces skill rating"] = {"2H_MACE_WEAPON_RATING"},
-	["Increases gun skill rating"] = {"GUN_WEAPON_RATING"},
-	["Increases Crossbow skill rating"] = {"CROSSBOW_WEAPON_RATING"},
-	["Increases Bow skill rating"] = {"BOW_WEAPON_RATING"},
-	["Increases feral combat skill rating"] = {"FERAL_WEAPON_RATING"},
-	["Increases fist weapons skill rating"] = {"FIST_WEAPON_RATING"}, -- Demonblood Eviscerator
-	["Increases unarmed skill rating"] = {"FIST_WEAPON_RATING"}, -- Demonblood Eviscerator ID:27533
-	["Increases staff skill rating"] = {"STAFF_WEAPON_RATING"}, -- Leggings of the Fang ID:10410
-
 	["expertise rating"] = {"EXPERTISE_RATING"}, -- gems
 	["Increases your expertise rating"] = {"EXPERTISE_RATING"},
 	["armor penetration rating"] = {"ARMOR_PENETRATION_RATING"}, -- gems
@@ -565,19 +549,6 @@ D["RESILIENCE_RATING"] = {COMBAT_RATING_NAME15, COMBAT_RATING_NAME15} -- COMBAT_
 D["MELEE_HASTE_RATING"] = {"Haste "..RATING, "Haste "..RATING} --
 D["RANGED_HASTE_RATING"] = {PLAYERSTAT_RANGED_COMBAT.." Haste "..RATING, PLAYERSTAT_RANGED_COMBAT.." Haste "..RATING}
 D["SPELL_HASTE_RATING"] = {PLAYERSTAT_SPELL_COMBAT.." Haste "..RATING, PLAYERSTAT_SPELL_COMBAT.." Haste "..RATING}
-D["DAGGER_WEAPON_RATING"] = {"Dagger "..SKILL.." "..RATING, "Dagger "..RATING} -- SKILL = "Skill"
-D["SWORD_WEAPON_RATING"] = {"Sword "..SKILL.." "..RATING, "Sword "..RATING}
-D["2H_SWORD_WEAPON_RATING"] = {"Two-Handed Sword "..SKILL.." "..RATING, "2H Sword "..RATING}
-D["AXE_WEAPON_RATING"] = {"Axe "..SKILL.." "..RATING, "Axe "..RATING}
-D["2H_AXE_WEAPON_RATING"] = {"Two-Handed Axe "..SKILL.." "..RATING, "2H Axe "..RATING}
-D["MACE_WEAPON_RATING"] = {"Mace "..SKILL.." "..RATING, "Mace "..RATING}
-D["2H_MACE_WEAPON_RATING"] = {"Two-Handed Mace "..SKILL.." "..RATING, "2H Mace "..RATING}
-D["GUN_WEAPON_RATING"] = {"Gun "..SKILL.." "..RATING, "Gun "..RATING}
-D["CROSSBOW_WEAPON_RATING"] = {"Crossbow "..SKILL.." "..RATING, "Crossbow "..RATING}
-D["BOW_WEAPON_RATING"] = {"Bow "..SKILL.." "..RATING, "Bow "..RATING}
-D["FERAL_WEAPON_RATING"] = {"Feral "..SKILL.." "..RATING, "Feral "..RATING}
-D["FIST_WEAPON_RATING"] = {"Unarmed "..SKILL.." "..RATING, "Unarmed "..RATING}
-D["STAFF_WEAPON_RATING"] = {"Staff "..SKILL.." "..RATING, "Staff "..RATING} -- Leggings of the Fang ID:10410
 D["EXPERTISE_RATING"] = {"Expertise".." "..RATING, "Expertise".." "..RATING}
 D["ARMOR_PENETRATION_RATING"] = {ITEM_MOD_ARMOR_PENETRATION_RATING_SHORT, "ArP".." "..RATING}
 -- Tier2 Stats - Stats that only show up when broken down from a Tier1 stat
@@ -670,8 +641,4 @@ D["MOD_RAGE_COST"] = {"Mod Rage Cost".."(%)", "Mod Rage Cost".."(%)"}
 D["MOD_ENERGY_COST"] = {"Mod Energy Cost".."(%)", "Mod Energy Cost".."(%)"}
 D["MOD_COOLDOWN"] = {"Mod Cooldown".."(%)", "Mod CD".."(%)"}
 -- Misc Stats
-D["WEAPON_RATING"] = {"Weapon "..SKILL.." "..RATING, "Weapon"..SKILL.." "..RATING}
 D["WEAPON_SKILL"] = {"Weapon "..SKILL, "Weapon"..SKILL}
-D["MAINHAND_WEAPON_RATING"] = {"Main Hand Weapon "..SKILL.." "..RATING, "MH Weapon"..SKILL.." "..RATING}
-D["OFFHAND_WEAPON_RATING"] = {"Off Hand Weapon "..SKILL.." "..RATING, "OH Weapon"..SKILL.." "..RATING}
-D["RANGED_WEAPON_RATING"] = {"Ranged Weapon "..SKILL.." "..RATING, "Ranged Weapon"..SKILL.." "..RATING}

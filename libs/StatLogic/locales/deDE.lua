@@ -380,19 +380,6 @@ L["StatIDLookup"] = {
 	["Erhöht Zaubertempowertung"] = {"SPELL_HASTE_RATING"},
 	["Erhöht die Zaubertempowertung"] = {"SPELL_HASTE_RATING"},
 
-	["Erhöht die Fertigkeitswertung für Dolche"] = {"DAGGER_WEAPON_RATING"},
-	["Erhöht die Fertigkeitswertung für Schwerter"] = {"SWORD_WEAPON_RATING"},
-	["Erhöht die Fertigkeitswertung für Zweihandschwerter"] = {"2H_SWORD_WEAPON_RATING"},
-	["Erhöht die Fertigkeitswertung für Äxte"] = {"AXE_WEAPON_RATING"},
-	["Erhöht die Fertigkeitswertung für Zweihandäxte"] = {"2H_AXE_WEAPON_RATING"},
-	["Erhöht die Fertigkeitswertung für Kolben"] = {"MACE_WEAPON_RATING"},
-	["Erhöht die Fertigkeitswertung für Zweihandkolben"] = {"2H_MACE_WEAPON_RATING"},
-	["Erhöht die Fertigkeitswertung für Schusswaffen"] = {"GUN_WEAPON_RATING"},
-	["Erhöht die Fertigkeitswertung für Armbrüste"] = {"CROSSBOW_WEAPON_RATING"},
-	["Erhöht die Fertigkeitswertung für Bögen"] = {"BOW_WEAPON_RATING"},
-	["Erhöht die Fertigkeitswertung für 'Wilder Kampf'"] = {"FERAL_WEAPON_RATING"},
-	["Erhöht die Fertigkeitswertung für Faustwaffen"] = {"FIST_WEAPON_RATING"}, -- Demonblood Eviscerator
-	["Erhöht die Fertigkeitswertung für unbewaffneten Kampf"] = {"FIST_WEAPON_RATING"}, -- Demonblood Eviscerator ID:27533
 
 	["Waffenkundewertung"] = {"EXPERTISE_RATING"}, -- gem
 	["Erhöht die Waffenkundewertung"] = {"EXPERTISE_RATING"},
@@ -498,18 +485,6 @@ D["RESILIENCE_RATING"] = {COMBAT_RATING_NAME15, COMBAT_RATING_NAME15} -- COMBAT_
 D["MELEE_HASTE_RATING"] = {"Hast "..RATING, "Hast  "..RATING} --
 D["RANGED_HASTE_RATING"] = {PLAYERSTAT_RANGED_COMBAT.." Hast  "..RATING, PLAYERSTAT_RANGED_COMBAT.." Hast  "..RATING}
 D["SPELL_HASTE_RATING"] = {PLAYERSTAT_SPELL_COMBAT.." Hast  "..RATING, PLAYERSTAT_SPELL_COMBAT.." Hast  "..RATING}
-D["DAGGER_WEAPON_RATING"] = {"Dagger "..SKILL.." "..RATING, "Dagger "..RATING} -- SKILL = "Skill"
-D["SWORD_WEAPON_RATING"] = {"Sword "..SKILL.." "..RATING, "Sword "..RATING}
-D["2H_SWORD_WEAPON_RATING"] = {"Two-Handed Sword "..SKILL.." "..RATING, "2H Sword "..RATING}
-D["AXE_WEAPON_RATING"] = {"Axe "..SKILL.." "..RATING, "Axe "..RATING}
-D["2H_AXE_WEAPON_RATING"] = {"Two-Handed Axe "..SKILL.." "..RATING, "2H Axe "..RATING}
-D["MACE_WEAPON_RATING"] = {"Mace "..SKILL.." "..RATING, "Mace "..RATING}
-D["2H_MACE_WEAPON_RATING"] = {"Two-Handed Mace "..SKILL.." "..RATING, "2H Mace "..RATING}
-D["GUN_WEAPON_RATING"] = {"Gun "..SKILL.." "..RATING, "Gun "..RATING}
-D["CROSSBOW_WEAPON_RATING"] = {"Crossbow "..SKILL.." "..RATING, "Crossbow "..RATING}
-D["BOW_WEAPON_RATING"] = {"Bow "..SKILL.." "..RATING, "Bow "..RATING}
-D["FERAL_WEAPON_RATING"] = {"Feral "..SKILL.." "..RATING, "Feral "..RATING}
-D["FIST_WEAPON_RATING"] = {"Unarmed "..SKILL.." "..RATING, "Unarmed "..RATING}
 D["EXPERTISE_RATING"] = {"Waffenkundewertung", "Waffenkundewertung"}
 D["ARMOR_PENETRATION_RATING"] = {"Rüstungsdurchschlag".." "..RATING, "ArP".." "..RATING}
 -- Tier2 Stats - Stats that only show up when broken down from a Tier1 stat
@@ -600,8 +575,4 @@ D["MOD_RAGE_COST"] = {"Mod Rage Cost".."(%)", "Mod Rage Cost".."(%)"}
 D["MOD_ENERGY_COST"] = {"Mod Energy Cost".."(%)", "Mod Energy Cost".."(%)"}
 D["MOD_COOLDOWN"] = {"Mod Cooldown".."(%)", "Mod CD".."(%)"}
 -- Misc Stats
-D["WEAPON_RATING"] = {"Waffe "..SKILL.." "..RATING, "Waffe"..SKILL.." "..RATING}
 D["WEAPON_SKILL"] = {"Waffe "..SKILL, "Waffe"..SKILL}
-D["MAINHAND_WEAPON_RATING"] = {"Waffenhandwaffe "..SKILL.." "..RATING, "Waffenhand"..SKILL.." "..RATING}
-D["OFFHAND_WEAPON_RATING"] = {"Schildhandwaffe "..SKILL.." "..RATING, "Schildhand"..SKILL.." "..RATING}
-D["RANGED_WEAPON_RATING"] = {"Fernkampfwaffe "..SKILL.." "..RATING, "Fernkampf"..SKILL.." "..RATING}
