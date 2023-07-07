@@ -288,11 +288,10 @@ L["StatIDLookup"] = {
 
 	["sanación y daño con hechizos"] = {"SPELL_DMG", "HEAL",}, -- Arcanum of Focus +8 Healing and Spell Damage http://wow.allakhazam.com/db/spell.html?wspell=22844
 	["Daño y hechizo de sanación"] = {"SPELL_DMG", "HEAL",},
-	["Daño con hechizos y sanación"] = {"SPELL_DMG", "HEAL",},
-	["Daño con hechizos"] = {"SPELL_DMG", "HEAL",},
+	["Daño con hechizos y sanación"] = {"SPELL_DMG", "HEAL",}, --StatLogic:GetSum("item:22630")
+	["Daño con hechizos"] = {"SPELL_DMG",}, -- 2.3.0 StatLogic:GetSum("item:23344:2343")
 	["Aumenta el daño y la sanación de los hechizos mágicos y los efectos hasta"] = {"SPELL_DMG", "HEAL"},
 	["Aumenta hasta el daño y la sanación de los hechizos mágicos y los efectos para todos los miembros del grupo en un radio de 30 m."] = {"SPELL_DMG", "HEAL"}, -- Atiesh
-	["Daño con hechizos y sanación"] = {"SPELL_DMG", "HEAL",}, --StatLogic:GetSum("item:22630")
 	["Daño"] = {"SPELL_DMG",},
 	["Aumenta el daño con hechizos"] = {"SPELL_DMG",}, -- Atiesh ID:22630, 22631, 22632, 22589
 	["Poder con hechizos"] = {"SPELL_DMG", "HEAL",},
@@ -329,8 +328,6 @@ L["StatIDLookup"] = {
 	["hechizos de sanación"] = {"HEAL",}, -- Enchant Gloves - Major Healing "+35 Healing Spells" http://wow.allakhazam.com/db/spell.html?wspell=33999
 	["aumentar la sanación"] = {"HEAL",},
 	["Sanación"] = {"HEAL",}, -- StatLogic:GetSum("item:23344:206")
-	["hechizos de sanación"] = {"HEAL",},
-	["Daño con hechizos"] = {"SPELL_DMG",}, -- 2.3.0 StatLogic:GetSum("item:23344:2343")
 	["Hechizos de sanación"] = {"HEAL",}, -- [Royal Nightseye] ID: 24057
 	["Aumenta la sanación que haces"] = {"HEAL",}, -- 2.3.0
 	["daño que infligescon todos los hechizos mágicos"] = {"SPELL_DMG",}, -- 2.3.0
@@ -378,7 +375,6 @@ L["StatIDLookup"] = {
 	--["Spell Crit Rating"] = {"SPELL_CRIT_RATING",},
 	["Aumenta tu índice de golpe crítico con hechizos"] = {"SPELL_CRIT_RATING",},
 	["Aumenta el índice de golpe crítico con hechizos de todos los miembros del grupo a 30 m."] = {"SPELL_CRIT_RATING",},
-	["Mejora el índice de golpe con hechizos"] = {"SPELL_CRIT_RATING",},
 	["Aumenta tu índice de golpe crítico a distancia"] = {"RANGED_CRIT_RATING",}, -- Fletcher's Gloves ID:7348
 
 	["temple"] = {"RESILIENCE_RATING",},

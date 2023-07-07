@@ -220,7 +220,6 @@ L["StatIDLookup"] = {
 	["자연 저항"] = {"NATURE_RES",}, -- Frost Armor Kit +8 Frost Resist
 	["냉기 저항"] = {"FROST_RES",}, -- Nature Armor Kit +8 Nature Resist
 	["암흑 저항"] = {"SHADOW_RES",}, -- Shadow Armor Kit +8 Shadow Resist
-	["암흑 저항력"] = {"SHADOW_RES",}, -- Demons Blood ID: 10779
 	["모든 저항력"] = {"ARCANE_RES", "FIRE_RES", "FROST_RES", "NATURE_RES", "SHADOW_RES",},
 	["모든 저항"] = {"ARCANE_RES", "FIRE_RES", "FROST_RES", "NATURE_RES", "SHADOW_RES",},
 
@@ -285,11 +284,10 @@ L["StatIDLookup"] = {
 
 	["치유량 및 주문 공격력"] = {"SPELL_DMG", "HEAL",}, -- Arcanum of Focus +8 Healing and Spell Damage http://wow.allakhazam.com/db/spell.html?wspell=22844
 	["치유 및 주문 공격력"] = {"SPELL_DMG", "HEAL",},
-	["주문 공격력 및 치유량"] = {"SPELL_DMG", "HEAL",},
-	["주문 공격력"] = {"SPELL_DMG", "HEAL",},
+	["주문 공격력 및 치유량"] = {"SPELL_DMG", "HEAL",}, --StatLogic:GetSum("item:22630")
+	["주문 공격력"] = {"SPELL_DMG",}, -- 2.3.0 StatLogic:GetSum("item:23344:2343")
 	["모든 주문 및 효과의 공격력과 치유량이 증가합니다"] = {"SPELL_DMG", "HEAL"},
 	["주위 30미터 반경에 있는 모든 파티원의 모든 주문 및 효과의 공격력과 치유량이 증가합니다"] = {"SPELL_DMG", "HEAL"}, -- Atiesh
-	["주문 공격력 및 치유량"] = {"SPELL_DMG", "HEAL",}, --StatLogic:GetSum("item:22630")
 	["공격력"] = {"SPELL_DMG",},
 	["주문 공격력이 증가합니다"] = {"SPELL_DMG",}, -- Atiesh ID:22630, 22631, 22632, 22589
 	["주문 위력"] = {"SPELL_DMG", "HEAL",},
@@ -328,7 +326,6 @@ L["StatIDLookup"] = {
 	["치유량 증가"] = {"HEAL",},
 	["치유량"] = {"HEAL",},
 	["healing Spells"] = {"HEAL",},
-	["주문 공격력"] = {"SPELL_DMG",}, -- 2.3.0 StatLogic:GetSum("item:23344:2343")
 	["Healing Spells"] = {"HEAL",}, -- [Royal Nightseye] ID: 24057
 	["모든 주문 및 효과에 의한 치유량이"] = {"HEAL",}, -- 2.3.0
 	["공격력이 증가합니다"] = {"SPELL_DMG",}, -- 2.3.0
@@ -346,8 +343,6 @@ L["StatIDLookup"] = {
 	["무기 막기 숙련도"] = {"PARRY_RATING",},
 	["무기 막기 숙련도가 증가합니다"] = {"PARRY_RATING",},
 	["방패 막기 숙련도"] = {"BLOCK_RATING",}, -- Enchant Shield - Lesser Block +10 Shield Block Rating http://wow.allakhazam.com/db/spell.html?wspell=13689
-	["방패 막기 숙련도"] = {"BLOCK_RATING",},
-	["방패 막기 숙련도가 증가합니다"] = {"BLOCK_RATING",},
 	["방패 막기 숙련도가 증가합니다"] = {"BLOCK_RATING",},
 
 	["적중도"] = {"HIT_RATING",},
@@ -370,7 +365,6 @@ L["StatIDLookup"] = {
 	["주문 극대화 적중도가 증가합니다"] = {"SPELL_CRIT_RATING",},
 	["원거리 치명타 적중도가 증가합니다"] = {"RANGED_CRIT_RATING",}, -- Fletcher's Gloves ID:7348
 
-	["탄력도"] = {"RESILIENCE_RATING",},
 	["탄력도"] = {"RESILIENCE_RATING",}, -- Enchant Chest - Major Resilience "+15 Resilience Rating" http://wow.allakhazam.com/db/spell.html?wspell=33992
 	["탄력도가 증가합니다"] = {"RESILIENCE_RATING",},
 

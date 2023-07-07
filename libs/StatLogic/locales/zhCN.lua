@@ -136,9 +136,8 @@ L["WholeTextLookup"] = {
 	["秘银马刺"] = {["MOUNT_SPEED"] = 4}, -- Mithril Spurs
 	["坐骑移动速度略微提升"] = {["MOUNT_SPEED"] = 2}, -- Enchant Gloves - Riding Skill
 	["装备： 略微提高移动速度。"] = {["RUN_SPEED"] = 8}, -- [Highlander's Plate Greaves] ID: 20048
-	["移动速度略微提升"] = {["RUN_SPEED"] = 8}, --
-	["略微提高奔跑速度"] = {["RUN_SPEED"] = 8}, --
 	["移动速度略微提升"] = {["RUN_SPEED"] = 8}, -- Enchant Boots - Minor Speed
+	["略微提高奔跑速度"] = {["RUN_SPEED"] = 8}, --
 	["初级速度"] = {["RUN_SPEED"] = 8}, -- Enchant Boots - Minor Speed
 	["稳固"] = {["MELEE_HIT_RATING"] = 10}, -- Enchant Boots - Surefooted "Surefooted"
 

@@ -334,11 +334,10 @@ L["StatIDLookup"] = {
 
 	["Healing and Spell Damage"] = {"SPELL_DMG", "HEAL",}, -- Arcanum of Focus +8 Healing and Spell Damage http://wow.allakhazam.com/db/spell.html?wspell=22844
 	["Damage and Healing Spells"] = {"SPELL_DMG", "HEAL",},
-	["Spell Damage and Healing"] = {"SPELL_DMG", "HEAL",},
+	["Spell Damage and Healing"] = {"SPELL_DMG", "HEAL",}, --StatLogic:GetSum("item:22630")
 	["Spell Damage"] = {"SPELL_DMG", "HEAL",},
 	["Increases damage and healing done by magical spells and effects"] = {"SPELL_DMG", "HEAL"},
 	["Increases damage and healing done by magical spells and effects of all party members within 30 yards"] = {"SPELL_DMG", "HEAL"}, -- Atiesh
-	["Spell Damage and Healing"] = {"SPELL_DMG", "HEAL",}, --StatLogic:GetSum("item:22630")
 	["Damage"] = {"SPELL_DMG",},
 	["Increases your spell damage"] = {"SPELL_DMG",}, -- Atiesh ID:22630, 22631, 22632, 22589
 	["Spell Power"] = {"SPELL_DMG", "HEAL",},
@@ -377,7 +376,6 @@ L["StatIDLookup"] = {
 	["Healing"] = {"HEAL",}, -- StatLogic:GetSum("item:23344:206")
 	["healing Spells"] = {"HEAL",},
 	["Damage Spells"] = {"SPELL_DMG",}, -- 2.3.0 StatLogic:GetSum("item:23344:2343")
-	["Healing Spells"] = {"HEAL",}, -- [Royal Nightseye] ID: 24057
 	["Increases healing done"] = {"HEAL",}, -- 2.3.0
 	["damage donefor all magical spells"] = {"SPELL_DMG",}, -- 2.3.0
 	["Increases healing done by spells and effects"] = {"HEAL",},
