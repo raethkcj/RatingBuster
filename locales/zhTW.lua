@@ -211,7 +211,7 @@ L["Show stat summary in tooltips"] = "在物品提示中顯示屬性統計"
 L["Ignore settings"] = "忽略設定"
 L["Ignore stuff when calculating the stat summary"] = "設定在統計總合時所要忽略的項目"
 -- /rb sum ignore unused
-L["Ignore unused items types"] = "忽略不可能使用的物品"
+L["Ignore unused item types"] = "忽略不可能使用的物品"
 L["Show stat summary only for highest level armor type and items you can use with uncommon quality and up"] = "只顯示在你會使用的物品上"
 -- /rb sum ignore equipped
 L["Ignore equipped items"] = "忽略已裝備的物品"
@@ -222,7 +222,7 @@ L["Ignore enchants on items when calculating the stat summary"] = "計算時忽�
 -- /rb sum ignore gem
 L["Ignore gems"] = "忽略寶石"
 L["Ignore gems on items when calculating the stat summary"] = "計算時忽略物品上的寶石效果"
-L["Ignore Extra Sockets"] = true
+L["Ignore extra sockets"] = true
 L["Ignore sockets from professions or consumable items when calculating the stat summary"] = true
 -- /rb sum diffstyle
 L["Display style for diff value"] = "差異值顯示方式"

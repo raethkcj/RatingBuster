@@ -210,7 +210,7 @@ L["Show stat summary in tooltips"] = "Ajoute un résumé de tous les bonus prove
 L["Ignore settings"] = "Valeurs à ignorer"
 L["Ignore stuff when calculating the stat summary"] = "Sélectionne les valeurs à ignorer lors des calculs du résumé."
 -- /rb sum ignore unused
-L["Ignore unused items types"] = "Objets non utilisables"
+L["Ignore unused item types"] = "Objets non utilisables"
 L["Show stat summary only for highest level armor type and items you can use with uncommon quality and up"] = "Ne pas afficher le résumé pour les objets que votre classe ne peut pas utiliser et pour les équipements de qualité inférieure à Inhabituelle."
 -- /rb sum ignore equipped
 L["Ignore equipped items"] = "Objets équipés"
@@ -221,7 +221,7 @@ L["Ignore enchants on items when calculating the stat summary"] = "Ignorer les e
 -- /rb sum ignore gem
 L["Ignore gems"] = "Gemmes"
 L["Ignore gems on items when calculating the stat summary"] = "Ignorer les gemmes lors des calculs du résumé."
-L["Ignore Extra Sockets"] = true
+L["Ignore extra sockets"] = true
 L["Ignore sockets from professions or consumable items when calculating the stat summary"] = true
 -- /rb sum diffstyle
 L["Display style for diff value"] = "Mode d'affichage du comparatif"

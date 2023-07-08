@@ -209,7 +209,7 @@ L["Show stat summary in tooltips"] = true
 L["Ignore settings"] = true
 L["Ignore stuff when calculating the stat summary"] = true
 -- /rb sum ignore unused
-L["Ignore unused items types"] = true
+L["Ignore unused item types"] = true
 L["Show stat summary only for highest level armor type and items you can use with uncommon quality and up"] = true
 -- /rb sum ignore equipped
 L["Ignore equipped items"] = true
@@ -220,7 +220,7 @@ L["Ignore enchants on items when calculating the stat summary"] = true
 -- /rb sum ignore gem
 L["Ignore gems"] = true
 L["Ignore gems on items when calculating the stat summary"] = true
-L["Ignore Extra Sockets"] = true
+L["Ignore extra sockets"] = true
 L["Ignore sockets from professions or consumable items when calculating the stat summary"] = true
 -- /rb sum diffstyle
 L["Display style for diff value"] = true

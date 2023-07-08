@@ -251,7 +251,7 @@ L["Select when to show stat summary in tooltips. Modifier keys needs to be press
 L["Ignore settings"] = "Настройки игнорирования"
 L["Ignore stuff when calculating the stat summary"] = "Настройка игнорирования при расчете итога"
 -- /rb sum ignore unused
-L["Ignore Undesirable Items"] = "Игнорирование неподходящих предметов"
+L["Ignore unused item types"] = "Игнорирование неподходящих предметов"
 L["Hide stat summary for undesirable items"] = "Скрыть итоги по статам для неподходящих предметов"
 -- /rb sum ignore quality
 L["Minimum Item Quality"] = "Мин. качество предмета"
@@ -280,7 +280,7 @@ L["Ignore enchants on items when calculating the stat summary"] = "Игнори�
 -- /rb sum ignore gem
 L["Ignore gems"] = "Игнорировать самоцветы"
 L["Ignore gems on items when calculating the stat summary"] = "Игнорировать самоцветы при расчете итога"
-L["Ignore Extra Sockets"] = true
+L["Ignore extra sockets"] = true
 L["Ignore sockets from professions or consumable items when calculating the stat summary"] = true
 -- /rb sum diffstyle
 L["Display Style For Diff Value"] = "Стиль отображения отличия значений"

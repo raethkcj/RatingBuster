@@ -538,7 +538,7 @@ local options = {
 					args = {
 						sumIgnoreUnused = {
 							type = 'toggle',
-							name = L["Ignore unused items types"],
+							name = L["Ignore unused item types"],
 							desc = L["Show stat summary only for highest level armor type and items you can use with uncommon quality and up"],
 						},
 						sumIgnoreEquipped = {
@@ -558,7 +558,7 @@ local options = {
 						},
 						sumIgnoreExtraSockets = {
 							type = 'toggle',
-							name = L["Ignore Extra Sockets"],
+							name = L["Ignore extra sockets"],
 							desc = L["Ignore sockets from professions or consumable items when calculating the stat summary"]
 						}
 					},

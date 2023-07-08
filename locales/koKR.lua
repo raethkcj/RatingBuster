@@ -209,7 +209,7 @@ L["Show stat summary in tooltips"] = "툴팁에 능력치 요약을 표시합니
 L["Ignore settings"] = "제외 설정"
 L["Ignore stuff when calculating the stat summary"] = "능력치 요약 계산에 포함되지 않습니다."
 -- /rb sum ignore unused
-L["Ignore unused items types"] = "쓸모없는 아이템 제외"
+L["Ignore unused item types"] = "쓸모없는 아이템 제외"
 L["Show stat summary only for highest level armor type and items you can use with uncommon quality and up"] = "Show stat summary only for highest level armor type and items you can use with uncommon quality and up"
 -- /rb sum ignore equipped
 L["Ignore equipped items"] = "착용 아이템 제외"
@@ -220,7 +220,7 @@ L["Ignore enchants on items when calculating the stat summary"] = "능력치 요
 -- /rb sum ignore gem
 L["Ignore gems"] = "보석 제외"
 L["Ignore gems on items when calculating the stat summary"] = "능력치 요약 계산에 아이템의 보석을 포함하지 않습니다."
-L["Ignore Extra Sockets"] = true
+L["Ignore extra sockets"] = true
 L["Ignore sockets from professions or consumable items when calculating the stat summary"] = true
 -- /rb sum diffstyle
 L["Display style for diff value"] = "차이값 표시 형식"
