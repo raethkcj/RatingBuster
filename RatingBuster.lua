@@ -1420,9 +1420,9 @@ do
 	{
 		__index = function(_, statMod)
 			-- Remove underscores, PascalCase
-			return string.gsub(statMod, "[%W_]*(%w+)[%W_]*", function(word)
+			return (string.gsub(statMod, "[%W_]*(%w+)[%W_]*", function(word)
 				return word:lower():gsub("^%l", string.upper)
-			end)
+			end))
 		end
 	})
 
