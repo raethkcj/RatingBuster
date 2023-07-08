@@ -1,4 +1,4 @@
-﻿## Interface: 30400
+## Interface: 30402
 ## Title: RatingBuster
 ## Notes: Item stat breakdown, analysis and comparing
 ## Notes-zhTW: 裝備數值解析與比較

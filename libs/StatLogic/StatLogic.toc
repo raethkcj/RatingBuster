@@ -1,4 +1,4 @@
-## Interface: 30400
+## Interface: 30402
 ## Title: StatLogic
 ## Author: Whitetooth, raethkcj
 ## X-License: GPL v2
