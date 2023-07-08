@@ -2058,9 +2058,9 @@ function StatLogic:GetHealthRegenFromSpi(spi, class)
 end
 
 
-----------
--- Gems --
-----------
+----------------------------------
+-- Stat Summary Ignore Settings --
+----------------------------------
 
 function StatLogic:RemoveEnchant(link)
 	return link:gsub("(item:%d+):%d+","%1:0")
@@ -2068,6 +2068,43 @@ end
 
 function StatLogic:RemoveGem(link)
 	return link:gsub("(item:%d+:%d*):%d*:%d*:%d*:%d*","%1:0:0:0:0")
+end
+
+do
+	local extraSocketLoc = {
+		["INVTYPE_WAIST"] = true,
+		["INVTYPE_WRIST"] = true,
+		["INVTYPE_HAND"] = true,
+	}
+
+	-- Reusable stat table that defaults to 0 for socket counts
+	local statTable = setmetatable({}, {
+		__index = function()
+			return 0
+		end
+	})
+
+	function StatLogic:RemoveExtraSockets(link)
+		-- Only check belt, bracer and gloves
+		local itemEquipLoc = select(4, GetItemInfoInstant(link))
+		if not extraSocketLoc[itemEquipLoc] then return link end
+
+		-- Count item's actual sockets
+		wipe(statTable)
+		GetItemStats(link, statTable)
+		local numSockets = statTable["EMPTY_SOCKET_RED"] + statTable["EMPTY_SOCKET_YELLOW"] + statTable["EMPTY_SOCKET_BLUE"]
+
+		-- Remove any gemID beyond numSockets
+		local i = 0
+		return (link:gsub(":[^:]*", function(match)
+			i = i + 1
+			if i > 2 + numSockets then
+				return ":"
+			else
+				return match
+			end
+		end, 6))
+	end
 end
 
 --[[---------------------------------
@@ -2789,8 +2826,8 @@ local function HasTitansGrip()
 	return addonTable.class == "WARRIOR" and IsPlayerSpell(46917)
 end
 
-function StatLogic:GetDiffID(item, ignoreEnchant, ignoreGem, red, yellow, blue, meta)
-	local name, itemType, link, linkDiff1, linkDiff2
+function StatLogic:GetDiffID(item, ignoreEnchant, ignoreGems, ignoreExtraSockets, red, yellow, blue, meta)
+	local name, itemType, link, linkDiff1, linkDiff2, _
 	-- Check item
 	if (type(item) == "string") or (type(item) == "number") then
 	elseif type(item) == "table" and type(item.GetItem) == "function" then
@@ -2852,8 +2889,17 @@ function StatLogic:GetDiffID(item, ignoreEnchant, ignoreGem, red, yellow, blue, 
 		end
 	end
 
+	-- Ignore Extra Sockets (unneccessary work if we're removing all gems afterwards)
+	if ignoreExtraSockets and not ignoreGems then
+		link = self:RemoveExtraSockets(link)
+		linkDiff1 = self:RemoveExtraSockets(linkDiff1)
+		if linkDiff2 then
+			linkDiff2 = self:RemoveExtraSockets(linkDiff2)
+		end
+	end
+
 	-- Ignore Gems
-	if ignoreGem then
+	if ignoreGems then
 		link = self:RemoveGem(link)
 		linkDiff1 = self:RemoveGem(linkDiff1)
 		if linkDiff2 then
@@ -2922,9 +2968,9 @@ end
 -----------------------------------]]
 
 -- TODO 2.1.0: Use SetHyperlinkCompareItem in StatLogic:GetDiff
-function StatLogic:GetDiff(item, diff1, diff2, ignoreEnchant, ignoreGem, red, yellow, blue, meta)
+function StatLogic:GetDiff(item, diff1, diff2, ignoreEnchant, ignoreGems, ignoreExtraSockets, red, yellow, blue, meta)
 	-- Get DiffID
-	local id, link, linkDiff1, linkDiff2 = self:GetDiffID(item, ignoreEnchant, ignoreGem, red, yellow, blue, meta)
+	local id, link, linkDiff1, linkDiff2 = self:GetDiffID(item, ignoreEnchant, ignoreGems, ignoreExtraSockets, red, yellow, blue, meta)
 	if not id then return end
 
 	-- Clear Tables

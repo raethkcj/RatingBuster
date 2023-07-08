@@ -280,9 +280,8 @@ L["Ignore enchants on items when calculating the stat summary"] = "Игнори�
 -- /rb sum ignore gem
 L["Ignore gems"] = "Игнорировать самоцветы"
 L["Ignore gems on items when calculating the stat summary"] = "Игнорировать самоцветы при расчете итога"
--- /rb sum ignore prismaticSocket
-L["Ignore Prismatic Sockets"] = "Игнорировать радужные гнёзда"
-L["Ignore gems in prismatic sockets when calculating the stat summary"] = "Игнорировать гнезда для радужного самоцвета при расчете итога"
+L["Ignore Extra Sockets"] = true
+L["Ignore sockets from professions or consumable items when calculating the stat summary"] = true
 -- /rb sum diffstyle
 L["Display Style For Diff Value"] = "Стиль отображения отличия значений"
 L["Display diff values in the main tooltip or only in compare tooltips"] = "Отображения различных значений в главной подсказке или только в сравнительных подсказках"

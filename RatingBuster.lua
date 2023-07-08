@@ -556,6 +556,11 @@ local options = {
 							name = L["Ignore gems"],
 							desc = L["Ignore gems on items when calculating the stat summary"],
 						},
+						sumIgnoreExtraSockets = {
+							type = 'toggle',
+							name = L["Ignore Extra Sockets"],
+							desc = L["Ignore sockets from professions or consumable items when calculating the stat summary"]
+						}
 					},
 				},
 				basic = {
@@ -1137,6 +1142,7 @@ local defaults = {
 		sumIgnoreEquipped = false,
 		sumIgnoreEnchant = true,
 		sumIgnoreGems = false,
+		sumIgnoreExtraSockets = true,
 		sumBlankLine = true,
 		sumBlankLineAfter = false,
 		sumStatColor = CreateColor(NORMAL_FONT_COLOR:GetRGBA()),
@@ -1761,7 +1767,7 @@ function RatingBuster.ProcessTooltip(tooltip, name, link)
 		local yellow = profileDB.sumGemYellow.gemID
 		local blue = profileDB.sumGemBlue.gemID
 		local meta = profileDB.sumGemMeta.gemID
-		local _, mainlink, difflink1, difflink2 = StatLogic:GetDiffID(tooltip, globalDB.sumIgnoreEnchant, globalDB.sumIgnoreGems, red, yellow, blue, meta, profileDB.sumIgnorePris)
+		local _, mainlink, difflink1, difflink2 = StatLogic:GetDiffID(tooltip, globalDB.sumIgnoreEnchant, globalDB.sumIgnoreGems, globalDB.sumIgnoreExtraSockets, red, yellow, blue, meta)
 		StatLogic:GetSum(difflink1, equippedSum)
 		equippedSum[StatLogic.Stats.Strength] = equippedSum[StatLogic.Stats.Strength] * GSM("MOD_STR")
 		equippedSum[StatLogic.Stats.Agility] = equippedSum[StatLogic.Stats.Agility] * GSM("MOD_AGI")
@@ -3622,6 +3628,9 @@ function RatingBuster:StatSummary(tooltip, name, link)
 	if globalDB.sumIgnoreEnchant then
 		link = StatLogic:RemoveEnchant(link)
 	end
+	if globalDB.sumIgnoreExtraSockets then
+		link = StatLogic:RemoveExtraSockets(link)
+	end
 	if globalDB.sumIgnoreGems then
 		link = StatLogic:RemoveGem(link)
 	else
@@ -3651,7 +3660,7 @@ function RatingBuster:StatSummary(tooltip, name, link)
 			end
 		end
 		-- Detemine tooltip level
-		local _, mainlink, difflink1, difflink2 = StatLogic:GetDiffID(mainTooltip, globalDB.sumIgnoreEnchant, globalDB.sumIgnoreGems, red, yellow, blue, meta)
+		local _, mainlink, difflink1, difflink2 = StatLogic:GetDiffID(mainTooltip, globalDB.sumIgnoreEnchant, globalDB.sumIgnoreGems, globalDB.sumIgnoreExtraSockets, red, yellow, blue, meta)
 		if link == mainlink then
 			tooltipLevel = 0
 		elseif link == difflink1 then
@@ -3666,7 +3675,7 @@ function RatingBuster:StatSummary(tooltip, name, link)
 			id = "sum"..link
 		end
 	else
-		id = StatLogic:GetDiffID(link, globalDB.sumIgnoreEnchant, globalDB.sumIgnoreGems, red, yellow, blue, meta)
+		id = StatLogic:GetDiffID(link, globalDB.sumIgnoreEnchant, globalDB.sumIgnoreGems, globalDB.sumIgnoreExtraSockets, red, yellow, blue, meta)
 	end
 
 	local numLines = tooltip:NumLines()
@@ -3694,10 +3703,10 @@ function RatingBuster:StatSummary(tooltip, name, link)
 	if globalDB.calcDiff then
 		if globalDB.sumDiffStyle == "comp" then
 			if tooltipLevel > 0 then
-				statData.diff1 = select(tooltipLevel, StatLogic:GetDiff(mainTooltip, nil, nil, globalDB.sumIgnoreEnchant, globalDB.sumIgnoreGems, red, yellow, blue, meta))
+				statData.diff1 = select(tooltipLevel, StatLogic:GetDiff(mainTooltip, nil, nil, globalDB.sumIgnoreEnchant, globalDB.sumIgnoreGems, globalDB.sumIgnoreExtraSockets, red, yellow, blue, meta))
 			end
 		else
-			statData.diff1, statData.diff2 = StatLogic:GetDiff(link, nil, nil, globalDB.sumIgnoreEnchant, globalDB.sumIgnoreGems, red, yellow, blue, meta)
+			statData.diff1, statData.diff2 = StatLogic:GetDiff(link, nil, nil, globalDB.sumIgnoreEnchant, globalDB.sumIgnoreGems, globalDB.sumIgnoreExtraSockets, red, yellow, blue, meta)
 		end
 	end
 	-- Apply Base Stat Mods

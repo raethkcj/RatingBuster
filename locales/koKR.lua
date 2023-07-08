@@ -220,6 +220,8 @@ L["Ignore enchants on items when calculating the stat summary"] = "능력치 요
 -- /rb sum ignore gem
 L["Ignore gems"] = "보석 제외"
 L["Ignore gems on items when calculating the stat summary"] = "능력치 요약 계산에 아이템의 보석을 포함하지 않습니다."
+L["Ignore Extra Sockets"] = true
+L["Ignore sockets from professions or consumable items when calculating the stat summary"] = true
 -- /rb sum diffstyle
 L["Display style for diff value"] = "차이값 표시 형식"
 L["Display diff values in the main tooltip or only in compare tooltips"] = "주요 툴팁 이나 비교 툴팁에만 차이값을 표시합니다."

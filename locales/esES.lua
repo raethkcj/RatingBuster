@@ -221,6 +221,8 @@ L["Ignore enchants on items when calculating the stat summary"] = "Ignorar encan
 -- /rb sum ignore gem
 L["Ignore gems"] = "Ignorar gemas"
 L["Ignore gems on items when calculating the stat summary"] = "Ignorar gemas en items cuando  se calcule el resumen de estad."
+L["Ignore Extra Sockets"] = true
+L["Ignore sockets from professions or consumable items when calculating the stat summary"] = true
 -- /rb sum diffstyle
 L["Display style for diff value"] = "Mostrar estilo para el valor de diferencia"
 L["Display diff values in the main tooltip or only in compare tooltips"] = "Mostrar diferencia valores en el tooltip principal o solo en los de comparacion"
