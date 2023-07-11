@@ -2128,7 +2128,11 @@ do
 				effect = effect * 0.04
 				infoString = format("%+.2f%% x5", effect)
 			elseif strID == "EXPERTISE" and profileDB.expBreakDown then
-				effect = floor(effect) * -0.25
+				if tocversion < 30000 then
+					-- Expertise is truncated in TBC but not in Wrath
+					effect = floor(effect)
+				end
+				effect = effect * -0.25
 				if profileDB.detailedConversionText then
 					infoString = gsub(L["$value to be Dodged/Parried"], "$value", format("%+.2f%%%%", effect))
 				else
