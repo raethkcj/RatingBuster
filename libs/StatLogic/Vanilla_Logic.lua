@@ -227,17 +227,16 @@ addonTable.RAPPerAgi = {
 	["DRUID"] = 0,
 }
 
--- TODO: These are TBC values
 addonTable.BaseDodge = {
-	["WARRIOR"] = 0.7580,
-	["PALADIN"] = 0.6520,
-	["HUNTER"] = -5.4500,
-	["ROGUE"] = -0.5900,
-	["PRIEST"] = 3.1830,
-	["SHAMAN"] = 1.6750,
-	["MAGE"] = 3.4575,
-	["WARLOCK"] = 2.0350,
-	["DRUID"] = -1.8720,
+	["WARRIOR"] = 0.0000,
+	["PALADIN"] = 0.7000,
+	["HUNTER"] = 0.0000,
+	["ROGUE"] = 0.0000,
+	["PRIEST"] = 3.0000,
+	["SHAMAN"] = 1.7000,
+	["MAGE"] = 3.2000,
+	["WARLOCK"] = 2.0000,
+	["DRUID"] = 0.9000,
 }
 
 addonTable.RegisterValidatorEvents()
