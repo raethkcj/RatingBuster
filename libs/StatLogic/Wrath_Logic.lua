@@ -419,19 +419,19 @@ addonTable.BaseDodge = {
 	["DRUID"] =       5.6097,
 }
 
-addonTable.DodgePerAgiMaxLevel = {
-	["WARRIOR"] = 0.0118,
-	["PALADIN"] = 0.0167,
-	["HUNTER"] = 0.0116,
-	["ROGUE"] = 0.0209,
-	["PRIEST"] = 0.0167,
-	["DEATHKNIGHT"] = 0.0118,
-	["SHAMAN"] = 0.0167,
-	["MAGE"] = 0.017,
-	["WARLOCK"] = 0.0167,
-	["DRUID"] = 0.0209,
-}
-
+addonTable.DodgePerAgiMaxLevel = {
+	["WARRIOR"] = 0.0118,
+	["PALADIN"] = 0.0167,
+	["HUNTER"] = 0.0116,
+	["ROGUE"] = 0.0209,
+	["PRIEST"] = 0.0167,
+	["DEATHKNIGHT"] = 0.0118,
+	["SHAMAN"] = 0.0167,
+	["MAGE"] = 0.017,
+	["WARLOCK"] = 0.0167,
+	["DRUID"] = 0.0209,
+}
+
 addonTable.StatModValidators.glyph = {
 	validate = function(case)
 		return IsPlayerSpell(case.glyph)
@@ -3864,8 +3864,8 @@ local ModAgiClasses = {
 function StatLogic:GetDodgePerAgi()
 	local level = UnitLevel("player")
 	local class = addonTable.class
-	if level == GetMaxPlayerLevel() and addonTable.DodgePerAgiMaxLevel[class] then
-		return addonTable.DodgePerAgiMaxLevel[class], "DODGE"
+	if level == GetMaxPlayerLevel() and addonTable.DodgePerAgiMaxLevel[class] then
+		return addonTable.DodgePerAgiMaxLevel[class], "DODGE"
 	end
 	-- Collect data
 	local D_dr = GetDodgeChance()
