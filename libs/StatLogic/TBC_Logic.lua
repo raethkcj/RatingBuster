@@ -367,6 +367,9 @@ addonTable.BaseDodge = {
 	["DRUID"] = -1.8720,
 }
 
+-- TODO Gather data if TBC comes back
+addonTable.DodgePerAgiMaxLevel = {}
+
 addonTable.RegisterValidatorEvents()
 
 StatLogic.StatModTable = {}

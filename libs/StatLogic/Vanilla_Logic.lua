@@ -239,6 +239,18 @@ addonTable.BaseDodge = {
 	["DRUID"] = 0.9000,
 }
 
+addonTable.DodgePerAgiMaxLevel = {
+	["WARRIOR"] = 0.0500,
+	["PALADIN"] = 0.0506,
+	["HUNTER"] = 0.0377,
+	["ROGUE"] = 0.0690,
+	["PRIEST"] = 0.0500,
+	["SHAMAN"] = 0.0508,
+	["MAGE"] = 0.0514,
+	["WARLOCK"] = 0.0500,
+	["DRUID"] = 0.0500,
+}
+
 addonTable.RegisterValidatorEvents()
 
 StatLogic.StatModTable = {}

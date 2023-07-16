@@ -1882,12 +1882,20 @@ end
 		string - "DODGE"
 -- Remarks
 	Only works for your currect class and current level, does not support class and level args.
+	TODO: Will return incorrect values in Vanilla for players who are both a) NOT level 60 and b) have dodge/defense gear equipped
+	This will need to be solved by either scanning all equipped gear for dodge (likely causing a noticeable frame drop)
+	or collecting the exact conversion rates for every level and class
 -- Examples
 	StatLogic:GetDodgePerAgi()
 }
 -----------------------------------]]
 
 function StatLogic:GetDodgePerAgi()
+	local level = UnitLevel("player")
+	local class = addonTable.class
+	if level == GetMaxPlayerLevel() and addonTable.DodgePerAgiStatic[class] then
+		return addonTable.DodgePerAgiStatic[class], "DODGE"
+	end
 	local _, agility = UnitStat("player", 2)
 	-- dodgeFromAgi is %
 	local dodgeFromAgi = GetDodgeChance() - self:GetStatMod("ADD_DODGE") - self:GetEffectFromRating(GetCombatRating(CR_DODGE), CR_DODGE, UnitLevel("player")) - self:GetEffectFromDefense(GetTotalDefense("player"), UnitLevel("player"))
