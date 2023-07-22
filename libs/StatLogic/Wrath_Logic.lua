@@ -419,19 +419,32 @@ addonTable.BaseDodge = {
 	["DRUID"] =       5.6097,
 }
 
-addonTable.DodgePerAgiMaxLevel = {
-	["WARRIOR"] = 0.0118,
-	["PALADIN"] = 0.0167,
-	["HUNTER"] = 0.0116,
-	["ROGUE"] = 0.0209,
-	["PRIEST"] = 0.0167,
-	["DEATHKNIGHT"] = 0.0118,
-	["SHAMAN"] = 0.0167,
-	["MAGE"] = 0.017,
-	["WARLOCK"] = 0.0167,
-	["DRUID"] = 0.0209,
-}
-
+addonTable.DodgePerAgiMaxLevel = {
+
+	["WARRIOR"] = 0.0118,
+
+	["PALADIN"] = 0.0167,
+
+	["HUNTER"] = 0.0116,
+
+	["ROGUE"] = 0.0209,
+
+	["PRIEST"] = 0.0167,
+
+	["DEATHKNIGHT"] = 0.0118,
+
+	["SHAMAN"] = 0.0167,
+
+	["MAGE"] = 0.017,
+
+	["WARLOCK"] = 0.0167,
+
+	["DRUID"] = 0.0209,
+
+}
+
+
+
 addonTable.StatModValidators.glyph = {
 	validate = function(case)
 		return IsPlayerSpell(case.glyph)
@@ -3821,7 +3834,7 @@ Arguments:
 	None
 Returns:
 	; dodge : number - Dodge percentage per agility
-	; statid : string - "DODGE"
+	; statid : Stat - StatLogic.Stats.Dodge
 Notes:
 	* Formula by Whitetooth (hotdogee [at] gmail [dot] com)
 	* Calculates the dodge percentage per agility for your current class and level.
@@ -3864,8 +3877,10 @@ local ModAgiClasses = {
 function StatLogic:GetDodgePerAgi()
 	local level = UnitLevel("player")
 	local class = addonTable.class
-	if level == GetMaxPlayerLevel() and addonTable.DodgePerAgiMaxLevel[class] then
-		return addonTable.DodgePerAgiMaxLevel[class], "DODGE"
+	if level == GetMaxPlayerLevel() and addonTable.DodgePerAgiMaxLevel[class] then
+
+		return addonTable.DodgePerAgiMaxLevel[class], StatLogic.Stats.Dodge
+
 	end
 	-- Collect data
 	local D_dr = GetDodgeChance()
@@ -3900,7 +3915,7 @@ function StatLogic:GetDodgePerAgi()
 		dodgePerAgi = -c / b
 	end
 	--return dodgePerAgi
-	return floor(dodgePerAgi*10000+0.5)/10000, "DODGE"
+	return floor(dodgePerAgi*10000+0.5)/10000, StatLogic.Stats.Dodge
 end
 
 --[[---------------------------------
@@ -3941,7 +3956,7 @@ function StatLogic:GetDodgeChanceBeforeDR()
 	local dodgeFromAdditionalAgi = dodgePerAgi * (effectiveStat - baseAgi)
 	local modDodge = dodgeFromDodgeRating + dodgeFromDefenceRating + dodgeFromAdditionalAgi
 
-	local drFreeDodge = GetDodgeChance() - self:GetAvoidanceAfterDR("DODGE", modDodge, addonTable.class)
+	local drFreeDodge = GetDodgeChance() - self:GetAvoidanceAfterDR(StatLogic.Stats.Dodge, modDodge, addonTable.class)
 
 	return modDodge, drFreeDodge
 end
@@ -3976,7 +3991,7 @@ function StatLogic:GetParryChanceBeforeDR()
 	local modParry = parryFromParryRating + parryFromDefenceRating
 
 	-- drFreeParry
-	local drFreeParry = GetParryChance() - self:GetAvoidanceAfterDR("PARRY", modParry, addonTable.class)
+	local drFreeParry = GetParryChance() - self:GetAvoidanceAfterDR(StatLogic.Stats.Parry, modParry, addonTable.class)
 
 	return modParry, drFreeParry
 end
@@ -4028,30 +4043,30 @@ Notes:
 	|Druid||0.9720||0||0||116.890707||0.008555
 	|}
 Arguments:
-	string - "DODGE", "PARRY", "MELEE_HIT_AVOID"(NYI)
+	Stat - StatLogic.Stats.Dodge, StatLogic.Stats.Parry, StatLogic.Stats.Miss(NYI)
 	number - amount of avoidance before diminishing returns in percentages.
 	[optional] string or number - ClassID or "ClassName". Default: PlayerClass<br>See :GetClassIdOrName(class) for valid class values.
 Returns:
 	; avoidanceAfterDR : number - avoidance after diminishing returns in percentages.
 Example:
 	local modParry, drFreeParry = StatLogic:GetParryChanceBeforeDR()
-	local modParryAfterDR = StatLogic:GetAvoidanceAfterDR("PARRY", modParry)
+	local modParryAfterDR = StatLogic:GetAvoidanceAfterDR(StatLogic.Stats.Parry, modParry)
 	local parry = modParryAfterDR + drFreeParry
 
-	local modParryAfterDR = StatLogic:GetAvoidanceAfterDR("PARRY", modParry, "WARRIOR")
+	local modParryAfterDR = StatLogic:GetAvoidanceAfterDR(StatLogic.Stats.Parry, modParry, "WARRIOR")
 	local parry = modParryAfterDR + drFreeParry
 -----------------------------------]]
 function StatLogic:GetAvoidanceAfterDR(avoidanceType, avoidanceBeforeDR, class)
 	-- argCheck for invalid input
-	self:argCheck(avoidanceType, 2, "string")
+	self:argCheck(avoidanceType, 2, "table")
 	self:argCheck(avoidanceBeforeDR, 3, "number")
 	self:argCheck(class, 4, "nil", "string", "number")
 	class = self:ValidateClass(class)
 
 	local C = C_d
-	if avoidanceType == "PARRY" then
+	if avoidanceType == StatLogic.Stats.Parry then
 		C = C_p
-	elseif avoidanceType == "MELEE_HIT_AVOID" then
+	elseif avoidanceType == StatLogic.Stats.Miss then
 		C = C_m
 	end
 
@@ -4068,31 +4083,31 @@ end
 Notes:
 	* Calculates the avoidance gain after diminishing returns with player's current stats.
 Arguments:
-	string - "DODGE", "PARRY", "MELEE_HIT_AVOID"(NYI)
+	Stat - StatLogic.Stats.Dodge, StatLogic.Stats.Parry, StatLogic.Stats.Miss
 	number - Avoidance gain before diminishing returns in percentages.
 Returns:
 	; gainAfterDR : number - Avoidance gain after diminishing returns in percentages.
 Example:
 	-- How much dodge will I gain with +30 Agi after DR?
-	local gainAfterDR = StatLogic:GetAvoidanceGainAfterDR("DODGE", 30*StatLogic:GetDodgePerAgi())
+	local gainAfterDR = StatLogic:GetAvoidanceGainAfterDR(StatLogic.Stats.Dodge, 30*StatLogic:GetDodgePerAgi())
 	-- How much dodge will I gain with +20 Parry Rating after DR?
-	local gainAfterDR = StatLogic:GetAvoidanceGainAfterDR("PARRY", StatLogic:GetEffectFromRating(20, CR_PARRY))
+	local gainAfterDR = StatLogic:GetAvoidanceGainAfterDR(StatLogic.Stats.Parry, StatLogic:GetEffectFromRating(20, CR_PARRY))
 -----------------------------------]]
 function StatLogic:GetAvoidanceGainAfterDR(avoidanceType, gainBeforeDR)
 	-- argCheck for invalid input
 	self:argCheck(gainBeforeDR, 2, "number")
 
-	if avoidanceType == "PARRY" then
+	if avoidanceType == StatLogic.Stats.Parry then
 		local modAvoidance, drFreeAvoidance = self:GetParryChanceBeforeDR()
 		local newAvoidanceChance = self:GetAvoidanceAfterDR(avoidanceType, modAvoidance + gainBeforeDR) + drFreeAvoidance
 		if newAvoidanceChance < 0 then newAvoidanceChance = 0 end
 		return newAvoidanceChance - GetParryChance()
-	elseif avoidanceType == "DODGE" then
+	elseif avoidanceType == StatLogic.Stats.Dodge then
 		local modAvoidance, drFreeAvoidance = self:GetDodgeChanceBeforeDR()
 		local newAvoidanceChance = self:GetAvoidanceAfterDR(avoidanceType, modAvoidance + gainBeforeDR) + drFreeAvoidance
 		if newAvoidanceChance < 0 then newAvoidanceChance = 0 end -- because GetDodgeChance() is 0 when negative
 		return newAvoidanceChance - GetDodgeChance()
-	elseif avoidanceType == "MELEE_HIT_AVOID" then
+	elseif avoidanceType == StatLogic.Stats.Miss then
 		local modAvoidance = self:GetMissedChanceBeforeDR()
 		return self:GetAvoidanceAfterDR(avoidanceType, modAvoidance + gainBeforeDR) - self:GetAvoidanceAfterDR(avoidanceType, modAvoidance)
 	end

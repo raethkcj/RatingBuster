@@ -280,8 +280,8 @@ L["StatIDLookup"] = {
 	["Skinning"] = {"SKINNING",}, -- Skinning enchant ID:865
 
 	["Armor"] = {"ARMOR_BONUS",},
-	["Defense"] = {"DEFENSE",},
-	["Increased Defense"] = {"DEFENSE",},
+	["Defense"] = {StatLogic.Stats.Defense,},
+	["Increased Defense"] = {StatLogic.Stats.Defense,},
 	["Block"] = {"BLOCK_VALUE",}, -- +22 Block Value
 	["Block Value"] = {"BLOCK_VALUE",}, -- +22 Block Value
 	["Shield Block Value"] = {"BLOCK_VALUE",}, -- +10% Shield Block Value [Eternal Earthstorm Diamond] http://www.wowhead.com/?item=35501
@@ -389,10 +389,10 @@ L["StatIDLookup"] = {
 	["Increases defense rating"] = {"DEFENSE_RATING",},
 	["Dodge Rating"] = {"DODGE_RATING",},
 	["Increases your dodge rating"] = {"DODGE_RATING",},
-	["Increases your chance to dodge an attack%"] = {"DODGE",},
+	["Increases your chance to dodge an attack%"] = {StatLogic.Stats.Dodge,},
 	["Parry Rating"] = {"PARRY_RATING",},
 	["Increases your parry rating"] = {"PARRY_RATING",},
-	["Increases your chance to parry an attack%"] = {"PARRY",},
+	["Increases your chance to parry an attack%"] = {StatLogic.Stats.Parry,},
 	["Shield Block Rating"] = {"BLOCK_RATING",}, -- Enchant Shield - Lesser Block +10 Shield Block Rating http://wow.allakhazam.com/db/spell.html?wspell=13689
 	["Block Rating"] = {"BLOCK_RATING",},
 	["Increases your block rating"] = {"BLOCK_RATING",},
@@ -561,15 +561,15 @@ D["MANA_REG_NOT_CASTING"] = {MANA.." Regen (Not casting)", "MP5(NC)"}
 D["MELEE_CRIT_DMG_REDUCTION"] = {"Crit Damage Reduction(%)", "Crit Dmg Reduc(%)"}
 D["RANGED_CRIT_DMG_REDUCTION"] = {PLAYERSTAT_RANGED_COMBAT.." Crit Damage Reduction(%)", PLAYERSTAT_RANGED_COMBAT.." Crit Dmg Reduc(%)"}
 D["SPELL_CRIT_DMG_REDUCTION"] = {PLAYERSTAT_SPELL_COMBAT.." Crit Damage Reduction(%)", PLAYERSTAT_SPELL_COMBAT.." Crit Dmg Reduc(%)"}
-D["DEFENSE"] = {DEFENSE, "Def"}
-D["DODGE"] = {DODGE.."(%)", DODGE.."(%)"}
-D["PARRY"] = {PARRY.."(%)", PARRY.."(%)"}
-D["BLOCK"] = {BLOCK.."(%)", BLOCK.."(%)"}
+D[StatLogic.Stats.Defense] = {DEFENSE, "Def"}
+D[StatLogic.Stats.Dodge] = {DODGE.."(%)", DODGE.."(%)"}
+D[StatLogic.Stats.Parry] = {PARRY.."(%)", PARRY.."(%)"}
+D[StatLogic.Stats.BlockChance] = {BLOCK.."(%)", BLOCK.."(%)"}
 D["AVOIDANCE"] = {"Avoidance(%)", "Avoidance(%)"}
 D["MELEE_HIT"] = {"Hit Chance(%)", "Hit(%)"}
 D["RANGED_HIT"] = {PLAYERSTAT_RANGED_COMBAT.." Hit Chance(%)", PLAYERSTAT_RANGED_COMBAT.." Hit(%)"}
 D["SPELL_HIT"] = {PLAYERSTAT_SPELL_COMBAT.." Hit Chance(%)", PLAYERSTAT_SPELL_COMBAT.." Hit(%)"}
-D["MELEE_HIT_AVOID"] = {"Hit Avoidance(%)", "Hit Avd(%)"}
+D[StatLogic.Stats.Miss] = {"Hit Avoidance(%)", "Hit Avd(%)"}
 D["MELEE_CRIT"] = {MELEE_CRIT_CHANCE.."(%)", "Crit(%)"} -- MELEE_CRIT_CHANCE = "Crit Chance"
 D["RANGED_CRIT"] = {PLAYERSTAT_RANGED_COMBAT.." "..MELEE_CRIT_CHANCE.."(%)", PLAYERSTAT_RANGED_COMBAT.." Crit(%)"}
 D["SPELL_CRIT"] = {PLAYERSTAT_SPELL_COMBAT.." "..MELEE_CRIT_CHANCE.."(%)", PLAYERSTAT_SPELL_COMBAT.." Crit(%)"}

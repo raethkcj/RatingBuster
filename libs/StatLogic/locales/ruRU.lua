@@ -294,8 +294,8 @@ L["StatIDLookup"] = {
 
 	["броня"] = {"ARMOR_BONUS",},
 	["к броне"] = {"ARMOR_BONUS",},
-	["защита"] = {"DEFENSE",},
-	["Increased Defense"] = {"DEFENSE",},
+	["защита"] = {StatLogic.Stats.Defense,},
+	["Increased Defense"] = {StatLogic.Stats.Defense,},
 	["блок"] = {"BLOCK_VALUE",},
 	["блокирование:"] = {"BLOCK_VALUE",},
 	["к показателю блокирования щита"] = {"BLOCK_VALUE",}, -- +10% Shield Block Value [Eternal Earthstorm Diamond] http://www.wowhead.com/?item=35501
@@ -570,15 +570,15 @@ D["MANA_REG_NOT_CASTING"] = {"Восстановление маны раз в 5 
 D["MELEE_CRIT_DMG_REDUCTION"] = {"Понижение входящего урона от крит. ударов (%)", "Crit Dmg Reduc(%)"}
 D["RANGED_CRIT_DMG_REDUCTION"] = {"Понижение входящего урона от крит. ударов (%)", PLAYERSTAT_RANGED_COMBAT.." Crit Dmg Reduc(%)"}
 D["SPELL_CRIT_DMG_REDUCTION"] = {"Понижение входящего урона от крит. ударов (%)", PLAYERSTAT_SPELL_COMBAT.." Crit Dmg Reduc(%)"}
-D["DEFENSE"] = {"Защита", "Def"}
-D["DODGE"] = {"Уклонение (%)", DODGE.."(%)"}
-D["PARRY"] = {"Парирование (%)", PARRY.."(%)"}
-D["BLOCK"] = {"Блокирование (%)", BLOCK.."(%)"}
+D[StatLogic.Stats.Defense] = {"Защита", "Def"}
+D[StatLogic.Stats.Dodge] = {"Уклонение (%)", DODGE.."(%)"}
+D[StatLogic.Stats.Parry] = {"Парирование (%)", PARRY.."(%)"}
+D[StatLogic.Stats.BlockChance] = {"Блокирование (%)", BLOCK.."(%)"}
 D["AVOIDANCE"] = {"Избегание атак (%)", "Avoidance(%)"}
 D["MELEE_HIT"] = {"Меткость (%)", "Hit(%)"}
 D["RANGED_HIT"] = {"Меткость (%)", PLAYERSTAT_RANGED_COMBAT.." Hit(%)"}
 D["SPELL_HIT"] = {"Меткость (%)", PLAYERSTAT_SPELL_COMBAT.." Hit(%)"}
-D["MELEE_HIT_AVOID"] = {"Hit Avoidance(%)", "Hit Avd(%)"}
+D[StatLogic.Stats.Miss] = {"Hit Avoidance(%)", "Hit Avd(%)"}
 D["MELEE_CRIT"] = {"Вероятность крит. удара (%)", "Crit(%)"} -- MELEE_CRIT_CHANCE = "Crit Chance"
 D["RANGED_CRIT"] = {"Вероятность крит. удара (%)", PLAYERSTAT_RANGED_COMBAT.." Crit(%)"}
 D["SPELL_CRIT"] = {"Вероятность крит. удара (%)", PLAYERSTAT_SPELL_COMBAT.." Crit(%)"}

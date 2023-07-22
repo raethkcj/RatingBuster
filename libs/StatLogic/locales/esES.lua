@@ -240,8 +240,8 @@ L["StatIDLookup"] = {
 	["desuello"] = {"SKINNING",}, -- Skinning enchant ID:865
 
 	["Armadura"] = {"ARMOR_BONUS",},
-	["Defensa"] = {"DEFENSE",},
-	["Defensa aumentada"] = {"DEFENSE",},
+	["Defensa"] = {StatLogic.Stats.Defense,},
+	["Defensa aumentada"] = {StatLogic.Stats.Defense,},
 	["Bloqueo"] = {"BLOCK_VALUE",}, -- +22 Block Value
 	["Valor de bloqueo"] = {"BLOCK_VALUE",}, -- +22 Block Value
 	["Valor de bloqueo de escudo"] = {"BLOCK_VALUE",}, -- +10% Shield Block Value [Eternal Earthstorm Diamond] http://www.wowhead.com/?item=35501
@@ -510,15 +510,15 @@ D["MANA_REG_NOT_CASTING"] = {MANA.." Regen (Not casting)", "MP5(NC)"}
 D["MELEE_CRIT_DMG_REDUCTION"] = {"Crit Damage Reduction(%)", "Crit Dmg Reduc(%)"}
 D["RANGED_CRIT_DMG_REDUCTION"] = {PLAYERSTAT_RANGED_COMBAT.." Crit Damage Reduction(%)", PLAYERSTAT_RANGED_COMBAT.." Crit Dmg Reduc(%)"}
 D["SPELL_CRIT_DMG_REDUCTION"] = {PLAYERSTAT_SPELL_COMBAT.." Crit Damage Reduction(%)", PLAYERSTAT_SPELL_COMBAT.." Crit Dmg Reduc(%)"}
-D["DEFENSE"] = {DEFENSE, "Def"}
-D["DODGE"] = {DODGE.."(%)", DODGE.."(%)"}
-D["PARRY"] = {PARRY.."(%)", PARRY.."(%)"}
-D["BLOCK"] = {BLOCK.."(%)", BLOCK.."(%)"}
+D[StatLogic.Stats.Defense] = {DEFENSE, "Def"}
+D[StatLogic.Stats.Dodge] = {DODGE.."(%)", DODGE.."(%)"}
+D[StatLogic.Stats.Parry] = {PARRY.."(%)", PARRY.."(%)"}
+D[StatLogic.Stats.BlockChance] = {BLOCK.."(%)", BLOCK.."(%)"}
 D["AVOIDANCE"] = {"Avoidance(%)", "Avoidance(%)"}
 D["MELEE_HIT"] = {"Prob. de Golpe(%)", "Golpe(%)"}
 D["RANGED_HIT"] = {PLAYERSTAT_RANGED_COMBAT.." Hit Chance(%)", PLAYERSTAT_RANGED_COMBAT.." Hit(%)"}
 D["SPELL_HIT"] = {PLAYERSTAT_SPELL_COMBAT.." Hit Chance(%)", PLAYERSTAT_SPELL_COMBAT.." Hit(%)"}
-D["MELEE_HIT_AVOID"] = {"Hit Avoidance(%)", "Hit Avd(%)"}
+D[StatLogic.Stats.Miss] = {"Hit Avoidance(%)", "Hit Avd(%)"}
 D["MELEE_CRIT"] = {MELEE_CRIT_CHANCE.."(%)", "Crit(%)"} -- MELEE_CRIT_CHANCE = "Crit Chance"
 D["RANGED_CRIT"] = {PLAYERSTAT_RANGED_COMBAT.." "..MELEE_CRIT_CHANCE.."(%)", PLAYERSTAT_RANGED_COMBAT.." Crit(%)"}
 D["SPELL_CRIT"] = {PLAYERSTAT_SPELL_COMBAT.." "..MELEE_CRIT_CHANCE.."(%)", PLAYERSTAT_SPELL_COMBAT.." Crit(%)"}

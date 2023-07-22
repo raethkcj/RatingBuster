@@ -2104,7 +2104,7 @@ do
 			local effect, strID = StatLogic:GetEffectFromRating(value, statID, calcLevel)
 			--self:Debug(reversedAmount..", "..amount..", "..v[2]..", "..RatingBuster.targetLevel)-- debug
 			-- If rating is resilience, add a minus sign
-			if strID == "DEFENSE" and profileDB.defBreakDown then
+			if strID == StatLogic.Stats.Defense and profileDB.defBreakDown then
 				effect = effect * 0.04
 				processedDodge = processedDodge + effect
 				processedMissed = processedMissed + effect
@@ -2118,11 +2118,11 @@ do
 					numStats = numStats - 1
 				end
 				infoString = format("%+.2f%% x"..numStats, effect)
-			elseif strID == "DODGE" and profileDB.enableAvoidanceDiminishingReturns then
-				infoString = format("%+.2f%%", StatLogic:GetAvoidanceGainAfterDR("DODGE", processedDodge + effect) - StatLogic:GetAvoidanceGainAfterDR("DODGE", processedDodge))
+			elseif strID == StatLogic.Stats.Dodge and profileDB.enableAvoidanceDiminishingReturns then
+				infoString = format("%+.2f%%", StatLogic:GetAvoidanceGainAfterDR(StatLogic.Stats.Dodge, processedDodge + effect) - StatLogic:GetAvoidanceGainAfterDR(StatLogic.Stats.Dodge, processedDodge))
 				processedDodge = processedDodge + effect
-			elseif strID == "PARRY" and profileDB.enableAvoidanceDiminishingReturns then
-				infoString = format("%+.2f%%", StatLogic:GetAvoidanceGainAfterDR("PARRY", processedParry + effect) - StatLogic:GetAvoidanceGainAfterDR("PARRY", processedParry))
+			elseif strID == StatLogic.Stats.Parry and profileDB.enableAvoidanceDiminishingReturns then
+				infoString = format("%+.2f%%", StatLogic:GetAvoidanceGainAfterDR(StatLogic.Stats.Parry, processedParry + effect) - StatLogic:GetAvoidanceGainAfterDR(StatLogic.Stats.Parry, processedParry))
 				processedParry = processedParry + effect
 			elseif strID == "WEAPON_SKILL" and profileDB.wpnBreakDown then
 				effect = effect * 0.04
@@ -2239,7 +2239,7 @@ do
 				local effect = StatLogic:GetEffectFromRating(rating, 4, calcLevel)
 				if profileDB.enableAvoidanceDiminishingReturns then
 					local effectNoDR = effect
-					effect = StatLogic:GetAvoidanceGainAfterDR("PARRY", processedParry + effect) - StatLogic:GetAvoidanceGainAfterDR("PARRY", processedParry)
+					effect = StatLogic:GetAvoidanceGainAfterDR(StatLogic.Stats.Parry, processedParry + effect) - StatLogic:GetAvoidanceGainAfterDR(StatLogic.Stats.Parry, processedParry)
 					processedParry = processedParry + effectNoDR
 				end
 				if effect > 0 then
@@ -3190,9 +3190,9 @@ local summaryCalcData = {
 		option = "sumDodgeBeforeDR",
 		name = "DODGE_NO_DR",
 		func = function(sum)
-			return sum["DODGE"]
+			return sum[StatLogic.Stats.Dodge]
 				+ StatLogic:GetEffectFromRating(sum["DODGE_RATING"], "DODGE_RATING", calcLevel)
-				+ summaryFunc["DEFENSE"](sum) * DODGE_PARRY_BLOCK_PERCENT_PER_DEFENSE
+				+ summaryFunc[StatLogic.Stats.Defense](sum) * DODGE_PARRY_BLOCK_PERCENT_PER_DEFENSE
 				+ StatLogic:GetDodgeFromAgi(sum[StatLogic.Stats.Agility])
 		end,
 		ispercent = true,
@@ -3200,14 +3200,14 @@ local summaryCalcData = {
 	-- Dodge Chance
 	{
 		option = "sumDodge",
-		name = "DODGE",
+		name = StatLogic.Stats.Dodge,
 		func = function(sum, sumType, link)
 			local dodge = summaryFunc["DODGE_NO_DR"](sum)
 			if profileDB.enableAvoidanceDiminishingReturns then
 				if (sumType == "diff1") or (sumType == "diff2") then
-					dodge = StatLogic:GetAvoidanceGainAfterDR("DODGE", dodge)
+					dodge = StatLogic:GetAvoidanceGainAfterDR(StatLogic.Stats.Dodge, dodge)
 				elseif sumType == "sum" then
-					dodge = StatLogic:GetAvoidanceGainAfterDR("DODGE", equippedDodge + dodge) - StatLogic:GetAvoidanceGainAfterDR("DODGE", equippedDodge)
+					dodge = StatLogic:GetAvoidanceGainAfterDR(StatLogic.Stats.Dodge, equippedDodge + dodge) - StatLogic:GetAvoidanceGainAfterDR(StatLogic.Stats.Dodge, equippedDodge)
 				end
 			end
 			return dodge
@@ -3228,9 +3228,9 @@ local summaryCalcData = {
 		name = "PARRY_NO_DR",
 		func = function(sum)
 			return GetParryChance() > 0 and (
-				sum["PARRY"]
+				sum[StatLogic.Stats.Parry]
 				+ StatLogic:GetEffectFromRating(summaryFunc["PARRY_RATING"](sum), "PARRY_RATING", calcLevel)
-				+ summaryFunc["DEFENSE"](sum) * DODGE_PARRY_BLOCK_PERCENT_PER_DEFENSE
+				+ summaryFunc[StatLogic.Stats.Defense](sum) * DODGE_PARRY_BLOCK_PERCENT_PER_DEFENSE
 			) or 0
 		end,
 		ispercent = true,
@@ -3238,14 +3238,14 @@ local summaryCalcData = {
 	-- Parry Chance
 	{
 		option = "sumParry",
-		name = "PARRY",
+		name = StatLogic.Stats.Parry,
 		func = function(sum, sumType, link)
 			local parry = summaryFunc["PARRY_NO_DR"](sum)
 			if profileDB.enableAvoidanceDiminishingReturns then
 				if (sumType == "diff1") or (sumType == "diff2") then
-					parry = StatLogic:GetAvoidanceGainAfterDR("PARRY", parry)
+					parry = StatLogic:GetAvoidanceGainAfterDR(StatLogic.Stats.Parry, parry)
 				elseif sumType == "sum" then
-					parry = StatLogic:GetAvoidanceGainAfterDR("PARRY", equippedParry + parry) - StatLogic:GetAvoidanceGainAfterDR("PARRY", equippedParry)
+					parry = StatLogic:GetAvoidanceGainAfterDR(StatLogic.Stats.Parry, equippedParry + parry) - StatLogic:GetAvoidanceGainAfterDR(StatLogic.Stats.Parry, equippedParry)
 				end
 			end
 			return parry
@@ -3264,12 +3264,12 @@ local summaryCalcData = {
 	-- Block Chance - BLOCK, BLOCK_RATING, DEFENSE
 	{
 		option = "sumBlock",
-		name = "BLOCK",
+		name = StatLogic.Stats.BlockChance,
 		func = function(sum)
 			return GetBlockChance() > 0 and (
-				sum["BLOCK"]
+				sum[StatLogic.Stats.BlockChance]
 				+ StatLogic:GetEffectFromRating(sum["BLOCK_RATING"], "BLOCK_RATING", calcLevel)
-				+ summaryFunc["DEFENSE"](sum) * DODGE_PARRY_BLOCK_PERCENT_PER_DEFENSE
+				+ summaryFunc[StatLogic.Stats.Defense](sum) * DODGE_PARRY_BLOCK_PERCENT_PER_DEFENSE
 			) or 0
 		end,
 		ispercent = true,
@@ -3300,21 +3300,21 @@ local summaryCalcData = {
 		option = "sumHitAvoidBeforeDR",
 		name = "MELEE_HIT_AVOID_NO_DR",
 		func = function(sum)
-			return summaryFunc["DEFENSE"](sum) * DODGE_PARRY_BLOCK_PERCENT_PER_DEFENSE
+			return summaryFunc[StatLogic.Stats.Defense](sum) * DODGE_PARRY_BLOCK_PERCENT_PER_DEFENSE
 		end,
 		ispercent = true,
 	},
 	-- Hit Avoidance
 	{
 		option = "sumHitAvoid",
-		name = "MELEE_HIT_AVOID",
+		name = StatLogic.Stats.Miss,
 		func = function(sum, sumType, link)
 			local missed = summaryFunc["MELEE_HIT_AVOID_NO_DR"](sum)
 			if profileDB.enableAvoidanceDiminishingReturns then
 				if (sumType == "diff1") or (sumType == "diff2") then
-					missed = StatLogic:GetAvoidanceGainAfterDR("MELEE_HIT_AVOID", missed)
+					missed = StatLogic:GetAvoidanceGainAfterDR(StatLogic.Stats.Miss, missed)
 				elseif sumType == "sum" then
-					missed = StatLogic:GetAvoidanceGainAfterDR("MELEE_HIT_AVOID", equippedMissed + missed) - StatLogic:GetAvoidanceGainAfterDR("MELEE_HIT_AVOID", equippedMissed)
+					missed = StatLogic:GetAvoidanceGainAfterDR(StatLogic.Stats.Miss, equippedMissed + missed) - StatLogic:GetAvoidanceGainAfterDR(StatLogic.Stats.Miss, equippedMissed)
 				end
 			end
 			return missed
@@ -3324,9 +3324,9 @@ local summaryCalcData = {
 	-- Defense - DEFENSE_RATING
 	{
 		option = "sumDefense",
-		name = "DEFENSE",
+		name = StatLogic.Stats.Defense,
 		func = function(sum)
-			return sum["DEFENSE"]
+			return sum[StatLogic.Stats.Defense]
 				+ StatLogic:GetEffectFromRating(sum["DEFENSE_RATING"], "DEFENSE_RATING", calcLevel)
 		end,
 	},
@@ -3336,12 +3336,12 @@ local summaryCalcData = {
 		name = "AVOIDANCE",
 		ispercent = true,
 		func = function(sum, sumType, link)
-			local dodge = summaryFunc["DODGE"](sum, sumType, link)
-			local parry = summaryFunc["PARRY"](sum, sumType, link)
-			local missed = summaryFunc["MELEE_HIT_AVOID"](sum, sumType, link)
+			local dodge = summaryFunc[StatLogic.Stats.Dodge](sum, sumType, link)
+			local parry = summaryFunc[StatLogic.Stats.Parry](sum, sumType, link)
+			local missed = summaryFunc[StatLogic.Stats.Miss](sum, sumType, link)
 			local block = 0
 			if profileDB.sumAvoidWithBlock then
-				block = summaryFunc["BLOCK"](sum, sumType, link)
+				block = summaryFunc[StatLogic.Stats.BlockChance](sum, sumType, link)
 			end
 			return parry + dodge + missed + block
 		end,
@@ -3352,7 +3352,7 @@ local summaryCalcData = {
 		name = "MELEE_CRIT_AVOID",
 		func = function(sum)
 			return StatLogic:GetEffectFromRating(sum["RESILIENCE_RATING"], "RESILIENCE_RATING", calcLevel)
-				+ summaryFunc["DEFENSE"](sum) * DODGE_PARRY_BLOCK_PERCENT_PER_DEFENSE
+				+ summaryFunc[StatLogic.Stats.Defense](sum) * DODGE_PARRY_BLOCK_PERCENT_PER_DEFENSE
 		 end,
 		ispercent = true,
 	},

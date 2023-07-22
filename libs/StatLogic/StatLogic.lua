@@ -442,17 +442,17 @@ end
 
 local RatingIDToConvertedStat = {
 	"WEAPON_SKILL",
-	"DEFENSE",
-	"DODGE",
-	"PARRY",
-	"BLOCK",
+	StatLogic.Stats.Defense,
+	StatLogic.Stats.Dodge,
+	StatLogic.Stats.Parry,
+	StatLogic.Stats.BlockChance,
 	"MELEE_HIT",
 	"RANGED_HIT",
 	"SPELL_HIT",
 	"MELEE_CRIT",
 	"RANGED_CRIT",
 	"SPELL_CRIT",
-	"MELEE_HIT_AVOID",
+	StatLogic.Stats.Miss,
 	"RANGED_HIT_AVOID",
 	"SPELL_HIT_AVOID",
 	"MELEE_CRIT_AVOID",
@@ -1461,6 +1461,50 @@ end
 --=================--
 -- Stat Conversion --
 --=================--
+do
+	local trackedTotalStats = {
+		[StatLogic.Stats.Dodge] = true,
+		[StatLogic.Stats.Defense] = true,
+		[StatLogic.Stats.MeleeCrit] = true,
+		[StatLogic.Stats.SpellCrit] = true,
+	}
+
+	local totalEquippedStatCache = setmetatable({}, {
+		__index = function(t, stat)
+			if not trackedTotalStats[stat] then return 0 end
+
+			for trackedStat in pairs(trackedTotalStats) do
+				t[trackedStat] = 0
+			end
+
+			for i = INVSLOT_FIRST_EQUIPPED, INVSLOT_LAST_EQUIPPED do
+				local link = GetInventoryItemLink("player", i)
+				if cache[link] then
+					-- Sum all tracked stats, not just the current one we're querying
+					for trackedStat in pairs(trackedTotalStats) do
+						local amount = cache[link][trackedStat] or 0
+						t[trackedStat] = rawget(t, trackedStat) + amount
+					end
+				end
+			end
+
+			DevTools_Dump(t)
+
+			return rawget(t, stat)
+		end
+	})
+
+	local f = CreateFrame("Frame")
+	f:RegisterUnitEvent("UNIT_INVENTORY_CHANGED", "player")
+	f:SetScript("OnEvent", function()
+		wipe(totalEquippedStatCache)
+	end)
+
+	function StatLogic:GetTotalEquippedStat(stat)
+		return totalEquippedStatCache[stat]
+	end
+end
+
 function StatLogic:GetReductionFromArmor(armor, attackerLevel)
 	self:argCheck(armor, 2, "nil", "number")
 	self:argCheck(attackerLevel, 3, "nil", "number")
@@ -1521,7 +1565,7 @@ end
 	effect
 		number - effect value
 	effect name
-		string - name of converted effect, ex: "DODGE", "PARRY"
+		string - name of converted effect, ex: StatLogic.Stats.Dodge, StatLogic.Stats.Parry
 -- Remarks
 -- Examples
 	StatLogic:GetEffectFromRating(10, CR_DODGE)
@@ -1853,7 +1897,7 @@ end
 	[dodge]
 		number - base dodge percentage
 	[statid]
-		string - "DODGE"
+		Stat - StatLogic.Stats.Dodge
 -- Remarks
 -- Examples
 	StatLogic:GetBaseDodge()
@@ -1865,7 +1909,7 @@ function StatLogic:GetBaseDodge(class)
 	-- argCheck for invalid input
 	self:argCheck(class, 2, "nil", "string", "number")
 	class = self:ValidateClass(class)
-	return addonTable.BaseDodge[class], "DODGE"
+	return addonTable.BaseDodge[class], StatLogic.Stats.Dodge
 end
 
 
@@ -1879,7 +1923,7 @@ end
 	[dodge]
 		number - dodge percentage per agility
 	[statid]
-		string - "DODGE"
+		Stat - StatLogic.Stats.Dodge
 -- Remarks
 	Only works for your currect class and current level, does not support class and level args.
 	TODO: Will return incorrect values in Vanilla for players who are both a) NOT level 60 and b) have dodge/defense gear equipped
@@ -1893,13 +1937,18 @@ end
 function StatLogic:GetDodgePerAgi()
 	local level = UnitLevel("player")
 	local class = addonTable.class
-	if level == GetMaxPlayerLevel() and addonTable.DodgePerAgiStatic[class] then
-		return addonTable.DodgePerAgiStatic[class], "DODGE"
+	if level == GetMaxPlayerLevel() and addonTable.DodgePerAgiMaxLevel[class] then
+		print(addonTable.DodgePerAgiMaxLevel[class])
+		return addonTable.DodgePerAgiMaxLevel[class], StatLogic.Stats.Dodge
 	end
 	local _, agility = UnitStat("player", 2)
 	-- dodgeFromAgi is %
-	local dodgeFromAgi = GetDodgeChance() - self:GetStatMod("ADD_DODGE") - self:GetEffectFromRating(GetCombatRating(CR_DODGE), CR_DODGE, UnitLevel("player")) - self:GetEffectFromDefense(GetTotalDefense("player"), UnitLevel("player"))
-	return (dodgeFromAgi - addonTable.BaseDodge[addonTable.class]) / agility, "DODGE"
+	local dodgeFromAgi = GetDodgeChance()
+		- self:GetStatMod("ADD_DODGE")
+		- self:GetEffectFromRating(GetCombatRating(CR_DODGE), CR_DODGE, UnitLevel("player"))
+		- self:GetEffectFromDefense(GetTotalDefense("player"), UnitLevel("player"))
+		- self:GetTotalEquippedStat(StatLogic.Stats.Dodge)
+	return (dodgeFromAgi - addonTable.BaseDodge[addonTable.class]) / agility, StatLogic.Stats.Dodge
 end
 
 
@@ -1915,7 +1964,7 @@ end
 	[dodge]
 		number - dodge percentage
 	[statid]
-		string - "DODGE"
+		Stat - StatLogic.Stats.Dodge
 -- Remarks
 	Only works for your currect class and current level, does not support class and level args.
 -- Examples
@@ -1928,7 +1977,7 @@ function StatLogic:GetDodgeFromAgi(agi)
 	-- argCheck for invalid input
 	self:argCheck(agi, 2, "number")
 	-- Calculate
-	return agi * self:GetDodgePerAgi(), "DODGE"
+	return agi * self:GetDodgePerAgi(), StatLogic.Stats.Dodge
 end
 
 
