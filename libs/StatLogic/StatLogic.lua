@@ -1488,8 +1488,6 @@ do
 				end
 			end
 
-			DevTools_Dump(t)
-
 			return rawget(t, stat)
 		end
 	})
