@@ -2025,7 +2025,6 @@ function StatLogic:GetCritPerAgi(class, level)
 		local critFromAgi = GetCritChance()
 			- self:GetStatMod("ADD_MELEE_CRIT")
 			- self:GetTotalEquippedStat(StatLogic.Stats.MeleeCrit)
-		print(critFromAgi)
 		return (critFromAgi - addonTable.BaseMeleeCrit[class]) / agility
 	end
 end
