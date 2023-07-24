@@ -449,9 +449,9 @@ local RatingIDToConvertedStat = {
 	"MELEE_HIT",
 	"RANGED_HIT",
 	"SPELL_HIT",
-	"MELEE_CRIT",
-	"RANGED_CRIT",
-	"SPELL_CRIT",
+	StatLogic.Stats.MeleeCrit,
+	StatLogic.Stats.RangedCrit,
+	StatLogic.Stats.SpellCrit,
 	StatLogic.Stats.Miss,
 	"RANGED_HIT_AVOID",
 	"SPELL_HIT_AVOID",
@@ -1993,7 +1993,7 @@ end
 	[crit]
 		number - melee/ranged crit percentage
 	[statid]
-		string - "MELEE_CRIT"
+		Stat - StatLogic.Stats.MeleeCrit
 -- Remarks
 -- Examples
 	StatLogic:GetCritFromAgi(1) -- GetCritPerAgi
@@ -2015,7 +2015,7 @@ function StatLogic:GetCritFromAgi(agi, class, level)
 		level = UnitLevel("player")
 	end
 	-- Calculate
-	return agi * addonTable.CritPerAgi[class][level], "MELEE_CRIT"
+	return agi * addonTable.CritPerAgi[class][level], StatLogic.Stats.MeleeCrit
 end
 
 
@@ -2036,7 +2036,7 @@ end
 	[spellcrit]
 		number - spell crit percentage
 	[statid]
-		string - "SPELL_CRIT"
+		Stat - StatLogic.Stats.SpellCrit
 -- Remarks
 -- Examples
 	StatLogic:GetSpellCritFromInt(1) -- GetSpellCritPerInt
@@ -2058,7 +2058,7 @@ function StatLogic:GetSpellCritFromInt(int, class, level)
 		level = UnitLevel("player")
 	end
 	-- Calculate
-	return int * addonTable.SpellCritPerInt[class][level], "SPELL_CRIT"
+	return int * addonTable.SpellCritPerInt[class][level], StatLogic.Stats.SpellCrit
 end
 
 --[[---------------------------------

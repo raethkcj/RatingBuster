@@ -363,12 +363,12 @@ L["StatIDLookup"] = {
 	["Mejora el índice de golpe a distancia"] = {"RANGED_HIT_RATING",}, -- ITEM_MOD_HIT_RANGED_RATING
 	["Aumneta tu índice de golpe a distancia"] = {"RANGED_HIT_RATING",},
 
-	["Mejora tu probabilidad de conseguir un golpe crítico en%"] = {"MELEE_CRIT", "RANGED_CRIT"},
+	["Mejora tu probabilidad de conseguir un golpe crítico en%"] = {StatLogic.Stats.MeleeCrit, StatLogic.Stats.RangedCrit},
 	["índice de golpe crítico"] = {"CRIT_RATING",},
 	["Aumenta tu índice de golpe crítico"] = {"CRIT_RATING",},
 	["Mejora el índice de golpe crítico"] = {"CRIT_RATING",},
 	["Mejora el índice de golpe crítico cuerpo a cuerpo"] = {"MELEE_CRIT_RATING",}, -- [Cloak of Darkness] ID:33122
-	["Mejora tu probabilidad de conseguir un golpe crítico en % con los hechizos"] = {"SPELL_CRIT"},
+	["Mejora tu probabilidad de conseguir un golpe crítico en % con los hechizos"] = {StatLogic.Stats.SpellCrit},
 	["índice de golpe crítico con hechizos"] = {"SPELL_CRIT_RATING",},
 	["Índice de golpe crítico con hechizos"] = {"SPELL_CRIT_RATING",},
 	--["Spell Critical Rating"] = {"SPELL_CRIT_RATING",},
@@ -519,9 +519,9 @@ D["MELEE_HIT"] = {"Prob. de Golpe(%)", "Golpe(%)"}
 D["RANGED_HIT"] = {PLAYERSTAT_RANGED_COMBAT.." Hit Chance(%)", PLAYERSTAT_RANGED_COMBAT.." Hit(%)"}
 D["SPELL_HIT"] = {PLAYERSTAT_SPELL_COMBAT.." Hit Chance(%)", PLAYERSTAT_SPELL_COMBAT.." Hit(%)"}
 D[StatLogic.Stats.Miss] = {"Hit Avoidance(%)", "Hit Avd(%)"}
-D["MELEE_CRIT"] = {MELEE_CRIT_CHANCE.."(%)", "Crit(%)"} -- MELEE_CRIT_CHANCE = "Crit Chance"
-D["RANGED_CRIT"] = {PLAYERSTAT_RANGED_COMBAT.." "..MELEE_CRIT_CHANCE.."(%)", PLAYERSTAT_RANGED_COMBAT.." Crit(%)"}
-D["SPELL_CRIT"] = {PLAYERSTAT_SPELL_COMBAT.." "..MELEE_CRIT_CHANCE.."(%)", PLAYERSTAT_SPELL_COMBAT.." Crit(%)"}
+D[StatLogic.Stats.MeleeCrit] = {MELEE_CRIT_CHANCE.."(%)", "Crit(%)"} -- MELEE_CRIT_CHANCE = "Crit Chance"
+D[StatLogic.Stats.RangedCrit] = {PLAYERSTAT_RANGED_COMBAT.." "..MELEE_CRIT_CHANCE.."(%)", PLAYERSTAT_RANGED_COMBAT.." Crit(%)"}
+D[StatLogic.Stats.SpellCrit] = {PLAYERSTAT_SPELL_COMBAT.." "..MELEE_CRIT_CHANCE.."(%)", PLAYERSTAT_SPELL_COMBAT.." Crit(%)"}
 D["MELEE_CRIT_AVOID"] = {"Crit Avoidance(%)", "Crit Avd(%)"}
 D["MELEE_HASTE"] = {"Haste(%)", "Haste(%)"} --
 D["RANGED_HASTE"] = {PLAYERSTAT_RANGED_COMBAT.." Haste(%)", PLAYERSTAT_RANGED_COMBAT.." Haste(%)"}

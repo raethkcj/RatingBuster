@@ -165,7 +165,7 @@ L["PreScanPatterns"] = {
 	["Verstärkte %(%+(%d+) Rüstung%)"] = "ARMOR_BUFF",
 	["Mana Regeneration (%d+) alle 5 Sek%.$"] = "MANA_REG",
 	-- These fail DeepScan in deDE because of the commas
-	["Anlegen: Erhöht Eure Chance, einen kritischen Treffer durch Zauber zu erzielen, um (%d)%%%."] = "SPELL_CRIT",
+	["Anlegen: Erhöht Eure Chance, einen kritischen Treffer durch Zauber zu erzielen, um (%d)%%%."] = StatLogic.Stats.SpellCrit,
 	["Anlegen: Erhöht Eure Chance, einen kritischen Treffer zu erzielen, um (%d)%%%."] = "CRIT",
 	-- Exclude
 	["^(%d+) Slot"] = false, -- Set Name (0/9)
@@ -505,9 +505,9 @@ D["MELEE_HIT"] = {"Trefferchance(%)", "Treffer(%)"}
 D["RANGED_HIT"] = {PLAYERSTAT_RANGED_COMBAT.." Trefferchance(%)", PLAYERSTAT_RANGED_COMBAT.." Treffer(%)"}
 D["SPELL_HIT"] = {PLAYERSTAT_SPELL_COMBAT.." Trefferchance(%)", PLAYERSTAT_SPELL_COMBAT.." Treffer(%)"}
 D[StatLogic.Stats.Miss] = {"Treffer Vermeidung(%)", "Treffer Vermeid(%)"}
-D["MELEE_CRIT"] = {MELEE_CRIT_CHANCE.."(%)", "Krit(%)"} -- MELEE_CRIT_CHANCE = "Crit Chance"
-D["RANGED_CRIT"] = {PLAYERSTAT_RANGED_COMBAT.." "..MELEE_CRIT_CHANCE.."(%)", PLAYERSTAT_RANGED_COMBAT.." Krit(%)"}
-D["SPELL_CRIT"] = {PLAYERSTAT_SPELL_COMBAT.." "..MELEE_CRIT_CHANCE.."(%)", PLAYERSTAT_SPELL_COMBAT.." Krit(%)"}
+D[StatLogic.Stats.MeleeCrit] = {MELEE_CRIT_CHANCE.."(%)", "Krit(%)"} -- MELEE_CRIT_CHANCE = "Crit Chance"
+D[StatLogic.Stats.RangedCrit] = {PLAYERSTAT_RANGED_COMBAT.." "..MELEE_CRIT_CHANCE.."(%)", PLAYERSTAT_RANGED_COMBAT.." Krit(%)"}
+D[StatLogic.Stats.SpellCrit] = {PLAYERSTAT_SPELL_COMBAT.." "..MELEE_CRIT_CHANCE.."(%)", PLAYERSTAT_SPELL_COMBAT.." Krit(%)"}
 D["MELEE_CRIT_AVOID"] = {"Kritvermeidung(%)", "Kritvermeidung(%)"}
 D["MELEE_HASTE"] = {"Hast(%)", "Hast(%)"} --
 D["RANGED_HASTE"] = {PLAYERSTAT_RANGED_COMBAT.." Hast(%)", PLAYERSTAT_RANGED_COMBAT.." Hast(%)"}

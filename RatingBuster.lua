@@ -2872,9 +2872,9 @@ local summaryCalcData = {
 	-- Crit Chance - MELEE_CRIT, MELEE_CRIT_RATING, AGI
 	{
 		option = "sumCrit",
-		name = "MELEE_CRIT",
+		name = StatLogic.Stats.MeleeCrit,
 		func = function(sum)
-			return sum["MELEE_CRIT"]
+			return sum[StatLogic.Stats.MeleeCrit]
 				+ StatLogic:GetEffectFromRating(sum["MELEE_CRIT_RATING"], "MELEE_CRIT_RATING", calcLevel)
 				+ StatLogic:GetCritFromAgi(sum[StatLogic.Stats.Agility], class, calcLevel)
 		end,
@@ -2891,9 +2891,9 @@ local summaryCalcData = {
 	-- Ranged Crit Chance - MELEE_CRIT_RATING, RANGED_CRIT_RATING, AGI
 	{
 		option = "sumRangedCrit",
-		name = "RANGED_CRIT",
+		name = StatLogic.Stats.RangedCrit,
 		func = function(sum)
-			return sum["RANGED_CRIT"]
+			return sum[StatLogic.Stats.RangedCrit]
 				+ StatLogic:GetEffectFromRating(sum["RANGED_CRIT_RATING"], "RANGED_CRIT_RATING", calcLevel)
 				+ StatLogic:GetCritFromAgi(sum[StatLogic.Stats.Agility], class, calcLevel)
 		end,
@@ -3129,9 +3129,9 @@ local summaryCalcData = {
 	-- Spell Crit Chance - SPELL_CRIT_RATING, INT
 	{
 		option = "sumSpellCrit",
-		name = "SPELL_CRIT",
+		name = StatLogic.Stats.SpellCrit,
 		func = function(sum)
-			return sum["SPELL_CRIT"]
+			return sum[StatLogic.Stats.SpellCrit]
 				+ StatLogic:GetEffectFromRating(summaryFunc["SPELL_CRIT_RATING"](sum), "SPELL_CRIT_RATING", calcLevel)
 				+ StatLogic:GetSpellCritFromInt(sum[StatLogic.Stats.Intellect], class, calcLevel)
 		end,

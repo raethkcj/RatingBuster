@@ -576,9 +576,9 @@ D["MELEE_HIT"] = {"物理命中(%)", "命中(%)"}
 D["RANGED_HIT"] = {"远程命中(%)", "远程命中(%)"}
 D["SPELL_HIT"] = {"法术命中(%)", "法术命中(%)"}
 D[StatLogic.Stats.Miss] = {"躲闪命中(%)", "躲闪命中(%)"}
-D["MELEE_CRIT"] = {"物理爆击(%)", "物理爆击(%)"} -- MELEE_CRIT_CHANCE = "Crit Chance"
-D["RANGED_CRIT"] = {"远程爆击(%)", "远程爆击(%)"}
-D["SPELL_CRIT"] = {"法术爆击(%)", "法术爆击(%)"}
+D[StatLogic.Stats.MeleeCrit] = {"物理爆击(%)", "物理爆击(%)"} -- MELEE_CRIT_CHANCE = "Crit Chance"
+D[StatLogic.Stats.RangedCrit] = {"远程爆击(%)", "远程爆击(%)"}
+D[StatLogic.Stats.SpellCrit] = {"法术爆击(%)", "法术爆击(%)"}
 D["MELEE_CRIT_AVOID"] = {"躲闪近战爆击(%)", "躲闪爆击(%)"}
 D["MELEE_HASTE"] = {"近战急速(%)", "近战急速(%)"} --
 D["RANGED_HASTE"] = {"远程急速(%)", "远程急速(%)"}
