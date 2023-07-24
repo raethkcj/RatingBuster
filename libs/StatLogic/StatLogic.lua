@@ -1479,10 +1479,11 @@ do
 
 			for i = INVSLOT_FIRST_EQUIPPED, INVSLOT_LAST_EQUIPPED do
 				local link = GetInventoryItemLink("player", i)
-				if cache[link] then
+				local sum = StatLogic:GetSum(link)
+				if sum then
 					-- Sum all tracked stats, not just the current one we're querying
 					for trackedStat in pairs(trackedTotalStats) do
-						local amount = cache[link][trackedStat] or 0
+						local amount = sum[trackedStat] or 0
 						t[trackedStat] = rawget(t, trackedStat) + amount
 					end
 				end
@@ -1924,9 +1925,6 @@ end
 		Stat - StatLogic.Stats.Dodge
 -- Remarks
 	Only works for your currect class and current level, does not support class and level args.
-	TODO: Will return incorrect values in Vanilla for players who are both a) NOT level 60 and b) have dodge/defense gear equipped
-	This will need to be solved by either scanning all equipped gear for dodge (likely causing a noticeable frame drop)
-	or collecting the exact conversion rates for every level and class
 -- Examples
 	StatLogic:GetDodgePerAgi()
 }
