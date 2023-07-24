@@ -826,6 +826,10 @@ StatLogic.StatModInfo = {
 		initialValue = 0,
 		finalAdjust = 0,
 	},
+	["ADD_SPELL_CRIT"] = {
+		initialValue = 0,
+		finalAdjust = 0,
+	},
 	["ADD_AP_MOD_FAP"] = {
 		initialValue = 0,
 		finalAdjust = 0,
@@ -2072,6 +2076,27 @@ end
 }
 -----------------------------------]]
 
+function StatLogic:GetSpellCritPerInt(class, level)
+	-- argCheck for invalid input
+	self:argCheck(class, 3, "nil", "string", "number")
+	self:argCheck(level, 4, "nil", "number")
+	class = self:ValidateClass(class)
+	-- if level is invalid input, default to player level
+	if type(level) ~= "number" or level < 1 or level > GetMaxPlayerLevel() then
+		level = UnitLevel("player")
+	end
+
+	if addonTable.SpellCritPerInt[class][level] then
+		return addonTable.SpellCritPerInt[class][level]
+	else
+		local _, intellect = UnitStat("player", 4)
+		local critFromInt = GetSpellCritChance(1)
+			- self:GetStatMod("ADD_SPELL_CRIT")
+			- self:GetTotalEquippedStat(StatLogic.Stats.SpellCrit)
+		return (critFromInt - addonTable.BaseSpellCrit[class]) / intellect
+	end
+end
+
 function StatLogic:GetSpellCritFromInt(int, class, level)
 	-- argCheck for invalid input
 	self:argCheck(int, 2, "number")
@@ -2083,7 +2108,7 @@ function StatLogic:GetSpellCritFromInt(int, class, level)
 		level = UnitLevel("player")
 	end
 	-- Calculate
-	return int * addonTable.SpellCritPerInt[class][level], StatLogic.Stats.SpellCrit
+	return int * StatLogic:GetSpellCritPerInt(class, level), StatLogic.Stats.SpellCrit
 end
 
 --[[---------------------------------
