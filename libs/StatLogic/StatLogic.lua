@@ -1934,7 +1934,6 @@ function StatLogic:GetDodgePerAgi()
 	local level = UnitLevel("player")
 	local class = addonTable.class
 	if level == GetMaxPlayerLevel() and addonTable.DodgePerAgiMaxLevel[class] then
-		print(addonTable.DodgePerAgiMaxLevel[class])
 		return addonTable.DodgePerAgiMaxLevel[class], StatLogic.Stats.Dodge
 	end
 	local _, agility = UnitStat("player", 2)
