@@ -818,6 +818,10 @@ StatLogic.StatModInfo = {
 		finalAdjust = 0,
 		school = true,
 	},
+	["ADD_MELEE_CRIT"] = {
+		initialValue = 0,
+		finalAdjust = 0,
+	},
 	["ADD_DODGE"] = {
 		initialValue = 0,
 		finalAdjust = 0,
@@ -2004,6 +2008,28 @@ end
 }
 -----------------------------------]]
 
+function StatLogic:GetCritPerAgi(class, level)
+	-- argCheck for invalid input
+	self:argCheck(class, 3, "nil", "string", "number")
+	self:argCheck(level, 4, "nil", "number")
+	class = self:ValidateClass(class)
+	-- if level is invalid input, default to player level
+	if type(level) ~= "number" or level < 1 or level > GetMaxPlayerLevel() then
+		level = UnitLevel("player")
+	end
+
+	if addonTable.CritPerAgi[class][level] then
+		return addonTable.CritPerAgi[class][level]
+	else
+		local _, agility = UnitStat("player", 2)
+		local critFromAgi = GetCritChance()
+			- self:GetStatMod("ADD_MELEE_CRIT")
+			- self:GetTotalEquippedStat(StatLogic.Stats.MeleeCrit)
+		print(critFromAgi)
+		return (critFromAgi - addonTable.BaseMeleeCrit[class]) / agility
+	end
+end
+
 function StatLogic:GetCritFromAgi(agi, class, level)
 	-- argCheck for invalid input
 	self:argCheck(agi, 2, "number")
@@ -2015,7 +2041,7 @@ function StatLogic:GetCritFromAgi(agi, class, level)
 		level = UnitLevel("player")
 	end
 	-- Calculate
-	return agi * addonTable.CritPerAgi[class][level], StatLogic.Stats.MeleeCrit
+	return agi * self:GetCritPerAgi(class, level), StatLogic.Stats.MeleeCrit
 end
 
 
