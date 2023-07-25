@@ -1,4 +1,4 @@
-local addonName, addonTable = ...
+local addonName, addon = ...
 
 ---@class StatLogic
 local StatLogic = LibStub(addonName)
@@ -104,8 +104,8 @@ setmetatable(tipMiner, tipExtension)
 -- Local Variables --
 ---------------------
 -- Player info
-addonTable.class = select(2, UnitClass("player"))
-addonTable.playerRace = select(2, UnitRace("player"))
+addon.class = select(2, UnitClass("player"))
+addon.playerRace = select(2, UnitRace("player"))
 
 do
 	local ClassNameToID = {}
@@ -129,7 +129,7 @@ function StatLogic:ValidateClass(class)
 		class = StatLogic:GetClassIdOrName(class)
 	elseif type(class) ~= "string" or not StatLogic:GetClassIdOrName(class) then
 		-- if class is not a string, or doesn't correspond to a class id, default to player class
-		class = addonTable.class
+		class = addon.class
 	end
 	return class
 end
@@ -1186,7 +1186,7 @@ do
 	end)
 end
 
-addonTable.StatModValidators = {
+addon.StatModValidators = {
 	-- Conditions have no events, so any mods using them will not be cached.
 	-- Ideally they will be removed entirely.
 	condition = {
@@ -1246,18 +1246,18 @@ addonTable.StatModValidators = {
 -- Cache the results of GetStatMod, and build a table that
 -- maps events defined on Validators to the StatMods that depend on them.
 local StatModCache = {}
-addonTable.StatModCacheInvalidators = {}
+addon.StatModCacheInvalidators = {}
 
 -- Talents are not a Validator, but we still
 -- need to invalidate cache when they change
-addonTable.StatModCacheInvalidators["CHARACTER_POINTS_CHANGED"] = {}
+addon.StatModCacheInvalidators["CHARACTER_POINTS_CHANGED"] = {}
 
 function StatLogic:InvalidateEvent(event, unit)
 	local key = event
 	if type(unit) == "string" then
 		key = event .. unit
 	end
-	local stats = addonTable.StatModCacheInvalidators[key]
+	local stats = addon.StatModCacheInvalidators[key]
 	if stats then
 		for _, stat in pairs(stats) do
 			StatModCache[stat] = nil
@@ -1265,9 +1265,9 @@ function StatLogic:InvalidateEvent(event, unit)
 	end
 end
 
-addonTable.RegisterValidatorEvents = function()
+addon.RegisterValidatorEvents = function()
 	local f = CreateFrame("Frame")
-	for _, validator in pairs(addonTable.StatModValidators) do
+	for _, validator in pairs(addon.StatModValidators) do
 		if validator.events then
 			for event, unit in pairs(validator.events) do
 				if type(unit) == "string" then
@@ -1279,7 +1279,7 @@ addonTable.RegisterValidatorEvents = function()
 		end
 	end
 
-	for event, _ in pairs(addonTable.StatModCacheInvalidators) do
+	for event, _ in pairs(addon.StatModCacheInvalidators) do
 		f:RegisterEvent(event)
 	end
 
@@ -1292,7 +1292,7 @@ local function ValidateStatMod(stat, school, case)
 	if school and not case[school] then return false, false end
 	local shouldCache = true
 	for validatorType in pairs(case) do
-		local validator = addonTable.StatModValidators[validatorType]
+		local validator = addon.StatModValidators[validatorType]
 		if validator then
 			if validator.events then
 				for event, unit in pairs(validator.events) do
@@ -1300,8 +1300,8 @@ local function ValidateStatMod(stat, school, case)
 					if type(unit) == "string" then
 						key = event .. unit
 					end
-					addonTable.StatModCacheInvalidators[key] = addonTable.StatModCacheInvalidators[key] or {}
-					table.insert(addonTable.StatModCacheInvalidators[key], stat)
+					addon.StatModCacheInvalidators[key] = addon.StatModCacheInvalidators[key] or {}
+					table.insert(addon.StatModCacheInvalidators[key], stat)
 				end
 			else
 				shouldCache = false
@@ -1411,7 +1411,7 @@ do
 			elseif r > 0 then
 				value = case.value
 			end
-			table.insert(addonTable.StatModCacheInvalidators["CHARACTER_POINTS_CHANGED"], stat)
+			table.insert(addon.StatModCacheInvalidators["CHARACTER_POINTS_CHANGED"], stat)
 		elseif case.buff and case.rank then
 			local r = GetPlayerBuffRank(case.buff)
 			value = case.rank[r]
@@ -1558,7 +1558,7 @@ function StatLogic:GetEffectFromDefense(defense, attackerLevel)
 end
 
 function StatLogic:RatingExists(id)
-	return not not addonTable.RatingBase[id]
+	return not not addon.RatingBase[id]
 end
 
 --[[---------------------------------
@@ -1600,8 +1600,8 @@ local Level34Ratings = {
 }
 
 local CR_MAX = 0
-addonTable.SetCRMax = function()
-	for _ in pairs(addonTable.RatingBase) do
+addon.SetCRMax = function()
+	for _ in pairs(addon.RatingBase) do
 		CR_MAX = CR_MAX + 1
 	end
 end
@@ -1619,13 +1619,13 @@ function StatLogic:GetEffectFromRating(rating, id, level)
 		level = 34
 	end
 	if level >= 70 then
-		return rating/addonTable.RatingBase[id]/((82/52)*(131/63)^((level-70)/10)), RatingIDToConvertedStat[id]
+		return rating/addon.RatingBase[id]/((82/52)*(131/63)^((level-70)/10)), RatingIDToConvertedStat[id]
 	elseif level >= 60 then
-		return rating/addonTable.RatingBase[id]*((-3/82)*level+(131/41)), RatingIDToConvertedStat[id]
+		return rating/addon.RatingBase[id]*((-3/82)*level+(131/41)), RatingIDToConvertedStat[id]
 	elseif level >= 10 then
-		return rating/addonTable.RatingBase[id]/((1/52)*level-(8/52)), RatingIDToConvertedStat[id]
+		return rating/addon.RatingBase[id]/((1/52)*level-(8/52)), RatingIDToConvertedStat[id]
 	else
-		return rating/addonTable.RatingBase[id]/((1/52)*10-(8/52)), RatingIDToConvertedStat[id]
+		return rating/addon.RatingBase[id]/((1/52)*10-(8/52)), RatingIDToConvertedStat[id]
 	end
 end
 
@@ -1655,7 +1655,7 @@ end
 function StatLogic:GetAPPerStr(class)
 	assert(type(class)=="string" or type(class)=="number", "Expected string or number as arg #1 to GetAPPerStr, got "..type(class))
 	class = self:ValidateClass(class)
-	return addonTable.APPerStr[class], "AP"
+	return addon.APPerStr[class], "AP"
 end
 
 
@@ -1687,7 +1687,7 @@ function StatLogic:GetAPFromStr(str, class)
 	assert(type(class)=="string" or type(class)=="number", "Expected string or number as arg #2 to GetAPFromStr, got "..type(class))
 	class = self:ValidateClass(class)
 	-- Calculate
-	return str * addonTable.APPerStr[class], "AP"
+	return str * addon.APPerStr[class], "AP"
 end
 
 
@@ -1792,7 +1792,7 @@ function StatLogic:GetAPPerAgi(class)
 	if class == "DRUID" and (GetShapeshiftFormID() == CAT_FORM) then		-- ["Cat Form"]
 		return 1, "AP"
 	end
-	return addonTable.APPerAgi[class], "AP"
+	return addon.APPerAgi[class], "AP"
 end
 
 
@@ -1827,7 +1827,7 @@ function StatLogic:GetAPFromAgi(agi, class)
 	self:argCheck(class, 3, "nil", "string", "number")
 	class = self:ValidateClass(class)
 	-- Calculate
-	return agi * addonTable.APPerAgi[class], "AP"
+	return agi * addon.APPerAgi[class], "AP"
 end
 
 
@@ -1857,7 +1857,7 @@ function StatLogic:GetRAPPerAgi(class)
 	-- argCheck for invalid input
 	self:argCheck(class, 2, "nil", "string", "number")
 	class = self:ValidateClass(class)
-	return addonTable.RAPPerAgi[class], "RANGED_AP"
+	return addon.RAPPerAgi[class], "RANGED_AP"
 end
 
 
@@ -1892,7 +1892,7 @@ function StatLogic:GetRAPFromAgi(agi, class)
 	self:argCheck(class, 3, "nil", "string", "number")
 	class = self:ValidateClass(class)
 	-- Calculate
-	return agi * addonTable.RAPPerAgi[class], "RANGED_AP"
+	return agi * addon.RAPPerAgi[class], "RANGED_AP"
 end
 
 
@@ -1921,7 +1921,7 @@ function StatLogic:GetBaseDodge(class)
 	-- argCheck for invalid input
 	self:argCheck(class, 2, "nil", "string", "number")
 	class = self:ValidateClass(class)
-	return addonTable.BaseDodge[class], StatLogic.Stats.Dodge
+	return addon.BaseDodge[class], StatLogic.Stats.Dodge
 end
 
 
@@ -1945,9 +1945,9 @@ end
 
 function StatLogic:GetDodgePerAgi()
 	local level = UnitLevel("player")
-	local class = addonTable.class
-	if level == GetMaxPlayerLevel() and addonTable.DodgePerAgiMaxLevel[class] then
-		return addonTable.DodgePerAgiMaxLevel[class], StatLogic.Stats.Dodge
+	local class = addon.class
+	if level == GetMaxPlayerLevel() and addon.DodgePerAgiMaxLevel[class] then
+		return addon.DodgePerAgiMaxLevel[class], StatLogic.Stats.Dodge
 	end
 	local _, agility = UnitStat("player", 2)
 	-- dodgeFromAgi is %
@@ -1956,7 +1956,7 @@ function StatLogic:GetDodgePerAgi()
 		- self:GetEffectFromRating(GetCombatRating(CR_DODGE), CR_DODGE, UnitLevel("player"))
 		- self:GetEffectFromDefense(GetTotalDefense("player"), UnitLevel("player"))
 		- self:GetTotalEquippedStat(StatLogic.Stats.Dodge)
-	return (dodgeFromAgi - addonTable.BaseDodge[addonTable.class]) / agility, StatLogic.Stats.Dodge
+	return (dodgeFromAgi - addon.BaseDodge[addon.class]) / agility, StatLogic.Stats.Dodge
 end
 
 
@@ -2027,14 +2027,14 @@ function StatLogic:GetCritPerAgi(class, level)
 		level = UnitLevel("player")
 	end
 
-	if addonTable.CritPerAgi[class][level] then
-		return addonTable.CritPerAgi[class][level]
+	if addon.CritPerAgi[class][level] then
+		return addon.CritPerAgi[class][level]
 	else
 		local _, agility = UnitStat("player", 2)
 		local critFromAgi = GetCritChance()
 			- self:GetStatMod("ADD_MELEE_CRIT")
 			- self:GetTotalEquippedStat(StatLogic.Stats.MeleeCrit)
-		return (critFromAgi - addonTable.BaseMeleeCrit[class]) / agility
+		return (critFromAgi - addon.BaseMeleeCrit[class]) / agility
 	end
 end
 
@@ -2091,14 +2091,14 @@ function StatLogic:GetSpellCritPerInt(class, level)
 		level = UnitLevel("player")
 	end
 
-	if addonTable.SpellCritPerInt[class][level] then
-		return addonTable.SpellCritPerInt[class][level]
+	if addon.SpellCritPerInt[class][level] then
+		return addon.SpellCritPerInt[class][level]
 	else
 		local _, intellect = UnitStat("player", 4)
 		local critFromInt = GetSpellCritChance(1)
 			- self:GetStatMod("ADD_SPELL_CRIT")
 			- self:GetTotalEquippedStat(StatLogic.Stats.SpellCrit)
-		return (critFromInt - addonTable.BaseSpellCrit[class]) / intellect
+		return (critFromInt - addon.BaseSpellCrit[class]) / intellect
 	end
 end
 
@@ -2839,11 +2839,11 @@ function StatLogic:GetArmorDistribution(item, value, color)
 	local armor = value
 	local bonus_armor = 0
 	if name then
-		if addonTable.bonusArmorItemEquipLoc and addonTable.bonusArmorItemEquipLoc[itemEquipLoc] then
+		if addon.bonusArmorItemEquipLoc and addon.bonusArmorItemEquipLoc[itemEquipLoc] then
 			armor = 0
 			bonus_armor = value
-		elseif StatLogic.AreColorsEqual(color, BONUS_ARMOR_COLOR) and addonTable.baseArmorTable then
-			local qualityTable = addonTable.baseArmorTable[itemQuality]
+		elseif StatLogic.AreColorsEqual(color, BONUS_ARMOR_COLOR) and addon.baseArmorTable then
+			local qualityTable = addon.baseArmorTable[itemQuality]
 			local itemEquipLocTable = qualityTable and qualityTable[_G[itemEquipLoc]]
 			local armorSubclassTable = itemEquipLocTable and itemEquipLocTable[armorSubclass]
 
@@ -2930,7 +2930,7 @@ local getSlotID = {
 }
 
 local function HasTitansGrip()
-	return addonTable.class == "WARRIOR" and IsPlayerSpell(46917)
+	return addon.class == "WARRIOR" and IsPlayerSpell(46917)
 end
 
 function StatLogic:GetDiffID(item, ignoreEnchant, ignoreGems, ignoreExtraSockets, red, yellow, blue, meta)

@@ -1,9 +1,9 @@
-local addonName, addonTable = ...
+local addonName, addon = ...
 ---@class StatLogic
 local StatLogic = LibStub:GetLibrary(addonName)
 
 -- Level 60 rating base
-addonTable.RatingBase = {
+addon.RatingBase = {
 	[CR_WEAPON_SKILL] = 2.5,
 	[CR_DEFENSE_SKILL] = 1.5,
 	[CR_DODGE] = 12,
@@ -29,7 +29,7 @@ addonTable.RatingBase = {
 	[CR_WEAPON_SKILL_RANGED] = 2.5,
 	[CR_EXPERTISE] = 2.5,
 }
-addonTable.SetCRMax()
+addon.SetCRMax()
 
 StatLogic.GenericStatMap[StatLogic.GenericStats.CR_HIT] = {
 	CR_HIT_MELEE,
@@ -160,7 +160,7 @@ function StatLogic:GetNormalManaRegenFromSpi(spi, int, level)
 end
 
 -- Numbers reverse engineered by Whitetooth@Cenarius(US) (hotdogee [at] gmail [dot] com)
-addonTable.CritPerAgi = {
+addon.CritPerAgi = {
 	["WARRIOR"] = {
 		0.2500, 0.2381, 0.2381, 0.2273, 0.2174, 0.2083, 0.2083, 0.2000, 0.1923, 0.1923,
 		0.1852, 0.1786, 0.1667, 0.1613, 0.1563, 0.1515, 0.1471, 0.1389, 0.1351, 0.1282,
@@ -251,7 +251,7 @@ local zero = setmetatable({}, {
 })
 
 -- Numbers reverse engineered by Whitetooth (hotdogee [at] gmail [dot] com)
-addonTable.SpellCritPerInt = {
+addon.SpellCritPerInt = {
 	["WARRIOR"] = zero,
 	["PALADIN"] = {
 		0.0832, 0.0793, 0.0793, 0.0757, 0.0757, 0.0724, 0.0694, 0.0694, 0.0666, 0.0666,
@@ -319,7 +319,7 @@ addonTable.SpellCritPerInt = {
 	},
 }
 
-addonTable.APPerStr = {
+addon.APPerStr = {
 	["WARRIOR"] = 2,
 	["PALADIN"] = 2,
 	["HUNTER"] = 1,
@@ -331,7 +331,7 @@ addonTable.APPerStr = {
 	["DRUID"] = 2,
 }
 
-addonTable.APPerAgi = {
+addon.APPerAgi = {
 	["WARRIOR"] = 0,
 	["PALADIN"] = 0,
 	["HUNTER"] = 1,
@@ -343,7 +343,7 @@ addonTable.APPerAgi = {
 	["DRUID"] = 0,
 }
 
-addonTable.RAPPerAgi = {
+addon.RAPPerAgi = {
 	["WARRIOR"] = 1,
 	["PALADIN"] = 0,
 	["HUNTER"] = 1,
@@ -355,7 +355,7 @@ addonTable.RAPPerAgi = {
 	["DRUID"] = 0,
 }
 
-addonTable.BaseDodge = {
+addon.BaseDodge = {
 	["WARRIOR"] = 0.7580,
 	["PALADIN"] = 0.6520,
 	["HUNTER"] = -5.4500,
@@ -368,12 +368,12 @@ addonTable.BaseDodge = {
 }
 
 -- TODO Gather data if TBC comes back
-addonTable.DodgePerAgiMaxLevel = {}
+addon.DodgePerAgiMaxLevel = {}
 
-addonTable.RegisterValidatorEvents()
+addon.RegisterValidatorEvents()
 
 StatLogic.StatModTable = {}
-if addonTable.class == "DRUID" then
+if addon.class == "DRUID" then
 	StatLogic.StatModTable["DRUID"] = {
 		-- Druid: Lunar Guidance (Rank 3) - 1,12
 		--        Increases your spell damage and healing by 8%/16%/25% of your total Intellect.
@@ -651,7 +651,7 @@ if addonTable.class == "DRUID" then
 			},
 		},
 	}
-elseif addonTable.class == "HUNTER" then
+elseif addon.class == "HUNTER" then
 	StatLogic.StatModTable["HUNTER"] = {
 		-- Hunter: Aspect of the Viper - Buff
 		--         The hunter takes on the aspects of a viper, regenerating mana equal to 25% of his Intellect every 5 sec.
@@ -828,7 +828,7 @@ elseif addonTable.class == "HUNTER" then
 			},
 		},
 	}
-elseif addonTable.class == "MAGE" then
+elseif addon.class == "MAGE" then
 	StatLogic.StatModTable["MAGE"] = {
 		-- Mage: Arcane Fortitude - 1,9
 		--       Increases your armor by an amount equal to 50% of your Intellect.
@@ -938,7 +938,7 @@ elseif addonTable.class == "MAGE" then
 			},
 		},
 	}
-elseif addonTable.class == "PALADIN" then
+elseif addon.class == "PALADIN" then
 	StatLogic.StatModTable["PALADIN"] = {
 		-- Paladin: Pursuit of Justice (Rank 2) - 3,9
 		--          Reduces the chance you'll be hit by spells by 1%/2%/3% and increases movement and mounted movement speed by 5%/10%/15%. This does not stack with other movement speed increasing effects.
@@ -1127,7 +1127,7 @@ elseif addonTable.class == "PALADIN" then
 			},
 		},
 	}
-elseif addonTable.class == "PRIEST" then
+elseif addon.class == "PRIEST" then
 	StatLogic.StatModTable["PRIEST"] = {
 		-- Priest: Meditation (Rank 3) - 1,9
 		--         Allows 10/20/30% of your Mana regeneration to continue while casting.
@@ -1317,7 +1317,7 @@ elseif addonTable.class == "PRIEST" then
 			},
 		},
 	}
-elseif addonTable.class == "ROGUE" then
+elseif addon.class == "ROGUE" then
 	StatLogic.StatModTable["ROGUE"] = {
 		-- Rogue: Deadliness (Rank 5) - 3,17
 		--        Increases your attack power by 2%/4%/6%/8%/10%.
@@ -1450,7 +1450,7 @@ elseif addonTable.class == "ROGUE" then
 			},
 		},
 	}
-elseif addonTable.class == "SHAMAN" then
+elseif addon.class == "SHAMAN" then
 	StatLogic.StatModTable["SHAMAN"] = {
 		["MOD_DMG_TAKEN"] = {
 			-- Shaman: Shamanistic Rage - Buff
@@ -1593,7 +1593,7 @@ elseif addonTable.class == "SHAMAN" then
 			},
 		},
 	}
-elseif addonTable.class == "WARLOCK" then
+elseif addon.class == "WARLOCK" then
 	StatLogic.StatModTable["WARLOCK"] = {
 		-- Warlock: Demonic Knowledge (Rank 3) - 2,20 - UnitExists("pet")
 		--          Increases your spell damage by an amount equal to 5%/10%/15% of the total of your active demon's Stamina plus Intellect.
@@ -1714,7 +1714,7 @@ elseif addonTable.class == "WARLOCK" then
 			},
 		},
 	}
-elseif addonTable.class == "WARRIOR" then
+elseif addon.class == "WARRIOR" then
 	StatLogic.StatModTable["WARRIOR"] = {
 		-- Warrior: Improved Berserker Stance (Rank 5) - 2,20 - Stance
 		--          Increases attack power by 2%/4%/6%/8%/10% while in Berserker Stance.
@@ -1862,7 +1862,7 @@ elseif addonTable.class == "WARRIOR" then
 	}
 end
 
-if addonTable.playerRace == "NightElf" then
+if addon.playerRace == "NightElf" then
 	StatLogic.StatModTable["NightElf"] = {
 		-- Night Elf : Quickness - Racial
 		--             Dodge chance increased by 1%.
@@ -1872,7 +1872,7 @@ if addonTable.playerRace == "NightElf" then
 			},
 		},
 	}
-elseif addonTable.playerRace == "Tauren" then
+elseif addon.playerRace == "Tauren" then
 	StatLogic.StatModTable["Tauren"] = {
 		-- Tauren: Endurance - Racial
 		--         Total Health increased by 5%.
@@ -1882,7 +1882,7 @@ elseif addonTable.playerRace == "Tauren" then
 			},
 		},
 	}
-elseif addonTable.playerRace == "Gnome" then
+elseif addon.playerRace == "Gnome" then
 	StatLogic.StatModTable["Gnome"] = {
 		-- Gnome: Expansive Mind - Racial
 		--        Increase Intelligence by 5%.
@@ -1892,7 +1892,7 @@ elseif addonTable.playerRace == "Gnome" then
 			},
 		},
 	}
-elseif addonTable.playerRace == "Human" then
+elseif addon.playerRace == "Human" then
 	StatLogic.StatModTable["Human"] = {
 		-- Human: The Human Spirit - Racial
 		--        Increase Spirit by 10%.

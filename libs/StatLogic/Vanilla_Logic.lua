@@ -1,8 +1,8 @@
-local addonName, addonTable = ...
+local addonName, addon = ...
 ---@class StatLogic
 local StatLogic = LibStub:GetLibrary(addonName)
 
-addonTable.RatingBase = {}
+addon.RatingBase = {}
 
 --[[---------------------------------
 {	:GetNormalManaRegenFromSpi(spi, [class])
@@ -45,7 +45,7 @@ function StatLogic:GetNormalManaRegenFromSpi(spi, class)
 	return spi * NormalManaRegenPerSpi[class] * 5, "MANA_REG_NOT_CASTING"
 end
 
-addonTable.BaseMeleeCrit = {
+addon.BaseMeleeCrit = {
 	["WARRIOR"] = 0.0000,
 	["PALADIN"] = 1.7000,
 	["HUNTER"]  = 0.0000,
@@ -57,7 +57,7 @@ addonTable.BaseMeleeCrit = {
 	["DRUID"]   = 0.9000,
 }
 
-addonTable.CritPerAgi = {
+addon.CritPerAgi = {
 	["WARRIOR"] = {
 		[60] = 0.0500,
 	},
@@ -93,7 +93,7 @@ local zero = setmetatable({}, {
 	end
 })
 
-addonTable.BaseSpellCrit = {
+addon.BaseSpellCrit = {
 	["WARRIOR"] =  0.0000,
 	["PALADIN"] =  3.5000,
 	["HUNTER"]  =  3.6000,
@@ -105,7 +105,7 @@ addonTable.BaseSpellCrit = {
 	["DRUID"]   =  1.8000,
 }
 
-addonTable.SpellCritPerInt = {
+addon.SpellCritPerInt = {
 	["WARRIOR"] = zero,
 	["PALADIN"] = {
 		[60] = 0.0167,
@@ -131,7 +131,7 @@ addonTable.SpellCritPerInt = {
 	},
 }
 
-addonTable.APPerStr = {
+addon.APPerStr = {
 	["WARRIOR"] = 2,
 	["PALADIN"] = 2,
 	["HUNTER"] = 1,
@@ -143,7 +143,7 @@ addonTable.APPerStr = {
 	["DRUID"] = 2,
 }
 
-addonTable.APPerAgi = {
+addon.APPerAgi = {
 	["WARRIOR"] = 0,
 	["PALADIN"] = 0,
 	["HUNTER"] = 1,
@@ -155,7 +155,7 @@ addonTable.APPerAgi = {
 	["DRUID"] = 0,
 }
 
-addonTable.RAPPerAgi = {
+addon.RAPPerAgi = {
 	["WARRIOR"] = 1,
 	["PALADIN"] = 0,
 	["HUNTER"] = 2,
@@ -167,7 +167,7 @@ addonTable.RAPPerAgi = {
 	["DRUID"] = 0,
 }
 
-addonTable.BaseDodge = {
+addon.BaseDodge = {
 	["WARRIOR"] = 0.0000,
 	["PALADIN"] = 0.7000,
 	["HUNTER"] = 0.0000,
@@ -179,7 +179,7 @@ addonTable.BaseDodge = {
 	["DRUID"] = 0.9000,
 }
 
-addonTable.DodgePerAgiMaxLevel = {
+addon.DodgePerAgiMaxLevel = {
 	["WARRIOR"] = 0.0500,
 	["PALADIN"] = 0.0506,
 	["HUNTER"] = 0.0377,
@@ -191,14 +191,14 @@ addonTable.DodgePerAgiMaxLevel = {
 	["DRUID"] = 0.0500,
 }
 
-addonTable.RegisterValidatorEvents()
+addon.RegisterValidatorEvents()
 
 local BuffGroup = {
 	MOD_ARMOR = 1,
 }
 
 StatLogic.StatModTable = {}
-if addonTable.class == "DRUID" then
+if addon.class == "DRUID" then
 	StatLogic.StatModTable["DRUID"] = {
 		-- Druid: Reflection - 3,6
 		--        Allows 5/10/15% of your Mana regeneration to continue while casting
@@ -325,7 +325,7 @@ if addonTable.class == "DRUID" then
 			},
 		},
 	}
-elseif addonTable.class == "HUNTER" then
+elseif addon.class == "HUNTER" then
 	StatLogic.StatModTable["HUNTER"] = {
 		["ADD_DODGE"] = {
 			-- Hunter: Aspect of the Monkey - Buff
@@ -383,7 +383,7 @@ elseif addonTable.class == "HUNTER" then
 			},
 		},
 	}
-elseif addonTable.class == "MAGE" then
+elseif addon.class == "MAGE" then
 	StatLogic.StatModTable["MAGE"] = {
 		-- Mage: Arcane Fortitude - 1,9
 		--       Increases your armor by an amount equal to 50% of your Intellect.
@@ -424,7 +424,7 @@ elseif addonTable.class == "MAGE" then
 			},
 		},
 	}
-elseif addonTable.class == "PALADIN" then
+elseif addon.class == "PALADIN" then
 	StatLogic.StatModTable["PALADIN"] = {
 		["ADD_MELEE_CRIT"] = {
 			-- Conviction
@@ -481,7 +481,7 @@ elseif addonTable.class == "PALADIN" then
 			},
 		},
 	}
-elseif addonTable.class == "PRIEST" then
+elseif addon.class == "PRIEST" then
 	StatLogic.StatModTable["PRIEST"] = {
 		-- Priest: Meditation (Rank 3) - 1,8
 		--         Allows 5/10/15% of your Mana regeneration to continue while casting.
@@ -553,7 +553,7 @@ elseif addonTable.class == "PRIEST" then
 			},
 		},
 	}
-elseif addonTable.class == "ROGUE" then
+elseif addon.class == "ROGUE" then
 	StatLogic.StatModTable["ROGUE"] = {
 		-- Rogue: Deadliness (Rank 5) - 3,16
 		--        Increases your attack power by 2%/4%/6%/8%/10%.
@@ -653,7 +653,7 @@ elseif addonTable.class == "ROGUE" then
 			},
 		},
 	}
-elseif addonTable.class == "SHAMAN" then
+elseif addon.class == "SHAMAN" then
 	StatLogic.StatModTable["SHAMAN"] = {
 		-- Shaman: Anticipation (Rank 5) - 2,9
 		--         Increases your chance to dodge by an additional 1%/2%/3%/4%/5%.
@@ -733,7 +733,7 @@ elseif addonTable.class == "SHAMAN" then
 			},
 		},
 	}
-elseif addonTable.class == "WARLOCK" then
+elseif addon.class == "WARLOCK" then
 	StatLogic.StatModTable["WARLOCK"] = {
 		-- Warlock: Master Demonologist (Rank 5) - 2,15
 		--          Voidwalker - Reduces physical damage taken by 2%/4%/6%/8%/10%.
@@ -786,7 +786,7 @@ elseif addonTable.class == "WARLOCK" then
 			},
 		},
 	}
-elseif addonTable.class == "WARRIOR" then
+elseif addon.class == "WARRIOR" then
 	StatLogic.StatModTable["WARRIOR"] = {
 		["MOD_DMG_TAKEN"] = {
 			-- Warrior: Shield Wall - Buff
@@ -904,7 +904,7 @@ elseif addonTable.class == "WARRIOR" then
 	}
 end
 
-if addonTable.playerRace == "NightElf" then
+if addon.playerRace == "NightElf" then
 	StatLogic.StatModTable["NightElf"] = {
 		-- Night Elf : Quickness - Racial
 		--             Dodge chance increased by 1%.
@@ -914,7 +914,7 @@ if addonTable.playerRace == "NightElf" then
 			},
 		},
 	}
-elseif addonTable.playerRace == "Tauren" then
+elseif addon.playerRace == "Tauren" then
 	StatLogic.StatModTable["Tauren"] = {
 		-- Tauren: Endurance - Racial
 		--         Total Health increased by 5%.
@@ -924,7 +924,7 @@ elseif addonTable.playerRace == "Tauren" then
 			}
 		}
 	}
-elseif addonTable.playerRace == "Gnome" then
+elseif addon.playerRace == "Gnome" then
 	StatLogic.StatModTable["Gnome"] = {
 		-- Gnome: Expansive Mind - Racial
 		--        Increase Intelligence by 5%.
@@ -934,7 +934,7 @@ elseif addonTable.playerRace == "Gnome" then
 			}
 		}
 	}
-elseif addonTable.playerRace == "Human" then
+elseif addon.playerRace == "Human" then
 	StatLogic.StatModTable["Human"] = {
 		-- Human: The Human Spirit - Racial
 		--        Increase Spirit by 5%.

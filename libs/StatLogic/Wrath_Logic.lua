@@ -1,4 +1,4 @@
-local addonName, addonTable = ...
+local addonName, addon = ...
 ---@class StatLogic
 local StatLogic = LibStub:GetLibrary(addonName)
 
@@ -8,10 +8,10 @@ StatLogic.ExtraHasteClasses["PALADIN"] = true
 StatLogic.ExtraHasteClasses["DEATHKNIGHT"] = true
 StatLogic.ExtraHasteClasses["SHAMAN"] = true
 StatLogic.ExtraHasteClasses["DRUID"] = true
-local extraHaste = StatLogic.ExtraHasteClasses[addonTable.class] and 1.3 or 1
+local extraHaste = StatLogic.ExtraHasteClasses[addon.class] and 1.3 or 1
 
 -- Level 60 rating base
-addonTable.RatingBase = {
+addon.RatingBase = {
 	[CR_WEAPON_SKILL] = 2.5,
 	[CR_DEFENSE_SKILL] = 1.5,
 	[CR_DODGE] = 13.8,
@@ -38,7 +38,7 @@ addonTable.RatingBase = {
 	[CR_EXPERTISE] = 2.5,
 	[CR_ARMOR_PENETRATION] = 4.69512176513672 / 1.1,
 }
-addonTable.SetCRMax()
+addon.SetCRMax()
 
 StatLogic.GenericStatMap[StatLogic.GenericStats.CR_HIT] = {
 	CR_HIT_MELEE,
@@ -181,7 +181,7 @@ function StatLogic:GetNormalManaRegenFromSpi(spi, int, level)
 end
 
 -- Numbers reverse engineered by Whitetooth (hotdogee [at] gmail [dot] com)
-addonTable.CritPerAgi = {
+addon.CritPerAgi = {
 	["WARRIOR"] = {
 		0.2587, 0.2264, 0.2264, 0.2264, 0.2264, 0.2012, 0.2012, 0.2012, 0.2012, 0.2012,
 		0.1811, 0.1811, 0.1646, 0.1646, 0.1509, 0.1509, 0.1509, 0.1393, 0.1393, 0.1293,
@@ -291,7 +291,7 @@ local zero = setmetatable({}, {
 })
 
 -- Numbers reverse engineered by Whitetooth (hotdogee [at] gmail [dot] com)
-addonTable.SpellCritPerInt = {
+addon.SpellCritPerInt = {
 	["WARRIOR"] = zero,
 	["PALADIN"] = {
 		0.0832, 0.0793, 0.0793, 0.0757, 0.0757, 0.0724, 0.0694, 0.0694, 0.0666, 0.0666,
@@ -367,7 +367,7 @@ addonTable.SpellCritPerInt = {
 	},
 }
 
-addonTable.APPerStr = {
+addon.APPerStr = {
 	["WARRIOR"] = 2,
 	["PALADIN"] = 2,
 	["HUNTER"] = 1,
@@ -380,7 +380,7 @@ addonTable.APPerStr = {
 	["DRUID"] = 2,
 }
 
-addonTable.APPerAgi = {
+addon.APPerAgi = {
 	["WARRIOR"] = 0,
 	["PALADIN"] = 0,
 	["HUNTER"] = 1,
@@ -393,7 +393,7 @@ addonTable.APPerAgi = {
 	["DRUID"] = 0,
 }
 
-addonTable.RAPPerAgi = {
+addon.RAPPerAgi = {
 	["WARRIOR"] = 1,
 	["PALADIN"] = 0,
 	["HUNTER"] = 1,
@@ -406,7 +406,7 @@ addonTable.RAPPerAgi = {
 	["DRUID"] = 0,
 }
 
-addonTable.BaseDodge = {
+addon.BaseDodge = {
 	["WARRIOR"] =     3.6640,
 	["PALADIN"] =     3.4943,
 	["HUNTER"] =     -4.0873,
@@ -419,7 +419,7 @@ addonTable.BaseDodge = {
 	["DRUID"] =       5.6097,
 }
 
-addonTable.DodgePerAgiMaxLevel = {
+addon.DodgePerAgiMaxLevel = {
 
 	["WARRIOR"] = 0.0118,
 
@@ -445,7 +445,7 @@ addonTable.DodgePerAgiMaxLevel = {
 
 
 
-addonTable.StatModValidators.glyph = {
+addon.StatModValidators.glyph = {
 	validate = function(case)
 		return IsPlayerSpell(case.glyph)
 	end,
@@ -454,10 +454,10 @@ addonTable.StatModValidators.glyph = {
 		["GLYPH_REMOVED"] = true,
 	}
 }
-addonTable.StatModCacheInvalidators["PLAYER_TALENT_UPDATE"] = addonTable.StatModCacheInvalidators["CHARACTER_POINTS_CHANGED"]
-addonTable.RegisterValidatorEvents()
+addon.StatModCacheInvalidators["PLAYER_TALENT_UPDATE"] = addon.StatModCacheInvalidators["CHARACTER_POINTS_CHANGED"]
+addon.RegisterValidatorEvents()
 
-addonTable.bonusArmorItemEquipLoc = {
+addon.bonusArmorItemEquipLoc = {
 	["INVTYPE_WEAPON"] = true,
 	["INVTYPE_2HWEAPON"] = true,
 	["INVTYPE_WEAPONMAINHAND"] = true,
@@ -472,7 +472,7 @@ addonTable.bonusArmorItemEquipLoc = {
 }
 
 -- Generated from https://github.com/wowsims/wotlk/blob/master/assets/item_data/all_item_tooltips.csv
-addonTable.baseArmorTable = {
+addon.baseArmorTable = {
 	[Enum.ItemQuality.Epic] = {
 		[BACKSLOT] = {
 			[Enum.ItemArmorSubclass.Cloth] = {
@@ -709,7 +709,7 @@ local BuffGroup = {
 }
 
 StatLogic.StatModTable = {}
-if addonTable.class == "DRUID" then
+if addon.class == "DRUID" then
 	StatLogic.StatModTable["DRUID"] = {
 		-- Druid: Improved Moonkin Form (Rank 3) - 1,19
 		--        Your Moonkin Aura also causes affected targets to gain 1%/2%/3% haste and you to gain 10/20/30% of your spirit as additional spell damage.
@@ -1384,7 +1384,7 @@ if addonTable.class == "DRUID" then
 			},
 		},
 	}
-elseif addonTable.class == "DEATHKNIGHT" then
+elseif addon.class == "DEATHKNIGHT" then
 	StatLogic.StatModTable["DEATHKNIGHT"] = {
 		-- Death Knight: Forceful Deflection - Passive
 		--               Increases your Parry Rating by 25% of your total Strength.
@@ -1732,7 +1732,7 @@ elseif addonTable.class == "DEATHKNIGHT" then
 			},
 		},
 	}
-elseif addonTable.class == "HUNTER" then
+elseif addon.class == "HUNTER" then
 	StatLogic.StatModTable["HUNTER"] = {
 		-- Hunter: Hunter vs. Wild (Rank 3) - 3,14
 		--         Increases you and your pet's attack power and ranged attack power equal to 10%/20%/30% of your total Stamina.
@@ -1906,7 +1906,7 @@ elseif addonTable.class == "HUNTER" then
 			},
 		},
 	}
-elseif addonTable.class == "MAGE" then
+elseif addon.class == "MAGE" then
 	StatLogic.StatModTable["MAGE"] = {
 		["ADD_SPELL_CRIT_RATING_MOD_SPI"] = {
 			-- Mage: Molten Armor (Rank 3) - Buff
@@ -2130,7 +2130,7 @@ elseif addonTable.class == "MAGE" then
 			},
 		},
 	}
-elseif addonTable.class == "PALADIN" then
+elseif addon.class == "PALADIN" then
 	StatLogic.StatModTable["PALADIN"] = {
 		-- Paladin: Sheath of Light (Rank 3) - 3,24
 		--          Increases your spell power by an amount equal to 10%/20%/30% of your attack power
@@ -2399,7 +2399,7 @@ elseif addonTable.class == "PALADIN" then
 			},
 		},
 	}
-elseif addonTable.class == "PRIEST" then
+elseif addon.class == "PRIEST" then
 	StatLogic.StatModTable["PRIEST"] = {
 		-- Priest: Meditation (Rank 3) - 1,7
 		--         Allows 17/33/50% of your Mana regeneration to continue while casting.
@@ -2580,7 +2580,7 @@ elseif addonTable.class == "PRIEST" then
 			},
 		},
 	}
-elseif addonTable.class == "ROGUE" then
+elseif addon.class == "ROGUE" then
 	StatLogic.StatModTable["ROGUE"] = {
 		-- Rogue: Deadliness (Rank 5) - 3,18
 		--        Increases your attack power by 2%/4%/6%/8%/10%.
@@ -2719,7 +2719,7 @@ elseif addonTable.class == "ROGUE" then
 			},
 		},
 	}
-elseif addonTable.class == "SHAMAN" then
+elseif addon.class == "SHAMAN" then
 	StatLogic.StatModTable["SHAMAN"] = {
 		-- Shaman: Mental Dexterity (Rank 3) - 2,15
 		--         Increases your Attack Power by 33%/66%/100% of your Intellect.
@@ -2859,7 +2859,7 @@ elseif addonTable.class == "SHAMAN" then
 			},
 		},
 	}
-elseif addonTable.class == "WARLOCK" then
+elseif addon.class == "WARLOCK" then
 	StatLogic.StatModTable["WARLOCK"] = {
 		["ADD_CRIT_TAKEN"] = {
 			-- Warlock: Metamorphosis - Buff
@@ -3124,7 +3124,7 @@ elseif addonTable.class == "WARLOCK" then
 			},
 		},
 	}
-elseif addonTable.class == "WARRIOR" then
+elseif addon.class == "WARRIOR" then
 	StatLogic.StatModTable["WARRIOR"] = {
 		-- Warrior: Improved Spell Reflection (Rank 2) - 3,10
 		--          Reduces the chance you'll be hit by spells by 2%/4%
@@ -3351,7 +3351,7 @@ elseif addonTable.class == "WARRIOR" then
 	}
 end
 
-if addonTable.playerRace == "NightElf" then
+if addon.playerRace == "NightElf" then
 	StatLogic.StatModTable["NightElf"] = {
 		["ADD_HIT_TAKEN"] = {
 			-- Night Elf : Quickness - Racial
@@ -3364,7 +3364,7 @@ if addonTable.playerRace == "NightElf" then
 			},
 		}
 	}
-elseif addonTable.playerRace == "Gnome" then
+elseif addon.playerRace == "Gnome" then
 	StatLogic.StatModTable["Gnome"] = {
 		["MOD_INT"] = {
 			-- Gnome: Expansive Mind - Racial
@@ -3375,7 +3375,7 @@ elseif addonTable.playerRace == "Gnome" then
 			},
 		}
 	}
-elseif addonTable.playerRace == "Human" then
+elseif addon.playerRace == "Human" then
 	StatLogic.StatModTable["Human"] = {
 		["MOD_SPIRIT"] = {
 			-- Human: The Human Spirit - Racial
@@ -3876,10 +3876,10 @@ local ModAgiClasses = {
 
 function StatLogic:GetDodgePerAgi()
 	local level = UnitLevel("player")
-	local class = addonTable.class
-	if level == GetMaxPlayerLevel() and addonTable.DodgePerAgiMaxLevel[class] then
+	local class = addon.class
+	if level == GetMaxPlayerLevel() and addon.DodgePerAgiMaxLevel[class] then
 
-		return addonTable.DodgePerAgiMaxLevel[class], StatLogic.Stats.Dodge
+		return addon.DodgePerAgiMaxLevel[class], StatLogic.Stats.Dodge
 
 	end
 	-- Collect data
@@ -3888,7 +3888,7 @@ function StatLogic:GetDodgePerAgi()
 	local baseDefense, modDefense = UnitDefense("player")
 	local dodgeFromModDefense = modDefense * 0.04
 	local D_r = dodgeFromDodgeRating + dodgeFromModDefense
-	local D_b = addonTable.BaseDodge[class] + self:GetStatMod("ADD_DODGE") + (baseDefense - level * 5) * 0.04
+	local D_b = addon.BaseDodge[class] + self:GetStatMod("ADD_DODGE") + (baseDefense - level * 5) * 0.04
 	local stat, effectiveStat, posBuff, negBuff = UnitStat("player", 2) -- 2 = Agility
 	-- Talents that modify AGI will not add to posBuff, so we need to calculate baseAgi
 	-- But Kings added AGi will add to posBuff, so we need to check for Kings
@@ -3956,7 +3956,7 @@ function StatLogic:GetDodgeChanceBeforeDR()
 	local dodgeFromAdditionalAgi = dodgePerAgi * (effectiveStat - baseAgi)
 	local modDodge = dodgeFromDodgeRating + dodgeFromDefenceRating + dodgeFromAdditionalAgi
 
-	local drFreeDodge = GetDodgeChance() - self:GetAvoidanceAfterDR(StatLogic.Stats.Dodge, modDodge, addonTable.class)
+	local drFreeDodge = GetDodgeChance() - self:GetAvoidanceAfterDR(StatLogic.Stats.Dodge, modDodge, addon.class)
 
 	return modDodge, drFreeDodge
 end
@@ -3991,7 +3991,7 @@ function StatLogic:GetParryChanceBeforeDR()
 	local modParry = parryFromParryRating + parryFromDefenceRating
 
 	-- drFreeParry
-	local drFreeParry = GetParryChance() - self:GetAvoidanceAfterDR(StatLogic.Stats.Parry, modParry, addonTable.class)
+	local drFreeParry = GetParryChance() - self:GetAvoidanceAfterDR(StatLogic.Stats.Parry, modParry, addon.class)
 
 	return modParry, drFreeParry
 end
