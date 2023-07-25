@@ -193,6 +193,10 @@ addonTable.DodgePerAgiMaxLevel = {
 
 addonTable.RegisterValidatorEvents()
 
+local BuffGroup = {
+	MOD_ARMOR = 1,
+}
+
 StatLogic.StatModTable = {}
 if addonTable.class == "DRUID" then
 	StatLogic.StatModTable["DRUID"] = {
@@ -959,6 +963,7 @@ StatLogic.StatModTable["ALL"] = {
 				0.08, 0.16, 0.25,
 			},
 			["buff"] = 15363,		-- ["Inspiration"],
+			["group"] = BuffGroup.MOD_ARMOR,
 		},
 		-- Shaman: Ancestral Fortitude (Rank 1/2/3) - Buff
 		--         Increases your armor value by 8%/16%/25%.
@@ -967,6 +972,7 @@ StatLogic.StatModTable["ALL"] = {
 				0.08, 0.16, 0.25,
 			},
 			["buff"] = 16237,		-- ["Ancestral Fortitude"],
+			["group"] = BuffGroup.MOD_ARMOR,
 		},
 	},
 	-- Blessing of Kings - Buff
