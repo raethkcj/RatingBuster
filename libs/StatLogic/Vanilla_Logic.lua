@@ -1051,22 +1051,6 @@ StatLogic.StatModTable["ALL"] = {
 			["buff"] = 25898,		-- ["Greater Blessing of Kings"],
 		},
 	},
-	-- Priest: Power Infusion - Buff
-	--         Infuses the target with power, increasing their spell damage and healing by 20%. Lasts 15 sec.
-	["MOD_SPELL_DMG"] = {
-		[1] = {
-			["value"] = 0.2,
-			["buff"] = 10060,		-- ["Power Infusion"],
-		},
-	},
-	-- Priest: Power Infusion - Buff
-	--         Infuses the target with power, increasing their spell damage and healing by 20%. Lasts 15 sec.
-	["MOD_HEALING"] = {
-		[1] = {
-			["value"] = 0.2,
-			["buff"] = 10060,		-- ["Power Infusion"],
-		},
-	},
 	["ADD_MELEE_CRIT"] = {
 		-- Leader of the Pack
 		{
