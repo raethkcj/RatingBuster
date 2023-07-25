@@ -46,7 +46,7 @@ function StatLogic:GetNormalManaRegenFromSpi(spi, class)
 end
 
 addonTable.BaseMeleeCrit = {
-	["WARRIOR"] = 3.0000,
+	["WARRIOR"] = 0.0000,
 	["PALADIN"] = 1.7000,
 	["HUNTER"]  = 0.0000,
 	["ROGUE"]   = 0.0000,
@@ -219,6 +219,35 @@ if addonTable.class == "DRUID" then
 				["buff"] = 768,		-- ["Cat Form"],
 			},
 		},
+		["ADD_MELEE_CRIT"] = {
+			-- Sharpened Claws, Cat Form
+			{
+				["tab"] = 2,
+				["num"] = 8,
+				["rank"] = {
+					2, 4, 6,
+				},
+				["buff"] = 768,
+			},
+			-- Sharpened Claws, Bear Form
+			{
+				["tab"] = 2,
+				["num"] = 8,
+				["rank"] = {
+					2, 4, 6,
+				},
+				["buff"] = 5487,
+			},
+			-- Sharpened Claws, Dire Bear Form
+			{
+				["tab"] = 2,
+				["num"] = 8,
+				["rank"] = {
+					2, 4, 6,
+				},
+				["buff"] = 9634,
+			},
+		},
 		["MOD_ARMOR"] = {
 			-- Druid: Thick Hide (Rank 5) - 2,5
 			--        Increases your Armor contribution from items by 2/4/6/8/10%
@@ -318,6 +347,15 @@ elseif addonTable.class == "HUNTER" then
 				["buff"] = 19263,		-- ["Deterrence"],
 			},
 		},
+		["ADD_MELEE_CRIT"] = {
+			{
+				["tab"] = 3,
+				["num"] = 13,
+				["rank"] = {
+					1, 2, 3,
+				},
+			},
+		},
 		-- Hunter: Survivalist (Rank 5) - 3,8
 		--         Increases total health by 2%/4%/6%/8%/10%.
 		["MOD_HEALTH"] = {
@@ -384,6 +422,16 @@ elseif addonTable.class == "MAGE" then
 	}
 elseif addonTable.class == "PALADIN" then
 	StatLogic.StatModTable["PALADIN"] = {
+		["ADD_MELEE_CRIT"] = {
+			-- Conviction
+			{
+				["tab"] = 3,
+				["num"] = 7,
+				["rank"] = {
+					1, 2, 3, 4, 5,
+				},
+			},
+		},
 		-- Paladin: Toughness (Rank 5) - 2,5
 		--          Increases your armor value from items by 2%/4%/6%/8%/10%.
 		["MOD_ARMOR"] = {
@@ -537,6 +585,38 @@ elseif addonTable.class == "ROGUE" then
 				["buff"] = 14278,		-- ["Ghostly Strike"],
 			},
 		},
+		["ADD_MELEE_CRIT"] = {
+			-- Malice
+			{
+				["tab"] = 1,
+				["num"] = 3,
+				["rank"] = {
+					1, 2, 3, 4, 5,
+				},
+			},
+			-- Dagger Specialization
+			{
+				["tab"] = 2,
+				["num"] = 11,
+				["rank"] = {
+					1, 2, 3, 4, 5,
+				},
+				["weapon"] = {
+					Enum.ItemWeaponSubclass.Dagger,
+				},
+			},
+			-- Fist Weapon Specialization
+			{
+				["tab"] = 2,
+				["num"] = 16,
+				["rank"] = {
+					1, 2, 3, 4, 5,
+				},
+				["weapon"] = {
+					Enum.ItemWeaponSubclass.Unarmed,
+				},
+			},
+		},
 		-- Rogue: Sleight of Hand (Rank 2) - 3,3
 		--        Reduces the chance you are critically hit by melee and ranged attacks by 1/2% and increases the threat reduction of your Feint ability by 20%.
 		["ADD_CRIT_TAKEN"] = {
@@ -577,6 +657,25 @@ elseif addonTable.class == "SHAMAN" then
 			{
 				["tab"] = 2,
 				["num"] = 9,
+				["rank"] = {
+					1, 2, 3, 4, 5,
+				},
+			},
+		},
+		["ADD_MELEE_CRIT"] = {
+			-- Elemental Devastation
+			{
+				["tab"] = 1,
+				["num"] = 11,
+				["buff"] = 30165,
+				["rank"] = {
+					3, 6, 9,
+				},
+			},
+			-- Thundering Strikes
+			{
+				["tab"] = 2,
+				["num"] = 4,
 				["rank"] = {
 					1, 2, 3, 4, 5,
 				},
@@ -760,6 +859,44 @@ elseif addonTable.class == "WARRIOR" then
 				["buff"] = 12328,		-- ["Death Wish"],
 			},
 		},
+		["ADD_CRIT"] = {
+			-- Cruelty
+			{
+				["tab"] = 2,
+				["num"] = 2,
+				["rank"] = {
+					1, 2, 3, 4, 5,
+				}
+			},
+			-- Axe Specialization
+			{
+				["tab"] = 1,
+				["num"] = 12,
+				["rank"] = {
+					1, 2, 3, 4, 5,
+				},
+				["weapon"] = {
+					Enum.ItemWeaponSubclass.Axe1H,
+					Enum.ItemWeaponSubclass.Axe2H,
+				},
+			},
+			-- Polearm Specialization
+			{
+				["tab"] = 1,
+				["num"] = 16,
+				["rank"] = {
+					1, 2, 3, 4, 5,
+				},
+				["weapon"] = {
+					Enum.ItemWeaponSubclass.Polearm,
+				},
+			},
+			-- Berserker Stance
+			{
+				["stance"] = "Interface\\Icons\\Ability_Racial_Avatar",
+				["value"] = 3,
+			},
+		}
 	}
 end
 
@@ -924,4 +1061,11 @@ StatLogic.StatModTable["ALL"] = {
 			["buff"] = 10060,		-- ["Power Infusion"],
 		},
 	},
+	["ADD_MELEE_CRIT"] = {
+		-- Leader of the Pack
+		{
+			["buff"] = 24932,
+			["value"] = 3,
+		}
+	}
 }

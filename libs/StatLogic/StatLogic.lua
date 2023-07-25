@@ -818,6 +818,11 @@ StatLogic.StatModInfo = {
 		finalAdjust = 0,
 		school = true,
 	},
+	-- ADD_MELEE_CRIT, _SPELL_CRIT, and _DODGE modifiers are used to reverse engineer conversion rates of AGI and INT,
+	-- but only before max level. When adding them to StatModTables, there's no need to be exhaustive;
+	-- only add mods that would reasonably be active while leveling, which are primarily talents.
+	-- The crit conversions are also only necessary in Vanilla, while Dodge is necessary in every expansion.
+	-- Spell crit modifiers are only required if they mod school 1 (physical)
 	["ADD_MELEE_CRIT"] = {
 		initialValue = 0,
 		finalAdjust = 0,
