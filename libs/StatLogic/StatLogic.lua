@@ -1216,6 +1216,18 @@ addon.StatModValidators = {
 			["UPDATE_SHAPESHIFT_FORM"] = true,
 		},
 	},
+	weapon = {
+		validate = function(case)
+			local weapon = GetInventoryItemID("player", 16)
+			if weapon then
+				local subclassID = select(7, GetItemInfoInstant(weapon))
+				return subclassID and case.weapon[subclassID]
+			end
+		end,
+		events = {
+			["UNIT_INVENTORY_CHANGED"] = "player",
+		}
+	},
 	set = {
 		validate = function(case)
 			return equipped_sets[case.set] and equipped_sets[case.set] >= case.pieces

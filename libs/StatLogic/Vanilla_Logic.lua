@@ -606,7 +606,7 @@ elseif addon.class == "ROGUE" then
 					1, 2, 3, 4, 5,
 				},
 				["weapon"] = {
-					Enum.ItemWeaponSubclass.Dagger,
+					[Enum.ItemWeaponSubclass.Dagger] = true,
 				},
 			},
 			-- Fist Weapon Specialization
@@ -617,7 +617,7 @@ elseif addon.class == "ROGUE" then
 					1, 2, 3, 4, 5,
 				},
 				["weapon"] = {
-					Enum.ItemWeaponSubclass.Unarmed,
+					[Enum.ItemWeaponSubclass.Unarmed] = true,
 				},
 			},
 		},
@@ -863,7 +863,7 @@ elseif addon.class == "WARRIOR" then
 				["buff"] = 12328,		-- ["Death Wish"],
 			},
 		},
-		["ADD_CRIT"] = {
+		["ADD_MELEE_CRIT"] = {
 			-- Cruelty
 			{
 				["tab"] = 2,
@@ -880,8 +880,8 @@ elseif addon.class == "WARRIOR" then
 					1, 2, 3, 4, 5,
 				},
 				["weapon"] = {
-					Enum.ItemWeaponSubclass.Axe1H,
-					Enum.ItemWeaponSubclass.Axe2H,
+					[Enum.ItemWeaponSubclass.Axe1H] = true,
+					[Enum.ItemWeaponSubclass.Axe2H] = true,
 				},
 			},
 			-- Polearm Specialization
@@ -892,7 +892,7 @@ elseif addon.class == "WARRIOR" then
 					1, 2, 3, 4, 5,
 				},
 				["weapon"] = {
-					Enum.ItemWeaponSubclass.Polearm,
+					[Enum.ItemWeaponSubclass.Polearm] = true,
 				},
 			},
 			-- Berserker Stance
