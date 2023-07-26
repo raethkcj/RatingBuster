@@ -1057,5 +1057,12 @@ StatLogic.StatModTable["ALL"] = {
 			["buff"] = 24932,
 			["value"] = 3,
 		}
+	},
+	["ADD_SPELL_CRIT"] = {
+		-- Moonkin Aura
+		{
+			["buff"] = 24907,
+			["value"] = 3,
+		},
 	}
 }
