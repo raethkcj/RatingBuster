@@ -1056,13 +1056,23 @@ StatLogic.StatModTable["ALL"] = {
 		{
 			["buff"] = 24932,
 			["value"] = 3,
-		}
+		},
+		-- Rallying Cry of the Dragonslayer
+		{
+			["buff"] = 22888,
+			["value"] = 5,
+		},
 	},
 	["ADD_SPELL_CRIT"] = {
 		-- Moonkin Aura
 		{
 			["buff"] = 24907,
 			["value"] = 3,
+		},
+		-- Rallying Cry of the Dragonslayer
+		{
+			["buff"] = 22888,
+			["value"] = 10,
 		},
 	}
 }
