@@ -1833,8 +1833,7 @@ function RatingBuster.ProcessTooltip(tooltip, name, link)
 	----------------------------
 	-- Item Level and Item ID --
 	----------------------------
-	-- Check for ItemLevel addon, do nothing if found
-	if not ItemLevel_AddInfo and (globalDB.showItemLevel or globalDB.showItemID) and link then
+	if (globalDB.showItemLevel or globalDB.showItemID) and link then
 		if cache[link] then
 			tooltip:AddLine(cache[link])
 		else
