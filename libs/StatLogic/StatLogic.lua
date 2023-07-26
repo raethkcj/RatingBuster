@@ -160,6 +160,7 @@ local UnitStat = UnitStat
 local GetShapeshiftForm = GetShapeshiftForm
 local GetShapeshiftFormInfo = GetShapeshiftFormInfo
 local GetTalentInfo = GetTalentInfo
+local tocversion = select(4, GetBuildInfo())
 
 ---------------
 -- Lua Tools --
@@ -1484,7 +1485,7 @@ do
 
 	local totalEquippedStatCache = setmetatable({}, {
 		__index = function(t, stat)
-			if not trackedTotalStats[stat] then return 0 end
+			if tocversion >= 20000 or not trackedTotalStats[stat] then return 0 end
 
 			for trackedStat in pairs(trackedTotalStats) do
 				t[trackedStat] = 0
@@ -1506,11 +1507,13 @@ do
 		end
 	})
 
-	local f = CreateFrame("Frame")
-	f:RegisterUnitEvent("UNIT_INVENTORY_CHANGED", "player")
-	f:SetScript("OnEvent", function()
-		wipe(totalEquippedStatCache)
-	end)
+	if tocversion < 20000 then
+		local f = CreateFrame("Frame")
+		f:RegisterUnitEvent("UNIT_INVENTORY_CHANGED", "player")
+		f:SetScript("OnEvent", function()
+			wipe(totalEquippedStatCache)
+		end)
+	end
 
 	function StatLogic:GetTotalEquippedStat(stat)
 		return totalEquippedStatCache[stat]
