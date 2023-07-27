@@ -481,6 +481,10 @@ local function GetTotalDefense(unit)
 	return base + modifier
 end
 
+local function GetTotalWeaponSkill(unit)
+	local base, modifier = UnitAttackBothHands(unit);
+	return base + modifier
+end
 
 --============--
 -- Base Stats --
@@ -1562,14 +1566,21 @@ end
 function StatLogic:GetEffectFromDefense(defense, attackerLevel)
 	self:argCheck(defense, 2, "nil", "number")
 	self:argCheck(attackerLevel, 3, "nil", "number")
-	if not defense then
-		local base, add = UnitDefense("player")
-		defense = base + add
-	end
+	defense = defense or GetTotalDefense("player")
 	if not attackerLevel then
 		attackerLevel = UnitLevel("player")
 	end
-	return (defense - attackerLevel * 5) * 0.04
+	return (defense - attackerLevel * 5) * DODGE_PARRY_BLOCK_PERCENT_PER_DEFENSE
+end
+
+function StatLogic:GetCritChanceFromWeaponSkill(skill, targetLevel)
+	self:argCheck(skill, 2, "nil", "number")
+	self:argCheck(targetLevel, 3, "nil", "number")
+	skill = skill or GetTotalWeaponSkill("player")
+	if not targetLevel then
+		targetLevel = UnitLevel("player")
+	end
+	return (skill - targetLevel * 5) * 0.04
 end
 
 function StatLogic:RatingExists(id)
@@ -2048,6 +2059,7 @@ function StatLogic:GetCritPerAgi(class, level)
 		local _, agility = UnitStat("player", 2)
 		local critFromAgi = GetCritChance()
 			- self:GetStatMod("ADD_MELEE_CRIT")
+			- self:GetCritChanceFromWeaponSkill()
 			- self:GetTotalEquippedStat(StatLogic.Stats.MeleeCrit)
 		return (critFromAgi - addon.BaseMeleeCrit[class]) / agility
 	end

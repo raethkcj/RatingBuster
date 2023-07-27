@@ -1511,11 +1511,14 @@ do
 		end
 	end
 
-	-- Ignore Stat Mods that mostly exist for Tank Points
+	-- Ignore Stat Mods that are only used for Diminishing Returns
+	-- and agi/int conversion rates
 	local ignoredStatMods = {
 		["MOD_DMG_TAKEN"] = true,
 		["ADD_DODGE"] = true,
 		["ADD_HIT_TAKEN"] = true,
+		["ADD_MELEE_CRIT"] = true,
+		["ADD_SPELL_CRIT"] = true,
 	}
 	local function GenerateAuraOptions()
 		for modType, modList in pairs(StatLogic.StatModTable) do
