@@ -20,6 +20,33 @@ function Stat:new(stat)
 	return stat
 end
 
+function Stat:AddDependent(stat, value)
+	self.dependents = self.dependents or {}
+	self.dependents[stat] = (self.dependents[stat] or 0) + value
+end
+
+function Stat:RemoveDependent(stat, value)
+	if self.dependents and self.dependents[stat] then
+		self.dependents[stat] = (self.dependents[stat] or 0) - value
+	end
+end
+
+function Stat:ApplyModifier(value)
+	self.modifier = (self.modifier or 1) * (1 + value)
+end
+
+function Stat:RemoveModifier(value)
+	self.modifier = (self.modifier or 1) / (1 + value)
+end
+
+function Stat:AddValue(value)
+	self.value = (self.value or 0) + value
+end
+
+function Stat:RemoveValue(value)
+	self.value = (self.value or 0) - value
+end
+
 StatLogic.Stats = {
 	-- Basic Attributes
 	Strength = Stat:new(),
