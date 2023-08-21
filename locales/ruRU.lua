@@ -526,12 +526,6 @@ L["Block Rating Summary"] = "Суммировать рейтинг блока"
 -- /rb sum tank res
 L["Sum Resilience"] = "Сумма устойчивости"
 L["Resilience Summary"] = "Суммировать устойчивость"
--- /rb sum tank tp
-L["Sum TankPoints"] = "Самма TankPoints"
-L["TankPoints <- Health, Total Reduction"] ="TankPoints <- Здоровье, Общее Cнижение"
--- /rb sum tank tr
-L["Sum Total Reduction"] = "Самма общего снижения"
-L["Total Reduction <- Armor, Dodge, Parry, Block, MobMiss, MobCrit, MobCrush, DamageTakenMods"] = "Общее снижение <- Броня, Уклонение, Парирование, Блок, ПромахСущества, КритСущества, MobCrush, DamageTakenMods"
 -- /rb sum tank avoid
 L["Sum Avoidance"] = "Сумма уклонения от удара"
 L["Avoidance <- Dodge, Parry, MobMiss, Block(Optional)"] = "Уклонение от удара <- Уклонение, Парирование, ПромахСущества, Блок(дополнительный)"

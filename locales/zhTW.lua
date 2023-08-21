@@ -468,12 +468,6 @@ L["Weapon Skill <- Weapon Skill Rating"] = "武器技能 ← 武器技能等級"
 -- /rb sum statcomp exp -- 2.3.0
 L["Sum Expertise"] = "統計熟練技能"
 L["Expertise <- Expertise Rating"] = "熟練技能 ← 熟練等級"
--- /rb sum statcomp tp
-L["Sum TankPoints"] = "統計坦克點"
-L["TankPoints <- Health Total Reduction"] = "坦克點 ← 生命力、傷害減免總值"
--- /rb sum statcomp tr
-L["Sum Total Reduction"] = "統計傷害減免總值"
-L["Total Reduction <- Armor Dodge, Parry, Block, Block Value, Defense, Resilience, MobMiss, MobCrit, MobCrush, DamageTakenMods"] = "傷害減免總值 ← 護甲、閃躲、招架、格擋、格檔值、防禦、韌性、怪物未擊中、怪物致命、怪物輾壓、DamageTakenMods (?)"
 -- /rb sum statcomp avoid
 L["Sum Avoidance"] = "統計傷害迴避"
 L["Avoidance <- Dodge Parry, MobMiss, Block(Optional)"] = "傷害迴避 ← 閃躲、招架、怪物未擊中、格擋(選項)"

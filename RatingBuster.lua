@@ -1101,31 +1101,6 @@ local options = {
 	},
 }
 
--- TankPoints support, version check
-local tpSupport
-local tpLocale
-if TankPoints and (tonumber(strsub(TankPoints.version, 1, 3)) >= 2.6) then
-	tpSupport = true
-	tpLocale = LibStub("AceLocale-3.0"):GetLocale("TankPoints", true)
-	options.args.sum.args.tank.args.sumTankPoints = {
-		type = 'toggle',
-		name = L["Sum TankPoints"],
-		desc = L["TankPoints <- Health, Total Reduction"],
-	}
-	options.args.sum.args.tank.args.sumTotalReduction = {
-		type = 'toggle',
-		name = L["Sum Total Reduction"],
-		desc = L["Total Reduction <- Armor, Dodge, Parry, Block, Block Value, Defense, Resilience, MobMiss, MobCrit, MobCrush, DamageTakenMods"],
-	}
-	--[[
-	options.args.sum.args.tank.args.sumAvoidance = {
-		type = 'toggle',
-		name = L["Sum Avoidance"],
-		desc = L["Avoidance <- Dodge, Parry, MobMiss"],
-	}
-	--]]
-end
-
 ---------------------
 -- Saved Variables --
 ---------------------
@@ -1266,8 +1241,6 @@ local defaults = {
 		sumShadowResist = false,
 		sumResilience = true, -- new
 		sumDefense = false,
-		sumTankPoints = false,
-		sumTotalReduction = false,
 		sumAvoidance = false,
 		-- Gems
 		sumGemRed = {
@@ -3407,160 +3380,6 @@ local summaryCalcData = {
 		end,
 	},
 }
-if tpSupport == true then
-	-- TankPoints
-	tinsert(summaryCalcData, {
-		option = "sumTankPoints",
-		name = "TANKPOINTS",
-		func = function(diffTable1)
-			-- Item type
-			local itemType = diffTable1.itemType
-			-- Calculate current TankPoints
-			local tpSource = {}
-			local TP = TankPoints
-			local TPTips = TankPointsTooltips
-			TP:GetSourceData(tpSource, TP_MELEE)
-			local tpResults = {}
-			copyTable(tpResults, tpSource)
-			TP:GetTankPoints(tpResults, TP_MELEE)
-			-- Update if different
-			if floor(TP.resultsTable.tankPoints[TP_MELEE]) ~= floor(tpResults.tankPoints[TP_MELEE]) then
-				copyTable(TP.sourceTable, tpSource)
-				copyTable(TP.resultsTable, tpResults)
-			end
-			----------------------------------------------------
-			-- Calculate TP difference with 1st equipped item --
-			----------------------------------------------------
-			local tpTable = {}
-			-- Set the forceShield arg
-			local forceShield
-			-- if not equipped shield and item is shield then force on
-			-- if not equipped shield and item is not shield then nil
-			-- if equipped shield and item is shield then nil
-			-- if equipped shield and item is not shield then force off
-			if ((diffTable1.diffItemType1 ~= "INVTYPE_SHIELD") and (diffTable1.diffItemType2 ~= "INVTYPE_SHIELD")) and (itemType == "INVTYPE_SHIELD") then
-				forceShield = true
-			elseif ((diffTable1.diffItemType1 == "INVTYPE_SHIELD") or (diffTable1.diffItemType2 == "INVTYPE_SHIELD")) and (itemType ~= "INVTYPE_SHIELD") then
-				forceShield = false
-			end
-			-- Get the tp table
-			TP:GetSourceData(tpTable, TP_MELEE, forceShield)
-			-- Build changes table
-			local changes = TPTips:BuildChanges({}, diffTable1)
-			-- Alter tp table
-			TP:AlterSourceData(tpTable, changes, forceShield)
-			-- Calculate TankPoints from tpTable
-			TP:GetTankPoints(tpTable, TP_MELEE, forceShield)
-			-- Calculate tp difference
-			local diff = floor(tpTable.tankPoints[TP_MELEE]) - floor(TP.resultsTable.tankPoints[TP_MELEE])
-
-			return diff
-		end,
-	})
-	-- Total Reduction
-	tinsert(summaryCalcData, {
-		option = "sumTotalReduction",
-		name = "TOTALREDUCTION",
-		ispercent = true,
-		func = function(diffTable1)
-			-- Item type
-			local itemType = diffTable1.itemType
-			-- Calculate current TankPoints
-			local tpSource = {}
-			local TP = TankPoints
-			local TPTips = TankPointsTooltips
-			TP:GetSourceData(tpSource, TP_MELEE)
-			local tpResults = {}
-			copyTable(tpResults, tpSource)
-			TP:GetTankPoints(tpResults, TP_MELEE)
-			-- Update if different
-			if floor(TP.resultsTable.tankPoints[TP_MELEE]) ~= floor(tpResults.tankPoints[TP_MELEE]) then
-				copyTable(TP.sourceTable, tpSource)
-				copyTable(TP.resultsTable, tpResults)
-			end
-			----------------------------------------------------
-			-- Calculate TP difference with 1st equipped item --
-			----------------------------------------------------
-			local tpTable = {}
-			-- Set the forceShield arg
-			local forceShield
-			-- if not equipped shield and item is shield then force on
-			-- if not equipped shield and item is not shield then nil
-			-- if equipped shield and item is shield then nil
-			-- if equipped shield and item is not shield then force off
-			if ((diffTable1.diffItemType1 ~= "INVTYPE_SHIELD") and (diffTable1.diffItemType2 ~= "INVTYPE_SHIELD")) and (itemType == "INVTYPE_SHIELD") then
-				forceShield = true
-			elseif ((diffTable1.diffItemType1 == "INVTYPE_SHIELD") or (diffTable1.diffItemType2 == "INVTYPE_SHIELD")) and (itemType ~= "INVTYPE_SHIELD") then
-				forceShield = false
-			end
-			-- Get the tp table
-			TP:GetSourceData(tpTable, TP_MELEE, forceShield)
-			-- Build changes table
-			local changes = TPTips:BuildChanges({}, diffTable1)
-			-- Alter tp table
-			TP:AlterSourceData(tpTable, changes, forceShield)
-			-- Calculate TankPoints from tpTable
-			TP:GetTankPoints(tpTable, TP_MELEE, forceShield)
-			-- Calculate tp difference
-			local diff = tpTable.totalReduction[TP_MELEE] - TP.resultsTable.totalReduction[TP_MELEE]
-
-			return diff * 100
-		end,
-	})
-	--[[
-	-- Avoidance
-	tinsert(summaryCalcData, {
-		option = "sumAvoidance",
-		name = "AVOIDANCE",
-		ispercent = true,
-		func = function(diffTable1)
-			-- Item type
-			local itemType = diffTable1.itemType
-			local right
-			-- Calculate current TankPoints
-			local tpSource = {}
-			local TP = TankPoints
-			local TPTips = TankPointsTooltips
-			TP:GetSourceData(tpSource, TP_MELEE)
-			local tpResults = {}
-			copyTable(tpResults, tpSource)
-			TP:GetTankPoints(tpResults, TP_MELEE)
-			-- Update if different
-			if floor(TP.resultsTable.tankPoints[TP_MELEE]) ~= floor(tpResults.tankPoints[TP_MELEE]) then
-				copyTable(TP.sourceTable, tpSource)
-				copyTable(TP.resultsTable, tpResults)
-			end
-			----------------------------------------------------
-			-- Calculate TP difference with 1st equipped item --
-			----------------------------------------------------
-			local tpTable = {}
-			-- Set the forceShield arg
-			local forceShield
-			-- if not equipped shield and item is shield then force on
-			-- if not equipped shield and item is not shield then nil
-			-- if equipped shield and item is shield then nil
-			-- if equipped shield and item is not shield then force off
-			if ((diffTable1.diffItemType1 ~= "INVTYPE_SHIELD") and (diffTable1.diffItemType2 ~= "INVTYPE_SHIELD")) and (itemType == "INVTYPE_SHIELD") then
-				forceShield = true
-			elseif ((diffTable1.diffItemType1 == "INVTYPE_SHIELD") or (diffTable1.diffItemType2 == "INVTYPE_SHIELD")) and (itemType ~= "INVTYPE_SHIELD") then
-				forceShield = false
-			end
-			-- Get the tp table
-			TP:GetSourceData(tpTable, TP_MELEE, forceShield)
-			-- Build changes table
-			local changes = TPTips:BuildChanges({}, diffTable1)
-			-- Alter tp table
-			TP:AlterSourceData(tpTable, changes, forceShield)
-			-- Calculate TankPoints from tpTable
-			TP:GetTankPoints(tpTable, TP_MELEE, forceShield)
-			-- Calculate tp difference
-			local diff = tpTable.mobMissChance + tpTable.dodgeChance + tpTable.parryChance - TP.resultsTable.mobMissChance - TP.resultsTable.dodgeChance - TP.resultsTable.parryChance
-
-			return diff * 100
-		end,
-	})
-	--]]
-end
 
 -- Build summaryFunc
 for _, calcData in pairs(summaryCalcData) do
@@ -3732,31 +3551,7 @@ function RatingBuster:StatSummary(tooltip, name, link)
 			v[StatLogic.Stats.Spirit] = v[StatLogic.Stats.Spirit] * GSM("MOD_SPI")
 		end
 	end
-	-- Summary Table
-	--[[
-	local statData = {
-		sum = {},
-		diff1 = {},
-		diff2 = {},
-	}
-	if profileDB.sumHP then
-		local d = {name = "HEALTH"}
-		for k, sum in pairs(data) do
-			d[k] = (sum["HEALTH"] + (sum[StatLogic.Stats.Stamina] * 10)) * GSM("MOD_HEALTH")
-		end
-		tinsert(summary, d)
-	end
-	local summaryCalcData = {
-		-- Health - HEALTH, STA
-		sumHP = {
-			name = "HEALTH",
-			func = function(sum)
-				return (sum["HEALTH"] + (sum[StatLogic.Stats.Stamina] * 10)) * GSM("MOD_HEALTH")
-			end,
-			ispercent = false,
-		},
-	}
-	--]]
+
 	local summary = {}
 	for _, calcData in pairs(summaryCalcData) do
 		if profileDB[calcData.option] then
@@ -3765,11 +3560,7 @@ function RatingBuster:StatSummary(tooltip, name, link)
 				ispercent = calcData.ispercent,
 			}
 			for statDataType, statTable in pairs(statData) do
-				if tpSupport and ((calcData.name == "TANKPOINTS") or (calcData.name == "TOTALREDUCTION")) and (statDataType == "sum") then
-					entry[statDataType] = nil
-				else
-					entry[statDataType] = calcData.func(statTable, statDataType, link)
-				end
+				entry[statDataType] = calcData.func(statTable, statDataType, link)
 			end
 			tinsert(summary, entry)
 		end
@@ -3885,21 +3676,7 @@ function RatingBuster:StatSummary(tooltip, name, link)
 				end
 			end
 			if right then
-				if n == "TANKPOINTS" then
-					if tpSupport then
-						left = tpLocale["TankPoints"]
-					else
-						left = "TankPoints"
-					end
-				elseif n == "TOTALREDUCTION" then
-					if tpSupport then
-						left = tpLocale["Total Reduction"]
-					else
-						left = "Total Reduction"
-					end
-				else
-					left = StatLogic:GetStatNameFromID(n)
-				end
+				left = StatLogic:GetStatNameFromID(n)
 				tinsert(output, {left, right})
 			end
 		end

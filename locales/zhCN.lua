@@ -465,12 +465,6 @@ L["Weapon Skill <- Weapon Skill Rating"] = "武器技能 ← 武器技能等级"
 -- /rb sum statcomp exp -- 2.3.0
 L["Sum Expertise"] = "统计精准"
 L["Expertise <- Expertise Rating"] = "精准 ← 精准等级"
--- /rb sum statcomp tp
-L["Sum TankPoints"] = "统计抗打击能力"
-L["TankPoints <- Health Total Reduction"] = "抗打击能力 ← 生命值, 所有伤害减免"
--- /rb sum statcomp tr
-L["Sum Total Reduction"] = "统计伤害减免"
-L["Total Reduction <- Armor Dodge, Parry, Block, Block Value, Defense, Resilience, MobMiss, MobCrit, MobCrush, DamageTakenMods"] = "所有伤害减免 <- 护甲值, 躲闪, 招架, 格挡, 格挡值, 防御技能, 韧性, 怪物未击中几率, 怪物重击几率, 怪物碾压打击几率, 伤害减免"
 -- /rb sum statcomp avoid
 L["Sum Avoidance"] = "统计躲避"
 L["Avoidance <- Dodge Parry, MobMiss, Block(Optional)"] = "躲避 ← 躲闪, 招架, 怪物未命中, 格挡(可选)"

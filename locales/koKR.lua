@@ -466,12 +466,6 @@ L["Weapon Skill <- Weapon Skill Rating"] = "무기 숙련 <- 무기 숙련도"
 -- /rb sum statcomp exp -- 2.3.0
 L["Sum Expertise"] = "숙련"
 L["Expertise <- Expertise Rating"] = "숙련 <- 숙련도"
--- /rb sum statcomp tp
-L["Sum TankPoints"] = "탱킹점수"
-L["TankPoints <- Health Total Reduction"] = "탱커점수 <- 체력, 총 감소량"
--- /rb sum statcomp tr
-L["Sum Total Reduction"] = "총 감소량"
-L["Total Reduction <- Armor Dodge, Parry, Block, Block Value, Defense, Resilience, MobMiss, MobCrit, MobCrush, DamageTakenMods"] = "총 감소량 <- 방어도, 회피, 무기 막기, 방어, 피해 방어량, 방어, 탄력도, 몹회피, 몹치명타, 몹강타, 적용전 데미지"
 -- /rb sum statcomp avoid
 L["Sum Avoidance"] = "회피량"
 L["Avoidance <- Dodge Parry, MobMiss, Block(Optional)"] = "회피량 <- 회피, 무기 막기, 몹빗맞힘, 방어(선택적)"

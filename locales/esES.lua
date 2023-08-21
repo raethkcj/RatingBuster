@@ -467,12 +467,6 @@ L["Weapon Skill <- Weapon Skill Rating"] = "Habilidad Arma <- Índice Habilidad 
 -- /rb sum statcomp exp -- 2.3.0
 L["Sum Expertise"] = "Res. Pericia"
 L["Expertise <- Expertise Rating"] = "Pericia <- Índice Pericia"
--- /rb sum statcomp tp
-L["Sum TankPoints"] = "Res. Ptos. Tanque"
-L["TankPoints <- Health Total Reduction"] = "Ptos. Tanque <- Salud, Total Reduccion"
--- /rb sum statcomp tr
-L["Sum Total Reduction"] = "Res. Total Reduccion"
-L["Total Reduction <- Armor Dodge, Parry, Block, Block Value, Defense, Resilience, MobMiss, MobCrit, MobCrush, DamageTakenMods"] = "Total Reduccion <- Armadura, Esquivar, Parar, Bloquear, Valor bloqueo, Defensa, Temple, FalloEnemigo, CriticoEnemigo, AplastamientoEnemigo, Modifics.DañoRecibido"
 -- /rb sum statcomp avoid
 L["Sum Avoidance"] = "Res. Elusion"
 L["Avoidance <- Dodge Parry, MobMiss, Block(Optional)"] = "Elusion <- Esquivar, Parar, FalloEnemigo, Bloqueo(Opcional)"

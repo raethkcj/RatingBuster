@@ -468,12 +468,6 @@ L["Weapon Skill <- Weapon Skill Rating"] = true
 -- /rb sum statcomp exp -- 2.3.0
 L["Sum Expertise"] = true
 L["Expertise <- Expertise Rating"] = true
--- /rb sum statcomp tp
-L["Sum TankPoints"] = true
-L["TankPoints <- Health, Total Reduction"] = true
--- /rb sum statcomp tr
-L["Sum Total Reduction"] = true
-L["Total Reduction <- Armor, Dodge, Parry, Block, Block Value, Defense, Resilience, MobMiss, MobCrit, MobCrush, DamageTakenMods"] = true
 -- /rb sum statcomp avoid
 L["Sum Avoidance"] = true
 L["Avoidance <- Dodge, Parry, MobMiss, Block(Optional)"] = true

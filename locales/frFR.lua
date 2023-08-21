@@ -467,12 +467,6 @@ L["Weapon Skill <- Weapon Skill Rating"] = "Inclure la Compétence d'arme confé
 -- /rb sum statcomp exp -- 2.3.0
 L["Sum Expertise"] = "Expertise"
 L["Expertise <- Expertise Rating"] = "Inclure la valeur d'Expertise conférée par le Score d'expertise."
--- /rb sum statcomp tp
-L["Sum TankPoints"] = "TankPoints"
-L["TankPoints <- Health, Total Reduction"] = "TankPoints = Points de vie + diminution totale"
--- /rb sum statcomp tr
-L["Sum Total Reduction"] = "Diminution complète"
-L["Total Reduction <- Armor, Dodge, Parry, Block, Block Value, Defense, Resilience, MobMiss, MobCrit, MobCrush, DamageTakenMods"] = "Inclure la diminution complète conférée par : Armure + Equive + Parade + Blocage + Valeur de blocage + Défense + Résilience + MobMiss + MobCrit + MobCrush + DamageTakenMods."
 -- /rb sum statcomp avoid
 L["Sum Avoidance"] = "Évitement"
 L["Avoidance <- Dodge, Parry, MobMiss, Block(Optional)"] = "Inclure l'Évitement conféré par : Esquive + Parade + Raté + Blocage(optionnel)."
