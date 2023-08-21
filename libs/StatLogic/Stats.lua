@@ -4,6 +4,10 @@ local addonName = ...
 local StatLogic = LibStub(addonName)
 
 ---@class Stat
+---@field name string
+---@field dependents? table<Stat, number> This Stat's dependent Stats mapped to the rate at which they are inherited
+---@field modifier? number The total multiplicative modifers on this stat
+---@field value? number The total flat amount of this stat
 local Stat = {
 	-- Should the stat be shown in summaries, or when broken down from a parent Stat
 	---@type boolean
@@ -18,6 +22,10 @@ function Stat:new(stat)
 	self.__index = self
 
 	return stat
+end
+
+function Stat:__tostring()
+	return self.name
 end
 
 function Stat:AddDependent(stat, value)
@@ -47,108 +55,113 @@ function Stat:RemoveValue(value)
 	self.value = (self.value or 0) - value
 end
 
-StatLogic.Stats = {
-	-- Basic Attributes
-	Strength = Stat:new(),
-	Agility = Stat:new(),
-	Stamina = Stat:new(),
-	Intellect = Stat:new(),
-	Spirit = Stat:new(),
-	AllStats = Stat:new({ show = false }),
+StatLogic.Stats = setmetatable({}, {
+	__newindex = function(t, name, stat)
+		stat.name = name
+		rawset(t, name, stat)
+	end
+})
 
-	-- Resources
-	Health = Stat:new(),
-	Mana = Stat:new(),
-	ManaRegen = Stat:new(),
-	HealthRegen = Stat:new(),
-	ManaRegenWhileCasting = Stat:new(),
-	HealthRegenInCombat = Stat:new(),
+-- Basic Attributes
+StatLogic.Stats.Strength = Stat:new()
+StatLogic.Stats.Agility = Stat:new()
+StatLogic.Stats.Stamina = Stat:new()
+StatLogic.Stats.Intellect = Stat:new()
+StatLogic.Stats.Spirit = Stat:new()
+StatLogic.Stats.AllStats = Stat:new({ show = false })
 
-	-- Generic Offensive Stats
-	HitRating = Stat:new({ show = false }),
-	CritRating = Stat:new({ show = false }),
-	HasteRating = Stat:new({ show = false }),
+-- Resources
+StatLogic.Stats.Health = Stat:new()
+StatLogic.Stats.Mana = Stat:new()
+StatLogic.Stats.ManaRegen = Stat:new()
+StatLogic.Stats.HealthRegen = Stat:new()
+StatLogic.Stats.ManaRegenWhileCasting = Stat:new()
+StatLogic.Stats.HealthRegenInCombat = Stat:new()
 
-	-- Physical Stats
-	AttackPower = Stat:new(),
-	IgnoreArmor = Stat:new(),
-	ArmorPenetration = Stat:new(),
-	ArmorPenetrationRating = Stat:new(),
+-- Generic Offensive Stats
+StatLogic.Stats.HitRating = Stat:new({ show = false })
+StatLogic.Stats.CritRating = Stat:new({ show = false })
+StatLogic.Stats.HasteRating = Stat:new({ show = false })
 
-	-- Weapon Stats
-	WeaponDamageMin = Stat:new(),
-	WeaponDamageMax = Stat:new(),
-	WeaponDPS = Stat:new(),
+-- Physical Stats
+StatLogic.Stats.AttackPower = Stat:new()
+StatLogic.Stats.IgnoreArmor = Stat:new()
+StatLogic.Stats.ArmorPenetration = Stat:new()
+StatLogic.Stats.ArmorPenetrationRating = Stat:new()
 
-	-- Melee Stats
-	MeleeHit = Stat:new(),
-	MeleeHitRating = Stat:new(),
-	MeleeCrit = Stat:new(),
-	MeleeCritRating = Stat:new(),
-	MeleeHaste = Stat:new(),
-	MeleeHasteRating = Stat:new(),
+-- Weapon Stats
+StatLogic.Stats.WeaponDamageMin = Stat:new()
+StatLogic.Stats.WeaponDamageMax = Stat:new()
+StatLogic.Stats.WeaponDPS = Stat:new()
 
-	DodgeReduction = Stat:new(),
-	ParryReduction = Stat:new(),
-	WeaponSkill = Stat:new(),
-	Expertise = Stat:new(),
-	ExpertiseRating = Stat:new(),
+-- Melee Stats
+StatLogic.Stats.MeleeHit = Stat:new()
+StatLogic.Stats.MeleeHitRating = Stat:new()
+StatLogic.Stats.MeleeCrit = Stat:new()
+StatLogic.Stats.MeleeCritRating = Stat:new()
+StatLogic.Stats.MeleeHaste = Stat:new()
+StatLogic.Stats.MeleeHasteRating = Stat:new()
 
-	-- Ranged Stats
-	RangedAttackPower = Stat:new(),
-	RangedHit = Stat:new(),
-	RangedHitRating = Stat:new(),
-	RangedCrit = Stat:new(),
-	RangedCritRating = Stat:new(),
-	RangedHaste = Stat:new(),
-	RangedHasteRating = Stat:new(),
+StatLogic.Stats.DodgeReduction = Stat:new()
+StatLogic.Stats.ParryReduction = Stat:new()
+StatLogic.Stats.WeaponSkill = Stat:new()
+StatLogic.Stats.Expertise = Stat:new()
+StatLogic.Stats.ExpertiseRating = Stat:new()
 
-	-- Spell Stats
-	SpellDamage = Stat:new(),
-	HealingPower = Stat:new(),
-	SpellPenetration = Stat:new(),
+-- Ranged Stats
+StatLogic.Stats.RangedAttackPower = Stat:new()
+StatLogic.Stats.RangedHit = Stat:new()
+StatLogic.Stats.RangedHitRating = Stat:new()
+StatLogic.Stats.RangedCrit = Stat:new()
+StatLogic.Stats.RangedCritRating = Stat:new()
+StatLogic.Stats.RangedHaste = Stat:new()
+StatLogic.Stats.RangedHasteRating = Stat:new()
 
-	HolyDamage = Stat:new(),
-	FireDamage = Stat:new(),
-	NatureDamage = Stat:new(),
-	FrostDamage = Stat:new(),
-	ShadowDamage = Stat:new(),
-	ArcaneDamage = Stat:new(),
+-- Spell Stats
+StatLogic.Stats.SpellDamage = Stat:new()
+StatLogic.Stats.HealingPower = Stat:new()
+StatLogic.Stats.SpellPenetration = Stat:new()
 
-	SpellHit = Stat:new(),
-	SpellHitRating = Stat:new(),
-	SpellCrit = Stat:new(),
-	SpellCritRating = Stat:new(),
-	SpellHaste = Stat:new(),
-	SpellHasteRating = Stat:new(),
+StatLogic.Stats.HolyDamage = Stat:new()
+StatLogic.Stats.FireDamage = Stat:new()
+StatLogic.Stats.NatureDamage = Stat:new()
+StatLogic.Stats.FrostDamage = Stat:new()
+StatLogic.Stats.ShadowDamage = Stat:new()
+StatLogic.Stats.ArcaneDamage = Stat:new()
 
-	-- Tank Stats
-	Armor = Stat:new(),
-	BonusArmor = Stat:new({ show = false }),
+StatLogic.Stats.SpellHit = Stat:new()
+StatLogic.Stats.SpellHitRating = Stat:new()
+StatLogic.Stats.SpellCrit = Stat:new()
+StatLogic.Stats.SpellCritRating = Stat:new()
+StatLogic.Stats.SpellHaste = Stat:new()
+StatLogic.Stats.SpellHasteRating = Stat:new()
 
-	Dodge = Stat:new(),
-	DodgeBeforeDR = Stat:new({ show = false }),
-	DodgeRating = Stat:new(),
-	Parry = Stat:new(),
-	ParryBeforeDR = Stat:new({ show = false }),
-	ParryRating = Stat:new(),
-	BlockChance = Stat:new(),
-	BlockRating = Stat:new(),
-	BlockValue = Stat:new(),
-	Miss = Stat:new(),
+-- Tank Stats
+StatLogic.Stats.Armor = Stat:new()
+StatLogic.Stats.BonusArmor = Stat:new({ show = false })
 
-	Defense = Stat:new(),
-	DefenseRating = Stat:new(),
-	CritChanceReduction = Stat:new(),
-	CritDamageReduction = Stat:new(),
-	DOTDamageReduction = Stat:new(),
-	DamageReduction = Stat:new(),
-	Resilience = Stat:new(),
+StatLogic.Stats.Dodge = Stat:new()
+StatLogic.Stats.DodgeBeforeDR = Stat:new({ show = false })
+StatLogic.Stats.DodgeRating = Stat:new()
+StatLogic.Stats.Parry = Stat:new()
+StatLogic.Stats.ParryBeforeDR = Stat:new({ show = false })
+StatLogic.Stats.ParryRating = Stat:new()
+StatLogic.Stats.BlockChance = Stat:new()
+StatLogic.Stats.BlockRating = Stat:new()
+StatLogic.Stats.BlockValue = Stat:new()
+StatLogic.Stats.Miss = Stat:new()
 
-	HolyResistance = Stat:new(),
-	FireResistance = Stat:new(),
-	NatureResistance = Stat:new(),
-	FrostResistance = Stat:new(),
-	ShadowResistance = Stat:new(),
-	ArcaneResistance = Stat:new(),
-}
+StatLogic.Stats.Defense = Stat:new()
+StatLogic.Stats.DefenseRating = Stat:new()
+StatLogic.Stats.CritChanceReduction = Stat:new()
+StatLogic.Stats.CritDamageReduction = Stat:new()
+StatLogic.Stats.DOTDamageReduction = Stat:new()
+StatLogic.Stats.DamageReduction = Stat:new()
+StatLogic.Stats.Resilience = Stat:new()
+
+StatLogic.Stats.HolyResistance = Stat:new()
+StatLogic.Stats.FireResistance = Stat:new()
+StatLogic.Stats.NatureResistance = Stat:new()
+StatLogic.Stats.FrostResistance = Stat:new()
+StatLogic.Stats.ShadowResistance = Stat:new()
+StatLogic.Stats.ArcaneResistance = Stat:new()
