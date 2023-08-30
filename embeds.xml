@@ -16,6 +16,4 @@
 		<Include file="libs\LibDualSpec-1.0\LibDualSpec-1.0.lua"/>
 	@end-non-debug@-->
 
-	<Script file="libs\TipHooker-1.0\TipHooker-1.0.lua"/>
-
 </Ui>

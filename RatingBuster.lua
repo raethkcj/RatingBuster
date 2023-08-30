@@ -1,4 +1,4 @@
-local addonName = ...
+local addonName, addon = ...
 
 --[[
 Name: RatingBuster
@@ -10,7 +10,6 @@ Description: Converts combat ratings in tooltips into normal percentages.
 ---------------
 -- Libraries --
 ---------------
-local TipHooker = LibStub("TipHooker-1.0")
 local StatLogic = LibStub("StatLogic")
 local GSM = function(...)
 	return StatLogic:GetStatMod(...)
@@ -1637,8 +1636,7 @@ end
 
 -- OnEnable() called at PLAYER_LOGIN
 function RatingBuster:OnEnable()
-	-- Hook item tooltips
-	TipHooker:Hook(self.ProcessTooltip, "item")
+	addon:EnableHook(self.ProcessTooltip)
 	-- Initialize playerLevel
 	playerLevel = UnitLevel("player")
 	-- for setting a new level
@@ -1649,8 +1647,7 @@ function RatingBuster:OnEnable()
 end
 
 function RatingBuster:OnDisable()
-	-- Unhook item tooltips
-	TipHooker:Unhook(self.ProcessTooltip, "item")
+	addon:DisableHook()
 end
 
 -- event = PLAYER_LEVEL_UP
@@ -3472,17 +3469,9 @@ function RatingBuster:StatSummary(tooltip, name, link)
 	-- Determine tooltipLevel and id
 	if globalDB.calcDiff and (globalDB.sumDiffStyle == "comp") then
 		-- Obtain main tooltip
-		for _, t in pairs(TipHooker.SupportedTooltips) do
-			if mainTooltip:IsOwned(t) then
-				mainTooltip = t
-				break
-			end
-		end
-		for _, t in pairs(TipHooker.SupportedTooltips) do
-			if mainTooltip:IsOwned(t) then
-				mainTooltip = t
-				break
-			end
+		local owner = tooltip:GetOwner()
+	    if owner.GetObjectType and owner:GetObjectType() == "GameTooltip" then
+			mainTooltip = owner
 		end
 		-- Detemine tooltip level
 		local _, mainlink, difflink1, difflink2 = StatLogic:GetDiffID(mainTooltip, globalDB.sumIgnoreEnchant, globalDB.sumIgnoreGems, globalDB.sumIgnoreExtraSockets, red, yellow, blue, meta)

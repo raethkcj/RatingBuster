@@ -1,11 +1,11 @@
-﻿## Interface: 20504
+## Interface: 20504
 ## Title: RatingBuster
 ## Notes: Item stat breakdown, analysis and comparing
 ## Notes-zhTW: 裝備數值解析與比較
 ## Author: Whitetooth, raethkcj
 ## SavedVariables: RatingBusterDB
 ## Dependencies: StatLogic
-## OptionalDeps: Ace3, TipHookerLib
+## OptionalDeps: Ace3
 ## X-Category: Interface Enhancements
 ## X-License: GPL v2
 ## X-WoWI-ID: 26235
@@ -19,4 +19,5 @@ embeds.xml
 locales\locales.xml
 
 # Core
+TipHooker.lua
 RatingBuster.lua

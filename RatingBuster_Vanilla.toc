@@ -5,7 +5,7 @@
 ## Author: Whitetooth, raethkcj
 ## SavedVariables: RatingBusterDB
 ## Dependencies: StatLogic
-## OptionalDeps: Ace3, TipHookerLib
+## OptionalDeps: Ace3
 ## X-Category: Interface Enhancements
 ## X-License: GPL v2
 ## X-WoWI-ID: 26235
@@ -19,4 +19,5 @@ embeds.xml
 locales\locales.xml
 
 # Core
+TipHooker.lua
 RatingBuster.lua

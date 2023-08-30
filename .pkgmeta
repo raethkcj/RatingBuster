@@ -38,6 +38,3 @@ ignore:
 
 plain-copy:
   - LICENSE.txt
-
-embedded-libraries:
-  - TipHookerLib
