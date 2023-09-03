@@ -1692,30 +1692,20 @@ local equippedSum = setmetatable({}, {
 local equippedDodge, equippedParry, equippedMissed
 local processedDodge, processedParry, processedMissed
 
--- Utilities for checking nested recipes
-local ITEM_MIN_LEVEL_PATTERN = ITEM_MIN_LEVEL:gsub("%%d", "%%d+")
-local BIND_TRADE_PATTERN = BIND_TRADE_TIME_REMAINING:gsub("%%s", ".*")
-local BEGIN_ITEM_SPELL_TRIGGER_ONUSE = "^" .. ITEM_SPELL_TRIGGER_ONUSE
-
 local scanningTooltipOwners = {
 	["WorldFrame"] = true,
 	["UIParent"] = true,
 }
 
-function RatingBuster.ProcessTooltip(tooltip, name, link)
+function RatingBuster.ProcessTooltip(tooltip)
 	-- Do nothing if the tooltip is being used as a hidden scanning tooltip
 	if tooltip:GetAnchorType() == "ANCHOR_NONE" and (not tooltip:GetOwner() or scanningTooltipOwners[tooltip:GetOwner():GetName()]) then
 		return
 	end
 
-	-- Process nested recipes only once
-	local itemType = select(6, GetItemInfoInstant(link))
-	local isRecipe = itemType == Enum.ItemClass.Recipe
-
-	if isRecipe and tooltip.rb_processed_nested_recipe then
-		tooltip.rb_processed_nested_recipe = false
-		return
-	end
+	if not tooltip.GetItem then return end
+	local name, link = tooltip:GetItem()
+	if not name then return end
 
 	---------------------------
 	-- Set calculation level --
@@ -1765,38 +1755,6 @@ function RatingBuster.ProcessTooltip(tooltip, name, link)
 		local text = fontString:GetText()
 		if text then
 			local color = CreateColor(fontString:GetTextColor())
-			if isRecipe and not tooltip.rb_processed_nested_recipe then
-				-- Workaround to detect nested items from recipes
-				-- Check if any line is:
-				-- a) Fourth or higher and:
-				--	1) Matches any uncommon or higher item quality color
-				--	2) Is neither BIND_TRADE_PATTERN nor ITEM_SPELL_TRIGGER_ONUSE
-				-- b) Sixth or higher and:
-				--	1) Has a minimum required level
-				--
-				--	Items to test:
-				--	Classic/TBC [Grimoire of Blood Pact (Rank 2)] 16322
-				--	TBC/Wrath [Design: Glinting Pyrestone] 32306
-				local quality = false
-				if i > 3 then
-					for j = Enum.ItemQuality.Good, Enum.ItemQuality.Heirloom do
-						if StatLogic.AreColorsEqual(ITEM_QUALITY_COLORS[j].color, color)
-						and not (
-							(j == Enum.ItemQuality.Heirloom and text:match(BIND_TRADE_PATTERN))
-							or (j == Enum.ItemQuality.Good and text:match(BEGIN_ITEM_SPELL_TRIGGER_ONUSE))
-						) then
-							quality = true
-							break
-						end
-					end
-				end
-				if quality
-				or i > 5 and text:find(ITEM_MIN_LEVEL_PATTERN)
-				then
-					tooltip.rb_processed_nested_recipe = true
-				end
-			end
-
 			text = RatingBuster:ProcessLine(text, link, color)
 			if text then
 				fontString:SetText(text)

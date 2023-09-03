@@ -3,13 +3,40 @@
 local handler
 local enabled = false
 
-local OnTooltipSetItem = function(tooltip)
-	if not tooltip.GetItem then return end
-	local name, link = tooltip:GetItem()
-	if not name then return end
-
+local RunHandler = function(tooltip)
 	if enabled then
-		handler(tooltip, name, link)
+		handler(tooltip)
+	end
+end
+
+local queuedTooltips = {}
+
+local function HandleUpdate(tooltip)
+	if queuedTooltips[tooltip] then
+		RunHandler(tooltip)
+		queuedTooltips[tooltip] = nil
+	end
+end
+
+local function QueueUpdate(tooltip)
+	queuedTooltips[tooltip] = true
+end
+
+local function HandleTooltipSetItem(tooltip)
+	local owner = tooltip:GetOwner()
+	if (owner and owner.GetObjectType and owner:GetObjectType() == "GameTooltip") then
+		RunHandler(tooltip)
+	else
+		-- OnTooltipSetItem can be fired several times per frame,
+		-- So we defer the actual update until OnUpdate
+		QueueUpdate(tooltip)
+		if not tooltip:GetScript("OnUpdate") then
+			-- Workaround for ItemRefTooltip cannibalizing its OnUpdate handler
+			tooltip:SetScript("OnUpdate", function(self)
+				HandleUpdate(self)
+				self:SetScript("OnUpdate", nil)
+			end)
+		end
 	end
 end
 
@@ -30,7 +57,8 @@ local function InitializeHook()
 	        if name then
 		        for _, v in ipairs(TooltipList) do
 		        	if strfind(name, v) then
-						frame:HookScript("OnTooltipSetItem", OnTooltipSetItem)
+						frame:HookScript("OnTooltipSetItem", HandleTooltipSetItem)
+						frame:HookScript("OnUpdate", HandleUpdate)
 						break
 					end
 		        end
