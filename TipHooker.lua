@@ -26,7 +26,7 @@ local function HandleTooltipSetItem(tooltip)
 	local owner = tooltip:GetOwner()
 	if (owner and owner.GetObjectType and owner:GetObjectType() == "GameTooltip") then
 		RunHandler(tooltip)
-	else
+	elseif owner then
 		-- OnTooltipSetItem can be fired several times per frame,
 		-- So we defer the actual update until OnUpdate
 		QueueUpdate(tooltip)
