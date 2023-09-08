@@ -1,4 +1,4 @@
-﻿local _, addon = ...
+﻿local addonName, addon = ...
 
 local handler
 local enabled = false
@@ -46,7 +46,6 @@ local TooltipList = {
 	"GameTooltip",
 	"ItemRefTooltip",
 	"ShoppingTooltip",
-	"LinkWrangler",
 	"AtlasLootTooltip",
 }
 
@@ -76,6 +75,9 @@ EventRegistry:RegisterFrameEventAndCallbackWithHandle("VARIABLES_LOADED", functi
 	variablesLoaded = true
 	if handler and not initialized then
 		InitializeHook()
+	end
+	if LinkWrangler then
+		LinkWrangler.RegisterCallback(addonName, RunHandler, "item", "refreshcomp");
 	end
 end)
 
