@@ -24,7 +24,9 @@ end
 
 local function HandleTooltipSetItem(tooltip)
 	local owner = tooltip:GetOwner()
-	if (owner and owner.GetObjectType and owner:GetObjectType() == "GameTooltip") then
+	-- Hacky workaround for ShoppingTooltip and InspectFrame,
+	-- which fire OnUpdate before OnTooltipSetItem each frame
+	if (owner and owner.GetObjectType and owner:GetObjectType() == "GameTooltip") or debugstack():find("OnUpdate") then
 		RunHandler(tooltip)
 	elseif owner then
 		-- OnTooltipSetItem can be fired several times per frame,
