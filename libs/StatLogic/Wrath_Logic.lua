@@ -70,10 +70,10 @@ Example:
 	local mp5o5sr = StatLogic:GetNormalManaRegenFromSpi(10, 15, 70)
 -----------------------------------]]
 
--- Numbers reverse engineered by Whitetooth (hotdogee [at] gmail [dot] com)
+-- Extracted from the client at Gametables/RegenMPPerSpt.txt via wow.tools.local
 local BaseManaRegenPerSpi = {
-	0.020979, 0.020515, 0.020079, 0.019516, 0.018997, 0.018646, 0.018314, 0.017997, 0.017584, 0.017197,
-	0.016551, 0.015729, 0.015229, 0.014580, 0.014008, 0.013650, 0.013175, 0.012832, 0.012475, 0.012073,
+	0.062937, 0.056900, 0.051488, 0.046267, 0.041637, 0.037784, 0.034309, 0.031172, 0.028158, 0.025460,
+	0.022654, 0.019904, 0.017817, 0.015771, 0.014008, 0.013650, 0.013175, 0.012832, 0.012475, 0.012073,
 	0.011840, 0.011494, 0.011292, 0.010990, 0.010761, 0.010546, 0.010321, 0.010151, 0.009949, 0.009740,
 	0.009597, 0.009425, 0.009278, 0.009123, 0.008974, 0.008847, 0.008698, 0.008581, 0.008457, 0.008338,
 	0.008235, 0.008113, 0.008018, 0.007906, 0.007798, 0.007713, 0.007612, 0.007524, 0.007430, 0.007340,
@@ -85,7 +85,7 @@ local BaseManaRegenPerSpi = {
 ---@param spi integer
 ---@param int? string Defaults to player class
 ---@param level? integer Defaults to player level
----@return number mp5nc Mana regen per 5 seconds when out of combat
+---@return number mp5nc Mana regen per 5 seconds when not casting
 ---@return string statid
 ---@diagnostic disable-next-line:duplicate-set-field
 function StatLogic:GetNormalManaRegenFromSpi(spi, int, level)
