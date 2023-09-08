@@ -42,30 +42,24 @@ local function HandleTooltipSetItem(tooltip)
 	end
 end
 
-local TooltipList = {
-	"GameTooltip",
-	"ItemRefTooltip",
-	"ShoppingTooltip",
-	"AtlasLootTooltip",
+local tooltips = {
+	["GameTooltip"] = true,
+	["ShoppingTooltip1"] = true,
+	["ShoppingTooltip2"] = true,
+	["ItemRefTooltip"] = true,
+	["ItemRefShoppingTooltip1"] = true,
+	["ItemRefShoppingTooltip2"] = true,
+	["AtlasLootTooltip"] = true,
 }
 
 local initialized = false
 local function InitializeHook()
-	local frame = EnumerateFrames()
-	while frame do
-	    if frame.GetObjectType and frame:GetObjectType() == "GameTooltip" then
-	        local name = frame:GetName()
-	        if name then
-		        for _, v in ipairs(TooltipList) do
-		        	if strfind(name, v) then
-						frame:HookScript("OnTooltipSetItem", HandleTooltipSetItem)
-						frame:HookScript("OnUpdate", HandleUpdate)
-						break
-					end
-		        end
-		    end
-	    end
-	    frame = EnumerateFrames(frame)
+	for tooltipName in pairs(tooltips) do
+		local tooltip = _G[tooltipName]
+		if tooltip then
+			tooltip:HookScript("OnTooltipSetItem", HandleTooltipSetItem)
+			tooltip:HookScript("OnUpdate", HandleUpdate)
+		end
 	end
 	initialized = true
 end
