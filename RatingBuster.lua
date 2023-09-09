@@ -2146,7 +2146,7 @@ do
 			if profileDB.showSpellDmgFromStr then
 				local mod = GSM("MOD_AP") * GSM("MOD_SPELL_DMG")
 				local effect = (value * StatLogic:GetAPPerStr(class) * GSM("ADD_SPELL_DMG_MOD_AP")
-				+ value * GSM("ADD_SPELL_DMG_MOD_STR")) * mod
+					+ value * GSM("ADD_SPELL_DMG_MOD_STR")) * mod
 				if (mod ~= 1 or statmod ~= 1) and floor(abs(effect) * 10 + 0.5) > 0 then
 					tinsert(infoTable, (gsub(L["$value Spell Dmg"], "$value", format("%+.1f", effect))))
 				elseif floor(abs(effect) + 0.5) > 0 then
@@ -2156,7 +2156,7 @@ do
 			if profileDB.showHealingFromStr then
 				local mod = GSM("MOD_AP") * GSM("MOD_HEALING")
 				local effect = (value * StatLogic:GetAPPerStr(class) * GSM("ADD_HEALING_MOD_AP")
-				+ value * GSM("ADD_HEALING_MOD_STR")) * mod
+					+ value * GSM("ADD_HEALING_MOD_STR")) * mod
 				if (mod ~= 1 or statmod ~= 1) and floor(abs(effect) * 10 + 0.5) > 0 then
 					tinsert(infoTable, (gsub(L["$value Heal"], "$value", format("%+.1f", effect))))
 				elseif floor(abs(effect) + 0.5) > 0 then
@@ -2242,7 +2242,7 @@ do
 			if profileDB.showHealingFromAgi then
 				local mod = GSM("MOD_AP") * GSM("MOD_HEALING")
 				local effect = (value * StatLogic:GetAPPerAgi(class) * GSM("ADD_HEALING_MOD_AP")
-				+ value * GSM("ADD_HEALING_MOD_AGI") / GSM("MOD_AP")) * mod
+					+ value * GSM("ADD_HEALING_MOD_AGI") / GSM("MOD_AP")) * mod
 				if (mod ~= 1 or statmod ~= 1) and floor(abs(effect) * 10 + 0.5) > 0 then
 					tinsert(infoTable, (gsub(L["$value Heal"], "$value", format("%+.1f", effect))))
 				elseif floor(abs(effect) + 0.5) > 0 then
@@ -2272,7 +2272,7 @@ do
 			if profileDB.showSpellDmgFromSta then
 				local mod = GSM("MOD_SPELL_DMG")
 				local effect = value * mod * (GSM("ADD_SPELL_DMG_MOD_STA")
-				+ GSM("ADD_SPELL_DMG_MOD_PET_STA") * GSM("ADD_PET_STA_MOD_STA"))
+					+ GSM("ADD_SPELL_DMG_MOD_PET_STA") * GSM("ADD_PET_STA_MOD_STA"))
 				if floor(abs(effect) * 10 + 0.5) > 0 then
 					tinsert(infoTable, (gsub(L["$value Spell Dmg"], "$value", format("%+.1f", effect))))
 				end
@@ -2316,7 +2316,7 @@ do
 			if profileDB.showSpellDmgFromInt then
 				local mod = GSM("MOD_SPELL_DMG")
 				local effect = value * mod * (GSM("ADD_SPELL_DMG_MOD_INT")
-				+ GSM("ADD_SPELL_DMG_MOD_PET_INT") * GSM("ADD_PET_INT_MOD_INT"))
+					+ GSM("ADD_SPELL_DMG_MOD_PET_INT") * GSM("ADD_PET_INT_MOD_INT"))
 				if floor(abs(effect) * 10 + 0.5) > 0 then
 					tinsert(infoTable, (gsub(L["$value Spell Dmg"], "$value", format("%+.1f", effect))))
 				end
@@ -2334,9 +2334,9 @@ do
 					local _, int = UnitStat("player", 4)
 					local _, spi = UnitStat("player", 5)
 					effect = value * GSM("ADD_MANA_REG_MOD_INT")
-					+ (StatLogic:GetNormalManaRegenFromSpi(spi, int + value, calcLevel)
-					- StatLogic:GetNormalManaRegenFromSpi(spi, int, calcLevel)) * GSM("ADD_MANA_REG_MOD_NORMAL_MANA_REG")
-					+ value * 15 * GSM("MOD_MANA") * GSM("ADD_MANA_REG_MOD_MANA") -- Replenishment
+						+ (StatLogic:GetNormalManaRegenFromSpi(spi, int + value, calcLevel)
+						- StatLogic:GetNormalManaRegenFromSpi(spi, int, calcLevel)) * GSM("ADD_MANA_REG_MOD_NORMAL_MANA_REG")
+						+ value * 15 * GSM("MOD_MANA") * GSM("ADD_MANA_REG_MOD_MANA") -- Replenishment
 				else
 					effect = value * GSM("ADD_MANA_REG_MOD_INT")
 				end
@@ -2350,9 +2350,9 @@ do
 					local _, int = UnitStat("player", 4)
 					local _, spi = UnitStat("player", 5)
 					effect = value * GSM("ADD_MANA_REG_MOD_INT")
-					+ StatLogic:GetNormalManaRegenFromSpi(spi, int + value, calcLevel)
-					- StatLogic:GetNormalManaRegenFromSpi(spi, int, calcLevel)
-					+ value * 15 * GSM("MOD_MANA") * GSM("ADD_MANA_REG_MOD_MANA") -- Replenishment
+						+ StatLogic:GetNormalManaRegenFromSpi(spi, int + value, calcLevel)
+						- StatLogic:GetNormalManaRegenFromSpi(spi, int, calcLevel)
+						+ value * 15 * GSM("MOD_MANA") * GSM("ADD_MANA_REG_MOD_MANA") -- Replenishment
 				else
 					effect = value * GSM("ADD_MANA_REG_MOD_INT")
 				end
@@ -2420,7 +2420,7 @@ do
 			if profileDB.showHP5FromSpi then
 				local _, spi = UnitStat("player", 5)
 				local effect = StatLogic:GetHealthRegenFromSpi(spi + value, class)
-				  - StatLogic:GetHealthRegenFromSpi(spi, class, calcLevel)
+					- StatLogic:GetHealthRegenFromSpi(spi, class, calcLevel)
 				if floor(abs(effect) * 10 + 0.5) > 0 then
 					tinsert(infoTable, (gsub(L["$value HP5"], "$value", format("%+.1f", effect))))
 				end
@@ -2687,8 +2687,8 @@ local summaryCalcData = {
 		func = function(sum)
 			local _, spi = UnitStat("player", 5)
 			return sum["HEALTH_REG"]
-			 + StatLogic:GetHealthRegenFromSpi(spi + sum[StatLogic.Stats.Spirit], class, calcLevel)
-			 - StatLogic:GetHealthRegenFromSpi(spi, class, calcLevel)
+				+ StatLogic:GetHealthRegenFromSpi(spi + sum[StatLogic.Stats.Spirit], class, calcLevel)
+				- StatLogic:GetHealthRegenFromSpi(spi, class, calcLevel)
 		end,
 	},
 	-- Mana Regen - MANA_REG, SPI, INT
@@ -2700,14 +2700,14 @@ local summaryCalcData = {
 				local _, int = UnitStat("player", 4)
 				local _, spi = UnitStat("player", 5)
 				return sum["MANA_REG"]
-				 + (sum[StatLogic.Stats.Intellect] * GSM("ADD_MANA_REG_MOD_INT"))
-				 + (StatLogic:GetNormalManaRegenFromSpi(spi + sum[StatLogic.Stats.Spirit], int + sum[StatLogic.Stats.Intellect], calcLevel)
-				 - StatLogic:GetNormalManaRegenFromSpi(spi, int, calcLevel)) * GSM("ADD_MANA_REG_MOD_NORMAL_MANA_REG")
-				 + summaryFunc["MANA"](sum) * GSM("ADD_MANA_REG_MOD_MANA")
+					+ (sum[StatLogic.Stats.Intellect] * GSM("ADD_MANA_REG_MOD_INT"))
+					+ (StatLogic:GetNormalManaRegenFromSpi(spi + sum[StatLogic.Stats.Spirit], int + sum[StatLogic.Stats.Intellect], calcLevel)
+					- StatLogic:GetNormalManaRegenFromSpi(spi, int, calcLevel)) * GSM("ADD_MANA_REG_MOD_NORMAL_MANA_REG")
+					+ summaryFunc["MANA"](sum) * GSM("ADD_MANA_REG_MOD_MANA")
 			else
 				return sum["MANA_REG"]
-				 + (sum[StatLogic.Stats.Intellect] * GSM("ADD_MANA_REG_MOD_INT"))
-				 + (StatLogic:GetNormalManaRegenFromSpi(sum[StatLogic.Stats.Spirit], class) * GSM("ADD_MANA_REG_MOD_NORMAL_MANA_REG"))
+					+ (sum[StatLogic.Stats.Intellect] * GSM("ADD_MANA_REG_MOD_INT"))
+					+ (StatLogic:GetNormalManaRegenFromSpi(sum[StatLogic.Stats.Spirit], class) * GSM("ADD_MANA_REG_MOD_NORMAL_MANA_REG"))
 			end
 		end,
 	},
@@ -2720,14 +2720,14 @@ local summaryCalcData = {
 				local _, int = UnitStat("player", 4)
 				local _, spi = UnitStat("player", 5)
 				return sum["MANA_REG"]
-				 + (sum[StatLogic.Stats.Intellect] * GSM("ADD_MANA_REG_MOD_INT"))
-				 + StatLogic:GetNormalManaRegenFromSpi(spi + sum[StatLogic.Stats.Spirit], int + sum[StatLogic.Stats.Intellect], calcLevel)
-				 - StatLogic:GetNormalManaRegenFromSpi(spi, int, calcLevel)
-				 + summaryFunc["MANA"](sum) * GSM("ADD_MANA_REG_MOD_MANA")
+					+ (sum[StatLogic.Stats.Intellect] * GSM("ADD_MANA_REG_MOD_INT"))
+					+ StatLogic:GetNormalManaRegenFromSpi(spi + sum[StatLogic.Stats.Spirit], int + sum[StatLogic.Stats.Intellect], calcLevel)
+					- StatLogic:GetNormalManaRegenFromSpi(spi, int, calcLevel)
+					+ summaryFunc["MANA"](sum) * GSM("ADD_MANA_REG_MOD_MANA")
 			else
 				return sum["MANA_REG"]
-				 + (sum[StatLogic.Stats.Intellect] * GSM("ADD_MANA_REG_MOD_INT"))
-				 + StatLogic:GetNormalManaRegenFromSpi(sum[StatLogic.Stats.Spirit], class)
+					+ (sum[StatLogic.Stats.Intellect] * GSM("ADD_MANA_REG_MOD_INT"))
+					+ StatLogic:GetNormalManaRegenFromSpi(sum[StatLogic.Stats.Spirit], class)
 			end
 		end,
 	},
