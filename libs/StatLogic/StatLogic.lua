@@ -2143,9 +2143,7 @@ function StatLogic:GetSpellCritFromInt(int, class, level)
 	return int * StatLogic:GetSpellCritPerInt(class, level), StatLogic.Stats.SpellCrit
 end
 
---[[---------------------------------
-{	:GetHealthRegenFromSpi(spi, [class])
--------------------------------------
+--[[
 -- Description
 	Calculates the health regen per 5 seconds when out of combat from spirit for any class.
 -- Args
@@ -2154,41 +2152,32 @@ end
 	[class] - (defaults: PlayerClass)
 			string - english class name
 			number - class id
+	[level] - (defaults: PlayerLevel)
+			number - player level used for calculation
 -- Returns
 	[hp5oc]
 		number - health regen per 5 seconds when out of combat
 	[statid]
 		string - "HEALTH_REG_OUT_OF_COMBAT"
--- Remarks
-	Player level does not effect health regen per spirit.
--- Examples
-	StatLogic:GetHealthRegenFromSpi(1) -- GetHealthRegenPerSpi
-	StatLogic:GetHealthRegenFromSpi(10)
-	StatLogic:GetHealthRegenFromSpi(10, "MAGE")
-}
------------------------------------]]
-
--- Numbers reverse engineered by Whitetooth@Cenarius(US) (hotdogee [at] gmail [dot] com)
-local HealthRegenPerSpi = {
-	["WARRIOR"] = 0.5,
-	["PALADIN"] = 0.125,
-	["HUNTER"] = 0.125,
-	["ROGUE"] = 0.333333,
-	["PRIEST"] = 0.041667,
-	["DEATHKNIGHT"] = 0.5,
-	["SHAMAN"] = 0.071429,
-	["MAGE"] = 0.041667,
-	["WARLOCK"] = 0.045455,
-	["DRUID"] = 0.0625,
-}
-
-function StatLogic:GetHealthRegenFromSpi(spi, class)
+]]
+function StatLogic:GetHealthRegenFromSpi(spi, class, level)
 	-- argCheck for invalid input
 	self:argCheck(spi, 2, "number")
 	self:argCheck(class, 3, "nil", "string", "number")
+	self:argCheck(level, 4, "nil", "number")
 	class = self:ValidateClass(class)
+	-- if level is invalid input, default to player level
+	if type(level) ~= "number" or level < 1 or level > GetMaxPlayerLevel() then
+		level = UnitLevel("player")
+	end
 	-- Calculate
-	return spi * HealthRegenPerSpi[class] * 5, "HEALTH_REG_OUT_OF_COMBAT"
+	local baseRegen = 0
+	if addon.BaseHealthRegenPerSpi then
+		local baseSpi = min(spi, 50)
+		spi = spi - baseSpi
+		baseRegen = baseSpi * addon.BaseHealthRegenPerSpi[class][level] * 5
+	end
+	return baseRegen + spi * addon.HealthRegenPerSpi[class][level] * 5, "HEALTH_REG_OUT_OF_COMBAT"
 end
 
 

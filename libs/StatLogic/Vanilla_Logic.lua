@@ -45,6 +45,30 @@ function StatLogic:GetNormalManaRegenFromSpi(spi, class)
 	return spi * NormalManaRegenPerSpi[class] * 5, "MANA_REG_NOT_CASTING"
 end
 
+-- Numbers reverse engineered by Whitetooth@Cenarius(US) (hotdogee [at] gmail [dot] com
+local HealthRegenPerSpi = {
+	["WARRIOR"] = 0.5,
+	["PALADIN"] = 0.125,
+	["HUNTER"] = 0.125,
+	["ROGUE"] = 0.333333,
+	["PRIEST"] = 0.041667,
+	["DEATHKNIGHT"] = 0.5,
+	["SHAMAN"] = 0.071429,
+	["MAGE"] = 0.041667,
+	["WARLOCK"] = 0.045455,
+	["DRUID"] = 0.0625,
+}
+
+-- For compatibility with Wrath, tables are sub-indexed by level
+addon.HealthRegenPerSpi = {}
+for k, v in pairs(HealthRegenPerSpi) do
+	addon.HealthRegenPerSpi[k] = setmetatable({}, {
+		__index = function()
+			return v
+		end
+	})
+end
+
 addon.BaseMeleeCrit = {
 	["WARRIOR"] = 0.0000,
 	["PALADIN"] = 1.7000,
