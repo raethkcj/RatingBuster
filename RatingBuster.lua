@@ -3641,6 +3641,28 @@ local function WriteSummary(tooltip, output)
 	end
 end
 
+local SummaryData = {}
+SummaryData.__index = SummaryData
+
+function SummaryData:New()
+	return setmetatable({}, self)
+end
+
+function SummaryData:Add(stat, amount, statDataType)
+	amount = amount * stat.modifier
+	if stat.show and db.profile["sum" .. tostring(stat)] then
+		self[stat] = self[stat] or {
+			stat = stat
+		}
+		self[stat][statDataType] = (self[stat][statDataType] or 0) + amount
+	end
+	if stat.dependents then
+		for dependent, rate in pairs(stat.dependents) do
+			self:Add(dependent, amount * rate, statDataType)
+		end
+	end
+end
+
 function RatingBuster:StatSummary(tooltip, link, statModContext)
 	-- Hide stat summary for equipped items
 	if db.global.sumIgnoreEquipped and C_Item.IsEquippedItem(link) then return end
@@ -3741,55 +3763,108 @@ function RatingBuster:StatSummary(tooltip, link, statModContext)
 
 	-------------------------
 	-- Build Summary Table --
-	local statData = {}
-	statData.sum = StatLogic:GetSum(link, nil, statModContext)
-	if not statData.sum then return end
-	if not db.global.calcSum then
-		statData.sum = nil
-	end
-
-	if db.global.sumIgnoreNonPrimaryStat and addon.tocversion >= 40000 then
-		local spec = GetPrimaryTalentTree()
-		if spec then
-			local primaryStat = specPrimaryStats[class][spec]
-			if statData.sum[primaryStat] == 0 then
-				return
-			end
-		end
-	end
-
-	-- Ignore bags
-	if not StatLogic:GetDiff(link) then return end
-
-	-- Get Diff Data
-	if db.global.calcDiff then
-		if db.global.sumDiffStyle == "comp" then
-			if tooltipLevel > 0 then
-				statData.diff1 = select(tooltipLevel, StatLogic:GetDiff(mainTooltip, nil, nil, db.global.sumIgnoreEnchant, db.global.sumIgnoreGems, db.global.sumIgnoreExtraSockets, red, yellow, blue, meta))
-			end
-		else
-			statData.diff1, statData.diff2 = StatLogic:GetDiff(link, nil, nil, db.global.sumIgnoreEnchant, db.global.sumIgnoreGems, db.global.sumIgnoreExtraSockets, red, yellow, blue, meta)
-		end
-	end
-	-- Apply Base Stat Mods
-	for _, v in pairs(statData) do
-		v[StatLogic.Stats.Strength] = (v[StatLogic.Stats.Strength] or 0) * statModContext("MOD_STR")
-		v[StatLogic.Stats.Agility] = (v[StatLogic.Stats.Agility] or 0) * statModContext("MOD_AGI")
-		v[StatLogic.Stats.Stamina] = (v[StatLogic.Stats.Stamina] or 0) * statModContext("MOD_STA")
-		v[StatLogic.Stats.Intellect] = (v[StatLogic.Stats.Intellect] or 0) * statModContext("MOD_INT")
-		v[StatLogic.Stats.Spirit] = (v[StatLogic.Stats.Spirit] or 0) * statModContext("MOD_SPI")
-	end
-
 	local summary = {}
-	for _, calcData in ipairs(summaryCalcData) do
-		if db.profile[calcData.option] then
-			local entry = {
-				stat = calcData.stat,
-			}
-			for statDataType, statTable in pairs(statData) do
-				entry[statDataType] = calcData.func(statTable, statModContext, statDataType, link)
+
+	-- New
+	do
+		local statData = {}
+		statData.sum = StatLogic:GetSum(link, nil, statModContext)
+		if not statData.sum then return end
+		if not db.global.calcSum then
+			statData.sum = nil
+		end
+
+		if db.global.sumIgnoreNonPrimaryStat and addon.tocversion >= 40000 then
+			local spec = GetPrimaryTalentTree()
+			if spec then
+				local primaryStat = specPrimaryStats[class][spec]
+				if statData.sum[primaryStat] == 0 then
+					return
+				end
 			end
-			tinsert(summary, entry)
+		end
+
+		-- Ignore bags
+		if not StatLogic:GetDiff(link) then return end
+
+		-- Get Diff Data
+		if db.global.calcDiff then
+			if db.global.sumDiffStyle == "comp" then
+				if tooltipLevel > 0 then
+					statData.diff1 = select(tooltipLevel,
+					StatLogic:GetDiff(mainTooltip, nil, nil, db.global.sumIgnoreEnchant, db.global.sumIgnoreGems,
+					db.global.sumIgnoreExtraSockets, red, yellow, blue, meta))
+				end
+			else
+				statData.diff1, statData.diff2 = StatLogic:GetDiff(link, nil, nil, db.global.sumIgnoreEnchant,
+				db.global.sumIgnoreGems, db.global.sumIgnoreExtraSockets, red, yellow, blue, meta)
+			end
+		end
+
+		local summaryData = SummaryData:New()
+		for statDataType, statTable in pairs(statData) do
+			for stat, amount in pairs(statTable) do
+				if type(stat) == "table" then
+					summaryData:Add(stat, amount, statDataType)
+				end
+			end
+		end
+	end
+
+	---@deprecated
+	do
+		local statData = {}
+		statData.sum = StatLogic:GetSum(link, nil, statModContext)
+		if not statData.sum then return end
+		if not db.global.calcSum then
+			statData.sum = nil
+		end
+
+		if db.global.sumIgnoreNonPrimaryStat and addon.tocversion >= 40000 then
+			local spec = GetPrimaryTalentTree()
+			if spec then
+				local primaryStat = specPrimaryStats[class][spec]
+				if statData.sum[primaryStat] == 0 then
+					return
+				end
+			end
+		end
+
+		-- Ignore bags
+		if not StatLogic:GetDiff(link) then return end
+
+		-- Get Diff Data
+		if db.global.calcDiff then
+			if db.global.sumDiffStyle == "comp" then
+				if tooltipLevel > 0 then
+					statData.diff1 = select(tooltipLevel,
+					StatLogic:GetDiff(mainTooltip, nil, nil, db.global.sumIgnoreEnchant, db.global.sumIgnoreGems,
+					db.global.sumIgnoreExtraSockets, red, yellow, blue, meta))
+				end
+			else
+				statData.diff1, statData.diff2 = StatLogic:GetDiff(link, nil, nil, db.global.sumIgnoreEnchant,
+				db.global.sumIgnoreGems, db.global.sumIgnoreExtraSockets, red, yellow, blue, meta)
+			end
+		end
+		-- Apply Base Stat Mods
+		for _, v in pairs(statData) do
+			v[StatLogic.Stats.Strength] = (v[StatLogic.Stats.Strength] or 0) * statModContext("MOD_STR")
+			v[StatLogic.Stats.Agility] = (v[StatLogic.Stats.Agility] or 0) * statModContext("MOD_AGI")
+			v[StatLogic.Stats.Stamina] = (v[StatLogic.Stats.Stamina] or 0) * statModContext("MOD_STA")
+			v[StatLogic.Stats.Intellect] = (v[StatLogic.Stats.Intellect] or 0) * statModContext("MOD_INT")
+			v[StatLogic.Stats.Spirit] = (v[StatLogic.Stats.Spirit] or 0) * statModContext("MOD_SPI")
+		end
+
+		for _, calcData in pairs(summaryCalcData) do
+			if db.profile[calcData.option] then
+				local entry = {
+					stat = calcData.stat,
+				}
+				for statDataType, statTable in pairs(statData) do
+					entry[statDataType] = calcData.func(statTable, statModContext, statDataType, link)
+				end
+				tinsert(summary, entry)
+			end
 		end
 	end
 

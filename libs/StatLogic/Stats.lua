@@ -13,6 +13,7 @@ local StatLogic = LibStub(addonName)
 local Stat = {
 	show = true,
 	isPercent = false,
+	modifier = 1,
 }
 
 ---@param stat table?
