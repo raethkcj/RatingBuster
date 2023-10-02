@@ -238,11 +238,16 @@ L["StatIDLookup"] = {
 
 	["à toutes les caractéristiques"] = {StatLogic.Stats.Strength, StatLogic.Stats.Agility, StatLogic.Stats.Stamina, StatLogic.Stats.Intellect, StatLogic.Stats.Spirit},
 	["Force"] = {StatLogic.Stats.Strength},
+	["à la Force"] = {StatLogic.Stats.Strength},
 	["Agilité"] = {StatLogic.Stats.Agility},
+	["à l'Agilité"] = {StatLogic.Stats.Agility},
 	["Endurance"] = {StatLogic.Stats.Stamina},
 	["en endurance"] = {StatLogic.Stats.Stamina},
+	["à l'Endurance"] = {StatLogic.Stats.Stamina},
 	["Intelligence"] = {StatLogic.Stats.Intellect},
+	["à l'Intelligence"] = {StatLogic.Stats.Intellect},
 	["Esprit"] = {StatLogic.Stats.Spirit},
+	["à l'Esprit"] = {StatLogic.Stats.Spirit},
 
 	["à la résistance Arcanes"] = {"ARCANE_RES"},
 	["à la résistance aux Arcanes"] = {"ARCANE_RES"},
