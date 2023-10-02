@@ -3370,6 +3370,29 @@ local function WriteSummary(tooltip, output)
 	end
 end
 
+local SummaryData = setmetatable({}, {
+	__call = function(t)
+		local self = setmetatable({}, t)
+		return self
+	end
+})
+SummaryData.__index = SummaryData
+
+function SummaryData:Add(stat, amount, statDataType)
+	amount = amount * stat.modifier
+	if stat.show and profileDB["sum" .. stat] then
+		self[stat] = self[stat] or {
+			stat = stat
+		}
+		self[stat][statDataType] = (self[stat][statDataType] or 0) + amount
+	end
+	if stat.dependents then
+		for dependent, rate in pairs(stat.dependents) do
+			self:Add(dependent, amount * rate, statDataType)
+		end
+	end
+end
+
 function RatingBuster:StatSummary(tooltip, name, link)
 	-- Hide stat summary for equipped items
 	if globalDB.sumIgnoreEquipped and IsEquippedItem(link) then return end
@@ -3466,55 +3489,96 @@ function RatingBuster:StatSummary(tooltip, name, link)
 
 	-------------------------
 	-- Build Summary Table --
-	local statData = {}
-	statData.sum = StatLogic:GetSum(link)
-	if not statData.sum then return end
-	if not globalDB.calcSum then
-		statData.sum = nil
-	end
-
-	-- Ignore bags
-	if not StatLogic:GetDiff(link) then return end
-
-	-- Get Diff Data
-	if globalDB.calcDiff then
-		if globalDB.sumDiffStyle == "comp" then
-			if tooltipLevel > 0 then
-				statData.diff1 = select(tooltipLevel, StatLogic:GetDiff(mainTooltip, nil, nil, globalDB.sumIgnoreEnchant, globalDB.sumIgnoreGems, globalDB.sumIgnoreExtraSockets, red, yellow, blue, meta))
-			end
-		else
-			statData.diff1, statData.diff2 = StatLogic:GetDiff(link, nil, nil, globalDB.sumIgnoreEnchant, globalDB.sumIgnoreGems, globalDB.sumIgnoreExtraSockets, red, yellow, blue, meta)
-		end
-	end
-	-- Apply Base Stat Mods
-	for _, v in pairs(statData) do
-		v[StatLogic.Stats.Strength] = (v[StatLogic.Stats.Strength] or 0)
-		v[StatLogic.Stats.Agility] = (v[StatLogic.Stats.Agility] or 0)
-		v[StatLogic.Stats.Stamina] = (v[StatLogic.Stats.Stamina] or 0)
-		v[StatLogic.Stats.Intellect] = (v[StatLogic.Stats.Intellect] or 0)
-		v[StatLogic.Stats.Spirit] = (v[StatLogic.Stats.Spirit] or 0)
-	end
-	if profileDB.enableStatMods then
-		for _, v in pairs(statData) do
-			v[StatLogic.Stats.Strength] = v[StatLogic.Stats.Strength] * GSM("MOD_STR")
-			v[StatLogic.Stats.Agility] = v[StatLogic.Stats.Agility] * GSM("MOD_AGI")
-			v[StatLogic.Stats.Stamina] = v[StatLogic.Stats.Stamina] * GSM("MOD_STA")
-			v[StatLogic.Stats.Intellect] = v[StatLogic.Stats.Intellect] * GSM("MOD_INT")
-			v[StatLogic.Stats.Spirit] = v[StatLogic.Stats.Spirit] * GSM("MOD_SPI")
-		end
-	end
-
 	local summary = {}
-	for _, calcData in pairs(summaryCalcData) do
-		if profileDB[calcData.option] then
-			local entry = {
-				name = calcData.name,
-				ispercent = calcData.ispercent,
-			}
-			for statDataType, statTable in pairs(statData) do
-				entry[statDataType] = calcData.func(statTable, statDataType, link)
+
+	-- New
+	do
+		local statData = {}
+		statData.sum = StatLogic:GetSum(link)
+		if not statData.sum then return end
+		if not globalDB.calcSum then
+			statData.sum = nil
+		end
+
+		-- Ignore bags
+		if not StatLogic:GetDiff(link) then return end
+
+		-- Get Diff Data
+		if globalDB.calcDiff then
+			if globalDB.sumDiffStyle == "comp" then
+				if tooltipLevel > 0 then
+					statData.diff1 = select(tooltipLevel,
+					StatLogic:GetDiff(mainTooltip, nil, nil, globalDB.sumIgnoreEnchant, globalDB.sumIgnoreGems,
+					globalDB.sumIgnoreExtraSockets, red, yellow, blue, meta))
+				end
+			else
+				statData.diff1, statData.diff2 = StatLogic:GetDiff(link, nil, nil, globalDB.sumIgnoreEnchant,
+				globalDB.sumIgnoreGems, globalDB.sumIgnoreExtraSockets, red, yellow, blue, meta)
 			end
-			tinsert(summary, entry)
+		end
+
+		local summaryData = SummaryData()
+		for statDataType, statTable in pairs(statData) do
+			for stat, amount in pairs(statTable) do
+				summaryData:Add(stat, amount, statDataType)
+			end
+		end
+	end
+
+	---@deprecated
+	do
+		local statData = {}
+		statData.sum = StatLogic:GetSum(link)
+		if not statData.sum then return end
+		if not globalDB.calcSum then
+			statData.sum = nil
+		end
+
+		-- Ignore bags
+		if not StatLogic:GetDiff(link) then return end
+
+		-- Get Diff Data
+		if globalDB.calcDiff then
+			if globalDB.sumDiffStyle == "comp" then
+				if tooltipLevel > 0 then
+					statData.diff1 = select(tooltipLevel,
+					StatLogic:GetDiff(mainTooltip, nil, nil, globalDB.sumIgnoreEnchant, globalDB.sumIgnoreGems,
+					globalDB.sumIgnoreExtraSockets, red, yellow, blue, meta))
+				end
+			else
+				statData.diff1, statData.diff2 = StatLogic:GetDiff(link, nil, nil, globalDB.sumIgnoreEnchant,
+				globalDB.sumIgnoreGems, globalDB.sumIgnoreExtraSockets, red, yellow, blue, meta)
+			end
+		end
+		-- Apply Base Stat Mods
+		for _, v in pairs(statData) do
+			v[StatLogic.Stats.Strength] = (v[StatLogic.Stats.Strength] or 0)
+			v[StatLogic.Stats.Agility] = (v[StatLogic.Stats.Agility] or 0)
+			v[StatLogic.Stats.Stamina] = (v[StatLogic.Stats.Stamina] or 0)
+			v[StatLogic.Stats.Intellect] = (v[StatLogic.Stats.Intellect] or 0)
+			v[StatLogic.Stats.Spirit] = (v[StatLogic.Stats.Spirit] or 0)
+		end
+		if profileDB.enableStatMods then
+			for _, v in pairs(statData) do
+				v[StatLogic.Stats.Strength] = v[StatLogic.Stats.Strength] * GSM("MOD_STR")
+				v[StatLogic.Stats.Agility] = v[StatLogic.Stats.Agility] * GSM("MOD_AGI")
+				v[StatLogic.Stats.Stamina] = v[StatLogic.Stats.Stamina] * GSM("MOD_STA")
+				v[StatLogic.Stats.Intellect] = v[StatLogic.Stats.Intellect] * GSM("MOD_INT")
+				v[StatLogic.Stats.Spirit] = v[StatLogic.Stats.Spirit] * GSM("MOD_SPI")
+			end
+		end
+
+		for _, calcData in pairs(summaryCalcData) do
+			if profileDB[calcData.option] then
+				local entry = {
+					name = calcData.name,
+					ispercent = calcData.ispercent,
+				}
+				for statDataType, statTable in pairs(statData) do
+					entry[statDataType] = calcData.func(statTable, statDataType, link)
+				end
+				tinsert(summary, entry)
+			end
 		end
 	end
 
