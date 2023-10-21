@@ -176,6 +176,15 @@ local options = {
 				LibStub("AceConfigCmd-3.0").HandleCommand(RatingBuster, "rb", addonNameWithVersion, "")
 			end
 		},
+		pp = {
+			type = "execute",
+			name = "Performance Profile",
+			desc = "Execute a performance test and display the results",
+			func = function()
+				RatingBuster:PerformanceProfile()
+			end,
+			hidden = true,
+		},
 		enableStatMods = {
 			type = 'toggle',
 			name = L["Enable Stat Mods"],
