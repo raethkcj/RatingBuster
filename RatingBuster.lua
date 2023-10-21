@@ -1923,14 +1923,12 @@ end
 
 
 function RatingBuster:ProcessText(text, link, color)
-	-- Find and set color code (used to fix gem text color) pattern:|cxxxxxxxx
-	local currentColorCode = select(3, text:find("(|c%x%x%x%x%x%x%x%x)")) or "|r"
-	-- Check if test has a matching pattern
+	-- Convert text to lower so we don't have to worry about same ratings with different cases
+	local lowerText = text:lower()
+	-- Check if text has a matching pattern
 	for _, num in ipairs(L["numberPatterns"]) do
-		-- Convert text to lower so we don't have to worry about same ratings with different cases
-		local lowerText = text:lower()
 		-- Capture the stat value
-		local s, e, value, partialtext = lowerText:find(num.pattern)
+		local _, insertionPoint, value, partialtext = lowerText:find(num.pattern)
 		if value then
 			-- Check and switch captures if needed
 			if partialtext and tonumber(partialtext) then
@@ -1942,10 +1940,13 @@ function RatingBuster:ProcessText(text, link, color)
 					value = tonumber(value)
 					local infoString = RatingBuster:ProcessStat(stat.id, value, link, color)
 					if infoString ~= "" then
-						-- Add parenthesis
-						infoString = "("..infoString..")"
+						-- Change insertion point if necessary
+						if num.addInfo == "AfterStat" then
+							_, insertionPoint = lowerText:find(stat.pattern)
+						end
+
+						-- Backwards Compatibility
 						if not globalDB.textColor.GenerateHexColorMarkup then
-							-- Backwards Compatibility
 							local old = globalDB.textColor
 							if type(old) == "table" and old.r and old.g and old.b then
 								globalDB.textColor = CreateColor(old.r, old.g, old.b)
@@ -1953,25 +1954,21 @@ function RatingBuster:ProcessText(text, link, color)
 								globalDB.textColor = defaults.global.textColor
 							end
 						end
-						-- Add Color
-						infoString = globalDB.textColor:GenerateHexColorMarkup()..infoString..currentColorCode
-						-- Build replacement string
-						if num.addInfo == "AfterNumber" then -- Add after number
-							infoString = infoString:gsub("%%", "%%%%%%%%") -- sub "%" with "%%%%"
-							-- Only substitue the number pattern's actual captured number
-							-- This allows checking for invalid characters after the digits,
-							-- while still placing the infoString directly after the digits.
-							local numPattern = num.pattern:match(".-%)")
-							infoString = text:sub(s, e):gsub(numPattern, "%0 "..infoString, 1) -- sub "33" with "33 (3.33%)"
-						else -- Add after stat
-							infoString = infoString:gsub("%%", "%%%%")
-							s, e = lowerText:find(stat.pattern)
-							infoString = "%0 "..infoString
-						end
-						-- Insert info into text
-						return (text:gsub(text:sub(s, e), infoString, 1))
+
+						-- Insert info into text. table.concat should be more efficient than many .. concats
+						return table.concat({
+							text:sub(1, insertionPoint),
+							" ",
+							globalDB.textColor:GenerateHexColorMarkup(),
+							"(",
+							infoString,
+							")",
+							"|r",
+							text:sub(insertionPoint + 1)
+						})
+					else
+						return text
 					end
-					return text
 				end
 			end
 		end
