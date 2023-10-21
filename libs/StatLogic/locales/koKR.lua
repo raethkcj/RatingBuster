@@ -137,8 +137,6 @@ L["SinglePlusStatCheck"] = "^(.-) ([%+%-]%d+)%.?$"
 -----------------------------
 -- Single Equip Stat Check --
 -----------------------------
--- stat1, value, stat2 = strfind
--- stat = stat1..stat2
 -- "^Equip: (.-) by u?p? ?t?o? ?(%d+) ?(.-)%.?$"
 L["SingleEquipStatCheck"] = "^착용 효과: (.-) (%d+)만큼(.-)$"
 -------------

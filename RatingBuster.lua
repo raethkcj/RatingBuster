@@ -28,8 +28,8 @@ RatingBuster.version = "@project-version@"
 --@debug@
 RatingBuster.version = "(development)"
 --@end-debug@
-local addonNameWithVersion = string.format("%s %s", addonName, RatingBuster.version)
-RatingBuster.date = gsub("$Date: 2008-07-22 15:35:19 +0800 (星期二, 22 七月 2008) $", "^.-(%d%d%d%d%-%d%d%-%d%d).-$", "%1")
+local addonNameWithVersion = ("%s %s"):format(addonName, RatingBuster.version)
+RatingBuster.date = ("$Date: 2008-07-22 15:35:19 +0800 (星期二, 22 七月 2008) $"):gsub("^.-(%d%d%d%d%-%d%d%-%d%d).-$", "%1")
 
 -----------
 -- Cache --
@@ -54,9 +54,6 @@ local calcLevel, playerLevel
 local profileDB, globalDB -- Initialized in :OnInitialize()
 
 -- Localize globals
-local strfind = strfind
-local strsub = strsub
-local gsub = gsub
 local pairs = pairs
 local ipairs = ipairs
 local type = type
@@ -120,17 +117,17 @@ local function setGem(info, value)
 		profileDB[info[#info]].gemName = name
 		profileDB[info[#info]].gemLink = link
 		-- Trim spaces
-		gemText = strtrim(gemText)
+		gemText = gemText:trim()
 		-- Strip color codes
-		if strsub(gemText, -2) == "|r" then
-			gemText = strsub(gemText, 1, -3)
+		if gemText:sub(-2) == "|r" then
+			gemText = gemText:sub(1, -3)
 		end
-		if strfind(strsub(gemText, 1, 10), "|c%x%x%x%x%x%x%x%x") then
-			gemText = strsub(gemText, 11)
+		if gemText:sub(1, 10):find("|c%x%x%x%x%x%x%x%x") then
+			gemText = gemText:sub(11)
 		end
 		profileDB[info[#info]].gemText = gemText
 		clearCache()
-		local socket = strsub(info[#info], 7).." Socket"
+		local socket = info[#info]:sub(7).." Socket"
 		if not debugstack():find("AceConsole") then
 			RatingBuster:Print(L["%s is now set to %s"]:format(L[socket], link))
 		end
@@ -1083,7 +1080,7 @@ local options = {
         [class] = {
 					type = "group",
 					dialogInline = true,
-          name = gsub(L["$class Self Buffs"], "$class", (UnitClass("player"))),
+          name = L["$class Self Buffs"]:gsub("$class", (UnitClass("player"))),
           order = 5,
 					hidden = true,
 					args = {},
@@ -1398,7 +1395,7 @@ do
 	{
 		__index = function(_, statMod)
 			-- Remove underscores, PascalCase
-			return (string.gsub(statMod, "[%W_]*(%w+)[%W_]*", function(word)
+			return (statMod:gsub("[%W_]*(%w+)[%W_]*", function(word)
 				return word:lower():gsub("^%l", string.upper)
 			end))
 		end
@@ -1771,7 +1768,7 @@ function RatingBuster.ProcessTooltip(tooltip)
 			-- Get the Item ID from the link string
 			local _, link, _, level = GetItemInfo(link)
 			if link then
-				local _, _, id = strfind(link, "item:(%d+)")
+				local _, _, id = link:find("item:(%d+)")
 				local newLine = ""
 				local statColor = globalDB.sumStatColor
 				local valueColor = globalDB.sumValueColor
@@ -1865,7 +1862,7 @@ function RatingBuster:ProcessLine(text, link, color)
 		cache[cacheID] = text
 		-- SetText
 		return text
-	elseif strfind(text, "%d") then -- do nothing if we don't find a number
+	elseif text:find("%d") then -- do nothing if we don't find a number
 		-- Temporarily replace exclusions
 		local exclusions = false
 		for exclusion, replacement in pairs(L["exclusions"]) do
@@ -1879,7 +1876,7 @@ function RatingBuster:ProcessLine(text, link, color)
 		-- Check for separators and bulid separatorTable
 		local separatorTable = {}
 		for _, sep in ipairs(L["separators"]) do
-			if strfind(text, sep) then
+			if text:find(sep) then
 				tinsert(separatorTable, sep)
 			end
 		end
@@ -1909,7 +1906,7 @@ end
 function RatingBuster:SplitDoJoin(text, separatorTable, link, color)
 	if type(separatorTable) == "table" and table.maxn(separatorTable) > 0 then
 		local sep = tremove(separatorTable, 1)
-		text =  gsub(text, sep, "@")
+		text =  text:gsub(sep, "@")
 		text = {strsplit("@", text)}
 		local processedText = {}
 		local tempTable = {}
@@ -1918,7 +1915,7 @@ function RatingBuster:SplitDoJoin(text, separatorTable, link, color)
 			tinsert(processedText, self:SplitDoJoin(t, tempTable, link, color))
 		end
 		-- Join text
-		return (gsub(strjoin("@", unpack(processedText)), "@", sep))
+		return (strjoin("@", unpack(processedText)):gsub("@", sep))
 	else
 		return self:ProcessText(text, link, color)
 	end
@@ -1927,13 +1924,13 @@ end
 
 function RatingBuster:ProcessText(text, link, color)
 	-- Find and set color code (used to fix gem text color) pattern:|cxxxxxxxx
-	local currentColorCode = select(3, strfind(text, "(|c%x%x%x%x%x%x%x%x)")) or "|r"
+	local currentColorCode = select(3, text:find("(|c%x%x%x%x%x%x%x%x)")) or "|r"
 	-- Check if test has a matching pattern
 	for _, num in ipairs(L["numberPatterns"]) do
 		-- Convert text to lower so we don't have to worry about same ratings with different cases
-		local lowerText = string.lower(text)
+		local lowerText = text:lower()
 		-- Capture the stat value
-		local s, e, value, partialtext = strfind(lowerText, num.pattern)
+		local s, e, value, partialtext = lowerText:find(num.pattern)
 		if value then
 			-- Check and switch captures if needed
 			if partialtext and tonumber(partialtext) then
@@ -1941,7 +1938,7 @@ function RatingBuster:ProcessText(text, link, color)
 			end
 			-- Capture the stat name
 			for _, stat in ipairs(L["statList"]) do
-				if (not partialtext and strfind(lowerText, stat.pattern)) or (partialtext and strfind(partialtext, stat.pattern)) then
+				if (not partialtext and lowerText:find(stat.pattern)) or (partialtext and partialtext:find(stat.pattern)) then
 					value = tonumber(value)
 					local infoString = RatingBuster:ProcessStat(stat.id, value, link, color)
 					if infoString ~= "" then
@@ -1960,19 +1957,19 @@ function RatingBuster:ProcessText(text, link, color)
 						infoString = globalDB.textColor:GenerateHexColorMarkup()..infoString..currentColorCode
 						-- Build replacement string
 						if num.addInfo == "AfterNumber" then -- Add after number
-							infoString = gsub(infoString, "%%", "%%%%%%%%") -- sub "%" with "%%%%"
+							infoString = infoString:gsub("%%", "%%%%%%%%") -- sub "%" with "%%%%"
 							-- Only substitue the number pattern's actual captured number
 							-- This allows checking for invalid characters after the digits,
 							-- while still placing the infoString directly after the digits.
 							local numPattern = num.pattern:match(".-%)")
-							infoString = gsub(strsub(text, s, e), numPattern, "%0 "..infoString, 1) -- sub "33" with "33 (3.33%)"
+							infoString = text:sub(s, e):gsub(numPattern, "%0 "..infoString, 1) -- sub "33" with "33 (3.33%)"
 						else -- Add after stat
-							infoString = gsub(infoString, "%%", "%%%%")
-							s, e = strfind(lowerText, stat.pattern)
+							infoString = infoString:gsub("%%", "%%%%")
+							s, e = lowerText:find(stat.pattern)
 							infoString = "%0 "..infoString
 						end
 						-- Insert info into text
-						return (gsub(text, strsub(text, s, e), infoString, 1)) -- because gsub has 2 return values, but we only want 1
+						return (text:gsub(text:sub(s, e), infoString, 1))
 					end
 					return text
 				end
@@ -2047,16 +2044,16 @@ do
 				if GetBlockChance() == 0 then
 					numStats = numStats - 1
 				end
-				infoString = format("%+.2f%% x"..numStats, effect)
+				infoString = ("%+.2f%% x"..numStats):format(effect)
 			elseif strID == StatLogic.Stats.Dodge and profileDB.enableAvoidanceDiminishingReturns then
-				infoString = format("%+.2f%%", StatLogic:GetAvoidanceGainAfterDR(StatLogic.Stats.Dodge, processedDodge + effect) - StatLogic:GetAvoidanceGainAfterDR(StatLogic.Stats.Dodge, processedDodge))
+				infoString = ("%+.2f%%"):format(StatLogic:GetAvoidanceGainAfterDR(StatLogic.Stats.Dodge, processedDodge + effect) - StatLogic:GetAvoidanceGainAfterDR(StatLogic.Stats.Dodge, processedDodge))
 				processedDodge = processedDodge + effect
 			elseif strID == StatLogic.Stats.Parry and profileDB.enableAvoidanceDiminishingReturns then
-				infoString = format("%+.2f%%", StatLogic:GetAvoidanceGainAfterDR(StatLogic.Stats.Parry, processedParry + effect) - StatLogic:GetAvoidanceGainAfterDR(StatLogic.Stats.Parry, processedParry))
+				infoString = ("%+.2f%%"):format(StatLogic:GetAvoidanceGainAfterDR(StatLogic.Stats.Parry, processedParry + effect) - StatLogic:GetAvoidanceGainAfterDR(StatLogic.Stats.Parry, processedParry))
 				processedParry = processedParry + effect
 			elseif strID == "WEAPON_SKILL" and profileDB.wpnBreakDown then
 				effect = effect * 0.04
-				infoString = format("%+.2f%% x5", effect)
+				infoString = ("%+.2f%% x5"):format(effect)
 			elseif strID == "EXPERTISE" and profileDB.expBreakDown then
 				if tocversion < 30000 then
 					-- Expertise is truncated in TBC but not in Wrath
@@ -2064,9 +2061,9 @@ do
 				end
 				effect = effect * -0.25
 				if profileDB.detailedConversionText then
-					infoString = gsub(L["$value to be Dodged/Parried"], "$value", format("%+.2f%%%%", effect))
+					infoString = L["$value to be Dodged/Parried"]:gsub("$value", ("%+.2f%%%%"):format(effect))
 				else
-					infoString = format("%+.2f%%", effect)
+					infoString = ("%+.2f%%"):format(effect)
 				end
 			elseif statID == CR_RESILIENCE_CRIT_TAKEN then -- Resilience
 				effect = effect * -1
@@ -2075,19 +2072,19 @@ do
 
 					if tocversion >= 30000 then
 						-- Wrath
-						tinsert(infoTable, (L["$value to be Crit"]:gsub("$value", format("%+.2f%%%%", effect))))
-						tinsert(infoTable, (L["$value Crit Dmg Taken"]:gsub("$value", format("%+.2f%%%%", effect * RESILIENCE_CRIT_CHANCE_TO_DAMAGE_REDUCTION_MULTIPLIER))))
-						tinsert(infoTable, (L["$value Dmg Taken"]:gsub("$value", format("%+.2f%%%%", effect * RESILIENCE_CRIT_CHANCE_TO_CONSTANT_DAMAGE_REDUCTION_MULTIPLIER))))
+						tinsert(infoTable, (L["$value to be Crit"]:gsub("$value", ("%+.2f%%%%"):format(effect))))
+						tinsert(infoTable, (L["$value Crit Dmg Taken"]:gsub("$value", ("%+.2f%%%%"):format(effect * RESILIENCE_CRIT_CHANCE_TO_DAMAGE_REDUCTION_MULTIPLIER))))
+						tinsert(infoTable, (L["$value Dmg Taken"]:gsub("$value", ("%+.2f%%%%"):format(effect * RESILIENCE_CRIT_CHANCE_TO_CONSTANT_DAMAGE_REDUCTION_MULTIPLIER))))
 					elseif tocversion >= 20000 then
 						-- TBC
-						tinsert(infoTable, (L["$value to be Crit"]:gsub("$value", format("%+.2f%%%%", effect))))
-						tinsert(infoTable, (L["$value Crit Dmg Taken"]:gsub("$value", format("%+.2f%%%%", effect * 2))))
-						tinsert(infoTable, (L["$value DOT Dmg Taken"]:gsub("$value", format("%+.2f%%%%", effect))))
+						tinsert(infoTable, (L["$value to be Crit"]:gsub("$value", ("%+.2f%%%%"):format(effect))))
+						tinsert(infoTable, (L["$value Crit Dmg Taken"]:gsub("$value", ("%+.2f%%%%"):format(effect * 2))))
+						tinsert(infoTable, (L["$value DOT Dmg Taken"]:gsub("$value", ("%+.2f%%%%"):format(effect))))
 					end
 
 					infoString = strjoin(", ", unpack(infoTable))
 				else
-					infoString = format("%+.2f%%", effect)
+					infoString = ("%+.2f%%"):format(effect)
 				end
 			else
 				local pattern = "%+.2f%%"
@@ -2113,7 +2110,7 @@ do
 				end
 
 				if show then
-					infoString = format(pattern, effect)
+					infoString = pattern:format(effect)
 				end
 			end
 		elseif statID == StatLogic.Stats.Strength and profileDB.showStats then
@@ -2130,15 +2127,15 @@ do
 				local mod = GSM("MOD_AP")
 				local effect = value * StatLogic:GetAPPerStr(class) * mod
 				if (mod ~= 1 or statmod ~= 1) and floor(abs(effect) * 10 + 0.5) > 0 then
-					tinsert(infoTable, (gsub(L["$value AP"], "$value", format("%+.1f", effect))))
+					tinsert(infoTable, (L["$value AP"]:gsub("$value", ("%+.1f"):format(effect))))
 				elseif floor(abs(effect) + 0.5) > 0 then -- so we don't get +0 AP when effect < 0.5
-					tinsert(infoTable, (gsub(L["$value AP"], "$value", format("%+.0f", effect))))
+					tinsert(infoTable, (L["$value AP"]:gsub("$value", ("%+.0f"):format(effect))))
 				end
 			end
 			if profileDB.showBlockValueFromStr then
 				local effect = value * StatLogic:GetBlockValuePerStr(class)
 				if floor(abs(effect) * 10 + 0.5) > 0 then
-					tinsert(infoTable, (gsub(L["$value Block"], "$value", format("%+.1f", effect))))
+					tinsert(infoTable, (L["$value Block"]:gsub("$value", ("%+.1f"):format(effect))))
 				end
 			end
 			-- Shaman: Mental Quickness
@@ -2148,9 +2145,9 @@ do
 				local effect = (value * StatLogic:GetAPPerStr(class) * GSM("ADD_SPELL_DMG_MOD_AP")
 					+ value * GSM("ADD_SPELL_DMG_MOD_STR")) * mod
 				if (mod ~= 1 or statmod ~= 1) and floor(abs(effect) * 10 + 0.5) > 0 then
-					tinsert(infoTable, (gsub(L["$value Spell Dmg"], "$value", format("%+.1f", effect))))
+					tinsert(infoTable, (L["$value Spell Dmg"]:gsub("$value", ("%+.1f"):format(effect))))
 				elseif floor(abs(effect) + 0.5) > 0 then
-					tinsert(infoTable, (gsub(L["$value Spell Dmg"], "$value", format("%+.0f", effect))))
+					tinsert(infoTable, (L["$value Spell Dmg"]:gsub("$value", ("%+.0f"):format(effect))))
 				end
 			end
 			if profileDB.showHealingFromStr then
@@ -2158,9 +2155,9 @@ do
 				local effect = (value * StatLogic:GetAPPerStr(class) * GSM("ADD_HEALING_MOD_AP")
 					+ value * GSM("ADD_HEALING_MOD_STR")) * mod
 				if (mod ~= 1 or statmod ~= 1) and floor(abs(effect) * 10 + 0.5) > 0 then
-					tinsert(infoTable, (gsub(L["$value Heal"], "$value", format("%+.1f", effect))))
+					tinsert(infoTable, (L["$value Heal"]:gsub("$value", ("%+.1f"):format(effect))))
 				elseif floor(abs(effect) + 0.5) > 0 then
-					tinsert(infoTable, (gsub(L["$value Heal"], "$value", format("%+.0f", effect))))
+					tinsert(infoTable, (L["$value Heal"]:gsub("$value", ("%+.0f"):format(effect))))
 				end
 			end
 			-- Death Knight: Forceful Deflection - Passive
@@ -2173,7 +2170,7 @@ do
 					processedParry = processedParry + effectNoDR
 				end
 				if effect > 0 then
-					tinsert(infoTable, (gsub(L["$value% Parry"], "$value", format("%+.2f", effect))))
+					tinsert(infoTable, (L["$value% Parry"]:gsub("$value", ("%+.2f"):format(effect))))
 				end
 			else
 				local rating = value * GSM("ADD_PARRY_RATING_MOD_STR")
@@ -2195,36 +2192,36 @@ do
 				local mod = GSM("MOD_AP")
 				local effect = value * StatLogic:GetAPPerAgi(class) * mod
 				if (mod ~= 1 or statmod ~= 1) and floor(abs(effect) * 10 + 0.5) > 0 then
-					tinsert(infoTable, (gsub(L["$value AP"], "$value", format("%+.1f", effect))))
+					tinsert(infoTable, (L["$value AP"]:gsub("$value", ("%+.1f"):format(effect))))
 				elseif floor(abs(effect) + 0.5) > 0 then
-					tinsert(infoTable, (gsub(L["$value AP"], "$value", format("%+.0f", effect))))
+					tinsert(infoTable, (L["$value AP"]:gsub("$value", ("%+.0f"):format(effect))))
 				end
 			end
 			if profileDB.showRAPFromAgi then
 				local mod = GSM("MOD_RANGED_AP")
 				local effect = value * StatLogic:GetRAPPerAgi(class) * mod
 				if (mod ~= 1 or statmod ~= 1) and floor(abs(effect) * 10 + 0.5) > 0 then
-					tinsert(infoTable, (gsub(L["$value RAP"], "$value", format("%+.1f", effect))))
+					tinsert(infoTable, (L["$value RAP"]:gsub("$value", ("%+.1f"):format(effect))))
 				elseif floor(abs(effect) + 0.5) > 0 then
-					tinsert(infoTable, (gsub(L["$value RAP"], "$value", format("%+.0f", effect))))
+					tinsert(infoTable, (L["$value RAP"]:gsub("$value", ("%+.0f"):format(effect))))
 				end
 			end
 			if profileDB.showCritFromAgi then
 				local effect = StatLogic:GetCritFromAgi(value, class, calcLevel)
 				if effect > 0 then
-					tinsert(infoTable, (gsub(L["$value% Crit"], "$value", format("%+.2f", effect))))
+					tinsert(infoTable, (L["$value% Crit"]:gsub("$value", ("%+.2f"):format(effect))))
 				end
 			end
 			if profileDB.showDodgeFromAgi and (calcLevel == playerLevel) then
 				local effect = StatLogic:GetDodgeFromAgi(value)
 				if effect > 0 then
-					tinsert(infoTable, (gsub(L["$value% Dodge"], "$value", format("%+.2f", effect))))
+					tinsert(infoTable, (L["$value% Dodge"]:gsub("$value", ("%+.2f"):format(effect))))
 				end
 			end
 			if profileDB.showArmorFromAgi then
 				local effect = value * 2
 				if effect > 0 then
-					tinsert(infoTable, (gsub(L["$value Armor"], "$value", format("%+.0f", effect))))
+					tinsert(infoTable, (L["$value Armor"]:gsub("$value", ("%+.0f"):format(effect))))
 				end
 			end
 			-- Shaman: Mental Quickness
@@ -2233,9 +2230,9 @@ do
 				local mod = GSM("MOD_AP") * GSM("MOD_SPELL_DMG")
 				local effect = (value * StatLogic:GetAPPerAgi(class) * GSM("ADD_SPELL_DMG_MOD_AP")) * mod
 				if (mod ~= 1 or statmod ~= 1) and floor(abs(effect) * 10 + 0.5) > 0 then
-					tinsert(infoTable, (gsub(L["$value Spell Dmg"], "$value", format("%+.1f", effect))))
+					tinsert(infoTable, (L["$value Spell Dmg"]:gsub("$value", ("%+.1f"):format(effect))))
 				elseif floor(abs(effect) + 0.5) > 0 then
-					tinsert(infoTable, (gsub(L["$value Spell Dmg"], "$value", format("%+.0f", effect))))
+					tinsert(infoTable, (L["$value Spell Dmg"]:gsub("$value", ("%+.0f"):format(effect))))
 				end
 			end
 			-- Druid: Nurturing Instinct
@@ -2244,9 +2241,9 @@ do
 				local effect = (value * StatLogic:GetAPPerAgi(class) * GSM("ADD_HEALING_MOD_AP")
 					+ value * GSM("ADD_HEALING_MOD_AGI") / GSM("MOD_AP")) * mod
 				if (mod ~= 1 or statmod ~= 1) and floor(abs(effect) * 10 + 0.5) > 0 then
-					tinsert(infoTable, (gsub(L["$value Heal"], "$value", format("%+.1f", effect))))
+					tinsert(infoTable, (L["$value Heal"]:gsub("$value", ("%+.1f"):format(effect))))
 				elseif floor(abs(effect) + 0.5) > 0 then
-					tinsert(infoTable, (gsub(L["$value Heal"], "$value", format("%+.0f", effect))))
+					tinsert(infoTable, (L["$value Heal"]:gsub("$value", ("%+.0f"):format(effect))))
 				end
 			end
 			infoString = strjoin(", ", unpack(infoTable))
@@ -2264,9 +2261,9 @@ do
 				local mod = GSM("MOD_HEALTH")
 				local effect = value * 10 * mod -- 10 Health per Sta
 				if (mod ~= 1 or statmod ~= 1) and floor(abs(effect) * 10 + 0.5) > 0 then
-					tinsert(infoTable, (gsub(L["$value HP"], "$value", format("%+.1f", effect))))
+					tinsert(infoTable, (L["$value HP"]:gsub("$value", ("%+.1f"):format(effect))))
 				elseif floor(abs(effect) + 0.5) > 0 then
-					tinsert(infoTable, (gsub(L["$value HP"], "$value", format("%+.0f", effect))))
+					tinsert(infoTable, (L["$value HP"]:gsub("$value", ("%+.0f"):format(effect))))
 				end
 			end
 			if profileDB.showSpellDmgFromSta then
@@ -2274,7 +2271,7 @@ do
 				local effect = value * mod * (GSM("ADD_SPELL_DMG_MOD_STA")
 					+ GSM("ADD_SPELL_DMG_MOD_PET_STA") * GSM("ADD_PET_STA_MOD_STA"))
 				if floor(abs(effect) * 10 + 0.5) > 0 then
-					tinsert(infoTable, (gsub(L["$value Spell Dmg"], "$value", format("%+.1f", effect))))
+					tinsert(infoTable, (L["$value Spell Dmg"]:gsub("$value", ("%+.1f"):format(effect))))
 				end
 			end
 			-- "ADD_AP_MOD_STA" -- Hunter: Hunter vs. Wild
@@ -2282,9 +2279,9 @@ do
 				local mod = GSM("MOD_AP")
 				local effect = value * GSM("ADD_AP_MOD_STA") * mod
 				if (mod ~= 1 or statmod ~= 1) and floor(abs(effect) * 10 + 0.5) > 0 then
-					tinsert(infoTable, (gsub(L["$value AP"], "$value", format("%+.1f", effect))))
+					tinsert(infoTable, (L["$value AP"]:gsub("$value", ("%+.1f"):format(effect))))
 				elseif floor(abs(effect) + 0.5) > 0 then
-					tinsert(infoTable, (gsub(L["$value AP"], "$value", format("%+.0f", effect))))
+					tinsert(infoTable, (L["$value AP"]:gsub("$value", ("%+.0f"):format(effect))))
 				end
 			end
 			infoString = strjoin(", ", unpack(infoTable))
@@ -2302,15 +2299,15 @@ do
 				local mod = GSM("MOD_MANA")
 				local effect = value * 15 * mod -- 15 Mana per Int
 				if (mod ~= 1 or statmod ~= 1) and floor(abs(effect) * 10 + 0.5) > 0 then
-					tinsert(infoTable, (gsub(L["$value MP"], "$value", format("%+.1f", effect))))
+					tinsert(infoTable, (L["$value MP"]:gsub("$value", ("%+.1f"):format(effect))))
 				elseif floor(abs(effect) + 0.5) > 0 then
-					tinsert(infoTable, (gsub(L["$value MP"], "$value", format("%+.0f", effect))))
+					tinsert(infoTable, (L["$value MP"]:gsub("$value", ("%+.0f"):format(effect))))
 				end
 			end
 			if profileDB.showSpellCritFromInt then
 				local effect = StatLogic:GetSpellCritFromInt(value, class, calcLevel)
 				if effect > 0 then
-					tinsert(infoTable, (gsub(L["$value% Spell Crit"], "$value", format("%+.2f", effect))))
+					tinsert(infoTable, (L["$value% Spell Crit"]:gsub("$value", ("%+.2f"):format(effect))))
 				end
 			end
 			if profileDB.showSpellDmgFromInt then
@@ -2318,14 +2315,14 @@ do
 				local effect = value * mod * (GSM("ADD_SPELL_DMG_MOD_INT")
 					+ GSM("ADD_SPELL_DMG_MOD_PET_INT") * GSM("ADD_PET_INT_MOD_INT"))
 				if floor(abs(effect) * 10 + 0.5) > 0 then
-					tinsert(infoTable, (gsub(L["$value Spell Dmg"], "$value", format("%+.1f", effect))))
+					tinsert(infoTable, (L["$value Spell Dmg"]:gsub("$value", ("%+.1f"):format(effect))))
 				end
 			end
 			if profileDB.showHealingFromInt then
 				local mod = GSM("MOD_HEALING")
 				local effect = value * GSM("ADD_HEALING_MOD_INT") * mod
 				if floor(abs(effect) * 10 + 0.5) > 0 then
-					tinsert(infoTable, (gsub(L["$value Heal"], "$value", format("%+.1f", effect))))
+					tinsert(infoTable, (L["$value Heal"]:gsub("$value", ("%+.1f"):format(effect))))
 				end
 			end
 			if profileDB.showMP5FromInt then
@@ -2341,7 +2338,7 @@ do
 					effect = value * GSM("ADD_MANA_REG_MOD_INT")
 				end
 				if floor(abs(effect) * 10 + 0.5) > 0 then
-					tinsert(infoTable, (gsub(L["$value MP5"], "$value", format("%+.1f", effect))))
+					tinsert(infoTable, (L["$value MP5"]:gsub("$value", ("%+.1f"):format(effect))))
 				end
 			end
 			if profileDB.showMP5NCFromInt then
@@ -2357,20 +2354,20 @@ do
 					effect = value * GSM("ADD_MANA_REG_MOD_INT")
 				end
 				if floor(abs(effect) * 10 + 0.5) > 0 then
-					tinsert(infoTable, (gsub(L["$value MP5(NC)"], "$value", format("%+.1f", effect))))
+					tinsert(infoTable, (L["$value MP5(NC)"]:gsub("$value", ("%+.1f"):format(effect))))
 				end
 			end
 			if profileDB.showRAPFromInt then
 				local mod = GSM("MOD_RANGED_AP")
 				local effect = value * GSM("ADD_RANGED_AP_MOD_INT") * mod
 				if floor(abs(effect) * 10 + 0.5) > 0 then
-					tinsert(infoTable, (gsub(L["$value RAP"], "$value", format("%+.1f", effect))))
+					tinsert(infoTable, (L["$value RAP"]:gsub("$value", ("%+.1f"):format(effect))))
 				end
 			end
 			if profileDB.showArmorFromInt then
 				local effect = value * GSM("ADD_ARMOR_MOD_INT")
 				if floor(abs(effect) + 0.5) > 0 then
-					tinsert(infoTable, (gsub(L["$value Armor"], "$value", format("%+.0f", effect))))
+					tinsert(infoTable, (L["$value Armor"]:gsub("$value", ("%+.0f"):format(effect))))
 				end
 			end
 			-- "ADD_AP_MOD_INT" -- Shaman: Mental Dexterity
@@ -2378,9 +2375,9 @@ do
 				local mod = GSM("MOD_AP")
 				local effect = value * GSM("ADD_AP_MOD_INT") * mod
 				if (mod ~= 1 or statmod ~= 1) and floor(abs(effect) * 10 + 0.5) > 0 then
-					tinsert(infoTable, (gsub(L["$value AP"], "$value", format("%+.1f", effect))))
+					tinsert(infoTable, (L["$value AP"]:gsub("$value", ("%+.1f"):format(effect))))
 				elseif floor(abs(effect) + 0.5) > 0 then
-					tinsert(infoTable, (gsub(L["$value AP"], "$value", format("%+.0f", effect))))
+					tinsert(infoTable, (L["$value AP"]:gsub("$value", ("%+.0f"):format(effect))))
 				end
 			end
 			infoString = strjoin(", ", unpack(infoTable))
@@ -2403,7 +2400,7 @@ do
 					effect = StatLogic:GetNormalManaRegenFromSpi(value, class) * mod
 				end
 				if floor(abs(effect) * 10 + 0.5) > 0 then
-					tinsert(infoTable, (gsub(L["$value MP5"], "$value", format("%+.1f", effect))))
+					tinsert(infoTable, (L["$value MP5"]:gsub("$value", ("%+.1f"):format(effect))))
 				end
 			end
 			if profileDB.showMP5NCFromSpi then
@@ -2414,7 +2411,7 @@ do
 					effect = StatLogic:GetNormalManaRegenFromSpi(value, class)
 				end
 				if floor(abs(effect) * 10 + 0.5) > 0 then
-					tinsert(infoTable, (gsub(L["$value MP5(NC)"], "$value", format("%+.1f", effect))))
+					tinsert(infoTable, (L["$value MP5(NC)"]:gsub("$value", ("%+.1f"):format(effect))))
 				end
 			end
 			if profileDB.showHP5FromSpi then
@@ -2422,28 +2419,28 @@ do
 				local effect = StatLogic:GetHealthRegenFromSpi(spi + value, class)
 					- StatLogic:GetHealthRegenFromSpi(spi, class, calcLevel)
 				if floor(abs(effect) * 10 + 0.5) > 0 then
-					tinsert(infoTable, (gsub(L["$value HP5"], "$value", format("%+.1f", effect))))
+					tinsert(infoTable, (L["$value HP5"]:gsub("$value", ("%+.1f"):format(effect))))
 				end
 			end
 			if profileDB.showSpellDmgFromSpi then
 				local mod = GSM("MOD_SPELL_DMG")
 				local effect = value * GSM("ADD_SPELL_DMG_MOD_SPI") * mod
 				if floor(abs(effect) * 10 + 0.5) > 0 then
-					tinsert(infoTable, (gsub(L["$value Spell Dmg"], "$value", format("%+.1f", effect))))
+					tinsert(infoTable, (L["$value Spell Dmg"]:gsub("$value", ("%+.1f"):format(effect))))
 				end
 			end
 			if profileDB.showHealingFromSpi then
 				local mod = GSM("MOD_HEALING")
 				local effect = value * GSM("ADD_HEALING_MOD_SPI") * mod
 				if floor(abs(effect) * 10 + 0.5) > 0 then
-					tinsert(infoTable, (gsub(L["$value Heal"], "$value", format("%+.1f", effect))))
+					tinsert(infoTable, (L["$value Heal"]:gsub("$value", ("%+.1f"):format(effect))))
 				end
 			end
 			if profileDB.showSpellCritFromSpi then
 				local mod = GSM("ADD_SPELL_CRIT_RATING_MOD_SPI")
 				local effect = StatLogic:GetEffectFromRating(value * mod, CR_CRIT_SPELL, calcLevel)
 				if effect > 0 then
-					tinsert(infoTable, (gsub(L["$value% Spell Crit"], "$value", format("%+.2f", effect))))
+					tinsert(infoTable, (L["$value% Spell Crit"]:gsub("$value", ("%+.2f"):format(effect))))
 				end
 			end
 			infoString = strjoin(", ", unpack(infoTable))
@@ -2458,7 +2455,7 @@ do
 			local infoTable = {}
 			local effect = value * GSM("ADD_AP_MOD_ARMOR") * GSM("MOD_AP")
 			if floor(abs(effect) * 10 + 0.5) > 0 then
-				tinsert(infoTable, (gsub(L["$value AP"], "$value", format("%+.1f", effect))))
+				tinsert(infoTable, (L["$value AP"]:gsub("$value", ("%+.1f"):format(effect))))
 			end
 			infoString = strjoin(", ", unpack(infoTable))
 		elseif statID == ATTACK_POWER then
@@ -2477,18 +2474,18 @@ do
 				local mod = GSM("MOD_AP") * GSM("MOD_SPELL_DMG")
 				local effect = (value * GSM("ADD_SPELL_DMG_MOD_AP")) * mod
 				if (mod ~= 1 or statmod ~= 1) and floor(abs(effect) * 10 + 0.5) > 0 then
-					tinsert(infoTable, (gsub(L["$value Spell Dmg"], "$value", format("%+.1f", effect))))
+					tinsert(infoTable, (L["$value Spell Dmg"]:gsub("$value", ("%+.1f"):format(effect))))
 				elseif floor(abs(effect) + 0.5) > 0 then
-					tinsert(infoTable, (gsub(L["$value Spell Dmg"], "$value", format("%+.0f", effect))))
+					tinsert(infoTable, (L["$value Spell Dmg"]:gsub("$value", ("%+.0f"):format(effect))))
 				end
 			end
 			if profileDB.showHealingFromAP then
 				local mod = GSM("MOD_AP") * GSM("MOD_HEALING")
 				local effect = (value * GSM("ADD_HEALING_MOD_AP")) * mod
 				if (mod ~= 1 or statmod ~= 1) and floor(abs(effect) * 10 + 0.5) > 0 then
-					tinsert(infoTable, (gsub(L["$value Heal"], "$value", format("%+.1f", effect))))
+					tinsert(infoTable, (L["$value Heal"]:gsub("$value", ("%+.1f"):format(effect))))
 				elseif floor(abs(effect) + 0.5) > 0 then
-					tinsert(infoTable, (gsub(L["$value Heal"], "$value", format("%+.0f", effect))))
+					tinsert(infoTable, (L["$value Heal"]:gsub("$value", ("%+.0f"):format(effect))))
 				end
 			end
 			infoString = strjoin(", ", unpack(infoTable))
@@ -3540,31 +3537,31 @@ function RatingBuster:StatSummary(tooltip, name, link)
 				local d = ((not s) or ((s - floor(s)) == 0)) and ((not d1) or ((d1 - floor(d1)) == 0)) and ((not d2) or ((d2 - floor(d2)) == 0)) and not ispercent
 				if s then
 					if d then
-						s = format("%d", s)
+						s = ("%d"):format(s)
 					elseif ispercent then
-						s = format("%.2f%%", s)
+						s = ("%.2f%%"):format(s)
 					else
-						s = format("%.1f", s)
+						s = ("%.1f"):format(s)
 					end
 					if d1 then
 						if d then
-							d1 = colorNum(format("%+d", d1), d1)
+							d1 = colorNum(("%+d"):format(d1), d1)
 						elseif ispercent then
-							d1 = colorNum(format("%+.2f%%", d1), d1)
+							d1 = colorNum(("%+.2f%%"):format(d1), d1)
 						else
-							d1 = colorNum(format("%+.1f", d1), d1)
+							d1 = colorNum(("%+.1f"):format(d1), d1)
 						end
 						if d2 then
 							if d then
-								d2 = colorNum(format("%+d", d2), d2)
+								d2 = colorNum(("%+d"):format(d2), d2)
 							elseif ispercent then
-								d2 = colorNum(format("%+.2f%%", d2), d2)
+								d2 = colorNum(("%+.2f%%"):format(d2), d2)
 							else
-								d2 = colorNum(format("%+.1f", d2), d2)
+								d2 = colorNum(("%+.1f"):format(d2), d2)
 							end
-							right = format("%s (%s||%s)", s, d1, d2)
+							right = ("%s (%s||%s)"):format(s, d1, d2)
 						else
-							right = format("%s (%s)", s, d1)
+							right = ("%s (%s)"):format(s, d1)
 						end
 					else
 						right = s
@@ -3572,34 +3569,34 @@ function RatingBuster:StatSummary(tooltip, name, link)
 				else
 					if d1 then
 						if d then
-							d1 = colorNum(format("%+d", d1), d1)
+							d1 = colorNum(("%+d"):format(d1), d1)
 						elseif ispercent then
-							d1 = colorNum(format("%+.2f%%", d1), d1)
+							d1 = colorNum(("%+.2f%%"):format(d1), d1)
 						else
-							d1 = colorNum(format("%+.1f", d1), d1)
+							d1 = colorNum(("%+.1f"):format(d1), d1)
 						end
 						if d2 then
 							if d then
-								d2 = colorNum(format("%+d", d2), d2)
+								d2 = colorNum(("%+d"):format(d2), d2)
 							elseif ispercent then
-								d2 = colorNum(format("%+.2f%%", d2), d2)
+								d2 = colorNum(("%+.2f%%"):format(d2), d2)
 							else
-								d2 = colorNum(format("%+.1f", d2), d2)
+								d2 = colorNum(("%+.1f"):format(d2), d2)
 							end
-							right = format("(%s||%s)", d1, d2)
+							right = ("(%s||%s)"):format(d1, d2)
 						else
-							right = format("(%s)", d1)
+							right = ("(%s)"):format(d1)
 						end
 					end
 				end
 			elseif calcSum then
 				if s then
 					if (s - floor(s)) == 0 then
-						s = format("%d", s)
+						s = ("%d"):format(s)
 					elseif ispercent then
-						s = format("%.2f%%", s)
+						s = ("%.2f%%"):format(s)
 					else
-						s = format("%.1f", s)
+						s = ("%.1f"):format(s)
 					end
 					right = s
 				end
@@ -3607,21 +3604,21 @@ function RatingBuster:StatSummary(tooltip, name, link)
 				local d = ((not d1) or (d1 - floor(d1)) == 0) and ((not d2) or ((d2 - floor(d2)) == 0))
 				if d1 then
 					if d then
-						d1 = colorNum(format("%+d", d1), d1)
+						d1 = colorNum(("%+d"):format(d1), d1)
 					elseif ispercent then
-						d1 = colorNum(format("%+.2f%%", d1), d1)
+						d1 = colorNum(("%+.2f%%"):format(d1), d1)
 					else
-						d1 = colorNum(format("%+.1f", d1), d1)
+						d1 = colorNum(("%+.1f"):format(d1), d1)
 					end
 					if d2 then
 						if d then
-							d2 = colorNum(format("%+d", d2), d2)
+							d2 = colorNum(("%+d"):format(d2), d2)
 						elseif ispercent then
-							d2 = colorNum(format("%+.2f%%", d2), d2)
+							d2 = colorNum(("%+.2f%%"):format(d2), d2)
 						else
-							d2 = colorNum(format("%+.1f", d2), d2)
+							d2 = colorNum(("%+.1f"):format(d2), d2)
 						end
-						right = format("%s||%s", d1, d2)
+						right = ("%s||%s"):format(d1, d2)
 					else
 						right = d1
 					end

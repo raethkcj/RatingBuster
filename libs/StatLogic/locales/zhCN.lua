@@ -163,8 +163,6 @@ L["SinglePlusStatCheck"] = "^([%+%-]%d+) (.-)$"
 -----------------------------
 -- Single Equip Stat Check --
 -----------------------------
--- stat1, value, stat2 = strfind
--- stat = stat1..stat2
 -- "^Equip: (.-) by u?p? ?t?o? ?(%d+) ?(.-)%.$"
 --装备: 增加法术命中等级 11点。
 --装备: 提高所有法术和魔法效果所造成的伤害和治疗效果，最多46点。

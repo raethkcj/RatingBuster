@@ -8,7 +8,7 @@ L["tonumber"] = function(s)
 	if n then
 		return n
 	else
-		return tonumber((gsub(s, ",", "%.")))
+		return tonumber((s:gsub(",", "%.")))
 	end
 end
 -------------------
@@ -149,8 +149,6 @@ L["SinglePlusStatCheck"] = "^([%+%-]%d+) (.-)%.?$"
 -----------------------------
 -- Single Equip Stat Check --
 -----------------------------
--- stat1, value, stat2 = strfind
--- stat = stat1..stat2
 -- "^Equip: (.-) by u?p? ?t?o? ?(%d+) ?(.-)%.$"
 L["SingleEquipStatCheck"] = "^Anlegen: (.-) um b?i?s? ?z?u? ?(%d+) ?(.-)%.$"
 -------------

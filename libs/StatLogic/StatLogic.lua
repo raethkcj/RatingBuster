@@ -136,16 +136,9 @@ end
 
 -- Localize globals
 local _G = getfenv(0)
-local strfind = strfind
-local strsub = strsub
-local strupper = strupper
 local strutf8lower = string.utf8lower
-local strmatch = strmatch
-local strtrim = strtrim
 local strsplit = strsplit
 local strjoin = strjoin
-local gmatch = gmatch
-local gsub = gsub
 local strutf8sub = string.utf8sub
 local pairs = pairs
 local ipairs = ipairs
@@ -321,8 +314,8 @@ end
 ----------------
 local function StripGlobalStrings(text)
 	-- ITEM_SOCKET_BONUS = "Socket Bonus: %s"; -- Tooltip tag for socketed item matched socket bonuses
-	text = gsub(text, "%%%%", "%%") -- "%%" -> "%"
-	text = gsub(text, " ?%%%d?%.?%d?%$?[cdsgf]", "") -- delete "%d", "%s", "%c", "%g", "%2$d", "%.2f" and a space in front of it if found
+	text = text:gsub("%%%%", "%%") -- "%%" -> "%"
+	text = text:gsub(" ?%%%d?%.?%d?%$?[cdsgf]", "") -- delete "%d", "%s", "%c", "%g", "%2$d", "%.2f" and a space in front of it if found
 	-- So StripGlobalStrings(ITEM_SOCKET_BONUS) = "Socket Bonus:"
 	return text
 end
@@ -472,7 +465,7 @@ local RatingIDToConvertedStat = {
 local function GetPlayerBuffRank(buff)
 	local rank = GetSpellSubtext(buff)
 	if rank then
-		return tonumber(strmatch(rank, "(%d+)")) or 1
+		return tonumber(rank:match("(%d+)")) or 1
 	end
 end
 
@@ -1078,7 +1071,7 @@ local addedInfoMods = {
 }
 
 for _, statMod in ipairs(addedInfoMods) do
-	local name = string.format("ADD_%s_MOD_%s", statMod.add, statMod.mod)
+	local name = ("ADD_%s_MOD_%s"):format(statMod.add, statMod.mod)
 	StatLogic.StatModInfo[name] = statMod
 end
 
@@ -2311,13 +2304,13 @@ function StatLogic:BuildGemmedTooltip(item, red, yellow, blue, meta)
 	for i = 2, tip:NumLines() do
 		local text = tip[i]:GetText()
 		-- Trim spaces
-		text = strtrim(text)
+		text = text:trim()
 		-- Strip color codes
-		if strsub(text, -2) == "|r" then
-			text = strsub(text, 1, -3)
+		if text:sub(-2) == "|r" then
+			text = text:sub(1, -3)
 		end
-		if strfind(strsub(text, 1, 10), "|c%x%x%x%x%x%x%x%x") then
-			text = strsub(text, 11)
+		if text:sub(1, 10):find("|c%x%x%x%x%x%x%x%x") then
+			text = text:sub(11)
 		end
 		local socketFound = EmptySocketLookup[text]
 		if socketFound then
@@ -2539,13 +2532,13 @@ do
 			local text = tip[i]:GetText()
 
 			-- Trim spaces
-			text = strtrim(text)
+			text = text:trim()
 			-- Strip color codes
-			if strsub(text, -2) == "|r" then
-				text = strsub(text, 1, -3)
+			if text:sub(-2) == "|r" then
+				text = text:sub(1, -3)
 			end
-			if strfind(strsub(text, 1, 10), "|c%x%x%x%x%x%x%x%x") then
-				text = strsub(text, 11)
+			if text:sub(1, 10):find("|c%x%x%x%x%x%x%x%x") then
+				text = text:sub(11)
 			end
 
 			currentColor = CreateColor(tip[i]:GetTextColor())
@@ -2561,26 +2554,7 @@ do
 
 			-- Fast Exclude --
 			-- Exclude obvious strings that do not need to be checked, also exclude lines that are not white and green and normal (normal for Frozen Wrath bonus)
-			if not (found or L.Exclude[text] or L.Exclude[strutf8sub(text, 1, L.ExcludeLen)] or strsub(text, 1, 1) == '"' or g < 0.8 or (b < 0.99 and b > 0.1)) then
-				--log(text.." = ")
-				-- Strip enchant time
-				-- ITEM_ENCHANT_TIME_LEFT_DAYS = "%s (%d day)";
-				-- ITEM_ENCHANT_TIME_LEFT_DAYS_P1 = "%s (%d days)";
-				-- ITEM_ENCHANT_TIME_LEFT_HOURS = "%s (%d hour)";
-				-- ITEM_ENCHANT_TIME_LEFT_HOURS_P1 = "%s (%d hrs)";
-				-- ITEM_ENCHANT_TIME_LEFT_MIN = "%s (%d min)"; -- Enchantment name, followed by the time left in minutes
-				-- ITEM_ENCHANT_TIME_LEFT_SEC = "%s (%d sec)"; -- Enchantment name, followed by the time left in seconds
-				--[[ Seems temp enchants such as mana oil can't be seen from item links, so commented out
-				if strfind(text, "%)") then
-				log("test")
-				text = gsub(text, gsub(gsub(ITEM_ENCHANT_TIME_LEFT_DAYS, "%%s ", ""), "%%", "%%%%"), "")
-				text = gsub(text, gsub(gsub(ITEM_ENCHANT_TIME_LEFT_DAYS_P1, "%%s ", ""), "%%", "%%%%"), "")
-				text = gsub(text, gsub(gsub(ITEM_ENCHANT_TIME_LEFT_HOURS, "%%s ", ""), "%%", "%%%%"), "")
-				text = gsub(text, gsub(gsub(ITEM_ENCHANT_TIME_LEFT_HOURS_P1, "%%s ", ""), "%%", "%%%%"), "")
-				text = gsub(text, gsub(gsub(ITEM_ENCHANT_TIME_LEFT_MIN, "%%s ", ""), "%%", "%%%%"), "")
-				text = gsub(text, gsub(gsub(ITEM_ENCHANT_TIME_LEFT_SEC, "%%s ", ""), "%%", "%%%%"), "")
-				end
-				--]]
+			if not (found or L.Exclude[text] or L.Exclude[strutf8sub(text, 1, L.ExcludeLen)] or text:sub(1, 1) == '"' or g < 0.8 or (b < 0.99 and b > 0.1)) then
 				----------------------------
 				-- Single Plus Stat Check --
 				----------------------------
@@ -2589,7 +2563,7 @@ do
 				-- Stamina +19 = "^([%a ]+%a) %+(%d+)$"
 				-- +19 耐力 = "^%+(%d+) (.-)$"
 				if not found then
-					local _, _, value, statText = strfind(strutf8lower(text), L.SinglePlusStatCheck)
+					local _, _, value, statText = strutf8lower(text):find(L.SinglePlusStatCheck)
 					if value then
 						if tonumber(statText) then
 							value, statText = statText, value
@@ -2604,7 +2578,7 @@ do
 				-- depending on locale, L.SingleEquipStatCheck may be
 				-- "^Equip: (.-) by u?p? ?t?o? ?(%d+) ?(.-)%.$"
 				if not found then
-					local _, _, statText1, value, statText2 = strfind(text, L.SingleEquipStatCheck)
+					local _, _, statText1, value, statText2 = text:find(L.SingleEquipStatCheck)
 					if value then
 						local statText = statText1..statText2
 						idTable = L.StatIDLookup[strutf8lower(statText)]
@@ -2616,7 +2590,7 @@ do
 				if not found then
 					for pattern, id in pairs(L.PreScanPatterns) do
 						local value
-						found, _, value = strfind(text, pattern)
+						found, _, value = text:find(pattern)
 						if found then
 							ParseIDTable(id and {id}, text, value, "PreScan")
 							break
@@ -2647,10 +2621,10 @@ do
 				--]]
 				if not found then
 					-- Strip leading "Equip: ", "Socket Bonus: "
-					local sanitizedText = gsub(text, ITEM_SPELL_TRIGGER_ONEQUIP, "") -- ITEM_SPELL_TRIGGER_ONEQUIP = "Equip:";
-					sanitizedText = gsub(sanitizedText, StripGlobalStrings(ITEM_SOCKET_BONUS), "") -- ITEM_SOCKET_BONUS = "Socket Bonus: %s"; -- Tooltip tag for socketed item matched socket bonuses
+					local sanitizedText = text:gsub(ITEM_SPELL_TRIGGER_ONEQUIP, "") -- ITEM_SPELL_TRIGGER_ONEQUIP = "Equip:";
+					sanitizedText = sanitizedText:gsub(StripGlobalStrings(ITEM_SOCKET_BONUS), "") -- ITEM_SOCKET_BONUS = "Socket Bonus: %s"; -- Tooltip tag for socketed item matched socket bonuses
 					-- Trim spaces
-					sanitizedText = strtrim(sanitizedText)
+					sanitizedText = sanitizedText:trim()
 					-- Strip trailing "."
 					if strutf8sub(sanitizedText, -1) == L["."] then
 						sanitizedText = strutf8sub(sanitizedText, 1, -2)
@@ -2663,16 +2637,16 @@ do
 							repl = sep.repl
 							sep = sep.pattern
 						end
-						if strfind(sanitizedText, sep) then
+						if sanitizedText:find(sep) then
 							log(repl)
-							sanitizedText = gsub(sanitizedText, sep, repl)
+							sanitizedText = sanitizedText:gsub(sep, repl)
 						end
 					end
 					-- Split text using @
 					local phrases = {strsplit("@", sanitizedText)}
 					for j, phrase in ipairs(phrases) do
 						-- Trim spaces
-						phrase = strtrim(phrase)
+						phrase = phrase:trim()
 						-- Strip trailing "."
 						if strutf8sub(phrase, -1) == L["."] then
 							phrase = strutf8sub(phrase, 1, -2)
@@ -2688,7 +2662,7 @@ do
 						if not foundWholeText then
 							for pattern, dualStat in pairs(L.DualStatPatterns) do
 								local lowered = strutf8lower(phrase)
-								local _, dEnd, value1, value2 = strfind(lowered, pattern)
+								local _, dEnd, value1, value2 = lowered:find(pattern)
 								value1 = value1 and tonumber(value1)
 								value2 = value2 and tonumber(value2)
 								if value1 and value2 then
@@ -2708,9 +2682,9 @@ do
 										debugText = debugText..", ".."|cffffff59"..tostring(id).."="..tostring(value2)
 									end
 									log(debugText)
-									if dEnd ~= string.len(lowered) then
+									if dEnd ~= #lowered then
 										foundWholeText = false
-										phrase = string.sub(phrase, dEnd + 1)
+										phrase = phrase:sub(dEnd + 1)
 									end
 									break
 								end
@@ -2721,7 +2695,7 @@ do
 							local lowered = strutf8lower(phrase)
 							-- Pattern scan
 							for _, pattern in ipairs(L.DeepScanPatterns) do -- try all patterns in order
-								local _, _, statText1, value, statText2 = strfind(lowered, pattern)
+								local _, _, statText1, value, statText2 = lowered:find(pattern)
 								if value then
 									local statText = statText1..statText2
 									idTable = L.StatIDLookup[statText]
@@ -2737,15 +2711,15 @@ do
 						if not foundWholeText and not foundDeepScan1 then
 							-- Replace separators with @
 							for _, sep in ipairs(L.DeepScanWordSeparators) do
-								if strfind(phrase, sep) then
-									phrase = gsub(phrase, sep, "@")
+								if phrase:find(sep) then
+									phrase = phrase:gsub(sep, "@")
 								end
 							end
 							-- Split phrase using @
 							local words = {strsplit("@", phrase)}
 							for k, word in ipairs(words) do
 								-- Trim spaces
-								word = strtrim(word)
+								word = word:trim()
 								-- Strip trailing "."
 								if strutf8sub(word, -1) == L["."] then
 									word = strutf8sub(word, 1, -2)
@@ -2761,7 +2735,7 @@ do
 								if not foundWholeText then
 									for pattern, dualStat in pairs(L.DualStatPatterns) do
 										local lowered = strutf8lower(word)
-										local _, _, value1, value2 = strfind(lowered, pattern)
+										local _, _, value1, value2 = lowered:find(pattern)
 										if value1 and value2 then
 											foundWholeText = true
 											found = true
@@ -2788,7 +2762,7 @@ do
 									local lowered = strutf8lower(word)
 									-- Pattern scan
 									for _, pattern in ipairs(L.DeepScanPatterns) do
-										local _, _, statText1, value, statText2 = strfind(lowered, pattern)
+										local _, _, statText1, value, statText2 = lowered:find(pattern)
 										if value then
 											local statText = statText1..statText2
 											idTable = L.StatIDLookup[statText]
@@ -3228,7 +3202,7 @@ function StatLogic:PatternTest()
 		DEFAULT_CHAT_FRAME:AddMessage(text.." = ")
 		for _, pattern in ipairs(patternTable) do
 			local found
-			for k, v in gmatch(text, pattern) do
+			for k, v in text:gmatch(pattern) do
 				found = true
 				DEFAULT_CHAT_FRAME:AddMessage("  '"..k.."', '"..v.."'")
 			end

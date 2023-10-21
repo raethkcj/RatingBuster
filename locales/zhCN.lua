@@ -86,10 +86,10 @@ L["NORMAL_MANA_REG"] = SPELL_STAT4_NAME .. " & " .. SPELL_STAT5_NAME -- Intellec
 L["PET_STA"] = PET .. SPELL_STAT3_NAME -- Pet Stamina
 L["PET_INT"] = PET .. SPELL_STAT4_NAME -- Pet Intellect
 L.statModOptionName = function(show, add)
-	return string.format("%s %s ", show, add)
+	return ("%s %s "):format(show, add)
 end
 L.statModOptionDesc = function(show, add, from, mod)
-	return string.format("%s %s %s %s ", show, mod, from, add)
+	return ("%s %s %s %s "):format(show, mod, from, add)
 end
 
 -- /rb stat
@@ -585,11 +585,11 @@ SPELL_STAT4_NAME = "Intellect"
 SPELL_STAT5_NAME = "Spirit"
 --]]
 L["statList"] = {
-	{pattern = string.lower(SPELL_STAT1_NAME), id = StatLogic.Stats.Strength}, -- Strength
-	{pattern = string.lower(SPELL_STAT2_NAME), id = StatLogic.Stats.Agility}, -- Agility
-	{pattern = string.lower(SPELL_STAT3_NAME), id = StatLogic.Stats.Stamina}, -- Stamina
-	{pattern = string.lower(SPELL_STAT4_NAME), id = StatLogic.Stats.Intellect}, -- Intellect
-	{pattern = string.lower(SPELL_STAT5_NAME), id = StatLogic.Stats.Spirit}, -- Spirit
+	{pattern = SPELL_STAT1_NAME:lower(), id = StatLogic.Stats.Strength}, -- Strength
+	{pattern = SPELL_STAT2_NAME:lower(), id = StatLogic.Stats.Agility}, -- Agility
+	{pattern = SPELL_STAT3_NAME:lower(), id = StatLogic.Stats.Stamina}, -- Stamina
+	{pattern = SPELL_STAT4_NAME:lower(), id = StatLogic.Stats.Intellect}, -- Intellect
+	{pattern = SPELL_STAT5_NAME:lower(), id = StatLogic.Stats.Spirit}, -- Spirit
 	{pattern = "防御等级", id = CR_DEFENSE_SKILL},
 	{pattern = "躲闪等级", id = CR_DODGE},
 	{pattern = "格挡等级", id = CR_BLOCK}, -- block enchant: "+10 Shield Block Rating"
@@ -617,10 +617,10 @@ L["statList"] = {
 
 	{pattern = "精准等级", id = CR_EXPERTISE},
 
-	{pattern = string.lower(SPELL_STATALL), id = StatLogic.GenericStats.ALL_STATS},
+	{pattern = SPELL_STATALL:lower(), id = StatLogic.GenericStats.ALL_STATS},
 
 	{pattern = "护甲穿透等级", id = CR_ARMOR_PENETRATION},
-	{pattern = string.lower(ARMOR), id = ARMOR},
+	{pattern = ARMOR:lower(), id = ARMOR},
 	{pattern = "攻击强度", id = ATTACK_POWER},
 }
 -------------------------

@@ -6,7 +6,7 @@ local StatLogic = LibStub("StatLogic")
 L["tonumber"] = tonumber
 --[[
 -- Item Stat Scanning Procedure
--- Trim spaces using strtrim(text)
+-- Trim spaces using text:trim()
 -- Strip color codes
 -- 1. Fast Exclude - Exclude obvious lines that do not need to be checked
 --    Exclude a string by matching the whole string, these strings are indexed in L.Exclude.
@@ -195,8 +195,6 @@ L["SinglePlusStatCheck"] = "^([%+%-]%d+) (.-)%.?$"
 -----------------------------
 -- Single Equip Stat Check --
 -----------------------------
--- stat1, value, stat2 = strfind
--- stat = stat1..stat2
 -- "^Equip: (.-) by u?p? ?t?o? ?(%d+) ?(.-)%.?$"
 L["SingleEquipStatCheck"] = "^Надето: (.-) by u?p? ?t?o? ?(%d+) ?(.-)%.?$"
 -------------

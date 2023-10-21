@@ -82,10 +82,10 @@ L["NORMAL_MANA_REG"] = SPELL_STAT4_NAME .. " & " .. SPELL_STAT5_NAME -- Intellec
 L["PET_STA"] = PET .. SPELL_STAT3_NAME -- Pet Stamina
 L["PET_INT"] = PET .. SPELL_STAT4_NAME -- Pet Intellect
 L.statModOptionName = function(show, add)
-	return string.format("%s %s ", show, add)
+	return ("%s %s "):format(show, add)
 end
 L.statModOptionDesc = function(show, add, from, mod)
-	return string.format("%s %s %s %s ", show, add, from, mod)
+	return ("%s %s %s %s "):format(show, add, from, mod)
 end
 
 -- /rb stat
@@ -596,11 +596,11 @@ L["statList"] = {
 	{pattern = "lowers intellect of target", id = nil}, -- Brain Hacker
 	{pattern = "reduces an enemy's armor", id = nil}, -- Annihilator
 
-	{pattern = string.lower(SPELL_STAT1_NAME), id = StatLogic.Stats.Strength}, -- Strength
-	{pattern = string.lower(SPELL_STAT2_NAME), id = StatLogic.Stats.Agility}, -- Agility
-	{pattern = string.lower(SPELL_STAT3_NAME), id = StatLogic.Stats.Stamina}, -- Stamina
-	{pattern = string.lower(SPELL_STAT4_NAME), id = StatLogic.Stats.Intellect}, -- Intellect
-	{pattern = string.lower(SPELL_STAT5_NAME), id = StatLogic.Stats.Spirit}, -- Spirit
+	{pattern = SPELL_STAT1_NAME:lower(), id = StatLogic.Stats.Strength}, -- Strength
+	{pattern = SPELL_STAT2_NAME:lower(), id = StatLogic.Stats.Agility}, -- Agility
+	{pattern = SPELL_STAT3_NAME:lower(), id = StatLogic.Stats.Stamina}, -- Stamina
+	{pattern = SPELL_STAT4_NAME:lower(), id = StatLogic.Stats.Intellect}, -- Intellect
+	{pattern = SPELL_STAT5_NAME:lower(), id = StatLogic.Stats.Spirit}, -- Spirit
 	{pattern = "defense rating", id = CR_DEFENSE_SKILL},
 	{pattern = "dodge rating", id = CR_DODGE},
 	{pattern = "increases dodge", id = CR_DODGE},
@@ -636,11 +636,11 @@ L["statList"] = {
 
 	{pattern = "expertise rating", id = CR_EXPERTISE},
 
-	{pattern = string.lower(SPELL_STATALL), id = StatLogic.GenericStats.ALL_STATS},
+	{pattern = SPELL_STATALL:lower(), id = StatLogic.GenericStats.ALL_STATS},
 	{pattern = "health", id = nil}, -- Scroll of Enchant Chest - Health (prevents matching Armor)
 
 	{pattern = "armor penetration", id = CR_ARMOR_PENETRATION},
-	{pattern = string.lower(ARMOR), id = ARMOR},
+	{pattern = ARMOR:lower(), id = ARMOR},
 }
 -------------------------
 -- Added info patterns --
