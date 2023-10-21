@@ -1880,8 +1880,8 @@ function RatingBuster:ProcessLine(text, link, color)
 				tinsert(separatorTable, sep)
 			end
 		end
-		-- SplitDoJoin
-		text = RatingBuster:SplitDoJoin(text, separatorTable, link, color)
+		-- RecursivelySplitLine
+		text = RatingBuster:RecursivelySplitLine(text, separatorTable, link, color)
 		-- Revert exclusions
 		if exclusions then
 			for exclusion, replacement in pairs(L["exclusions"]) do
@@ -1901,9 +1901,9 @@ end
 ---------------------------------------------------------------------------------
 -- text = "+24 Agility/+4 Stamina and +4 Spell Crit/+5 Spirit"
 -- separatorTable = {"/", " and ", ","}
--- RatingBuster:SplitDoJoin("+24 Agility/+4 Stamina, +4 Dodge and +4 Spell Crit/+5 Spirit", {"/", " and ", ",", "%. ", " for ", "&"})
--- RatingBuster:SplitDoJoin("+6法術傷害及5耐力", {"/", "和", ",", "。", " 持續 ", "&", "及",})
-function RatingBuster:SplitDoJoin(text, separatorTable, link, color)
+-- RatingBuster:RecursivelySplitLine("+24 Agility/+4 Stamina, +4 Dodge and +4 Spell Crit/+5 Spirit", {"/", " and ", ",", "%. ", " for ", "&"})
+-- RatingBuster:RecursivelySplitLine("+6法術傷害及5耐力", {"/", "和", ",", "。", " 持續 ", "&", "及",})
+function RatingBuster:RecursivelySplitLine(text, separatorTable, link, color)
 	if type(separatorTable) == "table" and table.maxn(separatorTable) > 0 then
 		local sep = tremove(separatorTable, 1)
 		text =  text:gsub(sep, "@")
@@ -1912,7 +1912,7 @@ function RatingBuster:SplitDoJoin(text, separatorTable, link, color)
 		local tempTable = {}
 		for _, t in ipairs(text) do
 			copyTable(tempTable, separatorTable)
-			tinsert(processedText, self:SplitDoJoin(t, tempTable, link, color))
+			tinsert(processedText, self:RecursivelySplitLine(t, tempTable, link, color))
 		end
 		-- Join text
 		return (strjoin("@", unpack(processedText)):gsub("@", sep))
@@ -3640,7 +3640,7 @@ end
 
 -- RatingBuster:Bench(1000)
 ---------
--- self:SplitDoJoin("+24 Agility/+4 Stamina, +4 Dodge and +4 Spell Crit/+5 Spirit", {"/", " and ", ","})
+-- self:RecursivelySplitLine("+24 Agility/+4 Stamina, +4 Dodge and +4 Spell Crit/+5 Spirit", {"/", " and ", ","})
 -- 1000 times: 0.16 - 0.18 without Compost
 -- 1000 times: 0.22 - 0.24 with Compost
 ---------
