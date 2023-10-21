@@ -552,15 +552,15 @@ L["Raid Buffs"] = true
 L["numberPatterns"] = {
 	{pattern = " en (%d+) p", addInfo = "AfterNumber",},
 	{pattern = "([%+%-]%d+)", addInfo = "AfterStat",},
-	{pattern = "Otorga.-(%d+)", addInfo = "AfterNumber",}, -- for "grant you xx stat" type pattern, ex: Quel'Serrar, Assassination Armor set
-	{pattern = "aumenta.-(%d+)", addInfo = "AfterNumber",}, -- for "add xx stat" type pattern, ex: Adamantite Sharpening Stone
+	{pattern = "otorga.-(%d+) p", addInfo = "AfterNumber",}, -- for "grant you xx stat" type pattern, ex: Quel'Serrar, Assassination Armor set
+	{pattern = "aumenta.-(%d+) p", addInfo = "AfterNumber",}, -- for "add xx stat" type pattern, ex: Adamantite Sharpening Stone
 	{pattern = "(%d+)([^%d%%|]+)", addInfo = "AfterStat",}, -- [????????] +6?????5??
 }
 -- Exclusions are used to ignore instances of separators that should not get separated
 L["exclusions"] = {
 }
 L["separators"] = {
-	"/", " y ", ",", "%. ", " durante ", "&", "\n"
+	"/", " y ", ",", "%f[p%.]%. ", " durante ", "&", "\n"
 }
 --[[ Rating ID
 CR_WEAPON_SKILL = 1;
