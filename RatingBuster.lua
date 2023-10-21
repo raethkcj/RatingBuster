@@ -3637,27 +3637,47 @@ function RatingBuster:StatSummary(tooltip, name, link)
 	WriteSummary(tooltip, output)
 end
 
-
--- RatingBuster:Bench(1000)
----------
--- self:RecursivelySplitLine("+24 Agility/+4 Stamina, +4 Dodge and +4 Spell Crit/+5 Spirit", {"/", " and ", ","})
--- 1000 times: 0.16 - 0.18 without Compost
--- 1000 times: 0.22 - 0.24 with Compost
----------
--- RatingBuster.ProcessTooltip(ItemRefTooltip, link)
--- 1000 times: 0.31 sec - 0.7.6
--- 1000 times: 0.29 sec - 0.
--- 1000 times: 0.24 sec - 0.8.58.0
----------
--- strjoin 1000000 times: 0.46
--- ..      1000000 times: 0.27
---------------
-function RatingBuster:Bench(k)
-	local t1 = GetTime()
-	local link = GetInventoryItemLink("player", 12)
-	for i = 1, k, 1 do
-		ItemRefTooltip:SetInventoryItem("player", 12)
-		RatingBuster.ProcessTooltip(ItemRefTooltip, link)
+function RatingBuster:PerformanceProfile()
+	if not GetCVarBool("scriptProfile") then
+		print("The console variable \"scriptProfile\" must be enabled to do performance profiling.\nEnable it and reload to continue. Be sure to disable it again when you are finished.")
+		return
 	end
-	return GetTime() - t1
+
+	-- Process the tooltips for all of the player's equipped gear
+	for i = INVSLOT_FIRST_EQUIPPED, INVSLOT_LAST_EQUIPPED do
+		GameTooltip:SetOwner(UIParent, "ANCHOR_PRESERVE")
+		GameTooltip:SetInventoryItem("player", i)
+		self.ProcessTooltip(GameTooltip)
+		GameTooltip:Hide()
+	end
+
+	local tables = {
+		["RatingBuster"] = self,
+		["StatLogic"] = StatLogic
+	}
+
+	for name, addonTable in pairs(tables) do
+		print(name)
+		print("(ms) (count) (function)")
+		local unsorted = {}
+		local rankings = {}
+		for k,v in pairs(addonTable) do
+			if type(v) == "function" then
+				local time, count = GetFunctionCPUUsage(v, false)
+				if count > 0 then
+					unsorted[time] = {
+						count = count,
+						name = k
+					}
+					tinsert(rankings, time)
+				end
+			end
+		end
+		table.sort(rankings, function(a,b) return a > b end)
+		for i, time in ipairs(rankings) do
+			if i <= 10 then
+				print(string.format("  %2.2f %4d %s", time, unsorted[time].count, unsorted[time].name))
+			end
+		end
+	end
 end
