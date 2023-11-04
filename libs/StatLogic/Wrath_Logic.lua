@@ -513,30 +513,17 @@ addon.BaseDodge = {
 }
 
 addon.DodgePerAgiMaxLevel = {
-
 	["WARRIOR"] = 0.0118,
-
 	["PALADIN"] = 0.0167,
-
 	["HUNTER"] = 0.0116,
-
 	["ROGUE"] = 0.0209,
-
 	["PRIEST"] = 0.0167,
-
 	["DEATHKNIGHT"] = 0.0118,
-
 	["SHAMAN"] = 0.0167,
-
 	["MAGE"] = 0.017,
-
 	["WARLOCK"] = 0.0167,
-
 	["DRUID"] = 0.0209,
-
 }
-
-
 
 addon.StatModValidators.glyph = {
 	validate = function(case)
