@@ -111,12 +111,6 @@ addon.CritPerAgi = {
 	},
 }
 
-local zero = setmetatable({}, {
-	__index = function()
-		return 0
-	end
-})
-
 addon.BaseSpellCrit = {
 	["WARRIOR"] =  0.0000,
 	["PALADIN"] =  3.5000,
@@ -130,14 +124,14 @@ addon.BaseSpellCrit = {
 }
 
 addon.SpellCritPerInt = {
-	["WARRIOR"] = zero,
+	["WARRIOR"] = addon.zero,
 	["PALADIN"] = {
 		[60] = 0.0167,
 	},
 	["HUNTER"] = {
 		[60] = 0.0165,
 	},
-	["ROGUE"] = zero,
+	["ROGUE"] = addon.zero,
 	["PRIEST"] = {
 		[60] = 0.0168,
 	},
@@ -176,7 +170,9 @@ addon.APPerAgi = {
 	["SHAMAN"] = 0,
 	["MAGE"] = 0,
 	["WARLOCK"] = 0,
-	["DRUID"] = 0,
+	["DRUID"] = setmetatable({
+		[CAT_FORM] = 1,
+	}, addon.zero),
 }
 
 addon.RAPPerAgi = {

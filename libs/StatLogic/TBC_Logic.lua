@@ -264,15 +264,9 @@ addon.CritPerAgi = {
 	},
 }
 
-local zero = setmetatable({}, {
-	__index = function()
-		return 0
-	end
-})
-
 -- Numbers reverse engineered by Whitetooth (hotdogee [at] gmail [dot] com)
 addon.SpellCritPerInt = {
-	["WARRIOR"] = zero,
+	["WARRIOR"] = addon.zero,
 	["PALADIN"] = {
 		0.0832, 0.0793, 0.0793, 0.0757, 0.0757, 0.0724, 0.0694, 0.0694, 0.0666, 0.0666,
 		0.0640, 0.0616, 0.0594, 0.0574, 0.0537, 0.0537, 0.0520, 0.0490, 0.0490, 0.0462,
@@ -291,7 +285,7 @@ addon.SpellCritPerInt = {
 		0.0194, 0.0192, 0.0186, 0.0184, 0.0179, 0.0177, 0.0175, 0.0170, 0.0168, 0.0164,
 		0.0157, 0.0154, 0.0150, 0.0144, 0.0141, 0.0137, 0.0133, 0.0130, 0.0128, 0.0125,
 	},
-	["ROGUE"] = zero,
+	["ROGUE"] = addon.zero,
 	["PRIEST"] = {
 		0.1710, 0.1636, 0.1568, 0.1505, 0.1394, 0.1344, 0.1297, 0.1254, 0.1214, 0.1140,
 		0.1045, 0.0941, 0.0875, 0.0784, 0.0724, 0.0684, 0.0627, 0.0597, 0.0562, 0.0523,
@@ -360,7 +354,9 @@ addon.APPerAgi = {
 	["SHAMAN"] = 0,
 	["MAGE"] = 0,
 	["WARLOCK"] = 0,
-	["DRUID"] = 0,
+	["DRUID"] = setmetatable({
+		[CAT_FORM] = 1,
+	}, addon.zero),
 }
 
 addon.RAPPerAgi = {

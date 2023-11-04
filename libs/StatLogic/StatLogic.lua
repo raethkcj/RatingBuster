@@ -1566,6 +1566,13 @@ function StatLogic:RatingExists(id)
 	return not not addon.RatingBase[id]
 end
 
+addon.zero = setmetatable({}, {
+	__index = function()
+		return 0
+	end
+})
+addon.zero.__index = addon.zero
+
 --[[---------------------------------
 {	:GetEffectFromRating(rating, id, [level])
 -------------------------------------
@@ -1793,10 +1800,12 @@ function StatLogic:GetAPPerAgi(class)
 	assert(type(class)=="string" or type(class)=="number", "Expected string or number as arg #1 to GetAPPerAgi, got "..type(class))
 	class = self:ValidateClass(class)
 	-- Check druid cat form
-	if class == "DRUID" and (GetShapeshiftFormID() == CAT_FORM) then		-- ["Cat Form"]
-		return 1, "AP"
+	if class == "DRUID" then
+		local form = GetShapeshiftFormID() or 0
+		return addon.APPerAgi[class][form], "AP"
+	else
+		return addon.APPerAgi[class], "AP"
 	end
-	return addon.APPerAgi[class], "AP"
 end
 
 
