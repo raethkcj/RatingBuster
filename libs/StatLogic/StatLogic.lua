@@ -1612,8 +1612,10 @@ local Level34Ratings = {
 
 local CR_MAX = 0
 addon.SetCRMax = function()
-	for _ in pairs(addon.RatingBase) do
-		CR_MAX = CR_MAX + 1
+	for _, id in pairs(addon.RatingBase) do
+		if id > CR_MAX then
+			CR_MAX = id
+		end
 	end
 end
 
