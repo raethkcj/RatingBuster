@@ -1,4 +1,4 @@
-## Interface: 40400
+## Interface: 30403
 ## Title: StatLogic
 ## Author: Whitetooth, raethkcj
 ## X-License: GPL v2
@@ -17,4 +17,4 @@ Stats.lua
 locales\locales.xml
 
 StatLogic.lua
-Cata_Logic.lua
+Wrath_Logic.lua
