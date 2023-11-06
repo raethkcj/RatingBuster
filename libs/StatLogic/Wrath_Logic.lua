@@ -525,18 +525,6 @@ addon.DodgePerAgiMaxLevel = {
 	["DRUID"] = 0.0209,
 }
 
-addon.StatModValidators.glyph = {
-	validate = function(case)
-		return IsPlayerSpell(case.glyph)
-	end,
-	events = {
-		["GLYPH_ADDED"] = true,
-		["GLYPH_REMOVED"] = true,
-	}
-}
-addon.StatModCacheInvalidators["PLAYER_TALENT_UPDATE"] = addon.StatModCacheInvalidators["CHARACTER_POINTS_CHANGED"]
-addon.RegisterValidatorEvents()
-
 addon.bonusArmorItemEquipLoc = {
 	["INVTYPE_WEAPON"] = true,
 	["INVTYPE_2HWEAPON"] = true,

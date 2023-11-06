@@ -1171,6 +1171,14 @@ do
 end
 
 addon.StatModValidators = {
+	buff = {
+		validate = function(case)
+			return StatLogic.AuraInfo[GetSpellInfo(case.buff)]
+		end,
+		events = {
+			["UNIT_AURA"] = "player",
+		},
+	},
 	-- Conditions have no events, so any mods using them will not be cached.
 	-- Ideally they will be removed entirely.
 	condition = {
@@ -1178,12 +1186,31 @@ addon.StatModValidators = {
 			return loadstring("return "..case.condition)()
 		end,
 	},
-	buff = {
+	enchant = {
 		validate = function(case)
-			return StatLogic.AuraInfo[GetSpellInfo(case.buff)]
+			local slotLink = case.slot and GetInventoryItemLink("player", case.slot)
+			local pattern = "item:%d+:" .. case.enchant
+			return slotLink and slotLink:find(pattern)
 		end,
 		events = {
-			["UNIT_AURA"] = "player",
+			["UNIT_INVENTORY_CHANGED"] = "player",
+		},
+	},
+	glyph = {
+		validate = function(case)
+			return IsPlayerSpell(case.glyph)
+		end,
+		events = {
+			["GLYPH_ADDED"] = true,
+			["GLYPH_REMOVED"] = true,
+		}
+	},
+	set = {
+		validate = function(case)
+			return equipped_sets[case.set] and equipped_sets[case.set] >= case.pieces
+		end,
+		events = {
+			["UNIT_INVENTORY_CHANGED"] = "player",
 		},
 	},
 	stance = {
@@ -1199,6 +1226,14 @@ addon.StatModValidators = {
 			["UPDATE_SHAPESHIFT_FORM"] = true,
 		},
 	},
+	meta = {
+		validate = function(case)
+			return case.meta == equipped_meta_gem
+		end,
+		events = {
+			["UNIT_INVENTORY_CHANGED"] = "player",
+		},
+	},
 	weapon = {
 		validate = function(case)
 			local weapon = GetInventoryItemID("player", 16)
@@ -1211,32 +1246,6 @@ addon.StatModValidators = {
 			["UNIT_INVENTORY_CHANGED"] = "player",
 		}
 	},
-	set = {
-		validate = function(case)
-			return equipped_sets[case.set] and equipped_sets[case.set] >= case.pieces
-		end,
-		events = {
-			["UNIT_INVENTORY_CHANGED"] = "player",
-		},
-	},
-	meta = {
-		validate = function(case)
-			return case.meta == equipped_meta_gem
-		end,
-		events = {
-			["UNIT_INVENTORY_CHANGED"] = "player",
-		},
-	},
-	enchant = {
-		validate = function(case)
-			local slotLink = case.slot and GetInventoryItemLink("player", case.slot)
-			local pattern = "item:%d+:" .. case.enchant
-			return slotLink and slotLink:find(pattern)
-		end,
-		events = {
-			["UNIT_INVENTORY_CHANGED"] = "player",
-		},
-	},
 }
 
 -- Cache the results of GetStatMod, and build a table that
@@ -1247,6 +1256,7 @@ addon.StatModCacheInvalidators = {}
 -- Talents are not a Validator, but we still
 -- need to invalidate cache when they change
 addon.StatModCacheInvalidators["CHARACTER_POINTS_CHANGED"] = {}
+addon.StatModCacheInvalidators["PLAYER_TALENT_UPDATE"] = addon.StatModCacheInvalidators["CHARACTER_POINTS_CHANGED"]
 
 function StatLogic:InvalidateEvent(event, unit)
 	local key = event
@@ -1261,22 +1271,26 @@ function StatLogic:InvalidateEvent(event, unit)
 	end
 end
 
-addon.RegisterValidatorEvents = function()
+do
 	local f = CreateFrame("Frame")
 	for _, validator in pairs(addon.StatModValidators) do
 		if validator.events then
 			for event, unit in pairs(validator.events) do
-				if type(unit) == "string" then
-					f:RegisterUnitEvent(event, unit)
-				else
-					f:RegisterEvent(event)
+				if C_EventUtils.IsEventValid(event) then
+					if type(unit) == "string" then
+						f:RegisterUnitEvent(event, unit)
+					else
+						f:RegisterEvent(event)
+					end
 				end
 			end
 		end
 	end
 
-	for event, _ in pairs(addon.StatModCacheInvalidators) do
-		f:RegisterEvent(event)
+	for event in pairs(addon.StatModCacheInvalidators) do
+		if C_EventUtils.IsEventValid(event) then
+			f:RegisterEvent(event)
+		end
 	end
 
 	f:SetScript("OnEvent", function(self, event, unit)

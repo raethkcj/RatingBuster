@@ -211,8 +211,6 @@ addon.DodgePerAgiMaxLevel = {
 	["DRUID"] = 0.0500,
 }
 
-addon.RegisterValidatorEvents()
-
 local BuffGroup = {
 	MOD_ARMOR = 1,
 }

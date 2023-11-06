@@ -386,8 +386,6 @@ addon.BaseDodge = {
 -- TODO Gather data if TBC comes back
 addon.DodgePerAgiMaxLevel = {}
 
-addon.RegisterValidatorEvents()
-
 StatLogic.StatModTable = {}
 if addon.class == "DRUID" then
 	StatLogic.StatModTable["DRUID"] = {
