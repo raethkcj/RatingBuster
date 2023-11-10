@@ -742,9 +742,6 @@ Apply Aura: Mod Skill Talent (Defense)
 "MOD_MANA",
 "MOD_ARMOR",
 "MOD_BLOCK_VALUE",
---"MOD_DMG", school,
-"MOD_DMG_TAKEN", school,
---"MOD_CRIT_DAMAGE", school,
 "MOD_CRIT_DAMAGE_TAKEN", school,
 --"MOD_THREAT", school,
 
@@ -867,11 +864,6 @@ StatLogic.StatModInfo = {
 		school = true,
 	},
 	["MOD_DMG"] = {
-		initialValue = 0,
-		finalAdjust = 1,
-		school = true,
-	},
-	["MOD_DMG_TAKEN"] = {
 		initialValue = 0,
 		finalAdjust = 1,
 		school = true,

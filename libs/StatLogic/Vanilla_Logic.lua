@@ -542,23 +542,6 @@ elseif addon.class == "PRIEST" then
 				["buff"] = 2651,		-- ["Elune's Grace"],
 			},
 		},
-		-- Priest: Spell Warding (Rank 5) - 2,4
-		--         Reduces all spell damage taken by 2%/4%/6%/8%/10%.
-		["MOD_DMG_TAKEN"] = {
-			{
-				["HOLY"] = true,
-				["FIRE"] = true,
-				["NATURE"] = true,
-				["FROST"] = true,
-				["SHADOW"] = true,
-				["ARCANE"] = true,
-				["tab"] = 2,
-				["num"] = 4,
-				["rank"] = {
-					-0.02, -0.04, -0.06, -0.08, -0.1,
-				},
-			},
-		},
 		-- Priest: Mental Strength (Rank 5) - 1,12
 		--         Increases your maximum Mana by 2%/4%/6%/8%/10%.
 		["MOD_MANA"] = {
@@ -703,20 +686,6 @@ elseif addon.class == "SHAMAN" then
 				},
 			},
 		},
-		-- Shaman: Elemental Warding (Rank 3) - 1,4
-		--         Reduces damage taken from Fire, Frost and Nature effects by 4%/7%/10%.
-		["MOD_DMG_TAKEN"] = {
-			{
-				["FIRE"] = true,
-				["NATURE"] = true,
-				["FROST"] = true,
-				["tab"] = 1,
-				["num"] = 14,
-				["rank"] = {
-					-0.04, -0.07, -0.10,
-				},
-			},
-		},
 		-- Shaman: Toughness (Rank 5) - 2,11
 		--         Increases your armor value from items by 2%/4%/6%/8%/10%.
 		["MOD_ARMOR"] = {
@@ -753,34 +722,6 @@ elseif addon.class == "SHAMAN" then
 	}
 elseif addon.class == "WARLOCK" then
 	StatLogic.StatModTable["WARLOCK"] = {
-		-- Warlock: Master Demonologist (Rank 5) - 2,15
-		--          Voidwalker - Reduces physical damage taken by 2%/4%/6%/8%/10%.
-		-- Warlock: Soul Link (Rank 1) - 2,19
-		--          When active, 30% of all damage taken by the caster is taken by your Imp, Voidwalker, Succubus, Felhunter or Felguard demon instead. In addition, both the demon and master will inflict 3% more damage. Lasts as long as the demon is active.
-		["MOD_DMG_TAKEN"] = {
-			{
-				["MELEE"] = true,
-				["RANGED"] = true,
-				["tab"] = 2,
-				["num"] = 15,
-				["rank"] = {
-					-0.02, -0.04, -0.06, -0.08, -0.1,
-				},
-				["condition"] = "IsUsableSpell('"..(GetSpellInfo(11775)).."')" --"UnitCreatureFamily('pet') == '"..L["Voidwalker"].."'",	-- ["Torment"]
-			},
-			{
-				["MELEE"] = true,
-				["RANGED"] = true,
-				["HOLY"] = true,
-				["FIRE"] = true,
-				["NATURE"] = true,
-				["FROST"] = true,
-				["SHADOW"] = true,
-				["ARCANE"] = true,
-				["value"] = -0.3,
-				["buff"] = 25228,		-- ["Soul Link"],
-			},
-		},
 		-- Warlock: Demonic Embrace (Rank 5) - 2,3
 		--          Increases your total Stamina by 3%/6%/9%/12%/15% but reduces your total Spirit by 1%/2%/3%/4%/5%.
 		["MOD_STA"] = {
@@ -806,64 +747,6 @@ elseif addon.class == "WARLOCK" then
 	}
 elseif addon.class == "WARRIOR" then
 	StatLogic.StatModTable["WARRIOR"] = {
-		["MOD_DMG_TAKEN"] = {
-			-- Warrior: Shield Wall - Buff
-			--          Reduces the Physical and magical damage taken by the caster by 75% for 10 sec.
-			{
-				["MELEE"] = true,
-				["RANGED"] = true,
-				["HOLY"] = true,
-				["FIRE"] = true,
-				["NATURE"] = true,
-				["FROST"] = true,
-				["SHADOW"] = true,
-				["ARCANE"] = true,
-				["value"] = -0.75,
-				["buff"] = 871,		-- ["Shield Wall"],
-			},
-			-- Warrior: Defensive Stance - stance
-			--          A defensive combat stance. Decreases damage taken by 10% and damage caused by 10%. Increases threat generated.
-			{
-				["MELEE"] = true,
-				["RANGED"] = true,
-				["HOLY"] = true,
-				["FIRE"] = true,
-				["NATURE"] = true,
-				["FROST"] = true,
-				["SHADOW"] = true,
-				["ARCANE"] = true,
-				["value"] = -0.1,
-				["stance"] = "Interface\\Icons\\Ability_Warrior_DefensiveStance",
-			},
-			-- Warrior: Berserker Stance - stance
-			--          An aggressive stance. Critical hit chance is increased by 3% and all damage taken is increased by 10%.
-			{
-				["MELEE"] = true,
-				["RANGED"] = true,
-				["HOLY"] = true,
-				["FIRE"] = true,
-				["NATURE"] = true,
-				["FROST"] = true,
-				["SHADOW"] = true,
-				["ARCANE"] = true,
-				["value"] = 0.1,
-				["stance"] = "Interface\\Icons\\Ability_Racial_Avatar",
-			},
-			-- Warrior: Recklessness - Buff
-			--          The warrior will cause critical hits with most attacks and will be immune to Fear effects for the next 15 sec, but all damage taken is increased by 20%.
-			{
-				["MELEE"] = true,
-				["RANGED"] = true,
-				["HOLY"] = true,
-				["FIRE"] = true,
-				["NATURE"] = true,
-				["FROST"] = true,
-				["SHADOW"] = true,
-				["ARCANE"] = true,
-				["value"] = 0.2,
-				["buff"] = 13847,		-- ["Recklessness"],
-			},
-		},
 		["MOD_ARMOR"] = {
 			-- Warrior: Toughness (Rank 5) - 3,4
 			--          Increases your armor value from items by 2%/4%/6%/8%/10%.

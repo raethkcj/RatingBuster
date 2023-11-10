@@ -1492,7 +1492,6 @@ do
 	-- Ignore Stat Mods that are only used for Diminishing Returns
 	-- and agi/int conversion rates
 	local ignoredStatMods = {
-		["MOD_DMG_TAKEN"] = true,
 		["ADD_DODGE"] = true,
 		["ADD_HIT_TAKEN"] = true,
 		["ADD_MELEE_CRIT"] = true,
