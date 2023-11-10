@@ -1186,6 +1186,16 @@ addon.StatModValidators = {
 			["UNIT_PET"] = "player",
 		},
 	},
+	-- TODO both func and events
+	rune = {
+		validate = function()
+			return false
+		end,
+		events = {
+			["RUNE_UPDATED"] = true,
+			["UNIT_INVENTORY_CHANGED"] = "player",
+		},
+	},
 	set = {
 		validate = function(case)
 			return equipped_sets[case.set] and equipped_sets[case.set] >= case.pieces

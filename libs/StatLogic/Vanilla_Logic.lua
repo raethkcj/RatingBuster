@@ -370,12 +370,20 @@ elseif addon.class == "HUNTER" then
 			},
 		},
 		["ADD_MELEE_CRIT"] = {
+			-- Hunter: Killer Instinct (Rank 5) - 3,13
+			--   Increases your critical strike chance with all attacks by 1/2/3/4/5%.
 			{
 				["tab"] = 3,
 				["num"] = 13,
 				["rank"] = {
 					1, 2, 3,
 				},
+			},
+			-- Hunter: Master Marskman - Rune
+			--   Increases your critical strike chance by 5%
+			{
+				["rune"] = true,
+				["value"] = 5,
 			},
 		},
 		-- Hunter: Survivalist (Rank 5) - 3,8
@@ -414,9 +422,9 @@ elseif addon.class == "MAGE" then
 				},
 			},
 		},
-		-- Mage: Arcane Meditation (Rank 3) - 1,12
-		--       Allows 5/10/15% of your Mana regeneration to continue while casting.
 		["ADD_MANA_REG_MOD_NORMAL_MANA_REG"] = {
+			-- Mage: Arcane Meditation (Rank 3) - 1,12
+			--       Allows 5/10/15% of your Mana regeneration to continue while casting.
 			{
 				["tab"] = 1,
 				["num"] = 12,
@@ -424,10 +432,24 @@ elseif addon.class == "MAGE" then
 					0.05, 0.10, 0.15,
 				},
 			},
+			-- Mage: Mage Armor - Buff
 			{
-				-- Mage: Mage Armor - Buff
 				["value"] = 0.3,
 				["buff"] = 6117,		-- ["Mage Armor"],
+			},
+			-- Mage: Enlightenment - Rune
+			--   While below 30% mana 10% of your mana regeneration continues while casting.
+			{
+				["rune"] = true,
+				["value"] = 0.1,
+				["buff"] = 412325,
+			},
+			-- Mage: Arcane Surge - Rune
+			--   Afterward, your normal mana regeneration is activated and increased by 300% for 8 sec.
+			{
+				["rune"] = true,
+				["value"] = 1.0,
+				["buff"] = 425124,
 			},
 		},
 		-- Mage: Arcane Mind (Rank 5) - 1,14
@@ -439,6 +461,14 @@ elseif addon.class == "MAGE" then
 				["rank"] = {
 					0.02, 0.04, 0.06, 0.08, 0.10,
 				},
+			},
+		},
+		["ADD_SPELL_CRIT"] = {
+			-- Mage: Burnout - Rune
+			--   Increases your spell critical strike chance with all spells by 15%
+			{
+				["rune"] = true,
+				["value"] = 15,
 			},
 		},
 	}
@@ -487,9 +517,9 @@ elseif addon.class == "PALADIN" then
 				},
 			},
 		},
-		-- Paladin: Shield Specialization (Rank 3) - 2,8
-		--          Increases the amount of damage absorbed by your shield by 10%/20%/30%.
 		["MOD_BLOCK_VALUE"] = {
+			-- Paladin: Shield Specialization (Rank 3) - 2,8
+			--          Increases the amount of damage absorbed by your shield by 10%/20%/30%.
 			{
 				["tab"] = 2,
 				["num"] = 8,
@@ -497,6 +527,12 @@ elseif addon.class == "PALADIN" then
 					0.1, 0.2, 0.3,
 				},
 			},
+			-- Paladin: Aegis - Rune
+			--   Increases your block value by 30%
+			{
+				["rune"] = true,
+				["value"] = 0.3,
+			}
 		},
 	}
 elseif addon.class == "PRIEST" then
@@ -677,9 +713,9 @@ elseif addon.class == "SHAMAN" then
 				},
 			},
 		},
-		-- Shaman: Shield Specialization 5/5 - 2,2
-		--         Increases your chance to block attacks with a shield by 5% and increases the amount blocked by 5%/10%/15%/20%/25%.
 		["MOD_BLOCK_VALUE"] = {
+			-- Shaman: Shield Specialization 5/5 - 2,2
+			--         Increases your chance to block attacks with a shield by 5% and increases the amount blocked by 5%/10%/15%/20%/25%.
 			{
 				["tab"] = 2,
 				["num"] = 2,
@@ -687,6 +723,30 @@ elseif addon.class == "SHAMAN" then
 					0.05, 0.1, 0.15, 0.2, 0.25,
 				},
 			},
+			-- Shaman: Shield Mastery - Rune
+			--   You also always gain 10% increased chance to Block and 15% increased Block value.
+			{
+				["rune"] = true,
+				["value"] = 0.15,
+			},
+		},
+		["ADD_MANA_REG_MOD_MANA"] = {
+			-- Shaman: Water Shield - Rune
+			--   The caster is surrounded by 3 globes of water, granting 1% of your maximum mana per 5 sec.
+			{
+				["rune"] = true,
+				["value"] = 0.01,
+				["buff"] = 408510,
+			},
+		},
+		["MOD_HEALTH"] = {
+			-- Shaman: Way of Earth: Rune
+			--   While Rockbiter Weapon is active on your main hand weapon, you gain 30% increased health
+			{
+				["rune"] = true,
+				["value"] = 0.3,
+				["buff"] = 408680
+			}
 		},
 	}
 elseif addon.class == "WARLOCK" then
@@ -711,6 +771,72 @@ elseif addon.class == "WARLOCK" then
 				["rank"] = {
 					-0.01, -0.02, -0.03, -0.04, -0.05,
 				},
+			},
+		},
+		["ADD_SPELL_CRIT"] = {
+			-- Warlock: Demonic Tactics - Rune
+			--   Increases the melee and spell critical strike chance of you and your pet by 10%.
+			{
+				["rune"] = true,
+				["value"] = 0.1,
+			},
+			-- Warlock: Demonic Grace - Rune
+			--   Surge with fel energy, increasing your chance to critically strike with all attacks by 30%
+			{
+				["rune"] = true,
+				["value"] = 0.3,
+				["buff"] = 425463,
+			},
+		},
+		["ADD_MELEE_CRIT"] = {
+			-- Warlock: Demonic Tactics - Rune
+			--   Increases the melee and spell critical strike chance of you and your pet by 10%.
+			{
+				["rune"] = true,
+				["value"] = 0.1,
+			},
+			-- Warlock: Demonic Grace - Rune
+			--   Surge with fel energy, increasing your chance to critically strike with all attacks by 30%
+			{
+				["rune"] = true,
+				["value"] = 0.3,
+				["buff"] = 425463,
+			},
+		},
+		["MOD_ARMOR"] = {
+			-- Warlock: Metamorphosis - Rune
+			--   Transform into a Demon, increasing Armor by 500%
+			{
+				["rune"] = true,
+				["value"] = 5.0,
+				["buff"] = 403789,
+			},
+		},
+		["ADD_DODGE"] = {
+			-- Warlock: Demonic Grace - Rune
+			--   Surge with fel energy, increasing your own dodge chance by 30%
+			{
+				["rune"] = true,
+				["value"] = 0.3,
+				["buff"] = 425463,
+			},
+		},
+		-- Warlock: Demonic Pact - Rune
+		--   Demonic Pact increases spell damage and healing by 10% of your spell damage
+		["MOD_SPELL_DMG"] = {
+			{
+				["rune"] = true,
+				["value"] = 0.1,
+				["buff"] = 425467,
+			},
+		},
+		-- Warlock: Demonic Pact - Rune
+		--   Demonic Pact increases spell damage and healing by 10% of your spell damage
+		["MOD_HEALING"] = {
+			{
+				["rune"] = true,
+				["value"] = 0.1,
+				["buff"] = 425467,
 			},
 		},
 	}
