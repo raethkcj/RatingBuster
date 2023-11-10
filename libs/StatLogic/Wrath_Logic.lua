@@ -908,18 +908,6 @@ if addon.class == "DRUID" then
 				["buff"] = 9634,		-- ["Dire Bear Form"],
 			},
 		},
-		-- Druid: Survival of the Fittest (Rank 3) - 2,18
-		--        Increases all attributes by 2%/4%/6% and reduces the chance you'll be critically hit by melee attacks by 2%/4%/6%.
-		["ADD_CRIT_TAKEN"] = {
-			{
-				["MELEE"] = true,
-				["tab"] = 2,
-				["num"] = 18,
-				["rank"] = {
-					-0.02, -0.04, -0.06,
-				},
-			},
-		},
 		-- Druid: Thick Hide (Rank 3) - 2,5
 		--        Increases your Armor contribution from items by 4%/7%/10%.
 		-- Druid: Bear Form - buff (didn't use stance because Bear Form and Dire Bear Form has the same icon)
@@ -2008,19 +1996,6 @@ elseif addon.class == "ROGUE" then
 				["buff"] = 31022,		-- ["Ghostly Strike"],
 			},
 		},
-		-- Rogue: Sleight of Hand (Rank 2) - 3,4
-		--        Reduces the chance you are critically hit by melee and ranged attacks by 1%/2% and increases the threat reduction of your Feint ability by 10%/20%.
-		["ADD_CRIT_TAKEN"] = {
-			{
-				["MELEE"] = true,
-				["RANGED"] = true,
-				["tab"] = 3,
-				["num"] = 4,
-				["rank"] = {
-					-0.01, -0.02,
-				},
-			},
-		},
 		-- Rogue: Sinister Calling (Rank 5) - 3,22
 		--        Increases your total Agility by 3%/6%/9%/12%/15%.
 		["MOD_AGI"] = {
@@ -2139,31 +2114,6 @@ elseif addon.class == "SHAMAN" then
 	}
 elseif addon.class == "WARLOCK" then
 	StatLogic.StatModTable["WARLOCK"] = {
-		["ADD_CRIT_TAKEN"] = {
-			-- Warlock: Metamorphosis - Buff
-			--          This form increases your armor by 600%, damage by 20%, reduces the chance you'll be critically hit by melee attacks by 6% and reduces the duration of stun and snare effects by 50%.
-			{
-				["MELEE"] = true,
-				["value"] = -0.06,
-				["buff"] = 47241,		-- ["Metamorphosis"],
-			},
-			-- Warlock: Demonic Resilience (Rank 3) - 2,18
-			--          Reduces the chance you'll be critically hit by melee and spells by 1%/2%/3% and reduces all damage your summoned demon takes by 15%.
-			{
-				["MELEE"] = true,
-				["HOLY"] = true,
-				["FIRE"] = true,
-				["NATURE"] = true,
-				["FROST"] = true,
-				["SHADOW"] = true,
-				["ARCANE"] = true,
-				["tab"] = 2,
-				["num"] = 18,
-				["rank"] = {
-					-0.01, -0.02, -0.03,
-				},
-			},
-		},
 		-- Warlock: Metamorphosis - Buff
 		--          This form increases your armor by 600%, damage by 20%, reduces the chance you'll be critically hit by melee attacks by 6% and reduces the duration of stun and snare effects by 50%.
 		["MOD_ARMOR"] = {

@@ -473,18 +473,6 @@ if addon.class == "DRUID" then
 				["buff"] = 32356,		-- ["Cat Form"],
 			},
 		},
-		-- Druid: Survival of the Fittest (Rank 3) - 2,16
-		--        Increases all attributes by 1%/2%/3% and reduces the chance you'll be critically hit by melee attacks by 1%/2%/3%.
-		["ADD_CRIT_TAKEN"] = {
-			{
-				["MELEE"] = true,
-				["tab"] = 2,
-				["num"] = 16,
-				["rank"] = {
-					-0.01, -0.02, -0.03,
-				},
-			},
-		},
 		-- Druid: Thick Hide (Rank 3) - 2,5
 		--        Increases your Armor contribution from items by 4%/7%/10%.
 		-- Druid: Bear Form - buff (didn't use stance because Bear Form and Dire Bear Form has the same icon)
@@ -1094,19 +1082,6 @@ elseif addon.class == "ROGUE" then
 				["buff"] = 14278,		-- ["Ghostly Strike"],
 			},
 		},
-		-- Rogue: Sleight of Hand (Rank 2) - 3,3
-		--        Reduces the chance you are critically hit by melee and ranged attacks by 2% and increases the threat reduction of your Feint ability by 20%.
-		["ADD_CRIT_TAKEN"] = {
-			{
-				["MELEE"] = true,
-				["RANGED"] = true,
-				["tab"] = 3,
-				["num"] = 3,
-				["rank"] = {
-					-0.02, -0.04,
-				},
-			},
-		},
 		-- Rogue: Vitality (Rank 2) - 2,20
 		--        Increases your total Stamina by 2%/4% and your total Agility by 1%/2%.
 		-- Rogue: Sinister Calling (Rank 5) - 3,21
@@ -1207,19 +1182,6 @@ elseif addon.class == "SHAMAN" then
 				},
 			},
 		},
-		-- Shaman: Elemental Shields (Rank 3) - 1,18
-		--         Reduces the chance you will be critically hit by melee and ranged attacks by 2%/4%/6%.
-		["ADD_CRIT_TAKEN"] = {
-			{
-				["MELEE"] = true,
-				["RANGED"] = true,
-				["tab"] = 1,
-				["num"] = 18,
-				["rank"] = {
-					-0.02, -0.04, -0.06,
-				},
-			},
-		},
 		-- Shaman: Toughness (Rank 5) - 2,11
 		--         Increases your armor value from items by 2%/4%/6%/8%/10%.
 		["MOD_ARMOR"] = {
@@ -1282,24 +1244,6 @@ elseif addon.class == "WARLOCK" then
 					0.012, 0.024, 0.036,
 				},
 				["condition"] = "UnitExists('pet')",
-			},
-		},
-		-- Warlock: Demonic Resilience (Rank 3) - 2,18
-		--          Reduces the chance you'll be critically hit by melee and spells by 1%/2%/3% and reduces all damage your summoned demon takes by 15%.
-		["ADD_CRIT_TAKEN"] = {
-			{
-				["MELEE"] = true,
-				["HOLY"] = true,
-				["FIRE"] = true,
-				["NATURE"] = true,
-				["FROST"] = true,
-				["SHADOW"] = true,
-				["ARCANE"] = true,
-				["tab"] = 2,
-				["num"] = 18,
-				["rank"] = {
-					-0.01, -0.02, -0.03,
-				},
 			},
 		},
 		-- Warlock: Fel Stamina (Rank 3) - 2,9

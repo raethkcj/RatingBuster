@@ -622,19 +622,6 @@ elseif addon.class == "ROGUE" then
 				},
 			},
 		},
-		-- Rogue: Sleight of Hand (Rank 2) - 3,3
-		--        Reduces the chance you are critically hit by melee and ranged attacks by 1/2% and increases the threat reduction of your Feint ability by 20%.
-		["ADD_CRIT_TAKEN"] = {
-			{
-				["MELEE"] = true,
-				["RANGED"] = true,
-				["tab"] = 3,
-				["num"] = 3,
-				["rank"] = {
-					-0.01, -0.02,
-				},
-			},
-		},
 	}
 elseif addon.class == "SHAMAN" then
 	StatLogic.StatModTable["SHAMAN"] = {
