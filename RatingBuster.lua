@@ -1493,7 +1493,6 @@ do
 	-- and agi/int conversion rates
 	local ignoredStatMods = {
 		["ADD_DODGE"] = true,
-		["ADD_HIT_TAKEN"] = true,
 		["ADD_MELEE_CRIT"] = true,
 		["ADD_SPELL_CRIT"] = true,
 	}
