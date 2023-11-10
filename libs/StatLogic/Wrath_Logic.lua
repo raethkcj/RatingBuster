@@ -2184,23 +2184,23 @@ elseif addon.class == "WARLOCK" then
 				["buff"] = 63321, -- ["Life Tap"],
 			},
 		},
-		-- 3.3.0 Imp stam total 233: pet base 118, player base 90, pet sta from player sta 0.75, pet kings 1.1, fel vitality 1.15
-		-- /dump floor((118+floor(90*0.75))*1.1)*1.05 = 233.45 match
-		-- /dump (118+floor(90*0.75))*1.1*1.05 = 224.025 wrong
-		-- Warlock: Fel Vitality (Rank 3) - 2,7
-		--          Increases the Stamina and Intellect of your Imp, Voidwalker, Succubus, Felhunter and Felguard by 15% and increases your maximum health and mana by 1%/2%/3%.
 		["ADD_PET_STA_MOD_STA"] = {
 			-- Base
 			{
-				["value"] = 0.75-1,
+				["value"] = 0.75,
 				["pet"] = true,
 			},
-			-- Blessings on pet: floor() * 1.1
+		},
+		["MOD_PET_STA"] = {
+			-- 3.3.0 Imp stam total 233: pet base 118, player base 90, pet sta from player sta 0.75, pet kings 1.1, fel vitality 1.15
+			-- /dump floor((118+floor(90*0.75))*1.1)*1.05 = 233.45 match
+			-- /dump (118+floor(90*0.75))*1.1*1.05 = 224.025 wrong
 			--{
 			--	["value"] = 0.1, -- BoK, BoSanc
 			--	["condition"] = "UnitBuff('pet', GetSpellInfo(20217)) or UnitBuff('pet', GetSpellInfo(25898)) or UnitBuff('pet', GetSpellInfo(20911)) or UnitBuff('pet', GetSpellInfo(25899))",
 			--},
-			-- Fel Vitality: floor() * 1.15
+			-- Warlock: Fel Vitality (Rank 3) - 2,7
+			--          Increases the Stamina and Intellect of your Imp, Voidwalker, Succubus, Felhunter and Felguard by 15% and increases your maximum health and mana by 1%/2%/3%.
 			{
 				["tab"] = 2,
 				["num"] = 7,
@@ -2210,28 +2210,7 @@ elseif addon.class == "WARLOCK" then
 				["pet"] = true,
 			},
 		},
-		["ADD_PET_INT_MOD_INT"] = {
-			-- Base
-			{
-				["value"] = 0.3-1,
-				["pet"] = true,
-			},
-			-- Blessings on pet
-			--{
-			--	["value"] = 0.1,
-			--	["condition"] = "UnitBuff('pet', GetSpellInfo(20217)) or UnitBuff('pet', GetSpellInfo(25898)) or UnitBuff('pet', GetSpellInfo(20911)) or UnitBuff('pet', GetSpellInfo(25899))",
-			--},
-			-- Fel Vitality
-			{
-				["tab"] = 2,
-				["num"] = 7,
-				["rank"] = {
-					0.05, 0.1, 0.15,
-				},
-				["pet"] = true,
-			},
-		},
-		-- Warlock: Demonic Knowledge (Rank 3) - 2,20 - UnitExists("pet") - WARLOCK_PET_BONUS["PET_BONUS_STAM"] = 0.3; its actually 0.75
+		-- Warlock: Demonic Knowledge (Rank 3) - 2,20
 		--          Increases your spell damage by an amount equal to 4/8/12% of the total of your active demon's Stamina plus Intellect.
 		["ADD_SPELL_DMG_MOD_PET_STA"] = {
 			{
@@ -2243,7 +2222,31 @@ elseif addon.class == "WARLOCK" then
 				["pet"] = true,
 			},
 		},
-		-- Warlock: Demonic Knowledge (Rank 3) - 2,20 - UnitExists("pet") - WARLOCK_PET_BONUS["PET_BONUS_INT"] = 0.3;
+		["ADD_PET_INT_MOD_INT"] = {
+			-- Base
+			{
+				["value"] = 0.3,
+				["pet"] = true,
+			},
+		},
+		["MOD_PET_INT"] = {
+			-- Blessings on pet
+			--{
+			--	["value"] = 0.1,
+			--	["condition"] = "UnitBuff('pet', GetSpellInfo(20217)) or UnitBuff('pet', GetSpellInfo(25898)) or UnitBuff('pet', GetSpellInfo(20911)) or UnitBuff('pet', GetSpellInfo(25899))",
+			--},
+			-- Warlock: Fel Vitality (Rank 3) - 2,7
+			--          Increases the Stamina and Intellect of your Imp, Voidwalker, Succubus, Felhunter and Felguard by 15% and increases your maximum health and mana by 1%/2%/3%.
+			{
+				["tab"] = 2,
+				["num"] = 7,
+				["rank"] = {
+					0.05, 0.1, 0.15,
+				},
+				["pet"] = true,
+			},
+		},
+		-- Warlock: Demonic Knowledge (Rank 3) - 2,20
 		--          Increases your spell damage by an amount equal to 4/8/12% of the total of your active demon's Stamina plus Intellect.
 		["ADD_SPELL_DMG_MOD_PET_INT"] = {
 			{

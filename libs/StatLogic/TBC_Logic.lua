@@ -1218,30 +1218,74 @@ elseif addon.class == "SHAMAN" then
 	}
 elseif addon.class == "WARLOCK" then
 	StatLogic.StatModTable["WARLOCK"] = {
-		-- Warlock: Demonic Knowledge (Rank 3) - 2,20 - UnitExists("pet")
-		--          Increases your spell damage by an amount equal to 5%/10%/15% of the total of your active demon's Stamina plus Intellect.
-		-- WARLOCK_PET_BONUS["PET_BONUS_INT"] = 0.3;
-		-- 2.4.0 It will now increase your spell damage by an amount equal to 4/8/12%, down from 5/10/15%.
-		["ADD_SPELL_DMG_MOD_INT"] = {
+		["ADD_PET_STA_MOD_STA"] = {
+			-- Base
+			{
+				["value"] = 0.75,
+				["pet"] = true,
+			},
+		},
+		["MOD_PET_STA"] = {
+			-- Blessing of Kings
+			--{
+			--	["value"] = 0.1,
+			--	["condition"] = "UnitBuff('pet', GetSpellInfo(20217)) or UnitBuff('pet', GetSpellInfo(25898))",
+			--},
+			-- Warlock: Fel Stamina (Rank 3) - 2,9
+			--          Increases the Stamina of your Imp, Voidwalker, Succubus, and Felhunter and Felguard by 5%/10%/15% and increases your maximum health and mana by 1%/2%/3%.
 			{
 				["tab"] = 2,
-				["num"] = 20,
+				["num"] = 9,
 				["rank"] = {
-					0.012, 0.024, 0.036,
+					0.05, 0.1, 0.15,
 				},
 				["pet"] = true,
 			},
 		},
-		-- Warlock: Demonic Knowledge (Rank 3) - 2,20 - UnitExists("pet")
-		--          Increases your spell damage by an amount equal to 5%/10%/15% of the total of your active demon's Stamina plus Intellect.
-		-- WARLOCK_PET_BONUS["PET_BONUS_STAM"] = 0.3;
-		-- 2.4.0 It will now increase your spell damage by an amount equal to 4/8/12%, down from 5/10/15%.
-		["ADD_SPELL_DMG_MOD_STA"] = {
+		-- Warlock: Demonic Knowledge (Rank 3) - 2,20
+		--          Increases your spell damage by an amount equal to 4/8/12% of the total of your active demon's Stamina plus Intellect.
+		["ADD_SPELL_DMG_MOD_PET_STA"] = {
 			{
 				["tab"] = 2,
 				["num"] = 20,
 				["rank"] = {
-					0.012, 0.024, 0.036,
+					0.04, 0.08, 0.12,
+				},
+				["pet"] = true,
+			},
+		},
+		["ADD_PET_INT_MOD_INT"] = {
+			-- Base
+			{
+				["value"] = 0.3,
+				["pet"] = true,
+			},
+		},
+		["MOD_PET_INT"] = {
+			-- Blessing of Kings
+			--{
+			--	["value"] = 0.1,
+			--	["condition"] = "UnitBuff('pet', GetSpellInfo(20217)) or UnitBuff('pet', GetSpellInfo(25898))",
+			--},
+			-- Warlock: Fel Intellect (Rank 3) - 2,6
+			--          Increases the Stamina and Intellect of your Imp, Voidwalker, Succubus, Felhunter and Felguard by 15% and increases your maximum health and mana by 1%/2%/3%.
+			{
+				["tab"] = 2,
+				["num"] = 6,
+				["rank"] = {
+					0.05, 0.1, 0.15,
+				},
+				["pet"] = true,
+			},
+		},
+		-- Warlock: Demonic Knowledge (Rank 3) - 2,20
+		--          Increases your spell damage by an amount equal to 4/8/12% of the total of your active demon's Stamina plus Intellect.
+		["ADD_SPELL_DMG_MOD_PET_INT"] = {
+			{
+				["tab"] = 2,
+				["num"] = 20,
+				["rank"] = {
+					0.04, 0.08, 0.12,
 				},
 				["pet"] = true,
 			},

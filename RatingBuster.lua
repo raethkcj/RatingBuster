@@ -2273,7 +2273,7 @@ do
 			if profileDB.showSpellDmgFromSta then
 				local mod = GSM("MOD_SPELL_DMG")
 				local effect = value * mod * (GSM("ADD_SPELL_DMG_MOD_STA")
-					+ GSM("ADD_SPELL_DMG_MOD_PET_STA") * GSM("ADD_PET_STA_MOD_STA"))
+					+ GSM("ADD_SPELL_DMG_MOD_PET_STA") * GSM("MOD_PET_STA") * GSM("ADD_PET_STA_MOD_STA"))
 				if floor(abs(effect) * 10 + 0.5) > 0 then
 					tinsert(infoTable, (L["$value Spell Dmg"]:gsub("$value", ("%+.1f"):format(effect))))
 				end
@@ -2317,7 +2317,7 @@ do
 			if profileDB.showSpellDmgFromInt then
 				local mod = GSM("MOD_SPELL_DMG")
 				local effect = value * mod * (GSM("ADD_SPELL_DMG_MOD_INT")
-					+ GSM("ADD_SPELL_DMG_MOD_PET_INT") * GSM("ADD_PET_INT_MOD_INT"))
+					+ GSM("ADD_SPELL_DMG_MOD_PET_INT") * GSM("MOD_PET_INT") * GSM("ADD_PET_INT_MOD_INT"))
 				if floor(abs(effect) * 10 + 0.5) > 0 then
 					tinsert(infoTable, (L["$value Spell Dmg"]:gsub("$value", ("%+.1f"):format(effect))))
 				end
@@ -2963,8 +2963,8 @@ local summaryCalcData = {
 		func = function(sum)
 			return sum["SPELL_DMG"]
 				+ sum[StatLogic.Stats.Strength] * GSM("ADD_SPELL_DMG_MOD_STR")
-				+ sum[StatLogic.Stats.Stamina] * (GSM("ADD_SPELL_DMG_MOD_STA") + GSM("ADD_SPELL_DMG_MOD_PET_STA") * GSM("ADD_PET_STA_MOD_STA"))
-				+ sum[StatLogic.Stats.Intellect] * (GSM("ADD_SPELL_DMG_MOD_INT") + GSM("ADD_SPELL_DMG_MOD_PET_INT") * GSM("ADD_PET_INT_MOD_INT"))
+				+ sum[StatLogic.Stats.Stamina] * (GSM("ADD_SPELL_DMG_MOD_STA") + GSM("ADD_SPELL_DMG_MOD_PET_STA") * GSM("MOD_PET_STA") * GSM("ADD_PET_STA_MOD_STA"))
+				+ sum[StatLogic.Stats.Intellect] * (GSM("ADD_SPELL_DMG_MOD_INT") + GSM("ADD_SPELL_DMG_MOD_PET_INT") * GSM("MOD_PET_INT") * GSM("ADD_PET_INT_MOD_INT"))
 				+ sum[StatLogic.Stats.Spirit] * GSM("ADD_SPELL_DMG_MOD_SPI")
 				+ summaryFunc["AP"](sum) * GSM("ADD_SPELL_DMG_MOD_AP")
 		end,

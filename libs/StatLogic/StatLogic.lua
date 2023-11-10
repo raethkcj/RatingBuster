@@ -813,11 +813,11 @@ StatLogic.StatModInfo = {
 		finalAdjust = 0,
 	},
 	["ADD_PET_INT_MOD_INT"] = {
-		initialValue = 1,
+		initialValue = 0,
 		finalAdjust = 0,
 	},
 	["ADD_PET_STA_MOD_STA"] = {
-		initialValue = 1,
+		initialValue = 0,
 		finalAdjust = 0,
 	},
 	["MOD_AGI"] = {
@@ -853,6 +853,14 @@ StatLogic.StatModInfo = {
 		finalAdjust = 1,
 	},
 	["MOD_MANA"] = {
+		initialValue = 1,
+		finalAdjust = 0,
+	},
+	["MOD_PET_INT"] = {
+		initialValue = 1,
+		finalAdjust = 0,
+	},
+	["MOD_PET_STA"] = {
 		initialValue = 1,
 		finalAdjust = 0,
 	},
