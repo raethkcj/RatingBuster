@@ -635,24 +635,6 @@ elseif addon.class == "ROGUE" then
 				},
 			},
 		},
-		-- Rogue: Heightened Senses (Rank 2) - 3,12
-		--        Increases your Stealth detection and reduces the chance you are hit by spells and ranged attacks by 2%/4%.
-		["ADD_HIT_TAKEN"] = {
-			{
-				["RANGED"] = true,
-				["HOLY"] = true,
-				["FIRE"] = true,
-				["NATURE"] = true,
-				["FROST"] = true,
-				["SHADOW"] = true,
-				["ARCANE"] = true,
-				["tab"] = 3,
-				["num"] = 12,
-				["rank"] = {
-					-0.02, -0.04,
-				},
-			},
-		},
 	}
 elseif addon.class == "SHAMAN" then
 	StatLogic.StatModTable["SHAMAN"] = {

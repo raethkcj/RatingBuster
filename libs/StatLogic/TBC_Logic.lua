@@ -485,23 +485,6 @@ if addon.class == "DRUID" then
 				},
 			},
 		},
-		-- Druid: Balance of Power (Rank 2) - 1,16
-		--        Increases your chance to hit with all spells and reduces the chance you'll be hit by spells by 2%/4%.
-		["ADD_HIT_TAKEN"] = {
-			{
-				["HOLY"] = true,
-				["FIRE"] = true,
-				["NATURE"] = true,
-				["FROST"] = true,
-				["SHADOW"] = true,
-				["ARCANE"] = true,
-				["tab"] = 1,
-				["num"] = 16,
-				["rank"] = {
-					-0.02, -0.04,
-				},
-			},
-		},
 		-- Druid: Thick Hide (Rank 3) - 2,5
 		--        Increases your Armor contribution from items by 4%/7%/10%.
 		-- Druid: Bear Form - buff (didn't use stance because Bear Form and Dire Bear Form has the same icon)
@@ -849,19 +832,6 @@ elseif addon.class == "MAGE" then
 				},
 			},
 		},
-		-- Mage: Arctic Winds (Rank 5) - 3,20
-		--       Reduces the chance melee and ranged attacks will hit you by 1%/2%/3%/4%/5%.
-		["ADD_HIT_TAKEN"] = {
-			{
-				["MELEE"] = true,
-				["RANGED"] = true,
-				["tab"] = 3,
-				["num"] = 20,
-				["rank"] = {
-					-0.01, -0.02, -0.03, -0.04, -0.05,
-				},
-			},
-		},
 		-- Mage: Arcane Mind (Rank 5) - 1,15
 		--       Increases your total Intellect by 3%/6%/9%/12%/15%.
 		["MOD_INT"] = {
@@ -876,23 +846,6 @@ elseif addon.class == "MAGE" then
 	}
 elseif addon.class == "PALADIN" then
 	StatLogic.StatModTable["PALADIN"] = {
-		-- Paladin: Pursuit of Justice (Rank 2) - 3,9
-		--          Reduces the chance you'll be hit by spells by 1%/2%/3% and increases movement and mounted movement speed by 5%/10%/15%. This does not stack with other movement speed increasing effects.
-		["ADD_HIT_TAKEN"] = {
-			{
-				["HOLY"] = true,
-				["FIRE"] = true,
-				["NATURE"] = true,
-				["FROST"] = true,
-				["SHADOW"] = true,
-				["ARCANE"] = true,
-				["tab"] = 3,
-				["num"] = 9,
-				["rank"] = {
-					-0.05, -0.1, -0.15,
-				},
-			},
-		},
 		-- Paladin: Holy Guidance (Rank 5) - 1,19
 		--          Increases your spell damage and healing by 7%/14%/21%/28%/35% of your total Intellect.
 		["ADD_SPELL_DMG_MOD_INT"] = {
@@ -1051,19 +1004,6 @@ elseif addon.class == "PRIEST" then
 				["buff"] = 32999,		-- ["Prayer of Spirit"],
 			},
 		},
-		-- Priest: OLD: Elune's Grace (Rank 6) - Buff, NE priest only
-		--         OLD: Ranged damage taken reduced by 167 and chance to dodge increased by 10%.
-		-- 2.3.0 Elune's Grace (Night Elf) effect changed to reduce chance to be hit by melee and ranged attacks by 20% for 15 seconds. There is now only 1 rank of the spell.
-		-- Priest: Elune's Grace (Rank 1) - Buff, NE priest only
-		--         Reduces the chance you'll be hit by melee and ranged attacks by 20% for 15 sec.
-		["ADD_HIT_TAKEN"] = {
-			{
-				["MELEE"] = true,
-				["RANGED"] = true,
-				["value"] = 20,
-				["buff"] = 2651,		-- ["Elune's Grace"],
-			},
-		},
 		-- Priest: Mental Strength (Rank 5) - 1,13
 		--         IIncreases your maximum Mana by 2%/4%/6%/8%/10%.
 		["MOD_MANA"] = {
@@ -1165,45 +1105,6 @@ elseif addon.class == "ROGUE" then
 				["rank"] = {
 					-0.02, -0.04,
 				},
-			},
-		},
-		-- Rogue: Heightened Senses (Rank 2) - 3,12
-		--        Increases your Stealth detection and reduces the chance you are hit by spells and ranged attacks by 2%/4%.
-		-- Rogue: Cloak of Shadows - buff
-		--        Instantly removes all existing harmful spell effects and increases your chance to resist all spells by 90% for 5 sec. Does not remove effects that prevent you from using Cloak of Shadows.
-		-- Rogue: Evasion (Rank 1/2) - Buff
-		--        Dodge chance increased by 50%/50% and chance ranged attacks hit you reduced by 0%/25%.
-		["ADD_HIT_TAKEN"] = {
-			{
-				["RANGED"] = true,
-				["HOLY"] = true,
-				["FIRE"] = true,
-				["NATURE"] = true,
-				["FROST"] = true,
-				["SHADOW"] = true,
-				["ARCANE"] = true,
-				["tab"] = 3,
-				["num"] = 12,
-				["rank"] = {
-					-0.02, -0.04,
-				},
-			},
-			{
-				["HOLY"] = true,
-				["FIRE"] = true,
-				["NATURE"] = true,
-				["FROST"] = true,
-				["SHADOW"] = true,
-				["ARCANE"] = true,
-				["value"] = -0.9,
-				["buff"] = 39666,		-- ["Cloak of Shadows"],
-			},
-			{
-				["RANGED"] = true,
-				["rank"] = {
-					0, -0.25,
-				},
-				["buff"] = 26669,		-- ["Evasion"],
 			},
 		},
 		-- Rogue: Vitality (Rank 2) - 2,20

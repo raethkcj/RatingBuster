@@ -742,8 +742,6 @@ Apply Aura: Mod Skill Talent (Defense)
 "MOD_MANA",
 "MOD_ARMOR",
 "MOD_BLOCK_VALUE",
-"MOD_CRIT_DAMAGE_TAKEN", school,
---"MOD_THREAT", school,
 
 "ADD_DODGE",
 --"ADD_PARRY",
@@ -751,9 +749,6 @@ Apply Aura: Mod Skill Talent (Defense)
 --"ADD_STEALTH_DETECT",
 --"ADD_STEALTH",
 --"ADD_DEFENSE",
---"ADD_THREAT", school,
-"ADD_HIT_TAKEN", school,
-"ADD_CRIT_TAKEN", school,
 
 --Talents
 "ADD_SPELL_DMG_MOD_INT"
@@ -824,11 +819,6 @@ StatLogic.StatModInfo = {
 		initialValue = 0,
 		finalAdjust = 0,
 	},
-	["ADD_HIT_TAKEN"] = {
-		initialValue = 0,
-		finalAdjust = 0,
-		school = true,
-	},
 	["ADD_PET_INT_MOD_INT"] = {
 		initialValue = 1,
 		finalAdjust = 0,
@@ -852,21 +842,6 @@ StatLogic.StatModInfo = {
 	["MOD_BLOCK_VALUE"] = {
 		initialValue = 0,
 		finalAdjust = 1,
-	},
-	["MOD_CRIT_DAMAGE"] = {
-		initialValue = 0,
-		finalAdjust = 1,
-		school = true,
-	},
-	["MOD_CRIT_DAMAGE_TAKEN"] = {
-		initialValue = 0,
-		finalAdjust = 1,
-		school = true,
-	},
-	["MOD_DMG"] = {
-		initialValue = 0,
-		finalAdjust = 1,
-		school = true,
 	},
 	["MOD_FAP"] = {
 		initialValue = 0,
@@ -1294,8 +1269,7 @@ do
 	end)
 end
 
-local function ValidateStatMod(stat, school, case)
-	if school and not case[school] then return false, false end
+local function ValidateStatMod(stat, case)
 	local shouldCache = true
 	for validatorType in pairs(case) do
 		local validator = addon.StatModValidators[validatorType]
@@ -1402,8 +1376,8 @@ do
 		return mod
 	end
 
-	local GetStatModValue = function(stat, school, mod, case, initialValue)
-		local valid, shouldCache = ValidateStatMod(stat, school, case)
+	local GetStatModValue = function(stat, mod, case, initialValue)
+		local valid, shouldCache = ValidateStatMod(stat, case)
 		if not valid then
 			return mod, shouldCache
 		end
@@ -1457,7 +1431,7 @@ do
 				if categoryTable[stat] then
 					for _, case in ipairs(categoryTable[stat]) do
 						local shouldCacheCase
-						mod, shouldCacheCase = GetStatModValue(stat, school, mod, case, statModInfo.initialValue)
+						mod, shouldCacheCase = GetStatModValue(stat, mod, case, statModInfo.initialValue)
 						if not shouldCacheCase then
 							-- If *any* cases should not be cached, don't cache this mod
 							shouldCache = false

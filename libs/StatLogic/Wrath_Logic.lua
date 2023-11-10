@@ -1273,17 +1273,6 @@ elseif addon.class == "DEATHKNIGHT" then
 				},
 			},
 		},
-		-- Death Knight: Frigid Dreadplate (Rank 3) - 2,13
-		--               Reduces the chance melee attacks will hit you by 1%/2%/3%.
-		["ADD_HIT_TAKEN"] = {
-			{
-				["tab"] = 2,
-				["num"] = 13,
-				["rank"] = {
-					-0.01, -0.02, -0.03,
-				},
-			},
-		},
 		-- Death Knight: Toughness (Rank 5) - 2,3
 		--               Increases your armor value from items by 2/4/6/8/10% and reduces the duration of all movement slowing effects by 50%.
 		-- Death Knight: Unbreakable Armor - Buff
@@ -1657,39 +1646,6 @@ elseif addon.class == "MAGE" then
 				},
 			},
 		},
-		-- Mage: Arctic Winds (Rank 5) - 3,20
-		--       Reduces the chance melee and ranged attacks will hit you by 1%/2%/3%/4%/5%.
-		-- 3.0.1: 3,21
-		-- Mage: Improved Blink (Rank 2) - Buff - 1,13
-		--       Chance to be hit by all attacks and spells reduced by 13%/25%.
-		-- 3.0.1: 1,15: Chance to be hit by all attacks and spells reduced by 15%/30%.
-		["ADD_HIT_TAKEN"] = {
-			{
-				["MELEE"] = true,
-				["RANGED"] = true,
-				["tab"] = 3,
-				["num"] = 21,
-				["rank"] = {
-					-0.01, -0.02, -0.03, -0.04, -0.05,
-				},
-			},
-			{
-				["MELEE"] = true,
-				["RANGED"] = true,
-				["HOLY"] = true,
-				["FIRE"] = true,
-				["NATURE"] = true,
-				["FROST"] = true,
-				["SHADOW"] = true,
-				["ARCANE"] = true,
-				["tab"] = 1,
-				["num"] = 15,
-				["rank"] = {
-					-0.15, -0.30,
-				},
-				["buff"] = 46989,		-- ["Improved Blink"],
-			},
-		},
 		-- Mage: Arcane Mind (Rank 5) - 1,15
 		--       Increases your total Intellect by 3%/6%/9%/12%/15%.
 		-- 3.0.1: 1,17
@@ -1787,25 +1743,6 @@ elseif addon.class == "PALADIN" then
 				["num"] = 5,
 				["rank"] = {
 					1, 2, 3, 4, 5,
-				},
-			},
-		},
-		-- Paladin: Divine Purpose (Rank 2) - 3,16
-		--          Reduces your chance to be hit by spells and ranged attacks by 2%/4% and
-		--          gives your Hand of Freedom spell a 50%/100% chance to remove any Stun effects on the target.
-		["ADD_HIT_TAKEN"] = {
-			{
-				["RANGED"] = true,
-				["HOLY"] = true,
-				["FIRE"] = true,
-				["NATURE"] = true,
-				["FROST"] = true,
-				["SHADOW"] = true,
-				["ARCANE"] = true,
-				["tab"] = 3,
-				["num"] = 16,
-				["rank"] = {
-					-0.02, -0.04,
 				},
 			},
 		},
@@ -2082,45 +2019,6 @@ elseif addon.class == "ROGUE" then
 				["rank"] = {
 					-0.01, -0.02,
 				},
-			},
-		},
-		-- Rogue: Heightened Senses (Rank 2) - 3,13
-		--        Increases your Stealth detection and reduces the chance you are hit by spells and ranged attacks by 2%/4%.
-		-- Rogue: Cloak of Shadows - buff
-		--        Instantly removes all existing harmful spell effects and increases your chance to resist all spells by 90% for 5 sec. Does not remove effects that prevent you from using Cloak of Shadows.
-		-- Rogue: Evasion (Rank 1/2) - Buff
-		--        Dodge chance increased by 50%/50% and chance ranged attacks hit you reduced by 0%/25%.
-		["ADD_HIT_TAKEN"] = {
-			{
-				["RANGED"] = true,
-				["HOLY"] = true,
-				["FIRE"] = true,
-				["NATURE"] = true,
-				["FROST"] = true,
-				["SHADOW"] = true,
-				["ARCANE"] = true,
-				["tab"] = 3,
-				["num"] = 13,
-				["rank"] = {
-					-0.02, -0.04,
-				},
-			},
-			{
-				["HOLY"] = true,
-				["FIRE"] = true,
-				["NATURE"] = true,
-				["FROST"] = true,
-				["SHADOW"] = true,
-				["ARCANE"] = true,
-				["value"] = -0.9,
-				["buff"] = 39666,		-- ["Cloak of Shadows"],
-			},
-			{
-				["RANGED"] = true,
-				["rank"] = {
-					0, -0.25,
-				},
-				["buff"] = 26669,		-- ["Evasion"],
 			},
 		},
 		-- Rogue: Sinister Calling (Rank 5) - 3,22
@@ -2443,23 +2341,6 @@ elseif addon.class == "WARLOCK" then
 	}
 elseif addon.class == "WARRIOR" then
 	StatLogic.StatModTable["WARRIOR"] = {
-		-- Warrior: Improved Spell Reflection (Rank 2) - 3,10
-		--          Reduces the chance you'll be hit by spells by 2%/4%
-		["ADD_HIT_TAKEN"] = {
-			{
-				["HOLY"] = true,
-				["FIRE"] = true,
-				["NATURE"] = true,
-				["FROST"] = true,
-				["SHADOW"] = true,
-				["ARCANE"] = true,
-				["tab"] = 3,
-				["num"] = 10,
-				["rank"] = {
-					-0.02, -0.04,
-				},
-			},
-		},
 		-- Warrior: Armored to the Teeth (Rank 3) - 2,1
 		--          Increases your attack power by 1/2/3 for every 108 armor value you have.
 		["ADD_AP_MOD_ARMOR"] = {
@@ -2565,20 +2446,7 @@ elseif addon.class == "WARRIOR" then
 	}
 end
 
-if addon.playerRace == "NightElf" then
-	StatLogic.StatModTable["NightElf"] = {
-		["ADD_HIT_TAKEN"] = {
-			-- Night Elf : Quickness - Racial
-			--             Reduces the chance that melee and ranged attackers will hit you by 2%.
-			{
-				["MELEE"] = true,
-				["RANGED"] = true,
-				["value"] = -0.02,
-				["race"] = "NightElf",
-			},
-		}
-	}
-elseif addon.playerRace == "Gnome" then
+if addon.playerRace == "Gnome" then
 	StatLogic.StatModTable["Gnome"] = {
 		["MOD_INT"] = {
 			-- Gnome: Expansive Mind - Racial
