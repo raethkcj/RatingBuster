@@ -283,19 +283,19 @@ if addon.class == "DRUID" then
 			-- Druid: Bear Form - buff (didn't use stance because Bear Form and Dire Bear Form has the same icon)
 			--        Shapeshift into a bear, increasing melee attack power by 120, armor contribution from items by 180%, and health by 560.
 			{
-				["value"] = 2.8,
+				["value"] = 1.8,
 				["buff"] = 5487,		-- ["Bear Form"],
 			},
 			-- Druid: Dire Bear Form - Buff
 			--        Shapeshift into a dire bear, increasing melee attack power by 180, armor contribution from items by 360%, and health by 1240.
 			{
-				["value"] = 4.6,
+				["value"] = 3.6,
 				["buff"] = 9634,		-- ["Dire Bear Form"],
 			},
 			-- Druid: Moonkin Form - Buff
 			--        While in this form the armor contribution from items is increased by 360%, and all party members within 30 yards have their spell critical chance increased by 3%.
 			{
-				["value"] = 4.6,
+				["value"] = 3.6,
 				["buff"] = 24858,		-- ["Moonkin Form"],
 			},
 		},

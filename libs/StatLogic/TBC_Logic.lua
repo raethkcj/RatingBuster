@@ -490,15 +490,15 @@ if addon.class == "DRUID" then
 				},
 			},
 			{
-				["value"] = 2.8,
+				["value"] = 1.8,
 				["buff"] = 32357,		-- ["Bear Form"],
 			},
 			{
-				["value"] = 5,
+				["value"] = 4,
 				["buff"] = 9634,		-- ["Dire Bear Form"],
 			},
 			{
-				["value"] = 5,
+				["value"] = 4,
 				["buff"] = 24858,		-- ["Moonkin Form"],
 			},
 		},
