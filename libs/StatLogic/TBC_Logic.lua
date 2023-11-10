@@ -1229,7 +1229,7 @@ elseif addon.class == "WARLOCK" then
 				["rank"] = {
 					0.012, 0.024, 0.036,
 				},
-				["condition"] = "UnitExists('pet')",
+				["pet"] = true,
 			},
 		},
 		-- Warlock: Demonic Knowledge (Rank 3) - 2,20 - UnitExists("pet")
@@ -1243,7 +1243,7 @@ elseif addon.class == "WARLOCK" then
 				["rank"] = {
 					0.012, 0.024, 0.036,
 				},
-				["condition"] = "UnitExists('pet')",
+				["pet"] = true,
 			},
 		},
 		-- Warlock: Fel Stamina (Rank 3) - 2,9

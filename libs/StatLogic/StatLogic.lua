@@ -1169,6 +1169,22 @@ addon.StatModValidators = {
 			["GLYPH_REMOVED"] = true,
 		}
 	},
+	meta = {
+		validate = function(case)
+			return case.meta == equipped_meta_gem
+		end,
+		events = {
+			["UNIT_INVENTORY_CHANGED"] = "player",
+		},
+	},
+	pet = {
+		validate = function()
+			return UnitExists("pet")
+		end,
+		events = {
+			["UNIT_PET"] = "player",
+		},
+	},
 	set = {
 		validate = function(case)
 			return equipped_sets[case.set] and equipped_sets[case.set] >= case.pieces
@@ -1188,14 +1204,6 @@ addon.StatModValidators = {
 		end,
 		events = {
 			["UPDATE_SHAPESHIFT_FORM"] = true,
-		},
-	},
-	meta = {
-		validate = function(case)
-			return case.meta == equipped_meta_gem
-		end,
-		events = {
-			["UNIT_INVENTORY_CHANGED"] = "player",
 		},
 	},
 	weapon = {

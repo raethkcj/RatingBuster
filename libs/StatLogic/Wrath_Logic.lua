@@ -2193,7 +2193,7 @@ elseif addon.class == "WARLOCK" then
 			-- Base
 			{
 				["value"] = 0.75-1,
-				["condition"] = "UnitExists('pet')",
+				["pet"] = true,
 			},
 			-- Blessings on pet: floor() * 1.1
 			--{
@@ -2207,14 +2207,14 @@ elseif addon.class == "WARLOCK" then
 				["rank"] = {
 					0.05, 0.1, 0.15,
 				},
-				["condition"] = "UnitExists('pet')",
+				["pet"] = true,
 			},
 		},
 		["ADD_PET_INT_MOD_INT"] = {
 			-- Base
 			{
 				["value"] = 0.3-1,
-				["condition"] = "UnitExists('pet')",
+				["pet"] = true,
 			},
 			-- Blessings on pet
 			--{
@@ -2228,7 +2228,7 @@ elseif addon.class == "WARLOCK" then
 				["rank"] = {
 					0.05, 0.1, 0.15,
 				},
-				["condition"] = "UnitExists('pet')",
+				["pet"] = true,
 			},
 		},
 		-- Warlock: Demonic Knowledge (Rank 3) - 2,20 - UnitExists("pet") - WARLOCK_PET_BONUS["PET_BONUS_STAM"] = 0.3; its actually 0.75
@@ -2240,7 +2240,7 @@ elseif addon.class == "WARLOCK" then
 				["rank"] = {
 					0.04, 0.08, 0.12,
 				},
-				["condition"] = "UnitExists('pet')",
+				["pet"] = true,
 			},
 		},
 		-- Warlock: Demonic Knowledge (Rank 3) - 2,20 - UnitExists("pet") - WARLOCK_PET_BONUS["PET_BONUS_INT"] = 0.3;
@@ -2252,7 +2252,7 @@ elseif addon.class == "WARLOCK" then
 				["rank"] = {
 					0.04, 0.08, 0.12,
 				},
-				["condition"] = "UnitExists('pet')",
+				["pet"] = true,
 			},
 		},
 		-- Warlock: Fel Vitality (Rank 3) - 2,7
