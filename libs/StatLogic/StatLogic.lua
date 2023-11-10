@@ -1410,7 +1410,7 @@ do
 		return mod, shouldCache
 	end
 
-	function StatLogic:GetStatMod(stat, school)
+	function StatLogic:GetStatMod(stat)
 		local mod = StatModCache[stat]
 
 		local shouldCache = true
@@ -1418,8 +1418,6 @@ do
 			wipe(BuffGroupCache)
 			local statModInfo = StatLogic.StatModInfo[stat]
 			mod = statModInfo.initialValue
-			-- if school is required for this statMod but not given
-			if statModInfo.school and not school then return mod end
 			for _, categoryTable in pairs(StatLogic.StatModTable) do
 				if categoryTable[stat] then
 					for _, case in ipairs(categoryTable[stat]) do
