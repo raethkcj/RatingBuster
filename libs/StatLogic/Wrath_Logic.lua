@@ -2462,15 +2462,9 @@ StatLogic.StatModTable["ALL"] = {
 			["meta"] = 35501,
 		},
 	},
-	-- Paladin: Lay on Hands (Rank 1/2) - Buff
-	--          Physical damage taken reduced by 10%/20%.
-	-- Priest: Inspiration (Rank 1/2/3) - Buff
-	--         Reduces physical damage taken by 3/7/10%.
-	-- Shaman: Ancestral Fortitude (Rank 1/2/3) - Buff
-	--         Reduces physical damage taken by 3/7/10%.
-	-- MetaGem: Austere Earthsiege Diamond - 41380
-	--          +32 Stamina and 2% Increased Armor Value from Items
 	["MOD_ARMOR"] = {
+		-- MetaGem: Austere Earthsiege Diamond - 41380
+		--          +32 Stamina and 2% Increased Armor Value from Items
 		{
 			["value"] = 0.02,
 			["meta"] = 41380,
