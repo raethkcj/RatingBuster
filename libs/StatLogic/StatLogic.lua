@@ -373,6 +373,7 @@ if not CR_WEAPON_SKILL_OFFHAND then CR_WEAPON_SKILL_OFFHAND = 22 end;
 if not CR_WEAPON_SKILL_RANGED then CR_WEAPON_SKILL_RANGED = 23 end;
 if not CR_EXPERTISE then CR_EXPERTISE = 24 end;
 if not CR_ARMOR_PENETRATION then CR_ARMOR_PENETRATION = 25 end;
+if not CR_MASTERY then CR_MASTERY = 26 end;
 
 local RatingNameToID = {
 	[StatLogic.GenericStats.CR_HIT] = "HIT_RATING",
@@ -395,6 +396,7 @@ local RatingNameToID = {
 	[CR_HASTE_SPELL] = "SPELL_HASTE_RATING",
 	[CR_EXPERTISE] = "EXPERTISE_RATING",
 	[CR_ARMOR_PENETRATION] = "ARMOR_PENETRATION_RATING",
+	[CR_MASTERY] = "MASTERY_RATING",
 	["HIT_RATING"] = StatLogic.GenericStats.CR_HIT,
 	["CRIT_RATING"] = StatLogic.GenericStats.CR_CRIT,
 	["HASTE_RATING"] = StatLogic.GenericStats.CR_HASTE,
@@ -414,6 +416,7 @@ local RatingNameToID = {
 	["SPELL_HASTE_RATING"] = CR_HASTE_SPELL,
 	["EXPERTISE_RATING"] = CR_EXPERTISE,
 	["ARMOR_PENETRATION_RATING"] = CR_ARMOR_PENETRATION,
+	["MASTERY_RATING"] = CR_MASTERY,
 }
 
 function StatLogic:GetRatingIdOrName(rating)
@@ -446,6 +449,7 @@ local RatingIDToConvertedStat = {
 	nil,
 	"EXPERTISE",
 	"ARMOR_PENETRATION",
+	"MASTERY",
 }
 
 local function GetPlayerBuffRank(buff)
