@@ -1151,13 +1151,6 @@ addon.StatModValidators = {
 			["UNIT_AURA"] = "player",
 		},
 	},
-	-- Conditions have no events, so any mods using them will not be cached.
-	-- Ideally they will be removed entirely.
-	condition = {
-		validate = function(case)
-			return loadstring("return "..case.condition)()
-		end,
-	},
 	enchant = {
 		validate = function(case)
 			local slotLink = case.slot and GetInventoryItemLink("player", case.slot)
@@ -1279,7 +1272,6 @@ do
 end
 
 local function ValidateStatMod(stat, case)
-	local shouldCache = true
 	for validatorType in pairs(case) do
 		local validator = addon.StatModValidators[validatorType]
 		if validator then
@@ -1292,16 +1284,14 @@ local function ValidateStatMod(stat, case)
 					addon.StatModCacheInvalidators[key] = addon.StatModCacheInvalidators[key] or {}
 					table.insert(addon.StatModCacheInvalidators[key], stat)
 				end
-			else
-				shouldCache = false
 			end
 
 			if not validator.validate(case) then
-				return false, shouldCache
+				return false
 			end
 		end
 	end
-	return true, shouldCache
+	return true
 end
 
 -- As of Classic Patch 3.4.0, GetTalentInfo indices no longer correlate
@@ -1386,9 +1376,9 @@ do
 	end
 
 	local GetStatModValue = function(stat, mod, case, initialValue)
-		local valid, shouldCache = ValidateStatMod(stat, case)
+		local valid = ValidateStatMod(stat, case)
 		if not valid then
-			return mod, shouldCache
+			return mod
 		end
 
 		local value
@@ -1423,13 +1413,12 @@ do
 			end
 		end
 
-		return mod, shouldCache
+		return mod
 	end
 
 	function StatLogic:GetStatMod(stat)
 		local mod = StatModCache[stat]
 
-		local shouldCache = true
 		if not mod then
 			wipe(BuffGroupCache)
 			local statModInfo = StatLogic.StatModInfo[stat]
@@ -1437,23 +1426,16 @@ do
 			for _, categoryTable in pairs(StatLogic.StatModTable) do
 				if categoryTable[stat] then
 					for _, case in ipairs(categoryTable[stat]) do
-						local shouldCacheCase
-						mod, shouldCacheCase = GetStatModValue(stat, mod, case, statModInfo.initialValue)
-						if not shouldCacheCase then
-							-- If *any* cases should not be cached, don't cache this mod
-							shouldCache = false
-						end
+						mod = GetStatModValue(stat, mod, case, statModInfo.initialValue)
 					end
 				end
 			end
 
 			mod = mod + statModInfo.finalAdjust
-			if shouldCache then
-				StatModCache[stat] = mod
-			end
+			StatModCache[stat] = mod
 		end
 
-		return mod, shouldCache
+		return mod
 	end
 end
 
