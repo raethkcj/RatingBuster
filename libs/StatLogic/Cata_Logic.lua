@@ -387,3 +387,1383 @@ addon.DodgePerAgiMaxLevel = {
 	["WARLOCK"] =     0.0192366,
 	["DRUID"] =       0.0240458,
 }
+
+local BuffGroup = {
+	MOD_AP = 1,
+	MOD_STATS = 2,
+	MOD_SP = 3,
+}
+
+StatLogic.StatModTable = {}
+if addon.class == "DRUID" then
+	StatLogic.StatModTable["DRUID"] = {
+		-- Druid: Nurturing Instinct (Rank 2) - 2,14
+		-- 4.0.1: 2,14: Increases your healing spells by up to 35%/70% of your Agility, and increases healing done to you by 10%/20% while in Cat form.
+		-- 4.0.6: 2,14: Increases your healing spells by up to 50%/100% of your Agility, and increases healing done to you by 10%/20% while in Cat form.
+		["ADD_HEAL_MOD_AGI"] = {
+			{
+				["spellid"] = 33873,
+				["tab"] = 2,
+				["num"] = 14,
+				["rank"] = {
+					0.50, 1,
+				},
+			},
+		},
+		-- Healers: Meditation
+		-- 4.0.1: Allows 50% of your mana regeneration from Spirit to continue while in combat.
+		["ADD_MANA_REG_MOD_NORMAL_MANA_REG"] = {
+			{
+				["value"] = 0.50,
+				["known"] = 85101, -- ["Meditation"]
+			},
+		},
+		-- Druid: Feral Swiftness (Rank 2) - 2,1
+		-- 4.0.1: Increases your chance to dodge while in Cat Form or Bear Form by 2/4%
+		-- Druid: Natural Reaction (Rank 2) - 2,18
+		-- 4.0.1: Reduces damage taken while in Bear Form by 6/12%, increases your dodge while in Bear Form by 3/6%, and you generate 1/3 rage every time you dodge while in Bear Form.
+		["ADD_DODGE"] = {
+			-- Feral Swiftness
+			{
+				["tab"] = 2,
+				["num"] = 1,
+				["rank"] = {
+					2, 4,
+				},
+				["buff"] = 5487,        -- ["Bear Form"],
+			},
+			-- Feral Swiftness
+			{
+				["tab"] = 2,
+				["num"] = 1,
+				["rank"] = {
+					2, 4,
+				},
+				["buff"] = 768,        -- ["Cat Form"],
+			},
+			-- Natural Reaction
+			{
+				["tab"] = 2,
+				["num"] = 18,
+				["rank"] = {
+					3, 6,
+				},
+				["buff"] = 5487,        -- ["Bear Form"],
+			},
+		},
+		-- Druid: Balance of Power (Rank 2) - 1,6
+		-- 4.0.1: Increases your spell hit rating by an additional amount equal to 50/100% of your Spirit.
+		["ADD_SPELL_HIT_RATING_MOD_SPI"] = {
+			{
+				["spellid"] = 33596,
+				["tab"] = 1,
+				["num"] = 6,
+				["rank"] = {
+					0.5, 1,
+				},
+			},
+		},
+		-- Druid: Thick Hide (Rank 3) - 2,11
+		-- 4.0.1: Increases your Armor contribution from cloth and leather items by 4/7/10%, increases armor while in Bear Form by an additional 11/22/33%, and reduces the chance you'll be critically hit by melee attacks by 2/4/6%.
+		-- Druid: Bear Form - Buff
+		-- 4.0.1: Increases melee attack power by 30, armor contribution from cloth and leather items by 65%/120%, and Stamina by 25%.  Also causes agility to increase attack power.
+		-- Druid: Tree of Life - Buff
+		-- 4.0.1: Armor increased by 120%.
+		["MOD_ARMOR"] = {
+			-- Thick Hide
+			{
+				["tab"] = 2,
+				["num"] = 11,
+				["rank"] = {
+					0.04, 0.07, 0.1,
+				},
+			},
+			-- Thick Hide
+			{
+				["tab"] = 2,
+				["num"] = 11,
+				["rank"] = {
+					0.11, 0.22, 0.33,
+				},
+				["buff"] = 5487,        -- ["Bear Form"],
+			},
+			-- Bear Form < lv40
+			{
+				["value"] = 0.65,
+				["buff"] = 5487,        -- ["Bear Form"],
+			},
+			-- Bear Form >= lv40
+			{
+				["rank"] = {
+					0.333333333333333333, -- 1.65 * 1.3333 = 2.2
+				},
+				["buff"] = 5487,        -- ["Bear Form"],
+				["condition"] = "UnitLevel('player') >= 40",
+			},
+			{
+				["value"] = 1.2,
+				["buff"] = 33891,        -- ["Tree of Life"],
+			},
+		},
+		-- Druid: Furor (Rank 3) - 2,2
+		-- 4.0.1: Increases your maximum mana by 5/10/15%.
+		["MOD_MANA"] = {
+			{
+				["tab"] = 2,
+				["num"] = 2,
+				["rank"] = {
+					0.05, 0.1, 0.15,
+				},
+			},
+		},
+		-- Druid: Leather Specialization - Passive: 86530
+		-- 4.0.1: Increases your primary attribute by 5% while wearing Leather in all armor slots.  Balance specialization grants Intellect, Feral specialization grants Agility while in Cat Form and Stamina while in Bear Form, and Restoration specialization grants Intellect.
+		-- Druid: Heart of the Wild (Rank 5) - 3,4
+		-- 4.0.1: Increases your Intellect by 2/4/6%. In addition, while in Bear Form your Stamina is increased by 3/7/10% and while in Cat Form your attack power is increased by 3/7/10%.
+		-- Druid: Bear Form - Buff
+		-- 4.0.1: Increases melee attack power by 30, armor contribution from cloth and leather items by 65%/120%, and Stamina by 25%.  Also causes agility to increase attack power.
+		["MOD_STA"] = {
+			-- Heart of the Wild: +2/4/6/8/10% stamina in bear / dire bear
+			{
+				["tab"] = 3,
+				["num"] = 4,
+				["rank"] = {
+					0.03, 0.07, 0.1,
+				},
+				["buff"] = 5487,        -- ["Bear Form"],
+			},
+			-- Bear Form
+			{
+				["value"] = 0.25,
+				["buff"] = 5487,        -- ["Bear Form"],
+			},
+			-- Leather Specialization
+			{
+				["value"] = 0.05,
+				["armorspec"] = {
+					[2] = true,
+				},
+				["known"] = 86530,
+				["buff"] = 5487,        -- ["Bear Form"],
+			},
+		},
+		-- Druid: Leather Specialization - Passive: 86530
+		-- 4.0.1: Increases your primary attribute by 5% while wearing Leather in all armor slots.  Balance specialization grants Intellect, Feral specialization grants Agility while in Cat Form and Stamina while in Bear Form, and Restoration specialization grants Intellect.
+		["MOD_AGI"] = {
+			-- Leather Specialization
+			{
+				["value"] = 0.05,
+				["armorspec"] = {
+					[2] = true,
+				},
+				["known"] = 86530,
+				["buff"] = 768,        -- ["Cat Form"],
+			},
+		},
+		-- Druid: Heart of the Wild (Rank 5) - 3,4
+		-- 4.0.1: Increases your Intellect by 2/4/6%. In addition, while in Bear Form your Stamina is increased by 3/7/10% and while in Cat Form your attack power is increased by 3/7/10%.
+		-- Druid: Aggression - Passive: 84735
+		-- 4.0.1: Increases your attack power by 25%.
+		["MOD_AP"] = {
+			{
+				["tab"] = 3,
+				["num"] = 4,
+				["rank"] = {
+					0.03, 0.07, 0.1,
+				},
+				["buff"] = 768,        -- ["Cat Form"],
+			},
+			{
+				["value"] = 0.25,
+				["known"] = 84735, -- ["Aggression"]
+			},
+		},
+		-- Druid: Leather Specialization - Passive: 86530
+		-- 4.0.1: Increases your primary attribute by 5% while wearing Leather in all armor slots.  Balance specialization grants Intellect, Feral specialization grants Agility while in Cat Form and Stamina while in Bear Form, and Restoration specialization grants Intellect.
+		-- Druid: Heart of the Wild (Rank 5) - 3,4
+		-- 4.0.1: Increases your Intellect by 2/4/6%. In addition, while in Bear Form your Stamina is increased by 3/7/10% and while in Cat Form your attack power is increased by 3/7/10%.
+		["MOD_INT"] = {
+			{
+				["tab"] = 3,
+				["num"] = 4,
+				["rank"] = {
+					0.02, 0.04, 0.06,
+				},
+			},
+			-- Leather Specialization
+			{
+				["value"] = 0.05,
+				["known"] = 86530,
+				["armorspec"] = {
+					[1] = true,
+					[3] = true,
+				},
+			},
+		},
+	}
+elseif addon.class == "DEATHKNIGHT" then
+	StatLogic.StatModTable["DEATHKNIGHT"] = {
+		-- Death Knight: Icy Talons - Passive: 50887
+		-- 4.0.6: Your melee attack speed is increased by 20%.
+		-- Death Knight: Improved Icy Talons - Rank 1/1 - 2,13
+		-- 4.0.6: Increases the melee and ranged attack speed of all party and raid
+		--        members within 100 yards by 10%, and your own attack speed by an additional 5%.
+		-- Death Knight: Unholy Presence - Stance
+		-- 4.0.6: Attack speed and rune regeneration increased 10%.
+		-- Death Knight: Improved Unholy Presence - Rank 2/2 - 3,16
+		-- 4.0.6: Grants you an additional 2/5% haste while in Unholy Presence.
+		["MOD_MELEE_HASTE"] = {
+			-- Icy Talons
+			{
+				["value"] = 0.2,
+				["known"] = 50887,
+			},
+			-- Improved Icy Talons
+			{
+				["tab"] = 2,
+				["num"] = 13,
+				["value"] = 0.05,
+			},
+			-- Unholy Presence and Improved Unholy Presence
+			{
+				["tab"] = 3,
+				["num"] = 16,
+				["rank"] = {
+					[0] = 0.1, 0.12, 0.15,
+				},
+				["stance"] = "Interface\\Icons\\Spell_Deathknight_UnholyPresence",
+			},
+		},
+		-- Tanks: Forceful Deflection - Passive
+		-- 4.2.0: Increases your Parry Rating by 27% of your total Strength.
+		["ADD_PARRY_RATING_MOD_STR"] = {
+			{
+				["spellid"] = 49410,
+				["value"] = 0.27,
+			},
+		},
+		-- Death Knight: Bladed Armor - Rank 3/3 - 1,3
+		-- 4.0.1: Increases your attack power by 2/4/6 for every 180 armor value you have.
+		["ADD_AP_MOD_ARMOR"] = {
+			{
+				["spellid"] = 49391,
+				["tab"] = 1,
+				["num"] = 3,
+				["rank"] = {
+					2/180, 4/180, 6/180,
+				},
+			},
+		},
+		-- Death Knight: Toughness - Rank 3/3 - 1,10
+		-- 4.0.1: Increases your armor value from items by 3/7/10%.
+		-- Death Knight: Blood Presence - Stance
+		-- 4.0.1: Stamina increased by 8%.
+		--        Armor contribution from cloth, leather, mail and plate items increased by 60%.
+		--        Damage taken reduced by 8%.
+		-- Enchant: Rune of the Stoneskin Gargoyle - EnchantID: 3847
+		-- 4.0.1: +4% Armor and +2% Stamina to 2h weapon
+		-- Enchant: Rune of the Nerubian Carapace - EnchantID: 3883
+		-- 4.0.1: +2% Armor and +1% Stamina to 1h weapon
+		["MOD_ARMOR"] = {
+			-- Blood Presence
+			{
+				["value"] = 0.6,
+				["stance"] = "Interface\\Icons\\Spell_Deathknight_BloodPresence",
+			},
+			-- Toughness
+			{
+				["tab"] = 1,
+				["num"] = 10,
+				["rank"] = {
+					0.03, 0.07, 0.1,
+				},
+			},
+		},
+		-- Death Knight: Vampiric Blood - Buff: 55233
+		-- 4.0.1: Maximum health increased by 15%
+		-- Death Knight: Glyph of Vampiric Blood - Glyph: 58676
+		-- 4.0.1: Vampiric Blood no longer grants you health
+		["MOD_HEALTH"] = {
+			-- Vampiric Blood
+			{
+				["value"] = 0.15,
+				["buff"] = 55233,        -- ["Vampiric Blood"],
+				["condition"] = "not LibStub('LibStatLogic-1.2').PlayerHasGlyph(58676)", -- ["Glyph of Vampiric Blood"]
+			},
+		},
+		-- Death Knight: Plate Specialization - Passive: 86524
+		-- 4.0.1: Increases your primary attribute by 5% while wearing Plate in all armor slots. Blood specialization grants Stamina, Frost specialization grants Strength, and Unholy specialization grants Strength.
+		-- Death Knight: Blood Presence - Stance
+		-- 4.0.1: Stamina increased by 8%.
+		--        Armor contribution from cloth, leather, mail and plate items increased by 60%.
+		--        Damage taken reduced by 8%.
+		-- Death Knight: Veteran of the Third War - Passive: 50029
+		-- 4.0.1: Increases your total Stamina by 9% and your expertise by 6.
+		-- Enchant: Rune of the Stoneskin Gargoyle - EnchantID: 3847
+		-- 4.0.1: +4% Armor and +2% Stamina to 2h weapon
+		-- Enchant: Rune of the Nerubian Carapace - EnchantID: 3883
+		-- 4.0.1: +2% Armor and +1% Stamina to 1h weapon
+		["MOD_STA"] = {
+			-- Plate Specialization
+			{
+				["value"] = 0.05,
+				["known"] = 86524,
+				["armorspec"] = {
+					[1] = true,
+				},
+			},
+			-- Blood Presence
+			{
+				["value"] = 0.08,
+				["stance"] = "Interface\\Icons\\Spell_Deathknight_BloodPresence",
+			},
+			-- Veteran of the Third War
+			{
+				["value"] = 0.09,
+				["known"] = 50029, -- ["Veteran of the Third War"]
+			},
+			-- Rune of the Stoneskin Gargoyle
+			{
+				["value"] = 0.02,
+				["slot"] = 16, -- main hand slot
+				["enchant"] = 3847,
+			},
+			-- Rune of the Nerubian Carapace
+			{
+				["value"] = 0.01,
+				["slot"] = 16, -- main hand slot
+				["enchant"] = 3883,
+			},
+			-- Rune of the Nerubian Carapace
+			{
+				["value"] = 0.01,
+				["slot"] = 17, -- off hand slot
+				["enchant"] = 3883,
+			},
+		},
+		-- Death Knight: Plate Specialization - Passive: 86524
+		-- 4.0.1: Increases your primary attribute by 5% while wearing Plate in all armor slots. Blood specialization grants Stamina, Frost specialization grants Strength, and Unholy specialization grants Strength.
+		-- Death Knight: Unholy Might - Passive: 91107
+		-- 4.2.0: Dark power courses through your limbs, increasing your Strength by 20%.
+		-- Death Knight: Abomination's Might - 1,11
+		-- 4.0.1: Also increases your total Strength by 1%/2%.
+		-- Death Knight: Pillar of Frost - Buff: 51271
+		-- 4.0.1: Strength increased by 20%.
+		-- Death Knight: Brittle Bones - Rank 2/2 - 2,14
+		-- 4.0.1: Your Strength is increased by 2/4%
+		-- Death Knight: Unholy Strength - Buff: 53365
+		-- 4.0.1: Strength increased by 15%
+		["MOD_STR"] = {
+			-- Plate Specialization
+			{
+				["value"] = 0.05,
+				["known"] = 86524,
+				["armorspec"] = {
+					[2] = true,
+					[3] = true,
+				},
+			},
+			-- Unholy Might
+			{
+				["value"] = 0.2,
+				["known"] = 91107, -- ["Unholy Might"]
+			},
+			-- Abomination's Might
+			{
+				["tab"] = 1,
+				["num"] = 11,
+				["rank"] = {
+					0.01, 0.02,
+				},
+			},
+			-- Pillar of Frost
+			{
+				["value"] = 0.2,
+				["buff"] = 51271,        -- ["Pillar of Frost"],
+			},
+			-- Brittle Bones
+			{
+				["tab"] = 2,
+				["num"] = 14,
+				["rank"] = {
+					0.02, 0.04,
+				},
+			},
+			-- Unholy Strength
+			{
+				["value"] = 0.15,
+				["buff"] = 53365,        -- ["Unholy Strength"],
+			},
+		},
+	}
+elseif addon.class == "HUNTER" then
+	StatLogic.StatModTable["HUNTER"] = {
+		-- Hunter: Animal Handler - Passive: 87325
+		-- 4.0.6: Attack Power increased by 25%.
+		["MOD_AP"] = {
+			-- Animal Handler
+			{
+				["value"] = 0.25,
+				["known"] = 87325, -- ["Animal Handler"]
+			},
+		},
+		-- Hunter: Hunter vs. Wild - Rank 3/3 - 3,1
+		-- 4.0.1: Increases your total Stamina by 5/10/15%.
+		["MOD_STA"] = {
+			-- Hunter vs. Wild
+			{
+				["tab"] = 3,
+				["num"] = 1,
+				["rank"] = {
+					0.05, 0.1, 0.15,
+				},
+			},
+		},
+		-- Hunter: Mail Specialization - Passive: 86528
+		-- 4.0.1: Increases your Agility by 5% while wearing Mail in all armor slots
+		["MOD_AGI"] = {
+			-- Mail Specialization
+			{
+				["value"] = 0.05,
+				["known"] = 86528,
+				["armorspec"] = {
+					[0] = true,
+					[1] = true,
+					[2] = true,
+					[3] = true,
+				},
+			},
+			-- Hunter: Into the Wilderness - Passive: 84729
+			-- 4.0.1: Agility increased by 10%.
+			{
+				["value"] = 0.1,
+				["known"] = 84729, -- ["Into the Wilderness"]
+			},
+			-- Hunter: Hunting Party - Rank 1/1 - 3,17
+			-- 4.0.6: Increases your total Agility by an additional 2%
+			{
+				["tab"] = 3,
+				["num"] = 17,
+				["value"] = 0.02,
+			},
+		},
+	}
+elseif addon.class == "MAGE" then
+	StatLogic.StatModTable["MAGE"] = {
+		-- Mage: Wizardry - Passive: 89744
+		-- 4.0.1: Increases your Intellect by 5%
+		["MOD_INT"] = {
+			-- Wizardry
+			{
+				["value"] = 0.05,
+				["known"] = 89744, -- ["Wizardry"]
+			},
+		},
+		-- Improved Mana Gem - Rank 2/2 - 1,19 - Buff: 83098
+		-- 4.0.1: Increases your spell power by 1/2% of your maximum mana
+		["ADD_SPELL_DMG_MOD_MANA"] = {
+			{
+				["tab"] = 1,
+				["num"] = 19,
+				["rank"] = {
+					0.01, 0.02,
+				},
+				["buff"] = 83098,        -- ["Improved Mana Gem"],
+			},
+		},
+		-- Improved Mana Gem - Rank 2/2 - 1,19 - Buff: 83098
+		-- 4.0.1: Increases your spell power by 1/2% of your maximum mana
+		["ADD_HEAL_MOD_MANA"] = {
+			{
+				["tab"] = 1,
+				["num"] = 19,
+				["rank"] = {
+					0.01, 0.02,
+				},
+				["buff"] = 83098,        -- ["Improved Mana Gem"],
+			},
+		},
+		-- Mage: Mage Armor - Buff: 6117
+		-- 4.0.1: Regenerate 3% of your maximum mana every 5 sec.
+		-- Mage: Glyph of Frost Armor - Glyph: 98397 - Buff: 7302
+		-- 4.1.0: Your Frost Armor also causes you to regenerate 2% of your maximum mana every 5 sec.
+		["ADD_MANA_REG_MOD_MANA"] = {
+			-- Mage Armor
+			{
+				["value"] = 0.03,
+				["buff"] = 6117,        -- ["Mage Armor"],
+			},
+			-- Glyph of Frost Armor
+			{
+				["value"] = 0.02,
+				["buff"] = 7302,        -- ["Frost Armor"],
+				["glyph"] = 98397,
+			},
+		},
+	}
+elseif addon.class == "PALADIN" then
+	StatLogic.StatModTable["PALADIN"] = {
+		-- Healers: Meditation
+		-- 4.0.1: Allows 50% of your mana regeneration from Spirit to continue while in combat.
+		["ADD_MANA_REG_MOD_NORMAL_MANA_REG"] = {
+			-- Meditation
+			{
+				["value"] = 0.50,
+				["known"] = 95859,
+			},
+		},
+		-- Paladin: Enlightened Judgements - Rank 2/2 - 1,11
+		-- 4.0.1: Grants hit rating equal to 50/100% of any Spirit gained from items or effects
+		["ADD_SPELL_HIT_RATING_MOD_SPI"] = {
+			-- Enlightened Judgements
+			{
+				["spellid"] = 53557,
+				["tab"] = 1,
+				["num"] = 11,
+				["rank"] = {
+					0.5, 1,
+				},
+			},
+		},
+		-- Tanks: Forceful Deflection - Passive
+		-- 4.2.0: Increases your Parry Rating by 27% of your total Strength.
+		["ADD_PARRY_RATING_MOD_STR"] = {
+			{
+				["spellid"] = 49410,
+				["value"] = 0.27,
+			},
+		},
+		-- Paladin: Sheath of Light - Passive: 53503
+		-- 4.0.1: Increases your spell power by an amount equal to 30% of your attack power
+		["ADD_SPELL_DMG_MOD_AP"] = {
+			-- Sheath of Light
+			{
+				["value"] = 0.3,
+				["known"] = 53503,
+			},
+		},
+		-- Paladin: Sheath of Light - Passive: 53503
+		-- 4.0.1: Increases your spell power by an amount equal to 30% of your attack power
+		["ADD_HEAL_MOD_AP"] = {
+			-- Sheath of Light
+			{
+				["value"] = 0.3,
+				["known"] = 53503,
+			},
+		},
+		-- Paladin: Touched by the Light - Passive: 53592
+		-- 4.0.1: Increases your total Stamina by 15%, increases your spell hit by 6%, and increases your spell power by an amount equal to 60% of your Strength.
+		["ADD_SPELL_DMG_MOD_STR"] = {
+			-- Touched by the Light
+			{
+				["value"] = 0.6,
+				["known"] = 53592,
+			},
+		},
+		-- Paladin: Touched by the Light - Passive: 53592
+		-- 4.0.1: Increases your total Stamina by 15%, increases your spell hit by 6%, and increases your spell power by an amount equal to 60% of your Strength.
+		["ADD_HEAL_MOD_STR"] = {
+			-- Touched by the Light
+			{
+				["value"] = 0.6,
+				["known"] = 53592,
+			},
+		},
+		-- Paladin: Toughness - Rank 3/3 - 2,5
+		-- 4.0.1: Increases your armor value from items by 3/6/10%.
+		["MOD_ARMOR"] = {
+			{
+				["tab"] = 2,
+				["num"] = 5,
+				["rank"] = {
+					0.03, 0.06, 0.1,
+				},
+			},
+		},
+		-- Paladin: Plate Specialization - Passive: 86525
+		-- 4.0.1: Increases your primary attribute by 5% while wearing Plate in all armor slots. Holy specialization grants Intellect, Protection specialization grants Stamina, and Retribution specialization grants Strength.
+		-- Paladin: Touched by the Light - Passive: 53592
+		-- 4.0.1: Increases your total Stamina by 15%, increases your spell hit by 6%, and increases your spell power by an amount equal to 60% of your Strength.
+		["MOD_STA"] = {
+			-- Plate Specialization
+			{
+				["value"] = 0.05,
+				["known"] = 86525,
+				["armorspec"] = {
+					[2] = true,
+				},
+			},
+			-- Touched by the Light
+			{
+				["value"] = 0.15,
+				["known"] = 53592,
+			},
+		},
+		-- Paladin: Plate Specialization - Passive: 86525
+		-- 4.0.1: Increases your primary attribute by 5% while wearing Plate in all armor slots. Holy specialization grants Intellect, Protection specialization grants Stamina, and Retribution specialization grants Strength.
+		["MOD_STR"] = {
+			-- Plate Specialization
+			{
+				["value"] = 0.05,
+				["known"] = 86525,
+				["armorspec"] = {
+					[3] = true,
+				},
+			},
+		},
+		-- Paladin: Plate Specialization - Passive: 86525
+		-- 4.0.1: Increases your primary attribute by 5% while wearing Plate in all armor slots. Holy specialization grants Intellect, Protection specialization grants Stamina, and Retribution specialization grants Strength.
+		["MOD_INT"] = {
+			-- Plate Specialization
+			{
+				["value"] = 0.05,
+				["known"] = 86525,
+				["armorspec"] = {
+					[1] = true,
+				},
+			},
+		},
+	}
+elseif addon.class == "PRIEST" then
+	StatLogic.StatModTable["PRIEST"] = {
+		-- Healers: Meditation
+		-- 4.0.1: Allows 50% of your mana regeneration from Spirit to continue while in combat.
+		-- Priest: Holy Concentration - Rank 2/2 - 2,8
+		-- 4.0.1: Increases the amount of mana regeneration from Spirit while in combat by an additional 10/20%.
+		-- 4.0.6: Increases the amount of mana regeneration from Spirit while in combat by an additional 15/30%.
+		["ADD_MANA_REG_MOD_NORMAL_MANA_REG"] = {
+			-- Meditation (Discipline)
+			{
+				["value"] = 0.5,
+				["known"] = 95860,
+			},
+			-- Meditation (Holy)
+			{
+				["value"] = 0.5,
+				["known"] = 95861,
+			},
+			-- Holy Concentration
+			{
+				["spellid"] = 34859,
+				["tab"] = 2,
+				["num"] = 8,
+				["rank"] = {
+					0.15, 0.30,
+				},
+			},
+		},
+		-- Priest: Twisted Faith - Rank 2/2 - 3,7
+		-- 4.0.1: Grants you spell hit rating equal to 50/100% of any Spirit gained from items or effects.
+		["ADD_SPELL_HIT_RATING_MOD_SPI"] = {
+			-- Twisted Faith
+			{
+				["spellid"] = 47577,
+				["tab"] = 3,
+				["num"] = 7,
+				["rank"] = {
+					0.5, 1,
+				},
+			},
+		},
+		-- Priest: Inner Fire - Buff: 588
+		-- 4.0.1: Increases armor from items by 60% and spell power by 1080.
+		-- Priest: Glyph of Inner Fire - Glyph: 55686 - Buff: 588
+		-- 4.0.1: Increases the armor from your Inner Fire spell by 50%.
+		["MOD_ARMOR"] = {
+			-- Inner Fire
+			{
+				["value"] = 0.6,
+				["buff"] = 588,        -- ["Inner Fire"],
+			},
+			-- Glyph of Inner Fire
+			{
+				["rank"] = {
+					0.1875, -- 1.9/1.6=1.1875
+				},
+				["buff"] = 588,        -- ["Inner Fire"],
+				["glyph"] = 55686,        -- ["Glyph of Inner Fire"],
+			},
+		},
+		-- Priest: Enlightenment - Passive: 84732
+		-- 4.0.1: Intellect increased by 15%.
+		-- Priest: Mysticism - Passive: 89745
+		-- 4.0.1: Increases your Intellect by 5%
+		["MOD_INT"] = {
+			-- Enlightenment
+			{
+				["value"] = 0.15,
+				["known"] = 84732,
+			},
+			-- Mysticism
+			{
+				["value"] = 0.05,
+				["known"] = 89745,
+			},
+		},
+	}
+elseif addon.class == "ROGUE" then
+	StatLogic.StatModTable["ROGUE"] = {
+		-- Rogue: Savage Combat - Rank 2/2 - 2,16
+		-- 4.2.0: Increases your total attack power by 3/6%.
+		-- Rogue: Vitality - Passive: 61329
+		-- 4.2.0: Increases your Attack Power by 30%.
+		["MOD_AP"] = {
+			-- Savage Combat
+			{
+				["tab"] = 2,
+				["num"] = 16,
+				["rank"] = {
+					0.03, 0.06,
+				},
+			},
+			-- Vitality
+			{
+				["value"] = 0.3,
+				["known"] = 61329,
+			},
+		},
+		-- Rogue: Reinforced Leather - Rank 2/2 - 2,10
+		-- 4.0.1: Increases your armor contribution from cloth and leather items by 25/50%.
+		["MOD_ARMOR"] = {
+			-- Reinforced Leather
+			{
+				["tab"] = 2,
+				["num"] = 10,
+				["rank"] = {
+					0.25, 0.5,
+				},
+			},
+		},
+		-- Rogue: Lightning Reflexes - Rank 3/3 - 2,8
+		-- 4.0.1: Increases your chance to dodge enemy attacks by 3/6/9%
+		-- Rogue: Evasion - Buff: 5277
+		-- 4.0.1: Dodge chance increased by 50% and chance ranged attacks hit you reduced by 25%.
+		-- Rogue: Ghostly Strike - Buff: 31022
+		-- 4.0.1: Dodge chance increased by 15%.
+		["ADD_DODGE"] = {
+			-- Lightning Reflexes
+			{
+				["tab"] = 2,
+				["num"] = 8,
+				["rank"] = {
+					3, 6, 9,
+				},
+			},
+			-- Evasion
+			{
+				["value"] = 50,
+				["buff"] = 5277,        -- ["Evasion"],
+			},
+			-- Ghostly Strike
+			{
+				["value"] = 15,
+				["buff"] = 31022,        -- ["Ghostly Strike"],
+			},
+		},
+		-- Rogue: Leather Specialization - Passive: 86531
+		-- 4.0.1: Increases your Agility by 5% while wearing Leather in all armor slots.
+		-- Rogue: Sinister Calling - Passive: 31220
+		-- 4.0.6: Increases your total Agility by 30%
+		["MOD_AGI"] = {
+			-- Leather Specialization
+			{
+				["value"] = 0.05,
+				["known"] = 86531,
+				["armorspec"] = {
+					[0] = true,
+					[1] = true,
+					[2] = true,
+					[3] = true,
+				},
+			},
+			-- Sinister Calling
+			{
+				["value"] = 0.3,
+				["known"] = 31220,
+			},
+		},
+	}
+elseif addon.class == "SHAMAN" then
+	StatLogic.StatModTable["SHAMAN"] = {
+		-- Druid: Elemental Precision - Rank 3/3 - 1,7
+		-- 4.0.1: Grants you spell hit rating equal to 33/66/100% of any Spirit gained from items or effects.
+		["ADD_SPELL_HIT_RATING_MOD_SPI"] = {
+			{
+				["spellid"] = 30674,
+				["tab"] = 1,
+				["num"] = 7,
+				["rank"] = {
+					0.33, 0.66, 1,
+				},
+			},
+		},
+		-- Healers: Meditation
+		-- 4.0.1: Allows 50% of your mana regeneration from Spirit to continue while in combat.
+		["ADD_MANA_REG_MOD_NORMAL_MANA_REG"] = {
+			{
+				["value"] = 0.50,
+				["known"] = 95862,
+			},
+		},
+		-- Shaman: Mental Quickness - Passive: 30814
+		-- 4.0.1: Increases your spell power by an amount equal to 50% of your attack power
+		["ADD_SPELL_DMG_MOD_AP"] = {
+			-- Mental Quickness
+			{
+				["value"] = 0.5,
+				["known"] = 30814,
+			},
+		},
+		-- Shaman: Mental Quickness - Passive: 30814
+		-- 4.0.1: Increases your spell power by an amount equal to 50% of your attack power
+		["ADD_HEAL_MOD_AP"] = {
+			-- Mental Quickness
+			{
+				["value"] = 0.5,
+				["known"] = 30814,
+			},
+		},
+		-- Shaman: Toughness - Rank 3/3 - 2,8
+		-- 4.0.1: Increases your Stamina by 3/7/10%
+		["MOD_STA"] = {
+			{
+				["tab"] = 2,
+				["num"] = 8,
+				["rank"] = {
+					0.03, 0.07, 0.1,
+				},
+			},
+		},
+		-- Shaman: Mail Specialization - Passive: 86529
+		-- 4.0.1: Increases your primary attribute by 5% while wearing Mail in all armor slots. Elemental specialization grants Intellect, Enhancement specialization grants Agility, and Restoration specialization grants Intellect.
+		["MOD_AGI"] = {
+			-- Mail Specialization
+			{
+				["value"] = 0.05,
+				["known"] = 86529,
+				["armorspec"] = {
+					[2] = true,
+				},
+			},
+		},
+		-- Shaman: Mail Specialization - Passive: 86529
+		-- 4.0.1: Increases your primary attribute by 5% while wearing Mail in all armor slots. Elemental specialization grants Intellect, Enhancement specialization grants Agility, and Restoration specialization grants Intellect.
+		["MOD_INT"] = {
+			-- Mail Specialization
+			{
+				["value"] = 0.05,
+				["known"] = 86529,
+				["armorspec"] = {
+					[1] = true,
+				},
+			},
+			-- Mail Specialization
+			{
+				["value"] = 0.05,
+				["known"] = 86529,
+				["armorspec"] = {
+					[3] = true,
+				},
+			},
+		},
+	}
+elseif addon.class == "WARLOCK" then
+	StatLogic.StatModTable["WARLOCK"] = {
+		-- Warlock: Metamorphosis - Buff: 47241
+		-- 4.0.1: Armor contribution from items increased by 600%. Chance to be critically hit by melee reduced by 6%.
+		["MOD_ARMOR"] = {
+			-- Metamorphosis
+			{
+				["value"] = 6,
+				["buff"] = 47241,
+			},
+		},
+		-- 3.3.0 Imp stam total 233: pet base 118, player base 90, pet sta from player sta 0.75, pet kings 1.1, fel vitality 1.15
+		-- /dump floor((118+floor(90*0.75))*1.1)*1.05 = 233.45 match
+		-- /dump (118+floor(90*0.75))*1.1*1.05 = 224.025 wrong
+		["ADD_PET_STA_MOD_STA"] = {
+			-- Base
+			{
+				["value"] = 0.65,
+				["pet"] = true,
+			},
+			-- BoK, MotW, EotSS
+			{
+				["value"] = 0.05,
+				["condition"] = "UnitBuff('pet', GetSpellInfo(20217)) or UnitBuff('pet', GetSpellInfo(79061)) or UnitBuff('pet', GetSpellInfo(90363))",
+			},
+		},
+		["ADD_PET_INT_MOD_INT"] = {
+			-- Base
+			{
+				["value"] = 0.5,
+				["pet"] = true,
+			},
+			-- BoK, MotW, EotSS
+			{
+				["value"] = 0.05,
+				["condition"] = "UnitBuff('pet', GetSpellInfo(20217)) or UnitBuff('pet', GetSpellInfo(79061)) or UnitBuff('pet', GetSpellInfo(90363))",
+			},
+		},
+		-- Warlock: Demonic Embrace - Rank 3/3 - 2,1
+		--          Increases your total Stamina by 4/7/10%.
+		["MOD_STA"] = {
+			{
+				["tab"] = 2,
+				["num"] = 1,
+				["rank"] = {
+					0.04, 0.07, 0.1,
+				},
+			},
+		},
+		-- Warlock: Nethermancy - Passive: 86091
+		-- 4.0.1: Increases your Intellect by 5%
+		["MOD_INT"] = {
+			-- Nethermancy
+			{
+				["value"] = 0.05,
+				["known"] = 86091,
+			},
+		},
+	}
+elseif addon.class == "WARRIOR" then
+	StatLogic.StatModTable["WARRIOR"] = {
+		-- Tanks: Forceful Deflection - Passive
+		-- 4.2.0: Increases your Parry Rating by 27% of your total Strength.
+		["ADD_PARRY_RATING_MOD_STR"] = {
+			{
+				["spellid"] = 49410,
+				["value"] = 0.27,
+			},
+		},
+		-- Warrior: Last Stand - Buff: 12976
+		-- 4.0.1: Health increased by 30% of maximum.
+		["MOD_HEALTH"] = {
+			-- Last Stand
+			{
+				["value"] = 0.3,
+				["buff"] = 12975,        -- ["Last Stand"],
+			},
+		},
+		-- Warrior: Toughness - Rank 3/3 - 3,2
+		-- 4.0.1: Increases your armor value from items by 3/6/10%.
+		["MOD_ARMOR"] = {
+			-- Toughness
+			{
+				["tab"] = 3,
+				["num"] = 2,
+				["rank"] = {
+					0.03, 0.06, 0.1,
+				},
+			},
+		},
+		-- Warrior: Plate Specialization - Passive: 86526
+		-- 4.0.1: Increases your primary attribute by 5% while wearing Plate in all armor slots. Arms specialization grants Strength, Fury specialization grants Strength, and Protection specialization grants Stamina.
+		-- Warrior: Sentinel - Passive: 29144
+		-- 4.0.1: Increases your total Stamina by 15%
+		["MOD_STA"] = {
+			-- Plate Specialization
+			{
+				["value"] = 0.05,
+				["known"] = 86526,
+				["armorspec"] = {
+					[3] = true,
+				},
+			},
+			-- Sentinel
+			{
+				["value"] = 0.15,
+				["known"] = 29144,
+			},
+		},
+		-- Warrior: Plate Specialization - Passive: 86526
+		-- 4.0.1: Increases your primary attribute by 5% while wearing Plate in all armor slots. Arms specialization grants Strength, Fury specialization grants Strength, and Protection specialization grants Stamina.
+		["MOD_STR"] = {
+			-- Plate Specialization
+			{
+				["value"] = 0.05,
+				["known"] = 86526,
+				["armorspec"] = {
+					[1] = true,
+					[2] = true,
+				},
+			},
+		},
+	}
+end
+
+if addon.playerRace == "Gnome" then
+	StatLogic.StatModTable["Gnome"] = {
+		["MOD_MANA"] = {
+			-- Gnome: Expansive Mind - Racial
+			-- 4.0.1: Mana pool increased by 5%.
+			{
+				["value"] = 0.05,
+			},
+		}
+	}
+elseif addon.playerRace == "Human" then
+	StatLogic.StatModTable["Human"] = {
+		["MOD_SPI"] = {
+			-- Human: The Human Spirit - Racial
+			-- 4.0.1: Spirit increased by 3%.
+			{
+				["value"] = 0.03,
+			},
+		}
+	}
+end
+
+StatLogic.StatModTable["ALL"] = {
+	["ADD_MANA_REG_MOD_MANA"] = {
+		-- Replenishment - Buff
+		-- 4.0.1: Replenishes 1% of maximum mana per 10 sec.
+		{
+			["value"] = 0.005,
+			["buff"] = 57669,
+		},
+	},
+	["MOD_SPELL_DMG"] = {
+		-- Warlock: Demonic Pact - Buff: 53646
+		-- 4.0.1: Spell Power increased by 10%.
+		{
+			["value"] = 0.1,
+			["buff"] = 53646,
+			["group"] = BuffGroup.MOD_SP,
+		},
+		-- Shaman: Totemic Wrath - Buff: 77747
+		-- 4.0.1: Spell Power increased by 10%.
+		{
+			["value"] = 0.1,
+			["buff"] = 77747,
+			["group"] = BuffGroup.MOD_SP,
+		},
+		-- Shaman: Flametongue Totem - Buff: 52109
+		-- 4.0.1: Spell Power increased by 6%.
+		{
+			["value"] = 0.06,
+			["buff"] = 52109,
+			["group"] = BuffGroup.MOD_SP,
+		},
+		-- Mage: Arcane Brilliance - Buff: 79058
+		-- 4.0.1: Spell Power increased by 6%.
+		{
+			["value"] = 0.06,
+			["buff"] = 79058,
+			["group"] = BuffGroup.MOD_SP,
+		},
+		-- Mage: Dalaran Brilliance - Buff: 61316
+		-- 4.0.1: Spell Power increased by 6%.
+		{
+			["value"] = 0.06,
+			["buff"] = 61316,
+			["group"] = BuffGroup.MOD_SP,
+		},
+	},
+	["MOD_HEAL"] = {
+		-- Warlock: Demonic Pact - Buff: 53646
+		-- 4.0.1: Spell Power increased by 10%.
+		{
+			["value"] = 0.1,
+			["buff"] = 53646,
+			["group"] = BuffGroup.MOD_SP,
+		},
+		-- Shaman: Totemic Wrath - Buff: 77747
+		-- 4.0.1: Spell Power increased by 10%.
+		{
+			["value"] = 0.1,
+			["buff"] = 77747,
+			["group"] = BuffGroup.MOD_SP,
+		},
+		-- Shaman: Flametongue Totem - Buff: 52109
+		-- 4.0.1: Spell Power increased by 6%.
+		{
+			["value"] = 0.06,
+			["buff"] = 52109,
+			["group"] = BuffGroup.MOD_SP,
+		},
+		-- Mage: Arcane Brilliance - Buff: 79058
+		-- 4.0.1: Spell Power increased by 6%.
+		{
+			["value"] = 0.06,
+			["buff"] = 79058,
+			["group"] = BuffGroup.MOD_SP,
+		},
+		-- Mage: Dalaran Brilliance - Buff: 61316
+		-- 4.0.1: Spell Power increased by 6%.
+		{
+			["value"] = 0.06,
+			["buff"] = 61316,
+			["group"] = BuffGroup.MOD_SP,
+		},
+	},
+	["ADD_BLOCK_REDUCTION"] = {
+		-- MetaGem: Eternal Earthsiege Diamond - Meta: 41396
+		-- 4.0.1: +1% Shield Block Value
+		{
+			["value"] = 0.01,
+			["meta"] = 41396,
+		},
+		-- MetaGem: Eternal Earthstorm Diamond - Meta: 35501
+		-- 4.0.1: +1% Shield Block Value
+		{
+			["value"] = 0.01,
+			["meta"] = 35501,
+		},
+		-- MetaGem: Eternal Shadowspirit Diamond - Meta: 52293
+		-- 4.0.1: +5% Shield Block Value
+		{
+			["value"] = 0.05,
+			["meta"] = 52293,
+		},
+	},
+	["MOD_ARMOR"] = {
+		-- MetaGem: Austere Earthsiege Diamond - Meta: 41380
+		-- 4.0.1: 2% Increased Armor Value from Items
+		{
+			["value"] = 0.02,
+			["meta"] = 41380,
+		},
+		-- MetaGem: Austere Shadowspirit Diamond - Meta: 52294
+		-- 4.0.1: 2% Increased Armor Value from Items
+		{
+			["value"] = 0.02,
+			["meta"] = 52294,
+		},
+	},
+	["MOD_AP"] = {
+		-- Hunter: Trueshot Aura - Buff: 19506
+		-- 4.0.1: Attack power increased by 10%.
+		{
+			["value"] = 0.1,
+			["buff"] = 19506,
+			["group"] = BuffGroup.MOD_AP,
+		},
+		-- Death Knight: Abomination's Might - Buff: 55972
+		-- 4.0.1: Attack power increased by 5/10%.
+		{
+			["rank"] = {
+				0.05, 0.1,
+			},
+			["buff"] = 55972,
+			["group"] = BuffGroup.MOD_AP,
+		},
+		-- Shaman: Unleashed Rage - Buff: 30809
+		-- 4.0.1: Melee attack power increased by 4/7/10%.
+		{
+			["rank"] = {
+				0.04, 0.07, 0.1,
+			},
+			["buff"] = 30809,
+			["group"] = BuffGroup.MOD_AP,
+		},
+		-- Paladin: Blessing of Might - Buff: 19740
+		-- 4.0.1: Increasing attack power by 10%.
+		{
+			["value"] = 0.1,
+			["buff"] = 19740,
+			["group"] = BuffGroup.MOD_AP,
+		},
+	},
+	["MOD_MANA"] = {
+		-- MetaGem: Beaming Earthsiege Diamond - Meta: 41389
+		-- 4.0.1: +2% Mana
+		{
+			["value"] = 0.02,
+			["meta"] = 41389,
+		},
+		-- MetaGem: Ember Skyfire Diamond - Meta: 35503
+		-- 4.0.1: +2% Maximum Mana
+		{
+			["value"] = 0.02,
+			["meta"] = 35503,
+		},
+		-- MetaGem: Ember Skyflare Diamond - Meta: 41333
+		-- 4.0.1: +2% Maximum Mana
+		{
+			["value"] = 0.02,
+			["meta"] = 41333,
+		},
+		-- MetaGem: Ember Shadowspirit Diamond - Meta: 52296
+		-- 4.0.1: +2% Maximum Mana
+		{
+			["value"] = 0.02,
+			["meta"] = 52296,
+		},
+	},
+	["MOD_STR"] = {
+		-- Paladin: Blessing of Kings - Buff: 20217
+		-- 4.0.1: Strength, Agility, Stamina, and Intellect increased by 5%.
+		{
+			["value"] = 0.05,
+			["buff"] = 20217,
+			["group"] = BuffGroup.MOD_STATS,
+		},
+		-- Druid: Mark of the Wild - Buff: 79061
+		-- 4.0.1: Strength, Agility, Stamina, and Intellect increased by 5%.
+		{
+			["value"] = 0.05,
+			["buff"] = 79061,
+			["group"] = BuffGroup.MOD_STATS,
+		},
+		-- Hunter: Embrace of the Shale Spider - Buff: 90363
+		-- 4.0.1: Strength, Agility, Stamina, and Intellect increased by 5%.
+		{
+			["value"] = 0.05,
+			["buff"] = 90363,
+			["group"] = BuffGroup.MOD_STATS,
+		},
+		-- Leatherworking: Blessing of Forgotten Kings - Buff: 69378
+		-- 4.0.1: Strength, Agility, Stamina, and Intellect increased by 4%.
+		{
+			["value"] = 0.04,
+			["buff"] = 69378,
+			["group"] = BuffGroup.MOD_STATS,
+		},
+	},
+	["MOD_AGI"] = {
+		-- Paladin: Blessing of Kings - Buff: 20217
+		-- 4.0.1: Strength, Agility, Stamina, and Intellect increased by 5%.
+		{
+			["value"] = 0.05,
+			["buff"] = 20217,
+			["group"] = BuffGroup.MOD_STATS,
+		},
+		-- Druid: Mark of the Wild - Buff: 79061
+		-- 4.0.1: Strength, Agility, Stamina, and Intellect increased by 5%.
+		{
+			["value"] = 0.05,
+			["buff"] = 79061,
+			["group"] = BuffGroup.MOD_STATS,
+		},
+		-- Hunter: Embrace of the Shale Spider - Buff: 90363
+		-- 4.0.1: Strength, Agility, Stamina, and Intellect increased by 5%.
+		{
+			["value"] = 0.05,
+			["buff"] = 90363,
+			["group"] = BuffGroup.MOD_STATS,
+		},
+		-- Leatherworking: Blessing of Forgotten Kings - Buff: 69378
+		-- 4.0.1: Strength, Agility, Stamina, and Intellect increased by 4%.
+		{
+			["value"] = 0.04,
+			["buff"] = 69378,
+			["group"] = BuffGroup.MOD_STATS,
+		},
+	},
+	["MOD_STA"] = {
+		-- Paladin: Blessing of Kings - Buff: 20217
+		-- 4.0.1: Strength, Agility, Stamina, and Intellect increased by 5%.
+		{
+			["value"] = 0.05,
+			["buff"] = 20217,
+			["group"] = BuffGroup.MOD_STATS,
+		},
+		-- Druid: Mark of the Wild - Buff: 79061
+		-- 4.0.1: Strength, Agility, Stamina, and Intellect increased by 5%.
+		{
+			["value"] = 0.05,
+			["buff"] = 79061,
+			["group"] = BuffGroup.MOD_STATS,
+		},
+		-- Hunter: Embrace of the Shale Spider - Buff: 90363
+		-- 4.0.1: Strength, Agility, Stamina, and Intellect increased by 5%.
+		{
+			["value"] = 0.05,
+			["buff"] = 90363,
+			["group"] = BuffGroup.MOD_STATS,
+		},
+		-- Leatherworking: Blessing of Forgotten Kings - Buff: 69378
+		-- 4.0.1: Strength, Agility, Stamina, and Intellect increased by 4%.
+		{
+			["value"] = 0.04,
+			["buff"] = 69378,
+			["group"] = BuffGroup.MOD_STATS,
+		},
+	},
+	--[[
+	Up to level 80 1 stamina grants 10 health. But levels 81..85 that value increases.
+	It could be implemented as a GetHealthPerStamina(level) function (which i started to do),
+		but everyone would have to change their code to stop using the hard-coded "10 health per stamina".
+		Instead we can code it as a set of conditional percentage modifiers for all classes in the "MOD_HEALTH" group
+		Level    HP/sta    % increase
+		=====    =======    ========
+		80        10.0    0.00   (confirmed 10.0 12/12/2010, 4.0.3)
+		81        10.8    0.08
+		82        11.6    0.12   (confirmed 11.6 12/11/2010, 4.0.3)
+		83        12.4    0.24   (confirmed 12.4 12/12/2010, 4.0.3)
+		84        13.2    0.32
+		85        14.0    0.40
+
+		Question for Whitefang: Could the modifier be written as the following?:
+		{
+			["rank"] = { 0.08 * (UnitLevel('player') - 80) },
+			["condition"] = "UnitLevel('player') >= 81"
+		}
+
+		It would be future proofed, but i don't know if it's right to code the rank based on a formula
+		(i.e. what happens if they ding?)
+		--]]
+		["MOD_HEALTH"] = {
+			-- Level 81..85
+			{
+				["value"] = 0.08,
+				["condition"] = "UnitLevel('player') == 81",
+			},
+			{
+				["value"] = 0.12,
+				["condition"] = "UnitLevel('player') == 82",
+			},
+			{
+				["value"] = 0.24,
+				["condition"] = "UnitLevel('player') == 83",
+			},
+			{
+				["value"] = 0.32,
+				["condition"] = "UnitLevel('player') == 84",
+			},
+			{
+				["value"] = 0.40,
+				["condition"] = "UnitLevel('player') == 85",
+			},
+		},
+
+		["MOD_INT"] = {
+			-- Paladin: Blessing of Kings - Buff: 20217
+			-- 4.0.1: Strength, Agility, Stamina, and Intellect increased by 5%.
+			{
+				["value"] = 0.05,
+				["buff"] = 20217,
+				["group"] = BuffGroup.MOD_STATS,
+			},
+			-- Druid: Mark of the Wild - Buff: 79061
+			-- 4.0.1: Strength, Agility, Stamina, and Intellect increased by 5%.
+			{
+				["value"] = 0.05,
+				["buff"] = 79061,
+				["group"] = BuffGroup.MOD_STATS,
+			},
+			-- Hunter: Embrace of the Shale Spider - Buff: 90363
+			-- 4.0.1: Strength, Agility, Stamina, and Intellect increased by 5%.
+			{
+				["value"] = 0.05,
+				["buff"] = 90363,
+				["group"] = BuffGroup.MOD_STATS,
+			},
+			-- Leatherworking: Blessing of Forgotten Kings - Buff: 69378
+			-- 4.0.1: Strength, Agility, Stamina, and Intellect increased by 4%.
+			{
+				["value"] = 0.04,
+				["buff"] = 69378,
+				["group"] = BuffGroup.MOD_STATS,
+			},
+		},
+		["MOD_SPI"] = {
+			-- Shaman: Mana Tide - Buff: 16191
+			-- 4.0.1: Spirit increased by 350%.
+			{
+				["value"] = 3.5,
+				["buff"] = 16191,
+			},
+		},
+	}
