@@ -436,7 +436,6 @@ L["StatIDLookup"] = {
 	["遠程攻擊加速等級"] = {"RANGED_HASTE_RATING"},
 	["提高遠程攻擊加速等級"] = {"RANGED_HASTE_RATING"},
 
-
 	["使你的熟練等級提高"] = {"EXPERTISE_RATING"},
 	["精准等级"] = {"EXPERTISE_RATING",},
 	["提高精准等级"] = {"EXPERTISE_RATING",},

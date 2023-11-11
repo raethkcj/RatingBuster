@@ -487,7 +487,6 @@ L["Blue Socket"] = EMPTY_SOCKET_BLUE
 -- /rb sum gem meta
 L["Meta Socket"] = EMPTY_SOCKET_META
 
-
 -----------------------
 -- Item Level and ID --
 -----------------------

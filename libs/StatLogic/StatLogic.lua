@@ -294,7 +294,6 @@ local function copyTable(to, from)
 	return to
 end
 
-
 local function log(...)
 	if DEBUG == true then
 		print(...)
@@ -1138,7 +1137,6 @@ do
 	end
 end
 
-
 --=================--
 -- Stat Conversion --
 --=================--
@@ -1314,7 +1312,6 @@ function StatLogic:GetEffectFromRating(rating, id, level)
 	end
 end
 
-
 --[[---------------------------------
 {	:GetAPPerStr([class])
 -------------------------------------
@@ -1342,7 +1339,6 @@ function StatLogic:GetAPPerStr(class)
 	class = self:ValidateClass(class)
 	return addon.APPerStr[class], "AP"
 end
-
 
 --[[---------------------------------
 :GetAPFromStr(str, [class])
@@ -1374,7 +1370,6 @@ function StatLogic:GetAPFromStr(str, class)
 	-- Calculate
 	return str * addon.APPerStr[class], "AP"
 end
-
 
 --[[---------------------------------
 {	:GetBlockValuePerStr([class])
@@ -1411,7 +1406,6 @@ function StatLogic:GetBlockValuePerStr(class)
 	return blockValue, "BLOCK_VALUE"
 end
 
-
 --[[---------------------------------
 {	:GetBlockValueFromStr(str, [class])
 -------------------------------------
@@ -1445,7 +1439,6 @@ function StatLogic:GetBlockValueFromStr(str, class)
 	-- Calculate
 	return str * blockValue, "BLOCK_VALUE"
 end
-
 
 --[[---------------------------------
 {	:GetAPPerAgi([class])
@@ -1482,7 +1475,6 @@ function StatLogic:GetAPPerAgi(class)
 	end
 end
 
-
 --[[---------------------------------
 {	:GetAPFromAgi(agi, [class])
 -------------------------------------
@@ -1517,7 +1509,6 @@ function StatLogic:GetAPFromAgi(agi, class)
 	return agi * addon.APPerAgi[class], "AP"
 end
 
-
 --[[---------------------------------
 {	:GetRAPPerAgi([class])
 -------------------------------------
@@ -1546,7 +1537,6 @@ function StatLogic:GetRAPPerAgi(class)
 	class = self:ValidateClass(class)
 	return addon.RAPPerAgi[class], "RANGED_AP"
 end
-
 
 --[[---------------------------------
 {	:GetRAPFromAgi(agi, [class])
@@ -1582,7 +1572,6 @@ function StatLogic:GetRAPFromAgi(agi, class)
 	return agi * addon.RAPPerAgi[class], "RANGED_AP"
 end
 
-
 --[[---------------------------------
 {	:GetBaseDodge([class])
 -------------------------------------
@@ -1610,7 +1599,6 @@ function StatLogic:GetBaseDodge(class)
 	class = self:ValidateClass(class)
 	return addon.BaseDodge[class], StatLogic.Stats.Dodge
 end
-
 
 --[[---------------------------------
 {	:GetDodgePerAgi()
@@ -1646,7 +1634,6 @@ function StatLogic:GetDodgePerAgi()
 	return (dodgeFromAgi - addon.BaseDodge[addon.class]) / agility, StatLogic.Stats.Dodge
 end
 
-
 --[[---------------------------------
 {	:GetDodgeFromAgi(agi)
 -------------------------------------
@@ -1674,7 +1661,6 @@ function StatLogic:GetDodgeFromAgi(agi)
 	-- Calculate
 	return agi * self:GetDodgePerAgi(), StatLogic.Stats.Dodge
 end
-
 
 --[[---------------------------------
 {	:GetCritFromAgi(agi, [class], [level])
@@ -1739,7 +1725,6 @@ function StatLogic:GetCritFromAgi(agi, class, level)
 	-- Calculate
 	return agi * self:GetCritPerAgi(class, level), StatLogic.Stats.MeleeCrit
 end
-
 
 --[[---------------------------------
 {	:GetSpellCritFromInt(int, [class], [level])
@@ -1840,7 +1825,6 @@ function StatLogic:GetHealthRegenFromSpi(spi, class, level)
 	end
 	return baseRegen + spi * addon.HealthRegenPerSpi[class][level] * 5, "HEALTH_REG_OUT_OF_COMBAT"
 end
-
 
 ----------------------------------
 -- Stat Summary Ignore Settings --
@@ -2686,7 +2670,6 @@ function StatLogic:GetDiffID(item, ignoreEnchant, ignoreGems, ignoreExtraSockets
 
 	return id, link, linkDiff1, linkDiff2
 end
-
 
 --[[---------------------------------
 {	:GetDiff(item, [diff1], [diff2], [ignoreEnchant], [ignoreGem], [red], [yellow], [blue], [meta])

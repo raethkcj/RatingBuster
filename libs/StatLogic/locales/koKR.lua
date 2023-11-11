@@ -374,7 +374,6 @@ L["StatIDLookup"] = {
 	["주문 시전 가속도가 증가합니다"] = {"SPELL_HASTE_RATING"},
 	["원거리 공격 가속도가 증가합니다"] = {"RANGED_HASTE_RATING"},
 
-
 	["숙련"] = {"EXPERTISE_RATING"}, -- gems
 	["숙련도가 증가합니다"] = {"EXPERTISE_RATING"},
 	["방어구 관통력"] = {"ARMOR_PENETRATION_RATING"}, -- gems

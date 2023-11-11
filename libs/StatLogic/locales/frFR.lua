@@ -438,8 +438,6 @@ L["StatIDLookup"] = {
 	["score de hâte à distance"] = {"RANGED_HASTE_RATING"},
 	["au score de hâte à distance"] = {"RANGED_HASTE_RATING"},
 
-
-
 	["le score d’expertise"] = {"EXPERTISE_RATING"},
 	["score d’expertise"] = {"EXPERTISE_RATING"},
 	["score de pénétration d'armure"] = {"ARMOR_PENETRATION_RATING"},

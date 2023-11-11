@@ -436,7 +436,6 @@ L["StatIDLookup"] = {
 	["提高远程爆击等级"] = {"RANGED_CRIT_RATING",},
 	["使你的远程爆击等级"] = {"RANGED_CRIT_RATING",},
 
-
 	["韧性"] = {"RESILIENCE_RATING",},
 	["韧性等级"] = {"RESILIENCE_RATING",},
 	["使你的韧性等级"] = {"RESILIENCE_RATING",},
@@ -449,7 +448,6 @@ L["StatIDLookup"] = {
 	["提高近战急速等级"] = {"MELEE_HASTE_RATING"},
 	["提高法术急速等级"] = {"SPELL_HASTE_RATING"},
 	["提高远程急速等级"] = {"RANGED_HASTE_RATING"},
-
 
 	["熟練等級"] = {"EXPERTISE_RATING"},
 	["使你的精准等级提高"] = {"EXPERTISE_RATING"},

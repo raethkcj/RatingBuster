@@ -44,7 +44,6 @@ end
 --debug
 --RatingBuster.cache = cache
 
-
 ---------------------
 -- Local Variables --
 ---------------------
@@ -1577,7 +1576,6 @@ local function copyTable(to, from)
 	return to
 end
 
-
 ---------------------
 -- Initializations --
 ---------------------
@@ -1855,7 +1853,6 @@ function RatingBuster.ProcessTooltip(tooltip)
 	tooltip:Show()
 end
 
-
 function RatingBuster:ProcessLine(text, link, color)
 	-- Get data from cache if available
 	local cacheID = text..calcLevel
@@ -1901,7 +1898,6 @@ function RatingBuster:ProcessLine(text, link, color)
 	end
 end
 
-
 ---------------------------------------------------------------------------------
 -- Recursive algorithm that divides a string into pieces using the separators in separatorTable,
 -- processes them separately, then joins them back together
@@ -1927,7 +1923,6 @@ function RatingBuster:RecursivelySplitLine(text, separatorTable, link, color)
 		return self:ProcessText(text, link, color)
 	end
 end
-
 
 function RatingBuster:ProcessText(text, link, color)
 	-- Convert text to lower so we don't have to worry about same ratings with different cases

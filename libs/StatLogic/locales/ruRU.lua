@@ -461,7 +461,6 @@ L["StatIDLookup"] = {
 	["Improves spell haste rating"] = {"SPELL_HASTE_RATING"},
 	["Improves ranged haste rating"] = {"RANGED_HASTE_RATING"},
 
-
 	["рейтинг мастерства"] = {"EXPERTISE_RATING"},
 	["к рейтингу мастерства"] = {"EXPERTISE_RATING"},
 	["повышает рейтинг мастерства на"] = {"EXPERTISE_RATING"},

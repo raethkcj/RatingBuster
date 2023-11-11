@@ -106,7 +106,6 @@ L["WholeTextLookup"] = {
 	["Überragendes Manaöl"] = {["MANA_REG"] = 14}, --
 	["Hervorragendes Manaöl"] = {["MANA_REG"] = 12, ["HEAL"] = 25}, --
 
-
 	["Eterniumangelschnur"] = {["FISHING"] = 5}, --
 	["Vitalität"] = {["MANA_REG"] = 4, ["HEALTH_REG"] = 4}, --
 	["Seelenfrost"] = {["SHADOW_SPELL_DMG"] = 54, ["FROST_SPELL_DMG"] = 54}, --
@@ -374,7 +373,6 @@ L["StatIDLookup"] = {
 	["Erhöht Eure Distanzangriffstempowertung"] = {"RANGED_HASTE_RATING"},
 	["Erhöht Zaubertempowertung"] = {"SPELL_HASTE_RATING"},
 	["Erhöht die Zaubertempowertung"] = {"SPELL_HASTE_RATING"},
-
 
 	["Waffenkundewertung"] = {"EXPERTISE_RATING"}, -- gem
 	["Erhöht die Waffenkundewertung"] = {"EXPERTISE_RATING"},

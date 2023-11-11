@@ -262,7 +262,6 @@ L["StatIDLookup"] = {
 	["Poder de ataque a distancia"] = {"RANGED_AP",},
 	["Aumenta enel poder de ataque a distancia"] = {"RANGED_AP",}, -- [High Warlord's Crossbow] ID: 18837
 
-
 	["Salud cada"] = {"HEALTH_REG",},
 	["salud cada"] = {"HEALTH_REG",}, -- Frostwolf Insignia Rank 6 ID:17909
 	["la regeneración de salud normal"] = {"HEALTH_REG",}, -- Demons Blood ID: 10779
@@ -391,7 +390,6 @@ L["StatIDLookup"] = {
 	["Mejora el índice de celeridad con hechizos"] = {"SPELL_HASTE_RATING"},
 	["Aumenta tu índice de celeridad de hechizo"] = {"SPELL_HASTE_RATING"},
 	--["Improves ranged haste rating"] = {"RANGED_HASTE_RATING"},
-
 
 	["Aumenta tu índice de pericia"] = {"EXPERTISE_RATING"},
 	["tu índice de pericia"] = {"EXPERTISE_RATING"},
