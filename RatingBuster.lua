@@ -1474,7 +1474,7 @@ do
 					if StatLogic:GetAPPerStr(class) > 0 then
 						addStatModOption(add, "STR", sources)
 					end
-					if StatLogic:GetAPPerAgi(class) > 0 then
+					if GSM("ADD_AP_MOD_AGI") > 0 then
 						addStatModOption(add, "AGI", sources)
 					end
 				end
@@ -2189,7 +2189,7 @@ do
 			local infoTable = {}
 			if profileDB.showAPFromAgi then
 				local mod = GSM("MOD_AP")
-				local effect = value * StatLogic:GetAPPerAgi(class) * mod
+				local effect = value * GSM("ADD_AP_MOD_AGI") * mod
 				if (mod ~= 1 or statmod ~= 1) and floor(abs(effect) * 10 + 0.5) > 0 then
 					tinsert(infoTable, (L["$value AP"]:gsub("$value", ("%+.1f"):format(effect))))
 				elseif floor(abs(effect) + 0.5) > 0 then
@@ -2227,7 +2227,7 @@ do
 			-- Paladin: Sheath of Light, Touched by the Light
 			if profileDB.showSpellDmgFromAgi then
 				local mod = GSM("MOD_AP") * GSM("MOD_SPELL_DMG")
-				local effect = (value * StatLogic:GetAPPerAgi(class) * GSM("ADD_SPELL_DMG_MOD_AP")) * mod
+				local effect = (value * GSM("ADD_AP_MOD_AGI") * GSM("ADD_SPELL_DMG_MOD_AP")) * mod
 				if (mod ~= 1 or statmod ~= 1) and floor(abs(effect) * 10 + 0.5) > 0 then
 					tinsert(infoTable, (L["$value Spell Dmg"]:gsub("$value", ("%+.1f"):format(effect))))
 				elseif floor(abs(effect) + 0.5) > 0 then
@@ -2237,7 +2237,7 @@ do
 			-- Druid: Nurturing Instinct
 			if profileDB.showHealingFromAgi then
 				local mod = GSM("MOD_AP") * GSM("MOD_HEALING")
-				local effect = (value * StatLogic:GetAPPerAgi(class) * GSM("ADD_HEALING_MOD_AP")
+				local effect = (value * GSM("ADD_AP_MOD_AGI") * GSM("ADD_HEALING_MOD_AP")
 					+ value * GSM("ADD_HEALING_MOD_AGI") / GSM("MOD_AP")) * mod
 				if (mod ~= 1 or statmod ~= 1) and floor(abs(effect) * 10 + 0.5) > 0 then
 					tinsert(infoTable, (L["$value Heal"]:gsub("$value", ("%+.1f"):format(effect))))
@@ -2741,7 +2741,7 @@ local summaryCalcData = {
 					sum["AP"]
 					+ sum["FERAL_AP"] * GSM("ADD_AP_MOD_FAP")
 				) + sum[StatLogic.Stats.Strength] * StatLogic:GetAPPerStr(class)
-				+ sum[StatLogic.Stats.Agility] * StatLogic:GetAPPerAgi(class)
+				+ sum[StatLogic.Stats.Agility] * GSM("ADD_AP_MOD_AGI")
 				+ sum[StatLogic.Stats.Stamina] * GSM("ADD_AP_MOD_STA")
 				+ sum[StatLogic.Stats.Intellect] * GSM("ADD_AP_MOD_INT")
 				+ summaryFunc["ARMOR"](sum) * GSM("ADD_AP_MOD_ARMOR")

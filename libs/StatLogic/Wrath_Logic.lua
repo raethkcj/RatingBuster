@@ -471,21 +471,6 @@ addon.APPerStr = {
 	["DRUID"] = 2,
 }
 
-addon.APPerAgi = {
-	["WARRIOR"] = 0,
-	["PALADIN"] = 0,
-	["HUNTER"] = 1,
-	["ROGUE"] = 1,
-	["PRIEST"] = 0,
-	["DEATHKNIGHT"] = 0,
-	["SHAMAN"] = 1,
-	["MAGE"] = 0,
-	["WARLOCK"] = 0,
-	["DRUID"] = setmetatable({
-		[CAT_FORM] = 1,
-	}, addon.zero),
-}
-
 addon.RAPPerAgi = {
 	["WARRIOR"] = 1,
 	["PALADIN"] = 0,
@@ -779,6 +764,13 @@ local BuffGroup = {
 StatLogic.StatModTable = {}
 if addon.class == "DRUID" then
 	StatLogic.StatModTable["DRUID"] = {
+		["ADD_AP_MOD_AGI"] = {
+			-- Druid: Cat Form - Buff
+			{
+				["value"] = 1,
+				["buff"] = 768,
+			},
+		},
 		-- Druid: Improved Moonkin Form (Rank 3) - 1,19
 		--        Your Moonkin Aura also causes affected targets to gain 1%/2%/3% haste and you to gain 10/20/30% of your spirit as additional spell damage.
 		["ADD_SPELL_DMG_MOD_SPI"] = {
@@ -1383,6 +1375,11 @@ elseif addon.class == "DEATHKNIGHT" then
 	}
 elseif addon.class == "HUNTER" then
 	StatLogic.StatModTable["HUNTER"] = {
+		["ADD_AP_MOD_AGI"] = {
+			{
+				["value"] = 1,
+			},
+		},
 		-- Hunter: Hunter vs. Wild (Rank 3) - 3,14
 		--         Increases you and your pet's attack power and ranged attack power equal to 10%/20%/30% of your total Stamina.
 		["ADD_AP_MOD_STA"] = {
@@ -1953,6 +1950,11 @@ elseif addon.class == "PRIEST" then
 	}
 elseif addon.class == "ROGUE" then
 	StatLogic.StatModTable["ROGUE"] = {
+		["ADD_AP_MOD_AGI"] = {
+			{
+				["value"] = 1,
+			},
+		},
 		-- Rogue: Deadliness (Rank 5) - 3,18
 		--        Increases your attack power by 2%/4%/6%/8%/10%.
 		-- Rogue: Savage Combat (Rank 2) - 2,26
@@ -2021,6 +2023,11 @@ elseif addon.class == "ROGUE" then
 	}
 elseif addon.class == "SHAMAN" then
 	StatLogic.StatModTable["SHAMAN"] = {
+		["ADD_AP_MOD_AGI"] = {
+			{
+				["value"] = 1,
+			},
+		},
 		-- Shaman: Mental Dexterity (Rank 3) - 2,15
 		--         Increases your Attack Power by 33%/66%/100% of your Intellect.
 		["ADD_AP_MOD_INT"] = {

@@ -161,20 +161,6 @@ addon.APPerStr = {
 	["DRUID"] = 2,
 }
 
-addon.APPerAgi = {
-	["WARRIOR"] = 0,
-	["PALADIN"] = 0,
-	["HUNTER"] = 1,
-	["ROGUE"] = 1,
-	["PRIEST"] = 0,
-	["SHAMAN"] = 0,
-	["MAGE"] = 0,
-	["WARLOCK"] = 0,
-	["DRUID"] = setmetatable({
-		[CAT_FORM] = 1,
-	}, addon.zero),
-}
-
 addon.RAPPerAgi = {
 	["WARRIOR"] = 1,
 	["PALADIN"] = 0,
@@ -218,6 +204,13 @@ local BuffGroup = {
 StatLogic.StatModTable = {}
 if addon.class == "DRUID" then
 	StatLogic.StatModTable["DRUID"] = {
+		["ADD_AP_MOD_AGI"] = {
+			-- Druid: Cat Form - Buff
+			{
+				["value"] = 1,
+				["buff"] = 768,
+			},
+		},
 		-- Druid: Reflection - 3,6
 		--        Allows 5/10/15% of your Mana regeneration to continue while casting
 		["ADD_MANA_REG_MOD_NORMAL_MANA_REG"] = {
@@ -345,6 +338,11 @@ if addon.class == "DRUID" then
 	}
 elseif addon.class == "HUNTER" then
 	StatLogic.StatModTable["HUNTER"] = {
+		["ADD_AP_MOD_AGI"] = {
+			{
+				["value"] = 1,
+			},
+		},
 		["ADD_DODGE"] = {
 			-- Hunter: Aspect of the Monkey - Buff
 			--         The hunter takes on the aspects of a monkey, increasing chance to dodge by 8%. Only one Aspect can be active at a time.
@@ -592,6 +590,11 @@ elseif addon.class == "PRIEST" then
 	}
 elseif addon.class == "ROGUE" then
 	StatLogic.StatModTable["ROGUE"] = {
+		["ADD_AP_MOD_AGI"] = {
+			{
+				["value"] = 1,
+			},
+		},
 		-- Rogue: Deadliness (Rank 5) - 3,16
 		--        Increases your attack power by 2%/4%/6%/8%/10%.
 		["MOD_AP"] = {

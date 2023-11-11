@@ -333,22 +333,6 @@ addon.APPerStr = {
 	["DRUID"] = 1,
 }
 
-addon.APPerAgi = {
-	["WARRIOR"] = 0,
-	["PALADIN"] = 0,
-	["HUNTER"] = 1,
-	["ROGUE"] = 2,
-	["PRIEST"] = 0,
-	["DEATHKNIGHT"] = 0,
-	["SHAMAN"] = 2,
-	["MAGE"] = 0,
-	["WARLOCK"] = 0,
-	["DRUID"] = setmetatable({
-		[BEAR_FORM] = 1,
-		[CAT_FORM] = 1,
-	}, addon.zero),
-}
-
 addon.RAPPerAgi = {
 	["WARRIOR"] = 1,
 	["PALADIN"] = 0,
@@ -397,6 +381,18 @@ local BuffGroup = {
 StatLogic.StatModTable = {}
 if addon.class == "DRUID" then
 	StatLogic.StatModTable["DRUID"] = {
+		["ADD_AP_MOD_AGI"] = {
+			-- Druid: Cat Form - Buff
+			{
+				["value"] = 1,
+				["buff"] = 768,
+			},
+			-- Druid: Bear Form - Buff
+			{
+				["value"] = 1,
+				["buff"] = 5487,
+			},
+		},
 		-- Druid: Nurturing Instinct (Rank 2) - 2,14
 		-- 4.0.1: 2,14: Increases your healing spells by up to 35%/70% of your Agility, and increases healing done to you by 10%/20% while in Cat form.
 		-- 4.0.6: 2,14: Increases your healing spells by up to 50%/100% of your Agility, and increases healing done to you by 10%/20% while in Cat form.
@@ -798,6 +794,11 @@ elseif addon.class == "DEATHKNIGHT" then
 	}
 elseif addon.class == "HUNTER" then
 	StatLogic.StatModTable["HUNTER"] = {
+		["ADD_AP_MOD_AGI"] = {
+			{
+				["value"] = 1,
+			},
+		},
 		-- Hunter: Animal Handler - Passive: 87325
 		-- 4.0.6: Attack Power increased by 25%.
 		["MOD_AP"] = {
@@ -1103,6 +1104,11 @@ elseif addon.class == "PRIEST" then
 	}
 elseif addon.class == "ROGUE" then
 	StatLogic.StatModTable["ROGUE"] = {
+		["ADD_AP_MOD_AGI"] = {
+			{
+				["value"] = 2,
+			},
+		},
 		-- Rogue: Savage Combat - Rank 2/2 - 2,16
 		-- 4.2.0: Increases your total attack power by 3/6%.
 		-- Rogue: Vitality - Passive: 61329
@@ -1185,6 +1191,11 @@ elseif addon.class == "ROGUE" then
 	}
 elseif addon.class == "SHAMAN" then
 	StatLogic.StatModTable["SHAMAN"] = {
+		["ADD_AP_MOD_AGI"] = {
+			{
+				["value"] = 2,
+			},
+		},
 		-- Druid: Elemental Precision - Rank 3/3 - 1,7
 		-- 4.0.1: Grants you spell hit rating equal to 33/66/100% of any Spirit gained from items or effects.
 		["ADD_SPELL_HIT_RATING_MOD_SPI"] = {

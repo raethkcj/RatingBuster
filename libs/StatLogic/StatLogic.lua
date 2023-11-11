@@ -496,6 +496,10 @@ StatLogic.StatModInfo = {
 		initialValue = 0,
 		finalAdjust = 0,
 	},
+	["ADD_AP_MOD_AGI"] = {
+		initialValue = 0,
+		finalAdjust = 0,
+	},
 	["ADD_AP_MOD_FAP"] = {
 		initialValue = 0,
 		finalAdjust = 0,
@@ -1438,75 +1442,6 @@ function StatLogic:GetBlockValueFromStr(str, class)
 	local blockValue = BlockClasses[class] and BLOCK_PER_STRENGTH or 0
 	-- Calculate
 	return str * blockValue, "BLOCK_VALUE"
-end
-
---[[---------------------------------
-{	:GetAPPerAgi([class])
--------------------------------------
--- Description
-	Gets the attack power per agility for any class.
--- Args
-	[class] - (defaults: PlayerClass)
-			string - english class name
-			number - class id
--- Returns
-	[ap]
-		number - attack power per agility
-	[statid]
-		string - "AP"
--- Remarks
-	Player level does not effect attack power per agility.
-	Support for Cat Form.
--- Examples
-	StatLogic:GetAPPerAgi()
-	StatLogic:GetAPPerAgi("ROGUE")
-}
------------------------------------]]
-
-function StatLogic:GetAPPerAgi(class)
-	assert(type(class)=="string" or type(class)=="number", "Expected string or number as arg #1 to GetAPPerAgi, got "..type(class))
-	class = self:ValidateClass(class)
-	-- Check druid cat form
-	if class == "DRUID" then
-		local form = GetShapeshiftFormID() or 0
-		return addon.APPerAgi[class][form], "AP"
-	else
-		return addon.APPerAgi[class], "AP"
-	end
-end
-
---[[---------------------------------
-{	:GetAPFromAgi(agi, [class])
--------------------------------------
--- Description
-	Calculates the attack power from agility for any class.
--- Args
-	agi
-			number - agility
-	[class] - (defaults: PlayerClass)
-			string - english class name
-			number - class id
--- Returns
-	[ap]
-		number - attack power
-	[statid]
-		string - "AP"
--- Remarks
-	Player level does not effect attack power per agility.
--- Examples
-	StatLogic:GetAPFromAgi(1) -- GetAPPerAgi
-	StatLogic:GetAPFromAgi(10)
-	StatLogic:GetAPFromAgi(10, "WARRIOR")
-}
------------------------------------]]
-
-function StatLogic:GetAPFromAgi(agi, class)
-	-- argCheck for invalid input
-	self:argCheck(agi, 2, "number")
-	self:argCheck(class, 3, "nil", "string", "number")
-	class = self:ValidateClass(class)
-	-- Calculate
-	return agi * addon.APPerAgi[class], "AP"
 end
 
 --[[---------------------------------

@@ -345,20 +345,6 @@ addon.APPerStr = {
 	["DRUID"] = 2,
 }
 
-addon.APPerAgi = {
-	["WARRIOR"] = 0,
-	["PALADIN"] = 0,
-	["HUNTER"] = 1,
-	["ROGUE"] = 1,
-	["PRIEST"] = 0,
-	["SHAMAN"] = 0,
-	["MAGE"] = 0,
-	["WARLOCK"] = 0,
-	["DRUID"] = setmetatable({
-		[CAT_FORM] = 1,
-	}, addon.zero),
-}
-
 addon.RAPPerAgi = {
 	["WARRIOR"] = 1,
 	["PALADIN"] = 0,
@@ -389,6 +375,13 @@ addon.DodgePerAgiMaxLevel = {}
 StatLogic.StatModTable = {}
 if addon.class == "DRUID" then
 	StatLogic.StatModTable["DRUID"] = {
+		["ADD_AP_MOD_AGI"] = {
+			-- Druid: Cat Form - Buff
+			{
+				["value"] = 1,
+				["buff"] = 768,
+			},
+		},
 		-- Druid: Lunar Guidance (Rank 3) - 1,12
 		--        Increases your spell damage and healing by 8%/16%/25% of your total Intellect.
 		["ADD_SPELL_DMG_MOD_INT"] = {
@@ -625,6 +618,11 @@ if addon.class == "DRUID" then
 	}
 elseif addon.class == "HUNTER" then
 	StatLogic.StatModTable["HUNTER"] = {
+		["ADD_AP_MOD_AGI"] = {
+			{
+				["value"] = 1,
+			},
+		},
 		-- Hunter: Aspect of the Viper - Buff
 		--         The hunter takes on the aspects of a viper, regenerating mana equal to 25% of his Intellect every 5 sec.
 		-- TODO: Gronnstalker's Armor, (2) Set: Increases the mana you gain from your Aspect of the Viper by an additional 5% of your Intellect.
@@ -1048,6 +1046,11 @@ elseif addon.class == "PRIEST" then
 	}
 elseif addon.class == "ROGUE" then
 	StatLogic.StatModTable["ROGUE"] = {
+		["ADD_AP_MOD_AGI"] = {
+			{
+				["value"] = 1,
+			},
+		},
 		-- Rogue: Deadliness (Rank 5) - 3,17
 		--        Increases your attack power by 2%/4%/6%/8%/10%.
 		["MOD_AP"] = {
