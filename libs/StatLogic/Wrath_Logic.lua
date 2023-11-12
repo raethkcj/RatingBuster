@@ -1366,11 +1366,27 @@ elseif addon.class == "HUNTER" then
 			{
 				["value"] = 1,
 			},
+			-- Hunter: Expose Weakness (Rank 3) - 3,19
+			--   Expose Weakness increases your attack power by 25% of your Agility.
+			{
+				["tab"] = 3,
+				["num"] = 19,
+				["value"] = 0.25,
+				["buff"] = 34501,
+			}
 		},
 		["ADD_RANGED_AP_MOD_AGI"] = {
 			{
 				["value"] = 1,
 			},
+			-- Hunter: Expose Weakness (Rank 3) - 3,19
+			--   Expose Weakness increases your attack power by 25% of your Agility.
+			{
+				["tab"] = 3,
+				["num"] = 19,
+				["value"] = 0.25,
+				["buff"] = 34501,
+			}
 		},
 		-- Hunter: Hunter vs. Wild (Rank 3) - 3,14
 		--         Increases you and your pet's attack power and ranged attack power equal to 10%/20%/30% of your total Stamina.
