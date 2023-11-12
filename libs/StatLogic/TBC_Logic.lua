@@ -93,7 +93,7 @@ function StatLogic:GetNormalManaRegenFromSpi(spi, int, level)
 end
 
 -- Numbers reverse engineered by Whitetooth@Cenarius(US) (hotdogee [at] gmail [dot] com
-addon.HealthRegenPerSpi = {
+local HealthRegenPerSpi = {
 	["WARRIOR"] = 0.5,
 	["PALADIN"] = 0.125,
 	["HUNTER"] = 0.125,
