@@ -500,7 +500,7 @@ StatLogic.StatModInfo = {
 		initialValue = 0,
 		finalAdjust = 0,
 	},
-	["ADD_AP_MOD_FAP"] = {
+	["ADD_AP_MOD_FERAL_AP"] = {
 		initialValue = 0,
 		finalAdjust = 0,
 	},
@@ -532,7 +532,7 @@ StatLogic.StatModInfo = {
 		initialValue = 0,
 		finalAdjust = 1,
 	},
-	["MOD_FAP"] = {
+	["MOD_FERAL_AP"] = {
 		initialValue = 0,
 		finalAdjust = 1,
 	},

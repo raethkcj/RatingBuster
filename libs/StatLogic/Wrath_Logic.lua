@@ -951,7 +951,7 @@ if addon.class == "DRUID" then
 		-- Druid: Predatory Strikes (Rank 3) - 2,10
 		--				Increases your melee attack power in Cat, Bear and Dire Bear Forms by
 		--				7,14,20% of any attack power on your equipped weapon.
-		["ADD_AP_MOD_FAP"] = {
+		["ADD_AP_MOD_FERAL_AP"] = {
 			{
 				["value"] = 1,
 				["buff"] = 32356,		-- ["Cat Form"],
@@ -965,7 +965,7 @@ if addon.class == "DRUID" then
 				["buff"] = 9634,		-- ["Dire Bear Form"],
 			},
 		},
-		["MOD_FAP"] = {
+		["MOD_FERAL_AP"] = {
 			{
 				["tab"] = 2,
 				["num"] = 10,

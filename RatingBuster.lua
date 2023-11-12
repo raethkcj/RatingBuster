@@ -2737,9 +2737,9 @@ local summaryCalcData = {
 		func = function(sum)
 			return GSM("MOD_AP") * (
 				-- Feral Druid Predatory Strikes
-				(sum["FERAL_AP"] > 0 and GSM("MOD_FAP") or 1) * (
+				(sum["FERAL_AP"] > 0 and GSM("MOD_FERAL_AP") or 1) * (
 					sum["AP"]
-					+ sum["FERAL_AP"] * GSM("ADD_AP_MOD_FAP")
+					+ sum["FERAL_AP"] * GSM("ADD_AP_MOD_FERAL_AP")
 				) + sum[StatLogic.Stats.Strength] * StatLogic:GetAPPerStr(class)
 				+ sum[StatLogic.Stats.Agility] * GSM("ADD_AP_MOD_AGI")
 				+ sum[StatLogic.Stats.Stamina] * GSM("ADD_AP_MOD_STA")
