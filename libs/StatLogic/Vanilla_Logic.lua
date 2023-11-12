@@ -161,18 +161,6 @@ addon.APPerStr = {
 	["DRUID"] = 2,
 }
 
-addon.RAPPerAgi = {
-	["WARRIOR"] = 1,
-	["PALADIN"] = 0,
-	["HUNTER"] = 2,
-	["ROGUE"] = 1,
-	["PRIEST"] = 0,
-	["SHAMAN"] = 0,
-	["MAGE"] = 0,
-	["WARLOCK"] = 0,
-	["DRUID"] = 0,
-}
-
 addon.BaseDodge = {
 	["WARRIOR"] = 0.0000,
 	["PALADIN"] = 0.7000,
@@ -341,6 +329,11 @@ elseif addon.class == "HUNTER" then
 		["ADD_AP_MOD_AGI"] = {
 			{
 				["value"] = 1,
+			},
+		},
+		["ADD_RANGED_AP_MOD_AGI"] = {
+			{
+				["value"] = 2,
 			},
 		},
 		["ADD_DODGE"] = {
@@ -595,6 +588,11 @@ elseif addon.class == "ROGUE" then
 				["value"] = 1,
 			},
 		},
+		["ADD_RANGED_AP_MOD_AGI"] = {
+			{
+				["value"] = 1,
+			},
+		},
 		-- Rogue: Deadliness (Rank 5) - 3,16
 		--        Increases your attack power by 2%/4%/6%/8%/10%.
 		["MOD_AP"] = {
@@ -845,6 +843,11 @@ elseif addon.class == "WARLOCK" then
 	}
 elseif addon.class == "WARRIOR" then
 	StatLogic.StatModTable["WARRIOR"] = {
+		["ADD_RANGED_AP_MOD_AGI"] = {
+			{
+				["value"] = 1,
+			},
+		},
 		["MOD_ARMOR"] = {
 			-- Warrior: Toughness (Rank 5) - 3,4
 			--          Increases your armor value from items by 2%/4%/6%/8%/10%.

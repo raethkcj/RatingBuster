@@ -333,19 +333,6 @@ addon.APPerStr = {
 	["DRUID"] = 1,
 }
 
-addon.RAPPerAgi = {
-	["WARRIOR"] = 1,
-	["PALADIN"] = 0,
-	["HUNTER"] = 2,
-	["ROGUE"] = 1,
-	["PRIEST"] = 0,
-	["DEATHKNIGHT"] = 0,
-	["SHAMAN"] = 0,
-	["MAGE"] = 0,
-	["WARLOCK"] = 0,
-	["DRUID"] = 0,
-}
-
 addon.BaseDodge = {
 	["WARRIOR"] =     5.0000,
 	["PALADIN"] =     5.0000,
@@ -799,6 +786,11 @@ elseif addon.class == "HUNTER" then
 				["value"] = 1,
 			},
 		},
+		["ADD_RANGED_AP_MOD_AGI"] = {
+			{
+				["value"] = 2,
+			},
+		},
 		-- Hunter: Animal Handler - Passive: 87325
 		-- 4.0.6: Attack Power increased by 25%.
 		["MOD_AP"] = {
@@ -1109,6 +1101,11 @@ elseif addon.class == "ROGUE" then
 				["value"] = 2,
 			},
 		},
+		["ADD_RANGED_AP_MOD_AGI"] = {
+			{
+				["value"] = 1,
+			},
+		},
 		-- Rogue: Savage Combat - Rank 2/2 - 2,16
 		-- 4.2.0: Increases your total attack power by 3/6%.
 		-- Rogue: Vitality - Passive: 61329
@@ -1339,6 +1336,11 @@ elseif addon.class == "WARLOCK" then
 	}
 elseif addon.class == "WARRIOR" then
 	StatLogic.StatModTable["WARRIOR"] = {
+		["ADD_RANGED_AP_MOD_AGI"] = {
+			{
+				["value"] = 1,
+			},
+		},
 		-- Tanks: Forceful Deflection - Passive
 		-- 4.2.0: Increases your Parry Rating by 27% of your total Strength.
 		["ADD_PARRY_RATING_MOD_STR"] = {

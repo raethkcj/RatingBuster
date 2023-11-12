@@ -512,6 +512,10 @@ StatLogic.StatModInfo = {
 		initialValue = 0,
 		finalAdjust = 0,
 	},
+	["ADD_RANGED_AP_MOD_AGI"] = {
+		initialValue = 0,
+		finalAdjust = 0,
+	},
 	["MOD_AGI"] = {
 		initialValue = 0,
 		finalAdjust = 1,
@@ -1442,69 +1446,6 @@ function StatLogic:GetBlockValueFromStr(str, class)
 	local blockValue = BlockClasses[class] and BLOCK_PER_STRENGTH or 0
 	-- Calculate
 	return str * blockValue, "BLOCK_VALUE"
-end
-
---[[---------------------------------
-{	:GetRAPPerAgi([class])
--------------------------------------
--- Description
-	Gets the ranged attack power per agility for any class.
--- Args
-	[class] - (defaults: PlayerClass)
-			string - english class name
-			number - class id
--- Returns
-	[rap]
-		number - ranged attack power per agility
-	[statid]
-		string - "RANGED_AP"
--- Remarks
-	Player level does not effect ranged attack power per agility.
--- Examples
-	StatLogic:GetRAPPerAgi()
-	StatLogic:GetRAPPerAgi("HUNTER")
-}
------------------------------------]]
-
-function StatLogic:GetRAPPerAgi(class)
-	-- argCheck for invalid input
-	self:argCheck(class, 2, "nil", "string", "number")
-	class = self:ValidateClass(class)
-	return addon.RAPPerAgi[class], "RANGED_AP"
-end
-
---[[---------------------------------
-{	:GetRAPFromAgi(agi, [class])
--------------------------------------
--- Description
-	Calculates the ranged attack power from agility for any class.
--- Args
-	agi
-			number - agility
-	[class] - (defaults: PlayerClass)
-			string - english class name
-			number - class id
--- Returns
-	[rap]
-		number - ranged attack power
-	[statid]
-		string - "RANGED_AP"
--- Remarks
-	Player level does not effect ranged attack power per agility.
--- Examples
-	StatLogic:GetRAPFromAgi(1) -- GetRAPPerAgi
-	StatLogic:GetRAPFromAgi(10)
-	StatLogic:GetRAPFromAgi(10, "WARRIOR")
-}
------------------------------------]]
-
-function StatLogic:GetRAPFromAgi(agi, class)
-	-- argCheck for invalid input
-	self:argCheck(agi, 2, "number")
-	self:argCheck(class, 3, "nil", "string", "number")
-	class = self:ValidateClass(class)
-	-- Calculate
-	return agi * addon.RAPPerAgi[class], "RANGED_AP"
 end
 
 --[[---------------------------------

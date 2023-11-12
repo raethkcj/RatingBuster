@@ -345,18 +345,6 @@ addon.APPerStr = {
 	["DRUID"] = 2,
 }
 
-addon.RAPPerAgi = {
-	["WARRIOR"] = 1,
-	["PALADIN"] = 0,
-	["HUNTER"] = 1,
-	["ROGUE"] = 1,
-	["PRIEST"] = 0,
-	["SHAMAN"] = 0,
-	["MAGE"] = 0,
-	["WARLOCK"] = 0,
-	["DRUID"] = 0,
-}
-
 addon.BaseDodge = {
 	["WARRIOR"] = 0.7580,
 	["PALADIN"] = 0.6520,
@@ -619,6 +607,11 @@ if addon.class == "DRUID" then
 elseif addon.class == "HUNTER" then
 	StatLogic.StatModTable["HUNTER"] = {
 		["ADD_AP_MOD_AGI"] = {
+			{
+				["value"] = 1,
+			},
+		},
+		["ADD_RANGED_AP_MOD_AGI"] = {
 			{
 				["value"] = 1,
 			},
@@ -1051,6 +1044,11 @@ elseif addon.class == "ROGUE" then
 				["value"] = 1,
 			},
 		},
+		["ADD_RANGED_AP_MOD_AGI"] = {
+			{
+				["value"] = 1,
+			},
+		},
 		-- Rogue: Deadliness (Rank 5) - 3,17
 		--        Increases your attack power by 2%/4%/6%/8%/10%.
 		["MOD_AP"] = {
@@ -1340,6 +1338,11 @@ elseif addon.class == "WARLOCK" then
 	}
 elseif addon.class == "WARRIOR" then
 	StatLogic.StatModTable["WARRIOR"] = {
+		["ADD_RANGED_AP_MOD_AGI"] = {
+			{
+				["value"] = 1,
+			},
+		},
 		-- Warrior: Improved Berserker Stance (Rank 5) - 2,20 - Stance
 		--          Increases attack power by 2%/4%/6%/8%/10% while in Berserker Stance.
 		["MOD_AP"] = {

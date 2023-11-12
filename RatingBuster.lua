@@ -2198,7 +2198,7 @@ do
 			end
 			if profileDB.showRAPFromAgi then
 				local mod = GSM("MOD_RANGED_AP")
-				local effect = value * StatLogic:GetRAPPerAgi(class) * mod
+				local effect = value * GSM("ADD_RANGED_AP_MOD_AGI") * mod
 				if (mod ~= 1 or statmod ~= 1) and floor(abs(effect) * 10 + 0.5) > 0 then
 					tinsert(infoTable, (L["$value RAP"]:gsub("$value", ("%+.1f"):format(effect))))
 				elseif floor(abs(effect) + 0.5) > 0 then
@@ -2756,7 +2756,7 @@ local summaryCalcData = {
 			return (GSM("MOD_RANGED_AP") + GSM("MOD_AP") - 1) * (
 				sum["RANGED_AP"]
 				+ sum["AP"]
-				+ sum[StatLogic.Stats.Agility] * StatLogic:GetRAPPerAgi(class)
+				+ sum[StatLogic.Stats.Agility] * GSM("ADD_RANGED_AP_MOD_AGI")
 				+ sum[StatLogic.Stats.Intellect] * GSM("ADD_RANGED_AP_MOD_INT")
 				+ sum[StatLogic.Stats.Stamina] * GSM("ADD_AP_MOD_STA")
 				+ summaryFunc["ARMOR"](sum) * GSM("ADD_AP_MOD_ARMOR")

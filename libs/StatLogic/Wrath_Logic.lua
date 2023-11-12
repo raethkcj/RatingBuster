@@ -471,19 +471,6 @@ addon.APPerStr = {
 	["DRUID"] = 2,
 }
 
-addon.RAPPerAgi = {
-	["WARRIOR"] = 1,
-	["PALADIN"] = 0,
-	["HUNTER"] = 1,
-	["ROGUE"] = 1,
-	["PRIEST"] = 0,
-	["DEATHKNIGHT"] = 0,
-	["SHAMAN"] = 0,
-	["MAGE"] = 0,
-	["WARLOCK"] = 0,
-	["DRUID"] = 0,
-}
-
 addon.BaseDodge = {
 	["WARRIOR"] =     3.6640,
 	["PALADIN"] =     3.4943,
@@ -1380,6 +1367,11 @@ elseif addon.class == "HUNTER" then
 				["value"] = 1,
 			},
 		},
+		["ADD_RANGED_AP_MOD_AGI"] = {
+			{
+				["value"] = 1,
+			},
+		},
 		-- Hunter: Hunter vs. Wild (Rank 3) - 3,14
 		--         Increases you and your pet's attack power and ranged attack power equal to 10%/20%/30% of your total Stamina.
 		["ADD_AP_MOD_STA"] = {
@@ -1955,6 +1947,11 @@ elseif addon.class == "ROGUE" then
 				["value"] = 1,
 			},
 		},
+		["ADD_RANGED_AP_MOD_AGI"] = {
+			{
+				["value"] = 1,
+			},
+		},
 		-- Rogue: Deadliness (Rank 5) - 3,18
 		--        Increases your attack power by 2%/4%/6%/8%/10%.
 		-- Rogue: Savage Combat (Rank 2) - 2,26
@@ -2301,6 +2298,11 @@ elseif addon.class == "WARLOCK" then
 	}
 elseif addon.class == "WARRIOR" then
 	StatLogic.StatModTable["WARRIOR"] = {
+		["ADD_RANGED_AP_MOD_AGI"] = {
+			{
+				["value"] = 1,
+			},
+		},
 		-- Warrior: Armored to the Teeth (Rank 3) - 2,1
 		--          Increases your attack power by 1/2/3 for every 108 armor value you have.
 		["ADD_AP_MOD_ARMOR"] = {
