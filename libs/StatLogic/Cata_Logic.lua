@@ -320,19 +320,6 @@ addon.SpellCritPerInt = {
 	},
 }
 
-addon.APPerStr = {
-	["WARRIOR"] = 2,
-	["PALADIN"] = 2,
-	["HUNTER"] = 1,
-	["ROGUE"] = 1,
-	["PRIEST"] = 2,
-	["DEATHKNIGHT"] = 2,
-	["SHAMAN"] = 1,
-	["MAGE"] = 2,
-	["WARLOCK"] = 2,
-	["DRUID"] = 1,
-}
-
 addon.BaseDodge = {
 	["WARRIOR"] =     5.0000,
 	["PALADIN"] =     5.0000,
@@ -368,6 +355,11 @@ local BuffGroup = {
 StatLogic.StatModTable = {}
 if addon.class == "DRUID" then
 	StatLogic.StatModTable["DRUID"] = {
+		["ADD_AP_MOD_STR"] = {
+			{
+				["value"] = 1,
+			},
+		},
 		["ADD_AP_MOD_AGI"] = {
 			-- Druid: Cat Form - Buff
 			{
@@ -586,6 +578,11 @@ if addon.class == "DRUID" then
 	}
 elseif addon.class == "DEATHKNIGHT" then
 	StatLogic.StatModTable["DEATHKNIGHT"] = {
+		["ADD_AP_MOD_STR"] = {
+			{
+				["value"] = 2,
+			},
+		},
 		-- Death Knight: Icy Talons - Passive: 50887
 		-- 4.0.6: Your melee attack speed is increased by 20%.
 		-- Death Knight: Improved Icy Talons - Rank 1/1 - 2,13
@@ -781,6 +778,11 @@ elseif addon.class == "DEATHKNIGHT" then
 	}
 elseif addon.class == "HUNTER" then
 	StatLogic.StatModTable["HUNTER"] = {
+		["ADD_AP_MOD_STR"] = {
+			{
+				["value"] = 1,
+			},
+		},
 		["ADD_AP_MOD_AGI"] = {
 			{
 				["value"] = 1,
@@ -843,6 +845,11 @@ elseif addon.class == "HUNTER" then
 	}
 elseif addon.class == "MAGE" then
 	StatLogic.StatModTable["MAGE"] = {
+		["ADD_AP_MOD_STR"] = {
+			{
+				["value"] = 2,
+			},
+		},
 		-- Mage: Wizardry - Passive: 89744
 		-- 4.0.1: Increases your Intellect by 5%
 		["MOD_INT"] = {
@@ -896,6 +903,11 @@ elseif addon.class == "MAGE" then
 	}
 elseif addon.class == "PALADIN" then
 	StatLogic.StatModTable["PALADIN"] = {
+		["ADD_AP_MOD_STR"] = {
+			{
+				["value"] = 2,
+			},
+		},
 		-- Healers: Meditation
 		-- 4.0.1: Allows 50% of your mana regeneration from Spirit to continue while in combat.
 		["ADD_MANA_REG_MOD_NORMAL_MANA_REG"] = {
@@ -1019,6 +1031,11 @@ elseif addon.class == "PALADIN" then
 	}
 elseif addon.class == "PRIEST" then
 	StatLogic.StatModTable["PRIEST"] = {
+		["ADD_AP_MOD_STR"] = {
+			{
+				["value"] = 2,
+			},
+		},
 		-- Healers: Meditation
 		-- 4.0.1: Allows 50% of your mana regeneration from Spirit to continue while in combat.
 		-- Priest: Holy Concentration - Rank 2/2 - 2,8
@@ -1096,6 +1113,11 @@ elseif addon.class == "PRIEST" then
 	}
 elseif addon.class == "ROGUE" then
 	StatLogic.StatModTable["ROGUE"] = {
+		["ADD_AP_MOD_STR"] = {
+			{
+				["value"] = 1,
+			},
+		},
 		["ADD_AP_MOD_AGI"] = {
 			{
 				["value"] = 2,
@@ -1188,6 +1210,11 @@ elseif addon.class == "ROGUE" then
 	}
 elseif addon.class == "SHAMAN" then
 	StatLogic.StatModTable["SHAMAN"] = {
+		["ADD_AP_MOD_STR"] = {
+			{
+				["value"] = 1,
+			},
+		},
 		["ADD_AP_MOD_AGI"] = {
 			{
 				["value"] = 2,
@@ -1277,6 +1304,11 @@ elseif addon.class == "SHAMAN" then
 	}
 elseif addon.class == "WARLOCK" then
 	StatLogic.StatModTable["WARLOCK"] = {
+		["ADD_AP_MOD_STR"] = {
+			{
+				["value"] = 2,
+			},
+		},
 		-- Warlock: Metamorphosis - Buff: 47241
 		-- 4.0.1: Armor contribution from items increased by 600%. Chance to be critically hit by melee reduced by 6%.
 		["MOD_ARMOR"] = {
@@ -1336,6 +1368,11 @@ elseif addon.class == "WARLOCK" then
 	}
 elseif addon.class == "WARRIOR" then
 	StatLogic.StatModTable["WARRIOR"] = {
+		["ADD_AP_MOD_STR"] = {
+			{
+				["value"] = 2,
+			},
+		},
 		["ADD_RANGED_AP_MOD_AGI"] = {
 			{
 				["value"] = 1,

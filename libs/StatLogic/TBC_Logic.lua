@@ -270,18 +270,6 @@ addon.SpellCritPerInt = {
 	},
 }
 
-addon.APPerStr = {
-	["WARRIOR"] = 2,
-	["PALADIN"] = 2,
-	["HUNTER"] = 1,
-	["ROGUE"] = 1,
-	["PRIEST"] = 1,
-	["SHAMAN"] = 2,
-	["MAGE"] = 1,
-	["WARLOCK"] = 1,
-	["DRUID"] = 2,
-}
-
 addon.BaseDodge = {
 	["WARRIOR"] = 0.7580,
 	["PALADIN"] = 0.6520,
@@ -300,6 +288,11 @@ addon.DodgePerAgiMaxLevel = {}
 StatLogic.StatModTable = {}
 if addon.class == "DRUID" then
 	StatLogic.StatModTable["DRUID"] = {
+		["ADD_AP_MOD_STR"] = {
+			{
+				["value"] = 2,
+			},
+		},
 		["ADD_AP_MOD_AGI"] = {
 			-- Druid: Cat Form - Buff
 			{
@@ -543,6 +536,11 @@ if addon.class == "DRUID" then
 	}
 elseif addon.class == "HUNTER" then
 	StatLogic.StatModTable["HUNTER"] = {
+		["ADD_AP_MOD_STR"] = {
+			{
+				["value"] = 1,
+			},
+		},
 		["ADD_AP_MOD_AGI"] = {
 			{
 				["value"] = 1,
@@ -710,6 +708,11 @@ elseif addon.class == "HUNTER" then
 	}
 elseif addon.class == "MAGE" then
 	StatLogic.StatModTable["MAGE"] = {
+		["ADD_AP_MOD_STR"] = {
+			{
+				["value"] = 1,
+			},
+		},
 		-- Mage: Arcane Fortitude - 1,9
 		--       Increases your armor by an amount equal to 50% of your Intellect.
 		-- 2.4.0 Increases your armor by an amount equal to 100% of your Intellect.
@@ -762,6 +765,11 @@ elseif addon.class == "MAGE" then
 	}
 elseif addon.class == "PALADIN" then
 	StatLogic.StatModTable["PALADIN"] = {
+		["ADD_AP_MOD_STR"] = {
+			{
+				["value"] = 2,
+			},
+		},
 		-- Paladin: Holy Guidance (Rank 5) - 1,19
 		--          Increases your spell damage and healing by 7%/14%/21%/28%/35% of your total Intellect.
 		["ADD_SPELL_DMG_MOD_INT"] = {
@@ -851,6 +859,11 @@ elseif addon.class == "PALADIN" then
 	}
 elseif addon.class == "PRIEST" then
 	StatLogic.StatModTable["PRIEST"] = {
+		["ADD_AP_MOD_STR"] = {
+			{
+				["value"] = 1,
+			},
+		},
 		-- Priest: Meditation (Rank 3) - 1,9
 		--         Allows 10/20/30% of your Mana regeneration to continue while casting.
 		["ADD_MANA_REG_MOD_NORMAL_MANA_REG"] = {
@@ -976,6 +989,11 @@ elseif addon.class == "PRIEST" then
 	}
 elseif addon.class == "ROGUE" then
 	StatLogic.StatModTable["ROGUE"] = {
+		["ADD_AP_MOD_STR"] = {
+			{
+				["value"] = 1,
+			},
+		},
 		["ADD_AP_MOD_AGI"] = {
 			{
 				["value"] = 1,
@@ -1054,6 +1072,11 @@ elseif addon.class == "ROGUE" then
 	}
 elseif addon.class == "SHAMAN" then
 	StatLogic.StatModTable["SHAMAN"] = {
+		["ADD_AP_MOD_STR"] = {
+			{
+				["value"] = 2,
+			},
+		},
 		-- Shaman: Mental Quickness (Rank 3) - 2,15
 		--         Reduces the mana cost of your instant cast spells by 2%/4%/6% and increases your spell damage and healing equal to 10%/20%/30% of your attack power.
 		["ADD_SPELL_DMG_MOD_AP"] = {
@@ -1156,6 +1179,11 @@ elseif addon.class == "SHAMAN" then
 	}
 elseif addon.class == "WARLOCK" then
 	StatLogic.StatModTable["WARLOCK"] = {
+		["ADD_AP_MOD_STR"] = {
+			{
+				["value"] = 1,
+			},
+		},
 		["ADD_PET_STA_MOD_STA"] = {
 			-- Base
 			{
@@ -1275,6 +1303,11 @@ elseif addon.class == "WARLOCK" then
 	}
 elseif addon.class == "WARRIOR" then
 	StatLogic.StatModTable["WARRIOR"] = {
+		["ADD_AP_MOD_STR"] = {
+			{
+				["value"] = 2,
+			},
+		},
 		["ADD_RANGED_AP_MOD_AGI"] = {
 			{
 				["value"] = 1,

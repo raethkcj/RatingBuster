@@ -504,6 +504,10 @@ StatLogic.StatModInfo = {
 		initialValue = 0,
 		finalAdjust = 0,
 	},
+	["ADD_AP_MOD_STR"] = {
+		initialValue = 0,
+		finalAdjust = 0,
+	},
 	["ADD_PET_INT_MOD_INT"] = {
 		initialValue = 0,
 		finalAdjust = 0,
@@ -1318,65 +1322,6 @@ function StatLogic:GetEffectFromRating(rating, id, level)
 	else
 		return rating/addon.RatingBase[id]/((1/52)*10-(8/52)), RatingIDToConvertedStat[id]
 	end
-end
-
---[[---------------------------------
-{	:GetAPPerStr([class])
--------------------------------------
--- Description
-	Gets the attack power per strength for any class.
--- Args
-	[class] - (defaults: PlayerClass)
-			string - english class name
-			number - class id
--- Returns
-	[ap]
-		number - attack power per strength
-	[statid]
-		string - "AP"
--- Remarks
-	Player level does not effect attack power per strength.
--- Examples
-	StatLogic:GetAPPerStr()
-	StatLogic:GetAPPerStr("WARRIOR")
-}
------------------------------------]]
-
-function StatLogic:GetAPPerStr(class)
-	assert(type(class)=="string" or type(class)=="number", "Expected string or number as arg #1 to GetAPPerStr, got "..type(class))
-	class = self:ValidateClass(class)
-	return addon.APPerStr[class], "AP"
-end
-
---[[---------------------------------
-:GetAPFromStr(str, [class])
--------------------------------------
-Description:
-	Calculates the attack power from strength for any class.
-Arguments:
-	str
-			number - strength
-	[class] - (defaults: PlayerClass)
-			string - english class name
-			number - class id
-Returns:
-	[ap]
-		number - attack power
-	[statid]
-		string - "AP"
-Remarks:
-	Player level does not effect block value per strength.
-Examples:
-	StatLogic:GetAPFromStr(1) -- GetAPPerStr
-	StatLogic:GetAPFromStr(10)
-	StatLogic:GetAPFromStr(10, "WARRIOR")
------------------------------------]]
-function StatLogic:GetAPFromStr(str, class)
-	assert(type(str)=="number", "Expected number as arg #1 to GetAPFromStr, got "..type(str))
-	assert(type(class)=="string" or type(class)=="number", "Expected string or number as arg #2 to GetAPFromStr, got "..type(class))
-	class = self:ValidateClass(class)
-	-- Calculate
-	return str * addon.APPerStr[class], "AP"
 end
 
 --[[---------------------------------

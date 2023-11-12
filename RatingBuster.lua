@@ -1471,7 +1471,7 @@ do
 					-- Paladin's Sheathe of Light, Touched by the Light
 					-- Shaman's Mental Quickness.
 					-- TODO: Shaman AP can also come from INT in Wrath
-					if StatLogic:GetAPPerStr(class) > 0 then
+					if GSM("ADD_AP_MOD_STR") > 0 then
 						addStatModOption(add, "STR", sources)
 					end
 					if GSM("ADD_AP_MOD_AGI") > 0 then
@@ -2124,7 +2124,7 @@ do
 			local infoTable = {}
 			if profileDB.showAPFromStr then
 				local mod = GSM("MOD_AP")
-				local effect = value * StatLogic:GetAPPerStr(class) * mod
+				local effect = value * GSM("ADD_AP_MOD_STR") * mod
 				if (mod ~= 1 or statmod ~= 1) and floor(abs(effect) * 10 + 0.5) > 0 then
 					tinsert(infoTable, (L["$value AP"]:gsub("$value", ("%+.1f"):format(effect))))
 				elseif floor(abs(effect) + 0.5) > 0 then -- so we don't get +0 AP when effect < 0.5
@@ -2141,7 +2141,7 @@ do
 			-- Paladin: Sheath of Light, Touched by the Light
 			if profileDB.showSpellDmgFromStr then
 				local mod = GSM("MOD_AP") * GSM("MOD_SPELL_DMG")
-				local effect = (value * StatLogic:GetAPPerStr(class) * GSM("ADD_SPELL_DMG_MOD_AP")
+				local effect = (value * GSM("ADD_AP_MOD_STR") * GSM("ADD_SPELL_DMG_MOD_AP")
 					+ value * GSM("ADD_SPELL_DMG_MOD_STR")) * mod
 				if (mod ~= 1 or statmod ~= 1) and floor(abs(effect) * 10 + 0.5) > 0 then
 					tinsert(infoTable, (L["$value Spell Dmg"]:gsub("$value", ("%+.1f"):format(effect))))
@@ -2151,7 +2151,7 @@ do
 			end
 			if profileDB.showHealingFromStr then
 				local mod = GSM("MOD_AP") * GSM("MOD_HEALING")
-				local effect = (value * StatLogic:GetAPPerStr(class) * GSM("ADD_HEALING_MOD_AP")
+				local effect = (value * GSM("ADD_AP_MOD_STR") * GSM("ADD_HEALING_MOD_AP")
 					+ value * GSM("ADD_HEALING_MOD_STR")) * mod
 				if (mod ~= 1 or statmod ~= 1) and floor(abs(effect) * 10 + 0.5) > 0 then
 					tinsert(infoTable, (L["$value Heal"]:gsub("$value", ("%+.1f"):format(effect))))
@@ -2740,7 +2740,7 @@ local summaryCalcData = {
 				(sum["FERAL_AP"] > 0 and GSM("MOD_FERAL_AP") or 1) * (
 					sum["AP"]
 					+ sum["FERAL_AP"] * GSM("ADD_AP_MOD_FERAL_AP")
-				) + sum[StatLogic.Stats.Strength] * StatLogic:GetAPPerStr(class)
+				) + sum[StatLogic.Stats.Strength] * GSM("ADD_AP_MOD_STR")
 				+ sum[StatLogic.Stats.Agility] * GSM("ADD_AP_MOD_AGI")
 				+ sum[StatLogic.Stats.Stamina] * GSM("ADD_AP_MOD_STA")
 				+ sum[StatLogic.Stats.Intellect] * GSM("ADD_AP_MOD_INT")

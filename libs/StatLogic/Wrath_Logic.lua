@@ -458,19 +458,6 @@ addon.SpellCritPerInt = {
 	},
 }
 
-addon.APPerStr = {
-	["WARRIOR"] = 2,
-	["PALADIN"] = 2,
-	["HUNTER"] = 1,
-	["ROGUE"] = 1,
-	["PRIEST"] = 1,
-	["DEATHKNIGHT"] = 2,
-	["SHAMAN"] = 1,
-	["MAGE"] = 1,
-	["WARLOCK"] = 1,
-	["DRUID"] = 2,
-}
-
 addon.BaseDodge = {
 	["WARRIOR"] =     3.6640,
 	["PALADIN"] =     3.4943,
@@ -751,6 +738,11 @@ local BuffGroup = {
 StatLogic.StatModTable = {}
 if addon.class == "DRUID" then
 	StatLogic.StatModTable["DRUID"] = {
+		["ADD_AP_MOD_STR"] = {
+			{
+				["value"] = 2,
+			},
+		},
 		["ADD_AP_MOD_AGI"] = {
 			-- Druid: Cat Form - Buff
 			{
@@ -1210,6 +1202,11 @@ if addon.class == "DRUID" then
 	}
 elseif addon.class == "DEATHKNIGHT" then
 	StatLogic.StatModTable["DEATHKNIGHT"] = {
+		["ADD_AP_MOD_STR"] = {
+			{
+				["value"] = 2,
+			},
+		},
 		-- Death Knight: Forceful Deflection - Passive
 		--               Increases your Parry Rating by 25% of your total Strength.
 		["ADD_PARRY_RATING_MOD_STR"] = {
@@ -1362,6 +1359,11 @@ elseif addon.class == "DEATHKNIGHT" then
 	}
 elseif addon.class == "HUNTER" then
 	StatLogic.StatModTable["HUNTER"] = {
+		["ADD_AP_MOD_STR"] = {
+			{
+				["value"] = 1,
+			},
+		},
 		["ADD_AP_MOD_AGI"] = {
 			{
 				["value"] = 1,
@@ -1527,6 +1529,11 @@ elseif addon.class == "HUNTER" then
 	}
 elseif addon.class == "MAGE" then
 	StatLogic.StatModTable["MAGE"] = {
+		["ADD_AP_MOD_STR"] = {
+			{
+				["value"] = 1,
+			},
+		},
 		["ADD_SPELL_CRIT_RATING_MOD_SPI"] = {
 			-- Mage: Molten Armor (Rank 3) - Buff
 			--       increases your critical strike rating by 35% of your spirit
@@ -1665,6 +1672,11 @@ elseif addon.class == "MAGE" then
 	}
 elseif addon.class == "PALADIN" then
 	StatLogic.StatModTable["PALADIN"] = {
+		["ADD_AP_MOD_STR"] = {
+			{
+				["value"] = 2,
+			},
+		},
 		-- Paladin: Sheath of Light (Rank 3) - 3,24
 		--          Increases your spell power by an amount equal to 10%/20%/30% of your attack power
 		--   3.1.0: 3,24
@@ -1808,6 +1820,11 @@ elseif addon.class == "PALADIN" then
 	}
 elseif addon.class == "PRIEST" then
 	StatLogic.StatModTable["PRIEST"] = {
+		["ADD_AP_MOD_STR"] = {
+			{
+				["value"] = 1,
+			},
+		},
 		-- Priest: Meditation (Rank 3) - 1,7
 		--         Allows 17/33/50% of your Mana regeneration to continue while casting.
 		["ADD_MANA_REG_MOD_NORMAL_MANA_REG"] = {
@@ -1958,6 +1975,11 @@ elseif addon.class == "PRIEST" then
 	}
 elseif addon.class == "ROGUE" then
 	StatLogic.StatModTable["ROGUE"] = {
+		["ADD_AP_MOD_STR"] = {
+			{
+				["value"] = 1,
+			},
+		},
 		["ADD_AP_MOD_AGI"] = {
 			{
 				["value"] = 1,
@@ -2036,6 +2058,11 @@ elseif addon.class == "ROGUE" then
 	}
 elseif addon.class == "SHAMAN" then
 	StatLogic.StatModTable["SHAMAN"] = {
+		["ADD_AP_MOD_STR"] = {
+			{
+				["value"] = 1,
+			},
+		},
 		["ADD_AP_MOD_AGI"] = {
 			{
 				["value"] = 1,
@@ -2134,6 +2161,11 @@ elseif addon.class == "SHAMAN" then
 	}
 elseif addon.class == "WARLOCK" then
 	StatLogic.StatModTable["WARLOCK"] = {
+		["ADD_AP_MOD_STR"] = {
+			{
+				["value"] = 1,
+			},
+		},
 		-- Warlock: Metamorphosis - Buff
 		--          This form increases your armor by 600%, damage by 20%, reduces the chance you'll be critically hit by melee attacks by 6% and reduces the duration of stun and snare effects by 50%.
 		["MOD_ARMOR"] = {
@@ -2314,6 +2346,11 @@ elseif addon.class == "WARLOCK" then
 	}
 elseif addon.class == "WARRIOR" then
 	StatLogic.StatModTable["WARRIOR"] = {
+		["ADD_AP_MOD_STR"] = {
+			{
+				["value"] = 2,
+			},
+		},
 		["ADD_RANGED_AP_MOD_AGI"] = {
 			{
 				["value"] = 1,

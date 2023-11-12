@@ -149,18 +149,6 @@ addon.SpellCritPerInt = {
 	},
 }
 
-addon.APPerStr = {
-	["WARRIOR"] = 2,
-	["PALADIN"] = 2,
-	["HUNTER"] = 1,
-	["ROGUE"] = 1,
-	["PRIEST"] = 1,
-	["SHAMAN"] = 2,
-	["MAGE"] = 1,
-	["WARLOCK"] = 1,
-	["DRUID"] = 2,
-}
-
 addon.BaseDodge = {
 	["WARRIOR"] = 0.0000,
 	["PALADIN"] = 0.7000,
@@ -192,6 +180,11 @@ local BuffGroup = {
 StatLogic.StatModTable = {}
 if addon.class == "DRUID" then
 	StatLogic.StatModTable["DRUID"] = {
+		["ADD_AP_MOD_STR"] = {
+			{
+				["value"] = 2,
+			},
+		},
 		["ADD_AP_MOD_AGI"] = {
 			-- Druid: Cat Form - Buff
 			{
@@ -326,6 +319,11 @@ if addon.class == "DRUID" then
 	}
 elseif addon.class == "HUNTER" then
 	StatLogic.StatModTable["HUNTER"] = {
+		["ADD_AP_MOD_STR"] = {
+			{
+				["value"] = 1,
+			},
+		},
 		["ADD_AP_MOD_AGI"] = {
 			{
 				["value"] = 1,
@@ -402,6 +400,11 @@ elseif addon.class == "HUNTER" then
 	}
 elseif addon.class == "MAGE" then
 	StatLogic.StatModTable["MAGE"] = {
+		["ADD_AP_MOD_STR"] = {
+			{
+				["value"] = 1,
+			},
+		},
 		-- Mage: Arcane Fortitude - 1,9
 		--       Increases your armor by an amount equal to 50% of your Intellect.
 		["ADD_ARMOR_MOD_INT"] = {
@@ -465,6 +468,11 @@ elseif addon.class == "MAGE" then
 	}
 elseif addon.class == "PALADIN" then
 	StatLogic.StatModTable["PALADIN"] = {
+		["ADD_AP_MOD_STR"] = {
+			{
+				["value"] = 2,
+			},
+		},
 		["ADD_MELEE_CRIT"] = {
 			-- Conviction
 			{
@@ -528,6 +536,11 @@ elseif addon.class == "PALADIN" then
 	}
 elseif addon.class == "PRIEST" then
 	StatLogic.StatModTable["PRIEST"] = {
+		["ADD_AP_MOD_STR"] = {
+			{
+				["value"] = 1,
+			},
+		},
 		-- Priest: Meditation (Rank 3) - 1,8
 		--         Allows 5/10/15% of your Mana regeneration to continue while casting.
 		["ADD_MANA_REG_MOD_NORMAL_MANA_REG"] = {
@@ -583,6 +596,11 @@ elseif addon.class == "PRIEST" then
 	}
 elseif addon.class == "ROGUE" then
 	StatLogic.StatModTable["ROGUE"] = {
+		["ADD_AP_MOD_STR"] = {
+			{
+				["value"] = 1,
+			},
+		},
 		["ADD_AP_MOD_AGI"] = {
 			{
 				["value"] = 1,
@@ -662,6 +680,11 @@ elseif addon.class == "ROGUE" then
 	}
 elseif addon.class == "SHAMAN" then
 	StatLogic.StatModTable["SHAMAN"] = {
+		["ADD_AP_MOD_STR"] = {
+			{
+				["value"] = 2,
+			},
+		},
 		-- Shaman: Anticipation (Rank 5) - 2,9
 		--         Increases your chance to dodge by an additional 1%/2%/3%/4%/5%.
 		["ADD_DODGE"] = {
@@ -752,6 +775,11 @@ elseif addon.class == "SHAMAN" then
 	}
 elseif addon.class == "WARLOCK" then
 	StatLogic.StatModTable["WARLOCK"] = {
+		["ADD_AP_MOD_STR"] = {
+			{
+				["value"] = 1,
+			},
+		},
 		-- Warlock: Demonic Embrace (Rank 5) - 2,3
 		--          Increases your total Stamina by 3%/6%/9%/12%/15% but reduces your total Spirit by 1%/2%/3%/4%/5%.
 		["MOD_STA"] = {
@@ -843,6 +871,11 @@ elseif addon.class == "WARLOCK" then
 	}
 elseif addon.class == "WARRIOR" then
 	StatLogic.StatModTable["WARRIOR"] = {
+		["ADD_AP_MOD_STR"] = {
+			{
+				["value"] = 2,
+			},
+		},
 		["ADD_RANGED_AP_MOD_AGI"] = {
 			{
 				["value"] = 1,
