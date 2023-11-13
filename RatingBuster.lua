@@ -1488,17 +1488,10 @@ do
 		end
 	end
 
-	-- Ignore Stat Mods that are only used for Diminishing Returns
-	-- and agi/int conversion rates
-	local ignoredStatMods = {
-		["ADD_DODGE"] = true,
-		["ADD_MELEE_CRIT"] = true,
-		["ADD_SPELL_CRIT"] = true,
-	}
 	local function GenerateAuraOptions()
 		for modType, modList in pairs(StatLogic.StatModTable) do
 			for modName, mods in pairs(modList) do
-				if not ignoredStatMods[modName] then
+				if not StatLogic.StatModIgnoresAlwaysBuffed[modName] then
 					for _, mod in ipairs(mods) do
 						if mod.buff then
 							local name, _, icon = GetSpellInfo(mod.buff)

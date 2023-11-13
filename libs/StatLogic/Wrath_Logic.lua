@@ -2866,7 +2866,7 @@ function StatLogic:GetDodgePerAgi()
 	if ModAgiClasses[class] then
 		modAgi = self:GetStatMod("MOD_AGI")
 		-- (Greater) Blessing of Kings
-		if StatLogic.AuraInfo[20217] or StatLogic.AuraInfo[25898] then
+		if StatLogic:GetAuraInfo(20217) or StatLogic:GetAuraInfo(25898) then
 			modAgi = modAgi - 0.1
 		end
 	end

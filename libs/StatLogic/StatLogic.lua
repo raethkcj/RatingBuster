@@ -753,7 +753,8 @@ do
 
 	-- AuraInfo is a layer on top of aura_cache to hold Always Buffed settings.
 	local always_buffed_aura_info = {}
-	function StatLogic:SetupAuraInfo(always_buffed)
+	function StatLogic:SetupAuraInfo(always_buffed_db)
+		self.always_buffed_db = always_buffed_db
 		for _, modList in pairs(StatLogic.StatModTable) do
 			for _, mods in pairs(modList) do
 				for _, mod in ipairs(mods) do
@@ -768,29 +769,27 @@ do
 				end
 			end
 		end
+	end
 
-		StatLogic.AuraInfo = setmetatable({}, {
-			__index = function(_, buff)
-				if always_buffed[buff] then
-					return always_buffed_aura_info[buff]
-				else
-					if needs_update then
-						local i = 1
-						repeat
-							local aura = {}
-							local name
-							name, _, aura.stacks, _, _, _, _, _, _, aura.spellId = UnitBuff("player", i)
-							if name then
-								aura_cache[name] = aura
-							end
-							i = i+1
-						until not name
-						needs_update = false
+	function StatLogic:GetAuraInfo(buff, ignoreAlwaysBuffed)
+		if not ignoreAlwaysBuffed and self.always_buffed_db[buff] then
+			return always_buffed_aura_info[buff]
+		else
+			if needs_update then
+				local i = 1
+				repeat
+					local aura = {}
+					local name
+					name, _, aura.stacks, _, _, _, _, _, _, aura.spellId = UnitBuff("player", i)
+					if name then
+						aura_cache[name] = aura
 					end
-					return aura_cache[buff]
-				end
+					i = i+1
+				until not name
+				needs_update = false
 			end
-		})
+			return aura_cache[buff]
+		end
 	end
 end
 
@@ -841,10 +840,17 @@ do
 	end)
 end
 
+-- Ignore Stat Mods that are only used for reverse-engineering agi/int conversion rates
+StatLogic.StatModIgnoresAlwaysBuffed = {
+	["ADD_DODGE"] = true,
+	["ADD_MELEE_CRIT"] = true,
+	["ADD_SPELL_CRIT"] = true,
+}
+
 addon.StatModValidators = {
 	buff = {
-		validate = function(case)
-			return StatLogic.AuraInfo[GetSpellInfo(case.buff)]
+		validate = function(case, stat)
+			return StatLogic:GetAuraInfo(GetSpellInfo(case.buff), StatLogic.StatModIgnoresAlwaysBuffed[stat])
 		end,
 		events = {
 			["UNIT_AURA"] = "player",
@@ -995,7 +1001,7 @@ local function ValidateStatMod(stat, case)
 				end
 			end
 
-			if not validator.validate(case) then
+			if not validator.validate(case, stat) then
 				return false
 			end
 		end
