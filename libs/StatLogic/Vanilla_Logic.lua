@@ -1068,24 +1068,18 @@ StatLogic.StatModTable["ALL"] = {
 			["buff"] = 25898,		-- ["Greater Blessing of Kings"],
 		},
 	},
-	-- Blessing of Kings - Buff
-	-- Increases stats by 10%.
-	-- Greater Blessing of Kings - Buff
-	-- Increases stats by 10%.
-	-- Ember Skyfire Diamond
-	-- 2% Intellect
 	["MOD_INT"] = {
+		-- Blessing of Kings - Buff
+		-- Increases stats by 10%.
 		{
 			["value"] = 0.1,
 			["buff"] = 20217,		-- ["Blessing of Kings"],
 		},
+		-- Greater Blessing of Kings - Buff
+		-- Increases stats by 10%.
 		{
 			["value"] = 0.1,
 			["buff"] = 25898,		-- ["Greater Blessing of Kings"],
-		},
-		{
-			["meta_gem"] = 35503,
-			["value"] = 0.02,
 		},
 	},
 	-- Blessing of Kings - Buff
