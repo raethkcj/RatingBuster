@@ -368,10 +368,11 @@ elseif addon.class == "HUNTER" then
 					1, 2, 3,
 				},
 			},
-			-- Hunter: Master Marskman - Rune
+			-- Hunter: Master Marksman - Rune
 			--   Increases your critical strike chance by 5%
 			{
-				["rune"] = true,
+				["rune"] = 6889,
+				["slot"] = INVSLOT_CHEST,
 				["value"] = 5,
 			},
 		},
@@ -434,14 +435,16 @@ elseif addon.class == "MAGE" then
 			-- Mage: Enlightenment - Rune
 			--   While below 30% mana 10% of your mana regeneration continues while casting.
 			{
-				["rune"] = true,
+				["rune"] = 6922,
+				["slot"] = INVSLOT_CHEST,
 				["value"] = 0.1,
 				["buff"] = 412325,
 			},
 			-- Mage: Arcane Surge - Rune
 			--   Afterward, your normal mana regeneration is activated and increased by 300% for 8 sec.
 			{
-				["rune"] = true,
+				["rune"] = 7021,
+				["slot"] = INVSLOT_LEGS,
 				["value"] = 1.0,
 				["buff"] = 425124,
 			},
@@ -461,7 +464,8 @@ elseif addon.class == "MAGE" then
 			-- Mage: Burnout - Rune
 			--   Increases your spell critical strike chance with all spells by 15%
 			{
-				["rune"] = true,
+				["rune"] = 6729,
+				["slot"] = INVSLOT_CHEST,
 				["value"] = 15,
 			},
 		},
@@ -529,7 +533,8 @@ elseif addon.class == "PALADIN" then
 			-- Paladin: Aegis - Rune
 			--   Increases your block value by 30%
 			{
-				["rune"] = true,
+				["rune"] = 7041,
+				["slot"] = INVSLOT_CHEST,
 				["value"] = 0.3,
 			}
 		},
@@ -750,7 +755,8 @@ elseif addon.class == "SHAMAN" then
 			-- Shaman: Shield Mastery - Rune
 			--   You also always gain 10% increased chance to Block and 15% increased Block value.
 			{
-				["rune"] = true,
+				["rune"] = 6876,
+				["slot"] = INVSLOT_CHEST,
 				["value"] = 0.15,
 			},
 		},
@@ -758,7 +764,8 @@ elseif addon.class == "SHAMAN" then
 			-- Shaman: Water Shield - Rune
 			--   The caster is surrounded by 3 globes of water, granting 1% of your maximum mana per 5 sec.
 			{
-				["rune"] = true,
+				["rune"] = 6875,
+				["slot"] = INVSLOT_HAND,
 				["value"] = 0.01,
 				["buff"] = 408510,
 			},
@@ -767,7 +774,8 @@ elseif addon.class == "SHAMAN" then
 			-- Shaman: Way of Earth: Rune
 			--   While Rockbiter Weapon is active on your main hand weapon, you gain 30% increased health
 			{
-				["rune"] = true,
+				["rune"] = 6886,
+				["slot"] = INVSLOT_LEGS,
 				["value"] = 0.3,
 				["buff"] = 408680
 			}
@@ -806,13 +814,15 @@ elseif addon.class == "WARLOCK" then
 			-- Warlock: Demonic Tactics - Rune
 			--   Increases the melee and spell critical strike chance of you and your pet by 10%.
 			{
-				["rune"] = true,
+				["rune"] = 6952,
+				["slot"] = INVSLOT_CHEST,
 				["value"] = 0.1,
 			},
 			-- Warlock: Demonic Grace - Rune
 			--   Surge with fel energy, increasing your chance to critically strike with all attacks by 30%
 			{
-				["rune"] = true,
+				["rune"] = 7039,
+				["slot"] = INVSLOT_LEGS,
 				["value"] = 0.3,
 				["buff"] = 425463,
 			},
@@ -821,13 +831,15 @@ elseif addon.class == "WARLOCK" then
 			-- Warlock: Demonic Tactics - Rune
 			--   Increases the melee and spell critical strike chance of you and your pet by 10%.
 			{
-				["rune"] = true,
+				["rune"] = 6952,
+				["slot"] = INVSLOT_CHEST,
 				["value"] = 0.1,
 			},
 			-- Warlock: Demonic Grace - Rune
 			--   Surge with fel energy, increasing your chance to critically strike with all attacks by 30%
 			{
-				["rune"] = true,
+				["rune"] = 7039,
+				["slot"] = INVSLOT_LEGS,
 				["value"] = 0.3,
 				["buff"] = 425463,
 			},
@@ -836,7 +848,8 @@ elseif addon.class == "WARLOCK" then
 			-- Warlock: Metamorphosis - Rune
 			--   Transform into a Demon, increasing Armor by 500%
 			{
-				["rune"] = true,
+				["rune"] = 6816,
+				["slot"] = INVSLOT_HAND,
 				["value"] = 5.0,
 				["buff"] = 403789,
 			},
@@ -845,7 +858,8 @@ elseif addon.class == "WARLOCK" then
 			-- Warlock: Demonic Grace - Rune
 			--   Surge with fel energy, increasing your own dodge chance by 30%
 			{
-				["rune"] = true,
+				["rune"] = 7039,
+				["slot"] = INVSLOT_LEGS,
 				["value"] = 0.3,
 				["buff"] = 425463,
 			},
@@ -854,7 +868,8 @@ elseif addon.class == "WARLOCK" then
 		--   Demonic Pact increases spell damage and healing by 10% of your spell damage
 		["MOD_SPELL_DMG"] = {
 			{
-				["rune"] = true,
+				["rune"] = 7038,
+				["slot"] = INVSLOT_LEGS,
 				["value"] = 0.1,
 				["buff"] = 425467,
 			},
@@ -863,7 +878,8 @@ elseif addon.class == "WARLOCK" then
 		--   Demonic Pact increases spell damage and healing by 10% of your spell damage
 		["MOD_HEALING"] = {
 			{
-				["rune"] = true,
+				["rune"] = 7038,
+				["slot"] = INVSLOT_LEGS,
 				["value"] = 0.1,
 				["buff"] = 425467,
 			},

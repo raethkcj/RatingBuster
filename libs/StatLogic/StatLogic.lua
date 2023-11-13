@@ -891,10 +891,10 @@ addon.StatModValidators = {
 			["UNIT_PET"] = "player",
 		},
 	},
-	-- TODO both func and events
 	rune = {
-		validate = function()
-			return false
+		validate = function(case)
+			local rune = C_Engraving.GetRuneForEquipmentSlot(case.slot)
+			return rune and rune.itemEnchantmentID == case.rune
 		end,
 		events = {
 			["RUNE_UPDATED"] = true,
