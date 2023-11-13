@@ -896,8 +896,12 @@ addon.StatModValidators = {
 	},
 	rune = {
 		validate = function(case)
-			local rune = C_Engraving.GetRuneForEquipmentSlot(case.slot)
-			return rune and rune.itemEnchantmentID == case.rune
+			if C_Engraving then
+				local rune = C_Engraving.GetRuneForEquipmentSlot(case.slot)
+				return rune and rune.itemEnchantmentID == case.rune
+			else
+				return false
+			end
 		end,
 		events = {
 			["RUNE_UPDATED"] = true,
