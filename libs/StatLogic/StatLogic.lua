@@ -763,7 +763,6 @@ do
 						if not mod.tab and mod.rank then -- not a talent, so the rank is the buff rank
 							aura.rank = #(mod.rank)
 						end
-						aura.stacks = mod.buffStack or 1
 						local name = GetSpellInfo(mod.buff)
 						if name then
 							always_buffed_aura_info[name] = aura
@@ -783,7 +782,7 @@ do
 				repeat
 					local aura = {}
 					local name
-					name, _, aura.stacks, _, _, _, _, _, _, aura.spellId = UnitBuff("player", i)
+					name, _, _, _, _, _, _, _, _, aura.spellId = UnitBuff("player", i)
 					if name then
 						aura_cache[name] = aura
 					end
@@ -1114,8 +1113,9 @@ do
 			end
 			table.insert(addon.StatModCacheInvalidators["CHARACTER_POINTS_CHANGED"], stat)
 		elseif case.buff and case.rank then
-			local r = GetPlayerBuffRank(case.buff)
-			value = case.rank[r]
+			local aura = StatLogic:GetAuraInfo(GetSpellInfo(case.buff))
+			local rank = aura.rank or GetPlayerBuffRank(aura.spellId)
+			value = case.rank[rank]
 		elseif case.value then
 			value = case.value
 		end
