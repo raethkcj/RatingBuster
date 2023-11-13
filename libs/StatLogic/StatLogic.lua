@@ -764,7 +764,10 @@ do
 							aura.rank = #(mod.rank)
 						end
 						aura.stacks = mod.buffStack or 1
-						always_buffed_aura_info[GetSpellInfo(mod.buff)] = aura
+						local name = GetSpellInfo(mod.buff)
+						if name then
+							always_buffed_aura_info[name] = aura
+						end
 					end
 				end
 			end
