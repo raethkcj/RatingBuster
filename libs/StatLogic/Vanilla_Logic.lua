@@ -175,6 +175,7 @@ addon.DodgePerAgiMaxLevel = {
 
 local BuffGroup = {
 	MOD_ARMOR = 1,
+	MOD_STATS = 2,
 }
 
 StatLogic.StatModTable = {}
@@ -387,15 +388,63 @@ elseif addon.class == "HUNTER" then
 				},
 			},
 		},
-		-- Hunter: Lightning Reflexes (Rank 5) - 3,15
-		--         Increases your Agility by 3%/6%/9%/12%/15%.
+		["MOD_STR"] = {
+			-- Hunter: Aspect of the Lion - Rune
+			--   increasing total stats for the Hunter by an additional 10%
+			{
+				["rune"] = 6891,
+				["slot"] = INVSLOT_CHEST,
+				["buff"] = 409580,
+				["value"] = 0.1,
+			},
+		},
 		["MOD_AGI"] = {
+			-- Hunter: Lightning Reflexes (Rank 5) - 3,15
+			--         Increases your Agility by 3%/6%/9%/12%/15%.
 			{
 				["tab"] = 3,
 				["num"] = 15,
 				["rank"] = {
 					0.03, 0.06, 0.09, 0.12, 0.15,
 				},
+			},
+			-- Hunter: Aspect of the Lion - Rune
+			--   increasing total stats for the Hunter by an additional 10%
+			{
+				["rune"] = 6891,
+				["slot"] = INVSLOT_CHEST,
+				["buff"] = 409580,
+				["value"] = 0.1,
+			},
+		},
+		["MOD_STA"] = {
+			-- Hunter: Aspect of the Lion - Rune
+			--   increasing total stats for the Hunter by an additional 10%
+			{
+				["rune"] = 6891,
+				["slot"] = INVSLOT_CHEST,
+				["buff"] = 409580,
+				["value"] = 0.1,
+			},
+		},
+		["MOD_INT"] = {
+			-- Hunter: Aspect of the Lion - Rune
+			--   increasing total stats for the Hunter by an additional 10%
+			{
+				["rune"] = 6891,
+				["slot"] = INVSLOT_CHEST,
+				["buff"] = 409580,
+				["value"] = 0.1,
+			},
+		},
+		["MOD_SPI"] = {
+			-- Hunter: Aspect of the Lion - Rune
+			--   increasing total stats for the Hunter by an additional 10%
+			{
+				["rune"] = 6891,
+				["slot"] = INVSLOT_CHEST,
+				["buff"] = 409580,
+				["value"] = 0.1,
 			},
 		},
 	}
@@ -1026,74 +1075,119 @@ StatLogic.StatModTable["ALL"] = {
 			["group"] = BuffGroup.MOD_ARMOR,
 		},
 	},
-	-- Blessing of Kings - Buff
-	-- Increases stats by 10%.
-	-- Greater Blessing of Kings - Buff
-	-- Increases stats by 10%.
 	["MOD_STR"] = {
+		-- Blessing of Kings - Buff
+		--   Increases stats by 10%.
 		{
 			["value"] = 0.1,
-			["buff"] = 20217,		-- ["Blessing of Kings"],
+			["buff"] = 20217,
+			["group"] = BuffGroup.MOD_STATS,
 		},
+		-- Greater Blessing of Kings - Buff
+		--   Increases stats by 10%.
 		{
 			["value"] = 0.1,
-			["buff"] = 25898,		-- ["Greater Blessing of Kings"],
+			["buff"] = 25898,
+			["group"] = BuffGroup.MOD_STATS,
+		},
+		-- Aspect of the Lion - Buff
+		--   Increases stats by 10%.
+		{
+			["value"] = 0.1,
+			["buff"] = 409583,
+			["group"] = BuffGroup.MOD_STATS,
 		},
 	},
-	-- Blessing of Kings - Buff
-	-- Increases stats by 10%.
-	-- Greater Blessing of Kings - Buff
-	-- Increases stats by 10%.
 	["MOD_AGI"] = {
+		-- Blessing of Kings - Buff
+		--   Increases stats by 10%.
 		{
 			["value"] = 0.1,
-			["buff"] = 20217,		-- ["Blessing of Kings"],
+			["buff"] = 20217,
+			["group"] = BuffGroup.MOD_STATS,
 		},
+		-- Greater Blessing of Kings - Buff
+		--   Increases stats by 10%.
 		{
 			["value"] = 0.1,
-			["buff"] = 25898,		-- ["Greater Blessing of Kings"],
+			["buff"] = 25898,
+			["group"] = BuffGroup.MOD_STATS,
+		},
+		-- Aspect of the Lion - Buff
+		--   Increases stats by 10%.
+		{
+			["value"] = 0.1,
+			["buff"] = 409583,
+			["group"] = BuffGroup.MOD_STATS,
 		},
 	},
-	-- Blessing of Kings - Buff
-	-- Increases stats by 10%.
-	-- Greater Blessing of Kings - Buff
-	-- Increases stats by 10%.
 	["MOD_STA"] = {
+		-- Blessing of Kings - Buff
+		--   Increases stats by 10%.
 		{
 			["value"] = 0.1,
-			["buff"] = 20217,		-- ["Blessing of Kings"],
+			["buff"] = 20217,
+			["group"] = BuffGroup.MOD_STATS,
 		},
+		-- Greater Blessing of Kings - Buff
+		--   Increases stats by 10%.
 		{
 			["value"] = 0.1,
-			["buff"] = 25898,		-- ["Greater Blessing of Kings"],
+			["buff"] = 25898,
+			["group"] = BuffGroup.MOD_STATS,
+		},
+		-- Aspect of the Lion - Buff
+		--   Increases stats by 10%.
+		{
+			["value"] = 0.1,
+			["buff"] = 409583,
+			["group"] = BuffGroup.MOD_STATS,
 		},
 	},
 	["MOD_INT"] = {
 		-- Blessing of Kings - Buff
-		-- Increases stats by 10%.
+		--   Increases stats by 10%.
 		{
 			["value"] = 0.1,
-			["buff"] = 20217,		-- ["Blessing of Kings"],
+			["buff"] = 20217,
+			["group"] = BuffGroup.MOD_STATS,
 		},
 		-- Greater Blessing of Kings - Buff
-		-- Increases stats by 10%.
+		--   Increases stats by 10%.
 		{
 			["value"] = 0.1,
-			["buff"] = 25898,		-- ["Greater Blessing of Kings"],
+			["buff"] = 25898,
+			["group"] = BuffGroup.MOD_STATS,
+		},
+		-- Aspect of the Lion - Buff
+		--   Increases stats by 10%.
+		{
+			["value"] = 0.1,
+			["buff"] = 409583,
+			["group"] = BuffGroup.MOD_STATS,
 		},
 	},
-	-- Blessing of Kings - Buff
-	-- Increases stats by 10%.
-	-- Greater Blessing of Kings - Buff
-	-- Increases stats by 10%.
 	["MOD_SPI"] = {
+		-- Blessing of Kings - Buff
+		--   Increases stats by 10%.
 		{
 			["value"] = 0.1,
-			["buff"] = 20217,		-- ["Blessing of Kings"],
+			["buff"] = 20217,
+			["group"] = BuffGroup.MOD_STATS,
 		},
+		-- Greater Blessing of Kings - Buff
+		--   Increases stats by 10%.
 		{
 			["value"] = 0.1,
-			["buff"] = 25898,		-- ["Greater Blessing of Kings"],
+			["buff"] = 25898,
+			["group"] = BuffGroup.MOD_STATS,
+		},
+		-- Aspect of the Lion - Buff
+		--   Increases stats by 10%.
+		{
+			["value"] = 0.1,
+			["buff"] = 409583,
+			["group"] = BuffGroup.MOD_STATS,
 		},
 	},
 	["ADD_MELEE_CRIT"] = {
