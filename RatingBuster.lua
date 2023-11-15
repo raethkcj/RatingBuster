@@ -1488,12 +1488,17 @@ do
 		end
 	end
 
+	if not Enum.SeasonID.SeasonOfDiscovery then
+		Enum.SeasonID.SeasonOfDiscovery = Enum.SeasonID.Placeholder
+	end
+	local showRunes = C_Seasons and C_Seasons.HasActiveSeason() and C_Seasons.GetActiveSeason() == Enum.SeasonID.SeasonOfDiscovery
+
 	local function GenerateAuraOptions()
 		for modType, modList in pairs(StatLogic.StatModTable) do
 			for modName, mods in pairs(modList) do
 				if not StatLogic.StatModIgnoresAlwaysBuffed[modName] then
 					for _, mod in ipairs(mods) do
-						if mod.buff then
+						if mod.buff and (not mod.rune or showRunes) then
 							local name, _, icon = GetSpellInfo(mod.buff)
 							local option = {
 								type = 'toggle',
