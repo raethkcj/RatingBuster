@@ -41,7 +41,7 @@ StatLogic.GenericStatMap[StatLogic.GenericStats.CR_HASTE] = {
 }
 
 --[[---------------------------------
-{	:GetNormalManaRegenFromSpi(spi, [int], [level])
+{	:GetNormalManaRegen(spi, [int], [level])
 -------------------------------------
 -- Description
 	Calculates the mana regen per 5 seconds while NOT casting from spirit.
@@ -49,9 +49,9 @@ StatLogic.GenericStatMap[StatLogic.GenericStats.CR_HASTE] = {
 	Player class is no longer a parameter
 	ManaRegen(SPI, INT, LEVEL) = (0.001+SPI*BASE_REGEN[LEVEL]*(INT^0.5))*5
 -- Examples
-	StatLogic:GetNormalManaRegenFromSpi(1) -- GetNormalManaRegenPerSpi
-	StatLogic:GetNormalManaRegenFromSpi(10, 15)
-	StatLogic:GetNormalManaRegenFromSpi(10, 15, 70)
+	StatLogic:GetNormalManaRegen(1)
+	StatLogic:GetNormalManaRegen(10, 15)
+	StatLogic:GetNormalManaRegen(10, 15, 70)
 }
 -----------------------------------]]
 
@@ -72,7 +72,7 @@ local BaseManaRegenPerSpi = {
 ---@return number mp5nc Mana regen per 5 seconds when out of combat
 ---@return string statid
 ---@diagnostic disable-next-line:duplicate-set-field
-function StatLogic:GetNormalManaRegenFromSpi(spi, int, level)
+function StatLogic:GetNormalManaRegen(spi, int, level)
 	-- argCheck for invalid input
 	self:argCheck(spi, 2, "number")
 	self:argCheck(int, 3, "nil", "number")

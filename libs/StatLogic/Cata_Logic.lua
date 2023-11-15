@@ -46,16 +46,16 @@ StatLogic.GenericStatMap[StatLogic.GenericStats.CR_HASTE] = {
 }
 
 --[[---------------------------------
-	:GetNormalManaRegenFromSpi(spi, [int], [level])
+	:GetNormalManaRegen(spi, [int], [level])
 -------------------------------------
 Notes:
 	* Calculates the mana regen per 5 seconds from spirit when out of 5 second rule for given intellect and level.
 	* Player class is no longer a parameter
 	* ManaRegen(SPI, INT, LEVEL) = (0.001+SPI*BASE_REGEN[LEVEL]*(INT^0.5))*5
 Example:
-	local mp5o5sr = StatLogic:GetNormalManaRegenFromSpi(1) -- GetNormalManaRegenPerSpi
-	local mp5o5sr = StatLogic:GetNormalManaRegenFromSpi(10, 15)
-	local mp5o5sr = StatLogic:GetNormalManaRegenFromSpi(10, 15, 70)
+	local mp5o5sr = StatLogic:GetNormalManaRegen(1)
+	local mp5o5sr = StatLogic:GetNormalManaRegen(10, 15)
+	local mp5o5sr = StatLogic:GetNormalManaRegen(10, 15, 70)
 -----------------------------------]]
 
 -- Extracted from the client at GameTables/RegenMPPerSpt.txt via wow.tools.local
@@ -78,7 +78,7 @@ local BaseManaRegenPerSpi = {
 ---@return number mp5nc Mana regen per 5 seconds when not casting
 ---@return string statid
 ---@diagnostic disable-next-line:duplicate-set-field
-function StatLogic:GetNormalManaRegenFromSpi(spi, int, level)
+function StatLogic:GetNormalManaRegen(spi, int, level)
 	-- argCheck for invalid input
 	self:argCheck(spi, 2, "number")
 	self:argCheck(int, 3, "nil", "number")

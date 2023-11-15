@@ -1467,6 +1467,8 @@ do
 					-- "Normal mana regen" is added from both int and spirit
 					addStatModOption(add, "INT", sources)
 					mod = "SPI"
+				elseif mod == "MANA" then
+					mod = "INT"
 				elseif mod == "AP" then
 					-- Paladin's Sheathe of Light, Touched by the Light
 					-- Shaman's Mental Quickness.
@@ -2323,33 +2325,23 @@ do
 				end
 			end
 			if profileDB.showMP5FromInt then
-				local effect
-				if tocversion >= 20400 then -- 2.4.0
-					local _, int = UnitStat("player", 4)
-					local _, spi = UnitStat("player", 5)
-					effect = value * GSM("ADD_MANA_REG_MOD_INT")
-						+ (StatLogic:GetNormalManaRegenFromSpi(spi, int + value, calcLevel)
-						- StatLogic:GetNormalManaRegenFromSpi(spi, int, calcLevel)) * GSM("ADD_MANA_REG_MOD_NORMAL_MANA_REG")
-						+ value * 15 * GSM("MOD_MANA") * GSM("ADD_MANA_REG_MOD_MANA") -- Replenishment
-				else
-					effect = value * GSM("ADD_MANA_REG_MOD_INT")
-				end
+				local _, int = UnitStat("player", 4)
+				local _, spi = UnitStat("player", 5)
+				local effect = value * GSM("ADD_MANA_REG_MOD_INT")
+					+ (StatLogic:GetNormalManaRegen(spi, int + value, calcLevel)
+					- StatLogic:GetNormalManaRegen(spi, int, calcLevel)) * GSM("ADD_MANA_REG_MOD_NORMAL_MANA_REG")
+					+ value * 15 * GSM("MOD_MANA") * GSM("ADD_MANA_REG_MOD_MANA") -- Replenishment
 				if floor(abs(effect) * 10 + 0.5) > 0 then
 					tinsert(infoTable, (L["$value MP5"]:gsub("$value", ("%+.1f"):format(effect))))
 				end
 			end
 			if profileDB.showMP5NCFromInt then
-				local effect
-				if tocversion >= 20400 then -- 2.4.0
-					local _, int = UnitStat("player", 4)
-					local _, spi = UnitStat("player", 5)
-					effect = value * GSM("ADD_MANA_REG_MOD_INT")
-						+ StatLogic:GetNormalManaRegenFromSpi(spi, int + value, calcLevel)
-						- StatLogic:GetNormalManaRegenFromSpi(spi, int, calcLevel)
-						+ value * 15 * GSM("MOD_MANA") * GSM("ADD_MANA_REG_MOD_MANA") -- Replenishment
-				else
-					effect = value * GSM("ADD_MANA_REG_MOD_INT")
-				end
+				local _, int = UnitStat("player", 4)
+				local _, spi = UnitStat("player", 5)
+				local effect = value * GSM("ADD_MANA_REG_MOD_INT")
+					+ StatLogic:GetNormalManaRegen(spi, int + value, calcLevel)
+					- StatLogic:GetNormalManaRegen(spi, int, calcLevel)
+					+ value * 15 * GSM("MOD_MANA") * GSM("ADD_MANA_REG_MOD_MANA") -- Replenishment
 				if floor(abs(effect) * 10 + 0.5) > 0 then
 					tinsert(infoTable, (L["$value MP5(NC)"]:gsub("$value", ("%+.1f"):format(effect))))
 				end
@@ -2390,23 +2382,13 @@ do
 			local infoTable = {}
 			if profileDB.showMP5FromSpi then
 				local mod = GSM("ADD_MANA_REG_MOD_NORMAL_MANA_REG")
-				local effect
-				if tocversion >= 20400 then -- 2.4.0
-					effect = StatLogic:GetNormalManaRegenFromSpi(value, nil, calcLevel) * mod
-				else
-					effect = StatLogic:GetNormalManaRegenFromSpi(value, class) * mod
-				end
+				local effect = StatLogic:GetNormalManaRegen(value, nil, calcLevel) * mod
 				if floor(abs(effect) * 10 + 0.5) > 0 then
 					tinsert(infoTable, (L["$value MP5"]:gsub("$value", ("%+.1f"):format(effect))))
 				end
 			end
 			if profileDB.showMP5NCFromSpi then
-				local effect
-				if tocversion >= 20400 then -- 2.4.0
-					effect = StatLogic:GetNormalManaRegenFromSpi(value, nil, calcLevel)
-				else
-					effect = StatLogic:GetNormalManaRegenFromSpi(value, class)
-				end
+				local effect = StatLogic:GetNormalManaRegen(value, nil, calcLevel)
 				if floor(abs(effect) * 10 + 0.5) > 0 then
 					tinsert(infoTable, (L["$value MP5(NC)"]:gsub("$value", ("%+.1f"):format(effect))))
 				end
@@ -2690,19 +2672,13 @@ local summaryCalcData = {
 		option = "sumMP5",
 		name = "MANA_REG",
 		func = function(sum)
-			if tocversion >= 20400 then -- 2.4.0
-				local _, int = UnitStat("player", 4)
-				local _, spi = UnitStat("player", 5)
-				return sum["MANA_REG"]
-					+ (sum[StatLogic.Stats.Intellect] * GSM("ADD_MANA_REG_MOD_INT"))
-					+ (StatLogic:GetNormalManaRegenFromSpi(spi + sum[StatLogic.Stats.Spirit], int + sum[StatLogic.Stats.Intellect], calcLevel)
-					- StatLogic:GetNormalManaRegenFromSpi(spi, int, calcLevel)) * GSM("ADD_MANA_REG_MOD_NORMAL_MANA_REG")
-					+ summaryFunc["MANA"](sum) * GSM("ADD_MANA_REG_MOD_MANA")
-			else
-				return sum["MANA_REG"]
-					+ (sum[StatLogic.Stats.Intellect] * GSM("ADD_MANA_REG_MOD_INT"))
-					+ (StatLogic:GetNormalManaRegenFromSpi(sum[StatLogic.Stats.Spirit], class) * GSM("ADD_MANA_REG_MOD_NORMAL_MANA_REG"))
-			end
+			local _, int = UnitStat("player", 4)
+			local _, spi = UnitStat("player", 5)
+			return sum["MANA_REG"]
+				+ sum[StatLogic.Stats.Intellect] * GSM("ADD_MANA_REG_MOD_INT")
+				+ (StatLogic:GetNormalManaRegen(spi + sum[StatLogic.Stats.Spirit], int + sum[StatLogic.Stats.Intellect], calcLevel)
+				- StatLogic:GetNormalManaRegen(spi, int, calcLevel)) * GSM("ADD_MANA_REG_MOD_NORMAL_MANA_REG")
+				+ summaryFunc["MANA"](sum) * GSM("ADD_MANA_REG_MOD_MANA")
 		end,
 	},
 	-- Mana Regen while Not casting - MANA_REG, SPI, INT
@@ -2710,19 +2686,13 @@ local summaryCalcData = {
 		option = "sumMP5NC",
 		name = "MANA_REG_NOT_CASTING",
 		func = function(sum)
-			if tocversion >= 20400 then -- 2.4.0
-				local _, int = UnitStat("player", 4)
-				local _, spi = UnitStat("player", 5)
-				return sum["MANA_REG"]
-					+ (sum[StatLogic.Stats.Intellect] * GSM("ADD_MANA_REG_MOD_INT"))
-					+ StatLogic:GetNormalManaRegenFromSpi(spi + sum[StatLogic.Stats.Spirit], int + sum[StatLogic.Stats.Intellect], calcLevel)
-					- StatLogic:GetNormalManaRegenFromSpi(spi, int, calcLevel)
-					+ summaryFunc["MANA"](sum) * GSM("ADD_MANA_REG_MOD_MANA")
-			else
-				return sum["MANA_REG"]
-					+ (sum[StatLogic.Stats.Intellect] * GSM("ADD_MANA_REG_MOD_INT"))
-					+ StatLogic:GetNormalManaRegenFromSpi(sum[StatLogic.Stats.Spirit], class)
-			end
+			local _, int = UnitStat("player", 4)
+			local _, spi = UnitStat("player", 5)
+			return sum["MANA_REG"]
+				+ sum[StatLogic.Stats.Intellect] * GSM("ADD_MANA_REG_MOD_INT")
+				+ StatLogic:GetNormalManaRegen(spi + sum[StatLogic.Stats.Spirit], int + sum[StatLogic.Stats.Intellect], calcLevel)
+				- StatLogic:GetNormalManaRegen(spi, int, calcLevel)
+				+ summaryFunc["MANA"](sum) * GSM("ADD_MANA_REG_MOD_MANA")
 		end,
 	},
 	---------------------

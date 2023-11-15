@@ -5,16 +5,15 @@ local StatLogic = LibStub:GetLibrary(addonName)
 addon.RatingBase = {}
 
 --[[---------------------------------
-{	:GetNormalManaRegenFromSpi(spi, [class])
+{	:GetNormalManaRegen(spi)
 -------------------------------------
 -- Description
 	Calculates the mana regen per 5 seconds while NOT casting from spirit for any class.
 -- Remarks
 	Player level does not effect mana regen per spirit.
 -- Examples
-	StatLogic:GetNormalManaRegenFromSpi(1) -- GetNormalManaRegenPerSpi
-	StatLogic:GetNormalManaRegenFromSpi(10)
-	StatLogic:GetNormalManaRegenFromSpi(10, "MAGE")
+	StatLogic:GetNormalManaRegen(1)
+	StatLogic:GetNormalManaRegen(10)
 }
 -----------------------------------]]
 
@@ -32,17 +31,14 @@ local NormalManaRegenPerSpi = {
 }
 
 ---@param spi integer
----@param class? string Defaults to player class
 ---@return number mp5nc Mana regen per 5 seconds when out of combat
 ---@return string statid
 ---@diagnostic disable-next-line:duplicate-set-field
-function StatLogic:GetNormalManaRegenFromSpi(spi, class)
+function StatLogic:GetNormalManaRegen(spi)
 	-- argCheck for invalid input
 	self:argCheck(spi, 2, "number")
-	self:argCheck(class, 3, "nil", "string", "number")
-	class = self:ValidateClass(class)
 	-- Calculate
-	return spi * NormalManaRegenPerSpi[class] * 5, "MANA_REG_NOT_CASTING"
+	return spi * NormalManaRegenPerSpi[addon.class] * 5, "MANA_REG_NOT_CASTING"
 end
 
 -- Numbers reverse engineered by Whitetooth@Cenarius(US) (hotdogee [at] gmail [dot] com
