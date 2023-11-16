@@ -7,6 +7,7 @@ local StatLogic = LibStub(addonName)
 -- Libraries --
 ---------------
 -- Pattern matching
+---@type StatLogicLocale
 local L = LibStub("AceLocale-3.0"):GetLocale(addonName)
 -- Display text
 local D = LibStub("AceLocale-3.0"):GetLocale(addonName.."D")
@@ -62,6 +63,7 @@ setmetatable(cache, {__mode = "kv"}) -- weak table to enable garbage collection
 --------------
 local tip, tipMiner
 
+---@type GameTooltip
 tip = CreateFrame("GameTooltip", "StatLogicTooltip", nil, "GameTooltipTemplate")
 StatLogic.tip = tip
 tip:SetOwner(WorldFrame, "ANCHOR_NONE")
@@ -74,6 +76,7 @@ for i = 1, 30 do
 end
 
 -- Create a custom tooltip for data mining
+---@type GameTooltip
 tipMiner = CreateFrame("GameTooltip", "StatLogicMinerTooltip", nil, "GameTooltipTemplate")
 StatLogic.tipMiner = tipMiner
 tipMiner:SetOwner(WorldFrame, "ANCHOR_NONE")
@@ -849,6 +852,11 @@ StatLogic.StatModIgnoresAlwaysBuffed = {
 	["ADD_SPELL_CRIT"] = true,
 }
 
+---@class StatModValidator
+---@field validate function
+---@field events table<WowEvent, UnitToken | true>
+
+---@type { [string]: StatModValidator }
 addon.StatModValidators = {
 	buff = {
 		validate = function(case, stat)

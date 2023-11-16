@@ -14,6 +14,7 @@ local StatLogic = LibStub("StatLogic")
 local GSM = function(...)
 	return StatLogic:GetStatMod(...)
 end
+---@class RatingBusterLocale
 local L = LibStub("AceLocale-3.0"):GetLocale("RatingBuster")
 
 --------------------

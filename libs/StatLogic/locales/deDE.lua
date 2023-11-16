@@ -1,4 +1,5 @@
 -- deDE localization by Gailly, Dleh
+---@class StatLogicLocale
 local L = LibStub("AceLocale-3.0"):NewLocale("StatLogic", "deDE")
 if not L then return end
 local StatLogic = LibStub("StatLogic")

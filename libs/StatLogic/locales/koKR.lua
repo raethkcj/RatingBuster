@@ -1,4 +1,5 @@
 -- koKR localization by fenlis
+---@class StatLogicLocale
 local L = LibStub("AceLocale-3.0"):NewLocale("StatLogic", "koKR")
 if not L then return end
 local StatLogic = LibStub("StatLogic")

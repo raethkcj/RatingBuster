@@ -1,4 +1,5 @@
 -- esES localization by Zendor@Mandokir
+---@class StatLogicLocale
 local L = LibStub("AceLocale-3.0"):NewLocale("StatLogic", "esES")
 if not L then return end
 local StatLogic = LibStub("StatLogic")

@@ -6,6 +6,7 @@ Translated by:
 - Zendor@Mandokir
 ]]
 
+---@class RatingBusterLocale
 local L = LibStub("AceLocale-3.0"):NewLocale("RatingBuster", "esES")
 if not L then return end
 local StatLogic = LibStub("StatLogic")

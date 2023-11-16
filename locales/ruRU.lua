@@ -5,6 +5,7 @@ Translated by:
 - Orsana \ StingerSoft \ Swix
 ]]
 
+---@class RatingBusterLocale
 local L = LibStub("AceLocale-3.0"):NewLocale("RatingBuster", "ruRU")
 if not L then return end
 local StatLogic = LibStub("StatLogic")

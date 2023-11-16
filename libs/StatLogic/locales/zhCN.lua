@@ -1,4 +1,5 @@
 -- zhCN localization by iceburn
+---@class StatLogicLocale
 local L = LibStub("AceLocale-3.0"):NewLocale("StatLogic", "zhCN")
 if not L then return end
 local StatLogic = LibStub("StatLogic")

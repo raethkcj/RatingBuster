@@ -6,6 +6,12 @@ Translated by:
 ]]
 
 ---@class RatingBusterLocale
+---@field numberPatterns table
+---@field exclusions table
+---@field separators table
+---@field statList table
+---@field statModOptionName function
+---@field statModOptionDesc function
 local L = LibStub("AceLocale-3.0"):NewLocale("RatingBuster", "enUS", true)
 L["RatingBuster Options"] = true
 local StatLogic = LibStub("StatLogic")

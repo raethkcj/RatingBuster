@@ -1,4 +1,12 @@
 ---@class StatLogicLocale
+---@field Exclude table
+---@field WholeTextLookup table
+---@field PreScanPatterns table
+---@field DeepScanSeparators table
+---@field DeepScanWordSeparators table
+---@field DualStatPatterns table
+---@field DeepScanPatterns table
+---@field StatIDLookup table
 local L = LibStub("AceLocale-3.0"):NewLocale("StatLogic", "enUS", true)
 if not L then return end
 local StatLogic = LibStub("StatLogic")
