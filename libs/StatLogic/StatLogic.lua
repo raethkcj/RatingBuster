@@ -853,7 +853,7 @@ StatLogic.StatModIgnoresAlwaysBuffed = {
 }
 
 ---@class StatModValidator
----@field validate function
+---@field validate? function
 ---@field events table<WowEvent, UnitToken | true>
 
 ---@type { [string]: StatModValidator }
@@ -936,6 +936,12 @@ addon.StatModValidators = {
 			["UPDATE_SHAPESHIFT_FORM"] = true,
 		},
 	},
+	tab = {
+		events = {
+			["CHARACTER_POINTS_CHANGED"] = true,
+			["PLAYER_TALENT_UPDATE"] = true,
+		},
+	},
 	weapon = {
 		validate = function(case)
 			local weapon = GetInventoryItemID("player", 16)
@@ -954,11 +960,6 @@ addon.StatModValidators = {
 -- maps events defined on Validators to the StatMods that depend on them.
 local StatModCache = {}
 addon.StatModCacheInvalidators = {}
-
--- Talents are not a Validator, but we still
--- need to invalidate cache when they change
-addon.StatModCacheInvalidators["CHARACTER_POINTS_CHANGED"] = {}
-addon.StatModCacheInvalidators["PLAYER_TALENT_UPDATE"] = addon.StatModCacheInvalidators["CHARACTER_POINTS_CHANGED"]
 
 function StatLogic:InvalidateEvent(event, unit)
 	local key = event
@@ -1015,7 +1016,7 @@ local function ValidateStatMod(stat, case)
 				end
 			end
 
-			if not validator.validate(case, stat) then
+			if validator.validate and not validator.validate(case, stat) then
 				return false
 			end
 		end
@@ -1119,7 +1120,6 @@ do
 			elseif r > 0 then
 				value = case.value
 			end
-			table.insert(addon.StatModCacheInvalidators["CHARACTER_POINTS_CHANGED"], stat)
 		elseif case.buff and case.rank then
 			local aura = StatLogic:GetAuraInfo(GetSpellInfo(case.buff))
 			local rank = aura.rank or GetPlayerBuffRank(aura.spellId)
