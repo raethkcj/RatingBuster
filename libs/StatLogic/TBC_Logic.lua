@@ -1363,7 +1363,7 @@ elseif addon.playerRace == "Human" then
 end
 
 -- Numbers reverse engineered by Whitetooth@Cenarius(US) (hotdogee [at] gmail [dot] com)
-local BaseManaRegenPerSpi = {
+addon.BaseManaRegenPerSpi = {
 	0.034965, 0.034191, 0.033465, 0.032526, 0.031661, 0.031076, 0.030523, 0.029994, 0.029307, 0.028661,
 	0.027584, 0.026215, 0.025381, 0.024300, 0.023345, 0.022748, 0.021958, 0.021386, 0.020790, 0.020121,
 	0.019733, 0.019155, 0.018819, 0.018316, 0.017936, 0.017576, 0.017201, 0.016919, 0.016581, 0.016233,
@@ -1376,25 +1376,12 @@ local BaseManaRegenPerSpi = {
 StatLogic.StatModTable["ALL"] = {
 	["ADD_NORMAL_MANA_REG_MOD_SPI"] = {
 		{
-			["value"] = function()
-				local level = UnitLevel("player")
-				local _, int = UnitStat("player", 4)
-				local _, spi = UnitStat("player", 5)
-				return (0.001 / spi + BaseManaRegenPerSpi[level] * (int ^ 0.5)) * 5
-			end,
-			["regen"] = true,
+			["regen"] = addon.NormalManaRegenPerSpi,
 		},
 	},
 	["ADD_NORMAL_MANA_REG_MOD_INT"] = {
 		{
-			["value"] = function()
-				local level = UnitLevel("player")
-				local _, int = UnitStat("player", 4)
-				local _, spi = UnitStat("player", 5)
-				-- Derivative of regen with respect to int
-				return (spi * BaseManaRegenPerSpi[level] / (2 * (int ^ 0.5))) * 5
-			end,
-			["regen"] = true,
+			["regen"] = addon.NormalManaRegenPerInt,
 		},
 	},
 	-- Paladin: Lay on Hands (Rank 1/2) - Buff

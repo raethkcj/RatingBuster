@@ -1410,7 +1410,7 @@ elseif addon.playerRace == "Human" then
 end
 
 -- Extracted from the client at GameTables/RegenMPPerSpt.txt via wow.tools.local
-local BaseManaRegenPerSpi = {
+addon.BaseManaRegenPerSpi = {
 	0.062937, 0.056900, 0.051488, 0.046267, 0.041637, 0.037784, 0.034309, 0.031172, 0.028158, 0.025460,
 	0.022654, 0.019904, 0.017817, 0.015771, 0.014008, 0.013650, 0.013175, 0.012832, 0.012475, 0.012073,
 	0.011840, 0.011494, 0.011292, 0.010990, 0.010761, 0.010546, 0.010321, 0.010151, 0.009949, 0.009740,
@@ -1426,25 +1426,12 @@ local BaseManaRegenPerSpi = {
 StatLogic.StatModTable["ALL"] = {
 	["ADD_NORMAL_MANA_REG_MOD_SPI"] = {
 		{
-			["value"] = function()
-				local level = UnitLevel("player")
-				local _, int = UnitStat("player", 4)
-				local _, spi = UnitStat("player", 5)
-				return (0.001 / spi + BaseManaRegenPerSpi[level] * (int ^ 0.5)) * 5
-			end,
-			["regen"] = true,
+			["regen"] = addon.NormalManaRegenPerSpi,
 		},
 	},
 	["ADD_NORMAL_MANA_REG_MOD_INT"] = {
 		{
-			["value"] = function()
-				local level = UnitLevel("player")
-				local _, int = UnitStat("player", 4)
-				local _, spi = UnitStat("player", 5)
-				-- Derivative of regen with respect to int
-				return (spi * BaseManaRegenPerSpi[level] / (2 * (int ^ 0.5))) * 5
-			end,
-			["regen"] = true,
+			["regen"] = addon.NormalManaRegenPerInt,
 		},
 	},
 	["ADD_MANA_REG_MOD_MANA"] = {

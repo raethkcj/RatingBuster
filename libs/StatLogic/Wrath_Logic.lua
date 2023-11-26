@@ -2446,7 +2446,7 @@ elseif addon.playerRace == "Human" then
 end
 
 -- Extracted from the client at GameTables/RegenMPPerSpt.txt via wow.tools.local
-local BaseManaRegenPerSpi = {
+addon.BaseManaRegenPerSpi = {
 	0.062937, 0.056900, 0.051488, 0.046267, 0.041637, 0.037784, 0.034309, 0.031172, 0.028158, 0.025460,
 	0.022654, 0.019904, 0.017817, 0.015771, 0.014008, 0.013650, 0.013175, 0.012832, 0.012475, 0.012073,
 	0.011840, 0.011494, 0.011292, 0.010990, 0.010761, 0.010546, 0.010321, 0.010151, 0.009949, 0.009740,
@@ -2457,28 +2457,30 @@ local BaseManaRegenPerSpi = {
 	0.005316, 0.005049, 0.004796, 0.004555, 0.004327, 0.004110, 0.003903, 0.003708, 0.003522, 0.003345,
 }
 
+addon.NormalManaRegenPerSpi = function()
+	local level = UnitLevel("player")
+	local _, int = UnitStat("player", 4)
+	local _, spi = UnitStat("player", 5)
+	return (0.001 / spi + addon.BaseManaRegenPerSpi[level] * (int ^ 0.5)) * 5
+end
+
+addon.NormalManaRegenPerInt = function()
+	local level = UnitLevel("player")
+	local _, int = UnitStat("player", 4)
+	local _, spi = UnitStat("player", 5)
+	-- Derivative of regen with respect to int
+	return (spi * addon.BaseManaRegenPerSpi[level] / (2 * (int ^ 0.5))) * 5
+end
+
 StatLogic.StatModTable["ALL"] = {
 	["ADD_NORMAL_MANA_REG_MOD_SPI"] = {
 		{
-			["value"] = function()
-				local level = UnitLevel("player")
-				local _, int = UnitStat("player", 4)
-				local _, spi = UnitStat("player", 5)
-				return (0.001 / spi + BaseManaRegenPerSpi[level] * (int ^ 0.5)) * 5
-			end,
-			["regen"] = true,
+			["regen"] = addon.NormalManaRegenPerSpi,
 		},
 	},
 	["ADD_NORMAL_MANA_REG_MOD_INT"] = {
 		{
-			["value"] = function()
-				local level = UnitLevel("player")
-				local _, int = UnitStat("player", 4)
-				local _, spi = UnitStat("player", 5)
-				-- Derivative of regen with respect to int
-				return (spi * BaseManaRegenPerSpi[level] / (2 * (int ^ 0.5))) * 5
-			end,
-			["regen"] = true,
+			["regen"] = addon.NormalManaRegenPerInt,
 		},
 	},
 	-- ICC: Chill of the Throne
