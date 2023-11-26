@@ -85,6 +85,7 @@ L["SPI"] = SPELL_STAT5_NAME
 L["PARRY"] = PARRY
 L["MANA_REG"] = "Mana Regen"
 L["NORMAL_MANA_REG"] = SPELL_STAT4_NAME .. " & " .. SPELL_STAT5_NAME -- Intellect & Spirit
+L["HEALTH_REG"] = "Health Regen"
 L["PET_STA"] = PET .. SPELL_STAT3_NAME -- Pet Stamina
 L["PET_INT"] = PET .. SPELL_STAT4_NAME -- Pet Intellect
 L.statModOptionName = function(show, add)
@@ -186,8 +187,8 @@ L["Show Mana Regen while casting from Spirit"] = true
 L["Show Mana Regen while NOT casting"] = true
 L["Show Mana Regen while NOT casting from Spirit"] = true
 -- /rb stat spi hp5
-L["Show Health Regen"] = true
-L["Show Health Regen from Spirit"] = true
+L["Show Health Regen (Out of Combat)"] = true
+L["Show Health Regen (Out of Combat) from Spirit"] = true
 -- /rb stat spi dmg
 L["Show Spell Damage"] = true
 L["Show Spell Damage from Spirit"] = true
@@ -668,6 +669,7 @@ L["$value Block"] = true
 L["$value MP5"] = true
 L["$value MP5(NC)"] = true
 L["$value HP5"] = true
+L["$value HP5(NC)"] = true
 L["$value to be Dodged/Parried"] = true
 L["$value to be Crit"] = true
 L["$value Crit Dmg Taken"] = true

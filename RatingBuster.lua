@@ -410,10 +410,10 @@ local options = {
 							desc = L["Show Mana Regen while NOT casting from Spirit"],
 							width = "full",
 						},
-						showHP5FromSpi = {
+						showHP5NCFromSpi = {
 							type = 'toggle',
-							name = L["Show Health Regen"],
-							desc = L["Show Health Regen from Spirit"],
+							name = L["Show Health Regen (Out of Combat)"],
+							desc = L["Show Health Regen (Out of Combat) from Spirit"],
 							width = "full",
 						},
 					},
@@ -1399,6 +1399,7 @@ do
 	local statToOptionKey = setmetatable({
 		["AP"] = "AP",
 		["MANA_REG"] = "MP5",
+		["HEALTH_REG"] = "HP5",
 		["RANGED_AP"] = "RAP",
 	},
 	{
@@ -1437,56 +1438,60 @@ do
 	end
 
 	local function GenerateStatModOptions()
-		for statMod, cases in pairs(StatLogic.StatModTable[class]) do
-			local add = StatLogic.StatModInfo[statMod].add
-			local mod = StatLogic.StatModInfo[statMod].mod
+		for _, modList in pairs(StatLogic.StatModTable) do
+			for statMod, cases in pairs(modList) do
+				local add = StatLogic.StatModInfo[statMod].add
+				local mod = StatLogic.StatModInfo[statMod].mod
 
-			if add and mod then
-				local sources = ""
-				local firstSource = true
-				for _, case in ipairs(cases) do
-					if not firstSource then
-						sources = sources .. ", "
+				if add and mod then
+					local sources = ""
+					local firstSource = true
+					for _, case in ipairs(cases) do
+						if not firstSource then
+							sources = sources .. ", "
+						end
+						local source = ""
+						if case.buff then
+							source = GetSpellInfo(case.buff)
+						elseif case.tab then
+							source = StatLogic:GetOrderedTalentInfo(case.tab, case.num)
+						elseif case.glyph then
+							source = GetSpellInfo(case.glyph)
+						end
+						sources = sources .. source
+						firstSource = false
 					end
-					local source = ""
-					if case.buff then
-						source = GetSpellInfo(case.buff)
-					elseif case.tab then
-						source = StatLogic:GetOrderedTalentInfo(case.tab, case.num)
-					elseif case.glyph then
-						source = GetSpellInfo(case.glyph)
+
+					-- Molten Armor and Forceful Deflection give rating,
+					-- but we show it to the user as the converted stat
+					add = add:gsub("_RATING", "")
+
+					if mod == "NORMAL_MANA_REG" then
+						-- "Normal mana regen" is added from both int and spirit
+						addStatModOption(add, "INT", sources)
+						mod = "SPI"
+					elseif mod == "NORMAL_HEALTH_REG" then
+						mod = "SPI"
+					elseif mod == "MANA" then
+						mod = "INT"
+					elseif mod == "AP" then
+						-- Paladin's Sheathe of Light, Touched by the Light
+						-- Shaman's Mental Quickness.
+						-- TODO: Shaman AP can also come from INT in Wrath
+						if GSM("ADD_AP_MOD_STR") > 0 then
+							addStatModOption(add, "STR", sources)
+						end
+						if GSM("ADD_AP_MOD_AGI") > 0 then
+							addStatModOption(add, "AGI", sources)
+						end
 					end
-					sources = sources .. source
-					firstSource = false
+
+					-- Demonic Knowledge technically scales with pet stats,
+					-- but we compute the scaling from player's stats
+					mod = mod:gsub("^PET_", "")
+
+					addStatModOption(add, mod, sources)
 				end
-
-				-- Molten Armor and Forceful Deflection give rating,
-				-- but we show it to the user as the converted stat
-				add = add:gsub("_RATING", "")
-
-				if mod == "NORMAL_MANA_REG" then
-					-- "Normal mana regen" is added from both int and spirit
-					addStatModOption(add, "INT", sources)
-					mod = "SPI"
-				elseif mod == "MANA" then
-					mod = "INT"
-				elseif mod == "AP" then
-					-- Paladin's Sheathe of Light, Touched by the Light
-					-- Shaman's Mental Quickness.
-					-- TODO: Shaman AP can also come from INT in Wrath
-					if GSM("ADD_AP_MOD_STR") > 0 then
-						addStatModOption(add, "STR", sources)
-					end
-					if GSM("ADD_AP_MOD_AGI") > 0 then
-						addStatModOption(add, "AGI", sources)
-					end
-				end
-
-				-- Demonic Knowledge technically scales with pet stats,
-				-- but we compute the scaling from player's stats
-				mod = mod:gsub("^PET_", "")
-
-				addStatModOption(add, mod, sources)
 			end
 		end
 	end
@@ -2388,9 +2393,15 @@ do
 				end
 			end
 			if profileDB.showHP5FromSpi then
-				local effect = value * GSM("ADD_NORMAL_HEALTH_REG_MOD_SPI")
+				local effect = value * GSM("ADD_NORMAL_HEALTH_REG_MOD_SPI") * GSM("MOD_NORMAL_HEALTH_REG") * GSM("ADD_HEALTH_REG_MOD_NORMAL_HEALTH_REG")
 				if floor(abs(effect) * 10 + 0.5) > 0 then
 					tinsert(infoTable, (L["$value HP5"]:gsub("$value", ("%+.1f"):format(effect))))
+				end
+			end
+			if profileDB.showHP5NCFromSpi then
+				local effect = value * GSM("ADD_NORMAL_HEALTH_REG_MOD_SPI") * GSM("MOD_NORMAL_HEALTH_REG")
+				if floor(abs(effect) * 10 + 0.5) > 0 then
+					tinsert(infoTable, (L["$value HP5(NC)"]:gsub("$value", ("%+.1f"):format(effect))))
 				end
 			end
 			if profileDB.showSpellDmgFromSpi then
@@ -2646,6 +2657,7 @@ local summaryCalcData = {
 		name = "HEALTH_REG",
 		func = function(sum)
 			return sum["HEALTH_REG"]
+				+ sum[StatLogic.Stats.Spirit] * GSM("ADD_NORMAL_HEALTH_REG_MOD_SPI") * GSM("MOD_NORMAL_HEALTH_REG") * GSM("ADD_HEALTH_REG_MOD_NORMAL_HEALTH_REG")
 		end,
 	},
 	-- Health Regen while Out of Combat - HEALTH_REG, SPI
@@ -2655,7 +2667,7 @@ local summaryCalcData = {
 		func = function(sum)
 			local _, spi = UnitStat("player", 5)
 			return sum["HEALTH_REG"]
-				+ sum[StatLogic.Stats.Spirit] * GSM("ADD_NORMAL_HEALTH_REG_MOD_SPI")
+				+ sum[StatLogic.Stats.Spirit] * GSM("ADD_NORMAL_HEALTH_REG_MOD_SPI") * GSM("MOD_NORMAL_HEALTH_REG")
 		end,
 	},
 	-- Mana Regen - MANA_REG, SPI, INT

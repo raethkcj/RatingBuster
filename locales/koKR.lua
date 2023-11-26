@@ -85,6 +85,7 @@ L["SPI"] = SPELL_STAT5_NAME
 L["PARRY"] = PARRY
 L["MANA_REG"] = "마나 재생"
 L["NORMAL_MANA_REG"] = SPELL_STAT4_NAME .. " & " .. SPELL_STAT5_NAME -- Intellect & Spirit
+L["HEALTH_REG"] = HEALTH.." 재생"
 L["PET_STA"] = PET .. SPELL_STAT3_NAME -- Pet Stamina
 L["PET_INT"] = PET .. SPELL_STAT4_NAME -- Pet Intellect
 L.statModOptionName = function(show, add)
@@ -186,8 +187,8 @@ L["Show Mana Regen while casting from Spirit"] = "정신력에 의해 시전 시
 L["Show Mana Regen while NOT casting"] = "평상시 마나 재생 표시"
 L["Show Mana Regen while NOT casting from Spirit"] = "정신력에 의한 평상시 마나 재생량을 표시합니다."
 -- /rb stat spi hp5
-L["Show Health Regen"] = "생명력 재생 표시"
-L["Show Health Regen from Spirit"] = "정신력에 의한 생명력 재생량을 표시합니다."
+L["Show Health Regen (Out of Combat)"] = "생명력 재생 (비전투) 표시"
+L["Show Health Regen (Out of Combat) from Spirit"] = "정신력에 의한 생명력 재생량을 (비전투) 표시합니다."
 -- /rb stat spi dmg
 L["Show Spell Damage"] = "주문 공격력 표시"
 L["Show Spell Damage from Spirit"] = "정신력에 의한 주문 공격력을 표시합니다."
@@ -644,6 +645,7 @@ L["$value Block"] = "방어 $value"
 L["$value MP5"] = "$value MP5"
 L["$value MP5(NC)"] = "$value MP5(NC)"
 L["$value HP5"] = "$value HP5"
+L["$value HP5(NC)"] = true
 L["$value to be Dodged/Parried"] = "이후 회피 감소/무기막기 감소 $value"
 L["$value to be Crit"] = "이후 치명타 $value"
 L["$value Crit Dmg Taken"] = "가질 치명타 데미지 $value"

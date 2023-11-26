@@ -84,6 +84,7 @@ L["SPI"] = SPELL_STAT5_NAME
 L["PARRY"] = PARRY
 L["MANA_REG"] = "施法回魔"
 L["NORMAL_MANA_REG"] = SPELL_STAT4_NAME .. " & " .. SPELL_STAT5_NAME -- Intellect & Spirit
+L["HEALTH_REG"] = "生命恢复"
 L["PET_STA"] = PET .. SPELL_STAT3_NAME -- Pet Stamina
 L["PET_INT"] = PET .. SPELL_STAT4_NAME -- Pet Intellect
 L.statModOptionName = function(show, add)
@@ -185,8 +186,8 @@ L["Show Mana Regen while casting from Spirit"] = "显示在施法状态时，精
 L["Show Mana Regen while NOT casting"] = "显示正常回魔"
 L["Show Mana Regen while NOT casting from Spirit"] = "显示在未施法状态时，精神给的法力恢复量"
 -- /rb stat spi hp5
-L["Show Health Regen"] = "显示回血"
-L["Show Health Regen from Spirit"] = "显示精神给的正常回血"
+L["Show Health Regen (Out of Combat)"] = "显示正常回血"
+L["Show Health Regen (Out of Combat) from Spirit"] = "显示精神给的正常回血"
 -- /rb stat spi dmg
 L["Show Spell Damage"] = "显示法伤"
 L["Show Spell Damage from Spirit"] = "显示精神给的法术伤害加成"
@@ -644,6 +645,7 @@ L["$value Block"] = "$value 格挡值"
 L["$value MP5"] = "$value 施法回魔"
 L["$value MP5(NC)"] = "$value 精神回魔"
 L["$value HP5"] = "$value 回血"
+L["$value HP5(NC)"] = "$value 正常回血"
 L["$value to be Dodged/Parried"] = "$value 被躲闪/被招架"
 L["$value to be Crit"] = "$value 被致命一击"
 L["$value Crit Dmg Taken"] = "$value 致命一击伤害减免"

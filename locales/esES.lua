@@ -86,6 +86,7 @@ L["SPI"] = SPELL_STAT5_NAME
 L["PARRY"] = PARRY
 L["MANA_REG"] = "Regen.Mana"
 L["NORMAL_MANA_REG"] = SPELL_STAT4_NAME .. " & " .. SPELL_STAT5_NAME -- Intellect & Spirit
+L["HEALTH_REG"] = "Regen.Salud"
 L["PET_STA"] = PET .. SPELL_STAT3_NAME -- Pet Stamina
 L["PET_INT"] = PET .. SPELL_STAT4_NAME -- Pet Intellect
 L.statModOptionName = function(show, add)
@@ -187,8 +188,8 @@ L["Show Mana Regen while casting from Spirit"] = "Muestra la Regen.Mana de Espí
 L["Show Mana Regen while NOT casting"] = "Mostrar Regen.Mana NO lanzando"
 L["Show Mana Regen while NOT casting from Spirit"] = "Muestra la Regen.Mana NO lanzando de Espíritu"
 -- /rb stat spi hp5
-L["Show Health Regen"] = "Mostrar Regen.Salud"
-L["Show Health Regen from Spirit"] = "Muestra la Regen. de Salud de Espíritu"
+L["Show Health Regen (Out of Combat)"] = "Mostrar Regen.Salud (Out of Combat)"
+L["Show Health Regen (Out of Combat) from Spirit"] = "Muestra la Regen. de Salud de Espíritu (Out of Combat)"
 -- /rb stat spi dmg
 L["Show Spell Damage"] = "Mostrar Daño Hech"
 L["Show Spell Damage from Spirit"] = "Muestra el Daño de Hechizos de Espíritu"
@@ -645,6 +646,7 @@ L["$value Block"] = "$value Bloqueo"
 L["$value MP5"] = "$value Mana/5sec"
 L["$value MP5(NC)"] = "$value Mana/5sec(SL)"
 L["$value HP5"] = "$value Vida/5sec"
+L["$value HP5(NC)"] = "$value Vida/5sec(NC)"
 L["$value to be Dodged/Parried"] = "$value Esquivado/Parado"
 L["$value to be Crit"] = "$value recibir Crit"
 L["$value Crit Dmg Taken"] = "$value Daño crit recib"

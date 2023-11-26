@@ -562,6 +562,10 @@ StatLogic.StatModInfo = {
 		initialValue = 1,
 		finalAdjust = 0,
 	},
+	["MOD_NORMAL_HEALTH_REG"] = {
+		initialValue = 1,
+		finalAdjust = 0,
+	},
 	["MOD_INT"] = {
 		initialValue = 0,
 		finalAdjust = 1,
@@ -663,6 +667,12 @@ local addedInfoMods = {
 	{
 		add = "HEALING",
 		mod = "STR",
+		initialValue = 0,
+		finalAdjust = 0,
+	},
+	{
+		add = "HEALTH_REG",
+		mod = "NORMAL_HEALTH_REG",
 		initialValue = 0,
 		finalAdjust = 0,
 	},

@@ -85,6 +85,7 @@ L["SPI"] = SPELL_STAT5_NAME
 L["PARRY"] = PARRY
 L["MANA_REG"] = "Manaregeneration"
 L["NORMAL_MANA_REG"] = SPELL_STAT4_NAME .. " & " .. SPELL_STAT5_NAME -- Intellect & Spirit
+L["HEALTH_REG"] = "Gesundheitsregeneration"
 L["PET_STA"] = PET .. SPELL_STAT3_NAME -- Pet Stamina
 L["PET_INT"] = PET .. SPELL_STAT4_NAME -- Pet Intellect
 L.statModOptionName = function(show, add)
@@ -186,8 +187,8 @@ L["Show Mana Regen while casting from Spirit"] = "Zeige Manaregeneration währen
 L["Show Mana Regen while NOT casting"] = "Zeige Manaregeneration (nicht Zaubernd)"
 L["Show Mana Regen while NOT casting from Spirit"] = "Zeige Manaregeneration (nicht Zaubernd) resultierend aus Willenskraft"
 -- /rb stat spi hp5
-L["Show Health Regen"] = "Zeige Lebensregeneration"
-L["Show Health Regen from Spirit"] = "Zeige Lebensregeneration resultierend aus Willenskraft"
+L["Show Health Regen (Out of Combat)"] = "Zeige Lebensregeneration (Nicht im Kampf)"
+L["Show Health Regen (Out of Combat) from Spirit"] = "Zeige Lebensregeneration (Nicht im Kampf) resultierend aus Willenskraft"
 -- /rb stat spi dmg
 L["Show Spell Damage"] = "Zeige Zauberschaden"
 L["Show Spell Damage from Spirit"] = "Zeige Zauberschaden resultierend aus Willenskraft"
@@ -649,6 +650,7 @@ L["$value Block"] = "$value Blocken"
 --	["$value MP5"] = true,
 --	["$value MP5(NC)"] = true,
 --	["$value HP5"] = true,
+--  L["$value HP5(NC)"] = true
 L["$value to be Dodged/Parried"] = "$value wird Ausgewichen/Pariert"
 L["$value to be Crit"] = "$value wird kritisch"
 L["$value Crit Dmg Taken"] = "$value erlittener Schaden"

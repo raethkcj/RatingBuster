@@ -95,6 +95,7 @@ L["SPI"] = "Дух"
 L["PARRY"] = "Парирование"
 L["MANA_REG"] = "Восполнение маны"
 L["NORMAL_MANA_REG"] = "Интеллект" .. " & " .. "Дух" -- Intellect & Spirit
+L["HEALTH_REG"] = "Восстановление здоровья"
 L["PET_STA"] = "Выносливость питомца" -- Pet Stamina
 L["PET_INT"] = "Интеллект питомца" -- Pet Intellect
 L.statModOptionName = function(show, add)
@@ -193,11 +194,11 @@ L["Show Spell Damage from Intellect"] = "Показывать расчет си�
 L["Show Healing"] = "Исцеление"
 L["Show Healing from Intellect"] = "Показывать расчет исцеления от интеллекта"
 -- /rb stat int mp5
-L["Show Combat Mana Regen"] = "Восполнение маны в бою"
-L["Show Mana Regen while in combat from Intellect"] = "Показывать расчет восполнения маны от интеллекта (в бою)"
+L["Show Mana Regen"] = "Восполнение маны в бою"
+L["Show Mana Regen while casting from Intellect"] = "Показывать расчет восполнения маны от интеллекта (в бою)"
 -- /rb stat int mp5oc
 L["Show Normal Mana Regen"] = "Восполнения маны вне боя"
-L["Show Mana Regen while not in combat from Intellect"] = "Показывать расчет восполнения маны от интеллекта (вне боя)"
+L["Show Mana Regen while NOT casting from Intellect"] = "Показывать расчет восполнения маны от интеллекта (вне боя)"
 -- /rb stat int rap
 L["Show Ranged Attack Power"] = "Сила атаки дальнего боя"
 L["Show Ranged Attack Power from Intellect"] = "Показывать расчет силы атаки дальнего боя от интеллекта"
@@ -209,14 +210,14 @@ L["Show Attack Power from Intellect"] = "Показывать расчет си�
 L["Spirit"] = "Дух"
 L["Changes the display of Spirit"] = "Изменить отображение духа"
 -- /rb stat spi mp5
-L["Show Combat Mana Regen"] = "Восполнение маны в бою"
-L["Show Mana Regen while in combat from Spirit"] = "Показывать расчет восполнения маны от духа (в бою)"
+L["Show Mana Regen"] = "Восполнение маны в бою"
+L["Show Mana Regen while casting from Spirit"] = "Показывать расчет восполнения маны от духа (в бою)"
 -- /rb stat spi mp5oc
-L["Show Normal Mana Regen"] = "Восполнения маны вне боя"
-L["Show Mana Regen while not in combat from Spirit"] = "Показывать расчет восполнения маны от духа (вне боя)"
+L["Show Mana Regen while NOT casting"] = "Восполнения маны вне боя"
+L["Show Mana Regen while NOT casting from Spirit"] = "Показывать расчет восполнения маны от духа (вне боя)"
 -- /rb stat spi hp5
-L["Show Normal Health Regen"] = "Восполнение здаровья вне боя"
-L["Show Health Regen while not in combat from Spirit"] = "Показывать расчет восполнения здоровья от духа (вне боя)"
+L["Show Health Regen (Out of Combat)"] = "Восполнение здаровья вне боя"
+L["Show Health Regen (Out of Combat) from Spirit"] = "Показывать расчет восполнения здоровья от духа (вне боя)"
 -- /rb stat spi dmg
 L["Show Spell Damage"] = "Сила заклинаний"
 L["Show Spell Damage from Spirit"] = "Показывать расчет силы заклинаний от духа"
@@ -807,6 +808,7 @@ L["$value MP5"] = "$value маны раз в 5 сек."
 L["$value MP5(OC)"] = "$value маны раз в 5 сек. (вне боя)"
 L["$value MP5(NC)"] = "$value маны раз в 5 сек. (вне каста)"
 L["$value HP5"] = "$value здоровья раз в 5 сек."
+L["$value HP5(NC)"] = "$value ХП5 (вне боя)"
 L["$value to be Dodged/Parried"] = "$value уклонения/парирования" -- Target's dodges/parrys against your attacks
 L["$value to be Crit"] = "$value% к получению крит. удара" -- Your chance to get critical hit from target
 L["$value Crit Dmg Taken"] = "$value к получению крит. урона"
