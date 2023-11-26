@@ -40,58 +40,6 @@ StatLogic.GenericStatMap[StatLogic.GenericStats.CR_HASTE] = {
 	CR_HASTE_RANGED,
 }
 
---[[---------------------------------
-{	:GetNormalManaRegen(spi, [int], [level])
--------------------------------------
--- Description
-	Calculates the mana regen per 5 seconds while NOT casting from spirit.
--- Remarks
-	Player class is no longer a parameter
-	ManaRegen(SPI, INT, LEVEL) = (0.001+SPI*BASE_REGEN[LEVEL]*(INT^0.5))*5
--- Examples
-	StatLogic:GetNormalManaRegen(1)
-	StatLogic:GetNormalManaRegen(10, 15)
-	StatLogic:GetNormalManaRegen(10, 15, 70)
-}
------------------------------------]]
-
--- Numbers reverse engineered by Whitetooth@Cenarius(US) (hotdogee [at] gmail [dot] com)
-local BaseManaRegenPerSpi = {
-	0.034965, 0.034191, 0.033465, 0.032526, 0.031661, 0.031076, 0.030523, 0.029994, 0.029307, 0.028661,
-	0.027584, 0.026215, 0.025381, 0.024300, 0.023345, 0.022748, 0.021958, 0.021386, 0.020790, 0.020121,
-	0.019733, 0.019155, 0.018819, 0.018316, 0.017936, 0.017576, 0.017201, 0.016919, 0.016581, 0.016233,
-	0.015994, 0.015707, 0.015464, 0.015204, 0.014956, 0.014744, 0.014495, 0.014302, 0.014094, 0.013895,
-	0.013724, 0.013522, 0.013363, 0.013175, 0.012996, 0.012853, 0.012687, 0.012539, 0.012384, 0.012233,
-	0.012113, 0.011973, 0.011859, 0.011714, 0.011575, 0.011473, 0.011342, 0.011245, 0.011110, 0.010999,
-	0.010700, 0.010522, 0.010290, 0.010119, 0.009968, 0.009808, 0.009651, 0.009553, 0.009445, 0.009327,
-}
-
----@param spi integer
----@param int? string Defaults to player class
----@param level? integer Defaults to player level
----@return number mp5nc Mana regen per 5 seconds when out of combat
----@return string statid
----@diagnostic disable-next-line:duplicate-set-field
-function StatLogic:GetNormalManaRegen(spi, int, level)
-	-- argCheck for invalid input
-	self:argCheck(spi, 2, "number")
-	self:argCheck(int, 3, "nil", "number")
-	self:argCheck(level, 4, "nil", "number")
-
-	-- if level is invalid input, default to player level
-	if type(level) ~= "number" or level < 1 or level > 70 then
-		level = UnitLevel("player")
-	end
-
-	-- if int is invalid input, default to player int
-	if type(int) ~= "number" then
-		local _
-		_, int = UnitStat("player",4)
-	end
-	-- Calculate
-	return (0.001 + spi * BaseManaRegenPerSpi[level] * (int ^ 0.5)) * 5, "MANA_REG_NOT_CASTING"
-end
-
 -- Numbers reverse engineered by Whitetooth@Cenarius(US) (hotdogee [at] gmail [dot] com
 local HealthRegenPerSpi = {
 	["WARRIOR"] = 0.5,
@@ -1414,7 +1362,41 @@ elseif addon.playerRace == "Human" then
 	}
 end
 
+-- Numbers reverse engineered by Whitetooth@Cenarius(US) (hotdogee [at] gmail [dot] com)
+local BaseManaRegenPerSpi = {
+	0.034965, 0.034191, 0.033465, 0.032526, 0.031661, 0.031076, 0.030523, 0.029994, 0.029307, 0.028661,
+	0.027584, 0.026215, 0.025381, 0.024300, 0.023345, 0.022748, 0.021958, 0.021386, 0.020790, 0.020121,
+	0.019733, 0.019155, 0.018819, 0.018316, 0.017936, 0.017576, 0.017201, 0.016919, 0.016581, 0.016233,
+	0.015994, 0.015707, 0.015464, 0.015204, 0.014956, 0.014744, 0.014495, 0.014302, 0.014094, 0.013895,
+	0.013724, 0.013522, 0.013363, 0.013175, 0.012996, 0.012853, 0.012687, 0.012539, 0.012384, 0.012233,
+	0.012113, 0.011973, 0.011859, 0.011714, 0.011575, 0.011473, 0.011342, 0.011245, 0.011110, 0.010999,
+	0.010700, 0.010522, 0.010290, 0.010119, 0.009968, 0.009808, 0.009651, 0.009553, 0.009445, 0.009327,
+}
+
 StatLogic.StatModTable["ALL"] = {
+	["ADD_NORMAL_MANA_REG_MOD_SPI"] = {
+		{
+			["value"] = function()
+				local level = UnitLevel("player")
+				local _, int = UnitStat("player", 4)
+				local _, spi = UnitStat("player", 5)
+				return (0.001 / spi + BaseManaRegenPerSpi[level] * (int ^ 0.5)) * 5
+			end,
+			["regen"] = true,
+		},
+	},
+	["ADD_NORMAL_MANA_REG_MOD_INT"] = {
+		{
+			["value"] = function()
+				local level = UnitLevel("player")
+				local _, int = UnitStat("player", 4)
+				local _, spi = UnitStat("player", 5)
+				-- Derivative of regen with respect to int
+				return (spi * BaseManaRegenPerSpi[level] / (2 * (int ^ 0.5))) * 5
+			end,
+			["regen"] = true,
+		},
+	},
 	-- Paladin: Lay on Hands (Rank 1/2) - Buff
 	--          Armor increased by 15%/30%.
 	-- Priest: Inspiration (Rank 1/2/3) - Buff

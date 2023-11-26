@@ -510,6 +510,14 @@ StatLogic.StatModInfo = {
 		initialValue = 0,
 		finalAdjust = 0,
 	},
+	["ADD_NORMAL_MANA_REG_MOD_INT"] = {
+		initialValue = 0,
+		finalAdjust = 0,
+	},
+	["ADD_NORMAL_MANA_REG_MOD_SPI"] = {
+		initialValue = 0,
+		finalAdjust = 0,
+	},
 	["ADD_PET_INT_MOD_INT"] = {
 		initialValue = 0,
 		finalAdjust = 0,
@@ -901,6 +909,12 @@ addon.StatModValidators = {
 			["UNIT_PET"] = "player",
 		},
 	},
+	regen = {
+		events = {
+			["UNIT_STATS"] = "player",
+			["PLAYER_LEVEL_UP"] = true,
+		},
+	},
 	rune = {
 		validate = function(case)
 			if C_Engraving then
@@ -977,22 +991,14 @@ end
 do
 	local f = CreateFrame("Frame")
 	for _, validator in pairs(addon.StatModValidators) do
-		if validator.events then
-			for event, unit in pairs(validator.events) do
-				if C_EventUtils.IsEventValid(event) then
-					if type(unit) == "string" then
-						f:RegisterUnitEvent(event, unit)
-					else
-						f:RegisterEvent(event)
-					end
+		for event, unit in pairs(validator.events) do
+			if C_EventUtils.IsEventValid(event) then
+				if type(unit) == "string" then
+					f:RegisterUnitEvent(event, unit)
+				else
+					f:RegisterEvent(event)
 				end
 			end
-		end
-	end
-
-	for event in pairs(addon.StatModCacheInvalidators) do
-		if C_EventUtils.IsEventValid(event) then
-			f:RegisterEvent(event)
 		end
 	end
 
@@ -1126,6 +1132,9 @@ do
 			value = case.rank[rank]
 		elseif case.value then
 			value = case.value
+			if type(value) == "function" then
+				value = value()
+			end
 		end
 
 		if value then

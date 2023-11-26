@@ -4,43 +4,6 @@ local StatLogic = LibStub:GetLibrary(addonName)
 
 addon.RatingBase = {}
 
---[[---------------------------------
-{	:GetNormalManaRegen(spi)
--------------------------------------
--- Description
-	Calculates the mana regen per 5 seconds while NOT casting from spirit for any class.
--- Remarks
-	Player level does not effect mana regen per spirit.
--- Examples
-	StatLogic:GetNormalManaRegen(1)
-	StatLogic:GetNormalManaRegen(10)
-}
------------------------------------]]
-
--- Numbers reverse engineered by Whitetooth@Cenarius(US) (hotdogee [at] gmail [dot] com)
-local NormalManaRegenPerSpi = {
-	["WARRIOR"] = 0,
-	["PALADIN"] = 0.1,
-	["HUNTER"] = 0.1,
-	["ROGUE"] = 0,
-	["PRIEST"] = 0.125,
-	["SHAMAN"] = 0.1,
-	["MAGE"] = 0.125,
-	["WARLOCK"] = 0.1,
-	["DRUID"] = 0.1125,
-}
-
----@param spi integer
----@return number mp5nc Mana regen per 5 seconds when out of combat
----@return string statid
----@diagnostic disable-next-line:duplicate-set-field
-function StatLogic:GetNormalManaRegen(spi)
-	-- argCheck for invalid input
-	self:argCheck(spi, 2, "number")
-	-- Calculate
-	return spi * NormalManaRegenPerSpi[addon.class] * 5, "MANA_REG_NOT_CASTING"
-end
-
 -- Numbers reverse engineered by Whitetooth@Cenarius(US) (hotdogee [at] gmail [dot] com
 local HealthRegenPerSpi = {
 	["WARRIOR"] = 0.5,
@@ -189,6 +152,11 @@ if addon.class == "DRUID" then
 				["buff"] = 768,
 			},
 		},
+		["ADD_NORMAL_MANA_REG_MOD_SPI"] = {
+			{
+				["value"] = 0.5625,
+			},
+		},
 		-- Druid: Reflection - 3,6
 		--        Allows 5/10/15% of your Mana regeneration to continue while casting
 		["ADD_MANA_REG_MOD_NORMAL_MANA_REG"] = {
@@ -331,6 +299,11 @@ elseif addon.class == "HUNTER" then
 				["value"] = 2,
 			},
 		},
+		["ADD_NORMAL_MANA_REG_MOD_SPI"] = {
+			{
+				["value"] = 0.5,
+			},
+		},
 		["ADD_DODGE"] = {
 			-- Hunter: Aspect of the Monkey - Buff
 			--         The hunter takes on the aspects of a monkey, increasing chance to dodge by 8%. Only one Aspect can be active at a time.
@@ -451,6 +424,11 @@ elseif addon.class == "MAGE" then
 				["value"] = 1,
 			},
 		},
+		["ADD_NORMAL_MANA_REG_MOD_SPI"] = {
+			{
+				["value"] = 0.625,
+			},
+		},
 		-- Mage: Arcane Fortitude - 1,9
 		--       Increases your armor by an amount equal to 50% of your Intellect.
 		["ADD_ARMOR_MOD_INT"] = {
@@ -522,6 +500,11 @@ elseif addon.class == "PALADIN" then
 				["value"] = 2,
 			},
 		},
+		["ADD_NORMAL_MANA_REG_MOD_SPI"] = {
+			{
+				["value"] = 0.5,
+			},
+		},
 		["ADD_MELEE_CRIT"] = {
 			-- Conviction
 			{
@@ -589,6 +572,11 @@ elseif addon.class == "PRIEST" then
 		["ADD_AP_MOD_STR"] = {
 			{
 				["value"] = 1,
+			},
+		},
+		["ADD_NORMAL_MANA_REG_MOD_SPI"] = {
+			{
+				["value"] = 0.625,
 			},
 		},
 		-- Priest: Meditation (Rank 3) - 1,8
@@ -735,6 +723,11 @@ elseif addon.class == "SHAMAN" then
 				["value"] = 2,
 			},
 		},
+		["ADD_NORMAL_MANA_REG_MOD_SPI"] = {
+			{
+				["value"] = 0.5,
+			},
+		},
 		-- Shaman: Anticipation (Rank 5) - 2,9
 		--         Increases your chance to dodge by an additional 1%/2%/3%/4%/5%.
 		["ADD_DODGE"] = {
@@ -831,6 +824,11 @@ elseif addon.class == "WARLOCK" then
 		["ADD_AP_MOD_STR"] = {
 			{
 				["value"] = 1,
+			},
+		},
+		["ADD_NORMAL_MANA_REG_MOD_SPI"] = {
+			{
+				["value"] = 0.5,
 			},
 		},
 		-- Warlock: Demonic Embrace (Rank 5) - 2,3

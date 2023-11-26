@@ -52,58 +52,6 @@ StatLogic.GenericStatMap[StatLogic.GenericStats.CR_HASTE] = {
 	CR_HASTE_SPELL,
 }
 
---[[---------------------------------
-	:GetNormalManaRegen(spi, [int], [level])
--------------------------------------
-Notes:
-	* Formula and BASE_REGEN values derived by Whitetooth (hotdogee [at] gmail [dot] com)
-	* Calculates the mana regen per 5 seconds from spirit when out of 5 second rule for given intellect and level.
-	* Player class is no longer a parameter
-	* ManaRegen(SPI, INT, LEVEL) = (0.001+SPI*BASE_REGEN[LEVEL]*(INT^0.5))*5
-Example:
-	local mp5o5sr = StatLogic:GetNormalManaRegen(1)
-	local mp5o5sr = StatLogic:GetNormalManaRegen(10, 15)
-	local mp5o5sr = StatLogic:GetNormalManaRegen(10, 15, 70)
------------------------------------]]
-
--- Extracted from the client at GameTables/RegenMPPerSpt.txt via wow.tools.local
-local BaseManaRegenPerSpi = {
-	0.062937, 0.056900, 0.051488, 0.046267, 0.041637, 0.037784, 0.034309, 0.031172, 0.028158, 0.025460,
-	0.022654, 0.019904, 0.017817, 0.015771, 0.014008, 0.013650, 0.013175, 0.012832, 0.012475, 0.012073,
-	0.011840, 0.011494, 0.011292, 0.010990, 0.010761, 0.010546, 0.010321, 0.010151, 0.009949, 0.009740,
-	0.009597, 0.009425, 0.009278, 0.009123, 0.008974, 0.008847, 0.008698, 0.008581, 0.008457, 0.008338,
-	0.008235, 0.008113, 0.008018, 0.007906, 0.007798, 0.007713, 0.007612, 0.007524, 0.007430, 0.007340,
-	0.007268, 0.007184, 0.007116, 0.007029, 0.006945, 0.006884, 0.006805, 0.006747, 0.006667, 0.006600,
-	0.006421, 0.006314, 0.006175, 0.006072, 0.005981, 0.005885, 0.005791, 0.005732, 0.005668, 0.005596,
-	0.005316, 0.005049, 0.004796, 0.004555, 0.004327, 0.004110, 0.003903, 0.003708, 0.003522, 0.003345,
-}
-
----@param spi integer
----@param int? string Defaults to player class
----@param level? integer Defaults to player level
----@return number mp5nc Mana regen per 5 seconds when not casting
----@return string statid
----@diagnostic disable-next-line:duplicate-set-field
-function StatLogic:GetNormalManaRegen(spi, int, level)
-	-- argCheck for invalid input
-	self:argCheck(spi, 2, "number")
-	self:argCheck(int, 3, "nil", "number")
-	self:argCheck(level, 4, "nil", "number")
-
-	-- if level is invalid input, default to player level
-	if type(level) ~= "number" or level < 1 or level > 80 then
-		level = UnitLevel("player")
-	end
-
-	-- if int is invalid input, default to player int
-	if type(int) ~= "number" then
-		local _
-		_, int = UnitStat("player",4)
-	end
-	-- Calculate
-	return (0.001 + spi * BaseManaRegenPerSpi[level] * (int ^ 0.5)) * 5, "MANA_REG_NOT_CASTING"
-end
-
 -- Extracted from the client at GameTables/OCTRegenHP.txt via wow.tools.local
 addon.BaseHealthRegenPerSpi = {
 	["WARRIOR"] = {
@@ -2485,7 +2433,42 @@ elseif addon.playerRace == "Human" then
 	}
 end
 
+-- Extracted from the client at GameTables/RegenMPPerSpt.txt via wow.tools.local
+local BaseManaRegenPerSpi = {
+	0.062937, 0.056900, 0.051488, 0.046267, 0.041637, 0.037784, 0.034309, 0.031172, 0.028158, 0.025460,
+	0.022654, 0.019904, 0.017817, 0.015771, 0.014008, 0.013650, 0.013175, 0.012832, 0.012475, 0.012073,
+	0.011840, 0.011494, 0.011292, 0.010990, 0.010761, 0.010546, 0.010321, 0.010151, 0.009949, 0.009740,
+	0.009597, 0.009425, 0.009278, 0.009123, 0.008974, 0.008847, 0.008698, 0.008581, 0.008457, 0.008338,
+	0.008235, 0.008113, 0.008018, 0.007906, 0.007798, 0.007713, 0.007612, 0.007524, 0.007430, 0.007340,
+	0.007268, 0.007184, 0.007116, 0.007029, 0.006945, 0.006884, 0.006805, 0.006747, 0.006667, 0.006600,
+	0.006421, 0.006314, 0.006175, 0.006072, 0.005981, 0.005885, 0.005791, 0.005732, 0.005668, 0.005596,
+	0.005316, 0.005049, 0.004796, 0.004555, 0.004327, 0.004110, 0.003903, 0.003708, 0.003522, 0.003345,
+}
+
 StatLogic.StatModTable["ALL"] = {
+	["ADD_NORMAL_MANA_REG_MOD_SPI"] = {
+		{
+			["value"] = function()
+				local level = UnitLevel("player")
+				local _, int = UnitStat("player", 4)
+				local _, spi = UnitStat("player", 5)
+				return (0.001 / spi + BaseManaRegenPerSpi[level] * (int ^ 0.5)) * 5
+			end,
+			["regen"] = true,
+		},
+	},
+	["ADD_NORMAL_MANA_REG_MOD_INT"] = {
+		{
+			["value"] = function()
+				local level = UnitLevel("player")
+				local _, int = UnitStat("player", 4)
+				local _, spi = UnitStat("player", 5)
+				-- Derivative of regen with respect to int
+				return (spi * BaseManaRegenPerSpi[level] / (2 * (int ^ 0.5))) * 5
+			end,
+			["regen"] = true,
+		},
+	},
 	-- ICC: Chill of the Throne
 	--      Chance to dodge reduced by 20%.
 	["ADD_DODGE"] = {
