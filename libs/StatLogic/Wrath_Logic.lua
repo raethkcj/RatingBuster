@@ -65,7 +65,7 @@ addon.BaseManaRegenPerSpi = {
 }
 
 -- Extracted from the client at GameTables/OCTRegenHP.txt via wow.tools.local
-addon.BaseHealthRegenPerSpi = {
+local BaseHealthRegenPerSpi = {
 	["WARRIOR"] = {
 		0.394737, 0.462264, 0.474862, 0.515375, 0.521857, 0.533258, 0.520401, 0.509427, 0.500415, 0.462648,
 		0.488835, 0.486706, 0.449973, 0.450681, 0.454545, 0.454545, 0.454545, 0.500000, 0.500000, 0.500000,
@@ -172,69 +172,66 @@ addon.BaseHealthRegenPerSpi = {
 -- Health and Mana Regeneration: These regeneration rates have been increased by up to 200% for low level characters.
 -- As a player's level increases, the regeneration rates gradually reduce, returning to normal rates at level 15.
 -- Extracted from the client at GameTables/RegenHPPerSpt.txt via wow.tools.local
-addon.HealthRegenPerSpi = {
+local HealthRegenPerSpi = {
 	["WARRIOR"] = {
 		1.50000, 1.38679, 1.28212, 1.18536, 1.09590, 1.01319, 0.93672, 0.86602, 0.80066, 0.74023,
-		0.68436, 0.63271, 0.58496, 0.54081,
+		0.68436, 0.63271, 0.58496, 0.54081, 0.50000,
 	},
 	["PALADIN"] = {
 		0.37500, 0.34669, 0.32053, 0.29634, 0.27397, 0.25329, 0.23418, 0.21650, 0.20016, 0.18505,
-		0.17109, 0.15818, 0.14624, 0.13520,
+		0.17109, 0.15818, 0.14624, 0.13520, 0.12500,
 	},
 	["HUNTER"] = {
 		0.37500, 0.34669, 0.32053, 0.29634, 0.27397, 0.25329, 0.23418, 0.21650, 0.20016, 0.18505,
-		0.17109, 0.15818, 0.14624, 0.13520,
+		0.17109, 0.15818, 0.14624, 0.13520, 0.12500,
 	},
 	["ROGUE"] = {
 		1.00000, 0.92452, 0.85475, 0.79024, 0.73060, 0.67546, 0.62448, 0.57735, 0.53377, 0.49349,
-		0.45624, 0.42181, 0.38997, 0.36054,
+		0.45624, 0.42181, 0.38997, 0.36054, 0.333333,
 	},
 	["PRIEST"] = {
 		0.12500, 0.11556, 0.10684, 0.09878, 0.09132, 0.08443, 0.07806, 0.07216, 0.06672, 0.06168,
-		0.05703, 0.05272, 0.04874, 0.04506,
+		0.05703, 0.05272, 0.04874, 0.04506, 0.041667,
 	},
 	["DEATHKNIGHT"] = {
 		1.50000, 1.38679, 1.28212, 1.18536, 1.09590, 1.01319, 0.93672, 0.86602, 0.80066, 0.74023,
-		0.68436, 0.63271, 0.58496, 0.54081,
+		0.68436, 0.63271, 0.58496, 0.54081, 0.50000,
 	},
 	["SHAMAN"] = {
 		0.21428, 0.19811, 0.18316, 0.16933, 0.15655, 0.14474, 0.13381, 0.12371, 0.11438, 0.10574,
-		0.09776, 0.09038, 0.08356, 0.07726,
+		0.09776, 0.09038, 0.08356, 0.07726, 0.071429,
 	},
 	["MAGE"] = {
 		0.12500, 0.11556, 0.10684, 0.09878, 0.09132, 0.08443, 0.07806, 0.07216, 0.06672, 0.06168,
-		0.05703, 0.05272, 0.04874, 0.04506,
+		0.05703, 0.05272, 0.04874, 0.04506, 0.041667,
 	},
 	["WARLOCK"] = {
 		0.13636, 0.12607, 0.11655, 0.10776, 0.09962, 0.09210, 0.08515, 0.07873, 0.07278, 0.06729,
-		0.06221, 0.05752, 0.05317, 0.04916,
+		0.06221, 0.05752, 0.05317, 0.04916, 0.045455,
 	},
 	["DRUID"] = {
 		0.18750, 0.17334, 0.16026, 0.14817, 0.13698, 0.12664, 0.11709, 0.10825, 0.10008, 0.09253,
-		0.08554, 0.07909, 0.07312, 0.06760,
+		0.08554, 0.07909, 0.07312, 0.06760, 0.06250,
 	},
 }
 
-local MaxHealthRegenPerSpi = {
-	["WARRIOR"] = 0.5,
-	["PALADIN"] = 0.125,
-	["HUNTER"] = 0.125,
-	["ROGUE"] = 0.333333,
-	["PRIEST"] = 0.041667,
-	["DEATHKNIGHT"] = 0.5,
-	["SHAMAN"] = 0.071429,
-	["MAGE"] = 0.041667,
-	["WARLOCK"] = 0.045455,
-	["DRUID"] = 0.0625,
-}
-
 -- See patch note above; the values are the same for all levels 15 and up
-for k, v in pairs(addon.HealthRegenPerSpi) do
+for _, v in pairs(HealthRegenPerSpi) do
 	setmetatable(v, {
 		__index = function()
-			return MaxHealthRegenPerSpi[k]
+			return v[#v]
 		end
 	})
+end
+
+local function NormalHealthRegenPerSpi()
+	local level = UnitLevel("player")
+	local _, spi = UnitStat("player", 5)
+	local data = HealthRegenPerSpi
+	if spi < 50 then
+		data = BaseHealthRegenPerSpi
+	end
+	return data[addon.class][level] * 5
 end
 
 -- Numbers reverse engineered by Whitetooth (hotdogee [at] gmail [dot] com)
@@ -2528,6 +2525,11 @@ elseif addon.playerRace == "Human" then
 end
 
 StatLogic.StatModTable["ALL"] = {
+	["ADD_NORMAL_HEALTH_REG_MOD_SPI"] = {
+		{
+			["regen"] = NormalHealthRegenPerSpi,
+		},
+	},
 	-- ICC: Chill of the Throne
 	--      Chance to dodge reduced by 20%.
 	["ADD_DODGE"] = {

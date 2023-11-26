@@ -51,30 +51,6 @@ addon.BaseManaRegenPerSpi = {
 	0.010700, 0.010522, 0.010290, 0.010119, 0.009968, 0.009808, 0.009651, 0.009553, 0.009445, 0.009327,
 }
 
--- Numbers reverse engineered by Whitetooth@Cenarius(US) (hotdogee [at] gmail [dot] com
-local HealthRegenPerSpi = {
-	["WARRIOR"] = 0.5,
-	["PALADIN"] = 0.125,
-	["HUNTER"] = 0.125,
-	["ROGUE"] = 0.333333,
-	["PRIEST"] = 0.041667,
-	["DEATHKNIGHT"] = 0.5,
-	["SHAMAN"] = 0.071429,
-	["MAGE"] = 0.041667,
-	["WARLOCK"] = 0.045455,
-	["DRUID"] = 0.0625,
-}
-
--- For compatibility with Wrath, tables are sub-indexed by level
-addon.HealthRegenPerSpi = {}
-for k, v in pairs(HealthRegenPerSpi) do
-	addon.HealthRegenPerSpi[k] = setmetatable({}, {
-		__index = function()
-			return v
-		end
-	})
-end
-
 -- Numbers reverse engineered by Whitetooth@Cenarius(US) (hotdogee [at] gmail [dot] com)
 addon.CritPerAgi = {
 	["WARRIOR"] = {
@@ -267,6 +243,11 @@ if addon.class == "DRUID" then
 		["ADD_NORMAL_MANA_REG_MOD_INT"] = {
 			{
 				["regen"] = addon.NormalManaRegenPerInt,
+			},
+		},
+		["ADD_NORMAL_HEALTH_REG_MOD_SPI"] = {
+			{
+				["value"] = 0.0625 * 5,
 			},
 		},
 		-- Druid: Lunar Guidance (Rank 3) - 1,12
@@ -530,6 +511,11 @@ elseif addon.class == "HUNTER" then
 				["regen"] = addon.NormalManaRegenPerInt,
 			},
 		},
+		["ADD_NORMAL_HEALTH_REG_MOD_SPI"] = {
+			{
+				["value"] = 0.125 * 5,
+			},
+		},
 		-- Hunter: Aspect of the Viper - Buff
 		--         The hunter takes on the aspects of a viper, regenerating mana equal to 25% of his Intellect every 5 sec.
 		-- TODO: Gronnstalker's Armor, (2) Set: Increases the mana you gain from your Aspect of the Viper by an additional 5% of your Intellect.
@@ -702,6 +688,11 @@ elseif addon.class == "MAGE" then
 				["regen"] = addon.NormalManaRegenPerInt,
 			},
 		},
+		["ADD_NORMAL_HEALTH_REG_MOD_SPI"] = {
+			{
+				["value"] = 0.041667 * 5,
+			},
+		},
 		-- Mage: Arcane Fortitude - 1,9
 		--       Increases your armor by an amount equal to 50% of your Intellect.
 		-- 2.4.0 Increases your armor by an amount equal to 100% of your Intellect.
@@ -767,6 +758,11 @@ elseif addon.class == "PALADIN" then
 		["ADD_NORMAL_MANA_REG_MOD_INT"] = {
 			{
 				["regen"] = addon.NormalManaRegenPerInt,
+			},
+		},
+		["ADD_NORMAL_HEALTH_REG_MOD_SPI"] = {
+			{
+				["value"] = 0.125 * 5,
 			},
 		},
 		-- Paladin: Holy Guidance (Rank 5) - 1,19
@@ -871,6 +867,11 @@ elseif addon.class == "PRIEST" then
 		["ADD_NORMAL_MANA_REG_MOD_INT"] = {
 			{
 				["regen"] = addon.NormalManaRegenPerInt,
+			},
+		},
+		["ADD_NORMAL_HEALTH_REG_MOD_SPI"] = {
+			{
+				["value"] = 0.041667 * 5,
 			},
 		},
 		-- Priest: Meditation (Rank 3) - 1,9
@@ -1013,6 +1014,11 @@ elseif addon.class == "ROGUE" then
 				["value"] = 1,
 			},
 		},
+		["ADD_NORMAL_HEALTH_REG_MOD_SPI"] = {
+			{
+				["value"] = 0.333333 * 5,
+			},
+		},
 		-- Rogue: Deadliness (Rank 5) - 3,17
 		--        Increases your attack power by 2%/4%/6%/8%/10%.
 		["MOD_AP"] = {
@@ -1094,6 +1100,11 @@ elseif addon.class == "SHAMAN" then
 		["ADD_NORMAL_MANA_REG_MOD_INT"] = {
 			{
 				["regen"] = addon.NormalManaRegenPerInt,
+			},
+		},
+		["ADD_NORMAL_HEALTH_REG_MOD_SPI"] = {
+			{
+				["value"] = 0.071429 * 5,
 			},
 		},
 		-- Shaman: Mental Quickness (Rank 3) - 2,15
@@ -1211,6 +1222,11 @@ elseif addon.class == "WARLOCK" then
 		["ADD_NORMAL_MANA_REG_MOD_INT"] = {
 			{
 				["regen"] = addon.NormalManaRegenPerInt,
+			},
+		},
+		["ADD_NORMAL_HEALTH_REG_MOD_SPI"] = {
+			{
+				["value"] = 0.045455 * 5,
 			},
 		},
 		["ADD_PET_STA_MOD_STA"] = {
@@ -1340,6 +1356,11 @@ elseif addon.class == "WARRIOR" then
 		["ADD_RANGED_AP_MOD_AGI"] = {
 			{
 				["value"] = 1,
+			},
+		},
+		["ADD_NORMAL_HEALTH_REG_MOD_SPI"] = {
+			{
+				["value"] = 0.5 * 5,
 			},
 		},
 		-- Warrior: Improved Berserker Stance (Rank 5) - 2,20 - Stance

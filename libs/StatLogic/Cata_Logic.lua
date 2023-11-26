@@ -59,13 +59,6 @@ addon.BaseManaRegenPerSpi = {
 	0.003345, 0.003345, 0.003345, 0.003345, 0.003345,
 }
 
--- Patch 4.0.1.12803: Removed Health Regen from Spirit
-addon.HealthRegenPerSpi = setmetatable({}, {
-	__index = function()
-		return addon.zero
-	end
-})
-
 -- Extracted from gtChanceToMeleeCrit.db2 or from gametables/chancetomeleecrit.txt
 addon.CritPerAgi = {
 	["WARRIOR"] = {

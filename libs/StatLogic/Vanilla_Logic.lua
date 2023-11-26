@@ -4,30 +4,6 @@ local StatLogic = LibStub:GetLibrary(addonName)
 
 addon.RatingBase = {}
 
--- Numbers reverse engineered by Whitetooth@Cenarius(US) (hotdogee [at] gmail [dot] com
-local HealthRegenPerSpi = {
-	["WARRIOR"] = 0.5,
-	["PALADIN"] = 0.125,
-	["HUNTER"] = 0.125,
-	["ROGUE"] = 0.333333,
-	["PRIEST"] = 0.041667,
-	["DEATHKNIGHT"] = 0.5,
-	["SHAMAN"] = 0.071429,
-	["MAGE"] = 0.041667,
-	["WARLOCK"] = 0.045455,
-	["DRUID"] = 0.0625,
-}
-
--- For compatibility with Wrath, tables are sub-indexed by level
-addon.HealthRegenPerSpi = {}
-for k, v in pairs(HealthRegenPerSpi) do
-	addon.HealthRegenPerSpi[k] = setmetatable({}, {
-		__index = function()
-			return v
-		end
-	})
-end
-
 addon.BaseMeleeCrit = {
 	["WARRIOR"] = 0.0000,
 	["PALADIN"] = 1.7000,
@@ -155,6 +131,11 @@ if addon.class == "DRUID" then
 		["ADD_NORMAL_MANA_REG_MOD_SPI"] = {
 			{
 				["value"] = 0.5625,
+			},
+		},
+		["ADD_NORMAL_HEALTH_REG_MOD_SPI"] = {
+			{
+				["value"] = 0.0625 * 5,
 			},
 		},
 		-- Druid: Reflection - 3,6
@@ -304,6 +285,11 @@ elseif addon.class == "HUNTER" then
 				["value"] = 0.5,
 			},
 		},
+		["ADD_NORMAL_HEALTH_REG_MOD_SPI"] = {
+			{
+				["value"] = 0.125 * 5,
+			},
+		},
 		["ADD_DODGE"] = {
 			-- Hunter: Aspect of the Monkey - Buff
 			--         The hunter takes on the aspects of a monkey, increasing chance to dodge by 8%. Only one Aspect can be active at a time.
@@ -429,6 +415,11 @@ elseif addon.class == "MAGE" then
 				["value"] = 0.625,
 			},
 		},
+		["ADD_NORMAL_HEALTH_REG_MOD_SPI"] = {
+			{
+				["value"] = 0.041667 * 5,
+			},
+		},
 		-- Mage: Arcane Fortitude - 1,9
 		--       Increases your armor by an amount equal to 50% of your Intellect.
 		["ADD_ARMOR_MOD_INT"] = {
@@ -505,6 +496,11 @@ elseif addon.class == "PALADIN" then
 				["value"] = 0.5,
 			},
 		},
+		["ADD_NORMAL_HEALTH_REG_MOD_SPI"] = {
+			{
+				["value"] = 0.125 * 5,
+			},
+		},
 		["ADD_MELEE_CRIT"] = {
 			-- Conviction
 			{
@@ -579,6 +575,11 @@ elseif addon.class == "PRIEST" then
 				["value"] = 0.625,
 			},
 		},
+		["ADD_NORMAL_HEALTH_REG_MOD_SPI"] = {
+			{
+				["value"] = 0.041667 * 5,
+			},
+		},
 		-- Priest: Meditation (Rank 3) - 1,8
 		--         Allows 5/10/15% of your Mana regeneration to continue while casting.
 		["ADD_MANA_REG_MOD_NORMAL_MANA_REG"] = {
@@ -647,6 +648,11 @@ elseif addon.class == "ROGUE" then
 		["ADD_RANGED_AP_MOD_AGI"] = {
 			{
 				["value"] = 1,
+			},
+		},
+		["ADD_NORMAL_HEALTH_REG_MOD_SPI"] = {
+			{
+				["value"] = 0.333333 * 5,
 			},
 		},
 		-- Rogue: Deadliness (Rank 5) - 3,16
@@ -726,6 +732,11 @@ elseif addon.class == "SHAMAN" then
 		["ADD_NORMAL_MANA_REG_MOD_SPI"] = {
 			{
 				["value"] = 0.5,
+			},
+		},
+		["ADD_NORMAL_HEALTH_REG_MOD_SPI"] = {
+			{
+				["value"] = 0.071429 * 5,
 			},
 		},
 		-- Shaman: Anticipation (Rank 5) - 2,9
@@ -829,6 +840,11 @@ elseif addon.class == "WARLOCK" then
 		["ADD_NORMAL_MANA_REG_MOD_SPI"] = {
 			{
 				["value"] = 0.5,
+			},
+		},
+		["ADD_NORMAL_HEALTH_REG_MOD_SPI"] = {
+			{
+				["value"] = 0.045455 * 5,
 			},
 		},
 		-- Warlock: Demonic Embrace (Rank 5) - 2,3
@@ -938,6 +954,11 @@ elseif addon.class == "WARRIOR" then
 		["ADD_RANGED_AP_MOD_AGI"] = {
 			{
 				["value"] = 1,
+			},
+		},
+		["ADD_NORMAL_HEALTH_REG_MOD_SPI"] = {
+			{
+				["value"] = 0.5 * 5,
 			},
 		},
 		["MOD_ARMOR"] = {

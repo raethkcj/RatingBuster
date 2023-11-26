@@ -510,6 +510,10 @@ StatLogic.StatModInfo = {
 		initialValue = 0,
 		finalAdjust = 0,
 	},
+	["ADD_NORMAL_HEALTH_REG_MOD_SPI"] = {
+		initialValue = 0,
+		finalAdjust = 0,
+	},
 	["ADD_NORMAL_MANA_REG_MOD_INT"] = {
 		initialValue = 0,
 		finalAdjust = 0,
@@ -1661,43 +1665,6 @@ if ({
 		-- Derivative of regen with respect to int
 		return (spi * addon.BaseManaRegenPerSpi[level] / (2 * (int ^ 0.5))) * 5
 	end
-end
-
---[[
--- Description
-	Calculates the health regen per 5 seconds when out of combat from spirit for any class.
--- Args
-	spi
-			number - spirit
-	[class] - (defaults: PlayerClass)
-			string - english class name
-			number - class id
-	[level] - (defaults: PlayerLevel)
-			number - player level used for calculation
--- Returns
-	[hp5oc]
-		number - health regen per 5 seconds when out of combat
-	[statid]
-		string - "HEALTH_REG_OUT_OF_COMBAT"
-]]
-function StatLogic:GetHealthRegenFromSpi(spi, class, level)
-	-- argCheck for invalid input
-	self:argCheck(spi, 2, "number")
-	self:argCheck(class, 3, "nil", "string", "number")
-	self:argCheck(level, 4, "nil", "number")
-	class = self:ValidateClass(class)
-	-- if level is invalid input, default to player level
-	if type(level) ~= "number" or level < 1 or level > GetMaxPlayerLevel() then
-		level = UnitLevel("player")
-	end
-	-- Calculate
-	local baseRegen = 0
-	if addon.BaseHealthRegenPerSpi then
-		local baseSpi = min(spi, 50)
-		spi = spi - baseSpi
-		baseRegen = baseSpi * addon.BaseHealthRegenPerSpi[class][level] * 5
-	end
-	return baseRegen + spi * addon.HealthRegenPerSpi[class][level] * 5, "HEALTH_REG_OUT_OF_COMBAT"
 end
 
 ----------------------------------

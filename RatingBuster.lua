@@ -2388,9 +2388,7 @@ do
 				end
 			end
 			if profileDB.showHP5FromSpi then
-				local _, spi = UnitStat("player", 5)
-				local effect = StatLogic:GetHealthRegenFromSpi(spi + value, class)
-					- StatLogic:GetHealthRegenFromSpi(spi, class, calcLevel)
+				local effect = value * GSM("ADD_NORMAL_HEALTH_REG_MOD_SPI")
 				if floor(abs(effect) * 10 + 0.5) > 0 then
 					tinsert(infoTable, (L["$value HP5"]:gsub("$value", ("%+.1f"):format(effect))))
 				end
@@ -2657,8 +2655,7 @@ local summaryCalcData = {
 		func = function(sum)
 			local _, spi = UnitStat("player", 5)
 			return sum["HEALTH_REG"]
-				+ StatLogic:GetHealthRegenFromSpi(spi + sum[StatLogic.Stats.Spirit], class, calcLevel)
-				- StatLogic:GetHealthRegenFromSpi(spi, class, calcLevel)
+				+ sum[StatLogic.Stats.Spirit] * GSM("ADD_NORMAL_HEALTH_REG_MOD_SPI")
 		end,
 	},
 	-- Mana Regen - MANA_REG, SPI, INT
