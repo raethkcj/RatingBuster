@@ -1773,6 +1773,18 @@ elseif addon.class == "PRIEST" then
 				["value"] = 1,
 			},
 		},
+		["MOD_NORMAL_MANA_REG"] = {
+			-- Priest: Holy Concentration (Rank 3) - 2,17
+			--   Your mana regeneration from spirit is increased by 16/32/50%
+			{
+				["tab"] = 2,
+				["num"] = 17,
+				["buff"] = 34754,
+				["rank"] = {
+					0.16, 0.32, 0.50,
+				},
+			},
+		},
 		-- Priest: Meditation (Rank 3) - 1,7
 		--         Allows 17/33/50% of your Mana regeneration to continue while casting.
 		["ADD_MANA_REG_MOD_NORMAL_MANA_REG"] = {

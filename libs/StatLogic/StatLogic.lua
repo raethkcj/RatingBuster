@@ -566,6 +566,10 @@ StatLogic.StatModInfo = {
 		initialValue = 1,
 		finalAdjust = 0,
 	},
+	["MOD_NORMAL_MANA_REG"] = {
+		initialValue = 1,
+		finalAdjust = 0,
+	},
 	["MOD_PET_INT"] = {
 		initialValue = 1,
 		finalAdjust = 0,

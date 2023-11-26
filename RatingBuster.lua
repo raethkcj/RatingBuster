@@ -2329,7 +2329,7 @@ do
 				local _, int = UnitStat("player", 4)
 				local _, spi = UnitStat("player", 5)
 				local effect = value * GSM("ADD_MANA_REG_MOD_INT")
-					+ value * GSM("ADD_NORMAL_MANA_REG_MOD_INT") * GSM("ADD_MANA_REG_MOD_NORMAL_MANA_REG")
+					+ value * GSM("ADD_NORMAL_MANA_REG_MOD_INT") * GSM("MOD_NORMAL_MANA_REG") * GSM("ADD_MANA_REG_MOD_NORMAL_MANA_REG")
 					+ value * 15 * GSM("MOD_MANA") * GSM("ADD_MANA_REG_MOD_MANA") -- Replenishment
 				if floor(abs(effect) * 10 + 0.5) > 0 then
 					tinsert(infoTable, (L["$value MP5"]:gsub("$value", ("%+.1f"):format(effect))))
@@ -2339,7 +2339,7 @@ do
 				local _, int = UnitStat("player", 4)
 				local _, spi = UnitStat("player", 5)
 				local effect = value * GSM("ADD_MANA_REG_MOD_INT")
-					+ value * GSM("ADD_NORMAL_MANA_REG_MOD_INT")
+					+ value * GSM("ADD_NORMAL_MANA_REG_MOD_INT") * GSM("MOD_NORMAL_MANA_REG")
 					+ value * 15 * GSM("MOD_MANA") * GSM("ADD_MANA_REG_MOD_MANA") -- Replenishment
 				if floor(abs(effect) * 10 + 0.5) > 0 then
 					tinsert(infoTable, (L["$value MP5(NC)"]:gsub("$value", ("%+.1f"):format(effect))))
@@ -2380,13 +2380,13 @@ do
 			end
 			local infoTable = {}
 			if profileDB.showMP5FromSpi then
-				local effect = value * GSM("ADD_NORMAL_MANA_REG_MOD_SPI") * GSM("ADD_MANA_REG_MOD_NORMAL_MANA_REG")
+				local effect = value * GSM("ADD_NORMAL_MANA_REG_MOD_SPI") * GSM("MOD_NORMAL_MANA_REG") * GSM("ADD_MANA_REG_MOD_NORMAL_MANA_REG")
 				if floor(abs(effect) * 10 + 0.5) > 0 then
 					tinsert(infoTable, (L["$value MP5"]:gsub("$value", ("%+.1f"):format(effect))))
 				end
 			end
 			if profileDB.showMP5NCFromSpi then
-				local effect = value * GSM("ADD_NORMAL_MANA_REG_MOD_SPI")
+				local effect = value * GSM("ADD_NORMAL_MANA_REG_MOD_SPI") * GSM("MOD_NORMAL_MANA_REG")
 				if floor(abs(effect) * 10 + 0.5) > 0 then
 					tinsert(infoTable, (L["$value MP5(NC)"]:gsub("$value", ("%+.1f"):format(effect))))
 				end
@@ -2672,7 +2672,7 @@ local summaryCalcData = {
 		func = function(sum)
 			return sum["MANA_REG"]
 				+ sum[StatLogic.Stats.Intellect] * GSM("ADD_MANA_REG_MOD_INT")
-				+ GSM("ADD_MANA_REG_MOD_NORMAL_MANA_REG") * (
+				+ GSM("ADD_MANA_REG_MOD_NORMAL_MANA_REG") * GSM("MOD_NORMAL_MANA_REG") * (
 					sum[StatLogic.Stats.Intellect] * GSM("ADD_NORMAL_MANA_REG_MOD_INT")
 					+ sum[StatLogic.Stats.Spirit] * GSM("ADD_NORMAL_MANA_REG_MOD_SPI")
 				) + summaryFunc["MANA"](sum) * GSM("ADD_MANA_REG_MOD_MANA")
@@ -2685,9 +2685,10 @@ local summaryCalcData = {
 		func = function(sum)
 			return sum["MANA_REG"]
 				+ sum[StatLogic.Stats.Intellect] * GSM("ADD_MANA_REG_MOD_INT")
-				+ sum[StatLogic.Stats.Intellect] * GSM("ADD_NORMAL_MANA_REG_MOD_INT")
-				+ sum[StatLogic.Stats.Spirit] * GSM("ADD_NORMAL_MANA_REG_MOD_SPI")
-				+ summaryFunc["MANA"](sum) * GSM("ADD_MANA_REG_MOD_MANA")
+				+ GSM("MOD_NORMAL_MANA_REG") * (
+					sum[StatLogic.Stats.Intellect] * GSM("ADD_NORMAL_MANA_REG_MOD_INT")
+					+ sum[StatLogic.Stats.Spirit] * GSM("ADD_NORMAL_MANA_REG_MOD_SPI")
+				) + summaryFunc["MANA"](sum) * GSM("ADD_MANA_REG_MOD_MANA")
 		end,
 	},
 	---------------------

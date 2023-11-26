@@ -983,23 +983,21 @@ elseif addon.class == "PRIEST" then
 				["value"] = 2,
 			},
 		},
-		-- Healers: Meditation
-		-- 4.0.1: Allows 50% of your mana regeneration from Spirit to continue while in combat.
-		-- Priest: Holy Concentration - Rank 2/2 - 2,8
-		-- 4.0.1: Increases the amount of mana regeneration from Spirit while in combat by an additional 10/20%.
-		-- 4.0.6: Increases the amount of mana regeneration from Spirit while in combat by an additional 15/30%.
 		["ADD_MANA_REG_MOD_NORMAL_MANA_REG"] = {
 			-- Meditation (Discipline)
+			-- 4.0.1: Allows 50% of your mana regeneration from Spirit to continue while in combat.
 			{
 				["value"] = 0.5,
 				["known"] = 95860,
 			},
 			-- Meditation (Holy)
+			-- 4.0.1: Allows 50% of your mana regeneration from Spirit to continue while in combat.
 			{
 				["value"] = 0.5,
 				["known"] = 95861,
 			},
-			-- Holy Concentration
+			-- Priest: Holy Concentration - Rank 2/2 - 2,8
+			-- 4.0.6: Increases the amount of mana regeneration from Spirit while in combat by an additional 15/30%.
 			{
 				["spellid"] = 34859,
 				["tab"] = 2,
