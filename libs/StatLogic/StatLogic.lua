@@ -1006,7 +1006,7 @@ do
 		end
 	end
 
-	f:SetScript("OnEvent", function(self, event, unit)
+	f:SetScript("OnEvent", function(_, event, unit)
 		StatLogic:InvalidateEvent(event, unit)
 	end)
 end

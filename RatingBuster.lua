@@ -154,7 +154,7 @@ end
 ColorPickerFrame:SetMovable(true)
 ColorPickerFrame:EnableMouse(true)
 ColorPickerFrame:RegisterForDrag("LeftButton")
-ColorPickerFrame:SetScript("OnDragStart", function(self, button)
+ColorPickerFrame:SetScript("OnDragStart", function()
 	for _, frame in ipairs(C_System.GetFrameStack()) do
 		if frame == ColorPickerFrameHeader then
 			ColorPickerFrame:StartMoving()
@@ -1733,7 +1733,7 @@ function RatingBuster.ProcessTooltip(tooltip)
 		local yellow = profileDB.sumGemYellow.gemID
 		local blue = profileDB.sumGemBlue.gemID
 		local meta = profileDB.sumGemMeta.gemID
-		local _, mainlink, difflink1, difflink2 = StatLogic:GetDiffID(tooltip, globalDB.sumIgnoreEnchant, globalDB.sumIgnoreGems, globalDB.sumIgnoreExtraSockets, red, yellow, blue, meta)
+		local _, _, difflink1 = StatLogic:GetDiffID(tooltip, globalDB.sumIgnoreEnchant, globalDB.sumIgnoreGems, globalDB.sumIgnoreExtraSockets, red, yellow, blue, meta)
 		StatLogic:GetSum(difflink1, equippedSum)
 		equippedSum[StatLogic.Stats.Strength] = equippedSum[StatLogic.Stats.Strength] * GSM("MOD_STR")
 		equippedSum[StatLogic.Stats.Agility] = equippedSum[StatLogic.Stats.Agility] * GSM("MOD_AGI")
@@ -1846,7 +1846,7 @@ function RatingBuster.ProcessTooltip(tooltip)
 	-- Expertise - EXPERTISE_RATING
 	--]]
 	if globalDB.showSum then
-		RatingBuster:StatSummary(tooltip, name, link)
+		RatingBuster:StatSummary(tooltip, link)
 	end
 	---------------------
 	-- Repaint tooltip --
@@ -2326,8 +2326,6 @@ do
 				end
 			end
 			if profileDB.showMP5FromInt then
-				local _, int = UnitStat("player", 4)
-				local _, spi = UnitStat("player", 5)
 				local effect = value * GSM("ADD_MANA_REG_MOD_INT")
 					+ value * GSM("ADD_NORMAL_MANA_REG_MOD_INT") * GSM("MOD_NORMAL_MANA_REG") * GSM("ADD_MANA_REG_MOD_NORMAL_MANA_REG")
 					+ value * 15 * GSM("MOD_MANA") * GSM("ADD_MANA_REG_MOD_MANA") -- Replenishment
@@ -2336,8 +2334,6 @@ do
 				end
 			end
 			if profileDB.showMP5NCFromInt then
-				local _, int = UnitStat("player", 4)
-				local _, spi = UnitStat("player", 5)
 				local effect = value * GSM("ADD_MANA_REG_MOD_INT")
 					+ value * GSM("ADD_NORMAL_MANA_REG_MOD_INT") * GSM("MOD_NORMAL_MANA_REG")
 					+ value * 15 * GSM("MOD_MANA") * GSM("ADD_MANA_REG_MOD_MANA") -- Replenishment
@@ -3096,7 +3092,7 @@ local summaryCalcData = {
 	{
 		option = "sumDodge",
 		name = StatLogic.Stats.Dodge,
-		func = function(sum, sumType, link)
+		func = function(sum, sumType)
 			local dodge = summaryFunc["DODGE_NO_DR"](sum)
 			if profileDB.enableAvoidanceDiminishingReturns then
 				if (sumType == "diff1") or (sumType == "diff2") then
@@ -3134,7 +3130,7 @@ local summaryCalcData = {
 	{
 		option = "sumParry",
 		name = StatLogic.Stats.Parry,
-		func = function(sum, sumType, link)
+		func = function(sum, sumType)
 			local parry = summaryFunc["PARRY_NO_DR"](sum)
 			if profileDB.enableAvoidanceDiminishingReturns then
 				if (sumType == "diff1") or (sumType == "diff2") then
@@ -3203,7 +3199,7 @@ local summaryCalcData = {
 	{
 		option = "sumHitAvoid",
 		name = StatLogic.Stats.Miss,
-		func = function(sum, sumType, link)
+		func = function(sum, sumType)
 			local missed = summaryFunc["MELEE_HIT_AVOID_NO_DR"](sum)
 			if profileDB.enableAvoidanceDiminishingReturns then
 				if (sumType == "diff1") or (sumType == "diff2") then
@@ -3330,7 +3326,7 @@ local function WriteSummary(tooltip, output)
 	end
 end
 
-function RatingBuster:StatSummary(tooltip, name, link)
+function RatingBuster:StatSummary(tooltip, link)
 	-- Hide stat summary for equipped items
 	if globalDB.sumIgnoreEquipped and IsEquippedItem(link) then return end
 
