@@ -45,6 +45,20 @@ StatLogic.GenericStatMap[StatLogic.GenericStats.CR_HASTE] = {
 	CR_HASTE_SPELL,
 }
 
+-- Extracted from the client at GameTables/RegenMPPerSpt.txt via wow.tools.local
+addon.BaseManaRegenPerSpi = {
+	0.062937, 0.056900, 0.051488, 0.046267, 0.041637, 0.037784, 0.034309, 0.031172, 0.028158, 0.025460,
+	0.022654, 0.019904, 0.017817, 0.015771, 0.014008, 0.013650, 0.013175, 0.012832, 0.012475, 0.012073,
+	0.011840, 0.011494, 0.011292, 0.010990, 0.010761, 0.010546, 0.010321, 0.010151, 0.009949, 0.009740,
+	0.009597, 0.009425, 0.009278, 0.009123, 0.008974, 0.008847, 0.008698, 0.008581, 0.008457, 0.008338,
+	0.008235, 0.008113, 0.008018, 0.007906, 0.007798, 0.007713, 0.007612, 0.007524, 0.007430, 0.007340,
+	0.007268, 0.007184, 0.007116, 0.007029, 0.006945, 0.006884, 0.006805, 0.006747, 0.006667, 0.006600,
+	0.006421, 0.006314, 0.006175, 0.006072, 0.005981, 0.005885, 0.005791, 0.005732, 0.005668, 0.005596,
+	0.005316, 0.005049, 0.004796, 0.004555, 0.004327, 0.004110, 0.003903, 0.003708, 0.003522, 0.003345,
+	-- TODO: Are these really all the same? Check GameTables when public Cata build appears
+	0.003345, 0.003345, 0.003345, 0.003345, 0.003345,
+}
+
 -- Patch 4.0.1.12803: Removed Health Regen from Spirit
 addon.HealthRegenPerSpi = setmetatable({}, {
 	__index = function()
@@ -317,6 +331,16 @@ if addon.class == "DRUID" then
 			{
 				["value"] = 1,
 				["buff"] = 5487,
+			},
+		},
+		["ADD_NORMAL_MANA_REG_MOD_SPI"] = {
+			{
+				["regen"] = addon.NormalManaRegenPerSpi,
+			},
+		},
+		["ADD_NORMAL_MANA_REG_MOD_INT"] = {
+			{
+				["regen"] = addon.NormalManaRegenPerInt,
 			},
 		},
 		-- Druid: Nurturing Instinct (Rank 2) - 2,14
@@ -797,6 +821,16 @@ elseif addon.class == "MAGE" then
 				["value"] = 2,
 			},
 		},
+		["ADD_NORMAL_MANA_REG_MOD_SPI"] = {
+			{
+				["regen"] = addon.NormalManaRegenPerSpi,
+			},
+		},
+		["ADD_NORMAL_MANA_REG_MOD_INT"] = {
+			{
+				["regen"] = addon.NormalManaRegenPerInt,
+			},
+		},
 		-- Mage: Wizardry - Passive: 89744
 		-- 4.0.1: Increases your Intellect by 5%
 		["MOD_INT"] = {
@@ -853,6 +887,16 @@ elseif addon.class == "PALADIN" then
 		["ADD_AP_MOD_STR"] = {
 			{
 				["value"] = 2,
+			},
+		},
+		["ADD_NORMAL_MANA_REG_MOD_SPI"] = {
+			{
+				["regen"] = addon.NormalManaRegenPerSpi,
+			},
+		},
+		["ADD_NORMAL_MANA_REG_MOD_INT"] = {
+			{
+				["regen"] = addon.NormalManaRegenPerInt,
 			},
 		},
 		-- Healers: Meditation
@@ -981,6 +1025,16 @@ elseif addon.class == "PRIEST" then
 		["ADD_AP_MOD_STR"] = {
 			{
 				["value"] = 2,
+			},
+		},
+		["ADD_NORMAL_MANA_REG_MOD_SPI"] = {
+			{
+				["regen"] = addon.NormalManaRegenPerSpi,
+			},
+		},
+		["ADD_NORMAL_MANA_REG_MOD_INT"] = {
+			{
+				["regen"] = addon.NormalManaRegenPerInt,
 			},
 		},
 		["ADD_MANA_REG_MOD_NORMAL_MANA_REG"] = {
@@ -1165,6 +1219,16 @@ elseif addon.class == "SHAMAN" then
 				["value"] = 2,
 			},
 		},
+		["ADD_NORMAL_MANA_REG_MOD_SPI"] = {
+			{
+				["regen"] = addon.NormalManaRegenPerSpi,
+			},
+		},
+		["ADD_NORMAL_MANA_REG_MOD_INT"] = {
+			{
+				["regen"] = addon.NormalManaRegenPerInt,
+			},
+		},
 		-- Druid: Elemental Precision - Rank 3/3 - 1,7
 		-- 4.0.1: Grants you spell hit rating equal to 33/66/100% of any Spirit gained from items or effects.
 		["ADD_SPELL_HIT_RATING_MOD_SPI"] = {
@@ -1252,6 +1316,16 @@ elseif addon.class == "WARLOCK" then
 		["ADD_AP_MOD_STR"] = {
 			{
 				["value"] = 2,
+			},
+		},
+		["ADD_NORMAL_MANA_REG_MOD_SPI"] = {
+			{
+				["regen"] = addon.NormalManaRegenPerSpi,
+			},
+		},
+		["ADD_NORMAL_MANA_REG_MOD_INT"] = {
+			{
+				["regen"] = addon.NormalManaRegenPerInt,
 			},
 		},
 		-- Warlock: Metamorphosis - Buff: 47241
@@ -1409,31 +1483,7 @@ elseif addon.playerRace == "Human" then
 	}
 end
 
--- Extracted from the client at GameTables/RegenMPPerSpt.txt via wow.tools.local
-addon.BaseManaRegenPerSpi = {
-	0.062937, 0.056900, 0.051488, 0.046267, 0.041637, 0.037784, 0.034309, 0.031172, 0.028158, 0.025460,
-	0.022654, 0.019904, 0.017817, 0.015771, 0.014008, 0.013650, 0.013175, 0.012832, 0.012475, 0.012073,
-	0.011840, 0.011494, 0.011292, 0.010990, 0.010761, 0.010546, 0.010321, 0.010151, 0.009949, 0.009740,
-	0.009597, 0.009425, 0.009278, 0.009123, 0.008974, 0.008847, 0.008698, 0.008581, 0.008457, 0.008338,
-	0.008235, 0.008113, 0.008018, 0.007906, 0.007798, 0.007713, 0.007612, 0.007524, 0.007430, 0.007340,
-	0.007268, 0.007184, 0.007116, 0.007029, 0.006945, 0.006884, 0.006805, 0.006747, 0.006667, 0.006600,
-	0.006421, 0.006314, 0.006175, 0.006072, 0.005981, 0.005885, 0.005791, 0.005732, 0.005668, 0.005596,
-	0.005316, 0.005049, 0.004796, 0.004555, 0.004327, 0.004110, 0.003903, 0.003708, 0.003522, 0.003345,
-	-- TODO: Are these really all the same? Check GameTables when public Cata build appears
-	0.003345, 0.003345, 0.003345, 0.003345, 0.003345,
-}
-
 StatLogic.StatModTable["ALL"] = {
-	["ADD_NORMAL_MANA_REG_MOD_SPI"] = {
-		{
-			["regen"] = addon.NormalManaRegenPerSpi,
-		},
-	},
-	["ADD_NORMAL_MANA_REG_MOD_INT"] = {
-		{
-			["regen"] = addon.NormalManaRegenPerInt,
-		},
-	},
 	["ADD_MANA_REG_MOD_MANA"] = {
 		-- Replenishment - Buff
 		-- 4.0.1: Replenishes 1% of maximum mana per 10 sec.

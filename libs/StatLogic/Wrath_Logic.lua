@@ -52,6 +52,18 @@ StatLogic.GenericStatMap[StatLogic.GenericStats.CR_HASTE] = {
 	CR_HASTE_SPELL,
 }
 
+-- Extracted from the client at GameTables/RegenMPPerSpt.txt via wow.tools.local
+addon.BaseManaRegenPerSpi = {
+	0.062937, 0.056900, 0.051488, 0.046267, 0.041637, 0.037784, 0.034309, 0.031172, 0.028158, 0.025460,
+	0.022654, 0.019904, 0.017817, 0.015771, 0.014008, 0.013650, 0.013175, 0.012832, 0.012475, 0.012073,
+	0.011840, 0.011494, 0.011292, 0.010990, 0.010761, 0.010546, 0.010321, 0.010151, 0.009949, 0.009740,
+	0.009597, 0.009425, 0.009278, 0.009123, 0.008974, 0.008847, 0.008698, 0.008581, 0.008457, 0.008338,
+	0.008235, 0.008113, 0.008018, 0.007906, 0.007798, 0.007713, 0.007612, 0.007524, 0.007430, 0.007340,
+	0.007268, 0.007184, 0.007116, 0.007029, 0.006945, 0.006884, 0.006805, 0.006747, 0.006667, 0.006600,
+	0.006421, 0.006314, 0.006175, 0.006072, 0.005981, 0.005885, 0.005791, 0.005732, 0.005668, 0.005596,
+	0.005316, 0.005049, 0.004796, 0.004555, 0.004327, 0.004110, 0.003903, 0.003708, 0.003522, 0.003345,
+}
+
 -- Extracted from the client at GameTables/OCTRegenHP.txt via wow.tools.local
 addon.BaseHealthRegenPerSpi = {
 	["WARRIOR"] = {
@@ -698,6 +710,16 @@ if addon.class == "DRUID" then
 				["buff"] = 768,
 			},
 		},
+		["ADD_NORMAL_MANA_REG_MOD_SPI"] = {
+			{
+				["regen"] = addon.NormalManaRegenPerSpi,
+			},
+		},
+		["ADD_NORMAL_MANA_REG_MOD_INT"] = {
+			{
+				["regen"] = addon.NormalManaRegenPerInt,
+			},
+		},
 		-- Druid: Improved Moonkin Form (Rank 3) - 1,19
 		--        Your Moonkin Aura also causes affected targets to gain 1%/2%/3% haste and you to gain 10/20/30% of your spirit as additional spell damage.
 		["ADD_SPELL_DMG_MOD_SPI"] = {
@@ -1338,6 +1360,16 @@ elseif addon.class == "HUNTER" then
 				["buff"] = 34501,
 			}
 		},
+		["ADD_NORMAL_MANA_REG_MOD_SPI"] = {
+			{
+				["regen"] = addon.NormalManaRegenPerSpi,
+			},
+		},
+		["ADD_NORMAL_MANA_REG_MOD_INT"] = {
+			{
+				["regen"] = addon.NormalManaRegenPerInt,
+			},
+		},
 		-- Hunter: Hunter vs. Wild (Rank 3) - 3,14
 		--         Increases you and your pet's attack power and ranged attack power equal to 10%/20%/30% of your total Stamina.
 		["ADD_AP_MOD_STA"] = {
@@ -1482,6 +1514,16 @@ elseif addon.class == "MAGE" then
 				["value"] = 1,
 			},
 		},
+		["ADD_NORMAL_MANA_REG_MOD_SPI"] = {
+			{
+				["regen"] = addon.NormalManaRegenPerSpi,
+			},
+		},
+		["ADD_NORMAL_MANA_REG_MOD_INT"] = {
+			{
+				["regen"] = addon.NormalManaRegenPerInt,
+			},
+		},
 		["ADD_SPELL_CRIT_RATING_MOD_SPI"] = {
 			-- Mage: Molten Armor (Rank 3) - Buff
 			--       increases your critical strike rating by 35% of your spirit
@@ -1623,6 +1665,16 @@ elseif addon.class == "PALADIN" then
 		["ADD_AP_MOD_STR"] = {
 			{
 				["value"] = 2,
+			},
+		},
+		["ADD_NORMAL_MANA_REG_MOD_SPI"] = {
+			{
+				["regen"] = addon.NormalManaRegenPerSpi,
+			},
+		},
+		["ADD_NORMAL_MANA_REG_MOD_INT"] = {
+			{
+				["regen"] = addon.NormalManaRegenPerInt,
 			},
 		},
 		-- Paladin: Sheath of Light (Rank 3) - 3,24
@@ -1771,6 +1823,16 @@ elseif addon.class == "PRIEST" then
 		["ADD_AP_MOD_STR"] = {
 			{
 				["value"] = 1,
+			},
+		},
+		["ADD_NORMAL_MANA_REG_MOD_SPI"] = {
+			{
+				["regen"] = addon.NormalManaRegenPerSpi,
+			},
+		},
+		["ADD_NORMAL_MANA_REG_MOD_INT"] = {
+			{
+				["regen"] = addon.NormalManaRegenPerInt,
 			},
 		},
 		["MOD_NORMAL_MANA_REG"] = {
@@ -2028,6 +2090,16 @@ elseif addon.class == "SHAMAN" then
 				["value"] = 1,
 			},
 		},
+		["ADD_NORMAL_MANA_REG_MOD_SPI"] = {
+			{
+				["regen"] = addon.NormalManaRegenPerSpi,
+			},
+		},
+		["ADD_NORMAL_MANA_REG_MOD_INT"] = {
+			{
+				["regen"] = addon.NormalManaRegenPerInt,
+			},
+		},
 		-- Shaman: Mental Dexterity (Rank 3) - 2,15
 		--         Increases your Attack Power by 33%/66%/100% of your Intellect.
 		["ADD_AP_MOD_INT"] = {
@@ -2124,6 +2196,16 @@ elseif addon.class == "WARLOCK" then
 		["ADD_AP_MOD_STR"] = {
 			{
 				["value"] = 1,
+			},
+		},
+		["ADD_NORMAL_MANA_REG_MOD_SPI"] = {
+			{
+				["regen"] = addon.NormalManaRegenPerSpi,
+			},
+		},
+		["ADD_NORMAL_MANA_REG_MOD_INT"] = {
+			{
+				["regen"] = addon.NormalManaRegenPerInt,
 			},
 		},
 		-- Warlock: Metamorphosis - Buff
@@ -2445,44 +2527,7 @@ elseif addon.playerRace == "Human" then
 	}
 end
 
--- Extracted from the client at GameTables/RegenMPPerSpt.txt via wow.tools.local
-addon.BaseManaRegenPerSpi = {
-	0.062937, 0.056900, 0.051488, 0.046267, 0.041637, 0.037784, 0.034309, 0.031172, 0.028158, 0.025460,
-	0.022654, 0.019904, 0.017817, 0.015771, 0.014008, 0.013650, 0.013175, 0.012832, 0.012475, 0.012073,
-	0.011840, 0.011494, 0.011292, 0.010990, 0.010761, 0.010546, 0.010321, 0.010151, 0.009949, 0.009740,
-	0.009597, 0.009425, 0.009278, 0.009123, 0.008974, 0.008847, 0.008698, 0.008581, 0.008457, 0.008338,
-	0.008235, 0.008113, 0.008018, 0.007906, 0.007798, 0.007713, 0.007612, 0.007524, 0.007430, 0.007340,
-	0.007268, 0.007184, 0.007116, 0.007029, 0.006945, 0.006884, 0.006805, 0.006747, 0.006667, 0.006600,
-	0.006421, 0.006314, 0.006175, 0.006072, 0.005981, 0.005885, 0.005791, 0.005732, 0.005668, 0.005596,
-	0.005316, 0.005049, 0.004796, 0.004555, 0.004327, 0.004110, 0.003903, 0.003708, 0.003522, 0.003345,
-}
-
-addon.NormalManaRegenPerSpi = function()
-	local level = UnitLevel("player")
-	local _, int = UnitStat("player", 4)
-	local _, spi = UnitStat("player", 5)
-	return (0.001 / spi + addon.BaseManaRegenPerSpi[level] * (int ^ 0.5)) * 5
-end
-
-addon.NormalManaRegenPerInt = function()
-	local level = UnitLevel("player")
-	local _, int = UnitStat("player", 4)
-	local _, spi = UnitStat("player", 5)
-	-- Derivative of regen with respect to int
-	return (spi * addon.BaseManaRegenPerSpi[level] / (2 * (int ^ 0.5))) * 5
-end
-
 StatLogic.StatModTable["ALL"] = {
-	["ADD_NORMAL_MANA_REG_MOD_SPI"] = {
-		{
-			["regen"] = addon.NormalManaRegenPerSpi,
-		},
-	},
-	["ADD_NORMAL_MANA_REG_MOD_INT"] = {
-		{
-			["regen"] = addon.NormalManaRegenPerInt,
-		},
-	},
 	-- ICC: Chill of the Throne
 	--      Chance to dodge reduced by 20%.
 	["ADD_DODGE"] = {

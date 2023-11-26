@@ -40,6 +40,17 @@ StatLogic.GenericStatMap[StatLogic.GenericStats.CR_HASTE] = {
 	CR_HASTE_RANGED,
 }
 
+-- Numbers reverse engineered by Whitetooth@Cenarius(US) (hotdogee [at] gmail [dot] com)
+addon.BaseManaRegenPerSpi = {
+	0.034965, 0.034191, 0.033465, 0.032526, 0.031661, 0.031076, 0.030523, 0.029994, 0.029307, 0.028661,
+	0.027584, 0.026215, 0.025381, 0.024300, 0.023345, 0.022748, 0.021958, 0.021386, 0.020790, 0.020121,
+	0.019733, 0.019155, 0.018819, 0.018316, 0.017936, 0.017576, 0.017201, 0.016919, 0.016581, 0.016233,
+	0.015994, 0.015707, 0.015464, 0.015204, 0.014956, 0.014744, 0.014495, 0.014302, 0.014094, 0.013895,
+	0.013724, 0.013522, 0.013363, 0.013175, 0.012996, 0.012853, 0.012687, 0.012539, 0.012384, 0.012233,
+	0.012113, 0.011973, 0.011859, 0.011714, 0.011575, 0.011473, 0.011342, 0.011245, 0.011110, 0.010999,
+	0.010700, 0.010522, 0.010290, 0.010119, 0.009968, 0.009808, 0.009651, 0.009553, 0.009445, 0.009327,
+}
+
 -- Numbers reverse engineered by Whitetooth@Cenarius(US) (hotdogee [at] gmail [dot] com
 local HealthRegenPerSpi = {
 	["WARRIOR"] = 0.5,
@@ -246,6 +257,16 @@ if addon.class == "DRUID" then
 			{
 				["value"] = 1,
 				["buff"] = 768,
+			},
+		},
+		["ADD_NORMAL_MANA_REG_MOD_SPI"] = {
+			{
+				["regen"] = addon.NormalManaRegenPerSpi,
+			},
+		},
+		["ADD_NORMAL_MANA_REG_MOD_INT"] = {
+			{
+				["regen"] = addon.NormalManaRegenPerInt,
 			},
 		},
 		-- Druid: Lunar Guidance (Rank 3) - 1,12
@@ -499,6 +520,16 @@ elseif addon.class == "HUNTER" then
 				["value"] = 1,
 			},
 		},
+		["ADD_NORMAL_MANA_REG_MOD_SPI"] = {
+			{
+				["regen"] = addon.NormalManaRegenPerSpi,
+			},
+		},
+		["ADD_NORMAL_MANA_REG_MOD_INT"] = {
+			{
+				["regen"] = addon.NormalManaRegenPerInt,
+			},
+		},
 		-- Hunter: Aspect of the Viper - Buff
 		--         The hunter takes on the aspects of a viper, regenerating mana equal to 25% of his Intellect every 5 sec.
 		-- TODO: Gronnstalker's Armor, (2) Set: Increases the mana you gain from your Aspect of the Viper by an additional 5% of your Intellect.
@@ -661,6 +692,16 @@ elseif addon.class == "MAGE" then
 				["value"] = 1,
 			},
 		},
+		["ADD_NORMAL_MANA_REG_MOD_SPI"] = {
+			{
+				["regen"] = addon.NormalManaRegenPerSpi,
+			},
+		},
+		["ADD_NORMAL_MANA_REG_MOD_INT"] = {
+			{
+				["regen"] = addon.NormalManaRegenPerInt,
+			},
+		},
 		-- Mage: Arcane Fortitude - 1,9
 		--       Increases your armor by an amount equal to 50% of your Intellect.
 		-- 2.4.0 Increases your armor by an amount equal to 100% of your Intellect.
@@ -716,6 +757,16 @@ elseif addon.class == "PALADIN" then
 		["ADD_AP_MOD_STR"] = {
 			{
 				["value"] = 2,
+			},
+		},
+		["ADD_NORMAL_MANA_REG_MOD_SPI"] = {
+			{
+				["regen"] = addon.NormalManaRegenPerSpi,
+			},
+		},
+		["ADD_NORMAL_MANA_REG_MOD_INT"] = {
+			{
+				["regen"] = addon.NormalManaRegenPerInt,
 			},
 		},
 		-- Paladin: Holy Guidance (Rank 5) - 1,19
@@ -810,6 +861,16 @@ elseif addon.class == "PRIEST" then
 		["ADD_AP_MOD_STR"] = {
 			{
 				["value"] = 1,
+			},
+		},
+		["ADD_NORMAL_MANA_REG_MOD_SPI"] = {
+			{
+				["regen"] = addon.NormalManaRegenPerSpi,
+			},
+		},
+		["ADD_NORMAL_MANA_REG_MOD_INT"] = {
+			{
+				["regen"] = addon.NormalManaRegenPerInt,
 			},
 		},
 		-- Priest: Meditation (Rank 3) - 1,9
@@ -1025,6 +1086,16 @@ elseif addon.class == "SHAMAN" then
 				["value"] = 2,
 			},
 		},
+		["ADD_NORMAL_MANA_REG_MOD_SPI"] = {
+			{
+				["regen"] = addon.NormalManaRegenPerSpi,
+			},
+		},
+		["ADD_NORMAL_MANA_REG_MOD_INT"] = {
+			{
+				["regen"] = addon.NormalManaRegenPerInt,
+			},
+		},
 		-- Shaman: Mental Quickness (Rank 3) - 2,15
 		--         Reduces the mana cost of your instant cast spells by 2%/4%/6% and increases your spell damage and healing equal to 10%/20%/30% of your attack power.
 		["ADD_SPELL_DMG_MOD_AP"] = {
@@ -1130,6 +1201,16 @@ elseif addon.class == "WARLOCK" then
 		["ADD_AP_MOD_STR"] = {
 			{
 				["value"] = 1,
+			},
+		},
+		["ADD_NORMAL_MANA_REG_MOD_SPI"] = {
+			{
+				["regen"] = addon.NormalManaRegenPerSpi,
+			},
+		},
+		["ADD_NORMAL_MANA_REG_MOD_INT"] = {
+			{
+				["regen"] = addon.NormalManaRegenPerInt,
 			},
 		},
 		["ADD_PET_STA_MOD_STA"] = {
@@ -1362,28 +1443,7 @@ elseif addon.playerRace == "Human" then
 	}
 end
 
--- Numbers reverse engineered by Whitetooth@Cenarius(US) (hotdogee [at] gmail [dot] com)
-addon.BaseManaRegenPerSpi = {
-	0.034965, 0.034191, 0.033465, 0.032526, 0.031661, 0.031076, 0.030523, 0.029994, 0.029307, 0.028661,
-	0.027584, 0.026215, 0.025381, 0.024300, 0.023345, 0.022748, 0.021958, 0.021386, 0.020790, 0.020121,
-	0.019733, 0.019155, 0.018819, 0.018316, 0.017936, 0.017576, 0.017201, 0.016919, 0.016581, 0.016233,
-	0.015994, 0.015707, 0.015464, 0.015204, 0.014956, 0.014744, 0.014495, 0.014302, 0.014094, 0.013895,
-	0.013724, 0.013522, 0.013363, 0.013175, 0.012996, 0.012853, 0.012687, 0.012539, 0.012384, 0.012233,
-	0.012113, 0.011973, 0.011859, 0.011714, 0.011575, 0.011473, 0.011342, 0.011245, 0.011110, 0.010999,
-	0.010700, 0.010522, 0.010290, 0.010119, 0.009968, 0.009808, 0.009651, 0.009553, 0.009445, 0.009327,
-}
-
 StatLogic.StatModTable["ALL"] = {
-	["ADD_NORMAL_MANA_REG_MOD_SPI"] = {
-		{
-			["regen"] = addon.NormalManaRegenPerSpi,
-		},
-	},
-	["ADD_NORMAL_MANA_REG_MOD_INT"] = {
-		{
-			["regen"] = addon.NormalManaRegenPerInt,
-		},
-	},
 	-- Paladin: Lay on Hands (Rank 1/2) - Buff
 	--          Armor increased by 15%/30%.
 	-- Priest: Inspiration (Rank 1/2/3) - Buff
