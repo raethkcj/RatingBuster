@@ -1496,10 +1496,8 @@ do
 		end
 	end
 
-	if not Enum.SeasonID.SeasonOfDiscovery then
-		Enum.SeasonID.SeasonOfDiscovery = Enum.SeasonID.Placeholder
-	end
-	local showRunes = C_Seasons and C_Seasons.HasActiveSeason() and C_Seasons.GetActiveSeason() == Enum.SeasonID.SeasonOfDiscovery
+	local season = C_Seasons and C_Seasons.HasActiveSeason() and C_Seasons.GetActiveSeason()
+	local showRunes =  season ~= Enum.SeasonID.NoSeason and season ~= Enum.SeasonID.Hardcore
 
 	local function GenerateAuraOptions()
 		for modType, modList in pairs(StatLogic.StatModTable) do
