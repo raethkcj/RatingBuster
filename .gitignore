@@ -3,3 +3,4 @@ libs/*
 !libs/StatLogic
 .release
 .vscode
+node_modules
