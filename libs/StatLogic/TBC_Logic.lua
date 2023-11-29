@@ -1456,7 +1456,7 @@ elseif addon.playerRace == "Human" then
 	StatLogic.StatModTable["Human"] = {
 		-- Human: The Human Spirit - Racial
 		--        Increase Spirit by 10%.
-		["MOD_SPIRIT"] = {
+		["MOD_SPI"] = {
 			{
 				["value"] = 0.1,
 			},

@@ -2803,7 +2803,7 @@ if addon.playerRace == "Gnome" then
 	}
 elseif addon.playerRace == "Human" then
 	StatLogic.StatModTable["Human"] = {
-		["MOD_SPIRIT"] = {
+		["MOD_SPI"] = {
 			-- Human: The Human Spirit - Racial
 			--        Increase Spirit by 3%.
 			{
