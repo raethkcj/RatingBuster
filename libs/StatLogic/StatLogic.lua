@@ -1656,27 +1656,6 @@ function StatLogic:GetSpellCritFromInt(int, class, level)
 	return int * StatLogic:GetSpellCritPerInt(class, level), StatLogic.Stats.SpellCrit
 end
 
-if ({
-	[WOW_PROJECT_BURNING_CRUSADE_CLASSIC] = true,
-	[WOW_PROJECT_WRATH_CLASSIC] = true,
-	-- TODO: [WOW_PROJECT_CATA_CLASSIC] = true,
-})[WOW_PROJECT_ID] then
-	addon.NormalManaRegenPerSpi = function()
-		local level = UnitLevel("player")
-		local _, int = UnitStat("player", 4)
-		local _, spi = UnitStat("player", 5)
-		return (0.001 / spi + addon.BaseManaRegenPerSpi[level] * (int ^ 0.5)) * 5
-	end
-
-	addon.NormalManaRegenPerInt = function()
-		local level = UnitLevel("player")
-		local _, int = UnitStat("player", 4)
-		local _, spi = UnitStat("player", 5)
-		-- Derivative of regen with respect to int
-		return (spi * addon.BaseManaRegenPerSpi[level] / (2 * (int ^ 0.5))) * 5
-	end
-end
-
 ----------------------------------
 -- Stat Summary Ignore Settings --
 ----------------------------------

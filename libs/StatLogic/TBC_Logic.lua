@@ -41,7 +41,7 @@ StatLogic.GenericStatMap[StatLogic.GenericStats.CR_HASTE] = {
 }
 
 -- Numbers reverse engineered by Whitetooth@Cenarius(US) (hotdogee [at] gmail [dot] com)
-addon.BaseManaRegenPerSpi = {
+local BaseManaRegenPerSpi = {
 	0.034965, 0.034191, 0.033465, 0.032526, 0.031661, 0.031076, 0.030523, 0.029994, 0.029307, 0.028661,
 	0.027584, 0.026215, 0.025381, 0.024300, 0.023345, 0.022748, 0.021958, 0.021386, 0.020790, 0.020121,
 	0.019733, 0.019155, 0.018819, 0.018316, 0.017936, 0.017576, 0.017201, 0.016919, 0.016581, 0.016233,
@@ -50,6 +50,21 @@ addon.BaseManaRegenPerSpi = {
 	0.012113, 0.011973, 0.011859, 0.011714, 0.011575, 0.011473, 0.011342, 0.011245, 0.011110, 0.010999,
 	0.010700, 0.010522, 0.010290, 0.010119, 0.009968, 0.009808, 0.009651, 0.009553, 0.009445, 0.009327,
 }
+
+local NormalManaRegenPerSpi = function()
+	local level = UnitLevel("player")
+	local _, int = UnitStat("player", 4)
+	local _, spi = UnitStat("player", 5)
+	return (0.001 / spi + BaseManaRegenPerSpi[level] * (int ^ 0.5)) * 5
+end
+
+local NormalManaRegenPerInt = function()
+	local level = UnitLevel("player")
+	local _, int = UnitStat("player", 4)
+	local _, spi = UnitStat("player", 5)
+	-- Derivative of regen with respect to int
+	return (spi * BaseManaRegenPerSpi[level] / (2 * (int ^ 0.5))) * 5
+end
 
 -- Numbers reverse engineered by Whitetooth@Cenarius(US) (hotdogee [at] gmail [dot] com)
 addon.CritPerAgi = {
@@ -237,12 +252,12 @@ if addon.class == "DRUID" then
 		},
 		["ADD_NORMAL_MANA_REG_MOD_SPI"] = {
 			{
-				["regen"] = addon.NormalManaRegenPerSpi,
+				["regen"] = NormalManaRegenPerSpi,
 			},
 		},
 		["ADD_NORMAL_MANA_REG_MOD_INT"] = {
 			{
-				["regen"] = addon.NormalManaRegenPerInt,
+				["regen"] = NormalManaRegenPerInt,
 			},
 		},
 		["ADD_NORMAL_HEALTH_REG_MOD_SPI"] = {
@@ -503,12 +518,12 @@ elseif addon.class == "HUNTER" then
 		},
 		["ADD_NORMAL_MANA_REG_MOD_SPI"] = {
 			{
-				["regen"] = addon.NormalManaRegenPerSpi,
+				["regen"] = NormalManaRegenPerSpi,
 			},
 		},
 		["ADD_NORMAL_MANA_REG_MOD_INT"] = {
 			{
-				["regen"] = addon.NormalManaRegenPerInt,
+				["regen"] = NormalManaRegenPerInt,
 			},
 		},
 		["ADD_NORMAL_HEALTH_REG_MOD_SPI"] = {
@@ -680,12 +695,12 @@ elseif addon.class == "MAGE" then
 		},
 		["ADD_NORMAL_MANA_REG_MOD_SPI"] = {
 			{
-				["regen"] = addon.NormalManaRegenPerSpi,
+				["regen"] = NormalManaRegenPerSpi,
 			},
 		},
 		["ADD_NORMAL_MANA_REG_MOD_INT"] = {
 			{
-				["regen"] = addon.NormalManaRegenPerInt,
+				["regen"] = NormalManaRegenPerInt,
 			},
 		},
 		["ADD_NORMAL_HEALTH_REG_MOD_SPI"] = {
@@ -752,12 +767,12 @@ elseif addon.class == "PALADIN" then
 		},
 		["ADD_NORMAL_MANA_REG_MOD_SPI"] = {
 			{
-				["regen"] = addon.NormalManaRegenPerSpi,
+				["regen"] = NormalManaRegenPerSpi,
 			},
 		},
 		["ADD_NORMAL_MANA_REG_MOD_INT"] = {
 			{
-				["regen"] = addon.NormalManaRegenPerInt,
+				["regen"] = NormalManaRegenPerInt,
 			},
 		},
 		["ADD_NORMAL_HEALTH_REG_MOD_SPI"] = {
@@ -861,12 +876,12 @@ elseif addon.class == "PRIEST" then
 		},
 		["ADD_NORMAL_MANA_REG_MOD_SPI"] = {
 			{
-				["regen"] = addon.NormalManaRegenPerSpi,
+				["regen"] = NormalManaRegenPerSpi,
 			},
 		},
 		["ADD_NORMAL_MANA_REG_MOD_INT"] = {
 			{
-				["regen"] = addon.NormalManaRegenPerInt,
+				["regen"] = NormalManaRegenPerInt,
 			},
 		},
 		["ADD_NORMAL_HEALTH_REG_MOD_SPI"] = {
@@ -1094,12 +1109,12 @@ elseif addon.class == "SHAMAN" then
 		},
 		["ADD_NORMAL_MANA_REG_MOD_SPI"] = {
 			{
-				["regen"] = addon.NormalManaRegenPerSpi,
+				["regen"] = NormalManaRegenPerSpi,
 			},
 		},
 		["ADD_NORMAL_MANA_REG_MOD_INT"] = {
 			{
-				["regen"] = addon.NormalManaRegenPerInt,
+				["regen"] = NormalManaRegenPerInt,
 			},
 		},
 		["ADD_NORMAL_HEALTH_REG_MOD_SPI"] = {
@@ -1216,12 +1231,12 @@ elseif addon.class == "WARLOCK" then
 		},
 		["ADD_NORMAL_MANA_REG_MOD_SPI"] = {
 			{
-				["regen"] = addon.NormalManaRegenPerSpi,
+				["regen"] = NormalManaRegenPerSpi,
 			},
 		},
 		["ADD_NORMAL_MANA_REG_MOD_INT"] = {
 			{
-				["regen"] = addon.NormalManaRegenPerInt,
+				["regen"] = NormalManaRegenPerInt,
 			},
 		},
 		["ADD_NORMAL_HEALTH_REG_MOD_SPI"] = {

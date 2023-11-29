@@ -46,7 +46,7 @@ StatLogic.GenericStatMap[StatLogic.GenericStats.CR_HASTE] = {
 }
 
 -- Extracted from the client at GameTables/RegenMPPerSpt.txt via wow.tools.local
-addon.BaseManaRegenPerSpi = {
+local BaseManaRegenPerSpi = {
 	0.062937, 0.056900, 0.051488, 0.046267, 0.041637, 0.037784, 0.034309, 0.031172, 0.028158, 0.025460,
 	0.022654, 0.019904, 0.017817, 0.015771, 0.014008, 0.013650, 0.013175, 0.012832, 0.012475, 0.012073,
 	0.011840, 0.011494, 0.011292, 0.010990, 0.010761, 0.010546, 0.010321, 0.010151, 0.009949, 0.009740,
@@ -58,6 +58,21 @@ addon.BaseManaRegenPerSpi = {
 	-- TODO: Are these really all the same? Check GameTables when public Cata build appears
 	0.003345, 0.003345, 0.003345, 0.003345, 0.003345,
 }
+
+local NormalManaRegenPerSpi = function()
+	local level = UnitLevel("player")
+	local _, int = UnitStat("player", 4)
+	local _, spi = UnitStat("player", 5)
+	return (0.001 / spi + BaseManaRegenPerSpi[level] * (int ^ 0.5)) * 5
+end
+
+local NormalManaRegenPerInt = function()
+	local level = UnitLevel("player")
+	local _, int = UnitStat("player", 4)
+	local _, spi = UnitStat("player", 5)
+	-- Derivative of regen with respect to int
+	return (spi * BaseManaRegenPerSpi[level] / (2 * (int ^ 0.5))) * 5
+end
 
 -- Extracted from gtChanceToMeleeCrit.db2 or from gametables/chancetomeleecrit.txt
 addon.CritPerAgi = {
@@ -328,12 +343,12 @@ if addon.class == "DRUID" then
 		},
 		["ADD_NORMAL_MANA_REG_MOD_SPI"] = {
 			{
-				["regen"] = addon.NormalManaRegenPerSpi,
+				["regen"] = NormalManaRegenPerSpi,
 			},
 		},
 		["ADD_NORMAL_MANA_REG_MOD_INT"] = {
 			{
-				["regen"] = addon.NormalManaRegenPerInt,
+				["regen"] = NormalManaRegenPerInt,
 			},
 		},
 		-- Druid: Nurturing Instinct (Rank 2) - 2,14
@@ -816,12 +831,12 @@ elseif addon.class == "MAGE" then
 		},
 		["ADD_NORMAL_MANA_REG_MOD_SPI"] = {
 			{
-				["regen"] = addon.NormalManaRegenPerSpi,
+				["regen"] = NormalManaRegenPerSpi,
 			},
 		},
 		["ADD_NORMAL_MANA_REG_MOD_INT"] = {
 			{
-				["regen"] = addon.NormalManaRegenPerInt,
+				["regen"] = NormalManaRegenPerInt,
 			},
 		},
 		-- Mage: Wizardry - Passive: 89744
@@ -884,12 +899,12 @@ elseif addon.class == "PALADIN" then
 		},
 		["ADD_NORMAL_MANA_REG_MOD_SPI"] = {
 			{
-				["regen"] = addon.NormalManaRegenPerSpi,
+				["regen"] = NormalManaRegenPerSpi,
 			},
 		},
 		["ADD_NORMAL_MANA_REG_MOD_INT"] = {
 			{
-				["regen"] = addon.NormalManaRegenPerInt,
+				["regen"] = NormalManaRegenPerInt,
 			},
 		},
 		-- Healers: Meditation
@@ -1022,12 +1037,12 @@ elseif addon.class == "PRIEST" then
 		},
 		["ADD_NORMAL_MANA_REG_MOD_SPI"] = {
 			{
-				["regen"] = addon.NormalManaRegenPerSpi,
+				["regen"] = NormalManaRegenPerSpi,
 			},
 		},
 		["ADD_NORMAL_MANA_REG_MOD_INT"] = {
 			{
-				["regen"] = addon.NormalManaRegenPerInt,
+				["regen"] = NormalManaRegenPerInt,
 			},
 		},
 		["ADD_MANA_REG_MOD_NORMAL_MANA_REG"] = {
@@ -1214,12 +1229,12 @@ elseif addon.class == "SHAMAN" then
 		},
 		["ADD_NORMAL_MANA_REG_MOD_SPI"] = {
 			{
-				["regen"] = addon.NormalManaRegenPerSpi,
+				["regen"] = NormalManaRegenPerSpi,
 			},
 		},
 		["ADD_NORMAL_MANA_REG_MOD_INT"] = {
 			{
-				["regen"] = addon.NormalManaRegenPerInt,
+				["regen"] = NormalManaRegenPerInt,
 			},
 		},
 		-- Druid: Elemental Precision - Rank 3/3 - 1,7
@@ -1313,12 +1328,12 @@ elseif addon.class == "WARLOCK" then
 		},
 		["ADD_NORMAL_MANA_REG_MOD_SPI"] = {
 			{
-				["regen"] = addon.NormalManaRegenPerSpi,
+				["regen"] = NormalManaRegenPerSpi,
 			},
 		},
 		["ADD_NORMAL_MANA_REG_MOD_INT"] = {
 			{
-				["regen"] = addon.NormalManaRegenPerInt,
+				["regen"] = NormalManaRegenPerInt,
 			},
 		},
 		-- Warlock: Metamorphosis - Buff: 47241

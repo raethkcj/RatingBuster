@@ -4,6 +4,47 @@ local StatLogic = LibStub:GetLibrary(addonName)
 
 addon.RatingBase = {}
 
+-- Extracted from the client at GameTables/OCTRegenMP.txt via wow.tools.local
+local OCTRegenMP = {
+	["PALADIN"] = 0.25,
+	["HUNTER"]  = 0.25,
+	["PRIEST"]  = 0.25,
+	["SHAMAN"]  = 0.25,
+	["MAGE"]    = 0.25,
+	["WARLOCK"] = 0.25,
+	["DRUID"]   = 0.25,
+}
+
+-- Extracted from the client at GameTables/RegenMPPerSpt.txt via wow.tools.local
+local RegenMPPerSpt = {
+	["PALADIN"] = 0.100,
+	["HUNTER"]  = 0.100,
+	["PRIEST"]  = 0.125,
+	["SHAMAN"]  = 0.100,
+	["MAGE"]    = 0.125,
+	["WARLOCK"] = 0.100,
+	["DRUID"]   = 0.100,
+}
+
+-- Y-intercepts from commonly cited regen formulas
+local RegenMPBase = {
+	["PALADIN"] = 15.0,
+	["HUNTER"]  = 15.0,
+	["PRIEST"]  = 12.5,
+	["SHAMAN"]  = 17.0,
+	["MAGE"]    = 12.5,
+	["WARLOCK"] = 15.0,
+	["DRUID"]   = 15.0,
+}
+
+local NormalManaRegenPerSpi = function()
+	local _, spi = UnitStat("player", 5)
+	local low = OCTRegenMP[addon.class]
+	local high = RegenMPPerSpt[addon.class]
+	local base = RegenMPBase[addon.class]
+	return 5 * (spi > base / (low - high) and high or low)
+end
+
 addon.BaseMeleeCrit = {
 	["WARRIOR"] = 0.0000,
 	["PALADIN"] = 1.7000,
@@ -130,7 +171,7 @@ if addon.class == "DRUID" then
 		},
 		["ADD_NORMAL_MANA_REG_MOD_SPI"] = {
 			{
-				["value"] = 0.5625,
+				["regen"] = NormalManaRegenPerSpi,
 			},
 		},
 		["ADD_NORMAL_HEALTH_REG_MOD_SPI"] = {
@@ -282,7 +323,7 @@ elseif addon.class == "HUNTER" then
 		},
 		["ADD_NORMAL_MANA_REG_MOD_SPI"] = {
 			{
-				["value"] = 0.5,
+				["regen"] = NormalManaRegenPerSpi,
 			},
 		},
 		["ADD_NORMAL_HEALTH_REG_MOD_SPI"] = {
@@ -412,7 +453,7 @@ elseif addon.class == "MAGE" then
 		},
 		["ADD_NORMAL_MANA_REG_MOD_SPI"] = {
 			{
-				["value"] = 0.625,
+				["regen"] = NormalManaRegenPerSpi,
 			},
 		},
 		["ADD_NORMAL_HEALTH_REG_MOD_SPI"] = {
@@ -493,7 +534,7 @@ elseif addon.class == "PALADIN" then
 		},
 		["ADD_NORMAL_MANA_REG_MOD_SPI"] = {
 			{
-				["value"] = 0.5,
+				["regen"] = NormalManaRegenPerSpi,
 			},
 		},
 		["ADD_NORMAL_HEALTH_REG_MOD_SPI"] = {
@@ -572,7 +613,7 @@ elseif addon.class == "PRIEST" then
 		},
 		["ADD_NORMAL_MANA_REG_MOD_SPI"] = {
 			{
-				["value"] = 0.625,
+				["regen"] = NormalManaRegenPerSpi,
 			},
 		},
 		["ADD_NORMAL_HEALTH_REG_MOD_SPI"] = {
@@ -731,7 +772,7 @@ elseif addon.class == "SHAMAN" then
 		},
 		["ADD_NORMAL_MANA_REG_MOD_SPI"] = {
 			{
-				["value"] = 0.5,
+				["regen"] = NormalManaRegenPerSpi,
 			},
 		},
 		["ADD_NORMAL_HEALTH_REG_MOD_SPI"] = {
@@ -839,7 +880,7 @@ elseif addon.class == "WARLOCK" then
 		},
 		["ADD_NORMAL_MANA_REG_MOD_SPI"] = {
 			{
-				["value"] = 0.5,
+				["regen"] = NormalManaRegenPerSpi,
 			},
 		},
 		["ADD_NORMAL_HEALTH_REG_MOD_SPI"] = {

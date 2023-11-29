@@ -53,7 +53,7 @@ StatLogic.GenericStatMap[StatLogic.GenericStats.CR_HASTE] = {
 }
 
 -- Extracted from the client at GameTables/RegenMPPerSpt.txt via wow.tools.local
-addon.BaseManaRegenPerSpi = {
+local BaseManaRegenPerSpi = {
 	0.062937, 0.056900, 0.051488, 0.046267, 0.041637, 0.037784, 0.034309, 0.031172, 0.028158, 0.025460,
 	0.022654, 0.019904, 0.017817, 0.015771, 0.014008, 0.013650, 0.013175, 0.012832, 0.012475, 0.012073,
 	0.011840, 0.011494, 0.011292, 0.010990, 0.010761, 0.010546, 0.010321, 0.010151, 0.009949, 0.009740,
@@ -63,6 +63,21 @@ addon.BaseManaRegenPerSpi = {
 	0.006421, 0.006314, 0.006175, 0.006072, 0.005981, 0.005885, 0.005791, 0.005732, 0.005668, 0.005596,
 	0.005316, 0.005049, 0.004796, 0.004555, 0.004327, 0.004110, 0.003903, 0.003708, 0.003522, 0.003345,
 }
+
+local NormalManaRegenPerSpi = function()
+	local level = UnitLevel("player")
+	local _, int = UnitStat("player", 4)
+	local _, spi = UnitStat("player", 5)
+	return (0.001 / spi + BaseManaRegenPerSpi[level] * (int ^ 0.5)) * 5
+end
+
+local NormalManaRegenPerInt = function()
+	local level = UnitLevel("player")
+	local _, int = UnitStat("player", 4)
+	local _, spi = UnitStat("player", 5)
+	-- Derivative of regen with respect to int
+	return (spi * BaseManaRegenPerSpi[level] / (2 * (int ^ 0.5))) * 5
+end
 
 -- Extracted from the client at GameTables/OCTRegenHP.txt via wow.tools.local
 local BaseHealthRegenPerSpi = {
@@ -999,12 +1014,12 @@ if addon.class == "DRUID" then
 		},
 		["ADD_NORMAL_MANA_REG_MOD_SPI"] = {
 			{
-				["regen"] = addon.NormalManaRegenPerSpi,
+				["regen"] = NormalManaRegenPerSpi,
 			},
 		},
 		["ADD_NORMAL_MANA_REG_MOD_INT"] = {
 			{
-				["regen"] = addon.NormalManaRegenPerInt,
+				["regen"] = NormalManaRegenPerInt,
 			},
 		},
 		-- Druid: Improved Moonkin Form (Rank 3) - 1,19
@@ -1649,12 +1664,12 @@ elseif addon.class == "HUNTER" then
 		},
 		["ADD_NORMAL_MANA_REG_MOD_SPI"] = {
 			{
-				["regen"] = addon.NormalManaRegenPerSpi,
+				["regen"] = NormalManaRegenPerSpi,
 			},
 		},
 		["ADD_NORMAL_MANA_REG_MOD_INT"] = {
 			{
-				["regen"] = addon.NormalManaRegenPerInt,
+				["regen"] = NormalManaRegenPerInt,
 			},
 		},
 		-- Hunter: Hunter vs. Wild (Rank 3) - 3,14
@@ -1803,12 +1818,12 @@ elseif addon.class == "MAGE" then
 		},
 		["ADD_NORMAL_MANA_REG_MOD_SPI"] = {
 			{
-				["regen"] = addon.NormalManaRegenPerSpi,
+				["regen"] = NormalManaRegenPerSpi,
 			},
 		},
 		["ADD_NORMAL_MANA_REG_MOD_INT"] = {
 			{
-				["regen"] = addon.NormalManaRegenPerInt,
+				["regen"] = NormalManaRegenPerInt,
 			},
 		},
 		["ADD_SPELL_CRIT_RATING_MOD_SPI"] = {
@@ -1956,12 +1971,12 @@ elseif addon.class == "PALADIN" then
 		},
 		["ADD_NORMAL_MANA_REG_MOD_SPI"] = {
 			{
-				["regen"] = addon.NormalManaRegenPerSpi,
+				["regen"] = NormalManaRegenPerSpi,
 			},
 		},
 		["ADD_NORMAL_MANA_REG_MOD_INT"] = {
 			{
-				["regen"] = addon.NormalManaRegenPerInt,
+				["regen"] = NormalManaRegenPerInt,
 			},
 		},
 		-- Paladin: Sheath of Light (Rank 3) - 3,24
@@ -2114,12 +2129,12 @@ elseif addon.class == "PRIEST" then
 		},
 		["ADD_NORMAL_MANA_REG_MOD_SPI"] = {
 			{
-				["regen"] = addon.NormalManaRegenPerSpi,
+				["regen"] = NormalManaRegenPerSpi,
 			},
 		},
 		["ADD_NORMAL_MANA_REG_MOD_INT"] = {
 			{
-				["regen"] = addon.NormalManaRegenPerInt,
+				["regen"] = NormalManaRegenPerInt,
 			},
 		},
 		["MOD_NORMAL_MANA_REG"] = {
@@ -2379,12 +2394,12 @@ elseif addon.class == "SHAMAN" then
 		},
 		["ADD_NORMAL_MANA_REG_MOD_SPI"] = {
 			{
-				["regen"] = addon.NormalManaRegenPerSpi,
+				["regen"] = NormalManaRegenPerSpi,
 			},
 		},
 		["ADD_NORMAL_MANA_REG_MOD_INT"] = {
 			{
-				["regen"] = addon.NormalManaRegenPerInt,
+				["regen"] = NormalManaRegenPerInt,
 			},
 		},
 		-- Shaman: Mental Dexterity (Rank 3) - 2,15
@@ -2487,12 +2502,12 @@ elseif addon.class == "WARLOCK" then
 		},
 		["ADD_NORMAL_MANA_REG_MOD_SPI"] = {
 			{
-				["regen"] = addon.NormalManaRegenPerSpi,
+				["regen"] = NormalManaRegenPerSpi,
 			},
 		},
 		["ADD_NORMAL_MANA_REG_MOD_INT"] = {
 			{
-				["regen"] = addon.NormalManaRegenPerInt,
+				["regen"] = NormalManaRegenPerInt,
 			},
 		},
 		-- Warlock: Metamorphosis - Buff
