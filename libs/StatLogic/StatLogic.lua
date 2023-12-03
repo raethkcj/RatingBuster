@@ -466,8 +466,16 @@ local function GetTotalDefense(unit)
 end
 
 local function GetTotalWeaponSkill(unit)
-	local base, modifier = UnitAttackBothHands(unit);
-	return base + modifier
+	if addon.class == "DRUID" and (
+		StatLogic:GetAuraInfo(GetSpellInfo(768), true)
+		or StatLogic:GetAuraInfo(GetSpellInfo(5487), true)
+		or StatLogic:GetAuraInfo(GetSpellInfo(9634), true)
+	) then
+		return UnitLevel("player") * 5
+	else
+		local base, modifier = UnitAttackBothHands(unit);
+		return base + modifier
+	end
 end
 
 StatLogic.StatModInfo = {
