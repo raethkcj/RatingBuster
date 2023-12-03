@@ -238,6 +238,23 @@ addon.DodgePerAgiMaxLevel = {}
 StatLogic.StatModTable = {}
 if addon.class == "DRUID" then
 	StatLogic.StatModTable["DRUID"] = {
+		["ADD_AP_MOD_FERAL_AP"] = {
+			-- Cat Form
+			{
+				["value"] = 1,
+				["buff"] = 768,
+			},
+			-- Bear Form
+			{
+				["value"] = 1,
+				["buff"] = 5487,
+			},
+			-- Dire Bear Form
+			{
+				["value"] = 1,
+				["buff"] = 9634,
+			},
+		},
 		["ADD_AP_MOD_STR"] = {
 			{
 				["value"] = 2,

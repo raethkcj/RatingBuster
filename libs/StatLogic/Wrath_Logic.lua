@@ -1000,6 +1000,23 @@ local BuffGroup = {
 StatLogic.StatModTable = {}
 if addon.class == "DRUID" then
 	StatLogic.StatModTable["DRUID"] = {
+		["ADD_AP_MOD_FERAL_AP"] = {
+			-- Cat Form
+			{
+				["value"] = 1,
+				["buff"] = 768,
+			},
+			-- Bear Form
+			{
+				["value"] = 1,
+				["buff"] = 5487,
+			},
+			-- Dire Bear Form
+			{
+				["value"] = 1,
+				["buff"] = 9634,
+			},
+		},
 		["ADD_AP_MOD_STR"] = {
 			{
 				["value"] = 2,
@@ -1211,24 +1228,9 @@ if addon.class == "DRUID" then
 				["buff"] = 9634,		-- ["Dire Bear Form"],
 			},
 		},
-		--if class == "DRUID" and select(5, GetTalentInfo(2, 10)) > 0 and weaponItemEquipLoc[select(9, GetItemInfo(link))] then
 		-- Druid: Predatory Strikes (Rank 3) - 2,10
-		--				Increases your melee attack power in Cat, Bear and Dire Bear Forms by
-		--				7,14,20% of any attack power on your equipped weapon.
-		["ADD_AP_MOD_FERAL_AP"] = {
-			{
-				["value"] = 1,
-				["buff"] = 32356,		-- ["Cat Form"],
-			},
-			{
-				["value"] = 1,
-				["buff"] = 32357,		-- ["Bear Form"],
-			},
-			{
-				["value"] = 1,
-				["buff"] = 9634,		-- ["Dire Bear Form"],
-			},
-		},
+		--   Increases your melee attack power in Cat, Bear and Dire Bear Forms by
+		--   7,14,20% of any attack power on your equipped weapon.
 		["MOD_FERAL_AP"] = {
 			{
 				["tab"] = 2,

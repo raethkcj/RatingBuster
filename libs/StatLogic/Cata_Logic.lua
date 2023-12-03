@@ -324,6 +324,18 @@ local BuffGroup = {
 StatLogic.StatModTable = {}
 if addon.class == "DRUID" then
 	StatLogic.StatModTable["DRUID"] = {
+		["ADD_AP_MOD_FERAL_AP"] = {
+			-- Cat Form
+			{
+				["value"] = 1,
+				["buff"] = 768,
+			},
+			-- Bear Form
+			{
+				["value"] = 1,
+				["buff"] = 5487,
+			},
+		},
 		["ADD_AP_MOD_STR"] = {
 			{
 				["value"] = 1,

@@ -305,8 +305,8 @@ L["StatIDLookup"] = {
 	["Increases attack powerwhen fighting Undead.  It also allows the acquisition of Scourgestones on behalf of the Argent Dawn"] = {"AP_UNDEAD",}, -- [Seal of the Dawn] ID:13209
 	["Increases attack powerwhen fighting Demons"] = {"AP_DEMON",},
 	["Increases attack powerwhen fighting Undead and Demons"] = {"AP_UNDEAD", "AP_DEMON",}, -- [Mark of the Champion] ID:23206
-	["Attack Power in Cat, Bear, and Dire Bear forms only"] = {"FERAL_AP",},
 	["Increases attack powerin Cat"] = {"FERAL_AP",},
+	["attack power in cat"] = {"FERAL_AP",},
 	["Ranged Attack Power"] = {"RANGED_AP",},
 	["Increases ranged attack power"] = {"RANGED_AP",}, -- [High Warlord's Crossbow] ID: 18837
 
