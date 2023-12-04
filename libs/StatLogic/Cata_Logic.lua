@@ -302,17 +302,37 @@ addon.BaseDodge = {
 	["DRUID"] =       4.9510,
 }
 
-addon.DodgePerAgiMaxLevel = {
-	["WARRIOR"] =     0,
-	["PALADIN"] =     0,
-	["HUNTER"] =      0.0133266,
-	["ROGUE"] =       0.0240537,
-	["PRIEST"] =      0.0192366,
-	["DEATHKNIGHT"] = 0,
-	["SHAMAN"] =      0.0192366,
-	["MAGE"] =        0.0195253,
-	["WARLOCK"] =     0.0192366,
-	["DRUID"] =       0.0240458,
+addon.DodgePerAgi = {
+	["WARRIOR"] = {
+		[85] = 0,
+	},
+	["PALADIN"] = {
+		[85] = 0,
+	},
+	["HUNTER"] = {
+		[85] = 0.0133266,
+	},
+	["ROGUE"] = {
+		[85] = 0.0240537,
+	},
+	["PRIEST"] = {
+		[85] = 0.0192366,
+	},
+	["DEATHKNIGHT"] = {
+		[85] = 0,
+	},
+	["SHAMAN"] = {
+		[85] = 0.0192366,
+	},
+	["MAGE"] = {
+		[85] = 0.0195253,
+	},
+	["WARLOCK"] = {
+		[85] = 0.0192366,
+	},
+	["DRUID"] = {
+		[85] = 0.0240458,
+	},
 }
 
 local BuffGroup = {

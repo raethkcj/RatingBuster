@@ -1496,8 +1496,8 @@ end
 function StatLogic:GetDodgePerAgi()
 	local level = UnitLevel("player")
 	local class = addon.class
-	if level == GetMaxPlayerLevel() and addon.DodgePerAgiMaxLevel[class] then
-		return addon.DodgePerAgiMaxLevel[class], StatLogic.Stats.Dodge
+	if addon.DodgePerAgi[class][level] then
+		return addon.DodgePerAgi[class][level]
 	end
 	local _, agility = UnitStat("player", 2)
 	-- dodgeFromAgi is %
@@ -1506,7 +1506,8 @@ function StatLogic:GetDodgePerAgi()
 		- self:GetEffectFromRating(GetCombatRating(CR_DODGE), CR_DODGE, UnitLevel("player"))
 		- self:GetEffectFromDefense(GetTotalDefense("player"), UnitLevel("player"))
 		- self:GetTotalEquippedStat(StatLogic.Stats.Dodge)
-	return (dodgeFromAgi - addon.BaseDodge[addon.class]) / agility, StatLogic.Stats.Dodge
+		- addon.BaseDodge[addon.class]
+	return dodgeFromAgi / agility
 end
 
 --[[---------------------------------

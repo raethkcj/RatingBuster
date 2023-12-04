@@ -233,7 +233,7 @@ addon.BaseDodge = {
 }
 
 -- TODO Gather data if TBC comes back
-addon.DodgePerAgiMaxLevel = {}
+addon.DodgePerAgi = {}
 
 StatLogic.StatModTable = {}
 if addon.class == "DRUID" then

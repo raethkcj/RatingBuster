@@ -443,17 +443,37 @@ addon.BaseDodge = {
 	["DRUID"] =       5.6097,
 }
 
-addon.DodgePerAgiMaxLevel = {
-	["WARRIOR"] = 0.0118,
-	["PALADIN"] = 0.0167,
-	["HUNTER"] = 0.0116,
-	["ROGUE"] = 0.0209,
-	["PRIEST"] = 0.0167,
-	["DEATHKNIGHT"] = 0.0118,
-	["SHAMAN"] = 0.0167,
-	["MAGE"] = 0.017,
-	["WARLOCK"] = 0.0167,
-	["DRUID"] = 0.0209,
+addon.DodgePerAgi = {
+	["WARRIOR"] = {
+		[80] = 0.0118,
+	},
+	["PALADIN"] = {
+		[80] = 0.0167,
+	},
+	["HUNTER"] = {
+		[80] = 0.0116,
+	},
+	["ROGUE"] = {
+		[80] = 0.0209,
+	},
+	["PRIEST"] = {
+		[80] = 0.0167,
+	},
+	["DEATHKNIGHT"] = {
+		[80] = 0.0118,
+	},
+	["SHAMAN"] = {
+		[80] = 0.0167,
+	},
+	["MAGE"] = {
+		[80] = 0.017,
+	},
+	["WARLOCK"] = {
+		[80] = 0.0167,
+	},
+	["DRUID"] = {
+		[80] = 0.0209,
+	},
 }
 
 addon.bonusArmorItemEquipLoc = {
@@ -3172,7 +3192,6 @@ Arguments:
 	None
 Returns:
 	; dodge : number - Dodge percentage per agility
-	; statid : Stat - StatLogic.Stats.Dodge
 Notes:
 	* Formula by Whitetooth (hotdogee [at] gmail [dot] com)
 	* Calculates the dodge percentage per agility for your current class and level.
@@ -3203,7 +3222,7 @@ Notes:
 	# c=(D'-D_b)(D_r+C_d*k)-C_d*D_r
 	** Dodge/Agi=(-b-(b^2-4ac)^0.5)/(2a)
 Example:
-	local dodge, statid = StatLogic:GetDodgePerAgi()
+	local dodge = StatLogic:GetDodgePerAgi()
 -----------------------------------]]
 
 local ModAgiClasses = {
@@ -3215,10 +3234,8 @@ local ModAgiClasses = {
 function StatLogic:GetDodgePerAgi()
 	local level = UnitLevel("player")
 	local class = addon.class
-	if level == GetMaxPlayerLevel() and addon.DodgePerAgiMaxLevel[class] then
-
-		return addon.DodgePerAgiMaxLevel[class], StatLogic.Stats.Dodge
-
+	if addon.DodgePerAgi[class][level] then
+		return addon.DodgePerAgi[class][level]
 	end
 	-- Collect data
 	local D_dr = GetDodgeChance()
@@ -3253,7 +3270,7 @@ function StatLogic:GetDodgePerAgi()
 		dodgePerAgi = -c / b
 	end
 	--return dodgePerAgi
-	return floor(dodgePerAgi*10000+0.5)/10000, StatLogic.Stats.Dodge
+	return floor(dodgePerAgi*10000+0.5)/10000
 end
 
 --[[---------------------------------
