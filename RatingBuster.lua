@@ -1948,7 +1948,10 @@ function RatingBuster:ProcessText(text, link, color)
 					if infoString ~= "" then
 						-- Change insertion point if necessary
 						if num.addInfo == "AfterStat" then
-							_, insertionPoint = lowerText:find(stat.pattern)
+							local _, statInsertionPoint = lowerText:find(stat.pattern)
+							if statInsertionPoint > insertionPoint then
+								insertionPoint = statInsertionPoint
+							end
 						end
 
 						-- Backwards Compatibility
