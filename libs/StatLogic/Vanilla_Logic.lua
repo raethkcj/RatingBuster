@@ -175,16 +175,19 @@ if addon.class == "DRUID" then
 			{
 				["value"] = 1,
 				["buff"] = 768,
+				["group"] = addon.BuffGroup.Feral,
 			},
 			-- Bear Form
 			{
 				["value"] = 1,
 				["buff"] = 5487,
+				["group"] = addon.BuffGroup.Feral,
 			},
 			-- Dire Bear Form
 			{
 				["value"] = 1,
 				["buff"] = 9634,
+				["group"] = addon.BuffGroup.Feral,
 			},
 		},
 		["ADD_AP_MOD_STR"] = {

@@ -1114,6 +1114,7 @@ do
 		AttackPower = 2,
 		SpellPower = 3,
 		Armor = 4,
+		Feral = 5,
 	}
 	local BuffGroupCache = {}
 
