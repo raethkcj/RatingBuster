@@ -167,11 +167,6 @@ addon.DodgePerAgi = {
 	},
 }
 
-local BuffGroup = {
-	MOD_ARMOR = 1,
-	MOD_STATS = 2,
-}
-
 StatLogic.StatModTable = {}
 if addon.class == "DRUID" then
 	StatLogic.StatModTable["DRUID"] = {
@@ -1162,7 +1157,7 @@ StatLogic.StatModTable["ALL"] = {
 			["rank"] = {
 				0.15, 0.30,
 			},
-			["buff"] = 20236,		-- ["Lay on Hands"],
+			["buff"] = 20236,
 		},
 		-- Priest: Inspiration (Rank 1/2/3) - Buff
 		--         Increases armor by 8%/16%/25%.
@@ -1170,8 +1165,8 @@ StatLogic.StatModTable["ALL"] = {
 			["rank"] = {
 				0.08, 0.16, 0.25,
 			},
-			["buff"] = 15363,		-- ["Inspiration"],
-			["group"] = BuffGroup.MOD_ARMOR,
+			["buff"] = 15363,
+			["group"] = addon.BuffGroup.Armor,
 		},
 		-- Shaman: Ancestral Fortitude (Rank 1/2/3) - Buff
 		--         Increases your armor value by 8%/16%/25%.
@@ -1179,8 +1174,8 @@ StatLogic.StatModTable["ALL"] = {
 			["rank"] = {
 				0.08, 0.16, 0.25,
 			},
-			["buff"] = 16237,		-- ["Ancestral Fortitude"],
-			["group"] = BuffGroup.MOD_ARMOR,
+			["buff"] = 16237,
+			["group"] = addon.BuffGroup.Armor,
 		},
 	},
 	["MOD_STR"] = {
@@ -1189,21 +1184,21 @@ StatLogic.StatModTable["ALL"] = {
 		{
 			["value"] = 0.1,
 			["buff"] = 20217,
-			["group"] = BuffGroup.MOD_STATS,
+			["group"] = addon.BuffGroup.AllStats,
 		},
 		-- Greater Blessing of Kings - Buff
 		--   Increases stats by 10%.
 		{
 			["value"] = 0.1,
 			["buff"] = 25898,
-			["group"] = BuffGroup.MOD_STATS,
+			["group"] = addon.BuffGroup.AllStats,
 		},
 		-- Aspect of the Lion - Buff
 		--   Increases stats by 10%.
 		{
 			["value"] = 0.1,
 			["buff"] = 409583,
-			["group"] = BuffGroup.MOD_STATS,
+			["group"] = addon.BuffGroup.AllStats,
 		},
 	},
 	["MOD_AGI"] = {
@@ -1212,21 +1207,21 @@ StatLogic.StatModTable["ALL"] = {
 		{
 			["value"] = 0.1,
 			["buff"] = 20217,
-			["group"] = BuffGroup.MOD_STATS,
+			["group"] = addon.BuffGroup.AllStats,
 		},
 		-- Greater Blessing of Kings - Buff
 		--   Increases stats by 10%.
 		{
 			["value"] = 0.1,
 			["buff"] = 25898,
-			["group"] = BuffGroup.MOD_STATS,
+			["group"] = addon.BuffGroup.AllStats,
 		},
 		-- Aspect of the Lion - Buff
 		--   Increases stats by 10%.
 		{
 			["value"] = 0.1,
 			["buff"] = 409583,
-			["group"] = BuffGroup.MOD_STATS,
+			["group"] = addon.BuffGroup.AllStats,
 		},
 	},
 	["MOD_STA"] = {
@@ -1235,21 +1230,21 @@ StatLogic.StatModTable["ALL"] = {
 		{
 			["value"] = 0.1,
 			["buff"] = 20217,
-			["group"] = BuffGroup.MOD_STATS,
+			["group"] = addon.BuffGroup.AllStats,
 		},
 		-- Greater Blessing of Kings - Buff
 		--   Increases stats by 10%.
 		{
 			["value"] = 0.1,
 			["buff"] = 25898,
-			["group"] = BuffGroup.MOD_STATS,
+			["group"] = addon.BuffGroup.AllStats,
 		},
 		-- Aspect of the Lion - Buff
 		--   Increases stats by 10%.
 		{
 			["value"] = 0.1,
 			["buff"] = 409583,
-			["group"] = BuffGroup.MOD_STATS,
+			["group"] = addon.BuffGroup.AllStats,
 		},
 	},
 	["MOD_INT"] = {
@@ -1258,21 +1253,21 @@ StatLogic.StatModTable["ALL"] = {
 		{
 			["value"] = 0.1,
 			["buff"] = 20217,
-			["group"] = BuffGroup.MOD_STATS,
+			["group"] = addon.BuffGroup.AllStats,
 		},
 		-- Greater Blessing of Kings - Buff
 		--   Increases stats by 10%.
 		{
 			["value"] = 0.1,
 			["buff"] = 25898,
-			["group"] = BuffGroup.MOD_STATS,
+			["group"] = addon.BuffGroup.AllStats,
 		},
 		-- Aspect of the Lion - Buff
 		--   Increases stats by 10%.
 		{
 			["value"] = 0.1,
 			["buff"] = 409583,
-			["group"] = BuffGroup.MOD_STATS,
+			["group"] = addon.BuffGroup.AllStats,
 		},
 	},
 	["MOD_SPI"] = {
@@ -1281,21 +1276,21 @@ StatLogic.StatModTable["ALL"] = {
 		{
 			["value"] = 0.1,
 			["buff"] = 20217,
-			["group"] = BuffGroup.MOD_STATS,
+			["group"] = addon.BuffGroup.AllStats,
 		},
 		-- Greater Blessing of Kings - Buff
 		--   Increases stats by 10%.
 		{
 			["value"] = 0.1,
 			["buff"] = 25898,
-			["group"] = BuffGroup.MOD_STATS,
+			["group"] = addon.BuffGroup.AllStats,
 		},
 		-- Aspect of the Lion - Buff
 		--   Increases stats by 10%.
 		{
 			["value"] = 0.1,
 			["buff"] = 409583,
-			["group"] = BuffGroup.MOD_STATS,
+			["group"] = addon.BuffGroup.AllStats,
 		},
 	},
 	["ADD_MELEE_CRIT"] = {

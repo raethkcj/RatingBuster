@@ -1109,6 +1109,12 @@ do
 end
 
 do
+	addon.BuffGroup = {
+		AllStats = 1,
+		AttackPower = 2,
+		SpellPower = 3,
+		Armor = 4,
+	}
 	local BuffGroupCache = {}
 
 	local function ApplyMod(mod, value, initialValue)

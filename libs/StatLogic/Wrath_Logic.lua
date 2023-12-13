@@ -1009,14 +1009,6 @@ addon.baseArmorTable = {
 	},
 }
 
-
-
-local BuffGroup = {
-	MOD_PHYS_DMG_TAKEN = 1,
-	MOD_AP = 2,
-	MOD_STATS = 3,
-}
-
 StatLogic.StatModTable = {}
 if addon.class == "DRUID" then
 	StatLogic.StatModTable["DRUID"] = {
@@ -2920,31 +2912,31 @@ StatLogic.StatModTable["ALL"] = {
 			["meta"] = 41380,
 		},
 	},
-	-- Hunter: Trueshot Aura - Buff
-	--         Attack power increased by 10%.
-	-- Death Knight: Abomination's Might - Buff
-	--               Attack power increased by 5/10%.
-	-- Shaman: Unleashed Rage - Buff
-	--         Melee attack power increased by 4/7/10%.
 	["MOD_AP"] = {
+		-- Hunter: Trueshot Aura - Buff
+		--         Attack power increased by 10%.
 		{
 			["value"] = 0.1,
-			["buff"] = 19506,		-- ["Trueshot Aura"],
-			["group"] = BuffGroup.MOD_AP,
+			["buff"] = 19506,
+			["group"] = addon.BuffGroup.AttackPower,
 		},
+		-- Death Knight: Abomination's Might - Buff
+		--               Attack power increased by 5/10%.
 		{
 			["rank"] = {
 				0.05, 0.1,
 			},
-			["buff"] = 53138,		-- ["Abomination's Might"],
-			["group"] = BuffGroup.MOD_AP,
+			["buff"] = 53138,
+			["group"] = addon.BuffGroup.AttackPower,
 		},
+		-- Shaman: Unleashed Rage - Buff
+		--         Melee attack power increased by 4/7/10%.
 		{
 			["rank"] = {
 				0.04, 0.07, 0.1,
 			},
-			["buff"] = 30809,		-- ["Unleashed Rage"],
-			["group"] = BuffGroup.MOD_AP,
+			["buff"] = 30809,
+			["group"] = addon.BuffGroup.AttackPower,
 		},
 	},
 	-- MetaGem: Beaming Earthsiege Diamond - 41389
@@ -2955,149 +2947,145 @@ StatLogic.StatModTable["ALL"] = {
 			["meta"] = 41389,
 		},
 	},
-	-- Paladin: Blessing of Kings, Greater Blessing of Kings - Buff
-	--          Increases stats by 10%.
-	-- Paladin: Blessing of Sanctuary, Greater Blessing of Sanctuary - Buff
-	--          Damage taken reduced by up to 3%, strength and stamina increased by 10%. Does not stack with Blessing of Kings.
-	-- Leatherworking: Blessing of Forgotten Kings - Buff
-	--                 Increases stats by 8%.
 	["MOD_STR"] = {
+		-- Paladin: Blessing of Kings, Greater Blessing of Kings - Buff
+		--          Increases stats by 10%.
 		{
 			["value"] = 0.1,
-			["buff"] = 20217,		-- ["Blessing of Kings"],
-			["group"] = BuffGroup.MOD_STATS,
+			["buff"] = 20217,
+			["group"] = addon.BuffGroup.AllStats,
 		},
 		{
 			["value"] = 0.1,
-			["buff"] = 25898,		-- ["Greater Blessing of Kings"],
-			["group"] = BuffGroup.MOD_STATS,
+			["buff"] = 25898,
+			["group"] = addon.BuffGroup.AllStats,
 		},
 		-- Blessing of Sanctuary
 		{
 			["value"] = 0.1,
-			["buff"] = 20911,		-- ["Blessing of Sanctuary"],
-			["group"] = BuffGroup.MOD_STATS,
+			["buff"] = 20911,
+			["group"] = addon.BuffGroup.AllStats,
 		},
 		-- Greater Blessing of Sanctuary
 		{
 			["value"] = 0.1,
-			["buff"] = 25899,		-- ["Greater Blessing of Sanctuary"],
-			["group"] = BuffGroup.MOD_STATS,
+			["buff"] = 25899,
+			["group"] = addon.BuffGroup.AllStats,
 		},
+		-- Leatherworking: Blessing of Forgotten Kings - Buff
+		--                 Increases stats by 8%.
 		{
 			["value"] = 0.08,
-			["buff"] = 69378,		-- ["Blessing of Forgotten Kings"],
-			["group"] = BuffGroup.MOD_STATS,
+			["buff"] = 69378,
+			["group"] = addon.BuffGroup.AllStats,
 		},
 	},
-	-- Paladin: Blessing of Kings, Greater Blessing of Kings - Buff
-	--          Increases stats by 10%.
-	-- Leatherworking: Blessing of Forgotten Kings - Buff
-	--                 Increases stats by 8%.
 	["MOD_AGI"] = {
+		-- Paladin: Blessing of Kings, Greater Blessing of Kings - Buff
+		--          Increases stats by 10%.
 		{
 			["value"] = 0.1,
-			["buff"] = 20217,		-- ["Blessing of Kings"],
-			["group"] = BuffGroup.MOD_STATS,
+			["buff"] = 20217,
+			["group"] = addon.BuffGroup.AllStats,
 		},
 		{
 			["value"] = 0.1,
-			["buff"] = 25898,		-- ["Greater Blessing of Kings"],
-			["group"] = BuffGroup.MOD_STATS,
+			["buff"] = 25898,
+			["group"] = addon.BuffGroup.AllStats,
 		},
+		-- Leatherworking: Blessing of Forgotten Kings - Buff
+		--                 Increases stats by 8%.
 		{
 			["value"] = 0.08,
-			["buff"] = 69378,		-- ["Blessing of Forgotten Kings"],
-			["group"] = BuffGroup.MOD_STATS,
+			["buff"] = 69378,
+			["group"] = addon.BuffGroup.AllStats,
 		},
 	},
-	-- Paladin: Blessing of Kings, Greater Blessing of Kings - Buff
-	--          Increases stats by 10%.
-	-- Paladin: Blessing of Sanctuary, Greater Blessing of Sanctuary - Buff
-	--          Damage taken reduced by up to 3%, strength and stamina increased by 10%. Does not stack with Blessing of Kings.
-	-- Leatherworking: Blessing of Forgotten Kings - Buff
-	--                 Increases stats by 8%.
 	["MOD_STA"] = {
+		-- Paladin: Blessing of Kings, Greater Blessing of Kings - Buff
+		--          Increases stats by 10%.
 		{
 			["value"] = 0.1,
-			["buff"] = 20217,		-- ["Blessing of Kings"],
-			["group"] = BuffGroup.MOD_STATS,
+			["buff"] = 20217,
+			["group"] = addon.BuffGroup.AllStats,
 		},
 		{
 			["value"] = 0.1,
-			["buff"] = 25898,		-- ["Greater Blessing of Kings"],
-			["group"] = BuffGroup.MOD_STATS,
+			["buff"] = 25898,
+			["group"] = addon.BuffGroup.AllStats,
 		},
 		-- Blessing of Sanctuary
 		{
 			["value"] = 0.1,
-			["buff"] = 20911,		-- ["Blessing of Sanctuary"],
-			["group"] = BuffGroup.MOD_STATS,
+			["buff"] = 20911,
+			["group"] = addon.BuffGroup.AllStats,
 		},
 		-- Greater Blessing of Sanctuary
 		{
 			["value"] = 0.1,
-			["buff"] = 25899,		-- ["Greater Blessing of Sanctuary"],
-			["group"] = BuffGroup.MOD_STATS,
+			["buff"] = 25899,
+			["group"] = addon.BuffGroup.AllStats,
 		},
+		-- Leatherworking: Blessing of Forgotten Kings - Buff
+		--                 Increases stats by 8%.
 		{
 			["value"] = 0.08,
-			["buff"] = 69378,		-- ["Blessing of Forgotten Kings"],
-			["group"] = BuffGroup.MOD_STATS,
+			["buff"] = 69378,
+			["group"] = addon.BuffGroup.AllStats,
 		},
 	},
-	-- Paladin: Blessing of Kings, Greater Blessing of Kings - Buff
-	--          Increases stats by 10%.
-	-- Leatherworking: Blessing of Forgotten Kings - Buff
-	--                 Increases stats by 8%.
-	-- MetaGem: Ember Skyfire Diamond - 35503
-	--          +14 Spell Power and +2% Intellect
-	-- MetaGem: Ember Skyflare Diamond - 41333
-	--          +25 Spell Power and +2% Intellect
 	["MOD_INT"] = {
+		-- Paladin: Blessing of Kings, Greater Blessing of Kings - Buff
+		--          Increases stats by 10%.
 		{
 			["value"] = 0.1,
-			["buff"] = 20217,		-- ["Blessing of Kings"],
-			["group"] = BuffGroup.MOD_STATS,
+			["buff"] = 20217,
+			["group"] = addon.BuffGroup.AllStats,
 		},
 		{
 			["value"] = 0.1,
-			["buff"] = 25898,		-- ["Greater Blessing of Kings"],
-			["group"] = BuffGroup.MOD_STATS,
+			["buff"] = 25898,
+			["group"] = addon.BuffGroup.AllStats,
 		},
+		-- Leatherworking: Blessing of Forgotten Kings - Buff
+		--                 Increases stats by 8%.
 		{
 			["value"] = 0.08,
-			["buff"] = 69378,		-- ["Blessing of Forgotten Kings"],
-			["group"] = BuffGroup.MOD_STATS,
+			["buff"] = 69378,
+			["group"] = addon.BuffGroup.AllStats,
 		},
+		-- MetaGem: Ember Skyfire Diamond - 35503
+		--          +14 Spell Power and +2% Intellect
 		{
 			["value"] = 0.02,
 			["meta"] = 35503,
 		},
+		-- MetaGem: Ember Skyflare Diamond - 41333
+		--          +25 Spell Power and +2% Intellect
 		{
 			["value"] = 0.02,
 			["meta"] = 41333,
 		},
 	},
-	-- Paladin: Blessing of Kings, Greater Blessing of Kings - Buff
-	--          Increases stats by 10%.
-	-- Leatherworking: Blessing of Forgotten Kings - Buff
-	--                 Increases stats by 8%.
 	["MOD_SPI"] = {
+		-- Paladin: Blessing of Kings, Greater Blessing of Kings - Buff
+		--          Increases stats by 10%.
 		{
 			["value"] = 0.1,
-			["buff"] = 20217,		-- ["Blessing of Kings"],
-			["group"] = BuffGroup.MOD_STATS,
+			["buff"] = 20217,
+			["group"] = addon.BuffGroup.AllStats,
 		},
 		{
 			["value"] = 0.1,
-			["buff"] = 25898,		-- ["Greater Blessing of Kings"],
-			["group"] = BuffGroup.MOD_STATS,
+			["buff"] = 25898,
+			["group"] = addon.BuffGroup.AllStats,
 		},
+		-- Leatherworking: Blessing of Forgotten Kings - Buff
+		--                 Increases stats by 8%.
 		{
 			["value"] = 0.08,
-			["buff"] = 69378,		-- ["Blessing of Forgotten Kings"],
-			["group"] = BuffGroup.MOD_STATS,
+			["buff"] = 69378,
+			["group"] = addon.BuffGroup.AllStats,
 		},
 	},
 }

@@ -1514,106 +1514,110 @@ elseif addon.playerRace == "Troll" then
 end
 
 StatLogic.StatModTable["ALL"] = {
-	-- Paladin: Lay on Hands (Rank 1/2) - Buff
-	--          Armor increased by 15%/30%.
-	-- Priest: Inspiration (Rank 1/2/3) - Buff
-	--         Increases armor by 8%/16%/25%.
-	-- Shaman: Ancestral Fortitude (Rank 1/2/3) - Buff
-	--         Increases your armor value by 8%/16%/25%.
 	["MOD_ARMOR"] = {
+		-- Paladin: Lay on Hands (Rank 1/2) - Buff
+		--          Armor increased by 15%/30%.
 		{
 			["rank"] = {
 				0.15, 0.30,
 			},
-			["buff"] = 27154,		-- ["Lay on Hands"],
+			["buff"] = 27154,
 		},
+		-- Priest: Inspiration (Rank 1/2/3) - Buff
+		--         Increases armor by 8%/16%/25%.
 		{
 			["rank"] = {
 				0.08, 0.16, 0.25,
 			},
-			["buff"] = 15363,		-- ["Inspiration"],
+			["buff"] = 15363,
+			["group"] = addon.BuffGroup.Armor,
 		},
+		-- Shaman: Ancestral Fortitude (Rank 1/2/3) - Buff
+		--         Increases your armor value by 8%/16%/25%.
 		{
 			["rank"] = {
 				0.08, 0.16, 0.25,
 			},
-			["buff"] = 16237,		-- ["Ancestral Fortitude"],
+			["buff"] = 16237,
+			["group"] = addon.BuffGroup.Armor,
 		},
 	},
-	-- Blessing of Kings - Buff
-	-- Increases stats by 10%.
-	-- Greater Blessing of Kings - Buff
-	-- Increases stats by 10%.
 	["MOD_STR"] = {
+		-- Blessing of Kings - Buff
+		-- Increases stats by 10%.
 		{
 			["value"] = 0.1,
-			["buff"] = 20217,		-- ["Blessing of Kings"],
+			["buff"] = 20217,
+			["group"] = addon.BuffGroup.AllStats,
 		},
+		-- Greater Blessing of Kings - Buff
+		-- Increases stats by 10%.
 		{
 			["value"] = 0.1,
-			["buff"] = 25898,		-- ["Greater Blessing of Kings"],
+			["buff"] = 25898,
+			["group"] = addon.BuffGroup.AllStats,
 		},
 	},
-	-- Blessing of Kings - Buff
-	-- Increases stats by 10%.
-	-- Greater Blessing of Kings - Buff
-	-- Increases stats by 10%.
 	["MOD_AGI"] = {
+		-- Blessing of Kings - Buff
+		-- Increases stats by 10%.
 		{
 			["value"] = 0.1,
-			["buff"] = 20217,		-- ["Blessing of Kings"],
+			["buff"] = 20217,
 		},
+		-- Greater Blessing of Kings - Buff
+		-- Increases stats by 10%.
 		{
 			["value"] = 0.1,
-			["buff"] = 25898,		-- ["Greater Blessing of Kings"],
+			["buff"] = 25898,
 		},
 	},
-	-- Blessing of Kings - Buff
-	-- Increases stats by 10%.
-	-- Greater Blessing of Kings - Buff
-	-- Increases stats by 10%.
 	["MOD_STA"] = {
+		-- Blessing of Kings - Buff
+		-- Increases stats by 10%.
 		{
 			["value"] = 0.1,
-			["buff"] = 20217,		-- ["Blessing of Kings"],
+			["buff"] = 20217,
 		},
+		-- Greater Blessing of Kings - Buff
+		-- Increases stats by 10%.
 		{
 			["value"] = 0.1,
-			["buff"] = 25898,		-- ["Greater Blessing of Kings"],
+			["buff"] = 25898,
 		},
 	},
-	-- Blessing of Kings - Buff
-	-- Increases stats by 10%.
-	-- Greater Blessing of Kings - Buff
-	-- Increases stats by 10%.
-	-- Ember Skyfire Diamond
-	-- 2% Intellect
 	["MOD_INT"] = {
+		-- Blessing of Kings - Buff
+		-- Increases stats by 10%.
 		{
 			["value"] = 0.1,
-			["buff"] = 20217,		-- ["Blessing of Kings"],
+			["buff"] = 20217,
 		},
+		-- Greater Blessing of Kings - Buff
+		-- Increases stats by 10%.
 		{
 			["value"] = 0.1,
-			["buff"] = 25898,		-- ["Greater Blessing of Kings"],
+			["buff"] = 25898,
 		},
+		-- Ember Skyfire Diamond
+		-- 2% Intellect
 		{
 			["meta"] = 35503,
 			["value"] = 0.02,
 		},
 	},
-	-- Blessing of Kings - Buff
-	-- Increases stats by 10%.
-	-- Greater Blessing of Kings - Buff
-	-- Increases stats by 10%.
 	["MOD_SPI"] = {
+		-- Blessing of Kings - Buff
+		-- Increases stats by 10%.
 		{
 			["value"] = 0.1,
-			["buff"] = 20217,		-- ["Blessing of Kings"],
+			["buff"] = 20217,
 		},
+		-- Greater Blessing of Kings - Buff
+		-- Increases stats by 10%.
 		{
 			["value"] = 0.1,
-			["buff"] = 25898,		-- ["Greater Blessing of Kings"],
+			["buff"] = 25898,
 		},
 	},
 	-- Whitemend Wisdom
