@@ -3594,7 +3594,7 @@ function RatingBuster:StatSummary(tooltip, link)
 				end
 			end
 			if right then
-				left = StatLogic:GetStatNameFromID(n)
+				left = L[n]
 				tinsert(output, {left, right})
 			end
 		end

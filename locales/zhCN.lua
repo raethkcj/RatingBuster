@@ -657,6 +657,168 @@ L["$value% Parry"] = "$value% 招架"
 -- (+1.21%, +0.98% S)
 L["$value Spell"] = "$value 法术"
 
+L["EMPTY_SOCKET_RED"] = EMPTY_SOCKET_RED -- EMPTY_SOCKET_RED = "Red Socket";
+L["EMPTY_SOCKET_YELLOW"] = EMPTY_SOCKET_YELLOW -- EMPTY_SOCKET_YELLOW = "Yellow Socket";
+L["EMPTY_SOCKET_BLUE"] = EMPTY_SOCKET_BLUE -- EMPTY_SOCKET_BLUE = "Blue Socket";
+L["EMPTY_SOCKET_META"] = EMPTY_SOCKET_META -- EMPTY_SOCKET_META = "Meta Socket";
+
+L["STEALTH_LEVEL"] = "潜行等级"
+L["IGNORE_ARMOR"] = "你的攻击无视目标的 %d+ 点护甲值。"
+L["MELEE_DMG"] = "近战伤害" -- DAMAGE = "Damage"
+L["MOUNT_SPEED"] = "骑乘速度(%)"
+L["RUN_SPEED"] = "移动速度(%)"
+
+L[StatLogic.Stats.Strength] = SPELL_STAT1_NAME
+L[StatLogic.Stats.Agility] = SPELL_STAT2_NAME
+L[StatLogic.Stats.Stamina] = SPELL_STAT3_NAME
+L[StatLogic.Stats.Intellect] = SPELL_STAT4_NAME
+L[StatLogic.Stats.Spirit] = SPELL_STAT5_NAME
+L["ARMOR"] = ARMOR
+L["ARMOR_BONUS"] = "护甲加成"
+
+L["FIRE_RES"] = RESISTANCE2_NAME
+L["NATURE_RES"] = RESISTANCE3_NAME
+L["FROST_RES"] = RESISTANCE4_NAME
+L["SHADOW_RES"] = RESISTANCE5_NAME
+L["ARCANE_RES"] = RESISTANCE6_NAME
+
+L["FISHING"] = "钓鱼"
+L["MINING"] = "采矿"
+L["HERBALISM"] = "草药学"
+L["SKINNING"] = "剥皮"
+
+L["BLOCK_VALUE"] = "盾牌格挡值"
+
+L["AP"] = ATTACK_POWER_TOOLTIP
+L["RANGED_AP"] = RANGED_ATTACK_POWER
+L["FERAL_AP"] = "野性"..ATTACK_POWER_TOOLTIP
+L["AP_UNDEAD"] = ATTACK_POWER_TOOLTIP.."(亡灵)"
+L["AP_DEMON"] = ATTACK_POWER_TOOLTIP.."(恶魔)"
+
+L["HEAL"] = "法术治疗"
+
+L["SPELL_DMG"] = "法术伤害"
+L["SPELL_DMG_UNDEAD"] = "法术伤害(亡灵)"
+L["SPELL_DMG_DEMON"] = "法术伤害(恶魔)"
+L["HOLY_SPELL_DMG"] = "神圣法术伤害"
+L["FIRE_SPELL_DMG"] = "火焰法术伤害"
+L["NATURE_SPELL_DMG"] = "自然法术伤害"
+L["FROST_SPELL_DMG"] = "冰霜法术伤害"
+L["SHADOW_SPELL_DMG"] = "暗影法术伤害"
+L["ARCANE_SPELL_DMG"] = "奥术法术伤害"
+
+L["SPELLPEN"] = "法术穿透"
+
+L["HEALTH"] = HEALTH
+L["MANA"] = MANA
+L["HEALTH_REG"] = "生命恢复"
+L["MANA_REG"] = "法力恢复"
+
+L["AVERAGE_DAMAGE"] = "Average Damage"
+L["DPS"] = "每秒伤害"
+
+L["DEFENSE_RATING"] = COMBAT_RATING_NAME2 -- COMBAT_RATING_NAME2 = "Defense Rating"
+L["DODGE_RATING"] = COMBAT_RATING_NAME3 -- COMBAT_RATING_NAME3 = "Dodge Rating"
+L["PARRY_RATING"] = COMBAT_RATING_NAME4 -- COMBAT_RATING_NAME4 = "Parry Rating"
+L["BLOCK_RATING"] = COMBAT_RATING_NAME5 -- COMBAT_RATING_NAME5 = "Block Rating"
+L["MELEE_HIT_RATING"] = COMBAT_RATING_NAME6 -- COMBAT_RATING_NAME6 = "Hit Rating"
+L["RANGED_HIT_RATING"] = "远程命中等级" -- PLAYERSTAT_RANGED_COMBAT = "Ranged"
+L["SPELL_HIT_RATING"] = "法术命中等级" -- PLAYERSTAT_SPELL_COMBAT = "Spell"
+L["MELEE_CRIT_RATING"] = COMBAT_RATING_NAME9 -- COMBAT_RATING_NAME9 = "Crit Rating"
+L["RANGED_CRIT_RATING"] = "远程爆击等级"
+L["SPELL_CRIT_RATING"] = "法术爆击等级"
+L["RESILIENCE_RATING"] = COMBAT_RATING_NAME15 -- COMBAT_RATING_NAME15 = "Resilience"
+L["MELEE_HASTE_RATING"] = "近战急速等级" --
+L["RANGED_HASTE_RATING"] = "远程急速等级"
+L["SPELL_HASTE_RATING"] = "法术急速等级"
+L["EXPERTISE_RATING"] = "精准等级"
+L["ARMOR_PENETRATION_RATING"] = "护甲穿透等级"
+-- Tier2 Stats - Stats that only show up when broken down from a Tier1 stat
+-- Str -> AP, Block Value
+-- Agi -> AP, Crit, Dodge
+-- Sta -> Health
+-- Int -> Mana, Spell Crit
+-- Spi -> mp5nc, hp5oc
+-- Ratings -> Effect
+L["HEALTH_REG_OUT_OF_COMBAT"] = "正常回血"
+L["MANA_REG_NOT_CASTING"] = "正常回魔"
+L["MELEE_CRIT_DMG_REDUCTION"] = "爆击减伤(%)"
+L["RANGED_CRIT_DMG_REDUCTION"] = "远程爆击减伤(%)"
+L["SPELL_CRIT_DMG_REDUCTION"] = "法术爆击减伤(%)"
+L[StatLogic.Stats.Defense] = DEFENSE
+L[StatLogic.Stats.Dodge] = DODGE.."(%)"
+L[StatLogic.Stats.Parry] = PARRY.."(%)"
+L[StatLogic.Stats.BlockChance] = BLOCK.."(%)"
+L["AVOIDANCE"] = "完全豁免(%)"
+L["MELEE_HIT"] = "物理命中(%)"
+L["RANGED_HIT"] = "远程命中(%)"
+L["SPELL_HIT"] = "法术命中(%)"
+L[StatLogic.Stats.Miss] = "躲闪命中(%)"
+L[StatLogic.Stats.MeleeCrit] = "物理爆击(%)" -- MELEE_CRIT_CHANCE = "Crit Chance"
+L[StatLogic.Stats.RangedCrit] = "远程爆击(%)"
+L[StatLogic.Stats.SpellCrit] = "法术爆击(%)"
+L["MELEE_CRIT_AVOID"] = "躲闪近战爆击(%)"
+L["MELEE_HASTE"] = "近战急速(%)" --
+L["RANGED_HASTE"] = "远程急速(%)"
+L["SPELL_HASTE"] = "法术急速(%)"
+L["DAGGER_WEAPON"] = "匕首技能" -- SKILL = "Skill"
+L["SWORD_WEAPON"] = "剑技能"
+L["2H_SWORD_WEAPON"] = "双手剑技能"
+L["AXE_WEAPON"] = "斧技能"
+L["2H_AXE_WEAPON"] = "双手斧技能"
+L["MACE_WEAPON"] = "锤技能"
+L["2H_MACE_WEAPON"] = "双手锤技能"
+L["GUN_WEAPON"] = "枪械技能"
+L["CROSSBOW_WEAPON"] = "弩技能"
+L["BOW_WEAPON"] = "弓技能"
+L["FERAL_WEAPON"] = "野性技能"
+L["FIST_WEAPON"] = "徒手战斗技能"
+L["EXPERTISE"] = "精准"
+L["ARMOR_PENETRATION"] = "护甲穿透(%)"
+-- Tier3 Stats - Stats that only show up when broken down from a Tier2 stat
+-- Defense -> Crit Avoidance, Hit Avoidance, Dodge, Parry, Block
+-- Weapon Skill -> Crit, Hit, Dodge Neglect, Parry Neglect, Block Neglect
+-- Expertise -> Dodge Neglect, Parry Neglect
+L["DODGE_NEGLECT"] = "防止被躲闪(%)"
+L["PARRY_NEGLECT"] = "防止被招架(%)"
+L["BLOCK_NEGLECT"] = "防止被格挡(%)"
+-- Talents
+L["MELEE_CRIT_DMG"] = "物理爆击(%)"
+L["RANGED_CRIT_DMG"] = "远程爆击(%)"
+L["SPELL_CRIT_DMG"] = "法术爆击(%)"
+-- Spell Stats
+-- These values can be prefixed with a @ and spell name, using reverse translation to english from Babble-Spell-2.2
+-- Ex: "Heroic Strike@RAGE_COST" for Heroic Strike rage cost
+-- Ex: "Heroic Strike@THREAT" for Heroic Strike threat value
+-- Use strsplit("@", text) to seperate the spell name and statid
+L["THREAT"] = "威胁值"
+L["CAST_TIME"] = "施法时间"
+L["MANA_COST"] = "消耗法力"
+L["RAGE_COST"] = "消耗怒气"
+L["ENERGY_COST"] = "消耗能量"
+L["COOLDOWN"] = "冷却时间"
+-- Stats Mods
+L["MOD_STR"] = "修正力量(%)"
+L["MOD_AGI"] = "修正敏捷(%)"
+L["MOD_STA"] = "修正耐力(%)"
+L["MOD_INT"] = "修正智力(%)"
+L["MOD_SPI"] = "修正精神(%)"
+L["MOD_HEALTH"] = "修正生命(%)"
+L["MOD_MANA"] = "修正法力(%)"
+L["MOD_ARMOR"] = "修正护甲(%)"
+L["MOD_BLOCK_VALUE"] = "修正格挡值(%)"
+L["MOD_AP"] = "修正近战攻击强度(%)"
+L["MOD_RANGED_AP"] = "修正远程攻击强度(%)"
+L["MOD_SPELL_DMG"] = "修正法术伤害(%)"
+L["MOD_HEALING"] = "修正法术治疗(%)"
+L["MOD_CAST_TIME"] = "修正施法时间(%)"
+L["MOD_MANA_COST"] = "修正消耗法力(%)"
+L["MOD_RAGE_COST"] = "修正消耗怒气(%)"
+L["MOD_ENERGY_COST"] = "修正消耗能量(%)"
+L["MOD_COOLDOWN"] = "修正技能冷却(%)"
+-- Misc Stats
+L["WEAPON_SKILL"] = "武器技能"
+
 ------------------
 -- Stat Summary --
 ------------------

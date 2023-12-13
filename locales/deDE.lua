@@ -662,6 +662,167 @@ L["$value% Parry"] = "$value% Parieren"
 -- (+1.21%, +0.98% S)
 L["$value Spell"] = "$value Zauber"
 
+L["EMPTY_SOCKET_RED"] = EMPTY_SOCKET_RED -- EMPTY_SOCKET_RED = "Red Socket";
+L["EMPTY_SOCKET_YELLOW"] = EMPTY_SOCKET_YELLOW -- EMPTY_SOCKET_YELLOW = "Yellow Socket";
+L["EMPTY_SOCKET_BLUE"] = EMPTY_SOCKET_BLUE -- EMPTY_SOCKET_BLUE = "Blue Socket";
+L["EMPTY_SOCKET_META"] = EMPTY_SOCKET_META -- EMPTY_SOCKET_META = "Meta Socket";
+
+L["IGNORE_ARMOR"] = "Rüstung ignorieren"
+L["STEALTH_LEVEL"] = "Verstohlenheitslevel"
+L["MELEE_DMG"] = "Waffenschaden" -- DAMAGE = "Damage"
+L["MOUNT_SPEED"] = "Reitgeschwindigkeit(%)"
+L["RUN_SPEED"] = "Laufgeschwindigkeit(%)"
+
+L[StatLogic.Stats.Strength] = SPELL_STAT1_NAME
+L[StatLogic.Stats.Agility] = SPELL_STAT2_NAME
+L[StatLogic.Stats.Stamina] = SPELL_STAT3_NAME
+L[StatLogic.Stats.Intellect] = SPELL_STAT4_NAME
+L[StatLogic.Stats.Spirit] = SPELL_STAT5_NAME
+L["ARMOR"] = ARMOR
+L["ARMOR_BONUS"] = ARMOR.." von Bonus"
+
+L["FIRE_RES"] = RESISTANCE2_NAME
+L["NATURE_RES"] = RESISTANCE3_NAME
+L["FROST_RES"] = RESISTANCE4_NAME
+L["SHADOW_RES"] = RESISTANCE5_NAME
+L["ARCANE_RES"] = RESISTANCE6_NAME
+
+L["FISHING"] = "Angeln"
+L["MINING"] = "Bergbau"
+L["HERBALISM"] = "Kräuterkunde"
+L["SKINNING"] = "Kürschnerei"
+
+L["BLOCK_VALUE"] = "Blockwert"
+
+L["AP"] = ATTACK_POWER_TOOLTIP
+L["RANGED_AP"] = RANGED_ATTACK_POWER
+L["FERAL_AP"] = "Feral "..ATTACK_POWER_TOOLTIP
+L["AP_UNDEAD"] = ATTACK_POWER_TOOLTIP.." (Untot)"
+L["AP_DEMON"] = ATTACK_POWER_TOOLTIP.." (Dämon)"
+
+L["HEAL"] = "Heilung"
+
+L["SPELL_DMG"] = PLAYERSTAT_SPELL_COMBAT.." "..DAMAGE
+L["SPELL_DMG_UNDEAD"] = PLAYERSTAT_SPELL_COMBAT.." "..DAMAGE.." (Untot)"
+L["SPELL_DMG_DEMON"] = PLAYERSTAT_SPELL_COMBAT.." "..DAMAGE.." (Dämon)"
+L["HOLY_SPELL_DMG"] = SPELL_SCHOOL1_CAP.." "..DAMAGE
+L["FIRE_SPELL_DMG"] = SPELL_SCHOOL2_CAP.." "..DAMAGE
+L["NATURE_SPELL_DMG"] = SPELL_SCHOOL3_CAP.." "..DAMAGE
+L["FROST_SPELL_DMG"] = SPELL_SCHOOL4_CAP.." "..DAMAGE
+L["SHADOW_SPELL_DMG"] = SPELL_SCHOOL5_CAP.." "..DAMAGE
+L["ARCANE_SPELL_DMG"] = SPELL_SCHOOL6_CAP.." "..DAMAGE
+
+L["SPELLPEN"] = PLAYERSTAT_SPELL_COMBAT.." "..SPELL_PENETRATION
+
+L["HEALTH"] = HEALTH
+L["MANA"] = MANA
+L["HEALTH_REG"] = HEALTH.." Regeneration"
+L["MANA_REG"] = MANA.." Regeneration"
+
+L["AVERAGE_DAMAGE"] = "Average Damage"
+L["DPS"] = "Schaden pro Sekunde"
+
+L["DEFENSE_RATING"] = COMBAT_RATING_NAME2 -- COMBAT_RATING_NAME2 = "Defense Rating"
+L["DODGE_RATING"] = COMBAT_RATING_NAME3 -- COMBAT_RATING_NAME3 = "Dodge Rating"
+L["PARRY_RATING"] = COMBAT_RATING_NAME4 -- COMBAT_RATING_NAME4 = "Parry Rating"
+L["BLOCK_RATING"] = COMBAT_RATING_NAME5 -- COMBAT_RATING_NAME5 = "Block Rating"
+L["MELEE_HIT_RATING"] = COMBAT_RATING_NAME6 -- COMBAT_RATING_NAME6 = "Hit Rating"
+L["RANGED_HIT_RATING"] = PLAYERSTAT_RANGED_COMBAT.." "..COMBAT_RATING_NAME6 -- PLAYERSTAT_RANGED_COMBAT = "Ranged"
+L["SPELL_HIT_RATING"] = PLAYERSTAT_SPELL_COMBAT.." "..COMBAT_RATING_NAME6 -- PLAYERSTAT_SPELL_COMBAT = "Spell"
+L["MELEE_CRIT_RATING"] = COMBAT_RATING_NAME9 -- COMBAT_RATING_NAME9 = "Crit Rating"
+L["RANGED_CRIT_RATING"] = PLAYERSTAT_RANGED_COMBAT.." "..COMBAT_RATING_NAME9
+L["SPELL_CRIT_RATING"] = PLAYERSTAT_SPELL_COMBAT.." "..COMBAT_RATING_NAME9
+L["RESILIENCE_RATING"] = COMBAT_RATING_NAME15 -- COMBAT_RATING_NAME15 = "Resilience"
+L["MELEE_HASTE_RATING"] = "Hast "..RATING --
+L["RANGED_HASTE_RATING"] = PLAYERSTAT_RANGED_COMBAT.." Hast  "..RATING
+L["SPELL_HASTE_RATING"] = PLAYERSTAT_SPELL_COMBAT.." Hast  "..RATING
+L["EXPERTISE_RATING"] = "Waffenkundewertung"
+L["ARMOR_PENETRATION_RATING"] = "Rüstungsdurchschlag".." "..RATING
+-- Tier2 Stats - Stats that only show up when broken down from a Tier1 stat
+-- Str -> AP, Block Value
+-- Agi -> AP, Crit, Dodge
+-- Sta -> Health
+-- Int -> Mana, Spell Crit
+-- Spi -> mp5nc, hp5oc
+-- Ratings -> Effect
+L["HEALTH_REG_OUT_OF_COMBAT"] = HEALTH.." Regeneration (Nicht im Kampf)"
+L["MANA_REG_NOT_CASTING"] = MANA.." Regeneration (Nicht zaubernd)"
+L["MELEE_CRIT_DMG_REDUCTION"] = "Krit Schadenverminderung (%)"
+L["RANGED_CRIT_DMG_REDUCTION"] = PLAYERSTAT_RANGED_COMBAT.." Krit Schadenverminderung(%)"
+L["SPELL_CRIT_DMG_REDUCTION"] = PLAYERSTAT_SPELL_COMBAT.." Krit Schadenverminderung(%)"
+L[StatLogic.Stats.Defense] = DEFENSE
+L[StatLogic.Stats.Dodge] = DODGE.."(%)"
+L[StatLogic.Stats.Parry] = PARRY.."(%)"
+L[StatLogic.Stats.BlockChance] = BLOCK.."(%)"
+L["AVOIDANCE"] = "Vermeidung(%)"
+L["MELEE_HIT"] = "Trefferchance(%)"
+L["RANGED_HIT"] = PLAYERSTAT_RANGED_COMBAT.." Trefferchance(%)"
+L["SPELL_HIT"] = PLAYERSTAT_SPELL_COMBAT.." Trefferchance(%)"
+L[StatLogic.Stats.Miss] = "Treffer Vermeidung(%)"
+L[StatLogic.Stats.MeleeCrit] = MELEE_CRIT_CHANCE.."(%)" -- MELEE_CRIT_CHANCE = "Crit Chance"
+L[StatLogic.Stats.RangedCrit] = PLAYERSTAT_RANGED_COMBAT.." "..MELEE_CRIT_CHANCE.."(%)"
+L[StatLogic.Stats.SpellCrit] = PLAYERSTAT_SPELL_COMBAT.." "..MELEE_CRIT_CHANCE.."(%)"
+L["MELEE_CRIT_AVOID"] = "Kritvermeidung(%)"
+L["MELEE_HASTE"] = "Hast(%)" --
+L["RANGED_HASTE"] = PLAYERSTAT_RANGED_COMBAT.." Hast(%)"
+L["SPELL_HASTE"] = PLAYERSTAT_SPELL_COMBAT.." Hast(%)"
+L["DAGGER_WEAPON"] = "Dagger "..SKILL -- SKILL = "Skill"
+L["SWORD_WEAPON"] = "Sword "..SKILL
+L["2H_SWORD_WEAPON"] = "Two-Handed Sword "..SKILL
+L["AXE_WEAPON"] = "Axe "..SKILL
+L["2H_AXE_WEAPON"] = "Two-Handed Axe "..SKILL
+L["MACE_WEAPON"] = "Mace "..SKILL
+L["2H_MACE_WEAPON"] = "Two-Handed Mace "..SKILL
+L["GUN_WEAPON"] = "Gun "..SKILL
+L["CROSSBOW_WEAPON"] = "Crossbow "..SKILL
+L["BOW_WEAPON"] = "Bow "..SKILL
+L["FERAL_WEAPON"] = "Feral "..SKILL
+L["FIST_WEAPON"] = "Unarmed "..SKILL
+L["EXPERTISE"] = "Waffenkunde"
+L["ARMOR_PENETRATION"] = "Rüstungsdurchschlag(%)"
+-- Tier3 Stats - Stats that only show up when broken down from a Tier2 stat
+-- Defense -> Crit Avoidance, Hit Avoidance, Dodge, Parry, Block
+-- Weapon Skill -> Crit, Hit, Dodge Neglect, Parry Neglect, Block Neglect
+L["DODGE_NEGLECT"] = DODGE.." Verhinderung(%)"
+L["PARRY_NEGLECT"] = PARRY.." Verhinderung(%)"
+L["BLOCK_NEGLECT"] = BLOCK.." Verhinderung(%)"
+-- Talents
+L["MELEE_CRIT_DMG"] = "Krit Schaden(%)"
+L["RANGED_CRIT_DMG"] = PLAYERSTAT_RANGED_COMBAT.." Krit Schaden(%)"
+L["SPELL_CRIT_DMG"] = PLAYERSTAT_SPELL_COMBAT.." Krit Schaden(%)"
+-- Spell Stats
+-- These values can be prefixed with a @ and spell name, using reverse translation to english from Babble-Spell-2.2
+-- Ex: "Heroic Strike@RAGE_COST" for Heroic Strike rage cost
+-- Ex: "Heroic Strike@THREAT" for Heroic Strike threat value
+-- Use strsplit("@", text) to seperate the spell name and statid
+L["THREAT"] = "Bedrohung"
+L["CAST_TIME"] = "Zauberzeit"
+L["MANA_COST"] = "Manakosten"
+L["RAGE_COST"] = "Wutkosten"
+L["ENERGY_COST"] = "Energiekosten"
+L["COOLDOWN"] = "Abklingzeit"
+-- Stats Mods
+L["MOD_STR"] = "Mod "..SPELL_STAT1_NAME.."(%)"
+L["MOD_AGI"] = "Mod "..SPELL_STAT2_NAME.."(%)"
+L["MOD_STA"] = "Mod "..SPELL_STAT3_NAME.."(%)"
+L["MOD_INT"] = "Mod "..SPELL_STAT4_NAME.."(%)"
+L["MOD_SPI"] = "Mod "..SPELL_STAT5_NAME.."(%)"
+L["MOD_HEALTH"] = "Mod "..HEALTH.."(%)"
+L["MOD_MANA"] = "Mod "..MANA.."(%)"
+L["MOD_ARMOR"] = "Mod "..ARMOR.."from Items".."(%)"
+L["MOD_BLOCK_VALUE"] = "Mod Block Value".."(%)"
+L["MOD_AP"] = "Mod "..ATTACK_POWER_TOOLTIP.."(%)"
+L["MOD_RANGED_AP"] = "Mod "..PLAYERSTAT_RANGED_COMBAT.." "..ATTACK_POWER_TOOLTIP.."(%)"
+L["MOD_SPELL_DMG"] = "Mod "..PLAYERSTAT_SPELL_COMBAT.." "..DAMAGE.."(%)"
+L["MOD_HEALING"] = "Mod Healing".."(%)"
+L["MOD_CAST_TIME"] = "Mod Casting Time".."(%)"
+L["MOD_MANA_COST"] = "Mod Mana Cost".."(%)"
+L["MOD_RAGE_COST"] = "Mod Rage Cost".."(%)"
+L["MOD_ENERGY_COST"] = "Mod Energy Cost".."(%)"
+L["MOD_COOLDOWN"] = "Mod Cooldown".."(%)"
+-- Misc Stats
+L["WEAPON_SKILL"] = "Waffe "..SKILL
+
 ------------------
 -- Stat Summary --
 ------------------

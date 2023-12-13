@@ -657,6 +657,170 @@ L["$value% Parry"] = "무막 $value%"
 -- (+1.21%, +0.98% S)
 L["$value Spell"] = "주문 $value"
 
+L["EMPTY_SOCKET_RED"] = EMPTY_SOCKET_RED -- EMPTY_SOCKET_RED = "Red Socket";
+L["EMPTY_SOCKET_YELLOW"] = EMPTY_SOCKET_YELLOW -- EMPTY_SOCKET_YELLOW = "Yellow Socket";
+L["EMPTY_SOCKET_BLUE"] = EMPTY_SOCKET_BLUE -- EMPTY_SOCKET_BLUE = "Blue Socket";
+L["EMPTY_SOCKET_META"] = EMPTY_SOCKET_META -- EMPTY_SOCKET_META = "Meta Socket";
+
+L["IGNORE_ARMOR"] = "방어도 무시"
+L["THREAT_MOD"] = "위협(%)"
+L["STEALTH_LEVEL"] = "은신 등급"
+L["MELEE_DMG"] = "근접 무기 "..DAMAGE -- DAMAGE = "Damage"
+L["MOUNT_SPEED"] = "탈것 속도(%)"
+L["RUN_SPEED"] = "이동 속도(%)"
+
+L[StatLogic.Stats.Strength] = SPELL_STAT1_NAME
+L[StatLogic.Stats.Agility] = SPELL_STAT2_NAME
+L[StatLogic.Stats.Stamina] = SPELL_STAT3_NAME
+L[StatLogic.Stats.Intellect] = SPELL_STAT4_NAME
+L[StatLogic.Stats.Spirit] = SPELL_STAT5_NAME
+L["ARMOR"] = ARMOR
+L["ARMOR_BONUS"] = "효과에 의한"..ARMOR
+
+L["FIRE_RES"] = RESISTANCE2_NAME
+L["NATURE_RES"] = RESISTANCE3_NAME
+L["FROST_RES"] = RESISTANCE4_NAME
+L["SHADOW_RES"] = RESISTANCE5_NAME
+L["ARCANE_RES"] = RESISTANCE6_NAME
+
+L["FISHING"] = "낚시"
+L["MINING"] = "채광"
+L["HERBALISM"] = "약초채집"
+L["SKINNING"] = "무두질"
+
+L["BLOCK_VALUE"] = "피해 방어량"
+
+L["AP"] = "전투력"
+L["RANGED_AP"] = RANGED_ATTACK_POWER
+L["FERAL_AP"] = "야생 전투력"
+L["AP_UNDEAD"] = "전투력 (언데드)"
+L["AP_DEMON"] = "전투력 (악마)"
+
+L["HEAL"] = "치유량"
+
+L["SPELL_DMG"] = PLAYERSTAT_SPELL_COMBAT.." "..DAMAGE
+L["SPELL_DMG_UNDEAD"] = PLAYERSTAT_SPELL_COMBAT.." "..DAMAGE.." (언데드)"
+L["SPELL_DMG_DEMON"] = PLAYERSTAT_SPELL_COMBAT.." "..DAMAGE.." (악마)"
+L["HOLY_SPELL_DMG"] = SPELL_SCHOOL1_CAP.." "..DAMAGE
+L["FIRE_SPELL_DMG"] = SPELL_SCHOOL2_CAP.." "..DAMAGE
+L["NATURE_SPELL_DMG"] = SPELL_SCHOOL3_CAP.." "..DAMAGE
+L["FROST_SPELL_DMG"] = SPELL_SCHOOL4_CAP.." "..DAMAGE
+L["SHADOW_SPELL_DMG"] = SPELL_SCHOOL5_CAP.." "..DAMAGE
+L["ARCANE_SPELL_DMG"] = SPELL_SCHOOL6_CAP.." "..DAMAGE
+
+L["SPELLPEN"] = PLAYERSTAT_SPELL_COMBAT.." "..SPELL_PENETRATION
+
+L["HEALTH"] = HEALTH
+L["MANA"] = MANA
+L["HEALTH_REG"] = HEALTH.." 재생"
+L["MANA_REG"] = MANA.." 재생"
+
+L["AVERAGE_DAMAGE"] = "Average Damage"
+L["DPS"] = "초당 공격력"
+
+L["DEFENSE_RATING"] = COMBAT_RATING_NAME2 -- COMBAT_RATING_NAME2 = "Defense Rating"
+L["DODGE_RATING"] = COMBAT_RATING_NAME3 -- COMBAT_RATING_NAME3 = "Dodge Rating"
+L["PARRY_RATING"] = COMBAT_RATING_NAME4 -- COMBAT_RATING_NAME4 = "Parry Rating"
+L["BLOCK_RATING"] = COMBAT_RATING_NAME5 -- COMBAT_RATING_NAME5 = "Block Rating"
+L["MELEE_HIT_RATING"] = COMBAT_RATING_NAME6 -- COMBAT_RATING_NAME6 = "Hit Rating"
+L["RANGED_HIT_RATING"] = PLAYERSTAT_RANGED_COMBAT.." "..COMBAT_RATING_NAME6 -- PLAYERSTAT_RANGED_COMBAT = "Ranged"
+L["SPELL_HIT_RATING"] = PLAYERSTAT_SPELL_COMBAT.." "..COMBAT_RATING_NAME6 -- PLAYERSTAT_SPELL_COMBAT = "Spell"
+L["MELEE_CRIT_RATING"] = COMBAT_RATING_NAME9 -- COMBAT_RATING_NAME9 = "Crit Rating"
+L["RANGED_CRIT_RATING"] = PLAYERSTAT_RANGED_COMBAT.." "..COMBAT_RATING_NAME9
+L["SPELL_CRIT_RATING"] = PLAYERSTAT_SPELL_COMBAT.." "..COMBAT_RATING_NAME9
+L["RESILIENCE_RATING"] = COMBAT_RATING_NAME15 -- COMBAT_RATING_NAME15 = "Resilience"
+L["MELEE_HASTE_RATING"] = "가속도 "..RATING --
+L["RANGED_HASTE_RATING"] = PLAYERSTAT_RANGED_COMBAT.." 가속도 "..RATING
+L["SPELL_HASTE_RATING"] = PLAYERSTAT_SPELL_COMBAT.." 가속도 "..RATING
+L["EXPERTISE_RATING"] = "숙련 ".." "..RATING
+L["ARMOR_PENETRATION_RATING"] = "방어구 관통력"
+-- Tier2 Stats - Stats that only show up when broken down from a Tier1 stat
+-- Str -> AP, Block Value
+-- Agi -> AP, Crit, Dodge
+-- Sta -> Health
+-- Int -> Mana, Spell Crit
+-- Spi -> mp5nc, hp5oc
+-- Ratings -> Effect
+L["HEALTH_REG_OUT_OF_COMBAT"] = HEALTH.." 재생 (비전투)"
+L["MANA_REG_NOT_CASTING"] = MANA.." 재생 (미시전)"
+L["MELEE_CRIT_DMG_REDUCTION"] = "치명타 피해 감소(%)"
+L["RANGED_CRIT_DMG_REDUCTION"] = PLAYERSTAT_RANGED_COMBAT.." 치명타 피해 감소(%)"
+L["SPELL_CRIT_DMG_REDUCTION"] = PLAYERSTAT_SPELL_COMBAT.." 치명타 피해 감소(%)"
+L[StatLogic.Stats.Defense] = DEFENSE
+L[StatLogic.Stats.Dodge] = DODGE.."(%)"
+L[StatLogic.Stats.Parry] = PARRY.."(%)"
+L[StatLogic.Stats.BlockChance] = BLOCK.."(%)"
+L["AVOIDANCE"] = "공격 회피(%)"
+L["MELEE_HIT"] = "적중률(%)"
+L["RANGED_HIT"] = PLAYERSTAT_RANGED_COMBAT.." 적중률(%)"
+L["SPELL_HIT"] = PLAYERSTAT_SPELL_COMBAT.." 적중률(%)"
+L[StatLogic.Stats.Miss] = "근접 공격 회피(%)"
+L[StatLogic.Stats.MeleeCrit] = MELEE_CRIT_CHANCE.."(%)" -- MELEE_CRIT_CHANCE = "Crit Chance"
+L[StatLogic.Stats.RangedCrit] = PLAYERSTAT_RANGED_COMBAT.." "..MELEE_CRIT_CHANCE.."(%)"
+L[StatLogic.Stats.SpellCrit] = PLAYERSTAT_SPELL_COMBAT.." "..MELEE_CRIT_CHANCE.."(%)"
+L["MELEE_CRIT_AVOID"] = "근접 치명타 공격 회피(%)"
+L["MELEE_HASTE"] = "가속도(%)" --
+L["RANGED_HASTE"] = PLAYERSTAT_RANGED_COMBAT.." 가속도(%)"
+L["SPELL_HASTE"] = PLAYERSTAT_SPELL_COMBAT.." 가속도(%)"
+L["DAGGER_WEAPON"] = "단검류 "..SKILL -- SKILL = "Skill"
+L["SWORD_WEAPON"] = "도검류 "..SKILL
+L["2H_SWORD_WEAPON"] = "양손 도검류 "..SKILL
+L["AXE_WEAPON"] = "도끼류 "..SKILL
+L["2H_AXE_WEAPON"] = "양손 도끼류 "..SKILL
+L["MACE_WEAPON"] = "둔기류 "..SKILL
+L["2H_MACE_WEAPON"] = "양손 둔기류 "..SKILL
+L["GUN_WEAPON"] = "총기류 "..SKILL
+L["CROSSBOW_WEAPON"] = "석궁류 "..SKILL
+L["BOW_WEAPON"] = "활류 "..SKILL
+L["FERAL_WEAPON"] = "야생 "..SKILL
+L["FIST_WEAPON"] = "장착 무기류 "..SKILL
+L["STAFF_WEAPON"] = "지팡이류 "..SKILL -- Leggings of the Fang ID:10410
+L["EXPERTISE"] = "숙련 "
+L["ARMOR_PENETRATION"] = "방어구 관통(%)"
+-- Tier3 Stats - Stats that only show up when broken down from a Tier2 stat
+-- Defense -> Crit Avoidance, Hit Avoidance, Dodge, Parry, Block
+-- Weapon Skill -> Crit, Hit, Dodge Neglect, Parry Neglect, Block Neglect
+-- Expertise -> Dodge Neglect, Parry Neglect
+L["DODGE_NEGLECT"] = DODGE.." 무시(%)"
+L["PARRY_NEGLECT"] = PARRY.." 무시(%)"
+L["BLOCK_NEGLECT"] = BLOCK.." 무시(%)"
+-- Talents
+L["MELEE_CRIT_DMG"] = "치명타 공격력(%)"
+L["RANGED_CRIT_DMG"] = PLAYERSTAT_RANGED_COMBAT.." 치명타 공격력(%)"
+L["SPELL_CRIT_DMG"] = PLAYERSTAT_SPELL_COMBAT.." 치명타 공격력(%)"
+-- Spell Stats
+-- These values can be prefixed with a @ and spell name, using reverse translation to english from Babble-Spell-2.2
+-- Ex: "Heroic Strike@RAGE_COST" for Heroic Strike rage cost
+-- Ex: "Heroic Strike@THREAT" for Heroic Strike threat value
+-- Use strsplit("@", text) to seperate the spell name and statid
+L["THREAT"] = "위협"
+L["CAST_TIME"] = "시전 시간"
+L["MANA_COST"] = "마나 소모량"
+L["RAGE_COST"] = "분노 소모량"
+L["ENERGY_COST"] = "기력 소모량"
+L["COOLDOWN"] = "재사용 대기 시간"
+-- Stats Mods
+L["MOD_STR"] = "Mod "..SPELL_STAT1_NAME.."(%)"
+L["MOD_AGI"] = "Mod "..SPELL_STAT2_NAME.."(%)"
+L["MOD_STA"] = "Mod "..SPELL_STAT3_NAME.."(%)"
+L["MOD_INT"] = "Mod "..SPELL_STAT4_NAME.."(%)"
+L["MOD_SPI"] = "Mod "..SPELL_STAT5_NAME.."(%)"
+L["MOD_HEALTH"] = "Mod "..HEALTH.."(%)"
+L["MOD_MANA"] = "Mod "..MANA.."(%)"
+L["MOD_ARMOR"] = "Mod 아이템에 의한 "..ARMOR.."(%)"
+L["MOD_BLOCK_VALUE"] = "Mod 피해 방어량".."(%)"
+L["MOD_AP"] = "Mod ".."전투력".."(%)"
+L["MOD_RANGED_AP"] = "Mod "..PLAYERSTAT_RANGED_COMBAT.." ".."전투력".."(%)"
+L["MOD_SPELL_DMG"] = "Mod "..PLAYERSTAT_SPELL_COMBAT.." "..DAMAGE.."(%)"
+L["MOD_HEALING"] = "Mod 치유량".."(%)"
+L["MOD_CAST_TIME"] = "Mod 시전 시간".."(%)"
+L["MOD_MANA_COST"] = "Mod 마나 소모량".."(%)"
+L["MOD_RAGE_COST"] = "Mod 분노 소모량".."(%)"
+L["MOD_ENERGY_COST"] = "Mod 기력 소모량".."(%)"
+L["MOD_COOLDOWN"] = "Mod 재사용 대기 시간".."(%)"
+-- Misc Stats
+L["WEAPON_SKILL"] = "무기 "..SKILL
+
 ------------------
 -- Stat Summary --
 ------------------

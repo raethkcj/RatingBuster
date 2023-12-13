@@ -9,8 +9,6 @@ local StatLogic = LibStub(addonName)
 -- Pattern matching
 ---@type StatLogicLocale
 local L = LibStub("AceLocale-3.0"):GetLocale(addonName)
--- Display text
-local D = LibStub("AceLocale-3.0"):GetLocale(addonName.."D")
 
 -------------------
 -- Set Debugging --
@@ -319,12 +317,6 @@ local function StripGlobalStrings(text)
 	text = text:gsub(" ?%%%d?%.?%d?%$?[cdsgf]", "") -- delete "%d", "%s", "%c", "%g", "%2$d", "%.2f" and a space in front of it if found
 	-- So StripGlobalStrings(ITEM_SOCKET_BONUS) = "Socket Bonus:"
 	return text
-end
-
-function StatLogic:GetStatNameFromID(stat)
-	local name = D[stat]
-	if not name then return end
-	return unpack(name)
 end
 
 StatLogic.ExtraHasteClasses = {}
