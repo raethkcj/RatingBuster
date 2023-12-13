@@ -1307,12 +1307,12 @@ StatLogic.StatModTable["ALL"] = {
 			["buff"] = 22888,
 			["value"] = 5,
 		},
-		-- Blessing of Blackfathom
+		-- Boon of Blackfathom
 		{
 			["buff"] = 430947,
 			["value"] = 2,
 		},
-		-- Blessing of Blackfathom
+		-- Boon of Blackfathom
 		{
 			["buff"] = 431111,
 			["value"] = 2,
@@ -1328,16 +1328,6 @@ StatLogic.StatModTable["ALL"] = {
 		{
 			["buff"] = 22888,
 			["value"] = 10,
-		},
-		-- Blessing of Blackfathom
-		{
-			["buff"] = 430947,
-			["value"] = 2,
-		},
-		-- Blessing of Blackfathom
-		{
-			["buff"] = 431111,
-			["value"] = 2,
 		},
 	}
 }
