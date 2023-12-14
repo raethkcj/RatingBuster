@@ -95,7 +95,7 @@ addon.BaseSpellCrit = {
 	["PRIEST"]  =  0.8000,
 	["SHAMAN"]  = -0.7000,
 	["MAGE"]    = -4.8000,
-	["WARLOCK"] = -0.3000,
+	["WARLOCK"] =  1.7000,
 	["DRUID"]   =  1.8000,
 }
 
