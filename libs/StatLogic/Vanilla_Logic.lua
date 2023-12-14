@@ -949,14 +949,14 @@ elseif addon.class == "WARLOCK" then
 			{
 				["rune"] = 6952,
 				["slot"] = INVSLOT_CHEST,
-				["value"] = 0.1,
+				["value"] = 10,
 			},
 			-- Warlock: Demonic Grace - Rune
 			--   Surge with fel energy, increasing your chance to critically strike with all attacks by 30%
 			{
 				["rune"] = 7039,
 				["slot"] = INVSLOT_LEGS,
-				["value"] = 0.3,
+				["value"] = 30,
 				["buff"] = 425463,
 			},
 		},
@@ -966,14 +966,14 @@ elseif addon.class == "WARLOCK" then
 			{
 				["rune"] = 6952,
 				["slot"] = INVSLOT_CHEST,
-				["value"] = 0.1,
+				["value"] = 10,
 			},
 			-- Warlock: Demonic Grace - Rune
 			--   Surge with fel energy, increasing your chance to critically strike with all attacks by 30%
 			{
 				["rune"] = 7039,
 				["slot"] = INVSLOT_LEGS,
-				["value"] = 0.3,
+				["value"] = 30,
 				["buff"] = 425463,
 			},
 		},
@@ -993,7 +993,7 @@ elseif addon.class == "WARLOCK" then
 			{
 				["rune"] = 7039,
 				["slot"] = INVSLOT_LEGS,
-				["value"] = 0.3,
+				["value"] = 30,
 				["buff"] = 425463,
 			},
 		},
