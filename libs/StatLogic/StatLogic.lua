@@ -660,6 +660,12 @@ local addedInfoMods = {
 	},
 	{
 		add = "HEALING",
+		mod = "MANA",
+		initialValue = 0,
+		finalAdjust = 0,
+	},
+	{
+		add = "HEALING",
 		mod = "SPI",
 		initialValue = 0,
 		finalAdjust = 0,
@@ -713,6 +719,12 @@ local addedInfoMods = {
 		finalAdjust = 0,
 	},
 	{
+		add = "SPELL_HIT_RATING",
+		mod = "SPI",
+		initialValue = 0,
+		finalAdjust = 0,
+	},
+	{
 		add = "SPELL_DMG",
 		mod = "AP",
 		initialValue = 0,
@@ -721,6 +733,12 @@ local addedInfoMods = {
 	{
 		add = "SPELL_DMG",
 		mod = "INT",
+		initialValue = 0,
+		finalAdjust = 0,
+	},
+	{
+		add = "SPELL_DMG",
+		mod = "MANA",
 		initialValue = 0,
 		finalAdjust = 0,
 	},

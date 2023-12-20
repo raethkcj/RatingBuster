@@ -382,7 +382,7 @@ if addon.class == "DRUID" then
 		-- Druid: Nurturing Instinct (Rank 2) - 2,14
 		-- 4.0.1: 2,14: Increases your healing spells by up to 35%/70% of your Agility, and increases healing done to you by 10%/20% while in Cat form.
 		-- 4.0.6: 2,14: Increases your healing spells by up to 50%/100% of your Agility, and increases healing done to you by 10%/20% while in Cat form.
-		["ADD_HEAL_MOD_AGI"] = {
+		["ADD_HEALING_MOD_AGI"] = {
 			{
 				["spellid"] = 33873,
 				["tab"] = 2,
@@ -588,37 +588,6 @@ elseif addon.class == "DEATHKNIGHT" then
 		["ADD_AP_MOD_STR"] = {
 			{
 				["value"] = 2,
-			},
-		},
-		-- Death Knight: Icy Talons - Passive: 50887
-		-- 4.0.6: Your melee attack speed is increased by 20%.
-		-- Death Knight: Improved Icy Talons - Rank 1/1 - 2,13
-		-- 4.0.6: Increases the melee and ranged attack speed of all party and raid
-		--        members within 100 yards by 10%, and your own attack speed by an additional 5%.
-		-- Death Knight: Unholy Presence - Stance
-		-- 4.0.6: Attack speed and rune regeneration increased 10%.
-		-- Death Knight: Improved Unholy Presence - Rank 2/2 - 3,16
-		-- 4.0.6: Grants you an additional 2/5% haste while in Unholy Presence.
-		["MOD_MELEE_HASTE"] = {
-			-- Icy Talons
-			{
-				["value"] = 0.2,
-				["known"] = 50887,
-			},
-			-- Improved Icy Talons
-			{
-				["tab"] = 2,
-				["num"] = 13,
-				["value"] = 0.05,
-			},
-			-- Unholy Presence and Improved Unholy Presence
-			{
-				["tab"] = 3,
-				["num"] = 16,
-				["rank"] = {
-					[0] = 0.1, 0.12, 0.15,
-				},
-				["stance"] = "Interface\\Icons\\Spell_Deathknight_UnholyPresence",
 			},
 		},
 		-- Tanks: Forceful Deflection - Passive
@@ -890,7 +859,7 @@ elseif addon.class == "MAGE" then
 		},
 		-- Improved Mana Gem - Rank 2/2 - 1,19 - Buff: 83098
 		-- 4.0.1: Increases your spell power by 1/2% of your maximum mana
-		["ADD_HEAL_MOD_MANA"] = {
+		["ADD_HEALING_MOD_MANA"] = {
 			{
 				["tab"] = 1,
 				["num"] = 19,
@@ -976,7 +945,7 @@ elseif addon.class == "PALADIN" then
 		},
 		-- Paladin: Sheath of Light - Passive: 53503
 		-- 4.0.1: Increases your spell power by an amount equal to 30% of your attack power
-		["ADD_HEAL_MOD_AP"] = {
+		["ADD_HEALING_MOD_AP"] = {
 			-- Sheath of Light
 			{
 				["value"] = 0.3,
@@ -994,7 +963,7 @@ elseif addon.class == "PALADIN" then
 		},
 		-- Paladin: Touched by the Light - Passive: 53592
 		-- 4.0.1: Increases your total Stamina by 15%, increases your spell hit by 6%, and increases your spell power by an amount equal to 60% of your Strength.
-		["ADD_HEAL_MOD_STR"] = {
+		["ADD_HEALING_MOD_STR"] = {
 			-- Touched by the Light
 			{
 				["value"] = 0.6,
@@ -1296,7 +1265,7 @@ elseif addon.class == "SHAMAN" then
 		},
 		-- Shaman: Mental Quickness - Passive: 30814
 		-- 4.0.1: Increases your spell power by an amount equal to 50% of your attack power
-		["ADD_HEAL_MOD_AP"] = {
+		["ADD_HEALING_MOD_AP"] = {
 			-- Mental Quickness
 			{
 				["value"] = 0.5,
@@ -1565,7 +1534,7 @@ StatLogic.StatModTable["ALL"] = {
 			["group"] = addon.BuffGroup.SpellPower,
 		},
 	},
-	["MOD_HEAL"] = {
+	["MOD_HEALING"] = {
 		-- Warlock: Demonic Pact - Buff: 53646
 		-- 4.0.1: Spell Power increased by 10%.
 		{
@@ -1602,7 +1571,7 @@ StatLogic.StatModTable["ALL"] = {
 			["group"] = addon.BuffGroup.SpellPower,
 		},
 	},
-	["ADD_BLOCK_REDUCTION"] = {
+	["MOD_BLOCK_VALUE"] = {
 		-- MetaGem: Eternal Earthsiege Diamond - Meta: 41396
 		-- 4.0.1: +1% Shield Block Value
 		{
