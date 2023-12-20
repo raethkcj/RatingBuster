@@ -1057,6 +1057,8 @@ elseif addon.class == "PRIEST" then
 			},
 			-- Priest: Holy Concentration - Rank 2/2 - 2,8
 			-- 4.0.6: Increases the amount of mana regeneration from Spirit while in combat by an additional 15/30%.
+			-- TODO: Double check that this is ADD_MANA_REG_MOD_NORMAL_MANA_REG
+			-- and not MOD_NORMAL_MANA_REG
 			{
 				["spellid"] = 34859,
 				["tab"] = 2,
