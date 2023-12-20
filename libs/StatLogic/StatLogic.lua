@@ -624,12 +624,6 @@ local addedInfoMods = {
 	},
 	{
 		add = "AP",
-		mod = "SPELL_DMG",
-		initialValue = 0,
-		finalAdjust = 0,
-	},
-	{
-		add = "AP",
 		mod = "STA",
 		initialValue = 0,
 		finalAdjust = 0,

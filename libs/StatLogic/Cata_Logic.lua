@@ -1342,33 +1342,6 @@ elseif addon.class == "WARLOCK" then
 				["buff"] = 47241,
 			},
 		},
-		-- 3.3.0 Imp stam total 233: pet base 118, player base 90, pet sta from player sta 0.75, pet kings 1.1, fel vitality 1.15
-		-- /dump floor((118+floor(90*0.75))*1.1)*1.05 = 233.45 match
-		-- /dump (118+floor(90*0.75))*1.1*1.05 = 224.025 wrong
-		["ADD_PET_STA_MOD_STA"] = {
-			-- Base
-			{
-				["value"] = 0.65,
-				["pet"] = true,
-			},
-			-- BoK, MotW, EotSS
-			{
-				["value"] = 0.05,
-				["condition"] = "UnitBuff('pet', GetSpellInfo(20217)) or UnitBuff('pet', GetSpellInfo(79061)) or UnitBuff('pet', GetSpellInfo(90363))",
-			},
-		},
-		["ADD_PET_INT_MOD_INT"] = {
-			-- Base
-			{
-				["value"] = 0.5,
-				["pet"] = true,
-			},
-			-- BoK, MotW, EotSS
-			{
-				["value"] = 0.05,
-				["condition"] = "UnitBuff('pet', GetSpellInfo(20217)) or UnitBuff('pet', GetSpellInfo(79061)) or UnitBuff('pet', GetSpellInfo(90363))",
-			},
-		},
 		-- Warlock: Demonic Embrace - Rank 3/3 - 2,1
 		--          Increases your total Stamina by 4/7/10%.
 		["MOD_STA"] = {
