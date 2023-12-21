@@ -383,18 +383,6 @@ local options = {
 							desc = L["Show Mana from Intellect"],
 							width = "full",
 						},
-						showMP5FromInt = {
-							type = 'toggle',
-							name = L["Show Mana Regen"],
-							desc = L["Show Mana Regen while casting from Intellect"],
-							width = "full",
-						},
-						showMP5NCFromInt = {
-							type = 'toggle',
-							name = L["Show Mana Regen while NOT casting"],
-							desc = L["Show Mana Regen while NOT casting from Intellect"],
-							width = "full",
-						},
 					},
 				},
 				spi = {
@@ -403,20 +391,7 @@ local options = {
 					desc = L["Changes the display of Spirit"],
 					width = "full",
 					order = 7,
-					args = {
-						showMP5NCFromSpi = {
-							type = 'toggle',
-							name = L["Show Mana Regen while NOT casting"],
-							desc = L["Show Mana Regen while NOT casting from Spirit"],
-							width = "full",
-						},
-						showHP5NCFromSpi = {
-							type = 'toggle',
-							name = L["Show Health Regen (Out of Combat)"],
-							desc = L["Show Health Regen (Out of Combat) from Spirit"],
-							width = "full",
-						},
-					},
+					args = {},
 				},
 				ap = {
 					type = 'group',
@@ -1170,7 +1145,7 @@ local defaults = {
 		showMP5NCFromInt = false,
 
 		showMP5NCFromSpi = false,
-		showHP5FromSpi = false,
+		showHP5NCFromSpi = false,
 		------------------
 		-- Stat Summary --
 		------------------
@@ -1308,7 +1283,6 @@ elseif class == "HUNTER" then
 	defaults.profile.sumRangedHit = true
 	defaults.profile.sumRangedCrit = true
 	defaults.profile.sumRangedHaste = true
-	defaults.profile.showMP5FromInt = true -- Aspect of the Viper
 	defaults.profile.showRAPFromAgi = true
 	defaults.profile.showDodgeFromAgi = false
 	defaults.profile.showSpellCritFromInt = false
@@ -1399,7 +1373,9 @@ do
 	local statToOptionKey = setmetatable({
 		["AP"] = "AP",
 		["MANA_REG"] = "MP5",
+		["NORMAL_MANA_REG"] = "MP5NC",
 		["HEALTH_REG"] = "HP5",
+		["NORMAL_HEALTH_REG"] = "HP5NC",
 		["RANGED_AP"] = "RAP",
 	},
 	{
@@ -1414,7 +1390,9 @@ do
 	local addStatModOption = function(add, mod, sources)
 		-- ADD_HEALING_MOD_INT -> showHealingFromInt
 		local key = "show" .. statToOptionKey[add] .. "From" .. statToOptionKey[mod]
-		defaults.profile[key] = true
+		if defaults.profile[key] == nil then
+			defaults.profile[key] = true
+		end
 
 		-- Override Armor and Attack Power being hidden by default,
 		-- since most classes have no useful breakdowns from them.
@@ -1467,9 +1445,11 @@ do
 					add = add:gsub("_RATING", "")
 
 					if mod == "NORMAL_MANA_REG" then
-						-- "Normal mana regen" is added from both int and spirit
-						addStatModOption(add, "INT", sources)
 						mod = "SPI"
+						if GSM("ADD_NORMAL_MANA_REG_MOD_INT") > 0 then
+							-- "Normal mana regen" is added from both int and spirit
+							addStatModOption(add, "INT", sources)
+						end
 					elseif mod == "NORMAL_HEALTH_REG" then
 						mod = "SPI"
 					elseif mod == "MANA" then

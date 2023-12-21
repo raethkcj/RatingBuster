@@ -510,18 +510,6 @@ StatLogic.StatModInfo = {
 		initialValue = 0,
 		finalAdjust = 0,
 	},
-	["ADD_NORMAL_HEALTH_REG_MOD_SPI"] = {
-		initialValue = 0,
-		finalAdjust = 0,
-	},
-	["ADD_NORMAL_MANA_REG_MOD_INT"] = {
-		initialValue = 0,
-		finalAdjust = 0,
-	},
-	["ADD_NORMAL_MANA_REG_MOD_SPI"] = {
-		initialValue = 0,
-		finalAdjust = 0,
-	},
 	["ADD_PET_INT_MOD_INT"] = {
 		initialValue = 0,
 		finalAdjust = 0,
@@ -610,6 +598,18 @@ StatLogic.StatModInfo = {
 
 -- StatMods used by RatingBuster to dynamically add options for stat breakdowns
 local addedInfoMods = {
+	{
+		add = "NORMAL_HEALTH_REG",
+		mod = "SPI",
+	},
+	{
+		add = "NORMAL_MANA_REG",
+		mod = "INT",
+	},
+	{
+		add = "NORMAL_MANA_REG",
+		mod = "SPI",
+	},
 	{
 		add = "AP",
 		mod = "ARMOR",
