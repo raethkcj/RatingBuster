@@ -89,12 +89,8 @@ L["HEALTH_REG"] = "생명력 재생"
 L["NORMAL_HEALTH_REG"] = "생명력 재생 (비전투)"
 L["PET_STA"] = PET .. SPELL_STAT3_NAME -- Pet Stamina
 L["PET_INT"] = PET .. SPELL_STAT4_NAME -- Pet Intellect
-L.statModOptionName = function(show, add)
-	return ("%s %s "):format(add, show)
-end
-L.statModOptionDesc = function(show, add, from, mod)
-	return ("%s %s %s %s "):format(mod, from, add, show)
-end
+L["StatModOptionName"] = "%2$s %1$s"
+
 
 -- /rb stat
 --["Stat Breakdown"] = "능력치",

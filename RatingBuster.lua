@@ -1409,7 +1409,7 @@ do
 			sources = option.desc .. ", " .. sources
 		end
 
-		option.name = L.statModOptionDesc(SHOW, L[add], L["from"], L[mod])
+		option.name = L["StatModOptionName"]:format(SHOW, L[add])
 		option.desc = sources
 
 		options.args.stat.args[mod:lower()].args[key] = option

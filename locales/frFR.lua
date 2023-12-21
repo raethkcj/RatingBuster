@@ -85,12 +85,7 @@ L["HEALTH_REG"] = "Régén. vie (combat)"
 L["NORMAL_HEALTH_REG"] = "Régén. vie (hors combat)"
 L["PET_STA"] = PET .. SPELL_STAT3_NAME -- Pet Stamina
 L["PET_INT"] = PET .. SPELL_STAT4_NAME -- Pet Intellect
-L.statModOptionName = function(show, add)
-	return ("%s %s "):format(show, add)
-end
-L.statModOptionDesc = function(show, add, from, mod)
-	return ("%s %s %s %s "):format(show, add, from, mod)
-end
+L["StatModOptionName"] = "%s %s"
 
 -- /rb stat
 L["Stat Breakdown"] = "Détail des caractéristiques"

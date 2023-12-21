@@ -99,12 +99,8 @@ L["HEALTH_REG"] = "Восстановление здоровья"
 L["NORMAL_HEALTH_REG"] = "Восполнение здаровья (вне боя)"
 L["PET_STA"] = "Выносливость питомца" -- Pet Stamina
 L["PET_INT"] = "Интеллект питомца" -- Pet Intellect
-L.statModOptionName = function(show, add)
-	return ("%s %s "):format(show, add)
-end
-L.statModOptionDesc = function(show, add, from, mod)
-	return ("%s %s %s %s "):format(show, add, from, mod)
-end
+L["StatModOptionName"] = "%s %s"
+
 
 ---------------------------------------------------------------------------
 -- /rb rating color
