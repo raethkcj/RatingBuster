@@ -613,163 +613,113 @@ local addedInfoMods = {
 	{
 		add = "AP",
 		mod = "ARMOR",
-		initialValue = 0,
-		finalAdjust = 0,
 	},
 	{
 		add = "AP",
 		mod = "INT",
-		initialValue = 0,
-		finalAdjust = 0,
 	},
 	{
 		add = "AP",
 		mod = "STA",
-		initialValue = 0,
-		finalAdjust = 0,
 	},
 	{
 		add = "ARMOR",
 		mod = "INT",
-		initialValue = 0,
-		finalAdjust = 0,
 	},
 	{
 		add = "HEALING",
 		mod = "AGI",
-		initialValue = 0,
-		finalAdjust = 0,
 	},
 	{
 		add = "HEALING",
 		mod = "AP",
-		initialValue = 0,
-		finalAdjust = 0,
 	},
 	{
 		add = "HEALING",
 		mod = "INT",
-		initialValue = 0,
-		finalAdjust = 0,
 	},
 	{
 		add = "HEALING",
 		mod = "MANA",
-		initialValue = 0,
-		finalAdjust = 0,
 	},
 	{
 		add = "HEALING",
 		mod = "SPI",
-		initialValue = 0,
-		finalAdjust = 0,
 	},
 	{
 		add = "HEALING",
 		mod = "STR",
-		initialValue = 0,
-		finalAdjust = 0,
 	},
 	{
 		add = "HEALTH_REG",
 		mod = "NORMAL_HEALTH_REG",
-		initialValue = 0,
-		finalAdjust = 0,
 	},
 	{
 		add = "MANA_REG",
 		mod = "INT",
-		initialValue = 0,
-		finalAdjust = 0,
 	},
 	{
 		add = "MANA_REG",
 		mod = "MANA",
-		initialValue = 0,
-		finalAdjust = 0,
 	},
 	{
 		add = "MANA_REG",
 		mod = "NORMAL_MANA_REG",
-		initialValue = 0,
-		finalAdjust = 0,
 	},
 	{
 		add = "PARRY_RATING",
 		mod = "STR",
-		initialValue = 0,
-		finalAdjust = 0,
 	},
 	{
 		add = "RANGED_AP",
 		mod = "INT",
-		initialValue = 0,
-		finalAdjust = 0,
 	},
 	{
 		add = "SPELL_CRIT_RATING",
 		mod = "SPI",
-		initialValue = 0,
-		finalAdjust = 0,
 	},
 	{
 		add = "SPELL_HIT_RATING",
 		mod = "SPI",
-		initialValue = 0,
-		finalAdjust = 0,
 	},
 	{
 		add = "SPELL_DMG",
 		mod = "AP",
-		initialValue = 0,
-		finalAdjust = 0,
 	},
 	{
 		add = "SPELL_DMG",
 		mod = "INT",
-		initialValue = 0,
-		finalAdjust = 0,
 	},
 	{
 		add = "SPELL_DMG",
 		mod = "MANA",
-		initialValue = 0,
-		finalAdjust = 0,
 	},
 	{
 		add = "SPELL_DMG",
 		mod = "PET_INT",
-		initialValue = 0,
-		finalAdjust = 0,
 	},
 	{
 		add = "SPELL_DMG",
 		mod = "PET_STA",
-		initialValue = 0,
-		finalAdjust = 0,
 	},
 	{
 		add = "SPELL_DMG",
 		mod = "SPI",
-		initialValue = 0,
-		finalAdjust = 0,
 	},
 	{
 		add = "SPELL_DMG",
 		mod = "STA",
-		initialValue = 0,
-		finalAdjust = 0,
 	},
 	{
 		add = "SPELL_DMG",
 		mod = "STR",
-		initialValue = 0,
-		finalAdjust = 0,
 	},
 }
 
 for _, statMod in ipairs(addedInfoMods) do
 	local name = ("ADD_%s_MOD_%s"):format(statMod.add, statMod.mod)
+	statMod.initialValue = 0
+	statMod.finalAdjust = 0
 	StatLogic.StatModInfo[name] = statMod
 end
 
