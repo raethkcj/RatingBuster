@@ -2864,6 +2864,16 @@ elseif addon.playerRace == "Troll" then
 end
 
 StatLogic.StatModTable["ALL"] = {
+	["ADD_HEALTH_MOD_STA"] = {
+		{
+			["value"] = 10,
+		},
+	},
+	["ADD_MANA_MOD_INT"] = {
+		{
+			["value"] = 15,
+		},
+	},
 	["ADD_NORMAL_HEALTH_REG_MOD_SPI"] = {
 		{
 			["regen"] = NormalHealthRegenPerSpi,

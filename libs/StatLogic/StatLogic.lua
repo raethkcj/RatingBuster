@@ -651,8 +651,16 @@ local addedInfoMods = {
 		mod = "STR",
 	},
 	{
+		add = "HEALTH",
+		mod = "STA",
+	},
+	{
 		add = "HEALTH_REG",
 		mod = "NORMAL_HEALTH_REG",
+	},
+	{
+		add = "MANA",
+		mod = "INT",
 	},
 	{
 		add = "MANA_REG",

@@ -139,9 +139,6 @@ L["Show Healing from Agility"] = "Muestra Sanacion de Agilidad"
 -- /rb stat sta
 L["Stamina"] = "Aguante"
 L["Changes the display of Stamina"] = "Cambia la visualizacion de Aguante"
--- /rb stat sta hp
-L["Show Health"] = "Mostrar Salud"
-L["Show Health from Stamina"] = "Muestra la Salud de Aguante"
 -- /rb stat sta dmg
 L["Show Spell Damage"] = "Mostrar Daño Hech"
 L["Show Spell Damage from Stamina"] = "Muestra el Daño de Hechizo de Aguante"
@@ -152,9 +149,6 @@ L["Changes the display of Intellect"] = "Cambia la visualizacion de Intelecto"
 -- /rb stat int spellcrit
 L["Show Spell Crit"] = "Mostrar Crit Hech"
 L["Show Spell Crit chance from Intellect"] = "Muestra la prob. de Crit. de Hechizo de Intelecto"
--- /rb stat int mp
-L["Show Mana"] = "Mostrar Mana"
-L["Show Mana from Intellect"] = "Muestra el Mana de Intelecto"
 -- /rb stat int dmg
 L["Show Spell Damage"] = "Mostrar Daño Hech"
 L["Show Spell Damage from Intellect"] = "Muestra el Daño de Hechizo de Intelecto"

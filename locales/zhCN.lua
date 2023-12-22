@@ -138,9 +138,6 @@ L["Show Healing from Agility"] = "显示敏捷给的治疗加成"
 -- /rb stat sta
 L["Stamina"] = "耐力"
 L["Changes the display of Stamina"] = "自订耐力解析项目"
--- /rb stat sta hp
-L["Show Health"] = "显示生命值"
-L["Show Health from Stamina"] = "显示耐力给的生命值"
 -- /rb stat sta dmg
 L["Show Spell Damage"] = "显示法伤"
 L["Show Spell Damage from Stamina"] = "显示耐力给的法术伤害加成"
@@ -151,9 +148,6 @@ L["Changes the display of Intellect"] = "自订智力解析项目"
 -- /rb stat int spellcrit
 L["Show Spell Crit"] = "显示法术爆击"
 L["Show Spell Crit chance from Intellect"] = "显示智力给的法术爆击几率"
--- /rb stat int mp
-L["Show Mana"] = "显示法力值"
-L["Show Mana from Intellect"] = "显示智力给的法力值"
 -- /rb stat int dmg
 L["Show Spell Damage"] = "显示法伤"
 L["Show Spell Damage from Intellect"] = "显示智力给的法术伤害加成"

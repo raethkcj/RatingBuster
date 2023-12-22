@@ -136,9 +136,6 @@ L["Show Healing from Agility"] = true
 -- /rb stat sta
 L["Stamina"] = true
 L["Changes the display of Stamina"] = true
--- /rb stat sta hp
-L["Show Health"] = true
-L["Show Health from Stamina"] = true
 -- /rb stat sta dmg
 L["Show Spell Damage"] = true
 L["Show Spell Damage from Stamina"] = true
@@ -149,9 +146,6 @@ L["Changes the display of Intellect"] = true
 -- /rb stat int spellcrit
 L["Show Spell Crit"] = true
 L["Show Spell Crit chance from Intellect"] = true
--- /rb stat int mp
-L["Show Mana"] = true
-L["Show Mana from Intellect"] = true
 -- /rb stat int dmg
 L["Show Spell Damage"] = true
 L["Show Spell Damage from Intellect"] = true

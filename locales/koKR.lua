@@ -139,9 +139,6 @@ L["Show Healing"] = "치유량 표시"
 -- /rb stat sta
 L["Stamina"] = "체력"
 L["Changes the display of Stamina"] = "체력의 표시방법을 변경합니다."
--- /rb stat sta hp
-L["Show Health"] = "생명력 표시"
-L["Show Health from Stamina"] = "체력에 의한 생명력을 표시합니다."
 -- /rb stat sta dmg
 L["Show Spell Damage"] = "주문 공격력 표시"
 L["Show Spell Damage from Stamina"] = "체력에 의한 주문 공격력을 표시합니다."
@@ -152,9 +149,6 @@ L["Changes the display of Intellect"] = "지능 표시방법을 변경합니다.
 -- /rb stat int spellcrit
 L["Show Spell Crit"] = "주문 극대화 표시"
 L["Show Spell Crit chance from Intellect"] = "지능에 의한 주문 극대화율 표시"
--- /rb stat int mp
-L["Show Mana"] = "마나 표시"
-L["Show Mana from Intellect"] = "지능에 의한 마나량을 표시합니다."
 -- /rb stat int dmg
 L["Show Spell Damage"] = "주문 공격력 표시"
 L["Show Spell Damage from Intellect"] = "지능에 의한 주문 공격력을 표시합니다."

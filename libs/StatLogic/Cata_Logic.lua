@@ -1464,6 +1464,26 @@ elseif addon.playerRace == "Human" then
 end
 
 StatLogic.StatModTable["ALL"] = {
+	["ADD_HEALTH_MOD_STA"] = {
+		{
+			["level"] = setmetatable({
+				[81] = 10.8,
+				[82] = 11.6,
+				[83] = 12.4,
+				[84] = 13.2,
+				[85] = 14.0,
+			}, {
+				__index = function()
+					return 10
+				end
+			})
+		},
+	},
+	["ADD_MANA_MOD_INT"] = {
+		{
+			["value"] = 15,
+		},
+	},
 	["ADD_MANA_REG_MOD_MANA"] = {
 		-- Replenishment - Buff
 		-- 4.0.1: Replenishes 1% of maximum mana per 10 sec.
@@ -1730,89 +1750,42 @@ StatLogic.StatModTable["ALL"] = {
 			["group"] = addon.BuffGroup.AllStats,
 		},
 	},
-	--[[
-	Up to level 80 1 stamina grants 10 health. But levels 81..85 that value increases.
-	It could be implemented as a GetHealthPerStamina(level) function (which i started to do),
-		but everyone would have to change their code to stop using the hard-coded "10 health per stamina".
-		Instead we can code it as a set of conditional percentage modifiers for all classes in the "MOD_HEALTH" group
-		Level    HP/sta    % increase
-		=====    =======    ========
-		80        10.0    0.00   (confirmed 10.0 12/12/2010, 4.0.3)
-		81        10.8    0.08
-		82        11.6    0.12   (confirmed 11.6 12/11/2010, 4.0.3)
-		83        12.4    0.24   (confirmed 12.4 12/12/2010, 4.0.3)
-		84        13.2    0.32
-		85        14.0    0.40
-
-		Question for Whitefang: Could the modifier be written as the following?:
+	["MOD_INT"] = {
+		-- Paladin: Blessing of Kings - Buff: 20217
+		-- 4.0.1: Strength, Agility, Stamina, and Intellect increased by 5%.
 		{
-			["rank"] = { 0.08 * (UnitLevel('player') - 80) },
-			["condition"] = "UnitLevel('player') >= 81"
-		}
-
-		It would be future proofed, but i don't know if it's right to code the rank based on a formula
-		(i.e. what happens if they ding?)
-		--]]
-		["MOD_HEALTH"] = {
-			-- Level 81..85
-			{
-				["value"] = 0.08,
-				["condition"] = "UnitLevel('player') == 81",
-			},
-			{
-				["value"] = 0.12,
-				["condition"] = "UnitLevel('player') == 82",
-			},
-			{
-				["value"] = 0.24,
-				["condition"] = "UnitLevel('player') == 83",
-			},
-			{
-				["value"] = 0.32,
-				["condition"] = "UnitLevel('player') == 84",
-			},
-			{
-				["value"] = 0.40,
-				["condition"] = "UnitLevel('player') == 85",
-			},
+			["value"] = 0.05,
+			["buff"] = 20217,
+			["group"] = addon.BuffGroup.AllStats,
 		},
-
-		["MOD_INT"] = {
-			-- Paladin: Blessing of Kings - Buff: 20217
-			-- 4.0.1: Strength, Agility, Stamina, and Intellect increased by 5%.
-			{
-				["value"] = 0.05,
-				["buff"] = 20217,
-				["group"] = addon.BuffGroup.AllStats,
-			},
-			-- Druid: Mark of the Wild - Buff: 79061
-			-- 4.0.1: Strength, Agility, Stamina, and Intellect increased by 5%.
-			{
-				["value"] = 0.05,
-				["buff"] = 79061,
-				["group"] = addon.BuffGroup.AllStats,
-			},
-			-- Hunter: Embrace of the Shale Spider - Buff: 90363
-			-- 4.0.1: Strength, Agility, Stamina, and Intellect increased by 5%.
-			{
-				["value"] = 0.05,
-				["buff"] = 90363,
-				["group"] = addon.BuffGroup.AllStats,
-			},
-			-- Leatherworking: Blessing of Forgotten Kings - Buff: 69378
-			-- 4.0.1: Strength, Agility, Stamina, and Intellect increased by 4%.
-			{
-				["value"] = 0.04,
-				["buff"] = 69378,
-				["group"] = addon.BuffGroup.AllStats,
-			},
+		-- Druid: Mark of the Wild - Buff: 79061
+		-- 4.0.1: Strength, Agility, Stamina, and Intellect increased by 5%.
+		{
+			["value"] = 0.05,
+			["buff"] = 79061,
+			["group"] = addon.BuffGroup.AllStats,
 		},
-		["MOD_SPI"] = {
-			-- Shaman: Mana Tide - Buff: 16191
-			-- 4.0.1: Spirit increased by 350%.
-			{
-				["value"] = 3.5,
-				["buff"] = 16191,
-			},
+		-- Hunter: Embrace of the Shale Spider - Buff: 90363
+		-- 4.0.1: Strength, Agility, Stamina, and Intellect increased by 5%.
+		{
+			["value"] = 0.05,
+			["buff"] = 90363,
+			["group"] = addon.BuffGroup.AllStats,
 		},
-	}
+		-- Leatherworking: Blessing of Forgotten Kings - Buff: 69378
+		-- 4.0.1: Strength, Agility, Stamina, and Intellect increased by 4%.
+		{
+			["value"] = 0.04,
+			["buff"] = 69378,
+			["group"] = addon.BuffGroup.AllStats,
+		},
+	},
+	["MOD_SPI"] = {
+		-- Shaman: Mana Tide - Buff: 16191
+		-- 4.0.1: Spirit increased by 350%.
+		{
+			["value"] = 3.5,
+			["buff"] = 16191,
+		},
+	},
+}

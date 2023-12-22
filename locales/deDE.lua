@@ -138,9 +138,6 @@ L["Show Healing from Agility"] = "Zeige Heilung resultierend aus Beweglichkeit"
 -- /rb stat sta
 L["Stamina"] = "Ausdauer"
 L["Changes the display of Stamina"] = "Zeige Ausdauer an"
--- /rb stat sta hp
-L["Show Health"] = "Zeige Leben"
-L["Show Health from Stamina"] = "Zeige Leben resultierend aus Ausdauer"
 -- /rb stat sta dmg
 L["Show Spell Damage"] = "Zeige Zauberschaden"
 L["Show Spell Damage from Stamina"] = "Zeige Zauberschaden resultierend aus Ausdauer"
@@ -151,9 +148,6 @@ L["Changes the display of Intellect"] = "Zeige Intelligenz an"
 -- /rb stat int spellcrit
 L["Show Spell Crit"] = "Zeige Zauberkrit."
 L["Show Spell Crit chance from Intellect"] = "Zeige Chance auf kritische Zaubertreffer resultierend aus Intelligent"
--- /rb stat int mp
-L["Show Mana"] = "Zeige Mana"
-L["Show Mana from Intellect"] = "Zeige Mana resultierend aus Intelligenz"
 -- /rb stat int dmg
 L["Show Spell Damage"] = "Zeige Zauberschaden"
 L["Show Spell Damage from Intellect"] = "Zeige Zauberschaden resultierend aus Intelligenz"

@@ -162,9 +162,6 @@ L["Show Healing from Agility"] = "Показывать расчет исцеле
 -- /rb stat sta
 L["Stamina"] = "Выносливость"
 L["Changes the display of Stamina"] = "Изменить отображение выносливости"
--- /rb stat sta hp
-L["Show Health"] = "Здоровье"
-L["Show Health from Stamina"] = "Показывать расчет здоровья от выносливости"
 -- /rb stat sta dmg
 L["Show Spell Damage"] = "Сила заклинаний"
 L["Show Spell Damage from Stamina"] = "Показывать расчет силы заклинаний от выносливости"
@@ -181,9 +178,6 @@ L["Changes the display of Intellect"] = "Изменить отображение
 -- /rb stat int spellcrit
 L["Show Spell Crit"] = "Крит. удар от заклинаний"
 L["Show Spell Crit chance from Intellect"] = "Показывать расчет вероятности крит. удара заклинаниями от интеллекта"
--- /rb stat int mp
-L["Show Mana"] = "Мана"
-L["Show Mana from Intellect"] = "Показывать расчет маны от интеллекта"
 -- /rb stat int dmg
 L["Show Spell Damage"] = "Сила заклинаний"
 L["Show Spell Damage from Intellect"] = "Показывать расчет силы заклинаний от интеллекта"

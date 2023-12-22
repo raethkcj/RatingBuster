@@ -355,14 +355,7 @@ local options = {
 					desc = L["Changes the display of Stamina"],
 					width = "full",
 					order = 5,
-					args = {
-						showHealthFromSta = {
-							type = 'toggle',
-							name = L["Show Health"],
-							desc = L["Show Health from Stamina"],
-							width = "full",
-						},
-					},
+					args = {},
 				},
 				int = {
 					type = 'group',
@@ -375,12 +368,6 @@ local options = {
 							type = 'toggle',
 							name = L["Show Spell Crit"],
 							desc = L["Show Spell Crit chance from Intellect"],
-							width = "full",
-						},
-						showManaFromInt = {
-							type = 'toggle',
-							name = L["Show Mana"],
-							desc = L["Show Mana from Intellect"],
 							width = "full",
 						},
 					},
@@ -2245,7 +2232,7 @@ do
 			local infoTable = {}
 			if profileDB.showHealthFromSta then
 				local mod = GSM("MOD_HEALTH")
-				local effect = value * 10 * mod -- 10 Health per Sta
+				local effect = value * GSM("ADD_HEALTH_MOD_STA") * mod
 				if (mod ~= 1 or statmod ~= 1) and floor(abs(effect) * 10 + 0.5) > 0 then
 					tinsert(infoTable, (L["$value HP"]:gsub("$value", ("%+.1f"):format(effect))))
 				elseif floor(abs(effect) + 0.5) > 0 then
@@ -2283,7 +2270,7 @@ do
 			local infoTable = {}
 			if profileDB.showManaFromInt then
 				local mod = GSM("MOD_MANA")
-				local effect = value * 15 * mod -- 15 Mana per Int
+				local effect = value * GSM("ADD_MANA_MOD_INT") * mod -- 15 Mana per Int
 				if (mod ~= 1 or statmod ~= 1) and floor(abs(effect) * 10 + 0.5) > 0 then
 					tinsert(infoTable, (L["$value MP"]:gsub("$value", ("%+.1f"):format(effect))))
 				elseif floor(abs(effect) + 0.5) > 0 then
@@ -2314,7 +2301,7 @@ do
 			if profileDB.showMP5FromInt then
 				local effect = value * GSM("ADD_MANA_REG_MOD_INT")
 					+ value * GSM("ADD_NORMAL_MANA_REG_MOD_INT") * GSM("MOD_NORMAL_MANA_REG") * math.min(GSM("ADD_MANA_REG_MOD_NORMAL_MANA_REG"), 1)
-					+ value * 15 * GSM("MOD_MANA") * GSM("ADD_MANA_REG_MOD_MANA") -- Replenishment
+					+ value * GSM("ADD_MANA_MOD_INT") * GSM("MOD_MANA") * GSM("ADD_MANA_REG_MOD_MANA") -- Replenishment
 				if floor(abs(effect) * 10 + 0.5) > 0 then
 					tinsert(infoTable, (L["$value MP5"]:gsub("$value", ("%+.1f"):format(effect))))
 				end
@@ -2322,7 +2309,7 @@ do
 			if profileDB.showMP5NCFromInt then
 				local effect = value * GSM("ADD_MANA_REG_MOD_INT")
 					+ value * GSM("ADD_NORMAL_MANA_REG_MOD_INT") * GSM("MOD_NORMAL_MANA_REG")
-					+ value * 15 * GSM("MOD_MANA") * GSM("ADD_MANA_REG_MOD_MANA") -- Replenishment
+					+ value * GSM("ADD_MANA_MOD_INT") * GSM("MOD_MANA") * GSM("ADD_MANA_REG_MOD_MANA") -- Replenishment
 				if floor(abs(effect) * 10 + 0.5) > 0 then
 					tinsert(infoTable, (L["$value MP5(NC)"]:gsub("$value", ("%+.1f"):format(effect))))
 				end
@@ -2621,7 +2608,7 @@ local summaryCalcData = {
 		option = "sumHP",
 		name = "HEALTH",
 		func = function(sum)
-			return (sum["HEALTH"] + (sum[StatLogic.Stats.Stamina] * 10)) * GSM("MOD_HEALTH")
+			return (sum["HEALTH"] + (sum[StatLogic.Stats.Stamina] * GSM("ADD_HEALTH_MOD_STA"))) * GSM("MOD_HEALTH")
 		end,
 	},
 	-- Mana - MANA, INT
@@ -2629,7 +2616,7 @@ local summaryCalcData = {
 		option = "sumMP",
 		name = "MANA",
 		func = function(sum)
-			return (sum["MANA"] + (sum[StatLogic.Stats.Intellect] * 15)) * GSM("MOD_MANA")
+			return (sum["MANA"] + (sum[StatLogic.Stats.Intellect] * GSM("ADD_MANA_MOD_INT"))) * GSM("MOD_MANA")
 		end,
 	},
 	-- Health Regen - HEALTH_REG

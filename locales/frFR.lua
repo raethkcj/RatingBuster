@@ -134,9 +134,6 @@ L["Show Healing from Agility"] = "Affiche la Puissance des soins apportée par l
 -- /rb stat sta
 L["Stamina"] = "Endurance"
 L["Changes the display of Stamina"] = "Sélectionne les différents bonus liés à l'Endurance."
--- /rb stat sta hp
-L["Show Health"] = "Points de vie"
-L["Show Health from Stamina"] = "Affiche les points de vie liés à l'Endurance."
 -- /rb stat sta dmg
 L["Show Spell Damage"] = "Dégâts des sorts"
 L["Show Spell Damage from Stamina"] = "Affiche les Dégâts des sorts apportés par l'Endurance."
@@ -147,9 +144,6 @@ L["Changes the display of Intellect"] = "Sélectionne les différents bonus lié
 -- /rb stat int spellcrit
 L["Show Spell Crit"] = "Critiques des sorts"
 L["Show Spell Crit chance from Intellect"] = "Affiche le pourcentage de Coups critiques des sorts apporté par l'Intelligence."
--- /rb stat int mp
-L["Show Mana"] = "Points de mana"
-L["Show Mana from Intellect"] = "Affiche les points de mana apportés par l'Intelligence."
 -- /rb stat int dmg
 L["Show Spell Damage"] = "Dégâts des sorts"
 L["Show Spell Damage from Intellect"] = "Affiche les Dégâts des sorts apportés par l'Intelligence."
