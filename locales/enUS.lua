@@ -98,9 +98,6 @@ L["Show base stat conversions in tooltips"] = true
 -- /rb stat str
 L["Strength"] = true
 L["Changes the display of Strength"] = true
--- /rb stat str ap
-L["Show Attack Power"] = true
-L["Show Attack Power from Strength"] = true
 -- /rb stat str block
 L["Show Block Value"] = true
 L["Show Block Value from Strength"] = true
@@ -120,9 +117,6 @@ L["Show Crit chance from Agility"] = true
 -- /rb stat agi dodge
 L["Show Dodge"] = true
 L["Show Dodge chance from Agility"] = true
--- /rb stat agi ap
-L["Show Attack Power"] = true
-L["Show Attack Power from Agility"] = true
 -- /rb stat agi rap
 L["Show Ranged Attack Power"] = true
 L["Show Ranged Attack Power from Agility"] = true
@@ -190,9 +184,6 @@ L["Armor"] = true
 L["Changes the display of Armor"] = true
 L["Attack Power"] = true
 L["Changes the display of Attack Power"] = true
--- /rb stat armor ap
-L["Show Attack Power"] = true
-L["Show Attack Power from Armor"] = true
 ---------------------------------------------------------------------------
 -- /rb sum
 L["Stat Summary"] = true

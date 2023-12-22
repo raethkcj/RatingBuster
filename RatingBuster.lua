@@ -296,12 +296,6 @@ local options = {
 					width = "full",
 					order = 3,
 					args = {
-						showAPFromStr = {
-							type = 'toggle',
-							name = L["Show Attack Power"],
-							desc = L["Show Attack Power from Strength"],
-							width = "full",
-						},
 						showBlockValueFromStr = {
 							type = 'toggle',
 							name = L["Show Block Value"],
@@ -327,18 +321,6 @@ local options = {
 							type = 'toggle',
 							name = L["Show Dodge"],
 							desc = L["Show Dodge chance from Agility"],
-							width = "full",
-						},
-						showAPFromAgi = {
-							type = 'toggle',
-							name = L["Show Attack Power"],
-							desc = L["Show Attack Power from Agility"],
-							width = "full",
-						},
-						showRAPFromAgi = {
-							type = 'toggle',
-							name = L["Show Ranged Attack Power"],
-							desc = L["Show Ranged Attack Power from Agility"],
 							width = "full",
 						},
 						showArmorFromAgi = {

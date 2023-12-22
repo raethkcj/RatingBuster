@@ -118,9 +118,6 @@ L["Select when to show base stat conversions in tooltips. Modifier keys needs to
 -- /rb stat str
 L["Strength"] = "Сила"
 L["Changes the display of Strength"] = "Изменить отображение силы"
--- /rb stat str ap
-L["Show Attack Power"] = "Сила атаки"
-L["Show Attack Power from Strength"] = "Показывать расчет силы атаки от силы"
 -- /rb stat str block
 L["Show Block Value"] = "Блокирование"
 L["Show Block Value from Strength"] = "Показывать расчет показателя блокирования от силы"
@@ -146,9 +143,6 @@ L["Show Crit chance from Agility"] = "Показывать расчет веро
 -- /rb stat agi dodge
 L["Show Dodge"] = "Уклонение"
 L["Show Dodge chance from Agility"] = "Показывать расчет вероятности уклонения от ловкости"
--- /rb stat agi ap
-L["Show Attack Power"] = "Сила атаки"
-L["Show Attack Power from Agility"] = "Показывать расчет силы атаки от ловкости"
 -- /rb stat agi rap
 L["Show Ranged Attack Power"] = "Сила атаки дальнего боя"
 L["Show Ranged Attack Power from Agility"] = "Показывать расчет силы атаки дальнего боя от ловкости"
@@ -168,9 +162,6 @@ L["Show Spell Damage from Stamina"] = "Показывать расчет сил�
 -- /rb stat sta heal
 L["Show Healing"] = "Исцеление"
 L["Show Healing from Stamina"] = "Показывать расчет исцеления от выносливости"
--- /rb stat sta ap
-L["Show Attack Power"] = "Сила атаки"
-L["Show Attack Power from Stamina"] = "Показывать расчет силы атаки от выносливости"
 ---------------------------------------------------------------------------
 -- /rb stat int
 L["Intellect"] = "Интеллект"
@@ -193,9 +184,6 @@ L["Show Mana Regen while NOT casting from Intellect"] = "Показывать р
 -- /rb stat int rap
 L["Show Ranged Attack Power"] = "Сила атаки дальнего боя"
 L["Show Ranged Attack Power from Intellect"] = "Показывать расчет силы атаки дальнего боя от интеллекта"
--- /rb stat int ap
-L["Show Attack Power"] = "Силы атаки"
-L["Show Attack Power from Intellect"] = "Показывать расчет силы атаки от интеллекта"
 ---------------------------------------------------------------------------
 -- /rb stat spi
 L["Spirit"] = "Дух"
@@ -230,9 +218,6 @@ L["Armor"] = "Броня"
 L["Changes the display of Armor"] = "Показывать расчет брони"
 L["Attack Power"] = "Attack Power"
 L["Changes the display of Attack Power"] = "Changes the display of Attack Power"
--- /rb stat armor ap
-L["Show Attack Power"] = "Сила атаки"
-L["Show Attack Power from Armor"] = "Показывать расчет силы атаки от брони"
 ---------------------------------------------------------------------------
 -- /rb sum
 L["Stat Summary"] = "Настройки итогов"

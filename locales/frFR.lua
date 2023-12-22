@@ -96,9 +96,6 @@ L["Show base stat conversions in tooltips"] = "Ajoute un aperçu détaillé des 
 -- /rb stat str
 L["Strength"] = "Force"
 L["Changes the display of Strength"] = "Sélectionne les différents bonus liés à la Force."
--- /rb stat str ap
-L["Show Attack Power"] = "Puissance d'attaque"
-L["Show Attack Power from Strength"] = "Affiche la Puissance d'attaque apportée par la Force."
 -- /rb stat str block
 L["Show Block Value"] = "Valeur de blocage"
 L["Show Block Value from Strength"] = "Affiche la Valeur de blocage apportée par la Force."
@@ -118,9 +115,6 @@ L["Show Crit chance from Agility"] = "Affiche le pourcentage de Coups critiques 
 -- /rb stat Agilité dodge
 L["Show Dodge"] = "Esquive"
 L["Show Dodge chance from Agility"] = "Affiche le poucentage d'Esquive apporté par l'Agilité."
--- /rb stat Agilité ap
-L["Show Attack Power"] = "Puissance d'attaque"
-L["Show Attack Power from Agility"] = "Affiche la Puissance d'attaque apportée par l'Agilité."
 -- /rb stat Agilité rap
 L["Show Ranged Attack Power"] = "Puis. d'att. à distance"
 L["Show Ranged Attack Power from Agility"] = "Affiche la Puissance d'attaque à distance apportée par l'Agilité."
@@ -188,9 +182,6 @@ L["Armor"] = "Armure"
 L["Changes the display of Armor"] = "Sélectionne les différents bonus liés à l'Armure."
 L["Attack Power"] = "Puissance d'attaque"
 L["Changes the display of Attack Power"] = "Sélectionne les différents bonus liés à la Puissance d'attaque."
--- /rb stat armor ap
-L["Show Attack Power"] = "Puissance d'attaque"
-L["Show Attack Power from Armor"] = "Affiche la Puissance d'attaque apportée par l'Armure."
 ---------------------------------------------------------------------------
 -- /rb sum
 L["Stat Summary"] = "Résumé des Stats"

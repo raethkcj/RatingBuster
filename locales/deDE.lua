@@ -100,9 +100,6 @@ L["Show base stat conversions in tooltips"] = "Zeige Basiswertumwandlung im Tool
 -- /rb stat str
 L["Strength"] = "Stärke"
 L["Changes the display of Strength"] = "Zeigt Stärke an"
--- /rb stat str ap
-L["Show Attack Power"] = "Zeige Angriffskraft"
-L["Show Attack Power from Strength"] = "Zeige Angriffskraft resultierend aus Stärke"
 -- /rb stat str block
 L["Show Block Value"] = "Zeige Blockwert"
 L["Show Block Value from Strength"] = "Zeige Blockwert resultierend aus Stärke"
@@ -122,9 +119,6 @@ L["Show Crit chance from Agility"] = "Zeige Chance auf kritische Treffer resulti
 -- /rb stat agi dodge
 L["Show Dodge"] = "Zeige Ausweichen"
 L["Show Dodge chance from Agility"] = "Zeige Ausweichchance resultierend aus Beweglichkeit"
--- /rb stat agi ap
-L["Show Attack Power"] = "Zeige Angriffskraft"
-L["Show Attack Power from Agility"] = "Zeige Angriffskraft resultierend aus Beweglichkeit"
 -- /rb stat agi rap
 L["Show Ranged Attack Power"] = "Zeige Distanzangriffskraft (RAP)"
 L["Show Ranged Attack Power from Agility"] = "Zeige Distanzangriffskraft resultierend aus Beweglichkeit"
@@ -192,9 +186,6 @@ L["Armor"] = "Rüstung"
 L["Changes the display of Armor"] = "Ändert die Anzeige von Rüstung"
 L["Attack Power"] = "Angriffskraft"
 L["Changes the display of Attack Power"] = "Ändert die Anzeige von Angriffskraft"
--- /rb stat armor ap
-L["Show Attack Power"] = "Zeige Angriffskraft"
-L["Show Attack Power from Armor"] = "Zeige Angriffskraft, resultierend aus Rüstung"
 ---------------------------------------------------------------------------
 -- /rb sum
 L["Stat Summary"] = "Werteübersicht"

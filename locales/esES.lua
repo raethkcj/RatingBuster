@@ -101,9 +101,6 @@ L["Show base stat conversions in tooltips"] = "Muestra las conversiones de estad
 -- /rb stat str
 L["Strength"] = "Fuerza"
 L["Changes the display of Strength"] = "Cambia la visualizacion de Fuerza"
--- /rb stat str ap
-L["Show Attack Power"] = "Motrar Poder Ataque"
-L["Show Attack Power from Strength"] = "Motrar Poder Ataque de Fuerza"
 -- /rb stat str block
 L["Show Block Value"] = "Mostrar Valor Bloqueo"
 L["Show Block Value from Strength"] = "Muestra el Valor Bloqueo de Fuerza"
@@ -123,9 +120,6 @@ L["Show Crit chance from Agility"] = "Muestra la prob. de crítico de Agilidad"
 -- /rb stat agi dodge
 L["Show Dodge"] = "Mostrar Esquivar"
 L["Show Dodge chance from Agility"] = "Muestra la prob. de Esquivar de Agilidad"
--- /rb stat agi ap
-L["Show Attack Power"] = "Mostrar Poder Ataque"
-L["Show Attack Power from Agility"] = "Muestra Poder de Ataque de Agilidad"
 -- /rb stat agi rap
 L["Show Ranged Attack Power"] = "Mostrar Poder Ataque Dist"
 L["Show Ranged Attack Power from Agility"] = "Muestra Poder de Ataque a distancia de Agilidad"

@@ -101,9 +101,6 @@ L["Show base stat conversions in tooltips"] = "툴팁에 기본 능력치의 변
 -- /rb stat str
 L["Strength"] = "힘"
 L["Changes the display of Strength"] = "힘에 대한 표시방법을 변경합니다."
--- /rb stat str ap
-L["Show Attack Power"] = "전투력 표시"
-L["Show Attack Power from Strength"] = "힘에 의한 전투력을 표시합니다."
 -- /rb stat str block
 L["Show Block Value"] = "피해 방어량 표시"
 L["Show Block Value from Strength"] = "힘에 의한 피해 방어량을 표시합니다."
@@ -123,9 +120,6 @@ L["Show Crit chance from Agility"] = "민첩성에 의한 치명타 표시"
 -- /rb stat agi dodge
 L["Show Dodge"] = "회피 표시"
 L["Show Dodge chance from Agility"] = "민첩에 의한 회피율을 표시합니다."
--- /rb stat agi ap
-L["Show Attack Power"] = "전투력 표시"
-L["Show Attack Power from Agility"] = "민첩에 의한 전투력을 표시합니다."
 -- /rb stat agi rap
 L["Show Ranged Attack Power"] = "원거리 전투력 표시"
 L["Show Ranged Attack Power from Agility"] = "민첩에 의한 원거리 전투력을 표시합니다."

@@ -103,9 +103,6 @@ L["Show base stat conversions in tooltips"] = "在物品提示中顯示基本屬
 -- /rb stat str
 L["Strength"] = "力量"
 L["Changes the display of Strength"] = "自訂力量解析項目"
--- /rb stat str ap
-L["Show Attack Power"] = "顯示攻擊強度"
-L["Show Attack Power from Strength"] = "顯示力量給的攻擊強度"
 -- /rb stat str block
 L["Show Block Value"] = "顯示格檔值"
 L["Show Block Value from Strength"] = "顯示力量給的格檔值"
@@ -125,9 +122,6 @@ L["Show Crit chance from Agility"] = "顯示敏捷給的致命一擊機率"
 -- /rb stat agi dodge
 L["Show Dodge"] = "顯示閃躲"
 L["Show Dodge chance from Agility"] = "顯示敏捷給的閃躲機率"
--- /rb stat agi ap
-L["Show Attack Power"] = "顯示攻擊強度"
-L["Show Attack Power from Agility"] = "顯示敏捷給的攻擊強度"
 -- /rb stat agi rap
 L["Show Ranged Attack Power"] = "顯示遠程攻擊強度"
 L["Show Ranged Attack Power from Agility"] = "顯示敏捷給的遠程攻擊強度"

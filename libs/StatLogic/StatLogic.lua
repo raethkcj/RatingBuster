@@ -498,15 +498,7 @@ StatLogic.StatModInfo = {
 		initialValue = 0,
 		finalAdjust = 0,
 	},
-	["ADD_AP_MOD_AGI"] = {
-		initialValue = 0,
-		finalAdjust = 0,
-	},
 	["ADD_AP_MOD_FERAL_AP"] = {
-		initialValue = 0,
-		finalAdjust = 0,
-	},
-	["ADD_AP_MOD_STR"] = {
 		initialValue = 0,
 		finalAdjust = 0,
 	},
@@ -515,10 +507,6 @@ StatLogic.StatModInfo = {
 		finalAdjust = 0,
 	},
 	["ADD_PET_STA_MOD_STA"] = {
-		initialValue = 0,
-		finalAdjust = 0,
-	},
-	["ADD_RANGED_AP_MOD_AGI"] = {
 		initialValue = 0,
 		finalAdjust = 0,
 	},
@@ -599,6 +587,14 @@ StatLogic.StatModInfo = {
 -- StatMods used by RatingBuster to dynamically add options for stat breakdowns
 local addedInfoMods = {
 	{
+		add = "AP",
+		mod = "AGI",
+	},
+	{
+		add = "AP",
+		mod = "STR",
+	},
+	{
 		add = "NORMAL_HEALTH_REG",
 		mod = "SPI",
 	},
@@ -609,6 +605,10 @@ local addedInfoMods = {
 	{
 		add = "NORMAL_MANA_REG",
 		mod = "SPI",
+	},
+	{
+		add = "RANGED_AP",
+		mod = "AGI",
 	},
 	{
 		add = "AP",
