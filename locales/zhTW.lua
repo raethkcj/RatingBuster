@@ -106,12 +106,6 @@ L["Changes the display of Strength"] = "自訂力量解析項目"
 -- /rb stat str block
 L["Show Block Value"] = "顯示格檔值"
 L["Show Block Value from Strength"] = "顯示力量給的格檔值"
--- /rb stat str dmg
-L["Show Spell Damage"] = "顯示法傷"
-L["Show Spell Damage from Strength"] = "顯示力量給的法術傷害加成"
--- /rb stat str heal
-L["Show Healing"] = "顯示治療"
-L["Show Healing from Strength"] = "顯示力量給的治療加成"
 
 -- /rb stat agi
 L["Agility"] = "敏捷"
@@ -122,22 +116,13 @@ L["Show Crit chance from Agility"] = "顯示敏捷給的致命一擊機率"
 -- /rb stat agi dodge
 L["Show Dodge"] = "顯示閃躲"
 L["Show Dodge chance from Agility"] = "顯示敏捷給的閃躲機率"
--- /rb stat agi rap
-L["Show Ranged Attack Power"] = "顯示遠程攻擊強度"
-L["Show Ranged Attack Power from Agility"] = "顯示敏捷給的遠程攻擊強度"
 -- /rb stat agi armor
 L["Show Armor"] = "顯示裝甲值"
 L["Show Armor from Agility"] = "顯示敏捷給的裝甲值"
--- /rb stat str heal
-L["Show Healing"] = "顯示治療"
-L["Show Healing from Agility"] = "顯示敏捷給的治療加成"
 
 -- /rb stat sta
 L["Stamina"] = "耐力"
 L["Changes the display of Stamina"] = "自訂耐力解析項目"
--- /rb stat sta dmg
-L["Show Spell Damage"] = "顯示法傷"
-L["Show Spell Damage from Stamina"] = "顯示耐力給的法術傷害加成"
 
 -- /rb stat int
 L["Intellect"] = "智力"
@@ -145,43 +130,10 @@ L["Changes the display of Intellect"] = "自訂智力解析項目"
 -- /rb stat int spellcrit
 L["Show Spell Crit"] = "顯示法術致命"
 L["Show Spell Crit chance from Intellect"] = "顯示智力給的法術致命一擊機率"
--- /rb stat int dmg
-L["Show Spell Damage"] = "顯示法傷"
-L["Show Spell Damage from Intellect"] = "顯示智力給的法術傷害加成"
--- /rb stat int heal
-L["Show Healing"] = "顯示治療"
-L["Show Healing from Intellect"] = "顯示智力給的治療加成"
--- /rb stat int mp5
-L["Show Mana Regen"] = "顯示施法回魔"
-L["Show Mana Regen while casting from Intellect"] = "顯示智力給的施法中法力恢復量"
--- /rb stat int mp5nc
-L["Show Mana Regen while NOT casting"] = "顯示一般回魔"
-L["Show Mana Regen while NOT casting from Intellect"] = "顯示在未施法狀態時，智力給的法力恢復量"
--- /rb stat int rap
-L["Show Ranged Attack Power"] = "顯示遠程攻擊強度"
-L["Show Ranged Attack Power from Intellect"] = "顯示智力給的遠程攻擊強度"
--- /rb stat int armor
-L["Show Armor"] = "顯示裝甲值"
-L["Show Armor from Intellect"] = "顯示智力給的裝甲值"
 
 -- /rb stat spi
 L["Spirit"] = "精神"
 L["Changes the display of Spirit"] = "自訂精神解析項目"
--- /rb stat spi mp5
-L["Show Mana Regen"] = "顯示施法回魔"
-L["Show Mana Regen while casting from Spirit"] = "顯示在施法狀態時，精神給的法力恢復量"
--- /rb stat spi mp5nc
-L["Show Mana Regen while NOT casting"] = "顯示一般回魔"
-L["Show Mana Regen while NOT casting from Spirit"] = "顯示在未施法狀態時，精神給的法力恢復量"
--- /rb stat spi hp5
-L["Show Health Regen (Out of Combat)"] = "顯示一般回血"
-L["Show Health Regen (Out of Combat) from Spirit"] = "顯示精神給的戰鬥外回生命力"
--- /rb stat spi dmg
-L["Show Spell Damage"] = "顯示法傷"
-L["Show Spell Damage from Spirit"] = "顯示精神給的法術傷害加成"
--- /rb stat spi heal
-L["Show Healing"] = "顯示治療"
-L["Show Healing from Spirit"] = "顯示精神給的治療加成"
 
 L["Armor"] = "Armor"
 L["Changes the display of Armor"] = "Changes the display of Armor"

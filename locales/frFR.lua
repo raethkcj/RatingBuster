@@ -99,12 +99,6 @@ L["Changes the display of Strength"] = "Sélectionne les différents bonus liés
 -- /rb stat str block
 L["Show Block Value"] = "Valeur de blocage"
 L["Show Block Value from Strength"] = "Affiche la Valeur de blocage apportée par la Force."
--- /rb stat str dmg
-L["Show Spell Damage"] = "Dégâts des sorts"
-L["Show Spell Damage from Strength"] = "Affiche les Dégâts des sorts apportés par la Force."
--- /rb stat str heal
-L["Show Healing"] = "Puissance des soins"
-L["Show Healing from Strength"] = "Affiche la Puissance des soins apportée par la Force."
 
 -- /rb stat Agilité
 L["Agility"] = "Agilité"
@@ -115,22 +109,13 @@ L["Show Crit chance from Agility"] = "Affiche le pourcentage de Coups critiques 
 -- /rb stat Agilité dodge
 L["Show Dodge"] = "Esquive"
 L["Show Dodge chance from Agility"] = "Affiche le poucentage d'Esquive apporté par l'Agilité."
--- /rb stat Agilité rap
-L["Show Ranged Attack Power"] = "Puis. d'att. à distance"
-L["Show Ranged Attack Power from Agility"] = "Affiche la Puissance d'attaque à distance apportée par l'Agilité."
 -- /rb stat Agilité armor
 L["Show Armor"] = "Armure"
 L["Show Armor from Agility"] = "Affiche l'Armure apportée par l'Agilité."
--- /rb stat Agilité heal
-L["Show Healing"] = "Puissance des soins"
-L["Show Healing from Agility"] = "Affiche la Puissance des soins apportée par l'Agilité."
 
 -- /rb stat sta
 L["Stamina"] = "Endurance"
 L["Changes the display of Stamina"] = "Sélectionne les différents bonus liés à l'Endurance."
--- /rb stat sta dmg
-L["Show Spell Damage"] = "Dégâts des sorts"
-L["Show Spell Damage from Stamina"] = "Affiche les Dégâts des sorts apportés par l'Endurance."
 
 -- /rb stat int
 L["Intellect"] = "Intelligence"
@@ -138,43 +123,10 @@ L["Changes the display of Intellect"] = "Sélectionne les différents bonus lié
 -- /rb stat int spellcrit
 L["Show Spell Crit"] = "Critiques des sorts"
 L["Show Spell Crit chance from Intellect"] = "Affiche le pourcentage de Coups critiques des sorts apporté par l'Intelligence."
--- /rb stat int dmg
-L["Show Spell Damage"] = "Dégâts des sorts"
-L["Show Spell Damage from Intellect"] = "Affiche les Dégâts des sorts apportés par l'Intelligence."
--- /rb stat int heal
-L["Show Healing"] = "Puissance des soins"
-L["Show Healing from Intellect"] = "Affiche la Puissance des soins apportée par l'Intelligence."
--- /rb stat int mp5
-L["Show Mana Regen"] = "Régén. mana (incantation)"
-L["Show Mana Regen while casting from Intellect"] = "Affiche la Régén. mana pendant l'incantation des sorts apportée par l'Intelligence."
--- /rb stat int mp5nc
-L["Show Mana Regen while NOT casting"] = "Affiche la Régén. mana hors incantation."
-L["Show Mana Regen while NOT casting from Intellect"] = "Affiche la Régén. mana hors incantation apportée par l'Intelligence."
--- /rb stat int rap
-L["Show Ranged Attack Power"] = "Puis. d'att. à distance"
-L["Show Ranged Attack Power from Intellect"] = "Affiche la Puissance d'attaque à distance apportée par l'Intelligence."
--- /rb stat int armor
-L["Show Armor"] = "Armure"
-L["Show Armor from Intellect"] = "Affiche l'Armure apportée par l'Intelligence."
 
 -- /rb stat spi
 L["Spirit"] = "Esprit"
 L["Changes the display of Spirit"] = "Sélectionne les différents bonus liés à l'Esprit."
--- /rb stat spi mp5
-L["Show Mana Regen"] = "Régén. mana (incantation)"
-L["Show Mana Regen while casting from Spirit"] = "Affiche la Régén. mana pendant l'incantation des sorts apportés par l'Esprit."
--- /rb stat spi mp5nc
-L["Show Mana Regen while NOT casting"] = "Régén. mana"
-L["Show Mana Regen while NOT casting from Spirit"] = "Affiche la Régén. mana hors incantation apportée par l'Esprit."
--- /rb stat spi hp5
-L["Show Health Regen (Out of Combat)"] = "Régén. vie (hors combat)"
-L["Show Health Regen (Out of Combat) from Spirit"] = "Affiche la Régén. vie hors combat apportée par l'Esprit."
--- /rb stat spi dmg
-L["Show Spell Damage"] = "Dégâts des sorts"
-L["Show Spell Damage from Spirit"] = "Affiche les Dégâts des sorts apportés par l'Esprit."
--- /rb stat spi heal
-L["Show Healing"] = "Puissance des soins"
-L["Show Healing from Spirit"] = "Affiche la Puissance des soins apportée par l'Esprit."
 
 ---------------------------------------------------------------------------
 -- /rb stat armor

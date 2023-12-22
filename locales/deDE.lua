@@ -103,12 +103,6 @@ L["Changes the display of Strength"] = "Zeigt Stärke an"
 -- /rb stat str block
 L["Show Block Value"] = "Zeige Blockwert"
 L["Show Block Value from Strength"] = "Zeige Blockwert resultierend aus Stärke"
--- /rb stat str dmg
-L["Show Spell Damage"] = "Zeige Zauberschaden"
-L["Show Spell Damage from Strength"] = "Zeige Zauberschaden resultierend aus Stärke"
--- /rb stat str heal
-L["Show Healing"] = "Zeige Heilung"
-L["Show Healing from Strength"] = "Zeige Heilung resultierend aus Stärke"
 
 -- /rb stat agi
 L["Agility"] = "Beweglichkeit"
@@ -119,22 +113,13 @@ L["Show Crit chance from Agility"] = "Zeige Chance auf kritische Treffer resulti
 -- /rb stat agi dodge
 L["Show Dodge"] = "Zeige Ausweichen"
 L["Show Dodge chance from Agility"] = "Zeige Ausweichchance resultierend aus Beweglichkeit"
--- /rb stat agi rap
-L["Show Ranged Attack Power"] = "Zeige Distanzangriffskraft (RAP)"
-L["Show Ranged Attack Power from Agility"] = "Zeige Distanzangriffskraft resultierend aus Beweglichkeit"
 -- /rb stat agi armor
 L["Show Armor"] = "Zeige Rüstung"
 L["Show Armor from Agility"] = "Zeige Rüstung resultierend aus Beweglichkeit"
--- /rb stat agi heal
-L["Show Healing"] = "Zeige Heilung"
-L["Show Healing from Agility"] = "Zeige Heilung resultierend aus Beweglichkeit"
 
 -- /rb stat sta
 L["Stamina"] = "Ausdauer"
 L["Changes the display of Stamina"] = "Zeige Ausdauer an"
--- /rb stat sta dmg
-L["Show Spell Damage"] = "Zeige Zauberschaden"
-L["Show Spell Damage from Stamina"] = "Zeige Zauberschaden resultierend aus Ausdauer"
 
 -- /rb stat int
 L["Intellect"] = "Intelligenz"
@@ -142,43 +127,10 @@ L["Changes the display of Intellect"] = "Zeige Intelligenz an"
 -- /rb stat int spellcrit
 L["Show Spell Crit"] = "Zeige Zauberkrit."
 L["Show Spell Crit chance from Intellect"] = "Zeige Chance auf kritische Zaubertreffer resultierend aus Intelligent"
--- /rb stat int dmg
-L["Show Spell Damage"] = "Zeige Zauberschaden"
-L["Show Spell Damage from Intellect"] = "Zeige Zauberschaden resultierend aus Intelligenz"
--- /rb stat int heal
-L["Show Healing"] = "Zeige Heilung"
-L["Show Healing from Intellect"] = "Zeige Heilung resultierend aus Intelligenz"
--- /rb stat int mp5
-L["Show Mana Regen"] = "Zeige Manaregeneration"
-L["Show Mana Regen while casting from Intellect"] = "Zeige Manaregeneration beim Zaubern resultierend aus Intelligenz"
--- /rb stat int mp5nc
---["Show Mana Regen while NOT casting"] = true,
---["Show Mana Regen while NOT casting from Intellect"] = true,
--- /rb stat int rap
-L["Show Ranged Attack Power"] = "Zeige Distanzangriffskraft (RAP)"
-L["Show Ranged Attack Power from Intellect"] = "Zeige Distanzangriffskraft resultierend aus Intelligenz"
--- /rb stat int armor
-L["Show Armor"] = "Zeige Rüstung"
-L["Show Armor from Intellect"] = "Zeige Rüstung resultierend aus Intelligenz"
 
 -- /rb stat spi
 L["Spirit"] = "Willenskraft"
 L["Changes the display of Spirit"] = "Zeige Willenskraft an"
--- /rb stat spi mp5
-L["Show Mana Regen"] = "Zeige Manaregeneration"
-L["Show Mana Regen while casting from Spirit"] = "Zeige Manaregeneration während des Zauberns resultierend aus Willenskraft"
--- /rb stat spi mp5nc
-L["Show Mana Regen while NOT casting"] = "Zeige Manaregeneration (nicht Zaubernd)"
-L["Show Mana Regen while NOT casting from Spirit"] = "Zeige Manaregeneration (nicht Zaubernd) resultierend aus Willenskraft"
--- /rb stat spi hp5
-L["Show Health Regen (Out of Combat)"] = "Zeige Lebensregeneration (Nicht im Kampf)"
-L["Show Health Regen (Out of Combat) from Spirit"] = "Zeige Lebensregeneration (Nicht im Kampf) resultierend aus Willenskraft"
--- /rb stat spi dmg
-L["Show Spell Damage"] = "Zeige Zauberschaden"
-L["Show Spell Damage from Spirit"] = "Zeige Zauberschaden resultierend aus Willenskraft"
--- /rb stat spi heal
-L["Show Healing"] = "Zeige Heilung"
-L["Show Healing from Spirit"] = "Zeige Heilung resultierend aus Willenskraft"
 
 ---------------------------------------------------------------------------
 -- /rb stat armor

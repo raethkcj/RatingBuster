@@ -104,12 +104,6 @@ L["Changes the display of Strength"] = "힘에 대한 표시방법을 변경합�
 -- /rb stat str block
 L["Show Block Value"] = "피해 방어량 표시"
 L["Show Block Value from Strength"] = "힘에 의한 피해 방어량을 표시합니다."
--- /rb stat str dmg
-L["Show Spell Damage"] = "주문 공격력 표시"
---["Show Spell Damage from Strength"] = "지능에 의한 주문 공격력을 표시합니다.",
--- /rb stat str heal
-L["Show Healing"] = "치유량 표시"
---["Show Healing from Strength"] = "지능에 의한 치유량을 표시합니다.",
 
 -- /rb stat agi
 L["Agility"] = "민첩성"
@@ -120,22 +114,13 @@ L["Show Crit chance from Agility"] = "민첩성에 의한 치명타 표시"
 -- /rb stat agi dodge
 L["Show Dodge"] = "회피 표시"
 L["Show Dodge chance from Agility"] = "민첩에 의한 회피율을 표시합니다."
--- /rb stat agi rap
-L["Show Ranged Attack Power"] = "원거리 전투력 표시"
-L["Show Ranged Attack Power from Agility"] = "민첩에 의한 원거리 전투력을 표시합니다."
 -- /rb stat agi armor
 L["Show Armor"] = "방어도 표시"
 L["Show Armor from Agility"] = "민첩에 의한 방어도를 표시합니다."
--- /rb stat agi heal
-L["Show Healing"] = "치유량 표시"
---["Show Healing from Agility"] = "힘에 의한 치유량을 표시합니다.",
 
 -- /rb stat sta
 L["Stamina"] = "체력"
 L["Changes the display of Stamina"] = "체력의 표시방법을 변경합니다."
--- /rb stat sta dmg
-L["Show Spell Damage"] = "주문 공격력 표시"
-L["Show Spell Damage from Stamina"] = "체력에 의한 주문 공격력을 표시합니다."
 
 -- /rb stat int
 L["Intellect"] = "지능"
@@ -143,43 +128,10 @@ L["Changes the display of Intellect"] = "지능 표시방법을 변경합니다.
 -- /rb stat int spellcrit
 L["Show Spell Crit"] = "주문 극대화 표시"
 L["Show Spell Crit chance from Intellect"] = "지능에 의한 주문 극대화율 표시"
--- /rb stat int dmg
-L["Show Spell Damage"] = "주문 공격력 표시"
-L["Show Spell Damage from Intellect"] = "지능에 의한 주문 공격력을 표시합니다."
--- /rb stat int heal
-L["Show Healing"] = "치유량 표시"
-L["Show Healing from Intellect"] = "지능에 의한 치유량을 표시합니다."
--- /rb stat int mp5
-L["Show Mana Regen"] = "마나 재생 표시"
-L["Show Mana Regen while casting from Intellect"] = "지능에 의해 시전 시 마나 재생량을 표시합니다."
--- /rb stat int mp5nc
-L["Show Mana Regen while NOT casting"] = "평상시 마나 재생 표시"
-L["Show Mana Regen while NOT casting from Intellect"] = "지능에 의한 평상시 마나 재생량을 표시합니다."
--- /rb stat int rap
-L["Show Ranged Attack Power"] = "원거리 전투력 표시"
-L["Show Ranged Attack Power from Intellect"] = "지능에 의한 원거리 전투력을 표시합니다."
--- /rb stat int armor
-L["Show Armor"] = "방어도 표시"
-L["Show Armor from Intellect"] = "지능에 의한 방어도를 표시합니다."
 
 -- /rb stat spi
 L["Spirit"] = "정신력"
 L["Changes the display of Spirit"] = "정신력의 표시방법을 변경합니다."
--- /rb stat spi mp5
-L["Show Mana Regen"] = "마나 재생 표시"
-L["Show Mana Regen while casting from Spirit"] = "정신력에 의해 시전 시 마나 재생량을 표시합니다."
--- /rb stat spi mp5nc
-L["Show Mana Regen while NOT casting"] = "평상시 마나 재생 표시"
-L["Show Mana Regen while NOT casting from Spirit"] = "정신력에 의한 평상시 마나 재생량을 표시합니다."
--- /rb stat spi hp5
-L["Show Health Regen (Out of Combat)"] = "생명력 재생 (비전투) 표시"
-L["Show Health Regen (Out of Combat) from Spirit"] = "정신력에 의한 생명력 재생량을 (비전투) 표시합니다."
--- /rb stat spi dmg
-L["Show Spell Damage"] = "주문 공격력 표시"
-L["Show Spell Damage from Spirit"] = "정신력에 의한 주문 공격력을 표시합니다."
--- /rb stat spi heal
-L["Show Healing"] = "치유량 표시"
-L["Show Healing from Spirit"] = "정신력에 의한 치유량을 표시합니다."
 
 L["Armor"] = "Armor"
 L["Changes the display of Armor"] = "Changes the display of Armor"

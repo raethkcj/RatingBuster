@@ -121,18 +121,6 @@ L["Changes the display of Strength"] = "Изменить отображение 
 -- /rb stat str block
 L["Show Block Value"] = "Блокирование"
 L["Show Block Value from Strength"] = "Показывать расчет показателя блокирования от силы"
--- /rb stat str dmg
-L["Show Spell Damage"] = "Сила заклинаний"
-L["Show Spell Damage from Strength"] = "Показывать расчет силы заклинаний от силы"
--- /rb stat str heal
-L["Show Healing"] = "Исцеление"
-L["Show Healing from Strength"] = "Показывать расчет исцеления от силы"
--- /rb stat str parryrating
-L["Show Parry Rating"] = "Рейтинг парирования"
-L["Show Parry Rating from Strength"] = "Показывать расчет рейтинга парирования от силы"
--- /rb stat str parry
-L["Show Parry"] = "Парирование"
-L["Show Parry from Strength"] = "Показывать расчет парирования от силы"
 ---------------------------------------------------------------------------
 -- /rb stat agi
 L["Agility"] = "Ловкость"
@@ -143,25 +131,10 @@ L["Show Crit chance from Agility"] = "Показывать расчет веро
 -- /rb stat agi dodge
 L["Show Dodge"] = "Уклонение"
 L["Show Dodge chance from Agility"] = "Показывать расчет вероятности уклонения от ловкости"
--- /rb stat agi rap
-L["Show Ranged Attack Power"] = "Сила атаки дальнего боя"
-L["Show Ranged Attack Power from Agility"] = "Показывать расчет силы атаки дальнего боя от ловкости"
--- /rb stat agi dmg
-L["Show Spell Damage"] = "Сила заклинаний"
-L["Show Spell Damage from Agility"] = "Показывать расчет силы заклинаний от ловкости"
--- /rb stat agi heal
-L["Show Healing"] = "Исцеление"
-L["Show Healing from Agility"] = "Показывать расчет исцеления от ловкости"
 ---------------------------------------------------------------------------
 -- /rb stat sta
 L["Stamina"] = "Выносливость"
 L["Changes the display of Stamina"] = "Изменить отображение выносливости"
--- /rb stat sta dmg
-L["Show Spell Damage"] = "Сила заклинаний"
-L["Show Spell Damage from Stamina"] = "Показывать расчет силы заклинаний от выносливости"
--- /rb stat sta heal
-L["Show Healing"] = "Исцеление"
-L["Show Healing from Stamina"] = "Показывать расчет исцеления от выносливости"
 ---------------------------------------------------------------------------
 -- /rb stat int
 L["Intellect"] = "Интеллект"
@@ -169,49 +142,10 @@ L["Changes the display of Intellect"] = "Изменить отображение
 -- /rb stat int spellcrit
 L["Show Spell Crit"] = "Крит. удар от заклинаний"
 L["Show Spell Crit chance from Intellect"] = "Показывать расчет вероятности крит. удара заклинаниями от интеллекта"
--- /rb stat int dmg
-L["Show Spell Damage"] = "Сила заклинаний"
-L["Show Spell Damage from Intellect"] = "Показывать расчет силы заклинаний от интеллекта"
--- /rb stat int heal
-L["Show Healing"] = "Исцеление"
-L["Show Healing from Intellect"] = "Показывать расчет исцеления от интеллекта"
--- /rb stat int mp5
-L["Show Mana Regen"] = "Восполнение маны в бою"
-L["Show Mana Regen while casting from Intellect"] = "Показывать расчет восполнения маны от интеллекта (в бою)"
--- /rb stat int mp5oc
-L["Show Normal Mana Regen"] = "Восполнения маны вне боя"
-L["Show Mana Regen while NOT casting from Intellect"] = "Показывать расчет восполнения маны от интеллекта (вне боя)"
--- /rb stat int rap
-L["Show Ranged Attack Power"] = "Сила атаки дальнего боя"
-L["Show Ranged Attack Power from Intellect"] = "Показывать расчет силы атаки дальнего боя от интеллекта"
 ---------------------------------------------------------------------------
 -- /rb stat spi
 L["Spirit"] = "Дух"
 L["Changes the display of Spirit"] = "Изменить отображение духа"
--- /rb stat spi mp5
-L["Show Mana Regen"] = "Восполнение маны в бою"
-L["Show Mana Regen while casting from Spirit"] = "Показывать расчет восполнения маны от духа (в бою)"
--- /rb stat spi mp5oc
-L["Show Mana Regen while NOT casting"] = "Восполнения маны вне боя"
-L["Show Mana Regen while NOT casting from Spirit"] = "Показывать расчет восполнения маны от духа (вне боя)"
--- /rb stat spi hp5
-L["Show Health Regen (Out of Combat)"] = "Восполнение здаровья вне боя"
-L["Show Health Regen (Out of Combat) from Spirit"] = "Показывать расчет восполнения здоровья от духа (вне боя)"
--- /rb stat spi dmg
-L["Show Spell Damage"] = "Сила заклинаний"
-L["Show Spell Damage from Spirit"] = "Показывать расчет силы заклинаний от духа"
--- /rb stat spi heal
-L["Show Healing"] = "Исцеление"
-L["Show Healing from Spirit"] = "Показывать расчет исцеления от духа"
--- /rb stat spi spellcrit
-L["Show Spell Crit"] = "Крит. удар заклинаниями"
-L["Show Spell Crit chance from Spirit"] = "Показывать расчет вероятности критического удара заклинаниями от духа"
--- /rb stat spi spellhitrating
-L["Show Spell Hit Rating"] = "Рейтинг меткости заклинаний"
-L["Show Spell Hit Rating from Spirit"] = "Показывать расчет рейтинга меткости заклинаний от духа"
--- /rb stat spi spellhit
-L["Show Spell Hit"] = "Меткость заклинаний"
-L["Show Spell Hit from Spirit"] = "Показывать расчет меткости заклинаний от духа"
 ---------------------------------------------------------------------------
 -- /rb stat armor
 L["Armor"] = "Броня"

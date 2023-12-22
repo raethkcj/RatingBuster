@@ -607,10 +607,6 @@ local addedInfoMods = {
 		mod = "SPI",
 	},
 	{
-		add = "RANGED_AP",
-		mod = "AGI",
-	},
-	{
 		add = "AP",
 		mod = "ARMOR",
 	},
@@ -677,6 +673,10 @@ local addedInfoMods = {
 	{
 		add = "PARRY_RATING",
 		mod = "STR",
+	},
+	{
+		add = "RANGED_AP",
+		mod = "AGI",
 	},
 	{
 		add = "RANGED_AP",

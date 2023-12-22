@@ -101,12 +101,6 @@ L["Changes the display of Strength"] = true
 -- /rb stat str block
 L["Show Block Value"] = true
 L["Show Block Value from Strength"] = true
--- /rb stat str dmg
-L["Show Spell Damage"] = true
-L["Show Spell Damage from Strength"] = true
--- /rb stat str heal
-L["Show Healing"] = true
-L["Show Healing from Strength"] = true
 
 -- /rb stat agi
 L["Agility"] = true
@@ -117,22 +111,13 @@ L["Show Crit chance from Agility"] = true
 -- /rb stat agi dodge
 L["Show Dodge"] = true
 L["Show Dodge chance from Agility"] = true
--- /rb stat agi rap
-L["Show Ranged Attack Power"] = true
-L["Show Ranged Attack Power from Agility"] = true
 -- /rb stat agi armor
 L["Show Armor"] = true
 L["Show Armor from Agility"] = true
--- /rb stat agi heal
-L["Show Healing"] = true
-L["Show Healing from Agility"] = true
 
 -- /rb stat sta
 L["Stamina"] = true
 L["Changes the display of Stamina"] = true
--- /rb stat sta dmg
-L["Show Spell Damage"] = true
-L["Show Spell Damage from Stamina"] = true
 
 -- /rb stat int
 L["Intellect"] = true
@@ -140,43 +125,10 @@ L["Changes the display of Intellect"] = true
 -- /rb stat int spellcrit
 L["Show Spell Crit"] = true
 L["Show Spell Crit chance from Intellect"] = true
--- /rb stat int dmg
-L["Show Spell Damage"] = true
-L["Show Spell Damage from Intellect"] = true
--- /rb stat int heal
-L["Show Healing"] = true
-L["Show Healing from Intellect"] = true
--- /rb stat int mp5
-L["Show Mana Regen"] = true
-L["Show Mana Regen while casting from Intellect"] = true
--- /rb stat int mp5nc
-L["Show Mana Regen while NOT casting"] = true
-L["Show Mana Regen while NOT casting from Intellect"] = true
--- /rb stat int rap
-L["Show Ranged Attack Power"] = true
-L["Show Ranged Attack Power from Intellect"] = true
--- /rb stat int armor
-L["Show Armor"] = true
-L["Show Armor from Intellect"] = true
 
 -- /rb stat spi
 L["Spirit"] = true
 L["Changes the display of Spirit"] = true
--- /rb stat spi mp5
-L["Show Mana Regen"] = true
-L["Show Mana Regen while casting from Spirit"] = true
--- /rb stat spi mp5nc
-L["Show Mana Regen while NOT casting"] = true
-L["Show Mana Regen while NOT casting from Spirit"] = true
--- /rb stat spi hp5
-L["Show Health Regen (Out of Combat)"] = true
-L["Show Health Regen (Out of Combat) from Spirit"] = true
--- /rb stat spi dmg
-L["Show Spell Damage"] = true
-L["Show Spell Damage from Spirit"] = true
--- /rb stat spi heal
-L["Show Healing"] = true
-L["Show Healing from Spirit"] = true
 
 ---------------------------------------------------------------------------
 -- /rb stat armor
