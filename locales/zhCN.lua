@@ -100,9 +100,6 @@ L["Show base stat conversions in tooltips"] = "在物品提示中显示基本属
 -- /rb stat str
 L["Strength"] = "力量"
 L["Changes the display of Strength"] = "自订力量解析项目"
--- /rb stat str block
-L["Show Block Value"] = "显示格档值"
-L["Show Block Value from Strength"] = "显示力量给的格档值"
 
 -- /rb stat agi
 L["Agility"] = "敏捷"
@@ -113,9 +110,6 @@ L["Show Crit chance from Agility"] = "显示敏捷给的物理爆击几率"
 -- /rb stat agi dodge
 L["Show Dodge"] = "显示躲闪"
 L["Show Dodge chance from Agility"] = "显示敏捷给的躲闪几率"
--- /rb stat agi armor
-L["Show Armor"] = "显示护甲值"
-L["Show Armor from Agility"] = "显示敏捷给的护甲值"
 
 -- /rb stat sta
 L["Stamina"] = "耐力"
@@ -611,7 +605,6 @@ L[StatLogic.Stats.Stamina] = SPELL_STAT3_NAME
 L[StatLogic.Stats.Intellect] = SPELL_STAT4_NAME
 L[StatLogic.Stats.Spirit] = SPELL_STAT5_NAME
 L["ARMOR"] = ARMOR
-L["ARMOR_BONUS"] = "护甲加成"
 
 L["FIRE_RES"] = RESISTANCE2_NAME
 L["NATURE_RES"] = RESISTANCE3_NAME

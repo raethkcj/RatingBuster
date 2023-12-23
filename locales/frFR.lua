@@ -96,9 +96,6 @@ L["Show base stat conversions in tooltips"] = "Ajoute un aperçu détaillé des 
 -- /rb stat str
 L["Strength"] = "Force"
 L["Changes the display of Strength"] = "Sélectionne les différents bonus liés à la Force."
--- /rb stat str block
-L["Show Block Value"] = "Valeur de blocage"
-L["Show Block Value from Strength"] = "Affiche la Valeur de blocage apportée par la Force."
 
 -- /rb stat Agilité
 L["Agility"] = "Agilité"
@@ -109,9 +106,6 @@ L["Show Crit chance from Agility"] = "Affiche le pourcentage de Coups critiques 
 -- /rb stat Agilité dodge
 L["Show Dodge"] = "Esquive"
 L["Show Dodge chance from Agility"] = "Affiche le poucentage d'Esquive apporté par l'Agilité."
--- /rb stat Agilité armor
-L["Show Armor"] = "Armure"
-L["Show Armor from Agility"] = "Affiche l'Armure apportée par l'Agilité."
 
 -- /rb stat sta
 L["Stamina"] = "Endurance"
@@ -615,7 +609,6 @@ L[StatLogic.Stats.Stamina] = "Endurance"
 L[StatLogic.Stats.Intellect] = "Intelligence"
 L[StatLogic.Stats.Spirit] = "Esprit"
 L["ARMOR"] = "Armure"
-L["ARMOR_BONUS"] = "Armure bonus"
 
 L["FIRE_RES"] = "Résistance au Feu"
 L["NATURE_RES"] = "Résistance à la Nature"

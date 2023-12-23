@@ -1484,6 +1484,11 @@ StatLogic.StatModTable["ALL"] = {
 			["value"] = 15,
 		},
 	},
+	["ADD_BONUS_ARMOR_MOD_AGI"] = {
+		{
+			["value"] = ARMOR_PER_AGILITY,
+		},
+	},
 	["ADD_MANA_REG_MOD_MANA"] = {
 		-- Replenishment - Buff
 		-- 4.0.1: Replenishes 1% of maximum mana per 10 sec.
@@ -1564,26 +1569,6 @@ StatLogic.StatModTable["ALL"] = {
 			["value"] = 0.06,
 			["buff"] = 61316,
 			["group"] = addon.BuffGroup.SpellPower,
-		},
-	},
-	["MOD_BLOCK_VALUE"] = {
-		-- MetaGem: Eternal Earthsiege Diamond - Meta: 41396
-		-- 4.0.1: +1% Shield Block Value
-		{
-			["value"] = 0.01,
-			["meta"] = 41396,
-		},
-		-- MetaGem: Eternal Earthstorm Diamond - Meta: 35501
-		-- 4.0.1: +1% Shield Block Value
-		{
-			["value"] = 0.01,
-			["meta"] = 35501,
-		},
-		-- MetaGem: Eternal Shadowspirit Diamond - Meta: 52293
-		-- 4.0.1: +5% Shield Block Value
-		{
-			["value"] = 0.05,
-			["meta"] = 52293,
 		},
 	},
 	["MOD_ARMOR"] = {

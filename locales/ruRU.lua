@@ -118,9 +118,6 @@ L["Select when to show base stat conversions in tooltips. Modifier keys needs to
 -- /rb stat str
 L["Strength"] = "Сила"
 L["Changes the display of Strength"] = "Изменить отображение силы"
--- /rb stat str block
-L["Show Block Value"] = "Блокирование"
-L["Show Block Value from Strength"] = "Показывать расчет показателя блокирования от силы"
 ---------------------------------------------------------------------------
 -- /rb stat agi
 L["Agility"] = "Ловкость"
@@ -745,7 +742,6 @@ L[StatLogic.Stats.Stamina] =  "Выносливость"
 L[StatLogic.Stats.Intellect] =  "Интеллект"
 L[StatLogic.Stats.Spirit] =  "Дух"
 L["ARMOR"] =  "Броня"
-L["ARMOR_BONUS"] =  ARMOR .. " from bonus"
 L["FIRE_RES"] =  "Сопротивление огню"
 L["NATURE_RES"] =  "Сопротивление силам природы"
 L["FROST_RES"] =  "Сопротивление магии льда"

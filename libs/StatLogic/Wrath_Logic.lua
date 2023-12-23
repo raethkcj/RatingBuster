@@ -1876,7 +1876,7 @@ elseif addon.class == "MAGE" then
 		},
 		-- Mage: Arcane Fortitude - 1,4
 		--       Increases your armor by an amount equal to 50%/100%/150% of your Intellect.
-		["ADD_ARMOR_MOD_INT"] = {
+		["ADD_BONUS_ARMOR_MOD_INT"] = {
 			{
 				["tab"] = 1,
 				["num"] = 4,
@@ -1994,6 +1994,11 @@ elseif addon.class == "PALADIN" then
 		["ADD_NORMAL_MANA_REG_MOD_INT"] = {
 			{
 				["regen"] = NormalManaRegenPerInt,
+			},
+		},
+		["ADD_BLOCK_VALUE_MOD_STR"] = {
+			{
+				["value"] = BLOCK_PER_STRENGTH,
 			},
 		},
 		-- Paladin: Sheath of Light (Rank 3) - 3,24
@@ -2419,6 +2424,11 @@ elseif addon.class == "SHAMAN" then
 				["regen"] = NormalManaRegenPerInt,
 			},
 		},
+		["ADD_BLOCK_VALUE_MOD_STR"] = {
+			{
+				["value"] = BLOCK_PER_STRENGTH,
+			},
+		},
 		-- Shaman: Mental Dexterity (Rank 3) - 2,15
 		--         Increases your Attack Power by 33%/66%/100% of your Intellect.
 		["ADD_AP_MOD_INT"] = {
@@ -2717,6 +2727,11 @@ elseif addon.class == "WARRIOR" then
 				["value"] = 1,
 			},
 		},
+		["ADD_BLOCK_VALUE_MOD_STR"] = {
+			{
+				["value"] = BLOCK_PER_STRENGTH,
+			},
+		},
 		-- Warrior: Armored to the Teeth (Rank 3) - 2,1
 		--          Increases your attack power by 1/2/3 for every 108 armor value you have.
 		["ADD_AP_MOD_ARMOR"] = {
@@ -2877,6 +2892,11 @@ StatLogic.StatModTable["ALL"] = {
 	["ADD_NORMAL_HEALTH_REG_MOD_SPI"] = {
 		{
 			["regen"] = NormalHealthRegenPerSpi,
+		},
+	},
+	["ADD_BONUS_ARMOR_MOD_AGI"] = {
+		{
+			["value"] = ARMOR_PER_AGILITY,
 		},
 	},
 	-- ICC: Chill of the Throne

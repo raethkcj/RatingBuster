@@ -731,7 +731,7 @@ elseif addon.class == "MAGE" then
 		-- Mage: Arcane Fortitude - 1,9
 		--       Increases your armor by an amount equal to 50% of your Intellect.
 		-- 2.4.0 Increases your armor by an amount equal to 100% of your Intellect.
-		["ADD_ARMOR_MOD_INT"] = {
+		["ADD_BONUS_ARMOR_MOD_INT"] = {
 			{
 				["tab"] = 1,
 				["num"] = 9,
@@ -798,6 +798,11 @@ elseif addon.class == "PALADIN" then
 		["ADD_NORMAL_HEALTH_REG_MOD_SPI"] = {
 			{
 				["value"] = 0.125 * 5,
+			},
+		},
+		["ADD_BLOCK_VALUE_MOD_STR"] = {
+			{
+				["value"] = BLOCK_PER_STRENGTH,
 			},
 		},
 		-- Paladin: Holy Guidance (Rank 5) - 1,19
@@ -1142,6 +1147,11 @@ elseif addon.class == "SHAMAN" then
 				["value"] = 0.071429 * 5,
 			},
 		},
+		["ADD_BLOCK_VALUE_MOD_STR"] = {
+			{
+				["value"] = BLOCK_PER_STRENGTH,
+			},
+		},
 		-- Shaman: Mental Quickness (Rank 3) - 2,15
 		--         Reduces the mana cost of your instant cast spells by 2%/4%/6% and increases your spell damage and healing equal to 10%/20%/30% of your attack power.
 		["ADD_SPELL_DMG_MOD_AP"] = {
@@ -1398,6 +1408,11 @@ elseif addon.class == "WARRIOR" then
 				["value"] = 0.5 * 5,
 			},
 		},
+		["ADD_BLOCK_VALUE_MOD_STR"] = {
+			{
+				["value"] = BLOCK_PER_STRENGTH,
+			},
+		},
 		-- Warrior: Improved Berserker Stance (Rank 5) - 2,20 - Stance
 		--          Increases attack power by 2%/4%/6%/8%/10% while in Berserker Stance.
 		["MOD_AP"] = {
@@ -1525,6 +1540,11 @@ StatLogic.StatModTable["ALL"] = {
 	["ADD_MANA_MOD_INT"] = {
 		{
 			["value"] = 15,
+		},
+	},
+	["ADD_BONUS_ARMOR_MOD_AGI"] = {
+		{
+			["value"] = ARMOR_PER_AGILITY,
 		},
 	},
 	["MOD_ARMOR"] = {

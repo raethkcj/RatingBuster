@@ -295,14 +295,7 @@ local options = {
 					desc = L["Changes the display of Strength"],
 					width = "full",
 					order = 3,
-					args = {
-						showBlockValueFromStr = {
-							type = 'toggle',
-							name = L["Show Block Value"],
-							desc = L["Show Block Value from Strength"],
-							width = "full",
-						},
-					},
+					args = {},
 				},
 				agi = {
 					type = 'group',
@@ -321,12 +314,6 @@ local options = {
 							type = 'toggle',
 							name = L["Show Dodge"],
 							desc = L["Show Dodge chance from Agility"],
-							width = "full",
-						},
-						showArmorFromAgi = {
-							type = 'toggle',
-							name = L["Show Armor"],
-							desc = L["Show Armor from Agility"],
 							width = "full",
 						},
 					},
@@ -1413,6 +1400,11 @@ do
 					-- but we show it to the user as the converted stat
 					add = add:gsub("_RATING", "")
 
+					-- We want to show the user Armor, regardless of where it comes from
+					if add == "BONUS_ARMOR" then
+						add = "ARMOR"
+					end
+
 					if mod == "NORMAL_MANA_REG" then
 						mod = "SPI"
 						if GSM("ADD_NORMAL_MANA_REG_MOD_INT") > 0 then
@@ -2088,7 +2080,7 @@ do
 				end
 			end
 			if profileDB.showBlockValueFromStr then
-				local effect = value * StatLogic:GetBlockValuePerStr(class)
+				local effect = value * GSM("ADD_BLOCK_VALUE_MOD_STR")
 				if floor(abs(effect) * 10 + 0.5) > 0 then
 					tinsert(infoTable, (L["$value Block"]:gsub("$value", ("%+.1f"):format(effect))))
 				end
@@ -2304,7 +2296,7 @@ do
 				end
 			end
 			if profileDB.showArmorFromInt then
-				local effect = value * GSM("ADD_ARMOR_MOD_INT")
+				local effect = value * GSM("ADD_BONUS_ARMOR_MOD_INT")
 				if floor(abs(effect) + 0.5) > 0 then
 					tinsert(infoTable, (L["$value Armor"]:gsub("$value", ("%+.0f"):format(effect))))
 				end
@@ -2537,8 +2529,6 @@ local armorTypes = {
 }
 
 -- Interface_<Expansion>/FrameXML/PaperDollFrame.lua Compatibility
-if not ARMOR_PER_AGILITY then ARMOR_PER_AGILITY = 2 end
-if not BLOCK_PER_STRENGTH then BLOCK_PER_STRENGTH = 0.05 end
 if not DODGE_PARRY_BLOCK_PERCENT_PER_DEFENSE then DODGE_PARRY_BLOCK_PERCENT_PER_DEFENSE = 0.04 end
 
 local summaryCalcData = {
@@ -3031,8 +3021,8 @@ local summaryCalcData = {
 		func = function(sum)
 			return GSM("MOD_ARMOR") * sum["ARMOR"]
 				+ sum["ARMOR_BONUS"]
-				+ sum[StatLogic.Stats.Agility] * ARMOR_PER_AGILITY
-				+ sum[StatLogic.Stats.Intellect] * GSM("ADD_ARMOR_MOD_INT")
+				+ sum[StatLogic.Stats.Agility] * GSM("ADD_BONUS_ARMOR_MOD_AGI")
+				+ sum[StatLogic.Stats.Intellect] * GSM("ADD_BONUS_ARMOR_MOD_INT")
 		 end,
 	},
 	-- Dodge Chance Before DR - DODGE, DODGE_RATING, DEFENSE, AGI
@@ -3140,7 +3130,7 @@ local summaryCalcData = {
 			return GetBlockChance() > 0 and (
 				GSM("MOD_BLOCK_VALUE") * (
 					sum["BLOCK_VALUE"]
-					+ sum[StatLogic.Stats.Strength] * StatLogic:GetBlockValuePerStr(class)
+					+ sum[StatLogic.Stats.Strength] * GSM("ADD_BLOCK_VALUE_MOD_STR")
 				)
 			) or 0
 		end,

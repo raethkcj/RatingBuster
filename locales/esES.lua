@@ -101,9 +101,6 @@ L["Show base stat conversions in tooltips"] = "Muestra las conversiones de estad
 -- /rb stat str
 L["Strength"] = "Fuerza"
 L["Changes the display of Strength"] = "Cambia la visualizacion de Fuerza"
--- /rb stat str block
-L["Show Block Value"] = "Mostrar Valor Bloqueo"
-L["Show Block Value from Strength"] = "Muestra el Valor Bloqueo de Fuerza"
 
 -- /rb stat agi
 L["Agility"] = "Agilidad"
@@ -114,9 +111,6 @@ L["Show Crit chance from Agility"] = "Muestra la prob. de crítico de Agilidad"
 -- /rb stat agi dodge
 L["Show Dodge"] = "Mostrar Esquivar"
 L["Show Dodge chance from Agility"] = "Muestra la prob. de Esquivar de Agilidad"
--- /rb stat agi armor
-L["Show Armor"] = "Mostrar Armadura"
-L["Show Armor from Agility"] = "Muestra la Armadura de Agilidad"
 
 -- /rb stat sta
 L["Stamina"] = "Aguante"
@@ -612,7 +606,6 @@ L[StatLogic.Stats.Stamina] = SPELL_STAT3_NAME
 L[StatLogic.Stats.Intellect] = SPELL_STAT4_NAME
 L[StatLogic.Stats.Spirit] = SPELL_STAT5_NAME
 L["ARMOR"] = ARMOR
-L["ARMOR_BONUS"] = ARMOR.." from bonus"
 
 L["FIRE_RES"] = RESISTANCE2_NAME
 L["NATURE_RES"] = RESISTANCE3_NAME

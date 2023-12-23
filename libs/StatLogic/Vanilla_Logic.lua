@@ -496,7 +496,7 @@ elseif addon.class == "MAGE" then
 		},
 		-- Mage: Arcane Fortitude - 1,9
 		--       Increases your armor by an amount equal to 50% of your Intellect.
-		["ADD_ARMOR_MOD_INT"] = {
+		["ADD_BONUS_ARMOR_MOD_INT"] = {
 			{
 				["tab"] = 1,
 				["num"] = 9,
@@ -573,6 +573,11 @@ elseif addon.class == "PALADIN" then
 		["ADD_NORMAL_HEALTH_REG_MOD_SPI"] = {
 			{
 				["value"] = 0.125 * 5,
+			},
+		},
+		["ADD_BLOCK_VALUE_MOD_STR"] = {
+			{
+				["value"] = 0.05,
 			},
 		},
 		["ADD_MELEE_CRIT"] = {
@@ -813,6 +818,11 @@ elseif addon.class == "SHAMAN" then
 				["value"] = 0.071429 * 5,
 			},
 		},
+		["ADD_BLOCK_VALUE_MOD_STR"] = {
+			{
+				["value"] = 0.05,
+			},
+		},
 		-- Shaman: Anticipation (Rank 5) - 2,9
 		--         Increases your chance to dodge by an additional 1%/2%/3%/4%/5%.
 		["ADD_DODGE"] = {
@@ -1035,6 +1045,11 @@ elseif addon.class == "WARRIOR" then
 				["value"] = 0.5 * 5,
 			},
 		},
+		["ADD_BLOCK_VALUE_MOD_STR"] = {
+			{
+				["value"] = 0.05,
+			},
+		},
 		["MOD_ARMOR"] = {
 			-- Warrior: Toughness (Rank 5) - 3,4
 			--          Increases your armor value from items by 2%/4%/6%/8%/10%.
@@ -1161,6 +1176,11 @@ StatLogic.StatModTable["ALL"] = {
 	["ADD_MANA_MOD_INT"] = {
 		{
 			["value"] = 15,
+		},
+	},
+	["ADD_BONUS_ARMOR_MOD_AGI"] = {
+		{
+			["value"] = 2,
 		},
 	},
 	["MOD_ARMOR"] = {

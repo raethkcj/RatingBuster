@@ -619,7 +619,15 @@ local addedInfoMods = {
 		mod = "STA",
 	},
 	{
-		add = "ARMOR",
+		add = "BLOCK_VALUE",
+		mod = "STR",
+	},
+	{
+		add = "BONUS_ARMOR",
+		mod = "AGI",
+	},
+	{
+		add = "BONUS_ARMOR",
 		mod = "INT",
 	},
 	{
@@ -1345,75 +1353,6 @@ function StatLogic:GetEffectFromRating(rating, id, level)
 	else
 		return rating/addon.RatingBase[id]/((1/52)*10-(8/52)), RatingIDToConvertedStat[id]
 	end
-end
-
---[[---------------------------------
-{	:GetBlockValuePerStr([class])
--------------------------------------
--- Description
-	Gets the block value per strength for any class.
--- Args
-	[class] - (defaults: PlayerClass)
-			string - english class name
-			number - class id
--- Returns
-	[blockValue]
-		number - block value per strength
-	[statid]
-		string - "BLOCK_VALUE"
--- Remarks
-	Player level does not effect block value per strength.
--- Examples
-	StatLogic:GetBlockValuePerStr()
-	StatLogic:GetBlockValuePerStr("WARRIOR")
-}
------------------------------------]]
-
-local BlockClasses = {
-	["WARRIOR"] = true,
-	["PALADIN"] = true,
-	["SHAMAN"] = true,
-}
-
-function StatLogic:GetBlockValuePerStr(class)
-	assert(type(class)=="string" or type(class)=="number", "Expected string or number as arg #1 to GetBlockValuePerStr, got "..type(class))
-	class = self:ValidateClass(class)
-	local blockValue = BlockClasses[class] and BLOCK_PER_STRENGTH or 0
-	return blockValue, "BLOCK_VALUE"
-end
-
---[[---------------------------------
-{	:GetBlockValueFromStr(str, [class])
--------------------------------------
--- Description
-	Calculates the block value from strength for any class.
--- Args
-	str
-			number - strength
-	[class] - (defaults: PlayerClass)
-			string - english class name
-			number - class id
--- Returns
-	[blockValue]
-		number - block value
-	[statid]
-		string - "BLOCK_VALUE"
--- Remarks
-	Player level does not effect block value per strength.
--- Examples
-	StatLogic:GetBlockValueFromStr(1) -- GetBlockValuePerStr
-	StatLogic:GetBlockValueFromStr(10)
-	StatLogic:GetBlockValueFromStr(10, "WARRIOR")
-}
------------------------------------]]
-
-function StatLogic:GetBlockValueFromStr(str, class)
-	assert(type(str)=="number", "Expected number as arg #1 to GetBlockValueFromStr, got "..type(str))
-	assert(type(class)=="string" or type(class)=="number", "Expected string or number as arg #2 to GetBlockValueFromStr, got "..type(class))
-	class = self:ValidateClass(class)
-	local blockValue = BlockClasses[class] and BLOCK_PER_STRENGTH or 0
-	-- Calculate
-	return str * blockValue, "BLOCK_VALUE"
 end
 
 --[[---------------------------------

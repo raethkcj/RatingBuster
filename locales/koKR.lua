@@ -101,9 +101,6 @@ L["Show base stat conversions in tooltips"] = "툴팁에 기본 능력치의 변
 -- /rb stat str
 L["Strength"] = "힘"
 L["Changes the display of Strength"] = "힘에 대한 표시방법을 변경합니다."
--- /rb stat str block
-L["Show Block Value"] = "피해 방어량 표시"
-L["Show Block Value from Strength"] = "힘에 의한 피해 방어량을 표시합니다."
 
 -- /rb stat agi
 L["Agility"] = "민첩성"
@@ -114,9 +111,6 @@ L["Show Crit chance from Agility"] = "민첩성에 의한 치명타 표시"
 -- /rb stat agi dodge
 L["Show Dodge"] = "회피 표시"
 L["Show Dodge chance from Agility"] = "민첩에 의한 회피율을 표시합니다."
--- /rb stat agi armor
-L["Show Armor"] = "방어도 표시"
-L["Show Armor from Agility"] = "민첩에 의한 방어도를 표시합니다."
 
 -- /rb stat sta
 L["Stamina"] = "체력"
@@ -612,7 +606,6 @@ L[StatLogic.Stats.Stamina] = SPELL_STAT3_NAME
 L[StatLogic.Stats.Intellect] = SPELL_STAT4_NAME
 L[StatLogic.Stats.Spirit] = SPELL_STAT5_NAME
 L["ARMOR"] = ARMOR
-L["ARMOR_BONUS"] = "효과에 의한"..ARMOR
 
 L["FIRE_RES"] = RESISTANCE2_NAME
 L["NATURE_RES"] = RESISTANCE3_NAME

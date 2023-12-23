@@ -98,9 +98,6 @@ L["Show base stat conversions in tooltips"] = true
 -- /rb stat str
 L["Strength"] = true
 L["Changes the display of Strength"] = true
--- /rb stat str block
-L["Show Block Value"] = true
-L["Show Block Value from Strength"] = true
 
 -- /rb stat agi
 L["Agility"] = true
@@ -111,9 +108,6 @@ L["Show Crit chance from Agility"] = true
 -- /rb stat agi dodge
 L["Show Dodge"] = true
 L["Show Dodge chance from Agility"] = true
--- /rb stat agi armor
-L["Show Armor"] = true
-L["Show Armor from Agility"] = true
 
 -- /rb stat sta
 L["Stamina"] = true
@@ -630,7 +624,6 @@ L[StatLogic.Stats.Stamina] = SPELL_STAT3_NAME
 L[StatLogic.Stats.Intellect] = SPELL_STAT4_NAME
 L[StatLogic.Stats.Spirit] = SPELL_STAT5_NAME
 L["ARMOR"] = ARMOR
-L["ARMOR_BONUS"] = ARMOR.." from bonus"
 
 L["FIRE_RES"] = RESISTANCE2_NAME
 L["NATURE_RES"] = RESISTANCE3_NAME
