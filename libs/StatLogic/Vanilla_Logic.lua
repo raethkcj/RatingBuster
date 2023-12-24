@@ -1342,11 +1342,6 @@ StatLogic.StatModTable["ALL"] = {
 			["buff"] = 430947,
 			["value"] = 2,
 		},
-		-- Boon of Blackfathom
-		{
-			["buff"] = 431111,
-			["value"] = 2,
-		},
 	},
 	["ADD_SPELL_CRIT"] = {
 		-- Moonkin Aura
