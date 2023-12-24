@@ -430,19 +430,6 @@ addon.SpellCritPerInt = {
 	},
 }
 
-addon.BaseDodge = {
-	["WARRIOR"] =     3.6640,
-	["PALADIN"] =     3.4943,
-	["HUNTER"] =     -4.0873,
-	["ROGUE"] =       2.0957,
-	["PRIEST"] =      3.4178,
-	["DEATHKNIGHT"] = 3.6640,
-	["SHAMAN"] =      2.1080,
-	["MAGE"] =        3.6587,
-	["WARLOCK"] =     2.4211,
-	["DRUID"] =       5.6097,
-}
-
 addon.DodgePerAgi = {
 	["WARRIOR"] = {
 		[80] = 0.0118,
@@ -1137,50 +1124,54 @@ if addon.class == "DRUID" then
 				},
 			},
 		},
-		-- Druid: Feral Swiftness (Rank 2) - 2,6
-		--        Increases your movement speed by 15%/30% while outdoors in Cat Form and increases your chance to dodge while in Cat Form, Bear Form and Dire Bear Form by 2%/4%.
-		-- Druid: Natural Reaction (Rank 3) - 2,16
-		--        Increases your dodge while in Bear Form or Dire Bear Form by 2%/4%/6%, and you regenerate 3 rage every time you dodge while in Bear Form or Dire Bear Form.
 		["ADD_DODGE"] = {
 			{
-				["tab"] = 2,
-				["num"] = 6,
-				["rank"] = {
-					2, 4,
-				},
-				["buff"] = 32357,		-- ["Bear Form"],
+				["value"] = 5.6097,
 			},
+			-- Talent: Feral Swiftness (Cat Form)
 			{
 				["tab"] = 2,
 				["num"] = 6,
 				["rank"] = {
 					2, 4,
 				},
-				["buff"] = 9634,		-- ["Dire Bear Form"],
+				["buff"] = 32356,
 			},
+			-- Talent: Feral Swiftness (Bear Form)
 			{
 				["tab"] = 2,
 				["num"] = 6,
 				["rank"] = {
 					2, 4,
 				},
-				["buff"] = 32356,		-- ["Cat Form"],
+				["buff"] = 32357,
 			},
+			-- Feral Swiftness (Dire Bear Form)
+			{
+				["tab"] = 2,
+				["num"] = 6,
+				["rank"] = {
+					2, 4,
+				},
+				["buff"] = 9634,
+			},
+			-- Talent: Natural Reaction (Bear Form)
 			{
 				["tab"] = 2,
 				["num"] = 16,
 				["rank"] = {
 					2, 4, 6,
 				},
-				["buff"] = 32357,		-- ["Bear Form"],
+				["buff"] = 32357,
 			},
+			-- Talent: Natural Reaction (Dire Bear Form)
 			{
 				["tab"] = 2,
 				["num"] = 16,
 				["rank"] = {
 					2, 4, 6,
 				},
-				["buff"] = 9634,		-- ["Dire Bear Form"],
+				["buff"] = 9634,
 			},
 		},
 		-- Druid: Thick Hide (Rank 3) - 2,5
@@ -1515,9 +1506,11 @@ elseif addon.class == "DEATHKNIGHT" then
 				},
 			},
 		},
-		-- Death Knight: Anticipation (Rank 5) - 3,3
-		--               Increases your Dodge chance by 1%/2%/3%/4%/5%.
 		["ADD_DODGE"] = {
+			{
+				["value"] = 3.6640,
+			},
+			-- Talent: Anticipation
 			{
 				["tab"] = 3,
 				["num"] = 3,
@@ -1711,15 +1704,11 @@ elseif addon.class == "HUNTER" then
 				},
 			},
 		},
-		-- Hunter: Catlike Reflexes (Rank 3) - 1,19
-		--         Increases your chance to dodge by 1%/2%/3% and your pet's chance to dodge by an additional 3%/6%/9%.
-		-- Hunter: Aspect of the Monkey - Buff
-		--         The hunter takes on the aspects of a monkey, increasing chance to dodge by 18%. Only one Aspect can be active at a time.
-		-- Hunter: Improved Aspect of the Monkey (Rank 3) - 1,4
-		--         Increases the Dodge bonus of your Aspect of the Monkey and Aspect of the Dragonhawk by 2%/4%/6%.
-		-- Hunter: Aspect of the Dragonhawk (Rank 2) - Buff
-		--         The hunter takes on the aspects of a dragonhawk, increasing ranged attack power by 300 and chance to dodge by 18%.
 		["ADD_DODGE"] = {
+			{
+				["value"] = -4.0873,
+			},
+			-- Talent: Catlike Reflexes
 			{
 				["tab"] = 1,
 				["num"] = 19,
@@ -1727,29 +1716,33 @@ elseif addon.class == "HUNTER" then
 					1, 2, 3,
 				},
 			},
+			-- Buff: Aspect of the Monkey
 			{
 				["value"] = 18,
-				["buff"] = 13163,		-- ["Aspect of the Monkey"],
+				["buff"] = 13163,
 			},
+			-- Talent: Improved Aspect of the Monkey (Aspect of the Monkey)
 			{
 				["tab"] = 1,
 				["num"] = 4,
 				["rank"] = {
 					2, 4, 6,
 				},
-				["buff"] = 13163,		-- ["Aspect of the Monkey"],
+				["buff"] = 13163,
 			},
+			-- Buff: Aspect of the Dragonhawk
 			{
 				["value"] = 18,
-				["buff"] = 61846,		-- ["Aspect of the Dragonhawk"],
+				["buff"] = 61846,
 			},
+			-- Talent: Improved Aspect of the Monkey (Aspect of the Dragonhawk)
 			{
 				["tab"] = 1,
 				["num"] = 4,
 				["rank"] = {
 					2, 4, 6,
 				},
-				["buff"] = 61846,		-- ["Aspect of the Dragonhawk"],
+				["buff"] = 61846,
 			},
 		},
 		-- Hunter: Thick Hide (Rank 3) - 1,5
@@ -1831,6 +1824,11 @@ elseif addon.class == "MAGE" then
 		["ADD_AP_MOD_STR"] = {
 			{
 				["value"] = 1,
+			},
+		},
+		["ADD_DODGE"] = {
+			{
+				["value"] = 3.6587,
 			},
 		},
 		["ADD_NORMAL_MANA_REG_MOD_SPI"] = {
@@ -2064,9 +2062,11 @@ elseif addon.class == "PALADIN" then
 				},
 			},
 		},
-		-- Paladin: Anticipation (Rank 5) - 2,5
-		--          Increases your chance to dodge by 1%/2%/3%/4%/5%.
 		["ADD_DODGE"] = {
+			{
+				["value"] = 3.4943,
+			},
+			-- Talent: Anticipation
 			{
 				["tab"] = 2,
 				["num"] = 5,
@@ -2147,6 +2147,11 @@ elseif addon.class == "PRIEST" then
 		["ADD_AP_MOD_STR"] = {
 			{
 				["value"] = 1,
+			},
+		},
+		["ADD_DODGE"] = {
+			{
+				["value"] = 3.4178,
 			},
 		},
 		["ADD_NORMAL_MANA_REG_MOD_SPI"] = {
@@ -2356,13 +2361,11 @@ elseif addon.class == "ROGUE" then
 				},
 			},
 		},
-		-- Rogue: Lightning Reflexes (Rank 5) - 2,12
-		--        Increases your Dodge chance by 2/4/6% and gives you 4/7/10% melee haste.
-		-- Rogue: Evasion (Rank 1/2) - Buff
-		--        Dodge chance increased by 50%/50% and chance ranged attacks hit you reduced by 0%/25%.
-		-- Rogue: Ghostly Strike - Buff
-		--        Dodge chance increased by 15%.
 		["ADD_DODGE"] = {
+			{
+				["value"] = 2.0957,
+			},
+			-- Talent: Lightning Reflexes
 			{
 				["tab"] = 2,
 				["num"] = 12,
@@ -2370,13 +2373,15 @@ elseif addon.class == "ROGUE" then
 					2, 4, 6,
 				},
 			},
+			-- Buff: Evasion
 			{
 				["value"] = 50,
-				["buff"] = 26669,		-- ["Evasion"],
+				["buff"] = 26669,
 			},
+			-- Buff: Ghostly Strike
 			{
 				["value"] = 15,
-				["buff"] = 31022,		-- ["Ghostly Strike"],
+				["buff"] = 31022,
 			},
 		},
 		-- Rogue: Sinister Calling (Rank 5) - 3,22
@@ -2486,9 +2491,11 @@ elseif addon.class == "SHAMAN" then
 				},
 			},
 		},
-		-- Shaman: Anticipation (Rank 5) - 2,10
-		--         Increases your chance to dodge by an additional 1%/2%/3%
 		["ADD_DODGE"] = {
+			{
+				["value"] = 2.1080,
+			},
+			-- Talent: Anticipation
 			{
 				["tab"] = 2,
 				["num"] = 10,
@@ -2525,6 +2532,11 @@ elseif addon.class == "WARLOCK" then
 		["ADD_AP_MOD_STR"] = {
 			{
 				["value"] = 1,
+			},
+		},
+		["ADD_DODGE"] = {
+			{
+				["value"] = 2.4211,
 			},
 		},
 		["ADD_NORMAL_MANA_REG_MOD_SPI"] = {
@@ -2743,9 +2755,11 @@ elseif addon.class == "WARRIOR" then
 				},
 			},
 		},
-		-- Warrior: Anticipation (Rank 5) - 3,5
-		--          Increases your Dodge chance by 1%/2%/3%/4%/5%.
 		["ADD_DODGE"] = {
+			{
+				["value"] = 3.6640,
+			},
+			-- Talent: Anticipation
 			{
 				["tab"] = 3,
 				["num"] = 5,
@@ -3264,7 +3278,7 @@ function StatLogic:GetDodgePerAgi()
 	local baseDefense, modDefense = UnitDefense("player")
 	local dodgeFromModDefense = modDefense * 0.04
 	local D_r = dodgeFromDodgeRating + dodgeFromModDefense
-	local D_b = addon.BaseDodge[class] + self:GetStatMod("ADD_DODGE") + (baseDefense - level * 5) * 0.04
+	local D_b = self:GetStatMod("ADD_DODGE") + (baseDefense - level * 5) * 0.04
 	local stat, effectiveStat, posBuff, negBuff = UnitStat("player", 2) -- 2 = Agility
 	-- Talents that modify AGI will not add to posBuff, so we need to calculate baseAgi
 	-- But Kings added AGi will add to posBuff, so we need to check for Kings
@@ -3322,11 +3336,6 @@ function StatLogic:GetDodgeChanceBeforeDR()
 	local stat, effectiveStat, posBuff, negBuff = UnitStat("player", 2) -- 2 = Agility
 	local baseAgi = stat - posBuff - negBuff
 	local dodgePerAgi = self:GetDodgePerAgi()
-	--[[
-	local drFreeDodge = BaseDodge[class] + dodgePerAgi * baseAgi
-		+ self:GetStatMod("ADD_DODGE") + (baseDefense - UnitLevel("player") * 5) * 0.04
-	--]]
-	-- modDodge
 	local dodgeFromDodgeRating = self:GetEffectFromRating(GetCombatRating(CR_DODGE), CR_DODGE, UnitLevel("player"))
 	local dodgeFromDefenceRating = floor(self:GetEffectFromRating(GetCombatRating(CR_DEFENSE_SKILL), CR_DEFENSE_SKILL)) * 0.04
 	local dodgeFromAdditionalAgi = dodgePerAgi * (effectiveStat - baseAgi)

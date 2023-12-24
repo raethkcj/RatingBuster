@@ -1356,34 +1356,6 @@ function StatLogic:GetEffectFromRating(rating, id, level)
 end
 
 --[[---------------------------------
-{	:GetBaseDodge([class])
--------------------------------------
--- Description
-	Gets the base dodge percentage for any class.
--- Args
-	[class] - (defaults: PlayerClass)
-			string - english class name
-			number - class id
--- Returns
-	[dodge]
-		number - base dodge percentage
-	[statid]
-		Stat - StatLogic.Stats.Dodge
--- Remarks
--- Examples
-	StatLogic:GetBaseDodge()
-	StatLogic:GetBaseDodge("WARRIOR")
-}
------------------------------------]]
-
-function StatLogic:GetBaseDodge(class)
-	-- argCheck for invalid input
-	self:argCheck(class, 2, "nil", "string", "number")
-	class = self:ValidateClass(class)
-	return addon.BaseDodge[class], StatLogic.Stats.Dodge
-end
-
---[[---------------------------------
 {	:GetDodgePerAgi()
 -------------------------------------
 -- Description
@@ -1414,7 +1386,6 @@ function StatLogic:GetDodgePerAgi()
 		- self:GetEffectFromRating(GetCombatRating(CR_DODGE), CR_DODGE, UnitLevel("player"))
 		- self:GetEffectFromDefense(GetTotalDefense("player"), UnitLevel("player"))
 		- self:GetTotalEquippedStat(StatLogic.Stats.Dodge)
-		- addon.BaseDodge[addon.class]
 	return dodgeFromAgi / agility
 end
 

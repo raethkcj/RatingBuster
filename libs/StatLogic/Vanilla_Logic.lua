@@ -125,18 +125,6 @@ addon.SpellCritPerInt = {
 	},
 }
 
-addon.BaseDodge = {
-	["WARRIOR"] = 0.0000,
-	["PALADIN"] = 0.7000,
-	["HUNTER"] = 0.0000,
-	["ROGUE"] = 0.0000,
-	["PRIEST"] = 3.0000,
-	["SHAMAN"] = 1.7000,
-	["MAGE"] = 3.2000,
-	["WARLOCK"] = 2.0000,
-	["DRUID"] = 0.9000,
-}
-
 addon.DodgePerAgi = {
 	["WARRIOR"] = {
 		[60] = 0.0500,
@@ -223,16 +211,18 @@ if addon.class == "DRUID" then
 				},
 			},
 		},
-		-- Druid: Feline Swiftness (Rank 2) - 2,6
-		--        Increases your movement speed by 15%/30% while outdoors in Cat Form and increases your chance to dodge while in Cat Form by 2%/4%.
 		["ADD_DODGE"] = {
+			{
+				["value"] = 0.9000,
+			},
+			-- Talent: Feline Swiftness (Cat Form)
 			{
 				["tab"] = 2,
 				["num"] = 6,
 				["rank"] = {
 					2, 4,
 				},
-				["buff"] = 768,		-- ["Cat Form"],
+				["buff"] = 768,
 			},
 		},
 		["ADD_MELEE_CRIT"] = {
@@ -365,27 +355,27 @@ elseif addon.class == "HUNTER" then
 			},
 		},
 		["ADD_DODGE"] = {
-			-- Hunter: Aspect of the Monkey - Buff
-			--         The hunter takes on the aspects of a monkey, increasing chance to dodge by 8%. Only one Aspect can be active at a time.
+			{
+				["value"] = 0.0000,
+			},
+			-- Buff: Aspect of the Monkey
 			{
 				["value"] = 8,
-				["buff"] = 13163,		-- ["Aspect of the Monkey"],
+				["buff"] = 13163,
 			},
-			-- Hunter: Improved Aspect of the Monkey (Rank 5) - 1,4
-			--         Increases the Dodge bonus of your Aspect of the Monkey by 1/2/3/4/5%.
+			-- Talent: Improved Aspect of the Monkey (Aspect of the Monkey)
 			{
 				["tab"] = 1,
 				["num"] = 4,
 				["rank"] = {
 					1, 2, 3, 4, 5,
 				},
-				["buff"] = 13163,		-- ["Aspect of the Monkey"],
+				["buff"] = 13163,
 			},
-			-- Hunter: Deterrence - Buff
-			--         Dodge and Parry chance increased by 25%.
+			-- Buff: Deterrence
 			{
 				["value"] = 25,
-				["buff"] = 19263,		-- ["Deterrence"],
+				["buff"] = 19263,
 			},
 		},
 		["ADD_MELEE_CRIT"] = {
@@ -484,6 +474,11 @@ elseif addon.class == "MAGE" then
 				["value"] = 1,
 			},
 		},
+		["ADD_DODGE"] = {
+			{
+				["value"] = 3.2000,
+			},
+		},
 		["ADD_NORMAL_MANA_REG_MOD_SPI"] = {
 			{
 				["regen"] = NormalManaRegenPerSpi,
@@ -563,6 +558,11 @@ elseif addon.class == "PALADIN" then
 		["ADD_AP_MOD_STR"] = {
 			{
 				["value"] = 2,
+			},
+		},
+		["ADD_DODGE"] = {
+			{
+				["value"] = 0.7000,
 			},
 		},
 		["ADD_NORMAL_MANA_REG_MOD_SPI"] = {
@@ -692,12 +692,14 @@ elseif addon.class == "PRIEST" then
 				},
 			},
 		},
-		-- Priest: Elune's Grace (Rank 6) - Buff, NE priest only
-		--         Ranged damage taken reduced by 167 and chance to dodge increased by 10%.
 		["ADD_DODGE"] = {
 			{
+				["value"] = 3.0000,
+			},
+			-- Buff: Elune's Grace (Night Elf Priest Racial)
+			{
 				["value"] = 10,
-				["buff"] = 2651,		-- ["Elune's Grace"],
+				["buff"] = 2651,
 			},
 		},
 		-- Priest: Mental Strength (Rank 5) - 1,12
@@ -745,13 +747,11 @@ elseif addon.class == "ROGUE" then
 				},
 			},
 		},
-		-- Rogue: Lightning Reflexes (Rank 5) - 2,3
-		--        Increases your Dodge chance by 1%/2%/3%/4%/5%.
-		-- Rogue: Evasion - Buff
-		--        Dodge chance increased by 50%.
-		-- Rogue: Ghostly Strike - Buff
-		--        Dodge chance increased by 15%.
 		["ADD_DODGE"] = {
+			{
+				["value"] = 0.0000,
+			},
+			-- Talent: Lightning Reflexes
 			{
 				["tab"] = 2,
 				["num"] = 3,
@@ -759,13 +759,15 @@ elseif addon.class == "ROGUE" then
 					1, 2, 3, 4, 5,
 				},
 			},
+			-- Buff: Evasion
 			{
 				["value"] = 50,
-				["buff"] = 5277,		-- ["Evasion"],
+				["buff"] = 5277,
 			},
+			-- Buff: Ghostly Strike
 			{
 				["value"] = 15,
-				["buff"] = 14278,		-- ["Ghostly Strike"],
+				["buff"] = 14278,
 			},
 		},
 		["ADD_MELEE_CRIT"] = {
@@ -823,9 +825,11 @@ elseif addon.class == "SHAMAN" then
 				["value"] = 0.05,
 			},
 		},
-		-- Shaman: Anticipation (Rank 5) - 2,9
-		--         Increases your chance to dodge by an additional 1%/2%/3%/4%/5%.
 		["ADD_DODGE"] = {
+			{
+				["value"] = 1.7000,
+			},
+			-- Talent: Anticipation
 			{
 				["tab"] = 2,
 				["num"] = 9,
@@ -998,8 +1002,10 @@ elseif addon.class == "WARLOCK" then
 			},
 		},
 		["ADD_DODGE"] = {
-			-- Warlock: Demonic Grace - Rune
-			--   Surge with fel energy, increasing your own dodge chance by 30%
+			{
+				["value"] = 2.0000,
+			},
+			-- Rune: Demonic Grace
 			{
 				["rune"] = 7039,
 				["slot"] = INVSLOT_LEGS,
@@ -1038,6 +1044,11 @@ elseif addon.class == "WARRIOR" then
 		["ADD_RANGED_AP_MOD_AGI"] = {
 			{
 				["value"] = 1,
+			},
+		},
+		["ADD_DODGE"] = {
+			{
+				["value"] = 0.0000,
 			},
 		},
 		["ADD_NORMAL_HEALTH_REG_MOD_SPI"] = {

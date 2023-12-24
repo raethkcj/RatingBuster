@@ -289,19 +289,6 @@ addon.SpellCritPerInt = {
 	},
 }
 
-addon.BaseDodge = {
-	["WARRIOR"] =     5.0000,
-	["PALADIN"] =     5.0000,
-	["HUNTER"] =     -5.4500,
-	["ROGUE"] =      -0.5900,
-	["PRIEST"] =      3.1830,
-	["DEATHKNIGHT"] = 5.0000,
-	["SHAMAN"] =      1.6750,
-	["MAGE"] =        3.4575,
-	["WARLOCK"] =     2.0350,
-	["DRUID"] =       4.9510,
-}
-
 addon.DodgePerAgi = {
 	["WARRIOR"] = {
 		[85] = 0,
@@ -400,37 +387,36 @@ if addon.class == "DRUID" then
 				["known"] = 85101, -- ["Meditation"]
 			},
 		},
-		-- Druid: Feral Swiftness (Rank 2) - 2,1
-		-- 4.0.1: Increases your chance to dodge while in Cat Form or Bear Form by 2/4%
-		-- Druid: Natural Reaction (Rank 2) - 2,18
-		-- 4.0.1: Reduces damage taken while in Bear Form by 6/12%, increases your dodge while in Bear Form by 3/6%, and you generate 1/3 rage every time you dodge while in Bear Form.
 		["ADD_DODGE"] = {
-			-- Feral Swiftness
+			{
+				["value"] = 4.9510,
+			},
+			-- Talent: Feral Swiftness (Bear Form)
 			{
 				["tab"] = 2,
 				["num"] = 1,
 				["rank"] = {
 					2, 4,
 				},
-				["buff"] = 5487,        -- ["Bear Form"],
+				["buff"] = 5487,
 			},
-			-- Feral Swiftness
+			-- Talent: Feral Swiftness (Cat Form)
 			{
 				["tab"] = 2,
 				["num"] = 1,
 				["rank"] = {
 					2, 4,
 				},
-				["buff"] = 768,        -- ["Cat Form"],
+				["buff"] = 768,
 			},
-			-- Natural Reaction
+			-- Talent: Natural Reaction
 			{
 				["tab"] = 2,
 				["num"] = 18,
 				["rank"] = {
 					3, 6,
 				},
-				["buff"] = 5487,        -- ["Bear Form"],
+				["buff"] = 5487,
 			},
 		},
 		-- Druid: Balance of Power (Rank 2) - 1,6
@@ -588,6 +574,11 @@ elseif addon.class == "DEATHKNIGHT" then
 		["ADD_AP_MOD_STR"] = {
 			{
 				["value"] = 2,
+			},
+		},
+		["ADD_DODGE"] = {
+			{
+				value = 5.0000,
 			},
 		},
 		-- Tanks: Forceful Deflection - Passive
@@ -769,6 +760,11 @@ elseif addon.class == "HUNTER" then
 				["value"] = 2,
 			},
 		},
+		["ADD_DODGE"] = {
+			{
+				["value"] = -5.4500,
+			},
+		},
 		-- Hunter: Animal Handler - Passive: 87325
 		-- 4.0.6: Attack Power increased by 25%.
 		["MOD_AP"] = {
@@ -824,6 +820,11 @@ elseif addon.class == "MAGE" then
 		["ADD_AP_MOD_STR"] = {
 			{
 				["value"] = 2,
+			},
+		},
+		["ADD_DODGE"] = {
+			{
+				["value"] = 3.4575,
 			},
 		},
 		["ADD_NORMAL_MANA_REG_MOD_SPI"] = {
@@ -892,6 +893,11 @@ elseif addon.class == "PALADIN" then
 		["ADD_AP_MOD_STR"] = {
 			{
 				["value"] = 2,
+			},
+		},
+		["ADD_DODGE"] = {
+			{
+				["value"] = 5.0000,
 			},
 		},
 		["ADD_NORMAL_MANA_REG_MOD_SPI"] = {
@@ -1032,6 +1038,11 @@ elseif addon.class == "PRIEST" then
 				["value"] = 2,
 			},
 		},
+		["ADD_DODGE"] = {
+			{
+				["value"] = 3.1830,
+			},
+		},
 		["ADD_NORMAL_MANA_REG_MOD_SPI"] = {
 			{
 				["regen"] = NormalManaRegenPerSpi,
@@ -1165,14 +1176,11 @@ elseif addon.class == "ROGUE" then
 				},
 			},
 		},
-		-- Rogue: Lightning Reflexes - Rank 3/3 - 2,8
-		-- 4.0.1: Increases your chance to dodge enemy attacks by 3/6/9%
-		-- Rogue: Evasion - Buff: 5277
-		-- 4.0.1: Dodge chance increased by 50% and chance ranged attacks hit you reduced by 25%.
-		-- Rogue: Ghostly Strike - Buff: 31022
-		-- 4.0.1: Dodge chance increased by 15%.
 		["ADD_DODGE"] = {
-			-- Lightning Reflexes
+			{
+				["value"] = -0.5900,
+			},
+			-- Talent: Lightning Reflexes
 			{
 				["tab"] = 2,
 				["num"] = 8,
@@ -1180,15 +1188,15 @@ elseif addon.class == "ROGUE" then
 					3, 6, 9,
 				},
 			},
-			-- Evasion
+			-- Buff: Evasion
 			{
 				["value"] = 50,
-				["buff"] = 5277,        -- ["Evasion"],
+				["buff"] = 5277,
 			},
-			-- Ghostly Strike
+			-- Buff: Ghostly Strike
 			{
 				["value"] = 15,
-				["buff"] = 31022,        -- ["Ghostly Strike"],
+				["buff"] = 31022,
 			},
 		},
 		-- Rogue: Leather Specialization - Passive: 86531
@@ -1224,6 +1232,11 @@ elseif addon.class == "SHAMAN" then
 		["ADD_AP_MOD_AGI"] = {
 			{
 				["value"] = 2,
+			},
+		},
+		["ADD_DODGE"] = {
+			{
+				["value"] = 1.6750,
 			},
 		},
 		["ADD_NORMAL_MANA_REG_MOD_SPI"] = {
@@ -1325,6 +1338,11 @@ elseif addon.class == "WARLOCK" then
 				["value"] = 2,
 			},
 		},
+		["ADD_DODGE"] = {
+			{
+				["value"] = 2.0350,
+			},
+		},
 		["ADD_NORMAL_MANA_REG_MOD_SPI"] = {
 			{
 				["regen"] = NormalManaRegenPerSpi,
@@ -1375,6 +1393,11 @@ elseif addon.class == "WARRIOR" then
 		["ADD_RANGED_AP_MOD_AGI"] = {
 			{
 				["value"] = 1,
+			},
+		},
+		["ADD_DODGE"] = {
+			{
+				["value"] = 5.0000,
 			},
 		},
 		-- Tanks: Forceful Deflection - Passive

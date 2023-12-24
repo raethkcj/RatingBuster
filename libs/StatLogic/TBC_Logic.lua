@@ -220,18 +220,6 @@ addon.SpellCritPerInt = {
 	},
 }
 
-addon.BaseDodge = {
-	["WARRIOR"] = 0.7580,
-	["PALADIN"] = 0.6520,
-	["HUNTER"] = -5.4500,
-	["ROGUE"] = -0.5900,
-	["PRIEST"] = 3.1830,
-	["SHAMAN"] = 1.6750,
-	["MAGE"] = 3.4575,
-	["WARLOCK"] = 2.0350,
-	["DRUID"] = -1.8720,
-}
-
 -- TODO Gather data if TBC comes back
 addon.DodgePerAgi = {}
 
@@ -341,32 +329,36 @@ if addon.class == "DRUID" then
 				},
 			},
 		},
-		-- Druid: Feral Swiftness (Rank 2) - 2,6
-		--        Increases your movement speed by 15%/30% while outdoors in Cat Form and increases your chance to dodge while in Cat Form, Bear Form and Dire Bear Form by 2%/4%.
 		["ADD_DODGE"] = {
 			{
-				["tab"] = 2,
-				["num"] = 6,
-				["rank"] = {
-					2, 4,
-				},
-				["buff"] = 32357,		-- ["Bear Form"],
+				["value"] = -1.8720,
 			},
+			-- Talent: Feral Swiftness (Cat Form)
 			{
 				["tab"] = 2,
 				["num"] = 6,
 				["rank"] = {
 					2, 4,
 				},
-				["buff"] = 9634,		-- ["Dire Bear Form"],
+				["buff"] = 32356,
 			},
+			-- Talent: Feral Swiftness (Bear Form)
 			{
 				["tab"] = 2,
 				["num"] = 6,
 				["rank"] = {
 					2, 4,
 				},
-				["buff"] = 32356,		-- ["Cat Form"],
+				["buff"] = 32357,
+			},
+			-- Talent: Feral Swiftness (Dire Bear Form)
+			{
+				["tab"] = 2,
+				["num"] = 6,
+				["rank"] = {
+					2, 4,
+				},
+				["buff"] = 9634,
 			},
 		},
 		-- Druid: Thick Hide (Rank 3) - 2,5
@@ -610,15 +602,11 @@ elseif addon.class == "HUNTER" then
 				}
 			},
 		},
-		-- Hunter: Catlike Reflexes (Rank 3) - 1,19
-		--         Increases your chance to dodge by 1%/2%/3% and your pet's chance to dodge by an additional 3%/6%/9%.
-		-- Hunter: Aspect of the Monkey - Buff
-		--         The hunter takes on the aspects of a monkey, increasing chance to dodge by 8%. Only one Aspect can be active at a time.
-		-- Hunter: Improved Aspect of the Monkey (Rank 3) - 1,4
-		--         Increases the Dodge bonus of your Aspect of the Monkey by 2%/4%/6%.
-		-- Hunter: Deterrence - Buff
-		--         Dodge and Parry chance increased by 25%.
 		["ADD_DODGE"] = {
+			{
+				["value"] = -5.4500,
+			},
+			-- Talent: Catlike Reflexes
 			{
 				["tab"] = 1,
 				["num"] = 19,
@@ -626,21 +614,24 @@ elseif addon.class == "HUNTER" then
 					1, 2, 3,
 				},
 			},
+			-- Buff: Aspect of the Monkey
 			{
 				["value"] = 8,
-				["buff"] = 13163,		-- ["Aspect of the Monkey"],
+				["buff"] = 13163,
 			},
+			-- Talent: Improved Aspect of the Monkey
 			{
 				["tab"] = 1,
 				["num"] = 4,
 				["rank"] = {
 					2, 4, 6,
 				},
-				["buff"] = 13163,		-- ["Aspect of the Monkey"],
+				["buff"] = 13163,
 			},
+			-- Buff: Deterrence
 			{
 				["value"] = 25,
-				["buff"] = 31567,		-- ["Deterrence"],
+				["buff"] = 31567,
 			},
 		},
 		-- Hunter: Thick Hide (Rank 3) - 1,5
@@ -713,6 +704,11 @@ elseif addon.class == "MAGE" then
 				["value"] = 1,
 			},
 		},
+		["ADD_DODGE"] = {
+			{
+				["value"] = 3.4575,
+			},
+		},
 		["ADD_NORMAL_MANA_REG_MOD_SPI"] = {
 			{
 				["regen"] = NormalManaRegenPerSpi,
@@ -783,6 +779,11 @@ elseif addon.class == "PALADIN" then
 		["ADD_AP_MOD_STR"] = {
 			{
 				["value"] = 2,
+			},
+		},
+		["ADD_DODGE"] = {
+			{
+				["value"] = 0.6520,
 			},
 		},
 		["ADD_NORMAL_MANA_REG_MOD_SPI"] = {
@@ -897,6 +898,11 @@ elseif addon.class == "PRIEST" then
 		["ADD_AP_MOD_STR"] = {
 			{
 				["value"] = 1,
+			},
+		},
+		["ADD_DODGE"] = {
+			{
+				["value"] = 3.1830,
 			},
 		},
 		["ADD_NORMAL_MANA_REG_MOD_SPI"] = {
@@ -1070,13 +1076,11 @@ elseif addon.class == "ROGUE" then
 				},
 			},
 		},
-		-- Rogue: Lightning Reflexes (Rank 5) - 2,3
-		--        Increases your Dodge chance by 1%/2%/3%/4%/5%.
-		-- Rogue: Evasion (Rank 1/2) - Buff
-		--        Dodge chance increased by 50%/50% and chance ranged attacks hit you reduced by 0%/25%.
-		-- Rogue: Ghostly Strike - Buff
-		--        Dodge chance increased by 15%.
 		["ADD_DODGE"] = {
+			{
+				["value"] = -0.5900,
+			},
+			-- Talent: Lightning Reflexes
 			{
 				["tab"] = 2,
 				["num"] = 3,
@@ -1084,13 +1088,15 @@ elseif addon.class == "ROGUE" then
 					1, 2, 3, 4, 5,
 				},
 			},
+			-- Buff: Evasion
 			{
 				["value"] = 50,
-				["buff"] = 5277,		-- ["Evasion"],
+				["buff"] = 5277,
 			},
+			-- Buff: Ghostly Strike
 			{
 				["value"] = 15,
-				["buff"] = 14278,		-- ["Ghostly Strike"],
+				["buff"] = 14278,
 			},
 		},
 		-- Rogue: Vitality (Rank 2) - 2,20
@@ -1207,9 +1213,11 @@ elseif addon.class == "SHAMAN" then
 				},
 			},
 		},
-		-- Shaman: Anticipation (Rank 5) - 2,9
-		--         Increases your chance to dodge by an additional 1%/2%/3%/4%/5%.
 		["ADD_DODGE"] = {
+			{
+				["value"] = 1.6750,
+			},
+			-- Talent: Anticipation
 			{
 				["tab"] = 2,
 				["num"] = 9,
@@ -1257,6 +1265,11 @@ elseif addon.class == "WARLOCK" then
 		["ADD_AP_MOD_STR"] = {
 			{
 				["value"] = 1,
+			},
+		},
+		["ADD_DODGE"] = {
+			{
+				["value"] = 2.0350,
 			},
 		},
 		["ADD_NORMAL_MANA_REG_MOD_SPI"] = {
@@ -1401,6 +1414,11 @@ elseif addon.class == "WARRIOR" then
 		["ADD_RANGED_AP_MOD_AGI"] = {
 			{
 				["value"] = 1,
+			},
+		},
+		["ADD_DODGE"] = {
+			{
+				["value"] = 0.7580,
 			},
 		},
 		["ADD_NORMAL_HEALTH_REG_MOD_SPI"] = {
