@@ -2154,13 +2154,13 @@ do
 				end
 			end
 			if profileDB.showCritFromAgi then
-				local effect = StatLogic:GetCritFromAgi(value, class, calcLevel)
+				local effect = value * StatLogic:GetCritPerAgi(class, calcLevel)
 				if effect > 0 then
 					tinsert(infoTable, (L["$value% Crit"]:gsub("$value", ("%+.2f"):format(effect))))
 				end
 			end
 			if profileDB.showDodgeFromAgi and (calcLevel == playerLevel) then
-				local effect = StatLogic:GetDodgeFromAgi(value)
+				local effect = value * StatLogic:GetDodgePerAgi()
 				if effect > 0 then
 					tinsert(infoTable, (L["$value% Dodge"]:gsub("$value", ("%+.2f"):format(effect))))
 				end
@@ -2252,7 +2252,7 @@ do
 				end
 			end
 			if profileDB.showSpellCritFromInt then
-				local effect = StatLogic:GetSpellCritFromInt(value, class, calcLevel)
+				local effect = value * StatLogic:GetSpellCritPerInt(class, calcLevel)
 				if effect > 0 then
 					tinsert(infoTable, (L["$value% Spell Crit"]:gsub("$value", ("%+.2f"):format(effect))))
 				end
@@ -2716,7 +2716,7 @@ local summaryCalcData = {
 		func = function(sum)
 			return sum[StatLogic.Stats.MeleeCrit]
 				+ StatLogic:GetEffectFromRating(sum["MELEE_CRIT_RATING"], "MELEE_CRIT_RATING", calcLevel)
-				+ StatLogic:GetCritFromAgi(sum[StatLogic.Stats.Agility], class, calcLevel)
+				+ sum[StatLogic.Stats.Agility] * StatLogic:GetCritPerAgi(class, calcLevel)
 		end,
 		ispercent = true,
 	},
@@ -2735,7 +2735,7 @@ local summaryCalcData = {
 		func = function(sum)
 			return sum[StatLogic.Stats.RangedCrit]
 				+ StatLogic:GetEffectFromRating(sum["RANGED_CRIT_RATING"], "RANGED_CRIT_RATING", calcLevel)
-				+ StatLogic:GetCritFromAgi(sum[StatLogic.Stats.Agility], class, calcLevel)
+				+ sum[StatLogic.Stats.Agility] * StatLogic:GetCritPerAgi(class, calcLevel)
 		end,
 		ispercent = true,
 	},
@@ -2973,7 +2973,7 @@ local summaryCalcData = {
 		func = function(sum)
 			return sum[StatLogic.Stats.SpellCrit]
 				+ StatLogic:GetEffectFromRating(summaryFunc["SPELL_CRIT_RATING"](sum), "SPELL_CRIT_RATING", calcLevel)
-				+ StatLogic:GetSpellCritFromInt(sum[StatLogic.Stats.Intellect], class, calcLevel)
+				+ sum[StatLogic.Stats.Intellect] * StatLogic:GetSpellCritPerInt(class, calcLevel)
 		end,
 		ispercent = true,
 	},
@@ -3033,7 +3033,7 @@ local summaryCalcData = {
 			return sum[StatLogic.Stats.Dodge]
 				+ StatLogic:GetEffectFromRating(sum["DODGE_RATING"], "DODGE_RATING", calcLevel)
 				+ summaryFunc[StatLogic.Stats.Defense](sum) * DODGE_PARRY_BLOCK_PERCENT_PER_DEFENSE
-				+ StatLogic:GetDodgeFromAgi(sum[StatLogic.Stats.Agility])
+				+ sum[StatLogic.Stats.Agility] * StatLogic:GetDodgePerAgi()
 		end,
 		ispercent = true,
 	},

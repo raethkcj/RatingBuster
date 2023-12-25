@@ -1389,62 +1389,6 @@ function StatLogic:GetDodgePerAgi()
 	return dodgeFromAgi / agility
 end
 
---[[---------------------------------
-{	:GetDodgeFromAgi(agi)
--------------------------------------
--- Description
-	Calculates the dodge chance from agility for your current class and level.
--- Args
-	agi
-			number - agility
--- Returns
-	[dodge]
-		number - dodge percentage
-	[statid]
-		Stat - StatLogic.Stats.Dodge
--- Remarks
-	Only works for your currect class and current level, does not support class and level args.
--- Examples
-	StatLogic:GetDodgeFromAgi(1) -- GetDodgePerAgi
-	StatLogic:GetDodgeFromAgi(10)
-}
------------------------------------]]
-
-function StatLogic:GetDodgeFromAgi(agi)
-	-- argCheck for invalid input
-	self:argCheck(agi, 2, "number")
-	-- Calculate
-	return agi * self:GetDodgePerAgi(), StatLogic.Stats.Dodge
-end
-
---[[---------------------------------
-{	:GetCritFromAgi(agi, [class], [level])
--------------------------------------
--- Description
-	Calculates the melee/ranged crit chance from agility for any class or level.
--- Args
-	agi
-			number - agility
-	[class] - (defaults: PlayerClass)
-			string - english class name
-			number - class id
-	[level] - (defaults: PlayerLevel)
-			number - player level used for calculation
--- Returns
-	[crit]
-		number - melee/ranged crit percentage
-	[statid]
-		Stat - StatLogic.Stats.MeleeCrit
--- Remarks
--- Examples
-	StatLogic:GetCritFromAgi(1) -- GetCritPerAgi
-	StatLogic:GetCritFromAgi(10)
-	StatLogic:GetCritFromAgi(10, "WARRIOR")
-	StatLogic:GetCritFromAgi(10, nil, 70)
-	StatLogic:GetCritFromAgi(10, "WARRIOR", 70)
-}
------------------------------------]]
-
 function StatLogic:GetCritPerAgi(class, level)
 	-- argCheck for invalid input
 	self:argCheck(class, 3, "nil", "string", "number")
@@ -1467,48 +1411,6 @@ function StatLogic:GetCritPerAgi(class, level)
 	end
 end
 
-function StatLogic:GetCritFromAgi(agi, class, level)
-	-- argCheck for invalid input
-	self:argCheck(agi, 2, "number")
-	self:argCheck(class, 3, "nil", "string", "number")
-	self:argCheck(level, 4, "nil", "number")
-	class = self:ValidateClass(class)
-	-- if level is invalid input, default to player level
-	if type(level) ~= "number" or level < 1 or level > GetMaxPlayerLevel() then
-		level = UnitLevel("player")
-	end
-	-- Calculate
-	return agi * self:GetCritPerAgi(class, level), StatLogic.Stats.MeleeCrit
-end
-
---[[---------------------------------
-{	:GetSpellCritFromInt(int, [class], [level])
--------------------------------------
--- Description
-	Calculates the spell crit chance from intellect for any class or level.
--- Args
-	int
-			number - intellect
-	[class] - (defaults: PlayerClass)
-			string - english class name
-			number - class id
-	[level] - (defaults: PlayerLevel)
-			number - player level used for calculation
--- Returns
-	[spellcrit]
-		number - spell crit percentage
-	[statid]
-		Stat - StatLogic.Stats.SpellCrit
--- Remarks
--- Examples
-	StatLogic:GetSpellCritFromInt(1) -- GetSpellCritPerInt
-	StatLogic:GetSpellCritFromInt(10)
-	StatLogic:GetSpellCritFromInt(10, "MAGE")
-	StatLogic:GetSpellCritFromInt(10, nil, 70)
-	StatLogic:GetSpellCritFromInt(10, "MAGE", 70)
-}
------------------------------------]]
-
 function StatLogic:GetSpellCritPerInt(class, level)
 	-- argCheck for invalid input
 	self:argCheck(class, 3, "nil", "string", "number")
@@ -1528,20 +1430,6 @@ function StatLogic:GetSpellCritPerInt(class, level)
 			- self:GetTotalEquippedStat(StatLogic.Stats.SpellCrit)
 		return critFromInt / intellect
 	end
-end
-
-function StatLogic:GetSpellCritFromInt(int, class, level)
-	-- argCheck for invalid input
-	self:argCheck(int, 2, "number")
-	self:argCheck(class, 3, "nil", "string", "number")
-	self:argCheck(level, 4, "nil", "number")
-	class = self:ValidateClass(class)
-	-- if level is invalid input, default to player level
-	if type(level) ~= "number" or level < 1 or level > GetMaxPlayerLevel() then
-		level = UnitLevel("player")
-	end
-	-- Calculate
-	return int * StatLogic:GetSpellCritPerInt(class, level), StatLogic.Stats.SpellCrit
 end
 
 ----------------------------------
