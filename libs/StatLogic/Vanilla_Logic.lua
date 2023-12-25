@@ -45,18 +45,6 @@ local NormalManaRegenPerSpi = function()
 	return 5 * (spi > base / (low - high) and high or low)
 end
 
-addon.BaseMeleeCrit = {
-	["WARRIOR"] = 0.0000,
-	["PALADIN"] = 1.7000,
-	["HUNTER"]  = 0.0000,
-	["ROGUE"]   = 0.0000,
-	["PRIEST"]  = 3.0000,
-	["SHAMAN"]  = 1.7000,
-	["MAGE"]    = 3.2000,
-	["WARLOCK"] = 2.0000,
-	["DRUID"]   = 0.9000,
-}
-
 addon.CritPerAgi = {
 	["WARRIOR"] = {
 		[60] = 0.0500,
@@ -85,18 +73,6 @@ addon.CritPerAgi = {
 	["DRUID"] = {
 		[60] = 0.0500,
 	},
-}
-
-addon.BaseSpellCrit = {
-	["WARRIOR"] =  0.0000,
-	["PALADIN"] =  3.5000,
-	["HUNTER"]  =  3.6000,
-	["ROGUE"]   =  0.0000,
-	["PRIEST"]  =  0.8000,
-	["SHAMAN"]  = -0.7000,
-	["MAGE"]    = -4.8000,
-	["WARLOCK"] =  1.7000,
-	["DRUID"]   =  1.8000,
 }
 
 addon.SpellCritPerInt = {
@@ -190,6 +166,11 @@ if addon.class == "DRUID" then
 				["buff"] = 768,
 			},
 		},
+		["ADD_SPELL_CRIT"] = {
+			{
+				["value"] = 1.8000,
+			},
+		},
 		["ADD_NORMAL_MANA_REG_MOD_SPI"] = {
 			{
 				["regen"] = NormalManaRegenPerSpi,
@@ -226,7 +207,10 @@ if addon.class == "DRUID" then
 			},
 		},
 		["ADD_MELEE_CRIT"] = {
-			-- Sharpened Claws, Cat Form
+			{
+				["value"] = 0.9000,
+			},
+			-- Talent: Sharpened Claws (Cat Form)
 			{
 				["tab"] = 2,
 				["num"] = 8,
@@ -235,7 +219,7 @@ if addon.class == "DRUID" then
 				},
 				["buff"] = 768,
 			},
-			-- Sharpened Claws, Bear Form
+			-- Talent: Sharpened Claws (Bear Form)
 			{
 				["tab"] = 2,
 				["num"] = 8,
@@ -244,7 +228,7 @@ if addon.class == "DRUID" then
 				},
 				["buff"] = 5487,
 			},
-			-- Sharpened Claws, Dire Bear Form
+			-- Talent: Sharpened Claws (Dire Bear Form)
 			{
 				["tab"] = 2,
 				["num"] = 8,
@@ -344,6 +328,11 @@ elseif addon.class == "HUNTER" then
 				["value"] = 2,
 			},
 		},
+		["ADD_SPELL_CRIT"] = {
+			{
+				["value"] = 3.6000,
+			},
+		},
 		["ADD_NORMAL_MANA_REG_MOD_SPI"] = {
 			{
 				["regen"] = NormalManaRegenPerSpi,
@@ -379,8 +368,10 @@ elseif addon.class == "HUNTER" then
 			},
 		},
 		["ADD_MELEE_CRIT"] = {
-			-- Hunter: Killer Instinct (Rank 5) - 3,13
-			--   Increases your critical strike chance with all attacks by 1/2/3/4/5%.
+			{
+				["value"] = 0.0000,
+			},
+			-- Talent: Killer Instinct
 			{
 				["tab"] = 3,
 				["num"] = 13,
@@ -388,8 +379,7 @@ elseif addon.class == "HUNTER" then
 					1, 2, 3,
 				},
 			},
-			-- Hunter: Master Marksman - Rune
-			--   Increases your critical strike chance by 5%
+			-- Rune: Master Marksman
 			{
 				["rune"] = 6889,
 				["slot"] = INVSLOT_CHEST,
@@ -479,6 +469,11 @@ elseif addon.class == "MAGE" then
 				["value"] = 3.2000,
 			},
 		},
+		["ADD_MELEE_CRIT"] = {
+			{
+				["value"] = 3.2000,
+			},
+		},
 		["ADD_NORMAL_MANA_REG_MOD_SPI"] = {
 			{
 				["regen"] = NormalManaRegenPerSpi,
@@ -544,8 +539,10 @@ elseif addon.class == "MAGE" then
 			},
 		},
 		["ADD_SPELL_CRIT"] = {
-			-- Mage: Burnout - Rune
-			--   Increases your spell critical strike chance with all spells by 15%
+			{
+				["value"] = -4.8000,
+			},
+			-- Rune: Burnout
 			{
 				["rune"] = 6729,
 				["slot"] = INVSLOT_CHEST,
@@ -558,6 +555,11 @@ elseif addon.class == "PALADIN" then
 		["ADD_AP_MOD_STR"] = {
 			{
 				["value"] = 2,
+			},
+		},
+		["ADD_SPELL_CRIT"] = {
+			{
+				["value"] = 3.5000,
 			},
 		},
 		["ADD_DODGE"] = {
@@ -581,7 +583,10 @@ elseif addon.class == "PALADIN" then
 			},
 		},
 		["ADD_MELEE_CRIT"] = {
-			-- Conviction
+			{
+				["value"] = 1.7000,
+			},
+			-- Talent: Conviction
 			{
 				["tab"] = 3,
 				["num"] = 7,
@@ -647,6 +652,16 @@ elseif addon.class == "PRIEST" then
 		["ADD_AP_MOD_STR"] = {
 			{
 				["value"] = 1,
+			},
+		},
+		["ADD_MELEE_CRIT"] = {
+			{
+				["value"] = 3.0000,
+			},
+		},
+		["ADD_SPELL_CRIT"] = {
+			{
+				["value"] = 0.8000,
 			},
 		},
 		["ADD_NORMAL_MANA_REG_MOD_SPI"] = {
@@ -771,7 +786,10 @@ elseif addon.class == "ROGUE" then
 			},
 		},
 		["ADD_MELEE_CRIT"] = {
-			-- Malice
+			{
+				["value"] = 0.0000,
+			},
+			-- Talent: Malice
 			{
 				["tab"] = 1,
 				["num"] = 3,
@@ -779,7 +797,7 @@ elseif addon.class == "ROGUE" then
 					1, 2, 3, 4, 5,
 				},
 			},
-			-- Dagger Specialization
+			-- Talent: Dagger Specialization
 			{
 				["tab"] = 2,
 				["num"] = 11,
@@ -790,7 +808,7 @@ elseif addon.class == "ROGUE" then
 					[Enum.ItemWeaponSubclass.Dagger] = true,
 				},
 			},
-			-- Fist Weapon Specialization
+			-- Talent: Fist Weapon Specialization
 			{
 				["tab"] = 2,
 				["num"] = 16,
@@ -808,6 +826,11 @@ elseif addon.class == "SHAMAN" then
 		["ADD_AP_MOD_STR"] = {
 			{
 				["value"] = 2,
+			},
+		},
+		["ADD_SPELL_CRIT"] = {
+			{
+				["value"] = -0.7000,
 			},
 		},
 		["ADD_NORMAL_MANA_REG_MOD_SPI"] = {
@@ -839,7 +862,10 @@ elseif addon.class == "SHAMAN" then
 			},
 		},
 		["ADD_MELEE_CRIT"] = {
-			-- Elemental Devastation
+			{
+				["value"] = 1.7000,
+			},
+			-- Talent: Elemental Devastation
 			{
 				["tab"] = 1,
 				["num"] = 11,
@@ -848,7 +874,7 @@ elseif addon.class == "SHAMAN" then
 					3, 6, 9,
 				},
 			},
-			-- Thundering Strikes
+			-- Talent: Thundering Strikes
 			{
 				["tab"] = 2,
 				["num"] = 4,
@@ -958,15 +984,16 @@ elseif addon.class == "WARLOCK" then
 			},
 		},
 		["ADD_SPELL_CRIT"] = {
-			-- Warlock: Demonic Tactics - Rune
-			--   Increases the melee and spell critical strike chance of you and your pet by 10%.
+			{
+				["value"] = 1.7000,
+			},
+			-- Rune: Demonic Tactics
 			{
 				["rune"] = 6952,
 				["slot"] = INVSLOT_CHEST,
 				["value"] = 10,
 			},
-			-- Warlock: Demonic Grace - Rune
-			--   Surge with fel energy, increasing your chance to critically strike with all attacks by 30%
+			-- Rune: Demonic Grace
 			{
 				["rune"] = 7039,
 				["slot"] = INVSLOT_LEGS,
@@ -975,15 +1002,16 @@ elseif addon.class == "WARLOCK" then
 			},
 		},
 		["ADD_MELEE_CRIT"] = {
-			-- Warlock: Demonic Tactics - Rune
-			--   Increases the melee and spell critical strike chance of you and your pet by 10%.
+			{
+				["value"] = 2.0000,
+			},
+			-- Rune: Demonic Tactics
 			{
 				["rune"] = 6952,
 				["slot"] = INVSLOT_CHEST,
 				["value"] = 10,
 			},
-			-- Warlock: Demonic Grace - Rune
-			--   Surge with fel energy, increasing your chance to critically strike with all attacks by 30%
+			-- Rune: Demonic Grace
 			{
 				["rune"] = 7039,
 				["slot"] = INVSLOT_LEGS,
@@ -1079,7 +1107,10 @@ elseif addon.class == "WARRIOR" then
 			},
 		},
 		["ADD_MELEE_CRIT"] = {
-			-- Cruelty
+			{
+				["value"] = 0.0000,
+			},
+			-- Talent: Cruelty
 			{
 				["tab"] = 2,
 				["num"] = 2,
@@ -1087,7 +1118,7 @@ elseif addon.class == "WARRIOR" then
 					1, 2, 3, 4, 5,
 				}
 			},
-			-- Axe Specialization
+			-- Talent: Axe Specialization
 			{
 				["tab"] = 1,
 				["num"] = 12,
@@ -1099,7 +1130,7 @@ elseif addon.class == "WARRIOR" then
 					[Enum.ItemWeaponSubclass.Axe2H] = true,
 				},
 			},
-			-- Polearm Specialization
+			-- Talent: Polearm Specialization
 			{
 				["tab"] = 1,
 				["num"] = 16,

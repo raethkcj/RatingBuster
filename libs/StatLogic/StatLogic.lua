@@ -1463,7 +1463,7 @@ function StatLogic:GetCritPerAgi(class, level)
 			- self:GetStatMod("ADD_MELEE_CRIT")
 			- self:GetCritChanceFromWeaponSkill()
 			- self:GetTotalEquippedStat(StatLogic.Stats.MeleeCrit)
-		return (critFromAgi - addon.BaseMeleeCrit[class]) / agility
+		return critFromAgi / agility
 	end
 end
 
@@ -1526,7 +1526,7 @@ function StatLogic:GetSpellCritPerInt(class, level)
 		local critFromInt = GetSpellCritChance(1)
 			- self:GetStatMod("ADD_SPELL_CRIT")
 			- self:GetTotalEquippedStat(StatLogic.Stats.SpellCrit)
-		return (critFromInt - addon.BaseSpellCrit[class]) / intellect
+		return critFromInt / intellect
 	end
 end
 
