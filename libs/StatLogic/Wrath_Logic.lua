@@ -1020,6 +1020,7 @@ if addon.class == "DRUID" then
 			},
 		},
 		["ADD_AP_MOD_STR"] = {
+			-- Base
 			{
 				["value"] = 2,
 			},
@@ -1125,6 +1126,7 @@ if addon.class == "DRUID" then
 			},
 		},
 		["ADD_DODGE"] = {
+			-- Base
 			{
 				["value"] = 5.6097,
 			},
@@ -1483,6 +1485,7 @@ if addon.class == "DRUID" then
 elseif addon.class == "DEATHKNIGHT" then
 	StatLogic.StatModTable["DEATHKNIGHT"] = {
 		["ADD_AP_MOD_STR"] = {
+			-- Base
 			{
 				["value"] = 2,
 			},
@@ -1490,6 +1493,7 @@ elseif addon.class == "DEATHKNIGHT" then
 		-- Death Knight: Forceful Deflection - Passive
 		--               Increases your Parry Rating by 25% of your total Strength.
 		["ADD_PARRY_RATING_MOD_STR"] = {
+			-- Base
 			{
 				["value"] = 0.25,
 			},
@@ -1507,6 +1511,7 @@ elseif addon.class == "DEATHKNIGHT" then
 			},
 		},
 		["ADD_DODGE"] = {
+			-- Base
 			{
 				["value"] = 3.6640,
 			},
@@ -1642,11 +1647,13 @@ elseif addon.class == "DEATHKNIGHT" then
 elseif addon.class == "HUNTER" then
 	StatLogic.StatModTable["HUNTER"] = {
 		["ADD_AP_MOD_STR"] = {
+			-- Base
 			{
 				["value"] = 1,
 			},
 		},
 		["ADD_AP_MOD_AGI"] = {
+			-- Base
 			{
 				["value"] = 1,
 			},
@@ -1660,6 +1667,7 @@ elseif addon.class == "HUNTER" then
 			}
 		},
 		["ADD_RANGED_AP_MOD_AGI"] = {
+			-- Base
 			{
 				["value"] = 1,
 			},
@@ -1705,6 +1713,7 @@ elseif addon.class == "HUNTER" then
 			},
 		},
 		["ADD_DODGE"] = {
+			-- Base
 			{
 				["value"] = -4.0873,
 			},
@@ -1822,11 +1831,13 @@ elseif addon.class == "HUNTER" then
 elseif addon.class == "MAGE" then
 	StatLogic.StatModTable["MAGE"] = {
 		["ADD_AP_MOD_STR"] = {
+			-- Base
 			{
 				["value"] = 1,
 			},
 		},
 		["ADD_DODGE"] = {
+			-- Base
 			{
 				["value"] = 3.6587,
 			},
@@ -1980,6 +1991,7 @@ elseif addon.class == "MAGE" then
 elseif addon.class == "PALADIN" then
 	StatLogic.StatModTable["PALADIN"] = {
 		["ADD_AP_MOD_STR"] = {
+			-- Base
 			{
 				["value"] = 2,
 			},
@@ -1995,6 +2007,7 @@ elseif addon.class == "PALADIN" then
 			},
 		},
 		["ADD_BLOCK_VALUE_MOD_STR"] = {
+			-- Base
 			{
 				["value"] = BLOCK_PER_STRENGTH,
 			},
@@ -2063,6 +2076,7 @@ elseif addon.class == "PALADIN" then
 			},
 		},
 		["ADD_DODGE"] = {
+			-- Base
 			{
 				["value"] = 3.4943,
 			},
@@ -2145,11 +2159,13 @@ elseif addon.class == "PALADIN" then
 elseif addon.class == "PRIEST" then
 	StatLogic.StatModTable["PRIEST"] = {
 		["ADD_AP_MOD_STR"] = {
+			-- Base
 			{
 				["value"] = 1,
 			},
 		},
 		["ADD_DODGE"] = {
+			-- Base
 			{
 				["value"] = 3.4178,
 			},
@@ -2327,16 +2343,19 @@ elseif addon.class == "PRIEST" then
 elseif addon.class == "ROGUE" then
 	StatLogic.StatModTable["ROGUE"] = {
 		["ADD_AP_MOD_STR"] = {
+			-- Base
 			{
 				["value"] = 1,
 			},
 		},
 		["ADD_AP_MOD_AGI"] = {
+			-- Base
 			{
 				["value"] = 1,
 			},
 		},
 		["ADD_RANGED_AP_MOD_AGI"] = {
+			-- Base
 			{
 				["value"] = 1,
 			},
@@ -2362,6 +2381,7 @@ elseif addon.class == "ROGUE" then
 			},
 		},
 		["ADD_DODGE"] = {
+			-- Base
 			{
 				["value"] = 2.0957,
 			},
@@ -2410,11 +2430,13 @@ elseif addon.class == "ROGUE" then
 elseif addon.class == "SHAMAN" then
 	StatLogic.StatModTable["SHAMAN"] = {
 		["ADD_AP_MOD_STR"] = {
+			-- Base
 			{
 				["value"] = 1,
 			},
 		},
 		["ADD_AP_MOD_AGI"] = {
+			-- Base
 			{
 				["value"] = 1,
 			},
@@ -2430,6 +2452,7 @@ elseif addon.class == "SHAMAN" then
 			},
 		},
 		["ADD_BLOCK_VALUE_MOD_STR"] = {
+			-- Base
 			{
 				["value"] = BLOCK_PER_STRENGTH,
 			},
@@ -2492,6 +2515,7 @@ elseif addon.class == "SHAMAN" then
 			},
 		},
 		["ADD_DODGE"] = {
+			-- Base
 			{
 				["value"] = 2.1080,
 			},
@@ -2530,11 +2554,13 @@ elseif addon.class == "SHAMAN" then
 elseif addon.class == "WARLOCK" then
 	StatLogic.StatModTable["WARLOCK"] = {
 		["ADD_AP_MOD_STR"] = {
+			-- Base
 			{
 				["value"] = 1,
 			},
 		},
 		["ADD_DODGE"] = {
+			-- Base
 			{
 				["value"] = 2.4211,
 			},
@@ -2730,16 +2756,19 @@ elseif addon.class == "WARLOCK" then
 elseif addon.class == "WARRIOR" then
 	StatLogic.StatModTable["WARRIOR"] = {
 		["ADD_AP_MOD_STR"] = {
+			-- Base
 			{
 				["value"] = 2,
 			},
 		},
 		["ADD_RANGED_AP_MOD_AGI"] = {
+			-- Base
 			{
 				["value"] = 1,
 			},
 		},
 		["ADD_BLOCK_VALUE_MOD_STR"] = {
+			-- Base
 			{
 				["value"] = BLOCK_PER_STRENGTH,
 			},
@@ -2756,6 +2785,7 @@ elseif addon.class == "WARRIOR" then
 			},
 		},
 		["ADD_DODGE"] = {
+			-- Base
 			{
 				["value"] = 3.6640,
 			},

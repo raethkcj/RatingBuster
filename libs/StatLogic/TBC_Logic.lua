@@ -247,6 +247,7 @@ if addon.class == "DRUID" then
 			},
 		},
 		["ADD_AP_MOD_STR"] = {
+			-- Base
 			{
 				["value"] = 2,
 			},
@@ -269,6 +270,7 @@ if addon.class == "DRUID" then
 			},
 		},
 		["ADD_NORMAL_HEALTH_REG_MOD_SPI"] = {
+			-- Base
 			{
 				["value"] = 0.0625 * 5,
 			},
@@ -330,6 +332,7 @@ if addon.class == "DRUID" then
 			},
 		},
 		["ADD_DODGE"] = {
+			-- Base
 			{
 				["value"] = -1.8720,
 			},
@@ -514,16 +517,19 @@ if addon.class == "DRUID" then
 elseif addon.class == "HUNTER" then
 	StatLogic.StatModTable["HUNTER"] = {
 		["ADD_AP_MOD_STR"] = {
+			-- Base
 			{
 				["value"] = 1,
 			},
 		},
 		["ADD_AP_MOD_AGI"] = {
+			-- Base
 			{
 				["value"] = 1,
 			},
 		},
 		["ADD_RANGED_AP_MOD_AGI"] = {
+			-- Base
 			{
 				["value"] = 1,
 			},
@@ -539,6 +545,7 @@ elseif addon.class == "HUNTER" then
 			},
 		},
 		["ADD_NORMAL_HEALTH_REG_MOD_SPI"] = {
+			-- Base
 			{
 				["value"] = 0.125 * 5,
 			},
@@ -603,6 +610,7 @@ elseif addon.class == "HUNTER" then
 			},
 		},
 		["ADD_DODGE"] = {
+			-- Base
 			{
 				["value"] = -5.4500,
 			},
@@ -700,11 +708,13 @@ elseif addon.class == "HUNTER" then
 elseif addon.class == "MAGE" then
 	StatLogic.StatModTable["MAGE"] = {
 		["ADD_AP_MOD_STR"] = {
+			-- Base
 			{
 				["value"] = 1,
 			},
 		},
 		["ADD_DODGE"] = {
+			-- Base
 			{
 				["value"] = 3.4575,
 			},
@@ -720,6 +730,7 @@ elseif addon.class == "MAGE" then
 			},
 		},
 		["ADD_NORMAL_HEALTH_REG_MOD_SPI"] = {
+			-- Base
 			{
 				["value"] = 0.041667 * 5,
 			},
@@ -777,11 +788,13 @@ elseif addon.class == "MAGE" then
 elseif addon.class == "PALADIN" then
 	StatLogic.StatModTable["PALADIN"] = {
 		["ADD_AP_MOD_STR"] = {
+			-- Base
 			{
 				["value"] = 2,
 			},
 		},
 		["ADD_DODGE"] = {
+			-- Base
 			{
 				["value"] = 0.6520,
 			},
@@ -797,11 +810,13 @@ elseif addon.class == "PALADIN" then
 			},
 		},
 		["ADD_NORMAL_HEALTH_REG_MOD_SPI"] = {
+			-- Base
 			{
 				["value"] = 0.125 * 5,
 			},
 		},
 		["ADD_BLOCK_VALUE_MOD_STR"] = {
+			-- Base
 			{
 				["value"] = BLOCK_PER_STRENGTH,
 			},
@@ -896,11 +911,13 @@ elseif addon.class == "PALADIN" then
 elseif addon.class == "PRIEST" then
 	StatLogic.StatModTable["PRIEST"] = {
 		["ADD_AP_MOD_STR"] = {
+			-- Base
 			{
 				["value"] = 1,
 			},
 		},
 		["ADD_DODGE"] = {
+			-- Base
 			{
 				["value"] = 3.1830,
 			},
@@ -916,6 +933,7 @@ elseif addon.class == "PRIEST" then
 			},
 		},
 		["ADD_NORMAL_HEALTH_REG_MOD_SPI"] = {
+			-- Base
 			{
 				["value"] = 0.041667 * 5,
 			},
@@ -1046,21 +1064,25 @@ elseif addon.class == "PRIEST" then
 elseif addon.class == "ROGUE" then
 	StatLogic.StatModTable["ROGUE"] = {
 		["ADD_AP_MOD_STR"] = {
+			-- Base
 			{
 				["value"] = 1,
 			},
 		},
 		["ADD_AP_MOD_AGI"] = {
+			-- Base
 			{
 				["value"] = 1,
 			},
 		},
 		["ADD_RANGED_AP_MOD_AGI"] = {
+			-- Base
 			{
 				["value"] = 1,
 			},
 		},
 		["ADD_NORMAL_HEALTH_REG_MOD_SPI"] = {
+			-- Base
 			{
 				["value"] = 0.333333 * 5,
 			},
@@ -1077,6 +1099,7 @@ elseif addon.class == "ROGUE" then
 			},
 		},
 		["ADD_DODGE"] = {
+			-- Base
 			{
 				["value"] = -0.5900,
 			},
@@ -1134,6 +1157,7 @@ elseif addon.class == "ROGUE" then
 elseif addon.class == "SHAMAN" then
 	StatLogic.StatModTable["SHAMAN"] = {
 		["ADD_AP_MOD_STR"] = {
+			-- Base
 			{
 				["value"] = 2,
 			},
@@ -1149,11 +1173,13 @@ elseif addon.class == "SHAMAN" then
 			},
 		},
 		["ADD_NORMAL_HEALTH_REG_MOD_SPI"] = {
+			-- Base
 			{
 				["value"] = 0.071429 * 5,
 			},
 		},
 		["ADD_BLOCK_VALUE_MOD_STR"] = {
+			-- Base
 			{
 				["value"] = BLOCK_PER_STRENGTH,
 			},
@@ -1214,6 +1240,7 @@ elseif addon.class == "SHAMAN" then
 			},
 		},
 		["ADD_DODGE"] = {
+			-- Base
 			{
 				["value"] = 1.6750,
 			},
@@ -1263,11 +1290,13 @@ elseif addon.class == "SHAMAN" then
 elseif addon.class == "WARLOCK" then
 	StatLogic.StatModTable["WARLOCK"] = {
 		["ADD_AP_MOD_STR"] = {
+			-- Base
 			{
 				["value"] = 1,
 			},
 		},
 		["ADD_DODGE"] = {
+			-- Base
 			{
 				["value"] = 2.0350,
 			},
@@ -1283,6 +1312,7 @@ elseif addon.class == "WARLOCK" then
 			},
 		},
 		["ADD_NORMAL_HEALTH_REG_MOD_SPI"] = {
+			-- Base
 			{
 				["value"] = 0.045455 * 5,
 			},
@@ -1407,26 +1437,31 @@ elseif addon.class == "WARLOCK" then
 elseif addon.class == "WARRIOR" then
 	StatLogic.StatModTable["WARRIOR"] = {
 		["ADD_AP_MOD_STR"] = {
+			-- Base
 			{
 				["value"] = 2,
 			},
 		},
 		["ADD_RANGED_AP_MOD_AGI"] = {
+			-- Base
 			{
 				["value"] = 1,
 			},
 		},
 		["ADD_DODGE"] = {
+			-- Base
 			{
 				["value"] = 0.7580,
 			},
 		},
 		["ADD_NORMAL_HEALTH_REG_MOD_SPI"] = {
+			-- Base
 			{
 				["value"] = 0.5 * 5,
 			},
 		},
 		["ADD_BLOCK_VALUE_MOD_STR"] = {
+			-- Base
 			{
 				["value"] = BLOCK_PER_STRENGTH,
 			},

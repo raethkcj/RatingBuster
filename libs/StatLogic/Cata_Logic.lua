@@ -340,6 +340,7 @@ if addon.class == "DRUID" then
 			},
 		},
 		["ADD_AP_MOD_STR"] = {
+			-- Base
 			{
 				["value"] = 1,
 			},
@@ -388,6 +389,7 @@ if addon.class == "DRUID" then
 			},
 		},
 		["ADD_DODGE"] = {
+			-- Base
 			{
 				["value"] = 4.9510,
 			},
@@ -572,6 +574,7 @@ if addon.class == "DRUID" then
 elseif addon.class == "DEATHKNIGHT" then
 	StatLogic.StatModTable["DEATHKNIGHT"] = {
 		["ADD_AP_MOD_STR"] = {
+			-- Base
 			{
 				["value"] = 2,
 			},
@@ -746,21 +749,25 @@ elseif addon.class == "DEATHKNIGHT" then
 elseif addon.class == "HUNTER" then
 	StatLogic.StatModTable["HUNTER"] = {
 		["ADD_AP_MOD_STR"] = {
+			-- Base
 			{
 				["value"] = 1,
 			},
 		},
 		["ADD_AP_MOD_AGI"] = {
+			-- Base
 			{
 				["value"] = 1,
 			},
 		},
 		["ADD_RANGED_AP_MOD_AGI"] = {
+			-- Base
 			{
 				["value"] = 2,
 			},
 		},
 		["ADD_DODGE"] = {
+			-- Base
 			{
 				["value"] = -5.4500,
 			},
@@ -818,11 +825,13 @@ elseif addon.class == "HUNTER" then
 elseif addon.class == "MAGE" then
 	StatLogic.StatModTable["MAGE"] = {
 		["ADD_AP_MOD_STR"] = {
+			-- Base
 			{
 				["value"] = 2,
 			},
 		},
 		["ADD_DODGE"] = {
+			-- Base
 			{
 				["value"] = 3.4575,
 			},
@@ -891,11 +900,13 @@ elseif addon.class == "MAGE" then
 elseif addon.class == "PALADIN" then
 	StatLogic.StatModTable["PALADIN"] = {
 		["ADD_AP_MOD_STR"] = {
+			-- Base
 			{
 				["value"] = 2,
 			},
 		},
 		["ADD_DODGE"] = {
+			-- Base
 			{
 				["value"] = 5.0000,
 			},
@@ -1034,11 +1045,13 @@ elseif addon.class == "PALADIN" then
 elseif addon.class == "PRIEST" then
 	StatLogic.StatModTable["PRIEST"] = {
 		["ADD_AP_MOD_STR"] = {
+			-- Base
 			{
 				["value"] = 2,
 			},
 		},
 		["ADD_DODGE"] = {
+			-- Base
 			{
 				["value"] = 3.1830,
 			},
@@ -1131,16 +1144,19 @@ elseif addon.class == "PRIEST" then
 elseif addon.class == "ROGUE" then
 	StatLogic.StatModTable["ROGUE"] = {
 		["ADD_AP_MOD_STR"] = {
+			-- Base
 			{
 				["value"] = 1,
 			},
 		},
 		["ADD_AP_MOD_AGI"] = {
+			-- Base
 			{
 				["value"] = 2,
 			},
 		},
 		["ADD_RANGED_AP_MOD_AGI"] = {
+			-- Base
 			{
 				["value"] = 1,
 			},
@@ -1177,6 +1193,7 @@ elseif addon.class == "ROGUE" then
 			},
 		},
 		["ADD_DODGE"] = {
+			-- Base
 			{
 				["value"] = -0.5900,
 			},
@@ -1225,16 +1242,19 @@ elseif addon.class == "ROGUE" then
 elseif addon.class == "SHAMAN" then
 	StatLogic.StatModTable["SHAMAN"] = {
 		["ADD_AP_MOD_STR"] = {
+			-- Base
 			{
 				["value"] = 1,
 			},
 		},
 		["ADD_AP_MOD_AGI"] = {
+			-- Base
 			{
 				["value"] = 2,
 			},
 		},
 		["ADD_DODGE"] = {
+			-- Base
 			{
 				["value"] = 1.6750,
 			},
@@ -1334,11 +1354,13 @@ elseif addon.class == "SHAMAN" then
 elseif addon.class == "WARLOCK" then
 	StatLogic.StatModTable["WARLOCK"] = {
 		["ADD_AP_MOD_STR"] = {
+			-- Base
 			{
 				["value"] = 2,
 			},
 		},
 		["ADD_DODGE"] = {
+			-- Base
 			{
 				["value"] = 2.0350,
 			},
@@ -1386,16 +1408,19 @@ elseif addon.class == "WARLOCK" then
 elseif addon.class == "WARRIOR" then
 	StatLogic.StatModTable["WARRIOR"] = {
 		["ADD_AP_MOD_STR"] = {
+			-- Base
 			{
 				["value"] = 2,
 			},
 		},
 		["ADD_RANGED_AP_MOD_AGI"] = {
+			-- Base
 			{
 				["value"] = 1,
 			},
 		},
 		["ADD_DODGE"] = {
+			-- Base
 			{
 				["value"] = 5.0000,
 			},
