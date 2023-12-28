@@ -331,53 +331,6 @@ StatLogic.GenericStatMap = {
 	}
 }
 
-local RatingNameToID = {
-	[StatLogic.Stats.HitRating] = "HIT_RATING",
-	[StatLogic.Stats.CritRating] = "CRIT_RATING",
-	[StatLogic.Stats.HasteRating] = "HASTE_RATING",
-	[StatLogic.Stats.DefenseRating] = "DEFENSE_RATING",
-	[StatLogic.Stats.DodgeRating] = "DODGE_RATING",
-	[StatLogic.Stats.ParryRating] = "PARRY_RATING",
-	[StatLogic.Stats.BlockRating] = "BLOCK_RATING",
-	[StatLogic.Stats.MeleeHitRating] = "MELEE_HIT_RATING",
-	[StatLogic.Stats.RangedHitRating] = "RANGED_HIT_RATING",
-	[StatLogic.Stats.SpellHitRating] = "SPELL_HIT_RATING",
-	[StatLogic.Stats.MeleeCritRating] = "MELEE_CRIT_RATING",
-	[StatLogic.Stats.RangedCritRating] = "RANGED_CRIT_RATING",
-	[StatLogic.Stats.SpellCritRating] = "SPELL_CRIT_RATING",
-	[StatLogic.Stats.ResilienceRating] = "RESILIENCE_RATING",
-	[StatLogic.Stats.MeleeHasteRating] = "MELEE_HASTE_RATING",
-	[StatLogic.Stats.RangedHasteRating] = "RANGED_HASTE_RATING",
-	[StatLogic.Stats.SpellHasteRating] = "SPELL_HASTE_RATING",
-	[StatLogic.Stats.ExpertiseRating] = "EXPERTISE_RATING",
-	[StatLogic.Stats.ArmorPenetrationRating] = "ARMOR_PENETRATION_RATING",
-	[StatLogic.Stats.MasteryRating] = "MASTERY_RATING",
-	["HIT_RATING"] = StatLogic.Stats.HitRating,
-	["CRIT_RATING"] = StatLogic.Stats.CritRating,
-	["HASTE_RATING"] = StatLogic.Stats.HasteRating,
-	["DEFENSE_RATING"] = StatLogic.Stats.DefenseRating,
-	["DODGE_RATING"] = StatLogic.Stats.DodgeRating,
-	["PARRY_RATING"] = StatLogic.Stats.ParryRating,
-	["BLOCK_RATING"] = StatLogic.Stats.BlockRating,
-	["MELEE_HIT_RATING"] = StatLogic.Stats.MeleeHitRating,
-	["RANGED_HIT_RATING"] = StatLogic.Stats.RangedHitRating,
-	["SPELL_HIT_RATING"] = StatLogic.Stats.SpellHitRating,
-	["MELEE_CRIT_RATING"] = StatLogic.Stats.MeleeCritRating,
-	["RANGED_CRIT_RATING"] = StatLogic.Stats.RangedCritRating,
-	["SPELL_CRIT_RATING"] = StatLogic.Stats.SpellCritRating,
-	["RESILIENCE_RATING"] = StatLogic.Stats.ResilienceRating,
-	["MELEE_HASTE_RATING"] = StatLogic.Stats.MeleeHasteRating,
-	["RANGED_HASTE_RATING"] = StatLogic.Stats.RangedHasteRating,
-	["SPELL_HASTE_RATING"] = StatLogic.Stats.SpellHasteRating,
-	["EXPERTISE_RATING"] = StatLogic.Stats.ExpertiseRating,
-	["ARMOR_PENETRATION_RATING"] = StatLogic.Stats.ArmorPenetrationRating,
-	["MASTERY_RATING"] = StatLogic.Stats.MasteryRating,
-}
-
-function StatLogic:GetRatingIdOrName(rating)
-	return RatingNameToID[rating]
-end
-
 local function GetPlayerBuffRank(buff)
 	local rank = GetSpellSubtext(buff)
 	if rank then
@@ -1553,15 +1506,13 @@ function StatLogic:GetGemID(item)
 	end
 end
 
-local function ConvertGenericRatings(table)
+local function ConvertGenericStats(table)
 	for generic, ratings in pairs(StatLogic.GenericStatMap) do
-		local genericName = StatLogic:GetRatingIdOrName(generic)
-		if genericName and table[genericName] then
+		if table[generic] then
 			for _, rating in ipairs(ratings) do
-				local ratingName = StatLogic:GetRatingIdOrName(rating)
-				table[ratingName] = table[ratingName] + table[genericName]
+				table[rating] = table[rating] + table[generic]
 			end
-			table[genericName] = nil
+			table[generic] = nil
 		end
 	end
 end
@@ -1955,7 +1906,7 @@ do
 		end
 
 		-- Tooltip scanning done, do post processing
-		ConvertGenericRatings(statTable)
+		ConvertGenericStats(statTable)
 
 		cache[link] = copy(statTable)
 		return statTable

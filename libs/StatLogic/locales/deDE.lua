@@ -99,7 +99,7 @@ L["WholeTextLookup"] = {
 	["Geringes Zauberöl"] = {["SPELL_DMG"] = 16, ["HEAL"] = 16}, --
 	["Zauberöl"] = {["SPELL_DMG"] = 24, ["HEAL"] = 24}, --
 	["Überragendes Zauberöl"] = {["SPELL_DMG"] = 42, ["HEAL"] = 42}, --
-	["Hervorragendes Zauberöl"] = {["SPELL_DMG"] = 36, ["HEAL"] = 36, ["SPELL_CRIT_RATING"] = 14}, --
+	["Hervorragendes Zauberöl"] = {["SPELL_DMG"] = 36, ["HEAL"] = 36, [StatLogic.Stats.SpellCritRating] = 14}, --
 	["Gesegnetes Zauberöl"] = {["SPELL_DMG_UNDEAD"] = 60}, -- ID: 23123
 
 	["Schwaches Manaöl"] = {["MANA_REG"] = 4}, --
@@ -118,7 +118,7 @@ L["WholeTextLookup"] = {
 	["Lauftempo ein wenig erhöht"] = {["RUN_SPEED"] = 8}, --
 	["Schwache Temposteigerung"] = {["RUN_SPEED"] = 8}, -- Enchant Boots - Minor Speed
 	["Schwaches Tempo"] = {["RUN_SPEED"] = 8}, -- Enchant Boots - Cat's Swiftness "Minor Speed and +6 Agility" http://wow.allakhazam.com/db/spell.html?wspell=34007
-	["Sicherer Stand"] = {["MELEE_HIT_RATING"] = 10}, -- Enchant Boots - Surefooted "Surefooted" http://wow.allakhazam.com/db/spell.html?wspell=27954
+	["Sicherer Stand"] = {[StatLogic.Stats.MeleeHitRating] = 10}, -- Enchant Boots - Surefooted "Surefooted" http://wow.allakhazam.com/db/spell.html?wspell=27954
 
 	["Feingefühl"] = {["THREAT_MOD"] = -2}, -- Enchant Cloak - Subtlety
 	["2% verringerte Bedrohung"] = {["THREAT_MOD"] = -2}, -- StatLogic:GetSum("item:23344:2832")
@@ -219,7 +219,7 @@ L["StatIDLookup"] = {
 	["Waffenschaden"] = {"MELEE_DMG"}, -- Enchant
 	["Erhöht das Reittiertempo%"] = {"MOUNT_SPEED"}, -- [Highlander's Plate Greaves] ID: 20048
 
-	["Alle Werte"] = {StatLogic.Stats.Strength, StatLogic.Stats.Agility, StatLogic.Stats.Stamina, StatLogic.Stats.Intellect, StatLogic.Stats.Spirit,},
+	["Alle Werte"] = {StatLogic.Stats.AllStats,},
 	["Stärke"] = {StatLogic.Stats.Strength,},
 	["Beweglichkeit"] = {StatLogic.Stats.Agility,},
 	["Ausdauer"] = {StatLogic.Stats.Stamina,},
@@ -324,65 +324,65 @@ L["StatIDLookup"] = {
 	["zusätzlichen Schaden pro Sekunde"] = {"DPS",}, -- [Thorium Shells] ID: 15997 "Verursacht 17.5 zusätzlichen Schaden pro Sekunde."
 	["Verursacht zusätzlichen Schaden pro Sekunde"] = {"DPS",}, -- [Thorium Shells] ID: 15997
 
-	["Verteidigungswertung"] = {"DEFENSE_RATING",},
-	["Erhöht Verteidigungswertung"] = {"DEFENSE_RATING",},
-	["Erhöht die Verteidigungswertung"] = {"DEFENSE_RATING",},
-	["Ausweichwertung"] = {"DODGE_RATING",},
-	["Erhöht Eure Ausweichwertung"] = {"DODGE_RATING",},
-	["Parierwertung"] = {"PARRY_RATING",},
-	["Erhöht Eure Parierwertung"] = {"PARRY_RATING",},
-	["Blockwertung"] = {"BLOCK_RATING",},
-	["Erhöht Eure Blockwertung"] = {"BLOCK_RATING",},
-	["Erhöt den Blockwet Eures Schildes"] = {"BLOCK_RATING",},
+	["Verteidigungswertung"] = {StatLogic.Stats.DefenseRating,},
+	["Erhöht Verteidigungswertung"] = {StatLogic.Stats.DefenseRating,},
+	["Erhöht die Verteidigungswertung"] = {StatLogic.Stats.DefenseRating,},
+	["Ausweichwertung"] = {StatLogic.Stats.DodgeRating,},
+	["Erhöht Eure Ausweichwertung"] = {StatLogic.Stats.DodgeRating,},
+	["Parierwertung"] = {StatLogic.Stats.ParryRating,},
+	["Erhöht Eure Parierwertung"] = {StatLogic.Stats.ParryRating,},
+	["Blockwertung"] = {StatLogic.Stats.BlockRating,},
+	["Erhöht Eure Blockwertung"] = {StatLogic.Stats.BlockRating,},
+	["Erhöt den Blockwet Eures Schildes"] = {StatLogic.Stats.BlockRating,},
 
 	["verbessert eure trefferchance%"] = {"MELEE_HIT", "RANGED_HIT",},
 	["erhöht eure chance mit zaubern zu treffen%"] = {"SPELL_HIT",},
-	["Trefferwertung"] = {"HIT_RATING",},
-	["Erhöht Trefferwertung"] = {"HIT_RATING",}, -- ITEM_MOD_HIT_RATING
-	["Erhöht Eure Trefferwertung"] = {"HIT_RATING",}, -- ITEM_MOD_HIT_MELEE_RATING
-	["Erhöht die Trefferwertung"] = {"HIT_RATING",},
-	["Zaubertrefferwertung"] = {"SPELL_HIT_RATING",},
-	["Erhöht Zaubertrefferwertung"] = {"SPELL_HIT_RATING",}, -- ITEM_MOD_HIT_SPELL_RATING
-	["Erhöht Eure Zaubertrefferwertung"] = {"SPELL_HIT_RATING",},
-	["Erhöht die Zaubertrefferwertung"] = {"SPELL_HIT_RATING",},
-	["Distanztrefferwertung"] = {"RANGED_HIT_RATING",},
-	["Erhöht Distanztrefferwertung"] = {"RANGED_HIT_RATING",}, -- ITEM_MOD_HIT_RANGED_RATING
-	["Erhöht Eure Distanztrefferwertung"] = {"RANGED_HIT_RATING",},
+	["Trefferwertung"] = {StatLogic.Stats.HitRating,},
+	["Erhöht Trefferwertung"] = {StatLogic.Stats.HitRating,}, -- ITEM_MOD_HIT_RATING
+	["Erhöht Eure Trefferwertung"] = {StatLogic.Stats.HitRating,}, -- ITEM_MOD_HIT_MELEE_RATING
+	["Erhöht die Trefferwertung"] = {StatLogic.Stats.HitRating,},
+	["Zaubertrefferwertung"] = {StatLogic.Stats.SpellHitRating,},
+	["Erhöht Zaubertrefferwertung"] = {StatLogic.Stats.SpellHitRating,}, -- ITEM_MOD_HIT_SPELL_RATING
+	["Erhöht Eure Zaubertrefferwertung"] = {StatLogic.Stats.SpellHitRating,},
+	["Erhöht die Zaubertrefferwertung"] = {StatLogic.Stats.SpellHitRating,},
+	["Distanztrefferwertung"] = {StatLogic.Stats.RangedHitRating,},
+	["Erhöht Distanztrefferwertung"] = {StatLogic.Stats.RangedHitRating,}, -- ITEM_MOD_HIT_RANGED_RATING
+	["Erhöht Eure Distanztrefferwertung"] = {StatLogic.Stats.RangedHitRating,},
 
-	["kritische Trefferwertung"] = {"CRIT_RATING",},
-	["Erhöht kritische Trefferwertung"] = {"CRIT_RATING",},
-	["Erhöht Eure kritische Trefferwertung"] = {"CRIT_RATING",},
-	["Erhöht die kritische Trefferwertung"] = {"CRIT_RATING",},
-	["kritische Zaubertrefferwertung"] = {"SPELL_CRIT_RATING",},
-	["Erhöht kritische Zaubertrefferwertung"] = {"SPELL_CRIT_RATING",},
-	["Erhöht Eure kritische Zaubertrefferwertung"] = {"SPELL_CRIT_RATING",},
-	["Erhöht die kritische Zaubertrefferwertung"] = {"SPELL_CRIT_RATING",},
-	["Erhöht die kritische Zaubertrefferwertung aller Gruppenmitglieder innerhalb von 30 Metern"] = {"SPELL_CRIT_RATING",},
-	["Erhöht Eure kritische Distanztrefferwertung"] = {"RANGED_CRIT_RATING",}, -- Fletcher's Gloves ID:7348
+	["kritische Trefferwertung"] = {StatLogic.Stats.CritRating,},
+	["Erhöht kritische Trefferwertung"] = {StatLogic.Stats.CritRating,},
+	["Erhöht Eure kritische Trefferwertung"] = {StatLogic.Stats.CritRating,},
+	["Erhöht die kritische Trefferwertung"] = {StatLogic.Stats.CritRating,},
+	["kritische Zaubertrefferwertung"] = {StatLogic.Stats.SpellCritRating,},
+	["Erhöht kritische Zaubertrefferwertung"] = {StatLogic.Stats.SpellCritRating,},
+	["Erhöht Eure kritische Zaubertrefferwertung"] = {StatLogic.Stats.SpellCritRating,},
+	["Erhöht die kritische Zaubertrefferwertung"] = {StatLogic.Stats.SpellCritRating,},
+	["Erhöht die kritische Zaubertrefferwertung aller Gruppenmitglieder innerhalb von 30 Metern"] = {StatLogic.Stats.SpellCritRating,},
+	["Erhöht Eure kritische Distanztrefferwertung"] = {StatLogic.Stats.RangedCritRating,}, -- Fletcher's Gloves ID:7348
 
-	["Abhärtung"] = {"RESILIENCE_RATING",},
-	["Abhärtungswertung"] = {"RESILIENCE_RATING",},
-	["Erhöht Eure Abhärtungswertung"] = {"RESILIENCE_RATING",},
+	["Abhärtung"] = {StatLogic.Stats.ResilienceRating,},
+	["Abhärtungswertung"] = {StatLogic.Stats.ResilienceRating,},
+	["Erhöht Eure Abhärtungswertung"] = {StatLogic.Stats.ResilienceRating,},
 
-	["Erhöht Tempowertung"] = {"HASTE_RATING"}, -- [Pfeilabwehrender Brustschutz] ID:33328
-	["Erhöht die Tempowertung"] = {"HASTE_RATING"},
-	["Angriffstempowertung"] = {"MELEE_HASTE_RATING"},
-	["Zaubertempowertung"] = {"SPELL_HASTE_RATING"},
-	["Distanzangriffstempowertung"] = {"RANGED_HASTE_RATING"},
-	["Erhöht Angriffstempowertung"] = {"MELEE_HASTE_RATING"},
-	["Erhöht Eure Angriffstempowertung"] = {"MELEE_HASTE_RATING"},
-	["Erhöht Eure Distanzangriffstempowertung"] = {"RANGED_HASTE_RATING"},
-	["Erhöht Zaubertempowertung"] = {"SPELL_HASTE_RATING"},
-	["Erhöht die Zaubertempowertung"] = {"SPELL_HASTE_RATING"},
+	["Erhöht Tempowertung"] = {StatLogic.Stats.HasteRating}, -- [Pfeilabwehrender Brustschutz] ID:33328
+	["Erhöht die Tempowertung"] = {StatLogic.Stats.HasteRating},
+	["Angriffstempowertung"] = {StatLogic.Stats.MeleeHasteRating},
+	["Zaubertempowertung"] = {StatLogic.Stats.SpellHasteRating},
+	["Distanzangriffstempowertung"] = {StatLogic.Stats.RangedHasteRating},
+	["Erhöht Angriffstempowertung"] = {StatLogic.Stats.MeleeHasteRating},
+	["Erhöht Eure Angriffstempowertung"] = {StatLogic.Stats.MeleeHasteRating},
+	["Erhöht Eure Distanzangriffstempowertung"] = {StatLogic.Stats.RangedHasteRating},
+	["Erhöht Zaubertempowertung"] = {StatLogic.Stats.SpellHasteRating},
+	["Erhöht die Zaubertempowertung"] = {StatLogic.Stats.SpellHasteRating},
 
-	["Waffenkundewertung"] = {"EXPERTISE_RATING"}, -- gem
-	["Erhöht die Waffenkundewertung"] = {"EXPERTISE_RATING"},
-	["Erhöht Eure Waffenkundewertung"] = {"EXPERTISE_RATING"},
-	["Rüstungsdurchschlagwertung"] = {"ARMOR_PENETRATION_RATING"}, -- gem
-	["Erhöht den Rüstungsdurchschlagwert um"] = {"ARMOR_PENETRATION_RATING"},
-	["Erhöht die Rüstungsdurchschlagwertung um"] = {"ARMOR_PENETRATION_RATING"},
-	["Erhöht Eure Rüstungsdurchschlagwertung um"] = {"ARMOR_PENETRATION_RATING"}, -- ID:43178
-	["erhöht den rüstungsdurchschlag"] = {"ARMOR_PENETRATION_RATING"},
+	["Waffenkundewertung"] = {StatLogic.Stats.ExpertiseRating}, -- gem
+	["Erhöht die Waffenkundewertung"] = {StatLogic.Stats.ExpertiseRating},
+	["Erhöht Eure Waffenkundewertung"] = {StatLogic.Stats.ExpertiseRating},
+	["Rüstungsdurchschlagwertung"] = {StatLogic.Stats.ArmorPenetrationRating}, -- gem
+	["Erhöht den Rüstungsdurchschlagwert um"] = {StatLogic.Stats.ArmorPenetrationRating},
+	["Erhöht die Rüstungsdurchschlagwertung um"] = {StatLogic.Stats.ArmorPenetrationRating},
+	["Erhöht Eure Rüstungsdurchschlagwertung um"] = {StatLogic.Stats.ArmorPenetrationRating}, -- ID:43178
+	["erhöht den rüstungsdurchschlag"] = {StatLogic.Stats.ArmorPenetrationRating},
 
 	-- Exclude
 	["Sek"] = false,

@@ -97,7 +97,7 @@ L["WholeTextLookup"] = {
 	["Huile de sorcier mineure"] = {["SPELL_DMG"] = 8, ["HEAL"] = 8}, -- ID: 20744
 	["Huile de sorcier inférieure"] = {["SPELL_DMG"] = 16, ["HEAL"] = 16}, -- ID: 20746
 	["Huile de sorcier"] = {["SPELL_DMG"] = 24, ["HEAL"] = 24}, -- ID: 20750
-	["Huile de sorcier brillante"] = {["SPELL_DMG"] = 36, ["HEAL"] = 36, ["SPELL_CRIT_RATING"] = 14}, -- ID: 20749
+	["Huile de sorcier brillante"] = {["SPELL_DMG"] = 36, ["HEAL"] = 36, [StatLogic.Stats.SpellCritRating] = 14}, -- ID: 20749
 	["Huile de sorcier excellente"] = {["SPELL_DMG"] = 42, ["HEAL"] = 42}, -- ID: 22522
 	["Huile de sorcier bénite"] = {["SPELL_DMG_UNDEAD"] = 60}, -- ID: 23123
 
@@ -120,7 +120,7 @@ L["WholeTextLookup"] = {
 	["Augmentation mineure de vitesse"] = {["RUN_SPEED"] = 8}, -- Ench. de bottes (Vitesse mineure) ID: 13890
 	["Vitesse mineure"] = {["RUN_SPEED"] = 8}, -- Ench. de bottes (Rapidité du félin) "Vitesse mineure et +6 à l'Agilité" -- ID: 34007 -- & Ench. de bottes (Vitesse du sanglier) "Vitesse mineure et +9 à l'Endurance" -- ID: 34008
 	["légère augmentation de la vitesse de course"] = {["RUN_SPEED"] = 8}, -- [Diamant brûlétoile de rapidité] -- ID: 28557
-	["Pied sûr"] = {["MELEE_HIT_RATING"] = 10}, -- Ench. de bottes (Pied sûr) -- ID: 27954
+	["Pied sûr"] = {[StatLogic.Stats.MeleeHitRating] = 10}, -- Ench. de bottes (Pied sûr) -- ID: 27954
 
 	["Discrétion"] = {["THREAT_MOD"] = -2}, -- Ench. de cape (Discrétion) -- ID: 25084
 	["2% de réduction de la menace"] = {["THREAT_MOD"] = -2}, -- [Diamant tonneterre tonifiant] -- ID: 25897
@@ -235,7 +235,7 @@ L["StatIDLookup"] = {
 	["aux dégâts en mêlée"] = {"MELEE_DMG"},
 	["dégâts de l'arme"] = {"MELEE_DMG"},
 
-	["à toutes les caractéristiques"] = {StatLogic.Stats.Strength, StatLogic.Stats.Agility, StatLogic.Stats.Stamina, StatLogic.Stats.Intellect, StatLogic.Stats.Spirit},
+	["à toutes les caractéristiques"] = {StatLogic.Stats.AllStats,},
 	["Force"] = {StatLogic.Stats.Strength},
 	["à la Force"] = {StatLogic.Stats.Strength},
 	["Agilité"] = {StatLogic.Stats.Agility},
@@ -364,87 +364,87 @@ L["StatIDLookup"] = {
 	["dégâts par seconde"] = {"DPS"},
 	["Ajoutedégâts par seconde"] = {"DPS"}, -- [Obus en thorium] ID: 15997
 
-	["score de défense"] = {"DEFENSE_RATING"},
-	["au score de défense"] = {"DEFENSE_RATING"},
-	["le score de défense"] = {"DEFENSE_RATING"},
-	["votre score de défense"] = {"DEFENSE_RATING"},
+	["score de défense"] = {StatLogic.Stats.DefenseRating},
+	["au score de défense"] = {StatLogic.Stats.DefenseRating},
+	["le score de défense"] = {StatLogic.Stats.DefenseRating},
+	["votre score de défense"] = {StatLogic.Stats.DefenseRating},
 
-	["score d'esquive"] = {"DODGE_RATING"},
-	["le score d'esquive"] = {"DODGE_RATING"},
-	["au score d'esquive"] = {"DODGE_RATING"},
-	["votre score d'esquive"] = {"DODGE_RATING"},
-	["score d’esquive"] = {"DODGE_RATING"},
-	["le score d’esquive"] = {"DODGE_RATING"},
-	["au score d’esquive"] = {"DODGE_RATING"},
-	["votre score d’esquive"] = {"DODGE_RATING"},
+	["score d'esquive"] = {StatLogic.Stats.DodgeRating},
+	["le score d'esquive"] = {StatLogic.Stats.DodgeRating},
+	["au score d'esquive"] = {StatLogic.Stats.DodgeRating},
+	["votre score d'esquive"] = {StatLogic.Stats.DodgeRating},
+	["score d’esquive"] = {StatLogic.Stats.DodgeRating},
+	["le score d’esquive"] = {StatLogic.Stats.DodgeRating},
+	["au score d’esquive"] = {StatLogic.Stats.DodgeRating},
+	["votre score d’esquive"] = {StatLogic.Stats.DodgeRating},
 
-	["score de parade"] = {"PARRY_RATING"},
-	["au score de parade"] = {"PARRY_RATING"},
-	["le score de parade"] = {"PARRY_RATING"},
-	["votre score de parade"] = {"PARRY_RATING"},
+	["score de parade"] = {StatLogic.Stats.ParryRating},
+	["au score de parade"] = {StatLogic.Stats.ParryRating},
+	["le score de parade"] = {StatLogic.Stats.ParryRating},
+	["votre score de parade"] = {StatLogic.Stats.ParryRating},
 
-	["score de blocage"] = {"BLOCK_RATING"},
-	["le score de blocage"] = {"BLOCK_RATING"},
-	["votre score de blocage"] = {"BLOCK_RATING"},
-	["au score de blocage"] = {"BLOCK_RATING"}, -- Ench. de bouclier (Blocage inférieur) "+10 au score de blocage" -- ID: 13689
+	["score de blocage"] = {StatLogic.Stats.BlockRating},
+	["le score de blocage"] = {StatLogic.Stats.BlockRating},
+	["votre score de blocage"] = {StatLogic.Stats.BlockRating},
+	["au score de blocage"] = {StatLogic.Stats.BlockRating}, -- Ench. de bouclier (Blocage inférieur) "+10 au score de blocage" -- ID: 13689
 
-	["score de toucher"] = {"HIT_RATING"},
-	["le score de toucher"] = {"HIT_RATING"},
-	["votre score de toucher"] = {"HIT_RATING"},
-	["au score de toucher"] = {"HIT_RATING"},
+	["score de toucher"] = {StatLogic.Stats.HitRating},
+	["le score de toucher"] = {StatLogic.Stats.HitRating},
+	["votre score de toucher"] = {StatLogic.Stats.HitRating},
+	["au score de toucher"] = {StatLogic.Stats.HitRating},
 
-	["score de coup critique"] = {"CRIT_RATING"},
-	["score de critique"] = {"CRIT_RATING"},
-	["au score de coup critique"] = {"CRIT_RATING"},
-	["au score de critique"] = {"CRIT_RATING"},
-	["le score de coup critique"] = {"CRIT_RATING"},
-	["votre score de coup critique"] = {"CRIT_RATING"},
-	["le score de coup critique en mêlée"] = {"MELEE_CRIT_RATING"}, -- [Cape des ténèbres] "Augmente de 24 le score de coup critique en mêlée." ID: 33122
+	["score de coup critique"] = {StatLogic.Stats.CritRating},
+	["score de critique"] = {StatLogic.Stats.CritRating},
+	["au score de coup critique"] = {StatLogic.Stats.CritRating},
+	["au score de critique"] = {StatLogic.Stats.CritRating},
+	["le score de coup critique"] = {StatLogic.Stats.CritRating},
+	["votre score de coup critique"] = {StatLogic.Stats.CritRating},
+	["le score de coup critique en mêlée"] = {StatLogic.Stats.MeleeCritRating}, -- [Cape des ténèbres] "Augmente de 24 le score de coup critique en mêlée." ID: 33122
 
-	["score de résilience"] = {"RESILIENCE_RATING"},
-	["le score de résilience"] = {"RESILIENCE_RATING"},
-	["au score de résilience"] = {"RESILIENCE_RATING"},
-	["votre score de résilience"] = {"RESILIENCE_RATING"},
-	["à la résilience"] = {"RESILIENCE_RATING"},
+	["score de résilience"] = {StatLogic.Stats.ResilienceRating},
+	["le score de résilience"] = {StatLogic.Stats.ResilienceRating},
+	["au score de résilience"] = {StatLogic.Stats.ResilienceRating},
+	["votre score de résilience"] = {StatLogic.Stats.ResilienceRating},
+	["à la résilience"] = {StatLogic.Stats.ResilienceRating},
 
-	["le score de toucher des sorts"] = {"SPELL_HIT_RATING"},
-	["score de toucher des sorts"] = {"SPELL_HIT_RATING"},
-	["au score de toucher des sorts"] = {"SPELL_HIT_RATING"},
-	["votre score de toucher des sorts"] = {"SPELL_HIT_RATING"},
+	["le score de toucher des sorts"] = {StatLogic.Stats.SpellHitRating},
+	["score de toucher des sorts"] = {StatLogic.Stats.SpellHitRating},
+	["au score de toucher des sorts"] = {StatLogic.Stats.SpellHitRating},
+	["votre score de toucher des sorts"] = {StatLogic.Stats.SpellHitRating},
 
-	["le score de coup critique des sorts"] = {"SPELL_CRIT_RATING"},
-	["score de coup critique des sorts"] = {"SPELL_CRIT_RATING"},
-	["score de critique des sorts"] = {"SPELL_CRIT_RATING"},
-	["au score de coup critique des sorts"] = {"SPELL_CRIT_RATING"},
-	["au score de critique des sorts"] = {"SPELL_CRIT_RATING"},
-	["votre score de coup critique des sorts"] = {"SPELL_CRIT_RATING"},
-	["au score de coup critique de sorts"] = {"SPELL_CRIT_RATING"},
-	["aux score de coup critique des sorts"] = {"SPELL_CRIT_RATING"},--blizzard! faute d'orthographe!!
+	["le score de coup critique des sorts"] = {StatLogic.Stats.SpellCritRating},
+	["score de coup critique des sorts"] = {StatLogic.Stats.SpellCritRating},
+	["score de critique des sorts"] = {StatLogic.Stats.SpellCritRating},
+	["au score de coup critique des sorts"] = {StatLogic.Stats.SpellCritRating},
+	["au score de critique des sorts"] = {StatLogic.Stats.SpellCritRating},
+	["votre score de coup critique des sorts"] = {StatLogic.Stats.SpellCritRating},
+	["au score de coup critique de sorts"] = {StatLogic.Stats.SpellCritRating},
+	["aux score de coup critique des sorts"] = {StatLogic.Stats.SpellCritRating},--blizzard! faute d'orthographe!!
 
 	--ToDo
-	--["Ranged Hit Rating"] = {"RANGED_HIT_RATING"},
-	--["Improves ranged hit rating"] = {"RANGED_HIT_RATING"}, -- ITEM_MOD_HIT_RANGED_RATING
-	--["Increases your ranged hit rating"] = {"RANGED_HIT_RATING"},
-	["votre score de coup critique à distance"] = {"RANGED_CRIT_RATING"}, -- [Gants de fléchier] ID:7348
+	--["Ranged Hit Rating"] = {StatLogic.Stats.RangedHitRating},
+	--["Improves ranged hit rating"] = {StatLogic.Stats.RangedHitRating}, -- ITEM_MOD_HIT_RANGED_RATING
+	--["Increases your ranged hit rating"] = {StatLogic.Stats.RangedHitRating},
+	["votre score de coup critique à distance"] = {StatLogic.Stats.RangedCritRating}, -- [Gants de fléchier] ID:7348
 
-	["le score de hâte"] = {"HASTE_RATING"},
-	["score de hâte"] = {"HASTE_RATING"},
-	["au score de hâte"] = {"HASTE_RATING"},
+	["le score de hâte"] = {StatLogic.Stats.HasteRating},
+	["score de hâte"] = {StatLogic.Stats.HasteRating},
+	["au score de hâte"] = {StatLogic.Stats.HasteRating},
 
-	["le score de hâte des sorts"] = {"SPELL_HASTE_RATING"},
-	["score de hâte des sorts"] = {"SPELL_HASTE_RATING"},
-	["au score de hâte des sorts"] = {"SPELL_HASTE_RATING"},
+	["le score de hâte des sorts"] = {StatLogic.Stats.SpellHasteRating},
+	["score de hâte des sorts"] = {StatLogic.Stats.SpellHasteRating},
+	["au score de hâte des sorts"] = {StatLogic.Stats.SpellHasteRating},
 
-	["le score de hâte à distance"] = {"RANGED_HASTE_RATING"},
-	["score de hâte à distance"] = {"RANGED_HASTE_RATING"},
-	["au score de hâte à distance"] = {"RANGED_HASTE_RATING"},
+	["le score de hâte à distance"] = {StatLogic.Stats.RangedHasteRating},
+	["score de hâte à distance"] = {StatLogic.Stats.RangedHasteRating},
+	["au score de hâte à distance"] = {StatLogic.Stats.RangedHasteRating},
 
-	["le score d’expertise"] = {"EXPERTISE_RATING"},
-	["score d’expertise"] = {"EXPERTISE_RATING"},
-	["score de pénétration d'armure"] = {"ARMOR_PENETRATION_RATING"},
-	["le score de pénétration d'armure"] = {"ARMOR_PENETRATION_RATING"},
-	["votre score de pénétration d'armure"] = {"ARMOR_PENETRATION_RATING"},
-	["la pénétration d'armure"] = {"ARMOR_PENETRATION_RATING"},
+	["le score d’expertise"] = {StatLogic.Stats.ExpertiseRating},
+	["score d’expertise"] = {StatLogic.Stats.ExpertiseRating},
+	["score de pénétration d'armure"] = {StatLogic.Stats.ArmorPenetrationRating},
+	["le score de pénétration d'armure"] = {StatLogic.Stats.ArmorPenetrationRating},
+	["votre score de pénétration d'armure"] = {StatLogic.Stats.ArmorPenetrationRating},
+	["la pénétration d'armure"] = {StatLogic.Stats.ArmorPenetrationRating},
 
 	--ToDo
 	-- Exclude

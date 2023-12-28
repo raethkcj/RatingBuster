@@ -141,7 +141,7 @@ L["WholeTextLookup"] = {
 	["Слабое волшебное масло"] = {["SPELL_DMG"] = 8, ["HEAL"] = 8}, -- ID: 20744
 	["Простое волшебное масло"] = {["SPELL_DMG"] = 16, ["HEAL"] = 16}, -- ID: 20746
 	["Волшебное масло"] = {["SPELL_DMG"] = 24, ["HEAL"] = 24}, -- ID: 20750
-	["Блестящее волшебное масло"] = {["SPELL_DMG"] = 36, ["HEAL"] = 36, ["SPELL_CRIT_RATING"] = 14}, -- ID: 20749
+	["Блестящее волшебное масло"] = {["SPELL_DMG"] = 36, ["HEAL"] = 36, [StatLogic.Stats.SpellCritRating] = 14}, -- ID: 20749
 	["Превосходное волшебное масло"] = {["SPELL_DMG"] = 42, ["HEAL"] = 42}, -- ID: 22522
 	["Благословленное волшебное масло"] = {["SPELL_DMG_UNDEAD"] = 60}, -- ID: 23123
 
@@ -164,7 +164,7 @@ L["WholeTextLookup"] = {
 	["Небольшое увеличение скорости"] = {["RUN_SPEED"] = 8}, -- Enchant Boots - Minor Speed "Minor Speed Increase" http://wow.allakhazam.com/db/spell.html?wspell=13890
 	["Небольшое увеличение скорости и +6 к ловкости"] = {["RUN_SPEED"] = 8, [StatLogic.Stats.Agility] = 6}, -- Enchant Boots - Cat's Swiftness "Minor Speed and +6 Agility" http://wow.allakhazam.com/db/spell.html?wspell=34007
 	["Небольшое увеличение скорости и +9 к выносливости"] = {["RUN_SPEED"] = 8, [StatLogic.Stats.Stamina] = 9}, -- Enchant Boots - Boar's Speed "Minor Speed and +9 Stamina"
-	["Верный шаг"] = {["MELEE_HIT_RATING"] = 10}, -- Enchant Boots - Surefooted "Surefooted" http://wow.allakhazam.com/db/spell.html?wspell=27954
+	["Верный шаг"] = {[StatLogic.Stats.MeleeHitRating] = 10}, -- Enchant Boots - Surefooted "Surefooted" http://wow.allakhazam.com/db/spell.html?wspell=27954
 
 	["Скрытность"] = {["THREAT_MOD"] = -2}, -- Enchant Cloak - Subtlety
 	["На 2% уменьшена угроза"] = {["THREAT_MOD"] = -2}, -- StatLogic:GetSum("item:23344:2832")
@@ -260,7 +260,7 @@ L["StatIDLookup"] = {
 	["Weapon Damage"] = {"MELEE_DMG"}, -- Enchant
 	["увеличение скорости передвижения верхом на%"] = {"MOUNT_SPEED"}, -- [Highlander's Plate Greaves] ID: 20048
 
-	["ко всем характеристикам"] = {StatLogic.Stats.Strength, StatLogic.Stats.Agility, StatLogic.Stats.Stamina, StatLogic.Stats.Intellect, StatLogic.Stats.Spirit,},
+	["ко всем характеристикам"] = {StatLogic.Stats.AllStats,},
 	["к силе"] = {StatLogic.Stats.Strength,},
 	["силу цели"] = {StatLogic.Stats.Strength,},
 	["к ловкости"] = {StatLogic.Stats.Agility,},
@@ -401,73 +401,73 @@ L["StatIDLookup"] = {
 	["damage per second"] = {"DPS",},
 	["Addsdamage per second"] = {"DPS",}, -- [Thorium Shells] ID: 15977
 
-	["Defense Rating"] = {"DEFENSE_RATING",},
-	["повышает рейтинг защиты на"] = {"DEFENSE_RATING",},
-	["Dodge Rating"] = {"DODGE_RATING",},
-	["к рейтингу уклонения"] = {"DODGE_RATING",},
-	["увеличивает рейтинг уклонения"] = {"DODGE_RATING",},
-	["увеличивает рейтинг уклонения на"] = {"DODGE_RATING",},
-	["повышает рейтинг уклонения на"] = {"DODGE_RATING",},
-	["Parry Rating"] = {"PARRY_RATING",},
-	["повышает рейтинг парирования на"] = {"PARRY_RATING",},
-	["Shield Block Rating"] = {"BLOCK_RATING",}, -- Enchant Shield - Lesser Block +10 Shield Block Rating http://wow.allakhazam.com/db/spell.html?wspell=13689
-	["Block Rating"] = {"BLOCK_RATING",},
-	["увеличение рейтинга блока наед"] = {"BLOCK_RATING",},
-	["увеличивает рейтинг блокирования щитом на"] = {"BLOCK_RATING",},
+	["Defense Rating"] = {StatLogic.Stats.DefenseRating,},
+	["повышает рейтинг защиты на"] = {StatLogic.Stats.DefenseRating,},
+	["Dodge Rating"] = {StatLogic.Stats.DodgeRating,},
+	["к рейтингу уклонения"] = {StatLogic.Stats.DodgeRating,},
+	["увеличивает рейтинг уклонения"] = {StatLogic.Stats.DodgeRating,},
+	["увеличивает рейтинг уклонения на"] = {StatLogic.Stats.DodgeRating,},
+	["повышает рейтинг уклонения на"] = {StatLogic.Stats.DodgeRating,},
+	["Parry Rating"] = {StatLogic.Stats.ParryRating,},
+	["повышает рейтинг парирования на"] = {StatLogic.Stats.ParryRating,},
+	["Shield Block Rating"] = {StatLogic.Stats.BlockRating,}, -- Enchant Shield - Lesser Block +10 Shield Block Rating http://wow.allakhazam.com/db/spell.html?wspell=13689
+	["Block Rating"] = {StatLogic.Stats.BlockRating,},
+	["увеличение рейтинга блока наед"] = {StatLogic.Stats.BlockRating,},
+	["увеличивает рейтинг блокирования щитом на"] = {StatLogic.Stats.BlockRating,},
 
 	["Improves your chance to hit%"] = {"MELEE_HIT"},
-	["Hit Rating"] = {"MELEE_HIT_RATING",},
-	["повышает меткость"] = {"HIT_RATING",}, -- ITEM_MOD_HIT_RATING
-	["меткость в ближнем бою"] = {"MELEE_HIT_RATING",}, -- ITEM_MOD_HIT_MELEE_RATING
-	["повышает рейтинг меткости"] = {"HIT_RATING",},
-	["к рейтингу меткости"] = {"HIT_RATING",},
+	["Hit Rating"] = {StatLogic.Stats.MeleeHitRating,},
+	["повышает меткость"] = {StatLogic.Stats.HitRating,}, -- ITEM_MOD_HIT_RATING
+	["меткость в ближнем бою"] = {StatLogic.Stats.MeleeHitRating,}, -- ITEM_MOD_HIT_MELEE_RATING
+	["повышает рейтинг меткости"] = {StatLogic.Stats.HitRating,},
+	["к рейтингу меткости"] = {StatLogic.Stats.HitRating,},
 	["Improves your chance to hit with spells%"] = {"SPELL_HIT"},
-	["Spell Hit Rating"] = {"SPELL_HIT_RATING",},
-	["повышает рейтинг меткости на"] = {"HIT_RATING",},
-	["Increases your spell hit rating"] = {"SPELL_HIT_RATING",},
-	["Ranged Hit Rating"] = {"RANGED_HIT_RATING",},
-	["Improves ranged hit rating"] = {"RANGED_HIT_RATING",}, -- ITEM_MOD_HIT_RANGED_RATING
-	["Increases your ranged hit rating"] = {"RANGED_HIT_RATING",},
+	["Spell Hit Rating"] = {StatLogic.Stats.SpellHitRating,},
+	["повышает рейтинг меткости на"] = {StatLogic.Stats.HitRating,},
+	["Increases your spell hit rating"] = {StatLogic.Stats.SpellHitRating,},
+	["Ranged Hit Rating"] = {StatLogic.Stats.RangedHitRating,},
+	["Improves ranged hit rating"] = {StatLogic.Stats.RangedHitRating,}, -- ITEM_MOD_HIT_RANGED_RATING
+	["Increases your ranged hit rating"] = {StatLogic.Stats.RangedHitRating,},
 
 	["Improves your chance to get a critical strike by%"] = {StatLogic.Stats.MeleeCrit, StatLogic.Stats.RangedCrit},
-	["Crit Rating"] = {"CRIT_RATING",},
-	["Critical Rating"] = {"CRIT_RATING",},
-	["рейтинг критического удара"] = {"CRIT_RATING",},
-	["Increases your critical hit rating"] = {"CRIT_RATING",},
-	["Increases your critical strike rating"] = {"CRIT_RATING",},
-	["повышает рейтинг критического удара на"] = {"CRIT_RATING",},
-	["Improves melee critical strike rating"] = {"MELEE_CRIT_RATING",}, -- [Cloak of Darkness] ID:33122
+	["Crit Rating"] = {StatLogic.Stats.CritRating,},
+	["Critical Rating"] = {StatLogic.Stats.CritRating,},
+	["рейтинг критического удара"] = {StatLogic.Stats.CritRating,},
+	["Increases your critical hit rating"] = {StatLogic.Stats.CritRating,},
+	["Increases your critical strike rating"] = {StatLogic.Stats.CritRating,},
+	["повышает рейтинг критического удара на"] = {StatLogic.Stats.CritRating,},
+	["Improves melee critical strike rating"] = {StatLogic.Stats.MeleeCritRating,}, -- [Cloak of Darkness] ID:33122
 	["Improves your chance to get a critical strike with spells%"] = {StatLogic.Stats.SpellCrit},
-	["Spell Critical Strike Rating"] = {"SPELL_CRIT_RATING",},
-	["Spell Critical strike rating"] = {"SPELL_CRIT_RATING",},
-	["Spell Critical Rating"] = {"SPELL_CRIT_RATING",},
-	["Spell Crit Rating"] = {"SPELL_CRIT_RATING",},
-	["к рейтингу критического удара"] = {"SPELL_CRIT_RATING",}, -- TBC Chaotic Skyfire Diamond
-	["Increases your spell critical strike rating"] = {"SPELL_CRIT_RATING",},
-	["Increases the spell critical strike rating of all party members within 30 yards"] = {"SPELL_CRIT_RATING",},
-	["Improves spell critical strike rating"] = {"SPELL_CRIT_RATING",},
-	["Increases your ranged critical strike rating"] = {"RANGED_CRIT_RATING",}, -- Fletcher's Gloves ID:7348
+	["Spell Critical Strike Rating"] = {StatLogic.Stats.SpellCritRating,},
+	["Spell Critical strike rating"] = {StatLogic.Stats.SpellCritRating,},
+	["Spell Critical Rating"] = {StatLogic.Stats.SpellCritRating,},
+	["Spell Crit Rating"] = {StatLogic.Stats.SpellCritRating,},
+	["к рейтингу критического удара"] = {StatLogic.Stats.SpellCritRating,}, -- TBC Chaotic Skyfire Diamond
+	["Increases your spell critical strike rating"] = {StatLogic.Stats.SpellCritRating,},
+	["Increases the spell critical strike rating of all party members within 30 yards"] = {StatLogic.Stats.SpellCritRating,},
+	["Improves spell critical strike rating"] = {StatLogic.Stats.SpellCritRating,},
+	["Increases your ranged critical strike rating"] = {StatLogic.Stats.RangedCritRating,}, -- Fletcher's Gloves ID:7348
 
-	["устойчивость"] = {"RESILIENCE_RATING",},
-	["рейтинг устойчивости"] = {"RESILIENCE_RATING",}, -- Enchant Chest - Major Resilience "+15 Resilience Rating" http://wow.allakhazam.com/db/spell.html?wspell=33992
-	["повышает рейтинг устойчивости на"] = {"RESILIENCE_RATING",},
-	["к рейтингу устойчивости"] = {"RESILIENCE_RATING",},
+	["устойчивость"] = {StatLogic.Stats.ResilienceRating,},
+	["рейтинг устойчивости"] = {StatLogic.Stats.ResilienceRating,}, -- Enchant Chest - Major Resilience "+15 Resilience Rating" http://wow.allakhazam.com/db/spell.html?wspell=33992
+	["повышает рейтинг устойчивости на"] = {StatLogic.Stats.ResilienceRating,},
+	["к рейтингу устойчивости"] = {StatLogic.Stats.ResilienceRating,},
 
-	["Haste Rating"] = {"HASTE_RATING"},
-	["к рейтингу скорости"] = {"HASTE_RATING"}, -- (added this line)
-	["Ranged Haste Rating"] = {"HASTE_RATING"},
-	["повышает рейтинг скорости боя на"] = {"HASTE_RATING"},
-	["Spell Haste Rating"] = {"SPELL_HASTE_RATING"},
-	["Improves melee haste rating"] = {"MELEE_HASTE_RATING"},
-	["Improves spell haste rating"] = {"SPELL_HASTE_RATING"},
-	["Improves ranged haste rating"] = {"RANGED_HASTE_RATING"},
+	["Haste Rating"] = {StatLogic.Stats.HasteRating},
+	["к рейтингу скорости"] = {StatLogic.Stats.HasteRating}, -- (added this line)
+	["Ranged Haste Rating"] = {StatLogic.Stats.HasteRating},
+	["повышает рейтинг скорости боя на"] = {StatLogic.Stats.HasteRating},
+	["Spell Haste Rating"] = {StatLogic.Stats.SpellHasteRating},
+	["Improves melee haste rating"] = {StatLogic.Stats.MeleeHasteRating},
+	["Improves spell haste rating"] = {StatLogic.Stats.SpellHasteRating},
+	["Improves ranged haste rating"] = {StatLogic.Stats.RangedHasteRating},
 
-	["рейтинг мастерства"] = {"EXPERTISE_RATING"},
-	["к рейтингу мастерства"] = {"EXPERTISE_RATING"},
-	["повышает рейтинг мастерства на"] = {"EXPERTISE_RATING"},
-	["Повышает рейтинг пробивания брони на"] = {"ARMOR_PENETRATION_RATING"},
-	["увеличивает рейтинг пробивания брони на"] = {"ARMOR_PENETRATION_RATING"},
-	["снижает эффективность брони противника против ваших атак на"] = {"ARMOR_PENETRATION_RATING"},
+	["рейтинг мастерства"] = {StatLogic.Stats.ExpertiseRating},
+	["к рейтингу мастерства"] = {StatLogic.Stats.ExpertiseRating},
+	["повышает рейтинг мастерства на"] = {StatLogic.Stats.ExpertiseRating},
+	["Повышает рейтинг пробивания брони на"] = {StatLogic.Stats.ArmorPenetrationRating},
+	["увеличивает рейтинг пробивания брони на"] = {StatLogic.Stats.ArmorPenetrationRating},
+	["снижает эффективность брони противника против ваших атак на"] = {StatLogic.Stats.ArmorPenetrationRating},
 
 	-- Exclude
 	["sec"] = false,

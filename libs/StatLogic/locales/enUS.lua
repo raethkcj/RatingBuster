@@ -146,7 +146,7 @@ L["WholeTextLookup"] = {
 	["Minor Wizard Oil"] = {["SPELL_DMG"] = 8, ["HEAL"] = 8}, -- ID: 20744
 	["Lesser Wizard Oil"] = {["SPELL_DMG"] = 16, ["HEAL"] = 16}, -- ID: 20746
 	["Wizard Oil"] = {["SPELL_DMG"] = 24, ["HEAL"] = 24}, -- ID: 20750
-	["Brilliant Wizard Oil"] = {["SPELL_DMG"] = 36, ["HEAL"] = 36, ["SPELL_CRIT_RATING"] = 14}, -- ID: 20749
+	["Brilliant Wizard Oil"] = {["SPELL_DMG"] = 36, ["HEAL"] = 36, [StatLogic.Stats.SpellCritRating] = 14}, -- ID: 20749
 	["Superior Wizard Oil"] = {["SPELL_DMG"] = 42, ["HEAL"] = 42}, -- ID: 22522
 	["Blessed Wizard Oil"] = {["SPELL_DMG_UNDEAD"] = 60}, -- ID: 23123
 
@@ -169,7 +169,7 @@ L["WholeTextLookup"] = {
 	["Run speed increased slightly"] = {["RUN_SPEED"] = 8}, --
 	["Minor Speed Increase"] = {["RUN_SPEED"] = 8}, -- Enchant Boots - Minor Speed "Minor Speed Increase" http://wow.allakhazam.com/db/spell.html?wspell=13890
 	["Minor Speed"] = {["RUN_SPEED"] = 8}, -- Enchant Boots - Cat's Swiftness "Minor Speed and +6 Agility" http://wow.allakhazam.com/db/spell.html?wspell=34007
-	["Surefooted"] = {["MELEE_HIT_RATING"] = 10}, -- Enchant Boots - Surefooted "Surefooted" http://wow.allakhazam.com/db/spell.html?wspell=27954
+	["Surefooted"] = {[StatLogic.Stats.MeleeHitRating] = 10}, -- Enchant Boots - Surefooted "Surefooted" http://wow.allakhazam.com/db/spell.html?wspell=27954
 
 	["Subtlety"] = {["THREAT_MOD"] = -2}, -- Enchant Cloak - Subtlety
 	["2% Reduced Threat"] = {["THREAT_MOD"] = -2}, -- StatLogic:GetSum("item:23344:2832")
@@ -257,7 +257,7 @@ L["StatIDLookup"] = {
 	["Weapon Damage"] = {"MELEE_DMG"}, -- Enchant
 	["Increases mount speed%"] = {"MOUNT_SPEED"}, -- [Highlander's Plate Greaves] ID: 20048
 
-	["All Stats"] = {StatLogic.Stats.Strength, StatLogic.Stats.Agility, StatLogic.Stats.Stamina, StatLogic.Stats.Intellect, StatLogic.Stats.Spirit,},
+	["All Stats"] = {StatLogic.Stats.AllStats,},
 	["Strength"] = {StatLogic.Stats.Strength,},
 	["Agility"] = {StatLogic.Stats.Agility,},
 	["Stamina"] = {StatLogic.Stats.Stamina,},
@@ -391,72 +391,72 @@ L["StatIDLookup"] = {
 	["damage per second"] = {"DPS",},
 	["Addsdamage per second"] = {"DPS",}, -- [Thorium Shells] ID: 15977
 
-	["Defense Rating"] = {"DEFENSE_RATING",},
-	["Increases defense rating"] = {"DEFENSE_RATING",},
-	["Dodge Rating"] = {"DODGE_RATING",},
-	["Increases your dodge rating"] = {"DODGE_RATING",},
+	["Defense Rating"] = {StatLogic.Stats.DefenseRating,},
+	["Increases defense rating"] = {StatLogic.Stats.DefenseRating,},
+	["Dodge Rating"] = {StatLogic.Stats.DodgeRating,},
+	["Increases your dodge rating"] = {StatLogic.Stats.DodgeRating,},
 	["Increases your chance to dodge an attack%"] = {StatLogic.Stats.Dodge,},
-	["Parry Rating"] = {"PARRY_RATING",},
-	["Increases your parry rating"] = {"PARRY_RATING",},
+	["Parry Rating"] = {StatLogic.Stats.ParryRating,},
+	["Increases your parry rating"] = {StatLogic.Stats.ParryRating,},
 	["Increases your chance to parry an attack%"] = {StatLogic.Stats.Parry,},
-	["Shield Block Rating"] = {"BLOCK_RATING",}, -- Enchant Shield - Lesser Block +10 Shield Block Rating http://wow.allakhazam.com/db/spell.html?wspell=13689
-	["Block Rating"] = {"BLOCK_RATING",},
-	["Increases your block rating"] = {"BLOCK_RATING",},
-	["Increases your shield block rating"] = {"BLOCK_RATING",},
+	["Shield Block Rating"] = {StatLogic.Stats.BlockRating,}, -- Enchant Shield - Lesser Block +10 Shield Block Rating http://wow.allakhazam.com/db/spell.html?wspell=13689
+	["Block Rating"] = {StatLogic.Stats.BlockRating,},
+	["Increases your block rating"] = {StatLogic.Stats.BlockRating,},
+	["Increases your shield block rating"] = {StatLogic.Stats.BlockRating,},
 	["Increases your chance to block attacks with a shield%"] = {"BLOCK_CHANCE",},
 
 	["Improves your chance to hit%"] = {"MELEE_HIT", "RANGED_HIT"},
-	["Hit Rating"] = {"HIT_RATING",},
-	["Improves hit rating"] = {"HIT_RATING",}, -- ITEM_MOD_HIT_RATING
-	["Increases your hit rating"] = {"HIT_RATING",},
-	["Improves melee hit rating"] = {"HIT_RATING",}, -- ITEM_MOD_HIT_MELEE_RATING
-	["Spell Hit"] = {"SPELL_HIT_RATING",}, -- Presence of Sight +18 Healing and Spell Damage/+8 Spell Hit http://wow.allakhazam.com/db/spell.html?wspell=24164
+	["Hit Rating"] = {StatLogic.Stats.HitRating,},
+	["Improves hit rating"] = {StatLogic.Stats.HitRating,}, -- ITEM_MOD_HIT_RATING
+	["Increases your hit rating"] = {StatLogic.Stats.HitRating,},
+	["Improves melee hit rating"] = {StatLogic.Stats.HitRating,}, -- ITEM_MOD_HIT_MELEE_RATING
+	["Spell Hit"] = {StatLogic.Stats.SpellHitRating,}, -- Presence of Sight +18 Healing and Spell Damage/+8 Spell Hit http://wow.allakhazam.com/db/spell.html?wspell=24164
 	["Improves your chance to hit with spells%"] = {"SPELL_HIT"},
-	["Spell Hit Rating"] = {"SPELL_HIT_RATING",},
-	["Improves spell hit rating"] = {"SPELL_HIT_RATING",}, -- ITEM_MOD_HIT_SPELL_RATING
-	["Increases your spell hit rating"] = {"SPELL_HIT_RATING",},
-	["Ranged Hit Rating"] = {"RANGED_HIT_RATING",},
-	["Improves ranged hit rating"] = {"RANGED_HIT_RATING",}, -- ITEM_MOD_HIT_RANGED_RATING
-	["Increases your ranged hit rating"] = {"RANGED_HIT_RATING",},
+	["Spell Hit Rating"] = {StatLogic.Stats.SpellHitRating,},
+	["Improves spell hit rating"] = {StatLogic.Stats.SpellHitRating,}, -- ITEM_MOD_HIT_SPELL_RATING
+	["Increases your spell hit rating"] = {StatLogic.Stats.SpellHitRating,},
+	["Ranged Hit Rating"] = {StatLogic.Stats.RangedHitRating,},
+	["Improves ranged hit rating"] = {StatLogic.Stats.RangedHitRating,}, -- ITEM_MOD_HIT_RANGED_RATING
+	["Increases your ranged hit rating"] = {StatLogic.Stats.RangedHitRating,},
 
 	["Improves your chance to get a critical strike by%"] = {StatLogic.Stats.MeleeCrit, StatLogic.Stats.RangedCrit},
-	["Crit Rating"] = {"CRIT_RATING",},
-	["Critical Rating"] = {"CRIT_RATING",},
-	["Critical Strike Rating"] = {"CRIT_RATING",},
-	["Increases your critical hit rating"] = {"CRIT_RATING",},
-	["Increases your critical strike rating"] = {"CRIT_RATING",},
-	["Improves critical strike rating"] = {"CRIT_RATING",},
-	["Improves melee critical strike rating"] = {"MELEE_CRIT_RATING",}, -- [Cloak of Darkness] ID:33122
+	["Crit Rating"] = {StatLogic.Stats.CritRating,},
+	["Critical Rating"] = {StatLogic.Stats.CritRating,},
+	["Critical Strike Rating"] = {StatLogic.Stats.CritRating,},
+	["Increases your critical hit rating"] = {StatLogic.Stats.CritRating,},
+	["Increases your critical strike rating"] = {StatLogic.Stats.CritRating,},
+	["Improves critical strike rating"] = {StatLogic.Stats.CritRating,},
+	["Improves melee critical strike rating"] = {StatLogic.Stats.MeleeCritRating,}, -- [Cloak of Darkness] ID:33122
 	["Improves your chance to get a critical strike with spells%"] = {StatLogic.Stats.SpellCrit},
-	["Spell Critical Strike Rating"] = {"SPELL_CRIT_RATING",},
-	["Spell Critical strike rating"] = {"SPELL_CRIT_RATING",},
-	["Spell Critical Rating"] = {"SPELL_CRIT_RATING",},
-	["Spell Crit Rating"] = {"SPELL_CRIT_RATING",},
-	["Spell Critical"] = {"SPELL_CRIT_RATING",},
-	["Increases your spell critical strike rating"] = {"SPELL_CRIT_RATING",},
-	["Increases the spell critical strike rating of all party members within 30 yards"] = {"SPELL_CRIT_RATING",},
-	["Improves spell critical strike rating"] = {"SPELL_CRIT_RATING",},
-	["Increases your ranged critical strike rating"] = {"RANGED_CRIT_RATING",}, -- Fletcher's Gloves ID:7348
-	["ranged critical strike"] = {"RANGED_CRIT_RATING",},
+	["Spell Critical Strike Rating"] = {StatLogic.Stats.SpellCritRating,},
+	["Spell Critical strike rating"] = {StatLogic.Stats.SpellCritRating,},
+	["Spell Critical Rating"] = {StatLogic.Stats.SpellCritRating,},
+	["Spell Crit Rating"] = {StatLogic.Stats.SpellCritRating,},
+	["Spell Critical"] = {StatLogic.Stats.SpellCritRating,},
+	["Increases your spell critical strike rating"] = {StatLogic.Stats.SpellCritRating,},
+	["Increases the spell critical strike rating of all party members within 30 yards"] = {StatLogic.Stats.SpellCritRating,},
+	["Improves spell critical strike rating"] = {StatLogic.Stats.SpellCritRating,},
+	["Increases your ranged critical strike rating"] = {StatLogic.Stats.RangedCritRating,}, -- Fletcher's Gloves ID:7348
+	["ranged critical strike"] = {StatLogic.Stats.RangedCritRating,},
 
-	["Resilience"] = {"RESILIENCE_RATING",},
-	["Resilience Rating"] = {"RESILIENCE_RATING",}, -- Enchant Chest - Major Resilience "+15 Resilience Rating" http://wow.allakhazam.com/db/spell.html?wspell=33992
-	["Improves your resilience rating"] = {"RESILIENCE_RATING",},
+	["Resilience"] = {StatLogic.Stats.ResilienceRating,},
+	["Resilience Rating"] = {StatLogic.Stats.ResilienceRating,}, -- Enchant Chest - Major Resilience "+15 Resilience Rating" http://wow.allakhazam.com/db/spell.html?wspell=33992
+	["Improves your resilience rating"] = {StatLogic.Stats.ResilienceRating,},
 
-	["Haste Rating"] = {"HASTE_RATING"},
-	["Ranged Haste Rating"] = {"RANGED_HASTE_RATING"},
-	["Improves haste rating"] = {"HASTE_RATING"},
-	["Spell Haste Rating"] = {"SPELL_HASTE_RATING"},
-	["Improves melee haste rating"] = {"MELEE_HASTE_RATING"},
-	["Improves spell haste rating"] = {"SPELL_HASTE_RATING"},
-	["Improves ranged haste rating"] = {"RANGED_HASTE_RATING"},
+	["Haste Rating"] = {StatLogic.Stats.HasteRating},
+	["Ranged Haste Rating"] = {StatLogic.Stats.RangedHasteRating},
+	["Improves haste rating"] = {StatLogic.Stats.HasteRating},
+	["Spell Haste Rating"] = {StatLogic.Stats.SpellHasteRating},
+	["Improves melee haste rating"] = {StatLogic.Stats.MeleeHasteRating},
+	["Improves spell haste rating"] = {StatLogic.Stats.SpellHasteRating},
+	["Improves ranged haste rating"] = {StatLogic.Stats.RangedHasteRating},
 
-	["expertise rating"] = {"EXPERTISE_RATING"}, -- gems
-	["Increases your expertise rating"] = {"EXPERTISE_RATING"},
-	["armor penetration rating"] = {"ARMOR_PENETRATION_RATING"}, -- gems
-	["Increases armor penetration rating"] = {"ARMOR_PENETRATION_RATING"},
-	["Increases your armor penetration rating"] = {"ARMOR_PENETRATION_RATING"}, -- Anarchy ID:39420
-	["increases your armor penetration"] = {"ARMOR_PENETRATION_RATING"}, -- Ring of Foul Mojo ID:43178
+	["expertise rating"] = {StatLogic.Stats.ExpertiseRating}, -- gems
+	["Increases your expertise rating"] = {StatLogic.Stats.ExpertiseRating},
+	["armor penetration rating"] = {StatLogic.Stats.ArmorPenetrationRating}, -- gems
+	["Increases armor penetration rating"] = {StatLogic.Stats.ArmorPenetrationRating},
+	["Increases your armor penetration rating"] = {StatLogic.Stats.ArmorPenetrationRating}, -- Anarchy ID:39420
+	["increases your armor penetration"] = {StatLogic.Stats.ArmorPenetrationRating}, -- Ring of Foul Mojo ID:43178
 
 	-- Exclude
 	["sec"] = false,

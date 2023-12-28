@@ -93,7 +93,7 @@ L["WholeTextLookup"] = {
 	["최하급 마술사 오일"] = {["SPELL_DMG"] = 8, ["HEAL"] = 8}, -- ID: 20744
 	["하급 마술사 오일"] = {["SPELL_DMG"] = 16, ["HEAL"] = 16}, -- ID: 20746
 	["마술사 오일"] = {["SPELL_DMG"] = 24, ["HEAL"] = 24}, -- ID: 20750
-	["반짝이는 마술사 오일"] = {["SPELL_DMG"] = 36, ["HEAL"] = 36, ["SPELL_CRIT_RATING"] = 14}, -- ID: 20749
+	["반짝이는 마술사 오일"] = {["SPELL_DMG"] = 36, ["HEAL"] = 36, [StatLogic.Stats.SpellCritRating] = 14}, -- ID: 20749
 	["상급 마술사 오일"] = {["SPELL_DMG"] = 42, ["HEAL"] = 42}, -- ID: 22522
 	["신성한 마술사 오일"] = {["SPELL_DMG_UNDEAD"] = 60}, -- ID: 23123
 
@@ -114,7 +114,7 @@ L["WholeTextLookup"] = {
 	["이동 속도가 약간 증가합니다."] = {["RUN_SPEED"] = 8}, --
 	["하급 이동 속도 증가"] = {["RUN_SPEED"] = 8}, -- Enchant Boots - Minor Speed "Minor Speed Increase" http://wow.allakhazam.com/db/spell.html?wspell=13890
 	["하급 이동 속도"] = {["RUN_SPEED"] = 8}, -- Enchant Boots - Cat's Swiftness "Minor Speed and +6 Agility" http://wow.allakhazam.com/db/spell.html?wspell=34007
-	["침착함"] = {["MELEE_HIT_RATING"] = 10}, -- Enchant Boots - Surefooted "Surefooted" http://wow.allakhazam.com/db/spell.html?wspell=27954
+	["침착함"] = {[StatLogic.Stats.MeleeHitRating] = 10}, -- Enchant Boots - Surefooted "Surefooted" http://wow.allakhazam.com/db/spell.html?wspell=27954
 
 	["위협 수준 감소"] = {["THREAT_MOD"] = -2}, -- Enchant Cloak - Subtlety
 	["위협 수준 +2%"] = {["THREAT_MOD"] = -2}, -- StatLogic:GetSum("item:23344:2832")
@@ -202,7 +202,7 @@ L["StatIDLookup"] = {
 	["무기 공격력"] = {"MELEE_DMG"}, -- Enchant
 	["탈것의 속도가%만큼 증가합니다"] = {"MOUNT_SPEED"}, -- [Highlander's Plate Greaves] ID: 20048
 
-	["모든 능력치"] = {StatLogic.Stats.Strength, StatLogic.Stats.Agility, StatLogic.Stats.Stamina, StatLogic.Stats.Intellect, StatLogic.Stats.Spirit,},
+	["모든 능력치"] = {StatLogic.Stats.AllStats,},
 	["힘"] = {StatLogic.Stats.Strength,},
 	["민첩성"] = {StatLogic.Stats.Agility,},
 	["체력"] = {StatLogic.Stats.Stamina,},
@@ -335,50 +335,50 @@ L["StatIDLookup"] = {
 	["초당 공격력"] = {"DPS",},
 	["초당의 피해 추가"] = {"DPS",}, -- [Thorium Shells] ID: 15977
 
-	["방어 숙련도"] = {"DEFENSE_RATING",},
-	["방어 숙련도가 증가합니다"] = {"DEFENSE_RATING",},
-	["회피 숙련도"] = {"DODGE_RATING",},
-	["회피 숙련도가 증가합니다."] = {"DODGE_RATING",},
-	["무기 막기 숙련도"] = {"PARRY_RATING",},
-	["무기 막기 숙련도가 증가합니다"] = {"PARRY_RATING",},
-	["방패 막기 숙련도"] = {"BLOCK_RATING",}, -- Enchant Shield - Lesser Block +10 Shield Block Rating http://wow.allakhazam.com/db/spell.html?wspell=13689
-	["방패 막기 숙련도가 증가합니다"] = {"BLOCK_RATING",},
+	["방어 숙련도"] = {StatLogic.Stats.DefenseRating,},
+	["방어 숙련도가 증가합니다"] = {StatLogic.Stats.DefenseRating,},
+	["회피 숙련도"] = {StatLogic.Stats.DodgeRating,},
+	["회피 숙련도가 증가합니다."] = {StatLogic.Stats.DodgeRating,},
+	["무기 막기 숙련도"] = {StatLogic.Stats.ParryRating,},
+	["무기 막기 숙련도가 증가합니다"] = {StatLogic.Stats.ParryRating,},
+	["방패 막기 숙련도"] = {StatLogic.Stats.BlockRating,}, -- Enchant Shield - Lesser Block +10 Shield Block Rating http://wow.allakhazam.com/db/spell.html?wspell=13689
+	["방패 막기 숙련도가 증가합니다"] = {StatLogic.Stats.BlockRating,},
 
-	["적중도"] = {"HIT_RATING",},
-	["적중도가 증가합니다"] = {"HIT_RATING",}, -- ITEM_MOD_HIT_RATING
-	["근접 적중도가 증가합니다"] = {"MELEE_HIT_RATING",}, -- ITEM_MOD_HIT_MELEE_RATING
-	["주문 적중"] = {"SPELL_HIT_RATING",}, -- Presence of Sight +18 Healing and Spell Damage/+8 Spell Hit http://wow.allakhazam.com/db/spell.html?wspell=24164
-	["주문 적중도"] = {"SPELL_HIT_RATING",},
-	["주문의 적중도"] = {"SPELL_HIT_RATING",}, -- ITEM_MOD_HIT_SPELL_RATING
-	["주문 적중도가 증가합니다"] = {"SPELL_HIT_RATING",},
-	["원거리 적중도"] = {"RANGED_HIT_RATING",},
-	["원거리 적중도가 증가합니다"] = {"RANGED_HIT_RATING",}, -- ITEM_MOD_HIT_RANGED_RATING
+	["적중도"] = {StatLogic.Stats.HitRating,},
+	["적중도가 증가합니다"] = {StatLogic.Stats.HitRating,}, -- ITEM_MOD_HIT_RATING
+	["근접 적중도가 증가합니다"] = {StatLogic.Stats.MeleeHitRating,}, -- ITEM_MOD_HIT_MELEE_RATING
+	["주문 적중"] = {StatLogic.Stats.SpellHitRating,}, -- Presence of Sight +18 Healing and Spell Damage/+8 Spell Hit http://wow.allakhazam.com/db/spell.html?wspell=24164
+	["주문 적중도"] = {StatLogic.Stats.SpellHitRating,},
+	["주문의 적중도"] = {StatLogic.Stats.SpellHitRating,}, -- ITEM_MOD_HIT_SPELL_RATING
+	["주문 적중도가 증가합니다"] = {StatLogic.Stats.SpellHitRating,},
+	["원거리 적중도"] = {StatLogic.Stats.RangedHitRating,},
+	["원거리 적중도가 증가합니다"] = {StatLogic.Stats.RangedHitRating,}, -- ITEM_MOD_HIT_RANGED_RATING
 
-	["치명타 적중도"] = {"CRIT_RATING",},
-	["치명타 적중도가 증가합니다"] = {"CRIT_RATING",},
-	["근접 치명타 적중도가 증가합니다"] = {"MELEE_CRIT_RATING",},
-	["주문 극대화 적중도"] = {"SPELL_CRIT_RATING",},
-	["주문의 극대화 적중도"] = {"SPELL_CRIT_RATING",},
-	["주문의 극대화 적중도가 증가합니다"] = {"SPELL_CRIT_RATING",},
-	["주위 30미터 반경에 있는 모든 파티원의 주문 극대화 적중도가 증가합니다"] = {"SPELL_CRIT_RATING",},
-	["주문 극대화 적중도가 증가합니다"] = {"SPELL_CRIT_RATING",},
-	["원거리 치명타 적중도가 증가합니다"] = {"RANGED_CRIT_RATING",}, -- Fletcher's Gloves ID:7348
+	["치명타 적중도"] = {StatLogic.Stats.CritRating,},
+	["치명타 적중도가 증가합니다"] = {StatLogic.Stats.CritRating,},
+	["근접 치명타 적중도가 증가합니다"] = {StatLogic.Stats.MeleeCritRating,},
+	["주문 극대화 적중도"] = {StatLogic.Stats.SpellCritRating,},
+	["주문의 극대화 적중도"] = {StatLogic.Stats.SpellCritRating,},
+	["주문의 극대화 적중도가 증가합니다"] = {StatLogic.Stats.SpellCritRating,},
+	["주위 30미터 반경에 있는 모든 파티원의 주문 극대화 적중도가 증가합니다"] = {StatLogic.Stats.SpellCritRating,},
+	["주문 극대화 적중도가 증가합니다"] = {StatLogic.Stats.SpellCritRating,},
+	["원거리 치명타 적중도가 증가합니다"] = {StatLogic.Stats.RangedCritRating,}, -- Fletcher's Gloves ID:7348
 
-	["탄력도"] = {"RESILIENCE_RATING",}, -- Enchant Chest - Major Resilience "+15 Resilience Rating" http://wow.allakhazam.com/db/spell.html?wspell=33992
-	["탄력도가 증가합니다"] = {"RESILIENCE_RATING",},
+	["탄력도"] = {StatLogic.Stats.ResilienceRating,}, -- Enchant Chest - Major Resilience "+15 Resilience Rating" http://wow.allakhazam.com/db/spell.html?wspell=33992
+	["탄력도가 증가합니다"] = {StatLogic.Stats.ResilienceRating,},
 
-	["공격 가속도"] = {"HASTE_RATING"},
-	["공격 가속도가 증가합니다"] = {"HASTE_RATING"},
-	["주문 시전 가속도"] = {"SPELL_HASTE_RATING"},
-	["원거리 공격 가속도"] = {"RANGED_HASTE_RATING"},
-	["근접 공격 가속도가 증가합니다"] = {"MELEE_HASTE_RATING"},
-	["주문 시전 가속도가 증가합니다"] = {"SPELL_HASTE_RATING"},
-	["원거리 공격 가속도가 증가합니다"] = {"RANGED_HASTE_RATING"},
+	["공격 가속도"] = {StatLogic.Stats.HasteRating},
+	["공격 가속도가 증가합니다"] = {StatLogic.Stats.HasteRating},
+	["주문 시전 가속도"] = {StatLogic.Stats.SpellHasteRating},
+	["원거리 공격 가속도"] = {StatLogic.Stats.RangedHasteRating},
+	["근접 공격 가속도가 증가합니다"] = {StatLogic.Stats.MeleeHasteRating},
+	["주문 시전 가속도가 증가합니다"] = {StatLogic.Stats.SpellHasteRating},
+	["원거리 공격 가속도가 증가합니다"] = {StatLogic.Stats.RangedHasteRating},
 
-	["숙련"] = {"EXPERTISE_RATING"}, -- gems
-	["숙련도가 증가합니다"] = {"EXPERTISE_RATING"},
-	["방어구 관통력"] = {"ARMOR_PENETRATION_RATING"}, -- gems
-	["방어구 관통력이 증가합니다"] = {"ARMOR_PENETRATION_RATING"},
+	["숙련"] = {StatLogic.Stats.ExpertiseRating}, -- gems
+	["숙련도가 증가합니다"] = {StatLogic.Stats.ExpertiseRating},
+	["방어구 관통력"] = {StatLogic.Stats.ArmorPenetrationRating}, -- gems
+	["방어구 관통력이 증가합니다"] = {StatLogic.Stats.ArmorPenetrationRating},
 
 	-- Exclude
 	["초"] = false,

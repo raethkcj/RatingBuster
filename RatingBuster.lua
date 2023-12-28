@@ -2671,7 +2671,7 @@ local summaryCalcData = {
 		name = "MELEE_HIT",
 		func = function(sum)
 			return sum["MELEE_HIT"]
-				+ StatLogic:GetEffectFromRating(sum["MELEE_HIT_RATING"], "MELEE_HIT_RATING", calcLevel)
+				+ StatLogic:GetEffectFromRating(sum[StatLogic.Stats.MeleeHitRating], StatLogic.Stats.MeleeHitRating, calcLevel)
 				+ sum["WEAPON_SKILL"] * 0.1
 		end,
 		ispercent = true,
@@ -2679,9 +2679,9 @@ local summaryCalcData = {
 	-- Hit Rating - MELEE_HIT_RATING
 	{
 		option = "sumHitRating",
-		name = "MELEE_HIT_RATING",
+		name = StatLogic.Stats.MeleeHitRating,
 		func = function(sum)
-			return sum["MELEE_HIT_RATING"]
+			return sum[StatLogic.Stats.MeleeHitRating]
 		end,
 	},
 	-- Ranged Hit Chance - MELEE_HIT_RATING, RANGED_HIT_RATING, AGI
@@ -2690,16 +2690,16 @@ local summaryCalcData = {
 		name = "RANGED_HIT",
 		func = function(sum)
 			return sum["RANGED_HIT"]
-				+ StatLogic:GetEffectFromRating(sum["RANGED_HIT_RATING"], "RANGED_HIT_RATING", calcLevel)
+				+ StatLogic:GetEffectFromRating(sum[StatLogic.Stats.RangedHitRating], StatLogic.Stats.RangedHitRating, calcLevel)
 		end,
 		ispercent = true,
 	},
 	-- Ranged Hit Rating - RANGED_HIT_RATING
 	{
 		option = "sumRangedHitRating",
-		name = "RANGED_HIT_RATING",
+		name = StatLogic.Stats.RangedHitRating,
 		func = function(sum)
-			return sum["RANGED_HIT_RATING"]
+			return sum[StatLogic.Stats.RangedHitRating]
 		end,
 	},
 	-- Crit Chance - MELEE_CRIT, MELEE_CRIT_RATING, AGI
@@ -2708,7 +2708,7 @@ local summaryCalcData = {
 		name = StatLogic.Stats.MeleeCrit,
 		func = function(sum)
 			return sum[StatLogic.Stats.MeleeCrit]
-				+ StatLogic:GetEffectFromRating(sum["MELEE_CRIT_RATING"], "MELEE_CRIT_RATING", calcLevel)
+				+ StatLogic:GetEffectFromRating(sum[StatLogic.Stats.MeleeCritRating], StatLogic.Stats.MeleeCritRating, calcLevel)
 				+ sum[StatLogic.Stats.Agility] * StatLogic:GetCritPerAgi(class, calcLevel)
 		end,
 		ispercent = true,
@@ -2716,9 +2716,9 @@ local summaryCalcData = {
 	-- Crit Rating - MELEE_CRIT_RATING
 	{
 		option = "sumCritRating",
-		name = "MELEE_CRIT_RATING",
+		name = StatLogic.Stats.MeleeCritRating,
 		func = function(sum)
-			return sum["MELEE_CRIT_RATING"]
+			return sum[StatLogic.Stats.MeleeCritRating]
 		end,
 	},
 	-- Ranged Crit Chance - MELEE_CRIT_RATING, RANGED_CRIT_RATING, AGI
@@ -2727,7 +2727,7 @@ local summaryCalcData = {
 		name = StatLogic.Stats.RangedCrit,
 		func = function(sum)
 			return sum[StatLogic.Stats.RangedCrit]
-				+ StatLogic:GetEffectFromRating(sum["RANGED_CRIT_RATING"], "RANGED_CRIT_RATING", calcLevel)
+				+ StatLogic:GetEffectFromRating(sum[StatLogic.Stats.RangedCritRating], StatLogic.Stats.RangedCritRating, calcLevel)
 				+ sum[StatLogic.Stats.Agility] * StatLogic:GetCritPerAgi(class, calcLevel)
 		end,
 		ispercent = true,
@@ -2735,9 +2735,9 @@ local summaryCalcData = {
 	-- Ranged Crit Rating - RANGED_CRIT_RATING
 	{
 		option = "sumRangedCritRating",
-		name = "RANGED_CRIT_RATING",
+		name = StatLogic.Stats.RangedCritRating,
 		func = function(sum)
-			return sum["RANGED_CRIT_RATING"]
+			return sum[StatLogic.Stats.RangedCritRating]
 		end,
 	},
 	-- Haste - MELEE_HASTE_RATING
@@ -2745,16 +2745,16 @@ local summaryCalcData = {
 		option = "sumHaste",
 		name = "MELEE_HASTE",
 		func = function(sum)
-			return StatLogic:GetEffectFromRating(sum["MELEE_HASTE_RATING"], "MELEE_HASTE_RATING", calcLevel)
+			return StatLogic:GetEffectFromRating(sum[StatLogic.Stats.MeleeHasteRating], StatLogic.Stats.MeleeHasteRating, calcLevel)
 		end,
 		ispercent = true,
 	},
 	-- Haste Rating - MELEE_HASTE_RATING
 	{
 		option = "sumHasteRating",
-		name = "MELEE_HASTE_RATING",
+		name = StatLogic.Stats.MeleeHasteRating,
 		func = function(sum)
-			return sum["MELEE_HASTE_RATING"]
+			return sum[StatLogic.Stats.MeleeHasteRating]
 		end,
 	},
 	-- Ranged Haste - RANGED_HASTE_RATING
@@ -2762,16 +2762,16 @@ local summaryCalcData = {
 		option = "sumRangedHaste",
 		name = "RANGED_HASTE",
 		func = function(sum)
-			return StatLogic:GetEffectFromRating(sum["RANGED_HASTE_RATING"], "RANGED_HASTE_RATING", calcLevel)
+			return StatLogic:GetEffectFromRating(sum[StatLogic.Stats.RangedHasteRating], StatLogic.Stats.RangedHasteRating, calcLevel)
 		end,
 		ispercent = true,
 	},
 	-- Ranged Haste Rating - RANGED_HASTE_RATING
 	{
 		option = "sumRangedHasteRating",
-		name = "RANGED_HASTE_RATING",
+		name = StatLogic.Stats.RangedHasteRating,
 		func = function(sum)
-			return sum["RANGED_HASTE_RATING"]
+			return sum[StatLogic.Stats.RangedHasteRating]
 		end,
 	},
 	-- Expertise - EXPERTISE_RATING
@@ -2779,15 +2779,15 @@ local summaryCalcData = {
 		option = "sumExpertise",
 		name = "EXPERTISE",
 		func = function(sum)
-			return StatLogic:GetEffectFromRating(sum["EXPERTISE_RATING"], "EXPERTISE_RATING", calcLevel)
+			return StatLogic:GetEffectFromRating(sum[StatLogic.Stats.ExpertiseRating], StatLogic.Stats.ExpertiseRating, calcLevel)
 		end,
 	},
 	-- Expertise Rating - EXPERTISE_RATING
 	{
 		option = "sumExpertiseRating",
-		name = "EXPERTISE_RATING",
+		name = StatLogic.Stats.ExpertiseRating,
 		func = function(sum)
-			return sum["EXPERTISE_RATING"]
+			return sum[StatLogic.Stats.ExpertiseRating]
 		end,
 	},
 	-- Dodge Neglect - EXPERTISE_RATING, WEAPON_SKILL
@@ -2795,7 +2795,7 @@ local summaryCalcData = {
 		option = "sumDodgeNeglect",
 		name = "DODGE_NEGLECT",
 		func = function(sum)
-			return floor(StatLogic:GetEffectFromRating(sum["EXPERTISE_RATING"], "EXPERTISE_RATING", calcLevel)) * 0.25
+			return floor(StatLogic:GetEffectFromRating(sum[StatLogic.Stats.ExpertiseRating], StatLogic.Stats.ExpertiseRating, calcLevel)) * 0.25
 				+ sum["WEAPON_SKILL"] * 0.1
 		end,
 		ispercent = true,
@@ -2805,7 +2805,7 @@ local summaryCalcData = {
 		option = "sumParryNeglect",
 		name = "PARRY_NEGLECT",
 		func = function(sum)
-			return floor(StatLogic:GetEffectFromRating(sum["EXPERTISE_RATING"], "EXPERTISE_RATING", calcLevel)) * 0.25
+			return floor(StatLogic:GetEffectFromRating(sum[StatLogic.Stats.ExpertiseRating], StatLogic.Stats.ExpertiseRating, calcLevel)) * 0.25
 		end,
 		ispercent = true,
 	},
@@ -2838,16 +2838,16 @@ local summaryCalcData = {
 		option = "sumArmorPenetration",
 		name = "ARMOR_PENETRATION",
 		func = function(sum)
-			return StatLogic:GetEffectFromRating(sum["ARMOR_PENETRATION_RATING"], "ARMOR_PENETRATION_RATING", calcLevel)
+			return StatLogic:GetEffectFromRating(sum[StatLogic.Stats.ArmorPenetrationRating], StatLogic.Stats.ArmorPenetrationRating, calcLevel)
 		end,
 		ispercent = true,
 	},
 	-- Armor Penetration Rating - ARMOR_PENETRATION_RATING
 	{
 		option = "sumArmorPenetrationRating",
-		name = "ARMOR_PENETRATION_RATING",
+		name = StatLogic.Stats.ArmorPenetrationRating,
 		func = function(sum) return
-			sum["ARMOR_PENETRATION_RATING"]
+			sum[StatLogic.Stats.ArmorPenetrationRating]
 		end,
 	},
 	------------------------------
@@ -2856,7 +2856,7 @@ local summaryCalcData = {
 	-- Spell Damage - SPELL_DMG, STA, INT, SPI
 	{
 		option = "sumSpellDmg",
-		name = StatLogic.Stats.SpellDamage,
+		name = "SPELL_DMG",
 		func = function(sum)
 			return sum["SPELL_DMG"]
 				+ sum[StatLogic.Stats.Strength] * GSM("ADD_SPELL_DMG_MOD_STR")
@@ -2923,7 +2923,7 @@ local summaryCalcData = {
 		func = function(sum)
 			return GSM("MOD_SPELL_DMG") * (
 				sum["SHADOW_SPELL_DMG"]
-			) + summaryFunc[StatLogic.Stats.SpellDamage](sum)
+			) + summaryFunc["SPELL_DMG"](sum)
 		 end,
 	},
 	-- Healing - HEAL, AGI, STR, INT, SPI, AP
@@ -2947,16 +2947,16 @@ local summaryCalcData = {
 		name = "SPELL_HIT",
 		func = function(sum)
 			return sum["SPELL_HIT"]
-				+ StatLogic:GetEffectFromRating(sum["SPELL_HIT_RATING"], "SPELL_HIT_RATING", calcLevel)
+				+ StatLogic:GetEffectFromRating(sum[StatLogic.Stats.SpellHitRating], StatLogic.Stats.SpellHitRating, calcLevel)
 		end,
 		ispercent = true,
 	},
 	-- Spell Hit Rating - SPELL_HIT_RATING
 	{
 		option = "sumSpellHitRating",
-		name = "SPELL_HIT_RATING",
+		name = StatLogic.Stats.SpellHitRating,
 		func = function(sum)
-			return sum["SPELL_HIT_RATING"]
+			return sum[StatLogic.Stats.SpellHitRating]
 		end,
 	},
 	-- Spell Crit Chance - SPELL_CRIT_RATING, INT
@@ -2965,7 +2965,7 @@ local summaryCalcData = {
 		name = StatLogic.Stats.SpellCrit,
 		func = function(sum)
 			return sum[StatLogic.Stats.SpellCrit]
-				+ StatLogic:GetEffectFromRating(summaryFunc["SPELL_CRIT_RATING"](sum), "SPELL_CRIT_RATING", calcLevel)
+				+ StatLogic:GetEffectFromRating(summaryFunc[StatLogic.Stats.SpellCritRating](sum), StatLogic.Stats.SpellCritRating, calcLevel)
 				+ sum[StatLogic.Stats.Intellect] * StatLogic:GetSpellCritPerInt(class, calcLevel)
 		end,
 		ispercent = true,
@@ -2973,9 +2973,9 @@ local summaryCalcData = {
 	-- Spell Crit Rating - SPELL_CRIT_RATING
 	{
 		option = "sumSpellCritRating",
-		name = "SPELL_CRIT_RATING",
+		name = StatLogic.Stats.SpellCritRating,
 		func = function(sum)
-			return sum["SPELL_CRIT_RATING"]
+			return sum[StatLogic.Stats.SpellCritRating]
 				+ sum[StatLogic.Stats.Spirit] * GSM("ADD_SPELL_CRIT_RATING_MOD_SPI")
 		end,
 	},
@@ -2984,16 +2984,16 @@ local summaryCalcData = {
 		option = "sumSpellHaste",
 		name = "SPELL_HASTE",
 		func = function(sum)
-			return StatLogic:GetEffectFromRating(sum["SPELL_HASTE_RATING"], "SPELL_HASTE_RATING", calcLevel)
+			return StatLogic:GetEffectFromRating(sum[StatLogic.Stats.SpellHasteRating], StatLogic.Stats.SpellHasteRating, calcLevel)
 		end,
 		ispercent = true,
 	},
 	-- Spell Haste Rating - SPELL_HASTE_RATING
 	{
 		option = "sumSpellHasteRating",
-		name = "SPELL_HASTE_RATING",
+		name = StatLogic.Stats.SpellHasteRating,
 		func = function(sum)
-			return sum["SPELL_HASTE_RATING"]
+			return sum[StatLogic.Stats.SpellHasteRating]
 		end,
 	},
 	-- Spell Penetration - SPELLPEN
@@ -3024,7 +3024,7 @@ local summaryCalcData = {
 		name = "DODGE_NO_DR",
 		func = function(sum)
 			return sum[StatLogic.Stats.Dodge]
-				+ StatLogic:GetEffectFromRating(sum["DODGE_RATING"], "DODGE_RATING", calcLevel)
+				+ StatLogic:GetEffectFromRating(sum[StatLogic.Stats.DodgeRating], StatLogic.Stats.DodgeRating, calcLevel)
 				+ summaryFunc[StatLogic.Stats.Defense](sum) * DODGE_PARRY_BLOCK_PERCENT_PER_DEFENSE
 				+ sum[StatLogic.Stats.Agility] * StatLogic:GetDodgePerAgi()
 		end,
@@ -3050,9 +3050,9 @@ local summaryCalcData = {
 	-- Dodge Rating - DODGE_RATING
 	{
 		option = "sumDodgeRating",
-		name = "DODGE_RATING",
+		name = StatLogic.Stats.DodgeRating,
 		func = function(sum)
-			return sum["DODGE_RATING"]
+			return sum[StatLogic.Stats.DodgeRating]
 		end,
 	},
 	-- Parry Chance Before DR - PARRY, PARRY_RATING, DEFENSE
@@ -3062,7 +3062,7 @@ local summaryCalcData = {
 		func = function(sum)
 			return GetParryChance() > 0 and (
 				sum[StatLogic.Stats.Parry]
-				+ StatLogic:GetEffectFromRating(summaryFunc["PARRY_RATING"](sum), "PARRY_RATING", calcLevel)
+				+ StatLogic:GetEffectFromRating(summaryFunc[StatLogic.Stats.ParryRating](sum), StatLogic.Stats.ParryRating, calcLevel)
 				+ summaryFunc[StatLogic.Stats.Defense](sum) * DODGE_PARRY_BLOCK_PERCENT_PER_DEFENSE
 			) or 0
 		end,
@@ -3088,9 +3088,9 @@ local summaryCalcData = {
 	-- Parry Rating - PARRY_RATING
 	{
 		option = "sumParryRating",
-		name = "PARRY_RATING",
+		name = StatLogic.Stats.ParryRating,
 		func = function(sum)
-			return sum["PARRY_RATING"]
+			return sum[StatLogic.Stats.ParryRating]
 				+ sum[StatLogic.Stats.Strength] * GSM("ADD_PARRY_RATING_MOD_STR")
 		end,
 	},
@@ -3101,7 +3101,7 @@ local summaryCalcData = {
 		func = function(sum)
 			return GetBlockChance() > 0 and (
 				sum[StatLogic.Stats.BlockChance]
-				+ StatLogic:GetEffectFromRating(sum["BLOCK_RATING"], "BLOCK_RATING", calcLevel)
+				+ StatLogic:GetEffectFromRating(sum[StatLogic.Stats.BlockRating], StatLogic.Stats.BlockRating, calcLevel)
 				+ summaryFunc[StatLogic.Stats.Defense](sum) * DODGE_PARRY_BLOCK_PERCENT_PER_DEFENSE
 			) or 0
 		end,
@@ -3110,9 +3110,9 @@ local summaryCalcData = {
 	-- Block Rating - BLOCK_RATING
 	{
 		option = "sumBlockRating",
-		name = "BLOCK_RATING",
+		name = StatLogic.Stats.BlockRating,
 		func = function(sum)
-			return sum["BLOCK_RATING"]
+			return sum[StatLogic.Stats.BlockRating]
 		end,
 	},
 	-- Block Value - BLOCK_VALUE, STR
@@ -3160,7 +3160,7 @@ local summaryCalcData = {
 		name = StatLogic.Stats.Defense,
 		func = function(sum)
 			return sum[StatLogic.Stats.Defense]
-				+ StatLogic:GetEffectFromRating(sum["DEFENSE_RATING"], "DEFENSE_RATING", calcLevel)
+				+ StatLogic:GetEffectFromRating(sum[StatLogic.Stats.DefenseRating], StatLogic.Stats.DefenseRating, calcLevel)
 		end,
 	},
 	-- Avoidance - DODGE, PARRY, MELEE_HIT_AVOID, BLOCK(Optional)
@@ -3184,7 +3184,7 @@ local summaryCalcData = {
 		option = "sumCritAvoid",
 		name = "MELEE_CRIT_AVOID",
 		func = function(sum)
-			return StatLogic:GetEffectFromRating(sum["RESILIENCE_RATING"], "RESILIENCE_RATING", calcLevel)
+			return StatLogic:GetEffectFromRating(sum[StatLogic.Stats.ResilienceRating], StatLogic.Stats.ResilienceRating, calcLevel)
 				+ summaryFunc[StatLogic.Stats.Defense](sum) * DODGE_PARRY_BLOCK_PERCENT_PER_DEFENSE
 		 end,
 		ispercent = true,
@@ -3192,9 +3192,9 @@ local summaryCalcData = {
 	-- Resilience - RESILIENCE_RATING
 	{
 		option = "sumResilience",
-		name = "RESILIENCE_RATING",
+		name = StatLogic.Stats.ResilienceRating,
 		func = function(sum)
-			return sum["RESILIENCE_RATING"]
+			return sum[StatLogic.Stats.ResilienceRating]
 		end,
 	},
 	-- Arcane Resistance - ARCANE_RES

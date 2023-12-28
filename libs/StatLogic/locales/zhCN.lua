@@ -118,7 +118,7 @@ L["WholeTextLookup"] = {
 	["初级巫师之油"] = {["SPELL_DMG"] = 8, ["HEAL"] = 8}, --
 	["次级巫师之油"] = {["SPELL_DMG"] = 16, ["HEAL"] = 16}, --
 	["巫师之油"] = {["SPELL_DMG"] = 24, ["HEAL"] = 24}, --
-	["卓越巫师之油"] = {["SPELL_DMG"] = 36, ["HEAL"] = 36, ["SPELL_CRIT_RATING"] = 14}, --
+	["卓越巫师之油"] = {["SPELL_DMG"] = 36, ["HEAL"] = 36, [StatLogic.Stats.SpellCritRating] = 14}, --
 	["神圣巫师之油"] = {["SPELL_DMG_UNDEAD"] = 60}, --
 
 	["超强法力之油"] = {["MANA_REG"] = 14}, --
@@ -140,7 +140,7 @@ L["WholeTextLookup"] = {
 	["移动速度略微提升"] = {["RUN_SPEED"] = 8}, -- Enchant Boots - Minor Speed
 	["略微提高奔跑速度"] = {["RUN_SPEED"] = 8}, --
 	["初级速度"] = {["RUN_SPEED"] = 8}, -- Enchant Boots - Minor Speed
-	["稳固"] = {["MELEE_HIT_RATING"] = 10}, -- Enchant Boots - Surefooted "Surefooted"
+	["稳固"] = {[StatLogic.Stats.MeleeHitRating] = 10}, -- Enchant Boots - Surefooted "Surefooted"
 
 	["狡诈"] = {["THREAT_MOD"] = -2}, -- Enchant Cloak - Subtlety
 	["威胁减少2%"] = {["THREAT_MOD"] = -2}, -- StatLogic:GetSum("item:23344:2832")
@@ -249,7 +249,7 @@ L["StatIDLookup"] = {
 	["使坐骑速度提高%"] = {"MOUNT_SPEED"}, -- [Highlander's Plate Greaves] ID: 20048
 	["坐骑速度"] = {"MOUNT_SPEED"}, -- [Highlander's Plate Greaves] ID: 20048
 
-	["所有属性"] = {StatLogic.Stats.Strength, StatLogic.Stats.Agility, StatLogic.Stats.Stamina, StatLogic.Stats.Intellect, StatLogic.Stats.Spirit,},
+	["所有属性"] = {StatLogic.Stats.AllStats,},
 	["力量"] = {StatLogic.Stats.Strength,},
 	["敏捷"] = {StatLogic.Stats.Agility,},
 	["耐力"] = {StatLogic.Stats.Stamina,},
@@ -368,94 +368,94 @@ L["StatIDLookup"] = {
 	["每秒伤害"] = {"DPS",},
 	["每秒伤害提高"] = {"DPS",}, -- [Thorium Shells] ID: 15997
 
-	["防御等级"] = {"DEFENSE_RATING",},
-	["防御等级提高"] = {"DEFENSE_RATING",},
-	["提高你的防御等级"] = {"DEFENSE_RATING",},
-	["使防御等级"] = {"DEFENSE_RATING",},
-	["使你的防御等级"] = {"DEFENSE_RATING",},
+	["防御等级"] = {StatLogic.Stats.DefenseRating,},
+	["防御等级提高"] = {StatLogic.Stats.DefenseRating,},
+	["提高你的防御等级"] = {StatLogic.Stats.DefenseRating,},
+	["使防御等级"] = {StatLogic.Stats.DefenseRating,},
+	["使你的防御等级"] = {StatLogic.Stats.DefenseRating,},
 
-	["躲闪等级"] = {"DODGE_RATING",},
-	["提高躲闪等级"] = {"DODGE_RATING",},
-	["躲闪等级提高"] = {"DODGE_RATING",},
-	["躲闪等级提高(%d+)"] = {"DODGE_RATING",},
-	["提高你的躲闪等级"] = {"DODGE_RATING",},
-	["使躲闪等级"] = {"DODGE_RATING",},
-	["使你的躲闪等级"] = {"DODGE_RATING",},
+	["躲闪等级"] = {StatLogic.Stats.DodgeRating,},
+	["提高躲闪等级"] = {StatLogic.Stats.DodgeRating,},
+	["躲闪等级提高"] = {StatLogic.Stats.DodgeRating,},
+	["躲闪等级提高(%d+)"] = {StatLogic.Stats.DodgeRating,},
+	["提高你的躲闪等级"] = {StatLogic.Stats.DodgeRating,},
+	["使躲闪等级"] = {StatLogic.Stats.DodgeRating,},
+	["使你的躲闪等级"] = {StatLogic.Stats.DodgeRating,},
 
-	["招架等级"] = {"PARRY_RATING",},
-	["提高招架等级"] = {"PARRY_RATING",},
-	["提高你的招架等级"] = {"PARRY_RATING",},
-	["使招架等级"] = {"PARRY_RATING",},
-	["使你的招架等级"] = {"PARRY_RATING",},
+	["招架等级"] = {StatLogic.Stats.ParryRating,},
+	["提高招架等级"] = {StatLogic.Stats.ParryRating,},
+	["提高你的招架等级"] = {StatLogic.Stats.ParryRating,},
+	["使招架等级"] = {StatLogic.Stats.ParryRating,},
+	["使你的招架等级"] = {StatLogic.Stats.ParryRating,},
 
-	["盾挡等级"] = {"BLOCK_RATING",},
-	["提高盾挡等级"] = {"BLOCK_RATING",},
-	["提高你的盾挡等级"] = {"BLOCK_RATING",},
-	["使盾挡等级"] = {"BLOCK_RATING",},
-	["使你的盾挡等级"] = {"BLOCK_RATING",},
+	["盾挡等级"] = {StatLogic.Stats.BlockRating,},
+	["提高盾挡等级"] = {StatLogic.Stats.BlockRating,},
+	["提高你的盾挡等级"] = {StatLogic.Stats.BlockRating,},
+	["使盾挡等级"] = {StatLogic.Stats.BlockRating,},
+	["使你的盾挡等级"] = {StatLogic.Stats.BlockRating,},
 
-	["格挡等级"] = {"BLOCK_RATING",},
-	["提高格挡等级"] = {"BLOCK_RATING",},
-	["提高你的格挡等级"] = {"BLOCK_RATING",},
-	["使格挡等级"] = {"BLOCK_RATING",},
-	["使你的格挡等级"] = {"BLOCK_RATING",},
+	["格挡等级"] = {StatLogic.Stats.BlockRating,},
+	["提高格挡等级"] = {StatLogic.Stats.BlockRating,},
+	["提高你的格挡等级"] = {StatLogic.Stats.BlockRating,},
+	["使格挡等级"] = {StatLogic.Stats.BlockRating,},
+	["使你的格挡等级"] = {StatLogic.Stats.BlockRating,},
 
-	["盾牌格挡等级"] = {"BLOCK_RATING",},
-	["提高盾牌格挡等级"] = {"BLOCK_RATING",},
-	["提高你的盾牌格挡等级"] = {"BLOCK_RATING",},
-	["使盾牌格挡等级"] = {"BLOCK_RATING",},
-	["使你的盾牌格挡等级"] = {"BLOCK_RATING",},
+	["盾牌格挡等级"] = {StatLogic.Stats.BlockRating,},
+	["提高盾牌格挡等级"] = {StatLogic.Stats.BlockRating,},
+	["提高你的盾牌格挡等级"] = {StatLogic.Stats.BlockRating,},
+	["使盾牌格挡等级"] = {StatLogic.Stats.BlockRating,},
+	["使你的盾牌格挡等级"] = {StatLogic.Stats.BlockRating,},
 
-	["命中等级"] = {"HIT_RATING",},
-	["提高命中等级"] = {"HIT_RATING",}, -- ITEM_MOD_HIT_RATING
-	["使你的命中等级"] = {"HIT_RATING",},
-	["提高近战命中等级"] = {"MELEE_HIT_RATING",}, -- ITEM_MOD_HIT_MELEE_RATING
+	["命中等级"] = {StatLogic.Stats.HitRating,},
+	["提高命中等级"] = {StatLogic.Stats.HitRating,}, -- ITEM_MOD_HIT_RATING
+	["使你的命中等级"] = {StatLogic.Stats.HitRating,},
+	["提高近战命中等级"] = {StatLogic.Stats.MeleeHitRating,}, -- ITEM_MOD_HIT_MELEE_RATING
 
-	["法术命中等级"] = {"SPELL_HIT_RATING",},
-	["提高法术命中等级"] = {"SPELL_HIT_RATING",}, -- ITEM_MOD_HIT_SPELL_RATING
-	["使你的法术命中等级"] = {"SPELL_HIT_RATING",},
+	["法术命中等级"] = {StatLogic.Stats.SpellHitRating,},
+	["提高法术命中等级"] = {StatLogic.Stats.SpellHitRating,}, -- ITEM_MOD_HIT_SPELL_RATING
+	["使你的法术命中等级"] = {StatLogic.Stats.SpellHitRating,},
 
-	["远程命中等级"] = {"RANGED_HIT_RATING",},
-	["提高远程命中等级"] = {"RANGED_HIT_RATING",}, -- ITEM_MOD_HIT_RANGED_RATING
-	["使你的远程命中等级"] = {"RANGED_HIT_RATING",},
+	["远程命中等级"] = {StatLogic.Stats.RangedHitRating,},
+	["提高远程命中等级"] = {StatLogic.Stats.RangedHitRating,}, -- ITEM_MOD_HIT_RANGED_RATING
+	["使你的远程命中等级"] = {StatLogic.Stats.RangedHitRating,},
 
-	["爆击等级"] = {"CRIT_RATING",},
-	["提高爆击等级"] = {"CRIT_RATING",},
-	["使你的爆击等级"] = {"CRIT_RATING",},
+	["爆击等级"] = {StatLogic.Stats.CritRating,},
+	["提高爆击等级"] = {StatLogic.Stats.CritRating,},
+	["使你的爆击等级"] = {StatLogic.Stats.CritRating,},
 
-	["近战爆击等级"] = {"MELEE_CRIT_RATING",},
-	["提高近战爆击等级"] = {"MELEE_CRIT_RATING",}, -- [屠杀者腰带] ID:21639
-	["使你的近战爆击等级"] = {"MELEE_CRIT_RATING",},
+	["近战爆击等级"] = {StatLogic.Stats.MeleeCritRating,},
+	["提高近战爆击等级"] = {StatLogic.Stats.MeleeCritRating,}, -- [屠杀者腰带] ID:21639
+	["使你的近战爆击等级"] = {StatLogic.Stats.MeleeCritRating,},
 
-	["法术爆击等级"] = {"SPELL_CRIT_RATING",},
-	["法术爆击"] = {"SPELL_CRIT_RATING",},
-	["提高法术爆击等级"] = {"SPELL_CRIT_RATING",}, -- [伊利达瑞的复仇] ID:28040
-	["使你的法术爆击等级"] = {"SPELL_CRIT_RATING",},
-	["使周围半径30码范围内的所有小队成员的法术爆击等级"] = {"SPELL_CRIT_RATING",}, -- Atiesh, ID: 22589
+	["法术爆击等级"] = {StatLogic.Stats.SpellCritRating,},
+	["法术爆击"] = {StatLogic.Stats.SpellCritRating,},
+	["提高法术爆击等级"] = {StatLogic.Stats.SpellCritRating,}, -- [伊利达瑞的复仇] ID:28040
+	["使你的法术爆击等级"] = {StatLogic.Stats.SpellCritRating,},
+	["使周围半径30码范围内的所有小队成员的法术爆击等级"] = {StatLogic.Stats.SpellCritRating,}, -- Atiesh, ID: 22589
 
-	["远程爆击等级"] = {"RANGED_CRIT_RATING",},
-	["提高远程爆击等级"] = {"RANGED_CRIT_RATING",},
-	["使你的远程爆击等级"] = {"RANGED_CRIT_RATING",},
+	["远程爆击等级"] = {StatLogic.Stats.RangedCritRating,},
+	["提高远程爆击等级"] = {StatLogic.Stats.RangedCritRating,},
+	["使你的远程爆击等级"] = {StatLogic.Stats.RangedCritRating,},
 
-	["韧性"] = {"RESILIENCE_RATING",},
-	["韧性等级"] = {"RESILIENCE_RATING",},
-	["使你的韧性等级"] = {"RESILIENCE_RATING",},
+	["韧性"] = {StatLogic.Stats.ResilienceRating,},
+	["韧性等级"] = {StatLogic.Stats.ResilienceRating,},
+	["使你的韧性等级"] = {StatLogic.Stats.ResilienceRating,},
 
-	["急速等级"] = {"HASTE_RATING"}, -- Enchant Gloves
-	["攻击速度"] = {"HASTE_RATING"},
-	["提高急速等级"] = {"HASTE_RATING"},
-	["法术急速等级"] = {"SPELL_HASTE_RATING"},
-	["远程急速等级"] = {"RANGED_HASTE_RATING"},
-	["提高近战急速等级"] = {"MELEE_HASTE_RATING"},
-	["提高法术急速等级"] = {"SPELL_HASTE_RATING"},
-	["提高远程急速等级"] = {"RANGED_HASTE_RATING"},
+	["急速等级"] = {StatLogic.Stats.HasteRating}, -- Enchant Gloves
+	["攻击速度"] = {StatLogic.Stats.HasteRating},
+	["提高急速等级"] = {StatLogic.Stats.HasteRating},
+	["法术急速等级"] = {StatLogic.Stats.SpellHasteRating},
+	["远程急速等级"] = {StatLogic.Stats.RangedHasteRating},
+	["提高近战急速等级"] = {StatLogic.Stats.MeleeHasteRating},
+	["提高法术急速等级"] = {StatLogic.Stats.SpellHasteRating},
+	["提高远程急速等级"] = {StatLogic.Stats.RangedHasteRating},
 
-	["熟練等級"] = {"EXPERTISE_RATING"},
-	["使你的精准等级提高"] = {"EXPERTISE_RATING"},
-	["提高精准等级"] = {"EXPERTISE_RATING",},
-	["精准等级提高"] = {"EXPERTISE_RATING",},
-	["护甲穿透等级"] = {"ARMOR_PENETRATION_RATING"},
-	["护甲穿透等级提高"] = {"ARMOR_PENETRATION_RATING"},
+	["熟練等級"] = {StatLogic.Stats.ExpertiseRating},
+	["使你的精准等级提高"] = {StatLogic.Stats.ExpertiseRating},
+	["提高精准等级"] = {StatLogic.Stats.ExpertiseRating,},
+	["精准等级提高"] = {StatLogic.Stats.ExpertiseRating,},
+	["护甲穿透等级"] = {StatLogic.Stats.ArmorPenetrationRating},
+	["护甲穿透等级提高"] = {StatLogic.Stats.ArmorPenetrationRating},
 
 	-- Exclude
 	["秒"] = false,

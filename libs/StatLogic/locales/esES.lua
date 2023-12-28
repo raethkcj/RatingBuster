@@ -95,7 +95,7 @@ L["WholeTextLookup"] = {
 	["Aceite de zahorí menor"] = {["SPELL_DMG"] = 8, ["HEAL"] = 8}, -- ID: 20744
 	["Aceite de zahorí inferior"] = {["SPELL_DMG"] = 16, ["HEAL"] = 16}, -- ID: 20746
 	["Aceite de zahorí"] = {["SPELL_DMG"] = 24, ["HEAL"] = 24}, -- ID: 20750
-	["Aceite de zahorí luminoso"] = {["SPELL_DMG"] = 36, ["HEAL"] = 36, ["SPELL_CRIT_RATING"] = 14}, -- ID: 20749
+	["Aceite de zahorí luminoso"] = {["SPELL_DMG"] = 36, ["HEAL"] = 36, [StatLogic.Stats.SpellCritRating] = 14}, -- ID: 20749
 	["Aceite de zahorí excelente"] = {["SPELL_DMG"] = 42, ["HEAL"] = 42}, -- ID: 22522
 	["Aceite de zahorí bendito"] = {["SPELL_DMG_UNDEAD"] = 60}, -- ID: 23123
 
@@ -116,7 +116,7 @@ L["WholeTextLookup"] = {
 	["Velocidad de carrera aumentada ligeramente"] = {["RUN_SPEED"] = 8}, --
 	["Aumento mínimo de velocidad"] = {["RUN_SPEED"] = 8}, -- Enchant Boots - Minor Speed "Minor Speed Increase" http://wow.allakhazam.com/db/spell.html?wspell=13890
 	["velocidad mín."] = {["RUN_SPEED"] = 8}, -- Enchant Boots - Cat's Swiftness "Minor Speed and +6 Agility" http://wow.allakhazam.com/db/spell.html?wspell=34007
-	["Pies de plomo"] = {["MELEE_HIT_RATING"] = 10}, -- Enchant Boots - Surefooted "Surefooted" http://wow.allakhazam.com/db/spell.html?wspell=27954
+	["Pies de plomo"] = {[StatLogic.Stats.MeleeHitRating] = 10}, -- Enchant Boots - Surefooted "Surefooted" http://wow.allakhazam.com/db/spell.html?wspell=27954
 
 	["Sutileza"] = {["THREAT_MOD"] = -2}, -- Enchant Cloak - Subtlety
 	["2% amenaza reducida"] = {["THREAT_MOD"] = -2}, -- StatLogic:GetSum("item:23344:2832")
@@ -210,7 +210,7 @@ L["StatIDLookup"] = {
 	["Daño de arma"] = {"MELEE_DMG"}, -- Enchant
 	["Aumenta la velocidad de la montura%"] = {"MOUNT_SPEED"}, -- [Highlander's Plate Greaves] ID: 20048
 
-	["Todas las Estadísticas."] = {StatLogic.Stats.Strength, StatLogic.Stats.Agility, StatLogic.Stats.Stamina, StatLogic.Stats.Intellect, StatLogic.Stats.Spirit,},
+	["Todas las Estadísticas."] = {StatLogic.Stats.AllStats,},
 	["Fuerza"] = {StatLogic.Stats.Strength,},
 	["Agilidad"] = {StatLogic.Stats.Agility,},
 	["Aguante"] = {StatLogic.Stats.Stamina,},
@@ -336,67 +336,67 @@ L["StatIDLookup"] = {
 	["daño por segundo"] = {"DPS",},
 	["Añadedaño por segundo"] = {"DPS",}, -- [Thorium Shells] ID: 15977
 
-	["índice de defensa"] = {"DEFENSE_RATING",},
-	["Aumenta el índice de defensa"] = {"DEFENSE_RATING",},
-	["índice de esquivar"] = {"DODGE_RATING",},
-	["Aumenta tu índice de esquivar"] = {"DODGE_RATING",},
-	["índice de parada"] = {"PARRY_RATING",},
-	["Aumenta tu índice de parada"] = {"PARRY_RATING",},
-	["índice de bloqueo con escudo"] = {"BLOCK_RATING",}, -- Enchant Shield - Lesser Block +10 Shield Block Rating http://wow.allakhazam.com/db/spell.html?wspell=13689
-	["índice de bloqueo"] = {"BLOCK_RATING",},
-	["Aumenta tu índice de bloqueo"] = {"BLOCK_RATING",},
-	["Aumenta tu índice de bloqueo con escudo"] = {"BLOCK_RATING",},
+	["índice de defensa"] = {StatLogic.Stats.DefenseRating,},
+	["Aumenta el índice de defensa"] = {StatLogic.Stats.DefenseRating,},
+	["índice de esquivar"] = {StatLogic.Stats.DodgeRating,},
+	["Aumenta tu índice de esquivar"] = {StatLogic.Stats.DodgeRating,},
+	["índice de parada"] = {StatLogic.Stats.ParryRating,},
+	["Aumenta tu índice de parada"] = {StatLogic.Stats.ParryRating,},
+	["índice de bloqueo con escudo"] = {StatLogic.Stats.BlockRating,}, -- Enchant Shield - Lesser Block +10 Shield Block Rating http://wow.allakhazam.com/db/spell.html?wspell=13689
+	["índice de bloqueo"] = {StatLogic.Stats.BlockRating,},
+	["Aumenta tu índice de bloqueo"] = {StatLogic.Stats.BlockRating,},
+	["Aumenta tu índice de bloqueo con escudo"] = {StatLogic.Stats.BlockRating,},
 
 	["Mejora tu probabilidad de alcanzar el objetivo%"] = {"MELEE_HIT", "RANGED_HIT"},
-	["índice de golpe"] = {"HIT_RATING",},
-	["Aumenta tu índice de golpe"] = {"HIT_RATING",},
-	["Mejora el índice de golpe"] = {"HIT_RATING",}, -- ITEM_MOD_HIT_RATING
-	["Mejora el índice de golpe cuerpo a cuerpo"] = {"MELEE_HIT_RATING",}, -- ITEM_MOD_HIT_MELEE_RATING
-	["golpe con hechizo"] = {"SPELL_HIT_RATING",}, -- Presence of Sight +18 Healing and Spell Damage/+8 Spell Hit http://wow.allakhazam.com/db/spell.html?wspell=24164
+	["índice de golpe"] = {StatLogic.Stats.HitRating,},
+	["Aumenta tu índice de golpe"] = {StatLogic.Stats.HitRating,},
+	["Mejora el índice de golpe"] = {StatLogic.Stats.HitRating,}, -- ITEM_MOD_HIT_RATING
+	["Mejora el índice de golpe cuerpo a cuerpo"] = {StatLogic.Stats.MeleeHitRating,}, -- ITEM_MOD_HIT_MELEE_RATING
+	["golpe con hechizo"] = {StatLogic.Stats.SpellHitRating,}, -- Presence of Sight +18 Healing and Spell Damage/+8 Spell Hit http://wow.allakhazam.com/db/spell.html?wspell=24164
 	["Mejora tu probabilidad de alcanzar el objetivo con hechizos%"] = {"SPELL_HIT"},
-	["índice de golpe con hechizos"] = {"SPELL_HIT_RATING",},
-	["Mejora el índice de golpe con hechizos"] = {"SPELL_HIT_RATING",}, -- ITEM_MOD_HIT_SPELL_RATING
-	["Aumenta tu índice de golpe con hechizos"] = {"SPELL_HIT_RATING",},
-	["Índice de golpe a distancia"] = {"RANGED_HIT_RATING",},
-	["Mejora el índice de golpe a distancia"] = {"RANGED_HIT_RATING",}, -- ITEM_MOD_HIT_RANGED_RATING
-	["Aumneta tu índice de golpe a distancia"] = {"RANGED_HIT_RATING",},
+	["índice de golpe con hechizos"] = {StatLogic.Stats.SpellHitRating,},
+	["Mejora el índice de golpe con hechizos"] = {StatLogic.Stats.SpellHitRating,}, -- ITEM_MOD_HIT_SPELL_RATING
+	["Aumenta tu índice de golpe con hechizos"] = {StatLogic.Stats.SpellHitRating,},
+	["Índice de golpe a distancia"] = {StatLogic.Stats.RangedHitRating,},
+	["Mejora el índice de golpe a distancia"] = {StatLogic.Stats.RangedHitRating,}, -- ITEM_MOD_HIT_RANGED_RATING
+	["Aumneta tu índice de golpe a distancia"] = {StatLogic.Stats.RangedHitRating,},
 
 	["Mejora tu probabilidad de conseguir un golpe crítico en%"] = {StatLogic.Stats.MeleeCrit, StatLogic.Stats.RangedCrit},
-	["índice de golpe crítico"] = {"CRIT_RATING",},
-	["Aumenta tu índice de golpe crítico"] = {"CRIT_RATING",},
-	["Mejora el índice de golpe crítico"] = {"CRIT_RATING",},
-	["Mejora el índice de golpe crítico cuerpo a cuerpo"] = {"MELEE_CRIT_RATING",}, -- [Cloak of Darkness] ID:33122
+	["índice de golpe crítico"] = {StatLogic.Stats.CritRating,},
+	["Aumenta tu índice de golpe crítico"] = {StatLogic.Stats.CritRating,},
+	["Mejora el índice de golpe crítico"] = {StatLogic.Stats.CritRating,},
+	["Mejora el índice de golpe crítico cuerpo a cuerpo"] = {StatLogic.Stats.MeleeCritRating,}, -- [Cloak of Darkness] ID:33122
 	["Mejora tu probabilidad de conseguir un golpe crítico en % con los hechizos"] = {StatLogic.Stats.SpellCrit},
-	["índice de golpe crítico con hechizos"] = {"SPELL_CRIT_RATING",},
-	["Índice de golpe crítico con hechizos"] = {"SPELL_CRIT_RATING",},
-	--["Spell Critical Rating"] = {"SPELL_CRIT_RATING",},
-	--["Spell Crit Rating"] = {"SPELL_CRIT_RATING",},
-	["Aumenta tu índice de golpe crítico con hechizos"] = {"SPELL_CRIT_RATING",},
-	["Aumenta el índice de golpe crítico con hechizos de todos los miembros del grupo a 30 m."] = {"SPELL_CRIT_RATING",},
-	["Aumenta tu índice de golpe crítico a distancia"] = {"RANGED_CRIT_RATING",}, -- Fletcher's Gloves ID:7348
+	["índice de golpe crítico con hechizos"] = {StatLogic.Stats.SpellCritRating,},
+	["Índice de golpe crítico con hechizos"] = {StatLogic.Stats.SpellCritRating,},
+	--["Spell Critical Rating"] = {StatLogic.Stats.SpellCritRating,},
+	--["Spell Crit Rating"] = {StatLogic.Stats.SpellCritRating,},
+	["Aumenta tu índice de golpe crítico con hechizos"] = {StatLogic.Stats.SpellCritRating,},
+	["Aumenta el índice de golpe crítico con hechizos de todos los miembros del grupo a 30 m."] = {StatLogic.Stats.SpellCritRating,},
+	["Aumenta tu índice de golpe crítico a distancia"] = {StatLogic.Stats.RangedCritRating,}, -- Fletcher's Gloves ID:7348
 
-	["temple"] = {"RESILIENCE_RATING",},
-	["índice de temple"] = {"RESILIENCE_RATING",}, -- Enchant Chest - Major Resilience "+15 Resilience Rating" http://wow.allakhazam.com/db/spell.html?wspell=33992
-	["Mejora tu índice de temple"] = {"RESILIENCE_RATING",},
+	["temple"] = {StatLogic.Stats.ResilienceRating,},
+	["índice de temple"] = {StatLogic.Stats.ResilienceRating,}, -- Enchant Chest - Major Resilience "+15 Resilience Rating" http://wow.allakhazam.com/db/spell.html?wspell=33992
+	["Mejora tu índice de temple"] = {StatLogic.Stats.ResilienceRating,},
 
-	["índice de celeridad"] = {"MELEE_HASTE_RATING"},
-	["Mejora el índice de celeridad"] = {"HASTE_RATING"},
-	["Aumenta el índice de celeridad"] = {"HASTE_RATING"},
-	["Aumenta tu índice de celeridad"] = {"HASTE_RATING"},
-	["índice de celeridad con cuerpo a cuerpo"] = {"MELEE_HASTE_RATING"},
-	["índice de celeridad con hechizos"] = {"SPELL_HASTE_RATING"},
-	["índice de celeridad a distancia"] = {"RANGED_HASTE_RATING"},
-	["Aumenta el índice de celeridad cuerpo a cuerpo"] = {"MELEE_HASTE_RATING"},
-	["Aumenta tu índice de celeridad cuerpo a cuerpo"] = {"MELEE_HASTE_RATING"},
-	["Mejora el índice de celeridad con hechizos"] = {"SPELL_HASTE_RATING"},
-	["Aumenta tu índice de celeridad de hechizo"] = {"SPELL_HASTE_RATING"},
-	--["Improves ranged haste rating"] = {"RANGED_HASTE_RATING"},
+	["índice de celeridad"] = {StatLogic.Stats.MeleeHasteRating},
+	["Mejora el índice de celeridad"] = {StatLogic.Stats.HasteRating},
+	["Aumenta el índice de celeridad"] = {StatLogic.Stats.HasteRating},
+	["Aumenta tu índice de celeridad"] = {StatLogic.Stats.HasteRating},
+	["índice de celeridad con cuerpo a cuerpo"] = {StatLogic.Stats.MeleeHasteRating},
+	["índice de celeridad con hechizos"] = {StatLogic.Stats.SpellHasteRating},
+	["índice de celeridad a distancia"] = {StatLogic.Stats.RangedHasteRating},
+	["Aumenta el índice de celeridad cuerpo a cuerpo"] = {StatLogic.Stats.MeleeHasteRating},
+	["Aumenta tu índice de celeridad cuerpo a cuerpo"] = {StatLogic.Stats.MeleeHasteRating},
+	["Mejora el índice de celeridad con hechizos"] = {StatLogic.Stats.SpellHasteRating},
+	["Aumenta tu índice de celeridad de hechizo"] = {StatLogic.Stats.SpellHasteRating},
+	--["Improves ranged haste rating"] = {StatLogic.Stats.RangedHasteRating},
 
-	["Aumenta tu índice de pericia"] = {"EXPERTISE_RATING"},
-	["tu índice de pericia"] = {"EXPERTISE_RATING"},
-	["el índice de pericia"] = {"EXPERTISE_RATING"},
-	["índice de penetración de armadura"] = {"ARMOR_PENETRATION_RATING"}, -- gems
-	["Aumenta tu índice de penetración de armadurap"] = {"ARMOR_PENETRATION_RATING"}, -- ID:43178
+	["Aumenta tu índice de pericia"] = {StatLogic.Stats.ExpertiseRating},
+	["tu índice de pericia"] = {StatLogic.Stats.ExpertiseRating},
+	["el índice de pericia"] = {StatLogic.Stats.ExpertiseRating},
+	["índice de penetración de armadura"] = {StatLogic.Stats.ArmorPenetrationRating}, -- gems
+	["Aumenta tu índice de penetración de armadurap"] = {StatLogic.Stats.ArmorPenetrationRating}, -- ID:43178
 
 		-- Exclude
 	["seg"] = false,

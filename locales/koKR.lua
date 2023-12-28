@@ -629,22 +629,22 @@ L["MANA_REG"] = MANA.." 재생"
 L["AVERAGE_DAMAGE"] = "Average Damage"
 L["DPS"] = "초당 공격력"
 
-L["DEFENSE_RATING"] = COMBAT_RATING_NAME2 -- COMBAT_RATING_NAME2 = "Defense Rating"
-L["DODGE_RATING"] = COMBAT_RATING_NAME3 -- COMBAT_RATING_NAME3 = "Dodge Rating"
-L["PARRY_RATING"] = COMBAT_RATING_NAME4 -- COMBAT_RATING_NAME4 = "Parry Rating"
-L["BLOCK_RATING"] = COMBAT_RATING_NAME5 -- COMBAT_RATING_NAME5 = "Block Rating"
-L["MELEE_HIT_RATING"] = COMBAT_RATING_NAME6 -- COMBAT_RATING_NAME6 = "Hit Rating"
-L["RANGED_HIT_RATING"] = PLAYERSTAT_RANGED_COMBAT.." "..COMBAT_RATING_NAME6 -- PLAYERSTAT_RANGED_COMBAT = "Ranged"
-L["SPELL_HIT_RATING"] = PLAYERSTAT_SPELL_COMBAT.." "..COMBAT_RATING_NAME6 -- PLAYERSTAT_SPELL_COMBAT = "Spell"
-L["MELEE_CRIT_RATING"] = COMBAT_RATING_NAME9 -- COMBAT_RATING_NAME9 = "Crit Rating"
-L["RANGED_CRIT_RATING"] = PLAYERSTAT_RANGED_COMBAT.." "..COMBAT_RATING_NAME9
-L["SPELL_CRIT_RATING"] = PLAYERSTAT_SPELL_COMBAT.." "..COMBAT_RATING_NAME9
-L["RESILIENCE_RATING"] = COMBAT_RATING_NAME15 -- COMBAT_RATING_NAME15 = "Resilience"
-L["MELEE_HASTE_RATING"] = "가속도 "..RATING --
-L["RANGED_HASTE_RATING"] = PLAYERSTAT_RANGED_COMBAT.." 가속도 "..RATING
-L["SPELL_HASTE_RATING"] = PLAYERSTAT_SPELL_COMBAT.." 가속도 "..RATING
-L["EXPERTISE_RATING"] = "숙련 ".." "..RATING
-L["ARMOR_PENETRATION_RATING"] = "방어구 관통력"
+L[StatLogic.Stats.DefenseRating] = COMBAT_RATING_NAME2 -- COMBAT_RATING_NAME2 = "Defense Rating"
+L[StatLogic.Stats.DodgeRating] = COMBAT_RATING_NAME3 -- COMBAT_RATING_NAME3 = "Dodge Rating"
+L[StatLogic.Stats.ParryRating] = COMBAT_RATING_NAME4 -- COMBAT_RATING_NAME4 = "Parry Rating"
+L[StatLogic.Stats.BlockRating] = COMBAT_RATING_NAME5 -- COMBAT_RATING_NAME5 = "Block Rating"
+L[StatLogic.Stats.MeleeHitRating] = COMBAT_RATING_NAME6 -- COMBAT_RATING_NAME6 = "Hit Rating"
+L[StatLogic.Stats.RangedHitRating] = PLAYERSTAT_RANGED_COMBAT.." "..COMBAT_RATING_NAME6 -- PLAYERSTAT_RANGED_COMBAT = "Ranged"
+L[StatLogic.Stats.SpellHitRating] = PLAYERSTAT_SPELL_COMBAT.." "..COMBAT_RATING_NAME6 -- PLAYERSTAT_SPELL_COMBAT = "Spell"
+L[StatLogic.Stats.MeleeCritRating] = COMBAT_RATING_NAME9 -- COMBAT_RATING_NAME9 = "Crit Rating"
+L[StatLogic.Stats.RangedCritRating] = PLAYERSTAT_RANGED_COMBAT.." "..COMBAT_RATING_NAME9
+L[StatLogic.Stats.SpellCritRating] = PLAYERSTAT_SPELL_COMBAT.." "..COMBAT_RATING_NAME9
+L[StatLogic.Stats.ResilienceRating] = COMBAT_RATING_NAME15 -- COMBAT_RATING_NAME15 = "Resilience"
+L[StatLogic.Stats.MeleeHasteRating] = "가속도 "..RATING --
+L[StatLogic.Stats.RangedHasteRating] = PLAYERSTAT_RANGED_COMBAT.." 가속도 "..RATING
+L[StatLogic.Stats.SpellHasteRating] = PLAYERSTAT_SPELL_COMBAT.." 가속도 "..RATING
+L[StatLogic.Stats.ExpertiseRating] = "숙련 ".." "..RATING
+L[StatLogic.Stats.ArmorPenetrationRating] = "방어구 관통력"
 -- Tier2 Stats - Stats that only show up when broken down from a Tier1 stat
 -- Str -> AP, Block Value
 -- Agi -> AP, Crit, Dodge
