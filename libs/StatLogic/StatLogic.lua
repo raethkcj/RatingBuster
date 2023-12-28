@@ -146,7 +146,6 @@ local ipairs = ipairs
 local type = type
 local tonumber = L.tonumber
 local GetInventoryItemLink = GetInventoryItemLink
-local unpack = unpack
 local IsUsableSpell = IsUsableSpell
 local UnitLevel = UnitLevel
 local UnitStat = UnitStat

@@ -1,8 +1,6 @@
-local addonName, addon = ...
+local addonName = ...
 
 local L = LibStub("AceLocale-3.0"):GetLocale(addonName)
-
-local tinsert = table.insert
 
 local function Escape(text)
    return text:lower():gsub("[().+%-*?%%[^$]", "%%%1"):gsub("%%%%s", "(.+)")

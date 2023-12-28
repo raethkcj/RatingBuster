@@ -65,7 +65,6 @@ local strsplit = strsplit
 local strjoin = strjoin
 local unpack = unpack
 local tonumber = tonumber
-local UnitStat = UnitStat
 local tocversion = select(4, GetBuildInfo())
 
 local GetItemInfoCached = setmetatable({}, { __index = function(self, n)
@@ -2598,7 +2597,6 @@ local summaryCalcData = {
 		option = "sumHP5OC",
 		name = "HEALTH_REG_OUT_OF_COMBAT",
 		func = function(sum)
-			local _, spi = UnitStat("player", 5)
 			return sum["HEALTH_REG"]
 				+ sum[StatLogic.Stats.Spirit] * GSM("ADD_NORMAL_HEALTH_REG_MOD_SPI") * GSM("MOD_NORMAL_HEALTH_REG")
 		end,
