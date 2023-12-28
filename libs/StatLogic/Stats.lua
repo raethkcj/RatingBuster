@@ -69,6 +69,8 @@ StatLogic.Stats.Stamina = Stat:new()
 StatLogic.Stats.Intellect = Stat:new()
 StatLogic.Stats.Spirit = Stat:new()
 StatLogic.Stats.AllStats = Stat:new({ show = false })
+StatLogic.Stats.Mastery = Stat:new()
+StatLogic.Stats.MasteryRating = Stat:new()
 
 -- Resources
 StatLogic.Stats.Health = Stat:new()
@@ -158,6 +160,7 @@ StatLogic.Stats.CritDamageReduction = Stat:new()
 StatLogic.Stats.DOTDamageReduction = Stat:new()
 StatLogic.Stats.DamageReduction = Stat:new()
 StatLogic.Stats.Resilience = Stat:new()
+StatLogic.Stats.ResilienceRating = Stat:new()
 
 StatLogic.Stats.HolyResistance = Stat:new()
 StatLogic.Stats.FireResistance = Stat:new()

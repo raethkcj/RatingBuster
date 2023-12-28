@@ -468,9 +468,9 @@ L["Raid Buffs"] = "团队Buff"
 --
 -- IMPORTANT: there may not exist a one-to-one correspondence, meaning you can't just translate this file,
 -- but will need to go in game and find out what needs to be put in here.
--- For example, in english I found 3 different strings that maps to CR_CRIT_MELEE: "critical strike", "critical hit" and "crit".
--- You will need to find out every string that represents CR_CRIT_MELEE, and so on.
--- In other languages there may be 5 different strings that should all map to CR_CRIT_MELEE.
+-- For example, in english I found 3 different strings that maps to StatLogic.Stats.MeleeCritRating: "critical strike", "critical hit" and "crit".
+-- You will need to find out every string that represents StatLogic.Stats.MeleeCritRating, and so on.
+-- In other languages there may be 5 different strings that should all map to StatLogic.Stats.MeleeCritRating.
 -- so please check in game that you have all strings, and not translate directly off this table.
 --
 -- Tip1: When doing localizations, I recommend you set debugging to true in RatingBuster.lua
@@ -491,26 +491,7 @@ L["exclusions"] = {
 L["separators"] = {
 	"/", "和", ",", "。", " 持续 ", "&", "及", "并", "，","、", "\n"
 }
---[[ Rating ID
-CR_WEAPON_SKILL = 1;
-CR_DEFENSE_SKILL = 2;
-CR_DODGE = 3;
-CR_PARRY = 4;
-CR_BLOCK = 5;
-CR_HIT_MELEE = 6;
-CR_HIT_RANGED = 7;
-CR_HIT_SPELL = 8;
-CR_CRIT_MELEE = 9;
-CR_CRIT_RANGED = 10;
-CR_CRIT_SPELL = 11;
-CR_RESILIENCE_CRIT_TAKEN = 15;
-CR_RESILIENCE_PLAYER_DAMAGE_TAKEN = 16;
-CR_HASTE_MELEE = 18;
-CR_HASTE_RANGED = 19;
-CR_HASTE_SPELL = 20;
-CR_EXPERTISE = 24;
-CR_ARMOR_PENETRATION = 25;
---
+--[[
 SPELL_STAT1_NAME = "Strength"
 SPELL_STAT2_NAME = "Agility"
 SPELL_STAT3_NAME = "Stamina"
@@ -523,36 +504,36 @@ L["statList"] = {
 	{pattern = SPELL_STAT3_NAME:lower(), id = StatLogic.Stats.Stamina}, -- Stamina
 	{pattern = SPELL_STAT4_NAME:lower(), id = StatLogic.Stats.Intellect}, -- Intellect
 	{pattern = SPELL_STAT5_NAME:lower(), id = StatLogic.Stats.Spirit}, -- Spirit
-	{pattern = "防御等级", id = CR_DEFENSE_SKILL},
-	{pattern = "躲闪等级", id = CR_DODGE},
-	{pattern = "格挡等级", id = CR_BLOCK}, -- block enchant: "+10 Shield Block Rating"
-	{pattern = "招架等级", id = CR_PARRY},
+	{pattern = "防御等级", id = StatLogic.Stats.DefenseRating},
+	{pattern = "躲闪等级", id = StatLogic.Stats.DodgeRating},
+	{pattern = "格挡等级", id = StatLogic.Stats.BlockRating}, -- block enchant: "+10 Shield Block Rating"
+	{pattern = "招架等级", id = StatLogic.Stats.ParryRating},
 
-	{pattern = "法术爆击等级", id = CR_CRIT_SPELL},
-	{pattern = "法术爆击命中等级", id = CR_CRIT_SPELL},
-	{pattern = "法术爆击等级", id = CR_CRIT_SPELL},
-	{pattern = "远程爆击等级", id = CR_CRIT_RANGED},
-	{pattern = "远程爆击命中等级", id = CR_CRIT_RANGED},
-	{pattern = "远程爆击等级", id = CR_CRIT_RANGED},
-	{pattern = "近战爆击等级", id = CR_CRIT_MELEE},
-	{pattern = "爆击等级", id = StatLogic.GenericStats.CR_CRIT},
+	{pattern = "法术爆击等级", id = StatLogic.Stats.SpellCritRating},
+	{pattern = "法术爆击命中等级", id = StatLogic.Stats.SpellCritRating},
+	{pattern = "法术爆击等级", id = StatLogic.Stats.SpellCritRating},
+	{pattern = "远程爆击等级", id = StatLogic.Stats.RangedCritRating},
+	{pattern = "远程爆击命中等级", id = StatLogic.Stats.RangedCritRating},
+	{pattern = "远程爆击等级", id = StatLogic.Stats.RangedCritRating},
+	{pattern = "近战爆击等级", id = StatLogic.Stats.MeleeCritRating},
+	{pattern = "爆击等级", id = StatLogic.Stats.CritRating},
 
-	{pattern = "法术命中等级", id = CR_HIT_SPELL},
-	{pattern = "远程命中等级", id = CR_HIT_RANGED},
-	{pattern = "命中等级", id = StatLogic.GenericStats.CR_HIT},
+	{pattern = "法术命中等级", id = StatLogic.Stats.SpellHitRating},
+	{pattern = "远程命中等级", id = StatLogic.Stats.RangedHitRating},
+	{pattern = "命中等级", id = StatLogic.Stats.HitRating},
 
-	{pattern = "韧性等级", id = CR_RESILIENCE_CRIT_TAKEN}, -- resilience is implicitly a rating
+	{pattern = "韧性等级", id = StatLogic.Stats.ResilienceRating}, -- resilience is implicitly a rating
 
-	{pattern = "法术急速等级", id = CR_HASTE_SPELL},
-	{pattern = "远程急速等级", id = CR_HASTE_RANGED},
-	{pattern = "急速等级", id = StatLogic.GenericStats.CR_HASTE},
-	{pattern = "加速等级", id = StatLogic.GenericStats.CR_HASTE}, -- [Drums of Battle]
+	{pattern = "法术急速等级", id = StatLogic.Stats.SpellHasteRating},
+	{pattern = "远程急速等级", id = StatLogic.Stats.RangedHasteRating},
+	{pattern = "急速等级", id = StatLogic.Stats.HasteRating},
+	{pattern = "加速等级", id = StatLogic.Stats.HasteRating}, -- [Drums of Battle]
 
-	{pattern = "精准等级", id = CR_EXPERTISE},
+	{pattern = "精准等级", id = StatLogic.Stats.ExpertiseRating},
 
-	{pattern = SPELL_STATALL:lower(), id = StatLogic.GenericStats.ALL_STATS},
+	{pattern = SPELL_STATALL:lower(), id = StatLogic.Stats.AllStats},
 
-	{pattern = "护甲穿透等级", id = CR_ARMOR_PENETRATION},
+	{pattern = "护甲穿透等级", id = StatLogic.Stats.ArmorPenetrationRating},
 	{pattern = ARMOR:lower(), id = ARMOR},
 	{pattern = "攻击强度", id = ATTACK_POWER},
 }

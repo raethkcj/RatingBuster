@@ -466,9 +466,9 @@ L["Raid Buffs"] = true
 --
 -- IMPORTANT: there may not exist a one-to-one correspondence, meaning you can't just translate this file,
 -- but will need to go in game and find out what needs to be put in here.
--- For example, in english I found 3 different strings that maps to CR_CRIT_MELEE: "critical strike", "critical hit" and "crit".
--- You will need to find out every string that represents CR_CRIT_MELEE, and so on.
--- In other languages there may be 5 different strings that should all map to CR_CRIT_MELEE.
+-- For example, in english I found 3 different strings that maps to StatLogic.Stats.MeleeCritRating: "critical strike", "critical hit" and "crit".
+-- You will need to find out every string that represents StatLogic.Stats.MeleeCritRating, and so on.
+-- In other languages there may be 5 different strings that should all map to StatLogic.Stats.MeleeCritRating.
 -- so please check in game that you have all strings, and not translate directly off this table.
 --
 -- Tip1: When doing localizations, I recommend you set debugging to true in RatingBuster.lua
@@ -491,26 +491,7 @@ L["exclusions"] = {
 L["separators"] = {
 	"/", " et ", ",", "%. ", " pour ", "&", " : ", "\n"
 }
---[[ Rating ID
-CR_WEAPON_SKILL = 1;
-CR_DEFENSE_SKILL = 2;
-CR_DODGE = 3;
-CR_PARRY = 4;
-CR_BLOCK = 5;
-CR_HIT_MELEE = 6;
-CR_HIT_RANGED = 7;
-CR_HIT_SPELL = 8;
-CR_CRIT_MELEE = 9;
-CR_CRIT_RANGED = 10;
-CR_CRIT_SPELL = 11;
-CR_RESILIENCE_CRIT_TAKEN = 15;
-CR_RESILIENCE_PLAYER_DAMAGE_TAKEN = 16;
-CR_HASTE_MELEE = 18;
-CR_HASTE_RANGED = 19;
-CR_HASTE_SPELL = 20;
-CR_EXPERTISE = 24;
-CR_ARMOR_PENETRATION = 25;
---
+--[[
 SPELL_STAT1_NAME = "Strength"
 SPELL_STAT2_NAME = "Agility"
 SPELL_STAT3_NAME = "Stamina"
@@ -523,39 +504,39 @@ L["statList"] = {
 	{pattern = SPELL_STAT3_NAME:lower(), id = StatLogic.Stats.Stamina}, -- Stamina
 	{pattern = SPELL_STAT4_NAME:lower(), id = StatLogic.Stats.Intellect}, -- Intellect
 	{pattern = SPELL_STAT5_NAME:lower(), id = StatLogic.Stats.Spirit}, -- Spirit
-	{pattern = "score de défense", id = CR_DEFENSE_SKILL},
-	{pattern = "score d’esquive", id = CR_DODGE},
-	{pattern = "score d'esquive", id = CR_DODGE},
-	{pattern = "score de blocage", id = CR_BLOCK}, --Ench. de bouclier (Blocage inférieur)
-	{pattern = "score de Maîtrise du blocage", id = CR_BLOCK}, --Ench. de bouclier (Maîtrise du blocage)
-	{pattern = "score de parade", id = CR_PARRY},
+	{pattern = "score de défense", id = StatLogic.Stats.DefenseRating},
+	{pattern = "score d’esquive", id = StatLogic.Stats.DodgeRating},
+	{pattern = "score d'esquive", id = StatLogic.Stats.DodgeRating},
+	{pattern = "score de blocage", id = StatLogic.Stats.BlockRating}, --Ench. de bouclier (Blocage inférieur)
+	{pattern = "score de Maîtrise du blocage", id = StatLogic.Stats.BlockRating}, --Ench. de bouclier (Maîtrise du blocage)
+	{pattern = "score de parade", id = StatLogic.Stats.ParryRating},
 
-	{pattern = "score de critique des sorts", id = CR_CRIT_SPELL},
-	{pattern = "score de coup critique des sorts", id = CR_CRIT_SPELL},
-	{pattern = "score de toucher critique des sorts", id = CR_CRIT_SPELL},
-	{pattern = "score de critique à distance", id = CR_CRIT_RANGED},
-	{pattern = "score de coup critique à distance", id = CR_CRIT_RANGED},
-	{pattern = "score de toucher critique à distance", id = CR_CRIT_RANGED},
-	{pattern = "score de critique", id = StatLogic.GenericStats.CR_CRIT}, --ex : https://fr.tbc.wowhead.com/item=30565/opale-de-feu-dassassin
-	{pattern = "score de coup critique", id = StatLogic.GenericStats.CR_CRIT},
-	{pattern = "score de toucher critique", id = StatLogic.GenericStats.CR_CRIT},
+	{pattern = "score de critique des sorts", id = StatLogic.Stats.SpellCritRating},
+	{pattern = "score de coup critique des sorts", id = StatLogic.Stats.SpellCritRating},
+	{pattern = "score de toucher critique des sorts", id = StatLogic.Stats.SpellCritRating},
+	{pattern = "score de critique à distance", id = StatLogic.Stats.RangedCritRating},
+	{pattern = "score de coup critique à distance", id = StatLogic.Stats.RangedCritRating},
+	{pattern = "score de toucher critique à distance", id = StatLogic.Stats.RangedCritRating},
+	{pattern = "score de critique", id = StatLogic.Stats.CritRating}, --ex : https://fr.tbc.wowhead.com/item=30565/opale-de-feu-dassassin
+	{pattern = "score de coup critique", id = StatLogic.Stats.CritRating},
+	{pattern = "score de toucher critique", id = StatLogic.Stats.CritRating},
 
-	{pattern = "score de toucher des sorts", id = CR_HIT_SPELL},
-	{pattern = "score de toucher à distance", id = CR_HIT_RANGED},
-	{pattern = "score de toucher", id = StatLogic.GenericStats.CR_HIT},
+	{pattern = "score de toucher des sorts", id = StatLogic.Stats.SpellHitRating},
+	{pattern = "score de toucher à distance", id = StatLogic.Stats.RangedHitRating},
+	{pattern = "score de toucher", id = StatLogic.Stats.HitRating},
 
-	{pattern = "résilience", id = CR_RESILIENCE_CRIT_TAKEN}, -- resilience is implicitly a rating
+	{pattern = "résilience", id = StatLogic.Stats.ResilienceRating}, -- resilience is implicitly a rating
 
-	{pattern = "score de hâte des sorts", id = CR_HASTE_SPELL},
-	{pattern = "score de hâte à distance", id = CR_HASTE_RANGED},
-	{pattern = "score de hâte", id = StatLogic.GenericStats.CR_HASTE},
-	{pattern = "score de hâte en mêlée", id = CR_HASTE_MELEE}, -- [Tambours de Bataille] "score de hâte en mêlée, à distance et avec les sorts" complete drums line
-	{pattern = "score d’expertise", id = CR_EXPERTISE},
-	{pattern = "score d'expertise", id = CR_EXPERTISE},
+	{pattern = "score de hâte des sorts", id = StatLogic.Stats.SpellHasteRating},
+	{pattern = "score de hâte à distance", id = StatLogic.Stats.RangedHasteRating},
+	{pattern = "score de hâte", id = StatLogic.Stats.HasteRating},
+	{pattern = "score de hâte en mêlée", id = StatLogic.Stats.MeleeHasteRating}, -- [Tambours de Bataille] "score de hâte en mêlée, à distance et avec les sorts" complete drums line
+	{pattern = "score d’expertise", id = StatLogic.Stats.ExpertiseRating},
+	{pattern = "score d'expertise", id = StatLogic.Stats.ExpertiseRating},
 
-	{pattern = SPELL_STATALL:lower(), id = StatLogic.GenericStats.ALL_STATS},
+	{pattern = SPELL_STATALL:lower(), id = StatLogic.Stats.AllStats},
 
-	{pattern = "pénétration d'armure", id = CR_ARMOR_PENETRATION},
+	{pattern = "pénétration d'armure", id = StatLogic.Stats.ArmorPenetrationRating},
 	{pattern = ARMOR:lower(), id = ARMOR},
 	{pattern = "puissance d'attaque", id = ATTACK_POWER},
 }

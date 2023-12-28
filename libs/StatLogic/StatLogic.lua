@@ -321,129 +321,62 @@ end
 
 StatLogic.ExtraHasteClasses = {}
 
-do
-	local GenericStats = {
-		"CR_HIT",
-		"CR_CRIT",
-		"CR_HASTE",
-		"ALL_STATS",
-	}
-
-	StatLogic.GenericStats = {}
-	for i,v in ipairs(GenericStats) do
-		StatLogic.GenericStats[v] = -i
-	end
-end
-
 StatLogic.GenericStatMap = {
-	[StatLogic.GenericStats.ALL_STATS] = {
-		StatLogic.Stats.Strength, -- Strength
-		StatLogic.Stats.Agility, -- Agility
-		StatLogic.Stats.Stamina, -- Stamina
-		StatLogic.Stats.Intellect, -- Intellect
-		StatLogic.Stats.Spirit, -- Spirit
+	[StatLogic.Stats.AllStats] = {
+		StatLogic.Stats.Strength,
+		StatLogic.Stats.Agility,
+		StatLogic.Stats.Stamina,
+		StatLogic.Stats.Intellect,
+		StatLogic.Stats.Spirit,
 	}
 }
 
-if not CR_WEAPON_SKILL then CR_WEAPON_SKILL = 1 end;
-if not CR_DEFENSE_SKILL then CR_DEFENSE_SKILL = 2 end;
-if not CR_DODGE then CR_DODGE = 3 end;
-if not CR_PARRY then CR_PARRY = 4 end;
-if not CR_BLOCK then CR_BLOCK = 5 end;
-if not CR_HIT_MELEE then CR_HIT_MELEE = 6 end;
-if not CR_HIT_RANGED then CR_HIT_RANGED = 7 end;
-if not CR_HIT_SPELL then CR_HIT_SPELL = 8 end;
-if not CR_CRIT_MELEE then CR_CRIT_MELEE = 9 end;
-if not CR_CRIT_RANGED then CR_CRIT_RANGED = 10 end;
-if not CR_CRIT_SPELL then CR_CRIT_SPELL = 11 end;
-if not CR_RESILIENCE_CRIT_TAKEN then CR_RESILIENCE_CRIT_TAKEN = 15 end;
-if not CR_RESILIENCE_PLAYER_DAMAGE_TAKEN then CR_RESILIENCE_PLAYER_DAMAGE_TAKEN = 16 end;
-if not CR_HASTE_MELEE then CR_HASTE_MELEE = 18 end;
-if not CR_HASTE_RANGED then CR_HASTE_RANGED = 19 end;
-if not CR_HASTE_SPELL then CR_HASTE_SPELL = 20 end;
-if not CR_WEAPON_SKILL_MAINHAND then CR_WEAPON_SKILL_MAINHAND = 21 end;
-if not CR_WEAPON_SKILL_OFFHAND then CR_WEAPON_SKILL_OFFHAND = 22 end;
-if not CR_WEAPON_SKILL_RANGED then CR_WEAPON_SKILL_RANGED = 23 end;
-if not CR_EXPERTISE then CR_EXPERTISE = 24 end;
-if not CR_ARMOR_PENETRATION then CR_ARMOR_PENETRATION = 25 end;
-if not CR_MASTERY then CR_MASTERY = 26 end;
-
 local RatingNameToID = {
-	[StatLogic.GenericStats.CR_HIT] = "HIT_RATING",
-	[StatLogic.GenericStats.CR_CRIT] = "CRIT_RATING",
-	[StatLogic.GenericStats.CR_HASTE] = "HASTE_RATING",
-	[CR_DEFENSE_SKILL] = "DEFENSE_RATING",
-	[CR_DODGE] = "DODGE_RATING",
-	[CR_PARRY] = "PARRY_RATING",
-	[CR_BLOCK] = "BLOCK_RATING",
-	[CR_HIT_MELEE] = "MELEE_HIT_RATING",
-	[CR_HIT_RANGED] = "RANGED_HIT_RATING",
-	[CR_HIT_SPELL] = "SPELL_HIT_RATING",
-	[CR_CRIT_MELEE] = "MELEE_CRIT_RATING",
-	[CR_CRIT_RANGED] = "RANGED_CRIT_RATING",
-	[CR_CRIT_SPELL] = "SPELL_CRIT_RATING",
-	[CR_RESILIENCE_CRIT_TAKEN] = "RESILIENCE_RATING",
-	[CR_RESILIENCE_PLAYER_DAMAGE_TAKEN] = "RESILIENCE_RATING",
-	[CR_HASTE_MELEE] = "MELEE_HASTE_RATING",
-	[CR_HASTE_RANGED] = "RANGED_HASTE_RATING",
-	[CR_HASTE_SPELL] = "SPELL_HASTE_RATING",
-	[CR_EXPERTISE] = "EXPERTISE_RATING",
-	[CR_ARMOR_PENETRATION] = "ARMOR_PENETRATION_RATING",
-	[CR_MASTERY] = "MASTERY_RATING",
-	["HIT_RATING"] = StatLogic.GenericStats.CR_HIT,
-	["CRIT_RATING"] = StatLogic.GenericStats.CR_CRIT,
-	["HASTE_RATING"] = StatLogic.GenericStats.CR_HASTE,
-	["DEFENSE_RATING"] = CR_DEFENSE_SKILL,
-	["DODGE_RATING"] = CR_DODGE,
-	["PARRY_RATING"] = CR_PARRY,
-	["BLOCK_RATING"] = CR_BLOCK,
-	["MELEE_HIT_RATING"] = CR_HIT_MELEE,
-	["RANGED_HIT_RATING"] = CR_HIT_RANGED,
-	["SPELL_HIT_RATING"] = CR_HIT_SPELL,
-	["MELEE_CRIT_RATING"] = CR_CRIT_MELEE,
-	["RANGED_CRIT_RATING"] = CR_CRIT_RANGED,
-	["SPELL_CRIT_RATING"] = CR_CRIT_SPELL,
-	["RESILIENCE_RATING"] = CR_RESILIENCE_CRIT_TAKEN,
-	["MELEE_HASTE_RATING"] = CR_HASTE_MELEE,
-	["RANGED_HASTE_RATING"] = CR_HASTE_RANGED,
-	["SPELL_HASTE_RATING"] = CR_HASTE_SPELL,
-	["EXPERTISE_RATING"] = CR_EXPERTISE,
-	["ARMOR_PENETRATION_RATING"] = CR_ARMOR_PENETRATION,
-	["MASTERY_RATING"] = CR_MASTERY,
+	[StatLogic.Stats.HitRating] = "HIT_RATING",
+	[StatLogic.Stats.CritRating] = "CRIT_RATING",
+	[StatLogic.Stats.HasteRating] = "HASTE_RATING",
+	[StatLogic.Stats.DefenseRating] = "DEFENSE_RATING",
+	[StatLogic.Stats.DodgeRating] = "DODGE_RATING",
+	[StatLogic.Stats.ParryRating] = "PARRY_RATING",
+	[StatLogic.Stats.BlockRating] = "BLOCK_RATING",
+	[StatLogic.Stats.MeleeHitRating] = "MELEE_HIT_RATING",
+	[StatLogic.Stats.RangedHitRating] = "RANGED_HIT_RATING",
+	[StatLogic.Stats.SpellHitRating] = "SPELL_HIT_RATING",
+	[StatLogic.Stats.MeleeCritRating] = "MELEE_CRIT_RATING",
+	[StatLogic.Stats.RangedCritRating] = "RANGED_CRIT_RATING",
+	[StatLogic.Stats.SpellCritRating] = "SPELL_CRIT_RATING",
+	[StatLogic.Stats.ResilienceRating] = "RESILIENCE_RATING",
+	[StatLogic.Stats.MeleeHasteRating] = "MELEE_HASTE_RATING",
+	[StatLogic.Stats.RangedHasteRating] = "RANGED_HASTE_RATING",
+	[StatLogic.Stats.SpellHasteRating] = "SPELL_HASTE_RATING",
+	[StatLogic.Stats.ExpertiseRating] = "EXPERTISE_RATING",
+	[StatLogic.Stats.ArmorPenetrationRating] = "ARMOR_PENETRATION_RATING",
+	[StatLogic.Stats.MasteryRating] = "MASTERY_RATING",
+	["HIT_RATING"] = StatLogic.Stats.HitRating,
+	["CRIT_RATING"] = StatLogic.Stats.CritRating,
+	["HASTE_RATING"] = StatLogic.Stats.HasteRating,
+	["DEFENSE_RATING"] = StatLogic.Stats.DefenseRating,
+	["DODGE_RATING"] = StatLogic.Stats.DodgeRating,
+	["PARRY_RATING"] = StatLogic.Stats.ParryRating,
+	["BLOCK_RATING"] = StatLogic.Stats.BlockRating,
+	["MELEE_HIT_RATING"] = StatLogic.Stats.MeleeHitRating,
+	["RANGED_HIT_RATING"] = StatLogic.Stats.RangedHitRating,
+	["SPELL_HIT_RATING"] = StatLogic.Stats.SpellHitRating,
+	["MELEE_CRIT_RATING"] = StatLogic.Stats.MeleeCritRating,
+	["RANGED_CRIT_RATING"] = StatLogic.Stats.RangedCritRating,
+	["SPELL_CRIT_RATING"] = StatLogic.Stats.SpellCritRating,
+	["RESILIENCE_RATING"] = StatLogic.Stats.ResilienceRating,
+	["MELEE_HASTE_RATING"] = StatLogic.Stats.MeleeHasteRating,
+	["RANGED_HASTE_RATING"] = StatLogic.Stats.RangedHasteRating,
+	["SPELL_HASTE_RATING"] = StatLogic.Stats.SpellHasteRating,
+	["EXPERTISE_RATING"] = StatLogic.Stats.ExpertiseRating,
+	["ARMOR_PENETRATION_RATING"] = StatLogic.Stats.ArmorPenetrationRating,
+	["MASTERY_RATING"] = StatLogic.Stats.MasteryRating,
 }
 
 function StatLogic:GetRatingIdOrName(rating)
 	return RatingNameToID[rating]
 end
-
-local RatingIDToConvertedStat = {
-	nil,
-	StatLogic.Stats.Defense,
-	StatLogic.Stats.Dodge,
-	StatLogic.Stats.Parry,
-	StatLogic.Stats.BlockChance,
-	"MELEE_HIT",
-	"RANGED_HIT",
-	"SPELL_HIT",
-	StatLogic.Stats.MeleeCrit,
-	StatLogic.Stats.RangedCrit,
-	StatLogic.Stats.SpellCrit,
-	nil,
-	nil,
-	nil,
-	"MELEE_CRIT_AVOID",
-	"PLAYER_DAMAGE_TAKEN",
-	nil,
-	"MELEE_HASTE",
-	"RANGED_HASTE",
-	"SPELL_HASTE",
-	nil,
-	nil,
-	nil,
-	"EXPERTISE",
-	"ARMOR_PENETRATION",
-	"MASTERY",
-}
 
 local function GetPlayerBuffRank(buff)
 	local rank = GetSpellSubtext(buff)
@@ -1276,7 +1209,7 @@ function StatLogic:GetCritChanceFromWeaponSkill(skill, targetLevel)
 end
 
 function StatLogic:RatingExists(id)
-	return not not addon.RatingBase[id]
+	return not not StatLogic.RatingBase[id]
 end
 
 addon.zero = setmetatable({}, {
@@ -1286,72 +1219,38 @@ addon.zero = setmetatable({}, {
 })
 addon.zero.__index = addon.zero
 
---[[---------------------------------
-{	:GetEffectFromRating(rating, id, [level])
--------------------------------------
--- Description
-	Calculates the stat effects from ratings for any level.
--- Args
-	rating
-			number - rating value
-	id
-			number - rating id as defined in PaperDollFrame.lua
-	[level] - (defaults: PlayerClass)
-			number - player level
--- Returns
-	effect
-		number - effect value
-	effect name
-		string - name of converted effect, ex: StatLogic.Stats.Dodge, StatLogic.Stats.Parry
--- Remarks
--- Examples
-	StatLogic:GetEffectFromRating(10, CR_DODGE)
-	StatLogic:GetEffectFromRating(10, CR_DODGE, 70)
-}
------------------------------------]]
-
 --2.4.3  Parry Rating, Defense Rating, and Block Rating: Low-level players
 --   will now convert these ratings into their corresponding defensive
 --   stats at the same rate as level 34 players.
 --   Dodge and Resilience were not mentioned, but were nerfed as well
 local Level34Ratings = {
-	[CR_DEFENSE_SKILL] = true,
-	[CR_DODGE] = true,
-	[CR_PARRY] = true,
-	[CR_BLOCK] = true,
-	[CR_RESILIENCE_CRIT_TAKEN] = true,
-	[CR_RESILIENCE_PLAYER_DAMAGE_TAKEN] = true,
+	[StatLogic.Stats.DefenseRating] = true,
+	[StatLogic.Stats.DodgeRating] = true,
+	[StatLogic.Stats.ParryRating] = true,
+	[StatLogic.Stats.BlockRating] = true,
+	[StatLogic.Stats.ResilienceRating] = true,
 }
 
-local CR_MAX = 0
-addon.SetCRMax = function()
-	for _, id in pairs(addon.RatingBase) do
-		if id > CR_MAX then
-			CR_MAX = id
-		end
-	end
-end
-
-function StatLogic:GetEffectFromRating(rating, id, level)
-	-- if id is stringID then convert to numberID
-	if type(id) == "string" and RatingNameToID[id] then
-		id = RatingNameToID[id]
-	end
+---@param rating number
+---@param stat Stat A Stat representing a Rating in RatingBase
+---@param level? number
+---@return number effect
+function StatLogic:GetEffectFromRating(rating, stat, level)
 	-- check for invalid input
-	if type(rating) ~= "number" or id < 1 or id > CR_MAX then return 0 end
+	if type(rating) ~= "number" or not StatLogic.RatingBase[stat] then return 0 end
 	-- defaults to player level if not given
 	level = level or UnitLevel("player")
-	if level < 34 and Level34Ratings[id] then
+	if level < 34 and Level34Ratings[stat] then
 		level = 34
 	end
 	if level >= 70 then
-		return rating/addon.RatingBase[id]/((82/52)*(131/63)^((level-70)/10)), RatingIDToConvertedStat[id]
+		return rating/StatLogic.RatingBase[stat]/((82/52)*(131/63)^((level-70)/10))
 	elseif level >= 60 then
-		return rating/addon.RatingBase[id]*((-3/82)*level+(131/41)), RatingIDToConvertedStat[id]
+		return rating/StatLogic.RatingBase[stat]*((-3/82)*level+(131/41))
 	elseif level >= 10 then
-		return rating/addon.RatingBase[id]/((1/52)*level-(8/52)), RatingIDToConvertedStat[id]
+		return rating/StatLogic.RatingBase[stat]/((1/52)*level-(8/52))
 	else
-		return rating/addon.RatingBase[id]/((1/52)*10-(8/52)), RatingIDToConvertedStat[id]
+		return rating/StatLogic.RatingBase[stat]/((1/52)*10-(8/52))
 	end
 end
 
@@ -1372,6 +1271,7 @@ end
 	StatLogic:GetDodgePerAgi()
 }
 -----------------------------------]]
+if not CR_DODGE then CR_DODGE = 3 end;
 
 function StatLogic:GetDodgePerAgi()
 	local level = UnitLevel("player")
@@ -1383,7 +1283,7 @@ function StatLogic:GetDodgePerAgi()
 	-- dodgeFromAgi is %
 	local dodgeFromAgi = GetDodgeChance()
 		- self:GetStatMod("ADD_DODGE")
-		- self:GetEffectFromRating(GetCombatRating(CR_DODGE), CR_DODGE, UnitLevel("player"))
+		- self:GetEffectFromRating(GetCombatRating(CR_DODGE), StatLogic.Stats.DodgeRating, UnitLevel("player"))
 		- self:GetEffectFromDefense(GetTotalDefense("player"), UnitLevel("player"))
 		- self:GetTotalEquippedStat(StatLogic.Stats.Dodge)
 	return dodgeFromAgi / agility

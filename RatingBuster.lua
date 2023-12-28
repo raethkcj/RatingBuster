@@ -229,8 +229,8 @@ local options = {
 					name = L["Show Spell Hit/Haste"],
 					desc = L["Show Spell Hit/Haste from Hit/Haste Rating"],
 					hidden = function()
-						local genericHit = StatLogic.GenericStatMap[StatLogic.GenericStats.CR_HIT]
-						return (not genericHit) or (not tContains(genericHit, CR_HIT_SPELL))
+						local genericHit = StatLogic.GenericStatMap[StatLogic.Stats.HitRating]
+						return (not genericHit) or (not tContains(genericHit, StatLogic.Stats.SpellHitRating))
 					end
 				},
 				ratingPhysical = {
@@ -625,7 +625,7 @@ local options = {
 							name = L["Sum Ignore Armor"],
 							desc = L["Ignore Armor Summary"],
 							hidden = function()
-								return StatLogic:RatingExists(CR_ARMOR_PENETRATION)
+								return StatLogic:RatingExists(StatLogic.Stats.ArmorPenetrationRating)
 							end,
 							order = 8,
 						},
@@ -634,7 +634,7 @@ local options = {
 							name = L["Sum Armor Penetration"],
 							desc = L["Armor Penetration Summary"],
 							hidden = function()
-								return not StatLogic:RatingExists(CR_ARMOR_PENETRATION)
+								return not StatLogic:RatingExists(StatLogic.Stats.ArmorPenetrationRating)
 							end,
 							order = 9,
 						},
@@ -643,7 +643,7 @@ local options = {
 							name = L["Sum Armor Penetration Rating"],
 							desc = L["Armor Penetration Rating Summary"],
 							hidden = function()
-								return not StatLogic:RatingExists(CR_ARMOR_PENETRATION)
+								return not StatLogic:RatingExists(StatLogic.Stats.ArmorPenetrationRating)
 							end,
 							order = 10,
 						},
@@ -1929,27 +1929,23 @@ end
 do
 	local RatingType = {
 		Melee = {
-			[CR_HIT_MELEE] = true,
-			[CR_CRIT_MELEE] = true,
-			[CR_HASTE_MELEE] = true,
+			[StatLogic.Stats.MeleeHitRating] = true,
+			[StatLogic.Stats.MeleeCritRating] = true,
+			[StatLogic.Stats.MeleeHasteRating] = true,
 		},
 		Ranged = {
-			[CR_HIT_RANGED] = true,
-			[CR_CRIT_RANGED] = true,
-			[CR_HASTE_RANGED] = true,
+			[StatLogic.Stats.RangedHitRating] = true,
+			[StatLogic.Stats.RangedCritRating] = true,
+			[StatLogic.Stats.RangedHasteRating] = true,
 		},
 		Spell = {
-			[CR_HIT_SPELL] = true,
-			[CR_CRIT_SPELL] = true,
-			[CR_HASTE_SPELL] = true,
+			[StatLogic.Stats.SpellHitRating] = true,
+			[StatLogic.Stats.SpellCritRating] = true,
+			[StatLogic.Stats.SpellHasteRating] = true,
 		},
 		Decimal = {
-			[CR_WEAPON_SKILL] = true,
-			[CR_DEFENSE_SKILL] = true,
-			[CR_WEAPON_SKILL_MAINHAND] = true,
-			[CR_WEAPON_SKILL_OFFHAND] = true,
-			[CR_WEAPON_SKILL_RANGED] = true,
-			[CR_EXPERTISE] = true,
+			[StatLogic.Stats.DefenseRating] = true,
+			[StatLogic.Stats.ExpertiseRating] = true,
 		}
 	}
 
@@ -1970,15 +1966,15 @@ do
 					end
 				end
 			end
-		elseif type(statID) == "number" and profileDB.showRatings then
+		elseif StatLogic.RatingBase[statID] and profileDB.showRatings then
 			--------------------
 			-- Combat Ratings --
 			--------------------
 			-- Calculate stat value
-			local effect, strID = StatLogic:GetEffectFromRating(value, statID, calcLevel)
+			local effect = StatLogic:GetEffectFromRating(value, statID, calcLevel)
 			--self:Debug(reversedAmount..", "..amount..", "..v[2]..", "..RatingBuster.targetLevel)-- debug
 			-- If rating is resilience, add a minus sign
-			if strID == StatLogic.Stats.Defense and profileDB.defBreakDown then
+			if statID == StatLogic.Stats.DefenseRating and profileDB.defBreakDown then
 				effect = effect * 0.04
 				processedDodge = processedDodge + effect
 				processedMissed = processedMissed + effect
@@ -1992,16 +1988,13 @@ do
 					numStats = numStats - 1
 				end
 				infoString = ("%+.2f%% x"..numStats):format(effect)
-			elseif strID == StatLogic.Stats.Dodge and profileDB.enableAvoidanceDiminishingReturns then
+			elseif statID == StatLogic.Stats.DodgeRating and profileDB.enableAvoidanceDiminishingReturns then
 				infoString = ("%+.2f%%"):format(StatLogic:GetAvoidanceGainAfterDR(StatLogic.Stats.Dodge, processedDodge + effect) - StatLogic:GetAvoidanceGainAfterDR(StatLogic.Stats.Dodge, processedDodge))
 				processedDodge = processedDodge + effect
-			elseif strID == StatLogic.Stats.Parry and profileDB.enableAvoidanceDiminishingReturns then
+			elseif statID == StatLogic.Stats.ParryRating and profileDB.enableAvoidanceDiminishingReturns then
 				infoString = ("%+.2f%%"):format(StatLogic:GetAvoidanceGainAfterDR(StatLogic.Stats.Parry, processedParry + effect) - StatLogic:GetAvoidanceGainAfterDR(StatLogic.Stats.Parry, processedParry))
 				processedParry = processedParry + effect
-			elseif strID == "WEAPON_SKILL" and profileDB.wpnBreakDown then
-				effect = effect * 0.04
-				infoString = ("%+.2f%% x5"):format(effect)
-			elseif strID == "EXPERTISE" and profileDB.expBreakDown then
+			elseif statID == StatLogic.Stats.ExpertiseRating and profileDB.expBreakDown then
 				if tocversion < 30000 then
 					-- Expertise is truncated in TBC but not in Wrath
 					effect = floor(effect)
@@ -2012,7 +2005,7 @@ do
 				else
 					infoString = ("%+.2f%%"):format(effect)
 				end
-			elseif statID == CR_RESILIENCE_CRIT_TAKEN then -- Resilience
+			elseif statID == StatLogic.Stats.ResilienceRating then -- Resilience
 				effect = effect * -1
 				if profileDB.detailedConversionText then
 					local infoTable = {}
@@ -2044,7 +2037,7 @@ do
 					if profileDB.ratingSpell then
 						if not profileDB.ratingPhysical then
 							show = true
-						elseif ( statID == CR_HIT_SPELL or (statID == CR_HASTE_SPELL and StatLogic.ExtraHasteClasses[class])) then
+						elseif ( statID == StatLogic.Stats.SpellHitRating or (statID == StatLogic.Stats.SpellHasteRating and StatLogic.ExtraHasteClasses[class])) then
 							show = true
 							pattern = L["$value Spell"]:gsub("$value", "%%+.2f%%%%")
 						end
@@ -2110,7 +2103,7 @@ do
 			-- Death Knight: Forceful Deflection - Passive
 			if profileDB.showParryFromStr then
 				local rating = value * GSM("ADD_PARRY_RATING_MOD_STR")
-				local effect = StatLogic:GetEffectFromRating(rating, 4, calcLevel)
+				local effect = StatLogic:GetEffectFromRating(rating, StatLogic.Stats.ParryRating, calcLevel)
 				if profileDB.enableAvoidanceDiminishingReturns then
 					local effectNoDR = effect
 					effect = StatLogic:GetAvoidanceGainAfterDR(StatLogic.Stats.Parry, processedParry + effect) - StatLogic:GetAvoidanceGainAfterDR(StatLogic.Stats.Parry, processedParry)
@@ -2121,7 +2114,7 @@ do
 				end
 			else
 				local rating = value * GSM("ADD_PARRY_RATING_MOD_STR")
-				local effect = StatLogic:GetEffectFromRating(rating, 4, calcLevel)
+				local effect = StatLogic:GetEffectFromRating(rating, StatLogic.Stats.ParryRating, calcLevel)
 				processedParry = processedParry + effect
 			end
 			infoString = strjoin(", ", unpack(infoTable))
@@ -2362,7 +2355,7 @@ do
 			end
 			if profileDB.showSpellCritFromSpi then
 				local mod = GSM("ADD_SPELL_CRIT_RATING_MOD_SPI")
-				local effect = StatLogic:GetEffectFromRating(value * mod, CR_CRIT_SPELL, calcLevel)
+				local effect = StatLogic:GetEffectFromRating(value * mod, StatLogic.Stats.SpellCritRating, calcLevel)
 				if effect > 0 then
 					tinsert(infoTable, (L["$value% Spell Crit"]:gsub("$value", ("%+.2f"):format(effect))))
 				end
@@ -2863,7 +2856,7 @@ local summaryCalcData = {
 	-- Spell Damage - SPELL_DMG, STA, INT, SPI
 	{
 		option = "sumSpellDmg",
-		name = "SPELL_DMG",
+		name = StatLogic.Stats.SpellDamage,
 		func = function(sum)
 			return sum["SPELL_DMG"]
 				+ sum[StatLogic.Stats.Strength] * GSM("ADD_SPELL_DMG_MOD_STR")
@@ -2930,7 +2923,7 @@ local summaryCalcData = {
 		func = function(sum)
 			return GSM("MOD_SPELL_DMG") * (
 				sum["SHADOW_SPELL_DMG"]
-			) + summaryFunc["SPELL_DMG"](sum)
+			) + summaryFunc[StatLogic.Stats.SpellDamage](sum)
 		 end,
 	},
 	-- Healing - HEAL, AGI, STR, INT, SPI, AP

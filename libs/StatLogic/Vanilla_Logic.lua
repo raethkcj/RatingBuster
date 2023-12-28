@@ -2,7 +2,7 @@ local addonName, addon = ...
 ---@class StatLogic
 local StatLogic = LibStub:GetLibrary(addonName)
 
-addon.RatingBase = {}
+StatLogic.RatingBase = {}
 
 -- Extracted from the client at GameTables/OCTRegenMP.txt via wow.tools.local
 local OCTRegenMP = {

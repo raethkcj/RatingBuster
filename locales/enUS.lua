@@ -470,9 +470,9 @@ L["Raid Buffs"] = true
 --
 -- IMPORTANT: there may not exist a one-to-one correspondence, meaning you can't just translate this file,
 -- but will need to go in game and find out what needs to be put in here.
--- For example, in english I found 3 different strings that maps to CR_CRIT_MELEE: "critical strike", "critical hit" and "crit".
--- You will need to find out every string that represents CR_CRIT_MELEE, and so on.
--- In other languages there may be 5 different strings that should all map to CR_CRIT_MELEE.
+-- For example, in english I found 3 different strings that maps to StatLogic.Stats.MeleeCritRating: "critical strike", "critical hit" and "crit".
+-- You will need to find out every string that represents StatLogic.Stats.MeleeCritRating, and so on.
+-- In other languages there may be 5 different strings that should all map to StatLogic.Stats.MeleeCritRating.
 -- so please check in game that you have all strings, and not translate directly off this table.
 --
 -- Tip1: When doing localizations, I recommend you set debugging to true in RatingBuster.lua
@@ -498,26 +498,7 @@ L["exclusions"] = {
 L["separators"] = {
 	"/", " and ", ",", "%. ", " for ", "&", ":", "\n"
 }
---[[ Rating ID
-CR_WEAPON_SKILL = 1;
-CR_DEFENSE_SKILL = 2;
-CR_DODGE = 3;
-CR_PARRY = 4;
-CR_BLOCK = 5;
-CR_HIT_MELEE = 6;
-CR_HIT_RANGED = 7;
-CR_HIT_SPELL = 8;
-CR_CRIT_MELEE = 9;
-CR_CRIT_RANGED = 10;
-CR_CRIT_SPELL = 11;
-CR_RESILIENCE_CRIT_TAKEN = 15;
-CR_RESILIENCE_PLAYER_DAMAGE_TAKEN = 16;
-CR_HASTE_MELEE = 18;
-CR_HASTE_RANGED = 19;
-CR_HASTE_SPELL = 20;
-CR_EXPERTISE = 24;
-CR_ARMOR_PENETRATION = 25;
---
+--[[
 SPELL_STAT1_NAME = "Strength"
 SPELL_STAT2_NAME = "Agility"
 SPELL_STAT3_NAME = "Stamina"
@@ -533,45 +514,45 @@ L["statList"] = {
 	{pattern = SPELL_STAT3_NAME:lower(), id = StatLogic.Stats.Stamina}, -- Stamina
 	{pattern = SPELL_STAT4_NAME:lower(), id = StatLogic.Stats.Intellect}, -- Intellect
 	{pattern = SPELL_STAT5_NAME:lower(), id = StatLogic.Stats.Spirit}, -- Spirit
-	{pattern = "defense rating", id = CR_DEFENSE_SKILL},
-	{pattern = "dodge rating", id = CR_DODGE},
-	{pattern = "increases dodge", id = CR_DODGE},
-	{pattern = "block rating", id = CR_BLOCK}, -- block enchant: "+10 Shield Block Rating"
-	{pattern = "parry rating", id = CR_PARRY},
+	{pattern = "defense rating", id = StatLogic.Stats.DefenseRating},
+	{pattern = "dodge rating", id = StatLogic.Stats.DodgeRating},
+	{pattern = "increases dodge", id = StatLogic.Stats.DodgeRating},
+	{pattern = "block rating", id = StatLogic.Stats.BlockRating}, -- block enchant: "+10 Shield Block Rating"
+	{pattern = "parry rating", id = StatLogic.Stats.ParryRating},
 
 	{pattern = "spell power", id = nil}, -- Shiffar's Nexus-Horn
 	{pattern = "spell critical strikes", id = nil}, -- Cyclone Regalia, Tirisfal Regalia
-	{pattern = "spell critical strike rating", id = CR_CRIT_SPELL},
-	{pattern = "spell critical hit rating", id = CR_CRIT_SPELL},
-	{pattern = "spell critical rating", id = CR_CRIT_SPELL},
-	{pattern = "spell crit rating", id = CR_CRIT_SPELL},
-	{pattern = "spell critical", id = CR_CRIT_SPELL},
+	{pattern = "spell critical strike rating", id = StatLogic.Stats.SpellCritRating},
+	{pattern = "spell critical hit rating", id = StatLogic.Stats.SpellCritRating},
+	{pattern = "spell critical rating", id = StatLogic.Stats.SpellCritRating},
+	{pattern = "spell crit rating", id = StatLogic.Stats.SpellCritRating},
+	{pattern = "spell critical", id = StatLogic.Stats.SpellCritRating},
 	{pattern = "attack power", id = ATTACK_POWER},
-	{pattern = "ranged critical strike", id = CR_CRIT_RANGED},
-	{pattern = "ranged critical hit rating", id = CR_CRIT_RANGED},
-	{pattern = "ranged critical rating", id = CR_CRIT_RANGED},
-	{pattern = "ranged crit rating", id = CR_CRIT_RANGED},
-	{pattern = "critical strike rating", id = StatLogic.GenericStats.CR_CRIT},
-	{pattern = "critical hit rating", id = StatLogic.GenericStats.CR_CRIT},
-	{pattern = "critical rating", id = StatLogic.GenericStats.CR_CRIT},
-	{pattern = "crit rating", id = StatLogic.GenericStats.CR_CRIT},
+	{pattern = "ranged critical strike", id = StatLogic.Stats.RangedCritRating},
+	{pattern = "ranged critical hit rating", id = StatLogic.Stats.RangedCritRating},
+	{pattern = "ranged critical rating", id = StatLogic.Stats.RangedCritRating},
+	{pattern = "ranged crit rating", id = StatLogic.Stats.RangedCritRating},
+	{pattern = "critical strike rating", id = StatLogic.Stats.CritRating},
+	{pattern = "critical hit rating", id = StatLogic.Stats.CritRating},
+	{pattern = "critical rating", id = StatLogic.Stats.CritRating},
+	{pattern = "crit rating", id = StatLogic.Stats.CritRating},
 
-	{pattern = "spell hit rating", id = CR_HIT_SPELL},
-	{pattern = "ranged hit rating", id = CR_HIT_RANGED},
-	{pattern = "hit rating", id = StatLogic.GenericStats.CR_HIT},
+	{pattern = "spell hit rating", id = StatLogic.Stats.SpellHitRating},
+	{pattern = "ranged hit rating", id = StatLogic.Stats.RangedHitRating},
+	{pattern = "hit rating", id = StatLogic.Stats.HitRating},
 
-	{pattern = "resilience", id = CR_RESILIENCE_CRIT_TAKEN}, -- resilience is implicitly a rating
+	{pattern = "resilience", id = StatLogic.Stats.ResilienceRating}, -- resilience is implicitly a rating
 
-	{pattern = "spell haste rating", id = CR_HASTE_SPELL},
-	{pattern = "ranged haste rating", id = CR_HASTE_RANGED},
-	{pattern = "haste rating", id = StatLogic.GenericStats.CR_HASTE},
+	{pattern = "spell haste rating", id = StatLogic.Stats.SpellHasteRating},
+	{pattern = "ranged haste rating", id = StatLogic.Stats.RangedHasteRating},
+	{pattern = "haste rating", id = StatLogic.Stats.HasteRating},
 
-	{pattern = "expertise rating", id = CR_EXPERTISE},
+	{pattern = "expertise rating", id = StatLogic.Stats.ExpertiseRating},
 
-	{pattern = SPELL_STATALL:lower(), id = StatLogic.GenericStats.ALL_STATS},
+	{pattern = SPELL_STATALL:lower(), id = StatLogic.Stats.AllStats},
 	{pattern = "health", id = nil}, -- Scroll of Enchant Chest - Health (prevents matching Armor)
 
-	{pattern = "armor penetration", id = CR_ARMOR_PENETRATION},
+	{pattern = "armor penetration", id = StatLogic.Stats.ArmorPenetrationRating},
 	{pattern = ARMOR:lower(), id = ARMOR},
 }
 -------------------------

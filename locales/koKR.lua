@@ -470,9 +470,9 @@ L["Raid Buffs"] = true
 --
 -- IMPORTANT: there may not exist a one-to-one correspondence, meaning you can't just translate this file,
 -- but will need to go in game and find out what needs to be put in here.
--- For example, in english I found 3 different strings that maps to CR_CRIT_MELEE: "critical strike", "critical hit" and "crit".
--- You will need to find out every string that represents CR_CRIT_MELEE, and so on.
--- In other languages there may be 5 different strings that should all map to CR_CRIT_MELEE.
+-- For example, in english I found 3 different strings that maps to StatLogic.Stats.MeleeCritRating: "critical strike", "critical hit" and "crit".
+-- You will need to find out every string that represents StatLogic.Stats.MeleeCritRating, and so on.
+-- In other languages there may be 5 different strings that should all map to StatLogic.Stats.MeleeCritRating.
 -- so please check in game that you have all strings, and not translate directly off this table.
 --
 -- Tip1: When doing localizations, I recommend you set debugging to true in RatingBuster.lua
@@ -493,26 +493,7 @@ L["exclusions"] = {
 L["separators"] = {
 	"/", " and ", ",", "%. ", " for ", "&", ":", "\n"
 }
---[[ Rating ID
-CR_WEAPON_SKILL = 1;
-CR_DEFENSE_SKILL = 2;
-CR_DODGE = 3;
-CR_PARRY = 4;
-CR_BLOCK = 5;
-CR_HIT_MELEE = 6;
-CR_HIT_RANGED = 7;
-CR_HIT_SPELL = 8;
-CR_CRIT_MELEE = 9;
-CR_CRIT_RANGED = 10;
-CR_CRIT_SPELL = 11;
-CR_RESILIENCE_CRIT_TAKEN = 15;
-CR_RESILIENCE_PLAYER_DAMAGE_TAKEN = 16;
-CR_HASTE_MELEE = 18;
-CR_HASTE_RANGED = 19;
-CR_HASTE_SPELL = 20;
-CR_EXPERTISE = 24;
-CR_ARMOR_PENETRATION = 25;
---
+--[[
 SPELL_STAT1_NAME = "힘"
 SPELL_STAT2_NAME = "민첩성"
 SPELL_STAT3_NAME = "체력"
@@ -525,34 +506,34 @@ L["statList"] = {
 	{pattern = SPELL_STAT3_NAME:lower(), id = StatLogic.Stats.Stamina}, -- Stamina
 	{pattern = SPELL_STAT4_NAME:lower(), id = StatLogic.Stats.Intellect}, -- Intellect
 	{pattern = SPELL_STAT5_NAME:lower(), id = StatLogic.Stats.Spirit}, -- Spirit
-	{pattern = "방어 숙련도", id = CR_DEFENSE_SKILL},
-	{pattern = "회피 숙련도", id = CR_DODGE},
-	{pattern = "방패 막기 숙련도", id = CR_BLOCK}, -- block enchant: "+10 Shield Block Rating"
-	{pattern = "무기 막기 숙련도", id = CR_PARRY},
+	{pattern = "방어 숙련도", id = StatLogic.Stats.DefenseRating},
+	{pattern = "회피 숙련도", id = StatLogic.Stats.DodgeRating},
+	{pattern = "방패 막기 숙련도", id = StatLogic.Stats.BlockRating}, -- block enchant: "+10 Shield Block Rating"
+	{pattern = "무기 막기 숙련도", id = StatLogic.Stats.ParryRating},
 
-	{pattern = "주문 극대화 적중도", id = CR_CRIT_SPELL},
-	{pattern = "주문의 극대화 적중도", id = CR_CRIT_SPELL},
-	{pattern = "원거리 치명타 적중도", id = CR_CRIT_RANGED},
-	{pattern = "치명타 적중도", id = StatLogic.GenericStats.CR_CRIT},
-	{pattern = "근접 치명타 적중도", id = CR_CRIT_MELEE},
+	{pattern = "주문 극대화 적중도", id = StatLogic.Stats.SpellCritRating},
+	{pattern = "주문의 극대화 적중도", id = StatLogic.Stats.SpellCritRating},
+	{pattern = "원거리 치명타 적중도", id = StatLogic.Stats.RangedCritRating},
+	{pattern = "치명타 적중도", id = StatLogic.Stats.CritRating},
+	{pattern = "근접 치명타 적중도", id = StatLogic.Stats.MeleeCritRating},
 
-	--		{pattern = "주문의 적중도", id = CR_HIT_SPELL},
-	{pattern = "주문 적중도", id = CR_HIT_SPELL},
-	{pattern = "원거리 적중도", id = CR_HIT_RANGED},
-	{pattern = "적중도", id = StatLogic.GenericStats.CR_HIT},
+	--		{pattern = "주문의 적중도", id = StatLogic.Stats.SpellHitRating},
+	{pattern = "주문 적중도", id = StatLogic.Stats.SpellHitRating},
+	{pattern = "원거리 적중도", id = StatLogic.Stats.RangedHitRating},
+	{pattern = "적중도", id = StatLogic.Stats.HitRating},
 
-	{pattern = "탄력도", id = CR_RESILIENCE_CRIT_TAKEN}, -- resilience is implicitly a rating
+	{pattern = "탄력도", id = StatLogic.Stats.ResilienceRating}, -- resilience is implicitly a rating
 
-	{pattern = "주문 시전 가속도", id = CR_HASTE_SPELL},
-	{pattern = "원거리 공격 가속도", id = CR_HASTE_RANGED},
-	{pattern = "공격 가속도", id = StatLogic.GenericStats.CR_HASTE},
-	{pattern = "가속도", id = StatLogic.GenericStats.CR_HASTE}, -- [Drums of Battle]
+	{pattern = "주문 시전 가속도", id = StatLogic.Stats.SpellHasteRating},
+	{pattern = "원거리 공격 가속도", id = StatLogic.Stats.RangedHasteRating},
+	{pattern = "공격 가속도", id = StatLogic.Stats.HasteRating},
+	{pattern = "가속도", id = StatLogic.Stats.HasteRating}, -- [Drums of Battle]
 
-	{pattern = "숙련도", id = CR_EXPERTISE},
+	{pattern = "숙련도", id = StatLogic.Stats.ExpertiseRating},
 
-	{pattern = SPELL_STATALL:lower(), id = StatLogic.GenericStats.ALL_STATS},
+	{pattern = SPELL_STATALL:lower(), id = StatLogic.Stats.AllStats},
 
-	{pattern = "방어구 관통력", id = CR_ARMOR_PENETRATION},	--armor penetration rating
+	{pattern = "방어구 관통력", id = StatLogic.Stats.ArmorPenetrationRating},	--armor penetration rating
 	{pattern = ARMOR:lower(), id = ARMOR},
 	{pattern = "전투력이", id = ATTACK_POWER},
 }

@@ -471,9 +471,9 @@ L["Raid Buffs"] = "Raidbuffs"
 --
 -- IMPORTANT: there may not exist a one-to-one correspondence, meaning you can't just translate this file,
 -- but will need to go in game and find out what needs to be put in here.
--- For example, in english I found 3 different strings that maps to CR_CRIT_MELEE: "critical strike", "critical hit" and "crit".
--- You will need to find out every string that represents CR_CRIT_MELEE, and so on.
--- In other languages there may be 5 different strings that should all map to CR_CRIT_MELEE.
+-- For example, in english I found 3 different strings that maps to StatLogic.Stats.MeleeCritRating: "critical strike", "critical hit" and "crit".
+-- You will need to find out every string that represents StatLogic.Stats.MeleeCritRating, and so on.
+-- In other languages there may be 5 different strings that should all map to StatLogic.Stats.MeleeCritRating.
 -- so please check in game that you have all strings, and not translate directly off this table.
 --
 -- Tip1: When doing localizations, I recommend you set debugging to true in RatingBuster.lua
@@ -495,26 +495,7 @@ L["exclusions"] = {
 L["separators"] = {
 	"/", " und ", ",", "%. ", " für ", "&", ":", "\n"
 }
---[[ Rating ID
-CR_WEAPON_SKILL = 1;
-CR_DEFENSE_SKILL = 2;
-CR_DODGE = 3;
-CR_PARRY = 4;
-CR_BLOCK = 5;
-CR_HIT_MELEE = 6;
-CR_HIT_RANGED = 7;
-CR_HIT_SPELL = 8;
-CR_CRIT_MELEE = 9;
-CR_CRIT_RANGED = 10;
-CR_CRIT_SPELL = 11;
-CR_RESILIENCE_CRIT_TAKEN = 15;
-CR_RESILIENCE_PLAYER_DAMAGE_TAKEN = 16;
-CR_HASTE_MELEE = 18;
-CR_HASTE_RANGED = 19;
-CR_HASTE_SPELL = 20;
-CR_EXPERTISE = 24;
-CR_ARMOR_PENETRATION = 25;
---
+--[[
 SPELL_STAT1_NAME = "Stärke"
 SPELL_STAT2_NAME = "Beweglichkeit"
 SPELL_STAT3_NAME = "Ausdauer"
@@ -527,33 +508,33 @@ L["statList"] = {
 	{pattern = SPELL_STAT3_NAME:lower(), id = StatLogic.Stats.Stamina}, -- Stamina
 	{pattern = SPELL_STAT4_NAME:lower(), id = StatLogic.Stats.Intellect}, -- Intellect
 	{pattern = SPELL_STAT5_NAME:lower(), id = StatLogic.Stats.Spirit}, -- Spirit
-	{pattern = "verteidigungswertung", id = CR_DEFENSE_SKILL},
-	{pattern = "ausweichwertung", id = CR_DODGE},
-	{pattern = "blockwertung", id = CR_BLOCK}, -- block enchant: "+10 Shield Block Rating"
-	{pattern = "parierwertung", id = CR_PARRY},
+	{pattern = "verteidigungswertung", id = StatLogic.Stats.DefenseRating},
+	{pattern = "ausweichwertung", id = StatLogic.Stats.DodgeRating},
+	{pattern = "blockwertung", id = StatLogic.Stats.BlockRating}, -- block enchant: "+10 Shield Block Rating"
+	{pattern = "parierwertung", id = StatLogic.Stats.ParryRating},
 
-	{pattern = "kritische zaubertrefferwertung", id = CR_CRIT_SPELL},
-	{pattern = "kritische distanztrefferwertung", id = CR_CRIT_RANGED},
-	{pattern = "kritische trefferwertung", id = StatLogic.GenericStats.CR_CRIT},
+	{pattern = "kritische zaubertrefferwertung", id = StatLogic.Stats.SpellCritRating},
+	{pattern = "kritische distanztrefferwertung", id = StatLogic.Stats.RangedCritRating},
+	{pattern = "kritische trefferwertung", id = StatLogic.Stats.CritRating},
 
-	{pattern = "zaubertrefferwertung", id = CR_HIT_SPELL},
-	{pattern = "trefferwertung", id = CR_HIT_RANGED},
-	{pattern = "trefferwertung", id = StatLogic.GenericStats.CR_HIT},
+	{pattern = "zaubertrefferwertung", id = StatLogic.Stats.SpellHitRating},
+	{pattern = "trefferwertung", id = StatLogic.Stats.RangedHitRating},
+	{pattern = "trefferwertung", id = StatLogic.Stats.HitRating},
 
-	{pattern = "abhärtungswertung", id = CR_RESILIENCE_CRIT_TAKEN}, -- resilience is implicitly a rating
+	{pattern = "abhärtungswertung", id = StatLogic.Stats.ResilienceRating}, -- resilience is implicitly a rating
 
-	{pattern = "zaubertempowertung", id = CR_HASTE_SPELL},
-	{pattern = "distanztempowertung", id = CR_HASTE_RANGED},
-	{pattern = "angriffstempowertung", id = StatLogic.GenericStats.CR_HASTE},
-	{pattern = "nahkampftempowertung", id = CR_HASTE_MELEE},
-	{pattern = "tempowertung", id = StatLogic.GenericStats.CR_HASTE}, -- [Drums of Battle]
+	{pattern = "zaubertempowertung", id = StatLogic.Stats.SpellHasteRating},
+	{pattern = "distanztempowertung", id = StatLogic.Stats.RangedHasteRating},
+	{pattern = "angriffstempowertung", id = StatLogic.Stats.HasteRating},
+	{pattern = "nahkampftempowertung", id = StatLogic.Stats.MeleeHasteRating},
+	{pattern = "tempowertung", id = StatLogic.Stats.HasteRating}, -- [Drums of Battle]
 
-	{pattern = "waffenkundewertung", id = CR_EXPERTISE},
+	{pattern = "waffenkundewertung", id = StatLogic.Stats.ExpertiseRating},
 
-	{pattern = SPELL_STATALL:lower(), id = StatLogic.GenericStats.ALL_STATS},
+	{pattern = SPELL_STATALL:lower(), id = StatLogic.Stats.AllStats},
 
-	{pattern = "rüstungsdurchschlagwertung", id = CR_ARMOR_PENETRATION},
-	{pattern = "rüstungsdurchschlag", id = CR_ARMOR_PENETRATION},
+	{pattern = "rüstungsdurchschlagwertung", id = StatLogic.Stats.ArmorPenetrationRating},
+	{pattern = "rüstungsdurchschlag", id = StatLogic.Stats.ArmorPenetrationRating},
 	{pattern = ARMOR:lower(), id = ARMOR},
 	{pattern = "angriffskraft", id = ATTACK_POWER},
 }

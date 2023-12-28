@@ -521,9 +521,9 @@ L["Raid Buffs"] = true
 --
 -- IMPORTANT: there may not exist a one-to-one correspondence, meaning you can't just translate this file,
 -- but will need to go in game and find out what needs to be put in here.
--- For example, in english I found 3 different strings that maps to CR_CRIT_MELEE: "critical strike", "critical hit" and "crit".
--- You will need to find out every string that represents CR_CRIT_MELEE, and so on.
--- In other languages there may be 5 different strings that should all map to CR_CRIT_MELEE.
+-- For example, in english I found 3 different strings that maps to StatLogic.Stats.MeleeCritRating: "critical strike", "critical hit" and "crit".
+-- You will need to find out every string that represents StatLogic.Stats.MeleeCritRating, and so on.
+-- In other languages there may be 5 different strings that should all map to StatLogic.Stats.MeleeCritRating.
 -- so please check in game that you have all strings, and not translate directly off this table.
 --
 -- Tip1: When doing localizations, I recommend you set debugging to true in RatingBuster.lua
@@ -552,26 +552,7 @@ L["separators"] = {
 	-- 1000 was falsely detected detected as ranged critical strike
 	"повысить вашу",
 }
---[[ Rating ID
-CR_WEAPON_SKILL = 1;
-CR_DEFENSE_SKILL = 2;
-CR_DODGE = 3;
-CR_PARRY = 4;
-CR_BLOCK = 5;
-CR_HIT_MELEE = 6;
-CR_HIT_RANGED = 7;
-CR_HIT_SPELL = 8;
-CR_CRIT_MELEE = 9;
-CR_CRIT_RANGED = 10;
-CR_CRIT_SPELL = 11;
-CR_RESILIENCE_CRIT_TAKEN = 15;
-CR_RESILIENCE_PLAYER_DAMAGE_TAKEN = 16;
-CR_HASTE_MELEE = 18;
-CR_HASTE_RANGED = 19;
-CR_HASTE_SPELL = 20;
-CR_EXPERTISE = 24;
-CR_ARMOR_PENETRATION = 25;
---
+--[[
 SPELL_STAT1_NAME = "Strength"
 SPELL_STAT2_NAME = "Agility"
 SPELL_STAT3_NAME = "Stamina"
@@ -600,10 +581,10 @@ L["statList"] = {
 	{pattern = "силы заклинаний", id = SPELL_DMG},
 	{pattern = "к силе заклинаний", id = SPELL_DMG},
 
-	{pattern = "рейтинг пробивания брони", id = CR_ARMOR_PENETRATION},
-	{pattern = "рейтингу пробивания брони", id = CR_ARMOR_PENETRATION},
-	{pattern = "рейтинга пробивания брони", id = CR_ARMOR_PENETRATION},
-	{pattern = "эффективность брони противника", id = CR_ARMOR_PENETRATION},
+	{pattern = "рейтинг пробивания брони", id = StatLogic.Stats.ArmorPenetrationRating},
+	{pattern = "рейтингу пробивания брони", id = StatLogic.Stats.ArmorPenetrationRating},
+	{pattern = "рейтинга пробивания брони", id = StatLogic.Stats.ArmorPenetrationRating},
+	{pattern = "эффективность брони противника", id = StatLogic.Stats.ArmorPenetrationRating},
 	{pattern = "броня", id = ARMOR},
 	{pattern = "брони", id = ARMOR},
 	{pattern = "броню", id = ARMOR},
@@ -621,77 +602,77 @@ L["statList"] = {
 	{pattern = "духу", id = StatLogic.Stats.Spirit}, -- Spirit
 	{pattern = "дух", id = StatLogic.Stats.Spirit}, -- Spirit
 
-	{pattern = "рейтинг защиты", id = CR_DEFENSE_SKILL},
-	{pattern = "рейтингу защиты", id = CR_DEFENSE_SKILL},
-	{pattern = "рейтинга защиты", id = CR_DEFENSE_SKILL},
-	{pattern = "к защите", id = CR_DEFENSE_SKILL},
-	{pattern = "рейтинг уклонения", id = CR_DODGE},
-	{pattern = "рейтингу уклонения", id = CR_DODGE},
-	{pattern = "рейтинга уклонения", id = CR_DODGE},
-	{pattern = "эффективность уклонения", id = CR_DODGE},
-	{pattern = "рейтинг блокирования щитом", id = CR_BLOCK}, -- block enchant: "+10 Shield Block Rating"
-	{pattern = "рейтинга блокирования щитом", id = CR_BLOCK},
-	{pattern = "рейтингу блокирования щитом", id = CR_BLOCK},
-	{pattern = "увеличение рейтинга блокирования щита на", id = CR_BLOCK},
-	{pattern = "рейтинг блока", id = CR_BLOCK},
-	{pattern = "рейтинга блока", id = CR_BLOCK},
-	{pattern = "рейтингу блока", id = CR_BLOCK},
-	{pattern = "рейтинг парирования", id = CR_PARRY},
-	{pattern = "рейтинга парирования", id = CR_PARRY},
-	{pattern = "рейтингу парирования", id = CR_PARRY},
+	{pattern = "рейтинг защиты", id = StatLogic.Stats.DefenseRating},
+	{pattern = "рейтингу защиты", id = StatLogic.Stats.DefenseRating},
+	{pattern = "рейтинга защиты", id = StatLogic.Stats.DefenseRating},
+	{pattern = "к защите", id = StatLogic.Stats.DefenseRating},
+	{pattern = "рейтинг уклонения", id = StatLogic.Stats.DodgeRating},
+	{pattern = "рейтингу уклонения", id = StatLogic.Stats.DodgeRating},
+	{pattern = "рейтинга уклонения", id = StatLogic.Stats.DodgeRating},
+	{pattern = "эффективность уклонения", id = StatLogic.Stats.DodgeRating},
+	{pattern = "рейтинг блокирования щитом", id = StatLogic.Stats.BlockRating}, -- block enchant: "+10 Shield Block Rating"
+	{pattern = "рейтинга блокирования щитом", id = StatLogic.Stats.BlockRating},
+	{pattern = "рейтингу блокирования щитом", id = StatLogic.Stats.BlockRating},
+	{pattern = "увеличение рейтинга блокирования щита на", id = StatLogic.Stats.BlockRating},
+	{pattern = "рейтинг блока", id = StatLogic.Stats.BlockRating},
+	{pattern = "рейтинга блока", id = StatLogic.Stats.BlockRating},
+	{pattern = "рейтингу блока", id = StatLogic.Stats.BlockRating},
+	{pattern = "рейтинг парирования", id = StatLogic.Stats.ParryRating},
+	{pattern = "рейтинга парирования", id = StatLogic.Stats.ParryRating},
+	{pattern = "рейтингу парирования", id = StatLogic.Stats.ParryRating},
 
-	{pattern = "рейтинг критического удара %(заклинания%)", id = CR_CRIT_SPELL},
-	{pattern = "рейтингу критического удара %(заклинания%)", id = CR_CRIT_SPELL},
-	{pattern = "рейтинга критического удара %(заклинания%)", id = CR_CRIT_SPELL},
-	{pattern = "рейтинга критического удара заклинаниями", id = CR_CRIT_SPELL},
-	{pattern = "рейтингу критического удара заклинаниями", id = CR_CRIT_SPELL},
-	{pattern = "рейтинг критического удара заклинаниями", id = CR_CRIT_SPELL},
-	{pattern = "критический удар %(заклинания%)", id = CR_CRIT_SPELL},
-	{pattern = "меткость %(заклинания%)", id = CR_HIT_SPELL},
-	{pattern = "к критическому удару в дальнем бою", id = CR_CRIT_RANGED}, -- [Heartseeker Scope]
-	{pattern = "рейтинг критического удара", id = StatLogic.GenericStats.CR_CRIT},
-	{pattern = "к рейтингу критического эффекта", id = StatLogic.GenericStats.CR_CRIT},
-	{pattern = "рейтингу критического удара", id = StatLogic.GenericStats.CR_CRIT},
-	{pattern = "рейтинга критического удара", id = StatLogic.GenericStats.CR_CRIT},
-	{pattern = "рейтинг крит. удара оруж. ближнего боя", id = CR_CRIT_MELEE},
+	{pattern = "рейтинг критического удара %(заклинания%)", id = StatLogic.Stats.SpellCritRating},
+	{pattern = "рейтингу критического удара %(заклинания%)", id = StatLogic.Stats.SpellCritRating},
+	{pattern = "рейтинга критического удара %(заклинания%)", id = StatLogic.Stats.SpellCritRating},
+	{pattern = "рейтинга критического удара заклинаниями", id = StatLogic.Stats.SpellCritRating},
+	{pattern = "рейтингу критического удара заклинаниями", id = StatLogic.Stats.SpellCritRating},
+	{pattern = "рейтинг критического удара заклинаниями", id = StatLogic.Stats.SpellCritRating},
+	{pattern = "критический удар %(заклинания%)", id = StatLogic.Stats.SpellCritRating},
+	{pattern = "меткость %(заклинания%)", id = StatLogic.Stats.SpellHitRating},
+	{pattern = "к критическому удару в дальнем бою", id = StatLogic.Stats.RangedCritRating}, -- [Heartseeker Scope]
+	{pattern = "рейтинг критического удара", id = StatLogic.Stats.CritRating},
+	{pattern = "к рейтингу критического эффекта", id = StatLogic.Stats.CritRating},
+	{pattern = "рейтингу критического удара", id = StatLogic.Stats.CritRating},
+	{pattern = "рейтинга критического удара", id = StatLogic.Stats.CritRating},
+	{pattern = "рейтинг крит. удара оруж. ближнего боя", id = StatLogic.Stats.MeleeCritRating},
 
-	{pattern = "рейтинг меткости %(заклинания%)", id = CR_HIT_SPELL},
-	{pattern = "рейтингу меткости %(заклинания%)", id = CR_HIT_SPELL},
-	{pattern = "рейтинга меткости %(заклинания%)", id = CR_HIT_SPELL},
-	{pattern = "рейтинга меткости заклинаний", id = CR_HIT_SPELL},
-	{pattern = "рейтингу меткости заклинаний", id = CR_HIT_SPELL},
-	{pattern = "Рейтинг меткости (оруж. дальн. боя)", id = CR_HIT_RANGED},
-	{pattern = "рейтинга нанесения удара ближнего боя", id = CR_HIT_MELEE},
-	{pattern = "рейтинг меткости", id = StatLogic.GenericStats.CR_HIT},
-	{pattern = "рейтинга меткости", id = StatLogic.GenericStats.CR_HIT},
-	{pattern = "рейтингу меткости", id = StatLogic.GenericStats.CR_HIT},
+	{pattern = "рейтинг меткости %(заклинания%)", id = StatLogic.Stats.SpellHitRating},
+	{pattern = "рейтингу меткости %(заклинания%)", id = StatLogic.Stats.SpellHitRating},
+	{pattern = "рейтинга меткости %(заклинания%)", id = StatLogic.Stats.SpellHitRating},
+	{pattern = "рейтинга меткости заклинаний", id = StatLogic.Stats.SpellHitRating},
+	{pattern = "рейтингу меткости заклинаний", id = StatLogic.Stats.SpellHitRating},
+	{pattern = "Рейтинг меткости (оруж. дальн. боя)", id = StatLogic.Stats.RangedHitRating},
+	{pattern = "рейтинга нанесения удара ближнего боя", id = StatLogic.Stats.MeleeHitRating},
+	{pattern = "рейтинг меткости", id = StatLogic.Stats.HitRating},
+	{pattern = "рейтинга меткости", id = StatLogic.Stats.HitRating},
+	{pattern = "рейтингу меткости", id = StatLogic.Stats.HitRating},
 
-	{pattern = "рейтинг устойчивости", id = CR_RESILIENCE_CRIT_TAKEN}, -- resilience is implicitly a rating
-	{pattern = "рейтингу устойчивости", id = CR_RESILIENCE_CRIT_TAKEN},
-	{pattern = "рейтинга устойчивости", id = CR_RESILIENCE_CRIT_TAKEN},
+	{pattern = "рейтинг устойчивости", id = StatLogic.Stats.ResilienceRating}, -- resilience is implicitly a rating
+	{pattern = "рейтингу устойчивости", id = StatLogic.Stats.ResilienceRating},
+	{pattern = "рейтинга устойчивости", id = StatLogic.Stats.ResilienceRating},
 
-	{pattern = "рейтинг скорости %(заклинания%)", id = CR_HASTE_SPELL},
-	{pattern = "рейтингу скорости %(заклинания%)", id = CR_HASTE_SPELL},
-	{pattern = "рейтинга скорости %(заклинания%)", id = CR_HASTE_SPELL},
-	{pattern = "скорости наложения заклинаний", id = CR_HASTE_SPELL},
-	{pattern = "скорость наложения заклинаний", id = CR_HASTE_SPELL},
-	{pattern = "рейтинг скорости дальнего боя", id = CR_HASTE_RANGED},
-	{pattern = "рейтингу скорости дальнего боя", id = CR_HASTE_RANGED},
-	{pattern = "рейтинга скорости дальнего боя", id = CR_HASTE_RANGED},
-	{pattern = "рейтинг скорости", id = StatLogic.GenericStats.CR_HASTE},
-	{pattern = "рейтингу скорости", id = StatLogic.GenericStats.CR_HASTE},
-	{pattern = "рейтинга скорости", id = StatLogic.GenericStats.CR_HASTE},
+	{pattern = "рейтинг скорости %(заклинания%)", id = StatLogic.Stats.SpellHasteRating},
+	{pattern = "рейтингу скорости %(заклинания%)", id = StatLogic.Stats.SpellHasteRating},
+	{pattern = "рейтинга скорости %(заклинания%)", id = StatLogic.Stats.SpellHasteRating},
+	{pattern = "скорости наложения заклинаний", id = StatLogic.Stats.SpellHasteRating},
+	{pattern = "скорость наложения заклинаний", id = StatLogic.Stats.SpellHasteRating},
+	{pattern = "рейтинг скорости дальнего боя", id = StatLogic.Stats.RangedHasteRating},
+	{pattern = "рейтингу скорости дальнего боя", id = StatLogic.Stats.RangedHasteRating},
+	{pattern = "рейтинга скорости дальнего боя", id = StatLogic.Stats.RangedHasteRating},
+	{pattern = "рейтинг скорости", id = StatLogic.Stats.HasteRating},
+	{pattern = "рейтингу скорости", id = StatLogic.Stats.HasteRating},
+	{pattern = "рейтинга скорости", id = StatLogic.Stats.HasteRating},
 
-	{pattern = "рейтинг мастерства", id = CR_EXPERTISE},
-	{pattern = "рейтингу мастерства", id = CR_EXPERTISE},
-	{pattern = "рейтинга мастерства", id = CR_EXPERTISE},
-	{pattern = "уровень мастерства", id = CR_EXPERTISE},
+	{pattern = "рейтинг мастерства", id = StatLogic.Stats.ExpertiseRating},
+	{pattern = "рейтингу мастерства", id = StatLogic.Stats.ExpertiseRating},
+	{pattern = "рейтинга мастерства", id = StatLogic.Stats.ExpertiseRating},
+	{pattern = "уровень мастерства", id = StatLogic.Stats.ExpertiseRating},
 
-	{pattern = SPELL_STATALL:lower(), id = StatLogic.GenericStats.ALL_STATS},
+	{pattern = SPELL_STATALL:lower(), id = StatLogic.Stats.AllStats},
 
-	{pattern = "рейтинг искусности", id = CR_MASTERY},
-	{pattern = "рейтингу искусности", id = CR_MASTERY},
-	{pattern = "рейтинга искусности", id = CR_MASTERY},
+	{pattern = "рейтинг искусности", id = StatLogic.Stats.MasteryRating},
+	{pattern = "рейтингу искусности", id = StatLogic.Stats.MasteryRating},
+	{pattern = "рейтинга искусности", id = StatLogic.Stats.MasteryRating},
 }
 -------------------------
 -- Added info patterns --

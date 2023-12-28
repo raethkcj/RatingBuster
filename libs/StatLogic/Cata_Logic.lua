@@ -3,46 +3,40 @@ local addonName, addon = ...
 local StatLogic = LibStub:GetLibrary(addonName)
 
 -- Level 60 rating base
-addon.RatingBase = {
-	[CR_WEAPON_SKILL] = 2.5,
-	[CR_DEFENSE_SKILL] = 1.5,
-	[CR_DODGE] = 13.8,
-	[CR_PARRY] = 13.8,
-	[CR_BLOCK] = 6.9,
-	[CR_HIT_MELEE] = 9.37931,
-	[CR_HIT_RANGED] = 9.37931,
-	[CR_HIT_SPELL] = 8,
-	[CR_CRIT_MELEE] = 14,
-	[CR_CRIT_RANGED] = 14,
-	[CR_CRIT_SPELL] = 14,
-	[CR_RESILIENCE_CRIT_TAKEN] = 0,
-	[CR_RESILIENCE_PLAYER_DAMAGE_TAKEN] = 7.96417713165283,
-	[CR_HASTE_MELEE] = 10,
-	[CR_HASTE_RANGED] = 10,
-	[CR_HASTE_SPELL] = 10,
-	[CR_WEAPON_SKILL_MAINHAND] = 2.5,
-	[CR_WEAPON_SKILL_OFFHAND] = 2.5,
-	[CR_WEAPON_SKILL_RANGED] = 2.5,
-	[CR_EXPERTISE] = 2.34483,
-	[CR_ARMOR_PENETRATION] = 4.69512176513672 / 1.1,
-	[CR_MASTERY] = 14,
+StatLogic.RatingBase = {
+	[StatLogic.Stats.DefenseRating] = 1.5,
+	[StatLogic.Stats.DodgeRating] = 13.8,
+	[StatLogic.Stats.ParryRating] = 13.8,
+	[StatLogic.Stats.BlockRating] = 6.9,
+	[StatLogic.Stats.MeleeHitRating] = 9.37931,
+	[StatLogic.Stats.RangedHitRating] = 9.37931,
+	[StatLogic.Stats.SpellHitRating] = 8,
+	[StatLogic.Stats.MeleeCritRating] = 14,
+	[StatLogic.Stats.RangedCritRating] = 14,
+	[StatLogic.Stats.SpellCritRating] = 14,
+	[StatLogic.Stats.ResilienceRating] = 0,
+	[StatLogic.Stats.MeleeHasteRating] = 10,
+	[StatLogic.Stats.RangedHasteRating] = 10,
+	[StatLogic.Stats.SpellHasteRating] = 10,
+	[StatLogic.Stats.ExpertiseRating] = 2.34483,
+	[StatLogic.Stats.ArmorPenetrationRating] = 4.69512176513672 / 1.1,
+	[StatLogic.Stats.MasteryRating] = 14,
 }
-addon.SetCRMax()
 
-StatLogic.GenericStatMap[StatLogic.GenericStats.CR_HIT] = {
-	CR_HIT_MELEE,
-	CR_HIT_RANGED,
-	CR_HIT_SPELL,
+StatLogic.GenericStatMap[StatLogic.Stats.HitRating] = {
+	StatLogic.Stats.MeleeHitRating,
+	StatLogic.Stats.RangedHitRating,
+	StatLogic.Stats.SpellHitRating,
 }
-StatLogic.GenericStatMap[StatLogic.GenericStats.CR_CRIT] = {
-	CR_CRIT_MELEE,
-	CR_CRIT_RANGED,
-	CR_CRIT_SPELL,
+StatLogic.GenericStatMap[StatLogic.Stats.CritRating] = {
+	StatLogic.Stats.MeleeCritRating,
+	StatLogic.Stats.RangedCritRating,
+	StatLogic.Stats.SpellCritRating,
 }
-StatLogic.GenericStatMap[StatLogic.GenericStats.CR_HASTE] = {
-	CR_HASTE_MELEE,
-	CR_HASTE_RANGED,
-	CR_HASTE_SPELL,
+StatLogic.GenericStatMap[StatLogic.Stats.HasteRating] = {
+	StatLogic.Stats.MeleeHasteRating,
+	StatLogic.Stats.RangedHasteRating,
+	StatLogic.Stats.SpellHasteRating,
 }
 
 -- Extracted from the client at GameTables/RegenMPPerSpt.txt via wow.tools.local

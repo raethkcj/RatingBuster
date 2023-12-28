@@ -11,45 +11,39 @@ StatLogic.ExtraHasteClasses["DRUID"] = true
 local extraHaste = StatLogic.ExtraHasteClasses[addon.class] and 1.3 or 1
 
 -- Level 60 rating base
-addon.RatingBase = {
-	[CR_WEAPON_SKILL] = 2.5,
-	[CR_DEFENSE_SKILL] = 1.5,
-	[CR_DODGE] = 13.8,
-	[CR_PARRY] = 13.8,
-	[CR_BLOCK] = 5,
-	[CR_HIT_MELEE] = 10,
-	[CR_HIT_RANGED] = 10,
-	[CR_HIT_SPELL] = 8,
-	[CR_CRIT_MELEE] = 14,
-	[CR_CRIT_RANGED] = 14,
-	[CR_CRIT_SPELL] = 14,
-	[CR_RESILIENCE_CRIT_TAKEN] = 28.75,
-	[CR_RESILIENCE_PLAYER_DAMAGE_TAKEN] = 28.75,
-	[CR_HASTE_MELEE] = 10 / extraHaste,
-	[CR_HASTE_RANGED] = 10,
-	[CR_HASTE_SPELL] = 10,
-	[CR_WEAPON_SKILL_MAINHAND] = 2.5,
-	[CR_WEAPON_SKILL_OFFHAND] = 2.5,
-	[CR_WEAPON_SKILL_RANGED] = 2.5,
-	[CR_EXPERTISE] = 2.5,
-	[CR_ARMOR_PENETRATION] = 4.69512176513672 / 1.1,
+StatLogic.RatingBase = {
+	[StatLogic.Stats.DefenseRating] = 1.5,
+	[StatLogic.Stats.DodgeRating] = 13.8,
+	[StatLogic.Stats.ParryRating] = 13.8,
+	[StatLogic.Stats.BlockRating] = 5,
+	[StatLogic.Stats.MeleeHitRating] = 10,
+	[StatLogic.Stats.RangedHitRating] = 10,
+	[StatLogic.Stats.SpellHitRating] = 8,
+	[StatLogic.Stats.MeleeCritRating] = 14,
+	[StatLogic.Stats.RangedCritRating] = 14,
+	[StatLogic.Stats.SpellCritRating] = 14,
+	[StatLogic.Stats.ResilienceRating] = 28.75,
+	[StatLogic.Stats.MeleeHasteRating] = 10 / extraHaste,
+	[StatLogic.Stats.RangedHasteRating] = 10,
+	[StatLogic.Stats.SpellHasteRating] = 10,
+	[StatLogic.Stats.ExpertiseRating] = 2.5,
+	[StatLogic.Stats.ArmorPenetrationRating] = 4.69512176513672 / 1.1,
 }
-addon.SetCRMax()
 
-StatLogic.GenericStatMap[StatLogic.GenericStats.CR_HIT] = {
-	CR_HIT_MELEE,
-	CR_HIT_RANGED,
-	CR_HIT_SPELL,
+StatLogic.GenericStatMap[StatLogic.Stats.HitRating] = {
+	StatLogic.Stats.MeleeHitRating,
+	StatLogic.Stats.RangedHitRating,
+	StatLogic.Stats.SpellHitRating,
 }
-StatLogic.GenericStatMap[StatLogic.GenericStats.CR_CRIT] = {
-	CR_CRIT_MELEE,
-	CR_CRIT_RANGED,
-	CR_CRIT_SPELL,
+StatLogic.GenericStatMap[StatLogic.Stats.CritRating] = {
+	StatLogic.Stats.MeleeCritRating,
+	StatLogic.Stats.RangedCritRating,
+	StatLogic.Stats.SpellCritRating,
 }
-StatLogic.GenericStatMap[StatLogic.GenericStats.CR_HASTE] = {
-	CR_HASTE_MELEE,
-	CR_HASTE_RANGED,
-	CR_HASTE_SPELL,
+StatLogic.GenericStatMap[StatLogic.Stats.HasteRating] = {
+	StatLogic.Stats.MeleeHasteRating,
+	StatLogic.Stats.RangedHasteRating,
+	StatLogic.Stats.SpellHasteRating,
 }
 
 -- Extracted from the client at GameTables/RegenMPPerSpt.txt via wow.tools.local
@@ -3244,7 +3238,7 @@ local C_m = setmetatable({}, {
 
 function StatLogic:GetMissedChanceBeforeDR()
 	local baseDefense, additionalDefense = UnitDefense("player")
-	local defenseFromDefenseRating = floor(self:GetEffectFromRating(GetCombatRating(CR_DEFENSE_SKILL), CR_DEFENSE_SKILL))
+	local defenseFromDefenseRating = floor(self:GetEffectFromRating(GetCombatRating(CR_DEFENSE_SKILL), StatLogic.Stats.DefenseRating))
 	local modMissed = defenseFromDefenseRating * 0.04
 	local drFreeMissed = 5 + (baseDefense + additionalDefense - defenseFromDefenseRating) * 0.04
 	return modMissed, drFreeMissed
@@ -3304,7 +3298,7 @@ function StatLogic:GetDodgePerAgi()
 	end
 	-- Collect data
 	local D_dr = GetDodgeChance()
-	local dodgeFromDodgeRating = self:GetEffectFromRating(GetCombatRating(CR_DODGE), CR_DODGE, level)
+	local dodgeFromDodgeRating = self:GetEffectFromRating(GetCombatRating(CR_DODGE), StatLogic.Stats.DodgeRating, level)
 	local baseDefense, modDefense = UnitDefense("player")
 	local dodgeFromModDefense = modDefense * 0.04
 	local D_r = dodgeFromDodgeRating + dodgeFromModDefense
@@ -3366,8 +3360,8 @@ function StatLogic:GetDodgeChanceBeforeDR()
 	local stat, effectiveStat, posBuff, negBuff = UnitStat("player", 2) -- 2 = Agility
 	local baseAgi = stat - posBuff - negBuff
 	local dodgePerAgi = self:GetDodgePerAgi()
-	local dodgeFromDodgeRating = self:GetEffectFromRating(GetCombatRating(CR_DODGE), CR_DODGE, UnitLevel("player"))
-	local dodgeFromDefenceRating = floor(self:GetEffectFromRating(GetCombatRating(CR_DEFENSE_SKILL), CR_DEFENSE_SKILL)) * 0.04
+	local dodgeFromDodgeRating = self:GetEffectFromRating(GetCombatRating(CR_DODGE), StatLogic.Stats.DodgeRating, UnitLevel("player"))
+	local dodgeFromDefenceRating = floor(self:GetEffectFromRating(GetCombatRating(CR_DEFENSE_SKILL), StatLogic.Stats.DefenseRating)) * 0.04
 	local dodgeFromAdditionalAgi = dodgePerAgi * (effectiveStat - baseAgi)
 	local modDodge = dodgeFromDodgeRating + dodgeFromDefenceRating + dodgeFromAdditionalAgi
 
@@ -3401,8 +3395,8 @@ Example:
 -----------------------------------]]
 function StatLogic:GetParryChanceBeforeDR()
 	-- Defense is floored
-	local parryFromParryRating = self:GetEffectFromRating(GetCombatRating(CR_PARRY), CR_PARRY)
-	local parryFromDefenceRating = floor(self:GetEffectFromRating(GetCombatRating(CR_DEFENSE_SKILL), CR_DEFENSE_SKILL)) * 0.04
+	local parryFromParryRating = self:GetEffectFromRating(GetCombatRating(CR_PARRY), StatLogic.Stats.ParryRating)
+	local parryFromDefenceRating = floor(self:GetEffectFromRating(GetCombatRating(CR_DEFENSE_SKILL), StatLogic.Stats.DefenseRating)) * 0.04
 	local modParry = parryFromParryRating + parryFromDefenceRating
 
 	-- drFreeParry
@@ -3506,7 +3500,7 @@ Example:
 	-- How much dodge will I gain with +30 Agi after DR?
 	local gainAfterDR = StatLogic:GetAvoidanceGainAfterDR(StatLogic.Stats.Dodge, 30*StatLogic:GetDodgePerAgi())
 	-- How much dodge will I gain with +20 Parry Rating after DR?
-	local gainAfterDR = StatLogic:GetAvoidanceGainAfterDR(StatLogic.Stats.Parry, StatLogic:GetEffectFromRating(20, CR_PARRY))
+	local gainAfterDR = StatLogic:GetAvoidanceGainAfterDR(StatLogic.Stats.Parry, StatLogic:GetEffectFromRating(20, StatLogic.Stats.ParryRating))
 -----------------------------------]]
 function StatLogic:GetAvoidanceGainAfterDR(avoidanceType, gainBeforeDR)
 	-- argCheck for invalid input
