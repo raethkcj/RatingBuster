@@ -68,26 +68,6 @@ L["Convert Weapon Skill into Crit, Hit, Dodge Neglect, Parry Neglect and Block N
 -- /rb rating exp -- 2.3.0
 L["Expertise breakdown"] = true
 L["Convert Expertise into Dodge Neglect and Parry Neglect"] = true
-L["from"] = true
-L["HEALING"] = STAT_SPELLHEALING
-L["AP"] = ATTACK_POWER_TOOLTIP
-L["RANGED_AP"] = RANGED_ATTACK_POWER
-L["ARMOR"] = ARMOR
-L["SPELL_DMG"] = STAT_SPELLDAMAGE
-L["SPELL_CRIT"] = PLAYERSTAT_SPELL_COMBAT .. " " .. SPELL_CRIT_CHANCE
-L["STR"] = SPELL_STAT1_NAME
-L["AGI"] = SPELL_STAT2_NAME
-L["STA"] = SPELL_STAT3_NAME
-L["INT"] = SPELL_STAT4_NAME
-L["SPI"] = SPELL_STAT5_NAME
-L["PARRY"] = PARRY
-L["MANA_REG"] = "Mana Regen"
-L["NORMAL_MANA_REG"] = "Mana Regen (Not Casting)"
-L["HEALTH_REG"] = "Health Regen"
-L["NORMAL_HEALTH_REG"] = "Health Regen (Out of Combat)"
-L["PET_STA"] = PET .. SPELL_STAT3_NAME -- Pet Stamina
-L["PET_INT"] = PET .. SPELL_STAT4_NAME -- Pet Intellect
-L["StatModOptionName"] = "%s %s"
 
 -- /rb stat
 L["Stat Breakdown"] = true
@@ -592,12 +572,24 @@ L["EMPTY_SOCKET_YELLOW"] = EMPTY_SOCKET_YELLOW -- EMPTY_SOCKET_YELLOW = "Yellow 
 L["EMPTY_SOCKET_BLUE"] = EMPTY_SOCKET_BLUE -- EMPTY_SOCKET_BLUE = "Blue Socket";
 L["EMPTY_SOCKET_META"] = EMPTY_SOCKET_META -- EMPTY_SOCKET_META = "Meta Socket";
 
+L["HEALING"] = STAT_SPELLHEALING
+L["SPELL_CRIT"] = PLAYERSTAT_SPELL_COMBAT .. " " .. SPELL_CRIT_CHANCE
+L["STR"] = SPELL_STAT1_NAME
+L["AGI"] = SPELL_STAT2_NAME
+L["STA"] = SPELL_STAT3_NAME
+L["INT"] = SPELL_STAT4_NAME
+L["SPI"] = SPELL_STAT5_NAME
+L["PARRY"] = PARRY
+L["MANA_REG"] = "Mana Regen"
+L["NORMAL_MANA_REG"] = "Mana Regen (Not Casting)"
+L["HEALTH_REG"] = "Health Regen"
+L["NORMAL_HEALTH_REG"] = "Health Regen (Out of Combat)"
+L["PET_STA"] = PET .. SPELL_STAT3_NAME -- Pet Stamina
+L["PET_INT"] = PET .. SPELL_STAT4_NAME -- Pet Intellect
+L["StatModOptionName"] = "%s %s"
+
 L["IGNORE_ARMOR"] = "Ignore Armor"
-L["THREAT_MOD"] = "Threat(%)"
-L["STEALTH_LEVEL"] = "Stealth Level"
 L["MELEE_DMG"] = "Melee Weapon "..DAMAGE -- DAMAGE = "Damage"
-L["MOUNT_SPEED"] = "Mount Speed(%)"
-L["RUN_SPEED"] = "Run Speed(%)"
 
 L[StatLogic.Stats.Strength] = SPELL_STAT1_NAME
 L[StatLogic.Stats.Agility] = SPELL_STAT2_NAME
@@ -612,24 +604,15 @@ L["FROST_RES"] = RESISTANCE4_NAME
 L["SHADOW_RES"] = RESISTANCE5_NAME
 L["ARCANE_RES"] = RESISTANCE6_NAME
 
-L["FISHING"] = "Fishing"
-L["MINING"] = "Mining"
-L["HERBALISM"] = "Herbalism"
-L["SKINNING"] = "Skinning"
-
 L["BLOCK_VALUE"] = "Block Value"
 
 L["AP"] = ATTACK_POWER_TOOLTIP
 L["RANGED_AP"] = RANGED_ATTACK_POWER
 L["FERAL_AP"] = "Feral "..ATTACK_POWER_TOOLTIP
-L["AP_UNDEAD"] = ATTACK_POWER_TOOLTIP.." (Undead)"
-L["AP_DEMON"] = ATTACK_POWER_TOOLTIP.." (Demon)"
 
 L["HEAL"] = "Healing"
 
-L["SPELL_DMG"] = PLAYERSTAT_SPELL_COMBAT.." "..DAMAGE
-L["SPELL_DMG_UNDEAD"] = PLAYERSTAT_SPELL_COMBAT.." "..DAMAGE.." (Undead)"
-L["SPELL_DMG_DEMON"] = PLAYERSTAT_SPELL_COMBAT.." "..DAMAGE.." (Demon)"
+L["SPELL_DMG"] = STAT_SPELLDAMAGE
 L["HOLY_SPELL_DMG"] = SPELL_SCHOOL1_CAP.." "..DAMAGE
 L["FIRE_SPELL_DMG"] = SPELL_SCHOOL2_CAP.." "..DAMAGE
 L["NATURE_SPELL_DMG"] = SPELL_SCHOOL3_CAP.." "..DAMAGE
@@ -641,8 +624,6 @@ L["SPELLPEN"] = PLAYERSTAT_SPELL_COMBAT.." "..SPELL_PENETRATION
 
 L["HEALTH"] = HEALTH
 L["MANA"] = MANA
-L["HEALTH_REG"] = HEALTH.." Regen"
-L["MANA_REG"] = MANA.." Regen"
 
 L["AVERAGE_DAMAGE"] = "Average Damage"
 L["DPS"] = "Damage Per Second"
@@ -670,11 +651,7 @@ L[StatLogic.Stats.ArmorPenetrationRating] = ITEM_MOD_ARMOR_PENETRATION_RATING_SH
 -- Int -> Mana, Spell Crit
 -- Spi -> mp5nc, hp5oc
 -- Ratings -> Effect
-L["HEALTH_REG_OUT_OF_COMBAT"] = HEALTH.." Regen (Out of combat)"
-L["MANA_REG_NOT_CASTING"] = MANA.." Regen (Not casting)"
 L["MELEE_CRIT_DMG_REDUCTION"] = "Crit Damage Reduction(%)"
-L["RANGED_CRIT_DMG_REDUCTION"] = PLAYERSTAT_RANGED_COMBAT.." Crit Damage Reduction(%)"
-L["SPELL_CRIT_DMG_REDUCTION"] = PLAYERSTAT_SPELL_COMBAT.." Crit Damage Reduction(%)"
 L[StatLogic.Stats.Defense] = DEFENSE
 L[StatLogic.Stats.Dodge] = DODGE.."(%)"
 L[StatLogic.Stats.Parry] = PARRY.."(%)"
@@ -691,19 +668,6 @@ L["MELEE_CRIT_AVOID"] = "Crit Avoidance(%)"
 L["MELEE_HASTE"] = "Haste(%)" --
 L["RANGED_HASTE"] = PLAYERSTAT_RANGED_COMBAT.." Haste(%)"
 L["SPELL_HASTE"] = PLAYERSTAT_SPELL_COMBAT.." Haste(%)"
-L["DAGGER_WEAPON"] = "Dagger "..SKILL -- SKILL = "Skill"
-L["SWORD_WEAPON"] = "Sword "..SKILL
-L["2H_SWORD_WEAPON"] = "Two-Handed Sword "..SKILL
-L["AXE_WEAPON"] = "Axe "..SKILL
-L["2H_AXE_WEAPON"] = "Two-Handed Axe "..SKILL
-L["MACE_WEAPON"] = "Mace "..SKILL
-L["2H_MACE_WEAPON"] = "Two-Handed Mace "..SKILL
-L["GUN_WEAPON"] = "Gun "..SKILL
-L["CROSSBOW_WEAPON"] = "Crossbow "..SKILL
-L["BOW_WEAPON"] = "Bow "..SKILL
-L["FERAL_WEAPON"] = "Feral "..SKILL
-L["FIST_WEAPON"] = "Unarmed "..SKILL
-L["STAFF_WEAPON"] = "Staff "..SKILL -- Leggings of the Fang ID:10410
 L["EXPERTISE"] = "Expertise"
 L["ARMOR_PENETRATION"] = "Armor Penetration(%)"
 -- Tier3 Stats - Stats that only show up when broken down from a Tier2 stat
@@ -713,44 +677,5 @@ L["ARMOR_PENETRATION"] = "Armor Penetration(%)"
 L["DODGE_NEGLECT"] = DODGE.." Neglect(%)"
 L["PARRY_NEGLECT"] = PARRY.." Neglect(%)"
 L["BLOCK_NEGLECT"] = BLOCK.." Neglect(%)"
--- Talents
-L["MELEE_CRIT_DMG"] = "Crit Damage(%)"
-L["RANGED_CRIT_DMG"] = PLAYERSTAT_RANGED_COMBAT.." Crit Damage(%)"
-L["SPELL_CRIT_DMG"] = PLAYERSTAT_SPELL_COMBAT.." Crit Damage(%)"
--- Spell Stats
--- These values can be prefixed with a @ and spell name, using reverse translation to english from Babble-Spell-2.2
--- Ex: "Heroic Strike@RAGE_COST" for Heroic Strike rage cost
--- Ex: "Heroic Strike@THREAT" for Heroic Strike threat value
--- Use strsplit("@", text) to seperate the spell name and statid
-L["THREAT"] = "Threat"
-L["CAST_TIME"] = "Casting Time"
-L["MANA_COST"] = "Mana Cost"
-L["RAGE_COST"] = "Rage Cost"
-L["ENERGY_COST"] = "Energy Cost"
-L["COOLDOWN"] = "Cooldown"
--- Stats Mods
-L["MOD_STR"] = "Mod "..SPELL_STAT1_NAME.."(%)"
-L["MOD_AGI"] = "Mod "..SPELL_STAT2_NAME.."(%)"
-L["MOD_STA"] = "Mod "..SPELL_STAT3_NAME.."(%)"
-L["MOD_INT"] = "Mod "..SPELL_STAT4_NAME.."(%)"
-L["MOD_SPI"] = "Mod "..SPELL_STAT5_NAME.."(%)"
-L["MOD_HEALTH"] = "Mod "..HEALTH.."(%)"
-L["MOD_MANA"] = "Mod "..MANA.."(%)"
-L["MOD_ARMOR"] = "Mod "..ARMOR.."from Items".."(%)"
-L["MOD_BLOCK_VALUE"] = "Mod Block Value".."(%)"
-L["MOD_AP"] = "Mod "..ATTACK_POWER_TOOLTIP.."(%)"
-L["MOD_RANGED_AP"] = "Mod "..PLAYERSTAT_RANGED_COMBAT.." "..ATTACK_POWER_TOOLTIP.."(%)"
-L["MOD_SPELL_DMG"] = "Mod "..PLAYERSTAT_SPELL_COMBAT.." "..DAMAGE.."(%)"
-L["MOD_HEALING"] = "Mod Healing".."(%)"
-L["MOD_CAST_TIME"] = "Mod Casting Time".."(%)"
-L["MOD_MANA_COST"] = "Mod Mana Cost".."(%)"
-L["MOD_RAGE_COST"] = "Mod Rage Cost".."(%)"
-L["MOD_ENERGY_COST"] = "Mod Energy Cost".."(%)"
-L["MOD_COOLDOWN"] = "Mod Cooldown".."(%)"
 -- Misc Stats
 L["WEAPON_SKILL"] = "Weapon "..SKILL
-
-------------------
--- Stat Summary --
-------------------
-L["Stat Summary"] = true

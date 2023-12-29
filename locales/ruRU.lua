@@ -80,27 +80,6 @@ L["Show detailed text for Resilience and Expertise conversions"] = "Показы
 -- /rb rating exp
 L["Expertise breakdown"] = "Разбивать уровень мастерства"
 L["Convert Expertise into Dodge Neglect and Parry Neglect"] = "Разбивать уровень мастерства на игнорирование уклонения и парирования"
-L["from"] = "от"
-L["HEALING"] = "Исцеление"
-L["AP"] = "Сила атаки"
-L["RANGED_AP"] = "Сила атаки дальнего боя"
-L["ARMOR"] = "Броня"
-L["SPELL_DMG"] = "Сила заклинаний"
-L["SPELL_CRIT"] = "Вер. крит. удара заклинаниями"
-L["STR"] = "Сила"
-L["AGI"] = "Ловкость"
-L["STA"] = "Выносливость"
-L["INT"] = "Интеллект"
-L["SPI"] = "Дух"
-L["PARRY"] = "Парирование"
-L["MANA_REG"] = "Восполнение маны"
-L["NORMAL_MANA_REG"] = "Восполнения маны (пока не применяете заклинания)"
-L["HEALTH_REG"] = "Восстановление здоровья"
-L["NORMAL_HEALTH_REG"] = "Восполнение здаровья (вне боя)"
-L["PET_STA"] = "Выносливость питомца" -- Pet Stamina
-L["PET_INT"] = "Интеллект питомца" -- Pet Intellect
-L["StatModOptionName"] = "%s %s"
-
 
 ---------------------------------------------------------------------------
 -- /rb rating color
@@ -151,7 +130,7 @@ L["Attack Power"] = "Attack Power"
 L["Changes the display of Attack Power"] = "Changes the display of Attack Power"
 ---------------------------------------------------------------------------
 -- /rb sum
-L["Stat Summary"] = "Настройки итогов"
+L["Stat Summary"] = "Итого:"
 L["Options for stat summary"] = "Итоги по статам"
 -- /rb sum show
 L["Show Stat Summary"] = "Показывать суммарные изменения"
@@ -711,52 +690,63 @@ L["EMPTY_SOCKET_RED"] =  EMPTY_SOCKET_RED        -- EMPTY_SOCKET_RED = "Red Sock
 L["EMPTY_SOCKET_YELLOW"] =  EMPTY_SOCKET_YELLOW -- EMPTY_SOCKET_YELLOW = "Yellow Socket";
 L["EMPTY_SOCKET_BLUE"] =  EMPTY_SOCKET_BLUE     -- EMPTY_SOCKET_BLUE = "Blue Socket";
 L["EMPTY_SOCKET_META"] =  EMPTY_SOCKET_META     -- EMPTY_SOCKET_META = "Meta Socket";
+
+L["HEALING"] = "Исцеление"
+L["SPELL_CRIT"] = "Вер. крит. удара заклинаниями"
+L["STR"] = "Сила"
+L["AGI"] = "Ловкость"
+L["STA"] = "Выносливость"
+L["INT"] = "Интеллект"
+L["SPI"] = "Дух"
+L["PARRY"] = "Парирование"
+L["MANA_REG"] = "Восполнение маны"
+L["NORMAL_MANA_REG"] = "Восполнения маны (пока не применяете заклинания)"
+L["HEALTH_REG"] = "Восстановление здоровья"
+L["NORMAL_HEALTH_REG"] = "Восполнение здаровья (вне боя)"
+L["PET_STA"] = "Выносливость питомца" -- Pet Stamina
+L["PET_INT"] = "Интеллект питомца" -- Pet Intellect
+L["StatModOptionName"] = "%s %s"
+
 L["IGNORE_ARMOR"] =  "Ignore Armor"
-L["THREAT_MOD"] =  "Threat(%)"
-L["STEALTH_LEVEL"] =  "Stealth Level"
 L["MELEE_DMG"] =  "Melee Weapon " .. DAMAGE -- DAMAGE = "Damage"
-L["MOUNT_SPEED"] =  "Mount Speed(%)"
-L["RUN_SPEED"] =  "Run Speed(%)"
+
 L[StatLogic.Stats.Strength] =  "Сила"
 L[StatLogic.Stats.Agility] =  "Ловкость"
 L[StatLogic.Stats.Stamina] =  "Выносливость"
 L[StatLogic.Stats.Intellect] =  "Интеллект"
 L[StatLogic.Stats.Spirit] =  "Дух"
 L["ARMOR"] =  "Броня"
+
 L["FIRE_RES"] =  "Сопротивление огню"
 L["NATURE_RES"] =  "Сопротивление силам природы"
 L["FROST_RES"] =  "Сопротивление магии льда"
 L["SHADOW_RES"] =  "Сопротивление темной магии"
 L["ARCANE_RES"] =  "Сопротивление тайной магии"
-L["FISHING"] =  "Рыбная ловля"
-L["MINING"] =  "Горное дело"
-L["HERBALISM"] =  "Травничество"
-L["SKINNING"] =  "Снятие шкур"
+
 L["BLOCK_VALUE"] =  "Показатель блокирования"
+
 L["AP"] =  "Сила атаки"
 L["RANGED_AP"] =  "Сила атаки дальнего боя"
 L["FERAL_AP"] =  "Сила атаки в облике зверя"
-L["AP_UNDEAD"] =  "Сила атаки (против нежити)"
-L["AP_DEMON"] =  "Сила атаки (против демонов)"
+
 L["HEAL"] =  "Исцеление"
+
 L["SPELL_DMG"] =  "Сила заклинаний"
-L["SPELL_DMG_UNDEAD"] = { "Сила заклинаний (против нежити)",
-	PLAYERSTAT_SPELL_COMBAT .. " Dmg" .. "(Undead)" }
-L["SPELL_DMG_DEMON"] = { "Сила заклинаний (против демонов)",
-	PLAYERSTAT_SPELL_COMBAT .. " Dmg" .. "(Demon)" }
 L["HOLY_SPELL_DMG"] =  "Сила заклинаний (светлая магия)"
 L["FIRE_SPELL_DMG"] =  "Сила заклинаний (огонь)"
 L["NATURE_SPELL_DMG"] =  "Сила заклинаний (природа)"
 L["FROST_SPELL_DMG"] =  "Сила заклинаний (лед)"
 L["SHADOW_SPELL_DMG"] =  "Сила заклинаний (темная магия)"
 L["ARCANE_SPELL_DMG"] =  "Сила заклинаний (тайная магия)"
+
 L["SPELLPEN"] =  "Проникающая способность заклинаний"
+
 L["HEALTH"] =  "Здоровье"
 L["MANA"] =  "Мана"
-L["HEALTH_REG"] =  "Восстановление здоровья раз в 5 сек."
-L["MANA_REG"] =  "Восстановление маны раз в 5 сек."
+
 L["AVERAGE_DAMAGE"] =  "Average Damage"
 L["DPS"] =  "Урон в секунду"
+
 L[StatLogic.Stats.DefenseRating] =  "Рейтинг защиты"     -- COMBAT_RATING_NAME2 = "Defense Rating"
 L[StatLogic.Stats.DodgeRating] =  "Рейтинг уклонения"    -- COMBAT_RATING_NAME3 = "Dodge Rating"
 L[StatLogic.Stats.ParryRating] =  "Рейтинг парирования"  -- COMBAT_RATING_NAME4 = "Parry Rating"
@@ -780,11 +770,7 @@ L[StatLogic.Stats.ArmorPenetrationRating] = RATING .. " пробиванию б�
 -- Int -> Mana, Spell Crit
 -- Spi -> mp5nc, hp5oc
 -- Ratings -> Effect
-L["HEALTH_REG_OUT_OF_COMBAT"] = "Восстановление здоровья раз в 5 сек. (вне боя)"
-L["MANA_REG_NOT_CASTING"] = "Восстановление маны раз в 5 сек. (вне каста)"
 L["MELEE_CRIT_DMG_REDUCTION"] = "Понижение входящего урона от крит. ударов (%)"
-L["RANGED_CRIT_DMG_REDUCTION"] = "Понижение входящего урона от крит. ударов (%)"
-L["SPELL_CRIT_DMG_REDUCTION"] = "Понижение входящего урона от крит. ударов (%)"
 L[StatLogic.Stats.Defense] = "Защита"
 L[StatLogic.Stats.Dodge] = "Уклонение (%)"
 L[StatLogic.Stats.Parry] = "Парирование (%)"
@@ -801,19 +787,6 @@ L["MELEE_CRIT_AVOID"] = "Crit Avoidance(%)"
 L["MELEE_HASTE"] = "Скорость (%)" --
 L["RANGED_HASTE"] = "Скорость (%)"
 L["SPELL_HASTE"] = "Скорость (%)"
-L["DAGGER_WEAPON"] = "Dagger "..SKILL -- SKILL = "Skill"
-L["SWORD_WEAPON"] = "Sword "..SKILL
-L["2H_SWORD_WEAPON"] = "Two-Handed Sword "..SKILL
-L["AXE_WEAPON"] = "Axe "..SKILL
-L["2H_AXE_WEAPON"] = "Two-Handed Axe "..SKILL
-L["MACE_WEAPON"] = "Mace "..SKILL
-L["2H_MACE_WEAPON"] = "Two-Handed Mace "..SKILL
-L["GUN_WEAPON"] = "Gun "..SKILL
-L["CROSSBOW_WEAPON"] = "Crossbow "..SKILL
-L["BOW_WEAPON"] = "Bow "..SKILL
-L["FERAL_WEAPON"] = "Feral "..SKILL
-L["FIST_WEAPON"] = "Unarmed "..SKILL
-L["STAFF_WEAPON"] = "Staff "..SKILL -- Leggings of the Fang ID:10410
 L["EXPERTISE"] = "Мастерство"
 L["ARMOR_PENETRATION"] = "Пробивание брони (%)"
 -- Tier3 Stats - Stats that only show up when broken down from a Tier2 stat
@@ -823,44 +796,5 @@ L["ARMOR_PENETRATION"] = "Пробивание брони (%)"
 L["DODGE_NEGLECT"] = "Снижение вер. противника уклониться (%)"
 L["PARRY_NEGLECT"] = "Снижение вер. противника парировать (%)"
 L["BLOCK_NEGLECT"] = "Снижение вер. противника блокировать (%)"
--- Talents
-L["MELEE_CRIT_DMG"] = "Crit Damage(%)"
-L["RANGED_CRIT_DMG"] = PLAYERSTAT_RANGED_COMBAT.." Crit Damage(%)"
-L["SPELL_CRIT_DMG"] = PLAYERSTAT_SPELL_COMBAT.." Crit Damage(%)"
--- Spell Stats
--- These values can be prefixed with a @ and spell name, using reverse translation to english from Babble-Spell-2.2
--- Ex: "Heroic Strike@RAGE_COST" for Heroic Strike rage cost
--- Ex: "Heroic Strike@THREAT" for Heroic Strike threat value
--- Use strsplit("@", text) to seperate the spell name and statid
-L["THREAT"] = "Threat"
-L["CAST_TIME"] = "Casting Time"
-L["MANA_COST"] = "Mana Cost"
-L["RAGE_COST"] = "Rage Cost"
-L["ENERGY_COST"] = "Energy Cost"
-L["COOLDOWN"] = "Cooldown"
--- Stats Mods
-L["MOD_STR"] = "Mod "..SPELL_STAT1_NAME.."(%)"
-L["MOD_AGI"] = "Mod "..SPELL_STAT2_NAME.."(%)"
-L["MOD_STA"] = "Mod "..SPELL_STAT3_NAME.."(%)"
-L["MOD_INT"] = "Mod "..SPELL_STAT4_NAME.."(%)"
-L["MOD_SPI"] = "Mod "..SPELL_STAT5_NAME.."(%)"
-L["MOD_HEALTH"] = "Mod "..HEALTH.."(%)"
-L["MOD_MANA"] = "Mod "..MANA.."(%)"
-L["MOD_ARMOR"] = "Mod "..ARMOR.."from Items".."(%)"
-L["MOD_BLOCK_VALUE"] = "Mod Block Value".."(%)"
-L["MOD_AP"] = "Mod "..ATTACK_POWER_TOOLTIP.."(%)"
-L["MOD_RANGED_AP"] = "Mod "..PLAYERSTAT_RANGED_COMBAT.." "..ATTACK_POWER_TOOLTIP.."(%)"
-L["MOD_SPELL_DMG"] = "Mod "..PLAYERSTAT_SPELL_COMBAT.." "..DAMAGE.."(%)"
-L["MOD_HEALING"] = "Mod Healing".."(%)"
-L["MOD_CAST_TIME"] = "Mod Casting Time".."(%)"
-L["MOD_MANA_COST"] = "Mod Mana Cost".."(%)"
-L["MOD_RAGE_COST"] = "Mod Rage Cost".."(%)"
-L["MOD_ENERGY_COST"] = "Mod Energy Cost".."(%)"
-L["MOD_COOLDOWN"] = "Mod Cooldown".."(%)"
 -- Misc Stats
 L["WEAPON_SKILL"] = "Weapon "..SKILL
-
-------------------
--- Stat Summary --
-------------------
-L["Stat Summary"] = "Итого:"

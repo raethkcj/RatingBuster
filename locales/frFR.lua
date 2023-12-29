@@ -66,26 +66,6 @@ L["Convert Weapon Skill into Crit, Hit, Dodge Neglect, Parry Neglect and Block N
 -- /rb rating exp -- 2.3.0
 L["Expertise breakdown"] = "Expertise détaillée"
 L["Convert Expertise into Dodge Neglect and Parry Neglect"] = "Convertis le score d'expertise en pourcentage de diminution d'esquive et diminution de parade."
-L["from"] = "par"
-L["HEALING"] = STAT_SPELLHEALING
-L["AP"] = ATTACK_POWER_TOOLTIP
-L["RANGED_AP"] = RANGED_ATTACK_POWER
-L["ARMOR"] = ARMOR
-L["SPELL_DMG"] = STAT_SPELLDAMAGE
-L["SPELL_CRIT"] = PLAYERSTAT_SPELL_COMBAT .. " " .. SPELL_CRIT_CHANCE
-L["STR"] = SPELL_STAT1_NAME
-L["AGI"] = SPELL_STAT2_NAME
-L["STA"] = SPELL_STAT3_NAME
-L["INT"] = SPELL_STAT4_NAME
-L["SPI"] = SPELL_STAT5_NAME
-L["PARRY"] = PARRY
-L["MANA_REG"] = "Régén. mana (incantation)"
-L["NORMAL_MANA_REG"] = "Régén. mana (hors incantation)"
-L["HEALTH_REG"] = "Régén. vie (combat)"
-L["NORMAL_HEALTH_REG"] = "Régén. vie (hors combat)"
-L["PET_STA"] = PET .. SPELL_STAT3_NAME -- Pet Stamina
-L["PET_INT"] = PET .. SPELL_STAT4_NAME -- Pet Intellect
-L["StatModOptionName"] = "%s %s"
 
 -- /rb stat
 L["Stat Breakdown"] = "Détail des caractéristiques"
@@ -130,7 +110,7 @@ L["Attack Power"] = "Puissance d'attaque"
 L["Changes the display of Attack Power"] = "Sélectionne les différents bonus liés à la Puissance d'attaque."
 ---------------------------------------------------------------------------
 -- /rb sum
-L["Stat Summary"] = "Résumé des Stats"
+L["Stat Summary"] = "Résumé Stats"
 L["Options for stat summary"] = "Un résumé des différents bonus apportés par les statistiques peut être inclu dans les info-bulles des objets."
 -- /rb sum show
 L["Show stat summary"] = "Afficher le résumé"
@@ -577,12 +557,24 @@ L["EMPTY_SOCKET_YELLOW"] = "Châsse jaune"
 L["EMPTY_SOCKET_BLUE"] = "Châsse bleue"
 L["EMPTY_SOCKET_META"] = "Méta-châsse"
 
+L["HEALING"] = STAT_SPELLHEALING
+L["SPELL_CRIT"] = PLAYERSTAT_SPELL_COMBAT .. " " .. SPELL_CRIT_CHANCE
+L["STR"] = SPELL_STAT1_NAME
+L["AGI"] = SPELL_STAT2_NAME
+L["STA"] = SPELL_STAT3_NAME
+L["INT"] = SPELL_STAT4_NAME
+L["SPI"] = SPELL_STAT5_NAME
+L["PARRY"] = PARRY
+L["MANA_REG"] = "Régén. mana (incantation)"
+L["NORMAL_MANA_REG"] = "Régén. mana (hors incantation)"
+L["HEALTH_REG"] = "Régén. vie (combat)"
+L["NORMAL_HEALTH_REG"] = "Régén. vie (hors combat)"
+L["PET_STA"] = PET .. SPELL_STAT3_NAME -- Pet Stamina
+L["PET_INT"] = PET .. SPELL_STAT4_NAME -- Pet Intellect
+L["StatModOptionName"] = "%s %s"
+
 L["IGNORE_ARMOR"] = "Armure ignorée"
-L["THREAT_MOD"] = "Menace (%)"
-L["STEALTH_LEVEL"] = "Niveau de camouflage"
 L["MELEE_DMG"] = "Dégâts de l'arme"
-L["MOUNT_SPEED"] = "Vitesse de monte (%)"
-L["RUN_SPEED"] = "Vitesse (%)"
 
 L[StatLogic.Stats.Strength] = "Force"
 L[StatLogic.Stats.Agility] = "Agilité"
@@ -597,24 +589,15 @@ L["FROST_RES"] = "Résistance au Givre"
 L["SHADOW_RES"] = "Résistance à l'Ombre"
 L["ARCANE_RES"] = "Résistance aux Arcanes"
 
-L["FISHING"] = "Pêche"
-L["MINING"] = "Minage"
-L["HERBALISM"] = "Herboristerie"
-L["SKINNING"] = "Dépeçage"
-
 L["BLOCK_VALUE"] = "Valeur de blocage"
 
 L["AP"] = "Puissance d'attaque"
 L["RANGED_AP"] = "Puissance d'attaque à distance"
 L["FERAL_AP"] = "Puissance d'attaque Farouche"
-L["AP_UNDEAD"] = "Puissance d'attaque (Mort-vivant)"
-L["AP_DEMON"] = "Puissance d'attaque (Démon)"
 
 L["HEAL"] = "Puissance des soins"
 
 L["SPELL_DMG"] = "Dégâts des sorts"
-L["SPELL_DMG_UNDEAD"] = "Dégâts des sorts (Mort-vivant)"
-L["SPELL_DMG_DEMON"] = "Dégâts des sorts (Démon)"
 L["HOLY_SPELL_DMG"] = "Dégâts des sorts du Sacré"
 L["FIRE_SPELL_DMG"] = "Dégâts des sorts de Feu"
 L["NATURE_SPELL_DMG"] = "Dégâts des sorts de Nature"
@@ -626,8 +609,6 @@ L["SPELLPEN"] = "Pénétration des sorts"
 
 L["HEALTH"] = "Points de vie"
 L["MANA"] = "Points de mana"
-L["HEALTH_REG"] = "Régén. vie (combat)"
-L["MANA_REG"] = "Régén. mana (incantation)"
 
 L["AVERAGE_DAMAGE"] = "Average Damage"
 L["DPS"] = "Dégâts par seconde"
@@ -655,11 +636,7 @@ L[StatLogic.Stats.ArmorPenetrationRating] = "Pénétration d'armure".." "..RATIN
 -- Int -> Mana, Spell Crit
 -- Spi -> mp5nc, hp5oc
 -- Ratings -> Effect
-L["HEALTH_REG_OUT_OF_COMBAT"] = "Régén. vie (hors combat)"
-L["MANA_REG_NOT_CASTING"] = "Régén. mana (hors incantation)"
 L["MELEE_CRIT_DMG_REDUCTION"] = "Diminution des dégâts des coups critiques en mêlée (%)"
-L["RANGED_CRIT_DMG_REDUCTION"] = "Diminution des dégâts des coups critiques à distance (%)"
-L["SPELL_CRIT_DMG_REDUCTION"] = "Diminution des dégâts des coups critiques des sorts (%)"
 L[StatLogic.Stats.Defense] = "Défense"
 L[StatLogic.Stats.Dodge] = "Esquive (%)"
 L[StatLogic.Stats.Parry] = "Parade (%)"
@@ -676,19 +653,6 @@ L["MELEE_CRIT_AVOID"] = "Évitement des critiques en mêlée"
 L["MELEE_HASTE"] = "Hâte (%)" --
 L["RANGED_HASTE"] = "Hâte à distance (%)"
 L["SPELL_HASTE"] = "Hâte des sorts (%)"
-L["DAGGER_WEAPON"] = "Compétence en Dagues"
-L["SWORD_WEAPON"] = "Compétence en Epées à une main"
-L["2H_SWORD_WEAPON"] = "Compétence en Epées à deux mains"
-L["AXE_WEAPON"] = "Compétence en Haches à une main"
-L["2H_AXE_WEAPON"] = "Compétence en Haches à deux mains"
-L["MACE_WEAPON"] = "Compétence en Masses à une main"
-L["2H_MACE_WEAPON"] = "Compétence en Masses à deux mains"
-L["GUN_WEAPON"] = "Compétence en Armes à feu"
-L["CROSSBOW_WEAPON"] = "Compétence en Arbalètes"
-L["BOW_WEAPON"] = "Compétence en Arcs"
-L["FERAL_WEAPON"] = "Compétence en Combat farouche"
-L["FIST_WEAPON"] = "Compétence en Armes de pugilat"
-L["STAFF_WEAPON"] = "Compétence en Bâtons" -- [Jambières du Croc] ID:10410
 L["EXPERTISE"] = "Expertise"
 L["ARMOR_PENETRATION"] = "Pénétration d'armure(%)"
 -- Tier3 Stats - Stats that only show up when broken down from a Tier2 stat
@@ -698,44 +662,5 @@ L["ARMOR_PENETRATION"] = "Pénétration d'armure(%)"
 L["DODGE_NEGLECT"] = "Diminution d'Esquive (%)"
 L["PARRY_NEGLECT"] = "Diminution de Parade (%)"
 L["BLOCK_NEGLECT"] = "Diminution de Blocage (%)"
--- Talents
-L["MELEE_CRIT_DMG"] = "Dégâts des critiques en mêlée(%)"
-L["RANGED_CRIT_DMG"] = "Dégâts des critiques à distance(%)"
-L["SPELL_CRIT_DMG"] = "Dégâts des critiques des sorts(%)"
--- Spell Stats
--- These values can be prefixed with a @ and spell name, using reverse translation to english from Babble-Spell-2.2
--- Ex: "Heroic Strike@RAGE_COST" for Heroic Strike rage cost
--- Ex: "Heroic Strike@THREAT" for Heroic Strike threat value
--- Use strsplit("@", text) to seperate the spell name and statid
-L["THREAT"] = "Menace"
-L["CAST_TIME"] = "Temps d'incantation"
-L["MANA_COST"] = "Coût en mana"
-L["RAGE_COST"] = "Coût en rage"
-L["ENERGY_COST"] = "Coût en énergie"
-L["COOLDOWN"] = "Temps de recharge"
--- Stats Mods
-L["MOD_STR"] = "Mod Force (%)"
-L["MOD_AGI"] = "Mod Agilité (%)"
-L["MOD_STA"] = "Mod Endurance (%)"
-L["MOD_INT"] = "Mod Intelligence (%)"
-L["MOD_SPI"] = "Mod Esprit (%)"
-L["MOD_HEALTH"] = "Mod Points de vie (%)"
-L["MOD_MANA"] = "Mod Points de mana (%)"
-L["MOD_ARMOR"] = "Mod Armure des objets (%)"
-L["MOD_BLOCK_VALUE"] = "Mod Valeur de blocage (%)"
-L["MOD_AP"] = "Mod Puissance d'attaque (%)"
-L["MOD_RANGED_AP"] = "Mod Puissance d'attaque à distance (%)"
-L["MOD_SPELL_DMG"] = "Mod Dégâts des sorts (%)"
-L["MOD_HEALING"] = "Mod Soins (%)"
-L["MOD_CAST_TIME"] = "Mod Temps d'incantation (%)"
-L["MOD_MANA_COST"] = "Mod Coût en mana (%)"
-L["MOD_RAGE_COST"] = "Mod Coût en rage (%)"
-L["MOD_ENERGY_COST"] = "Mod Coût en énergie (%)"
-L["MOD_COOLDOWN"] = "Mod Temps de recharge (%)"
 -- Misc Stats
 L["WEAPON_SKILL"] = "Compétence d'arme"
-
-------------------
--- Stat Summary --
-------------------
-L["Stat Summary"] = "Résumé Stats"
