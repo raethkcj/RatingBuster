@@ -1558,7 +1558,9 @@ do
 		local found = false
 		if idTable == false then
 			found = true
-			log("|cffadadad  ".. scanner .. " Exclude: "..text)
+			if text ~= "" then
+				log("|cffadadad  ".. scanner .. " Exclude: "..text)
+			end
 		elseif idTable then
 			found = true
 			local debugText = "|cffff5959  ".. scanner .. ": |cffffc259"..text
@@ -1644,251 +1646,261 @@ do
 				-----------------------
 				-- Mainly used for enchants or stuff without numbers:
 				-- "Mithril Spurs"
-				local found
 				local idTable = L.WholeTextLookup[text]
-				found = ParseIDTable(idTable, text, false, "WholeText")
+				local found = ParseIDTable(idTable, text, false, "WholeText")
 
+				------------------
 				-- Fast Exclude --
+				------------------
 				-- Exclude obvious strings that do not need to be checked, also exclude lines that are not white and green and normal (normal for Frozen Wrath bonus)
-				if not (found or L.Exclude[text] or L.Exclude[strutf8sub(text, 1, L.ExcludeLen)] or text:sub(1, 1) == '"' or g < 0.8 or (b < 0.99 and b > 0.1)) then
-					----------------------------
-					-- Single Plus Stat Check --
-					----------------------------
-					-- depending on locale, L.SinglePlusStatCheck may be
-					-- +19 Stamina = "^%+(%d+) ([%a ]+%a)$"
-					-- Stamina +19 = "^([%a ]+%a) %+(%d+)$"
-					-- +19 耐力 = "^%+(%d+) (.-)$"
-					if not found then
-						local _, _, value, statText = strutf8lower(text):find(L.SinglePlusStatCheck)
-						if value then
-							if tonumber(statText) then
-								value, statText = statText, value
-							end
-							idTable = L.StatIDLookup[statText]
-							found = ParseIDTable(idTable, text, value, "SinglePlus")
-						end
+				if not found then
+					if L.Exclude[text]
+					  or L.Exclude[strutf8sub(text, 1, L.ExcludeLen)]
+					  or text:sub(1, 1) == '"'
+					  or g < 0.8
+					  or (b < 0.99 and b > 0.1)
+					then
+						found = ParseIDTable(false, text, nil, "Fast")
 					end
-					-----------------------------
-					-- Single Equip Stat Check --
-					-----------------------------
-					-- depending on locale, L.SingleEquipStatCheck may be
-					-- "^Equip: (.-) by u?p? ?t?o? ?(%d+) ?(.-)%.$"
-					if not found then
-						local _, _, statText1, value, statText2 = text:find(L.SingleEquipStatCheck)
-						if value then
-							local statText = statText1..statText2
-							idTable = L.StatIDLookup[strutf8lower(statText)]
-							found = ParseIDTable(idTable, text, value, "SingleEquip")
-						end
-					end
-					-- PreScan for special cases, that will fit wrongly into DeepScan
-					-- PreScan also has exclude patterns
-					if not found then
-						for pattern, id in pairs(L.PreScanPatterns) do
-							local value
-							found, _, value = text:find(pattern)
-							if found then
-								ParseIDTable(id and {id}, text, value, "PreScan")
-								break
-							end
-						end
-					end
+				end
 
-					--------------
-					-- DeepScan --
-					--------------
-					--[[
+				----------------------------
+				-- Single Plus Stat Check --
+				----------------------------
+				-- depending on locale, L.SinglePlusStatCheck may be
+				-- +19 Stamina = "^%+(%d+) ([%a ]+%a)$"
+				-- Stamina +19 = "^([%a ]+%a) %+(%d+)$"
+				-- +19 耐力 = "^%+(%d+) (.-)$"
+				if not found then
+					local _, _, value, statText = strutf8lower(text):find(L.SinglePlusStatCheck)
+					if value then
+						if tonumber(statText) then
+							value, statText = statText, value
+						end
+						idTable = L.StatIDLookup[statText]
+						found = ParseIDTable(idTable, text, value, "SinglePlus")
+					end
+				end
+
+				-----------------------------
+				-- Single Equip Stat Check --
+				-----------------------------
+				-- depending on locale, L.SingleEquipStatCheck may be
+				-- "^Equip: (.-) by u?p? ?t?o? ?(%d+) ?(.-)%.$"
+				if not found then
+					local _, _, statText1, value, statText2 = text:find(L.SingleEquipStatCheck)
+					if value then
+						local statText = statText1..statText2
+						idTable = L.StatIDLookup[strutf8lower(statText)]
+						found = ParseIDTable(idTable, text, value, "SingleEquip")
+					end
+				end
+
+				-- PreScan for special cases, that will fit wrongly into DeepScan
+				-- PreScan also has exclude patterns
+				if not found then
+					for pattern, id in pairs(L.PreScanPatterns) do
+						local value
+						found, _, value = text:find(pattern)
+						if found then
+							ParseIDTable(id and {id}, text, value, "PreScan")
+							break
+						end
+					end
+				end
+
+				--------------
+				-- DeepScan --
+				--------------
+				--[[
+				-- Strip trailing "."
+				["."] = ".",
+				["DeepScanSeparators"] = {
+					"/", -- "+10 Defense Rating/+10 Stamina/+15 Block Value": ZG Enchant
+					" & ", -- "+26 Healing Spells & 2% Reduced Threat": Bracing Earthstorm Diamond ID:25897
+					", ", -- "+6 Spell Damage, +5 Spell Crit Rating": Potent Ornate Topaz ID: 28123
+					"%. ", -- "Equip: Increases attack power by 81 when fighting Undead. It also allows the acquisition of Scourgestones on behalf of the Argent Dawn.": Seal of the Dawn
+				},
+				["DeepScanWordSeparators"] = {
+					" and ", -- "Critical Rating +6 and Dodge Rating +5": Assassin's Fire Opal ID:30565
+				},
+				["DeepScanPatterns"] = {
+					"^(.-) by u?p? ?t?o? ?(%d+) ?(.-)$", -- "xxx by up to 22 xxx" (scan first)
+					"^(.-) ?%+(%d+) ?(.-)$", -- "xxx xxx +22" or "+22 xxx xxx" or "xxx +22 xxx" (scan 2ed)
+					"^(.-) ?([%d%.]+) ?(.-)$", -- 22.22 xxx xxx (scan last)
+				},
+				--]]
+				if not found then
+					-- Strip leading "Equip: ", "Socket Bonus: "
+					local sanitizedText = text:gsub(ITEM_SPELL_TRIGGER_ONEQUIP, "") -- ITEM_SPELL_TRIGGER_ONEQUIP = "Equip:";
+					sanitizedText = sanitizedText:gsub(StripGlobalStrings(ITEM_SOCKET_BONUS), "") -- ITEM_SOCKET_BONUS = "Socket Bonus: %s"; -- Tooltip tag for socketed item matched socket bonuses
+					-- Trim spaces
+					sanitizedText = sanitizedText:trim()
 					-- Strip trailing "."
-					["."] = ".",
-					["DeepScanSeparators"] = {
-						"/", -- "+10 Defense Rating/+10 Stamina/+15 Block Value": ZG Enchant
-						" & ", -- "+26 Healing Spells & 2% Reduced Threat": Bracing Earthstorm Diamond ID:25897
-						", ", -- "+6 Spell Damage, +5 Spell Crit Rating": Potent Ornate Topaz ID: 28123
-						"%. ", -- "Equip: Increases attack power by 81 when fighting Undead. It also allows the acquisition of Scourgestones on behalf of the Argent Dawn.": Seal of the Dawn
-					},
-					["DeepScanWordSeparators"] = {
-						" and ", -- "Critical Rating +6 and Dodge Rating +5": Assassin's Fire Opal ID:30565
-					},
-					["DeepScanPatterns"] = {
-						"^(.-) by u?p? ?t?o? ?(%d+) ?(.-)$", -- "xxx by up to 22 xxx" (scan first)
-						"^(.-) ?%+(%d+) ?(.-)$", -- "xxx xxx +22" or "+22 xxx xxx" or "xxx +22 xxx" (scan 2ed)
-						"^(.-) ?([%d%.]+) ?(.-)$", -- 22.22 xxx xxx (scan last)
-					},
-					--]]
-					if not found then
-						-- Strip leading "Equip: ", "Socket Bonus: "
-						local sanitizedText = text:gsub(ITEM_SPELL_TRIGGER_ONEQUIP, "") -- ITEM_SPELL_TRIGGER_ONEQUIP = "Equip:";
-						sanitizedText = sanitizedText:gsub(StripGlobalStrings(ITEM_SOCKET_BONUS), "") -- ITEM_SOCKET_BONUS = "Socket Bonus: %s"; -- Tooltip tag for socketed item matched socket bonuses
+					if strutf8sub(sanitizedText, -1) == L["."] then
+						sanitizedText = strutf8sub(sanitizedText, 1, -2)
+					end
+					-- Split the string into phrases between puncuation
+					-- Replace separators with @
+					for _, sep in ipairs(L.DeepScanSeparators) do
+						local repl = "@"
+						if type(sep) == "table" then
+							repl = sep.repl
+							sep = sep.pattern
+						end
+						if sanitizedText:find(sep) then
+							log(repl)
+							sanitizedText = sanitizedText:gsub(sep, repl)
+						end
+					end
+					-- Split text using @
+					local phrases = {strsplit("@", sanitizedText)}
+					for j, phrase in ipairs(phrases) do
 						-- Trim spaces
-						sanitizedText = sanitizedText:trim()
+						phrase = phrase:trim()
 						-- Strip trailing "."
-						if strutf8sub(sanitizedText, -1) == L["."] then
-							sanitizedText = strutf8sub(sanitizedText, 1, -2)
+						if strutf8sub(phrase, -1) == L["."] then
+							phrase = strutf8sub(phrase, 1, -2)
 						end
-						-- Split the string into phrases between puncuation
-						-- Replace separators with @
-						for _, sep in ipairs(L.DeepScanSeparators) do
-							local repl = "@"
-							if type(sep) == "table" then
-								repl = sep.repl
-								sep = sep.pattern
-							end
-							if sanitizedText:find(sep) then
-								log(repl)
-								sanitizedText = sanitizedText:gsub(sep, repl)
-							end
-						end
-						-- Split text using @
-						local phrases = {strsplit("@", sanitizedText)}
-						for j, phrase in ipairs(phrases) do
-							-- Trim spaces
-							phrase = phrase:trim()
-							-- Strip trailing "."
-							if strutf8sub(phrase, -1) == L["."] then
-								phrase = strutf8sub(phrase, 1, -2)
-							end
-							log("|cff008080".."S"..j..": ".."'"..phrase.."'")
-							-- Whole Text Lookup
-							local foundWholeText = false
-							idTable = L.WholeTextLookup[phrase]
-							found = ParseIDTable(idTable, phrase, false, "DeepScan WholeText")
-							foundWholeText = found
+						log("|cff008080".."S"..j..": ".."'"..phrase.."'")
+						-- Whole Text Lookup
+						local foundWholeText = false
+						idTable = L.WholeTextLookup[phrase]
+						found = ParseIDTable(idTable, phrase, false, "DeepScan WholeText")
+						foundWholeText = found
 
-							-- Scan DualStatPatterns
-							if not foundWholeText then
-								for pattern, dualStat in pairs(L.DualStatPatterns) do
-									local lowered = strutf8lower(phrase)
-									local _, dEnd, value1, value2 = lowered:find(pattern)
-									value1 = value1 and tonumber(value1)
-									value2 = value2 and tonumber(value2)
-									if value1 and value2 then
-										foundWholeText = true
-										found = true
-										local debugText = "|cffff5959".."  DeepScan DualStat: ".."|cffffc259"..phrase
-										for _, id in ipairs(dualStat[1]) do
-											--log("  '"..value.."', '"..id.."'")
-											-- sum stat
-											statTable[id] = (statTable[id] or 0) + tonumber(value1)
-											debugText = debugText..", ".."|cffffff59"..tostring(id).."="..tostring(value1)
-										end
-										for _, id in ipairs(dualStat[2]) do
-											--log("  '"..value.."', '"..id.."'")
-											-- sum stat
-											statTable[id] = (statTable[id] or 0) + tonumber(value2)
-											debugText = debugText..", ".."|cffffff59"..tostring(id).."="..tostring(value2)
-										end
-										log(debugText)
-										if dEnd ~= #lowered then
-											foundWholeText = false
-											phrase = phrase:sub(dEnd + 1)
-										end
+						-- Scan DualStatPatterns
+						if not foundWholeText then
+							for pattern, dualStat in pairs(L.DualStatPatterns) do
+								local lowered = strutf8lower(phrase)
+								local _, dEnd, value1, value2 = lowered:find(pattern)
+								value1 = value1 and tonumber(value1)
+								value2 = value2 and tonumber(value2)
+								if value1 and value2 then
+									foundWholeText = true
+									found = true
+									local debugText = "|cffff5959".."  DeepScan DualStat: ".."|cffffc259"..phrase
+									for _, id in ipairs(dualStat[1]) do
+										--log("  '"..value.."', '"..id.."'")
+										-- sum stat
+										statTable[id] = (statTable[id] or 0) + tonumber(value1)
+										debugText = debugText..", ".."|cffffff59"..tostring(id).."="..tostring(value1)
+									end
+									for _, id in ipairs(dualStat[2]) do
+										--log("  '"..value.."', '"..id.."'")
+										-- sum stat
+										statTable[id] = (statTable[id] or 0) + tonumber(value2)
+										debugText = debugText..", ".."|cffffff59"..tostring(id).."="..tostring(value2)
+									end
+									log(debugText)
+									if dEnd ~= #lowered then
+										foundWholeText = false
+										phrase = phrase:sub(dEnd + 1)
+									end
+									break
+								end
+							end
+						end
+						local foundDeepScan1 = false
+						if not foundWholeText then
+							local lowered = strutf8lower(phrase)
+							-- Pattern scan
+							for _, pattern in ipairs(L.DeepScanPatterns) do -- try all patterns in order
+								local _, _, statText1, value, statText2 = lowered:find(pattern)
+								if value then
+									local statText = statText1..statText2
+									idTable = L.StatIDLookup[statText]
+									found = ParseIDTable(idTable, phrase, value, "DeepScan")
+									foundDeepScan1 = found
+									if found then
 										break
 									end
 								end
 							end
-							local foundDeepScan1 = false
-							if not foundWholeText then
-								local lowered = strutf8lower(phrase)
-								-- Pattern scan
-								for _, pattern in ipairs(L.DeepScanPatterns) do -- try all patterns in order
-									local _, _, statText1, value, statText2 = lowered:find(pattern)
-									if value then
-										local statText = statText1..statText2
-										idTable = L.StatIDLookup[statText]
-										found = ParseIDTable(idTable, phrase, value, "DeepScan")
-										foundDeepScan1 = found
-										if found then
+						end
+						-- If still not found, use the word separators to split the phrase
+						if not foundWholeText and not foundDeepScan1 then
+							-- Replace separators with @
+							for _, sep in ipairs(L.DeepScanWordSeparators) do
+								if phrase:find(sep) then
+									phrase = phrase:gsub(sep, "@")
+								end
+							end
+							-- Split phrase using @
+							local words = {strsplit("@", phrase)}
+							for k, word in ipairs(words) do
+								-- Trim spaces
+								word = word:trim()
+								-- Strip trailing "."
+								if strutf8sub(word, -1) == L["."] then
+									word = strutf8sub(word, 1, -2)
+								end
+								log("|cff008080".."S"..k.."-"..k..": ".."'"..word.."'")
+								-- Whole Text Lookup
+								foundWholeText = false
+								idTable = L.WholeTextLookup[word]
+								found = ParseIDTable(idTable, word, false, "DeepScan2 WholeText")
+								foundWholeText = found
+
+								-- Scan DualStatPatterns
+								if not foundWholeText then
+									for pattern, dualStat in pairs(L.DualStatPatterns) do
+										local lowered = strutf8lower(word)
+										local _, _, value1, value2 = lowered:find(pattern)
+										if value1 and value2 then
+											foundWholeText = true
+											found = true
+											local debugText = "|cffff5959".."  DeepScan2 DualStat: ".."|cffffc259"..word
+											for _, id in ipairs(dualStat[1]) do
+												--log("  '"..value.."', '"..id.."'")
+												-- sum stat
+												statTable[id] = (statTable[id] or 0) + tonumber(value1)
+												debugText = debugText..", ".."|cffffff59"..tostring(id).."="..tostring(value1)
+											end
+											for _, id in ipairs(dualStat[2]) do
+												--log("  '"..value.."', '"..id.."'")
+												-- sum stat
+												statTable[id] = (statTable[id] or 0) + tonumber(value2)
+												debugText = debugText..", ".."|cffffff59"..tostring(id).."="..tostring(value2)
+											end
+											log(debugText)
 											break
 										end
 									end
 								end
-							end
-							-- If still not found, use the word separators to split the phrase
-							if not foundWholeText and not foundDeepScan1 then
-								-- Replace separators with @
-								for _, sep in ipairs(L.DeepScanWordSeparators) do
-									if phrase:find(sep) then
-										phrase = phrase:gsub(sep, "@")
-									end
-								end
-								-- Split phrase using @
-								local words = {strsplit("@", phrase)}
-								for k, word in ipairs(words) do
-									-- Trim spaces
-									word = word:trim()
-									-- Strip trailing "."
-									if strutf8sub(word, -1) == L["."] then
-										word = strutf8sub(word, 1, -2)
-									end
-									log("|cff008080".."S"..k.."-"..k..": ".."'"..word.."'")
-									-- Whole Text Lookup
-									foundWholeText = false
-									idTable = L.WholeTextLookup[word]
-									found = ParseIDTable(idTable, word, false, "DeepScan2 WholeText")
-									foundWholeText = found
-
-									-- Scan DualStatPatterns
-									if not foundWholeText then
-										for pattern, dualStat in pairs(L.DualStatPatterns) do
-											local lowered = strutf8lower(word)
-											local _, _, value1, value2 = lowered:find(pattern)
-											if value1 and value2 then
-												foundWholeText = true
-												found = true
-												local debugText = "|cffff5959".."  DeepScan2 DualStat: ".."|cffffc259"..word
-												for _, id in ipairs(dualStat[1]) do
-													--log("  '"..value.."', '"..id.."'")
-													-- sum stat
-													statTable[id] = (statTable[id] or 0) + tonumber(value1)
-													debugText = debugText..", ".."|cffffff59"..tostring(id).."="..tostring(value1)
-												end
-												for _, id in ipairs(dualStat[2]) do
-													--log("  '"..value.."', '"..id.."'")
-													-- sum stat
-													statTable[id] = (statTable[id] or 0) + tonumber(value2)
-													debugText = debugText..", ".."|cffffff59"..tostring(id).."="..tostring(value2)
-												end
-												log(debugText)
+								local foundDeepScan2 = false
+								if not foundWholeText then
+									local lowered = strutf8lower(word)
+									-- Pattern scan
+									for _, pattern in ipairs(L.DeepScanPatterns) do
+										local _, _, statText1, value, statText2 = lowered:find(pattern)
+										if value then
+											local statText = statText1..statText2
+											idTable = L.StatIDLookup[statText]
+											found = ParseIDTable(idTable, word, value, "DeepScan2")
+											foundDeepScan2 = found
+											if found then
 												break
+											else
+												-- pattern match but not found in L.StatIDLookup, keep looking
+												log("  DeepScan2 Lookup Fail: |cffffd4d4'"..statText.."'|r, pattern = |cff72ff59'"..pattern.."'")
 											end
 										end
-									end
-									local foundDeepScan2 = false
-									if not foundWholeText then
-										local lowered = strutf8lower(word)
-										-- Pattern scan
-										for _, pattern in ipairs(L.DeepScanPatterns) do
-											local _, _, statText1, value, statText2 = lowered:find(pattern)
-											if value then
-												local statText = statText1..statText2
-												idTable = L.StatIDLookup[statText]
-												found = ParseIDTable(idTable, word, value, "DeepScan2")
-												foundDeepScan2 = found
-												if found then
-													break
-												else
-													-- pattern match but not found in L.StatIDLookup, keep looking
-													log("  DeepScan2 Lookup Fail: |cffffd4d4'"..statText.."'|r, pattern = |cff72ff59'"..pattern.."'")
-												end
-											end
-										end -- for
-									end
-									if not foundWholeText and not foundDeepScan2 then
-										log("  DeepScan2 Fail: |cffff0000'"..word.."'")
-									end
+									end -- for
 								end
-							end -- if not foundWholeText and not foundDeepScan1 then
-						end
+								if not foundWholeText and not foundDeepScan2 then
+									log("  DeepScan2 Fail: |cffff0000'"..word.."'")
+								end
+							end
+						end -- if not foundWholeText and not foundDeepScan1 then
 					end
+				end
 
-					if not found then
-						log("  No Match: |cffff0000'"..text.."'")
-						if DEBUG and RatingBuster then
-							RatingBuster.db.profile.test = text
-						end
+				if not found then
+					log("  No Match: |cffff0000'"..text.."'")
+					if DEBUG and RatingBuster then
+						RatingBuster.db.profile.test = text
 					end
-				else
-					--log("Excluded: "..text)
 				end
 			end
 		end
