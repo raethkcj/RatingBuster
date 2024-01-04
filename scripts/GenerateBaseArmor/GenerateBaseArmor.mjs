@@ -5,25 +5,11 @@ import * as https from 'node:https'
 import { parse } from 'csv-parse'
 import * as fs from 'node:fs'
 
-let product = argv[2]
-if(!product) {
-	product = "wow_classic_ptr"
-	console.log(`Product not specified, using ${product}`)
+let branch = argv[2]
+if(!branch) {
+	branch = "wow_classic_ptr"
+	console.log(`Branch not specified, using ${branch}`)
 }
-
-let rawVersionData = await new Promise((resolve) => {
-	https.get("https://wago.tools/api/builds", (res) => {
-		let data = ''
-		res.on('data', (chunk) => data += chunk)
-
-		res.on('end', () => {
-			resolve(data)
-		})
-	})
-})
-const versionData = JSON.parse(rawVersionData)
-const version = versionData[product][0].version
-console.log(`Latest ${product} version: ${version}`)
 
 // InventoryTypes that can contain a mix of Armor and Bonus Armor
 // https://warcraft.wiki.gg/wiki/Enum.InventoryType
@@ -75,7 +61,7 @@ await new Promise((resolve) => {
 	})
 
 	const filter = Object.keys(InventoryTypeSlots).join("|")
-	const url = `https://wago.tools/db2/ItemSparse/csv?version=${version}&filter[InventoryType]=${filter}&sort[QualityModifier]=desc`
+	const url = `https://wago.tools/db2/ItemSparse/csv?branch=${branch}&filter[InventoryType]=${filter}&sort[QualityModifier]=desc`
 	https.get(url, (res) => {
 		res.pipe(csvStream)
 	})
@@ -112,7 +98,7 @@ await new Promise((resolve) => {
 	})
 
 	const filter = Object.keys(items).join("|")
-	const url = `https://wago.tools/db2/Item/csv?version=${version}&filter[ID]=${filter}`
+	const url = `https://wago.tools/db2/Item/csv?branch=${branch}&filter[ID]=${filter}`
 	https.get(url, (res) => {
 		res.pipe(csvStream)
 	})
@@ -145,6 +131,6 @@ const generateLua = function(obj, level) {
 generateLua(baseArmor)
 data = data + "}\n"
 
-const filename = `Bonus_Armor_${version}.lua`
+const filename = `Bonus_Armor_${branch}.lua`
 fs.writeFileSync(filename, data)
 console.log(`Wrote ${filename}`)
