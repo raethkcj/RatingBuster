@@ -42,7 +42,7 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 --]]
 
 -- ABNF from RFC 3629
--- 
+--
 -- UTF8-octets = *( UTF8-char )
 -- UTF8-char   = UTF8-1 / UTF8-2 / UTF8-3 / UTF8-4
 -- UTF8-1      = %x00-7F
@@ -52,7 +52,7 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 -- UTF8-4      = %xF0 %x90-BF 2( UTF8-tail ) / %xF1-F3 3( UTF8-tail ) /
 --               %xF4 %x80-8F 2( UTF8-tail )
 -- UTF8-tail   = %x80-BF
--- 
+--
 
 -- returns the number of bytes used by the UTF-8 character at byte i in s
 -- also doubles as a UTF-8 character validator
@@ -134,7 +134,7 @@ local function utf8charbytes (s, i)
 		elseif c2 < 128 or c2 > 191 then
 			error("Invalid UTF-8 character")
 		end
-		
+
 		-- validate byte 3
 		if c3 < 128 or c3 > 191 then
 			error("Invalid UTF-8 character")
@@ -164,15 +164,9 @@ local function utf8len (s)
 	local bytes = s:len()
 	local len = 0
 
-	while pos <= bytes and len ~= chars do
-		local c = s:byte(pos)
+	while pos <= bytes do
 		len = len + 1
-
 		pos = pos + utf8charbytes(s, pos)
-	end
-
-	if chars ~= nil then
-		return pos - 1
 	end
 
 	return len
@@ -305,7 +299,7 @@ local function utf8reverse (s)
 	local newstr = ""
 
 	while pos > 0 do
-		c = s:byte(pos)
+		local c = s:byte(pos)
 		while c >= 128 and c <= 191 do
 			pos = pos - 1
 			c = s:byte(pos)

@@ -1,4 +1,5 @@
-﻿utf8_lc_uc = {
+﻿---@diagnostic disable lowercase-global
+utf8_lc_uc = {
 	["a"] = "A",
 	["b"] = "B",
 	["c"] = "C",
