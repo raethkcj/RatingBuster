@@ -27,7 +27,6 @@ L["WholeTextLookup"] = {
 	["次级巫师之油"] = {["SPELL_DMG"] = 16, ["HEAL"] = 16}, --
 	["巫师之油"] = {["SPELL_DMG"] = 24, ["HEAL"] = 24}, --
 	["卓越巫师之油"] = {["SPELL_DMG"] = 36, ["HEAL"] = 36, [StatLogic.Stats.SpellCritRating] = 14}, --
-	["神圣巫师之油"] = {["SPELL_DMG_UNDEAD"] = 60}, --
 
 	["超强法力之油"] = {["MANA_REG"] = 14}, --
 	["初级法力之油"] = {["MANA_REG"] = 4}, --
@@ -35,23 +34,17 @@ L["WholeTextLookup"] = {
 	["卓越法力之油"] = {["MANA_REG"] = 12, ["HEAL"] = 25}, --
 	["超强巫师之油"] = {["SPELL_DMG"] = 42, ["HEAL"] = 42}, --
 
-	["恒金渔线"] = {["FISHING"] = 5}, --
 	["活力"] = {["MANA_REG"] = 4, ["HEALTH_REG"] = 4}, --
 	["魂霜"] = {["SHADOW_SPELL_DMG"] = 54, ["FROST_SPELL_DMG"] = 54}, --
 	["阳炎"] = {["ARCANE_SPELL_DMG"] = 50, ["FIRE_SPELL_DMG"] = 50}, --
 	["+40 法术伤害"] = {["SPELL_DMG"] = 40, ["HEAL"] = 40}, --
 	["+30 法术伤害"] = {["SPELL_DMG"] = 30, ["HEAL"] = 30}, --
 
-	["秘银马刺"] = {["MOUNT_SPEED"] = 4}, -- Mithril Spurs
-	["坐骑移动速度略微提升"] = {["MOUNT_SPEED"] = 2}, -- Enchant Gloves - Riding Skill
-	["装备： 略微提高移动速度。"] = {["RUN_SPEED"] = 8}, -- [Highlander's Plate Greaves] ID: 20048
-	["移动速度略微提升"] = {["RUN_SPEED"] = 8}, -- Enchant Boots - Minor Speed
-	["略微提高奔跑速度"] = {["RUN_SPEED"] = 8}, --
-	["初级速度"] = {["RUN_SPEED"] = 8}, -- Enchant Boots - Minor Speed
+	["移动速度略微提升"] = false, -- Enchant Boots - Minor Speed
+	["略微提高奔跑速度"] = false, --
+	["初级速度"] = false, -- Enchant Boots - Minor Speed
 	["稳固"] = {[StatLogic.Stats.MeleeHitRating] = 10}, -- Enchant Boots - Surefooted "Surefooted"
 
-	["狡诈"] = {["THREAT_MOD"] = -2}, -- Enchant Cloak - Subtlety
-	["威胁减少2%"] = {["THREAT_MOD"] = -2}, -- StatLogic:GetSum("item:23344:2832")
 	["装备： 使你可以在水下呼吸。"] = false, -- [Band of Icy Depths] ID: 21526
 	["使你可以在水下呼吸"] = false, --
 	["装备： 免疫缴械。"] = false, -- [Stronghold Gauntlets] ID: 12639
@@ -83,7 +76,6 @@ L["SingleEquipStatCheck"] = "装备： (.-)(%d+)点(.-)。$"
 -- Special cases that need to be dealt with before base scan
 L["PreScanPatterns"] = {
 	["^装备: 猫形态下的攻击强度增加(%d+)"] = "FERAL_AP",
-	["^装备: 与亡灵作战时的攻击强度提高(%d+)点"] = "AP_UNDEAD", -- Seal of the Dawn ID:13029
 	["^(%d+)格挡$"] = "BLOCK_VALUE",
 	["^(%d+)点护甲$"] = "ARMOR",
 	["强化护甲 %+(%d+)"] = "ARMOR_BONUS",
@@ -149,13 +141,8 @@ L["DeepScanPatterns"] = {
 -----------------------
 L["StatIDLookup"] = {
 	["你的攻击无视目标的点护甲值"] = {"IGNORE_ARMOR"}, -- StatLogic:GetSum("item:33733")
-	["% 威胁"] = {"THREAT_MOD"}, -- StatLogic:GetSum("item:23344:2613")
-	["使你的潜行等级提高"] = {"STEALTH_LEVEL"}, -- [Nightscape Boots] ID: 8197
-	["潜行"] = {"STEALTH_LEVEL"}, -- Cloak Enchant
 	["武器伤害"] = {"MELEE_DMG"}, -- Enchant
 	["近战伤害"] = {"MELEE_DMG"}, -- Enchant
-	["使坐骑速度提高%"] = {"MOUNT_SPEED"}, -- [Highlander's Plate Greaves] ID: 20048
-	["坐骑速度"] = {"MOUNT_SPEED"}, -- [Highlander's Plate Greaves] ID: 20048
 
 	["所有属性"] = {StatLogic.Stats.AllStats,},
 	["力量"] = {StatLogic.Stats.Strength,},
@@ -175,12 +162,12 @@ L["StatIDLookup"] = {
 	["抵抗全部"] = {"ARCANE_RES", "FIRE_RES", "FROST_RES", "NATURE_RES", "SHADOW_RES",},
 	["点所有魔法抗性"] = {"ARCANE_RES", "FIRE_RES", "FROST_RES", "NATURE_RES", "SHADOW_RES",}, -- [锯齿黑曜石之盾] ID:22198
 
-	["钓鱼"] = {"FISHING",}, -- Fishing enchant ID:846
-	["钓鱼技能"] = {"FISHING",}, -- Fishing lure
-	["使钓鱼技能"] = {"FISHING",}, -- Equip: Increased Fishing +20.
-	["采矿"] = {"MINING",}, -- Mining enchant ID:844
-	["草药学"] = {"HERBALISM",}, -- Heabalism enchant ID:845
-	["剥皮"] = {"SKINNING",}, -- Skinning enchant ID:865
+	["钓鱼"] = false, -- Fishing enchant ID:846
+	["钓鱼技能"] = false, -- Fishing lure
+	["使钓鱼技能"] = false, -- Equip: Increased Fishing +20.
+	["采矿"] = false, -- Mining enchant ID:844
+	["草药学"] = false, -- Heabalism enchant ID:845
+	["剥皮"] = false, -- Skinning enchant ID:865
 
 	["护甲"] = {"ARMOR_BONUS",},
 	["护甲值"] = {"ARMOR_BONUS",},
@@ -197,9 +184,6 @@ L["StatIDLookup"] = {
 	["攻击强度"] = {"AP",},
 	["攻击强度提高"] = {"AP",},
 	["提高攻击强度"] = {"AP",},
-	["与亡灵作战时的攻击强度"] = {"AP_UNDEAD",}, -- [黎明圣印] ID:13209 -- [弑妖裹腕] ID:23093
-	["与亡灵和恶魔作战时的攻击强度"] = {"AP_UNDEAD", "AP_DEMON",}, -- [勇士徽章] ID:23206
-	["与恶魔作战时的攻击强度"] = {"AP_DEMON",},
 	["在猎豹、熊、巨熊和枭兽形态下的攻击强度"] = {"FERAL_AP",}, -- Atiesh ID:22632
 	["使你的近战和远程攻击强度"] = {"AP"},
 	["远程攻击强度"] = {"RANGED_AP",}, -- [High Warlord's Crossbow] ID: 18837
@@ -257,10 +241,6 @@ L["StatIDLookup"] = {
 	["提高神圣法术和效果所造成的伤害"] = {"HOLY_SPELL_DMG",},
 	["提高自然法术和效果所造成的伤害"] = {"NATURE_SPELL_DMG",},
 	["提高暗影法术和效果所造成的伤害"] = {"SHADOW_SPELL_DMG",}, -- Frozen Shadoweave Vest ID:21871
-
-	["魔法和法术效果对亡灵造成的伤害"] = {"SPELL_DMG_UNDEAD",}, -- [黎明符文] ID:19812
-	["所有法术和效果对亡灵所造成的伤害"] = {"SPELL_DMG_UNDEAD",}, -- [净妖长袍] ID:23085
-	["魔法和法术效果对亡灵和恶魔所造成的伤害"] = {"SPELL_DMG_UNDEAD", "SPELL_DMG_DEMON",}, -- [勇士徽章] ID:23207
 
 	["使法术治疗"] = {"HEAL",},
 	["你的治疗效果"] = {"HEAL",}, -- Atiesh ID:22631

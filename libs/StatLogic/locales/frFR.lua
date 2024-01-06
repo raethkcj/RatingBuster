@@ -33,31 +33,23 @@ L["WholeTextLookup"] = {
 	["Huile de sorcier"] = {["SPELL_DMG"] = 24, ["HEAL"] = 24}, -- ID: 20750
 	["Huile de sorcier brillante"] = {["SPELL_DMG"] = 36, ["HEAL"] = 36, [StatLogic.Stats.SpellCritRating] = 14}, -- ID: 20749
 	["Huile de sorcier excellente"] = {["SPELL_DMG"] = 42, ["HEAL"] = 42}, -- ID: 22522
-	["Huile de sorcier bénite"] = {["SPELL_DMG_UNDEAD"] = 60}, -- ID: 23123
 
 	["Huile de mana mineure"] = {["MANA_REG"] = 4}, -- ID: 20745
 	["Huile de mana inférieure"] = {["MANA_REG"] = 8}, -- ID: 20747
 	["Huile de mana brillante"] = {["MANA_REG"] = 12, ["HEAL"] = 25}, -- ID: 20748
 	["Huile de mana excellente"] = {["MANA_REG"] = 14}, -- ID: 22521
 
-	["Ligne en éternium"] = {["FISHING"] = 5}, -- Ligne de pêche en éternium -- ID: 24302
-	["Ligne en vrai-argent"] = {["FISHING"] = 3}, --Ligne de pêche en vrai-argent -- ID: 45697
 	["Sauvagerie"] = {["AP"] = 70}, -- ID: 27971
 	["Vitalité"] = {["MANA_REG"] = 4, ["HEALTH_REG"] = 4}, -- ID: 46492
 	["Âme de givre"] = {["SHADOW_SPELL_DMG"] = 54, ["FROST_SPELL_DMG"] = 54}, -- ID: 27982
 	["Feu solaire"] = {["ARCANE_SPELL_DMG"] = 50, ["FIRE_SPELL_DMG"] = 50}, -- ID: 27981
 
-	["Eperons en mithril"] = {["MOUNT_SPEED"] = 4}, -- ID: 9783 -- description pre-TBC
-	["Augmentation mineure de la vitesse de la monture"] = {["MOUNT_SPEED"] = 2}, -- Ench. de gants (Equitation) -- ID: 13947 -- description pre-TBC
-	["Équipé\194\160: La vitesse de course augmente légèrement."] = {["RUN_SPEED"] = 8}, -- [Grèves des Hautes-terres en plaques] -- ID: 20048
-	["La vitesse de course augmente légèrement"] = {["RUN_SPEED"] = 8},
-	["Augmentation mineure de vitesse"] = {["RUN_SPEED"] = 8}, -- Ench. de bottes (Vitesse mineure) ID: 13890
-	["Vitesse mineure"] = {["RUN_SPEED"] = 8}, -- Ench. de bottes (Rapidité du félin) "Vitesse mineure et +6 à l'Agilité" -- ID: 34007 -- & Ench. de bottes (Vitesse du sanglier) "Vitesse mineure et +9 à l'Endurance" -- ID: 34008
-	["légère augmentation de la vitesse de course"] = {["RUN_SPEED"] = 8}, -- [Diamant brûlétoile de rapidité] -- ID: 28557
+	["Équipé\194\160: La vitesse de course augmente légèrement."] = false, -- [Grèves des Hautes-terres en plaques] -- ID: 20048
+	["La vitesse de course augmente légèrement"] = false,
+	["Augmentation mineure de vitesse"] = false, -- Ench. de bottes (Vitesse mineure) ID: 13890
+	["Vitesse mineure"] = false, -- Ench. de bottes (Rapidité du félin) "Vitesse mineure et +6 à l'Agilité" -- ID: 34007 -- & Ench. de bottes (Vitesse du sanglier) "Vitesse mineure et +9 à l'Endurance" -- ID: 34008
 	["Pied sûr"] = {[StatLogic.Stats.MeleeHitRating] = 10}, -- Ench. de bottes (Pied sûr) -- ID: 27954
 
-	["Discrétion"] = {["THREAT_MOD"] = -2}, -- Ench. de cape (Discrétion) -- ID: 25084
-	["2% de réduction de la menace"] = {["THREAT_MOD"] = -2}, -- [Diamant tonneterre tonifiant] -- ID: 25897
 	["Équipé\194\160: Permet de respirer sous l'eau."] = false, -- [Bague des profondeurs glacées] -- ID: 21526 -- & [Hydrocanne] -- ID: 9452
 	["Permet de respirer sous l'eau"] = false, --
 	["Équipé\194\160: Immunisé au désarmement."] = false, -- [Gantelets de la forteresse] -- ID: 12639 -- version pre-TBC
@@ -94,7 +86,6 @@ L["SingleEquipStatCheck"] = "^Équipé\194\160: Augmente (.-) ?de (%d+) ?a?u? ?m
 -- Special cases that need to be dealt with before deep scan
 L["PreScanPatterns"] = {
 	--["^Equip: Increases attack power by (%d+) in Cat"] = "FERAL_AP",
-	--["^Equip: Increases attack power by (%d+) when fighting Undead"] = "AP_UNDEAD", -- Seal of the Dawn ID:13029
 	["Bloquer.- (%d+)"] = "BLOCK_VALUE",
 	["Armure.- (%d+)"] = "ARMOR",
 	["Renforcé %(%+(%d+) Armure%)"] = "ARMOR_BONUS",
@@ -159,10 +150,7 @@ L["DeepScanPatterns"] = {
 -----------------------
 L["StatIDLookup"] = {
 	["Vos attaques ignorentpoints de l'armure de votre adversaire"] = {"IGNORE_ARMOR"}, -- StatLogic:GetSum("item:33733")
-	["% à la menace"] = {"THREAT_MOD"}, -- StatLogic:GetSum("item:23344:2613")
-	["votre niveau de camouflage actuel"] = {"STEALTH_LEVEL"},
 	["aux dégâts de l'arme"] = {"MELEE_DMG"},
-	["à la vitesse de la monture"] = {"MOUNT_SPEED"},
 
 	--dégats melee
 	["aux dégâts des armes"] = {"MELEE_DMG"},
@@ -199,12 +187,12 @@ L["StatIDLookup"] = {
 
 	["à toutes les résistances"] = {"ARCANE_RES", "FIRE_RES", "FROST_RES", "NATURE_RES", "SHADOW_RES"},
 
-	["Pêche"] = {"FISHING"}, -- Ench. de gants (Pêche) ID:13620
-	["Appât de pêche"] = {"FISHING"}, -- Appats
-	["Équipé\194\160: Pêche augmentée"] = {"FISHING"}, -- Effet canne à pêche
-	["Minage"] = {"MINING"},
-	["Herboristerie"] = {"HERBALISM"}, -- Ench. de gants (Herboristerie) ID:13617
-	["Dépeçage"] = {"SKINNING"}, -- Ench. de gants (Dépeçage) ID:13698
+	["Pêche"] = false, -- Ench. de gants (Pêche) ID:13620
+	["Appât de pêche"] = false, -- Appats
+	["Équipé\194\160: Pêche augmentée"] = false, -- Effet canne à pêche
+	["Minage"] = false,
+	["Herboristerie"] = false, -- Ench. de gants (Herboristerie) ID:13617
+	["Dépeçage"] = false, -- Ench. de gants (Dépeçage) ID:13698
 
 	["Armure"] = {"ARMOR_BONUS"},
 	["Défense"] = {StatLogic.Stats.Defense},
@@ -221,11 +209,6 @@ L["StatIDLookup"] = {
 	["puissance d'attaque"] = {"AP"},
 	["la puissance d'attaque"] = {"AP"},
 	["à la puissance d'attaque"] = {"AP"},
-	["la puissance d'attaque lorsque vous combattez les morts-vivants"] = {"AP_UNDEAD"}, -- [Bandelettes de tueur de mort-vivant] ID:23093
-	["la puissance d'attaque lorsque vous combattez des morts-vivants"] = {"AP_UNDEAD"}, -- [Sceau de l'Aube] ID:13209
-	["la puissance d'attaque lorsque vous combattez des morts-vivants. Permet aussi l'acquisition de Pierres du Fléau pour l'Aube d'argent."] = {"AP_UNDEAD"}, -- [Sceau de l'Aube] ID:13209
-	["la puissance d'attaque lorsque vous combattez les démons"] = {"AP_DEMON"},
-	["la puissance d'attaque lorsque vous combattez des morts-vivants et des démons"] = {"AP_UNDEAD", "AP_DEMON"}, -- [Marque du champion] ID:23206
 	["à la puissance d'attaque pour les formes de félin"] = {"FERAL_AP"}, -- version pre-TBC
 	["la puissance d'attaque pour les formes de félin"] = {"FERAL_AP"}, -- version TBC+
 	["à la puissance des attaques à distance."] = {"RANGED_AP"}, -- [Arbalète de grand seigneur de guerre] ID: 18837 -- version pre-TBC
@@ -286,10 +269,6 @@ L["StatIDLookup"] = {
 	["les dégâts infligés par les sorts et effets d'Ombre"]={"SHADOW_SPELL_DMG"},
 	["aux dégâts des sorts d'Ombre"]={"SHADOW_SPELL_DMG"},
 	["aux dégâts d'Ombre"]={"SHADOW_SPELL_DMG"},
-
-	["Augmente les dégâts infligés aux morts-vivants par les sorts et effets magiques"] = {"SPELL_DMG_UNDEAD"}, -- [Robe de purification des morts-vivants] ID:23085
-	["Augmente les dégâts infligés aux morts-vivants par les sorts et effets magiques. Permet aussi l'acquisition de Pierres du Fléau pour le compte de l'Aube d'argent"] = {"SPELL_DMG_UNDEAD"}, -- [Rune de l'Aube] ID:19812
-	["Augmente les dégâts infligés aux morts-vivants et aux démons par les sorts et effets magiques"] = {"SPELL_DMG_UNDEAD", "SPELL_DMG_DEMON"}, -- [Marque du champion] ID:23207
 
 	--ToDo
 	--["Increases healing done by magical spells and effects of all party members within 30 yards"] = {"HEAL"}, -- Atiesh

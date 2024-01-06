@@ -1645,7 +1645,6 @@ do
 				-- Whole Text Lookup --
 				-----------------------
 				-- Mainly used for enchants or stuff without numbers:
-				-- "Mithril Spurs"
 				local idTable = L.WholeTextLookup[text]
 				local found = ParseMatch(idTable, text, false, "WholeText")
 

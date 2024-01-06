@@ -26,29 +26,22 @@ L["WholeTextLookup"] = {
 	["마술사 오일"] = {["SPELL_DMG"] = 24, ["HEAL"] = 24}, -- ID: 20750
 	["반짝이는 마술사 오일"] = {["SPELL_DMG"] = 36, ["HEAL"] = 36, [StatLogic.Stats.SpellCritRating] = 14}, -- ID: 20749
 	["상급 마술사 오일"] = {["SPELL_DMG"] = 42, ["HEAL"] = 42}, -- ID: 22522
-	["신성한 마술사 오일"] = {["SPELL_DMG_UNDEAD"] = 60}, -- ID: 23123
 
 	["최하급 마나 오일"] = {["MANA_REG"] = 4}, -- ID: 20745
 	["하급 마나 오일"] = {["MANA_REG"] = 8}, -- ID: 20747
 	["반짝이는 마나 오일"] = {["MANA_REG"] = 12, ["HEAL"] = 25}, -- ID: 20748
 	["상급 마나 오일"] = {["MANA_REG"] = 14}, -- ID: 22521
 
-	["에터니움 낚시줄"] = {["FISHING"] = 5}, --
 	["전투력"] = {["AP"] = 70}, -- 전투력
 	["활력"] = {["MANA_REG"] = 4, ["HEALTH_REG"] = 4}, -- Enchant Boots - Vitality "Vitality" http://wow.allakhazam.com/db/spell.html?wspell=27948
 	["냉기의 영혼"] = {["SHADOW_SPELL_DMG"] = 54, ["FROST_SPELL_DMG"] = 54}, --
 	["태양의 불꽃"] = {["ARCANE_SPELL_DMG"] = 50, ["FIRE_SPELL_DMG"] = 50}, --
 
-	["미스릴 박차"] = {["MOUNT_SPEED"] = 4}, -- Mithril Spurs
-	["최하급 탈것 속도 증가"] = {["MOUNT_SPEED"] = 2}, -- Enchant Gloves - Riding Skill
-	["착용 효과: 이동 속도가 약간 증가합니다."] = {["RUN_SPEED"] = 8}, -- [Highlander's Plate Greaves] ID: 20048
-	["이동 속도가 약간 증가합니다."] = {["RUN_SPEED"] = 8}, --
-	["하급 이동 속도 증가"] = {["RUN_SPEED"] = 8}, -- Enchant Boots - Minor Speed "Minor Speed Increase" http://wow.allakhazam.com/db/spell.html?wspell=13890
-	["하급 이동 속도"] = {["RUN_SPEED"] = 8}, -- Enchant Boots - Cat's Swiftness "Minor Speed and +6 Agility" http://wow.allakhazam.com/db/spell.html?wspell=34007
+	["이동 속도가 약간 증가합니다."] = false, --
+	["하급 이동 속도 증가"] = false, -- Enchant Boots - Minor Speed "Minor Speed Increase" http://wow.allakhazam.com/db/spell.html?wspell=13890
+	["하급 이동 속도"] = false, -- Enchant Boots - Cat's Swiftness "Minor Speed and +6 Agility" http://wow.allakhazam.com/db/spell.html?wspell=34007
 	["침착함"] = {[StatLogic.Stats.MeleeHitRating] = 10}, -- Enchant Boots - Surefooted "Surefooted" http://wow.allakhazam.com/db/spell.html?wspell=27954
 
-	["위협 수준 감소"] = {["THREAT_MOD"] = -2}, -- Enchant Cloak - Subtlety
-	["위협 수준 +2%"] = {["THREAT_MOD"] = -2}, -- StatLogic:GetSum("item:23344:2832")
 	["착용 효과: 시전자를 물 속에서 숨쉴 수 있도록 해줍니다."] = false, -- [Band of Icy Depths] ID: 21526
 	["시전자를 물 속에서 숨쉴 수 있도록 해줍니다"] = false, --
 	["착용 효과: 무장해제에 면역이 됩니다."] = false, -- [Stronghold Gauntlets] ID: 12639
@@ -77,7 +70,6 @@ L["SingleEquipStatCheck"] = "^착용 효과: (.-) (%d+)만큼(.-)$"
 -- Special cases that need to be dealt with before deep scan
 L["PreScanPatterns"] = {
 	--["^Equip: Increases attack power by (%d+) in Cat"] = "FERAL_AP",
-	--["^Equip: Increases attack power by (%d+) when fighting Undead"] = "AP_UNDEAD", -- Seal of the Dawn ID:13029
 	["^(%d+)의 피해 방어$"] = "BLOCK_VALUE",
 	["^방어도 (%d+)$"] = "ARMOR",
 	["방어도 보강 %(%+(%d+)%)"] = "ARMOR_BONUS",
@@ -128,10 +120,7 @@ L["DeepScanPatterns"] = {
 -----------------------
 L["StatIDLookup"] = {
 	["공격 시 적의 방어도를 무시합니다"] = {"IGNORE_ARMOR"}, -- StatLogic:GetSum("item:33733")
-	["% 위협"] = {"THREAT_MOD"}, -- StatLogic:GetSum("item:23344:2613")
-	["은신 효과가 증가합니다"] = {"STEALTH_LEVEL"}, -- [Nightscape Boots] ID: 8197
 	["무기 공격력"] = {"MELEE_DMG"}, -- Enchant
-	["탈것의 속도가%만큼 증가합니다"] = {"MOUNT_SPEED"}, -- [Highlander's Plate Greaves] ID: 20048
 
 	["모든 능력치"] = {StatLogic.Stats.AllStats,},
 	["힘"] = {StatLogic.Stats.Strength,},
@@ -153,12 +142,12 @@ L["StatIDLookup"] = {
 	["모든 저항력"] = {"ARCANE_RES", "FIRE_RES", "FROST_RES", "NATURE_RES", "SHADOW_RES",},
 	["모든 저항"] = {"ARCANE_RES", "FIRE_RES", "FROST_RES", "NATURE_RES", "SHADOW_RES",},
 
-	["낚시"] = {"FISHING",}, -- Fishing enchant ID:846
-	["낚시 숙련도"] = {"FISHING",}, -- Fishing lure
-	["낚시 숙련도가 증가합니다"] = {"FISHING",}, -- Equip: Increased Fishing +20.
-	["채광"] = {"MINING",}, -- Mining enchant ID:844
-	["약초 채집"] = {"HERBALISM",}, -- Heabalism enchant ID:845
-	["무두질"] = {"SKINNING",}, -- Skinning enchant ID:865
+	["낚시"] = false, -- Fishing enchant ID:846
+	["낚시 숙련도"] = false, -- Fishing lure
+	["낚시 숙련도가 증가합니다"] = false, -- Equip: Increased Fishing +20.
+	["채광"] = false, -- Mining enchant ID:844
+	["약초 채집"] = false, -- Heabalism enchant ID:845
+	["무두질"] = false, -- Skinning enchant ID:865
 
 	["방어도"] = {"ARMOR_BONUS",},
 	["방어 숙련"] = {StatLogic.Stats.Defense,},
@@ -173,12 +162,6 @@ L["StatIDLookup"] = {
 
 	["전투력"] = {"AP",},
 	["전투력이 증가합니다"] = {"AP",},
-	["언데드 공격 시 전투력"] = {"AP_UNDEAD",},
-	-- [Wristwraps of Undead Slaying] ID:23093
-	["언데드 공격 시 전투력이 증가합니다"] = {"AP_UNDEAD",}, -- [Seal of the Dawn] ID:13209
-	["언데드와 전투 시 전투력이 증가합니다. 또한 은빛여명회의 대리인으로서 스컬지석을 모을 수 있습니다"] = {"AP_UNDEAD",},
-	["악마에 대한 전투력이 증가합니다"] = {"AP_DEMON",},
-	["언데드 및 악마에 대한 전투력이 증가합니다"] = {"AP_UNDEAD", "AP_DEMON",}, -- [Mark of the Champion] ID:23206
 	["달빛야수 변신 상태일 때 전투력"] = {"FERAL_AP",},
 	["달빛야수 변신 상태일 때 전투력이 증가합니다"] = {"FERAL_AP",},
 	["원거리 전투력"] = {"RANGED_AP",},
@@ -246,11 +229,6 @@ L["StatIDLookup"] = {
 	["Increases the damage done by Frost spells and effects"] = {"FROST_SPELL_DMG",}, -- Added just in case
 	["Increases the damage done by Nature spells and effects"] = {"NATURE_SPELL_DMG",}, -- Added just in case
 	["Increases the damage done by Shadow spells and effects"] = {"SHADOW_SPELL_DMG",}, -- Added just in case
-
-	-- [Robe of Undead Cleansing] ID:23085
-	["언데드에 대한 효과나 주문에 의한 피해가 증가합니다"] = {"SPELL_DMG_UNDEAD"},
-	["언데드와 전투 시 모든 주문 및 효과에 의한 피해량이 증가합니다. 또한 은빛여명회의 대리인으로서 스컬지석을 모을 수 있습니다"] = {"SPELL_DMG_UNDEAD"},
-	["언데드 및 악마에 대한 주문 및 효과에 의한 공격력이 증가합니다"] = {"SPELL_DMG_UNDEAD", "SPELL_DMG_DEMON"}, -- [Mark of the Champion] ID:23207
 
 	["주문 치유량"] = {"HEAL",}, -- Enchant Gloves - Major Healing "+35 Healing Spells" http://wow.allakhazam.com/db/spell.html?wspell=33999
 	["치유량 증가"] = {"HEAL",},

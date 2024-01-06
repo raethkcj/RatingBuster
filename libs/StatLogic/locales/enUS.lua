@@ -60,14 +60,12 @@ L["WholeTextLookup"] = {
 	["Wizard Oil"] = {["SPELL_DMG"] = 24, ["HEAL"] = 24}, -- ID: 20750
 	["Brilliant Wizard Oil"] = {["SPELL_DMG"] = 36, ["HEAL"] = 36, [StatLogic.Stats.SpellCritRating] = 14}, -- ID: 20749
 	["Superior Wizard Oil"] = {["SPELL_DMG"] = 42, ["HEAL"] = 42}, -- ID: 22522
-	["Blessed Wizard Oil"] = {["SPELL_DMG_UNDEAD"] = 60}, -- ID: 23123
 
 	["Minor Mana Oil"] = {["MANA_REG"] = 4}, -- ID: 20745
 	["Lesser Mana Oil"] = {["MANA_REG"] = 8}, -- ID: 20747
 	["Brilliant Mana Oil"] = {["MANA_REG"] = 12, ["HEAL"] = 25}, -- ID: 20748
 	["Superior Mana Oil"] = {["MANA_REG"] = 14}, -- ID: 22521
 
-	["Eternium Line"] = {["FISHING"] = 5}, --
 	["Savagery"] = {["AP"] = 70}, --
 	["Vitality"] = {["MANA_REG"] = 4, ["HEALTH_REG"] = 4}, -- Enchant Boots - Vitality http://wow.allakhazam.com/db/spell.html?wspell=27948
 	["Soulfrost"] = {["SHADOW_SPELL_DMG"] = 54, ["FROST_SPELL_DMG"] = 54},
@@ -75,26 +73,16 @@ L["WholeTextLookup"] = {
 	["Sunfire"] = {["ARCANE_SPELL_DMG"] = 50, ["FIRE_SPELL_DMG"] = 50},
 	["+50 Arcane and Fire Spell Power"] = {["ARCANE_SPELL_DMG"] = 50, ["FIRE_SPELL_DMG"] = 50},
 
-	["Mithril Spurs"] = {["MOUNT_SPEED"] = 4}, -- Mithril Spurs
-	["Minor Mount Speed Increase"] = {["MOUNT_SPEED"] = 2}, -- Enchant Gloves - Riding Skill
-	["Equip: Run speed increased slightly."] = {["RUN_SPEED"] = 8}, -- [Highlander's Plate Greaves] ID: 20048
-	["Run speed increased slightly"] = {["RUN_SPEED"] = 8}, --
-	["Minor Speed Increase"] = {["RUN_SPEED"] = 8}, -- Enchant Boots - Minor Speed "Minor Speed Increase" http://wow.allakhazam.com/db/spell.html?wspell=13890
-	["Minor Speed"] = {["RUN_SPEED"] = 8}, -- Enchant Boots - Cat's Swiftness "Minor Speed and +6 Agility" http://wow.allakhazam.com/db/spell.html?wspell=34007
+	["Run speed increased slightly"] = false, --
+	["Minor Speed Increase"] = false, -- Enchant Boots - Minor Speed "Minor Speed Increase" http://wow.allakhazam.com/db/spell.html?wspell=13890
+	["Minor Speed"] = false, -- Enchant Boots - Cat's Swiftness "Minor Speed and +6 Agility" http://wow.allakhazam.com/db/spell.html?wspell=34007
 	["Surefooted"] = {[StatLogic.Stats.MeleeHitRating] = 10}, -- Enchant Boots - Surefooted "Surefooted" http://wow.allakhazam.com/db/spell.html?wspell=27954
 
-	["Subtlety"] = {["THREAT_MOD"] = -2}, -- Enchant Cloak - Subtlety
-	["2% Reduced Threat"] = {["THREAT_MOD"] = -2}, -- StatLogic:GetSum("item:23344:2832")
 	["Equip: Allows underwater breathing."] = false, -- [Band of Icy Depths] ID: 21526
 	["Allows underwater breathing"] = false, --
 	["Equip: Immune to Disarm."] = false, -- [Stronghold Gauntlets] ID: 12639
 	["Immune to Disarm"] = false, --
 	["Crusader"] = false, -- Enchant Crusader
-	["Lifestealing"] = false, -- Enchant Crusader
-	["Equip: Inflicts the will of the Ashbringer upon the wielder."] = false, -- Corrupted Ashbringer
-	["Equip: Your melee and ranged attacks have a chance to call on the power of the Arcane if you're exalted with the Scryers, or the Light if you're exalted with the Aldor."] = false,
-	["Equip: Your spells have a chance to call on the power of the Arcane if you're exalted with the Scryers, or the Light if you're exalted with the Aldor."] = false,
-	["Equip: Your heals have a chance to call on the power of the Arcane if you're exalted with the Scryers, or the Light if you're exalted with the Aldor."] = false,
 }
 ----------------------------
 -- Single Plus Stat Check --
@@ -117,7 +105,6 @@ L["SingleEquipStatCheck"] = "^Equip: (.-) by u?p? ?t?o? ?(%d+) ?(.-)%.?$"
 -- Special cases that need to be dealt with before deep scan
 L["PreScanPatterns"] = {
 	--["^Equip: Increases attack power by (%d+) in Cat"] = "FERAL_AP",
-	--["^Equip: Increases attack power by (%d+) when fighting Undead"] = "AP_UNDEAD", -- Seal of the Dawn ID:13029
 	["^(%d+) Block$"] = "BLOCK_VALUE",
 	["^(%d+) Armor$"] = "ARMOR",
 	["Reinforced %(%+(%d+) Armor%)"] = "ARMOR_BONUS",
@@ -164,10 +151,7 @@ L["DeepScanPatterns"] = {
 -----------------------
 L["StatIDLookup"] = {
 	["Your attacks ignoreof your opponent's armor"] = {"IGNORE_ARMOR"}, -- StatLogic:GetSum("item:33733")
-	["% Threat"] = {"THREAT_MOD"}, -- StatLogic:GetSum("item:23344:2613")
-	["Increases your effective stealth level"] = {"STEALTH_LEVEL"}, -- [Nightscape Boots] ID: 8197
 	["Weapon Damage"] = {"MELEE_DMG"}, -- Enchant
-	["Increases mount speed%"] = {"MOUNT_SPEED"}, -- [Highlander's Plate Greaves] ID: 20048
 
 	["All Stats"] = {StatLogic.Stats.AllStats,},
 	["Strength"] = {StatLogic.Stats.Strength,},
@@ -190,12 +174,12 @@ L["StatIDLookup"] = {
 	["All Resistances"] = {"ARCANE_RES", "FIRE_RES", "FROST_RES", "NATURE_RES", "SHADOW_RES",},
 	["Resist All"] = {"ARCANE_RES", "FIRE_RES", "FROST_RES", "NATURE_RES", "SHADOW_RES",},
 
-	["Fishing"] = {"FISHING",}, -- Fishing enchant ID:846
-	["Fishing Skill"] = {"FISHING",}, -- Fishing lure
-	["Increased Fishing"] = {"FISHING",}, -- Equip: Increased Fishing +20.
-	["Mining"] = {"MINING",}, -- Mining enchant ID:844
-	["Herbalism"] = {"HERBALISM",}, -- Heabalism enchant ID:845
-	["Skinning"] = {"SKINNING",}, -- Skinning enchant ID:865
+	["Fishing"] = false, -- Fishing enchant ID:846
+	["Fishing Skill"] = false, -- Fishing lure
+	["Increased Fishing"] = false, -- Equip: Increased Fishing +20.
+	["Mining"] = false, -- Mining enchant ID:844
+	["Herbalism"] = false, -- Heabalism enchant ID:845
+	["Skinning"] = false, -- Skinning enchant ID:865
 
 	["Armor"] = {"ARMOR_BONUS",},
 	["Defense"] = {StatLogic.Stats.Defense,},
@@ -211,12 +195,6 @@ L["StatIDLookup"] = {
 
 	["Attack Power"] = {"AP",},
 	["Increases attack power"] = {"AP",},
-	["Attack Power when fighting Undead"] = {"AP_UNDEAD",},
-	-- [Wristwraps of Undead Slaying] ID:23093
-	["Increases attack powerwhen fighting Undead"] = {"AP_UNDEAD",}, -- [Seal of the Dawn] ID:13209
-	["Increases attack powerwhen fighting Undead.  It also allows the acquisition of Scourgestones on behalf of the Argent Dawn"] = {"AP_UNDEAD",}, -- [Seal of the Dawn] ID:13209
-	["Increases attack powerwhen fighting Demons"] = {"AP_DEMON",},
-	["Increases attack powerwhen fighting Undead and Demons"] = {"AP_UNDEAD", "AP_DEMON",}, -- [Mark of the Champion] ID:23206
 	["Increases attack powerin Cat"] = {"FERAL_AP",},
 	["attack power in cat"] = {"FERAL_AP",},
 	["Ranged Attack Power"] = {"RANGED_AP",},
@@ -284,10 +262,6 @@ L["StatIDLookup"] = {
 	["Increases the damage done by Frost spells and effects"] = {"FROST_SPELL_DMG",}, -- Added just in case
 	["Increases the damage done by Nature spells and effects"] = {"NATURE_SPELL_DMG",}, -- Added just in case
 	["Increases the damage done by Shadow spells and effects"] = {"SHADOW_SPELL_DMG",}, -- Added just in case
-
-	["Increases damage done to Undead by magical spells and effects"] = {"SPELL_DMG_UNDEAD"}, -- [Robe of Undead Cleansing] ID:23085
-	["Increases damage done to Undead by magical spells and effects.  It also allows the acquisition of Scourgestones on behalf of the Argent Dawn"] = {"SPELL_DMG_UNDEAD"}, -- [Rune of the Dawn] ID:19812
-	["Increases damage done to Undead and Demons by magical spells and effects"] = {"SPELL_DMG_UNDEAD", "SPELL_DMG_DEMON"}, -- [Mark of the Champion] ID:23207
 
 	["Healing Spells"] = {"HEAL",}, -- Enchant Gloves - Major Healing "+35 Healing Spells" http://wow.allakhazam.com/db/spell.html?wspell=33999
 	["Increases Healing"] = {"HEAL",},

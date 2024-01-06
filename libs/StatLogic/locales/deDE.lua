@@ -36,28 +36,21 @@ L["WholeTextLookup"] = {
 	["Zauberöl"] = {["SPELL_DMG"] = 24, ["HEAL"] = 24}, --
 	["Überragendes Zauberöl"] = {["SPELL_DMG"] = 42, ["HEAL"] = 42}, --
 	["Hervorragendes Zauberöl"] = {["SPELL_DMG"] = 36, ["HEAL"] = 36, [StatLogic.Stats.SpellCritRating] = 14}, --
-	["Gesegnetes Zauberöl"] = {["SPELL_DMG_UNDEAD"] = 60}, -- ID: 23123
 
 	["Schwaches Manaöl"] = {["MANA_REG"] = 4}, --
 	["Geringes Manaöl"] = {["MANA_REG"] = 8}, --
 	["Überragendes Manaöl"] = {["MANA_REG"] = 14}, --
 	["Hervorragendes Manaöl"] = {["MANA_REG"] = 12, ["HEAL"] = 25}, --
 
-	["Eterniumangelschnur"] = {["FISHING"] = 5}, --
 	["Vitalität"] = {["MANA_REG"] = 4, ["HEALTH_REG"] = 4}, --
 	["Seelenfrost"] = {["SHADOW_SPELL_DMG"] = 54, ["FROST_SPELL_DMG"] = 54}, --
 	["Sonnenfeuer"] = {["ARCANE_SPELL_DMG"] = 50, ["FIRE_SPELL_DMG"] = 50}, --
 
-	["Mithrilsporen"] = {["MOUNT_SPEED"] = 4}, -- Mithril Spurs
-	["Schwache Reittierttempo-Strigerung"] = {["MOUNT_SPEED"] = 2}, -- Enchant Gloves - Riding Skill
-	["Anlegen: Lauftempo ein wenig erhöht."] = {["RUN_SPEED"] = 8}, -- [Highlander's Plate Greaves] ID: 20048
-	["Lauftempo ein wenig erhöht"] = {["RUN_SPEED"] = 8}, --
-	["Schwache Temposteigerung"] = {["RUN_SPEED"] = 8}, -- Enchant Boots - Minor Speed
-	["Schwaches Tempo"] = {["RUN_SPEED"] = 8}, -- Enchant Boots - Cat's Swiftness "Minor Speed and +6 Agility" http://wow.allakhazam.com/db/spell.html?wspell=34007
+	["Lauftempo ein wenig erhöht"] = false, --
+	["Schwache Temposteigerung"] = false, -- Enchant Boots - Minor Speed
+	["Schwaches Tempo"] = false, -- Enchant Boots - Cat's Swiftness "Minor Speed and +6 Agility" http://wow.allakhazam.com/db/spell.html?wspell=34007
 	["Sicherer Stand"] = {[StatLogic.Stats.MeleeHitRating] = 10}, -- Enchant Boots - Surefooted "Surefooted" http://wow.allakhazam.com/db/spell.html?wspell=27954
 
-	["Feingefühl"] = {["THREAT_MOD"] = -2}, -- Enchant Cloak - Subtlety
-	["2% verringerte Bedrohung"] = {["THREAT_MOD"] = -2}, -- StatLogic:GetSum("item:23344:2832")
 	["Anlegen: Ermöglicht Unterwasseratmung."] = false, -- [Band of Icy Depths] ID: 21526
 	["Ermöglicht Unterwasseratmung"] = false, --
 	["Anlegen: Immun gegen Entwaffnen."] = false, -- [Stronghold Gauntlets] ID: 12639
@@ -93,7 +86,6 @@ L["SingleEquipStatCheck"] = "^Anlegen: (.-) um b?i?s? ?z?u? ?(%d+) ?(.-)%.$"
 -- Special cases that need to be dealt with before base scan
 L["PreScanPatterns"] = {
 	--["^Equip: Increases attack power by (%d+) in Cat"] = "FERAL_AP",
-	--["^Equip: Increases attack power by (%d+) when fighting Undead"] = "AP_UNDEAD", -- Seal of the Dawn ID:13029
 	["^(%d+) Block$"] = "BLOCK_VALUE",
 	["^(%d+) Rüstung$"] = "ARMOR",
 	["Verstärkte %(%+(%d+) Rüstung%)"] = "ARMOR_BUFF",
@@ -150,10 +142,7 @@ L["DeepScanPatterns"] = {
 -----------------------
 L["StatIDLookup"] = {
 	["Eure Angriffe ignorierenRüstung eures Gegners"] = {"IGNORE_ARMOR"}, -- StatLogic:GetSum("item:33733")
-	["% Bedrohung"] = {"THREAT_MOD"}, -- StatLogic:GetSum("item:23344:2613")
-	["Erhöht Eure effektive Verstohlenheitsstufe"] = {"STEALTH_LEVEL"}, -- [Nightscape Boots] ID: 8197
 	["Waffenschaden"] = {"MELEE_DMG"}, -- Enchant
-	["Erhöht das Reittiertempo%"] = {"MOUNT_SPEED"}, -- [Highlander's Plate Greaves] ID: 20048
 
 	["Alle Werte"] = {StatLogic.Stats.AllStats,},
 	["Stärke"] = {StatLogic.Stats.Strength,},
@@ -170,11 +159,11 @@ L["StatIDLookup"] = {
 	["Alle Widerstände"] = {"ARCANE_RES", "FIRE_RES", "FROST_RES", "NATURE_RES", "SHADOW_RES",},
 	["Alle Widerstandsarten"] = {"ARCANE_RES", "FIRE_RES", "FROST_RES", "NATURE_RES", "SHADOW_RES",},
 
-	["Angeln"] = {"FISHING",}, -- Fishing enchant ID:846
-	["Angelfertigkeit"] = {"FISHING",}, -- Fishing lure
-	["Bergbau"] = {"MINING",}, -- Mining enchant ID:844
-	["Kräuterkunde"] = {"HERBALISM",}, -- Heabalism enchant ID:845
-	["Kürschnerei"] = {"SKINNING",}, -- Skinning enchant ID:865
+	["Angeln"] = false, -- Fishing enchant ID:846
+	["Angelfertigkeit"] = false, -- Fishing lure
+	["Bergbau"] = false, -- Mining enchant ID:844
+	["Kräuterkunde"] = false, -- Heabalism enchant ID:845
+	["Kürschnerei"] = false, -- Skinning enchant ID:865
 
 	["Rüstung"] = {"ARMOR_BONUS",},
 	["Verteidigung"] = {StatLogic.Stats.Defense,},
@@ -189,10 +178,6 @@ L["StatIDLookup"] = {
 	["Angriffskraft"] = {"AP",},
 	["Erhöht Angriffskraft"] = {"AP",},
 	["Erhöht die Angriffskraft"] = {"AP",},
-	["Erhöht die Angriffskraft im Kampf gegen Untote"] = {"AP_UNDEAD",}, -- [Wristwraps of Undead Slaying] ID:23093
-	["Erhöht die Angriffskraft gegen Untote"] = {"AP_UNDEAD",}, -- [Seal of the Dawn] ID:13209
-	["Erhöht die Angriffskraft im Kampf gegen Untote. Ermöglicht das Einsammeln von Geißelsteinen im Namen der Argentumdämmerung"] = {"AP_UNDEAD",}, -- [Seal of the Dawn] ID:13209
-	["Erhöht die Angriffskraft im Kampf gegen Dämonen"] = {"AP_DEMON",}, -- [Mark of the Champion] ID:23206
 	["Angriffskraft in Katzengestalt"] = {"FERAL_AP",},
 	["Erhöht die Angriffskraft in Katzengestalt"] = {"FERAL_AP",},
 	["Distanzangriffskraft"] = {"RANGED_AP",},
@@ -243,10 +228,6 @@ L["StatIDLookup"] = {
 	["Erhöht durch Heiligzauber und Heiligeffekte zugefügten Schaden"] = {"HOLY_SPELL_DMG",},
 	["Erhöht durch Naturzauber und Natureffekte zugefügten Schaden"] = {"NATURE_SPELL_DMG",},
 	["Erhöht durch Schattenzauber und Schatteneffekte zugefügten Schaden"] = {"SHADOW_SPELL_DMG",}, -- Frozen Shadoweave Vest ID:21871
-
-	["Erhöht den durch Zauber und magische Effekte zugefügten Schaden gegen Untote"] = {"SPELL_DMG_UNDEAD"}, -- [Robe of Undead Cleansing] ID:23085
-	["Erhöht den durch Zauber und magische Effekte zugefügten Schaden gegen Untote um bis zu 48. Ermöglicht das Einsammeln von Geißelsteinen im Namen der Argentumdämmerung."] = {"SPELL_DMG_UNDEAD"}, -- [Rune of the Dawn] ID:19812
-	["Erhöht den durch Zauber und magische Effekte zugefügten Schaden gegen Untote und Dämonen"] = {"SPELL_DMG_UNDEAD", "SPELL_DMG_DEMON"}, -- [Mark of the Champion] ID:23207
 
 	["Erhöht Heilung"] = {"HEAL",},
 	["Heilung"] = {"HEAL",},

@@ -26,32 +26,24 @@ L["WholeTextLookup"] = {
 	["Волшебное масло"] = {["SPELL_DMG"] = 24, ["HEAL"] = 24}, -- ID: 20750
 	["Блестящее волшебное масло"] = {["SPELL_DMG"] = 36, ["HEAL"] = 36, [StatLogic.Stats.SpellCritRating] = 14}, -- ID: 20749
 	["Превосходное волшебное масло"] = {["SPELL_DMG"] = 42, ["HEAL"] = 42}, -- ID: 22522
-	["Благословленное волшебное масло"] = {["SPELL_DMG_UNDEAD"] = 60}, -- ID: 23123
 
 	["Слабое масло маны"] = {["MANA_REG"] = 4}, -- ID: 20745
 	["Простое масло маны"] = {["MANA_REG"] = 8}, -- ID: 20747
 	["Блестящее масло маны"] = {["MANA_REG"] = 12, ["HEAL"] = 25}, -- ID: 20748
 	["Превосходное масло маны"] = {["MANA_REG"] = 14}, -- ID: 22521
 
-	["Этерниевая леска"] = {["FISHING"] = 5}, --
 	["Жестокость"] = {["AP"] = 70}, --
 	["Живучесть I"] = {["MANA_REG"] = 4, ["HEALTH_REG"] = 4}, -- Enchant Boots - Vitality http://wow.allakhazam.com/db/spell.html?wspell=27948
 	["Ледяная душа"] = {["SHADOW_SPELL_DMG"] = 54, ["FROST_SPELL_DMG"] = 54}, --
 	["Солнечный огонь"] = {["ARCANE_SPELL_DMG"] = 50, ["FIRE_SPELL_DMG"] = 50},
 	["+50 к силе заклинаний огня и тайной магии"] = {["ARCANE_SPELL_DMG"] = 50, ["FIRE_SPELL_DMG"] = 50},
 
-	["Мифриловые шпоры"] = {["MOUNT_SPEED"] = 4}, -- Mithril Spurs
-	["Небольшое ускорение верховой езды"] = {["MOUNT_SPEED"] = 2}, -- Enchant Gloves - Riding Skill
-	["Надето: небольшое ускорение бега."] = {["RUN_SPEED"] = 8}, -- [Highlander's Plate Greaves] ID: 20048
-	["Небольшое ускорениеускорение бега"] = {["RUN_SPEED"] = 8}, --
-	["Небольшое увеличение скорости"] = {["RUN_SPEED"] = 8}, -- Enchant Boots - Minor Speed "Minor Speed Increase" http://wow.allakhazam.com/db/spell.html?wspell=13890
+	["Небольшое ускорениеускорение бега"] = false, --
+	["Небольшое увеличение скорости"] = false, -- Enchant Boots - Minor Speed "Minor Speed Increase" http://wow.allakhazam.com/db/spell.html?wspell=13890
 	["Небольшое увеличение скорости и +6 к ловкости"] = {["RUN_SPEED"] = 8, [StatLogic.Stats.Agility] = 6}, -- Enchant Boots - Cat's Swiftness "Minor Speed and +6 Agility" http://wow.allakhazam.com/db/spell.html?wspell=34007
 	["Небольшое увеличение скорости и +9 к выносливости"] = {["RUN_SPEED"] = 8, [StatLogic.Stats.Stamina] = 9}, -- Enchant Boots - Boar's Speed "Minor Speed and +9 Stamina"
 	["Верный шаг"] = {[StatLogic.Stats.MeleeHitRating] = 10}, -- Enchant Boots - Surefooted "Surefooted" http://wow.allakhazam.com/db/spell.html?wspell=27954
 
-	["Скрытность"] = {["THREAT_MOD"] = -2}, -- Enchant Cloak - Subtlety
-	["На 2% уменьшена угроза"] = {["THREAT_MOD"] = -2}, -- StatLogic:GetSum("item:23344:2832")
-	["+2% угрозы"] = {["THREAT_MOD"] = 2}, -- Formula: Enchant Gloves - Threat
 	["Надето: Позволяет дышать под водой."] = false, -- [Band of Icy Depths] ID: 21526
 	["Позволяет дышать под водой"] = false, --
 	--	["Equip: Immune to Disarm."] = false, -- [Stronghold Gauntlets] ID: 12639 -- Fixed for TBC Classic 2.5.1: no longer immune.
@@ -60,11 +52,6 @@ L["WholeTextLookup"] = {
 	["Рыцарь"] = false, -- Enchant Crusader
 	["Вампиризм"] = false,
 	["Мангуст"] = false, -- Enchant Mongoose
-	["Если на персонаже: Подчинение владельца воле Испепелителя."] = false, -- Corrupted Ashbringer
-	-- Shattered Sun Offensive necks
-	["Если на персонаже: Если вас превозносят Провидцы, у ваших атак ближнего и дальнего боя появляется шанс придать вам силу тайной магии, а при превознесении со стороны Алдоров – силу Света."] = false,
-	["Если на персонаже: Если вас превозносят Провидцы, у ваших заклинаний появляется шанс придать вам силу тайной магии, а при превознесении со стороны Алдоров – силу Света."] = false,
-	["Если на персонаже: Если вас превозносят Провидцы, у ваших целительных заклинаний появляется шанс придать вам силу тайной магии, а при превознесении со стороны Алдоров – силу Света."] = false,
 }
 ----------------------------
 -- Single Plus Stat Check --
@@ -87,7 +74,6 @@ L["SingleEquipStatCheck"] = "^Надето: (.-) by u?p? ?t?o? ?(%d+) ?(.-)%.?$"
 -- Special cases that need to be dealt with before deep scan
 L["PreScanPatterns"] = {
 	--["^Equip: Increases attack power by (%d+) in Cat"] = "FERAL_AP",
-	--["^Equip: Increases attack power by (%d+) when fighting Undead"] = "AP_UNDEAD", -- Seal of the Dawn ID:13029
 	["^(%d+) Block$"] = "BLOCK_VALUE",
 	["^Броня: (%d+)$"] = "ARMOR",
 	["Reinforced %(%+(%d+) Armor%)"] = "ARMOR_BONUS",
@@ -138,10 +124,7 @@ L["DeepScanPatterns"] = {
 -----------------------
 L["StatIDLookup"] = {
 	["Эффективность брони противника против ваших атак снижена на"] = {"IGNORE_ARMOR"}, -- StatLogic:GetSum("item:33733") (used tbc text)
-	["% Threat"] = {"THREAT_MOD"}, -- StatLogic:GetSum("item:23344:2613")
-	["Увеличение уровня эффективного действия незаметности"] = {"STEALTH_LEVEL"}, -- [Nightscape Boots] ID: 8197
 	["Weapon Damage"] = {"MELEE_DMG"}, -- Enchant
-	["увеличение скорости передвижения верхом на%"] = {"MOUNT_SPEED"}, -- [Highlander's Plate Greaves] ID: 20048
 
 	["ко всем характеристикам"] = {StatLogic.Stats.AllStats,},
 	["к силе"] = {StatLogic.Stats.Strength,},
@@ -166,13 +149,13 @@ L["StatIDLookup"] = {
 	["ко всем видам сопротивления"] = {"ARCANE_RES", "FIRE_RES", "FROST_RES", "NATURE_RES", "SHADOW_RES",},
 	["Resist All"] = {"ARCANE_RES", "FIRE_RES", "FROST_RES", "NATURE_RES", "SHADOW_RES",},
 
-	["к рыбной ловле"] = {"FISHING",}, -- Fishing enchant ID:846
-	["рыбная ловля"] = {"FISHING",}, -- Equip: Increased Fishing +20. (it actually looks like: Увеличение навыка "Рыбная ловля" на +20)
-	["к навыку рыбной ловли"] = {"FISHING",},
-	["навык рыбной ловли увеличивается на"] = {"FISHING",},
-	["к горному делу"] = {"MINING",}, -- Mining enchant ID:844
-	["к травничеству"] = {"HERBALISM",}, -- Heabalism enchant ID:845
-	["к снятию шкур"] = {"SKINNING",}, -- Skinning enchant ID:865
+	["к рыбной ловле"] = false, -- Fishing enchant ID:846
+	["рыбная ловля"] = false, -- Equip: Increased Fishing +20. (it actually looks like: Увеличение навыка "Рыбная ловля" на +20)
+	["к навыку рыбной ловли"] = false,
+	["навык рыбной ловли увеличивается на"] = false,
+	["к горному делу"] = false, -- Mining enchant ID:844
+	["к травничеству"] = false, -- Heabalism enchant ID:845
+	["к снятию шкур"] = false, -- Skinning enchant ID:865
 
 	["броня"] = {"ARMOR_BONUS",},
 	["к броне"] = {"ARMOR_BONUS",},
@@ -191,12 +174,6 @@ L["StatIDLookup"] = {
 	["сила атаки"] = {"AP",},
 	["увеличивает силу атаки на"] = {"AP",},
 	["повышает силу атаки на"] = {"AP",},
-	["силы атаки нав бою с нежитью"] = {"AP_UNDEAD",}, -- Actually looks like "Увеличение силы атаки на 45 ед. в бою с нежитью"
-	-- [Wristwraps of Undead Slaying] ID:23093
-	["увеличение силы атаки наед. в битве с нежитью"] = {"AP_UNDEAD",}, -- [Seal of the Dawn] ID:13209
-	["увеличение силы атаки наед. в бою с нежитью. Также позволяет собирать камни Плети от имени и по поручению Серебряного Рассвета"] = {"AP_UNDEAD",}, -- [Seal of the Dawn] ID:13209
-	["Increases attack powerwhen fighting Demons"] = {"AP_DEMON",}, -- (item example please)
-	["увеличение силы атаки наед. в бою с нежитью и демонами"] = {"AP_UNDEAD", "AP_DEMON",}, -- [Mark of the Champion] ID:23206
 	["увеличивает силу атаки нав облике кошки, медведя, лютого медведя и лунного совуха"] = {"FERAL_AP",},
 	["увеличивает силу атаки нав облике кошки"] = {"FERAL_AP",},
 	["сила атаки дальнего боя"] = {"RANGED_AP",},
@@ -265,10 +242,6 @@ L["StatIDLookup"] = {
 	["Increases the damage done by Frost spells and effects"] = {"FROST_SPELL_DMG",}, -- Added just in case
 	["Increases the damage done by Nature spells and effects"] = {"NATURE_SPELL_DMG",}, -- Added just in case
 	["Increases the damage done by Shadow spells and effects"] = {"SHADOW_SPELL_DMG",}, -- Added just in case
-
-	["увеличивает силу заклинаний, применяемых против нежити, на"] = {"SPELL_DMG_UNDEAD"}, -- [Robe of Undead Cleansing] ID:23085
-	["Increases damage done to Undead by magical spells and effects.  It also allows the acquisition of Scourgestones on behalf of the Argent Dawn"] = {"SPELL_DMG_UNDEAD"}, -- [Rune of the Dawn] ID:19812
-	["Increases damage done to Undead and Demons by magical spells and effects"] = {"SPELL_DMG_UNDEAD", "SPELL_DMG_DEMON"}, -- [Mark of the Champion] ID:23207
 
 	["Healing Spells"] = {"HEAL",}, -- Enchant Gloves - Major Healing "+35 Healing Spells" http://wow.allakhazam.com/db/spell.html?wspell=33999
 	["Increases Healing"] = {"HEAL",},

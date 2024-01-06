@@ -33,29 +33,22 @@ L["WholeTextLookup"] = {
 	["Aceite de zahorí"] = {["SPELL_DMG"] = 24, ["HEAL"] = 24}, -- ID: 20750
 	["Aceite de zahorí luminoso"] = {["SPELL_DMG"] = 36, ["HEAL"] = 36, [StatLogic.Stats.SpellCritRating] = 14}, -- ID: 20749
 	["Aceite de zahorí excelente"] = {["SPELL_DMG"] = 42, ["HEAL"] = 42}, -- ID: 22522
-	["Aceite de zahorí bendito"] = {["SPELL_DMG_UNDEAD"] = 60}, -- ID: 23123
 
 	["Aceite de maná menor"] = {["MANA_REG"] = 4}, -- ID: 20745
 	["Aceite de maná inferior"] = {["MANA_REG"] = 8}, -- ID: 20747
 	["Aceite de maná luminoso"] = {["MANA_REG"] = 12, ["HEAL"] = 25}, -- ID: 20748
 	["Aceite de maná excelente"] = {["MANA_REG"] = 14}, -- ID: 22521
 
-	["Sedal de eternio"] = {["FISHING"] = 5}, --
 	["Salvajismo"] = {["AP"] = 70}, --
 	["vitalidad"] = {["MANA_REG"] = 4, ["HEALTH_REG"] = 4}, -- Enchant Boots - Vitality http://wow.allakhazam.com/db/spell.html?wspell=27948
 	["escarcha de alma"] = {["SHADOW_SPELL_DMG"] = 54, ["FROST_SPELL_DMG"] = 54}, --
 	["fuego solar"] = {["ARCANE_SPELL_DMG"] = 50, ["FIRE_SPELL_DMG"] = 50}, --
 
-	["+4% Mount Speed"] = {["MOUNT_SPEED"] = 4}, -- Mithril Spurs
-	["+2% velocidad de la montura"] = {["MOUNT_SPEED"] = 2}, -- Enchant Gloves - Riding Skill
-	["Equipar: Velocidad de carrera aumentada ligeramente."] = {["RUN_SPEED"] = 8}, -- [Highlander's Plate Greaves] ID: 20048
-	["Velocidad de carrera aumentada ligeramente"] = {["RUN_SPEED"] = 8}, --
-	["Aumento mínimo de velocidad"] = {["RUN_SPEED"] = 8}, -- Enchant Boots - Minor Speed "Minor Speed Increase" http://wow.allakhazam.com/db/spell.html?wspell=13890
-	["velocidad mín."] = {["RUN_SPEED"] = 8}, -- Enchant Boots - Cat's Swiftness "Minor Speed and +6 Agility" http://wow.allakhazam.com/db/spell.html?wspell=34007
+	["Velocidad de carrera aumentada ligeramente"] = false, --
+	["Aumento mínimo de velocidad"] = false, -- Enchant Boots - Minor Speed "Minor Speed Increase" http://wow.allakhazam.com/db/spell.html?wspell=13890
+	["velocidad mín."] = false, -- Enchant Boots - Cat's Swiftness "Minor Speed and +6 Agility" http://wow.allakhazam.com/db/spell.html?wspell=34007
 	["Pies de plomo"] = {[StatLogic.Stats.MeleeHitRating] = 10}, -- Enchant Boots - Surefooted "Surefooted" http://wow.allakhazam.com/db/spell.html?wspell=27954
 
-	["Sutileza"] = {["THREAT_MOD"] = -2}, -- Enchant Cloak - Subtlety
-	["2% amenaza reducida"] = {["THREAT_MOD"] = -2}, -- StatLogic:GetSum("item:23344:2832")
 	["Equipar: Permite respirar bajo el agua."] = false, -- [Band of Icy Depths] ID: 21526
 	["Permite respirar bajo el agua"] = false, --
 	["Equipar: Inmune a la desactivación."] = false, -- [Stronghold Gauntlets] ID: 12639
@@ -91,7 +84,6 @@ L["SingleEquipStatCheck"] = "^Equipar: (.-) ?e?n? ?(%d+) ?p?(.-)"
 -- Special cases that need to be dealt with before base scan
 L["PreScanPatterns"] = {
 	--["^Equip: Increases attack power by (%d+) in Cat"] = "FERAL_AP",
-	--["^Equip: Increases attack power by (%d+) when fighting Undead"] = "AP_UNDEAD", -- Seal of the Dawn ID:13029
 	["^(%d+) bloqueo$"] = "BLOCK_VALUE",
 	["^(%d+) armadura$"] = "ARMOR",
 	["Reforzado %(%+(%d+)  armadura%)"] = "ARMOR_BUFF",
@@ -141,10 +133,7 @@ L["DeepScanPatterns"] = {
 -----------------------
 L["StatIDLookup"] = {
 	["Tus ataques ignorande la armadura de tu oponente"] = {"IGNORE_ARMOR"}, -- StatLogic:GetSum("item:33733")
-	["% Amenaza"] = {"THREAT_MOD"}, -- StatLogic:GetSum("item:23344:2613")
-	["Aumenta tu nivel efectivo de sigilo en"] = {"STEALTH_LEVEL"}, -- [Nightscape Boots] ID: 8197
 	["Daño de arma"] = {"MELEE_DMG"}, -- Enchant
-	["Aumenta la velocidad de la montura%"] = {"MOUNT_SPEED"}, -- [Highlander's Plate Greaves] ID: 20048
 
 	["Todas las Estadísticas."] = {StatLogic.Stats.AllStats,},
 	["Fuerza"] = {StatLogic.Stats.Strength,},
@@ -167,12 +156,12 @@ L["StatIDLookup"] = {
 	["todas las resistencias"] = {"ARCANE_RES", "FIRE_RES", "FROST_RES", "NATURE_RES", "SHADOW_RES",},
 	["resistencia a todo"] = {"ARCANE_RES", "FIRE_RES", "FROST_RES", "NATURE_RES", "SHADOW_RES",},
 
-	["Pesca"] = {"FISHING",}, -- Fishing enchant ID:846
-	["Habilidad en pesca"] = {"FISHING",}, -- Fishing lure
-	["Pesca aumentada"] = {"FISHING",}, -- Equip: Increased Fishing +20.
-	["minería"] = {"MINING",}, -- Mining enchant ID:844
-	["herboristería"] = {"HERBALISM",}, -- Heabalism enchant ID:845
-	["desuello"] = {"SKINNING",}, -- Skinning enchant ID:865
+	["Pesca"] = false, -- Fishing enchant ID:846
+	["Habilidad en pesca"] = false, -- Fishing lure
+	["Pesca aumentada"] = false, -- Equip: Increased Fishing +20.
+	["minería"] = false, -- Mining enchant ID:844
+	["herboristería"] = false, -- Heabalism enchant ID:845
+	["desuello"] = false, -- Skinning enchant ID:865
 
 	["Armadura"] = {"ARMOR_BONUS",},
 	["Defensa"] = {StatLogic.Stats.Defense,},
@@ -188,12 +177,6 @@ L["StatIDLookup"] = {
 
 	["Poder de ataque"] = {"AP",},
 	["Aumenta el poder de ataque"] = {"AP",},
-	["poder de ataque al enfrentarte a no-muertos."] = {"AP_UNDEAD",},
-	-- [Wristwraps of Undead Slaying] ID:23093
-	["Aumenta enel poder de ataque al enfrentarte a no-muertos"] = {"AP_UNDEAD",}, -- [Seal of the Dawn] ID:13209
-	["Aumenta enel poder de ataque al enfrentarte a no-muertos. También permite conseguir Piedras de la Plaga en nombre de El Alba Argenta"] = {"AP_UNDEAD",}, -- [Seal of the Dawn] ID:13209
-	["Aumenta enel poder de ataque al enfrentarte a demonios"] = {"AP_DEMON",},
-	["Aumenta enel poder de ataque al enfrentarte a no-muertos y demonios"] = {"AP_UNDEAD", "AP_DEMON",}, -- [Mark of the Champion] ID:23206
 	["Poder de ataque bajo formas felinas"] = {"FERAL_AP",},
 	["Aumenta enel poder de ataque bajo formas felinas"] = {"FERAL_AP",},
 	["Poder de ataque a distancia"] = {"RANGED_AP",},
@@ -254,10 +237,6 @@ L["StatIDLookup"] = {
 	["Aumenta el daño infligido por hechizos y efectos de Escarcha"] = {"FROST_SPELL_DMG",}, -- Added just in case
 	["Aumenta el daño infligido por hechizos y efectos de Naturaleza"] = {"NATURE_SPELL_DMG",}, -- Added just in case
 	["Aumenta el daño infligido por hechizos y efectos de las Sombras"] = {"SHADOW_SPELL_DMG",}, -- Added just in case
-
-	["Aumenta el daño infligido a los no-muertos mediante hechizos mágicos y los efectos hasta"] = {"SPELL_DMG_UNDEAD"}, -- [Robe of Undead Cleansing] ID:23085
-	["Aumenta el daño infligido a los no-muertos mediante hechizos mágicos y los efectos hasta. También permite conseguir piedras de la Plaga en nombre de El Alba Argenta"] = {"SPELL_DMG_UNDEAD"}, -- [Rune of the Dawn] ID:19812
-	["Aumenta el daño infligido a los no-muertos y demonios mediante hechizos mágicos y los efectos hasta"] = {"SPELL_DMG_UNDEAD", "SPELL_DMG_DEMON"}, -- [Mark of the Champion] ID:23207
 
 	["hechizos de sanación"] = {"HEAL",}, -- Enchant Gloves - Major Healing "+35 Healing Spells" http://wow.allakhazam.com/db/spell.html?wspell=33999
 	["aumentar la sanación"] = {"HEAL",},
