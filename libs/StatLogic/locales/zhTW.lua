@@ -41,7 +41,7 @@ L["WholeTextLookup"] = {
 	["略微提高奔跑速度"] = false, --
 	["移動速度略微提升"] = false, -- Enchant Boots - Minor Speed
 	["初級速度"] = false, -- Enchant Boots - Minor Speed
-	["穩固"] = {[StatLogic.Stats.MeleeHitRating] = 10}, -- Enchant Boots - Surefooted "Surefooted" http://wow.allakhazam.com/db/spell.html?wspell=27954
+	["穩固"] = {[StatLogic.Stats.MeleeHitRating] = 10}, -- Enchant Boots - Surefooted "Surefooted" spell: 27954
 
 	["裝備: 使你可以在水下呼吸。"] = false, -- [Band of Icy Depths] ID: 21526
 	["使你可以在水下呼吸"] = false, --

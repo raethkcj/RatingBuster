@@ -33,16 +33,16 @@ L["WholeTextLookup"] = {
 	["Превосходное масло маны"] = {["MANA_REG"] = 14}, -- ID: 22521
 
 	["Жестокость"] = {["AP"] = 70}, --
-	["Живучесть I"] = {["MANA_REG"] = 4, ["HEALTH_REG"] = 4}, -- Enchant Boots - Vitality http://wow.allakhazam.com/db/spell.html?wspell=27948
+	["Живучесть I"] = {["MANA_REG"] = 4, ["HEALTH_REG"] = 4}, -- Enchant Boots - Vitality spell: 27948
 	["Ледяная душа"] = {["SHADOW_SPELL_DMG"] = 54, ["FROST_SPELL_DMG"] = 54}, --
 	["Солнечный огонь"] = {["ARCANE_SPELL_DMG"] = 50, ["FIRE_SPELL_DMG"] = 50},
 	["+50 к силе заклинаний огня и тайной магии"] = {["ARCANE_SPELL_DMG"] = 50, ["FIRE_SPELL_DMG"] = 50},
 
 	["Небольшое ускорениеускорение бега"] = false, --
-	["Небольшое увеличение скорости"] = false, -- Enchant Boots - Minor Speed "Minor Speed Increase" http://wow.allakhazam.com/db/spell.html?wspell=13890
-	["Небольшое увеличение скорости и +6 к ловкости"] = {["RUN_SPEED"] = 8, [StatLogic.Stats.Agility] = 6}, -- Enchant Boots - Cat's Swiftness "Minor Speed and +6 Agility" http://wow.allakhazam.com/db/spell.html?wspell=34007
+	["Небольшое увеличение скорости"] = false, -- Enchant Boots - Minor Speed "Minor Speed Increase" spell: 13890
+	["Небольшое увеличение скорости и +6 к ловкости"] = {["RUN_SPEED"] = 8, [StatLogic.Stats.Agility] = 6}, -- Enchant Boots - Cat's Swiftness "Minor Speed and +6 Agility" spell: 34007
 	["Небольшое увеличение скорости и +9 к выносливости"] = {["RUN_SPEED"] = 8, [StatLogic.Stats.Stamina] = 9}, -- Enchant Boots - Boar's Speed "Minor Speed and +9 Stamina"
-	["Верный шаг"] = {[StatLogic.Stats.MeleeHitRating] = 10}, -- Enchant Boots - Surefooted "Surefooted" http://wow.allakhazam.com/db/spell.html?wspell=27954
+	["Верный шаг"] = {[StatLogic.Stats.MeleeHitRating] = 10}, -- Enchant Boots - Surefooted "Surefooted" spell: 27954
 
 	["Надето: Позволяет дышать под водой."] = false, -- [Band of Icy Depths] ID: 21526
 	["Позволяет дышать под водой"] = false, --
@@ -187,13 +187,13 @@ L["StatIDLookup"] = {
 	["your normal health regeneration"] = {"HEALTH_REG",}, -- Demons Blood ID: 10779
 	["Restoreshealth per 5 sec"] = {"HEALTH_REG",}, -- [Onyxia Blood Talisman] ID: 18406
 	["восполняетед. здоровья каждые 5 секунд"] = {"HEALTH_REG",}, -- [Resurgence Rod] ID:17743
-	["Mana Regen"] = {"MANA_REG",}, -- Prophetic Aura +4 Mana Regen/+10 Stamina/+24 Healing Spells http://wow.allakhazam.com/db/spell.html?wspell=24167
+	["Mana Regen"] = {"MANA_REG",}, -- Prophetic Aura +4 Mana Regen/+10 Stamina/+24 Healing Spells spell: 24167
 	["Mana per"] = {"MANA_REG",},
 	["mana per"] = {"MANA_REG",}, -- Resurgence Rod ID:17743 Most common
 	["Mana every"] = {"MANA_REG",},
 	["mana every"] = {"MANA_REG",},
 	["Mana every 5 Sec"] = {"MANA_REG",}, --
-	["mana every 5 sec"] = {"MANA_REG",}, -- Enchant Chest - Restore Mana Prime "+6 mana every 5 sec." http://wow.allakhazam.com/db/spell.html?wspell=33991
+	["mana every 5 sec"] = {"MANA_REG",}, -- Enchant Chest - Restore Mana Prime "+6 mana every 5 sec." spell: 33991
 	["Mana per 5 Seconds"] = {"MANA_REG",}, -- [Royal Shadow Draenite] ID: 23109
 	["Mana Per 5 sec"] = {"MANA_REG",}, -- [Royal Shadow Draenite] ID: 23109
 	["Mana per 5 sec"] = {"MANA_REG",}, -- [Cyclone Shoulderpads] ID: 29031
@@ -201,14 +201,14 @@ L["StatIDLookup"] = {
 	["восполнениеед. маны в 5 секунд"] = {"MANA_REG",},
 	["восполнениеед. маны за 5 сек."] = {"MANA_REG",},
 	["восполнениеед. маны раз в 5 секунд"] = {"MANA_REG",},
-	["Mana restored per 5 seconds"] = {"MANA_REG",}, -- Magister's Armor Kit +3 Mana restored per 5 seconds http://wow.allakhazam.com/db/spell.html?wspell=32399
-	["Mana Regenper 5 sec"] = {"MANA_REG",}, -- Enchant Bracer - Mana Regeneration "Mana Regen 4 per 5 sec." http://wow.allakhazam.com/db/spell.html?wspell=23801
-	["Mana per 5 Sec"] = {"MANA_REG",}, -- Enchant Bracer - Restore Mana Prime "6 Mana per 5 Sec." http://wow.allakhazam.com/db/spell.html?wspell=27913
+	["Mana restored per 5 seconds"] = {"MANA_REG",}, -- Magister's Armor Kit +3 Mana restored per 5 seconds spell: 32399
+	["Mana Regenper 5 sec"] = {"MANA_REG",}, -- Enchant Bracer - Mana Regeneration "Mana Regen 4 per 5 sec." spell: 23801
+	["Mana per 5 Sec"] = {"MANA_REG",}, -- Enchant Bracer - Restore Mana Prime "6 Mana per 5 Sec." spell: 27913
 
-	["проникающей способности заклинаний"] = {"SPELLPEN",}, -- Enchant Cloak - Spell Penetration "+20 Spell Penetration" http://wow.allakhazam.com/db/spell.html?wspell=34003
+	["проникающей способности заклинаний"] = {"SPELLPEN",}, -- Enchant Cloak - Spell Penetration "+20 Spell Penetration" spell: 34003
 	["увеличивает проникающую способность заклинаний на"] = {"SPELLPEN",},
 
-	["Healing and Spell Damage"] = {"SPELL_DMG", "HEAL",}, -- Arcanum of Focus +8 Healing and Spell Damage http://wow.allakhazam.com/db/spell.html?wspell=22844
+	["Healing and Spell Damage"] = {"SPELL_DMG", "HEAL",}, -- Arcanum of Focus +8 Healing and Spell Damage spell: 22844
 	["Damage and Healing Spells"] = {"SPELL_DMG", "HEAL",},
 	["Spell Damage and Healing"] = {"SPELL_DMG", "HEAL",}, --StatLogic:GetSum("item:22630")
 	["Spell Damage"] = {"SPELL_DMG", "HEAL",},
@@ -243,7 +243,7 @@ L["StatIDLookup"] = {
 	["Increases the damage done by Nature spells and effects"] = {"NATURE_SPELL_DMG",}, -- Added just in case
 	["Increases the damage done by Shadow spells and effects"] = {"SHADOW_SPELL_DMG",}, -- Added just in case
 
-	["Healing Spells"] = {"HEAL",}, -- Enchant Gloves - Major Healing "+35 Healing Spells" http://wow.allakhazam.com/db/spell.html?wspell=33999
+	["Healing Spells"] = {"HEAL",}, -- Enchant Gloves - Major Healing "+35 Healing Spells" spell: 33999
 	["Increases Healing"] = {"HEAL",},
 	["Healing"] = {"HEAL",}, -- StatLogic:GetSum("item:23344:206")
 	["healing Spells"] = {"HEAL",},
@@ -266,7 +266,7 @@ L["StatIDLookup"] = {
 	["повышает рейтинг уклонения на"] = {StatLogic.Stats.DodgeRating,},
 	["Parry Rating"] = {StatLogic.Stats.ParryRating,},
 	["повышает рейтинг парирования на"] = {StatLogic.Stats.ParryRating,},
-	["Shield Block Rating"] = {StatLogic.Stats.BlockRating,}, -- Enchant Shield - Lesser Block +10 Shield Block Rating http://wow.allakhazam.com/db/spell.html?wspell=13689
+	["Shield Block Rating"] = {StatLogic.Stats.BlockRating,}, -- Enchant Shield - Lesser Block +10 Shield Block Rating spell: 13689
 	["Block Rating"] = {StatLogic.Stats.BlockRating,},
 	["увеличение рейтинга блока наед"] = {StatLogic.Stats.BlockRating,},
 	["увеличивает рейтинг блокирования щитом на"] = {StatLogic.Stats.BlockRating,},
@@ -305,7 +305,7 @@ L["StatIDLookup"] = {
 	["Increases your ranged critical strike rating"] = {StatLogic.Stats.RangedCritRating,}, -- Fletcher's Gloves ID:7348
 
 	["устойчивость"] = {StatLogic.Stats.ResilienceRating,},
-	["рейтинг устойчивости"] = {StatLogic.Stats.ResilienceRating,}, -- Enchant Chest - Major Resilience "+15 Resilience Rating" http://wow.allakhazam.com/db/spell.html?wspell=33992
+	["рейтинг устойчивости"] = {StatLogic.Stats.ResilienceRating,}, -- Enchant Chest - Major Resilience "+15 Resilience Rating" spell: 33992
 	["повышает рейтинг устойчивости на"] = {StatLogic.Stats.ResilienceRating,},
 	["к рейтингу устойчивости"] = {StatLogic.Stats.ResilienceRating,},
 

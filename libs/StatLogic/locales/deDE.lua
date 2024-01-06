@@ -48,8 +48,8 @@ L["WholeTextLookup"] = {
 
 	["Lauftempo ein wenig erhöht"] = false, --
 	["Schwache Temposteigerung"] = false, -- Enchant Boots - Minor Speed
-	["Schwaches Tempo"] = false, -- Enchant Boots - Cat's Swiftness "Minor Speed and +6 Agility" http://wow.allakhazam.com/db/spell.html?wspell=34007
-	["Sicherer Stand"] = {[StatLogic.Stats.MeleeHitRating] = 10}, -- Enchant Boots - Surefooted "Surefooted" http://wow.allakhazam.com/db/spell.html?wspell=27954
+	["Schwaches Tempo"] = false, -- Enchant Boots - Cat's Swiftness "Minor Speed and +6 Agility" spell: 34007
+	["Sicherer Stand"] = {[StatLogic.Stats.MeleeHitRating] = 10}, -- Enchant Boots - Surefooted "Surefooted" spell: 27954
 
 	["Anlegen: Ermöglicht Unterwasseratmung."] = false, -- [Band of Icy Depths] ID: 21526
 	["Ermöglicht Unterwasseratmung"] = false, --
