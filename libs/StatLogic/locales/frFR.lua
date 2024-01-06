@@ -13,81 +13,15 @@ L["tonumber"] = function(s)
 	end
 end
 ------------------
--- Fast Exclude --
+-- Prefix Exclude --
 ------------------
--- By looking at the first ExcludeLen letters of a line we can exclude a lot of lines
-L["ExcludeLen"] = 5 -- using string.utf8len
-L["Exclude"] = {
-	[""] = true,
-	[" \n"] = true,
-	[ITEM_BIND_ON_EQUIP] = true, -- ITEM_BIND_ON_EQUIP = "Binds when equipped"; -- Item will be bound when equipped
-	[ITEM_BIND_ON_PICKUP] = true, -- ITEM_BIND_ON_PICKUP = "Binds when picked up"; -- Item wil be bound when picked up
-	[ITEM_BIND_ON_USE] = true, -- ITEM_BIND_ON_USE = "Binds when used"; -- Item will be bound when used
-	[ITEM_BIND_QUEST] = true, -- ITEM_BIND_QUEST = "Quest Item"; -- Item is a quest item (same logic as ON_PICKUP)
-	[ITEM_SOULBOUND] = true, -- ITEM_SOULBOUND = "Soulbound"; -- Item is Soulbound
-	[ITEM_STARTS_QUEST] = true, -- ITEM_STARTS_QUEST = "This Item Begins a Quest"; -- Item is a quest giver
-	[ITEM_CANT_BE_DESTROYED] = true, -- ITEM_CANT_BE_DESTROYED = "That item cannot be destroyed."; -- Attempted to destroy a NO_DESTROY item
-	[ITEM_CONJURED] = true, -- ITEM_CONJURED = "Conjured Item"; -- Item expires
-	[ITEM_DISENCHANT_NOT_DISENCHANTABLE] = true, -- ITEM_DISENCHANT_NOT_DISENCHANTABLE = "Cannot be disenchanted"; -- Items which cannot be disenchanted ever
-	["Désen"] = true, -- ITEM_DISENCHANT_ANY_SKILL = "Disenchantable"; -- Items that can be disenchanted at any skill level
-	-- ITEM_DISENCHANT_MIN_SKILL = "Disenchanting requires %s (%d)"; -- Minimum enchanting skill needed to disenchant
-	["Durée"] = true, -- ITEM_DURATION_DAYS = "Duration: %d days";
-	["<Arti"] = true, -- ITEM_CREATED_BY = "|cff00ff00<Made by %s>|r"; -- %s is the creator of the item
-	["Tps"] = true, -- ITEM_COOLDOWN_TIME_DAYS = "Cooldown remaining: %d day";
-	["Uniqu"] = true, -- Unique (20) -- ITEM_UNIQUE = "Unique"; -- Item is unique -- ITEM_UNIQUE_MULTIPLE = "Unique (%d)"; -- Item is unique
-	["Nivea"] = true, -- Requires Level xx -- ITEM_MIN_LEVEL = "Requires Level %d"; -- Required level to use the item
-	["\nNive"] = true, -- Requires Level xx -- ITEM_MIN_SKILL = "Requires %s (%d)"; -- Required skill rank to use the item
-	["Class"] = true, -- Classes: xx -- ITEM_CLASSES_ALLOWED = "Classes: %s"; -- Lists the classes allowed to use this item
-	["Races"] = true, -- Races: xx (vendor mounts) -- ITEM_RACES_ALLOWED = "Races: %s"; -- Lists the races allowed to use this item
-	["Utili"] = true, -- Use: -- ITEM_SPELL_TRIGGER_ONUSE = "Use:";
-	["Chanc"] = true, -- Chance On Hit: -- ITEM_SPELL_TRIGGER_ONPROC = "Chance on hit:";
-	-- Set Bonuses
-	-- ITEM_SET_BONUS = "Set: %s";
-	-- ITEM_SET_BONUS_GRAY = "(%d) Set: %s";
-	-- ITEM_SET_NAME = "%s (%d/%d)"; -- Set name (2/5)
-	["Ensem"] = true,--ensemble
-	["(2) E"] = true,
-	["(3) E"] = true,
-	["(4) E"] = true,
-	["(5) E"] = true,
-	["(6) E"] = true,
-	["(7) E"] = true,
-	["(8) E"] = true,
-	-- Equip type
-	[GetItemClassInfo(Enum.ItemClass.Projectile)] = true, -- Ice Threaded Arrow ID:19316
-	[INVTYPE_AMMO] = true,
-	[INVTYPE_HEAD] = true,
-	[INVTYPE_NECK] = true,
-	[INVTYPE_SHOULDER] = true,
-	[INVTYPE_BODY] = true,
-	[INVTYPE_CHEST] = true,
-	[INVTYPE_ROBE] = true,
-	[INVTYPE_WAIST] = true,
-	[INVTYPE_LEGS] = true,
-	[INVTYPE_FEET] = true,
-	[INVTYPE_WRIST] = true,
-	[INVTYPE_HAND] = true,
-	[INVTYPE_FINGER] = true,
-	[INVTYPE_TRINKET] = true,
-	[INVTYPE_CLOAK] = true,
-	[INVTYPE_WEAPON] = true,
-	[INVTYPE_SHIELD] = true,
-	[INVTYPE_2HWEAPON] = true,
-	[INVTYPE_WEAPONMAINHAND] = true,
-	[INVTYPE_WEAPONOFFHAND] = true,
-	[INVTYPE_HOLDABLE] = true,
-	[INVTYPE_RANGED] = true,
-	[GetItemSubClassInfo(Enum.ItemClass.Weapon, Enum.ItemWeaponSubclass.Thrown)] = true,
-	[INVTYPE_RELIC] = true,
-	[INVTYPE_TABARD] = true,
-	[INVTYPE_BAG] = true,
-}
-
+-- By looking at the first PrefixExcludeLength letters of a line we can exclude a lot of lines
+L["PrefixExcludeLength"] = 5 -- using string.utf8len
+L["PrefixExclude"] = {}
 -----------------------
 -- Whole Text Lookup --
 -----------------------
 -- Mainly used for enchants that doesn't have numbers in the text
-
 L["WholeTextLookup"] = {
 	[EMPTY_SOCKET_RED] = {["EMPTY_SOCKET_RED"] = 1}, -- EMPTY_SOCKET_RED = "Red Socket";
 	[EMPTY_SOCKET_YELLOW] = {["EMPTY_SOCKET_YELLOW"] = 1}, -- EMPTY_SOCKET_YELLOW = "Yellow Socket";

@@ -6,84 +6,15 @@ local StatLogic = LibStub("StatLogic")
 
 L["tonumber"] = tonumber
 ------------------
--- Fast Exclude --
+-- Prefix Exclude --
 ------------------
--- By looking at the first ExcludeLen letters of a line we can exclude a lot of lines
-L["ExcludeLen"] = 3
-L["Exclude"] = {
-	[""] = true,
-	[" \n"] = true,
-	[ITEM_BIND_ON_EQUIP] = true, -- ITEM_BIND_ON_EQUIP = "착용 시 귀속"; -- Item will be bound when equipped
-	[ITEM_BIND_ON_PICKUP] = true, -- ITEM_BIND_ON_PICKUP = "획득 시 귀속"; -- Item wil be bound when picked up
-	[ITEM_BIND_ON_USE] = true, -- ITEM_BIND_ON_USE = "사용 시 귀속"; -- Item will be bound when used
-	[ITEM_BIND_QUEST] = true, -- ITEM_BIND_QUEST = "퀘스트 아이템"; -- Item is a quest item (same logic as ON_PICKUP)
-	[ITEM_SOULBOUND] = true, -- ITEM_SOULBOUND = "귀속 아이템"; -- Item is Soulbound
-	--[EMPTY_SOCKET_BLUE] = true, -- EMPTY_SOCKET_BLUE = "푸른색 보석 홈";
-	--[EMPTY_SOCKET_META] = true, -- EMPTY_SOCKET_META = "얼개 보석 홈";
-	--[EMPTY_SOCKET_RED] = true, -- EMPTY_SOCKET_RED = "붉은색 보석 홈";
-	--[EMPTY_SOCKET_YELLOW] = true, -- EMPTY_SOCKET_YELLOW = "노란색 보석 홈";
-	[ITEM_STARTS_QUEST] = true, -- ITEM_STARTS_QUEST = "퀘스트 시작 아이템"; -- Item is a quest giver
-	[ITEM_CANT_BE_DESTROYED] = true, -- ITEM_CANT_BE_DESTROYED = "그 아이템은 버릴 수 없습니다."; -- Attempted to destroy a NO_DESTROY item
-	[ITEM_CONJURED] = true, -- ITEM_CONJURED = "창조된 아이템"; -- Item expires
-	[ITEM_DISENCHANT_NOT_DISENCHANTABLE] = true, -- ITEM_DISENCHANT_NOT_DISENCHANTABLE = "마력 추출 불가"; -- Items which cannot be disenchanted ever
-	["마력 "] = true, -- ITEM_DISENCHANT_ANY_SKILL = "마력 추출 가능"; -- Items that can be disenchanted at any skill level
-	-- ITEM_DISENCHANT_MIN_SKILL = "마력 추출 요구 사항: %s (%d)"; -- Minimum enchanting skill needed to disenchant
-	["지속시"] = true, -- ITEM_DURATION_DAYS = "지속시간: %d일";
-	["<제작"] = true, -- ITEM_CREATED_BY = "|cff00ff00<제작자: %s>|r"; -- %s is the creator of the item
-	["재사용"] = true, -- ITEM_COOLDOWN_TIME_DAYS = "재사용 대기시간: %d일";
-	["고유 "] = true, -- Unique (20)
-	["최소 "] = true, -- Requires Level xx
-	["\n최소"] = true, -- Requires Level xx
-	["직업:"] = true, -- Classes: xx
-	["종족:"] = true, -- Races: xx (vendor mounts)
-	["사용 "] = true, -- Use:
-	["발동 "] = true, -- Chance On Hit:
-	-- Set Bonuses
-	-- ITEM_SET_BONUS = "세트 효과: %s";
-	-- ITEM_SET_BONUS_GRAY = "(%d) 세트 효과: %s";
-	-- ITEM_SET_NAME = "%s (%d/%d)"; -- Set name (2/5)
-	["세트 "] = true,
-	["(2)"] = true,
-	["(3)"] = true,
-	["(4)"] = true,
-	["(5)"] = true,
-	["(6)"] = true,
-	["(7)"] = true,
-	["(8)"] = true,
-	-- Equip type
-	[GetItemClassInfo(Enum.ItemClass.Projectile)] = true, -- Ice Threaded Arrow ID:19316
-	[INVTYPE_AMMO] = true,
-	[INVTYPE_HEAD] = true,
-	[INVTYPE_NECK] = true,
-	[INVTYPE_SHOULDER] = true,
-	[INVTYPE_BODY] = true,
-	[INVTYPE_CHEST] = true,
-	[INVTYPE_ROBE] = true,
-	[INVTYPE_WAIST] = true,
-	[INVTYPE_LEGS] = true,
-	[INVTYPE_FEET] = true,
-	[INVTYPE_WRIST] = true,
-	[INVTYPE_HAND] = true,
-	[INVTYPE_FINGER] = true,
-	[INVTYPE_TRINKET] = true,
-	[INVTYPE_CLOAK] = true,
-	[INVTYPE_WEAPON] = true,
-	[INVTYPE_SHIELD] = true,
-	[INVTYPE_2HWEAPON] = true,
-	[INVTYPE_WEAPONMAINHAND] = true,
-	[INVTYPE_WEAPONOFFHAND] = true,
-	[INVTYPE_HOLDABLE] = true,
-	[INVTYPE_RANGED] = true,
-	[GetItemSubClassInfo(Enum.ItemClass.Weapon, Enum.ItemWeaponSubclass.Thrown)] = true,
-	[INVTYPE_RELIC] = true,
-	[INVTYPE_TABARD] = true,
-	[INVTYPE_BAG] = true,
-}
+-- By looking at the first PrefixExcludeLength letters of a line we can exclude a lot of lines
+L["PrefixExcludeLength"] = 3
+L["PrefixExclude"] = {}
 -----------------------
 -- Whole Text Lookup --
 -----------------------
 -- Mainly used for enchants that doesn't have numbers in the text
--- http://wow.allakhazam.com/db/enchant.html?slot=0&locale=enUS
 L["WholeTextLookup"] = {
 	[EMPTY_SOCKET_RED] = {["EMPTY_SOCKET_RED"] = 1}, -- EMPTY_SOCKET_RED = "Red Socket";
 	[EMPTY_SOCKET_YELLOW] = {["EMPTY_SOCKET_YELLOW"] = 1}, -- EMPTY_SOCKET_YELLOW = "Yellow Socket";

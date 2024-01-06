@@ -1554,7 +1554,7 @@ do
 		return debugText..", ".."|cffffff59"..tostring(id).."="..tostring(value)
 	end
 
-	local function ParseIDTable(idTable, text, value, scanner)
+	local function ParseMatch(idTable, text, value, scanner)
 		local found = false
 		if idTable == false then
 			found = true
@@ -1647,20 +1647,25 @@ do
 				-- Mainly used for enchants or stuff without numbers:
 				-- "Mithril Spurs"
 				local idTable = L.WholeTextLookup[text]
-				local found = ParseIDTable(idTable, text, false, "WholeText")
+				local found = ParseMatch(idTable, text, false, "WholeText")
 
-				------------------
-				-- Fast Exclude --
-				------------------
-				-- Exclude obvious strings that do not need to be checked, also exclude lines that are not white and green and normal (normal for Frozen Wrath bonus)
+				--------------------
+				-- Prefix Exclude --
+				--------------------
+				-- Exclude strings with prefixes that do not need to be checked,
 				if not found then
-					if L.Exclude[text]
-					  or L.Exclude[strutf8sub(text, 1, L.ExcludeLen)]
-					  or text:sub(1, 1) == '"'
-					  or g < 0.8
-					  or (b < 0.99 and b > 0.1)
-					then
-						found = ParseIDTable(false, text, nil, "Fast")
+					if L.PrefixExclude[strutf8sub(text, 1, L.PrefixExcludeLength)] or text:sub(1, 1) == '"' then
+						found = ParseMatch(false, text, nil, "Prefix")
+					end
+				end
+
+				-------------------
+				-- Color Exclude --
+				-------------------
+				-- Exclude lines that are not white, green, or "normal" (normal for Frozen Wrath etc.)
+				if not found then
+					if g < 0.8 or (b < 0.99 and b > 0.1) then
+						found = ParseMatch(false, text, nil, "Color")
 					end
 				end
 
@@ -1678,7 +1683,7 @@ do
 							value, statText = statText, value
 						end
 						idTable = L.StatIDLookup[statText]
-						found = ParseIDTable(idTable, text, value, "SinglePlus")
+						found = ParseMatch(idTable, text, value, "SinglePlus")
 					end
 				end
 
@@ -1692,7 +1697,7 @@ do
 					if value then
 						local statText = statText1..statText2
 						idTable = L.StatIDLookup[strutf8lower(statText)]
-						found = ParseIDTable(idTable, text, value, "SingleEquip")
+						found = ParseMatch(idTable, text, value, "SingleEquip")
 					end
 				end
 
@@ -1703,7 +1708,7 @@ do
 						local value
 						found, _, value = text:find(pattern)
 						if found then
-							ParseIDTable(id and {id}, text, value, "PreScan")
+							ParseMatch(id and {id}, text, value, "PreScan")
 							break
 						end
 					end
@@ -1766,7 +1771,7 @@ do
 						-- Whole Text Lookup
 						local foundWholeText = false
 						idTable = L.WholeTextLookup[phrase]
-						found = ParseIDTable(idTable, phrase, false, "DeepScan WholeText")
+						found = ParseMatch(idTable, phrase, false, "DeepScan WholeText")
 						foundWholeText = found
 
 						-- Scan DualStatPatterns
@@ -1810,7 +1815,7 @@ do
 								if value then
 									local statText = statText1..statText2
 									idTable = L.StatIDLookup[statText]
-									found = ParseIDTable(idTable, phrase, value, "DeepScan")
+									found = ParseMatch(idTable, phrase, value, "DeepScan")
 									foundDeepScan1 = found
 									if found then
 										break
@@ -1839,7 +1844,7 @@ do
 								-- Whole Text Lookup
 								foundWholeText = false
 								idTable = L.WholeTextLookup[word]
-								found = ParseIDTable(idTable, word, false, "DeepScan2 WholeText")
+								found = ParseMatch(idTable, word, false, "DeepScan2 WholeText")
 								foundWholeText = found
 
 								-- Scan DualStatPatterns
@@ -1877,7 +1882,7 @@ do
 										if value then
 											local statText = statText1..statText2
 											idTable = L.StatIDLookup[statText]
-											found = ParseIDTable(idTable, word, value, "DeepScan2")
+											found = ParseMatch(idTable, word, value, "DeepScan2")
 											foundDeepScan2 = found
 											if found then
 												break
