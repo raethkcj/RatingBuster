@@ -63,7 +63,7 @@ L["SinglePlusStatCheck"] = "^(.-) ([%+%-]%d+)%.?$"
 -- Single Equip Stat Check --
 -----------------------------
 -- "^Equip: (.-) by u?p? ?t?o? ?(%d+) ?(.-)%.?$"
-L["SingleEquipStatCheck"] = "^착용 효과: (.-) (%d+)만큼(.-)$"
+L["SingleEquipStatCheck"] = "^" .. ITEM_SPELL_TRIGGER_ONEQUIP .. " (.-) (%d+)만큼(.-)$"
 -------------
 -- PreScan --
 -------------

@@ -79,7 +79,8 @@ L["SinglePlusStatCheck"] = "^([%+%-]%d+) (.-)%.?$"
 -- Single Equip Stat Check --
 -----------------------------
 -- "^Equip: (.-) by u?p? ?t?o? ?(%d+) ?(.-)%.?$"
-L["SingleEquipStatCheck"] = "^Équipé\194\160: Augmente (.-) ?de (%d+) ?a?u? ?m?a?x?i?m?u?m? ?(.-)%.?$"
+-- \194\160 is a UTF-8 non-breaking space
+L["SingleEquipStatCheck"] = "^" .. ITEM_SPELL_TRIGGER_ONEQUIP .. " Augmente (.-) ?de (%d+)\194?\160? ?a?u? ?m?a?x?i?m?u?m? ?(.-)%.?$"
 -------------
 -- PreScan --
 -------------
