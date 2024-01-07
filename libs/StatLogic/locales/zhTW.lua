@@ -276,6 +276,8 @@ L["StatIDLookup"] = {
 	["使盾牌格擋等級"] = {StatLogic.Stats.BlockRating,},
 	["使你的盾牌格擋等級"] = {StatLogic.Stats.BlockRating,},
 
+	["Improves your chance to hit%"] = {"MELEE_HIT", "RANGED_HIT"},
+	["Improves your chance to hit with spells and with melee and ranged attacks%"] = {"MELEE_HIT", "RANGED_HIT", "SPELL_HIT"},
 	["命中等級"] = {StatLogic.Stats.HitRating,},
 	["提高命中等級"] = {StatLogic.Stats.HitRating,}, -- ITEM_MOD_HIT_RATING
 	["提高近戰命中等級"] = {StatLogic.Stats.MeleeHitRating,}, -- ITEM_MOD_HIT_MELEE_RATING

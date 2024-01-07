@@ -271,7 +271,8 @@ L["StatIDLookup"] = {
 	["увеличение рейтинга блока наед"] = {StatLogic.Stats.BlockRating,},
 	["увеличивает рейтинг блокирования щитом на"] = {StatLogic.Stats.BlockRating,},
 
-	["Improves your chance to hit%"] = {"MELEE_HIT"},
+	["Вероятность нанесения удара увеличена%"] = {"MELEE_HIT", "RANGED_HIT"},
+	["Повышает вероятность попадания заклинаниями и атаками в ближнем и дальнем бою%"] = {"MELEE_HIT", "RANGED_HIT", "SPELL_HIT"},
 	["Hit Rating"] = {StatLogic.Stats.MeleeHitRating,},
 	["повышает меткость"] = {StatLogic.Stats.HitRating,}, -- ITEM_MOD_HIT_RATING
 	["меткость в ближнем бою"] = {StatLogic.Stats.MeleeHitRating,}, -- ITEM_MOD_HIT_MELEE_RATING

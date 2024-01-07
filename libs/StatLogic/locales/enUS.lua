@@ -281,6 +281,7 @@ L["StatIDLookup"] = {
 	["Increases your chance to block attacks with a shield%"] = {"BLOCK_CHANCE",},
 
 	["Improves your chance to hit%"] = {"MELEE_HIT", "RANGED_HIT"},
+	["Improves your chance to hit with spells and with melee and ranged attacks%"] = {"MELEE_HIT", "RANGED_HIT", "SPELL_HIT"},
 	["Hit Rating"] = {StatLogic.Stats.HitRating,},
 	["Improves hit rating"] = {StatLogic.Stats.HitRating,}, -- ITEM_MOD_HIT_RATING
 	["Increases your hit rating"] = {StatLogic.Stats.HitRating,},

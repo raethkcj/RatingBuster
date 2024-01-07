@@ -263,6 +263,7 @@ L["StatIDLookup"] = {
 	["Aumenta tu índice de bloqueo con escudo"] = {StatLogic.Stats.BlockRating,},
 
 	["Mejora tu probabilidad de alcanzar el objetivo%"] = {"MELEE_HIT", "RANGED_HIT"},
+	["Aumenta% tu probabilidad de golpear con hechizos, ataques cuerpo a cuerpo y ataques a distancia."] = {"MELEE_HIT", "RANGED_HIT", "SPELL_HIT"},
 	["índice de golpe"] = {StatLogic.Stats.HitRating,},
 	["Aumenta tu índice de golpe"] = {StatLogic.Stats.HitRating,},
 	["Mejora el índice de golpe"] = {StatLogic.Stats.HitRating,}, -- ITEM_MOD_HIT_RATING

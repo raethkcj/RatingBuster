@@ -302,6 +302,8 @@ L["StatIDLookup"] = {
 	["votre score de blocage"] = {StatLogic.Stats.BlockRating},
 	["au score de blocage"] = {StatLogic.Stats.BlockRating}, -- Ench. de bouclier (Blocage inférieur) "+10 au score de blocage" -- ID: 13689
 
+	["vos chances de toucher%"] = {"MELEE_HIT", "RANGED_HIT"},
+	["les chances de toucher avec les sorts et les attaques en mêlée et à distance%"] = {"MELEE_HIT", "RANGED_HIT", "SPELL_HIT"},
 	["score de toucher"] = {StatLogic.Stats.HitRating},
 	["le score de toucher"] = {StatLogic.Stats.HitRating},
 	["votre score de toucher"] = {StatLogic.Stats.HitRating},

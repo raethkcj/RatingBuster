@@ -253,6 +253,7 @@ L["StatIDLookup"] = {
 	["Erhöt den Blockwet Eures Schildes"] = {StatLogic.Stats.BlockRating,},
 
 	["verbessert eure trefferchance%"] = {"MELEE_HIT", "RANGED_HIT",},
+	["Erhöht Eure Trefferchance mit Zaubern sowie Nahkampf- und Distanzangriffen%"] = {"MELEE_HIT", "RANGED_HIT", "SPELL_HIT"},
 	["erhöht eure chance mit zaubern zu treffen%"] = {"SPELL_HIT",},
 	["Trefferwertung"] = {StatLogic.Stats.HitRating,},
 	["Erhöht Trefferwertung"] = {StatLogic.Stats.HitRating,}, -- ITEM_MOD_HIT_RATING

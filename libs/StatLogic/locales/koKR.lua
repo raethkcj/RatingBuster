@@ -253,6 +253,8 @@ L["StatIDLookup"] = {
 	["방패 막기 숙련도"] = {StatLogic.Stats.BlockRating,}, -- Enchant Shield - Lesser Block +10 Shield Block Rating spell: 13689
 	["방패 막기 숙련도가 증가합니다"] = {StatLogic.Stats.BlockRating,},
 
+	["Improves your chance to hit%"] = {"MELEE_HIT", "RANGED_HIT"},
+	["Improves your chance to hit with spells and with melee and ranged attacks%"] = {"MELEE_HIT", "RANGED_HIT", "SPELL_HIT"},
 	["적중도"] = {StatLogic.Stats.HitRating,},
 	["적중도가 증가합니다"] = {StatLogic.Stats.HitRating,}, -- ITEM_MOD_HIT_RATING
 	["근접 적중도가 증가합니다"] = {StatLogic.Stats.MeleeHitRating,}, -- ITEM_MOD_HIT_MELEE_RATING
