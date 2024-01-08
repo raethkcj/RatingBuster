@@ -744,8 +744,8 @@ L["SPELLPEN"] =  "Проникающая способность заклинан
 L["HEALTH"] =  "Здоровье"
 L["MANA"] =  "Мана"
 
-L["AVERAGE_DAMAGE"] =  "Average Damage"
-L["DPS"] =  "Урон в секунду"
+L[StatLogic.Stats.WeaponDamageAverage] =  "Average Damage"
+L[StatLogic.Stats.WeaponDPS] =  "Урон в секунду"
 
 L[StatLogic.Stats.DefenseRating] =  "Рейтинг защиты"     -- COMBAT_RATING_NAME2 = "Defense Rating"
 L[StatLogic.Stats.DodgeRating] =  "Рейтинг уклонения"    -- COMBAT_RATING_NAME3 = "Dodge Rating"

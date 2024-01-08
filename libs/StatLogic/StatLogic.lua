@@ -381,6 +381,14 @@ StatLogic.StatModInfo = {
 		initialValue = 0,
 		finalAdjust = 0,
 	},
+	["ADD_WEAPON_DAMAGE_AVERAGE_MOD_WEAPON_DAMAGE_MIN"] = {
+		initialValue = 0,
+		finalAdjust = 0,
+	},
+	["ADD_WEAPON_DAMAGE_AVERAGE_MOD_WEAPON_DAMAGE_MAX"] = {
+		initialValue = 0,
+		finalAdjust = 0,
+	},
 	["MOD_AGI"] = {
 		initialValue = 0,
 		finalAdjust = 1,

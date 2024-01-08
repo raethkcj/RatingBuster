@@ -253,8 +253,8 @@ L["StatIDLookup"] = {
 	["提高所有法术和魔法效果所造成的治疗效果"] = {"HEAL",},
 	["使周围半径30码范围内的所有小队成员的法术和魔法效果所造成的治疗效果"] = {"HEAL",}, -- Atiesh, ID: 22631
 
-	["每秒伤害"] = {"DPS",},
-	["每秒伤害提高"] = {"DPS",}, -- [Thorium Shells] ID: 15997
+	["每秒伤害"] = {StatLogic.Stats.WeaponDPS,},
+	["每秒伤害提高"] = {StatLogic.Stats.WeaponDPS,}, -- [Thorium Shells] ID: 15997
 
 	["防御等级"] = {StatLogic.Stats.DefenseRating,},
 	["防御等级提高"] = {StatLogic.Stats.DefenseRating,},

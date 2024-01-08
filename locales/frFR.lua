@@ -610,8 +610,8 @@ L["SPELLPEN"] = "Pénétration des sorts"
 L["HEALTH"] = "Points de vie"
 L["MANA"] = "Points de mana"
 
-L["AVERAGE_DAMAGE"] = "Average Damage"
-L["DPS"] = "Dégâts par seconde"
+L[StatLogic.Stats.WeaponDamageAverage] = "Average Damage"
+L[StatLogic.Stats.WeaponDPS] = "Dégâts par seconde"
 
 L[StatLogic.Stats.DefenseRating] = "Score de défense"
 L[StatLogic.Stats.DodgeRating] = "Score d'esquive"

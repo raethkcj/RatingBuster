@@ -606,8 +606,8 @@ L["SPELLPEN"] = PLAYERSTAT_SPELL_COMBAT.." "..SPELL_PENETRATION
 L["HEALTH"] = HEALTH
 L["MANA"] = MANA
 
-L["AVERAGE_DAMAGE"] = "Average Damage"
-L["DPS"] = "초당 공격력"
+L[StatLogic.Stats.WeaponDamageAverage] = "Average Damage"
+L[StatLogic.Stats.WeaponDPS] = "초당 공격력"
 
 L[StatLogic.Stats.DefenseRating] = COMBAT_RATING_NAME2 -- COMBAT_RATING_NAME2 = "Defense Rating"
 L[StatLogic.Stats.DodgeRating] = COMBAT_RATING_NAME3 -- COMBAT_RATING_NAME3 = "Dodge Rating"

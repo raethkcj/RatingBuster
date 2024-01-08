@@ -241,8 +241,8 @@ L["StatIDLookup"] = {
 	["주위 30미터 반경에 있는 모든 파티원의 모든 주문 및 효과에 의한 치유량이 증가합니다"] = {"HEAL",}, -- Atiesh
 	["your healing"] = {"HEAL",}, -- Atiesh
 
-	["초당 공격력"] = {"DPS",},
-	["초당의 피해 추가"] = {"DPS",}, -- [Thorium Shells] ID: 15977
+	["초당 공격력"] = {StatLogic.Stats.WeaponDPS,},
+	["초당의 피해 추가"] = {StatLogic.Stats.WeaponDPS,}, -- [Thorium Shells] ID: 15977
 
 	["방어 숙련도"] = {StatLogic.Stats.DefenseRating,},
 	["방어 숙련도가 증가합니다"] = {StatLogic.Stats.DefenseRating,},

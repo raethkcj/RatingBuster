@@ -248,8 +248,8 @@ L["StatIDLookup"] = {
 	["Aumentala sanación de los hechizos mágicos y los efectos para todos los miembros del grupo en un radio de 30 m"] = {"HEAL",}, -- Atiesh
 	--["your healing"] = {"HEAL",}, -- Atiesh
 
-	["daño por segundo"] = {"DPS",},
-	["Añadedaño por segundo"] = {"DPS",}, -- [Thorium Shells] ID: 15977
+	["daño por segundo"] = {StatLogic.Stats.WeaponDPS,},
+	["Añadedaño por segundo"] = {StatLogic.Stats.WeaponDPS,}, -- [Thorium Shells] ID: 15977
 
 	["índice de defensa"] = {StatLogic.Stats.DefenseRating,},
 	["Aumenta el índice de defensa"] = {StatLogic.Stats.DefenseRating,},

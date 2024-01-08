@@ -237,9 +237,9 @@ L["StatIDLookup"] = {
 	["Erhöht durch Zauber und magische Effekte zugefügte Heilung aller Gruppenmitglieder, die sich im Umkreis von 30 befinden,"] = {"HEAL",}, -- Atiesh
 	--					["your healing"] = {"HEAL",}, -- Atiesh
 
-	["Schaden pro Sekunde"] = {"DPS",},
-	["zusätzlichen Schaden pro Sekunde"] = {"DPS",}, -- [Thorium Shells] ID: 15997 "Verursacht 17.5 zusätzlichen Schaden pro Sekunde."
-	["Verursacht zusätzlichen Schaden pro Sekunde"] = {"DPS",}, -- [Thorium Shells] ID: 15997
+	["Schaden pro Sekunde"] = {StatLogic.Stats.WeaponDPS,},
+	["zusätzlichen Schaden pro Sekunde"] = {StatLogic.Stats.WeaponDPS,}, -- [Thorium Shells] ID: 15997 "Verursacht 17.5 zusätzlichen Schaden pro Sekunde."
+	["Verursacht zusätzlichen Schaden pro Sekunde"] = {StatLogic.Stats.WeaponDPS,}, -- [Thorium Shells] ID: 15997
 
 	["Verteidigungswertung"] = {StatLogic.Stats.DefenseRating,},
 	["Erhöht Verteidigungswertung"] = {StatLogic.Stats.DefenseRating,},

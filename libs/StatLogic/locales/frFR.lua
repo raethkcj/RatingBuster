@@ -275,8 +275,8 @@ L["StatIDLookup"] = {
 	--["Increases healing done by magical spells and effects of all party members within 30 yards"] = {"HEAL"}, -- Atiesh
 	--["your healing"] = {"HEAL"}, -- Atiesh
 
-	["dégâts par seconde"] = {"DPS"},
-	["Ajoutedégâts par seconde"] = {"DPS"}, -- [Obus en thorium] ID: 15997
+	["dégâts par seconde"] = {StatLogic.Stats.WeaponDPS},
+	["Ajoutedégâts par seconde"] = {StatLogic.Stats.WeaponDPS}, -- [Obus en thorium] ID: 15997
 
 	["score de défense"] = {StatLogic.Stats.DefenseRating},
 	["au score de défense"] = {StatLogic.Stats.DefenseRating},

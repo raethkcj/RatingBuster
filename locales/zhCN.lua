@@ -606,8 +606,8 @@ L["SPELLPEN"] = "法术穿透"
 L["HEALTH"] = HEALTH
 L["MANA"] = MANA
 
-L["AVERAGE_DAMAGE"] = "Average Damage"
-L["DPS"] = "每秒伤害"
+L[StatLogic.Stats.WeaponDamageAverage] = "Average Damage"
+L[StatLogic.Stats.WeaponDPS] = "每秒伤害"
 
 L[StatLogic.Stats.DefenseRating] = COMBAT_RATING_NAME2 -- COMBAT_RATING_NAME2 = "Defense Rating"
 L[StatLogic.Stats.DodgeRating] = COMBAT_RATING_NAME3 -- COMBAT_RATING_NAME3 = "Dodge Rating"

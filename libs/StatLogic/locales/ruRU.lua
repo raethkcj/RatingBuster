@@ -254,8 +254,8 @@ L["StatIDLookup"] = {
 	["Increases healing done by magical spells and effects of all party members within 30 yards"] = {"HEAL",}, -- Atiesh
 	["your healing"] = {"HEAL",}, -- Atiesh
 
-	["damage per second"] = {"DPS",},
-	["Addsdamage per second"] = {"DPS",}, -- [Thorium Shells] ID: 15977
+	["damage per second"] = {StatLogic.Stats.WeaponDPS,},
+	["Addsdamage per second"] = {StatLogic.Stats.WeaponDPS,}, -- [Thorium Shells] ID: 15977
 
 	["Defense Rating"] = {StatLogic.Stats.DefenseRating,},
 	["повышает рейтинг защиты на"] = {StatLogic.Stats.DefenseRating,},

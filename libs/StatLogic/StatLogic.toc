@@ -18,3 +18,4 @@ locales\locales.xml
 
 StatLogic.lua
 Cata_Logic.lua
+Global_Logic.lua
