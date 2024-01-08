@@ -75,8 +75,8 @@ L["SingleEquipStatCheck"] = "^" .. ITEM_SPELL_TRIGGER_ONEQUIP .. " (.-)(%d+)點(
 L["PreScanPatterns"] = {
 	--["^Equip: Increases attack power by (%d+) in Cat"] = "FERAL_AP",
 	["^(%d+)格擋$"] = "BLOCK_VALUE",
-	["^(%d+)點護甲$"] = "ARMOR",
-	["強化護甲 %+(%d+)"] = "ARMOR_BONUS",
+	["^(%d+)點護甲$"] = StatLogic.Stats.Armor,
+	["強化護甲 %+(%d+)"] = StatLogic.Stats.BonusArmor,
 	-- Exclude
 	["^(%d+)格.-包"] = false, -- # of slots and bag type
 	["^(%d+)格.-袋"] = false, -- # of slots and bag type
@@ -164,9 +164,9 @@ L["StatIDLookup"] = {
 	["草藥學"] = false, -- Heabalism enchant ID:845
 	["剝皮"] = false, -- Skinning enchant ID:865
 
-	["護甲"] = {"ARMOR_BONUS",},
-	["護甲值"] = {"ARMOR_BONUS",},
-	["強化護甲"] = {"ARMOR_BONUS",},
+	["護甲"] = {StatLogic.Stats.BonusArmor,},
+	["護甲值"] = {StatLogic.Stats.BonusArmor,},
+	["強化護甲"] = {StatLogic.Stats.BonusArmor,},
 	["防禦"] = {StatLogic.Stats.Defense,},
 	["增加防禦"] = {StatLogic.Stats.Defense,},
 	["格擋"] = {"BLOCK_VALUE",}, -- +22 Block Value

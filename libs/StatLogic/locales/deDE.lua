@@ -87,7 +87,7 @@ L["SingleEquipStatCheck"] = "^" .. ITEM_SPELL_TRIGGER_ONEQUIP .. " (.-) um b?i?s
 L["PreScanPatterns"] = {
 	--["^Equip: Increases attack power by (%d+) in Cat"] = "FERAL_AP",
 	["^(%d+) Block$"] = "BLOCK_VALUE",
-	["^(%d+) Rüstung$"] = "ARMOR",
+	["^(%d+) Rüstung$"] = StatLogic.Stats.Armor,
 	["Verstärkte %(%+(%d+) Rüstung%)"] = "ARMOR_BUFF",
 	["Mana Regeneration (%d+) alle 5 Sek%.$"] = "MANA_REG",
 	-- These fail DeepScan in deDE because of the commas
@@ -165,7 +165,7 @@ L["StatIDLookup"] = {
 	["Kräuterkunde"] = false, -- Heabalism enchant ID:845
 	["Kürschnerei"] = false, -- Skinning enchant ID:865
 
-	["Rüstung"] = {"ARMOR_BONUS",},
+	["Rüstung"] = {StatLogic.Stats.BonusArmor,},
 	["Verteidigung"] = {StatLogic.Stats.Defense,},
 	["Blocken"] = {"BLOCK_VALUE",}, -- +22 Block Value
 	["Blockwert"] = {"BLOCK_VALUE",}, -- +22 Block Value

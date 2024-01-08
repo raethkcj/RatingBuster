@@ -75,8 +75,8 @@ L["SingleEquipStatCheck"] = "^" .. ITEM_SPELL_TRIGGER_ONEQUIP .. " (.-) на (%d
 L["PreScanPatterns"] = {
 	--["^Equip: Increases attack power by (%d+) in Cat"] = "FERAL_AP",
 	["^(%d+) Block$"] = "BLOCK_VALUE",
-	["^Броня: (%d+)$"] = "ARMOR",
-	["Reinforced %(%+(%d+) Armor%)"] = "ARMOR_BONUS",
+	["^Броня: (%d+)$"] = StatLogic.Stats.Armor,
+	["Reinforced %(%+(%d+) Armor%)"] = StatLogic.Stats.BonusArmor,
 	["Восполнение (%d+) ед. маны за 5 сек%.$"] = "MANA_REG",
 	["Восполняет (%d+) ед%. здоровья каждые 5 секунд%."] = "HEALTH_REG",
 	-- Exclude
@@ -157,8 +157,8 @@ L["StatIDLookup"] = {
 	["к травничеству"] = false, -- Heabalism enchant ID:845
 	["к снятию шкур"] = false, -- Skinning enchant ID:865
 
-	["броня"] = {"ARMOR_BONUS",},
-	["к броне"] = {"ARMOR_BONUS",},
+	["броня"] = {StatLogic.Stats.BonusArmor,},
+	["к броне"] = {StatLogic.Stats.BonusArmor,},
 	["защита"] = {StatLogic.Stats.Defense,},
 	["Increased Defense"] = {StatLogic.Stats.Defense,},
 	["блок"] = {"BLOCK_VALUE",},

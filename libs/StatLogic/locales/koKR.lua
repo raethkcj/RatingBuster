@@ -71,8 +71,8 @@ L["SingleEquipStatCheck"] = "^" .. ITEM_SPELL_TRIGGER_ONEQUIP .. " (.-) (%d+)만
 L["PreScanPatterns"] = {
 	--["^Equip: Increases attack power by (%d+) in Cat"] = "FERAL_AP",
 	["^(%d+)의 피해 방어$"] = "BLOCK_VALUE",
-	["^방어도 (%d+)$"] = "ARMOR",
-	["방어도 보강 %(%+(%d+)%)"] = "ARMOR_BONUS",
+	["^방어도 (%d+)$"] = StatLogic.Stats.Armor,
+	["방어도 보강 %(%+(%d+)%)"] = StatLogic.Stats.BonusArmor,
 	["매 5초마다 (%d+)의 생명력이 회복됩니다.$"] = "HEALTH_REG",
 	["매 5초마다 (%d+)의 마나가 회복됩니다.$"] = "MANA_REG",
 	-- Exclude
@@ -149,7 +149,7 @@ L["StatIDLookup"] = {
 	["약초 채집"] = false, -- Heabalism enchant ID:845
 	["무두질"] = false, -- Skinning enchant ID:865
 
-	["방어도"] = {"ARMOR_BONUS",},
+	["방어도"] = {StatLogic.Stats.BonusArmor,},
 	["방어 숙련"] = {StatLogic.Stats.Defense,},
 	["방어 숙련 증가"] = {StatLogic.Stats.Defense,},
 	["피해 방어"] = {"BLOCK_VALUE",}, -- +22 Block Value

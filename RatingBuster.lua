@@ -1344,7 +1344,7 @@ do
 
 	local addStatModOption = function(add, mod, sources)
 		-- ADD_HEALING_MOD_INT -> showHealingFromInt
-		local key = "show" .. statToOptionKey[add] .. "From" .. statToOptionKey[mod]
+		local key = "show" .. statToOptionKey[tostring(add)] .. "From" .. statToOptionKey[mod]
 		if defaults.profile[key] == nil then
 			defaults.profile[key] = true
 		end
@@ -1401,7 +1401,7 @@ do
 
 					-- We want to show the user Armor, regardless of where it comes from
 					if add == "BONUS_ARMOR" then
-						add = "ARMOR"
+						add = StatLogic.Stats.Armor
 					end
 
 					if mod == "NORMAL_MANA_REG" then
@@ -2644,7 +2644,7 @@ local summaryCalcData = {
 				+ sum[StatLogic.Stats.Agility] * GSM("ADD_AP_MOD_AGI")
 				+ sum[StatLogic.Stats.Stamina] * GSM("ADD_AP_MOD_STA")
 				+ sum[StatLogic.Stats.Intellect] * GSM("ADD_AP_MOD_INT")
-				+ summaryFunc["ARMOR"](sum) * GSM("ADD_AP_MOD_ARMOR")
+				+ summaryFunc[StatLogic.Stats.Armor](sum) * GSM("ADD_AP_MOD_ARMOR")
 			)
 		end,
 	},
@@ -2659,7 +2659,7 @@ local summaryCalcData = {
 				+ sum[StatLogic.Stats.Agility] * GSM("ADD_RANGED_AP_MOD_AGI")
 				+ sum[StatLogic.Stats.Intellect] * GSM("ADD_RANGED_AP_MOD_INT")
 				+ sum[StatLogic.Stats.Stamina] * GSM("ADD_AP_MOD_STA")
-				+ summaryFunc["ARMOR"](sum) * GSM("ADD_AP_MOD_ARMOR")
+				+ summaryFunc[StatLogic.Stats.Armor](sum) * GSM("ADD_AP_MOD_ARMOR")
 			)
 		end,
 	},
@@ -3009,10 +3009,10 @@ local summaryCalcData = {
 	-- Armor - ARMOR, ARMOR_BONUS, AGI, INT
 	{
 		option = "sumArmor",
-		name = "ARMOR",
+		name = StatLogic.Stats.Armor,
 		func = function(sum)
-			return GSM("MOD_ARMOR") * sum["ARMOR"]
-				+ sum["ARMOR_BONUS"]
+			return GSM("MOD_ARMOR") * sum[StatLogic.Stats.Armor]
+				+ sum[StatLogic.Stats.BonusArmor]
 				+ sum[StatLogic.Stats.Agility] * GSM("ADD_BONUS_ARMOR_MOD_AGI")
 				+ sum[StatLogic.Stats.Intellect] * GSM("ADD_BONUS_ARMOR_MOD_INT")
 		 end,

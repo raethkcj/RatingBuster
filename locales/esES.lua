@@ -578,7 +578,7 @@ L[StatLogic.Stats.Agility] = SPELL_STAT2_NAME
 L[StatLogic.Stats.Stamina] = SPELL_STAT3_NAME
 L[StatLogic.Stats.Intellect] = SPELL_STAT4_NAME
 L[StatLogic.Stats.Spirit] = SPELL_STAT5_NAME
-L["ARMOR"] = ARMOR
+L[StatLogic.Stats.Armor] = ARMOR
 
 L["FIRE_RES"] = RESISTANCE2_NAME
 L["NATURE_RES"] = RESISTANCE3_NAME

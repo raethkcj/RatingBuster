@@ -715,7 +715,7 @@ L[StatLogic.Stats.Agility] =  "Ловкость"
 L[StatLogic.Stats.Stamina] =  "Выносливость"
 L[StatLogic.Stats.Intellect] =  "Интеллект"
 L[StatLogic.Stats.Spirit] =  "Дух"
-L["ARMOR"] =  "Броня"
+L[StatLogic.Stats.Armor] =  "Броня"
 
 L["FIRE_RES"] =  "Сопротивление огню"
 L["NATURE_RES"] =  "Сопротивление силам природы"

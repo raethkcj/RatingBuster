@@ -105,8 +105,8 @@ L["SingleEquipStatCheck"] = "^" .. ITEM_SPELL_TRIGGER_ONEQUIP .. " (.-) by u?p? 
 L["PreScanPatterns"] = {
 	--["^Equip: Increases attack power by (%d+) in Cat"] = "FERAL_AP",
 	["^(%d+) Block$"] = "BLOCK_VALUE",
-	["^(%d+) Armor$"] = "ARMOR",
-	["Reinforced %(%+(%d+) Armor%)"] = "ARMOR_BONUS",
+	["^(%d+) Armor$"] = StatLogic.Stats.Armor,
+	["Reinforced %(%+(%d+) Armor%)"] = StatLogic.Stats.BonusArmor,
 	["Mana Regen (%d+) per 5 sec%.$"] = "MANA_REG",
 	-- Exclude
 	["^(%d+) Slot"] = false, -- Set Name (0/9)
@@ -179,7 +179,7 @@ L["StatIDLookup"] = {
 	["Herbalism"] = false, -- Heabalism enchant ID:845
 	["Skinning"] = false, -- Skinning enchant ID:865
 
-	["Armor"] = {"ARMOR_BONUS",},
+	["Armor"] = {StatLogic.Stats.BonusArmor,},
 	["Defense"] = {StatLogic.Stats.Defense,},
 	["Increased Defense"] = {StatLogic.Stats.Defense,},
 	["Block"] = {"BLOCK_VALUE",}, -- +22 Block Value

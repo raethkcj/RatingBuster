@@ -1551,10 +1551,10 @@ do
 	local statTable, currentColor
 
 	local function AddStat(id, value, debugText)
-		if id == "ARMOR" then
+		if id == StatLogic.Stats.Armor then
 			local base, bonus = StatLogic:GetArmorDistribution(statTable.link, value, currentColor)
 			value = base
-			local bonusID = "ARMOR_BONUS"
+			local bonusID = StatLogic.Stats.BonusArmor
 			statTable[bonusID] = (statTable[bonusID] or 0) + bonus
 			debugText = debugText..", ".."|cffffff59"..tostring(bonusID).."="..tostring(bonus)
 		end
