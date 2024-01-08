@@ -21,22 +21,22 @@ L["WholeTextLookup"] = {
 	[EMPTY_SOCKET_BLUE] = {["EMPTY_SOCKET_BLUE"] = 1}, -- EMPTY_SOCKET_BLUE = "Blue Socket";
 	[EMPTY_SOCKET_META] = {["EMPTY_SOCKET_META"] = 1}, -- EMPTY_SOCKET_META = "Meta Socket";
 
-	["Слабое волшебное масло"] = {["SPELL_DMG"] = 8, ["HEAL"] = 8}, -- ID: 20744
-	["Простое волшебное масло"] = {["SPELL_DMG"] = 16, ["HEAL"] = 16}, -- ID: 20746
-	["Волшебное масло"] = {["SPELL_DMG"] = 24, ["HEAL"] = 24}, -- ID: 20750
-	["Блестящее волшебное масло"] = {["SPELL_DMG"] = 36, ["HEAL"] = 36, [StatLogic.Stats.SpellCritRating] = 14}, -- ID: 20749
-	["Превосходное волшебное масло"] = {["SPELL_DMG"] = 42, ["HEAL"] = 42}, -- ID: 22522
+	["Слабое волшебное масло"] = {[StatLogic.Stats.SpellDamage] = 8, [StatLogic.Stats.HealingPower] = 8}, -- ID: 20744
+	["Простое волшебное масло"] = {[StatLogic.Stats.SpellDamage] = 16, [StatLogic.Stats.HealingPower] = 16}, -- ID: 20746
+	["Волшебное масло"] = {[StatLogic.Stats.SpellDamage] = 24, [StatLogic.Stats.HealingPower] = 24}, -- ID: 20750
+	["Блестящее волшебное масло"] = {[StatLogic.Stats.SpellDamage] = 36, [StatLogic.Stats.HealingPower] = 36, [StatLogic.Stats.SpellCritRating] = 14}, -- ID: 20749
+	["Превосходное волшебное масло"] = {[StatLogic.Stats.SpellDamage] = 42, [StatLogic.Stats.HealingPower] = 42}, -- ID: 22522
 
 	["Слабое масло маны"] = {["MANA_REG"] = 4}, -- ID: 20745
 	["Простое масло маны"] = {["MANA_REG"] = 8}, -- ID: 20747
-	["Блестящее масло маны"] = {["MANA_REG"] = 12, ["HEAL"] = 25}, -- ID: 20748
+	["Блестящее масло маны"] = {["MANA_REG"] = 12, [StatLogic.Stats.HealingPower] = 25}, -- ID: 20748
 	["Превосходное масло маны"] = {["MANA_REG"] = 14}, -- ID: 22521
 
 	["Жестокость"] = {["AP"] = 70}, --
 	["Живучесть I"] = {["MANA_REG"] = 4, ["HEALTH_REG"] = 4}, -- Enchant Boots - Vitality spell: 27948
-	["Ледяная душа"] = {["SHADOW_SPELL_DMG"] = 54, ["FROST_SPELL_DMG"] = 54}, --
-	["Солнечный огонь"] = {["ARCANE_SPELL_DMG"] = 50, ["FIRE_SPELL_DMG"] = 50},
-	["+50 к силе заклинаний огня и тайной магии"] = {["ARCANE_SPELL_DMG"] = 50, ["FIRE_SPELL_DMG"] = 50},
+	["Ледяная душа"] = {[StatLogic.Stats.ShadowDamage] = 54, [StatLogic.Stats.FrostDamage] = 54}, --
+	["Солнечный огонь"] = {[StatLogic.Stats.ArcaneDamage] = 50, [StatLogic.Stats.FireDamage] = 50},
+	["+50 к силе заклинаний огня и тайной магии"] = {[StatLogic.Stats.ArcaneDamage] = 50, [StatLogic.Stats.FireDamage] = 50},
 
 	["Небольшое ускорениеускорение бега"] = false, --
 	["Небольшое увеличение скорости"] = false, -- Enchant Boots - Minor Speed "Minor Speed Increase" spell: 13890
@@ -110,9 +110,9 @@ L["DeepScanWordSeparators"] = {
 }
 L["DualStatPatterns"] = {
 	-- all lower case
-	["^%+(%d+) healing and %+(%d+) spell damage$"] = {{"HEAL",}, {"SPELL_DMG",},},
-	["^%+(%d+) healing %+(%d+) spell damage$"] = {{"HEAL",}, {"SPELL_DMG",},},
-	["^increases healing done by up to (%d+) and damage done by up to (%d+) for all magical spells and effects$"] = {{"HEAL",}, {"SPELL_DMG",},},
+	["^%+(%d+) healing and %+(%d+) spell damage$"] = {{StatLogic.Stats.HealingPower,}, {StatLogic.Stats.SpellDamage,},},
+	["^%+(%d+) healing %+(%d+) spell damage$"] = {{StatLogic.Stats.HealingPower,}, {StatLogic.Stats.SpellDamage,},},
+	["^increases healing done by up to (%d+) and damage done by up to (%d+) for all magical spells and effects$"] = {{StatLogic.Stats.HealingPower,}, {StatLogic.Stats.SpellDamage,},},
 }
 L["DeepScanPatterns"] = {
 	"^(.-) на ?(%d+) ?(.-)$", -- "xxx by up to 22 xxx" (scan first)
@@ -134,20 +134,20 @@ L["StatIDLookup"] = {
 	["к интеллекту"] = {StatLogic.Stats.Intellect,},
 	["к духу"] = {StatLogic.Stats.Spirit,},
 
-	["сопротивление тайной магии"] = {"ARCANE_RES",},
-	["к сопротивлению тайной магии"] = {"ARCANE_RES",},
-	["сопротивление огню"] = {"FIRE_RES",},
-	["к сопротивлению огню"] = {"FIRE_RES",},
-	["сопротивление силам природы"] = {"NATURE_RES",},
-	["к сопротивлению силам природы"] = {"NATURE_RES",},
-	["сопротивление магии льда"] = {"FROST_RES",},
-	["к сопротивлению магии льда"] = {"FROST_RES",},
-	["сопротивление темной магии"] = {"SHADOW_RES",},
-	["к сопротивлению темной магии"] = {"SHADOW_RES",},
-	["сопротивления темной магии"] = {"SHADOW_RES",},
-	["сопротивление всем видам магии"] = {"ARCANE_RES", "FIRE_RES", "FROST_RES", "NATURE_RES", "SHADOW_RES",},
-	["ко всем видам сопротивления"] = {"ARCANE_RES", "FIRE_RES", "FROST_RES", "NATURE_RES", "SHADOW_RES",},
-	["Resist All"] = {"ARCANE_RES", "FIRE_RES", "FROST_RES", "NATURE_RES", "SHADOW_RES",},
+	["сопротивление тайной магии"] = {StatLogic.Stats.ArcaneResistance,},
+	["к сопротивлению тайной магии"] = {StatLogic.Stats.ArcaneResistance,},
+	["сопротивление огню"] = {StatLogic.Stats.FireResistance,},
+	["к сопротивлению огню"] = {StatLogic.Stats.FireResistance,},
+	["сопротивление силам природы"] = {StatLogic.Stats.NatureResistance,},
+	["к сопротивлению силам природы"] = {StatLogic.Stats.NatureResistance,},
+	["сопротивление магии льда"] = {StatLogic.Stats.FrostResistance,},
+	["к сопротивлению магии льда"] = {StatLogic.Stats.FrostResistance,},
+	["сопротивление темной магии"] = {StatLogic.Stats.ShadowResistance,},
+	["к сопротивлению темной магии"] = {StatLogic.Stats.ShadowResistance,},
+	["сопротивления темной магии"] = {StatLogic.Stats.ShadowResistance,},
+	["сопротивление всем видам магии"] = {StatLogic.Stats.ArcaneResistance, StatLogic.Stats.FireResistance, StatLogic.Stats.FrostResistance, StatLogic.Stats.NatureResistance, StatLogic.Stats.ShadowResistance,},
+	["ко всем видам сопротивления"] = {StatLogic.Stats.ArcaneResistance, StatLogic.Stats.FireResistance, StatLogic.Stats.FrostResistance, StatLogic.Stats.NatureResistance, StatLogic.Stats.ShadowResistance,},
+	["Resist All"] = {StatLogic.Stats.ArcaneResistance, StatLogic.Stats.FireResistance, StatLogic.Stats.FrostResistance, StatLogic.Stats.NatureResistance, StatLogic.Stats.ShadowResistance,},
 
 	["к рыбной ловле"] = false, -- Fishing enchant ID:846
 	["рыбная ловля"] = false, -- Equip: Increased Fishing +20. (it actually looks like: Увеличение навыка "Рыбная ловля" на +20)
@@ -205,54 +205,54 @@ L["StatIDLookup"] = {
 	["Mana Regenper 5 sec"] = {"MANA_REG",}, -- Enchant Bracer - Mana Regeneration "Mana Regen 4 per 5 sec." spell: 23801
 	["Mana per 5 Sec"] = {"MANA_REG",}, -- Enchant Bracer - Restore Mana Prime "6 Mana per 5 Sec." spell: 27913
 
-	["проникающей способности заклинаний"] = {"SPELLPEN",}, -- Enchant Cloak - Spell Penetration "+20 Spell Penetration" spell: 34003
-	["увеличивает проникающую способность заклинаний на"] = {"SPELLPEN",},
+	["проникающей способности заклинаний"] = {StatLogic.Stats.SpellPenetration,}, -- Enchant Cloak - Spell Penetration "+20 Spell Penetration" spell: 34003
+	["увеличивает проникающую способность заклинаний на"] = {StatLogic.Stats.SpellPenetration,},
 
-	["Healing and Spell Damage"] = {"SPELL_DMG", "HEAL",}, -- Arcanum of Focus +8 Healing and Spell Damage spell: 22844
-	["Damage and Healing Spells"] = {"SPELL_DMG", "HEAL",},
-	["Spell Damage and Healing"] = {"SPELL_DMG", "HEAL",}, --StatLogic:GetSum("item:22630")
-	["Spell Damage"] = {"SPELL_DMG", "HEAL",},
-	["Increases damage and healing done by magical spells and effects"] = {"SPELL_DMG", "HEAL"},
-	["повышает рейтинг критичекого поражения заклинаний всех участников группы в радиусе 30 м. на"] = {"SPELL_DMG", "HEAL"}, -- Atiesh
-	["Damage"] = {"SPELL_DMG",},
-	["Increases your spell damage"] = {"SPELL_DMG",}, -- Atiesh ID:22630, 22631, 22632, 22589
-	["к силе заклинаний"] = {"SPELL_DMG", "HEAL",},
-	["увеличивает силу заклинаний на"] = {"SPELL_DMG", "HEAL",},
-	["Holy Damage"] = {"HOLY_SPELL_DMG",},
-	["Arcane Damage"] = {"ARCANE_SPELL_DMG",},
-	["Fire Damage"] = {"FIRE_SPELL_DMG",},
-	["Nature Damage"] = {"NATURE_SPELL_DMG",},
-	["Frost Damage"] = {"FROST_SPELL_DMG",},
-	["Shadow Damage"] = {"SHADOW_SPELL_DMG",},
-	["Holy Spell Damage"] = {"HOLY_SPELL_DMG",},
-	["Arcane Spell Damage"] = {"ARCANE_SPELL_DMG",},
-	["Fire Spell Damage"] = {"FIRE_SPELL_DMG",},
-	["Nature Spell Damage"] = {"NATURE_SPELL_DMG",},
-	["Frost Spell Damage"] = {"FROST_SPELL_DMG",}, -- Acrobatic Staff of Frozen Wrath ID:3185:0:0:0:0:0:1957
-	["Shadow Spell Damage"] = {"SHADOW_SPELL_DMG",},
-	["Increases damage done by Shadow spells and effects"] = {"SHADOW_SPELL_DMG",}, -- Frozen Shadoweave Vest ID:21871
-	["Increases damage done by Frost spells and effects"] = {"FROST_SPELL_DMG",}, -- Frozen Shadoweave Vest ID:21871
-	["Increases damage done by Holy spells and effects"] = {"HOLY_SPELL_DMG",},
-	["Increases damage done by Arcane spells and effects"] = {"ARCANE_SPELL_DMG",},
-	["Increases damage done by Fire spells and effects"] = {"FIRE_SPELL_DMG",},
-	["Increases damage done by Nature spells and effects"] = {"NATURE_SPELL_DMG",},
-	["Increases the damage done by Holy spells and effects"] = {"HOLY_SPELL_DMG",}, -- Drape of the Righteous ID:30642
-	["Increases the damage done by Arcane spells and effects"] = {"ARCANE_SPELL_DMG",}, -- Added just in case
-	["Increases the damage done by Fire spells and effects"] = {"FIRE_SPELL_DMG",}, -- Added just in case
-	["Increases the damage done by Frost spells and effects"] = {"FROST_SPELL_DMG",}, -- Added just in case
-	["Increases the damage done by Nature spells and effects"] = {"NATURE_SPELL_DMG",}, -- Added just in case
-	["Increases the damage done by Shadow spells and effects"] = {"SHADOW_SPELL_DMG",}, -- Added just in case
+	["Healing and Spell Damage"] = {StatLogic.Stats.SpellDamage, StatLogic.Stats.HealingPower,}, -- Arcanum of Focus +8 Healing and Spell Damage spell: 22844
+	["Damage and Healing Spells"] = {StatLogic.Stats.SpellDamage, StatLogic.Stats.HealingPower,},
+	["Spell Damage and Healing"] = {StatLogic.Stats.SpellDamage, StatLogic.Stats.HealingPower,}, --StatLogic:GetSum("item:22630")
+	["Spell Damage"] = {StatLogic.Stats.SpellDamage, StatLogic.Stats.HealingPower,},
+	["Increases damage and healing done by magical spells and effects"] = {StatLogic.Stats.SpellDamage, StatLogic.Stats.HealingPower},
+	["повышает рейтинг критичекого поражения заклинаний всех участников группы в радиусе 30 м. на"] = {StatLogic.Stats.SpellDamage, StatLogic.Stats.HealingPower}, -- Atiesh
+	["Damage"] = {StatLogic.Stats.SpellDamage,},
+	["Increases your spell damage"] = {StatLogic.Stats.SpellDamage,}, -- Atiesh ID:22630, 22631, 22632, 22589
+	["к силе заклинаний"] = {StatLogic.Stats.SpellDamage, StatLogic.Stats.HealingPower,},
+	["увеличивает силу заклинаний на"] = {StatLogic.Stats.SpellDamage, StatLogic.Stats.HealingPower,},
+	["Holy Damage"] = {StatLogic.Stats.HolyDamage,},
+	["Arcane Damage"] = {StatLogic.Stats.ArcaneDamage,},
+	["Fire Damage"] = {StatLogic.Stats.FireDamage,},
+	["Nature Damage"] = {StatLogic.Stats.NatureDamage,},
+	["Frost Damage"] = {StatLogic.Stats.FrostDamage,},
+	["Shadow Damage"] = {StatLogic.Stats.ShadowDamage,},
+	["Holy Spell Damage"] = {StatLogic.Stats.HolyDamage,},
+	["Arcane Spell Damage"] = {StatLogic.Stats.ArcaneDamage,},
+	["Fire Spell Damage"] = {StatLogic.Stats.FireDamage,},
+	["Nature Spell Damage"] = {StatLogic.Stats.NatureDamage,},
+	["Frost Spell Damage"] = {StatLogic.Stats.FrostDamage,}, -- Acrobatic Staff of Frozen Wrath ID:3185:0:0:0:0:0:1957
+	["Shadow Spell Damage"] = {StatLogic.Stats.ShadowDamage,},
+	["Increases damage done by Shadow spells and effects"] = {StatLogic.Stats.ShadowDamage,}, -- Frozen Shadoweave Vest ID:21871
+	["Increases damage done by Frost spells and effects"] = {StatLogic.Stats.FrostDamage,}, -- Frozen Shadoweave Vest ID:21871
+	["Increases damage done by Holy spells and effects"] = {StatLogic.Stats.HolyDamage,},
+	["Increases damage done by Arcane spells and effects"] = {StatLogic.Stats.ArcaneDamage,},
+	["Increases damage done by Fire spells and effects"] = {StatLogic.Stats.FireDamage,},
+	["Increases damage done by Nature spells and effects"] = {StatLogic.Stats.NatureDamage,},
+	["Increases the damage done by Holy spells and effects"] = {StatLogic.Stats.HolyDamage,}, -- Drape of the Righteous ID:30642
+	["Increases the damage done by Arcane spells and effects"] = {StatLogic.Stats.ArcaneDamage,}, -- Added just in case
+	["Increases the damage done by Fire spells and effects"] = {StatLogic.Stats.FireDamage,}, -- Added just in case
+	["Increases the damage done by Frost spells and effects"] = {StatLogic.Stats.FrostDamage,}, -- Added just in case
+	["Increases the damage done by Nature spells and effects"] = {StatLogic.Stats.NatureDamage,}, -- Added just in case
+	["Increases the damage done by Shadow spells and effects"] = {StatLogic.Stats.ShadowDamage,}, -- Added just in case
 
-	["Healing Spells"] = {"HEAL",}, -- Enchant Gloves - Major Healing "+35 Healing Spells" spell: 33999
-	["Increases Healing"] = {"HEAL",},
-	["Healing"] = {"HEAL",}, -- StatLogic:GetSum("item:23344:206")
-	["healing Spells"] = {"HEAL",},
-	["Damage Spells"] = {"SPELL_DMG",}, -- 2.3.0 StatLogic:GetSum("item:23344:2343")
-	["Increases healing done"] = {"HEAL",}, -- 2.3.0
-	["damage donefor all magical spells"] = {"SPELL_DMG",}, -- 2.3.0
-	["Increases healing done by spells and effects"] = {"HEAL",},
-	["Increases healing done by magical spells and effects of all party members within 30 yards"] = {"HEAL",}, -- Atiesh
-	["your healing"] = {"HEAL",}, -- Atiesh
+	["Healing Spells"] = {StatLogic.Stats.HealingPower,}, -- Enchant Gloves - Major Healing "+35 Healing Spells" spell: 33999
+	["Increases Healing"] = {StatLogic.Stats.HealingPower,},
+	["Healing"] = {StatLogic.Stats.HealingPower,}, -- StatLogic:GetSum("item:23344:206")
+	["healing Spells"] = {StatLogic.Stats.HealingPower,},
+	["Damage Spells"] = {StatLogic.Stats.SpellDamage,}, -- 2.3.0 StatLogic:GetSum("item:23344:2343")
+	["Increases healing done"] = {StatLogic.Stats.HealingPower,}, -- 2.3.0
+	["damage donefor all magical spells"] = {StatLogic.Stats.SpellDamage,}, -- 2.3.0
+	["Increases healing done by spells and effects"] = {StatLogic.Stats.HealingPower,},
+	["Increases healing done by magical spells and effects of all party members within 30 yards"] = {StatLogic.Stats.HealingPower,}, -- Atiesh
+	["your healing"] = {StatLogic.Stats.HealingPower,}, -- Atiesh
 
 	["damage per second"] = {StatLogic.Stats.WeaponDPS,},
 	["Addsdamage per second"] = {StatLogic.Stats.WeaponDPS,}, -- [Thorium Shells] ID: 15977

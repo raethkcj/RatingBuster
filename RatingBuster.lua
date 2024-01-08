@@ -1324,7 +1324,7 @@ end
 
 -- Generate options from expansion-specific StatModTables in StatLogic
 do
-	-- Mostly for backwards compatibility
+	-- Backwards compatibility
 	local statToOptionKey = setmetatable({
 		["AP"] = "AP",
 		["MANA_REG"] = "MP5",
@@ -1334,11 +1334,22 @@ do
 		["RANGED_AP"] = "RAP",
 	},
 	{
-		__index = function(_, statMod)
+		__index = function(_, stat)
 			-- Remove underscores, PascalCase
-			return (statMod:gsub("[%W_]*(%w+)[%W_]*", function(word)
+			return (stat:gsub("[%W_]*(%w+)[%W_]*", function(word)
 				return word:lower():gsub("^%l", string.upper)
 			end))
+		end
+	})
+
+	-- Backwards compatibility
+	local statStringToStat = setmetatable({
+		["SPELL_DMG"] = StatLogic.Stats.SpellDamage,
+		["HEALING"] = StatLogic.Stats.HealingPower
+	},
+	{
+		__index = function(_, stat)
+			return stat
 		end
 	})
 
@@ -1364,7 +1375,7 @@ do
 			sources = option.desc .. ", " .. sources
 		end
 
-		option.name = L["StatModOptionName"]:format(SHOW, L[add])
+		option.name = L["StatModOptionName"]:format(SHOW, L[statStringToStat[add]])
 		option.desc = sources
 
 		options.args.stat.args[mod:lower()].args[key] = option
@@ -2855,9 +2866,9 @@ local summaryCalcData = {
 	-- Spell Damage - SPELL_DMG, STA, INT, SPI
 	{
 		option = "sumSpellDmg",
-		name = "SPELL_DMG",
+		name = StatLogic.Stats.SpellDamage,
 		func = function(sum)
-			return sum["SPELL_DMG"]
+			return sum[StatLogic.Stats.SpellDamage]
 				+ sum[StatLogic.Stats.Strength] * GSM("ADD_SPELL_DMG_MOD_STR")
 				+ sum[StatLogic.Stats.Stamina] * (GSM("ADD_SPELL_DMG_MOD_STA") + GSM("ADD_SPELL_DMG_MOD_PET_STA") * GSM("MOD_PET_STA") * GSM("ADD_PET_STA_MOD_STA"))
 				+ sum[StatLogic.Stats.Intellect] * (GSM("ADD_SPELL_DMG_MOD_INT") + GSM("ADD_SPELL_DMG_MOD_PET_INT") * GSM("MOD_PET_INT") * GSM("ADD_PET_INT_MOD_INT"))
@@ -2868,70 +2879,70 @@ local summaryCalcData = {
 	-- Holy Damage - HOLY_SPELL_DMG, SPELL_DMG, INT, SPI
 	{
 		option = "sumHolyDmg",
-		name = "HOLY_SPELL_DMG",
+		name = StatLogic.Stats.HolyDamage,
 		func = function(sum)
 			return GSM("MOD_SPELL_DMG") * (
-				sum["HOLY_SPELL_DMG"]
-			) + summaryFunc["SPELL_DMG"](sum)
+				sum[StatLogic.Stats.HolyDamage]
+			) + summaryFunc[StatLogic.Stats.SpellDamage](sum)
 		 end,
 	},
 	-- Arcane Damage - ARCANE_SPELL_DMG, SPELL_DMG, INT
 	{
 		option = "sumArcaneDmg",
-		name = "ARCANE_SPELL_DMG",
+		name = StatLogic.Stats.ArcaneDamage,
 		func = function(sum)
 			return GSM("MOD_SPELL_DMG") * (
-				sum["ARCANE_SPELL_DMG"]
-			) + summaryFunc["SPELL_DMG"](sum)
+				sum[StatLogic.Stats.ArcaneDamage]
+			) + summaryFunc[StatLogic.Stats.SpellDamage](sum)
 		 end,
 	},
 	-- Fire Damage - FIRE_SPELL_DMG, SPELL_DMG, STA, INT
 	{
 		option = "sumFireDmg",
-		name = "FIRE_SPELL_DMG",
+		name = StatLogic.Stats.FireDamage,
 		func = function(sum)
 			return GSM("MOD_SPELL_DMG") * (
-				sum["FIRE_SPELL_DMG"]
-			) + summaryFunc["SPELL_DMG"](sum)
+				sum[StatLogic.Stats.FireDamage]
+			) + summaryFunc[StatLogic.Stats.SpellDamage](sum)
 		 end,
 	},
 	-- Nature Damage - NATURE_SPELL_DMG, SPELL_DMG, INT
 	{
 		option = "sumNatureDmg",
-		name = "NATURE_SPELL_DMG",
+		name = StatLogic.Stats.NatureDamage,
 		func = function(sum)
 			return GSM("MOD_SPELL_DMG") * (
-				sum["NATURE_SPELL_DMG"]
-			) + summaryFunc["SPELL_DMG"](sum)
+				sum[StatLogic.Stats.NatureDamage]
+			) + summaryFunc[StatLogic.Stats.SpellDamage](sum)
 		 end,
 	},
 	-- Frost Damage - FROST_SPELL_DMG, SPELL_DMG, INT
 	{
 		option = "sumFrostDmg",
-		name = "FROST_SPELL_DMG",
+		name = StatLogic.Stats.FrostDamage,
 		func = function(sum)
 			return GSM("MOD_SPELL_DMG") * (
-				sum["FROST_SPELL_DMG"]
-			) + summaryFunc["SPELL_DMG"](sum)
+				sum[StatLogic.Stats.FrostDamage]
+			) + summaryFunc[StatLogic.Stats.SpellDamage](sum)
 		 end,
 	},
 	-- Shadow Damage - SHADOW_SPELL_DMG, SPELL_DMG, STA, INT, SPI
 	{
 		option = "sumShadowDmg",
-		name = "SHADOW_SPELL_DMG",
+		name = StatLogic.Stats.ShadowDamage,
 		func = function(sum)
 			return GSM("MOD_SPELL_DMG") * (
-				sum["SHADOW_SPELL_DMG"]
-			) + summaryFunc["SPELL_DMG"](sum)
+				sum[StatLogic.Stats.ShadowDamage]
+			) + summaryFunc[StatLogic.Stats.SpellDamage](sum)
 		 end,
 	},
 	-- Healing - HEAL, AGI, STR, INT, SPI, AP
 	{
 		option = "sumHealing",
-		name = "HEAL",
+		name = StatLogic.Stats.HealingPower,
 		func = function(sum)
 			return GSM("MOD_HEALING") * (
-				sum["HEAL"]
+				sum[StatLogic.Stats.HealingPower]
 				+ (sum[StatLogic.Stats.Strength] * GSM("ADD_HEALING_MOD_STR"))
 				+ (sum[StatLogic.Stats.Agility] * GSM("ADD_HEALING_MOD_AGI"))
 				+ (sum[StatLogic.Stats.Intellect] * GSM("ADD_HEALING_MOD_INT"))
@@ -2998,9 +3009,9 @@ local summaryCalcData = {
 	-- Spell Penetration - SPELLPEN
 	{
 		option = "sumPenetration",
-		name = "SPELLPEN",
+		name = StatLogic.Stats.SpellPenetration,
 		func = function(sum)
-			return sum["SPELLPEN"]
+			return sum[StatLogic.Stats.SpellPenetration]
 		end,
 	},
 	----------
@@ -3199,41 +3210,41 @@ local summaryCalcData = {
 	-- Arcane Resistance - ARCANE_RES
 	{
 		option = "sumArcaneResist",
-		name = "ARCANE_RES",
+		name = StatLogic.Stats.ArcaneResistance,
 		func = function(sum)
-			return sum["ARCANE_RES"]
+			return sum[StatLogic.Stats.ArcaneResistance]
 		end,
 	},
 	-- Fire Resistance - FIRE_RES
 	{
 		option = "sumFireResist",
-		name = "FIRE_RES",
+		name = StatLogic.Stats.FireResistance,
 		func = function(sum)
-			return sum["FIRE_RES"]
+			return sum[StatLogic.Stats.FireResistance]
 		end,
 	},
 	-- Nature Resistance - NATURE_RES
 	{
 		option = "sumNatureResist",
-		name = "NATURE_RES",
+		name = StatLogic.Stats.NatureResistance,
 		func = function(sum)
-			return sum["NATURE_RES"]
+			return sum[StatLogic.Stats.NatureResistance]
 		end,
 	},
 	-- Frost Resistance - FROST_RES
 	{
 		option = "sumFrostResist",
-		name = "FROST_RES",
+		name = StatLogic.Stats.FrostResistance,
 		func = function(sum)
-			return sum["FROST_RES"]
+			return sum[StatLogic.Stats.FrostResistance]
 		end,
 	},
 	-- Shadow Resistance - SHADOW_RES
 	{
 		option = "sumShadowResist",
-		name = "SHADOW_RES",
+		name = StatLogic.Stats.ShadowResistance,
 		func = function(sum)
-			return sum["SHADOW_RES"]
+			return sum[StatLogic.Stats.ShadowResistance]
 		end,
 	},
 }

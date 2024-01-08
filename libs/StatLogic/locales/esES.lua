@@ -28,21 +28,21 @@ L["WholeTextLookup"] = {
 	[EMPTY_SOCKET_BLUE] = {["EMPTY_SOCKET_BLUE"] = 1}, -- EMPTY_SOCKET_BLUE = "Blue Socket";
 	[EMPTY_SOCKET_META] = {["EMPTY_SOCKET_META"] = 1}, -- EMPTY_SOCKET_META = "Meta Socket";
 
-	["Aceite de zahorí menor"] = {["SPELL_DMG"] = 8, ["HEAL"] = 8}, -- ID: 20744
-	["Aceite de zahorí inferior"] = {["SPELL_DMG"] = 16, ["HEAL"] = 16}, -- ID: 20746
-	["Aceite de zahorí"] = {["SPELL_DMG"] = 24, ["HEAL"] = 24}, -- ID: 20750
-	["Aceite de zahorí luminoso"] = {["SPELL_DMG"] = 36, ["HEAL"] = 36, [StatLogic.Stats.SpellCritRating] = 14}, -- ID: 20749
-	["Aceite de zahorí excelente"] = {["SPELL_DMG"] = 42, ["HEAL"] = 42}, -- ID: 22522
+	["Aceite de zahorí menor"] = {[StatLogic.Stats.SpellDamage] = 8, [StatLogic.Stats.HealingPower] = 8}, -- ID: 20744
+	["Aceite de zahorí inferior"] = {[StatLogic.Stats.SpellDamage] = 16, [StatLogic.Stats.HealingPower] = 16}, -- ID: 20746
+	["Aceite de zahorí"] = {[StatLogic.Stats.SpellDamage] = 24, [StatLogic.Stats.HealingPower] = 24}, -- ID: 20750
+	["Aceite de zahorí luminoso"] = {[StatLogic.Stats.SpellDamage] = 36, [StatLogic.Stats.HealingPower] = 36, [StatLogic.Stats.SpellCritRating] = 14}, -- ID: 20749
+	["Aceite de zahorí excelente"] = {[StatLogic.Stats.SpellDamage] = 42, [StatLogic.Stats.HealingPower] = 42}, -- ID: 22522
 
 	["Aceite de maná menor"] = {["MANA_REG"] = 4}, -- ID: 20745
 	["Aceite de maná inferior"] = {["MANA_REG"] = 8}, -- ID: 20747
-	["Aceite de maná luminoso"] = {["MANA_REG"] = 12, ["HEAL"] = 25}, -- ID: 20748
+	["Aceite de maná luminoso"] = {["MANA_REG"] = 12, [StatLogic.Stats.HealingPower] = 25}, -- ID: 20748
 	["Aceite de maná excelente"] = {["MANA_REG"] = 14}, -- ID: 22521
 
 	["Salvajismo"] = {["AP"] = 70}, --
 	["vitalidad"] = {["MANA_REG"] = 4, ["HEALTH_REG"] = 4}, -- Enchant Boots - Vitality spell: 27948
-	["escarcha de alma"] = {["SHADOW_SPELL_DMG"] = 54, ["FROST_SPELL_DMG"] = 54}, --
-	["fuego solar"] = {["ARCANE_SPELL_DMG"] = 50, ["FIRE_SPELL_DMG"] = 50}, --
+	["escarcha de alma"] = {[StatLogic.Stats.ShadowDamage] = 54, [StatLogic.Stats.FrostDamage] = 54}, --
+	["fuego solar"] = {[StatLogic.Stats.ArcaneDamage] = 50, [StatLogic.Stats.FireDamage] = 50}, --
 
 	["Velocidad de carrera aumentada ligeramente"] = false, --
 	["Aumento mínimo de velocidad"] = false, -- Enchant Boots - Minor Speed "Minor Speed Increase" spell: 13890
@@ -118,9 +118,9 @@ L["DeepScanWordSeparators"] = {
 }
 -- all lower case
 L["DualStatPatterns"] = {
-	["^%+(%d+) sanación y %+(%d+) daño con hechizos$"] = {{"HEAL",}, {"SPELL_DMG",},},
-	["^%+(%d+) sanación %+(%d+) daño con hechizos$"] = {{"HEAL",}, {"SPELL_DMG",},},
-	["Aumenta la sanación que haces hasta (%d+) y el daño que infliges hasta (%d+) con todos los hechizos mágicos y efectos.$"] = {{"HEAL",}, {"SPELL_DMG",},},
+	["^%+(%d+) sanación y %+(%d+) daño con hechizos$"] = {{StatLogic.Stats.HealingPower,}, {StatLogic.Stats.SpellDamage,},},
+	["^%+(%d+) sanación %+(%d+) daño con hechizos$"] = {{StatLogic.Stats.HealingPower,}, {StatLogic.Stats.SpellDamage,},},
+	["Aumenta la sanación que haces hasta (%d+) y el daño que infliges hasta (%d+) con todos los hechizos mágicos y efectos.$"] = {{StatLogic.Stats.HealingPower,}, {StatLogic.Stats.SpellDamage,},},
 }
 L["DeepScanPatterns"] = {
 	"^(.-) ?hasta ?e?n? ?(%d+) ?p?.?(.-)$", -- "xxx by up to 22 xxx" (scan first)
@@ -142,19 +142,19 @@ L["StatIDLookup"] = {
 	["Intelecto"] = {StatLogic.Stats.Intellect,},
 	["Espíritu"] = {StatLogic.Stats.Spirit,},
 
-	["Resistencia a lo Arcano"] = {"ARCANE_RES",},
-	["Resistencia al Fuego"] = {"FIRE_RES",},
-	["Resistencia a la Naturaleza"] = {"NATURE_RES",},
-	["Resistencia a la Escarcha"] = {"FROST_RES",},
-	["Resistencia a las Sombras"] = {"SHADOW_RES",},
-	["resist. Arcana"] = {"ARCANE_RES",}, -- Arcane Armor Kit +8 Arcane Resist
-	["resist. al Fuego"] = {"FIRE_RES",}, -- Flame Armor Kit +8 Fire Resist
-	["resist. a la Naturaleza"] = {"NATURE_RES",}, -- Frost Armor Kit +8 Frost Resist
-	["resist. a la Escarcha"] = {"FROST_RES",}, -- Nature Armor Kit +8 Nature Resist
-	["resist. a las Sombras"] = {"SHADOW_RES",}, -- Shadow Armor Kit +8 Shadow Resist
-	["resistencia a las Sombras"] = {"SHADOW_RES",}, -- Demons Blood ID: 10779
-	["todas las resistencias"] = {"ARCANE_RES", "FIRE_RES", "FROST_RES", "NATURE_RES", "SHADOW_RES",},
-	["resistencia a todo"] = {"ARCANE_RES", "FIRE_RES", "FROST_RES", "NATURE_RES", "SHADOW_RES",},
+	["Resistencia a lo Arcano"] = {StatLogic.Stats.ArcaneResistance,},
+	["Resistencia al Fuego"] = {StatLogic.Stats.FireResistance,},
+	["Resistencia a la Naturaleza"] = {StatLogic.Stats.NatureResistance,},
+	["Resistencia a la Escarcha"] = {StatLogic.Stats.FrostResistance,},
+	["Resistencia a las Sombras"] = {StatLogic.Stats.ShadowResistance,},
+	["resist. Arcana"] = {StatLogic.Stats.ArcaneResistance,}, -- Arcane Armor Kit +8 Arcane Resist
+	["resist. al Fuego"] = {StatLogic.Stats.FireResistance,}, -- Flame Armor Kit +8 Fire Resist
+	["resist. a la Naturaleza"] = {StatLogic.Stats.NatureResistance,}, -- Frost Armor Kit +8 Frost Resist
+	["resist. a la Escarcha"] = {StatLogic.Stats.FrostResistance,}, -- Nature Armor Kit +8 Nature Resist
+	["resist. a las Sombras"] = {StatLogic.Stats.ShadowResistance,}, -- Shadow Armor Kit +8 Shadow Resist
+	["resistencia a las Sombras"] = {StatLogic.Stats.ShadowResistance,}, -- Demons Blood ID: 10779
+	["todas las resistencias"] = {StatLogic.Stats.ArcaneResistance, StatLogic.Stats.FireResistance, StatLogic.Stats.FrostResistance, StatLogic.Stats.NatureResistance, StatLogic.Stats.ShadowResistance,},
+	["resistencia a todo"] = {StatLogic.Stats.ArcaneResistance, StatLogic.Stats.FireResistance, StatLogic.Stats.FrostResistance, StatLogic.Stats.NatureResistance, StatLogic.Stats.ShadowResistance,},
 
 	["Pesca"] = false, -- Fishing enchant ID:846
 	["Habilidad en pesca"] = false, -- Fishing lure
@@ -200,53 +200,53 @@ L["StatIDLookup"] = {
 	["regen. de manácada 5 s"] = {"MANA_REG",}, -- Enchant Bracer - Mana Regeneration "Mana Regen 4 per 5 sec." spell: 23801
 	["maná cada 5 s"] = {"MANA_REG",}, -- Enchant Bracer - Restore Mana Prime "6 Mana per 5 Sec." spell: 27913
 
-	["penetración del hechizo"] = {"SPELLPEN",}, -- Enchant Cloak - Spell Penetration "+20 Spell Penetration" spell: 34003
-	["Aumenta la penetración de tus hechizos"] = {"SPELLPEN",},
+	["penetración del hechizo"] = {StatLogic.Stats.SpellPenetration,}, -- Enchant Cloak - Spell Penetration "+20 Spell Penetration" spell: 34003
+	["Aumenta la penetración de tus hechizos"] = {StatLogic.Stats.SpellPenetration,},
 
-	["sanación y daño con hechizos"] = {"SPELL_DMG", "HEAL",}, -- Arcanum of Focus +8 Healing and Spell Damage spell: 22844
-	["Daño y hechizo de sanación"] = {"SPELL_DMG", "HEAL",},
-	["Daño con hechizos y sanación"] = {"SPELL_DMG", "HEAL",}, --StatLogic:GetSum("item:22630")
-	["Daño con hechizos"] = {"SPELL_DMG",}, -- 2.3.0 StatLogic:GetSum("item:23344:2343")
-	["Aumenta el daño y la sanación de los hechizos mágicos y los efectos hasta"] = {"SPELL_DMG", "HEAL"},
-	["Aumenta hasta el daño y la sanación de los hechizos mágicos y los efectos para todos los miembros del grupo en un radio de 30 m."] = {"SPELL_DMG", "HEAL"}, -- Atiesh
-	["Daño"] = {"SPELL_DMG",},
-	["Aumenta el daño con hechizos"] = {"SPELL_DMG",}, -- Atiesh ID:22630, 22631, 22632, 22589
-	["Poder con hechizos"] = {"SPELL_DMG", "HEAL",},
-	["Aumenta el poder con hechizos"] = {"SPELL_DMG", "HEAL",},
-	["Daño Sagrado"] = {"HOLY_SPELL_DMG",},
-	["Daño Arcano"] = {"ARCANE_SPELL_DMG",},
-	["Daño de Fuego"] = {"FIRE_SPELL_DMG",},
-	["Daño de Naturaleza"] = {"NATURE_SPELL_DMG",},
-	["Daño de Escarcha"] = {"FROST_SPELL_DMG",},
-	["Daño de Sombras"] = {"SHADOW_SPELL_DMG",},
-	["Daño con Hechizos Sagrado"] = {"HOLY_SPELL_DMG",},
-	["Daño con Hechizos Arcano"] = {"ARCANE_SPELL_DMG",},
-	["Daño con Hechizos de Fuego"] = {"FIRE_SPELL_DMG",},
-	["Daño con Hechizos de Naturaleza"] = {"NATURE_SPELL_DMG",},
-	["Daño con Hechizos de Escarcha"] = {"FROST_SPELL_DMG",}, -- Acrobatic Staff of Frozen Wrath ID:3185:0:0:0:0:0:1957
-	["Daño con Hechizos de las Sombras"] = {"SHADOW_SPELL_DMG",},
-	["Aumenta el daño causado por los hechizos de las Sombras y los efectos hasta"] = {"SHADOW_SPELL_DMG",}, -- Frozen Shadoweave Vest ID:21871
-	["Aumenta el daño causado por los hechizos de Escarcha y los efectos hasta"] = {"FROST_SPELL_DMG",}, -- Frozen Shadoweave Vest ID:21871
-	["Aumenta el daño causado por los hechizos Sagrados y los efectos hasta"] = {"HOLY_SPELL_DMG",},
-	["Aumenta el daño causado por los hechizos Arcanos y los efectos hasta"] = {"ARCANE_SPELL_DMG",},
-	["Aumenta el daño causado por los hechizos de Fuego y los efectos hasta"] = {"FIRE_SPELL_DMG",},
-	["Aumenta el daño causado por los hechizos de Naturaleza y los efectos hasta"] = {"NATURE_SPELL_DMG",},
-	["Aumenta el daño infligido por hechizos y efectos Sagrados"] = {"HOLY_SPELL_DMG",}, -- Drape of the Righteous ID:30642
-	["Aumenta el daño infligido por hechizos y efectos Arcanos"] = {"ARCANE_SPELL_DMG",}, -- Added just in case
-	["Aumenta el daño infligido por hechizos y efectos de Fuego"] = {"FIRE_SPELL_DMG",}, -- Added just in case
-	["Aumenta el daño infligido por hechizos y efectos de Escarcha"] = {"FROST_SPELL_DMG",}, -- Added just in case
-	["Aumenta el daño infligido por hechizos y efectos de Naturaleza"] = {"NATURE_SPELL_DMG",}, -- Added just in case
-	["Aumenta el daño infligido por hechizos y efectos de las Sombras"] = {"SHADOW_SPELL_DMG",}, -- Added just in case
+	["sanación y daño con hechizos"] = {StatLogic.Stats.SpellDamage, StatLogic.Stats.HealingPower,}, -- Arcanum of Focus +8 Healing and Spell Damage spell: 22844
+	["Daño y hechizo de sanación"] = {StatLogic.Stats.SpellDamage, StatLogic.Stats.HealingPower,},
+	["Daño con hechizos y sanación"] = {StatLogic.Stats.SpellDamage, StatLogic.Stats.HealingPower,}, --StatLogic:GetSum("item:22630")
+	["Daño con hechizos"] = {StatLogic.Stats.SpellDamage,}, -- 2.3.0 StatLogic:GetSum("item:23344:2343")
+	["Aumenta el daño y la sanación de los hechizos mágicos y los efectos hasta"] = {StatLogic.Stats.SpellDamage, StatLogic.Stats.HealingPower},
+	["Aumenta hasta el daño y la sanación de los hechizos mágicos y los efectos para todos los miembros del grupo en un radio de 30 m."] = {StatLogic.Stats.SpellDamage, StatLogic.Stats.HealingPower}, -- Atiesh
+	["Daño"] = {StatLogic.Stats.SpellDamage,},
+	["Aumenta el daño con hechizos"] = {StatLogic.Stats.SpellDamage,}, -- Atiesh ID:22630, 22631, 22632, 22589
+	["Poder con hechizos"] = {StatLogic.Stats.SpellDamage, StatLogic.Stats.HealingPower,},
+	["Aumenta el poder con hechizos"] = {StatLogic.Stats.SpellDamage, StatLogic.Stats.HealingPower,},
+	["Daño Sagrado"] = {StatLogic.Stats.HolyDamage,},
+	["Daño Arcano"] = {StatLogic.Stats.ArcaneDamage,},
+	["Daño de Fuego"] = {StatLogic.Stats.FireDamage,},
+	["Daño de Naturaleza"] = {StatLogic.Stats.NatureDamage,},
+	["Daño de Escarcha"] = {StatLogic.Stats.FrostDamage,},
+	["Daño de Sombras"] = {StatLogic.Stats.ShadowDamage,},
+	["Daño con Hechizos Sagrado"] = {StatLogic.Stats.HolyDamage,},
+	["Daño con Hechizos Arcano"] = {StatLogic.Stats.ArcaneDamage,},
+	["Daño con Hechizos de Fuego"] = {StatLogic.Stats.FireDamage,},
+	["Daño con Hechizos de Naturaleza"] = {StatLogic.Stats.NatureDamage,},
+	["Daño con Hechizos de Escarcha"] = {StatLogic.Stats.FrostDamage,}, -- Acrobatic Staff of Frozen Wrath ID:3185:0:0:0:0:0:1957
+	["Daño con Hechizos de las Sombras"] = {StatLogic.Stats.ShadowDamage,},
+	["Aumenta el daño causado por los hechizos de las Sombras y los efectos hasta"] = {StatLogic.Stats.ShadowDamage,}, -- Frozen Shadoweave Vest ID:21871
+	["Aumenta el daño causado por los hechizos de Escarcha y los efectos hasta"] = {StatLogic.Stats.FrostDamage,}, -- Frozen Shadoweave Vest ID:21871
+	["Aumenta el daño causado por los hechizos Sagrados y los efectos hasta"] = {StatLogic.Stats.HolyDamage,},
+	["Aumenta el daño causado por los hechizos Arcanos y los efectos hasta"] = {StatLogic.Stats.ArcaneDamage,},
+	["Aumenta el daño causado por los hechizos de Fuego y los efectos hasta"] = {StatLogic.Stats.FireDamage,},
+	["Aumenta el daño causado por los hechizos de Naturaleza y los efectos hasta"] = {StatLogic.Stats.NatureDamage,},
+	["Aumenta el daño infligido por hechizos y efectos Sagrados"] = {StatLogic.Stats.HolyDamage,}, -- Drape of the Righteous ID:30642
+	["Aumenta el daño infligido por hechizos y efectos Arcanos"] = {StatLogic.Stats.ArcaneDamage,}, -- Added just in case
+	["Aumenta el daño infligido por hechizos y efectos de Fuego"] = {StatLogic.Stats.FireDamage,}, -- Added just in case
+	["Aumenta el daño infligido por hechizos y efectos de Escarcha"] = {StatLogic.Stats.FrostDamage,}, -- Added just in case
+	["Aumenta el daño infligido por hechizos y efectos de Naturaleza"] = {StatLogic.Stats.NatureDamage,}, -- Added just in case
+	["Aumenta el daño infligido por hechizos y efectos de las Sombras"] = {StatLogic.Stats.ShadowDamage,}, -- Added just in case
 
-	["hechizos de sanación"] = {"HEAL",}, -- Enchant Gloves - Major Healing "+35 Healing Spells" spell: 33999
-	["aumentar la sanación"] = {"HEAL",},
-	["Sanación"] = {"HEAL",}, -- StatLogic:GetSum("item:23344:206")
-	["Hechizos de sanación"] = {"HEAL",}, -- [Royal Nightseye] ID: 24057
-	["Aumenta la sanación que haces"] = {"HEAL",}, -- 2.3.0
-	["daño que infligescon todos los hechizos mágicos"] = {"SPELL_DMG",}, -- 2.3.0
-	["Aumenta la sanación que hacescon todos los hechizos mágicos y efectos."] = {"HEAL",},
-	["Aumentala sanación de los hechizos mágicos y los efectos para todos los miembros del grupo en un radio de 30 m"] = {"HEAL",}, -- Atiesh
-	--["your healing"] = {"HEAL",}, -- Atiesh
+	["hechizos de sanación"] = {StatLogic.Stats.HealingPower,}, -- Enchant Gloves - Major Healing "+35 Healing Spells" spell: 33999
+	["aumentar la sanación"] = {StatLogic.Stats.HealingPower,},
+	["Sanación"] = {StatLogic.Stats.HealingPower,}, -- StatLogic:GetSum("item:23344:206")
+	["Hechizos de sanación"] = {StatLogic.Stats.HealingPower,}, -- [Royal Nightseye] ID: 24057
+	["Aumenta la sanación que haces"] = {StatLogic.Stats.HealingPower,}, -- 2.3.0
+	["daño que infligescon todos los hechizos mágicos"] = {StatLogic.Stats.SpellDamage,}, -- 2.3.0
+	["Aumenta la sanación que hacescon todos los hechizos mágicos y efectos."] = {StatLogic.Stats.HealingPower,},
+	["Aumentala sanación de los hechizos mágicos y los efectos para todos los miembros del grupo en un radio de 30 m"] = {StatLogic.Stats.HealingPower,}, -- Atiesh
+	--["your healing"] = {StatLogic.Stats.HealingPower,}, -- Atiesh
 
 	["daño por segundo"] = {StatLogic.Stats.WeaponDPS,},
 	["Añadedaño por segundo"] = {StatLogic.Stats.WeaponDPS,}, -- [Thorium Shells] ID: 15977

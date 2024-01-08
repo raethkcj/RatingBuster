@@ -28,21 +28,21 @@ L["WholeTextLookup"] = {
 	[EMPTY_SOCKET_BLUE] = {["EMPTY_SOCKET_BLUE"] = 1}, -- EMPTY_SOCKET_BLUE = "Blue Socket";
 	[EMPTY_SOCKET_META] = {["EMPTY_SOCKET_META"] = 1}, -- EMPTY_SOCKET_META = "Meta Socket";
 
-	["Huile de sorcier mineure"] = {["SPELL_DMG"] = 8, ["HEAL"] = 8}, -- ID: 20744
-	["Huile de sorcier inférieure"] = {["SPELL_DMG"] = 16, ["HEAL"] = 16}, -- ID: 20746
-	["Huile de sorcier"] = {["SPELL_DMG"] = 24, ["HEAL"] = 24}, -- ID: 20750
-	["Huile de sorcier brillante"] = {["SPELL_DMG"] = 36, ["HEAL"] = 36, [StatLogic.Stats.SpellCritRating] = 14}, -- ID: 20749
-	["Huile de sorcier excellente"] = {["SPELL_DMG"] = 42, ["HEAL"] = 42}, -- ID: 22522
+	["Huile de sorcier mineure"] = {[StatLogic.Stats.SpellDamage] = 8, [StatLogic.Stats.HealingPower] = 8}, -- ID: 20744
+	["Huile de sorcier inférieure"] = {[StatLogic.Stats.SpellDamage] = 16, [StatLogic.Stats.HealingPower] = 16}, -- ID: 20746
+	["Huile de sorcier"] = {[StatLogic.Stats.SpellDamage] = 24, [StatLogic.Stats.HealingPower] = 24}, -- ID: 20750
+	["Huile de sorcier brillante"] = {[StatLogic.Stats.SpellDamage] = 36, [StatLogic.Stats.HealingPower] = 36, [StatLogic.Stats.SpellCritRating] = 14}, -- ID: 20749
+	["Huile de sorcier excellente"] = {[StatLogic.Stats.SpellDamage] = 42, [StatLogic.Stats.HealingPower] = 42}, -- ID: 22522
 
 	["Huile de mana mineure"] = {["MANA_REG"] = 4}, -- ID: 20745
 	["Huile de mana inférieure"] = {["MANA_REG"] = 8}, -- ID: 20747
-	["Huile de mana brillante"] = {["MANA_REG"] = 12, ["HEAL"] = 25}, -- ID: 20748
+	["Huile de mana brillante"] = {["MANA_REG"] = 12, [StatLogic.Stats.HealingPower] = 25}, -- ID: 20748
 	["Huile de mana excellente"] = {["MANA_REG"] = 14}, -- ID: 22521
 
 	["Sauvagerie"] = {["AP"] = 70}, -- ID: 27971
 	["Vitalité"] = {["MANA_REG"] = 4, ["HEALTH_REG"] = 4}, -- ID: 46492
-	["Âme de givre"] = {["SHADOW_SPELL_DMG"] = 54, ["FROST_SPELL_DMG"] = 54}, -- ID: 27982
-	["Feu solaire"] = {["ARCANE_SPELL_DMG"] = 50, ["FIRE_SPELL_DMG"] = 50}, -- ID: 27981
+	["Âme de givre"] = {[StatLogic.Stats.ShadowDamage] = 54, [StatLogic.Stats.FrostDamage] = 54}, -- ID: 27982
+	["Feu solaire"] = {[StatLogic.Stats.ArcaneDamage] = 50, [StatLogic.Stats.FireDamage] = 50}, -- ID: 27981
 
 	["Équipé\194\160: La vitesse de course augmente légèrement."] = false, -- [Grèves des Hautes-terres en plaques] -- ID: 20048
 	["La vitesse de course augmente légèrement"] = false,
@@ -135,9 +135,9 @@ L["DeepScanWordSeparators"] = {
 }
 L["DualStatPatterns"] = {
 	-- all lower case
-	["les soins %+(%d+) et les dégâts %+ (%d+)$"] = {{"HEAL"}, {"SPELL_DMG"},},
-	["les soins %+(%d+) les dégâts %+ (%d+)"] = {{"HEAL"}, {"SPELL_DMG"},},
-	["soins prodigués d'un maximum de (%d+) et les dégâts d'un maximum de (%d+)"] = {{"HEAL"}, {"SPELL_DMG"},},
+	["les soins %+(%d+) et les dégâts %+ (%d+)$"] = {{StatLogic.Stats.HealingPower}, {StatLogic.Stats.SpellDamage},},
+	["les soins %+(%d+) les dégâts %+ (%d+)"] = {{StatLogic.Stats.HealingPower}, {StatLogic.Stats.SpellDamage},},
+	["soins prodigués d'un maximum de (%d+) et les dégâts d'un maximum de (%d+)"] = {{StatLogic.Stats.HealingPower}, {StatLogic.Stats.SpellDamage},},
 }
 L["DeepScanPatterns"] = {
 	"^(.-) de ?(%d+) ?a?u? ?m?a?x?i?m?u?m? ?(.-)$", -- "xxx by up to 22 xxx" (scan first)
@@ -171,22 +171,22 @@ L["StatIDLookup"] = {
 	["Esprit"] = {StatLogic.Stats.Spirit},
 	["à l'Esprit"] = {StatLogic.Stats.Spirit},
 
-	["à la résistance Arcanes"] = {"ARCANE_RES"},
-	["à la résistance aux Arcanes"] = {"ARCANE_RES"},
+	["à la résistance Arcanes"] = {StatLogic.Stats.ArcaneResistance},
+	["à la résistance aux Arcanes"] = {StatLogic.Stats.ArcaneResistance},
 
-	["à la résistance Feu"] = {"FIRE_RES"},
-	["à la résistance au Feu"] = {"FIRE_RES"},
+	["à la résistance Feu"] = {StatLogic.Stats.FireResistance},
+	["à la résistance au Feu"] = {StatLogic.Stats.FireResistance},
 
-	["à la résistance Givre"] = {"FROST_RES"},
-	["à la résistance au Givre"] = {"FROST_RES"},
+	["à la résistance Givre"] = {StatLogic.Stats.FrostResistance},
+	["à la résistance au Givre"] = {StatLogic.Stats.FrostResistance},
 
-	["à la résistance Nature"] = {"NATURE_RES"},
-	["à la résistance à la Nature"] = {"NATURE_RES"},
+	["à la résistance Nature"] = {StatLogic.Stats.NatureResistance},
+	["à la résistance à la Nature"] = {StatLogic.Stats.NatureResistance},
 
-	["à la résistance Ombre"] = {"SHADOW_RES"},
-	["à la résistance à l'Ombre"] = {"SHADOW_RES"},
+	["à la résistance Ombre"] = {StatLogic.Stats.ShadowResistance},
+	["à la résistance à l'Ombre"] = {StatLogic.Stats.ShadowResistance},
 
-	["à toutes les résistances"] = {"ARCANE_RES", "FIRE_RES", "FROST_RES", "NATURE_RES", "SHADOW_RES"},
+	["à toutes les résistances"] = {StatLogic.Stats.ArcaneResistance, StatLogic.Stats.FireResistance, StatLogic.Stats.FrostResistance, StatLogic.Stats.NatureResistance, StatLogic.Stats.ShadowResistance},
 
 	["Pêche"] = false, -- Ench. de gants (Pêche) ID:13620
 	["Appât de pêche"] = false, -- Appats
@@ -229,51 +229,51 @@ L["StatIDLookup"] = {
 	["point de vie toutes les 5 sec"] = {"HEALTH_REG"},
 	["votre régénération des points de vie normale"] = {"HEALTH_REG"}, -- [Sang de démon] ID: 10779
 
-	["à la pénétration des sorts"] = {"SPELLPEN"}, -- Ench. de cape (Pénétration des sorts) "+20 à la pénétration des sorts" ID: 34003
-	["la pénétration de vos sorts"] = {"SPELLPEN"},
+	["à la pénétration des sorts"] = {StatLogic.Stats.SpellPenetration}, -- Ench. de cape (Pénétration des sorts) "+20 à la pénétration des sorts" ID: 34003
+	["la pénétration de vos sorts"] = {StatLogic.Stats.SpellPenetration},
 
-	["aux soins et aux dégâts des sorts"] = {"SPELL_DMG", "HEAL"}, -- Arcanum de focalisation "+8 aux soins et aux dégâts des sorts" ID: 22844
-	["aux soins et dégâts des sorts"] = {"SPELL_DMG", "HEAL"}, -- Etreinte vigilante du vaudouisan "+13 aux soins et dégâts des sorts/+15 Intelligence" ID: 24163
-	["aux dégâts des sorts et aux soins"] = {"SPELL_DMG", "HEAL"},
-	["aux dégâts des sorts"] = {"SPELL_DMG"},
-	["aux sorts de soins"] = {"HEAL"},
-	["aux soins"] = {"HEAL"},
-	["à la puissance des sorts"] = {"SPELL_DMG", "HEAL",},
-	["la puissance des sorts"] = {"SPELL_DMG", "HEAL",},
-	["augmente la puissance des sorts"] = {"SPELL_DMG", "HEAL",},
-	["les dégâts et les soins produits par les sorts et effets magiques"] = {"SPELL_DMG", "HEAL"},
-	["les soins prodigués par les sorts et effets d’un maximum"] = {"HEAL"},
-	["les soins prodigués par les sorts et effets"] = {"HEAL"},
-	["dégâts des sorts"] = {"SPELL_DMG"},
-	["soins"] = {"HEAL"},
+	["aux soins et aux dégâts des sorts"] = {StatLogic.Stats.SpellDamage, StatLogic.Stats.HealingPower}, -- Arcanum de focalisation "+8 aux soins et aux dégâts des sorts" ID: 22844
+	["aux soins et dégâts des sorts"] = {StatLogic.Stats.SpellDamage, StatLogic.Stats.HealingPower}, -- Etreinte vigilante du vaudouisan "+13 aux soins et dégâts des sorts/+15 Intelligence" ID: 24163
+	["aux dégâts des sorts et aux soins"] = {StatLogic.Stats.SpellDamage, StatLogic.Stats.HealingPower},
+	["aux dégâts des sorts"] = {StatLogic.Stats.SpellDamage},
+	["aux sorts de soins"] = {StatLogic.Stats.HealingPower},
+	["aux soins"] = {StatLogic.Stats.HealingPower},
+	["à la puissance des sorts"] = {StatLogic.Stats.SpellDamage, StatLogic.Stats.HealingPower,},
+	["la puissance des sorts"] = {StatLogic.Stats.SpellDamage, StatLogic.Stats.HealingPower,},
+	["augmente la puissance des sorts"] = {StatLogic.Stats.SpellDamage, StatLogic.Stats.HealingPower,},
+	["les dégâts et les soins produits par les sorts et effets magiques"] = {StatLogic.Stats.SpellDamage, StatLogic.Stats.HealingPower},
+	["les soins prodigués par les sorts et effets d’un maximum"] = {StatLogic.Stats.HealingPower},
+	["les soins prodigués par les sorts et effets"] = {StatLogic.Stats.HealingPower},
+	["dégâts des sorts"] = {StatLogic.Stats.SpellDamage},
+	["soins"] = {StatLogic.Stats.HealingPower},
 
-	["les dégâts infligés par les sorts et effets du Sacré"]={"HOLY_SPELL_DMG"},
-	["aux dégâts des sorts du Sacré"]={"HOLY_SPELL_DMG"},
-	["aux dégâts du Sacré"]={"HOLY_SPELL_DMG"},
+	["les dégâts infligés par les sorts et effets du Sacré"]={StatLogic.Stats.HolyDamage},
+	["aux dégâts des sorts du Sacré"]={StatLogic.Stats.HolyDamage},
+	["aux dégâts du Sacré"]={StatLogic.Stats.HolyDamage},
 
-	["les dégâts infligés par les sorts et effets des Arcanes"]={"ARCANE_SPELL_DMG"},
-	["aux dégâts des sorts d'Arcanes"]={"ARCANE_SPELL_DMG"},
-	["aux dégâts d'Arcanes"]={"ARCANE_SPELL_DMG"},
+	["les dégâts infligés par les sorts et effets des Arcanes"]={StatLogic.Stats.ArcaneDamage},
+	["aux dégâts des sorts d'Arcanes"]={StatLogic.Stats.ArcaneDamage},
+	["aux dégâts d'Arcanes"]={StatLogic.Stats.ArcaneDamage},
 
-	["les dégâts infligés par les sorts et effets de Feu"]={"FIRE_SPELL_DMG"},
-	["aux dégâts des sorts de Feu"]={"FIRE_SPELL_DMG"},
-	["aux dégâts de Feu"]={"FIRE_SPELL_DMG"},
+	["les dégâts infligés par les sorts et effets de Feu"]={StatLogic.Stats.FireDamage},
+	["aux dégâts des sorts de Feu"]={StatLogic.Stats.FireDamage},
+	["aux dégâts de Feu"]={StatLogic.Stats.FireDamage},
 
-	["les dégâts infligés par les sorts et effets de Givre"]={"FROST_SPELL_DMG"},
-	["aux dégâts des sorts de Givre"]={"FROST_SPELL_DMG"},
-	["aux dégâts de Givre"]={"FROST_SPELL_DMG"},
+	["les dégâts infligés par les sorts et effets de Givre"]={StatLogic.Stats.FrostDamage},
+	["aux dégâts des sorts de Givre"]={StatLogic.Stats.FrostDamage},
+	["aux dégâts de Givre"]={StatLogic.Stats.FrostDamage},
 
-	["les dégâts infligés par les sorts et effets de Nature"]={"NATURE_SPELL_DMG"},
-	["aux dégâts des sorts de Nature"]={"NATURE_SPELL_DMG"},
-	["aux dégâts de Nature"]={"NATURE_SPELL_DMG"},
+	["les dégâts infligés par les sorts et effets de Nature"]={StatLogic.Stats.NatureDamage},
+	["aux dégâts des sorts de Nature"]={StatLogic.Stats.NatureDamage},
+	["aux dégâts de Nature"]={StatLogic.Stats.NatureDamage},
 
-	["les dégâts infligés par les sorts et effets d'Ombre"]={"SHADOW_SPELL_DMG"},
-	["aux dégâts des sorts d'Ombre"]={"SHADOW_SPELL_DMG"},
-	["aux dégâts d'Ombre"]={"SHADOW_SPELL_DMG"},
+	["les dégâts infligés par les sorts et effets d'Ombre"]={StatLogic.Stats.ShadowDamage},
+	["aux dégâts des sorts d'Ombre"]={StatLogic.Stats.ShadowDamage},
+	["aux dégâts d'Ombre"]={StatLogic.Stats.ShadowDamage},
 
 	--ToDo
-	--["Increases healing done by magical spells and effects of all party members within 30 yards"] = {"HEAL"}, -- Atiesh
-	--["your healing"] = {"HEAL"}, -- Atiesh
+	--["Increases healing done by magical spells and effects of all party members within 30 yards"] = {StatLogic.Stats.HealingPower}, -- Atiesh
+	--["your healing"] = {StatLogic.Stats.HealingPower}, -- Atiesh
 
 	["dégâts par seconde"] = {StatLogic.Stats.WeaponDPS},
 	["Ajoutedégâts par seconde"] = {StatLogic.Stats.WeaponDPS}, -- [Obus en thorium] ID: 15997

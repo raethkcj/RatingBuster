@@ -552,7 +552,7 @@ L["EMPTY_SOCKET_YELLOW"] = EMPTY_SOCKET_YELLOW -- EMPTY_SOCKET_YELLOW = "Yellow 
 L["EMPTY_SOCKET_BLUE"] = EMPTY_SOCKET_BLUE -- EMPTY_SOCKET_BLUE = "Blue Socket";
 L["EMPTY_SOCKET_META"] = EMPTY_SOCKET_META -- EMPTY_SOCKET_META = "Meta Socket";
 
-L["HEALING"] = STAT_SPELLHEALING
+L[StatLogic.Stats.HealingPower] = STAT_SPELLHEALING
 L["SPELL_CRIT"] = PLAYERSTAT_SPELL_COMBAT .. " " .. SPELL_CRIT_CHANCE
 L["STR"] = SPELL_STAT1_NAME
 L["AGI"] = SPELL_STAT2_NAME
@@ -578,11 +578,11 @@ L[StatLogic.Stats.Intellect] = SPELL_STAT4_NAME
 L[StatLogic.Stats.Spirit] = SPELL_STAT5_NAME
 L[StatLogic.Stats.Armor] = ARMOR
 
-L["FIRE_RES"] = RESISTANCE2_NAME
-L["NATURE_RES"] = RESISTANCE3_NAME
-L["FROST_RES"] = RESISTANCE4_NAME
-L["SHADOW_RES"] = RESISTANCE5_NAME
-L["ARCANE_RES"] = RESISTANCE6_NAME
+L[StatLogic.Stats.FireResistance] = RESISTANCE2_NAME
+L[StatLogic.Stats.NatureResistance] = RESISTANCE3_NAME
+L[StatLogic.Stats.FrostResistance] = RESISTANCE4_NAME
+L[StatLogic.Stats.ShadowResistance] = RESISTANCE5_NAME
+L[StatLogic.Stats.ArcaneResistance] = RESISTANCE6_NAME
 
 L["BLOCK_VALUE"] = "格擋值"
 
@@ -590,17 +590,17 @@ L["AP"] = ATTACK_POWER_TOOLTIP
 L["RANGED_AP"] = RANGED_ATTACK_POWER
 L["FERAL_AP"] = "野性攻擊強度"
 
-L["HEAL"] = "法術治療"
+L[StatLogic.Stats.HealingPower] = "法術治療"
 
-L["SPELL_DMG"] = "法術傷害"
-L["HOLY_SPELL_DMG"] = "神聖法術傷害"
-L["FIRE_SPELL_DMG"] = "火焰法術傷害"
-L["NATURE_SPELL_DMG"] = "自然法術傷害"
-L["FROST_SPELL_DMG"] = "冰霜法術傷害"
-L["SHADOW_SPELL_DMG"] = "暗影法術傷害"
-L["ARCANE_SPELL_DMG"] = "秘法法術傷害"
+L[StatLogic.Stats.SpellDamage] = "法術傷害"
+L[StatLogic.Stats.HolyDamage] = "神聖法術傷害"
+L[StatLogic.Stats.FireDamage] = "火焰法術傷害"
+L[StatLogic.Stats.NatureDamage] = "自然法術傷害"
+L[StatLogic.Stats.FrostDamage] = "冰霜法術傷害"
+L[StatLogic.Stats.ShadowDamage] = "暗影法術傷害"
+L[StatLogic.Stats.ArcaneDamage] = "秘法法術傷害"
 
-L["SPELLPEN"] = "法術穿透"
+L[StatLogic.Stats.SpellPenetration] = "法術穿透"
 
 L["HEALTH"] = HEALTH
 L["MANA"] = MANA
