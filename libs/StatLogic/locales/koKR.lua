@@ -21,21 +21,21 @@ L["WholeTextLookup"] = {
 	[EMPTY_SOCKET_BLUE] = {["EMPTY_SOCKET_BLUE"] = 1}, -- EMPTY_SOCKET_BLUE = "Blue Socket";
 	[EMPTY_SOCKET_META] = {["EMPTY_SOCKET_META"] = 1}, -- EMPTY_SOCKET_META = "Meta Socket";
 
-	["최하급 마술사 오일"] = {["SPELL_DMG"] = 8, ["HEAL"] = 8}, -- ID: 20744
-	["하급 마술사 오일"] = {["SPELL_DMG"] = 16, ["HEAL"] = 16}, -- ID: 20746
-	["마술사 오일"] = {["SPELL_DMG"] = 24, ["HEAL"] = 24}, -- ID: 20750
-	["반짝이는 마술사 오일"] = {["SPELL_DMG"] = 36, ["HEAL"] = 36, [StatLogic.Stats.SpellCritRating] = 14}, -- ID: 20749
-	["상급 마술사 오일"] = {["SPELL_DMG"] = 42, ["HEAL"] = 42}, -- ID: 22522
+	["최하급 마술사 오일"] = {[StatLogic.Stats.SpellDamage] = 8, [StatLogic.Stats.HealingPower] = 8}, -- ID: 20744
+	["하급 마술사 오일"] = {[StatLogic.Stats.SpellDamage] = 16, [StatLogic.Stats.HealingPower] = 16}, -- ID: 20746
+	["마술사 오일"] = {[StatLogic.Stats.SpellDamage] = 24, [StatLogic.Stats.HealingPower] = 24}, -- ID: 20750
+	["반짝이는 마술사 오일"] = {[StatLogic.Stats.SpellDamage] = 36, [StatLogic.Stats.HealingPower] = 36, [StatLogic.Stats.SpellCritRating] = 14}, -- ID: 20749
+	["상급 마술사 오일"] = {[StatLogic.Stats.SpellDamage] = 42, [StatLogic.Stats.HealingPower] = 42}, -- ID: 22522
 
 	["최하급 마나 오일"] = {["MANA_REG"] = 4}, -- ID: 20745
 	["하급 마나 오일"] = {["MANA_REG"] = 8}, -- ID: 20747
-	["반짝이는 마나 오일"] = {["MANA_REG"] = 12, ["HEAL"] = 25}, -- ID: 20748
+	["반짝이는 마나 오일"] = {["MANA_REG"] = 12, [StatLogic.Stats.HealingPower] = 25}, -- ID: 20748
 	["상급 마나 오일"] = {["MANA_REG"] = 14}, -- ID: 22521
 
 	["전투력"] = {["AP"] = 70}, -- 전투력
 	["활력"] = {["MANA_REG"] = 4, ["HEALTH_REG"] = 4}, -- Enchant Boots - Vitality "Vitality" spell: 27948
-	["냉기의 영혼"] = {["SHADOW_SPELL_DMG"] = 54, ["FROST_SPELL_DMG"] = 54}, --
-	["태양의 불꽃"] = {["ARCANE_SPELL_DMG"] = 50, ["FIRE_SPELL_DMG"] = 50}, --
+	["냉기의 영혼"] = {[StatLogic.Stats.ShadowDamage] = 54, [StatLogic.Stats.FrostDamage] = 54}, --
+	["태양의 불꽃"] = {[StatLogic.Stats.ArcaneDamage] = 50, [StatLogic.Stats.FireDamage] = 50}, --
 
 	["이동 속도가 약간 증가합니다."] = false, --
 	["하급 이동 속도 증가"] = false, -- Enchant Boots - Minor Speed "Minor Speed Increase" spell: 13890
@@ -106,8 +106,8 @@ L["DeepScanWordSeparators"] = {
 }
 -- all lower case
 L["DualStatPatterns"] = {
-	["^%+(%d+) 치유량 %+(%d+) 주문 공격력$"] = {{"HEAL",}, {"SPELL_DMG",},},
-	["^모든 주문 및 효과에 의한 치유량이 최대 (%d+)만큼, 공격력이 최대 (%d+)만큼 증가합니다$"] = {{"HEAL",}, {"SPELL_DMG",},},
+	["^%+(%d+) 치유량 %+(%d+) 주문 공격력$"] = {{StatLogic.Stats.HealingPower,}, {StatLogic.Stats.SpellDamage,},},
+	["^모든 주문 및 효과에 의한 치유량이 최대 (%d+)만큼, 공격력이 최대 (%d+)만큼 증가합니다$"] = {{StatLogic.Stats.HealingPower,}, {StatLogic.Stats.SpellDamage,},},
 }
 L["DeepScanPatterns"] = {
 	"^(.-) (%d+)만큼(.-)$", -- "xxx by up to 22 xxx" (scan first)
@@ -129,18 +129,18 @@ L["StatIDLookup"] = {
 	["지능"] = {StatLogic.Stats.Intellect,},
 	["정신력"] = {StatLogic.Stats.Spirit,},
 
-	["비전 저항력"] = {"ARCANE_RES",},
-	["화염 저항력"] = {"FIRE_RES",},
-	["자연 저항력"] = {"NATURE_RES",},
-	["냉기 저항력"] = {"FROST_RES",},
-	["암흑 저항력"] = {"SHADOW_RES",},
-	["비전 저항"] = {"ARCANE_RES",}, -- Arcane Armor Kit +8 Arcane Resist
-	["화염 저항"] = {"FIRE_RES",}, -- Flame Armor Kit +8 Fire Resist
-	["자연 저항"] = {"NATURE_RES",}, -- Frost Armor Kit +8 Frost Resist
-	["냉기 저항"] = {"FROST_RES",}, -- Nature Armor Kit +8 Nature Resist
-	["암흑 저항"] = {"SHADOW_RES",}, -- Shadow Armor Kit +8 Shadow Resist
-	["모든 저항력"] = {"ARCANE_RES", "FIRE_RES", "FROST_RES", "NATURE_RES", "SHADOW_RES",},
-	["모든 저항"] = {"ARCANE_RES", "FIRE_RES", "FROST_RES", "NATURE_RES", "SHADOW_RES",},
+	["비전 저항력"] = {StatLogic.Stats.ArcaneResistance,},
+	["화염 저항력"] = {StatLogic.Stats.FireResistance,},
+	["자연 저항력"] = {StatLogic.Stats.NatureResistance,},
+	["냉기 저항력"] = {StatLogic.Stats.FrostResistance,},
+	["암흑 저항력"] = {StatLogic.Stats.ShadowResistance,},
+	["비전 저항"] = {StatLogic.Stats.ArcaneResistance,}, -- Arcane Armor Kit +8 Arcane Resist
+	["화염 저항"] = {StatLogic.Stats.FireResistance,}, -- Flame Armor Kit +8 Fire Resist
+	["자연 저항"] = {StatLogic.Stats.NatureResistance,}, -- Frost Armor Kit +8 Frost Resist
+	["냉기 저항"] = {StatLogic.Stats.FrostResistance,}, -- Nature Armor Kit +8 Nature Resist
+	["암흑 저항"] = {StatLogic.Stats.ShadowResistance,}, -- Shadow Armor Kit +8 Shadow Resist
+	["모든 저항력"] = {StatLogic.Stats.ArcaneResistance, StatLogic.Stats.FireResistance, StatLogic.Stats.FrostResistance, StatLogic.Stats.NatureResistance, StatLogic.Stats.ShadowResistance,},
+	["모든 저항"] = {StatLogic.Stats.ArcaneResistance, StatLogic.Stats.FireResistance, StatLogic.Stats.FrostResistance, StatLogic.Stats.NatureResistance, StatLogic.Stats.ShadowResistance,},
 
 	["낚시"] = false, -- Fishing enchant ID:846
 	["낚시 숙련도"] = false, -- Fishing lure
@@ -195,51 +195,51 @@ L["StatIDLookup"] = {
 	["주문 관통력"] = {"SPELLPEN",}, -- Enchant Cloak - Spell Penetration "+20 Spell Penetration" spell: 34003
 	["주문 관통력이 증가합니다"] = {"SPELLPEN",},
 
-	["치유량 및 주문 공격력"] = {"SPELL_DMG", "HEAL",}, -- Arcanum of Focus +8 Healing and Spell Damage spell: 22844
-	["치유 및 주문 공격력"] = {"SPELL_DMG", "HEAL",},
-	["주문 공격력 및 치유량"] = {"SPELL_DMG", "HEAL",}, --StatLogic:GetSum("item:22630")
-	["주문 공격력"] = {"SPELL_DMG",}, -- 2.3.0 StatLogic:GetSum("item:23344:2343")
-	["모든 주문 및 효과의 공격력과 치유량이 증가합니다"] = {"SPELL_DMG", "HEAL"},
-	["주위 30미터 반경에 있는 모든 파티원의 모든 주문 및 효과의 공격력과 치유량이 증가합니다"] = {"SPELL_DMG", "HEAL"}, -- Atiesh
-	["공격력"] = {"SPELL_DMG",},
-	["주문 공격력이 증가합니다"] = {"SPELL_DMG",}, -- Atiesh ID:22630, 22631, 22632, 22589
-	["주문 위력"] = {"SPELL_DMG", "HEAL",},
-	["주문력이 증가합니다"] = {"SPELL_DMG", "HEAL",}, -- WotLK
-	["신성 피해"] = {"HOLY_SPELL_DMG",},
-	["비전 피해"] = {"ARCANE_SPELL_DMG",},
-	["화염 피해"] = {"FIRE_SPELL_DMG",},
-	["자연 피해"] = {"NATURE_SPELL_DMG",},
-	["냉기 피해"] = {"FROST_SPELL_DMG",},
-	["암흑 피해"] = {"SHADOW_SPELL_DMG",},
-	["신성 주문 공격력"] = {"HOLY_SPELL_DMG",},
-	["비전 주문 공격력"] = {"ARCANE_SPELL_DMG",},
-	["화염 주문 공격력"] = {"FIRE_SPELL_DMG",},
-	["자연 주문 공격력"] = {"NATURE_SPELL_DMG",},
-	["냉기 주문 공격력"] = {"FROST_SPELL_DMG",}, -- Acrobatic Staff of Frozen Wrath ID:3185:0:0:0:0:0:1957
-	["암흑 주문 공격력"] = {"SHADOW_SPELL_DMG",},
-	["암흑 계열의 주문과 효과의 공격력이 증가합니다"] = {"SHADOW_SPELL_DMG",}, -- Frozen Shadoweave Vest ID:21871
-	["냉기 계열의 주문과 효과의 공격력이 증가합니다"] = {"FROST_SPELL_DMG",}, -- Frozen Shadoweave Vest ID:21871
-	["신성 계열의 주문과 효과의 공격력이 증가합니다"] = {"HOLY_SPELL_DMG",},
-	["비전 계열의 주문과 효과의 공격력이 증가합니다"] = {"ARCANE_SPELL_DMG",},
-	["화염 계열의 주문과 효과의 공격력이 증가합니다"] = {"FIRE_SPELL_DMG",},
-	["자연 계열의 주문과 효과의 공격력이 증가합니다"] = {"NATURE_SPELL_DMG",},
-	["Increases the damage done by Holy spells and effects"] = {"HOLY_SPELL_DMG",}, -- Drape of the Righteous ID:30642
-	["Increases the damage done by Arcane spells and effects"] = {"ARCANE_SPELL_DMG",}, -- Added just in case
-	["Increases the damage done by Fire spells and effects"] = {"FIRE_SPELL_DMG",}, -- Added just in case
-	["Increases the damage done by Frost spells and effects"] = {"FROST_SPELL_DMG",}, -- Added just in case
-	["Increases the damage done by Nature spells and effects"] = {"NATURE_SPELL_DMG",}, -- Added just in case
-	["Increases the damage done by Shadow spells and effects"] = {"SHADOW_SPELL_DMG",}, -- Added just in case
+	["치유량 및 주문 공격력"] = {StatLogic.Stats.SpellDamage, StatLogic.Stats.HealingPower,}, -- Arcanum of Focus +8 Healing and Spell Damage spell: 22844
+	["치유 및 주문 공격력"] = {StatLogic.Stats.SpellDamage, StatLogic.Stats.HealingPower,},
+	["주문 공격력 및 치유량"] = {StatLogic.Stats.SpellDamage, StatLogic.Stats.HealingPower,}, --StatLogic:GetSum("item:22630")
+	["주문 공격력"] = {StatLogic.Stats.SpellDamage,}, -- 2.3.0 StatLogic:GetSum("item:23344:2343")
+	["모든 주문 및 효과의 공격력과 치유량이 증가합니다"] = {StatLogic.Stats.SpellDamage, StatLogic.Stats.HealingPower},
+	["주위 30미터 반경에 있는 모든 파티원의 모든 주문 및 효과의 공격력과 치유량이 증가합니다"] = {StatLogic.Stats.SpellDamage, StatLogic.Stats.HealingPower}, -- Atiesh
+	["공격력"] = {StatLogic.Stats.SpellDamage,},
+	["주문 공격력이 증가합니다"] = {StatLogic.Stats.SpellDamage,}, -- Atiesh ID:22630, 22631, 22632, 22589
+	["주문 위력"] = {StatLogic.Stats.SpellDamage, StatLogic.Stats.HealingPower,},
+	["주문력이 증가합니다"] = {StatLogic.Stats.SpellDamage, StatLogic.Stats.HealingPower,}, -- WotLK
+	["신성 피해"] = {StatLogic.Stats.HolyDamage,},
+	["비전 피해"] = {StatLogic.Stats.ArcaneDamage,},
+	["화염 피해"] = {StatLogic.Stats.FireDamage,},
+	["자연 피해"] = {StatLogic.Stats.NatureDamage,},
+	["냉기 피해"] = {StatLogic.Stats.FrostDamage,},
+	["암흑 피해"] = {StatLogic.Stats.ShadowDamage,},
+	["신성 주문 공격력"] = {StatLogic.Stats.HolyDamage,},
+	["비전 주문 공격력"] = {StatLogic.Stats.ArcaneDamage,},
+	["화염 주문 공격력"] = {StatLogic.Stats.FireDamage,},
+	["자연 주문 공격력"] = {StatLogic.Stats.NatureDamage,},
+	["냉기 주문 공격력"] = {StatLogic.Stats.FrostDamage,}, -- Acrobatic Staff of Frozen Wrath ID:3185:0:0:0:0:0:1957
+	["암흑 주문 공격력"] = {StatLogic.Stats.ShadowDamage,},
+	["암흑 계열의 주문과 효과의 공격력이 증가합니다"] = {StatLogic.Stats.ShadowDamage,}, -- Frozen Shadoweave Vest ID:21871
+	["냉기 계열의 주문과 효과의 공격력이 증가합니다"] = {StatLogic.Stats.FrostDamage,}, -- Frozen Shadoweave Vest ID:21871
+	["신성 계열의 주문과 효과의 공격력이 증가합니다"] = {StatLogic.Stats.HolyDamage,},
+	["비전 계열의 주문과 효과의 공격력이 증가합니다"] = {StatLogic.Stats.ArcaneDamage,},
+	["화염 계열의 주문과 효과의 공격력이 증가합니다"] = {StatLogic.Stats.FireDamage,},
+	["자연 계열의 주문과 효과의 공격력이 증가합니다"] = {StatLogic.Stats.NatureDamage,},
+	["Increases the damage done by Holy spells and effects"] = {StatLogic.Stats.HolyDamage,}, -- Drape of the Righteous ID:30642
+	["Increases the damage done by Arcane spells and effects"] = {StatLogic.Stats.ArcaneDamage,}, -- Added just in case
+	["Increases the damage done by Fire spells and effects"] = {StatLogic.Stats.FireDamage,}, -- Added just in case
+	["Increases the damage done by Frost spells and effects"] = {StatLogic.Stats.FrostDamage,}, -- Added just in case
+	["Increases the damage done by Nature spells and effects"] = {StatLogic.Stats.NatureDamage,}, -- Added just in case
+	["Increases the damage done by Shadow spells and effects"] = {StatLogic.Stats.ShadowDamage,}, -- Added just in case
 
-	["주문 치유량"] = {"HEAL",}, -- Enchant Gloves - Major Healing "+35 Healing Spells" spell: 33999
-	["치유량 증가"] = {"HEAL",},
-	["치유량"] = {"HEAL",},
-	["healing Spells"] = {"HEAL",},
-	["Healing Spells"] = {"HEAL",}, -- [Royal Nightseye] ID: 24057
-	["모든 주문 및 효과에 의한 치유량이"] = {"HEAL",}, -- 2.3.0
-	["공격력이 증가합니다"] = {"SPELL_DMG",}, -- 2.3.0
-	["모든 주문 및 효과에 의한 치유량이 증가합니다"] = {"HEAL",},
-	["주위 30미터 반경에 있는 모든 파티원의 모든 주문 및 효과에 의한 치유량이 증가합니다"] = {"HEAL",}, -- Atiesh
-	["your healing"] = {"HEAL",}, -- Atiesh
+	["주문 치유량"] = {StatLogic.Stats.HealingPower,}, -- Enchant Gloves - Major Healing "+35 Healing Spells" spell: 33999
+	["치유량 증가"] = {StatLogic.Stats.HealingPower,},
+	["치유량"] = {StatLogic.Stats.HealingPower,},
+	["healing Spells"] = {StatLogic.Stats.HealingPower,},
+	["Healing Spells"] = {StatLogic.Stats.HealingPower,}, -- [Royal Nightseye] ID: 24057
+	["모든 주문 및 효과에 의한 치유량이"] = {StatLogic.Stats.HealingPower,}, -- 2.3.0
+	["공격력이 증가합니다"] = {StatLogic.Stats.SpellDamage,}, -- 2.3.0
+	["모든 주문 및 효과에 의한 치유량이 증가합니다"] = {StatLogic.Stats.HealingPower,},
+	["주위 30미터 반경에 있는 모든 파티원의 모든 주문 및 효과에 의한 치유량이 증가합니다"] = {StatLogic.Stats.HealingPower,}, -- Atiesh
+	["your healing"] = {StatLogic.Stats.HealingPower,}, -- Atiesh
 
 	["초당 공격력"] = {StatLogic.Stats.WeaponDPS,},
 	["초당의 피해 추가"] = {StatLogic.Stats.WeaponDPS,}, -- [Thorium Shells] ID: 15977

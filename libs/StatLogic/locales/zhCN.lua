@@ -23,22 +23,22 @@ L["WholeTextLookup"] = {
 
 	["野性"] = {["AP"] = 70}, --
 
-	["初级巫师之油"] = {["SPELL_DMG"] = 8, ["HEAL"] = 8}, --
-	["次级巫师之油"] = {["SPELL_DMG"] = 16, ["HEAL"] = 16}, --
-	["巫师之油"] = {["SPELL_DMG"] = 24, ["HEAL"] = 24}, --
-	["卓越巫师之油"] = {["SPELL_DMG"] = 36, ["HEAL"] = 36, [StatLogic.Stats.SpellCritRating] = 14}, --
+	["初级巫师之油"] = {[StatLogic.Stats.SpellDamage] = 8, [StatLogic.Stats.HealingPower] = 8}, --
+	["次级巫师之油"] = {[StatLogic.Stats.SpellDamage] = 16, [StatLogic.Stats.HealingPower] = 16}, --
+	["巫师之油"] = {[StatLogic.Stats.SpellDamage] = 24, [StatLogic.Stats.HealingPower] = 24}, --
+	["卓越巫师之油"] = {[StatLogic.Stats.SpellDamage] = 36, [StatLogic.Stats.HealingPower] = 36, [StatLogic.Stats.SpellCritRating] = 14}, --
 
 	["超强法力之油"] = {["MANA_REG"] = 14}, --
 	["初级法力之油"] = {["MANA_REG"] = 4}, --
 	["次级法力之油"] = {["MANA_REG"] = 8}, --
-	["卓越法力之油"] = {["MANA_REG"] = 12, ["HEAL"] = 25}, --
-	["超强巫师之油"] = {["SPELL_DMG"] = 42, ["HEAL"] = 42}, --
+	["卓越法力之油"] = {["MANA_REG"] = 12, [StatLogic.Stats.HealingPower] = 25}, --
+	["超强巫师之油"] = {[StatLogic.Stats.SpellDamage] = 42, [StatLogic.Stats.HealingPower] = 42}, --
 
 	["活力"] = {["MANA_REG"] = 4, ["HEALTH_REG"] = 4}, --
-	["魂霜"] = {["SHADOW_SPELL_DMG"] = 54, ["FROST_SPELL_DMG"] = 54}, --
-	["阳炎"] = {["ARCANE_SPELL_DMG"] = 50, ["FIRE_SPELL_DMG"] = 50}, --
-	["+40 法术伤害"] = {["SPELL_DMG"] = 40, ["HEAL"] = 40}, --
-	["+30 法术伤害"] = {["SPELL_DMG"] = 30, ["HEAL"] = 30}, --
+	["魂霜"] = {[StatLogic.Stats.ShadowDamage] = 54, [StatLogic.Stats.FrostDamage] = 54}, --
+	["阳炎"] = {[StatLogic.Stats.ArcaneDamage] = 50, [StatLogic.Stats.FireDamage] = 50}, --
+	["+40 法术伤害"] = {[StatLogic.Stats.SpellDamage] = 40, [StatLogic.Stats.HealingPower] = 40}, --
+	["+30 法术伤害"] = {[StatLogic.Stats.SpellDamage] = 30, [StatLogic.Stats.HealingPower] = 30}, --
 
 	["移动速度略微提升"] = false, -- Enchant Boots - Minor Speed
 	["略微提高奔跑速度"] = false, --
@@ -151,16 +151,16 @@ L["StatIDLookup"] = {
 	["智力"] = {StatLogic.Stats.Intellect,},
 	["精神"] = {StatLogic.Stats.Spirit,},
 
-	["奥术抗性"] = {"ARCANE_RES",},
-	["火焰抗性"] = {"FIRE_RES",},
-	["自然抗性"] = {"NATURE_RES",},
-	["冰霜抗性"] = {"FROST_RES",},
-	["暗影抗性"] = {"SHADOW_RES",},
-	["阴影抗性"] = {"SHADOW_RES",}, -- Demons Blood ID: 10779
-	["所有抗性"] = {"ARCANE_RES", "FIRE_RES", "FROST_RES", "NATURE_RES", "SHADOW_RES",},
-	["全部抗性"] = {"ARCANE_RES", "FIRE_RES", "FROST_RES", "NATURE_RES", "SHADOW_RES",},
-	["抵抗全部"] = {"ARCANE_RES", "FIRE_RES", "FROST_RES", "NATURE_RES", "SHADOW_RES",},
-	["点所有魔法抗性"] = {"ARCANE_RES", "FIRE_RES", "FROST_RES", "NATURE_RES", "SHADOW_RES",}, -- [锯齿黑曜石之盾] ID:22198
+	["奥术抗性"] = {StatLogic.Stats.ArcaneResistance,},
+	["火焰抗性"] = {StatLogic.Stats.FireResistance,},
+	["自然抗性"] = {StatLogic.Stats.NatureResistance,},
+	["冰霜抗性"] = {StatLogic.Stats.FrostResistance,},
+	["暗影抗性"] = {StatLogic.Stats.ShadowResistance,},
+	["阴影抗性"] = {StatLogic.Stats.ShadowResistance,}, -- Demons Blood ID: 10779
+	["所有抗性"] = {StatLogic.Stats.ArcaneResistance, StatLogic.Stats.FireResistance, StatLogic.Stats.FrostResistance, StatLogic.Stats.NatureResistance, StatLogic.Stats.ShadowResistance,},
+	["全部抗性"] = {StatLogic.Stats.ArcaneResistance, StatLogic.Stats.FireResistance, StatLogic.Stats.FrostResistance, StatLogic.Stats.NatureResistance, StatLogic.Stats.ShadowResistance,},
+	["抵抗全部"] = {StatLogic.Stats.ArcaneResistance, StatLogic.Stats.FireResistance, StatLogic.Stats.FrostResistance, StatLogic.Stats.NatureResistance, StatLogic.Stats.ShadowResistance,},
+	["点所有魔法抗性"] = {StatLogic.Stats.ArcaneResistance, StatLogic.Stats.FireResistance, StatLogic.Stats.FrostResistance, StatLogic.Stats.NatureResistance, StatLogic.Stats.ShadowResistance,}, -- [锯齿黑曜石之盾] ID:22198
 
 	["钓鱼"] = false, -- Fishing enchant ID:846
 	["钓鱼技能"] = false, -- Fishing lure
@@ -205,53 +205,53 @@ L["StatIDLookup"] = {
 	["法术穿透力"] = {"SPELLPEN",},
 	["使你的法术穿透提高"] = {"SPELLPEN",},
 
-	["法术伤害和治疗"] = {"SPELL_DMG", "HEAL",},
-	["法术治疗和伤害"] = {"SPELL_DMG", "HEAL",},
-	["治疗和法术伤害"] = {"SPELL_DMG", "HEAL",},
-	["法术伤害"] = {"SPELL_DMG",},
-	["提高法术和魔法效果所造成的伤害和治疗效果"] = {"SPELL_DMG", "HEAL"},
-	["法术强度"] = {"SPELL_DMG", "HEAL"},
-	["使周围半径30码范围内的所有小队成员的法术和魔法效果所造成的伤害和治疗效果"] = {"SPELL_DMG", "HEAL"}, -- Atiesh, ID: 22630
-	["提高所有法术和魔法效果所造成的伤害和治疗效果"] = {"SPELL_DMG", "HEAL"},		--StatLogic:GetSum("22630")
-	["提高所有法术和魔法效果所造成的伤害和治疗效果，最多"] = {"SPELL_DMG", "HEAL"},
+	["法术伤害和治疗"] = {StatLogic.Stats.SpellDamage, StatLogic.Stats.HealingPower,},
+	["法术治疗和伤害"] = {StatLogic.Stats.SpellDamage, StatLogic.Stats.HealingPower,},
+	["治疗和法术伤害"] = {StatLogic.Stats.SpellDamage, StatLogic.Stats.HealingPower,},
+	["法术伤害"] = {StatLogic.Stats.SpellDamage,},
+	["提高法术和魔法效果所造成的伤害和治疗效果"] = {StatLogic.Stats.SpellDamage, StatLogic.Stats.HealingPower},
+	["法术强度"] = {StatLogic.Stats.SpellDamage, StatLogic.Stats.HealingPower},
+	["使周围半径30码范围内的所有小队成员的法术和魔法效果所造成的伤害和治疗效果"] = {StatLogic.Stats.SpellDamage, StatLogic.Stats.HealingPower}, -- Atiesh, ID: 22630
+	["提高所有法术和魔法效果所造成的伤害和治疗效果"] = {StatLogic.Stats.SpellDamage, StatLogic.Stats.HealingPower},		--StatLogic:GetSum("22630")
+	["提高所有法术和魔法效果所造成的伤害和治疗效果，最多"] = {StatLogic.Stats.SpellDamage, StatLogic.Stats.HealingPower},
 	--SetTip("22630")
 	-- Atiesh ID:22630, 22631, 22632, 22589
 	--装备: 使周围半径30码范围内队友的所有法术和魔法效果所造成的伤害和治疗效果提高最多33点。 -- 22630 -- 2.1.0
 	--装备: 使周围半径30码范围内队友的所有法术和魔法效果所造成的治疗效果提高最多62点。 -- 22631
 	--装备: 使半径30码范围内所有小队成员的法术爆击等级提高28点。 -- 22589
 	--装备: 使周围半径30码范围内的队友每5秒恢复11点法力。
-	["使你的法术伤害"] = {"SPELL_DMG",}, -- Atiesh ID:22631
-	["伤害"] = {"SPELL_DMG",},
-	["法术能量"] = {"SPELL_DMG", "HEAL",},
-	["神圣伤害"] = {"HOLY_SPELL_DMG",},
-	["奥术伤害"] = {"ARCANE_SPELL_DMG",},
-	["火焰伤害"] = {"FIRE_SPELL_DMG",},
-	["自然伤害"] = {"NATURE_SPELL_DMG",},
-	["冰霜伤害"] = {"FROST_SPELL_DMG",},
-	["暗影伤害"] = {"SHADOW_SPELL_DMG",},
-	["神圣法术伤害"] = {"HOLY_SPELL_DMG",},
-	["奥术法术伤害"] = {"ARCANE_SPELL_DMG",},
-	["火焰法术伤害"] = {"FIRE_SPELL_DMG",},
-	["自然法术伤害"] = {"NATURE_SPELL_DMG",},
-	["冰霜法术伤害"] = {"FROST_SPELL_DMG",}, -- Acrobatic Staff of Frozen Wrath ID:3185:0:0:0:0:0:1957
-	["暗影法术伤害"] = {"SHADOW_SPELL_DMG",},
-	["提高奥术法术和效果所造成的伤害"] = {"ARCANE_SPELL_DMG",},
-	["提高火焰法术和效果所造成的伤害"] = {"FIRE_SPELL_DMG",},
-	["提高冰霜法术和效果所造成的伤害"] = {"FROST_SPELL_DMG",}, -- Frozen Shadoweave Vest ID:21871
-	["提高神圣法术和效果所造成的伤害"] = {"HOLY_SPELL_DMG",},
-	["提高自然法术和效果所造成的伤害"] = {"NATURE_SPELL_DMG",},
-	["提高暗影法术和效果所造成的伤害"] = {"SHADOW_SPELL_DMG",}, -- Frozen Shadoweave Vest ID:21871
+	["使你的法术伤害"] = {StatLogic.Stats.SpellDamage,}, -- Atiesh ID:22631
+	["伤害"] = {StatLogic.Stats.SpellDamage,},
+	["法术能量"] = {StatLogic.Stats.SpellDamage, StatLogic.Stats.HealingPower,},
+	["神圣伤害"] = {StatLogic.Stats.HolyDamage,},
+	["奥术伤害"] = {StatLogic.Stats.ArcaneDamage,},
+	["火焰伤害"] = {StatLogic.Stats.FireDamage,},
+	["自然伤害"] = {StatLogic.Stats.NatureDamage,},
+	["冰霜伤害"] = {StatLogic.Stats.FrostDamage,},
+	["暗影伤害"] = {StatLogic.Stats.ShadowDamage,},
+	["神圣法术伤害"] = {StatLogic.Stats.HolyDamage,},
+	["奥术法术伤害"] = {StatLogic.Stats.ArcaneDamage,},
+	["火焰法术伤害"] = {StatLogic.Stats.FireDamage,},
+	["自然法术伤害"] = {StatLogic.Stats.NatureDamage,},
+	["冰霜法术伤害"] = {StatLogic.Stats.FrostDamage,}, -- Acrobatic Staff of Frozen Wrath ID:3185:0:0:0:0:0:1957
+	["暗影法术伤害"] = {StatLogic.Stats.ShadowDamage,},
+	["提高奥术法术和效果所造成的伤害"] = {StatLogic.Stats.ArcaneDamage,},
+	["提高火焰法术和效果所造成的伤害"] = {StatLogic.Stats.FireDamage,},
+	["提高冰霜法术和效果所造成的伤害"] = {StatLogic.Stats.FrostDamage,}, -- Frozen Shadoweave Vest ID:21871
+	["提高神圣法术和效果所造成的伤害"] = {StatLogic.Stats.HolyDamage,},
+	["提高自然法术和效果所造成的伤害"] = {StatLogic.Stats.NatureDamage,},
+	["提高暗影法术和效果所造成的伤害"] = {StatLogic.Stats.ShadowDamage,}, -- Frozen Shadoweave Vest ID:21871
 
-	["使法术治疗"] = {"HEAL",},
-	["你的治疗效果"] = {"HEAL",}, -- Atiesh ID:22631
-	["治疗法术"] = {"HEAL",}, -- +35 Healing Glove Enchant
-	["治疗效果"] = {"HEAL",}, -- [圣使祝福手套] Socket Bonus
-	["治疗"] = {"HEAL",},
-	["法术治疗"] = {"HEAL",},
-	["神圣效果"] = {"HEAL",},-- Enchant Ring - Healing Power
-	["提高法术所造成的治疗效果"] = {"HEAL",},
-	["提高所有法术和魔法效果所造成的治疗效果"] = {"HEAL",},
-	["使周围半径30码范围内的所有小队成员的法术和魔法效果所造成的治疗效果"] = {"HEAL",}, -- Atiesh, ID: 22631
+	["使法术治疗"] = {StatLogic.Stats.HealingPower,},
+	["你的治疗效果"] = {StatLogic.Stats.HealingPower,}, -- Atiesh ID:22631
+	["治疗法术"] = {StatLogic.Stats.HealingPower,}, -- +35 Healing Glove Enchant
+	["治疗效果"] = {StatLogic.Stats.HealingPower,}, -- [圣使祝福手套] Socket Bonus
+	["治疗"] = {StatLogic.Stats.HealingPower,},
+	["法术治疗"] = {StatLogic.Stats.HealingPower,},
+	["神圣效果"] = {StatLogic.Stats.HealingPower,},-- Enchant Ring - Healing Power
+	["提高法术所造成的治疗效果"] = {StatLogic.Stats.HealingPower,},
+	["提高所有法术和魔法效果所造成的治疗效果"] = {StatLogic.Stats.HealingPower,},
+	["使周围半径30码范围内的所有小队成员的法术和魔法效果所造成的治疗效果"] = {StatLogic.Stats.HealingPower,}, -- Atiesh, ID: 22631
 
 	["每秒伤害"] = {StatLogic.Stats.WeaponDPS,},
 	["每秒伤害提高"] = {StatLogic.Stats.WeaponDPS,}, -- [Thorium Shells] ID: 15997

@@ -691,7 +691,7 @@ L["EMPTY_SOCKET_YELLOW"] =  EMPTY_SOCKET_YELLOW -- EMPTY_SOCKET_YELLOW = "Yellow
 L["EMPTY_SOCKET_BLUE"] =  EMPTY_SOCKET_BLUE     -- EMPTY_SOCKET_BLUE = "Blue Socket";
 L["EMPTY_SOCKET_META"] =  EMPTY_SOCKET_META     -- EMPTY_SOCKET_META = "Meta Socket";
 
-L["HEALING"] = "Исцеление"
+L[StatLogic.Stats.HealingPower] = "Исцеление"
 L["SPELL_CRIT"] = "Вер. крит. удара заклинаниями"
 L["STR"] = "Сила"
 L["AGI"] = "Ловкость"
@@ -717,11 +717,11 @@ L[StatLogic.Stats.Intellect] =  "Интеллект"
 L[StatLogic.Stats.Spirit] =  "Дух"
 L[StatLogic.Stats.Armor] =  "Броня"
 
-L["FIRE_RES"] =  "Сопротивление огню"
-L["NATURE_RES"] =  "Сопротивление силам природы"
-L["FROST_RES"] =  "Сопротивление магии льда"
-L["SHADOW_RES"] =  "Сопротивление темной магии"
-L["ARCANE_RES"] =  "Сопротивление тайной магии"
+L[StatLogic.Stats.FireResistance] =  "Сопротивление огню"
+L[StatLogic.Stats.NatureResistance] =  "Сопротивление силам природы"
+L[StatLogic.Stats.FrostResistance] =  "Сопротивление магии льда"
+L[StatLogic.Stats.ShadowResistance] =  "Сопротивление темной магии"
+L[StatLogic.Stats.ArcaneResistance] =  "Сопротивление тайной магии"
 
 L["BLOCK_VALUE"] =  "Показатель блокирования"
 
@@ -729,15 +729,15 @@ L["AP"] =  "Сила атаки"
 L["RANGED_AP"] =  "Сила атаки дальнего боя"
 L["FERAL_AP"] =  "Сила атаки в облике зверя"
 
-L["HEAL"] =  "Исцеление"
+L[StatLogic.Stats.HealingPower] =  "Исцеление"
 
-L["SPELL_DMG"] =  "Сила заклинаний"
-L["HOLY_SPELL_DMG"] =  "Сила заклинаний (светлая магия)"
-L["FIRE_SPELL_DMG"] =  "Сила заклинаний (огонь)"
-L["NATURE_SPELL_DMG"] =  "Сила заклинаний (природа)"
-L["FROST_SPELL_DMG"] =  "Сила заклинаний (лед)"
-L["SHADOW_SPELL_DMG"] =  "Сила заклинаний (темная магия)"
-L["ARCANE_SPELL_DMG"] =  "Сила заклинаний (тайная магия)"
+L[StatLogic.Stats.SpellDamage] =  "Сила заклинаний"
+L[StatLogic.Stats.HolyDamage] =  "Сила заклинаний (светлая магия)"
+L[StatLogic.Stats.FireDamage] =  "Сила заклинаний (огонь)"
+L[StatLogic.Stats.NatureDamage] =  "Сила заклинаний (природа)"
+L[StatLogic.Stats.FrostDamage] =  "Сила заклинаний (лед)"
+L[StatLogic.Stats.ShadowDamage] =  "Сила заклинаний (темная магия)"
+L[StatLogic.Stats.ArcaneDamage] =  "Сила заклинаний (тайная магия)"
 
 L["SPELLPEN"] =  "Проникающая способность заклинаний"
 

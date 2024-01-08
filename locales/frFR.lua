@@ -557,7 +557,7 @@ L["EMPTY_SOCKET_YELLOW"] = "Châsse jaune"
 L["EMPTY_SOCKET_BLUE"] = "Châsse bleue"
 L["EMPTY_SOCKET_META"] = "Méta-châsse"
 
-L["HEALING"] = STAT_SPELLHEALING
+L[StatLogic.Stats.HealingPower] = STAT_SPELLHEALING
 L["SPELL_CRIT"] = PLAYERSTAT_SPELL_COMBAT .. " " .. SPELL_CRIT_CHANCE
 L["STR"] = SPELL_STAT1_NAME
 L["AGI"] = SPELL_STAT2_NAME
@@ -583,11 +583,11 @@ L[StatLogic.Stats.Intellect] = "Intelligence"
 L[StatLogic.Stats.Spirit] = "Esprit"
 L[StatLogic.Stats.Armor] = "Armure"
 
-L["FIRE_RES"] = "Résistance au Feu"
-L["NATURE_RES"] = "Résistance à la Nature"
-L["FROST_RES"] = "Résistance au Givre"
-L["SHADOW_RES"] = "Résistance à l'Ombre"
-L["ARCANE_RES"] = "Résistance aux Arcanes"
+L[StatLogic.Stats.FireResistance] = "Résistance au Feu"
+L[StatLogic.Stats.NatureResistance] = "Résistance à la Nature"
+L[StatLogic.Stats.FrostResistance] = "Résistance au Givre"
+L[StatLogic.Stats.ShadowResistance] = "Résistance à l'Ombre"
+L[StatLogic.Stats.ArcaneResistance] = "Résistance aux Arcanes"
 
 L["BLOCK_VALUE"] = "Valeur de blocage"
 
@@ -595,15 +595,15 @@ L["AP"] = "Puissance d'attaque"
 L["RANGED_AP"] = "Puissance d'attaque à distance"
 L["FERAL_AP"] = "Puissance d'attaque Farouche"
 
-L["HEAL"] = "Puissance des soins"
+L[StatLogic.Stats.HealingPower] = "Puissance des soins"
 
-L["SPELL_DMG"] = "Dégâts des sorts"
-L["HOLY_SPELL_DMG"] = "Dégâts des sorts du Sacré"
-L["FIRE_SPELL_DMG"] = "Dégâts des sorts de Feu"
-L["NATURE_SPELL_DMG"] = "Dégâts des sorts de Nature"
-L["FROST_SPELL_DMG"] = "Dégâts des sorts de Givre"
-L["SHADOW_SPELL_DMG"] = "Dégâts des sorts d'Ombre"
-L["ARCANE_SPELL_DMG"] = "Dégâts des sorts des Arcanes"
+L[StatLogic.Stats.SpellDamage] = "Dégâts des sorts"
+L[StatLogic.Stats.HolyDamage] = "Dégâts des sorts du Sacré"
+L[StatLogic.Stats.FireDamage] = "Dégâts des sorts de Feu"
+L[StatLogic.Stats.NatureDamage] = "Dégâts des sorts de Nature"
+L[StatLogic.Stats.FrostDamage] = "Dégâts des sorts de Givre"
+L[StatLogic.Stats.ShadowDamage] = "Dégâts des sorts d'Ombre"
+L[StatLogic.Stats.ArcaneDamage] = "Dégâts des sorts des Arcanes"
 
 L["SPELLPEN"] = "Pénétration des sorts"
 
