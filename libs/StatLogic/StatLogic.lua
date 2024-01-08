@@ -1573,8 +1573,12 @@ do
 			found = true
 			local debugText = "|cffff5959  ".. scanner .. ": |cffffc259"..text
 			if value then
-				for _, id in ipairs(idTable) do
-					debugText = AddStat(id, value, debugText)
+				if #idTable > 0 then
+					for _, id in ipairs(idTable) do
+						debugText = AddStat(id, value, debugText)
+					end
+				else
+					debugText = AddStat(idTable, value, debugText)
 				end
 			else
 				-- WholeTextLookup
@@ -1655,6 +1659,38 @@ do
 				-- Mainly used for enchants or stuff without numbers:
 				local idTable = L.WholeTextLookup[text]
 				local found = ParseMatch(idTable, text, false, "WholeText")
+
+				-------------------------
+				-- Substitution Lookup --
+				-------------------------
+				if not found then
+					-- Strip leading "Equip: ", "Socket Bonus: "
+					local sanitizedText = text:gsub(ITEM_SPELL_TRIGGER_ONEQUIP, "")
+					sanitizedText = sanitizedText:gsub(StripGlobalStrings(ITEM_SOCKET_BONUS), "")
+					local values = {}
+					local statText, count = sanitizedText:gsub("[+-]?[%d%.]+%f[%D]", function(match)
+						local value = tonumber(match)
+						if value then
+							values[#values + 1] = value
+							return "%d"
+						end
+					end)
+					local statTable = false
+					if count > 0 then
+						statText = statText:trim()
+						statTable = L.StatIDLookup[statText]
+						--DevTools_Dump({
+						--	[statText] = values
+						--})
+						if statTable then
+							for j, value in ipairs(values) do
+								found = ParseMatch(statTable[j], text, value, "Substitution")
+							end
+						end
+					else
+						found = ParseMatch(false, text, false, "Substitution")
+					end
+				end
 
 				--------------------
 				-- Prefix Exclude --
