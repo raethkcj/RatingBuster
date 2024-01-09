@@ -692,19 +692,10 @@ L["EMPTY_SOCKET_BLUE"] =  EMPTY_SOCKET_BLUE     -- EMPTY_SOCKET_BLUE = "Blue Soc
 L["EMPTY_SOCKET_META"] =  EMPTY_SOCKET_META     -- EMPTY_SOCKET_META = "Meta Socket";
 
 L[StatLogic.Stats.HealingPower] = "Исцеление"
-L["SPELL_CRIT"] = "Вер. крит. удара заклинаниями"
-L["STR"] = "Сила"
-L["AGI"] = "Ловкость"
-L["STA"] = "Выносливость"
-L["INT"] = "Интеллект"
-L["SPI"] = "Дух"
-L["PARRY"] = "Парирование"
 L[StatLogic.Stats.ManaRegen] = "Восполнение маны"
 L[StatLogic.Stats.ManaRegenNotCasting] = "Восполнения маны (пока не применяете заклинания)"
 L[StatLogic.Stats.HealthRegen] = "Восстановление здоровья"
 L[StatLogic.Stats.HealthRegenOutOfCombat] = "Восполнение здаровья (вне боя)"
-L["PET_STA"] = "Выносливость питомца" -- Pet Stamina
-L["PET_INT"] = "Интеллект питомца" -- Pet Intellect
 L["StatModOptionName"] = "%s %s"
 
 L[StatLogic.Stats.IgnoreArmor] =  "Ignore Armor"
@@ -770,12 +761,12 @@ L[StatLogic.Stats.ArmorPenetrationRating] = RATING .. " пробиванию б�
 -- Int -> Mana, Spell Crit
 -- Spi -> mp5nc, hp5oc
 -- Ratings -> Effect
-L["MELEE_CRIT_DMG_REDUCTION"] = "Понижение входящего урона от крит. ударов (%)"
+L[StatLogic.Stats.CritDamageReduction] = "Понижение входящего урона от крит. ударов (%)"
 L[StatLogic.Stats.Defense] = "Защита"
 L[StatLogic.Stats.Dodge] = "Уклонение (%)"
 L[StatLogic.Stats.Parry] = "Парирование (%)"
 L[StatLogic.Stats.BlockChance] = "Блокирование (%)"
-L["AVOIDANCE"] = "Избегание атак (%)"
+L[StatLogic.Stats.Avoidance] = "Избегание атак (%)"
 L[StatLogic.Stats.MeleeHit] = "Меткость (%)"
 L[StatLogic.Stats.RangedHit] = "Меткость (%)"
 L[StatLogic.Stats.SpellHit] = "Меткость (%)"
@@ -783,18 +774,17 @@ L[StatLogic.Stats.Miss] = "Hit Avoidance(%)"
 L[StatLogic.Stats.MeleeCrit] = "Вероятность крит. удара (%)" -- MELEE_CRIT_CHANCE = "Crit Chance"
 L[StatLogic.Stats.RangedCrit] = "Вероятность крит. удара (%)"
 L[StatLogic.Stats.SpellCrit] = "Вероятность крит. удара (%)"
-L["MELEE_CRIT_AVOID"] = "Crit Avoidance(%)"
-L["MELEE_HASTE"] = "Скорость (%)" --
-L["RANGED_HASTE"] = "Скорость (%)"
-L["SPELL_HASTE"] = "Скорость (%)"
-L["EXPERTISE"] = "Мастерство"
-L["ARMOR_PENETRATION"] = "Пробивание брони (%)"
+L[StatLogic.Stats.CritAvoidance] = "Crit Avoidance(%)"
+L[StatLogic.Stats.MeleeHaste] = "Скорость (%)" --
+L[StatLogic.Stats.RangedHaste] = "Скорость (%)"
+L[StatLogic.Stats.SpellHaste] = "Скорость (%)"
+L[StatLogic.Stats.Expertise] = "Мастерство"
+L[StatLogic.Stats.ArmorPenetration] = "Пробивание брони (%)"
 -- Tier3 Stats - Stats that only show up when broken down from a Tier2 stat
 -- Defense -> Crit Avoidance, Hit Avoidance, Dodge, Parry, Block
 -- Weapon Skill -> Crit, Hit, Dodge Neglect, Parry Neglect, Block Neglect
 -- Expertise -> Dodge Neglect, Parry Neglect
-L["DODGE_NEGLECT"] = "Снижение вер. противника уклониться (%)"
-L["PARRY_NEGLECT"] = "Снижение вер. противника парировать (%)"
-L["BLOCK_NEGLECT"] = "Снижение вер. противника блокировать (%)"
+L[StatLogic.Stats.DodgeReduction] = "Снижение вер. противника уклониться (%)"
+L[StatLogic.Stats.ParryReduction] = "Снижение вер. противника парировать (%)"
 -- Misc Stats
-L["WEAPON_SKILL"] = "Weapon "..SKILL
+L[StatLogic.Stats.WeaponSkill] = "Weapon "..SKILL

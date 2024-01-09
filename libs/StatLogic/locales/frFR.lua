@@ -90,7 +90,7 @@ L["PreScanPatterns"] = {
 	["Bloquer.- (%d+)"] = StatLogic.Stats.BlockValue,
 	["Armure.- (%d+)"] = StatLogic.Stats.Armor,
 	["Renforcé %(%+(%d+) Armure%)"] = StatLogic.Stats.BonusArmor,
-	["^Équipé\194\160: Rend (%d+) points de vie toutes les 5 seco?n?d?e?s?%.?$"]= "HEAL_REG",
+	["^Équipé\194\160: Rend (%d+) points de vie toutes les 5 seco?n?d?e?s?%.?$"]= StatLogic.Stats.HealthRegen,
 	["^Équipé\194\160: Rend (%d+) points de mana toutes les 5 seco?n?d?e?s?%.?$"]= StatLogic.Stats.ManaRegen,
 	--["Lunette %(%+(%d+) points? de dégâts?%)"] = StatLogic.Stats.RangedAttackPower,
 	-- Exclude

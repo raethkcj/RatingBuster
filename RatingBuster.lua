@@ -1345,6 +1345,7 @@ do
 	-- Backwards compatibility
 	local statStringToStat = setmetatable({
 		["AP"] = StatLogic.Stats.AttackPower,
+		["RANGED_AP"] = StatLogic.Stats.RangedAttackPower,
 		["MANA"] = StatLogic.Stats.Mana,
 		["MANA_REG"] = StatLogic.Stats.ManaRegen,
 		["NORMAL_MANA_REG"] = StatLogic.Stats.ManaRegenNotCasting,
@@ -1352,7 +1353,10 @@ do
 		["HEALTH_REG"] = StatLogic.Stats.HealthRegen,
 		["NORMAL_HEALTH_REG"] = StatLogic.Stats.HealthRegenOutOfCombat,
 		["SPELL_DMG"] = StatLogic.Stats.SpellDamage,
+		["SPELL_HIT"] = StatLogic.Stats.SpellHit,
+		["SPELL_CRIT"] = StatLogic.Stats.SpellCrit,
 		["HEALING"] = StatLogic.Stats.HealingPower,
+		["PARRY"] = StatLogic.Stats.Parry,
 		["BLOCK_VALUE"] = StatLogic.Stats.BlockValue,
 	},
 	{
@@ -1699,9 +1703,9 @@ function RatingBuster.ProcessTooltip(tooltip)
 		StatLogic:GetSum(difflink1, equippedSum)
 		equippedSum[StatLogic.Stats.Strength] = equippedSum[StatLogic.Stats.Strength] * GSM("MOD_STR")
 		equippedSum[StatLogic.Stats.Agility] = equippedSum[StatLogic.Stats.Agility] * GSM("MOD_AGI")
-		equippedDodge = summaryFunc["DODGE_NO_DR"](equippedSum, "sum", difflink1) * -1
-		equippedParry = summaryFunc["PARRY_NO_DR"](equippedSum, "sum", difflink1) * -1
-		equippedMissed = summaryFunc["MELEE_HIT_AVOID_NO_DR"](equippedSum, "sum", difflink1) * -1
+		equippedDodge = summaryFunc[StatLogic.Stats.DodgeBeforeDR](equippedSum, "sum", difflink1) * -1
+		equippedParry = summaryFunc[StatLogic.Stats.ParryBeforeDR](equippedSum, "sum", difflink1) * -1
+		equippedMissed = summaryFunc[StatLogic.Stats.MissBeforeDR](equippedSum, "sum", difflink1) * -1
 		processedDodge = equippedDodge
 		processedParry = equippedParry
 		processedMissed = equippedMissed
@@ -2689,7 +2693,7 @@ local summaryCalcData = {
 		func = function(sum)
 			return sum[StatLogic.Stats.MeleeHit]
 				+ StatLogic:GetEffectFromRating(sum[StatLogic.Stats.MeleeHitRating], StatLogic.Stats.MeleeHitRating, calcLevel)
-				+ sum["WEAPON_SKILL"] * 0.1
+				+ sum[StatLogic.Stats.WeaponSkill] * 0.1
 		end,
 		ispercent = true,
 	},
@@ -2760,7 +2764,7 @@ local summaryCalcData = {
 	-- Haste - MELEE_HASTE_RATING
 	{
 		option = "sumHaste",
-		name = "MELEE_HASTE",
+		name = StatLogic.Stats.MeleeHaste,
 		func = function(sum)
 			return StatLogic:GetEffectFromRating(sum[StatLogic.Stats.MeleeHasteRating], StatLogic.Stats.MeleeHasteRating, calcLevel)
 		end,
@@ -2777,7 +2781,7 @@ local summaryCalcData = {
 	-- Ranged Haste - RANGED_HASTE_RATING
 	{
 		option = "sumRangedHaste",
-		name = "RANGED_HASTE",
+		name = StatLogic.Stats.RangedHaste,
 		func = function(sum)
 			return StatLogic:GetEffectFromRating(sum[StatLogic.Stats.RangedHasteRating], StatLogic.Stats.RangedHasteRating, calcLevel)
 		end,
@@ -2794,7 +2798,7 @@ local summaryCalcData = {
 	-- Expertise - EXPERTISE_RATING
 	{
 		option = "sumExpertise",
-		name = "EXPERTISE",
+		name = StatLogic.Stats.Expertise,
 		func = function(sum)
 			return StatLogic:GetEffectFromRating(sum[StatLogic.Stats.ExpertiseRating], StatLogic.Stats.ExpertiseRating, calcLevel)
 		end,
@@ -2810,17 +2814,17 @@ local summaryCalcData = {
 	-- Dodge Neglect - EXPERTISE_RATING, WEAPON_SKILL
 	{
 		option = "sumDodgeNeglect",
-		name = "DODGE_NEGLECT",
+		name = StatLogic.Stats.DodgeReduction,
 		func = function(sum)
 			return floor(StatLogic:GetEffectFromRating(sum[StatLogic.Stats.ExpertiseRating], StatLogic.Stats.ExpertiseRating, calcLevel)) * 0.25
-				+ sum["WEAPON_SKILL"] * 0.1
+				+ sum[StatLogic.Stats.WeaponSkill] * 0.1
 		end,
 		ispercent = true,
 	},
 	-- Parry Neglect - EXPERTISE_RATING
 	{
 		option = "sumParryNeglect",
-		name = "PARRY_NEGLECT",
+		name = StatLogic.Stats.ParryReduction,
 		func = function(sum)
 			return floor(StatLogic:GetEffectFromRating(sum[StatLogic.Stats.ExpertiseRating], StatLogic.Stats.ExpertiseRating, calcLevel)) * 0.25
 		end,
@@ -2854,7 +2858,7 @@ local summaryCalcData = {
 	-- Armor Penetration - ARMOR_PENETRATION_RATING
 	{
 		option = "sumArmorPenetration",
-		name = "ARMOR_PENETRATION",
+		name = StatLogic.Stats.ArmorPenetration,
 		func = function(sum)
 			return StatLogic:GetEffectFromRating(sum[StatLogic.Stats.ArmorPenetrationRating], StatLogic.Stats.ArmorPenetrationRating, calcLevel)
 		end,
@@ -3000,7 +3004,7 @@ local summaryCalcData = {
 	-- Spell Haste - SPELL_HASTE_RATING
 	{
 		option = "sumSpellHaste",
-		name = "SPELL_HASTE",
+		name = StatLogic.Stats.SpellHaste,
 		func = function(sum)
 			return StatLogic:GetEffectFromRating(sum[StatLogic.Stats.SpellHasteRating], StatLogic.Stats.SpellHasteRating, calcLevel)
 		end,
@@ -3039,7 +3043,7 @@ local summaryCalcData = {
 	-- Dodge Chance Before DR - DODGE, DODGE_RATING, DEFENSE, AGI
 	{
 		option = "sumDodgeBeforeDR",
-		name = "DODGE_NO_DR",
+		name = StatLogic.Stats.DodgeBeforeDR,
 		func = function(sum)
 			return sum[StatLogic.Stats.Dodge]
 				+ StatLogic:GetEffectFromRating(sum[StatLogic.Stats.DodgeRating], StatLogic.Stats.DodgeRating, calcLevel)
@@ -3053,7 +3057,7 @@ local summaryCalcData = {
 		option = "sumDodge",
 		name = StatLogic.Stats.Dodge,
 		func = function(sum, sumType)
-			local dodge = summaryFunc["DODGE_NO_DR"](sum)
+			local dodge = summaryFunc[StatLogic.Stats.DodgeBeforeDR](sum)
 			if profileDB.enableAvoidanceDiminishingReturns then
 				if (sumType == "diff1") or (sumType == "diff2") then
 					dodge = StatLogic:GetAvoidanceGainAfterDR(StatLogic.Stats.Dodge, dodge)
@@ -3076,7 +3080,7 @@ local summaryCalcData = {
 	-- Parry Chance Before DR - PARRY, PARRY_RATING, DEFENSE
 	{
 		option = "sumParryBeforeDR",
-		name = "PARRY_NO_DR",
+		name = StatLogic.Stats.ParryBeforeDR,
 		func = function(sum)
 			return GetParryChance() > 0 and (
 				sum[StatLogic.Stats.Parry]
@@ -3091,7 +3095,7 @@ local summaryCalcData = {
 		option = "sumParry",
 		name = StatLogic.Stats.Parry,
 		func = function(sum, sumType)
-			local parry = summaryFunc["PARRY_NO_DR"](sum)
+			local parry = summaryFunc[StatLogic.Stats.ParryBeforeDR](sum)
 			if profileDB.enableAvoidanceDiminishingReturns then
 				if (sumType == "diff1") or (sumType == "diff2") then
 					parry = StatLogic:GetAvoidanceGainAfterDR(StatLogic.Stats.Parry, parry)
@@ -3149,7 +3153,7 @@ local summaryCalcData = {
 	-- Hit Avoidance Before DR - DEFENSE
 	{
 		option = "sumHitAvoidBeforeDR",
-		name = "MELEE_HIT_AVOID_NO_DR",
+		name = StatLogic.Stats.MissBeforeDR,
 		func = function(sum)
 			return summaryFunc[StatLogic.Stats.Defense](sum) * DODGE_PARRY_BLOCK_PERCENT_PER_DEFENSE
 		end,
@@ -3160,7 +3164,7 @@ local summaryCalcData = {
 		option = "sumHitAvoid",
 		name = StatLogic.Stats.Miss,
 		func = function(sum, sumType)
-			local missed = summaryFunc["MELEE_HIT_AVOID_NO_DR"](sum)
+			local missed = summaryFunc[StatLogic.Stats.MissBeforeDR](sum)
 			if profileDB.enableAvoidanceDiminishingReturns then
 				if (sumType == "diff1") or (sumType == "diff2") then
 					missed = StatLogic:GetAvoidanceGainAfterDR(StatLogic.Stats.Miss, missed)
@@ -3184,7 +3188,7 @@ local summaryCalcData = {
 	-- Avoidance - DODGE, PARRY, MELEE_HIT_AVOID, BLOCK(Optional)
 	{
 		option = "sumAvoidance",
-		name = "AVOIDANCE",
+		name = StatLogic.Stats.Avoidance,
 		ispercent = true,
 		func = function(sum, sumType, link)
 			local dodge = summaryFunc[StatLogic.Stats.Dodge](sum, sumType, link)
@@ -3200,7 +3204,7 @@ local summaryCalcData = {
 	-- Crit Avoidance - RESILIENCE_RATING, DEFENSE
 	{
 		option = "sumCritAvoid",
-		name = "MELEE_CRIT_AVOID",
+		name = StatLogic.Stats.CritAvoidance,
 		func = function(sum)
 			return StatLogic:GetEffectFromRating(sum[StatLogic.Stats.ResilienceRating], StatLogic.Stats.ResilienceRating, calcLevel)
 				+ summaryFunc[StatLogic.Stats.Defense](sum) * DODGE_PARRY_BLOCK_PERCENT_PER_DEFENSE

@@ -554,19 +554,10 @@ L["EMPTY_SOCKET_BLUE"] = EMPTY_SOCKET_BLUE -- EMPTY_SOCKET_BLUE = "Blue Socket";
 L["EMPTY_SOCKET_META"] = EMPTY_SOCKET_META -- EMPTY_SOCKET_META = "Meta Socket";
 
 L[StatLogic.Stats.HealingPower] = STAT_SPELLHEALING
-L["SPELL_CRIT"] = PLAYERSTAT_SPELL_COMBAT .. " " .. SPELL_CRIT_CHANCE
-L["STR"] = SPELL_STAT1_NAME
-L["AGI"] = SPELL_STAT2_NAME
-L["STA"] = SPELL_STAT3_NAME
-L["INT"] = SPELL_STAT4_NAME
-L["SPI"] = SPELL_STAT5_NAME
-L["PARRY"] = PARRY
 L[StatLogic.Stats.ManaRegen] = "마나 회복량"
 L[StatLogic.Stats.ManaRegenNotCasting] = "마나 회복량 (시전하지)"
 L[StatLogic.Stats.HealthRegen] = "생명력 재생"
 L[StatLogic.Stats.HealthRegenOutOfCombat] = "생명력 재생 (비전투)"
-L["PET_STA"] = PET .. SPELL_STAT3_NAME -- Pet Stamina
-L["PET_INT"] = PET .. SPELL_STAT4_NAME -- Pet Intellect
 L["StatModOptionName"] = "%2$s %1$s"
 
 L[StatLogic.Stats.IgnoreArmor] = "방어도 무시"
@@ -632,12 +623,12 @@ L[StatLogic.Stats.ArmorPenetrationRating] = "방어구 관통력"
 -- Int -> Mana, Spell Crit
 -- Spi -> mp5nc, hp5oc
 -- Ratings -> Effect
-L["MELEE_CRIT_DMG_REDUCTION"] = "치명타 피해 감소(%)"
+L[StatLogic.Stats.CritDamageReduction] = "치명타 피해 감소(%)"
 L[StatLogic.Stats.Defense] = DEFENSE
 L[StatLogic.Stats.Dodge] = DODGE.."(%)"
 L[StatLogic.Stats.Parry] = PARRY.."(%)"
 L[StatLogic.Stats.BlockChance] = BLOCK.."(%)"
-L["AVOIDANCE"] = "공격 회피(%)"
+L[StatLogic.Stats.Avoidance] = "공격 회피(%)"
 L[StatLogic.Stats.MeleeHit] = "적중률(%)"
 L[StatLogic.Stats.RangedHit] = PLAYERSTAT_RANGED_COMBAT.." 적중률(%)"
 L[StatLogic.Stats.SpellHit] = PLAYERSTAT_SPELL_COMBAT.." 적중률(%)"
@@ -645,18 +636,17 @@ L[StatLogic.Stats.Miss] = "근접 공격 회피(%)"
 L[StatLogic.Stats.MeleeCrit] = MELEE_CRIT_CHANCE.."(%)" -- MELEE_CRIT_CHANCE = "Crit Chance"
 L[StatLogic.Stats.RangedCrit] = PLAYERSTAT_RANGED_COMBAT.." "..MELEE_CRIT_CHANCE.."(%)"
 L[StatLogic.Stats.SpellCrit] = PLAYERSTAT_SPELL_COMBAT.." "..MELEE_CRIT_CHANCE.."(%)"
-L["MELEE_CRIT_AVOID"] = "근접 치명타 공격 회피(%)"
-L["MELEE_HASTE"] = "가속도(%)" --
-L["RANGED_HASTE"] = PLAYERSTAT_RANGED_COMBAT.." 가속도(%)"
-L["SPELL_HASTE"] = PLAYERSTAT_SPELL_COMBAT.." 가속도(%)"
-L["EXPERTISE"] = "숙련 "
-L["ARMOR_PENETRATION"] = "방어구 관통(%)"
+L[StatLogic.Stats.CritAvoidance] = "근접 치명타 공격 회피(%)"
+L[StatLogic.Stats.MeleeHaste] = "가속도(%)" --
+L[StatLogic.Stats.RangedHaste] = PLAYERSTAT_RANGED_COMBAT.." 가속도(%)"
+L[StatLogic.Stats.SpellHaste] = PLAYERSTAT_SPELL_COMBAT.." 가속도(%)"
+L[StatLogic.Stats.Expertise] = "숙련 "
+L[StatLogic.Stats.ArmorPenetration] = "방어구 관통(%)"
 -- Tier3 Stats - Stats that only show up when broken down from a Tier2 stat
 -- Defense -> Crit Avoidance, Hit Avoidance, Dodge, Parry, Block
 -- Weapon Skill -> Crit, Hit, Dodge Neglect, Parry Neglect, Block Neglect
 -- Expertise -> Dodge Neglect, Parry Neglect
-L["DODGE_NEGLECT"] = DODGE.." 무시(%)"
-L["PARRY_NEGLECT"] = PARRY.." 무시(%)"
-L["BLOCK_NEGLECT"] = BLOCK.." 무시(%)"
+L[StatLogic.Stats.DodgeReduction] = DODGE.." 무시(%)"
+L[StatLogic.Stats.ParryReduction] = PARRY.." 무시(%)"
 -- Misc Stats
-L["WEAPON_SKILL"] = "무기 "..SKILL
+L[StatLogic.Stats.WeaponSkill] = "무기 "..SKILL

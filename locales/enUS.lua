@@ -573,19 +573,10 @@ L["EMPTY_SOCKET_BLUE"] = EMPTY_SOCKET_BLUE -- EMPTY_SOCKET_BLUE = "Blue Socket";
 L["EMPTY_SOCKET_META"] = EMPTY_SOCKET_META -- EMPTY_SOCKET_META = "Meta Socket";
 
 L[StatLogic.Stats.HealingPower] = STAT_SPELLHEALING
-L["SPELL_CRIT"] = PLAYERSTAT_SPELL_COMBAT .. " " .. SPELL_CRIT_CHANCE
-L["STR"] = SPELL_STAT1_NAME
-L["AGI"] = SPELL_STAT2_NAME
-L["STA"] = SPELL_STAT3_NAME
-L["INT"] = SPELL_STAT4_NAME
-L["SPI"] = SPELL_STAT5_NAME
-L["PARRY"] = PARRY
 L[StatLogic.Stats.ManaRegen] = "Mana Regen"
 L[StatLogic.Stats.ManaRegenNotCasting] = "Mana Regen (Not Casting)"
 L[StatLogic.Stats.HealthRegen] = "Health Regen"
 L[StatLogic.Stats.HealthRegenOutOfCombat] = "Health Regen (Out of Combat)"
-L["PET_STA"] = PET .. SPELL_STAT3_NAME -- Pet Stamina
-L["PET_INT"] = PET .. SPELL_STAT4_NAME -- Pet Intellect
 L["StatModOptionName"] = "%s %s"
 
 L[StatLogic.Stats.IgnoreArmor] = "Ignore Armor"
@@ -651,12 +642,12 @@ L[StatLogic.Stats.ArmorPenetrationRating] = ITEM_MOD_ARMOR_PENETRATION_RATING_SH
 -- Int -> Mana, Spell Crit
 -- Spi -> mp5nc, hp5oc
 -- Ratings -> Effect
-L["MELEE_CRIT_DMG_REDUCTION"] = "Crit Damage Reduction(%)"
+L[StatLogic.Stats.CritDamageReduction] = "Crit Damage Reduction(%)"
 L[StatLogic.Stats.Defense] = DEFENSE
 L[StatLogic.Stats.Dodge] = DODGE.."(%)"
 L[StatLogic.Stats.Parry] = PARRY.."(%)"
 L[StatLogic.Stats.BlockChance] = BLOCK.."(%)"
-L["AVOIDANCE"] = "Avoidance(%)"
+L[StatLogic.Stats.Avoidance] = "Avoidance(%)"
 L[StatLogic.Stats.MeleeHit] = "Hit Chance(%)"
 L[StatLogic.Stats.RangedHit] = PLAYERSTAT_RANGED_COMBAT.." Hit Chance(%)"
 L[StatLogic.Stats.SpellHit] = PLAYERSTAT_SPELL_COMBAT.." Hit Chance(%)"
@@ -664,18 +655,17 @@ L[StatLogic.Stats.Miss] = "Hit Avoidance(%)"
 L[StatLogic.Stats.MeleeCrit] = MELEE_CRIT_CHANCE.."(%)" -- MELEE_CRIT_CHANCE = "Crit Chance"
 L[StatLogic.Stats.RangedCrit] = PLAYERSTAT_RANGED_COMBAT.." "..MELEE_CRIT_CHANCE.."(%)"
 L[StatLogic.Stats.SpellCrit] = PLAYERSTAT_SPELL_COMBAT.." "..MELEE_CRIT_CHANCE.."(%)"
-L["MELEE_CRIT_AVOID"] = "Crit Avoidance(%)"
-L["MELEE_HASTE"] = "Haste(%)" --
-L["RANGED_HASTE"] = PLAYERSTAT_RANGED_COMBAT.." Haste(%)"
-L["SPELL_HASTE"] = PLAYERSTAT_SPELL_COMBAT.." Haste(%)"
-L["EXPERTISE"] = "Expertise"
-L["ARMOR_PENETRATION"] = "Armor Penetration(%)"
+L[StatLogic.Stats.CritAvoidance] = "Crit Avoidance(%)"
+L[StatLogic.Stats.MeleeHaste] = "Haste(%)" --
+L[StatLogic.Stats.RangedHaste] = PLAYERSTAT_RANGED_COMBAT.." Haste(%)"
+L[StatLogic.Stats.SpellHaste] = PLAYERSTAT_SPELL_COMBAT.." Haste(%)"
+L[StatLogic.Stats.Expertise] = "Expertise"
+L[StatLogic.Stats.ArmorPenetration] = "Armor Penetration(%)"
 -- Tier3 Stats - Stats that only show up when broken down from a Tier2 stat
 -- Defense -> Crit Avoidance, Hit Avoidance, Dodge, Parry, Block
 -- Weapon Skill -> Crit, Hit, Dodge Neglect, Parry Neglect, Block Neglect
 -- Expertise -> Dodge Neglect, Parry Neglect
-L["DODGE_NEGLECT"] = DODGE.." Neglect(%)"
-L["PARRY_NEGLECT"] = PARRY.." Neglect(%)"
-L["BLOCK_NEGLECT"] = BLOCK.." Neglect(%)"
+L[StatLogic.Stats.DodgeReduction] = DODGE.." Neglect(%)"
+L[StatLogic.Stats.ParryReduction] = PARRY.." Neglect(%)"
 -- Misc Stats
-L["WEAPON_SKILL"] = "Weapon "..SKILL
+L[StatLogic.Stats.WeaponSkill] = "Weapon "..SKILL

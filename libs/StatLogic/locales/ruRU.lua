@@ -40,8 +40,8 @@ L["WholeTextLookup"] = {
 
 	["Небольшое ускорениеускорение бега"] = false, --
 	["Небольшое увеличение скорости"] = false, -- Enchant Boots - Minor Speed "Minor Speed Increase" spell: 13890
-	["Небольшое увеличение скорости и +6 к ловкости"] = {["RUN_SPEED"] = 8, [StatLogic.Stats.Agility] = 6}, -- Enchant Boots - Cat's Swiftness "Minor Speed and +6 Agility" spell: 34007
-	["Небольшое увеличение скорости и +9 к выносливости"] = {["RUN_SPEED"] = 8, [StatLogic.Stats.Stamina] = 9}, -- Enchant Boots - Boar's Speed "Minor Speed and +9 Stamina"
+	["Небольшое увеличение скорости и +6 к ловкости"] = {[StatLogic.Stats.Agility] = 6}, -- Enchant Boots - Cat's Swiftness "Minor Speed and +6 Agility" spell: 34007
+	["Небольшое увеличение скорости и +9 к выносливости"] = {[StatLogic.Stats.Stamina] = 9}, -- Enchant Boots - Boar's Speed "Minor Speed and +9 Stamina"
 	["Верный шаг"] = {[StatLogic.Stats.MeleeHitRating] = 10}, -- Enchant Boots - Surefooted "Surefooted" spell: 27954
 
 	["Надето: Позволяет дышать под водой."] = false, -- [Band of Icy Depths] ID: 21526

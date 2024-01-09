@@ -554,19 +554,10 @@ L["EMPTY_SOCKET_BLUE"] = EMPTY_SOCKET_BLUE -- EMPTY_SOCKET_BLUE = "Blue Socket";
 L["EMPTY_SOCKET_META"] = EMPTY_SOCKET_META -- EMPTY_SOCKET_META = "Meta Socket";
 
 L[StatLogic.Stats.HealingPower] = STAT_SPELLHEALING
-L["SPELL_CRIT"] = PLAYERSTAT_SPELL_COMBAT .. " " .. SPELL_CRIT_CHANCE
-L["STR"] = SPELL_STAT1_NAME
-L["AGI"] = SPELL_STAT2_NAME
-L["STA"] = SPELL_STAT3_NAME
-L["INT"] = SPELL_STAT4_NAME
-L["SPI"] = SPELL_STAT5_NAME
-L["PARRY"] = PARRY
 L[StatLogic.Stats.ManaRegen] = "法力回复"
 L[StatLogic.Stats.ManaRegenNotCasting] = "法力回复 (未施法)"
 L[StatLogic.Stats.HealthRegen] = "生命恢复"
 L[StatLogic.Stats.HealthRegenOutOfCombat] = "生命恢复 (非战斗)"
-L["PET_STA"] = PET .. SPELL_STAT3_NAME -- Pet Stamina
-L["PET_INT"] = PET .. SPELL_STAT4_NAME -- Pet Intellect
 L["StatModOptionName"] = "%s %s"
 
 L[StatLogic.Stats.IgnoreArmor] = "你的攻击无视目标的 %d+ 点护甲值。"
@@ -632,12 +623,12 @@ L[StatLogic.Stats.ArmorPenetrationRating] = "护甲穿透等级"
 -- Int -> Mana, Spell Crit
 -- Spi -> mp5nc, hp5oc
 -- Ratings -> Effect
-L["MELEE_CRIT_DMG_REDUCTION"] = "爆击减伤(%)"
+L[StatLogic.Stats.CritDamageReduction] = "爆击减伤(%)"
 L[StatLogic.Stats.Defense] = DEFENSE
 L[StatLogic.Stats.Dodge] = DODGE.."(%)"
 L[StatLogic.Stats.Parry] = PARRY.."(%)"
 L[StatLogic.Stats.BlockChance] = BLOCK.."(%)"
-L["AVOIDANCE"] = "完全豁免(%)"
+L[StatLogic.Stats.Avoidance] = "完全豁免(%)"
 L[StatLogic.Stats.MeleeHit] = "物理命中(%)"
 L[StatLogic.Stats.RangedHit] = "远程命中(%)"
 L[StatLogic.Stats.SpellHit] = "法术命中(%)"
@@ -645,18 +636,17 @@ L[StatLogic.Stats.Miss] = "躲闪命中(%)"
 L[StatLogic.Stats.MeleeCrit] = "物理爆击(%)" -- MELEE_CRIT_CHANCE = "Crit Chance"
 L[StatLogic.Stats.RangedCrit] = "远程爆击(%)"
 L[StatLogic.Stats.SpellCrit] = "法术爆击(%)"
-L["MELEE_CRIT_AVOID"] = "躲闪近战爆击(%)"
-L["MELEE_HASTE"] = "近战急速(%)" --
-L["RANGED_HASTE"] = "远程急速(%)"
-L["SPELL_HASTE"] = "法术急速(%)"
-L["EXPERTISE"] = "精准"
-L["ARMOR_PENETRATION"] = "护甲穿透(%)"
+L[StatLogic.Stats.CritAvoidance] = "躲闪近战爆击(%)"
+L[StatLogic.Stats.MeleeHaste] = "近战急速(%)" --
+L[StatLogic.Stats.RangedHaste] = "远程急速(%)"
+L[StatLogic.Stats.SpellHaste] = "法术急速(%)"
+L[StatLogic.Stats.Expertise] = "精准"
+L[StatLogic.Stats.ArmorPenetration] = "护甲穿透(%)"
 -- Tier3 Stats - Stats that only show up when broken down from a Tier2 stat
 -- Defense -> Crit Avoidance, Hit Avoidance, Dodge, Parry, Block
 -- Weapon Skill -> Crit, Hit, Dodge Neglect, Parry Neglect, Block Neglect
 -- Expertise -> Dodge Neglect, Parry Neglect
-L["DODGE_NEGLECT"] = "防止被躲闪(%)"
-L["PARRY_NEGLECT"] = "防止被招架(%)"
-L["BLOCK_NEGLECT"] = "防止被格挡(%)"
+L[StatLogic.Stats.DodgeReduction] = "防止被躲闪(%)"
+L[StatLogic.Stats.ParryReduction] = "防止被招架(%)"
 -- Misc Stats
-L["WEAPON_SKILL"] = "武器技能"
+L[StatLogic.Stats.WeaponSkill] = "武器技能"
