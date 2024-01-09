@@ -604,7 +604,7 @@ L[StatLogic.Stats.FrostResistance] = RESISTANCE4_NAME
 L[StatLogic.Stats.ShadowResistance] = RESISTANCE5_NAME
 L[StatLogic.Stats.ArcaneResistance] = RESISTANCE6_NAME
 
-L["BLOCK_VALUE"] = "Block Value"
+L[StatLogic.Stats.BlockValue] = "Block Value"
 
 L[StatLogic.Stats.AttackPower] = ATTACK_POWER_TOOLTIP
 L[StatLogic.Stats.RangedAttackPower] = RANGED_ATTACK_POWER

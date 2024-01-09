@@ -87,7 +87,7 @@ L["SingleEquipStatCheck"] = "^" .. ITEM_SPELL_TRIGGER_ONEQUIP .. " Augmente (.-)
 -- Special cases that need to be dealt with before deep scan
 L["PreScanPatterns"] = {
 	--["^Equip: Increases attack power by (%d+) in Cat"] = StatLogic.Stats.FeralAttackPower,
-	["Bloquer.- (%d+)"] = "BLOCK_VALUE",
+	["Bloquer.- (%d+)"] = StatLogic.Stats.BlockValue,
 	["Armure.- (%d+)"] = StatLogic.Stats.Armor,
 	["Renforcé %(%+(%d+) Armure%)"] = StatLogic.Stats.BonusArmor,
 	["^Équipé\194\160: Rend (%d+) points de vie toutes les 5 seco?n?d?e?s?%.?$"]= "HEAL_REG",
@@ -198,10 +198,10 @@ L["StatIDLookup"] = {
 	["Armure"] = {StatLogic.Stats.BonusArmor},
 	["Défense"] = {StatLogic.Stats.Defense},
 	--["Increased Defense"] = {StatLogic.Stats.Defense},
-	["Valeur de blocage"] = {"BLOCK_VALUE"},
-	["à la valeur de blocage"] = {"BLOCK_VALUE"},
-	["à la valeur de blocage au bouclier"] = {"BLOCK_VALUE"}, -- "+10% à la valeur de blocage au bouclier" [Diamant tonneterre éternel] ID: 35501
-	["la valeur de blocage de votre bouclier"] = {"BLOCK_VALUE"},
+	["Valeur de blocage"] = {StatLogic.Stats.BlockValue},
+	["à la valeur de blocage"] = {StatLogic.Stats.BlockValue},
+	["à la valeur de blocage au bouclier"] = {StatLogic.Stats.BlockValue}, -- "+10% à la valeur de blocage au bouclier" [Diamant tonneterre éternel] ID: 35501
+	["la valeur de blocage de votre bouclier"] = {StatLogic.Stats.BlockValue},
 
 	["Points de vie"] = {StatLogic.Stats.Health},
 	["aux points de vie"] = {StatLogic.Stats.Health},

@@ -104,7 +104,7 @@ L["SingleEquipStatCheck"] = "^" .. ITEM_SPELL_TRIGGER_ONEQUIP .. " (.-) by u?p? 
 -- Special cases that need to be dealt with before deep scan
 L["PreScanPatterns"] = {
 	--["^Equip: Increases attack power by (%d+) in Cat"] = StatLogic.Stats.FeralAttackPower,
-	["^(%d+) Block$"] = "BLOCK_VALUE",
+	["^(%d+) Block$"] = StatLogic.Stats.BlockValue,
 	["^(%d+) Armor$"] = StatLogic.Stats.Armor,
 	["Reinforced %(%+(%d+) Armor%)"] = StatLogic.Stats.BonusArmor,
 	["Mana Regen (%d+) per 5 sec%.$"] = StatLogic.Stats.ManaRegen,
@@ -182,10 +182,10 @@ L["StatIDLookup"] = {
 	["Armor"] = {StatLogic.Stats.BonusArmor,},
 	["Defense"] = {StatLogic.Stats.Defense,},
 	["Increased Defense"] = {StatLogic.Stats.Defense,},
-	["Block"] = {"BLOCK_VALUE",}, -- +22 Block Value
-	["Block Value"] = {"BLOCK_VALUE",}, -- +22 Block Value
-	["Shield Block Value"] = {"BLOCK_VALUE",}, -- +10% Shield Block Value [Eternal Earthstorm Diamond] http://www.wowhead.com/?item=35501
-	["Increases the block value of your shield"] = {"BLOCK_VALUE",},
+	["Block"] = {StatLogic.Stats.BlockValue,}, -- +22 Block Value
+	["Block Value"] = {StatLogic.Stats.BlockValue,}, -- +22 Block Value
+	["Shield Block Value"] = {StatLogic.Stats.BlockValue,}, -- +10% Shield Block Value [Eternal Earthstorm Diamond] http://www.wowhead.com/?item=35501
+	["Increases the block value of your shield"] = {StatLogic.Stats.BlockValue,},
 
 	["Health"] = {StatLogic.Stats.Health,},
 	["HP"] = {StatLogic.Stats.Health,},
@@ -278,7 +278,7 @@ L["StatIDLookup"] = {
 	["Block Rating"] = {StatLogic.Stats.BlockRating,},
 	["Increases your block rating"] = {StatLogic.Stats.BlockRating,},
 	["Increases your shield block rating"] = {StatLogic.Stats.BlockRating,},
-	["Increases your chance to block attacks with a shield%"] = {"BLOCK_CHANCE",},
+	["Increases your chance to block attacks with a shield%"] = {StatLogic.Stats.BlockChance,},
 
 	["Improves your chance to hit%"] = {StatLogic.Stats.MeleeHit, StatLogic.Stats.RangedHit},
 	["Improves your chance to hit with spells and with melee and ranged attacks%"] = {StatLogic.Stats.MeleeHit, StatLogic.Stats.RangedHit, StatLogic.Stats.SpellHit},

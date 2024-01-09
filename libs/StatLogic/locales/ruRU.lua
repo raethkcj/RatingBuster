@@ -74,7 +74,7 @@ L["SingleEquipStatCheck"] = "^" .. ITEM_SPELL_TRIGGER_ONEQUIP .. " (.-) на (%d
 -- Special cases that need to be dealt with before deep scan
 L["PreScanPatterns"] = {
 	--["^Equip: Increases attack power by (%d+) in Cat"] = StatLogic.Stats.FeralAttackPower,
-	["^(%d+) Block$"] = "BLOCK_VALUE",
+	["^(%d+) Block$"] = StatLogic.Stats.BlockValue,
 	["^Броня: (%d+)$"] = StatLogic.Stats.Armor,
 	["Reinforced %(%+(%d+) Armor%)"] = StatLogic.Stats.BonusArmor,
 	["Восполнение (%d+) ед. маны за 5 сек%.$"] = StatLogic.Stats.ManaRegen,
@@ -161,10 +161,10 @@ L["StatIDLookup"] = {
 	["к броне"] = {StatLogic.Stats.BonusArmor,},
 	["защита"] = {StatLogic.Stats.Defense,},
 	["Increased Defense"] = {StatLogic.Stats.Defense,},
-	["блок"] = {"BLOCK_VALUE",},
-	["блокирование:"] = {"BLOCK_VALUE",},
-	["к показателю блокирования щита"] = {"BLOCK_VALUE",}, -- +10% Shield Block Value [Eternal Earthstorm Diamond] http://www.wowhead.com/?item=35501
-	["увеличивает показатель блокирования вашего щита наед"] = {"BLOCK_VALUE",},
+	["блок"] = {StatLogic.Stats.BlockValue,},
+	["блокирование:"] = {StatLogic.Stats.BlockValue,},
+	["к показателю блокирования щита"] = {StatLogic.Stats.BlockValue,}, -- +10% Shield Block Value [Eternal Earthstorm Diamond] http://www.wowhead.com/?item=35501
+	["увеличивает показатель блокирования вашего щита наед"] = {StatLogic.Stats.BlockValue,},
 
 	["здоровье"] = {StatLogic.Stats.Health,},
 	["к здоровью"] = {StatLogic.Stats.Health,},

@@ -70,7 +70,7 @@ L["SingleEquipStatCheck"] = "^" .. ITEM_SPELL_TRIGGER_ONEQUIP .. " (.-) (%d+)만
 -- Special cases that need to be dealt with before deep scan
 L["PreScanPatterns"] = {
 	--["^Equip: Increases attack power by (%d+) in Cat"] = StatLogic.Stats.FeralAttackPower,
-	["^(%d+)의 피해 방어$"] = "BLOCK_VALUE",
+	["^(%d+)의 피해 방어$"] = StatLogic.Stats.BlockValue,
 	["^방어도 (%d+)$"] = StatLogic.Stats.Armor,
 	["방어도 보강 %(%+(%d+)%)"] = StatLogic.Stats.BonusArmor,
 	["매 5초마다 (%d+)의 생명력이 회복됩니다.$"] = StatLogic.Stats.HealthRegen,
@@ -152,9 +152,9 @@ L["StatIDLookup"] = {
 	["방어도"] = {StatLogic.Stats.BonusArmor,},
 	["방어 숙련"] = {StatLogic.Stats.Defense,},
 	["방어 숙련 증가"] = {StatLogic.Stats.Defense,},
-	["피해 방어"] = {"BLOCK_VALUE",}, -- +22 Block Value
-	["피해 방어량"] = {"BLOCK_VALUE",}, -- +22 Block Value
-	["방패의 피해 방어량이 증가합니다"] = {"BLOCK_VALUE",},
+	["피해 방어"] = {StatLogic.Stats.BlockValue,}, -- +22 Block Value
+	["피해 방어량"] = {StatLogic.Stats.BlockValue,}, -- +22 Block Value
+	["방패의 피해 방어량이 증가합니다"] = {StatLogic.Stats.BlockValue,},
 
 	["생명력"] = {StatLogic.Stats.Health,},
 	["HP"] = {StatLogic.Stats.Health,},

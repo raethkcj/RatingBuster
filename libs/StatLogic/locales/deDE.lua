@@ -86,7 +86,7 @@ L["SingleEquipStatCheck"] = "^" .. ITEM_SPELL_TRIGGER_ONEQUIP .. " (.-) um b?i?s
 -- Special cases that need to be dealt with before base scan
 L["PreScanPatterns"] = {
 	--["^Equip: Increases attack power by (%d+) in Cat"] = StatLogic.Stats.FeralAttackPower,
-	["^(%d+) Block$"] = "BLOCK_VALUE",
+	["^(%d+) Block$"] = StatLogic.Stats.BlockValue,
 	["^(%d+) Rüstung$"] = StatLogic.Stats.Armor,
 	["Verstärkte %(%+(%d+) Rüstung%)"] = "ARMOR_BUFF",
 	["Mana Regeneration (%d+) alle 5 Sek%.$"] = StatLogic.Stats.ManaRegen,
@@ -167,9 +167,9 @@ L["StatIDLookup"] = {
 
 	["Rüstung"] = {StatLogic.Stats.BonusArmor,},
 	["Verteidigung"] = {StatLogic.Stats.Defense,},
-	["Blocken"] = {"BLOCK_VALUE",}, -- +22 Block Value
-	["Blockwert"] = {"BLOCK_VALUE",}, -- +22 Block Value
-	["Erhöht den Blockwert Eures Schildes"] = {"BLOCK_VALUE",},
+	["Blocken"] = {StatLogic.Stats.BlockValue,}, -- +22 Block Value
+	["Blockwert"] = {StatLogic.Stats.BlockValue,}, -- +22 Block Value
+	["Erhöht den Blockwert Eures Schildes"] = {StatLogic.Stats.BlockValue,},
 
 	["Gesundheit"] = {StatLogic.Stats.Health,},
 	["HP"] = {StatLogic.Stats.Health,},

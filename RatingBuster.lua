@@ -1353,6 +1353,7 @@ do
 		["NORMAL_HEALTH_REG"] = StatLogic.Stats.HealthRegenOutOfCombat,
 		["SPELL_DMG"] = StatLogic.Stats.SpellDamage,
 		["HEALING"] = StatLogic.Stats.HealingPower,
+		["BLOCK_VALUE"] = StatLogic.Stats.BlockValue,
 	},
 	{
 		__index = function(_, stat)
@@ -3135,11 +3136,11 @@ local summaryCalcData = {
 	-- Block Value - BLOCK_VALUE, STR
 	{
 		option = "sumBlockValue",
-		name = "BLOCK_VALUE",
+		name = StatLogic.Stats.BlockValue,
 		func = function(sum)
 			return GetBlockChance() > 0 and (
 				GSM("MOD_BLOCK_VALUE") * (
-					sum["BLOCK_VALUE"]
+					sum[StatLogic.Stats.BlockValue]
 					+ sum[StatLogic.Stats.Strength] * GSM("ADD_BLOCK_VALUE_MOD_STR")
 				)
 			) or 0

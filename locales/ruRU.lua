@@ -723,7 +723,7 @@ L[StatLogic.Stats.FrostResistance] =  "Сопротивление магии л�
 L[StatLogic.Stats.ShadowResistance] =  "Сопротивление темной магии"
 L[StatLogic.Stats.ArcaneResistance] =  "Сопротивление тайной магии"
 
-L["BLOCK_VALUE"] =  "Показатель блокирования"
+L[StatLogic.Stats.BlockValue] =  "Показатель блокирования"
 
 L[StatLogic.Stats.AttackPower] =  "Сила атаки"
 L[StatLogic.Stats.RangedAttackPower] =  "Сила атаки дальнего боя"

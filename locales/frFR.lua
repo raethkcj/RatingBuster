@@ -589,7 +589,7 @@ L[StatLogic.Stats.FrostResistance] = "Résistance au Givre"
 L[StatLogic.Stats.ShadowResistance] = "Résistance à l'Ombre"
 L[StatLogic.Stats.ArcaneResistance] = "Résistance aux Arcanes"
 
-L["BLOCK_VALUE"] = "Valeur de blocage"
+L[StatLogic.Stats.BlockValue] = "Valeur de blocage"
 
 L[StatLogic.Stats.AttackPower] = "Puissance d'attaque"
 L[StatLogic.Stats.RangedAttackPower] = "Puissance d'attaque à distance"

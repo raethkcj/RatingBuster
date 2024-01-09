@@ -585,7 +585,7 @@ L[StatLogic.Stats.FrostResistance] = RESISTANCE4_NAME
 L[StatLogic.Stats.ShadowResistance] = RESISTANCE5_NAME
 L[StatLogic.Stats.ArcaneResistance] = RESISTANCE6_NAME
 
-L["BLOCK_VALUE"] = "피해 방어량"
+L[StatLogic.Stats.BlockValue] = "피해 방어량"
 
 L[StatLogic.Stats.AttackPower] = "전투력"
 L[StatLogic.Stats.RangedAttackPower] = RANGED_ATTACK_POWER

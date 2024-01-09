@@ -84,7 +84,7 @@ L["SingleEquipStatCheck"] = "^" .. ITEM_SPELL_TRIGGER_ONEQUIP .. " (.-) ?e?n? ?u
 -- Special cases that need to be dealt with before base scan
 L["PreScanPatterns"] = {
 	--["^Equip: Increases attack power by (%d+) in Cat"] = StatLogic.Stats.FeralAttackPower,
-	["^(%d+) bloqueo$"] = "BLOCK_VALUE",
+	["^(%d+) bloqueo$"] = StatLogic.Stats.BlockValue,
 	["^(%d+) armadura$"] = StatLogic.Stats.Armor,
 	["Reforzado %(%+(%d+)  armadura%)"] = "ARMOR_BUFF",
 	["regen. de maná (%d+) p. cada 5 s%.$"] = StatLogic.Stats.ManaRegen,
@@ -166,10 +166,10 @@ L["StatIDLookup"] = {
 	["Armadura"] = {StatLogic.Stats.BonusArmor,},
 	["Defensa"] = {StatLogic.Stats.Defense,},
 	["Defensa aumentada"] = {StatLogic.Stats.Defense,},
-	["Bloqueo"] = {"BLOCK_VALUE",}, -- +22 Block Value
-	["Valor de bloqueo"] = {"BLOCK_VALUE",}, -- +22 Block Value
-	["Valor de bloqueo de escudo"] = {"BLOCK_VALUE",}, -- +10% Shield Block Value [Eternal Earthstorm Diamond] http://www.wowhead.com/?item=35501
-	["Aumenta el valor de bloqueo de tu escudo"] = {"BLOCK_VALUE",},
+	["Bloqueo"] = {StatLogic.Stats.BlockValue,}, -- +22 Block Value
+	["Valor de bloqueo"] = {StatLogic.Stats.BlockValue,}, -- +22 Block Value
+	["Valor de bloqueo de escudo"] = {StatLogic.Stats.BlockValue,}, -- +10% Shield Block Value [Eternal Earthstorm Diamond] http://www.wowhead.com/?item=35501
+	["Aumenta el valor de bloqueo de tu escudo"] = {StatLogic.Stats.BlockValue,},
 
 	["Salud"] = {StatLogic.Stats.Health,},
 	["PS"] = {StatLogic.Stats.Health,},

@@ -76,7 +76,7 @@ L["SingleEquipStatCheck"] = "^" .. ITEM_SPELL_TRIGGER_ONEQUIP .. " (.-)(%d+)\231
 -- Special cases that need to be dealt with before base scan
 L["PreScanPatterns"] = {
 	["^装备: 猫形态下的攻击强度增加(%d+)"] = StatLogic.Stats.FeralAttackPower,
-	["^(%d+)格挡$"] = "BLOCK_VALUE",
+	["^(%d+)格挡$"] = StatLogic.Stats.BlockValue,
 	["^(%d+)点护甲$"] = StatLogic.Stats.Armor,
 	["强化护甲 %+(%d+)"] = StatLogic.Stats.BonusArmor,
 	["护甲值提高(%d+)点"] = StatLogic.Stats.BonusArmor,
@@ -175,8 +175,8 @@ L["StatIDLookup"] = {
 	["护甲值提高(%d+)点"] = {StatLogic.Stats.BonusArmor,},
 	["防御"] = {StatLogic.Stats.Defense,},
 	["增加防御"] = {StatLogic.Stats.Defense,},
-	["格挡值"] = {"BLOCK_VALUE",}, -- +22 Block Value
-	["使你的盾牌格挡值"] = {"BLOCK_VALUE",},
+	["格挡值"] = {StatLogic.Stats.BlockValue,}, -- +22 Block Value
+	["使你的盾牌格挡值"] = {StatLogic.Stats.BlockValue,},
 
 	["生命值"] = {StatLogic.Stats.Health,},
 	["法力值"] = {StatLogic.Stats.Mana,},

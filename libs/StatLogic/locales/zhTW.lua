@@ -74,7 +74,7 @@ L["SingleEquipStatCheck"] = "^" .. ITEM_SPELL_TRIGGER_ONEQUIP .. " (.-)(%d+)點(
 -- Special cases that need to be dealt with before deep scan
 L["PreScanPatterns"] = {
 	--["^Equip: Increases attack power by (%d+) in Cat"] = StatLogic.Stats.FeralAttackPower,
-	["^(%d+)格擋$"] = "BLOCK_VALUE",
+	["^(%d+)格擋$"] = StatLogic.Stats.BlockValue,
 	["^(%d+)點護甲$"] = StatLogic.Stats.Armor,
 	["強化護甲 %+(%d+)"] = StatLogic.Stats.BonusArmor,
 	-- Exclude
@@ -169,10 +169,10 @@ L["StatIDLookup"] = {
 	["強化護甲"] = {StatLogic.Stats.BonusArmor,},
 	["防禦"] = {StatLogic.Stats.Defense,},
 	["增加防禦"] = {StatLogic.Stats.Defense,},
-	["格擋"] = {"BLOCK_VALUE",}, -- +22 Block Value
-	["格擋值"] = {"BLOCK_VALUE",}, -- +22 Block Value
-	["提高格擋值"] = {"BLOCK_VALUE",},
-	["使你盾牌的格擋值"] = {"BLOCK_VALUE",},
+	["格擋"] = {StatLogic.Stats.BlockValue,}, -- +22 Block Value
+	["格擋值"] = {StatLogic.Stats.BlockValue,}, -- +22 Block Value
+	["提高格擋值"] = {StatLogic.Stats.BlockValue,},
+	["使你盾牌的格擋值"] = {StatLogic.Stats.BlockValue,},
 
 	["生命力"] = {StatLogic.Stats.Health,},
 	["法力"] = {StatLogic.Stats.Mana,},
