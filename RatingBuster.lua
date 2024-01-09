@@ -126,9 +126,9 @@ local function setGem(info, value)
 		end
 		profileDB[info[#info]].gemText = gemText
 		clearCache()
-		local socket = info[#info]:sub(7).." Socket"
+		local socket = "EMPTY_SOCKET_" .. info[#info]:sub(7):upper()
 		if not debugstack():find("AceConsole") then
-			RatingBuster:Print(L["%s is now set to %s"]:format(L[socket], link))
+			RatingBuster:Print(L["%s is now set to %s"]:format(_G[socket], link))
 		end
 	else
 		RatingBuster:Print(L["Queried server for Gem: %s. Try again in 5 secs."]:format(value))
@@ -953,7 +953,7 @@ local options = {
 					args = {
 						sumGemRed = {
 							type = 'input',
-							name = L["Red Socket"],
+							name = EMPTY_SOCKET_RED,
 							desc = L["ItemID or Link of the gem you would like to auto fill"],
 							usage = L["<ItemID|Link>"],
 							get = getGem,
@@ -962,7 +962,7 @@ local options = {
 						},
 						sumGemYellow = {
 							type = 'input',
-							name = L["Yellow Socket"],
+							name = EMPTY_SOCKET_YELLOW,
 							desc = L["ItemID or Link of the gem you would like to auto fill"],
 							usage = L["<ItemID|Link>"],
 							get = getGem,
@@ -971,7 +971,7 @@ local options = {
 						},
 						sumGemBlue = {
 							type = 'input',
-							name = L["Blue Socket"],
+							name = EMPTY_SOCKET_BLUE,
 							desc = L["ItemID or Link of the gem you would like to auto fill"],
 							usage = L["<ItemID|Link>"],
 							get = getGem,
@@ -980,7 +980,7 @@ local options = {
 						},
 						sumGemMeta = {
 							type = 'input',
-							name = L["Meta Socket"],
+							name = EMPTY_SOCKET_META,
 							desc = L["ItemID or Link of the gem you would like to auto fill"],
 							usage = L["<ItemID|Link>"],
 							get = getGem,

@@ -386,18 +386,10 @@ L["Avoidance <- Dodge Parry, MobMiss, Block(Optional)"] = "Elusion <- Esquivar, 
 -- /rb sum gem
 --["Gems"] = true,
 --["Auto fill empty gem slots"] = true,
--- /rb sum gem red
-L["Red Socket"] = EMPTY_SOCKET_RED
 --["ItemID or Link of the gem you would like to auto fill"] = true,
 --["<ItemID|Link>"] = true,
 --["%s is now set to %s"] = true,
 --["Queried server for Gem: %s. Try again in 5 secs."] = true,
--- /rb sum gem yellow
-L["Yellow Socket"] = EMPTY_SOCKET_YELLOW
--- /rb sum gem blue
-L["Blue Socket"] = EMPTY_SOCKET_BLUE
--- /rb sum gem meta
-L["Meta Socket"] = EMPTY_SOCKET_META
 
 -----------------------
 -- Item Level and ID --
@@ -548,11 +540,6 @@ L["$value% Parry"] = "$value Parada"
 -- (+1.21%, S+0.98%)
 -- (+1.21%, +0.98% S)
 L["$value Spell"] = "$value Hech."
-
-L["EMPTY_SOCKET_RED"] = EMPTY_SOCKET_RED -- EMPTY_SOCKET_RED = "Red Socket";
-L["EMPTY_SOCKET_YELLOW"] = EMPTY_SOCKET_YELLOW -- EMPTY_SOCKET_YELLOW = "Yellow Socket";
-L["EMPTY_SOCKET_BLUE"] = EMPTY_SOCKET_BLUE -- EMPTY_SOCKET_BLUE = "Blue Socket";
-L["EMPTY_SOCKET_META"] = EMPTY_SOCKET_META -- EMPTY_SOCKET_META = "Meta Socket";
 
 L[StatLogic.Stats.HealingPower] = STAT_SPELLHEALING
 L[StatLogic.Stats.ManaRegen] = "Regen.Mana"

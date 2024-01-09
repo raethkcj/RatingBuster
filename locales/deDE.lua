@@ -387,18 +387,10 @@ L["Avoidance <- Dodge Parry, MobMiss, Block(Optional)"] = "Vermeidung <- Ausweic
 -- /rb sum gem
 L["Gems"] = "Edelsteine"
 L["Auto fill empty gem slots"] = "Leere Edelsteinplätze automatisch füllen"
--- /rb sum gem red
-L["Red Socket"] = EMPTY_SOCKET_RED
 L["ItemID or Link of the gem you would like to auto fill"] = "ItemID oder Link des einzusetzenden Edelsteins"
 --["<ItemID|Link>"] = true,
 L["%s is now set to %s"] = "%s ist nun auf %s gesetzt"
 L["Queried server for Gem: %s. Try again in 5 secs."] = "Frage den Server nach Edelstein: %s. Versuchs in 5 Sekunden nochmal"
--- /rb sum gem yellow
-L["Yellow Socket"] = EMPTY_SOCKET_YELLOW
--- /rb sum gem blue
-L["Blue Socket"] = EMPTY_SOCKET_BLUE
--- /rb sum gem meta
-L["Meta Socket"] = EMPTY_SOCKET_META
 
 -----------------------
 -- Item Level and ID --
@@ -549,11 +541,6 @@ L["$value% Parry"] = "$value% Parieren"
 -- (+1.21%, S+0.98%)
 -- (+1.21%, +0.98% S)
 L["$value Spell"] = "$value Zauber"
-
-L["EMPTY_SOCKET_RED"] = EMPTY_SOCKET_RED -- EMPTY_SOCKET_RED = "Red Socket";
-L["EMPTY_SOCKET_YELLOW"] = EMPTY_SOCKET_YELLOW -- EMPTY_SOCKET_YELLOW = "Yellow Socket";
-L["EMPTY_SOCKET_BLUE"] = EMPTY_SOCKET_BLUE -- EMPTY_SOCKET_BLUE = "Blue Socket";
-L["EMPTY_SOCKET_META"] = EMPTY_SOCKET_META -- EMPTY_SOCKET_META = "Meta Socket";
 
 L[StatLogic.Stats.HealingPower] = STAT_SPELLHEALING
 L[StatLogic.Stats.ManaRegen] = "Manaregeneration"

@@ -387,17 +387,13 @@ L["Avoidance <- Dodge Parry, MobMiss, Block(Optional)"] = "傷害迴避 ← 閃�
 L["Gems"] = "預設寶石"
 L["Auto fill empty gem slots"] = "空寶石插槽的預設寶石"
 -- /rb sum gem red
-L["Red Socket"] = EMPTY_SOCKET_RED
 L["ItemID or Link of the gem you would like to auto fill"] = "預設寶石的物品編號或連結"
 L["<ItemID|Link>"] = "<物品編號|連結>"
 L["%s is now set to %s"] = "%s 現在被設定為 %s"
 L["Queried server for Gem: %s. Try again in 5 secs."] = "嘗試查詢編號：%s，請5秒後再試一次。"
 -- /rb sum gem yellow
-L["Yellow Socket"] = EMPTY_SOCKET_YELLOW
 -- /rb sum gem blue
-L["Blue Socket"] = EMPTY_SOCKET_BLUE
 -- /rb sum gem meta
-L["Meta Socket"] = EMPTY_SOCKET_META
 
 -----------------------
 -- Item Level and ID --
@@ -546,11 +542,6 @@ L["$value% Parry"] = "$value% 招架"
 -- (+1.21%, S+0.98%)
 -- (+1.21%, +0.98% S)
 L["$value Spell"] = "$value 法術"
-
-L["EMPTY_SOCKET_RED"] = EMPTY_SOCKET_RED -- EMPTY_SOCKET_RED = "Red Socket";
-L["EMPTY_SOCKET_YELLOW"] = EMPTY_SOCKET_YELLOW -- EMPTY_SOCKET_YELLOW = "Yellow Socket";
-L["EMPTY_SOCKET_BLUE"] = EMPTY_SOCKET_BLUE -- EMPTY_SOCKET_BLUE = "Blue Socket";
-L["EMPTY_SOCKET_META"] = EMPTY_SOCKET_META -- EMPTY_SOCKET_META = "Meta Socket";
 
 L[StatLogic.Stats.HealingPower] = STAT_SPELLHEALING
 L[StatLogic.Stats.ManaRegen] = "法力恢復"

@@ -427,18 +427,14 @@ L["Default Gem Set 3"] = "Набор по умолчанию 3"
 -- /rb sum gem
 L["Auto fill empty gem slots"] = "Автозаполнение пустых слотов"
 -- /rb sum gem red
-L["Red Socket"] = EMPTY_SOCKET_RED
 L["ItemID or Link of the gem you would like to auto fill"] = "ID предмета или ссылка на самоцвет, кторым вы хотите автозаполнять слоты"
 L["<ItemID|Link>"] = "<ItemID|Link>"
 L["|cffffff7f%s|r is now set to |cffffff7f[%s]|r"] = "|cffffff7f%s|r в настоящее время установлена на |cffffff7f[%s]|r"
 L["Invalid input: %s. ItemID or ItemLink required."] = "Ошибочный ввод: %s. Требуется ID предмета либо ссылка."
 L["Queried server for Gem: %s. Try again in 5 secs."] = "Запрос у сервера самоцвета: %s. Повторная попытка через 5 сек."
 -- /rb sum gem yellow
-L["Yellow Socket"] = EMPTY_SOCKET_YELLOW
 -- /rb sum gem blue
-L["Blue Socket"] = EMPTY_SOCKET_BLUE
 -- /rb sum gem meta
-L["Meta Socket"] = EMPTY_SOCKET_META
 -- /rb sum gem2
 L["Second set of default gems which can be toggled with a modifier key"] = "Второй набор самоцветов по умолчанию который может быть переключен с помощью клавиш"
 L["Can't use the same modifier as Gem Set 3"] = "Нельзя использовать теже клавиши что и у набора самоцветов 3"
@@ -685,11 +681,6 @@ L["$value Dmg Taken"] = true
 -- (+1.21%, S+0.98%)
 -- (+1.21%, +0.98% S)
 L["$value Spell"] = "$value для заклинаний"
-
-L["EMPTY_SOCKET_RED"] =  EMPTY_SOCKET_RED        -- EMPTY_SOCKET_RED = "Red Socket";
-L["EMPTY_SOCKET_YELLOW"] =  EMPTY_SOCKET_YELLOW -- EMPTY_SOCKET_YELLOW = "Yellow Socket";
-L["EMPTY_SOCKET_BLUE"] =  EMPTY_SOCKET_BLUE     -- EMPTY_SOCKET_BLUE = "Blue Socket";
-L["EMPTY_SOCKET_META"] =  EMPTY_SOCKET_META     -- EMPTY_SOCKET_META = "Meta Socket";
 
 L[StatLogic.Stats.HealingPower] = "Исцеление"
 L[StatLogic.Stats.ManaRegen] = "Восполнение маны"

@@ -382,18 +382,10 @@ L["Avoidance <- Dodge, Parry, MobMiss, Block(Optional)"] = "Inclure l'Évitement
 -- /rb sum gem
 L["Gems"] = "Gemmes"
 L["Auto fill empty gem slots"] = "Simuler le sertissage de gemmes."
--- /rb sum gem red
-L["Red Socket"] = "Châsse rouge"
 L["ItemID or Link of the gem you would like to auto fill"] = "ID ou lien (maj+clic) de la gemme que vous voulez simuler."
 --["<ItemID|Link>"] = true,
 L["%s is now set to %s"] = "%s simulera désormais %s."
 L["Queried server for Gem: %s. Try again in 5 secs."] = "Requête serveur pour : %s. Rééssayez dans 5 secondes."
--- /rb sum gem yellow
-L["Yellow Socket"] = "Châsse jaune"
--- /rb sum gem blue
-L["Blue Socket"] = "Châsse bleue"
--- /rb sum gem meta
-L["Meta Socket"] = "Méta-châsse"
 
 ----------------------
 -- Item Level and ID --
@@ -551,11 +543,6 @@ L["$value% Parry"] = "$value% parer"
 -- (+1.21%, S+0.98%)
 -- (+1.21%, +0.98% S)
 L["$value Spell"] = "$value% Sort"
-
-L["EMPTY_SOCKET_RED"] = "Châsse rouge"
-L["EMPTY_SOCKET_YELLOW"] = "Châsse jaune"
-L["EMPTY_SOCKET_BLUE"] = "Châsse bleue"
-L["EMPTY_SOCKET_META"] = "Méta-châsse"
 
 L[StatLogic.Stats.HealingPower] = STAT_SPELLHEALING
 L[StatLogic.Stats.ManaRegen] = "Régén. mana (incantation)"
