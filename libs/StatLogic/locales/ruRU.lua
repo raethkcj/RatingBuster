@@ -32,7 +32,7 @@ L["WholeTextLookup"] = {
 	["Блестящее масло маны"] = {["MANA_REG"] = 12, [StatLogic.Stats.HealingPower] = 25}, -- ID: 20748
 	["Превосходное масло маны"] = {["MANA_REG"] = 14}, -- ID: 22521
 
-	["Жестокость"] = {["AP"] = 70}, --
+	["Жестокость"] = {[StatLogic.Stats.AttackPower] = 70}, --
 	["Живучесть I"] = {["MANA_REG"] = 4, ["HEALTH_REG"] = 4}, -- Enchant Boots - Vitality spell: 27948
 	["Ледяная душа"] = {[StatLogic.Stats.ShadowDamage] = 54, [StatLogic.Stats.FrostDamage] = 54}, --
 	["Солнечный огонь"] = {[StatLogic.Stats.ArcaneDamage] = 50, [StatLogic.Stats.FireDamage] = 50},
@@ -73,7 +73,7 @@ L["SingleEquipStatCheck"] = "^" .. ITEM_SPELL_TRIGGER_ONEQUIP .. " (.-) на (%d
 -------------
 -- Special cases that need to be dealt with before deep scan
 L["PreScanPatterns"] = {
-	--["^Equip: Increases attack power by (%d+) in Cat"] = "FERAL_AP",
+	--["^Equip: Increases attack power by (%d+) in Cat"] = StatLogic.Stats.FeralAttackPower,
 	["^(%d+) Block$"] = "BLOCK_VALUE",
 	["^Броня: (%d+)$"] = StatLogic.Stats.Armor,
 	["Reinforced %(%+(%d+) Armor%)"] = StatLogic.Stats.BonusArmor,
@@ -123,8 +123,8 @@ L["DeepScanPatterns"] = {
 -- Stat Lookup Table --
 -----------------------
 L["StatIDLookup"] = {
-	["Эффективность брони противника против ваших атак снижена на"] = {"IGNORE_ARMOR"}, -- StatLogic:GetSum("item:33733") (used tbc text)
-	["Weapon Damage"] = {"MELEE_DMG"}, -- Enchant
+	["Эффективность брони противника против ваших атак снижена на"] = {StatLogic.Stats.IgnoreArmor}, -- StatLogic:GetSum("item:33733") (used tbc text)
+	["Weapon Damage"] = {StatLogic.Stats.WeaponDamageAverage}, -- Enchant
 
 	["ко всем характеристикам"] = {StatLogic.Stats.AllStats,},
 	["к силе"] = {StatLogic.Stats.Strength,},
@@ -171,13 +171,13 @@ L["StatIDLookup"] = {
 	["HP"] = {"HEALTH",},
 	["мана"] = {"MANA",},
 
-	["сила атаки"] = {"AP",},
-	["увеличивает силу атаки на"] = {"AP",},
-	["повышает силу атаки на"] = {"AP",},
-	["увеличивает силу атаки нав облике кошки, медведя, лютого медведя и лунного совуха"] = {"FERAL_AP",},
-	["увеличивает силу атаки нав облике кошки"] = {"FERAL_AP",},
-	["сила атаки дальнего боя"] = {"RANGED_AP",},
-	["увеличивает силу атак дальнего боя"] = {"RANGED_AP",}, -- [High Warlord's Crossbow] ID: 18837
+	["сила атаки"] = {StatLogic.Stats.AttackPower,},
+	["увеличивает силу атаки на"] = {StatLogic.Stats.AttackPower,},
+	["повышает силу атаки на"] = {StatLogic.Stats.AttackPower,},
+	["увеличивает силу атаки нав облике кошки, медведя, лютого медведя и лунного совуха"] = {StatLogic.Stats.FeralAttackPower,},
+	["увеличивает силу атаки нав облике кошки"] = {StatLogic.Stats.FeralAttackPower,},
+	["сила атаки дальнего боя"] = {StatLogic.Stats.RangedAttackPower,},
+	["увеличивает силу атак дальнего боя"] = {StatLogic.Stats.RangedAttackPower,}, -- [High Warlord's Crossbow] ID: 18837
 
 	["Health Regen"] = {"MANA_REG",},
 	["Health per"] = {"HEALTH_REG",},
@@ -271,14 +271,14 @@ L["StatIDLookup"] = {
 	["увеличение рейтинга блока наед"] = {StatLogic.Stats.BlockRating,},
 	["увеличивает рейтинг блокирования щитом на"] = {StatLogic.Stats.BlockRating,},
 
-	["Вероятность нанесения удара увеличена%"] = {"MELEE_HIT", "RANGED_HIT"},
-	["Повышает вероятность попадания заклинаниями и атаками в ближнем и дальнем бою%"] = {"MELEE_HIT", "RANGED_HIT", "SPELL_HIT"},
+	["Вероятность нанесения удара увеличена%"] = {StatLogic.Stats.MeleeHit, StatLogic.Stats.RangedHit},
+	["Повышает вероятность попадания заклинаниями и атаками в ближнем и дальнем бою%"] = {StatLogic.Stats.MeleeHit, StatLogic.Stats.RangedHit, StatLogic.Stats.SpellHit},
 	["Hit Rating"] = {StatLogic.Stats.MeleeHitRating,},
 	["повышает меткость"] = {StatLogic.Stats.HitRating,}, -- ITEM_MOD_HIT_RATING
 	["меткость в ближнем бою"] = {StatLogic.Stats.MeleeHitRating,}, -- ITEM_MOD_HIT_MELEE_RATING
 	["повышает рейтинг меткости"] = {StatLogic.Stats.HitRating,},
 	["к рейтингу меткости"] = {StatLogic.Stats.HitRating,},
-	["Improves your chance to hit with spells%"] = {"SPELL_HIT"},
+	["Improves your chance to hit with spells%"] = {StatLogic.Stats.SpellHit},
 	["Spell Hit Rating"] = {StatLogic.Stats.SpellHitRating,},
 	["повышает рейтинг меткости на"] = {StatLogic.Stats.HitRating,},
 	["Increases your spell hit rating"] = {StatLogic.Stats.SpellHitRating,},

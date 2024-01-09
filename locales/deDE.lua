@@ -571,8 +571,8 @@ L["PET_STA"] = PET .. SPELL_STAT3_NAME -- Pet Stamina
 L["PET_INT"] = PET .. SPELL_STAT4_NAME -- Pet Intellect
 L["StatModOptionName"] = "%s %s"
 
-L["IGNORE_ARMOR"] = "Rüstung ignorieren"
-L["MELEE_DMG"] = "Waffenschaden" -- DAMAGE = "Damage"
+L[StatLogic.Stats.IgnoreArmor] = "Rüstung ignorieren"
+L[StatLogic.Stats.WeaponDamageAverage] = "Waffenschaden" -- DAMAGE = "Damage"
 
 L[StatLogic.Stats.Strength] = SPELL_STAT1_NAME
 L[StatLogic.Stats.Agility] = SPELL_STAT2_NAME
@@ -589,9 +589,9 @@ L[StatLogic.Stats.ArcaneResistance] = RESISTANCE6_NAME
 
 L["BLOCK_VALUE"] = "Blockwert"
 
-L["AP"] = ATTACK_POWER_TOOLTIP
-L["RANGED_AP"] = RANGED_ATTACK_POWER
-L["FERAL_AP"] = "Feral "..ATTACK_POWER_TOOLTIP
+L[StatLogic.Stats.AttackPower] = ATTACK_POWER_TOOLTIP
+L[StatLogic.Stats.RangedAttackPower] = RANGED_ATTACK_POWER
+L[StatLogic.Stats.FeralAttackPower] = "Feral "..ATTACK_POWER_TOOLTIP
 
 L[StatLogic.Stats.HealingPower] = "Heilung"
 
@@ -640,9 +640,9 @@ L[StatLogic.Stats.Dodge] = DODGE.."(%)"
 L[StatLogic.Stats.Parry] = PARRY.."(%)"
 L[StatLogic.Stats.BlockChance] = BLOCK.."(%)"
 L["AVOIDANCE"] = "Vermeidung(%)"
-L["MELEE_HIT"] = "Trefferchance(%)"
-L["RANGED_HIT"] = PLAYERSTAT_RANGED_COMBAT.." Trefferchance(%)"
-L["SPELL_HIT"] = PLAYERSTAT_SPELL_COMBAT.." Trefferchance(%)"
+L[StatLogic.Stats.MeleeHit] = "Trefferchance(%)"
+L[StatLogic.Stats.RangedHit] = PLAYERSTAT_RANGED_COMBAT.." Trefferchance(%)"
+L[StatLogic.Stats.SpellHit] = PLAYERSTAT_SPELL_COMBAT.." Trefferchance(%)"
 L[StatLogic.Stats.Miss] = "Treffer Vermeidung(%)"
 L[StatLogic.Stats.MeleeCrit] = MELEE_CRIT_CHANCE.."(%)" -- MELEE_CRIT_CHANCE = "Crit Chance"
 L[StatLogic.Stats.RangedCrit] = PLAYERSTAT_RANGED_COMBAT.." "..MELEE_CRIT_CHANCE.."(%)"

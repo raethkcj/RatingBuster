@@ -39,7 +39,7 @@ L["WholeTextLookup"] = {
 	["Huile de mana brillante"] = {["MANA_REG"] = 12, [StatLogic.Stats.HealingPower] = 25}, -- ID: 20748
 	["Huile de mana excellente"] = {["MANA_REG"] = 14}, -- ID: 22521
 
-	["Sauvagerie"] = {["AP"] = 70}, -- ID: 27971
+	["Sauvagerie"] = {[StatLogic.Stats.AttackPower] = 70}, -- ID: 27971
 	["Vitalité"] = {["MANA_REG"] = 4, ["HEALTH_REG"] = 4}, -- ID: 46492
 	["Âme de givre"] = {[StatLogic.Stats.ShadowDamage] = 54, [StatLogic.Stats.FrostDamage] = 54}, -- ID: 27982
 	["Feu solaire"] = {[StatLogic.Stats.ArcaneDamage] = 50, [StatLogic.Stats.FireDamage] = 50}, -- ID: 27981
@@ -86,13 +86,13 @@ L["SingleEquipStatCheck"] = "^" .. ITEM_SPELL_TRIGGER_ONEQUIP .. " Augmente (.-)
 -------------
 -- Special cases that need to be dealt with before deep scan
 L["PreScanPatterns"] = {
-	--["^Equip: Increases attack power by (%d+) in Cat"] = "FERAL_AP",
+	--["^Equip: Increases attack power by (%d+) in Cat"] = StatLogic.Stats.FeralAttackPower,
 	["Bloquer.- (%d+)"] = "BLOCK_VALUE",
 	["Armure.- (%d+)"] = StatLogic.Stats.Armor,
 	["Renforcé %(%+(%d+) Armure%)"] = StatLogic.Stats.BonusArmor,
 	["^Équipé\194\160: Rend (%d+) points de vie toutes les 5 seco?n?d?e?s?%.?$"]= "HEAL_REG",
 	["^Équipé\194\160: Rend (%d+) points de mana toutes les 5 seco?n?d?e?s?%.?$"]= "MANA_REG",
-	--["Lunette %(%+(%d+) points? de dégâts?%)"] = "RANGED_AP",
+	--["Lunette %(%+(%d+) points? de dégâts?%)"] = StatLogic.Stats.RangedAttackPower,
 	-- Exclude
 	["^(%d+) Slot"] = false, -- Set Name (0/9)
 	["^[%a '%-]+%((%d+)/%d+%)$"] = false, -- Set Name (0/9) -- anciennement : ["^.- %(%d+/%d+%)$"] = false, -- Set Name (0/9)
@@ -150,13 +150,13 @@ L["DeepScanPatterns"] = {
 -- Stat Lookup Table --
 -----------------------
 L["StatIDLookup"] = {
-	["Vos attaques ignorentpoints de l'armure de votre adversaire"] = {"IGNORE_ARMOR"}, -- StatLogic:GetSum("item:33733")
-	["aux dégâts de l'arme"] = {"MELEE_DMG"},
+	["Vos attaques ignorentpoints de l'armure de votre adversaire"] = {StatLogic.Stats.IgnoreArmor}, -- StatLogic:GetSum("item:33733")
+	["aux dégâts de l'arme"] = {StatLogic.Stats.WeaponDamageAverage},
 
 	--dégats melee
-	["aux dégâts des armes"] = {"MELEE_DMG"},
-	["aux dégâts en mêlée"] = {"MELEE_DMG"},
-	["dégâts de l'arme"] = {"MELEE_DMG"},
+	["aux dégâts des armes"] = {StatLogic.Stats.WeaponDamageAverage},
+	["aux dégâts en mêlée"] = {StatLogic.Stats.WeaponDamageAverage},
+	["dégâts de l'arme"] = {StatLogic.Stats.WeaponDamageAverage},
 
 	["à toutes les caractéristiques"] = {StatLogic.Stats.AllStats,},
 	["Force"] = {StatLogic.Stats.Strength},
@@ -207,13 +207,13 @@ L["StatIDLookup"] = {
 	["aux points de vie"] = {"HEALTH"},
 	["Points de mana"] = {"MANA"},
 
-	["puissance d'attaque"] = {"AP"},
-	["la puissance d'attaque"] = {"AP"},
-	["à la puissance d'attaque"] = {"AP"},
-	["à la puissance d'attaque pour les formes de félin"] = {"FERAL_AP"}, -- version pre-TBC
-	["la puissance d'attaque pour les formes de félin"] = {"FERAL_AP"}, -- version TBC+
-	["à la puissance des attaques à distance."] = {"RANGED_AP"}, -- [Arbalète de grand seigneur de guerre] ID: 18837 -- version pre-TBC
-	["la puissance des attaques à distance"] = {"RANGED_AP"}, -- [Arbalète de grand seigneur de guerre] ID: 18837 -- version TBC+
+	["puissance d'attaque"] = {StatLogic.Stats.AttackPower},
+	["la puissance d'attaque"] = {StatLogic.Stats.AttackPower},
+	["à la puissance d'attaque"] = {StatLogic.Stats.AttackPower},
+	["à la puissance d'attaque pour les formes de félin"] = {StatLogic.Stats.FeralAttackPower}, -- version pre-TBC
+	["la puissance d'attaque pour les formes de félin"] = {StatLogic.Stats.FeralAttackPower}, -- version TBC+
+	["à la puissance des attaques à distance."] = {StatLogic.Stats.RangedAttackPower}, -- [Arbalète de grand seigneur de guerre] ID: 18837 -- version pre-TBC
+	["la puissance des attaques à distance"] = {StatLogic.Stats.RangedAttackPower}, -- [Arbalète de grand seigneur de guerre] ID: 18837 -- version TBC+
 
 	["points de mana toutes les 5 secondes"] = {"MANA_REG"},
 	["point de mana toutes les 5 secondes"] = {"MANA_REG"},
@@ -302,8 +302,8 @@ L["StatIDLookup"] = {
 	["votre score de blocage"] = {StatLogic.Stats.BlockRating},
 	["au score de blocage"] = {StatLogic.Stats.BlockRating}, -- Ench. de bouclier (Blocage inférieur) "+10 au score de blocage" -- ID: 13689
 
-	["vos chances de toucher%"] = {"MELEE_HIT", "RANGED_HIT"},
-	["les chances de toucher avec les sorts et les attaques en mêlée et à distance%"] = {"MELEE_HIT", "RANGED_HIT", "SPELL_HIT"},
+	["vos chances de toucher%"] = {StatLogic.Stats.MeleeHit, StatLogic.Stats.RangedHit},
+	["les chances de toucher avec les sorts et les attaques en mêlée et à distance%"] = {StatLogic.Stats.MeleeHit, StatLogic.Stats.RangedHit, StatLogic.Stats.SpellHit},
 	["score de toucher"] = {StatLogic.Stats.HitRating},
 	["le score de toucher"] = {StatLogic.Stats.HitRating},
 	["votre score de toucher"] = {StatLogic.Stats.HitRating},

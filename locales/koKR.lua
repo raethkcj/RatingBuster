@@ -569,8 +569,8 @@ L["PET_STA"] = PET .. SPELL_STAT3_NAME -- Pet Stamina
 L["PET_INT"] = PET .. SPELL_STAT4_NAME -- Pet Intellect
 L["StatModOptionName"] = "%2$s %1$s"
 
-L["IGNORE_ARMOR"] = "방어도 무시"
-L["MELEE_DMG"] = "근접 무기 "..DAMAGE -- DAMAGE = "Damage"
+L[StatLogic.Stats.IgnoreArmor] = "방어도 무시"
+L[StatLogic.Stats.WeaponDamageAverage] = "근접 무기 "..DAMAGE -- DAMAGE = "Damage"
 
 L[StatLogic.Stats.Strength] = SPELL_STAT1_NAME
 L[StatLogic.Stats.Agility] = SPELL_STAT2_NAME
@@ -587,9 +587,9 @@ L[StatLogic.Stats.ArcaneResistance] = RESISTANCE6_NAME
 
 L["BLOCK_VALUE"] = "피해 방어량"
 
-L["AP"] = "전투력"
-L["RANGED_AP"] = RANGED_ATTACK_POWER
-L["FERAL_AP"] = "야생 전투력"
+L[StatLogic.Stats.AttackPower] = "전투력"
+L[StatLogic.Stats.RangedAttackPower] = RANGED_ATTACK_POWER
+L[StatLogic.Stats.FeralAttackPower] = "야생 전투력"
 
 L[StatLogic.Stats.HealingPower] = "치유량"
 
@@ -638,9 +638,9 @@ L[StatLogic.Stats.Dodge] = DODGE.."(%)"
 L[StatLogic.Stats.Parry] = PARRY.."(%)"
 L[StatLogic.Stats.BlockChance] = BLOCK.."(%)"
 L["AVOIDANCE"] = "공격 회피(%)"
-L["MELEE_HIT"] = "적중률(%)"
-L["RANGED_HIT"] = PLAYERSTAT_RANGED_COMBAT.." 적중률(%)"
-L["SPELL_HIT"] = PLAYERSTAT_SPELL_COMBAT.." 적중률(%)"
+L[StatLogic.Stats.MeleeHit] = "적중률(%)"
+L[StatLogic.Stats.RangedHit] = PLAYERSTAT_RANGED_COMBAT.." 적중률(%)"
+L[StatLogic.Stats.SpellHit] = PLAYERSTAT_SPELL_COMBAT.." 적중률(%)"
 L[StatLogic.Stats.Miss] = "근접 공격 회피(%)"
 L[StatLogic.Stats.MeleeCrit] = MELEE_CRIT_CHANCE.."(%)" -- MELEE_CRIT_CHANCE = "Crit Chance"
 L[StatLogic.Stats.RangedCrit] = PLAYERSTAT_RANGED_COMBAT.." "..MELEE_CRIT_CHANCE.."(%)"

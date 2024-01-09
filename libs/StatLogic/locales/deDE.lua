@@ -28,8 +28,8 @@ L["WholeTextLookup"] = {
 	[EMPTY_SOCKET_BLUE] = {["EMPTY_SOCKET_BLUE"] = 1}, -- EMPTY_SOCKET_BLUE = "Blue Socket";
 	[EMPTY_SOCKET_META] = {["EMPTY_SOCKET_META"] = 1}, -- EMPTY_SOCKET_META = "Meta Socket";
 
-	["Wildheit"] = {["AP"] = 70}, --
-	["Unbändigkeit"] = {["AP"] = 70}, --
+	["Wildheit"] = {[StatLogic.Stats.AttackPower] = 70}, --
+	["Unbändigkeit"] = {[StatLogic.Stats.AttackPower] = 70}, --
 
 	["Schwaches Zauberöl"] = {[StatLogic.Stats.SpellDamage] = 8, [StatLogic.Stats.HealingPower] = 8}, --
 	["Geringes Zauberöl"] = {[StatLogic.Stats.SpellDamage] = 16, [StatLogic.Stats.HealingPower] = 16}, --
@@ -85,7 +85,7 @@ L["SingleEquipStatCheck"] = "^" .. ITEM_SPELL_TRIGGER_ONEQUIP .. " (.-) um b?i?s
 -------------
 -- Special cases that need to be dealt with before base scan
 L["PreScanPatterns"] = {
-	--["^Equip: Increases attack power by (%d+) in Cat"] = "FERAL_AP",
+	--["^Equip: Increases attack power by (%d+) in Cat"] = StatLogic.Stats.FeralAttackPower,
 	["^(%d+) Block$"] = "BLOCK_VALUE",
 	["^(%d+) Rüstung$"] = StatLogic.Stats.Armor,
 	["Verstärkte %(%+(%d+) Rüstung%)"] = "ARMOR_BUFF",
@@ -141,8 +141,8 @@ L["DeepScanPatterns"] = {
 -- Stat Lookup Table --
 -----------------------
 L["StatIDLookup"] = {
-	["Eure Angriffe ignorierenRüstung eures Gegners"] = {"IGNORE_ARMOR"}, -- StatLogic:GetSum("item:33733")
-	["Waffenschaden"] = {"MELEE_DMG"}, -- Enchant
+	["Eure Angriffe ignorierenRüstung eures Gegners"] = {StatLogic.Stats.IgnoreArmor}, -- StatLogic:GetSum("item:33733")
+	["Waffenschaden"] = {StatLogic.Stats.WeaponDamageAverage}, -- Enchant
 
 	["Alle Werte"] = {StatLogic.Stats.AllStats,},
 	["Stärke"] = {StatLogic.Stats.Strength,},
@@ -175,13 +175,13 @@ L["StatIDLookup"] = {
 	["HP"] = {"HEALTH",},
 	["Mana"] = {"MANA",},
 
-	["Angriffskraft"] = {"AP",},
-	["Erhöht Angriffskraft"] = {"AP",},
-	["Erhöht die Angriffskraft"] = {"AP",},
-	["Angriffskraft in Katzengestalt"] = {"FERAL_AP",},
-	["Erhöht die Angriffskraft in Katzengestalt"] = {"FERAL_AP",},
-	["Distanzangriffskraft"] = {"RANGED_AP",},
-	["Erhöht die Distanzangriffskraft"] = {"RANGED_AP",}, -- [High Warlord's Crossbow] ID: 18837
+	["Angriffskraft"] = {StatLogic.Stats.AttackPower,},
+	["Erhöht Angriffskraft"] = {StatLogic.Stats.AttackPower,},
+	["Erhöht die Angriffskraft"] = {StatLogic.Stats.AttackPower,},
+	["Angriffskraft in Katzengestalt"] = {StatLogic.Stats.FeralAttackPower,},
+	["Erhöht die Angriffskraft in Katzengestalt"] = {StatLogic.Stats.FeralAttackPower,},
+	["Distanzangriffskraft"] = {StatLogic.Stats.RangedAttackPower,},
+	["Erhöht die Distanzangriffskraft"] = {StatLogic.Stats.RangedAttackPower,}, -- [High Warlord's Crossbow] ID: 18837
 
 	["Gesundheit wieder her"] = {"HEALTH_REG",}, -- Frostwolf Insignia Rank 6 ID:17909
 	["Gesundheitsregeneration"] = {"HEALTH_REG",}, -- Demons Blood ID: 10779
@@ -252,9 +252,9 @@ L["StatIDLookup"] = {
 	["Erhöht Eure Blockwertung"] = {StatLogic.Stats.BlockRating,},
 	["Erhöt den Blockwet Eures Schildes"] = {StatLogic.Stats.BlockRating,},
 
-	["verbessert eure trefferchance%"] = {"MELEE_HIT", "RANGED_HIT",},
-	["Erhöht Eure Trefferchance mit Zaubern sowie Nahkampf- und Distanzangriffen%"] = {"MELEE_HIT", "RANGED_HIT", "SPELL_HIT"},
-	["erhöht eure chance mit zaubern zu treffen%"] = {"SPELL_HIT",},
+	["verbessert eure trefferchance%"] = {StatLogic.Stats.MeleeHit, StatLogic.Stats.RangedHit,},
+	["Erhöht Eure Trefferchance mit Zaubern sowie Nahkampf- und Distanzangriffen%"] = {StatLogic.Stats.MeleeHit, StatLogic.Stats.RangedHit, StatLogic.Stats.SpellHit},
+	["erhöht eure chance mit zaubern zu treffen%"] = {StatLogic.Stats.SpellHit,},
 	["Trefferwertung"] = {StatLogic.Stats.HitRating,},
 	["Erhöht Trefferwertung"] = {StatLogic.Stats.HitRating,}, -- ITEM_MOD_HIT_RATING
 	["Erhöht Eure Trefferwertung"] = {StatLogic.Stats.HitRating,}, -- ITEM_MOD_HIT_MELEE_RATING

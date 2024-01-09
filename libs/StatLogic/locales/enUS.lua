@@ -65,7 +65,7 @@ L["WholeTextLookup"] = {
 	["Brilliant Mana Oil"] = {["MANA_REG"] = 12, [StatLogic.Stats.HealingPower] = 25}, -- ID: 20748
 	["Superior Mana Oil"] = {["MANA_REG"] = 14}, -- ID: 22521
 
-	["Savagery"] = {["AP"] = 70}, --
+	["Savagery"] = {[StatLogic.Stats.AttackPower] = 70}, --
 	["Vitality"] = {["MANA_REG"] = 4, ["HEALTH_REG"] = 4}, -- Enchant Boots - Vitality spell: 27948
 	["Soulfrost"] = {[StatLogic.Stats.ShadowDamage] = 54, [StatLogic.Stats.FrostDamage] = 54},
 	["+54 Shadow and Frost Spell Power"] = {[StatLogic.Stats.ShadowDamage] = 54, [StatLogic.Stats.FrostDamage] = 54},
@@ -103,7 +103,7 @@ L["SingleEquipStatCheck"] = "^" .. ITEM_SPELL_TRIGGER_ONEQUIP .. " (.-) by u?p? 
 -------------
 -- Special cases that need to be dealt with before deep scan
 L["PreScanPatterns"] = {
-	--["^Equip: Increases attack power by (%d+) in Cat"] = "FERAL_AP",
+	--["^Equip: Increases attack power by (%d+) in Cat"] = StatLogic.Stats.FeralAttackPower,
 	["^(%d+) Block$"] = "BLOCK_VALUE",
 	["^(%d+) Armor$"] = StatLogic.Stats.Armor,
 	["Reinforced %(%+(%d+) Armor%)"] = StatLogic.Stats.BonusArmor,
@@ -149,8 +149,8 @@ L["DeepScanPatterns"] = {
 -- Stat Lookup Table --
 -----------------------
 L["StatIDLookup"] = {
-	["Your attacks ignoreof your opponent's armor"] = {"IGNORE_ARMOR"}, -- StatLogic:GetSum("item:33733")
-	["Weapon Damage"] = {"MELEE_DMG"}, -- Enchant
+	["Your attacks ignoreof your opponent's armor"] = {StatLogic.Stats.IgnoreArmor}, -- StatLogic:GetSum("item:33733")
+	["Weapon Damage"] = {StatLogic.Stats.WeaponDamageAverage}, -- Enchant
 
 	["All Stats"] = {StatLogic.Stats.AllStats,},
 	["Strength"] = {StatLogic.Stats.Strength,},
@@ -191,12 +191,12 @@ L["StatIDLookup"] = {
 	["HP"] = {"HEALTH",},
 	["Mana"] = {"MANA",},
 
-	["Attack Power"] = {"AP",},
-	["Increases attack power"] = {"AP",},
-	["Increases attack powerin Cat"] = {"FERAL_AP",},
-	["attack power in cat"] = {"FERAL_AP",},
-	["Ranged Attack Power"] = {"RANGED_AP",},
-	["Increases ranged attack power"] = {"RANGED_AP",}, -- [High Warlord's Crossbow] ID: 18837
+	["Attack Power"] = {StatLogic.Stats.AttackPower,},
+	["Increases attack power"] = {StatLogic.Stats.AttackPower,},
+	["Increases attack powerin Cat"] = {StatLogic.Stats.FeralAttackPower,},
+	["attack power in cat"] = {StatLogic.Stats.FeralAttackPower,},
+	["Ranged Attack Power"] = {StatLogic.Stats.RangedAttackPower,},
+	["Increases ranged attack power"] = {StatLogic.Stats.RangedAttackPower,}, -- [High Warlord's Crossbow] ID: 18837
 
 	["Health Regen"] = {"MANA_REG",},
 	["health per"] = {"HEALTH_REG",}, -- Frostwolf Insignia Rank 6 ID:17909
@@ -280,14 +280,14 @@ L["StatIDLookup"] = {
 	["Increases your shield block rating"] = {StatLogic.Stats.BlockRating,},
 	["Increases your chance to block attacks with a shield%"] = {"BLOCK_CHANCE",},
 
-	["Improves your chance to hit%"] = {"MELEE_HIT", "RANGED_HIT"},
-	["Improves your chance to hit with spells and with melee and ranged attacks%"] = {"MELEE_HIT", "RANGED_HIT", "SPELL_HIT"},
+	["Improves your chance to hit%"] = {StatLogic.Stats.MeleeHit, StatLogic.Stats.RangedHit},
+	["Improves your chance to hit with spells and with melee and ranged attacks%"] = {StatLogic.Stats.MeleeHit, StatLogic.Stats.RangedHit, StatLogic.Stats.SpellHit},
 	["Hit Rating"] = {StatLogic.Stats.HitRating,},
 	["Improves hit rating"] = {StatLogic.Stats.HitRating,}, -- ITEM_MOD_HIT_RATING
 	["Increases your hit rating"] = {StatLogic.Stats.HitRating,},
 	["Improves melee hit rating"] = {StatLogic.Stats.HitRating,}, -- ITEM_MOD_HIT_MELEE_RATING
 	["Spell Hit"] = {StatLogic.Stats.SpellHitRating,}, -- Presence of Sight +18 Healing and Spell Damage/+8 Spell Hit spell: 24164
-	["Improves your chance to hit with spells%"] = {"SPELL_HIT"},
+	["Improves your chance to hit with spells%"] = {StatLogic.Stats.SpellHit},
 	["Spell Hit Rating"] = {StatLogic.Stats.SpellHitRating,},
 	["Improves spell hit rating"] = {StatLogic.Stats.SpellHitRating,}, -- ITEM_MOD_HIT_SPELL_RATING
 	["Increases your spell hit rating"] = {StatLogic.Stats.SpellHitRating,},

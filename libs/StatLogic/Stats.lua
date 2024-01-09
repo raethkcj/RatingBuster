@@ -87,6 +87,7 @@ StatLogic.Stats.HasteRating = Stat:new({ show = false })
 
 -- Physical Stats
 StatLogic.Stats.AttackPower = Stat:new()
+StatLogic.Stats.FeralAttackPower = Stat:new()
 StatLogic.Stats.IgnoreArmor = Stat:new()
 StatLogic.Stats.ArmorPenetration = Stat:new()
 StatLogic.Stats.ArmorPenetrationRating = Stat:new()

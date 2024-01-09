@@ -573,8 +573,8 @@ L["PET_STA"] = PET .. SPELL_STAT3_NAME -- Pet Stamina
 L["PET_INT"] = PET .. SPELL_STAT4_NAME -- Pet Intellect
 L["StatModOptionName"] = "%s %s"
 
-L["IGNORE_ARMOR"] = "Armure ignorée"
-L["MELEE_DMG"] = "Dégâts de l'arme"
+L[StatLogic.Stats.IgnoreArmor] = "Armure ignorée"
+L[StatLogic.Stats.WeaponDamageAverage] = "Dégâts de l'arme"
 
 L[StatLogic.Stats.Strength] = "Force"
 L[StatLogic.Stats.Agility] = "Agilité"
@@ -591,9 +591,9 @@ L[StatLogic.Stats.ArcaneResistance] = "Résistance aux Arcanes"
 
 L["BLOCK_VALUE"] = "Valeur de blocage"
 
-L["AP"] = "Puissance d'attaque"
-L["RANGED_AP"] = "Puissance d'attaque à distance"
-L["FERAL_AP"] = "Puissance d'attaque Farouche"
+L[StatLogic.Stats.AttackPower] = "Puissance d'attaque"
+L[StatLogic.Stats.RangedAttackPower] = "Puissance d'attaque à distance"
+L[StatLogic.Stats.FeralAttackPower] = "Puissance d'attaque Farouche"
 
 L[StatLogic.Stats.HealingPower] = "Puissance des soins"
 
@@ -642,9 +642,9 @@ L[StatLogic.Stats.Dodge] = "Esquive (%)"
 L[StatLogic.Stats.Parry] = "Parade (%)"
 L[StatLogic.Stats.BlockChance] = "Blocage (%)"
 L["AVOIDANCE"] = "Évitement (%)"
-L["MELEE_HIT"] = "Toucher (%)"
-L["RANGED_HIT"] = "Toucher à distance (%)"
-L["SPELL_HIT"] = "Toucher des sorts (%)"
+L[StatLogic.Stats.MeleeHit] = "Toucher (%)"
+L[StatLogic.Stats.RangedHit] = "Toucher à distance (%)"
+L[StatLogic.Stats.SpellHit] = "Toucher des sorts (%)"
 L[StatLogic.Stats.Miss] = "Score d'évitement des coups en mêlée (%)"
 L[StatLogic.Stats.MeleeCrit] = "Critiques (%)"
 L[StatLogic.Stats.RangedCrit] = "Critiques à distance (%)"

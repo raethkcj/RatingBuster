@@ -569,8 +569,8 @@ L["PET_STA"] = PET .. SPELL_STAT3_NAME -- Pet Stamina
 L["PET_INT"] = PET .. SPELL_STAT4_NAME -- Pet Intellect
 L["StatModOptionName"] = "%s %s"
 
-L["IGNORE_ARMOR"] = "你的攻击无视目标的 %d+ 点护甲值。"
-L["MELEE_DMG"] = "近战伤害" -- DAMAGE = "Damage"
+L[StatLogic.Stats.IgnoreArmor] = "你的攻击无视目标的 %d+ 点护甲值。"
+L[StatLogic.Stats.WeaponDamageAverage] = "近战伤害" -- DAMAGE = "Damage"
 
 L[StatLogic.Stats.Strength] = SPELL_STAT1_NAME
 L[StatLogic.Stats.Agility] = SPELL_STAT2_NAME
@@ -587,9 +587,9 @@ L[StatLogic.Stats.ArcaneResistance] = RESISTANCE6_NAME
 
 L["BLOCK_VALUE"] = "盾牌格挡值"
 
-L["AP"] = ATTACK_POWER_TOOLTIP
-L["RANGED_AP"] = RANGED_ATTACK_POWER
-L["FERAL_AP"] = "野性"..ATTACK_POWER_TOOLTIP
+L[StatLogic.Stats.AttackPower] = ATTACK_POWER_TOOLTIP
+L[StatLogic.Stats.RangedAttackPower] = RANGED_ATTACK_POWER
+L[StatLogic.Stats.FeralAttackPower] = "野性"..ATTACK_POWER_TOOLTIP
 
 L[StatLogic.Stats.HealingPower] = "法术治疗"
 
@@ -638,9 +638,9 @@ L[StatLogic.Stats.Dodge] = DODGE.."(%)"
 L[StatLogic.Stats.Parry] = PARRY.."(%)"
 L[StatLogic.Stats.BlockChance] = BLOCK.."(%)"
 L["AVOIDANCE"] = "完全豁免(%)"
-L["MELEE_HIT"] = "物理命中(%)"
-L["RANGED_HIT"] = "远程命中(%)"
-L["SPELL_HIT"] = "法术命中(%)"
+L[StatLogic.Stats.MeleeHit] = "物理命中(%)"
+L[StatLogic.Stats.RangedHit] = "远程命中(%)"
+L[StatLogic.Stats.SpellHit] = "法术命中(%)"
 L[StatLogic.Stats.Miss] = "躲闪命中(%)"
 L[StatLogic.Stats.MeleeCrit] = "物理爆击(%)" -- MELEE_CRIT_CHANCE = "Crit Chance"
 L[StatLogic.Stats.RangedCrit] = "远程爆击(%)"

@@ -32,7 +32,7 @@ L["WholeTextLookup"] = {
 	["卓越法力之油"] = {["MANA_REG"] = 12, [StatLogic.Stats.HealingPower] = 25}, --
 	["超強法力之油"] = {["MANA_REG"] = 14}, --
 
-	["兇蠻"] = {["AP"] = 70}, --
+	["兇蠻"] = {[StatLogic.Stats.AttackPower] = 70}, --
 	["活力"] = {["MANA_REG"] = 4, ["HEALTH_REG"] = 4}, --
 	["靈魂冰霜"] = {[StatLogic.Stats.ShadowDamage] = 54, [StatLogic.Stats.FrostDamage] = 54}, --
 	["烈日火焰"] = {[StatLogic.Stats.ArcaneDamage] = 50, [StatLogic.Stats.FireDamage] = 50}, --
@@ -73,7 +73,7 @@ L["SingleEquipStatCheck"] = "^" .. ITEM_SPELL_TRIGGER_ONEQUIP .. " (.-)(%d+)點(
 -------------
 -- Special cases that need to be dealt with before deep scan
 L["PreScanPatterns"] = {
-	--["^Equip: Increases attack power by (%d+) in Cat"] = "FERAL_AP",
+	--["^Equip: Increases attack power by (%d+) in Cat"] = StatLogic.Stats.FeralAttackPower,
 	["^(%d+)格擋$"] = "BLOCK_VALUE",
 	["^(%d+)點護甲$"] = StatLogic.Stats.Armor,
 	["強化護甲 %+(%d+)"] = StatLogic.Stats.BonusArmor,
@@ -136,8 +136,8 @@ L["DeepScanPatterns"] = {
 -----------------------
 L["StatIDLookup"] = {
 	--["%昏迷抗性"] = {},
-	["你的攻擊無視目標點護甲值"] = {"IGNORE_ARMOR"},
-	["武器傷害"] = {"MELEE_DMG"}, -- Enchant
+	["你的攻擊無視目標點護甲值"] = {StatLogic.Stats.IgnoreArmor},
+	["武器傷害"] = {StatLogic.Stats.WeaponDamageAverage}, -- Enchant
 
 	["所有屬性"] = {StatLogic.Stats.AllStats,},
 	["力量"] = {StatLogic.Stats.Strength,},
@@ -177,12 +177,12 @@ L["StatIDLookup"] = {
 	["生命力"] = {"HEALTH",},
 	["法力"] = {"MANA",},
 
-	["攻擊強度"] = {"AP",},
-	["使攻擊強度"] = {"AP",},
-	["提高攻擊強度"] = {"AP",},
-	["在獵豹、熊、巨熊和梟獸形態下的攻擊強度"] = {"FERAL_AP",}, -- Atiesh ID:22632
-	["在獵豹、熊、巨熊還有梟獸形態下的攻擊強度"] = {"FERAL_AP",}, --
-	["遠程攻擊強度"] = {"RANGED_AP",}, -- [High Warlord's Crossbow] ID: 18837
+	["攻擊強度"] = {StatLogic.Stats.AttackPower,},
+	["使攻擊強度"] = {StatLogic.Stats.AttackPower,},
+	["提高攻擊強度"] = {StatLogic.Stats.AttackPower,},
+	["在獵豹、熊、巨熊和梟獸形態下的攻擊強度"] = {StatLogic.Stats.FeralAttackPower,}, -- Atiesh ID:22632
+	["在獵豹、熊、巨熊還有梟獸形態下的攻擊強度"] = {StatLogic.Stats.FeralAttackPower,}, --
+	["遠程攻擊強度"] = {StatLogic.Stats.RangedAttackPower,}, -- [High Warlord's Crossbow] ID: 18837
 
 	["每5秒恢復生命力"] = {"HEALTH_REG",}, -- [Resurgence Rod] ID:17743
 	["一般的生命力恢復速度"] = {"HEALTH_REG",}, -- [Demons Blood] ID: 10779
@@ -276,8 +276,8 @@ L["StatIDLookup"] = {
 	["使盾牌格擋等級"] = {StatLogic.Stats.BlockRating,},
 	["使你的盾牌格擋等級"] = {StatLogic.Stats.BlockRating,},
 
-	["Improves your chance to hit%"] = {"MELEE_HIT", "RANGED_HIT"},
-	["Improves your chance to hit with spells and with melee and ranged attacks%"] = {"MELEE_HIT", "RANGED_HIT", "SPELL_HIT"},
+	["Improves your chance to hit%"] = {StatLogic.Stats.MeleeHit, StatLogic.Stats.RangedHit},
+	["Improves your chance to hit with spells and with melee and ranged attacks%"] = {StatLogic.Stats.MeleeHit, StatLogic.Stats.RangedHit, StatLogic.Stats.SpellHit},
 	["命中等級"] = {StatLogic.Stats.HitRating,},
 	["提高命中等級"] = {StatLogic.Stats.HitRating,}, -- ITEM_MOD_HIT_RATING
 	["提高近戰命中等級"] = {StatLogic.Stats.MeleeHitRating,}, -- ITEM_MOD_HIT_MELEE_RATING

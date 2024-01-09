@@ -39,7 +39,7 @@ L["WholeTextLookup"] = {
 	["Aceite de maná luminoso"] = {["MANA_REG"] = 12, [StatLogic.Stats.HealingPower] = 25}, -- ID: 20748
 	["Aceite de maná excelente"] = {["MANA_REG"] = 14}, -- ID: 22521
 
-	["Salvajismo"] = {["AP"] = 70}, --
+	["Salvajismo"] = {[StatLogic.Stats.AttackPower] = 70}, --
 	["vitalidad"] = {["MANA_REG"] = 4, ["HEALTH_REG"] = 4}, -- Enchant Boots - Vitality spell: 27948
 	["escarcha de alma"] = {[StatLogic.Stats.ShadowDamage] = 54, [StatLogic.Stats.FrostDamage] = 54}, --
 	["fuego solar"] = {[StatLogic.Stats.ArcaneDamage] = 50, [StatLogic.Stats.FireDamage] = 50}, --
@@ -83,7 +83,7 @@ L["SingleEquipStatCheck"] = "^" .. ITEM_SPELL_TRIGGER_ONEQUIP .. " (.-) ?e?n? ?u
 -------------
 -- Special cases that need to be dealt with before base scan
 L["PreScanPatterns"] = {
-	--["^Equip: Increases attack power by (%d+) in Cat"] = "FERAL_AP",
+	--["^Equip: Increases attack power by (%d+) in Cat"] = StatLogic.Stats.FeralAttackPower,
 	["^(%d+) bloqueo$"] = "BLOCK_VALUE",
 	["^(%d+) armadura$"] = StatLogic.Stats.Armor,
 	["Reforzado %(%+(%d+)  armadura%)"] = "ARMOR_BUFF",
@@ -132,8 +132,8 @@ L["DeepScanPatterns"] = {
 -- Stat Lookup Table --
 -----------------------
 L["StatIDLookup"] = {
-	["Tus ataques ignorande la armadura de tu oponente"] = {"IGNORE_ARMOR"}, -- StatLogic:GetSum("item:33733")
-	["Daño de arma"] = {"MELEE_DMG"}, -- Enchant
+	["Tus ataques ignorande la armadura de tu oponente"] = {StatLogic.Stats.IgnoreArmor}, -- StatLogic:GetSum("item:33733")
+	["Daño de arma"] = {StatLogic.Stats.WeaponDamageAverage}, -- Enchant
 
 	["Todas las Estadísticas."] = {StatLogic.Stats.AllStats,},
 	["Fuerza"] = {StatLogic.Stats.Strength,},
@@ -175,12 +175,12 @@ L["StatIDLookup"] = {
 	["PS"] = {"HEALTH",},
 	["Mana"] = {"MANA",},
 
-	["Poder de ataque"] = {"AP",},
-	["Aumenta el poder de ataque"] = {"AP",},
-	["Poder de ataque bajo formas felinas"] = {"FERAL_AP",},
-	["Aumenta enel poder de ataque bajo formas felinas"] = {"FERAL_AP",},
-	["Poder de ataque a distancia"] = {"RANGED_AP",},
-	["Aumenta enel poder de ataque a distancia"] = {"RANGED_AP",}, -- [High Warlord's Crossbow] ID: 18837
+	["Poder de ataque"] = {StatLogic.Stats.AttackPower,},
+	["Aumenta el poder de ataque"] = {StatLogic.Stats.AttackPower,},
+	["Poder de ataque bajo formas felinas"] = {StatLogic.Stats.FeralAttackPower,},
+	["Aumenta enel poder de ataque bajo formas felinas"] = {StatLogic.Stats.FeralAttackPower,},
+	["Poder de ataque a distancia"] = {StatLogic.Stats.RangedAttackPower,},
+	["Aumenta enel poder de ataque a distancia"] = {StatLogic.Stats.RangedAttackPower,}, -- [High Warlord's Crossbow] ID: 18837
 
 	["Salud cada"] = {"HEALTH_REG",},
 	["salud cada"] = {"HEALTH_REG",}, -- Frostwolf Insignia Rank 6 ID:17909
@@ -262,14 +262,14 @@ L["StatIDLookup"] = {
 	["Aumenta tu índice de bloqueo"] = {StatLogic.Stats.BlockRating,},
 	["Aumenta tu índice de bloqueo con escudo"] = {StatLogic.Stats.BlockRating,},
 
-	["Mejora tu probabilidad de alcanzar el objetivo%"] = {"MELEE_HIT", "RANGED_HIT"},
-	["Aumenta% tu probabilidad de golpear con hechizos, ataques cuerpo a cuerpo y ataques a distancia."] = {"MELEE_HIT", "RANGED_HIT", "SPELL_HIT"},
+	["Mejora tu probabilidad de alcanzar el objetivo%"] = {StatLogic.Stats.MeleeHit, StatLogic.Stats.RangedHit},
+	["Aumenta% tu probabilidad de golpear con hechizos, ataques cuerpo a cuerpo y ataques a distancia."] = {StatLogic.Stats.MeleeHit, StatLogic.Stats.RangedHit, StatLogic.Stats.SpellHit},
 	["índice de golpe"] = {StatLogic.Stats.HitRating,},
 	["Aumenta tu índice de golpe"] = {StatLogic.Stats.HitRating,},
 	["Mejora el índice de golpe"] = {StatLogic.Stats.HitRating,}, -- ITEM_MOD_HIT_RATING
 	["Mejora el índice de golpe cuerpo a cuerpo"] = {StatLogic.Stats.MeleeHitRating,}, -- ITEM_MOD_HIT_MELEE_RATING
 	["golpe con hechizo"] = {StatLogic.Stats.SpellHitRating,}, -- Presence of Sight +18 Healing and Spell Damage/+8 Spell Hit spell: 24164
-	["Mejora tu probabilidad de alcanzar el objetivo con hechizos%"] = {"SPELL_HIT"},
+	["Mejora tu probabilidad de alcanzar el objetivo con hechizos%"] = {StatLogic.Stats.SpellHit},
 	["índice de golpe con hechizos"] = {StatLogic.Stats.SpellHitRating,},
 	["Mejora el índice de golpe con hechizos"] = {StatLogic.Stats.SpellHitRating,}, -- ITEM_MOD_HIT_SPELL_RATING
 	["Aumenta tu índice de golpe con hechizos"] = {StatLogic.Stats.SpellHitRating,},

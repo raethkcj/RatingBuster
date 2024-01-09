@@ -32,7 +32,7 @@ L["WholeTextLookup"] = {
 	["반짝이는 마나 오일"] = {["MANA_REG"] = 12, [StatLogic.Stats.HealingPower] = 25}, -- ID: 20748
 	["상급 마나 오일"] = {["MANA_REG"] = 14}, -- ID: 22521
 
-	["전투력"] = {["AP"] = 70}, -- 전투력
+	["전투력"] = {[StatLogic.Stats.AttackPower] = 70}, -- 전투력
 	["활력"] = {["MANA_REG"] = 4, ["HEALTH_REG"] = 4}, -- Enchant Boots - Vitality "Vitality" spell: 27948
 	["냉기의 영혼"] = {[StatLogic.Stats.ShadowDamage] = 54, [StatLogic.Stats.FrostDamage] = 54}, --
 	["태양의 불꽃"] = {[StatLogic.Stats.ArcaneDamage] = 50, [StatLogic.Stats.FireDamage] = 50}, --
@@ -69,7 +69,7 @@ L["SingleEquipStatCheck"] = "^" .. ITEM_SPELL_TRIGGER_ONEQUIP .. " (.-) (%d+)만
 -------------
 -- Special cases that need to be dealt with before deep scan
 L["PreScanPatterns"] = {
-	--["^Equip: Increases attack power by (%d+) in Cat"] = "FERAL_AP",
+	--["^Equip: Increases attack power by (%d+) in Cat"] = StatLogic.Stats.FeralAttackPower,
 	["^(%d+)의 피해 방어$"] = "BLOCK_VALUE",
 	["^방어도 (%d+)$"] = StatLogic.Stats.Armor,
 	["방어도 보강 %(%+(%d+)%)"] = StatLogic.Stats.BonusArmor,
@@ -119,8 +119,8 @@ L["DeepScanPatterns"] = {
 -- Stat Lookup Table --
 -----------------------
 L["StatIDLookup"] = {
-	["공격 시 적의 방어도를 무시합니다"] = {"IGNORE_ARMOR"}, -- StatLogic:GetSum("item:33733")
-	["무기 공격력"] = {"MELEE_DMG"}, -- Enchant
+	["공격 시 적의 방어도를 무시합니다"] = {StatLogic.Stats.IgnoreArmor}, -- StatLogic:GetSum("item:33733")
+	["무기 공격력"] = {StatLogic.Stats.WeaponDamageAverage}, -- Enchant
 
 	["모든 능력치"] = {StatLogic.Stats.AllStats,},
 	["힘"] = {StatLogic.Stats.Strength,},
@@ -160,12 +160,12 @@ L["StatIDLookup"] = {
 	["HP"] = {"HEALTH",},
 	["마나"] = {"MANA",},
 
-	["전투력"] = {"AP",},
-	["전투력이 증가합니다"] = {"AP",},
-	["달빛야수 변신 상태일 때 전투력"] = {"FERAL_AP",},
-	["달빛야수 변신 상태일 때 전투력이 증가합니다"] = {"FERAL_AP",},
-	["원거리 전투력"] = {"RANGED_AP",},
-	["원거리 전투력이 증가합니다"] = {"RANGED_AP",}, -- [High Warlord's Crossbow] ID: 18837
+	["전투력"] = {StatLogic.Stats.AttackPower,},
+	["전투력이 증가합니다"] = {StatLogic.Stats.AttackPower,},
+	["달빛야수 변신 상태일 때 전투력"] = {StatLogic.Stats.FeralAttackPower,},
+	["달빛야수 변신 상태일 때 전투력이 증가합니다"] = {StatLogic.Stats.FeralAttackPower,},
+	["원거리 전투력"] = {StatLogic.Stats.RangedAttackPower,},
+	["원거리 전투력이 증가합니다"] = {StatLogic.Stats.RangedAttackPower,}, -- [High Warlord's Crossbow] ID: 18837
 
 	["생명력 회복량"] = {"MANA_REG",},
 	["매 초마다 (.+)의 생명력"] = {"HEALTH_REG",},
@@ -253,8 +253,8 @@ L["StatIDLookup"] = {
 	["방패 막기 숙련도"] = {StatLogic.Stats.BlockRating,}, -- Enchant Shield - Lesser Block +10 Shield Block Rating spell: 13689
 	["방패 막기 숙련도가 증가합니다"] = {StatLogic.Stats.BlockRating,},
 
-	["Improves your chance to hit%"] = {"MELEE_HIT", "RANGED_HIT"},
-	["Improves your chance to hit with spells and with melee and ranged attacks%"] = {"MELEE_HIT", "RANGED_HIT", "SPELL_HIT"},
+	["Improves your chance to hit%"] = {StatLogic.Stats.MeleeHit, StatLogic.Stats.RangedHit},
+	["Improves your chance to hit with spells and with melee and ranged attacks%"] = {StatLogic.Stats.MeleeHit, StatLogic.Stats.RangedHit, StatLogic.Stats.SpellHit},
 	["적중도"] = {StatLogic.Stats.HitRating,},
 	["적중도가 증가합니다"] = {StatLogic.Stats.HitRating,}, -- ITEM_MOD_HIT_RATING
 	["근접 적중도가 증가합니다"] = {StatLogic.Stats.MeleeHitRating,}, -- ITEM_MOD_HIT_MELEE_RATING

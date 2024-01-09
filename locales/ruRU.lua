@@ -707,8 +707,8 @@ L["PET_STA"] = "Выносливость питомца" -- Pet Stamina
 L["PET_INT"] = "Интеллект питомца" -- Pet Intellect
 L["StatModOptionName"] = "%s %s"
 
-L["IGNORE_ARMOR"] =  "Ignore Armor"
-L["MELEE_DMG"] =  "Melee Weapon " .. DAMAGE -- DAMAGE = "Damage"
+L[StatLogic.Stats.IgnoreArmor] =  "Ignore Armor"
+L[StatLogic.Stats.WeaponDamageAverage] =  "Melee Weapon " .. DAMAGE -- DAMAGE = "Damage"
 
 L[StatLogic.Stats.Strength] =  "Сила"
 L[StatLogic.Stats.Agility] =  "Ловкость"
@@ -725,9 +725,9 @@ L[StatLogic.Stats.ArcaneResistance] =  "Сопротивление тайной 
 
 L["BLOCK_VALUE"] =  "Показатель блокирования"
 
-L["AP"] =  "Сила атаки"
-L["RANGED_AP"] =  "Сила атаки дальнего боя"
-L["FERAL_AP"] =  "Сила атаки в облике зверя"
+L[StatLogic.Stats.AttackPower] =  "Сила атаки"
+L[StatLogic.Stats.RangedAttackPower] =  "Сила атаки дальнего боя"
+L[StatLogic.Stats.FeralAttackPower] =  "Сила атаки в облике зверя"
 
 L[StatLogic.Stats.HealingPower] =  "Исцеление"
 
@@ -776,9 +776,9 @@ L[StatLogic.Stats.Dodge] = "Уклонение (%)"
 L[StatLogic.Stats.Parry] = "Парирование (%)"
 L[StatLogic.Stats.BlockChance] = "Блокирование (%)"
 L["AVOIDANCE"] = "Избегание атак (%)"
-L["MELEE_HIT"] = "Меткость (%)"
-L["RANGED_HIT"] = "Меткость (%)"
-L["SPELL_HIT"] = "Меткость (%)"
+L[StatLogic.Stats.MeleeHit] = "Меткость (%)"
+L[StatLogic.Stats.RangedHit] = "Меткость (%)"
+L[StatLogic.Stats.SpellHit] = "Меткость (%)"
 L[StatLogic.Stats.Miss] = "Hit Avoidance(%)"
 L[StatLogic.Stats.MeleeCrit] = "Вероятность крит. удара (%)" -- MELEE_CRIT_CHANCE = "Crit Chance"
 L[StatLogic.Stats.RangedCrit] = "Вероятность крит. удара (%)"

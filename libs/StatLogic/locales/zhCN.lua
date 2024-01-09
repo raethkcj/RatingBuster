@@ -21,7 +21,7 @@ L["WholeTextLookup"] = {
 	[EMPTY_SOCKET_BLUE] = {["EMPTY_SOCKET_BLUE"] = 1}, -- EMPTY_SOCKET_BLUE = "Blue Socket";
 	[EMPTY_SOCKET_META] = {["EMPTY_SOCKET_META"] = 1}, -- EMPTY_SOCKET_META = "Meta Socket";
 
-	["野性"] = {["AP"] = 70}, --
+	["野性"] = {[StatLogic.Stats.AttackPower] = 70}, --
 
 	["初级巫师之油"] = {[StatLogic.Stats.SpellDamage] = 8, [StatLogic.Stats.HealingPower] = 8}, --
 	["次级巫师之油"] = {[StatLogic.Stats.SpellDamage] = 16, [StatLogic.Stats.HealingPower] = 16}, --
@@ -75,7 +75,7 @@ L["SingleEquipStatCheck"] = "^" .. ITEM_SPELL_TRIGGER_ONEQUIP .. " (.-)(%d+)\231
 -------------
 -- Special cases that need to be dealt with before base scan
 L["PreScanPatterns"] = {
-	["^装备: 猫形态下的攻击强度增加(%d+)"] = "FERAL_AP",
+	["^装备: 猫形态下的攻击强度增加(%d+)"] = StatLogic.Stats.FeralAttackPower,
 	["^(%d+)格挡$"] = "BLOCK_VALUE",
 	["^(%d+)点护甲$"] = StatLogic.Stats.Armor,
 	["强化护甲 %+(%d+)"] = StatLogic.Stats.BonusArmor,
@@ -140,9 +140,9 @@ L["DeepScanPatterns"] = {
 -- Stat Lookup Table --
 -----------------------
 L["StatIDLookup"] = {
-	["你的攻击无视目标的点护甲值"] = {"IGNORE_ARMOR"}, -- StatLogic:GetSum("item:33733")
-	["武器伤害"] = {"MELEE_DMG"}, -- Enchant
-	["近战伤害"] = {"MELEE_DMG"}, -- Enchant
+	["你的攻击无视目标的点护甲值"] = {StatLogic.Stats.IgnoreArmor}, -- StatLogic:GetSum("item:33733")
+	["武器伤害"] = {StatLogic.Stats.WeaponDamageAverage}, -- Enchant
+	["近战伤害"] = {StatLogic.Stats.WeaponDamageAverage}, -- Enchant
 
 	["所有属性"] = {StatLogic.Stats.AllStats,},
 	["力量"] = {StatLogic.Stats.Strength,},
@@ -181,12 +181,12 @@ L["StatIDLookup"] = {
 	["生命值"] = {"HEALTH",},
 	["法力值"] = {"MANA",},
 
-	["攻击强度"] = {"AP",},
-	["攻击强度提高"] = {"AP",},
-	["提高攻击强度"] = {"AP",},
-	["在猎豹、熊、巨熊和枭兽形态下的攻击强度"] = {"FERAL_AP",}, -- Atiesh ID:22632
-	["使你的近战和远程攻击强度"] = {"AP"},
-	["远程攻击强度"] = {"RANGED_AP",}, -- [High Warlord's Crossbow] ID: 18837
+	["攻击强度"] = {StatLogic.Stats.AttackPower,},
+	["攻击强度提高"] = {StatLogic.Stats.AttackPower,},
+	["提高攻击强度"] = {StatLogic.Stats.AttackPower,},
+	["在猎豹、熊、巨熊和枭兽形态下的攻击强度"] = {StatLogic.Stats.FeralAttackPower,}, -- Atiesh ID:22632
+	["使你的近战和远程攻击强度"] = {StatLogic.Stats.AttackPower},
+	["远程攻击强度"] = {StatLogic.Stats.RangedAttackPower,}, -- [High Warlord's Crossbow] ID: 18837
 
 	["每5秒恢复(%d+)点生命值"] = {"HEALTH_REG",}, -- [Resurgence Rod] ID:17743
 	["每5秒回复(%d+)点生命值"] = {"HEALTH_REG",},
@@ -294,8 +294,8 @@ L["StatIDLookup"] = {
 	["使盾牌格挡等级"] = {StatLogic.Stats.BlockRating,},
 	["使你的盾牌格挡等级"] = {StatLogic.Stats.BlockRating,},
 
-	["使你击中目标的几率提高%"] = {"MELEE_HIT", "RANGED_HIT"},
-	["使你的法术、近战和远程攻击的命中几率提高"] = {"MELEE_HIT", "RANGED_HIT", "SPELL_HIT"},
+	["使你击中目标的几率提高%"] = {StatLogic.Stats.MeleeHit, StatLogic.Stats.RangedHit},
+	["使你的法术、近战和远程攻击的命中几率提高"] = {StatLogic.Stats.MeleeHit, StatLogic.Stats.RangedHit, StatLogic.Stats.SpellHit},
 	["命中等级"] = {StatLogic.Stats.HitRating,},
 	["提高命中等级"] = {StatLogic.Stats.HitRating,}, -- ITEM_MOD_HIT_RATING
 	["使你的命中等级"] = {StatLogic.Stats.HitRating,},

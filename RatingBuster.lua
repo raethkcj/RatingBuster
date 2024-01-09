@@ -1344,8 +1344,9 @@ do
 
 	-- Backwards compatibility
 	local statStringToStat = setmetatable({
+		["AP"] = StatLogic.Stats.AttackPower,
 		["SPELL_DMG"] = StatLogic.Stats.SpellDamage,
-		["HEALING"] = StatLogic.Stats.HealingPower
+		["HEALING"] = StatLogic.Stats.HealingPower,
 	},
 	{
 		__index = function(_, stat)
@@ -2644,13 +2645,13 @@ local summaryCalcData = {
 	-- Attack Power - AP, STR, AGI
 	{
 		option = "sumAP",
-		name = "AP",
+		name = StatLogic.Stats.AttackPower,
 		func = function(sum)
 			return GSM("MOD_AP") * (
 				-- Feral Druid Predatory Strikes
-				(sum["FERAL_AP"] > 0 and GSM("MOD_FERAL_AP") or 1) * (
-					sum["AP"]
-					+ sum["FERAL_AP"] * GSM("ADD_AP_MOD_FERAL_AP")
+				(sum[StatLogic.Stats.FeralAttackPower] > 0 and GSM("MOD_FERAL_AP") or 1) * (
+					sum[StatLogic.Stats.AttackPower]
+					+ sum[StatLogic.Stats.FeralAttackPower] * GSM("ADD_AP_MOD_FERAL_AP")
 				) + sum[StatLogic.Stats.Strength] * GSM("ADD_AP_MOD_STR")
 				+ sum[StatLogic.Stats.Agility] * GSM("ADD_AP_MOD_AGI")
 				+ sum[StatLogic.Stats.Stamina] * GSM("ADD_AP_MOD_STA")
@@ -2662,11 +2663,11 @@ local summaryCalcData = {
 	-- Ranged Attack Power - RANGED_AP, AP, AGI, INT
 	{
 		option = "sumRAP",
-		name = "RANGED_AP",
+		name = StatLogic.Stats.RangedAttackPower,
 		func = function(sum)
 			return (GSM("MOD_RANGED_AP") + GSM("MOD_AP") - 1) * (
-				sum["RANGED_AP"]
-				+ sum["AP"]
+				sum[StatLogic.Stats.RangedAttackPower]
+				+ sum[StatLogic.Stats.AttackPower]
 				+ sum[StatLogic.Stats.Agility] * GSM("ADD_RANGED_AP_MOD_AGI")
 				+ sum[StatLogic.Stats.Intellect] * GSM("ADD_RANGED_AP_MOD_INT")
 				+ sum[StatLogic.Stats.Stamina] * GSM("ADD_AP_MOD_STA")
@@ -2677,9 +2678,9 @@ local summaryCalcData = {
 	-- Hit Chance - MELEE_HIT_RATING, WEAPON_SKILL
 	{
 		option = "sumHit",
-		name = "MELEE_HIT",
+		name = StatLogic.Stats.MeleeHit,
 		func = function(sum)
-			return sum["MELEE_HIT"]
+			return sum[StatLogic.Stats.MeleeHit]
 				+ StatLogic:GetEffectFromRating(sum[StatLogic.Stats.MeleeHitRating], StatLogic.Stats.MeleeHitRating, calcLevel)
 				+ sum["WEAPON_SKILL"] * 0.1
 		end,
@@ -2696,9 +2697,9 @@ local summaryCalcData = {
 	-- Ranged Hit Chance - MELEE_HIT_RATING, RANGED_HIT_RATING, AGI
 	{
 		option = "sumRangedHit",
-		name = "RANGED_HIT",
+		name = StatLogic.Stats.RangedHit,
 		func = function(sum)
-			return sum["RANGED_HIT"]
+			return sum[StatLogic.Stats.RangedHit]
 				+ StatLogic:GetEffectFromRating(sum[StatLogic.Stats.RangedHitRating], StatLogic.Stats.RangedHitRating, calcLevel)
 		end,
 		ispercent = true,
@@ -2838,9 +2839,9 @@ local summaryCalcData = {
 	-- Ignore Armor - IGNORE_ARMOR
 	{
 		option = "sumIgnoreArmor",
-		name = "IGNORE_ARMOR",
+		name = StatLogic.Stats.IgnoreArmor,
 		func = function(sum)
-			return sum["IGNORE_ARMOR"]
+			return sum[StatLogic.Stats.IgnoreArmor]
 		end,
 	},
 	-- Armor Penetration - ARMOR_PENETRATION_RATING
@@ -2873,7 +2874,7 @@ local summaryCalcData = {
 				+ sum[StatLogic.Stats.Stamina] * (GSM("ADD_SPELL_DMG_MOD_STA") + GSM("ADD_SPELL_DMG_MOD_PET_STA") * GSM("MOD_PET_STA") * GSM("ADD_PET_STA_MOD_STA"))
 				+ sum[StatLogic.Stats.Intellect] * (GSM("ADD_SPELL_DMG_MOD_INT") + GSM("ADD_SPELL_DMG_MOD_PET_INT") * GSM("MOD_PET_INT") * GSM("ADD_PET_INT_MOD_INT"))
 				+ sum[StatLogic.Stats.Spirit] * GSM("ADD_SPELL_DMG_MOD_SPI")
-				+ summaryFunc["AP"](sum) * GSM("ADD_SPELL_DMG_MOD_AP")
+				+ summaryFunc[StatLogic.Stats.AttackPower](sum) * GSM("ADD_SPELL_DMG_MOD_AP")
 		end,
 	},
 	-- Holy Damage - HOLY_SPELL_DMG, SPELL_DMG, INT, SPI
@@ -2947,16 +2948,16 @@ local summaryCalcData = {
 				+ (sum[StatLogic.Stats.Agility] * GSM("ADD_HEALING_MOD_AGI"))
 				+ (sum[StatLogic.Stats.Intellect] * GSM("ADD_HEALING_MOD_INT"))
 				+ (sum[StatLogic.Stats.Spirit] * GSM("ADD_HEALING_MOD_SPI"))
-				+ (summaryFunc["AP"](sum) * GSM("ADD_HEALING_MOD_AP"))
+				+ (summaryFunc[StatLogic.Stats.AttackPower](sum) * GSM("ADD_HEALING_MOD_AP"))
 			)
 		end,
 	},
 	-- Spell Hit Chance - SPELL_HIT_RATING
 	{
 		option = "sumSpellHit",
-		name = "SPELL_HIT",
+		name = StatLogic.Stats.SpellHit,
 		func = function(sum)
-			return sum["SPELL_HIT"]
+			return sum[StatLogic.Stats.SpellHit]
 				+ StatLogic:GetEffectFromRating(sum[StatLogic.Stats.SpellHitRating], StatLogic.Stats.SpellHitRating, calcLevel)
 		end,
 		ispercent = true,
