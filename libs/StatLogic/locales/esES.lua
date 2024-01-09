@@ -34,13 +34,13 @@ L["WholeTextLookup"] = {
 	["Aceite de zahorí luminoso"] = {[StatLogic.Stats.SpellDamage] = 36, [StatLogic.Stats.HealingPower] = 36, [StatLogic.Stats.SpellCritRating] = 14}, -- ID: 20749
 	["Aceite de zahorí excelente"] = {[StatLogic.Stats.SpellDamage] = 42, [StatLogic.Stats.HealingPower] = 42}, -- ID: 22522
 
-	["Aceite de maná menor"] = {["MANA_REG"] = 4}, -- ID: 20745
-	["Aceite de maná inferior"] = {["MANA_REG"] = 8}, -- ID: 20747
-	["Aceite de maná luminoso"] = {["MANA_REG"] = 12, [StatLogic.Stats.HealingPower] = 25}, -- ID: 20748
-	["Aceite de maná excelente"] = {["MANA_REG"] = 14}, -- ID: 22521
+	["Aceite de maná menor"] = {[StatLogic.Stats.ManaRegen] = 4}, -- ID: 20745
+	["Aceite de maná inferior"] = {[StatLogic.Stats.ManaRegen] = 8}, -- ID: 20747
+	["Aceite de maná luminoso"] = {[StatLogic.Stats.ManaRegen] = 12, [StatLogic.Stats.HealingPower] = 25}, -- ID: 20748
+	["Aceite de maná excelente"] = {[StatLogic.Stats.ManaRegen] = 14}, -- ID: 22521
 
 	["Salvajismo"] = {[StatLogic.Stats.AttackPower] = 70}, --
-	["vitalidad"] = {["MANA_REG"] = 4, ["HEALTH_REG"] = 4}, -- Enchant Boots - Vitality spell: 27948
+	["vitalidad"] = {[StatLogic.Stats.ManaRegen] = 4, [StatLogic.Stats.HealthRegen] = 4}, -- Enchant Boots - Vitality spell: 27948
 	["escarcha de alma"] = {[StatLogic.Stats.ShadowDamage] = 54, [StatLogic.Stats.FrostDamage] = 54}, --
 	["fuego solar"] = {[StatLogic.Stats.ArcaneDamage] = 50, [StatLogic.Stats.FireDamage] = 50}, --
 
@@ -87,9 +87,9 @@ L["PreScanPatterns"] = {
 	["^(%d+) bloqueo$"] = "BLOCK_VALUE",
 	["^(%d+) armadura$"] = StatLogic.Stats.Armor,
 	["Reforzado %(%+(%d+)  armadura%)"] = "ARMOR_BUFF",
-	["regen. de maná (%d+) p. cada 5 s%.$"] = "MANA_REG",
-	["Restaura (%d+) p. de maná cada 5 s%.?$"]= "MANA_REG",
-	["Restaura (%d+) p. de maná cada 5 s de todos los miembros del grupo que estén a 30 m%.?$"]= "MANA_REG",
+	["regen. de maná (%d+) p. cada 5 s%.$"] = StatLogic.Stats.ManaRegen,
+	["Restaura (%d+) p. de maná cada 5 s%.?$"]= StatLogic.Stats.ManaRegen,
+	["Restaura (%d+) p. de maná cada 5 s de todos los miembros del grupo que estén a 30 m%.?$"]= StatLogic.Stats.ManaRegen,
 	-- Exclude
 	["^(%d+) Slot"] = false, -- Set Name (0/9)
 	["^[%a '%-]+%((%d+)/%d+%)$"] = false, -- Set Name (0/9)
@@ -171,9 +171,9 @@ L["StatIDLookup"] = {
 	["Valor de bloqueo de escudo"] = {"BLOCK_VALUE",}, -- +10% Shield Block Value [Eternal Earthstorm Diamond] http://www.wowhead.com/?item=35501
 	["Aumenta el valor de bloqueo de tu escudo"] = {"BLOCK_VALUE",},
 
-	["Salud"] = {"HEALTH",},
-	["PS"] = {"HEALTH",},
-	["Mana"] = {"MANA",},
+	["Salud"] = {StatLogic.Stats.Health,},
+	["PS"] = {StatLogic.Stats.Health,},
+	["Mana"] = {StatLogic.Stats.Mana,},
 
 	["Poder de ataque"] = {StatLogic.Stats.AttackPower,},
 	["Aumenta el poder de ataque"] = {StatLogic.Stats.AttackPower,},
@@ -182,23 +182,23 @@ L["StatIDLookup"] = {
 	["Poder de ataque a distancia"] = {StatLogic.Stats.RangedAttackPower,},
 	["Aumenta enel poder de ataque a distancia"] = {StatLogic.Stats.RangedAttackPower,}, -- [High Warlord's Crossbow] ID: 18837
 
-	["Salud cada"] = {"HEALTH_REG",},
-	["salud cada"] = {"HEALTH_REG",}, -- Frostwolf Insignia Rank 6 ID:17909
-	["la regeneración de salud normal"] = {"HEALTH_REG",}, -- Demons Blood ID: 10779
-	["Restaurade salud cada 5 s."] = {"HEALTH_REG",}, -- [Onyxia Blood Talisman] ID: 18406
-	["de Maná cada"] = {"MANA_REG",}, -- Resurgence Rod ID:17743 Most common
-	["regen. de maná"] = {"MANA_REG",}, -- Prophetic Aura +4 Mana Regen/+10 Stamina/+24 Healing Spells spell: 24167
-	["de maná cada"] = {"MANA_REG",},
-	["de Maná cada 5 s"] = {"MANA_REG",}, -- [Royal Nightseye] ID: 24057
-	["de maná cada 5 s"] = {"MANA_REG",}, -- Enchant Chest - Restore Mana Prime "+6 mana every 5 sec." spell: 33991
-	["Mana per 5 Seconds"] = {"MANA_REG",}, -- [Royal Shadow Draenite] ID: 23109
-	["Mana Per 5 sec"] = {"MANA_REG",}, -- [Royal Shadow Draenite] ID: 23109
-	["Mana per 5 sec"] = {"MANA_REG",}, -- [Cyclone Shoulderpads] ID: 29031
-	["mana per 5 sec"] = {"MANA_REG",}, -- [Royal Tanzanite] ID: 30603
-	["Restaurade maná cada 5 s"] = {"MANA_REG",}, -- [Resurgence Rod] ID:17743
-	["maná recuperado cada 5 s"] = {"MANA_REG",}, -- Magister's Armor Kit +3 Mana restored per 5 seconds spell: 32399
-	["regen. de manácada 5 s"] = {"MANA_REG",}, -- Enchant Bracer - Mana Regeneration "Mana Regen 4 per 5 sec." spell: 23801
-	["maná cada 5 s"] = {"MANA_REG",}, -- Enchant Bracer - Restore Mana Prime "6 Mana per 5 Sec." spell: 27913
+	["Salud cada"] = {StatLogic.Stats.HealthRegen,},
+	["salud cada"] = {StatLogic.Stats.HealthRegen,}, -- Frostwolf Insignia Rank 6 ID:17909
+	["la regeneración de salud normal"] = {StatLogic.Stats.HealthRegen,}, -- Demons Blood ID: 10779
+	["Restaurade salud cada 5 s."] = {StatLogic.Stats.HealthRegen,}, -- [Onyxia Blood Talisman] ID: 18406
+	["de Maná cada"] = {StatLogic.Stats.ManaRegen,}, -- Resurgence Rod ID:17743 Most common
+	["regen. de maná"] = {StatLogic.Stats.ManaRegen,}, -- Prophetic Aura +4 Mana Regen/+10 Stamina/+24 Healing Spells spell: 24167
+	["de maná cada"] = {StatLogic.Stats.ManaRegen,},
+	["de Maná cada 5 s"] = {StatLogic.Stats.ManaRegen,}, -- [Royal Nightseye] ID: 24057
+	["de maná cada 5 s"] = {StatLogic.Stats.ManaRegen,}, -- Enchant Chest - Restore Mana Prime "+6 mana every 5 sec." spell: 33991
+	["Mana per 5 Seconds"] = {StatLogic.Stats.ManaRegen,}, -- [Royal Shadow Draenite] ID: 23109
+	["Mana Per 5 sec"] = {StatLogic.Stats.ManaRegen,}, -- [Royal Shadow Draenite] ID: 23109
+	["Mana per 5 sec"] = {StatLogic.Stats.ManaRegen,}, -- [Cyclone Shoulderpads] ID: 29031
+	["mana per 5 sec"] = {StatLogic.Stats.ManaRegen,}, -- [Royal Tanzanite] ID: 30603
+	["Restaurade maná cada 5 s"] = {StatLogic.Stats.ManaRegen,}, -- [Resurgence Rod] ID:17743
+	["maná recuperado cada 5 s"] = {StatLogic.Stats.ManaRegen,}, -- Magister's Armor Kit +3 Mana restored per 5 seconds spell: 32399
+	["regen. de manácada 5 s"] = {StatLogic.Stats.ManaRegen,}, -- Enchant Bracer - Mana Regeneration "Mana Regen 4 per 5 sec." spell: 23801
+	["maná cada 5 s"] = {StatLogic.Stats.ManaRegen,}, -- Enchant Bracer - Restore Mana Prime "6 Mana per 5 Sec." spell: 27913
 
 	["penetración del hechizo"] = {StatLogic.Stats.SpellPenetration,}, -- Enchant Cloak - Spell Penetration "+20 Spell Penetration" spell: 34003
 	["Aumenta la penetración de tus hechizos"] = {StatLogic.Stats.SpellPenetration,},

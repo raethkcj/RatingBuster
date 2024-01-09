@@ -565,10 +565,10 @@ L["STA"] = SPELL_STAT3_NAME
 L["INT"] = SPELL_STAT4_NAME
 L["SPI"] = SPELL_STAT5_NAME
 L["PARRY"] = PARRY
-L["MANA_REG"] = "Régén. mana (incantation)"
-L["NORMAL_MANA_REG"] = "Régén. mana (hors incantation)"
-L["HEALTH_REG"] = "Régén. vie (combat)"
-L["NORMAL_HEALTH_REG"] = "Régén. vie (hors combat)"
+L[StatLogic.Stats.ManaRegen] = "Régén. mana (incantation)"
+L[StatLogic.Stats.ManaRegenNotCasting] = "Régén. mana (hors incantation)"
+L[StatLogic.Stats.HealthRegen] = "Régén. vie (combat)"
+L[StatLogic.Stats.HealthRegenOutOfCombat] = "Régén. vie (hors combat)"
 L["PET_STA"] = PET .. SPELL_STAT3_NAME -- Pet Stamina
 L["PET_INT"] = PET .. SPELL_STAT4_NAME -- Pet Intellect
 L["StatModOptionName"] = "%s %s"
@@ -607,8 +607,8 @@ L[StatLogic.Stats.ArcaneDamage] = "Dégâts des sorts des Arcanes"
 
 L[StatLogic.Stats.SpellPenetration] = "Pénétration des sorts"
 
-L["HEALTH"] = "Points de vie"
-L["MANA"] = "Points de mana"
+L[StatLogic.Stats.Health] = "Points de vie"
+L[StatLogic.Stats.Mana] = "Points de mana"
 
 L[StatLogic.Stats.WeaponDamageAverage] = "Average Damage"
 L[StatLogic.Stats.WeaponDPS] = "Dégâts par seconde"

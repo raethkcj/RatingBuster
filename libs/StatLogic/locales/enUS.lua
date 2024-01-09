@@ -60,13 +60,13 @@ L["WholeTextLookup"] = {
 	["Brilliant Wizard Oil"] = {[StatLogic.Stats.SpellDamage] = 36, [StatLogic.Stats.HealingPower] = 36, [StatLogic.Stats.SpellCritRating] = 14}, -- ID: 20749
 	["Superior Wizard Oil"] = {[StatLogic.Stats.SpellDamage] = 42, [StatLogic.Stats.HealingPower] = 42}, -- ID: 22522
 
-	["Minor Mana Oil"] = {["MANA_REG"] = 4}, -- ID: 20745
-	["Lesser Mana Oil"] = {["MANA_REG"] = 8}, -- ID: 20747
-	["Brilliant Mana Oil"] = {["MANA_REG"] = 12, [StatLogic.Stats.HealingPower] = 25}, -- ID: 20748
-	["Superior Mana Oil"] = {["MANA_REG"] = 14}, -- ID: 22521
+	["Minor Mana Oil"] = {[StatLogic.Stats.ManaRegen] = 4}, -- ID: 20745
+	["Lesser Mana Oil"] = {[StatLogic.Stats.ManaRegen] = 8}, -- ID: 20747
+	["Brilliant Mana Oil"] = {[StatLogic.Stats.ManaRegen] = 12, [StatLogic.Stats.HealingPower] = 25}, -- ID: 20748
+	["Superior Mana Oil"] = {[StatLogic.Stats.ManaRegen] = 14}, -- ID: 22521
 
 	["Savagery"] = {[StatLogic.Stats.AttackPower] = 70}, --
-	["Vitality"] = {["MANA_REG"] = 4, ["HEALTH_REG"] = 4}, -- Enchant Boots - Vitality spell: 27948
+	["Vitality"] = {[StatLogic.Stats.ManaRegen] = 4, [StatLogic.Stats.HealthRegen] = 4}, -- Enchant Boots - Vitality spell: 27948
 	["Soulfrost"] = {[StatLogic.Stats.ShadowDamage] = 54, [StatLogic.Stats.FrostDamage] = 54},
 	["+54 Shadow and Frost Spell Power"] = {[StatLogic.Stats.ShadowDamage] = 54, [StatLogic.Stats.FrostDamage] = 54},
 	["Sunfire"] = {[StatLogic.Stats.ArcaneDamage] = 50, [StatLogic.Stats.FireDamage] = 50},
@@ -107,7 +107,7 @@ L["PreScanPatterns"] = {
 	["^(%d+) Block$"] = "BLOCK_VALUE",
 	["^(%d+) Armor$"] = StatLogic.Stats.Armor,
 	["Reinforced %(%+(%d+) Armor%)"] = StatLogic.Stats.BonusArmor,
-	["Mana Regen (%d+) per 5 sec%.$"] = "MANA_REG",
+	["Mana Regen (%d+) per 5 sec%.$"] = StatLogic.Stats.ManaRegen,
 	-- Exclude
 	["^(%d+) Slot"] = false, -- Set Name (0/9)
 	["^[%a '%-]+%((%d+)/%d+%)$"] = false, -- Set Name (0/9)
@@ -187,9 +187,9 @@ L["StatIDLookup"] = {
 	["Shield Block Value"] = {"BLOCK_VALUE",}, -- +10% Shield Block Value [Eternal Earthstorm Diamond] http://www.wowhead.com/?item=35501
 	["Increases the block value of your shield"] = {"BLOCK_VALUE",},
 
-	["Health"] = {"HEALTH",},
-	["HP"] = {"HEALTH",},
-	["Mana"] = {"MANA",},
+	["Health"] = {StatLogic.Stats.Health,},
+	["HP"] = {StatLogic.Stats.Health,},
+	["Mana"] = {StatLogic.Stats.Mana,},
 
 	["Attack Power"] = {StatLogic.Stats.AttackPower,},
 	["Increases attack power"] = {StatLogic.Stats.AttackPower,},
@@ -198,22 +198,22 @@ L["StatIDLookup"] = {
 	["Ranged Attack Power"] = {StatLogic.Stats.RangedAttackPower,},
 	["Increases ranged attack power"] = {StatLogic.Stats.RangedAttackPower,}, -- [High Warlord's Crossbow] ID: 18837
 
-	["Health Regen"] = {"MANA_REG",},
-	["health per"] = {"HEALTH_REG",}, -- Frostwolf Insignia Rank 6 ID:17909
-	["health every"] = {"HEALTH_REG",}, -- [Resurgence Rod] ID:17743
-	["your normal health regeneration"] = {"HEALTH_REG",}, -- Demons Blood ID: 10779
-	["Restoreshealth per 5 sec"] = {"HEALTH_REG",}, -- [Onyxia Blood Talisman] ID: 18406
-	["Restoreshealth every 5 sec"] = {"HEALTH_REG",}, -- [Resurgence Rod] ID:17743
-	["Mana Regen"] = {"MANA_REG",}, -- Prophetic Aura +4 Mana Regen/+10 Stamina/+24 Healing Spells spell: 24167
-	["mana per"] = {"MANA_REG",}, -- Resurgence Rod ID:17743 Most common
-	["mana every"] = {"MANA_REG",},
-	["Mana every 5 seconds"] = {"MANA_REG",}, -- [Royal Nightseye] ID: 24057
-	["mana every 5 sec"] = {"MANA_REG",}, -- Enchant Chest - Restore Mana Prime "+6 mana every 5 sec." spell: 33991
-	["Mana per 5 Seconds"] = {"MANA_REG",}, -- [Royal Shadow Draenite] ID: 23109
-	["mana per 5 sec"] = {"MANA_REG",}, -- [Royal Tanzanite] ID: 30603
-	["Restoresmana per 5 sec"] = {"MANA_REG",}, -- [Resurgence Rod] ID:17743
-	["Mana restored per 5 seconds"] = {"MANA_REG",}, -- Magister's Armor Kit +3 Mana restored per 5 seconds spell: 32399
-	["Mana Regenper 5 sec"] = {"MANA_REG",}, -- Enchant Bracer - Mana Regeneration "Mana Regen 4 per 5 sec." spell: 23801
+	["Health Regen"] = {StatLogic.Stats.ManaRegen,},
+	["health per"] = {StatLogic.Stats.HealthRegen,}, -- Frostwolf Insignia Rank 6 ID:17909
+	["health every"] = {StatLogic.Stats.HealthRegen,}, -- [Resurgence Rod] ID:17743
+	["your normal health regeneration"] = {StatLogic.Stats.HealthRegen,}, -- Demons Blood ID: 10779
+	["Restoreshealth per 5 sec"] = {StatLogic.Stats.HealthRegen,}, -- [Onyxia Blood Talisman] ID: 18406
+	["Restoreshealth every 5 sec"] = {StatLogic.Stats.HealthRegen,}, -- [Resurgence Rod] ID:17743
+	["Mana Regen"] = {StatLogic.Stats.ManaRegen,}, -- Prophetic Aura +4 Mana Regen/+10 Stamina/+24 Healing Spells spell: 24167
+	["mana per"] = {StatLogic.Stats.ManaRegen,}, -- Resurgence Rod ID:17743 Most common
+	["mana every"] = {StatLogic.Stats.ManaRegen,},
+	["Mana every 5 seconds"] = {StatLogic.Stats.ManaRegen,}, -- [Royal Nightseye] ID: 24057
+	["mana every 5 sec"] = {StatLogic.Stats.ManaRegen,}, -- Enchant Chest - Restore Mana Prime "+6 mana every 5 sec." spell: 33991
+	["Mana per 5 Seconds"] = {StatLogic.Stats.ManaRegen,}, -- [Royal Shadow Draenite] ID: 23109
+	["mana per 5 sec"] = {StatLogic.Stats.ManaRegen,}, -- [Royal Tanzanite] ID: 30603
+	["Restoresmana per 5 sec"] = {StatLogic.Stats.ManaRegen,}, -- [Resurgence Rod] ID:17743
+	["Mana restored per 5 seconds"] = {StatLogic.Stats.ManaRegen,}, -- Magister's Armor Kit +3 Mana restored per 5 seconds spell: 32399
+	["Mana Regenper 5 sec"] = {StatLogic.Stats.ManaRegen,}, -- Enchant Bracer - Mana Regeneration "Mana Regen 4 per 5 sec." spell: 23801
 
 	["Spell Penetration"] = {StatLogic.Stats.SpellPenetration,}, -- Enchant Cloak - Spell Penetration "+20 Spell Penetration" spell: 34003
 	["Increases your spell penetration"] = {StatLogic.Stats.SpellPenetration,},

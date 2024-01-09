@@ -28,13 +28,13 @@ L["WholeTextLookup"] = {
 	["巫师之油"] = {[StatLogic.Stats.SpellDamage] = 24, [StatLogic.Stats.HealingPower] = 24}, --
 	["卓越巫师之油"] = {[StatLogic.Stats.SpellDamage] = 36, [StatLogic.Stats.HealingPower] = 36, [StatLogic.Stats.SpellCritRating] = 14}, --
 
-	["超强法力之油"] = {["MANA_REG"] = 14}, --
-	["初级法力之油"] = {["MANA_REG"] = 4}, --
-	["次级法力之油"] = {["MANA_REG"] = 8}, --
-	["卓越法力之油"] = {["MANA_REG"] = 12, [StatLogic.Stats.HealingPower] = 25}, --
+	["超强法力之油"] = {[StatLogic.Stats.ManaRegen] = 14}, --
+	["初级法力之油"] = {[StatLogic.Stats.ManaRegen] = 4}, --
+	["次级法力之油"] = {[StatLogic.Stats.ManaRegen] = 8}, --
+	["卓越法力之油"] = {[StatLogic.Stats.ManaRegen] = 12, [StatLogic.Stats.HealingPower] = 25}, --
 	["超强巫师之油"] = {[StatLogic.Stats.SpellDamage] = 42, [StatLogic.Stats.HealingPower] = 42}, --
 
-	["活力"] = {["MANA_REG"] = 4, ["HEALTH_REG"] = 4}, --
+	["活力"] = {[StatLogic.Stats.ManaRegen] = 4, [StatLogic.Stats.HealthRegen] = 4}, --
 	["魂霜"] = {[StatLogic.Stats.ShadowDamage] = 54, [StatLogic.Stats.FrostDamage] = 54}, --
 	["阳炎"] = {[StatLogic.Stats.ArcaneDamage] = 50, [StatLogic.Stats.FireDamage] = 50}, --
 	["+40 法术伤害"] = {[StatLogic.Stats.SpellDamage] = 40, [StatLogic.Stats.HealingPower] = 40}, --
@@ -80,11 +80,11 @@ L["PreScanPatterns"] = {
 	["^(%d+)点护甲$"] = StatLogic.Stats.Armor,
 	["强化护甲 %+(%d+)"] = StatLogic.Stats.BonusArmor,
 	["护甲值提高(%d+)点"] = StatLogic.Stats.BonusArmor,
-	["每5秒恢复(%d+)点法力值。$"] = "MANA_REG",
-	["每5秒恢复(%d+)点生命值。$"] = "HEALTH_REG",
-	["每5秒回复(%d+)点法力值。$"] = "MANA_REG",
-	["每5秒回复(%d+)点法力值$"] = "MANA_REG",
-	["每5秒回复(%d+)点生命值。$"] = "HEALTH_REG",
+	["每5秒恢复(%d+)点法力值。$"] = StatLogic.Stats.ManaRegen,
+	["每5秒恢复(%d+)点生命值。$"] = StatLogic.Stats.HealthRegen,
+	["每5秒回复(%d+)点法力值。$"] = StatLogic.Stats.ManaRegen,
+	["每5秒回复(%d+)点法力值$"] = StatLogic.Stats.ManaRegen,
+	["每5秒回复(%d+)点生命值。$"] = StatLogic.Stats.HealthRegen,
 	-- Exclude
 	["^(%d+)格.-包"] = false, -- # of slots and bag type
 	["^(%d+)格.-袋"] = false, -- # of slots and bag type
@@ -178,8 +178,8 @@ L["StatIDLookup"] = {
 	["格挡值"] = {"BLOCK_VALUE",}, -- +22 Block Value
 	["使你的盾牌格挡值"] = {"BLOCK_VALUE",},
 
-	["生命值"] = {"HEALTH",},
-	["法力值"] = {"MANA",},
+	["生命值"] = {StatLogic.Stats.Health,},
+	["法力值"] = {StatLogic.Stats.Mana,},
 
 	["攻击强度"] = {StatLogic.Stats.AttackPower,},
 	["攻击强度提高"] = {StatLogic.Stats.AttackPower,},
@@ -188,18 +188,18 @@ L["StatIDLookup"] = {
 	["使你的近战和远程攻击强度"] = {StatLogic.Stats.AttackPower},
 	["远程攻击强度"] = {StatLogic.Stats.RangedAttackPower,}, -- [High Warlord's Crossbow] ID: 18837
 
-	["每5秒恢复(%d+)点生命值"] = {"HEALTH_REG",}, -- [Resurgence Rod] ID:17743
-	["每5秒回复(%d+)点生命值"] = {"HEALTH_REG",},
-	["生命值恢复速度"] = {"HEALTH_REG",}, -- [Demons Blood] ID: 10779
+	["每5秒恢复(%d+)点生命值"] = {StatLogic.Stats.HealthRegen,}, -- [Resurgence Rod] ID:17743
+	["每5秒回复(%d+)点生命值"] = {StatLogic.Stats.HealthRegen,},
+	["生命值恢复速度"] = {StatLogic.Stats.HealthRegen,}, -- [Demons Blood] ID: 10779
 
-	["每5秒法力"] = {"MANA_REG",}, --
-	["每5秒恢复法力"] = {"MANA_REG",}, -- [Royal Tanzanite] ID: 30603
-	["每5秒恢复(%d+)点法力值"] = {"MANA_REG",},
-	["每5秒回复(%d+)点法力值"] = {"MANA_REG",},
-	["每5秒法力回复"] = {"MANA_REG",},
-	["法力恢复"] = {"MANA_REG",},
-	["法力回复"] = {"MANA_REG",},
-	["使周围半径30码范围内的所有小队成员每5秒恢复(%d+)点法力值"] = {"MANA_REG",}, --
+	["每5秒法力"] = {StatLogic.Stats.ManaRegen,}, --
+	["每5秒恢复法力"] = {StatLogic.Stats.ManaRegen,}, -- [Royal Tanzanite] ID: 30603
+	["每5秒恢复(%d+)点法力值"] = {StatLogic.Stats.ManaRegen,},
+	["每5秒回复(%d+)点法力值"] = {StatLogic.Stats.ManaRegen,},
+	["每5秒法力回复"] = {StatLogic.Stats.ManaRegen,},
+	["法力恢复"] = {StatLogic.Stats.ManaRegen,},
+	["法力回复"] = {StatLogic.Stats.ManaRegen,},
+	["使周围半径30码范围内的所有小队成员每5秒恢复(%d+)点法力值"] = {StatLogic.Stats.ManaRegen,}, --
 
 	["法术穿透"] = {StatLogic.Stats.SpellPenetration,},
 	["法术穿透力"] = {StatLogic.Stats.SpellPenetration,},

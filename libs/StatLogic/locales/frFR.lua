@@ -34,13 +34,13 @@ L["WholeTextLookup"] = {
 	["Huile de sorcier brillante"] = {[StatLogic.Stats.SpellDamage] = 36, [StatLogic.Stats.HealingPower] = 36, [StatLogic.Stats.SpellCritRating] = 14}, -- ID: 20749
 	["Huile de sorcier excellente"] = {[StatLogic.Stats.SpellDamage] = 42, [StatLogic.Stats.HealingPower] = 42}, -- ID: 22522
 
-	["Huile de mana mineure"] = {["MANA_REG"] = 4}, -- ID: 20745
-	["Huile de mana inférieure"] = {["MANA_REG"] = 8}, -- ID: 20747
-	["Huile de mana brillante"] = {["MANA_REG"] = 12, [StatLogic.Stats.HealingPower] = 25}, -- ID: 20748
-	["Huile de mana excellente"] = {["MANA_REG"] = 14}, -- ID: 22521
+	["Huile de mana mineure"] = {[StatLogic.Stats.ManaRegen] = 4}, -- ID: 20745
+	["Huile de mana inférieure"] = {[StatLogic.Stats.ManaRegen] = 8}, -- ID: 20747
+	["Huile de mana brillante"] = {[StatLogic.Stats.ManaRegen] = 12, [StatLogic.Stats.HealingPower] = 25}, -- ID: 20748
+	["Huile de mana excellente"] = {[StatLogic.Stats.ManaRegen] = 14}, -- ID: 22521
 
 	["Sauvagerie"] = {[StatLogic.Stats.AttackPower] = 70}, -- ID: 27971
-	["Vitalité"] = {["MANA_REG"] = 4, ["HEALTH_REG"] = 4}, -- ID: 46492
+	["Vitalité"] = {[StatLogic.Stats.ManaRegen] = 4, [StatLogic.Stats.HealthRegen] = 4}, -- ID: 46492
 	["Âme de givre"] = {[StatLogic.Stats.ShadowDamage] = 54, [StatLogic.Stats.FrostDamage] = 54}, -- ID: 27982
 	["Feu solaire"] = {[StatLogic.Stats.ArcaneDamage] = 50, [StatLogic.Stats.FireDamage] = 50}, -- ID: 27981
 
@@ -91,7 +91,7 @@ L["PreScanPatterns"] = {
 	["Armure.- (%d+)"] = StatLogic.Stats.Armor,
 	["Renforcé %(%+(%d+) Armure%)"] = StatLogic.Stats.BonusArmor,
 	["^Équipé\194\160: Rend (%d+) points de vie toutes les 5 seco?n?d?e?s?%.?$"]= "HEAL_REG",
-	["^Équipé\194\160: Rend (%d+) points de mana toutes les 5 seco?n?d?e?s?%.?$"]= "MANA_REG",
+	["^Équipé\194\160: Rend (%d+) points de mana toutes les 5 seco?n?d?e?s?%.?$"]= StatLogic.Stats.ManaRegen,
 	--["Lunette %(%+(%d+) points? de dégâts?%)"] = StatLogic.Stats.RangedAttackPower,
 	-- Exclude
 	["^(%d+) Slot"] = false, -- Set Name (0/9)
@@ -203,9 +203,9 @@ L["StatIDLookup"] = {
 	["à la valeur de blocage au bouclier"] = {"BLOCK_VALUE"}, -- "+10% à la valeur de blocage au bouclier" [Diamant tonneterre éternel] ID: 35501
 	["la valeur de blocage de votre bouclier"] = {"BLOCK_VALUE"},
 
-	["Points de vie"] = {"HEALTH"},
-	["aux points de vie"] = {"HEALTH"},
-	["Points de mana"] = {"MANA"},
+	["Points de vie"] = {StatLogic.Stats.Health},
+	["aux points de vie"] = {StatLogic.Stats.Health},
+	["Points de mana"] = {StatLogic.Stats.Mana},
 
 	["puissance d'attaque"] = {StatLogic.Stats.AttackPower},
 	["la puissance d'attaque"] = {StatLogic.Stats.AttackPower},
@@ -215,19 +215,19 @@ L["StatIDLookup"] = {
 	["à la puissance des attaques à distance."] = {StatLogic.Stats.RangedAttackPower}, -- [Arbalète de grand seigneur de guerre] ID: 18837 -- version pre-TBC
 	["la puissance des attaques à distance"] = {StatLogic.Stats.RangedAttackPower}, -- [Arbalète de grand seigneur de guerre] ID: 18837 -- version TBC+
 
-	["points de mana toutes les 5 secondes"] = {"MANA_REG"},
-	["point de mana toutes les 5 secondes"] = {"MANA_REG"},
-	["points de mana toutes les 5 sec"] = {"MANA_REG"},
-	["point de mana toutes les 5 sec"] = {"MANA_REG"},
-	["points de mana rendus toutes les 5 secondes"] = {"MANA_REG"}, -- [Renfort d'armure de magistère] ID: 32399
-	["mana toutes les 5 secondes"] = {"MANA_REG"},
-	["régén. de mana"] = {"MANA_REG"},
+	["points de mana toutes les 5 secondes"] = {StatLogic.Stats.ManaRegen},
+	["point de mana toutes les 5 secondes"] = {StatLogic.Stats.ManaRegen},
+	["points de mana toutes les 5 sec"] = {StatLogic.Stats.ManaRegen},
+	["point de mana toutes les 5 sec"] = {StatLogic.Stats.ManaRegen},
+	["points de mana rendus toutes les 5 secondes"] = {StatLogic.Stats.ManaRegen}, -- [Renfort d'armure de magistère] ID: 32399
+	["mana toutes les 5 secondes"] = {StatLogic.Stats.ManaRegen},
+	["régén. de mana"] = {StatLogic.Stats.ManaRegen},
 
-	["points de vie toutes les 5 secondes"] = {"HEALTH_REG"},
-	["point de vie toutes les 5 secondes"] = {"HEALTH_REG"},
-	["points de vie toutes les 5 sec"] = {"HEALTH_REG"},
-	["point de vie toutes les 5 sec"] = {"HEALTH_REG"},
-	["votre régénération des points de vie normale"] = {"HEALTH_REG"}, -- [Sang de démon] ID: 10779
+	["points de vie toutes les 5 secondes"] = {StatLogic.Stats.HealthRegen},
+	["point de vie toutes les 5 secondes"] = {StatLogic.Stats.HealthRegen},
+	["points de vie toutes les 5 sec"] = {StatLogic.Stats.HealthRegen},
+	["point de vie toutes les 5 sec"] = {StatLogic.Stats.HealthRegen},
+	["votre régénération des points de vie normale"] = {StatLogic.Stats.HealthRegen}, -- [Sang de démon] ID: 10779
 
 	["à la pénétration des sorts"] = {StatLogic.Stats.SpellPenetration}, -- Ench. de cape (Pénétration des sorts) "+20 à la pénétration des sorts" ID: 34003
 	["la pénétration de vos sorts"] = {StatLogic.Stats.SpellPenetration},

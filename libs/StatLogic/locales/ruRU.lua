@@ -27,13 +27,13 @@ L["WholeTextLookup"] = {
 	["Блестящее волшебное масло"] = {[StatLogic.Stats.SpellDamage] = 36, [StatLogic.Stats.HealingPower] = 36, [StatLogic.Stats.SpellCritRating] = 14}, -- ID: 20749
 	["Превосходное волшебное масло"] = {[StatLogic.Stats.SpellDamage] = 42, [StatLogic.Stats.HealingPower] = 42}, -- ID: 22522
 
-	["Слабое масло маны"] = {["MANA_REG"] = 4}, -- ID: 20745
-	["Простое масло маны"] = {["MANA_REG"] = 8}, -- ID: 20747
-	["Блестящее масло маны"] = {["MANA_REG"] = 12, [StatLogic.Stats.HealingPower] = 25}, -- ID: 20748
-	["Превосходное масло маны"] = {["MANA_REG"] = 14}, -- ID: 22521
+	["Слабое масло маны"] = {[StatLogic.Stats.ManaRegen] = 4}, -- ID: 20745
+	["Простое масло маны"] = {[StatLogic.Stats.ManaRegen] = 8}, -- ID: 20747
+	["Блестящее масло маны"] = {[StatLogic.Stats.ManaRegen] = 12, [StatLogic.Stats.HealingPower] = 25}, -- ID: 20748
+	["Превосходное масло маны"] = {[StatLogic.Stats.ManaRegen] = 14}, -- ID: 22521
 
 	["Жестокость"] = {[StatLogic.Stats.AttackPower] = 70}, --
-	["Живучесть I"] = {["MANA_REG"] = 4, ["HEALTH_REG"] = 4}, -- Enchant Boots - Vitality spell: 27948
+	["Живучесть I"] = {[StatLogic.Stats.ManaRegen] = 4, [StatLogic.Stats.HealthRegen] = 4}, -- Enchant Boots - Vitality spell: 27948
 	["Ледяная душа"] = {[StatLogic.Stats.ShadowDamage] = 54, [StatLogic.Stats.FrostDamage] = 54}, --
 	["Солнечный огонь"] = {[StatLogic.Stats.ArcaneDamage] = 50, [StatLogic.Stats.FireDamage] = 50},
 	["+50 к силе заклинаний огня и тайной магии"] = {[StatLogic.Stats.ArcaneDamage] = 50, [StatLogic.Stats.FireDamage] = 50},
@@ -77,8 +77,8 @@ L["PreScanPatterns"] = {
 	["^(%d+) Block$"] = "BLOCK_VALUE",
 	["^Броня: (%d+)$"] = StatLogic.Stats.Armor,
 	["Reinforced %(%+(%d+) Armor%)"] = StatLogic.Stats.BonusArmor,
-	["Восполнение (%d+) ед. маны за 5 сек%.$"] = "MANA_REG",
-	["Восполняет (%d+) ед%. здоровья каждые 5 секунд%."] = "HEALTH_REG",
+	["Восполнение (%d+) ед. маны за 5 сек%.$"] = StatLogic.Stats.ManaRegen,
+	["Восполняет (%d+) ед%. здоровья каждые 5 секунд%."] = StatLogic.Stats.HealthRegen,
 	-- Exclude
 	["^(%d+) Slot"] = false, -- Set Name (0/9)
 	["^.+%((%d+)/%d+%)$"] = false, -- Set Name (0/9)
@@ -166,10 +166,10 @@ L["StatIDLookup"] = {
 	["к показателю блокирования щита"] = {"BLOCK_VALUE",}, -- +10% Shield Block Value [Eternal Earthstorm Diamond] http://www.wowhead.com/?item=35501
 	["увеличивает показатель блокирования вашего щита наед"] = {"BLOCK_VALUE",},
 
-	["здоровье"] = {"HEALTH",},
-	["к здоровью"] = {"HEALTH",},
-	["HP"] = {"HEALTH",},
-	["мана"] = {"MANA",},
+	["здоровье"] = {StatLogic.Stats.Health,},
+	["к здоровью"] = {StatLogic.Stats.Health,},
+	["HP"] = {StatLogic.Stats.Health,},
+	["мана"] = {StatLogic.Stats.Mana,},
 
 	["сила атаки"] = {StatLogic.Stats.AttackPower,},
 	["увеличивает силу атаки на"] = {StatLogic.Stats.AttackPower,},
@@ -179,31 +179,31 @@ L["StatIDLookup"] = {
 	["сила атаки дальнего боя"] = {StatLogic.Stats.RangedAttackPower,},
 	["увеличивает силу атак дальнего боя"] = {StatLogic.Stats.RangedAttackPower,}, -- [High Warlord's Crossbow] ID: 18837
 
-	["Health Regen"] = {"MANA_REG",},
-	["Health per"] = {"HEALTH_REG",},
-	["health per"] = {"HEALTH_REG",}, -- Frostwolf Insignia Rank 6 ID:17909
-	["Health every"] = {"MANA_REG",},
-	["health every"] = {"HEALTH_REG",}, -- [Resurgence Rod] ID:17743
-	["your normal health regeneration"] = {"HEALTH_REG",}, -- Demons Blood ID: 10779
-	["Restoreshealth per 5 sec"] = {"HEALTH_REG",}, -- [Onyxia Blood Talisman] ID: 18406
-	["восполняетед. здоровья каждые 5 секунд"] = {"HEALTH_REG",}, -- [Resurgence Rod] ID:17743
-	["Mana Regen"] = {"MANA_REG",}, -- Prophetic Aura +4 Mana Regen/+10 Stamina/+24 Healing Spells spell: 24167
-	["Mana per"] = {"MANA_REG",},
-	["mana per"] = {"MANA_REG",}, -- Resurgence Rod ID:17743 Most common
-	["Mana every"] = {"MANA_REG",},
-	["mana every"] = {"MANA_REG",},
-	["Mana every 5 Sec"] = {"MANA_REG",}, --
-	["mana every 5 sec"] = {"MANA_REG",}, -- Enchant Chest - Restore Mana Prime "+6 mana every 5 sec." spell: 33991
-	["Mana per 5 Seconds"] = {"MANA_REG",}, -- [Royal Shadow Draenite] ID: 23109
-	["Mana Per 5 sec"] = {"MANA_REG",}, -- [Royal Shadow Draenite] ID: 23109
-	["Mana per 5 sec"] = {"MANA_REG",}, -- [Cyclone Shoulderpads] ID: 29031
-	["mana per 5 sec"] = {"MANA_REG",}, -- [Royal Tanzanite] ID: 30603
-	["восполнениеед. маны в 5 секунд"] = {"MANA_REG",},
-	["восполнениеед. маны за 5 сек."] = {"MANA_REG",},
-	["восполнениеед. маны раз в 5 секунд"] = {"MANA_REG",},
-	["Mana restored per 5 seconds"] = {"MANA_REG",}, -- Magister's Armor Kit +3 Mana restored per 5 seconds spell: 32399
-	["Mana Regenper 5 sec"] = {"MANA_REG",}, -- Enchant Bracer - Mana Regeneration "Mana Regen 4 per 5 sec." spell: 23801
-	["Mana per 5 Sec"] = {"MANA_REG",}, -- Enchant Bracer - Restore Mana Prime "6 Mana per 5 Sec." spell: 27913
+	["Health Regen"] = {StatLogic.Stats.ManaRegen,},
+	["Health per"] = {StatLogic.Stats.HealthRegen,},
+	["health per"] = {StatLogic.Stats.HealthRegen,}, -- Frostwolf Insignia Rank 6 ID:17909
+	["Health every"] = {StatLogic.Stats.ManaRegen,},
+	["health every"] = {StatLogic.Stats.HealthRegen,}, -- [Resurgence Rod] ID:17743
+	["your normal health regeneration"] = {StatLogic.Stats.HealthRegen,}, -- Demons Blood ID: 10779
+	["Restoreshealth per 5 sec"] = {StatLogic.Stats.HealthRegen,}, -- [Onyxia Blood Talisman] ID: 18406
+	["восполняетед. здоровья каждые 5 секунд"] = {StatLogic.Stats.HealthRegen,}, -- [Resurgence Rod] ID:17743
+	["Mana Regen"] = {StatLogic.Stats.ManaRegen,}, -- Prophetic Aura +4 Mana Regen/+10 Stamina/+24 Healing Spells spell: 24167
+	["Mana per"] = {StatLogic.Stats.ManaRegen,},
+	["mana per"] = {StatLogic.Stats.ManaRegen,}, -- Resurgence Rod ID:17743 Most common
+	["Mana every"] = {StatLogic.Stats.ManaRegen,},
+	["mana every"] = {StatLogic.Stats.ManaRegen,},
+	["Mana every 5 Sec"] = {StatLogic.Stats.ManaRegen,}, --
+	["mana every 5 sec"] = {StatLogic.Stats.ManaRegen,}, -- Enchant Chest - Restore Mana Prime "+6 mana every 5 sec." spell: 33991
+	["Mana per 5 Seconds"] = {StatLogic.Stats.ManaRegen,}, -- [Royal Shadow Draenite] ID: 23109
+	["Mana Per 5 sec"] = {StatLogic.Stats.ManaRegen,}, -- [Royal Shadow Draenite] ID: 23109
+	["Mana per 5 sec"] = {StatLogic.Stats.ManaRegen,}, -- [Cyclone Shoulderpads] ID: 29031
+	["mana per 5 sec"] = {StatLogic.Stats.ManaRegen,}, -- [Royal Tanzanite] ID: 30603
+	["восполнениеед. маны в 5 секунд"] = {StatLogic.Stats.ManaRegen,},
+	["восполнениеед. маны за 5 сек."] = {StatLogic.Stats.ManaRegen,},
+	["восполнениеед. маны раз в 5 секунд"] = {StatLogic.Stats.ManaRegen,},
+	["Mana restored per 5 seconds"] = {StatLogic.Stats.ManaRegen,}, -- Magister's Armor Kit +3 Mana restored per 5 seconds spell: 32399
+	["Mana Regenper 5 sec"] = {StatLogic.Stats.ManaRegen,}, -- Enchant Bracer - Mana Regeneration "Mana Regen 4 per 5 sec." spell: 23801
+	["Mana per 5 Sec"] = {StatLogic.Stats.ManaRegen,}, -- Enchant Bracer - Restore Mana Prime "6 Mana per 5 Sec." spell: 27913
 
 	["проникающей способности заклинаний"] = {StatLogic.Stats.SpellPenetration,}, -- Enchant Cloak - Spell Penetration "+20 Spell Penetration" spell: 34003
 	["увеличивает проникающую способность заклинаний на"] = {StatLogic.Stats.SpellPenetration,},

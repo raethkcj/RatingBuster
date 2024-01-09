@@ -1345,6 +1345,12 @@ do
 	-- Backwards compatibility
 	local statStringToStat = setmetatable({
 		["AP"] = StatLogic.Stats.AttackPower,
+		["MANA"] = StatLogic.Stats.Mana,
+		["MANA_REG"] = StatLogic.Stats.ManaRegen,
+		["NORMAL_MANA_REG"] = StatLogic.Stats.ManaRegenNotCasting,
+		["HEALTH"] = StatLogic.Stats.Health,
+		["HEALTH_REG"] = StatLogic.Stats.HealthRegen,
+		["NORMAL_HEALTH_REG"] = StatLogic.Stats.HealthRegenOutOfCombat,
 		["SPELL_DMG"] = StatLogic.Stats.SpellDamage,
 		["HEALING"] = StatLogic.Stats.HealingPower,
 	},
@@ -2582,61 +2588,61 @@ local summaryCalcData = {
 	-- Health - HEALTH, STA
 	{
 		option = "sumHP",
-		name = "HEALTH",
+		name = StatLogic.Stats.Health,
 		func = function(sum)
-			return (sum["HEALTH"] + (sum[StatLogic.Stats.Stamina] * GSM("ADD_HEALTH_MOD_STA"))) * GSM("MOD_HEALTH")
+			return (sum[StatLogic.Stats.Health] + (sum[StatLogic.Stats.Stamina] * GSM("ADD_HEALTH_MOD_STA"))) * GSM("MOD_HEALTH")
 		end,
 	},
 	-- Mana - MANA, INT
 	{
 		option = "sumMP",
-		name = "MANA",
+		name = StatLogic.Stats.Mana,
 		func = function(sum)
-			return (sum["MANA"] + (sum[StatLogic.Stats.Intellect] * GSM("ADD_MANA_MOD_INT"))) * GSM("MOD_MANA")
+			return (sum[StatLogic.Stats.Mana] + (sum[StatLogic.Stats.Intellect] * GSM("ADD_MANA_MOD_INT"))) * GSM("MOD_MANA")
 		end,
 	},
 	-- Health Regen - HEALTH_REG
 	{
 		option = "sumHP5",
-		name = "HEALTH_REG",
+		name = StatLogic.Stats.HealthRegen,
 		func = function(sum)
-			return sum["HEALTH_REG"]
+			return sum[StatLogic.Stats.HealthRegen]
 				+ sum[StatLogic.Stats.Spirit] * GSM("ADD_NORMAL_HEALTH_REG_MOD_SPI") * GSM("MOD_NORMAL_HEALTH_REG") * GSM("ADD_HEALTH_REG_MOD_NORMAL_HEALTH_REG")
 		end,
 	},
 	-- Health Regen while Out of Combat - HEALTH_REG, SPI
 	{
 		option = "sumHP5OC",
-		name = "HEALTH_REG_OUT_OF_COMBAT",
+		name = StatLogic.Stats.HealthRegenOutOfCombat,
 		func = function(sum)
-			return sum["HEALTH_REG"]
+			return sum[StatLogic.Stats.HealthRegen]
 				+ sum[StatLogic.Stats.Spirit] * GSM("ADD_NORMAL_HEALTH_REG_MOD_SPI") * GSM("MOD_NORMAL_HEALTH_REG")
 		end,
 	},
 	-- Mana Regen - MANA_REG, SPI, INT
 	{
 		option = "sumMP5",
-		name = "MANA_REG",
+		name = StatLogic.Stats.ManaRegen,
 		func = function(sum)
-			return sum["MANA_REG"]
+			return sum[StatLogic.Stats.ManaRegen]
 				+ sum[StatLogic.Stats.Intellect] * GSM("ADD_MANA_REG_MOD_INT")
 				+ math.min(GSM("ADD_MANA_REG_MOD_NORMAL_MANA_REG"), 1) * GSM("MOD_NORMAL_MANA_REG") * (
 					sum[StatLogic.Stats.Intellect] * GSM("ADD_NORMAL_MANA_REG_MOD_INT")
 					+ sum[StatLogic.Stats.Spirit] * GSM("ADD_NORMAL_MANA_REG_MOD_SPI")
-				) + summaryFunc["MANA"](sum) * GSM("ADD_MANA_REG_MOD_MANA")
+				) + summaryFunc[StatLogic.Stats.Mana](sum) * GSM("ADD_MANA_REG_MOD_MANA")
 		end,
 	},
 	-- Mana Regen while Not casting - MANA_REG, SPI, INT
 	{
 		option = "sumMP5NC",
-		name = "MANA_REG_NOT_CASTING",
+		name = StatLogic.Stats.ManaRegenNotCasting,
 		func = function(sum)
-			return sum["MANA_REG"]
+			return sum[StatLogic.Stats.ManaRegen]
 				+ sum[StatLogic.Stats.Intellect] * GSM("ADD_MANA_REG_MOD_INT")
 				+ GSM("MOD_NORMAL_MANA_REG") * (
 					sum[StatLogic.Stats.Intellect] * GSM("ADD_NORMAL_MANA_REG_MOD_INT")
 					+ sum[StatLogic.Stats.Spirit] * GSM("ADD_NORMAL_MANA_REG_MOD_SPI")
-				) + summaryFunc["MANA"](sum) * GSM("ADD_MANA_REG_MOD_MANA")
+				) + summaryFunc[StatLogic.Stats.Mana](sum) * GSM("ADD_MANA_REG_MOD_MANA")
 		end,
 	},
 	---------------------

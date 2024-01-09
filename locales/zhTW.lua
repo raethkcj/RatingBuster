@@ -560,10 +560,10 @@ L["STA"] = SPELL_STAT3_NAME
 L["INT"] = SPELL_STAT4_NAME
 L["SPI"] = SPELL_STAT5_NAME
 L["PARRY"] = PARRY
-L["MANA_REG"] = "法力恢復"
-L["NORMAL_MANA_REG"] = "法力恢復 (非施法)"
-L["HEALTH_REG"] = "生命恢复"
-L["NORMAL_HEALTH_REG"] = "生命恢复 (非戰鬥)"
+L[StatLogic.Stats.ManaRegen] = "法力恢復"
+L[StatLogic.Stats.ManaRegenNotCasting] = "法力恢復 (非施法)"
+L[StatLogic.Stats.HealthRegen] = "生命恢复"
+L[StatLogic.Stats.HealthRegenOutOfCombat] = "生命恢复 (非戰鬥)"
 L["PET_STA"] = PET .. SPELL_STAT3_NAME -- Pet Stamina
 L["PET_INT"] = PET .. SPELL_STAT4_NAME -- Pet Intellect
 L["StatModOptionName"] = "%s %s"
@@ -602,8 +602,8 @@ L[StatLogic.Stats.ArcaneDamage] = "秘法法術傷害"
 
 L[StatLogic.Stats.SpellPenetration] = "法術穿透"
 
-L["HEALTH"] = HEALTH
-L["MANA"] = MANA
+L[StatLogic.Stats.Health] = HEALTH
+L[StatLogic.Stats.Mana] = MANA
 
 L[StatLogic.Stats.WeaponDamageAverage] = "Average Damage"
 L[StatLogic.Stats.WeaponDPS] = "每秒傷害"

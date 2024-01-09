@@ -580,10 +580,10 @@ L["STA"] = SPELL_STAT3_NAME
 L["INT"] = SPELL_STAT4_NAME
 L["SPI"] = SPELL_STAT5_NAME
 L["PARRY"] = PARRY
-L["MANA_REG"] = "Mana Regen"
-L["NORMAL_MANA_REG"] = "Mana Regen (Not Casting)"
-L["HEALTH_REG"] = "Health Regen"
-L["NORMAL_HEALTH_REG"] = "Health Regen (Out of Combat)"
+L[StatLogic.Stats.ManaRegen] = "Mana Regen"
+L[StatLogic.Stats.ManaRegenNotCasting] = "Mana Regen (Not Casting)"
+L[StatLogic.Stats.HealthRegen] = "Health Regen"
+L[StatLogic.Stats.HealthRegenOutOfCombat] = "Health Regen (Out of Combat)"
 L["PET_STA"] = PET .. SPELL_STAT3_NAME -- Pet Stamina
 L["PET_INT"] = PET .. SPELL_STAT4_NAME -- Pet Intellect
 L["StatModOptionName"] = "%s %s"
@@ -622,8 +622,8 @@ L[StatLogic.Stats.ArcaneDamage] = SPELL_SCHOOL6_CAP.." "..DAMAGE
 
 L[StatLogic.Stats.SpellPenetration] = PLAYERSTAT_SPELL_COMBAT.." "..SPELL_PENETRATION
 
-L["HEALTH"] = HEALTH
-L["MANA"] = MANA
+L[StatLogic.Stats.Health] = HEALTH
+L[StatLogic.Stats.Mana] = MANA
 
 L[StatLogic.Stats.WeaponDamageAverage] = "Average Damage"
 L[StatLogic.Stats.WeaponDPS] = "Damage Per Second"

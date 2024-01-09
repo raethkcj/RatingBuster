@@ -37,12 +37,12 @@ L["WholeTextLookup"] = {
 	["Überragendes Zauberöl"] = {[StatLogic.Stats.SpellDamage] = 42, [StatLogic.Stats.HealingPower] = 42}, --
 	["Hervorragendes Zauberöl"] = {[StatLogic.Stats.SpellDamage] = 36, [StatLogic.Stats.HealingPower] = 36, [StatLogic.Stats.SpellCritRating] = 14}, --
 
-	["Schwaches Manaöl"] = {["MANA_REG"] = 4}, --
-	["Geringes Manaöl"] = {["MANA_REG"] = 8}, --
-	["Überragendes Manaöl"] = {["MANA_REG"] = 14}, --
-	["Hervorragendes Manaöl"] = {["MANA_REG"] = 12, [StatLogic.Stats.HealingPower] = 25}, --
+	["Schwaches Manaöl"] = {[StatLogic.Stats.ManaRegen] = 4}, --
+	["Geringes Manaöl"] = {[StatLogic.Stats.ManaRegen] = 8}, --
+	["Überragendes Manaöl"] = {[StatLogic.Stats.ManaRegen] = 14}, --
+	["Hervorragendes Manaöl"] = {[StatLogic.Stats.ManaRegen] = 12, [StatLogic.Stats.HealingPower] = 25}, --
 
-	["Vitalität"] = {["MANA_REG"] = 4, ["HEALTH_REG"] = 4}, --
+	["Vitalität"] = {[StatLogic.Stats.ManaRegen] = 4, [StatLogic.Stats.HealthRegen] = 4}, --
 	["Seelenfrost"] = {[StatLogic.Stats.ShadowDamage] = 54, [StatLogic.Stats.FrostDamage] = 54}, --
 	["Sonnenfeuer"] = {[StatLogic.Stats.ArcaneDamage] = 50, [StatLogic.Stats.FireDamage] = 50}, --
 
@@ -89,7 +89,7 @@ L["PreScanPatterns"] = {
 	["^(%d+) Block$"] = "BLOCK_VALUE",
 	["^(%d+) Rüstung$"] = StatLogic.Stats.Armor,
 	["Verstärkte %(%+(%d+) Rüstung%)"] = "ARMOR_BUFF",
-	["Mana Regeneration (%d+) alle 5 Sek%.$"] = "MANA_REG",
+	["Mana Regeneration (%d+) alle 5 Sek%.$"] = StatLogic.Stats.ManaRegen,
 	-- These fail DeepScan in deDE because of the commas
 	["Anlegen: Erhöht Eure Chance, einen kritischen Treffer durch Zauber zu erzielen, um (%d)%%%."] = StatLogic.Stats.SpellCrit,
 	["Anlegen: Erhöht Eure Chance, einen kritischen Treffer zu erzielen, um (%d)%%%."] = "CRIT",
@@ -171,9 +171,9 @@ L["StatIDLookup"] = {
 	["Blockwert"] = {"BLOCK_VALUE",}, -- +22 Block Value
 	["Erhöht den Blockwert Eures Schildes"] = {"BLOCK_VALUE",},
 
-	["Gesundheit"] = {"HEALTH",},
-	["HP"] = {"HEALTH",},
-	["Mana"] = {"MANA",},
+	["Gesundheit"] = {StatLogic.Stats.Health,},
+	["HP"] = {StatLogic.Stats.Health,},
+	["Mana"] = {StatLogic.Stats.Mana,},
 
 	["Angriffskraft"] = {StatLogic.Stats.AttackPower,},
 	["Erhöht Angriffskraft"] = {StatLogic.Stats.AttackPower,},
@@ -183,17 +183,17 @@ L["StatIDLookup"] = {
 	["Distanzangriffskraft"] = {StatLogic.Stats.RangedAttackPower,},
 	["Erhöht die Distanzangriffskraft"] = {StatLogic.Stats.RangedAttackPower,}, -- [High Warlord's Crossbow] ID: 18837
 
-	["Gesundheit wieder her"] = {"HEALTH_REG",}, -- Frostwolf Insignia Rank 6 ID:17909
-	["Gesundheitsregeneration"] = {"HEALTH_REG",}, -- Demons Blood ID: 10779
+	["Gesundheit wieder her"] = {StatLogic.Stats.HealthRegen,}, -- Frostwolf Insignia Rank 6 ID:17909
+	["Gesundheitsregeneration"] = {StatLogic.Stats.HealthRegen,}, -- Demons Blood ID: 10779
 
-	["Mana wieder her"] = {"MANA_REG",},
-	["Mana alle 5 Sek"] = {"MANA_REG",}, -- [Royal Nightseye] ID: 24057
-	["Mana alle 5 Sekunden"] = {"MANA_REG",},
-	["alle 5 Sek.Mana"] = {"MANA_REG",}, -- [Royal Shadow Draenite] ID: 23109
-	["Mana bei allen Gruppenmitgliedern, die sich im Umkreis von 30 befinden, wieder her"] = {"MANA_REG",}, -- Atiesh
-	["Manaregeneration"] = {"MANA_REG",},
-	["alle Mana"] = {"MANA_REG",},
-	["stellt alle Mana wieder her"] = {"MANA_REG",},
+	["Mana wieder her"] = {StatLogic.Stats.ManaRegen,},
+	["Mana alle 5 Sek"] = {StatLogic.Stats.ManaRegen,}, -- [Royal Nightseye] ID: 24057
+	["Mana alle 5 Sekunden"] = {StatLogic.Stats.ManaRegen,},
+	["alle 5 Sek.Mana"] = {StatLogic.Stats.ManaRegen,}, -- [Royal Shadow Draenite] ID: 23109
+	["Mana bei allen Gruppenmitgliedern, die sich im Umkreis von 30 befinden, wieder her"] = {StatLogic.Stats.ManaRegen,}, -- Atiesh
+	["Manaregeneration"] = {StatLogic.Stats.ManaRegen,},
+	["alle Mana"] = {StatLogic.Stats.ManaRegen,},
+	["stellt alle Mana wieder her"] = {StatLogic.Stats.ManaRegen,},
 
 	["Zauberdurchschlagskraft"] = {StatLogic.Stats.SpellPenetration,},
 	["Erhöht Eure Zauberdurchschlagskraft"] = {StatLogic.Stats.SpellPenetration,},

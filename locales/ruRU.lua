@@ -699,10 +699,10 @@ L["STA"] = "Выносливость"
 L["INT"] = "Интеллект"
 L["SPI"] = "Дух"
 L["PARRY"] = "Парирование"
-L["MANA_REG"] = "Восполнение маны"
-L["NORMAL_MANA_REG"] = "Восполнения маны (пока не применяете заклинания)"
-L["HEALTH_REG"] = "Восстановление здоровья"
-L["NORMAL_HEALTH_REG"] = "Восполнение здаровья (вне боя)"
+L[StatLogic.Stats.ManaRegen] = "Восполнение маны"
+L[StatLogic.Stats.ManaRegenNotCasting] = "Восполнения маны (пока не применяете заклинания)"
+L[StatLogic.Stats.HealthRegen] = "Восстановление здоровья"
+L[StatLogic.Stats.HealthRegenOutOfCombat] = "Восполнение здаровья (вне боя)"
 L["PET_STA"] = "Выносливость питомца" -- Pet Stamina
 L["PET_INT"] = "Интеллект питомца" -- Pet Intellect
 L["StatModOptionName"] = "%s %s"
@@ -741,8 +741,8 @@ L[StatLogic.Stats.ArcaneDamage] =  "Сила заклинаний (тайная 
 
 L[StatLogic.Stats.SpellPenetration] =  "Проникающая способность заклинаний"
 
-L["HEALTH"] =  "Здоровье"
-L["MANA"] =  "Мана"
+L[StatLogic.Stats.Health] =  "Здоровье"
+L[StatLogic.Stats.Mana] =  "Мана"
 
 L[StatLogic.Stats.WeaponDamageAverage] =  "Average Damage"
 L[StatLogic.Stats.WeaponDPS] =  "Урон в секунду"

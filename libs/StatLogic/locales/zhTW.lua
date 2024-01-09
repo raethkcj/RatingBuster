@@ -27,13 +27,13 @@ L["WholeTextLookup"] = {
 	["卓越巫師之油"] = {[StatLogic.Stats.SpellDamage] = 36, [StatLogic.Stats.HealingPower] = 36, [StatLogic.Stats.SpellCritRating] = 14}, --
 	["超強巫師之油"] = {[StatLogic.Stats.SpellDamage] = 42, [StatLogic.Stats.HealingPower] = 42}, --
 
-	["初級法力之油"] = {["MANA_REG"] = 4}, --
-	["次級法力之油"] = {["MANA_REG"] = 8}, --
-	["卓越法力之油"] = {["MANA_REG"] = 12, [StatLogic.Stats.HealingPower] = 25}, --
-	["超強法力之油"] = {["MANA_REG"] = 14}, --
+	["初級法力之油"] = {[StatLogic.Stats.ManaRegen] = 4}, --
+	["次級法力之油"] = {[StatLogic.Stats.ManaRegen] = 8}, --
+	["卓越法力之油"] = {[StatLogic.Stats.ManaRegen] = 12, [StatLogic.Stats.HealingPower] = 25}, --
+	["超強法力之油"] = {[StatLogic.Stats.ManaRegen] = 14}, --
 
 	["兇蠻"] = {[StatLogic.Stats.AttackPower] = 70}, --
-	["活力"] = {["MANA_REG"] = 4, ["HEALTH_REG"] = 4}, --
+	["活力"] = {[StatLogic.Stats.ManaRegen] = 4, [StatLogic.Stats.HealthRegen] = 4}, --
 	["靈魂冰霜"] = {[StatLogic.Stats.ShadowDamage] = 54, [StatLogic.Stats.FrostDamage] = 54}, --
 	["烈日火焰"] = {[StatLogic.Stats.ArcaneDamage] = 50, [StatLogic.Stats.FireDamage] = 50}, --
 
@@ -174,8 +174,8 @@ L["StatIDLookup"] = {
 	["提高格擋值"] = {"BLOCK_VALUE",},
 	["使你盾牌的格擋值"] = {"BLOCK_VALUE",},
 
-	["生命力"] = {"HEALTH",},
-	["法力"] = {"MANA",},
+	["生命力"] = {StatLogic.Stats.Health,},
+	["法力"] = {StatLogic.Stats.Mana,},
 
 	["攻擊強度"] = {StatLogic.Stats.AttackPower,},
 	["使攻擊強度"] = {StatLogic.Stats.AttackPower,},
@@ -184,14 +184,14 @@ L["StatIDLookup"] = {
 	["在獵豹、熊、巨熊還有梟獸形態下的攻擊強度"] = {StatLogic.Stats.FeralAttackPower,}, --
 	["遠程攻擊強度"] = {StatLogic.Stats.RangedAttackPower,}, -- [High Warlord's Crossbow] ID: 18837
 
-	["每5秒恢復生命力"] = {"HEALTH_REG",}, -- [Resurgence Rod] ID:17743
-	["一般的生命力恢復速度"] = {"HEALTH_REG",}, -- [Demons Blood] ID: 10779
+	["每5秒恢復生命力"] = {StatLogic.Stats.HealthRegen,}, -- [Resurgence Rod] ID:17743
+	["一般的生命力恢復速度"] = {StatLogic.Stats.HealthRegen,}, -- [Demons Blood] ID: 10779
 
-	["每5秒法力"] = {"MANA_REG",}, --
-	["每5秒恢復法力"] = {"MANA_REG",}, -- [Royal Tanzanite] ID: 30603
-	["每五秒恢復法力"] = {"MANA_REG",}, -- 長者之XXX
-	["法力恢復"] = {"MANA_REG",}, --
-	["使周圍半徑30碼範圍內的隊友每5秒恢復法力"] = {"MANA_REG",}, --
+	["每5秒法力"] = {StatLogic.Stats.ManaRegen,}, --
+	["每5秒恢復法力"] = {StatLogic.Stats.ManaRegen,}, -- [Royal Tanzanite] ID: 30603
+	["每五秒恢復法力"] = {StatLogic.Stats.ManaRegen,}, -- 長者之XXX
+	["法力恢復"] = {StatLogic.Stats.ManaRegen,}, --
+	["使周圍半徑30碼範圍內的隊友每5秒恢復法力"] = {StatLogic.Stats.ManaRegen,}, --
 
 	["法術穿透"] = {StatLogic.Stats.SpellPenetration,},
 	["法術穿透力"] = {StatLogic.Stats.SpellPenetration,},

@@ -77,8 +77,8 @@ StatLogic.Stats.Health = Stat:new()
 StatLogic.Stats.Mana = Stat:new()
 StatLogic.Stats.ManaRegen = Stat:new()
 StatLogic.Stats.HealthRegen = Stat:new()
-StatLogic.Stats.ManaRegenWhileCasting = Stat:new()
-StatLogic.Stats.HealthRegenInCombat = Stat:new()
+StatLogic.Stats.ManaRegenNotCasting = Stat:new()
+StatLogic.Stats.HealthRegenOutOfCombat = Stat:new()
 
 -- Generic Offensive Stats
 StatLogic.Stats.HitRating = Stat:new({ show = false })

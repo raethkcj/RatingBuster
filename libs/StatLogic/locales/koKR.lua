@@ -27,13 +27,13 @@ L["WholeTextLookup"] = {
 	["반짝이는 마술사 오일"] = {[StatLogic.Stats.SpellDamage] = 36, [StatLogic.Stats.HealingPower] = 36, [StatLogic.Stats.SpellCritRating] = 14}, -- ID: 20749
 	["상급 마술사 오일"] = {[StatLogic.Stats.SpellDamage] = 42, [StatLogic.Stats.HealingPower] = 42}, -- ID: 22522
 
-	["최하급 마나 오일"] = {["MANA_REG"] = 4}, -- ID: 20745
-	["하급 마나 오일"] = {["MANA_REG"] = 8}, -- ID: 20747
-	["반짝이는 마나 오일"] = {["MANA_REG"] = 12, [StatLogic.Stats.HealingPower] = 25}, -- ID: 20748
-	["상급 마나 오일"] = {["MANA_REG"] = 14}, -- ID: 22521
+	["최하급 마나 오일"] = {[StatLogic.Stats.ManaRegen] = 4}, -- ID: 20745
+	["하급 마나 오일"] = {[StatLogic.Stats.ManaRegen] = 8}, -- ID: 20747
+	["반짝이는 마나 오일"] = {[StatLogic.Stats.ManaRegen] = 12, [StatLogic.Stats.HealingPower] = 25}, -- ID: 20748
+	["상급 마나 오일"] = {[StatLogic.Stats.ManaRegen] = 14}, -- ID: 22521
 
 	["전투력"] = {[StatLogic.Stats.AttackPower] = 70}, -- 전투력
-	["활력"] = {["MANA_REG"] = 4, ["HEALTH_REG"] = 4}, -- Enchant Boots - Vitality "Vitality" spell: 27948
+	["활력"] = {[StatLogic.Stats.ManaRegen] = 4, [StatLogic.Stats.HealthRegen] = 4}, -- Enchant Boots - Vitality "Vitality" spell: 27948
 	["냉기의 영혼"] = {[StatLogic.Stats.ShadowDamage] = 54, [StatLogic.Stats.FrostDamage] = 54}, --
 	["태양의 불꽃"] = {[StatLogic.Stats.ArcaneDamage] = 50, [StatLogic.Stats.FireDamage] = 50}, --
 
@@ -73,8 +73,8 @@ L["PreScanPatterns"] = {
 	["^(%d+)의 피해 방어$"] = "BLOCK_VALUE",
 	["^방어도 (%d+)$"] = StatLogic.Stats.Armor,
 	["방어도 보강 %(%+(%d+)%)"] = StatLogic.Stats.BonusArmor,
-	["매 5초마다 (%d+)의 생명력이 회복됩니다.$"] = "HEALTH_REG",
-	["매 5초마다 (%d+)의 마나가 회복됩니다.$"] = "MANA_REG",
+	["매 5초마다 (%d+)의 생명력이 회복됩니다.$"] = StatLogic.Stats.HealthRegen,
+	["매 5초마다 (%d+)의 마나가 회복됩니다.$"] = StatLogic.Stats.ManaRegen,
 	-- Exclude
 	["^(%d+)칸"] = false, -- Set Name (0/9)
 	["^[%D ]+ %((%d+)/%d+%)$"] = false, -- Set Name (0/9)
@@ -156,9 +156,9 @@ L["StatIDLookup"] = {
 	["피해 방어량"] = {"BLOCK_VALUE",}, -- +22 Block Value
 	["방패의 피해 방어량이 증가합니다"] = {"BLOCK_VALUE",},
 
-	["생명력"] = {"HEALTH",},
-	["HP"] = {"HEALTH",},
-	["마나"] = {"MANA",},
+	["생명력"] = {StatLogic.Stats.Health,},
+	["HP"] = {StatLogic.Stats.Health,},
+	["마나"] = {StatLogic.Stats.Mana,},
 
 	["전투력"] = {StatLogic.Stats.AttackPower,},
 	["전투력이 증가합니다"] = {StatLogic.Stats.AttackPower,},
@@ -167,30 +167,30 @@ L["StatIDLookup"] = {
 	["원거리 전투력"] = {StatLogic.Stats.RangedAttackPower,},
 	["원거리 전투력이 증가합니다"] = {StatLogic.Stats.RangedAttackPower,}, -- [High Warlord's Crossbow] ID: 18837
 
-	["생명력 회복량"] = {"MANA_REG",},
-	["매 초마다 (.+)의 생명력"] = {"HEALTH_REG",},
-	["health per"] = {"HEALTH_REG",}, -- Frostwolf Insignia Rank 6 ID:17909
-	["Health every"] = {"MANA_REG",},
-	["health every"] = {"HEALTH_REG",}, -- [Resurgence Rod] ID:17743
-	["your normal health regeneration"] = {"HEALTH_REG",}, -- Demons Blood ID: 10779
-	["매 5초마다 (.+)의 생명력"] = {"HEALTH_REG",}, -- [Onyxia Blood Talisman] ID: 18406
-	["Restoreshealth every 5 sec"] = {"HEALTH_REG",}, -- [Resurgence Rod] ID:17743
-	["마나 회복량"] = {"MANA_REG",}, -- Prophetic Aura +4 Mana Regen/+10 Stamina/+24 Healing Spells spell: 24167
-	["매 초마다 (.+)의 마나"] = {"MANA_REG",},
-	["mana per"] = {"MANA_REG",}, -- Resurgence Rod ID:17743 Most common
-	["Mana every"] = {"MANA_REG",},
-	["mana every"] = {"MANA_REG",},
-	["매 5초마다 (.+)의 마나"] = {"MANA_REG",}, -- [Royal Nightseye] ID: 24057
-	["Mana every 5 Sec"] = {"MANA_REG",}, --
-	["5초당 마나 회복량"] = {"MANA_REG",}, -- Enchant Chest - Restore Mana Prime "+6 mana every 5 sec." spell: 33991
-	["Mana per 5 Seconds"] = {"MANA_REG",}, -- [Royal Shadow Draenite] ID: 23109
-	["Mana Per 5 sec"] = {"MANA_REG",}, -- [Royal Shadow Draenite] ID: 23109
-	["Mana per 5 sec"] = {"MANA_REG",}, -- [Cyclone Shoulderpads] ID: 29031
-	["mana per 5 sec"] = {"MANA_REG",}, -- [Royal Tanzanite] ID: 30603
-	["Restoresmana per 5 sec"] = {"MANA_REG",}, -- [Resurgence Rod] ID:17743
-	["Mana restored per 5 seconds"] = {"MANA_REG",}, -- Magister's Armor Kit +3 Mana restored per 5 seconds spell: 32399
-	["Mana Regenper 5 sec"] = {"MANA_REG",}, -- Enchant Bracer - Mana Regeneration "Mana Regen 4 per 5 sec." spell: 23801
-	["Mana per 5 Sec"] = {"MANA_REG",}, -- Enchant Bracer - Restore Mana Prime "6 Mana per 5 Sec." spell: 27913
+	["생명력 회복량"] = {StatLogic.Stats.ManaRegen,},
+	["매 초마다 (.+)의 생명력"] = {StatLogic.Stats.HealthRegen,},
+	["health per"] = {StatLogic.Stats.HealthRegen,}, -- Frostwolf Insignia Rank 6 ID:17909
+	["Health every"] = {StatLogic.Stats.ManaRegen,},
+	["health every"] = {StatLogic.Stats.HealthRegen,}, -- [Resurgence Rod] ID:17743
+	["your normal health regeneration"] = {StatLogic.Stats.HealthRegen,}, -- Demons Blood ID: 10779
+	["매 5초마다 (.+)의 생명력"] = {StatLogic.Stats.HealthRegen,}, -- [Onyxia Blood Talisman] ID: 18406
+	["Restoreshealth every 5 sec"] = {StatLogic.Stats.HealthRegen,}, -- [Resurgence Rod] ID:17743
+	["마나 회복량"] = {StatLogic.Stats.ManaRegen,}, -- Prophetic Aura +4 Mana Regen/+10 Stamina/+24 Healing Spells spell: 24167
+	["매 초마다 (.+)의 마나"] = {StatLogic.Stats.ManaRegen,},
+	["mana per"] = {StatLogic.Stats.ManaRegen,}, -- Resurgence Rod ID:17743 Most common
+	["Mana every"] = {StatLogic.Stats.ManaRegen,},
+	["mana every"] = {StatLogic.Stats.ManaRegen,},
+	["매 5초마다 (.+)의 마나"] = {StatLogic.Stats.ManaRegen,}, -- [Royal Nightseye] ID: 24057
+	["Mana every 5 Sec"] = {StatLogic.Stats.ManaRegen,}, --
+	["5초당 마나 회복량"] = {StatLogic.Stats.ManaRegen,}, -- Enchant Chest - Restore Mana Prime "+6 mana every 5 sec." spell: 33991
+	["Mana per 5 Seconds"] = {StatLogic.Stats.ManaRegen,}, -- [Royal Shadow Draenite] ID: 23109
+	["Mana Per 5 sec"] = {StatLogic.Stats.ManaRegen,}, -- [Royal Shadow Draenite] ID: 23109
+	["Mana per 5 sec"] = {StatLogic.Stats.ManaRegen,}, -- [Cyclone Shoulderpads] ID: 29031
+	["mana per 5 sec"] = {StatLogic.Stats.ManaRegen,}, -- [Royal Tanzanite] ID: 30603
+	["Restoresmana per 5 sec"] = {StatLogic.Stats.ManaRegen,}, -- [Resurgence Rod] ID:17743
+	["Mana restored per 5 seconds"] = {StatLogic.Stats.ManaRegen,}, -- Magister's Armor Kit +3 Mana restored per 5 seconds spell: 32399
+	["Mana Regenper 5 sec"] = {StatLogic.Stats.ManaRegen,}, -- Enchant Bracer - Mana Regeneration "Mana Regen 4 per 5 sec." spell: 23801
+	["Mana per 5 Sec"] = {StatLogic.Stats.ManaRegen,}, -- Enchant Bracer - Restore Mana Prime "6 Mana per 5 Sec." spell: 27913
 
 	["주문 관통력"] = {StatLogic.Stats.SpellPenetration,}, -- Enchant Cloak - Spell Penetration "+20 Spell Penetration" spell: 34003
 	["주문 관통력이 증가합니다"] = {StatLogic.Stats.SpellPenetration,},

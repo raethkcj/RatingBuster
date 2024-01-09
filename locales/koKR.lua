@@ -561,10 +561,10 @@ L["STA"] = SPELL_STAT3_NAME
 L["INT"] = SPELL_STAT4_NAME
 L["SPI"] = SPELL_STAT5_NAME
 L["PARRY"] = PARRY
-L["MANA_REG"] = "마나 회복량"
-L["NORMAL_MANA_REG"] = "마나 회복량 (시전하지)"
-L["HEALTH_REG"] = "생명력 재생"
-L["NORMAL_HEALTH_REG"] = "생명력 재생 (비전투)"
+L[StatLogic.Stats.ManaRegen] = "마나 회복량"
+L[StatLogic.Stats.ManaRegenNotCasting] = "마나 회복량 (시전하지)"
+L[StatLogic.Stats.HealthRegen] = "생명력 재생"
+L[StatLogic.Stats.HealthRegenOutOfCombat] = "생명력 재생 (비전투)"
 L["PET_STA"] = PET .. SPELL_STAT3_NAME -- Pet Stamina
 L["PET_INT"] = PET .. SPELL_STAT4_NAME -- Pet Intellect
 L["StatModOptionName"] = "%2$s %1$s"
@@ -603,8 +603,8 @@ L[StatLogic.Stats.ArcaneDamage] = SPELL_SCHOOL6_CAP.." "..DAMAGE
 
 L[StatLogic.Stats.SpellPenetration] = PLAYERSTAT_SPELL_COMBAT.." "..SPELL_PENETRATION
 
-L["HEALTH"] = HEALTH
-L["MANA"] = MANA
+L[StatLogic.Stats.Health] = HEALTH
+L[StatLogic.Stats.Mana] = MANA
 
 L[StatLogic.Stats.WeaponDamageAverage] = "Average Damage"
 L[StatLogic.Stats.WeaponDPS] = "초당 공격력"
