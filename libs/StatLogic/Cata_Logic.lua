@@ -1520,11 +1520,6 @@ StatLogic.StatModTable["ALL"] = {
 			["value"] = 15,
 		},
 	},
-	["ADD_BONUS_ARMOR_MOD_AGI"] = {
-		{
-			["value"] = ARMOR_PER_AGILITY,
-		},
-	},
 	["ADD_MANA_REG_MOD_MANA"] = {
 		-- Replenishment - Buff
 		-- 4.0.1: Replenishes 1% of maximum mana per 10 sec.
