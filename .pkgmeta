@@ -35,6 +35,7 @@ move-folders:
 ignore:
   - *.txt
   - *.jpg
+  - scripts
 
 plain-copy:
   - LICENSE.txt
