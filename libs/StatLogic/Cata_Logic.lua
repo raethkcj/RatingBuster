@@ -14,12 +14,11 @@ StatLogic.RatingBase = {
 	[StatLogic.Stats.MeleeCritRating] = 14,
 	[StatLogic.Stats.RangedCritRating] = 14,
 	[StatLogic.Stats.SpellCritRating] = 14,
-	[StatLogic.Stats.ResilienceRating] = 0,
+	[StatLogic.Stats.ResilienceRating] = 7.96417713165283,
 	[StatLogic.Stats.MeleeHasteRating] = 10,
 	[StatLogic.Stats.RangedHasteRating] = 10,
 	[StatLogic.Stats.SpellHasteRating] = 10,
 	[StatLogic.Stats.ExpertiseRating] = 2.34483,
-	[StatLogic.Stats.ArmorPenetrationRating] = 4.69512176513672 / 1.1,
 	[StatLogic.Stats.MasteryRating] = 14,
 }
 
