@@ -146,19 +146,19 @@ if addon.class == "DRUID" then
 			-- Cat Form
 			{
 				["value"] = 1,
-				["buff"] = 768,
+				["aura"] = 768,
 				["group"] = addon.BuffGroup.Feral,
 			},
 			-- Bear Form
 			{
 				["value"] = 1,
-				["buff"] = 5487,
+				["aura"] = 5487,
 				["group"] = addon.BuffGroup.Feral,
 			},
 			-- Dire Bear Form
 			{
 				["value"] = 1,
-				["buff"] = 9634,
+				["aura"] = 9634,
 				["group"] = addon.BuffGroup.Feral,
 			},
 		},
@@ -172,7 +172,7 @@ if addon.class == "DRUID" then
 			-- Druid: Cat Form - Buff
 			{
 				["value"] = 1,
-				["buff"] = 768,
+				["aura"] = 768,
 			},
 		},
 		["ADD_SPELL_CRIT"] = {
@@ -215,7 +215,7 @@ if addon.class == "DRUID" then
 				["rank"] = {
 					2, 4,
 				},
-				["buff"] = 768,
+				["aura"] = 768,
 			},
 		},
 		["ADD_MELEE_CRIT"] = {
@@ -230,7 +230,7 @@ if addon.class == "DRUID" then
 				["rank"] = {
 					2, 4, 6,
 				},
-				["buff"] = 768,
+				["aura"] = 768,
 			},
 			-- Talent: Sharpened Claws (Bear Form)
 			{
@@ -239,7 +239,7 @@ if addon.class == "DRUID" then
 				["rank"] = {
 					2, 4, 6,
 				},
-				["buff"] = 5487,
+				["aura"] = 5487,
 			},
 			-- Talent: Sharpened Claws (Dire Bear Form)
 			{
@@ -248,7 +248,7 @@ if addon.class == "DRUID" then
 				["rank"] = {
 					2, 4, 6,
 				},
-				["buff"] = 9634,
+				["aura"] = 9634,
 			},
 		},
 		["MOD_ARMOR"] = {
@@ -265,19 +265,19 @@ if addon.class == "DRUID" then
 			--        Shapeshift into a bear, increasing melee attack power by 120, armor contribution from items by 180%, and health by 560.
 			{
 				["value"] = 1.8,
-				["buff"] = 5487,		-- ["Bear Form"],
+				["aura"] = 5487,		-- ["Bear Form"],
 			},
 			-- Druid: Dire Bear Form - Buff
 			--        Shapeshift into a dire bear, increasing melee attack power by 180, armor contribution from items by 360%, and health by 1240.
 			{
 				["value"] = 3.6,
-				["buff"] = 9634,		-- ["Dire Bear Form"],
+				["aura"] = 9634,		-- ["Dire Bear Form"],
 			},
 			-- Druid: Moonkin Form - Buff
 			--        While in this form the armor contribution from items is increased by 360%, and all party members within 30 yards have their spell critical chance increased by 3%.
 			{
 				["value"] = 3.6,
-				["buff"] = 24858,		-- ["Moonkin Form"],
+				["aura"] = 24858,		-- ["Moonkin Form"],
 			},
 		},
 		-- Druid: Heart of the Wild (Rank 5) - 2,15
@@ -289,7 +289,7 @@ if addon.class == "DRUID" then
 				["rank"] = {
 					0.04, 0.08, 0.12, 0.16, 0.20,
 				},
-				["buff"] = 5487,		-- ["Bear Form"],
+				["aura"] = 5487,		-- ["Bear Form"],
 			},
 			{
 				["tab"] = 2,
@@ -297,7 +297,7 @@ if addon.class == "DRUID" then
 				["rank"] = {
 					0.04, 0.08, 0.12, 0.16, 0.20,
 				},
-				["buff"] = 9634,		-- ["Dire Bear Form"],
+				["aura"] = 9634,		-- ["Dire Bear Form"],
 			},
 		},
 		-- Druid: Heart of the Wild (Rank 5) - 2,15
@@ -309,7 +309,7 @@ if addon.class == "DRUID" then
 				["rank"] = {
 					0.04, 0.08, 0.12, 0.16, 0.20,
 				},
-				["buff"] = 768,		-- ["Cat Form"],
+				["aura"] = 768,		-- ["Cat Form"],
 			},
 		},
 		-- Druid: Heart of the Wild (Rank 5) - 2,15
@@ -369,7 +369,7 @@ elseif addon.class == "HUNTER" then
 			-- Buff: Aspect of the Monkey
 			{
 				["value"] = 8,
-				["buff"] = 13163,
+				["aura"] = 13163,
 			},
 			-- Talent: Improved Aspect of the Monkey (Aspect of the Monkey)
 			{
@@ -378,12 +378,12 @@ elseif addon.class == "HUNTER" then
 				["rank"] = {
 					1, 2, 3, 4, 5,
 				},
-				["buff"] = 13163,
+				["aura"] = 13163,
 			},
 			-- Buff: Deterrence
 			{
 				["value"] = 25,
-				["buff"] = 19263,
+				["aura"] = 19263,
 			},
 		},
 		["ADD_MELEE_CRIT"] = {
@@ -423,7 +423,7 @@ elseif addon.class == "HUNTER" then
 			{
 				["rune"] = 6891,
 				["slot"] = INVSLOT_CHEST,
-				["buff"] = 409580,
+				["aura"] = 409580,
 				["value"] = 0.1,
 			},
 		},
@@ -442,7 +442,7 @@ elseif addon.class == "HUNTER" then
 			{
 				["rune"] = 6891,
 				["slot"] = INVSLOT_CHEST,
-				["buff"] = 409580,
+				["aura"] = 409580,
 				["value"] = 0.1,
 			},
 		},
@@ -452,7 +452,7 @@ elseif addon.class == "HUNTER" then
 			{
 				["rune"] = 6891,
 				["slot"] = INVSLOT_CHEST,
-				["buff"] = 409580,
+				["aura"] = 409580,
 				["value"] = 0.1,
 			},
 		},
@@ -462,7 +462,7 @@ elseif addon.class == "HUNTER" then
 			{
 				["rune"] = 6891,
 				["slot"] = INVSLOT_CHEST,
-				["buff"] = 409580,
+				["aura"] = 409580,
 				["value"] = 0.1,
 			},
 		},
@@ -472,7 +472,7 @@ elseif addon.class == "HUNTER" then
 			{
 				["rune"] = 6891,
 				["slot"] = INVSLOT_CHEST,
-				["buff"] = 409580,
+				["aura"] = 409580,
 				["value"] = 0.1,
 			},
 		},
@@ -532,7 +532,7 @@ elseif addon.class == "MAGE" then
 			-- Mage: Mage Armor - Buff
 			{
 				["value"] = 0.3,
-				["buff"] = 6117,		-- ["Mage Armor"],
+				["aura"] = 6117,		-- ["Mage Armor"],
 			},
 			-- Mage: Enlightenment - Rune
 			--   While below 30% mana 10% of your mana regeneration continues while casting.
@@ -540,7 +540,7 @@ elseif addon.class == "MAGE" then
 				["rune"] = 6922,
 				["slot"] = INVSLOT_CHEST,
 				["value"] = 0.1,
-				["buff"] = 412325,
+				["aura"] = 412325,
 			},
 			-- Mage: Arcane Surge - Rune
 			--   Afterward, your normal mana regeneration is activated and increased by 300% for 8 sec.
@@ -548,7 +548,7 @@ elseif addon.class == "MAGE" then
 				["rune"] = 7021,
 				["slot"] = INVSLOT_LEGS,
 				["value"] = 1.0,
-				["buff"] = 425124,
+				["aura"] = 425124,
 			},
 		},
 		-- Mage: Arcane Mind (Rank 5) - 1,14
@@ -750,7 +750,7 @@ elseif addon.class == "PRIEST" then
 			-- Buff: Elune's Grace (Night Elf Priest Racial)
 			{
 				["value"] = 10,
-				["buff"] = 2651,
+				["aura"] = 2651,
 			},
 		},
 		-- Priest: Mental Strength (Rank 5) - 1,12
@@ -818,12 +818,12 @@ elseif addon.class == "ROGUE" then
 			-- Buff: Evasion
 			{
 				["value"] = 50,
-				["buff"] = 5277,
+				["aura"] = 5277,
 			},
 			-- Buff: Ghostly Strike
 			{
 				["value"] = 15,
-				["buff"] = 14278,
+				["aura"] = 14278,
 			},
 		},
 		["ADD_MELEE_CRIT"] = {
@@ -917,7 +917,7 @@ elseif addon.class == "SHAMAN" then
 			{
 				["tab"] = 1,
 				["num"] = 11,
-				["buff"] = 30165,
+				["aura"] = 30165,
 				["rank"] = {
 					3, 6, 9,
 				},
@@ -978,7 +978,7 @@ elseif addon.class == "SHAMAN" then
 				["rune"] = 6875,
 				["slot"] = INVSLOT_HAND,
 				["value"] = 0.01,
-				["buff"] = 408510,
+				["aura"] = 408510,
 			},
 		},
 		["MOD_HEALTH"] = {
@@ -988,7 +988,7 @@ elseif addon.class == "SHAMAN" then
 				["rune"] = 6886,
 				["slot"] = INVSLOT_LEGS,
 				["value"] = 0.3,
-				["buff"] = 408680
+				["aura"] = 408680
 			}
 		},
 	}
@@ -1049,7 +1049,7 @@ elseif addon.class == "WARLOCK" then
 				["rune"] = 7039,
 				["slot"] = INVSLOT_LEGS,
 				["value"] = 30,
-				["buff"] = 425463,
+				["aura"] = 425463,
 			},
 		},
 		["ADD_MELEE_CRIT"] = {
@@ -1068,7 +1068,7 @@ elseif addon.class == "WARLOCK" then
 				["rune"] = 7039,
 				["slot"] = INVSLOT_LEGS,
 				["value"] = 30,
-				["buff"] = 425463,
+				["aura"] = 425463,
 			},
 		},
 		["MOD_ARMOR"] = {
@@ -1078,7 +1078,7 @@ elseif addon.class == "WARLOCK" then
 				["rune"] = 6816,
 				["slot"] = INVSLOT_HAND,
 				["value"] = 5.0,
-				["buff"] = 403789,
+				["aura"] = 403789,
 			},
 		},
 		["ADD_DODGE"] = {
@@ -1091,7 +1091,7 @@ elseif addon.class == "WARLOCK" then
 				["rune"] = 7039,
 				["slot"] = INVSLOT_LEGS,
 				["value"] = 30,
-				["buff"] = 425463,
+				["aura"] = 425463,
 			},
 		},
 		-- Warlock: Demonic Pact - Rune
@@ -1101,7 +1101,7 @@ elseif addon.class == "WARLOCK" then
 				["rune"] = 7038,
 				["slot"] = INVSLOT_LEGS,
 				["value"] = 0.1,
-				["buff"] = 425467,
+				["aura"] = 425467,
 			},
 		},
 		-- Warlock: Demonic Pact - Rune
@@ -1111,7 +1111,7 @@ elseif addon.class == "WARLOCK" then
 				["rune"] = 7038,
 				["slot"] = INVSLOT_LEGS,
 				["value"] = 0.1,
-				["buff"] = 425467,
+				["aura"] = 425467,
 			},
 		},
 	}
@@ -1161,7 +1161,7 @@ elseif addon.class == "WARRIOR" then
 			--          When activated, increases your physical damage by 20% and makes you immune to Fear effects, but lowers your armor and all resistances by 20%.  Lasts 30 sec.
 			{
 				["value"] = 0.8,
-				["buff"] = 12328,		-- ["Death Wish"],
+				["aura"] = 12328,		-- ["Death Wish"],
 			},
 		},
 		["ADD_MELEE_CRIT"] = {
@@ -1291,7 +1291,7 @@ StatLogic.StatModTable["ALL"] = {
 			["rank"] = {
 				0.15, 0.30,
 			},
-			["buff"] = 20236,
+			["aura"] = 20236,
 		},
 		-- Priest: Inspiration (Rank 1/2/3) - Buff
 		--         Increases armor by 8%/16%/25%.
@@ -1299,7 +1299,7 @@ StatLogic.StatModTable["ALL"] = {
 			["rank"] = {
 				0.08, 0.16, 0.25,
 			},
-			["buff"] = 15363,
+			["aura"] = 15363,
 			["group"] = addon.BuffGroup.Armor,
 		},
 		-- Shaman: Ancestral Fortitude (Rank 1/2/3) - Buff
@@ -1308,7 +1308,7 @@ StatLogic.StatModTable["ALL"] = {
 			["rank"] = {
 				0.08, 0.16, 0.25,
 			},
-			["buff"] = 16237,
+			["aura"] = 16237,
 			["group"] = addon.BuffGroup.Armor,
 		},
 	},
@@ -1317,21 +1317,21 @@ StatLogic.StatModTable["ALL"] = {
 		--   Increases stats by 10%.
 		{
 			["value"] = 0.1,
-			["buff"] = 20217,
+			["aura"] = 20217,
 			["group"] = addon.BuffGroup.AllStats,
 		},
 		-- Greater Blessing of Kings - Buff
 		--   Increases stats by 10%.
 		{
 			["value"] = 0.1,
-			["buff"] = 25898,
+			["aura"] = 25898,
 			["group"] = addon.BuffGroup.AllStats,
 		},
 		-- Aspect of the Lion - Buff
 		--   Increases stats by 10%.
 		{
 			["value"] = 0.1,
-			["buff"] = 409583,
+			["aura"] = 409583,
 			["group"] = addon.BuffGroup.AllStats,
 		},
 	},
@@ -1340,21 +1340,21 @@ StatLogic.StatModTable["ALL"] = {
 		--   Increases stats by 10%.
 		{
 			["value"] = 0.1,
-			["buff"] = 20217,
+			["aura"] = 20217,
 			["group"] = addon.BuffGroup.AllStats,
 		},
 		-- Greater Blessing of Kings - Buff
 		--   Increases stats by 10%.
 		{
 			["value"] = 0.1,
-			["buff"] = 25898,
+			["aura"] = 25898,
 			["group"] = addon.BuffGroup.AllStats,
 		},
 		-- Aspect of the Lion - Buff
 		--   Increases stats by 10%.
 		{
 			["value"] = 0.1,
-			["buff"] = 409583,
+			["aura"] = 409583,
 			["group"] = addon.BuffGroup.AllStats,
 		},
 	},
@@ -1363,21 +1363,21 @@ StatLogic.StatModTable["ALL"] = {
 		--   Increases stats by 10%.
 		{
 			["value"] = 0.1,
-			["buff"] = 20217,
+			["aura"] = 20217,
 			["group"] = addon.BuffGroup.AllStats,
 		},
 		-- Greater Blessing of Kings - Buff
 		--   Increases stats by 10%.
 		{
 			["value"] = 0.1,
-			["buff"] = 25898,
+			["aura"] = 25898,
 			["group"] = addon.BuffGroup.AllStats,
 		},
 		-- Aspect of the Lion - Buff
 		--   Increases stats by 10%.
 		{
 			["value"] = 0.1,
-			["buff"] = 409583,
+			["aura"] = 409583,
 			["group"] = addon.BuffGroup.AllStats,
 		},
 	},
@@ -1386,21 +1386,21 @@ StatLogic.StatModTable["ALL"] = {
 		--   Increases stats by 10%.
 		{
 			["value"] = 0.1,
-			["buff"] = 20217,
+			["aura"] = 20217,
 			["group"] = addon.BuffGroup.AllStats,
 		},
 		-- Greater Blessing of Kings - Buff
 		--   Increases stats by 10%.
 		{
 			["value"] = 0.1,
-			["buff"] = 25898,
+			["aura"] = 25898,
 			["group"] = addon.BuffGroup.AllStats,
 		},
 		-- Aspect of the Lion - Buff
 		--   Increases stats by 10%.
 		{
 			["value"] = 0.1,
-			["buff"] = 409583,
+			["aura"] = 409583,
 			["group"] = addon.BuffGroup.AllStats,
 		},
 	},
@@ -1409,50 +1409,50 @@ StatLogic.StatModTable["ALL"] = {
 		--   Increases stats by 10%.
 		{
 			["value"] = 0.1,
-			["buff"] = 20217,
+			["aura"] = 20217,
 			["group"] = addon.BuffGroup.AllStats,
 		},
 		-- Greater Blessing of Kings - Buff
 		--   Increases stats by 10%.
 		{
 			["value"] = 0.1,
-			["buff"] = 25898,
+			["aura"] = 25898,
 			["group"] = addon.BuffGroup.AllStats,
 		},
 		-- Aspect of the Lion - Buff
 		--   Increases stats by 10%.
 		{
 			["value"] = 0.1,
-			["buff"] = 409583,
+			["aura"] = 409583,
 			["group"] = addon.BuffGroup.AllStats,
 		},
 	},
 	["ADD_MELEE_CRIT"] = {
 		-- Leader of the Pack
 		{
-			["buff"] = 24932,
+			["aura"] = 24932,
 			["value"] = 3,
 		},
 		-- Rallying Cry of the Dragonslayer
 		{
-			["buff"] = 22888,
+			["aura"] = 22888,
 			["value"] = 5,
 		},
 		-- Boon of Blackfathom
 		{
-			["buff"] = 430947,
+			["aura"] = 430947,
 			["value"] = 2,
 		},
 	},
 	["ADD_SPELL_CRIT"] = {
 		-- Moonkin Aura
 		{
-			["buff"] = 24907,
+			["aura"] = 24907,
 			["value"] = 3,
 		},
 		-- Rallying Cry of the Dragonslayer
 		{
-			["buff"] = 22888,
+			["aura"] = 22888,
 			["value"] = 10,
 		},
 	}

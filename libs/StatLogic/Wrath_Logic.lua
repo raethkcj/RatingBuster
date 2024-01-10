@@ -997,19 +997,19 @@ if addon.class == "DRUID" then
 			-- Cat Form
 			{
 				["value"] = 1,
-				["buff"] = 768,
+				["aura"] = 768,
 				["group"] = addon.BuffGroup.Feral,
 			},
 			-- Bear Form
 			{
 				["value"] = 1,
-				["buff"] = 5487,
+				["aura"] = 5487,
 				["group"] = addon.BuffGroup.Feral,
 			},
 			-- Dire Bear Form
 			{
 				["value"] = 1,
-				["buff"] = 9634,
+				["aura"] = 9634,
 				["group"] = addon.BuffGroup.Feral,
 			},
 		},
@@ -1023,7 +1023,7 @@ if addon.class == "DRUID" then
 			-- Druid: Cat Form - Buff
 			{
 				["value"] = 1,
-				["buff"] = 768,
+				["aura"] = 768,
 			},
 		},
 		["ADD_NORMAL_MANA_REG_MOD_SPI"] = {
@@ -1045,7 +1045,7 @@ if addon.class == "DRUID" then
 				["rank"] = {
 					0.1, 0.2, 0.3,
 				},
-				["buff"] = 24858, -- ["Moonkin Form"],
+				["aura"] = 24858, -- ["Moonkin Form"],
 			},
 		},
 		-- Druid: Improved Tree of Life (Rank 3) - 3,24
@@ -1057,7 +1057,7 @@ if addon.class == "DRUID" then
 				["rank"] = {
 					0.05, 0.10, 0.15,
 				},
-				["buff"] = 33891, -- ["Tree of Life"],
+				["aura"] = 33891, -- ["Tree of Life"],
 			},
 		},
 		-- Druid: Lunar Guidance (Rank 3) - 1,12
@@ -1131,7 +1131,7 @@ if addon.class == "DRUID" then
 				["rank"] = {
 					2, 4,
 				},
-				["buff"] = 32356,
+				["aura"] = 32356,
 			},
 			-- Talent: Feral Swiftness (Bear Form)
 			{
@@ -1140,7 +1140,7 @@ if addon.class == "DRUID" then
 				["rank"] = {
 					2, 4,
 				},
-				["buff"] = 32357,
+				["aura"] = 32357,
 			},
 			-- Feral Swiftness (Dire Bear Form)
 			{
@@ -1149,7 +1149,7 @@ if addon.class == "DRUID" then
 				["rank"] = {
 					2, 4,
 				},
-				["buff"] = 9634,
+				["aura"] = 9634,
 			},
 			-- Talent: Natural Reaction (Bear Form)
 			{
@@ -1158,7 +1158,7 @@ if addon.class == "DRUID" then
 				["rank"] = {
 					2, 4, 6,
 				},
-				["buff"] = 32357,
+				["aura"] = 32357,
 			},
 			-- Talent: Natural Reaction (Dire Bear Form)
 			{
@@ -1167,7 +1167,7 @@ if addon.class == "DRUID" then
 				["rank"] = {
 					2, 4, 6,
 				},
-				["buff"] = 9634,
+				["aura"] = 9634,
 			},
 		},
 		-- Druid: Thick Hide (Rank 3) - 2,5
@@ -1195,15 +1195,15 @@ if addon.class == "DRUID" then
 			},
 			{
 				["value"] = 1.8,
-				["buff"] = 32357,		-- ["Bear Form"],
+				["aura"] = 32357,		-- ["Bear Form"],
 			},
 			{
 				["value"] = 3.7,
-				["buff"] = 9634,		-- ["Dire Bear Form"],
+				["aura"] = 9634,		-- ["Dire Bear Form"],
 			},
 			{
 				["value"] = 3.7,
-				["buff"] = 24858,		-- ["Moonkin Form"],
+				["aura"] = 24858,		-- ["Moonkin Form"],
 			},
 			{
 				["tab"] = 3,
@@ -1211,7 +1211,7 @@ if addon.class == "DRUID" then
 				["rank"] = {
 					0.67, 1.33, 2,
 				},
-				["buff"] = 33891,		-- ["Tree of Life"],
+				["aura"] = 33891,		-- ["Tree of Life"],
 			},
 			{
 				["tab"] = 2,
@@ -1219,7 +1219,7 @@ if addon.class == "DRUID" then
 				["rank"] = {
 					0.11, 0.22, 0.33,
 				},
-				["buff"] = 32357,		-- ["Bear Form"],
+				["aura"] = 32357,		-- ["Bear Form"],
 			},
 			{
 				["tab"] = 2,
@@ -1227,7 +1227,7 @@ if addon.class == "DRUID" then
 				["rank"] = {
 					0.11, 0.22, 0.33,
 				},
-				["buff"] = 9634,		-- ["Dire Bear Form"],
+				["aura"] = 9634,		-- ["Dire Bear Form"],
 			},
 		},
 		-- Druid: Predatory Strikes (Rank 3) - 2,10
@@ -1240,7 +1240,7 @@ if addon.class == "DRUID" then
 				["rank"] = {
 					0.07, 0.14, 0.20,
 				},
-				["buff"] = 32356,		-- ["Cat Form"],
+				["aura"] = 32356,		-- ["Cat Form"],
 			},
 			{
 				["tab"] = 2,
@@ -1248,7 +1248,7 @@ if addon.class == "DRUID" then
 				["rank"] = {
 					0.07, 0.14, 0.20,
 				},
-				["buff"] = 32357,		-- ["Bear Form"],
+				["aura"] = 32357,		-- ["Bear Form"],
 			},
 			{
 				["tab"] = 2,
@@ -1256,7 +1256,7 @@ if addon.class == "DRUID" then
 				["rank"] = {
 					0.07, 0.14, 0.20,
 				},
-				["buff"] = 9634,		-- ["Dire Bear Form"],
+				["aura"] = 9634,		-- ["Dire Bear Form"],
 			},
 		},
 		-- Druid: Survival Instincts - Buff
@@ -1266,7 +1266,7 @@ if addon.class == "DRUID" then
 		["MOD_HEALTH"] = {
 			{
 				["value"] = 0.3,
-				["buff"] = 50322,		-- ["Survival Instincts"],
+				["aura"] = 50322,		-- ["Survival Instincts"],
 			},
 		},
 		-- Druid: Improved Mark of the Wild (Rank 2) - 3,1
@@ -1298,7 +1298,7 @@ if addon.class == "DRUID" then
 				["rank"] = {
 					0.02, 0.04, 0.06, 0.08, 0.1,
 				},
-				["buff"] = 32357,		-- ["Bear Form"],
+				["aura"] = 32357,		-- ["Bear Form"],
 			},
 			{
 				["tab"] = 2,
@@ -1306,7 +1306,7 @@ if addon.class == "DRUID" then
 				["rank"] = {
 					0.02, 0.04, 0.06, 0.08, 0.1,
 				},
-				["buff"] = 9634,		-- ["Dire Bear Form"],
+				["aura"] = 9634,		-- ["Dire Bear Form"],
 			},
 			-- Survival of the Fittest: 2%/4%/6% all stats
 			{
@@ -1319,12 +1319,12 @@ if addon.class == "DRUID" then
 			-- Bear Form / Dire Bear Form: +25% stamina
 			{
 				["value"] = 0.25,
-				["buff"] = 32357,		-- ["Bear Form"],
+				["aura"] = 32357,		-- ["Bear Form"],
 			},
 			-- Bear Form / Dire Bear Form: +25% stamina
 			{
 				["value"] = 0.25,
-				["buff"] = 9634,		-- ["Dire Bear Form"],
+				["aura"] = 9634,		-- ["Dire Bear Form"],
 			},
 		},
 		-- Druid: Improved Mark of the Wild (Rank 2) - 3,1
@@ -1363,7 +1363,7 @@ if addon.class == "DRUID" then
 				["rank"] = {
 					0.02, 0.04, 0.06, 0.08, 0.1,
 				},
-				["buff"] = 32356,		-- ["Cat Form"],
+				["aura"] = 32356,		-- ["Cat Form"],
 			},
 			{
 				["tab"] = 2,
@@ -1371,7 +1371,7 @@ if addon.class == "DRUID" then
 				["rank"] = {
 					0.02, 0.04, 0.06,
 				},
-				["buff"] = 32357,		-- ["Bear Form"],
+				["aura"] = 32357,		-- ["Bear Form"],
 			},
 			{
 				["tab"] = 2,
@@ -1379,7 +1379,7 @@ if addon.class == "DRUID" then
 				["rank"] = {
 					0.02, 0.04, 0.06,
 				},
-				["buff"] = 9634,		-- ["Dire Bear Form"],
+				["aura"] = 9634,		-- ["Dire Bear Form"],
 			},
 		},
 		-- Druid: Improved Mark of the Wild (Rank 2) - 3,1
@@ -1442,7 +1442,7 @@ if addon.class == "DRUID" then
 				["rank"] = {
 					0.02, 0.04, 0.06, 0.08, 0.1,
 				},
-				["buff"] = 24858,		-- ["Moonkin Form"],
+				["aura"] = 24858,		-- ["Moonkin Form"],
 			},
 		},
 		-- Druid: Improved Mark of the Wild (Rank 2) - 3,1
@@ -1536,11 +1536,11 @@ elseif addon.class == "DEATHKNIGHT" then
 			},
 			{
 				["value"] = 0.25,
-				["buff"] = 51271,		-- ["Unbreakable Armor"],
+				["aura"] = 51271,		-- ["Unbreakable Armor"],
 			},
 			{
 				["value"] = 0.2,
-				["buff"] = 51271,		-- ["Unbreakable Armor"],
+				["aura"] = 51271,		-- ["Unbreakable Armor"],
 				["glyph"] = 58635,		-- ["Glyph of Unbreakable Armor"],
 			},
 			{
@@ -1612,7 +1612,7 @@ elseif addon.class == "DEATHKNIGHT" then
 			},
 			{
 				["value"] = 0.2,
-				["buff"] = 51271,		-- ["Unbreakable Armor"],
+				["aura"] = 51271,		-- ["Unbreakable Armor"],
 			},
 			{
 				["tab"] = 3,
@@ -1657,7 +1657,7 @@ elseif addon.class == "HUNTER" then
 				["tab"] = 3,
 				["num"] = 19,
 				["value"] = 0.25,
-				["buff"] = 34501,
+				["aura"] = 34501,
 			}
 		},
 		["ADD_RANGED_AP_MOD_AGI"] = {
@@ -1671,7 +1671,7 @@ elseif addon.class == "HUNTER" then
 				["tab"] = 3,
 				["num"] = 19,
 				["value"] = 0.25,
-				["buff"] = 34501,
+				["aura"] = 34501,
 			}
 		},
 		["ADD_NORMAL_MANA_REG_MOD_SPI"] = {
@@ -1722,7 +1722,7 @@ elseif addon.class == "HUNTER" then
 			-- Buff: Aspect of the Monkey
 			{
 				["value"] = 18,
-				["buff"] = 13163,
+				["aura"] = 13163,
 			},
 			-- Talent: Improved Aspect of the Monkey (Aspect of the Monkey)
 			{
@@ -1731,12 +1731,12 @@ elseif addon.class == "HUNTER" then
 				["rank"] = {
 					2, 4, 6,
 				},
-				["buff"] = 13163,
+				["aura"] = 13163,
 			},
 			-- Buff: Aspect of the Dragonhawk
 			{
 				["value"] = 18,
-				["buff"] = 61846,
+				["aura"] = 61846,
 			},
 			-- Talent: Improved Aspect of the Monkey (Aspect of the Dragonhawk)
 			{
@@ -1745,7 +1745,7 @@ elseif addon.class == "HUNTER" then
 				["rank"] = {
 					2, 4, 6,
 				},
-				["buff"] = 61846,
+				["aura"] = 61846,
 			},
 		},
 		-- Hunter: Thick Hide (Rank 3) - 1,5
@@ -1851,27 +1851,27 @@ elseif addon.class == "MAGE" then
 			--       increases your critical strike rating by 35% of your spirit
 			{
 				["value"] = 0.35,
-				["buff"] = 30482, -- ["Molten Armor"],
+				["aura"] = 30482, -- ["Molten Armor"],
 			},
 			-- Mage: Glyph of Molten Armor - Major Glyph
 			--       Your Molten Armor grants an additional 20% of your spirit as critical strike rating.
 			{
 				["value"] = 0.2,
-				["buff"] = 30482, -- ["Molten Armor"],
+				["aura"] = 30482, -- ["Molten Armor"],
 				["glyph"] = 56382, -- Glyph of Molten Armor,
 			},
 			-- Mage: Khadgar's Regalia(843), Sunstrider's Regalia(844) 2pc - Item Set
 			--       converts an additional 15% of your spirit into critical strike rating when Molten Armor is active.
 			{
 				["value"] = 0.15,
-				["buff"] = 30482, -- ["Molten Armor"],
+				["aura"] = 30482, -- ["Molten Armor"],
 				-- Khadgar's Regalia
 				["set"] = 843,
 				["pieces"] = 2,
 			},
 			{
 				["value"] = 0.15,
-				["buff"] = 30482, -- ["Molten Armor"],
+				["aura"] = 30482, -- ["Molten Armor"],
 				-- Sunstrider's Regalia
 				["set"] = 844,
 				["pieces"] = 2,
@@ -1909,25 +1909,25 @@ elseif addon.class == "MAGE" then
 			},
 			{
 				["value"] = 0.5,
-				["buff"] = 6117, -- ["Mage Armor"],
+				["aura"] = 6117, -- ["Mage Armor"],
 			},
 			{
 				["value"] = 0.1,
-				["buff"] = 6117, -- ["Mage Armor"],
+				["aura"] = 6117, -- ["Mage Armor"],
 				-- Khadgar's Regalia
 				["set"] = 843,
 				["pieces"] = 2,
 			},
 			{
 				["value"] = 0.1,
-				["buff"] = 6117, -- ["Mage Armor"],
+				["aura"] = 6117, -- ["Mage Armor"],
 				-- Sunstrider's Regalia
 				["set"] = 844,
 				["pieces"] = 2,
 			},
 			{
 				["value"] = 0.2,
-				["buff"] = 6117, -- ["Mage Armor"],
+				["aura"] = 6117, -- ["Mage Armor"],
 				["glyph"] = 56383, -- Glyph of Mage Armor,
 			},
 			{
@@ -2180,7 +2180,7 @@ elseif addon.class == "PRIEST" then
 			{
 				["tab"] = 2,
 				["num"] = 17,
-				["buff"] = 34754,
+				["aura"] = 34754,
 				["rank"] = {
 					0.16, 0.32, 0.50,
 				},
@@ -2201,7 +2201,7 @@ elseif addon.class == "PRIEST" then
 			{
 				["tab"] = 3,
 				["num"] = 1,
-				["buff"] = 15271,
+				["aura"] = 15271,
 				["value"] = 0.83,
 			},
 			-- Priest: Improved Spirit Tap (Rank 2) - 3,2
@@ -2209,7 +2209,7 @@ elseif addon.class == "PRIEST" then
 			{
 				["tab"] = 3,
 				["num"] = 2,
-				["buff"] = 59000,
+				["aura"] = 59000,
 				["rank"] = {
 					0.17, 0.33,
 				},
@@ -2239,7 +2239,7 @@ elseif addon.class == "PRIEST" then
 			--	your spell power by 30% of your Spirit for 10 sec.
 			{
 				["glyph"] = 55689,
-				["buff"] = 61792,
+				["aura"] = 61792,
 				["value"] = 0.30,
 			},
 		},
@@ -2317,7 +2317,7 @@ elseif addon.class == "PRIEST" then
 			{
 				["tab"] = 3,
 				["num"] = 1,
-				["buff"] = 15271,
+				["aura"] = 15271,
 				["value"] = 1.00,
 			},
 			-- Priest: Improved Spirit Tap (Rank 2) - 3,2
@@ -2327,7 +2327,7 @@ elseif addon.class == "PRIEST" then
 			{
 				["tab"] = 3,
 				["num"] = 2,
-				["buff"] = 59000,
+				["aura"] = 59000,
 				["rank"] = {
 					0.05, 0.10,
 				},
@@ -2390,12 +2390,12 @@ elseif addon.class == "ROGUE" then
 			-- Buff: Evasion
 			{
 				["value"] = 50,
-				["buff"] = 26669,
+				["aura"] = 26669,
 			},
 			-- Buff: Ghostly Strike
 			{
 				["value"] = 15,
-				["buff"] = 31022,
+				["aura"] = 31022,
 			},
 		},
 		-- Rogue: Sinister Calling (Rank 5) - 3,22
@@ -2574,7 +2574,7 @@ elseif addon.class == "WARLOCK" then
 		["MOD_ARMOR"] = {
 			{
 				["value"] = 6,
-				["buff"] = 47241,		-- ["Metamorphosis"],
+				["aura"] = 47241,		-- ["Metamorphosis"],
 			},
 		},
 		-- Warlock: Demonic Pact - 2,26
@@ -2586,7 +2586,7 @@ elseif addon.class == "WARLOCK" then
 				["rank"] = {
 					0.02, 0.04, 0.06, 0.08, 0.1,
 				},
-				["buff"] = 47240,		-- ["Demonic Pact"],
+				["aura"] = 47240,		-- ["Demonic Pact"],
 			},
 		},
 		-- Warlock: Demonic Pact - 2,26
@@ -2598,7 +2598,7 @@ elseif addon.class == "WARLOCK" then
 				["rank"] = {
 					0.02, 0.04, 0.06, 0.08, 0.1,
 				},
-				["buff"] = 47240,		-- ["Demonic Pact"],
+				["aura"] = 47240,		-- ["Demonic Pact"],
 			},
 		},
 		-- Warlock: Fel Armor (Rank 4) - Buff
@@ -2611,7 +2611,7 @@ elseif addon.class == "WARLOCK" then
 		["ADD_SPELL_DMG_MOD_SPI"] = {
 			{
 				["value"] = 0.3,
-				["buff"] = 28176, -- ["Fel Armor"],
+				["aura"] = 28176, -- ["Fel Armor"],
 			},
 			{
 				["tab"] = 2,
@@ -2619,12 +2619,12 @@ elseif addon.class == "WARLOCK" then
 				["rank"] = {
 					0.03, 0.06, 0.09,
 				},
-				["buff"] = 28176, -- ["Fel Armor"],
+				["aura"] = 28176, -- ["Fel Armor"],
 			},
 			{
 				["value"] = 0.2,
 				["glyph"] = 63320,
-				["buff"] = 63321, -- ["Life Tap"],
+				["aura"] = 63321, -- ["Life Tap"],
 			},
 		},
 		-- Warlock: Fel Armor (Rank 4) - Buff
@@ -2636,7 +2636,7 @@ elseif addon.class == "WARLOCK" then
 			{
 				["value"] = 0.2,
 				["glyph"] = 63320,
-				["buff"] = 63321, -- ["Life Tap"],
+				["aura"] = 63321, -- ["Life Tap"],
 			},
 		},
 		["ADD_PET_STA_MOD_STA"] = {
@@ -2797,7 +2797,7 @@ elseif addon.class == "WARRIOR" then
 		["MOD_HEALTH"] = {
 			{
 				["value"] = 0.3,
-				["buff"] = 12975,		-- ["Last Stand"],
+				["aura"] = 12975,		-- ["Last Stand"],
 			},
 		},
 		-- Warrior: Toughness (Rank 5) - 3,9
@@ -2942,7 +2942,7 @@ StatLogic.StatModTable["ALL"] = {
 	["ADD_DODGE"] = {
 		{
 			["value"] = -20,
-			["buff"] = 69127,		-- ["Chill of the Throne"],
+			["aura"] = 69127,		-- ["Chill of the Throne"],
 		},
 	},
 	-- Replenishment - Buff
@@ -2958,7 +2958,7 @@ StatLogic.StatModTable["ALL"] = {
 	["ADD_MANA_REG_MOD_MANA"] = {
 		{
 			["value"] = 0.01,
-			["buff"] = 57669,		-- ["Replenishment"],
+			["aura"] = 57669,		-- ["Replenishment"],
 		},
 	},
 	-- MetaGem: Eternal Earthsiege Diamond - 41396
@@ -2988,7 +2988,7 @@ StatLogic.StatModTable["ALL"] = {
 		--         Attack power increased by 10%.
 		{
 			["value"] = 0.1,
-			["buff"] = 19506,
+			["aura"] = 19506,
 			["group"] = addon.BuffGroup.AttackPower,
 		},
 		-- Death Knight: Abomination's Might - Buff
@@ -2997,7 +2997,7 @@ StatLogic.StatModTable["ALL"] = {
 			["rank"] = {
 				0.05, 0.1,
 			},
-			["buff"] = 53138,
+			["aura"] = 53138,
 			["group"] = addon.BuffGroup.AttackPower,
 		},
 		-- Shaman: Unleashed Rage - Buff
@@ -3006,7 +3006,7 @@ StatLogic.StatModTable["ALL"] = {
 			["rank"] = {
 				0.04, 0.07, 0.1,
 			},
-			["buff"] = 30809,
+			["aura"] = 30809,
 			["group"] = addon.BuffGroup.AttackPower,
 		},
 	},
@@ -3023,31 +3023,31 @@ StatLogic.StatModTable["ALL"] = {
 		--          Increases stats by 10%.
 		{
 			["value"] = 0.1,
-			["buff"] = 20217,
+			["aura"] = 20217,
 			["group"] = addon.BuffGroup.AllStats,
 		},
 		{
 			["value"] = 0.1,
-			["buff"] = 25898,
+			["aura"] = 25898,
 			["group"] = addon.BuffGroup.AllStats,
 		},
 		-- Blessing of Sanctuary
 		{
 			["value"] = 0.1,
-			["buff"] = 20911,
+			["aura"] = 20911,
 			["group"] = addon.BuffGroup.AllStats,
 		},
 		-- Greater Blessing of Sanctuary
 		{
 			["value"] = 0.1,
-			["buff"] = 25899,
+			["aura"] = 25899,
 			["group"] = addon.BuffGroup.AllStats,
 		},
 		-- Leatherworking: Blessing of Forgotten Kings - Buff
 		--                 Increases stats by 8%.
 		{
 			["value"] = 0.08,
-			["buff"] = 69378,
+			["aura"] = 69378,
 			["group"] = addon.BuffGroup.AllStats,
 		},
 	},
@@ -3056,19 +3056,19 @@ StatLogic.StatModTable["ALL"] = {
 		--          Increases stats by 10%.
 		{
 			["value"] = 0.1,
-			["buff"] = 20217,
+			["aura"] = 20217,
 			["group"] = addon.BuffGroup.AllStats,
 		},
 		{
 			["value"] = 0.1,
-			["buff"] = 25898,
+			["aura"] = 25898,
 			["group"] = addon.BuffGroup.AllStats,
 		},
 		-- Leatherworking: Blessing of Forgotten Kings - Buff
 		--                 Increases stats by 8%.
 		{
 			["value"] = 0.08,
-			["buff"] = 69378,
+			["aura"] = 69378,
 			["group"] = addon.BuffGroup.AllStats,
 		},
 	},
@@ -3077,31 +3077,31 @@ StatLogic.StatModTable["ALL"] = {
 		--          Increases stats by 10%.
 		{
 			["value"] = 0.1,
-			["buff"] = 20217,
+			["aura"] = 20217,
 			["group"] = addon.BuffGroup.AllStats,
 		},
 		{
 			["value"] = 0.1,
-			["buff"] = 25898,
+			["aura"] = 25898,
 			["group"] = addon.BuffGroup.AllStats,
 		},
 		-- Blessing of Sanctuary
 		{
 			["value"] = 0.1,
-			["buff"] = 20911,
+			["aura"] = 20911,
 			["group"] = addon.BuffGroup.AllStats,
 		},
 		-- Greater Blessing of Sanctuary
 		{
 			["value"] = 0.1,
-			["buff"] = 25899,
+			["aura"] = 25899,
 			["group"] = addon.BuffGroup.AllStats,
 		},
 		-- Leatherworking: Blessing of Forgotten Kings - Buff
 		--                 Increases stats by 8%.
 		{
 			["value"] = 0.08,
-			["buff"] = 69378,
+			["aura"] = 69378,
 			["group"] = addon.BuffGroup.AllStats,
 		},
 	},
@@ -3110,19 +3110,19 @@ StatLogic.StatModTable["ALL"] = {
 		--          Increases stats by 10%.
 		{
 			["value"] = 0.1,
-			["buff"] = 20217,
+			["aura"] = 20217,
 			["group"] = addon.BuffGroup.AllStats,
 		},
 		{
 			["value"] = 0.1,
-			["buff"] = 25898,
+			["aura"] = 25898,
 			["group"] = addon.BuffGroup.AllStats,
 		},
 		-- Leatherworking: Blessing of Forgotten Kings - Buff
 		--                 Increases stats by 8%.
 		{
 			["value"] = 0.08,
-			["buff"] = 69378,
+			["aura"] = 69378,
 			["group"] = addon.BuffGroup.AllStats,
 		},
 		-- MetaGem: Ember Skyfire Diamond - 35503
@@ -3143,19 +3143,19 @@ StatLogic.StatModTable["ALL"] = {
 		--          Increases stats by 10%.
 		{
 			["value"] = 0.1,
-			["buff"] = 20217,
+			["aura"] = 20217,
 			["group"] = addon.BuffGroup.AllStats,
 		},
 		{
 			["value"] = 0.1,
-			["buff"] = 25898,
+			["aura"] = 25898,
 			["group"] = addon.BuffGroup.AllStats,
 		},
 		-- Leatherworking: Blessing of Forgotten Kings - Buff
 		--                 Increases stats by 8%.
 		{
 			["value"] = 0.08,
-			["buff"] = 69378,
+			["aura"] = 69378,
 			["group"] = addon.BuffGroup.AllStats,
 		},
 	},

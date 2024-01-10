@@ -644,12 +644,12 @@ do
 		for _, modList in pairs(StatLogic.StatModTable) do
 			for _, mods in pairs(modList) do
 				for _, mod in ipairs(mods) do
-					if mod.buff then -- if we got a buff
+					if mod.aura then -- if we got a buff
 						local aura = {}
 						if not mod.tab and mod.rank then -- not a talent, so the rank is the buff rank
 							aura.rank = #(mod.rank)
 						end
-						local name = GetSpellInfo(mod.buff)
+						local name = GetSpellInfo(mod.aura)
 						if name then
 							always_buffed_aura_info[name] = aura
 						end
@@ -666,11 +666,17 @@ do
 			if needs_update then
 				local i = 1
 				repeat
-					local aura = {}
-					local name
-					name, _, _, _, _, _, _, _, _, aura.spellId = UnitBuff("player", i)
+					local name, _, _, _, _, _, _, _, _, spellId = UnitBuff("player", i)
 					if name then
-						aura_cache[name] = aura
+						aura_cache[name] = { spellId = spellId }
+					end
+					i = i+1
+				until not name
+				i = 1
+				repeat
+					local name, _, _, _, _, _, _, _, _, spellId = UnitDebuff("player", i)
+					if name then
+						aura_cache[name] = { spellId = spellId }
 					end
 					i = i+1
 				until not name
@@ -741,9 +747,9 @@ StatLogic.StatModIgnoresAlwaysBuffed = {
 
 ---@type { [string]: StatModValidator }
 addon.StatModValidators = {
-	buff = {
+	aura = {
 		validate = function(case, stat)
-			return StatLogic:GetAuraInfo(GetSpellInfo(case.buff), StatLogic.StatModIgnoresAlwaysBuffed[stat])
+			return StatLogic:GetAuraInfo(GetSpellInfo(case.aura), StatLogic.StatModIgnoresAlwaysBuffed[stat])
 		end,
 		events = {
 			["UNIT_AURA"] = "player",
@@ -1008,8 +1014,8 @@ do
 			elseif r > 0 then
 				value = case.value
 			end
-		elseif case.buff and case.rank then
-			local aura = StatLogic:GetAuraInfo(GetSpellInfo(case.buff))
+		elseif case.aura and case.rank then
+			local aura = StatLogic:GetAuraInfo(GetSpellInfo(case.aura))
 			local rank = aura.rank or GetPlayerBuffRank(aura.spellId)
 			value = case.rank[rank]
 		elseif case.regen then

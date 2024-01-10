@@ -323,13 +323,13 @@ if addon.class == "DRUID" then
 			-- Cat Form
 			{
 				["value"] = 1,
-				["buff"] = 768,
+				["aura"] = 768,
 				["group"] = addon.BuffGroup.Feral,
 			},
 			-- Bear Form
 			{
 				["value"] = 1,
-				["buff"] = 5487,
+				["aura"] = 5487,
 				["group"] = addon.BuffGroup.Feral,
 			},
 		},
@@ -343,12 +343,12 @@ if addon.class == "DRUID" then
 			-- Druid: Cat Form - Buff
 			{
 				["value"] = 1,
-				["buff"] = 768,
+				["aura"] = 768,
 			},
 			-- Druid: Bear Form - Buff
 			{
 				["value"] = 1,
-				["buff"] = 5487,
+				["aura"] = 5487,
 			},
 		},
 		["ADD_NORMAL_MANA_REG_MOD_SPI"] = {
@@ -394,7 +394,7 @@ if addon.class == "DRUID" then
 				["rank"] = {
 					2, 4,
 				},
-				["buff"] = 5487,
+				["aura"] = 5487,
 			},
 			-- Talent: Feral Swiftness (Cat Form)
 			{
@@ -403,7 +403,7 @@ if addon.class == "DRUID" then
 				["rank"] = {
 					2, 4,
 				},
-				["buff"] = 768,
+				["aura"] = 768,
 			},
 			-- Talent: Natural Reaction
 			{
@@ -412,7 +412,7 @@ if addon.class == "DRUID" then
 				["rank"] = {
 					3, 6,
 				},
-				["buff"] = 5487,
+				["aura"] = 5487,
 			},
 		},
 		-- Druid: Balance of Power (Rank 2) - 1,6
@@ -449,24 +449,24 @@ if addon.class == "DRUID" then
 				["rank"] = {
 					0.11, 0.22, 0.33,
 				},
-				["buff"] = 5487,        -- ["Bear Form"],
+				["aura"] = 5487,        -- ["Bear Form"],
 			},
 			-- Bear Form < lv40
 			{
 				["value"] = 0.65,
-				["buff"] = 5487,        -- ["Bear Form"],
+				["aura"] = 5487,        -- ["Bear Form"],
 			},
 			-- Bear Form >= lv40
 			{
 				["rank"] = {
 					0.333333333333333333, -- 1.65 * 1.3333 = 2.2
 				},
-				["buff"] = 5487,        -- ["Bear Form"],
+				["aura"] = 5487,        -- ["Bear Form"],
 				["condition"] = "UnitLevel('player') >= 40",
 			},
 			{
 				["value"] = 1.2,
-				["buff"] = 33891,        -- ["Tree of Life"],
+				["aura"] = 33891,        -- ["Tree of Life"],
 			},
 		},
 		-- Druid: Furor (Rank 3) - 2,2
@@ -494,12 +494,12 @@ if addon.class == "DRUID" then
 				["rank"] = {
 					0.03, 0.07, 0.1,
 				},
-				["buff"] = 5487,        -- ["Bear Form"],
+				["aura"] = 5487,        -- ["Bear Form"],
 			},
 			-- Bear Form
 			{
 				["value"] = 0.25,
-				["buff"] = 5487,        -- ["Bear Form"],
+				["aura"] = 5487,        -- ["Bear Form"],
 			},
 			-- Leather Specialization
 			{
@@ -508,7 +508,7 @@ if addon.class == "DRUID" then
 					[2] = true,
 				},
 				["known"] = 86530,
-				["buff"] = 5487,        -- ["Bear Form"],
+				["aura"] = 5487,        -- ["Bear Form"],
 			},
 		},
 		-- Druid: Leather Specialization - Passive: 86530
@@ -521,7 +521,7 @@ if addon.class == "DRUID" then
 					[2] = true,
 				},
 				["known"] = 86530,
-				["buff"] = 768,        -- ["Cat Form"],
+				["aura"] = 768,        -- ["Cat Form"],
 			},
 		},
 		-- Druid: Heart of the Wild (Rank 5) - 3,4
@@ -535,7 +535,7 @@ if addon.class == "DRUID" then
 				["rank"] = {
 					0.03, 0.07, 0.1,
 				},
-				["buff"] = 768,        -- ["Cat Form"],
+				["aura"] = 768,        -- ["Cat Form"],
 			},
 			{
 				["value"] = 0.25,
@@ -631,7 +631,7 @@ elseif addon.class == "DEATHKNIGHT" then
 			-- Vampiric Blood
 			{
 				["value"] = 0.15,
-				["buff"] = 55233,        -- ["Vampiric Blood"],
+				["aura"] = 55233,        -- ["Vampiric Blood"],
 				["condition"] = "not LibStub('LibStatLogic-1.2').PlayerHasGlyph(58676)", -- ["Glyph of Vampiric Blood"]
 			},
 		},
@@ -723,7 +723,7 @@ elseif addon.class == "DEATHKNIGHT" then
 			-- Pillar of Frost
 			{
 				["value"] = 0.2,
-				["buff"] = 51271,        -- ["Pillar of Frost"],
+				["aura"] = 51271,        -- ["Pillar of Frost"],
 			},
 			-- Brittle Bones
 			{
@@ -736,7 +736,7 @@ elseif addon.class == "DEATHKNIGHT" then
 			-- Unholy Strength
 			{
 				["value"] = 0.15,
-				["buff"] = 53365,        -- ["Unholy Strength"],
+				["aura"] = 53365,        -- ["Unholy Strength"],
 			},
 		},
 	}
@@ -858,7 +858,7 @@ elseif addon.class == "MAGE" then
 				["rank"] = {
 					0.01, 0.02,
 				},
-				["buff"] = 83098,        -- ["Improved Mana Gem"],
+				["aura"] = 83098,        -- ["Improved Mana Gem"],
 			},
 		},
 		-- Improved Mana Gem - Rank 2/2 - 1,19 - Buff: 83098
@@ -870,7 +870,7 @@ elseif addon.class == "MAGE" then
 				["rank"] = {
 					0.01, 0.02,
 				},
-				["buff"] = 83098,        -- ["Improved Mana Gem"],
+				["aura"] = 83098,        -- ["Improved Mana Gem"],
 			},
 		},
 		-- Mage: Mage Armor - Buff: 6117
@@ -881,12 +881,12 @@ elseif addon.class == "MAGE" then
 			-- Mage Armor
 			{
 				["value"] = 0.03,
-				["buff"] = 6117,        -- ["Mage Armor"],
+				["aura"] = 6117,        -- ["Mage Armor"],
 			},
 			-- Glyph of Frost Armor
 			{
 				["value"] = 0.02,
-				["buff"] = 7302,        -- ["Frost Armor"],
+				["aura"] = 7302,        -- ["Frost Armor"],
 				["glyph"] = 98397,
 			},
 		},
@@ -1107,14 +1107,14 @@ elseif addon.class == "PRIEST" then
 			-- Inner Fire
 			{
 				["value"] = 0.6,
-				["buff"] = 588,        -- ["Inner Fire"],
+				["aura"] = 588,        -- ["Inner Fire"],
 			},
 			-- Glyph of Inner Fire
 			{
 				["rank"] = {
 					0.1875, -- 1.9/1.6=1.1875
 				},
-				["buff"] = 588,        -- ["Inner Fire"],
+				["aura"] = 588,        -- ["Inner Fire"],
 				["glyph"] = 55686,        -- ["Glyph of Inner Fire"],
 			},
 		},
@@ -1202,12 +1202,12 @@ elseif addon.class == "ROGUE" then
 			-- Buff: Evasion
 			{
 				["value"] = 50,
-				["buff"] = 5277,
+				["aura"] = 5277,
 			},
 			-- Buff: Ghostly Strike
 			{
 				["value"] = 15,
-				["buff"] = 31022,
+				["aura"] = 31022,
 			},
 		},
 		-- Rogue: Leather Specialization - Passive: 86531
@@ -1375,7 +1375,7 @@ elseif addon.class == "WARLOCK" then
 			-- Metamorphosis
 			{
 				["value"] = 6,
-				["buff"] = 47241,
+				["aura"] = 47241,
 			},
 		},
 		-- Warlock: Demonic Embrace - Rank 3/3 - 2,1
@@ -1433,7 +1433,7 @@ elseif addon.class == "WARRIOR" then
 			-- Last Stand
 			{
 				["value"] = 0.3,
-				["buff"] = 12975,        -- ["Last Stand"],
+				["aura"] = 12975,        -- ["Last Stand"],
 			},
 		},
 		-- Warrior: Toughness - Rank 3/3 - 3,2
@@ -1536,7 +1536,7 @@ StatLogic.StatModTable["ALL"] = {
 		-- 4.0.1: Replenishes 1% of maximum mana per 10 sec.
 		{
 			["value"] = 0.005,
-			["buff"] = 57669,
+			["aura"] = 57669,
 		},
 	},
 	["MOD_SPELL_DMG"] = {
@@ -1544,35 +1544,35 @@ StatLogic.StatModTable["ALL"] = {
 		-- 4.0.1: Spell Power increased by 10%.
 		{
 			["value"] = 0.1,
-			["buff"] = 53646,
+			["aura"] = 53646,
 			["group"] = addon.BuffGroup.SpellPower,
 		},
 		-- Shaman: Totemic Wrath - Buff: 77747
 		-- 4.0.1: Spell Power increased by 10%.
 		{
 			["value"] = 0.1,
-			["buff"] = 77747,
+			["aura"] = 77747,
 			["group"] = addon.BuffGroup.SpellPower,
 		},
 		-- Shaman: Flametongue Totem - Buff: 52109
 		-- 4.0.1: Spell Power increased by 6%.
 		{
 			["value"] = 0.06,
-			["buff"] = 52109,
+			["aura"] = 52109,
 			["group"] = addon.BuffGroup.SpellPower,
 		},
 		-- Mage: Arcane Brilliance - Buff: 79058
 		-- 4.0.1: Spell Power increased by 6%.
 		{
 			["value"] = 0.06,
-			["buff"] = 79058,
+			["aura"] = 79058,
 			["group"] = addon.BuffGroup.SpellPower,
 		},
 		-- Mage: Dalaran Brilliance - Buff: 61316
 		-- 4.0.1: Spell Power increased by 6%.
 		{
 			["value"] = 0.06,
-			["buff"] = 61316,
+			["aura"] = 61316,
 			["group"] = addon.BuffGroup.SpellPower,
 		},
 	},
@@ -1581,35 +1581,35 @@ StatLogic.StatModTable["ALL"] = {
 		-- 4.0.1: Spell Power increased by 10%.
 		{
 			["value"] = 0.1,
-			["buff"] = 53646,
+			["aura"] = 53646,
 			["group"] = addon.BuffGroup.SpellPower,
 		},
 		-- Shaman: Totemic Wrath - Buff: 77747
 		-- 4.0.1: Spell Power increased by 10%.
 		{
 			["value"] = 0.1,
-			["buff"] = 77747,
+			["aura"] = 77747,
 			["group"] = addon.BuffGroup.SpellPower,
 		},
 		-- Shaman: Flametongue Totem - Buff: 52109
 		-- 4.0.1: Spell Power increased by 6%.
 		{
 			["value"] = 0.06,
-			["buff"] = 52109,
+			["aura"] = 52109,
 			["group"] = addon.BuffGroup.SpellPower,
 		},
 		-- Mage: Arcane Brilliance - Buff: 79058
 		-- 4.0.1: Spell Power increased by 6%.
 		{
 			["value"] = 0.06,
-			["buff"] = 79058,
+			["aura"] = 79058,
 			["group"] = addon.BuffGroup.SpellPower,
 		},
 		-- Mage: Dalaran Brilliance - Buff: 61316
 		-- 4.0.1: Spell Power increased by 6%.
 		{
 			["value"] = 0.06,
-			["buff"] = 61316,
+			["aura"] = 61316,
 			["group"] = addon.BuffGroup.SpellPower,
 		},
 	},
@@ -1632,7 +1632,7 @@ StatLogic.StatModTable["ALL"] = {
 		-- 4.0.1: Attack power increased by 10%.
 		{
 			["value"] = 0.1,
-			["buff"] = 19506,
+			["aura"] = 19506,
 			["group"] = addon.BuffGroup.AttackPower,
 		},
 		-- Death Knight: Abomination's Might - Buff: 55972
@@ -1641,7 +1641,7 @@ StatLogic.StatModTable["ALL"] = {
 			["rank"] = {
 				0.05, 0.1,
 			},
-			["buff"] = 55972,
+			["aura"] = 55972,
 			["group"] = addon.BuffGroup.AttackPower,
 		},
 		-- Shaman: Unleashed Rage - Buff: 30809
@@ -1650,14 +1650,14 @@ StatLogic.StatModTable["ALL"] = {
 			["rank"] = {
 				0.04, 0.07, 0.1,
 			},
-			["buff"] = 30809,
+			["aura"] = 30809,
 			["group"] = addon.BuffGroup.AttackPower,
 		},
 		-- Paladin: Blessing of Might - Buff: 19740
 		-- 4.0.1: Increasing attack power by 10%.
 		{
 			["value"] = 0.1,
-			["buff"] = 19740,
+			["aura"] = 19740,
 			["group"] = addon.BuffGroup.AttackPower,
 		},
 	},
@@ -1692,28 +1692,28 @@ StatLogic.StatModTable["ALL"] = {
 		-- 4.0.1: Strength, Agility, Stamina, and Intellect increased by 5%.
 		{
 			["value"] = 0.05,
-			["buff"] = 20217,
+			["aura"] = 20217,
 			["group"] = addon.BuffGroup.AllStats,
 		},
 		-- Druid: Mark of the Wild - Buff: 79061
 		-- 4.0.1: Strength, Agility, Stamina, and Intellect increased by 5%.
 		{
 			["value"] = 0.05,
-			["buff"] = 79061,
+			["aura"] = 79061,
 			["group"] = addon.BuffGroup.AllStats,
 		},
 		-- Hunter: Embrace of the Shale Spider - Buff: 90363
 		-- 4.0.1: Strength, Agility, Stamina, and Intellect increased by 5%.
 		{
 			["value"] = 0.05,
-			["buff"] = 90363,
+			["aura"] = 90363,
 			["group"] = addon.BuffGroup.AllStats,
 		},
 		-- Leatherworking: Blessing of Forgotten Kings - Buff: 69378
 		-- 4.0.1: Strength, Agility, Stamina, and Intellect increased by 4%.
 		{
 			["value"] = 0.04,
-			["buff"] = 69378,
+			["aura"] = 69378,
 			["group"] = addon.BuffGroup.AllStats,
 		},
 	},
@@ -1722,28 +1722,28 @@ StatLogic.StatModTable["ALL"] = {
 		-- 4.0.1: Strength, Agility, Stamina, and Intellect increased by 5%.
 		{
 			["value"] = 0.05,
-			["buff"] = 20217,
+			["aura"] = 20217,
 			["group"] = addon.BuffGroup.AllStats,
 		},
 		-- Druid: Mark of the Wild - Buff: 79061
 		-- 4.0.1: Strength, Agility, Stamina, and Intellect increased by 5%.
 		{
 			["value"] = 0.05,
-			["buff"] = 79061,
+			["aura"] = 79061,
 			["group"] = addon.BuffGroup.AllStats,
 		},
 		-- Hunter: Embrace of the Shale Spider - Buff: 90363
 		-- 4.0.1: Strength, Agility, Stamina, and Intellect increased by 5%.
 		{
 			["value"] = 0.05,
-			["buff"] = 90363,
+			["aura"] = 90363,
 			["group"] = addon.BuffGroup.AllStats,
 		},
 		-- Leatherworking: Blessing of Forgotten Kings - Buff: 69378
 		-- 4.0.1: Strength, Agility, Stamina, and Intellect increased by 4%.
 		{
 			["value"] = 0.04,
-			["buff"] = 69378,
+			["aura"] = 69378,
 			["group"] = addon.BuffGroup.AllStats,
 		},
 	},
@@ -1752,28 +1752,28 @@ StatLogic.StatModTable["ALL"] = {
 		-- 4.0.1: Strength, Agility, Stamina, and Intellect increased by 5%.
 		{
 			["value"] = 0.05,
-			["buff"] = 20217,
+			["aura"] = 20217,
 			["group"] = addon.BuffGroup.AllStats,
 		},
 		-- Druid: Mark of the Wild - Buff: 79061
 		-- 4.0.1: Strength, Agility, Stamina, and Intellect increased by 5%.
 		{
 			["value"] = 0.05,
-			["buff"] = 79061,
+			["aura"] = 79061,
 			["group"] = addon.BuffGroup.AllStats,
 		},
 		-- Hunter: Embrace of the Shale Spider - Buff: 90363
 		-- 4.0.1: Strength, Agility, Stamina, and Intellect increased by 5%.
 		{
 			["value"] = 0.05,
-			["buff"] = 90363,
+			["aura"] = 90363,
 			["group"] = addon.BuffGroup.AllStats,
 		},
 		-- Leatherworking: Blessing of Forgotten Kings - Buff: 69378
 		-- 4.0.1: Strength, Agility, Stamina, and Intellect increased by 4%.
 		{
 			["value"] = 0.04,
-			["buff"] = 69378,
+			["aura"] = 69378,
 			["group"] = addon.BuffGroup.AllStats,
 		},
 	},
@@ -1782,28 +1782,28 @@ StatLogic.StatModTable["ALL"] = {
 		-- 4.0.1: Strength, Agility, Stamina, and Intellect increased by 5%.
 		{
 			["value"] = 0.05,
-			["buff"] = 20217,
+			["aura"] = 20217,
 			["group"] = addon.BuffGroup.AllStats,
 		},
 		-- Druid: Mark of the Wild - Buff: 79061
 		-- 4.0.1: Strength, Agility, Stamina, and Intellect increased by 5%.
 		{
 			["value"] = 0.05,
-			["buff"] = 79061,
+			["aura"] = 79061,
 			["group"] = addon.BuffGroup.AllStats,
 		},
 		-- Hunter: Embrace of the Shale Spider - Buff: 90363
 		-- 4.0.1: Strength, Agility, Stamina, and Intellect increased by 5%.
 		{
 			["value"] = 0.05,
-			["buff"] = 90363,
+			["aura"] = 90363,
 			["group"] = addon.BuffGroup.AllStats,
 		},
 		-- Leatherworking: Blessing of Forgotten Kings - Buff: 69378
 		-- 4.0.1: Strength, Agility, Stamina, and Intellect increased by 4%.
 		{
 			["value"] = 0.04,
-			["buff"] = 69378,
+			["aura"] = 69378,
 			["group"] = addon.BuffGroup.AllStats,
 		},
 	},
@@ -1812,7 +1812,7 @@ StatLogic.StatModTable["ALL"] = {
 		-- 4.0.1: Spirit increased by 350%.
 		{
 			["value"] = 3.5,
-			["buff"] = 16191,
+			["aura"] = 16191,
 		},
 	},
 }

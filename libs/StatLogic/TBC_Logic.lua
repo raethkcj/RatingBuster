@@ -224,19 +224,19 @@ if addon.class == "DRUID" then
 			-- Cat Form
 			{
 				["value"] = 1,
-				["buff"] = 768,
+				["aura"] = 768,
 				["group"] = addon.BuffGroup.Feral,
 			},
 			-- Bear Form
 			{
 				["value"] = 1,
-				["buff"] = 5487,
+				["aura"] = 5487,
 				["group"] = addon.BuffGroup.Feral,
 			},
 			-- Dire Bear Form
 			{
 				["value"] = 1,
-				["buff"] = 9634,
+				["aura"] = 9634,
 				["group"] = addon.BuffGroup.Feral,
 			},
 		},
@@ -250,7 +250,7 @@ if addon.class == "DRUID" then
 			-- Druid: Cat Form - Buff
 			{
 				["value"] = 1,
-				["buff"] = 768,
+				["aura"] = 768,
 			},
 		},
 		["ADD_NORMAL_MANA_REG_MOD_SPI"] = {
@@ -337,7 +337,7 @@ if addon.class == "DRUID" then
 				["rank"] = {
 					2, 4,
 				},
-				["buff"] = 32356,
+				["aura"] = 32356,
 			},
 			-- Talent: Feral Swiftness (Bear Form)
 			{
@@ -346,7 +346,7 @@ if addon.class == "DRUID" then
 				["rank"] = {
 					2, 4,
 				},
-				["buff"] = 32357,
+				["aura"] = 32357,
 			},
 			-- Talent: Feral Swiftness (Dire Bear Form)
 			{
@@ -355,7 +355,7 @@ if addon.class == "DRUID" then
 				["rank"] = {
 					2, 4,
 				},
-				["buff"] = 9634,
+				["aura"] = 9634,
 			},
 		},
 		-- Druid: Thick Hide (Rank 3) - 2,5
@@ -376,15 +376,15 @@ if addon.class == "DRUID" then
 			},
 			{
 				["value"] = 1.8,
-				["buff"] = 32357,		-- ["Bear Form"],
+				["aura"] = 32357,		-- ["Bear Form"],
 			},
 			{
 				["value"] = 4,
-				["buff"] = 9634,		-- ["Dire Bear Form"],
+				["aura"] = 9634,		-- ["Dire Bear Form"],
 			},
 			{
 				["value"] = 4,
-				["buff"] = 24858,		-- ["Moonkin Form"],
+				["aura"] = 24858,		-- ["Moonkin Form"],
 			},
 		},
 		-- Druid: Heart of the Wild (Rank 5) - 2,15
@@ -403,7 +403,7 @@ if addon.class == "DRUID" then
 				["rank"] = {
 					0.04, 0.08, 0.12, 0.16, 0.2,
 				},
-				["buff"] = 32357,		-- ["Bear Form"],
+				["aura"] = 32357,		-- ["Bear Form"],
 			},
 			{
 				["tab"] = 2,
@@ -411,7 +411,7 @@ if addon.class == "DRUID" then
 				["rank"] = {
 					0.04, 0.08, 0.12, 0.16, 0.2,
 				},
-				["buff"] = 9634,		-- ["Dire Bear Form"],
+				["aura"] = 9634,		-- ["Dire Bear Form"],
 			},
 			-- Survival of the Fittest: +1%/2%/3% all stats
 			{
@@ -424,12 +424,12 @@ if addon.class == "DRUID" then
 			-- Bear Form / Dire Bear Form: +25% stamina
 			{
 				["value"] = 0.25,
-				["buff"] = 32357,		-- ["Bear Form"],
+				["aura"] = 32357,		-- ["Bear Form"],
 			},
 			-- Bear Form / Dire Bear Form: +25% stamina
 			{
 				["value"] = 0.25,
-				["buff"] = 9634,		-- ["Dire Bear Form"],
+				["aura"] = 9634,		-- ["Dire Bear Form"],
 			},
 		},
 		-- Druid: Survival of the Fittest (Rank 3) - 2,16
@@ -453,7 +453,7 @@ if addon.class == "DRUID" then
 				["rank"] = {
 					0.02, 0.04, 0.06, 0.08, 0.1,
 				},
-				["buff"] = 32356,		-- ["Cat Form"],
+				["aura"] = 32356,		-- ["Cat Form"],
 			},
 		},
 		-- Druid: Survival of the Fittest (Rank 3) - 2,16
@@ -558,7 +558,7 @@ elseif addon.class == "HUNTER" then
 		["ADD_MANA_REG_MOD_INT"] = {
 			{
 				["value"] = 0.25,
-				["buff"] = 34074,			-- ["Aspect of the Viper"],
+				["aura"] = 34074,			-- ["Aspect of the Viper"],
 			},
 		},
 		-- Hunter: Careful Aim (Rank 3) - 2,16
@@ -619,7 +619,7 @@ elseif addon.class == "HUNTER" then
 			-- Buff: Aspect of the Monkey
 			{
 				["value"] = 8,
-				["buff"] = 13163,
+				["aura"] = 13163,
 			},
 			-- Talent: Improved Aspect of the Monkey
 			{
@@ -628,12 +628,12 @@ elseif addon.class == "HUNTER" then
 				["rank"] = {
 					2, 4, 6,
 				},
-				["buff"] = 13163,
+				["aura"] = 13163,
 			},
 			-- Buff: Deterrence
 			{
 				["value"] = 25,
-				["buff"] = 31567,
+				["aura"] = 31567,
 			},
 		},
 		-- Hunter: Thick Hide (Rank 3) - 1,5
@@ -753,7 +753,7 @@ elseif addon.class == "MAGE" then
 			},
 			{
 				["value"] = 0.3,
-				["buff"] = 6117,		-- ["Mage Armor"],
+				["aura"] = 6117,		-- ["Mage Armor"],
 			},
 		},
 		-- Mage: Mind Mastery (Rank 5) - 1,22
@@ -961,7 +961,7 @@ elseif addon.class == "PRIEST" then
 				["rank"] = {
 					0.05, 0.1,
 				},
-				["buff"] = 39234,		-- ["Divine Spirit"],
+				["aura"] = 39234,		-- ["Divine Spirit"],
 			},
 			{
 				["tab"] = 1,
@@ -969,7 +969,7 @@ elseif addon.class == "PRIEST" then
 				["rank"] = {
 					0.05, 0.1,
 				},
-				["buff"] = 32999,		-- ["Prayer of Spirit"],
+				["aura"] = 32999,		-- ["Prayer of Spirit"],
 			},
 		},
 		-- Priest: Spiritual Guidance (Rank 5) - 2,14
@@ -990,7 +990,7 @@ elseif addon.class == "PRIEST" then
 				["rank"] = {
 					0.05, 0.1,
 				},
-				["buff"] = 39234,		-- ["Divine Spirit"],
+				["aura"] = 39234,		-- ["Divine Spirit"],
 			},
 			{
 				["tab"] = 1,
@@ -998,7 +998,7 @@ elseif addon.class == "PRIEST" then
 				["rank"] = {
 					0.05, 0.1,
 				},
-				["buff"] = 32999,		-- ["Prayer of Spirit"],
+				["aura"] = 32999,		-- ["Prayer of Spirit"],
 			},
 		},
 		-- Priest: Mental Strength (Rank 5) - 1,13
@@ -1108,12 +1108,12 @@ elseif addon.class == "ROGUE" then
 			-- Buff: Evasion
 			{
 				["value"] = 50,
-				["buff"] = 5277,
+				["aura"] = 5277,
 			},
 			-- Buff: Ghostly Strike
 			{
 				["value"] = 15,
-				["buff"] = 14278,
+				["aura"] = 14278,
 			},
 		},
 		-- Rogue: Vitality (Rank 2) - 2,20
@@ -1601,7 +1601,7 @@ StatLogic.StatModTable["ALL"] = {
 			["rank"] = {
 				0.15, 0.30,
 			},
-			["buff"] = 27154,
+			["aura"] = 27154,
 		},
 		-- Priest: Inspiration (Rank 1/2/3) - Buff
 		--         Increases armor by 8%/16%/25%.
@@ -1609,7 +1609,7 @@ StatLogic.StatModTable["ALL"] = {
 			["rank"] = {
 				0.08, 0.16, 0.25,
 			},
-			["buff"] = 15363,
+			["aura"] = 15363,
 			["group"] = addon.BuffGroup.Armor,
 		},
 		-- Shaman: Ancestral Fortitude (Rank 1/2/3) - Buff
@@ -1618,7 +1618,7 @@ StatLogic.StatModTable["ALL"] = {
 			["rank"] = {
 				0.08, 0.16, 0.25,
 			},
-			["buff"] = 16237,
+			["aura"] = 16237,
 			["group"] = addon.BuffGroup.Armor,
 		},
 	},
@@ -1627,14 +1627,14 @@ StatLogic.StatModTable["ALL"] = {
 		-- Increases stats by 10%.
 		{
 			["value"] = 0.1,
-			["buff"] = 20217,
+			["aura"] = 20217,
 			["group"] = addon.BuffGroup.AllStats,
 		},
 		-- Greater Blessing of Kings - Buff
 		-- Increases stats by 10%.
 		{
 			["value"] = 0.1,
-			["buff"] = 25898,
+			["aura"] = 25898,
 			["group"] = addon.BuffGroup.AllStats,
 		},
 	},
@@ -1643,13 +1643,13 @@ StatLogic.StatModTable["ALL"] = {
 		-- Increases stats by 10%.
 		{
 			["value"] = 0.1,
-			["buff"] = 20217,
+			["aura"] = 20217,
 		},
 		-- Greater Blessing of Kings - Buff
 		-- Increases stats by 10%.
 		{
 			["value"] = 0.1,
-			["buff"] = 25898,
+			["aura"] = 25898,
 		},
 	},
 	["MOD_STA"] = {
@@ -1657,13 +1657,13 @@ StatLogic.StatModTable["ALL"] = {
 		-- Increases stats by 10%.
 		{
 			["value"] = 0.1,
-			["buff"] = 20217,
+			["aura"] = 20217,
 		},
 		-- Greater Blessing of Kings - Buff
 		-- Increases stats by 10%.
 		{
 			["value"] = 0.1,
-			["buff"] = 25898,
+			["aura"] = 25898,
 		},
 	},
 	["MOD_INT"] = {
@@ -1671,13 +1671,13 @@ StatLogic.StatModTable["ALL"] = {
 		-- Increases stats by 10%.
 		{
 			["value"] = 0.1,
-			["buff"] = 20217,
+			["aura"] = 20217,
 		},
 		-- Greater Blessing of Kings - Buff
 		-- Increases stats by 10%.
 		{
 			["value"] = 0.1,
-			["buff"] = 25898,
+			["aura"] = 25898,
 		},
 		-- Ember Skyfire Diamond
 		-- 2% Intellect
@@ -1691,13 +1691,13 @@ StatLogic.StatModTable["ALL"] = {
 		-- Increases stats by 10%.
 		{
 			["value"] = 0.1,
-			["buff"] = 20217,
+			["aura"] = 20217,
 		},
 		-- Greater Blessing of Kings - Buff
 		-- Increases stats by 10%.
 		{
 			["value"] = 0.1,
-			["buff"] = 25898,
+			["aura"] = 25898,
 		},
 	},
 	-- Whitemend Wisdom

@@ -1407,8 +1407,8 @@ do
 							sources = sources .. ", "
 						end
 						local source = ""
-						if case.buff then
-							source = GetSpellInfo(case.buff)
+						if case.aura then
+							source = GetSpellInfo(case.aura)
 						elseif case.tab then
 							source = StatLogic:GetOrderedTalentInfo(case.tab, case.num)
 						elseif case.glyph then
@@ -1467,8 +1467,8 @@ do
 			for modName, mods in pairs(modList) do
 				if not StatLogic.StatModIgnoresAlwaysBuffed[modName] then
 					for _, mod in ipairs(mods) do
-						if mod.buff and (not mod.rune or showRunes) then
-							local name, _, icon = GetSpellInfo(mod.buff)
+						if mod.aura and (not mod.rune or showRunes) then
+							local name, _, icon = GetSpellInfo(mod.aura)
 							local option = {
 								type = 'toggle',
 								name = "|T"..icon..":25:25:-2:0|t"..name,
@@ -1477,7 +1477,7 @@ do
 							options.args.alwaysBuffed.args[modType].hidden = false
 
 							-- If it's a spell the player knows, use the highest rank for the description
-							local spellId = mod.buff
+							local spellId = mod.aura
 							if IsPlayerSpell(spellId) then
 								spellId = select(7,GetSpellInfo(name)) or spellId
 							end
