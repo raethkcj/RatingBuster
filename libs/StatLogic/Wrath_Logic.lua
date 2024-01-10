@@ -3298,20 +3298,26 @@ function StatLogic:GetDodgePerAgi()
 	end
 	-- Collect data
 	local D_dr = GetDodgeChance()
+	if D_dr == 0 then
+		return 0
+	end
 	local dodgeFromDodgeRating = self:GetEffectFromRating(GetCombatRating(CR_DODGE), StatLogic.Stats.DodgeRating, level)
 	local baseDefense, modDefense = UnitDefense("player")
 	local dodgeFromModDefense = modDefense * 0.04
 	local D_r = dodgeFromDodgeRating + dodgeFromModDefense
 	local D_b = self:GetStatMod("ADD_DODGE") + (baseDefense - level * 5) * 0.04
 	local stat, effectiveStat, posBuff, negBuff = UnitStat("player", 2) -- 2 = Agility
-	-- Talents that modify AGI will not add to posBuff, so we need to calculate baseAgi
-	-- But Kings added AGi will add to posBuff, so we need to check for Kings
 	local modAgi = 1
 	if ModAgiClasses[class] then
 		modAgi = self:GetStatMod("MOD_AGI")
-		-- (Greater) Blessing of Kings
-		if StatLogic:GetAuraInfo(20217) or StatLogic:GetAuraInfo(25898) then
-			modAgi = modAgi - 0.1
+		-- Talents that modify Agi will not add to posBuff, so we need to calculate baseAgi
+		-- But Agi from Kings etc. will add to posBuff, so we subtract those if present
+		for _, case in StatLogic.StatModTable["ALL"]["MOD_AGI"] do
+			if case.group == addon.BuffGroup.AllStats then
+				if StatLogic:GetAuraInfo(case.aura) then
+					modAgi = modAgi - case.value
+				end
+			end
 		end
 	end
 	local A = effectiveStat
@@ -3328,8 +3334,8 @@ function StatLogic:GetDodgePerAgi()
 	if a == 0 then
 		dodgePerAgi = -c / b
 	end
-	--return dodgePerAgi
-	return floor(dodgePerAgi*10000+0.5)/10000
+
+	return dodgePerAgi
 end
 
 --[[---------------------------------

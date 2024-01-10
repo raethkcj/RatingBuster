@@ -284,12 +284,8 @@ addon.SpellCritPerInt = {
 }
 
 addon.DodgePerAgi = {
-	["WARRIOR"] = {
-		[85] = 0,
-	},
-	["PALADIN"] = {
-		[85] = 0,
-	},
+	["WARRIOR"] = addon.zero,
+	["PALADIN"] = addon.zero,
 	["HUNTER"] = {
 		[85] = 0.0133266,
 	},
@@ -299,9 +295,7 @@ addon.DodgePerAgi = {
 	["PRIEST"] = {
 		[85] = 0.0192366,
 	},
-	["DEATHKNIGHT"] = {
-		[85] = 0,
-	},
+	["DEATHKNIGHT"] = addon.zero,
 	["SHAMAN"] = {
 		[85] = 0.0192366,
 	},
@@ -1816,3 +1810,180 @@ StatLogic.StatModTable["ALL"] = {
 		},
 	},
 }
+
+--=====================================--
+-- Avoidance stats diminishing returns --
+--=====================================--
+-- Formula reverse engineered by Whitetooth (hotdogee [at] gmail [dot] com)
+--[[---------------------------------
+This includes
+1. Dodge from Dodge Rating, Defense, Agility.
+2. Parry from Parry Rating, Defense.
+3. Chance to be missed from Defense.
+
+The following is the result of hours of work gathering data from beta servers and then spending even more time running multiple regression analysis on the data.
+
+1. DR for Dodge, Parry, Missed are calculated separately.
+2. Base avoidances are not affected by DR, (ex: Dodge from base Agility)
+3. Death Knight's Parry from base Strength is affected by DR, base for parry is 5%.
+4. Direct avoidance gains from talents and spells(ex: Evasion) are not affected by DR.
+5. Indirect avoidance gains from talents and spells(ex: +Agility from Kings) are affected by DR
+6. c and k values depend on class but does not change with level.
+
+7. The DR formula:
+
+1/x' = 1/c+k/x
+
+x' is the diminished stat before converting to IEEE754.
+x is the stat before diminishing returns.
+c is the cap of the stat, and changes with class.
+k is is a value that changes with class.
+-----------------------------------]]
+-- The following K, C_p, C_d are calculated by Whitetooth (hotdogee [at] gmail [dot] com)
+local K = {
+	["WARRIOR"]     = 0.956,
+	["PALADIN"]     = 0.956,
+	["HUNTER"]      = 0.988,
+	["ROGUE"]       = 0.988,
+	["PRIEST"]      = 0.983,
+	["DEATHKNIGHT"] = 0.956,
+	["SHAMAN"]      = 0.988,
+	["MAGE"]        = 0.983,
+	["WARLOCK"]     = 0.983,
+	["DRUID"]       = 0.972,
+}
+local C_p = {
+	["WARRIOR"]     = 1/0.0152366,
+	["PALADIN"]     = 1/0.0152366,
+	["HUNTER"]      = 1/0.006870,
+	["ROGUE"]       = 1/0.006870,
+	["PRIEST"]      = 1/0.0152366,
+	["DEATHKNIGHT"] = 1/0.0152366,
+	["SHAMAN"]      = 1/0.006870,
+	["MAGE"]        = 1/0.0152366,
+	["WARLOCK"]     = 1/0.0152366,
+	["DRUID"]       = 1/0.0152366,
+}
+local C_d = {
+	["WARRIOR"]     = 1/0.0152366,
+	["PALADIN"]     = 1/0.0152366,
+	["HUNTER"]      = 1/0.006870,
+	["ROGUE"]       = 1/0.006870,
+	["PRIEST"]      = 1/0.006650,
+	["DEATHKNIGHT"] = 1/0.0152366,
+	["SHAMAN"]      = 1/0.006870,
+	["MAGE"]        = 1/0.006650,
+	["WARLOCK"]     = 1/0.006650,
+	["DRUID"]       = 1/0.008555,
+}
+
+-- I've done extensive tests that show the miss cap is 16% for warriors.
+-- Because the only tank I have with 150 pieces of epic gear required for the tests is a warrior,
+-- Until someone that has the will and gear to preform the tests for other classes, I'm going to assume the cap is the same(which most likely isn't)
+local C_m = {16, 16, 16, 16, 16, 16, 16, 16, 16, 16, }
+
+function StatLogic:GetMissedChanceBeforeDR()
+	local baseDefense, additionalDefense = UnitDefense("player")
+	local defenseFromDefenseRating = floor(self:GetEffectFromRating(GetCombatRating(CR_DEFENSE_SKILL), StatLogic.Stats.DefenseRating))
+	local modMissed = defenseFromDefenseRating * 0.04
+	local drFreeMissed = 5 + (baseDefense + additionalDefense - defenseFromDefenseRating) * 0.04
+	return modMissed, drFreeMissed
+end
+
+--[[---------------------------------
+:GetDodgePerAgi()
+-------------------------------------
+Arguments:
+None
+Returns:
+; dodge : number - Dodge percentage per agility
+; statid : string - "DODGE"
+Notes:
+* Formula by Whitetooth (hotdogee [at] gmail [dot] com)
+* Calculates the dodge percentage per agility for your current class and level.
+* Only works for your currect class and current level, does not support class and level args.
+* Calculations got a bit more complicated with the introduction of the avoidance DR in WotLK, these are the values we know or can be calculated easily:
+** D'=Total Dodge% after DR
+** D_r=Dodge from Defense and Dodge Rating before DR
+** D_b=Dodge unaffected by DR (BaseDodge + Dodge from talent/buffs + Lower then normal defense correction)
+** A=Total Agility
+** A_b=Base Agility (This is what you have with no gear on)
+** A_g=Total Agility - Base Agility
+** Let d be the Dodge/Agi value we are going to calculate.
+
+#  1     1     k
+# --- = --- + ---
+#  x'    c     x
+
+# x'=D'-D_b-A_b*d
+# x=A_g*d+D_r
+
+# 1/(D'-D_b-A_b*d)=1/C_d+k/(A_g*d+D_r)=(A_g*d+D_r+C_d*k)/(C_d*A_g*d+C_d*D_r)
+
+# C_d*A_g*d+C_d*D_r=[(D'-D_b)-A_b*d]*[Ag*d+(D_r+C_d*k)]
+
+# After rearranging the terms, we get an equation of type a*d^2+b*d+c where
+# a=-A_g*A_b
+# b=A_g(D'-D_b)-A_b(D_r+C_d*k)-C_dA_g
+# c=(D'-D_b)(D_r+C_d*k)-C_d*D_r
+** Dodge/Agi=(-b-(b^2-4ac)^0.5)/(2a)
+Example:
+local dodge, statid = StatLogic:GetDodgePerAgi()
+-----------------------------------]]
+
+local ModAgiClasses = {
+	["DRUID"] = true,
+	["HUNTER"] = true,
+	["ROGUE"] = true,
+	["SHAMAN"] = true,
+}
+
+function StatLogic:GetDodgePerAgi()
+	local level = UnitLevel("player")
+	local class = addon.class
+	if false and addon.DodgePerAgi[class][level] then
+		return addon.DodgePerAgi[class][level]
+	end
+	-- Collect data
+	local D_dr = GetDodgeChance()
+	if D_dr == 0 then
+		return 0
+	end
+	local dodgeFromDodgeRating = self:GetEffectFromRating(GetCombatRating(CR_DODGE), StatLogic.Stats.DodgeRating, level)
+	-- TODO: Use this if UnitDefense gets yeeted in Cata
+	-- local baseDefense, modDefense = level * 5, 0
+	local baseDefense, modDefense = UnitDefense("player")
+	local dodgeFromModDefense = modDefense * 0.04
+	local D_r = dodgeFromDodgeRating + dodgeFromModDefense
+	local D_b = self:GetStatMod("ADD_DODGE") + (baseDefense - level * 5) * 0.04
+	local stat, effectiveStat, posBuff, negBuff = UnitStat("player", 2) -- 2 = Agility
+	local modAgi = 1
+	if ModAgiClasses[class] then
+		modAgi = self:GetStatMod("MOD_AGI")
+		-- Talents that modify Agi will not add to posBuff, so we need to calculate baseAgi
+		-- But Agi from Kings etc. will add to posBuff, so we subtract those if present
+		for _, case in StatLogic.StatModTable["ALL"]["MOD_AGI"] do
+			if case.group == addon.BuffGroup.AllStats then
+				if StatLogic:GetAuraInfo(case.aura) then
+					modAgi = modAgi - case.value
+				end
+			end
+		end
+	end
+	local A = effectiveStat
+	local A_b = ceil((stat - posBuff - negBuff) / modAgi)
+	local A_g = A - A_b
+	local C = C_d[class]
+	local k = K[class]
+	-- Solve a*x^2+b*x+c
+	local a = -A_g*A_b
+	local b = A_g*(D_dr-D_b)-A_b*(D_r+C*k)-C*A_g
+	local c = (D_dr-D_b)*(D_r+C*k)-C*D_r
+	--RatingBuster:Print(a, b, c, D_b, D_r, A_b, A_g, C, k)
+	local dodgePerAgi = (-b-(b^2-4*a*c)^0.5)/(2*a)
+	if a == 0 then
+		dodgePerAgi = -c / b
+	end
+
+	return dodgePerAgi
+end
