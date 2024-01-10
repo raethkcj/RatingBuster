@@ -312,20 +312,6 @@ addon.DodgePerAgi = {
 StatLogic.StatModTable = {}
 if addon.class == "DRUID" then
 	StatLogic.StatModTable["DRUID"] = {
-		["ADD_AP_MOD_FERAL_AP"] = {
-			-- Cat Form
-			{
-				["value"] = 1,
-				["aura"] = 768,
-				["group"] = addon.BuffGroup.Feral,
-			},
-			-- Bear Form
-			{
-				["value"] = 1,
-				["aura"] = 5487,
-				["group"] = addon.BuffGroup.Feral,
-			},
-		},
 		["ADD_AP_MOD_STR"] = {
 			-- Base
 			{
@@ -335,12 +321,12 @@ if addon.class == "DRUID" then
 		["ADD_AP_MOD_AGI"] = {
 			-- Druid: Cat Form - Buff
 			{
-				["value"] = 1,
+				["value"] = 2,
 				["aura"] = 768,
 			},
 			-- Druid: Bear Form - Buff
 			{
-				["value"] = 1,
+				["value"] = 2,
 				["aura"] = 5487,
 			},
 		},

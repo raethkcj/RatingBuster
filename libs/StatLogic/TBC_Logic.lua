@@ -239,6 +239,12 @@ if addon.class == "DRUID" then
 				["aura"] = 9634,
 				["group"] = addon.BuffGroup.Feral,
 			},
+			-- Moonkin Form
+			{
+				["value"] = 1,
+				["aura"] = 24858,
+				["group"] = addon.BuffGroup.Feral,
+			},
 		},
 		["ADD_AP_MOD_STR"] = {
 			-- Base
