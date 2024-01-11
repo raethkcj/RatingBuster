@@ -108,7 +108,7 @@ do
 	}
 
 	for pattern, stats in pairs(long) do
-		pattern = pattern:gsub("%%c", "")
+		pattern = pattern:gsub("%%%d?%$?c", ""):gsub("%%%d?%$?[sd]", "%%s")
 		local temp = {}
 		local indices = {}
 
@@ -222,5 +222,7 @@ for _, exclusion in pairs(prefixExclusions) do
 	L.PrefixExclude[exclusion] = true
 end
 
-L.DualStatPatterns[Escape(PLUS_DAMAGE_TEMPLATE_WITH_SCHOOL)] = {{StatLogic.Stats.WeaponDamageMin}, {StatLogic.Stats.WeaponDamageMax}}
-L.DualStatPatterns[Escape(DAMAGE_TEMPLATE_WITH_SCHOOL)] = {{StatLogic.Stats.WeaponDamageMin}, {StatLogic.Stats.WeaponDamageMax}}
+for i = 2, MAX_SPELL_SCHOOLS do
+	L.StatIDLookup[DAMAGE_TEMPLATE_WITH_SCHOOL:format("%s", "%s", _G["DAMAGE_SCHOOL" .. i])] = {StatLogic.Stats.WeaponDamageMin, StatLogic.Stats.WeaponDamageMax}
+	L.StatIDLookup[PLUS_DAMAGE_TEMPLATE_WITH_SCHOOL:format("%s", "%s", _G["DAMAGE_SCHOOL" .. i])] = {StatLogic.Stats.WeaponDamageMin, StatLogic.Stats.WeaponDamageMax}
+end
