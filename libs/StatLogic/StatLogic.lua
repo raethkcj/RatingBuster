@@ -1678,19 +1678,15 @@ do
 						local value = tonumber(match)
 						if value then
 							values[#values + 1] = value
-							return "%d"
+							return "%s"
 						end
 					end)
-					local statTable = false
 					if count > 0 then
 						statText = statText:trim()
-						statTable = L.StatIDLookup[statText]
-						--DevTools_Dump({
-						--	[statText] = values
-						--})
-						if statTable then
+						local stats = L.StatIDLookup[statText]
+						if stats then
 							for j, value in ipairs(values) do
-								found = ParseMatch(statTable[j], text, value, "Substitution")
+								found = ParseMatch(stats[j], text, value, "Substitution")
 							end
 						end
 					else

@@ -107,12 +107,43 @@ do
 		[DAMAGE_TEMPLATE] = {StatLogic.Stats.WeaponDamageMin, StatLogic.Stats.WeaponDamageMax},
 	}
 
-	for pattern, stat in pairs(long) do
-		pattern = pattern:gsub("%%%w", {
-			["%c"] = "",
-			["%s"] = "%d",
-		})
-		L.StatIDLookup[pattern] = stat
+	for pattern, stats in pairs(long) do
+		pattern = pattern:gsub("%%c", "")
+		local temp = {}
+		local indices = {}
+
+		-- Gather the indices of the real stats
+		local i = 0
+		local j = 1
+		repeat
+			i = pattern:find("%%s", i + 1)
+			if i then
+				temp[i] = stats[j]
+				indices[#indices + 1] = i
+				j = j + 1
+			end
+		until not i
+
+		-- Gather the indices of each 5
+		i = 0
+		repeat
+			i = pattern:find("%f[%+%-%d]5%f[^%+%-%d]", i + 1)
+			if i then
+				temp[i] = false
+				indices[#indices + 1] = i
+			end
+		until not i
+
+		pattern = pattern:gsub("%f[%+%-%d]5%f[^%+%-%d]", "%%s")
+
+		-- Insert a false in the stat table for each 5, in order
+		table.sort(indices)
+		local newStats = {}
+		for _, index in ipairs(indices) do
+			newStats[#newStats + 1] = temp[index]
+		end
+
+		L.StatIDLookup[pattern] = newStats
 	end
 end
 
@@ -159,7 +190,7 @@ do
 	}
 
 	for pattern, stat in pairs(short) do
-		L.StatIDLookup["%d " .. pattern] = stat
+		L.StatIDLookup["%s " .. pattern] = stat
 	end
 end
 
