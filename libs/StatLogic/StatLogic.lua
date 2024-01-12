@@ -1331,110 +1331,63 @@ do
 			end
 		end, 6))
 	end
-end
 
---[[---------------------------------
-{	:BuildGemmedTooltip(item, red, yellow, blue, meta)
--------------------------------------
--- Description
-	Returns a modified link with all empty sockets replaced with the specified gems,
-	sockets already gemmed will remain.
--- Args
-	item
-			string - link or name of target item
-	 or number - itemID of target item
-	 or table - tooltip of target item
-	red
-		string or number - gemID to replace a red socket
-	yellow
-		string or number - gemID to replace a yellow socket
-	blue
-		string or number - gemID to replace a blue socket
-	meta
-		string or number - gemID to replace a meta socket
--- Returns
-	link
-		string - modified item link
--- Remarks
--- Examples
-	StatLogic:BuildGemmedTooltip(28619, 3119, 3119, 3119, 3119)
-	SetTip("item:28619")
-	SetTip(StatLogic:BuildGemmedTooltip(28619, 3119, 3119, 3119, 3119))
-}
------------------------------------]]
-local EmptySocketLookup = {
-	[EMPTY_SOCKET_RED] = 0, -- EMPTY_SOCKET_RED = "Red Socket";
-	[EMPTY_SOCKET_YELLOW] = 0, -- EMPTY_SOCKET_YELLOW = "Yellow Socket";
-	[EMPTY_SOCKET_BLUE] = 0, -- EMPTY_SOCKET_BLUE = "Blue Socket";
-	[EMPTY_SOCKET_META] = 0, -- EMPTY_SOCKET_META = "Meta Socket";
-}
-function StatLogic:BuildGemmedTooltip(item, red, yellow, blue, meta)
-	local _
-	-- Check item
-	if (type(item) == "string") or (type(item) == "number") then
-	elseif type(item) == "table" and type(item.GetItem) == "function" then
-		-- Get the link
-		_, item = item:GetItem()
-		if type(item) ~= "string" then return item end
-	else
-		return item
-	end
-	-- Check if item is in local cache
-	local name, link = GetItemInfo(item)
-	if not name then return item end
-
-	-- Check gemID
-	if not red or not tonumber(red) then red = 0 end
-	if not yellow or not tonumber(yellow) then yellow = 0 end
-	if not blue or not tonumber(blue) then blue = 0 end
-	if not meta or not tonumber(meta) then meta = 0 end
-	if red == 0 and yellow == 0 and blue == 0 and meta == 0 then return link end -- nothing to modify
-
-	-- Check if any gems are already socketed
-	local linkType, itemId, enchantId, jewelId1, jewelId2, jewelId3, jewelId4, suffixId, uniqueId = strsplit(":", link)
-	if (jewelId1 and jewelId1 ~= "" and jewelId1 ~= "0")
-		or (jewelId2 and jewelId2 ~= "" and jewelId2 ~= "0")
-		or (jewelId3 and jewelId3 ~= "" and jewelId3 ~= "0")
-		or (jewelId4 and jewelId4 ~= "" and jewelId4 ~= "0")
-	then
-		return link
-	end
-
-	-- Fill EmptySocketLookup
-	EmptySocketLookup[EMPTY_SOCKET_RED] = red
-	EmptySocketLookup[EMPTY_SOCKET_YELLOW] = yellow
-	EmptySocketLookup[EMPTY_SOCKET_BLUE] = blue
-	EmptySocketLookup[EMPTY_SOCKET_META] = meta
-
-	-- Build socket list
-	local socketList = {}
-	-- Start parsing
-	tip:ClearLines() -- this is required or SetX won't work the second time its called
-	tip:SetHyperlink(link)
-	for i = 2, tip:NumLines() do
-		local text = tip.sides.left[i]:GetText()
-		-- Trim spaces
-		text = text:trim()
-		-- Strip color codes
-		if text:sub(-2) == "|r" then
-			text = text:sub(1, -3)
+	local EmptySocketLookup = {
+		[EMPTY_SOCKET_RED] = 0, -- EMPTY_SOCKET_RED = "Red Socket";
+		[EMPTY_SOCKET_YELLOW] = 0, -- EMPTY_SOCKET_YELLOW = "Yellow Socket";
+		[EMPTY_SOCKET_BLUE] = 0, -- EMPTY_SOCKET_BLUE = "Blue Socket";
+		[EMPTY_SOCKET_META] = 0, -- EMPTY_SOCKET_META = "Meta Socket";
+	}
+	-- Returns a modified link with all empty sockets replaced with the specified gems,
+	-- sockets already gemmed will remain.
+	---@param link string itemLink
+	---@param red string|number gemID to replace a red socket
+	---@param yellow string|number gemID to replace a yellow socket
+	---@param blue string|number gemID to replace a blue socket
+	---@param meta string|number gemID to replace a meta socket
+	---@return string link Modified item link
+	function StatLogic:BuildGemmedTooltip(link, red, yellow, blue, meta)
+		-- Check item
+		if (type(link) ~= "string") then
+			return link
 		end
-		if text:sub(1, 10):find("|c%x%x%x%x%x%x%x%x") then
-			text = text:sub(11)
+
+		wipe(statTable)
+		GetItemStats(link, statTable)
+		local numSockets = statTable["EMPTY_SOCKET_META"] + statTable["EMPTY_SOCKET_RED"] + statTable["EMPTY_SOCKET_YELLOW"] + statTable["EMPTY_SOCKET_BLUE"]
+		if numSockets == 0 then return link end
+
+		-- Check gemID
+		red = red and tonumber(red) or 0
+		yellow = yellow and tonumber(yellow) or 0
+		blue = blue and tonumber(blue) or 0
+		meta = meta and tonumber(meta) or 0
+		if red == 0 and yellow == 0 and blue == 0 and meta == 0 then return link end -- nothing to modify
+
+		-- Fill EmptySocketLookup
+		EmptySocketLookup[EMPTY_SOCKET_RED] = red
+		EmptySocketLookup[EMPTY_SOCKET_YELLOW] = yellow
+		EmptySocketLookup[EMPTY_SOCKET_BLUE] = blue
+		EmptySocketLookup[EMPTY_SOCKET_META] = meta
+
+		-- Build socket list
+		local arguments = {"%1"}
+		-- Start parsing
+		tip:ClearLines()
+		tip:SetHyperlink(link)
+		for i = 2, tip:NumLines() do
+			local text = tip.sides.left[i]:GetText()
+			local socketFound = EmptySocketLookup[text]
+			arguments[#arguments+1] = socketFound
 		end
-		local socketFound = EmptySocketLookup[text]
-		if socketFound then
-			socketList[#socketList+1] = socketFound
+		-- If there are no sockets
+		if #arguments == 1 then
+			return link
+		else
+			local repl = strjoin(":", unpack(arguments))
+			return (link:gsub("(item:%d+:%d*):0?:0?:0?:0?", repl))
 		end
 	end
-	-- If there are no sockets
-	if #socketList == 0 then return link end
-	-- link breakdown
-	if socketList[1]  then jewelId1 = socketList[1] end
-	if socketList[2]  then jewelId2 = socketList[2] end
-	if socketList[3]  then jewelId3 = socketList[3] end
-	if socketList[4]  then jewelId4 = socketList[4] end
-	return strjoin(":", linkType, itemId, enchantId, jewelId1, jewelId2, jewelId3, jewelId4, suffixId, uniqueId)
 end
 
 --[[---------------------------------
