@@ -1905,9 +1905,6 @@ do
 
 				if not found then
 					log("  No Match: |cffff0000'"..text.."'")
-					if DEBUG and RatingBuster then
-						RatingBuster.db.profile.test = text
-					end
 				end
 			end
 		end
