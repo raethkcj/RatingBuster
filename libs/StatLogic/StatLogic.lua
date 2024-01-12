@@ -1602,26 +1602,26 @@ do
 		for i = 2, tip:NumLines() do
 			for _, side in pairs(tip.sides) do
 				local fontString = side[i]
-				local text = fontString:GetText() or ""
+				local text = fontString:GetText()
+				local found = not text or text == ""
 
-				-- Trim spaces
-				text = text:trim()
-				-- Strip color codes
-				if text:sub(-2) == "|r" then
-					text = text:sub(1, -3)
-				end
-				if text:sub(1, 10):find("|c%x%x%x%x%x%x%x%x") then
-					text = text:sub(11)
-				end
+				if not found then
+					-- Trim spaces and limit to one line
+					text = text:trim()
+					text = text:gsub("\n.*", "")
+					-- Strip color codes
+					text = text:gsub("^|c%x%x%x%x%x%x%x%x", "")
+					text = text:gsub("|r$", "")
 
-				currentColor = CreateColor(fontString:GetTextColor())
-				local _, g, b = currentColor:GetRGB()
-				-----------------------
-				-- Whole Text Lookup --
-				-----------------------
-				-- Mainly used for enchants or stuff without numbers:
-				local idTable = L.WholeTextLookup[text]
-				local found = ParseMatch(idTable, text, false, "WholeText")
+					currentColor = CreateColor(fontString:GetTextColor())
+
+					-----------------------
+					-- Whole Text Lookup --
+					-----------------------
+					-- Mainly used for enchants or stuff without numbers:
+					local idTable = L.WholeTextLookup[text]
+					found = ParseMatch(idTable, text, false, "WholeText")
+				end
 
 				-------------------------
 				-- Substitution Lookup --
@@ -1666,6 +1666,7 @@ do
 				-------------------
 				-- Exclude lines that are not white, green, or "normal" (normal for Frozen Wrath etc.)
 				if not found then
+					local _, g, b = currentColor:GetRGB()
 					if g < 0.8 or (b < 0.99 and b > 0.1) then
 						found = ParseMatch(false, text, nil, "Color")
 					end
@@ -1684,7 +1685,7 @@ do
 						if tonumber(statText) then
 							value, statText = statText, value
 						end
-						idTable = L.StatIDLookup[statText]
+						local idTable = L.StatIDLookup[statText]
 						found = ParseMatch(idTable, text, value, "SinglePlus")
 					end
 				end
@@ -1698,7 +1699,7 @@ do
 					local _, _, statText1, value, statText2 = text:find(L.SingleEquipStatCheck)
 					if value then
 						local statText = statText1..statText2
-						idTable = L.StatIDLookup[strutf8lower(statText)]
+						local idTable = L.StatIDLookup[strutf8lower(statText)]
 						found = ParseMatch(idTable, text, value, "SingleEquip")
 					end
 				end
@@ -1772,7 +1773,7 @@ do
 						log("|cff008080".."S"..j..": ".."'"..phrase.."'")
 						-- Whole Text Lookup
 						local foundWholeText = false
-						idTable = L.WholeTextLookup[phrase]
+						local idTable = L.WholeTextLookup[phrase]
 						found = ParseMatch(idTable, phrase, false, "DeepScan WholeText")
 						foundWholeText = found
 
@@ -1816,7 +1817,7 @@ do
 								local _, _, statText1, value, statText2 = lowered:find(pattern)
 								if value then
 									local statText = statText1..statText2
-									idTable = L.StatIDLookup[statText]
+									local idTable = L.StatIDLookup[statText]
 									found = ParseMatch(idTable, phrase, value, "DeepScan")
 									foundDeepScan1 = found
 									if found then
@@ -1845,7 +1846,7 @@ do
 								log("|cff008080".."S"..k.."-"..k..": ".."'"..word.."'")
 								-- Whole Text Lookup
 								foundWholeText = false
-								idTable = L.WholeTextLookup[word]
+								local idTable = L.WholeTextLookup[word]
 								found = ParseMatch(idTable, word, false, "DeepScan2 WholeText")
 								foundWholeText = found
 
@@ -1883,7 +1884,7 @@ do
 										local _, _, statText1, value, statText2 = lowered:find(pattern)
 										if value then
 											local statText = statText1..statText2
-											idTable = L.StatIDLookup[statText]
+											local idTable = L.StatIDLookup[statText]
 											found = ParseMatch(idTable, word, value, "DeepScan2")
 											foundDeepScan2 = found
 											if found then
