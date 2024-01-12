@@ -97,6 +97,7 @@ StatLogic.Stats.MinWeaponDamage = Stat:new()
 StatLogic.Stats.MaxWeaponDamage = Stat:new()
 StatLogic.Stats.AverageWeaponDamage = Stat:new()
 StatLogic.Stats.WeaponDPS = Stat:new()
+StatLogic.Stats.WeaponSubclass = Stat:new()
 
 -- Melee Stats
 StatLogic.Stats.MeleeHit = Stat:new()

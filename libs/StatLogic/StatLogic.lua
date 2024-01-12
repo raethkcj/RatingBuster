@@ -169,12 +169,12 @@ local statTableMetatable = {
 					if op1[k] == 0 then
 						op1[k] = nil
 					end
-				elseif k == "itemType" then
+				elseif k == "inventoryType" then
 					local i = 1
-					while rawget(op1, "diffItemType"..i) do
+					while rawget(op1, "diffInventoryType"..i) do
 						i = i + 1
 					end
-					op1["diffItemType"..i] = op2.itemType
+					op1["diffInventoryType"..i] = op2.inventoryType
 				end
 			end
 		end
@@ -1534,7 +1534,7 @@ end
 -- Returns
 	[sum]
 		table - {
-			["itemType"] = itemType,
+			["inventoryType"] = inventoryType,
 			["STAT_ID1"] = value,
 			["STAT_ID2"] = value,
 		}
@@ -1609,7 +1609,7 @@ do
 			return
 		end
 		-- Check if item is in local cache
-		local name, link, _, _, _, _, _, _, itemType = GetItemInfo(item)
+		local name, link, _, _, _, _, _, _, inventoryType, _, _, itemClass, itemSubclass = GetItemInfo(item)
 		if not name then return end
 
 		-- Clear table values
@@ -1630,12 +1630,16 @@ do
 		end
 
 		-- Set metadata
-		statTable.itemType = itemType
+		statTable.inventoryType = inventoryType
 		statTable.link = link
 		statTable.numLines = numLines
 
+		if itemClass == Enum.ItemClass.Weapon then
+			statTable[StatLogic.Stats.WeaponSubclass] = itemSubclass
+		end
+
 		-- Don't scan Relics because they don't have general stats
-		if itemType == "INVTYPE_RELIC" then
+		if inventoryType == "INVTYPE_RELIC" then
 			cache[link] = copy(statTable)
 			return statTable
 		end
@@ -2083,7 +2087,7 @@ local function HasTitansGrip()
 end
 
 function StatLogic:GetDiffID(item, ignoreEnchant, ignoreGems, ignoreExtraSockets, red, yellow, blue, meta)
-	local name, itemType, link, linkDiff1, linkDiff2, _
+	local name, inventoryType, link, linkDiff1, linkDiff2, _
 	-- Check item
 	if (type(item) == "string") or (type(item) == "number") then
 	elseif type(item) == "table" and type(item.GetItem) == "function" then
@@ -2094,15 +2098,15 @@ function StatLogic:GetDiffID(item, ignoreEnchant, ignoreGems, ignoreExtraSockets
 		return
 	end
 	-- Check if item is in local cache
-	name, link, _, _, _, _, _, _, itemType = GetItemInfo(item)
+	name, link, _, _, _, _, _, _, inventoryType = GetItemInfo(item)
 	if not name then return end
 	-- Get equip location slot id for use in GetInventoryItemLink
-	local slotID = getSlotID[itemType]
+	local slotID = getSlotID[inventoryType]
 	-- Don't do bags
 	if not slotID then return end
 
 	-- 1h weapon, check if player can dual wield, check for 2h equipped
-	if itemType == "INVTYPE_WEAPON" then
+	if inventoryType == "INVTYPE_WEAPON" then
 		linkDiff1 = GetInventoryItemLink("player", 16) or "NOITEM"
 		-- If player can Dual Wield, calculate offhand difference
 		if IsUsableSpell(GetSpellInfo(674)) then		-- ["Dual Wield"]
@@ -2120,7 +2124,7 @@ function StatLogic:GetDiffID(item, ignoreEnchant, ignoreGems, ignoreExtraSockets
 		linkDiff1 = GetInventoryItemLink("player", slotID[1]) or "NOITEM"
 		linkDiff2 = GetInventoryItemLink("player", slotID[2]) or "NOITEM"
 	-- 2h weapon, so we calculate the difference with equipped main hand and off hand
-	elseif itemType == "INVTYPE_2HWEAPON" then
+	elseif inventoryType == "INVTYPE_2HWEAPON" then
 		linkDiff1 = GetInventoryItemLink("player", 16) or "NOITEM"
 		linkDiff2= GetInventoryItemLink("player", 17) or "NOITEM"
 	-- Off hand slot, check if we have 2h equipped
@@ -2244,9 +2248,9 @@ function StatLogic:GetDiff(item, diff1, diff2, ignoreEnchant, ignoreGems, ignore
 	-- Get item sum, results are written into diff1 table
 	local itemSum = self:GetSum(link)
 	if not itemSum then return end
-	local itemType = itemSum.itemType
+	local inventoryType = itemSum.inventoryType
 
-	if itemType == "INVTYPE_2HWEAPON" and not HasTitansGrip() then
+	if inventoryType == "INVTYPE_2HWEAPON" and not HasTitansGrip() then
 		local equippedSum1, equippedSum2
 		-- Get main hand item sum
 		if linkDiff1 == "NOITEM" then
