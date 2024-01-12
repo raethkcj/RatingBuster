@@ -175,6 +175,7 @@ local resistances = {
 	[7] = StatLogic.Stats.ArcaneResistance,
 }
 
+if not MAX_SPELL_SCHOOLS then MAX_SPELL_SCHOOLS = 7 end
 for i = 2, MAX_SPELL_SCHOOLS do
 	local school = _G["DAMAGE_SCHOOL" .. i]
 	L.StatIDLookup[DAMAGE_TEMPLATE_WITH_SCHOOL:format("%s", "%s", school)] = {StatLogic.Stats.MinWeaponDamage, StatLogic.Stats.MaxWeaponDamage}
