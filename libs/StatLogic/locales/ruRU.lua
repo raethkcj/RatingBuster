@@ -77,7 +77,6 @@ L["PreScanPatterns"] = {
 	-- Exclude
 	["^(%d+) Slot"] = false, -- Set Name (0/9)
 	["^.+%((%d+)/%d+%)$"] = false, -- Set Name (0/9)
-	["|cff808080"] = false, -- Gray text "  |cff808080Requires at least 2 Yellow gems|r\n  |cff808080Requires at least 1 Red gem|r"
 	-- Procs
 	--["[Cc]hance"] = false, -- [Mark of Defiance] ID:27924 -- [Staff of the Qiraji Prophets] ID:21128 -- Commented out because it was blocking [Insightful Earthstorm Diamond]
 	["[Ss]ometimes"] = false, -- [Darkmoon Card: Heroism] ID:19287

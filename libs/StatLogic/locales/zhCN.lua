@@ -85,7 +85,6 @@ L["PreScanPatterns"] = {
 	["^(%d+)格.-袋"] = false, -- # of slots and bag type
 	["^(%d+)格容器"] = false, -- # of slots and bag type
 	["^.+（(%d+)/%d+）$"] = false, -- Set Name (0/9)
-	["|cff808080"] = false, -- Gray text "  |cff808080Requires at least 2 Yellow gems|r\n  |cff808080Requires at least 1 Red gem|r"
 	-- Procs
 	["几率"] = false, --[挑战印记] ID:27924
 	["机率"] = false,

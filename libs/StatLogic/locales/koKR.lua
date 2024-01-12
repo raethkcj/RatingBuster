@@ -73,7 +73,6 @@ L["PreScanPatterns"] = {
 	-- Exclude
 	["^(%d+)칸"] = false, -- Set Name (0/9)
 	["^[%D ]+ %((%d+)/%d+%)$"] = false, -- Set Name (0/9)
-	["|cff808080"] = false, -- Gray text "  |cff808080Requires at least 2 Yellow gems|r\n  |cff808080Requires at least 1 Red gem|r"
 	-- Procs
 	["발동"] = false, -- [Mark of Defiance] ID:27924 -- [Staff of the Qiraji Prophets] ID:21128
 	["확률로"] = false, -- [Darkmoon Card: Heroism] ID:19287
