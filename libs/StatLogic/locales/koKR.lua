@@ -115,7 +115,7 @@ L["DeepScanPatterns"] = {
 -----------------------
 L["StatIDLookup"] = {
 	["공격 시 적의 방어도를 무시합니다"] = {StatLogic.Stats.IgnoreArmor}, -- StatLogic:GetSum("item:33733")
-	["무기 공격력"] = {StatLogic.Stats.WeaponDamageAverage}, -- Enchant
+	["무기 공격력"] = {StatLogic.Stats.AverageWeaponDamage}, -- Enchant
 
 	["모든 능력치"] = {StatLogic.Stats.AllStats,},
 	["힘"] = {StatLogic.Stats.Strength,},

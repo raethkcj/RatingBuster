@@ -567,7 +567,6 @@ L[StatLogic.Stats.HealthRegenOutOfCombat] = "Health Regen (Out of Combat)"
 L["StatModOptionName"] = "%s %s"
 
 L[StatLogic.Stats.IgnoreArmor] = "Ignore Armor"
-L[StatLogic.Stats.WeaponDamageAverage] = "Melee Weapon "..DAMAGE -- DAMAGE = "Damage"
 
 L[StatLogic.Stats.Strength] = SPELL_STAT1_NAME
 L[StatLogic.Stats.Agility] = SPELL_STAT2_NAME
@@ -603,7 +602,7 @@ L[StatLogic.Stats.SpellPenetration] = PLAYERSTAT_SPELL_COMBAT.." "..SPELL_PENETR
 L[StatLogic.Stats.Health] = HEALTH
 L[StatLogic.Stats.Mana] = MANA
 
-L[StatLogic.Stats.WeaponDamageAverage] = "Average Damage"
+L[StatLogic.Stats.AverageWeaponDamage] = "Average Damage"
 L[StatLogic.Stats.WeaponDPS] = "Damage Per Second"
 
 L[StatLogic.Stats.DefenseRating] = COMBAT_RATING_NAME2 -- COMBAT_RATING_NAME2 = "Defense Rating"

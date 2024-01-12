@@ -690,7 +690,6 @@ L[StatLogic.Stats.HealthRegenOutOfCombat] = "Восполнение здаров
 L["StatModOptionName"] = "%s %s"
 
 L[StatLogic.Stats.IgnoreArmor] =  "Ignore Armor"
-L[StatLogic.Stats.WeaponDamageAverage] =  "Melee Weapon " .. DAMAGE -- DAMAGE = "Damage"
 
 L[StatLogic.Stats.Strength] =  "Сила"
 L[StatLogic.Stats.Agility] =  "Ловкость"
@@ -726,7 +725,7 @@ L[StatLogic.Stats.SpellPenetration] =  "Проникающая способно�
 L[StatLogic.Stats.Health] =  "Здоровье"
 L[StatLogic.Stats.Mana] =  "Мана"
 
-L[StatLogic.Stats.WeaponDamageAverage] =  "Average Damage"
+L[StatLogic.Stats.AverageWeaponDamage] =  "Average Damage"
 L[StatLogic.Stats.WeaponDPS] =  "Урон в секунду"
 
 L[StatLogic.Stats.DefenseRating] =  "Рейтинг защиты"     -- COMBAT_RATING_NAME2 = "Defense Rating"

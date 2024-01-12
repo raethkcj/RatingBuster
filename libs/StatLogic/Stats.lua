@@ -93,9 +93,9 @@ StatLogic.Stats.ArmorPenetration = Stat:new()
 StatLogic.Stats.ArmorPenetrationRating = Stat:new()
 
 -- Weapon Stats
-StatLogic.Stats.WeaponDamageMin = Stat:new()
-StatLogic.Stats.WeaponDamageMax = Stat:new()
-StatLogic.Stats.WeaponDamageAverage = Stat:new()
+StatLogic.Stats.MinWeaponDamage = Stat:new()
+StatLogic.Stats.MaxWeaponDamage = Stat:new()
+StatLogic.Stats.AverageWeaponDamage = Stat:new()
 StatLogic.Stats.WeaponDPS = Stat:new()
 
 -- Melee Stats

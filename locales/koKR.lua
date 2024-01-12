@@ -548,7 +548,7 @@ L[StatLogic.Stats.HealthRegenOutOfCombat] = "생명력 재생 (비전투)"
 L["StatModOptionName"] = "%2$s %1$s"
 
 L[StatLogic.Stats.IgnoreArmor] = "방어도 무시"
-L[StatLogic.Stats.WeaponDamageAverage] = "근접 무기 "..DAMAGE -- DAMAGE = "Damage"
+L[StatLogic.Stats.AverageWeaponDamage] = "근접 무기 "..DAMAGE -- DAMAGE = "Damage"
 
 L[StatLogic.Stats.Strength] = SPELL_STAT1_NAME
 L[StatLogic.Stats.Agility] = SPELL_STAT2_NAME
@@ -584,7 +584,6 @@ L[StatLogic.Stats.SpellPenetration] = PLAYERSTAT_SPELL_COMBAT.." "..SPELL_PENETR
 L[StatLogic.Stats.Health] = HEALTH
 L[StatLogic.Stats.Mana] = MANA
 
-L[StatLogic.Stats.WeaponDamageAverage] = "Average Damage"
 L[StatLogic.Stats.WeaponDPS] = "초당 공격력"
 
 L[StatLogic.Stats.DefenseRating] = COMBAT_RATING_NAME2 -- COMBAT_RATING_NAME2 = "Defense Rating"

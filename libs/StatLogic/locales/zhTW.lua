@@ -132,7 +132,7 @@ L["DeepScanPatterns"] = {
 L["StatIDLookup"] = {
 	--["%昏迷抗性"] = {},
 	["你的攻擊無視目標點護甲值"] = {StatLogic.Stats.IgnoreArmor},
-	["武器傷害"] = {StatLogic.Stats.WeaponDamageAverage}, -- Enchant
+	["武器傷害"] = {StatLogic.Stats.AverageWeaponDamage}, -- Enchant
 
 	["所有屬性"] = {StatLogic.Stats.AllStats,},
 	["力量"] = {StatLogic.Stats.Strength,},

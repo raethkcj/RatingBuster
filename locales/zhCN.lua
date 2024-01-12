@@ -548,7 +548,7 @@ L[StatLogic.Stats.HealthRegenOutOfCombat] = "生命恢复 (非战斗)"
 L["StatModOptionName"] = "%s %s"
 
 L[StatLogic.Stats.IgnoreArmor] = "你的攻击无视目标的 %d+ 点护甲值。"
-L[StatLogic.Stats.WeaponDamageAverage] = "近战伤害" -- DAMAGE = "Damage"
+L[StatLogic.Stats.AverageWeaponDamage] = "近战伤害" -- DAMAGE = "Damage"
 
 L[StatLogic.Stats.Strength] = SPELL_STAT1_NAME
 L[StatLogic.Stats.Agility] = SPELL_STAT2_NAME
@@ -584,7 +584,6 @@ L[StatLogic.Stats.SpellPenetration] = "法术穿透"
 L[StatLogic.Stats.Health] = HEALTH
 L[StatLogic.Stats.Mana] = MANA
 
-L[StatLogic.Stats.WeaponDamageAverage] = "Average Damage"
 L[StatLogic.Stats.WeaponDPS] = "每秒伤害"
 
 L[StatLogic.Stats.DefenseRating] = COMBAT_RATING_NAME2 -- COMBAT_RATING_NAME2 = "Defense Rating"

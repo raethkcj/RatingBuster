@@ -99,8 +99,8 @@ local long = {
 
 	[DPS_TEMPLATE] = {StatLogic.Stats.WeaponDPS},
 	[ARMOR_TEMPLATE] = {StatLogic.Stats.Armor},
-	[PLUS_DAMAGE_TEMPLATE] = {StatLogic.Stats.WeaponDamageMin, StatLogic.Stats.WeaponDamageMax},
-	[DAMAGE_TEMPLATE] = {StatLogic.Stats.WeaponDamageMin, StatLogic.Stats.WeaponDamageMax},
+	[PLUS_DAMAGE_TEMPLATE] = {StatLogic.Stats.MinWeaponDamage, StatLogic.Stats.MaxWeaponDamage},
+	[DAMAGE_TEMPLATE] = {StatLogic.Stats.MinWeaponDamage, StatLogic.Stats.MaxWeaponDamage},
 }
 
 for pattern, stats in pairs(long) do
@@ -177,8 +177,8 @@ local resistances = {
 
 for i = 2, MAX_SPELL_SCHOOLS do
 	local school = _G["DAMAGE_SCHOOL" .. i]
-	L.StatIDLookup[DAMAGE_TEMPLATE_WITH_SCHOOL:format("%s", "%s", school)] = {StatLogic.Stats.WeaponDamageMin, StatLogic.Stats.WeaponDamageMax}
-	L.StatIDLookup[PLUS_DAMAGE_TEMPLATE_WITH_SCHOOL:format("%s", "%s", school)] = {StatLogic.Stats.WeaponDamageMin, StatLogic.Stats.WeaponDamageMax}
+	L.StatIDLookup[DAMAGE_TEMPLATE_WITH_SCHOOL:format("%s", "%s", school)] = {StatLogic.Stats.MinWeaponDamage, StatLogic.Stats.MaxWeaponDamage}
+	L.StatIDLookup[PLUS_DAMAGE_TEMPLATE_WITH_SCHOOL:format("%s", "%s", school)] = {StatLogic.Stats.MinWeaponDamage, StatLogic.Stats.MaxWeaponDamage}
 	if resistances[i] then
 		L.StatIDLookup[unescape(ITEM_RESIST_SINGLE):format("%s", school)] = {resistances[i]}
 	end

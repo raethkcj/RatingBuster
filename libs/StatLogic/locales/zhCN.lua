@@ -136,8 +136,8 @@ L["DeepScanPatterns"] = {
 -----------------------
 L["StatIDLookup"] = {
 	["你的攻击无视目标的点护甲值"] = {StatLogic.Stats.IgnoreArmor}, -- StatLogic:GetSum("item:33733")
-	["武器伤害"] = {StatLogic.Stats.WeaponDamageAverage}, -- Enchant
-	["近战伤害"] = {StatLogic.Stats.WeaponDamageAverage}, -- Enchant
+	["武器伤害"] = {StatLogic.Stats.AverageWeaponDamage}, -- Enchant
+	["近战伤害"] = {StatLogic.Stats.AverageWeaponDamage}, -- Enchant
 
 	["所有属性"] = {StatLogic.Stats.AllStats,},
 	["力量"] = {StatLogic.Stats.Strength,},

@@ -146,12 +146,12 @@ L["DeepScanPatterns"] = {
 -----------------------
 L["StatIDLookup"] = {
 	["Vos attaques ignorentpoints de l'armure de votre adversaire"] = {StatLogic.Stats.IgnoreArmor}, -- StatLogic:GetSum("item:33733")
-	["aux dégâts de l'arme"] = {StatLogic.Stats.WeaponDamageAverage},
+	["aux dégâts de l'arme"] = {StatLogic.Stats.AverageWeaponDamage},
 
 	--dégats melee
-	["aux dégâts des armes"] = {StatLogic.Stats.WeaponDamageAverage},
-	["aux dégâts en mêlée"] = {StatLogic.Stats.WeaponDamageAverage},
-	["dégâts de l'arme"] = {StatLogic.Stats.WeaponDamageAverage},
+	["aux dégâts des armes"] = {StatLogic.Stats.AverageWeaponDamage},
+	["aux dégâts en mêlée"] = {StatLogic.Stats.AverageWeaponDamage},
+	["dégâts de l'arme"] = {StatLogic.Stats.AverageWeaponDamage},
 
 	["à toutes les caractéristiques"] = {StatLogic.Stats.AllStats,},
 	["Force"] = {StatLogic.Stats.Strength},

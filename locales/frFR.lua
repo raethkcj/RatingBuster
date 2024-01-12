@@ -552,7 +552,7 @@ L[StatLogic.Stats.HealthRegenOutOfCombat] = "Régén. vie (hors combat)"
 L["StatModOptionName"] = "%s %s"
 
 L[StatLogic.Stats.IgnoreArmor] = "Armure ignorée"
-L[StatLogic.Stats.WeaponDamageAverage] = "Dégâts de l'arme"
+L[StatLogic.Stats.AverageWeaponDamage] = "Dégâts de l'arme"
 
 L[StatLogic.Stats.Strength] = "Force"
 L[StatLogic.Stats.Agility] = "Agilité"
@@ -588,7 +588,6 @@ L[StatLogic.Stats.SpellPenetration] = "Pénétration des sorts"
 L[StatLogic.Stats.Health] = "Points de vie"
 L[StatLogic.Stats.Mana] = "Points de mana"
 
-L[StatLogic.Stats.WeaponDamageAverage] = "Average Damage"
 L[StatLogic.Stats.WeaponDPS] = "Dégâts par seconde"
 
 L[StatLogic.Stats.DefenseRating] = "Score de défense"

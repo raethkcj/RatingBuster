@@ -137,7 +137,7 @@ L["DeepScanPatterns"] = {
 -----------------------
 L["StatIDLookup"] = {
 	["Eure Angriffe ignorierenRüstung eures Gegners"] = {StatLogic.Stats.IgnoreArmor}, -- StatLogic:GetSum("item:33733")
-	["Waffenschaden"] = {StatLogic.Stats.WeaponDamageAverage}, -- Enchant
+	["Waffenschaden"] = {StatLogic.Stats.AverageWeaponDamage}, -- Enchant
 
 	["Alle Werte"] = {StatLogic.Stats.AllStats,},
 	["Stärke"] = {StatLogic.Stats.Strength,},

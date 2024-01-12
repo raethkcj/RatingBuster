@@ -2830,13 +2830,13 @@ local summaryCalcData = {
 		end,
 		ispercent = true,
 	},
-	-- Weapon Average Damage - StatLogic.Stats.WeaponDamageMin, StatLogic.Stats.WeaponDamageMax
+	-- Weapon Average Damage - StatLogic.Stats.MinWeaponDamage, StatLogic.Stats.MaxWeaponDamage
 	{
 		option = "sumWeaponAverageDamage",
-		name = StatLogic.Stats.WeaponDamageAverage,
+		name = StatLogic.Stats.AverageWeaponDamage,
 		func = function(sum)
-			return sum[StatLogic.Stats.WeaponDamageMin] * GSM("ADD_WEAPON_DAMAGE_AVERAGE_MOD_WEAPON_DAMAGE_MIN")
-				+ sum[StatLogic.Stats.WeaponDamageMax] * GSM("ADD_WEAPON_DAMAGE_AVERAGE_MOD_WEAPON_DAMAGE_MAX")
+			return sum[StatLogic.Stats.MinWeaponDamage] * GSM("ADD_WEAPON_DAMAGE_AVERAGE_MOD_WEAPON_DAMAGE_MIN")
+				+ sum[StatLogic.Stats.MaxWeaponDamage] * GSM("ADD_WEAPON_DAMAGE_AVERAGE_MOD_WEAPON_DAMAGE_MAX")
 		end,
 	},
 	-- Weapon DPS - DPS

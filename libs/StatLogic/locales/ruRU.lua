@@ -119,7 +119,7 @@ L["DeepScanPatterns"] = {
 -----------------------
 L["StatIDLookup"] = {
 	["Эффективность брони противника против ваших атак снижена на"] = {StatLogic.Stats.IgnoreArmor}, -- StatLogic:GetSum("item:33733") (used tbc text)
-	["Weapon Damage"] = {StatLogic.Stats.WeaponDamageAverage}, -- Enchant
+	["Weapon Damage"] = {StatLogic.Stats.AverageWeaponDamage}, -- Enchant
 
 	["ко всем характеристикам"] = {StatLogic.Stats.AllStats,},
 	["к силе"] = {StatLogic.Stats.Strength,},
