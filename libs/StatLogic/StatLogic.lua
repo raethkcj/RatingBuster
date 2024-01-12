@@ -1591,8 +1591,8 @@ do
 			statTable[StatLogic.Stats.WeaponSubclass] = itemSubclass
 		end
 
-		-- Don't scan Relics because they don't have general stats
-		if inventoryType == "INVTYPE_RELIC" then
+		-- Don't scan Relics until Cata
+		if inventoryType == "INVTYPE_RELIC" and tocversion < 40000 then
 			cache[link] = copy(statTable)
 			return statTable
 		end
