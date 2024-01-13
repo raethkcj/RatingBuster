@@ -602,16 +602,17 @@ elseif addon.class == "DEATHKNIGHT" then
 				["enchant"] = 3883,
 			},
 		},
-		-- Death Knight: Vampiric Blood - Buff: 55233
-		-- 4.0.1: Maximum health increased by 15%
-		-- Death Knight: Glyph of Vampiric Blood - Glyph: 58676
-		-- 4.0.1: Vampiric Blood no longer grants you health
 		["MOD_HEALTH"] = {
-			-- Vampiric Blood
+			-- Buff: Vampiric Blood
 			{
 				["value"] = 0.15,
-				["aura"] = 55233,        -- ["Vampiric Blood"],
-				["condition"] = "not LibStub('LibStatLogic-1.2').PlayerHasGlyph(58676)", -- ["Glyph of Vampiric Blood"]
+				["aura"] = 55233,
+			},
+			-- Glyph of Vampiric Blood
+			{
+				["value"] = -0.15 / (1 + 0.15),
+				["aura"] = 55233,
+				["glyph"] = 58676,
 			},
 		},
 		["MOD_STA"] = {
