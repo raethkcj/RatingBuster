@@ -427,16 +427,12 @@ if addon.class == "DRUID" then
 			},
 			-- Bear Form < lv40
 			{
-				["value"] = 0.65,
-				["aura"] = 5487,        -- ["Bear Form"],
-			},
-			-- Bear Form >= lv40
-			{
-				["rank"] = {
-					0.333333333333333333, -- 1.65 * 1.3333 = 2.2
-				},
-				["aura"] = 5487,        -- ["Bear Form"],
-				["condition"] = "UnitLevel('player') >= 40",
+				["aura"] = 5487,
+				["level"] = setmetatable({}, {
+					__index = function(_, level)
+						return level >= 40 and 1.20 or 0.65
+					end
+				}),
 			},
 			{
 				["value"] = 1.2,
