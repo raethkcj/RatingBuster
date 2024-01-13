@@ -340,12 +340,9 @@ if addon.class == "DRUID" then
 				["regen"] = NormalManaRegenPerInt,
 			},
 		},
-		-- Druid: Nurturing Instinct (Rank 2) - 2,14
-		-- 4.0.1: 2,14: Increases your healing spells by up to 35%/70% of your Agility, and increases healing done to you by 10%/20% while in Cat form.
-		-- 4.0.6: 2,14: Increases your healing spells by up to 50%/100% of your Agility, and increases healing done to you by 10%/20% while in Cat form.
 		["ADD_HEALING_MOD_AGI"] = {
+			-- Talent: Nurturing Instinct
 			{
-				["spellid"] = 33873,
 				["tab"] = 2,
 				["num"] = 14,
 				["rank"] = {
@@ -394,11 +391,9 @@ if addon.class == "DRUID" then
 				["aura"] = 5487,
 			},
 		},
-		-- Druid: Balance of Power (Rank 2) - 1,6
-		-- 4.0.1: Increases your spell hit rating by an additional amount equal to 50/100% of your Spirit.
 		["ADD_SPELL_HIT_RATING_MOD_SPI"] = {
+			-- Talent: Balance of Power
 			{
-				["spellid"] = 33596,
 				["tab"] = 1,
 				["num"] = 6,
 				["rank"] = {
@@ -554,22 +549,19 @@ elseif addon.class == "DEATHKNIGHT" then
 		},
 		["ADD_DODGE"] = {
 			{
-				value = 5.0000,
+				["value"] = 5.0000,
 			},
 		},
-		-- Tanks: Forceful Deflection - Passive
-		-- 4.2.0: Increases your Parry Rating by 27% of your total Strength.
 		["ADD_PARRY_RATING_MOD_STR"] = {
+			-- Passive: Forceful Deflection
 			{
 				["spellid"] = 49410,
 				["value"] = 0.27,
 			},
 		},
-		-- Death Knight: Bladed Armor - Rank 3/3 - 1,3
-		-- 4.0.1: Increases your attack power by 2/4/6 for every 180 armor value you have.
 		["ADD_AP_MOD_ARMOR"] = {
+			-- Talent: Bladed Armor
 			{
-				["spellid"] = 49391,
 				["tab"] = 1,
 				["num"] = 3,
 				["rank"] = {
@@ -906,12 +898,9 @@ elseif addon.class == "PALADIN" then
 				["aura"] = 53655,
 			},
 		},
-		-- Paladin: Enlightened Judgements - Rank 2/2 - 1,11
-		-- 4.0.1: Grants hit rating equal to 50/100% of any Spirit gained from items or effects
 		["ADD_SPELL_HIT_RATING_MOD_SPI"] = {
-			-- Enlightened Judgements
+			-- Talent: Enlightened Judgements
 			{
-				["spellid"] = 53557,
 				["tab"] = 1,
 				["num"] = 11,
 				["rank"] = {
@@ -919,9 +908,8 @@ elseif addon.class == "PALADIN" then
 				},
 			},
 		},
-		-- Tanks: Forceful Deflection - Passive
-		-- 4.2.0: Increases your Parry Rating by 27% of your total Strength.
 		["ADD_PARRY_RATING_MOD_STR"] = {
+			-- Passive: Forceful Deflection
 			{
 				["spellid"] = 49410,
 				["value"] = 0.27,
@@ -1064,12 +1052,9 @@ elseif addon.class == "PRIEST" then
 				},
 			},
 		},
-		-- Priest: Twisted Faith - Rank 2/2 - 3,7
-		-- 4.0.1: Grants you spell hit rating equal to 50/100% of any Spirit gained from items or effects.
 		["ADD_SPELL_HIT_RATING_MOD_SPI"] = {
-			-- Twisted Faith
+			-- Talent: Twisted Faith
 			{
-				["spellid"] = 47577,
 				["tab"] = 3,
 				["num"] = 7,
 				["rank"] = {
@@ -1241,11 +1226,9 @@ elseif addon.class == "SHAMAN" then
 				["regen"] = NormalManaRegenPerInt,
 			},
 		},
-		-- Druid: Elemental Precision - Rank 3/3 - 1,7
-		-- 4.0.1: Grants you spell hit rating equal to 33/66/100% of any Spirit gained from items or effects.
 		["ADD_SPELL_HIT_RATING_MOD_SPI"] = {
+			-- Talent: Elemental Precision
 			{
-				["spellid"] = 30674,
 				["tab"] = 1,
 				["num"] = 7,
 				["rank"] = {
@@ -1397,9 +1380,8 @@ elseif addon.class == "WARRIOR" then
 				["value"] = 5.0000,
 			},
 		},
-		-- Tanks: Forceful Deflection - Passive
-		-- 4.2.0: Increases your Parry Rating by 27% of your total Strength.
 		["ADD_PARRY_RATING_MOD_STR"] = {
+			-- Passive: Forceful Deflection
 			{
 				["spellid"] = 49410,
 				["value"] = 0.27,
