@@ -8,48 +8,74 @@ L.WholeTextLookup[EMPTY_SOCKET_YELLOW] = {["EMPTY_SOCKET_YELLOW"] = 1}
 L.WholeTextLookup[EMPTY_SOCKET_BLUE] = {["EMPTY_SOCKET_BLUE"] = 1}
 L.WholeTextLookup[EMPTY_SOCKET_META] = {["EMPTY_SOCKET_META"] = 1}
 
-L.WholeTextLookup[""] = false
-L.WholeTextLookup[" \n"] = false
-L.WholeTextLookup[ITEM_BIND_ON_EQUIP] = false
-L.WholeTextLookup[ITEM_BIND_ON_PICKUP] = false
-L.WholeTextLookup[ITEM_BIND_ON_USE] = false
-L.WholeTextLookup[ITEM_BIND_QUEST] = false
-L.WholeTextLookup[ITEM_SOULBOUND] = false
-L.WholeTextLookup[ITEM_STARTS_QUEST] = false
-L.WholeTextLookup[ITEM_CANT_BE_DESTROYED] = false
-L.WholeTextLookup[ITEM_CONJURED] = false
-L.WholeTextLookup[ITEM_DISENCHANT_NOT_DISENCHANTABLE] = false
-L.WholeTextLookup[ITEM_REQ_HORDE] = false
-L.WholeTextLookup[ITEM_REQ_ALLIANCE] = false
-L.WholeTextLookup[GetItemClassInfo(Enum.ItemClass.Projectile)] = false
-L.WholeTextLookup[INVTYPE_AMMO] = false
-L.WholeTextLookup[INVTYPE_HEAD] = false
-L.WholeTextLookup[INVTYPE_NECK] = false
-L.WholeTextLookup[INVTYPE_SHOULDER] = false
-L.WholeTextLookup[INVTYPE_BODY] = false
-L.WholeTextLookup[INVTYPE_CHEST] = false
-L.WholeTextLookup[INVTYPE_ROBE] = false
-L.WholeTextLookup[INVTYPE_WAIST] = false
-L.WholeTextLookup[INVTYPE_LEGS] = false
-L.WholeTextLookup[INVTYPE_FEET] = false
-L.WholeTextLookup[INVTYPE_WRIST] = false
-L.WholeTextLookup[INVTYPE_HAND] = false
-L.WholeTextLookup[INVTYPE_FINGER] = false
-L.WholeTextLookup[INVTYPE_TRINKET] = false
-L.WholeTextLookup[INVTYPE_CLOAK] = false
-L.WholeTextLookup[INVTYPE_WEAPON] = false
-L.WholeTextLookup[INVTYPE_SHIELD] = false
-L.WholeTextLookup[INVTYPE_2HWEAPON] = false
-L.WholeTextLookup[INVTYPE_WEAPONMAINHAND] = false
-L.WholeTextLookup[INVTYPE_WEAPONOFFHAND] = false
-L.WholeTextLookup[INVTYPE_HOLDABLE] = false
-L.WholeTextLookup[INVTYPE_RANGED] = false
-L.WholeTextLookup[INVTYPE_RELIC] = false
-L.WholeTextLookup[INVTYPE_TABARD] = false
-L.WholeTextLookup[INVTYPE_BAG] = false
-L.WholeTextLookup[GetItemSubClassInfo(Enum.ItemClass.Weapon, Enum.ItemWeaponSubclass.Thrown)] = false
-local mount = GetItemSubClassInfo(Enum.ItemClass.Miscellaneous, Enum.ItemMiscellaneousSubclass.Mount)
-if mount then L.WholeTextLookup[mount] = false end
+local exclusions = {
+	"",
+	" \n",
+	ITEM_BIND_ON_EQUIP,
+	ITEM_BIND_ON_PICKUP,
+	ITEM_BIND_ON_USE,
+	ITEM_BIND_QUEST,
+	ITEM_SOULBOUND,
+	ITEM_BIND_TO_ACCOUNT,
+	ITEM_BIND_TO_BNETACCOUNT,
+	ITEM_STARTS_QUEST,
+	ITEM_CANT_BE_DESTROYED,
+	ITEM_CONJURED,
+	ITEM_DISENCHANT_NOT_DISENCHANTABLE,
+	ITEM_REQ_HORDE,
+	ITEM_REQ_ALLIANCE,
+	GetItemClassInfo(Enum.ItemClass.Projectile),
+	INVTYPE_AMMO,
+	INVTYPE_HEAD,
+	INVTYPE_NECK,
+	INVTYPE_SHOULDER,
+	INVTYPE_BODY,
+	INVTYPE_CHEST,
+	INVTYPE_ROBE,
+	INVTYPE_WAIST,
+	INVTYPE_LEGS,
+	INVTYPE_FEET,
+	INVTYPE_WRIST,
+	INVTYPE_HAND,
+	INVTYPE_FINGER,
+	INVTYPE_TRINKET,
+	INVTYPE_CLOAK,
+	INVTYPE_WEAPON,
+	INVTYPE_SHIELD,
+	INVTYPE_2HWEAPON,
+	INVTYPE_WEAPONMAINHAND,
+	INVTYPE_WEAPONOFFHAND,
+	INVTYPE_HOLDABLE,
+	INVTYPE_RANGED,
+	INVTYPE_RELIC,
+	INVTYPE_TABARD,
+	INVTYPE_BAG,
+	REFORGED,
+	ITEM_HEROIC,
+	ITEM_HEROIC_EPIC,
+	ITEM_HEROIC_QUALITY0_DESC,
+	ITEM_HEROIC_QUALITY1_DESC,
+	ITEM_HEROIC_QUALITY2_DESC,
+	ITEM_HEROIC_QUALITY3_DESC,
+	ITEM_HEROIC_QUALITY4_DESC,
+	ITEM_HEROIC_QUALITY5_DESC,
+	ITEM_HEROIC_QUALITY6_DESC,
+	ITEM_HEROIC_QUALITY7_DESC,
+	ITEM_QUALITY0_DESC,
+	ITEM_QUALITY1_DESC,
+	ITEM_QUALITY2_DESC,
+	ITEM_QUALITY3_DESC,
+	ITEM_QUALITY4_DESC,
+	ITEM_QUALITY5_DESC,
+	ITEM_QUALITY6_DESC,
+	ITEM_QUALITY7_DESC,
+	GetItemSubClassInfo(Enum.ItemClass.Weapon, Enum.ItemWeaponSubclass.Thrown),
+	GetItemSubClassInfo(Enum.ItemClass.Miscellaneous, Enum.ItemMiscellaneousSubclass.Mount)
+}
+
+for _, exclusion in pairs(exclusions) do
+	L.WholeTextLookup[exclusion] = false
+end
 
 for _, subclass in pairs(Enum.ItemArmorSubclass) do
 	local subclassName = GetItemSubClassInfo(Enum.ItemClass.Armor, subclass)
