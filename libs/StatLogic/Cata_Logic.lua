@@ -890,13 +890,20 @@ elseif addon.class == "PALADIN" then
 				["regen"] = NormalManaRegenPerInt,
 			},
 		},
-		-- Healers: Meditation
-		-- 4.0.1: Allows 50% of your mana regeneration from Spirit to continue while in combat.
 		["ADD_MANA_REG_MOD_NORMAL_MANA_REG"] = {
 			-- Meditation
 			{
 				["value"] = 0.50,
 				["known"] = 95859,
+			},
+			-- Talent: Judgements of the Pure
+			{
+				["tab"] = 1,
+				["num"] = 3,
+				["rank"] = {
+					0.1, 0.2, 0.3,
+				},
+				["aura"] = 53655,
 			},
 		},
 		-- Paladin: Enlightened Judgements - Rank 2/2 - 1,11
@@ -1048,12 +1055,8 @@ elseif addon.class == "PRIEST" then
 				["value"] = 0.5,
 				["known"] = 95861,
 			},
-			-- Priest: Holy Concentration - Rank 2/2 - 2,8
-			-- 4.0.6: Increases the amount of mana regeneration from Spirit while in combat by an additional 15/30%.
-			-- TODO: Double check that this is ADD_MANA_REG_MOD_NORMAL_MANA_REG
-			-- and not MOD_NORMAL_MANA_REG
+			-- Talent: Holy Concentration
 			{
-				["spellid"] = 34859,
 				["tab"] = 2,
 				["num"] = 8,
 				["rank"] = {
