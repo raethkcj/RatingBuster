@@ -577,29 +577,37 @@ elseif addon.class == "DEATHKNIGHT" then
 				},
 			},
 		},
-		-- Death Knight: Toughness - Rank 3/3 - 1,10
-		-- 4.0.1: Increases your armor value from items by 3/7/10%.
-		-- Death Knight: Blood Presence - Stance
-		-- 4.0.1: Stamina increased by 8%.
-		--        Armor contribution from cloth, leather, mail and plate items increased by 60%.
-		--        Damage taken reduced by 8%.
-		-- Enchant: Rune of the Stoneskin Gargoyle - EnchantID: 3847
-		-- 4.0.1: +4% Armor and +2% Stamina to 2h weapon
-		-- Enchant: Rune of the Nerubian Carapace - EnchantID: 3883
-		-- 4.0.1: +2% Armor and +1% Stamina to 1h weapon
 		["MOD_ARMOR"] = {
-			-- Blood Presence
+			-- Stance: Blood Presence
 			{
 				["value"] = 0.6,
 				["stance"] = "Interface\\Icons\\Spell_Deathknight_BloodPresence",
 			},
-			-- Toughness
+			-- Talent: Toughness
 			{
 				["tab"] = 1,
 				["num"] = 10,
 				["rank"] = {
 					0.03, 0.07, 0.1,
 				},
+			},
+			-- Enchant: Rune of the Stoneskin Gargoyle
+			{
+				["value"] = 0.04,
+				["slot"] = INVSLOT_MAINHAND,
+				["enchant"] = 3847,
+			},
+			-- Enchant: Rune of the Nerubian Carapace (Mainhand)
+			{
+				["value"] = 0.02,
+				["slot"] = INVSLOT_MAINHAND,
+				["enchant"] = 3883,
+			},
+			-- Enchant: Rune of the Nerubian Carapace (Offhand)
+			{
+				["value"] = 0.02,
+				["slot"] = INVSLOT_OFFHAND,
+				["enchant"] = 3883,
 			},
 		},
 		-- Death Knight: Vampiric Blood - Buff: 55233
@@ -614,20 +622,8 @@ elseif addon.class == "DEATHKNIGHT" then
 				["condition"] = "not LibStub('LibStatLogic-1.2').PlayerHasGlyph(58676)", -- ["Glyph of Vampiric Blood"]
 			},
 		},
-		-- Death Knight: Plate Specialization - Passive: 86524
-		-- 4.0.1: Increases your primary attribute by 5% while wearing Plate in all armor slots. Blood specialization grants Stamina, Frost specialization grants Strength, and Unholy specialization grants Strength.
-		-- Death Knight: Blood Presence - Stance
-		-- 4.0.1: Stamina increased by 8%.
-		--        Armor contribution from cloth, leather, mail and plate items increased by 60%.
-		--        Damage taken reduced by 8%.
-		-- Death Knight: Veteran of the Third War - Passive: 50029
-		-- 4.0.1: Increases your total Stamina by 9% and your expertise by 6.
-		-- Enchant: Rune of the Stoneskin Gargoyle - EnchantID: 3847
-		-- 4.0.1: +4% Armor and +2% Stamina to 2h weapon
-		-- Enchant: Rune of the Nerubian Carapace - EnchantID: 3883
-		-- 4.0.1: +2% Armor and +1% Stamina to 1h weapon
 		["MOD_STA"] = {
-			-- Plate Specialization
+			-- Plate Specialization (Blood)
 			{
 				["value"] = 0.05,
 				["known"] = 86524,
@@ -635,32 +631,32 @@ elseif addon.class == "DEATHKNIGHT" then
 					[1] = true,
 				},
 			},
-			-- Blood Presence
+			-- Stance: Blood Presence
 			{
 				["value"] = 0.08,
 				["stance"] = "Interface\\Icons\\Spell_Deathknight_BloodPresence",
 			},
-			-- Veteran of the Third War
+			-- Passive: Veteran of the Third War
 			{
 				["value"] = 0.09,
-				["known"] = 50029, -- ["Veteran of the Third War"]
+				["known"] = 50029,
 			},
-			-- Rune of the Stoneskin Gargoyle
+			-- Enchant: Rune of the Stoneskin Gargoyle
 			{
 				["value"] = 0.02,
-				["slot"] = 16, -- main hand slot
+				["slot"] = INVSLOT_MAINHAND,
 				["enchant"] = 3847,
 			},
-			-- Rune of the Nerubian Carapace
+			-- Enchant: Rune of the Nerubian Carapace (Mainhand)
 			{
 				["value"] = 0.01,
-				["slot"] = 16, -- main hand slot
+				["slot"] = INVSLOT_MAINHAND,
 				["enchant"] = 3883,
 			},
-			-- Rune of the Nerubian Carapace
+			-- Enchant: Rune of the Nerubian Carapace (Offhand)
 			{
 				["value"] = 0.01,
-				["slot"] = 17, -- off hand slot
+				["slot"] = INVSLOT_OFFHAND,
 				["enchant"] = 3883,
 			},
 		},

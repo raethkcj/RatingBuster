@@ -1554,17 +1554,8 @@ elseif addon.class == "DEATHKNIGHT" then
 				["stance"] = "Interface\\Icons\\Spell_Deathknight_FrostPresence",
 			},
 		},
-		-- Death Knight: Veteran of the Third War (Rank 3) - 1,14
-		--               Increases your total Strength by 2%/4%/6% and your total Stamina by 1%/2%/3%.
-		-- Enchant: Rune of the Stoneskin Gargoyle - EnchantID: 3847
-		--          +25 Defense and +2% Stamina to 2h weapon
-		-- Death Knight: Frost Presence - Buff
-		--               Increasing Stamina by 8%, armor contribution from cloth, leather, mail
-		--               and plate items by 60%, and reducing damage taken by 5%.
-		-- Death Knight: Improved Frost Presence (Rank 2) - 2,21
-		--               While in Blood Presence or Unholy Presence, you retain 4/8% stamina from Frost Presence,
-		--               and damage done to you is decreased by an additional 1/2% in Frost Presence.
 		["MOD_STA"] = {
+			-- Talent: Veteran of the Third War
 			{
 				["tab"] = 1,
 				["num"] = 14,
@@ -1572,15 +1563,30 @@ elseif addon.class == "DEATHKNIGHT" then
 					0.01, 0.02, 0.03,
 				},
 			},
+			-- Enchant: Rune of the Stoneskin Gargoyle
 			{
 				["value"] = 0.02,
 				["slot"] = INVSLOT_MAINHAND,
 				["enchant"] = 3847,
 			},
+			-- Enchant: Rune of the Nerubian Carapace (Mainhand)
+			{
+				["value"] = 0.01,
+				["slot"] = INVSLOT_MAINHAND,
+				["enchant"] = 3883,
+			},
+			-- Enchant: Rune of the Nerubian Carapace (Offhand)
+			{
+				["value"] = 0.01,
+				["slot"] = INVSLOT_OFFHAND,
+				["enchant"] = 3883,
+			},
+			-- Stance: Frost Presence
 			{
 				["value"] = 0.08,
 				["stance"] = "Interface\\Icons\\Spell_Deathknight_FrostPresence",
 			},
+			-- Talent: Improved Frost Presence (Blood Presence)
 			{
 				["tab"] = 2,
 				["num"] = 21,
@@ -1589,6 +1595,7 @@ elseif addon.class == "DEATHKNIGHT" then
 				},
 				["stance"] = "Interface\\Icons\\Spell_Deathknight_BloodPresence",
 			},
+			-- Talent: Improved Frost Presence (Unholy Presence)
 			{
 				["tab"] = 2,
 				["num"] = 21,
