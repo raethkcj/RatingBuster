@@ -807,13 +807,11 @@ elseif addon.class == "MAGE" then
 				["regen"] = NormalManaRegenPerInt,
 			},
 		},
-		-- Mage: Wizardry - Passive: 89744
-		-- 4.0.1: Increases your Intellect by 5%
 		["MOD_INT"] = {
-			-- Wizardry
+			-- Passive: Wizardry
 			{
 				["value"] = 0.05,
-				["known"] = 89744, -- ["Wizardry"]
+				["known"] = 89744,
 			},
 		},
 		-- Improved Mana Gem - Rank 2/2 - 1,19 - Buff: 83098
@@ -1083,17 +1081,13 @@ elseif addon.class == "PRIEST" then
 				["glyph"] = 55686,        -- ["Glyph of Inner Fire"],
 			},
 		},
-		-- Priest: Enlightenment - Passive: 84732
-		-- 4.0.1: Intellect increased by 15%.
-		-- Priest: Mysticism - Passive: 89745
-		-- 4.0.1: Increases your Intellect by 5%
 		["MOD_INT"] = {
-			-- Enlightenment
+			-- Passive: Enlightenment
 			{
 				["value"] = 0.15,
 				["known"] = 84732,
 			},
-			-- Mysticism
+			-- Passive: Mysticism
 			{
 				["value"] = 0.05,
 				["known"] = 89745,
@@ -1352,10 +1346,8 @@ elseif addon.class == "WARLOCK" then
 				},
 			},
 		},
-		-- Warlock: Nethermancy - Passive: 86091
-		-- 4.0.1: Increases your Intellect by 5%
 		["MOD_INT"] = {
-			-- Nethermancy
+			-- Passive: Nethermancy
 			{
 				["value"] = 0.05,
 				["known"] = 86091,

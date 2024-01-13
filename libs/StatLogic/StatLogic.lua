@@ -774,6 +774,15 @@ addon.StatModValidators = {
 			["GLYPH_REMOVED"] = true,
 		}
 	},
+	known = {
+		validate = function(case)
+			-- TODO: Confirm IsPlayerSpell and not IsPlayerKnown
+			return IsPlayerSpell(case.known)
+		end,
+		events = {
+			["SPELLS_CHANGED"] = true,
+		},
+	},
 	meta = {
 		validate = function(case)
 			return case.meta == equipped_meta_gem
