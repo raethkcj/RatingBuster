@@ -1413,6 +1413,8 @@ do
 							source = StatLogic:GetOrderedTalentInfo(case.tab, case.num)
 						elseif case.glyph then
 							source = GetSpellInfo(case.glyph)
+						elseif case.spellid then
+							source = GetSpellInfo(case.spellid)
 						end
 						sources = sources .. source
 						firstSource = false

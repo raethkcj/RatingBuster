@@ -1579,6 +1579,7 @@ elseif addon.playerRace == "Troll" then
 			--   10% of total Health regeneration may continue during combat.
 			{
 				["value"] = 0.1,
+				["spellid"] = 20555,
 			},
 		},
 	}
