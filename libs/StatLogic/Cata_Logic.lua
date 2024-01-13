@@ -840,20 +840,22 @@ elseif addon.class == "MAGE" then
 				["aura"] = 83098,        -- ["Improved Mana Gem"],
 			},
 		},
-		-- Mage: Mage Armor - Buff: 6117
-		-- 4.0.1: Regenerate 3% of your maximum mana every 5 sec.
-		-- Mage: Glyph of Frost Armor - Glyph: 98397 - Buff: 7302
-		-- 4.1.0: Your Frost Armor also causes you to regenerate 2% of your maximum mana every 5 sec.
 		["ADD_MANA_REG_MOD_MANA"] = {
-			-- Mage Armor
+			-- Buff: Mage Armor
 			{
 				["value"] = 0.03,
-				["aura"] = 6117,        -- ["Mage Armor"],
+				["aura"] = 6117,
+			},
+			-- Glyph of Mage Armor (Mage Armor)
+			{
+				["value"] = 0.006,
+				["aura"] = 6117,
+				["glyph"] = 56383
 			},
 			-- Glyph of Frost Armor
 			{
 				["value"] = 0.02,
-				["aura"] = 7302,        -- ["Frost Armor"],
+				["aura"] = 7302,
 				["glyph"] = 98397,
 			},
 		},
