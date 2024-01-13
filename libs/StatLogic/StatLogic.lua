@@ -783,6 +783,11 @@ addon.StatModValidators = {
 			["SPELLS_CHANGED"] = true,
 		},
 	},
+	level = {
+		events = {
+			["PLAYER_LEVEL_UP"] = true,
+		},
+	},
 	meta = {
 		validate = function(case)
 			return case.meta == equipped_meta_gem
@@ -1031,6 +1036,8 @@ do
 			value = case.regen()
 		elseif case.value then
 			value = case.value
+		elseif case.level then
+			value = case.level[UnitLevel("player")]
 		end
 
 		if value then
