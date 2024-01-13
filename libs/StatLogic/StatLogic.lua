@@ -1384,7 +1384,11 @@ do
 		if #arguments == 1 then
 			return link
 		else
-			local repl = strjoin(":", unpack(arguments))
+			for i = #arguments + 1, 5 do
+				arguments[i] = ""
+			end
+			local repl = table.concat(arguments, ":")
+			-- This will not replace anything if *any* of the four gem sockets is filled
 			return (link:gsub("(item:%d+:%d*):0?:0?:0?:0?", repl))
 		end
 	end
