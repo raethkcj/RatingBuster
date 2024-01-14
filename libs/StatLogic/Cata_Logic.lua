@@ -22,6 +22,34 @@ StatLogic.RatingBase = {
 	[StatLogic.Stats.MasteryRating] = 14,
 }
 
+local MasteryEffect = {
+	WARRIOR =     {{2},    {4.70},   {1.5, 1.5}},
+	PALADIN =     {{1},    {2.25},   {1}       },
+	HUNTER =      {{1.7},  {2},      {1}       },
+	ROGUE =       {{3.5},  {2},      {2.5}     },
+	PRIEST =      {{2.5},  {1.25},   {4.3}     },
+	DEATHKNIGHT = {{6.25}, {2},      {4}       },
+	SHAMAN =      {{2},    {2.5},    {2.5}     },
+	MAGE =        {{1.5},  {2.5},    {2.5}     },
+	WARLOCK =     {{1.63}, {1.5},    {1.25}    },
+	DRUID =       {{1.5},  {4, 3.1}, {1.25}    },
+}
+
+-- Calculates the effect in percentage from mastery for given spec
+---@param mastery number Mastery value.
+---@param specid? 1|2|3 Talent spec to use. Default: player's talent spec
+---@return number effect1
+---@return number effect2
+function StatLogic:GetEffectFromMastery(mastery, specid)
+	self:argCheck(mastery, 2, "number")
+	self:argCheck(specid, 3, "nil", "number")
+	if type(specid) ~= "number" or specid < 1 or specid > 3 then
+		specid = GetPrimaryTalentTree()
+		if not specid then return 0, 0 end
+	end
+	return mastery * MasteryEffect[addon.class][specid][1], mastery * (MasteryEffect[addon.class][specid][2] or 0)
+end
+
 StatLogic.GenericStatMap[StatLogic.Stats.HitRating] = {
 	StatLogic.Stats.MeleeHitRating,
 	StatLogic.Stats.RangedHitRating,
@@ -2080,4 +2108,24 @@ function StatLogic:GetAvoidanceGainAfterDR(stat, gainBeforeDR)
 	else
 		return gainBeforeDR
 	end
+end
+
+function StatLogic:GetResilienceEffectAfterDR(damageReductionBeforeDR)
+	-- argCheck for invalid input
+	self:argCheck(damageReductionBeforeDR, 2, "number")
+	return 100 - 100 * 0.99 ^ damageReductionBeforeDR
+end
+
+function StatLogic:GetResilienceEffectGainAfterDR(resAfter, resBefore)
+	-- argCheck for invalid input
+	self:argCheck(resAfter, 2, "number")
+	self:argCheck(resBefore, 2, "nil", "number")
+	local resCurrent = GetCombatRating(CR_RESILIENCE_PLAYER_DAMAGE_TAKEN)
+	local drBefore
+	if resBefore then
+		drBefore = self:GetResilienceEffectAfterDR(self:GetEffectFromRating(resCurrent + resBefore, CR_RESILIENCE_PLAYER_DAMAGE_TAKEN))
+	else
+		drBefore = GetCombatRatingBonus(CR_RESILIENCE_PLAYER_DAMAGE_TAKEN)
+	end
+	return self:GetResilienceEffectAfterDR(self:GetEffectFromRating(resCurrent + resAfter, CR_RESILIENCE_PLAYER_DAMAGE_TAKEN)) - drBefore
 end
