@@ -323,6 +323,9 @@ addon.bonusArmorInventoryTypes = {
 	["INVTYPE_TRINKET"] = true,
 }
 
+-- Generated using scripts/GenerateBaseArmor/GenerateBaseArmor.mjs
+-- TODO requires public Cata Classic build
+
 StatLogic.StatModTable = {}
 if addon.class == "DRUID" then
 	StatLogic.StatModTable["DRUID"] = {
@@ -1942,4 +1945,139 @@ function StatLogic:GetDodgePerAgi()
 	end
 
 	return dodgePerAgi
+end
+
+--[[
+Calculates your current Dodge% before diminishing returns.
+Dodge% = modDodge + drFreeDodge
+
+drFreeDodge includes:
+* Base dodge
+* Dodge from base agility
+* Dodge modifier from base defense
+* Dodge modifers from talents or spells
+
+modDodge includes
+* Dodge from dodge rating
+* Dodge from additional defense
+* Dodge from additional dodge
+]]
+---@return number modDodge The part that is affected by diminishing returns.
+---@return number drFreeDodge The part that isn't affected by diminishing returns.
+function StatLogic:GetDodgeChanceBeforeDR()
+	local stat, effectiveStat, posBuff, negBuff = UnitStat("player", 2) -- 2 = Agility
+	local baseAgi = stat - posBuff - negBuff
+	local dodgePerAgi = self:GetDodgePerAgi()
+	local dodgeFromDodgeRating = self:GetEffectFromRating(GetCombatRating(CR_DODGE), StatLogic.Stats.DodgeRating, UnitLevel("player"))
+	local dodgeFromDefenceRating = floor(self:GetEffectFromRating(GetCombatRating(CR_DEFENSE_SKILL), StatLogic.Stats.DefenseRating)) * 0.04
+	local dodgeFromAdditionalAgi = dodgePerAgi * (effectiveStat - baseAgi)
+	local modDodge = dodgeFromDodgeRating + dodgeFromDefenceRating + dodgeFromAdditionalAgi
+
+	local drFreeDodge = GetDodgeChance() - self:GetAvoidanceAfterDR(StatLogic.Stats.Dodge, modDodge, addon.class)
+
+	return modDodge, drFreeDodge
+end
+
+--[[
+Calculates your current Parry% before diminishing returns.
+Parry% = modParry + drFreeParry
+
+drFreeParry includes:
+* Base parry
+* Parry from base agility
+* Parry modifier from base defense
+* Parry modifers from talents or spells
+
+modParry includes
+* Parry from parry rating
+* Parry from additional defense
+* Parry from additional parry
+]]
+---@return number modParry The part that is affected by diminishing returns.
+---@return number drFreeParry The part that isn't affected by diminishing returns.
+function StatLogic:GetParryChanceBeforeDR()
+	-- Defense is floored
+	local parryFromParryRating = self:GetEffectFromRating(GetCombatRating(CR_PARRY), StatLogic.Stats.ParryRating)
+	local parryFromDefenceRating = floor(self:GetEffectFromRating(GetCombatRating(CR_DEFENSE_SKILL), StatLogic.Stats.DefenseRating)) * 0.04
+	local modParry = parryFromParryRating + parryFromDefenceRating
+
+	-- drFreeParry
+	local drFreeParry = GetParryChance() - self:GetAvoidanceAfterDR(StatLogic.Stats.Parry, modParry, addon.class)
+
+	return modParry, drFreeParry
+end
+
+--[[
+Avoidance DR formula and k, C_p, C_d constants derived by Whitetooth (hotdogee [at] gmail [dot] com)
+avoidanceBeforeDR is the part that is affected by diminishing returns.
+See :GetClassIdOrName(class) for valid class values.
+
+Calculates the avoidance after diminishing returns, this includes:
+* Dodge from Dodge Rating, Defense, Agility.
+* Parry from Parry Rating, Defense.
+* Chance to be missed from Defense.
+
+The DR formula: 1/x' = 1/c+k/x
+* x' is the diminished stat before converting to IEEE754.
+* x is the stat before diminishing returns.
+* c is the cap of the stat, and changes with class.
+* k is is a value that changes with class.
+
+Formula details:
+* DR for Dodge, Parry, Missed are calculated separately.
+* Base avoidances are not affected by DR, (ex: Dodge from base Agility)
+* Death Knight's Parry from base Strength is affected by DR, base for parry is 5%.
+* Direct avoidance gains from talents and spells(ex: Evasion) are not affected by DR.
+* Indirect avoidance gains from talents and spells(ex: +Agility from Kings) are affected by DR
+* c and k values depend on class but does not change with level.
+]]
+---@param stat `StatLogic.Stats.Dodge`|`StatLogic.Stats.Parry`|`StatLogic.Stats.Miss`
+---@param avoidanceBeforeDR number Amount of avoidance before diminishing returns in percentages.
+---@param class? string|number - ClassID or "ClassName". Default: PlayerClass<br>See :GetClassIdOrName(class) for valid class values.
+---@return number avoidanceAfterDR Avoidance after diminishing returns in percentages.
+function StatLogic:GetAvoidanceAfterDR(stat, avoidanceBeforeDR, class)
+	-- argCheck for invalid input
+	self:argCheck(stat, 2, "table")
+	self:argCheck(avoidanceBeforeDR, 3, "number")
+	self:argCheck(class, 4, "nil", "string", "number")
+	class = self:ValidateClass(class)
+
+	local C = C_d
+	if stat == StatLogic.Stats.Parry then
+		C = C_p
+	elseif stat == StatLogic.Stats.Miss then
+		C = C_m
+	end
+
+	if avoidanceBeforeDR > 0 then
+		return 1 / (1 / C[class] + K[class] / avoidanceBeforeDR)
+	else
+		return 0
+	end
+end
+
+-- Calculates the avoidance gain after diminishing returns with player's current stats.
+---@param stat `StatLogic.Stats.Dodge`|`StatLogic.Stats.Parry`|`StatLogic.Stats.Miss`
+---@param gainBeforeDR number Avoidance gain before diminishing returns in percentages.
+---@return number gainAfterDR Avoidance gain after diminishing returns in percentages.
+function StatLogic:GetAvoidanceGainAfterDR(stat, gainBeforeDR)
+	-- argCheck for invalid input
+	self:argCheck(gainBeforeDR, 2, "number")
+
+	if stat == StatLogic.Stats.Parry then
+		local modAvoidance, drFreeAvoidance = self:GetParryChanceBeforeDR()
+		local newAvoidanceChance = self:GetAvoidanceAfterDR(stat, modAvoidance + gainBeforeDR) + drFreeAvoidance
+		if newAvoidanceChance < 0 then newAvoidanceChance = 0 end
+		return newAvoidanceChance - GetParryChance()
+	elseif stat == StatLogic.Stats.Dodge then
+		local modAvoidance, drFreeAvoidance = self:GetDodgeChanceBeforeDR()
+		local newAvoidanceChance = self:GetAvoidanceAfterDR(stat, modAvoidance + gainBeforeDR) + drFreeAvoidance
+		if newAvoidanceChance < 0 then newAvoidanceChance = 0 end -- because GetDodgeChance() is 0 when negative
+		return newAvoidanceChance - GetDodgeChance()
+	elseif stat == StatLogic.Stats.Miss then
+		local modAvoidance = self:GetMissedChanceBeforeDR()
+		return self:GetAvoidanceAfterDR(stat, modAvoidance + gainBeforeDR) - self:GetAvoidanceAfterDR(stat, modAvoidance)
+	else
+		return gainBeforeDR
+	end
 end
