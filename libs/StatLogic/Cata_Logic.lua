@@ -309,6 +309,20 @@ addon.DodgePerAgi = {
 	},
 }
 
+addon.bonusArmorInventoryTypes = {
+	["INVTYPE_WEAPON"] = true,
+	["INVTYPE_2HWEAPON"] = true,
+	["INVTYPE_WEAPONMAINHAND"] = true,
+	["INVTYPE_WEAPONOFFHAND"] = true,
+	["INVTYPE_HOLDABLE"] = true,
+	["INVTYPE_RANGED"] = true,
+	["INVTYPE_THROWN"] = true,
+	["INVTYPE_RANGEDRIGHT"] = true,
+	["INVTYPE_NECK"] = true,
+	["INVTYPE_FINGER"] = true,
+	["INVTYPE_TRINKET"] = true,
+}
+
 StatLogic.StatModTable = {}
 if addon.class == "DRUID" then
 	StatLogic.StatModTable["DRUID"] = {

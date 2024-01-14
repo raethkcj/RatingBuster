@@ -457,7 +457,7 @@ addon.DodgePerAgi = {
 	},
 }
 
-addon.bonusArmorItemEquipLoc = {
+addon.bonusArmorInventoryTypes = {
 	["INVTYPE_WEAPON"] = true,
 	["INVTYPE_2HWEAPON"] = true,
 	["INVTYPE_WEAPONMAINHAND"] = true,

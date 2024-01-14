@@ -1373,7 +1373,7 @@ function StatLogic:RemoveGem(link)
 end
 
 do
-	local extraSocketLoc = {
+	local extraSocketInvTypes = {
 		["INVTYPE_WAIST"] = true,
 		["INVTYPE_WRIST"] = true,
 		["INVTYPE_HAND"] = true,
@@ -1389,7 +1389,7 @@ do
 	function StatLogic:RemoveExtraSockets(link)
 		-- Only check belt, bracer and gloves
 		local itemEquipLoc = select(4, GetItemInfoInstant(link))
-		if not extraSocketLoc[itemEquipLoc] then return link end
+		if not extraSocketInvTypes[itemEquipLoc] then return link end
 
 		-- Count item's actual sockets
 		wipe(statTable)

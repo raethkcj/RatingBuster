@@ -3298,7 +3298,7 @@ function RatingBuster:StatSummary(tooltip, link)
 
 	-- Show stat summary only for highest level armor type and items you can use with uncommon quality and up
 	if globalDB.sumIgnoreUnused then
-		local _, _, itemRarity, _, _, _, _, _, itemEquipLoc, _, classID, subclassID = GetItemInfo(link)
+		local _, _, itemRarity, _, _, _, _, _, inventoryType, _, classID, subclassID = GetItemInfo(link)
 
 		-- Check rarity
 		if not itemRarity or itemRarity < 2 then
@@ -3306,7 +3306,7 @@ function RatingBuster:StatSummary(tooltip, link)
 		end
 
 		-- Check armor type
-		if classID == Enum.ItemClass.Armor and armorTypes[subclassID] and (not classArmorTypes[class][subclassID]) and itemEquipLoc ~= "INVTYPE_CLOAK" then
+		if classID == Enum.ItemClass.Armor and armorTypes[subclassID] and (not classArmorTypes[class][subclassID]) and inventoryType ~= "INVTYPE_CLOAK" then
 			return
 		end
 
