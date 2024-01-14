@@ -1277,7 +1277,13 @@ function StatLogic:GetEffectFromRating(rating, stat, level)
 	if level < 34 and Level34Ratings[stat] then
 		level = 34
 	end
-	if level >= 70 then
+	if level >= 80 then
+		local H = 15.2545
+		if stat == StatLogic.Stats.ResilienceRating then
+			H = 9.18109
+		end
+		return rating/StatLogic.RatingBase[stat]/((5371/1638)*H^((level-80)/10))
+	elseif level >= 70 then
 		return rating/StatLogic.RatingBase[stat]/((82/52)*(131/63)^((level-70)/10))
 	elseif level >= 60 then
 		return rating/StatLogic.RatingBase[stat]*((-3/82)*level+(131/41))
