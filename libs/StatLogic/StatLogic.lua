@@ -687,9 +687,9 @@ do
 	end
 end
 
---------------------
--- Item Set Cache --
---------------------
+-----------------------------
+-- StatModValidator Caches --
+-----------------------------
 
 -- Maps SetID to number of equipped pieces
 local equipped_sets = setmetatable({}, {
@@ -708,11 +708,8 @@ local equipped_sets = setmetatable({}, {
 	end
 })
 
---------------------
--- Meta Gem Cache --
---------------------
-
 local equipped_meta_gem
+local armor_spec_active = false
 
 do
 	local update_meta_gem = function()
@@ -721,12 +718,63 @@ do
 		equipped_meta_gem = str and tonumber(str) or 0
 	end
 
+	local class_armor_specs = {
+		WARRIOR = Enum.ItemArmorSubclass.Plate,
+		PALADIN = Enum.ItemArmorSubclass.Plate,
+		DEATHKNIGHT = Enum.ItemArmorSubclass.Plate,
+		HUNTER = Enum.ItemArmorSubclass.Mail,
+		SHAMAN = Enum.ItemArmorSubclass.Mail,
+		ROGUE = Enum.ItemArmorSubclass.Leather,
+		DRUID = Enum.ItemArmorSubclass.Leather,
+	}
+
+	local armor_spec_slots = {
+		[INVSLOT_HEAD] = true,
+		[INVSLOT_SHOULDER] = true,
+		[INVSLOT_CHEST] = true,
+		[INVSLOT_WRIST] = true,
+		[INVSLOT_HAND] = true,
+		[INVSLOT_WAIST] = true,
+		[INVSLOT_LEGS] = true,
+		[INVSLOT_FEET] = true,
+	}
+
+	-- bit.bor of all lshifted armor_spec_slots: 0b1111110101
+	local armor_bits = 1013
+
+	local function update_armor_slot(slot)
+		-- Set slot's bit to 0 if correct, else 1
+		local item = GetInventoryItemID("player", slot)
+		if item and select(7, GetItemInfoInstant(item)) == class_armor_specs[addon.class] then
+			armor_bits = bit.band(armor_bits, bit.bnot(bit.lshift(1, slot - 1)))
+		else
+			armor_bits = bit.bor(armor_bits, bit.lshift(1, slot - 1))
+		end
+		armor_spec_active = armor_bits == 0
+	end
+
 	local f = CreateFrame("Frame")
-	f:RegisterUnitEvent("UNIT_INVENTORY_CHANGED", "player")
+	f:RegisterEvent("PLAYER_EQUIPMENT_CHANGED")
 	f:RegisterEvent("PLAYER_ENTERING_WORLD")
-	f:SetScript("OnEvent", function(self, event)
+	f:SetScript("OnEvent", function(self, event, slot)
+		-- Item Sets
 		wipe(equipped_sets)
-		update_meta_gem()
+
+		-- Meta Gem
+		if not slot or slot == INVSLOT_HEAD then
+			update_meta_gem()
+		end
+
+		-- Armor Specialization
+		if tocversion >= 40000 and class_armor_specs[addon.class] then
+			if event == "PLAYER_ENTERING_WORLD" or not slot then
+				for inv_slot in pairs(armor_spec_slots) do
+					update_armor_slot(inv_slot)
+				end
+			elseif armor_spec_slots[slot] then
+				update_armor_slot(slot)
+			end
+		end
 
 		if event == "PLAYER_ENTERING_WORLD" then
 			self:UnregisterEvent(event)
@@ -747,6 +795,18 @@ StatLogic.StatModIgnoresAlwaysBuffed = {
 
 ---@type { [string]: StatModValidator }
 addon.StatModValidators = {
+	armorspec = {
+		validate = function(case)
+			if armor_spec_active then
+				-- TODO: May be replaced by GetSpecialization, check on Cata Beta launch
+				return case.armorspec[GetPrimaryTalentTree() or 0]
+			end
+		end,
+		events = {
+			["UNIT_INVENTORY_CHANGED"] = "player",
+			["PLAYER_TALENT_UPDATE"] = true,
+		},
+	},
 	aura = {
 		validate = function(case, stat)
 			return StatLogic:GetAuraInfo(GetSpellInfo(case.aura), StatLogic.StatModIgnoresAlwaysBuffed[stat])
