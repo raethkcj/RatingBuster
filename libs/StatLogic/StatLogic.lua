@@ -209,6 +209,12 @@ local function copy(parent)
 	return t
 end
 
+---@class StatTable
+---@field link string
+---@field numLines number
+---@field inventoryType string
+---@field [Stat] number
+
 -- New table
 local function new(...)
 	local t = next(pool) or {}
@@ -1282,25 +1288,11 @@ function StatLogic:GetEffectFromRating(rating, stat, level)
 	end
 end
 
---[[---------------------------------
-{	:GetDodgePerAgi()
--------------------------------------
--- Description
-	Calculates the dodge percentage per agility for your current class and level.
--- Args
--- Returns
-	[dodge]
-		number - dodge percentage per agility
-	[statid]
-		Stat - StatLogic.Stats.Dodge
--- Remarks
-	Only works for your currect class and current level, does not support class and level args.
--- Examples
-	StatLogic:GetDodgePerAgi()
-}
------------------------------------]]
 if not CR_DODGE then CR_DODGE = 3 end;
 
+-- Calculates the dodge percentage per agility for your current class and level.
+-- Only works for your currect class and current level, does not support class and level args.
+---@return number dodge Dodge percentage per agility
 function StatLogic:GetDodgePerAgi()
 	local level = UnitLevel("player")
 	local class = addon.class
@@ -1417,10 +1409,10 @@ do
 	-- Returns a modified link with all empty sockets replaced with the specified gems,
 	-- sockets already gemmed will remain.
 	---@param link string itemLink
-	---@param red string|number gemID to replace a red socket
-	---@param yellow string|number gemID to replace a yellow socket
-	---@param blue string|number gemID to replace a blue socket
-	---@param meta string|number gemID to replace a meta socket
+	---@param red? string|number gemID to replace a red socket
+	---@param yellow? string|number gemID to replace a yellow socket
+	---@param blue? string|number gemID to replace a blue socket
+	---@param meta? string|number gemID to replace a meta socket
 	---@return string link Modified item link
 	function StatLogic:BuildGemmedTooltip(link, red, yellow, blue, meta)
 		-- Check item
@@ -1470,35 +1462,12 @@ do
 	end
 end
 
---[[---------------------------------
-{	:GetGemID(item)
--------------------------------------
--- Description
-	Returns the gemID and gemText of a gem for use in links
--- Args
-	item
-			string - link or name of target item
-	 or number - itemID of target item
-	 or table - tooltip of target item
--- Returns
-	gemID
-		number - gemID
-	gemText
-		string - text when socketed in an item
--- Remarks
--- Examples
-	StatLogic:GetGemID(28363)
-}
------------------------------------]]
--- SetTip("item:3185:0:2946")
+---@param item string|number itemLink or itemID of a gem
+---@return number? gemID
+---@return string? gemText
 function StatLogic:GetGemID(item)
 	-- Check item
-	if (type(item) == "string") or (type(item) == "number") then
-	elseif type(item) == "table" and type(item.GetItem) == "function" then
-		-- Get the link
-		_, item = item:GetItem()
-		if type(item) ~= "string" then return end
-	else
+	if (type(item) ~= "string") and (type(item) ~= "number") then
 		return
 	end
 	local itemID = item
@@ -1552,40 +1521,6 @@ end
 -- ================== --
 -- Stat Summarization --
 -- ================== --
---[[---------------------------------
-{	:GetSum(item, [statTable])
--------------------------------------
--- Description
-	Calculates the sum of all stats for a specified item.
--- Args
-	item
-			string - link or name of target item
-	 or number - itemID of target item
-	 or table - tooltip of target item
-	[statTable]
-			table - the sum of stat values are writen to this table if provided
--- Returns
-	[sum]
-		table - {
-			["inventoryType"] = inventoryType,
-			["STAT_ID1"] = value,
-			["STAT_ID2"] = value,
-		}
--- Remarks
--- Examples
-	StatLogic:GetSum(21417) -- [Ring of Unspoken Names]
-	StatLogic:GetSum("item:28040:2717")
-	StatLogic:GetSum("item:19019:117") -- TF
-	StatLogic:GetSum("item:3185:0:0:0:0:0:1957") -- Acrobatic Staff of Frozen Wrath ID:3185:0:0:0:0:0:1957
-	StatLogic:GetSum(24396)
-	SetTip("item:3185:0:0:0:0:0:1957")
-	-- [Deadly Fire Opal] ID:30582 - Attack Power +8 and Critical Rating +5
-	-- [Gnomeregan Auto-Blocker 600] ID:29387
-	StatLogic:GetSum("item:30538:3011:2739:2739:2739:0") -- [Midnight Legguards] with enchant and gems
-	StatLogic:GetSum("item:30538:3011:2739:2739:2739:0") -- [Midnight Legguards] with enchant and gems
-}
------------------------------------]]
-
 do
 	local statTable, currentColor
 
@@ -1630,15 +1565,13 @@ do
 		return found
 	end
 
+	-- Calculates the sum of all stats for a specified item.
+	---@param item? string itemLink of target item
+	---@param oldStatTable? StatTable The sum of stat values are writen to this table if provided
+	---@return StatTable? sum
 	function StatLogic:GetSum(item, oldStatTable)
-		local _
 		-- Check item
-		if (type(item) == "string") or (type(item) == "number") then
-		elseif type(item) == "table" and type(item.GetItem) == "function" then
-			-- Get the link
-			_, item = item:GetItem()
-			if type(item) ~= "string" then return end
-		else
+		if type(item) ~= "string" then
 			return
 		end
 		-- Check if item is in local cache
@@ -2039,46 +1972,6 @@ function StatLogic:GetArmorDistribution(item, value, color)
 	return armor, bonus_armor
 end
 
---[[---------------------------------
-{	:GetDiffID(item, [ignoreEnchant], [ignoreGem], [red], [yellow], [blue], [meta])
--------------------------------------
--- Description
-	Returns a unique identification string of the diff calculation,
-	the identification string is made up of links concatenated together, can be used for cache indexing
--- Args
-	item
-			string - link or name of target item
-	 or number - itemID of target item
-	 or table - tooltip of target item
-	[ignoreEnchant]
-			boolean - ignore enchants when calculating the id
-	[ignoreGem]
-			boolean - ignore gems when calculating the id
-	[red]
-		string or number - gemID to replace a red socket
-	[yellow]
-		string or number - gemID to replace a yellow socket
-	[blue]
-		string or number - gemID to replace a blue socket
-	[meta]
-		string or number - gemID to replace a meta socket
--- Returns
-	[id]
-		string - a unique identification string of the diff calculation
-	[link]
-		string - link of main item
-	[linkDiff1]
-		string - link of compare item 1
-	[linkDiff2]
-		string - link of compare item 2
--- Remarks
--- Examples
-	StatLogic:GetDiffID(21417) -- Ring of Unspoken Names
-	StatLogic:GetDiffID("item:18832:2564:0:0:0:0:0:0", true, true) -- Brutality Blade with +15 agi enchant
-	http://www.wowwiki.com/EnchantId
-}
------------------------------------]]
-
 local getSlotID = {
 	INVTYPE_AMMO           = 0,
 	INVTYPE_GUNPROJECTILE  = 0,
@@ -2117,6 +2010,21 @@ local function HasTitansGrip()
 	return addon.class == "WARRIOR" and IsPlayerSpell(46917)
 end
 
+
+-- Returns a unique identification string of the diff calculation,
+-- the identification string is made up of links concatenated together, can be used for cache indexing
+---@param item string|GameTooltip itemLink or tooltip of target item
+---@param ignoreEnchant? boolean
+---@param ignoreGems? boolean
+---@param ignoreExtraSockets? boolean
+---@param red? string|number gemID to replace a red socket
+---@param yellow? string|number gemID to replace a yellow socket
+---@param blue? string|number gemID to replace a blue socket
+---@param meta? string|number gemID to replace a meta socket
+---@return string? id A unique identification string of the diff calculation
+---@return string? link Link of main item
+---@return string? linkDiff1 Link of compare item 1
+---@return string? linkDiff2 Link of compare item 2
 function StatLogic:GetDiffID(item, ignoreEnchant, ignoreGems, ignoreExtraSockets, red, yellow, blue, meta)
 	local name, inventoryType, link, linkDiff1, linkDiff2, _
 	-- Check item
@@ -2213,51 +2121,19 @@ function StatLogic:GetDiffID(item, ignoreEnchant, ignoreGems, ignoreExtraSockets
 	return id, link, linkDiff1, linkDiff2
 end
 
---[[---------------------------------
-{	:GetDiff(item, [diff1], [diff2], [ignoreEnchant], [ignoreGem], [red], [yellow], [blue], [meta])
--------------------------------------
--- Description
-	Calculates the stat diffrence from the specified item and your currently equipped items.
--- Args
-	item
-			string - link or name of target item
-	 or number - itemID of target item
-	 or table - tooltip of target item
-	[diff1]
-			table - stat difference of item and equipped item 1 are writen to this table if provided
-	[diff2]
-			table - stat difference of item and equipped item 2 are writen to this table if provided
-	[ignoreEnchant]
-			boolean - ignore enchants when calculating stat diffrences
-	[ignoreGem]
-			boolean - ignore gems when calculating stat diffrences
-	[red]
-		string or number - gemID to replace a red socket
-	[yellow]
-		string or number - gemID to replace a yellow socket
-	[blue]
-		string or number - gemID to replace a blue socket
-	[meta]
-		string or number - gemID to replace a meta socket
--- Returns
-	[diff1]
-		table - {
-			["STAT_ID1"] = value,
-			["STAT_ID2"] = value,
-		}
-	[diff2]
-		table - {
-			["STAT_ID1"] = value,
-			["STAT_ID2"] = value,
-		}
--- Remarks
--- Examples
-	StatLogic:GetDiff(21417, {}) -- Ring of Unspoken Names
-	StatLogic:GetDiff(21452) -- Staff of the Ruins
-}
------------------------------------]]
-
--- TODO 2.1.0: Use SetHyperlinkCompareItem in StatLogic:GetDiff
+-- Calculates the stat diffrence from the specified item and your currently equipped items.
+---@param item string|GameTooltip itemLink or tooltip of target item
+---@param diff1? StatTable Stat difference of item and equipped item 1 are writen to this table if provided
+---@param diff2? StatTable Stat difference of item and equipped item 2 are writen to this table if provided
+---@param ignoreEnchant? boolean
+---@param ignoreGems? boolean
+---@param ignoreExtraSockets? boolean
+---@param red? string|number gemID to replace a red socket
+---@param yellow? string|number gemID to replace a yellow socket
+---@param blue? string|number gemID to replace a blue socket
+---@param meta? string|number gemID to replace a meta socket
+---@return StatTable? diff1
+---@return StatTable? diff2
 function StatLogic:GetDiff(item, diff1, diff2, ignoreEnchant, ignoreGems, ignoreExtraSockets, red, yellow, blue, meta)
 	-- Get DiffID
 	local id, link, linkDiff1, linkDiff2 = self:GetDiffID(item, ignoreEnchant, ignoreGems, ignoreExtraSockets, red, yellow, blue, meta)

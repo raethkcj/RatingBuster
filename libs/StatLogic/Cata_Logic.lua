@@ -1856,47 +1856,6 @@ function StatLogic:GetMissedChanceBeforeDR()
 	return modMissed, drFreeMissed
 end
 
---[[---------------------------------
-:GetDodgePerAgi()
--------------------------------------
-Arguments:
-None
-Returns:
-; dodge : number - Dodge percentage per agility
-; statid : string - "DODGE"
-Notes:
-* Formula by Whitetooth (hotdogee [at] gmail [dot] com)
-* Calculates the dodge percentage per agility for your current class and level.
-* Only works for your currect class and current level, does not support class and level args.
-* Calculations got a bit more complicated with the introduction of the avoidance DR in WotLK, these are the values we know or can be calculated easily:
-** D'=Total Dodge% after DR
-** D_r=Dodge from Defense and Dodge Rating before DR
-** D_b=Dodge unaffected by DR (BaseDodge + Dodge from talent/buffs + Lower then normal defense correction)
-** A=Total Agility
-** A_b=Base Agility (This is what you have with no gear on)
-** A_g=Total Agility - Base Agility
-** Let d be the Dodge/Agi value we are going to calculate.
-
-#  1     1     k
-# --- = --- + ---
-#  x'    c     x
-
-# x'=D'-D_b-A_b*d
-# x=A_g*d+D_r
-
-# 1/(D'-D_b-A_b*d)=1/C_d+k/(A_g*d+D_r)=(A_g*d+D_r+C_d*k)/(C_d*A_g*d+C_d*D_r)
-
-# C_d*A_g*d+C_d*D_r=[(D'-D_b)-A_b*d]*[Ag*d+(D_r+C_d*k)]
-
-# After rearranging the terms, we get an equation of type a*d^2+b*d+c where
-# a=-A_g*A_b
-# b=A_g(D'-D_b)-A_b(D_r+C_d*k)-C_dA_g
-# c=(D'-D_b)(D_r+C_d*k)-C_d*D_r
-** Dodge/Agi=(-b-(b^2-4ac)^0.5)/(2a)
-Example:
-local dodge, statid = StatLogic:GetDodgePerAgi()
------------------------------------]]
-
 local ModAgiClasses = {
 	["DRUID"] = true,
 	["HUNTER"] = true,
@@ -1904,6 +1863,37 @@ local ModAgiClasses = {
 	["SHAMAN"] = true,
 }
 
+--[[
+Formula by Whitetooth (hotdogee [at] gmail [dot] com)
+Calculates the dodge percentage per agility for your current class and level.
+Only works for your currect class and current level, does not support class and level args.
+Calculations got a bit more complicated with the introduction of the avoidance DR in WotLK, these are the values we know or can be calculated easily:
+D'=Total Dodge% after DR
+D_r=Dodge from Defense and Dodge Rating before DR
+D_b=Dodge unaffected by DR (BaseDodge + Dodge from talent/buffs + Lower then normal defense correction)
+A=Total Agility
+A_b=Base Agility (This is what you have with no gear on)
+A_g=Total Agility - Base Agility
+Let d be the Dodge/Agi value we are going to calculate.
+
+ 1     1     k
+--- = --- + ---
+ x'    c     x
+
+x'=D'-D_b-A_b*d
+x=A_g*d+D_r
+
+1/(D'-D_b-A_b*d)=1/C_d+k/(A_g*d+D_r)=(A_g*d+D_r+C_d*k)/(C_d*A_g*d+C_d*D_r)
+
+C_d*A_g*d+C_d*D_r=[(D'-D_b)-A_b*d]*[Ag*d+(D_r+C_d*k)]
+
+After rearranging the terms, we get an equation of type a*d^2+b*d+c where
+a=-A_g*A_b
+b=A_g(D'-D_b)-A_b(D_r+C_d*k)-C_dA_g
+c=(D'-D_b)(D_r+C_d*k)-C_d*D_r
+Dodge/Agi=(-b-(b^2-4ac)^0.5)/(2a)
+]]
+---@return number dodge Dodge percentage per agility
 function StatLogic:GetDodgePerAgi()
 	local level = UnitLevel("player")
 	local class = addon.class
