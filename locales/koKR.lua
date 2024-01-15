@@ -53,13 +53,14 @@ L["Options for Rating display"] = "평점 표시에 대한 설정입니다."
 -- /rb rating show
 L["Show Rating conversions"] = "평점 변화 표시"
 L["Show Rating conversions in tooltips"] = "툴팁에 평점 변화를 표시합니다."
+L["Enable integration with Blizzard Reforging UI"] = true
 -- TODO
 -- /rb rating spell
-L["Show Spell Hit/Haste"] = true
-L["Show Spell Hit/Haste from Hit/Haste Rating"] = true
+L["Show Spell Hit/Haste"] = "주문 적중/가속 표시"
+L["Show Spell Hit/Haste from Hit/Haste Rating"] = "주문의 적중/가속을 표시합니다."
 -- /rb rating physical
-L["Show Physical Hit/Haste"] = true
-L["Show Physical Hit/Haste from Hit/Haste Rating"] = true
+L["Show Physical Hit/Haste"] = "물리 적중/가속 표시"
+L["Show Physical Hit/Haste from Hit/Haste Rating"] = "물리 적중/가속을 표시합니다."
 -- /rb rating detail
 L["Show detailed conversions text"] = "세부적인 평점 변화 표시"
 L["Show detailed text for Resilience and Expertise conversions"] = "탄력도와 숙련의 세부적인 평점 변화 표시를 사용합니다."
@@ -510,6 +511,7 @@ L["statList"] = {
 	{pattern = SPELL_STATALL:lower(), id = StatLogic.Stats.AllStats},
 
 	{pattern = "방어구 관통력", id = StatLogic.Stats.ArmorPenetrationRating},	--armor penetration rating
+	{pattern = "특화", id = StatLogic.Stats.MasteryRating},
 	{pattern = ARMOR:lower(), id = ARMOR},
 	{pattern = "전투력이", id = ATTACK_POWER},
 }
@@ -544,6 +546,7 @@ L["$value% Parry"] = "무막 $value%"
 -- (+1.21%, S+0.98%)
 -- (+1.21%, +0.98% S)
 L["$value Spell"] = "주문 $value"
+L["$value Spell Hit"] = "주문 적중 $value"
 
 L[StatLogic.Stats.HealingPower] = STAT_SPELLHEALING
 L[StatLogic.Stats.ManaRegen] = "마나 회복량"
