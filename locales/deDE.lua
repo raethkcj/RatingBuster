@@ -53,13 +53,14 @@ L["Options for Rating display"] = "Optionen für die Bewertungsanzeige"
 -- /rb rating show
 L["Show Rating conversions"] = "Zeige Bewertungsumrechnung"
 L["Show Rating conversions in tooltips"] = "Zeige Bewertungsumrechnung im Tooltip"
+L["Enable integration with Blizzard Reforging UI"] = true
 -- TODO
 -- /rb rating spell
-L["Show Spell Hit/Haste"] = true
-L["Show Spell Hit/Haste from Hit/Haste Rating"] = true
+L["Show Spell Hit/Haste"] = "Zeige Zaubertempo/-trefferchance"
+L["Show Spell Hit/Haste from Hit/Haste Rating"] = "Zeige Zaubertempo/-trefferchance von Tempo-/Trefferwertung"
 -- /rb rating physical
-L["Show Physical Hit/Haste"] = true
-L["Show Physical Hit/Haste from Hit/Haste Rating"] = true
+L["Show Physical Hit/Haste"] = "Zeige physisches Tempo/Trefferchance"
+L["Show Physical Hit/Haste from Hit/Haste Rating"] = "Zeige physisches Tempo/Trefferchance von Tempo-/Trefferwertung"
 -- /rb rating detail
 L["Show detailed conversions text"] = "Zeige detaillierten Umrechnungtext"
 L["Show detailed text for Resilience and Expertise conversions"] = "Zeige detaillierten Text für Abhärtungs- und Waffenkundumrechnung"
@@ -480,14 +481,14 @@ SPELL_STAT4_NAME = "Intelligenz"
 SPELL_STAT5_NAME = "Willenskraft"
 --]]
 L["statList"] = {
-	{pattern = SPELL_STAT1_NAME:lower(), id = StatLogic.Stats.Strength}, -- Strength
-	{pattern = SPELL_STAT2_NAME:lower(), id = StatLogic.Stats.Agility}, -- Agility
-	{pattern = SPELL_STAT3_NAME:lower(), id = StatLogic.Stats.Stamina}, -- Stamina
-	{pattern = SPELL_STAT4_NAME:lower(), id = StatLogic.Stats.Intellect}, -- Intellect
-	{pattern = SPELL_STAT5_NAME:lower(), id = StatLogic.Stats.Spirit}, -- Spirit
+	{pattern = SPELL_STAT1_NAME:lower(), id = StatLogic.Stats.Strength},
+	{pattern = SPELL_STAT2_NAME:lower(), id = StatLogic.Stats.Agility},
+	{pattern = SPELL_STAT3_NAME:lower(), id = StatLogic.Stats.Stamina},
+	{pattern = SPELL_STAT4_NAME:lower(), id = StatLogic.Stats.Intellect},
+	{pattern = SPELL_STAT5_NAME:lower(), id = StatLogic.Stats.Spirit},
 	{pattern = "verteidigungswertung", id = StatLogic.Stats.DefenseRating},
 	{pattern = "ausweichwertung", id = StatLogic.Stats.DodgeRating},
-	{pattern = "blockwertung", id = StatLogic.Stats.BlockRating}, -- block enchant: "+10 Shield Block Rating"
+	{pattern = "blockwertung", id = StatLogic.Stats.BlockRating},
 	{pattern = "parierwertung", id = StatLogic.Stats.ParryRating},
 
 	{pattern = "kritische zaubertrefferwertung", id = StatLogic.Stats.SpellCritRating},
@@ -498,7 +499,7 @@ L["statList"] = {
 	{pattern = "trefferwertung", id = StatLogic.Stats.RangedHitRating},
 	{pattern = "trefferwertung", id = StatLogic.Stats.HitRating},
 
-	{pattern = "abhärtungswertung", id = StatLogic.Stats.ResilienceRating}, -- resilience is implicitly a rating
+	{pattern = "abhärtungswertung", id = StatLogic.Stats.ResilienceRating},
 
 	{pattern = "zaubertempowertung", id = StatLogic.Stats.SpellHasteRating},
 	{pattern = "distanztempowertung", id = StatLogic.Stats.RangedHasteRating},
@@ -512,6 +513,7 @@ L["statList"] = {
 
 	{pattern = "rüstungsdurchschlagwertung", id = StatLogic.Stats.ArmorPenetrationRating},
 	{pattern = "rüstungsdurchschlag", id = StatLogic.Stats.ArmorPenetrationRating},
+	{pattern = "meisterschaftswertung", id = StatLogic.Stats.MasteryRating},
 	{pattern = ARMOR:lower(), id = ARMOR},
 	{pattern = "angriffskraft", id = ATTACK_POWER},
 }
@@ -538,14 +540,15 @@ L["$value Block"] = "$value Blocken"
 --  L["$value HP5(NC)"] = true
 L["$value to be Dodged/Parried"] = "$value wird Ausgewichen/Pariert"
 L["$value to be Crit"] = "$value wird kritisch"
-L["$value Crit Dmg Taken"] = "$value erlittener Schaden"
+L["$value Crit Dmg Taken"] = "$value erlittener krit. Schaden"
 L["$value DOT Dmg Taken"] = "$value erlittener Schaden durch DOTs"
-L["$value Dmg Taken"] = true
+L["$value Dmg Taken"] = "$value erlitter Schaden im PVP"
 L["$value% Parry"] = "$value% Parieren"
 -- for hit rating showing both physical and spell conversions
 -- (+1.21%, S+0.98%)
 -- (+1.21%, +0.98% S)
 L["$value Spell"] = "$value Zauber"
+L["$value Spell Hit"] = "$value Zaubertrefferchance"
 
 L[StatLogic.Stats.HealingPower] = STAT_SPELLHEALING
 L[StatLogic.Stats.ManaRegen] = "Manaregeneration"
@@ -604,7 +607,7 @@ L[StatLogic.Stats.ParryRating] = COMBAT_RATING_NAME4 -- COMBAT_RATING_NAME4 = "P
 L[StatLogic.Stats.BlockRating] = COMBAT_RATING_NAME5 -- COMBAT_RATING_NAME5 = "Block Rating"
 L[StatLogic.Stats.MeleeHitRating] = COMBAT_RATING_NAME6 -- COMBAT_RATING_NAME6 = "Hit Rating"
 L[StatLogic.Stats.RangedHitRating] = PLAYERSTAT_RANGED_COMBAT.." "..COMBAT_RATING_NAME6 -- PLAYERSTAT_RANGED_COMBAT = "Ranged"
-L[StatLogic.Stats.SpellHitRating] = PLAYERSTAT_SPELL_COMBAT.." "..COMBAT_RATING_NAME6 -- PLAYERSTAT_SPELL_COMBAT = "Spell"
+L[StatLogic.Stats.SpellHitRating] = "Zaubertrefferwertung"
 L[StatLogic.Stats.MeleeCritRating] = COMBAT_RATING_NAME9 -- COMBAT_RATING_NAME9 = "Crit Rating"
 L[StatLogic.Stats.RangedCritRating] = PLAYERSTAT_RANGED_COMBAT.." "..COMBAT_RATING_NAME9
 L[StatLogic.Stats.SpellCritRating] = PLAYERSTAT_SPELL_COMBAT.." "..COMBAT_RATING_NAME9
@@ -630,7 +633,7 @@ L[StatLogic.Stats.BlockChance] = BLOCK.."(%)"
 L[StatLogic.Stats.Avoidance] = "Vermeidung(%)"
 L[StatLogic.Stats.MeleeHit] = "Trefferchance(%)"
 L[StatLogic.Stats.RangedHit] = PLAYERSTAT_RANGED_COMBAT.." Trefferchance(%)"
-L[StatLogic.Stats.SpellHit] = PLAYERSTAT_SPELL_COMBAT.." Trefferchance(%)"
+L[StatLogic.Stats.SpellHit] = "Zaubertrefferchance(%)"
 L[StatLogic.Stats.Miss] = "Treffer Vermeidung(%)"
 L[StatLogic.Stats.MeleeCrit] = MELEE_CRIT_CHANCE.."(%)" -- MELEE_CRIT_CHANCE = "Crit Chance"
 L[StatLogic.Stats.RangedCrit] = PLAYERSTAT_RANGED_COMBAT.." "..MELEE_CRIT_CHANCE.."(%)"
