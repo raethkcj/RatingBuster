@@ -8,6 +8,8 @@ Translated by:
 - mcc
 ]]
 
+local _, addon = ...
+
 ---@class RatingBusterLocale
 local L = LibStub("AceLocale-3.0"):NewLocale("RatingBuster", "zhTW")
 if not L then return end
@@ -407,6 +409,9 @@ L["ItemID: "] = "物品編號: "
 L["Enables RatingBuster to calculate selected buff effects even if you don't really have them"] = "指定常駐buff，就算身上沒有buff，RatingBuster也會當成有來計算"
 L["$class Self Buffs"] = "$class個人Buff"
 L["Raid Buffs"] = "團隊Buff"
+L["Stat Multiplier"] = "總屬性提高%"
+L["Attack Power Multiplier"] = "攻擊強度提高%"
+L["Reduced Physical Damage Taken"] = "物理傷害減少%"
 
 -----------------------
 -- Matching Patterns --
@@ -546,6 +551,10 @@ L["$value Spell"] = "$value 法術"
 L[StatLogic.Stats.HealingPower] = STAT_SPELLHEALING
 L[StatLogic.Stats.ManaRegen] = "法力恢復"
 L[StatLogic.Stats.ManaRegenNotCasting] = "法力恢復 (非施法)"
+L[StatLogic.Stats.ManaRegenOutOfCombat] = "法力恢復 (非戰鬥)"
+if addon.tocversion > 40000 then
+	L[StatLogic.Stats.ManaRegenNotCasting] =  L[StatLogic.Stats.ManaRegenOutOfCombat]
+end
 L[StatLogic.Stats.HealthRegen] = "生命恢复"
 L[StatLogic.Stats.HealthRegenOutOfCombat] = "生命恢复 (非戰鬥)"
 L["StatModOptionName"] = "%s %s"
@@ -574,6 +583,7 @@ L[StatLogic.Stats.FeralAttackPower] = "野性攻擊強度"
 
 L[StatLogic.Stats.HealingPower] = "法術治療"
 
+L[StatLogic.Stats.SpellPower] = STAT_SPELLPOWER
 L[StatLogic.Stats.SpellDamage] = "法術傷害"
 L[StatLogic.Stats.HolyDamage] = "神聖法術傷害"
 L[StatLogic.Stats.FireDamage] = "火焰法術傷害"
@@ -605,6 +615,7 @@ L[StatLogic.Stats.RangedHasteRating] = "遠程加速等級"
 L[StatLogic.Stats.SpellHasteRating] = "法術加速等級"
 L[StatLogic.Stats.ExpertiseRating] = "熟練等級"
 L[StatLogic.Stats.ArmorPenetrationRating] = "護甲穿透等級"
+L[StatLogic.Stats.MasteryRating] = STAT_MASTERY.."等級"
 -- Tier2 Stats - Stats that only show up when broken down from a Tier1 stat
 -- Str -> AP, Block Value
 -- Agi -> AP, Crit, Dodge
@@ -630,6 +641,7 @@ L[StatLogic.Stats.RangedHaste] = "遠程加速(%)"
 L[StatLogic.Stats.SpellHaste] = "法術加速(%)"
 L[StatLogic.Stats.Expertise] = "熟練"
 L[StatLogic.Stats.ArmorPenetration] = "護甲穿透(%)"
+L[StatLogic.Stats.Mastery] = STAT_MASTERY
 -- Tier3 Stats - Stats that only show up when broken down from a Tier2 stat
 -- Defense -> Crit Avoidance, Hit Avoidance, Dodge, Parry, Block
 -- Weapon Skill -> Crit, Hit, Dodge Neglect, Parry Neglect, Block Neglect

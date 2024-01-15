@@ -5,6 +5,8 @@ Translated by: Tixu@Curse, Silaor, renchap
 
 --]]
 
+local _, addon = ...
+
 ---@class RatingBusterLocale
 local L = LibStub("AceLocale-3.0"):NewLocale("RatingBuster", "frFR")
 if not L then return end
@@ -399,6 +401,9 @@ L["ItemID: "] = "ID Objet : "
 L["Enables RatingBuster to calculate selected buff effects even if you don't really have them"] = true
 L["$class Self Buffs"] = true -- $class will be replaced with localized player class
 L["Raid Buffs"] = true
+L["Stat Multiplier"] = true
+L["Attack Power Multiplier"] = true
+L["Reduced Physical Damage Taken"] = true
 
 -----------------------
 -- Matching Patterns --
@@ -547,6 +552,10 @@ L["$value Spell"] = "$value% Sort"
 L[StatLogic.Stats.HealingPower] = STAT_SPELLHEALING
 L[StatLogic.Stats.ManaRegen] = "Régén. mana (incantation)"
 L[StatLogic.Stats.ManaRegenNotCasting] = "Régén. mana (hors incantation)"
+L[StatLogic.Stats.ManaRegenOutOfCombat] = "Régén. mana (hors combat)"
+if addon.tocversion > 40000 then
+	L[StatLogic.Stats.ManaRegenNotCasting] =  L[StatLogic.Stats.ManaRegenOutOfCombat]
+end
 L[StatLogic.Stats.HealthRegen] = "Régén. vie (combat)"
 L[StatLogic.Stats.HealthRegenOutOfCombat] = "Régén. vie (hors combat)"
 L["StatModOptionName"] = "%s %s"
@@ -575,6 +584,7 @@ L[StatLogic.Stats.FeralAttackPower] = "Puissance d'attaque Farouche"
 
 L[StatLogic.Stats.HealingPower] = "Puissance des soins"
 
+L[StatLogic.Stats.SpellPower] = STAT_SPELLPOWER
 L[StatLogic.Stats.SpellDamage] = "Dégâts des sorts"
 L[StatLogic.Stats.HolyDamage] = "Dégâts des sorts du Sacré"
 L[StatLogic.Stats.FireDamage] = "Dégâts des sorts de Feu"
@@ -606,6 +616,7 @@ L[StatLogic.Stats.RangedHasteRating] = "Score de hâte à distance"
 L[StatLogic.Stats.SpellHasteRating] = "Score de hâte des sorts"
 L[StatLogic.Stats.ExpertiseRating] = "Score d'Expertise"
 L[StatLogic.Stats.ArmorPenetrationRating] = "Pénétration d'armure".." "..RATING
+L[StatLogic.Stats.MasteryRating] = "Score de maîtrise"
 -- Tier2 Stats - Stats that only show up when broken down from a Tier1 stat
 -- Str -> AP, Block Value
 -- Agi -> AP, Crit, Dodge
@@ -632,6 +643,7 @@ L[StatLogic.Stats.RangedHaste] = "Hâte à distance (%)"
 L[StatLogic.Stats.SpellHaste] = "Hâte des sorts (%)"
 L[StatLogic.Stats.Expertise] = "Expertise"
 L[StatLogic.Stats.ArmorPenetration] = "Pénétration d'armure(%)"
+L[StatLogic.Stats.Mastery] = STAT_MASTERY
 -- Tier3 Stats - Stats that only show up when broken down from a Tier2 stat
 -- Defense -> Crit Avoidance, Hit Avoidance, Dodge, Parry, Block
 -- Weapon Skill -> Crit, Hit, Dodge Neglect, Parry Neglect, Block Neglect

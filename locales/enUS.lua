@@ -5,6 +5,9 @@ Translated by:
 - Whitetooth (hotdogee [at] gmail [dot] com)
 ]]
 
+local _, addon = ...
+addon.tocversion = select(4, GetBuildInfo())
+
 ---@class RatingBusterLocale
 ---@field numberPatterns table
 ---@field exclusions table
@@ -403,6 +406,9 @@ L["ItemID: "] = true
 L["Enables RatingBuster to calculate selected buff effects even if you don't really have them"] = true
 L["$class Self Buffs"] = true -- $class will be replaced with localized player class
 L["Raid Buffs"] = true
+L["Stat Multiplier"] = true
+L["Attack Power Multiplier"] = true
+L["Reduced Physical Damage Taken"] = true
 
 -----------------------
 -- Matching Patterns --
@@ -561,7 +567,11 @@ L["$value Spell"] = true
 
 L[StatLogic.Stats.HealingPower] = STAT_SPELLHEALING
 L[StatLogic.Stats.ManaRegen] = "Mana Regen"
-L[StatLogic.Stats.ManaRegenNotCasting] = "Mana Regen (Not Casting)"
+if addon.tocversion > 40000 then
+	L[StatLogic.Stats.ManaRegenNotCasting] = "Mana Regen (Out of Combat)"
+else
+	L[StatLogic.Stats.ManaRegenNotCasting] = "Mana Regen (Not Casting)"
+end
 L[StatLogic.Stats.HealthRegen] = "Health Regen"
 L[StatLogic.Stats.HealthRegenOutOfCombat] = "Health Regen (Out of Combat)"
 L["StatModOptionName"] = "%s %s"
@@ -589,6 +599,7 @@ L[StatLogic.Stats.FeralAttackPower] = "Feral "..ATTACK_POWER_TOOLTIP
 
 L[StatLogic.Stats.HealingPower] = "Healing"
 
+L[StatLogic.Stats.SpellPower] = STAT_SPELLPOWER
 L[StatLogic.Stats.SpellDamage] = STAT_SPELLDAMAGE
 L[StatLogic.Stats.HolyDamage] = SPELL_SCHOOL1_CAP.." "..DAMAGE
 L[StatLogic.Stats.FireDamage] = SPELL_SCHOOL2_CAP.." "..DAMAGE
@@ -621,6 +632,7 @@ L[StatLogic.Stats.RangedHasteRating] = PLAYERSTAT_RANGED_COMBAT.." Haste "..RATI
 L[StatLogic.Stats.SpellHasteRating] = PLAYERSTAT_SPELL_COMBAT.." Haste "..RATING
 L[StatLogic.Stats.ExpertiseRating] = "Expertise".." "..RATING
 L[StatLogic.Stats.ArmorPenetrationRating] = ITEM_MOD_ARMOR_PENETRATION_RATING_SHORT
+L[StatLogic.Stats.MasteryRating] = STAT_MASTERY.." "..RATING
 -- Tier2 Stats - Stats that only show up when broken down from a Tier1 stat
 -- Str -> AP, Block Value
 -- Agi -> AP, Crit, Dodge
@@ -647,6 +659,7 @@ L[StatLogic.Stats.RangedHaste] = PLAYERSTAT_RANGED_COMBAT.." Haste(%)"
 L[StatLogic.Stats.SpellHaste] = PLAYERSTAT_SPELL_COMBAT.." Haste(%)"
 L[StatLogic.Stats.Expertise] = "Expertise"
 L[StatLogic.Stats.ArmorPenetration] = "Armor Penetration(%)"
+L[StatLogic.Stats.Mastery] = STAT_MASTERY
 -- Tier3 Stats - Stats that only show up when broken down from a Tier2 stat
 -- Defense -> Crit Avoidance, Hit Avoidance, Dodge, Parry, Block
 -- Weapon Skill -> Crit, Hit, Dodge Neglect, Parry Neglect, Block Neglect

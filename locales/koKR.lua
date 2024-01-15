@@ -5,6 +5,8 @@ Translated by:
 - kcgcom, fenlis (jungseop.park@gmail.com)
 ]]
 
+local _, addon = ...
+
 ---@class RatingBusterLocale
 local L = LibStub("AceLocale-3.0"):NewLocale("RatingBuster", "koKR")
 if not L then return end
@@ -402,6 +404,9 @@ L["ItemID: "] = "아이템ID: "
 L["Enables RatingBuster to calculate selected buff effects even if you don't really have them"] = true
 L["$class Self Buffs"] = true -- $class will be replaced with localized player class
 L["Raid Buffs"] = true
+L["Stat Multiplier"] = true
+L["Attack Power Multiplier"] = true
+L["Reduced Physical Damage Taken"] = true
 
 -----------------------
 -- Matching Patterns --
@@ -543,6 +548,10 @@ L["$value Spell"] = "주문 $value"
 L[StatLogic.Stats.HealingPower] = STAT_SPELLHEALING
 L[StatLogic.Stats.ManaRegen] = "마나 회복량"
 L[StatLogic.Stats.ManaRegenNotCasting] = "마나 회복량 (시전하지)"
+L[StatLogic.Stats.ManaRegenOutOfCombat] = "마나 회복량 (비전투)"
+if addon.tocversion > 40000 then
+	L[StatLogic.Stats.ManaRegenNotCasting] =  L[StatLogic.Stats.ManaRegenOutOfCombat]
+end
 L[StatLogic.Stats.HealthRegen] = "생명력 재생"
 L[StatLogic.Stats.HealthRegenOutOfCombat] = "생명력 재생 (비전투)"
 L["StatModOptionName"] = "%2$s %1$s"
@@ -571,6 +580,7 @@ L[StatLogic.Stats.FeralAttackPower] = "야생 전투력"
 
 L[StatLogic.Stats.HealingPower] = "치유량"
 
+L[StatLogic.Stats.SpellPower] = STAT_SPELLPOWER
 L[StatLogic.Stats.SpellDamage] = STAT_SPELLDAMAGE
 L[StatLogic.Stats.HolyDamage] = SPELL_SCHOOL1_CAP.." "..DAMAGE
 L[StatLogic.Stats.FireDamage] = SPELL_SCHOOL2_CAP.." "..DAMAGE
@@ -602,6 +612,7 @@ L[StatLogic.Stats.RangedHasteRating] = PLAYERSTAT_RANGED_COMBAT.." 가속도 "..
 L[StatLogic.Stats.SpellHasteRating] = PLAYERSTAT_SPELL_COMBAT.." 가속도 "..RATING
 L[StatLogic.Stats.ExpertiseRating] = "숙련 ".." "..RATING
 L[StatLogic.Stats.ArmorPenetrationRating] = "방어구 관통력"
+L[StatLogic.Stats.MasteryRating] = STAT_MASTERY.." "..RATING
 -- Tier2 Stats - Stats that only show up when broken down from a Tier1 stat
 -- Str -> AP, Block Value
 -- Agi -> AP, Crit, Dodge
@@ -628,6 +639,7 @@ L[StatLogic.Stats.RangedHaste] = PLAYERSTAT_RANGED_COMBAT.." 가속도(%)"
 L[StatLogic.Stats.SpellHaste] = PLAYERSTAT_SPELL_COMBAT.." 가속도(%)"
 L[StatLogic.Stats.Expertise] = "숙련 "
 L[StatLogic.Stats.ArmorPenetration] = "방어구 관통(%)"
+L[StatLogic.Stats.Mastery] = STAT_MASTERY
 -- Tier3 Stats - Stats that only show up when broken down from a Tier2 stat
 -- Defense -> Crit Avoidance, Hit Avoidance, Dodge, Parry, Block
 -- Weapon Skill -> Crit, Hit, Dodge Neglect, Parry Neglect, Block Neglect

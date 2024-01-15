@@ -78,6 +78,7 @@ StatLogic.Stats.Mana = Stat:new()
 StatLogic.Stats.ManaRegen = Stat:new()
 StatLogic.Stats.HealthRegen = Stat:new()
 StatLogic.Stats.ManaRegenNotCasting = Stat:new()
+StatLogic.Stats.ManaRegenOutOfCombat = Stat:new()
 StatLogic.Stats.HealthRegenOutOfCombat = Stat:new()
 
 -- Generic Offensive Stats
@@ -123,6 +124,7 @@ StatLogic.Stats.RangedHaste = Stat:new()
 StatLogic.Stats.RangedHasteRating = Stat:new()
 
 -- Spell Stats
+StatLogic.Stats.SpellPower = Stat:new()
 StatLogic.Stats.SpellDamage = Stat:new()
 StatLogic.Stats.HealingPower = Stat:new()
 StatLogic.Stats.SpellPenetration = Stat:new()

@@ -5,6 +5,8 @@ Translated by:
 - Orsana \ StingerSoft \ Swix
 ]]
 
+local _, addon = ...
+
 ---@class RatingBusterLocale
 local L = LibStub("AceLocale-3.0"):NewLocale("RatingBuster", "ruRU")
 if not L then return end
@@ -457,6 +459,9 @@ L["ItemID: "] = "ID предмета: "
 L["Enables RatingBuster to calculate selected buff effects even if you don't really have them"] = true
 L["$class Self Buffs"] = true -- $class will be replaced with localized player class
 L["Raid Buffs"] = true
+L["Stat Multiplier"] = true
+L["Attack Power Multiplier"] = true
+L["Reduced Physical Damage Taken"] = true
 
 -----------------------
 -- Matching Patterns --
@@ -685,6 +690,10 @@ L["$value Spell"] = "$value для заклинаний"
 L[StatLogic.Stats.HealingPower] = "Исцеление"
 L[StatLogic.Stats.ManaRegen] = "Восполнение маны"
 L[StatLogic.Stats.ManaRegenNotCasting] = "Восполнения маны (пока не применяете заклинания)"
+L[StatLogic.Stats.ManaRegenOutOfCombat] = "Восполнения маны (вне боя)"
+if addon.tocversion > 40000 then
+	L[StatLogic.Stats.ManaRegenNotCasting] =  L[StatLogic.Stats.ManaRegenOutOfCombat]
+end
 L[StatLogic.Stats.HealthRegen] = "Восстановление здоровья"
 L[StatLogic.Stats.HealthRegenOutOfCombat] = "Восполнение здаровья (вне боя)"
 L["StatModOptionName"] = "%s %s"
@@ -712,6 +721,7 @@ L[StatLogic.Stats.FeralAttackPower] =  "Сила атаки в облике зв
 
 L[StatLogic.Stats.HealingPower] =  "Исцеление"
 
+L[StatLogic.Stats.SpellPower] = STAT_SPELLPOWER
 L[StatLogic.Stats.SpellDamage] =  "Сила заклинаний"
 L[StatLogic.Stats.HolyDamage] =  "Сила заклинаний (светлая магия)"
 L[StatLogic.Stats.FireDamage] =  "Сила заклинаний (огонь)"
@@ -744,6 +754,7 @@ L[StatLogic.Stats.RangedHasteRating] =  "Рейтинг скорости"
 L[StatLogic.Stats.SpellHasteRating] =  "Рейтинг скорости"
 L[StatLogic.Stats.ExpertiseRating] = "Рейтинг мастерства"
 L[StatLogic.Stats.ArmorPenetrationRating] = RATING .. " пробиванию брони"
+L[StatLogic.Stats.MasteryRating] = "Рейтинг искусности"
 -- Tier2 Stats - Stats that only show up when broken down from a Tier1 stat
 -- Str -> AP, Block Value
 -- Agi -> AP, Crit, Dodge
@@ -770,6 +781,7 @@ L[StatLogic.Stats.RangedHaste] = "Скорость (%)"
 L[StatLogic.Stats.SpellHaste] = "Скорость (%)"
 L[StatLogic.Stats.Expertise] = "Мастерство"
 L[StatLogic.Stats.ArmorPenetration] = "Пробивание брони (%)"
+L[StatLogic.Stats.Mastery] = STAT_MASTERY
 -- Tier3 Stats - Stats that only show up when broken down from a Tier2 stat
 -- Defense -> Crit Avoidance, Hit Avoidance, Dodge, Parry, Block
 -- Weapon Skill -> Crit, Hit, Dodge Neglect, Parry Neglect, Block Neglect

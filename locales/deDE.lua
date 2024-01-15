@@ -5,6 +5,8 @@ Translated by:
 - Kuja
 ]]
 
+local _, addon = ...
+
 ---@class RatingBusterLocale
 local L = LibStub("AceLocale-3.0"):NewLocale("RatingBuster", "deDE")
 if not L then return end
@@ -404,6 +406,9 @@ L["Queried server for Gem: %s. Try again in 5 secs."] = "Frage den Server nach E
 L["Enables RatingBuster to calculate selected buff effects even if you don't really have them"] = "Erlaubt RatingBuster gewählte Buffs zu berechnen, auch wenn du diese nicht wirklich hast"
 L["$class Self Buffs"] = "Eigenbuffs"
 L["Raid Buffs"] = "Raidbuffs"
+L["Stat Multiplier"] = "Wertemultiplikatoren"
+L["Attack Power Multiplier"] = "Angriffskraft-Multiplikatoren"
+L["Reduced Physical Damage Taken"] = "Reduzierter erlittener physischer Schaden"
 
 -----------------------
 -- Matching Patterns --
@@ -544,7 +549,11 @@ L["$value Spell"] = "$value Zauber"
 
 L[StatLogic.Stats.HealingPower] = STAT_SPELLHEALING
 L[StatLogic.Stats.ManaRegen] = "Manaregeneration"
-L[StatLogic.Stats.ManaRegenNotCasting] = "Manaregeneration (nicht Zaubernd)"
+L[StatLogic.Stats.ManaRegenNotCasting] = "Manaregeneration (Nicht Zaubernd)"
+L[StatLogic.Stats.ManaRegenOutOfCombat] = "Manaregeneration (Nicht im Kampf)"
+if addon.tocversion > 40000 then
+	L[StatLogic.Stats.ManaRegenNotCasting] =  L[StatLogic.Stats.ManaRegenOutOfCombat]
+end
 L[StatLogic.Stats.HealthRegen] = "Gesundheitsregeneration"
 L[StatLogic.Stats.HealthRegenOutOfCombat] = "Lebensregeneration (Nicht im Kampf)"
 L["StatModOptionName"] = "%s %s"
@@ -573,6 +582,7 @@ L[StatLogic.Stats.FeralAttackPower] = "Feral "..ATTACK_POWER_TOOLTIP
 
 L[StatLogic.Stats.HealingPower] = "Heilung"
 
+L[StatLogic.Stats.SpellPower] = STAT_SPELLPOWER
 L[StatLogic.Stats.SpellDamage] = STAT_SPELLDAMAGE
 L[StatLogic.Stats.HolyDamage] = SPELL_SCHOOL1_CAP.." "..DAMAGE
 L[StatLogic.Stats.FireDamage] = SPELL_SCHOOL2_CAP.." "..DAMAGE
@@ -599,11 +609,12 @@ L[StatLogic.Stats.MeleeCritRating] = COMBAT_RATING_NAME9 -- COMBAT_RATING_NAME9 
 L[StatLogic.Stats.RangedCritRating] = PLAYERSTAT_RANGED_COMBAT.." "..COMBAT_RATING_NAME9
 L[StatLogic.Stats.SpellCritRating] = PLAYERSTAT_SPELL_COMBAT.." "..COMBAT_RATING_NAME9
 L[StatLogic.Stats.ResilienceRating] = COMBAT_RATING_NAME15 -- COMBAT_RATING_NAME15 = "Resilience"
-L[StatLogic.Stats.MeleeHasteRating] = "Hast "..RATING --
-L[StatLogic.Stats.RangedHasteRating] = PLAYERSTAT_RANGED_COMBAT.." Hast  "..RATING
-L[StatLogic.Stats.SpellHasteRating] = PLAYERSTAT_SPELL_COMBAT.." Hast  "..RATING
+L[StatLogic.Stats.MeleeHasteRating] = "Tempowertung"
+L[StatLogic.Stats.RangedHasteRating] = "Distanztempowertung"
+L[StatLogic.Stats.SpellHasteRating] = "Zaubertempowertung"
 L[StatLogic.Stats.ExpertiseRating] = "Waffenkundewertung"
-L[StatLogic.Stats.ArmorPenetrationRating] = "Rüstungsdurchschlag".." "..RATING
+L[StatLogic.Stats.ArmorPenetrationRating] = "Rüstungsdurchschlagwertung"
+L[StatLogic.Stats.MasteryRating] = "Meisterschaftswertung"
 -- Tier2 Stats - Stats that only show up when broken down from a Tier1 stat
 -- Str -> AP, Block Value
 -- Agi -> AP, Crit, Dodge
@@ -625,11 +636,12 @@ L[StatLogic.Stats.MeleeCrit] = MELEE_CRIT_CHANCE.."(%)" -- MELEE_CRIT_CHANCE = "
 L[StatLogic.Stats.RangedCrit] = PLAYERSTAT_RANGED_COMBAT.." "..MELEE_CRIT_CHANCE.."(%)"
 L[StatLogic.Stats.SpellCrit] = PLAYERSTAT_SPELL_COMBAT.." "..MELEE_CRIT_CHANCE.."(%)"
 L[StatLogic.Stats.CritAvoidance] = "Kritvermeidung(%)"
-L[StatLogic.Stats.MeleeHaste] = "Hast(%)" --
-L[StatLogic.Stats.RangedHaste] = PLAYERSTAT_RANGED_COMBAT.." Hast(%)"
-L[StatLogic.Stats.SpellHaste] = PLAYERSTAT_SPELL_COMBAT.." Hast(%)"
+L[StatLogic.Stats.MeleeHaste] = "Temp(%)" --
+L[StatLogic.Stats.RangedHaste] = PLAYERSTAT_RANGED_COMBAT.." Tempo(%)"
+L[StatLogic.Stats.SpellHaste] = PLAYERSTAT_SPELL_COMBAT.." Tempo(%)"
 L[StatLogic.Stats.Expertise] = "Waffenkunde"
 L[StatLogic.Stats.ArmorPenetration] = "Rüstungsdurchschlag(%)"
+L[StatLogic.Stats.Mastery] = "Meisterschaft"
 -- Tier3 Stats - Stats that only show up when broken down from a Tier2 stat
 -- Defense -> Crit Avoidance, Hit Avoidance, Dodge, Parry, Block
 -- Weapon Skill -> Crit, Hit, Dodge Neglect, Parry Neglect, Block Neglect

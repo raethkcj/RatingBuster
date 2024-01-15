@@ -5,6 +5,8 @@ Translated by:
 - iceburn
 ]]
 
+local _, addon = ...
+
 ---@class RatingBusterLocale
 local L = LibStub("AceLocale-3.0"):NewLocale("RatingBuster", "zhCN")
 if not L then return end
@@ -400,6 +402,9 @@ L["ItemID: "] = "物品编号: "
 L["Enables RatingBuster to calculate selected buff effects even if you don't really have them"] = "指定常驻buff，就算身上没有buff，RatingBuster也会当成有来计算"
 L["$class Self Buffs"] = "$class个人Buff"
 L["Raid Buffs"] = "团队Buff"
+L["Stat Multiplier"] = true
+L["Attack Power Multiplier"] = true
+L["Reduced Physical Damage Taken"] = true
 
 -----------------------
 -- Matching Patterns --
@@ -543,6 +548,10 @@ L["$value Spell"] = "$value 法术"
 L[StatLogic.Stats.HealingPower] = STAT_SPELLHEALING
 L[StatLogic.Stats.ManaRegen] = "法力回复"
 L[StatLogic.Stats.ManaRegenNotCasting] = "法力回复 (未施法)"
+L[StatLogic.Stats.ManaRegenOutOfCombat] = "法力回复 (非战斗)"
+if addon.tocversion > 40000 then
+	L[StatLogic.Stats.ManaRegenNotCasting] =  L[StatLogic.Stats.ManaRegenOutOfCombat]
+end
 L[StatLogic.Stats.HealthRegen] = "生命恢复"
 L[StatLogic.Stats.HealthRegenOutOfCombat] = "生命恢复 (非战斗)"
 L["StatModOptionName"] = "%s %s"
@@ -571,6 +580,7 @@ L[StatLogic.Stats.FeralAttackPower] = "野性"..ATTACK_POWER_TOOLTIP
 
 L[StatLogic.Stats.HealingPower] = "法术治疗"
 
+L[StatLogic.Stats.SpellPower] = STAT_SPELLPOWER
 L[StatLogic.Stats.SpellDamage] = "法术伤害"
 L[StatLogic.Stats.HolyDamage] = "神圣法术伤害"
 L[StatLogic.Stats.FireDamage] = "火焰法术伤害"
@@ -602,6 +612,7 @@ L[StatLogic.Stats.RangedHasteRating] = "远程急速等级"
 L[StatLogic.Stats.SpellHasteRating] = "法术急速等级"
 L[StatLogic.Stats.ExpertiseRating] = "精准等级"
 L[StatLogic.Stats.ArmorPenetrationRating] = "护甲穿透等级"
+L[StatLogic.Stats.MasteryRating] = STAT_MASTERY.." "..RATING
 -- Tier2 Stats - Stats that only show up when broken down from a Tier1 stat
 -- Str -> AP, Block Value
 -- Agi -> AP, Crit, Dodge
@@ -628,6 +639,7 @@ L[StatLogic.Stats.RangedHaste] = "远程急速(%)"
 L[StatLogic.Stats.SpellHaste] = "法术急速(%)"
 L[StatLogic.Stats.Expertise] = "精准"
 L[StatLogic.Stats.ArmorPenetration] = "护甲穿透(%)"
+L[StatLogic.Stats.Mastery] = STAT_MASTERY
 -- Tier3 Stats - Stats that only show up when broken down from a Tier2 stat
 -- Defense -> Crit Avoidance, Hit Avoidance, Dodge, Parry, Block
 -- Weapon Skill -> Crit, Hit, Dodge Neglect, Parry Neglect, Block Neglect

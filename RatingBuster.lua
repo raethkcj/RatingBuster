@@ -65,7 +65,6 @@ local strsplit = strsplit
 local strjoin = strjoin
 local unpack = unpack
 local tonumber = tonumber
-local tocversion = select(4, GetBuildInfo())
 
 local GetItemInfoCached = setmetatable({}, { __index = function(self, n)
 	self[n] = {GetItemInfo(n)} -- store in cache
@@ -2019,7 +2018,7 @@ do
 				infoString = ("%+.2f%%"):format(StatLogic:GetAvoidanceGainAfterDR(StatLogic.Stats.Parry, processedParry + effect) - StatLogic:GetAvoidanceGainAfterDR(StatLogic.Stats.Parry, processedParry))
 				processedParry = processedParry + effect
 			elseif statID == StatLogic.Stats.ExpertiseRating and profileDB.expBreakDown then
-				if tocversion < 30000 then
+				if addon.tocversion < 30000 then
 					-- Expertise is truncated in TBC but not in Wrath
 					effect = floor(effect)
 				end
@@ -2034,12 +2033,12 @@ do
 				if profileDB.detailedConversionText then
 					local infoTable = {}
 
-					if tocversion >= 30000 then
+					if addon.tocversion >= 30000 then
 						-- Wrath
 						tinsert(infoTable, (L["$value to be Crit"]:gsub("$value", ("%+.2f%%%%"):format(effect))))
 						tinsert(infoTable, (L["$value Crit Dmg Taken"]:gsub("$value", ("%+.2f%%%%"):format(effect * RESILIENCE_CRIT_CHANCE_TO_DAMAGE_REDUCTION_MULTIPLIER))))
 						tinsert(infoTable, (L["$value Dmg Taken"]:gsub("$value", ("%+.2f%%%%"):format(effect * RESILIENCE_CRIT_CHANCE_TO_CONSTANT_DAMAGE_REDUCTION_MULTIPLIER))))
-					elseif tocversion >= 20000 then
+					elseif addon.tocversion >= 20000 then
 						-- TBC
 						tinsert(infoTable, (L["$value to be Crit"]:gsub("$value", ("%+.2f%%%%"):format(effect))))
 						tinsert(infoTable, (L["$value Crit Dmg Taken"]:gsub("$value", ("%+.2f%%%%"):format(effect * 2))))
