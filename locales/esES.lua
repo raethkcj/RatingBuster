@@ -54,6 +54,7 @@ L["Options for Rating display"] = "Opciones de visualizacion"
 -- /rb rating show
 L["Show Rating conversions"] = "Mostrar conversion calificacion"
 L["Show Rating conversions in tooltips"] = "Mostrar conversion calificacion en tooltips"
+L["Enable integration with Blizzard Reforging UI"] = true
 -- TODO
 -- /rb rating spell
 L["Show Spell Hit/Haste"] = true
@@ -511,6 +512,7 @@ L["statList"] = {
 	{pattern = SPELL_STATALL:lower(), id = StatLogic.Stats.AllStats},
 
 	{pattern = "índice de penetración de armadura", id = StatLogic.Stats.ArmorPenetrationRating},
+	{pattern = "maestría", id = StatLogic.Stats.MasteryRating},
 	{pattern = ARMOR:lower(), id = ARMOR},
 	{pattern = "poder de ataque", id = ATTACK_POWER},
 }
@@ -545,6 +547,7 @@ L["$value% Parry"] = "$value Parada"
 -- (+1.21%, S+0.98%)
 -- (+1.21%, +0.98% S)
 L["$value Spell"] = "$value Hech."
+L["$value Spell Hit"] = "$value Golpe Hech."
 
 L[StatLogic.Stats.HealingPower] = STAT_SPELLHEALING
 L[StatLogic.Stats.ManaRegen] = "Regen.Mana"
