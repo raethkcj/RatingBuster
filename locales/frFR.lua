@@ -49,6 +49,7 @@ L["Options for Rating display"] = "Sélectionne les différents bonus liés aux 
 -- /rb rating show
 L["Show Rating conversions"] = "Aperçu pourcentage"
 L["Show Rating conversions in tooltips"] = "Ajoute la conversion en pourcentage des différents scores dans les info-bulles des objets.\n\nCette case est requise pour l'affichage des scores détaillés."
+L["Enable integration with Blizzard Reforging UI"] = true
 -- TODO
 -- /rb rating spell
 L["Show Spell Hit/Haste"] = "Toucher/Hâte des sorts"
@@ -514,6 +515,7 @@ L["statList"] = {
 	{pattern = SPELL_STATALL:lower(), id = StatLogic.Stats.AllStats},
 
 	{pattern = "pénétration d'armure", id = StatLogic.Stats.ArmorPenetrationRating},
+	{pattern = "maîtrise", id = StatLogic.Stats.MasteryRating},
 	{pattern = ARMOR:lower(), id = ARMOR},
 	{pattern = "puissance d'attaque", id = ATTACK_POWER},
 }
@@ -548,6 +550,7 @@ L["$value% Parry"] = "$value% parer"
 -- (+1.21%, S+0.98%)
 -- (+1.21%, +0.98% S)
 L["$value Spell"] = "$value% Sort"
+L["$value Spell Hit"] = "$value toucher sorts"
 
 L[StatLogic.Stats.HealingPower] = STAT_SPELLHEALING
 L[StatLogic.Stats.ManaRegen] = "Régén. mana (incantation)"
