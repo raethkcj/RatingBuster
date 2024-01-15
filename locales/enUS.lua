@@ -53,6 +53,7 @@ L["Options for Rating display"] = true
 -- /rb rating show
 L["Show Rating conversions"] = true
 L["Show Rating conversions in tooltips"] = true
+L["Enable integration with Blizzard Reforging UI"] = true
 -- /rb rating spell
 L["Show Spell Hit/Haste"] = true
 L["Show Spell Hit/Haste from Hit/Haste Rating"] = true
@@ -531,6 +532,7 @@ L["statList"] = {
 	{pattern = "health", id = nil}, -- Scroll of Enchant Chest - Health (prevents matching Armor)
 
 	{pattern = "armor penetration", id = StatLogic.Stats.ArmorPenetrationRating},
+	{pattern = "mastery", id = StatLogic.Stats.MasteryRating},
 	{pattern = ARMOR:lower(), id = ARMOR},
 }
 -------------------------
@@ -564,6 +566,7 @@ L["$value% Parry"] = true
 -- (+1.21%, S+0.98%)
 -- (+1.21%, +0.98% S)
 L["$value Spell"] = true
+L["$value Spell Hit"] = true
 
 L[StatLogic.Stats.HealingPower] = STAT_SPELLHEALING
 L[StatLogic.Stats.ManaRegen] = "Mana Regen"
