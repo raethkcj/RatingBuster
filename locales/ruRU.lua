@@ -36,24 +36,6 @@ L["Shows the Options Window"] = "Показать окно настроек"
 -- /rb statmod
 L["Enable Stat Mods"] = "Включить модуль статистики"
 L["Enable support for Stat Mods"] = "Включает поддержку модуля статистики"
--- /rb subtract_equip
---L["Enable Subtract Equipped Stats"] = ""
---L["Enable for more accurate calculation of Mana Regen from Intellect and Spirit, and diminishing stats like Dodge, Parry, Resilience"] = ""
--- /rb usereqlv
-L["Use required level"] = "Рассчет для мин. уровня"
-L["Calculate using the required level if you are below the required level"] = "Рассчитывать статы исходя из минимально необходимого для надевания предмета уровня, если вы ниже этого уровня"
--- /rb level
-L["Set level"] = "Задать уровень"
-L["Set the level used in calculations (0 = your level)"] = "Задать уровень используемый в расчетах (0 - ваш уровень)"
--- /rb ilvlid
---L["Item Level and ID"] = ""
---L["Settings for Item Level and Item ID"] = ""
--- /rb ilvlid coloritemlevel
---L["Colorize Item Level"] = ""
---L["Customize the color of the Item Level text"] = ""
--- /rb ilvlid itemlevelall
---L["Show Item Level on all items"] = ""
---L["Display the Item Level on all items instead of just on equippable items"] = ""
 -- /rb avoidancedr
 L["Enable Avoidance Diminishing Returns"] = "Включить убывания уклонений от удара"
 L["Dodge, Parry, Miss Avoidance values will be calculated using the avoidance deminishing return formula with your current stats"] = "Значения уклонения, парирования, уклонений от удара при расчетах будет использоваться формула убывания (deminishing return) уклонений от удара по вашим текущим данным"
@@ -63,13 +45,23 @@ L["Show the ItemID in tooltips"] = "Показывать ID предмета в 
 -- /rb itemlevel
 L["Show ItemLevel"] = "Уровень предмета"
 L["Show the ItemLevel in tooltips"] = "Показывать уровень предмета в описании"
----------------------------------------------------------------------------
+-- /rb usereqlv
+L["Use required level"] = "Рассчет для мин. уровня"
+L["Calculate using the required level if you are below the required level"] = "Рассчитывать статы исходя из минимально необходимого для надевания предмета уровня, если вы ниже этого уровня"
+-- /rb level
+L["Set level"] = "Задать уровень"
+L["Set the level used in calculations (0 = your level)"] = "Задать уровень используемый в расчетах (0 - ваш уровень)"
+-- /rb color
+L["Change text color"] = "Изменить цвет текста"
+L["Changes the color of added text"] = "Изменить цвет добавляемого текста"
+L["Change number color"] = "Изменить цвет значений"
 -- /rb rating
 L["Rating"] = "Рейтинги"
 L["Options for Rating display"] = "Настройки отображения рейтингов"
 -- /rb rating show
-L["Show Rating Conversions"] = "Конвертация рейтингов"
-L["Select when to show rating conversions in tooltips. Modifier keys needs to be pressed before showing the tooltips."] = "Выберите когда показывать конвертацию рейтингов в подсказке. Модификатор клавиш должен быть нажатым перед показом подсказки."
+L["Show Rating conversions"] = "Конвертация рейтингов"
+L["Show Rating conversions in tooltips"] = "Выберите когда показывать конвертацию рейтингов в подсказке"
+L["Enable integration with Blizzard Reforging UI"] = true
 -- /rb rating spell
 L["Show Spell Hit/Haste"] = "Меткость/скорость заклинаний"
 L["Show Spell Hit/Haste from Hit/Haste Rating"] = "Показывать меткость/скорость заклинаний из рейтинга меткости/скорость"
@@ -82,12 +74,6 @@ L["Show detailed text for Resilience and Expertise conversions"] = "Показы
 -- /rb rating exp
 L["Expertise breakdown"] = "Разбивать уровень мастерства"
 L["Convert Expertise into Dodge Neglect and Parry Neglect"] = "Разбивать уровень мастерства на игнорирование уклонения и парирования"
-
----------------------------------------------------------------------------
--- /rb rating color
-L["Change text color"] = "Изменить цвет текста"
-L["Changes the color of added text"] = "Изменить цвет добавляемого текста"
-L["Change number color"] = "Изменить цвет значений"
 ---------------------------------------------------------------------------
 -- /rb stat
 L["Stat Breakdown"] = "Конвертация статов"
@@ -135,32 +121,14 @@ L["Changes the display of Attack Power"] = "Changes the display of Attack Power"
 L["Stat Summary"] = "Итого:"
 L["Options for stat summary"] = "Итоги по статам"
 -- /rb sum show
-L["Show Stat Summary"] = "Показывать суммарные изменения"
-L["Select when to show stat summary in tooltips. Modifier keys needs to be pressed before showing the tooltips."] = "Выберите когда показывать суммарные изменения в подсказке. Модификатор клавиш должен быть нажатым перед показом подсказки."
+L["Show stat summary"] = "Показывать суммарные изменения"
+L["Show stat summary in tooltips"] = "Выберите когда показывать суммарные изменения в подсказке"
 -- /rb sum ignore
 L["Ignore settings"] = "Настройки игнорирования"
 L["Ignore stuff when calculating the stat summary"] = "Настройка игнорирования при расчете итога"
 -- /rb sum ignore unused
 L["Ignore unused item types"] = "Игнорирование неподходящих предметов"
-L["Hide stat summary for undesirable items"] = "Скрыть итоги по статам для неподходящих предметов"
--- /rb sum ignore quality
-L["Minimum Item Quality"] = "Мин. качество предмета"
-L["Show stat summary only for selected quality items and up"] = "Показывать итоги по статам только для выбранного качества предметов и выше"
--- /rb sum ignore armor
-L["Armor Types"] = "Тип брони"
-L["Select armor types you want to ignore"] = "Выберите тип брони, который будет игнорироваться"
--- /rb sum ignore armor cloth
-L["Ignore Cloth"] = "Игнорировать ткань"
-L["Hide stat summary for all cloth armor"] = "Скрыть итоги по статам для всех доспехов из ткани"
--- /rb sum ignore armor leather
-L["Ignore Leather"] = "Игнорированть кожу"
-L["Hide stat summary for all leather armor"] = "Скрыть итоги по статам для всех доспехов из кожы"
--- /rb sum ignore armor mail
-L["Ignore Mail"] = "Игнорированть кальчугу"
-L["Hide stat summary for all mail armor"] = "Скрыть итоги по статам для всех доспехов из кальчуги"
--- /rb sum ignore armor plate
-L["Ignore Plate"] = "Игнорированть латы"
-L["Hide stat summary for all plate armor"] = "Скрыть итоги по статам для всех доспехов из лат"
+L["Show stat summary only for highest level armor type and items you can use with uncommon quality and up"] = "Скрыть итоги по статам для неподходящих предметов"
 -- /rb sum ignore equipped
 L["Ignore equipped items"] = "Не показывать для надетых вещей"
 L["Hide stat summary for equipped items"] = "Не показывать для надетых вещей"
@@ -173,7 +141,7 @@ L["Ignore gems on items when calculating the stat summary"] = "Игнориро�
 L["Ignore extra sockets"] = true
 L["Ignore sockets from professions or consumable items when calculating the stat summary"] = true
 -- /rb sum diffstyle
-L["Display Style For Diff Value"] = "Стиль отображения отличия значений"
+L["Display Style For diff value"] = "Стиль отображения отличия значений"
 L["Display diff values in the main tooltip or only in compare tooltips"] = "Отображения различных значений в главной подсказке или только в сравнительных подсказках"
 L["Hide Blizzard Item Comparisons"] = "Скрыть сравнение от Blizzard"
 L["Disable Blizzard stat change summary when using the built-in comparison tooltip"] = "Отключить сравнение предметов Blizzard, если используется метод сравнения RatingBuster"
@@ -205,7 +173,7 @@ L["Calculate the stat difference for the item and equipped items"] = "Рассч
 L["Sort StatSummary alphabetically"] = "Сортировать статы в алфавитном порядке"
 L["Enable to sort StatSummary alphabetically, disable to sort according to stat type(basic, physical, spell, tank)"] = "Если включено - то по алфавиту, если выключено, то по смыслу (базовые, физические, заклинания, танковые)"
 -- /rb sum avoidhasblock
-L["Include Block Chance In Avoidance Summary"] = "Включать вероятность блока в итоге избежаний"
+L["Include block chance In Avoidance summary"] = "Включать вероятность блока в итоге избежаний"
 L["Enable to include block chance in Avoidance summary, Disable for only dodge, parry, miss"] = "Включать вероятность блока в итоге избежаний, отключение только для уклона, парирования, промоха"
 ---------------------------------------------------------------------------
 -- /rb sum basic
@@ -512,15 +480,15 @@ L["Reduced Physical Damage Taken"] = true
 --
 -- Tip2: The strings are passed into string.find, so you should escape the magic characters ^$()%.[]*+-? with a %
 L["numberPatterns"] = {
-	{pattern = " на (%d+)%f[^%d%%]", addInfo = "AfterNumber", space = " ", },
+	{pattern = " на (%d+)%f[^%d%%]", addInfo = "AfterNumber"},
 	{pattern = "([%+%-]%d+)%f[^%d%%] к", addInfo = "AfterStat",},
-	{pattern = " увеличена на (%d+)", addInfo = "AfterNumber", space = " ", },
-	{pattern = "(%d+) к ", addInfo = "AfterNumber", space = " ", }, -- тест
-	{pattern = "увеличение (%d+)", addInfo = "AfterNumber", space = " ", }, -- for "grant you xx stat" type pattern, ex: Quel'Serrar, Assassination Armor set
-	{pattern = "дополнительно (%d+)", addInfo = "AfterNumber", space = " ", }, -- for "add xx stat" type pattern, ex: Adamantite Sharpening Stone
+	{pattern = " увеличена на (%d+)", addInfo = "AfterNumber"},
+	{pattern = "(%d+) к ", addInfo = "AfterNumber"}, -- тест
+	{pattern = "увеличение (%d+)", addInfo = "AfterNumber"}, -- for "grant you xx stat" type pattern, ex: Quel'Serrar, Assassination Armor set
+	{pattern = "дополнительно (%d+)", addInfo = "AfterNumber"}, -- for "add xx stat" type pattern, ex: Adamantite Sharpening Stone
 	-- Added [^%%] so that it doesn't match strings like "Increases healing by up to 10% of your total Intellect." [Whitemend Pants] ID: 24261
 	-- Added [^|] so that it doesn't match enchant strings (JewelTips)
-	{pattern = "(%d+)%f[^%d%%|]", addInfo = "AfterNumber", space = " ", }, -- [發光的暗影卓奈石] +6法術傷害及5耐力
+	{pattern = "(%d+)%f[^%d%%|]", addInfo = "AfterNumber"}, -- [發光的暗影卓奈石] +6法術傷害及5耐力
 }
 -- Exclusions are used to ignore instances of separators that should not get separated
 L["exclusions"] = {
@@ -643,16 +611,11 @@ L["statList"] = {
 	{pattern = "рейтингу скорости", id = StatLogic.Stats.HasteRating},
 	{pattern = "рейтинга скорости", id = StatLogic.Stats.HasteRating},
 
-	{pattern = "рейтинг мастерства", id = StatLogic.Stats.ExpertiseRating},
-	{pattern = "рейтингу мастерства", id = StatLogic.Stats.ExpertiseRating},
-	{pattern = "рейтинга мастерства", id = StatLogic.Stats.ExpertiseRating},
-	{pattern = "уровень мастерства", id = StatLogic.Stats.ExpertiseRating},
+	{pattern = "мастерства", id = StatLogic.Stats.ExpertiseRating},
 
 	{pattern = SPELL_STATALL:lower(), id = StatLogic.Stats.AllStats},
 
-	{pattern = "рейтинг искусности", id = StatLogic.Stats.MasteryRating},
-	{pattern = "рейтингу искусности", id = StatLogic.Stats.MasteryRating},
-	{pattern = "рейтинга искусности", id = StatLogic.Stats.MasteryRating},
+	{pattern = "искусност", id = StatLogic.Stats.MasteryRating},
 }
 -------------------------
 -- Added info patterns --
@@ -686,6 +649,7 @@ L["$value Dmg Taken"] = true
 -- (+1.21%, S+0.98%)
 -- (+1.21%, +0.98% S)
 L["$value Spell"] = "$value для заклинаний"
+L["$value Spell Hit"] = "$value метк. закл."
 
 L[StatLogic.Stats.HealingPower] = "Исцеление"
 L[StatLogic.Stats.ManaRegen] = "Восполнение маны"
