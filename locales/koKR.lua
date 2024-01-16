@@ -69,10 +69,10 @@ L["Defense breakdown"] = "방어 숙련 세분화"
 L["Convert Defense into Crit Avoidance Hit Avoidance, Dodge, Parry and Block"] = "치명타 공격 회피, 공격 회피, 회피, 무기 막기, 방패 막기 등으로 방어 숙련을 세분화합니다."
 -- /rb rating wpn
 L["Weapon Skill breakdown"] = "무기 숙련 세분화"
-L["Convert Weapon Skill into Crit Hit, Dodge Neglect, Parry Neglect and Block Neglect"] = "치명타, 공격, 회피 무시, 무기 막기 무시, 방패 막기 무시 등으로 무기 숙련를 세분화합니다."
+L["Convert Weapon Skill into Crit Hit, Dodge Reduction, Parry Reduction and Block Reduction"] = "치명타, 공격, 회피 무시, 무기 막기 무시, 방패 막기 무시 등으로 무기 숙련를 세분화합니다."
 -- /rb rating exp -- 2.3.0
 L["Expertise breakdown"] = "숙련 세분화"
-L["Convert Expertise into Dodge Neglect and Parry Neglect"] = "회피 무시와 무기막기 무시 등으로 숙련을 세분화 합니다."
+L["Convert Expertise into Dodge Reduction and Parry Reduction"] = "회피 무시와 무기막기 무시 등으로 숙련을 세분화 합니다."
 
 -- /rb stat
 --["Stat Breakdown"] = "능력치",
@@ -184,6 +184,7 @@ L["Choose spell damage and healing stats for summary"] = "주문 공격려과 �
 -- /rb sum tank
 L["Stat - Tank"] = "능력치 - 탱크"
 L["Choose tank stats for summary"] = "탱크 능력치를 선택합니다."
+L["Sum %s"] = "%s"
 -- /rb sum stat hp
 L["Sum Health"] = "생명력"
 L["Health <- Health Stamina"] = "생명력 <- 생명력, 체력"
@@ -289,15 +290,15 @@ L["Hit Avoidance <- Defense Rating"] = "공격 회피 <- 방어 숙련도"
 -- /rb sum stat avoidcrit
 L["Sum Crit Avoidance"] = "치명타 공격 회피"
 L["Crit Avoidance <- Defense Rating Resilience"] = "치명타 공격 회피 <- 방어 숙련도, 탄력도"
--- /rb sum stat neglectdodge
-L["Sum Dodge Neglect"] = "회피 무시"
-L["Dodge Neglect <- Expertise Weapon Skill Rating"] = "회피 무시 <- 숙련도, 무기 숙련도" -- 2.3.0
--- /rb sum stat neglectparry
-L["Sum Parry Neglect"] = "무기 막기 무시"
-L["Parry Neglect <- Expertise Weapon Skill Rating"] = "무기 막기 무시 <- 숙련도, 무기 숙련도" -- 2.3.0
--- /rb sum stat neglectblock
-L["Sum Block Neglect"] = "방패 막기 무시"
-L["Block Neglect <- Weapon Skill Rating"] = "방패 막기 무시 <- 무기 숙련도"
+-- /rb sum stat Reductiondodge
+L["Sum Dodge Reduction"] = "회피 무시"
+L["Dodge Reduction <- Expertise Weapon Skill Rating"] = "회피 무시 <- 숙련도, 무기 숙련도" -- 2.3.0
+-- /rb sum stat Reductionparry
+L["Sum Parry Reduction"] = "무기 막기 무시"
+L["Parry Reduction <- Expertise Weapon Skill Rating"] = "무기 막기 무시 <- 숙련도, 무기 숙련도" -- 2.3.0
+-- /rb sum stat Reductionblock
+L["Sum Block Reduction"] = "방패 막기 무시"
+L["Block Reduction <- Weapon Skill Rating"] = "방패 막기 무시 <- 무기 숙련도"
 -- /rb sum stat resarcane
 L["Sum Arcane Resistance"] = "비전 저항력"
 L["Arcane Resistance Summary"] = "비전 저항력 요약"
@@ -645,8 +646,8 @@ L[StatLogic.Stats.ArmorPenetration] = "방어구 관통(%)"
 L[StatLogic.Stats.Mastery] = STAT_MASTERY
 -- Tier3 Stats - Stats that only show up when broken down from a Tier2 stat
 -- Defense -> Crit Avoidance, Hit Avoidance, Dodge, Parry, Block
--- Weapon Skill -> Crit, Hit, Dodge Neglect, Parry Neglect, Block Neglect
--- Expertise -> Dodge Neglect, Parry Neglect
+-- Weapon Skill -> Crit, Hit, Dodge Reduction, Parry Reduction, Block Reduction
+-- Expertise -> Dodge Reduction, Parry Reduction
 L[StatLogic.Stats.DodgeReduction] = DODGE.." 무시(%)"
 L[StatLogic.Stats.ParryReduction] = PARRY.." 무시(%)"
 -- Misc Stats

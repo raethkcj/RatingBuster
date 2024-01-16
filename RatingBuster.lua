@@ -14,8 +14,8 @@ local StatLogic = LibStub("StatLogic")
 local GSM = function(...)
 	return StatLogic:GetStatMod(...)
 end
----@class RatingBusterLocale
 local L = LibStub("AceLocale-3.0"):GetLocale("RatingBuster")
+---@cast L RatingBusterLocale
 
 --------------------
 -- AceAddon Setup --
@@ -249,12 +249,12 @@ local options = {
 				wpnBreakDown = {
 					type = 'toggle',
 					name = L["Weapon Skill breakdown"],
-					desc = L["Convert Weapon Skill into Crit, Hit, Dodge Neglect, Parry Neglect and Block Neglect"],
+					desc = L["Convert Weapon Skill into Crit, Hit, Dodge Reduction, Parry Reduction and Block Reduction"],
 				},
 				expBreakDown = {
 					type = 'toggle',
 					name = L["Expertise breakdown"],
-					desc = L["Convert Expertise into Dodge Neglect and Parry Neglect"],
+					desc = L["Convert Expertise into Dodge Reduction and Parry Reduction"],
 				},
 				enableAvoidanceDiminishingReturns = {
 					type = 'toggle',
@@ -504,67 +504,67 @@ local options = {
 					args = {
 						sumHP = {
 							type = 'toggle',
-							name = L["Sum Health"],
+							name = L["Sum %s"]:format(L[StatLogic.Stats.Health]),
 							desc = L["Health <- Health, Stamina"],
 							order = 1,
 						},
 						sumMP = {
 							type = 'toggle',
-							name = L["Sum Mana"],
+							name = L["Sum %s"]:format(L[StatLogic.Stats.Mana]),
 							desc = L["Mana <- Mana, Intellect"],
 							order = 2,
 						},
 						sumMP5 = {
 							type = 'toggle',
-							name = L["Sum Mana Regen"],
+							name = L["Sum %s"]:format(L[StatLogic.Stats.ManaRegen]),
 							desc = L["Mana Regen <- Mana Regen, Spirit"],
 							order = 3,
 						},
 						sumMP5NC = {
 							type = 'toggle',
-							name = L["Sum Mana Regen while not casting"],
+							name = L["Sum %s"]:format(L[StatLogic.Stats.ManaRegenNotCasting]),
 							desc = L["Mana Regen while not casting <- Spirit"],
 							order = 4,
 						},
 						sumHP5 = {
 							type = 'toggle',
-							name = L["Sum Health Regen"],
+							name = L["Sum %s"]:format(L[StatLogic.Stats.HealthRegen]),
 							desc = L["Health Regen <- Health Regen"],
 							order = 5,
 						},
 						sumHP5OC = {
 							type = 'toggle',
-							name = L["Sum Health Regen when out of combat"],
+							name = L["Sum %s"]:format(L[StatLogic.Stats.HealthRegenOutOfCombat]),
 							desc = L["Health Regen when out of combat <- Spirit"],
 							order = 6,
 						},
 						sumStr = {
 							type = 'toggle',
-							name = L["Sum Strength"],
+							name = L["Sum %s"]:format(L[StatLogic.Stats.Strength]),
 							desc = L["Strength Summary"],
 							order = 7,
 						},
 						sumAgi = {
 							type = 'toggle',
-							name = L["Sum Agility"],
+							name = L["Sum %s"]:format(L[StatLogic.Stats.Agility]),
 							desc = L["Agility Summary"],
 							order = 8,
 						},
 						sumSta = {
 							type = 'toggle',
-							name = L["Sum Stamina"],
+							name = L["Sum %s"]:format(L[StatLogic.Stats.Stamina]),
 							desc = L["Stamina Summary"],
 							order = 9,
 						},
 						sumInt = {
 							type = 'toggle',
-							name = L["Sum Intellect"],
+							name = L["Sum %s"]:format(L[StatLogic.Stats.Intellect]),
 							desc = L["Intellect Summary"],
 							order = 10,
 						},
 						sumSpi = {
 							type = 'toggle',
-							name = L["Sum Spirit"],
+							name = L["Sum %s"]:format(L[StatLogic.Stats.Spirit]),
 							desc = L["Spirit Summary"],
 							order = 11,
 						},
@@ -577,50 +577,50 @@ local options = {
 					args = {
 						sumAP = {
 							type = 'toggle',
-							name = L["Sum Attack Power"],
+							name = L["Sum %s"]:format(L[StatLogic.Stats.AttackPower]),
 							desc = L["Attack Power <- Attack Power, Strength, Agility"],
 							width = "double",
 							order = 1,
 						},
 						sumHit = {
 							type = 'toggle',
-							name = L["Sum Hit Chance"],
+							name = L["Sum %s"]:format(L[StatLogic.Stats.MeleeHit]),
 							desc = L["Hit Chance <- Hit Rating, Weapon Skill Rating"],
 							order = 2,
 						},
 						sumHitRating = {
 							type = 'toggle',
-							name = L["Sum Hit Rating"],
+							name = L["Sum %s"]:format(L[StatLogic.Stats.MeleeHitRating]),
 							desc = L["Hit Rating Summary"],
 							order = 3,
 						},
 						sumCrit = {
 							type = 'toggle',
-							name = L["Sum Crit Chance"],
+							name = L["Sum %s"]:format(L[StatLogic.Stats.MeleeCrit]),
 							desc = L["Crit Chance <- Crit Rating, Agility, Weapon Skill Rating"],
 							order = 4,
 						},
 						sumCritRating = {
 							type = 'toggle',
-							name = L["Sum Crit Rating"],
+							name = L["Sum %s"]:format(L[StatLogic.Stats.MeleeCritRating]),
 							desc = L["Crit Rating Summary"],
 							order = 5,
 						},
 						sumHaste = {
 							type = 'toggle',
-							name = L["Sum Haste"],
+							name = L["Sum %s"]:format(L[StatLogic.Stats.MeleeHaste]),
 							desc = L["Haste <- Haste Rating"],
 							order = 6,
 						},
 						sumHasteRating = {
 							type = 'toggle',
-							name = L["Sum Haste Rating"],
+							name = L["Sum %s"]:format(L[StatLogic.Stats.MeleeHasteRating]),
 							desc = L["Haste Rating Summary"],
 							order = 7,
 						},
 						sumIgnoreArmor = {
 							type = 'toggle',
-							name = L["Sum Ignore Armor"],
+							name = L["Sum %s"]:format(L[StatLogic.Stats.IgnoreArmor]),
 							desc = L["Ignore Armor Summary"],
 							hidden = function()
 								return StatLogic:RatingExists(StatLogic.Stats.ArmorPenetrationRating)
@@ -629,7 +629,7 @@ local options = {
 						},
 						sumArmorPenetration = {
 							type = 'toggle',
-							name = L["Sum Armor Penetration"],
+							name = L["Sum %s"]:format(L[StatLogic.Stats.ArmorPenetration]),
 							desc = L["Armor Penetration Summary"],
 							hidden = function()
 								return not StatLogic:RatingExists(StatLogic.Stats.ArmorPenetrationRating)
@@ -638,7 +638,7 @@ local options = {
 						},
 						sumArmorPenetrationRating = {
 							type = 'toggle',
-							name = L["Sum Armor Penetration Rating"],
+							name = L["Sum %s"]:format(L[StatLogic.Stats.ArmorPenetrationRating]),
 							desc = L["Armor Penetration Rating Summary"],
 							hidden = function()
 								return not StatLogic:RatingExists(StatLogic.Stats.ArmorPenetrationRating)
@@ -652,44 +652,44 @@ local options = {
 						},
 						sumRAP = {
 							type = 'toggle',
-							name = L["Sum Ranged Attack Power"],
+							name = L["Sum %s"]:format(L[StatLogic.Stats.RangedAttackPower]),
 							desc = L["Ranged Attack Power <- Ranged Attack Power, Intellect, Attack Power, Strength, Agility"],
 							width = "double",
 							order = 12,
 						},
 						sumRangedHit = {
 							type = 'toggle',
-							name = L["Sum Ranged Hit Chance"],
+							name = L["Sum %s"]:format(L[StatLogic.Stats.RangedHit]),
 							desc = L["Ranged Hit Chance <- Hit Rating, Weapon Skill Rating, Ranged Hit Rating"],
 							order = 13,
 						},
 						sumRangedHitRating = {
 							type = 'toggle',
-							name = L["Sum Ranged Hit Rating"],
+							name = L["Sum %s"]:format(L[StatLogic.Stats.RangedHitRating]),
 							desc = L["Ranged Hit Rating Summary"],
 							order = 14,
 						},
 						sumRangedCrit = {
 							type = 'toggle',
-							name = L["Sum Ranged Crit Chance"],
+							name = L["Sum %s"]:format(L[StatLogic.Stats.RangedCrit]),
 							desc = L["Ranged Crit Chance <- Crit Rating, Agility, Weapon Skill Rating, Ranged Crit Rating"],
 							order = 15,
 						},
 						sumRangedCritRating = {
 							type = 'toggle',
-							name = L["Sum Ranged Crit Rating"],
+							name = L["Sum %s"]:format(L[StatLogic.Stats.RangedCritRating]),
 							desc = L["Ranged Crit Rating Summary"],
 							order = 16,
 						},
 						sumRangedHaste = {
 							type = 'toggle',
-							name = L["Sum Ranged Haste"],
+							name = L["Sum %s"]:format(L[StatLogic.Stats.RangedHaste]),
 							desc = L["Ranged Haste <- Haste Rating, Ranged Haste Rating"],
 							order = 17,
 						},
 						sumRangedHasteRating = {
 							type = 'toggle',
-							name = L["Sum Ranged Haste Rating"],
+							name = L["Sum %s"]:format(L[StatLogic.Stats.RangedHasteRating]),
 							desc = L["Ranged Haste Rating Summary"],
 							order = 18,
 						},
@@ -700,45 +700,39 @@ local options = {
 						},
 						sumWeaponAverageDamage = {
 							type = 'toggle',
-							name = L["Sum Weapon Average Damage"],
+							name = L["Sum %s"]:format(L[StatLogic.Stats.AverageWeaponDamage]),
 							desc = L["Weapon Average Damage Summary"],
 							order = 20,
 						},
 						sumWeaponDPS = {
 							type = 'toggle',
-							name = L["Sum Weapon DPS"],
+							name = L["Sum %s"]:format(L[StatLogic.Stats.WeaponDPS]),
 							desc = L["Weapon DPS Summary"],
 							order = 21,
 						},
 						sumDodgeNeglect = {
 							type = 'toggle',
-							name = L["Sum Dodge Neglect"],
-							desc = L["Dodge Neglect <- Expertise, Weapon Skill Rating"],
+							name = L["Sum %s"]:format(L[StatLogic.Stats.DodgeReduction]),
+							desc = L["Dodge Reduction <- Expertise, Weapon Skill Rating"],
 							order = 22,
 						},
 						sumParryNeglect = {
 							type = 'toggle',
-							name = L["Sum Parry Neglect"],
-							desc = L["Parry Neglect <- Expertise, Weapon Skill Rating"],
+							name = L["Sum %s"]:format(L[StatLogic.Stats.ParryReduction]),
+							desc = L["Parry Reduction <- Expertise, Weapon Skill Rating"],
 							order = 23,
-						},
-						sumBlockNeglect = {
-							type = 'toggle',
-							name = L["Sum Block Neglect"],
-							desc = L["Block Neglect <- Weapon Skill Rating"],
-							order = 24,
 						},
 						sumWeaponSkill = {
 							type = 'toggle',
-							name = L["Sum Weapon Skill"],
+							name = L["Sum %s"]:format(L[StatLogic.Stats.WeaponSkill]),
 							desc = L["Weapon Skill <- Weapon Skill Rating"],
-							order = 25,
+							order = 24,
 						},
 						sumExpertise = {
 							type = 'toggle',
-							name = L["Sum Expertise"],
+							name = L["Sum %s"]:format(L[StatLogic.Stats.Expertise]),
 							desc = L["Expertise <- Expertise Rating"],
-							order = 26,
+							order = 25,
 						},
 					},
 				},
@@ -749,77 +743,77 @@ local options = {
 					args = {
 						sumSpellDmg = {
 							type = 'toggle',
-							name = L["Sum Spell Damage"],
+							name = L["Sum %s"]:format(L[StatLogic.Stats.SpellDamage]),
 							desc = L["Spell Damage <- Spell Damage, Intellect, Spirit, Stamina"],
 						},
 						sumHolyDmg = {
 							type = 'toggle',
-							name = L["Sum Holy Spell Damage"],
+							name = L["Sum %s"]:format(L[StatLogic.Stats.HolyDamage]),
 							desc = L["Holy Spell Damage <- Holy Spell Damage, Spell Damage, Intellect, Spirit"],
 						},
 						sumArcaneDmg = {
 							type = 'toggle',
-							name = L["Sum Arcane Spell Damage"],
+							name = L["Sum %s"]:format(L[StatLogic.Stats.ArcaneDamage]),
 							desc = L["Arcane Spell Damage <- Arcane Spell Damage, Spell Damage, Intellect"],
 						},
 						sumFireDmg = {
 							type = 'toggle',
-							name = L["Sum Fire Spell Damage"],
+							name = L["Sum %s"]:format(L[StatLogic.Stats.FireDamage]),
 							desc = L["Fire Spell Damage <- Fire Spell Damage, Spell Damage, Intellect, Stamina"],
 						},
 						sumNatureDmg = {
 							type = 'toggle',
-							name = L["Sum Nature Spell Damage"],
+							name = L["Sum %s"]:format(L[StatLogic.Stats.NatureDamage]),
 							desc = L["Nature Spell Damage <- Nature Spell Damage, Spell Damage, Intellect"],
 						},
 						sumFrostDmg = {
 							type = 'toggle',
-							name = L["Sum Frost Spell Damage"],
+							name = L["Sum %s"]:format(L[StatLogic.Stats.FrostDamage]),
 							desc = L["Frost Spell Damage <- Frost Spell Damage, Spell Damage, Intellect"],
 						},
 						sumShadowDmg = {
 							type = 'toggle',
-							name = L["Sum Shadow Spell Damage"],
+							name = L["Sum %s"]:format(L[StatLogic.Stats.ShadowDamage]),
 							desc = L["Shadow Spell Damage <- Shadow Spell Damage, Spell Damage, Intellect, Spirit, Stamina"],
 						},
 						sumHealing = {
 							type = 'toggle',
-							name = L["Sum Healing"],
+							name = L["Sum %s"]:format(L[StatLogic.Stats.HealingPower]),
 							desc = L["Healing <- Healing, Intellect, Spirit, Agility, Strength"],
 						},
 						sumSpellHit = {
 							type = 'toggle',
-							name = L["Sum Spell Hit Chance"],
+							name = L["Sum %s"]:format(L[StatLogic.Stats.SpellHit]),
 							desc = L["Spell Hit Chance <- Spell Hit Rating"],
 						},
 						sumSpellHitRating = {
 							type = 'toggle',
-							name = L["Sum Spell Hit Rating"],
+							name = L["Sum %s"]:format(L[StatLogic.Stats.SpellHitRating]),
 							desc = L["Spell Hit Rating Summary"],
 						},
 						sumSpellCrit = {
 							type = 'toggle',
-							name = L["Sum Spell Crit Chance"],
+							name = L["Sum %s"]:format(L[StatLogic.Stats.SpellCrit]),
 							desc = L["Spell Crit Chance <- Spell Crit Rating, Intellect"],
 						},
 						sumSpellCritRating = {
 							type = 'toggle',
-							name = L["Sum Spell Crit Rating"],
+							name = L["Sum %s"]:format(L[StatLogic.Stats.SpellCritRating]),
 							desc = L["Spell Crit Rating Summary"],
 						},
 						sumSpellHaste = {
 							type = 'toggle',
-							name = L["Sum Spell Haste"],
+							name = L["Sum %s"]:format(L[StatLogic.Stats.SpellHaste]),
 							desc = L["Spell Haste <- Spell Haste Rating"],
 						},
 						sumSpellHasteRating = {
 							type = 'toggle',
-							name = L["Sum Spell Haste Rating"],
+							name = L["Sum %s"]:format(L[StatLogic.Stats.SpellHasteRating]),
 							desc = L["Spell Haste Rating Summary"],
 						},
 						sumPenetration = {
 							type = 'toggle',
-							name = L["Sum Penetration"],
+							name = L["Sum %s"]:format(L[StatLogic.Stats.SpellPenetration]),
 							desc = L["Spell Penetration Summary"],
 						},
 					},
@@ -831,7 +825,7 @@ local options = {
 					args = {
 						sumAvoidance = {
 							type = 'toggle',
-							name = L["Sum Avoidance"],
+							name = L["Sum %s"]:format(L[StatLogic.Stats.Avoidance]),
 							desc = L["Avoidance <- Dodge, Parry, MobMiss, Block(Optional)"],
 							order = 1,
 						},
@@ -843,103 +837,103 @@ local options = {
 						},
 						sumDodge = {
 							type = 'toggle',
-							name = L["Sum Dodge Chance"],
+							name = L["Sum %s"]:format(L[StatLogic.Stats.Dodge]),
 							desc = L["Dodge Chance <- Dodge Rating, Agility, Defense Rating"],
 							order = 3,
 						},
 						sumDodgeRating = {
 							type = 'toggle',
-							name = L["Sum Dodge Rating"],
+							name = L["Sum %s"]:format(L[StatLogic.Stats.DodgeRating]),
 							desc = L["Dodge Rating Summary"],
 							order = 4,
 						},
 						sumBlock = {
 							type = 'toggle',
-							name = L["Sum Block Chance"],
+							name = L["Sum %s"]:format(L[StatLogic.Stats.BlockChance]),
 							desc = L["Block Chance <- Block Rating, Defense Rating"],
 							order = 5,
 						},
 						sumBlockRating = {
 							type = 'toggle',
-							name = L["Sum Block Rating"],
+							name = L["Sum %s"]:format(L[StatLogic.Stats.BlockRating]),
 							desc = L["Block Rating Summary"],
 							order = 6,
 						},
 						sumBlockValue = {
 							type = 'toggle',
-							name = L["Sum Block Value"],
+							name = L["Sum %s"]:format(L[StatLogic.Stats.BlockValue]),
 							desc = L["Block Value <- Block Value, Strength"],
 							order = 7,
 						},
 						sumParry = {
 							type = 'toggle',
-							name = L["Sum Parry Chance"],
+							name = L["Sum %s"]:format(L[StatLogic.Stats.Parry]),
 							desc = L["Parry Chance <- Parry Rating, Defense Rating"],
 							order = 8,
 						},
 						sumParryRating = {
 							type = 'toggle',
-							name = L["Sum Parry Rating"],
+							name = L["Sum %s"]:format(L[StatLogic.Stats.ParryRating]),
 							desc = L["Parry Rating Summary"],
 							order = 9,
 						},
 						sumHitAvoid = {
 							type = 'toggle',
-							name = L["Sum Hit Avoidance"],
+							name = L["Sum %s"]:format(L[StatLogic.Stats.Miss]),
 							desc = L["Hit Avoidance <- Defense Rating"],
 							order = 10,
 						},
 						sumArmor = {
 							type = 'toggle',
-							name = L["Sum Armor"],
+							name = L["Sum %s"]:format(L[StatLogic.Stats.Armor]),
 							desc = L["Armor <- Armor from items, Armor from bonuses, Agility, Intellect"],
 							order = 11,
 						},
 						sumDefense = {
 							type = 'toggle',
-							name = L["Sum Defense"],
+							name = L["Sum %s"]:format(L[StatLogic.Stats.Defense]),
 							desc = L["Defense <- Defense Rating"],
 							order = 12,
 						},
 						sumCritAvoid = {
 							type = 'toggle',
-							name = L["Sum Crit Avoidance"],
+							name = L["Sum %s"]:format(L[StatLogic.Stats.CritAvoidance]),
 							desc = L["Crit Avoidance <- Defense Rating, Resilience"],
 							order = 13,
 						},
 						sumResilience = {
 							type = 'toggle',
-							name = L["Sum Resilience"],
+							name = L["Sum %s"]:format(L[StatLogic.Stats.ResilienceRating]),
 							desc = L["Resilience Summary"],
 							order = 14,
 						},
 						sumArcaneResist = {
 							type = 'toggle',
-							name = L["Sum Arcane Resistance"],
+							name = L["Sum %s"]:format(L[StatLogic.Stats.ArcaneResistance]),
 							desc = L["Arcane Resistance Summary"],
 							order = 15,
 						},
 						sumFireResist = {
 							type = 'toggle',
-							name = L["Sum Fire Resistance"],
+							name = L["Sum %s"]:format(L[StatLogic.Stats.FireResistance]),
 							desc = L["Fire Resistance Summary"],
 							order = 16,
 						},
 						sumNatureResist = {
 							type = 'toggle',
-							name = L["Sum Nature Resistance"],
+							name = L["Sum %s"]:format(L[StatLogic.Stats.NatureResistance]),
 							desc = L["Nature Resistance Summary"],
 							order = 17,
 						},
 						sumFrostResist = {
 							type = 'toggle',
-							name = L["Sum Frost Resistance"],
+							name = L["Sum %s"]:format(L[StatLogic.Stats.FrostResistance]),
 							desc = L["Frost Resistance Summary"],
 							order = 18,
 						},
 						sumShadowResist = {
 							type = 'toggle',
-							name = L["Sum Shadow Resistance"],
+							name = L["Sum %s"]:format(L[StatLogic.Stats.ShadowResistance]),
 							desc = L["Shadow Resistance Summary"],
 							order = 19,
 						},
@@ -1140,7 +1134,6 @@ local defaults = {
 		sumWeaponSkill = false,
 		sumDodgeNeglect = false,
 		sumParryNeglect = false,
-		sumBlockNeglect = false,
 		-- Spell
 		sumSpellDmg = false,
 		sumArcaneDmg = false,
@@ -1798,8 +1791,8 @@ function RatingBuster.ProcessTooltip(tooltip)
 	-- Block Chance - BLOCK_RATING, DEFENSE_RATING
 	-- Hit Avoidance - DEFENSE_RATING, MELEE_HIT_AVOID_RATING
 	-- Crit Avoidance - DEFENSE_RATING, RESILIENCE_RATING, MELEE_CRIT_AVOID_RATING
-	-- Dodge Neglect - EXPERTISE_RATING
-	-- Parry Neglect - EXPERTISE_RATING
+	-- Dodge Reduction - EXPERTISE_RATING
+	-- Parry Reduction - EXPERTISE_RATING
 	---------------------
 	-- Composite Stats --
 	---------------------
@@ -2812,7 +2805,7 @@ local summaryCalcData = {
 			return sum[StatLogic.Stats.ExpertiseRating]
 		end,
 	},
-	-- Dodge Neglect - EXPERTISE_RATING, WEAPON_SKILL
+	-- Dodge Reduction - EXPERTISE_RATING, WEAPON_SKILL
 	{
 		option = "sumDodgeNeglect",
 		name = StatLogic.Stats.DodgeReduction,
@@ -2822,7 +2815,7 @@ local summaryCalcData = {
 		end,
 		ispercent = true,
 	},
-	-- Parry Neglect - EXPERTISE_RATING
+	-- Parry Reduction - EXPERTISE_RATING
 	{
 		option = "sumParryNeglect",
 		name = StatLogic.Stats.ParryReduction,

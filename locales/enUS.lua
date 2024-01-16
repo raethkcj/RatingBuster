@@ -13,6 +13,9 @@ addon.tocversion = select(4, GetBuildInfo())
 ---@field exclusions table
 ---@field separators table
 ---@field statList table
+---@field [string] string
+
+---@class RatingBusterDefaultLocale : RatingBusterLocale
 local L = LibStub("AceLocale-3.0"):NewLocale("RatingBuster", "enUS", true)
 L["RatingBuster Options"] = true
 local StatLogic = LibStub("StatLogic")
@@ -68,10 +71,10 @@ L["Defense breakdown"] = true
 L["Convert Defense into Crit Avoidance, Hit Avoidance, Dodge, Parry and Block"] = true
 -- /rb rating wpn
 L["Weapon Skill breakdown"] = true
-L["Convert Weapon Skill into Crit, Hit, Dodge Neglect, Parry Neglect and Block Neglect"] = true
+L["Convert Weapon Skill into Crit, Hit, Dodge Reduction, Parry Reduction and Block Reduction"] = true
 -- /rb rating exp -- 2.3.0
 L["Expertise breakdown"] = true
-L["Convert Expertise into Dodge Neglect and Parry Neglect"] = true
+L["Convert Expertise into Dodge Reduction and Parry Reduction"] = true
 
 -- /rb stat
 L["Stat Breakdown"] = true
@@ -187,6 +190,7 @@ L["Choose spell damage and healing stats for summary"] = true
 -- /rb sum tank
 L["Stat - Tank"] = true
 L["Choose tank stats for summary"] = true
+L["Sum %s"] = true
 -- /rb sum stat hp
 L["Sum Health"] = true
 L["Health <- Health, Stamina"] = true
@@ -292,15 +296,15 @@ L["Hit Avoidance <- Defense Rating"] = true
 -- /rb sum stat avoidcrit
 L["Sum Crit Avoidance"] = true
 L["Crit Avoidance <- Defense Rating, Resilience"] = true
--- /rb sum stat neglectdodge
-L["Sum Dodge Neglect"] = true
-L["Dodge Neglect <- Expertise, Weapon Skill Rating"] = true -- 2.3.0
--- /rb sum stat neglectparry
-L["Sum Parry Neglect"] = true
-L["Parry Neglect <- Expertise, Weapon Skill Rating"] = true -- 2.3.0
--- /rb sum stat neglectblock
-L["Sum Block Neglect"] = true
-L["Block Neglect <- Weapon Skill Rating"] = true
+-- /rb sum stat Reductiondodge
+L["Sum Dodge Reduction"] = true
+L["Dodge Reduction <- Expertise, Weapon Skill Rating"] = true -- 2.3.0
+-- /rb sum stat Reductionparry
+L["Sum Parry Reduction"] = true
+L["Parry Reduction <- Expertise, Weapon Skill Rating"] = true -- 2.3.0
+-- /rb sum stat Reductionblock
+L["Sum Block Reduction"] = true
+L["Block Reduction <- Weapon Skill Rating"] = true
 -- /rb sum stat resarcane
 L["Sum Arcane Resistance"] = true
 L["Arcane Resistance Summary"] = true
@@ -665,9 +669,9 @@ L[StatLogic.Stats.ArmorPenetration] = "Armor Penetration(%)"
 L[StatLogic.Stats.Mastery] = STAT_MASTERY
 -- Tier3 Stats - Stats that only show up when broken down from a Tier2 stat
 -- Defense -> Crit Avoidance, Hit Avoidance, Dodge, Parry, Block
--- Weapon Skill -> Crit, Hit, Dodge Neglect, Parry Neglect, Block Neglect
--- Expertise -> Dodge Neglect, Parry Neglect
-L[StatLogic.Stats.DodgeReduction] = DODGE.." Neglect(%)"
-L[StatLogic.Stats.ParryReduction] = PARRY.." Neglect(%)"
+-- Weapon Skill -> Crit, Hit, Dodge Reduction, Parry Reduction, Block Reduction
+-- Expertise -> Dodge Reduction, Parry Reduction
+L[StatLogic.Stats.DodgeReduction] = DODGE.." Reduction(%)"
+L[StatLogic.Stats.ParryReduction] = PARRY.." Reduction(%)"
 -- Misc Stats
 L[StatLogic.Stats.WeaponSkill] = "Weapon "..SKILL

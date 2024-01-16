@@ -70,10 +70,10 @@ L["Defense breakdown"] = "Desglose Defensa"
 L["Convert Defense into Crit Avoidance Hit Avoidance, Dodge, Parry and Block"] = "Convierte Defensa en evitar Critico, evitar Golpe, Esquivar, Parar y Bloquear"
 -- /rb rating wpn
 L["Weapon Skill breakdown"] = "Desglose Habilidad arma"
-L["Convert Weapon Skill into Crit Hit, Dodge Neglect, Parry Neglect and Block Neglect"] = "Convierta Habilidad arma en Critico, Golpe, falla Esquivar, y fallo Bloquear"
+L["Convert Weapon Skill into Crit Hit, Dodge Reduction, Parry Reduction and Block Reduction"] = "Convierta Habilidad arma en Critico, Golpe, falla Esquivar, y fallo Bloquear"
 -- /rb rating exp -- 2.3.0
 L["Expertise breakdown"] = "Desglose Pericia"
-L["Convert Expertise into Dodge Neglect and Parry Neglect"] = "Convierte Pericia en fallo Esquivar y fallo Parar"
+L["Convert Expertise into Dodge Reduction and Parry Reduction"] = "Convierte Pericia en fallo Esquivar y fallo Parar"
 
 -- /rb stat
 --["Stat Breakdown"] = "Estad",
@@ -185,6 +185,7 @@ L["Choose spell damage and healing stats for summary"] = "Escoge las estad. de d
 -- /rb sum tank
 L["Stat - Tank"] = "Estad. - Tanque"
 L["Choose tank stats for summary"] = "Escoge las estad. de tanque para el resumen"
+L["Sum %s"] = "Res. %s"
 -- /rb sum stat hp
 L["Sum Health"] = "Suma salud"
 L["Health <- Health Stamina"] = "Salud <- Salud, Aguante"
@@ -290,15 +291,15 @@ L["Hit Avoidance <- Defense Rating"] = "Elusion golpe <- índice defensa"
 -- /rb sum stat avoidcrit
 L["Sum Crit Avoidance"] = "Res. Elusion Critico"
 L["Crit Avoidance <- Defense Rating Resilience"] = "Elusion Critico <- índice defensa, Temple"
--- /rb sum stat neglectdodge
-L["Sum Dodge Neglect"] = "Res. fallo Esquivar"
-L["Dodge Neglect <- Expertise Weapon Skill Rating"] = "Fallo Esquivar <- Pericia, Índice habilidad arma" -- 2.3.0
--- /rb sum stat neglectparry
-L["Sum Parry Neglect"] = "Res. fallo Parar"
-L["Parry Neglect <- Expertise Weapon Skill Rating"] = "Fallo Parar <- Pericia, Índice habilidad arma" -- 2.3.0
--- /rb sum stat neglectblock
-L["Sum Block Neglect"] = "Res. fallo Bloquear"
-L["Block Neglect <- Weapon Skill Rating"] = "Fallo Bloquear <- Índice habilidad arma"
+-- /rb sum stat Reductiondodge
+L["Sum Dodge Reduction"] = "Res. fallo Esquivar"
+L["Dodge Reduction <- Expertise Weapon Skill Rating"] = "Fallo Esquivar <- Pericia, Índice habilidad arma" -- 2.3.0
+-- /rb sum stat Reductionparry
+L["Sum Parry Reduction"] = "Res. fallo Parar"
+L["Parry Reduction <- Expertise Weapon Skill Rating"] = "Fallo Parar <- Pericia, Índice habilidad arma" -- 2.3.0
+-- /rb sum stat Reductionblock
+L["Sum Block Reduction"] = "Res. fallo Bloquear"
+L["Block Reduction <- Weapon Skill Rating"] = "Fallo Bloquear <- Índice habilidad arma"
 -- /rb sum stat resarcane
 L["Sum Arcane Resistance"] = "Res. Resist. Arcana"
 L["Arcane Resistance Summary"] = "Resumen Resistencia Arcana"
@@ -646,9 +647,9 @@ L[StatLogic.Stats.ArmorPenetration] = "Penetr. Armadura(%)"
 L[StatLogic.Stats.Mastery] = STAT_MASTERY
 -- Tier3 Stats - Stats that only show up when broken down from a Tier2 stat
 -- Defense -> Crit Avoidance, Hit Avoidance, Dodge, Parry, Block
--- Weapon Skill -> Crit, Hit, Dodge Neglect, Parry Neglect, Block Neglect
--- Expertise -> Dodge Neglect, Parry Neglect
-L[StatLogic.Stats.DodgeReduction] = DODGE.." Neglect(%)"
-L[StatLogic.Stats.ParryReduction] = PARRY.." Neglect(%)"
+-- Weapon Skill -> Crit, Hit, Dodge Reduction, Parry Reduction, Block Reduction
+-- Expertise -> Dodge Reduction, Parry Reduction
+L[StatLogic.Stats.DodgeReduction] = DODGE.." Reduction(%)"
+L[StatLogic.Stats.ParryReduction] = PARRY.." Reduction(%)"
 -- Misc Stats
 L[StatLogic.Stats.WeaponSkill] = "Weapon "..SKILL

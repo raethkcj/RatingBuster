@@ -73,7 +73,7 @@ L["Show detailed conversions text"] = "Детальная конвертация
 L["Show detailed text for Resilience and Expertise conversions"] = "Показывать детальную конвертацию рейтингов мастерства и устойчивости"
 -- /rb rating exp
 L["Expertise breakdown"] = "Разбивать уровень мастерства"
-L["Convert Expertise into Dodge Neglect and Parry Neglect"] = "Разбивать уровень мастерства на игнорирование уклонения и парирования"
+L["Convert Expertise into Dodge Reduction and Parry Reduction"] = "Разбивать уровень мастерства на игнорирование уклонения и парирования"
 ---------------------------------------------------------------------------
 -- /rb stat
 L["Stat Breakdown"] = "Конвертация статов"
@@ -339,6 +339,7 @@ L["Spell Haste Rating Summary"] = "Суммировать рейтинг ско�
 -- /rb sum tank
 L["Stat - Tank"] = "Статы - танк"
 L["Choose tank stats for summary"] = "Выбор танковских статов для подсчета"
+L["Sum %s"] = "Сумма %s"
 -- /rb sum tank armor
 L["Sum Armor"] = "Броня"
 L["Armor <- Armor from items and bonuses"] = "Броня с одежды и бонусов -> Броня"
@@ -351,12 +352,12 @@ L["Parry Chance <- Parry Rating"] = "Рейтинг парирования -> В
 -- /rb sum tank block
 L["Sum Block Chance"] = "Вероятность блокирования"
 L["Block Chance <- Block Rating"] = "Рейтинг блокирования -> Вероятность блокирования"
--- /rb sum tank neglectdodge
-L["Sum Dodge Neglect"] = "Сумма игнорирования уклонения"
-L["Dodge Neglect <- Expertise"] = "Игнорирование уклонения <- Мастерство"
--- /rb sum tank neglectparry
-L["Sum Parry Neglect"] = "Сумма игнорирования парирования"
-L["Parry Neglect <- Expertise"] = "Игнорирование парирования <- Мастерство"
+-- /rb sum tank Reductiondodge
+L["Sum Dodge Reduction"] = "Сумма игнорирования уклонения"
+L["Dodge Reduction <- Expertise"] = "Игнорирование уклонения <- Мастерство"
+-- /rb sum tank Reductionparry
+L["Sum Parry Reduction"] = "Сумма игнорирования парирования"
+L["Parry Reduction <- Expertise"] = "Игнорирование парирования <- Мастерство"
 -- /rb sum tank resarcane
 L["Sum Arcane Resistance"] = "Сумма защиты от тайной магии"
 L["Arcane Resistance Summary"] = "Суммировать сопротивление тайной магии"
@@ -748,8 +749,8 @@ L[StatLogic.Stats.ArmorPenetration] = "Пробивание брони (%)"
 L[StatLogic.Stats.Mastery] = STAT_MASTERY
 -- Tier3 Stats - Stats that only show up when broken down from a Tier2 stat
 -- Defense -> Crit Avoidance, Hit Avoidance, Dodge, Parry, Block
--- Weapon Skill -> Crit, Hit, Dodge Neglect, Parry Neglect, Block Neglect
--- Expertise -> Dodge Neglect, Parry Neglect
+-- Weapon Skill -> Crit, Hit, Dodge Reduction, Parry Reduction, Block Reduction
+-- Expertise -> Dodge Reduction, Parry Reduction
 L[StatLogic.Stats.DodgeReduction] = "Снижение вер. противника уклониться (%)"
 L[StatLogic.Stats.ParryReduction] = "Снижение вер. противника парировать (%)"
 -- Misc Stats

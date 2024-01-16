@@ -69,10 +69,10 @@ L["Defense breakdown"] = "Verteidigungsanalyse"
 L["Convert Defense into Crit Avoidance Hit Avoidance, Dodge, Parry and Block"] = "Wandle Verteidigung in Vermeidung von (kritischen) Treffern, Ausweichen, Parieren und Blocken um"
 -- /rb rating wpn
 L["Weapon Skill breakdown"] = "Waffenfertigkeitswertungsanalyse"
-L["Convert Weapon Skill into Crit Hit, Dodge Neglect, Parry Neglect and Block Neglect"] = "Wandle Waffenfertigkeitswertung in (kritische) Treffer, Ausweich-, Parier-, und Blockmissachtung um"
+L["Convert Weapon Skill into Crit Hit, Dodge Reduction, Parry Reduction and Block Reduction"] = "Wandle Waffenfertigkeitswertung in (kritische) Treffer, Ausweich-, Parier-, und Blockmissachtung um"
 -- /rb rating exp -- 2.3.0
 L["Expertise breakdown"] = "Waffenkundeanalyse"
-L["Convert Expertise into Dodge Neglect and Parry Neglect"] = "Wandle Waffenkunde in Ausweich- und Pariermissachtung um"
+L["Convert Expertise into Dodge Reduction and Parry Reduction"] = "Wandle Waffenkunde in Ausweich- und Pariermissachtung um"
 
 -- /rb stat
 --["Stat Breakdown"] = "Werte",
@@ -186,6 +186,7 @@ L["Choose spell damage and healing stats for summary"] = "Wähle Zauberschaden u
 -- /rb sum tank
 L["Stat - Tank"] = "Werte - Tank"
 L["Choose tank stats for summary"] = "Zeige Tankwerte für die Übersicht"
+L["Sum %s"] = "%s zusammenrechnen"
 -- /rb sum stat hp
 L["Sum Health"] = "Leben zusammenrechnen"
 L["Health <- Health Stamina"] = "Leben <- Leben, Ausdauer"
@@ -291,15 +292,15 @@ L["Hit Avoidance <- Defense Rating"] = "Treffervermeidung <- Verteidigungswertun
 -- /rb sum stat avoidcrit
 L["Sum Crit Avoidance"] = "kritische Treffervermeidung"
 L["Crit Avoidance <- Defense Rating Resilience"] = "kritische Treffervermeidung <- Verteidigungswertung, Abhärtungswertung"
--- /rb sum stat neglectdodge
-L["Sum Dodge Neglect"] = "Ausweichmissachtung zusammenrechnen"
-L["Dodge Neglect <- Expertise Weapon Skill Rating"] = "Ausweichmissachtung <- Waffenkunde, Waffenfertigkeitswertung" -- 2.3.0
--- /rb sum stat neglectparry
-L["Sum Parry Neglect"] = "Pariermissachtung zusammenrechnen"
-L["Parry Neglect <- Expertise Weapon Skill Rating"] = "Pariermissachtung <- Waffenkunde, Waffenfertigkeitswertung" -- 2.3.0
--- /rb sum stat neglectblock
-L["Sum Block Neglect"] = "Blockmissachtung"
-L["Block Neglect <- Weapon Skill Rating"] = "Blockmissachtung <- Waffenfertigkeitswertung"
+-- /rb sum stat Reductiondodge
+L["Sum Dodge Reduction"] = "Ausweichmissachtung zusammenrechnen"
+L["Dodge Reduction <- Expertise Weapon Skill Rating"] = "Ausweichmissachtung <- Waffenkunde, Waffenfertigkeitswertung" -- 2.3.0
+-- /rb sum stat Reductionparry
+L["Sum Parry Reduction"] = "Pariermissachtung zusammenrechnen"
+L["Parry Reduction <- Expertise Weapon Skill Rating"] = "Pariermissachtung <- Waffenkunde, Waffenfertigkeitswertung" -- 2.3.0
+-- /rb sum stat Reductionblock
+L["Sum Block Reduction"] = "Blockmissachtung"
+L["Block Reduction <- Weapon Skill Rating"] = "Blockmissachtung <- Waffenfertigkeitswertung"
 -- /rb sum stat resarcane
 L["Sum Arcane Resistance"] = "Arkanwiderstand zusammenrechnen"
 L["Arcane Resistance Summary"] = "Arkanwiderstandsübersicht"
@@ -647,7 +648,7 @@ L[StatLogic.Stats.ArmorPenetration] = "Rüstungsdurchschlag(%)"
 L[StatLogic.Stats.Mastery] = "Meisterschaft"
 -- Tier3 Stats - Stats that only show up when broken down from a Tier2 stat
 -- Defense -> Crit Avoidance, Hit Avoidance, Dodge, Parry, Block
--- Weapon Skill -> Crit, Hit, Dodge Neglect, Parry Neglect, Block Neglect
+-- Weapon Skill -> Crit, Hit, Dodge Reduction, Parry Reduction, Block Reduction
 L[StatLogic.Stats.DodgeReduction] = DODGE.." Verhinderung(%)"
 L[StatLogic.Stats.ParryReduction] = PARRY.." Verhinderung(%)"
 -- Misc Stats

@@ -71,10 +71,10 @@ L["Defense breakdown"] = "分析防禦"
 L["Convert Defense into Crit Avoidance Hit Avoidance, Dodge, Parry and Block"] = "將防禦分為避免致命、避免命中、閃躲、招架和格擋"
 -- /rb rating wpn
 L["Weapon Skill breakdown"] = "分析武器技能"
-L["Convert Weapon Skill into Crit Hit, Dodge Neglect, Parry Neglect and Block Neglect"] = "將武器技能分為致命、擊中、防止被閃躲、防止被招架和防止被格擋"
+L["Convert Weapon Skill into Crit Hit, Dodge Reduction, Parry Reduction and Block Reduction"] = "將武器技能分為致命、擊中、防止被閃躲、防止被招架和防止被格擋"
 -- /rb rating exp -- 2.3.0
 L["Expertise breakdown"] = "分析熟練技能"
-L["Convert Expertise into Dodge Neglect and Parry Neglect"] = "將熟練技能分為防止被閃躲、防止被招架"
+L["Convert Expertise into Dodge Reduction and Parry Reduction"] = "將熟練技能分為防止被閃躲、防止被招架"
 
 -- /rb stat
 L["Stat Breakdown"] = "基本屬性解析"
@@ -186,6 +186,7 @@ L["Choose spell damage and healing stats for summary"] = "自訂魔法傷害及�
 -- /rb sum tank
 L["Stat - Tank"] = "統計坦克屬性"
 L["Choose tank stats for summary"] = "自訂坦克屬性統計項目"
+L["Sum %s"] = "統計%s"
 -- /rb sum stat hp
 L["Sum Health"] = "統計生命力"
 L["Health <- Health Stamina"] = "生命力 ← 生命力、耐力"
@@ -291,15 +292,15 @@ L["Hit Avoidance <- Defense Rating"] = "迴避命中 ← 防禦等級"
 -- /rb sum stat avoidcrit
 L["Sum Crit Avoidance"] = "統計迴避致命一擊"
 L["Crit Avoidance <- Defense Rating Resilience"] = "迴避致命一擊 ← 防禦等級、韌性"
--- /rb sum stat neglectdodge
-L["Sum Dodge Neglect"] = "統計防止被閃躲"
-L["Dodge Neglect <- Expertise Weapon Skill Rating"] = "防止被閃躲 ← 熟練技能、武器技能等級" -- 2.3.0
--- /rb sum stat neglectparry
-L["Sum Parry Neglect"] = "統計防止被招架"
-L["Parry Neglect <- Expertise Weapon Skill Rating"] = "防止被招架 ← 熟練技能、武器技能等級" -- 2.3.0
--- /rb sum stat neglectblock
-L["Sum Block Neglect"] = "統計防止被格擋"
-L["Block Neglect <- Weapon Skill Rating"] = "防止被格擋 ← 武器技能等級"
+-- /rb sum stat Reductiondodge
+L["Sum Dodge Reduction"] = "統計防止被閃躲"
+L["Dodge Reduction <- Expertise Weapon Skill Rating"] = "防止被閃躲 ← 熟練技能、武器技能等級" -- 2.3.0
+-- /rb sum stat Reductionparry
+L["Sum Parry Reduction"] = "統計防止被招架"
+L["Parry Reduction <- Expertise Weapon Skill Rating"] = "防止被招架 ← 熟練技能、武器技能等級" -- 2.3.0
+-- /rb sum stat Reductionblock
+L["Sum Block Reduction"] = "統計防止被格擋"
+L["Block Reduction <- Weapon Skill Rating"] = "防止被格擋 ← 武器技能等級"
 -- /rb sum stat resarcane
 L["Sum Arcane Resistance"] = "統計秘法抗性"
 L["Arcane Resistance Summary"] = "統計秘法抗性"
@@ -647,8 +648,8 @@ L[StatLogic.Stats.ArmorPenetration] = "護甲穿透(%)"
 L[StatLogic.Stats.Mastery] = STAT_MASTERY
 -- Tier3 Stats - Stats that only show up when broken down from a Tier2 stat
 -- Defense -> Crit Avoidance, Hit Avoidance, Dodge, Parry, Block
--- Weapon Skill -> Crit, Hit, Dodge Neglect, Parry Neglect, Block Neglect
--- Expertise -> Dodge Neglect, Parry Neglect
+-- Weapon Skill -> Crit, Hit, Dodge Reduction, Parry Reduction, Block Reduction
+-- Expertise -> Dodge Reduction, Parry Reduction
 L[StatLogic.Stats.DodgeReduction] = "防止被閃躲(%)"
 L[StatLogic.Stats.ParryReduction] = "防止被招架(%)"
 -- Misc Stats

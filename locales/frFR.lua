@@ -65,10 +65,10 @@ L["Defense breakdown"] = "Défense détaillée"
 L["Convert Defense into Crit Avoidance, Hit Avoidance, Dodge, Parry and Block"] = "Convertis le score de défense en esquive, parade, blocage, évitement des coups et évitement des coups critiques."
 -- /rb rating wpn
 L["Weapon Skill breakdown"] = "Comp. d'arme détaillée"
-L["Convert Weapon Skill into Crit, Hit, Dodge Neglect, Parry Neglect and Block Neglect"] = "Convertis le score de compétence d'arme en coups critiques, toucher, diminution d'esquive, diminution de parade et diminution de blocage."
+L["Convert Weapon Skill into Crit, Hit, Dodge Reduction, Parry Reduction and Block Reduction"] = "Convertis le score de compétence d'arme en coups critiques, toucher, diminution d'esquive, diminution de parade et diminution de blocage."
 -- /rb rating exp -- 2.3.0
 L["Expertise breakdown"] = "Expertise détaillée"
-L["Convert Expertise into Dodge Neglect and Parry Neglect"] = "Convertis le score d'expertise en pourcentage de diminution d'esquive et diminution de parade."
+L["Convert Expertise into Dodge Reduction and Parry Reduction"] = "Convertis le score d'expertise en pourcentage de diminution d'esquive et diminution de parade."
 
 -- /rb stat
 L["Stat Breakdown"] = "Détail des caractéristiques"
@@ -182,6 +182,7 @@ L["Choose spell damage and healing stats for summary"] = "Sélectionne les diff�
 -- /rb sum tank
 L["Stat - Tank"] = "Stats - Tank"
 L["Choose tank stats for summary"] = "Sélectionne les différentes caractéristiques défensives à inclure au résumé."
+L["Sum %s"] = "%s"
 -- /rb sum stat hp
 L["Sum Health"] = "Points de vie"
 L["Health <- Health, Stamina"] = "Inclure les Points de vie conférés par : Points de vie + Endurance."
@@ -286,15 +287,15 @@ L["Hit Avoidance <- Defense Rating"] = "Inclure le pourcentage d'Évitement des 
 -- /rb sum stat avoidcrit
 L["Sum Crit Avoidance"] = "Évitement CC"
 L["Crit Avoidance <- Defense Rating, Resilience"] = "Inclure le pourcentage d'Évitement des Coups critiques conféré par : Score de défense + Résilience."
--- /rb sum stat neglectdodge
-L["Sum Dodge Neglect"] = "Diminution Esquive"
-L["Dodge Neglect <- Expertise, Weapon Skill Rating"] = "Inclure le pourcentage de Diminution d'esquive conféré par : Expertise + Compétence d'arme."
--- /rb sum stat neglectparry
-L["Sum Parry Neglect"] = "Diminution Parade"
-L["Parry Neglect <- Expertise, Weapon Skill Rating"] = "Inclure le pourcentage de Diminution de parade conféré par : Expertise + Compétence d'arme."
--- /rb sum stat neglectblock
-L["Sum Block Neglect"] = "Diminution Blocage"
-L["Block Neglect <- Weapon Skill Rating"] = "Inclure le pourcentage de Diminution de blocage conféré par la Compétence d'arme."
+-- /rb sum stat Reductiondodge
+L["Sum Dodge Reduction"] = "Diminution Esquive"
+L["Dodge Reduction <- Expertise, Weapon Skill Rating"] = "Inclure le pourcentage de Diminution d'esquive conféré par : Expertise + Compétence d'arme."
+-- /rb sum stat Reductionparry
+L["Sum Parry Reduction"] = "Diminution Parade"
+L["Parry Reduction <- Expertise, Weapon Skill Rating"] = "Inclure le pourcentage de Diminution de parade conféré par : Expertise + Compétence d'arme."
+-- /rb sum stat Reductionblock
+L["Sum Block Reduction"] = "Diminution Blocage"
+L["Block Reduction <- Weapon Skill Rating"] = "Inclure le pourcentage de Diminution de blocage conféré par la Compétence d'arme."
 -- /rb sum stat resarcane
 L["Sum Arcane Resistance"] = "Résistance : Arcanes"
 L["Arcane Resistance Summary"] = "Inclure la Résistance aux Arcanes."
@@ -649,8 +650,8 @@ L[StatLogic.Stats.ArmorPenetration] = "Pénétration d'armure(%)"
 L[StatLogic.Stats.Mastery] = STAT_MASTERY
 -- Tier3 Stats - Stats that only show up when broken down from a Tier2 stat
 -- Defense -> Crit Avoidance, Hit Avoidance, Dodge, Parry, Block
--- Weapon Skill -> Crit, Hit, Dodge Neglect, Parry Neglect, Block Neglect
--- Expertise -> Dodge Neglect, Parry Neglect
+-- Weapon Skill -> Crit, Hit, Dodge Reduction, Parry Reduction, Block Reduction
+-- Expertise -> Dodge Reduction, Parry Reduction
 L[StatLogic.Stats.DodgeReduction] = "Diminution d'Esquive (%)"
 L[StatLogic.Stats.ParryReduction] = "Diminution de Parade (%)"
 -- Misc Stats
