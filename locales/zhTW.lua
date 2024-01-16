@@ -56,6 +56,7 @@ L["Options for Rating display"] = "設定屬性等級顯示"
 -- /rb rating show
 L["Show Rating conversions"] = "顯示屬性等級轉換"
 L["Show Rating conversions in tooltips"] = "在提示框架中顯示屬性等級轉換結果"
+L["Enable integration with Blizzard Reforging UI"] = true
 -- /rb rating spell
 L["Show Spell Hit/Haste"] = "顯示法術命中/加速"
 L["Show Spell Hit/Haste from Hit/Haste Rating"] = "顯示命中/加速給的法術命中/加速"
@@ -513,6 +514,7 @@ L["statList"] = {
 	{pattern = SPELL_STATALL:lower(), id = StatLogic.Stats.AllStats},
 
 	{pattern = "護甲穿透等級", id = StatLogic.Stats.ArmorPenetrationRating},
+	{pattern = "精通", id = StatLogic.Stats.MasteryRating},
 	{pattern = ARMOR:lower(), id = ARMOR},
 	{pattern = "攻击强度", id = ATTACK_POWER},
 }
@@ -547,6 +549,7 @@ L["$value% Parry"] = "$value% 招架"
 -- (+1.21%, S+0.98%)
 -- (+1.21%, +0.98% S)
 L["$value Spell"] = "$value 法術"
+L["$value Spell Hit"] = "$value 法術命中"
 
 L[StatLogic.Stats.HealingPower] = STAT_SPELLHEALING
 L[StatLogic.Stats.ManaRegen] = "法力恢復"
