@@ -13,7 +13,6 @@ if not L then return end
 local StatLogic = LibStub("StatLogic")
 ----
 -- This file is coded in UTF-8
--- If you don't have a editor that can save in UTF-8, I recommend Ultraedit
 ----
 -- To translate AceLocale strings, replace true with the translation string
 -- Before: ["Show Item ID"] = true,
@@ -79,43 +78,12 @@ L["Changes the display of base stats"] = "设定基本属性的解析显示"
 -- /rb stat show
 L["Show base stat conversions"] = "显示基本属性解析"
 L["Show base stat conversions in tooltips"] = "在物品提示中显示基本属性解析"
--- /rb stat str
-L["Strength"] = "力量"
-L["Changes the display of Strength"] = "自订力量解析项目"
-
--- /rb stat agi
-L["Agility"] = "敏捷"
-L["Changes the display of Agility"] = "自订敏捷解析项目"
--- /rb stat agi crit
-L["Show Crit"] = "显示物理爆击"
-L["Show Crit chance from Agility"] = "显示敏捷给的物理爆击几率"
--- /rb stat agi dodge
-L["Show Dodge"] = "显示躲闪"
-L["Show Dodge chance from Agility"] = "显示敏捷给的躲闪几率"
-
--- /rb stat sta
-L["Stamina"] = "耐力"
-L["Changes the display of Stamina"] = "自订耐力解析项目"
-
--- /rb stat int
-L["Intellect"] = "智力"
-L["Changes the display of Intellect"] = "自订智力解析项目"
--- /rb stat int spellcrit
-L["Show Spell Crit"] = "显示法术爆击"
-L["Show Spell Crit chance from Intellect"] = "显示智力给的法术爆击几率"
-
--- /rb stat spi
-L["Spirit"] = "精神"
-L["Changes the display of Spirit"] = "自订精神解析项目"
-
-L["Armor"] = "Armor"
-L["Changes the display of Armor"] = "Changes the display of Armor"
-L["Attack Power"] = "Attack Power"
-L["Changes the display of Attack Power"] = "Changes the display of Attack Power"
+L["Changes the display of %s"] = "自订%s解析项目"
 
 -- /rb sum
 L["Stat Summary"] = "属性统计"
 L["Options for stat summary"] = "自订属性选项"
+L["Sum %s"] = "统计%s"
 -- /rb sum show
 L["Show stat summary"] = "显示属性统计"
 L["Show stat summary in tooltips"] = "在物品提示中显示属性统计"
@@ -183,206 +151,82 @@ L["Choose spell damage and healing stats for summary"] = "选择想要统计的�
 -- /rb sum tank
 L["Stat - Tank"] = "属性 - 抗打击"
 L["Choose tank stats for summary"] = "选择你想要统计的抗打击能力的属性"
-L["Sum %s"] = "统计%s"
 -- /rb sum stat hp
-L["Sum Health"] = "统计生命值"
 L["Health <- Health Stamina"] = "生命值 ← 生命值、耐力"
 -- /rb sum stat mp
-L["Sum Mana"] = "统计法力值"
 L["Mana <- Mana Intellect"] = "法力值 ← 法力值、智力"
 -- /rb sum stat ap
-L["Sum Attack Power"] = "统计近战攻击强度"
 L["Attack Power <- Attack Power Strength, Agility"] = "近战攻击强度 ← 攻击强度、力量、敏捷"
 -- /rb sum stat rap
-L["Sum Ranged Attack Power"] = "统计远程攻击强度"
 L["Ranged Attack Power <- Ranged Attack Power Intellect, Attack Power, Strength, Agility"] = "远程攻击强度 ← 远程攻击强度、智力、攻击强度、力量、敏捷"
 -- /rb sum stat dmg
-L["Sum Spell Damage"] = "统计法术伤害"
 L["Spell Damage <- Spell Damage Intellect, Spirit, Stamina"] = "法术伤害 ← 法术伤害、智力、精神、耐力"
 -- /rb sum stat dmgholy
-L["Sum Holy Spell Damage"] = "统计神圣法术伤害"
 L["Holy Spell Damage <- Holy Spell Damage Spell Damage, Intellect, Spirit"] = "神圣法术伤害 ← 神圣法术伤害、法术伤害、智力、精神"
 -- /rb sum stat dmgarcane
-L["Sum Arcane Spell Damage"] = "统计奥术法术伤害"
 L["Arcane Spell Damage <- Arcane Spell Damage Spell Damage, Intellect"] = "奥术法术伤害 ← 奥术法术伤害、法术伤害、智力"
 -- /rb sum stat dmgfire
-L["Sum Fire Spell Damage"] = "统计火焰法术伤害"
 L["Fire Spell Damage <- Fire Spell Damage Spell Damage, Intellect, Stamina"] = "火焰法术伤害 ← 火焰法术伤害、法术伤害、智力、耐力"
 -- /rb sum stat dmgnature
-L["Sum Nature Spell Damage"] = "统计自然法术伤害"
 L["Nature Spell Damage <- Nature Spell Damage Spell Damage, Intellect"] = "自然法术伤害 ← 自然法术伤害、法术伤害、智力"
 -- /rb sum stat dmgfrost
-L["Sum Frost Spell Damage"] = "统计冰霜法术伤害"
 L["Frost Spell Damage <- Frost Spell Damage Spell Damage, Intellect"] = "冰霜法术伤害 ← 冰霜法术伤害、法术伤害、智力"
 -- /rb sum stat dmgshadow
-L["Sum Shadow Spell Damage"] = "统计暗影法术伤害"
 L["Shadow Spell Damage <- Shadow Spell Damage Spell Damage, Intellect, Spirit, Stamina"] = "暗影法术伤害 ← 暗影法术伤害、法术伤害、智力、精神、耐力"
 -- /rb sum stat heal
-L["Sum Healing"] = "统计治疗"
 L["Healing <- Healing Intellect, Spirit, Agility, Strength"] = "治疗 ← 治疗、智力、精神、敏捷、力量"
 -- /rb sum stat hit
-L["Sum Hit Chance"] = "统计物理命中几率"
 L["Hit Chance <- Hit Rating Weapon Skill Rating"] = "物理命中几率 ← 命中等级、武器技能等级"
 -- /rb sum stat crit
-L["Sum Crit Chance"] = "统计物理爆击几率"
 L["Crit Chance <- Crit Rating Agility, Weapon Skill Rating"] = "物理爆击几率 ← 爆击等级、敏捷、武器技能等级"
 -- /rb sum stat haste
-L["Sum Haste"] = "统计急速"
 L["Haste <- Haste Rating"] = "急速 ← 急速等级"
-L["Sum Ranged Hit Chance"] = "统计远程命中几率"
 L["Ranged Hit Chance <- Hit Rating, Weapon Skill Rating, Ranged Hit Rating"] = "远程米中几率 ← 命中等级、武器技能等级、远程命中等级"
--- /rb sum physical rangedhitrating
-L["Sum Ranged Hit Rating"] = "统计远程命中等级"
-L["Ranged Hit Rating Summary"] = "统计远程命中等级"
 -- /rb sum physical rangedcrit
-L["Sum Ranged Crit Chance"] = "统计远爆击几率"
 L["Ranged Crit Chance <- Crit Rating, Agility, Weapon Skill Rating, Ranged Crit Rating"] = "远程爆击几率 ← 爆击等级、敏捷、武器技能等级、远程爆击等级"
--- /rb sum physical rangedcritrating
-L["Sum Ranged Crit Rating"] = "统计远程爆击等级"
-L["Ranged Crit Rating Summary"] = "统计远程爆击等级"
 -- /rb sum physical rangedhaste
-L["Sum Ranged Haste"] = "统计远程急速"
 L["Ranged Haste <- Haste Rating, Ranged Haste Rating"] = "远程急速 ← 急速等级、远程急速等级"
--- /rb sum physical rangedhasterating
-L["Sum Ranged Haste Rating"] = "统计远程急速等级"
-L["Ranged Haste Rating Summary"] = "统计远程急速等级"
 
 -- /rb sum stat critspell
-L["Sum Spell Crit Chance"] = "统计法术爆击几率"
 L["Spell Crit Chance <- Spell Crit Rating Intellect"] = "法术爆击几率 ← 法术爆击等级、智力"
 -- /rb sum stat hitspell
-L["Sum Spell Hit Chance"] = "统计法术命中几率"
 L["Spell Hit Chance <- Spell Hit Rating"] = "法术命中几率 ← 法术命中等级"
 -- /rb sum stat hastespell
-L["Sum Spell Haste"] = "统计法术急速"
 L["Spell Haste <- Spell Haste Rating"] = "法术急速 ← 法术急速等级"
 -- /rb sum stat mp5
-L["Sum Mana Regen"] = "统计法力恢复"
 L["Mana Regen <- Mana Regen Spirit"] = "法力恢复 ← 法力恢复、精神"
 -- /rb sum stat mp5nc
-L["Sum Mana Regen while not casting"] = "统计法力恢复(未施法时)"
 L["Mana Regen while not casting <- Spirit"] = "法力恢复(未施法时) ← 精神"
 -- /rb sum stat hp5
-L["Sum Health Regen"] = "统计生命恢复"
 L["Health Regen <- Health Regen"] = "生命恢复 ← 生命恢复"
 -- /rb sum stat hp5oc
-L["Sum Health Regen when out of combat"] = "统计生命恢复(未战斗时)"
 L["Health Regen when out of combat <- Spirit"] = "生命恢复(未战斗时) ← 精神"
 -- /rb sum stat armor
-L["Sum Armor"] = "统计护甲值"
 L["Armor <- Armor from items Armor from bonuses, Agility, Intellect"] = "护甲值 ← 物品护甲、护甲加成、敏捷、智力"
 -- /rb sum stat blockvalue
-L["Sum Block Value"] = "统计格挡值"
 L["Block Value <- Block Value Strength"] = "格挡值 ← 格挡值、力量"
 -- /rb sum stat dodge
-L["Sum Dodge Chance"] = "统计躲闪几率"
 L["Dodge Chance <- Dodge Rating Agility, Defense Rating"] = "躲闪几率 ← 躲闪等级、敏捷、防御等级"
 -- /rb sum stat parry
-L["Sum Parry Chance"] = "统计招架几率"
 L["Parry Chance <- Parry Rating Defense Rating"] = "招架几率 ← 招架等级、防御等级"
 -- /rb sum stat block
-L["Sum Block Chance"] = "统计格挡几率"
 L["Block Chance <- Block Rating Defense Rating"] = "格挡几率 ← 格挡等级、防御等级"
 -- /rb sum stat avoidhit
-L["Sum Hit Avoidance"] = "统计物理命中躲闪"
 L["Hit Avoidance <- Defense Rating"] = "物理命中躲闪 ← 防御等级"
 -- /rb sum stat avoidcrit
-L["Sum Crit Avoidance"] = "统计物理爆击躲闪"
 L["Crit Avoidance <- Defense Rating Resilience"] = "物理爆击躲闪 ← 防御等级、韧性"
 -- /rb sum stat Reductiondodge
-L["Sum Dodge Reduction"] = "统计防止被躲闪"
 L["Dodge Reduction <- Expertise Weapon Skill Rating"] = "防止被躲闪 ← 精准等级、武器技能等级" -- 2.3.0
 -- /rb sum stat Reductionparry
-L["Sum Parry Reduction"] = "统计防止被招架"
 L["Parry Reduction <- Expertise Weapon Skill Rating"] = "防止被招架 ← 精准等级、武器技能等级" -- 2.3.0
--- /rb sum stat Reductionblock
-L["Sum Block Reduction"] = "统计防止被格挡"
-L["Block Reduction <- Weapon Skill Rating"] = "防止被格挡 ← 武器技能等级"
--- /rb sum stat resarcane
-L["Sum Arcane Resistance"] = "统计奥术抗性"
-L["Arcane Resistance Summary"] = "统计奥术抗性"
--- /rb sum stat resfire
-L["Sum Fire Resistance"] = "统计火焰抗性"
-L["Fire Resistance Summary"] = "统计火焰抗性"
--- /rb sum stat resnature
-L["Sum Nature Resistance"] = "统计自然抗性"
-L["Nature Resistance Summary"] = "统计自然抗性"
--- /rb sum stat resfrost
-L["Sum Frost Resistance"] = "统计冰霜抗性"
-L["Frost Resistance Summary"] = "统计冰霜抗性"
--- /rb sum stat resshadow
-L["Sum Shadow Resistance"] = "统计暗影抗性"
-L["Shadow Resistance Summary"] = "统计暗影抗性"
-L["Sum Weapon Average Damage"] = true
-L["Weapon Average Damage Summary"] = true
-L["Sum Weapon DPS"] = "统计武器DPS"
-L["Weapon DPS Summary"] = "武器DPS统计"
--- /rb sum stat pen
-L["Sum Penetration"] = "统计穿透"
-L["Spell Penetration Summary"] = "统计法术穿透"
--- /rb sum stat ignorearmor
-L["Sum Ignore Armor"] = "统计忽略护甲"
-L["Ignore Armor Summary"] = "统计忽略护甲效果"
-L["Sum Armor Penetration"] = "统计护甲穿透"
-L["Armor Penetration Summary"] = "统计无视护甲穿透"
-L["Sum Armor Penetration Rating"] = "统计无视护甲穿透等级"
-L["Armor Penetration Rating Summary"] = "统计无视护甲穿透等级"
--- /rb sum statcomp str
-L["Sum Strength"] = "统计力量"
-L["Strength Summary"] = "统计力量"
--- /rb sum statcomp agi
-L["Sum Agility"] = "统计敏捷"
-L["Agility Summary"] = "统计敏捷"
--- /rb sum statcomp sta
-L["Sum Stamina"] = "统计耐力"
-L["Stamina Summary"] = "统计耐力"
--- /rb sum statcomp int
-L["Sum Intellect"] = "统计智力"
-L["Intellect Summary"] = "统计智力"
--- /rb sum statcomp spi
-L["Sum Spirit"] = "统计精神"
-L["Spirit Summary"] = "统计精神"
--- /rb sum statcomp hitrating
-L["Sum Hit Rating"] = "统计命中等级"
-L["Hit Rating Summary"] = "统计命中等级"
--- /rb sum statcomp critrating
-L["Sum Crit Rating"] = "统计爆击等级"
-L["Crit Rating Summary"] = "统计爆击等级"
--- /rb sum statcomp hasterating
-L["Sum Haste Rating"] = "统计急速等级"
-L["Haste Rating Summary"] = "统计急速等级"
--- /rb sum statcomp hitspellrating
-L["Sum Spell Hit Rating"] = "统计法术命中等级"
-L["Spell Hit Rating Summary"] = "统计法术命中等级"
--- /rb sum statcomp critspellrating
-L["Sum Spell Crit Rating"] = "统计法术爆击等级"
-L["Spell Crit Rating Summary"] = "统计法术爆击等级"
--- /rb sum statcomp hastespellrating
-L["Sum Spell Haste Rating"] = "统计法术急速等级"
-L["Spell Haste Rating Summary"] = "统计法术急速等级"
--- /rb sum statcomp dodgerating
-L["Sum Dodge Rating"] = "统计躲闪等级"
-L["Dodge Rating Summary"] = "统计躲闪等级"
--- /rb sum statcomp parryrating
-L["Sum Parry Rating"] = "统计招架等级"
-L["Parry Rating Summary"] = "统计招架等级"
--- /rb sum statcomp blockrating
-L["Sum Block Rating"] = "统计格挡等级"
-L["Block Rating Summary"] = "统计格挡等级"
--- /rb sum statcomp res
-L["Sum Resilience"] = "统计韧性"
-L["Resilience Summary"] = "统计韧性等级"
+
 -- /rb sum statcomp def
-L["Sum Defense"] = "统计防御"
 L["Defense <- Defense Rating"] = "防御 ← 防御等级"
 -- /rb sum statcomp wpn
-L["Sum Weapon Skill"] = "统计武器技能"
 L["Weapon Skill <- Weapon Skill Rating"] = "武器技能 ← 武器技能等级"
 -- /rb sum statcomp exp -- 2.3.0
-L["Sum Expertise"] = "统计精准"
 L["Expertise <- Expertise Rating"] = "精准 ← 精准等级"
 -- /rb sum statcomp avoid
-L["Sum Avoidance"] = "统计躲避"
 L["Avoidance <- Dodge Parry, MobMiss, Block(Optional)"] = "躲避 ← 躲闪, 招架, 怪物未命中, 格挡(可选)"
 -- /rb sum gem
 L["Gems"] = "宝石"
@@ -549,7 +393,6 @@ L["$value% Parry"] = "$value% 招架"
 L["$value Spell"] = "$value 法术"
 L["$value Spell Hit"] = true
 
-L[StatLogic.Stats.HealingPower] = STAT_SPELLHEALING
 L[StatLogic.Stats.ManaRegen] = "法力回复"
 L[StatLogic.Stats.ManaRegenNotCasting] = "法力回复 (未施法)"
 L[StatLogic.Stats.ManaRegenOutOfCombat] = "法力回复 (非战斗)"
@@ -558,31 +401,31 @@ if addon.tocversion > 40000 then
 end
 L[StatLogic.Stats.HealthRegen] = "生命恢复"
 L[StatLogic.Stats.HealthRegenOutOfCombat] = "生命恢复 (非战斗)"
-L["StatModOptionName"] = "%s %s"
+L["Show %s"] = SHOW.." %s"
 
-L[StatLogic.Stats.IgnoreArmor] = "你的攻击无视目标的 %d+ 点护甲值。"
+L[StatLogic.Stats.IgnoreArmor] = "忽略护甲"
 L[StatLogic.Stats.AverageWeaponDamage] = "近战伤害" -- DAMAGE = "Damage"
 
-L[StatLogic.Stats.Strength] = SPELL_STAT1_NAME
-L[StatLogic.Stats.Agility] = SPELL_STAT2_NAME
-L[StatLogic.Stats.Stamina] = SPELL_STAT3_NAME
-L[StatLogic.Stats.Intellect] = SPELL_STAT4_NAME
-L[StatLogic.Stats.Spirit] = SPELL_STAT5_NAME
-L[StatLogic.Stats.Armor] = ARMOR
+L[StatLogic.Stats.Strength] = "力量"
+L[StatLogic.Stats.Agility] = "敏捷"
+L[StatLogic.Stats.Stamina] = "耐力"
+L[StatLogic.Stats.Intellect] = "智力"
+L[StatLogic.Stats.Spirit] = "精神"
+L[StatLogic.Stats.Armor] = "护甲值"
 
-L[StatLogic.Stats.FireResistance] = RESISTANCE2_NAME
-L[StatLogic.Stats.NatureResistance] = RESISTANCE3_NAME
-L[StatLogic.Stats.FrostResistance] = RESISTANCE4_NAME
-L[StatLogic.Stats.ShadowResistance] = RESISTANCE5_NAME
-L[StatLogic.Stats.ArcaneResistance] = RESISTANCE6_NAME
+L[StatLogic.Stats.FireResistance] = "火焰抗性"
+L[StatLogic.Stats.NatureResistance] = "自然抗性"
+L[StatLogic.Stats.FrostResistance] = "冰霜抗性"
+L[StatLogic.Stats.ShadowResistance] = "暗影抗性"
+L[StatLogic.Stats.ArcaneResistance] = "奥术抗性"
 
-L[StatLogic.Stats.BlockValue] = "盾牌格挡值"
+L[StatLogic.Stats.BlockValue] = "格挡值"
 
-L[StatLogic.Stats.AttackPower] = ATTACK_POWER_TOOLTIP
-L[StatLogic.Stats.RangedAttackPower] = RANGED_ATTACK_POWER
+L[StatLogic.Stats.AttackPower] = "近战攻击强度"
+L[StatLogic.Stats.RangedAttackPower] = "远程攻击强度"
 L[StatLogic.Stats.FeralAttackPower] = "野性"..ATTACK_POWER_TOOLTIP
 
-L[StatLogic.Stats.HealingPower] = "法术治疗"
+L[StatLogic.Stats.HealingPower] = "治疗"
 
 L[StatLogic.Stats.SpellPower] = STAT_SPELLPOWER
 L[StatLogic.Stats.SpellDamage] = "法术伤害"
@@ -595,60 +438,48 @@ L[StatLogic.Stats.ArcaneDamage] = "奥术法术伤害"
 
 L[StatLogic.Stats.SpellPenetration] = "法术穿透"
 
-L[StatLogic.Stats.Health] = HEALTH
-L[StatLogic.Stats.Mana] = MANA
+L[StatLogic.Stats.Health] = "生命值"
+L[StatLogic.Stats.Mana] = "法力值"
 
 L[StatLogic.Stats.WeaponDPS] = "每秒伤害"
 
 L[StatLogic.Stats.DefenseRating] = COMBAT_RATING_NAME2 -- COMBAT_RATING_NAME2 = "Defense Rating"
-L[StatLogic.Stats.DodgeRating] = COMBAT_RATING_NAME3 -- COMBAT_RATING_NAME3 = "Dodge Rating"
-L[StatLogic.Stats.ParryRating] = COMBAT_RATING_NAME4 -- COMBAT_RATING_NAME4 = "Parry Rating"
-L[StatLogic.Stats.BlockRating] = COMBAT_RATING_NAME5 -- COMBAT_RATING_NAME5 = "Block Rating"
-L[StatLogic.Stats.MeleeHitRating] = COMBAT_RATING_NAME6 -- COMBAT_RATING_NAME6 = "Hit Rating"
-L[StatLogic.Stats.RangedHitRating] = "远程命中等级" -- PLAYERSTAT_RANGED_COMBAT = "Ranged"
-L[StatLogic.Stats.SpellHitRating] = "法术命中等级" -- PLAYERSTAT_SPELL_COMBAT = "Spell"
-L[StatLogic.Stats.MeleeCritRating] = COMBAT_RATING_NAME9 -- COMBAT_RATING_NAME9 = "Crit Rating"
+L[StatLogic.Stats.DodgeRating] = "躲闪等级"
+L[StatLogic.Stats.ParryRating] = "招架等级"
+L[StatLogic.Stats.BlockRating] = "格挡等级"
+L[StatLogic.Stats.MeleeHitRating] = "命中等级"
+L[StatLogic.Stats.RangedHitRating] = "远程命中等级"
+L[StatLogic.Stats.SpellHitRating] = "法术命中等级"
+L[StatLogic.Stats.MeleeCritRating] = "爆击等级"
 L[StatLogic.Stats.RangedCritRating] = "远程爆击等级"
 L[StatLogic.Stats.SpellCritRating] = "法术爆击等级"
-L[StatLogic.Stats.ResilienceRating] = COMBAT_RATING_NAME15 -- COMBAT_RATING_NAME15 = "Resilience"
-L[StatLogic.Stats.MeleeHasteRating] = "近战急速等级" --
+L[StatLogic.Stats.ResilienceRating] = "韧性"
+L[StatLogic.Stats.MeleeHasteRating] = "急速等级"
 L[StatLogic.Stats.RangedHasteRating] = "远程急速等级"
 L[StatLogic.Stats.SpellHasteRating] = "法术急速等级"
 L[StatLogic.Stats.ExpertiseRating] = "精准等级"
 L[StatLogic.Stats.ArmorPenetrationRating] = "护甲穿透等级"
 L[StatLogic.Stats.MasteryRating] = STAT_MASTERY.." "..RATING
--- Tier2 Stats - Stats that only show up when broken down from a Tier1 stat
--- Str -> AP, Block Value
--- Agi -> AP, Crit, Dodge
--- Sta -> Health
--- Int -> Mana, Spell Crit
--- Spi -> mp5nc, hp5oc
--- Ratings -> Effect
-L[StatLogic.Stats.CritDamageReduction] = "爆击减伤(%)"
-L[StatLogic.Stats.Defense] = DEFENSE
-L[StatLogic.Stats.Dodge] = DODGE.."(%)"
-L[StatLogic.Stats.Parry] = PARRY.."(%)"
-L[StatLogic.Stats.BlockChance] = BLOCK.."(%)"
-L[StatLogic.Stats.Avoidance] = "完全豁免(%)"
-L[StatLogic.Stats.MeleeHit] = "物理命中(%)"
-L[StatLogic.Stats.RangedHit] = "远程命中(%)"
-L[StatLogic.Stats.SpellHit] = "法术命中(%)"
-L[StatLogic.Stats.Miss] = "躲闪命中(%)"
-L[StatLogic.Stats.MeleeCrit] = "物理爆击(%)" -- MELEE_CRIT_CHANCE = "Crit Chance"
-L[StatLogic.Stats.RangedCrit] = "远程爆击(%)"
-L[StatLogic.Stats.SpellCrit] = "法术爆击(%)"
-L[StatLogic.Stats.CritAvoidance] = "躲闪近战爆击(%)"
-L[StatLogic.Stats.MeleeHaste] = "近战急速(%)" --
-L[StatLogic.Stats.RangedHaste] = "远程急速(%)"
-L[StatLogic.Stats.SpellHaste] = "法术急速(%)"
+L[StatLogic.Stats.CritDamageReduction] = "爆击减伤"
+L[StatLogic.Stats.Defense] = "防御"
+L[StatLogic.Stats.Dodge] = "躲闪几率"
+L[StatLogic.Stats.Parry] = "招架几率"
+L[StatLogic.Stats.BlockChance] = "格挡几率"
+L[StatLogic.Stats.Avoidance] = "躲避"
+L[StatLogic.Stats.MeleeHit] = "物理命中几率"
+L[StatLogic.Stats.RangedHit] = "远程命中几率"
+L[StatLogic.Stats.SpellHit] = "法术命中几率"
+L[StatLogic.Stats.Miss] = "物理命中躲闪"
+L[StatLogic.Stats.MeleeCrit] = "物理爆击几率"
+L[StatLogic.Stats.RangedCrit] = "远爆击几率"
+L[StatLogic.Stats.SpellCrit] = "法术爆击几率"
+L[StatLogic.Stats.CritAvoidance] = "物理爆击躲闪"
+L[StatLogic.Stats.MeleeHaste] = "急速"
+L[StatLogic.Stats.RangedHaste] = "远程急速"
+L[StatLogic.Stats.SpellHaste] = "法术急速"
 L[StatLogic.Stats.Expertise] = "精准"
-L[StatLogic.Stats.ArmorPenetration] = "护甲穿透(%)"
+L[StatLogic.Stats.ArmorPenetration] = "护甲穿透"
 L[StatLogic.Stats.Mastery] = STAT_MASTERY
--- Tier3 Stats - Stats that only show up when broken down from a Tier2 stat
--- Defense -> Crit Avoidance, Hit Avoidance, Dodge, Parry, Block
--- Weapon Skill -> Crit, Hit, Dodge Reduction, Parry Reduction, Block Reduction
--- Expertise -> Dodge Reduction, Parry Reduction
-L[StatLogic.Stats.DodgeReduction] = "防止被躲闪(%)"
-L[StatLogic.Stats.ParryReduction] = "防止被招架(%)"
--- Misc Stats
+L[StatLogic.Stats.DodgeReduction] = "防止被躲闪"
+L[StatLogic.Stats.ParryReduction] = "防止被招架"
 L[StatLogic.Stats.WeaponSkill] = "武器技能"

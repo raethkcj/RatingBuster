@@ -14,7 +14,6 @@ if not L then return end
 local StatLogic = LibStub("StatLogic")
 ----
 -- This file is coded in UTF-8
--- If you don't have a editor that can save in UTF-8, I recommend Ultraedit
 ----
 -- To translate AceLocale strings, replace true with the translation string
 -- Before: ["Show Item ID"] = true,
@@ -81,43 +80,12 @@ L["Changes the display of base stats"] = "Cambia la visualizacion de las estad. 
 -- /rb stat show
 L["Show base stat conversions"] = "Mostrar conversiones estad. base"
 L["Show base stat conversions in tooltips"] = "Muestra las conversiones de estad. base en los tooltip"
--- /rb stat str
-L["Strength"] = "Fuerza"
-L["Changes the display of Strength"] = "Cambia la visualizacion de Fuerza"
-
--- /rb stat agi
-L["Agility"] = "Agilidad"
-L["Changes the display of Agility"] = "Cambia la visualizacion de Agilidad"
--- /rb stat agi crit
-L["Show Crit"] = "Mostrar Crit"
-L["Show Crit chance from Agility"] = "Muestra la prob. de crítico de Agilidad"
--- /rb stat agi dodge
-L["Show Dodge"] = "Mostrar Esquivar"
-L["Show Dodge chance from Agility"] = "Muestra la prob. de Esquivar de Agilidad"
-
--- /rb stat sta
-L["Stamina"] = "Aguante"
-L["Changes the display of Stamina"] = "Cambia la visualizacion de Aguante"
-
--- /rb stat int
-L["Intellect"] = "Intelecto"
-L["Changes the display of Intellect"] = "Cambia la visualizacion de Intelecto"
--- /rb stat int spellcrit
-L["Show Spell Crit"] = "Mostrar Crit Hech"
-L["Show Spell Crit chance from Intellect"] = "Muestra la prob. de Crit. de Hechizo de Intelecto"
-
--- /rb stat spi
-L["Spirit"] = "Espíritu"
-L["Changes the display of Spirit"] = "Cambia la visualizacion de Espíritu"
-
-L["Armor"] = true
-L["Changes the display of Armor"] = true
-L["Attack Power"] = true
-L["Changes the display of Attack Power"] = true
+L["Changes the display of %s"] = "Cambia la visualizacion de %s"
 
 -- /rb sum
 L["Stat Summary"] = "Resumen Estad"
 L["Options for stat summary"] = "Opciones de Resumen Estad."
+L["Sum %s"] = "Res. %s"
 -- /rb sum show
 L["Show stat summary"] = "Mostrar Resumen Estad"
 L["Show stat summary in tooltips"] = "Muestra el Resumen de Estad. en los tooltips"
@@ -185,206 +153,82 @@ L["Choose spell damage and healing stats for summary"] = "Escoge las estad. de d
 -- /rb sum tank
 L["Stat - Tank"] = "Estad. - Tanque"
 L["Choose tank stats for summary"] = "Escoge las estad. de tanque para el resumen"
-L["Sum %s"] = "Res. %s"
 -- /rb sum stat hp
-L["Sum Health"] = "Suma salud"
 L["Health <- Health Stamina"] = "Salud <- Salud, Aguante"
 -- /rb sum stat mp
-L["Sum Mana"] = "Suma Mana"
 L["Mana <- Mana Intellect"] = "Mana <- Mana, Intelecto"
 -- /rb sum stat ap
-L["Sum Attack Power"] = "Res. Poder Ataque"
 L["Attack Power <- Attack Power Strength, Agility"] = "Poder Ataque <- Poder Ataque, Fuerza, Agilidad"
 -- /rb sum stat rap
-L["Sum Ranged Attack Power"] = "Res. P.Ataque Distancia"
 L["Ranged Attack Power <- Ranged Attack Power Intellect, Attack Power, Strength, Agility"] = "P.Ataque Distancia <- P.Ataque Distancia, Intelecto, P.Ataque, Fuerza, Agilidad"
 -- /rb sum stat dmg
-L["Sum Spell Damage"] = "Res. Daño Hech."
 L["Spell Damage <- Spell Damage Intellect, Spirit, Stamina"] = "Daño Hech. <- Daño Hech., Intelecto, Espíritu, Aguante"
 -- /rb sum stat dmgholy
-L["Sum Holy Spell Damage"] = "Res. Daño Hech. Sagrado"
 L["Holy Spell Damage <- Holy Spell Damage Spell Damage, Intellect, Spirit"] = "Daño Hech. Sagrado <- Daño Hech. Sagrado, Daño Hech., Intelecto, Espíritu"
 -- /rb sum stat dmgarcane
-L["Sum Arcane Spell Damage"] = "Res. Daño Hech. Arcano"
 L["Arcane Spell Damage <- Arcane Spell Damage Spell Damage, Intellect"] = "Daño Hech. Arcano <- Daño Hech. Arcano, Daño Hech., Intelecto"
 -- /rb sum stat dmgfire
-L["Sum Fire Spell Damage"] = "Res. Daño Hech. Fuego"
 L["Fire Spell Damage <- Fire Spell Damage Spell Damage, Intellect, Stamina"] = "Daño Hech. Arcano <- Daño Hech. Arcano, Daño Hech., Intelecto, Aguante"
 -- /rb sum stat dmgnature
-L["Sum Nature Spell Damage"] = "Res. Daño Hech. Naturaleza"
 L["Nature Spell Damage <- Nature Spell Damage Spell Damage, Intellect"] = "Daño Hech. Naturaleza <- Daño Hech. Naturaleza, Daño Hech., Intelecto"
 -- /rb sum stat dmgfrost
-L["Sum Frost Spell Damage"] = "Res. Daño Hech. Frio"
 L["Frost Spell Damage <- Frost Spell Damage Spell Damage, Intellect"] = "Daño Hech. Frio <- Daño Hech. Frio, Daño Hech., Intelecto"
 -- /rb sum stat dmgshadow
-L["Sum Shadow Spell Damage"] = "Res. Daño Hech. Sombras"
 L["Shadow Spell Damage <- Shadow Spell Damage Spell Damage, Intellect, Spirit, Stamina"] = "Daño Hech. Sombras <- Daño Hech. Sombras, Daño Hech., Intelecto, Espíritu, Aguante"
 -- /rb sum stat heal
-L["Sum Healing"] = "Res. Sanacion"
 L["Healing <- Healing Intellect, Spirit, Agility, Strength"] = "Sanacion <- Sanacion, Intelecto, Espíritu, Agilidad, Fuerza"
 -- /rb sum stat hit
-L["Sum Hit Chance"] = "Res. prob. Golpe"
 L["Hit Chance <- Hit Rating Weapon Skill Rating"] = "prob. Golpe <- Índice Golpe, Índice pericia"
 -- /rb sum stat hitspell
-L["Sum Spell Hit Chance"] = "Res. prob. Golpe Hech."
 L["Spell Hit Chance <- Spell Hit Rating"] = "prob. Golpe Hech. <- Índice Golpe Hech."
 -- /rb sum stat crit
-L["Sum Crit Chance"] = "prob. Critico"
 L["Crit Chance <- Crit Rating Agility, Weapon Skill Rating"] = "prob. Critico <- Índice Critico, Agilidad, índice de pericia"
 -- /rb sum stat haste
-L["Sum Haste"] = "Res. Velocidad"
 L["Haste <- Haste Rating"] = "Velocidad <- Índice Velocidad"
-L["Sum Ranged Hit Chance"] = "Res. Prob. Golpe a Distancia"
 L["Ranged Hit Chance <- Hit Rating, Weapon Skill Rating, Ranged Hit Rating"] = true
--- /rb sum physical rangedhitrating
-L["Sum Ranged Hit Rating"] = "Res. Indice Golpe a Distancia"
-L["Ranged Hit Rating Summary"] = true
 -- /rb sum physical rangedcrit
-L["Sum Ranged Crit Chance"] = "Res. Prob. Critico a Distancia"
 L["Ranged Crit Chance <- Crit Rating, Agility, Weapon Skill Rating, Ranged Crit Rating"] = true
--- /rb sum physical rangedcritrating
-L["Sum Ranged Crit Rating"] = true
-L["Ranged Crit Rating Summary"] = true
 -- /rb sum physical rangedhaste
-L["Sum Ranged Haste"] = true
 L["Ranged Haste <- Haste Rating, Ranged Haste Rating"] = true
--- /rb sum physical rangedhasterating
-L["Sum Ranged Haste Rating"] = true
-L["Ranged Haste Rating Summary"] = true
 
 -- /rb sum stat critspell
-L["Sum Spell Crit Chance"] = "Res. prob. Critico Hech."
 L["Spell Crit Chance <- Spell Crit Rating Intellect"] = "prob. Critico Hech. <- Índice Critico Hech., Intelecto"
 -- /rb sum stat hastespell
-L["Sum Spell Haste"] = "Res. velocidad Hech."
 L["Spell Haste <- Spell Haste Rating"] = "Velocidad Hech. <- Índice Velocidad Hech."
 -- /rb sum stat mp5
-L["Sum Mana Regen"] = "Res. Regen. mana"
 L["Mana Regen <- Mana Regen Spirit"] = "Regen. mana <- Regen. mana, Espíritu"
 -- /rb sum stat mp5nc
-L["Sum Mana Regen while not casting"] = "Res. Regen. mana mientras no se lanza"
 L["Mana Regen while not casting <- Spirit"] = "Regen. mana mientras no se lanza <- Espíritu"
 -- /rb sum stat hp5
-L["Sum Health Regen"] = "Res. Regen. salud"
 L["Health Regen <- Health Regen"] = "Regen. salud <- Regen. salud"
 -- /rb sum stat hp5oc
-L["Sum Health Regen when out of combat"] = "Res. Regen. salud fuera de combate"
 L["Health Regen when out of combat <- Spirit"] = "Regen. salud fuera de combate <- Espíritu"
 -- /rb sum stat armor
-L["Sum Armor"] = "Res. Armadura"
 L["Armor <- Armor from items Armor from bonuses, Agility, Intellect"] = "Armadura <- Armadura de items, Armadura de bonus, Agilidad, Intelecto"
 -- /rb sum stat blockvalue
-L["Sum Block Value"] = "Res. Valor Bloqueo"
 L["Block Value <- Block Value Strength"] = "Valor Bloqueo <- Valor Bloqueo, Fuerza"
 -- /rb sum stat dodge
-L["Sum Dodge Chance"] = "Res. prob. Esquivar"
 L["Dodge Chance <- Dodge Rating Agility, Defense Rating"] = "Prob. Esquivar <- Índice Esquivar, Agilidad, índice defensa"
 -- /rb sum stat parry
-L["Sum Parry Chance"] = "Res. prob. Parar"
 L["Parry Chance <- Parry Rating Defense Rating"] = "Prob. Parar <- Índice Parar, índice defensa"
 -- /rb sum stat block
-L["Sum Block Chance"] = "Res. prob Bloqueo"
 L["Block Chance <- Block Rating Defense Rating"] = "Prob. Bloqueo <- Índice Bloqueo, índice defensa"
 -- /rb sum stat avoidhit
-L["Sum Hit Avoidance"] = "Res. Elusion golpe"
 L["Hit Avoidance <- Defense Rating"] = "Elusion golpe <- índice defensa"
 -- /rb sum stat avoidcrit
-L["Sum Crit Avoidance"] = "Res. Elusion Critico"
 L["Crit Avoidance <- Defense Rating Resilience"] = "Elusion Critico <- índice defensa, Temple"
 -- /rb sum stat Reductiondodge
-L["Sum Dodge Reduction"] = "Res. fallo Esquivar"
 L["Dodge Reduction <- Expertise Weapon Skill Rating"] = "Fallo Esquivar <- Pericia, Índice habilidad arma" -- 2.3.0
 -- /rb sum stat Reductionparry
-L["Sum Parry Reduction"] = "Res. fallo Parar"
 L["Parry Reduction <- Expertise Weapon Skill Rating"] = "Fallo Parar <- Pericia, Índice habilidad arma" -- 2.3.0
--- /rb sum stat Reductionblock
-L["Sum Block Reduction"] = "Res. fallo Bloquear"
-L["Block Reduction <- Weapon Skill Rating"] = "Fallo Bloquear <- Índice habilidad arma"
--- /rb sum stat resarcane
-L["Sum Arcane Resistance"] = "Res. Resist. Arcana"
-L["Arcane Resistance Summary"] = "Resumen Resistencia Arcana"
--- /rb sum stat resfire
-L["Sum Fire Resistance"] = "Res. Resist. Fuego"
-L["Fire Resistance Summary"] = "Resumen Resistencia Fuego"
--- /rb sum stat resnature
-L["Sum Nature Resistance"] = "Res. Resist. Naturaleza"
-L["Nature Resistance Summary"] = "Resumen Resistencia Naturaleza"
--- /rb sum stat resfrost
-L["Sum Frost Resistance"] = "Res. Resist. Frio"
-L["Frost Resistance Summary"] = "Resumen Resistencia Frio"
--- /rb sum stat resshadow
-L["Sum Shadow Resistance"] = "Res. Resist. Sombras"
-L["Shadow Resistance Summary"] = "Resumen Resistencia Sombras"
-L["Sum Weapon Average Damage"] = true
-L["Weapon Average Damage Summary"] = true
-L["Sum Weapon DPS"] = true
-L["Weapon DPS Summary"] = true
--- /rb sum stat pen
-L["Sum Penetration"] = "Res. Penetracion"
-L["Spell Penetration Summary"] = "Resumen Penetracion Hechizos"
--- /rb sum stat ignorearmor
-L["Sum Ignore Armor"] = "Res. Ignorar armadura"
-L["Ignore Armor Summary"] = "Resumen de Ignorar Armadura"
-L["Sum Armor Penetration"] = "Res. Penetracion Armadura"
-L["Armor Penetration Summary"] = "Resumen de Penetracion Armadura"
-L["Sum Armor Penetration Rating"] = "Res. Indice Penetracion Armadura"
-L["Armor Penetration Rating Summary"] = "Resumen Indice Penetracion de Armadura"
--- /rb sum statcomp str
-L["Sum Strength"] = "Res. Fuerza"
-L["Strength Summary"] = "Resumen Fuerza"
--- /rb sum statcomp agi
-L["Sum Agility"] = "Res. Agilidad"
-L["Agility Summary"] = "Resumen Agilidad"
--- /rb sum statcomp sta
-L["Sum Stamina"] = "Res. Aguante"
-L["Stamina Summary"] = "Resumen Aguante"
--- /rb sum statcomp int
-L["Sum Intellect"] = "Res. Intelecto"
-L["Intellect Summary"] = "Resumen Intelecto"
--- /rb sum statcomp spi
-L["Sum Spirit"] = "Res. Espíritu"
-L["Spirit Summary"] = "Resumen Espíritu"
--- /rb sum statcomp hitrating
-L["Sum Hit Rating"] = "Res. Índice Golpe"
-L["Hit Rating Summary"] = "Resumen Índice Golpe"
--- /rb sum statcomp critrating
-L["Sum Crit Rating"] = "Res. Índice Critico"
-L["Crit Rating Summary"] = "Resumen Índice Critico"
--- /rb sum statcomp hasterating
-L["Sum Haste Rating"] = "Res. Índice Velocidad"
-L["Haste Rating Summary"] = "Resumen Índice Velocidad"
--- /rb sum statcomp hitspellrating
-L["Sum Spell Hit Rating"] = "Res. Golpe Hech."
-L["Spell Hit Rating Summary"] = "Resumen Golpe Hech."
--- /rb sum statcomp critspellrating
-L["Sum Spell Crit Rating"] = "Res. Índice Critico Hech."
-L["Spell Crit Rating Summary"] = "Resumen Índice Critico Hech."
--- /rb sum statcomp hastespellrating
-L["Sum Spell Haste Rating"] = "Res. Índice Velocidad Hech."
-L["Spell Haste Rating Summary"] = "Resumen Índice Velocidad Hech."
--- /rb sum statcomp dodgerating
-L["Sum Dodge Rating"] = "Res. Índice Esquivar"
-L["Dodge Rating Summary"] = "Resumen Índice Esquivar"
--- /rb sum statcomp parryrating
-L["Sum Parry Rating"] = "Res. Índice Parar"
-L["Parry Rating Summary"] = "Resumen Índice Parar"
--- /rb sum statcomp blockrating
-L["Sum Block Rating"] = "Res. Índice Bloquear"
-L["Block Rating Summary"] = "Resumen Índice Bloquear"
--- /rb sum statcomp res
-L["Sum Resilience"] = "Res. Temple"
-L["Resilience Summary"] = "Resumen Temple"
+
 -- /rb sum statcomp def
-L["Sum Defense"] = "Res. Defensa"
 L["Defense <- Defense Rating"] = "Defensa <- índice defensa"
 -- /rb sum statcomp wpn
-L["Sum Weapon Skill"] = "Res. Habilidad Arma"
 L["Weapon Skill <- Weapon Skill Rating"] = "Habilidad Arma <- Índice Habilidad Arma"
 -- /rb sum statcomp exp -- 2.3.0
-L["Sum Expertise"] = "Res. Pericia"
 L["Expertise <- Expertise Rating"] = "Pericia <- Índice Pericia"
 -- /rb sum statcomp avoid
-L["Sum Avoidance"] = "Res. Elusion"
 L["Avoidance <- Dodge Parry, MobMiss, Block(Optional)"] = "Elusion <- Esquivar, Parar, FalloEnemigo, Bloqueo(Opcional)"
 
 -- /rb sum gem
@@ -550,7 +394,6 @@ L["$value% Parry"] = "$value Parada"
 L["$value Spell"] = "$value Hech."
 L["$value Spell Hit"] = "$value Golpe Hech."
 
-L[StatLogic.Stats.HealingPower] = STAT_SPELLHEALING
 L[StatLogic.Stats.ManaRegen] = "Regen.Mana"
 L[StatLogic.Stats.ManaRegenNotCasting] = "Regen.Mana (No se lanza)"
 L[StatLogic.Stats.ManaRegenOutOfCombat] = "Regen.Mana (Out of Combat)"
@@ -559,97 +402,85 @@ if addon.tocversion > 40000 then
 end
 L[StatLogic.Stats.HealthRegen] = "Regen.Salud"
 L[StatLogic.Stats.HealthRegenOutOfCombat] = "Regen.Salud (Out of Combat)"
-L["StatModOptionName"] = "%s %s"
+L["Show %s"] = SHOW.." %s"
 
-L[StatLogic.Stats.IgnoreArmor] = "Ignore Armor"
+L[StatLogic.Stats.IgnoreArmor] = "Ignorar armadura"
 
-L[StatLogic.Stats.Strength] = SPELL_STAT1_NAME
-L[StatLogic.Stats.Agility] = SPELL_STAT2_NAME
-L[StatLogic.Stats.Stamina] = SPELL_STAT3_NAME
-L[StatLogic.Stats.Intellect] = SPELL_STAT4_NAME
-L[StatLogic.Stats.Spirit] = SPELL_STAT5_NAME
-L[StatLogic.Stats.Armor] = ARMOR
+L[StatLogic.Stats.Strength] = "Fuerza"
+L[StatLogic.Stats.Agility] = "Agilidad"
+L[StatLogic.Stats.Stamina] = "Aguante"
+L[StatLogic.Stats.Intellect] = "Intelecto"
+L[StatLogic.Stats.Spirit] = "Espíritu"
+L[StatLogic.Stats.Armor] = "Armadura"
 
-L[StatLogic.Stats.FireResistance] = RESISTANCE2_NAME
-L[StatLogic.Stats.NatureResistance] = RESISTANCE3_NAME
-L[StatLogic.Stats.FrostResistance] = RESISTANCE4_NAME
-L[StatLogic.Stats.ShadowResistance] = RESISTANCE5_NAME
-L[StatLogic.Stats.ArcaneResistance] = RESISTANCE6_NAME
+L[StatLogic.Stats.FireResistance] = "Resist. Fuego"
+L[StatLogic.Stats.NatureResistance] = "Resist. Naturaleza"
+L[StatLogic.Stats.FrostResistance] = "Resist. Frio"
+L[StatLogic.Stats.ShadowResistance] = "Resist. Sombras"
+L[StatLogic.Stats.ArcaneResistance] = "Resist. Arcana"
 
-L[StatLogic.Stats.BlockValue] = "Block Value"
+L[StatLogic.Stats.BlockValue] = "Valor Bloqueo"
 
-L[StatLogic.Stats.AttackPower] = ATTACK_POWER_TOOLTIP
-L[StatLogic.Stats.RangedAttackPower] = RANGED_ATTACK_POWER
+L[StatLogic.Stats.AttackPower] = "Poder Ataque"
+L[StatLogic.Stats.RangedAttackPower] = "P.Ataque Distancia"
 L[StatLogic.Stats.FeralAttackPower] = "Feral "..ATTACK_POWER_TOOLTIP
 
-L[StatLogic.Stats.HealingPower] = "Healing"
+L[StatLogic.Stats.HealingPower] = "Sanacion"
 
 L[StatLogic.Stats.SpellPower] = STAT_SPELLPOWER
-L[StatLogic.Stats.SpellDamage] = STAT_SPELLDAMAGE
-L[StatLogic.Stats.HolyDamage] = SPELL_SCHOOL1_CAP.." "..DAMAGE
-L[StatLogic.Stats.FireDamage] = SPELL_SCHOOL2_CAP.." "..DAMAGE
-L[StatLogic.Stats.NatureDamage] = SPELL_SCHOOL3_CAP.." "..DAMAGE
-L[StatLogic.Stats.FrostDamage] = SPELL_SCHOOL4_CAP.." "..DAMAGE
-L[StatLogic.Stats.ShadowDamage] = SPELL_SCHOOL5_CAP.." "..DAMAGE
-L[StatLogic.Stats.ArcaneDamage] = SPELL_SCHOOL6_CAP.." "..DAMAGE
+L[StatLogic.Stats.SpellDamage] = "Daño Hech."
+L[StatLogic.Stats.HolyDamage] = "Daño Hech. Sagrado"
+L[StatLogic.Stats.FireDamage] = "Daño Hech. Fuego"
+L[StatLogic.Stats.NatureDamage] = "Daño Hech. Naturaleza"
+L[StatLogic.Stats.FrostDamage] = "Daño Hech. Frio"
+L[StatLogic.Stats.ShadowDamage] = "Daño Hech. Sombras"
+L[StatLogic.Stats.ArcaneDamage] = "Daño Hech. Arcano"
 
-L[StatLogic.Stats.SpellPenetration] = PLAYERSTAT_SPELL_COMBAT.." "..SPELL_PENETRATION
+L[StatLogic.Stats.SpellPenetration] = "Penetracion"
 
-L[StatLogic.Stats.Health] = HEALTH
-L[StatLogic.Stats.Mana] = MANA
+L[StatLogic.Stats.Health] = "Salud"
+L[StatLogic.Stats.Mana] = "Mana"
 
 L[StatLogic.Stats.AverageWeaponDamage] = "Average Damage"
 L[StatLogic.Stats.WeaponDPS] = "Damage Per Second"
 
 L[StatLogic.Stats.DefenseRating] = COMBAT_RATING_NAME2 -- COMBAT_RATING_NAME2 = "Defense Rating"
-L[StatLogic.Stats.DodgeRating] = COMBAT_RATING_NAME3 -- COMBAT_RATING_NAME3 = "Dodge Rating"
-L[StatLogic.Stats.ParryRating] = COMBAT_RATING_NAME4 -- COMBAT_RATING_NAME4 = "Parry Rating"
-L[StatLogic.Stats.BlockRating] = COMBAT_RATING_NAME5 -- COMBAT_RATING_NAME5 = "Block Rating"
-L[StatLogic.Stats.MeleeHitRating] = COMBAT_RATING_NAME6 -- COMBAT_RATING_NAME6 = "Hit Rating"
-L[StatLogic.Stats.RangedHitRating] = PLAYERSTAT_RANGED_COMBAT.." "..COMBAT_RATING_NAME6 -- PLAYERSTAT_RANGED_COMBAT = "Ranged"
-L[StatLogic.Stats.SpellHitRating] = PLAYERSTAT_SPELL_COMBAT.." "..COMBAT_RATING_NAME6 -- PLAYERSTAT_SPELL_COMBAT = "Spell"
-L[StatLogic.Stats.MeleeCritRating] = COMBAT_RATING_NAME9 -- COMBAT_RATING_NAME9 = "Crit Rating"
+L[StatLogic.Stats.DodgeRating] = "Índice Esquivar"
+L[StatLogic.Stats.ParryRating] = "Índice Parar"
+L[StatLogic.Stats.BlockRating] = "Índice Bloquear"
+L[StatLogic.Stats.MeleeHitRating] = "Índice Golpe"
+L[StatLogic.Stats.RangedHitRating] = "Indice Golpe a Distancia"
+L[StatLogic.Stats.SpellHitRating] = "Golpe Hech."
+L[StatLogic.Stats.MeleeCritRating] = "Índice Critico"
 L[StatLogic.Stats.RangedCritRating] = PLAYERSTAT_RANGED_COMBAT.." "..COMBAT_RATING_NAME9
-L[StatLogic.Stats.SpellCritRating] = PLAYERSTAT_SPELL_COMBAT.." "..COMBAT_RATING_NAME9
-L[StatLogic.Stats.ResilienceRating] = COMBAT_RATING_NAME15 -- COMBAT_RATING_NAME15 = "Resilience"
-L[StatLogic.Stats.MeleeHasteRating] = "Haste "..RATING --
+L[StatLogic.Stats.SpellCritRating] = "Índice Critico Hech."
+L[StatLogic.Stats.ResilienceRating] = "Temple"
+L[StatLogic.Stats.MeleeHasteRating] = "Índice Velocidad"
 L[StatLogic.Stats.RangedHasteRating] = PLAYERSTAT_RANGED_COMBAT.." Haste "..RATING
-L[StatLogic.Stats.SpellHasteRating] = PLAYERSTAT_SPELL_COMBAT.." Haste "..RATING
+L[StatLogic.Stats.SpellHasteRating] = "Índice Velocidad Hech."
 L[StatLogic.Stats.ExpertiseRating] = "Pericia".." "..RATING
-L[StatLogic.Stats.ArmorPenetrationRating] = "Penetración de Armadura".." "..RATING
-L[StatLogic.Stats.MasteryRating] = STAT_MASTERY.." "..RATING
--- Tier2 Stats - Stats that only show up when broken down from a Tier1 stat
--- Str -> AP, Block Value
--- Agi -> AP, Crit, Dodge
--- Sta -> Health
--- Int -> Mana, Spell Crit
--- Spi -> mp5nc, hp5oc
--- Ratings -> Effect
-L[StatLogic.Stats.CritDamageReduction] = "Crit Damage Reduction(%)"
-L[StatLogic.Stats.Defense] = DEFENSE
-L[StatLogic.Stats.Dodge] = DODGE.."(%)"
-L[StatLogic.Stats.Parry] = PARRY.."(%)"
-L[StatLogic.Stats.BlockChance] = BLOCK.."(%)"
-L[StatLogic.Stats.Avoidance] = "Avoidance(%)"
-L[StatLogic.Stats.MeleeHit] = "Prob. de Golpe(%)"
-L[StatLogic.Stats.RangedHit] = PLAYERSTAT_RANGED_COMBAT.." Hit Chance(%)"
-L[StatLogic.Stats.SpellHit] = PLAYERSTAT_SPELL_COMBAT.." Hit Chance(%)"
-L[StatLogic.Stats.Miss] = "Hit Avoidance(%)"
-L[StatLogic.Stats.MeleeCrit] = MELEE_CRIT_CHANCE.."(%)" -- MELEE_CRIT_CHANCE = "Crit Chance"
-L[StatLogic.Stats.RangedCrit] = PLAYERSTAT_RANGED_COMBAT.." "..MELEE_CRIT_CHANCE.."(%)"
-L[StatLogic.Stats.SpellCrit] = PLAYERSTAT_SPELL_COMBAT.." "..MELEE_CRIT_CHANCE.."(%)"
-L[StatLogic.Stats.CritAvoidance] = "Crit Avoidance(%)"
-L[StatLogic.Stats.MeleeHaste] = "Haste(%)" --
-L[StatLogic.Stats.RangedHaste] = PLAYERSTAT_RANGED_COMBAT.." Haste(%)"
-L[StatLogic.Stats.SpellHaste] = PLAYERSTAT_SPELL_COMBAT.." Haste(%)"
+L[StatLogic.Stats.ArmorPenetrationRating] = "Indice Penetracion Armadura"
+L[StatLogic.Stats.MasteryRating] = RATING.." "..STAT_MASTERY
+L[StatLogic.Stats.CritDamageReduction] = "Crit Damage Reduction"
+L[StatLogic.Stats.Defense] = "Defensa"
+L[StatLogic.Stats.Dodge] = "Prob. Esquivar"
+L[StatLogic.Stats.Parry] = "Prob. Parar"
+L[StatLogic.Stats.BlockChance] = "Prob Bloqueo"
+L[StatLogic.Stats.Avoidance] = "Elusion"
+L[StatLogic.Stats.MeleeHit] = "Prob. Golpe"
+L[StatLogic.Stats.RangedHit] = "Prob. Golpe a Distancia"
+L[StatLogic.Stats.SpellHit] = "Prob. Golpe Hech."
+L[StatLogic.Stats.Miss] = "Elusion golpe"
+L[StatLogic.Stats.MeleeCrit] = "prob. Critico"
+L[StatLogic.Stats.RangedCrit] = "Prob. Critico a Distancia"
+L[StatLogic.Stats.SpellCrit] = "Prob. Critico Hech."
+L[StatLogic.Stats.CritAvoidance] = "Elusion Critico"
+L[StatLogic.Stats.MeleeHaste] = "Velocidad"
+L[StatLogic.Stats.RangedHaste] = PLAYERSTAT_RANGED_COMBAT.." Haste"
+L[StatLogic.Stats.SpellHaste] = "Velocidad Hech."
 L[StatLogic.Stats.Expertise] = "Pericia"
-L[StatLogic.Stats.ArmorPenetration] = "Penetr. Armadura(%)"
+L[StatLogic.Stats.ArmorPenetration] = "Penetracion Armadura"
 L[StatLogic.Stats.Mastery] = STAT_MASTERY
--- Tier3 Stats - Stats that only show up when broken down from a Tier2 stat
--- Defense -> Crit Avoidance, Hit Avoidance, Dodge, Parry, Block
--- Weapon Skill -> Crit, Hit, Dodge Reduction, Parry Reduction, Block Reduction
--- Expertise -> Dodge Reduction, Parry Reduction
-L[StatLogic.Stats.DodgeReduction] = DODGE.." Reduction(%)"
-L[StatLogic.Stats.ParryReduction] = PARRY.." Reduction(%)"
--- Misc Stats
-L[StatLogic.Stats.WeaponSkill] = "Weapon "..SKILL
+L[StatLogic.Stats.DodgeReduction] = "Fallo Esquivar"
+L[StatLogic.Stats.ParryReduction] = "Fallo Parar"
+L[StatLogic.Stats.WeaponSkill] = "Habilidad Arma"
