@@ -12,10 +12,13 @@ addon.tocversion = select(4, GetBuildInfo())
 ---@field numberPatterns table
 ---@field exclusions table
 ---@field separators table
----@field statList table
+---@field statList { [1]: string, [2]: Stat|false }[]
 ---@field [string] string
 
 ---@class RatingBusterDefaultLocale : RatingBusterLocale
+---@field [string] string|true
+
+---@type RatingBusterDefaultLocale
 local L = LibStub("AceLocale-3.0"):NewLocale("RatingBuster", "enUS", true)
 L["RatingBuster Options"] = true
 local StatLogic = LibStub("StatLogic")

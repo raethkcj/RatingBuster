@@ -7,7 +7,7 @@ Translated by:
 
 local _, addon = ...
 
----@class RatingBusterLocale
+---@type RatingBusterLocale
 local L = LibStub("AceLocale-3.0"):NewLocale("RatingBuster", "deDE")
 if not L then return end
 local StatLogic = LibStub("StatLogic")
@@ -45,14 +45,14 @@ L["Set the level used in calculations (0 = your level)"] = "Legt den Level der z
 -- /rb color
 L["Change text color"] = "Ändere Textfarbe"
 L["Changes the color of added text"] = "Ändert die Textfarbe des hinzugefügten Textes"
-L["Change number color"] = true
+L["Change number color"] = "Change number color"
 -- /rb rating
 L["Rating"] = "Bewertung"
 L["Options for Rating display"] = "Optionen für die Bewertungsanzeige"
 -- /rb rating show
 L["Show Rating conversions"] = "Zeige Bewertungsumrechnung"
 L["Show Rating conversions in tooltips"] = "Zeige Bewertungsumrechnung im Tooltip"
-L["Enable integration with Blizzard Reforging UI"] = true
+L["Enable integration with Blizzard Reforging UI"] = "Enable integration with Blizzard Reforging UI"
 -- TODO
 -- /rb rating spell
 L["Show Spell Hit/Haste"] = "Zeige Zaubertempo/-trefferchance"
@@ -103,8 +103,8 @@ L["Ignore enchants on items when calculating the stat summary"] = "Ignoriere Ite
 -- /rb sum ignore gem
 L["Ignore gems"] = "Ignoriere Edelsteine"
 L["Ignore gems on items when calculating the stat summary"] = "Ignoriere Edelsteine auf gesockelten Items für die Berechnung der Werteübersicht"
-L["Ignore extra sockets"] = true
-L["Ignore sockets from professions or consumable items when calculating the stat summary"] = true
+L["Ignore extra sockets"] = "Ignore extra sockets"
+L["Ignore sockets from professions or consumable items when calculating the stat summary"] = "Ignore sockets from professions or consumable items when calculating the stat summary"
 -- /rb sum diffstyle
 L["Display style for diff value"] = "Anzeigestil für veränderte Werte"
 L["Display diff values in the main tooltip or only in compare tooltips"] = "Zeige veränderte Werte im Hauptooltip oder nur in Vergleichstooltips"
@@ -369,18 +369,18 @@ L["statList"] = {
 L["$value% Crit"] = "$value% krit."
 L["$value% Spell Crit"] = "$value% Zauberkrit."
 L["$value% Dodge"] = "$value% Ausweichen"
---	["$value HP"] = true,
---	["$value MP"] = true,
---	["$value AP"] = true,
---	["$value RAP"] = true,
+L["$value HP"] = "$value HP"
+L["$value MP"] = "$value MP"
+L["$value AP"] = "$value AP"
+L["$value RAP"] = "$value RAP"
 L["$value Spell Dmg"] = "$value Schaden"
 L["$value Heal"] = "$value Heilung"
 L["$value Armor"] = "$value Rüstung"
 L["$value Block"] = "$value Blocken"
---	["$value MP5"] = true,
---	["$value MP5(NC)"] = true,
---	["$value HP5"] = true,
---  L["$value HP5(NC)"] = true
+L["$value MP5"] = "$value MP5"
+L["$value MP5(NC)"] = "$value MP5(NC)"
+L["$value HP5"] = "$value HP5"
+L["$value HP5(NC)"] = "$value HP5(NC)"
 L["$value to be Dodged/Parried"] = "$value wird Ausgewichen/Pariert"
 L["$value to be Crit"] = "$value wird kritisch"
 L["$value Crit Dmg Taken"] = "$value erlittener krit. Schaden"

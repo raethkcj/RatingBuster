@@ -7,7 +7,7 @@ Translated by:
 
 local _, addon = ...
 
----@class RatingBusterLocale
+---@type RatingBusterLocale
 local L = LibStub("AceLocale-3.0"):NewLocale("RatingBuster", "koKR")
 if not L then return end
 local StatLogic = LibStub("StatLogic")
@@ -45,14 +45,14 @@ L["Set the level used in calculations (0 = your level)"] = "계산에 적용할 
 -- /rb color
 L["Change text color"] = "글자 색상 변경"
 L["Changes the color of added text"] = "추가된 글자의 색상을 변경합니다."
-L["Change number color"] = true
+L["Change number color"] = "Change number color"
 -- /rb rating
 L["Rating"] = "평점"
 L["Options for Rating display"] = "평점 표시에 대한 설정입니다."
 -- /rb rating show
 L["Show Rating conversions"] = "평점 변화 표시"
 L["Show Rating conversions in tooltips"] = "툴팁에 평점 변화를 표시합니다."
-L["Enable integration with Blizzard Reforging UI"] = true
+L["Enable integration with Blizzard Reforging UI"] = "Enable integration with Blizzard Reforging UI"
 -- TODO
 -- /rb rating spell
 L["Show Spell Hit/Haste"] = "주문 적중/가속 표시"
@@ -103,8 +103,8 @@ L["Ignore enchants on items when calculating the stat summary"] = "능력치 요
 -- /rb sum ignore gem
 L["Ignore gems"] = "보석 제외"
 L["Ignore gems on items when calculating the stat summary"] = "능력치 요약 계산에 아이템의 보석을 포함하지 않습니다."
-L["Ignore extra sockets"] = true
-L["Ignore sockets from professions or consumable items when calculating the stat summary"] = true
+L["Ignore extra sockets"] = "Ignore extra sockets"
+L["Ignore sockets from professions or consumable items when calculating the stat summary"] = "Ignore sockets from professions or consumable items when calculating the stat summary"
 -- /rb sum diffstyle
 L["Display style for diff value"] = "차이값 표시 형식"
 L["Display diff values in the main tooltip or only in compare tooltips"] = "주요 툴팁 이나 비교 툴팁에만 차이값을 표시합니다."
@@ -247,12 +247,12 @@ L["ItemID: "] = "아이템ID: "
 -------------------
 -- Always Buffed --
 -------------------
-L["Enables RatingBuster to calculate selected buff effects even if you don't really have them"] = true
-L["$class Self Buffs"] = true -- $class will be replaced with localized player class
-L["Raid Buffs"] = true
-L["Stat Multiplier"] = true
-L["Attack Power Multiplier"] = true
-L["Reduced Physical Damage Taken"] = true
+L["Enables RatingBuster to calculate selected buff effects even if you don't really have them"] = "Enables RatingBuster to calculate selected buff effects even if you don't really have them"
+L["$class Self Buffs"] = "$class Self Buffs" -- $class will be replaced with localized player class
+L["Raid Buffs"] = "Raid Buffs"
+L["Stat Multiplier"] = "Stat Multiplier"
+L["Attack Power Multiplier"] = "Attack Power Multiplier"
+L["Reduced Physical Damage Taken"] = "Reduced Physical Damage Taken"
 
 -----------------------
 -- Matching Patterns --
@@ -380,12 +380,12 @@ L["$value Block"] = "방어 $value"
 L["$value MP5"] = "$value MP5"
 L["$value MP5(NC)"] = "$value MP5(NC)"
 L["$value HP5"] = "$value HP5"
-L["$value HP5(NC)"] = true
+L["$value HP5(NC)"] = "$value HP5(NC)"
 L["$value to be Dodged/Parried"] = "이후 회피 감소/무기막기 감소 $value"
 L["$value to be Crit"] = "이후 치명타 $value"
 L["$value Crit Dmg Taken"] = "가질 치명타 데미지 $value"
 L["$value DOT Dmg Taken"] = "가질 DOT 데미지 $value"
-L["$value Dmg Taken"] = true
+L["$value Dmg Taken"] = "$value Dmg Taken"
 L["$value% Parry"] = "무막 $value%"
 -- for hit rating showing both physical and spell conversions
 -- (+1.21%, S+0.98%)

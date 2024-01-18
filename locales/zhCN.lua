@@ -7,7 +7,7 @@ Translated by:
 
 local _, addon = ...
 
----@class RatingBusterLocale
+---@type RatingBusterLocale
 local L = LibStub("AceLocale-3.0"):NewLocale("RatingBuster", "zhCN")
 if not L then return end
 local StatLogic = LibStub("StatLogic")
@@ -45,14 +45,14 @@ L["Set the level used in calculations (0 = your level)"] = "设定换算等级 (
 -- /rb color
 L["Change text color"] = "设定文字颜色"
 L["Changes the color of added text"] = "设定RB所增加的文字的颜色"
-L["Change number color"] = true
+L["Change number color"] = "Change number color"
 -- /rb rating
 L["Rating"] = "属性等级"
 L["Options for Rating display"] = "设定属性等级显示"
 -- /rb rating show
 L["Show Rating conversions"] = "显示属性等级转换"
 L["Show Rating conversions in tooltips"] = "在提示框架中显示属性等级转换结果"
-L["Enable integration with Blizzard Reforging UI"] = true
+L["Enable integration with Blizzard Reforging UI"] = "Enable integration with Blizzard Reforging UI"
 -- /rb rating spell
 L["Show Spell Hit/Haste"] = "显示法术命中/急速"
 L["Show Spell Hit/Haste from Hit/Haste Rating"] = "显示命中/急速等级给的法术命中/急速加成"
@@ -102,8 +102,8 @@ L["Ignore enchants on items when calculating the stat summary"] = "计算时忽�
 -- /rb sum ignore gem
 L["Ignore gems"] = "忽略宝石"
 L["Ignore gems on items when calculating the stat summary"] = "计算时忽略物品上的宝石效果"
-L["Ignore extra sockets"] = true
-L["Ignore sockets from professions or consumable items when calculating the stat summary"] = true
+L["Ignore extra sockets"] = "Ignore extra sockets"
+L["Ignore sockets from professions or consumable items when calculating the stat summary"] = "Ignore sockets from professions or consumable items when calculating the stat summary"
 -- /rb sum diffstyle
 L["Display style for diff value"] = "差异值显示方式"
 L["Display diff values in the main tooltip or only in compare tooltips"] = "设定在主提示框架或只在比较框架中显示差异值"
@@ -248,9 +248,9 @@ L["ItemID: "] = "物品编号: "
 L["Enables RatingBuster to calculate selected buff effects even if you don't really have them"] = "指定常驻buff，就算身上没有buff，RatingBuster也会当成有来计算"
 L["$class Self Buffs"] = "$class个人Buff"
 L["Raid Buffs"] = "团队Buff"
-L["Stat Multiplier"] = true
-L["Attack Power Multiplier"] = true
-L["Reduced Physical Damage Taken"] = true
+L["Stat Multiplier"] = "Stat Multiplier"
+L["Attack Power Multiplier"] = "Attack Power Multiplier"
+L["Reduced Physical Damage Taken"] = "Reduced Physical Damage Taken"
 
 -----------------------
 -- Matching Patterns --
@@ -385,13 +385,13 @@ L["$value to be Dodged/Parried"] = "$value 被躲闪/被招架"
 L["$value to be Crit"] = "$value 被致命一击"
 L["$value Crit Dmg Taken"] = "$value 致命一击伤害减免"
 L["$value DOT Dmg Taken"] = "$value 持续伤害减免"
-L["$value Dmg Taken"] = true
+L["$value Dmg Taken"] = "$value Dmg Taken"
 L["$value% Parry"] = "$value% 招架"
 -- for hit rating showing both physical and spell conversions
 -- (+1.21%, S+0.98%)
 -- (+1.21%, +0.98% S)
 L["$value Spell"] = "$value 法术"
-L["$value Spell Hit"] = true
+L["$value Spell Hit"] = "$value Spell Hit"
 
 L[StatLogic.Stats.ManaRegen] = "法力回复"
 L[StatLogic.Stats.ManaRegenNotCasting] = "法力回复 (未施法)"

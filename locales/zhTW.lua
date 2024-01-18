@@ -10,7 +10,7 @@ Translated by:
 
 local _, addon = ...
 
----@class RatingBusterLocale
+---@type RatingBusterLocale
 local L = LibStub("AceLocale-3.0"):NewLocale("RatingBuster", "zhTW")
 if not L then return end
 local StatLogic = LibStub("StatLogic")
@@ -48,14 +48,14 @@ L["Set the level used in calculations (0 = your level)"] = "設定換算等級 (
 -- /rb color
 L["Change text color"] = "設定文字顏色"
 L["Changes the color of added text"] = "設定 RB 所增加的文字的顏色"
-L["Change number color"] = true
+L["Change number color"] = "Change number color"
 -- /rb rating
 L["Rating"] = "屬性等級"
 L["Options for Rating display"] = "設定屬性等級顯示"
 -- /rb rating show
 L["Show Rating conversions"] = "顯示屬性等級轉換"
 L["Show Rating conversions in tooltips"] = "在提示框架中顯示屬性等級轉換結果"
-L["Enable integration with Blizzard Reforging UI"] = true
+L["Enable integration with Blizzard Reforging UI"] = "Enable integration with Blizzard Reforging UI"
 -- /rb rating spell
 L["Show Spell Hit/Haste"] = "顯示法術命中/加速"
 L["Show Spell Hit/Haste from Hit/Haste Rating"] = "顯示命中/加速給的法術命中/加速"
@@ -105,8 +105,8 @@ L["Ignore enchants on items when calculating the stat summary"] = "計算時忽�
 -- /rb sum ignore gem
 L["Ignore gems"] = "忽略寶石"
 L["Ignore gems on items when calculating the stat summary"] = "計算時忽略物品上的寶石效果"
-L["Ignore extra sockets"] = true
-L["Ignore sockets from professions or consumable items when calculating the stat summary"] = true
+L["Ignore extra sockets"] = "Ignore extra sockets"
+L["Ignore sockets from professions or consumable items when calculating the stat summary"] = "Ignore sockets from professions or consumable items when calculating the stat summary"
 -- /rb sum diffstyle
 L["Display style for diff value"] = "差異值顯示方式"
 L["Display diff values in the main tooltip or only in compare tooltips"] = "設定在主提示框架或只在比較框架中顯示差異值"
@@ -385,7 +385,7 @@ L["$value to be Dodged/Parried"] = "$value 被閃躲/被招架"
 L["$value to be Crit"] = "$value 被致命"
 L["$value Crit Dmg Taken"] = "$value 致命傷害減免"
 L["$value DOT Dmg Taken"] = "$value 持續傷害減免"
-L["$value Dmg Taken"] = true
+L["$value Dmg Taken"] = "$value Dmg Taken"
 L["$value% Parry"] = "$value% 招架"
 -- for hit rating showing both physical and spell conversions
 -- (+1.21%, S+0.98%)

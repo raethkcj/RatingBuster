@@ -7,17 +7,17 @@ Translated by: Tixu@Curse, Silaor, renchap
 
 local _, addon = ...
 
----@class RatingBusterLocale
+---@type RatingBusterLocale
 local L = LibStub("AceLocale-3.0"):NewLocale("RatingBuster", "frFR")
 if not L then return end
 local StatLogic = LibStub("StatLogic")
-L["RatingBuster Options"] = true
+L["RatingBuster Options"] = "RatingBuster Options"
 ---------------------------
 -- Slash Command Options --
 ---------------------------
 -- /rb help
-L["Help"] = true
-L["Show this help message"] = true
+L["Help"] = "Help"
+L["Show this help message"] = "Show this help message"
 -- /rb win
 L["Options Window"] = "Fenêtre des options"
 L["Shows the Options Window"] = "Affiche la fenêtre des options"
@@ -49,7 +49,7 @@ L["Options for Rating display"] = "Sélectionne les différents bonus liés aux 
 -- /rb rating show
 L["Show Rating conversions"] = "Aperçu pourcentage"
 L["Show Rating conversions in tooltips"] = "Ajoute la conversion en pourcentage des différents scores dans les info-bulles des objets.\n\nCette case est requise pour l'affichage des scores détaillés."
-L["Enable integration with Blizzard Reforging UI"] = true
+L["Enable integration with Blizzard Reforging UI"] = "Enable integration with Blizzard Reforging UI"
 -- TODO
 -- /rb rating spell
 L["Show Spell Hit/Haste"] = "Toucher/Hâte des sorts"
@@ -121,8 +121,8 @@ L["Ignore enchants on items when calculating the stat summary"] = "Ignorer les e
 -- /rb sum ignore gem
 L["Ignore gems"] = "Gemmes"
 L["Ignore gems on items when calculating the stat summary"] = "Ignorer les gemmes lors des calculs du résumé."
-L["Ignore extra sockets"] = true
-L["Ignore sockets from professions or consumable items when calculating the stat summary"] = true
+L["Ignore extra sockets"] = "Ignore extra sockets"
+L["Ignore sockets from professions or consumable items when calculating the stat summary"] = "Ignore sockets from professions or consumable items when calculating the stat summary"
 -- /rb sum diffstyle
 L["Display style for diff value"] = "Mode d'affichage du comparatif"
 L["Display diff values in the main tooltip or only in compare tooltips"] = "Détermine si le comparatif s'ajoute à l'info-bulle principale ou à l'info-bulle de la pièce comparée."
@@ -200,11 +200,11 @@ L["Hit Chance <- Hit Rating, Weapon Skill Rating"] = "Inclure le pourcentage de 
 L["Crit Chance <- Crit Rating, Agility, Weapon Skill Rating"] = "Inclure le pourcentage de Coups critiques conféré par : Score de coup critique + Agilité + Compétence d'arme."
 -- /rb sum stat haste
 L["Haste <- Haste Rating"] = "Inclure le pourcentage de Hâte conféré par : le Score de hâte."
-L["Ranged Hit Chance <- Hit Rating, Weapon Skill Rating, Ranged Hit Rating"] = true
+L["Ranged Hit Chance <- Hit Rating, Weapon Skill Rating, Ranged Hit Rating"] = "Ranged Hit Chance <- Hit Rating, Weapon Skill Rating, Ranged Hit Rating"
 -- /rb sum physical rangedcrit
-L["Ranged Crit Chance <- Crit Rating, Agility, Weapon Skill Rating, Ranged Crit Rating"] = true
+L["Ranged Crit Chance <- Crit Rating, Agility, Weapon Skill Rating, Ranged Crit Rating"] = "Ranged Crit Chance <- Crit Rating, Agility, Weapon Skill Rating, Ranged Crit Rating"
 -- /rb sum physical rangedhaste
-L["Ranged Haste <- Haste Rating, Ranged Haste Rating"] = true
+L["Ranged Haste <- Haste Rating, Ranged Haste Rating"] = "Ranged Haste <- Haste Rating, Ranged Haste Rating"
 -- /rb sum stat critspell
 L["Spell Crit Chance <- Spell Crit Rating, Intellect"] = "Inclure le pourcentage de Coups critiques des sorts conféré par : Score de coup critique des sorts + Intelligence."
 -- /rb sum stat hitspell
@@ -263,12 +263,12 @@ L["ItemID: "] = "ID Objet : "
 -------------------
 -- Always Buffed --
 -------------------
-L["Enables RatingBuster to calculate selected buff effects even if you don't really have them"] = true
-L["$class Self Buffs"] = true -- $class will be replaced with localized player class
-L["Raid Buffs"] = true
-L["Stat Multiplier"] = true
-L["Attack Power Multiplier"] = true
-L["Reduced Physical Damage Taken"] = true
+L["Enables RatingBuster to calculate selected buff effects even if you don't really have them"] = "Enables RatingBuster to calculate selected buff effects even if you don't really have them"
+L["$class Self Buffs"] = "$class Self Buffs" -- $class will be replaced with localized player class
+L["Raid Buffs"] = "Raid Buffs"
+L["Stat Multiplier"] = "Stat Multiplier"
+L["Attack Power Multiplier"] = "Attack Power Multiplier"
+L["Reduced Physical Damage Taken"] = "Reduced Physical Damage Taken"
 
 -----------------------
 -- Matching Patterns --
@@ -408,7 +408,7 @@ L["$value to be Dodged/Parried"] = "$value esquivé/paré"
 L["$value to be Crit"] = "$value recevoir CC"
 L["$value Crit Dmg Taken"] = "$value dégâts CC"
 L["$value DOT Dmg Taken"] = "$value dégâts DoT"
-L["$value Dmg Taken"] = true
+L["$value Dmg Taken"] = "$value Dmg Taken"
 L["$value% Parry"] = "$value% parer"
 -- for hit rating showing both physical and spell conversions
 -- (+1.21%, S+0.98%)

@@ -8,7 +8,7 @@ Translated by:
 
 local _, addon = ...
 
----@class RatingBusterLocale
+---@type RatingBusterLocale
 local L = LibStub("AceLocale-3.0"):NewLocale("RatingBuster", "esES")
 if not L then return end
 local StatLogic = LibStub("StatLogic")
@@ -46,21 +46,21 @@ L["Set the level used in calculations (0 = your level)"] = "Establece el nivel u
 -- /rb color
 L["Change text color"] = "Cambiar color texto"
 L["Changes the color of added text"] = "Cambia el color del texto anadido"
-L["Change number color"] = true
+L["Change number color"] = "Change number color"
 -- /rb rating
 L["Rating"] = "Calificacion"
 L["Options for Rating display"] = "Opciones de visualizacion"
 -- /rb rating show
 L["Show Rating conversions"] = "Mostrar conversion calificacion"
 L["Show Rating conversions in tooltips"] = "Mostrar conversion calificacion en tooltips"
-L["Enable integration with Blizzard Reforging UI"] = true
+L["Enable integration with Blizzard Reforging UI"] = "Enable integration with Blizzard Reforging UI"
 -- TODO
 -- /rb rating spell
-L["Show Spell Hit/Haste"] = true
-L["Show Spell Hit/Haste from Hit/Haste Rating"] = true
+L["Show Spell Hit/Haste"] = "Show Spell Hit/Haste"
+L["Show Spell Hit/Haste from Hit/Haste Rating"] = "Show Spell Hit/Haste from Hit/Haste Rating"
 -- /rb rating physical
-L["Show Physical Hit/Haste"] = true
-L["Show Physical Hit/Haste from Hit/Haste Rating"] = true
+L["Show Physical Hit/Haste"] = "Show Physical Hit/Haste"
+L["Show Physical Hit/Haste from Hit/Haste Rating"] = "Show Physical Hit/Haste from Hit/Haste Rating"
 -- /rb rating detail
 L["Show detailed conversions text"] = "Mostrar texto detallado conversiones"
 L["Show detailed text for Resilience and Expertise conversions"] = "Mostrar texto detallado de conversiones de Temple y Pericia"
@@ -104,13 +104,13 @@ L["Ignore enchants on items when calculating the stat summary"] = "Ignorar encan
 -- /rb sum ignore gem
 L["Ignore gems"] = "Ignorar gemas"
 L["Ignore gems on items when calculating the stat summary"] = "Ignorar gemas en items cuando  se calcule el resumen de estad."
-L["Ignore extra sockets"] = true
-L["Ignore sockets from professions or consumable items when calculating the stat summary"] = true
+L["Ignore extra sockets"] = "Ignore extra sockets"
+L["Ignore sockets from professions or consumable items when calculating the stat summary"] = "Ignore sockets from professions or consumable items when calculating the stat summary"
 -- /rb sum diffstyle
 L["Display style for diff value"] = "Mostrar estilo para el valor de diferencia"
 L["Display diff values in the main tooltip or only in compare tooltips"] = "Mostrar diferencia valores en el tooltip principal o solo en los de comparacion"
-L["Hide Blizzard Item Comparisons"] = true
-L["Disable Blizzard stat change summary when using the built-in comparison tooltip"] = true
+L["Hide Blizzard Item Comparisons"] = "Hide Blizzard Item Comparisons"
+L["Disable Blizzard stat change summary when using the built-in comparison tooltip"] = "Disable Blizzard stat change summary when using the built-in comparison tooltip"
 -- /rb sum space
 L["Add empty line"] = "Anadir linea vacia"
 L["Add a empty line before or after stat summary"] = "Anade una linea vacia antes o despues del resumen"
@@ -185,11 +185,11 @@ L["Spell Hit Chance <- Spell Hit Rating"] = "prob. Golpe Hech. <- Índice Golpe 
 L["Crit Chance <- Crit Rating Agility, Weapon Skill Rating"] = "prob. Critico <- Índice Critico, Agilidad, índice de pericia"
 -- /rb sum stat haste
 L["Haste <- Haste Rating"] = "Velocidad <- Índice Velocidad"
-L["Ranged Hit Chance <- Hit Rating, Weapon Skill Rating, Ranged Hit Rating"] = true
+L["Ranged Hit Chance <- Hit Rating, Weapon Skill Rating, Ranged Hit Rating"] = "Ranged Hit Chance <- Hit Rating, Weapon Skill Rating, Ranged Hit Rating"
 -- /rb sum physical rangedcrit
-L["Ranged Crit Chance <- Crit Rating, Agility, Weapon Skill Rating, Ranged Crit Rating"] = true
+L["Ranged Crit Chance <- Crit Rating, Agility, Weapon Skill Rating, Ranged Crit Rating"] = "Ranged Crit Chance <- Crit Rating, Agility, Weapon Skill Rating, Ranged Crit Rating"
 -- /rb sum physical rangedhaste
-L["Ranged Haste <- Haste Rating, Ranged Haste Rating"] = true
+L["Ranged Haste <- Haste Rating, Ranged Haste Rating"] = "Ranged Haste <- Haste Rating, Ranged Haste Rating"
 
 -- /rb sum stat critspell
 L["Spell Crit Chance <- Spell Crit Rating Intellect"] = "prob. Critico Hech. <- Índice Critico Hech., Intelecto"
@@ -248,12 +248,12 @@ L["ItemID: "] = "ItemID: "
 -------------------
 -- Always Buffed --
 -------------------
-L["Enables RatingBuster to calculate selected buff effects even if you don't really have them"] = true
-L["$class Self Buffs"] = true -- $class will be replaced with localized player class
-L["Raid Buffs"] = true
-L["Stat Multiplier"] = true
-L["Attack Power Multiplier"] = true
-L["Reduced Physical Damage Taken"] = true
+L["Enables RatingBuster to calculate selected buff effects even if you don't really have them"] = "Enables RatingBuster to calculate selected buff effects even if you don't really have them"
+L["$class Self Buffs"] = "$class Self Buffs" -- $class will be replaced with localized player class
+L["Raid Buffs"] = "Raid Buffs"
+L["Stat Multiplier"] = "Stat Multiplier"
+L["Attack Power Multiplier"] = "Attack Power Multiplier"
+L["Reduced Physical Damage Taken"] = "Reduced Physical Damage Taken"
 
 -----------------------
 -- Matching Patterns --

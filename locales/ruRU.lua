@@ -7,7 +7,7 @@ Translated by:
 
 local _, addon = ...
 
----@class RatingBusterLocale
+---@type RatingBusterLocale
 local L = LibStub("AceLocale-3.0"):NewLocale("RatingBuster", "ruRU")
 if not L then return end
 local StatLogic = LibStub("StatLogic")
@@ -60,7 +60,7 @@ L["Options for Rating display"] = "Настройки отображения р�
 -- /rb rating show
 L["Show Rating conversions"] = "Конвертация рейтингов"
 L["Show Rating conversions in tooltips"] = "Выберите когда показывать конвертацию рейтингов в подсказке"
-L["Enable integration with Blizzard Reforging UI"] = true
+L["Enable integration with Blizzard Reforging UI"] = "Enable integration with Blizzard Reforging UI"
 -- /rb rating spell
 L["Show Spell Hit/Haste"] = "Меткость/скорость заклинаний"
 L["Show Spell Hit/Haste from Hit/Haste Rating"] = "Показывать меткость/скорость заклинаний из рейтинга меткости/скорость"
@@ -104,8 +104,8 @@ L["Ignore enchants on items when calculating the stat summary"] = "Игнори�
 -- /rb sum ignore gem
 L["Ignore gems"] = "Игнорировать самоцветы"
 L["Ignore gems on items when calculating the stat summary"] = "Игнорировать самоцветы при расчете итога"
-L["Ignore extra sockets"] = true
-L["Ignore sockets from professions or consumable items when calculating the stat summary"] = true
+L["Ignore extra sockets"] = "Ignore extra sockets"
+L["Ignore sockets from professions or consumable items when calculating the stat summary"] = "Ignore sockets from professions or consumable items when calculating the stat summary"
 -- /rb sum diffstyle
 L["Display Style For diff value"] = "Стиль отображения отличия значений"
 L["Display diff values in the main tooltip or only in compare tooltips"] = "Отображения различных значений в главной подсказке или только в сравнительных подсказках"
@@ -266,12 +266,12 @@ L["ItemID: "] = "ID предмета: "
 -------------------
 -- Always Buffed --
 -------------------
-L["Enables RatingBuster to calculate selected buff effects even if you don't really have them"] = true
-L["$class Self Buffs"] = true -- $class will be replaced with localized player class
-L["Raid Buffs"] = true
-L["Stat Multiplier"] = true
-L["Attack Power Multiplier"] = true
-L["Reduced Physical Damage Taken"] = true
+L["Enables RatingBuster to calculate selected buff effects even if you don't really have them"] = "Enables RatingBuster to calculate selected buff effects even if you don't really have them"
+L["$class Self Buffs"] = "$class Self Buffs" -- $class will be replaced with localized player class
+L["Raid Buffs"] = "Raid Buffs"
+L["Stat Multiplier"] = "Stat Multiplier"
+L["Attack Power Multiplier"] = "Attack Power Multiplier"
+L["Reduced Physical Damage Taken"] = "Reduced Physical Damage Taken"
 
 -----------------------
 -- Matching Patterns --
@@ -486,7 +486,7 @@ L["$value to be Dodged/Parried"] = "$value уклонения/парирован
 L["$value to be Crit"] = "$value% к получению крит. удара" -- Your chance to get critical hit from target
 L["$value Crit Dmg Taken"] = "$value к получению крит. урона"
 L["$value DOT Dmg Taken"] = "$value к получению урона от ДоТ"
-L["$value Dmg Taken"] = true
+L["$value Dmg Taken"] = "$value Dmg Taken"
 -- for hit rating showing both physical and spell conversions
 -- (+1.21%, S+0.98%)
 -- (+1.21%, +0.98% S)
