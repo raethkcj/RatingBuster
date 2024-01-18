@@ -565,7 +565,7 @@ elseif addon.class == "MAGE" then
 		["ADD_SPELL_CRIT"] = {
 			-- Base
 			{
-				["value"] = -4.8000,
+				["value"] = 0.2000,
 			},
 			-- Rune: Burnout
 			{
@@ -874,7 +874,7 @@ elseif addon.class == "SHAMAN" then
 		["ADD_SPELL_CRIT"] = {
 			-- Base
 			{
-				["value"] = -0.7000,
+				["value"] = 2.3000,
 			},
 		},
 		["ADD_NORMAL_MANA_REG_MOD_SPI"] = {

@@ -1153,9 +1153,7 @@ end
 do
 	local trackedTotalStats = {
 		[StatLogic.Stats.Dodge] = true,
-		[StatLogic.Stats.Defense] = true,
 		[StatLogic.Stats.MeleeCrit] = true,
-		[StatLogic.Stats.SpellCrit] = true,
 	}
 
 	local totalEquippedStatCache = setmetatable({}, {
@@ -1353,7 +1351,6 @@ function StatLogic:GetSpellCritPerInt(class, level)
 		local _, intellect = UnitStat("player", 4)
 		local critFromInt = GetSpellCritChance(1)
 			- self:GetStatMod("ADD_SPELL_CRIT")
-			- self:GetTotalEquippedStat(StatLogic.Stats.SpellCrit)
 		return critFromInt / intellect
 	end
 end
