@@ -25,11 +25,10 @@ SLASH_STATLOGICDEBUG1 = "/sldebug";
 -- D:EnableDebugging()
 
 -- Add all lower case strings to ["StatIDLookup"]
-local strutf8lower = string.utf8lower
 if type(L) == "table" and type(L["StatIDLookup"]) == "table" then
 	local temp = {}
 	for k, v in pairs(L["StatIDLookup"]) do
-		temp[strutf8lower(k)] = v
+		temp[k:utf8lower()] = v
 	end
 	for k, v in pairs(temp) do
 		L["StatIDLookup"][k] = v
@@ -123,10 +122,6 @@ end
 
 -- Localize globals
 local _G = getfenv(0)
-local strutf8lower = string.utf8lower
-local strsplit = strsplit
-local strjoin = strjoin
-local strutf8sub = string.utf8sub
 local pairs = pairs
 local ipairs = ipairs
 local type = type
@@ -720,7 +715,7 @@ local armor_spec_active = false
 do
 	local update_meta_gem = function()
 		local link = GetInventoryItemLink("player", 1)
-		local str = link and select(4, strsplit(":", link))
+		local str = link and select(4, (":"):split(link))
 		equipped_meta_gem = str and tonumber(str) or 0
 	end
 
@@ -1672,7 +1667,7 @@ do
 				--------------------
 				-- Exclude strings with prefixes that do not need to be checked,
 				if not found then
-					if L.PrefixExclude[strutf8sub(text, 1, L.PrefixExcludeLength)] or text:sub(1, 1) == '"' then
+					if L.PrefixExclude[text:utf8sub(1, L.PrefixExcludeLength)] or text:sub(1, 1) == '"' then
 						found = ParseMatch(false, text, nil, "Prefix")
 					end
 				end
@@ -1696,7 +1691,7 @@ do
 				-- Stamina +19 = "^([%a ]+%a) %+(%d+)$"
 				-- +19 耐力 = "^%+(%d+) (.-)$"
 				if not found then
-					local _, _, value, statText = strutf8lower(text):find(L.SinglePlusStatCheck)
+					local _, _, value, statText = text:utf8lower():find(L.SinglePlusStatCheck)
 					if value then
 						if tonumber(statText) then
 							value, statText = statText, value
@@ -1715,7 +1710,7 @@ do
 					local _, _, statText1, value, statText2 = text:find(L.SingleEquipStatCheck)
 					if value then
 						local statText = statText1..statText2
-						local idTable = L.StatIDLookup[strutf8lower(statText)]
+						local idTable = L.StatIDLookup[statText:utf8lower()]
 						found = ParseMatch(idTable, text, value, "SingleEquip")
 					end
 				end
@@ -1761,8 +1756,8 @@ do
 					-- Trim spaces
 					sanitizedText = sanitizedText:trim()
 					-- Strip trailing "."
-					if strutf8sub(sanitizedText, -1) == L["."] then
-						sanitizedText = strutf8sub(sanitizedText, 1, -2)
+					if sanitizedText:utf8sub(-1) == L["."] then
+						sanitizedText = sanitizedText:utf8sub(1, -2)
 					end
 					-- Split the string into phrases between puncuation
 					-- Replace separators with @
@@ -1778,13 +1773,13 @@ do
 						end
 					end
 					-- Split text using @
-					local phrases = {strsplit("@", sanitizedText)}
+					local phrases = strsplittable("@", sanitizedText)
 					for j, phrase in ipairs(phrases) do
 						-- Trim spaces
 						phrase = phrase:trim()
 						-- Strip trailing "."
-						if strutf8sub(phrase, -1) == L["."] then
-							phrase = strutf8sub(phrase, 1, -2)
+						if phrase:utf8sub(-1) == L["."] then
+							phrase = phrase:utf8sub(1, -2)
 						end
 						log("|cff008080".."S"..j..": ".."'"..phrase.."'")
 						-- Whole Text Lookup
@@ -1796,7 +1791,7 @@ do
 						-- Scan DualStatPatterns
 						if not foundWholeText then
 							for pattern, dualStat in pairs(L.DualStatPatterns) do
-								local lowered = strutf8lower(phrase)
+								local lowered = phrase:utf8lower()
 								local _, dEnd, value1, value2 = lowered:find(pattern)
 								value1 = value1 and tonumber(value1)
 								value2 = value2 and tonumber(value2)
@@ -1827,7 +1822,7 @@ do
 						end
 						local foundDeepScan1 = false
 						if not foundWholeText then
-							local lowered = strutf8lower(phrase)
+							local lowered = phrase:utf8lower()
 							-- Pattern scan
 							for _, pattern in ipairs(L.DeepScanPatterns) do -- try all patterns in order
 								local _, _, statText1, value, statText2 = lowered:find(pattern)
@@ -1851,13 +1846,13 @@ do
 								end
 							end
 							-- Split phrase using @
-							local words = {strsplit("@", phrase)}
+							local words = strsplittable("@", phrase)
 							for k, word in ipairs(words) do
 								-- Trim spaces
 								word = word:trim()
 								-- Strip trailing "."
-								if strutf8sub(word, -1) == L["."] then
-									word = strutf8sub(word, 1, -2)
+								if word:utf8sub(-1) == L["."] then
+									word = word:utf8sub(1, -2)
 								end
 								log("|cff008080".."S"..k.."-"..k..": ".."'"..word.."'")
 								-- Whole Text Lookup
@@ -1869,7 +1864,7 @@ do
 								-- Scan DualStatPatterns
 								if not foundWholeText then
 									for pattern, dualStat in pairs(L.DualStatPatterns) do
-										local lowered = strutf8lower(word)
+										local lowered = word:utf8lower()
 										local _, _, value1, value2 = lowered:find(pattern)
 										if value1 and value2 then
 											foundWholeText = true
@@ -1894,7 +1889,7 @@ do
 								end
 								local foundDeepScan2 = false
 								if not foundWholeText then
-									local lowered = strutf8lower(word)
+									local lowered = word:utf8lower()
 									-- Pattern scan
 									for _, pattern in ipairs(L.DeepScanPatterns) do
 										local _, _, statText1, value, statText2 = lowered:find(pattern)

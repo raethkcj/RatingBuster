@@ -61,8 +61,6 @@ local select = select
 local tinsert = tinsert
 local tremove = tremove
 local tsort = table.sort
-local strsplit = strsplit
-local strjoin = strjoin
 local unpack = unpack
 local tonumber = tonumber
 
@@ -1839,7 +1837,7 @@ function RatingBuster:RecursivelySplitLine(text, separatorTable, link, color)
 	if type(separatorTable) == "table" and table.maxn(separatorTable) > 0 then
 		local sep = tremove(separatorTable, 1)
 		text =  text:gsub(sep, "@")
-		text = {strsplit("@", text)}
+		text = strsplittable("@", text)
 		local processedText = {}
 		local tempTable = {}
 		for _, t in ipairs(text) do
@@ -1847,7 +1845,7 @@ function RatingBuster:RecursivelySplitLine(text, separatorTable, link, color)
 			tinsert(processedText, self:RecursivelySplitLine(t, tempTable, link, color))
 		end
 		-- Join text
-		return (strjoin("@", unpack(processedText)):gsub("@", sep))
+		return (table.concat(processedText, "@"):gsub("@", sep))
 	else
 		return self:ProcessText(text, link, color)
 	end
@@ -2006,7 +2004,7 @@ do
 						tinsert(infoTable, (L["$value DOT Dmg Taken"]:gsub("$value", ("%+.2f%%%%"):format(effect))))
 					end
 
-					infoString = strjoin(", ", unpack(infoTable))
+					infoString = table.concat(infoTable, ", ")
 				else
 					infoString = ("%+.2f%%"):format(effect)
 				end
@@ -2101,7 +2099,7 @@ do
 				local effect = StatLogic:GetEffectFromRating(rating, StatLogic.Stats.ParryRating, calcLevel)
 				processedParry = processedParry + effect
 			end
-			infoString = strjoin(", ", unpack(infoTable))
+			infoString = table.concat(infoTable, ", ")
 		elseif statID == StatLogic.Stats.Agility and profileDB.showStats then
 			-------------
 			-- Agility --
@@ -2170,7 +2168,7 @@ do
 					tinsert(infoTable, (L["$value Heal"]:gsub("$value", ("%+.0f"):format(effect))))
 				end
 			end
-			infoString = strjoin(", ", unpack(infoTable))
+			infoString = table.concat(infoTable, ", ")
 		elseif statID == StatLogic.Stats.Stamina and profileDB.showStats then
 			-------------
 			-- Stamina --
@@ -2208,7 +2206,7 @@ do
 					tinsert(infoTable, (L["$value AP"]:gsub("$value", ("%+.0f"):format(effect))))
 				end
 			end
-			infoString = strjoin(", ", unpack(infoTable))
+			infoString = table.concat(infoTable, ", ")
 		elseif statID == StatLogic.Stats.Intellect and profileDB.showStats then
 			---------------
 			-- Intellect --
@@ -2288,7 +2286,7 @@ do
 					tinsert(infoTable, (L["$value AP"]:gsub("$value", ("%+.0f"):format(effect))))
 				end
 			end
-			infoString = strjoin(", ", unpack(infoTable))
+			infoString = table.concat(infoTable, ", ")
 		elseif statID == StatLogic.Stats.Spirit and profileDB.showStats then
 			------------
 			-- Spirit --
@@ -2344,7 +2342,7 @@ do
 					tinsert(infoTable, (L["$value% Spell Crit"]:gsub("$value", ("%+.2f"):format(effect))))
 				end
 			end
-			infoString = strjoin(", ", unpack(infoTable))
+			infoString = table.concat(infoTable, ", ")
 		elseif profileDB.showAPFromArmor and statID == ARMOR then
 			-----------
 			-- Armor --
@@ -2358,7 +2356,7 @@ do
 			if floor(abs(effect) * 10 + 0.5) > 0 then
 				tinsert(infoTable, (L["$value AP"]:gsub("$value", ("%+.1f"):format(effect))))
 			end
-			infoString = strjoin(", ", unpack(infoTable))
+			infoString = table.concat(infoTable, ", ")
 		elseif statID == ATTACK_POWER then
 			------------------
 			-- Attack Power --
@@ -2389,7 +2387,7 @@ do
 					tinsert(infoTable, (L["$value Heal"]:gsub("$value", ("%+.0f"):format(effect))))
 				end
 			end
-			infoString = strjoin(", ", unpack(infoTable))
+			infoString = table.concat(infoTable, ", ")
 		end
 		return infoString
 	end
