@@ -323,42 +323,42 @@ SPELL_STAT4_NAME = "지능"
 SPELL_STAT5_NAME = "정신력"
 --]]
 L["statList"] = {
-	{pattern = SPELL_STAT1_NAME:lower(), id = StatLogic.Stats.Strength}, -- Strength
-	{pattern = SPELL_STAT2_NAME:lower(), id = StatLogic.Stats.Agility}, -- Agility
-	{pattern = SPELL_STAT3_NAME:lower(), id = StatLogic.Stats.Stamina}, -- Stamina
-	{pattern = SPELL_STAT4_NAME:lower(), id = StatLogic.Stats.Intellect}, -- Intellect
-	{pattern = SPELL_STAT5_NAME:lower(), id = StatLogic.Stats.Spirit}, -- Spirit
-	{pattern = "방어 숙련도", id = StatLogic.Stats.DefenseRating},
-	{pattern = "회피 숙련도", id = StatLogic.Stats.DodgeRating},
-	{pattern = "방패 막기 숙련도", id = StatLogic.Stats.BlockRating}, -- block enchant: "+10 Shield Block Rating"
-	{pattern = "무기 막기 숙련도", id = StatLogic.Stats.ParryRating},
+	{SPELL_STAT1_NAME:lower(), StatLogic.Stats.Strength}, -- Strength
+	{SPELL_STAT2_NAME:lower(), StatLogic.Stats.Agility}, -- Agility
+	{SPELL_STAT3_NAME:lower(), StatLogic.Stats.Stamina}, -- Stamina
+	{SPELL_STAT4_NAME:lower(), StatLogic.Stats.Intellect}, -- Intellect
+	{SPELL_STAT5_NAME:lower(), StatLogic.Stats.Spirit}, -- Spirit
+	{"방어 숙련도", StatLogic.Stats.DefenseRating},
+	{"회피 숙련도", StatLogic.Stats.DodgeRating},
+	{"방패 막기 숙련도", StatLogic.Stats.BlockRating}, -- block enchant: "+10 Shield Block Rating"
+	{"무기 막기 숙련도", StatLogic.Stats.ParryRating},
 
-	{pattern = "주문 극대화 적중도", id = StatLogic.Stats.SpellCritRating},
-	{pattern = "주문의 극대화 적중도", id = StatLogic.Stats.SpellCritRating},
-	{pattern = "원거리 치명타 적중도", id = StatLogic.Stats.RangedCritRating},
-	{pattern = "치명타 적중도", id = StatLogic.Stats.CritRating},
-	{pattern = "근접 치명타 적중도", id = StatLogic.Stats.MeleeCritRating},
+	{"주문 극대화 적중도", StatLogic.Stats.SpellCritRating},
+	{"주문의 극대화 적중도", StatLogic.Stats.SpellCritRating},
+	{"원거리 치명타 적중도", StatLogic.Stats.RangedCritRating},
+	{"치명타 적중도", StatLogic.Stats.CritRating},
+	{"근접 치명타 적중도", StatLogic.Stats.MeleeCritRating},
 
-	--		{pattern = "주문의 적중도", id = StatLogic.Stats.SpellHitRating},
-	{pattern = "주문 적중도", id = StatLogic.Stats.SpellHitRating},
-	{pattern = "원거리 적중도", id = StatLogic.Stats.RangedHitRating},
-	{pattern = "적중도", id = StatLogic.Stats.HitRating},
+	--		{"주문의 적중도", StatLogic.Stats.SpellHitRating},
+	{"주문 적중도", StatLogic.Stats.SpellHitRating},
+	{"원거리 적중도", StatLogic.Stats.RangedHitRating},
+	{"적중도", StatLogic.Stats.HitRating},
 
-	{pattern = "탄력도", id = StatLogic.Stats.ResilienceRating}, -- resilience is implicitly a rating
+	{"탄력도", StatLogic.Stats.ResilienceRating}, -- resilience is implicitly a rating
 
-	{pattern = "주문 시전 가속도", id = StatLogic.Stats.SpellHasteRating},
-	{pattern = "원거리 공격 가속도", id = StatLogic.Stats.RangedHasteRating},
-	{pattern = "공격 가속도", id = StatLogic.Stats.HasteRating},
-	{pattern = "가속도", id = StatLogic.Stats.HasteRating}, -- [Drums of Battle]
+	{"주문 시전 가속도", StatLogic.Stats.SpellHasteRating},
+	{"원거리 공격 가속도", StatLogic.Stats.RangedHasteRating},
+	{"공격 가속도", StatLogic.Stats.HasteRating},
+	{"가속도", StatLogic.Stats.HasteRating}, -- [Drums of Battle]
 
-	{pattern = "숙련도", id = StatLogic.Stats.ExpertiseRating},
+	{"숙련도", StatLogic.Stats.ExpertiseRating},
 
-	{pattern = SPELL_STATALL:lower(), id = StatLogic.Stats.AllStats},
+	{SPELL_STATALL:lower(), StatLogic.Stats.AllStats},
 
-	{pattern = "방어구 관통력", id = StatLogic.Stats.ArmorPenetrationRating},	--armor penetration rating
-	{pattern = "특화", id = StatLogic.Stats.MasteryRating},
-	{pattern = ARMOR:lower(), id = ARMOR},
-	{pattern = "전투력이", id = ATTACK_POWER},
+	{"방어구 관통력", StatLogic.Stats.ArmorPenetrationRating},	--armor penetration rating
+	{"특화", StatLogic.Stats.MasteryRating},
+	{ARMOR:lower(), StatLogic.Stats.Armor},
+	{"전투력이", StatLogic.Stats.AttackPower},
 }
 -------------------------
 -- Added info patterns --

@@ -332,55 +332,55 @@ SPELL_STAT4_NAME = "Intellect"
 SPELL_STAT5_NAME = "Spirit"
 --]]
 L["statList"] = {
-	{pattern = "lowers intellect of target", id = nil}, -- Brain Hacker
-	{pattern = "reduces an enemy's armor", id = nil}, -- Annihilator
+	{"lowers intellect of target", false}, -- Brain Hacker
+	{"reduces an enemy's armor", false}, -- Annihilator
 
-	{pattern = SPELL_STAT1_NAME:lower(), id = StatLogic.Stats.Strength}, -- Strength
-	{pattern = SPELL_STAT2_NAME:lower(), id = StatLogic.Stats.Agility}, -- Agility
-	{pattern = SPELL_STAT3_NAME:lower(), id = StatLogic.Stats.Stamina}, -- Stamina
-	{pattern = SPELL_STAT4_NAME:lower(), id = StatLogic.Stats.Intellect}, -- Intellect
-	{pattern = SPELL_STAT5_NAME:lower(), id = StatLogic.Stats.Spirit}, -- Spirit
-	{pattern = "defense rating", id = StatLogic.Stats.DefenseRating},
-	{pattern = "dodge rating", id = StatLogic.Stats.DodgeRating},
-	{pattern = "increases dodge", id = StatLogic.Stats.DodgeRating},
-	{pattern = "block rating", id = StatLogic.Stats.BlockRating}, -- block enchant: "+10 Shield Block Rating"
-	{pattern = "parry rating", id = StatLogic.Stats.ParryRating},
+	{SPELL_STAT1_NAME:lower(), StatLogic.Stats.Strength}, -- Strength
+	{SPELL_STAT2_NAME:lower(), StatLogic.Stats.Agility}, -- Agility
+	{SPELL_STAT3_NAME:lower(), StatLogic.Stats.Stamina}, -- Stamina
+	{SPELL_STAT4_NAME:lower(), StatLogic.Stats.Intellect}, -- Intellect
+	{SPELL_STAT5_NAME:lower(), StatLogic.Stats.Spirit}, -- Spirit
+	{"defense rating", StatLogic.Stats.DefenseRating},
+	{"dodge rating", StatLogic.Stats.DodgeRating},
+	{"increases dodge", StatLogic.Stats.DodgeRating},
+	{"block rating", StatLogic.Stats.BlockRating}, -- block enchant: "+10 Shield Block Rating"
+	{"parry rating", StatLogic.Stats.ParryRating},
 
-	{pattern = "spell power", id = nil}, -- Shiffar's Nexus-Horn
-	{pattern = "spell critical strikes", id = nil}, -- Cyclone Regalia, Tirisfal Regalia
-	{pattern = "spell critical strike rating", id = StatLogic.Stats.SpellCritRating},
-	{pattern = "spell critical hit rating", id = StatLogic.Stats.SpellCritRating},
-	{pattern = "spell critical rating", id = StatLogic.Stats.SpellCritRating},
-	{pattern = "spell crit rating", id = StatLogic.Stats.SpellCritRating},
-	{pattern = "spell critical", id = StatLogic.Stats.SpellCritRating},
-	{pattern = "attack power", id = ATTACK_POWER},
-	{pattern = "ranged critical strike", id = StatLogic.Stats.RangedCritRating},
-	{pattern = "ranged critical hit rating", id = StatLogic.Stats.RangedCritRating},
-	{pattern = "ranged critical rating", id = StatLogic.Stats.RangedCritRating},
-	{pattern = "ranged crit rating", id = StatLogic.Stats.RangedCritRating},
-	{pattern = "critical strike rating", id = StatLogic.Stats.CritRating},
-	{pattern = "critical hit rating", id = StatLogic.Stats.CritRating},
-	{pattern = "critical rating", id = StatLogic.Stats.CritRating},
-	{pattern = "crit rating", id = StatLogic.Stats.CritRating},
+	{"spell power", false}, -- Shiffar's Nexus-Horn
+	{"spell critical strikes", false}, -- Cyclone Regalia, Tirisfal Regalia
+	{"spell critical strike rating", StatLogic.Stats.SpellCritRating},
+	{"spell critical hit rating", StatLogic.Stats.SpellCritRating},
+	{"spell critical rating", StatLogic.Stats.SpellCritRating},
+	{"spell crit rating", StatLogic.Stats.SpellCritRating},
+	{"spell critical", StatLogic.Stats.SpellCritRating},
+	{"attack power", StatLogic.Stats.AttackPower},
+	{"ranged critical strike", StatLogic.Stats.RangedCritRating},
+	{"ranged critical hit rating", StatLogic.Stats.RangedCritRating},
+	{"ranged critical rating", StatLogic.Stats.RangedCritRating},
+	{"ranged crit rating", StatLogic.Stats.RangedCritRating},
+	{"critical strike rating", StatLogic.Stats.CritRating},
+	{"critical hit rating", StatLogic.Stats.CritRating},
+	{"critical rating", StatLogic.Stats.CritRating},
+	{"crit rating", StatLogic.Stats.CritRating},
 
-	{pattern = "spell hit rating", id = StatLogic.Stats.SpellHitRating},
-	{pattern = "ranged hit rating", id = StatLogic.Stats.RangedHitRating},
-	{pattern = "hit rating", id = StatLogic.Stats.HitRating},
+	{"spell hit rating", StatLogic.Stats.SpellHitRating},
+	{"ranged hit rating", StatLogic.Stats.RangedHitRating},
+	{"hit rating", StatLogic.Stats.HitRating},
 
-	{pattern = "resilience", id = StatLogic.Stats.ResilienceRating}, -- resilience is implicitly a rating
+	{"resilience", StatLogic.Stats.ResilienceRating}, -- resilience is implicitly a rating
 
-	{pattern = "spell haste rating", id = StatLogic.Stats.SpellHasteRating},
-	{pattern = "ranged haste rating", id = StatLogic.Stats.RangedHasteRating},
-	{pattern = "haste rating", id = StatLogic.Stats.HasteRating},
+	{"spell haste rating", StatLogic.Stats.SpellHasteRating},
+	{"ranged haste rating", StatLogic.Stats.RangedHasteRating},
+	{"haste rating", StatLogic.Stats.HasteRating},
 
-	{pattern = "expertise rating", id = StatLogic.Stats.ExpertiseRating},
+	{"expertise rating", StatLogic.Stats.ExpertiseRating},
 
-	{pattern = SPELL_STATALL:lower(), id = StatLogic.Stats.AllStats},
-	{pattern = "health", id = nil}, -- Scroll of Enchant Chest - Health (prevents matching Armor)
+	{SPELL_STATALL:lower(), StatLogic.Stats.AllStats},
+	{"health", false}, -- Scroll of Enchant Chest - Health (prevents matching Armor)
 
-	{pattern = "armor penetration", id = StatLogic.Stats.ArmorPenetrationRating},
-	{pattern = "mastery", id = StatLogic.Stats.MasteryRating},
-	{pattern = ARMOR:lower(), id = ARMOR},
+	{"armor penetration", StatLogic.Stats.ArmorPenetrationRating},
+	{"mastery", StatLogic.Stats.MasteryRating},
+	{ARMOR:lower(), StatLogic.Stats.Armor},
 }
 -------------------------
 -- Added info patterns --

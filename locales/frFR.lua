@@ -341,47 +341,47 @@ SPELL_STAT4_NAME = "Intellect"
 SPELL_STAT5_NAME = "Spirit"
 --]]
 L["statList"] = {
-	{pattern = SPELL_STAT1_NAME:lower(), id = StatLogic.Stats.Strength}, -- Strength
-	{pattern = SPELL_STAT2_NAME:lower(), id = StatLogic.Stats.Agility}, -- Agility
-	{pattern = SPELL_STAT3_NAME:lower(), id = StatLogic.Stats.Stamina}, -- Stamina
-	{pattern = SPELL_STAT4_NAME:lower(), id = StatLogic.Stats.Intellect}, -- Intellect
-	{pattern = SPELL_STAT5_NAME:lower(), id = StatLogic.Stats.Spirit}, -- Spirit
-	{pattern = "score de défense", id = StatLogic.Stats.DefenseRating},
-	{pattern = "score d’esquive", id = StatLogic.Stats.DodgeRating},
-	{pattern = "score d'esquive", id = StatLogic.Stats.DodgeRating},
-	{pattern = "score de blocage", id = StatLogic.Stats.BlockRating}, --Ench. de bouclier (Blocage inférieur)
-	{pattern = "score de Maîtrise du blocage", id = StatLogic.Stats.BlockRating}, --Ench. de bouclier (Maîtrise du blocage)
-	{pattern = "score de parade", id = StatLogic.Stats.ParryRating},
+	{SPELL_STAT1_NAME:lower(), StatLogic.Stats.Strength}, -- Strength
+	{SPELL_STAT2_NAME:lower(), StatLogic.Stats.Agility}, -- Agility
+	{SPELL_STAT3_NAME:lower(), StatLogic.Stats.Stamina}, -- Stamina
+	{SPELL_STAT4_NAME:lower(), StatLogic.Stats.Intellect}, -- Intellect
+	{SPELL_STAT5_NAME:lower(), StatLogic.Stats.Spirit}, -- Spirit
+	{"score de défense", StatLogic.Stats.DefenseRating},
+	{"score d’esquive", StatLogic.Stats.DodgeRating},
+	{"score d'esquive", StatLogic.Stats.DodgeRating},
+	{"score de blocage", StatLogic.Stats.BlockRating}, --Ench. de bouclier (Blocage inférieur)
+	{"score de Maîtrise du blocage", StatLogic.Stats.BlockRating}, --Ench. de bouclier (Maîtrise du blocage)
+	{"score de parade", StatLogic.Stats.ParryRating},
 
-	{pattern = "score de critique des sorts", id = StatLogic.Stats.SpellCritRating},
-	{pattern = "score de coup critique des sorts", id = StatLogic.Stats.SpellCritRating},
-	{pattern = "score de toucher critique des sorts", id = StatLogic.Stats.SpellCritRating},
-	{pattern = "score de critique à distance", id = StatLogic.Stats.RangedCritRating},
-	{pattern = "score de coup critique à distance", id = StatLogic.Stats.RangedCritRating},
-	{pattern = "score de toucher critique à distance", id = StatLogic.Stats.RangedCritRating},
-	{pattern = "score de critique", id = StatLogic.Stats.CritRating}, --ex : https://fr.tbc.wowhead.com/item=30565/opale-de-feu-dassassin
-	{pattern = "score de coup critique", id = StatLogic.Stats.CritRating},
-	{pattern = "score de toucher critique", id = StatLogic.Stats.CritRating},
+	{"score de critique des sorts", StatLogic.Stats.SpellCritRating},
+	{"score de coup critique des sorts", StatLogic.Stats.SpellCritRating},
+	{"score de toucher critique des sorts", StatLogic.Stats.SpellCritRating},
+	{"score de critique à distance", StatLogic.Stats.RangedCritRating},
+	{"score de coup critique à distance", StatLogic.Stats.RangedCritRating},
+	{"score de toucher critique à distance", StatLogic.Stats.RangedCritRating},
+	{"score de critique", StatLogic.Stats.CritRating}, --ex : https://fr.tbc.wowhead.com/item=30565/opale-de-feu-dassassin
+	{"score de coup critique", StatLogic.Stats.CritRating},
+	{"score de toucher critique", StatLogic.Stats.CritRating},
 
-	{pattern = "score de toucher des sorts", id = StatLogic.Stats.SpellHitRating},
-	{pattern = "score de toucher à distance", id = StatLogic.Stats.RangedHitRating},
-	{pattern = "score de toucher", id = StatLogic.Stats.HitRating},
+	{"score de toucher des sorts", StatLogic.Stats.SpellHitRating},
+	{"score de toucher à distance", StatLogic.Stats.RangedHitRating},
+	{"score de toucher", StatLogic.Stats.HitRating},
 
-	{pattern = "résilience", id = StatLogic.Stats.ResilienceRating}, -- resilience is implicitly a rating
+	{"résilience", StatLogic.Stats.ResilienceRating}, -- resilience is implicitly a rating
 
-	{pattern = "score de hâte des sorts", id = StatLogic.Stats.SpellHasteRating},
-	{pattern = "score de hâte à distance", id = StatLogic.Stats.RangedHasteRating},
-	{pattern = "score de hâte", id = StatLogic.Stats.HasteRating},
-	{pattern = "score de hâte en mêlée", id = StatLogic.Stats.MeleeHasteRating}, -- [Tambours de Bataille] "score de hâte en mêlée, à distance et avec les sorts" complete drums line
-	{pattern = "score d’expertise", id = StatLogic.Stats.ExpertiseRating},
-	{pattern = "score d'expertise", id = StatLogic.Stats.ExpertiseRating},
+	{"score de hâte des sorts", StatLogic.Stats.SpellHasteRating},
+	{"score de hâte à distance", StatLogic.Stats.RangedHasteRating},
+	{"score de hâte", StatLogic.Stats.HasteRating},
+	{"score de hâte en mêlée", StatLogic.Stats.MeleeHasteRating}, -- [Tambours de Bataille] "score de hâte en mêlée, à distance et avec les sorts" complete drums line
+	{"score d’expertise", StatLogic.Stats.ExpertiseRating},
+	{"score d'expertise", StatLogic.Stats.ExpertiseRating},
 
-	{pattern = SPELL_STATALL:lower(), id = StatLogic.Stats.AllStats},
+	{SPELL_STATALL:lower(), StatLogic.Stats.AllStats},
 
-	{pattern = "pénétration d'armure", id = StatLogic.Stats.ArmorPenetrationRating},
-	{pattern = "maîtrise", id = StatLogic.Stats.MasteryRating},
-	{pattern = ARMOR:lower(), id = ARMOR},
-	{pattern = "puissance d'attaque", id = ATTACK_POWER},
+	{"pénétration d'armure", StatLogic.Stats.ArmorPenetrationRating},
+	{"maîtrise", StatLogic.Stats.MasteryRating},
+	{ARMOR:lower(), StatLogic.Stats.Armor},
+	{"puissance d'attaque", StatLogic.Stats.AttackPower},
 }
 -------------------------
 -- Added info patterns --

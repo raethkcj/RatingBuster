@@ -1864,14 +1864,15 @@ function RatingBuster:ProcessText(text, link, color)
 				value, partialtext = partialtext, value
 			end
 			-- Capture the stat name
-			for _, stat in ipairs(L["statList"]) do
-				if (not partialtext and lowerText:find(stat.pattern)) or (partialtext and partialtext:find(stat.pattern)) then
+			for _, statPattern in ipairs(L["statList"]) do
+				local pattern, stat = unpack(statPattern)
+				if (not partialtext and lowerText:find(pattern)) or (partialtext and partialtext:find(pattern)) then
 					value = tonumber(value)
-					local infoString = RatingBuster:ProcessStat(stat.id, value, link, color)
+					local infoString = RatingBuster:ProcessStat(stat, value, link, color)
 					if infoString ~= "" then
 						-- Change insertion point if necessary
 						if num.addInfo == "AfterStat" then
-							local _, statInsertionPoint = lowerText:find(stat.pattern)
+							local _, statInsertionPoint = lowerText:find(pattern)
 							if statInsertionPoint > insertionPoint then
 								insertionPoint = statInsertionPoint
 							end

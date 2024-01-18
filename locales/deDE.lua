@@ -324,41 +324,41 @@ SPELL_STAT4_NAME = "Intelligenz"
 SPELL_STAT5_NAME = "Willenskraft"
 --]]
 L["statList"] = {
-	{pattern = SPELL_STAT1_NAME:lower(), id = StatLogic.Stats.Strength},
-	{pattern = SPELL_STAT2_NAME:lower(), id = StatLogic.Stats.Agility},
-	{pattern = SPELL_STAT3_NAME:lower(), id = StatLogic.Stats.Stamina},
-	{pattern = SPELL_STAT4_NAME:lower(), id = StatLogic.Stats.Intellect},
-	{pattern = SPELL_STAT5_NAME:lower(), id = StatLogic.Stats.Spirit},
-	{pattern = "verteidigungswertung", id = StatLogic.Stats.DefenseRating},
-	{pattern = "ausweichwertung", id = StatLogic.Stats.DodgeRating},
-	{pattern = "blockwertung", id = StatLogic.Stats.BlockRating},
-	{pattern = "parierwertung", id = StatLogic.Stats.ParryRating},
+	{SPELL_STAT1_NAME:lower(), StatLogic.Stats.Strength},
+	{SPELL_STAT2_NAME:lower(), StatLogic.Stats.Agility},
+	{SPELL_STAT3_NAME:lower(), StatLogic.Stats.Stamina},
+	{SPELL_STAT4_NAME:lower(), StatLogic.Stats.Intellect},
+	{SPELL_STAT5_NAME:lower(), StatLogic.Stats.Spirit},
+	{"verteidigungswertung", StatLogic.Stats.DefenseRating},
+	{"ausweichwertung", StatLogic.Stats.DodgeRating},
+	{"blockwertung", StatLogic.Stats.BlockRating},
+	{"parierwertung", StatLogic.Stats.ParryRating},
 
-	{pattern = "kritische zaubertrefferwertung", id = StatLogic.Stats.SpellCritRating},
-	{pattern = "kritische distanztrefferwertung", id = StatLogic.Stats.RangedCritRating},
-	{pattern = "kritische trefferwertung", id = StatLogic.Stats.CritRating},
+	{"kritische zaubertrefferwertung", StatLogic.Stats.SpellCritRating},
+	{"kritische distanztrefferwertung", StatLogic.Stats.RangedCritRating},
+	{"kritische trefferwertung", StatLogic.Stats.CritRating},
 
-	{pattern = "zaubertrefferwertung", id = StatLogic.Stats.SpellHitRating},
-	{pattern = "trefferwertung", id = StatLogic.Stats.RangedHitRating},
-	{pattern = "trefferwertung", id = StatLogic.Stats.HitRating},
+	{"zaubertrefferwertung", StatLogic.Stats.SpellHitRating},
+	{"trefferwertung", StatLogic.Stats.RangedHitRating},
+	{"trefferwertung", StatLogic.Stats.HitRating},
 
-	{pattern = "abhärtungswertung", id = StatLogic.Stats.ResilienceRating},
+	{"abhärtungswertung", StatLogic.Stats.ResilienceRating},
 
-	{pattern = "zaubertempowertung", id = StatLogic.Stats.SpellHasteRating},
-	{pattern = "distanztempowertung", id = StatLogic.Stats.RangedHasteRating},
-	{pattern = "angriffstempowertung", id = StatLogic.Stats.HasteRating},
-	{pattern = "nahkampftempowertung", id = StatLogic.Stats.MeleeHasteRating},
-	{pattern = "tempowertung", id = StatLogic.Stats.HasteRating}, -- [Drums of Battle]
+	{"zaubertempowertung", StatLogic.Stats.SpellHasteRating},
+	{"distanztempowertung", StatLogic.Stats.RangedHasteRating},
+	{"angriffstempowertung", StatLogic.Stats.HasteRating},
+	{"nahkampftempowertung", StatLogic.Stats.MeleeHasteRating},
+	{"tempowertung", StatLogic.Stats.HasteRating}, -- [Drums of Battle]
 
-	{pattern = "waffenkundewertung", id = StatLogic.Stats.ExpertiseRating},
+	{"waffenkundewertung", StatLogic.Stats.ExpertiseRating},
 
-	{pattern = SPELL_STATALL:lower(), id = StatLogic.Stats.AllStats},
+	{SPELL_STATALL:lower(), StatLogic.Stats.AllStats},
 
-	{pattern = "rüstungsdurchschlagwertung", id = StatLogic.Stats.ArmorPenetrationRating},
-	{pattern = "rüstungsdurchschlag", id = StatLogic.Stats.ArmorPenetrationRating},
-	{pattern = "meisterschaft", id = StatLogic.Stats.MasteryRating},
-	{pattern = ARMOR:lower(), id = ARMOR},
-	{pattern = "angriffskraft", id = ATTACK_POWER},
+	{"rüstungsdurchschlagwertung", StatLogic.Stats.ArmorPenetrationRating},
+	{"rüstungsdurchschlag", StatLogic.Stats.ArmorPenetrationRating},
+	{"meisterschaft", StatLogic.Stats.MasteryRating},
+	{ARMOR:lower(), StatLogic.Stats.Armor},
+	{"angriffskraft", StatLogic.Stats.AttackPower},
 }
 -------------------------
 -- Added info patterns --

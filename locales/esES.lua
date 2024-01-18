@@ -324,42 +324,42 @@ SPELL_STAT4_NAME = "Intellect"
 SPELL_STAT5_NAME = "Spirit"
 --]]
 L["statList"] = {
-	{pattern = SPELL_STAT1_NAME:lower(), id = StatLogic.Stats.Strength}, -- Strength
-	{pattern = SPELL_STAT2_NAME:lower(), id = StatLogic.Stats.Agility}, -- Agility
-	{pattern = SPELL_STAT3_NAME:lower(), id = StatLogic.Stats.Stamina}, -- Stamina
-	{pattern = SPELL_STAT4_NAME:lower(), id = StatLogic.Stats.Intellect}, -- Intellect
-	{pattern = SPELL_STAT5_NAME:lower(), id = StatLogic.Stats.Spirit}, -- Spirit
-	{pattern = "índice de defensa", id = StatLogic.Stats.DefenseRating},
-	{pattern = "índice de esquivar", id = StatLogic.Stats.DodgeRating},
-	{pattern = "índice de bloqueo", id = StatLogic.Stats.BlockRating}, -- block enchant: "+10 Shield Block Rating"
-	{pattern = "índice de parada", id = StatLogic.Stats.ParryRating},
+	{SPELL_STAT1_NAME:lower(), StatLogic.Stats.Strength}, -- Strength
+	{SPELL_STAT2_NAME:lower(), StatLogic.Stats.Agility}, -- Agility
+	{SPELL_STAT3_NAME:lower(), StatLogic.Stats.Stamina}, -- Stamina
+	{SPELL_STAT4_NAME:lower(), StatLogic.Stats.Intellect}, -- Intellect
+	{SPELL_STAT5_NAME:lower(), StatLogic.Stats.Spirit}, -- Spirit
+	{"índice de defensa", StatLogic.Stats.DefenseRating},
+	{"índice de esquivar", StatLogic.Stats.DodgeRating},
+	{"índice de bloqueo", StatLogic.Stats.BlockRating}, -- block enchant: "+10 Shield Block Rating"
+	{"índice de parada", StatLogic.Stats.ParryRating},
 
-	{pattern = "índice de golpe crítico con hechizos", id = StatLogic.Stats.SpellCritRating},
-	{pattern = "índice de golpe crítico a distancia", id = StatLogic.Stats.RangedCritRating},
-	{pattern = "índice de golpe crítico cuerpo a cuerpo", id = StatLogic.Stats.MeleeCritRating},
-	{pattern = "índice de golpe crítico", id = StatLogic.Stats.CritRating},
+	{"índice de golpe crítico con hechizos", StatLogic.Stats.SpellCritRating},
+	{"índice de golpe crítico a distancia", StatLogic.Stats.RangedCritRating},
+	{"índice de golpe crítico cuerpo a cuerpo", StatLogic.Stats.MeleeCritRating},
+	{"índice de golpe crítico", StatLogic.Stats.CritRating},
 
-	{pattern = "índice de golpe con hechizo", id = StatLogic.Stats.SpellHitRating},
-	{pattern = "índice de golpe a distancia", id = StatLogic.Stats.RangedHitRating},
-	{pattern = "índice de golpe cuerpo a cuerpo", id = StatLogic.Stats.MeleeHitRating},
-	{pattern = "índice de golpe", id = StatLogic.Stats.HitRating},
+	{"índice de golpe con hechizo", StatLogic.Stats.SpellHitRating},
+	{"índice de golpe a distancia", StatLogic.Stats.RangedHitRating},
+	{"índice de golpe cuerpo a cuerpo", StatLogic.Stats.MeleeHitRating},
+	{"índice de golpe", StatLogic.Stats.HitRating},
 
-	{pattern = "índice de temple", id = StatLogic.Stats.ResilienceRating}, -- resilience is implicitly a rating
+	{"índice de temple", StatLogic.Stats.ResilienceRating}, -- resilience is implicitly a rating
 
-	{pattern = "índice de celeridad con hechizos", id = StatLogic.Stats.SpellHasteRating},
-	{pattern = "índice de celeridad a distancia", id = StatLogic.Stats.RangedHasteRating},
-	{pattern = "índice de celeridad con cuerpo a cuerpo", id = StatLogic.Stats.MeleeHasteRating},
-	{pattern = "índice de celeridad", id = StatLogic.Stats.HasteRating},
-	{pattern = "Aumenta el índice de velocidad de lanzamiento de ataques y de ataque de los miembros del grupo cercanos", id = StatLogic.Stats.HasteRating}, -- [Drums of Battle]
+	{"índice de celeridad con hechizos", StatLogic.Stats.SpellHasteRating},
+	{"índice de celeridad a distancia", StatLogic.Stats.RangedHasteRating},
+	{"índice de celeridad con cuerpo a cuerpo", StatLogic.Stats.MeleeHasteRating},
+	{"índice de celeridad", StatLogic.Stats.HasteRating},
+	{"Aumenta el índice de velocidad de lanzamiento de ataques y de ataque de los miembros del grupo cercanos", StatLogic.Stats.HasteRating}, -- [Drums of Battle]
 
-	{pattern = "índice de pericia", id = StatLogic.Stats.ExpertiseRating},
+	{"índice de pericia", StatLogic.Stats.ExpertiseRating},
 
-	{pattern = SPELL_STATALL:lower(), id = StatLogic.Stats.AllStats},
+	{SPELL_STATALL:lower(), StatLogic.Stats.AllStats},
 
-	{pattern = "índice de penetración de armadura", id = StatLogic.Stats.ArmorPenetrationRating},
-	{pattern = "maestría", id = StatLogic.Stats.MasteryRating},
-	{pattern = ARMOR:lower(), id = ARMOR},
-	{pattern = "poder de ataque", id = ATTACK_POWER},
+	{"índice de penetración de armadura", StatLogic.Stats.ArmorPenetrationRating},
+	{"maestría", StatLogic.Stats.MasteryRating},
+	{ARMOR:lower(), StatLogic.Stats.Armor},
+	{"poder de ataque", StatLogic.Stats.AttackPower},
 }
 -------------------------
 -- Added info patterns --

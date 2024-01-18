@@ -321,44 +321,44 @@ SPELL_STAT4_NAME = "Intellect"
 SPELL_STAT5_NAME = "Spirit"
 --]]
 L["statList"] = {
-	{pattern = SPELL_STAT1_NAME:lower(), id = StatLogic.Stats.Strength}, -- Strength
-	{pattern = SPELL_STAT2_NAME:lower(), id = StatLogic.Stats.Agility}, -- Agility
-	{pattern = SPELL_STAT3_NAME:lower(), id = StatLogic.Stats.Stamina}, -- Stamina
-	{pattern = SPELL_STAT4_NAME:lower(), id = StatLogic.Stats.Intellect}, -- Intellect
-	{pattern = SPELL_STAT5_NAME:lower(), id = StatLogic.Stats.Spirit}, -- Spirit
-	{pattern = "防御等级", id = StatLogic.Stats.DefenseRating},
-	{pattern = "躲闪等级", id = StatLogic.Stats.DodgeRating},
-	{pattern = "格挡等级", id = StatLogic.Stats.BlockRating}, -- block enchant: "+10 Shield Block Rating"
-	{pattern = "招架等级", id = StatLogic.Stats.ParryRating},
+	{SPELL_STAT1_NAME:lower(), StatLogic.Stats.Strength}, -- Strength
+	{SPELL_STAT2_NAME:lower(), StatLogic.Stats.Agility}, -- Agility
+	{SPELL_STAT3_NAME:lower(), StatLogic.Stats.Stamina}, -- Stamina
+	{SPELL_STAT4_NAME:lower(), StatLogic.Stats.Intellect}, -- Intellect
+	{SPELL_STAT5_NAME:lower(), StatLogic.Stats.Spirit}, -- Spirit
+	{"防御等级", StatLogic.Stats.DefenseRating},
+	{"躲闪等级", StatLogic.Stats.DodgeRating},
+	{"格挡等级", StatLogic.Stats.BlockRating}, -- block enchant: "+10 Shield Block Rating"
+	{"招架等级", StatLogic.Stats.ParryRating},
 
-	{pattern = "法术爆击等级", id = StatLogic.Stats.SpellCritRating},
-	{pattern = "法术爆击命中等级", id = StatLogic.Stats.SpellCritRating},
-	{pattern = "法术爆击等级", id = StatLogic.Stats.SpellCritRating},
-	{pattern = "远程爆击等级", id = StatLogic.Stats.RangedCritRating},
-	{pattern = "远程爆击命中等级", id = StatLogic.Stats.RangedCritRating},
-	{pattern = "远程爆击等级", id = StatLogic.Stats.RangedCritRating},
-	{pattern = "近战爆击等级", id = StatLogic.Stats.MeleeCritRating},
-	{pattern = "爆击等级", id = StatLogic.Stats.CritRating},
+	{"法术爆击等级", StatLogic.Stats.SpellCritRating},
+	{"法术爆击命中等级", StatLogic.Stats.SpellCritRating},
+	{"法术爆击等级", StatLogic.Stats.SpellCritRating},
+	{"远程爆击等级", StatLogic.Stats.RangedCritRating},
+	{"远程爆击命中等级", StatLogic.Stats.RangedCritRating},
+	{"远程爆击等级", StatLogic.Stats.RangedCritRating},
+	{"近战爆击等级", StatLogic.Stats.MeleeCritRating},
+	{"爆击等级", StatLogic.Stats.CritRating},
 
-	{pattern = "法术命中等级", id = StatLogic.Stats.SpellHitRating},
-	{pattern = "远程命中等级", id = StatLogic.Stats.RangedHitRating},
-	{pattern = "命中等级", id = StatLogic.Stats.HitRating},
+	{"法术命中等级", StatLogic.Stats.SpellHitRating},
+	{"远程命中等级", StatLogic.Stats.RangedHitRating},
+	{"命中等级", StatLogic.Stats.HitRating},
 
-	{pattern = "韧性等级", id = StatLogic.Stats.ResilienceRating}, -- resilience is implicitly a rating
+	{"韧性等级", StatLogic.Stats.ResilienceRating}, -- resilience is implicitly a rating
 
-	{pattern = "法术急速等级", id = StatLogic.Stats.SpellHasteRating},
-	{pattern = "远程急速等级", id = StatLogic.Stats.RangedHasteRating},
-	{pattern = "急速等级", id = StatLogic.Stats.HasteRating},
-	{pattern = "加速等级", id = StatLogic.Stats.HasteRating}, -- [Drums of Battle]
+	{"法术急速等级", StatLogic.Stats.SpellHasteRating},
+	{"远程急速等级", StatLogic.Stats.RangedHasteRating},
+	{"急速等级", StatLogic.Stats.HasteRating},
+	{"加速等级", StatLogic.Stats.HasteRating}, -- [Drums of Battle]
 
-	{pattern = "精准等级", id = StatLogic.Stats.ExpertiseRating},
+	{"精准等级", StatLogic.Stats.ExpertiseRating},
 
-	{pattern = SPELL_STATALL:lower(), id = StatLogic.Stats.AllStats},
+	{SPELL_STATALL:lower(), StatLogic.Stats.AllStats},
 
-	{pattern = "护甲穿透等级", id = StatLogic.Stats.ArmorPenetrationRating},
-	{pattern = "精通", id = StatLogic.Stats.MasteryRating},
-	{pattern = ARMOR:lower(), id = ARMOR},
-	{pattern = "攻击强度", id = ATTACK_POWER},
+	{"护甲穿透等级", StatLogic.Stats.ArmorPenetrationRating},
+	{"精通", StatLogic.Stats.MasteryRating},
+	{ARMOR:lower(), StatLogic.Stats.Armor},
+	{"攻击强度", StatLogic.Stats.AttackPower},
 }
 -------------------------
 -- Added info patterns --

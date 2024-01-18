@@ -326,39 +326,39 @@ SPELL_STAT4_NAME = "Intellect"
 SPELL_STAT5_NAME = "Spirit"
 --]]
 L["statList"] = {
-	{pattern = SPELL_STAT1_NAME:lower(), id = StatLogic.Stats.Strength}, -- Strength
-	{pattern = SPELL_STAT2_NAME:lower(), id = StatLogic.Stats.Agility}, -- Agility
-	{pattern = SPELL_STAT3_NAME:lower(), id = StatLogic.Stats.Stamina}, -- Stamina
-	{pattern = SPELL_STAT4_NAME:lower(), id = StatLogic.Stats.Intellect}, -- Intellect
-	{pattern = SPELL_STAT5_NAME:lower(), id = StatLogic.Stats.Spirit}, -- Spirit
-	{pattern = "防禦等級", id = StatLogic.Stats.DefenseRating},
-	{pattern = "閃躲等級", id = StatLogic.Stats.DodgeRating},
-	{pattern = "格擋等級", id = StatLogic.Stats.BlockRating}, -- block enchant: "+10 Shield Block Rating"
-	{pattern = "招架等級", id = StatLogic.Stats.ParryRating},
+	{SPELL_STAT1_NAME:lower(), StatLogic.Stats.Strength}, -- Strength
+	{SPELL_STAT2_NAME:lower(), StatLogic.Stats.Agility}, -- Agility
+	{SPELL_STAT3_NAME:lower(), StatLogic.Stats.Stamina}, -- Stamina
+	{SPELL_STAT4_NAME:lower(), StatLogic.Stats.Intellect}, -- Intellect
+	{SPELL_STAT5_NAME:lower(), StatLogic.Stats.Spirit}, -- Spirit
+	{"防禦等級", StatLogic.Stats.DefenseRating},
+	{"閃躲等級", StatLogic.Stats.DodgeRating},
+	{"格擋等級", StatLogic.Stats.BlockRating}, -- block enchant: "+10 Shield Block Rating"
+	{"招架等級", StatLogic.Stats.ParryRating},
 
-	{pattern = "法術致命一擊等級", id = StatLogic.Stats.SpellCritRating},
-	{pattern = "遠程攻擊致命一擊等級", id = StatLogic.Stats.RangedCritRating},
-	{pattern = "致命一擊等級", id = StatLogic.Stats.CritRating},
+	{"法術致命一擊等級", StatLogic.Stats.SpellCritRating},
+	{"遠程攻擊致命一擊等級", StatLogic.Stats.RangedCritRating},
+	{"致命一擊等級", StatLogic.Stats.CritRating},
 
-	{pattern = "法術命中等級", id = StatLogic.Stats.SpellHitRating},
-	{pattern = "遠程命中等級", id = StatLogic.Stats.RangedHitRating},
-	{pattern = "命中等級", id = StatLogic.Stats.HitRating},
+	{"法術命中等級", StatLogic.Stats.SpellHitRating},
+	{"遠程命中等級", StatLogic.Stats.RangedHitRating},
+	{"命中等級", StatLogic.Stats.HitRating},
 
-	{pattern = "韌性", id = StatLogic.Stats.ResilienceRating}, -- resilience is implicitly a rating
+	{"韌性", StatLogic.Stats.ResilienceRating}, -- resilience is implicitly a rating
 
-	{pattern = "法術加速等級", id = StatLogic.Stats.SpellHasteRating},
-	{pattern = "遠程攻擊加速等級", id = StatLogic.Stats.RangedHasteRating},
-	{pattern = "加速等級", id = StatLogic.Stats.HasteRating},
-	{pattern = "攻擊速度等級", id = StatLogic.Stats.HasteRating}, -- [Drums of Battle]
+	{"法術加速等級", StatLogic.Stats.SpellHasteRating},
+	{"遠程攻擊加速等級", StatLogic.Stats.RangedHasteRating},
+	{"加速等級", StatLogic.Stats.HasteRating},
+	{"攻擊速度等級", StatLogic.Stats.HasteRating}, -- [Drums of Battle]
 
-	{pattern = "熟練等級", id = StatLogic.Stats.ExpertiseRating}, -- 2.3
+	{"熟練等級", StatLogic.Stats.ExpertiseRating}, -- 2.3
 
-	{pattern = SPELL_STATALL:lower(), id = StatLogic.Stats.AllStats},
+	{SPELL_STATALL:lower(), StatLogic.Stats.AllStats},
 
-	{pattern = "護甲穿透等級", id = StatLogic.Stats.ArmorPenetrationRating},
-	{pattern = "精通", id = StatLogic.Stats.MasteryRating},
-	{pattern = ARMOR:lower(), id = ARMOR},
-	{pattern = "攻击强度", id = ATTACK_POWER},
+	{"護甲穿透等級", StatLogic.Stats.ArmorPenetrationRating},
+	{"精通", StatLogic.Stats.MasteryRating},
+	{ARMOR:lower(), StatLogic.Stats.Armor},
+	{"攻击强度", StatLogic.Stats.AttackPower},
 }
 -------------------------
 -- Added info patterns --

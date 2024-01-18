@@ -354,110 +354,110 @@ SPELL_STAT5_NAME = "Spirit"
 --
 
 L["statList"] = {
-	{pattern = "ослабление брони противника", id = nil}, -- Annihilator
+	{"ослабление брони противника", false}, -- Annihilator
 
-	{pattern = "сила атаки", id = ATTACK_POWER},
-	{pattern = "силу атаки", id = ATTACK_POWER},
-	{pattern = "силы атаки", id = ATTACK_POWER},
-	{pattern = "силы вашей атаки", id = ATTACK_POWER},
-	{pattern = "к силе атаки", id = ATTACK_POWER},
+	{"сила атаки", StatLogic.Stats.AttackPower},
+	{"силу атаки", StatLogic.Stats.AttackPower},
+	{"силы атаки", StatLogic.Stats.AttackPower},
+	{"силы вашей атаки", StatLogic.Stats.AttackPower},
+	{"к силе атаки", StatLogic.Stats.AttackPower},
 
 	-- Resistance and Spell Damage aren't used for breakdowns,
 	-- but are needed to prevent false matches of other stats
-	{pattern = "силам природы", id = NATURE_RES},
-	{pattern = "сила заклинаний", id = SPELL_DMG},
-	{pattern = "сила ваших заклинаний", id = SPELL_DMG},
-	{pattern = "силу заклинаний", id = SPELL_DMG},
-	{pattern = "силы заклинаний", id = SPELL_DMG},
-	{pattern = "к силе заклинаний", id = SPELL_DMG},
+	{"силам природы", NATURE_RES},
+	{"сила заклинаний", SPELL_DMG},
+	{"сила ваших заклинаний", SPELL_DMG},
+	{"силу заклинаний", SPELL_DMG},
+	{"силы заклинаний", SPELL_DMG},
+	{"к силе заклинаний", SPELL_DMG},
 
-	{pattern = "рейтинг пробивания брони", id = StatLogic.Stats.ArmorPenetrationRating},
-	{pattern = "рейтингу пробивания брони", id = StatLogic.Stats.ArmorPenetrationRating},
-	{pattern = "рейтинга пробивания брони", id = StatLogic.Stats.ArmorPenetrationRating},
-	{pattern = "эффективность брони противника", id = StatLogic.Stats.ArmorPenetrationRating},
-	{pattern = "броня", id = ARMOR},
-	{pattern = "брони", id = ARMOR},
-	{pattern = "броню", id = ARMOR},
-	{pattern = "броне", id = ARMOR},
-	{pattern = "сила", id = StatLogic.Stats.Strength}, -- Strength
-	{pattern = "силу", id = StatLogic.Stats.Strength}, -- Strength
-	{pattern = "силе", id = StatLogic.Stats.Strength}, -- Strength
-	{pattern = "силы", id = StatLogic.Stats.Strength}, -- Strength
-	{pattern = "ловкость", id = StatLogic.Stats.Agility}, -- Agility
-	{pattern = "ловкости", id = StatLogic.Stats.Agility}, -- Agility
-	{pattern = "выносливость", id = StatLogic.Stats.Stamina}, -- Stamina
-	{pattern = "выносливости", id = StatLogic.Stats.Stamina}, -- Stamina
-	{pattern = "интеллекту", id = StatLogic.Stats.Intellect}, -- Intellect
-	{pattern = "интеллект", id = StatLogic.Stats.Intellect}, -- Intellect
-	{pattern = "духу", id = StatLogic.Stats.Spirit}, -- Spirit
-	{pattern = "дух", id = StatLogic.Stats.Spirit}, -- Spirit
+	{"рейтинг пробивания брони", StatLogic.Stats.ArmorPenetrationRating},
+	{"рейтингу пробивания брони", StatLogic.Stats.ArmorPenetrationRating},
+	{"рейтинга пробивания брони", StatLogic.Stats.ArmorPenetrationRating},
+	{"эффективность брони противника", StatLogic.Stats.ArmorPenetrationRating},
+	{"броня", StatLogic.Stats.Armor},
+	{"брони", StatLogic.Stats.Armor},
+	{"броню", StatLogic.Stats.Armor},
+	{"броне", StatLogic.Stats.Armor},
+	{"сила", StatLogic.Stats.Strength}, -- Strength
+	{"силу", StatLogic.Stats.Strength}, -- Strength
+	{"силе", StatLogic.Stats.Strength}, -- Strength
+	{"силы", StatLogic.Stats.Strength}, -- Strength
+	{"ловкость", StatLogic.Stats.Agility}, -- Agility
+	{"ловкости", StatLogic.Stats.Agility}, -- Agility
+	{"выносливость", StatLogic.Stats.Stamina}, -- Stamina
+	{"выносливости", StatLogic.Stats.Stamina}, -- Stamina
+	{"интеллекту", StatLogic.Stats.Intellect}, -- Intellect
+	{"интеллект", StatLogic.Stats.Intellect}, -- Intellect
+	{"духу", StatLogic.Stats.Spirit}, -- Spirit
+	{"дух", StatLogic.Stats.Spirit}, -- Spirit
 
-	{pattern = "рейтинг защиты", id = StatLogic.Stats.DefenseRating},
-	{pattern = "рейтингу защиты", id = StatLogic.Stats.DefenseRating},
-	{pattern = "рейтинга защиты", id = StatLogic.Stats.DefenseRating},
-	{pattern = "к защите", id = StatLogic.Stats.DefenseRating},
-	{pattern = "рейтинг уклонения", id = StatLogic.Stats.DodgeRating},
-	{pattern = "рейтингу уклонения", id = StatLogic.Stats.DodgeRating},
-	{pattern = "рейтинга уклонения", id = StatLogic.Stats.DodgeRating},
-	{pattern = "эффективность уклонения", id = StatLogic.Stats.DodgeRating},
-	{pattern = "рейтинг блокирования щитом", id = StatLogic.Stats.BlockRating}, -- block enchant: "+10 Shield Block Rating"
-	{pattern = "рейтинга блокирования щитом", id = StatLogic.Stats.BlockRating},
-	{pattern = "рейтингу блокирования щитом", id = StatLogic.Stats.BlockRating},
-	{pattern = "увеличение рейтинга блокирования щита на", id = StatLogic.Stats.BlockRating},
-	{pattern = "рейтинг блока", id = StatLogic.Stats.BlockRating},
-	{pattern = "рейтинга блока", id = StatLogic.Stats.BlockRating},
-	{pattern = "рейтингу блока", id = StatLogic.Stats.BlockRating},
-	{pattern = "рейтинг парирования", id = StatLogic.Stats.ParryRating},
-	{pattern = "рейтинга парирования", id = StatLogic.Stats.ParryRating},
-	{pattern = "рейтингу парирования", id = StatLogic.Stats.ParryRating},
+	{"рейтинг защиты", StatLogic.Stats.DefenseRating},
+	{"рейтингу защиты", StatLogic.Stats.DefenseRating},
+	{"рейтинга защиты", StatLogic.Stats.DefenseRating},
+	{"к защите", StatLogic.Stats.DefenseRating},
+	{"рейтинг уклонения", StatLogic.Stats.DodgeRating},
+	{"рейтингу уклонения", StatLogic.Stats.DodgeRating},
+	{"рейтинга уклонения", StatLogic.Stats.DodgeRating},
+	{"эффективность уклонения", StatLogic.Stats.DodgeRating},
+	{"рейтинг блокирования щитом", StatLogic.Stats.BlockRating}, -- block enchant: "+10 Shield Block Rating"
+	{"рейтинга блокирования щитом", StatLogic.Stats.BlockRating},
+	{"рейтингу блокирования щитом", StatLogic.Stats.BlockRating},
+	{"увеличение рейтинга блокирования щита на", StatLogic.Stats.BlockRating},
+	{"рейтинг блока", StatLogic.Stats.BlockRating},
+	{"рейтинга блока", StatLogic.Stats.BlockRating},
+	{"рейтингу блока", StatLogic.Stats.BlockRating},
+	{"рейтинг парирования", StatLogic.Stats.ParryRating},
+	{"рейтинга парирования", StatLogic.Stats.ParryRating},
+	{"рейтингу парирования", StatLogic.Stats.ParryRating},
 
-	{pattern = "рейтинг критического удара %(заклинания%)", id = StatLogic.Stats.SpellCritRating},
-	{pattern = "рейтингу критического удара %(заклинания%)", id = StatLogic.Stats.SpellCritRating},
-	{pattern = "рейтинга критического удара %(заклинания%)", id = StatLogic.Stats.SpellCritRating},
-	{pattern = "рейтинга критического удара заклинаниями", id = StatLogic.Stats.SpellCritRating},
-	{pattern = "рейтингу критического удара заклинаниями", id = StatLogic.Stats.SpellCritRating},
-	{pattern = "рейтинг критического удара заклинаниями", id = StatLogic.Stats.SpellCritRating},
-	{pattern = "критический удар %(заклинания%)", id = StatLogic.Stats.SpellCritRating},
-	{pattern = "меткость %(заклинания%)", id = StatLogic.Stats.SpellHitRating},
-	{pattern = "к критическому удару в дальнем бою", id = StatLogic.Stats.RangedCritRating}, -- [Heartseeker Scope]
-	{pattern = "рейтинг критического удара", id = StatLogic.Stats.CritRating},
-	{pattern = "к рейтингу критического эффекта", id = StatLogic.Stats.CritRating},
-	{pattern = "рейтингу критического удара", id = StatLogic.Stats.CritRating},
-	{pattern = "рейтинга критического удара", id = StatLogic.Stats.CritRating},
-	{pattern = "рейтинг крит. удара оруж. ближнего боя", id = StatLogic.Stats.MeleeCritRating},
+	{"рейтинг критического удара %(заклинания%)", StatLogic.Stats.SpellCritRating},
+	{"рейтингу критического удара %(заклинания%)", StatLogic.Stats.SpellCritRating},
+	{"рейтинга критического удара %(заклинания%)", StatLogic.Stats.SpellCritRating},
+	{"рейтинга критического удара заклинаниями", StatLogic.Stats.SpellCritRating},
+	{"рейтингу критического удара заклинаниями", StatLogic.Stats.SpellCritRating},
+	{"рейтинг критического удара заклинаниями", StatLogic.Stats.SpellCritRating},
+	{"критический удар %(заклинания%)", StatLogic.Stats.SpellCritRating},
+	{"меткость %(заклинания%)", StatLogic.Stats.SpellHitRating},
+	{"к критическому удару в дальнем бою", StatLogic.Stats.RangedCritRating}, -- [Heartseeker Scope]
+	{"рейтинг критического удара", StatLogic.Stats.CritRating},
+	{"к рейтингу критического эффекта", StatLogic.Stats.CritRating},
+	{"рейтингу критического удара", StatLogic.Stats.CritRating},
+	{"рейтинга критического удара", StatLogic.Stats.CritRating},
+	{"рейтинг крит. удара оруж. ближнего боя", StatLogic.Stats.MeleeCritRating},
 
-	{pattern = "рейтинг меткости %(заклинания%)", id = StatLogic.Stats.SpellHitRating},
-	{pattern = "рейтингу меткости %(заклинания%)", id = StatLogic.Stats.SpellHitRating},
-	{pattern = "рейтинга меткости %(заклинания%)", id = StatLogic.Stats.SpellHitRating},
-	{pattern = "рейтинга меткости заклинаний", id = StatLogic.Stats.SpellHitRating},
-	{pattern = "рейтингу меткости заклинаний", id = StatLogic.Stats.SpellHitRating},
-	{pattern = "Рейтинг меткости (оруж. дальн. боя)", id = StatLogic.Stats.RangedHitRating},
-	{pattern = "рейтинга нанесения удара ближнего боя", id = StatLogic.Stats.MeleeHitRating},
-	{pattern = "рейтинг меткости", id = StatLogic.Stats.HitRating},
-	{pattern = "рейтинга меткости", id = StatLogic.Stats.HitRating},
-	{pattern = "рейтингу меткости", id = StatLogic.Stats.HitRating},
+	{"рейтинг меткости %(заклинания%)", StatLogic.Stats.SpellHitRating},
+	{"рейтингу меткости %(заклинания%)", StatLogic.Stats.SpellHitRating},
+	{"рейтинга меткости %(заклинания%)", StatLogic.Stats.SpellHitRating},
+	{"рейтинга меткости заклинаний", StatLogic.Stats.SpellHitRating},
+	{"рейтингу меткости заклинаний", StatLogic.Stats.SpellHitRating},
+	{"Рейтинг меткости (оруж. дальн. боя)", StatLogic.Stats.RangedHitRating},
+	{"рейтинга нанесения удара ближнего боя", StatLogic.Stats.MeleeHitRating},
+	{"рейтинг меткости", StatLogic.Stats.HitRating},
+	{"рейтинга меткости", StatLogic.Stats.HitRating},
+	{"рейтингу меткости", StatLogic.Stats.HitRating},
 
-	{pattern = "рейтинг устойчивости", id = StatLogic.Stats.ResilienceRating}, -- resilience is implicitly a rating
-	{pattern = "рейтингу устойчивости", id = StatLogic.Stats.ResilienceRating},
-	{pattern = "рейтинга устойчивости", id = StatLogic.Stats.ResilienceRating},
+	{"рейтинг устойчивости", StatLogic.Stats.ResilienceRating}, -- resilience is implicitly a rating
+	{"рейтингу устойчивости", StatLogic.Stats.ResilienceRating},
+	{"рейтинга устойчивости", StatLogic.Stats.ResilienceRating},
 
-	{pattern = "рейтинг скорости %(заклинания%)", id = StatLogic.Stats.SpellHasteRating},
-	{pattern = "рейтингу скорости %(заклинания%)", id = StatLogic.Stats.SpellHasteRating},
-	{pattern = "рейтинга скорости %(заклинания%)", id = StatLogic.Stats.SpellHasteRating},
-	{pattern = "скорости наложения заклинаний", id = StatLogic.Stats.SpellHasteRating},
-	{pattern = "скорость наложения заклинаний", id = StatLogic.Stats.SpellHasteRating},
-	{pattern = "рейтинг скорости дальнего боя", id = StatLogic.Stats.RangedHasteRating},
-	{pattern = "рейтингу скорости дальнего боя", id = StatLogic.Stats.RangedHasteRating},
-	{pattern = "рейтинга скорости дальнего боя", id = StatLogic.Stats.RangedHasteRating},
-	{pattern = "рейтинг скорости", id = StatLogic.Stats.HasteRating},
-	{pattern = "рейтингу скорости", id = StatLogic.Stats.HasteRating},
-	{pattern = "рейтинга скорости", id = StatLogic.Stats.HasteRating},
+	{"рейтинг скорости %(заклинания%)", StatLogic.Stats.SpellHasteRating},
+	{"рейтингу скорости %(заклинания%)", StatLogic.Stats.SpellHasteRating},
+	{"рейтинга скорости %(заклинания%)", StatLogic.Stats.SpellHasteRating},
+	{"скорости наложения заклинаний", StatLogic.Stats.SpellHasteRating},
+	{"скорость наложения заклинаний", StatLogic.Stats.SpellHasteRating},
+	{"рейтинг скорости дальнего боя", StatLogic.Stats.RangedHasteRating},
+	{"рейтингу скорости дальнего боя", StatLogic.Stats.RangedHasteRating},
+	{"рейтинга скорости дальнего боя", StatLogic.Stats.RangedHasteRating},
+	{"рейтинг скорости", StatLogic.Stats.HasteRating},
+	{"рейтингу скорости", StatLogic.Stats.HasteRating},
+	{"рейтинга скорости", StatLogic.Stats.HasteRating},
 
-	{pattern = "мастерства", id = StatLogic.Stats.ExpertiseRating},
+	{"мастерства", StatLogic.Stats.ExpertiseRating},
 
-	{pattern = SPELL_STATALL:lower(), id = StatLogic.Stats.AllStats},
+	{SPELL_STATALL:lower(), StatLogic.Stats.AllStats},
 
-	{pattern = "искусност", id = StatLogic.Stats.MasteryRating},
+	{"искусност", StatLogic.Stats.MasteryRating},
 }
 -------------------------
 -- Added info patterns --
