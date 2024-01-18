@@ -2344,7 +2344,7 @@ do
 				end
 			end
 			infoString = table.concat(infoTable, ", ")
-		elseif profileDB.showAPFromArmor and statID == ARMOR then
+		elseif profileDB.showAPFromArmor and statID == StatLogic.Stats.Armor then
 			-----------
 			-- Armor --
 			-----------
@@ -2358,7 +2358,7 @@ do
 				tinsert(infoTable, (L["$value AP"]:gsub("$value", ("%+.1f"):format(effect))))
 			end
 			infoString = table.concat(infoTable, ", ")
-		elseif statID == ATTACK_POWER then
+		elseif statID == StatLogic.Stats.AttackPower then
 			------------------
 			-- Attack Power --
 			------------------
