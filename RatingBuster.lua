@@ -51,7 +51,7 @@ end
 local _
 local _, class = UnitClass("player")
 local calcLevel, playerLevel
-local profileDB, globalDB -- Initialized in :OnInitialize()
+local db -- Initialized in :OnInitialize()
 
 -- Localize globals
 local pairs = pairs
@@ -78,40 +78,40 @@ local GetBlockChance = GetBlockChance
 -- Slash Command Options --
 ---------------------------
 
-local function getOption(info)
-	if type(globalDB[info[#info]]) ~= "nil" then
-		return globalDB[info[#info]]
+local function getOption(info, dataType)
+	if type(db.global[info[#info]]) ~= "nil" then
+		return db.global[info[#info]]
 	else
-		return profileDB[info[#info]]
+		return db.profile[info[#info]]
 	end
 end
-local function setOptionAndClearCache(info, value)
-	if type(globalDB[info[#info]]) ~= "nil" then
-		globalDB[info[#info]] = value
+local function setOption(info, value, dataType)
+	if type(db.global[info[#info]]) ~= "nil" then
+		db.global[info[#info]] = value
 	else
-		profileDB[info[#info]] = value
+		db.profile[info[#info]] = value
 	end
 	clearCache()
 end
 local function getGem(info)
-	return profileDB[info[#info]].gemLink
+	return db.profile[info[#info]].gemLink
 end
 local function setGem(info, value)
 	if value == "" then
-		profileDB[info[#info]].itemID = nil
-		profileDB[info[#info]].gemID = nil
-		profileDB[info[#info]].gemName = nil
-		profileDB[info[#info]].gemLink = nil
+		db.profile[info[#info]].itemID = nil
+		db.profile[info[#info]].gemID = nil
+		db.profile[info[#info]].gemName = nil
+		db.profile[info[#info]].gemLink = nil
 		return
 	end
 	local gemID, gemText = StatLogic:GetGemID(value)
 	if gemID and gemText then
 		local name, link = GetItemInfo(value)
 		local itemID = link:match("item:(%d+)")
-		profileDB[info[#info]].itemID = itemID
-		profileDB[info[#info]].gemID = gemID
-		profileDB[info[#info]].gemName = name
-		profileDB[info[#info]].gemLink = link
+		db.profile[info[#info]].itemID = itemID
+		db.profile[info[#info]].gemID = gemID
+		db.profile[info[#info]].gemName = name
+		db.profile[info[#info]].gemLink = link
 		-- Trim spaces
 		gemText = gemText:trim()
 		-- Strip color codes
@@ -121,7 +121,7 @@ local function setGem(info, value)
 		if gemText:sub(1, 10):find("|c%x%x%x%x%x%x%x%x") then
 			gemText = gemText:sub(11)
 		end
-		profileDB[info[#info]].gemText = gemText
+		db.profile[info[#info]].gemText = gemText
 		clearCache()
 		local socket = "EMPTY_SOCKET_" .. info[#info]:sub(7):upper()
 		if not debugstack():find("AceConsole") then
@@ -132,16 +132,16 @@ local function setGem(info, value)
 	end
 end
 local function getColor(info)
-	local color = globalDB[info[#info]]
+	local color = db.global[info[#info]]
 	if not color then
-		color = profileDB[info[#info]]
+		color = db.profile[info[#info]]
 	end
 	return color:GetRGB()
 end
 local function setColor(info, r, g, b)
-	local color = globalDB[info[#info]]
+	local color = db.global[info[#info]]
 	if not color then
-		color = profileDB[info[#info]]
+		color = db.profile[info[#info]]
 	end
 	color:SetRGB(r, g, b)
 	clearCache()
@@ -162,7 +162,7 @@ ColorPickerFrame:SetScript("OnDragStop", ColorPickerFrame.StopMovingOrSizing)
 local options = {
 	type = 'group',
 	get = getOption,
-	set = setOptionAndClearCache,
+	set = setOption,
 	args = {
 		help = {
 			type = 'execute',
@@ -1515,7 +1515,6 @@ PLAYER_LOGIN - Most information about the game world should now be available to 
 --]]
 -- OnInitialize(name) called at ADDON_LOADED
 function RatingBuster:RefreshConfig()
-	profileDB = self.db.profile
 	wipe(cache)
 end
 
@@ -1529,8 +1528,7 @@ function RatingBuster:InitializeDatabase()
 	RatingBuster.db.RegisterCallback(RatingBuster, "OnProfileChanged", "RefreshConfig")
 	RatingBuster.db.RegisterCallback(RatingBuster, "OnProfileCopied", "RefreshConfig")
 	RatingBuster.db.RegisterCallback(RatingBuster, "OnProfileReset", "RefreshConfig")
-	profileDB = RatingBuster.db.profile
-	globalDB = RatingBuster.db.global
+	db = RatingBuster.db
 
 	options.args.profiles = LibStub("AceDBOptions-3.0"):GetOptionsTable(RatingBuster.db)
 	options.args.profiles.order = 5
@@ -1639,11 +1637,11 @@ function RatingBuster.ProcessTooltip(tooltip)
 	---------------------------
 	-- Set calculation level --
 	---------------------------
-	calcLevel = globalDB.customLevel or 0
+	calcLevel = db.global.customLevel or 0
 	if calcLevel == 0 then
 		calcLevel = playerLevel
 	end
-	if globalDB.useRequiredLevel and link then
+	if db.global.useRequiredLevel and link then
 		local _, _, _, _, reqLevel = GetItemInfo(link)
 		--RatingBuster:Print(link..", "..calcLevel)
 		if reqLevel and calcLevel < reqLevel then
@@ -1654,12 +1652,12 @@ function RatingBuster.ProcessTooltip(tooltip)
 	-- Tooltip Scanner --
 	---------------------
 	-- Get equipped item avoidances
-	if profileDB.enableAvoidanceDiminishingReturns then
-		local red = profileDB.sumGemRed.gemID
-		local yellow = profileDB.sumGemYellow.gemID
-		local blue = profileDB.sumGemBlue.gemID
-		local meta = profileDB.sumGemMeta.gemID
-		local _, _, difflink1 = StatLogic:GetDiffID(tooltip, globalDB.sumIgnoreEnchant, globalDB.sumIgnoreGems, globalDB.sumIgnoreExtraSockets, red, yellow, blue, meta)
+	if db.profile.enableAvoidanceDiminishingReturns then
+		local red = db.profile.sumGemRed.gemID
+		local yellow = db.profile.sumGemYellow.gemID
+		local blue = db.profile.sumGemBlue.gemID
+		local meta = db.profile.sumGemMeta.gemID
+		local _, _, difflink1 = StatLogic:GetDiffID(tooltip, db.global.sumIgnoreEnchant, db.global.sumIgnoreGems, db.global.sumIgnoreExtraSockets, red, yellow, blue, meta)
 		StatLogic:GetSum(difflink1, equippedSum)
 		equippedSum[StatLogic.Stats.Strength] = equippedSum[StatLogic.Stats.Strength] * GSM("MOD_STR")
 		equippedSum[StatLogic.Stats.Agility] = equippedSum[StatLogic.Stats.Agility] * GSM("MOD_AGI")
@@ -1693,7 +1691,7 @@ function RatingBuster.ProcessTooltip(tooltip)
 	----------------------------
 	-- Item Level and Item ID --
 	----------------------------
-	if (globalDB.showItemLevel or globalDB.showItemID) and link then
+	if (db.global.showItemLevel or db.global.showItemID) and link then
 		if cache[link] then
 			tooltip:AddLine(cache[link])
 		else
@@ -1702,13 +1700,13 @@ function RatingBuster.ProcessTooltip(tooltip)
 			if link then
 				local _, _, id = link:find("item:(%d+)")
 				local newLine = ""
-				local statColor = globalDB.sumStatColor
-				local valueColor = globalDB.sumValueColor
-				if level and globalDB.showItemLevel then
+				local statColor = db.global.sumStatColor
+				local valueColor = db.global.sumValueColor
+				if level and db.global.showItemLevel then
 					newLine = newLine .. statColor:WrapTextInColorCode(L["ItemLevel: "])
 					newLine = newLine .. valueColor:WrapTextInColorCode(level)
 				end
-				if id and globalDB.showItemID then
+				if id and db.global.showItemID then
 					if newLine ~= "" then
 						newLine = newLine..", "
 					end
@@ -1771,7 +1769,7 @@ function RatingBuster.ProcessTooltip(tooltip)
 	-- Weapon Skill
 	-- Expertise - EXPERTISE_RATING
 	--]]
-	if globalDB.showSum then
+	if db.global.showSum then
 		RatingBuster:StatSummary(tooltip, link)
 	end
 	---------------------
@@ -1788,8 +1786,8 @@ function RatingBuster:ProcessLine(text, link, color)
 		if cacheText ~= text then
 			return cacheText
 		end
-	elseif EmptySocketLookup[text] and profileDB[EmptySocketLookup[text]].gemText then -- Replace empty sockets with gem text
-		text = profileDB[EmptySocketLookup[text]].gemText
+	elseif EmptySocketLookup[text] and db.profile[EmptySocketLookup[text]].gemText then -- Replace empty sockets with gem text
+		text = db.profile[EmptySocketLookup[text]].gemText
 		cache[cacheID] = text
 		-- SetText
 		return text
@@ -1879,12 +1877,12 @@ function RatingBuster:ProcessText(text, link, color)
 						end
 
 						-- Backwards Compatibility
-						if not globalDB.textColor.GenerateHexColorMarkup then
-							local old = globalDB.textColor
+						if not db.global.textColor.GenerateHexColorMarkup then
+							local old = db.global.textColor
 							if type(old) == "table" and old.r and old.g and old.b then
-								globalDB.textColor = CreateColor(old.r, old.g, old.b)
+								db.global.textColor = CreateColor(old.r, old.g, old.b)
 							else
-								globalDB.textColor = defaults.global.textColor
+								db.global.textColor = defaults.global.textColor
 							end
 						end
 
@@ -1892,7 +1890,7 @@ function RatingBuster:ProcessText(text, link, color)
 						return table.concat({
 							text:sub(1, insertionPoint),
 							" ",
-							globalDB.textColor:GenerateHexColorMarkup(),
+							db.global.textColor:GenerateHexColorMarkup(),
 							"(",
 							infoString,
 							")",
@@ -1949,7 +1947,7 @@ do
 					end
 				end
 			end
-		elseif StatLogic.RatingBase[statID] and profileDB.showRatings then
+		elseif StatLogic.RatingBase[statID] and db.profile.showRatings then
 			--------------------
 			-- Combat Ratings --
 			--------------------
@@ -1957,7 +1955,7 @@ do
 			local effect = StatLogic:GetEffectFromRating(value, statID, calcLevel)
 			--self:Debug(reversedAmount..", "..amount..", "..v[2]..", "..RatingBuster.targetLevel)-- debug
 			-- If rating is resilience, add a minus sign
-			if statID == StatLogic.Stats.DefenseRating and profileDB.defBreakDown then
+			if statID == StatLogic.Stats.DefenseRating and db.profile.defBreakDown then
 				effect = effect * 0.04
 				processedDodge = processedDodge + effect
 				processedMissed = processedMissed + effect
@@ -1971,26 +1969,26 @@ do
 					numStats = numStats - 1
 				end
 				infoString = ("%+.2f%% x"..numStats):format(effect)
-			elseif statID == StatLogic.Stats.DodgeRating and profileDB.enableAvoidanceDiminishingReturns then
+			elseif statID == StatLogic.Stats.DodgeRating and db.profile.enableAvoidanceDiminishingReturns then
 				infoString = ("%+.2f%%"):format(StatLogic:GetAvoidanceGainAfterDR(StatLogic.Stats.Dodge, processedDodge + effect) - StatLogic:GetAvoidanceGainAfterDR(StatLogic.Stats.Dodge, processedDodge))
 				processedDodge = processedDodge + effect
-			elseif statID == StatLogic.Stats.ParryRating and profileDB.enableAvoidanceDiminishingReturns then
+			elseif statID == StatLogic.Stats.ParryRating and db.profile.enableAvoidanceDiminishingReturns then
 				infoString = ("%+.2f%%"):format(StatLogic:GetAvoidanceGainAfterDR(StatLogic.Stats.Parry, processedParry + effect) - StatLogic:GetAvoidanceGainAfterDR(StatLogic.Stats.Parry, processedParry))
 				processedParry = processedParry + effect
-			elseif statID == StatLogic.Stats.ExpertiseRating and profileDB.expBreakDown then
+			elseif statID == StatLogic.Stats.ExpertiseRating and db.profile.expBreakDown then
 				if addon.tocversion < 30000 then
 					-- Expertise is truncated in TBC but not in Wrath
 					effect = floor(effect)
 				end
 				effect = effect * -0.25
-				if profileDB.detailedConversionText then
+				if db.profile.detailedConversionText then
 					infoString = L["$value to be Dodged/Parried"]:gsub("$value", ("%+.2f%%%%"):format(effect))
 				else
 					infoString = ("%+.2f%%"):format(effect)
 				end
 			elseif statID == StatLogic.Stats.ResilienceRating then -- Resilience
 				effect = effect * -1
-				if profileDB.detailedConversionText then
+				if db.profile.detailedConversionText then
 					local infoTable = {}
 
 					if addon.tocversion >= 30000 then
@@ -2013,12 +2011,12 @@ do
 				local pattern = "%+.2f%%"
 				local show = false
 				if RatingType.Melee[statID] then
-					if profileDB.ratingPhysical then
+					if db.profile.ratingPhysical then
 						show = true
 					end
 				elseif RatingType.Spell[statID] then
-					if profileDB.ratingSpell then
-						if not profileDB.ratingPhysical then
+					if db.profile.ratingSpell then
+						if not db.profile.ratingPhysical then
 							show = true
 						elseif ( statID == StatLogic.Stats.SpellHitRating or (statID == StatLogic.Stats.SpellHasteRating and StatLogic.ExtraHasteClasses[class])) then
 							show = true
@@ -2036,17 +2034,17 @@ do
 					infoString = pattern:format(effect)
 				end
 			end
-		elseif statID == StatLogic.Stats.Strength and profileDB.showStats then
+		elseif statID == StatLogic.Stats.Strength and db.profile.showStats then
 			--------------
 			-- Strength --
 			--------------
 			local statmod = 1
-			if profileDB.enableStatMods then
+			if db.profile.enableStatMods then
 				statmod = GSM("MOD_STR")
 				value = value * statmod
 			end
 			local infoTable = {}
-			if profileDB.showAPFromStr then
+			if db.profile.showAPFromStr then
 				local mod = GSM("MOD_AP")
 				local effect = value * GSM("ADD_AP_MOD_STR") * mod
 				if (mod ~= 1 or statmod ~= 1) and floor(abs(effect) * 10 + 0.5) > 0 then
@@ -2055,7 +2053,7 @@ do
 					tinsert(infoTable, (L["$value AP"]:gsub("$value", ("%+.0f"):format(effect))))
 				end
 			end
-			if profileDB.showBlockValueFromStr then
+			if db.profile.showBlockValueFromStr then
 				local effect = value * GSM("ADD_BLOCK_VALUE_MOD_STR")
 				if floor(abs(effect) * 10 + 0.5) > 0 then
 					tinsert(infoTable, (L["$value Block"]:gsub("$value", ("%+.1f"):format(effect))))
@@ -2063,7 +2061,7 @@ do
 			end
 			-- Shaman: Mental Quickness
 			-- Paladin: Sheath of Light, Touched by the Light
-			if profileDB.showSpellDmgFromStr then
+			if db.profile.showSpellDmgFromStr then
 				local mod = GSM("MOD_AP") * GSM("MOD_SPELL_DMG")
 				local effect = (value * GSM("ADD_AP_MOD_STR") * GSM("ADD_SPELL_DMG_MOD_AP")
 					+ value * GSM("ADD_SPELL_DMG_MOD_STR")) * mod
@@ -2073,7 +2071,7 @@ do
 					tinsert(infoTable, (L["$value Spell Dmg"]:gsub("$value", ("%+.0f"):format(effect))))
 				end
 			end
-			if profileDB.showHealingFromStr then
+			if db.profile.showHealingFromStr then
 				local mod = GSM("MOD_AP") * GSM("MOD_HEALING")
 				local effect = (value * GSM("ADD_AP_MOD_STR") * GSM("ADD_HEALING_MOD_AP")
 					+ value * GSM("ADD_HEALING_MOD_STR")) * mod
@@ -2084,10 +2082,10 @@ do
 				end
 			end
 			-- Death Knight: Forceful Deflection - Passive
-			if profileDB.showParryFromStr then
+			if db.profile.showParryFromStr then
 				local rating = value * GSM("ADD_PARRY_RATING_MOD_STR")
 				local effect = StatLogic:GetEffectFromRating(rating, StatLogic.Stats.ParryRating, calcLevel)
-				if profileDB.enableAvoidanceDiminishingReturns then
+				if db.profile.enableAvoidanceDiminishingReturns then
 					local effectNoDR = effect
 					effect = StatLogic:GetAvoidanceGainAfterDR(StatLogic.Stats.Parry, processedParry + effect) - StatLogic:GetAvoidanceGainAfterDR(StatLogic.Stats.Parry, processedParry)
 					processedParry = processedParry + effectNoDR
@@ -2101,17 +2099,17 @@ do
 				processedParry = processedParry + effect
 			end
 			infoString = table.concat(infoTable, ", ")
-		elseif statID == StatLogic.Stats.Agility and profileDB.showStats then
+		elseif statID == StatLogic.Stats.Agility and db.profile.showStats then
 			-------------
 			-- Agility --
 			-------------
 			local statmod = 1
-			if profileDB.enableStatMods then
+			if db.profile.enableStatMods then
 				statmod = GSM("MOD_AGI")
 				value = value * statmod
 			end
 			local infoTable = {}
-			if profileDB.showAPFromAgi then
+			if db.profile.showAPFromAgi then
 				local mod = GSM("MOD_AP")
 				local effect = value * GSM("ADD_AP_MOD_AGI") * mod
 				if (mod ~= 1 or statmod ~= 1) and floor(abs(effect) * 10 + 0.5) > 0 then
@@ -2120,7 +2118,7 @@ do
 					tinsert(infoTable, (L["$value AP"]:gsub("$value", ("%+.0f"):format(effect))))
 				end
 			end
-			if profileDB.showRAPFromAgi then
+			if db.profile.showRAPFromAgi then
 				local mod = GSM("MOD_RANGED_AP")
 				local effect = value * GSM("ADD_RANGED_AP_MOD_AGI") * mod
 				if (mod ~= 1 or statmod ~= 1) and floor(abs(effect) * 10 + 0.5) > 0 then
@@ -2129,19 +2127,19 @@ do
 					tinsert(infoTable, (L["$value RAP"]:gsub("$value", ("%+.0f"):format(effect))))
 				end
 			end
-			if profileDB.showCritFromAgi then
+			if db.profile.showCritFromAgi then
 				local effect = value * StatLogic:GetCritPerAgi(class, calcLevel)
 				if effect > 0 then
 					tinsert(infoTable, (L["$value% Crit"]:gsub("$value", ("%+.2f"):format(effect))))
 				end
 			end
-			if profileDB.showDodgeFromAgi and (calcLevel == playerLevel) then
+			if db.profile.showDodgeFromAgi and (calcLevel == playerLevel) then
 				local effect = value * StatLogic:GetDodgePerAgi()
 				if effect > 0 then
 					tinsert(infoTable, (L["$value% Dodge"]:gsub("$value", ("%+.2f"):format(effect))))
 				end
 			end
-			if profileDB.showArmorFromAgi then
+			if db.profile.showArmorFromAgi then
 				local effect = value * 2
 				if effect > 0 then
 					tinsert(infoTable, (L["$value Armor"]:gsub("$value", ("%+.0f"):format(effect))))
@@ -2149,7 +2147,7 @@ do
 			end
 			-- Shaman: Mental Quickness
 			-- Paladin: Sheath of Light, Touched by the Light
-			if profileDB.showSpellDmgFromAgi then
+			if db.profile.showSpellDmgFromAgi then
 				local mod = GSM("MOD_AP") * GSM("MOD_SPELL_DMG")
 				local effect = (value * GSM("ADD_AP_MOD_AGI") * GSM("ADD_SPELL_DMG_MOD_AP")) * mod
 				if (mod ~= 1 or statmod ~= 1) and floor(abs(effect) * 10 + 0.5) > 0 then
@@ -2159,7 +2157,7 @@ do
 				end
 			end
 			-- Druid: Nurturing Instinct
-			if profileDB.showHealingFromAgi then
+			if db.profile.showHealingFromAgi then
 				local mod = GSM("MOD_AP") * GSM("MOD_HEALING")
 				local effect = (value * GSM("ADD_AP_MOD_AGI") * GSM("ADD_HEALING_MOD_AP")
 					+ value * GSM("ADD_HEALING_MOD_AGI") / GSM("MOD_AP")) * mod
@@ -2170,17 +2168,17 @@ do
 				end
 			end
 			infoString = table.concat(infoTable, ", ")
-		elseif statID == StatLogic.Stats.Stamina and profileDB.showStats then
+		elseif statID == StatLogic.Stats.Stamina and db.profile.showStats then
 			-------------
 			-- Stamina --
 			-------------
 			local statmod = 1
-			if profileDB.enableStatMods then
+			if db.profile.enableStatMods then
 				statmod = GSM("MOD_STA")
 				value = value * statmod
 			end
 			local infoTable = {}
-			if profileDB.showHealthFromSta then
+			if db.profile.showHealthFromSta then
 				local mod = GSM("MOD_HEALTH")
 				local effect = value * GSM("ADD_HEALTH_MOD_STA") * mod
 				if (mod ~= 1 or statmod ~= 1) and floor(abs(effect) * 10 + 0.5) > 0 then
@@ -2189,7 +2187,7 @@ do
 					tinsert(infoTable, (L["$value HP"]:gsub("$value", ("%+.0f"):format(effect))))
 				end
 			end
-			if profileDB.showSpellDmgFromSta then
+			if db.profile.showSpellDmgFromSta then
 				local mod = GSM("MOD_SPELL_DMG")
 				local effect = value * mod * (GSM("ADD_SPELL_DMG_MOD_STA")
 					+ GSM("ADD_SPELL_DMG_MOD_PET_STA") * GSM("MOD_PET_STA") * GSM("ADD_PET_STA_MOD_STA"))
@@ -2198,7 +2196,7 @@ do
 				end
 			end
 			-- "ADD_AP_MOD_STA" -- Hunter: Hunter vs. Wild
-			if profileDB.showAPFromSta then
+			if db.profile.showAPFromSta then
 				local mod = GSM("MOD_AP")
 				local effect = value * GSM("ADD_AP_MOD_STA") * mod
 				if (mod ~= 1 or statmod ~= 1) and floor(abs(effect) * 10 + 0.5) > 0 then
@@ -2208,17 +2206,17 @@ do
 				end
 			end
 			infoString = table.concat(infoTable, ", ")
-		elseif statID == StatLogic.Stats.Intellect and profileDB.showStats then
+		elseif statID == StatLogic.Stats.Intellect and db.profile.showStats then
 			---------------
 			-- Intellect --
 			---------------
 			local statmod = 1
-			if profileDB.enableStatMods then
+			if db.profile.enableStatMods then
 				statmod = GSM("MOD_INT")
 				value = value * statmod
 			end
 			local infoTable = {}
-			if profileDB.showManaFromInt then
+			if db.profile.showManaFromInt then
 				local mod = GSM("MOD_MANA")
 				local effect = value * GSM("ADD_MANA_MOD_INT") * mod -- 15 Mana per Int
 				if (mod ~= 1 or statmod ~= 1) and floor(abs(effect) * 10 + 0.5) > 0 then
@@ -2227,13 +2225,13 @@ do
 					tinsert(infoTable, (L["$value MP"]:gsub("$value", ("%+.0f"):format(effect))))
 				end
 			end
-			if profileDB.showSpellCritFromInt then
+			if db.profile.showSpellCritFromInt then
 				local effect = value * StatLogic:GetSpellCritPerInt(class, calcLevel)
 				if effect > 0 then
 					tinsert(infoTable, (L["$value% Spell Crit"]:gsub("$value", ("%+.2f"):format(effect))))
 				end
 			end
-			if profileDB.showSpellDmgFromInt then
+			if db.profile.showSpellDmgFromInt then
 				local mod = GSM("MOD_SPELL_DMG")
 				local effect = value * mod * (GSM("ADD_SPELL_DMG_MOD_INT")
 					+ GSM("ADD_SPELL_DMG_MOD_PET_INT") * GSM("MOD_PET_INT") * GSM("ADD_PET_INT_MOD_INT"))
@@ -2241,14 +2239,14 @@ do
 					tinsert(infoTable, (L["$value Spell Dmg"]:gsub("$value", ("%+.1f"):format(effect))))
 				end
 			end
-			if profileDB.showHealingFromInt then
+			if db.profile.showHealingFromInt then
 				local mod = GSM("MOD_HEALING")
 				local effect = value * GSM("ADD_HEALING_MOD_INT") * mod
 				if floor(abs(effect) * 10 + 0.5) > 0 then
 					tinsert(infoTable, (L["$value Heal"]:gsub("$value", ("%+.1f"):format(effect))))
 				end
 			end
-			if profileDB.showMP5FromInt then
+			if db.profile.showMP5FromInt then
 				local effect = value * GSM("ADD_MANA_REG_MOD_INT")
 					+ value * GSM("ADD_NORMAL_MANA_REG_MOD_INT") * GSM("MOD_NORMAL_MANA_REG") * math.min(GSM("ADD_MANA_REG_MOD_NORMAL_MANA_REG"), 1)
 					+ value * GSM("ADD_MANA_MOD_INT") * GSM("MOD_MANA") * GSM("ADD_MANA_REG_MOD_MANA") -- Replenishment
@@ -2256,7 +2254,7 @@ do
 					tinsert(infoTable, (L["$value MP5"]:gsub("$value", ("%+.1f"):format(effect))))
 				end
 			end
-			if profileDB.showMP5NCFromInt then
+			if db.profile.showMP5NCFromInt then
 				local effect = value * GSM("ADD_MANA_REG_MOD_INT")
 					+ value * GSM("ADD_NORMAL_MANA_REG_MOD_INT") * GSM("MOD_NORMAL_MANA_REG")
 					+ value * GSM("ADD_MANA_MOD_INT") * GSM("MOD_MANA") * GSM("ADD_MANA_REG_MOD_MANA") -- Replenishment
@@ -2264,21 +2262,21 @@ do
 					tinsert(infoTable, (L["$value MP5(NC)"]:gsub("$value", ("%+.1f"):format(effect))))
 				end
 			end
-			if profileDB.showRAPFromInt then
+			if db.profile.showRAPFromInt then
 				local mod = GSM("MOD_RANGED_AP")
 				local effect = value * GSM("ADD_RANGED_AP_MOD_INT") * mod
 				if floor(abs(effect) * 10 + 0.5) > 0 then
 					tinsert(infoTable, (L["$value RAP"]:gsub("$value", ("%+.1f"):format(effect))))
 				end
 			end
-			if profileDB.showArmorFromInt then
+			if db.profile.showArmorFromInt then
 				local effect = value * GSM("ADD_BONUS_ARMOR_MOD_INT")
 				if floor(abs(effect) + 0.5) > 0 then
 					tinsert(infoTable, (L["$value Armor"]:gsub("$value", ("%+.0f"):format(effect))))
 				end
 			end
 			-- "ADD_AP_MOD_INT" -- Shaman: Mental Dexterity
-			if profileDB.showAPFromInt then
+			if db.profile.showAPFromInt then
 				local mod = GSM("MOD_AP")
 				local effect = value * GSM("ADD_AP_MOD_INT") * mod
 				if (mod ~= 1 or statmod ~= 1) and floor(abs(effect) * 10 + 0.5) > 0 then
@@ -2288,55 +2286,55 @@ do
 				end
 			end
 			infoString = table.concat(infoTable, ", ")
-		elseif statID == StatLogic.Stats.Spirit and profileDB.showStats then
+		elseif statID == StatLogic.Stats.Spirit and db.profile.showStats then
 			------------
 			-- Spirit --
 			------------
 			local statmod = 1
-			if profileDB.enableStatMods then
+			if db.profile.enableStatMods then
 				statmod = GSM("MOD_SPI")
 				value = value * statmod
 			end
 			local infoTable = {}
-			if profileDB.showMP5FromSpi then
+			if db.profile.showMP5FromSpi then
 				local effect = value * GSM("ADD_NORMAL_MANA_REG_MOD_SPI") * GSM("MOD_NORMAL_MANA_REG") * math.min(GSM("ADD_MANA_REG_MOD_NORMAL_MANA_REG"), 1)
 				if floor(abs(effect) * 10 + 0.5) > 0 then
 					tinsert(infoTable, (L["$value MP5"]:gsub("$value", ("%+.1f"):format(effect))))
 				end
 			end
-			if profileDB.showMP5NCFromSpi then
+			if db.profile.showMP5NCFromSpi then
 				local effect = value * GSM("ADD_NORMAL_MANA_REG_MOD_SPI") * GSM("MOD_NORMAL_MANA_REG")
 				if floor(abs(effect) * 10 + 0.5) > 0 then
 					tinsert(infoTable, (L["$value MP5(NC)"]:gsub("$value", ("%+.1f"):format(effect))))
 				end
 			end
-			if profileDB.showHP5FromSpi then
+			if db.profile.showHP5FromSpi then
 				local effect = value * GSM("ADD_NORMAL_HEALTH_REG_MOD_SPI") * GSM("MOD_NORMAL_HEALTH_REG") * GSM("ADD_HEALTH_REG_MOD_NORMAL_HEALTH_REG")
 				if floor(abs(effect) * 10 + 0.5) > 0 then
 					tinsert(infoTable, (L["$value HP5"]:gsub("$value", ("%+.1f"):format(effect))))
 				end
 			end
-			if profileDB.showHP5NCFromSpi then
+			if db.profile.showHP5NCFromSpi then
 				local effect = value * GSM("ADD_NORMAL_HEALTH_REG_MOD_SPI") * GSM("MOD_NORMAL_HEALTH_REG")
 				if floor(abs(effect) * 10 + 0.5) > 0 then
 					tinsert(infoTable, (L["$value HP5(NC)"]:gsub("$value", ("%+.1f"):format(effect))))
 				end
 			end
-			if profileDB.showSpellDmgFromSpi then
+			if db.profile.showSpellDmgFromSpi then
 				local mod = GSM("MOD_SPELL_DMG")
 				local effect = value * GSM("ADD_SPELL_DMG_MOD_SPI") * mod
 				if floor(abs(effect) * 10 + 0.5) > 0 then
 					tinsert(infoTable, (L["$value Spell Dmg"]:gsub("$value", ("%+.1f"):format(effect))))
 				end
 			end
-			if profileDB.showHealingFromSpi then
+			if db.profile.showHealingFromSpi then
 				local mod = GSM("MOD_HEALING")
 				local effect = value * GSM("ADD_HEALING_MOD_SPI") * mod
 				if floor(abs(effect) * 10 + 0.5) > 0 then
 					tinsert(infoTable, (L["$value Heal"]:gsub("$value", ("%+.1f"):format(effect))))
 				end
 			end
-			if profileDB.showSpellCritFromSpi then
+			if db.profile.showSpellCritFromSpi then
 				local mod = GSM("ADD_SPELL_CRIT_RATING_MOD_SPI")
 				local effect = StatLogic:GetEffectFromRating(value * mod, StatLogic.Stats.SpellCritRating, calcLevel)
 				if effect > 0 then
@@ -2344,11 +2342,11 @@ do
 				end
 			end
 			infoString = table.concat(infoTable, ", ")
-		elseif profileDB.showAPFromArmor and statID == StatLogic.Stats.Armor then
+		elseif db.profile.showAPFromArmor and statID == StatLogic.Stats.Armor then
 			-----------
 			-- Armor --
 			-----------
-			if profileDB.enableStatMods then
+			if db.profile.enableStatMods then
 				local base, bonus = StatLogic:GetArmorDistribution(link, value, color)
 				value = base * GSM("MOD_ARMOR") + bonus
 			end
@@ -2363,14 +2361,14 @@ do
 			-- Attack Power --
 			------------------
 			local statmod = 1
-			if profileDB.enableStatMods then
+			if db.profile.enableStatMods then
 				statmod = GSM("MOD_AP")
 				value = value * statmod
 			end
 			local infoTable = {}
 			-- Shaman: Mental Quickness
 			-- Paladin: Sheath of Light, Touched by the Light
-			if profileDB.showSpellDmgFromAP then
+			if db.profile.showSpellDmgFromAP then
 				local mod = GSM("MOD_AP") * GSM("MOD_SPELL_DMG")
 				local effect = (value * GSM("ADD_SPELL_DMG_MOD_AP")) * mod
 				if (mod ~= 1 or statmod ~= 1) and floor(abs(effect) * 10 + 0.5) > 0 then
@@ -2379,7 +2377,7 @@ do
 					tinsert(infoTable, (L["$value Spell Dmg"]:gsub("$value", ("%+.0f"):format(effect))))
 				end
 			end
-			if profileDB.showHealingFromAP then
+			if db.profile.showHealingFromAP then
 				local mod = GSM("MOD_AP") * GSM("MOD_HEALING")
 				local effect = (value * GSM("ADD_HEALING_MOD_AP")) * mod
 				if (mod ~= 1 or statmod ~= 1) and floor(abs(effect) * 10 + 0.5) > 0 then
@@ -2406,7 +2404,7 @@ local function RemoveFontString(fontString)
 end
 
 local function RemoveBlizzardItemComparisons(tooltip)
-	if not tooltip or not globalDB.hideBlizzardComparisons then return end
+	if not tooltip or not db.global.hideBlizzardComparisons then return end
 
 	for _, shoppingTooltip in pairs(tooltip.shoppingTooltips) do
 		local tipTextLeft = shoppingTooltip:GetName().."TextLeft"
@@ -3019,7 +3017,7 @@ local summaryCalcData = {
 		name = StatLogic.Stats.Dodge,
 		func = function(sum, sumType)
 			local dodge = summaryFunc[StatLogic.Stats.DodgeBeforeDR](sum)
-			if profileDB.enableAvoidanceDiminishingReturns then
+			if db.profile.enableAvoidanceDiminishingReturns then
 				if (sumType == "diff1") or (sumType == "diff2") then
 					dodge = StatLogic:GetAvoidanceGainAfterDR(StatLogic.Stats.Dodge, dodge)
 				elseif sumType == "sum" then
@@ -3057,7 +3055,7 @@ local summaryCalcData = {
 		name = StatLogic.Stats.Parry,
 		func = function(sum, sumType)
 			local parry = summaryFunc[StatLogic.Stats.ParryBeforeDR](sum)
-			if profileDB.enableAvoidanceDiminishingReturns then
+			if db.profile.enableAvoidanceDiminishingReturns then
 				if (sumType == "diff1") or (sumType == "diff2") then
 					parry = StatLogic:GetAvoidanceGainAfterDR(StatLogic.Stats.Parry, parry)
 				elseif sumType == "sum" then
@@ -3126,7 +3124,7 @@ local summaryCalcData = {
 		name = StatLogic.Stats.Miss,
 		func = function(sum, sumType)
 			local missed = summaryFunc[StatLogic.Stats.MissBeforeDR](sum)
-			if profileDB.enableAvoidanceDiminishingReturns then
+			if db.profile.enableAvoidanceDiminishingReturns then
 				if (sumType == "diff1") or (sumType == "diff2") then
 					missed = StatLogic:GetAvoidanceGainAfterDR(StatLogic.Stats.Miss, missed)
 				elseif sumType == "sum" then
@@ -3156,7 +3154,7 @@ local summaryCalcData = {
 			local parry = summaryFunc[StatLogic.Stats.Parry](sum, sumType, link)
 			local missed = summaryFunc[StatLogic.Stats.Miss](sum, sumType, link)
 			local block = 0
-			if profileDB.sumAvoidWithBlock then
+			if db.profile.sumAvoidWithBlock then
 				block = summaryFunc[StatLogic.Stats.BlockChance](sum, sumType, link)
 			end
 			return parry + dodge + missed + block
@@ -3232,31 +3230,31 @@ local function sumSortAlphaComp(a, b)
 end
 
 local function WriteSummary(tooltip, output)
-	if globalDB.sumBlankLine then
+	if db.global.sumBlankLine then
 		tooltip:AddLine(" ")
 	end
-	if globalDB.sumShowTitle then
+	if db.global.sumShowTitle then
 		tooltip:AddLine(HIGHLIGHT_FONT_COLOR_CODE..L["Stat Summary"]..FONT_COLOR_CODE_CLOSE)
-		if globalDB.sumShowIcon then
+		if db.global.sumShowIcon then
 			tooltip:AddTexture("Interface\\AddOns\\RatingBuster\\images\\Sigma")
 		end
 	end
-	local statR, statG, statB = globalDB.sumStatColor:GetRGB()
-	local valueR, valueG, valueB = globalDB.sumValueColor:GetRGB()
+	local statR, statG, statB = db.global.sumStatColor:GetRGB()
+	local valueR, valueG, valueB = db.global.sumValueColor:GetRGB()
 	for _, o in ipairs(output) do
 		tooltip:AddDoubleLine(o[1], o[2], statR, statG, statB, valueR, valueG, valueB)
 	end
-	if globalDB.sumBlankLineAfter then
+	if db.global.sumBlankLineAfter then
 		tooltip:AddLine(" ")
 	end
 end
 
 function RatingBuster:StatSummary(tooltip, link)
 	-- Hide stat summary for equipped items
-	if globalDB.sumIgnoreEquipped and IsEquippedItem(link) then return end
+	if db.global.sumIgnoreEquipped and IsEquippedItem(link) then return end
 
 	-- Show stat summary only for highest level armor type and items you can use with uncommon quality and up
-	if globalDB.sumIgnoreUnused then
+	if db.global.sumIgnoreUnused then
 		local _, _, itemRarity, _, _, _, _, _, inventoryType, _, classID, subclassID = GetItemInfo(link)
 
 		-- Check rarity
@@ -3286,18 +3284,18 @@ function RatingBuster:StatSummary(tooltip, link)
 	end
 
 	-- Ignore enchants and gems on items when calculating the stat summary
-	local red = profileDB.sumGemRed.gemID
-	local yellow = profileDB.sumGemYellow.gemID
-	local blue = profileDB.sumGemBlue.gemID
-	local meta = profileDB.sumGemMeta.gemID
+	local red = db.profile.sumGemRed.gemID
+	local yellow = db.profile.sumGemYellow.gemID
+	local blue = db.profile.sumGemBlue.gemID
+	local meta = db.profile.sumGemMeta.gemID
 
-	if globalDB.sumIgnoreEnchant then
+	if db.global.sumIgnoreEnchant then
 		link = StatLogic:RemoveEnchant(link)
 	end
-	if globalDB.sumIgnoreExtraSockets then
+	if db.global.sumIgnoreExtraSockets then
 		link = StatLogic:RemoveExtraSockets(link)
 	end
-	if globalDB.sumIgnoreGems then
+	if db.global.sumIgnoreGems then
 		link = StatLogic:RemoveGem(link)
 	else
 		link = StatLogic:BuildGemmedTooltip(link, red, yellow, blue, meta)
@@ -3311,14 +3309,14 @@ function RatingBuster:StatSummary(tooltip, link)
 	local tooltipLevel = 0
 	local mainTooltip = tooltip
 	-- Determine tooltipLevel and id
-	if globalDB.calcDiff and (globalDB.sumDiffStyle == "comp") then
+	if db.global.calcDiff and (db.global.sumDiffStyle == "comp") then
 		-- Obtain main tooltip
 		local owner = tooltip:GetOwner()
 	    if owner.GetObjectType and owner:GetObjectType() == "GameTooltip" then
 			mainTooltip = owner
 		end
 		-- Detemine tooltip level
-		local _, mainlink, difflink1, difflink2 = StatLogic:GetDiffID(mainTooltip, globalDB.sumIgnoreEnchant, globalDB.sumIgnoreGems, globalDB.sumIgnoreExtraSockets, red, yellow, blue, meta)
+		local _, mainlink, difflink1, difflink2 = StatLogic:GetDiffID(mainTooltip, db.global.sumIgnoreEnchant, db.global.sumIgnoreGems, db.global.sumIgnoreExtraSockets, red, yellow, blue, meta)
 		if link == mainlink then
 			tooltipLevel = 0
 		elseif link == difflink1 then
@@ -3333,7 +3331,7 @@ function RatingBuster:StatSummary(tooltip, link)
 			id = "sum"..link
 		end
 	else
-		id = StatLogic:GetDiffID(link, globalDB.sumIgnoreEnchant, globalDB.sumIgnoreGems, globalDB.sumIgnoreExtraSockets, red, yellow, blue, meta)
+		id = StatLogic:GetDiffID(link, db.global.sumIgnoreEnchant, db.global.sumIgnoreGems, db.global.sumIgnoreExtraSockets, red, yellow, blue, meta)
 	end
 
 	local numLines = tooltip:NumLines()
@@ -3350,7 +3348,7 @@ function RatingBuster:StatSummary(tooltip, link)
 	local statData = {}
 	statData.sum = StatLogic:GetSum(link)
 	if not statData.sum then return end
-	if not globalDB.calcSum then
+	if not db.global.calcSum then
 		statData.sum = nil
 	end
 
@@ -3358,13 +3356,13 @@ function RatingBuster:StatSummary(tooltip, link)
 	if not StatLogic:GetDiff(link) then return end
 
 	-- Get Diff Data
-	if globalDB.calcDiff then
-		if globalDB.sumDiffStyle == "comp" then
+	if db.global.calcDiff then
+		if db.global.sumDiffStyle == "comp" then
 			if tooltipLevel > 0 then
-				statData.diff1 = select(tooltipLevel, StatLogic:GetDiff(mainTooltip, nil, nil, globalDB.sumIgnoreEnchant, globalDB.sumIgnoreGems, globalDB.sumIgnoreExtraSockets, red, yellow, blue, meta))
+				statData.diff1 = select(tooltipLevel, StatLogic:GetDiff(mainTooltip, nil, nil, db.global.sumIgnoreEnchant, db.global.sumIgnoreGems, db.global.sumIgnoreExtraSockets, red, yellow, blue, meta))
 			end
 		else
-			statData.diff1, statData.diff2 = StatLogic:GetDiff(link, nil, nil, globalDB.sumIgnoreEnchant, globalDB.sumIgnoreGems, globalDB.sumIgnoreExtraSockets, red, yellow, blue, meta)
+			statData.diff1, statData.diff2 = StatLogic:GetDiff(link, nil, nil, db.global.sumIgnoreEnchant, db.global.sumIgnoreGems, db.global.sumIgnoreExtraSockets, red, yellow, blue, meta)
 		end
 	end
 	-- Apply Base Stat Mods
@@ -3375,7 +3373,7 @@ function RatingBuster:StatSummary(tooltip, link)
 		v[StatLogic.Stats.Intellect] = (v[StatLogic.Stats.Intellect] or 0)
 		v[StatLogic.Stats.Spirit] = (v[StatLogic.Stats.Spirit] or 0)
 	end
-	if profileDB.enableStatMods then
+	if db.profile.enableStatMods then
 		for _, v in pairs(statData) do
 			v[StatLogic.Stats.Strength] = v[StatLogic.Stats.Strength] * GSM("MOD_STR")
 			v[StatLogic.Stats.Agility] = v[StatLogic.Stats.Agility] * GSM("MOD_AGI")
@@ -3387,7 +3385,7 @@ function RatingBuster:StatSummary(tooltip, link)
 
 	local summary = {}
 	for _, calcData in pairs(summaryCalcData) do
-		if profileDB[calcData.option] then
+		if db.profile[calcData.option] then
 			local entry = {
 				name = calcData.name,
 				ispercent = calcData.ispercent,
@@ -3399,10 +3397,10 @@ function RatingBuster:StatSummary(tooltip, link)
 		end
 	end
 
-	local calcSum = globalDB.calcSum
-	local calcDiff = globalDB.calcDiff
+	local calcSum = db.global.calcSum
+	local calcDiff = db.global.calcDiff
 
-	local showZeroValueStat = profileDB.showZeroValueStat
+	local showZeroValueStat = db.profile.showZeroValueStat
 	------------------------
 	-- Build Output Table --
 	local output = {}
@@ -3515,7 +3513,7 @@ function RatingBuster:StatSummary(tooltip, link)
 		end
 	end
 	-- sort alphabetically if option enabled
-	if globalDB.sumSortAlpha then
+	if db.global.sumSortAlpha then
 		tsort(output, sumSortAlphaComp)
 	end
 	-- Write cache
