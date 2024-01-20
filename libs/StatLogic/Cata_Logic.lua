@@ -375,6 +375,18 @@ if addon.class == "DRUID" then
 				["aura"] = 5487,
 			},
 		},
+		["ADD_SPELL_DMG_MOD_INT"] = {
+			-- Base
+			{
+				["value"] = 1,
+			},
+		},
+		["ADD_HEALING_MOD_INT"] = {
+			-- Base
+			{
+				["value"] = 1,
+			},
+		},
 		["ADD_NORMAL_MANA_REG_MOD_SPI"] = {
 			{
 				["regen"] = NormalManaRegenPerSpi,
@@ -833,6 +845,18 @@ elseif addon.class == "MAGE" then
 				["value"] = 2,
 			},
 		},
+		["ADD_SPELL_DMG_MOD_INT"] = {
+			-- Base
+			{
+				["value"] = 1,
+			},
+		},
+		["ADD_HEALING_MOD_INT"] = {
+			-- Base
+			{
+				["value"] = 1,
+			},
+		},
 		["ADD_DODGE"] = {
 			-- Base
 			{
@@ -906,6 +930,18 @@ elseif addon.class == "PALADIN" then
 			-- Base
 			{
 				["value"] = 2,
+			},
+		},
+		["ADD_SPELL_DMG_MOD_INT"] = {
+			-- Base
+			{
+				["value"] = 1,
+			},
+		},
+		["ADD_HEALING_MOD_INT"] = {
+			-- Base
+			{
+				["value"] = 1,
 			},
 		},
 		["ADD_DODGE"] = {
@@ -1054,6 +1090,18 @@ elseif addon.class == "PRIEST" then
 			-- Base
 			{
 				["value"] = 2,
+			},
+		},
+		["ADD_SPELL_DMG_MOD_INT"] = {
+			-- Base
+			{
+				["value"] = 1,
+			},
+		},
+		["ADD_HEALING_MOD_INT"] = {
+			-- Base
+			{
+				["value"] = 1,
 			},
 		},
 		["ADD_DODGE"] = {
@@ -1248,6 +1296,18 @@ elseif addon.class == "SHAMAN" then
 				["value"] = 2,
 			},
 		},
+		["ADD_SPELL_DMG_MOD_INT"] = {
+			-- Base
+			{
+				["value"] = 1,
+			},
+		},
+		["ADD_HEALING_MOD_INT"] = {
+			-- Base
+			{
+				["value"] = 1,
+			},
+		},
 		["ADD_DODGE"] = {
 			-- Base
 			{
@@ -1350,6 +1410,18 @@ elseif addon.class == "WARLOCK" then
 			-- Base
 			{
 				["value"] = 2,
+			},
+		},
+		["ADD_SPELL_DMG_MOD_INT"] = {
+			-- Base
+			{
+				["value"] = 1,
+			},
+		},
+		["ADD_HEALING_MOD_INT"] = {
+			-- Base
+			{
+				["value"] = 1,
 			},
 		},
 		["ADD_DODGE"] = {
