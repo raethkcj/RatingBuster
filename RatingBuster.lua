@@ -1759,8 +1759,10 @@ function RatingBuster.ProcessTooltip(tooltip)
 	end
 
 	if not tooltip.GetItem then return end
-	local name, link = tooltip:GetItem()
-	if not name then return end
+	local _, link = tooltip:GetItem()
+	if not link then return end
+	local item = Item:CreateFromItemLink(link)
+	if item:IsItemEmpty() or not item:IsItemDataCached() then return end
 
 	---------------------
 	-- Tooltip Scanner --
@@ -1802,93 +1804,23 @@ function RatingBuster.ProcessTooltip(tooltip)
 			end
 		end
 	end
-	----------------------------
-	-- Item Level and Item ID --
-	----------------------------
-	if (db.global.showItemLevel or db.global.showItemID) and link then
-		if cache[link] then
-			tooltip:AddLine(cache[link])
-		else
-			-- Get the Item ID from the link string
-			local _, link, _, level = GetItemInfo(link)
-			if link then
-				local _, _, id = link:find("item:(%d+)")
-				local newLine = ""
-				local statColor = db.global.sumStatColor
-				local valueColor = db.global.sumValueColor
-				if level and db.global.showItemLevel then
-					newLine = newLine .. statColor:WrapTextInColorCode(L["ItemLevel: "])
-					newLine = newLine .. valueColor:WrapTextInColorCode(level)
-				end
-				if id and db.global.showItemID then
-					if newLine ~= "" then
-						newLine = newLine..", "
-					end
-					newLine = newLine .. statColor:WrapTextInColorCode(L["ItemID: "])
-					newLine = newLine .. valueColor:WrapTextInColorCode(id)
-				end
-				if newLine ~= "" then
-					cache[link] = newLine
-					tooltip:AddLine(newLine)
-				end
-			end
-		end
+
+	-- Item Level and Item ID
+	local statR, statG, statB = db.global.sumStatColor:GetRGB()
+	local valueR, valueG, valueB = db.global.sumValueColor:GetRGB()
+	if db.global.showItemLevel then
+		tooltip:AddDoubleLine(L["ItemLevel: "], item:GetCurrentItemLevel(), statR, statG, statB, valueR, valueG, valueB)
 	end
-	------------------
-	-- Stat Summary --
-	------------------
-	--[[
-	----------------
-	-- Base Stats --
-	----------------
-	-- Health - HEALTH, STA
-	-- Mana - MANA, INT
-	-- Attack Power - AP, STR, AGI
-	-- Ranged Attack Power - RANGED_AP, INT, AP, STR, AGI
-	-- Feral Attack Power - FERAL_AP, AP, STR, AGI
-	-- Spell Damage - SPELL_DMG, STA, INT, SPI
-	-- Holy Damage - HOLY_SPELL_DMG, SPELL_DMG, INT, SPI
-	-- Arcane Damage - ARCANE_SPELL_DMG, SPELL_DMG, INT
-	-- Fire Damage - FIRE_SPELL_DMG, SPELL_DMG, STA, INT
-	-- Nature Damage - NATURE_SPELL_DMG, SPELL_DMG, INT
-	-- Frost Damage - FROST_SPELL_DMG, SPELL_DMG, INT
-	-- Shadow Damage - SHADOW_SPELL_DMG, SPELL_DMG, STA, INT, SPI
-	-- Healing - HEAL, STR, INT, SPI
-	-- Hit Chance - MELEE_HIT_RATING
-	-- Crit Chance - MELEE_CRIT_RATING, AGI
-	-- Spell Hit Chance - SPELL_HIT_RATING
-	-- Spell Crit Chance - SPELL_CRIT_RATING, INT
-	-- Mana Regen - MANA_REG, SPI
-	-- Health Regen - HEALTH_REG
-	-- Mana Regen Not Casting - SPI
-	-- Health Regen While Casting - SPI
-	-- Armor - ARMOR, ARMOR_BONUS, AGI, INT
-	-- Block Value - BLOCK_VALUE, STR
-	-- Dodge Chance - DODGE_RATING, DEFENSE_RATING, AGI
-	-- Parry Chance - PARRY_RATING, DEFENSE_RATING
-	-- Block Chance - BLOCK_RATING, DEFENSE_RATING
-	-- Hit Avoidance - DEFENSE_RATING, MELEE_HIT_AVOID_RATING
-	-- Crit Avoidance - DEFENSE_RATING, RESILIENCE_RATING, MELEE_CRIT_AVOID_RATING
-	-- Dodge Reduction - EXPERTISE_RATING
-	-- Parry Reduction - EXPERTISE_RATING
-	---------------------
-	-- Composite Stats --
-	---------------------
-	-- Strength - STR
-	-- Agility - AGI
-	-- Stamina - STA
-	-- Intellect - INT
-	-- Spirit - SPI
-	-- Defense - DEFENSE_RATING
-	-- Weapon Skill
-	-- Expertise - EXPERTISE_RATING
-	--]]
+	if db.global.showItemID then
+		tooltip:AddDoubleLine(L["ItemID: "], item:GetItemID(), statR, statG, statB, valueR, valueG, valueB)
+	end
+
+	-- Stat Summary
 	if db.global.showSum then
 		RatingBuster:StatSummary(tooltip, link)
 	end
-	---------------------
-	-- Repaint tooltip --
-	---------------------
+
+	-- Repaint tooltip
 	tooltip:Show()
 end
 
