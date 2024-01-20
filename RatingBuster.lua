@@ -79,18 +79,12 @@ local GetBlockChance = GetBlockChance
 ---------------------------
 
 local function getOption(info, dataType)
-	if type(db.global[info[#info]]) ~= "nil" then
-		return db.global[info[#info]]
-	else
-		return db.profile[info[#info]]
-	end
+	dataType = dataType or "profile"
+	return db[dataType][info[#info]]
 end
 local function setOption(info, value, dataType)
-	if type(db.global[info[#info]]) ~= "nil" then
-		db.global[info[#info]] = value
-	else
-		db.profile[info[#info]] = value
-	end
+	dataType = dataType or "profile"
+	db[dataType][info[#info]] = value
 	clearCache()
 end
 local function getGem(info)
@@ -133,16 +127,10 @@ local function setGem(info, value)
 end
 local function getColor(info)
 	local color = db.global[info[#info]]
-	if not color then
-		color = db.profile[info[#info]]
-	end
 	return color:GetRGB()
 end
 local function setColor(info, r, g, b)
 	local color = db.global[info[#info]]
-	if not color then
-		color = db.profile[info[#info]]
-	end
 	color:SetRGB(r, g, b)
 	clearCache()
 end
@@ -168,33 +156,18 @@ local options = {
 			type = 'execute',
 			name = L["Help"],
 			desc = L["Show this help message"],
+			order = 1,
 			func = function()
 				LibStub("AceConfigCmd-3.0").HandleCommand(RatingBuster, "rb", addonNameWithVersion, "")
-			end
-		},
-		pp = {
-			type = "execute",
-			name = "Performance Profile",
-			desc = "Execute a performance test and display the results",
-			func = function()
-				RatingBuster:PerformanceProfile()
 			end,
-			hidden = true,
+			dialogHidden = true,
 		},
 		enableStatMods = {
 			type = 'toggle',
 			name = L["Enable Stat Mods"],
 			desc = L["Enable support for Stat Mods"],
-		},
-		showItemID = {
-			type = 'toggle',
-			name = L["Show ItemID"],
-			desc = L["Show the ItemID in tooltips"],
-		},
-		showItemLevel = {
-			type = 'toggle',
-			name = L["Show ItemLevel"],
-			desc = L["Show the ItemLevel in tooltips"],
+			order = 2,
+			width = "full",
 		},
 		useRequiredLevel = {
 			type = 'toggle',
@@ -209,11 +182,23 @@ local options = {
 			max = GetMaxPlayerLevel(),
 			step = 1,
 		},
+		pp = {
+			type = "execute",
+			name = "Performance Profile",
+			desc = "Execute a performance test and display the results",
+			func = function()
+				RatingBuster:PerformanceProfile()
+			end,
+			dialogHidden = true,
+		},
 		rating = {
 			type = 'group',
 			name = L["Rating"],
 			desc = L["Options for Rating display"],
-			order = 1,
+			order = 2,
+			hidden = function()
+				return addon.tocversion < 20000
+			end,
 			args = {
 				showRatings = {
 					type = 'toggle',
@@ -233,26 +218,15 @@ local options = {
 					type = 'toggle',
 					name = L["Show Physical Hit/Haste"],
 					desc = L["Show Physical Hit/Haste from Hit/Haste Rating"],
+					hidden = function()
+						local genericHit = StatLogic.GenericStatMap[StatLogic.Stats.HitRating]
+						return (not genericHit)
+					end
 				},
 				detailedConversionText = {
 					type = 'toggle',
 					name = L["Show detailed conversions text"],
 					desc = L["Show detailed text for Resilience and Expertise conversions"],
-				},
-				defBreakDown = {
-					type = 'toggle',
-					name = L["Defense breakdown"],
-					desc = L["Convert Defense into Crit Avoidance, Hit Avoidance, Dodge, Parry and Block"],
-				},
-				wpnBreakDown = {
-					type = 'toggle',
-					name = L["Weapon Skill breakdown"],
-					desc = L["Convert Weapon Skill into Crit, Hit, Dodge Reduction, Parry Reduction and Block Reduction"],
-				},
-				expBreakDown = {
-					type = 'toggle',
-					name = L["Expertise breakdown"],
-					desc = L["Convert Expertise into Dodge Reduction and Parry Reduction"],
 				},
 				enableAvoidanceDiminishingReturns = {
 					type = 'toggle',
@@ -268,7 +242,7 @@ local options = {
 			type = 'group',
 			name = L["Stat Breakdown"],
 			desc = L["Changes the display of base stats"],
-			order = 2,
+			order = 3,
 			args = {
 				showStats = {
 					type = 'toggle',
@@ -350,11 +324,62 @@ local options = {
 					args = {},
 					hidden = true,
 				},
+				weaponskill = {
+					type = 'group',
+					name = L[StatLogic.Stats.WeaponSkill],
+					desc = L["Changes the display of %s"]:format(L[StatLogic.Stats.WeaponSkill]),
+					order = 9,
+					hidden = function()
+						return addon.tocversion >= 20000
+					end,
+					args = {
+						wpnBreakDown = {
+							type = 'toggle',
+							name = L["Weapon Skill breakdown"],
+							desc = L["Convert Weapon Skill into Crit, Hit, Dodge Reduction, Parry Reduction and Block Reduction"],
+							width = "full",
+						},
+					},
+				},
+				expertise = {
+					type = 'group',
+					name = L[StatLogic.Stats.Expertise],
+					desc = L["Changes the display of %s"]:format(L[StatLogic.Stats.Expertise]),
+					order = 9.5,
+					hidden = function()
+						return not StatLogic:RatingExists(StatLogic.Stats.ExpertiseRating)
+					end,
+					args = {
+						expBreakDown = {
+							type = 'toggle',
+							name = L["Expertise breakdown"],
+							desc = L["Convert Expertise into Dodge Reduction and Parry Reduction"],
+							width = "full",
+						},
+					},
+				},
+				defense = {
+					type = 'group',
+					name = L[StatLogic.Stats.Defense],
+					desc = L["Changes the display of %s"]:format(L[StatLogic.Stats.Defense]),
+					order = 10,
+					hidden = function()
+						return addon.tocversion >= 40000
+					end,
+					args = {
+						defBreakDown = {
+							type = 'toggle',
+							name = L["Defense breakdown"],
+							desc = L["Convert Defense into Crit Avoidance, Hit Avoidance, Dodge, Parry and Block"],
+							width = "full",
+						},
+					},
+				},
 				armor = {
 					type = 'group',
 					name = L[StatLogic.Stats.Armor],
 					desc = L["Changes the display of %s"]:format(L[StatLogic.Stats.Armor]),
-					order = 9,
+					order = 11,
 					args = {},
 					hidden = true,
 				},
@@ -364,106 +389,138 @@ local options = {
 			type = 'group',
 			name = L["Stat Summary"],
 			desc = L["Options for stat summary"],
-			order = 3,
+			order = 4,
 			args = {
-				showSum = {
-					type = 'toggle',
-					name = L["Show stat summary"],
-					desc = L["Show stat summary in tooltips"],
-					order = 1,
-				},
-				calcSum = {
-					type = 'toggle',
-					name = L["Calculate stat sum"],
-					desc = L["Calculate the total stats for the item"],
-					order = 2,
-				},
-				calcDiff = {
-					type = 'toggle',
-					name = L["Calculate stat diff"],
-					desc = L["Calculate the stat difference for the item and equipped items"],
-					order = 3,
-				},
-				sumDiffStyle = {
-					type = 'select',
-					name = L["Display style for diff value"],
-					desc = L["Display diff values in the main tooltip or only in compare tooltips"],
-					values = {
-						["comp"] = "Compare",
-						["main"] = "Main"
-					},
-					order = 4,
-				},
-				hideBlizzardComparisons = {
-					type = 'toggle',
-					name = L["Hide Blizzard Item Comparisons"],
-					desc = L["Disable Blizzard stat change summary when using the built-in comparison tooltip"],
-					width = "double",
-					order = 4.5,
-				},
-				sumShowIcon = {
-					type = 'toggle',
-					name = L["Show icon"],
-					desc = L["Show the sigma icon before summary listing"],
-					order = 5,
-				},
-				sumShowTitle = {
-					type = 'toggle',
-					name = L["Show title text"],
-					desc = L["Show the title text before summary listing"],
-					order = 6,
-				},
-				showZeroValueStat = {
-					type = 'toggle',
-					name = L["Show zero value stats"],
-					desc = L["Show zero value stats in summary for consistancy"],
-					order = 7,
-				},
-				sumSortAlpha = {
-					type = 'toggle',
-					name = L["Sort StatSummary alphabetically"],
-					desc = L["Enable to sort StatSummary alphabetically, disable to sort according to stat type(basic, physical, spell, tank)"],
-					order = 8,
-				},
-				space = {
+				sumGroup = {
+					name = "",
 					type = 'group',
-					name = L["Add empty line"],
 					inline = true,
+					get = function(info)
+						return getOption(info, "global")
+					end,
+					set = function(info, value)
+						setOption(info, value, "global")
+					end,
 					args = {
-						sumBlankLine = {
+						showSum = {
 							type = 'toggle',
-							name = L["Add before summary"],
-							desc = L["Add a empty line before stat summary"],
+							name = L["Show stat summary"],
+							desc = L["Show stat summary in tooltips"],
+							order = 1,
+						},
+						calcSum = {
+							type = 'toggle',
+							name = L["Calculate stat sum"],
+							desc = L["Calculate the total stats for the item"],
+							order = 2,
+						},
+						calcDiff = {
+							type = 'toggle',
+							name = L["Calculate stat diff"],
+							desc = L["Calculate the stat difference for the item and equipped items"],
+							order = 3,
+						},
+						sumDiffStyle = {
+							type = 'select',
+							name = L["Display style for diff value"],
+							desc = L["Display diff values in the main tooltip or only in compare tooltips"],
+							values = {
+								["comp"] = "Compare",
+								["main"] = "Main"
+							},
+							order = 4,
+						},
+						hideBlizzardComparisons = {
+							type = 'toggle',
+							name = L["Hide Blizzard Item Comparisons"],
+							desc = L["Disable Blizzard stat change summary when using the built-in comparison tooltip"],
+							width = "double",
+							order = 5,
+						},
+						showItemID = {
+							type = 'toggle',
+							name = L["Show ItemID"],
+							desc = L["Show the ItemID in tooltips"],
+							order = 6,
+						},
+						showItemLevel = {
+							type = 'toggle',
+							name = L["Show ItemLevel"],
+							desc = L["Show the ItemLevel in tooltips"],
+							order = 7,
+						},
+						sumShowIcon = {
+							type = 'toggle',
+							name = L["Show icon"],
+							desc = L["Show the sigma icon before summary listing"],
+							order = 8,
+						},
+						sumShowTitle = {
+							type = 'toggle',
+							name = L["Show title text"],
+							desc = L["Show the title text before summary listing"],
+							order = 9,
+						},
+						showZeroValueStat = {
+							type = 'toggle',
+							name = L["Show zero value stats"],
+							desc = L["Show zero value stats in summary for consistancy"],
 							order = 10,
 						},
-						sumBlankLineAfter = {
+						sumSortAlpha = {
 							type = 'toggle',
-							name = L["Add after summary"],
-							desc = L["Add a empty line after stat summary"],
+							name = L["Sort StatSummary alphabetically"],
+							desc = L["Enable to sort StatSummary alphabetically, disable to sort according to stat type(basic, physical, spell, tank)"],
 							order = 11,
 						},
+						sumStatColor = {
+							type = 'color',
+							name = L["Change text color"],
+							desc = L["Changes the color of added text"],
+							get = getColor,
+							set = setColor,
+							order = 12,
+						},
+						sumValueColor = {
+							type = 'color',
+							name = L["Change number color"],
+							desc = L["Changes the color of added text"],
+							get = getColor,
+							set = setColor,
+							order = 13,
+						},
+						space = {
+							type = 'group',
+							name = L["Add empty line"],
+							inline = true,
+							order = 14,
+							args = {
+								sumBlankLine = {
+									type = 'toggle',
+									name = L["Add before summary"],
+									desc = L["Add a empty line before stat summary"],
+									order = 10,
+								},
+								sumBlankLineAfter = {
+									type = 'toggle',
+									name = L["Add after summary"],
+									desc = L["Add a empty line after stat summary"],
+									order = 11,
+								},
+							},
+						},
 					},
-				},
-				sumStatColor = {
-					type = 'color',
-					name = L["Change text color"],
-					desc = L["Changes the color of added text"],
-					get = getColor,
-					set = setColor,
-					order = 13,
-				},
-				sumValueColor = {
-					type = 'color',
-					name = L["Change number color"],
-					desc = L["Changes the color of added text"],
-					get = getColor,
-					set = setColor,
-					order = 14,
 				},
 				ignore = {
 					type = 'group',
 					name = L["Ignore settings"],
 					desc = L["Ignore stuff when calculating the stat summary"],
+					get = function(info)
+						return getOption(info, "global")
+					end,
+					set = function(info, value)
+						setOption(info, value, "global")
+					end,
 					args = {
 						sumIgnoreUnused = {
 							type = 'toggle',
@@ -484,11 +541,17 @@ local options = {
 							type = 'toggle',
 							name = L["Ignore gems"],
 							desc = L["Ignore gems on items when calculating the stat summary"],
+							hidden = function()
+								return addon.tocversion < 20000
+							end,
 						},
 						sumIgnoreExtraSockets = {
 							type = 'toggle',
 							name = L["Ignore extra sockets"],
-							desc = L["Ignore sockets from professions or consumable items when calculating the stat summary"]
+							desc = L["Ignore sockets from professions or consumable items when calculating the stat summary"],
+							hidden = function()
+								return addon.tocversion < 20000
+							end,
 						}
 					},
 				},
@@ -532,6 +595,9 @@ local options = {
 							name = L["Sum %s"]:format(L[StatLogic.Stats.HealthRegenOutOfCombat]),
 							desc = L["Health Regen when out of combat <- Spirit"],
 							order = 6,
+							hidden = function()
+								return addon.tocversion >= 40000
+							end,
 						},
 						sumStr = {
 							type = 'toggle',
@@ -558,6 +624,22 @@ local options = {
 							name = L["Sum %s"]:format(L[StatLogic.Stats.Spirit]),
 							order = 11,
 						},
+						sumMastery = {
+							type = 'toggle',
+							name = L["Sum %s"]:format(L[StatLogic.Stats.Mastery]),
+							order = 12,
+							hidden = function()
+								return not StatLogic:RatingExists(StatLogic.Stats.MasteryRating)
+							end,
+						},
+						sumMasteryRating = {
+							type = 'toggle',
+							name = L["Sum %s"]:format(L[StatLogic.Stats.MasteryRating]),
+							order = 12,
+							hidden = function()
+								return not StatLogic:RatingExists(StatLogic.Stats.MasteryRating)
+							end,
+						},
 					},
 				},
 				physical = {
@@ -582,6 +664,9 @@ local options = {
 							type = 'toggle',
 							name = L["Sum %s"]:format(L[StatLogic.Stats.MeleeHitRating]),
 							order = 3,
+							hidden = function()
+								return not StatLogic:RatingExists(StatLogic.Stats.MeleeHitRating)
+							end,
 						},
 						sumCrit = {
 							type = 'toggle',
@@ -593,6 +678,9 @@ local options = {
 							type = 'toggle',
 							name = L["Sum %s"]:format(L[StatLogic.Stats.MeleeCritRating]),
 							order = 5,
+							hidden = function()
+								return not StatLogic:RatingExists(StatLogic.Stats.MeleeCritRating)
+							end,
 						},
 						sumHaste = {
 							type = 'toggle',
@@ -604,12 +692,15 @@ local options = {
 							type = 'toggle',
 							name = L["Sum %s"]:format(L[StatLogic.Stats.MeleeHasteRating]),
 							order = 7,
+							hidden = function()
+								return not StatLogic:RatingExists(StatLogic.Stats.MeleeHasteRating)
+							end,
 						},
 						sumIgnoreArmor = {
 							type = 'toggle',
 							name = L["Sum %s"]:format(L[StatLogic.Stats.IgnoreArmor]),
 							hidden = function()
-								return StatLogic:RatingExists(StatLogic.Stats.ArmorPenetrationRating)
+								return addon.tocversion >= 20000 and addon.tocversion < 30000
 							end,
 							order = 8,
 						},
@@ -651,6 +742,9 @@ local options = {
 							type = 'toggle',
 							name = L["Sum %s"]:format(L[StatLogic.Stats.RangedHitRating]),
 							order = 14,
+							hidden = function()
+								return not StatLogic:RatingExists(StatLogic.Stats.RangedHitRating)
+							end,
 						},
 						sumRangedCrit = {
 							type = 'toggle',
@@ -662,6 +756,9 @@ local options = {
 							type = 'toggle',
 							name = L["Sum %s"]:format(L[StatLogic.Stats.RangedCritRating]),
 							order = 16,
+							hidden = function()
+								return not StatLogic:RatingExists(StatLogic.Stats.RangedCritRating)
+							end,
 						},
 						sumRangedHaste = {
 							type = 'toggle',
@@ -673,6 +770,9 @@ local options = {
 							type = 'toggle',
 							name = L["Sum %s"]:format(L[StatLogic.Stats.RangedHasteRating]),
 							order = 18,
+							hidden = function()
+								return not StatLogic:RatingExists(StatLogic.Stats.RangedHasteRating)
+							end,
 						},
 						weapon = {
 							type = 'header',
@@ -706,12 +806,18 @@ local options = {
 							name = L["Sum %s"]:format(L[StatLogic.Stats.WeaponSkill]),
 							desc = L["Weapon Skill <- Weapon Skill Rating"],
 							order = 24,
+							hidden = function()
+								return addon.tocversion >= 20000
+							end,
 						},
 						sumExpertise = {
 							type = 'toggle',
 							name = L["Sum %s"]:format(L[StatLogic.Stats.Expertise]),
 							desc = L["Expertise <- Expertise Rating"],
 							order = 25,
+							hidden = function()
+								return not StatLogic:RatingExists(StatLogic.Stats.ExpertiseRating)
+							end,
 						},
 					},
 				},
@@ -768,6 +874,9 @@ local options = {
 						sumSpellHitRating = {
 							type = 'toggle',
 							name = L["Sum %s"]:format(L[StatLogic.Stats.SpellHitRating]),
+							hidden = function()
+								return not StatLogic:RatingExists(StatLogic.Stats.SpellHitRating)
+							end,
 						},
 						sumSpellCrit = {
 							type = 'toggle',
@@ -777,6 +886,9 @@ local options = {
 						sumSpellCritRating = {
 							type = 'toggle',
 							name = L["Sum %s"]:format(L[StatLogic.Stats.SpellCritRating]),
+							hidden = function()
+								return not StatLogic:RatingExists(StatLogic.Stats.SpellCritRating)
+							end,
 						},
 						sumSpellHaste = {
 							type = 'toggle',
@@ -786,6 +898,9 @@ local options = {
 						sumSpellHasteRating = {
 							type = 'toggle',
 							name = L["Sum %s"]:format(L[StatLogic.Stats.SpellHasteRating]),
+							hidden = function()
+								return not StatLogic:RatingExists(StatLogic.Stats.SpellHasteRating)
+							end,
 						},
 						sumPenetration = {
 							type = 'toggle',
@@ -820,6 +935,9 @@ local options = {
 							type = 'toggle',
 							name = L["Sum %s"]:format(L[StatLogic.Stats.DodgeRating]),
 							order = 4,
+							hidden = function()
+								return not StatLogic:RatingExists(StatLogic.Stats.DodgeRating)
+							end,
 						},
 						sumBlock = {
 							type = 'toggle',
@@ -831,12 +949,18 @@ local options = {
 							type = 'toggle',
 							name = L["Sum %s"]:format(L[StatLogic.Stats.BlockRating]),
 							order = 6,
+							hidden = function()
+								return not StatLogic:RatingExists(StatLogic.Stats.BlockRating)
+							end,
 						},
 						sumBlockValue = {
 							type = 'toggle',
 							name = L["Sum %s"]:format(L[StatLogic.Stats.BlockValue]),
 							desc = L["Block Value <- Block Value, Strength"],
 							order = 7,
+							hidden = function()
+								return addon.tocversion >= 40000
+							end,
 						},
 						sumParry = {
 							type = 'toggle',
@@ -848,12 +972,18 @@ local options = {
 							type = 'toggle',
 							name = L["Sum %s"]:format(L[StatLogic.Stats.ParryRating]),
 							order = 9,
+							hidden = function()
+								return not StatLogic:RatingExists(StatLogic.Stats.ParryRating)
+							end,
 						},
 						sumHitAvoid = {
 							type = 'toggle',
 							name = L["Sum %s"]:format(L[StatLogic.Stats.Miss]),
 							desc = L["Hit Avoidance <- Defense Rating"],
 							order = 10,
+							hidden = function()
+								return addon.tocversion >= 40000
+							end,
 						},
 						sumArmor = {
 							type = 'toggle',
@@ -866,12 +996,18 @@ local options = {
 							name = L["Sum %s"]:format(L[StatLogic.Stats.Defense]),
 							desc = L["Defense <- Defense Rating"],
 							order = 12,
+							hidden = function()
+								return addon.tocversion >= 40000
+							end,
 						},
 						sumCritAvoid = {
 							type = 'toggle',
 							name = L["Sum %s"]:format(L[StatLogic.Stats.CritAvoidance]),
 							desc = L["Crit Avoidance <- Defense Rating, Resilience"],
 							order = 13,
+							hidden = function()
+								return addon.tocversion >= 40000
+							end,
 						},
 						sumResilience = {
 							type = 'toggle',
@@ -909,6 +1045,9 @@ local options = {
 					type = 'group',
 					name = L["Gems"],
 					desc = L["Auto fill empty gem slots"],
+					hidden = function()
+						return addon.tocversion < 20000
+					end,
 					args = {
 						sumGemRed = {
 							type = 'input',
@@ -953,7 +1092,7 @@ local options = {
 		alwaysBuffed = {
 			type = "group",
 			name = "AlwaysBuffed",
-			order = 4,
+			order = 5,
 			get = function(info)
 				local db = RatingBuster.db:GetNamespace("AlwaysBuffed")
 				return db.profile[info[#info]]
@@ -964,33 +1103,33 @@ local options = {
 				clearCache()
 				StatLogic:InvalidateEvent("UNIT_AURA", "player")
 			end,
-      args = {
-        description = {
+			args = {
+				description = {
 					type = "description",
-          name = L["Enables RatingBuster to calculate selected buff effects even if you don't really have them"],
-          order = 1,
-        },
-        description2 = {
+					name = L["Enables RatingBuster to calculate selected buff effects even if you don't really have them"],
+					order = 1,
+				},
+				description2 = {
 					type = "description",
-          name = " ",
-          order = 2,
-        },
-        [class] = {
+					name = " ",
+					order = 2,
+				},
+				[class] = {
 					type = "group",
 					dialogInline = true,
-          name = L["$class Self Buffs"]:gsub("$class", (UnitClass("player"))),
-          order = 5,
+					name = L["$class Self Buffs"]:gsub("$class", (UnitClass("player"))),
+					order = 5,
 					hidden = true,
 					args = {},
-        },
-        ALL = {
+				},
+				ALL = {
 					type = "group",
 					dialogInline = true,
-          name = L["Raid Buffs"],
-          order = 6,
+					name = L["Raid Buffs"],
+					order = 6,
 					args = {},
-        },
-      },
+				},
+			},
 		},
 	},
 }
@@ -1001,28 +1140,32 @@ local options = {
 -- Default values
 local defaults = {
 	global = {
-		showItemLevel = false,
-		showItemID = false,
 		useRequiredLevel = true,
 		customLevel = 0,
 		textColor = CreateColor(1.0, 0.996, 0.545),
+		enableReforgeUI = true,
+
 		showSum = true,
+		calcSum = true,
+		calcDiff = true,
+		sumDiffStyle = "main",
+		hideBlizzardComparisons = true,
+		showItemID = false,
+		showItemLevel = false,
+		sumShowIcon = true,
+		sumShowTitle = true,
+		showZeroValueStat = false,
+		sumSortAlpha = false,
+		sumStatColor = CreateColor(NORMAL_FONT_COLOR:GetRGBA()),
+		sumValueColor = CreateColor(NORMAL_FONT_COLOR:GetRGBA()),
+		sumBlankLine = true,
+		sumBlankLineAfter = false,
+
 		sumIgnoreUnused = true,
 		sumIgnoreEquipped = false,
 		sumIgnoreEnchant = true,
 		sumIgnoreGems = false,
 		sumIgnoreExtraSockets = true,
-		sumBlankLine = true,
-		sumBlankLineAfter = false,
-		sumStatColor = CreateColor(NORMAL_FONT_COLOR:GetRGBA()),
-		sumValueColor = CreateColor(NORMAL_FONT_COLOR:GetRGBA()),
-		sumShowIcon = true,
-		sumShowTitle = true,
-		sumDiffStyle = "main",
-		sumSortAlpha = false,
-		calcDiff = true,
-		calcSum = true,
-		hideBlizzardComparisons = true,
 	},
 	profile = {
 		enableStatMods = true,
@@ -1034,7 +1177,6 @@ local defaults = {
 		expBreakDown = false,
 		showStats = true,
 		sumAvoidWithBlock = false,
-		showZeroValueStat = false,
 		--[[
 		Str -> AP, Block
 		Agi -> Crit, Dodge, AP, RAP, Armor
@@ -1135,6 +1277,7 @@ local defaults = {
 		sumResilience = true, -- new
 		sumDefense = false,
 		sumAvoidance = false,
+		sumMastery = true,
 		-- Gems
 		sumGemRed = {
 			itemID = nil,
@@ -1196,10 +1339,8 @@ elseif class == "HUNTER" then
 	defaults.profile.sumRangedHit = true
 	defaults.profile.sumRangedCrit = true
 	defaults.profile.sumRangedHaste = true
-	defaults.profile.showRAPFromAgi = true
 	defaults.profile.showDodgeFromAgi = false
 	defaults.profile.showSpellCritFromInt = false
-	defaults.profile.showRAPFromInt = true
 	defaults.profile.ratingPhysical = true
 	defaults.profile.sumArmorPenetration = true
 elseif class == "MAGE" then
@@ -3400,7 +3541,7 @@ function RatingBuster:StatSummary(tooltip, link)
 	local calcSum = db.global.calcSum
 	local calcDiff = db.global.calcDiff
 
-	local showZeroValueStat = db.profile.showZeroValueStat
+	local showZeroValueStat = db.global.showZeroValueStat
 	------------------------
 	-- Build Output Table --
 	local output = {}
