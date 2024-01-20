@@ -184,34 +184,44 @@ local options = {
 					type = 'toggle',
 					name = L["Show Rating conversions"],
 					desc = L["Show Rating conversions in tooltips"],
-				},
-				ratingSpell = {
-					type = 'toggle',
-					name = L["Show Spell Hit/Haste"],
-					desc = L["Show Spell Hit/Haste from Hit/Haste Rating"],
-					hidden = function()
-						local genericHit = StatLogic.GenericStatMap[StatLogic.Stats.HitRating]
-						return (not genericHit) or (not tContains(genericHit, StatLogic.Stats.SpellHitRating))
-					end
+					order = 1,
+					width = "full",
 				},
 				ratingPhysical = {
 					type = 'toggle',
 					name = L["Show Physical Hit/Haste"],
 					desc = L["Show Physical Hit/Haste from Hit/Haste Rating"],
+					order = 2,
+					width = "full",
 					hidden = function()
 						local genericHit = StatLogic.GenericStatMap[StatLogic.Stats.HitRating]
 						return (not genericHit)
+					end
+				},
+				ratingSpell = {
+					type = 'toggle',
+					name = L["Show Spell Hit/Haste"],
+					desc = L["Show Spell Hit/Haste from Hit/Haste Rating"],
+					order = 3,
+					width = "full",
+					hidden = function()
+						local genericHit = StatLogic.GenericStatMap[StatLogic.Stats.HitRating]
+						return (not genericHit) or (not tContains(genericHit, StatLogic.Stats.SpellHitRating))
 					end
 				},
 				detailedConversionText = {
 					type = 'toggle',
 					name = L["Show detailed conversions text"],
 					desc = L["Show detailed text for Resilience and Expertise conversions"],
+					order = 4,
+					width = "full",
 				},
 				enableAvoidanceDiminishingReturns = {
 					type = 'toggle',
 					name = L["Enable Avoidance Diminishing Returns"],
 					desc = L["Dodge, Parry, Miss Avoidance values will be calculated using the avoidance deminishing return formula with your current stats"],
+					order = 5,
+					width = "full",
 					hidden = function()
 						return not StatLogic.GetAvoidanceAfterDR
 					end,
