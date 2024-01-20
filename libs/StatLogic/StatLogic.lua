@@ -109,17 +109,6 @@ do
 	end
 end
 
-function StatLogic:ValidateClass(class)
-	if type(class) == "number" and StatLogic:GetClassIdOrName(class) then
-		-- if class is a class id, convert to class string
-		class = StatLogic:GetClassIdOrName(class)
-	elseif type(class) ~= "string" or not StatLogic:GetClassIdOrName(class) then
-		-- if class is not a string, or doesn't correspond to a class id, default to player class
-		class = addon.class
-	end
-	return class
-end
-
 -- Localize globals
 local _G = getfenv(0)
 local pairs = pairs
@@ -1308,15 +1297,9 @@ function StatLogic:GetDodgePerAgi()
 	return dodgeFromAgi / agility
 end
 
-function StatLogic:GetCritPerAgi(class, level)
-	-- argCheck for invalid input
-	self:argCheck(class, 3, "nil", "string", "number")
-	self:argCheck(level, 4, "nil", "number")
-	class = self:ValidateClass(class)
-	-- if level is invalid input, default to player level
-	if type(level) ~= "number" or level < 1 or level > GetMaxPlayerLevel() then
-		level = UnitLevel("player")
-	end
+function StatLogic:GetCritPerAgi()
+	local level = UnitLevel("player")
+	local class = addon.class
 
 	if addon.CritPerAgi[class][level] then
 		return addon.CritPerAgi[class][level]
@@ -1330,15 +1313,9 @@ function StatLogic:GetCritPerAgi(class, level)
 	end
 end
 
-function StatLogic:GetSpellCritPerInt(class, level)
-	-- argCheck for invalid input
-	self:argCheck(class, 3, "nil", "string", "number")
-	self:argCheck(level, 4, "nil", "number")
-	class = self:ValidateClass(class)
-	-- if level is invalid input, default to player level
-	if type(level) ~= "number" or level < 1 or level > GetMaxPlayerLevel() then
-		level = UnitLevel("player")
-	end
+function StatLogic:GetSpellCritPerInt()
+	local level = UnitLevel("player")
+	local class = addon.class
 
 	if addon.SpellCritPerInt[class][level] then
 		return addon.SpellCritPerInt[class][level]

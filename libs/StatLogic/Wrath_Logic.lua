@@ -3372,7 +3372,7 @@ function StatLogic:GetDodgeChanceBeforeDR()
 	local dodgeFromAdditionalAgi = dodgePerAgi * (effectiveStat - baseAgi)
 	local modDodge = dodgeFromDodgeRating + dodgeFromDefenceRating + dodgeFromAdditionalAgi
 
-	local drFreeDodge = GetDodgeChance() - self:GetAvoidanceAfterDR(StatLogic.Stats.Dodge, modDodge, addon.class)
+	local drFreeDodge = GetDodgeChance() - self:GetAvoidanceAfterDR(StatLogic.Stats.Dodge, modDodge)
 
 	return modDodge, drFreeDodge
 end
@@ -3401,7 +3401,7 @@ function StatLogic:GetParryChanceBeforeDR()
 	local modParry = parryFromParryRating + parryFromDefenceRating
 
 	-- drFreeParry
-	local drFreeParry = GetParryChance() - self:GetAvoidanceAfterDR(StatLogic.Stats.Parry, modParry, addon.class)
+	local drFreeParry = GetParryChance() - self:GetAvoidanceAfterDR(StatLogic.Stats.Parry, modParry)
 
 	return modParry, drFreeParry
 end
@@ -3432,14 +3432,11 @@ Formula details:
 ]]
 ---@param stat `StatLogic.Stats.Dodge`|`StatLogic.Stats.Parry`|`StatLogic.Stats.Miss`
 ---@param avoidanceBeforeDR number Amount of avoidance before diminishing returns in percentages.
----@param class? string|number - ClassID or "ClassName". Default: PlayerClass<br>See :GetClassIdOrName(class) for valid class values.
 ---@return number avoidanceAfterDR Avoidance after diminishing returns in percentages.
-function StatLogic:GetAvoidanceAfterDR(stat, avoidanceBeforeDR, class)
+function StatLogic:GetAvoidanceAfterDR(stat, avoidanceBeforeDR)
 	-- argCheck for invalid input
 	self:argCheck(stat, 2, "table")
 	self:argCheck(avoidanceBeforeDR, 3, "number")
-	self:argCheck(class, 4, "nil", "string", "number")
-	class = self:ValidateClass(class)
 
 	local C = C_d
 	if stat == StatLogic.Stats.Parry then
@@ -3449,6 +3446,7 @@ function StatLogic:GetAvoidanceAfterDR(stat, avoidanceBeforeDR, class)
 	end
 
 	if avoidanceBeforeDR > 0 then
+		local class = addon.class
 		return 1 / (1 / C[class] + K[class] / avoidanceBeforeDR)
 	else
 		return 0

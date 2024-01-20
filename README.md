@@ -69,11 +69,8 @@ will work with all bag mods too!
 Type `/rb` or `/ratingbuster` to open the options menu GUI, or add a slash command:
 
 - `help` - Show help message
-- `enableStatMods` - Enable support for Stat Mods
 - `showItemID` - Show the ItemID in tooltips
 - `showItemLevel` - Show the ItemLevel in tooltips
-- `useRequiredLevel` - Calculate using the required level if you are below the required level
-- `customLevel` - Set the level used in calculations (0 = your level)
 - `rating` - Options for Rating display
 	- `showRatings` - Show Rating conversions in tooltips
 	- `detailedConversionText` - Show detailed text for Resilience and Expertise conversions
