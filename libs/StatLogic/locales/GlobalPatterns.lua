@@ -125,8 +125,11 @@ local long = {
 
 	[DPS_TEMPLATE] = {StatLogic.Stats.WeaponDPS},
 	[ARMOR_TEMPLATE] = {StatLogic.Stats.Armor},
+	[SHIELD_BLOCK_TEMPLATE] = {StatLogic.Stats.BlockValue},
 	[PLUS_DAMAGE_TEMPLATE] = {StatLogic.Stats.MinWeaponDamage, StatLogic.Stats.MaxWeaponDamage},
 	[DAMAGE_TEMPLATE] = {StatLogic.Stats.MinWeaponDamage, StatLogic.Stats.MaxWeaponDamage},
+	[PLUS_DAMAGE_TEMPLATE_WITH_SCHOOL:format("%s", "%s", "")] = {StatLogic.Stats.MinWeaponDamage, StatLogic.Stats.MaxWeaponDamage},
+	[AMMO_DAMAGE_TEMPLATE] = {StatLogic.Stats.WeaponDPS},
 }
 
 for pattern, stats in pairs(long) do
