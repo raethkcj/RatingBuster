@@ -1699,7 +1699,7 @@ do
 						local value
 						found, _, value = text:find(pattern)
 						if found then
-							ParseMatch(id and id[1] and id or {id}, text, value, "PreScan")
+							ParseMatch(id and not id[1] and {id} or id, text, value, "PreScan")
 							break
 						end
 					end
