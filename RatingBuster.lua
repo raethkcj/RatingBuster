@@ -2865,12 +2865,14 @@ local summaryCalcData = {
 		option = "sumSpellDmg",
 		name = StatLogic.Stats.SpellDamage,
 		func = function(sum)
-			return sum[StatLogic.Stats.SpellDamage]
+			return GSM("MOD_SPELL_DMG") * (
+				sum[StatLogic.Stats.SpellDamage]
 				+ sum[StatLogic.Stats.Strength] * GSM("ADD_SPELL_DMG_MOD_STR")
 				+ sum[StatLogic.Stats.Stamina] * (GSM("ADD_SPELL_DMG_MOD_STA") + GSM("ADD_SPELL_DMG_MOD_PET_STA") * GSM("MOD_PET_STA") * GSM("ADD_PET_STA_MOD_STA"))
 				+ sum[StatLogic.Stats.Intellect] * (GSM("ADD_SPELL_DMG_MOD_INT") + GSM("ADD_SPELL_DMG_MOD_PET_INT") * GSM("MOD_PET_INT") * GSM("ADD_PET_INT_MOD_INT"))
 				+ sum[StatLogic.Stats.Spirit] * GSM("ADD_SPELL_DMG_MOD_SPI")
 				+ summaryFunc[StatLogic.Stats.AttackPower](sum) * GSM("ADD_SPELL_DMG_MOD_AP")
+			)
 		end,
 	},
 	-- Holy Damage - HOLY_SPELL_DMG, SPELL_DMG, INT, SPI
@@ -2878,9 +2880,8 @@ local summaryCalcData = {
 		option = "sumHolyDmg",
 		name = StatLogic.Stats.HolyDamage,
 		func = function(sum)
-			return GSM("MOD_SPELL_DMG") * (
-				sum[StatLogic.Stats.HolyDamage]
-			) + summaryFunc[StatLogic.Stats.SpellDamage](sum)
+			return GSM("MOD_SPELL_DMG") * sum[StatLogic.Stats.HolyDamage]
+				+ summaryFunc[StatLogic.Stats.SpellDamage](sum)
 		 end,
 	},
 	-- Arcane Damage - ARCANE_SPELL_DMG, SPELL_DMG, INT
@@ -2888,9 +2889,8 @@ local summaryCalcData = {
 		option = "sumArcaneDmg",
 		name = StatLogic.Stats.ArcaneDamage,
 		func = function(sum)
-			return GSM("MOD_SPELL_DMG") * (
-				sum[StatLogic.Stats.ArcaneDamage]
-			) + summaryFunc[StatLogic.Stats.SpellDamage](sum)
+			return GSM("MOD_SPELL_DMG") * sum[StatLogic.Stats.ArcaneDamage]
+				+ summaryFunc[StatLogic.Stats.SpellDamage](sum)
 		 end,
 	},
 	-- Fire Damage - FIRE_SPELL_DMG, SPELL_DMG, STA, INT
@@ -2898,9 +2898,8 @@ local summaryCalcData = {
 		option = "sumFireDmg",
 		name = StatLogic.Stats.FireDamage,
 		func = function(sum)
-			return GSM("MOD_SPELL_DMG") * (
-				sum[StatLogic.Stats.FireDamage]
-			) + summaryFunc[StatLogic.Stats.SpellDamage](sum)
+			return GSM("MOD_SPELL_DMG") * sum[StatLogic.Stats.FireDamage]
+				+ summaryFunc[StatLogic.Stats.SpellDamage](sum)
 		 end,
 	},
 	-- Nature Damage - NATURE_SPELL_DMG, SPELL_DMG, INT
@@ -2908,9 +2907,8 @@ local summaryCalcData = {
 		option = "sumNatureDmg",
 		name = StatLogic.Stats.NatureDamage,
 		func = function(sum)
-			return GSM("MOD_SPELL_DMG") * (
-				sum[StatLogic.Stats.NatureDamage]
-			) + summaryFunc[StatLogic.Stats.SpellDamage](sum)
+			return GSM("MOD_SPELL_DMG") * sum[StatLogic.Stats.NatureDamage]
+				+ summaryFunc[StatLogic.Stats.SpellDamage](sum)
 		 end,
 	},
 	-- Frost Damage - FROST_SPELL_DMG, SPELL_DMG, INT
@@ -2918,9 +2916,8 @@ local summaryCalcData = {
 		option = "sumFrostDmg",
 		name = StatLogic.Stats.FrostDamage,
 		func = function(sum)
-			return GSM("MOD_SPELL_DMG") * (
-				sum[StatLogic.Stats.FrostDamage]
-			) + summaryFunc[StatLogic.Stats.SpellDamage](sum)
+			return GSM("MOD_SPELL_DMG") * sum[StatLogic.Stats.FrostDamage]
+				+ summaryFunc[StatLogic.Stats.SpellDamage](sum)
 		 end,
 	},
 	-- Shadow Damage - SHADOW_SPELL_DMG, SPELL_DMG, STA, INT, SPI
@@ -2928,9 +2925,8 @@ local summaryCalcData = {
 		option = "sumShadowDmg",
 		name = StatLogic.Stats.ShadowDamage,
 		func = function(sum)
-			return GSM("MOD_SPELL_DMG") * (
-				sum[StatLogic.Stats.ShadowDamage]
-			) + summaryFunc[StatLogic.Stats.SpellDamage](sum)
+			return GSM("MOD_SPELL_DMG") * sum[StatLogic.Stats.ShadowDamage]
+				+ summaryFunc[StatLogic.Stats.SpellDamage](sum)
 		 end,
 	},
 	-- Healing - HEAL, AGI, STR, INT, SPI, AP
