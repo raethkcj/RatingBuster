@@ -3442,7 +3442,7 @@ function RatingBuster:StatSummary(tooltip, link)
 	end
 
 	local summary = {}
-	for _, calcData in pairs(summaryCalcData) do
+	for _, calcData in ipairs(summaryCalcData) do
 		if db.profile[calcData.option] then
 			local entry = {
 				name = calcData.name,
