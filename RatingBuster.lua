@@ -1745,7 +1745,7 @@ local equippedSum = setmetatable({}, {
 	__index = function() return 0 end
 })
 local equippedDodge, equippedParry, equippedMissed
-local processedDodge, processedParry, processedMissed
+local processedDodge, processedParry, processedMissed, processedResilience
 
 local scanningTooltipOwners = {
 	["WorldFrame"] = true,
@@ -1783,6 +1783,7 @@ function RatingBuster.ProcessTooltip(tooltip)
 		processedDodge = equippedDodge
 		processedParry = equippedParry
 		processedMissed = equippedMissed
+		processedResilience = equippedSum[StatLogic.Stats.ResilienceRating] * -1
 	else
 		equippedDodge = 0
 		equippedParry = 0
@@ -1790,6 +1791,7 @@ function RatingBuster.ProcessTooltip(tooltip)
 		processedDodge = 0
 		processedParry = 0
 		processedMissed = 0
+		processedResilience = 0
 	end
 	-- Loop through tooltip lines starting at line 2
 	local tipTextLeft = tooltip:GetName().."TextLeft"
@@ -2033,6 +2035,11 @@ do
 					infoString = ("%+.2f%%"):format(effect)
 				end
 			elseif statID == StatLogic.Stats.ResilienceRating then -- Resilience
+				if db.profile.enableAvoidanceDiminishingReturns and StatLogic.GetResilienceEffectGainAfterDR then
+					effect = StatLogic:GetResilienceEffectGainAfterDR(processedResilience + value, processedResilience)
+					processedResilience = processedResilience + value
+				end
+
 				effect = effect * -1
 				if db.profile.detailedConversionText then
 					local infoTable = {}
