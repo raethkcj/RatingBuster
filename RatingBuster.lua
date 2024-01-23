@@ -2036,17 +2036,17 @@ do
 				effect = effect * -1
 				if db.profile.detailedConversionText then
 					local infoTable = {}
-
-					if addon.tocversion >= 30000 then
-						-- Wrath
-						tinsert(infoTable, (L["$value to be Crit"]:gsub("$value", ("%+.2f%%%%"):format(effect))))
-						tinsert(infoTable, (L["$value Crit Dmg Taken"]:gsub("$value", ("%+.2f%%%%"):format(effect * RESILIENCE_CRIT_CHANCE_TO_DAMAGE_REDUCTION_MULTIPLIER))))
-						tinsert(infoTable, (L["$value Dmg Taken"]:gsub("$value", ("%+.2f%%%%"):format(effect * RESILIENCE_CRIT_CHANCE_TO_CONSTANT_DAMAGE_REDUCTION_MULTIPLIER))))
-					elseif addon.tocversion >= 20000 then
-						-- TBC
-						tinsert(infoTable, (L["$value to be Crit"]:gsub("$value", ("%+.2f%%%%"):format(effect))))
-						tinsert(infoTable, (L["$value Crit Dmg Taken"]:gsub("$value", ("%+.2f%%%%"):format(effect * 2))))
-						tinsert(infoTable, (L["$value DOT Dmg Taken"]:gsub("$value", ("%+.2f%%%%"):format(effect))))
+					local critAvoidance = effect * GSM("ADD_CRIT_AVOIDANCE_MOD_RESILIENCE")
+					if critAvoidance ~= 0 then
+						tinsert(infoTable, (L["$value to be Crit"]:gsub("$value", ("%+.2f%%%%"):format(critAvoidance))))
+					end
+					local critDmgReduction = effect * GSM("ADD_CRIT_DAMAGE_REDUCTION_MOD_RESILIENCE")
+					if critDmgReduction ~= 0 then
+						tinsert(infoTable, (L["$value Crit Dmg Taken"]:gsub("$value", ("%+.2f%%%%"):format(critDmgReduction))))
+					end
+					local pvpDmgReduction = effect * GSM("ADD_PVP_DAMAGE_REDUCTION_MOD_RESILIENCE")
+					if pvpDmgReduction ~= 0 then
+						tinsert(infoTable, (L["$value PvP Damage Taken"]:gsub("$value", ("%+.2f%%%%"):format(pvpDmgReduction))))
 					end
 
 					infoString = table.concat(infoTable, ", ")
@@ -3187,7 +3187,7 @@ local summaryCalcData = {
 		option = "sumCritAvoid",
 		name = StatLogic.Stats.CritAvoidance,
 		func = function(sum)
-			return StatLogic:GetEffectFromRating(sum[StatLogic.Stats.ResilienceRating], StatLogic.Stats.ResilienceRating, playerLevel)
+			return StatLogic:GetEffectFromRating(sum[StatLogic.Stats.ResilienceRating], StatLogic.Stats.ResilienceRating) * GSM("ADD_CRIT_AVOIDANCE_MOD_RESILIENCE")
 				+ summaryFunc[StatLogic.Stats.Defense](sum) * DODGE_PARRY_BLOCK_PERCENT_PER_DEFENSE
 		 end,
 		ispercent = true,

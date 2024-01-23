@@ -1878,6 +1878,12 @@ StatLogic.StatModTable["ALL"] = {
 			["aura"] = 16191,
 		},
 	},
+	["ADD_PVP_DAMAGE_REDUCTION_MOD_RESILIENCE"] = {
+		-- Base
+		{
+			["value"] = 1,
+		},
+	},
 }
 
 --=====================================--

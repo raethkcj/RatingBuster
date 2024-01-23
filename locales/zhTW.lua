@@ -385,7 +385,7 @@ L["$value to be Dodged/Parried"] = "$value 被閃躲/被招架"
 L["$value to be Crit"] = "$value 被致命"
 L["$value Crit Dmg Taken"] = "$value 致命傷害減免"
 L["$value DOT Dmg Taken"] = "$value 持續傷害減免"
-L["$value Dmg Taken"] = "$value Dmg Taken"
+L["$value PvP Damage Taken"] = "$value PvP Damage Taken"
 L["$value% Parry"] = "$value% 招架"
 -- for hit rating showing both physical and spell conversions
 -- (+1.21%, S+0.98%)

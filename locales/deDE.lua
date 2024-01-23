@@ -385,7 +385,7 @@ L["$value to be Dodged/Parried"] = "$value wird Ausgewichen/Pariert"
 L["$value to be Crit"] = "$value wird kritisch"
 L["$value Crit Dmg Taken"] = "$value erlittener krit. Schaden"
 L["$value DOT Dmg Taken"] = "$value erlittener Schaden durch DOTs"
-L["$value Dmg Taken"] = "$value erlitter Schaden im PVP"
+L["$value PvP Damage Taken"] = "$value erlitter Schaden im PVP"
 L["$value% Parry"] = "$value% Parieren"
 -- for hit rating showing both physical and spell conversions
 -- (+1.21%, S+0.98%)

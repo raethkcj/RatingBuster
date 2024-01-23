@@ -3173,6 +3173,24 @@ StatLogic.StatModTable["ALL"] = {
 			["group"] = addon.BuffGroup.AllStats,
 		},
 	},
+	["ADD_CRIT_AVOIDANCE_MOD_RESILIENCE"] = {
+		-- Base
+		{
+			["value"] = 1,
+		},
+	},
+	["ADD_CRIT_DAMAGE_REDUCTION_MOD_RESILIENCE"] = {
+		-- Base
+		{
+			["value"] = RESILIENCE_CRIT_CHANCE_TO_DAMAGE_REDUCTION_MULTIPLIER,
+		},
+	},
+	["ADD_PVP_DAMAGE_REDUCTION_MOD_RESILIENCE"] = {
+		-- Base
+		{
+			["value"] = RESILIENCE_CRIT_CHANCE_TO_CONSTANT_DAMAGE_REDUCTION_MULTIPLIER,
+		},
+	},
 }
 
 --=====================================--

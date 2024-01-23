@@ -363,6 +363,18 @@ StatLogic.StatModInfo = {
 		initialValue = 0,
 		finalAdjust = 0,
 	},
+	["ADD_CRIT_AVOIDANCE_MOD_RESILIENCE"] = {
+		initialValue = 0,
+		finalAdjust = 0,
+	},
+	["ADD_CRIT_DAMAGE_REDUCTION_MOD_RESILIENCE"] = {
+		initialValue = 0,
+		finalAdjust = 0,
+	},
+	["ADD_PVP_DAMAGE_REDUCTION_MOD_RESILIENCE"] = {
+		initialValue = 0,
+		finalAdjust = 0,
+	},
 	["ADD_PET_INT_MOD_INT"] = {
 		initialValue = 0,
 		finalAdjust = 0,

@@ -486,7 +486,7 @@ L["$value to be Dodged/Parried"] = "$value уклонения/парирован
 L["$value to be Crit"] = "$value% к получению крит. удара" -- Your chance to get critical hit from target
 L["$value Crit Dmg Taken"] = "$value к получению крит. урона"
 L["$value DOT Dmg Taken"] = "$value к получению урона от ДоТ"
-L["$value Dmg Taken"] = "$value Dmg Taken"
+L["$value PvP Damage Taken"] = "$value PvP Damage Taken"
 -- for hit rating showing both physical and spell conversions
 -- (+1.21%, S+0.98%)
 -- (+1.21%, +0.98% S)

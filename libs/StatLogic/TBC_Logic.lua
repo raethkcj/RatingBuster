@@ -1734,4 +1734,16 @@ StatLogic.StatModTable["ALL"] = {
 			["value"] = 0.05,
 		},
 	},
+	["ADD_CRIT_AVOIDANCE_MOD_RESILIENCE"] = {
+		-- Base
+		{
+			["value"] = 1,
+		},
+	},
+	["ADD_CRIT_DAMAGE_REDUCTION_MOD_RESILIENCE"] = {
+		-- Base
+		{
+			["value"] = 2,
+		},
+	},
 }
