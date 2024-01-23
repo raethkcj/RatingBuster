@@ -2274,15 +2274,21 @@ do
 			end
 			if db.profile.showSpellDmgFromInt then
 				local mod = GSM("MOD_SPELL_DMG")
-				local effect = value * mod * (GSM("ADD_SPELL_DMG_MOD_INT")
-					+ GSM("ADD_SPELL_DMG_MOD_PET_INT") * GSM("MOD_PET_INT") * GSM("ADD_PET_INT_MOD_INT"))
+				local effect = value * mod * (
+					GSM("ADD_SPELL_DMG_MOD_INT")
+					+ GSM("ADD_SPELL_DMG_MOD_PET_INT") * GSM("MOD_PET_INT") * GSM("ADD_PET_INT_MOD_INT")
+					+ GSM("ADD_SPELL_DMG_MOD_MANA") * GSM("MOD_MANA") * GSM("ADD_MANA_MOD_INT")
+				)
 				if floor(abs(effect) * 10 + 0.5) > 0 then
 					tinsert(infoTable, (L["$value Spell Dmg"]:gsub("$value", ("%+.1f"):format(effect))))
 				end
 			end
 			if db.profile.showHealingFromInt then
 				local mod = GSM("MOD_HEALING")
-				local effect = value * GSM("ADD_HEALING_MOD_INT") * mod
+				local effect = value * mod * (
+					GSM("ADD_HEALING_MOD_INT")
+					+ GSM("ADD_HEALING_MOD_MANA") * GSM("MOD_MANA") * GSM("ADD_MANA_MOD_INT")
+				)
 				if floor(abs(effect) * 10 + 0.5) > 0 then
 					tinsert(infoTable, (L["$value Heal"]:gsub("$value", ("%+.1f"):format(effect))))
 				end
@@ -2883,8 +2889,10 @@ local summaryCalcData = {
 				sum[StatLogic.Stats.SpellDamage]
 				+ sum[StatLogic.Stats.Strength] * GSM("ADD_SPELL_DMG_MOD_STR")
 				+ sum[StatLogic.Stats.Stamina] * (GSM("ADD_SPELL_DMG_MOD_STA") + GSM("ADD_SPELL_DMG_MOD_PET_STA") * GSM("MOD_PET_STA") * GSM("ADD_PET_STA_MOD_STA"))
-				+ sum[StatLogic.Stats.Intellect] * (GSM("ADD_SPELL_DMG_MOD_INT") + GSM("ADD_SPELL_DMG_MOD_PET_INT") * GSM("MOD_PET_INT") * GSM("ADD_PET_INT_MOD_INT"))
-				+ sum[StatLogic.Stats.Spirit] * GSM("ADD_SPELL_DMG_MOD_SPI")
+				+ sum[StatLogic.Stats.Intellect] * (
+					(GSM("ADD_SPELL_DMG_MOD_INT") + GSM("ADD_SPELL_DMG_MOD_PET_INT") * GSM("MOD_PET_INT") * GSM("ADD_PET_INT_MOD_INT"))
+					+ GSM("ADD_SPELL_DMG_MOD_MANA") * GSM("MOD_MANA") * GSM("ADD_MANA_MOD_INT")
+				) + sum[StatLogic.Stats.Spirit] * GSM("ADD_SPELL_DMG_MOD_SPI")
 				+ summaryFunc[StatLogic.Stats.AttackPower](sum) * GSM("ADD_SPELL_DMG_MOD_AP")
 			)
 		end,
@@ -2952,8 +2960,10 @@ local summaryCalcData = {
 				sum[StatLogic.Stats.HealingPower]
 				+ (sum[StatLogic.Stats.Strength] * GSM("ADD_HEALING_MOD_STR"))
 				+ (sum[StatLogic.Stats.Agility] * GSM("ADD_HEALING_MOD_AGI"))
-				+ (sum[StatLogic.Stats.Intellect] * GSM("ADD_HEALING_MOD_INT"))
-				+ (sum[StatLogic.Stats.Spirit] * GSM("ADD_HEALING_MOD_SPI"))
+				+ (sum[StatLogic.Stats.Intellect] * (
+					GSM("ADD_HEALING_MOD_INT"))
+					+ GSM("ADD_HEALING_MOD_MANA") * GSM("MOD_MANA") * GSM("ADD_MANA_MOD_INT")
+				) + (sum[StatLogic.Stats.Spirit] * GSM("ADD_HEALING_MOD_SPI"))
 				+ (summaryFunc[StatLogic.Stats.AttackPower](sum) * GSM("ADD_HEALING_MOD_AP"))
 			)
 		end,
