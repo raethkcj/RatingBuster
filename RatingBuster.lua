@@ -3151,6 +3151,7 @@ local summaryCalcData = {
 				sum[StatLogic.Stats.BlockChance]
 				+ StatLogic:GetEffectFromRating(sum[StatLogic.Stats.BlockRating], StatLogic.Stats.BlockRating, playerLevel)
 				+ summaryFunc[StatLogic.Stats.Defense](sum) * DODGE_PARRY_BLOCK_PERCENT_PER_DEFENSE
+				+ summaryFunc[StatLogic.Stats.MasteryEffect](sum) * GSM("ADD_BLOCK_CHANCE_MOD_MASTERY_EFFECT")
 			) or 0
 		end,
 		ispercent = true,

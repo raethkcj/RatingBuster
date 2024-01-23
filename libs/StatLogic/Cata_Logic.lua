@@ -990,6 +990,13 @@ elseif addon.class == "PALADIN" then
 				["value"] = 2.1,
 			},
 		},
+		["ADD_BLOCK_CHANCE_MOD_MASTERY_EFFECT"] = {
+			-- Mastery: Divine Bulwark
+			{
+				["known"] = 76671,
+				["value"] = 1,
+			},
+		},
 		["ADD_AP_MOD_STR"] = {
 			-- Base
 			{
@@ -1617,6 +1624,13 @@ elseif addon.class == "WARRIOR" then
 			{
 				["known"] = 76857,
 				["value"] = 1.5,
+			},
+		},
+		["ADD_BLOCK_CHANCE_MOD_MASTERY_EFFECT"] = {
+			-- Mastery: Critical Block
+			{
+				["known"] = 76857,
+				["value"] = 1,
 			},
 		},
 		["ADD_AP_MOD_STR"] = {

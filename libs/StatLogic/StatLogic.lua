@@ -363,6 +363,10 @@ StatLogic.StatModInfo = {
 		initialValue = 0,
 		finalAdjust = 0,
 	},
+	["ADD_BLOCK_CHANCE_MOD_MASTERY_EFFECT"] = {
+		initialValue = 0,
+		finalAdjust = 0,
+	},
 	["ADD_CRIT_AVOIDANCE_MOD_RESILIENCE"] = {
 		initialValue = 0,
 		finalAdjust = 0,
