@@ -2372,6 +2372,13 @@ do
 					tinsert(infoTable, (L["$value Heal"]:gsub("$value", ("%+.1f"):format(effect))))
 				end
 			end
+			if db.profile.showSpellHitFromSpi then
+				local rating = value * GSM("ADD_SPELL_HIT_RATING_MOD_SPI")
+				local effect = StatLogic:GetEffectFromRating(rating, StatLogic.Stats.SpellHitRating, playerLevel)
+				if effect > 0 then
+					tinsert(infoTable, (L["$value Spell Hit"]:gsub("$value", ("%+.2f%%%%"):format(effect))))
+				end
+			end
 			if db.profile.showSpellCritFromSpi then
 				local mod = GSM("ADD_SPELL_CRIT_RATING_MOD_SPI")
 				local effect = StatLogic:GetEffectFromRating(value * mod, StatLogic.Stats.SpellCritRating, playerLevel)
@@ -2957,7 +2964,7 @@ local summaryCalcData = {
 		name = StatLogic.Stats.SpellHit,
 		func = function(sum)
 			return sum[StatLogic.Stats.SpellHit]
-				+ StatLogic:GetEffectFromRating(sum[StatLogic.Stats.SpellHitRating], StatLogic.Stats.SpellHitRating, playerLevel)
+				+ StatLogic:GetEffectFromRating(summaryFunc[StatLogic.Stats.SpellHitRating](sum), StatLogic.Stats.SpellHitRating, playerLevel)
 		end,
 		ispercent = true,
 	},
@@ -2967,6 +2974,7 @@ local summaryCalcData = {
 		name = StatLogic.Stats.SpellHitRating,
 		func = function(sum)
 			return sum[StatLogic.Stats.SpellHitRating]
+				+ sum[StatLogic.Stats.Spirit] * GSM("ADD_SPELL_HIT_RATING_MOD_SPI")
 		end,
 	},
 	-- Spell Crit Chance - SPELL_CRIT_RATING, INT
