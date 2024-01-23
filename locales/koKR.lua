@@ -480,5 +480,6 @@ L[StatLogic.Stats.Expertise] = "숙련"
 L[StatLogic.Stats.ArmorPenetration] = "방어도 관통력 합계"
 L[StatLogic.Stats.DodgeReduction] = "회피 무시"
 L[StatLogic.Stats.Mastery] = STAT_MASTERY
+L[StatLogic.Stats.MasteryEffect] = SPELL_LASTING_EFFECT:format(STAT_MASTERY)
 L[StatLogic.Stats.WeaponSkill] = "무기 숙련"
 L[StatLogic.Stats.ParryReduction] = PARRY.." 무시"

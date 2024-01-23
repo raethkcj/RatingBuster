@@ -505,6 +505,7 @@ L[StatLogic.Stats.SpellHaste] = PLAYERSTAT_SPELL_COMBAT.." "..STAT_HASTE
 L[StatLogic.Stats.Expertise] = STAT_EXPERTISE
 L[StatLogic.Stats.ArmorPenetration] = "Armor Penetration"
 L[StatLogic.Stats.Mastery] = STAT_MASTERY
+L[StatLogic.Stats.MasteryEffect] = SPELL_LASTING_EFFECT:format(STAT_MASTERY)
 L[StatLogic.Stats.DodgeReduction] = DODGE.." Reduction"
 L[StatLogic.Stats.ParryReduction] = PARRY.." Reduction"
 L[StatLogic.Stats.WeaponSkill] = "Weapon "..SKILL

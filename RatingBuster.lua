@@ -622,9 +622,9 @@ local options = {
 								return not StatLogic:RatingExists(StatLogic.Stats.MasteryRating)
 							end,
 						},
-						sumMasteryRating = {
+						sumMasteryEffect = {
 							type = 'toggle',
-							name = L["Sum %s"]:format(L[StatLogic.Stats.MasteryRating]),
+							name = L["Sum %s"]:format(L[StatLogic.Stats.MasteryEffect]),
 							order = 12,
 							hidden = function()
 								return not StatLogic:RatingExists(StatLogic.Stats.MasteryRating)
@@ -1264,7 +1264,7 @@ local defaults = {
 		sumResilience = true, -- new
 		sumDefense = false,
 		sumAvoidance = false,
-		sumMastery = true,
+		sumMasteryEffect = true,
 		-- Gems
 		sumGemRed = {
 			itemID = nil,
@@ -2060,6 +2060,11 @@ do
 				else
 					infoString = ("%+.2f%%"):format(effect)
 				end
+			elseif statID == StatLogic.Stats.MasteryRating then
+				if db.profile.showMasteryEffectFromMastery then
+					effect = effect * GSM("ADD_MASTERY_EFFECT_MOD_MASTERY")
+					infoString = ("%+.2f%%"):format(effect)
+				end
 			else
 				local pattern = "%+.2f%%"
 				local show = false
@@ -2594,6 +2599,21 @@ local summaryCalcData = {
 		func = function(sum)
 			return sum[StatLogic.Stats.Spirit]
 		end,
+	},
+	{
+		option = "sumMastery",
+		name = StatLogic.Stats.Mastery,
+		func = function(sum)
+			return StatLogic:GetEffectFromRating(sum[StatLogic.Stats.MasteryRating], StatLogic.Stats.MasteryRating)
+		end,
+	},
+	{
+		option = "sumMasteryEffect",
+		name = StatLogic.Stats.MasteryEffect,
+		func = function(sum)
+			return summaryFunc[StatLogic.Stats.Mastery](sum) * GSM("ADD_MASTERY_EFFECT_MOD_MASTERY")
+		end,
+		ispercent = true,
 	},
 	-- Health - HEALTH, STA
 	{

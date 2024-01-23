@@ -480,6 +480,7 @@ L[StatLogic.Stats.SpellHaste] = "Zaubertempo"
 L[StatLogic.Stats.Expertise] = "Waffenkunde"
 L[StatLogic.Stats.ArmorPenetration] = "Rüstungsdurchlag"
 L[StatLogic.Stats.Mastery] = "Meisterschaft"
+L[StatLogic.Stats.MasteryEffect] = SPELL_LASTING_EFFECT:format("Meisterschaft")
 L[StatLogic.Stats.DodgeReduction] = "Ausweichverhinderung"
 L[StatLogic.Stats.ParryReduction] = "Parierverhinderung"
 L[StatLogic.Stats.WeaponSkill] = "Waffenfertigkeit"

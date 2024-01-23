@@ -580,6 +580,7 @@ L[StatLogic.Stats.SpellHaste] = "Скорость заклинаний"
 L[StatLogic.Stats.Expertise] = "Мастерство"
 L[StatLogic.Stats.ArmorPenetration] = "Пробивание брони"
 L[StatLogic.Stats.Mastery] = "Искусность"
+L[StatLogic.Stats.MasteryEffect] = SPELL_LASTING_EFFECT:format("Искусность")
 L[StatLogic.Stats.DodgeReduction] = "игнорирования уклонения"
 L[StatLogic.Stats.ParryReduction] = "игнорирования парирования"
 L[StatLogic.Stats.WeaponSkill] = "Оружейный навык"

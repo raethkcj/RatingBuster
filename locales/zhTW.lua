@@ -480,6 +480,7 @@ L[StatLogic.Stats.SpellHaste] = "法術加速"
 L[StatLogic.Stats.Expertise] = "熟練"
 L[StatLogic.Stats.ArmorPenetration] = "護甲穿透"
 L[StatLogic.Stats.Mastery] = STAT_MASTERY
+L[StatLogic.Stats.MasteryEffect] = SPELL_LASTING_EFFECT:format(STAT_MASTERY)
 L[StatLogic.Stats.DodgeReduction] = "防止被閃躲"
 L[StatLogic.Stats.ParryReduction] = "防止被招架"
 L[StatLogic.Stats.WeaponSkill] = "武器技能"

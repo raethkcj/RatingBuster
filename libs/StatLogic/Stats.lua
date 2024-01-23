@@ -70,6 +70,7 @@ StatLogic.Stats.Intellect = Stat:new()
 StatLogic.Stats.Spirit = Stat:new()
 StatLogic.Stats.AllStats = Stat:new({ show = false })
 StatLogic.Stats.Mastery = Stat:new()
+StatLogic.Stats.MasteryEffect = Stat:new()
 StatLogic.Stats.MasteryRating = Stat:new()
 
 -- Resources

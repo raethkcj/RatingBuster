@@ -560,6 +560,10 @@ local addedInfoMods = {
 		mod = "NORMAL_MANA_REG",
 	},
 	{
+		add = "MASTERY_EFFECT",
+		mod = "MASTERY",
+	},
+	{
 		add = "PARRY_RATING",
 		mod = "STR",
 	},

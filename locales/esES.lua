@@ -481,6 +481,7 @@ L[StatLogic.Stats.SpellHaste] = "Velocidad Hech."
 L[StatLogic.Stats.Expertise] = "Pericia"
 L[StatLogic.Stats.ArmorPenetration] = "Penetracion Armadura"
 L[StatLogic.Stats.Mastery] = STAT_MASTERY
+L[StatLogic.Stats.MasteryEffect] = SPELL_LASTING_EFFECT:format(STAT_MASTERY)
 L[StatLogic.Stats.DodgeReduction] = "Fallo Esquivar"
 L[StatLogic.Stats.ParryReduction] = "Fallo Parar"
 L[StatLogic.Stats.WeaponSkill] = "Habilidad Arma"
