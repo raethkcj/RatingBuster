@@ -463,12 +463,12 @@ L["statList"] = {
 -- Added info patterns --
 -------------------------
 -- $value will be replaced with the number
--- EX: "$value% Crit" -> "+1.34% Crit"
--- EX: "Crit $value%" -> "Crit +1.34%"
-L["$value% Crit"] = "$value% к крит. удару"
-L["$value% Spell Crit"] = "$value% к крит. удару"
-L["$value% Dodge"] = "$value% к уклонению"
-L["$value% Parry"] = "$value% к парированию"
+-- EX: "$value Crit" -> "+1.34% Crit"
+-- EX: "Crit $value" -> "Crit +1.34%"
+L["$value Crit"] = "$value к крит. удару"
+L["$value Spell Crit"] = "$value к крит. удару"
+L["$value Dodge"] = "$value к уклонению"
+L["$value Parry"] = "$value к парированию"
 L["$value HP"] = "$value к здоровью"
 L["$value MP"] = "$value к мане"
 L["$value AP"] = "$value к силе атаки"
@@ -483,7 +483,7 @@ L["$value MP5(NC)"] = "$value маны раз в 5 сек. (вне каста)"
 L["$value HP5"] = "$value здоровья раз в 5 сек."
 L["$value HP5(NC)"] = "$value ХП5 (вне боя)"
 L["$value to be Dodged/Parried"] = "$value уклонения/парирования" -- Target's dodges/parrys against your attacks
-L["$value to be Crit"] = "$value% к получению крит. удара" -- Your chance to get critical hit from target
+L["$value to be Crit"] = "$value к получению крит. удара" -- Your chance to get critical hit from target
 L["$value Crit Dmg Taken"] = "$value к получению крит. урона"
 L["$value DOT Dmg Taken"] = "$value к получению урона от ДоТ"
 L["$value PvP Damage Taken"] = "$value PvP Damage Taken"

@@ -387,11 +387,11 @@ L["statList"] = {
 -- Added info patterns --
 -------------------------
 -- $value will be replaced with the number
--- EX: "$value% Crit" -> "+1.34% Crit"
--- EX: "Crit $value%" -> "Crit +1.34%"
-L["$value% Crit"] = "$value% CC"
-L["$value% Spell Crit"] = "$value% CC sorts"
-L["$value% Dodge"] = "$value% esquive"
+-- EX: "$value Crit" -> "+1.34% Crit"
+-- EX: "Crit $value" -> "Crit +1.34%"
+L["$value Crit"] = "$value CC"
+L["$value Spell Crit"] = "$value CC sorts"
+L["$value Dodge"] = "$value esquive"
 L["$value HP"] = "$value PV"
 L["$value MP"] = "$value Mana"
 L["$value AP"] = "$value PA"
@@ -409,11 +409,11 @@ L["$value to be Crit"] = "$value recevoir CC"
 L["$value Crit Dmg Taken"] = "$value dégâts CC"
 L["$value DOT Dmg Taken"] = "$value dégâts DoT"
 L["$value PvP Damage Taken"] = "$value PvP Damage Taken"
-L["$value% Parry"] = "$value% parer"
+L["$value Parry"] = "$value parer"
 -- for hit rating showing both physical and spell conversions
 -- (+1.21%, S+0.98%)
 -- (+1.21%, +0.98% S)
-L["$value Spell"] = "$value% Sort"
+L["$value Spell"] = "$value Sort"
 L["$value Spell Hit"] = "$value toucher sorts"
 
 L[StatLogic.Stats.ManaRegen] = "Régén. mana (incantation)"

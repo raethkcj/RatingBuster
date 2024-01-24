@@ -365,11 +365,11 @@ L["statList"] = {
 -- Added info patterns --
 -------------------------
 -- $value will be replaced with the number
--- EX: "$value% Crit" -> "+1.34% Crit"
--- EX: "Crit $value%" -> "Crit +1.34%"
-L["$value% Crit"] = "$value% Crit"
-L["$value% Spell Crit"] = "$value% Crit hechizos"
-L["$value% Dodge"] = "$value% Esquivar"
+-- EX: "$value Crit" -> "+1.34% Crit"
+-- EX: "Crit $value" -> "Crit +1.34%"
+L["$value Crit"] = "$value Crit"
+L["$value Spell Crit"] = "$value Crit hechizos"
+L["$value Dodge"] = "$value Esquivar"
 L["$value HP"] = "$value Vida"
 L["$value MP"] = "$value Mana"
 L["$value AP"] = "$value P.At"
@@ -387,7 +387,7 @@ L["$value to be Crit"] = "$value recibir Crit"
 L["$value Crit Dmg Taken"] = "$value Daño crit recib"
 L["$value DOT Dmg Taken"] = "$value Daño por tiempo recib"
 L["$value PvP Damage Taken"] = "$value Daño recib"
-L["$value% Parry"] = "$value Parada"
+L["$value Parry"] = "$value Parada"
 -- for hit rating showing both physical and spell conversions
 -- (+1.21%, S+0.98%)
 -- (+1.21%, +0.98% S)

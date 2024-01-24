@@ -2146,7 +2146,7 @@ do
 					processedParry = processedParry + effectNoDR
 				end
 				if effect > 0 then
-					tinsert(infoTable, (L["$value% Parry"]:gsub("$value", ("%+.2f"):format(effect))))
+					tinsert(infoTable, (L["$value Parry"]:gsub("$value", ("%+.2f%%%%"):format(effect))))
 				end
 			else
 				local rating = value * GSM("ADD_PARRY_RATING_MOD_STR")
@@ -2182,13 +2182,13 @@ do
 			if db.profile.showCritFromAgi then
 				local effect = value * StatLogic:GetCritPerAgi()
 				if effect > 0 then
-					tinsert(infoTable, (L["$value% Crit"]:gsub("$value", ("%+.2f"):format(effect))))
+					tinsert(infoTable, (L["$value Crit"]:gsub("$value", ("%+.2f%%%%"):format(effect))))
 				end
 			end
 			if db.profile.showDodgeFromAgi then
 				local effect = value * StatLogic:GetDodgePerAgi()
 				if effect > 0 then
-					tinsert(infoTable, (L["$value% Dodge"]:gsub("$value", ("%+.2f"):format(effect))))
+					tinsert(infoTable, (L["$value Dodge"]:gsub("$value", ("%+.2f%%%%"):format(effect))))
 				end
 			end
 			if db.profile.showArmorFromAgi then
@@ -2274,7 +2274,7 @@ do
 			if db.profile.showSpellCritFromInt then
 				local effect = value * StatLogic:GetSpellCritPerInt()
 				if effect > 0 then
-					tinsert(infoTable, (L["$value% Spell Crit"]:gsub("$value", ("%+.2f"):format(effect))))
+					tinsert(infoTable, (L["$value Spell Crit"]:gsub("$value", ("%+.2f%%%%"):format(effect))))
 				end
 			end
 			if db.profile.showSpellDmgFromInt then
@@ -2394,7 +2394,7 @@ do
 				local mod = GSM("ADD_SPELL_CRIT_RATING_MOD_SPI")
 				local effect = StatLogic:GetEffectFromRating(value * mod, StatLogic.Stats.SpellCritRating, playerLevel)
 				if effect > 0 then
-					tinsert(infoTable, (L["$value% Spell Crit"]:gsub("$value", ("%+.2f"):format(effect))))
+					tinsert(infoTable, (L["$value Spell Crit"]:gsub("$value", ("%+.2f%%%%"):format(effect))))
 				end
 			end
 			infoString = table.concat(infoTable, ", ")

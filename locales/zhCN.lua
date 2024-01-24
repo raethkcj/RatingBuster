@@ -364,11 +364,11 @@ L["statList"] = {
 -- Added info patterns --
 -------------------------
 -- $value will be replaced with the number
--- EX: "$value% Crit" -> "+1.34% Crit"
--- EX: "Crit $value%" -> "Crit +1.34%"
-L["$value% Crit"] = "$value% 爆击"
-L["$value% Spell Crit"] = "$value% 法爆"
-L["$value% Dodge"] = "$value% 躲闪"
+-- EX: "$value Crit" -> "+1.34% Crit"
+-- EX: "Crit $value" -> "Crit +1.34%"
+L["$value Crit"] = "$value 爆击"
+L["$value Spell Crit"] = "$value 法爆"
+L["$value Dodge"] = "$value 躲闪"
 L["$value HP"] = "$value 生命"
 L["$value MP"] = "$value 法力"
 L["$value AP"] = "$value 攻击强度"
@@ -386,7 +386,7 @@ L["$value to be Crit"] = "$value 被致命一击"
 L["$value Crit Dmg Taken"] = "$value 致命一击伤害减免"
 L["$value DOT Dmg Taken"] = "$value 持续伤害减免"
 L["$value PvP Damage Taken"] = "$value PvP Damage Taken"
-L["$value% Parry"] = "$value% 招架"
+L["$value Parry"] = "$value 招架"
 -- for hit rating showing both physical and spell conversions
 -- (+1.21%, S+0.98%)
 -- (+1.21%, +0.98% S)
