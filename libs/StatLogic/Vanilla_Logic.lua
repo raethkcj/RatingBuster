@@ -573,6 +573,11 @@ elseif addon.class == "MAGE" then
 				["slot"] = INVSLOT_CHEST,
 				["value"] = 15,
 			},
+			-- Buff: Scroll of Arcane Power I
+			{
+				["aura"] = 430952,
+				["value"] = 1,
+			},
 		},
 	}
 elseif addon.class == "PALADIN" then
@@ -587,6 +592,11 @@ elseif addon.class == "PALADIN" then
 			-- Base
 			{
 				["value"] = 3.5000,
+			},
+			-- Buff: Sanctified Orb
+			{
+				["aura"] = 24865,
+				["value"] = 3,
 			},
 		},
 		["ADD_DODGE"] = {
@@ -624,6 +634,11 @@ elseif addon.class == "PALADIN" then
 				["rank"] = {
 					1, 2, 3, 4, 5,
 				},
+			},
+			-- Buff: Sanctified Orb
+			{
+				["aura"] = 24865,
+				["value"] = 3,
 			},
 		},
 		-- Paladin: Toughness (Rank 5) - 2,5
@@ -1205,6 +1220,11 @@ elseif addon.class == "WARRIOR" then
 				["stance"] = "Interface\\Icons\\Ability_Racial_Avatar",
 				["value"] = 3,
 			},
+			-- Buff: Recklessness
+			{
+				["aura"] = 17538,
+				["value"] = 100,
+			},
 		}
 	}
 end
@@ -1429,32 +1449,62 @@ StatLogic.StatModTable["ALL"] = {
 		},
 	},
 	["ADD_MELEE_CRIT"] = {
-		-- Leader of the Pack
+		-- Buff: Leader of the Pack
 		{
 			["aura"] = 24932,
 			["value"] = 3,
 		},
-		-- Rallying Cry of the Dragonslayer
+		-- Buff: Rallying Cry of the Dragonslayer
 		{
 			["aura"] = 22888,
 			["value"] = 5,
 		},
-		-- Boon of Blackfathom
+		-- Buff: Songflower Serenade
+		{
+			["aura"] = 15366,
+			["value"] = 5,
+		},
+		-- Buff: Fire Festival Fury
+		{
+			["aura"] = 29338,
+			["value"] = 3,
+		},
+		-- Buff: Elixir of the Mongoose
+		{
+			["aura"] = 17538,
+			["value"] = 2,
+		},
+		-- Buff: Boon of Blackfathom
 		{
 			["aura"] = 430947,
 			["value"] = 2,
 		},
 	},
 	["ADD_SPELL_CRIT"] = {
-		-- Moonkin Aura
+		-- Buff: Moonkin Aura
 		{
 			["aura"] = 24907,
 			["value"] = 3,
 		},
-		-- Rallying Cry of the Dragonslayer
+		-- Buff: Rallying Cry of the Dragonslayer
 		{
 			["aura"] = 22888,
 			["value"] = 10,
+		},
+		-- Buff: Songflower Serenade
+		{
+			["aura"] = 15366,
+			["value"] = 5,
+		},
+		-- Buff: Slip'kik's Savvy
+		{
+			["aura"] = 22820,
+			["value"] = 3,
+		},
+		-- Buff: Fire Festival Fury
+		{
+			["aura"] = 29338,
+			["value"] = 3,
 		},
 	}
 }

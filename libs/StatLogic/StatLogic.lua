@@ -347,6 +347,7 @@ StatLogic.StatModInfo = {
 	-- only add mods that would reasonably be active while leveling, which are primarily talents.
 	-- The crit conversions are also only necessary in Vanilla, while Dodge is necessary in every expansion.
 	-- Spell crit modifiers are only required if they mod school 1 (physical)
+	-- That means spells with EffectAura 57, and, separately, EffectAura 71 whose final digit of EffectMiscValue_0 is an odd number
 	["ADD_MELEE_CRIT"] = {
 		initialValue = 0,
 		finalAdjust = 0,
