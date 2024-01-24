@@ -369,68 +369,87 @@ L["statList"] = {
 -- "%s %s"     -> "+1.34% Crit"
 -- "%2$s $1$s" -> "Crit +1.34%"
 L["StatBreakdownOrder"] = "%s %s"
-S[StatLogic.Stats.MeleeCrit] = "Crit"
-S[StatLogic.Stats.SpellCrit] = "Crit hechizos"
-S[StatLogic.Stats.Dodge] = "Esquivar"
-S[StatLogic.Stats.Health] = "Vida"
-S[StatLogic.Stats.Mana] = "Mana"
-S[StatLogic.Stats.AttackPower] = "P.At"
-S[StatLogic.Stats.RangedAttackPower] = "P.At Dist"
-S[StatLogic.Stats.SpellDamage] = "Daño"
-S[StatLogic.Stats.HealingPower] = "Sanacion"
-S[StatLogic.Stats.Armor] = "Armadura"
-S[StatLogic.Stats.BlockValue] = "Bloqueo"
-S[StatLogic.Stats.ManaRegen] = "Mana/5sec"
-S[StatLogic.Stats.ManaRegenNotCasting] = "Mana/5sec(SL)"
-S[StatLogic.Stats.HealthRegen] = "Vida/5sec"
-S[StatLogic.Stats.HealthRegenOutOfCombat] = "Vida/5sec(NC)"
-S[StatLogic.Stats.DodgeReduction] = "Esquivado"
-S[StatLogic.Stats.ParryReduction] = "Parado"
-S[StatLogic.Stats.CritAvoidance] = "recibir Crit"
-S[StatLogic.Stats.CritDamageReduction] = "Daño crit recib"
-S[StatLogic.Stats.PvPDamageReduction] = "Daño recib"
-S[StatLogic.Stats.Parry] = "Parada"
+L["Show %s"] = SHOW.." %s"
 -- for hit rating showing both physical and spell conversions
 -- (+1.21%, S+0.98%)
 -- (+1.21%, +0.98% S)
 L["Spell"] = "Hech."
-S[StatLogic.Stats.SpellHit] = "Golpe Hech."
 
-L[StatLogic.Stats.ManaRegen] = "Regen.Mana"
-L[StatLogic.Stats.ManaRegenNotCasting] = "Regen.Mana (No se lanza)"
-L[StatLogic.Stats.ManaRegenOutOfCombat] = "Regen.Mana (Out of Combat)"
-if addon.tocversion > 40000 then
-	L[StatLogic.Stats.ManaRegenNotCasting] =  L[StatLogic.Stats.ManaRegenOutOfCombat]
-end
-L[StatLogic.Stats.HealthRegen] = "Regen.Salud"
-L[StatLogic.Stats.HealthRegenOutOfCombat] = "Regen.Salud (Out of Combat)"
-L["Show %s"] = SHOW.." %s"
-
-L[StatLogic.Stats.IgnoreArmor] = "Ignorar armadura"
-
+-- Basic Attributes
 L[StatLogic.Stats.Strength] = "Fuerza"
 L[StatLogic.Stats.Agility] = "Agilidad"
 L[StatLogic.Stats.Stamina] = "Aguante"
 L[StatLogic.Stats.Intellect] = "Intelecto"
 L[StatLogic.Stats.Spirit] = "Espíritu"
-L[StatLogic.Stats.Armor] = "Armadura"
+L[StatLogic.Stats.Mastery] = STAT_MASTERY
+L[StatLogic.Stats.MasteryEffect] = SPELL_LASTING_EFFECT:format(STAT_MASTERY)
+L[StatLogic.Stats.MasteryRating] = RATING.." "..STAT_MASTERY
 
-L[StatLogic.Stats.FireResistance] = "Resist. Fuego"
-L[StatLogic.Stats.NatureResistance] = "Resist. Naturaleza"
-L[StatLogic.Stats.FrostResistance] = "Resist. Frio"
-L[StatLogic.Stats.ShadowResistance] = "Resist. Sombras"
-L[StatLogic.Stats.ArcaneResistance] = "Resist. Arcana"
+-- Resources
+L[StatLogic.Stats.Health] = "Salud"
+S[StatLogic.Stats.Health] = "Vida"
+L[StatLogic.Stats.Mana] = "Mana"
+S[StatLogic.Stats.Mana] = "Mana"
+L[StatLogic.Stats.ManaRegen] = "Regen.Mana"
+S[StatLogic.Stats.ManaRegen] = "Mana/5sec"
+L[StatLogic.Stats.ManaRegenNotCasting] = "Regen.Mana (No se lanza)"
+S[StatLogic.Stats.ManaRegenNotCasting] = "Mana/5sec(SL)"
+L[StatLogic.Stats.ManaRegenOutOfCombat] = "Regen.Mana (Out of Combat)"
+if addon.tocversion > 40000 then
+	L[StatLogic.Stats.ManaRegenNotCasting] =  L[StatLogic.Stats.ManaRegenOutOfCombat]
+end
+L[StatLogic.Stats.HealthRegen] = "Regen.Salud"
+S[StatLogic.Stats.HealthRegen] = "Vida/5sec"
+L[StatLogic.Stats.HealthRegenOutOfCombat] = "Regen.Salud (Out of Combat)"
+S[StatLogic.Stats.HealthRegenOutOfCombat] = "Vida/5sec(NC)"
 
-L[StatLogic.Stats.BlockValue] = "Valor Bloqueo"
-
+-- Physical Stats
 L[StatLogic.Stats.AttackPower] = "Poder Ataque"
-L[StatLogic.Stats.RangedAttackPower] = "P.Ataque Distancia"
+S[StatLogic.Stats.AttackPower] = "P.At"
 L[StatLogic.Stats.FeralAttackPower] = "Feral "..ATTACK_POWER_TOOLTIP
+L[StatLogic.Stats.IgnoreArmor] = "Ignorar armadura"
+L[StatLogic.Stats.ArmorPenetration] = "Penetracion Armadura"
+L[StatLogic.Stats.ArmorPenetrationRating] = "Indice Penetracion Armadura"
 
-L[StatLogic.Stats.HealingPower] = "Sanacion"
+-- Weapon Stats
+L[StatLogic.Stats.AverageWeaponDamage] = "Average Damage"
+L[StatLogic.Stats.WeaponDPS] = "Damage Per Second"
 
+-- Melee Stats
+L[StatLogic.Stats.MeleeHit] = "Prob. Golpe"
+L[StatLogic.Stats.MeleeHitRating] = "Índice Golpe"
+L[StatLogic.Stats.MeleeCrit] = "prob. Critico"
+S[StatLogic.Stats.MeleeCrit] = "Crit"
+L[StatLogic.Stats.MeleeCritRating] = "Índice Critico"
+L[StatLogic.Stats.MeleeHaste] = "Velocidad"
+L[StatLogic.Stats.MeleeHasteRating] = "Índice Velocidad"
+
+L[StatLogic.Stats.WeaponSkill] = "Habilidad Arma"
+L[StatLogic.Stats.Expertise] = "Pericia"
+L[StatLogic.Stats.ExpertiseRating] = "Pericia".." "..RATING
+L[StatLogic.Stats.DodgeReduction] = "Fallo Esquivar"
+S[StatLogic.Stats.DodgeReduction] = "Esquivado"
+L[StatLogic.Stats.ParryReduction] = "Fallo Parar"
+S[StatLogic.Stats.ParryReduction] = "Parado"
+
+-- Ranged Stats
+L[StatLogic.Stats.RangedAttackPower] = "P.Ataque Distancia"
+S[StatLogic.Stats.RangedAttackPower] = "P.At Dist"
+L[StatLogic.Stats.RangedHit] = "Prob. Golpe a Distancia"
+L[StatLogic.Stats.RangedHitRating] = "Indice Golpe a Distancia"
+L[StatLogic.Stats.RangedCrit] = "Prob. Critico a Distancia"
+L[StatLogic.Stats.RangedCritRating] = PLAYERSTAT_RANGED_COMBAT.." "..COMBAT_RATING_NAME9
+L[StatLogic.Stats.RangedHaste] = PLAYERSTAT_RANGED_COMBAT.." Haste"
+L[StatLogic.Stats.RangedHasteRating] = PLAYERSTAT_RANGED_COMBAT.." Haste "..RATING
+
+-- Spell Stats
 L[StatLogic.Stats.SpellPower] = STAT_SPELLPOWER
 L[StatLogic.Stats.SpellDamage] = "Daño Hech."
+S[StatLogic.Stats.SpellDamage] = "Daño"
+L[StatLogic.Stats.HealingPower] = "Sanacion"
+S[StatLogic.Stats.HealingPower] = "Sanacion"
+L[StatLogic.Stats.SpellPenetration] = "Penetracion"
+
 L[StatLogic.Stats.HolyDamage] = "Daño Hech. Sagrado"
 L[StatLogic.Stats.FireDamage] = "Daño Hech. Fuego"
 L[StatLogic.Stats.NatureDamage] = "Daño Hech. Naturaleza"
@@ -438,55 +457,47 @@ L[StatLogic.Stats.FrostDamage] = "Daño Hech. Frio"
 L[StatLogic.Stats.ShadowDamage] = "Daño Hech. Sombras"
 L[StatLogic.Stats.ArcaneDamage] = "Daño Hech. Arcano"
 
-L[StatLogic.Stats.SpellPenetration] = "Penetracion"
-
-L[StatLogic.Stats.Health] = "Salud"
-L[StatLogic.Stats.Mana] = "Mana"
-
-L[StatLogic.Stats.AverageWeaponDamage] = "Average Damage"
-L[StatLogic.Stats.WeaponDPS] = "Damage Per Second"
-
-L[StatLogic.Stats.DefenseRating] = COMBAT_RATING_NAME2 -- COMBAT_RATING_NAME2 = "Defense Rating"
-L[StatLogic.Stats.DodgeRating] = "Índice Esquivar"
-L[StatLogic.Stats.ParryRating] = "Índice Parar"
-L[StatLogic.Stats.BlockRating] = "Índice Bloquear"
-L[StatLogic.Stats.MeleeHitRating] = "Índice Golpe"
-L[StatLogic.Stats.RangedHitRating] = "Indice Golpe a Distancia"
-L[StatLogic.Stats.SpellHitRating] = "Golpe Hech."
-L[StatLogic.Stats.MeleeCritRating] = "Índice Critico"
-L[StatLogic.Stats.RangedCritRating] = PLAYERSTAT_RANGED_COMBAT.." "..COMBAT_RATING_NAME9
-L[StatLogic.Stats.SpellCritRating] = "Índice Critico Hech."
-L[StatLogic.Stats.ResilienceRating] = "Temple"
-L[StatLogic.Stats.MeleeHasteRating] = "Índice Velocidad"
-L[StatLogic.Stats.RangedHasteRating] = PLAYERSTAT_RANGED_COMBAT.." Haste "..RATING
-L[StatLogic.Stats.SpellHasteRating] = "Índice Velocidad Hech."
-L[StatLogic.Stats.ExpertiseRating] = "Pericia".." "..RATING
-L[StatLogic.Stats.ArmorPenetrationRating] = "Indice Penetracion Armadura"
-L[StatLogic.Stats.MasteryRating] = RATING.." "..STAT_MASTERY
-L[StatLogic.Stats.CritDamageReduction] = "Crit Damage Reduction"
-L[StatLogic.Stats.Defense] = "Defensa"
-L[StatLogic.Stats.Dodge] = "Prob. Esquivar"
-L[StatLogic.Stats.Parry] = "Prob. Parar"
-L[StatLogic.Stats.BlockChance] = "Prob Bloqueo"
-L[StatLogic.Stats.Avoidance] = "Elusion"
-L[StatLogic.Stats.MeleeHit] = "Prob. Golpe"
-L[StatLogic.Stats.RangedHit] = "Prob. Golpe a Distancia"
 L[StatLogic.Stats.SpellHit] = "Prob. Golpe Hech."
-L[StatLogic.Stats.Miss] = "Elusion golpe"
-L[StatLogic.Stats.MeleeCrit] = "prob. Critico"
-L[StatLogic.Stats.RangedCrit] = "Prob. Critico a Distancia"
+S[StatLogic.Stats.SpellHit] = "Golpe Hech."
+L[StatLogic.Stats.SpellHitRating] = "Golpe Hech."
 L[StatLogic.Stats.SpellCrit] = "Prob. Critico Hech."
-L[StatLogic.Stats.CritAvoidance] = "Elusion Critico"
-L[StatLogic.Stats.MeleeHaste] = "Velocidad"
-L[StatLogic.Stats.RangedHaste] = PLAYERSTAT_RANGED_COMBAT.." Haste"
+S[StatLogic.Stats.SpellCrit] = "Crit hechizos"
+L[StatLogic.Stats.SpellCritRating] = "Índice Critico Hech."
 L[StatLogic.Stats.SpellHaste] = "Velocidad Hech."
-L[StatLogic.Stats.Expertise] = "Pericia"
-L[StatLogic.Stats.ArmorPenetration] = "Penetracion Armadura"
-L[StatLogic.Stats.Mastery] = STAT_MASTERY
-L[StatLogic.Stats.MasteryEffect] = SPELL_LASTING_EFFECT:format(STAT_MASTERY)
-L[StatLogic.Stats.DodgeReduction] = "Fallo Esquivar"
-L[StatLogic.Stats.ParryReduction] = "Fallo Parar"
-L[StatLogic.Stats.WeaponSkill] = "Habilidad Arma"
+L[StatLogic.Stats.SpellHasteRating] = "Índice Velocidad Hech."
+
+-- Tank Stats
+L[StatLogic.Stats.Armor] = "Armadura"
+S[StatLogic.Stats.Armor] = "Armadura"
+
+L[StatLogic.Stats.Avoidance] = "Elusion"
+L[StatLogic.Stats.Dodge] = "Prob. Esquivar"
+S[StatLogic.Stats.Dodge] = "Esquivar"
+L[StatLogic.Stats.DodgeRating] = "Índice Esquivar"
+L[StatLogic.Stats.Parry] = "Prob. Parar"
+S[StatLogic.Stats.Parry] = "Parada"
+L[StatLogic.Stats.ParryRating] = "Índice Parar"
+L[StatLogic.Stats.BlockChance] = "Prob Bloqueo"
+L[StatLogic.Stats.BlockRating] = "Índice Bloquear"
+L[StatLogic.Stats.BlockValue] = "Valor Bloqueo"
+S[StatLogic.Stats.BlockValue] = "Bloqueo"
+L[StatLogic.Stats.Miss] = "Elusion golpe"
+
+L[StatLogic.Stats.Defense] = "Defensa"
+L[StatLogic.Stats.DefenseRating] = COMBAT_RATING_NAME2 -- COMBAT_RATING_NAME2 = "Defense Rating"
+L[StatLogic.Stats.CritAvoidance] = "Elusion Critico"
+S[StatLogic.Stats.CritAvoidance] = "recibir Crit"
+
+L[StatLogic.Stats.ResilienceRating] = "Temple"
+L[StatLogic.Stats.CritDamageReduction] = "Crit Damage Reduction"
+S[StatLogic.Stats.CritDamageReduction] = "Daño crit recib"
+S[StatLogic.Stats.PvPDamageReduction] = "Daño recib"
+
+L[StatLogic.Stats.FireResistance] = "Resist. Fuego"
+L[StatLogic.Stats.NatureResistance] = "Resist. Naturaleza"
+L[StatLogic.Stats.FrostResistance] = "Resist. Frio"
+L[StatLogic.Stats.ShadowResistance] = "Resist. Sombras"
+L[StatLogic.Stats.ArcaneResistance] = "Resist. Arcana"
 
 -- AceLocale can only register one locale at a time,
 -- so we copy the short translations at the end.

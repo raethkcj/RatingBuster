@@ -109,11 +109,11 @@ StatLogic.Stats.MeleeCritRating = Stat:new()
 StatLogic.Stats.MeleeHaste = Stat:new()
 StatLogic.Stats.MeleeHasteRating = Stat:new()
 
-StatLogic.Stats.DodgeReduction = Stat:new()
-StatLogic.Stats.ParryReduction = Stat:new()
 StatLogic.Stats.WeaponSkill = Stat:new()
 StatLogic.Stats.Expertise = Stat:new()
 StatLogic.Stats.ExpertiseRating = Stat:new()
+StatLogic.Stats.DodgeReduction = Stat:new()
+StatLogic.Stats.ParryReduction = Stat:new()
 
 -- Ranged Stats
 StatLogic.Stats.RangedAttackPower = Stat:new()

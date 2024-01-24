@@ -467,69 +467,88 @@ L["statList"] = {
 -- "%s %s"     -> "+1.34% Crit"
 -- "%2$s $1$s" -> "Crit +1.34%"
 L["StatBreakdownOrder"] = "%s %s"
-S[StatLogic.Stats.MeleeCrit] = "к крит. удару"
-S[StatLogic.Stats.SpellCrit] = "к крит. удару"
-S[StatLogic.Stats.Dodge] = "к уклонению"
-S[StatLogic.Stats.Parry] = "к парированию"
-S[StatLogic.Stats.Health] = "к здоровью"
-S[StatLogic.Stats.Mana] = "к мане"
-S[StatLogic.Stats.AttackPower] = "к силе атаки"
-S[StatLogic.Stats.RangedAttackPower] = "к силе атаки дальнего боя"
-S[StatLogic.Stats.SpellDamage] = "к силе заклинаний"
-S[StatLogic.Stats.HealingPower] = "к силе заклинаний"
-S[StatLogic.Stats.Armor] = "к броне"
-S[StatLogic.Stats.BlockValue] = "к показателю блокирования" -- Block value
-S[StatLogic.Stats.ManaRegen] = "маны раз в 5 сек."
-S[StatLogic.Stats.ManaRegenOutOfCombat] = "маны раз в 5 сек. (вне боя)"
-S[StatLogic.Stats.ManaRegenNotCasting] = "маны раз в 5 сек. (вне каста)"
-S[StatLogic.Stats.HealthRegen] = "здоровья раз в 5 сек."
-S[StatLogic.Stats.HealthRegenOutOfCombat] = "ХП5 (вне боя)"
-S[StatLogic.Stats.DodgeReduction] = "уклонения" -- Target's dodges/parrys against your attacks
-S[StatLogic.Stats.ParryReduction] = "парирования" -- Target's dodges/parrys against your attacks
-S[StatLogic.Stats.CritAvoidance] = "к получению крит. удара" -- Your chance to get critical hit from target
-S[StatLogic.Stats.CritDamageReduction] = "к получению крит. урона"
-S[StatLogic.Stats.PvPDamageReduction] = "PvP Damage Taken"
+L["Show %s"] = SHOW.." %s"
 -- for hit rating showing both physical and spell conversions
 -- (+1.21%, S+0.98%)
 -- (+1.21%, +0.98% S)
 L["Spell"] = "для заклинаний"
-S[StatLogic.Stats.SpellHit] = "метк. закл."
 
-L[StatLogic.Stats.ManaRegen] = "Восполнение маны"
-L[StatLogic.Stats.ManaRegenNotCasting] = "Восполнения маны (пока не применяете заклинания)"
-L[StatLogic.Stats.ManaRegenOutOfCombat] = "Восполнения маны (вне боя)"
-if addon.tocversion > 40000 then
-	L[StatLogic.Stats.ManaRegenNotCasting] =  L[StatLogic.Stats.ManaRegenOutOfCombat]
-end
-L[StatLogic.Stats.HealthRegen] = "Восстановление здоровья"
-L[StatLogic.Stats.HealthRegenOutOfCombat] = "Восполнение здаровья (вне боя)"
-L["Show %s"] = SHOW.." %s"
-
-L[StatLogic.Stats.IgnoreArmor] = "Игнорирование брони"
-
+-- Basic Attributes
 L[StatLogic.Stats.Strength] = "Сила"
 L[StatLogic.Stats.Agility] = "Ловкость"
 L[StatLogic.Stats.Stamina] = "Выносливость"
 L[StatLogic.Stats.Intellect] = "Интеллект"
 L[StatLogic.Stats.Spirit] = "Дух"
-L[StatLogic.Stats.Armor] = "Броня"
+L[StatLogic.Stats.Mastery] = "Искусность"
+L[StatLogic.Stats.MasteryEffect] = SPELL_LASTING_EFFECT:format("Искусность")
+L[StatLogic.Stats.MasteryRating] = "Рейтинг искусности"
 
-L[StatLogic.Stats.FireResistance] = "Сопротивление огню"
-L[StatLogic.Stats.NatureResistance] = "Сопротивление силам природы"
-L[StatLogic.Stats.FrostResistance] = "Сопротивление магии льда"
-L[StatLogic.Stats.ShadowResistance] = "Сопротивление темной магии"
-L[StatLogic.Stats.ArcaneResistance] = "Сопротивление тайной магии"
+-- Resources
+L[StatLogic.Stats.Health] = "Здоровье"
+S[StatLogic.Stats.Health] = "к здоровью"
+L[StatLogic.Stats.Mana] = "Мана"
+S[StatLogic.Stats.Mana] = "к мане"
+L[StatLogic.Stats.ManaRegen] = "Восполнение маны"
+S[StatLogic.Stats.ManaRegen] = "маны раз в 5 сек."
+L[StatLogic.Stats.ManaRegenNotCasting] = "Восполнения маны (пока не применяете заклинания)"
+S[StatLogic.Stats.ManaRegenNotCasting] = "маны раз в 5 сек. (вне каста)"
+L[StatLogic.Stats.ManaRegenOutOfCombat] = "Восполнения маны (вне боя)"
+S[StatLogic.Stats.ManaRegenOutOfCombat] = "маны раз в 5 сек. (вне боя)"
+if addon.tocversion > 40000 then
+	L[StatLogic.Stats.ManaRegenNotCasting] =  L[StatLogic.Stats.ManaRegenOutOfCombat]
+end
+L[StatLogic.Stats.HealthRegen] = "Восстановление здоровья"
+S[StatLogic.Stats.HealthRegen] = "здоровья раз в 5 сек."
+L[StatLogic.Stats.HealthRegenOutOfCombat] = "Восполнение здаровья (вне боя)"
+S[StatLogic.Stats.HealthRegenOutOfCombat] = "ХП5 (вне боя)"
 
-L[StatLogic.Stats.BlockValue] = "Показатель блокирования"
-
+-- Physical Stats
 L[StatLogic.Stats.AttackPower] = "Сила атаки"
-L[StatLogic.Stats.RangedAttackPower] = "Сила атаки дальнего боя"
+S[StatLogic.Stats.AttackPower] = "к силе атаки"
 L[StatLogic.Stats.FeralAttackPower] = "Сила атаки в облике зверя"
+L[StatLogic.Stats.IgnoreArmor] = "Игнорирование брони"
+L[StatLogic.Stats.ArmorPenetration] = "Пробивание брони"
+L[StatLogic.Stats.ArmorPenetrationRating] = "Рейтинг пробивания брони"
 
-L[StatLogic.Stats.HealingPower] = "Исцеление"
+-- Weapon Stats
+L[StatLogic.Stats.AverageWeaponDamage] = "Average Damage"
+L[StatLogic.Stats.WeaponDPS] = "Урон в секунду"
 
+-- Melee Stats
+L[StatLogic.Stats.MeleeHit] = "Вероятность попадания"
+L[StatLogic.Stats.MeleeHitRating] = "Рейтинг меткости"
+L[StatLogic.Stats.MeleeCrit] = "Вероятность крит. удара"
+S[StatLogic.Stats.MeleeCrit] = "к крит. удару"
+L[StatLogic.Stats.MeleeCritRating] = "Рейтинг крит. удара"
+L[StatLogic.Stats.MeleeHaste] = "Скорость"
+L[StatLogic.Stats.MeleeHasteRating] = "Рейтинг скорости"
+
+L[StatLogic.Stats.WeaponSkill] = "Оружейный навык"
+L[StatLogic.Stats.Expertise] = "Мастерство"
+L[StatLogic.Stats.ExpertiseRating] = "Рейтинг мастерства"
+L[StatLogic.Stats.DodgeReduction] = "игнорирования уклонения"
+S[StatLogic.Stats.DodgeReduction] = "уклонения" -- Target's dodges/parrys against your attacks
+L[StatLogic.Stats.ParryReduction] = "игнорирования парирования"
+S[StatLogic.Stats.ParryReduction] = "парирования" -- Target's dodges/parrys against your attacks
+
+-- Ranged Stats
+L[StatLogic.Stats.RangedAttackPower] = "Сила атаки дальнего боя"
+S[StatLogic.Stats.RangedAttackPower] = "к силе атаки дальнего боя"
+L[StatLogic.Stats.RangedHit] = "Вероятность поподания в дальнем бою"
+L[StatLogic.Stats.RangedHitRating] = "Рейтинга меткости дальнего боя"
+L[StatLogic.Stats.RangedCrit] = "Вероятность крит. удара в дальнем бою"
+L[StatLogic.Stats.RangedCritRating] = "Рейтинг крит. удара дальнего боя"
+L[StatLogic.Stats.RangedHaste] = "Скорость дальнего боя"
+L[StatLogic.Stats.RangedHasteRating] = "Рейтинг скорости дальнего боя"
+
+-- Spell Stats
 L[StatLogic.Stats.SpellPower] = "Сила заклинаний"
 L[StatLogic.Stats.SpellDamage] = "Сила заклинаний" -- Changed from Damage to Power
+S[StatLogic.Stats.SpellDamage] = "к силе заклинаний"
+L[StatLogic.Stats.HealingPower] = "Исцеление"
+S[StatLogic.Stats.HealingPower] = "к силе заклинаний"
+L[StatLogic.Stats.SpellPenetration] = "Проникающая способность"
+
 L[StatLogic.Stats.HolyDamage] = "Урон от светлой магии"
 L[StatLogic.Stats.FireDamage] = "Урон от огня"
 L[StatLogic.Stats.NatureDamage] = "Урон от сил природы"
@@ -537,55 +556,47 @@ L[StatLogic.Stats.FrostDamage] = "Урон от магии льда"
 L[StatLogic.Stats.ShadowDamage] = "Урон от темной магии"
 L[StatLogic.Stats.ArcaneDamage] = "Урон от тайной магии"
 
-L[StatLogic.Stats.SpellPenetration] = "Проникающая способность"
-
-L[StatLogic.Stats.Health] = "Здоровье"
-L[StatLogic.Stats.Mana] = "Мана"
-
-L[StatLogic.Stats.AverageWeaponDamage] = "Average Damage"
-L[StatLogic.Stats.WeaponDPS] = "Урон в секунду"
-
-L[StatLogic.Stats.DefenseRating] = "Рейтинг защиты"
-L[StatLogic.Stats.DodgeRating] = "Рейтинг уклонения"
-L[StatLogic.Stats.ParryRating] = "Рейтинг парирования"
-L[StatLogic.Stats.BlockRating] = "Рейтинг блокирования"
-L[StatLogic.Stats.MeleeHitRating] = "Рейтинг меткости"
-L[StatLogic.Stats.RangedHitRating] = "Рейтинга меткости дальнего боя"
-L[StatLogic.Stats.SpellHitRating] = "Рейтинг меткости заклинаний"
-L[StatLogic.Stats.MeleeCritRating] = "Рейтинг крит. удара"
-L[StatLogic.Stats.RangedCritRating] = "Рейтинг крит. удара дальнего боя"
-L[StatLogic.Stats.SpellCritRating] = "Рейтинг крит. удара заклинаниями"
-L[StatLogic.Stats.ResilienceRating] = "устойчивости"
-L[StatLogic.Stats.MeleeHasteRating] = "Рейтинг скорости"
-L[StatLogic.Stats.RangedHasteRating] = "Рейтинг скорости дальнего боя"
-L[StatLogic.Stats.SpellHasteRating] = "Рейтинг скорости заклинаний"
-L[StatLogic.Stats.ExpertiseRating] = "Рейтинг мастерства"
-L[StatLogic.Stats.ArmorPenetrationRating] = "Рейтинг пробивания брони"
-L[StatLogic.Stats.MasteryRating] = "Рейтинг искусности"
-L[StatLogic.Stats.CritDamageReduction] = "Понижение входящего урона от крит. ударов"
-L[StatLogic.Stats.Defense] = "Защита"
-L[StatLogic.Stats.Dodge] = "Вероятность уклонения"
-L[StatLogic.Stats.Parry] = "Вероятность парирования"
-L[StatLogic.Stats.BlockChance] = "Вероятность блокирования"
-L[StatLogic.Stats.Avoidance] = "уклонения от удара"
-L[StatLogic.Stats.MeleeHit] = "Вероятность попадания"
-L[StatLogic.Stats.RangedHit] = "Вероятность поподания в дальнем бою"
 L[StatLogic.Stats.SpellHit] = "Вероятность поподания заклинаниями"
-L[StatLogic.Stats.Miss] = "Hit Avoidance"
-L[StatLogic.Stats.MeleeCrit] = "Вероятность крит. удара"
-L[StatLogic.Stats.RangedCrit] = "Вероятность крит. удара в дальнем бою"
+S[StatLogic.Stats.SpellHit] = "метк. закл."
+L[StatLogic.Stats.SpellHitRating] = "Рейтинг меткости заклинаний"
 L[StatLogic.Stats.SpellCrit] = "Вероятность крит. удара заклинаниями"
-L[StatLogic.Stats.CritAvoidance] = "Crit Avoidance"
-L[StatLogic.Stats.MeleeHaste] = "Скорость"
-L[StatLogic.Stats.RangedHaste] = "Скорость дальнего боя"
+S[StatLogic.Stats.SpellCrit] = "к крит. удару"
+L[StatLogic.Stats.SpellCritRating] = "Рейтинг крит. удара заклинаниями"
 L[StatLogic.Stats.SpellHaste] = "Скорость заклинаний"
-L[StatLogic.Stats.Expertise] = "Мастерство"
-L[StatLogic.Stats.ArmorPenetration] = "Пробивание брони"
-L[StatLogic.Stats.Mastery] = "Искусность"
-L[StatLogic.Stats.MasteryEffect] = SPELL_LASTING_EFFECT:format("Искусность")
-L[StatLogic.Stats.DodgeReduction] = "игнорирования уклонения"
-L[StatLogic.Stats.ParryReduction] = "игнорирования парирования"
-L[StatLogic.Stats.WeaponSkill] = "Оружейный навык"
+L[StatLogic.Stats.SpellHasteRating] = "Рейтинг скорости заклинаний"
+
+-- Tank Stats
+L[StatLogic.Stats.Armor] = "Броня"
+S[StatLogic.Stats.Armor] = "к броне"
+
+L[StatLogic.Stats.Avoidance] = "уклонения от удара"
+L[StatLogic.Stats.Dodge] = "Вероятность уклонения"
+S[StatLogic.Stats.Dodge] = "к уклонению"
+L[StatLogic.Stats.DodgeRating] = "Рейтинг уклонения"
+L[StatLogic.Stats.Parry] = "Вероятность парирования"
+S[StatLogic.Stats.Parry] = "к парированию"
+L[StatLogic.Stats.ParryRating] = "Рейтинг парирования"
+L[StatLogic.Stats.BlockChance] = "Вероятность блокирования"
+L[StatLogic.Stats.BlockRating] = "Рейтинг блокирования"
+L[StatLogic.Stats.BlockValue] = "Показатель блокирования"
+S[StatLogic.Stats.BlockValue] = "к показателю блокирования" -- Block value
+L[StatLogic.Stats.Miss] = "Hit Avoidance"
+
+L[StatLogic.Stats.Defense] = "Защита"
+L[StatLogic.Stats.DefenseRating] = "Рейтинг защиты"
+L[StatLogic.Stats.CritAvoidance] = "Crit Avoidance"
+S[StatLogic.Stats.CritAvoidance] = "к получению крит. удара" -- Your chance to get critical hit from target
+
+L[StatLogic.Stats.ResilienceRating] = "устойчивости"
+L[StatLogic.Stats.CritDamageReduction] = "Понижение входящего урона от крит. ударов"
+S[StatLogic.Stats.CritDamageReduction] = "к получению крит. урона"
+S[StatLogic.Stats.PvPDamageReduction] = "PvP Damage Taken"
+
+L[StatLogic.Stats.FireResistance] = "Сопротивление огню"
+L[StatLogic.Stats.NatureResistance] = "Сопротивление силам природы"
+L[StatLogic.Stats.FrostResistance] = "Сопротивление магии льда"
+L[StatLogic.Stats.ShadowResistance] = "Сопротивление темной магии"
+L[StatLogic.Stats.ArcaneResistance] = "Сопротивление тайной магии"
 
 -- AceLocale can only register one locale at a time,
 -- so we copy the short translations at the end.

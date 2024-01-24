@@ -368,69 +368,87 @@ L["statList"] = {
 -- "%s %s"     -> "+1.34% Crit"
 -- "%2$s $1$s" -> "Crit +1.34%"
 L["StatBreakdownOrder"] = "%s %s"
-S[StatLogic.Stats.MeleeCrit] = "爆击"
-S[StatLogic.Stats.SpellCrit] = "法爆"
-S[StatLogic.Stats.Dodge] = "躲闪"
-S[StatLogic.Stats.Health] = "生命"
-S[StatLogic.Stats.Mana] = "法力"
-S[StatLogic.Stats.AttackPower] = "攻击强度"
-S[StatLogic.Stats.RangedAttackPower] = "远攻强度"
-S[StatLogic.Stats.SpellDamage] = "法伤"
-S[StatLogic.Stats.HealingPower] = "治疗"
-S[StatLogic.Stats.Armor] = "护甲"
-S[StatLogic.Stats.BlockValue] = "格挡值"
-S[StatLogic.Stats.ManaRegen] = "施法回魔"
-S[StatLogic.Stats.ManaRegenNotCasting] = "精神回魔"
-S[StatLogic.Stats.HealthRegen] = "回血"
-S[StatLogic.Stats.HealthRegenOutOfCombat] = "回血(非战斗)"
-S[StatLogic.Stats.DodgeReduction] = "被躲闪"
-S[StatLogic.Stats.ParryReduction] = "被招架"
-S[StatLogic.Stats.CritAvoidance] = "被致命一击"
-S[StatLogic.Stats.CritDamageReduction] = "致命一击伤害减免"
-S[StatLogic.Stats.PvPDamageReduction] = "PvP Damage Taken"
-S[StatLogic.Stats.Parry] = "招架"
+L["Show %s"] = SHOW.." %s"
 -- for hit rating showing both physical and spell conversions
 -- (+1.21%, S+0.98%)
 -- (+1.21%, +0.98% S)
 L["Spell"] = "法术"
-S[StatLogic.Stats.SpellHit] = "Spell Hit"
 
-L[StatLogic.Stats.ManaRegen] = "法力回复"
-L[StatLogic.Stats.ManaRegenNotCasting] = "法力回复 (未施法)"
-L[StatLogic.Stats.ManaRegenOutOfCombat] = "法力回复 (非战斗)"
-if addon.tocversion > 40000 then
-	L[StatLogic.Stats.ManaRegenNotCasting] =  L[StatLogic.Stats.ManaRegenOutOfCombat]
-end
-L[StatLogic.Stats.HealthRegen] = "生命恢复"
-L[StatLogic.Stats.HealthRegenOutOfCombat] = "生命恢复 (非战斗)"
-L["Show %s"] = SHOW.." %s"
-
-L[StatLogic.Stats.IgnoreArmor] = "忽略护甲"
-L[StatLogic.Stats.AverageWeaponDamage] = "近战伤害" -- DAMAGE = "Damage"
-
+-- Basic Attributes
 L[StatLogic.Stats.Strength] = "力量"
 L[StatLogic.Stats.Agility] = "敏捷"
 L[StatLogic.Stats.Stamina] = "耐力"
 L[StatLogic.Stats.Intellect] = "智力"
 L[StatLogic.Stats.Spirit] = "精神"
-L[StatLogic.Stats.Armor] = "护甲值"
+L[StatLogic.Stats.Mastery] = STAT_MASTERY
+L[StatLogic.Stats.MasteryEffect] = SPELL_LASTING_EFFECT:format(STAT_MASTERY)
+L[StatLogic.Stats.MasteryRating] = STAT_MASTERY.." "..RATING
 
-L[StatLogic.Stats.FireResistance] = "火焰抗性"
-L[StatLogic.Stats.NatureResistance] = "自然抗性"
-L[StatLogic.Stats.FrostResistance] = "冰霜抗性"
-L[StatLogic.Stats.ShadowResistance] = "暗影抗性"
-L[StatLogic.Stats.ArcaneResistance] = "奥术抗性"
+-- Resources
+L[StatLogic.Stats.Health] = "生命值"
+S[StatLogic.Stats.Health] = "生命"
+L[StatLogic.Stats.Mana] = "法力值"
+S[StatLogic.Stats.Mana] = "法力"
+L[StatLogic.Stats.ManaRegen] = "法力回复"
+S[StatLogic.Stats.ManaRegen] = "施法回魔"
+L[StatLogic.Stats.ManaRegenNotCasting] = "法力回复 (未施法)"
+S[StatLogic.Stats.ManaRegenNotCasting] = "精神回魔"
+L[StatLogic.Stats.ManaRegenOutOfCombat] = "法力回复 (非战斗)"
+if addon.tocversion > 40000 then
+	L[StatLogic.Stats.ManaRegenNotCasting] =  L[StatLogic.Stats.ManaRegenOutOfCombat]
+end
+L[StatLogic.Stats.HealthRegen] = "生命恢复"
+S[StatLogic.Stats.HealthRegen] = "回血"
+L[StatLogic.Stats.HealthRegenOutOfCombat] = "生命恢复 (非战斗)"
+S[StatLogic.Stats.HealthRegenOutOfCombat] = "回血(非战斗)"
 
-L[StatLogic.Stats.BlockValue] = "格挡值"
-
+-- Physical Stats
 L[StatLogic.Stats.AttackPower] = "近战攻击强度"
-L[StatLogic.Stats.RangedAttackPower] = "远程攻击强度"
+S[StatLogic.Stats.AttackPower] = "攻击强度"
 L[StatLogic.Stats.FeralAttackPower] = "野性"..ATTACK_POWER_TOOLTIP
+L[StatLogic.Stats.IgnoreArmor] = "忽略护甲"
+L[StatLogic.Stats.ArmorPenetration] = "护甲穿透"
+L[StatLogic.Stats.ArmorPenetrationRating] = "护甲穿透等级"
 
-L[StatLogic.Stats.HealingPower] = "治疗"
+-- Weapon Stats
+L[StatLogic.Stats.AverageWeaponDamage] = "近战伤害" -- DAMAGE = "Damage"
+L[StatLogic.Stats.WeaponDPS] = "每秒伤害"
 
+-- Melee Stats
+L[StatLogic.Stats.MeleeHit] = "物理命中几率"
+L[StatLogic.Stats.MeleeHitRating] = "命中等级"
+L[StatLogic.Stats.MeleeCrit] = "物理爆击几率"
+S[StatLogic.Stats.MeleeCrit] = "爆击"
+L[StatLogic.Stats.MeleeCritRating] = "爆击等级"
+L[StatLogic.Stats.MeleeHaste] = "急速"
+L[StatLogic.Stats.MeleeHasteRating] = "急速等级"
+
+L[StatLogic.Stats.WeaponSkill] = "武器技能"
+L[StatLogic.Stats.Expertise] = "精准"
+L[StatLogic.Stats.ExpertiseRating] = "精准等级"
+L[StatLogic.Stats.DodgeReduction] = "防止被躲闪"
+S[StatLogic.Stats.DodgeReduction] = "被躲闪"
+L[StatLogic.Stats.ParryReduction] = "防止被招架"
+S[StatLogic.Stats.ParryReduction] = "被招架"
+
+-- Ranged Stats
+L[StatLogic.Stats.RangedAttackPower] = "远程攻击强度"
+S[StatLogic.Stats.RangedAttackPower] = "远攻强度"
+L[StatLogic.Stats.RangedHit] = "远程命中几率"
+L[StatLogic.Stats.RangedHitRating] = "远程命中等级"
+L[StatLogic.Stats.RangedCrit] = "远爆击几率"
+L[StatLogic.Stats.RangedCritRating] = "远程爆击等级"
+L[StatLogic.Stats.RangedHaste] = "远程急速"
+L[StatLogic.Stats.RangedHasteRating] = "远程急速等级"
+
+-- Spell Stats
 L[StatLogic.Stats.SpellPower] = STAT_SPELLPOWER
 L[StatLogic.Stats.SpellDamage] = "法术伤害"
+S[StatLogic.Stats.SpellDamage] = "法伤"
+L[StatLogic.Stats.HealingPower] = "治疗"
+S[StatLogic.Stats.HealingPower] = "治疗"
+L[StatLogic.Stats.SpellPenetration] = "法术穿透"
+
 L[StatLogic.Stats.HolyDamage] = "神圣法术伤害"
 L[StatLogic.Stats.FireDamage] = "火焰法术伤害"
 L[StatLogic.Stats.NatureDamage] = "自然法术伤害"
@@ -438,54 +456,47 @@ L[StatLogic.Stats.FrostDamage] = "冰霜法术伤害"
 L[StatLogic.Stats.ShadowDamage] = "暗影法术伤害"
 L[StatLogic.Stats.ArcaneDamage] = "奥术法术伤害"
 
-L[StatLogic.Stats.SpellPenetration] = "法术穿透"
-
-L[StatLogic.Stats.Health] = "生命值"
-L[StatLogic.Stats.Mana] = "法力值"
-
-L[StatLogic.Stats.WeaponDPS] = "每秒伤害"
-
-L[StatLogic.Stats.DefenseRating] = COMBAT_RATING_NAME2 -- COMBAT_RATING_NAME2 = "Defense Rating"
-L[StatLogic.Stats.DodgeRating] = "躲闪等级"
-L[StatLogic.Stats.ParryRating] = "招架等级"
-L[StatLogic.Stats.BlockRating] = "格挡等级"
-L[StatLogic.Stats.MeleeHitRating] = "命中等级"
-L[StatLogic.Stats.RangedHitRating] = "远程命中等级"
-L[StatLogic.Stats.SpellHitRating] = "法术命中等级"
-L[StatLogic.Stats.MeleeCritRating] = "爆击等级"
-L[StatLogic.Stats.RangedCritRating] = "远程爆击等级"
-L[StatLogic.Stats.SpellCritRating] = "法术爆击等级"
-L[StatLogic.Stats.ResilienceRating] = "韧性"
-L[StatLogic.Stats.MeleeHasteRating] = "急速等级"
-L[StatLogic.Stats.RangedHasteRating] = "远程急速等级"
-L[StatLogic.Stats.SpellHasteRating] = "法术急速等级"
-L[StatLogic.Stats.ExpertiseRating] = "精准等级"
-L[StatLogic.Stats.ArmorPenetrationRating] = "护甲穿透等级"
-L[StatLogic.Stats.MasteryRating] = STAT_MASTERY.." "..RATING
-L[StatLogic.Stats.CritDamageReduction] = "爆击减伤"
-L[StatLogic.Stats.Defense] = "防御"
-L[StatLogic.Stats.Dodge] = "躲闪几率"
-L[StatLogic.Stats.Parry] = "招架几率"
-L[StatLogic.Stats.BlockChance] = "格挡几率"
-L[StatLogic.Stats.Avoidance] = "躲避"
-L[StatLogic.Stats.MeleeHit] = "物理命中几率"
-L[StatLogic.Stats.RangedHit] = "远程命中几率"
 L[StatLogic.Stats.SpellHit] = "法术命中几率"
-L[StatLogic.Stats.Miss] = "物理命中躲闪"
-L[StatLogic.Stats.MeleeCrit] = "物理爆击几率"
-L[StatLogic.Stats.RangedCrit] = "远爆击几率"
+S[StatLogic.Stats.SpellHit] = "Spell Hit"
+L[StatLogic.Stats.SpellHitRating] = "法术命中等级"
 L[StatLogic.Stats.SpellCrit] = "法术爆击几率"
-L[StatLogic.Stats.CritAvoidance] = "物理爆击躲闪"
-L[StatLogic.Stats.MeleeHaste] = "急速"
-L[StatLogic.Stats.RangedHaste] = "远程急速"
+S[StatLogic.Stats.SpellCrit] = "法爆"
+L[StatLogic.Stats.SpellCritRating] = "法术爆击等级"
 L[StatLogic.Stats.SpellHaste] = "法术急速"
-L[StatLogic.Stats.Expertise] = "精准"
-L[StatLogic.Stats.ArmorPenetration] = "护甲穿透"
-L[StatLogic.Stats.Mastery] = STAT_MASTERY
-L[StatLogic.Stats.MasteryEffect] = SPELL_LASTING_EFFECT:format(STAT_MASTERY)
-L[StatLogic.Stats.DodgeReduction] = "防止被躲闪"
-L[StatLogic.Stats.ParryReduction] = "防止被招架"
-L[StatLogic.Stats.WeaponSkill] = "武器技能"
+L[StatLogic.Stats.SpellHasteRating] = "法术急速等级"
+
+-- Tank Stats
+L[StatLogic.Stats.Armor] = "护甲值"
+S[StatLogic.Stats.Armor] = "护甲"
+
+L[StatLogic.Stats.Avoidance] = "躲避"
+L[StatLogic.Stats.Dodge] = "躲闪几率"
+S[StatLogic.Stats.Dodge] = "躲闪"
+L[StatLogic.Stats.DodgeRating] = "躲闪等级"
+L[StatLogic.Stats.Parry] = "招架几率"
+S[StatLogic.Stats.Parry] = "招架"
+L[StatLogic.Stats.ParryRating] = "招架等级"
+L[StatLogic.Stats.BlockChance] = "格挡几率"
+L[StatLogic.Stats.BlockRating] = "格挡等级"
+L[StatLogic.Stats.BlockValue] = "格挡值"
+S[StatLogic.Stats.BlockValue] = "格挡值"
+L[StatLogic.Stats.Miss] = "物理命中躲闪"
+
+L[StatLogic.Stats.Defense] = "防御"
+L[StatLogic.Stats.DefenseRating] = COMBAT_RATING_NAME2 -- COMBAT_RATING_NAME2 = "Defense Rating"
+L[StatLogic.Stats.CritAvoidance] = "物理爆击躲闪"
+S[StatLogic.Stats.CritAvoidance] = "被致命一击"
+
+L[StatLogic.Stats.ResilienceRating] = "韧性"
+L[StatLogic.Stats.CritDamageReduction] = "爆击减伤"
+S[StatLogic.Stats.CritDamageReduction] = "致命一击伤害减免"
+S[StatLogic.Stats.PvPDamageReduction] = "PvP Damage Taken"
+
+L[StatLogic.Stats.FireResistance] = "火焰抗性"
+L[StatLogic.Stats.NatureResistance] = "自然抗性"
+L[StatLogic.Stats.FrostResistance] = "冰霜抗性"
+L[StatLogic.Stats.ShadowResistance] = "暗影抗性"
+L[StatLogic.Stats.ArcaneResistance] = "奥术抗性"
 
 -- AceLocale can only register one locale at a time,
 -- so we copy the short translations at the end.

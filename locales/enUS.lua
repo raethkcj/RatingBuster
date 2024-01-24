@@ -393,68 +393,87 @@ L["statList"] = {
 -- "%s %s"     -> "+1.34% Crit"
 -- "%2$s $1$s" -> "Crit +1.34%"
 L["StatBreakdownOrder"] = "%s %s"
-S[StatLogic.Stats.MeleeCrit] = "Crit"
-S[StatLogic.Stats.SpellCrit] = "Spell Crit"
-S[StatLogic.Stats.Dodge] = "Dodge"
-S[StatLogic.Stats.Health] = "HP"
-S[StatLogic.Stats.Mana] = "MP"
-S[StatLogic.Stats.AttackPower] = "AP"
-S[StatLogic.Stats.RangedAttackPower] = "RAP"
-S[StatLogic.Stats.SpellDamage] = "Spell Dmg"
-S[StatLogic.Stats.HealingPower] = "Heal"
-S[StatLogic.Stats.Armor] = "Armor"
-S[StatLogic.Stats.BlockValue] = "Block"
-S[StatLogic.Stats.ManaRegen] = "MP5"
-S[StatLogic.Stats.ManaRegenNotCasting] = "MP5(NC)"
-S[StatLogic.Stats.HealthRegen] = "HP5"
-S[StatLogic.Stats.HealthRegenOutOfCombat] = "HP5(NC)"
-S[StatLogic.Stats.DodgeReduction] = "to be Dodged"
-S[StatLogic.Stats.ParryReduction] = "to be Parried"
-S[StatLogic.Stats.CritAvoidance] = "to be Crit"
-S[StatLogic.Stats.CritDamageReduction] = "Crit Dmg Taken"
-S[StatLogic.Stats.PvPDamageReduction] = "PvP Damage Taken"
-S[StatLogic.Stats.Parry] = "Parry"
+L["Show %s"] = SHOW.." %s"
 -- for hit rating showing both physical and spell conversions
 -- (+1.21%, S+0.98%)
 -- (+1.21%, +0.98% S)
 L["Spell"] = "Spell"
-S[StatLogic.Stats.SpellHit] = "Spell Hit"
 
-L[StatLogic.Stats.ManaRegen] = "Mana Regen"
-L[StatLogic.Stats.ManaRegenNotCasting] = "Mana Regen (Not Casting)"
-L[StatLogic.Stats.ManaRegenOutOfCombat] = "Mana Regen (Out of Combat)"
-if addon.tocversion > 40000 then
-	L[StatLogic.Stats.ManaRegenNotCasting] =  L[StatLogic.Stats.ManaRegenOutOfCombat]
-end
-L[StatLogic.Stats.HealthRegen] = "Health Regen"
-L[StatLogic.Stats.HealthRegenOutOfCombat] = "Health Regen (Out of Combat)"
-L["Show %s"] = SHOW.." %s"
-
-L[StatLogic.Stats.IgnoreArmor] = "Ignore Armor"
-
+-- Basic Attributes
 L[StatLogic.Stats.Strength] = SPELL_STAT1_NAME
 L[StatLogic.Stats.Agility] = SPELL_STAT2_NAME
 L[StatLogic.Stats.Stamina] = SPELL_STAT3_NAME
 L[StatLogic.Stats.Intellect] = SPELL_STAT4_NAME
 L[StatLogic.Stats.Spirit] = SPELL_STAT5_NAME
-L[StatLogic.Stats.Armor] = ARMOR
+L[StatLogic.Stats.Mastery] = STAT_MASTERY
+L[StatLogic.Stats.MasteryEffect] = SPELL_LASTING_EFFECT:format(STAT_MASTERY)
+L[StatLogic.Stats.MasteryRating] = STAT_MASTERY.." "..RATING
 
-L[StatLogic.Stats.FireResistance] = RESISTANCE2_NAME
-L[StatLogic.Stats.NatureResistance] = RESISTANCE3_NAME
-L[StatLogic.Stats.FrostResistance] = RESISTANCE4_NAME
-L[StatLogic.Stats.ShadowResistance] = RESISTANCE5_NAME
-L[StatLogic.Stats.ArcaneResistance] = RESISTANCE6_NAME
+-- Resources
+L[StatLogic.Stats.Health] = HEALTH
+S[StatLogic.Stats.Health] = "HP"
+L[StatLogic.Stats.Mana] = MANA
+S[StatLogic.Stats.Mana] = "MP"
+L[StatLogic.Stats.ManaRegen] = "Mana Regen"
+S[StatLogic.Stats.ManaRegen] = "MP5"
+L[StatLogic.Stats.ManaRegenNotCasting] = "Mana Regen (Not Casting)"
+S[StatLogic.Stats.ManaRegenNotCasting] = "MP5(NC)"
+L[StatLogic.Stats.ManaRegenOutOfCombat] = "Mana Regen (Out of Combat)"
+if addon.tocversion > 40000 then
+	L[StatLogic.Stats.ManaRegenNotCasting] =  L[StatLogic.Stats.ManaRegenOutOfCombat]
+end
+L[StatLogic.Stats.HealthRegen] = "Health Regen"
+S[StatLogic.Stats.HealthRegen] = "HP5"
+L[StatLogic.Stats.HealthRegenOutOfCombat] = "Health Regen (Out of Combat)"
+S[StatLogic.Stats.HealthRegenOutOfCombat] = "HP5(NC)"
 
-L[StatLogic.Stats.BlockValue] = "Block Value"
-
+-- Physical Stats
 L[StatLogic.Stats.AttackPower] = ATTACK_POWER_TOOLTIP
-L[StatLogic.Stats.RangedAttackPower] = RANGED_ATTACK_POWER
+S[StatLogic.Stats.AttackPower] = "AP"
 L[StatLogic.Stats.FeralAttackPower] = "Feral "..ATTACK_POWER_TOOLTIP
+L[StatLogic.Stats.IgnoreArmor] = "Ignore Armor"
+L[StatLogic.Stats.ArmorPenetration] = "Armor Penetration"
+L[StatLogic.Stats.ArmorPenetrationRating] = ITEM_MOD_ARMOR_PENETRATION_RATING_SHORT
 
-L[StatLogic.Stats.HealingPower] = "Healing" -- STAT_SPELL_HEALING
+-- Weapon Stats
+L[StatLogic.Stats.AverageWeaponDamage] = "Average Damage"
+L[StatLogic.Stats.WeaponDPS] = "Damage Per Second"
 
+-- Melee Stats
+L[StatLogic.Stats.MeleeHit] = STAT_HIT_CHANCE
+L[StatLogic.Stats.MeleeHitRating] = COMBAT_RATING_NAME6 -- COMBAT_RATING_NAME6 = "Hit Rating"
+L[StatLogic.Stats.MeleeCrit] = MELEE_CRIT_CHANCE -- MELEE_CRIT_CHANCE = "Crit Chance"
+S[StatLogic.Stats.MeleeCrit] = "Crit"
+L[StatLogic.Stats.MeleeCritRating] = COMBAT_RATING_NAME9 -- COMBAT_RATING_NAME9 = "Crit Rating"
+L[StatLogic.Stats.MeleeHaste] = STAT_HASTE
+L[StatLogic.Stats.MeleeHasteRating] = STAT_HASTE.." "..RATING
+
+L[StatLogic.Stats.WeaponSkill] = "Weapon "..SKILL
+L[StatLogic.Stats.Expertise] = STAT_EXPERTISE
+L[StatLogic.Stats.ExpertiseRating] = STAT_EXPERTISE.." "..RATING
+L[StatLogic.Stats.DodgeReduction] = DODGE.." Reduction"
+S[StatLogic.Stats.DodgeReduction] = "to be Dodged"
+L[StatLogic.Stats.ParryReduction] = PARRY.." Reduction"
+S[StatLogic.Stats.ParryReduction] = "to be Parried"
+
+-- Ranged Stats
+L[StatLogic.Stats.RangedAttackPower] = RANGED_ATTACK_POWER
+S[StatLogic.Stats.RangedAttackPower] = "RAP"
+L[StatLogic.Stats.RangedHit] = PLAYERSTAT_RANGED_COMBAT.." "..STAT_HIT_CHANCE
+L[StatLogic.Stats.RangedHitRating] = PLAYERSTAT_RANGED_COMBAT.." "..COMBAT_RATING_NAME6 -- PLAYERSTAT_RANGED_COMBAT = "Ranged"
+L[StatLogic.Stats.RangedCrit] = PLAYERSTAT_RANGED_COMBAT.." "..MELEE_CRIT_CHANCE
+L[StatLogic.Stats.RangedCritRating] = PLAYERSTAT_RANGED_COMBAT.." "..COMBAT_RATING_NAME9
+L[StatLogic.Stats.RangedHaste] = PLAYERSTAT_RANGED_COMBAT.." "..STAT_HASTE
+L[StatLogic.Stats.RangedHasteRating] = PLAYERSTAT_RANGED_COMBAT.." "..STAT_HASTE.." "..RATING
+
+-- Spell Stats
 L[StatLogic.Stats.SpellPower] = STAT_SPELLPOWER
 L[StatLogic.Stats.SpellDamage] = STAT_SPELLDAMAGE
+S[StatLogic.Stats.SpellDamage] = "Spell Dmg"
+L[StatLogic.Stats.HealingPower] = "Healing" -- STAT_SPELL_HEALING
+S[StatLogic.Stats.HealingPower] = "Heal"
+L[StatLogic.Stats.SpellPenetration] = PLAYERSTAT_SPELL_COMBAT.." "..SPELL_PENETRATION
+
 L[StatLogic.Stats.HolyDamage] = SPELL_SCHOOL1_CAP.." "..DAMAGE
 L[StatLogic.Stats.FireDamage] = SPELL_SCHOOL2_CAP.." "..DAMAGE
 L[StatLogic.Stats.NatureDamage] = SPELL_SCHOOL3_CAP.." "..DAMAGE
@@ -462,55 +481,47 @@ L[StatLogic.Stats.FrostDamage] = SPELL_SCHOOL4_CAP.." "..DAMAGE
 L[StatLogic.Stats.ShadowDamage] = SPELL_SCHOOL5_CAP.." "..DAMAGE
 L[StatLogic.Stats.ArcaneDamage] = SPELL_SCHOOL6_CAP.." "..DAMAGE
 
-L[StatLogic.Stats.SpellPenetration] = PLAYERSTAT_SPELL_COMBAT.." "..SPELL_PENETRATION
-
-L[StatLogic.Stats.Health] = HEALTH
-L[StatLogic.Stats.Mana] = MANA
-
-L[StatLogic.Stats.AverageWeaponDamage] = "Average Damage"
-L[StatLogic.Stats.WeaponDPS] = "Damage Per Second"
-
-L[StatLogic.Stats.DefenseRating] = COMBAT_RATING_NAME2 -- COMBAT_RATING_NAME2 = "Defense Rating"
-L[StatLogic.Stats.DodgeRating] = COMBAT_RATING_NAME3 -- COMBAT_RATING_NAME3 = "Dodge Rating"
-L[StatLogic.Stats.ParryRating] = COMBAT_RATING_NAME4 -- COMBAT_RATING_NAME4 = "Parry Rating"
-L[StatLogic.Stats.BlockRating] = COMBAT_RATING_NAME5 -- COMBAT_RATING_NAME5 = "Block Rating"
-L[StatLogic.Stats.MeleeHitRating] = COMBAT_RATING_NAME6 -- COMBAT_RATING_NAME6 = "Hit Rating"
-L[StatLogic.Stats.RangedHitRating] = PLAYERSTAT_RANGED_COMBAT.." "..COMBAT_RATING_NAME6 -- PLAYERSTAT_RANGED_COMBAT = "Ranged"
-L[StatLogic.Stats.SpellHitRating] = PLAYERSTAT_SPELL_COMBAT.." "..COMBAT_RATING_NAME6 -- PLAYERSTAT_SPELL_COMBAT = "Spell"
-L[StatLogic.Stats.MeleeCritRating] = COMBAT_RATING_NAME9 -- COMBAT_RATING_NAME9 = "Crit Rating"
-L[StatLogic.Stats.RangedCritRating] = PLAYERSTAT_RANGED_COMBAT.." "..COMBAT_RATING_NAME9
-L[StatLogic.Stats.SpellCritRating] = PLAYERSTAT_SPELL_COMBAT.." "..COMBAT_RATING_NAME9
-L[StatLogic.Stats.ResilienceRating] = COMBAT_RATING_NAME15 -- COMBAT_RATING_NAME15 = "Resilience"
-L[StatLogic.Stats.MeleeHasteRating] = STAT_HASTE.." "..RATING
-L[StatLogic.Stats.RangedHasteRating] = PLAYERSTAT_RANGED_COMBAT.." "..STAT_HASTE.." "..RATING
-L[StatLogic.Stats.SpellHasteRating] = PLAYERSTAT_SPELL_COMBAT.." "..STAT_HASTE.." "..RATING
-L[StatLogic.Stats.ExpertiseRating] = STAT_EXPERTISE.." "..RATING
-L[StatLogic.Stats.ArmorPenetrationRating] = ITEM_MOD_ARMOR_PENETRATION_RATING_SHORT
-L[StatLogic.Stats.MasteryRating] = STAT_MASTERY.." "..RATING
-L[StatLogic.Stats.CritDamageReduction] = "Crit Damage Reduction"
-L[StatLogic.Stats.Defense] = DEFENSE
-L[StatLogic.Stats.Dodge] = DODGE
-L[StatLogic.Stats.Parry] = PARRY
-L[StatLogic.Stats.BlockChance] = BLOCK_CHANCE
-L[StatLogic.Stats.Avoidance] = STAT_AVOIDANCE
-L[StatLogic.Stats.MeleeHit] = STAT_HIT_CHANCE
-L[StatLogic.Stats.RangedHit] = PLAYERSTAT_RANGED_COMBAT.." "..STAT_HIT_CHANCE
 L[StatLogic.Stats.SpellHit] = PLAYERSTAT_SPELL_COMBAT.." "..STAT_HIT_CHANCE
-L[StatLogic.Stats.Miss] = HIT.." "..STAT_AVOIDANCE
-L[StatLogic.Stats.MeleeCrit] = MELEE_CRIT_CHANCE -- MELEE_CRIT_CHANCE = "Crit Chance"
-L[StatLogic.Stats.RangedCrit] = PLAYERSTAT_RANGED_COMBAT.." "..MELEE_CRIT_CHANCE
+S[StatLogic.Stats.SpellHit] = "Spell Hit"
+L[StatLogic.Stats.SpellHitRating] = PLAYERSTAT_SPELL_COMBAT.." "..COMBAT_RATING_NAME6 -- PLAYERSTAT_SPELL_COMBAT = "Spell"
 L[StatLogic.Stats.SpellCrit] = PLAYERSTAT_SPELL_COMBAT.." "..MELEE_CRIT_CHANCE
-L[StatLogic.Stats.CritAvoidance] = CRIT_ABBR.." "..STAT_AVOIDANCE
-L[StatLogic.Stats.MeleeHaste] = STAT_HASTE
-L[StatLogic.Stats.RangedHaste] = PLAYERSTAT_RANGED_COMBAT.." "..STAT_HASTE
+S[StatLogic.Stats.SpellCrit] = "Spell Crit"
+L[StatLogic.Stats.SpellCritRating] = PLAYERSTAT_SPELL_COMBAT.." "..COMBAT_RATING_NAME9
 L[StatLogic.Stats.SpellHaste] = PLAYERSTAT_SPELL_COMBAT.." "..STAT_HASTE
-L[StatLogic.Stats.Expertise] = STAT_EXPERTISE
-L[StatLogic.Stats.ArmorPenetration] = "Armor Penetration"
-L[StatLogic.Stats.Mastery] = STAT_MASTERY
-L[StatLogic.Stats.MasteryEffect] = SPELL_LASTING_EFFECT:format(STAT_MASTERY)
-L[StatLogic.Stats.DodgeReduction] = DODGE.." Reduction"
-L[StatLogic.Stats.ParryReduction] = PARRY.." Reduction"
-L[StatLogic.Stats.WeaponSkill] = "Weapon "..SKILL
+L[StatLogic.Stats.SpellHasteRating] = PLAYERSTAT_SPELL_COMBAT.." "..STAT_HASTE.." "..RATING
+
+-- Tank Stats
+L[StatLogic.Stats.Armor] = ARMOR
+S[StatLogic.Stats.Armor] = "Armor"
+
+L[StatLogic.Stats.Avoidance] = STAT_AVOIDANCE
+L[StatLogic.Stats.Dodge] = DODGE
+S[StatLogic.Stats.Dodge] = "Dodge"
+L[StatLogic.Stats.DodgeRating] = COMBAT_RATING_NAME3 -- COMBAT_RATING_NAME3 = "Dodge Rating"
+L[StatLogic.Stats.Parry] = PARRY
+S[StatLogic.Stats.Parry] = "Parry"
+L[StatLogic.Stats.ParryRating] = COMBAT_RATING_NAME4 -- COMBAT_RATING_NAME4 = "Parry Rating"
+L[StatLogic.Stats.BlockChance] = BLOCK_CHANCE
+L[StatLogic.Stats.BlockRating] = COMBAT_RATING_NAME5 -- COMBAT_RATING_NAME5 = "Block Rating"
+L[StatLogic.Stats.BlockValue] = "Block Value"
+S[StatLogic.Stats.BlockValue] = "Block"
+L[StatLogic.Stats.Miss] = HIT.." "..STAT_AVOIDANCE
+
+L[StatLogic.Stats.Defense] = DEFENSE
+L[StatLogic.Stats.DefenseRating] = COMBAT_RATING_NAME2 -- COMBAT_RATING_NAME2 = "Defense Rating"
+L[StatLogic.Stats.CritAvoidance] = CRIT_ABBR.." "..STAT_AVOIDANCE
+S[StatLogic.Stats.CritAvoidance] = "to be Crit"
+
+L[StatLogic.Stats.ResilienceRating] = COMBAT_RATING_NAME15 -- COMBAT_RATING_NAME15 = "Resilience"
+L[StatLogic.Stats.CritDamageReduction] = "Crit Damage Reduction"
+S[StatLogic.Stats.CritDamageReduction] = "Crit Dmg Taken"
+S[StatLogic.Stats.PvPDamageReduction] = "PvP Damage Taken"
+
+L[StatLogic.Stats.FireResistance] = RESISTANCE2_NAME
+L[StatLogic.Stats.NatureResistance] = RESISTANCE3_NAME
+L[StatLogic.Stats.FrostResistance] = RESISTANCE4_NAME
+L[StatLogic.Stats.ShadowResistance] = RESISTANCE5_NAME
+L[StatLogic.Stats.ArcaneResistance] = RESISTANCE6_NAME
 
 -- AceLocale can only register one locale at a time,
 -- so we copy the short translations at the end.

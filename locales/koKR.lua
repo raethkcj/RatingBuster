@@ -368,123 +368,135 @@ L["statList"] = {
 -- "%s %s"     -> "+1.34% Crit"
 -- "%2$s $1$s" -> "Crit +1.34%"
 L["StatBreakdownOrder"] = "%s %s"
-S[StatLogic.Stats.MeleeCrit] = "치명타"
-S[StatLogic.Stats.SpellCrit] = "극대화"
-S[StatLogic.Stats.Dodge] = "회피"
-S[StatLogic.Stats.Health] = "생명력"
-S[StatLogic.Stats.Mana] = "마나"
-S[StatLogic.Stats.AttackPower] = "전투력"
-S[StatLogic.Stats.RangedAttackPower] = "원거리 전투력"
-S[StatLogic.Stats.SpellDamage] = "공격력"
-S[StatLogic.Stats.HealingPower] = "치유량"
-S[StatLogic.Stats.Armor] = "방어도"
-S[StatLogic.Stats.BlockValue] = "방어"
-S[StatLogic.Stats.ManaRegen] = "MP5"
-S[StatLogic.Stats.ManaRegenNotCasting] = "MP5(NC)"
-S[StatLogic.Stats.HealthRegen] = "HP5"
-S[StatLogic.Stats.HealthRegenOutOfCombat] = "HP5(NC)"
-S[StatLogic.Stats.DodgeReduction] = "이후 회피 감소 감소"
-S[StatLogic.Stats.ParryReduction] = "이후 무기막기 감소"
-S[StatLogic.Stats.CritAvoidance] = "이후 치명타"
-S[StatLogic.Stats.CritDamageReduction] = "가질 치명타 데미지"
-S[StatLogic.Stats.PvPDamageReduction] = "PvP Damage Taken"
-S[StatLogic.Stats.Parry] = "무막"
+L["Show %s"] = "%s "..SHOW
 -- for hit rating showing both physical and spell conversions
 -- (+1.21%, S+0.98%)
 -- (+1.21%, +0.98% S)
 L["Spell"] = "주문"
-S[StatLogic.Stats.SpellHit] = "주문 적중"
 
-L[StatLogic.Stats.ManaRegen] = "마나 회복량"
-L[StatLogic.Stats.ManaRegenNotCasting] = "마나 회복량 (시전하지)"
-L[StatLogic.Stats.ManaRegenOutOfCombat] = "마나 회복량 (비전투)"
-if addon.tocversion > 40000 then
-	L[StatLogic.Stats.ManaRegenNotCasting] =  L[StatLogic.Stats.ManaRegenOutOfCombat]
-end
-L[StatLogic.Stats.HealthRegen] = "생명력 재생"
-L[StatLogic.Stats.HealthRegenOutOfCombat] = "생명력 재생 (비전투)"
-L["Show %s"] = "%s "..SHOW
-
-L[StatLogic.Stats.IgnoreArmor] = "방어도 무시"
-L[StatLogic.Stats.AverageWeaponDamage] = "근접 무기 "..DAMAGE -- DAMAGE = "Damage"
-
+-- Basic Attributes
 L[StatLogic.Stats.Strength] = "힘"
 L[StatLogic.Stats.Agility] = "민첩성"
 L[StatLogic.Stats.Stamina] = "체력"
 L[StatLogic.Stats.Intellect] = "지능"
 L[StatLogic.Stats.Spirit] = "정신력"
-L[StatLogic.Stats.Armor] = "방어도"
+L[StatLogic.Stats.Mastery] = STAT_MASTERY
+L[StatLogic.Stats.MasteryEffect] = SPELL_LASTING_EFFECT:format(STAT_MASTERY)
+L[StatLogic.Stats.MasteryRating] = STAT_MASTERY.." "..RATING
 
-L[StatLogic.Stats.FireResistance] = "화염 저항력"
-L[StatLogic.Stats.NatureResistance] = "자연 저항력"
-L[StatLogic.Stats.FrostResistance] = "냉기 저항력"
-L[StatLogic.Stats.ShadowResistance] = "암흑 저항력"
-L[StatLogic.Stats.ArcaneResistance] = "비전 저항력"
+-- Resources
+L[StatLogic.Stats.Health] = "생명력"
+S[StatLogic.Stats.Health] = "생명력"
+L[StatLogic.Stats.Mana] = "마나"
+S[StatLogic.Stats.Mana] = "마나"
+L[StatLogic.Stats.ManaRegen] = "마나 회복량"
+S[StatLogic.Stats.ManaRegen] = "MP5"
+L[StatLogic.Stats.ManaRegenNotCasting] = "마나 회복량 (시전하지)"
+S[StatLogic.Stats.ManaRegenNotCasting] = "MP5(NC)"
+L[StatLogic.Stats.ManaRegenOutOfCombat] = "마나 회복량 (비전투)"
+if addon.tocversion > 40000 then
+	L[StatLogic.Stats.ManaRegenNotCasting] =  L[StatLogic.Stats.ManaRegenOutOfCombat]
+end
+L[StatLogic.Stats.HealthRegen] = "생명력 재생"
+S[StatLogic.Stats.HealthRegen] = "HP5"
+L[StatLogic.Stats.HealthRegenOutOfCombat] = "생명력 재생 (비전투)"
+S[StatLogic.Stats.HealthRegenOutOfCombat] = "HP5(NC)"
 
-L[StatLogic.Stats.BlockValue] = "피해 방어량"
-
+-- Physical Stats
 L[StatLogic.Stats.AttackPower] = "전투력"
-L[StatLogic.Stats.RangedAttackPower] = "원거리 전투력"
+S[StatLogic.Stats.AttackPower] = "전투력"
 L[StatLogic.Stats.FeralAttackPower] = "야생 전투력"
+L[StatLogic.Stats.IgnoreArmor] = "방어도 무시"
+L[StatLogic.Stats.ArmorPenetration] = "방어도 관통력 합계"
+L[StatLogic.Stats.ArmorPenetrationRating] = "방어도 관통도 합계"
 
-L[StatLogic.Stats.HealingPower] = "치유량"
+-- Weapon Stats
+L[StatLogic.Stats.AverageWeaponDamage] = "근접 무기 "..DAMAGE -- DAMAGE = "Damage"
+L[StatLogic.Stats.WeaponDPS] = "초당 공격력"
 
+-- Melee Stats
+L[StatLogic.Stats.MeleeHit] = "적중률"
+L[StatLogic.Stats.MeleeHitRating] = "적중도"
+L[StatLogic.Stats.MeleeCrit] = "치명타율"
+S[StatLogic.Stats.MeleeCrit] = "치명타"
+L[StatLogic.Stats.MeleeCritRating] = "치명타율"
+L[StatLogic.Stats.MeleeHaste] = "공격 가속"
+L[StatLogic.Stats.MeleeHasteRating] = "공격 가속도"
+
+L[StatLogic.Stats.WeaponSkill] = "무기 숙련"
+L[StatLogic.Stats.Expertise] = "숙련"
+L[StatLogic.Stats.ExpertiseRating] = "숙련 ".." "..RATING
+L[StatLogic.Stats.DodgeReduction] = "회피 무시"
+S[StatLogic.Stats.DodgeReduction] = "이후 회피 감소 감소"
+L[StatLogic.Stats.ParryReduction] = PARRY.." 무시"
+S[StatLogic.Stats.ParryReduction] = "이후 무기막기 감소"
+
+-- Ranged Stats
+L[StatLogic.Stats.RangedAttackPower] = "원거리 전투력"
+S[StatLogic.Stats.RangedAttackPower] = "원거리 전투력"
+L[StatLogic.Stats.RangedHit] = "원거리 적중률 합계"
+L[StatLogic.Stats.RangedHitRating] = "원거리 적중도 합계"
+L[StatLogic.Stats.RangedCrit] = "원거리 치명타율 합계"
+L[StatLogic.Stats.RangedCritRating] = "원거리 치명타 적중도 합계"
+L[StatLogic.Stats.RangedHaste] = "원거리 공격 가속율 합계"
+L[StatLogic.Stats.RangedHasteRating] = "원거리 공격 가속도 합계"
+
+-- Spell Stats
 L[StatLogic.Stats.SpellPower] = STAT_SPELLPOWER
 L[StatLogic.Stats.SpellDamage] = "주문 공격력"
+S[StatLogic.Stats.SpellDamage] = "공격력"
+L[StatLogic.Stats.HealingPower] = "치유량"
+S[StatLogic.Stats.HealingPower] = "치유량"
+L[StatLogic.Stats.SpellPenetration] = "관통력"
+
 L[StatLogic.Stats.HolyDamage] = "신성 주문 공격력"
 L[StatLogic.Stats.FireDamage] = "화염 주문 공격력"
 L[StatLogic.Stats.NatureDamage] = "자연 주문 공격력"
 L[StatLogic.Stats.FrostDamage] = "냉기 주문 공격력"
 L[StatLogic.Stats.ShadowDamage] = "암흑 주문 공격력"
 L[StatLogic.Stats.ArcaneDamage] = "비전 주문 공격력"
-L[StatLogic.Stats.SpellPenetration] = "관통력"
 
-L[StatLogic.Stats.Health] = "생명력"
-L[StatLogic.Stats.Mana] = "마나"
-
-L[StatLogic.Stats.WeaponDPS] = "초당 공격력"
-
-L[StatLogic.Stats.DodgeRating] = "회피율"
-L[StatLogic.Stats.DefenseRating] = COMBAT_RATING_NAME2 -- COMBAT_RATING_NAME2 = "Defense Rating"
-L[StatLogic.Stats.ParryRating] = "무기 막기율"
-L[StatLogic.Stats.BlockRating] = "방어율"
-L[StatLogic.Stats.MeleeHitRating] = "적중도"
-L[StatLogic.Stats.RangedHitRating] = "원거리 적중도 합계"
-L[StatLogic.Stats.SpellHitRating] = "주문 적중도"
-L[StatLogic.Stats.MeleeCritRating] = "치명타율"
-L[StatLogic.Stats.RangedCritRating] = "원거리 치명타 적중도 합계"
-L[StatLogic.Stats.SpellCritRating] = "주문 극대화율"
-L[StatLogic.Stats.ResilienceRating] = "탄력도"
-L[StatLogic.Stats.MeleeHasteRating] = "공격 가속도"
-L[StatLogic.Stats.RangedHasteRating] = "원거리 공격 가속도 합계"
-L[StatLogic.Stats.SpellHasteRating] = "주문 가속도"
-L[StatLogic.Stats.ArmorPenetrationRating] = "방어도 관통도 합계"
-L[StatLogic.Stats.ExpertiseRating] = "숙련 ".." "..RATING
-L[StatLogic.Stats.MasteryRating] = STAT_MASTERY.." "..RATING
-L[StatLogic.Stats.Defense] = "방어 숙련"
-L[StatLogic.Stats.CritDamageReduction] = "치명타 피해 감소"
-L[StatLogic.Stats.Dodge] = "회피율"
-L[StatLogic.Stats.Parry] = "무기 막기 확률"
-L[StatLogic.Stats.BlockChance] = "방패 막기 확률"
-L[StatLogic.Stats.Avoidance] = "회피량"
-L[StatLogic.Stats.MeleeHit] = "적중률"
-L[StatLogic.Stats.RangedHit] = "원거리 적중률 합계"
 L[StatLogic.Stats.SpellHit] = "주문 적중율"
-L[StatLogic.Stats.Miss] = "공격 회피"
-L[StatLogic.Stats.MeleeCrit] = "치명타율"
-L[StatLogic.Stats.RangedCrit] = "원거리 치명타율 합계"
+S[StatLogic.Stats.SpellHit] = "주문 적중"
+L[StatLogic.Stats.SpellHitRating] = "주문 적중도"
 L[StatLogic.Stats.SpellCrit] = "주문 극대화율"
-L[StatLogic.Stats.CritAvoidance] = "치명타 공격 회피"
-L[StatLogic.Stats.MeleeHaste] = "공격 가속"
-L[StatLogic.Stats.RangedHaste] = "원거리 공격 가속율 합계"
+S[StatLogic.Stats.SpellCrit] = "극대화"
+L[StatLogic.Stats.SpellCritRating] = "주문 극대화율"
 L[StatLogic.Stats.SpellHaste] = "주문 가속"
-L[StatLogic.Stats.Expertise] = "숙련"
-L[StatLogic.Stats.ArmorPenetration] = "방어도 관통력 합계"
-L[StatLogic.Stats.DodgeReduction] = "회피 무시"
-L[StatLogic.Stats.Mastery] = STAT_MASTERY
-L[StatLogic.Stats.MasteryEffect] = SPELL_LASTING_EFFECT:format(STAT_MASTERY)
-L[StatLogic.Stats.WeaponSkill] = "무기 숙련"
-L[StatLogic.Stats.ParryReduction] = PARRY.." 무시"
+L[StatLogic.Stats.SpellHasteRating] = "주문 가속도"
+
+-- Tank Stats
+L[StatLogic.Stats.Armor] = "방어도"
+S[StatLogic.Stats.Armor] = "방어도"
+
+L[StatLogic.Stats.Avoidance] = "회피량"
+L[StatLogic.Stats.Dodge] = "회피율"
+S[StatLogic.Stats.Dodge] = "회피"
+L[StatLogic.Stats.DodgeRating] = "회피율"
+L[StatLogic.Stats.Parry] = "무기 막기 확률"
+S[StatLogic.Stats.Parry] = "무막"
+L[StatLogic.Stats.ParryRating] = "무기 막기율"
+L[StatLogic.Stats.BlockChance] = "방패 막기 확률"
+L[StatLogic.Stats.BlockRating] = "방어율"
+L[StatLogic.Stats.BlockValue] = "피해 방어량"
+S[StatLogic.Stats.BlockValue] = "방어"
+L[StatLogic.Stats.Miss] = "공격 회피"
+
+L[StatLogic.Stats.Defense] = "방어 숙련"
+L[StatLogic.Stats.DefenseRating] = COMBAT_RATING_NAME2 -- COMBAT_RATING_NAME2 = "Defense Rating"
+L[StatLogic.Stats.CritAvoidance] = "치명타 공격 회피"
+S[StatLogic.Stats.CritAvoidance] = "이후 치명타"
+
+L[StatLogic.Stats.ResilienceRating] = "탄력도"
+L[StatLogic.Stats.CritDamageReduction] = "치명타 피해 감소"
+S[StatLogic.Stats.CritDamageReduction] = "가질 치명타 데미지"
+S[StatLogic.Stats.PvPDamageReduction] = "PvP Damage Taken"
+
+L[StatLogic.Stats.FireResistance] = "화염 저항력"
+L[StatLogic.Stats.NatureResistance] = "자연 저항력"
+L[StatLogic.Stats.FrostResistance] = "냉기 저항력"
+L[StatLogic.Stats.ShadowResistance] = "암흑 저항력"
+L[StatLogic.Stats.ArcaneResistance] = "비전 저항력"
 
 -- AceLocale can only register one locale at a time,
 -- so we copy the short translations at the end.
