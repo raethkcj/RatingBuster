@@ -10,6 +10,7 @@ local _, addon = ...
 ---@type RatingBusterLocale
 local L = LibStub("AceLocale-3.0"):NewLocale("RatingBuster", "zhCN")
 if not L then return end
+local S = {}
 local StatLogic = LibStub("StatLogic")
 ----
 -- This file is coded in UTF-8
@@ -366,32 +367,32 @@ L["statList"] = {
 -- $value will be replaced with the number
 -- EX: "$value Crit" -> "+1.34% Crit"
 -- EX: "Crit $value" -> "Crit +1.34%"
-L["$value Crit"] = "$value 爆击"
-L["$value Spell Crit"] = "$value 法爆"
-L["$value Dodge"] = "$value 躲闪"
-L["$value HP"] = "$value 生命"
-L["$value MP"] = "$value 法力"
-L["$value AP"] = "$value 攻击强度"
-L["$value RAP"] = "$value 远攻强度"
-L["$value Spell Dmg"] = "$value 法伤"
-L["$value Heal"] = "$value 治疗"
-L["$value Armor"] = "$value 护甲"
-L["$value Block"] = "$value 格挡值"
-L["$value MP5"] = "$value 施法回魔"
-L["$value MP5(NC)"] = "$value 精神回魔"
-L["$value HP5"] = "$value 回血"
-L["$value HP5(NC)"] = "$value 回血(非战斗)"
-L["$value to be Dodged/Parried"] = "$value 被躲闪/被招架"
-L["$value to be Crit"] = "$value 被致命一击"
-L["$value Crit Dmg Taken"] = "$value 致命一击伤害减免"
-L["$value DOT Dmg Taken"] = "$value 持续伤害减免"
-L["$value PvP Damage Taken"] = "$value PvP Damage Taken"
-L["$value Parry"] = "$value 招架"
+S["$value Crit"] = "$value 爆击"
+S["$value Spell Crit"] = "$value 法爆"
+S["$value Dodge"] = "$value 躲闪"
+S["$value HP"] = "$value 生命"
+S["$value MP"] = "$value 法力"
+S["$value AP"] = "$value 攻击强度"
+S["$value RAP"] = "$value 远攻强度"
+S["$value Spell Dmg"] = "$value 法伤"
+S["$value Heal"] = "$value 治疗"
+S["$value Armor"] = "$value 护甲"
+S["$value Block"] = "$value 格挡值"
+S["$value MP5"] = "$value 施法回魔"
+S["$value MP5(NC)"] = "$value 精神回魔"
+S["$value HP5"] = "$value 回血"
+S["$value HP5(NC)"] = "$value 回血(非战斗)"
+S["$value to be Dodged/Parried"] = "$value 被躲闪/被招架"
+S["$value to be Crit"] = "$value 被致命一击"
+S["$value Crit Dmg Taken"] = "$value 致命一击伤害减免"
+S["$value DOT Dmg Taken"] = "$value 持续伤害减免"
+S["$value PvP Damage Taken"] = "$value PvP Damage Taken"
+S["$value Parry"] = "$value 招架"
 -- for hit rating showing both physical and spell conversions
 -- (+1.21%, S+0.98%)
 -- (+1.21%, +0.98% S)
-L["$value Spell"] = "$value 法术"
-L["$value Spell Hit"] = "$value Spell Hit"
+S["$value Spell"] = "$value 法术"
+S["$value Spell Hit"] = "$value Spell Hit"
 
 L[StatLogic.Stats.ManaRegen] = "法力回复"
 L[StatLogic.Stats.ManaRegenNotCasting] = "法力回复 (未施法)"
@@ -484,3 +485,8 @@ L[StatLogic.Stats.MasteryEffect] = SPELL_LASTING_EFFECT:format(STAT_MASTERY)
 L[StatLogic.Stats.DodgeReduction] = "防止被躲闪"
 L[StatLogic.Stats.ParryReduction] = "防止被招架"
 L[StatLogic.Stats.WeaponSkill] = "武器技能"
+
+local short = LibStub("AceLocale-3.0"):NewLocale("RatingBusterShort", "zhCN")
+for k, v in pairs(S) do
+	short[k] = v
+end

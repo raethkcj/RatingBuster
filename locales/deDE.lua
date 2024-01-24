@@ -10,6 +10,7 @@ local _, addon = ...
 ---@type RatingBusterLocale
 local L = LibStub("AceLocale-3.0"):NewLocale("RatingBuster", "deDE")
 if not L then return end
+local S = {}
 local StatLogic = LibStub("StatLogic")
 ----
 -- This file is coded in UTF-8
@@ -366,32 +367,32 @@ L["statList"] = {
 -- $value will be replaced with the number
 -- EX: "$value Crit" -> "+1.34% Crit"
 -- EX: "Crit $value" -> "Crit +1.34%"
-L["$value Crit"] = "$value krit."
-L["$value Spell Crit"] = "$value Zauberkrit."
-L["$value Dodge"] = "$value Ausweichen"
-L["$value HP"] = "$value HP"
-L["$value MP"] = "$value MP"
-L["$value AP"] = "$value AP"
-L["$value RAP"] = "$value RAP"
-L["$value Spell Dmg"] = "$value Schaden"
-L["$value Heal"] = "$value Heilung"
-L["$value Armor"] = "$value Rüstung"
-L["$value Block"] = "$value Blocken"
-L["$value MP5"] = "$value MP5"
-L["$value MP5(NC)"] = "$value MP5(NC)"
-L["$value HP5"] = "$value HP5"
-L["$value HP5(NC)"] = "$value HP5(NC)"
-L["$value to be Dodged/Parried"] = "$value wird Ausgewichen/Pariert"
-L["$value to be Crit"] = "$value wird kritisch"
-L["$value Crit Dmg Taken"] = "$value erlittener krit. Schaden"
-L["$value DOT Dmg Taken"] = "$value erlittener Schaden durch DOTs"
-L["$value PvP Damage Taken"] = "$value erlitter Schaden im PVP"
-L["$value Parry"] = "$value Parieren"
+S["$value Crit"] = "$value krit."
+S["$value Spell Crit"] = "$value Zauberkrit."
+S["$value Dodge"] = "$value Ausweichen"
+S["$value HP"] = "$value HP"
+S["$value MP"] = "$value MP"
+S["$value AP"] = "$value AP"
+S["$value RAP"] = "$value RAP"
+S["$value Spell Dmg"] = "$value Schaden"
+S["$value Heal"] = "$value Heilung"
+S["$value Armor"] = "$value Rüstung"
+S["$value Block"] = "$value Blocken"
+S["$value MP5"] = "$value MP5"
+S["$value MP5(NC)"] = "$value MP5(NC)"
+S["$value HP5"] = "$value HP5"
+S["$value HP5(NC)"] = "$value HP5(NC)"
+S["$value to be Dodged/Parried"] = "$value wird Ausgewichen/Pariert"
+S["$value to be Crit"] = "$value wird kritisch"
+S["$value Crit Dmg Taken"] = "$value erlittener krit. Schaden"
+S["$value DOT Dmg Taken"] = "$value erlittener Schaden durch DOTs"
+S["$value PvP Damage Taken"] = "$value erlitter Schaden im PVP"
+S["$value Parry"] = "$value Parieren"
 -- for hit rating showing both physical and spell conversions
 -- (+1.21%, S+0.98%)
 -- (+1.21%, +0.98% S)
-L["$value Spell"] = "$value Zauber"
-L["$value Spell Hit"] = "$value Zaubertrefferchance"
+S["$value Spell"] = "$value Zauber"
+S["$value Spell Hit"] = "$value Zaubertrefferchance"
 
 L[StatLogic.Stats.ManaRegen] = "Manaregeneration"
 L[StatLogic.Stats.ManaRegenNotCasting] = "Manaregeneration (Nicht Zaubernd)"
@@ -484,3 +485,8 @@ L[StatLogic.Stats.MasteryEffect] = SPELL_LASTING_EFFECT:format("Meisterschaft")
 L[StatLogic.Stats.DodgeReduction] = "Ausweichverhinderung"
 L[StatLogic.Stats.ParryReduction] = "Parierverhinderung"
 L[StatLogic.Stats.WeaponSkill] = "Waffenfertigkeit"
+
+local short = LibStub("AceLocale-3.0"):NewLocale("RatingBusterShort", "deDE")
+for k, v in pairs(S) do
+	short[k] = v
+end

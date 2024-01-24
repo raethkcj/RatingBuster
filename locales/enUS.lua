@@ -20,6 +20,7 @@ addon.tocversion = select(4, GetBuildInfo())
 
 ---@type RatingBusterDefaultLocale
 local L = LibStub("AceLocale-3.0"):NewLocale("RatingBuster", "enUS", true)
+local S = {}
 L["RatingBuster Options"] = true
 local StatLogic = LibStub("StatLogic")
 ---------------------------
@@ -391,32 +392,32 @@ L["statList"] = {
 -- $value will be replaced with the number
 -- EX: "$value Crit" -> "+1.34% Crit"
 -- EX: "Crit $value" -> "Crit +1.34%"
-L["$value Crit"] = true
-L["$value Spell Crit"] = true
-L["$value Dodge"] = true
-L["$value HP"] = true
-L["$value MP"] = true
-L["$value AP"] = true
-L["$value RAP"] = true
-L["$value Spell Dmg"] = true
-L["$value Heal"] = true
-L["$value Armor"] = true
-L["$value Block"] = true
-L["$value MP5"] = true
-L["$value MP5(NC)"] = true
-L["$value HP5"] = true
-L["$value HP5(NC)"] = true
-L["$value to be Dodged/Parried"] = true
-L["$value to be Crit"] = true
-L["$value Crit Dmg Taken"] = true
-L["$value DOT Dmg Taken"] = true
-L["$value PvP Damage Taken"] = true
-L["$value Parry"] = true
+S["$value Crit"] = true
+S["$value Spell Crit"] = true
+S["$value Dodge"] = true
+S["$value HP"] = true
+S["$value MP"] = true
+S["$value AP"] = true
+S["$value RAP"] = true
+S["$value Spell Dmg"] = true
+S["$value Heal"] = true
+S["$value Armor"] = true
+S["$value Block"] = true
+S["$value MP5"] = true
+S["$value MP5(NC)"] = true
+S["$value HP5"] = true
+S["$value HP5(NC)"] = true
+S["$value to be Dodged/Parried"] = true
+S["$value to be Crit"] = true
+S["$value Crit Dmg Taken"] = true
+S["$value DOT Dmg Taken"] = true
+S["$value PvP Damage Taken"] = true
+S["$value Parry"] = true
 -- for hit rating showing both physical and spell conversions
 -- (+1.21%, S+0.98%)
 -- (+1.21%, +0.98% S)
-L["$value Spell"] = true
-L["$value Spell Hit"] = true
+S["$value Spell"] = true
+S["$value Spell Hit"] = true
 
 L[StatLogic.Stats.ManaRegen] = "Mana Regen"
 L[StatLogic.Stats.ManaRegenNotCasting] = "Mana Regen (Not Casting)"
@@ -509,3 +510,10 @@ L[StatLogic.Stats.MasteryEffect] = SPELL_LASTING_EFFECT:format(STAT_MASTERY)
 L[StatLogic.Stats.DodgeReduction] = DODGE.." Reduction"
 L[StatLogic.Stats.ParryReduction] = PARRY.." Reduction"
 L[StatLogic.Stats.WeaponSkill] = "Weapon "..SKILL
+
+-- AceLocale can only register one locale at a time,
+-- so we copy the short translations at the end.
+local short = LibStub("AceLocale-3.0"):NewLocale("RatingBusterShort", "enUS", true)
+for k, v in pairs(S) do
+	short[k] = v
+end

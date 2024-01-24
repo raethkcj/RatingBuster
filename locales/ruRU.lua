@@ -10,6 +10,7 @@ local _, addon = ...
 ---@type RatingBusterLocale
 local L = LibStub("AceLocale-3.0"):NewLocale("RatingBuster", "ruRU")
 if not L then return end
+local S = {}
 local StatLogic = LibStub("StatLogic")
 -- This file is coded in UTF-8
 ----
@@ -465,33 +466,33 @@ L["statList"] = {
 -- $value will be replaced with the number
 -- EX: "$value Crit" -> "+1.34% Crit"
 -- EX: "Crit $value" -> "Crit +1.34%"
-L["$value Crit"] = "$value к крит. удару"
-L["$value Spell Crit"] = "$value к крит. удару"
-L["$value Dodge"] = "$value к уклонению"
-L["$value Parry"] = "$value к парированию"
-L["$value HP"] = "$value к здоровью"
-L["$value MP"] = "$value к мане"
-L["$value AP"] = "$value к силе атаки"
-L["$value RAP"] = "к силе атаки дальнего боя"
-L["$value Spell Dmg"] = "$value к силе заклинаний"
-L["$value Heal"] = "$value к силе заклинаний"
-L["$value Armor"] = "$value к броне"
-L["$value Block"] = "$value к показателю блокирования" -- Block value
-L["$value MP5"] = "$value маны раз в 5 сек."
-L["$value MP5(OC)"] = "$value маны раз в 5 сек. (вне боя)"
-L["$value MP5(NC)"] = "$value маны раз в 5 сек. (вне каста)"
-L["$value HP5"] = "$value здоровья раз в 5 сек."
-L["$value HP5(NC)"] = "$value ХП5 (вне боя)"
-L["$value to be Dodged/Parried"] = "$value уклонения/парирования" -- Target's dodges/parrys against your attacks
-L["$value to be Crit"] = "$value к получению крит. удара" -- Your chance to get critical hit from target
-L["$value Crit Dmg Taken"] = "$value к получению крит. урона"
-L["$value DOT Dmg Taken"] = "$value к получению урона от ДоТ"
-L["$value PvP Damage Taken"] = "$value PvP Damage Taken"
+S["$value Crit"] = "$value к крит. удару"
+S["$value Spell Crit"] = "$value к крит. удару"
+S["$value Dodge"] = "$value к уклонению"
+S["$value Parry"] = "$value к парированию"
+S["$value HP"] = "$value к здоровью"
+S["$value MP"] = "$value к мане"
+S["$value AP"] = "$value к силе атаки"
+S["$value RAP"] = "к силе атаки дальнего боя"
+S["$value Spell Dmg"] = "$value к силе заклинаний"
+S["$value Heal"] = "$value к силе заклинаний"
+S["$value Armor"] = "$value к броне"
+S["$value Block"] = "$value к показателю блокирования" -- Block value
+S["$value MP5"] = "$value маны раз в 5 сек."
+S["$value MP5(OC)"] = "$value маны раз в 5 сек. (вне боя)"
+S["$value MP5(NC)"] = "$value маны раз в 5 сек. (вне каста)"
+S["$value HP5"] = "$value здоровья раз в 5 сек."
+S["$value HP5(NC)"] = "$value ХП5 (вне боя)"
+S["$value to be Dodged/Parried"] = "$value уклонения/парирования" -- Target's dodges/parrys against your attacks
+S["$value to be Crit"] = "$value к получению крит. удара" -- Your chance to get critical hit from target
+S["$value Crit Dmg Taken"] = "$value к получению крит. урона"
+S["$value DOT Dmg Taken"] = "$value к получению урона от ДоТ"
+S["$value PvP Damage Taken"] = "$value PvP Damage Taken"
 -- for hit rating showing both physical and spell conversions
 -- (+1.21%, S+0.98%)
 -- (+1.21%, +0.98% S)
-L["$value Spell"] = "$value для заклинаний"
-L["$value Spell Hit"] = "$value метк. закл."
+S["$value Spell"] = "$value для заклинаний"
+S["$value Spell Hit"] = "$value метк. закл."
 
 L[StatLogic.Stats.ManaRegen] = "Восполнение маны"
 L[StatLogic.Stats.ManaRegenNotCasting] = "Восполнения маны (пока не применяете заклинания)"
@@ -584,3 +585,8 @@ L[StatLogic.Stats.MasteryEffect] = SPELL_LASTING_EFFECT:format("Искуснос
 L[StatLogic.Stats.DodgeReduction] = "игнорирования уклонения"
 L[StatLogic.Stats.ParryReduction] = "игнорирования парирования"
 L[StatLogic.Stats.WeaponSkill] = "Оружейный навык"
+
+local short = LibStub("AceLocale-3.0"):NewLocale("RatingBusterShort", "ruRU")
+for k, v in pairs(S) do
+	short[k] = v
+end
