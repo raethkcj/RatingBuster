@@ -467,34 +467,33 @@ L["statList"] = {
 -- "%s %s"     -> "+1.34% Crit"
 -- "%2$s $1$s" -> "Crit +1.34%"
 L["StatBreakdownOrder"] = "%s %s"
-S["Crit"] = "к крит. удару"
-S["Spell Crit"] = "к крит. удару"
-S["Dodge"] = "к уклонению"
-S["Parry"] = "к парированию"
-S["HP"] = "к здоровью"
-S["MP"] = "к мане"
-S["AP"] = "к силе атаки"
-S["RAP"] = "к силе атаки дальнего боя"
-S["Spell Dmg"] = "к силе заклинаний"
-S["Heal"] = "к силе заклинаний"
-S["Armor"] = "к броне"
-S["Block"] = "к показателю блокирования" -- Block value
-S["MP5"] = "маны раз в 5 сек."
-S["MP5(OC)"] = "маны раз в 5 сек. (вне боя)"
-S["MP5(NC)"] = "маны раз в 5 сек. (вне каста)"
-S["HP5"] = "здоровья раз в 5 сек."
-S["HP5(NC)"] = "ХП5 (вне боя)"
-S["to be Dodged"] = "уклонения" -- Target's dodges/parrys against your attacks
-S["to be Parried"] = "парирования" -- Target's dodges/parrys against your attacks
-S["to be Crit"] = "к получению крит. удара" -- Your chance to get critical hit from target
-S["Crit Dmg Taken"] = "к получению крит. урона"
-S["DOT Dmg Taken"] = "к получению урона от ДоТ"
-S["PvP Damage Taken"] = "PvP Damage Taken"
+S[StatLogic.Stats.MeleeCrit] = "к крит. удару"
+S[StatLogic.Stats.SpellCrit] = "к крит. удару"
+S[StatLogic.Stats.Dodge] = "к уклонению"
+S[StatLogic.Stats.Parry] = "к парированию"
+S[StatLogic.Stats.Health] = "к здоровью"
+S[StatLogic.Stats.Mana] = "к мане"
+S[StatLogic.Stats.AttackPower] = "к силе атаки"
+S[StatLogic.Stats.RangedAttackPower] = "к силе атаки дальнего боя"
+S[StatLogic.Stats.SpellDamage] = "к силе заклинаний"
+S[StatLogic.Stats.HealingPower] = "к силе заклинаний"
+S[StatLogic.Stats.Armor] = "к броне"
+S[StatLogic.Stats.BlockValue] = "к показателю блокирования" -- Block value
+S[StatLogic.Stats.ManaRegen] = "маны раз в 5 сек."
+S[StatLogic.Stats.ManaRegenOutOfCombat] = "маны раз в 5 сек. (вне боя)"
+S[StatLogic.Stats.ManaRegenNotCasting] = "маны раз в 5 сек. (вне каста)"
+S[StatLogic.Stats.HealthRegen] = "здоровья раз в 5 сек."
+S[StatLogic.Stats.HealthRegenOutOfCombat] = "ХП5 (вне боя)"
+S[StatLogic.Stats.DodgeReduction] = "уклонения" -- Target's dodges/parrys against your attacks
+S[StatLogic.Stats.ParryReduction] = "парирования" -- Target's dodges/parrys against your attacks
+S[StatLogic.Stats.CritAvoidance] = "к получению крит. удара" -- Your chance to get critical hit from target
+S[StatLogic.Stats.CritDamageReduction] = "к получению крит. урона"
+S[StatLogic.Stats.PvPDamageReduction] = "PvP Damage Taken"
 -- for hit rating showing both physical and spell conversions
 -- (+1.21%, S+0.98%)
 -- (+1.21%, +0.98% S)
-S["Spell"] = "для заклинаний"
-S["Spell Hit"] = "метк. закл."
+L["Spell"] = "для заклинаний"
+S[StatLogic.Stats.SpellHit] = "метк. закл."
 
 L[StatLogic.Stats.ManaRegen] = "Восполнение маны"
 L[StatLogic.Stats.ManaRegenNotCasting] = "Восполнения маны (пока не применяете заклинания)"

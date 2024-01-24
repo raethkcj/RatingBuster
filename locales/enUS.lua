@@ -393,33 +393,32 @@ L["statList"] = {
 -- "%s %s"     -> "+1.34% Crit"
 -- "%2$s $1$s" -> "Crit +1.34%"
 L["StatBreakdownOrder"] = "%s %s"
-S["Crit"] = true
-S["Spell Crit"] = true
-S["Dodge"] = true
-S["HP"] = true
-S["MP"] = true
-S["AP"] = true
-S["RAP"] = true
-S["Spell Dmg"] = true
-S["Heal"] = true
-S["Armor"] = true
-S["Block"] = true
-S["MP5"] = true
-S["MP5(NC)"] = true
-S["HP5"] = true
-S["HP5(NC)"] = true
-S["to be Dodged"] = "to be Dodged"
-S["to be Parried"] = "to be Parried"
-S["to be Crit"] = true
-S["Crit Dmg Taken"] = true
-S["DOT Dmg Taken"] = true
-S["PvP Damage Taken"] = true
-S["Parry"] = true
+S[StatLogic.Stats.MeleeCrit] = "Crit"
+S[StatLogic.Stats.SpellCrit] = "Spell Crit"
+S[StatLogic.Stats.Dodge] = "Dodge"
+S[StatLogic.Stats.Health] = "HP"
+S[StatLogic.Stats.Mana] = "MP"
+S[StatLogic.Stats.AttackPower] = "AP"
+S[StatLogic.Stats.RangedAttackPower] = "RAP"
+S[StatLogic.Stats.SpellDamage] = "Spell Dmg"
+S[StatLogic.Stats.HealingPower] = "Heal"
+S[StatLogic.Stats.Armor] = "Armor"
+S[StatLogic.Stats.BlockValue] = "Block"
+S[StatLogic.Stats.ManaRegen] = "MP5"
+S[StatLogic.Stats.ManaRegenNotCasting] = "MP5(NC)"
+S[StatLogic.Stats.HealthRegen] = "HP5"
+S[StatLogic.Stats.HealthRegenOutOfCombat] = "HP5(NC)"
+S[StatLogic.Stats.DodgeReduction] = "to be Dodged"
+S[StatLogic.Stats.ParryReduction] = "to be Parried"
+S[StatLogic.Stats.CritAvoidance] = "to be Crit"
+S[StatLogic.Stats.CritDamageReduction] = "Crit Dmg Taken"
+S[StatLogic.Stats.PvPDamageReduction] = "PvP Damage Taken"
+S[StatLogic.Stats.Parry] = "Parry"
 -- for hit rating showing both physical and spell conversions
 -- (+1.21%, S+0.98%)
 -- (+1.21%, +0.98% S)
-S["Spell"] = true
-S["Spell Hit"] = true
+L["Spell"] = "Spell"
+S[StatLogic.Stats.SpellHit] = "Spell Hit"
 
 L[StatLogic.Stats.ManaRegen] = "Mana Regen"
 L[StatLogic.Stats.ManaRegenNotCasting] = "Mana Regen (Not Casting)"
