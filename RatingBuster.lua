@@ -2031,7 +2031,10 @@ do
 				end
 				effect = effect * -0.25
 				if db.profile.detailedConversionText then
-					infoString = L["StatBreakdownOrder"]:format(("%+.2f%%"):format(effect), S["to be Dodged/Parried"])
+					local infoTable = {}
+					tinsert(infoTable, L["StatBreakdownOrder"]:format(("%+.2f%%"):format(effect), S["to be Dodged"]))
+					tinsert(infoTable, L["StatBreakdownOrder"]:format(("%+.2f%%"):format(effect), S["to be Parried"]))
+					infoString = table.concat(infoTable, ", ")
 				else
 					infoString = ("%+.2f%%"):format(effect)
 				end
