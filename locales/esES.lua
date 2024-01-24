@@ -365,35 +365,36 @@ L["statList"] = {
 -------------------------
 -- Added info patterns --
 -------------------------
--- $value will be replaced with the number
--- EX: "$value Crit" -> "+1.34% Crit"
--- EX: "Crit $value" -> "Crit +1.34%"
-S["$value Crit"] = "$value Crit"
-S["$value Spell Crit"] = "$value Crit hechizos"
-S["$value Dodge"] = "$value Esquivar"
-S["$value HP"] = "$value Vida"
-S["$value MP"] = "$value Mana"
-S["$value AP"] = "$value P.At"
-S["$value RAP"] = "$value P.At Dist"
-S["$value Spell Dmg"] = "$value Daño"
-S["$value Heal"] = "$value Sanacion"
-S["$value Armor"] = "$value Armadura"
-S["$value Block"] = "$value Bloqueo"
-S["$value MP5"] = "$value Mana/5sec"
-S["$value MP5(NC)"] = "$value Mana/5sec(SL)"
-S["$value HP5"] = "$value Vida/5sec"
-S["$value HP5(NC)"] = "$value Vida/5sec(NC)"
-S["$value to be Dodged/Parried"] = "$value Esquivado/Parado"
-S["$value to be Crit"] = "$value recibir Crit"
-S["$value Crit Dmg Taken"] = "$value Daño crit recib"
-S["$value DOT Dmg Taken"] = "$value Daño por tiempo recib"
-S["$value PvP Damage Taken"] = "$value Daño recib"
-S["$value Parry"] = "$value Parada"
+-- Controls the order of values and stats in stat breakdowns
+-- "%s %s"     -> "+1.34% Crit"
+-- "%2$s $1$s" -> "Crit +1.34%"
+L["StatBreakdownOrder"] = "%s %s"
+S["Crit"] = "Crit"
+S["Spell Crit"] = "Crit hechizos"
+S["Dodge"] = "Esquivar"
+S["HP"] = "Vida"
+S["MP"] = "Mana"
+S["AP"] = "P.At"
+S["RAP"] = "P.At Dist"
+S["Spell Dmg"] = "Daño"
+S["Heal"] = "Sanacion"
+S["Armor"] = "Armadura"
+S["Block"] = "Bloqueo"
+S["MP5"] = "Mana/5sec"
+S["MP5(NC)"] = "Mana/5sec(SL)"
+S["HP5"] = "Vida/5sec"
+S["HP5(NC)"] = "Vida/5sec(NC)"
+S["to be Dodged/Parried"] = "Esquivado/Parado"
+S["to be Crit"] = "recibir Crit"
+S["Crit Dmg Taken"] = "Daño crit recib"
+S["DOT Dmg Taken"] = "Daño por tiempo recib"
+S["PvP Damage Taken"] = "Daño recib"
+S["Parry"] = "Parada"
 -- for hit rating showing both physical and spell conversions
 -- (+1.21%, S+0.98%)
 -- (+1.21%, +0.98% S)
-S["$value Spell"] = "$value Hech."
-S["$value Spell Hit"] = "$value Golpe Hech."
+S["Spell"] = "Hech."
+S["Spell Hit"] = "Golpe Hech."
 
 L[StatLogic.Stats.ManaRegen] = "Regen.Mana"
 L[StatLogic.Stats.ManaRegenNotCasting] = "Regen.Mana (No se lanza)"
@@ -487,6 +488,8 @@ L[StatLogic.Stats.DodgeReduction] = "Fallo Esquivar"
 L[StatLogic.Stats.ParryReduction] = "Fallo Parar"
 L[StatLogic.Stats.WeaponSkill] = "Habilidad Arma"
 
+-- AceLocale can only register one locale at a time,
+-- so we copy the short translations at the end.
 local short = LibStub("AceLocale-3.0"):NewLocale("RatingBusterShort", "esES")
 for k, v in pairs(S) do
 	short[k] = v

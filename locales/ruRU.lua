@@ -463,36 +463,37 @@ L["statList"] = {
 -------------------------
 -- Added info patterns --
 -------------------------
--- $value will be replaced with the number
--- EX: "$value Crit" -> "+1.34% Crit"
--- EX: "Crit $value" -> "Crit +1.34%"
-S["$value Crit"] = "$value к крит. удару"
-S["$value Spell Crit"] = "$value к крит. удару"
-S["$value Dodge"] = "$value к уклонению"
-S["$value Parry"] = "$value к парированию"
-S["$value HP"] = "$value к здоровью"
-S["$value MP"] = "$value к мане"
-S["$value AP"] = "$value к силе атаки"
-S["$value RAP"] = "к силе атаки дальнего боя"
-S["$value Spell Dmg"] = "$value к силе заклинаний"
-S["$value Heal"] = "$value к силе заклинаний"
-S["$value Armor"] = "$value к броне"
-S["$value Block"] = "$value к показателю блокирования" -- Block value
-S["$value MP5"] = "$value маны раз в 5 сек."
-S["$value MP5(OC)"] = "$value маны раз в 5 сек. (вне боя)"
-S["$value MP5(NC)"] = "$value маны раз в 5 сек. (вне каста)"
-S["$value HP5"] = "$value здоровья раз в 5 сек."
-S["$value HP5(NC)"] = "$value ХП5 (вне боя)"
-S["$value to be Dodged/Parried"] = "$value уклонения/парирования" -- Target's dodges/parrys against your attacks
-S["$value to be Crit"] = "$value к получению крит. удара" -- Your chance to get critical hit from target
-S["$value Crit Dmg Taken"] = "$value к получению крит. урона"
-S["$value DOT Dmg Taken"] = "$value к получению урона от ДоТ"
-S["$value PvP Damage Taken"] = "$value PvP Damage Taken"
+-- Controls the order of values and stats in stat breakdowns
+-- "%s %s"     -> "+1.34% Crit"
+-- "%2$s $1$s" -> "Crit +1.34%"
+L["StatBreakdownOrder"] = "%s %s"
+S["Crit"] = "к крит. удару"
+S["Spell Crit"] = "к крит. удару"
+S["Dodge"] = "к уклонению"
+S["Parry"] = "к парированию"
+S["HP"] = "к здоровью"
+S["MP"] = "к мане"
+S["AP"] = "к силе атаки"
+S["RAP"] = "к силе атаки дальнего боя"
+S["Spell Dmg"] = "к силе заклинаний"
+S["Heal"] = "к силе заклинаний"
+S["Armor"] = "к броне"
+S["Block"] = "к показателю блокирования" -- Block value
+S["MP5"] = "маны раз в 5 сек."
+S["MP5(OC)"] = "маны раз в 5 сек. (вне боя)"
+S["MP5(NC)"] = "маны раз в 5 сек. (вне каста)"
+S["HP5"] = "здоровья раз в 5 сек."
+S["HP5(NC)"] = "ХП5 (вне боя)"
+S["to be Dodged/Parried"] = "уклонения/парирования" -- Target's dodges/parrys against your attacks
+S["to be Crit"] = "к получению крит. удара" -- Your chance to get critical hit from target
+S["Crit Dmg Taken"] = "к получению крит. урона"
+S["DOT Dmg Taken"] = "к получению урона от ДоТ"
+S["PvP Damage Taken"] = "PvP Damage Taken"
 -- for hit rating showing both physical and spell conversions
 -- (+1.21%, S+0.98%)
 -- (+1.21%, +0.98% S)
-S["$value Spell"] = "$value для заклинаний"
-S["$value Spell Hit"] = "$value метк. закл."
+S["Spell"] = "для заклинаний"
+S["Spell Hit"] = "метк. закл."
 
 L[StatLogic.Stats.ManaRegen] = "Восполнение маны"
 L[StatLogic.Stats.ManaRegenNotCasting] = "Восполнения маны (пока не применяете заклинания)"
@@ -586,6 +587,8 @@ L[StatLogic.Stats.DodgeReduction] = "игнорирования уклонени
 L[StatLogic.Stats.ParryReduction] = "игнорирования парирования"
 L[StatLogic.Stats.WeaponSkill] = "Оружейный навык"
 
+-- AceLocale can only register one locale at a time,
+-- so we copy the short translations at the end.
 local short = LibStub("AceLocale-3.0"):NewLocale("RatingBusterShort", "ruRU")
 for k, v in pairs(S) do
 	short[k] = v

@@ -364,35 +364,36 @@ L["statList"] = {
 -------------------------
 -- Added info patterns --
 -------------------------
--- $value will be replaced with the number
--- EX: "$value Crit" -> "+1.34% Crit"
--- EX: "Crit $value" -> "Crit +1.34%"
-S["$value Crit"] = "치명타 $value"
-S["$value Spell Crit"] = "극대화 $value"
-S["$value Dodge"] = "회피 $value"
-S["$value HP"] = "생명력 $value"
-S["$value MP"] = "마나 $value"
-S["$value AP"] = "전투력 $value"
-S["$value RAP"] = "원거리 전투력 $value"
-S["$value Spell Dmg"] = "공격력 $value"
-S["$value Heal"] = "치유량 $value"
-S["$value Armor"] = "방어도 $value"
-S["$value Block"] = "방어 $value"
-S["$value MP5"] = "$value MP5"
-S["$value MP5(NC)"] = "$value MP5(NC)"
-S["$value HP5"] = "$value HP5"
-S["$value HP5(NC)"] = "$value HP5(NC)"
-S["$value to be Dodged/Parried"] = "이후 회피 감소/무기막기 감소 $value"
-S["$value to be Crit"] = "이후 치명타 $value"
-S["$value Crit Dmg Taken"] = "가질 치명타 데미지 $value"
-S["$value DOT Dmg Taken"] = "가질 DOT 데미지 $value"
-S["$value PvP Damage Taken"] = "$value PvP Damage Taken"
-S["$value Parry"] = "무막 $value"
+-- Controls the order of values and stats in stat breakdowns
+-- "%s %s"     -> "+1.34% Crit"
+-- "%2$s $1$s" -> "Crit +1.34%"
+L["StatBreakdownOrder"] = "%s %s"
+S["Crit"] = "치명타"
+S["Spell Crit"] = "극대화"
+S["Dodge"] = "회피"
+S["HP"] = "생명력"
+S["MP"] = "마나"
+S["AP"] = "전투력"
+S["RAP"] = "원거리 전투력"
+S["Spell Dmg"] = "공격력"
+S["Heal"] = "치유량"
+S["Armor"] = "방어도"
+S["Block"] = "방어"
+S["MP5"] = "MP5"
+S["MP5(NC)"] = "MP5(NC)"
+S["HP5"] = "HP5"
+S["HP5(NC)"] = "HP5(NC)"
+S["to be Dodged/Parried"] = "이후 회피 감소/무기막기 감소"
+S["to be Crit"] = "이후 치명타"
+S["Crit Dmg Taken"] = "가질 치명타 데미지"
+S["DOT Dmg Taken"] = "가질 DOT 데미지"
+S["PvP Damage Taken"] = "PvP Damage Taken"
+S["Parry"] = "무막"
 -- for hit rating showing both physical and spell conversions
 -- (+1.21%, S+0.98%)
 -- (+1.21%, +0.98% S)
-S["$value Spell"] = "주문 $value"
-S["$value Spell Hit"] = "주문 적중 $value"
+S["Spell"] = "주문"
+S["Spell Hit"] = "주문 적중"
 
 L[StatLogic.Stats.ManaRegen] = "마나 회복량"
 L[StatLogic.Stats.ManaRegenNotCasting] = "마나 회복량 (시전하지)"
@@ -485,6 +486,8 @@ L[StatLogic.Stats.MasteryEffect] = SPELL_LASTING_EFFECT:format(STAT_MASTERY)
 L[StatLogic.Stats.WeaponSkill] = "무기 숙련"
 L[StatLogic.Stats.ParryReduction] = PARRY.." 무시"
 
+-- AceLocale can only register one locale at a time,
+-- so we copy the short translations at the end.
 local short = LibStub("AceLocale-3.0"):NewLocale("RatingBusterShort", "koKR")
 for k, v in pairs(S) do
 	short[k] = v

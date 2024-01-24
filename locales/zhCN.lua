@@ -364,35 +364,36 @@ L["statList"] = {
 -------------------------
 -- Added info patterns --
 -------------------------
--- $value will be replaced with the number
--- EX: "$value Crit" -> "+1.34% Crit"
--- EX: "Crit $value" -> "Crit +1.34%"
-S["$value Crit"] = "$value 爆击"
-S["$value Spell Crit"] = "$value 法爆"
-S["$value Dodge"] = "$value 躲闪"
-S["$value HP"] = "$value 生命"
-S["$value MP"] = "$value 法力"
-S["$value AP"] = "$value 攻击强度"
-S["$value RAP"] = "$value 远攻强度"
-S["$value Spell Dmg"] = "$value 法伤"
-S["$value Heal"] = "$value 治疗"
-S["$value Armor"] = "$value 护甲"
-S["$value Block"] = "$value 格挡值"
-S["$value MP5"] = "$value 施法回魔"
-S["$value MP5(NC)"] = "$value 精神回魔"
-S["$value HP5"] = "$value 回血"
-S["$value HP5(NC)"] = "$value 回血(非战斗)"
-S["$value to be Dodged/Parried"] = "$value 被躲闪/被招架"
-S["$value to be Crit"] = "$value 被致命一击"
-S["$value Crit Dmg Taken"] = "$value 致命一击伤害减免"
-S["$value DOT Dmg Taken"] = "$value 持续伤害减免"
-S["$value PvP Damage Taken"] = "$value PvP Damage Taken"
-S["$value Parry"] = "$value 招架"
+-- Controls the order of values and stats in stat breakdowns
+-- "%s %s"     -> "+1.34% Crit"
+-- "%2$s $1$s" -> "Crit +1.34%"
+L["StatBreakdownOrder"] = "%s %s"
+S["Crit"] = "爆击"
+S["Spell Crit"] = "法爆"
+S["Dodge"] = "躲闪"
+S["HP"] = "生命"
+S["MP"] = "法力"
+S["AP"] = "攻击强度"
+S["RAP"] = "远攻强度"
+S["Spell Dmg"] = "法伤"
+S["Heal"] = "治疗"
+S["Armor"] = "护甲"
+S["Block"] = "格挡值"
+S["MP5"] = "施法回魔"
+S["MP5(NC)"] = "精神回魔"
+S["HP5"] = "回血"
+S["HP5(NC)"] = "回血(非战斗)"
+S["to be Dodged/Parried"] = "被躲闪/被招架"
+S["to be Crit"] = "被致命一击"
+S["Crit Dmg Taken"] = "致命一击伤害减免"
+S["DOT Dmg Taken"] = "持续伤害减免"
+S["PvP Damage Taken"] = "PvP Damage Taken"
+S["Parry"] = "招架"
 -- for hit rating showing both physical and spell conversions
 -- (+1.21%, S+0.98%)
 -- (+1.21%, +0.98% S)
-S["$value Spell"] = "$value 法术"
-S["$value Spell Hit"] = "$value Spell Hit"
+S["Spell"] = "法术"
+S["Spell Hit"] = "Spell Hit"
 
 L[StatLogic.Stats.ManaRegen] = "法力回复"
 L[StatLogic.Stats.ManaRegenNotCasting] = "法力回复 (未施法)"
@@ -486,6 +487,8 @@ L[StatLogic.Stats.DodgeReduction] = "防止被躲闪"
 L[StatLogic.Stats.ParryReduction] = "防止被招架"
 L[StatLogic.Stats.WeaponSkill] = "武器技能"
 
+-- AceLocale can only register one locale at a time,
+-- so we copy the short translations at the end.
 local short = LibStub("AceLocale-3.0"):NewLocale("RatingBusterShort", "zhCN")
 for k, v in pairs(S) do
 	short[k] = v

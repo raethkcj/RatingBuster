@@ -389,35 +389,36 @@ L["statList"] = {
 -------------------------
 -- Added info patterns --
 -------------------------
--- $value will be replaced with the number
--- EX: "$value Crit" -> "+1.34% Crit"
--- EX: "Crit $value" -> "Crit +1.34%"
-S["$value Crit"] = true
-S["$value Spell Crit"] = true
-S["$value Dodge"] = true
-S["$value HP"] = true
-S["$value MP"] = true
-S["$value AP"] = true
-S["$value RAP"] = true
-S["$value Spell Dmg"] = true
-S["$value Heal"] = true
-S["$value Armor"] = true
-S["$value Block"] = true
-S["$value MP5"] = true
-S["$value MP5(NC)"] = true
-S["$value HP5"] = true
-S["$value HP5(NC)"] = true
-S["$value to be Dodged/Parried"] = true
-S["$value to be Crit"] = true
-S["$value Crit Dmg Taken"] = true
-S["$value DOT Dmg Taken"] = true
-S["$value PvP Damage Taken"] = true
-S["$value Parry"] = true
+-- Controls the order of values and stats in stat breakdowns
+-- "%s %s"     -> "+1.34% Crit"
+-- "%2$s $1$s" -> "Crit +1.34%"
+L["StatBreakdownOrder"] = "%s %s"
+S["Crit"] = true
+S["Spell Crit"] = true
+S["Dodge"] = true
+S["HP"] = true
+S["MP"] = true
+S["AP"] = true
+S["RAP"] = true
+S["Spell Dmg"] = true
+S["Heal"] = true
+S["Armor"] = true
+S["Block"] = true
+S["MP5"] = true
+S["MP5(NC)"] = true
+S["HP5"] = true
+S["HP5(NC)"] = true
+S["to be Dodged/Parried"] = true
+S["to be Crit"] = true
+S["Crit Dmg Taken"] = true
+S["DOT Dmg Taken"] = true
+S["PvP Damage Taken"] = true
+S["Parry"] = true
 -- for hit rating showing both physical and spell conversions
 -- (+1.21%, S+0.98%)
 -- (+1.21%, +0.98% S)
-S["$value Spell"] = true
-S["$value Spell Hit"] = true
+S["Spell"] = true
+S["Spell Hit"] = true
 
 L[StatLogic.Stats.ManaRegen] = "Mana Regen"
 L[StatLogic.Stats.ManaRegenNotCasting] = "Mana Regen (Not Casting)"
