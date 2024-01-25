@@ -15,7 +15,7 @@ local GSM = function(...)
 	return StatLogic:GetStatMod(...)
 end
 local L = LibStub("AceLocale-3.0"):GetLocale("RatingBuster")
-local S = LibStub("AceLocale-3.0"):GetLocale("RatingBusterShort")
+local S = setmetatable(addon.S, { __index = L })
 ---@cast L RatingBusterLocale
 
 --------------------

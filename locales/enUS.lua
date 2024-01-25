@@ -20,7 +20,8 @@ addon.tocversion = select(4, GetBuildInfo())
 
 ---@type RatingBusterDefaultLocale
 local L = LibStub("AceLocale-3.0"):NewLocale("RatingBuster", "enUS", true)
-local S = {}
+addon.S = {}
+local S = addon.S
 L["RatingBuster Options"] = true
 local StatLogic = LibStub("StatLogic")
 ---------------------------
@@ -522,10 +523,3 @@ L[StatLogic.Stats.NatureResistance] = RESISTANCE3_NAME
 L[StatLogic.Stats.FrostResistance] = RESISTANCE4_NAME
 L[StatLogic.Stats.ShadowResistance] = RESISTANCE5_NAME
 L[StatLogic.Stats.ArcaneResistance] = RESISTANCE6_NAME
-
--- AceLocale can only register one locale at a time,
--- so we copy the short translations at the end.
-local short = LibStub("AceLocale-3.0"):NewLocale("RatingBusterShort", "enUS", true)
-for k, v in pairs(S) do
-	short[k] = v
-end

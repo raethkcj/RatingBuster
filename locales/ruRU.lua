@@ -10,7 +10,8 @@ local _, addon = ...
 ---@type RatingBusterLocale
 local L = LibStub("AceLocale-3.0"):NewLocale("RatingBuster", "ruRU")
 if not L then return end
-local S = {}
+addon.S = {}
+local S = addon.S
 local StatLogic = LibStub("StatLogic")
 -- This file is coded in UTF-8
 ----
@@ -597,10 +598,3 @@ L[StatLogic.Stats.NatureResistance] = "Сопротивление силам п�
 L[StatLogic.Stats.FrostResistance] = "Сопротивление магии льда"
 L[StatLogic.Stats.ShadowResistance] = "Сопротивление темной магии"
 L[StatLogic.Stats.ArcaneResistance] = "Сопротивление тайной магии"
-
--- AceLocale can only register one locale at a time,
--- so we copy the short translations at the end.
-local short = LibStub("AceLocale-3.0"):NewLocale("RatingBusterShort", "ruRU")
-for k, v in pairs(S) do
-	short[k] = v
-end
