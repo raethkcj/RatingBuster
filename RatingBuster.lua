@@ -2005,19 +2005,46 @@ do
 			--self:Debug(reversedAmount..", "..amount..", "..v[2]..", "..RatingBuster.targetLevel)-- debug
 			-- If rating is resilience, add a minus sign
 			if statID == StatLogic.Stats.DefenseRating and db.profile.defBreakDown then
-				effect = effect * 0.04
-				processedDodge = processedDodge + effect
-				processedMissed = processedMissed + effect
-				local numStats = 5
-				if GetParryChance() == 0 then
-					numStats = numStats - 1
-				else
-					processedParry = processedParry + effect
+				local infoTable = {}
+
+				local blockChance = effect * GSM("ADD_BLOCK_CHANCE_MOD_DEFENSE")
+				if blockChance > 0 then
+					tinsert(infoTable, L["StatBreakdownOrder"]:format(("%+.2f%%"):format(blockChance), S[StatLogic.Stats.BlockChance]))
 				end
-				if GetBlockChance() == 0 then
-					numStats = numStats - 1
+
+				local critAvoidance = effect * GSM("ADD_CRIT_AVOIDANCE_MOD_DEFENSE")
+				if critAvoidance > 0 then
+					tinsert(infoTable, L["StatBreakdownOrder"]:format(("%+.2f%%"):format(critAvoidance), S[StatLogic.Stats.CritAvoidance]))
 				end
-				infoString = ("%+.2f%% x"..numStats):format(effect)
+
+				local dodge = effect * GSM("ADD_DODGE_MOD_DEFENSE")
+				if dodge > 0 then
+					if db.profile.enableAvoidanceDiminishingReturns then
+						dodge = StatLogic:GetAvoidanceGainAfterDR(StatLogic.Stats.Dodge, processedDodge + dodge) - StatLogic:GetAvoidanceAfterDR(StatLogic.Stats.Dodge, processedDodge)
+						processedDodge = processedDodge + dodge
+					end
+					tinsert(infoTable, L["StatBreakdownOrder"]:format(("%+.2f%%"):format(dodge), S[StatLogic.Stats.Dodge]))
+				end
+
+				local miss = effect * GSM("ADD_MISS_MOD_DEFENSE")
+				if miss > 0 then
+					if db.profile.enableAvoidanceDiminishingReturns then
+						miss = StatLogic:GetAvoidanceGainAfterDR(StatLogic.Stats.Miss, processedMissed + miss) - StatLogic:GetAvoidanceAfterDR(StatLogic.Stats.Miss, processedMissed)
+						processedMissed = processedMissed + miss
+					end
+					tinsert(infoTable, L["StatBreakdownOrder"]:format(("%+.2f%%"):format(miss), S[StatLogic.Stats.Miss]))
+				end
+
+				local parry = effect * GSM("ADD_PARRY_MOD_DEFENSE")
+				if parry > 0 then
+					if db.profile.enableAvoidanceDiminishingReturns then
+						parry = StatLogic:GetAvoidanceGainAfterDR(StatLogic.Stats.Parry, processedParry + parry) - StatLogic:GetAvoidanceAfterDR(StatLogic.Stats.Parry, processedParry)
+						processedParry = processedParry + parry
+					end
+					tinsert(infoTable, L["StatBreakdownOrder"]:format(("%+.2f%%"):format(parry), S[StatLogic.Stats.Parry]))
+				end
+
+				infoString = table.concat(infoTable, ", ")
 			elseif statID == StatLogic.Stats.DodgeRating and db.profile.enableAvoidanceDiminishingReturns then
 				infoString = ("%+.2f%%"):format(StatLogic:GetAvoidanceGainAfterDR(StatLogic.Stats.Dodge, processedDodge + effect) - StatLogic:GetAvoidanceGainAfterDR(StatLogic.Stats.Dodge, processedDodge))
 				processedDodge = processedDodge + effect
@@ -2557,9 +2584,6 @@ local armorTypes = {
 	[Enum.ItemArmorSubclass["Cloth"]] = true,
 }
 
--- Interface_<Expansion>/FrameXML/PaperDollFrame.lua Compatibility
-if not DODGE_PARRY_BLOCK_PERCENT_PER_DEFENSE then DODGE_PARRY_BLOCK_PERCENT_PER_DEFENSE = 0.04 end
-
 local summaryCalcData = {
 	-----------
 	-- Basic --
@@ -3077,7 +3101,7 @@ local summaryCalcData = {
 		func = function(sum)
 			return sum[StatLogic.Stats.Dodge]
 				+ StatLogic:GetEffectFromRating(sum[StatLogic.Stats.DodgeRating], StatLogic.Stats.DodgeRating, playerLevel)
-				+ summaryFunc[StatLogic.Stats.Defense](sum) * DODGE_PARRY_BLOCK_PERCENT_PER_DEFENSE
+				+ summaryFunc[StatLogic.Stats.Defense](sum) * GSM("ADD_DODGE_MOD_DEFENSE")
 				+ sum[StatLogic.Stats.Agility] * StatLogic:GetDodgePerAgi()
 		end,
 		ispercent = true,
@@ -3115,7 +3139,7 @@ local summaryCalcData = {
 			return GetParryChance() > 0 and (
 				sum[StatLogic.Stats.Parry]
 				+ StatLogic:GetEffectFromRating(summaryFunc[StatLogic.Stats.ParryRating](sum), StatLogic.Stats.ParryRating, playerLevel)
-				+ summaryFunc[StatLogic.Stats.Defense](sum) * DODGE_PARRY_BLOCK_PERCENT_PER_DEFENSE
+				+ summaryFunc[StatLogic.Stats.Defense](sum) * GSM("ADD_PARRY_MOD_DEFENSE")
 			) or 0
 		end,
 		ispercent = true,
@@ -3154,7 +3178,7 @@ local summaryCalcData = {
 			return GetBlockChance() > 0 and (
 				sum[StatLogic.Stats.BlockChance]
 				+ StatLogic:GetEffectFromRating(sum[StatLogic.Stats.BlockRating], StatLogic.Stats.BlockRating, playerLevel)
-				+ summaryFunc[StatLogic.Stats.Defense](sum) * DODGE_PARRY_BLOCK_PERCENT_PER_DEFENSE
+				+ summaryFunc[StatLogic.Stats.Defense](sum) * GSM("ADD_BLOCK_CHANCE_MOD_DEFENSE")
 				+ summaryFunc[StatLogic.Stats.MasteryEffect](sum) * GSM("ADD_BLOCK_CHANCE_MOD_MASTERY_EFFECT")
 			) or 0
 		end,
@@ -3186,7 +3210,7 @@ local summaryCalcData = {
 		option = "sumHitAvoidBeforeDR",
 		name = StatLogic.Stats.MissBeforeDR,
 		func = function(sum)
-			return summaryFunc[StatLogic.Stats.Defense](sum) * DODGE_PARRY_BLOCK_PERCENT_PER_DEFENSE
+			return summaryFunc[StatLogic.Stats.Defense](sum) * GSM("ADD_MISS_MOD_DEFENSE")
 		end,
 		ispercent = true,
 	},
@@ -3238,7 +3262,7 @@ local summaryCalcData = {
 		name = StatLogic.Stats.CritAvoidance,
 		func = function(sum)
 			return StatLogic:GetEffectFromRating(sum[StatLogic.Stats.ResilienceRating], StatLogic.Stats.ResilienceRating) * GSM("ADD_CRIT_AVOIDANCE_MOD_RESILIENCE")
-				+ summaryFunc[StatLogic.Stats.Defense](sum) * DODGE_PARRY_BLOCK_PERCENT_PER_DEFENSE
+				+ summaryFunc[StatLogic.Stats.Defense](sum) * GSM("ADD_CRIT_AVOIDANCE_MOD_DEFENSE")
 		 end,
 		ispercent = true,
 	},

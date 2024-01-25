@@ -581,7 +581,7 @@ L[StatLogic.Stats.BlockChance] = "Вероятность блокировани�
 L[StatLogic.Stats.BlockRating] = "Рейтинг блокирования"
 L[StatLogic.Stats.BlockValue] = "Показатель блокирования"
 S[StatLogic.Stats.BlockValue] = "к показателю блокирования" -- Block value
-L[StatLogic.Stats.Miss] = "Hit Avoidance"
+L[StatLogic.Stats.Miss] = "Miss"
 
 L[StatLogic.Stats.Defense] = "Защита"
 L[StatLogic.Stats.DefenseRating] = "Рейтинг защиты"

@@ -506,12 +506,12 @@ L[StatLogic.Stats.BlockChance] = BLOCK_CHANCE
 L[StatLogic.Stats.BlockRating] = COMBAT_RATING_NAME5 -- COMBAT_RATING_NAME5 = "Block Rating"
 L[StatLogic.Stats.BlockValue] = "Block Value"
 S[StatLogic.Stats.BlockValue] = "Block"
-L[StatLogic.Stats.Miss] = HIT.." "..STAT_AVOIDANCE
+L[StatLogic.Stats.Miss] = MISS
 
 L[StatLogic.Stats.Defense] = DEFENSE
 L[StatLogic.Stats.DefenseRating] = COMBAT_RATING_NAME2 -- COMBAT_RATING_NAME2 = "Defense Rating"
 L[StatLogic.Stats.CritAvoidance] = CRIT_ABBR.." "..STAT_AVOIDANCE
-S[StatLogic.Stats.CritAvoidance] = "to be Crit"
+S[StatLogic.Stats.CritAvoidance] = "Crit Avoid"
 
 L[StatLogic.Stats.ResilienceRating] = COMBAT_RATING_NAME15 -- COMBAT_RATING_NAME15 = "Resilience"
 L[StatLogic.Stats.CritDamageReduction] = "Crit Damage Reduction"

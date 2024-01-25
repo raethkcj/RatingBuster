@@ -376,6 +376,26 @@ StatLogic.StatModInfo = {
 		initialValue = 0,
 		finalAdjust = 0,
 	},
+	["ADD_BLOCK_CHANCE_MOD_DEFENSE"] = {
+		initialValue = 0,
+		finalAdjust = 0,
+	},
+	["ADD_CRIT_AVOIDANCE_MOD_DEFENSE"] = {
+		initialValue = 0,
+		finalAdjust = 0,
+	},
+	["ADD_DODGE_MOD_DEFENSE"] = {
+		initialValue = 0,
+		finalAdjust = 0,
+	},
+	["ADD_MISS_MOD_DEFENSE"] = {
+		initialValue = 0,
+		finalAdjust = 0,
+	},
+	["ADD_PARRY_MOD_DEFENSE"] = {
+		initialValue = 0,
+		finalAdjust = 0,
+	},
 	["ADD_PVP_DAMAGE_REDUCTION_MOD_RESILIENCE"] = {
 		initialValue = 0,
 		finalAdjust = 0,
@@ -1225,6 +1245,7 @@ function StatLogic:GetReductionFromArmor(armor, attackerLevel)
 	return armorReduction
 end
 
+if not DODGE_PARRY_BLOCK_PERCENT_PER_DEFENSE then DODGE_PARRY_BLOCK_PERCENT_PER_DEFENSE = 0.04 end
 function StatLogic:GetEffectFromDefense(defense, attackerLevel)
 	self:argCheck(defense, 2, "nil", "number")
 	self:argCheck(attackerLevel, 3, "nil", "number")
