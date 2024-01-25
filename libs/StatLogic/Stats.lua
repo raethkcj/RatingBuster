@@ -8,10 +8,11 @@ local StatLogic = LibStub(addonName)
 ---@field dependents? table<Stat, number> This Stat's dependent Stats mapped to the rate at which they are inherited
 ---@field modifier? number The total multiplicative modifers on this stat
 ---@field value? number The total flat amount of this stat
+---@field show boolean -- Should the stat be shown in summaries, or when broken down from a parent Stat
+---@field isPercent boolean -- Whether values of the stat represent a percentage
 local Stat = {
-	-- Should the stat be shown in summaries, or when broken down from a parent Stat
-	---@type boolean
 	show = true,
+	isPercent = false,
 }
 
 ---@param stat table?
