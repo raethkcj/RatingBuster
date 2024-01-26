@@ -488,10 +488,11 @@ L[StatLogic.Stats.DefenseRating] = COMBAT_RATING_NAME2.." "..RATING COMBAT_RATIN
 L[StatLogic.Stats.CritAvoidance] = "치명타 공격 회피"
 S[StatLogic.Stats.CritAvoidance] = "이후 치명타"
 
+L[StatLogic.Stats.Resilience] = COMBAT_RATING_NAME15
 L[StatLogic.Stats.ResilienceRating] = "탄력도"
 L[StatLogic.Stats.CritDamageReduction] = "치명타 피해 감소"
 S[StatLogic.Stats.CritDamageReduction] = "가질 치명타 데미지"
-S[StatLogic.Stats.PvPDamageReduction] = "PvP Damage Taken"
+L[StatLogic.Stats.PvPDamageReduction] = "PvP Damage Taken"
 
 L[StatLogic.Stats.FireResistance] = "화염 저항력"
 L[StatLogic.Stats.NatureResistance] = "자연 저항력"

@@ -513,10 +513,11 @@ L[StatLogic.Stats.DefenseRating] = COMBAT_RATING_NAME2.." "..RATING -- COMBAT_RA
 L[StatLogic.Stats.CritAvoidance] = CRIT_ABBR.." "..STAT_AVOIDANCE
 S[StatLogic.Stats.CritAvoidance] = "Crit Avoid"
 
-L[StatLogic.Stats.ResilienceRating] = COMBAT_RATING_NAME15 -- COMBAT_RATING_NAME15 = "Resilience"
+L[StatLogic.Stats.Resilience] = COMBAT_RATING_NAME15
+L[StatLogic.Stats.ResilienceRating] = COMBAT_RATING_NAME15.." "..RATING
 L[StatLogic.Stats.CritDamageReduction] = "Crit Damage Reduction"
 S[StatLogic.Stats.CritDamageReduction] = "Crit Dmg Taken"
-S[StatLogic.Stats.PvPDamageReduction] = "PvP Damage Taken"
+L[StatLogic.Stats.PvPDamageReduction] = "PvP Damage Taken"
 
 L[StatLogic.Stats.FireResistance] = RESISTANCE2_NAME
 L[StatLogic.Stats.NatureResistance] = RESISTANCE3_NAME

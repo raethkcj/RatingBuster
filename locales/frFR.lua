@@ -511,10 +511,11 @@ L[StatLogic.Stats.DefenseRating] = "Score de défense"
 L[StatLogic.Stats.CritAvoidance] = "Évitement des coups critiques"
 S[StatLogic.Stats.CritAvoidance] = "recevoir CC"
 
+L[StatLogic.Stats.Resilience] = COMBAT_RATING_NAME15
 L[StatLogic.Stats.ResilienceRating] = "Score de résilience"
 L[StatLogic.Stats.CritDamageReduction] = "Diminution des dégâts des coups critiques en mêlée"
 S[StatLogic.Stats.CritDamageReduction] = "dégâts CC"
-S[StatLogic.Stats.PvPDamageReduction] = "PvP Damage Taken"
+L[StatLogic.Stats.PvPDamageReduction] = "PvP Damage Taken"
 
 L[StatLogic.Stats.FireResistance] = "Résistance au Feu"
 L[StatLogic.Stats.NatureResistance] = "Résistance à la Nature"

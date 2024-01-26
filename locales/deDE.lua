@@ -488,6 +488,7 @@ L[StatLogic.Stats.DefenseRating] = COMBAT_RATING_NAME2.." "..RATING COMBAT_RATIN
 L[StatLogic.Stats.CritAvoidance] = "kritische Treffervermeidung"
 S[StatLogic.Stats.CritAvoidance] = "wird kritisch"
 
+L[StatLogic.Stats.Resilience] = COMBAT_RATING_NAME15
 L[StatLogic.Stats.ResilienceRating] = "Abhärtung"
 L[StatLogic.Stats.CritDamageReduction] = "Krit Schadenverminderung"
 S[StatLogic.Stats.CritDamageReduction] = "erlittener krit. Schaden"

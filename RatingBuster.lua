@@ -365,6 +365,14 @@ local options = {
 					args = {},
 					hidden = true,
 				},
+				resilience = {
+					type = 'group',
+					name = L[StatLogic.Stats.Resilience],
+					desc = L["Changes the display of %s"]:format(L[StatLogic.Stats.Resilience]),
+					order = 11,
+					args = {},
+					hidden = true,
+				},
 			},
 		},
 		sum = {
@@ -1440,6 +1448,8 @@ do
 		["MISS"] = StatLogic.Stats.Miss,
 		["PARRY"] = StatLogic.Stats.Parry,
 		["BLOCK_VALUE"] = StatLogic.Stats.BlockValue,
+		["CRIT_DAMAGE_REDUCTION"] = StatLogic.Stats.CritDamageReduction,
+		["PVP_DAMAGE_REDUCTION"] = StatLogic.Stats.PvPDamageReduction,
 	},
 	{
 		__index = function(_, stat)
@@ -2081,15 +2091,15 @@ do
 				effect = effect * -1
 				if db.profile.detailedConversionText then
 					local critAvoidance = effect * GSM("ADD_CRIT_AVOIDANCE_MOD_RESILIENCE")
-					if critAvoidance ~= 0 then
+					if db.profile.showCritAvoidanceFromResilience then
 						infoTable[StatLogic.Stats.CritAvoidance] = infoTable[StatLogic.Stats.CritAvoidance] + critAvoidance
 					end
 					local critDmgReduction = effect * GSM("ADD_CRIT_DAMAGE_REDUCTION_MOD_RESILIENCE")
-					if critDmgReduction ~= 0 then
+					if db.profile.showCritDamageReductionFromResilience then
 						infoTable[StatLogic.Stats.CritDamageReduction] = infoTable[StatLogic.Stats.CritDamageReduction] + critDmgReduction
 					end
 					local pvpDmgReduction = effect * GSM("ADD_PVP_DAMAGE_REDUCTION_MOD_RESILIENCE")
-					if pvpDmgReduction ~= 0 then
+					if db.profile.showPvpDamageReductionFromResilience then
 						infoTable[StatLogic.Stats.PvPDamageReduction] = infoTable[StatLogic.Stats.PvPDamageReduction] + pvpDmgReduction
 					end
 				else

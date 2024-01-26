@@ -588,10 +588,11 @@ L[StatLogic.Stats.DefenseRating] = "Рейтинг защиты"
 L[StatLogic.Stats.CritAvoidance] = "Crit Avoidance"
 S[StatLogic.Stats.CritAvoidance] = "к получению крит. удара" -- Your chance to get critical hit from target
 
+L[StatLogic.Stats.Resilience] = COMBAT_RATING_NAME15
 L[StatLogic.Stats.ResilienceRating] = "устойчивости"
 L[StatLogic.Stats.CritDamageReduction] = "Понижение входящего урона от крит. ударов"
 S[StatLogic.Stats.CritDamageReduction] = "к получению крит. урона"
-S[StatLogic.Stats.PvPDamageReduction] = "PvP Damage Taken"
+L[StatLogic.Stats.PvPDamageReduction] = "PvP Damage Taken"
 
 L[StatLogic.Stats.FireResistance] = "Сопротивление огню"
 L[StatLogic.Stats.NatureResistance] = "Сопротивление силам природы"

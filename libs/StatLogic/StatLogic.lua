@@ -374,18 +374,6 @@ StatLogic.StatModInfo = {
 		initialValue = 0,
 		finalAdjust = 0,
 	},
-	["ADD_CRIT_AVOIDANCE_MOD_RESILIENCE"] = {
-		initialValue = 0,
-		finalAdjust = 0,
-	},
-	["ADD_CRIT_DAMAGE_REDUCTION_MOD_RESILIENCE"] = {
-		initialValue = 0,
-		finalAdjust = 0,
-	},
-	["ADD_PVP_DAMAGE_REDUCTION_MOD_RESILIENCE"] = {
-		initialValue = 0,
-		finalAdjust = 0,
-	},
 	["ADD_PET_INT_MOD_INT"] = {
 		initialValue = 0,
 		finalAdjust = 0,
@@ -645,6 +633,21 @@ local addedInfoMods = {
 	{
 		add = "PARRY",
 		mod = "DEFENSE",
+	},
+	{
+		add = "CRIT_AVOIDANCE",
+		mod = "RESILIENCE",
+
+	},
+	{
+		add = "CRIT_DAMAGE_REDUCTION",
+		mod = "RESILIENCE",
+
+	},
+	{
+		add = "PVP_DAMAGE_REDUCTION",
+		mod = "RESILIENCE",
+
 	},
 }
 

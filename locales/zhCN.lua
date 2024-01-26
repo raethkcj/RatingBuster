@@ -488,10 +488,11 @@ L[StatLogic.Stats.DefenseRating] = COMBAT_RATING_NAME2.." "..RATING COMBAT_RATIN
 L[StatLogic.Stats.CritAvoidance] = "物理爆击躲闪"
 S[StatLogic.Stats.CritAvoidance] = "被致命一击"
 
+L[StatLogic.Stats.Resilience] = COMBAT_RATING_NAME15
 L[StatLogic.Stats.ResilienceRating] = "韧性"
 L[StatLogic.Stats.CritDamageReduction] = "爆击减伤"
 S[StatLogic.Stats.CritDamageReduction] = "致命一击伤害减免"
-S[StatLogic.Stats.PvPDamageReduction] = "PvP Damage Taken"
+L[StatLogic.Stats.PvPDamageReduction] = "PvP Damage Taken"
 
 L[StatLogic.Stats.FireResistance] = "火焰抗性"
 L[StatLogic.Stats.NatureResistance] = "自然抗性"
