@@ -2136,11 +2136,9 @@ do
 			--------------
 			-- Strength --
 			--------------
-			local statmod = GSM("MOD_STR")
-			value = value * statmod
+			value = value * GSM("MOD_STR")
 			if db.profile.showAPFromStr then
-				local mod = GSM("MOD_AP")
-				local effect = value * GSM("ADD_AP_MOD_STR") * mod
+				local effect = value * GSM("ADD_AP_MOD_STR") * GSM("MOD_AP")
 				infoTable[StatLogic.Stats.AttackPower] = infoTable[StatLogic.Stats.AttackPower] + effect
 			end
 			if db.profile.showBlockValueFromStr then
@@ -2150,17 +2148,17 @@ do
 			-- Shaman: Mental Quickness
 			-- Paladin: Sheath of Light, Touched by the Light
 			if db.profile.showSpellDmgFromStr then
-				local mod = GSM("MOD_AP") * GSM("MOD_SPELL_DMG")
-				local effect = (value * GSM("ADD_AP_MOD_STR") * GSM("ADD_SPELL_DMG_MOD_AP")
-					+ value * GSM("ADD_SPELL_DMG_MOD_STR")) * mod
-
+				local effect = GSM("MOD_AP") * GSM("MOD_SPELL_DMG") * (
+					value * GSM("ADD_AP_MOD_STR") * GSM("ADD_SPELL_DMG_MOD_AP")
+					+ value * GSM("ADD_SPELL_DMG_MOD_STR")
+				)
 				infoTable[StatLogic.Stats.SpellDamage] = infoTable[StatLogic.Stats.SpellDamage] + effect
 			end
 			if db.profile.showHealingFromStr then
-				local mod = GSM("MOD_AP") * GSM("MOD_HEALING")
-				local effect = (value * GSM("ADD_AP_MOD_STR") * GSM("ADD_HEALING_MOD_AP")
-					+ value * GSM("ADD_HEALING_MOD_STR")) * mod
-
+				local effect = GSM("MOD_AP") * GSM("MOD_HEALING") * (
+					value * GSM("ADD_AP_MOD_STR") * GSM("ADD_HEALING_MOD_AP")
+					+ value * GSM("ADD_HEALING_MOD_STR")
+				)
 				infoTable[StatLogic.Stats.HealingPower] = infoTable[StatLogic.Stats.HealingPower] + effect
 			end
 			-- Death Knight: Forceful Deflection - Passive
@@ -2182,16 +2180,13 @@ do
 			-------------
 			-- Agility --
 			-------------
-			local statmod = GSM("MOD_AGI")
-			value = value * statmod
+			value = value * GSM("MOD_AGI")
 			if db.profile.showAPFromAgi then
-				local mod = GSM("MOD_AP")
-				local effect = value * GSM("ADD_AP_MOD_AGI") * mod
+				local effect = value * GSM("ADD_AP_MOD_AGI") * GSM("MOD_AP")
 				infoTable[StatLogic.Stats.AttackPower] = infoTable[StatLogic.Stats.AttackPower] + effect
 			end
 			if db.profile.showRAPFromAgi then
-				local mod = GSM("MOD_RANGED_AP")
-				local effect = value * GSM("ADD_RANGED_AP_MOD_AGI") * mod
+				local effect = value * GSM("ADD_RANGED_AP_MOD_AGI") * GSM("MOD_RANGED_AP")
 				infoTable[StatLogic.Stats.RangedAttackPower] = infoTable[StatLogic.Stats.RangedAttackPower] + effect
 			end
 			if db.profile.showCritFromAgi then
@@ -2209,49 +2204,43 @@ do
 			-- Shaman: Mental Quickness
 			-- Paladin: Sheath of Light, Touched by the Light
 			if db.profile.showSpellDmgFromAgi then
-				local mod = GSM("MOD_AP") * GSM("MOD_SPELL_DMG")
-				local effect = (value * GSM("ADD_AP_MOD_AGI") * GSM("ADD_SPELL_DMG_MOD_AP")) * mod
+				local effect = (value * GSM("ADD_AP_MOD_AGI") * GSM("ADD_SPELL_DMG_MOD_AP")) * GSM("MOD_AP") * GSM("MOD_SPELL_DMG")
 				infoTable[StatLogic.Stats.SpellDamage] = infoTable[StatLogic.Stats.SpellDamage] + effect
 			end
 			-- Druid: Nurturing Instinct
 			if db.profile.showHealingFromAgi then
-				local mod = GSM("MOD_AP") * GSM("MOD_HEALING")
-				local effect = (value * GSM("ADD_AP_MOD_AGI") * GSM("ADD_HEALING_MOD_AP")
-					+ value * GSM("ADD_HEALING_MOD_AGI") / GSM("MOD_AP")) * mod
+				local effect = GSM("MOD_AP") * GSM("MOD_HEALING") * (
+					value * GSM("ADD_AP_MOD_AGI") * GSM("ADD_HEALING_MOD_AP")
+					+ value * GSM("ADD_HEALING_MOD_AGI") / GSM("MOD_AP")
+				)
 				infoTable[StatLogic.Stats.HealingPower] = infoTable[StatLogic.Stats.HealingPower] + effect
 			end
 		elseif statID == StatLogic.Stats.Stamina and db.profile.showStats then
 			-------------
 			-- Stamina --
 			-------------
-			local statmod = GSM("MOD_STA")
-			value = value * statmod
+			value = value * GSM("MOD_STA")
 			if db.profile.showHealthFromSta then
-				local mod = GSM("MOD_HEALTH")
-				local effect = value * GSM("ADD_HEALTH_MOD_STA") * mod
+				local effect = value * GSM("ADD_HEALTH_MOD_STA") * GSM("MOD_HEALTH")
 				infoTable[StatLogic.Stats.Health] = infoTable[StatLogic.Stats.Health] + effect
 			end
 			if db.profile.showSpellDmgFromSta then
-				local mod = GSM("MOD_SPELL_DMG")
-				local effect = value * mod * (GSM("ADD_SPELL_DMG_MOD_STA")
+				local effect = value * GSM("MOD_SPELL_DMG") * (GSM("ADD_SPELL_DMG_MOD_STA")
 					+ GSM("ADD_SPELL_DMG_MOD_PET_STA") * GSM("MOD_PET_STA") * GSM("ADD_PET_STA_MOD_STA"))
 				infoTable[StatLogic.Stats.SpellDamage] = infoTable[StatLogic.Stats.SpellDamage] + effect
 			end
 			-- "ADD_AP_MOD_STA" -- Hunter: Hunter vs. Wild
 			if db.profile.showAPFromSta then
-				local mod = GSM("MOD_AP")
-				local effect = value * GSM("ADD_AP_MOD_STA") * mod
+				local effect = value * GSM("ADD_AP_MOD_STA") * GSM("MOD_AP")
 				infoTable[StatLogic.Stats.AttackPower] = infoTable[StatLogic.Stats.AttackPower] + effect
 			end
 		elseif statID == StatLogic.Stats.Intellect and db.profile.showStats then
 			---------------
 			-- Intellect --
 			---------------
-			local statmod = GSM("MOD_INT")
-			value = value * statmod
+			value = value * GSM("MOD_INT")
 			if db.profile.showManaFromInt then
-				local mod = GSM("MOD_MANA")
-				local effect = value * GSM("ADD_MANA_MOD_INT") * mod -- 15 Mana per Int
+				local effect = value * GSM("ADD_MANA_MOD_INT") * GSM("MOD_MANA")
 				infoTable[StatLogic.Stats.Mana] = infoTable[StatLogic.Stats.Mana] + effect
 			end
 			if db.profile.showSpellCritFromInt then
@@ -2259,8 +2248,7 @@ do
 				infoTable[StatLogic.Stats.SpellCrit] = infoTable[StatLogic.Stats.SpellCrit] + effect
 			end
 			if db.profile.showSpellDmgFromInt then
-				local mod = GSM("MOD_SPELL_DMG")
-				local effect = value * mod * (
+				local effect = value * GSM("MOD_SPELL_DMG") * (
 					GSM("ADD_SPELL_DMG_MOD_INT")
 					+ GSM("ADD_SPELL_DMG_MOD_PET_INT") * GSM("MOD_PET_INT") * GSM("ADD_PET_INT_MOD_INT")
 					+ GSM("ADD_SPELL_DMG_MOD_MANA") * GSM("MOD_MANA") * GSM("ADD_MANA_MOD_INT")
@@ -2268,8 +2256,7 @@ do
 				infoTable[StatLogic.Stats.SpellDamage] = infoTable[StatLogic.Stats.SpellDamage] + effect
 			end
 			if db.profile.showHealingFromInt then
-				local mod = GSM("MOD_HEALING")
-				local effect = value * mod * (
+				local effect = value * GSM("MOD_HEALING") * (
 					GSM("ADD_HEALING_MOD_INT")
 					+ GSM("ADD_HEALING_MOD_MANA") * GSM("MOD_MANA") * GSM("ADD_MANA_MOD_INT")
 				)
@@ -2288,8 +2275,7 @@ do
 				infoTable[StatLogic.Stats.ManaRegenNotCasting] = infoTable[StatLogic.Stats.ManaRegenNotCasting] + effect
 			end
 			if db.profile.showRAPFromInt then
-				local mod = GSM("MOD_RANGED_AP")
-				local effect = value * GSM("ADD_RANGED_AP_MOD_INT") * mod
+				local effect = value * GSM("ADD_RANGED_AP_MOD_INT") * GSM("MOD_RANGED_AP")
 				infoTable[StatLogic.Stats.RangedAttackPower] = infoTable[StatLogic.Stats.RangedAttackPower] + effect
 			end
 			if db.profile.showArmorFromInt then
@@ -2298,16 +2284,14 @@ do
 			end
 			-- "ADD_AP_MOD_INT" -- Shaman: Mental Dexterity
 			if db.profile.showAPFromInt then
-				local mod = GSM("MOD_AP")
-				local effect = value * GSM("ADD_AP_MOD_INT") * mod
+				local effect = value * GSM("ADD_AP_MOD_INT") * GSM("MOD_AP")
 				infoTable[StatLogic.Stats.AttackPower] = infoTable[StatLogic.Stats.AttackPower] + effect
 			end
 		elseif statID == StatLogic.Stats.Spirit and db.profile.showStats then
 			------------
 			-- Spirit --
 			------------
-			local statmod = GSM("MOD_SPI")
-			value = value * statmod
+			value = value * GSM("MOD_SPI")
 			if db.profile.showMP5FromSpi then
 				local effect = value * GSM("ADD_NORMAL_MANA_REG_MOD_SPI") * GSM("MOD_NORMAL_MANA_REG") * math.min(GSM("ADD_MANA_REG_MOD_NORMAL_MANA_REG"), 1)
 				infoTable[StatLogic.Stats.ManaRegen] = infoTable[StatLogic.Stats.ManaRegen] + effect
@@ -2325,13 +2309,11 @@ do
 				infoTable[StatLogic.Stats.HealthRegenOutOfCombat] = infoTable[StatLogic.Stats.HealthRegenOutOfCombat] + effect
 			end
 			if db.profile.showSpellDmgFromSpi then
-				local mod = GSM("MOD_SPELL_DMG")
-				local effect = value * GSM("ADD_SPELL_DMG_MOD_SPI") * mod
+				local effect = value * GSM("ADD_SPELL_DMG_MOD_SPI") * GSM("MOD_SPELL_DMG")
 				infoTable[StatLogic.Stats.SpellDamage] = infoTable[StatLogic.Stats.SpellDamage] + effect
 			end
 			if db.profile.showHealingFromSpi then
-				local mod = GSM("MOD_HEALING")
-				local effect = value * GSM("ADD_HEALING_MOD_SPI") * mod
+				local effect = value * GSM("ADD_HEALING_MOD_SPI") * GSM("MOD_HEALING")
 				infoTable[StatLogic.Stats.HealingPower] = infoTable[StatLogic.Stats.HealingPower] + effect
 			end
 			if db.profile.showSpellHitFromSpi then
@@ -2340,8 +2322,8 @@ do
 				infoTable[StatLogic.Stats.SpellHit] = infoTable[StatLogic.Stats.SpellHit] + effect
 			end
 			if db.profile.showSpellCritFromSpi then
-				local mod = GSM("ADD_SPELL_CRIT_RATING_MOD_SPI")
-				local effect = StatLogic:GetEffectFromRating(value * mod, StatLogic.Stats.SpellCritRating, playerLevel)
+				local rating = value * GSM("ADD_SPELL_CRIT_RATING_MOD_SPI")
+				local effect = StatLogic:GetEffectFromRating(rating, StatLogic.Stats.SpellCritRating, playerLevel)
 				infoTable[StatLogic.Stats.SpellCrit] = infoTable[StatLogic.Stats.SpellCrit] + effect
 			end
 		elseif db.profile.showAPFromArmor and statID == StatLogic.Stats.Armor then
@@ -2356,18 +2338,15 @@ do
 			------------------
 			-- Attack Power --
 			------------------
-			local statmod = GSM("MOD_AP")
-			value = value * statmod
+			value = value * GSM("MOD_AP")
 			-- Shaman: Mental Quickness
 			-- Paladin: Sheath of Light, Touched by the Light
 			if db.profile.showSpellDmgFromAP then
-				local mod = GSM("MOD_AP") * GSM("MOD_SPELL_DMG")
-				local effect = (value * GSM("ADD_SPELL_DMG_MOD_AP")) * mod
+				local effect = value * GSM("ADD_SPELL_DMG_MOD_AP") * GSM("MOD_SPELL_DMG")
 				infoTable[StatLogic.Stats.SpellDamage] = infoTable[StatLogic.Stats.SpellDamage] + effect
 			end
 			if db.profile.showHealingFromAP then
-				local mod = GSM("MOD_AP") * GSM("MOD_HEALING")
-				local effect = (value * GSM("ADD_HEALING_MOD_AP")) * mod
+				local effect = value * GSM("ADD_HEALING_MOD_AP") * GSM("MOD_HEALING")
 				infoTable[StatLogic.Stats.HealingPower] = infoTable[StatLogic.Stats.HealingPower] + effect
 			end
 		end
