@@ -1915,7 +1915,40 @@ function RatingBuster:ProcessText(text, link, color)
 				local pattern, stat = unpack(statPattern)
 				if (not partialtext and lowerText:find(pattern)) or (partialtext and partialtext:find(pattern)) then
 					value = tonumber(value)
-					local infoString = RatingBuster:ProcessStat(stat, value, link, color)
+					local infoTable = StatLogic.StatTable.new()
+					RatingBuster:ProcessStat(stat, value, infoTable, link, color)
+					local effects = {}
+					-- Group effects with identical values
+					for statID, effect in pairs(infoTable) do
+						if  type(statID) == "table" and statID.isPercent or statID == "Spell" then
+							effect = ("%+.2f%%"):format(effect)
+							effects[effect] = effects[effect] or {}
+							tinsert(effects[effect], S[statID])
+						elseif statID == "Percent" then
+							effect = ("%+.2f%%"):format(effect)
+							effects[effect] = effects[effect] or {}
+						else
+							if floor(abs(effect) * 10 + 0.5) > 0 then
+								effect = ("%+.1f"):format(effect)
+							elseif floor(abs(effect) + 0.5) > 0 then
+								effect = ("%+.0f"):format(effect)
+							end
+							effects[effect] = effects[effect] or {}
+							if statID ~= "Decimal" then
+								tinsert(effects[effect], S[statID])
+							end
+						end
+					end
+					local info = {}
+					for effect, stats in pairs(effects) do
+						if #stats > 0 then
+							effect = effect .. " " .. table.concat(stats, ", ")
+						end
+						tinsert(info, effect)
+					end
+					-- This would benefit from a Natural Sort Order implementation
+					table.sort(info)
+					local infoString = table.concat(info, ", ")
 					if infoString ~= "" then
 						-- Change insertion point if necessary
 						if num.addInfo == "AfterStat" then
@@ -1979,21 +2012,12 @@ do
 		}
 	}
 
-	function RatingBuster:ProcessStat(statID, value, link, color)
-		local infoString = ""
+	function RatingBuster:ProcessStat(statID, value, infoTable, link, color)
 		if StatLogic.GenericStatMap[statID] then
 			local statList = StatLogic.GenericStatMap[statID]
-			local first = true
 			for _, convertedStatID in ipairs(statList) do
 				if not RatingType.Ranged[convertedStatID] then
-					local result = RatingBuster:ProcessStat(convertedStatID, value)
-					if result and result ~= "" then
-						if not first then
-							infoString = infoString .. ", "
-						end
-						infoString = infoString .. result
-						first = false
-					end
+					RatingBuster:ProcessStat(convertedStatID, value, infoTable)
 				end
 			end
 		elseif StatLogic.RatingBase[statID] and db.profile.showRatings then
@@ -2002,20 +2026,12 @@ do
 			--------------------
 			-- Calculate stat value
 			local effect = StatLogic:GetEffectFromRating(value, statID, playerLevel)
-			--self:Debug(reversedAmount..", "..amount..", "..v[2]..", "..RatingBuster.targetLevel)-- debug
-			-- If rating is resilience, add a minus sign
 			if statID == StatLogic.Stats.DefenseRating and db.profile.defBreakDown then
-				local infoTable = {}
-
 				local blockChance = effect * GSM("ADD_BLOCK_CHANCE_MOD_DEFENSE")
-				if blockChance > 0 then
-					tinsert(infoTable, L["StatBreakdownOrder"]:format(("%+.2f%%"):format(blockChance), S[StatLogic.Stats.BlockChance]))
-				end
+				infoTable[StatLogic.Stats.BlockChance] = infoTable[StatLogic.Stats.BlockChance] + blockChance
 
 				local critAvoidance = effect * GSM("ADD_CRIT_AVOIDANCE_MOD_DEFENSE")
-				if critAvoidance > 0 then
-					tinsert(infoTable, L["StatBreakdownOrder"]:format(("%+.2f%%"):format(critAvoidance), S[StatLogic.Stats.CritAvoidance]))
-				end
+				infoTable[StatLogic.Stats.CritAvoidance] = infoTable[StatLogic.Stats.CritAvoidance] + critAvoidance
 
 				local dodge = effect * GSM("ADD_DODGE_MOD_DEFENSE")
 				if dodge > 0 then
@@ -2023,7 +2039,7 @@ do
 						dodge = StatLogic:GetAvoidanceGainAfterDR(StatLogic.Stats.Dodge, processedDodge + dodge) - StatLogic:GetAvoidanceAfterDR(StatLogic.Stats.Dodge, processedDodge)
 						processedDodge = processedDodge + dodge
 					end
-					tinsert(infoTable, L["StatBreakdownOrder"]:format(("%+.2f%%"):format(dodge), S[StatLogic.Stats.Dodge]))
+					infoTable[StatLogic.Stats.Dodge] = infoTable[StatLogic.Stats.Dodge] + dodge
 				end
 
 				local miss = effect * GSM("ADD_MISS_MOD_DEFENSE")
@@ -2032,7 +2048,7 @@ do
 						miss = StatLogic:GetAvoidanceGainAfterDR(StatLogic.Stats.Miss, processedMissed + miss) - StatLogic:GetAvoidanceAfterDR(StatLogic.Stats.Miss, processedMissed)
 						processedMissed = processedMissed + miss
 					end
-					tinsert(infoTable, L["StatBreakdownOrder"]:format(("%+.2f%%"):format(miss), S[StatLogic.Stats.Miss]))
+					infoTable[StatLogic.Stats.Miss] = infoTable[StatLogic.Stats.Miss] + miss
 				end
 
 				local parry = effect * GSM("ADD_PARRY_MOD_DEFENSE")
@@ -2041,15 +2057,13 @@ do
 						parry = StatLogic:GetAvoidanceGainAfterDR(StatLogic.Stats.Parry, processedParry + parry) - StatLogic:GetAvoidanceAfterDR(StatLogic.Stats.Parry, processedParry)
 						processedParry = processedParry + parry
 					end
-					tinsert(infoTable, L["StatBreakdownOrder"]:format(("%+.2f%%"):format(parry), S[StatLogic.Stats.Parry]))
+					infoTable[StatLogic.Stats.Parry] = infoTable[StatLogic.Stats.Parry] + parry
 				end
-
-				infoString = table.concat(infoTable, ", ")
 			elseif statID == StatLogic.Stats.DodgeRating and db.profile.enableAvoidanceDiminishingReturns then
-				infoString = ("%+.2f%%"):format(StatLogic:GetAvoidanceGainAfterDR(StatLogic.Stats.Dodge, processedDodge + effect) - StatLogic:GetAvoidanceGainAfterDR(StatLogic.Stats.Dodge, processedDodge))
+				infoTable["Percent"] = StatLogic:GetAvoidanceGainAfterDR(StatLogic.Stats.Dodge, processedDodge + effect) - StatLogic:GetAvoidanceGainAfterDR(StatLogic.Stats.Dodge, processedDodge)
 				processedDodge = processedDodge + effect
 			elseif statID == StatLogic.Stats.ParryRating and db.profile.enableAvoidanceDiminishingReturns then
-				infoString = ("%+.2f%%"):format(StatLogic:GetAvoidanceGainAfterDR(StatLogic.Stats.Parry, processedParry + effect) - StatLogic:GetAvoidanceGainAfterDR(StatLogic.Stats.Parry, processedParry))
+				infoTable["Percent"] = StatLogic:GetAvoidanceGainAfterDR(StatLogic.Stats.Parry, processedParry + effect) - StatLogic:GetAvoidanceGainAfterDR(StatLogic.Stats.Parry, processedParry)
 				processedParry = processedParry + effect
 			elseif statID == StatLogic.Stats.ExpertiseRating and db.profile.expBreakDown then
 				if addon.tocversion < 30000 then
@@ -2058,14 +2072,12 @@ do
 				end
 				effect = effect * -0.25
 				if db.profile.detailedConversionText then
-					local infoTable = {}
-					tinsert(infoTable, L["StatBreakdownOrder"]:format(("%+.2f%%"):format(effect), S[StatLogic.Stats.DodgeReduction]))
-					tinsert(infoTable, L["StatBreakdownOrder"]:format(("%+.2f%%"):format(effect), S[StatLogic.Stats.ParryReduction]))
-					infoString = table.concat(infoTable, ", ")
+					infoTable[StatLogic.Stats.DodgeReduction] = infoTable[StatLogic.Stats.DodgeReduction] + effect
+					infoTable[StatLogic.Stats.ParryReduction] = infoTable[StatLogic.Stats.ParryReduction] + effect
 				else
-					infoString = ("%+.2f%%"):format(effect)
+					infoTable["Percent"] = effect
 				end
-			elseif statID == StatLogic.Stats.ResilienceRating then -- Resilience
+			elseif statID == StatLogic.Stats.ResilienceRating then
 				if db.profile.enableAvoidanceDiminishingReturns and StatLogic.GetResilienceEffectGainAfterDR then
 					effect = StatLogic:GetResilienceEffectGainAfterDR(processedResilience + value, processedResilience)
 					processedResilience = processedResilience + value
@@ -2073,32 +2085,29 @@ do
 
 				effect = effect * -1
 				if db.profile.detailedConversionText then
-					local infoTable = {}
 					local critAvoidance = effect * GSM("ADD_CRIT_AVOIDANCE_MOD_RESILIENCE")
 					if critAvoidance ~= 0 then
-						tinsert(infoTable, L["StatBreakdownOrder"]:format(("%+.2f%%"):format(critAvoidance), S[StatLogic.Stats.CritAvoidance]))
+						infoTable[StatLogic.Stats.CritAvoidance] = infoTable[StatLogic.Stats.CritAvoidance] + critAvoidance
 					end
 					local critDmgReduction = effect * GSM("ADD_CRIT_DAMAGE_REDUCTION_MOD_RESILIENCE")
 					if critDmgReduction ~= 0 then
-						tinsert(infoTable, L["StatBreakdownOrder"]:format(("%+.2f%%"):format(critDmgReduction), S[StatLogic.Stats.CritDamageReduction]))
+						infoTable[StatLogic.Stats.CritDamageReduction] = infoTable[StatLogic.Stats.CritDamageReduction] + critDmgReduction
 					end
 					local pvpDmgReduction = effect * GSM("ADD_PVP_DAMAGE_REDUCTION_MOD_RESILIENCE")
 					if pvpDmgReduction ~= 0 then
-						tinsert(infoTable, L["StatBreakdownOrder"]:format(("%+.2f%%"):format(pvpDmgReduction), S[StatLogic.Stats.PvPDamageReduction]))
+						infoTable[StatLogic.Stats.PvPDamageReduction] = infoTable[StatLogic.Stats.PvPDamageReduction] + pvpDmgReduction
 					end
-
-					infoString = table.concat(infoTable, ", ")
 				else
-					infoString = ("%+.2f%%"):format(effect)
+					infoTable["Percent"] = effect
 				end
 			elseif statID == StatLogic.Stats.MasteryRating then
 				if db.profile.showMasteryEffectFromMastery then
 					effect = effect * GSM("ADD_MASTERY_EFFECT_MOD_MASTERY")
-					infoString = ("%+.2f%%"):format(effect)
+					infoTable["Percent"] = infoTable[StatLogic.Stats.MasteryEffect] + effect
 				end
 			else
-				local pattern = "%+.2f%%"
 				local show = false
+				local displayType = "Percent"
 				if RatingType.Melee[statID] then
 					if db.profile.ratingPhysical then
 						show = true
@@ -2109,18 +2118,18 @@ do
 							show = true
 						elseif ( statID == StatLogic.Stats.SpellHitRating or (statID == StatLogic.Stats.SpellHasteRating and StatLogic.ExtraHasteClasses[class])) then
 							show = true
-							pattern = L["StatBreakdownOrder"]:format("%+.2f%%", L["Spell"])
+							displayType = "Spell"
 						end
 					end
 				elseif RatingType.Decimal[statID] then
 					show = true
-					pattern = "%+.2f"
+					displayType = "Decimal"
 				else
 					show = true
 				end
 
 				if show then
-					infoString = pattern:format(effect)
+					infoTable[displayType] = effect
 				end
 			end
 		elseif statID == StatLogic.Stats.Strength and db.profile.showStats then
@@ -2129,21 +2138,14 @@ do
 			--------------
 			local statmod = GSM("MOD_STR")
 			value = value * statmod
-			local infoTable = {}
 			if db.profile.showAPFromStr then
 				local mod = GSM("MOD_AP")
 				local effect = value * GSM("ADD_AP_MOD_STR") * mod
-				if (mod ~= 1 or statmod ~= 1) and floor(abs(effect) * 10 + 0.5) > 0 then
-					tinsert(infoTable, L["StatBreakdownOrder"]:format(("%+.1f"):format(effect), S[StatLogic.Stats.AttackPower]))
-				elseif floor(abs(effect) + 0.5) > 0 then -- so we don't get +0 AP when effect < 0.5
-					tinsert(infoTable, L["StatBreakdownOrder"]:format(("%+.0f"):format(effect), S[StatLogic.Stats.AttackPower]))
-				end
+				infoTable[StatLogic.Stats.AttackPower] = infoTable[StatLogic.Stats.AttackPower] + effect
 			end
 			if db.profile.showBlockValueFromStr then
 				local effect = value * GSM("ADD_BLOCK_VALUE_MOD_STR")
-				if floor(abs(effect) * 10 + 0.5) > 0 then
-					tinsert(infoTable, L["StatBreakdownOrder"]:format(("%+.1f"):format(effect), S[StatLogic.Stats.BlockValue]))
-				end
+				infoTable[StatLogic.Stats.BlockValue] = infoTable[StatLogic.Stats.BlockValue] + effect
 			end
 			-- Shaman: Mental Quickness
 			-- Paladin: Sheath of Light, Touched by the Light
@@ -2151,21 +2153,15 @@ do
 				local mod = GSM("MOD_AP") * GSM("MOD_SPELL_DMG")
 				local effect = (value * GSM("ADD_AP_MOD_STR") * GSM("ADD_SPELL_DMG_MOD_AP")
 					+ value * GSM("ADD_SPELL_DMG_MOD_STR")) * mod
-				if (mod ~= 1 or statmod ~= 1) and floor(abs(effect) * 10 + 0.5) > 0 then
-					tinsert(infoTable, L["StatBreakdownOrder"]:format(("%+.1f"):format(effect), S[StatLogic.Stats.SpellDamage]))
-				elseif floor(abs(effect) + 0.5) > 0 then
-					tinsert(infoTable, L["StatBreakdownOrder"]:format(("%+.0f"):format(effect), S[StatLogic.Stats.SpellDamage]))
-				end
+
+				infoTable[StatLogic.Stats.SpellDamage] = infoTable[StatLogic.Stats.SpellDamage] + effect
 			end
 			if db.profile.showHealingFromStr then
 				local mod = GSM("MOD_AP") * GSM("MOD_HEALING")
 				local effect = (value * GSM("ADD_AP_MOD_STR") * GSM("ADD_HEALING_MOD_AP")
 					+ value * GSM("ADD_HEALING_MOD_STR")) * mod
-				if (mod ~= 1 or statmod ~= 1) and floor(abs(effect) * 10 + 0.5) > 0 then
-					tinsert(infoTable, L["StatBreakdownOrder"]:format(("%+.1f"):format(effect), S[StatLogic.Stats.HealingPower]))
-				elseif floor(abs(effect) + 0.5) > 0 then
-					tinsert(infoTable, L["StatBreakdownOrder"]:format(("%+.0f"):format(effect), S[StatLogic.Stats.HealingPower]))
-				end
+
+				infoTable[StatLogic.Stats.HealingPower] = infoTable[StatLogic.Stats.HealingPower] + effect
 			end
 			-- Death Knight: Forceful Deflection - Passive
 			if db.profile.showParryFromStr then
@@ -2176,137 +2172,91 @@ do
 					effect = StatLogic:GetAvoidanceGainAfterDR(StatLogic.Stats.Parry, processedParry + effect) - StatLogic:GetAvoidanceGainAfterDR(StatLogic.Stats.Parry, processedParry)
 					processedParry = processedParry + effectNoDR
 				end
-				if effect > 0 then
-					tinsert(infoTable, L["StatBreakdownOrder"]:format(("%+.2f%%"):format(effect), S[StatLogic.Stats.Parry]))
-				end
+				infoTable[StatLogic.Stats.Parry] = infoTable[StatLogic.Stats.Parry] + effect
 			else
 				local rating = value * GSM("ADD_PARRY_RATING_MOD_STR")
 				local effect = StatLogic:GetEffectFromRating(rating, StatLogic.Stats.ParryRating, playerLevel)
 				processedParry = processedParry + effect
 			end
-			infoString = table.concat(infoTable, ", ")
 		elseif statID == StatLogic.Stats.Agility and db.profile.showStats then
 			-------------
 			-- Agility --
 			-------------
 			local statmod = GSM("MOD_AGI")
 			value = value * statmod
-			local infoTable = {}
 			if db.profile.showAPFromAgi then
 				local mod = GSM("MOD_AP")
 				local effect = value * GSM("ADD_AP_MOD_AGI") * mod
-				if (mod ~= 1 or statmod ~= 1) and floor(abs(effect) * 10 + 0.5) > 0 then
-					tinsert(infoTable, L["StatBreakdownOrder"]:format(("%+.1f"):format(effect), S[StatLogic.Stats.AttackPower]))
-				elseif floor(abs(effect) + 0.5) > 0 then
-					tinsert(infoTable, L["StatBreakdownOrder"]:format(("%+.0f"):format(effect), S[StatLogic.Stats.AttackPower]))
-				end
+				infoTable[StatLogic.Stats.AttackPower] = infoTable[StatLogic.Stats.AttackPower] + effect
 			end
 			if db.profile.showRAPFromAgi then
 				local mod = GSM("MOD_RANGED_AP")
 				local effect = value * GSM("ADD_RANGED_AP_MOD_AGI") * mod
-				if (mod ~= 1 or statmod ~= 1) and floor(abs(effect) * 10 + 0.5) > 0 then
-					tinsert(infoTable, L["StatBreakdownOrder"]:format(("%+.1f"):format(effect), S[StatLogic.Stats.RangedAttackPower]))
-				elseif floor(abs(effect) + 0.5) > 0 then
-					tinsert(infoTable, L["StatBreakdownOrder"]:format(("%+.0f"):format(effect), S[StatLogic.Stats.RangedAttackPower]))
-				end
+				infoTable[StatLogic.Stats.RangedAttackPower] = infoTable[StatLogic.Stats.RangedAttackPower] + effect
 			end
 			if db.profile.showCritFromAgi then
 				local effect = value * StatLogic:GetCritPerAgi()
-				if effect > 0 then
-					tinsert(infoTable, L["StatBreakdownOrder"]:format(("%+.2f%%"):format(effect), S[StatLogic.Stats.MeleeCrit]))
-				end
+				infoTable[StatLogic.Stats.MeleeCrit] = infoTable[StatLogic.Stats.MeleeCrit] + effect
 			end
 			if db.profile.showDodgeFromAgi then
 				local effect = value * StatLogic:GetDodgePerAgi()
-				if effect > 0 then
-					tinsert(infoTable, L["StatBreakdownOrder"]:format(("%+.2f%%"):format(effect), S[StatLogic.Stats.Dodge]))
-				end
+				infoTable[StatLogic.Stats.Dodge] = infoTable[StatLogic.Stats.Dodge] + effect
 			end
 			if db.profile.showArmorFromAgi then
 				local effect = value * 2
-				if effect > 0 then
-					tinsert(infoTable, L["StatBreakdownOrder"]:format(("%+.0f"):format(effect), S[StatLogic.Stats.Armor]))
-				end
+				infoTable[StatLogic.Stats.Armor] = infoTable[StatLogic.Stats.Armor] + effect
 			end
 			-- Shaman: Mental Quickness
 			-- Paladin: Sheath of Light, Touched by the Light
 			if db.profile.showSpellDmgFromAgi then
 				local mod = GSM("MOD_AP") * GSM("MOD_SPELL_DMG")
 				local effect = (value * GSM("ADD_AP_MOD_AGI") * GSM("ADD_SPELL_DMG_MOD_AP")) * mod
-				if (mod ~= 1 or statmod ~= 1) and floor(abs(effect) * 10 + 0.5) > 0 then
-					tinsert(infoTable, L["StatBreakdownOrder"]:format(("%+.1f"):format(effect), S[StatLogic.Stats.SpellDamage]))
-				elseif floor(abs(effect) + 0.5) > 0 then
-					tinsert(infoTable, L["StatBreakdownOrder"]:format(("%+.0f"):format(effect), S[StatLogic.Stats.SpellDamage]))
-				end
+				infoTable[StatLogic.Stats.SpellDamage] = infoTable[StatLogic.Stats.SpellDamage] + effect
 			end
 			-- Druid: Nurturing Instinct
 			if db.profile.showHealingFromAgi then
 				local mod = GSM("MOD_AP") * GSM("MOD_HEALING")
 				local effect = (value * GSM("ADD_AP_MOD_AGI") * GSM("ADD_HEALING_MOD_AP")
 					+ value * GSM("ADD_HEALING_MOD_AGI") / GSM("MOD_AP")) * mod
-				if (mod ~= 1 or statmod ~= 1) and floor(abs(effect) * 10 + 0.5) > 0 then
-					tinsert(infoTable, L["StatBreakdownOrder"]:format(("%+.1f"):format(effect), S[StatLogic.Stats.HealingPower]))
-				elseif floor(abs(effect) + 0.5) > 0 then
-					tinsert(infoTable, L["StatBreakdownOrder"]:format(("%+.0f"):format(effect), S[StatLogic.Stats.HealingPower]))
-				end
+				infoTable[StatLogic.Stats.HealingPower] = infoTable[StatLogic.Stats.HealingPower] + effect
 			end
-			infoString = table.concat(infoTable, ", ")
 		elseif statID == StatLogic.Stats.Stamina and db.profile.showStats then
 			-------------
 			-- Stamina --
 			-------------
 			local statmod = GSM("MOD_STA")
 			value = value * statmod
-			local infoTable = {}
 			if db.profile.showHealthFromSta then
 				local mod = GSM("MOD_HEALTH")
 				local effect = value * GSM("ADD_HEALTH_MOD_STA") * mod
-				if (mod ~= 1 or statmod ~= 1) and floor(abs(effect) * 10 + 0.5) > 0 then
-					tinsert(infoTable, L["StatBreakdownOrder"]:format(("%+.1f"):format(effect), S[StatLogic.Stats.Health]))
-				elseif floor(abs(effect) + 0.5) > 0 then
-					tinsert(infoTable, L["StatBreakdownOrder"]:format(("%+.0f"):format(effect), S[StatLogic.Stats.Health]))
-				end
+				infoTable[StatLogic.Stats.Health] = infoTable[StatLogic.Stats.Health] + effect
 			end
 			if db.profile.showSpellDmgFromSta then
 				local mod = GSM("MOD_SPELL_DMG")
 				local effect = value * mod * (GSM("ADD_SPELL_DMG_MOD_STA")
 					+ GSM("ADD_SPELL_DMG_MOD_PET_STA") * GSM("MOD_PET_STA") * GSM("ADD_PET_STA_MOD_STA"))
-				if floor(abs(effect) * 10 + 0.5) > 0 then
-					tinsert(infoTable, L["StatBreakdownOrder"]:format(("%+.1f"):format(effect), S[StatLogic.Stats.SpellDamage]))
-				end
+				infoTable[StatLogic.Stats.SpellDamage] = infoTable[StatLogic.Stats.SpellDamage] + effect
 			end
 			-- "ADD_AP_MOD_STA" -- Hunter: Hunter vs. Wild
 			if db.profile.showAPFromSta then
 				local mod = GSM("MOD_AP")
 				local effect = value * GSM("ADD_AP_MOD_STA") * mod
-				if (mod ~= 1 or statmod ~= 1) and floor(abs(effect) * 10 + 0.5) > 0 then
-					tinsert(infoTable, L["StatBreakdownOrder"]:format(("%+.1f"):format(effect), S[StatLogic.Stats.AttackPower]))
-				elseif floor(abs(effect) + 0.5) > 0 then
-					tinsert(infoTable, L["StatBreakdownOrder"]:format(("%+.0f"):format(effect), S[StatLogic.Stats.AttackPower]))
-				end
+				infoTable[StatLogic.Stats.AttackPower] = infoTable[StatLogic.Stats.AttackPower] + effect
 			end
-			infoString = table.concat(infoTable, ", ")
 		elseif statID == StatLogic.Stats.Intellect and db.profile.showStats then
 			---------------
 			-- Intellect --
 			---------------
 			local statmod = GSM("MOD_INT")
 			value = value * statmod
-			local infoTable = {}
 			if db.profile.showManaFromInt then
 				local mod = GSM("MOD_MANA")
 				local effect = value * GSM("ADD_MANA_MOD_INT") * mod -- 15 Mana per Int
-				if (mod ~= 1 or statmod ~= 1) and floor(abs(effect) * 10 + 0.5) > 0 then
-					tinsert(infoTable, L["StatBreakdownOrder"]:format(("%+.1f"):format(effect), S[StatLogic.Stats.Mana]))
-				elseif floor(abs(effect) + 0.5) > 0 then
-					tinsert(infoTable, L["StatBreakdownOrder"]:format(("%+.0f"):format(effect), S[StatLogic.Stats.Mana]))
-				end
+				infoTable[StatLogic.Stats.Mana] = infoTable[StatLogic.Stats.Mana] + effect
 			end
 			if db.profile.showSpellCritFromInt then
 				local effect = value * StatLogic:GetSpellCritPerInt()
-				if effect > 0 then
-					tinsert(infoTable, L["StatBreakdownOrder"]:format(("%+.2f%%"):format(effect), S[StatLogic.Stats.SpellCrit]))
-				end
+				infoTable[StatLogic.Stats.SpellCrit] = infoTable[StatLogic.Stats.SpellCrit] + effect
 			end
 			if db.profile.showSpellDmgFromInt then
 				local mod = GSM("MOD_SPELL_DMG")
@@ -2315,9 +2265,7 @@ do
 					+ GSM("ADD_SPELL_DMG_MOD_PET_INT") * GSM("MOD_PET_INT") * GSM("ADD_PET_INT_MOD_INT")
 					+ GSM("ADD_SPELL_DMG_MOD_MANA") * GSM("MOD_MANA") * GSM("ADD_MANA_MOD_INT")
 				)
-				if floor(abs(effect) * 10 + 0.5) > 0 then
-					tinsert(infoTable, L["StatBreakdownOrder"]:format(("%+.1f"):format(effect), S[StatLogic.Stats.SpellDamage]))
-				end
+				infoTable[StatLogic.Stats.SpellDamage] = infoTable[StatLogic.Stats.SpellDamage] + effect
 			end
 			if db.profile.showHealingFromInt then
 				local mod = GSM("MOD_HEALING")
@@ -2325,152 +2273,104 @@ do
 					GSM("ADD_HEALING_MOD_INT")
 					+ GSM("ADD_HEALING_MOD_MANA") * GSM("MOD_MANA") * GSM("ADD_MANA_MOD_INT")
 				)
-				if floor(abs(effect) * 10 + 0.5) > 0 then
-					tinsert(infoTable, L["StatBreakdownOrder"]:format(("%+.1f"):format(effect), S[StatLogic.Stats.HealingPower]))
-				end
+				infoTable[StatLogic.Stats.HealingPower] = infoTable[StatLogic.Stats.HealingPower] + effect
 			end
 			if db.profile.showMP5FromInt then
 				local effect = value * GSM("ADD_MANA_REG_MOD_INT")
 					+ value * GSM("ADD_NORMAL_MANA_REG_MOD_INT") * GSM("MOD_NORMAL_MANA_REG") * math.min(GSM("ADD_MANA_REG_MOD_NORMAL_MANA_REG"), 1)
 					+ value * GSM("ADD_MANA_MOD_INT") * GSM("MOD_MANA") * GSM("ADD_MANA_REG_MOD_MANA") -- Replenishment
-				if floor(abs(effect) * 10 + 0.5) > 0 then
-					tinsert(infoTable, L["StatBreakdownOrder"]:format(("%+.1f"):format(effect), S[StatLogic.Stats.ManaRegen]))
-				end
+				infoTable[StatLogic.Stats.ManaRegen] = infoTable[StatLogic.Stats.ManaRegen] + effect
 			end
 			if db.profile.showMP5NCFromInt then
 				local effect = value * GSM("ADD_MANA_REG_MOD_INT")
 					+ value * GSM("ADD_NORMAL_MANA_REG_MOD_INT") * GSM("MOD_NORMAL_MANA_REG")
 					+ value * GSM("ADD_MANA_MOD_INT") * GSM("MOD_MANA") * GSM("ADD_MANA_REG_MOD_MANA") -- Replenishment
-				if floor(abs(effect) * 10 + 0.5) > 0 then
-					tinsert(infoTable, L["StatBreakdownOrder"]:format(("%+.1f"):format(effect), S[StatLogic.Stats.ManaRegenNotCasting]))
-				end
+				infoTable[StatLogic.Stats.ManaRegenNotCasting] = infoTable[StatLogic.Stats.ManaRegenNotCasting] + effect
 			end
 			if db.profile.showRAPFromInt then
 				local mod = GSM("MOD_RANGED_AP")
 				local effect = value * GSM("ADD_RANGED_AP_MOD_INT") * mod
-				if floor(abs(effect) * 10 + 0.5) > 0 then
-					tinsert(infoTable, L["StatBreakdownOrder"]:format(("%+.1f"):format(effect), S[StatLogic.Stats.RangedAttackPower]))
-				end
+				infoTable[StatLogic.Stats.RangedAttackPower] = infoTable[StatLogic.Stats.RangedAttackPower] + effect
 			end
 			if db.profile.showArmorFromInt then
 				local effect = value * GSM("ADD_BONUS_ARMOR_MOD_INT")
-				if floor(abs(effect) + 0.5) > 0 then
-					tinsert(infoTable, L["StatBreakdownOrder"]:format(("%+.0f"):format(effect), S[StatLogic.Stats.Armor]))
-				end
+				infoTable[StatLogic.Stats.Armor] = infoTable[StatLogic.Stats.Armor] + effect
 			end
 			-- "ADD_AP_MOD_INT" -- Shaman: Mental Dexterity
 			if db.profile.showAPFromInt then
 				local mod = GSM("MOD_AP")
 				local effect = value * GSM("ADD_AP_MOD_INT") * mod
-				if (mod ~= 1 or statmod ~= 1) and floor(abs(effect) * 10 + 0.5) > 0 then
-					tinsert(infoTable, L["StatBreakdownOrder"]:format(("%+.1f"):format(effect), S[StatLogic.Stats.AttackPower]))
-				elseif floor(abs(effect) + 0.5) > 0 then
-					tinsert(infoTable, L["StatBreakdownOrder"]:format(("%+.0f"):format(effect), S[StatLogic.Stats.AttackPower]))
-				end
+				infoTable[StatLogic.Stats.AttackPower] = infoTable[StatLogic.Stats.AttackPower] + effect
 			end
-			infoString = table.concat(infoTable, ", ")
 		elseif statID == StatLogic.Stats.Spirit and db.profile.showStats then
 			------------
 			-- Spirit --
 			------------
 			local statmod = GSM("MOD_SPI")
 			value = value * statmod
-			local infoTable = {}
 			if db.profile.showMP5FromSpi then
 				local effect = value * GSM("ADD_NORMAL_MANA_REG_MOD_SPI") * GSM("MOD_NORMAL_MANA_REG") * math.min(GSM("ADD_MANA_REG_MOD_NORMAL_MANA_REG"), 1)
-				if floor(abs(effect) * 10 + 0.5) > 0 then
-					tinsert(infoTable, L["StatBreakdownOrder"]:format(("%+.1f"):format(effect), S[StatLogic.Stats.ManaRegen]))
-				end
+				infoTable[StatLogic.Stats.ManaRegen] = infoTable[StatLogic.Stats.ManaRegen] + effect
 			end
 			if db.profile.showMP5NCFromSpi then
 				local effect = value * GSM("ADD_NORMAL_MANA_REG_MOD_SPI") * GSM("MOD_NORMAL_MANA_REG")
-				if floor(abs(effect) * 10 + 0.5) > 0 then
-					tinsert(infoTable, L["StatBreakdownOrder"]:format(("%+.1f"):format(effect), S[StatLogic.Stats.ManaRegenNotCasting]))
-				end
+				infoTable[StatLogic.Stats.ManaRegenNotCasting] = infoTable[StatLogic.Stats.ManaRegenNotCasting] + effect
 			end
 			if db.profile.showHP5FromSpi then
 				local effect = value * GSM("ADD_NORMAL_HEALTH_REG_MOD_SPI") * GSM("MOD_NORMAL_HEALTH_REG") * GSM("ADD_HEALTH_REG_MOD_NORMAL_HEALTH_REG")
-				if floor(abs(effect) * 10 + 0.5) > 0 then
-					tinsert(infoTable, L["StatBreakdownOrder"]:format(("%+.1f"):format(effect), S[StatLogic.Stats.HealthRegen]))
-				end
+				infoTable[StatLogic.Stats.HealthRegen] = infoTable[StatLogic.Stats.HealthRegen] + effect
 			end
 			if db.profile.showHP5NCFromSpi then
 				local effect = value * GSM("ADD_NORMAL_HEALTH_REG_MOD_SPI") * GSM("MOD_NORMAL_HEALTH_REG")
-				if floor(abs(effect) * 10 + 0.5) > 0 then
-					tinsert(infoTable, L["StatBreakdownOrder"]:format(("%+.1f"):format(effect), S[StatLogic.Stats.HealthRegenOutOfCombat]))
-				end
+				infoTable[StatLogic.Stats.HealthRegenOutOfCombat] = infoTable[StatLogic.Stats.HealthRegenOutOfCombat] + effect
 			end
 			if db.profile.showSpellDmgFromSpi then
 				local mod = GSM("MOD_SPELL_DMG")
 				local effect = value * GSM("ADD_SPELL_DMG_MOD_SPI") * mod
-				if floor(abs(effect) * 10 + 0.5) > 0 then
-					tinsert(infoTable, L["StatBreakdownOrder"]:format(("%+.1f"):format(effect), S[StatLogic.Stats.SpellDamage]))
-				end
+				infoTable[StatLogic.Stats.SpellDamage] = infoTable[StatLogic.Stats.SpellDamage] + effect
 			end
 			if db.profile.showHealingFromSpi then
 				local mod = GSM("MOD_HEALING")
 				local effect = value * GSM("ADD_HEALING_MOD_SPI") * mod
-				if floor(abs(effect) * 10 + 0.5) > 0 then
-					tinsert(infoTable, L["StatBreakdownOrder"]:format(("%+.1f"):format(effect), S[StatLogic.Stats.HealingPower]))
-				end
+				infoTable[StatLogic.Stats.HealingPower] = infoTable[StatLogic.Stats.HealingPower] + effect
 			end
 			if db.profile.showSpellHitFromSpi then
 				local rating = value * GSM("ADD_SPELL_HIT_RATING_MOD_SPI")
 				local effect = StatLogic:GetEffectFromRating(rating, StatLogic.Stats.SpellHitRating, playerLevel)
-				if effect > 0 then
-					tinsert(infoTable, L["StatBreakdownOrder"]:format(("%+.2f%%"):format(effect), S[StatLogic.Stats.SpellHit]))
-				end
+				infoTable[StatLogic.Stats.SpellHit] = infoTable[StatLogic.Stats.SpellHit] + effect
 			end
 			if db.profile.showSpellCritFromSpi then
 				local mod = GSM("ADD_SPELL_CRIT_RATING_MOD_SPI")
 				local effect = StatLogic:GetEffectFromRating(value * mod, StatLogic.Stats.SpellCritRating, playerLevel)
-				if effect > 0 then
-					tinsert(infoTable, L["StatBreakdownOrder"]:format(("%+.2f%%"):format(effect), S[StatLogic.Stats.SpellCrit]))
-				end
+				infoTable[StatLogic.Stats.SpellCrit] = infoTable[StatLogic.Stats.SpellCrit] + effect
 			end
-			infoString = table.concat(infoTable, ", ")
 		elseif db.profile.showAPFromArmor and statID == StatLogic.Stats.Armor then
 			-----------
 			-- Armor --
 			-----------
 			local base, bonus = StatLogic:GetArmorDistribution(link, value, color)
 			value = base * GSM("MOD_ARMOR") + bonus
-			local infoTable = {}
 			local effect = value * GSM("ADD_AP_MOD_ARMOR") * GSM("MOD_AP")
-			if floor(abs(effect) * 10 + 0.5) > 0 then
-				tinsert(infoTable, L["StatBreakdownOrder"]:format(("%+.1f"):format(effect), S[StatLogic.Stats.AttackPower]))
-			end
-			infoString = table.concat(infoTable, ", ")
+			infoTable[StatLogic.Stats.AttackPower] = infoTable[StatLogic.Stats.AttackPower] + effect
 		elseif statID == StatLogic.Stats.AttackPower then
 			------------------
 			-- Attack Power --
 			------------------
 			local statmod = GSM("MOD_AP")
 			value = value * statmod
-			local infoTable = {}
 			-- Shaman: Mental Quickness
 			-- Paladin: Sheath of Light, Touched by the Light
 			if db.profile.showSpellDmgFromAP then
 				local mod = GSM("MOD_AP") * GSM("MOD_SPELL_DMG")
 				local effect = (value * GSM("ADD_SPELL_DMG_MOD_AP")) * mod
-				if (mod ~= 1 or statmod ~= 1) and floor(abs(effect) * 10 + 0.5) > 0 then
-					tinsert(infoTable, L["StatBreakdownOrder"]:format(("%+.1f"):format(effect), S[StatLogic.Stats.SpellDamage]))
-				elseif floor(abs(effect) + 0.5) > 0 then
-					tinsert(infoTable, L["StatBreakdownOrder"]:format(("%+.0f"):format(effect), S[StatLogic.Stats.SpellDamage]))
-				end
+				infoTable[StatLogic.Stats.SpellDamage] = infoTable[StatLogic.Stats.SpellDamage] + effect
 			end
 			if db.profile.showHealingFromAP then
 				local mod = GSM("MOD_AP") * GSM("MOD_HEALING")
 				local effect = (value * GSM("ADD_HEALING_MOD_AP")) * mod
-				if (mod ~= 1 or statmod ~= 1) and floor(abs(effect) * 10 + 0.5) > 0 then
-					tinsert(infoTable, L["StatBreakdownOrder"]:format(("%+.1f"):format(effect), S[StatLogic.Stats.HealingPower]))
-				elseif floor(abs(effect) + 0.5) > 0 then
-					tinsert(infoTable, L["StatBreakdownOrder"]:format(("%+.0f"):format(effect), S[StatLogic.Stats.HealingPower]))
-				end
+				infoTable[StatLogic.Stats.HealingPower] = infoTable[StatLogic.Stats.HealingPower] + effect
 			end
-			infoString = table.concat(infoTable, ", ")
 		end
-		return infoString
 	end
 end
 

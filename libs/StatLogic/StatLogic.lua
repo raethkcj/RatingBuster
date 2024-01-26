@@ -132,6 +132,12 @@ local statTableMetatable = {
 	__index = function()
 		return 0
 	end,
+	__newindex = function(t, k, v)
+		-- Reject setting anything to 0
+		if v ~= 0 then
+			rawset(t, k, v)
+		end
+	end,
 	__add = function(op1, op2)
 		if type(op2) == "table" then
 			for k, v in pairs(op2) do
