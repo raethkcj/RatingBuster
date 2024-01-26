@@ -484,7 +484,7 @@ S[StatLogic.Stats.BlockValue] = "格擋值"
 L[StatLogic.Stats.Miss] = "迴避命中"
 
 L[StatLogic.Stats.Defense] = "防禦"
-L[StatLogic.Stats.DefenseRating] = COMBAT_RATING_NAME2 -- COMBAT_RATING_NAME2 = "Defense Rating"
+L[StatLogic.Stats.DefenseRating] = COMBAT_RATING_NAME2.." "..RATING COMBAT_RATING_NAME2 = "Defense Rating"
 L[StatLogic.Stats.CritAvoidance] = "迴避致命一擊"
 S[StatLogic.Stats.CritAvoidance] = "被致命"
 

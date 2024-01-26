@@ -485,7 +485,7 @@ S[StatLogic.Stats.BlockValue] = "Bloqueo"
 L[StatLogic.Stats.Miss] = "Elusion golpe"
 
 L[StatLogic.Stats.Defense] = "Defensa"
-L[StatLogic.Stats.DefenseRating] = COMBAT_RATING_NAME2 -- COMBAT_RATING_NAME2 = "Defense Rating"
+L[StatLogic.Stats.DefenseRating] = COMBAT_RATING_NAME2.." "..RATING COMBAT_RATING_NAME2 = "Defense Rating"
 L[StatLogic.Stats.CritAvoidance] = "Elusion Critico"
 S[StatLogic.Stats.CritAvoidance] = "recibir Crit"
 

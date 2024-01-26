@@ -382,26 +382,6 @@ StatLogic.StatModInfo = {
 		initialValue = 0,
 		finalAdjust = 0,
 	},
-	["ADD_BLOCK_CHANCE_MOD_DEFENSE"] = {
-		initialValue = 0,
-		finalAdjust = 0,
-	},
-	["ADD_CRIT_AVOIDANCE_MOD_DEFENSE"] = {
-		initialValue = 0,
-		finalAdjust = 0,
-	},
-	["ADD_DODGE_MOD_DEFENSE"] = {
-		initialValue = 0,
-		finalAdjust = 0,
-	},
-	["ADD_MISS_MOD_DEFENSE"] = {
-		initialValue = 0,
-		finalAdjust = 0,
-	},
-	["ADD_PARRY_MOD_DEFENSE"] = {
-		initialValue = 0,
-		finalAdjust = 0,
-	},
 	["ADD_PVP_DAMAGE_REDUCTION_MOD_RESILIENCE"] = {
 		initialValue = 0,
 		finalAdjust = 0,
@@ -645,6 +625,26 @@ local addedInfoMods = {
 	{
 		add = "SPELL_DMG",
 		mod = "STR",
+	},
+	{
+		add = "BLOCK_CHANCE",
+		mod = "DEFENSE",
+	},
+	{
+		add = "CRIT_AVOIDANCE",
+		mod = "DEFENSE",
+	},
+	{
+		add = "DODGE",
+		mod = "DEFENSE",
+	},
+	{
+		add = "MISS",
+		mod = "DEFENSE",
+	},
+	{
+		add = "PARRY",
+		mod = "DEFENSE",
 	},
 }
 
