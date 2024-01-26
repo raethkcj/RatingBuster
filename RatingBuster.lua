@@ -2198,8 +2198,9 @@ do
 				infoTable[StatLogic.Stats.Dodge] = infoTable[StatLogic.Stats.Dodge] + effect
 			end
 			if db.profile.showArmorFromAgi then
-				local effect = value * 2
+				local effect = value * GSM("ADD_BONUS_ARMOR_MOD_AGI")
 				infoTable[StatLogic.Stats.Armor] = infoTable[StatLogic.Stats.Armor] + effect
+				self:ProcessStat(StatLogic.Stats.BonusArmor, effect, infoTable)
 			end
 			-- Shaman: Mental Quickness
 			-- Paladin: Sheath of Light, Touched by the Light
@@ -2326,12 +2327,11 @@ do
 				local effect = StatLogic:GetEffectFromRating(rating, StatLogic.Stats.SpellCritRating, playerLevel)
 				infoTable[StatLogic.Stats.SpellCrit] = infoTable[StatLogic.Stats.SpellCrit] + effect
 			end
-		elseif db.profile.showAPFromArmor and statID == StatLogic.Stats.Armor then
-			-----------
-			-- Armor --
-			-----------
+		elseif statID == StatLogic.Stats.Armor then
 			local base, bonus = StatLogic:GetArmorDistribution(link, value, color)
 			value = base * GSM("MOD_ARMOR") + bonus
+			self:ProcessStat(StatLogic.Stats.BonusArmor, value, infoTable)
+		elseif db.profile.showAPFromArmor and statID == StatLogic.Stats.BonusArmor then
 			local effect = value * GSM("ADD_AP_MOD_ARMOR") * GSM("MOD_AP")
 			infoTable[StatLogic.Stats.AttackPower] = infoTable[StatLogic.Stats.AttackPower] + effect
 		elseif statID == StatLogic.Stats.AttackPower then
