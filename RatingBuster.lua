@@ -1526,16 +1526,6 @@ do
 						mod = "SPI"
 					elseif mod == "MANA" then
 						mod = "INT"
-					elseif mod == "AP" then
-						-- Paladin's Sheathe of Light, Touched by the Light
-						-- Shaman's Mental Quickness.
-						-- TODO: Shaman AP can also come from INT in Wrath
-						if GSM("ADD_AP_MOD_STR") > 0 then
-							addStatModOption(add, "STR", sources)
-						end
-						if GSM("ADD_AP_MOD_AGI") > 0 then
-							addStatModOption(add, "AGI", sources)
-						end
 					end
 
 					-- Demonic Knowledge technically scales with pet stats,
@@ -2137,28 +2127,22 @@ do
 			-- Strength --
 			--------------
 			value = value * GSM("MOD_STR")
+			local attackPower = value * GSM("ADD_AP_MOD_STR")
+			self:ProcessStat(StatLogic.Stats.AttackPower, attackPower, infoTable)
 			if db.profile.showAPFromStr then
-				local effect = value * GSM("ADD_AP_MOD_STR") * GSM("MOD_AP")
+				local effect = attackPower * GSM("MOD_AP")
 				infoTable[StatLogic.Stats.AttackPower] = infoTable[StatLogic.Stats.AttackPower] + effect
 			end
 			if db.profile.showBlockValueFromStr then
 				local effect = value * GSM("ADD_BLOCK_VALUE_MOD_STR")
 				infoTable[StatLogic.Stats.BlockValue] = infoTable[StatLogic.Stats.BlockValue] + effect
 			end
-			-- Shaman: Mental Quickness
-			-- Paladin: Sheath of Light, Touched by the Light
 			if db.profile.showSpellDmgFromStr then
-				local effect = GSM("MOD_AP") * GSM("MOD_SPELL_DMG") * (
-					value * GSM("ADD_AP_MOD_STR") * GSM("ADD_SPELL_DMG_MOD_AP")
-					+ value * GSM("ADD_SPELL_DMG_MOD_STR")
-				)
+				local effect = value * GSM("MOD_SPELL_DMG") * GSM("ADD_SPELL_DMG_MOD_STR")
 				infoTable[StatLogic.Stats.SpellDamage] = infoTable[StatLogic.Stats.SpellDamage] + effect
 			end
 			if db.profile.showHealingFromStr then
-				local effect = GSM("MOD_AP") * GSM("MOD_HEALING") * (
-					value * GSM("ADD_AP_MOD_STR") * GSM("ADD_HEALING_MOD_AP")
-					+ value * GSM("ADD_HEALING_MOD_STR")
-				)
+				local effect = value * GSM("MOD_HEALING") * GSM("ADD_HEALING_MOD_STR")
 				infoTable[StatLogic.Stats.HealingPower] = infoTable[StatLogic.Stats.HealingPower] + effect
 			end
 			-- Death Knight: Forceful Deflection - Passive
@@ -2181,8 +2165,10 @@ do
 			-- Agility --
 			-------------
 			value = value * GSM("MOD_AGI")
+			local attackPower = value * GSM("ADD_AP_MOD_AGI")
+			self:ProcessStat(StatLogic.Stats.AttackPower, attackPower, infoTable)
 			if db.profile.showAPFromAgi then
-				local effect = value * GSM("ADD_AP_MOD_AGI") * GSM("MOD_AP")
+				local effect = attackPower * GSM("MOD_AP")
 				infoTable[StatLogic.Stats.AttackPower] = infoTable[StatLogic.Stats.AttackPower] + effect
 			end
 			if db.profile.showRAPFromAgi then
@@ -2197,23 +2183,13 @@ do
 				local effect = value * StatLogic:GetDodgePerAgi()
 				infoTable[StatLogic.Stats.Dodge] = infoTable[StatLogic.Stats.Dodge] + effect
 			end
+			local bonusArmor = value * GSM("ADD_BONUS_ARMOR_MOD_AGI")
+			self:ProcessStat(StatLogic.Stats.BonusArmor, bonusArmor, infoTable)
 			if db.profile.showArmorFromAgi then
-				local effect = value * GSM("ADD_BONUS_ARMOR_MOD_AGI")
-				infoTable[StatLogic.Stats.Armor] = infoTable[StatLogic.Stats.Armor] + effect
-				self:ProcessStat(StatLogic.Stats.BonusArmor, effect, infoTable)
+				infoTable[StatLogic.Stats.Armor] = infoTable[StatLogic.Stats.Armor] + bonusArmor
 			end
-			-- Shaman: Mental Quickness
-			-- Paladin: Sheath of Light, Touched by the Light
-			if db.profile.showSpellDmgFromAgi then
-				local effect = (value * GSM("ADD_AP_MOD_AGI") * GSM("ADD_SPELL_DMG_MOD_AP")) * GSM("MOD_AP") * GSM("MOD_SPELL_DMG")
-				infoTable[StatLogic.Stats.SpellDamage] = infoTable[StatLogic.Stats.SpellDamage] + effect
-			end
-			-- Druid: Nurturing Instinct
 			if db.profile.showHealingFromAgi then
-				local effect = GSM("MOD_AP") * GSM("MOD_HEALING") * (
-					value * GSM("ADD_AP_MOD_AGI") * GSM("ADD_HEALING_MOD_AP")
-					+ value * GSM("ADD_HEALING_MOD_AGI") / GSM("MOD_AP")
-				)
+				local effect = value * GSM("MOD_HEALING") * GSM("ADD_HEALING_MOD_AGI")
 				infoTable[StatLogic.Stats.HealingPower] = infoTable[StatLogic.Stats.HealingPower] + effect
 			end
 		elseif statID == StatLogic.Stats.Stamina and db.profile.showStats then
@@ -2283,9 +2259,10 @@ do
 				local effect = value * GSM("ADD_BONUS_ARMOR_MOD_INT")
 				infoTable[StatLogic.Stats.Armor] = infoTable[StatLogic.Stats.Armor] + effect
 			end
-			-- "ADD_AP_MOD_INT" -- Shaman: Mental Dexterity
+			local attackPower = value * GSM("ADD_AP_MOD_INT")
+			self:ProcessStat(StatLogic.Stats.AttackPower, attackPower, infoTable)
 			if db.profile.showAPFromInt then
-				local effect = value * GSM("ADD_AP_MOD_INT") * GSM("MOD_AP")
+				local effect = attackPower * GSM("MOD_AP")
 				infoTable[StatLogic.Stats.AttackPower] = infoTable[StatLogic.Stats.AttackPower] + effect
 			end
 		elseif statID == StatLogic.Stats.Spirit and db.profile.showStats then
@@ -2339,8 +2316,6 @@ do
 			-- Attack Power --
 			------------------
 			value = value * GSM("MOD_AP")
-			-- Shaman: Mental Quickness
-			-- Paladin: Sheath of Light, Touched by the Light
 			if db.profile.showSpellDmgFromAP then
 				local effect = value * GSM("ADD_SPELL_DMG_MOD_AP") * GSM("MOD_SPELL_DMG")
 				infoTable[StatLogic.Stats.SpellDamage] = infoTable[StatLogic.Stats.SpellDamage] + effect
