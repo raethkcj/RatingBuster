@@ -1734,6 +1734,18 @@ StatLogic.StatModTable["ALL"] = {
 			["value"] = 0.05,
 		},
 	},
+	["ADD_DODGE_REDUCTION_MOD_EXPERTISE"] = {
+		-- Base
+		{
+			["value"] = 0.25,
+		}
+	},
+	["ADD_PARRY_REDUCTION_MOD_EXPERTISE"] = {
+		-- Base
+		{
+			["value"] = 0.25,
+		}
+	},
 	["ADD_BLOCK_CHANCE_MOD_DEFENSE"] = {
 		-- Passive: Block
 		{
@@ -1775,7 +1787,7 @@ StatLogic.StatModTable["ALL"] = {
 	["ADD_CRIT_DAMAGE_REDUCTION_MOD_RESILIENCE"] = {
 		-- Base
 		{
-			["value"] = 2,
+			["value"] = -2,
 		},
 	},
 }

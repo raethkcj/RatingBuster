@@ -615,6 +615,14 @@ local addedInfoMods = {
 		mod = "STR",
 	},
 	{
+		add = "DODGE_REDUCTION",
+		mod = "EXPERTISE",
+	},
+	{
+		add = "PARRY_REDUCTION",
+		mod = "EXPERTISE",
+	},
+	{
 		add = "BLOCK_CHANCE",
 		mod = "DEFENSE",
 	},

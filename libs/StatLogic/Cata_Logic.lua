@@ -2041,10 +2041,22 @@ StatLogic.StatModTable["ALL"] = {
 			["aura"] = 16191,
 		},
 	},
+	["ADD_DODGE_REDUCTION_MOD_EXPERTISE"] = {
+		-- Base
+		{
+			["value"] = 0.25,
+		}
+	},
+	["ADD_PARRY_REDUCTION_MOD_EXPERTISE"] = {
+		-- Base
+		{
+			["value"] = 0.25,
+		}
+	},
 	["ADD_PVP_DAMAGE_REDUCTION_MOD_RESILIENCE"] = {
 		-- Base
 		{
-			["value"] = 1,
+			["value"] = -1,
 		},
 	},
 }

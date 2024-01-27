@@ -3173,6 +3173,18 @@ StatLogic.StatModTable["ALL"] = {
 			["group"] = addon.BuffGroup.AllStats,
 		},
 	},
+	["ADD_DODGE_REDUCTION_MOD_EXPERTISE"] = {
+		-- Base
+		{
+			["value"] = 0.25,
+		}
+	},
+	["ADD_PARRY_REDUCTION_MOD_EXPERTISE"] = {
+		-- Base
+		{
+			["value"] = 0.25,
+		}
+	},
 	["ADD_BLOCK_CHANCE_MOD_DEFENSE"] = {
 		-- Passive: Block
 		{
@@ -3214,13 +3226,13 @@ StatLogic.StatModTable["ALL"] = {
 	["ADD_CRIT_DAMAGE_REDUCTION_MOD_RESILIENCE"] = {
 		-- Base
 		{
-			["value"] = RESILIENCE_CRIT_CHANCE_TO_DAMAGE_REDUCTION_MULTIPLIER,
+			["value"] = -RESILIENCE_CRIT_CHANCE_TO_DAMAGE_REDUCTION_MULTIPLIER,
 		},
 	},
 	["ADD_PVP_DAMAGE_REDUCTION_MOD_RESILIENCE"] = {
 		-- Base
 		{
-			["value"] = RESILIENCE_CRIT_CHANCE_TO_CONSTANT_DAMAGE_REDUCTION_MULTIPLIER,
+			["value"] = -RESILIENCE_CRIT_CHANCE_TO_CONSTANT_DAMAGE_REDUCTION_MULTIPLIER,
 		},
 	},
 }

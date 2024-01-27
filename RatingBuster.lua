@@ -337,17 +337,8 @@ local options = {
 					name = L[StatLogic.Stats.Expertise],
 					desc = L["Changes the display of %s"]:format(L[StatLogic.Stats.Expertise]),
 					order = 9.5,
-					hidden = function()
-						return not StatLogic:RatingExists(StatLogic.Stats.ExpertiseRating)
-					end,
-					args = {
-						expBreakDown = {
-							type = 'toggle',
-							name = L["Expertise breakdown"],
-							desc = L["Convert Expertise into Dodge Reduction and Parry Reduction"],
-							width = "full",
-						},
-					},
+					hidden = true,
+					args = {},
 				},
 				defense = {
 					type = 'group',
@@ -1159,9 +1150,7 @@ local defaults = {
 		enableAvoidanceDiminishingReturns = StatLogic.GetAvoidanceAfterDR and true or false,
 		showRatings = true,
 		detailedConversionText = false,
-		defBreakDown = false,
 		wpnBreakDown = false,
-		expBreakDown = false,
 		showStats = true,
 		sumAvoidWithBlock = false,
 		--[[
@@ -1442,6 +1431,8 @@ do
 		["SPELL_HIT"] = StatLogic.Stats.SpellHit,
 		["SPELL_CRIT"] = StatLogic.Stats.SpellCrit,
 		["HEALING"] = StatLogic.Stats.HealingPower,
+		["DODGE_REDUCTION"] = StatLogic.Stats.DodgeReduction,
+		["PARRY_REDUCTION"] = StatLogic.Stats.ParryReduction,
 		["BLOCK_CHANCE"] = StatLogic.Stats.BlockChance,
 		["CRIT_AVOIDANCE"] = StatLogic.Stats.CritAvoidance,
 		["DODGE"] = StatLogic.Stats.Dodge,
@@ -2021,7 +2012,7 @@ do
 			--------------------
 			-- Calculate stat value
 			local effect = StatLogic:GetEffectFromRating(value, statID, playerLevel)
-			if statID == StatLogic.Stats.DefenseRating and db.profile.defBreakDown then
+			if statID == StatLogic.Stats.DefenseRating then
 				local blockChance = effect * GSM("ADD_BLOCK_CHANCE_MOD_DEFENSE")
 				if db.profile.showBlockChanceFromDefense then
 					infoTable[StatLogic.Stats.BlockChance] = infoTable[StatLogic.Stats.BlockChance] + blockChance
@@ -2070,17 +2061,22 @@ do
 			elseif statID == StatLogic.Stats.ParryRating and db.profile.enableAvoidanceDiminishingReturns then
 				infoTable["Percent"] = StatLogic:GetAvoidanceGainAfterDR(StatLogic.Stats.Parry, processedParry + effect) - StatLogic:GetAvoidanceGainAfterDR(StatLogic.Stats.Parry, processedParry)
 				processedParry = processedParry + effect
-			elseif statID == StatLogic.Stats.ExpertiseRating and db.profile.expBreakDown then
+			elseif statID == StatLogic.Stats.ExpertiseRating then
 				if addon.tocversion < 30000 then
 					-- Expertise is truncated in TBC but not in Wrath
 					effect = floor(effect)
 				end
-				effect = effect * -0.25
 				if db.profile.detailedConversionText then
-					infoTable[StatLogic.Stats.DodgeReduction] = infoTable[StatLogic.Stats.DodgeReduction] + effect
-					infoTable[StatLogic.Stats.ParryReduction] = infoTable[StatLogic.Stats.ParryReduction] + effect
+					if db.profile.showDodgeReductionFromExpertise then
+						local dodgeReduction = effect * -GSM("ADD_DODGE_REDUCTION_MOD_EXPERTISE")
+						infoTable[StatLogic.Stats.DodgeReduction] = infoTable[StatLogic.Stats.DodgeReduction] + dodgeReduction
+					end
+					if db.profile.showParryReductionFromExpertise then
+						local parryReduction = effect * -GSM("ADD_PARRY_REDUCTION_MOD_EXPERTISE")
+						infoTable[StatLogic.Stats.ParryReduction] = infoTable[StatLogic.Stats.ParryReduction] + parryReduction
+					end
 				else
-					infoTable["Percent"] = effect
+					infoTable["Decimal"] = effect
 				end
 			elseif statID == StatLogic.Stats.ResilienceRating then
 				if db.profile.enableAvoidanceDiminishingReturns and StatLogic.GetResilienceEffectGainAfterDR then
@@ -2088,7 +2084,6 @@ do
 					processedResilience = processedResilience + value
 				end
 
-				effect = effect * -1
 				if db.profile.detailedConversionText then
 					local critAvoidance = effect * GSM("ADD_CRIT_AVOIDANCE_MOD_RESILIENCE")
 					if db.profile.showCritAvoidanceFromResilience then
@@ -2738,11 +2733,11 @@ local summaryCalcData = {
 		option = "sumDodgeNeglect",
 		name = StatLogic.Stats.DodgeReduction,
 		func = function(sum)
-			local effect = statlogic:geteffectfromrating(sum[statlogic.stats.expertiserating], statlogic.stats.expertiserating, playerlevel)
+			local effect = StatLogic:GetEffectFromRating(sum[StatLogic.Stats.ExpertiseRating], StatLogic.Stats.ExpertiseRating, playerLevel)
 			if addon.tocversion < 30000 then
 				effect = floor(effect)
 			end
-			return effect * 0.25 + sum[statlogic.stats.weaponskill] * 0.1
+			return effect * GSM("ADD_DODGE_REDUCTION_MOD_EXPERTISE") + sum[StatLogic.Stats.WeaponSkill] * 0.1
 		end,
 		ispercent = true,
 	},
@@ -2755,7 +2750,7 @@ local summaryCalcData = {
 			if addon.tocversion < 30000 then
 				effect = floor(effect)
 			end
-			return effect * 0.25
+			return effect * GSM("ADD_PARRY_REDUCTION_MOD_EXPERTISE")
 		end,
 		ispercent = true,
 	},
