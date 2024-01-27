@@ -327,8 +327,8 @@ local options = {
 				},
 				expertise = {
 					type = 'group',
-					name = L[StatLogic.Stats.Expertise],
-					desc = L["Changes the display of %s"]:format(L[StatLogic.Stats.Expertise]),
+					name = L[StatLogic.Stats.ExpertiseRating],
+					desc = L["Changes the display of %s"]:format(L[StatLogic.Stats.ExpertiseRating]),
 					order = 9.5,
 					hidden = true,
 					args = {},
@@ -351,8 +351,8 @@ local options = {
 				},
 				resilience = {
 					type = 'group',
-					name = L[StatLogic.Stats.Resilience],
-					desc = L["Changes the display of %s"]:format(L[StatLogic.Stats.Resilience]),
+					name = L[StatLogic.Stats.ResilienceRating],
+					desc = L["Changes the display of %s"]:format(L[StatLogic.Stats.ResilienceRating]),
 					order = 11,
 					args = {},
 					hidden = true,
@@ -1453,10 +1453,15 @@ do
 
 	local addStatModOption = function(add, mod, sources)
 		-- Override groups that are hidden by default
-		local groupName, rating = tostring(mod):lower():gsub("rating$", "")
-		local group = options.args.stat.args[groupName]
+		local groupID, rating = tostring(mod):lower():gsub("rating$", "")
+		local group = options.args.stat.args[groupID]
 		if not group then return end
 		group.hidden = false
+		if rating > 0 then
+			-- Rename Defense group to Defense Rating
+			group.name = L[mod]
+			group.desc = L["Changes the display of %s"]:format(L[mod])
+		end
 
 		-- ADD_HEALING_MOD_INT -> showHealingFromInt
 		local key = "show" .. statToOptionKey[add] .. "From" .. statToOptionKey[mod]
