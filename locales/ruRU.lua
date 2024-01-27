@@ -398,6 +398,7 @@ L["statList"] = {
 	{"рейтингу защиты", StatLogic.Stats.DefenseRating},
 	{"рейтинга защиты", StatLogic.Stats.DefenseRating},
 	{"к защите", StatLogic.Stats.DefenseRating},
+	{DEFENSE:lower(), StatLogic.Stats.Defense},
 	{"рейтинг уклонения", StatLogic.Stats.DodgeRating},
 	{"рейтингу уклонения", StatLogic.Stats.DodgeRating},
 	{"рейтинга уклонения", StatLogic.Stats.DodgeRating},

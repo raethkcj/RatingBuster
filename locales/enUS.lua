@@ -346,6 +346,7 @@ L["statList"] = {
 	{SPELL_STAT4_NAME:lower(), StatLogic.Stats.Intellect}, -- Intellect
 	{SPELL_STAT5_NAME:lower(), StatLogic.Stats.Spirit}, -- Spirit
 	{"defense rating", StatLogic.Stats.DefenseRating},
+	{DEFENSE:lower(), StatLogic.Stats.Defense},
 	{"dodge rating", StatLogic.Stats.DodgeRating},
 	{"increases dodge", StatLogic.Stats.DodgeRating},
 	{"block rating", StatLogic.Stats.BlockRating}, -- block enchant: "+10 Shield Block Rating"

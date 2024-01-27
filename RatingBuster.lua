@@ -1171,11 +1171,7 @@ local defaults = {
 		showMP5NCFromSpi = false,
 		showHP5NCFromSpi = false,
 
-		showBlockChanceFromDefense = false,
-		showCritAvoidanceFromDefense = false,
-		showDodgeFromDefense = false,
-		showMissFromDefense = false,
-		showParryFromDefense = false,
+		showDefenseFromDefenseRating = false,
 		showDodgeReductionFromExpertise = false,
 		showParryReductionFromExpertise = false,
 		showCritAvoidanceFromResilience = false,
@@ -2032,49 +2028,7 @@ do
 				if db.profile.showDefenseFromDefenseRating then
 					infoTable["Decimal"] = effect
 				end
-
-				local blockChance = effect * GSM("ADD_BLOCK_CHANCE_MOD_DEFENSE")
-				if db.profile.showBlockChanceFromDefense then
-					infoTable[StatLogic.Stats.BlockChance] = infoTable[StatLogic.Stats.BlockChance] + blockChance
-				end
-
-				local critAvoidance = effect * GSM("ADD_CRIT_AVOIDANCE_MOD_DEFENSE")
-				if db.profile.showCritAvoidanceFromDefense then
-					infoTable[StatLogic.Stats.CritAvoidance] = infoTable[StatLogic.Stats.CritAvoidance] + critAvoidance
-				end
-
-				local dodge = effect * GSM("ADD_DODGE_MOD_DEFENSE")
-				if dodge > 0 then
-					if db.profile.enableAvoidanceDiminishingReturns then
-						dodge = StatLogic:GetAvoidanceGainAfterDR(StatLogic.Stats.Dodge, processedDodge + dodge) - StatLogic:GetAvoidanceAfterDR(StatLogic.Stats.Dodge, processedDodge)
-						processedDodge = processedDodge + dodge
-					end
-					if db.profile.showDodgeFromDefense then
-						infoTable[StatLogic.Stats.Dodge] = infoTable[StatLogic.Stats.Dodge] + dodge
-					end
-				end
-
-				local miss = effect * GSM("ADD_MISS_MOD_DEFENSE")
-				if miss > 0 then
-					if db.profile.enableAvoidanceDiminishingReturns then
-						miss = StatLogic:GetAvoidanceGainAfterDR(StatLogic.Stats.Miss, processedMissed + miss) - StatLogic:GetAvoidanceAfterDR(StatLogic.Stats.Miss, processedMissed)
-						processedMissed = processedMissed + miss
-					end
-					if db.profile.showMissFromDefense then
-						infoTable[StatLogic.Stats.Miss] = infoTable[StatLogic.Stats.Miss] + miss
-					end
-				end
-
-				local parry = effect * GSM("ADD_PARRY_MOD_DEFENSE")
-				if parry > 0 then
-					if db.profile.enableAvoidanceDiminishingReturns then
-						parry = StatLogic:GetAvoidanceGainAfterDR(StatLogic.Stats.Parry, processedParry + parry) - StatLogic:GetAvoidanceAfterDR(StatLogic.Stats.Parry, processedParry)
-						processedParry = processedParry + parry
-					end
-					if db.profile.showParryFromDefense then
-						infoTable[StatLogic.Stats.Parry] = infoTable[StatLogic.Stats.Parry] + parry
-					end
-				end
+				self:ProcessStat(StatLogic.Stats.Defense, effect, infoTable)
 			elseif statID == StatLogic.Stats.DodgeRating and db.profile.enableAvoidanceDiminishingReturns then
 				infoTable["Percent"] = StatLogic:GetAvoidanceGainAfterDR(StatLogic.Stats.Dodge, processedDodge + effect) - StatLogic:GetAvoidanceGainAfterDR(StatLogic.Stats.Dodge, processedDodge)
 				processedDodge = processedDodge + effect
@@ -2331,6 +2285,49 @@ do
 				local rating = value * GSM("ADD_SPELL_CRIT_RATING_MOD_SPI")
 				local effect = StatLogic:GetEffectFromRating(rating, StatLogic.Stats.SpellCritRating, playerLevel)
 				infoTable[StatLogic.Stats.SpellCrit] = infoTable[StatLogic.Stats.SpellCrit] + effect
+			end
+		elseif statID == StatLogic.Stats.Defense then
+			local blockChance = value * GSM("ADD_BLOCK_CHANCE_MOD_DEFENSE")
+			if db.profile.showBlockChanceFromDefense then
+				infoTable[StatLogic.Stats.BlockChance] = infoTable[StatLogic.Stats.BlockChance] + blockChance
+			end
+
+			local critAvoidance = value * GSM("ADD_CRIT_AVOIDANCE_MOD_DEFENSE")
+			if db.profile.showCritAvoidanceFromDefense then
+				infoTable[StatLogic.Stats.CritAvoidance] = infoTable[StatLogic.Stats.CritAvoidance] + critAvoidance
+			end
+
+			local dodge = value * GSM("ADD_DODGE_MOD_DEFENSE")
+			if dodge > 0 then
+				if db.profile.enableAvoidanceDiminishingReturns then
+					dodge = StatLogic:GetAvoidanceGainAfterDR(StatLogic.Stats.Dodge, processedDodge + dodge) - StatLogic:GetAvoidanceAfterDR(StatLogic.Stats.Dodge, processedDodge)
+					processedDodge = processedDodge + dodge
+				end
+				if db.profile.showDodgeFromDefense then
+					infoTable[StatLogic.Stats.Dodge] = infoTable[StatLogic.Stats.Dodge] + dodge
+				end
+			end
+
+			local miss = value * GSM("ADD_MISS_MOD_DEFENSE")
+			if miss > 0 then
+				if db.profile.enableAvoidanceDiminishingReturns then
+					miss = StatLogic:GetAvoidanceGainAfterDR(StatLogic.Stats.Miss, processedMissed + miss) - StatLogic:GetAvoidanceAfterDR(StatLogic.Stats.Miss, processedMissed)
+					processedMissed = processedMissed + miss
+				end
+				if db.profile.showMissFromDefense then
+					infoTable[StatLogic.Stats.Miss] = infoTable[StatLogic.Stats.Miss] + miss
+				end
+			end
+
+			local parry = value * GSM("ADD_PARRY_MOD_DEFENSE")
+			if parry > 0 then
+				if db.profile.enableAvoidanceDiminishingReturns then
+					parry = StatLogic:GetAvoidanceGainAfterDR(StatLogic.Stats.Parry, processedParry + parry) - StatLogic:GetAvoidanceAfterDR(StatLogic.Stats.Parry, processedParry)
+					processedParry = processedParry + parry
+				end
+				if db.profile.showParryFromDefense then
+					infoTable[StatLogic.Stats.Parry] = infoTable[StatLogic.Stats.Parry] + parry
+				end
 			end
 		elseif statID == StatLogic.Stats.Armor then
 			local base, bonus = StatLogic:GetArmorDistribution(link, value, color)

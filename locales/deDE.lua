@@ -332,6 +332,7 @@ L["statList"] = {
 	{SPELL_STAT4_NAME:lower(), StatLogic.Stats.Intellect},
 	{SPELL_STAT5_NAME:lower(), StatLogic.Stats.Spirit},
 	{"verteidigungswertung", StatLogic.Stats.DefenseRating},
+	{DEFENSE:lower(), StatLogic.Stats.Defense},
 	{"ausweichwertung", StatLogic.Stats.DodgeRating},
 	{"blockwertung", StatLogic.Stats.BlockRating},
 	{"parierwertung", StatLogic.Stats.ParryRating},

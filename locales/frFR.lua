@@ -349,6 +349,7 @@ L["statList"] = {
 	{SPELL_STAT4_NAME:lower(), StatLogic.Stats.Intellect}, -- Intellect
 	{SPELL_STAT5_NAME:lower(), StatLogic.Stats.Spirit}, -- Spirit
 	{"score de défense", StatLogic.Stats.DefenseRating},
+	{DEFENSE:lower(), StatLogic.Stats.Defense},
 	{"score d’esquive", StatLogic.Stats.DodgeRating},
 	{"score d'esquive", StatLogic.Stats.DodgeRating},
 	{"score de blocage", StatLogic.Stats.BlockRating}, --Ench. de bouclier (Blocage inférieur)
