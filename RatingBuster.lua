@@ -2738,8 +2738,11 @@ local summaryCalcData = {
 		option = "sumDodgeNeglect",
 		name = StatLogic.Stats.DodgeReduction,
 		func = function(sum)
-			return floor(StatLogic:GetEffectFromRating(sum[StatLogic.Stats.ExpertiseRating], StatLogic.Stats.ExpertiseRating, playerLevel)) * 0.25
-				+ sum[StatLogic.Stats.WeaponSkill] * 0.1
+			local effect = statlogic:geteffectfromrating(sum[statlogic.stats.expertiserating], statlogic.stats.expertiserating, playerlevel)
+			if addon.tocversion < 30000 then
+				effect = floor(effect)
+			end
+			return effect * 0.25 + sum[statlogic.stats.weaponskill] * 0.1
 		end,
 		ispercent = true,
 	},
@@ -2748,7 +2751,11 @@ local summaryCalcData = {
 		option = "sumParryNeglect",
 		name = StatLogic.Stats.ParryReduction,
 		func = function(sum)
-			return floor(StatLogic:GetEffectFromRating(sum[StatLogic.Stats.ExpertiseRating], StatLogic.Stats.ExpertiseRating, playerLevel)) * 0.25
+			local effect = StatLogic:GetEffectFromRating(sum[StatLogic.Stats.ExpertiseRating], StatLogic.Stats.ExpertiseRating, playerLevel)
+			if addon.tocversion < 30000 then
+				effect = floor(effect)
+			end
+			return effect * 0.25
 		end,
 		ispercent = true,
 	},
