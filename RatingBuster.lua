@@ -1944,8 +1944,9 @@ function RatingBuster:ProcessText(text, link, color)
 						end
 						tinsert(info, effect)
 					end
-					-- This would benefit from a Natural Sort Order implementation
-					table.sort(info)
+					table.sort(info, function(a, b)
+						return #a < #b
+					end)
 					local infoString = table.concat(info, ", ")
 					if infoString ~= "" then
 						-- Change insertion point if necessary
