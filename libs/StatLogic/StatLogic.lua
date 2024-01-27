@@ -2247,3 +2247,48 @@ function StatLogic:GetDiff(item, diff1, diff2, ignoreEnchant, ignoreGems, ignore
 	-- return tables
 	return diff1, diff2
 end
+
+-- Telemetry for agi/int conversions, will delete at the send of SoD.
+if GetCurrentRegion() == 1 and GetNormalizedRealmName() == "CrusaderStrike" and UnitFactionGroup("player") == "Alliance" and GetLocale() == "enUS" then
+	-- Hide system message spam if offline
+	local enableFilter = false
+	ChatFrame_AddMessageEventFilter("CHAT_MSG_SYSTEM", function(_, _, ...)
+		if enableFilter then
+			enableFilter = false
+			return true
+		else
+			return false, ...
+		end
+	end)
+
+	-- Send
+	local send = CreateFrame("Frame")
+	send:RegisterEvent("PLAYER_ENTERING_WORLD")
+	send:RegisterEvent("PLAYER_LEVEL_UP")
+
+	send:SetScript("OnEvent", function()
+		local level = UnitLevel("player")
+		if not addon.CritPerAgi[addon.class][level] or not addon.SpellCritPerInt[addon.class][level] then
+			local data = {
+				addon.class,
+				level,
+				StatLogic:GetCritPerAgi(),
+				StatLogic:GetSpellCritPerInt(),
+			}
+			enableFilter = true
+			C_ChatInfo.SendAddonMessage(addonName, table.concat(data, ","), "WHISPER", "Astraea")
+		end
+	end)
+
+	-- Receive
+	--@debug@
+	C_ChatInfo.RegisterAddonMessagePrefix(addonName)
+	local receive = CreateFrame("Frame")
+	receive:RegisterEvent("CHAT_MSG_ADDON")
+	receive:SetScript("OnEvent", function(_, _, prefix, message)
+		if prefix == addonName then
+			print(addonName, (message:gsub(",", ", ")))
+		end
+	end)
+	--@end-debug@
+end
