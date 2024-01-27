@@ -2272,8 +2272,8 @@ if GetCurrentRegion() == 1 and GetNormalizedRealmName() == "CrusaderStrike" and 
 			local data = {
 				addon.class,
 				level,
-				StatLogic:GetCritPerAgi(),
-				StatLogic:GetSpellCritPerInt(),
+				floor(StatLogic:GetCritPerAgi() * 10000 + 0.5) / 10000,
+				floor(StatLogic:GetSpellCritPerInt() * 10000 + 0.5) / 10000,
 			}
 			enableFilter = true
 			C_ChatInfo.SendAddonMessage(addonName, table.concat(data, ","), "WHISPER", "Astraea")
@@ -2287,7 +2287,11 @@ if GetCurrentRegion() == 1 and GetNormalizedRealmName() == "CrusaderStrike" and 
 	receive:RegisterEvent("CHAT_MSG_ADDON")
 	receive:SetScript("OnEvent", function(_, _, prefix, message)
 		if prefix == addonName then
-			print(addonName, (message:gsub(",", ", ")))
+			local class, level, critPerAgi, spellCritPerInt = (","):split(message)
+			critPerAgi, spellCritPerInt = tonumber(critPerAgi), tonumber(spellCritPerInt)
+			if critPerAgi ~= addon.CritPerAgi[class][level] or spellCritPerInt ~= addon.SpellCritPerInt[class][level] then
+				print(addonName, class, level, critPerAgi, spellCritPerInt)
+			end
 		end
 	end)
 	--@end-debug@
