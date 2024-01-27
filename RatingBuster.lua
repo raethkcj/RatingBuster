@@ -210,13 +210,6 @@ local options = {
 						return (not genericHit) or (not tContains(genericHit, StatLogic.Stats.SpellHitRating))
 					end
 				},
-				detailedConversionText = {
-					type = 'toggle',
-					name = L["Show detailed conversions text"],
-					desc = L["Show detailed text for Resilience and Expertise conversions"],
-					order = 4,
-					width = "full",
-				},
 				enableAvoidanceDiminishingReturns = {
 					type = 'toggle',
 					name = L["Enable Avoidance Diminishing Returns"],
@@ -1149,7 +1142,6 @@ local defaults = {
 	profile = {
 		enableAvoidanceDiminishingReturns = StatLogic.GetAvoidanceAfterDR and true or false,
 		showRatings = true,
-		detailedConversionText = false,
 		wpnBreakDown = false,
 		showStats = true,
 		sumAvoidWithBlock = false,
@@ -1410,10 +1402,14 @@ do
 	},
 	{
 		__index = function(_, stat)
-			-- Remove underscores, PascalCase
-			return (stat:gsub("[%W_]*(%w+)[%W_]*", function(word)
-				return word:lower():gsub("^%l", string.upper)
-			end))
+			if type(stat) == "table" then
+				return tostring(stat)
+			else
+				-- Remove underscores, PascalCase
+				return (stat:gsub("[%W_]*(%w+)[%W_]*", function(word)
+					return word:lower():gsub("^%l", string.upper)
+				end))
+			end
 		end
 	})
 
@@ -1449,22 +1445,24 @@ do
 	})
 
 	local addStatModOption = function(add, mod, sources)
+		-- Override groups that are hidden by default
+		local groupName, rating = tostring(mod):lower():gsub("rating$", "")
+		local group = options.args.stat.args[groupName]
+		if not group then return end
+		group.hidden = false
+
 		-- ADD_HEALING_MOD_INT -> showHealingFromInt
-		local key = "show" .. statToOptionKey[tostring(add)] .. "From" .. statToOptionKey[mod]
+		local key = "show" .. statToOptionKey[add] .. "From" .. statToOptionKey[mod]
 		if defaults.profile[key] == nil then
 			defaults.profile[key] = true
 		end
-
-		-- Override Armor and Attack Power being hidden by default,
-		-- since most classes have no useful breakdowns from them.
-		local group = options.args.stat.args[mod:lower()]
-		group.hidden = false
 
 		local option = group.args[key]
 		if not option then
 			option = {
 				type = "toggle",
 				width = "full",
+				order = rating == 1 and 1 or nil,
 			}
 		else
 			sources = option.desc .. ", " .. sources
@@ -1473,7 +1471,7 @@ do
 		option.name = L["Show %s"]:format(L[statStringToStat[add]])
 		option.desc = sources
 
-		options.args.stat.args[mod:lower()].args[key] = option
+		group.args[key] = option
 	end
 
 	local function GenerateStatModOptions()
@@ -1530,6 +1528,13 @@ do
 
 					addStatModOption(add, mod, sources)
 				end
+			end
+		end
+
+		for stat in pairs(StatLogic.RatingBase) do
+			local converted = StatLogic.Stats[tostring(stat):gsub("Rating$", "")]
+			if converted then
+				addStatModOption(converted, stat)
 			end
 		end
 	end
@@ -2013,6 +2018,10 @@ do
 			-- Calculate stat value
 			local effect = StatLogic:GetEffectFromRating(value, statID, playerLevel)
 			if statID == StatLogic.Stats.DefenseRating then
+				if db.profile.showDefenseFromDefenseRating then
+					infoTable["Decimal"] = effect
+				end
+
 				local blockChance = effect * GSM("ADD_BLOCK_CHANCE_MOD_DEFENSE")
 				if db.profile.showBlockChanceFromDefense then
 					infoTable[StatLogic.Stats.BlockChance] = infoTable[StatLogic.Stats.BlockChance] + blockChance
@@ -2066,17 +2075,16 @@ do
 					-- Expertise is truncated in TBC but not in Wrath
 					effect = floor(effect)
 				end
-				if db.profile.detailedConversionText then
-					if db.profile.showDodgeReductionFromExpertise then
-						local dodgeReduction = effect * -GSM("ADD_DODGE_REDUCTION_MOD_EXPERTISE")
-						infoTable[StatLogic.Stats.DodgeReduction] = infoTable[StatLogic.Stats.DodgeReduction] + dodgeReduction
-					end
-					if db.profile.showParryReductionFromExpertise then
-						local parryReduction = effect * -GSM("ADD_PARRY_REDUCTION_MOD_EXPERTISE")
-						infoTable[StatLogic.Stats.ParryReduction] = infoTable[StatLogic.Stats.ParryReduction] + parryReduction
-					end
-				else
+				if db.profile.showExpertiseFromExpertiseRating then
 					infoTable["Decimal"] = effect
+				end
+				if db.profile.showDodgeReductionFromExpertise then
+					local dodgeReduction = effect * -GSM("ADD_DODGE_REDUCTION_MOD_EXPERTISE")
+					infoTable[StatLogic.Stats.DodgeReduction] = infoTable[StatLogic.Stats.DodgeReduction] + dodgeReduction
+				end
+				if db.profile.showParryReductionFromExpertise then
+					local parryReduction = effect * -GSM("ADD_PARRY_REDUCTION_MOD_EXPERTISE")
+					infoTable[StatLogic.Stats.ParryReduction] = infoTable[StatLogic.Stats.ParryReduction] + parryReduction
 				end
 			elseif statID == StatLogic.Stats.ResilienceRating then
 				if db.profile.enableAvoidanceDiminishingReturns and StatLogic.GetResilienceEffectGainAfterDR then
@@ -2084,21 +2092,20 @@ do
 					processedResilience = processedResilience + value
 				end
 
-				if db.profile.detailedConversionText then
-					local critAvoidance = effect * GSM("ADD_CRIT_AVOIDANCE_MOD_RESILIENCE")
-					if db.profile.showCritAvoidanceFromResilience then
-						infoTable[StatLogic.Stats.CritAvoidance] = infoTable[StatLogic.Stats.CritAvoidance] + critAvoidance
-					end
-					local critDmgReduction = effect * GSM("ADD_CRIT_DAMAGE_REDUCTION_MOD_RESILIENCE")
-					if db.profile.showCritDamageReductionFromResilience then
-						infoTable[StatLogic.Stats.CritDamageReduction] = infoTable[StatLogic.Stats.CritDamageReduction] + critDmgReduction
-					end
-					local pvpDmgReduction = effect * GSM("ADD_PVP_DAMAGE_REDUCTION_MOD_RESILIENCE")
-					if db.profile.showPvpDamageReductionFromResilience then
-						infoTable[StatLogic.Stats.PvPDamageReduction] = infoTable[StatLogic.Stats.PvPDamageReduction] + pvpDmgReduction
-					end
-				else
+				if db.profile.showResilienceFromResilienceRating then
 					infoTable["Percent"] = effect
+				end
+				local critAvoidance = effect * GSM("ADD_CRIT_AVOIDANCE_MOD_RESILIENCE")
+				if db.profile.showCritAvoidanceFromResilience then
+					infoTable[StatLogic.Stats.CritAvoidance] = infoTable[StatLogic.Stats.CritAvoidance] + critAvoidance
+				end
+				local critDmgReduction = effect * GSM("ADD_CRIT_DAMAGE_REDUCTION_MOD_RESILIENCE")
+				if db.profile.showCritDamageReductionFromResilience then
+					infoTable[StatLogic.Stats.CritDamageReduction] = infoTable[StatLogic.Stats.CritDamageReduction] + critDmgReduction
+				end
+				local pvpDmgReduction = effect * GSM("ADD_PVP_DAMAGE_REDUCTION_MOD_RESILIENCE")
+				if db.profile.showPvpDamageReductionFromResilience then
+					infoTable[StatLogic.Stats.PvPDamageReduction] = infoTable[StatLogic.Stats.PvPDamageReduction] + pvpDmgReduction
 				end
 			elseif statID == StatLogic.Stats.MasteryRating then
 				if db.profile.showMasteryEffectFromMastery then
