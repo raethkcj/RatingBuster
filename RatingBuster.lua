@@ -1170,6 +1170,17 @@ local defaults = {
 
 		showMP5NCFromSpi = false,
 		showHP5NCFromSpi = false,
+
+		showBlockChanceFromDefense = false,
+		showCritAvoidanceFromDefense = false,
+		showDodgeFromDefense = false,
+		showMissFromDefense = false,
+		showParryFromDefense = false,
+		showDodgeReductionFromExpertise = false,
+		showParryReductionFromExpertise = false,
+		showCritAvoidanceFromResilience = false,
+		showCritDamageReductionFromResilience = false,
+		showPvpDamageReductionFromResilience = false,
 		------------------
 		-- Stat Summary --
 		------------------
