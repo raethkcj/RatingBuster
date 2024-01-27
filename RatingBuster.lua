@@ -313,9 +313,12 @@ local options = {
 					name = L[StatLogic.Stats.WeaponSkill],
 					desc = L["Changes the display of %s"]:format(L[StatLogic.Stats.WeaponSkill]),
 					order = 9,
+					hidden = true,
+					--[[
 					hidden = function()
 						return addon.tocversion >= 20000
 					end,
+					]]--
 					args = {
 						wpnBreakDown = {
 							type = 'toggle',
