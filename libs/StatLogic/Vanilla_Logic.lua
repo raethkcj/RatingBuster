@@ -625,7 +625,7 @@ elseif addon.class == "PALADIN" then
 		["ADD_MELEE_CRIT"] = {
 			-- Base
 			{
-				["value"] = 1.7000,
+				["value"] = 0.7000,
 			},
 			-- Talent: Conviction
 			{
