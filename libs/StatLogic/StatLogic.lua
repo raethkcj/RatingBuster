@@ -2263,20 +2263,26 @@ if GetCurrentRegion() == 1 and GetNormalizedRealmName() == "CrusaderStrike" and 
 
 	-- Send
 	local send = CreateFrame("Frame")
-	send:RegisterEvent("PLAYER_ENTERING_WORLD")
+	send:RegisterEvent("SPELLS_CHANGED")
 	send:RegisterEvent("PLAYER_LEVEL_UP")
 
 	send:SetScript("OnEvent", function()
 		local level = UnitLevel("player")
 		if not addon.CritPerAgi[addon.class][level] or not addon.SpellCritPerInt[addon.class][level] then
-			local data = {
-				addon.class,
-				level,
-				floor(StatLogic:GetCritPerAgi() * 10000 + 0.5) / 10000,
-				floor(StatLogic:GetSpellCritPerInt() * 10000 + 0.5) / 10000,
-			}
-			enableFilter = true
-			C_ChatInfo.SendAddonMessage(addonName, table.concat(data, ","), "WHISPER", "Astraea")
+			if StatLogic:TalentCacheExists() then
+				local data = {
+					addon.class,
+					level,
+					floor(StatLogic:GetCritPerAgi() * 10000 + 0.5) / 10000,
+					floor(StatLogic:GetSpellCritPerInt() * 10000 + 0.5) / 10000,
+				}
+				enableFilter = true
+				C_ChatInfo.SendAddonMessage(addonName, table.concat(data, ","), "WHISPER", "Astraea")
+			else
+				C_Timer.After(2, function()
+					send:GetScript("OnEvent")("SPELLS_CHANGED")
+				end)
+			end
 		end
 	end)
 
