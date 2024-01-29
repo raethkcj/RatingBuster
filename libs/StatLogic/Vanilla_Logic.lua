@@ -47,9 +47,12 @@ end
 
 addon.CritPerAgi = {
 	["WARRIOR"] = {
+		[20] = 0.1282,
+		[25] = 0.1111,
 		[60] = 0.0500,
 	},
 	["PALADIN"] = {
+		[25] = 0.1075,
 		[60] = 0.0506,
 	},
 	["HUNTER"] = {
@@ -59,6 +62,7 @@ addon.CritPerAgi = {
 		[60] = 0.0345,
 	},
 	["PRIEST"] = {
+		[25] = 0.0769,
 		[60] = 0.0500,
 	},
 	["SHAMAN"] = {
@@ -66,6 +70,7 @@ addon.CritPerAgi = {
 		[60] = 0.0508,
 	},
 	["MAGE"] = {
+		[25] = 0.0720,
 		[60] = 0.0514,
 	},
 	["WARLOCK"] = {
@@ -81,6 +86,7 @@ addon.CritPerAgi = {
 addon.SpellCritPerInt = {
 	["WARRIOR"] = addon.zero,
 	["PALADIN"] = {
+		[25] = 0.0357,
 		[60] = 0.0167,
 	},
 	["HUNTER"] = {
@@ -88,12 +94,15 @@ addon.SpellCritPerInt = {
 	},
 	["ROGUE"] = addon.zero,
 	["PRIEST"] = {
+		[25] = 0.0457,
 		[60] = 0.0168,
 	},
 	["SHAMAN"] = {
 		[60] = 0.0169,
 	},
 	["MAGE"] = {
+		[24] = 0.0495,
+		[25] = 0.0475,
 		[60] = 0.0168,
 	},
 	["WARLOCK"] = {
@@ -108,9 +117,12 @@ addon.SpellCritPerInt = {
 
 addon.DodgePerAgi = {
 	["WARRIOR"] = {
+		[20] = 0.1282,
+		[25] = 0.1111,
 		[60] = 0.0500,
 	},
 	["PALADIN"] = {
+		[25] = 0.1075,
 		[60] = 0.0506,
 	},
 	["HUNTER"] = {
@@ -120,6 +132,7 @@ addon.DodgePerAgi = {
 		[60] = 0.0690,
 	},
 	["PRIEST"] = {
+		[25] = 0.0769,
 		[60] = 0.0500,
 	},
 	["SHAMAN"] = {
@@ -127,6 +140,7 @@ addon.DodgePerAgi = {
 		[60] = 0.0508,
 	},
 	["MAGE"] = {
+		[25] = 0.0720,
 		[60] = 0.0514,
 	},
 	["WARLOCK"] = {
