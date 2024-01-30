@@ -2309,8 +2309,8 @@ do
 			local dodge = value * GSM("ADD_DODGE_MOD_DEFENSE")
 			if dodge > 0 then
 				if db.profile.enableAvoidanceDiminishingReturns then
-					dodge = StatLogic:GetAvoidanceGainAfterDR(StatLogic.Stats.Dodge, processedDodge + dodge) - StatLogic:GetAvoidanceAfterDR(StatLogic.Stats.Dodge, processedDodge)
 					processedDodge = processedDodge + dodge
+					dodge = StatLogic:GetAvoidanceGainAfterDR(StatLogic.Stats.Dodge, processedDodge) - StatLogic:GetAvoidanceGainAfterDR(StatLogic.Stats.Dodge, processedDodge - dodge)
 				end
 				if db.profile.showDodgeFromDefense then
 					infoTable[StatLogic.Stats.Dodge] = infoTable[StatLogic.Stats.Dodge] + dodge
@@ -2320,8 +2320,8 @@ do
 			local miss = value * GSM("ADD_MISS_MOD_DEFENSE")
 			if miss > 0 then
 				if db.profile.enableAvoidanceDiminishingReturns then
-					miss = StatLogic:GetAvoidanceGainAfterDR(StatLogic.Stats.Miss, processedMissed + miss) - StatLogic:GetAvoidanceAfterDR(StatLogic.Stats.Miss, processedMissed)
 					processedMissed = processedMissed + miss
+					miss = StatLogic:GetAvoidanceGainAfterDR(StatLogic.Stats.Miss, processedMissed) - StatLogic:GetAvoidanceGainAfterDR(StatLogic.Stats.Miss, processedMissed - miss)
 				end
 				if db.profile.showMissFromDefense then
 					infoTable[StatLogic.Stats.Miss] = infoTable[StatLogic.Stats.Miss] + miss
@@ -2331,8 +2331,8 @@ do
 			local parry = value * GSM("ADD_PARRY_MOD_DEFENSE")
 			if parry > 0 then
 				if db.profile.enableAvoidanceDiminishingReturns then
-					parry = StatLogic:GetAvoidanceGainAfterDR(StatLogic.Stats.Parry, processedParry + parry) - StatLogic:GetAvoidanceAfterDR(StatLogic.Stats.Parry, processedParry)
 					processedParry = processedParry + parry
+					parry = StatLogic:GetAvoidanceGainAfterDR(StatLogic.Stats.Parry, processedParry) - StatLogic:GetAvoidanceGainAfterDR(StatLogic.Stats.Parry, processedParry - parry)
 				end
 				if db.profile.showParryFromDefense then
 					infoTable[StatLogic.Stats.Parry] = infoTable[StatLogic.Stats.Parry] + parry
