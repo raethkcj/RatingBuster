@@ -1676,7 +1676,7 @@ do
 				if not found then
 					-- Strip leading "Equip: ", "Socket Bonus: "
 					local sanitizedText = text:gsub(ITEM_SPELL_TRIGGER_ONEQUIP, "")
-					sanitizedText = sanitizedText:gsub(StripGlobalStrings(ITEM_SOCKET_BONUS), "")
+					sanitizedText = sanitizedText:gsub(StripGlobalStrings(ITEM_SOCKET_BONUS), ""):utf8lower()
 					local values = {}
 					local statText, count = sanitizedText:gsub("[+-]?[%d%.]+%f[%D]", function(match)
 						local value = tonumber(match)
@@ -1695,6 +1695,9 @@ do
 						end
 					else
 						found = ParseMatch(false, text, false, "Substitution")
+					end
+					if not found then
+						log("|cffff5959  Substitution Missed: |r|cnLIGHTBLUE_FONT_COLOR:" .. statText)
 					end
 				end
 

@@ -190,10 +190,13 @@ local short = {
 	[ITEM_MOD_SPIRIT_SHORT] = {StatLogic.Stats.Spirit},
 	[ITEM_MOD_STAMINA_SHORT] = {StatLogic.Stats.Stamina},
 	[ITEM_MOD_STRENGTH_SHORT] = {StatLogic.Stats.Strength},
+	[SPELL_STATALL] = {StatLogic.Stats.AllStats},
+	[STAT_ATTACK_POWER] = {StatLogic.Stats.AttackPower},
 }
 
 for pattern, stat in pairs(short) do
 	L.StatIDLookup["%s " .. pattern] = stat
+	L.StatIDLookup[pattern .. " %s"] = stat
 end
 
 local resistances = {
