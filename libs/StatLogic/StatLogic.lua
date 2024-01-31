@@ -1638,12 +1638,6 @@ do
 			statTable[StatLogic.Stats.WeaponSubclass] = itemSubclass
 		end
 
-		-- Don't scan Relics until Cata
-		if inventoryType == "INVTYPE_RELIC" and tocversion < 40000 then
-			cache[link] = copy(statTable)
-			return statTable
-		end
-
 		-- Start parsing
 		log(link)
 		for i = 2, tip:NumLines() do
