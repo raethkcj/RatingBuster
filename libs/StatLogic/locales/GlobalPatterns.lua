@@ -85,7 +85,7 @@ for _, subclass in pairs(Enum.ItemArmorSubclass) do
 end
 
 local function unescape(pattern)
-	return pattern:gsub("%%%d?%$?c", ""):gsub("%%%d?%$?[sd]", "%%s")
+	return pattern:gsub("%%%d?%$?c", ""):gsub("%%%d?%$?[sd]", "%%s"):gsub("%.$", ""):utf8lower()
 end
 
 local long = {
@@ -148,7 +148,7 @@ for pattern, stats in pairs(regen) do
 	pattern = pattern:gsub("5", "%%s")
 	local i = stat > five and 1 or 2
 	table.insert(stats, i, false)
-	L.StatIDLookup[pattern] = stats
+	L.StatIDLookup[unescape(pattern)] = stats
 end
 
 local short = {

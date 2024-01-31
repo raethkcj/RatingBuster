@@ -1674,9 +1674,11 @@ do
 				-- Substitution Lookup --
 				-------------------------
 				if not found then
-					-- Strip leading "Equip: ", "Socket Bonus: "
+					-- Strip leading "Equip: ", "Socket Bonus: ", trailing "."
 					local sanitizedText = text:gsub(ITEM_SPELL_TRIGGER_ONEQUIP, "")
-					sanitizedText = sanitizedText:gsub(StripGlobalStrings(ITEM_SOCKET_BONUS), ""):utf8lower()
+					sanitizedText = sanitizedText:gsub("%.$", "")
+					sanitizedText = sanitizedText:gsub(StripGlobalStrings(ITEM_SOCKET_BONUS), "")
+					sanitizedText = sanitizedText:utf8lower()
 					local values = {}
 					local statText, count = sanitizedText:gsub("[+-]?[%d%.]+%f[%D]", function(match)
 						local value = tonumber(match)
