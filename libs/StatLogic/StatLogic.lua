@@ -1673,6 +1673,7 @@ do
 				-------------------------
 				-- Substitution Lookup --
 				-------------------------
+				local statText
 				if not found then
 					-- Strip leading "Equip: ", "Socket Bonus: ", trailing "."
 					local sanitizedText = text:gsub(ITEM_SPELL_TRIGGER_ONEQUIP, "")
@@ -1680,7 +1681,8 @@ do
 					sanitizedText = sanitizedText:gsub(StripGlobalStrings(ITEM_SOCKET_BONUS), "")
 					sanitizedText = sanitizedText:utf8lower()
 					local values = {}
-					local statText, count = sanitizedText:gsub("[+-]?[%d%.]+%f[%D]", function(match)
+					local count
+					statText, count = sanitizedText:gsub("[+-]?[%d%.]+%f[%D]", function(match)
 						local value = tonumber(match)
 						if value then
 							values[#values + 1] = value
@@ -1697,9 +1699,6 @@ do
 						end
 					else
 						found = ParseMatch(false, text, false, "Substitution")
-					end
-					if not found then
-						log("|cffff5959  Substitution Missed: |r|cnLIGHTBLUE_FONT_COLOR:" .. statText)
 					end
 				end
 
@@ -1722,6 +1721,11 @@ do
 					if g < 0.8 or (b < 0.99 and b > 0.1) then
 						found = ParseMatch(false, text, nil, "Color")
 					end
+				end
+
+				-- For debugging Substitution with /sldebug, for now we want to be quiet about Prefix/Color Excludes
+				if not found then
+					log("|cffff5959  Substitution Missed: |r|cnLIGHTBLUE_FONT_COLOR:" .. statText)
 				end
 
 				----------------------------
