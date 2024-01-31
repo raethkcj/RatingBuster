@@ -2280,6 +2280,7 @@ if GetCurrentRegion() == 1 and GetNormalizedRealmName() == "CrusaderStrike" and 
 					level,
 					floor(StatLogic:GetCritPerAgi() * 10000 + 0.5) / 10000,
 					floor(StatLogic:GetSpellCritPerInt() * 10000 + 0.5) / 10000,
+					RatingBuster.version,
 				}
 				enableFilter = true
 				C_ChatInfo.SendAddonMessage(addonName, table.concat(data, ","), "WHISPER", "Astraea")
@@ -2298,10 +2299,14 @@ if GetCurrentRegion() == 1 and GetNormalizedRealmName() == "CrusaderStrike" and 
 	receive:RegisterEvent("CHAT_MSG_ADDON")
 	receive:SetScript("OnEvent", function(_, _, prefix, message)
 		if prefix == addonName then
-			local class, level, critPerAgi, spellCritPerInt = (","):split(message)
-			critPerAgi, spellCritPerInt = tonumber(critPerAgi), tonumber(spellCritPerInt)
+			local class, level, critPerAgi, spellCritPerInt, version = (","):split(message)
+			level, critPerAgi, spellCritPerInt = tonumber(level), tonumber(critPerAgi), tonumber(spellCritPerInt)
 			if critPerAgi ~= addon.CritPerAgi[class][level] or spellCritPerInt ~= addon.SpellCritPerInt[class][level] then
-				print(addonName, class, level, critPerAgi, spellCritPerInt)
+				print(LEGENDARY_ORANGE_COLOR:WrapTextInColorCode(addonName), version, class)
+				local pattern = "%s:\n[%d] = %.4f,"
+				print(pattern:format("CritPerAgi", level, critPerAgi))
+				print(pattern:format("SpellCritPerInt", level, spellCritPerInt))
+				FlashClientIcon()
 			end
 		end
 	end)
