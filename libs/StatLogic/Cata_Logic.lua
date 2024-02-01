@@ -2202,7 +2202,7 @@ function StatLogic:GetDodgePerAgi()
 		modAgi = self:GetStatMod("MOD_AGI")
 		-- Talents that modify Agi will not add to posBuff, so we need to calculate baseAgi
 		-- But Agi from Kings etc. will add to posBuff, so we subtract those if present
-		for _, case in StatLogic.StatModTable["ALL"]["MOD_AGI"] do
+		for _, case in ipairs(StatLogic.StatModTable["ALL"]["MOD_AGI"]) do
 			if case.group == addon.BuffGroup.AllStats then
 				if StatLogic:GetAuraInfo(case.aura) then
 					modAgi = modAgi - case.value
