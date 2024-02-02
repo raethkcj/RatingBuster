@@ -234,9 +234,8 @@ if addon.class == "DRUID" then
 				["value"] = 0.0625 * 5,
 			},
 		},
-		-- Druid: Reflection - 3,6
-		--        Allows 5/10/15% of your Mana regeneration to continue while casting
 		["ADD_MANA_REG_MOD_NORMAL_MANA_REG"] = {
+			-- Talent: Reflection
 			{
 				["tab"] = 3,
 				["num"] = 6,
@@ -244,6 +243,13 @@ if addon.class == "DRUID" then
 					0.05, 0.10, 0.15,
 				},
 			},
+			-- Rune: Dreamstate
+			{
+				["rune"] = 6871,
+				["slot"] = INVSLOT_FEET,
+				["value"] = 0.5,
+				["aura"] = 408261,
+			}
 		},
 		["ADD_DODGE"] = {
 			-- Base
@@ -342,6 +348,15 @@ if addon.class == "DRUID" then
 				["aura"] = 9634,		-- ["Dire Bear Form"],
 			},
 		},
+		["MOD_HEALTH"] = {
+			-- Rune: Survival Instincts
+			{
+				["rune"] = 6859,
+				["slot"] = INVSLOT_FEET,
+				["value"] = 0.3,
+				["aura"] = 408024,
+			},
+		},
 		-- Druid: Heart of the Wild (Rank 5) - 2,15
 		--        Increases your Intellect by 4%/8%/12%/16%/20%. In addition, while in Bear or Dire Bear Form your Stamina is increased by 4%/8%/12%/16%/20% and while in Cat Form your Strength is increased by 4%/8%/12%/16%/20%.
 		["MOD_STR"] = {
@@ -385,6 +400,13 @@ elseif addon.class == "HUNTER" then
 			{
 				["value"] = 2,
 			},
+			-- Rune: Expose Weakness
+			{
+				["rune"] = 6890,
+				["slot"] = INVSLOT_WAIST,
+				["value"] = 0.40,
+				["aura"] = 409507,
+			},
 		},
 		["ADD_SPELL_CRIT"] = {
 			-- Base
@@ -401,6 +423,14 @@ elseif addon.class == "HUNTER" then
 			-- Base
 			{
 				["value"] = 0.125 * 5,
+			},
+		},
+		["ADD_MANA_REG_MOD_MANA"] = {
+			-- Buff: Aspect of the Viper
+			-- TODO: Confirm not rune, only show in AlwaysBuffed if in Season of Discovery
+			{
+				["value"] = 0.10 * 5/3,
+				["aura"] = 415423,
 			},
 		},
 		["ADD_DODGE"] = {
@@ -562,8 +592,7 @@ elseif addon.class == "MAGE" then
 			},
 		},
 		["ADD_MANA_REG_MOD_NORMAL_MANA_REG"] = {
-			-- Mage: Arcane Meditation (Rank 3) - 1,12
-			--       Allows 5/10/15% of your Mana regeneration to continue while casting.
+			-- Talent: Arcane Meditation
 			{
 				["tab"] = 1,
 				["num"] = 12,
@@ -571,25 +600,32 @@ elseif addon.class == "MAGE" then
 					0.05, 0.10, 0.15,
 				},
 			},
-			-- Mage: Mage Armor - Buff
+			-- Buff: Mage Armor
 			{
 				["value"] = 0.3,
-				["aura"] = 6117,		-- ["Mage Armor"],
+				["aura"] = 6117,
 			},
-			-- Mage: Enlightenment - Rune
-			--   While below 30% mana 10% of your mana regeneration continues while casting.
+			-- Rune: Enlightenment
 			{
 				["rune"] = 6922,
 				["slot"] = INVSLOT_CHEST,
 				["value"] = 0.1,
 				["aura"] = 412325,
 			},
-			-- Mage: Arcane Surge - Rune
-			--   Afterward, your normal mana regeneration is activated and increased by 300% for 8 sec.
+			-- Rune: Arcane Surge
 			{
 				["rune"] = 7021,
 				["slot"] = INVSLOT_LEGS,
 				["value"] = 1.0,
+				["aura"] = 425124,
+			},
+		},
+		["MOD_NORMAL_MANA_REG"] = {
+			-- Arcane Surge
+			{
+				["rune"] = 7021,
+				["slot"] = INVSLOT_LEGS,
+				["value"] = 3.00,
 				["aura"] = 425124,
 			},
 		},
@@ -658,6 +694,15 @@ elseif addon.class == "PALADIN" then
 				["value"] = 0.125 * 5,
 			},
 		},
+		["ADD_MANA_REG_MOD_MANA"] = {
+			-- Rune: Guarded by the Light
+			{
+				["rune"] = 6963,
+				["slot"] = INVSLOT_FEET,
+				["value"] = 0.05 * 5/3,
+				["aura"] = 415058,
+			},
+		},
 		["ADD_BLOCK_VALUE_MOD_STR"] = {
 			-- Base
 			{
@@ -716,6 +761,22 @@ elseif addon.class == "PALADIN" then
 				},
 			},
 		},
+		["ADD_SPELL_DMG_MOD_AP"] = {
+			-- Rune: Sheath of Light
+			{
+				["rune"] = 7050,
+				["slot"] = INVSLOT_WAIST,
+				["value"] = 0.30,
+			},
+		},
+		["ADD_HEALING_MOD_AP"] = {
+			-- Rune: Sheath of Light
+			{
+				["rune"] = 7050,
+				["slot"] = INVSLOT_WAIST,
+				["value"] = 0.30,
+			},
+		},
 		["MOD_BLOCK_VALUE"] = {
 			-- Paladin: Shield Specialization (Rank 3) - 2,8
 			--          Increases the amount of damage absorbed by your shield by 10%/20%/30%.
@@ -764,6 +825,15 @@ elseif addon.class == "PRIEST" then
 			-- Base
 			{
 				["value"] = 0.041667 * 5,
+			},
+		},
+		["ADD_MANA_REG_MOD_MANA"] = {
+			-- Rune: Dispersion
+			{
+				["rune"] = 7029,
+				["slot"] = INVSLOT_FEET,
+				["value"] = 0.3,
+				["aura"] = 425294,
 			},
 		},
 		-- Priest: Meditation (Rank 3) - 1,8
@@ -859,6 +929,15 @@ elseif addon.class == "ROGUE" then
 				},
 			},
 		},
+		["MOD_HEALTH"] = {
+			-- Rune: Rolling with the Punches
+			{
+				["rune"] = 6714,
+				["slot"] = INVSLOT_FEET,
+				["value"] = 0.30,
+				["aura"] = 400015,
+			},
+		},
 		["ADD_DODGE"] = {
 			-- Base
 			{
@@ -943,6 +1022,14 @@ elseif addon.class == "SHAMAN" then
 			-- Base
 			{
 				["value"] = 0.071429 * 5,
+			},
+		},
+		["ADD_MANA_REG_MOD_INT"] = {
+			-- Rune: Power Surge
+			{
+				["rune"] = 6980,
+				["slot"] = INVSLOT_WAIST,
+				["value"] = 0.15,
 			},
 		},
 		["ADD_BLOCK_VALUE_MOD_STR"] = {
@@ -1150,6 +1237,16 @@ elseif addon.class == "WARLOCK" then
 				["value"] = 30,
 				["aura"] = 425463,
 			},
+			-- Rune: Dance of the Wicked
+			--   You and your demon pet gain dodge chance equal to your spell critical strike chance.
+			{
+				["rune"] = 6957,
+				["slot"] = INVSLOT_FEET,
+				["aura"] = 412800,
+				-- TODO: Value for this should come from tooltip scanning.
+				-- ADD_DODGE_MOD_SPELL_CRIT could also be added later,
+				-- but we need separate ADD_DODGE so we can correctly calculate DodgePerAgi
+			}
 		},
 		-- Warlock: Demonic Pact - Rune
 		--   Demonic Pact increases spell damage and healing by 10% of your spell damage
@@ -1169,6 +1266,40 @@ elseif addon.class == "WARLOCK" then
 				["slot"] = INVSLOT_LEGS,
 				["value"] = 0.1,
 				["aura"] = 425467,
+			},
+		},
+		["ADD_PET_STA_MOD_STA"] = {
+			-- Base
+			{
+				-- TODO confirm value; per pet? Felguard?
+				["value"] = 0.75,
+				["pet"] = true,
+			},
+		},
+		["ADD_SPELL_DMG_MOD_PET_STA"] = {
+			-- Rune: Demonic Knowledge
+			{
+				["rune"] = 6953,
+				["slot"] = INVSLOT_FEET,
+				["value"] = 0.10,
+				["pet"] = true,
+			},
+		},
+		["ADD_PET_INT_MOD_INT"] = {
+			-- Base
+			{
+				-- TODO confirm value; per pet? Felguard?
+				["value"] = 0.3,
+				["pet"] = true,
+			},
+		},
+		["ADD_SPELL_DMG_MOD_PET_INT"] = {
+			-- Rune: Demonic Knowledge
+			{
+				["rune"] = 6953,
+				["slot"] = INVSLOT_FEET,
+				["value"] = 0.10,
+				["pet"] = true,
 			},
 		},
 	}
@@ -1488,6 +1619,14 @@ StatLogic.StatModTable["ALL"] = {
 			["value"] = 0.1,
 			["aura"] = 409583,
 			["group"] = addon.BuffGroup.AllStats,
+		},
+	},
+	["MOD_HEALTH"] = {
+		-- Rune: Rallying Cry
+		-- TODO: Hide from AlwaysBuffed outside SoD
+		{
+			["aura"] = 426490,
+			["value"] = 0.15,
 		},
 	},
 	["ADD_MELEE_CRIT"] = {
