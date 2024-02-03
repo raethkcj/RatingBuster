@@ -1660,6 +1660,18 @@ StatLogic.StatModTable["ALL"] = {
 			["aura"] = 430947,
 			["value"] = 2,
 		},
+		-- Set: Irradiated Garments
+		{
+			["set"] = 1584,
+			["pieces"] = 2,
+			["value"] = 1,
+		},
+		-- Set: Insulated Leathers
+		{
+			["set"] = 1585,
+			["pieces"] = 2,
+			["value"] = 1,
+		},
 	},
 	["ADD_SPELL_CRIT"] = {
 		-- Buff: Moonkin Aura
@@ -1686,6 +1698,11 @@ StatLogic.StatModTable["ALL"] = {
 		{
 			["aura"] = 29338,
 			["value"] = 3,
+		},
+		-- Buff: Spark of Inspiration
+		{
+			["aura"] = 438536,
+			["value"] = 4,
 		},
 	},
 	["ADD_BLOCK_CHANCE_MOD_DEFENSE"] = {
