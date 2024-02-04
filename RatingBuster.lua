@@ -1489,6 +1489,9 @@ do
 		group.args[key] = option
 	end
 
+	local season = C_Seasons and C_Seasons.HasActiveSeason() and C_Seasons.GetActiveSeason()
+	local showRunes =  season and (season ~= Enum.SeasonID.NoSeason and season ~= Enum.SeasonID.Hardcore)
+
 	local function GenerateStatModOptions()
 		for _, modList in pairs(StatLogic.StatModTable) do
 			for statMod, cases in pairs(modList) do
@@ -1498,7 +1501,11 @@ do
 				if add and mod then
 					local sources = ""
 					local firstSource = true
+					local show = false
 					for _, case in ipairs(cases) do
+						if not case.rune or showRunes then
+							show = true
+						end
 						if not firstSource then
 							sources = sources .. ", "
 						end
@@ -1516,32 +1523,34 @@ do
 						firstSource = false
 					end
 
-					-- Molten Armor and Forceful Deflection give rating,
-					-- but we show it to the user as the converted stat
-					add = add:gsub("_RATING", "")
+					if show then
+						-- Molten Armor and Forceful Deflection give rating,
+						-- but we show it to the user as the converted stat
+						add = add:gsub("_RATING", "")
 
-					-- We want to show the user Armor, regardless of where it comes from
-					if add == "BONUS_ARMOR" then
-						add = StatLogic.Stats.Armor
-					end
-
-					if mod == "NORMAL_MANA_REG" then
-						mod = "SPI"
-						if GSM("ADD_NORMAL_MANA_REG_MOD_INT") > 0 then
-							-- "Normal mana regen" is added from both int and spirit
-							addStatModOption(add, "INT", sources)
+						-- We want to show the user Armor, regardless of where it comes from
+						if add == "BONUS_ARMOR" then
+							add = StatLogic.Stats.Armor
 						end
-					elseif mod == "NORMAL_HEALTH_REG" then
-						mod = "SPI"
-					elseif mod == "MANA" then
-						mod = "INT"
+
+						if mod == "NORMAL_MANA_REG" then
+							mod = "SPI"
+							if GSM("ADD_NORMAL_MANA_REG_MOD_INT") > 0 then
+								-- "Normal mana regen" is added from both int and spirit
+								addStatModOption(add, "INT", sources)
+							end
+						elseif mod == "NORMAL_HEALTH_REG" then
+							mod = "SPI"
+						elseif mod == "MANA" then
+							mod = "INT"
+						end
+
+						-- Demonic Knowledge technically scales with pet stats,
+						-- but we compute the scaling from player's stats
+						mod = mod:gsub("^PET_", "")
+
+						addStatModOption(add, mod, sources)
 					end
-
-					-- Demonic Knowledge technically scales with pet stats,
-					-- but we compute the scaling from player's stats
-					mod = mod:gsub("^PET_", "")
-
-					addStatModOption(add, mod, sources)
 				end
 			end
 		end
@@ -1553,9 +1562,6 @@ do
 			end
 		end
 	end
-
-	local season = C_Seasons and C_Seasons.HasActiveSeason() and C_Seasons.GetActiveSeason()
-	local showRunes =  season ~= Enum.SeasonID.NoSeason and season ~= Enum.SeasonID.Hardcore
 
 	local function GenerateAuraOptions()
 		for modType, modList in pairs(StatLogic.StatModTable) do

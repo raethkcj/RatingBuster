@@ -932,6 +932,9 @@ addon.StatModValidators = {
 	rune = {
 		validate = function(case)
 			if C_Engraving then
+				if type(case.rune) == "boolean" then
+					return case.rune
+				end
 				local rune = C_Engraving.GetRuneForEquipmentSlot(case.slot)
 				return rune and rune.itemEnchantmentID == case.rune
 			else

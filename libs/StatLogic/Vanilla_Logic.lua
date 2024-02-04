@@ -469,10 +469,10 @@ elseif addon.class == "HUNTER" then
 		},
 		["ADD_MANA_REG_MOD_MANA"] = {
 			-- Buff: Aspect of the Viper
-			-- TODO: Confirm not rune, only show in AlwaysBuffed if in Season of Discovery
 			{
 				["value"] = 0.10 * 5/3,
 				["aura"] = 415423,
+				["rune"] = true,
 			},
 		},
 		["ADD_DODGE"] = {
@@ -532,7 +532,7 @@ elseif addon.class == "HUNTER" then
 			},
 		},
 		["MOD_STR"] = {
-			-- Hunter: Aspect of the Lion - Rune
+			-- Hunter: Heart of the Lion - Rune
 			--   increasing total stats for the Hunter by an additional 10%
 			{
 				["rune"] = 6891,
@@ -551,7 +551,7 @@ elseif addon.class == "HUNTER" then
 					0.03, 0.06, 0.09, 0.12, 0.15,
 				},
 			},
-			-- Hunter: Aspect of the Lion - Rune
+			-- Hunter: Heart of the Lion - Rune
 			--   increasing total stats for the Hunter by an additional 10%
 			{
 				["rune"] = 6891,
@@ -561,7 +561,7 @@ elseif addon.class == "HUNTER" then
 			},
 		},
 		["MOD_STA"] = {
-			-- Hunter: Aspect of the Lion - Rune
+			-- Hunter: Heart of the Lion - Rune
 			--   increasing total stats for the Hunter by an additional 10%
 			{
 				["rune"] = 6891,
@@ -571,7 +571,7 @@ elseif addon.class == "HUNTER" then
 			},
 		},
 		["MOD_INT"] = {
-			-- Hunter: Aspect of the Lion - Rune
+			-- Hunter: Heart of the Lion - Rune
 			--   increasing total stats for the Hunter by an additional 10%
 			{
 				["rune"] = 6891,
@@ -581,7 +581,7 @@ elseif addon.class == "HUNTER" then
 			},
 		},
 		["MOD_SPI"] = {
-			-- Hunter: Aspect of the Lion - Rune
+			-- Hunter: Heart of the Lion - Rune
 			--   increasing total stats for the Hunter by an additional 10%
 			{
 				["rune"] = 6891,
@@ -1560,12 +1560,13 @@ StatLogic.StatModTable["ALL"] = {
 			["aura"] = 25898,
 			["group"] = addon.BuffGroup.AllStats,
 		},
-		-- Aspect of the Lion - Buff
+		-- Heart of the Lion - Buff
 		--   Increases stats by 10%.
 		{
 			["value"] = 0.1,
 			["aura"] = 409583,
 			["group"] = addon.BuffGroup.AllStats,
+			["rune"] = true,
 		},
 	},
 	["MOD_AGI"] = {
@@ -1583,12 +1584,13 @@ StatLogic.StatModTable["ALL"] = {
 			["aura"] = 25898,
 			["group"] = addon.BuffGroup.AllStats,
 		},
-		-- Aspect of the Lion - Buff
+		-- Heart of the Lion - Buff
 		--   Increases stats by 10%.
 		{
 			["value"] = 0.1,
 			["aura"] = 409583,
 			["group"] = addon.BuffGroup.AllStats,
+			["rune"] = true,
 		},
 	},
 	["MOD_STA"] = {
@@ -1606,12 +1608,13 @@ StatLogic.StatModTable["ALL"] = {
 			["aura"] = 25898,
 			["group"] = addon.BuffGroup.AllStats,
 		},
-		-- Aspect of the Lion - Buff
+		-- Heart of the Lion - Buff
 		--   Increases stats by 10%.
 		{
 			["value"] = 0.1,
 			["aura"] = 409583,
 			["group"] = addon.BuffGroup.AllStats,
+			["rune"] = true,
 		},
 	},
 	["MOD_INT"] = {
@@ -1629,12 +1632,13 @@ StatLogic.StatModTable["ALL"] = {
 			["aura"] = 25898,
 			["group"] = addon.BuffGroup.AllStats,
 		},
-		-- Aspect of the Lion - Buff
+		-- Heart of the Lion - Buff
 		--   Increases stats by 10%.
 		{
 			["value"] = 0.1,
 			["aura"] = 409583,
 			["group"] = addon.BuffGroup.AllStats,
+			["rune"] = true,
 		},
 	},
 	["MOD_SPI"] = {
@@ -1652,20 +1656,21 @@ StatLogic.StatModTable["ALL"] = {
 			["aura"] = 25898,
 			["group"] = addon.BuffGroup.AllStats,
 		},
-		-- Aspect of the Lion - Buff
+		-- Heart of the Lion - Buff
 		--   Increases stats by 10%.
 		{
 			["value"] = 0.1,
 			["aura"] = 409583,
 			["group"] = addon.BuffGroup.AllStats,
+			["rune"] = true,
 		},
 	},
 	["MOD_HEALTH"] = {
 		-- Rune: Rallying Cry
-		-- TODO: Hide from AlwaysBuffed outside SoD
 		{
 			["aura"] = 426490,
 			["value"] = 0.15,
+			["rune"] = true,
 		},
 	},
 	["ADD_MELEE_CRIT"] = {
