@@ -676,6 +676,8 @@ do
 	-- performance during combat, when many auras will be updating,
 	-- but the user is unlikely to be checking item tooltips.
 	local aura_cache = {}
+	-- Auras whose StatMod requires scanning the tooltip to get a dynamic value
+	local tooltip_auras = {}
 
 	local needs_update = true
 	local f = CreateFrame("Frame")
@@ -700,6 +702,9 @@ do
 						local name = GetSpellInfo(mod.aura)
 						if name then
 							always_buffed_aura_info[name] = aura
+							if mod.tooltip then
+								tooltip_auras[name] = true
+							end
 						end
 					end
 				end
@@ -717,6 +722,12 @@ do
 					local name, _, _, _, _, _, _, _, _, spellId = UnitBuff("player", i)
 					if name then
 						aura_cache[name] = { spellId = spellId }
+						if tooltip_auras[name] then
+							tip:SetUnitBuff("player", i)
+							local numString = tip.sides.left[2]:GetText():match("%d+")
+							local value = numString and tonumber(numString) or 0
+							aura_cache[name].tooltip = value
+						end
 					end
 					i = i+1
 				until not name
@@ -1146,6 +1157,9 @@ do
 			value = case.value
 		elseif case.level then
 			value = case.level[UnitLevel("player")]
+		elseif case.tooltip then
+			local aura = StatLogic:GetAuraInfo(GetSpellInfo(case.aura))
+			value = aura.tooltip
 		end
 
 		if value then

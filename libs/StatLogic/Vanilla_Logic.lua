@@ -1243,9 +1243,8 @@ elseif addon.class == "WARLOCK" then
 				["rune"] = 6957,
 				["slot"] = INVSLOT_FEET,
 				["aura"] = 412800,
-				-- TODO: Value for this should come from tooltip scanning.
-				-- ADD_DODGE_MOD_SPELL_CRIT could also be added later,
-				-- but we need separate ADD_DODGE so we can correctly calculate DodgePerAgi
+				["tooltip"] = true,
+				-- TODO: ADD_DODGE_MOD_SPELL_CRIT?
 			}
 		},
 		-- Warlock: Demonic Pact - Rune
@@ -1271,7 +1270,6 @@ elseif addon.class == "WARLOCK" then
 		["ADD_PET_STA_MOD_STA"] = {
 			-- Base
 			{
-				-- TODO confirm value; per pet? Felguard?
 				["value"] = 0.75,
 				["pet"] = true,
 			},
@@ -1288,7 +1286,6 @@ elseif addon.class == "WARLOCK" then
 		["ADD_PET_INT_MOD_INT"] = {
 			-- Base
 			{
-				-- TODO confirm value; per pet? Felguard?
 				["value"] = 0.3,
 				["pet"] = true,
 			},
