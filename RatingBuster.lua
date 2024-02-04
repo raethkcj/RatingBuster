@@ -1581,7 +1581,7 @@ do
 								options.args.alwaysBuffed.args[modType].hidden = false
 
 								-- If it's a spell the player knows, use the highest rank for the description
-								local spellId = mod.aura
+								local spellId = mod.spellid or mod.known or mod.aura
 								if IsPlayerSpell(spellId) then
 									spellId = select(7,GetSpellInfo(name)) or spellId
 								end

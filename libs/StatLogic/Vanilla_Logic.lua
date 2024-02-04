@@ -1525,6 +1525,7 @@ StatLogic.StatModTable["ALL"] = {
 				0.15, 0.30,
 			},
 			["aura"] = 20236,
+			["spellid"] = 20235,
 		},
 		-- Priest: Inspiration (Rank 1/2/3) - Buff
 		--         Increases armor by 8%/16%/25%.
@@ -1543,6 +1544,7 @@ StatLogic.StatModTable["ALL"] = {
 			},
 			["aura"] = 16237,
 			["group"] = addon.BuffGroup.Armor,
+			["spellid"] = 16240,
 		},
 	},
 	["MOD_STR"] = {
