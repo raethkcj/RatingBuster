@@ -1660,6 +1660,78 @@ StatLogic.StatModTable["ALL"] = {
 			["aura"] = 430947,
 			["value"] = 2,
 		},
+		-- Set: Blood Tiger Harness
+		{
+			["set"] = 442,
+			["pieces"] = 2,
+			["value"] = 1,
+		},
+		-- Set: The Gladiator
+		{
+			["set"] = 1,
+			["pieces"] = 5,
+			["value"] = 1,
+		},
+		-- Set: The Defiler's Purpose
+		{
+			["set"] = 486,
+			["pieces"] = 3,
+			["value"] = 1,
+		},
+		-- Set: The Highlander's Purpose
+		{
+			["set"] = 471,
+			["pieces"] = 3,
+			["value"] = 1,
+		},
+		-- Set: The Defiler's Fortitude
+		{
+			["set"] = 484,
+			["pieces"] = 3,
+			["value"] = 1,
+		},
+		-- Set: The Defiler's Determination
+		{
+			["set"] = 483,
+			["pieces"] = 3,
+			["value"] = 1,
+		},
+		-- Set: The Highlander's Determination
+		{
+			["set"] = 469,
+			["pieces"] = 3,
+			["value"] = 1,
+		},
+		-- Set: The Defiler's Resolution
+		{
+			["set"] = 487,
+			["pieces"] = 3,
+			["value"] = 1,
+		},
+		-- Set: The Highlander's Resolution
+		{
+			["set"] = 467,
+			["pieces"] = 3,
+			["value"] = 1,
+		},
+		-- Set: The Highlander's Resolve
+		{
+			["set"] = 468,
+			["pieces"] = 3,
+			["value"] = 1,
+		},
+		-- Set: Lawbringer Armor
+		{
+			["set"] = 208,
+			["pieces"] = 5,
+			["value"] = 1,
+		},
+		-- Set: Black Dragon Mail
+		{
+			["set"] = 489,
+			["pieces"] = 3,
+			["value"] = 2,
+		},
 		-- Set: Irradiated Garments
 		{
 			["set"] = 1584,
@@ -1703,6 +1775,14 @@ StatLogic.StatModTable["ALL"] = {
 		{
 			["aura"] = 438536,
 			["value"] = 4,
+		},
+	},
+	["ADD_DODGE"] = {
+		-- Set: Overlord's Resolution
+		{
+			["set"] = 464,
+			["pieces"] = 2,
+			["value"] = 1,
 		},
 	},
 	["ADD_BLOCK_CHANCE_MOD_DEFENSE"] = {
