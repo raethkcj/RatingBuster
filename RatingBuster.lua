@@ -1504,13 +1504,13 @@ do
 						end
 						local source = ""
 						if case.aura then
-							source = GetSpellInfo(case.aura)
+							source = GetSpellInfo(case.aura) or source
 						elseif case.tab then
 							source = StatLogic:GetOrderedTalentInfo(case.tab, case.num)
 						elseif case.glyph then
-							source = GetSpellInfo(case.glyph)
+							source = GetSpellInfo(case.glyph) or source
 						elseif case.spellid then
-							source = GetSpellInfo(case.spellid)
+							source = GetSpellInfo(case.spellid) or source
 						end
 						sources = sources .. source
 						firstSource = false
@@ -1564,22 +1564,24 @@ do
 					for _, mod in ipairs(mods) do
 						if mod.aura and (not mod.rune or showRunes) then
 							local name, _, icon = GetSpellInfo(mod.aura)
-							local option = {
-								type = 'toggle',
-								name = "|T"..icon..":25:25:-2:0|t"..name,
-							}
-							options.args.alwaysBuffed.args[modType].args[name] = option
-							options.args.alwaysBuffed.args[modType].hidden = false
+							if name then
+								local option = {
+									type = 'toggle',
+									name = "|T"..icon..":25:25:-2:0|t"..name,
+								}
+								options.args.alwaysBuffed.args[modType].args[name] = option
+								options.args.alwaysBuffed.args[modType].hidden = false
 
-							-- If it's a spell the player knows, use the highest rank for the description
-							local spellId = mod.aura
-							if IsPlayerSpell(spellId) then
-								spellId = select(7,GetSpellInfo(name)) or spellId
+								-- If it's a spell the player knows, use the highest rank for the description
+								local spellId = mod.aura
+								if IsPlayerSpell(spellId) then
+									spellId = select(7,GetSpellInfo(name)) or spellId
+								end
+								local spell = Spell:CreateFromSpellID(spellId)
+								spell:ContinueOnSpellLoad(function()
+									option.desc = spell:GetSpellDescription()
+								end)
 							end
-							local spell = Spell:CreateFromSpellID(spellId)
-							spell:ContinueOnSpellLoad(function()
-								option.desc = spell:GetSpellDescription()
-							end)
 						end
 					end
 				end
