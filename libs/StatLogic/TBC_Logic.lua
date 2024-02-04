@@ -1522,6 +1522,15 @@ elseif addon.class == "WARRIOR" then
 				},
 			},
 		},
+		["MOD_HEALTH"] = {
+			-- Buff: Last Stand
+			{
+				["tab"] = 3,
+				["num"] = 6,
+				["value"] = 0.30,
+				["aura"] = 12976,
+			},
+		},
 	}
 end
 

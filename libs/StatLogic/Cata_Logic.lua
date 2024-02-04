@@ -1230,6 +1230,15 @@ elseif addon.class == "PRIEST" then
 				},
 			},
 		},
+		["ADD_MANA_REG_MOD_MANA"] = {
+			-- Talent: Dispersion
+			{
+				["tab"] = 3,
+				["num"] = 21,
+				["value"] = 0.30,
+				["aura"] = 47585,
+			},
+		},
 		["ADD_SPELL_HIT_RATING_MOD_SPI"] = {
 			-- Talent: Twisted Faith
 			{
@@ -2039,6 +2048,13 @@ StatLogic.StatModTable["ALL"] = {
 		{
 			["value"] = 3.5,
 			["aura"] = 16191,
+		},
+	},
+	["MOD_HEALTH"] = {
+		-- Buff: Rallying Cry
+		{
+			["value"] = 0.20,
+			["aura"] = 97463,
 		},
 	},
 	["ADD_DODGE_REDUCTION_MOD_EXPERTISE"] = {

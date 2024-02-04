@@ -1697,6 +1697,13 @@ elseif addon.class == "HUNTER" then
 				["regen"] = NormalManaRegenPerInt,
 			},
 		},
+		["ADD_MANA_REG_MOD_MANA"] = {
+			-- Buff: Aspect of the Viper
+			{
+				["aura"] = 34074,
+				["value"] = 0.04 * 5/3,
+			},
+		},
 		-- Hunter: Hunter vs. Wild (Rank 3) - 3,14
 		--         Increases you and your pet's attack power and ranged attack power equal to 10%/20%/30% of your total Stamina.
 		["ADD_AP_MOD_STA"] = {
@@ -2226,6 +2233,15 @@ elseif addon.class == "PRIEST" then
 				["rank"] = {
 					0.17, 0.33,
 				},
+			},
+		},
+		["ADD_MANA_REG_MOD_MANA"] = {
+			-- Talent: Dispersion
+			{
+				["tab"] = 3,
+				["num"] = 27,
+				["value"] = 0.30,
+				["aura"] = 47585,
 			},
 		},
 		["ADD_SPELL_DMG_MOD_SPI"] = {
