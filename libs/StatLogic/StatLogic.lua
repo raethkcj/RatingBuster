@@ -895,8 +895,7 @@ addon.StatModValidators = {
 	},
 	known = {
 		validate = function(case)
-			-- TODO: Confirm IsPlayerSpell and not IsPlayerKnown
-			return IsPlayerSpell(case.known)
+			return FindSpellBookSlotBySpellID(case.known)
 		end,
 		events = {
 			["SPELLS_CHANGED"] = true,
@@ -927,23 +926,6 @@ addon.StatModValidators = {
 		events = {
 			["UNIT_STATS"] = "player",
 			["PLAYER_LEVEL_UP"] = true,
-		},
-	},
-	rune = {
-		validate = function(case)
-			if C_Engraving then
-				if type(case.rune) == "boolean" then
-					return case.rune
-				end
-				local rune = C_Engraving.GetRuneForEquipmentSlot(case.slot)
-				return rune and rune.itemEnchantmentID == case.rune
-			else
-				return false
-			end
-		end,
-		events = {
-			["RUNE_UPDATED"] = true,
-			["UNIT_INVENTORY_CHANGED"] = "player",
 		},
 	},
 	set = {

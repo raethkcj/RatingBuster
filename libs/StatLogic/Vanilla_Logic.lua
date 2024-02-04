@@ -287,8 +287,8 @@ if addon.class == "DRUID" then
 			},
 			-- Rune: Dreamstate
 			{
-				["rune"] = 6871,
-				["slot"] = INVSLOT_FEET,
+				["known"] = 408258,
+				["rune"] = true,
 				["value"] = 0.5,
 				["aura"] = 408261,
 			}
@@ -393,8 +393,8 @@ if addon.class == "DRUID" then
 		["MOD_HEALTH"] = {
 			-- Rune: Survival Instincts
 			{
-				["rune"] = 6859,
-				["slot"] = INVSLOT_FEET,
+				["known"] = 408024,
+				["rune"] = true,
 				["value"] = 0.3,
 				["aura"] = 408024,
 			},
@@ -444,8 +444,8 @@ elseif addon.class == "HUNTER" then
 			},
 			-- Rune: Expose Weakness
 			{
-				["rune"] = 6890,
-				["slot"] = INVSLOT_WAIST,
+				["known"] = 409504,
+				["rune"] = true,
 				["value"] = 0.40,
 				["aura"] = 409507,
 			},
@@ -515,8 +515,8 @@ elseif addon.class == "HUNTER" then
 			},
 			-- Rune: Master Marksman
 			{
-				["rune"] = 6889,
-				["slot"] = INVSLOT_CHEST,
+				["known"] = 409428,
+				["rune"] = true,
 				["value"] = 5,
 			},
 		},
@@ -535,8 +535,8 @@ elseif addon.class == "HUNTER" then
 			-- Hunter: Heart of the Lion - Rune
 			--   increasing total stats for the Hunter by an additional 10%
 			{
-				["rune"] = 6891,
-				["slot"] = INVSLOT_CHEST,
+				["known"] = 409580,
+				["rune"] = true,
 				["aura"] = 409580,
 				["value"] = 0.1,
 			},
@@ -554,8 +554,8 @@ elseif addon.class == "HUNTER" then
 			-- Hunter: Heart of the Lion - Rune
 			--   increasing total stats for the Hunter by an additional 10%
 			{
-				["rune"] = 6891,
-				["slot"] = INVSLOT_CHEST,
+				["known"] = 409580,
+				["rune"] = true,
 				["aura"] = 409580,
 				["value"] = 0.1,
 			},
@@ -564,8 +564,8 @@ elseif addon.class == "HUNTER" then
 			-- Hunter: Heart of the Lion - Rune
 			--   increasing total stats for the Hunter by an additional 10%
 			{
-				["rune"] = 6891,
-				["slot"] = INVSLOT_CHEST,
+				["known"] = 409580,
+				["rune"] = true,
 				["aura"] = 409580,
 				["value"] = 0.1,
 			},
@@ -574,8 +574,8 @@ elseif addon.class == "HUNTER" then
 			-- Hunter: Heart of the Lion - Rune
 			--   increasing total stats for the Hunter by an additional 10%
 			{
-				["rune"] = 6891,
-				["slot"] = INVSLOT_CHEST,
+				["known"] = 409580,
+				["rune"] = true,
 				["aura"] = 409580,
 				["value"] = 0.1,
 			},
@@ -584,8 +584,8 @@ elseif addon.class == "HUNTER" then
 			-- Hunter: Heart of the Lion - Rune
 			--   increasing total stats for the Hunter by an additional 10%
 			{
-				["rune"] = 6891,
-				["slot"] = INVSLOT_CHEST,
+				["known"] = 409580,
+				["rune"] = true,
 				["aura"] = 409580,
 				["value"] = 0.1,
 			},
@@ -649,15 +649,15 @@ elseif addon.class == "MAGE" then
 			},
 			-- Rune: Enlightenment
 			{
-				["rune"] = 6922,
-				["slot"] = INVSLOT_CHEST,
+				["known"] = 412324,
+				["rune"] = true,
 				["value"] = 0.1,
 				["aura"] = 412325,
 			},
 			-- Rune: Arcane Surge
 			{
-				["rune"] = 7021,
-				["slot"] = INVSLOT_LEGS,
+				["known"] = 425124,
+				["rune"] = true,
 				["value"] = 1.0,
 				["aura"] = 425124,
 			},
@@ -665,8 +665,8 @@ elseif addon.class == "MAGE" then
 		["MOD_NORMAL_MANA_REG"] = {
 			-- Arcane Surge
 			{
-				["rune"] = 7021,
-				["slot"] = INVSLOT_LEGS,
+				["known"] = 425124,
+				["rune"] = true,
 				["value"] = 3.00,
 				["aura"] = 425124,
 			},
@@ -689,8 +689,8 @@ elseif addon.class == "MAGE" then
 			},
 			-- Rune: Burnout
 			{
-				["rune"] = 6729,
-				["slot"] = INVSLOT_CHEST,
+				["known"] = 412286,
+				["rune"] = true,
 				["value"] = 15,
 			},
 			-- Buff: Scroll of Arcane Power I
@@ -739,8 +739,8 @@ elseif addon.class == "PALADIN" then
 		["ADD_MANA_REG_MOD_MANA"] = {
 			-- Rune: Guarded by the Light
 			{
-				["rune"] = 6963,
-				["slot"] = INVSLOT_FEET,
+				["known"] = 415059,
+				["rune"] = true,
 				["value"] = 0.05 * 5/3,
 				["aura"] = 415058,
 			},
@@ -806,16 +806,16 @@ elseif addon.class == "PALADIN" then
 		["ADD_SPELL_DMG_MOD_AP"] = {
 			-- Rune: Sheath of Light
 			{
-				["rune"] = 7050,
-				["slot"] = INVSLOT_WAIST,
+				["known"] = 426158,
+				["rune"] = true,
 				["value"] = 0.30,
 			},
 		},
 		["ADD_HEALING_MOD_AP"] = {
 			-- Rune: Sheath of Light
 			{
-				["rune"] = 7050,
-				["slot"] = INVSLOT_WAIST,
+				["known"] = 426158,
+				["rune"] = true,
 				["value"] = 0.30,
 			},
 		},
@@ -832,8 +832,8 @@ elseif addon.class == "PALADIN" then
 			-- Paladin: Aegis - Rune
 			--   Increases your block value by 30%
 			{
-				["rune"] = 7041,
-				["slot"] = INVSLOT_CHEST,
+				["known"] = 425589,
+				["rune"] = true,
 				["value"] = 0.3,
 			}
 		},
@@ -872,8 +872,8 @@ elseif addon.class == "PRIEST" then
 		["ADD_MANA_REG_MOD_MANA"] = {
 			-- Rune: Dispersion
 			{
-				["rune"] = 7029,
-				["slot"] = INVSLOT_FEET,
+				["known"] = 425294,
+				["rune"] = true,
 				["value"] = 0.3,
 				["aura"] = 425294,
 			},
@@ -974,8 +974,8 @@ elseif addon.class == "ROGUE" then
 		["MOD_HEALTH"] = {
 			-- Rune: Rolling with the Punches
 			{
-				["rune"] = 6714,
-				["slot"] = INVSLOT_FEET,
+				["known"] = 400016,
+				["rune"] = true,
 				["value"] = 0.30,
 				["aura"] = 400015,
 			},
@@ -1069,8 +1069,8 @@ elseif addon.class == "SHAMAN" then
 		["ADD_MANA_REG_MOD_INT"] = {
 			-- Rune: Power Surge
 			{
-				["rune"] = 6980,
-				["slot"] = INVSLOT_WAIST,
+				["known"] = 415100,
+				["rune"] = true,
 				["value"] = 0.15,
 			},
 		},
@@ -1152,8 +1152,8 @@ elseif addon.class == "SHAMAN" then
 			-- Shaman: Shield Mastery - Rune
 			--   You also always gain 10% increased chance to Block and 15% increased Block value.
 			{
-				["rune"] = 6876,
-				["slot"] = INVSLOT_CHEST,
+				["known"] = 408524,
+				["rune"] = true,
 				["value"] = 0.15,
 			},
 		},
@@ -1161,8 +1161,8 @@ elseif addon.class == "SHAMAN" then
 			-- Shaman: Water Shield - Rune
 			--   The caster is surrounded by 3 globes of water, granting 1% of your maximum mana per 5 sec.
 			{
-				["rune"] = 6875,
-				["slot"] = INVSLOT_HAND,
+				["known"] = 408510,
+				["rune"] = true,
 				["value"] = 0.01,
 				["aura"] = 408510,
 			},
@@ -1171,8 +1171,8 @@ elseif addon.class == "SHAMAN" then
 			-- Shaman: Way of Earth: Rune
 			--   While Rockbiter Weapon is active on your main hand weapon, you gain 30% increased health
 			{
-				["rune"] = 6886,
-				["slot"] = INVSLOT_LEGS,
+				["known"] = 408531,
+				["rune"] = true,
 				["value"] = 0.3,
 				["aura"] = 408680
 			}
@@ -1226,14 +1226,14 @@ elseif addon.class == "WARLOCK" then
 			},
 			-- Rune: Demonic Tactics
 			{
-				["rune"] = 6952,
-				["slot"] = INVSLOT_CHEST,
+				["known"] = 412727,
+				["rune"] = true,
 				["value"] = 10,
 			},
 			-- Rune: Demonic Grace
 			{
-				["rune"] = 7039,
-				["slot"] = INVSLOT_LEGS,
+				["known"] = 425463,
+				["rune"] = true,
 				["value"] = 30,
 				["aura"] = 425463,
 			},
@@ -1245,14 +1245,14 @@ elseif addon.class == "WARLOCK" then
 			},
 			-- Rune: Demonic Tactics
 			{
-				["rune"] = 6952,
-				["slot"] = INVSLOT_CHEST,
+				["known"] = 412727,
+				["rune"] = true,
 				["value"] = 10,
 			},
 			-- Rune: Demonic Grace
 			{
-				["rune"] = 7039,
-				["slot"] = INVSLOT_LEGS,
+				["known"] = 425463,
+				["rune"] = true,
 				["value"] = 30,
 				["aura"] = 425463,
 			},
@@ -1261,8 +1261,8 @@ elseif addon.class == "WARLOCK" then
 			-- Warlock: Metamorphosis - Rune
 			--   Transform into a Demon, increasing Armor by 500%
 			{
-				["rune"] = 6816,
-				["slot"] = INVSLOT_HAND,
+				["known"] = 403789,
+				["rune"] = true,
 				["value"] = 5.0,
 				["aura"] = 403789,
 			},
@@ -1274,16 +1274,16 @@ elseif addon.class == "WARLOCK" then
 			},
 			-- Rune: Demonic Grace
 			{
-				["rune"] = 7039,
-				["slot"] = INVSLOT_LEGS,
+				["known"] = 425463,
+				["rune"] = true,
 				["value"] = 30,
 				["aura"] = 425463,
 			},
 			-- Rune: Dance of the Wicked
 			--   You and your demon pet gain dodge chance equal to your spell critical strike chance.
 			{
-				["rune"] = 6957,
-				["slot"] = INVSLOT_FEET,
+				["known"] = 412798,
+				["rune"] = true,
 				["aura"] = 412800,
 				["tooltip"] = true,
 				-- TODO: ADD_DODGE_MOD_SPELL_CRIT?
@@ -1293,8 +1293,8 @@ elseif addon.class == "WARLOCK" then
 		--   Demonic Pact increases spell damage and healing by 10% of your spell damage
 		["MOD_SPELL_DMG"] = {
 			{
-				["rune"] = 7038,
-				["slot"] = INVSLOT_LEGS,
+				["known"] = 425464,
+				["rune"] = true,
 				["value"] = 0.1,
 				["aura"] = 425467,
 			},
@@ -1303,8 +1303,8 @@ elseif addon.class == "WARLOCK" then
 		--   Demonic Pact increases spell damage and healing by 10% of your spell damage
 		["MOD_HEALING"] = {
 			{
-				["rune"] = 7038,
-				["slot"] = INVSLOT_LEGS,
+				["known"] = 425464,
+				["rune"] = true,
 				["value"] = 0.1,
 				["aura"] = 425467,
 			},
@@ -1319,8 +1319,8 @@ elseif addon.class == "WARLOCK" then
 		["ADD_SPELL_DMG_MOD_PET_STA"] = {
 			-- Rune: Demonic Knowledge
 			{
-				["rune"] = 6953,
-				["slot"] = INVSLOT_FEET,
+				["known"] = 412732,
+				["rune"] = true,
 				["value"] = 0.10,
 				["pet"] = true,
 			},
@@ -1335,8 +1335,8 @@ elseif addon.class == "WARLOCK" then
 		["ADD_SPELL_DMG_MOD_PET_INT"] = {
 			-- Rune: Demonic Knowledge
 			{
-				["rune"] = 6953,
-				["slot"] = INVSLOT_FEET,
+				["known"] = 412732,
+				["rune"] = true,
 				["value"] = 0.10,
 				["pet"] = true,
 			},
