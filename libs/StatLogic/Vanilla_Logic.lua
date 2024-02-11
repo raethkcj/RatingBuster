@@ -113,12 +113,14 @@ addon.CritPerAgi = {
 addon.DodgePerAgi = setmetatable({
 	["HUNTER"] = setmetatable({}, {
 		__index = function(_, level)
-			return addon.CritPerAgi["HUNTER"][level] * 2
+			local critPerAgi = addon.CritPerAgi["HUNTER"][level]
+			return critPerAgi and critPerAgi * 2 or nil
 		end
 	}),
 	["ROGUE"] = setmetatable({}, {
 		__index = function(_, level)
-			return addon.CritPerAgi["ROGUE"][level] * 2
+			local critPerAgi = addon.CritPerAgi["ROGUE"][level]
+			return critPerAgi and critPerAgi * 2 or nil
 		end
 	})
 }, {
