@@ -2251,43 +2251,52 @@ function StatLogic:GetDiff(item, diff1, diff2, ignoreEnchant, ignoreGems, ignore
 end
 
 -- Telemetry for agi/int conversions, will delete at the send of SoD.
-if GetCurrentRegion() == 1 and GetNormalizedRealmName() == "CrusaderStrike" and UnitFactionGroup("player") == "Alliance" and GetLocale() == "enUS" then
-	-- Hide system message spam if offline
-	local enableFilter = false
-	ChatFrame_AddMessageEventFilter("CHAT_MSG_SYSTEM", function(_, _, ...)
-		if enableFilter then
-			enableFilter = false
-			return true
-		else
-			return false, ...
-		end
-	end)
+if GetCurrentRegion() == 1 and GetLocale() == "enUS" then
+	local target
+	if GetNormalizedRealmName() == "CrusaderStrike" and UnitFactionGroup("player") == "Alliance" then
+		target = "Astraea"
+	elseif GetNormalizedRealmName() == "LoneWolf" and UnitFactionGroup("player") == "Horde" then
+		target = "Astraean"
+	end
 
-	-- Send
-	local send = CreateFrame("Frame")
-	send:RegisterEvent("SPELLS_CHANGED")
-	send:RegisterEvent("PLAYER_LEVEL_UP")
-
-	send:SetScript("OnEvent", function()
-		local level = UnitLevel("player")
-		if not addon.CritPerAgi[addon.class][level] or not addon.SpellCritPerInt[addon.class][level] then
-			if StatLogic:TalentCacheExists() then
-				local data = {
-					addon.class,
-					level,
-					floor(StatLogic:GetCritPerAgi() * 10000 + 0.5) / 10000,
-					floor(StatLogic:GetSpellCritPerInt() * 10000 + 0.5) / 10000,
-					RatingBuster.version,
-				}
-				enableFilter = true
-				C_ChatInfo.SendAddonMessage(addonName, table.concat(data, ","), "WHISPER", "Astraea")
+	if target then
+		-- Hide system message spam if offline
+		local enableFilter = false
+		ChatFrame_AddMessageEventFilter("CHAT_MSG_SYSTEM", function(_, _, ...)
+			if enableFilter then
+				enableFilter = false
+				return true
 			else
-				C_Timer.After(2, function()
-					send:GetScript("OnEvent")("SPELLS_CHANGED")
-				end)
+				return false, ...
 			end
-		end
-	end)
+		end)
+
+		-- Send
+		local send = CreateFrame("Frame")
+		send:RegisterEvent("SPELLS_CHANGED")
+		send:RegisterEvent("PLAYER_LEVEL_UP")
+
+		send:SetScript("OnEvent", function()
+			local level = UnitLevel("player")
+			if not addon.CritPerAgi[addon.class][level] or not addon.SpellCritPerInt[addon.class][level] then
+				if StatLogic:TalentCacheExists() then
+					local data = {
+						addon.class,
+						level,
+						floor(StatLogic:GetCritPerAgi() * 10000 + 0.5) / 10000,
+						floor(StatLogic:GetSpellCritPerInt() * 10000 + 0.5) / 10000,
+						RatingBuster.version,
+					}
+					enableFilter = true
+					C_ChatInfo.SendAddonMessage(addonName, table.concat(data, ","), "WHISPER", target)
+				else
+					C_Timer.After(2, function()
+						send:GetScript("OnEvent")("SPELLS_CHANGED")
+					end)
+				end
+			end
+		end)
+	end
 
 	-- Receive
 	--@debug@
@@ -2298,12 +2307,17 @@ if GetCurrentRegion() == 1 and GetNormalizedRealmName() == "CrusaderStrike" and 
 		if prefix == addonName then
 			local class, level, critPerAgi, spellCritPerInt, version = (","):split(message)
 			level, critPerAgi, spellCritPerInt = tonumber(level), tonumber(critPerAgi), tonumber(spellCritPerInt)
-			if critPerAgi ~= addon.CritPerAgi[class][level] or spellCritPerInt ~= addon.SpellCritPerInt[class][level] then
+			local pattern = "%s:\n[%d] = %.4f,"
+			local newCrit = not addon.CritPerAgi[class][level]
+			local newSpellCrit = not addon.SpellCritPerInt[class][level]
+			if newCrit or newSpellCrit then
 				print(LEGENDARY_ORANGE_COLOR:WrapTextInColorCode(addonName), version, class)
-				local pattern = "%s:\n[%d] = %.4f,"
+			end
+			if newCrit then
 				print(pattern:format("CritPerAgi", level, critPerAgi))
+			end
+			if newSpellCrit then
 				print(pattern:format("SpellCritPerInt", level, spellCritPerInt))
-				FlashClientIcon()
 			end
 		end
 	end)
