@@ -6,23 +6,8 @@ local StatLogic = LibStub(addonName)
 ---------------
 -- Libraries --
 ---------------
--- Pattern matching
 ---@type StatLogicLocale
 local L = LibStub("AceLocale-3.0"):GetLocale(addonName)
-
--------------------
--- Set Debugging --
--------------------
-local DEBUG = false
-function CmdHandler()
-	DEBUG = not DEBUG
-end
-SlashCmdList["STATLOGICDEBUG"] = CmdHandler
-SLASH_STATLOGICDEBUG1 = "/sldebug";
-
--- Uncomment below to log out log out every missing translation for each locale
--- L:EnableDebugging()
--- D:EnableDebugging()
 
 -- Add all lower case strings to ["StatIDLookup"]
 if type(L) == "table" and type(L["StatIDLookup"]) == "table" then
@@ -48,12 +33,6 @@ function StatLogic:argCheck(argument, number, ...)
 		"Bad argument #"..tostring(number).." ("..validTypeString.." expected, got "..t..")"
 	)
 end
-
------------
--- Cache --
------------
-local cache = {}
-setmetatable(cache, {__mode = "kv"}) -- weak table to enable garbage collection
 
 -- Tooltip with syntactic sugar
 ---@class StatLogicTooltip : GameTooltip
@@ -273,6 +252,21 @@ local function copyTable(to, from)
 	end
 	setmetatable(to, getmetatable(from))
 	return to
+end
+
+-----------
+-- Cache --
+-----------
+local cache = {}
+setmetatable(cache, {__mode = "kv"}) -- weak table to enable garbage collection
+
+-------------------
+-- Set Debugging --
+-------------------
+local DEBUG = false
+function StatLogic:ToggleDebugging()
+	DEBUG = not DEBUG
+	wipe(cache)
 end
 
 local function log(...)
@@ -1716,7 +1710,7 @@ do
 					end
 				end
 
-				-- For debugging Substitution with /sldebug, for now we want to be quiet about Prefix/Color Excludes
+				-- For debugging Substitution with /rb debug, for now we want to be quiet about Prefix/Color Excludes
 				if not found then
 					log("|cffff5959  Substitution Missed: |r|cnLIGHTBLUE_FONT_COLOR:" .. statText)
 				end

@@ -43,8 +43,10 @@ local function clearCache()
 		cache[k] = nil
 	end
 end
---debug
---RatingBuster.cache = cache
+
+function RatingBuster:ToggleDebugging()
+	wipe(cache)
+end
 
 ---------------------
 -- Local Variables --
@@ -160,6 +162,16 @@ local options = {
 			order = 1,
 			func = function()
 				LibStub("AceConfigCmd-3.0").HandleCommand(RatingBuster, "rb", addonNameWithVersion, "")
+			end,
+			dialogHidden = true,
+		},
+		debug = {
+			type = "execute",
+			name = "Debug",
+			desc = "Toggle debugging",
+			func = function()
+				RatingBuster:ToggleDebugging()
+				StatLogic:ToggleDebugging()
 			end,
 			dialogHidden = true,
 		},
