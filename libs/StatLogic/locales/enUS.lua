@@ -42,17 +42,6 @@ L["PrefixExclude"] = {}
 -----------------------
 -- Mainly used for enchants that doesn't have numbers in the text
 L["WholeTextLookup"] = {
-	["Minor Wizard Oil"] = {[StatLogic.Stats.SpellDamage] = 8, [StatLogic.Stats.HealingPower] = 8}, -- ID: 20744
-	["Lesser Wizard Oil"] = {[StatLogic.Stats.SpellDamage] = 16, [StatLogic.Stats.HealingPower] = 16}, -- ID: 20746
-	["Wizard Oil"] = {[StatLogic.Stats.SpellDamage] = 24, [StatLogic.Stats.HealingPower] = 24}, -- ID: 20750
-	["Brilliant Wizard Oil"] = {[StatLogic.Stats.SpellDamage] = 36, [StatLogic.Stats.HealingPower] = 36, [StatLogic.Stats.SpellCritRating] = 14}, -- ID: 20749
-	["Superior Wizard Oil"] = {[StatLogic.Stats.SpellDamage] = 42, [StatLogic.Stats.HealingPower] = 42}, -- ID: 22522
-
-	["Minor Mana Oil"] = {[StatLogic.Stats.ManaRegen] = 4}, -- ID: 20745
-	["Lesser Mana Oil"] = {[StatLogic.Stats.ManaRegen] = 8}, -- ID: 20747
-	["Brilliant Mana Oil"] = {[StatLogic.Stats.ManaRegen] = 12, [StatLogic.Stats.HealingPower] = 25}, -- ID: 20748
-	["Superior Mana Oil"] = {[StatLogic.Stats.ManaRegen] = 14}, -- ID: 22521
-
 	["Savagery"] = {[StatLogic.Stats.AttackPower] = 70}, --
 	["Vitality"] = {[StatLogic.Stats.ManaRegen] = 4, [StatLogic.Stats.HealthRegen] = 4}, -- Enchant Boots - Vitality spell: 27948
 	["Soulfrost"] = {[StatLogic.Stats.ShadowDamage] = 54, [StatLogic.Stats.FrostDamage] = 54},

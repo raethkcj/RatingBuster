@@ -16,17 +16,6 @@ L["PrefixExclude"] = {}
 -----------------------
 -- Mainly used for enchants that doesn't have numbers in the text
 L["WholeTextLookup"] = {
-	["최하급 마술사 오일"] = {[StatLogic.Stats.SpellDamage] = 8, [StatLogic.Stats.HealingPower] = 8}, -- ID: 20744
-	["하급 마술사 오일"] = {[StatLogic.Stats.SpellDamage] = 16, [StatLogic.Stats.HealingPower] = 16}, -- ID: 20746
-	["마술사 오일"] = {[StatLogic.Stats.SpellDamage] = 24, [StatLogic.Stats.HealingPower] = 24}, -- ID: 20750
-	["반짝이는 마술사 오일"] = {[StatLogic.Stats.SpellDamage] = 36, [StatLogic.Stats.HealingPower] = 36, [StatLogic.Stats.SpellCritRating] = 14}, -- ID: 20749
-	["상급 마술사 오일"] = {[StatLogic.Stats.SpellDamage] = 42, [StatLogic.Stats.HealingPower] = 42}, -- ID: 22522
-
-	["최하급 마나 오일"] = {[StatLogic.Stats.ManaRegen] = 4}, -- ID: 20745
-	["하급 마나 오일"] = {[StatLogic.Stats.ManaRegen] = 8}, -- ID: 20747
-	["반짝이는 마나 오일"] = {[StatLogic.Stats.ManaRegen] = 12, [StatLogic.Stats.HealingPower] = 25}, -- ID: 20748
-	["상급 마나 오일"] = {[StatLogic.Stats.ManaRegen] = 14}, -- ID: 22521
-
 	["전투력"] = {[StatLogic.Stats.AttackPower] = 70}, -- 전투력
 	["활력"] = {[StatLogic.Stats.ManaRegen] = 4, [StatLogic.Stats.HealthRegen] = 4}, -- Enchant Boots - Vitality "Vitality" spell: 27948
 	["냉기의 영혼"] = {[StatLogic.Stats.ShadowDamage] = 54, [StatLogic.Stats.FrostDamage] = 54}, --

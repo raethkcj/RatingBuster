@@ -18,17 +18,6 @@ L["PrefixExclude"] = {}
 L["WholeTextLookup"] = {
 	["野性"] = {[StatLogic.Stats.AttackPower] = 70}, --
 
-	["初级巫师之油"] = {[StatLogic.Stats.SpellDamage] = 8, [StatLogic.Stats.HealingPower] = 8}, --
-	["次级巫师之油"] = {[StatLogic.Stats.SpellDamage] = 16, [StatLogic.Stats.HealingPower] = 16}, --
-	["巫师之油"] = {[StatLogic.Stats.SpellDamage] = 24, [StatLogic.Stats.HealingPower] = 24}, --
-	["卓越巫师之油"] = {[StatLogic.Stats.SpellDamage] = 36, [StatLogic.Stats.HealingPower] = 36, [StatLogic.Stats.SpellCritRating] = 14}, --
-
-	["超强法力之油"] = {[StatLogic.Stats.ManaRegen] = 14}, --
-	["初级法力之油"] = {[StatLogic.Stats.ManaRegen] = 4}, --
-	["次级法力之油"] = {[StatLogic.Stats.ManaRegen] = 8}, --
-	["卓越法力之油"] = {[StatLogic.Stats.ManaRegen] = 12, [StatLogic.Stats.HealingPower] = 25}, --
-	["超强巫师之油"] = {[StatLogic.Stats.SpellDamage] = 42, [StatLogic.Stats.HealingPower] = 42}, --
-
 	["活力"] = {[StatLogic.Stats.ManaRegen] = 4, [StatLogic.Stats.HealthRegen] = 4}, --
 	["魂霜"] = {[StatLogic.Stats.ShadowDamage] = 54, [StatLogic.Stats.FrostDamage] = 54}, --
 	["阳炎"] = {[StatLogic.Stats.ArcaneDamage] = 50, [StatLogic.Stats.FireDamage] = 50}, --

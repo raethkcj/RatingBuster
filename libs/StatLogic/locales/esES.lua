@@ -23,17 +23,6 @@ L["PrefixExclude"] = {}
 -----------------------
 -- Mainly used for enchants that doesn't have numbers in the text
 L["WholeTextLookup"] = {
-	["Aceite de zahorí menor"] = {[StatLogic.Stats.SpellDamage] = 8, [StatLogic.Stats.HealingPower] = 8}, -- ID: 20744
-	["Aceite de zahorí inferior"] = {[StatLogic.Stats.SpellDamage] = 16, [StatLogic.Stats.HealingPower] = 16}, -- ID: 20746
-	["Aceite de zahorí"] = {[StatLogic.Stats.SpellDamage] = 24, [StatLogic.Stats.HealingPower] = 24}, -- ID: 20750
-	["Aceite de zahorí luminoso"] = {[StatLogic.Stats.SpellDamage] = 36, [StatLogic.Stats.HealingPower] = 36, [StatLogic.Stats.SpellCritRating] = 14}, -- ID: 20749
-	["Aceite de zahorí excelente"] = {[StatLogic.Stats.SpellDamage] = 42, [StatLogic.Stats.HealingPower] = 42}, -- ID: 22522
-
-	["Aceite de maná menor"] = {[StatLogic.Stats.ManaRegen] = 4}, -- ID: 20745
-	["Aceite de maná inferior"] = {[StatLogic.Stats.ManaRegen] = 8}, -- ID: 20747
-	["Aceite de maná luminoso"] = {[StatLogic.Stats.ManaRegen] = 12, [StatLogic.Stats.HealingPower] = 25}, -- ID: 20748
-	["Aceite de maná excelente"] = {[StatLogic.Stats.ManaRegen] = 14}, -- ID: 22521
-
 	["Salvajismo"] = {[StatLogic.Stats.AttackPower] = 70}, --
 	["vitalidad"] = {[StatLogic.Stats.ManaRegen] = 4, [StatLogic.Stats.HealthRegen] = 4}, -- Enchant Boots - Vitality spell: 27948
 	["escarcha de alma"] = {[StatLogic.Stats.ShadowDamage] = 54, [StatLogic.Stats.FrostDamage] = 54}, --

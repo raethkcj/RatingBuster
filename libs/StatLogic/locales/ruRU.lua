@@ -16,17 +16,6 @@ L["PrefixExclude"] = {}
 -----------------------
 -- Mainly used for enchants that doesn't have numbers in the text
 L["WholeTextLookup"] = {
-	["Слабое волшебное масло"] = {[StatLogic.Stats.SpellDamage] = 8, [StatLogic.Stats.HealingPower] = 8}, -- ID: 20744
-	["Простое волшебное масло"] = {[StatLogic.Stats.SpellDamage] = 16, [StatLogic.Stats.HealingPower] = 16}, -- ID: 20746
-	["Волшебное масло"] = {[StatLogic.Stats.SpellDamage] = 24, [StatLogic.Stats.HealingPower] = 24}, -- ID: 20750
-	["Блестящее волшебное масло"] = {[StatLogic.Stats.SpellDamage] = 36, [StatLogic.Stats.HealingPower] = 36, [StatLogic.Stats.SpellCritRating] = 14}, -- ID: 20749
-	["Превосходное волшебное масло"] = {[StatLogic.Stats.SpellDamage] = 42, [StatLogic.Stats.HealingPower] = 42}, -- ID: 22522
-
-	["Слабое масло маны"] = {[StatLogic.Stats.ManaRegen] = 4}, -- ID: 20745
-	["Простое масло маны"] = {[StatLogic.Stats.ManaRegen] = 8}, -- ID: 20747
-	["Блестящее масло маны"] = {[StatLogic.Stats.ManaRegen] = 12, [StatLogic.Stats.HealingPower] = 25}, -- ID: 20748
-	["Превосходное масло маны"] = {[StatLogic.Stats.ManaRegen] = 14}, -- ID: 22521
-
 	["Жестокость"] = {[StatLogic.Stats.AttackPower] = 70}, --
 	["Живучесть I"] = {[StatLogic.Stats.ManaRegen] = 4, [StatLogic.Stats.HealthRegen] = 4}, -- Enchant Boots - Vitality spell: 27948
 	["Ледяная душа"] = {[StatLogic.Stats.ShadowDamage] = 54, [StatLogic.Stats.FrostDamage] = 54}, --

@@ -26,17 +26,6 @@ L["WholeTextLookup"] = {
 	["Wildheit"] = {[StatLogic.Stats.AttackPower] = 70}, --
 	["Unbändigkeit"] = {[StatLogic.Stats.AttackPower] = 70}, --
 
-	["Schwaches Zauberöl"] = {[StatLogic.Stats.SpellDamage] = 8, [StatLogic.Stats.HealingPower] = 8}, --
-	["Geringes Zauberöl"] = {[StatLogic.Stats.SpellDamage] = 16, [StatLogic.Stats.HealingPower] = 16}, --
-	["Zauberöl"] = {[StatLogic.Stats.SpellDamage] = 24, [StatLogic.Stats.HealingPower] = 24}, --
-	["Überragendes Zauberöl"] = {[StatLogic.Stats.SpellDamage] = 42, [StatLogic.Stats.HealingPower] = 42}, --
-	["Hervorragendes Zauberöl"] = {[StatLogic.Stats.SpellDamage] = 36, [StatLogic.Stats.HealingPower] = 36, [StatLogic.Stats.SpellCritRating] = 14}, --
-
-	["Schwaches Manaöl"] = {[StatLogic.Stats.ManaRegen] = 4}, --
-	["Geringes Manaöl"] = {[StatLogic.Stats.ManaRegen] = 8}, --
-	["Überragendes Manaöl"] = {[StatLogic.Stats.ManaRegen] = 14}, --
-	["Hervorragendes Manaöl"] = {[StatLogic.Stats.ManaRegen] = 12, [StatLogic.Stats.HealingPower] = 25}, --
-
 	["Vitalität"] = {[StatLogic.Stats.ManaRegen] = 4, [StatLogic.Stats.HealthRegen] = 4}, --
 	["Seelenfrost"] = {[StatLogic.Stats.ShadowDamage] = 54, [StatLogic.Stats.FrostDamage] = 54}, --
 	["Sonnenfeuer"] = {[StatLogic.Stats.ArcaneDamage] = 50, [StatLogic.Stats.FireDamage] = 50}, --

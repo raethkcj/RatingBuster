@@ -16,17 +16,6 @@ L["PrefixExclude"] = {}
 -----------------------
 -- Mainly used for enchants that doesn't have numbers in the text
 L["WholeTextLookup"] = {
-	["初級巫師之油"] = {[StatLogic.Stats.SpellDamage] = 8, [StatLogic.Stats.HealingPower] = 8}, --
-	["次級巫師之油"] = {[StatLogic.Stats.SpellDamage] = 16, [StatLogic.Stats.HealingPower] = 16}, --
-	["巫師之油"] = {[StatLogic.Stats.SpellDamage] = 24, [StatLogic.Stats.HealingPower] = 24}, --
-	["卓越巫師之油"] = {[StatLogic.Stats.SpellDamage] = 36, [StatLogic.Stats.HealingPower] = 36, [StatLogic.Stats.SpellCritRating] = 14}, --
-	["超強巫師之油"] = {[StatLogic.Stats.SpellDamage] = 42, [StatLogic.Stats.HealingPower] = 42}, --
-
-	["初級法力之油"] = {[StatLogic.Stats.ManaRegen] = 4}, --
-	["次級法力之油"] = {[StatLogic.Stats.ManaRegen] = 8}, --
-	["卓越法力之油"] = {[StatLogic.Stats.ManaRegen] = 12, [StatLogic.Stats.HealingPower] = 25}, --
-	["超強法力之油"] = {[StatLogic.Stats.ManaRegen] = 14}, --
-
 	["兇蠻"] = {[StatLogic.Stats.AttackPower] = 70}, --
 	["活力"] = {[StatLogic.Stats.ManaRegen] = 4, [StatLogic.Stats.HealthRegen] = 4}, --
 	["靈魂冰霜"] = {[StatLogic.Stats.ShadowDamage] = 54, [StatLogic.Stats.FrostDamage] = 54}, --

@@ -23,17 +23,6 @@ L["PrefixExclude"] = {}
 -----------------------
 -- Mainly used for enchants that doesn't have numbers in the text
 L["WholeTextLookup"] = {
-	["Huile de sorcier mineure"] = {[StatLogic.Stats.SpellDamage] = 8, [StatLogic.Stats.HealingPower] = 8}, -- ID: 20744
-	["Huile de sorcier inférieure"] = {[StatLogic.Stats.SpellDamage] = 16, [StatLogic.Stats.HealingPower] = 16}, -- ID: 20746
-	["Huile de sorcier"] = {[StatLogic.Stats.SpellDamage] = 24, [StatLogic.Stats.HealingPower] = 24}, -- ID: 20750
-	["Huile de sorcier brillante"] = {[StatLogic.Stats.SpellDamage] = 36, [StatLogic.Stats.HealingPower] = 36, [StatLogic.Stats.SpellCritRating] = 14}, -- ID: 20749
-	["Huile de sorcier excellente"] = {[StatLogic.Stats.SpellDamage] = 42, [StatLogic.Stats.HealingPower] = 42}, -- ID: 22522
-
-	["Huile de mana mineure"] = {[StatLogic.Stats.ManaRegen] = 4}, -- ID: 20745
-	["Huile de mana inférieure"] = {[StatLogic.Stats.ManaRegen] = 8}, -- ID: 20747
-	["Huile de mana brillante"] = {[StatLogic.Stats.ManaRegen] = 12, [StatLogic.Stats.HealingPower] = 25}, -- ID: 20748
-	["Huile de mana excellente"] = {[StatLogic.Stats.ManaRegen] = 14}, -- ID: 22521
-
 	["Sauvagerie"] = {[StatLogic.Stats.AttackPower] = 70}, -- ID: 27971
 	["Vitalité"] = {[StatLogic.Stats.ManaRegen] = 4, [StatLogic.Stats.HealthRegen] = 4}, -- ID: 46492
 	["Âme de givre"] = {[StatLogic.Stats.ShadowDamage] = 54, [StatLogic.Stats.FrostDamage] = 54}, -- ID: 27982
