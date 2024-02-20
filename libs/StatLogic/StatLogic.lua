@@ -1715,23 +1715,6 @@ do
 					log("|cffff5959  Substitution Missed: |r|cnLIGHTBLUE_FONT_COLOR:" .. statText)
 				end
 
-				----------------------------
-				-- Single Plus Stat Check --
-				----------------------------
-				-- depending on locale, L.SinglePlusStatCheck may be
-				-- +19 Stamina = "^%+(%d+) ([%a ]+%a)$"
-				-- Stamina +19 = "^([%a ]+%a) %+(%d+)$"
-				-- +19 耐力 = "^%+(%d+) (.-)$"
-				if not found then
-					local _, _, value, statText = text:utf8lower():find(L.SinglePlusStatCheck)
-					if value then
-						if tonumber(statText) then
-							value, statText = statText, value
-						end
-						local idTable = L.StatIDLookup[statText]
-						found = ParseMatch(idTable, text, value, "SinglePlus")
-					end
-				end
 
 				-----------------------------
 				-- Single Equip Stat Check --

@@ -51,23 +51,6 @@ L["WholeTextLookup"] = {
 	["Cruzado"] = false, -- Enchant Crusader
 	["Robo de vida"] = false, -- Enchant Crusader
 }
-----------------------------
--- Single Plus Stat Check --
-----------------------------
--- depending on locale, it may be
--- +19 Stamina = "^%+(%d+) ([%a ]+%a)$"
--- Stamina +19 = "^([%a ]+%a) %+(%d+)$"
--- +19 ?? = "^%+(%d+) (.-)$"
---["SinglePlusStatCheck"] = "^%+(%d+) ([%a ]+%a)$",
-L["SinglePlusStatCheck"] = "^%+(%d+) (.-)$"
--- depending on locale, it may be
--- +19 Stamina = "^%+(%d+) (.-)%.?$"
--- Stamina +19 = "^(.-) %+(%d+)%.?$"
--- +19 耐力 = "^%+(%d+) (.-)%.?$"
--- +19 Ausdauer = "^%+(%d+) (.-)%.?$" (deDE :))
--- Some have a "." at the end of string like:
--- Enchant Chest - Restore Mana Prime "+6 mana every 5 sec. "
-L["SinglePlusStatCheck"] = "^([%+%-]%d+) (.-)%.?$"
 -----------------------------
 -- Single Equip Stat Check --
 -----------------------------

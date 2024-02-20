@@ -60,16 +60,6 @@ L["WholeTextLookup"] = {
 	["Mangouste"] = false, -- Ench. d'arme (Mangouste) -- ID: 27984
 	["Bourreau"] = false, -- Ench. d'arme (Exécutrice) -- ID: 42974
 }
-----------------------------
--- Single Plus Stat Check --
-----------------------------
--- depending on locale, it may be
--- +19 Stamina = "^%+(%d+) (.-)%.?$"
--- Stamina +19 = "^(.-) %+(%d+)%.?$"
--- +19 耐力 = "^%+(%d+) (.-)%.?$"
--- Some have a "." at the end of string like:
--- Enchant Chest - Restore Mana Prime "+6 mana every 5 sec. "
-L["SinglePlusStatCheck"] = "^([%+%-]%d+) (.-)%.?$"
 -----------------------------
 -- Single Equip Stat Check --
 -----------------------------

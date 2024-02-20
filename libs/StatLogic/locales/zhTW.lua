@@ -45,15 +45,6 @@ L["WholeTextLookup"] = {
 	["十字軍"] = false, -- Enchant Crusader
 	["生命偷取"] = false, -- Enchant Crusader
 }
-----------------------------
--- Single Plus Stat Check --
-----------------------------
--- depending on locale, it may be
--- +19 Stamina = "^%+(%d+) ([%a ]+%a)$"
--- Stamina +19 = "^([%a ]+%a) %+(%d+)$"
--- +19 耐力 = "^%+(%d+) (.-)$"
---["SinglePlusStatCheck"] = "^%+(%d+) ([%a ]+%a)$",
-L["SinglePlusStatCheck"] = "^([%+%-]%d+) (.-)$"
 -----------------------------
 -- Single Equip Stat Check --
 -----------------------------
