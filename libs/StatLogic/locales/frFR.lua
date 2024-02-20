@@ -60,12 +60,6 @@ L["WholeTextLookup"] = {
 	["Mangouste"] = false, -- Ench. d'arme (Mangouste) -- ID: 27984
 	["Bourreau"] = false, -- Ench. d'arme (Exécutrice) -- ID: 42974
 }
------------------------------
--- Single Equip Stat Check --
------------------------------
--- "^Equip: (.-) by u?p? ?t?o? ?(%d+) ?(.-)%.?$"
--- \194\160 is a UTF-8 non-breaking space
-L["SingleEquipStatCheck"] = "^" .. ITEM_SPELL_TRIGGER_ONEQUIP .. " Augmente (.-) ?de (%d+)\194?\160? ?a?u? ?m?a?x?i?m?u?m? ?(.-)%.?$"
 -------------
 -- PreScan --
 -------------

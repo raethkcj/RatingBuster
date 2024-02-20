@@ -1715,21 +1715,6 @@ do
 					log("|cffff5959  Substitution Missed: |r|cnLIGHTBLUE_FONT_COLOR:" .. statText)
 				end
 
-
-				-----------------------------
-				-- Single Equip Stat Check --
-				-----------------------------
-				-- depending on locale, L.SingleEquipStatCheck may be
-				-- "^Equip: (.-) by u?p? ?t?o? ?(%d+) ?(.-)%.$"
-				if not found then
-					local _, _, statText1, value, statText2 = text:find(L.SingleEquipStatCheck)
-					if value then
-						local statText = statText1..statText2
-						local idTable = L.StatIDLookup[statText:utf8lower()]
-						found = ParseMatch(idTable, text, value, "SingleEquip")
-					end
-				end
-
 				-- PreScan for special cases, that will fit wrongly into DeepScan
 				-- PreScan also has exclude patterns
 				if not found then

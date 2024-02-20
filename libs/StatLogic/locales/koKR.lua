@@ -44,11 +44,6 @@ L["WholeTextLookup"] = {
 	["성전사"] = false, -- Enchant Crusader
 	["흡혈"] = false, -- Enchant Crusader
 }
------------------------------
--- Single Equip Stat Check --
------------------------------
--- "^Equip: (.-) by u?p? ?t?o? ?(%d+) ?(.-)%.?$"
-L["SingleEquipStatCheck"] = "^" .. ITEM_SPELL_TRIGGER_ONEQUIP .. " (.-) (%d+)만큼(.-)$"
 -------------
 -- PreScan --
 -------------

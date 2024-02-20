@@ -51,11 +51,6 @@ L["WholeTextLookup"] = {
 	["Cruzado"] = false, -- Enchant Crusader
 	["Robo de vida"] = false, -- Enchant Crusader
 }
------------------------------
--- Single Equip Stat Check --
------------------------------
--- "^Equip: (.-) by u?p? ?t?o? ?(%d+) ?(.-)%.$"
-L["SingleEquipStatCheck"] = "^" .. ITEM_SPELL_TRIGGER_ONEQUIP .. " (.-) ?e?n? ?u?n? ?(%d+) ?p?(.-)$"
 -------------
 -- PreScan --
 -------------

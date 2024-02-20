@@ -48,11 +48,6 @@ L["WholeTextLookup"] = {
 	["Вампиризм"] = false,
 	["Мангуст"] = false, -- Enchant Mongoose
 }
------------------------------
--- Single Equip Stat Check --
------------------------------
--- "^Equip: (.-) by u?p? ?t?o? ?(%d+) ?(.-)%.?$"
-L["SingleEquipStatCheck"] = "^" .. ITEM_SPELL_TRIGGER_ONEQUIP .. " (.-) на (%d+) ?(.-)%.?$"
 -------------
 -- PreScan --
 -------------

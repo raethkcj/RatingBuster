@@ -47,14 +47,6 @@ L["WholeTextLookup"] = {
 	["十字军"] = false, -- Enchant Crusader
 	["生命偷取"] = false, -- Enchant Crusader
 }
------------------------------
--- Single Equip Stat Check --
------------------------------
--- "^Equip: (.-) by u?p? ?t?o? ?(%d+) ?(.-)%.$"
---装备: 增加法术命中等级 11点。
---装备: 提高所有法术和魔法效果所造成的伤害和治疗效果，最多46点。
---"装备： (.-)提高(最多)?(%d+)(点)?(.-)。$",
-L["SingleEquipStatCheck"] = "^" .. ITEM_SPELL_TRIGGER_ONEQUIP .. " (.-)(%d+)\231?\130?\185?(.-)。$"
 -------------
 -- PreScan --
 -------------
