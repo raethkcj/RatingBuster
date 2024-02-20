@@ -1710,11 +1710,6 @@ do
 					end
 				end
 
-				-- For debugging Substitution with /rb debug, for now we want to be quiet about Prefix/Color Excludes
-				if not found then
-					log("|cffff5959  Substitution Missed: |r|cnLIGHTBLUE_FONT_COLOR:" .. statText)
-				end
-
 				-- PreScan for special cases, that will fit wrongly into DeepScan
 				-- PreScan also has exclude patterns
 				if not found then
@@ -1728,8 +1723,9 @@ do
 					end
 				end
 
+				-- For debugging Substitution with /rb debug, for now we want to be quiet about Prefix/Color Excludes
 				if not found then
-					log("  No Match: |cffff0000'"..text.."'")
+					log("|cffff5959  Substitution Missed: |r|cnLIGHTBLUE_FONT_COLOR:" .. statText)
 				end
 			end
 		end
