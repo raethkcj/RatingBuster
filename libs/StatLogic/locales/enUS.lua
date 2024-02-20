@@ -16,27 +16,20 @@ L["tonumber"] = tonumber
 -- Item Stat Scanning Procedure
 -- Trim spaces using text:trim()
 -- Strip color codes
--- 1. Prefix Exclude - Exclude obvious lines that do not need to be checked
---    Exclude a string by matching the whole string, these strings are indexed in L.PrefixExclude.
+-- 1. Whole Text Lookup - Mainly used for enchants or stuff without numbers
+--    Whole strings are indexed in L.WholeTextLookup
+--    Exclude a string by matching the whole string
+-- 2. Substitution Lookup
+--    Strip Equip:, Socket Bonus:, trailing .
+--    Lowercase string using UTF8
+--    Replace numbers with %s
+--    Lookup exact sanitized string in StatIDLookup
+-- 2. Prefix Exclude - Exclude obvious lines that do not need to be checked
 --    Exclude a string by looking at the first X chars, these strings are indexed in L.PrefixExclude.
 --    Exclude lines starting with '"'. (Flavor text)
+-- 3. Color Exclude
 --    Exclude lines that are not white and green and normal (normal for Frozen Wrath bonus)
--- 2. Whole Text Lookup - Mainly used for enchants or stuff without numbers
---    Whole strings are indexed in L.WholeTextLookup
--- 3. Single Plus Stat Check - "+10 Spirit"
---    String is matched with pattern L.SinglePlusStatCheck, 2 captures are returned.
---    If a match is found, the non-number capture is looked up in L.StatIDLookup.
--- 4. Single Equip Stat Check - "Equip: Increases attack power by 81."
---    String is matched with pattern L.SingleEquipStatCheck, 2 captures are returned.
---    If a match is found, the non-number capture is looked up in L.StatIDLookup.
--- 5. Pre Scan - Short list of patterns that will be checked before going into Deep Scan.
--- 6. Deep Scan - When all the above checks fail, we will use the Deep Scan, this is slow but only about 10% of the lines need it.
---    Strip leading "Equip: ", "Socket Bonus: ".
---    Strip trailing ".".
---    Separate the string using L.DeepScanSeparators.
---    Check if the separated strings are found in L.WholeTextLookup.
---    Try to match each separated string to patterns in L.DeepScanPatterns in order, patterns in L.DeepScanPatterns should have less inclusive patterns listed first and more inclusive patterns listed last.
---    If no match then separae the string using L.DeepScanWordSeparators, then check again.
+-- 4. Pre Scan - Short list of patterns that will be checked before going into Deep Scan.
 --]]
 ------------------
 -- Prefix Exclude --
