@@ -49,35 +49,6 @@ L["PreScanPatterns"] = {
 	["A veces"] = false, -- [Darkmoon Card: Heroism] ID:19287
 	["[Aa]l recibir un golpe en combate"] = false, -- [Essence of the Pure Flame] ID: 18815
 }
---------------
--- DeepScan --
---------------
--- Strip leading "Equip: ", "Socket Bonus: "
-L["Equip: "] = "Equipar: " -- ITEM_SPELL_TRIGGER_ONEQUIP = "Equip:";
-L["Socket Bonus: "] = "Bono de ranura: " -- ITEM_SOCKET_BONUS = "Socket Bonus: %s"; -- Tooltip tag for socketed item matched socket bonuses
--- Strip trailing "."
-L["."] = "."
-L["DeepScanSeparators"] = {
-	"/", -- "+10 Defense Rating/+10 Stamina/+15 Block Value": ZG Enchant
-	" y ", -- "+26 Healing Spells & 2% Reduced Threat": Bracing Earthstorm Diamond ID:25897
-	", ", -- "+6 Spell Damage, +5 Spell Crit Rating": Potent Ornate Topaz ID: 28123
-	"%. ", -- "Equip: Increases attack power by 81 when fighting Undead. It also allows the acquisition of Scourgestones on behalf of the Argent Dawn.": Seal of the Dawn
-}
-L["DeepScanWordSeparators"] = {
-	" y ", -- "Critical Rating +6 and Dodge Rating +5": Assassin's Fire Opal ID:30565
-}
--- all lower case
-L["DualStatPatterns"] = {
-	["^%+(%d+) sanación y %+(%d+) daño con hechizos$"] = {{StatLogic.Stats.HealingPower,}, {StatLogic.Stats.SpellDamage,},},
-	["^%+(%d+) sanación %+(%d+) daño con hechizos$"] = {{StatLogic.Stats.HealingPower,}, {StatLogic.Stats.SpellDamage,},},
-	["Aumenta la sanación que haces hasta (%d+) y el daño que infliges hasta (%d+) con todos los hechizos mágicos y efectos.$"] = {{StatLogic.Stats.HealingPower,}, {StatLogic.Stats.SpellDamage,},},
-}
-L["DeepScanPatterns"] = {
-	"^(.-) ?hasta ?e?n? ?(%d+) ?p?.?(.-)$", -- "xxx by up to 22 xxx" (scan first)
-	"^(.-)5 [Ss]eg%. (%d+) (.-)$",  -- "xxx 5 Sek. 8 xxx" (scan 2nd)
-	"^(.-) ?([%+%-]%d+) ?(.-)$", -- "xxx xxx +22" or "+22 xxx xxx" or "xxx +22 xxx" (scan 3rd)
-	"^(.-) ?([%d%,]+) ?(.-)$", -- 22.22 xxx xxx (scan last)
-}
 -----------------------
 -- Stat Lookup Table --
 -----------------------

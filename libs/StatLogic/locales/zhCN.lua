@@ -56,39 +56,6 @@ L["PreScanPatterns"] = {
 	["被击中时"] = false, --
 	["你每施放一次法术，此增益的效果就降低17点伤害和34点治疗效果"] = false, --赞达拉英雄护符 ID:19950
 }
---------------
--- DeepScan --
---------------
--- Strip leading "Equip: ", "Socket Bonus: "
-L["Equip: "] = "装备: " -- ITEM_SPELL_TRIGGER_ONEQUIP = "Equip:";
-L["Socket Bonus: "] = "镶孔奖励: " -- ITEM_SOCKET_BONUS = "Socket Bonus: %s"; -- Tooltip tag for socketed item matched socket bonuses
--- Strip trailing "."
-L["."] = "。"
-L["DeepScanSeparators"] = {
-	"/", -- "+10 Defense Rating/+10 Stamina/+15 Block Value": ZG Enchant
-	" & ", -- "+26 Healing Spells & 2% Reduced Threat": Bracing Earthstorm Diamond ID:25897
-	", ", -- "+6 Spell Damage, +5 Spell Crit Rating": Potent Ornate Topaz ID: 28123
-	"、", -- 防御者雕文
-	"。",
-}
-L["DeepScanWordSeparators"] = {
-	"及", "和", "并", "，","以及", "持续 "-- [发光的暗影卓奈石] ID:25894 "+24 攻击强度及略微提高奔跑速度", [刺客的火焰蛋白石] ID:30565 "爆击等级 +6 及躲闪等级 +5"
-}
-L["DeepScanPatterns"] = {
-	"^(.-)提高最多([%d%.]+)点(.-)$", --
-	"^(.-)提高最多([%d%.]+)(.-)$", --
-	"^(.-)，最多([%d%.]+)点(.-)$", --
-	"^(.-)，最多([%d%.]+)(.-)$", --
-	"^(.-)最多([%d%.]+)点(.-)$", --
-	"^(.-)最多([%d%.]+)(.-)$", --
-	"^(.-)提高([%d%.]+)点(.-)$", --
-	"^(.-)提高([%d%.]+)(.-)$", --
-	"^(.-)([%d%.]+)点(.-)$", --
-	"^(.-) ?([%+%-][%d%.]+) ?点(.-)$", --
-	"^(.-) ?([%+%-][%d%.]+) ?(.-)$", --
-	"^(.-) ?([%d%.]+) ?点(.-)$", --
-	"^(.-) ?([%d%.]+) ?(.-)$", --
-}
 -----------------------
 -- Stat Lookup Table --
 -----------------------

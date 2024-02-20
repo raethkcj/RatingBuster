@@ -2,10 +2,6 @@
 ---@field PrefixExclude table
 ---@field WholeTextLookup table
 ---@field PreScanPatterns table
----@field DeepScanSeparators table
----@field DeepScanWordSeparators table
----@field DualStatPatterns table
----@field DeepScanPatterns table
 ---@field StatIDLookup table
 local L = LibStub("AceLocale-3.0"):NewLocale("StatLogic", "enUS", true)
 if not L then return end
@@ -67,34 +63,6 @@ L["PreScanPatterns"] = {
 	--["[Cc]hance"] = false, -- [Mark of Defiance] ID:27924 -- [Staff of the Qiraji Prophets] ID:21128 -- Commented out because it was blocking [Insightful Earthstorm Diamond]
 	["[Ss]ometimes"] = false, -- [Darkmoon Card: Heroism] ID:19287
 	["[Ww]hen struck in combat"] = false, -- [Essence of the Pure Flame] ID: 18815
-}
---------------
--- DeepScan --
---------------
--- Strip leading "Equip: ", "Socket Bonus: "
-L["Equip: "] = "Equip: " -- ITEM_SPELL_TRIGGER_ONEQUIP = "Equip:";
-L["Socket Bonus: "] = "Socket Bonus: " -- ITEM_SOCKET_BONUS = "Socket Bonus: %s"; -- Tooltip tag for socketed item matched socket bonuses
--- Strip trailing "."
-L["."] = "."
-L["DeepScanSeparators"] = {
-	"/", -- "+10 Defense Rating/+10 Stamina/+15 Block Value": ZG Enchant
-	" & ", -- "+26 Healing Spells & 2% Reduced Threat": Bracing Earthstorm Diamond ID:25897
-	", ", -- "+6 Spell Damage, +5 Spell Crit Rating": Potent Ornate Topaz ID: 28123
-	"%. ", -- "Equip: Increases attack power by 81 when fighting Undead. It also allows the acquisition of Scourgestones on behalf of the Argent Dawn.": Seal of the Dawn
-}
-L["DeepScanWordSeparators"] = {
-	" and ", -- "Critical Rating +6 and Dodge Rating +5": Assassin's Fire Opal ID:30565
-}
-L["DualStatPatterns"] = {
-	-- all lower case
-	["^%+(%d+) healing and %+(%d+) spell damage$"] = {{StatLogic.Stats.HealingPower,}, {StatLogic.Stats.SpellDamage,},},
-	["^%+(%d+) healing %+(%d+) spell damage$"] = {{StatLogic.Stats.HealingPower,}, {StatLogic.Stats.SpellDamage,},},
-	["^increases healing done by up to (%d+) and damage done by up to (%d+) for all magical spells and effects$"] = {{StatLogic.Stats.HealingPower,}, {StatLogic.Stats.SpellDamage,},},
-}
-L["DeepScanPatterns"] = {
-	"^(.-) by u?p? ?t?o? ?(%d+) ?(.-)$", -- "xxx by up to 22 xxx" (scan first)
-	"^(.-) ?([%+%-]%d+) ?(.-)$", -- "xxx xxx +22" or "+22 xxx xxx" or "xxx +22 xxx" (scan 2ed)
-	"^(.-) ?([%d%.]+) ?(.-)$", -- 22.22 xxx xxx (scan last)
 }
 -----------------------
 -- Stat Lookup Table --

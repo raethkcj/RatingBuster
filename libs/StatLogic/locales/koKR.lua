@@ -42,36 +42,6 @@ L["PreScanPatterns"] = {
 	["가격 당했을 때"] = false, -- [Essence of the Pure Flame] ID: 18815
 	["성공하면"] = false,
 }
---------------
--- DeepScan --
---------------
--- Strip leading "Equip: ", "Socket Bonus: "
-L["Equip: "] = "착용 효과: "
-L["Socket Bonus: "] = "보석 장착 보너스: "
--- Strip trailing "."
-L["."] = "."
-L["DeepScanSeparators"] = {
-	"/", -- "+10 Defense Rating/+10 Stamina/+15 Block Value": ZG Enchant
-	" & ", -- "+26 Healing Spells & 2% Reduced Threat": Bracing Earthstorm Diamond ID:25897
-	", ", -- "+6 Spell Damage, +5 Spell Crit Rating": Potent Ornate Topaz ID: 28123
-	"%. ", -- "Equip: Increases attack power by 81 when fighting Undead. It also allows the acquisition of Scourgestones on behalf of the Argent Dawn.": Seal of the Dawn
-	" / ",
-}
-L["DeepScanWordSeparators"] = {
-	-- only put word separators here like "and" in english
-	--" and ", -- "Critical Rating +6 and Dodge Rating +5": Assassin's Fire Opal ID:30565
-}
--- all lower case
-L["DualStatPatterns"] = {
-	["^%+(%d+) 치유량 %+(%d+) 주문 공격력$"] = {{StatLogic.Stats.HealingPower,}, {StatLogic.Stats.SpellDamage,},},
-	["^모든 주문 및 효과에 의한 치유량이 최대 (%d+)만큼, 공격력이 최대 (%d+)만큼 증가합니다$"] = {{StatLogic.Stats.HealingPower,}, {StatLogic.Stats.SpellDamage,},},
-}
-L["DeepScanPatterns"] = {
-	"^(.-) (%d+)만큼(.-)$", -- "xxx by up to 22 xxx" (scan first)
-	"^(.-) 최대 (%d+)만큼(.-)$", -- "xxx by up to 22 xxx" (scan first)
-	"^(.-) ?([%+%-]%d+) ?(.-)$", -- "xxx xxx +22" or "+22 xxx xxx" or "xxx +22 xxx" (scan 2ed)
-	"^(.-) ?([%d%.]+) ?(.-)$", -- 22.22 xxx xxx (scan last)
-}
 -----------------------
 -- Stat Lookup Table --
 -----------------------

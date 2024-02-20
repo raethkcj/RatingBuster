@@ -63,36 +63,6 @@ L["PreScanPatterns"] = {
 	["^.- la portée de .-"] = false, --augmentation de capacité de sort
 	["^.- la durée de .-"] = false, --augmentation de capacité de sort
 }
---------------
--- DeepScan --
---------------
--- Strip leading "Equip: ", "Socket Bonus: "
-L["Equip: "] = "Équipé\194\160: " --\194\160= espace insécable
-L["Socket Bonus: "] = "Bonus de sertissage\194\160: "
--- Strip trailing "."
-L["."] = "."
-L["DeepScanSeparators"] = {
-	"/", -- "+10 Score de défense/+10 Endurance/+15 Valeur de blocage": Ench. d'épaules de Zul Gurub
-	" & ", -- "+12 au score de défense & +10% à la valeur de blocage au bouclier": [Diamant tonneterre éternel] ID:35501
-	", ", -- "+6 aux dégâts des sorts, +5 au score de critique des sorts": [Topaze ornée toute-puissante] ID: 28123
-	"%. ", -- "Equip: Increases attack power by 81 when fighting Mort-vivant. It also allows the acquisition of Scourgestones on behalf of the Argent Dawn.": Seal of the Dawn
-}
-L["DeepScanWordSeparators"] = {
-	" et ", -- "+ 6 au score de critique et +5 au score d'esquive": [Opale de feu d'assassin] ID:30565
-}
-L["DualStatPatterns"] = {
-	-- all lower case
-	["les soins %+(%d+) et les dégâts %+ (%d+)$"] = {{StatLogic.Stats.HealingPower}, {StatLogic.Stats.SpellDamage},},
-	["les soins %+(%d+) les dégâts %+ (%d+)"] = {{StatLogic.Stats.HealingPower}, {StatLogic.Stats.SpellDamage},},
-	["soins prodigués d'un maximum de (%d+) et les dégâts d'un maximum de (%d+)"] = {{StatLogic.Stats.HealingPower}, {StatLogic.Stats.SpellDamage},},
-}
-L["DeepScanPatterns"] = {
-	"^(.-) de ?(%d+) ?a?u? ?m?a?x?i?m?u?m? ?(.-)$", -- "xxx by up to 22 xxx" (scan first)
-	"^(.-) ?([%+%-]%d+) ?(.-)%.?$", -- "xxx xxx +22" or "+22 xxx xxx" or "xxx +22 xxx" (scan 2ed)
-	"^(.-) ?([%d%,]+) ?(.-)%.?$", -- 22.22 xxx xxx (scan last)
-	"^.-: (.-)([%+%-]%d+) ?(.-)%.?$", --Bonus de sertissage : +3 xxx
-	"^(.-) augmentée?s? de (%d+) ?(.-)%%?%.?$",--sometimes this pattern is needed but not often.
-}
 -----------------------
 -- Stat Lookup Table --
 -----------------------
