@@ -17,24 +17,12 @@ L["PrefixExclude"] = {}
 -- Mainly used for enchants that doesn't have numbers in the text
 L["WholeTextLookup"] = {
 	["野性"] = {[StatLogic.Stats.AttackPower] = 70}, --
-
 	["活力"] = {[StatLogic.Stats.ManaRegen] = 4, [StatLogic.Stats.HealthRegen] = 4}, --
 	["魂霜"] = {[StatLogic.Stats.ShadowDamage] = 54, [StatLogic.Stats.FrostDamage] = 54}, --
 	["阳炎"] = {[StatLogic.Stats.ArcaneDamage] = 50, [StatLogic.Stats.FireDamage] = 50}, --
 	["+40 法术伤害"] = {[StatLogic.Stats.SpellDamage] = 40, [StatLogic.Stats.HealingPower] = 40}, --
 	["+30 法术伤害"] = {[StatLogic.Stats.SpellDamage] = 30, [StatLogic.Stats.HealingPower] = 30}, --
-
-	["移动速度略微提升"] = false, -- Enchant Boots - Minor Speed
-	["略微提高奔跑速度"] = false, --
-	["初级速度"] = false, -- Enchant Boots - Minor Speed
 	["稳固"] = {[StatLogic.Stats.MeleeHitRating] = 10}, -- Enchant Boots - Surefooted "Surefooted"
-
-	["装备： 使你可以在水下呼吸。"] = false, -- [Band of Icy Depths] ID: 21526
-	["使你可以在水下呼吸"] = false, --
-	["装备： 免疫缴械。"] = false, -- [Stronghold Gauntlets] ID: 12639
-	["免疫缴械"] = false, --
-	["十字军"] = false, -- Enchant Crusader
-	["生命偷取"] = false, -- Enchant Crusader
 }
 -------------
 -- PreScan --
@@ -126,13 +114,6 @@ L["StatIDLookup"] = {
 	["全部抗性"] = {StatLogic.Stats.ArcaneResistance, StatLogic.Stats.FireResistance, StatLogic.Stats.FrostResistance, StatLogic.Stats.NatureResistance, StatLogic.Stats.ShadowResistance,},
 	["抵抗全部"] = {StatLogic.Stats.ArcaneResistance, StatLogic.Stats.FireResistance, StatLogic.Stats.FrostResistance, StatLogic.Stats.NatureResistance, StatLogic.Stats.ShadowResistance,},
 	["点所有魔法抗性"] = {StatLogic.Stats.ArcaneResistance, StatLogic.Stats.FireResistance, StatLogic.Stats.FrostResistance, StatLogic.Stats.NatureResistance, StatLogic.Stats.ShadowResistance,}, -- [锯齿黑曜石之盾] ID:22198
-
-	["钓鱼"] = false, -- Fishing enchant ID:846
-	["钓鱼技能"] = false, -- Fishing lure
-	["使钓鱼技能"] = false, -- Equip: Increased Fishing +20.
-	["采矿"] = false, -- Mining enchant ID:844
-	["草药学"] = false, -- Heabalism enchant ID:845
-	["剥皮"] = false, -- Skinning enchant ID:865
 
 	["护甲"] = {StatLogic.Stats.BonusArmor,},
 	["护甲值"] = {StatLogic.Stats.BonusArmor,},
@@ -311,12 +292,4 @@ L["StatIDLookup"] = {
 	["精准等级提高"] = {StatLogic.Stats.ExpertiseRating,},
 	["护甲穿透等级"] = {StatLogic.Stats.ArmorPenetrationRating},
 	["护甲穿透等级提高"] = {StatLogic.Stats.ArmorPenetrationRating},
-
-	-- Exclude
-	["秒"] = false,
-	["到"] = false,
-	["格容器"] = false,
-	["格箭袋"] = false,
-	["格弹药袋"] = false,
-	["远程攻击速度%"] = false, -- AV quiver
 }

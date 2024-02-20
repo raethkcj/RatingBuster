@@ -20,18 +20,7 @@ L["WholeTextLookup"] = {
 	["활력"] = {[StatLogic.Stats.ManaRegen] = 4, [StatLogic.Stats.HealthRegen] = 4}, -- Enchant Boots - Vitality "Vitality" spell: 27948
 	["냉기의 영혼"] = {[StatLogic.Stats.ShadowDamage] = 54, [StatLogic.Stats.FrostDamage] = 54}, --
 	["태양의 불꽃"] = {[StatLogic.Stats.ArcaneDamage] = 50, [StatLogic.Stats.FireDamage] = 50}, --
-
-	["이동 속도가 약간 증가합니다."] = false, --
-	["하급 이동 속도 증가"] = false, -- Enchant Boots - Minor Speed "Minor Speed Increase" spell: 13890
-	["하급 이동 속도"] = false, -- Enchant Boots - Cat's Swiftness "Minor Speed and +6 Agility" spell: 34007
 	["침착함"] = {[StatLogic.Stats.MeleeHitRating] = 10}, -- Enchant Boots - Surefooted "Surefooted" spell: 27954
-
-	["착용 효과: 시전자를 물 속에서 숨쉴 수 있도록 해줍니다."] = false, -- [Band of Icy Depths] ID: 21526
-	["시전자를 물 속에서 숨쉴 수 있도록 해줍니다"] = false, --
-	["착용 효과: 무장해제에 면역이 됩니다."] = false, -- [Stronghold Gauntlets] ID: 12639
-	["무장해제에 면역이 됩니다"] = false, --
-	["성전사"] = false, -- Enchant Crusader
-	["흡혈"] = false, -- Enchant Crusader
 }
 -------------
 -- PreScan --
@@ -109,13 +98,6 @@ L["StatIDLookup"] = {
 	["암흑 저항"] = {StatLogic.Stats.ShadowResistance,}, -- Shadow Armor Kit +8 Shadow Resist
 	["모든 저항력"] = {StatLogic.Stats.ArcaneResistance, StatLogic.Stats.FireResistance, StatLogic.Stats.FrostResistance, StatLogic.Stats.NatureResistance, StatLogic.Stats.ShadowResistance,},
 	["모든 저항"] = {StatLogic.Stats.ArcaneResistance, StatLogic.Stats.FireResistance, StatLogic.Stats.FrostResistance, StatLogic.Stats.NatureResistance, StatLogic.Stats.ShadowResistance,},
-
-	["낚시"] = false, -- Fishing enchant ID:846
-	["낚시 숙련도"] = false, -- Fishing lure
-	["낚시 숙련도가 증가합니다"] = false, -- Equip: Increased Fishing +20.
-	["채광"] = false, -- Mining enchant ID:844
-	["약초 채집"] = false, -- Heabalism enchant ID:845
-	["무두질"] = false, -- Skinning enchant ID:865
 
 	["방어도"] = {StatLogic.Stats.BonusArmor,},
 	["방어 숙련"] = {StatLogic.Stats.Defense,},
@@ -258,13 +240,4 @@ L["StatIDLookup"] = {
 	["숙련도가 증가합니다"] = {StatLogic.Stats.ExpertiseRating},
 	["방어구 관통력"] = {StatLogic.Stats.ArmorPenetrationRating}, -- gems
 	["방어구 관통력이 증가합니다"] = {StatLogic.Stats.ArmorPenetrationRating},
-
-	-- Exclude
-	["초"] = false,
-	["to"] = false,
-	["칸 가방"] = false,
-	["칸 화살통"] = false,
-	["칸 탄환 주머니"] = false,
-	["원거리 공격 속도가%만큼 증가합니다"] = false, -- AV quiver
-	["원거리 무기 공격 속도가%만큼 증가합니다"] = false, -- AV quiver
 }

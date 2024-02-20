@@ -21,21 +21,9 @@ L["WholeTextLookup"] = {
 	["Ледяная душа"] = {[StatLogic.Stats.ShadowDamage] = 54, [StatLogic.Stats.FrostDamage] = 54}, --
 	["Солнечный огонь"] = {[StatLogic.Stats.ArcaneDamage] = 50, [StatLogic.Stats.FireDamage] = 50},
 	["+50 к силе заклинаний огня и тайной магии"] = {[StatLogic.Stats.ArcaneDamage] = 50, [StatLogic.Stats.FireDamage] = 50},
-
-	["Небольшое ускорениеускорение бега"] = false, --
-	["Небольшое увеличение скорости"] = false, -- Enchant Boots - Minor Speed "Minor Speed Increase" spell: 13890
 	["Небольшое увеличение скорости и +6 к ловкости"] = {[StatLogic.Stats.Agility] = 6}, -- Enchant Boots - Cat's Swiftness "Minor Speed and +6 Agility" spell: 34007
 	["Небольшое увеличение скорости и +9 к выносливости"] = {[StatLogic.Stats.Stamina] = 9}, -- Enchant Boots - Boar's Speed "Minor Speed and +9 Stamina"
 	["Верный шаг"] = {[StatLogic.Stats.MeleeHitRating] = 10}, -- Enchant Boots - Surefooted "Surefooted" spell: 27954
-
-	["Надето: Позволяет дышать под водой."] = false, -- [Band of Icy Depths] ID: 21526
-	["Позволяет дышать под водой"] = false, --
-	--	["Equip: Immune to Disarm."] = false, -- [Stronghold Gauntlets] ID: 12639 -- Fixed for TBC Classic 2.5.1: no longer immune.
-	["Надето: Сокращает время разоружения на 50%."] = false, -- [Stronghold Gauntlets] ID: 12639
-	["Сокращает время разоружения на 50%"] = false, --
-	["Рыцарь"] = false, -- Enchant Crusader
-	["Вампиризм"] = false,
-	["Мангуст"] = false, -- Enchant Mongoose
 }
 -------------
 -- PreScan --
@@ -116,14 +104,6 @@ L["StatIDLookup"] = {
 	["сопротивление всем видам магии"] = {StatLogic.Stats.ArcaneResistance, StatLogic.Stats.FireResistance, StatLogic.Stats.FrostResistance, StatLogic.Stats.NatureResistance, StatLogic.Stats.ShadowResistance,},
 	["ко всем видам сопротивления"] = {StatLogic.Stats.ArcaneResistance, StatLogic.Stats.FireResistance, StatLogic.Stats.FrostResistance, StatLogic.Stats.NatureResistance, StatLogic.Stats.ShadowResistance,},
 	["Resist All"] = {StatLogic.Stats.ArcaneResistance, StatLogic.Stats.FireResistance, StatLogic.Stats.FrostResistance, StatLogic.Stats.NatureResistance, StatLogic.Stats.ShadowResistance,},
-
-	["к рыбной ловле"] = false, -- Fishing enchant ID:846
-	["рыбная ловля"] = false, -- Equip: Increased Fishing +20. (it actually looks like: Увеличение навыка "Рыбная ловля" на +20)
-	["к навыку рыбной ловли"] = false,
-	["навык рыбной ловли увеличивается на"] = false,
-	["к горному делу"] = false, -- Mining enchant ID:844
-	["к травничеству"] = false, -- Heabalism enchant ID:845
-	["к снятию шкур"] = false, -- Skinning enchant ID:865
 
 	["броня"] = {StatLogic.Stats.BonusArmor,},
 	["к броне"] = {StatLogic.Stats.BonusArmor,},
@@ -293,13 +273,4 @@ L["StatIDLookup"] = {
 	["Повышает рейтинг пробивания брони на"] = {StatLogic.Stats.ArmorPenetrationRating},
 	["увеличивает рейтинг пробивания брони на"] = {StatLogic.Stats.ArmorPenetrationRating},
 	["снижает эффективность брони противника против ваших атак на"] = {StatLogic.Stats.ArmorPenetrationRating},
-
-	-- Exclude
-	["sec"] = false,
-	["to"] = false,
-	["Slot Bag"] = false,
-	["Slot Quiver"] = false,
-	["Slot Ammo Pouch"] = false,
-	["Increases ranged attack speed"] = false, -- AV quiver
-	["на 3% увеличенный критический урон"] = false, -- Chaotic Skyflare Diamond second effect
 }

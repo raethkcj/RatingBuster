@@ -25,22 +25,10 @@ L["PrefixExclude"] = {}
 L["WholeTextLookup"] = {
 	["Wildheit"] = {[StatLogic.Stats.AttackPower] = 70}, --
 	["Unbändigkeit"] = {[StatLogic.Stats.AttackPower] = 70}, --
-
 	["Vitalität"] = {[StatLogic.Stats.ManaRegen] = 4, [StatLogic.Stats.HealthRegen] = 4}, --
 	["Seelenfrost"] = {[StatLogic.Stats.ShadowDamage] = 54, [StatLogic.Stats.FrostDamage] = 54}, --
 	["Sonnenfeuer"] = {[StatLogic.Stats.ArcaneDamage] = 50, [StatLogic.Stats.FireDamage] = 50}, --
-
-	["Lauftempo ein wenig erhöht"] = false, --
-	["Schwache Temposteigerung"] = false, -- Enchant Boots - Minor Speed
-	["Schwaches Tempo"] = false, -- Enchant Boots - Cat's Swiftness "Minor Speed and +6 Agility" spell: 34007
 	["Sicherer Stand"] = {[StatLogic.Stats.MeleeHitRating] = 10}, -- Enchant Boots - Surefooted "Surefooted" spell: 27954
-
-	["Anlegen: Ermöglicht Unterwasseratmung."] = false, -- [Band of Icy Depths] ID: 21526
-	["Ermöglicht Unterwasseratmung"] = false, --
-	["Anlegen: Immun gegen Entwaffnen."] = false, -- [Stronghold Gauntlets] ID: 12639
-	["Immun gegen Entwaffnen"] = false, --
-	["Kreuzfahrer"] = false, -- Enchant Crusader
-	["Lebensdiebstahl"] = false, -- Enchant Crusader
 }
 -------------
 -- PreScan --
@@ -119,12 +107,6 @@ L["StatIDLookup"] = {
 	["Schattenwiderstand"] = {StatLogic.Stats.ShadowResistance,}, -- Demons Blood ID: 10779
 	["Alle Widerstände"] = {StatLogic.Stats.ArcaneResistance, StatLogic.Stats.FireResistance, StatLogic.Stats.FrostResistance, StatLogic.Stats.NatureResistance, StatLogic.Stats.ShadowResistance,},
 	["Alle Widerstandsarten"] = {StatLogic.Stats.ArcaneResistance, StatLogic.Stats.FireResistance, StatLogic.Stats.FrostResistance, StatLogic.Stats.NatureResistance, StatLogic.Stats.ShadowResistance,},
-
-	["Angeln"] = false, -- Fishing enchant ID:846
-	["Angelfertigkeit"] = false, -- Fishing lure
-	["Bergbau"] = false, -- Mining enchant ID:844
-	["Kräuterkunde"] = false, -- Heabalism enchant ID:845
-	["Kürschnerei"] = false, -- Skinning enchant ID:865
 
 	["Rüstung"] = {StatLogic.Stats.BonusArmor,},
 	["Verteidigung"] = {StatLogic.Stats.Defense,},
@@ -262,12 +244,4 @@ L["StatIDLookup"] = {
 	["Erhöht die Rüstungsdurchschlagwertung um"] = {StatLogic.Stats.ArmorPenetrationRating},
 	["Erhöht Eure Rüstungsdurchschlagwertung um"] = {StatLogic.Stats.ArmorPenetrationRating}, -- ID:43178
 	["erhöht den rüstungsdurchschlag"] = {StatLogic.Stats.ArmorPenetrationRating},
-
-	-- Exclude
-	["Sek"] = false,
-	["bis"] = false,
-	["Platz Tasche"] = false,
-	["Platz Köcher"] = false,
-	["Platz Munitionsbeutel"] = false,
-	["Erhöht das Distanzangriffstempo"] = false, -- AV quiver
 }

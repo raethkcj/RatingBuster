@@ -27,27 +27,7 @@ L["WholeTextLookup"] = {
 	["Vitalité"] = {[StatLogic.Stats.ManaRegen] = 4, [StatLogic.Stats.HealthRegen] = 4}, -- ID: 46492
 	["Âme de givre"] = {[StatLogic.Stats.ShadowDamage] = 54, [StatLogic.Stats.FrostDamage] = 54}, -- ID: 27982
 	["Feu solaire"] = {[StatLogic.Stats.ArcaneDamage] = 50, [StatLogic.Stats.FireDamage] = 50}, -- ID: 27981
-
-	["Équipé\194\160: La vitesse de course augmente légèrement."] = false, -- [Grèves des Hautes-terres en plaques] -- ID: 20048
-	["La vitesse de course augmente légèrement"] = false,
-	["Augmentation mineure de vitesse"] = false, -- Ench. de bottes (Vitesse mineure) ID: 13890
-	["Vitesse mineure"] = false, -- Ench. de bottes (Rapidité du félin) "Vitesse mineure et +6 à l'Agilité" -- ID: 34007 -- & Ench. de bottes (Vitesse du sanglier) "Vitesse mineure et +9 à l'Endurance" -- ID: 34008
 	["Pied sûr"] = {[StatLogic.Stats.MeleeHitRating] = 10}, -- Ench. de bottes (Pied sûr) -- ID: 27954
-
-	["Équipé\194\160: Permet de respirer sous l'eau."] = false, -- [Bague des profondeurs glacées] -- ID: 21526 -- & [Hydrocanne] -- ID: 9452
-	["Permet de respirer sous l'eau"] = false, --
-	["Équipé\194\160: Immunisé au désarmement."] = false, -- [Gantelets de la forteresse] -- ID: 12639 -- version pre-TBC
-	["Immunisé au désarmement"] = false,
-	["Équipé\194\160: Réduit les dégâts dus aux chutes."] = false, -- [Drapé de chauve-souris du crépuscule] -- ID: 19982
-	["Réduit les dégâts dus aux chutes"] = false,
-	["Équipé\194\160: Evite à son porteur d'être entièrement englobé dans la Flamme d'ombre."] = false, -- [Cape en écailles d'Onyxia] -- ID: 15138
-	["Evite à son porteur d'être entièrement englobé dans la Flamme d'ombre."] = false,
-
-	["Croisé"] = false, -- Ench. d'arme (Croisé) -- ID: 20034
-	["Vampirique"] = false, -- Ench. d'arme (Vol de vie) -- ID: 20032
-	["Arme impie"] = false, -- Ench. d'arme (Arme impie) -- ID: 20033
-	["Mangouste"] = false, -- Ench. d'arme (Mangouste) -- ID: 27984
-	["Bourreau"] = false, -- Ench. d'arme (Exécutrice) -- ID: 42974
 }
 -------------
 -- PreScan --
@@ -154,13 +134,6 @@ L["StatIDLookup"] = {
 	["à la résistance à l'Ombre"] = {StatLogic.Stats.ShadowResistance},
 
 	["à toutes les résistances"] = {StatLogic.Stats.ArcaneResistance, StatLogic.Stats.FireResistance, StatLogic.Stats.FrostResistance, StatLogic.Stats.NatureResistance, StatLogic.Stats.ShadowResistance},
-
-	["Pêche"] = false, -- Ench. de gants (Pêche) ID:13620
-	["Appât de pêche"] = false, -- Appats
-	["Équipé\194\160: Pêche augmentée"] = false, -- Effet canne à pêche
-	["Minage"] = false,
-	["Herboristerie"] = false, -- Ench. de gants (Herboristerie) ID:13617
-	["Dépeçage"] = false, -- Ench. de gants (Dépeçage) ID:13698
 
 	["Armure"] = {StatLogic.Stats.BonusArmor},
 	["Défense"] = {StatLogic.Stats.Defense},
@@ -328,13 +301,4 @@ L["StatIDLookup"] = {
 	["le score de pénétration d'armure"] = {StatLogic.Stats.ArmorPenetrationRating},
 	["votre score de pénétration d'armure"] = {StatLogic.Stats.ArmorPenetrationRating},
 	["la pénétration d'armure"] = {StatLogic.Stats.ArmorPenetrationRating},
-
-	--ToDo
-	-- Exclude
-	--["sec"] = false,
-	--["to"] = false,
-	--["Slot Bag"] = false,
-	--["Slot Quiver"] = false,
-	--["Slot Ammo Pouch"] = false,
-	--["Augmente la vitesse des attaques à distance"] = false, -- AV quiver
 }

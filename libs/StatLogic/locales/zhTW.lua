@@ -20,19 +20,7 @@ L["WholeTextLookup"] = {
 	["活力"] = {[StatLogic.Stats.ManaRegen] = 4, [StatLogic.Stats.HealthRegen] = 4}, --
 	["靈魂冰霜"] = {[StatLogic.Stats.ShadowDamage] = 54, [StatLogic.Stats.FrostDamage] = 54}, --
 	["烈日火焰"] = {[StatLogic.Stats.ArcaneDamage] = 50, [StatLogic.Stats.FireDamage] = 50}, --
-
-	["略微提高移動速度"] = false, --
-	["略微提高奔跑速度"] = false, --
-	["移動速度略微提升"] = false, -- Enchant Boots - Minor Speed
-	["初級速度"] = false, -- Enchant Boots - Minor Speed
 	["穩固"] = {[StatLogic.Stats.MeleeHitRating] = 10}, -- Enchant Boots - Surefooted "Surefooted" spell: 27954
-
-	["裝備: 使你可以在水下呼吸。"] = false, -- [Band of Icy Depths] ID: 21526
-	["使你可以在水下呼吸"] = false, --
-	["裝備: 免疫繳械。"] = false, -- [Stronghold Gauntlets] ID: 12639
-	["免疫繳械"] = false, --
-	["十字軍"] = false, -- Enchant Crusader
-	["生命偷取"] = false, -- Enchant Crusader
 }
 -------------
 -- PreScan --
@@ -121,13 +109,6 @@ L["StatIDLookup"] = {
 	["全部抗性"] = {StatLogic.Stats.ArcaneResistance, StatLogic.Stats.FireResistance, StatLogic.Stats.FrostResistance, StatLogic.Stats.NatureResistance, StatLogic.Stats.ShadowResistance,},
 	["抵抗全部"] = {StatLogic.Stats.ArcaneResistance, StatLogic.Stats.FireResistance, StatLogic.Stats.FrostResistance, StatLogic.Stats.NatureResistance, StatLogic.Stats.ShadowResistance,},
 	["點所有魔法抗性"] = {StatLogic.Stats.ArcaneResistance, StatLogic.Stats.FireResistance, StatLogic.Stats.FrostResistance, StatLogic.Stats.NatureResistance, StatLogic.Stats.ShadowResistance,}, -- [鋸齒黑曜石之盾] ID:22198
-
-	["釣魚"] = false, -- Fishing enchant ID:846
-	["釣魚技能"] = false, -- Fishing lure
-	["使釣魚技能"] = false, -- Equip: Increased Fishing +20.
-	["採礦"] = false, -- Mining enchant ID:844
-	["草藥學"] = false, -- Heabalism enchant ID:845
-	["剝皮"] = false, -- Skinning enchant ID:865
 
 	["護甲"] = {StatLogic.Stats.BonusArmor,},
 	["護甲值"] = {StatLogic.Stats.BonusArmor,},
@@ -289,12 +270,4 @@ L["StatIDLookup"] = {
 	["精准等级提高"] = {StatLogic.Stats.ExpertiseRating,},
 	["护甲穿透等级"] = {StatLogic.Stats.ArmorPenetrationRating},
 	["护甲穿透等级提高"] = {StatLogic.Stats.ArmorPenetrationRating},
-
-	-- Exclude
-	["秒"] = false,
-	--["to"] = false,
-	["格容器"] = false,
-	["格箭袋"] = false,
-	["格彈藥袋"] = false,
-	["遠程攻擊速度%"] = false, -- AV quiver
 }

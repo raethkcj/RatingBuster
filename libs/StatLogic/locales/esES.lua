@@ -27,18 +27,7 @@ L["WholeTextLookup"] = {
 	["vitalidad"] = {[StatLogic.Stats.ManaRegen] = 4, [StatLogic.Stats.HealthRegen] = 4}, -- Enchant Boots - Vitality spell: 27948
 	["escarcha de alma"] = {[StatLogic.Stats.ShadowDamage] = 54, [StatLogic.Stats.FrostDamage] = 54}, --
 	["fuego solar"] = {[StatLogic.Stats.ArcaneDamage] = 50, [StatLogic.Stats.FireDamage] = 50}, --
-
-	["Velocidad de carrera aumentada ligeramente"] = false, --
-	["Aumento mínimo de velocidad"] = false, -- Enchant Boots - Minor Speed "Minor Speed Increase" spell: 13890
-	["velocidad mín."] = false, -- Enchant Boots - Cat's Swiftness "Minor Speed and +6 Agility" spell: 34007
 	["Pies de plomo"] = {[StatLogic.Stats.MeleeHitRating] = 10}, -- Enchant Boots - Surefooted "Surefooted" spell: 27954
-
-	["Equipar: Permite respirar bajo el agua."] = false, -- [Band of Icy Depths] ID: 21526
-	["Permite respirar bajo el agua"] = false, --
-	["Equipar: Inmune a la desactivación."] = false, -- [Stronghold Gauntlets] ID: 12639
-	["Inmune a la desactivación"] = false, --
-	["Cruzado"] = false, -- Enchant Crusader
-	["Robo de vida"] = false, -- Enchant Crusader
 }
 -------------
 -- PreScan --
@@ -116,13 +105,6 @@ L["StatIDLookup"] = {
 	["resistencia a las Sombras"] = {StatLogic.Stats.ShadowResistance,}, -- Demons Blood ID: 10779
 	["todas las resistencias"] = {StatLogic.Stats.ArcaneResistance, StatLogic.Stats.FireResistance, StatLogic.Stats.FrostResistance, StatLogic.Stats.NatureResistance, StatLogic.Stats.ShadowResistance,},
 	["resistencia a todo"] = {StatLogic.Stats.ArcaneResistance, StatLogic.Stats.FireResistance, StatLogic.Stats.FrostResistance, StatLogic.Stats.NatureResistance, StatLogic.Stats.ShadowResistance,},
-
-	["Pesca"] = false, -- Fishing enchant ID:846
-	["Habilidad en pesca"] = false, -- Fishing lure
-	["Pesca aumentada"] = false, -- Equip: Increased Fishing +20.
-	["minería"] = false, -- Mining enchant ID:844
-	["herboristería"] = false, -- Heabalism enchant ID:845
-	["desuello"] = false, -- Skinning enchant ID:865
 
 	["Armadura"] = {StatLogic.Stats.BonusArmor,},
 	["Defensa"] = {StatLogic.Stats.Defense,},
@@ -276,9 +258,4 @@ L["StatIDLookup"] = {
 	["Aumenta tu índice de penetración de armadurap"] = {StatLogic.Stats.ArmorPenetrationRating}, -- ID:43178
 
 		-- Exclude
-	["seg"] = false,
-	["para"] = false,
-	["casillas"] = false,
-	["Carcaj"] = false,
-	["Aumenta la velocidad de ataque"] = false, -- AV quiver
 }

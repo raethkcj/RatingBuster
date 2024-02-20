@@ -48,17 +48,7 @@ L["WholeTextLookup"] = {
 	["+54 Shadow and Frost Spell Power"] = {[StatLogic.Stats.ShadowDamage] = 54, [StatLogic.Stats.FrostDamage] = 54},
 	["Sunfire"] = {[StatLogic.Stats.ArcaneDamage] = 50, [StatLogic.Stats.FireDamage] = 50},
 	["+50 Arcane and Fire Spell Power"] = {[StatLogic.Stats.ArcaneDamage] = 50, [StatLogic.Stats.FireDamage] = 50},
-
-	["Run speed increased slightly"] = false, --
-	["Minor Speed Increase"] = false, -- Enchant Boots - Minor Speed "Minor Speed Increase" spell: 13890
-	["Minor Speed"] = false, -- Enchant Boots - Cat's Swiftness "Minor Speed and +6 Agility" spell: 34007
 	["Surefooted"] = {[StatLogic.Stats.MeleeHitRating] = 10}, -- Enchant Boots - Surefooted "Surefooted" spell: 27954
-
-	["Equip: Allows underwater breathing."] = false, -- [Band of Icy Depths] ID: 21526
-	["Allows underwater breathing"] = false, --
-	["Equip: Immune to Disarm."] = false, -- [Stronghold Gauntlets] ID: 12639
-	["Immune to Disarm"] = false, --
-	["Crusader"] = false, -- Enchant Crusader
 }
 -------------
 -- PreScan --
@@ -132,13 +122,6 @@ L["StatIDLookup"] = {
 	["Shadow Resist"] = {StatLogic.Stats.ShadowResistance,}, -- Shadow Armor Kit +8 Shadow Resist
 	["All Resistances"] = {StatLogic.Stats.ArcaneResistance, StatLogic.Stats.FireResistance, StatLogic.Stats.FrostResistance, StatLogic.Stats.NatureResistance, StatLogic.Stats.ShadowResistance,},
 	["Resist All"] = {StatLogic.Stats.ArcaneResistance, StatLogic.Stats.FireResistance, StatLogic.Stats.FrostResistance, StatLogic.Stats.NatureResistance, StatLogic.Stats.ShadowResistance,},
-
-	["Fishing"] = false, -- Fishing enchant ID:846
-	["Fishing Skill"] = false, -- Fishing lure
-	["Increased Fishing"] = false, -- Equip: Increased Fishing +20.
-	["Mining"] = false, -- Mining enchant ID:844
-	["Herbalism"] = false, -- Heabalism enchant ID:845
-	["Skinning"] = false, -- Skinning enchant ID:865
 
 	["Armor"] = {StatLogic.Stats.BonusArmor,},
 	["reinforced armor %s"] = {StatLogic.Stats.BonusArmor}, -- enchant: 15
@@ -296,12 +279,4 @@ L["StatIDLookup"] = {
 	["Increases armor penetration rating"] = {StatLogic.Stats.ArmorPenetrationRating},
 	["Increases your armor penetration rating"] = {StatLogic.Stats.ArmorPenetrationRating}, -- Anarchy ID:39420
 	["increases your armor penetration"] = {StatLogic.Stats.ArmorPenetrationRating}, -- Ring of Foul Mojo ID:43178
-
-	-- Exclude
-	["sec"] = false,
-	["to"] = false,
-	["Slot Bag"] = false,
-	["Slot Quiver"] = false,
-	["Slot Ammo Pouch"] = false,
-	["Increases ranged attack speed"] = false, -- AV quiver
 }
