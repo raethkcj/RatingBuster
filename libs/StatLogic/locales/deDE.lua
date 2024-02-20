@@ -35,14 +35,6 @@ L["WholeTextLookup"] = {
 -------------
 -- Special cases that need to be dealt with before base scan
 L["PreScanPatterns"] = {
-	--["^Equip: Increases attack power by (%d+) in Cat"] = StatLogic.Stats.FeralAttackPower,
-	["^(%d+) Block$"] = StatLogic.Stats.BlockValue,
-	["^(%d+) Rüstung$"] = StatLogic.Stats.Armor,
-	["Verstärkte %(%+(%d+) Rüstung%)"] = StatLogic.Stats.BonusArmor,
-	["Mana Regeneration (%d+) alle 5 Sek%.$"] = StatLogic.Stats.ManaRegen,
-	-- These fail DeepScan in deDE because of the commas
-	["Anlegen: Erhöht Eure Chance, einen kritischen Treffer durch Zauber zu erzielen, um (%d)%%%."] = StatLogic.Stats.SpellCrit,
-	["Anlegen: Erhöht Eure Chance, einen kritischen Treffer zu erzielen, um (%d)%%%."] = {StatLogic.Stats.MeleeCrit, StatLogic.Stats.RangedCrit},
 	-- Exclude
 	["^(%d+) Slot"] = false, -- Set Name (0/9)
 	["^[%a '%-]+%((%d+)/%d+%)$"] = false, -- Set Name (0/9)

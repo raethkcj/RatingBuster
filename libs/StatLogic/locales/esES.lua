@@ -34,13 +34,6 @@ L["WholeTextLookup"] = {
 -------------
 -- Special cases that need to be dealt with before base scan
 L["PreScanPatterns"] = {
-	--["^Equip: Increases attack power by (%d+) in Cat"] = StatLogic.Stats.FeralAttackPower,
-	["^(%d+) bloqueo$"] = StatLogic.Stats.BlockValue,
-	["^(%d+) armadura$"] = StatLogic.Stats.Armor,
-	["Reforzado %(%+(%d+)  armadura%)"] = StatLogic.Stats.BonusArmor,
-	["regen. de maná (%d+) p. cada 5 s%.$"] = StatLogic.Stats.ManaRegen,
-	["Restaura (%d+) p. de maná cada 5 s%.?$"]= StatLogic.Stats.ManaRegen,
-	["Restaura (%d+) p. de maná cada 5 s de todos los miembros del grupo que estén a 30 m%.?$"]= StatLogic.Stats.ManaRegen,
 	-- Exclude
 	["^(%d+) Slot"] = false, -- Set Name (0/9)
 	["^[%a '%-]+%((%d+)/%d+%)$"] = false, -- Set Name (0/9)

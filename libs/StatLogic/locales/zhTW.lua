@@ -27,10 +27,6 @@ L["WholeTextLookup"] = {
 -------------
 -- Special cases that need to be dealt with before deep scan
 L["PreScanPatterns"] = {
-	--["^Equip: Increases attack power by (%d+) in Cat"] = StatLogic.Stats.FeralAttackPower,
-	["^(%d+)格擋$"] = StatLogic.Stats.BlockValue,
-	["^(%d+)點護甲$"] = StatLogic.Stats.Armor,
-	["強化護甲 %+(%d+)"] = StatLogic.Stats.BonusArmor,
 	-- Exclude
 	["^(%d+)格.-包"] = false, -- # of slots and bag type
 	["^(%d+)格.-袋"] = false, -- # of slots and bag type

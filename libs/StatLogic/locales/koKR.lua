@@ -27,12 +27,6 @@ L["WholeTextLookup"] = {
 -------------
 -- Special cases that need to be dealt with before deep scan
 L["PreScanPatterns"] = {
-	--["^Equip: Increases attack power by (%d+) in Cat"] = StatLogic.Stats.FeralAttackPower,
-	["^(%d+)의 피해 방어$"] = StatLogic.Stats.BlockValue,
-	["^방어도 (%d+)$"] = StatLogic.Stats.Armor,
-	["방어도 보강 %(%+(%d+)%)"] = StatLogic.Stats.BonusArmor,
-	["매 5초마다 (%d+)의 생명력이 회복됩니다.$"] = StatLogic.Stats.HealthRegen,
-	["매 5초마다 (%d+)의 마나가 회복됩니다.$"] = StatLogic.Stats.ManaRegen,
 	-- Exclude
 	["^(%d+)칸"] = false, -- Set Name (0/9)
 	["^[%D ]+ %((%d+)/%d+%)$"] = false, -- Set Name (0/9)

@@ -29,16 +29,6 @@ L["WholeTextLookup"] = {
 -------------
 -- Special cases that need to be dealt with before base scan
 L["PreScanPatterns"] = {
-	["^装备: 猫形态下的攻击强度增加(%d+)"] = StatLogic.Stats.FeralAttackPower,
-	["^(%d+)格挡$"] = StatLogic.Stats.BlockValue,
-	["^(%d+)点护甲$"] = StatLogic.Stats.Armor,
-	["强化护甲 %+(%d+)"] = StatLogic.Stats.BonusArmor,
-	["护甲值提高(%d+)点"] = StatLogic.Stats.BonusArmor,
-	["每5秒恢复(%d+)点法力值。$"] = StatLogic.Stats.ManaRegen,
-	["每5秒恢复(%d+)点生命值。$"] = StatLogic.Stats.HealthRegen,
-	["每5秒回复(%d+)点法力值。$"] = StatLogic.Stats.ManaRegen,
-	["每5秒回复(%d+)点法力值$"] = StatLogic.Stats.ManaRegen,
-	["每5秒回复(%d+)点生命值。$"] = StatLogic.Stats.HealthRegen,
 	-- Exclude
 	["^(%d+)格.-包"] = false, -- # of slots and bag type
 	["^(%d+)格.-袋"] = false, -- # of slots and bag type

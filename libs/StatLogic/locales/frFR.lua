@@ -34,22 +34,12 @@ L["WholeTextLookup"] = {
 -------------
 -- Special cases that need to be dealt with before deep scan
 L["PreScanPatterns"] = {
-	--["^Equip: Increases attack power by (%d+) in Cat"] = StatLogic.Stats.FeralAttackPower,
-	["Bloquer.- (%d+)"] = StatLogic.Stats.BlockValue,
-	["Armure.- (%d+)"] = StatLogic.Stats.Armor,
-	["Renforcé %(%+(%d+) Armure%)"] = StatLogic.Stats.BonusArmor,
-	["^Équipé\194\160: Rend (%d+) points de vie toutes les 5 seco?n?d?e?s?%.?$"]= StatLogic.Stats.HealthRegen,
-	["^Équipé\194\160: Rend (%d+) points de mana toutes les 5 seco?n?d?e?s?%.?$"]= StatLogic.Stats.ManaRegen,
-	--["Lunette %(%+(%d+) points? de dégâts?%)"] = StatLogic.Stats.RangedAttackPower,
 	-- Exclude
 	["^(%d+) Slot"] = false, -- Set Name (0/9)
 	["^[%a '%-]+%((%d+)/%d+%)$"] = false, -- Set Name (0/9) -- anciennement : ["^.- %(%d+/%d+%)$"] = false, -- Set Name (0/9)
 	-- Procs
-	--["[Cc]hance"] = false, -- [Marque de défiance] ID:27924 -- [Bâton des prophètes qiraji] ID:21128 -- Commented out because it was blocking [Insightful Earthstorm Diamond]
 	["[Rr]end parfois"] = false, -- [Carte de Sombrelune : Héroïsme] ID:19287
 	["[Ll]orsque vous êtes touché en combat"] = false, -- [Essence of the Pure Flame] ID: 18815
-	--["[Cc]onfère une chance"] = false, -- [Marque de défiance] ID:27924
-	--["[Qq]uand vos sorts offensifs atteignent une cible"] = false, -- [Bâton des prophètes qiraji] ID:21128
 	["Vous gagnez une"] = false, -- [Le condensateur de foudre] ID: 28785
 	["Dégâts:"] = false, -- ligne de degats des armes
 	["Votre technique"] = false,

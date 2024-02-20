@@ -51,16 +51,10 @@ L["WholeTextLookup"] = {
 -------------
 -- Special cases that need to be dealt with before deep scan
 L["PreScanPatterns"] = {
-	--["^Equip: Increases attack power by (%d+) in Cat"] = StatLogic.Stats.FeralAttackPower,
-	["^(%d+) Block$"] = StatLogic.Stats.BlockValue,
-	["^(%d+) Armor$"] = StatLogic.Stats.Armor,
-	["Reinforced %(%+(%d+) Armor%)"] = StatLogic.Stats.BonusArmor,
-	["Mana Regen (%d+) per 5 sec%.$"] = StatLogic.Stats.ManaRegen,
 	-- Exclude
 	["^(%d+) Slot"] = false, -- Set Name (0/9)
 	["^[%a '%-]+%((%d+)/%d+%)$"] = false, -- Set Name (0/9)
 	-- Procs
-	--["[Cc]hance"] = false, -- [Mark of Defiance] ID:27924 -- [Staff of the Qiraji Prophets] ID:21128 -- Commented out because it was blocking [Insightful Earthstorm Diamond]
 	["[Ss]ometimes"] = false, -- [Darkmoon Card: Heroism] ID:19287
 	["[Ww]hen struck in combat"] = false, -- [Essence of the Pure Flame] ID: 18815
 }

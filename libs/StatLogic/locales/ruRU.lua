@@ -30,17 +30,10 @@ L["WholeTextLookup"] = {
 -------------
 -- Special cases that need to be dealt with before deep scan
 L["PreScanPatterns"] = {
-	--["^Equip: Increases attack power by (%d+) in Cat"] = StatLogic.Stats.FeralAttackPower,
-	["^(%d+) Block$"] = StatLogic.Stats.BlockValue,
-	["^Броня: (%d+)$"] = StatLogic.Stats.Armor,
-	["Reinforced %(%+(%d+) Armor%)"] = StatLogic.Stats.BonusArmor,
-	["Восполнение (%d+) ед. маны за 5 сек%.$"] = StatLogic.Stats.ManaRegen,
-	["Восполняет (%d+) ед%. здоровья каждые 5 секунд%."] = StatLogic.Stats.HealthRegen,
 	-- Exclude
 	["^(%d+) Slot"] = false, -- Set Name (0/9)
 	["^.+%((%d+)/%d+%)$"] = false, -- Set Name (0/9)
 	-- Procs
-	--["[Cc]hance"] = false, -- [Mark of Defiance] ID:27924 -- [Staff of the Qiraji Prophets] ID:21128 -- Commented out because it was blocking [Insightful Earthstorm Diamond]
 	["[Ss]ometimes"] = false, -- [Darkmoon Card: Heroism] ID:19287
 	["[Ww]hen struck in combat"] = false, -- [Essence of the Pure Flame] ID: 18815
 	["[Вв]озможный эффект"] = false, -- Sulfuras, Hand of Ragnaros
