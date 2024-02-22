@@ -289,6 +289,5 @@ end
 -- Iterates all patterns, matching the whole string. Expensive so try not to use.
 -- Used to reduce noise while debugging missing patterns
 addon.PreScanPatterns = setmetatable({}, lowerMT)
-local str = ITEM_SET_NAME:gsub("%%%d?%$?s", ".+"):gsub("%%%d?%$?d", "%%d+"):gsub("[()]", "%%%1")
-print("ITEM_SET_NAME:", str)
-addon.PreScanPatterns[str] = false
+local itemSetNamePattern = ITEM_SET_NAME:gsub("%%%d?%$?s", ".+"):gsub("%%%d?%$?d", "%%d+"):gsub("[()]", "%%%1")
+addon.PreScanPatterns[itemSetNamePattern] = false
