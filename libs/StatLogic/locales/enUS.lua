@@ -2,29 +2,6 @@ local addonName, addon = ...
 if GetLocale() ~= "enUS" then return end
 local StatLogic = LibStub(addonName)
 
---[[
--- Item Stat Scanning Procedure
--- Trim spaces using text:trim()
--- Strip color codes
--- 1. Whole Text Lookup - Mainly used for enchants or stuff without numbers
---    Whole strings are indexed in L.WholeTextLookup
---    Exclude a string by matching the whole string
--- 2. Substitution Lookup
---    Strip Equip:, Socket Bonus:, trailing .
---    Lowercase string using UTF8
---    Replace numbers with %s
---    Lookup exact sanitized string in StatIDLookup
--- 2. Prefix Exclude - Exclude obvious lines that do not need to be checked
---    Exclude a string by looking at the first X chars, these strings are indexed in L.PrefixExclude.
---    Exclude lines starting with '"'. (Flavor text)
--- 3. Color Exclude
---    Exclude lines that are not white and green and normal (normal for Frozen Wrath bonus)
--- 4. Pre Scan - Short list of patterns that will be checked before going into Deep Scan.
---]]
------------------------
--- Whole Text Lookup --
------------------------
--- Mainly used for enchants that doesn't have numbers in the text
 local W = addon.WholeTextLookup
 W["Savagery"] = {[StatLogic.Stats.AttackPower] = 70} -- enchant 2667 TBC
 W["Vitality"] = {[StatLogic.Stats.ManaRegen] = 4, [StatLogic.Stats.HealthRegen] = 4} -- enchant 2656 TBC
@@ -32,9 +9,6 @@ W["Soulfrost"] = {[StatLogic.Stats.ShadowDamage] = 54, [StatLogic.Stats.FrostDam
 W["Sunfire"] = {[StatLogic.Stats.ArcaneDamage] = 50, [StatLogic.Stats.FireDamage] = 50} -- enchant 2671 TBC
 W["Surefooted"] = {[StatLogic.Stats.HitRating] = 10} -- enchant 2658 WholeText TBC
 
------------------------
--- Stat Lookup Table --
------------------------
 local L = addon.StatIDLookup
 L["minor speed and %s agility"] = {StatLogic.Stats.Agility} -- enchant 2939 TBC
 L["minor speed and %s stamina"] = {StatLogic.Stats.Stamina} -- enchant 2940 TBC

@@ -2,6 +2,7 @@ local addonName, addon = ...
 local StatLogic = LibStub(addonName)
 local locale = GetLocale()
 
+-- Metatable that forces keys to be UTF8-lowercase
 local lowerMT = {
 	__newindex = function(t, k, v)
 		if k then
@@ -10,10 +11,12 @@ local lowerMT = {
 	end
 }
 
+-----------------------
+-- Whole Text Lookup --
+-----------------------
+-- Strings without numbers; mainly used for enchants or easy exclusions
 addon.WholeTextLookup = setmetatable({}, lowerMT)
 local W = addon.WholeTextLookup
-addon.StatIDLookup = setmetatable({}, lowerMT)
-local L = addon.StatIDLookup
 
 W[EMPTY_SOCKET_RED] = {["EMPTY_SOCKET_RED"] = 1}
 W[EMPTY_SOCKET_YELLOW] = {["EMPTY_SOCKET_YELLOW"] = 1}
@@ -99,6 +102,12 @@ end
 local function unescape(pattern)
 	return pattern:gsub("%%%d?%$?c", ""):gsub("%%%d?%$?[sd]", "%%s"):gsub("%.$", ""):utf8lower()
 end
+
+-------------------------
+-- Substitution Lookup --
+-------------------------
+addon.StatIDLookup = setmetatable({}, lowerMT)
+local L = addon.StatIDLookup
 
 local long = {
 	[ITEM_MOD_AGILITY] = {StatLogic.Stats.Agility},
@@ -233,6 +242,12 @@ for i = 2, MAX_SPELL_SCHOOLS do
 	end
 end
 
+
+--------------------
+-- Prefix Exclude --
+--------------------
+-- Exclude strings by 3-5 character prefixes
+-- Used to reduce noise while debugging missing patterns
 local prefixExclusions = {
 	SPEED,
 	ITEM_DISENCHANT_ANY_SKILL, -- "Disenchantable"
@@ -250,10 +265,6 @@ local prefixExclusions = {
 	ITEM_SET_BONUS, -- "Set: %s"
 }
 
---------------------
--- Prefix Exclude --
---------------------
--- By looking at the first PrefixExcludeLength letters of a line we can exclude a lot of lines
 addon.PrefixExclude = {}
 local excludeLen = 5
 if locale == "koKR" or locale == "zhCN" or locale == "zhTW" then
@@ -272,6 +283,10 @@ for _, exclusion in pairs(prefixExclusions) do
 	addon.PrefixExclude[exclusion] = true
 end
 
+---------------------
+-- PreScan Exclude --
+---------------------
+-- Iterates all patterns, matching the whole string. Expensive so try not to use.
 -- Used to reduce noise while debugging missing patterns
 addon.PreScanPatterns = setmetatable({}, lowerMT)
 local str = ITEM_SET_NAME:gsub("%%%d?%$?s", ".+"):gsub("%%%d?%$?d", "%%d+"):gsub("[()]", "%%%1")
