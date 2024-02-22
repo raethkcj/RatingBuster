@@ -100,7 +100,7 @@ for _, subclass in pairs(Enum.ItemArmorSubclass) do
 end
 
 local function unescape(pattern)
-	return pattern:gsub("%%%d?%$?c", ""):gsub("%%%d?%$?[sd]", "%%s"):gsub("%.$", ""):utf8lower()
+	return pattern:gsub("%%%d?%$?c", ""):gsub("%%%d?%$?[sd]", "%%s"):gsub("%.$", "")
 end
 
 -------------------------
@@ -154,7 +154,7 @@ local long = {
 }
 
 for pattern, stats in pairs(long) do
-	L[unescape(pattern):utf8lower()] = stats
+	L[unescape(pattern)] = stats
 end
 
 local regen = {
@@ -169,7 +169,7 @@ for pattern, stats in pairs(regen) do
 	pattern = pattern:gsub("5", "%%s")
 	local i = stat > five and 1 or 2
 	table.insert(stats, i, false)
-	L[unescape(pattern):utf8lower()] = stats
+	L[unescape(pattern)] = stats
 end
 
 local short = {
@@ -220,8 +220,8 @@ local short = {
 }
 
 for pattern, stat in pairs(short) do
-	L[("%s " .. pattern):utf8lower()] = stat
-	L[(pattern .. " %s"):utf8lower()] = stat
+	L["%s " .. pattern] = stat
+	L[pattern .. " %s"] = stat
 end
 
 local resistances = {
@@ -235,10 +235,10 @@ local resistances = {
 if not MAX_SPELL_SCHOOLS then MAX_SPELL_SCHOOLS = 7 end
 for i = 2, MAX_SPELL_SCHOOLS do
 	local school = _G["DAMAGE_SCHOOL" .. i]
-	L[DAMAGE_TEMPLATE_WITH_SCHOOL:format("%s", "%s", school):utf8lower()] = {StatLogic.Stats.MinWeaponDamage, StatLogic.Stats.MaxWeaponDamage}
-	L[PLUS_DAMAGE_TEMPLATE_WITH_SCHOOL:format("%s", "%s", school):utf8lower()] = {StatLogic.Stats.MinWeaponDamage, StatLogic.Stats.MaxWeaponDamage}
+	L[DAMAGE_TEMPLATE_WITH_SCHOOL:format("%s", "%s", school)] = {StatLogic.Stats.MinWeaponDamage, StatLogic.Stats.MaxWeaponDamage}
+	L[PLUS_DAMAGE_TEMPLATE_WITH_SCHOOL:format("%s", "%s", school)] = {StatLogic.Stats.MinWeaponDamage, StatLogic.Stats.MaxWeaponDamage}
 	if resistances[i] then
-		L[unescape(ITEM_RESIST_SINGLE):format("%s", school):utf8lower()] = {resistances[i]}
+		L[unescape(ITEM_RESIST_SINGLE):format("%s", school)] = {resistances[i]}
 	end
 end
 
