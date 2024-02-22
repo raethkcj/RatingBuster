@@ -152,6 +152,8 @@ for pattern, stats in pairs(regen) do
 end
 
 local short = {
+	[HP] = {StatLogic.Stats.Health},
+	[MP] = {StatLogic.Stats.Mana},
 	[ITEM_MOD_AGILITY_SHORT] = {StatLogic.Stats.Agility},
 	[ITEM_MOD_ARMOR_PENETRATION_RATING_SHORT] = {StatLogic.Stats.ArmorPenetrationRating},
 	[ITEM_MOD_ATTACK_POWER_SHORT] = {StatLogic.Stats.AttackPower},
