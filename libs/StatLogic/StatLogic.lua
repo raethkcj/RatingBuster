@@ -1702,11 +1702,9 @@ do
 				-- Iterates all patterns, matching the whole string. Expensive so try not to use.
 				-- Used to reduce noise while debugging missing patterns
 				if not found then
-					for pattern, id in pairs(addon.PreScanPatterns) do
-						local value
-						found, _, value = text:find(pattern)
-						if found then
-							ParseMatch(id and not id[1] and {id} or id, text, value, "PreScan")
+					for pattern in pairs(addon.PreScanPatterns) do
+						if text:find(pattern) then
+							found = ParseMatch(false, text, nil, "PreScan")
 							break
 						end
 					end
