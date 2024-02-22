@@ -250,9 +250,9 @@ local prefixExclusions = {
 	ITEM_SET_BONUS, -- "Set: %s"
 }
 
-------------------
+--------------------
 -- Prefix Exclude --
-------------------
+--------------------
 -- By looking at the first PrefixExcludeLength letters of a line we can exclude a lot of lines
 addon.PrefixExclude = {}
 local excludeLen = 5
@@ -271,3 +271,9 @@ for _, exclusion in pairs(prefixExclusions) do
 	end
 	addon.PrefixExclude[exclusion] = true
 end
+
+-- Used to reduce noise while debugging missing patterns
+addon.PreScanPatterns = setmetatable({}, lowerMT)
+local str = ITEM_SET_NAME:gsub("%%%d?%$?s", ".+"):gsub("%%%d?%$?d", "%%d+"):gsub("[()]", "%%%1")
+print("ITEM_SET_NAME:", str)
+addon.PreScanPatterns[str] = false

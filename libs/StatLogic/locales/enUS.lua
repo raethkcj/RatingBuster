@@ -32,17 +32,6 @@ W["Soulfrost"] = {[StatLogic.Stats.ShadowDamage] = 54, [StatLogic.Stats.FrostDam
 W["Sunfire"] = {[StatLogic.Stats.ArcaneDamage] = 50, [StatLogic.Stats.FireDamage] = 50} -- enchant 2671 TBC
 W["Surefooted"] = {[StatLogic.Stats.HitRating] = 10} -- enchant 2658 WholeText TBC
 
--------------
--- PreScan --
--------------
--- Special cases that need to be dealt with before deep scan
-addon.PreScanPatterns = {
-	-- Exclude
-	["^[%a '%-]+%((%d+)/%d+%)$"] = false, -- Set Name (0/9)
-	-- Procs
-	["[Ss]ometimes"] = false, -- [Darkmoon Card: Heroism] ID:19287
-	["[Ww]hen struck in combat"] = false, -- [Essence of the Pure Flame] ID: 18815
-}
 -----------------------
 -- Stat Lookup Table --
 -----------------------

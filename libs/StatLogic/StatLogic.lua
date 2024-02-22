@@ -1692,8 +1692,7 @@ do
 					end
 				end
 
-				-- PreScan for special cases, that will fit wrongly into DeepScan
-				-- PreScan also has exclude patterns
+				-- Used to reduce noise while debugging missing patterns
 				if not found then
 					for pattern, id in pairs(addon.PreScanPatterns) do
 						local value
