@@ -76,7 +76,6 @@ local _G = getfenv(0)
 local pairs = pairs
 local ipairs = ipairs
 local type = type
-local tonumber = addon.tonumber
 local GetInventoryItemLink = GetInventoryItemLink
 local IsUsableSpell = IsUsableSpell
 local UnitLevel = UnitLevel

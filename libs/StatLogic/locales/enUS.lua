@@ -2,7 +2,6 @@ local addonName, addon = ...
 if GetLocale() ~= "enUS" then return end
 local StatLogic = LibStub(addonName)
 
-addon.tonumber = tonumber
 --[[
 -- Item Stat Scanning Procedure
 -- Trim spaces using text:trim()
