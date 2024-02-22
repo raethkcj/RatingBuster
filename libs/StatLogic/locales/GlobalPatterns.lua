@@ -1,12 +1,24 @@
-local addonName = ...
+local addonName, addon = ...
+local StatLogic = LibStub(addonName)
+local locale = GetLocale()
 
-local L = LibStub("AceLocale-3.0"):GetLocale(addonName)
-local StatLogic = LibStub("StatLogic")
+local lowerMT = {
+	__newindex = function(t, k, v)
+		if k then
+			rawset(t, k:utf8lower(), v)
+		end
+	end
+}
 
-L.WholeTextLookup[EMPTY_SOCKET_RED] = {["EMPTY_SOCKET_RED"] = 1}
-L.WholeTextLookup[EMPTY_SOCKET_YELLOW] = {["EMPTY_SOCKET_YELLOW"] = 1}
-L.WholeTextLookup[EMPTY_SOCKET_BLUE] = {["EMPTY_SOCKET_BLUE"] = 1}
-L.WholeTextLookup[EMPTY_SOCKET_META] = {["EMPTY_SOCKET_META"] = 1}
+addon.WholeTextLookup = setmetatable({}, lowerMT)
+local W = addon.WholeTextLookup
+addon.StatIDLookup = setmetatable({}, lowerMT)
+local L = addon.StatIDLookup
+
+W[EMPTY_SOCKET_RED] = {["EMPTY_SOCKET_RED"] = 1}
+W[EMPTY_SOCKET_YELLOW] = {["EMPTY_SOCKET_YELLOW"] = 1}
+W[EMPTY_SOCKET_BLUE] = {["EMPTY_SOCKET_BLUE"] = 1}
+W[EMPTY_SOCKET_META] = {["EMPTY_SOCKET_META"] = 1}
 
 local exclusions = {
 	"",
@@ -74,13 +86,13 @@ local exclusions = {
 }
 
 for _, exclusion in pairs(exclusions) do
-	L.WholeTextLookup[exclusion] = false
+	W[exclusion] = false
 end
 
 for _, subclass in pairs(Enum.ItemArmorSubclass) do
 	local subclassName = GetItemSubClassInfo(Enum.ItemClass.Armor, subclass)
 	if subclassName then
-		L.WholeTextLookup[subclassName] = false
+		W[subclassName] = false
 	end
 end
 
@@ -133,7 +145,7 @@ local long = {
 }
 
 for pattern, stats in pairs(long) do
-	L.StatIDLookup[unescape(pattern)] = stats
+	L[unescape(pattern):utf8lower()] = stats
 end
 
 local regen = {
@@ -148,7 +160,7 @@ for pattern, stats in pairs(regen) do
 	pattern = pattern:gsub("5", "%%s")
 	local i = stat > five and 1 or 2
 	table.insert(stats, i, false)
-	L.StatIDLookup[unescape(pattern)] = stats
+	L[unescape(pattern):utf8lower()] = stats
 end
 
 local short = {
@@ -199,8 +211,8 @@ local short = {
 }
 
 for pattern, stat in pairs(short) do
-	L.StatIDLookup["%s " .. pattern] = stat
-	L.StatIDLookup[pattern .. " %s"] = stat
+	L[("%s " .. pattern):utf8lower()] = stat
+	L[(pattern .. " %s"):utf8lower()] = stat
 end
 
 local resistances = {
@@ -214,10 +226,10 @@ local resistances = {
 if not MAX_SPELL_SCHOOLS then MAX_SPELL_SCHOOLS = 7 end
 for i = 2, MAX_SPELL_SCHOOLS do
 	local school = _G["DAMAGE_SCHOOL" .. i]
-	L.StatIDLookup[DAMAGE_TEMPLATE_WITH_SCHOOL:format("%s", "%s", school)] = {StatLogic.Stats.MinWeaponDamage, StatLogic.Stats.MaxWeaponDamage}
-	L.StatIDLookup[PLUS_DAMAGE_TEMPLATE_WITH_SCHOOL:format("%s", "%s", school)] = {StatLogic.Stats.MinWeaponDamage, StatLogic.Stats.MaxWeaponDamage}
+	L[DAMAGE_TEMPLATE_WITH_SCHOOL:format("%s", "%s", school):utf8lower()] = {StatLogic.Stats.MinWeaponDamage, StatLogic.Stats.MaxWeaponDamage}
+	L[PLUS_DAMAGE_TEMPLATE_WITH_SCHOOL:format("%s", "%s", school):utf8lower()] = {StatLogic.Stats.MinWeaponDamage, StatLogic.Stats.MaxWeaponDamage}
 	if resistances[i] then
-		L.StatIDLookup[unescape(ITEM_RESIST_SINGLE):format("%s", school)] = {resistances[i]}
+		L[unescape(ITEM_RESIST_SINGLE):format("%s", school):utf8lower()] = {resistances[i]}
 	end
 end
 
@@ -238,13 +250,24 @@ local prefixExclusions = {
 	ITEM_SET_BONUS, -- "Set: %s"
 }
 
+------------------
+-- Prefix Exclude --
+------------------
+-- By looking at the first PrefixExcludeLength letters of a line we can exclude a lot of lines
+addon.PrefixExclude = {}
+local excludeLen = 5
+if locale == "koKR" or locale == "zhCN" or locale == "zhTW" then
+	excludeLen = 3
+end
+addon.PrefixExcludeLength = excludeLen
+
 for _, exclusion in pairs(prefixExclusions) do
-	-- Set the string to exactly PrefixExcludeLength characters, right-padded.
+	-- Set the string to exactly excludeLen characters, right-padded.
 	local len = string.utf8len(exclusion)
-	if len > L.PrefixExcludeLength then
-		exclusion = string.utf8sub(exclusion, 1, L.PrefixExcludeLength)
-	elseif len < L.PrefixExcludeLength then
-		exclusion = exclusion .. (" "):rep(L.PrefixExcludeLength - len)
+	if len > excludeLen then
+		exclusion = string.utf8sub(exclusion, 1, excludeLen)
+	elseif len < excludeLen then
+		exclusion = exclusion .. (" "):rep(excludeLen - len)
 	end
-	L.PrefixExclude[exclusion] = true
+	addon.PrefixExclude[exclusion] = true
 end

@@ -3,23 +3,6 @@ local addonName, addon = ...
 ---@class StatLogic
 local StatLogic = LibStub(addonName)
 
----------------
--- Libraries --
----------------
----@type StatLogicLocale
-local L = LibStub("AceLocale-3.0"):GetLocale(addonName)
-
--- Add all lower case strings to ["StatIDLookup"]
-if type(L) == "table" and type(L["StatIDLookup"]) == "table" then
-	local temp = {}
-	for k, v in pairs(L["StatIDLookup"]) do
-		temp[k:utf8lower()] = v
-	end
-	for k, v in pairs(temp) do
-		L["StatIDLookup"][k] = v
-	end
-end
-
 function StatLogic:argCheck(argument, number, ...)
 	local arg = {...}
 	local validTypeString = table.concat(arg, ", ")
@@ -93,7 +76,7 @@ local _G = getfenv(0)
 local pairs = pairs
 local ipairs = ipairs
 local type = type
-local tonumber = L.tonumber
+local tonumber = addon.tonumber
 local GetInventoryItemLink = GetInventoryItemLink
 local IsUsableSpell = IsUsableSpell
 local UnitLevel = UnitLevel
@@ -1653,7 +1636,7 @@ do
 					-- Whole Text Lookup --
 					-----------------------
 					-- Mainly used for enchants or stuff without numbers:
-					local idTable = L.WholeTextLookup[text]
+					local idTable = addon.WholeTextLookup[text]
 					found = ParseMatch(idTable, text, false, "WholeText")
 				end
 
@@ -1678,7 +1661,7 @@ do
 					end)
 					if count > 0 then
 						statText = statText:trim()
-						local stats = L.StatIDLookup[statText]
+						local stats = addon.StatIDLookup[statText]
 						if stats then
 							for j, value in ipairs(values) do
 								found = ParseMatch(stats[j], text, value, "Substitution")
@@ -1694,7 +1677,7 @@ do
 				--------------------
 				-- Exclude strings with prefixes that do not need to be checked,
 				if not found then
-					if L.PrefixExclude[text:utf8sub(1, L.PrefixExcludeLength)] or text:sub(1, 1) == '"' then
+					if addon.PrefixExclude[text:utf8sub(1, addon.PrefixExcludeLength)] or text:sub(1, 1) == '"' then
 						found = ParseMatch(false, text, nil, "Prefix")
 					end
 				end
@@ -1713,7 +1696,7 @@ do
 				-- PreScan for special cases, that will fit wrongly into DeepScan
 				-- PreScan also has exclude patterns
 				if not found then
-					for pattern, id in pairs(L.PreScanPatterns) do
+					for pattern, id in pairs(addon.PreScanPatterns) do
 						local value
 						found, _, value = text:find(pattern)
 						if found then

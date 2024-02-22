@@ -5,7 +5,6 @@
 
 #@non-debug@
 # libs\LibStub\LibStub.lua
-# libs\AceLocale-3.0\AceLocale-3.0.xml
 #@end-non-debug@
 
 libs\UTF8\utf8data.lua
