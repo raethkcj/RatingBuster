@@ -185,6 +185,7 @@ local short = {
 	[ITEM_MOD_POWER_REGEN0_SHORT] = {StatLogic.Stats.ManaRegen},
 	[ITEM_MOD_RANGED_ATTACK_POWER_SHORT] = {StatLogic.Stats.RangedAttackPower},
 	[ITEM_MOD_RESILIENCE_RATING_SHORT] = {StatLogic.Stats.ResilienceRating},
+	[RESILIENCE] = {StatLogic.Stats.ResilienceRating},
 	[ITEM_MOD_SPELL_DAMAGE_DONE_SHORT] = {StatLogic.Stats.SpellDamage},
 	[ITEM_MOD_SPELL_HEALING_DONE_SHORT] = {StatLogic.Stats.HealingPower},
 	[ITEM_MOD_SPELL_PENETRATION_SHORT] = {StatLogic.Stats.SpellPenetration},
@@ -194,6 +195,7 @@ local short = {
 	[ITEM_MOD_STRENGTH_SHORT] = {StatLogic.Stats.Strength},
 	[SPELL_STATALL] = {StatLogic.Stats.AllStats},
 	[STAT_ATTACK_POWER] = {StatLogic.Stats.AttackPower},
+	[COMBAT_RATING_NAME9] = {StatLogic.Stats.CritRating},
 }
 
 for pattern, stat in pairs(short) do
