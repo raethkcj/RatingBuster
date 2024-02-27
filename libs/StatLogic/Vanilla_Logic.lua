@@ -1093,6 +1093,23 @@ elseif addon.class == "SHAMAN" then
 				},
 			},
 		},
+		["MOD_AP"] = {
+			-- Rune: Two-Handed Mastery
+			{
+				["known"] = 436364,
+				["rune"] = true,
+				["aura"] = 436365,
+				["value"] = 0.10,
+			},
+			-- Rune: Spirit of the Alpha
+			{
+				["known"] = 408696,
+				["rune"] = true,
+				["value"] = 0.20,
+				-- TODO, NYI
+				["aura"] = 408696,
+			},
+		},
 		-- Shaman: Toughness (Rank 5) - 2,11
 		--         Increases your armor value from items by 2%/4%/6%/8%/10%.
 		["MOD_ARMOR"] = {
@@ -1141,6 +1158,13 @@ elseif addon.class == "SHAMAN" then
 				["rune"] = true,
 				["value"] = 0.01,
 				["aura"] = 408510,
+			},
+			-- Rune: Shamanistic Rage
+			{
+				["known"] = 425336,
+				["rune"] = true,
+				["value"] = 0.25,
+				["aura"] = 425336,
 			},
 		},
 		["MOD_HEALTH"] = {
