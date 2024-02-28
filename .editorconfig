@@ -14,3 +14,6 @@ insert_final_newline = true
 [*.{lua,toc,xml}]
 end_of_line = crlf
 insert_final_newline = false
+
+[*.lua]
+trailing_table_separator = smart
