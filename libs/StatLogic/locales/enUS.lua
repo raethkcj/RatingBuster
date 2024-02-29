@@ -30,8 +30,8 @@ L["%s fire resist"] = {StatLogic.Stats.FireResistance,} -- enchant 2985 TBC
 L["%s nature resist"] = {StatLogic.Stats.NatureResistance,} -- enchant 2988 TBC
 L["%s frost resist"] = {StatLogic.Stats.FrostResistance,} -- enchant 2987 TBC
 L["%s shadow resist"] = {StatLogic.Stats.ShadowResistance,} -- enchant 2984 TBC
-L["%s all resistances"] = {StatLogic.Stats.ArcaneResistance, StatLogic.Stats.FireResistance, StatLogic.Stats.FrostResistance, StatLogic.Stats.NatureResistance, StatLogic.Stats.ShadowResistance,} -- enchant 28 Vanilla
-L["%s resist all"] = {StatLogic.Stats.ArcaneResistance, StatLogic.Stats.FireResistance, StatLogic.Stats.FrostResistance, StatLogic.Stats.NatureResistance, StatLogic.Stats.ShadowResistance,} -- enchant 2663 TBC
+L["%s all resistances"] = {{StatLogic.Stats.ArcaneResistance, StatLogic.Stats.FireResistance, StatLogic.Stats.FrostResistance, StatLogic.Stats.NatureResistance, StatLogic.Stats.ShadowResistance,}} -- enchant 28 Vanilla
+L["%s resist all"] = {{StatLogic.Stats.ArcaneResistance, StatLogic.Stats.FireResistance, StatLogic.Stats.FrostResistance, StatLogic.Stats.NatureResistance, StatLogic.Stats.ShadowResistance,}} -- enchant 2663 TBC
 
 L["reinforced armor %s"] = {StatLogic.Stats.BonusArmor} -- enchant 15 Vanilla
 L["reinforced (%s armor)"] = {StatLogic.Stats.BonusArmor} -- enchant 15 TBC
