@@ -1620,38 +1620,40 @@ do
 				local text = fontString:GetText()
 				local found = not text or text == ""
 
+				if not found then
+					-- Strip color codes
+					text = text:gsub("^|c%x%x%x%x%x%x%x%x", "")
+					text = text:gsub("|r$", "")
+				end
+				local rawText = text
+
 				-----------------------
 				-- Whole Text Lookup --
 				-----------------------
 				-- Strings without numbers; mainly used for enchants or easy exclusions
 				if not found then
-					-- Trim spaces and limit to one line
-					text = text:trim()
+					-- Limit to one line
 					text = text:gsub("\n.*", "")
-					-- Strip color codes
-					text = text:gsub("^|c%x%x%x%x%x%x%x%x", "")
-					text = text:gsub("|r$", "")
+					-- Strip leading "Equip: ", "Socket Bonus: ", trailing ".", and lowercase
+					text = text:gsub(ITEM_SPELL_TRIGGER_ONEQUIP, "")
+					text = text:gsub(StripGlobalStrings(ITEM_SOCKET_BONUS), "")
+					text = text:trim()
+					text = text:gsub("%.$", "")
+					text = text:utf8lower()
 
 					currentColor = CreateColor(fontString:GetTextColor())
 
 					local idTable = addon.WholeTextLookup[text]
-					found = ParseMatch(idTable, text, false, "WholeText")
+					found = ParseMatch(idTable, rawText, false, "WholeText")
 				end
 
 				-------------------------
 				-- Substitution Lookup --
 				-------------------------
-				local statText
 				if not found then
-					-- Strip leading "Equip: ", "Socket Bonus: ", trailing ".", and lowercase
-					local sanitizedText = text:gsub(ITEM_SPELL_TRIGGER_ONEQUIP, "")
-					sanitizedText = sanitizedText:gsub("%.$", "")
-					sanitizedText = sanitizedText:gsub(StripGlobalStrings(ITEM_SOCKET_BONUS), "")
-					sanitizedText = sanitizedText:utf8lower()
 					-- Replace numbers with %s
 					local values = {}
-					local count
-					statText, count = sanitizedText:gsub("[+-]?[%d%.]+%f[%D]", function(match)
+					local statText, count = text:gsub("[+-]?[%d%.]+%f[%D]", function(match)
 						local value = tonumber(match)
 						if value then
 							values[#values + 1] = value
@@ -1664,12 +1666,12 @@ do
 						local stats = addon.StatIDLookup[statText]
 						if stats then
 							for j, value in ipairs(values) do
-								found = ParseMatch(stats[j], text, value, "Substitution")
+								found = ParseMatch(stats[j], rawText, value, "Substitution")
 							end
 						end
 					else
 						-- Contained no numbers, so we can exclude it
-						found = ParseMatch(false, text, false, "Substitution")
+						found = ParseMatch(false, rawText, false, "Substitution")
 					end
 				end
 
@@ -1679,8 +1681,8 @@ do
 				-- Exclude strings by 3-5 character prefixes
 				-- Used to reduce noise while debugging missing patterns
 				if not found then
-					if addon.PrefixExclude[text:utf8sub(1, addon.PrefixExcludeLength)] or text:sub(1, 1) == '"' then
-						found = ParseMatch(false, text, nil, "Prefix")
+					if addon.PrefixExclude[rawText:utf8sub(1, addon.PrefixExcludeLength)] or rawText:sub(1, 1) == '"' then
+						found = ParseMatch(false, rawText, nil, "Prefix")
 					end
 				end
 
@@ -1692,7 +1694,7 @@ do
 				if not found then
 					local _, g, b = currentColor:GetRGB()
 					if g < 0.8 or (b < 0.99 and b > 0.1) then
-						found = ParseMatch(false, text, nil, "Color")
+						found = ParseMatch(false, rawText, nil, "Color")
 					end
 				end
 
@@ -1703,8 +1705,8 @@ do
 				-- Used to reduce noise while debugging missing patterns
 				if not found then
 					for pattern in pairs(addon.PreScanPatterns) do
-						if text:find(pattern) then
-							found = ParseMatch(false, text, nil, "PreScan")
+						if rawText:find(pattern) then
+							found = ParseMatch(false, rawText, nil, "PreScan")
 							break
 						end
 					end
@@ -1713,7 +1715,7 @@ do
 				-- If the string contains a number and was not excluded,
 				-- it might be a missing stat we want to add.
 				if not found then
-					log("|cffff5959  Substitution Missed: |r|cnLIGHTBLUE_FONT_COLOR:" .. statText)
+					log("|cffff5959  Substitution Missed: |r|cnLIGHTBLUE_FONT_COLOR:" .. rawText)
 				end
 			end
 		end

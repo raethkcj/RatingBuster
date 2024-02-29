@@ -8,6 +8,11 @@ W["Vitality"] = {[StatLogic.Stats.ManaRegen] = 4, [StatLogic.Stats.HealthRegen] 
 W["Soulfrost"] = {[StatLogic.Stats.ShadowDamage] = 54, [StatLogic.Stats.FrostDamage] = 54} -- enchant 2672 TBC
 W["Sunfire"] = {[StatLogic.Stats.ArcaneDamage] = 50, [StatLogic.Stats.FireDamage] = 50} -- enchant 2671 TBC
 W["Surefooted"] = {[StatLogic.Stats.HitRating] = 10} -- enchant 2658 WholeText TBC
+W["Restores 11 mana per 5 seconds to all party members within 30 yards"] = {[StatLogic.Stats.ManaRegen] = 11} -- spell 28145 Vanilla
+W["increases damage and healing done by magical spells and effects of all party members within 30 yards by up to 33"] = {[StatLogic.Stats.SpellDamage] = 33, [StatLogic.Stats.HealingPower] = 33} -- spell 28143 Vanilla
+W["increases healing done by magical spells and effects of all party members within 30 yards by up to 62"] = {[StatLogic.Stats.HealingPower] = 62} -- spell 28144 Vanilla
+W["increases the spell critical chance of all party members within 30 yards by 2%"] = {[StatLogic.Stats.SpellCrit] = 2} -- spell 28142 Vanilla
+W["increases the spell critical strike rating of all party members within 30 yards by 28"] = {[StatLogic.Stats.SpellCritRating] = 28} -- spell 28142 TBC
 
 local L = addon.StatIDLookup
 L["minor speed and %s agility"] = {StatLogic.Stats.Agility} -- enchant 2939 TBC
@@ -43,7 +48,6 @@ L["%s spell power %s stamina and %s mana every %s seconds"] = {{StatLogic.Stats.
 L["%s mana every %s sec"] = {StatLogic.Stats.ManaRegen, false} -- enchant 3150 TBC
 L["%s mana restored per %s seconds"] = {StatLogic.Stats.ManaRegen, false} -- enchant 2794 TBC
 L["mana regen %s per %s sec"] = {StatLogic.Stats.ManaRegen, false} -- enchant 2565 Vanilla
-L["restores %s mana per %s seconds to all party members within %s yards"] = {StatLogic.Stats.ManaRegen, false, false} -- spell 28145 Vanilla
 
 L["increases your spell penetration by %s"] = {StatLogic.Stats.SpellPenetration} -- spell 25975 TBC
 L["decreases the magical resistances of your spell targets by %s"] = {StatLogic.Stats.SpellPenetration} -- spell 25975 Vanilla
@@ -53,7 +57,6 @@ L["%s damage and healing spells"] = {StatLogic.Stats.SpellDamage, StatLogic.Stat
 L["%s spell damage and healing"] = {StatLogic.Stats.SpellDamage, StatLogic.Stats.HealingPower,} -- enchant 2605 Vanilla
 L["spell damage %s"] = {StatLogic.Stats.SpellDamage, StatLogic.Stats.HealingPower,} -- enchant 2504 Vanilla
 L["increases damage and healing done by magical spells and effects by up to %s"] = {{StatLogic.Stats.SpellDamage, StatLogic.Stats.HealingPower}} -- spell 14799 Vanilla
-L["increases damage and healing done by magical spells and effects of all party members within %s yards by up to %s"] = {false, {StatLogic.Stats.SpellDamage, StatLogic.Stats.HealingPower}} -- spell 28143 Vanilla
 L["increases your spell damage by up to %s and your healing by up to %s"] = {StatLogic.Stats.SpellDamage, StatLogic.Stats.HealingPower} -- spell 28155 Vanilla
 
 L["fire damage %s"] = {StatLogic.Stats.FireDamage,} -- enchant 2616 Vanilla
@@ -86,7 +89,6 @@ L["increases healing %s"] = {StatLogic.Stats.HealingPower,} -- enchant 206 Vanil
 L["%s healing spells and %s damage spells"] = {StatLogic.Stats.HealingPower, StatLogic.Stats.SpellDamage,} -- enchant 2343 TBC
 L["increases healing done by up to %s and damage done by up to %s for all magical spells and effects"] = {StatLogic.Stats.HealingPower, StatLogic.Stats.SpellDamage} -- spell 7675 TBC
 L["increases healing done by spells and effects by up to %s"] = {StatLogic.Stats.HealingPower,} -- spell 18032 Vanilla
-L["increases healing done by magical spells and effects of all party members within %s yards by up to %s"] = {false, StatLogic.Stats.HealingPower,} -- spell 28144 Vanilla
 
 L["increases your chance to dodge an attack by %s%"] = {StatLogic.Stats.Dodge,} -- spell 13669 Vanilla
 L["increases your chance to parry an attack by %s%"] = {StatLogic.Stats.Parry,} -- spell 13665 Vanilla
@@ -114,8 +116,6 @@ L["improves your chance to get a critical strike with spells by %s%"] = {StatLog
 L["%s spell critical strike rating"] = {StatLogic.Stats.SpellCritRating,} -- enchant 2771 TBC
 L["%s spell critical rating"] = {StatLogic.Stats.SpellCritRating,} -- enchant 2695 TBC
 L["increases your spell critical strike rating by %s"] = {StatLogic.Stats.SpellCritRating,} -- spell 18382 TBC
-L["increases the spell critical chance of all party members within %s yards by %s%"] = {false, StatLogic.Stats.SpellCrit} -- spell 28142 Vanilla
-L["increases the spell critical strike rating of all party members within %s yards by %s"] = {false, StatLogic.Stats.SpellCritRating,} -- spell 28142 TBC
 L["increases your ranged critical strike rating by %s"] = {StatLogic.Stats.RangedCritRating,} -- spell 9132 TBC
 L["%s ranged critical strike"] = {StatLogic.Stats.RangedCritRating,} -- enchant 3608 Wrath
 
