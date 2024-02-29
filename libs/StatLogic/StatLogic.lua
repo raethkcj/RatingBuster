@@ -268,14 +268,6 @@ end
 ----------------
 -- Stat Tools --
 ----------------
-local function StripGlobalStrings(text)
-	-- ITEM_SOCKET_BONUS = "Socket Bonus: %s"; -- Tooltip tag for socketed item matched socket bonuses
-	text = text:gsub("%%%%", "%%") -- "%%" -> "%"
-	text = text:gsub(" ?%%%d?%.?%d?%$?[cdsgf]", "") -- delete "%d", "%s", "%c", "%g", "%2$d", "%.2f" and a space in front of it if found
-	-- So StripGlobalStrings(ITEM_SOCKET_BONUS) = "Socket Bonus:"
-	return text
-end
-
 StatLogic.ExtraHasteClasses = {}
 
 StatLogic.GenericStatMap = {
@@ -1636,7 +1628,7 @@ do
 					text = text:gsub("\n.*", "")
 					-- Strip leading "Equip: ", "Socket Bonus: ", trailing ".", and lowercase
 					text = text:gsub(ITEM_SPELL_TRIGGER_ONEQUIP, "")
-					text = text:gsub(StripGlobalStrings(ITEM_SOCKET_BONUS), "")
+					text = text:gsub(ITEM_SOCKET_BONUS:format(""), "")
 					text = text:trim()
 					text = text:gsub("%.$", "")
 					text = text:utf8lower()
