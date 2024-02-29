@@ -101,7 +101,7 @@ L["improves your chance to hit with spells and with melee and ranged attacks by 
 L["increases your hit rating by %s"] = {StatLogic.Stats.HitRating,} -- spell 15464 TBC
 L["healing and spell damage %s/spell hit %s%"] = {{StatLogic.Stats.HealingPower, StatLogic.Stats.SpellDamage}, StatLogic.Stats.SpellHit} -- enchant 2588 Vanilla
 L["%s healing and spell damage/%s spell hit"] = {{StatLogic.Stats.HealingPower, StatLogic.Stats.SpellDamage}, StatLogic.Stats.SpellHitRating} -- enchant 2588 TBC
-L["%s spell power and %s hit rating"] = {{StatLogic.Stats.HealingPower, StatLogic.Stats.SpellDamage}, StatLogic.Stats.HitRating} -- enchant 2588 TBC
+L["%s spell power and %s hit rating"] = {{StatLogic.Stats.HealingPower, StatLogic.Stats.SpellDamage}, StatLogic.Stats.HitRating} -- enchant 2588 Wrath
 L["improves your chance to hit with spells by %s%"] = {StatLogic.Stats.SpellHit} -- spell 23727 Vanilla
 L["%s spell hit rating"] = {StatLogic.Stats.SpellHitRating,} -- enchant 2767 TBC
 L["increases your spell hit rating by %s"] = {StatLogic.Stats.SpellHitRating,} -- spell 23727 TBC
