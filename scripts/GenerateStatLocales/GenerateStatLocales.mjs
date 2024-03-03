@@ -54,11 +54,13 @@ const insertFives = function(pattern, stats) {
 	return newStats
 }
 
-const regenTest = {
-	"+7 Haste Rating and +4 Mana every 5 seconds": ["HasteRating", "ManaRegen"],
-	"+7 Tempowertung und alle 5 Sek. 4 Mana": ["HasteRating", "ManaRegen"],
-}
+function testRegenStrings() {
+	const regenTest = {
+		"+7 Haste Rating and +4 Mana every 5 seconds": ["HasteRating", "ManaRegen"],
+		"+7 Tempowertung und alle 5 Sek. 4 Mana": ["HasteRating", "ManaRegen"],
+	}
 
-for (const [pattern, stats] of Object.entries(regenTest)) {
-	console.log(pattern, insertFives(pattern, stats))
+	for (const [pattern, stats] of Object.entries(regenTest)) {
+		console.log(pattern, insertFives(pattern, stats))
+	}
 }
