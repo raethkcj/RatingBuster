@@ -56,9 +56,7 @@ await new Promise((resolve) => {
 				}
 			}
 		}
-	}).on('end', () => {
-		resolve()
-	})
+	}).on('end', resolve)
 
 	const filter = Object.keys(InventoryTypeSlots).join("|")
 	const url = `https://wago.tools/db2/ItemSparse/csv?branch=${branch}&filter[InventoryType]=${filter}&sort[QualityModifier]=desc`
@@ -93,9 +91,7 @@ await new Promise((resolve) => {
 				}
 			}
 		}
-	}).on('end', () => {
-		resolve()
-	})
+	}).on('end', resolve)
 
 	const filter = Object.keys(items).join("|")
 	const url = `https://wago.tools/db2/Item/csv?branch=${branch}&filter[ID]=${filter}`
