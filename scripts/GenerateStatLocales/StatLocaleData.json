@@ -1,6 +1,6 @@
 {
 	"SpellItemEnchantment": {
-		"Vanilla": {
+		"1": {
 			"15": { "Scanner": "L","Stats": ["BonusArmor"] },
 			"28": { "Scanner": "L","Stats": [["ArcaneResistance", "FireResistance", "FrostResistance", "NatureResistance", "ShadowResistance"]] },
 			"206": { "Scanner": "L","Stats": ["HealingPower"] },
@@ -22,7 +22,7 @@
 			"2615": { "Scanner": "L","Stats": ["FrostDamage"] },
 			"2616": { "Scanner": "L","Stats": ["FireDamage"] }
 		},
-		"TBC": {
+		"2": {
 			"15": { "Scanner": "L","Stats": ["BonusArmor"] },
 			"763": { "Scanner": "L","Stats": ["BlockRating"] },
 			"2343": { "Scanner": "L","Stats": ["HealingPower", "SpellDamage"] },
@@ -55,7 +55,7 @@
 			"3150": { "Scanner": "L","Stats": ["ManaRegen"] },
 			"3270": { "Scanner": "L","Stats": ["SpellHasteRating"] }
 		},
-		"Wrath": {
+		"3": {
 			"2523": { "Scanner": "L","Stats": ["RangedHitRating"] },
 			"2588": { "Scanner": "L","Stats": [["HealingPower", "SpellDamage"], "HitRating"] },
 			"2590": { "Scanner": "L","Stats": [["SpellDamage", "HealingPower"], "Stamina", "ManaRegen"] },
@@ -69,7 +69,7 @@
 		}
 	},
 	"Spell": {
-		"Vanilla": {
+		"1": {
 			"5707": { "Scanner": "L","Stats": ["HealthRegen"] },
 			"7597": { "Scanner": "L","Stats": [["MeleeCrit", "RangedCrit"]] },
 			"7683": { "Scanner": "L","Stats": ["FireDamage"] },
@@ -98,7 +98,7 @@
 			"432639": { "Scanner": "L","Stats": [["MeleeHit", "RangedHit", "SpellHit"]] },
 			"436239": { "Scanner": "L","Stats": [["MeleeCrit", "RangedCrit", "SpellCrit"]] }
 		},
-		"TBC": {
+		"2": {
 			"7597": { "Scanner": "L","Stats": ["CritRating"] },
 			"7675": { "Scanner": "L","Stats": ["HealingPower", "SpellDamage"] },
 			"9132": { "Scanner": "L","Stats": ["RangedCritRating"] },
@@ -113,7 +113,7 @@
 			"37139": { "Scanner": "L","Stats": ["HolyDamage"] },
 			"43901": { "Scanner": "L","Stats": ["IgnoreArmor"] }
 		},
-		"Wrath": {
+		"3": {
 			"42095": { "Scanner": "L","Stats": ["ArmorPenetrationRating"] }
 		}
 	}
