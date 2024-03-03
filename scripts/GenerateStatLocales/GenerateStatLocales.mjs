@@ -5,6 +5,20 @@ import { parse } from 'csv-parse'
 import * as fs from 'node:fs'
 import { assert } from 'node:console'
 
+const versions = fetch("https://wago.tools/api/builds").then(response => response.json())
+
+async function getLatestVersion(majorVersion) {
+	let product = "wow_classic_ptr"
+	if(majorVersion === "1") {
+		product = "wow_classic_era_ptr"
+	}
+	return versions.then(versionsJSON => {
+		return versionsJSON[product].find(build => {
+			return build.version.match(new RegExp(`^${majorVersion}\\b`))
+		}).version
+	})
+}
+
 /**
  *
  * @param {string} pattern
