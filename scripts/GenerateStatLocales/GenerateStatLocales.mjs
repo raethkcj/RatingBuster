@@ -13,12 +13,12 @@ import { assert } from 'node:console'
  */
 const insertFives = function(pattern, stats) {
 	pattern = pattern.replace(/%c/g, "")
-	var temp = {}
-	var indices = []
+	let temp = {}
+	let indices = []
 
 	// Gather the indices of the real stats
-	var i = 0
-	var j = 1
+	let i = 0
+	let j = 1
 	do {
 		i = pattern.indexOf("%s", i + 1)
 		if (i) {
