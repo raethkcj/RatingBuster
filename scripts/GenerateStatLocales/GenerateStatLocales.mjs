@@ -1,15 +1,14 @@
 #!/usr/bin/env node
 
-import * as https from 'node:https'
 import { parse } from 'csv-parse'
-import * as fs from 'node:fs'
-import { assert } from 'node:console'
+import { existsSync, mkdirSync, readFileSync, writeFileSync } from 'node:fs'
+import path from 'node:path'
 
 const versions = fetch("https://wago.tools/api/builds").then(response => response.json())
 
 async function getLatestVersion(majorVersion) {
 	let product = "wow_classic_ptr"
-	if(majorVersion === "1") {
+	if (majorVersion === "1") {
 		product = "wow_classic_era_ptr"
 	}
 	return versions.then(versionsJSON => {
@@ -78,3 +77,44 @@ function testRegenStrings() {
 		console.log(pattern, insertFives(pattern, stats))
 	}
 }
+
+const base = import.meta.url
+const statLocaleData = JSON.parse(readFileSync(new URL("StatLocaleData.json", base), "utf-8"))
+const databaseDirName = "DB2"
+const localeDirName = "locales"
+
+async function processDatabase(database, version, locale, indices) {
+	const databasePath = new URL(path.join(databaseDirName, `${database}_${version}_${locale}.csv`), base)
+	writeFileSync(databasePath, "")
+}
+
+async function writeLocale(results) {
+	Promise.all(results).then()
+}
+
+const locales = [
+	"enUS",
+	"koKR",
+	"frFR",
+	"deDE",
+	"zhCN",
+	"esES",
+	"zhTW",
+	"esMX",
+	"ruRU",
+	"ptBR",
+	"itIT",
+]
+
+mkdirSync(new URL(databaseDirName, base), { recursive: true })
+mkdirSync(new URL(localeDirName, base), { recursive: true })
+for (const locale of locales) {
+	const localeResults = []
+	for (const [database, versions] of Object.entries(statLocaleData)) {
+		for (const [version, indices] of Object.entries(versions)) {
+			localeResults.push(processDatabase(database, version, locale, indices))
+		}
+	}
+	writeLocale(localeResults)
+}
+
