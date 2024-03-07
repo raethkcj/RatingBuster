@@ -40,6 +40,17 @@ const ItemQualities = {
 	8: "Enum.ItemQuality.WoWToken",
 }
 
+const statFields = []
+for (let i = 1; i < 10; i++) {
+	statFields.push(`StatModifier_bonusStat_${i}`)
+}
+
+function hasBonusArmor(item) {
+	// Quality Modifier is used in Vanilla-Wrath
+	// bonusStat = 50 is used beginning in Cata
+	return item.QualityModifier > 0 || statFields.some(f => item[f] === "50")
+}
+
 const items = {}
 await new Promise((resolve) => {
 	const csvStream = parse({
@@ -47,7 +58,7 @@ await new Promise((resolve) => {
 	}).on('readable', () => {
 		let item;
 		while ((item = csvStream.read()) !== null) {
-			if(item.QualityModifier > 0 ) {
+			if(hasBonusArmor(item)) {
 				items[item.ID] = {
 					Quality: ItemQualities[item.OverallQualityID],
 					Slot: InventoryTypeSlots[item.InventoryType],

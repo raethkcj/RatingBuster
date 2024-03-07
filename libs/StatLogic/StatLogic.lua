@@ -1994,7 +1994,8 @@ function StatLogic:GetArmorDistribution(item, value, color)
 			local itemEquipLocTable = qualityTable and qualityTable[_G[itemEquipLoc]]
 			local armorSubclassTable = itemEquipLocTable and itemEquipLocTable[armorSubclass]
 
-			armor = armorSubclassTable and armorSubclassTable[itemLevel] or armor
+			-- If found, subtract. Else, assume it's all bonus armor.
+			armor = armorSubclassTable and armorSubclassTable[itemLevel] or 0
 			bonus_armor = value - armor
 		end
 	end
