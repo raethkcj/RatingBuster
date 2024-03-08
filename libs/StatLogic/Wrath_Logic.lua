@@ -3415,10 +3415,12 @@ function StatLogic:GetDodgePerAgi()
 	local a = -A_g*A_b
 	local b = A_g*(D_dr-D_b)-A_b*(D_r+C*k)-C*A_g
 	local c = (D_dr-D_b)*(D_r+C*k)-C*D_r
-	--RatingBuster:Print(a, b, c, D_b, D_r, A_b, A_g, C, k)
-	local dodgePerAgi = (-b-(b^2-4*a*c)^0.5)/(2*a)
+
+	local dodgePerAgi
 	if a == 0 then
 		dodgePerAgi = -c / b
+	else
+		dodgePerAgi = (-b-(b^2-4*a*c)^0.5)/(2*a)
 	end
 
 	return dodgePerAgi
