@@ -4,7 +4,6 @@ local StatLogic = LibStub:GetLibrary(addonName)
 
 -- Level 60 rating base
 StatLogic.RatingBase = {
-	[StatLogic.Stats.DefenseRating] = 1.5,
 	[StatLogic.Stats.DodgeRating] = 13.8,
 	[StatLogic.Stats.ParryRating] = 13.8,
 	[StatLogic.Stats.BlockRating] = 6.9,
