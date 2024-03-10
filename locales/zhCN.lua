@@ -393,12 +393,16 @@ L[StatLogic.Stats.Mana] = "法力值"
 S[StatLogic.Stats.Mana] = "法力"
 L[StatLogic.Stats.ManaRegen] = "法力回复"
 S[StatLogic.Stats.ManaRegen] = "施法回魔"
-L[StatLogic.Stats.ManaRegenNotCasting] = "法力回复 (未施法)"
-S[StatLogic.Stats.ManaRegenNotCasting] = "精神回魔"
-L[StatLogic.Stats.ManaRegenOutOfCombat] = "法力回复 (非战斗)"
-if addon.tocversion > 40000 then
-	L[StatLogic.Stats.ManaRegenNotCasting] =  L[StatLogic.Stats.ManaRegenOutOfCombat]
+
+local ManaRegenOutOfCombat = "法力回复 (非战斗)"
+L[StatLogic.Stats.ManaRegenOutOfCombat] = ManaRegenOutOfCombat
+if addon.tocversion < 40000 then
+	L[StatLogic.Stats.ManaRegenNotCasting] = "法力回复 (未施法)"
+else
+	L[StatLogic.Stats.ManaRegenNotCasting] = ManaRegenOutOfCombat
 end
+S[StatLogic.Stats.ManaRegenNotCasting] = "精神回魔"
+
 L[StatLogic.Stats.HealthRegen] = "生命恢复"
 S[StatLogic.Stats.HealthRegen] = "回血"
 L[StatLogic.Stats.HealthRegenOutOfCombat] = "生命恢复 (非战斗)"

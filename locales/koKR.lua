@@ -393,12 +393,16 @@ L[StatLogic.Stats.Mana] = "마나"
 S[StatLogic.Stats.Mana] = "마나"
 L[StatLogic.Stats.ManaRegen] = "마나 회복량"
 S[StatLogic.Stats.ManaRegen] = "MP5"
-L[StatLogic.Stats.ManaRegenNotCasting] = "마나 회복량 (시전하지)"
-S[StatLogic.Stats.ManaRegenNotCasting] = "MP5(NC)"
-L[StatLogic.Stats.ManaRegenOutOfCombat] = "마나 회복량 (비전투)"
-if addon.tocversion > 40000 then
-	L[StatLogic.Stats.ManaRegenNotCasting] =  L[StatLogic.Stats.ManaRegenOutOfCombat]
+
+local ManaRegenOutOfCombat = "마나 회복량 (비전투)"
+L[StatLogic.Stats.ManaRegenOutOfCombat] = ManaRegenOutOfCombat
+if addon.tocversion < 40000 then
+	L[StatLogic.Stats.ManaRegenNotCasting] = "마나 회복량 (시전하지)"
+else
+	L[StatLogic.Stats.ManaRegenNotCasting] = ManaRegenOutOfCombat
 end
+S[StatLogic.Stats.ManaRegenNotCasting] = "MP5(NC)"
+
 L[StatLogic.Stats.HealthRegen] = "생명력 재생"
 S[StatLogic.Stats.HealthRegen] = "HP5"
 L[StatLogic.Stats.HealthRegenOutOfCombat] = "생명력 재생 (비전투)"

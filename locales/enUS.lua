@@ -418,12 +418,16 @@ L[StatLogic.Stats.Mana] = MANA
 S[StatLogic.Stats.Mana] = "MP"
 L[StatLogic.Stats.ManaRegen] = "Mana Regen"
 S[StatLogic.Stats.ManaRegen] = "MP5"
-L[StatLogic.Stats.ManaRegenNotCasting] = "Mana Regen (Not Casting)"
-S[StatLogic.Stats.ManaRegenNotCasting] = "MP5(NC)"
-L[StatLogic.Stats.ManaRegenOutOfCombat] = "Mana Regen (Out of Combat)"
-if addon.tocversion > 40000 then
-	L[StatLogic.Stats.ManaRegenNotCasting] =  L[StatLogic.Stats.ManaRegenOutOfCombat]
+
+local ManaRegenOutOfCombat = "Mana Regen (Out of Combat)"
+L[StatLogic.Stats.ManaRegenOutOfCombat] = ManaRegenOutOfCombat
+if addon.tocversion < 40000 then
+	L[StatLogic.Stats.ManaRegenNotCasting] = "Mana Regen (Not Casting)"
+else
+	L[StatLogic.Stats.ManaRegenNotCasting] = ManaRegenOutOfCombat
 end
+S[StatLogic.Stats.ManaRegenNotCasting] = "MP5(NC)"
+
 L[StatLogic.Stats.HealthRegen] = "Health Regen"
 S[StatLogic.Stats.HealthRegen] = "HP5"
 L[StatLogic.Stats.HealthRegenOutOfCombat] = "Health Regen (Out of Combat)"

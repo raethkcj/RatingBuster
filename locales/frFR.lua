@@ -416,12 +416,16 @@ L[StatLogic.Stats.Mana] = "Points de mana"
 S[StatLogic.Stats.Mana] = "Mana"
 L[StatLogic.Stats.ManaRegen] = "Régén. mana (incantation)"
 S[StatLogic.Stats.ManaRegen] = "Mp5 (incantation)"
-L[StatLogic.Stats.ManaRegenNotCasting] = "Régén. mana (hors incantation)"
-S[StatLogic.Stats.ManaRegenNotCasting] = "Mp5"
-L[StatLogic.Stats.ManaRegenOutOfCombat] = "Régén. mana (hors combat)"
-if addon.tocversion > 40000 then
-	L[StatLogic.Stats.ManaRegenNotCasting] =  L[StatLogic.Stats.ManaRegenOutOfCombat]
+
+local ManaRegenOutOfCombat = "Régén. mana (hors combat)"
+L[StatLogic.Stats.ManaRegenOutOfCombat] = ManaRegenOutOfCombat
+if addon.tocversion < 40000 then
+	L[StatLogic.Stats.ManaRegenNotCasting] = "Régén. mana (hors incantation)"
+else
+	L[StatLogic.Stats.ManaRegenNotCasting] = ManaRegenOutOfCombat
 end
+S[StatLogic.Stats.ManaRegenNotCasting] = "Mp5"
+
 L[StatLogic.Stats.HealthRegen] = "Régén. vie (combat)"
 S[StatLogic.Stats.HealthRegen] = "HP5"
 L[StatLogic.Stats.HealthRegenOutOfCombat] = "Régén. vie (hors combat)"
