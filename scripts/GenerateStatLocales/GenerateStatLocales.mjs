@@ -148,10 +148,25 @@ async function processDatabase(db) {
 	return results
 }
 
-async function writeLocale(results) {
+async function combineResults(results) {
 	Promise.all(results).then(result => {
-		console.log(result)
+		result = result.reduce((acc, curr) => {
+			for (const scanner of Object.keys(scanners)) {
+				if (!acc[scanner] && !curr[scanner]) {
+					continue
+				} else if (!acc[scanner] || !curr[scanner]) {
+					acc[scanner] ||= curr[scanner]
+				} else {
+					acc[scanner] = Object.assign(acc[scanner], curr[scanner])
+				}
+			}
+			return acc
+		})
+		return result
 	})
+}
+
+async function writeLocale(locale, results) {
 }
 
 const locales = [
@@ -182,5 +197,5 @@ for (const locale of locales) {
 			}))
 		}
 	}
-	writeLocale(localeResults)
+	combineResults(localeResults).then(results => writeLocale(locale, results))
 }
