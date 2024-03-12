@@ -5,18 +5,23 @@ import { createReadStream, existsSync, mkdirSync, readFileSync, writeFileSync } 
 import path from 'node:path'
 import { finished } from 'node:stream/promises'
 
-const versions = fetch("https://wago.tools/api/builds").then(response => response.json())
-
-async function getLatestVersion(majorVersion) {
-	let product = "wow_classic_ptr"
-	if (majorVersion === "1") {
-		product = "wow_classic_era_ptr"
+{
+	let versions
+	async function fetchVersions() {
+		return versions ||= fetch("https://wago.tools/api/builds").then(response => response.json())
 	}
-	return versions.then(versionsJSON => {
-		return versionsJSON[product].find(build => {
-			return build.version.match(new RegExp(`^${majorVersion}\\b`))
-		}).version
-	})
+
+	var getLatestVersion = async function(majorVersion) {
+		let product = "wow_classic_ptr"
+		if (majorVersion === "1") {
+			product = "wow_classic_era_ptr"
+		}
+		return fetchVersions().then(versions => {
+			return versions[product].find(build => {
+				return build.version.match(new RegExp(`^${majorVersion}\\b`))
+			}).version
+		})
+	}
 }
 
 /**
