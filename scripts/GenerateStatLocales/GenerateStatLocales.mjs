@@ -83,9 +83,26 @@ const statLocaleData = JSON.parse(readFileSync(new URL("StatLocaleData.json", ba
 const databaseDirName = "DB2"
 const localeDirName = "locales"
 
-async function processDatabase(database, version, locale, indices) {
-	const databasePath = new URL(path.join(databaseDirName, `${database}_${version}_${locale}.csv`), base)
-	writeFileSync(databasePath, "")
+async function fetchDatabase(db) {
+	const fileName = `${db.name}_${db.version}_${db.locale}.csv`
+	db.path = new URL(path.join(databaseDirName, fileName), base)
+	if (!existsSync(db.path)) {
+		console.log(`Fetching ${fileName}.`)
+		getLatestVersion(db.version).then(build => {
+			fetch(`https://wago.tools/db2/${db.name}/csv?build=${build}`).then(response => {
+				response.text().then(text => {
+					writeFileSync(db.path, text)
+					console.log(`Fetched ${fileName}.`)
+				})
+			})
+		})
+	} else {
+		console.log(`Found ${fileName}, skipping fetch.`)
+	}
+}
+
+async function processDatabase(db) {
+	fetchDatabase(db).then()
 }
 
 async function writeLocale(results) {
@@ -110,9 +127,14 @@ mkdirSync(new URL(databaseDirName, base), { recursive: true })
 mkdirSync(new URL(localeDirName, base), { recursive: true })
 for (const locale of locales) {
 	const localeResults = []
-	for (const [database, versions] of Object.entries(statLocaleData)) {
+	for (const [name, versions] of Object.entries(statLocaleData)) {
 		for (const [version, indices] of Object.entries(versions)) {
-			localeResults.push(processDatabase(database, version, locale, indices))
+			localeResults.push(processDatabase({
+				name: name,
+				version: version,
+				locale: locale,
+				indices: indices
+			}))
 		}
 	}
 	writeLocale(localeResults)
