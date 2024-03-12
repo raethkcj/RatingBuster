@@ -1,8 +1,9 @@
 #!/usr/bin/env node
 
 import { parse } from 'csv-parse'
-import { existsSync, mkdirSync, readFileSync, writeFileSync } from 'node:fs'
+import { createReadStream, existsSync, mkdirSync, readFileSync, writeFileSync } from 'node:fs'
 import path from 'node:path'
+import { finished } from 'node:stream/promises'
 
 const versions = fetch("https://wago.tools/api/builds").then(response => response.json())
 
@@ -78,35 +79,74 @@ function testRegenStrings() {
 	}
 }
 
+const scanners = {
+	"StatIDLookup": function(text, stats) {
+		return [text, stats]
+	},
+	"WholeTextLookup": function(text, stats) {
+		return [text, stats]
+	}
+}
+
 const base = import.meta.url
 const statLocaleData = JSON.parse(readFileSync(new URL("StatLocaleData.json", base), "utf-8"))
 const databaseDirName = "DB2"
 const localeDirName = "locales"
 
 async function fetchDatabase(db) {
-	const fileName = `${db.name}_${db.version}_${db.locale}.csv`
-	db.path = new URL(path.join(databaseDirName, fileName), base)
+	db.fileName = `${db.name}_${db.version}_${db.locale}.csv`
+	db.path = new URL(path.join(databaseDirName, db.fileName), base)
 	if (!existsSync(db.path)) {
-		console.log(`Fetching ${fileName}.`)
+		console.log(`Fetching ${db.fileName}.`)
 		getLatestVersion(db.version).then(build => {
 			fetch(`https://wago.tools/db2/${db.name}/csv?build=${build}`).then(response => {
 				response.text().then(text => {
 					writeFileSync(db.path, text)
-					console.log(`Fetched ${fileName}.`)
+					console.log(`Fetched ${db.fileName}.`)
 				})
 			})
 		})
 	} else {
-		console.log(`Found ${fileName}, skipping fetch.`)
+		console.log(`Found ${db.fileName}, skipping fetch.`)
 	}
 }
 
+const textColumns = {
+	"SpellItemEnchantment": "Name_lang",
+	"Spell": "Description_lang"
+}
+
 async function processDatabase(db) {
-	fetchDatabase(db).then()
+	await fetchDatabase(db)
+
+	const parser = createReadStream(db.path).pipe(parse({
+		columns: true
+	}))
+
+	const results = {}
+	const textColumn = textColumns[db.name]
+	parser.on('readable', () => {
+		let row
+		while ((row = parser.read()) !== null) {
+			const data = db.indices[row.ID]
+			if (data) {
+				const [scanner, stats] = data
+				results[scanner] ||= {}
+				const [pattern, newStats] = scanners[scanner](row[textColumn], stats)
+				results[scanner][pattern] = newStats
+			}
+		}
+	})
+
+	await finished(parser)
+	console.log(`Parsed ${db.fileName}.`)
+	return results
 }
 
 async function writeLocale(results) {
-	Promise.all(results).then()
+	Promise.all(results).then(result => {
+		console.log(result)
+	})
 }
 
 const locales = [
@@ -139,4 +179,3 @@ for (const locale of locales) {
 	}
 	writeLocale(localeResults)
 }
-
