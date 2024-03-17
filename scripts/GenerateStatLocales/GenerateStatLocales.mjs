@@ -86,7 +86,35 @@ function testRegenStrings() {
 
 const scanners = {
 	"StatIDLookup": function(text, stats) {
-		return [text, stats]
+		const newStats = []
+		let matchedStats = 0
+		// Matches an optional leading + or -, plus one of:
+		//   Replacement token:
+		//     Leading $
+		//     One of: s: spell, a: aura range, t: time interval, i: unknown integer
+		//     Optional integer indicating SpellEffect Index
+		//   Literal number:
+		//     Digits 0-9 or decimal point ".", ends in digit
+		const newText = text.replace(/[+-]?(\$(?<tokenType>[sati])(?<tokenIndex>\d?)|[\d\.]+(?<=\d))/g, function(match, _1, _2, _3, offset, string, groups) {
+			switch (groups.tokenType) {
+				case "s":
+					// TODO: Handle s2 coming before s1
+					// TODO: Hande ManaRegen fives
+					newStats.push(stats[matchedStats])
+					matchedStats++
+					break
+				case "a":
+				case "t":
+					newStats.push(false)
+					break
+				default:
+					// tokenType i or plain number
+					newStats.push(stats[matchedStats])
+					matchedStats++
+			}
+			return "%s"
+		})
+		return [newText, newStats]
 	},
 	"WholeTextLookup": function(text, stats) {
 		return [text, stats]
@@ -187,7 +215,7 @@ function generateLua(text, key, value, first) {
 		}
 		text += "}"
 	} else {
-		text += `${key ? "" : "StatLogic.Stats."}${value}`
+		text += `${(key || !value) ? "" : "StatLogic.Stats."}${value}`
 	}
 
 	return text
