@@ -90,10 +90,10 @@
 			"23727": [ "StatIDLookup", ["SpellHit"] ],
 			"24697": [ "StatIDLookup", ["FeralAttackPower"] ],
 			"25975": [ "StatIDLookup", ["SpellPenetration"] ],
-			"28142": [ "WholeTextLookup", {"SpellCrit": 2} ],
-			"28143": [ "WholeTextLookup", {"SpellDamage": 33, "HealingPower": 33} ],
-			"28144": [ "WholeTextLookup", {"HealingPower": 62} ],
-			"28145": [ "WholeTextLookup", {"ManaRegen": 11} ],
+			"28142": [ "StatIDLookup", ["SpellCrit"] ],
+			"28143": [ "StatIDLookup", ["SpellDamage"] ],
+			"28144": [ "StatIDLookup", ["HealingPower"] ],
+			"28145": [ "StatIDLookup", ["ManaRegen"] ],
 			"28155": [ "StatIDLookup", ["SpellDamage", "HealingPower"] ],
 			"432639": [ "StatIDLookup", [["MeleeHit", "RangedHit", "SpellHit"]] ],
 			"436239": [ "StatIDLookup", [["MeleeCrit", "RangedCrit", "SpellCrit"]] ]
@@ -109,7 +109,7 @@
 			"22780": [ "StatIDLookup", ["RangedHitRating"] ],
 			"23727": [ "StatIDLookup", ["SpellHitRating"] ],
 			"25975": [ "StatIDLookup", ["SpellPenetration"] ],
-			"28142": [ "WholeTextLookup", {"SpellCritRating": 28} ],
+			"28142": [ "StatIDLookup", ["SpellCritRating"] ],
 			"37139": [ "StatIDLookup", ["HolyDamage"] ],
 			"43901": [ "StatIDLookup", ["IgnoreArmor"] ]
 		},
