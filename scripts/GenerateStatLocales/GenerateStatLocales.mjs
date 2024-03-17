@@ -95,7 +95,7 @@ const scanners = {
 		//     Optional integer indicating SpellEffect Index
 		//   Literal number:
 		//     Digits 0-9 or decimal point ".", ends in digit
-		const newText = text.replace(/[+-]?(\$(?<tokenType>[sati])(?<tokenIndex>\d?)|[\d\.]+(?<=\d))/g, function(match, _1, _2, _3, offset, string, groups) {
+		const pattern = text.replace(/[+-]?(\$(?<tokenType>[sati])(?<tokenIndex>\d?)|[\d\.]+(?<=\d))/g, function(match, _1, _2, _3, offset, string, groups) {
 			switch (groups.tokenType) {
 				case "s":
 					// TODO: Handle s2 coming before s1
@@ -114,7 +114,7 @@ const scanners = {
 			}
 			return "%s"
 		})
-		return [newText, newStats]
+		return [pattern, newStats]
 	},
 	"WholeTextLookup": function(text, stats) {
 		return [text, stats]
@@ -164,7 +164,8 @@ async function processDatabase(db) {
 			if (data) {
 				const [scanner, stats] = data
 				results[scanner] ||= {}
-				const [pattern, newStats] = scanners[scanner](row[textColumn], stats)
+				const text = row[textColumn].replace(/[\s.]+$/, "").toLowerCase()
+				const [pattern, newStats] = scanners[scanner](text, stats)
 				results[scanner][pattern] = newStats
 			}
 		}
