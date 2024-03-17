@@ -7,7 +7,7 @@ import { finished } from 'node:stream/promises'
 
 {
 	let versions
-	async function fetchVersions() {
+	async function fetchBuilds() {
 		return versions ||= fetch("https://wago.tools/api/builds").then(response => response.json())
 	}
 
@@ -16,11 +16,10 @@ import { finished } from 'node:stream/promises'
 		if (majorVersion === "1") {
 			product = "wow_classic_era_ptr"
 		}
-		return fetchVersions().then(versions => {
-			return versions[product].find(build => {
-				return build.version.match(new RegExp(`^${majorVersion}\\b`))
-			}).version
-		})
+		const builds = await fetchBuilds()
+		return builds[product].find(build => {
+			return build.version.match(new RegExp(`^${majorVersion}\\b`))
+		}).version
 	}
 }
 
@@ -130,16 +129,15 @@ async function fetchDatabase(db) {
 	db.path = new URL(path.join(databaseDirName, db.fileName), base)
 	if (!existsSync(db.path)) {
 		console.log(`Fetching ${db.fileName}.`)
-		getLatestVersion(db.version).then(build => {
-			fetch(`https://wago.tools/db2/${db.name}/csv?build=${build}`).then(response => {
-				response.text().then(text => {
-					writeFileSync(db.path, text)
-					console.log(`Fetched ${db.fileName}.`)
-				})
-			})
-		})
+		const build = await getLatestVersion(db.version)
+		const response = await fetch(`https://wago.tools/db2/${db.name}/csv?build=${build}&locale=${db.locale}`)
+		const text = await response.text()
+		writeFileSync(db.path, text)
+		console.log(`Fetched ${db.fileName}.`)
+		return
 	} else {
 		console.log(`Found ${db.fileName}, skipping fetch.`)
+		return
 	}
 }
 
@@ -177,19 +175,18 @@ async function processDatabase(db) {
 }
 
 async function combineResults(results) {
-	return Promise.all(results).then(result => {
-		return result.reduce((acc, curr) => {
-			for (const scanner of Object.keys(scanners)) {
-				if (!acc[scanner] && !curr[scanner]) {
-					continue
-				} else if (!acc[scanner] || !curr[scanner]) {
-					acc[scanner] ||= curr[scanner]
-				} else {
-					acc[scanner] = Object.assign(acc[scanner], curr[scanner])
-				}
+	const result = await Promise.all(results)
+	return result.reduce((acc, curr) => {
+		for (const scanner of Object.keys(scanners)) {
+			if (!acc[scanner] && !curr[scanner]) {
+				continue
+			} else if (!acc[scanner] || !curr[scanner]) {
+				acc[scanner] ||= curr[scanner]
+			} else {
+				acc[scanner] = Object.assign(acc[scanner], curr[scanner])
 			}
-			return acc
-		})
+		}
+		return acc
 	})
 }
 
