@@ -133,10 +133,15 @@ async function fetchDatabase(db) {
 	if (!existsSync(db.path)) {
 		console.log(`Fetching ${db.fileName}.`)
 		const build = await getLatestVersion(db.version)
-		const response = await fetch(`https://wago.tools/db2/${db.name}/csv?build=${build}&locale=${db.locale}`)
-		const text = await response.text()
-		writeFileSync(db.path, text)
-		console.log(`Fetched ${db.fileName}.`)
+		const url = `https://wago.tools/db2/${db.name}/csv?build=${build}&locale=${db.locale}`
+		const response = await fetch(url)
+		if (response.ok) {
+			const text = await response.text()
+			writeFileSync(db.path, text)
+			console.log(`Fetched ${db.fileName}.`)
+		} else {
+			throw new Error(`Failed to fetch ${url}: ${response.status} ${response.statusText}`)
+		}
 		return
 	} else {
 		console.log(`Found ${db.fileName}, skipping fetch.`)
@@ -213,13 +218,18 @@ const textColumns = {
 }
 
 async function processDatabase(db) {
-	await fetchDatabase(db)
+	const results = {}
+	try {
+		await fetchDatabase(db)
+	} catch(error) {
+		console.error(error)
+		return results
+	}
 
 	const parser = createReadStream(db.path).pipe(parse({
 		columns: true
 	}))
 
-	const results = {}
 	const textColumn = textColumns[db.name]
 	parser.on('readable', () => {
 		let row
