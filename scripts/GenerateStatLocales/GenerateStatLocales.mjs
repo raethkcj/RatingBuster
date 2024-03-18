@@ -142,6 +142,55 @@ async function fetchDatabase(db) {
 	}
 }
 
+// From wow.tools' enums.js, also obtainable at wowdev.wiki
+const itemStatType = {
+    0: 'Mana',
+    1: 'Health',
+    3: 'Agility',
+    4: 'Strength',
+    5: 'Intellect',
+    6: 'Spirit',
+    7: 'Stamina',
+    12: 'DefenseRating',
+    13: 'DodgeRating',
+    14: 'ParryRating',
+    15: 'BlockRating',
+    16: 'MeleeHitRating',
+    17: 'RangedHitRating',
+    18: 'SpellHitRating',
+    19: 'MeleeCritRating',
+    20: 'RangedCritRating',
+    21: 'SpellCritRating',
+    28: 'MeleeHasteRating',
+    29: 'RangedHasteRating',
+    30: 'SpellHasteRating',
+    31: 'HitRating',
+    32: 'CritRating',
+    35: 'ResilienceRating',
+    36: 'HasteRating',
+    37: 'ExpertiseRating',
+    38: 'AttackPower',
+    39: 'RangedAttackPower',
+    40: 'Versatility',
+    41: 'HealingPower',
+    42: 'SpellDamage',
+    43: 'ManaRegen',
+    44: 'ArmorPenetrationRating',
+    45: 'SpellPower',
+    47: 'SpellPenetration',
+    49: 'MasteryRating',
+}
+
+function getGemStats(row) {
+	const stats = []
+	for (let i = 0; i < 3; i++) {
+		const effectType = row[`Effect_${i}`]
+		const effectStat = row[`EffectArg_${i}`]
+		const effectValue = row[`EffectPointsMin_${i}`]
+	}
+	return stats
+}
+
 const textColumns = {
 	"SpellItemEnchantment": "Name_lang",
 	"Spell": "Description_lang"
@@ -159,9 +208,16 @@ async function processDatabase(db) {
 	parser.on('readable', () => {
 		let row
 		while ((row = parser.read()) !== null) {
+			let scanner, stats
 			const data = db.indices[row.ID]
 			if (data) {
-				const [scanner, stats] = data
+				[scanner, stats] = data
+			} else if (db.name === "SpellItemEnchantment" && row.GemItemID && row.GemItemID > 0) {
+				scanner = "StatIDLookup"
+				stats = getGemStats(row)
+			}
+
+			if (scanner && stats) {
 				results[scanner] ||= {}
 				const text = row[textColumn].replace(/[\s.]+$/, "").toLowerCase()
 				const [pattern, newStats] = scanners[scanner](text, stats)
