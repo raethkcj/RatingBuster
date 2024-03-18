@@ -86,7 +86,7 @@ function testRegenStrings() {
 const scanners = {
 	"StatIDLookup": function(text, stats) {
 		const newStats = []
-		let matchedStats = 0
+		let matchedStatCount = 0
 		// Matches an optional leading + or -, plus one of:
 		//   Replacement token:
 		//     Leading $
@@ -100,8 +100,8 @@ const scanners = {
 					// In theory, $s2 could come before $s1. However, this is not
 					// the case in any strings we use in any locale (for now :)).
 					// TODO: Hande ManaRegen fives
-					newStats.push(stats[matchedStats])
-					matchedStats++
+					newStats.push(stats[matchedStatCount])
+					matchedStatCount++
 					break
 				case "a":
 				case "t":
@@ -109,12 +109,12 @@ const scanners = {
 					break
 				default:
 					// tokenType i or plain number
-					newStats.push(stats[matchedStats])
-					matchedStats++
+					newStats.push(stats[matchedStatCount])
+					matchedStatCount++
 			}
 			return "%s"
 		})
-		return [pattern, newStats]
+		return [pattern, matchedStatCount > 0 ? newStats : false]
 	},
 	"WholeTextLookup": function(text, stats) {
 		return [text, stats]
@@ -183,12 +183,26 @@ const itemStatType = {
 
 function getGemStats(row) {
 	const stats = []
+	let foundStat = false
 	for (let i = 0; i < 3; i++) {
 		const effectType = row[`Effect_${i}`]
-		const effectStat = row[`EffectArg_${i}`]
-		const effectValue = row[`EffectPointsMin_${i}`]
+		if (effectType === "5") {
+			// Stat
+			const effectStat = row[`EffectArg_${i}`]
+			const effectValue = row[`EffectPointsMin_${i}`]
+			const stat = itemStatType[effectStat]
+			if (stat === "ManaRegen" && effectValue === 5) {
+				// Impossible to distinguish stat vs interval in a string like "5 mana per 5"
+				return false
+			} else {
+				foundStat = true
+				stats.push(stat)
+			}
+		} else if(effectType > "0") {
+			stats.push(false)
+		}
 	}
-	return stats
+	return foundStat ? stats : false
 }
 
 const textColumns = {
@@ -221,7 +235,9 @@ async function processDatabase(db) {
 				results[scanner] ||= {}
 				const text = row[textColumn].replace(/[\s.]+$/, "").toLowerCase()
 				const [pattern, newStats] = scanners[scanner](text, stats)
-				results[scanner][pattern] = newStats
+				if (pattern && newStats) {
+					results[scanner][pattern] = newStats
+				}
 			}
 		}
 	})
