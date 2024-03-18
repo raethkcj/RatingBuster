@@ -15,6 +15,8 @@ import { finished } from 'node:stream/promises'
 		let product = "wow_classic_ptr"
 		if (majorVersion === "1") {
 			product = "wow_classic_era_ptr"
+		} else if(majorVersion === "4") {
+			product = "wow_classic_beta"
 		}
 		const builds = await fetchBuilds()
 		return builds[product].find(build => {
