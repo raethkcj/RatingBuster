@@ -97,7 +97,8 @@ const scanners = {
 		const pattern = text.replace(/[+-]?(\$(?<tokenType>[sati])(?<tokenIndex>\d?)|[\d\.]+(?<=\d))/g, function(match, _1, _2, _3, offset, string, groups) {
 			switch (groups.tokenType) {
 				case "s":
-					// TODO: Handle s2 coming before s1
+					// In theory, $s2 could come before $s1. However, this is not
+					// the case in any strings we use in any locale (for now :)).
 					// TODO: Hande ManaRegen fives
 					newStats.push(stats[matchedStats])
 					matchedStats++
