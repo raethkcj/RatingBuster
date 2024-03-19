@@ -1,0 +1,17 @@
+{
+  "name": "generatestatlocales",
+  "version": "1.0.0",
+  "description": "",
+  "main": "GenerateStatLocales.mjs",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "GPL-2.0",
+  "engines": {
+	"node": "20.11.1"
+  },
+  "dependencies": {
+    "csv-parse": "^5.5.2"
+  }
+}

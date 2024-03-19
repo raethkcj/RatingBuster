@@ -1,5 +1,7 @@
 <Ui xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://www.blizzard.com/wow/ui/" xsi:schemaLocation="http://www.blizzard.com/wow/ui/
 	..\FrameXML\UI.xsd">
+	<Script file="GlobalPatterns.lua"/>
+
 	<Script file="enUS.lua"/>
 	<Script file="deDE.lua"/>
 	<Script file="frFR.lua"/>
@@ -8,6 +10,4 @@
 	<Script file="zhTW.lua"/>
 	<Script file="esES.lua"/>
 	<Script file="ruRU.lua"/>
-
-	<Script file="GlobalPatterns.lua"/>
 </Ui>

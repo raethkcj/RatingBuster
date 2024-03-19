@@ -3,23 +3,6 @@ local addonName, addon = ...
 ---@class StatLogic
 local StatLogic = LibStub(addonName)
 
----------------
--- Libraries --
----------------
----@type StatLogicLocale
-local L = LibStub("AceLocale-3.0"):GetLocale(addonName)
-
--- Add all lower case strings to ["StatIDLookup"]
-if type(L) == "table" and type(L["StatIDLookup"]) == "table" then
-	local temp = {}
-	for k, v in pairs(L["StatIDLookup"]) do
-		temp[k:utf8lower()] = v
-	end
-	for k, v in pairs(temp) do
-		L["StatIDLookup"][k] = v
-	end
-end
-
 function StatLogic:argCheck(argument, number, ...)
 	local arg = {...}
 	local validTypeString = table.concat(arg, ", ")
@@ -93,7 +76,6 @@ local _G = getfenv(0)
 local pairs = pairs
 local ipairs = ipairs
 local type = type
-local tonumber = L.tonumber
 local GetInventoryItemLink = GetInventoryItemLink
 local IsUsableSpell = IsUsableSpell
 local UnitLevel = UnitLevel
@@ -286,14 +268,6 @@ end
 ----------------
 -- Stat Tools --
 ----------------
-local function StripGlobalStrings(text)
-	-- ITEM_SOCKET_BONUS = "Socket Bonus: %s"; -- Tooltip tag for socketed item matched socket bonuses
-	text = text:gsub("%%%%", "%%") -- "%%" -> "%"
-	text = text:gsub(" ?%%%d?%.?%d?%$?[cdsgf]", "") -- delete "%d", "%s", "%c", "%g", "%2$d", "%.2f" and a space in front of it if found
-	-- So StripGlobalStrings(ITEM_SOCKET_BONUS) = "Socket Bonus:"
-	return text
-end
-
 StatLogic.ExtraHasteClasses = {}
 
 StatLogic.GenericStatMap = {
@@ -1631,7 +1605,6 @@ do
 			statTable[StatLogic.Stats.WeaponSubclass] = itemSubclass
 		end
 
-		-- Start parsing
 		log(link)
 		for i = 2, tip:NumLines() do
 			for _, side in pairs(tip.sides) do
@@ -1640,36 +1613,39 @@ do
 				local found = not text or text == ""
 
 				if not found then
-					-- Trim spaces and limit to one line
-					text = text:trim()
-					text = text:gsub("\n.*", "")
 					-- Strip color codes
 					text = text:gsub("^|c%x%x%x%x%x%x%x%x", "")
 					text = text:gsub("|r$", "")
+				end
+				local rawText = text
+
+				-----------------------
+				-- Whole Text Lookup --
+				-----------------------
+				-- Strings without numbers; mainly used for enchants or easy exclusions
+				if not found then
+					-- Limit to one line
+					text = text:gsub("\n.*", "")
+					-- Strip leading "Equip: ", "Socket Bonus: ", trailing ".", and lowercase
+					text = text:gsub(ITEM_SPELL_TRIGGER_ONEQUIP, "")
+					text = text:gsub(ITEM_SOCKET_BONUS:format(""), "")
+					text = text:trim()
+					text = text:gsub("%.$", "")
+					text = text:utf8lower()
 
 					currentColor = CreateColor(fontString:GetTextColor())
 
-					-----------------------
-					-- Whole Text Lookup --
-					-----------------------
-					-- Mainly used for enchants or stuff without numbers:
-					local idTable = L.WholeTextLookup[text]
-					found = ParseMatch(idTable, text, false, "WholeText")
+					local idTable = addon.WholeTextLookup[text]
+					found = ParseMatch(idTable, rawText, false, "WholeText")
 				end
 
 				-------------------------
 				-- Substitution Lookup --
 				-------------------------
-				local statText
 				if not found then
-					-- Strip leading "Equip: ", "Socket Bonus: ", trailing "."
-					local sanitizedText = text:gsub(ITEM_SPELL_TRIGGER_ONEQUIP, "")
-					sanitizedText = sanitizedText:gsub("%.$", "")
-					sanitizedText = sanitizedText:gsub(StripGlobalStrings(ITEM_SOCKET_BONUS), "")
-					sanitizedText = sanitizedText:utf8lower()
+					-- Replace numbers with %s
 					local values = {}
-					local count
-					statText, count = sanitizedText:gsub("[+-]?[%d%.]+%f[%D]", function(match)
+					local statText, count = text:gsub("[+-]?[%d%.]+%f[%D]", function(match)
 						local value = tonumber(match)
 						if value then
 							values[#values + 1] = value
@@ -1678,24 +1654,27 @@ do
 					end)
 					if count > 0 then
 						statText = statText:trim()
-						local stats = L.StatIDLookup[statText]
+						-- Lookup exact sanitized string in StatIDLookup
+						local stats = addon.StatIDLookup[statText]
 						if stats then
 							for j, value in ipairs(values) do
-								found = ParseMatch(stats[j], text, value, "Substitution")
+								found = ParseMatch(stats[j], rawText, value, "Substitution")
 							end
 						end
 					else
-						found = ParseMatch(false, text, false, "Substitution")
+						-- Contained no numbers, so we can exclude it
+						found = ParseMatch(false, rawText, false, "Substitution")
 					end
 				end
 
 				--------------------
 				-- Prefix Exclude --
 				--------------------
-				-- Exclude strings with prefixes that do not need to be checked,
+				-- Exclude strings by 3-5 character prefixes
+				-- Used to reduce noise while debugging missing patterns
 				if not found then
-					if L.PrefixExclude[text:utf8sub(1, L.PrefixExcludeLength)] or text:sub(1, 1) == '"' then
-						found = ParseMatch(false, text, nil, "Prefix")
+					if addon.PrefixExclude[rawText:utf8sub(1, addon.PrefixExcludeLength)] or rawText:sub(1, 1) == '"' then
+						found = ParseMatch(false, rawText, nil, "Prefix")
 					end
 				end
 
@@ -1703,252 +1682,32 @@ do
 				-- Color Exclude --
 				-------------------
 				-- Exclude lines that are not white, green, or "normal" (normal for Frozen Wrath etc.)
+				-- Used to reduce noise while debugging missing patterns
 				if not found then
 					local _, g, b = currentColor:GetRGB()
 					if g < 0.8 or (b < 0.99 and b > 0.1) then
-						found = ParseMatch(false, text, nil, "Color")
+						found = ParseMatch(false, rawText, nil, "Color")
 					end
 				end
 
-				-- For debugging Substitution with /rb debug, for now we want to be quiet about Prefix/Color Excludes
+				---------------------
+				-- PreScan Exclude --
+				---------------------
+				-- Iterates all patterns, matching the whole string. Expensive so try not to use.
+				-- Used to reduce noise while debugging missing patterns
 				if not found then
-					log("|cffff5959  Substitution Missed: |r|cnLIGHTBLUE_FONT_COLOR:" .. statText)
-				end
-
-				----------------------------
-				-- Single Plus Stat Check --
-				----------------------------
-				-- depending on locale, L.SinglePlusStatCheck may be
-				-- +19 Stamina = "^%+(%d+) ([%a ]+%a)$"
-				-- Stamina +19 = "^([%a ]+%a) %+(%d+)$"
-				-- +19 耐力 = "^%+(%d+) (.-)$"
-				if not found then
-					local _, _, value, statText = text:utf8lower():find(L.SinglePlusStatCheck)
-					if value then
-						if tonumber(statText) then
-							value, statText = statText, value
-						end
-						local idTable = L.StatIDLookup[statText]
-						found = ParseMatch(idTable, text, value, "SinglePlus")
-					end
-				end
-
-				-----------------------------
-				-- Single Equip Stat Check --
-				-----------------------------
-				-- depending on locale, L.SingleEquipStatCheck may be
-				-- "^Equip: (.-) by u?p? ?t?o? ?(%d+) ?(.-)%.$"
-				if not found then
-					local _, _, statText1, value, statText2 = text:find(L.SingleEquipStatCheck)
-					if value then
-						local statText = statText1..statText2
-						local idTable = L.StatIDLookup[statText:utf8lower()]
-						found = ParseMatch(idTable, text, value, "SingleEquip")
-					end
-				end
-
-				-- PreScan for special cases, that will fit wrongly into DeepScan
-				-- PreScan also has exclude patterns
-				if not found then
-					for pattern, id in pairs(L.PreScanPatterns) do
-						local value
-						found, _, value = text:find(pattern)
-						if found then
-							ParseMatch(id and not id[1] and {id} or id, text, value, "PreScan")
+					for pattern in pairs(addon.PreScanPatterns) do
+						if rawText:find(pattern) then
+							found = ParseMatch(false, rawText, nil, "PreScan")
 							break
 						end
 					end
 				end
 
-				--------------
-				-- DeepScan --
-				--------------
-				--[[
-				-- Strip trailing "."
-				["."] = ".",
-				["DeepScanSeparators"] = {
-					"/", -- "+10 Defense Rating/+10 Stamina/+15 Block Value": ZG Enchant
-					" & ", -- "+26 Healing Spells & 2% Reduced Threat": Bracing Earthstorm Diamond ID:25897
-					", ", -- "+6 Spell Damage, +5 Spell Crit Rating": Potent Ornate Topaz ID: 28123
-					"%. ", -- "Equip: Increases attack power by 81 when fighting Undead. It also allows the acquisition of Scourgestones on behalf of the Argent Dawn.": Seal of the Dawn
-				},
-				["DeepScanWordSeparators"] = {
-					" and ", -- "Critical Rating +6 and Dodge Rating +5": Assassin's Fire Opal ID:30565
-				},
-				["DeepScanPatterns"] = {
-					"^(.-) by u?p? ?t?o? ?(%d+) ?(.-)$", -- "xxx by up to 22 xxx" (scan first)
-					"^(.-) ?%+(%d+) ?(.-)$", -- "xxx xxx +22" or "+22 xxx xxx" or "xxx +22 xxx" (scan 2ed)
-					"^(.-) ?([%d%.]+) ?(.-)$", -- 22.22 xxx xxx (scan last)
-				},
-				--]]
+				-- If the string contains a number and was not excluded,
+				-- it might be a missing stat we want to add.
 				if not found then
-					-- Strip leading "Equip: ", "Socket Bonus: "
-					local sanitizedText = text:gsub(ITEM_SPELL_TRIGGER_ONEQUIP, "") -- ITEM_SPELL_TRIGGER_ONEQUIP = "Equip:";
-					sanitizedText = sanitizedText:gsub(StripGlobalStrings(ITEM_SOCKET_BONUS), "") -- ITEM_SOCKET_BONUS = "Socket Bonus: %s"; -- Tooltip tag for socketed item matched socket bonuses
-					-- Trim spaces
-					sanitizedText = sanitizedText:trim()
-					-- Strip trailing "."
-					if sanitizedText:utf8sub(-1) == L["."] then
-						sanitizedText = sanitizedText:utf8sub(1, -2)
-					end
-					-- Split the string into phrases between puncuation
-					-- Replace separators with @
-					for _, sep in ipairs(L.DeepScanSeparators) do
-						local repl = "@"
-						if type(sep) == "table" then
-							repl = sep.repl
-							sep = sep.pattern
-						end
-						if sanitizedText:find(sep) then
-							log(repl)
-							sanitizedText = sanitizedText:gsub(sep, repl)
-						end
-					end
-					-- Split text using @
-					local phrases = strsplittable("@", sanitizedText)
-					for j, phrase in ipairs(phrases) do
-						-- Trim spaces
-						phrase = phrase:trim()
-						-- Strip trailing "."
-						if phrase:utf8sub(-1) == L["."] then
-							phrase = phrase:utf8sub(1, -2)
-						end
-						log("|cff008080".."S"..j..": ".."'"..phrase.."'")
-						-- Whole Text Lookup
-						local foundWholeText = false
-						local idTable = L.WholeTextLookup[phrase]
-						found = ParseMatch(idTable, phrase, false, "DeepScan WholeText")
-						foundWholeText = found
-
-						-- Scan DualStatPatterns
-						if not foundWholeText then
-							for pattern, dualStat in pairs(L.DualStatPatterns) do
-								local lowered = phrase:utf8lower()
-								local _, dEnd, value1, value2 = lowered:find(pattern)
-								value1 = value1 and tonumber(value1)
-								value2 = value2 and tonumber(value2)
-								if value1 and value2 then
-									foundWholeText = true
-									found = true
-									local debugText = "|cffff5959".."  DeepScan DualStat: ".."|cffffc259"..phrase
-									for _, id in ipairs(dualStat[1]) do
-										--log("  '"..value.."', '"..id.."'")
-										-- sum stat
-										statTable[id] = (statTable[id] or 0) + tonumber(value1)
-										debugText = debugText..", ".."|cffffff59"..tostring(id).."="..tostring(value1)
-									end
-									for _, id in ipairs(dualStat[2]) do
-										--log("  '"..value.."', '"..id.."'")
-										-- sum stat
-										statTable[id] = (statTable[id] or 0) + tonumber(value2)
-										debugText = debugText..", ".."|cffffff59"..tostring(id).."="..tostring(value2)
-									end
-									log(debugText)
-									if dEnd ~= #lowered then
-										foundWholeText = false
-										phrase = phrase:sub(dEnd + 1)
-									end
-									break
-								end
-							end
-						end
-						local foundDeepScan1 = false
-						if not foundWholeText then
-							local lowered = phrase:utf8lower()
-							-- Pattern scan
-							for _, pattern in ipairs(L.DeepScanPatterns) do -- try all patterns in order
-								local _, _, statText1, value, statText2 = lowered:find(pattern)
-								if value then
-									local statText = statText1..statText2
-									local idTable = L.StatIDLookup[statText]
-									found = ParseMatch(idTable, phrase, value, "DeepScan")
-									foundDeepScan1 = found
-									if found then
-										break
-									end
-								end
-							end
-						end
-						-- If still not found, use the word separators to split the phrase
-						if not foundWholeText and not foundDeepScan1 then
-							-- Replace separators with @
-							for _, sep in ipairs(L.DeepScanWordSeparators) do
-								if phrase:find(sep) then
-									phrase = phrase:gsub(sep, "@")
-								end
-							end
-							-- Split phrase using @
-							local words = strsplittable("@", phrase)
-							for k, word in ipairs(words) do
-								-- Trim spaces
-								word = word:trim()
-								-- Strip trailing "."
-								if word:utf8sub(-1) == L["."] then
-									word = word:utf8sub(1, -2)
-								end
-								log("|cff008080".."S"..k.."-"..k..": ".."'"..word.."'")
-								-- Whole Text Lookup
-								foundWholeText = false
-								local idTable = L.WholeTextLookup[word]
-								found = ParseMatch(idTable, word, false, "DeepScan2 WholeText")
-								foundWholeText = found
-
-								-- Scan DualStatPatterns
-								if not foundWholeText then
-									for pattern, dualStat in pairs(L.DualStatPatterns) do
-										local lowered = word:utf8lower()
-										local _, _, value1, value2 = lowered:find(pattern)
-										if value1 and value2 then
-											foundWholeText = true
-											found = true
-											local debugText = "|cffff5959".."  DeepScan2 DualStat: ".."|cffffc259"..word
-											for _, id in ipairs(dualStat[1]) do
-												--log("  '"..value.."', '"..id.."'")
-												-- sum stat
-												statTable[id] = (statTable[id] or 0) + tonumber(value1)
-												debugText = debugText..", ".."|cffffff59"..tostring(id).."="..tostring(value1)
-											end
-											for _, id in ipairs(dualStat[2]) do
-												--log("  '"..value.."', '"..id.."'")
-												-- sum stat
-												statTable[id] = (statTable[id] or 0) + tonumber(value2)
-												debugText = debugText..", ".."|cffffff59"..tostring(id).."="..tostring(value2)
-											end
-											log(debugText)
-											break
-										end
-									end
-								end
-								local foundDeepScan2 = false
-								if not foundWholeText then
-									local lowered = word:utf8lower()
-									-- Pattern scan
-									for _, pattern in ipairs(L.DeepScanPatterns) do
-										local _, _, statText1, value, statText2 = lowered:find(pattern)
-										if value then
-											local statText = statText1..statText2
-											local idTable = L.StatIDLookup[statText]
-											found = ParseMatch(idTable, word, value, "DeepScan2")
-											foundDeepScan2 = found
-											if found then
-												break
-											else
-												-- pattern match but not found in L.StatIDLookup, keep looking
-												log("  DeepScan2 Lookup Fail: |cffffd4d4'"..statText.."'|r, pattern = |cff72ff59'"..pattern.."'")
-											end
-										end
-									end -- for
-								end
-								if not foundWholeText and not foundDeepScan2 then
-									log("  DeepScan2 Fail: |cffff0000'"..word.."'")
-								end
-							end
-						end -- if not foundWholeText and not foundDeepScan1 then
-					end
-				end
-
-				if not found then
-					log("  No Match: |cffff0000'"..text.."'")
+					log("|cffff5959  Substitution Missed: |r|cnLIGHTBLUE_FONT_COLOR:" .. rawText)
 				end
 			end
 		end

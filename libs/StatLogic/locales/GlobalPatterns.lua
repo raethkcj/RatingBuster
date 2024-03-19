@@ -1,12 +1,27 @@
-local addonName = ...
+local addonName, addon = ...
+local StatLogic = LibStub(addonName)
+local locale = GetLocale()
 
-local L = LibStub("AceLocale-3.0"):GetLocale(addonName)
-local StatLogic = LibStub("StatLogic")
+-- Metatable that forces keys to be UTF8-lowercase
+local lowerMT = {
+	__newindex = function(t, k, v)
+		if k then
+			rawset(t, k:utf8lower(), v)
+		end
+	end
+}
 
-L.WholeTextLookup[EMPTY_SOCKET_RED] = {["EMPTY_SOCKET_RED"] = 1}
-L.WholeTextLookup[EMPTY_SOCKET_YELLOW] = {["EMPTY_SOCKET_YELLOW"] = 1}
-L.WholeTextLookup[EMPTY_SOCKET_BLUE] = {["EMPTY_SOCKET_BLUE"] = 1}
-L.WholeTextLookup[EMPTY_SOCKET_META] = {["EMPTY_SOCKET_META"] = 1}
+-----------------------
+-- Whole Text Lookup --
+-----------------------
+-- Strings without numbers; mainly used for enchants or easy exclusions
+addon.WholeTextLookup = setmetatable({}, lowerMT)
+local W = addon.WholeTextLookup
+
+W[EMPTY_SOCKET_RED] = {["EMPTY_SOCKET_RED"] = 1}
+W[EMPTY_SOCKET_YELLOW] = {["EMPTY_SOCKET_YELLOW"] = 1}
+W[EMPTY_SOCKET_BLUE] = {["EMPTY_SOCKET_BLUE"] = 1}
+W[EMPTY_SOCKET_META] = {["EMPTY_SOCKET_META"] = 1}
 
 local exclusions = {
 	"",
@@ -74,19 +89,25 @@ local exclusions = {
 }
 
 for _, exclusion in pairs(exclusions) do
-	L.WholeTextLookup[exclusion] = false
+	W[exclusion] = false
 end
 
 for _, subclass in pairs(Enum.ItemArmorSubclass) do
 	local subclassName = GetItemSubClassInfo(Enum.ItemClass.Armor, subclass)
 	if subclassName then
-		L.WholeTextLookup[subclassName] = false
+		W[subclassName] = false
 	end
 end
 
 local function unescape(pattern)
-	return pattern:gsub("%%%d?%$?c", ""):gsub("%%%d?%$?[sd]", "%%s"):gsub("%.$", ""):utf8lower()
+	return pattern:gsub("%%%d?%$?c", ""):gsub("%%%d?%$?[sd]", "%%s"):gsub("%.$", "")
 end
+
+-------------------------
+-- Substitution Lookup --
+-------------------------
+addon.StatIDLookup = setmetatable({}, lowerMT)
+local L = addon.StatIDLookup
 
 local long = {
 	[ITEM_MOD_AGILITY] = {StatLogic.Stats.Agility},
@@ -133,7 +154,7 @@ local long = {
 }
 
 for pattern, stats in pairs(long) do
-	L.StatIDLookup[unescape(pattern)] = stats
+	L[unescape(pattern)] = stats
 end
 
 local regen = {
@@ -148,7 +169,7 @@ for pattern, stats in pairs(regen) do
 	pattern = pattern:gsub("5", "%%s")
 	local i = stat > five and 1 or 2
 	table.insert(stats, i, false)
-	L.StatIDLookup[unescape(pattern)] = stats
+	L[unescape(pattern)] = stats
 end
 
 local short = {
@@ -199,8 +220,8 @@ local short = {
 }
 
 for pattern, stat in pairs(short) do
-	L.StatIDLookup["%s " .. pattern] = stat
-	L.StatIDLookup[pattern .. " %s"] = stat
+	L["%s " .. pattern] = stat
+	L[pattern .. " %s"] = stat
 end
 
 local resistances = {
@@ -214,13 +235,19 @@ local resistances = {
 if not MAX_SPELL_SCHOOLS then MAX_SPELL_SCHOOLS = 7 end
 for i = 2, MAX_SPELL_SCHOOLS do
 	local school = _G["DAMAGE_SCHOOL" .. i]
-	L.StatIDLookup[DAMAGE_TEMPLATE_WITH_SCHOOL:format("%s", "%s", school)] = {StatLogic.Stats.MinWeaponDamage, StatLogic.Stats.MaxWeaponDamage}
-	L.StatIDLookup[PLUS_DAMAGE_TEMPLATE_WITH_SCHOOL:format("%s", "%s", school)] = {StatLogic.Stats.MinWeaponDamage, StatLogic.Stats.MaxWeaponDamage}
+	L[DAMAGE_TEMPLATE_WITH_SCHOOL:format("%s", "%s", school)] = {StatLogic.Stats.MinWeaponDamage, StatLogic.Stats.MaxWeaponDamage}
+	L[PLUS_DAMAGE_TEMPLATE_WITH_SCHOOL:format("%s", "%s", school)] = {StatLogic.Stats.MinWeaponDamage, StatLogic.Stats.MaxWeaponDamage}
 	if resistances[i] then
-		L.StatIDLookup[unescape(ITEM_RESIST_SINGLE):format("%s", school)] = {resistances[i]}
+		L[unescape(ITEM_RESIST_SINGLE):format("%s", school)] = {resistances[i]}
 	end
 end
 
+
+--------------------
+-- Prefix Exclude --
+--------------------
+-- Exclude strings by 3-5 character prefixes
+-- Used to reduce noise while debugging missing patterns
 local prefixExclusions = {
 	SPEED,
 	ITEM_DISENCHANT_ANY_SKILL, -- "Disenchantable"
@@ -238,13 +265,29 @@ local prefixExclusions = {
 	ITEM_SET_BONUS, -- "Set: %s"
 }
 
-for _, exclusion in pairs(prefixExclusions) do
-	-- Set the string to exactly PrefixExcludeLength characters, right-padded.
-	local len = string.utf8len(exclusion)
-	if len > L.PrefixExcludeLength then
-		exclusion = string.utf8sub(exclusion, 1, L.PrefixExcludeLength)
-	elseif len < L.PrefixExcludeLength then
-		exclusion = exclusion .. (" "):rep(L.PrefixExcludeLength - len)
-	end
-	L.PrefixExclude[exclusion] = true
+addon.PrefixExclude = {}
+local excludeLen = 5
+if locale == "koKR" or locale == "zhCN" or locale == "zhTW" then
+	excludeLen = 3
 end
+addon.PrefixExcludeLength = excludeLen
+
+for _, exclusion in pairs(prefixExclusions) do
+	-- Set the string to exactly excludeLen characters, right-padded.
+	local len = string.utf8len(exclusion)
+	if len > excludeLen then
+		exclusion = string.utf8sub(exclusion, 1, excludeLen)
+	elseif len < excludeLen then
+		exclusion = exclusion .. (" "):rep(excludeLen - len)
+	end
+	addon.PrefixExclude[exclusion] = true
+end
+
+---------------------
+-- PreScan Exclude --
+---------------------
+-- Iterates all patterns, matching the whole string. Expensive so try not to use.
+-- Used to reduce noise while debugging missing patterns
+addon.PreScanPatterns = setmetatable({}, lowerMT)
+local itemSetNamePattern = ITEM_SET_NAME:gsub("%%%d?%$?s", ".+"):gsub("%%%d?%$?d", "%%d+"):gsub("[()]", "%%%1")
+addon.PreScanPatterns[itemSetNamePattern] = false
