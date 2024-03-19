@@ -142,7 +142,7 @@ const itemStatType = {
     42: 'SpellDamage',
     43: 'ManaRegen',
     44: 'ArmorPenetrationRating',
-    45: 'SpellPower',
+    45: ['SpellDamage', 'HealingPower'], // SpellPower
     47: 'SpellPenetration',
     49: 'MasteryRating',
 }
