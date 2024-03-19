@@ -59,11 +59,11 @@
 			"2523": [ "StatIDLookup", ["RangedHitRating"] ],
 			"2588": [ "StatIDLookup", [["HealingPower", "SpellDamage"], "HitRating"] ],
 			"2590": [ "StatIDLookup", [["SpellDamage", "HealingPower"], "Stamina", "ManaRegen"] ],
-			"2656": [ "StatIDLookup", [["HealthRegen", "ManaRegen"]] ],
 			"2658": [ "StatIDLookup", ["HitRating", "CritRating"] ],
 			"2671": [ "StatIDLookup", [["ArcaneDamage", "FireDamage"]] ],
 			"2672": [ "StatIDLookup", [["ShadowDamage", "FrostDamage"]] ],
 			"3232": [ "StatIDLookup", ["Stamina"] ],
+			"3244": [ "StatIDLookup", [["HealthRegen", "ManaRegen"]] ],
 			"3607": [ "StatIDLookup", ["RangedHasteRating"] ],
 			"3608": [ "StatIDLookup", ["RangedCritRating"] ]
 		},

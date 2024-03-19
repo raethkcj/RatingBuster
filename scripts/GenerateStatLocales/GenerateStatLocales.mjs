@@ -25,70 +25,15 @@ import { finished } from 'node:stream/promises'
 	}
 }
 
-/**
- *
- * @param {string} pattern
- * @param {string[]} stats
- * @returns
- */
-const insertFives = function(pattern, stats) {
-	pattern = pattern.replace(/%c/g, "")
-	let temp = {}
-	let indices = []
-
-	// Gather the indices of the real stats
-	let i = 0
-	let j = 1
-	do {
-		i = pattern.indexOf("%s", i + 1)
-		if (i) {
-			temp[i] = stats[j]
-			indices.push(i)
-			j = j + 1
-		}
-	} while (i >= 0)
-
-	// Gather the indices of each 5
-	i = 0
-	do {
-		// TODO This is still Lua syntax
-		const five = /%f[%+%-%d]5%f[^%+%-%d]/
-		five.exec(pattern)
-		i = five.lastIndex
-		if (i > 0) {
-			temp[i] = false
-			indices.push(i)
-		}
-	} while (i > 0)
-
-	// TODO This is still Lua syntax
-	pattern = pattern.replace("%f[%+%-%d]5%f[^%+%-%d]", "%%s")
-
-	// Insert a false in the stat table for each 5, in order
-	indices.sort()
-	const newStats = []
-	for (const index of indices) {
-		newStats.push(temp[index])
-	}
-
-	return newStats
-}
-
-function testRegenStrings() {
-	const regenTest = {
-		"+7 Haste Rating and +4 Mana every 5 seconds": ["HasteRating", "ManaRegen"],
-		"+7 Tempowertung und alle 5 Sek. 4 Mana": ["HasteRating", "ManaRegen"],
-	}
-
-	for (const [pattern, stats] of Object.entries(regenTest)) {
-		console.log(pattern, insertFives(pattern, stats))
-	}
+function isManaRegen(stat) {
+	return stat === "ManaRegen" || stat && stat.includes && stat.includes("ManaRegen")
 }
 
 const scanners = {
 	"StatIDLookup": function(text, stats) {
 		const newStats = []
 		let matchedStatCount = 0
+		let checkForManaRegen = false
 		// Matches an optional leading + or -, plus one of:
 		//   Replacement token:
 		//     Leading $
@@ -97,12 +42,17 @@ const scanners = {
 		//   Literal number:
 		//     Digits 0-9 or decimal point ".", ends in digit
 		const pattern = text.replace(/[+-]?(\$(?<tokenType>[sati])(?<tokenIndex>\d?)|[\d\.]+(?<=\d))/g, function(match, _1, _2, _3, offset, string, groups) {
+			let stat
 			switch (groups.tokenType) {
 				case "s":
 					// In theory, $s2 could come before $s1. However, this is not
 					// the case in any strings we use in any locale (for now :)).
 					// TODO: Hande ManaRegen fives
-					newStats.push(stats[matchedStatCount])
+					stat = stats[matchedStatCount]
+					if (isManaRegen(stat)) {
+						checkForManaRegen = true
+					}
+					newStats.push(stat)
 					matchedStatCount++
 					break
 				case "a":
@@ -111,8 +61,17 @@ const scanners = {
 					break
 				default:
 					// tokenType i or plain number
-					newStats.push(stats[matchedStatCount])
-					matchedStatCount++
+					stat = stats[matchedStatCount]
+					if ((isManaRegen(stat) || checkForManaRegen) && match === "5") {
+						newStats.push(false)
+						checkForManaRegen = false
+					} else {
+						if(isManaRegen(stat)) {
+							checkForManaRegen = true
+						}
+						newStats.push(stat)
+						matchedStatCount++
+					}
 			}
 			return "%s"
 		})
