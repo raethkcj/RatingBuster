@@ -97,6 +97,7 @@
 			"28145": [ "StatIDLookup", ["ManaRegen"] ],
 			"28155": [ "StatIDLookup", ["SpellDamage", "HealingPower"] ],
 			"432639": [ "StatIDLookup", [["MeleeHit", "RangedHit", "SpellHit"]] ],
+			"435531": [ "StatIDLookup", ["FeralAttackPower"] ],
 			"436239": [ "StatIDLookup", [["MeleeCrit", "RangedCrit", "SpellCrit"]] ]
 		},
 		"2": {

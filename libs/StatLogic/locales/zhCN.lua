@@ -217,6 +217,7 @@ L["使你用盾牌格挡攻击的几率提高%s%。"] = {StatLogic.Stats.BlockCh
 L["提高所有法术和魔法效果所造成的伤害和治疗效果，最多%s点。"] = {{StatLogic.Stats.SpellDamage, StatLogic.Stats.HealingPower, }, }
 L["提高法术所造成的治疗效果，最多%s点。"] = {StatLogic.Stats.HealingPower, }
 L["在猎豹、熊或巨熊形态下的攻击强度提高%s点。"] = {StatLogic.Stats.FeralAttackPower, }
+L["在猎豹、熊和巨熊形态下的攻击强度提高%s点。"] = {StatLogic.Stats.FeralAttackPower, }
 L["使你的爆击等级提高%s。"] = {StatLogic.Stats.CritRating, }
 L["使法术治疗提高最多%s点，法术伤害提高最多%s点。"] = {StatLogic.Stats.HealingPower, StatLogic.Stats.SpellDamage, }
 L["使你的远程爆击等级提高%s。"] = {StatLogic.Stats.RangedCritRating, }

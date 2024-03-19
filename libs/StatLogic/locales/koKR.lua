@@ -197,6 +197,7 @@ L["방패로 적의 공격을 방어할 확률이 %s%만큼 증가합니다"] = 
 L["모든 주문 및 효과에 의한 피해와 치유량이 최대 %s만큼 증가합니다"] = {{StatLogic.Stats.SpellDamage, StatLogic.Stats.HealingPower, }, }
 L["모든 주문 및 효과에 의한 치유량이 최대 %s만큼 증가합니다"] = {StatLogic.Stats.HealingPower, }
 L["표범, 광포한 곰, 곰 변신 상태일 때 전투력이 %s만큼 증가합니다"] = {StatLogic.Stats.FeralAttackPower, }
+L["표범, 곰, 광포한 곰 변신 상태일 때 전투력이 %s만큼 증가합니다"] = {StatLogic.Stats.FeralAttackPower, }
 L["치명타 적중도가 %s만큼 증가합니다"] = {StatLogic.Stats.CritRating, }
 L["모든 주문 및 효과에 의한 치유량이 최대 %s만큼, 공격력이 최대 %s만큼 증가합니다"] = {StatLogic.Stats.HealingPower, StatLogic.Stats.SpellDamage, }
 L["원거리 치명타 적중도가 %s만큼 증가합니다"] = {StatLogic.Stats.RangedCritRating, }

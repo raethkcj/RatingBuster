@@ -222,6 +222,7 @@ L["aumenta la probabilidad de bloquear ataques con un escudo en un %s%"] = {Stat
 L["aumenta el daño y la curación de los hechizos mágicos y los efectos hasta en %s p"] = {{StatLogic.Stats.SpellDamage, StatLogic.Stats.HealingPower, }, }
 L["aumenta la curación de los hechizos y los efectos hasta en %s p"] = {StatLogic.Stats.HealingPower, }
 L["%s p. de poder de ataque solo bajo formas felinas, de oso y de oso nefasto"] = {StatLogic.Stats.FeralAttackPower, }
+L["%s p. de poder de ataque solo en las formas de oso, oso temible y felina"] = {StatLogic.Stats.FeralAttackPower, }
 L["aumenta tu índice de golpe crítico en %s p"] = {StatLogic.Stats.CritRating, }
 L["aumenta la sanación que haces hasta %s p. y el daño que infliges hasta %s p. con todos los hechizos mágicos y efectos"] = {StatLogic.Stats.HealingPower, StatLogic.Stats.SpellDamage, }
 L["aumenta tu índice de golpe crítico a distancia en %s p"] = {StatLogic.Stats.RangedCritRating, }

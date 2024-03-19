@@ -202,6 +202,7 @@ L["使你用盾牌格擋攻擊的機率提高%s%。"] = {StatLogic.Stats.BlockCh
 L["提高法術和魔法效果所造成的傷害和治療效果，最多%s點。"] = {{StatLogic.Stats.SpellDamage, StatLogic.Stats.HealingPower, }, }
 L["提高法術和魔法效果所造成的治療效果，最多%s點。"] = {StatLogic.Stats.HealingPower, }
 L["在獵豹、熊或巨熊形態下的攻擊強度提高%s點。"] = {StatLogic.Stats.FeralAttackPower, }
+L["在獵豹、熊和巨熊形態下的攻擊強度提高%s點。"] = {StatLogic.Stats.FeralAttackPower, }
 L["使你的致命一擊等級提高%s點。"] = {StatLogic.Stats.CritRating, }
 L["使法術和魔法效果所造成的治療效果提高最多%s點，法術傷害提高最多%s點。"] = {StatLogic.Stats.HealingPower, StatLogic.Stats.SpellDamage, }
 L["使你的遠程攻擊致命一擊等級提高%s點。"] = {StatLogic.Stats.RangedCritRating, }
