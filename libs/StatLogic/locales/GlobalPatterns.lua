@@ -109,6 +109,58 @@ end
 addon.StatIDLookup = setmetatable({}, lowerMT)
 local L = addon.StatIDLookup
 
+local short = {
+	[HP] = {StatLogic.Stats.Health},
+	[MP] = {StatLogic.Stats.Mana},
+	[ITEM_MOD_AGILITY_SHORT] = {StatLogic.Stats.Agility},
+	[ITEM_MOD_ARMOR_PENETRATION_RATING_SHORT] = {StatLogic.Stats.ArmorPenetrationRating},
+	[ITEM_MOD_ATTACK_POWER_SHORT] = {StatLogic.Stats.AttackPower},
+	[ITEM_MOD_BLOCK_RATING_SHORT] = {StatLogic.Stats.BlockRating},
+	[ITEM_MOD_BLOCK_VALUE_SHORT] = {StatLogic.Stats.BlockValue},
+	[ITEM_MOD_CRIT_MELEE_RATING_SHORT] = {StatLogic.Stats.MeleeCritRating},
+	[ITEM_MOD_CRIT_RANGED_RATING_SHORT] = {StatLogic.Stats.RangedCritRating},
+	[ITEM_MOD_CRIT_RATING_SHORT] = {StatLogic.Stats.CritRating},
+	[ITEM_MOD_CRIT_SPELL_RATING_SHORT] = {StatLogic.Stats.SpellCritRating},
+	[ITEM_MOD_DEFENSE_SKILL_RATING_SHORT] = {StatLogic.Stats.DefenseRating},
+	[ITEM_MOD_DODGE_RATING_SHORT] = {StatLogic.Stats.DodgeRating},
+	[ITEM_MOD_EXPERTISE_RATING_SHORT] = {StatLogic.Stats.ExpertiseRating},
+	[ITEM_MOD_EXTRA_ARMOR_SHORT] = {StatLogic.Stats.BonusArmor},
+	[ITEM_MOD_FERAL_ATTACK_POWER_SHORT] = {StatLogic.Stats.FeralAttackPower},
+	[ITEM_MOD_HASTE_RATING_SHORT] = {StatLogic.Stats.HasteRating},
+	[ITEM_MOD_HEALTH_REGEN_SHORT] = {StatLogic.Stats.HealthRegen},
+	[ITEM_MOD_HEALTH_REGENERATION_SHORT] = {StatLogic.Stats.HealthRegen},
+	[ITEM_MOD_HEALTH_SHORT] = {StatLogic.Stats.Health},
+	[ITEM_MOD_HIT_MELEE_RATING_SHORT] = {StatLogic.Stats.MeleeHitRating},
+	[ITEM_MOD_HIT_RANGED_RATING_SHORT] = {StatLogic.Stats.RangedHitRating},
+	[ITEM_MOD_HIT_RATING_SHORT] = {StatLogic.Stats.HitRating},
+	[ITEM_MOD_HIT_SPELL_RATING_SHORT] = {StatLogic.Stats.SpellHitRating},
+	[ITEM_MOD_INTELLECT_SHORT] = {StatLogic.Stats.Intellect},
+	[ITEM_MOD_MANA_REGENERATION_SHORT] = {StatLogic.Stats.ManaRegen},
+	[ITEM_MOD_MANA_SHORT] = {StatLogic.Stats.Mana},
+	[ITEM_MOD_MASTERY_RATING_SHORT] = {StatLogic.Stats.MasteryRating},
+	[ITEM_MOD_MELEE_ATTACK_POWER_SHORT] = {StatLogic.Stats.AttackPower},
+	[ITEM_MOD_PARRY_RATING_SHORT] = {StatLogic.Stats.ParryRating},
+	[ITEM_MOD_POWER_REGEN0_SHORT] = {StatLogic.Stats.ManaRegen},
+	[ITEM_MOD_RANGED_ATTACK_POWER_SHORT] = {StatLogic.Stats.RangedAttackPower},
+	[ITEM_MOD_RESILIENCE_RATING_SHORT] = {StatLogic.Stats.ResilienceRating},
+	[RESILIENCE] = {StatLogic.Stats.ResilienceRating},
+	[ITEM_MOD_SPELL_DAMAGE_DONE_SHORT] = {StatLogic.Stats.SpellDamage},
+	[ITEM_MOD_SPELL_HEALING_DONE_SHORT] = {StatLogic.Stats.HealingPower},
+	[ITEM_MOD_SPELL_PENETRATION_SHORT] = {StatLogic.Stats.SpellPenetration},
+	[ITEM_MOD_SPELL_POWER_SHORT] = {{StatLogic.Stats.SpellDamage, StatLogic.Stats.HealingPower}},
+	[ITEM_MOD_SPIRIT_SHORT] = {StatLogic.Stats.Spirit},
+	[ITEM_MOD_STAMINA_SHORT] = {StatLogic.Stats.Stamina},
+	[ITEM_MOD_STRENGTH_SHORT] = {StatLogic.Stats.Strength},
+	[SPELL_STATALL] = {StatLogic.Stats.AllStats},
+	[STAT_ATTACK_POWER] = {StatLogic.Stats.AttackPower},
+	[COMBAT_RATING_NAME9] = {StatLogic.Stats.CritRating},
+}
+
+for pattern, stat in pairs(short) do
+	L["%s " .. pattern] = stat
+	L[pattern .. " %s"] = stat
+end
+
 local long = {
 	[ITEM_MOD_AGILITY] = {StatLogic.Stats.Agility},
 	[ITEM_MOD_ARMOR_PENETRATION_RATING] = {StatLogic.Stats.ArmorPenetrationRating},
@@ -172,58 +224,6 @@ for pattern, stats in pairs(regen) do
 	L[unescape(pattern)] = stats
 end
 
-local short = {
-	[HP] = {StatLogic.Stats.Health},
-	[MP] = {StatLogic.Stats.Mana},
-	[ITEM_MOD_AGILITY_SHORT] = {StatLogic.Stats.Agility},
-	[ITEM_MOD_ARMOR_PENETRATION_RATING_SHORT] = {StatLogic.Stats.ArmorPenetrationRating},
-	[ITEM_MOD_ATTACK_POWER_SHORT] = {StatLogic.Stats.AttackPower},
-	[ITEM_MOD_BLOCK_RATING_SHORT] = {StatLogic.Stats.BlockRating},
-	[ITEM_MOD_BLOCK_VALUE_SHORT] = {StatLogic.Stats.BlockValue},
-	[ITEM_MOD_CRIT_MELEE_RATING_SHORT] = {StatLogic.Stats.MeleeCritRating},
-	[ITEM_MOD_CRIT_RANGED_RATING_SHORT] = {StatLogic.Stats.RangedCritRating},
-	[ITEM_MOD_CRIT_RATING_SHORT] = {StatLogic.Stats.CritRating},
-	[ITEM_MOD_CRIT_SPELL_RATING_SHORT] = {StatLogic.Stats.SpellCritRating},
-	[ITEM_MOD_DEFENSE_SKILL_RATING_SHORT] = {StatLogic.Stats.DefenseRating},
-	[ITEM_MOD_DODGE_RATING_SHORT] = {StatLogic.Stats.DodgeRating},
-	[ITEM_MOD_EXPERTISE_RATING_SHORT] = {StatLogic.Stats.ExpertiseRating},
-	[ITEM_MOD_EXTRA_ARMOR_SHORT] = {StatLogic.Stats.BonusArmor},
-	[ITEM_MOD_FERAL_ATTACK_POWER_SHORT] = {StatLogic.Stats.FeralAttackPower},
-	[ITEM_MOD_HASTE_RATING_SHORT] = {StatLogic.Stats.HasteRating},
-	[ITEM_MOD_HEALTH_REGEN_SHORT] = {StatLogic.Stats.HealthRegen},
-	[ITEM_MOD_HEALTH_REGENERATION_SHORT] = {StatLogic.Stats.HealthRegen},
-	[ITEM_MOD_HEALTH_SHORT] = {StatLogic.Stats.Health},
-	[ITEM_MOD_HIT_MELEE_RATING_SHORT] = {StatLogic.Stats.MeleeHitRating},
-	[ITEM_MOD_HIT_RANGED_RATING_SHORT] = {StatLogic.Stats.RangedHitRating},
-	[ITEM_MOD_HIT_RATING_SHORT] = {StatLogic.Stats.HitRating},
-	[ITEM_MOD_HIT_SPELL_RATING_SHORT] = {StatLogic.Stats.SpellHitRating},
-	[ITEM_MOD_INTELLECT_SHORT] = {StatLogic.Stats.Intellect},
-	[ITEM_MOD_MANA_REGENERATION_SHORT] = {StatLogic.Stats.ManaRegen},
-	[ITEM_MOD_MANA_SHORT] = {StatLogic.Stats.Mana},
-	[ITEM_MOD_MASTERY_RATING_SHORT] = {StatLogic.Stats.MasteryRating},
-	[ITEM_MOD_MELEE_ATTACK_POWER_SHORT] = {StatLogic.Stats.AttackPower},
-	[ITEM_MOD_PARRY_RATING_SHORT] = {StatLogic.Stats.ParryRating},
-	[ITEM_MOD_POWER_REGEN0_SHORT] = {StatLogic.Stats.ManaRegen},
-	[ITEM_MOD_RANGED_ATTACK_POWER_SHORT] = {StatLogic.Stats.RangedAttackPower},
-	[ITEM_MOD_RESILIENCE_RATING_SHORT] = {StatLogic.Stats.ResilienceRating},
-	[RESILIENCE] = {StatLogic.Stats.ResilienceRating},
-	[ITEM_MOD_SPELL_DAMAGE_DONE_SHORT] = {StatLogic.Stats.SpellDamage},
-	[ITEM_MOD_SPELL_HEALING_DONE_SHORT] = {StatLogic.Stats.HealingPower},
-	[ITEM_MOD_SPELL_PENETRATION_SHORT] = {StatLogic.Stats.SpellPenetration},
-	[ITEM_MOD_SPELL_POWER_SHORT] = {{StatLogic.Stats.SpellDamage, StatLogic.Stats.HealingPower}},
-	[ITEM_MOD_SPIRIT_SHORT] = {StatLogic.Stats.Spirit},
-	[ITEM_MOD_STAMINA_SHORT] = {StatLogic.Stats.Stamina},
-	[ITEM_MOD_STRENGTH_SHORT] = {StatLogic.Stats.Strength},
-	[SPELL_STATALL] = {StatLogic.Stats.AllStats},
-	[STAT_ATTACK_POWER] = {StatLogic.Stats.AttackPower},
-	[COMBAT_RATING_NAME9] = {StatLogic.Stats.CritRating},
-}
-
-for pattern, stat in pairs(short) do
-	L["%s " .. pattern] = stat
-	L[pattern .. " %s"] = stat
-end
-
 local resistances = {
 	[3] = StatLogic.Stats.FireResistance,
 	[4] = StatLogic.Stats.NatureResistance,
@@ -241,7 +241,6 @@ for i = 2, MAX_SPELL_SCHOOLS do
 		L[unescape(ITEM_RESIST_SINGLE):format("%s", school)] = {resistances[i]}
 	end
 end
-
 
 --------------------
 -- Prefix Exclude --
