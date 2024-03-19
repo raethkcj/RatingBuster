@@ -61,7 +61,7 @@ const scanners = {
 					break
 				default:
 					// tokenType i or plain number
-					stat = stats[matchedStatCount]
+					stat = matchedStatCount < stats.length ? stats[matchedStatCount] : false
 					if ((isManaRegen(stat) || checkForManaRegen) && match === "5") {
 						newStats.push(false)
 						checkForManaRegen = false
