@@ -2222,7 +2222,11 @@ elseif addon.class == "WARRIOR" then
 	}
 end
 
-if addon.playerRace == "Gnome" then
+if addon.playerRace == "Dwarf" then
+	addon.WeaponRacials[Enum.ItemWeaponSubclass.Mace1H] = {StatLogic.Stats.Expertise, 3}
+	addon.WeaponRacials[Enum.ItemWeaponSubclass.Mace2H] = {StatLogic.Stats.Expertise, 3}
+	addon.WeaponRacials[Enum.ItemWeaponSubclass.Guns] = {StatLogic.Stats.RangedCrit, 1}
+elseif addon.playerRace == "Gnome" then
 	StatLogic.StatModTable["Gnome"] = {
 		["MOD_MANA"] = {
 			-- Gnome: Expansive Mind - Racial
@@ -2232,6 +2236,8 @@ if addon.playerRace == "Gnome" then
 			},
 		}
 	}
+	addon.WeaponRacials[Enum.ItemWeaponSubclass.Dagger] = {StatLogic.Stats.Expertise, 3}
+	addon.WeaponRacials[Enum.ItemWeaponSubclass.Sword1H] = {StatLogic.Stats.Expertise, 3}
 elseif addon.playerRace == "Human" then
 	StatLogic.StatModTable["Human"] = {
 		["MOD_SPI"] = {
@@ -2242,6 +2248,17 @@ elseif addon.playerRace == "Human" then
 			},
 		}
 	}
+	addon.WeaponRacials[Enum.ItemWeaponSubclass.Mace1H] = {StatLogic.Stats.Expertise, 3}
+	addon.WeaponRacials[Enum.ItemWeaponSubclass.Mace2H] = {StatLogic.Stats.Expertise, 3}
+	addon.WeaponRacials[Enum.ItemWeaponSubclass.Sword1H] = {StatLogic.Stats.Expertise, 3}
+	addon.WeaponRacials[Enum.ItemWeaponSubclass.Sword2H] = {StatLogic.Stats.Expertise, 3}
+elseif addon.playerRace == "Orc" then
+	addon.WeaponRacials[Enum.ItemWeaponSubclass.Axe1H] = {StatLogic.Stats.Expertise, 3}
+	addon.WeaponRacials[Enum.ItemWeaponSubclass.Axe2H] = {StatLogic.Stats.Expertise, 3}
+	addon.WeaponRacials[Enum.ItemWeaponSubclass.Unarmed] = {StatLogic.Stats.Expertise, 3}
+elseif addon.playerRace == "Troll" then
+	addon.WeaponRacials[Enum.ItemWeaponSubclass.Bows] = {StatLogic.Stats.RangedCrit, 1}
+	addon.WeaponRacials[Enum.ItemWeaponSubclass.Thrown] = {StatLogic.Stats.RangedCrit, 1}
 end
 
 StatLogic.StatModTable["ALL"] = {
