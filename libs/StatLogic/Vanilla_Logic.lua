@@ -1451,7 +1451,9 @@ elseif addon.class == "WARRIOR" then
 	}
 end
 
-if addon.playerRace == "NightElf" then
+if addon.playerRace == "Dwarf" then
+	addon.WeaponRacials[Enum.ItemWeaponSubclass.Guns] = {StatLogic.Stats.WeaponSkill, 5}
+elseif addon.playerRace == "NightElf" then
 	StatLogic.StatModTable["NightElf"] = {
 		-- Night Elf : Quickness - Racial
 		--             Dodge chance increased by 1%.
@@ -1491,6 +1493,13 @@ elseif addon.playerRace == "Human" then
 			}
 		}
 	}
+	addon.WeaponRacials[Enum.ItemWeaponSubclass.Mace1H] = {StatLogic.Stats.WeaponSkill, 5}
+	addon.WeaponRacials[Enum.ItemWeaponSubclass.Mace2H] = {StatLogic.Stats.WeaponSkill, 5}
+	addon.WeaponRacials[Enum.ItemWeaponSubclass.Sword1H] = {StatLogic.Stats.WeaponSkill, 5}
+	addon.WeaponRacials[Enum.ItemWeaponSubclass.Sword2H] = {StatLogic.Stats.WeaponSkill, 5}
+elseif addon.playerRace == "Orc" then
+	addon.WeaponRacials[Enum.ItemWeaponSubclass.Axe1H] = {StatLogic.Stats.WeaponSkill, 5}
+	addon.WeaponRacials[Enum.ItemWeaponSubclass.Axe2H] = {StatLogic.Stats.WeaponSkill, 5}
 elseif addon.playerRace == "Troll" then
 	StatLogic.StatModTable["Troll"] = {
 		["MOD_NORMAL_HEALTH_REG"] = {
@@ -1509,6 +1518,8 @@ elseif addon.playerRace == "Troll" then
 			},
 		},
 	}
+	addon.WeaponRacials[Enum.ItemWeaponSubclass.Bows] = {StatLogic.Stats.WeaponSkill, 5}
+	addon.WeaponRacials[Enum.ItemWeaponSubclass.Thrown] = {StatLogic.Stats.WeaponSkill, 5}
 end
 
 StatLogic.StatModTable["ALL"] = {
