@@ -714,6 +714,9 @@ do
 	end
 end
 
+-- Maps weapon subclasses to stat, value tuples
+addon.WeaponRacials = {}
+
 -----------------------------
 -- StatModValidator Caches --
 -----------------------------
@@ -1602,7 +1605,11 @@ do
 		statTable.numLines = numLines
 
 		if itemClass == Enum.ItemClass.Weapon then
-			statTable[StatLogic.Stats.WeaponSubclass] = itemSubclass
+			local racial = addon.WeaponRacials[itemSubclass]
+			if racial then
+				local stat, value = unpack(racial)
+				statTable[stat] = value
+			end
 		end
 
 		log(link)

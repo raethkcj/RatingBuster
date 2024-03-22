@@ -2763,7 +2763,8 @@ local summaryCalcData = {
 		option = "sumExpertise",
 		name = StatLogic.Stats.Expertise,
 		func = function(sum)
-			return StatLogic:GetEffectFromRating(sum[StatLogic.Stats.ExpertiseRating], StatLogic.Stats.ExpertiseRating, playerLevel)
+			return sum[StatLogic.Stats.Expertise]
+			  + StatLogic:GetEffectFromRating(sum[StatLogic.Stats.ExpertiseRating], StatLogic.Stats.ExpertiseRating, playerLevel)
 		end,
 	},
 	-- Expertise Rating - EXPERTISE_RATING
@@ -2779,7 +2780,7 @@ local summaryCalcData = {
 		option = "sumDodgeNeglect",
 		name = StatLogic.Stats.DodgeReduction,
 		func = function(sum)
-			local effect = StatLogic:GetEffectFromRating(sum[StatLogic.Stats.ExpertiseRating], StatLogic.Stats.ExpertiseRating, playerLevel)
+			local effect = summaryFunc[StatLogic.Stats.Expertise](sum)
 			if addon.tocversion < 30000 then
 				effect = floor(effect)
 			end
@@ -2792,7 +2793,7 @@ local summaryCalcData = {
 		option = "sumParryNeglect",
 		name = StatLogic.Stats.ParryReduction,
 		func = function(sum)
-			local effect = StatLogic:GetEffectFromRating(sum[StatLogic.Stats.ExpertiseRating], StatLogic.Stats.ExpertiseRating, playerLevel)
+			local effect = summaryFunc[StatLogic.Stats.Expertise](sum)
 			if addon.tocversion < 30000 then
 				effect = floor(effect)
 			end
