@@ -2656,7 +2656,6 @@ local summaryCalcData = {
 		func = function(sum)
 			return sum[StatLogic.Stats.MeleeHit]
 				+ StatLogic:GetEffectFromRating(sum[StatLogic.Stats.MeleeHitRating], StatLogic.Stats.MeleeHitRating, playerLevel)
-				+ sum[StatLogic.Stats.WeaponSkill] * 0.1
 		end,
 		ispercent = true,
 	},
@@ -2756,6 +2755,13 @@ local summaryCalcData = {
 		name = StatLogic.Stats.RangedHasteRating,
 		func = function(sum)
 			return sum[StatLogic.Stats.RangedHasteRating]
+		end,
+	},
+	{
+		option = "sumWeaponSkill",
+		name = StatLogic.Stats.WeaponSkill,
+		func = function(sum)
+			return sum[StatLogic.Stats.WeaponSkill]
 		end,
 	},
 	-- Expertise - EXPERTISE_RATING
