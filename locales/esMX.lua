@@ -331,35 +331,36 @@ L["statList"] = {
 	{SPELL_STAT3_NAME:lower(), StatLogic.Stats.Stamina}, -- Stamina
 	{SPELL_STAT4_NAME:lower(), StatLogic.Stats.Intellect}, -- Intellect
 	{SPELL_STAT5_NAME:lower(), StatLogic.Stats.Spirit}, -- Spirit
-	{"índice de defensa", StatLogic.Stats.DefenseRating},
+	{"la defensa", StatLogic.Stats.DefenseRating},
 	{DEFENSE:lower(), StatLogic.Stats.Defense},
 	{"índice de esquivar", StatLogic.Stats.DodgeRating},
 	{"índice de bloqueo", StatLogic.Stats.BlockRating}, -- block enchant: "+10 Shield Block Rating"
 	{"índice de parada", StatLogic.Stats.ParryRating},
 
-	{"índice de golpe crítico con hechizos", StatLogic.Stats.SpellCritRating},
-	{"índice de golpe crítico a distancia", StatLogic.Stats.RangedCritRating},
-	{"índice de golpe crítico cuerpo a cuerpo", StatLogic.Stats.MeleeCritRating},
-	{"índice de golpe crítico", StatLogic.Stats.CritRating},
+	{"recibir un golpe", false},
+	{"golpe crítico con hechizos", StatLogic.Stats.SpellCritRating},
+	{"golpe crítico a distancia", StatLogic.Stats.RangedCritRating},
+	{"golpe crítico cuerpo a cuerpo", StatLogic.Stats.MeleeCritRating},
+	{"golpe crítico", StatLogic.Stats.CritRating},
 
-	{"índice de golpe con hechizo", StatLogic.Stats.SpellHitRating},
-	{"índice de golpe a distancia", StatLogic.Stats.RangedHitRating},
-	{"índice de golpe cuerpo a cuerpo", StatLogic.Stats.MeleeHitRating},
-	{"índice de golpe", StatLogic.Stats.HitRating},
+	{"golpe con hechizo", StatLogic.Stats.SpellHitRating},
+	{"golpe a distancia", StatLogic.Stats.RangedHitRating},
+	{"golpe cuerpo a cuerpo", StatLogic.Stats.MeleeHitRating},
+	{"golpe", StatLogic.Stats.HitRating},
 
-	{"índice de temple", StatLogic.Stats.ResilienceRating}, -- resilience is implicitly a rating
+	{"temple", StatLogic.Stats.ResilienceRating}, -- resilience is implicitly a rating
 
-	{"índice de celeridad con hechizos", StatLogic.Stats.SpellHasteRating},
-	{"índice de celeridad a distancia", StatLogic.Stats.RangedHasteRating},
-	{"índice de celeridad con cuerpo a cuerpo", StatLogic.Stats.MeleeHasteRating},
-	{"índice de celeridad", StatLogic.Stats.HasteRating},
-	{"Aumenta el índice de velocidad de lanzamiento de ataques y de ataque de los miembros del grupo cercanos", StatLogic.Stats.HasteRating}, -- [Drums of Battle]
+	{"celeridad con hechizos", StatLogic.Stats.SpellHasteRating},
+	{"celeridad a distancia", StatLogic.Stats.RangedHasteRating},
+	{"celeridad con cuerpo a cuerpo", StatLogic.Stats.MeleeHasteRating},
+	{"celeridad", StatLogic.Stats.HasteRating},
+	{"índice de velocidad", StatLogic.Stats.HasteRating}, -- [Drums of Battle]
 
-	{"índice de pericia", StatLogic.Stats.ExpertiseRating},
+	{"pericia", StatLogic.Stats.ExpertiseRating},
 
 	{SPELL_STATALL:lower(), StatLogic.Stats.AllStats},
 
-	{"índice de penetración de armadura", StatLogic.Stats.ArmorPenetrationRating},
+	{"penetración de armadura", StatLogic.Stats.ArmorPenetrationRating},
 	{"maestría", StatLogic.Stats.MasteryRating},
 	{ARMOR:lower(), StatLogic.Stats.Armor},
 	{"poder de ataque", StatLogic.Stats.AttackPower},
