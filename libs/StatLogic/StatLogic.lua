@@ -263,12 +263,13 @@ setmetatable(log_level_colors, {
 	end
 })
 
----@param text string
+---@param output string|table
 ---@param log_level? log_level
 ---@param prefix? string
-local function log(text, log_level, prefix)
-	if DEBUG and text ~= "" then
+local function log(output, log_level, prefix)
+	if DEBUG and output ~= "" then
 		local prefix_color, text_color = unpack(log_level_colors[log_level])
+		local text = type(output) == "table" and ("    " .. table.concat(output, ", ")) or output
 		if prefix then
 			print(prefix_color:WrapTextInColorCode("  " .. prefix), text_color:WrapTextInColorCode("\"" .. text .. "\""))
 		else
@@ -1642,7 +1643,7 @@ do
 							for id, value in pairs(idTable) do
 								AddStat(id, value, currentStats)
 							end
-							log("    " .. table.concat(currentStats, ", "))
+							log(currentStats)
 						else
 							log(rawText, "Exclude", "WholeText")
 						end
@@ -1680,7 +1681,7 @@ do
 									AddStat(idTable, value, currentStats)
 								end
 							end
-							log("    " .. table.concat(currentStats, ", "))
+							log(currentStats)
 						end
 					else
 						-- Contained no numbers, so we can exclude it
