@@ -251,9 +251,28 @@ function StatLogic:ToggleDebugging()
 	wipe(cache)
 end
 
-local function log(...)
-	if DEBUG == true then
-		print(...)
+---@enum (key) log_level
+local log_level_colors = {
+	["Success"] = {GREEN_FONT_COLOR, DIM_GREEN_FONT_COLOR},
+	["Exclude"] = {GRAY_FONT_COLOR, LIGHTGRAY_FONT_COLOR},
+}
+setmetatable(log_level_colors, {
+	__index = function()
+		return {ORANGE_FONT_COLOR, NORMAL_FONT_COLOR}
+	end
+})
+
+---@param text string
+---@param log_level? log_level
+---@param prefix? string
+local function log(text, log_level, prefix)
+	if DEBUG and text ~= "" then
+		local prefix_color, text_color = unpack(log_level_colors[log_level])
+		if prefix then
+			print(prefix_color:WrapTextInColorCode("  " .. prefix), text_color:WrapTextInColorCode("\"" .. text .. "\""))
+		else
+			print(text_color:WrapTextInColorCode(text))
+		end
 	end
 end
 
@@ -1528,45 +1547,16 @@ end
 do
 	local statTable, currentColor
 
-	local function AddStat(id, value, debugText)
+	local function AddStat(id, value, currentStats)
 		if id == StatLogic.Stats.Armor then
 			local base, bonus = StatLogic:GetArmorDistribution(statTable.link, value, currentColor)
 			value = base
 			local bonusID = StatLogic.Stats.BonusArmor
 			statTable[bonusID] = (statTable[bonusID] or 0) + bonus
-			debugText = debugText..", ".."|cffffff59"..tostring(bonusID).."="..tostring(bonus)
+			table.insert(currentStats, tostring(bonusID) .. "=" .. tostring(bonus))
 		end
 		statTable[id] = (statTable[id] or 0) + tonumber(value)
-		return debugText..", ".."|cffffff59"..tostring(id).."="..tostring(value)
-	end
-
-	local function ParseMatch(idTable, text, value, scanner)
-		local found = false
-		if idTable == false then
-			found = true
-			if text ~= "" then
-				log("|cffadadad  ".. scanner .. " Exclude: "..text)
-			end
-		elseif idTable then
-			found = true
-			local debugText = "|cffff5959  ".. scanner .. ": |cffffc259"..text
-			if value then
-				if #idTable > 0 then
-					for _, id in ipairs(idTable) do
-						debugText = AddStat(id, value, debugText)
-					end
-				else
-					debugText = AddStat(idTable, value, debugText)
-				end
-			else
-				-- WholeTextLookup
-				for id, presetValue in pairs(idTable) do
-					debugText = AddStat(id, presetValue, debugText)
-				end
-			end
-			log(debugText)
-		end
-		return found
+		table.insert(currentStats, tostring(id) .. "=" .. tostring(value))
 	end
 
 	-- Calculates the sum of all stats for a specified item.
@@ -1643,7 +1633,19 @@ do
 					currentColor = CreateColor(fontString:GetTextColor())
 
 					local idTable = addon.WholeTextLookup[text]
-					found = ParseMatch(idTable, rawText, false, "WholeText")
+					if idTable ~= nil then
+						found = true
+						if idTable then
+							log(rawText, "Success", "WholeText")
+							local currentStats = {}
+							for id, value in pairs(idTable) do
+								AddStat(id, value, currentStats)
+							end
+							log("    " .. table.concat(currentStats, ", "))
+						else
+							log(rawText, "Exclude", "WholeText")
+						end
+					end
 				end
 
 				-------------------------
@@ -1664,57 +1666,63 @@ do
 						-- Lookup exact sanitized string in StatIDLookup
 						local stats = addon.StatIDLookup[statText]
 						if stats then
+							found = true
+							log(rawText, "Success", "Substitution")
+							local currentStats = {}
 							for j, value in ipairs(values) do
-								found = ParseMatch(stats[j], rawText, value, "Substitution")
+								local idTable = stats[j]
+								if #idTable > 0 then
+									for _, id in ipairs(idTable) do
+										AddStat(id, value, currentStats)
+									end
+								else
+									AddStat(idTable, value, currentStats)
+								end
 							end
+							log("    " .. table.concat(currentStats, ", "))
 						end
 					else
 						-- Contained no numbers, so we can exclude it
-						found = ParseMatch(false, rawText, false, "Substitution")
+						found = true
+						log(rawText, "Exclude", "Substitution")
 					end
 				end
 
-				--------------------
-				-- Prefix Exclude --
-				--------------------
-				-- Exclude strings by 3-5 character prefixes
-				-- Used to reduce noise while debugging missing patterns
-				if not found then
-					if addon.PrefixExclude[rawText:utf8sub(1, addon.PrefixExcludeLength)] or rawText:sub(1, 1) == '"' then
-						found = ParseMatch(false, rawText, nil, "Prefix")
-					end
-				end
-
-				-------------------
-				-- Color Exclude --
-				-------------------
-				-- Exclude lines that are not white, green, or "normal" (normal for Frozen Wrath etc.)
-				-- Used to reduce noise while debugging missing patterns
-				if not found then
-					local _, g, b = currentColor:GetRGB()
-					if g < 0.8 or (b < 0.99 and b > 0.1) then
-						found = ParseMatch(false, rawText, nil, "Color")
-					end
-				end
-
-				---------------------
-				-- PreScan Exclude --
-				---------------------
-				-- Iterates all patterns, matching the whole string. Expensive so try not to use.
-				-- Used to reduce noise while debugging missing patterns
-				if not found then
-					for pattern in pairs(addon.PreScanPatterns) do
-						if rawText:find(pattern) then
-							found = ParseMatch(false, rawText, nil, "PreScan")
-							break
+				-- Reduce noise while debugging missing patterns
+				if DEBUG then
+					-- Exclude strings by 3-5 character prefixes
+					if not found then
+						if addon.PrefixExclude[rawText:utf8sub(1, addon.PrefixExcludeLength)] or rawText:sub(1, 1) == '"' then
+							found = true
+							log(rawText, "Exclude", "Prefix")
 						end
 					end
-				end
 
-				-- If the string contains a number and was not excluded,
-				-- it might be a missing stat we want to add.
-				if not found then
-					log("|cffff5959  Substitution Missed: |r|cnLIGHTBLUE_FONT_COLOR:" .. rawText)
+					-- Exclude lines that are not white, green, or "normal" (normal for Frozen Wrath etc.)
+					if not found then
+						local _, g, b = currentColor:GetRGB()
+						if g < 0.8 or (b < 0.99 and b > 0.1) then
+							found = true
+							log(rawText, "Exclude", "Color")
+						end
+					end
+
+					-- Iterates a few obvious patterns, matching the whole string
+					if not found then
+						for pattern in pairs(addon.PreScanPatterns) do
+							if rawText:find(pattern) then
+								found = true
+								log(rawText, "Exclude", "PreScan")
+								break
+							end
+						end
+					end
+
+					-- If the string contains a number and was not excluded,
+					-- it might be a missing stat we want to add.
+					if not found then
+						log("|cffff5959  Substitution Missed: |r|cnLIGHTBLUE_FONT_COLOR:" .. rawText)
+					end
 				end
 			end
 		end
