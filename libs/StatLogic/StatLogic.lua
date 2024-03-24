@@ -1553,9 +1553,7 @@ do
 		if id == StatLogic.Stats.Armor then
 			local base, bonus = StatLogic:GetArmorDistribution(statTable.link, value, currentColor)
 			value = base
-			local bonusID = StatLogic.Stats.BonusArmor
-			statTable[bonusID] = (statTable[bonusID] or 0) + bonus
-			table.insert(currentStats, tostring(bonusID) .. "=" .. tostring(bonus))
+			AddStat(StatLogic.Stats.BonusArmor, bonus, currentStats)
 		end
 		statTable[id] = (statTable[id] or 0) + tonumber(value)
 		table.insert(currentStats, tostring(id) .. "=" .. tostring(value))
