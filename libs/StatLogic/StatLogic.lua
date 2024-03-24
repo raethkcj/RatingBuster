@@ -254,6 +254,7 @@ end
 ---@enum (key) log_level
 local log_level_colors = {
 	["Success"] = {GREEN_FONT_COLOR, DIM_GREEN_FONT_COLOR},
+	["Fail"] = {RED_FONT_COLOR, DULL_RED_FONT_COLOR},
 	["Exclude"] = {GRAY_FONT_COLOR, LIGHTGRAY_FONT_COLOR},
 }
 setmetatable(log_level_colors, {
@@ -1721,7 +1722,7 @@ do
 					-- If the string contains a number and was not excluded,
 					-- it might be a missing stat we want to add.
 					if not found then
-						log("|cffff5959  Substitution Missed: |r|cnLIGHTBLUE_FONT_COLOR:" .. rawText)
+						log(rawText, "Fail", "Missed")
 					end
 				end
 			end
