@@ -1671,11 +1671,13 @@ do
 							local currentStats = {}
 							for j, value in ipairs(values) do
 								local idTable = stats[j]
-								if #idTable > 0 then
+								if type(idTable) == "table" and #idTable > 0 then
 									for _, id in ipairs(idTable) do
-										AddStat(id, value, currentStats)
+										if id then
+											AddStat(id, value, currentStats)
+										end
 									end
-								else
+								elseif idTable then
 									AddStat(idTable, value, currentStats)
 								end
 							end
