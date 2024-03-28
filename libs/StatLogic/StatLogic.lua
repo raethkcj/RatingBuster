@@ -2079,7 +2079,6 @@ if GetCurrentRegion() == 1 or GetCurrentRegion() == 72 and GetLocale() == "enUS"
 
 			-- Store
 			local store = CreateFrame("Frame")
-			store:RegisterEvent("SPELLS_CHANGED")
 			store:RegisterEvent("PLAYER_LEVEL_UP")
 
 			store:SetScript("OnEvent", function()
@@ -2105,11 +2104,11 @@ if GetCurrentRegion() == 1 or GetCurrentRegion() == 72 and GetLocale() == "enUS"
 					SendStoredData()
 				else
 					C_Timer.After(2, function()
-						store:GetScript("OnEvent")("SPELLS_CHANGED")
+						store:GetScript("OnEvent")("PLAYER_LEVEL_UP")
 					end)
 				end
 			end)
-			store:GetScript("OnEvent")("SPELLS_CHANGED")
+			store:GetScript("OnEvent")("PLAYER_LEVEL_UP")
 		end
 	end
 
