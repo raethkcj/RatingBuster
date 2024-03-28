@@ -1444,12 +1444,17 @@ elseif addon.class == "WARRIOR" then
 					0.02, 0.04, 0.06, 0.08, 0.10,
 				},
 			},
-			-- Warrior: Death Wish - Buff
-			--          When activated, increases your physical damage by 20% and makes you immune to Fear effects, but lowers your armor and all resistances by 20%.  Lasts 30 sec.
+			-- Buff: Death Wish
 			{
-				["value"] = 0.8,
-				["aura"] = 12328,		-- ["Death Wish"],
+				["value"] = -0.20,
+				["aura"] = 12328,
 			},
+			-- Rune: Gladiator Stance
+			{
+				["stance"] = "interface\\icons\\achievement_featsofstrength_gladiator_08",
+				["rune"] = true,
+				["value"] = -0.30,
+			}
 		},
 		["ADD_MELEE_CRIT"] = {
 			-- Base
