@@ -477,6 +477,12 @@ elseif addon.class == "HUNTER" then
 				["value"] = 25,
 				["aura"] = 19263,
 			},
+			-- Rune: Catlike Reflexes
+			{
+				["known"] = 415428,
+				["rune"] = true,
+				["value"] = 20,
+			}
 		},
 		["ADD_MELEE_CRIT"] = {
 			-- Base
@@ -676,7 +682,24 @@ elseif addon.class == "MAGE" then
 				["aura"] = 430952,
 				["value"] = 1,
 			},
+			-- Rune: Molten Armor
+			{
+				["known"] = 428741,
+				["rune"] = true,
+				["value"] = 5,
+				["aura"] = 428741,
+			}
 		},
+		["MOD_SPI"] = {
+			-- Rune: Balefire Bolt
+			{
+				["known"] = 428878,
+				["rune"] = true,
+				["aura"] = 428878,
+				["stack"] = -0.10,
+				["max_stacks"] = 9,
+			}
+		}
 	}
 elseif addon.class == "PALADIN" then
 	StatLogic.StatModTable["PALADIN"] = {
@@ -1178,6 +1201,33 @@ elseif addon.class == "SHAMAN" then
 				["aura"] = 408680
 			}
 		},
+		["ADD_AP_MOD_INT"] = {
+			-- Rune: Mental Dexterity
+			{
+				["known"] = 415140,
+				["rune"] = true,
+				["value"] = 1.00,
+				["aura"] = 415144,
+			},
+		},
+		["ADD_SPELL_DMG_MOD_AP"] = {
+			-- Rune: Mental Dexterity
+			{
+				["known"] = 415140,
+				["rune"] = true,
+				["value"] = 0.30,
+				["aura"] = 415144,
+			},
+		},
+		["ADD_HEALING_MOD_AP"] = {
+			-- Rune: Mental Dexterity
+			{
+				["known"] = 415140,
+				["rune"] = true,
+				["value"] = 0.30,
+				["aura"] = 415144,
+			},
+		},
 	}
 elseif addon.class == "WARLOCK" then
 	StatLogic.StatModTable["WARLOCK"] = {
@@ -1342,6 +1392,15 @@ elseif addon.class == "WARLOCK" then
 				["pet"] = true,
 			},
 		},
+		["MOD_HEALTH"] = {
+			-- Rune: Vengeance
+			{
+				["known"] = 426195,
+				["rune"] = true,
+				["value"] = 0.30,
+				["aura"] = 426195,
+			},
+		},
 	}
 elseif addon.class == "WARRIOR" then
 	StatLogic.StatModTable["WARRIOR"] = {
@@ -1446,6 +1505,16 @@ elseif addon.class == "WARRIOR" then
 				["num"] = 6,
 				["value"] = 0.30,
 				["aura"] = 12976,
+			},
+		},
+		["MOD_AP"] = {
+			-- Rune: Rampage
+			{
+				["known"] = 426940,
+				["rune"] = true,
+				["aura"] = 426942,
+				["stack"] = 0.02,
+				["max_stacks"] = 5,
 			},
 		},
 	}
