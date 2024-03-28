@@ -688,6 +688,9 @@ do
 						if not mod.tab and mod.rank then -- not a talent, so the rank is the buff rank
 							aura.rank = #(mod.rank)
 						end
+						if mod.stack then
+							aura.stacks = mod.max_stacks
+						end
 						local name = GetSpellInfo(mod.aura)
 						if name then
 							always_buffed_aura_info[name] = aura
@@ -708,9 +711,12 @@ do
 			if needs_update then
 				local i = 1
 				repeat
-					local name, _, _, _, _, _, _, _, _, spellId = UnitBuff("player", i)
+					local name, _, stacks, _, _, _, _, _, _, spellId = UnitBuff("player", i)
 					if name then
-						aura_cache[name] = { spellId = spellId }
+						aura_cache[name] = {
+							spellId = spellId,
+							stacks = stacks,
+						}
 						if tooltip_auras[name] then
 							tip:SetUnitBuff("player", i)
 							local numString = tip.sides.left[2]:GetText():match("%d+")
@@ -722,9 +728,12 @@ do
 				until not name
 				i = 1
 				repeat
-					local name, _, _, _, _, _, _, _, _, spellId = UnitDebuff("player", i)
+					local name, _, stacks, _, _, _, _, _, _, spellId = UnitDebuff("player", i)
 					if name then
-						aura_cache[name] = { spellId = spellId }
+						aura_cache[name] = {
+							spellId = spellId,
+							stacks = stacks,
+						}
 					end
 					i = i+1
 				until not name
@@ -1128,6 +1137,9 @@ do
 			local aura = StatLogic:GetAuraInfo(GetSpellInfo(case.aura))
 			local rank = aura.rank or GetPlayerBuffRank(aura.spellId)
 			value = case.rank[rank]
+		elseif case.aura and case.stack then
+			local aura = StatLogic:GetAuraInfo(GetSpellInfo(case.aura))
+			value = case.stack * aura.stacks
 		elseif case.regen then
 			value = case.regen()
 		elseif case.value then
