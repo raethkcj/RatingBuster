@@ -17,3 +17,6 @@ insert_final_newline = false
 
 [*.lua]
 trailing_table_separator = smart
+
+[.pkgmeta]
+indent_style = space
