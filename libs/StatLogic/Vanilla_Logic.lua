@@ -1916,6 +1916,12 @@ StatLogic.StatModTable["ALL"] = {
 			["pieces"] = 2,
 			["value"] = 1,
 		},
+		-- Set: Blood Corrupted Leathers
+		{
+			["set"] = 1641,
+			["pieces"] = 3,
+			["value"] = 1,
+		},
 	},
 	["ADD_SPELL_CRIT"] = {
 		-- Buff: Moonkin Aura
