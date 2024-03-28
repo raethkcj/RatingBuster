@@ -1703,6 +1703,16 @@ function RatingBuster:InitializeDatabase()
 		}
 	})
 	StatLogic:SetupAuraInfo(always_buffed.profile)
+	local conversion_data = RatingBuster.db:RegisterNamespace("ConversionData", {
+		global = {
+			[LE_EXPANSION_LEVEL_CURRENT] = {
+				['*'] = {
+					['*'] = {}
+				},
+			}
+		}
+	})
+	RatingBuster.conversion_data = conversion_data
 end
 
 SLASH_RATINGBUSTER1, SLASH_RATINGBUSTER2 = "/ratingbuster", "/rb"

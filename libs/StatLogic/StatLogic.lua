@@ -2022,75 +2022,143 @@ function StatLogic:GetDiff(item, diff1, diff2, ignoreEnchant, ignoreGems, ignore
 end
 
 -- Telemetry for agi/int conversions, will delete at the send of SoD.
-if GetCurrentRegion() == 1 and GetLocale() == "enUS" then
-	local target
-	if GetNormalizedRealmName() == "CrusaderStrike" and UnitFactionGroup("player") == "Alliance" then
-		target = "Astraea"
-	elseif GetNormalizedRealmName() == "LoneWolf" and UnitFactionGroup("player") == "Horde" then
-		target = "Astraean"
-	end
+if GetCurrentRegion() == 1 or GetCurrentRegion() == 72 and GetLocale() == "enUS" then
+	local commsVersion = 1
+	local prefix = addonName .. commsVersion
+	local codec = LibStub("LibDeflate"):CreateCodec("\000", "\255", "")
 
-	if target then
-		-- Hide system message spam if offline
-		local enableFilter = false
-		ChatFrame_AddMessageEventFilter("CHAT_MSG_SYSTEM", function(_, _, ...)
-			if enableFilter then
-				enableFilter = false
-				return true
-			else
-				return false, ...
+	local function InitializeComms()
+		local target
+		if GetNormalizedRealmName() == "CrusaderStrike" and UnitFactionGroup("player") == "Alliance" then
+			target = "Astraea"
+		elseif GetNormalizedRealmName() == "LoneWolf" and UnitFactionGroup("player") == "Horde" then
+			target = "Astraean"
+		elseif GetNormalizedRealmName() == "Whitemane" and UnitFactionGroup("player") == "Horde" and tocversion >= 30000 then
+			target = "Pinstripe"
+		elseif GetNormalizedRealmName() == "Whitemane" and UnitFactionGroup("player") == "Alliance" and tocversion >= 30000 then
+			target = "Astriea"
+		elseif GetNormalizedRealmName() == "ClassicEraPTR" and UnitFactionGroup("player") == "Horde" then
+			target = "Rbshaman"
+		end
+
+		if target then
+			-- Hide system message spam if offline
+			local filter = ERR_CHAT_PLAYER_NOT_FOUND_S:format(target)
+			local failure = false
+			ChatFrame_AddMessageEventFilter("CHAT_MSG_SYSTEM", function(_, _, message, ...)
+				if message == filter then
+					failure = true
+					return true
+				else
+					return false, message, ...
+				end
+			end)
+
+			local sending = false
+			local function cleanUp(delay)
+				-- Wait to see if whispers failed to send
+				C_Timer.After(2, function()
+					if not failure then
+						for expansion in pairs(RatingBuster.conversion_data.global) do
+							RatingBuster.conversion_data.global[expansion] = nil
+						end
+					end
+					sending = false
+				end)
 			end
-		end)
 
-		-- Send
-		local send = CreateFrame("Frame")
-		send:RegisterEvent("SPELLS_CHANGED")
-		send:RegisterEvent("PLAYER_LEVEL_UP")
+			-- Send
+			local function SendStoredData()
+				if failure or sending or UnitName("player") == target then return end
+				sending = true
+				local data = RatingBuster.conversion_data.global
+				local serialized = LibStub("LibSerialize"):Serialize(data)
+				local encoded = codec:Encode(serialized)
+				LibStub("AceComm-3.0"):SendCommMessage(prefix, encoded, "WHISPER", target, "BULK", cleanUp, true)
+			end
 
-		send:SetScript("OnEvent", function()
-			local level = UnitLevel("player")
-			if not addon.CritPerAgi[addon.class][level] or not addon.SpellCritPerInt[addon.class][level] then
-				if StatLogic:TalentCacheExists() then
-					local data = {
-						addon.class,
-						level,
-						floor(StatLogic:GetCritPerAgi() * 10000 + 0.5) / 10000,
-						floor(StatLogic:GetSpellCritPerInt() * 10000 + 0.5) / 10000,
-						RatingBuster.version,
-					}
-					enableFilter = true
-					C_ChatInfo.SendAddonMessage(addonName, table.concat(data, ","), "WHISPER", target)
+			-- Store
+			local store = CreateFrame("Frame")
+			store:RegisterEvent("SPELLS_CHANGED")
+			store:RegisterEvent("PLAYER_LEVEL_UP")
+
+			store:SetScript("OnEvent", function()
+				if StatLogic:TalentCacheExists() and RatingBuster.conversion_data then
+					local level = UnitLevel("player")
+					local expansion = RatingBuster.conversion_data.global[LE_EXPANSION_LEVEL_CURRENT]
+					local rounding = 10 ^ 4
+					if tocversion >= 40000 then
+						rounding = 10 ^ 8
+					end
+					if not addon.CritPerAgi[addon.class][level] then
+						local critPerAgi = floor(StatLogic:GetCritPerAgi() * rounding + 0.5) / rounding
+						expansion.CritPerAgi[addon.class][level] = critPerAgi
+					end
+					if not addon.DodgePerAgi[addon.class][level] then
+						local dodgePerAgi = floor(StatLogic:GetDodgePerAgi() * rounding + 0.5) / rounding
+						expansion.DodgePerAgi[addon.class][level] = dodgePerAgi
+					end
+					if not addon.SpellCritPerInt[addon.class][level] then
+						local spellCritPerInt = floor(StatLogic:GetSpellCritPerInt() * rounding + 0.5) / rounding
+						expansion.SpellCritPerInt[addon.class][level] = spellCritPerInt
+					end
+					SendStoredData()
 				else
 					C_Timer.After(2, function()
-						send:GetScript("OnEvent")("SPELLS_CHANGED")
+						store:GetScript("OnEvent")("SPELLS_CHANGED")
 					end)
 				end
-			end
-		end)
+			end)
+			store:GetScript("OnEvent")("SPELLS_CHANGED")
+		end
 	end
+
+	EventRegistry:RegisterFrameEventAndCallback("PLAYER_LOGIN", function(handle)
+		-- Annoying workaround for stats from ItemEffects
+		-- not existing the first time you see an item's tooltip
+		C_Timer.After(0, function()
+			for i = INVSLOT_FIRST_EQUIPPED, INVSLOT_LAST_EQUIPPED do
+				local link = GetInventoryItemLink("player", i)
+				if link then
+					StatLogic:GetSum(link)
+				end
+			end
+			C_Timer.After(0, InitializeComms)
+		end)
+
+		EventRegistry:UnregisterFrameEvent("PLAYER_LOGIN", handle)
+	end)
 
 	-- Receive
 	--@debug@
-	C_ChatInfo.RegisterAddonMessagePrefix(addonName)
-	local receive = CreateFrame("Frame")
-	receive:RegisterEvent("CHAT_MSG_ADDON")
-	receive:SetScript("OnEvent", function(_, _, prefix, message)
-		if prefix == addonName then
-			local class, level, critPerAgi, spellCritPerInt, version = (","):split(message)
-			level, critPerAgi, spellCritPerInt = tonumber(level), tonumber(critPerAgi), tonumber(spellCritPerInt)
-			local pattern = "%s:\n[%d] = %.4f,"
-			local newCrit = not addon.CritPerAgi[class][level]
-			local newSpellCrit = not addon.SpellCritPerInt[class][level]
-			if newCrit or newSpellCrit then
-				print(LEGENDARY_ORANGE_COLOR:WrapTextInColorCode(addonName), version, class)
-			end
-			if newCrit then
-				print(pattern:format("CritPerAgi", level, critPerAgi))
-			end
-			if newSpellCrit then
-				print(pattern:format("SpellCritPerInt", level, spellCritPerInt))
+	local receive = {}
+	function receive:OnCommReceived(_, message)
+		local decoded = codec:Decode(message)
+		if not decoded then return end
+		local success, data = LibStub("LibSerialize"):Deserialize(decoded)
+		if not success then return end
+		local count = 0
+		for expansion, conversions in pairs(data) do
+			for conversion, classes in pairs(conversions) do
+				for class, levels in pairs(classes) do
+					for level, value in pairs(levels) do
+						local current = addon[conversion][class][level]
+						if expansion ~= LE_EXPANSION_LEVEL_CURRENT or not current then
+							local old = RatingBuster.conversion_data.global[expansion][conversion][class][level]
+							if old and value ~= old then
+								print(("[%d][%s][%s][%d] from %.4f to %.4f"):format(expansion, conversion, class, level, old, value))
+							end
+							RatingBuster.conversion_data.global[expansion][conversion][class][level] = value
+							count = count + 1
+						end
+					end
+				end
 			end
 		end
-	end)
+		if count > 0 then
+			print("StatLogic: Received", count, "new conversions!")
+		end
+	end
+	LibStub("AceComm-3.0").RegisterComm(receive, prefix)
 	--@end-debug@
 end

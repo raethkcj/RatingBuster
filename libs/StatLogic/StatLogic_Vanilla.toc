@@ -5,6 +5,9 @@
 
 #@non-debug@
 # libs\LibStub\LibStub.lua
+# libs\AceComm-3.0.xml
+# libs\LibSerialize\lib.xml
+# libs\LibDeflate\lib.xml
 #@end-non-debug@
 
 libs\UTF8\utf8data.lua
