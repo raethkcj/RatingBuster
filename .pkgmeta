@@ -33,7 +33,7 @@ move-folders:
   RatingBuster/libs/StatLogic: StatLogic
 
 ignore:
-  - *.txt
+  - ./*.txt
   - *.jpg
   - scripts
 
