@@ -1660,6 +1660,12 @@ StatLogic.StatModTable["ALL"] = {
 			["group"] = addon.BuffGroup.AllStats,
 			["rune"] = true,
 		},
+		-- Buff: Fervor of the Temple Explorer
+		{
+			["aura"] = 446695,
+			["rune"] = true,
+			["value"] = 0.08,
+		},
 	},
 	["MOD_AGI"] = {
 		-- Blessing of Kings - Buff
@@ -1683,6 +1689,12 @@ StatLogic.StatModTable["ALL"] = {
 			["aura"] = 409583,
 			["group"] = addon.BuffGroup.AllStats,
 			["rune"] = true,
+		},
+		-- Buff: Fervor of the Temple Explorer
+		{
+			["aura"] = 446695,
+			["rune"] = true,
+			["value"] = 0.08,
 		},
 	},
 	["MOD_STA"] = {
@@ -1708,6 +1720,12 @@ StatLogic.StatModTable["ALL"] = {
 			["group"] = addon.BuffGroup.AllStats,
 			["rune"] = true,
 		},
+		-- Buff: Fervor of the Temple Explorer
+		{
+			["aura"] = 446695,
+			["rune"] = true,
+			["value"] = 0.08,
+		},
 	},
 	["MOD_INT"] = {
 		-- Blessing of Kings - Buff
@@ -1732,6 +1750,12 @@ StatLogic.StatModTable["ALL"] = {
 			["group"] = addon.BuffGroup.AllStats,
 			["rune"] = true,
 		},
+		-- Buff: Fervor of the Temple Explorer
+		{
+			["aura"] = 446695,
+			["rune"] = true,
+			["value"] = 0.08,
+		},
 	},
 	["MOD_SPI"] = {
 		-- Blessing of Kings - Buff
@@ -1755,6 +1779,12 @@ StatLogic.StatModTable["ALL"] = {
 			["aura"] = 409583,
 			["group"] = addon.BuffGroup.AllStats,
 			["rune"] = true,
+		},
+		-- Buff: Fervor of the Temple Explorer
+		{
+			["aura"] = 446695,
+			["rune"] = true,
+			["value"] = 0.08,
 		},
 	},
 	["MOD_HEALTH"] = {
@@ -1795,6 +1825,12 @@ StatLogic.StatModTable["ALL"] = {
 		{
 			["aura"] = 430947,
 			["value"] = 2,
+		},
+		-- Buff: Fervor of the Temple Explorer
+		{
+			["aura"] = 446695,
+			["rune"] = true,
+			["value"] = 5,
 		},
 		-- Set: Blood Tiger Harness
 		{
@@ -1911,6 +1947,12 @@ StatLogic.StatModTable["ALL"] = {
 		{
 			["aura"] = 438536,
 			["value"] = 4,
+		},
+		-- Buff: Fervor of the Temple Explorer
+		{
+			["aura"] = 446695,
+			["rune"] = true,
+			["value"] = 5,
 		},
 	},
 	["ADD_DODGE"] = {
