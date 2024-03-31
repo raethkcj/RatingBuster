@@ -831,24 +831,24 @@ if addon.class == "DRUID" then
 		["ADD_MASTERY_EFFECT_MOD_MASTERY"] = {
 			-- Mastery: Total Eclipse
 			{
-				["known"] = 77492,
+				["mastery"] = 77492,
 				["value"] = 2,
 			},
 			-- Mastery: Razor Claws (Cat Form)
 			{
-				["known"] = 77493,
+				["mastery"] = 77493,
 				["value"] = 3.1,
 				["aura"] = 768,
 			},
 			-- Mastery: Savage Defender (Bear Form)
 			{
-				["known"] = 77494,
+				["mastery"] = 77494,
 				["value"] = 4,
 				["aura"] = 5487,
 			},
 			-- Mastery: Harmony
 			{
-				["known"] = 77495,
+				["mastery"] = 77495,
 				["value"] = 1.25,
 			},
 		},
@@ -1092,17 +1092,17 @@ elseif addon.class == "DEATHKNIGHT" then
 		["ADD_MASTERY_EFFECT_MOD_MASTERY"] = {
 			-- Mastery: Blood Shield
 			{
-				["known"] = 77513,
+				["mastery"] = 77513,
 				["value"] = 6.25,
 			},
 			-- Mastery: Frozen Heart
 			{
-				["known"] = 77514,
+				["mastery"] = 77514,
 				["value"] = 2,
 			},
 			-- Mastery: Dreadblade
 			{
-				["known"] = 77515,
+				["mastery"] = 77515,
 				["value"] = 2.5,
 			},
 		},
@@ -1278,17 +1278,17 @@ elseif addon.class == "HUNTER" then
 		["ADD_MASTERY_EFFECT_MOD_MASTERY"] = {
 			-- Mastery: Master of Beasts
 			{
-				["known"] = 76657,
+				["mastery"] = 76657,
 				["value"] = 1.67,
 			},
 			-- Mastery: Wild Quiver
 			{
-				["known"] = 76659,
+				["mastery"] = 76659,
 				["value"] = 2.1,
 			},
 			-- Mastery: Essence of the Viper
 			{
-				["known"] = 76658,
+				["mastery"] = 76658,
 				["value"] = 1,
 			},
 		},
@@ -1371,17 +1371,17 @@ elseif addon.class == "MAGE" then
 		["ADD_MASTERY_EFFECT_MOD_MASTERY"] = {
 			-- Mastery: Mana Adept
 			{
-				["known"] = 76547,
+				["mastery"] = 76547,
 				["value"] = 1.5,
 			},
 			-- Mastery: Flashburn
 			{
-				["known"] = 76595,
+				["mastery"] = 76595,
 				["value"] = 2.8,
 			},
 			-- Mastery: Frostburn
 			{
-				["known"] = 76613,
+				["mastery"] = 76613,
 				["value"] = 2.5,
 			},
 		},
@@ -1475,24 +1475,24 @@ elseif addon.class == "PALADIN" then
 		["ADD_MASTERY_EFFECT_MOD_MASTERY"] = {
 			-- Mastery: Illuminated Healing
 			{
-				["known"] = 76669,
+				["mastery"] = 76669,
 				["value"] = 1.5,
 			},
 			-- Mastery: Divine Bulwark
 			{
-				["known"] = 76671,
+				["mastery"] = 76671,
 				["value"] = 2.25,
 			},
 			-- Mastery: Hand of Light
 			{
-				["known"] = 76672,
+				["mastery"] = 76672,
 				["value"] = 2.1,
 			},
 		},
 		["ADD_BLOCK_CHANCE_MOD_MASTERY_EFFECT"] = {
 			-- Mastery: Divine Bulwark
 			{
-				["known"] = 76671,
+				["mastery"] = 76671,
 				["value"] = 1,
 			},
 		},
@@ -1659,17 +1659,17 @@ elseif addon.class == "PRIEST" then
 		["ADD_MASTERY_EFFECT_MOD_MASTERY"] = {
 			-- Mastery: Shield Discipline
 			{
-				["known"] = 77484,
+				["mastery"] = 77484,
 				["value"] = 2.5,
 			},
 			-- Mastery: Echo of Light
 			{
-				["known"] = 77485,
+				["mastery"] = 77485,
 				["value"] = 1.25,
 			},
 			-- Mastery: Shadow Orb Power
 			{
-				["known"] = 77486,
+				["mastery"] = 77486,
 				["value"] = 1.45,
 			},
 		},
@@ -1785,17 +1785,17 @@ elseif addon.class == "ROGUE" then
 		["ADD_MASTERY_EFFECT_MOD_MASTERY"] = {
 			-- Mastery: Potent Poisons
 			{
-				["known"] = 76803,
+				["mastery"] = 76803,
 				["value"] = 3.5,
 			},
 			-- Mastery: Main Gauche
 			{
-				["known"] = 76806,
+				["mastery"] = 76806,
 				["value"] = 2,
 			},
 			-- Mastery: Executioner
 			{
-				["known"] = 76808,
+				["mastery"] = 76808,
 				["value"] = 2.5,
 			},
 		},
@@ -1900,17 +1900,17 @@ elseif addon.class == "SHAMAN" then
 		["ADD_MASTERY_EFFECT_MOD_MASTERY"] = {
 			-- Mastery: Elemental Overload
 			{
-				["known"] = 77222,
+				["mastery"] = 77222,
 				["value"] = 2,
 			},
 			-- Mastery: Enhanced Elements
 			{
-				["known"] = 77223,
+				["mastery"] = 77223,
 				["value"] = 2.5,
 			},
 			-- Mastery: Deep Healing
 			{
-				["known"] = 77226,
+				["mastery"] = 77226,
 				["value"] = 3,
 			},
 		},
@@ -2039,17 +2039,17 @@ elseif addon.class == "WARLOCK" then
 		["ADD_MASTERY_EFFECT_MOD_MASTERY"] = {
 			-- Mastery: Potent Afflictions
 			{
-				["known"] = 77215,
+				["mastery"] = 77215,
 				["value"] = 1.63,
 			},
 			-- Mastery: Master Demonologist
 			{
-				["known"] = 77219,
+				["mastery"] = 77219,
 				["value"] = 2.3,
 			},
 			-- Mastery: Fiery Apocalypse
 			{
-				["known"] = 77220,
+				["mastery"] = 77220,
 				["value"] = 1.35,
 			},
 		},
@@ -2120,24 +2120,24 @@ elseif addon.class == "WARRIOR" then
 		["ADD_MASTERY_EFFECT_MOD_MASTERY"] = {
 			-- Mastery: Strikes of Opportunity
 			{
-				["known"] = 76838,
+				["mastery"] = 76838,
 				["value"] = 2.2,
 			},
 			-- Mastery: Unshackled Fury
 			{
-				["known"] = 76856,
+				["mastery"] = 76856,
 				["value"] = 5.6,
 			},
 			-- Mastery: Critical Block
 			{
-				["known"] = 76857,
+				["mastery"] = 76857,
 				["value"] = 1.5,
 			},
 		},
 		["ADD_BLOCK_CHANCE_MOD_MASTERY_EFFECT"] = {
 			-- Mastery: Critical Block
 			{
-				["known"] = 76857,
+				["mastery"] = 76857,
 				["value"] = 1,
 			},
 		},

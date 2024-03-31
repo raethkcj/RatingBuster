@@ -907,6 +907,15 @@ addon.StatModValidators = {
 			["PLAYER_LEVEL_UP"] = true,
 		},
 	},
+	mastery = {
+		validate = function(case)
+			local mastery1, mastery2 = GetTalentTreeMasterySpells(GetPrimaryTalentTree())
+			return case.mastery == mastery1 or case.mastery == mastery2
+		end,
+		events = {
+			["PLAYER_TALENT_UPDATE"] = true,
+		},
+	},
 	meta = {
 		validate = function(case)
 			return case.meta == equipped_meta_gem
@@ -2160,7 +2169,9 @@ if GetCurrentRegion() == 1 or GetCurrentRegion() == 72 and GetLocale() == "enUS"
 								print(("[%d][%s][%s][%d] from %.4f to %.4f"):format(expansion, conversion, class, level, old, value))
 							end
 							RatingBuster.conversion_data.global[expansion][conversion][class][level] = value
-							count = count + 1
+							if not old then
+								count = count + 1
+							end
 						end
 					end
 				end
