@@ -320,11 +320,19 @@ local options = {
 					args = {},
 					hidden = true,
 				},
+				mastery = {
+					type = 'group',
+					name = L[StatLogic.Stats.MasteryRating],
+					desc = L["Changes the display of %s"]:format(L[StatLogic.Stats.MasteryRating]),
+					order = 9,
+					args = {},
+					hidden = true,
+				},
 				weaponskill = {
 					type = 'group',
 					name = L[StatLogic.Stats.WeaponSkill],
 					desc = L["Changes the display of %s"]:format(L[StatLogic.Stats.WeaponSkill]),
-					order = 9,
+					order = 10,
 					hidden = true,
 					--[[
 					hidden = function()
@@ -344,7 +352,7 @@ local options = {
 					type = 'group',
 					name = L[StatLogic.Stats.ExpertiseRating],
 					desc = L["Changes the display of %s"]:format(L[StatLogic.Stats.ExpertiseRating]),
-					order = 9.5,
+					order = 11,
 					hidden = true,
 					args = {},
 				},
@@ -352,7 +360,7 @@ local options = {
 					type = 'group',
 					name = L[StatLogic.Stats.Defense],
 					desc = L["Changes the display of %s"]:format(L[StatLogic.Stats.Defense]),
-					order = 10,
+					order = 12,
 					hidden = true,
 					args = {},
 				},
@@ -360,7 +368,7 @@ local options = {
 					type = 'group',
 					name = L[StatLogic.Stats.Armor],
 					desc = L["Changes the display of %s"]:format(L[StatLogic.Stats.Armor]),
-					order = 11,
+					order = 13,
 					args = {},
 					hidden = true,
 				},
@@ -368,7 +376,7 @@ local options = {
 					type = 'group',
 					name = L[StatLogic.Stats.ResilienceRating],
 					desc = L["Changes the display of %s"]:format(L[StatLogic.Stats.ResilienceRating]),
-					order = 11,
+					order = 14,
 					args = {},
 					hidden = true,
 				},
@@ -1192,6 +1200,7 @@ local defaults = {
 		showCritAvoidanceFromResilience = false,
 		showCritDamageReductionFromResilience = false,
 		showPvpDamageReductionFromResilience = false,
+		showMasteryFromMasteryRating = false,
 		------------------
 		-- Stat Summary --
 		------------------
@@ -1459,6 +1468,7 @@ do
 		["BLOCK_VALUE"] = StatLogic.Stats.BlockValue,
 		["CRIT_DAMAGE_REDUCTION"] = StatLogic.Stats.CritDamageReduction,
 		["PVP_DAMAGE_REDUCTION"] = StatLogic.Stats.PvPDamageReduction,
+		["MASTERY_EFFECT"] = StatLogic.Stats.MasteryEffect,
 	},
 	{
 		__index = function(_, stat)
@@ -1982,7 +1992,7 @@ function RatingBuster:ProcessText(text, link, color)
 						if #stats > 0 then
 							effect = effect .. " " .. table.concat(stats, ", ")
 						end
-						tinsert(info, effect)
+						tinsert(info, tostring(effect))
 					end
 					table.sort(info, function(a, b)
 						return #a < #b
@@ -2114,6 +2124,9 @@ do
 					infoTable[StatLogic.Stats.PvPDamageReduction] = infoTable[StatLogic.Stats.PvPDamageReduction] + pvpDmgReduction
 				end
 			elseif statID == StatLogic.Stats.MasteryRating then
+				if db.profile.showMasteryFromMasteryRating then
+					infoTable["Decimal"] = infoTable[StatLogic.Stats.Mastery] + effect
+				end
 				if db.profile.showMasteryEffectFromMastery then
 					effect = effect * GSM("ADD_MASTERY_EFFECT_MOD_MASTERY")
 					infoTable["Percent"] = infoTable[StatLogic.Stats.MasteryEffect] + effect
