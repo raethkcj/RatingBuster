@@ -1125,13 +1125,6 @@ elseif addon.class == "SHAMAN" then
 				["aura"] = 436365,
 				["value"] = 0.10,
 			},
-			-- Rune: Spirit of the Alpha (Loyal Beta)
-			{
-				["known"] = 408696,
-				["rune"] = true,
-				["value"] = 0.20,
-				["aura"] = 443320,
-			},
 		},
 		-- Shaman: Toughness (Rank 5) - 2,11
 		--         Increases your armor value from items by 2%/4%/6%/8%/10%.
