@@ -385,6 +385,7 @@ L["statList"] = {
 	{"health", false}, -- Scroll of Enchant Chest - Health (prevents matching Armor)
 
 	{"armor penetration", StatLogic.Stats.ArmorPenetrationRating},
+	{"elemental mastery", false}, -- Frost Witch's Regalia
 	{"mastery", StatLogic.Stats.MasteryRating},
 	{ARMOR:lower(), StatLogic.Stats.Armor},
 }
