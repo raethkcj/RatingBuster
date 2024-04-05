@@ -909,8 +909,11 @@ addon.StatModValidators = {
 	},
 	mastery = {
 		validate = function(case)
-			local mastery1, mastery2 = GetTalentTreeMasterySpells(GetPrimaryTalentTree())
-			return case.mastery == mastery1 or case.mastery == mastery2
+			local spec = GetPrimaryTalentTree()
+			if spec then
+				local mastery1, mastery2 = GetTalentTreeMasterySpells(spec)
+				return case.mastery == mastery1 or case.mastery == mastery2
+			end
 		end,
 		events = {
 			["PLAYER_TALENT_UPDATE"] = true,
