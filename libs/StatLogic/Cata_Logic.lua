@@ -1931,11 +1931,21 @@ elseif addon.class == "SHAMAN" then
 			{
 				["value"] = 1,
 			},
+			-- Passive: Mental Quickness
+			{
+				["value"] = -1,
+				["known"] = 30814,
+			},
 		},
 		["ADD_HEALING_MOD_INT"] = {
 			-- Base
 			{
 				["value"] = 1,
+			},
+			-- Passive: Mental Quickness
+			{
+				["value"] = -1,
+				["known"] = 30814,
 			},
 		},
 		["ADD_DODGE"] = {
@@ -1972,21 +1982,17 @@ elseif addon.class == "SHAMAN" then
 				["known"] = 95862,
 			},
 		},
-		-- Shaman: Mental Quickness - Passive: 30814
-		-- 4.0.1: Increases your spell power by an amount equal to 50% of your attack power
 		["ADD_SPELL_DMG_MOD_AP"] = {
-			-- Mental Quickness
+			-- Passive: Mental Quickness
 			{
-				["value"] = 0.5,
+				["value"] = 0.55,
 				["known"] = 30814,
 			},
 		},
-		-- Shaman: Mental Quickness - Passive: 30814
-		-- 4.0.1: Increases your spell power by an amount equal to 50% of your attack power
 		["ADD_HEALING_MOD_AP"] = {
-			-- Mental Quickness
+			-- Passive: Mental Quickness
 			{
-				["value"] = 0.5,
+				["value"] = 0.55,
 				["known"] = 30814,
 			},
 		},
