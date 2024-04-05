@@ -2164,13 +2164,25 @@ if GetCurrentRegion() == 1 or GetCurrentRegion() == 72 and GetLocale() == "enUS"
 					for level, value in pairs(levels) do
 						local current = addon[conversion][class][level]
 						if expansion ~= LE_EXPANSION_LEVEL_CURRENT or not current then
-							local old = RatingBuster.conversion_data.global[expansion][conversion][class][level]
-							if old and value ~= old then
-								print(("[%d][%s][%s][%d] from %.4f to %.4f"):format(expansion, conversion, class, level, old, value))
+							local valid = true
+							for i = level - 1, 1, -1 do
+								local lesserValue = addon[conversion][class][i]
+								if lesserValue then
+									if value > lesserValue then
+										valid = false
+									end
+									break
+								end
 							end
-							RatingBuster.conversion_data.global[expansion][conversion][class][level] = value
-							if not old then
-								count = count + 1
+							if valid then
+								local old = RatingBuster.conversion_data.global[expansion][conversion][class][level]
+								if old and value ~= old then
+									print(("[%d][%s][%s][%d] from %.4f to %.4f"):format(expansion, conversion, class, level, old, value))
+								end
+								RatingBuster.conversion_data.global[expansion][conversion][class][level] = value
+								if not old then
+									count = count + 1
+								end
 							end
 						end
 					end
