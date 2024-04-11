@@ -2911,12 +2911,12 @@ function StatLogic:GetResilienceEffectGainAfterDR(resAfter, resBefore)
 	-- argCheck for invalid input
 	self:argCheck(resAfter, 2, "number")
 	self:argCheck(resBefore, 2, "nil", "number")
-	local resCurrent = GetCombatRating(CR_RESILIENCE_PLAYER_DAMAGE_TAKEN)
+	local resCurrent = GetCombatRating(COMBAT_RATING_RESILIENCE_PLAYER_DAMAGE_TAKEN)
 	local drBefore
 	if resBefore then
-		drBefore = self:GetResilienceEffectAfterDR(self:GetEffectFromRating(resCurrent + resBefore, CR_RESILIENCE_PLAYER_DAMAGE_TAKEN))
+		drBefore = self:GetResilienceEffectAfterDR(self:GetEffectFromRating(resCurrent + resBefore, StatLogic.Stats.ResilienceRating))
 	else
-		drBefore = GetCombatRatingBonus(CR_RESILIENCE_PLAYER_DAMAGE_TAKEN)
+		drBefore = GetCombatRatingBonus(COMBAT_RATING_RESILIENCE_PLAYER_DAMAGE_TAKEN)
 	end
-	return self:GetResilienceEffectAfterDR(self:GetEffectFromRating(resCurrent + resAfter, CR_RESILIENCE_PLAYER_DAMAGE_TAKEN)) - drBefore
+	return self:GetResilienceEffectAfterDR(self:GetEffectFromRating(resCurrent + resAfter, StatLogic.Stats.ResilienceRating)) - drBefore
 end
