@@ -5,15 +5,7 @@ local StatLogic = LibStub:GetLibrary(addonName)
 StatLogic.RatingBase = {}
 
 -- Extracted from the client at GameTables/OCTRegenMP.txt via wow.tools.local
-local OCTRegenMP = {
-	["PALADIN"] = 0.25,
-	["HUNTER"]  = 0.25,
-	["PRIEST"]  = 0.25,
-	["SHAMAN"]  = 0.25,
-	["MAGE"]    = 0.25,
-	["WARLOCK"] = 0.25,
-	["DRUID"]   = 0.25,
-}
+local OCTRegenMP = 0.25
 
 -- Extracted from the client at GameTables/RegenMPPerSpt.txt via wow.tools.local
 local RegenMPPerSpt = {
@@ -26,23 +18,9 @@ local RegenMPPerSpt = {
 	["DRUID"]   = 0.100,
 }
 
--- Y-intercepts from commonly cited regen formulas
-local RegenMPBase = {
-	["PALADIN"] = 15.0,
-	["HUNTER"]  = 15.0,
-	["PRIEST"]  = 12.5,
-	["SHAMAN"]  = 17.0,
-	["MAGE"]    = 12.5,
-	["WARLOCK"] = 15.0,
-	["DRUID"]   = 15.0,
-}
-
 local NormalManaRegenPerSpi = function()
 	local _, spi = UnitStat("player", 5)
-	local low = OCTRegenMP[addon.class]
-	local high = RegenMPPerSpt[addon.class]
-	local base = RegenMPBase[addon.class]
-	return 5 * (spi > base / (low - high) and high or low)
+	return 5 * (spi > 50 and RegenMPPerSpt[addon.class] or OCTRegenMP)
 end
 
 -- CritPerAgi, SpellCritPerInt, and DodgePerAgi collected via addon comms from users like you <3
