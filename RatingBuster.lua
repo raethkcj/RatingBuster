@@ -2406,6 +2406,33 @@ do
 		end
 	end
 end
+------------------
+-- Reforging UI --
+------------------
+EventUtil.ContinueOnAddOnLoaded("Blizzard_ReforgingUI", function()
+	local function processReforgeColumn(column)
+		if column then
+			local text = column.text:GetText()
+			if text then
+				column.text:SetText(RatingBuster:ProcessText(text))
+			end
+		end
+	end
+
+	hooksecurefunc("ReforgingFrame_Update", function()
+		if not db.global.enableReforgeUI then
+			return
+		end
+		local _, icon = C_Reforge.GetReforgeItemInfo()
+		if icon then
+			for i = 1, REFORGE_MAX_STATS_SHOWN do
+				local left, right = ReforgingFrame_GetStatRow(i)
+				processReforgeColumn(left)
+				processReforgeColumn(right)
+			end
+		end
+	end)
+end)
 
 local blizzardComparisonPatterns = {
 	[ITEM_DELTA_DESCRIPTION] = true,
