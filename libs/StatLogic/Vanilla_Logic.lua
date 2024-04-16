@@ -100,21 +100,20 @@ addon.CritPerAgi = {
 }
 
 -- In Vanilla, these are all equal to CritPerAgi, except Hunter/Rogue which are exactly double
-addon.DodgePerAgi = setmetatable({
-	["HUNTER"] = setmetatable({}, {
-		__index = function(_, level)
-			local critPerAgi = addon.CritPerAgi["HUNTER"][level]
-			return critPerAgi and critPerAgi * 2 or nil
-		end
-	}),
-	["ROGUE"] = setmetatable({}, {
-		__index = function(_, level)
-			local critPerAgi = addon.CritPerAgi["ROGUE"][level]
-			return critPerAgi and critPerAgi * 2 or nil
-		end
-	})
-}, {
-	__index = addon.CritPerAgi
+addon.DodgePerAgi = setmetatable({}, {
+	__index = function (t, class)
+		t[class] = setmetatable({}, {__index = function(classTable, level)
+			local dodgePerAgi = addon.CritPerAgi[class][level]
+			if dodgePerAgi then
+				if class == "HUNTER" or class == "ROGUE" then
+					dodgePerAgi = dodgePerAgi * 2
+				end
+				classTable[level] = dodgePerAgi
+				return dodgePerAgi
+			end
+		end })
+		return t[class]
+	end
 })
 
 addon.SpellCritPerInt = {

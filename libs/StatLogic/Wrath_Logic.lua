@@ -424,38 +424,44 @@ addon.SpellCritPerInt = {
 	},
 }
 
-addon.DodgePerAgi = {
-	["WARRIOR"] = {
-		[80] = 0.0118,
-	},
-	["PALADIN"] = {
-		[80] = 0.0167,
-	},
+-- Most classes have a static ratio between crit and dodge per agi per level.
+-- While the concept is inspired by TrinityCore, these values were confirmed by collecting the results of
+-- StatLogic:GetDodgePerAgi() via addon comms for every level for every class.
+-- Hunters and Warlocks are *not* a static ratio in Wrath Classic, which disagrees with TrinityCore.
+local DodgePerCrit = {
+	["WARRIOR"]     = 0.85 / 1.15,
+	["PALADIN"]     = 1.00 / 1.15,
+	["ROGUE"]       = 2.00 / 1.15,
+	["PRIEST"]      = 1.00 / 1.15,
+	["DEATHKNIGHT"] = 0.85 / 1.15,
+	["SHAMAN"]      = 1.60 / 1.15,
+	["MAGE"]        = 1.00 / 1.15,
+	["DRUID"]       = 2.00 / 1.15,
+}
+
+addon.DodgePerAgi = setmetatable({
 	["HUNTER"] = {
 		[80] = 0.0116,
 	},
-	["ROGUE"] = {
-		[80] = 0.0209,
-	},
-	["PRIEST"] = {
-		[80] = 0.0167,
-	},
-	["DEATHKNIGHT"] = {
-		[80] = 0.0118,
-	},
-	["SHAMAN"] = {
-		[80] = 0.0167,
-	},
-	["MAGE"] = {
-		[80] = 0.017,
-	},
 	["WARLOCK"] = {
-		[80] = 0.0167,
+		0.1289, 0.1289, 0.1228, 0.1228, nil,    nil,    nil,    0.1172, 0.1121, 0.1121,
+		0.1074, 0.1074, 0.1074, 0.1031, 0.0992, 0.0955, 0.0955, 0.0955, 0.0921, 0.0889,
+		0.0859, 0.0859, 0.0832, 0.0832, 0.0781, 0.0781, 0.0781, 0.0758, 0.0758, 0.0716,
+		0.0716, 0.0697, 0.0697, 0.0678, 0.0661, 0.0645, 0.0629, 0.0629, 0.0614, 0.0600,
+		0.0586, 0.0586, 0.0573, 0.0573, 0.0549, 0.0537, 0.0537, 0.0526, 0.0516, 0.0506,
+		0.0496, 0.0496, 0.0486, 0.0477, 0.0469, 0.0460, 0.0452, 0.0445, 0.0445, 0.0430,
+		0.0416, 0.0414, 0.0404, 0.0391, 0.0385, 0.0374, 0.0374, 0.0365, 0.0356, 0.0348,
+		0.0323, 0.0300, 0.0279, 0.0260, nil,    nil,    nil,    nil,    nil,    0.0167,
 	},
-	["DRUID"] = {
-		[80] = 0.0209,
-	},
-}
+}, {
+	__index = function (t, class)
+		t[class] = setmetatable({}, {__index = function(classTable, level)
+			classTable[level] = DodgePerCrit[class] * addon.CritPerAgi[class][level]
+			return classTable[level]
+		end })
+		return t[class]
+	end
+})
 
 addon.bonusArmorItemEquipLoc = {
 	["INVTYPE_WEAPON"] = true,
