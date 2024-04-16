@@ -2094,11 +2094,20 @@ if GetCurrentRegion() == 1 or GetCurrentRegion() == 72 and GetLocale() == "enUS"
 			-- Send
 			local function SendStoredData()
 				if failure or sending or UnitName("player") == target then return end
-				sending = true
 				local data = RatingBuster.conversion_data.global
-				local serialized = LibStub("LibSerialize"):Serialize(data)
-				local encoded = codec:Encode(serialized)
-				LibStub("AceComm-3.0"):SendCommMessage(prefix, encoded, "WHISPER", target, "BULK", cleanUp, true)
+				local send = false
+				for i = 0, 4 do
+					if data[i] then
+						send = true
+						break
+					end
+				end
+				if send then
+					sending = true
+					local serialized = LibStub("LibSerialize"):Serialize(data)
+					local encoded = codec:Encode(serialized)
+					LibStub("AceComm-3.0"):SendCommMessage(prefix, encoded, "WHISPER", target, "BULK", cleanUp, true)
+				end
 			end
 
 			-- Store
