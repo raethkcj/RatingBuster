@@ -868,8 +868,8 @@ addon.StatModValidators = {
 		},
 	},
 	aura = {
-		validate = function(case, stat)
-			return StatLogic:GetAuraInfo(GetSpellInfo(case.aura), StatLogic.StatModIgnoresAlwaysBuffed[stat])
+		validate = function(case, statModName)
+			return StatLogic:GetAuraInfo(GetSpellInfo(case.aura), StatLogic.StatModIgnoresAlwaysBuffed[statModName])
 		end,
 		events = {
 			["UNIT_AURA"] = "player",
@@ -1019,7 +1019,7 @@ do
 	end)
 end
 
-local function ValidateStatMod(stat, case)
+local function ValidateStatMod(statModName, case)
 	for validatorType in pairs(case) do
 		local validator = addon.StatModValidators[validatorType]
 		if validator then
@@ -1030,11 +1030,11 @@ local function ValidateStatMod(stat, case)
 						key = event .. unit
 					end
 					addon.StatModCacheInvalidators[key] = addon.StatModCacheInvalidators[key] or {}
-					table.insert(addon.StatModCacheInvalidators[key], stat)
+					table.insert(addon.StatModCacheInvalidators[key], statModName)
 				end
 			end
 
-			if validator.validate and not validator.validate(case, stat) then
+			if validator.validate and not validator.validate(case, statModName) then
 				return false
 			end
 		end
@@ -1112,95 +1112,94 @@ do
 	}
 	local BuffGroupCache = {}
 
-	local function ApplyMod(mod, value, initialValue)
+	local function ApplyMod(currentValue, newValue, initialValue)
 		if initialValue == 0 then
-			mod = mod + value
+			currentValue = currentValue + newValue
 		else
-			mod = mod * (value + 1)
+			currentValue = currentValue * (newValue + 1)
 		end
-		return mod
+		return currentValue
 	end
 
-	local function RemoveMod(mod, value, initialValue)
+	local function RemoveMod(currentValue, newValue, initialValue)
 		if initialValue == 0 then
-			mod = mod - value
+			currentValue = currentValue - newValue
 		else
-			mod = mod / (value + 1)
+			currentValue = currentValue / (newValue + 1)
 		end
-		return mod
+		return currentValue
 	end
 
-	local GetStatModValue = function(stat, mod, case, initialValue)
-		local valid = ValidateStatMod(stat, case)
-		if not valid then
-			return mod
+	local GetStatModValue = function(statModName, currentValue, case, initialValue)
+		if not ValidateStatMod(statModName, case) then
+			return currentValue
 		end
 
-		local value
+		local newValue
 		if case.tab and case.num then
 			-- Talent Rank
 			local r = select(5, StatLogic:GetOrderedTalentInfo(case.tab, case.num))
 			if case.rank then
-				value = case.rank[r]
+				newValue = case.rank[r]
 			elseif r > 0 then
-				value = case.value
+				newValue = case.value
 			end
 		elseif case.aura and case.rank then
 			local aura = StatLogic:GetAuraInfo(GetSpellInfo(case.aura))
 			local rank = aura.rank or GetPlayerBuffRank(aura.spellId)
-			value = case.rank[rank]
+			newValue = case.rank[rank]
 		elseif case.aura and case.stack then
 			local aura = StatLogic:GetAuraInfo(GetSpellInfo(case.aura))
-			value = case.stack * aura.stacks
+			newValue = case.stack * aura.stacks
 		elseif case.regen then
-			value = case.regen()
+			newValue = case.regen()
 		elseif case.value then
-			value = case.value
+			newValue = case.value
 		elseif case.level then
-			value = case.level[UnitLevel("player")]
+			newValue = case.level[UnitLevel("player")]
 		elseif case.tooltip then
 			local aura = StatLogic:GetAuraInfo(GetSpellInfo(case.aura))
-			value = aura.tooltip
+			newValue = aura.tooltip
 		end
 
-		if value then
+		if newValue then
 			if case.group then
 				local oldValue = BuffGroupCache[case.group]
-				if oldValue and value > oldValue then
-					mod = RemoveMod(mod, oldValue, initialValue)
+				if oldValue and newValue > oldValue then
+					currentValue = RemoveMod(currentValue, oldValue, initialValue)
 				end
-				if not oldValue or value > oldValue then
-					mod = ApplyMod(mod, value, initialValue)
-					BuffGroupCache[case.group] = value
+				if not oldValue or newValue > oldValue then
+					currentValue = ApplyMod(currentValue, newValue, initialValue)
+					BuffGroupCache[case.group] = newValue
 				end
 			else
-				mod = ApplyMod(mod, value, initialValue)
+				currentValue = ApplyMod(currentValue, newValue, initialValue)
 			end
 		end
 
-		return mod
+		return currentValue
 	end
 
-	function StatLogic:GetStatMod(stat)
-		local mod = StatModCache[stat]
+	function StatLogic:GetStatMod(statModName)
+		local value = StatModCache[statModName]
 
-		if not mod then
+		if not value then
 			wipe(BuffGroupCache)
-			local statModInfo = StatLogic.StatModInfo[stat]
-			mod = statModInfo.initialValue
+			local statModInfo = StatLogic.StatModInfo[statModName]
+			value = statModInfo.initialValue
 			for _, categoryTable in pairs(StatLogic.StatModTable) do
-				if categoryTable[stat] then
-					for _, case in ipairs(categoryTable[stat]) do
-						mod = GetStatModValue(stat, mod, case, statModInfo.initialValue)
+				if categoryTable[statModName] then
+					for _, case in ipairs(categoryTable[statModName]) do
+						value = GetStatModValue(statModName, value, case, statModInfo.initialValue)
 					end
 				end
 			end
 
-			mod = mod + statModInfo.finalAdjust
-			StatModCache[stat] = mod
+			value = value + statModInfo.finalAdjust
+			StatModCache[statModName] = value
 		end
 
-		return mod
+		return value
 	end
 end
 
