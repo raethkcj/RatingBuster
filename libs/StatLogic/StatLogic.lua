@@ -1111,10 +1111,12 @@ do
 		return currentValue
 	end
 
-	local GetStatModValue = function(statModName, currentValue, case, initialValue)
+	local GetStatModValue = function(statModName, currentValue, case, initialValue, level)
 		if not ValidateStatMod(statModName, case) then
 			return currentValue
 		end
+
+		level = level or UnitLevel("player")
 
 		local newValue
 		if case.tab and case.num then
@@ -1133,11 +1135,11 @@ do
 			local aura = StatLogic:GetAuraInfo(GetSpellInfo(case.aura))
 			newValue = case.stack * aura.stacks
 		elseif case.regen then
-			newValue = case.regen()
+			newValue = case.regen(level)
 		elseif case.value then
 			newValue = case.value
 		elseif case.level then
-			newValue = case.level[UnitLevel("player")]
+			newValue = case.level[level]
 		elseif case.tooltip then
 			local aura = StatLogic:GetAuraInfo(GetSpellInfo(case.aura))
 			newValue = aura.tooltip
@@ -1161,7 +1163,7 @@ do
 		return currentValue
 	end
 
-	function StatLogic:GetStatMod(statModName)
+	function StatLogic:GetStatMod(statModName, level)
 		local value = StatModCache[statModName]
 
 		if not value then
@@ -1171,7 +1173,7 @@ do
 			for _, categoryTable in pairs(StatLogic.StatModTable) do
 				if categoryTable[statModName] then
 					for _, case in ipairs(categoryTable[statModName]) do
-						value = GetStatModValue(statModName, value, case, statModInfo.initialValue)
+						value = GetStatModValue(statModName, value, case, statModInfo.initialValue, level)
 					end
 				end
 			end
