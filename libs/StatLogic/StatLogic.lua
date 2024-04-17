@@ -78,7 +78,6 @@ local ipairs = ipairs
 local type = type
 local GetInventoryItemLink = GetInventoryItemLink
 local IsUsableSpell = IsUsableSpell
-local UnitLevel = UnitLevel
 local UnitStat = UnitStat
 local GetShapeshiftForm = GetShapeshiftForm
 local GetShapeshiftFormInfo = GetShapeshiftFormInfo
@@ -305,24 +304,6 @@ local function GetPlayerBuffRank(buff)
 	local rank = GetSpellSubtext(buff)
 	if rank then
 		return tonumber(rank:match("(%d+)")) or 1
-	end
-end
-
-local function GetTotalDefense(unit)
-	local base, modifier = UnitDefense(unit);
-	return base + modifier
-end
-
-local function GetTotalWeaponSkill(unit)
-	if addon.class == "DRUID" and (
-		StatLogic:GetAuraInfo(GetSpellInfo(768), true)
-		or StatLogic:GetAuraInfo(GetSpellInfo(5487), true)
-		or StatLogic:GetAuraInfo(GetSpellInfo(9634), true)
-	) then
-		return UnitLevel("player") * 5
-	else
-		local base, modifier = UnitAttackBothHands(unit);
-		return base + modifier
 	end
 end
 
@@ -1249,51 +1230,30 @@ do
 	end
 end
 
-function StatLogic:GetReductionFromArmor(armor, attackerLevel)
-	self:argCheck(armor, 2, "nil", "number")
-	self:argCheck(attackerLevel, 3, "nil", "number")
-	if not armor then
-		armor = select(2, UnitArmor("player"))
-	end
-
-	if not attackerLevel then
-		attackerLevel = UnitLevel("player")
-	end
-
-	local levelModifier = attackerLevel
-	if ( levelModifier > 59 ) then
-		levelModifier = levelModifier + (4.5 * (levelModifier - 59))
-	end
-	local temp = armor / (85 * levelModifier + 400)
-	local armorReduction = temp / (1 + temp)
-	-- caps at 75%
-	if armorReduction > 0.75 then
-		armorReduction = 0.75
-	end
-	if armorReduction < 0 then
-		armorReduction = 0
-	end
-	return armorReduction
-end
-
 if not DODGE_PARRY_BLOCK_PERCENT_PER_DEFENSE then DODGE_PARRY_BLOCK_PERCENT_PER_DEFENSE = 0.04 end
-function StatLogic:GetEffectFromDefense(defense, attackerLevel)
-	self:argCheck(defense, 2, "nil", "number")
-	self:argCheck(attackerLevel, 3, "nil", "number")
-	defense = defense or GetTotalDefense("player")
-	if not attackerLevel then
-		attackerLevel = UnitLevel("player")
-	end
+function StatLogic:GetEffectFromDefense()
+	local base, modifier = UnitDefense("player");
+	local defense = base + modifier
+	local attackerLevel = UnitLevel("player")
 	return (defense - attackerLevel * 5) * DODGE_PARRY_BLOCK_PERCENT_PER_DEFENSE
 end
 
-function StatLogic:GetCritChanceFromWeaponSkill(skill, targetLevel)
-	self:argCheck(skill, 2, "nil", "number")
-	self:argCheck(targetLevel, 3, "nil", "number")
-	skill = skill or GetTotalWeaponSkill("player")
-	if not targetLevel then
-		targetLevel = UnitLevel("player")
+local function GetTotalWeaponSkill(unit)
+	if addon.class == "DRUID" and (
+		StatLogic:GetAuraInfo(GetSpellInfo(768), true)
+		or StatLogic:GetAuraInfo(GetSpellInfo(5487), true)
+		or StatLogic:GetAuraInfo(GetSpellInfo(9634), true)
+	) then
+		return UnitLevel("player") * 5
+	else
+		local base, modifier = UnitAttackBothHands(unit);
+		return base + modifier
 	end
+end
+
+function StatLogic:GetCritChanceFromWeaponSkill()
+	local skill = GetTotalWeaponSkill("player")
+	local targetLevel = UnitLevel("player")
 	return (skill - targetLevel * 5) * 0.04
 end
 
@@ -1364,8 +1324,8 @@ function StatLogic:GetDodgePerAgi()
 	-- dodgeFromAgi is %
 	local dodgeFromAgi = GetDodgeChance()
 		- self:GetStatMod("ADD_DODGE")
-		- self:GetEffectFromRating(GetCombatRating(CR_DODGE), StatLogic.Stats.DodgeRating, UnitLevel("player"))
-		- self:GetEffectFromDefense(GetTotalDefense("player"), UnitLevel("player"))
+		- self:GetEffectFromRating(GetCombatRating(CR_DODGE), StatLogic.Stats.DodgeRating)
+		- self:GetEffectFromDefense()
 		- self:GetTotalEquippedStat(StatLogic.Stats.Dodge)
 	return dodgeFromAgi / agility
 end
