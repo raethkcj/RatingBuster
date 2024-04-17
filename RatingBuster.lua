@@ -2410,27 +2410,22 @@ end
 -- Reforging UI --
 ------------------
 EventUtil.ContinueOnAddOnLoaded("Blizzard_ReforgingUI", function()
-	local function processReforgeColumn(column)
-		if column then
-			local text = column.text:GetText()
-			if text then
-				column.text:SetText(RatingBuster:ProcessText(text))
-			end
+	local function hookReforgingFontString(fontString)
+		local og_SetText = fontString.SetText
+		fontString.SetText = function(self, text, ...)
+			og_SetText(self, RatingBuster:ProcessText(text))
 		end
 	end
 
-	hooksecurefunc("ReforgingFrame_Update", function()
-		if not db.global.enableReforgeUI then
-			return
-		end
-		local _, icon = C_Reforge.GetReforgeItemInfo()
-		if icon then
-			for i = 1, REFORGE_MAX_STATS_SHOWN do
-				local left, right = ReforgingFrame_GetStatRow(i)
-				processReforgeColumn(left)
-				processReforgeColumn(right)
-			end
-		end
+	local hooked = {}
+	hooksecurefunc("ReforgingFrame_GetStatRow", function(index, tryAdd)
+		if hooked[index] or not tryAdd then return end
+		hooked[index] = true
+
+		local leftStat = _G["ReforgingFrameLeftStat"..index];
+		local rightStat = _G["ReforgingFrameRightStat"..index];
+		hookReforgingFontString(leftStat.text)
+		hookReforgingFontString(rightStat.text)
 	end)
 end)
 
