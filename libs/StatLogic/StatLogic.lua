@@ -167,7 +167,7 @@ end
 ---@field [Stat] number
 
 -- New table
-local function new(...)
+local function newPooledTable(...)
 	local t = next(pool) or {}
 	pool[t] = nil
 
@@ -224,11 +224,11 @@ end
 -- copyTable
 local function copyTable(to, from)
 	if not clearTable(to) then
-		to = new()
+		to = newPooledTable()
 	end
 	for k,v in pairs(from) do
 		if type(v) == "table" then
-			v = copyTable(new(), v)
+			v = copyTable(newPooledTable(), v)
 		end
 		to[k] = v
 	end
@@ -1598,7 +1598,7 @@ do
 		-- Clear table values
 		clearTable(oldStatTable)
 		-- Initialize statTable
-		statTable = oldStatTable or new()
+		statTable = oldStatTable or newPooledTable()
 		setmetatable(statTable, statTableMetatable)
 
 		tip:ClearLines() -- this is required or SetX won't work the second time its called
