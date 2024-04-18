@@ -262,6 +262,7 @@ local options = {
 					width = "full",
 					order = 3,
 					args = {},
+					hidden = true,
 				},
 				agi = {
 					type = 'group',
@@ -269,18 +270,8 @@ local options = {
 					desc = L["Changes the display of %s"]:format(L[StatLogic.Stats.Agility]),
 					width = "full",
 					order = 4,
-					args = {
-						showCritFromAgi = {
-							type = 'toggle',
-							name = L["Show %s"]:format(L[StatLogic.Stats.MeleeCrit]),
-							width = "full",
-						},
-						showDodgeFromAgi = {
-							type = 'toggle',
-							name = L["Show %s"]:format(L[StatLogic.Stats.Dodge]),
-							width = "full",
-						},
-					},
+					args = {},
+					hidden = true,
 				},
 				sta = {
 					type = 'group',
@@ -289,6 +280,7 @@ local options = {
 					width = "full",
 					order = 5,
 					args = {},
+					hidden = true,
 				},
 				int = {
 					type = 'group',
@@ -296,13 +288,8 @@ local options = {
 					desc = L["Changes the display of %s"]:format(L[StatLogic.Stats.Intellect]),
 					width = "full",
 					order = 6,
-					args = {
-						showSpellCritFromInt = {
-							type = 'toggle',
-							name = L["Show %s"]:format(L[StatLogic.Stats.SpellCrit]),
-							width = "full",
-						},
-					},
+					args = {},
+					hidden = true,
 				},
 				spi = {
 					type = 'group',
@@ -311,6 +298,7 @@ local options = {
 					width = "full",
 					order = 7,
 					args = {},
+					hidden = true,
 				},
 				ap = {
 					type = 'group',
@@ -1454,6 +1442,8 @@ do
 		["HEALTH"] = StatLogic.Stats.Health,
 		["HEALTH_REG"] = StatLogic.Stats.HealthRegen,
 		["NORMAL_HEALTH_REG"] = StatLogic.Stats.HealthRegenOutOfCombat,
+		["MELEE_CRIT"] = StatLogic.Stats.MeleeCrit,
+		["RANGED_CRIT"] = StatLogic.Stats.RangedCrit,
 		["SPELL_DMG"] = StatLogic.Stats.SpellDamage,
 		["SPELL_HIT"] = StatLogic.Stats.SpellHit,
 		["SPELL_CRIT"] = StatLogic.Stats.SpellCrit,
@@ -2211,12 +2201,12 @@ do
 				local effect = value * GSM("ADD_RANGED_AP_MOD_AGI") * GSM("MOD_RANGED_AP")
 				infoTable[StatLogic.Stats.RangedAttackPower] = infoTable[StatLogic.Stats.RangedAttackPower] + effect
 			end
-			if db.profile.showCritFromAgi then
-				local effect = value * StatLogic:GetCritPerAgi()
+			if db.profile.showMeleeCritFromAgi then
+				local effect = value * GSM("ADD_MELEE_CRIT_MOD_AGI")
 				infoTable[StatLogic.Stats.MeleeCrit] = infoTable[StatLogic.Stats.MeleeCrit] + effect
 			end
 			if db.profile.showDodgeFromAgi then
-				local effect = value * StatLogic:GetDodgePerAgi()
+				local effect = value * GSM("ADD_DODGE_MOD_AGI")
 				infoTable[StatLogic.Stats.Dodge] = infoTable[StatLogic.Stats.Dodge] + effect
 			end
 			local bonusArmor = value * GSM("ADD_BONUS_ARMOR_MOD_AGI")
@@ -2257,7 +2247,7 @@ do
 				infoTable[StatLogic.Stats.Mana] = infoTable[StatLogic.Stats.Mana] + effect
 			end
 			if db.profile.showSpellCritFromInt then
-				local effect = value * StatLogic:GetSpellCritPerInt()
+				local effect = value * GSM("ADD_SPELL_CRIT_MOD_INT")
 				infoTable[StatLogic.Stats.SpellCrit] = infoTable[StatLogic.Stats.SpellCrit] + effect
 			end
 			if db.profile.showSpellDmgFromInt then
@@ -2737,7 +2727,7 @@ local summaryCalcData = {
 		func = function(sum)
 			return sum[StatLogic.Stats.MeleeCrit]
 				+ StatLogic:GetEffectFromRating(sum[StatLogic.Stats.MeleeCritRating], StatLogic.Stats.MeleeCritRating, playerLevel)
-				+ sum[StatLogic.Stats.Agility] * StatLogic:GetCritPerAgi()
+				+ sum[StatLogic.Stats.Agility] * GSM("ADD_MELEE_CRIT_MOD_AGI")
 		end,
 		ispercent = true,
 	},
@@ -2756,7 +2746,7 @@ local summaryCalcData = {
 		func = function(sum)
 			return sum[StatLogic.Stats.RangedCrit]
 				+ StatLogic:GetEffectFromRating(sum[StatLogic.Stats.RangedCritRating], StatLogic.Stats.RangedCritRating, playerLevel)
-				+ sum[StatLogic.Stats.Agility] * StatLogic:GetCritPerAgi()
+				+ sum[StatLogic.Stats.Agility] * GSM("ADD_RANGED_CRIT_MOD_AGI")
 		end,
 		ispercent = true,
 	},
@@ -3011,7 +3001,7 @@ local summaryCalcData = {
 		func = function(sum)
 			return sum[StatLogic.Stats.SpellCrit]
 				+ StatLogic:GetEffectFromRating(summaryFunc[StatLogic.Stats.SpellCritRating](sum), StatLogic.Stats.SpellCritRating, playerLevel)
-				+ sum[StatLogic.Stats.Intellect] * StatLogic:GetSpellCritPerInt()
+				+ sum[StatLogic.Stats.Intellect] * GSM("ADD_SPELL_CRIT_MOD_INT")
 		end,
 		ispercent = true,
 	},
@@ -3071,7 +3061,7 @@ local summaryCalcData = {
 			return sum[StatLogic.Stats.Dodge]
 				+ StatLogic:GetEffectFromRating(sum[StatLogic.Stats.DodgeRating], StatLogic.Stats.DodgeRating, playerLevel)
 				+ summaryFunc[StatLogic.Stats.Defense](sum) * GSM("ADD_DODGE_MOD_DEFENSE")
-				+ sum[StatLogic.Stats.Agility] * StatLogic:GetDodgePerAgi()
+				+ sum[StatLogic.Stats.Agility] * GSM("ADD_DODGE_MOD_AGI")
 		end,
 		ispercent = true,
 	},

@@ -103,7 +103,7 @@ addon.CritPerAgi = {
 addon.DodgePerAgi = setmetatable({}, {
 	__index = function (t, class)
 		t[class] = setmetatable({}, {__index = function(classTable, level)
-			local dodgePerAgi = addon.CritPerAgi[class][level]
+			local dodgePerAgi = rawget(addon.CritPerAgi[class], level)
 			if dodgePerAgi then
 				if class == "HUNTER" or class == "ROGUE" then
 					dodgePerAgi = dodgePerAgi * 2

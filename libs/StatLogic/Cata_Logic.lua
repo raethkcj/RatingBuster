@@ -2716,10 +2716,6 @@ Dodge/Agi=(-b-(b^2-4ac)^0.5)/(2a)
 ---@return number dodge Dodge percentage per agility
 function StatLogic:GetDodgePerAgi()
 	local level = UnitLevel("player")
-	local class = addon.class
-	if false and addon.DodgePerAgi[class][level] then
-		return addon.DodgePerAgi[class][level]
-	end
 	-- Collect data
 	local D_dr = GetDodgeChance()
 	if D_dr == 0 then
@@ -2734,7 +2730,7 @@ function StatLogic:GetDodgePerAgi()
 	local D_b = self:GetStatMod("ADD_DODGE") + (baseDefense - level * 5) * 0.04
 	local stat, effectiveStat, posBuff, negBuff = UnitStat("player", 2) -- 2 = Agility
 	local modAgi = 1
-	if ModAgiClasses[class] then
+	if ModAgiClasses[addon.class] then
 		modAgi = self:GetStatMod("MOD_AGI")
 		-- Talents that modify Agi will not add to posBuff, so we need to calculate baseAgi
 		-- But Agi from Kings etc. will add to posBuff, so we subtract those if present
@@ -2749,8 +2745,8 @@ function StatLogic:GetDodgePerAgi()
 	local A = effectiveStat
 	local A_b = ceil((stat - posBuff - negBuff) / modAgi)
 	local A_g = A - A_b
-	local C = C_d[class]
-	local k = K[class]
+	local C = C_d[addon.class]
+	local k = K[addon.class]
 	-- Solve a*x^2+b*x+c
 	local a = -A_g*A_b
 	local b = A_g*(D_dr-D_b)-A_b*(D_r+C*k)-C*A_g

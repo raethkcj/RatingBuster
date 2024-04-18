@@ -481,6 +481,18 @@ local addedInfoMods = {
 		mod = "INT",
 	},
 	{
+		add = "MELEE_CRIT",
+		mod = "AGI",
+	},
+	{
+		add = "RANGED_CRIT",
+		mod = "AGI",
+	},
+	{
+		add = "DODGE",
+		mod = "AGI",
+	},
+	{
 		add = "HEALING",
 		mod = "AGI",
 	},
@@ -542,6 +554,10 @@ local addedInfoMods = {
 	},
 	{
 		add = "RANGED_AP",
+		mod = "INT",
+	},
+	{
+		add = "SPELL_CRIT",
 		mod = "INT",
 	},
 	{
@@ -1164,7 +1180,10 @@ do
 	end
 
 	function StatLogic:GetStatMod(statModName, level)
-		local value = StatModCache[statModName]
+		local value
+		if not level or level == UnitLevel("player") then
+			value = StatModCache[statModName]
+		end
 
 		if not value then
 			wipe(BuffGroupCache)
@@ -1179,7 +1198,9 @@ do
 			end
 
 			value = value + statModInfo.finalAdjust
-			StatModCache[statModName] = value
+			if not level or level == UnitLevel("player") then
+				StatModCache[statModName] = value
+			end
 		end
 
 		return value
@@ -1317,11 +1338,6 @@ if not CR_DODGE then CR_DODGE = 3 end;
 -- Only works for your currect class and current level, does not support class and level args.
 ---@return number dodge Dodge percentage per agility
 function StatLogic:GetDodgePerAgi()
-	local level = UnitLevel("player")
-	local class = addon.class
-	if addon.DodgePerAgi[class][level] then
-		return addon.DodgePerAgi[class][level]
-	end
 	local _, agility = UnitStat("player", 2)
 	-- dodgeFromAgi is %
 	local dodgeFromAgi = GetDodgeChance()
@@ -1333,33 +1349,19 @@ function StatLogic:GetDodgePerAgi()
 end
 
 function StatLogic:GetCritPerAgi()
-	local level = UnitLevel("player")
-	local class = addon.class
-
-	if addon.CritPerAgi[class][level] then
-		return addon.CritPerAgi[class][level]
-	else
-		local _, agility = UnitStat("player", 2)
-		local critFromAgi = GetCritChance()
-			- self:GetStatMod("ADD_MELEE_CRIT")
-			- self:GetCritChanceFromWeaponSkill()
-			- self:GetTotalEquippedStat(StatLogic.Stats.MeleeCrit)
-		return critFromAgi / agility
-	end
+	local _, agility = UnitStat("player", 2)
+	local critFromAgi = GetCritChance()
+	- self:GetStatMod("ADD_MELEE_CRIT")
+	- self:GetCritChanceFromWeaponSkill()
+	- self:GetTotalEquippedStat(StatLogic.Stats.MeleeCrit)
+	return critFromAgi / agility
 end
 
 function StatLogic:GetSpellCritPerInt()
-	local level = UnitLevel("player")
-	local class = addon.class
-
-	if addon.SpellCritPerInt[class][level] then
-		return addon.SpellCritPerInt[class][level]
-	else
-		local _, intellect = UnitStat("player", 4)
-		local critFromInt = GetSpellCritChance(1)
-			- self:GetStatMod("ADD_SPELL_CRIT")
-		return critFromInt / intellect
-	end
+	local _, intellect = UnitStat("player", 4)
+	local critFromInt = GetSpellCritChance(1)
+	- self:GetStatMod("ADD_SPELL_CRIT")
+	return critFromInt / intellect
 end
 
 ----------------------------------
@@ -2083,15 +2085,15 @@ if GetCurrentRegion() == 1 or GetCurrentRegion() == 72 and GetLocale() == "enUS"
 					if tocversion >= 40000 then
 						rounding = 10 ^ 8
 					end
-					if not addon.CritPerAgi[addon.class][level] then
+					if not rawget(addon.CritPerAgi[addon.class], level) then
 						local critPerAgi = floor(StatLogic:GetCritPerAgi() * rounding + 0.5) / rounding
 						expansion.CritPerAgi[addon.class][level] = critPerAgi
 					end
-					if not addon.DodgePerAgi[addon.class][level] then
+					if not rawget(addon.DodgePerAgi[addon.class], level) then
 						local dodgePerAgi = floor(StatLogic:GetDodgePerAgi() * rounding + 0.5) / rounding
 						expansion.DodgePerAgi[addon.class][level] = dodgePerAgi
 					end
-					if not addon.SpellCritPerInt[addon.class][level] then
+					if not rawget(addon.SpellCritPerInt[addon.class], level) then
 						local spellCritPerInt = floor(StatLogic:GetSpellCritPerInt() * rounding + 0.5) / rounding
 						expansion.SpellCritPerInt[addon.class][level] = spellCritPerInt
 					end
