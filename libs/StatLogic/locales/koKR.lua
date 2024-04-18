@@ -9,6 +9,8 @@ W["침착함"] = {[StatLogic.Stats.HitRating] = 10, }
 W["전투력"] = {[StatLogic.Stats.AttackPower] = 70, }
 W["태양의 불꽃"] = {[StatLogic.Stats.ArcaneDamage] = 50, [StatLogic.Stats.FireDamage] = 50, }
 W["냉기의 영혼"] = {[StatLogic.Stats.ShadowDamage] = 54, [StatLogic.Stats.FrostDamage] = 54, }
+W["돌가죽 가고일의 룬"] = {[StatLogic.Stats.Defense] = 25, }
+W["네루비안 등껍질의 룬"] = {[StatLogic.Stats.Defense] = 13, }
 
 local L = addon.StatIDLookup
 L["방어도 보강 %s"] = {StatLogic.Stats.BonusArmor, }

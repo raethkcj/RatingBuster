@@ -9,6 +9,8 @@ W["pied sûr"] = {[StatLogic.Stats.HitRating] = 10, }
 W["sauvagerie"] = {[StatLogic.Stats.AttackPower] = 70, }
 W["feu solaire"] = {[StatLogic.Stats.ArcaneDamage] = 50, [StatLogic.Stats.FireDamage] = 50, }
 W["âme de givre"] = {[StatLogic.Stats.ShadowDamage] = 54, [StatLogic.Stats.FrostDamage] = 54, }
+W["rune de la gargouille peau de pierre"] = {[StatLogic.Stats.Defense] = 25, }
+W["rune de la carapace nérubienne"] = {[StatLogic.Stats.Defense] = 13, }
 
 local L = addon.StatIDLookup
 L["armure renforcée %s"] = {StatLogic.Stats.BonusArmor, }

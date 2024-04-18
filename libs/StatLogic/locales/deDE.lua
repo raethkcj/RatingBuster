@@ -9,6 +9,8 @@ W["sicherer stand"] = {[StatLogic.Stats.HitRating] = 10, }
 W["unbändigkeit"] = {[StatLogic.Stats.AttackPower] = 70, }
 W["sonnenfeuer"] = {[StatLogic.Stats.ArcaneDamage] = 50, [StatLogic.Stats.FireDamage] = 50, }
 W["seelenfrost"] = {[StatLogic.Stats.ShadowDamage] = 54, [StatLogic.Stats.FrostDamage] = 54, }
+W["rune des steinhautgargoyles"] = {[StatLogic.Stats.Defense] = 25, }
+W["rune der nerubischen panzerung"] = {[StatLogic.Stats.Defense] = 13, }
 
 local L = addon.StatIDLookup
 L["verstärkte rüstung %s"] = {StatLogic.Stats.BonusArmor, }

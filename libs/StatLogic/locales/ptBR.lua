@@ -9,6 +9,8 @@ W["firmeza"] = {[StatLogic.Stats.HitRating] = 10, }
 W["selvageria"] = {[StatLogic.Stats.AttackPower] = 70, }
 W["fogo solar"] = {[StatLogic.Stats.ArcaneDamage] = 50, [StatLogic.Stats.FireDamage] = 50, }
 W["congelar alma"] = {[StatLogic.Stats.ShadowDamage] = 54, [StatLogic.Stats.FrostDamage] = 54, }
+W["runa da gárgula litopele"] = {[StatLogic.Stats.Defense] = 25, }
+W["runa da carapaça nerubiana"] = {[StatLogic.Stats.Defense] = 13, }
 
 local L = addon.StatIDLookup
 L["armadura reforçada %s"] = {StatLogic.Stats.BonusArmor, }

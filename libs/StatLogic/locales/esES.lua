@@ -9,6 +9,8 @@ W["pies de plomo"] = {[StatLogic.Stats.HitRating] = 10, }
 W["salvajismo"] = {[StatLogic.Stats.AttackPower] = 70, }
 W["fuego solar"] = {[StatLogic.Stats.ArcaneDamage] = 50, [StatLogic.Stats.FireDamage] = 50, }
 W["escarcha de alma"] = {[StatLogic.Stats.ShadowDamage] = 54, [StatLogic.Stats.FrostDamage] = 54, }
+W["runa de la gárgola piel de piedra"] = {[StatLogic.Stats.Defense] = 25, }
+W["runa del caparazón nerubiano"] = {[StatLogic.Stats.Defense] = 13, }
 
 local L = addon.StatIDLookup
 L["armadura reforzada %s"] = {StatLogic.Stats.BonusArmor, }

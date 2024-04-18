@@ -9,6 +9,8 @@ W["верный шаг"] = {[StatLogic.Stats.HitRating] = 10, }
 W["варварство"] = {[StatLogic.Stats.AttackPower] = 70, }
 W["солнечный огонь"] = {[StatLogic.Stats.ArcaneDamage] = 50, [StatLogic.Stats.FireDamage] = 50, }
 W["ледяная душа"] = {[StatLogic.Stats.ShadowDamage] = 54, [StatLogic.Stats.FrostDamage] = 54, }
+W["руна каменной горгульи"] = {[StatLogic.Stats.Defense] = 25, }
+W["руна нерубского панциря"] = {[StatLogic.Stats.Defense] = 13, }
 
 local L = addon.StatIDLookup
 L["доспех усилен (%s к броне)"] = {StatLogic.Stats.BonusArmor, }

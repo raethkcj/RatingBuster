@@ -9,6 +9,8 @@ W["稳固"] = {[StatLogic.Stats.HitRating] = 10, }
 W["野蛮"] = {[StatLogic.Stats.AttackPower] = 70, }
 W["阳炎"] = {[StatLogic.Stats.ArcaneDamage] = 50, [StatLogic.Stats.FireDamage] = 50, }
 W["魂霜"] = {[StatLogic.Stats.ShadowDamage] = 54, [StatLogic.Stats.FrostDamage] = 54, }
+W["石肤石像鬼符文"] = {[StatLogic.Stats.Defense] = 25, }
+W["蛛魔硬甲符文"] = {[StatLogic.Stats.Defense] = 13, }
 
 local L = addon.StatIDLookup
 L["强化护甲 %s"] = {StatLogic.Stats.BonusArmor, }

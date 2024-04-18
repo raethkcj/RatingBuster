@@ -9,6 +9,8 @@ W["穩固"] = {[StatLogic.Stats.HitRating] = 10, }
 W["兇蠻"] = {[StatLogic.Stats.AttackPower] = 70, }
 W["烈日火焰"] = {[StatLogic.Stats.ArcaneDamage] = 50, [StatLogic.Stats.FireDamage] = 50, }
 W["靈魂冰霜"] = {[StatLogic.Stats.ShadowDamage] = 54, [StatLogic.Stats.FrostDamage] = 54, }
+W["石膚石像鬼符文"] = {[StatLogic.Stats.Defense] = 25, }
+W["奈幽蟲甲符文"] = {[StatLogic.Stats.Defense] = 13, }
 
 local L = addon.StatIDLookup
 L["強化護甲 %s"] = {StatLogic.Stats.BonusArmor, }

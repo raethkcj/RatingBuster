@@ -9,6 +9,8 @@ W["surefooted"] = {[StatLogic.Stats.HitRating] = 10, }
 W["savagery"] = {[StatLogic.Stats.AttackPower] = 70, }
 W["sunfire"] = {[StatLogic.Stats.ArcaneDamage] = 50, [StatLogic.Stats.FireDamage] = 50, }
 W["soulfrost"] = {[StatLogic.Stats.ShadowDamage] = 54, [StatLogic.Stats.FrostDamage] = 54, }
+W["rune of the stoneskin gargoyle"] = {[StatLogic.Stats.Defense] = 25, }
+W["rune of the nerubian carapace"] = {[StatLogic.Stats.Defense] = 13, }
 
 local L = addon.StatIDLookup
 L["reinforced armor %s"] = {StatLogic.Stats.BonusArmor, }

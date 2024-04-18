@@ -65,7 +65,9 @@
 			"3232": [ "StatIDLookup", ["Stamina"] ],
 			"3244": [ "StatIDLookup", [["HealthRegen", "ManaRegen"]] ],
 			"3607": [ "StatIDLookup", ["RangedHasteRating"] ],
-			"3608": [ "StatIDLookup", ["RangedCritRating"] ]
+			"3608": [ "StatIDLookup", ["RangedCritRating"] ],
+			"3847": [ "WholeTextLookup", {"Defense": 25} ],
+			"3883": [ "WholeTextLookup", {"Defense": 13} ]
 		},
 		"4": {}
 	},
