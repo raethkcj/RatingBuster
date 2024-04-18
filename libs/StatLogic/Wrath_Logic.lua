@@ -3400,7 +3400,7 @@ function StatLogic:GetDodgePerAgi()
 	if D_dr == 0 then
 		return 0
 	end
-	local dodgeFromDodgeRating = self:GetEffectFromRating(GetCombatRating(CR_DODGE), StatLogic.Stats.DodgeRating, level)
+	local dodgeFromDodgeRating = GetCombatRatingBonus(CR_DODGE)
 	local baseDefense, modDefense = UnitDefense("player")
 	local dodgeFromModDefense = modDefense * 0.04
 	local D_r = dodgeFromDodgeRating + dodgeFromModDefense

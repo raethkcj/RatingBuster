@@ -2715,19 +2715,14 @@ Dodge/Agi=(-b-(b^2-4ac)^0.5)/(2a)
 ]]
 ---@return number dodge Dodge percentage per agility
 function StatLogic:GetDodgePerAgi()
-	local level = UnitLevel("player")
 	-- Collect data
 	local D_dr = GetDodgeChance()
 	if D_dr == 0 then
 		return 0
 	end
-	local dodgeFromDodgeRating = self:GetEffectFromRating(GetCombatRating(CR_DODGE), StatLogic.Stats.DodgeRating, level)
-	-- TODO: Use this if UnitDefense gets yeeted in Cata
-	-- local baseDefense, modDefense = level * 5, 0
-	local baseDefense, modDefense = UnitDefense("player")
-	local dodgeFromModDefense = modDefense * 0.04
-	local D_r = dodgeFromDodgeRating + dodgeFromModDefense
-	local D_b = self:GetStatMod("ADD_DODGE") + (baseDefense - level * 5) * 0.04
+	local dodgeFromDodgeRating = GetCombatRatingBonus(CR_DODGE)
+	local D_r = dodgeFromDodgeRating
+	local D_b = self:GetStatMod("ADD_DODGE")
 	local stat, effectiveStat, posBuff, negBuff = UnitStat("player", 2) -- 2 = Agility
 	local modAgi = 1
 	if ModAgiClasses[addon.class] then

@@ -2207,6 +2207,11 @@ do
 			end
 			if db.profile.showDodgeFromAgi then
 				local effect = value * GSM("ADD_DODGE_MOD_AGI")
+				if db.profile.enableAvoidanceDiminishingReturns then
+					local effectNoDR = effect
+					effect = StatLogic:GetAvoidanceGainAfterDR(StatLogic.Stats.Dodge, processedDodge + effect) - StatLogic:GetAvoidanceGainAfterDR(StatLogic.Stats.Dodge, processedDodge)
+					processedDodge = processedDodge + effectNoDR
+				end
 				infoTable[StatLogic.Stats.Dodge] = infoTable[StatLogic.Stats.Dodge] + effect
 			end
 			local bonusArmor = value * GSM("ADD_BONUS_ARMOR_MOD_AGI")
