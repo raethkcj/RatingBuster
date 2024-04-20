@@ -27,13 +27,11 @@ StatLogic.StatModTable["GLOBAL"] = {
 			["level"] = conversionFallback(addon.CritPerAgi[addon.class], StatLogic.GetCritPerAgi),
 		}
 	},
-	--[[ TODO: Use when autogenerating summaries from StatLogic.Stats
 	["ADD_RANGED_CRIT_MOD_AGI"] = {
 		{
 			["level"] = addon.CritPerAgi[addon.class]
 		}
 	},
-	]]
 	["ADD_SPELL_CRIT_MOD_INT"] = {
 		{
 			["level"] = conversionFallback(addon.SpellCritPerInt[addon.class], StatLogic.GetSpellCritPerInt),
