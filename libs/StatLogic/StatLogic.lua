@@ -2085,15 +2085,15 @@ if GetCurrentRegion() == 1 or GetCurrentRegion() == 72 and GetLocale() == "enUS"
 					if tocversion >= 40000 then
 						rounding = 10 ^ 8
 					end
-					if not rawget(addon.CritPerAgi[addon.class], level) then
+					if not rawget(addon.CritPerAgi[addon.class], level) and addon.CritPerAgi[addon.class] ~= addon.zero then
 						local critPerAgi = floor(StatLogic:GetCritPerAgi() * rounding + 0.5) / rounding
 						expansion.CritPerAgi[addon.class][level] = critPerAgi
 					end
-					if not rawget(addon.DodgePerAgi[addon.class], level) then
+					if not rawget(addon.DodgePerAgi[addon.class], level) and addon.DodgePerAgi[addon.class] ~= addon.zero then
 						local dodgePerAgi = floor(StatLogic:GetDodgePerAgi() * rounding + 0.5) / rounding
 						expansion.DodgePerAgi[addon.class][level] = dodgePerAgi
 					end
-					if not rawget(addon.SpellCritPerInt[addon.class], level) then
+					if not rawget(addon.SpellCritPerInt[addon.class], level) and addon.SpellCritPerInt[addon.class] ~= addon.zero then
 						local spellCritPerInt = floor(StatLogic:GetSpellCritPerInt() * rounding + 0.5) / rounding
 						expansion.SpellCritPerInt[addon.class][level] = spellCritPerInt
 					end
