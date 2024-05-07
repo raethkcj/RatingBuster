@@ -806,7 +806,7 @@ do
 	local function update_armor_slot(slot)
 		-- Set slot's bit to 0 if correct, else 1
 		local item = GetInventoryItemID("player", slot)
-		if item and select(7, GetItemInfoInstant(item)) == class_armor_specs[addon.class] then
+		if item and select(7, C_Item.GetItemInfoInstant(item)) == class_armor_specs[addon.class] then
 			armor_bits = bit.band(armor_bits, bit.bnot(bit.lshift(1, slot - 1)))
 		else
 			armor_bits = bit.bor(armor_bits, bit.lshift(1, slot - 1))
@@ -973,7 +973,7 @@ addon.StatModValidators = {
 		validate = function(case)
 			local weapon = GetInventoryItemID("player", 16)
 			if weapon then
-				local subclassID = select(7, GetItemInfoInstant(weapon))
+				local subclassID = select(7, C_Item.GetItemInfoInstant(weapon))
 				return subclassID and case.weapon[subclassID]
 			end
 		end,
@@ -1396,7 +1396,7 @@ do
 
 	function StatLogic:RemoveExtraSockets(link)
 		-- Only check belt, bracer and gloves
-		local itemEquipLoc = select(4, GetItemInfoInstant(link))
+		local itemEquipLoc = select(4, C_Item.GetItemInfoInstant(link))
 		if not extraSocketInvTypes[itemEquipLoc] then return link end
 
 		-- Count item's actual sockets
@@ -1515,7 +1515,7 @@ function StatLogic:GetGemID(item)
 	-- Scan tooltip for gem text
 	local gemScanLink = "item:6948:0:%d:0:0:0:0:0"
 	local itemLink = gemScanLink:format(itemID)
-	local _, gem1Link = GetItemGem(itemLink, 1)
+	local _, gem1Link = C_Item.GetItemGem(itemLink, 1)
 	if gem1Link then
 		tip:ClearLines() -- this is required or SetX won't work the second time its called
 		tip:SetHyperlink(itemLink);

@@ -3337,7 +3337,7 @@ end
 
 function RatingBuster:StatSummary(tooltip, link)
 	-- Hide stat summary for equipped items
-	if db.global.sumIgnoreEquipped and IsEquippedItem(link) then return end
+	if db.global.sumIgnoreEquipped and C_Item.IsEquippedItem(link) then return end
 
 	-- Show stat summary only for highest level armor type and items you can use with uncommon quality and up
 	if db.global.sumIgnoreUnused then
