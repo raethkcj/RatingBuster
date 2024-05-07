@@ -300,11 +300,20 @@ local options = {
 					args = {},
 					hidden = true,
 				},
+				health = {
+					type = 'group',
+					name = L[StatLogic.Stats.Health],
+					desc = L["Changes the display of %s"]:format(L[StatLogic.Stats.Health]),
+					width = "full",
+					order = 8,
+					args = {},
+					hidden = true,
+				},
 				ap = {
 					type = 'group',
 					name = L[StatLogic.Stats.AttackPower],
 					desc = L["Changes the display of %s"]:format(L[StatLogic.Stats.AttackPower]),
-					order = 8,
+					order = 9,
 					args = {},
 					hidden = true,
 				},
@@ -312,7 +321,7 @@ local options = {
 					type = 'group',
 					name = L[StatLogic.Stats.MasteryRating],
 					desc = L["Changes the display of %s"]:format(L[StatLogic.Stats.MasteryRating]),
-					order = 9,
+					order = 10,
 					args = {},
 					hidden = true,
 				},
@@ -320,7 +329,7 @@ local options = {
 					type = 'group',
 					name = L[StatLogic.Stats.WeaponSkill],
 					desc = L["Changes the display of %s"]:format(L[StatLogic.Stats.WeaponSkill]),
-					order = 10,
+					order = 11,
 					hidden = true,
 					--[[
 					hidden = function()
@@ -340,7 +349,7 @@ local options = {
 					type = 'group',
 					name = L[StatLogic.Stats.ExpertiseRating],
 					desc = L["Changes the display of %s"]:format(L[StatLogic.Stats.ExpertiseRating]),
-					order = 11,
+					order = 12,
 					hidden = true,
 					args = {},
 				},
@@ -348,7 +357,7 @@ local options = {
 					type = 'group',
 					name = L[StatLogic.Stats.Defense],
 					desc = L["Changes the display of %s"]:format(L[StatLogic.Stats.Defense]),
-					order = 12,
+					order = 13,
 					hidden = true,
 					args = {},
 				},
@@ -356,7 +365,7 @@ local options = {
 					type = 'group',
 					name = L[StatLogic.Stats.Armor],
 					desc = L["Changes the display of %s"]:format(L[StatLogic.Stats.Armor]),
-					order = 13,
+					order = 14,
 					args = {},
 					hidden = true,
 				},
@@ -364,7 +373,7 @@ local options = {
 					type = 'group',
 					name = L[StatLogic.Stats.ResilienceRating],
 					desc = L["Changes the display of %s"]:format(L[StatLogic.Stats.ResilienceRating]),
-					order = 14,
+					order = 15,
 					args = {},
 					hidden = true,
 				},
@@ -580,9 +589,6 @@ local options = {
 							name = L["Sum %s"]:format(L[StatLogic.Stats.HealthRegenOutOfCombat]),
 							desc = L["Health Regen when out of combat <- Spirit"],
 							order = 6,
-							hidden = function()
-								return addon.tocversion >= 40000
-							end,
 						},
 						sumStr = {
 							type = 'toggle',
@@ -1182,6 +1188,8 @@ local defaults = {
 		showMP5NCFromSpi = false,
 		showHP5NCFromSpi = false,
 
+		showHP5NCFromHealth = false,
+
 		showDefenseFromDefenseRating = false,
 		showDodgeReductionFromExpertise = false,
 		showParryReductionFromExpertise = false,
@@ -1554,7 +1562,13 @@ do
 								addStatModOption(add, "INT", sources)
 							end
 						elseif mod == "NORMAL_HEALTH_REG" then
-							mod = "SPI"
+							if GSM("ADD_NORMAL_HEALTH_REG_MOD_SPI") > 0 then
+								-- Vanilla through Wrath
+								mod = "SPI"
+							elseif GSM("ADD_NORMAL_HEALTH_REG_MOD_HEALTH") > 0 then
+								-- Cata onwards
+								mod = "HEALTH"
+							end
 						elseif mod == "MANA" then
 							mod = "INT"
 						end
@@ -2228,9 +2242,10 @@ do
 			-- Stamina --
 			-------------
 			value = value * GSM("MOD_STA")
+			local health = value * GSM("ADD_HEALTH_MOD_STA") * GSM("MOD_HEALTH")
+			self:ProcessStat(StatLogic.Stats.Health, health, infoTable)
 			if db.profile.showHealthFromSta then
-				local effect = value * GSM("ADD_HEALTH_MOD_STA") * GSM("MOD_HEALTH")
-				infoTable[StatLogic.Stats.Health] = infoTable[StatLogic.Stats.Health] + effect
+				infoTable[StatLogic.Stats.Health] = infoTable[StatLogic.Stats.Health] + health
 			end
 			if db.profile.showSpellDmgFromSta then
 				local effect = value * GSM("MOD_SPELL_DMG") * (GSM("ADD_SPELL_DMG_MOD_STA")
@@ -2334,6 +2349,15 @@ do
 				local rating = value * GSM("ADD_SPELL_CRIT_RATING_MOD_SPI")
 				local effect = StatLogic:GetEffectFromRating(rating, StatLogic.Stats.SpellCritRating, playerLevel)
 				infoTable[StatLogic.Stats.SpellCrit] = infoTable[StatLogic.Stats.SpellCrit] + effect
+			end
+		elseif statID == StatLogic.Stats.Health and db.profile.showStats then
+			if db.profile.showHP5FromHealth then
+				local effect = value * GSM("ADD_NORMAL_HEALTH_REG_MOD_HEALTH") * GSM("MOD_NORMAL_HEALTH_REG") * GSM("ADD_HEALTH_REG_MOD_NORMAL_HEALTH_REG")
+				infoTable[StatLogic.Stats.HealthRegen] = infoTable[StatLogic.Stats.HealthRegen] + effect
+			end
+			if db.profile.showHP5NCFromHealth then
+				local effect = value * GSM("ADD_NORMAL_HEALTH_REG_MOD_HEALTH") * GSM("MOD_NORMAL_HEALTH_REG")
+				infoTable[StatLogic.Stats.HealthRegenOutOfCombat] = infoTable[StatLogic.Stats.HealthRegenOutOfCombat] + effect
 			end
 		elseif statID == StatLogic.Stats.Defense then
 			local blockChance = value * GSM("ADD_BLOCK_CHANCE_MOD_DEFENSE")
@@ -2616,6 +2640,7 @@ local summaryCalcData = {
 		func = function(sum)
 			return sum[StatLogic.Stats.HealthRegen]
 				+ sum[StatLogic.Stats.Spirit] * GSM("ADD_NORMAL_HEALTH_REG_MOD_SPI") * GSM("MOD_NORMAL_HEALTH_REG") * GSM("ADD_HEALTH_REG_MOD_NORMAL_HEALTH_REG")
+				+ summaryFunc[StatLogic.Stats.Health](sum) * GSM("ADD_NORMAL_HEALTH_REG_MOD_HEALTH") * GSM("MOD_NORMAL_HEALTH_REG") * GSM("ADD_HEALTH_REG_MOD_NORMAL_HEALTH_REG")
 		end,
 	},
 	-- Health Regen while Out of Combat - HEALTH_REG, SPI
@@ -2625,6 +2650,7 @@ local summaryCalcData = {
 		func = function(sum)
 			return sum[StatLogic.Stats.HealthRegen]
 				+ sum[StatLogic.Stats.Spirit] * GSM("ADD_NORMAL_HEALTH_REG_MOD_SPI") * GSM("MOD_NORMAL_HEALTH_REG")
+				+ summaryFunc[StatLogic.Stats.Health](sum) * GSM("ADD_NORMAL_HEALTH_REG_MOD_HEALTH") * GSM("MOD_NORMAL_HEALTH_REG")
 		end,
 	},
 	-- Mana Regen - MANA_REG, SPI, INT

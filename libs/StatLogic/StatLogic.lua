@@ -446,6 +446,10 @@ local addedInfoMods = {
 	},
 	{
 		add = "NORMAL_HEALTH_REG",
+		mod = "HEALTH",
+	},
+	{
+		add = "NORMAL_HEALTH_REG",
 		mod = "SPI",
 	},
 	{

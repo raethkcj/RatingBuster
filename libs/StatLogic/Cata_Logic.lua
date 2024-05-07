@@ -2276,6 +2276,23 @@ elseif addon.playerRace == "Orc" then
 	addon.WeaponRacials[Enum.ItemWeaponSubclass.Axe2H] = {StatLogic.Stats.Expertise, 3}
 	addon.WeaponRacials[Enum.ItemWeaponSubclass.Unarmed] = {StatLogic.Stats.Expertise, 3}
 elseif addon.playerRace == "Troll" then
+	StatLogic.StatModTable["Troll"] = {
+		["MOD_NORMAL_HEALTH_REG"] = {
+			-- Troll: Regeneration - Racial
+			--   Health regeneration rate increased by 10%.
+			{
+				["value"] = 0.1,
+			},
+		},
+		["ADD_HEALTH_REG_MOD_NORMAL_HEALTH_REG"] = {
+			-- Troll: Regeneration - Racial
+			--   10% of total Health regeneration may continue during combat.
+			{
+				["value"] = 0.1,
+				["spellid"] = 20555,
+			},
+		},
+	}
 	addon.WeaponRacials[Enum.ItemWeaponSubclass.Bows] = {StatLogic.Stats.RangedCrit, 1}
 	addon.WeaponRacials[Enum.ItemWeaponSubclass.Thrown] = {StatLogic.Stats.RangedCrit, 1}
 end
@@ -2292,6 +2309,38 @@ StatLogic.StatModTable["ALL"] = {
 			}, {
 				__index = function()
 					return 10
+				end
+			})
+		},
+	},
+	["ADD_NORMAL_HEALTH_REG_MOD_HEALTH"] = {
+		{
+			-- Levels 1-19 are likely two piecewise linear sections,
+			-- with the intersection at roughly 15
+			["level"] = setmetatable({
+				0.6250,
+				0.5938,
+				0.5625,
+				0.5313,
+				0.5000,
+				0.4688,
+				0.4375,
+				0.4063,
+				0.3750,
+				0.3438,
+				0.3125,
+				0.2813,
+				0.2500,
+				0.2188,
+				0.1875,
+				0.1528,
+				0.1212,
+				0.0893,
+				0.0574,
+			}, {
+				-- Levels 20-85 are all 2.5% HP5 (1% HP2)
+				__index = function()
+					return 0.025
 				end
 			})
 		},
