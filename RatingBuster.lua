@@ -1444,46 +1444,34 @@ do
 	local statStringToStat = setmetatable({
 		["AP"] = StatLogic.Stats.AttackPower,
 		["RANGED_AP"] = StatLogic.Stats.RangedAttackPower,
-		["MANA"] = StatLogic.Stats.Mana,
 		["MANA_REG"] = StatLogic.Stats.ManaRegen,
 		["NORMAL_MANA_REG"] = StatLogic.Stats.ManaRegenNotCasting,
-		["HEALTH"] = StatLogic.Stats.Health,
 		["HEALTH_REG"] = StatLogic.Stats.HealthRegen,
 		["NORMAL_HEALTH_REG"] = StatLogic.Stats.HealthRegenOutOfCombat,
-		["MELEE_CRIT"] = StatLogic.Stats.MeleeCrit,
-		["RANGED_CRIT"] = StatLogic.Stats.RangedCrit,
 		["SPELL_DMG"] = StatLogic.Stats.SpellDamage,
-		["SPELL_HIT"] = StatLogic.Stats.SpellHit,
-		["SPELL_CRIT"] = StatLogic.Stats.SpellCrit,
 		["HEALING"] = StatLogic.Stats.HealingPower,
-		["DODGE_REDUCTION"] = StatLogic.Stats.DodgeReduction,
-		["PARRY_REDUCTION"] = StatLogic.Stats.ParryReduction,
-		["BLOCK_CHANCE"] = StatLogic.Stats.BlockChance,
-		["CRIT_AVOIDANCE"] = StatLogic.Stats.CritAvoidance,
-		["DODGE"] = StatLogic.Stats.Dodge,
-		["MISS"] = StatLogic.Stats.Miss,
-		["PARRY"] = StatLogic.Stats.Parry,
-		["BLOCK_VALUE"] = StatLogic.Stats.BlockValue,
-		["CRIT_DAMAGE_REDUCTION"] = StatLogic.Stats.CritDamageReduction,
 		["PVP_DAMAGE_REDUCTION"] = StatLogic.Stats.PvPDamageReduction,
-		["MASTERY_EFFECT"] = StatLogic.Stats.MasteryEffect,
 	},
 	{
 		__index = function(_, stat)
-			return stat
+			local stat_name = stat:gsub("(%u)(%u+)_?", function(head, tail)
+				return head .. tail:lower()
+			end)
+			return StatLogic.Stats[stat_name]
 		end
 	})
 
 	local addStatModOption = function(add, mod, sources)
 		-- Override groups that are hidden by default
-		local groupID, rating = tostring(mod):lower():gsub("rating$", "")
+		local groupID, rating = tostring(mod):lower():gsub("_rating$", "")
 		local group = options.args.stat.args[groupID]
 		if not group then return end
 		group.hidden = false
 		if rating > 0 then
 			-- Rename Defense group to Defense Rating
-			group.name = L[mod]
-			group.desc = L["Changes the display of %s"]:format(L[mod])
+			local mod_stat = statStringToStat[mod]
+			group.name = L[mod_stat]
+			group.desc = L["Changes the display of %s"]:format(L[mod_stat])
 		end
 
 		-- ADD_HEALING_MOD_INT -> showHealingFromInt
@@ -1580,13 +1568,6 @@ do
 						addStatModOption(add, mod, sources)
 					end
 				end
-			end
-		end
-
-		for stat in pairs(StatLogic.RatingBase) do
-			local converted = StatLogic.Stats[tostring(stat):gsub("Rating$", "")]
-			if converted then
-				addStatModOption(converted, stat)
 			end
 		end
 	end
@@ -2188,7 +2169,7 @@ do
 			-- Death Knight: Forceful Deflection - Passive
 			if db.profile.showParryFromStr then
 				local rating = value * GSM("ADD_PARRY_RATING_MOD_STR")
-				local effect = StatLogic:GetEffectFromRating(rating, StatLogic.Stats.ParryRating, playerLevel)
+				local effect = rating * GSM("ADD_PARRY_MOD_PARRY_RATING")
 				if db.profile.enableAvoidanceDiminishingReturns then
 					local effectNoDR = effect
 					effect = StatLogic:GetAvoidanceGainAfterDR(StatLogic.Stats.Parry, processedParry + effect) - StatLogic:GetAvoidanceGainAfterDR(StatLogic.Stats.Parry, processedParry)
@@ -2197,7 +2178,7 @@ do
 				infoTable[StatLogic.Stats.Parry] = infoTable[StatLogic.Stats.Parry] + effect
 			else
 				local rating = value * GSM("ADD_PARRY_RATING_MOD_STR")
-				local effect = StatLogic:GetEffectFromRating(rating, StatLogic.Stats.ParryRating, playerLevel)
+				local effect = rating * GSM("ADD_PARRY_MOD_PARRY_RATING")
 				processedParry = processedParry + effect
 			end
 		elseif statID == StatLogic.Stats.Agility and db.profile.showStats then
@@ -2342,12 +2323,12 @@ do
 			end
 			if db.profile.showSpellHitFromSpi then
 				local rating = value * GSM("ADD_SPELL_HIT_RATING_MOD_SPI")
-				local effect = StatLogic:GetEffectFromRating(rating, StatLogic.Stats.SpellHitRating, playerLevel)
+				local effect = rating * GSM("ADD_SPELL_HIT_MOD_SPELL_HIT_RATING")
 				infoTable[StatLogic.Stats.SpellHit] = infoTable[StatLogic.Stats.SpellHit] + effect
 			end
 			if db.profile.showSpellCritFromSpi then
 				local rating = value * GSM("ADD_SPELL_CRIT_RATING_MOD_SPI")
-				local effect = StatLogic:GetEffectFromRating(rating, StatLogic.Stats.SpellCritRating, playerLevel)
+				local effect = rating * GSM("ADD_SPELL_CRIT_MOD_SPELL_CRIT_RATING")
 				infoTable[StatLogic.Stats.SpellCrit] = infoTable[StatLogic.Stats.SpellCrit] + effect
 			end
 		elseif statID == StatLogic.Stats.Health and db.profile.showStats then
@@ -2606,7 +2587,7 @@ local summaryCalcData = {
 		option = "sumMastery",
 		name = StatLogic.Stats.Mastery,
 		func = function(sum)
-			return StatLogic:GetEffectFromRating(sum[StatLogic.Stats.MasteryRating], StatLogic.Stats.MasteryRating)
+			return sum[StatLogic.Stats.MasteryRating] * GSM("ADD_MASTERY_MOD_MASTERY_RATING")
 		end,
 	},
 	{
@@ -2721,7 +2702,7 @@ local summaryCalcData = {
 		name = StatLogic.Stats.MeleeHit,
 		func = function(sum)
 			return sum[StatLogic.Stats.MeleeHit]
-				+ StatLogic:GetEffectFromRating(sum[StatLogic.Stats.MeleeHitRating], StatLogic.Stats.MeleeHitRating, playerLevel)
+				+ sum[StatLogic.Stats.MeleeHitRating] * GSM("ADD_MELEE_HIT_MOD_MELEE_HIT_RATING")
 		end,
 		ispercent = true,
 	},
@@ -2739,7 +2720,7 @@ local summaryCalcData = {
 		name = StatLogic.Stats.RangedHit,
 		func = function(sum)
 			return sum[StatLogic.Stats.RangedHit]
-				+ StatLogic:GetEffectFromRating(sum[StatLogic.Stats.RangedHitRating], StatLogic.Stats.RangedHitRating, playerLevel)
+				+ sum[StatLogic.Stats.RangedHitRating] * GSM("ADD_RANGED_HIT_MOD_RANGED_HIT_RATING")
 		end,
 		ispercent = true,
 	},
@@ -2757,7 +2738,7 @@ local summaryCalcData = {
 		name = StatLogic.Stats.MeleeCrit,
 		func = function(sum)
 			return sum[StatLogic.Stats.MeleeCrit]
-				+ StatLogic:GetEffectFromRating(sum[StatLogic.Stats.MeleeCritRating], StatLogic.Stats.MeleeCritRating, playerLevel)
+				+ sum[StatLogic.Stats.MeleeCritRating] * GSM("ADD_MELEE_CRIT_MOD_MELEE_CRIT_RATING")
 				+ sum[StatLogic.Stats.Agility] * GSM("ADD_MELEE_CRIT_MOD_AGI")
 		end,
 		ispercent = true,
@@ -2776,7 +2757,7 @@ local summaryCalcData = {
 		name = StatLogic.Stats.RangedCrit,
 		func = function(sum)
 			return sum[StatLogic.Stats.RangedCrit]
-				+ StatLogic:GetEffectFromRating(sum[StatLogic.Stats.RangedCritRating], StatLogic.Stats.RangedCritRating, playerLevel)
+				+ sum[StatLogic.Stats.RangedCritRating] * GSM("ADD_RANGED_CRIT_MOD_RANGED_CRIT_RATING")
 				+ sum[StatLogic.Stats.Agility] * GSM("ADD_RANGED_CRIT_MOD_AGI")
 		end,
 		ispercent = true,
@@ -2794,7 +2775,7 @@ local summaryCalcData = {
 		option = "sumHaste",
 		name = StatLogic.Stats.MeleeHaste,
 		func = function(sum)
-			return StatLogic:GetEffectFromRating(sum[StatLogic.Stats.MeleeHasteRating], StatLogic.Stats.MeleeHasteRating, playerLevel)
+			return sum[StatLogic.Stats.MeleeHasteRating] * GSM("ADD_MELEE_HASTE_MOD_MELEE_HASTE_RATING")
 		end,
 		ispercent = true,
 	},
@@ -2811,7 +2792,7 @@ local summaryCalcData = {
 		option = "sumRangedHaste",
 		name = StatLogic.Stats.RangedHaste,
 		func = function(sum)
-			return StatLogic:GetEffectFromRating(sum[StatLogic.Stats.RangedHasteRating], StatLogic.Stats.RangedHasteRating, playerLevel)
+			return sum[StatLogic.Stats.RangedHasteRating] * GSM("ADD_RANGED_HASTE_MOD_RANGED_HASTE_RATING")
 		end,
 		ispercent = true,
 	},
@@ -2836,7 +2817,7 @@ local summaryCalcData = {
 		name = StatLogic.Stats.Expertise,
 		func = function(sum)
 			return sum[StatLogic.Stats.Expertise]
-			  + StatLogic:GetEffectFromRating(sum[StatLogic.Stats.ExpertiseRating], StatLogic.Stats.ExpertiseRating, playerLevel)
+				+ sum[StatLogic.Stats.ExpertiseRating] * GSM("ADD_EXPERTISE_MOD_EXPERTISE_RATING")
 		end,
 	},
 	-- Expertise Rating - EXPERTISE_RATING
@@ -2903,7 +2884,7 @@ local summaryCalcData = {
 		option = "sumArmorPenetration",
 		name = StatLogic.Stats.ArmorPenetration,
 		func = function(sum)
-			return StatLogic:GetEffectFromRating(sum[StatLogic.Stats.ArmorPenetrationRating], StatLogic.Stats.ArmorPenetrationRating, playerLevel)
+			return sum[StatLogic.Stats.ArmorPenetrationRating] * GSM("ADD_ARMOR_PENETRATION_MOD_ARMOR_PENETRATION_RATING")
 		end,
 		ispercent = true,
 	},
@@ -3012,7 +2993,7 @@ local summaryCalcData = {
 		name = StatLogic.Stats.SpellHit,
 		func = function(sum)
 			return sum[StatLogic.Stats.SpellHit]
-				+ StatLogic:GetEffectFromRating(summaryFunc[StatLogic.Stats.SpellHitRating](sum), StatLogic.Stats.SpellHitRating, playerLevel)
+				+ summaryFunc[StatLogic.Stats.SpellHitRating](sum) * GSM("ADD_SPELL_HIT_MOD_SPELL_HIT_RATING")
 		end,
 		ispercent = true,
 	},
@@ -3031,7 +3012,7 @@ local summaryCalcData = {
 		name = StatLogic.Stats.SpellCrit,
 		func = function(sum)
 			return sum[StatLogic.Stats.SpellCrit]
-				+ StatLogic:GetEffectFromRating(summaryFunc[StatLogic.Stats.SpellCritRating](sum), StatLogic.Stats.SpellCritRating, playerLevel)
+				+ summaryFunc[StatLogic.Stats.SpellCritRating](sum) * GSM("ADD_SPELL_CRIT_MOD_SPELL_CRIT_RATING")
 				+ sum[StatLogic.Stats.Intellect] * GSM("ADD_SPELL_CRIT_MOD_INT")
 		end,
 		ispercent = true,
@@ -3050,7 +3031,7 @@ local summaryCalcData = {
 		option = "sumSpellHaste",
 		name = StatLogic.Stats.SpellHaste,
 		func = function(sum)
-			return StatLogic:GetEffectFromRating(sum[StatLogic.Stats.SpellHasteRating], StatLogic.Stats.SpellHasteRating, playerLevel)
+			return sum[StatLogic.Stats.SpellHasteRating] * GSM("ADD_SPELL_HASTE_MOD_SPELL_HASTE_RATING")
 		end,
 		ispercent = true,
 	},
@@ -3090,7 +3071,7 @@ local summaryCalcData = {
 		name = StatLogic.Stats.DodgeBeforeDR,
 		func = function(sum)
 			return sum[StatLogic.Stats.Dodge]
-				+ StatLogic:GetEffectFromRating(sum[StatLogic.Stats.DodgeRating], StatLogic.Stats.DodgeRating, playerLevel)
+				+ sum[StatLogic.Stats.DodgeRating] * GSM("ADD_DODGE_MOD_DODGE_RATING")
 				+ summaryFunc[StatLogic.Stats.Defense](sum) * GSM("ADD_DODGE_MOD_DEFENSE")
 				+ sum[StatLogic.Stats.Agility] * GSM("ADD_DODGE_MOD_AGI")
 		end,
@@ -3128,7 +3109,7 @@ local summaryCalcData = {
 		func = function(sum)
 			return GetParryChance() > 0 and (
 				sum[StatLogic.Stats.Parry]
-				+ StatLogic:GetEffectFromRating(summaryFunc[StatLogic.Stats.ParryRating](sum), StatLogic.Stats.ParryRating, playerLevel)
+				+ summaryFunc[StatLogic.Stats.ParryRating](sum) * GSM("ADD_PARRY_MOD_PARRY_RATING")
 				+ summaryFunc[StatLogic.Stats.Defense](sum) * GSM("ADD_PARRY_MOD_DEFENSE")
 			) or 0
 		end,
@@ -3167,7 +3148,7 @@ local summaryCalcData = {
 		func = function(sum)
 			return GetBlockChance() > 0 and (
 				sum[StatLogic.Stats.BlockChance]
-				+ StatLogic:GetEffectFromRating(sum[StatLogic.Stats.BlockRating], StatLogic.Stats.BlockRating, playerLevel)
+				+ sum[StatLogic.Stats.BlockRating] * GSM("ADD_BLOCK_MOD_BLOCK_RATING")
 				+ summaryFunc[StatLogic.Stats.Defense](sum) * GSM("ADD_BLOCK_CHANCE_MOD_DEFENSE")
 				+ summaryFunc[StatLogic.Stats.MasteryEffect](sum) * GSM("ADD_BLOCK_CHANCE_MOD_MASTERY_EFFECT")
 			) or 0
@@ -3227,7 +3208,7 @@ local summaryCalcData = {
 		name = StatLogic.Stats.Defense,
 		func = function(sum)
 			return sum[StatLogic.Stats.Defense]
-				+ StatLogic:GetEffectFromRating(sum[StatLogic.Stats.DefenseRating], StatLogic.Stats.DefenseRating, playerLevel)
+				+ sum[StatLogic.Stats.DefenseRating] * GSM("ADD_DEFENSE_MOD_DEFENSE_RATING")
 		end,
 	},
 	-- Avoidance - DODGE, PARRY, MELEE_HIT_AVOID, BLOCK(Optional)
@@ -3251,7 +3232,7 @@ local summaryCalcData = {
 		option = "sumCritAvoid",
 		name = StatLogic.Stats.CritAvoidance,
 		func = function(sum)
-			return StatLogic:GetEffectFromRating(sum[StatLogic.Stats.ResilienceRating], StatLogic.Stats.ResilienceRating) * GSM("ADD_CRIT_AVOIDANCE_MOD_RESILIENCE")
+			return sum[StatLogic.Stats.ResilienceRating] * GSM("ADD_RESILIENCE_MOD_RESILIENCE_RATING") * GSM("ADD_CRIT_AVOIDANCE_MOD_RESILIENCE")
 				+ summaryFunc[StatLogic.Stats.Defense](sum) * GSM("ADD_CRIT_AVOIDANCE_MOD_DEFENSE")
 		 end,
 		ispercent = true,

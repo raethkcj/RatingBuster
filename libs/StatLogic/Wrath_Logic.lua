@@ -3360,7 +3360,7 @@ local C_m = setmetatable({}, {
 
 function StatLogic:GetMissedChanceBeforeDR()
 	local baseDefense, additionalDefense = UnitDefense("player")
-	local defenseFromDefenseRating = floor(self:GetEffectFromRating(GetCombatRating(CR_DEFENSE_SKILL), StatLogic.Stats.DefenseRating))
+	local defenseFromDefenseRating = floor(GetCombatRatingBonus(CR_DEFENSE_SKILL))
 	local modMissed = defenseFromDefenseRating * 0.04
 	local drFreeMissed = 5 + (baseDefense + additionalDefense - defenseFromDefenseRating) * 0.04
 	return modMissed, drFreeMissed
@@ -3473,8 +3473,8 @@ function StatLogic:GetDodgeChanceBeforeDR()
 	local stat, effectiveStat, posBuff, negBuff = UnitStat("player", 2) -- 2 = Agility
 	local baseAgi = stat - posBuff - negBuff
 	local dodgePerAgi = self:GetDodgePerAgi()
-	local dodgeFromDodgeRating = self:GetEffectFromRating(GetCombatRating(CR_DODGE), StatLogic.Stats.DodgeRating)
-	local dodgeFromDefenceRating = floor(self:GetEffectFromRating(GetCombatRating(CR_DEFENSE_SKILL), StatLogic.Stats.DefenseRating)) * 0.04
+	local dodgeFromDodgeRating = GetCombatRatingBonus(CR_DODGE)
+	local dodgeFromDefenceRating = floor(GetCombatRatingBonus(CR_DEFENSE_SKILL)) * 0.04
 	local dodgeFromAdditionalAgi = dodgePerAgi * (effectiveStat - baseAgi)
 	local modDodge = dodgeFromDodgeRating + dodgeFromDefenceRating + dodgeFromAdditionalAgi
 
@@ -3502,8 +3502,8 @@ modParry includes
 ---@return number drFreeParry The part that isn't affected by diminishing returns.
 function StatLogic:GetParryChanceBeforeDR()
 	-- Defense is floored
-	local parryFromParryRating = self:GetEffectFromRating(GetCombatRating(CR_PARRY), StatLogic.Stats.ParryRating)
-	local parryFromDefenceRating = floor(self:GetEffectFromRating(GetCombatRating(CR_DEFENSE_SKILL), StatLogic.Stats.DefenseRating)) * 0.04
+	local parryFromParryRating = GetCombatRatingBonus(CR_PARRY)
+	local parryFromDefenceRating = floor(GetCombatRatingBonus(CR_DEFENSE_SKILL)) * 0.04
 	local modParry = parryFromParryRating + parryFromDefenceRating
 
 	-- drFreeParry

@@ -1192,6 +1192,7 @@ do
 		if not value then
 			wipe(BuffGroupCache)
 			local statModInfo = StatLogic.StatModInfo[statModName]
+			if not statModInfo then return 0 end
 			value = statModInfo.initialValue
 			for _, categoryTable in pairs(StatLogic.StatModTable) do
 				if categoryTable[statModName] then
@@ -1346,7 +1347,7 @@ function StatLogic:GetDodgePerAgi()
 	-- dodgeFromAgi is %
 	local dodgeFromAgi = GetDodgeChance()
 		- self:GetStatMod("ADD_DODGE")
-		- self:GetEffectFromRating(GetCombatRating(CR_DODGE), StatLogic.Stats.DodgeRating)
+		- GetCombatRatingBonus(CR_DODGE)
 		- self:GetEffectFromDefense()
 		- self:GetTotalEquippedStat(StatLogic.Stats.Dodge)
 	return dodgeFromAgi / agility

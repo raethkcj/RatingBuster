@@ -43,3 +43,27 @@ StatLogic.StatModTable["GLOBAL"] = {
 		}
 	},
 }
+
+for stat in pairs(StatLogic.RatingBase) do
+	local rating_name = stat.name:gsub("(%l)(%u)", "%1_%2"):upper()
+	local add = rating_name:gsub("_RATING$", "")
+	local mod = rating_name
+	local stat_mod = {
+		add = add,
+		mod = mod,
+		initialValue = 0,
+		finalAdjust = 0,
+	}
+	local name = ("ADD_%s_MOD_%s"):format(stat_mod.add, stat_mod.mod)
+	StatLogic.StatModInfo[name] = stat_mod
+	StatLogic.StatModTable["GLOBAL"][name] = {
+		{
+			["level"] = setmetatable({}, {
+				__index = function(t, level)
+					t[level] = StatLogic:GetEffectFromRating(1, stat, level)
+					return t[level]
+				end
+			}),
+		}
+	}
+end
