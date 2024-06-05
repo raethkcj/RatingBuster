@@ -514,6 +514,14 @@ local options = {
 							name = L["Ignore unused item types"],
 							desc = L["Show stat summary only for highest level armor type and items you can use with uncommon quality and up"],
 						},
+						sumIgnoreNonPrimaryStat = {
+							type = 'toggle',
+							name = L["Ignore non-primary stat"],
+							desc = L["Show stat summary only for items with your specialization's primary stat"],
+							hidden = function()
+								return addon.tocversion < 40000
+							end,
+						},
 						sumIgnoreEquipped = {
 							type = 'toggle',
 							name = L["Ignore equipped items"],
@@ -2544,6 +2552,59 @@ local armorTypes = {
 	[Enum.ItemArmorSubclass["Cloth"]] = true,
 }
 
+local specPrimaryStats = {
+	WARRIOR = {
+		StatLogic.Stats.Strength,
+		StatLogic.Stats.Strength,
+		StatLogic.Stats.Strength,
+	},
+	PALADIN = {
+		StatLogic.Stats.Intellect,
+		StatLogic.Stats.Strength,
+		StatLogic.Stats.Strength,
+	},
+	HUNTER = {
+		StatLogic.Stats.Agility,
+		StatLogic.Stats.Agility,
+		StatLogic.Stats.Agility,
+	},
+	ROGUE = {
+		StatLogic.Stats.Agility,
+		StatLogic.Stats.Agility,
+		StatLogic.Stats.Agility,
+	},
+	PRIEST = {
+		StatLogic.Stats.Intellect,
+		StatLogic.Stats.Intellect,
+		StatLogic.Stats.Intellect,
+	},
+	DEATHKNIGHT = {
+		StatLogic.Stats.Strength,
+		StatLogic.Stats.Strength,
+		StatLogic.Stats.Strength,
+	},
+	SHAMAN = {
+		StatLogic.Stats.Intellect,
+		StatLogic.Stats.Agility,
+		StatLogic.Stats.Intellect,
+	},
+	MAGE = {
+		StatLogic.Stats.Intellect,
+		StatLogic.Stats.Intellect,
+		StatLogic.Stats.Intellect,
+	},
+	WARLOCK = {
+		StatLogic.Stats.Intellect,
+		StatLogic.Stats.Intellect,
+		StatLogic.Stats.Intellect,
+	},
+	DRUID = {
+		StatLogic.Stats.Intellect,
+		StatLogic.Stats.Agility,
+		StatLogic.Stats.Intellect,
+	},
+}
+
 local summaryCalcData = {
 	-----------
 	-- Basic --
@@ -3422,6 +3483,16 @@ function RatingBuster:StatSummary(tooltip, link)
 	if not statData.sum then return end
 	if not db.global.calcSum then
 		statData.sum = nil
+	end
+
+	if db.global.sumIgnoreNonPrimaryStat and addon.tocversion >= 40000 then
+		local spec = GetPrimaryTalentTree()
+		if spec then
+			local primaryStat = specPrimaryStats[class][spec]
+			if statData.sum[primaryStat] == 0 then
+				return
+			end
+		end
 	end
 
 	-- Ignore bags
