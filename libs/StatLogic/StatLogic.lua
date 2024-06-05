@@ -279,7 +279,7 @@ end
 
 -- SetTip("item:3185:0:0:0:0:0:1957")
 function SetTip(item)
-	local _, link = GetItemInfo(item)
+	local _, link = C_Item.GetItemInfo(item)
 	ItemRefTooltip:ClearLines()
 	ItemRefTooltip:SetHyperlink(link)
 	ItemRefTooltip:Show()
@@ -759,7 +759,7 @@ local equipped_sets = setmetatable({}, {
 
 		for i = 1, INVSLOT_LAST_EQUIPPED do
 			local itemID = GetInventoryItemID("player", i)
-			if itemID and select(16, GetItemInfo(itemID)) == set then
+			if itemID and select(16, C_Item.GetItemInfo(itemID)) == set then
 				equipped = equipped + 1
 			end
 		end
@@ -1497,7 +1497,7 @@ function StatLogic:GetGemID(item)
 	end
 
 	-- Check if item is in local cache
-	local name, link = GetItemInfo(item)
+	local name, link = C_Item.GetItemInfo(item)
 	if not name then
 		if tonumber(itemID) then
 			-- Query server for item
@@ -1507,7 +1507,7 @@ function StatLogic:GetGemID(item)
 	end
 	itemID = link:match("item:(%d+)")
 
-	if not GetItemInfo(6948) then -- Hearthstone
+	if not C_Item.GetItemInfo(6948) then -- Hearthstone
 		-- Query server for Hearthstone
 		tip:SetHyperlink("item:"..itemID);
 		return
@@ -1561,7 +1561,7 @@ do
 			return
 		end
 		-- Check if item is in local cache
-		local name, link, _, _, _, _, _, _, inventoryType, _, _, itemClass, itemSubclass = GetItemInfo(item)
+		local name, link, _, _, _, _, _, _, inventoryType, _, _, itemClass, itemSubclass = C_Item.GetItemInfo(item)
 		if not name then return end
 
 		-- Clear table values
@@ -1749,7 +1749,7 @@ function StatLogic:GetArmorDistribution(item, value, color)
 		return
 	end
 	-- Check if item is in local cache
-	local name, _, itemQuality, itemLevel, _, _, _, _, itemEquipLoc, _, _, _, armorSubclass = GetItemInfo(item)
+	local name, _, itemQuality, itemLevel, _, _, _, _, itemEquipLoc, _, _, _, armorSubclass = C_Item.GetItemInfo(item)
 
 	local armor = value
 	local bonus_armor = 0
@@ -1836,7 +1836,7 @@ function StatLogic:GetDiffID(item, ignoreEnchant, ignoreGems, ignoreExtraSockets
 		return
 	end
 	-- Check if item is in local cache
-	name, link, _, _, _, _, _, _, inventoryType = GetItemInfo(item)
+	name, link, _, _, _, _, _, _, inventoryType = C_Item.GetItemInfo(item)
 	if not name then return end
 	-- Get equip location slot id for use in GetInventoryItemLink
 	local slotID = getSlotID[inventoryType]
@@ -1848,7 +1848,7 @@ function StatLogic:GetDiffID(item, ignoreEnchant, ignoreGems, ignoreExtraSockets
 		linkDiff1 = GetInventoryItemLink("player", 16) or "NOITEM"
 		-- If player can Dual Wield, calculate offhand difference
 		if IsUsableSpell(GetSpellInfo(674)) then		-- ["Dual Wield"]
-			local _, _, _, _, _, _, _, _, eqItemType = GetItemInfo(linkDiff1)
+			local _, _, _, _, _, _, _, _, eqItemType = C_Item.GetItemInfo(linkDiff1)
 			-- If 2h is equipped, copy diff1 to diff2
 			if eqItemType == "INVTYPE_2HWEAPON" and not HasTitansGrip() then
 				linkDiff2 = linkDiff1
@@ -1869,7 +1869,7 @@ function StatLogic:GetDiffID(item, ignoreEnchant, ignoreGems, ignoreExtraSockets
 	elseif slotID == 17 then
 		linkDiff1 = GetInventoryItemLink("player", 16) or "NOITEM"
 		-- If 2h is equipped
-		local _, _, _, _, _, _, _, _, eqItemType = GetItemInfo(linkDiff1)
+		local _, _, _, _, _, _, _, _, eqItemType = C_Item.GetItemInfo(linkDiff1)
 		if eqItemType ~= "INVTYPE_2HWEAPON" then
 			linkDiff1 = GetInventoryItemLink("player", 17) or "NOITEM"
 		end

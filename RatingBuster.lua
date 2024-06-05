@@ -67,13 +67,6 @@ local tsort = table.sort
 local unpack = unpack
 local tonumber = tonumber
 
-local GetItemInfoCached = setmetatable({}, { __index = function(self, n)
-	self[n] = {GetItemInfo(n)} -- store in cache
-	return self[n] -- return result
-end })
-local GetItemInfo = function(item)
-	return unpack(GetItemInfoCached[item])
-end
 local GetParryChance = GetParryChance
 local GetBlockChance = GetBlockChance
 
@@ -103,7 +96,7 @@ local function setGem(info, value)
 	end
 	local gemID, gemText = StatLogic:GetGemID(value)
 	if gemID and gemText then
-		local name, link = GetItemInfo(value)
+		local name, link = C_Item.GetItemInfo(value)
 		local itemID = link:match("item:(%d+)")
 		db.profile[info[#info]].itemID = itemID
 		db.profile[info[#info]].gemID = gemID
