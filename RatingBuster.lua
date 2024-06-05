@@ -2494,47 +2494,55 @@ end
 -- Used armor type each class uses
 local classArmorTypes = {
 	WARRIOR = {
-		[Enum.ItemArmorSubclass["Plate"]] = true,
-		[Enum.ItemArmorSubclass["Mail"]] = true,
-		[Enum.ItemArmorSubclass["Leather"]] = true,
+		[Enum.ItemArmorSubclass.Plate] = true,
 	},
 	PALADIN = {
-		[Enum.ItemArmorSubclass["Plate"]] = true,
-		[Enum.ItemArmorSubclass["Mail"]] = true,
-		[Enum.ItemArmorSubclass["Leather"]] = true,
-		[Enum.ItemArmorSubclass["Cloth"]] = true,
+		[Enum.ItemArmorSubclass.Plate] = true,
 	},
 	HUNTER = {
-		[Enum.ItemArmorSubclass["Mail"]] = true,
-		[Enum.ItemArmorSubclass["Leather"]] = true,
+		[Enum.ItemArmorSubclass.Mail] = true,
 	},
 	ROGUE = {
-		[Enum.ItemArmorSubclass["Leather"]] = true,
+		[Enum.ItemArmorSubclass.Leather] = true,
 	},
 	PRIEST = {
-		[Enum.ItemArmorSubclass["Cloth"]] = true,
+		[Enum.ItemArmorSubclass.Cloth] = true,
 	},
 	DEATHKNIGHT = {
-		[Enum.ItemArmorSubclass["Plate"]] = true,
-		[Enum.ItemArmorSubclass["Mail"]] = true,
-		[Enum.ItemArmorSubclass["Leather"]] = true,
+		[Enum.ItemArmorSubclass.Plate] = true,
 	},
 	SHAMAN = {
-		[Enum.ItemArmorSubclass["Mail"]] = true,
-		[Enum.ItemArmorSubclass["Leather"]] = true,
-		[Enum.ItemArmorSubclass["Cloth"]] = true,
+		[Enum.ItemArmorSubclass.Mail] = true,
 	},
 	MAGE = {
-		[Enum.ItemArmorSubclass["Cloth"]] = true,
+		[Enum.ItemArmorSubclass.Cloth] = true,
 	},
 	WARLOCK = {
-		[Enum.ItemArmorSubclass["Cloth"]] = true,
+		[Enum.ItemArmorSubclass.Cloth] = true,
 	},
 	DRUID = {
-		[Enum.ItemArmorSubclass["Leather"]] = true,
-		[Enum.ItemArmorSubclass["Cloth"]] = true,
+		[Enum.ItemArmorSubclass.Leather] = true,
 	},
 }
+
+if addon.tocversion < 40000 then
+	classArmorTypes["WARRIOR"][Enum.ItemArmorSubclass.Mail] = true
+	classArmorTypes["WARRIOR"][Enum.ItemArmorSubclass.Leather] = true
+
+	classArmorTypes["PALADIN"][Enum.ItemArmorSubclass.Mail] = true
+	classArmorTypes["PALADIN"][Enum.ItemArmorSubclass.Leather] = true
+	classArmorTypes["PALADIN"][Enum.ItemArmorSubclass.Cloth] = true
+
+	classArmorTypes["HUNTER"][Enum.ItemArmorSubclass.Leather] = true
+
+	classArmorTypes["DEATHKNIGHT"][Enum.ItemArmorSubclass.Mail] = true
+	classArmorTypes["DEATHKNIGHT"][Enum.ItemArmorSubclass.Leather] = true
+
+	classArmorTypes["SHAMAN"][Enum.ItemArmorSubclass.Leather] = true
+	classArmorTypes["SHAMAN"][Enum.ItemArmorSubclass.Cloth] = true
+
+	classArmorTypes["DRUID"][Enum.ItemArmorSubclass.Cloth] = true
+end
 
 local armorTypes = {
 	[Enum.ItemArmorSubclass["Plate"]] = true,
@@ -3326,10 +3334,10 @@ function RatingBuster:StatSummary(tooltip, link)
 
 	-- Show stat summary only for highest level armor type and items you can use with uncommon quality and up
 	if db.global.sumIgnoreUnused then
-		local _, _, itemRarity, _, _, _, _, _, inventoryType, _, classID, subclassID = GetItemInfo(link)
+		local _, _, itemQuality, _, _, _, _, _, inventoryType, _, _, classID, subclassID = C_Item.GetItemInfo(link)
 
 		-- Check rarity
-		if not itemRarity or itemRarity < 2 then
+		if not itemQuality or itemQuality < 2 then
 			return
 		end
 
