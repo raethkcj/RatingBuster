@@ -1454,10 +1454,14 @@ do
 	},
 	{
 		__index = function(_, stat)
-			local stat_name = stat:gsub("(%u)(%u+)_?", function(head, tail)
-				return head .. tail:lower()
-			end)
-			return StatLogic.Stats[stat_name]
+			if type(stat) == "string" then
+				local stat_name = stat:gsub("(%u)(%u+)_?", function(head, tail)
+					return head .. tail:lower()
+				end)
+				return StatLogic.Stats[stat_name]
+			else
+				return stat
+			end
 		end
 	})
 
