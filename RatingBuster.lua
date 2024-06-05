@@ -1077,6 +1077,15 @@ local options = {
 							set = setGem,
 							order = 4,
 						},
+						sumGemPrismatic = {
+							type = 'input',
+							name = EMPTY_SOCKET_PRISMATIC,
+							desc = L["ItemID or Link of the gem you would like to auto fill"],
+							usage = L["<ItemID|Link>"],
+							get = getGem,
+							set = setGem,
+							order = 4,
+						},
 					},
 				},
 			},
@@ -1291,6 +1300,11 @@ local defaults = {
 			gemText = nil,
 		};
 		sumGemMeta = {
+			itemID = nil,
+			gemID = nil,
+			gemText = nil,
+		};
+		sumGemPrismatic = {
 			itemID = nil,
 			gemID = nil,
 			gemText = nil,
@@ -1776,6 +1790,7 @@ local EmptySocketLookup = {
 	[EMPTY_SOCKET_YELLOW] = "sumGemYellow", -- EMPTY_SOCKET_YELLOW = "Yellow Socket";
 	[EMPTY_SOCKET_BLUE] = "sumGemBlue", -- EMPTY_SOCKET_BLUE = "Blue Socket";
 	[EMPTY_SOCKET_META] = "sumGemMeta", -- EMPTY_SOCKET_META = "Meta Socket";
+	[EMPTY_SOCKET_PRISMATIC] = "sumGemPrismatic", -- EMPTY_SOCKET_PRISMATIC = "Prismatic Socket";
 }
 
 -- Avoidance Diminishing Returns
@@ -3421,6 +3436,7 @@ function RatingBuster:StatSummary(tooltip, link)
 	local yellow = db.profile.sumGemYellow.gemID
 	local blue = db.profile.sumGemBlue.gemID
 	local meta = db.profile.sumGemMeta.gemID
+	local prismatic = db.profile.sumGemPrismatic.gemID
 
 	if db.global.sumIgnoreEnchant then
 		link = StatLogic:RemoveEnchant(link)
@@ -3431,7 +3447,7 @@ function RatingBuster:StatSummary(tooltip, link)
 	if db.global.sumIgnoreGems then
 		link = StatLogic:RemoveGem(link)
 	else
-		link = StatLogic:BuildGemmedTooltip(link, red, yellow, blue, meta)
+		link = StatLogic:BuildGemmedTooltip(link, red, yellow, blue, meta, prismatic)
 	end
 
 	-- Diff Display Style

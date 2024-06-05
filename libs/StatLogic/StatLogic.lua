@@ -1403,7 +1403,7 @@ do
 		-- Count item's actual sockets
 		wipe(statTable)
 		GetItemStats(link, statTable)
-		local numSockets = statTable["EMPTY_SOCKET_RED"] + statTable["EMPTY_SOCKET_YELLOW"] + statTable["EMPTY_SOCKET_BLUE"]
+		local numSockets = statTable["EMPTY_SOCKET_RED"] + statTable["EMPTY_SOCKET_YELLOW"] + statTable["EMPTY_SOCKET_BLUE"] + statTable["EMPTY_SOCKET_PRISMATIC"]
 
 		-- Remove any gemID beyond numSockets
 		local i = 0
@@ -1422,6 +1422,7 @@ do
 		[EMPTY_SOCKET_YELLOW] = 0, -- EMPTY_SOCKET_YELLOW = "Yellow Socket";
 		[EMPTY_SOCKET_BLUE] = 0, -- EMPTY_SOCKET_BLUE = "Blue Socket";
 		[EMPTY_SOCKET_META] = 0, -- EMPTY_SOCKET_META = "Meta Socket";
+		[EMPTY_SOCKET_PRISMATIC] = 0, -- EMPTY_SOCKET_PRISMATIC = "Prismatic Socket";
 	}
 	-- Returns a modified link with all empty sockets replaced with the specified gems,
 	-- sockets already gemmed will remain.
@@ -1430,8 +1431,9 @@ do
 	---@param yellow? string|number gemID to replace a yellow socket
 	---@param blue? string|number gemID to replace a blue socket
 	---@param meta? string|number gemID to replace a meta socket
+	---@param prismatic? string|number gemID to replace a prismatic socket
 	---@return string link Modified item link
-	function StatLogic:BuildGemmedTooltip(link, red, yellow, blue, meta)
+	function StatLogic:BuildGemmedTooltip(link, red, yellow, blue, meta, prismatic)
 		-- Check item
 		if (type(link) ~= "string") then
 			return link
@@ -1439,7 +1441,7 @@ do
 
 		wipe(statTable)
 		GetItemStats(link, statTable)
-		local numSockets = statTable["EMPTY_SOCKET_META"] + statTable["EMPTY_SOCKET_RED"] + statTable["EMPTY_SOCKET_YELLOW"] + statTable["EMPTY_SOCKET_BLUE"]
+		local numSockets = statTable["EMPTY_SOCKET_META"] + statTable["EMPTY_SOCKET_RED"] + statTable["EMPTY_SOCKET_YELLOW"] + statTable["EMPTY_SOCKET_BLUE"] + statTable["EMPTY_SOCKET_PRISMATIC"]
 		if numSockets == 0 then return link end
 
 		-- Check gemID
@@ -1447,13 +1449,15 @@ do
 		yellow = yellow and tonumber(yellow) or 0
 		blue = blue and tonumber(blue) or 0
 		meta = meta and tonumber(meta) or 0
-		if red == 0 and yellow == 0 and blue == 0 and meta == 0 then return link end -- nothing to modify
+		prismatic = prismatic and tonumber(prismatic) or 0
+		if red == 0 and yellow == 0 and blue == 0 and meta == 0 and prismatic == 0 then return link end -- nothing to modify
 
 		-- Fill EmptySocketLookup
 		EmptySocketLookup[EMPTY_SOCKET_RED] = red
 		EmptySocketLookup[EMPTY_SOCKET_YELLOW] = yellow
 		EmptySocketLookup[EMPTY_SOCKET_BLUE] = blue
 		EmptySocketLookup[EMPTY_SOCKET_META] = meta
+		EmptySocketLookup[EMPTY_SOCKET_PRISMATIC] = prismatic
 
 		-- Build socket list
 		local arguments = {"%1"}
