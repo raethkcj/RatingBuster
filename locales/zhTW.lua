@@ -98,6 +98,8 @@ L["Ignore stuff when calculating the stat summary"] = "設定在統計總合時�
 -- /rb sum ignore unused
 L["Ignore unused item types"] = "忽略不可能使用的物品"
 L["Show stat summary only for highest level armor type and items you can use with uncommon quality and up"] = "只顯示在你會使用的物品上"
+L["Ignore non-primary stat"] = "Ignore non-primary stat"
+L["Show stat summary only for items with your specialization's primary stat"] = "Show stat summary only for items with your specialization's primary stat"
 -- /rb sum ignore equipped
 L["Ignore equipped items"] = "忽略已裝備的物品"
 L["Hide stat summary for equipped items"] = "隱藏已裝備的物品的統計總合"

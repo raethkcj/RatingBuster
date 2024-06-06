@@ -97,6 +97,8 @@ L["Ignore stuff when calculating the stat summary"] = "Настройка игн
 -- /rb sum ignore unused
 L["Ignore unused item types"] = "Игнорирование неподходящих предметов"
 L["Show stat summary only for highest level armor type and items you can use with uncommon quality and up"] = "Скрыть итоги по статам для неподходящих предметов"
+L["Ignore non-primary stat"] = "Ignore non-primary stat"
+L["Show stat summary only for items with your specialization's primary stat"] = "Show stat summary only for items with your specialization's primary stat"
 -- /rb sum ignore equipped
 L["Ignore equipped items"] = "Не показывать для надетых вещей"
 L["Hide stat summary for equipped items"] = "Не показывать для надетых вещей"
