@@ -308,17 +308,14 @@ L["Reduced Physical Damage Taken"] = "Reduced Physical Damage Taken"
 --
 -- Tip2: The strings are passed into string.find, so you should escape the magic characters ^$()%.[]*+-? with a %
 L["numberPatterns"] = {
-	{pattern = " en (%d+) p", addInfo = "AfterNumber",},
-	{pattern = "([%+%-]%d+)", addInfo = "AfterStat",},
-	{pattern = "otorga.-(%d+) p", addInfo = "AfterNumber",}, -- for "grant you xx stat" type pattern, ex: Quel'Serrar, Assassination Armor set
-	{pattern = "aumenta.-(%d+) p", addInfo = "AfterNumber",}, -- for "add xx stat" type pattern, ex: Adamantite Sharpening Stone
-	{pattern = "(%d+)([^%d%%|]+)", addInfo = "AfterStat",}, -- [????????] +6?????5??
+	" en " .. addon.numberPattern .. " ?p?%.?",
+	addon.numberPattern .. " ?p?%.?",
 }
 -- Exclusions are used to ignore instances of separators that should not get separated
 L["exclusions"] = {
 }
 L["separators"] = {
-	"/", " y ", ",", "%f[p%.]%. ", " durante ", "&", "\n"
+	"/", " y ", ",%f[^%d]", "%f[p%.]%. ", " durante ", "&", "\n"
 }
 --[[
 SPELL_STAT1_NAME = "Strength"

@@ -313,9 +313,10 @@ L["Reduced Physical Damage Taken"] = true
 -- or you can type /rb debug to enable it in game
 --
 -- Tip2: The strings are passed into string.find, so you should escape the magic characters ^$()%.[]*+-? with a %
+addon.numberPattern = "([%+%-]?[%d" .. LARGE_NUMBER_SEPERATOR .. "]+)%f[^%d%%+]"
 L["numberPatterns"] = {
-	{pattern = " by (%d+)%f[^%d%%]", addInfo = "AfterNumber",},
-	{pattern = "([%+%-]?%d+)%f[^%d%%]", addInfo = "AfterStat",},
+	" by " .. addon.numberPattern,
+	addon.numberPattern,
 }
 
 -- Exclusions are used to ignore instances of separators that should not get separated
@@ -324,7 +325,7 @@ L["exclusions"] = {
 	["chest, legs,"] = "chest legs", -- Vindicator's Armor Kit
 }
 L["separators"] = {
-	"/", " and ", ",", "%. ", " for ", "&", ":", "\n"
+	"/", " and ", ",%f[^%d]", "%. ", " for ", "&", ":", "\n"
 }
 --[[
 SPELL_STAT1_NAME = "Strength"

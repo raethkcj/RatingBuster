@@ -298,19 +298,11 @@ L["Reduced Physical Damage Taken"] = "Reduced Physical Damage Taken"
 --
 -- Tip2: The strings are passed into string.find, so you should escape the magic characters ^$()%.[]*+-? with a %
 L["numberPatterns"] = {
-	{pattern = " by (%d+)%f[^%d%%]", addInfo = "AfterNumber",},
-	{pattern = "([%+%-]%d+)%f[^%d%%]", addInfo = "AfterStat",},
-	{pattern = "grant.-(%d+)", addInfo = "AfterNumber",}, -- for "grant you xx stat" type pattern, ex: Quel'Serrar, Assassination Armor set
-	{pattern = "add.-(%d+)[^%%]?$", addInfo = "AfterNumber",}, -- for "add xx stat" type pattern, ex: Adamantite Sharpening Stone
-	-- Added [^%%] so that it doesn't match strings like "Increases healing by up to 10% of your total Intellect." [Whitemend Pants] ID: 24261
-	-- Added [^|] so that it doesn't match enchant strings (JewelTips)
-	{pattern = "(%d+)([^%d%%|]+)", addInfo = "AfterStat",}, -- [發光的暗影卓奈石] +6法術傷害及5耐力
-	{pattern = "chest, legs, hands or feet by (%d+)"},
+	" em " .. addon.numberPattern,
+	addon.numberPattern,
 }
 -- Exclusions are used to ignore instances of separators that should not get separated
 L["exclusions"] = {
-	["head, chest, shoulders, legs,"] = "head chest shoulders legs", -- Borean Armor Kit
-	["chest, legs,"] = "chest legs", -- Vindicator's Armor Kit
 }
 L["separators"] = {
 	"/", " and ", ",", "%. ", " for ", "&", ":", "\n"

@@ -304,18 +304,16 @@ L["Reduced Physical Damage Taken"] = "Reduced Physical Damage Taken"
 -- or you can type /rb debug to enable it in game
 --
 -- Tip2: The strings are passed into string.find, so you should escape the magic characters ^$()%.[]*+-? with a %
+addon.numberPattern = addon.numberPattern .. "\231?\130?\185?" -- 点
 L["numberPatterns"] = {
-	{pattern = "(%d+)。", addInfo = "AfterNumber",},
-	{pattern = "([%+%-]%d+)", addInfo = "AfterStat",},
-	{pattern = "佩戴者.-(%d+)", addInfo = "AfterNumber",}, -- for "grant you xx stat" type pattern, ex: Quel'Serrar, Assassination Armor set
-	{pattern = "提高.-(%d+)", addInfo = "AfterNumber",},
-	{pattern = "(%d+)([^%d%%|]+)", addInfo = "AfterStat",}, -- [发光的暗影卓奈石] +6法术伤害及5耐力
+	"提高" .. addon.numberPattern,
+	addon.numberPattern,
 }
 -- Exclusions are used to ignore instances of separators that should not get separated
 L["exclusions"] = {
 }
 L["separators"] = {
-	"/", "和", ",", "。", " 持续 ", "&", "及", "并", "，","、", "\n"
+	"/", "和", ",%f[^%d]", "。", " 持续 ", "&", "及", "并", "，","、", "\n"
 }
 --[[
 SPELL_STAT1_NAME = "Strength"

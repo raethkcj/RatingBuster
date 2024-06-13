@@ -307,15 +307,12 @@ L["Reduced Physical Damage Taken"] = "Reduzierter erlittener physischer Schaden"
 --
 -- Tip2: The strings are passed into string.find, so you should escape the magic characters ^$()%.[]*+-? with a %
 L["numberPatterns"] = {
-	{pattern = " um (%d+)%f[^%d%%]", addInfo = "AfterNumber",},
-	{pattern = "([%+%-]%d+)%f[^%d%%]", addInfo = "AfterStat",},
-	{pattern = "verleiht.-(%d+)", addInfo = "AfterNumber",}, -- for "grant you xx stat" type pattern, ex: Quel'Serrar, Assassination Armor set
-	{pattern = "(%d+) erhöhen.", addInfo = "AfterNumber",}, -- for "add xx stat" type pattern, ex: Adamantite Sharpening Stone
-	-- Added [^%%] so that it doesn't match strings like "Increases healing by up to 10% of your total Intellect." [Whitemend Pants] ID: 24261
-	{pattern = "(%d+)([^%d%%|]+)", addInfo = "AfterStat",}, -- [發光的暗影卓奈石] +6法術傷害及5耐力
+	" um " .. addon.numberPattern,
+	addon.numberPattern,
 }
 -- Exclusions are used to ignore instances of separators that should not get separated
 L["exclusions"] = {
+	["Sek."] = "SECOND"
 }
 L["separators"] = {
 	"/", " und ", ",", "%. ", " für ", "&", ":", "\n"
