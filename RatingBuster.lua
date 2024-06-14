@@ -1986,10 +1986,16 @@ function RatingBuster:ProcessText(text, link, color)
 								effect = ("%+.1f"):format(effect)
 							elseif floor(abs(effect) + 0.5) > 0 then
 								effect = ("%+.0f"):format(effect)
+							else
+								-- Effect is too small to show
+								effect = false
 							end
-							effects[effect] = effects[effect] or {}
-							if statID ~= "Decimal" then
-								tinsert(effects[effect], S[statID])
+
+							if effect then
+								effects[effect] = effects[effect] or {}
+								if statID ~= "Decimal" then
+									tinsert(effects[effect], S[statID])
+								end
 							end
 						end
 					end
