@@ -1064,11 +1064,13 @@ do
 		for tab = 1, numTabs do
 			temp[tab] = {}
 			local products = {}
-			for i = 1,GetNumTalents(tab) do
-				local _, _, tier, column = GetTalentInfo(tab,i)
-				local product = (tier - 1) * 4 + column
-				temp[tab][product] = i
-				table.insert(products, product)
+			for i = 1, GetNumTalents(tab) do
+				local name, _, tier, column = GetTalentInfo(tab, i)
+				if name then
+					local product = (tier - 1) * 4 + column
+					temp[tab][product] = i
+					table.insert(products, product)
+				end
 			end
 
 			table.sort(products)
