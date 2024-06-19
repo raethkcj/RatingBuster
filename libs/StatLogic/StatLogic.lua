@@ -1547,12 +1547,22 @@ end
 do
 	local statTable, currentColor
 
+	local large_sep = LARGE_NUMBER_SEPERATOR:gsub("[-.]", "%%%1")
+	local dec_sep = DECIMAL_SEPERATOR:gsub("[-.]", "%%%1")
+	local number_pattern = "[+-]?[%d." .. large_sep .. dec_sep .. "]+%f[%D]"
+
 	local function AddStat(id, value, currentStats)
 		if id == StatLogic.Stats.Armor then
 			local base, bonus = StatLogic:GetArmorDistribution(statTable.link, value, currentColor)
 			value = base
 			AddStat(StatLogic.Stats.BonusArmor, bonus, currentStats)
 		end
+
+		if id == StatLogic.Stats.WeaponDPS and LARGE_NUMBER_SEPERATOR == "." then
+			-- Workaround for Blizzard forgetting to use DECIMAL_SEPERATOR for Weapon DPS
+			value = value / 10
+		end
+
 		statTable[id] = (statTable[id] or 0) + tonumber(value)
 		table.insert(currentStats, tostring(id) .. "=" .. tostring(value))
 	end
@@ -1652,7 +1662,8 @@ do
 				if not found then
 					-- Replace numbers with %s
 					local values = {}
-					local statText, count = text:gsub("[+-]?[%d%.]+%f[%D]", function(match)
+					local statText, count = text:gsub(number_pattern, function(match)
+						match = match:gsub(large_sep, ""):gsub(dec_sep, ".")
 						local value = tonumber(match)
 						if value then
 							values[#values + 1] = value
