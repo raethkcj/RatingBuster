@@ -1533,7 +1533,16 @@ elseif addon.class == "WARRIOR" then
 end
 
 if addon.playerRace == "Dwarf" then
-	addon.WeaponRacials[Enum.ItemWeaponSubclass.Guns] = {StatLogic.Stats.RangedCrit, 1}
+	StatLogic.StatModTable["Dwarf"] = {
+		[StatLogic.Stats.RangedCrit] = {
+			{
+				["value"] = 1,
+				["weapon"] = {
+					[Enum.ItemWeaponSubclass.Guns] = true,
+				}
+			}
+		},
+	}
 elseif addon.playerRace == "NightElf" then
 	StatLogic.StatModTable["NightElf"] = {
 		-- Night Elf : Quickness - Racial
@@ -1573,14 +1582,30 @@ elseif addon.playerRace == "Human" then
 				["value"] = 0.1,
 			},
 		},
+		[StatLogic.Stats.Expertise] = {
+			{
+				["value"] = 5,
+				["weapon"] = {
+					[Enum.ItemWeaponSubclass.Mace1H] = true,
+					[Enum.ItemWeaponSubclass.Mace2H] = true,
+					[Enum.ItemWeaponSubclass.Sword1H] = true,
+					[Enum.ItemWeaponSubclass.Sword2H] = true,
+				}
+			}
+		},
 	}
-	addon.WeaponRacials[Enum.ItemWeaponSubclass.Mace1H] = {StatLogic.Stats.Expertise, 5}
-	addon.WeaponRacials[Enum.ItemWeaponSubclass.Mace2H] = {StatLogic.Stats.Expertise, 5}
-	addon.WeaponRacials[Enum.ItemWeaponSubclass.Sword1H] = {StatLogic.Stats.Expertise, 5}
-	addon.WeaponRacials[Enum.ItemWeaponSubclass.Sword2H] = {StatLogic.Stats.Expertise, 5}
 elseif addon.playerRace == "Orc" then
-	addon.WeaponRacials[Enum.ItemWeaponSubclass.Axe1H] = {StatLogic.Stats.Expertise, 5}
-	addon.WeaponRacials[Enum.ItemWeaponSubclass.Axe2H] = {StatLogic.Stats.Expertise, 5}
+	StatLogic.StatModTable["Orc"] = {
+		[StatLogic.Stats.Expertise] = {
+			{
+				["value"] = 5,
+				["weapon"] = {
+					[Enum.ItemWeaponSubclass.Axe1H] = true,
+					[Enum.ItemWeaponSubclass.Axe2H] = true,
+				}
+			}
+		},
+	}
 elseif addon.playerRace == "Troll" then
 	StatLogic.StatModTable["Troll"] = {
 		["MOD_NORMAL_HEALTH_REG"] = {
@@ -1598,9 +1623,16 @@ elseif addon.playerRace == "Troll" then
 				["spellid"] = 20555,
 			},
 		},
+		[StatLogic.Stats.RangedCrit] = {
+			{
+				["value"] = 1,
+				["weapon"] = {
+					[Enum.ItemWeaponSubclass.Bows] = true,
+					[Enum.ItemWeaponSubclass.Thrown] = true,
+				}
+			}
+		},
 	}
-	addon.WeaponRacials[Enum.ItemWeaponSubclass.Bows] = {StatLogic.Stats.RangedCrit, 1}
-	addon.WeaponRacials[Enum.ItemWeaponSubclass.Thrown] = {StatLogic.Stats.RangedCrit, 1}
 end
 
 StatLogic.StatModTable["ALL"] = {

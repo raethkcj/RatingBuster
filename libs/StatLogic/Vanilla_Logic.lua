@@ -262,7 +262,7 @@ if addon.class == "DRUID" then
 				["aura"] = 768,
 			},
 		},
-		["ADD_MELEE_CRIT"] = {
+		[StatLogic.Stats.MeleeCrit] = {
 			-- Base
 			{
 				["value"] = 0.9000,
@@ -460,7 +460,7 @@ elseif addon.class == "HUNTER" then
 				["value"] = 20,
 			}
 		},
-		["ADD_MELEE_CRIT"] = {
+		[StatLogic.Stats.MeleeCrit] = {
 			-- Base
 			{
 				["value"] = 0.0000,
@@ -565,7 +565,7 @@ elseif addon.class == "MAGE" then
 				["value"] = 3.2000,
 			},
 		},
-		["ADD_MELEE_CRIT"] = {
+		[StatLogic.Stats.MeleeCrit] = {
 			-- Base
 			{
 				["value"] = 3.2000,
@@ -728,7 +728,7 @@ elseif addon.class == "PALADIN" then
 				["value"] = 0.05,
 			},
 		},
-		["ADD_MELEE_CRIT"] = {
+		[StatLogic.Stats.MeleeCrit] = {
 			-- Base
 			{
 				["value"] = 0.7000,
@@ -823,7 +823,7 @@ elseif addon.class == "PRIEST" then
 				["value"] = 1,
 			},
 		},
-		["ADD_MELEE_CRIT"] = {
+		[StatLogic.Stats.MeleeCrit] = {
 			-- Base
 			{
 				["value"] = 3.0000,
@@ -981,7 +981,7 @@ elseif addon.class == "ROGUE" then
 				["aura"] = 14278,
 			},
 		},
-		["ADD_MELEE_CRIT"] = {
+		[StatLogic.Stats.MeleeCrit] = {
 			-- Base
 			{
 				["value"] = 0.0000,
@@ -1071,7 +1071,7 @@ elseif addon.class == "SHAMAN" then
 				},
 			},
 		},
-		["ADD_MELEE_CRIT"] = {
+		[StatLogic.Stats.MeleeCrit] = {
 			-- Base
 			{
 				["value"] = 1.7000,
@@ -1258,7 +1258,7 @@ elseif addon.class == "WARLOCK" then
 				["aura"] = 425463,
 			},
 		},
-		["ADD_MELEE_CRIT"] = {
+		[StatLogic.Stats.MeleeCrit] = {
 			-- Base
 			{
 				["value"] = 2.0000,
@@ -1425,7 +1425,7 @@ elseif addon.class == "WARRIOR" then
 				["value"] = -0.30,
 			}
 		},
-		["ADD_MELEE_CRIT"] = {
+		[StatLogic.Stats.MeleeCrit] = {
 			-- Base
 			{
 				["value"] = 0.0000,
@@ -1495,7 +1495,16 @@ elseif addon.class == "WARRIOR" then
 end
 
 if addon.playerRace == "Dwarf" then
-	addon.WeaponRacials[Enum.ItemWeaponSubclass.Guns] = {StatLogic.Stats.WeaponSkill, 5}
+	StatLogic.StatModTable["Dwarf"] = {
+		[StatLogic.Stats.WeaponSkill] = {
+			{
+				["value"] = 5,
+				["weapon"] = {
+					[Enum.ItemWeaponSubclass.Guns] = true,
+				}
+			}
+		},
+	}
 elseif addon.playerRace == "NightElf" then
 	StatLogic.StatModTable["NightElf"] = {
 		-- Night Elf : Quickness - Racial
@@ -1534,15 +1543,31 @@ elseif addon.playerRace == "Human" then
 			{
 				["value"] = 0.05,
 			}
+		},
+		[StatLogic.Stats.WeaponSkill] = {
+			{
+				["value"] = 5,
+				["weapon"] = {
+					[Enum.ItemWeaponSubclass.Mace1H] = true,
+					[Enum.ItemWeaponSubclass.Mace2H] = true,
+					[Enum.ItemWeaponSubclass.Sword1H] = true,
+					[Enum.ItemWeaponSubclass.Sword2H] = true,
+				}
+			}
 		}
 	}
-	addon.WeaponRacials[Enum.ItemWeaponSubclass.Mace1H] = {StatLogic.Stats.WeaponSkill, 5}
-	addon.WeaponRacials[Enum.ItemWeaponSubclass.Mace2H] = {StatLogic.Stats.WeaponSkill, 5}
-	addon.WeaponRacials[Enum.ItemWeaponSubclass.Sword1H] = {StatLogic.Stats.WeaponSkill, 5}
-	addon.WeaponRacials[Enum.ItemWeaponSubclass.Sword2H] = {StatLogic.Stats.WeaponSkill, 5}
 elseif addon.playerRace == "Orc" then
-	addon.WeaponRacials[Enum.ItemWeaponSubclass.Axe1H] = {StatLogic.Stats.WeaponSkill, 5}
-	addon.WeaponRacials[Enum.ItemWeaponSubclass.Axe2H] = {StatLogic.Stats.WeaponSkill, 5}
+	StatLogic.StatModTable["Orc"] = {
+		[StatLogic.Stats.WeaponSkill] = {
+			{
+				["value"] = 5,
+				["weapon"] = {
+					[Enum.ItemWeaponSubclass.Axe1H] = true,
+					[Enum.ItemWeaponSubclass.Axe2H] = true,
+				}
+			}
+		}
+	}
 elseif addon.playerRace == "Troll" then
 	StatLogic.StatModTable["Troll"] = {
 		["MOD_NORMAL_HEALTH_REG"] = {
@@ -1560,9 +1585,16 @@ elseif addon.playerRace == "Troll" then
 				["spellid"] = 20555,
 			},
 		},
+		[StatLogic.Stats.WeaponSkill] = {
+			{
+				["value"] = 5,
+				["weapon"] = {
+					[Enum.ItemWeaponSubclass.Bows] = true,
+					[Enum.ItemWeaponSubclass.Thrown] = true,
+				}
+			}
+		}
 	}
-	addon.WeaponRacials[Enum.ItemWeaponSubclass.Bows] = {StatLogic.Stats.WeaponSkill, 5}
-	addon.WeaponRacials[Enum.ItemWeaponSubclass.Thrown] = {StatLogic.Stats.WeaponSkill, 5}
 end
 
 StatLogic.StatModTable["ALL"] = {
@@ -1769,7 +1801,7 @@ StatLogic.StatModTable["ALL"] = {
 			["rune"] = true,
 		},
 	},
-	["ADD_MELEE_CRIT"] = {
+	[StatLogic.Stats.MeleeCrit] = {
 		-- Buff: Leader of the Pack
 		{
 			["aura"] = 24932,

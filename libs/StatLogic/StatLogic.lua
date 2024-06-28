@@ -324,7 +324,11 @@ StatLogic.StatModInfo = {
 	-- The crit conversions are also only necessary in Vanilla, while Dodge is necessary in every expansion.
 	-- Spell crit modifiers are only required if they mod school 1 (physical)
 	-- That means spells with EffectAura 57 or 290, and, separately, EffectAura 71 or 552 whose final digit of EffectMiscValue_0 is an odd number
-	["ADD_MELEE_CRIT"] = {
+	[StatLogic.Stats.MeleeCrit] = {
+		initialValue = 0,
+		finalAdjust = 0,
+	},
+	[StatLogic.Stats.RangedCrit] = {
 		initialValue = 0,
 		finalAdjust = 0,
 	},
@@ -333,6 +337,14 @@ StatLogic.StatModInfo = {
 		finalAdjust = 0,
 	},
 	["ADD_SPELL_CRIT"] = {
+		initialValue = 0,
+		finalAdjust = 0,
+	},
+	[StatLogic.Stats.WeaponSkill] = {
+		initialValue = 0,
+		finalAdjust = 0,
+	},
+	[StatLogic.Stats.Expertise] = {
 		initialValue = 0,
 		finalAdjust = 0,
 	},
@@ -863,7 +875,7 @@ end
 -- Ignore Stat Mods that are only used for reverse-engineering agi/int conversion rates
 StatLogic.StatModIgnoresAlwaysBuffed = {
 	["ADD_DODGE"] = true,
-	["ADD_MELEE_CRIT"] = true,
+	[StatLogic.Stats.MeleeCrit] = true,
 	["ADD_SPELL_CRIT"] = true,
 }
 
