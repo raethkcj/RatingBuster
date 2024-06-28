@@ -46,14 +46,14 @@ local BaseManaRegenPerSpi = {
 }
 
 local NormalManaRegenPerSpi = function(level)
-	local _, int = UnitStat("player", 4)
-	local _, spi = UnitStat("player", 5)
+	local _, int = UnitStat("player", LE_UNIT_STAT_INTELLECT)
+	local _, spi = UnitStat("player", LE_UNIT_STAT_SPIRIT)
 	return (0.001 / spi + BaseManaRegenPerSpi[level] * (int ^ 0.5)) * 5
 end
 
 local NormalManaRegenPerInt = function(level)
-	local _, int = UnitStat("player", 4)
-	local _, spi = UnitStat("player", 5)
+	local _, int = UnitStat("player", LE_UNIT_STAT_INTELLECT)
+	local _, spi = UnitStat("player", LE_UNIT_STAT_SPIRIT)
 	-- Derivative of regen with respect to int
 	return (spi * BaseManaRegenPerSpi[level] / (2 * (int ^ 0.5))) * 5
 end

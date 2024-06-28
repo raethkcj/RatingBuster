@@ -51,14 +51,14 @@ local BaseManaRegenPerSpi = {
 }
 
 local NormalManaRegenPerSpi = function(level)
-	local _, int = UnitStat("player", 4)
-	local _, spi = UnitStat("player", 5)
+	local _, int = UnitStat("player", LE_UNIT_STAT_INTELLECT)
+	local _, spi = UnitStat("player", LE_UNIT_STAT_SPIRIT)
 	return (0.001 / spi + BaseManaRegenPerSpi[level] * (int ^ 0.5)) * 5
 end
 
 local NormalManaRegenPerInt = function(level)
-	local _, int = UnitStat("player", 4)
-	local _, spi = UnitStat("player", 5)
+	local _, int = UnitStat("player", LE_UNIT_STAT_INTELLECT)
+	local _, spi = UnitStat("player", LE_UNIT_STAT_SPIRIT)
 	-- Derivative of regen with respect to int
 	return (spi * BaseManaRegenPerSpi[level] / (2 * (int ^ 0.5))) * 5
 end
@@ -2843,7 +2843,7 @@ function StatLogic:GetDodgePerAgi()
 	local dodgeFromDodgeRating = GetCombatRatingBonus(CR_DODGE)
 	local D_r = dodgeFromDodgeRating
 	local D_b = self:GetStatMod("ADD_DODGE")
-	local stat, effectiveStat, posBuff, negBuff = UnitStat("player", 2) -- 2 = Agility
+	local stat, effectiveStat, posBuff, negBuff = UnitStat("player", LE_UNIT_STAT_AGILITY)
 	local modAgi = 1
 	if ModAgiClasses[addon.class] then
 		modAgi = self:GetStatMod("MOD_AGI")
@@ -2895,7 +2895,7 @@ modDodge includes
 ---@return number modDodge The part that is affected by diminishing returns.
 ---@return number drFreeDodge The part that isn't affected by diminishing returns.
 function StatLogic:GetDodgeChanceBeforeDR()
-	local stat, effectiveStat, posBuff, negBuff = UnitStat("player", 2) -- 2 = Agility
+	local stat, effectiveStat, posBuff, negBuff = UnitStat("player", LE_UNIT_STAT_AGILITY)
 	local baseAgi = stat - posBuff - negBuff
 	local dodgePerAgi = self:GetDodgePerAgi()
 	local dodgeFromDodgeRating = GetCombatRatingBonus(CR_DODGE)

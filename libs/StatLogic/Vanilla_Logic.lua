@@ -19,7 +19,7 @@ local RegenMPPerSpt = {
 }
 
 local NormalManaRegenPerSpi = function()
-	local _, spi = UnitStat("player", 5)
+	local _, spi = UnitStat("player", LE_UNIT_STAT_SPIRIT)
 	return 5 * (spi > 50 and RegenMPPerSpt[addon.class] or OCTRegenMP)
 end
 

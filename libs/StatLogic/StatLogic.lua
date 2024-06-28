@@ -1385,7 +1385,7 @@ if not CR_DODGE then CR_DODGE = 3 end;
 -- Only works for your currect class and current level, does not support class and level args.
 ---@return number dodge Dodge percentage per agility
 function StatLogic:GetDodgePerAgi()
-	local _, agility = UnitStat("player", 2)
+	local _, agility = UnitStat("player", LE_UNIT_STAT_AGILITY)
 	-- dodgeFromAgi is %
 	local dodgeFromAgi = GetDodgeChance()
 		- self:GetStatMod("ADD_DODGE")
@@ -1396,16 +1396,16 @@ function StatLogic:GetDodgePerAgi()
 end
 
 function StatLogic:GetCritPerAgi()
-	local _, agility = UnitStat("player", 2)
+	local _, agility = UnitStat("player", LE_UNIT_STAT_AGILITY)
 	local critFromAgi = GetCritChance()
-	- self:GetStatMod("ADD_MELEE_CRIT")
+	- self:GetStatMod(StatLogic.Stats.MeleeCrit)
 	- self:GetCritChanceFromWeaponSkill()
 	- self:GetTotalEquippedStat(StatLogic.Stats.MeleeCrit)
 	return critFromAgi / agility
 end
 
 function StatLogic:GetSpellCritPerInt()
-	local _, intellect = UnitStat("player", 4)
+	local _, intellect = UnitStat("player", LE_UNIT_STAT_INTELLECT)
 	local critFromInt = GetSpellCritChance(1)
 	- self:GetStatMod("ADD_SPELL_CRIT")
 	return critFromInt / intellect
