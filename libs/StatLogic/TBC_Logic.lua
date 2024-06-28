@@ -1151,6 +1151,30 @@ elseif addon.class == "ROGUE" then
 				},
 			},
 		},
+		[StatLogic.Stats.MeleeCrit] = {
+			-- Talent: Dagger Specialization
+			{
+				["tab"] = 2,
+				["num"] = 11,
+				["rank"] = {
+					1, 2, 3, 4, 5,
+				},
+				["weapon"] = {
+					[Enum.ItemWeaponSubclass.Dagger] = true,
+				},
+			},
+			-- Talent: Fist Weapon Specialization
+			{
+				["tab"] = 2,
+				["num"] = 16,
+				["rank"] = {
+					1, 2, 3, 4, 5,
+				},
+				["weapon"] = {
+					[Enum.ItemWeaponSubclass.Unarmed] = true,
+				},
+			},
+		},
 	}
 elseif addon.class == "SHAMAN" then
 	StatLogic.StatModTable["SHAMAN"] = {
@@ -1527,6 +1551,21 @@ elseif addon.class == "WARRIOR" then
 				["num"] = 6,
 				["value"] = 0.30,
 				["aura"] = 12976,
+			},
+		},
+		[StatLogic.Stats.MeleeCrit] = {
+			-- Talent: Poleaxe Specialization
+			{
+				["tab"] = 1,
+				["num"] = 12,
+				["rank"] = {
+					1, 2, 3, 4, 5,
+				},
+				["weapon"] = {
+					[Enum.ItemWeaponSubclass.Axe1H] = true,
+					[Enum.ItemWeaponSubclass.Axe2H] = true,
+					[Enum.ItemWeaponSubclass.Polearm] = true,
+				},
 			},
 		},
 	}

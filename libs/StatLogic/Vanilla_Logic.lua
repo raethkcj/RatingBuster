@@ -1017,6 +1017,32 @@ elseif addon.class == "ROGUE" then
 				},
 			},
 		},
+		[StatLogic.Stats.WeaponSkill] = {
+			-- Talent: Mace Specializaiton
+			{
+				["tab"] = 2,
+				["num"] = 13,
+				["rank"] = {
+					1, 2, 3, 4, 5,
+				},
+				["weapon"] = {
+					[Enum.ItemWeaponSubclass.Mace1H] = true,
+				},
+			},
+			-- Talent: Weapon Expertise
+			{
+				["tab"] = 2,
+				["num"] = 17,
+				["rank"] = {
+					3, 5,
+				},
+				["weapon"] = {
+					[Enum.ItemWeaponSubclass.Sword1H] = true,
+					[Enum.ItemWeaponSubclass.Dagger] = true,
+					[Enum.ItemWeaponSubclass.Unarmed] = true,
+				},
+			},
+		},
 	}
 elseif addon.class == "SHAMAN" then
 	StatLogic.StatModTable["SHAMAN"] = {

@@ -2465,6 +2465,20 @@ elseif addon.class == "ROGUE" then
 				},
 			},
 		},
+		[StatLogic.Stats.MeleeCrit] = {
+			-- Talent: Close Quarters Combat
+			{
+				["tab"] = 2,
+				["num"] = 9,
+				["rank"] = {
+					1, 2, 3, 4, 5,
+				},
+				["weapon"] = {
+					[Enum.ItemWeaponSubclass.Dagger] = true,
+					[Enum.ItemWeaponSubclass.Unarmed] = true,
+				},
+			},
+		},
 	}
 elseif addon.class == "SHAMAN" then
 	StatLogic.StatModTable["SHAMAN"] = {
@@ -2914,6 +2928,21 @@ elseif addon.class == "WARRIOR" then
 				["num"] = 8,
 				["rank"] = {
 					0.15, 0.3,
+				},
+			},
+		},
+		[StatLogic.Stats.MeleeCrit] = {
+			-- Talent: Poleaxe Specialization
+			{
+				["tab"] = 1,
+				["num"] = 13,
+				["rank"] = {
+					1, 2, 3, 4, 5,
+				},
+				["weapon"] = {
+					[Enum.ItemWeaponSubclass.Axe1H] = true,
+					[Enum.ItemWeaponSubclass.Axe2H] = true,
+					[Enum.ItemWeaponSubclass.Polearm] = true,
 				},
 			},
 		},
