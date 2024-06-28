@@ -44,6 +44,8 @@ StatLogic.StatModTable["GLOBAL"] = {
 	},
 }
 
+addon.GenerateWeaponSubclassStats()
+
 for stat in pairs(StatLogic.RatingBase) do
 	local rating_name = stat.name:gsub("(%l)(%u)", "%1_%2"):upper()
 	local add = rating_name:gsub("_RATING$", "")

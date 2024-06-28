@@ -745,8 +745,25 @@ do
 	end
 end
 
--- Maps weapon subclasses to stat, value tuples
-addon.WeaponRacials = {}
+---@type { [Enum.ItemWeaponSubclass]: { [Stat]: true} }
+addon.WeaponSubclassStats = {}
+
+function addon.GenerateWeaponSubclassStats()
+	for _, modList in pairs(StatLogic.StatModTable) do
+		for stat, cases in pairs(modList) do
+			for _, case in ipairs(cases) do
+				if case.weapon then
+					for subclassID in pairs(case.weapon) do
+						if not addon.WeaponSubclassStats[subclassID] then
+							addon.WeaponSubclassStats[subclassID] = {}
+						end
+						addon.WeaponSubclassStats[subclassID][stat] = true
+					end
+				end
+			end
+		end
+	end
+end
 
 -----------------------------
 -- StatModValidator Caches --
@@ -970,12 +987,17 @@ addon.StatModValidators = {
 		},
 	},
 	weapon = {
-		validate = function(case)
-			local weapon = GetInventoryItemID("player", 16)
-			if weapon then
-				local subclassID = select(7, C_Item.GetItemInfoInstant(weapon))
-				return subclassID and case.weapon[subclassID]
+		validate = function(case, _, overrideStats)
+			local subclassID
+			if overrideStats then
+				subclassID = overrideStats.subclassID
+			else
+				local weapon = GetInventoryItemID("player", INVSLOT_MAINHAND)
+				if weapon then
+					subclassID = select(7, C_Item.GetItemInfoInstant(weapon))
+				end
 			end
+			return subclassID and case.weapon[subclassID]
 		end,
 		events = {
 			["UNIT_INVENTORY_CHANGED"] = "player",
@@ -987,6 +1009,7 @@ addon.StatModValidators = {
 -- maps events defined on Validators to the StatMods that depend on them.
 local StatModCache = {}
 addon.StatModCacheInvalidators = {}
+local WeaponSubclassInvalidators = {}
 
 function StatLogic:InvalidateEvent(event, unit)
 	local key = event
@@ -998,6 +1021,11 @@ function StatLogic:InvalidateEvent(event, unit)
 		for _, stat in pairs(stats) do
 			StatModCache[stat] = nil
 		end
+	end
+	if WeaponSubclassInvalidators[key] then
+		-- Since stats added by weaon subclass StatMods are inserted
+		-- directly into the cached sum, we need to wipe the item sum cache
+		wipe(cache)
 	end
 end
 
@@ -1020,7 +1048,12 @@ do
 	end)
 end
 
-local function ValidateStatMod(statModName, case)
+local function ValidateStatMod(statModName, case, overrideStats)
+	if overrideStats and overrideStats.subclassID and not case.weapon then
+		-- If we're passed a weapon type, we're only interested in StatMods with weapon cases
+		return false
+	end
+
 	for validatorType in pairs(case) do
 		local validator = addon.StatModValidators[validatorType]
 		if validator then
@@ -1032,10 +1065,13 @@ local function ValidateStatMod(statModName, case)
 					end
 					addon.StatModCacheInvalidators[key] = addon.StatModCacheInvalidators[key] or {}
 					table.insert(addon.StatModCacheInvalidators[key], statModName)
+					if case.weapon then
+						WeaponSubclassInvalidators[key] = true
+					end
 				end
 			end
 
-			if validator.validate and not validator.validate(case, statModName) then
+			if validator.validate and not validator.validate(case, statModName, overrideStats) then
 				return false
 			end
 		end
@@ -1133,8 +1169,8 @@ do
 		return currentValue
 	end
 
-	local GetStatModValue = function(statModName, currentValue, case, initialValue, level)
-		if not ValidateStatMod(statModName, case) then
+	local GetStatModValue = function(statModName, currentValue, case, initialValue, level, overrideStats)
+		if not ValidateStatMod(statModName, case, overrideStats) then
 			return currentValue
 		end
 
@@ -1185,7 +1221,11 @@ do
 		return currentValue
 	end
 
-	function StatLogic:GetStatMod(statModName, level)
+	---@param statModName string|Stat
+	---@param level? integer
+	---@param overrideStats? StatTable
+	---@return number
+	function StatLogic:GetStatMod(statModName, level, overrideStats)
 		local value
 		if not level or level == UnitLevel("player") then
 			value = StatModCache[statModName]
@@ -1199,7 +1239,7 @@ do
 			for _, categoryTable in pairs(StatLogic.StatModTable) do
 				if categoryTable[statModName] then
 					for _, case in ipairs(categoryTable[statModName]) do
-						value = GetStatModValue(statModName, value, case, statModInfo.initialValue, level)
+						value = GetStatModValue(statModName, value, case, statModInfo.initialValue, level, overrideStats)
 					end
 				end
 			end
@@ -1603,10 +1643,12 @@ do
 		statTable.numLines = numLines
 
 		if itemClass == Enum.ItemClass.Weapon then
-			local racial = addon.WeaponRacials[itemSubclass]
-			if racial then
-				local stat, value = unpack(racial)
-				statTable[stat] = value
+			for _, statMods in pairs(addon.WeaponSubclassStats) do
+				for statMod in pairs(statMods) do
+					local overrideStats = StatLogic.StatTable.new("subclassID", itemSubclass)
+					local value = StatLogic:GetStatMod(statMod, _, overrideStats)
+					statTable[statMod] = value
+				end
 			end
 		end
 
