@@ -38,15 +38,6 @@ RatingBuster.date = ("$Date: 2008-07-22 15:35:19 +0800 (星期二, 22 七月 200
 -----------
 local cache = {}
 setmetatable(cache, {__mode = "kv"}) -- weak table to enable garbage collection
-local function clearCache()
-	for k in pairs(cache) do
-		cache[k] = nil
-	end
-end
-
-function RatingBuster:ToggleDebugging()
-	wipe(cache)
-end
 
 ---------------------
 -- Local Variables --
@@ -81,7 +72,7 @@ end
 local function setOption(info, value, dataType)
 	dataType = dataType or "profile"
 	db[dataType][info[#info]] = value
-	clearCache()
+	RatingBuster:ClearCache()
 end
 local function getGem(info)
 	return db.profile[info[#info]].gemLink
@@ -112,7 +103,7 @@ local function setGem(info, value)
 			gemText = gemText:sub(11)
 		end
 		db.profile[info[#info]].gemText = gemText
-		clearCache()
+		RatingBuster:ClearCache()
 		local socket = "EMPTY_SOCKET_" .. info[#info]:sub(7):upper()
 		if not debugstack():find("AceConsole") then
 			RatingBuster:Print(L["%s is now set to %s"]:format(_G[socket], link))
@@ -128,7 +119,7 @@ end
 local function setColor(info, r, g, b)
 	local color = db.global[info[#info]]
 	color:SetRGB(r, g, b)
-	clearCache()
+	RatingBuster:ClearCache()
 end
 
 ColorPickerFrame:SetMovable(true)
@@ -163,8 +154,8 @@ local options = {
 			name = "Debug",
 			desc = "Toggle debugging",
 			func = function()
-				RatingBuster:ToggleDebugging()
-				StatLogic:ToggleDebugging()
+				RatingBuster:ClearCache()
+				StatLogic:ClearCache()
 			end,
 			dialogHidden = true,
 		},
@@ -1101,7 +1092,7 @@ local options = {
 			set = function(info, v)
 				local db = RatingBuster.db:GetNamespace("AlwaysBuffed")
 				db.profile[info[#info]] = v
-				clearCache()
+				RatingBuster:ClearCache()
 				StatLogic:InvalidateEvent("UNIT_AURA", "player")
 			end,
 			args = {
@@ -1685,7 +1676,7 @@ PLAYER_LOGIN - Most information about the game world should now be available to 
 }
 --]]
 -- OnInitialize(name) called at ADDON_LOADED
-function RatingBuster:RefreshConfig()
+function RatingBuster:ClearCache()
 	wipe(cache)
 end
 
@@ -1696,9 +1687,9 @@ end
 
 function RatingBuster:InitializeDatabase()
 	RatingBuster.db = LibStub("AceDB-3.0"):New("RatingBusterDB", defaults, class)
-	RatingBuster.db.RegisterCallback(RatingBuster, "OnProfileChanged", "RefreshConfig")
-	RatingBuster.db.RegisterCallback(RatingBuster, "OnProfileCopied", "RefreshConfig")
-	RatingBuster.db.RegisterCallback(RatingBuster, "OnProfileReset", "RefreshConfig")
+	RatingBuster.db.RegisterCallback(RatingBuster, "OnProfileChanged", "ClearCache")
+	RatingBuster.db.RegisterCallback(RatingBuster, "OnProfileCopied", "ClearCache")
+	RatingBuster.db.RegisterCallback(RatingBuster, "OnProfileReset", "ClearCache")
 	db = RatingBuster.db
 
 	options.args.profiles = LibStub("AceDBOptions-3.0"):GetOptionsTable(RatingBuster.db)
@@ -1750,7 +1741,7 @@ function RatingBuster:OnEnable()
 	-- for setting a new level
 	self:RegisterEvent("PLAYER_LEVEL_UP")
 	-- Events that require cache clearing
-	self:RegisterEvent("CHARACTER_POINTS_CHANGED", clearCache) -- talent point changed
+	self:RegisterEvent("CHARACTER_POINTS_CHANGED", RatingBuster.ClearCache) -- talent point changed
 	self:RegisterBucketEvent("UNIT_AURA", 1) -- fire at most once every 1 second
 end
 
@@ -1762,14 +1753,14 @@ end
 -- arg1 = New player level
 function RatingBuster:PLAYER_LEVEL_UP(_, newlevel)
 	playerLevel = newlevel
-	clearCache()
+	RatingBuster:ClearCache()
 end
 
 -- event = UNIT_AURA
 -- arg1 = List of UnitIDs in the AceBucket interval
 function RatingBuster:UNIT_AURA(units)
 	if units.player then
-		clearCache()
+		RatingBuster:ClearCache()
 	end
 end
 

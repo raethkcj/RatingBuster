@@ -245,7 +245,7 @@ setmetatable(cache, {__mode = "kv"}) -- weak table to enable garbage collection
 -- Set Debugging --
 -------------------
 local DEBUG = false
-function StatLogic:ToggleDebugging()
+function StatLogic:ClearCache()
 	DEBUG = not DEBUG
 	wipe(cache)
 end
@@ -971,6 +971,16 @@ addon.StatModValidators = {
 			["PLAYER_LEVEL_UP"] = true,
 		},
 	},
+	rune = {
+		validate = function(case)
+			if type(case.rune) == "number" then
+				return C_Engraving.IsRuneEquipped(case.rune)
+			else
+				return true
+			end
+		end,
+		events = {}
+	},
 	set = {
 		validate = function(case)
 			return equipped_sets[case.set] and equipped_sets[case.set] >= case.pieces
@@ -1038,6 +1048,9 @@ function StatLogic:InvalidateEvent(event, unit)
 		-- Since stats added by weaon subclass StatMods are inserted
 		-- directly into the cached sum, we need to wipe the item sum cache
 		wipe(cache)
+		if RatingBuster then
+			RatingBuster:ClearCache()
+		end
 	end
 end
 
@@ -1154,14 +1167,15 @@ do
 end
 
 do
-	addon.BuffGroup = {
+	addon.ExclusiveGroup = {
 		AllStats = 1,
 		AttackPower = 2,
 		SpellPower = 3,
 		Armor = 4,
 		Feral = 5,
+		WeaponRacial = 6,
 	}
-	local BuffGroupCache = {}
+	local ExclusiveGroupCache = {}
 
 	local function ApplyMod(currentValue, newValue, initialValue)
 		if initialValue == 0 then
@@ -1217,13 +1231,13 @@ do
 
 		if newValue then
 			if case.group then
-				local oldValue = BuffGroupCache[case.group]
+				local oldValue = ExclusiveGroupCache[case.group]
 				if oldValue and newValue > oldValue then
 					currentValue = RemoveMod(currentValue, oldValue, initialValue)
 				end
 				if not oldValue or newValue > oldValue then
 					currentValue = ApplyMod(currentValue, newValue, initialValue)
-					BuffGroupCache[case.group] = newValue
+					ExclusiveGroupCache[case.group] = newValue
 				end
 			else
 				currentValue = ApplyMod(currentValue, newValue, initialValue)
@@ -1244,7 +1258,7 @@ do
 		end
 
 		if not value then
-			wipe(BuffGroupCache)
+			wipe(ExclusiveGroupCache)
 			local statModInfo = StatLogic.StatModInfo[statModName]
 			if not statModInfo then return 0 end
 			value = statModInfo.initialValue

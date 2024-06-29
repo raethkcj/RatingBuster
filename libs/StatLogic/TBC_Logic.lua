@@ -223,25 +223,25 @@ if addon.class == "DRUID" then
 			{
 				["value"] = 1,
 				["aura"] = 768,
-				["group"] = addon.BuffGroup.Feral,
+				["group"] = addon.ExclusiveGroup.Feral,
 			},
 			-- Bear Form
 			{
 				["value"] = 1,
 				["aura"] = 5487,
-				["group"] = addon.BuffGroup.Feral,
+				["group"] = addon.ExclusiveGroup.Feral,
 			},
 			-- Dire Bear Form
 			{
 				["value"] = 1,
 				["aura"] = 9634,
-				["group"] = addon.BuffGroup.Feral,
+				["group"] = addon.ExclusiveGroup.Feral,
 			},
 			-- Moonkin Form
 			{
 				["value"] = 1,
 				["aura"] = 24858,
-				["group"] = addon.BuffGroup.Feral,
+				["group"] = addon.ExclusiveGroup.Feral,
 			},
 		},
 		["ADD_AP_MOD_STR"] = {
@@ -1706,7 +1706,7 @@ StatLogic.StatModTable["ALL"] = {
 				0.08, 0.16, 0.25,
 			},
 			["aura"] = 15363,
-			["group"] = addon.BuffGroup.Armor,
+			["group"] = addon.ExclusiveGroup.Armor,
 		},
 		-- Shaman: Ancestral Fortitude (Rank 1/2/3) - Buff
 		--         Increases your armor value by 8%/16%/25%.
@@ -1715,7 +1715,7 @@ StatLogic.StatModTable["ALL"] = {
 				0.08, 0.16, 0.25,
 			},
 			["aura"] = 16237,
-			["group"] = addon.BuffGroup.Armor,
+			["group"] = addon.ExclusiveGroup.Armor,
 		},
 	},
 	["MOD_STR"] = {
@@ -1724,14 +1724,14 @@ StatLogic.StatModTable["ALL"] = {
 		{
 			["value"] = 0.1,
 			["aura"] = 20217,
-			["group"] = addon.BuffGroup.AllStats,
+			["group"] = addon.ExclusiveGroup.AllStats,
 		},
 		-- Greater Blessing of Kings - Buff
 		-- Increases stats by 10%.
 		{
 			["value"] = 0.1,
 			["aura"] = 25898,
-			["group"] = addon.BuffGroup.AllStats,
+			["group"] = addon.ExclusiveGroup.AllStats,
 		},
 	},
 	["MOD_AGI"] = {

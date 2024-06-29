@@ -185,19 +185,19 @@ if addon.class == "DRUID" then
 			{
 				["value"] = 1,
 				["aura"] = 768,
-				["group"] = addon.BuffGroup.Feral,
+				["group"] = addon.ExclusiveGroup.Feral,
 			},
 			-- Bear Form
 			{
 				["value"] = 1,
 				["aura"] = 5487,
-				["group"] = addon.BuffGroup.Feral,
+				["group"] = addon.ExclusiveGroup.Feral,
 			},
 			-- Dire Bear Form
 			{
 				["value"] = 1,
 				["aura"] = 9634,
-				["group"] = addon.BuffGroup.Feral,
+				["group"] = addon.ExclusiveGroup.Feral,
 			},
 		},
 		["ADD_AP_MOD_STR"] = {
@@ -1527,7 +1527,8 @@ if addon.playerRace == "Dwarf" then
 				["value"] = 5,
 				["weapon"] = {
 					[Enum.ItemWeaponSubclass.Guns] = true,
-				}
+				},
+				["group"] = addon.ExclusiveGroup.WeaponRacial,
 			}
 		},
 	}
@@ -1578,7 +1579,8 @@ elseif addon.playerRace == "Human" then
 					[Enum.ItemWeaponSubclass.Mace2H] = true,
 					[Enum.ItemWeaponSubclass.Sword1H] = true,
 					[Enum.ItemWeaponSubclass.Sword2H] = true,
-				}
+				},
+				["group"] = addon.ExclusiveGroup.WeaponRacial,
 			}
 		}
 	}
@@ -1590,7 +1592,8 @@ elseif addon.playerRace == "Orc" then
 				["weapon"] = {
 					[Enum.ItemWeaponSubclass.Axe1H] = true,
 					[Enum.ItemWeaponSubclass.Axe2H] = true,
-				}
+				},
+				["group"] = addon.ExclusiveGroup.WeaponRacial,
 			}
 		}
 	}
@@ -1617,7 +1620,8 @@ elseif addon.playerRace == "Troll" then
 				["weapon"] = {
 					[Enum.ItemWeaponSubclass.Bows] = true,
 					[Enum.ItemWeaponSubclass.Thrown] = true,
-				}
+				},
+				["group"] = addon.ExclusiveGroup.WeaponRacial,
 			}
 		}
 	}
@@ -1656,7 +1660,7 @@ StatLogic.StatModTable["ALL"] = {
 				0.08, 0.16, 0.25,
 			},
 			["aura"] = 15363,
-			["group"] = addon.BuffGroup.Armor,
+			["group"] = addon.ExclusiveGroup.Armor,
 		},
 		-- Shaman: Ancestral Fortitude (Rank 1/2/3) - Buff
 		--         Increases your armor value by 8%/16%/25%.
@@ -1665,7 +1669,7 @@ StatLogic.StatModTable["ALL"] = {
 				0.08, 0.16, 0.25,
 			},
 			["aura"] = 16237,
-			["group"] = addon.BuffGroup.Armor,
+			["group"] = addon.ExclusiveGroup.Armor,
 			["spellid"] = 16240,
 		},
 	},
@@ -1675,21 +1679,21 @@ StatLogic.StatModTable["ALL"] = {
 		{
 			["value"] = 0.1,
 			["aura"] = 20217,
-			["group"] = addon.BuffGroup.AllStats,
+			["group"] = addon.ExclusiveGroup.AllStats,
 		},
 		-- Greater Blessing of Kings - Buff
 		--   Increases stats by 10%.
 		{
 			["value"] = 0.1,
 			["aura"] = 25898,
-			["group"] = addon.BuffGroup.AllStats,
+			["group"] = addon.ExclusiveGroup.AllStats,
 		},
 		-- Heart of the Lion - Buff
 		--   Increases stats by 10%.
 		{
 			["value"] = 0.1,
 			["aura"] = 409583,
-			["group"] = addon.BuffGroup.AllStats,
+			["group"] = addon.ExclusiveGroup.AllStats,
 			["rune"] = true,
 		},
 		-- Buff: Fervor of the Temple Explorer
@@ -1705,21 +1709,21 @@ StatLogic.StatModTable["ALL"] = {
 		{
 			["value"] = 0.1,
 			["aura"] = 20217,
-			["group"] = addon.BuffGroup.AllStats,
+			["group"] = addon.ExclusiveGroup.AllStats,
 		},
 		-- Greater Blessing of Kings - Buff
 		--   Increases stats by 10%.
 		{
 			["value"] = 0.1,
 			["aura"] = 25898,
-			["group"] = addon.BuffGroup.AllStats,
+			["group"] = addon.ExclusiveGroup.AllStats,
 		},
 		-- Heart of the Lion - Buff
 		--   Increases stats by 10%.
 		{
 			["value"] = 0.1,
 			["aura"] = 409583,
-			["group"] = addon.BuffGroup.AllStats,
+			["group"] = addon.ExclusiveGroup.AllStats,
 			["rune"] = true,
 		},
 		-- Buff: Fervor of the Temple Explorer
@@ -1735,21 +1739,21 @@ StatLogic.StatModTable["ALL"] = {
 		{
 			["value"] = 0.1,
 			["aura"] = 20217,
-			["group"] = addon.BuffGroup.AllStats,
+			["group"] = addon.ExclusiveGroup.AllStats,
 		},
 		-- Greater Blessing of Kings - Buff
 		--   Increases stats by 10%.
 		{
 			["value"] = 0.1,
 			["aura"] = 25898,
-			["group"] = addon.BuffGroup.AllStats,
+			["group"] = addon.ExclusiveGroup.AllStats,
 		},
 		-- Heart of the Lion - Buff
 		--   Increases stats by 10%.
 		{
 			["value"] = 0.1,
 			["aura"] = 409583,
-			["group"] = addon.BuffGroup.AllStats,
+			["group"] = addon.ExclusiveGroup.AllStats,
 			["rune"] = true,
 		},
 		-- Buff: Fervor of the Temple Explorer
@@ -1765,21 +1769,21 @@ StatLogic.StatModTable["ALL"] = {
 		{
 			["value"] = 0.1,
 			["aura"] = 20217,
-			["group"] = addon.BuffGroup.AllStats,
+			["group"] = addon.ExclusiveGroup.AllStats,
 		},
 		-- Greater Blessing of Kings - Buff
 		--   Increases stats by 10%.
 		{
 			["value"] = 0.1,
 			["aura"] = 25898,
-			["group"] = addon.BuffGroup.AllStats,
+			["group"] = addon.ExclusiveGroup.AllStats,
 		},
 		-- Heart of the Lion - Buff
 		--   Increases stats by 10%.
 		{
 			["value"] = 0.1,
 			["aura"] = 409583,
-			["group"] = addon.BuffGroup.AllStats,
+			["group"] = addon.ExclusiveGroup.AllStats,
 			["rune"] = true,
 		},
 		-- Buff: Fervor of the Temple Explorer
@@ -1795,21 +1799,21 @@ StatLogic.StatModTable["ALL"] = {
 		{
 			["value"] = 0.1,
 			["aura"] = 20217,
-			["group"] = addon.BuffGroup.AllStats,
+			["group"] = addon.ExclusiveGroup.AllStats,
 		},
 		-- Greater Blessing of Kings - Buff
 		--   Increases stats by 10%.
 		{
 			["value"] = 0.1,
 			["aura"] = 25898,
-			["group"] = addon.BuffGroup.AllStats,
+			["group"] = addon.ExclusiveGroup.AllStats,
 		},
 		-- Heart of the Lion - Buff
 		--   Increases stats by 10%.
 		{
 			["value"] = 0.1,
 			["aura"] = 409583,
-			["group"] = addon.BuffGroup.AllStats,
+			["group"] = addon.ExclusiveGroup.AllStats,
 			["rune"] = true,
 		},
 		-- Buff: Fervor of the Temple Explorer
@@ -1947,6 +1951,78 @@ StatLogic.StatModTable["ALL"] = {
 			["set"] = 1585,
 			["pieces"] = 2,
 			["value"] = 1,
+		},
+	},
+	[StatLogic.Stats.WeaponSkill] = {
+		-- Rune: Sword Specialization
+		{
+			["rune"] = 51232,
+			["value"] = 5,
+			["weapon"] = {
+				[Enum.ItemWeaponSubclass.Sword1H] = true,
+				[Enum.ItemWeaponSubclass.Sword2H] = true,
+			},
+			["group"] = addon.ExclusiveGroup.WeaponRacial,
+		},
+		-- Rune: Axe Specialization
+		{
+			["rune"] = 51233,
+			["value"] = 5,
+			["weapon"] = {
+				[Enum.ItemWeaponSubclass.Axe1H] = true,
+				[Enum.ItemWeaponSubclass.Axe2H] = true,
+			},
+			["group"] = addon.ExclusiveGroup.WeaponRacial,
+		},
+		-- Rune: Mace Specialization
+		{
+			["rune"] = 51234,
+			["value"] = 5,
+			["weapon"] = {
+				[Enum.ItemWeaponSubclass.Mace1H] = true,
+				[Enum.ItemWeaponSubclass.Mace2H] = true,
+			},
+			["group"] = addon.ExclusiveGroup.WeaponRacial,
+		},
+		-- Rune: Dagger Specialization
+		{
+			["rune"] = 51235,
+			["value"] = 5,
+			["weapon"] = {
+				[Enum.ItemWeaponSubclass.Dagger] = true,
+			},
+			["group"] = addon.ExclusiveGroup.WeaponRacial,
+		},
+		-- Rune: Fist Weapon Specialization
+		{
+			["rune"] = 51236,
+			["value"] = 5,
+			["weapon"] = {
+				[Enum.ItemWeaponSubclass.Unarmed] = true,
+			},
+			["group"] = addon.ExclusiveGroup.WeaponRacial,
+		},
+		-- Rune: Ranged Weapon Specialization
+		{
+			["rune"] = 51237,
+			["value"] = 5,
+			["weapon"] = {
+				[Enum.ItemWeaponSubclass.Bows] = true,
+				[Enum.ItemWeaponSubclass.Guns] = true,
+				[Enum.ItemWeaponSubclass.Crossbow] = true,
+				[Enum.ItemWeaponSubclass.Thrown] = true,
+			},
+			["group"] = addon.ExclusiveGroup.WeaponRacial,
+		},
+		-- Rune: Pole Weapon Specialization
+		{
+			["rune"] = 51238,
+			["value"] = 5,
+			["weapon"] = {
+				[Enum.ItemWeaponSubclass.Staff] = true,
+				[Enum.ItemWeaponSubclass.Polearm] = true,
+			},
+			["group"] = addon.ExclusiveGroup.WeaponRacial,
 		},
 	},
 	["ADD_SPELL_CRIT"] = {

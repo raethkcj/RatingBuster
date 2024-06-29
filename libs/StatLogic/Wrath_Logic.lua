@@ -1014,25 +1014,25 @@ if addon.class == "DRUID" then
 			{
 				["value"] = 1,
 				["aura"] = 768,
-				["group"] = addon.BuffGroup.Feral,
+				["group"] = addon.ExclusiveGroup.Feral,
 			},
 			-- Bear Form
 			{
 				["value"] = 1,
 				["aura"] = 5487,
-				["group"] = addon.BuffGroup.Feral,
+				["group"] = addon.ExclusiveGroup.Feral,
 			},
 			-- Dire Bear Form
 			{
 				["value"] = 1,
 				["aura"] = 9634,
-				["group"] = addon.BuffGroup.Feral,
+				["group"] = addon.ExclusiveGroup.Feral,
 			},
 			-- Moonkin Form
 			{
 				["value"] = 1,
 				["aura"] = 24858,
-				["group"] = addon.BuffGroup.Feral,
+				["group"] = addon.ExclusiveGroup.Feral,
 			},
 		},
 		["ADD_AP_MOD_STR"] = {
@@ -3117,7 +3117,7 @@ StatLogic.StatModTable["ALL"] = {
 		{
 			["value"] = 0.1,
 			["aura"] = 19506,
-			["group"] = addon.BuffGroup.AttackPower,
+			["group"] = addon.ExclusiveGroup.AttackPower,
 		},
 		-- Death Knight: Abomination's Might - Buff
 		--               Attack power increased by 5/10%.
@@ -3126,7 +3126,7 @@ StatLogic.StatModTable["ALL"] = {
 				0.05, 0.1,
 			},
 			["aura"] = 53138,
-			["group"] = addon.BuffGroup.AttackPower,
+			["group"] = addon.ExclusiveGroup.AttackPower,
 		},
 		-- Shaman: Unleashed Rage - Buff
 		--         Melee attack power increased by 4/7/10%.
@@ -3135,7 +3135,7 @@ StatLogic.StatModTable["ALL"] = {
 				0.04, 0.07, 0.1,
 			},
 			["aura"] = 30809,
-			["group"] = addon.BuffGroup.AttackPower,
+			["group"] = addon.ExclusiveGroup.AttackPower,
 		},
 	},
 	-- MetaGem: Beaming Earthsiege Diamond - 41389
@@ -3152,31 +3152,31 @@ StatLogic.StatModTable["ALL"] = {
 		{
 			["value"] = 0.1,
 			["aura"] = 20217,
-			["group"] = addon.BuffGroup.AllStats,
+			["group"] = addon.ExclusiveGroup.AllStats,
 		},
 		{
 			["value"] = 0.1,
 			["aura"] = 25898,
-			["group"] = addon.BuffGroup.AllStats,
+			["group"] = addon.ExclusiveGroup.AllStats,
 		},
 		-- Blessing of Sanctuary
 		{
 			["value"] = 0.1,
 			["aura"] = 20911,
-			["group"] = addon.BuffGroup.AllStats,
+			["group"] = addon.ExclusiveGroup.AllStats,
 		},
 		-- Greater Blessing of Sanctuary
 		{
 			["value"] = 0.1,
 			["aura"] = 25899,
-			["group"] = addon.BuffGroup.AllStats,
+			["group"] = addon.ExclusiveGroup.AllStats,
 		},
 		-- Leatherworking: Blessing of Forgotten Kings - Buff
 		--                 Increases stats by 8%.
 		{
 			["value"] = 0.08,
 			["aura"] = 69378,
-			["group"] = addon.BuffGroup.AllStats,
+			["group"] = addon.ExclusiveGroup.AllStats,
 		},
 	},
 	["MOD_AGI"] = {
@@ -3185,19 +3185,19 @@ StatLogic.StatModTable["ALL"] = {
 		{
 			["value"] = 0.1,
 			["aura"] = 20217,
-			["group"] = addon.BuffGroup.AllStats,
+			["group"] = addon.ExclusiveGroup.AllStats,
 		},
 		{
 			["value"] = 0.1,
 			["aura"] = 25898,
-			["group"] = addon.BuffGroup.AllStats,
+			["group"] = addon.ExclusiveGroup.AllStats,
 		},
 		-- Leatherworking: Blessing of Forgotten Kings - Buff
 		--                 Increases stats by 8%.
 		{
 			["value"] = 0.08,
 			["aura"] = 69378,
-			["group"] = addon.BuffGroup.AllStats,
+			["group"] = addon.ExclusiveGroup.AllStats,
 		},
 	},
 	["MOD_STA"] = {
@@ -3206,31 +3206,31 @@ StatLogic.StatModTable["ALL"] = {
 		{
 			["value"] = 0.1,
 			["aura"] = 20217,
-			["group"] = addon.BuffGroup.AllStats,
+			["group"] = addon.ExclusiveGroup.AllStats,
 		},
 		{
 			["value"] = 0.1,
 			["aura"] = 25898,
-			["group"] = addon.BuffGroup.AllStats,
+			["group"] = addon.ExclusiveGroup.AllStats,
 		},
 		-- Blessing of Sanctuary
 		{
 			["value"] = 0.1,
 			["aura"] = 20911,
-			["group"] = addon.BuffGroup.AllStats,
+			["group"] = addon.ExclusiveGroup.AllStats,
 		},
 		-- Greater Blessing of Sanctuary
 		{
 			["value"] = 0.1,
 			["aura"] = 25899,
-			["group"] = addon.BuffGroup.AllStats,
+			["group"] = addon.ExclusiveGroup.AllStats,
 		},
 		-- Leatherworking: Blessing of Forgotten Kings - Buff
 		--                 Increases stats by 8%.
 		{
 			["value"] = 0.08,
 			["aura"] = 69378,
-			["group"] = addon.BuffGroup.AllStats,
+			["group"] = addon.ExclusiveGroup.AllStats,
 		},
 	},
 	["MOD_INT"] = {
@@ -3239,19 +3239,19 @@ StatLogic.StatModTable["ALL"] = {
 		{
 			["value"] = 0.1,
 			["aura"] = 20217,
-			["group"] = addon.BuffGroup.AllStats,
+			["group"] = addon.ExclusiveGroup.AllStats,
 		},
 		{
 			["value"] = 0.1,
 			["aura"] = 25898,
-			["group"] = addon.BuffGroup.AllStats,
+			["group"] = addon.ExclusiveGroup.AllStats,
 		},
 		-- Leatherworking: Blessing of Forgotten Kings - Buff
 		--                 Increases stats by 8%.
 		{
 			["value"] = 0.08,
 			["aura"] = 69378,
-			["group"] = addon.BuffGroup.AllStats,
+			["group"] = addon.ExclusiveGroup.AllStats,
 		},
 		-- MetaGem: Ember Skyfire Diamond - 35503
 		--          +14 Spell Power and +2% Intellect
@@ -3272,19 +3272,19 @@ StatLogic.StatModTable["ALL"] = {
 		{
 			["value"] = 0.1,
 			["aura"] = 20217,
-			["group"] = addon.BuffGroup.AllStats,
+			["group"] = addon.ExclusiveGroup.AllStats,
 		},
 		{
 			["value"] = 0.1,
 			["aura"] = 25898,
-			["group"] = addon.BuffGroup.AllStats,
+			["group"] = addon.ExclusiveGroup.AllStats,
 		},
 		-- Leatherworking: Blessing of Forgotten Kings - Buff
 		--                 Increases stats by 8%.
 		{
 			["value"] = 0.08,
 			["aura"] = 69378,
-			["group"] = addon.BuffGroup.AllStats,
+			["group"] = addon.ExclusiveGroup.AllStats,
 		},
 	},
 	["ADD_DODGE_REDUCTION_MOD_EXPERTISE"] = {
@@ -3493,7 +3493,7 @@ function StatLogic:GetDodgePerAgi()
 		-- Talents that modify Agi will not add to posBuff, so we need to calculate baseAgi
 		-- But Agi from Kings etc. will add to posBuff, so we subtract those if present
 		for _, case in ipairs(StatLogic.StatModTable["ALL"]["MOD_AGI"]) do
-			if case.group == addon.BuffGroup.AllStats then
+			if case.group == addon.ExclusiveGroup.AllStats then
 				if StatLogic:GetAuraInfo(case.aura) then
 					modAgi = modAgi - case.value
 				end

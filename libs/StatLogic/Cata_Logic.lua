@@ -2466,35 +2466,35 @@ StatLogic.StatModTable["ALL"] = {
 		{
 			["value"] = 0.1,
 			["aura"] = 53646,
-			["group"] = addon.BuffGroup.SpellPower,
+			["group"] = addon.ExclusiveGroup.SpellPower,
 		},
 		-- Shaman: Totemic Wrath - Buff: 77747
 		-- 4.0.1: Spell Power increased by 10%.
 		{
 			["value"] = 0.1,
 			["aura"] = 77747,
-			["group"] = addon.BuffGroup.SpellPower,
+			["group"] = addon.ExclusiveGroup.SpellPower,
 		},
 		-- Shaman: Flametongue Totem - Buff: 52109
 		-- 4.0.1: Spell Power increased by 6%.
 		{
 			["value"] = 0.06,
 			["aura"] = 52109,
-			["group"] = addon.BuffGroup.SpellPower,
+			["group"] = addon.ExclusiveGroup.SpellPower,
 		},
 		-- Mage: Arcane Brilliance - Buff: 79058
 		-- 4.0.1: Spell Power increased by 6%.
 		{
 			["value"] = 0.06,
 			["aura"] = 79058,
-			["group"] = addon.BuffGroup.SpellPower,
+			["group"] = addon.ExclusiveGroup.SpellPower,
 		},
 		-- Mage: Dalaran Brilliance - Buff: 61316
 		-- 4.0.1: Spell Power increased by 6%.
 		{
 			["value"] = 0.06,
 			["aura"] = 61316,
-			["group"] = addon.BuffGroup.SpellPower,
+			["group"] = addon.ExclusiveGroup.SpellPower,
 		},
 	},
 	["MOD_HEALING"] = {
@@ -2503,35 +2503,35 @@ StatLogic.StatModTable["ALL"] = {
 		{
 			["value"] = 0.1,
 			["aura"] = 53646,
-			["group"] = addon.BuffGroup.SpellPower,
+			["group"] = addon.ExclusiveGroup.SpellPower,
 		},
 		-- Shaman: Totemic Wrath - Buff: 77747
 		-- 4.0.1: Spell Power increased by 10%.
 		{
 			["value"] = 0.1,
 			["aura"] = 77747,
-			["group"] = addon.BuffGroup.SpellPower,
+			["group"] = addon.ExclusiveGroup.SpellPower,
 		},
 		-- Shaman: Flametongue Totem - Buff: 52109
 		-- 4.0.1: Spell Power increased by 6%.
 		{
 			["value"] = 0.06,
 			["aura"] = 52109,
-			["group"] = addon.BuffGroup.SpellPower,
+			["group"] = addon.ExclusiveGroup.SpellPower,
 		},
 		-- Mage: Arcane Brilliance - Buff: 79058
 		-- 4.0.1: Spell Power increased by 6%.
 		{
 			["value"] = 0.06,
 			["aura"] = 79058,
-			["group"] = addon.BuffGroup.SpellPower,
+			["group"] = addon.ExclusiveGroup.SpellPower,
 		},
 		-- Mage: Dalaran Brilliance - Buff: 61316
 		-- 4.0.1: Spell Power increased by 6%.
 		{
 			["value"] = 0.06,
 			["aura"] = 61316,
-			["group"] = addon.BuffGroup.SpellPower,
+			["group"] = addon.ExclusiveGroup.SpellPower,
 		},
 	},
 	["MOD_ARMOR"] = {
@@ -2554,7 +2554,7 @@ StatLogic.StatModTable["ALL"] = {
 		{
 			["value"] = 0.1,
 			["aura"] = 19506,
-			["group"] = addon.BuffGroup.AttackPower,
+			["group"] = addon.ExclusiveGroup.AttackPower,
 		},
 		-- Death Knight: Abomination's Might - Buff: 55972
 		-- 4.0.1: Attack power increased by 5/10%.
@@ -2563,7 +2563,7 @@ StatLogic.StatModTable["ALL"] = {
 				0.05, 0.1,
 			},
 			["aura"] = 55972,
-			["group"] = addon.BuffGroup.AttackPower,
+			["group"] = addon.ExclusiveGroup.AttackPower,
 		},
 		-- Shaman: Unleashed Rage - Buff: 30809
 		-- 4.0.1: Melee attack power increased by 4/7/10%.
@@ -2572,14 +2572,14 @@ StatLogic.StatModTable["ALL"] = {
 				0.04, 0.07, 0.1,
 			},
 			["aura"] = 30809,
-			["group"] = addon.BuffGroup.AttackPower,
+			["group"] = addon.ExclusiveGroup.AttackPower,
 		},
 		-- Paladin: Blessing of Might - Buff: 19740
 		-- 4.0.1: Increasing attack power by 10%.
 		{
 			["value"] = 0.1,
 			["aura"] = 19740,
-			["group"] = addon.BuffGroup.AttackPower,
+			["group"] = addon.ExclusiveGroup.AttackPower,
 		},
 	},
 	["MOD_MANA"] = {
@@ -2614,28 +2614,28 @@ StatLogic.StatModTable["ALL"] = {
 		{
 			["value"] = 0.05,
 			["aura"] = 20217,
-			["group"] = addon.BuffGroup.AllStats,
+			["group"] = addon.ExclusiveGroup.AllStats,
 		},
 		-- Druid: Mark of the Wild - Buff: 79061
 		-- 4.0.1: Strength, Agility, Stamina, and Intellect increased by 5%.
 		{
 			["value"] = 0.05,
 			["aura"] = 79061,
-			["group"] = addon.BuffGroup.AllStats,
+			["group"] = addon.ExclusiveGroup.AllStats,
 		},
 		-- Hunter: Embrace of the Shale Spider - Buff: 90363
 		-- 4.0.1: Strength, Agility, Stamina, and Intellect increased by 5%.
 		{
 			["value"] = 0.05,
 			["aura"] = 90363,
-			["group"] = addon.BuffGroup.AllStats,
+			["group"] = addon.ExclusiveGroup.AllStats,
 		},
 		-- Leatherworking: Blessing of Forgotten Kings - Buff: 69378
 		-- 4.0.1: Strength, Agility, Stamina, and Intellect increased by 4%.
 		{
 			["value"] = 0.04,
 			["aura"] = 69378,
-			["group"] = addon.BuffGroup.AllStats,
+			["group"] = addon.ExclusiveGroup.AllStats,
 		},
 	},
 	["MOD_AGI"] = {
@@ -2644,28 +2644,28 @@ StatLogic.StatModTable["ALL"] = {
 		{
 			["value"] = 0.05,
 			["aura"] = 20217,
-			["group"] = addon.BuffGroup.AllStats,
+			["group"] = addon.ExclusiveGroup.AllStats,
 		},
 		-- Druid: Mark of the Wild - Buff: 79061
 		-- 4.0.1: Strength, Agility, Stamina, and Intellect increased by 5%.
 		{
 			["value"] = 0.05,
 			["aura"] = 79061,
-			["group"] = addon.BuffGroup.AllStats,
+			["group"] = addon.ExclusiveGroup.AllStats,
 		},
 		-- Hunter: Embrace of the Shale Spider - Buff: 90363
 		-- 4.0.1: Strength, Agility, Stamina, and Intellect increased by 5%.
 		{
 			["value"] = 0.05,
 			["aura"] = 90363,
-			["group"] = addon.BuffGroup.AllStats,
+			["group"] = addon.ExclusiveGroup.AllStats,
 		},
 		-- Leatherworking: Blessing of Forgotten Kings - Buff: 69378
 		-- 4.0.1: Strength, Agility, Stamina, and Intellect increased by 4%.
 		{
 			["value"] = 0.04,
 			["aura"] = 69378,
-			["group"] = addon.BuffGroup.AllStats,
+			["group"] = addon.ExclusiveGroup.AllStats,
 		},
 	},
 	["MOD_STA"] = {
@@ -2674,28 +2674,28 @@ StatLogic.StatModTable["ALL"] = {
 		{
 			["value"] = 0.05,
 			["aura"] = 20217,
-			["group"] = addon.BuffGroup.AllStats,
+			["group"] = addon.ExclusiveGroup.AllStats,
 		},
 		-- Druid: Mark of the Wild - Buff: 79061
 		-- 4.0.1: Strength, Agility, Stamina, and Intellect increased by 5%.
 		{
 			["value"] = 0.05,
 			["aura"] = 79061,
-			["group"] = addon.BuffGroup.AllStats,
+			["group"] = addon.ExclusiveGroup.AllStats,
 		},
 		-- Hunter: Embrace of the Shale Spider - Buff: 90363
 		-- 4.0.1: Strength, Agility, Stamina, and Intellect increased by 5%.
 		{
 			["value"] = 0.05,
 			["aura"] = 90363,
-			["group"] = addon.BuffGroup.AllStats,
+			["group"] = addon.ExclusiveGroup.AllStats,
 		},
 		-- Leatherworking: Blessing of Forgotten Kings - Buff: 69378
 		-- 4.0.1: Strength, Agility, Stamina, and Intellect increased by 4%.
 		{
 			["value"] = 0.04,
 			["aura"] = 69378,
-			["group"] = addon.BuffGroup.AllStats,
+			["group"] = addon.ExclusiveGroup.AllStats,
 		},
 	},
 	["MOD_INT"] = {
@@ -2704,28 +2704,28 @@ StatLogic.StatModTable["ALL"] = {
 		{
 			["value"] = 0.05,
 			["aura"] = 20217,
-			["group"] = addon.BuffGroup.AllStats,
+			["group"] = addon.ExclusiveGroup.AllStats,
 		},
 		-- Druid: Mark of the Wild - Buff: 79061
 		-- 4.0.1: Strength, Agility, Stamina, and Intellect increased by 5%.
 		{
 			["value"] = 0.05,
 			["aura"] = 79061,
-			["group"] = addon.BuffGroup.AllStats,
+			["group"] = addon.ExclusiveGroup.AllStats,
 		},
 		-- Hunter: Embrace of the Shale Spider - Buff: 90363
 		-- 4.0.1: Strength, Agility, Stamina, and Intellect increased by 5%.
 		{
 			["value"] = 0.05,
 			["aura"] = 90363,
-			["group"] = addon.BuffGroup.AllStats,
+			["group"] = addon.ExclusiveGroup.AllStats,
 		},
 		-- Leatherworking: Blessing of Forgotten Kings - Buff: 69378
 		-- 4.0.1: Strength, Agility, Stamina, and Intellect increased by 4%.
 		{
 			["value"] = 0.04,
 			["aura"] = 69378,
-			["group"] = addon.BuffGroup.AllStats,
+			["group"] = addon.ExclusiveGroup.AllStats,
 		},
 	},
 	["MOD_SPI"] = {
@@ -2896,7 +2896,7 @@ function StatLogic:GetDodgePerAgi()
 		-- Talents that modify Agi will not add to posBuff, so we need to calculate baseAgi
 		-- But Agi from Kings etc. will add to posBuff, so we subtract those if present
 		for _, case in ipairs(StatLogic.StatModTable["ALL"]["MOD_AGI"]) do
-			if case.group == addon.BuffGroup.AllStats then
+			if case.group == addon.ExclusiveGroup.AllStats then
 				if StatLogic:GetAuraInfo(case.aura) then
 					modAgi = modAgi - case.value
 				end
