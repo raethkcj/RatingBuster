@@ -1336,6 +1336,7 @@ elseif class == "DRUID" then
 	defaults.profile.sumArmorPenetration = true
 elseif class == "HUNTER" then
 	defaults.profile.sumWeaponAverageDamage = true
+	defaults.profile.sumWeaponSkill = true
 	defaults.profile.sumRAP = true
 	defaults.profile.sumRangedHit = true
 	defaults.profile.sumRangedCrit = true
@@ -1354,6 +1355,7 @@ elseif class == "MAGE" then
 	defaults.profile.ratingSpell = true
 elseif class == "PALADIN" then
 	defaults.profile.sumWeaponAverageDamage = true
+	defaults.profile.sumWeaponSkill = true
 	defaults.profile.sumAvoidance = true
 	defaults.profile.sumArmor = true
 	defaults.profile.sumHit = true
@@ -1378,6 +1380,7 @@ elseif class == "PRIEST" then
 	defaults.profile.ratingSpell = true
 elseif class == "ROGUE" then
 	defaults.profile.sumWeaponAverageDamage = true
+	defaults.profile.sumWeaponSkill = true
 	defaults.profile.sumMP = false
 	defaults.profile.sumMP5 = false
 	defaults.profile.sumAP = true
@@ -1390,6 +1393,11 @@ elseif class == "ROGUE" then
 	defaults.profile.sumArmorPenetration = true
 elseif class == "SHAMAN" then
 	defaults.profile.sumWeaponAverageDamage = true
+	defaults.profile.sumWeaponSkill = true
+	defaults.profile.sumHit = true
+	defaults.profile.sumCrit = true
+	defaults.profile.sumHaste = true
+	defaults.profile.sumExpertise = true
 	defaults.profile.sumSpellDmg = true
 	defaults.profile.sumSpellHit = true
 	defaults.profile.sumSpellCrit = true
@@ -1408,6 +1416,7 @@ elseif class == "WARLOCK" then
 	defaults.profile.ratingSpell = true
 elseif class == "WARRIOR" then
 	defaults.profile.sumWeaponAverageDamage = true
+	defaults.profile.sumWeaponSkill = true
 	defaults.profile.sumAvoidance = true
 	defaults.profile.sumArmor = true
 	defaults.profile.sumMP = false
