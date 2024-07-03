@@ -2408,6 +2408,17 @@ do
 					infoTable[StatLogic.Stats.Parry] = infoTable[StatLogic.Stats.Parry] + parry
 				end
 			end
+
+			local attackPower = value * GSM("ADD_AP_MOD_DEFENSE")
+			self:ProcessStat(StatLogic.Stats.AttackPower, value, infoTable)
+			if db.profile.showAPFromDefense then
+				infoTable[StatLogic.Stats.AttackPower] = infoTable[StatLogic.Stats.AttackPower] + attackPower
+			end
+
+			local spellDamage = value * GSM("ADD_SPELL_DMG_MOD_DEFENSE")
+			if db.profile.showSpellDmgFromDefense then
+				infoTable[StatLogic.Stats.SpellDamage] = infoTable[StatLogic.Stats.SpellDamage] + spellDamage
+			end
 		elseif statID == StatLogic.Stats.Armor then
 			local base, bonus = StatLogic:GetArmorDistribution(link, value, color)
 			value = base * GSM("MOD_ARMOR") + bonus
@@ -2764,6 +2775,7 @@ local summaryCalcData = {
 				+ sum[StatLogic.Stats.Stamina] * GSM("ADD_AP_MOD_STA")
 				+ sum[StatLogic.Stats.Intellect] * GSM("ADD_AP_MOD_INT")
 				+ summaryFunc[StatLogic.Stats.Armor](sum) * GSM("ADD_AP_MOD_ARMOR")
+				+ sum[StatLogic.Stats.Defense] * GSM("ADD_AP_MOD_DEFENSE")
 			)
 		end,
 	},
@@ -2999,6 +3011,7 @@ local summaryCalcData = {
 					+ GSM("ADD_SPELL_DMG_MOD_MANA") * GSM("MOD_MANA") * GSM("ADD_MANA_MOD_INT")
 				) + sum[StatLogic.Stats.Spirit] * GSM("ADD_SPELL_DMG_MOD_SPI")
 				+ summaryFunc[StatLogic.Stats.AttackPower](sum) * GSM("ADD_SPELL_DMG_MOD_AP")
+				+ sum[StatLogic.Stats.Defense] * GSM("ADD_SPELL_DMG_MOD_DEFENSE")
 			)
 		end,
 	},

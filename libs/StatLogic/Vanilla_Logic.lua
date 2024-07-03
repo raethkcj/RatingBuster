@@ -379,6 +379,15 @@ if addon.class == "DRUID" then
 				},
 			},
 		},
+		["ADD_AP_MOD_DEFENSE"] = {
+			-- Rune: Mangle (Defender's Resolve)
+			{
+				["known"] = 407995,
+				["rune"] = true,
+				["value"] = 4,
+				["aura"] = 460171,
+			}
+		}
 	}
 elseif addon.class == "HUNTER" then
 	StatLogic.StatModTable["HUNTER"] = {
@@ -817,6 +826,14 @@ elseif addon.class == "PALADIN" then
 				["value"] = 0.3,
 			}
 		},
+		["ADD_SPELL_DMG_MOD_DEFENSE"] = {
+			-- Buff: Defender's Resolve
+			{
+				["rune"] = true,
+				["value"] = 2,
+				["aura"] = 460200,
+			}
+		},
 	}
 elseif addon.class == "PRIEST" then
 	StatLogic.StatModTable["PRIEST"] = {
@@ -1046,6 +1063,15 @@ elseif addon.class == "ROGUE" then
 				},
 			},
 		},
+		["ADD_AP_MOD_DEFENSE"] = {
+			-- Rune: Blade Dance (Defender's Resolve)
+			{
+				["known"] = 400012,
+				["rune"] = true,
+				["value"] = 4,
+				["aura"] = 462230,
+			}
+		},
 	}
 elseif addon.class == "SHAMAN" then
 	StatLogic.StatModTable["SHAMAN"] = {
@@ -1226,6 +1252,15 @@ elseif addon.class == "SHAMAN" then
 				["aura"] = 415144,
 			},
 		},
+		["ADD_SPELL_DMG_MOD_DEFENSE"] = {
+			-- Rune: Shield Mastery (Defender's Resolve)
+			{
+				["known"] = 408524,
+				["rune"] = true,
+				["value"] = 2,
+				["aura"] = 460200,
+			}
+		},
 	}
 elseif addon.class == "WARLOCK" then
 	StatLogic.StatModTable["WARLOCK"] = {
@@ -1399,6 +1434,14 @@ elseif addon.class == "WARLOCK" then
 				["aura"] = 426195,
 			},
 		},
+		["ADD_SPELL_DMG_MOD_DEFENSE"] = {
+			-- Rune: Metamorphosis (Defender's Resolve)
+			{
+				["rune"] = true,
+				["value"] = 2,
+				["aura"] = 460200,
+			}
+		},
 	}
 elseif addon.class == "WARRIOR" then
 	StatLogic.StatModTable["WARRIOR"] = {
@@ -1519,6 +1562,14 @@ elseif addon.class == "WARRIOR" then
 				["stack"] = 0.02,
 				["max_stacks"] = 5,
 			},
+		},
+		["ADD_AP_MOD_DEFENSE"] = {
+			-- Buff: Defender's Resolve
+			{
+				["rune"] = true,
+				["value"] = 4,
+				["aura"] = 460171,
+			}
 		},
 	}
 end

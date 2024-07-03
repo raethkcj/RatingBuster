@@ -478,6 +478,10 @@ local addedInfoMods = {
 	},
 	{
 		add = "AP",
+		mod = "DEFENSE",
+	},
+	{
+		add = "AP",
 		mod = "INT",
 	},
 	{
@@ -587,6 +591,10 @@ local addedInfoMods = {
 	{
 		add = "SPELL_DMG",
 		mod = "AP",
+	},
+	{
+		add = "SPELL_DMG",
+		mod = "DEFENSE",
 	},
 	{
 		add = "SPELL_DMG",
