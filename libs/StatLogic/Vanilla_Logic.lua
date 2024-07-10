@@ -248,7 +248,13 @@ if addon.class == "DRUID" then
 				["rune"] = true,
 				["value"] = 0.5,
 				["aura"] = 408261,
-			}
+			},
+			-- Set: Stormrage Raiment
+			{
+				["set"] = 214,
+				["pieces"] = 3,
+				["value"] = 0.15,
+			},
 		},
 		["ADD_DODGE"] = {
 			-- Base
@@ -637,6 +643,13 @@ elseif addon.class == "MAGE" then
 				["value"] = 0.3,
 				["aura"] = 6117,
 			},
+			-- Set: Arcanist Insight (Mage Armor)
+			{
+				["set"] = 1704,
+				["pieces"] = 6,
+				["value"] = 0.15,
+				["aura"] = 6117,
+			},
 			-- Rune: Enlightenment
 			{
 				["known"] = 412324,
@@ -915,15 +928,20 @@ elseif addon.class == "PRIEST" then
 				["aura"] = 425294,
 			},
 		},
-		-- Priest: Meditation (Rank 3) - 1,8
-		--         Allows 5/10/15% of your Mana regeneration to continue while casting.
 		["ADD_MANA_REG_MOD_NORMAL_MANA_REG"] = {
+			-- Talent: Meditation
 			{
 				["tab"] = 1,
 				["num"] = 8,
 				["rank"] = {
 					0.05, 0.10, 0.15,
 				},
+			},
+			-- Set: Vestments of Transcendence
+			{
+				["set"] = 211,
+				["pieces"] = 3,
+				["value"] = 0.15,
 			},
 		},
 		-- Priest: Spiritual Guidance (Rank 5) - 2,14
@@ -1929,6 +1947,20 @@ StatLogic.StatModTable["ALL"] = {
 			["aura"] = 426490,
 			["value"] = 0.15,
 			["rune"] = true,
+		},
+	},
+	["ADD_MANA_REG_MOD_NORMAL_MANA_REG"] = {
+		-- Green Dragon Mail
+		{
+			["set"] = 490,
+			["pieces"] = 3,
+			["value"] = 0.15,
+		},
+		-- Green Dragon Mail (SoD)
+		{
+			["set"] = 1791,
+			["pieces"] = 3,
+			["value"] = 0.15,
 		},
 	},
 	[StatLogic.Stats.MeleeCrit] = {
