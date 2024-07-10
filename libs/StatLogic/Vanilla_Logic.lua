@@ -327,6 +327,15 @@ if addon.class == "DRUID" then
 				["aura"] = 24858,		-- ["Moonkin Form"],
 			},
 		},
+		["MOD_SPI"] = {
+			-- Rune: Tree of Life
+			{
+				["known"] = 439733,
+				["rune"] = true,
+				["value"] = 0.25,
+				["aura"] = 439733,
+			},
+		},
 		-- Druid: Heart of the Wild (Rank 5) - 2,15
 		--        Increases your Intellect by 4%/8%/12%/16%/20%. In addition, while in Bear or Dire Bear Form your Stamina is increased by 4%/8%/12%/16%/20% and while in Cat Form your Strength is increased by 4%/8%/12%/16%/20%.
 		["MOD_STA"] = {
@@ -476,6 +485,15 @@ elseif addon.class == "HUNTER" then
 			-- Base
 			{
 				["value"] = 0.0000,
+			},
+			-- Talent: Lethal Shots (SoD-only)
+			{
+				["tab"] = 2,
+				["num"] = 4,
+				["rank"] = {
+					1, 2, 3, 4, 5,
+				},
+				["rune"] = true,
 			},
 			-- Talent: Killer Instinct
 			{
@@ -759,6 +777,18 @@ elseif addon.class == "PALADIN" then
 				["value"] = 3,
 			},
 		},
+		["MOD_AP"] = {
+			-- Talent: Vindication (SoD-only)
+			{
+				["tab"] = 3,
+				["num"] = 6,
+				["rank"] = {
+					0.05, 0.10, 0.15,
+				},
+				["aura"] = 440668,
+				["rune"] = true,
+			}
+		},
 		-- Paladin: Toughness (Rank 5) - 2,5
 		--          Increases your armor value from items by 2%/4%/6%/8%/10%.
 		["MOD_ARMOR"] = {
@@ -792,15 +822,16 @@ elseif addon.class == "PALADIN" then
 				},
 			},
 		},
-		["ADD_SPELL_DMG_MOD_AP"] = {
-			-- Rune: Sheath of Light
+		["ADD_SPELL_DMG_MOD_INT"] = {
+			-- Rune: Shock and Awe
 			{
-				["known"] = 426158,
+				["known"] = 462834,
 				["rune"] = true,
-				["value"] = 0.30,
-			},
+				["value"] = 1,
+				["aura"] = 462832,
+			}
 		},
-		["ADD_HEALING_MOD_AP"] = {
+		["ADD_SPELL_DMG_MOD_AP"] = {
 			-- Rune: Sheath of Light
 			{
 				["known"] = 426158,
@@ -832,7 +863,16 @@ elseif addon.class == "PALADIN" then
 				["rune"] = true,
 				["value"] = 2,
 				["aura"] = 460200,
-			}
+			},
+		},
+		["ADD_AP_MOD_DEFENSE"] = {
+			-- Rune: Malleable Protection (Defender's Resolve)
+			{
+				["known"] = 458371,
+				["rune"] = true,
+				["value"] = 4,
+				["aura"] = 460200,
+			},
 		},
 	}
 elseif addon.class == "PRIEST" then
@@ -1230,7 +1270,7 @@ elseif addon.class == "SHAMAN" then
 			{
 				["known"] = 415140,
 				["rune"] = true,
-				["value"] = 1.00,
+				["value"] = 0.65,
 				["aura"] = 415144,
 			},
 		},
@@ -1239,16 +1279,7 @@ elseif addon.class == "SHAMAN" then
 			{
 				["known"] = 415140,
 				["rune"] = true,
-				["value"] = 0.30,
-				["aura"] = 415144,
-			},
-		},
-		["ADD_HEALING_MOD_AP"] = {
-			-- Rune: Mental Dexterity
-			{
-				["known"] = 415140,
-				["rune"] = true,
-				["value"] = 0.30,
+				["value"] = 0.20,
 				["aura"] = 415144,
 			},
 		},
@@ -1405,7 +1436,7 @@ elseif addon.class == "WARLOCK" then
 			{
 				["known"] = 412732,
 				["rune"] = true,
-				["value"] = 0.10,
+				["value"] = 0.03,
 				["pet"] = true,
 			},
 		},
@@ -1421,8 +1452,24 @@ elseif addon.class == "WARLOCK" then
 			{
 				["known"] = 412732,
 				["rune"] = true,
-				["value"] = 0.10,
+				["value"] = 0.03,
 				["pet"] = true,
+			},
+		},
+		["ADD_SPELL_DMG_MOD_SPI"] = {
+			-- Buff: Fel Armor (SoD-only)
+			{
+				["rune"] = true,
+				["value"] = 0.5,
+				["aura"] = 403619,
+			},
+		},
+		["ADD_HEALING_MOD_SPI"] = {
+			-- Buff: Fel Armor (SoD-only)
+			{
+				["rune"] = true,
+				["value"] = 0.5,
+				["aura"] = 403619,
 			},
 		},
 		["MOD_HEALTH"] = {
@@ -1541,7 +1588,7 @@ elseif addon.class == "WARRIOR" then
 			-- Buff: Recklessness
 			{
 				["aura"] = 17538,
-				["value"] = 100,
+				["value"] = 50,
 			},
 		},
 		["MOD_HEALTH"] = {
@@ -1559,8 +1606,7 @@ elseif addon.class == "WARRIOR" then
 				["known"] = 426940,
 				["rune"] = true,
 				["aura"] = 426942,
-				["stack"] = 0.02,
-				["max_stacks"] = 5,
+				["value"] = 0.10,
 			},
 		},
 		["ADD_AP_MOD_DEFENSE"] = {
