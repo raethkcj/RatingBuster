@@ -1975,15 +1975,15 @@ function RatingBuster:ProcessText(text, link, color)
 					-- Group effects with identical values
 					for statID, effect in pairs(infoTable) do
 						if  type(statID) == "table" and statID.isPercent or statID == "Spell" then
-							effect = ("%+.2f%%"):format(effect)
+							effect = ("%+.2f"):format(effect):trim("[0.]") .. "%"
 							effects[effect] = effects[effect] or {}
 							tinsert(effects[effect], S[statID])
 						elseif statID == "Percent" then
-							effect = ("%+.2f%%"):format(effect)
+							effect = ("%+.2f"):format(effect):trim("[0.]") .. "%"
 							effects[effect] = effects[effect] or {}
 						else
 							if floor(abs(effect) * 10 + 0.5) > 0 then
-								effect = ("%+.1f"):format(effect)
+								effect = ("%+.1f"):format(effect):trim("[0.]")
 							elseif floor(abs(effect) + 0.5) > 0 then
 								effect = ("%+.0f"):format(effect)
 							else
