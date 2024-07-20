@@ -3,9 +3,8 @@ local addonName, addon = ...
 local StatLogic = LibStub(addonName)
 
 local function conversionFallback(classTable, conversionFunc)
-	local t = getmetatable(classTable) or classTable
-	return setmetatable(t, { __index = function(_, level)
-		return level == UnitLevel("player") and conversionFunc(StatLogic) or 0
+	return setmetatable({}, { __index = function(_, level)
+		return classTable[level] or level == UnitLevel("player") and conversionFunc(StatLogic) or 0
 	end })
 end
 
