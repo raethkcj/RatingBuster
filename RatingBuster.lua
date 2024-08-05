@@ -69,14 +69,25 @@ local function getOption(info, dataType)
 	dataType = dataType or "profile"
 	return db[dataType][info[#info]]
 end
+
+local function getGlobalOption(info)
+	return getOption(info, "global")
+end
+
 local function setOption(info, value, dataType)
 	dataType = dataType or "profile"
 	db[dataType][info[#info]] = value
 	RatingBuster:ClearCache()
 end
+
+local function setGlobalOption(info, value)
+	return setOption(info, value, "global")
+end
+
 local function getGem(info)
 	return db.profile[info[#info]].gemLink
 end
+
 local function setGem(info, value)
 	if value == "" then
 		db.profile[info[#info]].itemID = nil
@@ -112,10 +123,12 @@ local function setGem(info, value)
 		RatingBuster:Print(L["Queried server for Gem: %s. Try again in 5 secs."]:format(value))
 	end
 end
+
 local function getColor(info)
 	local color = db.global[info[#info]]
 	return color:GetRGB()
 end
+
 local function setColor(info, r, g, b)
 	local color = db.global[info[#info]]
 	color:SetRGB(r, g, b)
@@ -373,12 +386,8 @@ local options = {
 					name = "",
 					type = 'group',
 					inline = true,
-					get = function(info)
-						return getOption(info, "global")
-					end,
-					set = function(info, value)
-						setOption(info, value, "global")
-					end,
+					get = getGlobalOption,
+					set = setGlobalOption,
 					args = {
 						showSum = {
 							type = 'toggle',
@@ -493,12 +502,8 @@ local options = {
 					type = 'group',
 					name = L["Ignore settings"],
 					desc = L["Ignore stuff when calculating the stat summary"],
-					get = function(info)
-						return getOption(info, "global")
-					end,
-					set = function(info, value)
-						setOption(info, value, "global")
-					end,
+					get = getGlobalOption,
+					set = setGlobalOption,
 					args = {
 						sumIgnoreUnused = {
 							type = 'toggle',
@@ -1156,6 +1161,8 @@ local defaults = {
 		sumIgnoreEnchant = true,
 		sumIgnoreGems = false,
 		sumIgnoreExtraSockets = true,
+
+		swapProfileKeybinding = "",
 	},
 	profile = {
 		enableAvoidanceDiminishingReturns = StatLogic.GetAvoidanceAfterDR and true or false,
@@ -1300,7 +1307,7 @@ local defaults = {
 			gemID = nil,
 			gemText = nil,
 		};
-	}
+	},
 }
 
 -- Class specific settings
@@ -1674,6 +1681,74 @@ local function copyTable(to, from)
 	return to
 end
 
+local function AddProfileSwapOptions(profileOptions, db)
+	local profileSwapOptions = {
+		[addonName .. "ProfileSwap"] = {
+			name = L["Swap Profiles"],
+			type = "group",
+			inline = true,
+			order = 100,
+			hidden = function(info)
+				return info[0] ~= addonNameWithVersion
+			end,
+			args = {
+				swapProfileKeybinding = {
+					name = L["Swap Profile"],
+					type = 'keybinding',
+					desc = L[ [[Swap between Primary and Secondary Profiles.
+Will instead swap spec profiles if enabled, previewing the associated talents, glyphs, and spec passives.
+Keybind is only active while an item tooltip is visible, and while out of combat.]]],
+					get = getGlobalOption,
+					set = setGlobalOption,
+					width = "full",
+					order = 1,
+				},
+				description = {
+					type = "description",
+					order = 2,
+					name = L["Use a keybind to swap between Primary and Secondary Profiles.\n\nIf \"Enable spec profiles\" is enabled, will use the Primary and Secondary Talents profiles, and will preview items with that spec's talents, glyphs, and passives.\n\nYou can re-use an existing keybind! It will only be used for RatingBuster when an item tooltip is shown."],
+				},
+				primaryProfile = {
+					name = L["Primary Profile"],
+					desc = L["Select the primary profile for use with the swap profile keybind. If spec profiles are enabled, this will instead use the Primary Talents profile."],
+					type = "select",
+					values = "ListProfiles",
+					disabled = function()
+						return db.IsDualSpecEnabled and db:IsDualSpecEnabled()
+					end,
+					get = function(info)
+						return db.char[info[#info]]
+					end,
+					set = function(info, value)
+						db.char[info[#info]] = value
+					end,
+					order = 3,
+				},
+				secondaryProfile = {
+					name = L["Secondary Profile"],
+					desc = L["Select the secondary profile for use with the swap profile keybind. If spec profiles are enabled, this will instead use the Secondary Talents profile."],
+					type = "select",
+					values = "ListProfiles",
+					disabled = function()
+						return db.IsDualSpecEnabled and db:IsDualSpecEnabled()
+					end,
+					get = function(info)
+						return db.char[info[#info]]
+					end,
+					set = function(info, value)
+						db.char[info[#info]] = value
+					end,
+					order = 4,
+				},
+			},
+		},
+	}
+
+	for key, option in pairs(profileSwapOptions) do
+		profileOptions.args[key] = option
+	end
+end
+
 ---------------------
 -- Initializations --
 ---------------------
@@ -1695,8 +1770,14 @@ function RatingBuster:OnInitialize()
 end
 
 function RatingBuster:InitializeDatabase()
-	RatingBuster.db = LibStub("AceDB-3.0"):New("RatingBusterDB", defaults, class)
-	RatingBuster.db.RegisterCallback(RatingBuster, "OnProfileChanged", "ClearCache")
+	local defaultProfile = UnitClass("player")
+	RatingBuster.db = LibStub("AceDB-3.0"):New("RatingBusterDB", defaults, defaultProfile)
+	RatingBuster.db.RegisterCallback(RatingBuster, "OnProfileChanged", function()
+		if LibStub("AceConfigDialog-3.0").OpenFrames[addonNameWithVersion] then
+			LibStub("AceConfigDialog-3.0"):Open(addonNameWithVersion)
+		end
+		addon.RepaintStaticTooltips()
+	end)
 	RatingBuster.db.RegisterCallback(RatingBuster, "OnProfileCopied", "ClearCache")
 	RatingBuster.db.RegisterCallback(RatingBuster, "OnProfileReset", "ClearCache")
 	db = RatingBuster.db
@@ -1710,6 +1791,8 @@ function RatingBuster:InitializeDatabase()
 		LibDualSpec:EnhanceDatabase(RatingBuster.db, "RatingBusterDB")
 		LibDualSpec:EnhanceOptions(options.args.profiles, RatingBuster.db)
 	end
+
+	AddProfileSwapOptions(options.args.profiles, RatingBuster.db)
 
 	local always_buffed = RatingBuster.db:RegisterNamespace("AlwaysBuffed", {
 		profile = {
@@ -1756,6 +1839,68 @@ end
 
 function RatingBuster:OnDisable()
 	addon:DisableHook()
+end
+
+do
+	local profile
+	local spec = GetActiveTalentGroup()
+
+	function RatingBuster:GetProfileAndSpec()
+		return profile, spec
+	end
+
+	local f = CreateFrame("Button", addonName .. "ProfileSwap")
+	f:SetScript("OnClick", function(_, button)
+		print("Click button", button)
+	end)
+
+	function RatingBuster:EnableKeybindings(tooltip)
+		if not InCombatLockdown() then
+			SetOverrideBindingClick(f, false, RatingBuster.db.global.swapProfileKeybinding, f:GetName())
+		end
+
+		if not tooltip.RatingBusterKeybindings then
+			tooltip.RatingBusterKeybindings = true
+			tooltip:HookScript("OnHide", function()
+				if not InCombatLockdown() then
+					ClearOverrideBindings(f)
+				end
+			end)
+		end
+	end
+
+	f:RegisterEvent("PLAYER_REGEN_DISABLED")
+	f:SetScript("OnEvent", function(self)
+		ClearOverrideBindings(self)
+	end)
+
+	local function updateProfileAndSpec()
+		local currentProfile = db:GetCurrentProfile()
+
+		local desiredProfile
+			-- Primary
+			spec = 1
+			desiredProfile = db.char.primaryProfile or currentProfile
+			-- Secondary
+			if db:IsDualSpecEnabled() then
+				spec = 2
+				desiredProfile = db:GetDualSpecProfile(spec)
+			else
+				desiredProfile = db.char.secondaryProfile or currentProfile
+			end
+
+		if desiredProfile then
+			if currentProfile ~= desiredProfile then
+				db:SetProfile(desiredProfile)
+				if LibStub("AceConfigDialog-3.0").OpenFrames[addonNameWithVersion] then
+					LibStub("AceConfigDialog-3.0"):Open(addonNameWithVersion)
+				end
+			end
+			profile = desiredProfile
+		else
+			profile = nil
+		end
+	end
 end
 
 -- event = PLAYER_LEVEL_UP
@@ -1817,6 +1962,19 @@ function RatingBuster.ProcessTooltip(tooltip)
 	if not link then return end
 	local item = Item:CreateFromItemLink(link)
 	if item:IsItemEmpty() or not item:IsItemDataCached() then return end
+
+	local profile, spec = RatingBuster:GetProfileAndSpec()
+	--if not profile then return end
+
+	RatingBuster:EnableKeybindings(tooltip)
+
+	local profile = db:GetCurrentProfile()
+	local spec = RatingBuster:GetDisplayedSpec()
+
+	local statModContext = StatLogic:NewStatModContext({
+		profile = profile,
+		spec = spec,
+	})
 
 	---------------------
 	-- Tooltip Scanner --

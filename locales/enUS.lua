@@ -1,4 +1,4 @@
-﻿--[[
+--[[
 Name: RatingBuster enUS locale
 Revision: $Revision: 73696 $
 Translated by:
@@ -134,7 +134,9 @@ L["Show icon"] = true
 L["Show the sigma icon before summary listing"] = true
 -- /rb sum title
 L["Show title text"] = true
-L["Show the title text before summary listing"] = true
+L["Show the title text before stat summary"] = true
+L["Show profile name"] = true
+L["Show profile name before stat summary"] = true
 -- /rb sum showzerostat
 L["Show zero value stats"] = true
 L["Show zero value stats in summary for consistancy"] = true
@@ -264,6 +266,14 @@ L["Raid Buffs"] = true
 L["Stat Multiplier"] = true
 L["Attack Power Multiplier"] = true
 L["Reduced Physical Damage Taken"] = true
+
+L["Swap Profiles"] = true
+L["Swap Profile Keybinding"] = true
+L["Use a keybind to swap between Primary and Secondary Profiles.\n\nIf \"Enable spec profiles\" is enabled, will use the Primary and Secondary Talents profiles, and will preview items with that spec's talents, glyphs, and passives.\n\nYou can re-use an existing keybind! It will only be used for RatingBuster when an item tooltip is shown."] = true
+L["Primary Profile"] = true
+L["Select the primary profile for use with the swap profile keybind. If spec profiles are enabled, this will instead use the Primary Talents profile."] = true
+L["Secondary Profile"] = true
+L["Select the secondary profile for use with the swap profile keybind. If spec profiles are enabled, this will instead use the Secondary Talents profile."] = true
 
 -----------------------
 -- Matching Patterns --
