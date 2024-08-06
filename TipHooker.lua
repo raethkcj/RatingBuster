@@ -57,6 +57,13 @@ local tooltips = {
 	["AtlasLootTooltip"] = true,
 }
 
+local staticItemSetters = {
+	["SetHyperlink"] = true,
+	["SetItemByID"] = true,
+}
+
+local tooltipNeedsRepaint = {}
+
 local initialized = false
 local function InitializeHook()
 	for tooltipName in pairs(tooltips) do
@@ -64,6 +71,18 @@ local function InitializeHook()
 		if tooltip then
 			tooltip:HookScript("OnTooltipSetItem", HandleTooltipSetItem)
 			tooltip:HookScript("OnUpdate", HandleUpdate)
+
+			-- Tooltips set by location (bag slot, inventory slot, etc.)
+			-- are usually automatically redrawn every TOOLTIP_UPDATE_TIME.
+			-- Tooltips set by link or ID are not, so we manually repaint them.
+			for functionName in pairs(staticItemSetters) do
+				hooksecurefunc(tooltip, functionName, function(self)
+					tooltipNeedsRepaint[self] = true
+				end)
+				tooltip:HookScript("OnHide", function(self)
+					tooltipNeedsRepaint[self] = nil
+				end)
+			end
 		end
 	end
 	initialized = true
@@ -79,6 +98,19 @@ EventRegistry:RegisterFrameEventAndCallbackWithHandle("VARIABLES_LOADED", functi
 		LinkWrangler.RegisterCallback(addonName, RunHandler, "item", "refreshcomp");
 	end
 end)
+
+function addon.RepaintStaticTooltips()
+	---@type GameTooltip?
+	for tooltip in pairs(tooltipNeedsRepaint) do
+		if tooltip and tooltip.GetItem then
+			local _, itemLink = tooltip:GetItem()
+			if itemLink then
+				tooltip:ClearLines()
+				tooltip:SetHyperlink(itemLink)
+			end
+		end
+	end
+end
 
 function addon:EnableHook(h)
 	handler = h

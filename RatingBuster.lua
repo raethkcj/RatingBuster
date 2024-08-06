@@ -1131,6 +1131,14 @@ local options = {
 	},
 }
 
+---@enum Keybind
+local Keybind = {
+	None = 1,
+	Shift = 2,
+	Ctrl = 3,
+	Alt = 4,
+}
+
 ---------------------
 -- Saved Variables --
 ---------------------
@@ -1693,11 +1701,8 @@ local function AddProfileSwapOptions(profileOptions, db)
 			end,
 			args = {
 				swapProfileKeybinding = {
-					name = L["Swap Profile"],
+					name = L["Swap Profile Keybinding"],
 					type = 'keybinding',
-					desc = L[ [[Swap between Primary and Secondary Profiles.
-Will instead swap spec profiles if enabled, previewing the associated talents, glyphs, and spec passives.
-Keybind is only active while an item tooltip is visible, and while out of combat.]]],
 					get = getGlobalOption,
 					set = setGlobalOption,
 					width = "full",
@@ -1842,16 +1847,28 @@ function RatingBuster:OnDisable()
 end
 
 do
-	local profile
 	local spec = GetActiveTalentGroup()
 
-	function RatingBuster:GetProfileAndSpec()
-		return profile, spec
+	function RatingBuster:GetDisplayedSpec()
+		return spec
 	end
 
 	local f = CreateFrame("Button", addonName .. "ProfileSwap")
-	f:SetScript("OnClick", function(_, button)
-		print("Click button", button)
+	f:RegisterForClicks("AnyDown")
+	f:SetScript("OnClick", function()
+		if db.IsDualSpecEnabled and db:IsDualSpecEnabled() then
+			-- Toggle between 1 and 2
+			spec = 3 - spec
+			db:SetProfile(db:GetDualSpecProfile(spec))
+		else
+			spec = GetActiveTalentGroup()
+			local currentProfile = db:GetCurrentProfile()
+			if currentProfile ~= db.char.primaryProfile then
+				db:SetProfile(db.char.primaryProfile or currentProfile)
+			else
+				db:SetProfile(db.char.secondaryProfile or currentProfile)
+			end
+		end
 	end)
 
 	function RatingBuster:EnableKeybindings(tooltip)
@@ -1859,10 +1876,12 @@ do
 			SetOverrideBindingClick(f, false, RatingBuster.db.global.swapProfileKeybinding, f:GetName())
 		end
 
-		if not tooltip.RatingBusterKeybindings then
-			tooltip.RatingBusterKeybindings = true
+		tooltip.RatingBusterOnHideEnabled = true
+		if not tooltip.RatingBusterKeybindHooked and not tooltip:GetName():find("ShoppingTooltip") then
+			tooltip.RatingBusterKeybindHooked = true
 			tooltip:HookScript("OnHide", function()
-				if not InCombatLockdown() then
+				if not InCombatLockdown() and tooltip.RatingBusterOnHideEnabled then
+					tooltip.RatingBusterOnHideEnabled = false
 					ClearOverrideBindings(f)
 				end
 			end)
@@ -1870,37 +1889,14 @@ do
 	end
 
 	f:RegisterEvent("PLAYER_REGEN_DISABLED")
-	f:SetScript("OnEvent", function(self)
-		ClearOverrideBindings(self)
-	end)
-
-	local function updateProfileAndSpec()
-		local currentProfile = db:GetCurrentProfile()
-
-		local desiredProfile
-			-- Primary
-			spec = 1
-			desiredProfile = db.char.primaryProfile or currentProfile
-			-- Secondary
-			if db:IsDualSpecEnabled() then
-				spec = 2
-				desiredProfile = db:GetDualSpecProfile(spec)
-			else
-				desiredProfile = db.char.secondaryProfile or currentProfile
-			end
-
-		if desiredProfile then
-			if currentProfile ~= desiredProfile then
-				db:SetProfile(desiredProfile)
-				if LibStub("AceConfigDialog-3.0").OpenFrames[addonNameWithVersion] then
-					LibStub("AceConfigDialog-3.0"):Open(addonNameWithVersion)
-				end
-			end
-			profile = desiredProfile
-		else
-			profile = nil
+	f:RegisterEvent("ACTIVE_TALENT_GROUP_CHANGED")
+	f:SetScript("OnEvent", function(self, event, ...)
+		if event == "PLAYER_REGEN_DISABLED" then
+			ClearOverrideBindings(self)
+		elseif event == "ACTIVE_TALENT_GROUP_CHANGED" then
+			spec = ...
 		end
-	end
+	end)
 end
 
 -- event = PLAYER_LEVEL_UP
@@ -1962,9 +1958,6 @@ function RatingBuster.ProcessTooltip(tooltip)
 	if not link then return end
 	local item = Item:CreateFromItemLink(link)
 	if item:IsItemEmpty() or not item:IsItemDataCached() then return end
-
-	local profile, spec = RatingBuster:GetProfileAndSpec()
-	--if not profile then return end
 
 	RatingBuster:EnableKeybindings(tooltip)
 
