@@ -89,8 +89,10 @@ local tocversion = select(4, GetBuildInfo())
 ---------------
 -- metatable for stat tables
 local statTableMetatable = {
-	__index = function()
-		return 0
+	__index = function(t, k)
+		if k ~= "subclassID" then
+			return 0
+		end
 	end,
 	__newindex = function(t, k, v)
 		-- Reject setting anything to 0
@@ -699,8 +701,8 @@ do
 
 	-- AuraInfo is a layer on top of aura_cache to hold Always Buffed settings.
 	local always_buffed_aura_info = {}
-	function StatLogic:SetupAuraInfo(always_buffed_db)
-		self.always_buffed_db = always_buffed_db
+	function StatLogic:SetupAuraInfo(always_buffed_ns)
+		self.always_buffed_ns = always_buffed_ns
 		for _, modList in pairs(StatLogic.StatModTable) do
 			for _, mods in pairs(modList) do
 				for _, mod in ipairs(mods) do
@@ -726,7 +728,7 @@ do
 	end
 
 	function StatLogic:GetAuraInfo(buff, ignoreAlwaysBuffed)
-		if not ignoreAlwaysBuffed and self.always_buffed_db[buff] then
+		if not ignoreAlwaysBuffed and self.always_buffed_ns.profile[buff] then
 			return always_buffed_aura_info[buff]
 		else
 			if needs_update then
@@ -888,16 +890,18 @@ StatLogic.StatModIgnoresAlwaysBuffed = {
 }
 
 ---@class StatModValidator
----@field validate? function
+---@field validate? fun(case: table, statMod: string|Stat, context: StatModContext): boolean
 ---@field events table<WowEvent, UnitToken | true>
 
 ---@type { [string]: StatModValidator }
 addon.StatModValidators = {
 	armorspec = {
-		validate = function(case)
+		validate = function(case, _, statModContext)
 			if armor_spec_active then
 				-- TODO: May be replaced by GetSpecialization, check on Cata Beta launch
-				return case.armorspec[GetPrimaryTalentTree() or 0]
+				return case.armorspec[GetPrimaryTalentTree(false, false, statModContext.spec) or 0]
+			else
+				return false
 			end
 		end,
 		events = {
@@ -917,24 +921,41 @@ addon.StatModValidators = {
 		validate = function(case)
 			local slotLink = case.slot and GetInventoryItemLink("player", case.slot)
 			local pattern = "item:%d+:" .. case.enchant
-			return slotLink and slotLink:find(pattern)
+			return not not slotLink and not not slotLink:find(pattern)
 		end,
 		events = {
 			["UNIT_INVENTORY_CHANGED"] = "player",
 		},
 	},
 	glyph = {
-		validate = function(case)
-			return IsPlayerSpell(case.glyph)
+		validate = function(case, _, statModContext)
+			if not NUM_GLYPH_SLOTS then
+				EventUtil.ContinueOnAddOnLoaded("Blizzard_GlyphUI", function()
+					print("foo")
+					StatLogic:InvalidateEvent("GLYPH_UPDATED")
+				end)
+				C_AddOns.LoadAddOn("Blizzard_GlyphUI")
+				return false
+			end
+
+			for i = 1, NUM_GLYPH_SLOTS do
+				local _, _, _, glyphSpellID = GetGlyphSocketInfo(i, statModContext.spec)
+				if case.glyph == glyphSpellID then
+					return true
+				end
+			end
+
+			return false
 		end,
 		events = {
 			["GLYPH_ADDED"] = true,
+			["GLYPH_UPDATED"] = true,
 			["GLYPH_REMOVED"] = true,
 		}
 	},
 	known = {
 		validate = function(case)
-			return FindSpellBookSlotBySpellID(case.known)
+			return not not FindSpellBookSlotBySpellID(case.known)
 		end,
 		events = {
 			["SPELLS_CHANGED"] = true,
@@ -943,18 +964,6 @@ addon.StatModValidators = {
 	level = {
 		events = {
 			["PLAYER_LEVEL_UP"] = true,
-		},
-	},
-	mastery = {
-		validate = function(case)
-			local spec = GetPrimaryTalentTree()
-			if spec then
-				local mastery1, mastery2 = GetTalentTreeMasterySpells(spec)
-				return case.mastery == mastery1 or case.mastery == mastery2
-			end
-		end,
-		events = {
-			["PLAYER_TALENT_UPDATE"] = true,
 		},
 	},
 	meta = {
@@ -997,6 +1006,14 @@ addon.StatModValidators = {
 			["UNIT_INVENTORY_CHANGED"] = "player",
 		},
 	},
+	spec = {
+		validate = function(case, _, statModContext)
+			return case.spec == GetPrimaryTalentTree(false, false, statModContext.spec)
+		end,
+		events = {
+			["PLAYER_TALENT_UPDATE"] = true,
+		},
+	},
 	stance = {
 		validate = function(case)
 			local form = GetShapeshiftForm()
@@ -1037,7 +1054,12 @@ addon.StatModValidators = {
 
 -- Cache the results of GetStatMod, and build a table that
 -- maps events defined on Validators to the StatMods that depend on them.
-local StatModCache = {}
+local StatModCache = setmetatable({}, {
+	__index = function(t, k)
+		t[k] = {}
+		return t[k]
+	end
+})
 addon.StatModCacheInvalidators = {}
 local WeaponSubclassInvalidators = {}
 
@@ -1049,7 +1071,7 @@ function StatLogic:InvalidateEvent(event, unit)
 	local stats = addon.StatModCacheInvalidators[key]
 	if stats then
 		for _, stat in pairs(stats) do
-			StatModCache[stat] = nil
+			wipe(StatModCache[stat])
 		end
 	end
 	if WeaponSubclassInvalidators[key] then
@@ -1081,8 +1103,8 @@ do
 	end)
 end
 
-local function ValidateStatMod(statModName, case, overrideStats)
-	if overrideStats and overrideStats.subclassID and not case.weapon then
+local function ValidateStatMod(statModName, case, statModContext)
+	if statModContext.overrideStats.subclassID and not case.weapon then
 		-- If we're passed a weapon type, we're only interested in StatMods with weapon cases
 		return false
 	end
@@ -1104,7 +1126,7 @@ local function ValidateStatMod(statModName, case, overrideStats)
 				end
 			end
 
-			if validator.validate and not validator.validate(case, statModName, overrideStats) then
+			if validator.validate and not validator.validate(case, statModName, statModContext) then
 				return false
 			end
 		end
@@ -1117,8 +1139,8 @@ end
 -- tier then column allows us to replicate the previous behavior,
 -- and keep StatModTables human-readable.
 local orderedTalentCache = {}
-function StatLogic:GetOrderedTalentInfo(tab, num)
-	return GetTalentInfo(tab, orderedTalentCache[tab][num])
+function StatLogic:GetOrderedTalentInfo(tab, num, ...)
+	return GetTalentInfo(tab, orderedTalentCache[tab][num], ...)
 end
 
 local talentCacheExists = false
@@ -1203,17 +1225,17 @@ do
 		return currentValue
 	end
 
-	local GetStatModValue = function(statModName, currentValue, case, initialValue, level, overrideStats)
-		if not ValidateStatMod(statModName, case, overrideStats) then
+	local GetStatModValue = function(statModName, currentValue, case, initialValue, context)
+		if not ValidateStatMod(statModName, case, context) then
 			return currentValue
 		end
 
-		level = level or UnitLevel("player")
+		local level = context.level or UnitLevel("player")
 
 		local newValue
 		if case.tab and case.num then
 			-- Talent Rank
-			local r = select(5, StatLogic:GetOrderedTalentInfo(case.tab, case.num))
+			local r = select(5, StatLogic:GetOrderedTalentInfo(case.tab, case.num, false, false, context.spec))
 			if case.rank then
 				newValue = case.rank[r]
 			elseif r > 0 then
@@ -1255,32 +1277,77 @@ do
 		return currentValue
 	end
 
-	---@param statModName string|Stat
-	---@param level? integer
-	---@param overrideStats? StatTable
+	---@class StatModContextArgs
+	---@field profile? string
+	---@field spec? integer
+	---@field level? integer
+	---@field overrideStats? StatTable
+
+	-- Helper object for repeatedly calling GetStatMod for varying StatMods but consistent other parameters
+	---@class StatModContext : StatModContextArgs
+	local StatModContext = {}
+
+	---@param statMod string|Stat
 	---@return number
-	function StatLogic:GetStatMod(statModName, level, overrideStats)
+	function StatModContext:__call(statMod)
+		return StatLogic:GetStatMod(statMod, self)
+	end
+
+
+	---@param context? StatModContextArgs
+	---@return StatModContext
+	function StatLogic:NewStatModContext(context)
+		if not context then
+			context = {}
+		end
+		if not context.profile then
+			context.profile = ""
+		end
+		if not context.spec then
+			context.spec = GetActiveTalentGroup()
+		end
+		if not context.overrideStats then
+			context.overrideStats = StatLogic.StatTable:new()
+		end
+
+		---@cast context StatModContext
+		return setmetatable(context, StatModContext)
+	end
+
+	---@param statMod string|Stat
+	---@param context? StatModContextArgs
+	---@return number
+	function StatLogic:GetStatMod(statMod, context)
 		local value
+		if not context then
+			context = self:NewStatModContext()
+		end
+		local level = context.level
+		local profileSpec = context.profile .. context.spec
+
 		if not level or level == UnitLevel("player") then
-			value = StatModCache[statModName]
+			value = StatModCache[statMod][profileSpec]
 		end
 
 		if not value then
 			wipe(ExclusiveGroupCache)
-			local statModInfo = StatLogic.StatModInfo[statModName]
-			if not statModInfo then return 0 end
+			local statModInfo = StatLogic.StatModInfo[statMod]
+			if not statModInfo then
+				StatModCache[statMod][profileSpec] = 0
+				return 0
+			end
 			value = statModInfo.initialValue
 			for _, categoryTable in pairs(StatLogic.StatModTable) do
-				if categoryTable[statModName] then
-					for _, case in ipairs(categoryTable[statModName]) do
-						value = GetStatModValue(statModName, value, case, statModInfo.initialValue, level, overrideStats)
+				if categoryTable[statMod] then
+					for _, case in ipairs(categoryTable[statMod]) do
+						value = GetStatModValue(statMod, value, case, statModInfo.initialValue, context)
 					end
 				end
 			end
 
 			value = value + statModInfo.finalAdjust
 			if not level or level == UnitLevel("player") then
-				StatModCache[statModName] = value
+				StatModCache[statMod][profileSpec] = value
 			end
 		end
 
@@ -1615,6 +1682,12 @@ local function ConvertGenericStats(table)
 	end
 end
 
+function StatLogic:GetItemTooltipNumLines(link)
+	tip:ClearLines()
+	tip:SetHyperlink(link)
+	return tip:NumLines()
+end
+
 -- ================== --
 -- Stat Summarization --
 -- ================== --
@@ -1644,8 +1717,9 @@ do
 	-- Calculates the sum of all stats for a specified item.
 	---@param item? string itemLink of target item
 	---@param oldStatTable? StatTable The sum of stat values are writen to this table if provided
+	---@param statModContext? StatModContext
 	---@return StatTable? sum
-	function StatLogic:GetSum(item, oldStatTable)
+	function StatLogic:GetSum(item, oldStatTable, statModContext)
 		-- Check item
 		if type(item) ~= "string" then
 			return
@@ -1677,13 +1751,19 @@ do
 		statTable.numLines = numLines
 
 		if itemClass == Enum.ItemClass.Weapon then
-			for _, statMods in pairs(addon.WeaponSubclassStats) do
+			if not statModContext then
+				statModContext = StatLogic:NewStatModContext()
+			end
+			statModContext.overrideStats["subclassID"] = itemSubclass
+			local statMods = addon.WeaponSubclassStats[itemSubclass]
+			if statMods then
 				for statMod in pairs(statMods) do
-					local overrideStats = StatLogic.StatTable.new("subclassID", itemSubclass)
-					local value = StatLogic:GetStatMod(statMod, _, overrideStats)
+					local value = statModContext(statMod)
 					statTable[statMod] = value
 				end
 			end
+			-- Unset afterwards to prevent interference with ValidateStatMod
+			statModContext.overrideStats["subclassID"] = nil
 		end
 
 		log(link)

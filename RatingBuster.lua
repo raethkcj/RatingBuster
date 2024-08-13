@@ -11,9 +11,6 @@ Description: Converts combat ratings in tooltips into normal percentages.
 -- Libraries --
 ---------------
 local StatLogic = LibStub("StatLogic")
-local GSM = function(...)
-	return StatLogic:GetStatMod(...)
-end
 local L = LibStub("AceLocale-3.0"):GetLocale("RatingBuster")
 local S = setmetatable(addon.S, { __index = L })
 ---@cast L RatingBusterLocale
@@ -36,8 +33,12 @@ RatingBuster.date = ("$Date: 2008-07-22 15:35:19 +0800 (星期二, 22 七月 200
 -----------
 -- Cache --
 -----------
-local cache = {}
-setmetatable(cache, {__mode = "kv"}) -- weak table to enable garbage collection
+local cache = setmetatable({}, {
+	__index = function(t, profileSpec)
+		t[profileSpec] = setmetatable({}, { __mode = "kv" })
+		return t[profileSpec]
+	end,
+})
 
 ---------------------
 -- Local Variables --
@@ -1131,14 +1132,6 @@ local options = {
 	},
 }
 
----@enum Keybind
-local Keybind = {
-	None = 1,
-	Shift = 2,
-	Ctrl = 3,
-	Alt = 4,
-}
-
 ---------------------
 -- Saved Variables --
 ---------------------
@@ -1535,6 +1528,7 @@ do
 	local showRunes =  season and (season ~= Enum.SeasonID.NoSeason and season ~= Enum.SeasonID.Hardcore)
 
 	local function GenerateStatModOptions()
+		local statModContext = StatLogic:NewStatModContext()
 		for _, modList in pairs(StatLogic.StatModTable) do
 			for statMod, cases in pairs(modList) do
 				local add = StatLogic.StatModInfo[statMod].add
@@ -1579,15 +1573,15 @@ do
 
 						if mod == "NORMAL_MANA_REG" then
 							mod = "SPI"
-							if GSM("ADD_NORMAL_MANA_REG_MOD_INT") > 0 then
+							if statModContext("ADD_NORMAL_MANA_REG_MOD_INT") > 0 then
 								-- "Normal mana regen" is added from both int and spirit
 								addStatModOption(add, "INT", sources)
 							end
 						elseif mod == "NORMAL_HEALTH_REG" then
-							if GSM("ADD_NORMAL_HEALTH_REG_MOD_SPI") > 0 then
+							if statModContext("ADD_NORMAL_HEALTH_REG_MOD_SPI") > 0 then
 								-- Vanilla through Wrath
 								mod = "SPI"
-							elseif GSM("ADD_NORMAL_HEALTH_REG_MOD_HEALTH") > 0 then
+							elseif statModContext("ADD_NORMAL_HEALTH_REG_MOD_HEALTH") > 0 then
 								-- Cata onwards
 								mod = "HEALTH"
 							end
@@ -1804,7 +1798,7 @@ function RatingBuster:InitializeDatabase()
 			['*'] = false
 		}
 	})
-	StatLogic:SetupAuraInfo(always_buffed.profile)
+	StatLogic:SetupAuraInfo(always_buffed)
 	local conversion_data = RatingBuster.db:RegisterNamespace("ConversionData", {
 		global = {
 			[LE_EXPANSION_LEVEL_CURRENT] = {
@@ -1935,6 +1929,7 @@ local EmptySocketLookup = {
 }
 
 -- Avoidance Diminishing Returns
+---@type { [Stat]: SummaryCalcFunction }
 local summaryFunc = {}
 local equippedSum = setmetatable({}, {
 	__index = function() return 0 end
@@ -1979,12 +1974,12 @@ function RatingBuster.ProcessTooltip(tooltip)
 		local blue = db.profile.sumGemBlue.gemID
 		local meta = db.profile.sumGemMeta.gemID
 		local _, _, difflink1 = StatLogic:GetDiffID(tooltip, db.global.sumIgnoreEnchant, db.global.sumIgnoreGems, db.global.sumIgnoreExtraSockets, red, yellow, blue, meta)
-		StatLogic:GetSum(difflink1, equippedSum)
-		equippedSum[StatLogic.Stats.Strength] = equippedSum[StatLogic.Stats.Strength] * GSM("MOD_STR")
-		equippedSum[StatLogic.Stats.Agility] = equippedSum[StatLogic.Stats.Agility] * GSM("MOD_AGI")
-		equippedDodge = summaryFunc[StatLogic.Stats.DodgeBeforeDR](equippedSum, "sum", difflink1) * -1
-		equippedParry = summaryFunc[StatLogic.Stats.ParryBeforeDR](equippedSum, "sum", difflink1) * -1
-		equippedMissed = summaryFunc[StatLogic.Stats.MissBeforeDR](equippedSum, "sum", difflink1) * -1
+		StatLogic:GetSum(difflink1, equippedSum, statModContext)
+		equippedSum[StatLogic.Stats.Strength] = equippedSum[StatLogic.Stats.Strength] * statModContext("MOD_STR")
+		equippedSum[StatLogic.Stats.Agility] = equippedSum[StatLogic.Stats.Agility] * statModContext("MOD_AGI")
+		equippedDodge = summaryFunc[StatLogic.Stats.DodgeBeforeDR](equippedSum, statModContext, "sum", difflink1) * -1
+		equippedParry = summaryFunc[StatLogic.Stats.ParryBeforeDR](equippedSum, statModContext, "sum", difflink1) * -1
+		equippedMissed = summaryFunc[StatLogic.Stats.MissBeforeDR](equippedSum, statModContext, "sum", difflink1) * -1
 		processedDodge = equippedDodge
 		processedParry = equippedParry
 		processedMissed = equippedMissed
@@ -2005,7 +2000,7 @@ function RatingBuster.ProcessTooltip(tooltip)
 		local text = fontString:GetText()
 		if text then
 			local color = CreateColor(fontString:GetTextColor())
-			text = RatingBuster:ProcessLine(text, link, color)
+			text = RatingBuster:ProcessLine(text, link, color, statModContext)
 			if text then
 				fontString:SetText(text)
 			end
@@ -2024,24 +2019,25 @@ function RatingBuster.ProcessTooltip(tooltip)
 
 	-- Stat Summary
 	if db.global.showSum then
-		RatingBuster:StatSummary(tooltip, link)
+		RatingBuster:StatSummary(tooltip, link, statModContext)
 	end
 
 	-- Repaint tooltip
 	tooltip:Show()
 end
 
-function RatingBuster:ProcessLine(text, link, color)
+function RatingBuster:ProcessLine(text, link, color, statModContext)
 	-- Get data from cache if available
-	local cacheID = text..playerLevel
-	local cacheText = cache[cacheID]
+	local profileSpec = statModContext.profile .. statModContext.spec
+	local cacheID = text .. playerLevel
+	local cacheText = cache[profileSpec][cacheID]
 	if cacheText then
 		if cacheText ~= text then
 			return cacheText
 		end
 	elseif EmptySocketLookup[text] and db.profile[EmptySocketLookup[text]].gemText then -- Replace empty sockets with gem text
 		text = db.profile[EmptySocketLookup[text]].gemText
-		cache[cacheID] = text
+		cache[profileSpec][cacheID] = text
 		-- SetText
 		return text
 	elseif text:find("%d") then -- do nothing if we don't find a number
@@ -2063,15 +2059,18 @@ function RatingBuster:ProcessLine(text, link, color)
 			end
 		end
 		-- RecursivelySplitLine
-		text = RatingBuster:RecursivelySplitLine(text, separatorTable, link, color)
+		text = RatingBuster:RecursivelySplitLine(text, separatorTable, link, color, statModContext)
 		-- Revert exclusions
 		if exclusions then
 			for exclusion, replacement in pairs(L["exclusions"]) do
 				text = text:gsub(replacement, exclusion)
 			end
 		end
-		cache[cacheID] = text
+		cache[profileSpec][cacheID] = text
 		-- SetText
+		return text
+	else
+		cache[profileSpec][cacheID] = text
 		return text
 	end
 end
@@ -2084,7 +2083,7 @@ end
 -- separatorTable = {"/", " and ", ","}
 -- RatingBuster:RecursivelySplitLine("+24 Agility/+4 Stamina, +4 Dodge and +4 Spell Crit/+5 Spirit", {"/", " and ", ",", "%. ", " for ", "&"})
 -- RatingBuster:RecursivelySplitLine("+6法術傷害及5耐力", {"/", "和", ",", "。", " 持續 ", "&", "及",})
-function RatingBuster:RecursivelySplitLine(text, separatorTable, link, color)
+function RatingBuster:RecursivelySplitLine(text, separatorTable, link, color, statModContext)
 	if type(separatorTable) == "table" and table.maxn(separatorTable) > 0 then
 		local sep = tremove(separatorTable, 1)
 		text = text:gsub(sep, "@")
@@ -2093,20 +2092,20 @@ function RatingBuster:RecursivelySplitLine(text, separatorTable, link, color)
 		local tempTable = {}
 		for _, t in ipairs(text) do
 			copyTable(tempTable, separatorTable)
-			tinsert(processedText, self:RecursivelySplitLine(t, tempTable, link, color))
+			tinsert(processedText, self:RecursivelySplitLine(t, tempTable, link, color, statModContext))
 		end
 		-- Remove frontier patterns, as they get printed oddly in the repl of a gsub
 		sep = sep:gsub("%%f%[.-%]", "")
 		-- Join text
 		return (table.concat(processedText, "@"):gsub("@", sep))
 	else
-		return self:ProcessText(text, link, color)
+		return self:ProcessText(text, link, color, statModContext)
 	end
 end
 
 local escaped_large_number_sep = LARGE_NUMBER_SEPERATOR:gsub("[-.]", "%%%1")
 
-function RatingBuster:ProcessText(text, link, color)
+function RatingBuster:ProcessText(text, link, color, statModContext)
 	-- Convert text to lower so we don't have to worry about same ratings with different cases
 	local lowerText = text:lower()
 	-- Check if text has a matching pattern
@@ -2120,8 +2119,9 @@ function RatingBuster:ProcessText(text, link, color)
 				if lowerText:find(pattern) then
 					value = value:gsub(escaped_large_number_sep, "")
 					value = tonumber(value)
+					if not value then return text end
 					local infoTable = StatLogic.StatTable.new()
-					RatingBuster:ProcessStat(stat, value, infoTable, link, color)
+					RatingBuster:ProcessStat(stat, value, infoTable, link, color, statModContext)
 					local effects = {}
 					-- Group effects with identical values
 					for statID, effect in pairs(infoTable) do
@@ -2222,12 +2222,18 @@ do
 		}
 	}
 
-	function RatingBuster:ProcessStat(statID, value, infoTable, link, color)
+	---@param statID Stat
+	---@param value number
+	---@param infoTable table
+	---@param link string
+	---@param color any
+	---@param statModContext StatModContext
+	function RatingBuster:ProcessStat(statID, value, infoTable, link, color, statModContext)
 		if StatLogic.GenericStatMap[statID] then
 			local statList = StatLogic.GenericStatMap[statID]
 			for _, convertedStatID in ipairs(statList) do
 				if not RatingType.Ranged[convertedStatID] then
-					RatingBuster:ProcessStat(convertedStatID, value, infoTable)
+					RatingBuster:ProcessStat(convertedStatID, value, infoTable, link, color, statModContext)
 				end
 			end
 		elseif StatLogic.RatingBase[statID] and db.profile.showRatings then
@@ -2240,7 +2246,7 @@ do
 				if db.profile.showDefenseFromDefenseRating then
 					infoTable["Decimal"] = effect
 				end
-				self:ProcessStat(StatLogic.Stats.Defense, effect, infoTable)
+				self:ProcessStat(StatLogic.Stats.Defense, effect, infoTable, link, color, statModContext)
 			elseif statID == StatLogic.Stats.DodgeRating and db.profile.enableAvoidanceDiminishingReturns then
 				infoTable["Percent"] = StatLogic:GetAvoidanceGainAfterDR(StatLogic.Stats.Dodge, processedDodge + effect) - StatLogic:GetAvoidanceGainAfterDR(StatLogic.Stats.Dodge, processedDodge)
 				processedDodge = processedDodge + effect
@@ -2256,11 +2262,11 @@ do
 					infoTable["Decimal"] = effect
 				end
 				if db.profile.showDodgeReductionFromExpertise then
-					local dodgeReduction = effect * -GSM("ADD_DODGE_REDUCTION_MOD_EXPERTISE")
+					local dodgeReduction = effect * -statModContext("ADD_DODGE_REDUCTION_MOD_EXPERTISE")
 					infoTable[StatLogic.Stats.DodgeReduction] = infoTable[StatLogic.Stats.DodgeReduction] + dodgeReduction
 				end
 				if db.profile.showParryReductionFromExpertise then
-					local parryReduction = effect * -GSM("ADD_PARRY_REDUCTION_MOD_EXPERTISE")
+					local parryReduction = effect * -statModContext("ADD_PARRY_REDUCTION_MOD_EXPERTISE")
 					infoTable[StatLogic.Stats.ParryReduction] = infoTable[StatLogic.Stats.ParryReduction] + parryReduction
 				end
 			elseif statID == StatLogic.Stats.ResilienceRating then
@@ -2272,15 +2278,15 @@ do
 				if db.profile.showResilienceFromResilienceRating then
 					infoTable["Percent"] = effect
 				end
-				local critAvoidance = effect * GSM("ADD_CRIT_AVOIDANCE_MOD_RESILIENCE")
+				local critAvoidance = effect * statModContext("ADD_CRIT_AVOIDANCE_MOD_RESILIENCE")
 				if db.profile.showCritAvoidanceFromResilience then
 					infoTable[StatLogic.Stats.CritAvoidance] = infoTable[StatLogic.Stats.CritAvoidance] + critAvoidance
 				end
-				local critDmgReduction = effect * GSM("ADD_CRIT_DAMAGE_REDUCTION_MOD_RESILIENCE")
+				local critDmgReduction = effect * statModContext("ADD_CRIT_DAMAGE_REDUCTION_MOD_RESILIENCE")
 				if db.profile.showCritDamageReductionFromResilience then
 					infoTable[StatLogic.Stats.CritDamageReduction] = infoTable[StatLogic.Stats.CritDamageReduction] + critDmgReduction
 				end
-				local pvpDmgReduction = effect * GSM("ADD_PVP_DAMAGE_REDUCTION_MOD_RESILIENCE")
+				local pvpDmgReduction = effect * statModContext("ADD_PVP_DAMAGE_REDUCTION_MOD_RESILIENCE")
 				if db.profile.showPvpDamageReductionFromResilience then
 					infoTable[StatLogic.Stats.PvPDamageReduction] = infoTable[StatLogic.Stats.PvPDamageReduction] + pvpDmgReduction
 				end
@@ -2289,7 +2295,7 @@ do
 					infoTable["Decimal"] = infoTable[StatLogic.Stats.Mastery] + effect
 				end
 				if db.profile.showMasteryEffectFromMastery then
-					effect = effect * GSM("ADD_MASTERY_EFFECT_MOD_MASTERY")
+					effect = effect * statModContext("ADD_MASTERY_EFFECT_MOD_MASTERY")
 					infoTable["Percent"] = infoTable[StatLogic.Stats.MasteryEffect] + effect
 				end
 			else
@@ -2323,29 +2329,29 @@ do
 			--------------
 			-- Strength --
 			--------------
-			value = value * GSM("MOD_STR")
-			local attackPower = value * GSM("ADD_AP_MOD_STR")
-			self:ProcessStat(StatLogic.Stats.AttackPower, attackPower, infoTable)
+			value = value * statModContext("MOD_STR")
+			local attackPower = value * statModContext("ADD_AP_MOD_STR")
+			self:ProcessStat(StatLogic.Stats.AttackPower, attackPower, infoTable, link, color, statModContext)
 			if db.profile.showAPFromStr then
-				local effect = attackPower * GSM("MOD_AP")
+				local effect = attackPower * statModContext("MOD_AP")
 				infoTable[StatLogic.Stats.AttackPower] = infoTable[StatLogic.Stats.AttackPower] + effect
 			end
 			if db.profile.showBlockValueFromStr then
-				local effect = value * GSM("ADD_BLOCK_VALUE_MOD_STR")
+				local effect = value * statModContext("ADD_BLOCK_VALUE_MOD_STR")
 				infoTable[StatLogic.Stats.BlockValue] = infoTable[StatLogic.Stats.BlockValue] + effect
 			end
 			if db.profile.showSpellDmgFromStr then
-				local effect = value * GSM("MOD_SPELL_DMG") * GSM("ADD_SPELL_DMG_MOD_STR")
+				local effect = value * statModContext("MOD_SPELL_DMG") * statModContext("ADD_SPELL_DMG_MOD_STR")
 				infoTable[StatLogic.Stats.SpellDamage] = infoTable[StatLogic.Stats.SpellDamage] + effect
 			end
 			if db.profile.showHealingFromStr then
-				local effect = value * GSM("MOD_HEALING") * GSM("ADD_HEALING_MOD_STR")
+				local effect = value * statModContext("MOD_HEALING") * statModContext("ADD_HEALING_MOD_STR")
 				infoTable[StatLogic.Stats.HealingPower] = infoTable[StatLogic.Stats.HealingPower] + effect
 			end
 			-- Death Knight: Forceful Deflection - Passive
 			if db.profile.showParryFromStr then
-				local rating = value * GSM("ADD_PARRY_RATING_MOD_STR")
-				local effect = rating * GSM("ADD_PARRY_MOD_PARRY_RATING")
+				local rating = value * statModContext("ADD_PARRY_RATING_MOD_STR")
+				local effect = rating * statModContext("ADD_PARRY_MOD_PARRY_RATING")
 				if db.profile.enableAvoidanceDiminishingReturns then
 					local effectNoDR = effect
 					effect = StatLogic:GetAvoidanceGainAfterDR(StatLogic.Stats.Parry, processedParry + effect) - StatLogic:GetAvoidanceGainAfterDR(StatLogic.Stats.Parry, processedParry)
@@ -2353,31 +2359,31 @@ do
 				end
 				infoTable[StatLogic.Stats.Parry] = infoTable[StatLogic.Stats.Parry] + effect
 			else
-				local rating = value * GSM("ADD_PARRY_RATING_MOD_STR")
-				local effect = rating * GSM("ADD_PARRY_MOD_PARRY_RATING")
+				local rating = value * statModContext("ADD_PARRY_RATING_MOD_STR")
+				local effect = rating * statModContext("ADD_PARRY_MOD_PARRY_RATING")
 				processedParry = processedParry + effect
 			end
 		elseif statID == StatLogic.Stats.Agility and db.profile.showStats then
 			-------------
 			-- Agility --
 			-------------
-			value = value * GSM("MOD_AGI")
-			local attackPower = value * GSM("ADD_AP_MOD_AGI")
-			self:ProcessStat(StatLogic.Stats.AttackPower, attackPower, infoTable)
+			value = value * statModContext("MOD_AGI")
+			local attackPower = value * statModContext("ADD_AP_MOD_AGI")
+			self:ProcessStat(StatLogic.Stats.AttackPower, attackPower, infoTable, link, color, statModContext)
 			if db.profile.showAPFromAgi then
-				local effect = attackPower * GSM("MOD_AP")
+				local effect = attackPower * statModContext("MOD_AP")
 				infoTable[StatLogic.Stats.AttackPower] = infoTable[StatLogic.Stats.AttackPower] + effect
 			end
 			if db.profile.showRAPFromAgi then
-				local effect = value * GSM("ADD_RANGED_AP_MOD_AGI") * GSM("MOD_RANGED_AP")
+				local effect = value * statModContext("ADD_RANGED_AP_MOD_AGI") * statModContext("MOD_RANGED_AP")
 				infoTable[StatLogic.Stats.RangedAttackPower] = infoTable[StatLogic.Stats.RangedAttackPower] + effect
 			end
 			if db.profile.showMeleeCritFromAgi then
-				local effect = value * GSM("ADD_MELEE_CRIT_MOD_AGI")
+				local effect = value * statModContext("ADD_MELEE_CRIT_MOD_AGI")
 				infoTable[StatLogic.Stats.MeleeCrit] = infoTable[StatLogic.Stats.MeleeCrit] + effect
 			end
 			if db.profile.showDodgeFromAgi then
-				local effect = value * GSM("ADD_DODGE_MOD_AGI")
+				local effect = value * statModContext("ADD_DODGE_MOD_AGI")
 				if db.profile.enableAvoidanceDiminishingReturns then
 					local effectNoDR = effect
 					effect = StatLogic:GetAvoidanceGainAfterDR(StatLogic.Stats.Dodge, processedDodge + effect) - StatLogic:GetAvoidanceGainAfterDR(StatLogic.Stats.Dodge, processedDodge)
@@ -2385,149 +2391,149 @@ do
 				end
 				infoTable[StatLogic.Stats.Dodge] = infoTable[StatLogic.Stats.Dodge] + effect
 			end
-			local bonusArmor = value * GSM("ADD_BONUS_ARMOR_MOD_AGI")
-			self:ProcessStat(StatLogic.Stats.BonusArmor, bonusArmor, infoTable)
+			local bonusArmor = value * statModContext("ADD_BONUS_ARMOR_MOD_AGI")
+			self:ProcessStat(StatLogic.Stats.BonusArmor, bonusArmor, infoTable, link, color, statModContext)
 			if db.profile.showArmorFromAgi then
 				infoTable[StatLogic.Stats.Armor] = infoTable[StatLogic.Stats.Armor] + bonusArmor
 			end
 			if db.profile.showHealingFromAgi then
-				local effect = value * GSM("MOD_HEALING") * GSM("ADD_HEALING_MOD_AGI")
+				local effect = value * statModContext("MOD_HEALING") * statModContext("ADD_HEALING_MOD_AGI")
 				infoTable[StatLogic.Stats.HealingPower] = infoTable[StatLogic.Stats.HealingPower] + effect
 			end
 		elseif statID == StatLogic.Stats.Stamina and db.profile.showStats then
 			-------------
 			-- Stamina --
 			-------------
-			value = value * GSM("MOD_STA")
-			local health = value * GSM("ADD_HEALTH_MOD_STA") * GSM("MOD_HEALTH")
-			self:ProcessStat(StatLogic.Stats.Health, health, infoTable)
+			value = value * statModContext("MOD_STA")
+			local health = value * statModContext("ADD_HEALTH_MOD_STA") * statModContext("MOD_HEALTH")
+			self:ProcessStat(StatLogic.Stats.Health, health, infoTable, link, color, statModContext)
 			if db.profile.showHealthFromSta then
 				infoTable[StatLogic.Stats.Health] = infoTable[StatLogic.Stats.Health] + health
 			end
 			if db.profile.showSpellDmgFromSta then
-				local effect = value * GSM("MOD_SPELL_DMG") * (GSM("ADD_SPELL_DMG_MOD_STA")
-					+ GSM("ADD_SPELL_DMG_MOD_PET_STA") * GSM("MOD_PET_STA") * GSM("ADD_PET_STA_MOD_STA"))
+				local effect = value * statModContext("MOD_SPELL_DMG") * (statModContext("ADD_SPELL_DMG_MOD_STA")
+					+ statModContext("ADD_SPELL_DMG_MOD_PET_STA") * statModContext("MOD_PET_STA") * statModContext("ADD_PET_STA_MOD_STA"))
 				infoTable[StatLogic.Stats.SpellDamage] = infoTable[StatLogic.Stats.SpellDamage] + effect
 			end
 			-- "ADD_AP_MOD_STA" -- Hunter: Hunter vs. Wild
 			if db.profile.showAPFromSta then
-				local effect = value * GSM("ADD_AP_MOD_STA") * GSM("MOD_AP")
+				local effect = value * statModContext("ADD_AP_MOD_STA") * statModContext("MOD_AP")
 				infoTable[StatLogic.Stats.AttackPower] = infoTable[StatLogic.Stats.AttackPower] + effect
 			end
 		elseif statID == StatLogic.Stats.Intellect and db.profile.showStats then
 			---------------
 			-- Intellect --
 			---------------
-			value = value * GSM("MOD_INT")
+			value = value * statModContext("MOD_INT")
 			if db.profile.showManaFromInt then
-				local effect = value * GSM("ADD_MANA_MOD_INT") * GSM("MOD_MANA")
+				local effect = value * statModContext("ADD_MANA_MOD_INT") * statModContext("MOD_MANA")
 				infoTable[StatLogic.Stats.Mana] = infoTable[StatLogic.Stats.Mana] + effect
 			end
 			if db.profile.showSpellCritFromInt then
-				local effect = value * GSM("ADD_SPELL_CRIT_MOD_INT")
+				local effect = value * statModContext("ADD_SPELL_CRIT_MOD_INT")
 				infoTable[StatLogic.Stats.SpellCrit] = infoTable[StatLogic.Stats.SpellCrit] + effect
 			end
 			if db.profile.showSpellDmgFromInt then
-				local effect = value * GSM("MOD_SPELL_DMG") * (
-					GSM("ADD_SPELL_DMG_MOD_INT")
-					+ GSM("ADD_SPELL_DMG_MOD_PET_INT") * GSM("MOD_PET_INT") * GSM("ADD_PET_INT_MOD_INT")
-					+ GSM("ADD_SPELL_DMG_MOD_MANA") * GSM("MOD_MANA") * GSM("ADD_MANA_MOD_INT")
+				local effect = value * statModContext("MOD_SPELL_DMG") * (
+					statModContext("ADD_SPELL_DMG_MOD_INT")
+					+ statModContext("ADD_SPELL_DMG_MOD_PET_INT") * statModContext("MOD_PET_INT") * statModContext("ADD_PET_INT_MOD_INT")
+					+ statModContext("ADD_SPELL_DMG_MOD_MANA") * statModContext("MOD_MANA") * statModContext("ADD_MANA_MOD_INT")
 				)
 				infoTable[StatLogic.Stats.SpellDamage] = infoTable[StatLogic.Stats.SpellDamage] + effect
 			end
 			if db.profile.showHealingFromInt then
-				local effect = value * GSM("MOD_HEALING") * (
-					GSM("ADD_HEALING_MOD_INT")
-					+ GSM("ADD_HEALING_MOD_MANA") * GSM("MOD_MANA") * GSM("ADD_MANA_MOD_INT")
+				local effect = value * statModContext("MOD_HEALING") * (
+					statModContext("ADD_HEALING_MOD_INT")
+					+ statModContext("ADD_HEALING_MOD_MANA") * statModContext("MOD_MANA") * statModContext("ADD_MANA_MOD_INT")
 				)
 				infoTable[StatLogic.Stats.HealingPower] = infoTable[StatLogic.Stats.HealingPower] + effect
 			end
 			if db.profile.showMP5FromInt then
-				local effect = value * GSM("ADD_MANA_REG_MOD_INT")
-					+ value * GSM("ADD_NORMAL_MANA_REG_MOD_INT") * GSM("MOD_NORMAL_MANA_REG") * math.min(GSM("ADD_MANA_REG_MOD_NORMAL_MANA_REG"), 1)
-					+ value * GSM("ADD_MANA_MOD_INT") * GSM("MOD_MANA") * GSM("ADD_MANA_REG_MOD_MANA") -- Replenishment
+				local effect = value * statModContext("ADD_MANA_REG_MOD_INT")
+					+ value * statModContext("ADD_NORMAL_MANA_REG_MOD_INT") * statModContext("MOD_NORMAL_MANA_REG") * math.min(statModContext("ADD_MANA_REG_MOD_NORMAL_MANA_REG"), 1)
+					+ value * statModContext("ADD_MANA_MOD_INT") * statModContext("MOD_MANA") * statModContext("ADD_MANA_REG_MOD_MANA") -- Replenishment
 				infoTable[StatLogic.Stats.ManaRegen] = infoTable[StatLogic.Stats.ManaRegen] + effect
 			end
 			if db.profile.showMP5NCFromInt then
-				local effect = value * GSM("ADD_MANA_REG_MOD_INT")
-					+ value * GSM("ADD_NORMAL_MANA_REG_MOD_INT") * GSM("MOD_NORMAL_MANA_REG")
-					+ value * GSM("ADD_MANA_MOD_INT") * GSM("MOD_MANA") * GSM("ADD_MANA_REG_MOD_MANA") -- Replenishment
+				local effect = value * statModContext("ADD_MANA_REG_MOD_INT")
+					+ value * statModContext("ADD_NORMAL_MANA_REG_MOD_INT") * statModContext("MOD_NORMAL_MANA_REG")
+					+ value * statModContext("ADD_MANA_MOD_INT") * statModContext("MOD_MANA") * statModContext("ADD_MANA_REG_MOD_MANA") -- Replenishment
 				infoTable[StatLogic.Stats.ManaRegenNotCasting] = infoTable[StatLogic.Stats.ManaRegenNotCasting] + effect
 			end
 			if db.profile.showRAPFromInt then
-				local effect = value * GSM("ADD_RANGED_AP_MOD_INT") * GSM("MOD_RANGED_AP")
+				local effect = value * statModContext("ADD_RANGED_AP_MOD_INT") * statModContext("MOD_RANGED_AP")
 				infoTable[StatLogic.Stats.RangedAttackPower] = infoTable[StatLogic.Stats.RangedAttackPower] + effect
 			end
 			if db.profile.showArmorFromInt then
-				local effect = value * GSM("ADD_BONUS_ARMOR_MOD_INT")
+				local effect = value * statModContext("ADD_BONUS_ARMOR_MOD_INT")
 				infoTable[StatLogic.Stats.Armor] = infoTable[StatLogic.Stats.Armor] + effect
 			end
-			local attackPower = value * GSM("ADD_AP_MOD_INT")
-			self:ProcessStat(StatLogic.Stats.AttackPower, attackPower, infoTable)
+			local attackPower = value * statModContext("ADD_AP_MOD_INT")
+			self:ProcessStat(StatLogic.Stats.AttackPower, attackPower, infoTable, link, color, statModContext)
 			if db.profile.showAPFromInt then
-				local effect = attackPower * GSM("MOD_AP")
+				local effect = attackPower * statModContext("MOD_AP")
 				infoTable[StatLogic.Stats.AttackPower] = infoTable[StatLogic.Stats.AttackPower] + effect
 			end
 		elseif statID == StatLogic.Stats.Spirit and db.profile.showStats then
 			------------
 			-- Spirit --
 			------------
-			value = value * GSM("MOD_SPI")
+			value = value * statModContext("MOD_SPI")
 			if db.profile.showMP5FromSpi then
-				local effect = value * GSM("ADD_NORMAL_MANA_REG_MOD_SPI") * GSM("MOD_NORMAL_MANA_REG") * math.min(GSM("ADD_MANA_REG_MOD_NORMAL_MANA_REG"), 1)
+				local effect = value * statModContext("ADD_NORMAL_MANA_REG_MOD_SPI") * statModContext("MOD_NORMAL_MANA_REG") * math.min(statModContext("ADD_MANA_REG_MOD_NORMAL_MANA_REG"), 1)
 				infoTable[StatLogic.Stats.ManaRegen] = infoTable[StatLogic.Stats.ManaRegen] + effect
 			end
 			if db.profile.showMP5NCFromSpi then
-				local effect = value * GSM("ADD_NORMAL_MANA_REG_MOD_SPI") * GSM("MOD_NORMAL_MANA_REG")
+				local effect = value * statModContext("ADD_NORMAL_MANA_REG_MOD_SPI") * statModContext("MOD_NORMAL_MANA_REG")
 				infoTable[StatLogic.Stats.ManaRegenNotCasting] = infoTable[StatLogic.Stats.ManaRegenNotCasting] + effect
 			end
 			if db.profile.showHP5FromSpi then
-				local effect = value * GSM("ADD_NORMAL_HEALTH_REG_MOD_SPI") * GSM("MOD_NORMAL_HEALTH_REG") * GSM("ADD_HEALTH_REG_MOD_NORMAL_HEALTH_REG")
+				local effect = value * statModContext("ADD_NORMAL_HEALTH_REG_MOD_SPI") * statModContext("MOD_NORMAL_HEALTH_REG") * statModContext("ADD_HEALTH_REG_MOD_NORMAL_HEALTH_REG")
 				infoTable[StatLogic.Stats.HealthRegen] = infoTable[StatLogic.Stats.HealthRegen] + effect
 			end
 			if db.profile.showHP5NCFromSpi then
-				local effect = value * GSM("ADD_NORMAL_HEALTH_REG_MOD_SPI") * GSM("MOD_NORMAL_HEALTH_REG")
+				local effect = value * statModContext("ADD_NORMAL_HEALTH_REG_MOD_SPI") * statModContext("MOD_NORMAL_HEALTH_REG")
 				infoTable[StatLogic.Stats.HealthRegenOutOfCombat] = infoTable[StatLogic.Stats.HealthRegenOutOfCombat] + effect
 			end
 			if db.profile.showSpellDmgFromSpi then
-				local effect = value * GSM("ADD_SPELL_DMG_MOD_SPI") * GSM("MOD_SPELL_DMG")
+				local effect = value * statModContext("ADD_SPELL_DMG_MOD_SPI") * statModContext("MOD_SPELL_DMG")
 				infoTable[StatLogic.Stats.SpellDamage] = infoTable[StatLogic.Stats.SpellDamage] + effect
 			end
 			if db.profile.showHealingFromSpi then
-				local effect = value * GSM("ADD_HEALING_MOD_SPI") * GSM("MOD_HEALING")
+				local effect = value * statModContext("ADD_HEALING_MOD_SPI") * statModContext("MOD_HEALING")
 				infoTable[StatLogic.Stats.HealingPower] = infoTable[StatLogic.Stats.HealingPower] + effect
 			end
 			if db.profile.showSpellHitFromSpi then
-				local rating = value * GSM("ADD_SPELL_HIT_RATING_MOD_SPI")
-				local effect = rating * GSM("ADD_SPELL_HIT_MOD_SPELL_HIT_RATING")
+				local rating = value * statModContext("ADD_SPELL_HIT_RATING_MOD_SPI")
+				local effect = rating * statModContext("ADD_SPELL_HIT_MOD_SPELL_HIT_RATING")
 				infoTable[StatLogic.Stats.SpellHit] = infoTable[StatLogic.Stats.SpellHit] + effect
 			end
 			if db.profile.showSpellCritFromSpi then
-				local rating = value * GSM("ADD_SPELL_CRIT_RATING_MOD_SPI")
-				local effect = rating * GSM("ADD_SPELL_CRIT_MOD_SPELL_CRIT_RATING")
+				local rating = value * statModContext("ADD_SPELL_CRIT_RATING_MOD_SPI")
+				local effect = rating * statModContext("ADD_SPELL_CRIT_MOD_SPELL_CRIT_RATING")
 				infoTable[StatLogic.Stats.SpellCrit] = infoTable[StatLogic.Stats.SpellCrit] + effect
 			end
 		elseif statID == StatLogic.Stats.Health and db.profile.showStats then
 			if db.profile.showHP5FromHealth then
-				local effect = value * GSM("ADD_NORMAL_HEALTH_REG_MOD_HEALTH") * GSM("MOD_NORMAL_HEALTH_REG") * GSM("ADD_HEALTH_REG_MOD_NORMAL_HEALTH_REG")
+				local effect = value * statModContext("ADD_NORMAL_HEALTH_REG_MOD_HEALTH") * statModContext("MOD_NORMAL_HEALTH_REG") * statModContext("ADD_HEALTH_REG_MOD_NORMAL_HEALTH_REG")
 				infoTable[StatLogic.Stats.HealthRegen] = infoTable[StatLogic.Stats.HealthRegen] + effect
 			end
 			if db.profile.showHP5NCFromHealth then
-				local effect = value * GSM("ADD_NORMAL_HEALTH_REG_MOD_HEALTH") * GSM("MOD_NORMAL_HEALTH_REG")
+				local effect = value * statModContext("ADD_NORMAL_HEALTH_REG_MOD_HEALTH") * statModContext("MOD_NORMAL_HEALTH_REG")
 				infoTable[StatLogic.Stats.HealthRegenOutOfCombat] = infoTable[StatLogic.Stats.HealthRegenOutOfCombat] + effect
 			end
 		elseif statID == StatLogic.Stats.Defense then
-			local blockChance = value * GSM("ADD_BLOCK_CHANCE_MOD_DEFENSE")
+			local blockChance = value * statModContext("ADD_BLOCK_CHANCE_MOD_DEFENSE")
 			if db.profile.showBlockChanceFromDefense then
 				infoTable[StatLogic.Stats.BlockChance] = infoTable[StatLogic.Stats.BlockChance] + blockChance
 			end
 
-			local critAvoidance = value * GSM("ADD_CRIT_AVOIDANCE_MOD_DEFENSE")
+			local critAvoidance = value * statModContext("ADD_CRIT_AVOIDANCE_MOD_DEFENSE")
 			if db.profile.showCritAvoidanceFromDefense then
 				infoTable[StatLogic.Stats.CritAvoidance] = infoTable[StatLogic.Stats.CritAvoidance] + critAvoidance
 			end
 
-			local dodge = value * GSM("ADD_DODGE_MOD_DEFENSE")
+			local dodge = value * statModContext("ADD_DODGE_MOD_DEFENSE")
 			if dodge > 0 then
 				if db.profile.enableAvoidanceDiminishingReturns then
 					processedDodge = processedDodge + dodge
@@ -2538,7 +2544,7 @@ do
 				end
 			end
 
-			local miss = value * GSM("ADD_MISS_MOD_DEFENSE")
+			local miss = value * statModContext("ADD_MISS_MOD_DEFENSE")
 			if miss > 0 then
 				if db.profile.enableAvoidanceDiminishingReturns then
 					processedMissed = processedMissed + miss
@@ -2549,7 +2555,7 @@ do
 				end
 			end
 
-			local parry = value * GSM("ADD_PARRY_MOD_DEFENSE")
+			local parry = value * statModContext("ADD_PARRY_MOD_DEFENSE")
 			if parry > 0 then
 				if db.profile.enableAvoidanceDiminishingReturns then
 					processedParry = processedParry + parry
@@ -2560,34 +2566,34 @@ do
 				end
 			end
 
-			local attackPower = value * GSM("ADD_AP_MOD_DEFENSE")
-			self:ProcessStat(StatLogic.Stats.AttackPower, value, infoTable)
+			local attackPower = value * statModContext("ADD_AP_MOD_DEFENSE")
+			self:ProcessStat(StatLogic.Stats.AttackPower, value, infoTable, link, color, statModContext)
 			if db.profile.showAPFromDefense then
 				infoTable[StatLogic.Stats.AttackPower] = infoTable[StatLogic.Stats.AttackPower] + attackPower
 			end
 
-			local spellDamage = value * GSM("ADD_SPELL_DMG_MOD_DEFENSE")
+			local spellDamage = value * statModContext("ADD_SPELL_DMG_MOD_DEFENSE")
 			if db.profile.showSpellDmgFromDefense then
 				infoTable[StatLogic.Stats.SpellDamage] = infoTable[StatLogic.Stats.SpellDamage] + spellDamage
 			end
 		elseif statID == StatLogic.Stats.Armor then
 			local base, bonus = StatLogic:GetArmorDistribution(link, value, color)
-			value = base * GSM("MOD_ARMOR") + bonus
-			self:ProcessStat(StatLogic.Stats.BonusArmor, value, infoTable)
+			value = base * statModContext("MOD_ARMOR") + bonus
+			self:ProcessStat(StatLogic.Stats.BonusArmor, value, infoTable, link, color, statModContext)
 		elseif db.profile.showAPFromArmor and statID == StatLogic.Stats.BonusArmor then
-			local effect = value * GSM("ADD_AP_MOD_ARMOR") * GSM("MOD_AP")
+			local effect = value * statModContext("ADD_AP_MOD_ARMOR") * statModContext("MOD_AP")
 			infoTable[StatLogic.Stats.AttackPower] = infoTable[StatLogic.Stats.AttackPower] + effect
 		elseif statID == StatLogic.Stats.AttackPower then
 			------------------
 			-- Attack Power --
 			------------------
-			value = value * GSM("MOD_AP")
+			value = value * statModContext("MOD_AP")
 			if db.profile.showSpellDmgFromAP then
-				local effect = value * GSM("ADD_SPELL_DMG_MOD_AP") * GSM("MOD_SPELL_DMG")
+				local effect = value * statModContext("ADD_SPELL_DMG_MOD_AP") * statModContext("MOD_SPELL_DMG")
 				infoTable[StatLogic.Stats.SpellDamage] = infoTable[StatLogic.Stats.SpellDamage] + effect
 			end
 			if db.profile.showHealingFromAP then
-				local effect = value * GSM("ADD_HEALING_MOD_AP") * GSM("MOD_HEALING")
+				local effect = value * statModContext("ADD_HEALING_MOD_AP") * statModContext("MOD_HEALING")
 				infoTable[StatLogic.Stats.HealingPower] = infoTable[StatLogic.Stats.HealingPower] + effect
 			end
 		end
@@ -2787,6 +2793,14 @@ local specPrimaryStats = {
 	},
 }
 
+---@alias SummaryCalcFunction fun(sum: StatTable, statModContext: StatModContext, sumType?, link?): number
+
+---@class SummaryCalcData
+---@field option string
+---@field name Stat
+---@field func SummaryCalcFunction
+
+---@type SummaryCalcData[]
 local summaryCalcData = {
 	-----------
 	-- Basic --
@@ -2834,15 +2848,15 @@ local summaryCalcData = {
 	{
 		option = "sumMastery",
 		name = StatLogic.Stats.Mastery,
-		func = function(sum)
-			return sum[StatLogic.Stats.MasteryRating] * GSM("ADD_MASTERY_MOD_MASTERY_RATING")
+		func = function(sum, statModContext)
+			return sum[StatLogic.Stats.MasteryRating] * statModContext("ADD_MASTERY_MOD_MASTERY_RATING")
 		end,
 	},
 	{
 		option = "sumMasteryEffect",
 		name = StatLogic.Stats.MasteryEffect,
-		func = function(sum)
-			return summaryFunc[StatLogic.Stats.Mastery](sum) * GSM("ADD_MASTERY_EFFECT_MOD_MASTERY")
+		func = function(sum, statModContext)
+			return summaryFunc[StatLogic.Stats.Mastery](sum, statModContext) * statModContext("ADD_MASTERY_EFFECT_MOD_MASTERY")
 		end,
 		ispercent = true,
 	},
@@ -2850,62 +2864,62 @@ local summaryCalcData = {
 	{
 		option = "sumHP",
 		name = StatLogic.Stats.Health,
-		func = function(sum)
-			return (sum[StatLogic.Stats.Health] + (sum[StatLogic.Stats.Stamina] * GSM("ADD_HEALTH_MOD_STA"))) * GSM("MOD_HEALTH")
+		func = function(sum, statModContext)
+			return (sum[StatLogic.Stats.Health] + (sum[StatLogic.Stats.Stamina] * statModContext("ADD_HEALTH_MOD_STA"))) * statModContext("MOD_HEALTH")
 		end,
 	},
 	-- Mana - MANA, INT
 	{
 		option = "sumMP",
 		name = StatLogic.Stats.Mana,
-		func = function(sum)
-			return (sum[StatLogic.Stats.Mana] + (sum[StatLogic.Stats.Intellect] * GSM("ADD_MANA_MOD_INT"))) * GSM("MOD_MANA")
+		func = function(sum, statModContext)
+			return (sum[StatLogic.Stats.Mana] + (sum[StatLogic.Stats.Intellect] * statModContext("ADD_MANA_MOD_INT"))) * statModContext("MOD_MANA")
 		end,
 	},
 	-- Health Regen - HEALTH_REG
 	{
 		option = "sumHP5",
 		name = StatLogic.Stats.HealthRegen,
-		func = function(sum)
+		func = function(sum, statModContext)
 			return sum[StatLogic.Stats.HealthRegen]
-				+ sum[StatLogic.Stats.Spirit] * GSM("ADD_NORMAL_HEALTH_REG_MOD_SPI") * GSM("MOD_NORMAL_HEALTH_REG") * GSM("ADD_HEALTH_REG_MOD_NORMAL_HEALTH_REG")
-				+ summaryFunc[StatLogic.Stats.Health](sum) * GSM("ADD_NORMAL_HEALTH_REG_MOD_HEALTH") * GSM("MOD_NORMAL_HEALTH_REG") * GSM("ADD_HEALTH_REG_MOD_NORMAL_HEALTH_REG")
+				+ sum[StatLogic.Stats.Spirit] * statModContext("ADD_NORMAL_HEALTH_REG_MOD_SPI") * statModContext("MOD_NORMAL_HEALTH_REG") * statModContext("ADD_HEALTH_REG_MOD_NORMAL_HEALTH_REG")
+				+ summaryFunc[StatLogic.Stats.Health](sum, statModContext) * statModContext("ADD_NORMAL_HEALTH_REG_MOD_HEALTH") * statModContext("MOD_NORMAL_HEALTH_REG") * statModContext("ADD_HEALTH_REG_MOD_NORMAL_HEALTH_REG")
 		end,
 	},
 	-- Health Regen while Out of Combat - HEALTH_REG, SPI
 	{
 		option = "sumHP5OC",
 		name = StatLogic.Stats.HealthRegenOutOfCombat,
-		func = function(sum)
+		func = function(sum, statModContext)
 			return sum[StatLogic.Stats.HealthRegen]
-				+ sum[StatLogic.Stats.Spirit] * GSM("ADD_NORMAL_HEALTH_REG_MOD_SPI") * GSM("MOD_NORMAL_HEALTH_REG")
-				+ summaryFunc[StatLogic.Stats.Health](sum) * GSM("ADD_NORMAL_HEALTH_REG_MOD_HEALTH") * GSM("MOD_NORMAL_HEALTH_REG")
+				+ sum[StatLogic.Stats.Spirit] * statModContext("ADD_NORMAL_HEALTH_REG_MOD_SPI") * statModContext("MOD_NORMAL_HEALTH_REG")
+				+ summaryFunc[StatLogic.Stats.Health](sum, statModContext) * statModContext("ADD_NORMAL_HEALTH_REG_MOD_HEALTH") * statModContext("MOD_NORMAL_HEALTH_REG")
 		end,
 	},
 	-- Mana Regen - MANA_REG, SPI, INT
 	{
 		option = "sumMP5",
 		name = StatLogic.Stats.ManaRegen,
-		func = function(sum)
+		func = function(sum, statModContext)
 			return sum[StatLogic.Stats.ManaRegen]
-				+ sum[StatLogic.Stats.Intellect] * GSM("ADD_MANA_REG_MOD_INT")
-				+ math.min(GSM("ADD_MANA_REG_MOD_NORMAL_MANA_REG"), 1) * GSM("MOD_NORMAL_MANA_REG") * (
-					sum[StatLogic.Stats.Intellect] * GSM("ADD_NORMAL_MANA_REG_MOD_INT")
-					+ sum[StatLogic.Stats.Spirit] * GSM("ADD_NORMAL_MANA_REG_MOD_SPI")
-				) + summaryFunc[StatLogic.Stats.Mana](sum) * GSM("ADD_MANA_REG_MOD_MANA")
+				+ sum[StatLogic.Stats.Intellect] * statModContext("ADD_MANA_REG_MOD_INT")
+				+ math.min(statModContext("ADD_MANA_REG_MOD_NORMAL_MANA_REG"), 1) * statModContext("MOD_NORMAL_MANA_REG") * (
+					sum[StatLogic.Stats.Intellect] * statModContext("ADD_NORMAL_MANA_REG_MOD_INT")
+					+ sum[StatLogic.Stats.Spirit] * statModContext("ADD_NORMAL_MANA_REG_MOD_SPI")
+				) + summaryFunc[StatLogic.Stats.Mana](sum, statModContext) * statModContext("ADD_MANA_REG_MOD_MANA")
 		end,
 	},
 	-- Mana Regen while Not casting - MANA_REG, SPI, INT
 	{
 		option = "sumMP5NC",
 		name = StatLogic.Stats.ManaRegenNotCasting,
-		func = function(sum)
+		func = function(sum, statModContext)
 			return sum[StatLogic.Stats.ManaRegen]
-				+ sum[StatLogic.Stats.Intellect] * GSM("ADD_MANA_REG_MOD_INT")
-				+ GSM("MOD_NORMAL_MANA_REG") * (
-					sum[StatLogic.Stats.Intellect] * GSM("ADD_NORMAL_MANA_REG_MOD_INT")
-					+ sum[StatLogic.Stats.Spirit] * GSM("ADD_NORMAL_MANA_REG_MOD_SPI")
-				) + summaryFunc[StatLogic.Stats.Mana](sum) * GSM("ADD_MANA_REG_MOD_MANA")
+				+ sum[StatLogic.Stats.Intellect] * statModContext("ADD_MANA_REG_MOD_INT")
+				+ statModContext("MOD_NORMAL_MANA_REG") * (
+					sum[StatLogic.Stats.Intellect] * statModContext("ADD_NORMAL_MANA_REG_MOD_INT")
+					+ sum[StatLogic.Stats.Spirit] * statModContext("ADD_NORMAL_MANA_REG_MOD_SPI")
+				) + summaryFunc[StatLogic.Stats.Mana](sum, statModContext) * statModContext("ADD_MANA_REG_MOD_MANA")
 		end,
 	},
 	---------------------
@@ -2915,18 +2929,18 @@ local summaryCalcData = {
 	{
 		option = "sumAP",
 		name = StatLogic.Stats.AttackPower,
-		func = function(sum)
-			return GSM("MOD_AP") * (
+		func = function(sum, statModContext)
+			return statModContext("MOD_AP") * (
 				-- Feral Druid Predatory Strikes
-				(sum[StatLogic.Stats.FeralAttackPower] > 0 and GSM("MOD_FERAL_AP") or 1) * (
+				(sum[StatLogic.Stats.FeralAttackPower] > 0 and statModContext("MOD_FERAL_AP") or 1) * (
 					sum[StatLogic.Stats.AttackPower]
-					+ sum[StatLogic.Stats.FeralAttackPower] * GSM("ADD_AP_MOD_FERAL_AP")
-				) + sum[StatLogic.Stats.Strength] * GSM("ADD_AP_MOD_STR")
-				+ sum[StatLogic.Stats.Agility] * GSM("ADD_AP_MOD_AGI")
-				+ sum[StatLogic.Stats.Stamina] * GSM("ADD_AP_MOD_STA")
-				+ sum[StatLogic.Stats.Intellect] * GSM("ADD_AP_MOD_INT")
-				+ summaryFunc[StatLogic.Stats.Armor](sum) * GSM("ADD_AP_MOD_ARMOR")
-				+ sum[StatLogic.Stats.Defense] * GSM("ADD_AP_MOD_DEFENSE")
+					+ sum[StatLogic.Stats.FeralAttackPower] * statModContext("ADD_AP_MOD_FERAL_AP")
+				) + sum[StatLogic.Stats.Strength] * statModContext("ADD_AP_MOD_STR")
+				+ sum[StatLogic.Stats.Agility] * statModContext("ADD_AP_MOD_AGI")
+				+ sum[StatLogic.Stats.Stamina] * statModContext("ADD_AP_MOD_STA")
+				+ sum[StatLogic.Stats.Intellect] * statModContext("ADD_AP_MOD_INT")
+				+ summaryFunc[StatLogic.Stats.Armor](sum, statModContext) * statModContext("ADD_AP_MOD_ARMOR")
+				+ sum[StatLogic.Stats.Defense] * statModContext("ADD_AP_MOD_DEFENSE")
 			)
 		end,
 	},
@@ -2934,14 +2948,14 @@ local summaryCalcData = {
 	{
 		option = "sumRAP",
 		name = StatLogic.Stats.RangedAttackPower,
-		func = function(sum)
-			return (GSM("MOD_RANGED_AP") + GSM("MOD_AP") - 1) * (
+		func = function(sum, statModContext)
+			return (statModContext("MOD_RANGED_AP") + statModContext("MOD_AP") - 1) * (
 				sum[StatLogic.Stats.RangedAttackPower]
 				+ sum[StatLogic.Stats.AttackPower]
-				+ sum[StatLogic.Stats.Agility] * GSM("ADD_RANGED_AP_MOD_AGI")
-				+ sum[StatLogic.Stats.Intellect] * GSM("ADD_RANGED_AP_MOD_INT")
-				+ sum[StatLogic.Stats.Stamina] * GSM("ADD_AP_MOD_STA")
-				+ summaryFunc[StatLogic.Stats.Armor](sum) * GSM("ADD_AP_MOD_ARMOR")
+				+ sum[StatLogic.Stats.Agility] * statModContext("ADD_RANGED_AP_MOD_AGI")
+				+ sum[StatLogic.Stats.Intellect] * statModContext("ADD_RANGED_AP_MOD_INT")
+				+ sum[StatLogic.Stats.Stamina] * statModContext("ADD_AP_MOD_STA")
+				+ summaryFunc[StatLogic.Stats.Armor](sum, statModContext) * statModContext("ADD_AP_MOD_ARMOR")
 			)
 		end,
 	},
@@ -2949,9 +2963,9 @@ local summaryCalcData = {
 	{
 		option = "sumHit",
 		name = StatLogic.Stats.MeleeHit,
-		func = function(sum)
+		func = function(sum, statModContext)
 			return sum[StatLogic.Stats.MeleeHit]
-				+ sum[StatLogic.Stats.MeleeHitRating] * GSM("ADD_MELEE_HIT_MOD_MELEE_HIT_RATING")
+				+ sum[StatLogic.Stats.MeleeHitRating] * statModContext("ADD_MELEE_HIT_MOD_MELEE_HIT_RATING")
 		end,
 		ispercent = true,
 	},
@@ -2967,9 +2981,9 @@ local summaryCalcData = {
 	{
 		option = "sumRangedHit",
 		name = StatLogic.Stats.RangedHit,
-		func = function(sum)
+		func = function(sum, statModContext)
 			return sum[StatLogic.Stats.RangedHit]
-				+ sum[StatLogic.Stats.RangedHitRating] * GSM("ADD_RANGED_HIT_MOD_RANGED_HIT_RATING")
+				+ sum[StatLogic.Stats.RangedHitRating] * statModContext("ADD_RANGED_HIT_MOD_RANGED_HIT_RATING")
 		end,
 		ispercent = true,
 	},
@@ -2985,10 +2999,10 @@ local summaryCalcData = {
 	{
 		option = "sumCrit",
 		name = StatLogic.Stats.MeleeCrit,
-		func = function(sum)
+		func = function(sum, statModContext)
 			return sum[StatLogic.Stats.MeleeCrit]
-				+ sum[StatLogic.Stats.MeleeCritRating] * GSM("ADD_MELEE_CRIT_MOD_MELEE_CRIT_RATING")
-				+ sum[StatLogic.Stats.Agility] * GSM("ADD_MELEE_CRIT_MOD_AGI")
+				+ sum[StatLogic.Stats.MeleeCritRating] * statModContext("ADD_MELEE_CRIT_MOD_MELEE_CRIT_RATING")
+				+ sum[StatLogic.Stats.Agility] * statModContext("ADD_MELEE_CRIT_MOD_AGI")
 		end,
 		ispercent = true,
 	},
@@ -3004,10 +3018,10 @@ local summaryCalcData = {
 	{
 		option = "sumRangedCrit",
 		name = StatLogic.Stats.RangedCrit,
-		func = function(sum)
+		func = function(sum, statModContext)
 			return sum[StatLogic.Stats.RangedCrit]
-				+ sum[StatLogic.Stats.RangedCritRating] * GSM("ADD_RANGED_CRIT_MOD_RANGED_CRIT_RATING")
-				+ sum[StatLogic.Stats.Agility] * GSM("ADD_RANGED_CRIT_MOD_AGI")
+				+ sum[StatLogic.Stats.RangedCritRating] * statModContext("ADD_RANGED_CRIT_MOD_RANGED_CRIT_RATING")
+				+ sum[StatLogic.Stats.Agility] * statModContext("ADD_RANGED_CRIT_MOD_AGI")
 		end,
 		ispercent = true,
 	},
@@ -3023,8 +3037,8 @@ local summaryCalcData = {
 	{
 		option = "sumHaste",
 		name = StatLogic.Stats.MeleeHaste,
-		func = function(sum)
-			return sum[StatLogic.Stats.MeleeHasteRating] * GSM("ADD_MELEE_HASTE_MOD_MELEE_HASTE_RATING")
+		func = function(sum, statModContext)
+			return sum[StatLogic.Stats.MeleeHasteRating] * statModContext("ADD_MELEE_HASTE_MOD_MELEE_HASTE_RATING")
 		end,
 		ispercent = true,
 	},
@@ -3040,8 +3054,8 @@ local summaryCalcData = {
 	{
 		option = "sumRangedHaste",
 		name = StatLogic.Stats.RangedHaste,
-		func = function(sum)
-			return sum[StatLogic.Stats.RangedHasteRating] * GSM("ADD_RANGED_HASTE_MOD_RANGED_HASTE_RATING")
+		func = function(sum, statModContext)
+			return sum[StatLogic.Stats.RangedHasteRating] * statModContext("ADD_RANGED_HASTE_MOD_RANGED_HASTE_RATING")
 		end,
 		ispercent = true,
 	},
@@ -3064,9 +3078,9 @@ local summaryCalcData = {
 	{
 		option = "sumExpertise",
 		name = StatLogic.Stats.Expertise,
-		func = function(sum)
+		func = function(sum, statModContext)
 			return sum[StatLogic.Stats.Expertise]
-				+ sum[StatLogic.Stats.ExpertiseRating] * GSM("ADD_EXPERTISE_MOD_EXPERTISE_RATING")
+				+ sum[StatLogic.Stats.ExpertiseRating] * statModContext("ADD_EXPERTISE_MOD_EXPERTISE_RATING")
 		end,
 	},
 	-- Expertise Rating - EXPERTISE_RATING
@@ -3081,12 +3095,12 @@ local summaryCalcData = {
 	{
 		option = "sumDodgeNeglect",
 		name = StatLogic.Stats.DodgeReduction,
-		func = function(sum)
-			local effect = summaryFunc[StatLogic.Stats.Expertise](sum)
+		func = function(sum, statModContext)
+			local effect = summaryFunc[StatLogic.Stats.Expertise](sum, statModContext)
 			if addon.tocversion < 30000 then
 				effect = floor(effect)
 			end
-			return effect * GSM("ADD_DODGE_REDUCTION_MOD_EXPERTISE") + sum[StatLogic.Stats.WeaponSkill] * 0.1
+			return effect * statModContext("ADD_DODGE_REDUCTION_MOD_EXPERTISE") + sum[StatLogic.Stats.WeaponSkill] * 0.1
 		end,
 		ispercent = true,
 	},
@@ -3094,12 +3108,12 @@ local summaryCalcData = {
 	{
 		option = "sumParryNeglect",
 		name = StatLogic.Stats.ParryReduction,
-		func = function(sum)
-			local effect = summaryFunc[StatLogic.Stats.Expertise](sum)
+		func = function(sum, statModContext)
+			local effect = summaryFunc[StatLogic.Stats.Expertise](sum, statModContext)
 			if addon.tocversion < 30000 then
 				effect = floor(effect)
 			end
-			return effect * GSM("ADD_PARRY_REDUCTION_MOD_EXPERTISE")
+			return effect * statModContext("ADD_PARRY_REDUCTION_MOD_EXPERTISE")
 		end,
 		ispercent = true,
 	},
@@ -3107,9 +3121,9 @@ local summaryCalcData = {
 	{
 		option = "sumWeaponAverageDamage",
 		name = StatLogic.Stats.AverageWeaponDamage,
-		func = function(sum)
-			return sum[StatLogic.Stats.MinWeaponDamage] * GSM("ADD_WEAPON_DAMAGE_AVERAGE_MOD_WEAPON_DAMAGE_MIN")
-				+ sum[StatLogic.Stats.MaxWeaponDamage] * GSM("ADD_WEAPON_DAMAGE_AVERAGE_MOD_WEAPON_DAMAGE_MAX")
+		func = function(sum, statModContext)
+			return sum[StatLogic.Stats.MinWeaponDamage] * statModContext("ADD_WEAPON_DAMAGE_AVERAGE_MOD_WEAPON_DAMAGE_MIN")
+				+ sum[StatLogic.Stats.MaxWeaponDamage] * statModContext("ADD_WEAPON_DAMAGE_AVERAGE_MOD_WEAPON_DAMAGE_MAX")
 		end,
 	},
 	-- Weapon DPS - DPS
@@ -3132,8 +3146,8 @@ local summaryCalcData = {
 	{
 		option = "sumArmorPenetration",
 		name = StatLogic.Stats.ArmorPenetration,
-		func = function(sum)
-			return sum[StatLogic.Stats.ArmorPenetrationRating] * GSM("ADD_ARMOR_PENETRATION_MOD_ARMOR_PENETRATION_RATING")
+		func = function(sum, statModContext)
+			return sum[StatLogic.Stats.ArmorPenetrationRating] * statModContext("ADD_ARMOR_PENETRATION_MOD_ARMOR_PENETRATION_RATING")
 		end,
 		ispercent = true,
 	},
@@ -3152,17 +3166,17 @@ local summaryCalcData = {
 	{
 		option = "sumSpellDmg",
 		name = StatLogic.Stats.SpellDamage,
-		func = function(sum)
-			return GSM("MOD_SPELL_DMG") * (
+		func = function(sum, statModContext)
+			return statModContext("MOD_SPELL_DMG") * (
 				sum[StatLogic.Stats.SpellDamage]
-				+ sum[StatLogic.Stats.Strength] * GSM("ADD_SPELL_DMG_MOD_STR")
-				+ sum[StatLogic.Stats.Stamina] * (GSM("ADD_SPELL_DMG_MOD_STA") + GSM("ADD_SPELL_DMG_MOD_PET_STA") * GSM("MOD_PET_STA") * GSM("ADD_PET_STA_MOD_STA"))
+				+ sum[StatLogic.Stats.Strength] * statModContext("ADD_SPELL_DMG_MOD_STR")
+				+ sum[StatLogic.Stats.Stamina] * (statModContext("ADD_SPELL_DMG_MOD_STA") + statModContext("ADD_SPELL_DMG_MOD_PET_STA") * statModContext("MOD_PET_STA") * statModContext("ADD_PET_STA_MOD_STA"))
 				+ sum[StatLogic.Stats.Intellect] * (
-					(GSM("ADD_SPELL_DMG_MOD_INT") + GSM("ADD_SPELL_DMG_MOD_PET_INT") * GSM("MOD_PET_INT") * GSM("ADD_PET_INT_MOD_INT"))
-					+ GSM("ADD_SPELL_DMG_MOD_MANA") * GSM("MOD_MANA") * GSM("ADD_MANA_MOD_INT")
-				) + sum[StatLogic.Stats.Spirit] * GSM("ADD_SPELL_DMG_MOD_SPI")
-				+ summaryFunc[StatLogic.Stats.AttackPower](sum) * GSM("ADD_SPELL_DMG_MOD_AP")
-				+ sum[StatLogic.Stats.Defense] * GSM("ADD_SPELL_DMG_MOD_DEFENSE")
+					(statModContext("ADD_SPELL_DMG_MOD_INT") + statModContext("ADD_SPELL_DMG_MOD_PET_INT") * statModContext("MOD_PET_INT") * statModContext("ADD_PET_INT_MOD_INT"))
+					+ statModContext("ADD_SPELL_DMG_MOD_MANA") * statModContext("MOD_MANA") * statModContext("ADD_MANA_MOD_INT")
+				) + sum[StatLogic.Stats.Spirit] * statModContext("ADD_SPELL_DMG_MOD_SPI")
+				+ summaryFunc[StatLogic.Stats.AttackPower](sum, statModContext) * statModContext("ADD_SPELL_DMG_MOD_AP")
+				+ sum[StatLogic.Stats.Defense] * statModContext("ADD_SPELL_DMG_MOD_DEFENSE")
 			)
 		end,
 	},
@@ -3170,70 +3184,70 @@ local summaryCalcData = {
 	{
 		option = "sumHolyDmg",
 		name = StatLogic.Stats.HolyDamage,
-		func = function(sum)
-			return GSM("MOD_SPELL_DMG") * sum[StatLogic.Stats.HolyDamage]
-				+ summaryFunc[StatLogic.Stats.SpellDamage](sum)
+		func = function(sum, statModContext)
+			return statModContext("MOD_SPELL_DMG") * sum[StatLogic.Stats.HolyDamage]
+				+ summaryFunc[StatLogic.Stats.SpellDamage](sum, statModContext)
 		 end,
 	},
 	-- Arcane Damage - ARCANE_SPELL_DMG, SPELL_DMG, INT
 	{
 		option = "sumArcaneDmg",
 		name = StatLogic.Stats.ArcaneDamage,
-		func = function(sum)
-			return GSM("MOD_SPELL_DMG") * sum[StatLogic.Stats.ArcaneDamage]
-				+ summaryFunc[StatLogic.Stats.SpellDamage](sum)
+		func = function(sum, statModContext)
+			return statModContext("MOD_SPELL_DMG") * sum[StatLogic.Stats.ArcaneDamage]
+				+ summaryFunc[StatLogic.Stats.SpellDamage](sum, statModContext)
 		 end,
 	},
 	-- Fire Damage - FIRE_SPELL_DMG, SPELL_DMG, STA, INT
 	{
 		option = "sumFireDmg",
 		name = StatLogic.Stats.FireDamage,
-		func = function(sum)
-			return GSM("MOD_SPELL_DMG") * sum[StatLogic.Stats.FireDamage]
-				+ summaryFunc[StatLogic.Stats.SpellDamage](sum)
+		func = function(sum, statModContext)
+			return statModContext("MOD_SPELL_DMG") * sum[StatLogic.Stats.FireDamage]
+				+ summaryFunc[StatLogic.Stats.SpellDamage](sum, statModContext)
 		 end,
 	},
 	-- Nature Damage - NATURE_SPELL_DMG, SPELL_DMG, INT
 	{
 		option = "sumNatureDmg",
 		name = StatLogic.Stats.NatureDamage,
-		func = function(sum)
-			return GSM("MOD_SPELL_DMG") * sum[StatLogic.Stats.NatureDamage]
-				+ summaryFunc[StatLogic.Stats.SpellDamage](sum)
+		func = function(sum, statModContext)
+			return statModContext("MOD_SPELL_DMG") * sum[StatLogic.Stats.NatureDamage]
+				+ summaryFunc[StatLogic.Stats.SpellDamage](sum, statModContext)
 		 end,
 	},
 	-- Frost Damage - FROST_SPELL_DMG, SPELL_DMG, INT
 	{
 		option = "sumFrostDmg",
 		name = StatLogic.Stats.FrostDamage,
-		func = function(sum)
-			return GSM("MOD_SPELL_DMG") * sum[StatLogic.Stats.FrostDamage]
-				+ summaryFunc[StatLogic.Stats.SpellDamage](sum)
+		func = function(sum, statModContext)
+			return statModContext("MOD_SPELL_DMG") * sum[StatLogic.Stats.FrostDamage]
+				+ summaryFunc[StatLogic.Stats.SpellDamage](sum, statModContext)
 		 end,
 	},
 	-- Shadow Damage - SHADOW_SPELL_DMG, SPELL_DMG, STA, INT, SPI
 	{
 		option = "sumShadowDmg",
 		name = StatLogic.Stats.ShadowDamage,
-		func = function(sum)
-			return GSM("MOD_SPELL_DMG") * sum[StatLogic.Stats.ShadowDamage]
-				+ summaryFunc[StatLogic.Stats.SpellDamage](sum)
+		func = function(sum, statModContext)
+			return statModContext("MOD_SPELL_DMG") * sum[StatLogic.Stats.ShadowDamage]
+				+ summaryFunc[StatLogic.Stats.SpellDamage](sum, statModContext)
 		 end,
 	},
 	-- Healing - HEAL, AGI, STR, INT, SPI, AP
 	{
 		option = "sumHealing",
 		name = StatLogic.Stats.HealingPower,
-		func = function(sum)
-			return GSM("MOD_HEALING") * (
+		func = function(sum, statModContext)
+			return statModContext("MOD_HEALING") * (
 				sum[StatLogic.Stats.HealingPower]
-				+ (sum[StatLogic.Stats.Strength] * GSM("ADD_HEALING_MOD_STR"))
-				+ (sum[StatLogic.Stats.Agility] * GSM("ADD_HEALING_MOD_AGI"))
+				+ (sum[StatLogic.Stats.Strength] * statModContext("ADD_HEALING_MOD_STR"))
+				+ (sum[StatLogic.Stats.Agility] * statModContext("ADD_HEALING_MOD_AGI"))
 				+ (sum[StatLogic.Stats.Intellect] * (
-					GSM("ADD_HEALING_MOD_INT"))
-					+ GSM("ADD_HEALING_MOD_MANA") * GSM("MOD_MANA") * GSM("ADD_MANA_MOD_INT")
-				) + (sum[StatLogic.Stats.Spirit] * GSM("ADD_HEALING_MOD_SPI"))
-				+ (summaryFunc[StatLogic.Stats.AttackPower](sum) * GSM("ADD_HEALING_MOD_AP"))
+					statModContext("ADD_HEALING_MOD_INT"))
+					+ statModContext("ADD_HEALING_MOD_MANA") * statModContext("MOD_MANA") * statModContext("ADD_MANA_MOD_INT")
+				) + (sum[StatLogic.Stats.Spirit] * statModContext("ADD_HEALING_MOD_SPI"))
+				+ (summaryFunc[StatLogic.Stats.AttackPower](sum, statModContext) * statModContext("ADD_HEALING_MOD_AP"))
 			)
 		end,
 	},
@@ -3241,9 +3255,9 @@ local summaryCalcData = {
 	{
 		option = "sumSpellHit",
 		name = StatLogic.Stats.SpellHit,
-		func = function(sum)
+		func = function(sum, statModContext)
 			return sum[StatLogic.Stats.SpellHit]
-				+ summaryFunc[StatLogic.Stats.SpellHitRating](sum) * GSM("ADD_SPELL_HIT_MOD_SPELL_HIT_RATING")
+				+ summaryFunc[StatLogic.Stats.SpellHitRating](sum, statModContext) * statModContext("ADD_SPELL_HIT_MOD_SPELL_HIT_RATING")
 		end,
 		ispercent = true,
 	},
@@ -3251,19 +3265,19 @@ local summaryCalcData = {
 	{
 		option = "sumSpellHitRating",
 		name = StatLogic.Stats.SpellHitRating,
-		func = function(sum)
+		func = function(sum, statModContext)
 			return sum[StatLogic.Stats.SpellHitRating]
-				+ sum[StatLogic.Stats.Spirit] * GSM("ADD_SPELL_HIT_RATING_MOD_SPI")
+				+ sum[StatLogic.Stats.Spirit] * statModContext("ADD_SPELL_HIT_RATING_MOD_SPI")
 		end,
 	},
 	-- Spell Crit Chance - SPELL_CRIT_RATING, INT
 	{
 		option = "sumSpellCrit",
 		name = StatLogic.Stats.SpellCrit,
-		func = function(sum)
+		func = function(sum, statModContext)
 			return sum[StatLogic.Stats.SpellCrit]
-				+ summaryFunc[StatLogic.Stats.SpellCritRating](sum) * GSM("ADD_SPELL_CRIT_MOD_SPELL_CRIT_RATING")
-				+ sum[StatLogic.Stats.Intellect] * GSM("ADD_SPELL_CRIT_MOD_INT")
+				+ summaryFunc[StatLogic.Stats.SpellCritRating](sum, statModContext) * statModContext("ADD_SPELL_CRIT_MOD_SPELL_CRIT_RATING")
+				+ sum[StatLogic.Stats.Intellect] * statModContext("ADD_SPELL_CRIT_MOD_INT")
 		end,
 		ispercent = true,
 	},
@@ -3271,17 +3285,17 @@ local summaryCalcData = {
 	{
 		option = "sumSpellCritRating",
 		name = StatLogic.Stats.SpellCritRating,
-		func = function(sum)
+		func = function(sum, statModContext)
 			return sum[StatLogic.Stats.SpellCritRating]
-				+ sum[StatLogic.Stats.Spirit] * GSM("ADD_SPELL_CRIT_RATING_MOD_SPI")
+				+ sum[StatLogic.Stats.Spirit] * statModContext("ADD_SPELL_CRIT_RATING_MOD_SPI")
 		end,
 	},
 	-- Spell Haste - SPELL_HASTE_RATING
 	{
 		option = "sumSpellHaste",
 		name = StatLogic.Stats.SpellHaste,
-		func = function(sum)
-			return sum[StatLogic.Stats.SpellHasteRating] * GSM("ADD_SPELL_HASTE_MOD_SPELL_HASTE_RATING")
+		func = function(sum, statModContext)
+			return sum[StatLogic.Stats.SpellHasteRating] * statModContext("ADD_SPELL_HASTE_MOD_SPELL_HASTE_RATING")
 		end,
 		ispercent = true,
 	},
@@ -3308,22 +3322,22 @@ local summaryCalcData = {
 	{
 		option = "sumArmor",
 		name = StatLogic.Stats.Armor,
-		func = function(sum)
-			return GSM("MOD_ARMOR") * sum[StatLogic.Stats.Armor]
+		func = function(sum, statModContext)
+			return statModContext("MOD_ARMOR") * sum[StatLogic.Stats.Armor]
 				+ sum[StatLogic.Stats.BonusArmor]
-				+ sum[StatLogic.Stats.Agility] * GSM("ADD_BONUS_ARMOR_MOD_AGI")
-				+ sum[StatLogic.Stats.Intellect] * GSM("ADD_BONUS_ARMOR_MOD_INT")
+				+ sum[StatLogic.Stats.Agility] * statModContext("ADD_BONUS_ARMOR_MOD_AGI")
+				+ sum[StatLogic.Stats.Intellect] * statModContext("ADD_BONUS_ARMOR_MOD_INT")
 		 end,
 	},
 	-- Dodge Chance Before DR - DODGE, DODGE_RATING, DEFENSE, AGI
 	{
 		option = "sumDodgeBeforeDR",
 		name = StatLogic.Stats.DodgeBeforeDR,
-		func = function(sum)
+		func = function(sum, statModContext)
 			return sum[StatLogic.Stats.Dodge]
-				+ sum[StatLogic.Stats.DodgeRating] * GSM("ADD_DODGE_MOD_DODGE_RATING")
-				+ summaryFunc[StatLogic.Stats.Defense](sum) * GSM("ADD_DODGE_MOD_DEFENSE")
-				+ sum[StatLogic.Stats.Agility] * GSM("ADD_DODGE_MOD_AGI")
+				+ sum[StatLogic.Stats.DodgeRating] * statModContext("ADD_DODGE_MOD_DODGE_RATING")
+				+ summaryFunc[StatLogic.Stats.Defense](sum, statModContext) * statModContext("ADD_DODGE_MOD_DEFENSE")
+				+ sum[StatLogic.Stats.Agility] * statModContext("ADD_DODGE_MOD_AGI")
 		end,
 		ispercent = true,
 	},
@@ -3331,8 +3345,8 @@ local summaryCalcData = {
 	{
 		option = "sumDodge",
 		name = StatLogic.Stats.Dodge,
-		func = function(sum, sumType)
-			local dodge = summaryFunc[StatLogic.Stats.DodgeBeforeDR](sum)
+		func = function(sum, statModContext, sumType)
+			local dodge = summaryFunc[StatLogic.Stats.DodgeBeforeDR](sum, statModContext)
 			if db.profile.enableAvoidanceDiminishingReturns then
 				if (sumType == "diff1") or (sumType == "diff2") then
 					dodge = StatLogic:GetAvoidanceGainAfterDR(StatLogic.Stats.Dodge, dodge)
@@ -3356,11 +3370,11 @@ local summaryCalcData = {
 	{
 		option = "sumParryBeforeDR",
 		name = StatLogic.Stats.ParryBeforeDR,
-		func = function(sum)
+		func = function(sum, statModContext)
 			return GetParryChance() > 0 and (
 				sum[StatLogic.Stats.Parry]
-				+ summaryFunc[StatLogic.Stats.ParryRating](sum) * GSM("ADD_PARRY_MOD_PARRY_RATING")
-				+ summaryFunc[StatLogic.Stats.Defense](sum) * GSM("ADD_PARRY_MOD_DEFENSE")
+				+ summaryFunc[StatLogic.Stats.ParryRating](sum, statModContext) * statModContext("ADD_PARRY_MOD_PARRY_RATING")
+				+ summaryFunc[StatLogic.Stats.Defense](sum, statModContext) * statModContext("ADD_PARRY_MOD_DEFENSE")
 			) or 0
 		end,
 		ispercent = true,
@@ -3369,8 +3383,8 @@ local summaryCalcData = {
 	{
 		option = "sumParry",
 		name = StatLogic.Stats.Parry,
-		func = function(sum, sumType)
-			local parry = summaryFunc[StatLogic.Stats.ParryBeforeDR](sum)
+		func = function(sum, statModContext, sumType)
+			local parry = summaryFunc[StatLogic.Stats.ParryBeforeDR](sum, statModContext)
 			if db.profile.enableAvoidanceDiminishingReturns then
 				if (sumType == "diff1") or (sumType == "diff2") then
 					parry = StatLogic:GetAvoidanceGainAfterDR(StatLogic.Stats.Parry, parry)
@@ -3386,21 +3400,21 @@ local summaryCalcData = {
 	{
 		option = "sumParryRating",
 		name = StatLogic.Stats.ParryRating,
-		func = function(sum)
+		func = function(sum, statModContext)
 			return sum[StatLogic.Stats.ParryRating]
-				+ sum[StatLogic.Stats.Strength] * GSM("ADD_PARRY_RATING_MOD_STR")
+				+ sum[StatLogic.Stats.Strength] * statModContext("ADD_PARRY_RATING_MOD_STR")
 		end,
 	},
 	-- Block Chance - BLOCK, BLOCK_RATING, DEFENSE
 	{
 		option = "sumBlock",
 		name = StatLogic.Stats.BlockChance,
-		func = function(sum)
+		func = function(sum, statModContext)
 			return GetBlockChance() > 0 and (
 				sum[StatLogic.Stats.BlockChance]
-				+ sum[StatLogic.Stats.BlockRating] * GSM("ADD_BLOCK_MOD_BLOCK_RATING")
-				+ summaryFunc[StatLogic.Stats.Defense](sum) * GSM("ADD_BLOCK_CHANCE_MOD_DEFENSE")
-				+ summaryFunc[StatLogic.Stats.MasteryEffect](sum) * GSM("ADD_BLOCK_CHANCE_MOD_MASTERY_EFFECT")
+				+ sum[StatLogic.Stats.BlockRating] * statModContext("ADD_BLOCK_MOD_BLOCK_RATING")
+				+ summaryFunc[StatLogic.Stats.Defense](sum, statModContext) * statModContext("ADD_BLOCK_CHANCE_MOD_DEFENSE")
+				+ summaryFunc[StatLogic.Stats.MasteryEffect](sum, statModContext) * statModContext("ADD_BLOCK_CHANCE_MOD_MASTERY_EFFECT")
 			) or 0
 		end,
 		ispercent = true,
@@ -3417,11 +3431,11 @@ local summaryCalcData = {
 	{
 		option = "sumBlockValue",
 		name = StatLogic.Stats.BlockValue,
-		func = function(sum)
+		func = function(sum, statModContext)
 			return GetBlockChance() > 0 and (
-				GSM("MOD_BLOCK_VALUE") * (
+				statModContext("MOD_BLOCK_VALUE") * (
 					sum[StatLogic.Stats.BlockValue]
-					+ sum[StatLogic.Stats.Strength] * GSM("ADD_BLOCK_VALUE_MOD_STR")
+					+ sum[StatLogic.Stats.Strength] * statModContext("ADD_BLOCK_VALUE_MOD_STR")
 				)
 			) or 0
 		end,
@@ -3430,8 +3444,8 @@ local summaryCalcData = {
 	{
 		option = "sumHitAvoidBeforeDR",
 		name = StatLogic.Stats.MissBeforeDR,
-		func = function(sum)
-			return summaryFunc[StatLogic.Stats.Defense](sum) * GSM("ADD_MISS_MOD_DEFENSE")
+		func = function(sum, statModContext)
+			return summaryFunc[StatLogic.Stats.Defense](sum, statModContext) * statModContext("ADD_MISS_MOD_DEFENSE")
 		end,
 		ispercent = true,
 	},
@@ -3439,8 +3453,8 @@ local summaryCalcData = {
 	{
 		option = "sumHitAvoid",
 		name = StatLogic.Stats.Miss,
-		func = function(sum, sumType)
-			local missed = summaryFunc[StatLogic.Stats.MissBeforeDR](sum)
+		func = function(sum, statModContext, sumType)
+			local missed = summaryFunc[StatLogic.Stats.MissBeforeDR](sum, statModContext)
 			if db.profile.enableAvoidanceDiminishingReturns then
 				if (sumType == "diff1") or (sumType == "diff2") then
 					missed = StatLogic:GetAvoidanceGainAfterDR(StatLogic.Stats.Miss, missed)
@@ -3456,9 +3470,9 @@ local summaryCalcData = {
 	{
 		option = "sumDefense",
 		name = StatLogic.Stats.Defense,
-		func = function(sum)
+		func = function(sum, statModContext)
 			return sum[StatLogic.Stats.Defense]
-				+ sum[StatLogic.Stats.DefenseRating] * GSM("ADD_DEFENSE_MOD_DEFENSE_RATING")
+				+ sum[StatLogic.Stats.DefenseRating] * statModContext("ADD_DEFENSE_MOD_DEFENSE_RATING")
 		end,
 	},
 	-- Avoidance - DODGE, PARRY, MELEE_HIT_AVOID, BLOCK(Optional)
@@ -3466,13 +3480,13 @@ local summaryCalcData = {
 		option = "sumAvoidance",
 		name = StatLogic.Stats.Avoidance,
 		ispercent = true,
-		func = function(sum, sumType, link)
-			local dodge = summaryFunc[StatLogic.Stats.Dodge](sum, sumType, link)
-			local parry = summaryFunc[StatLogic.Stats.Parry](sum, sumType, link)
-			local missed = summaryFunc[StatLogic.Stats.Miss](sum, sumType, link)
+		func = function(sum, statModContext, sumType, link)
+			local dodge = summaryFunc[StatLogic.Stats.Dodge](sum, statModContext, sumType, link)
+			local parry = summaryFunc[StatLogic.Stats.Parry](sum, statModContext, sumType, link)
+			local missed = summaryFunc[StatLogic.Stats.Miss](sum, statModContext, sumType, link)
 			local block = 0
 			if db.profile.sumAvoidWithBlock then
-				block = summaryFunc[StatLogic.Stats.BlockChance](sum, sumType, link)
+				block = summaryFunc[StatLogic.Stats.BlockChance](sum, statModContext, sumType, link)
 			end
 			return parry + dodge + missed + block
 		end,
@@ -3481,9 +3495,9 @@ local summaryCalcData = {
 	{
 		option = "sumCritAvoid",
 		name = StatLogic.Stats.CritAvoidance,
-		func = function(sum)
-			return sum[StatLogic.Stats.ResilienceRating] * GSM("ADD_RESILIENCE_MOD_RESILIENCE_RATING") * GSM("ADD_CRIT_AVOIDANCE_MOD_RESILIENCE")
-				+ summaryFunc[StatLogic.Stats.Defense](sum) * GSM("ADD_CRIT_AVOIDANCE_MOD_DEFENSE")
+		func = function(sum, statModContext)
+			return sum[StatLogic.Stats.ResilienceRating] * statModContext("ADD_RESILIENCE_MOD_RESILIENCE_RATING") * statModContext("ADD_CRIT_AVOIDANCE_MOD_RESILIENCE")
+				+ summaryFunc[StatLogic.Stats.Defense](sum, statModContext) * statModContext("ADD_CRIT_AVOIDANCE_MOD_DEFENSE")
 		 end,
 		ispercent = true,
 	},
@@ -3566,7 +3580,7 @@ local function WriteSummary(tooltip, output)
 	end
 end
 
-function RatingBuster:StatSummary(tooltip, link)
+function RatingBuster:StatSummary(tooltip, link, statModContext)
 	-- Hide stat summary for equipped items
 	if db.global.sumIgnoreEquipped and C_Item.IsEquippedItem(link) then return end
 
@@ -3651,20 +3665,23 @@ function RatingBuster:StatSummary(tooltip, link)
 	else
 		id = StatLogic:GetDiffID(link, db.global.sumIgnoreEnchant, db.global.sumIgnoreGems, db.global.sumIgnoreExtraSockets, red, yellow, blue, meta)
 	end
+	if not id then return end
 
-	local numLines = tooltip:NumLines()
+	local numLines = StatLogic:GetItemTooltipNumLines(link)
 
 	-- Check Cache
-	if cache[id] and cache[id].numLines == numLines then
-		if table.maxn(cache[id]) == 0 then return end
-		WriteSummary(tooltip, cache[id])
+	local profileSpec = statModContext.profile .. statModContext.spec
+	local cached = cache[profileSpec][id]
+	if cached and cached.numLines == numLines then
+		if table.maxn(cached) == 0 then return end
+		WriteSummary(tooltip, cached)
 		return
 	end
 
 	-------------------------
 	-- Build Summary Table --
 	local statData = {}
-	statData.sum = StatLogic:GetSum(link)
+	statData.sum = StatLogic:GetSum(link, nil, statModContext)
 	if not statData.sum then return end
 	if not db.global.calcSum then
 		statData.sum = nil
@@ -3695,11 +3712,11 @@ function RatingBuster:StatSummary(tooltip, link)
 	end
 	-- Apply Base Stat Mods
 	for _, v in pairs(statData) do
-		v[StatLogic.Stats.Strength] = (v[StatLogic.Stats.Strength] or 0) * GSM("MOD_STR")
-		v[StatLogic.Stats.Agility] = (v[StatLogic.Stats.Agility] or 0) * GSM("MOD_AGI")
-		v[StatLogic.Stats.Stamina] = (v[StatLogic.Stats.Stamina] or 0) * GSM("MOD_STA")
-		v[StatLogic.Stats.Intellect] = (v[StatLogic.Stats.Intellect] or 0) * GSM("MOD_INT")
-		v[StatLogic.Stats.Spirit] = (v[StatLogic.Stats.Spirit] or 0) * GSM("MOD_SPI")
+		v[StatLogic.Stats.Strength] = (v[StatLogic.Stats.Strength] or 0) * statModContext("MOD_STR")
+		v[StatLogic.Stats.Agility] = (v[StatLogic.Stats.Agility] or 0) * statModContext("MOD_AGI")
+		v[StatLogic.Stats.Stamina] = (v[StatLogic.Stats.Stamina] or 0) * statModContext("MOD_STA")
+		v[StatLogic.Stats.Intellect] = (v[StatLogic.Stats.Intellect] or 0) * statModContext("MOD_INT")
+		v[StatLogic.Stats.Spirit] = (v[StatLogic.Stats.Spirit] or 0) * statModContext("MOD_SPI")
 	end
 
 	local summary = {}
@@ -3710,7 +3727,7 @@ function RatingBuster:StatSummary(tooltip, link)
 				ispercent = calcData.ispercent,
 			}
 			for statDataType, statTable in pairs(statData) do
-				entry[statDataType] = calcData.func(statTable, statDataType, link)
+				entry[statDataType] = calcData.func(statTable, statModContext, statDataType, link)
 			end
 			tinsert(summary, entry)
 		end
@@ -3836,7 +3853,7 @@ function RatingBuster:StatSummary(tooltip, link)
 		tsort(output, sumSortAlphaComp)
 	end
 	-- Write cache
-	cache[id] = output
+	cache[profileSpec][id] = output
 	if table.maxn(output) == 0 then return end
 	WriteSummary(tooltip, output)
 end

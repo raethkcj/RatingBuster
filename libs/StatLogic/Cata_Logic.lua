@@ -900,24 +900,24 @@ if addon.class == "DRUID" then
 		["ADD_MASTERY_EFFECT_MOD_MASTERY"] = {
 			-- Mastery: Total Eclipse
 			{
-				["mastery"] = 77492,
+				["spec"] = 1,
 				["value"] = 2,
 			},
 			-- Mastery: Razor Claws (Cat Form)
 			{
-				["mastery"] = 77493,
+				["spec"] = 2,
 				["value"] = 3.1,
 				["aura"] = 768,
 			},
 			-- Mastery: Savage Defender (Bear Form)
 			{
-				["mastery"] = 77494,
+				["spec"] = 2,
 				["value"] = 4,
 				["aura"] = 5487,
 			},
 			-- Mastery: Harmony
 			{
-				["mastery"] = 77495,
+				["spec"] = 3,
 				["value"] = 1.25,
 			},
 		},
@@ -971,12 +971,12 @@ if addon.class == "DRUID" then
 				},
 			},
 		},
-		-- Healers: Meditation
-		-- 4.0.1: Allows 50% of your mana regeneration from Spirit to continue while in combat.
 		["ADD_MANA_REG_MOD_NORMAL_MANA_REG"] = {
+			-- Passive: Meditation
 			{
 				["value"] = 0.50,
-				["known"] = 85101, -- ["Meditation"]
+				["spellid"] = 85101,
+				["spec"] = 3,
 			},
 		},
 		["ADD_DODGE"] = {
@@ -1115,22 +1115,21 @@ if addon.class == "DRUID" then
 				["aura"] = 768,        -- ["Cat Form"],
 			},
 		},
-		-- Druid: Heart of the Wild (Rank 5) - 3,4
-		-- 4.0.1: Increases your Intellect by 2/4/6%. In addition, while in Bear Form your Stamina is increased by 3/7/10% and while in Cat Form your attack power is increased by 3/7/10%.
-		-- Druid: Aggression - Passive: 84735
-		-- 4.0.1: Increases your attack power by 25%.
 		["MOD_AP"] = {
+			-- Talent: Heart of the Wild (Cat Form)
 			{
 				["tab"] = 3,
 				["num"] = 4,
 				["rank"] = {
 					0.03, 0.07, 0.1,
 				},
-				["aura"] = 768,        -- ["Cat Form"],
+				["aura"] = 768,
 			},
+			-- Passive: Aggression
 			{
 				["value"] = 0.25,
-				["known"] = 84735, -- ["Aggression"]
+				["spellid"] = 84735,
+				["spec"] = 2,
 			},
 		},
 		-- Druid: Leather Specialization - Passive: 86530
@@ -1161,17 +1160,17 @@ elseif addon.class == "DEATHKNIGHT" then
 		["ADD_MASTERY_EFFECT_MOD_MASTERY"] = {
 			-- Mastery: Blood Shield
 			{
-				["mastery"] = 77513,
+				["spec"] = 1,
 				["value"] = 6.25,
 			},
 			-- Mastery: Frozen Heart
 			{
-				["mastery"] = 77514,
+				["spec"] = 2,
 				["value"] = 2,
 			},
 			-- Mastery: Dreadblade
 			{
-				["mastery"] = 77515,
+				["spec"] = 3,
 				["value"] = 2.5,
 			},
 		},
@@ -1287,20 +1286,8 @@ elseif addon.class == "DEATHKNIGHT" then
 				["enchant"] = 3883,
 			},
 		},
-		-- Death Knight: Plate Specialization - Passive: 86524
-		-- 4.0.1: Increases your primary attribute by 5% while wearing Plate in all armor slots. Blood specialization grants Stamina, Frost specialization grants Strength, and Unholy specialization grants Strength.
-		-- Death Knight: Unholy Might - Passive: 91107
-		-- 4.2.0: Dark power courses through your limbs, increasing your Strength by 20%.
-		-- Death Knight: Abomination's Might - 1,11
-		-- 4.0.1: Also increases your total Strength by 1%/2%.
-		-- Death Knight: Pillar of Frost - Buff: 51271
-		-- 4.0.1: Strength increased by 20%.
-		-- Death Knight: Brittle Bones - Rank 2/2 - 2,14
-		-- 4.0.1: Your Strength is increased by 2/4%
-		-- Death Knight: Unholy Strength - Buff: 53365
-		-- 4.0.1: Strength increased by 15%
 		["MOD_STR"] = {
-			-- Plate Specialization
+			-- Plate Specialization (Frost, Unholy)
 			{
 				["value"] = 0.05,
 				["known"] = 86524,
@@ -1309,12 +1296,13 @@ elseif addon.class == "DEATHKNIGHT" then
 					[3] = true,
 				},
 			},
-			-- Unholy Might
+			-- Passive: Unholy Might
 			{
-				["value"] = 0.2,
-				["known"] = 91107, -- ["Unholy Might"]
+				["value"] = 0.25,
+				["spellid"] = 91107,
+				["spec"] = 3,
 			},
-			-- Abomination's Might
+			-- Talent: Abomination's Might
 			{
 				["tab"] = 1,
 				["num"] = 11,
@@ -1322,12 +1310,12 @@ elseif addon.class == "DEATHKNIGHT" then
 					0.01, 0.02,
 				},
 			},
-			-- Pillar of Frost
+			-- Buff: Pillar of Frost
 			{
 				["value"] = 0.2,
-				["aura"] = 51271,        -- ["Pillar of Frost"],
+				["aura"] = 51271,
 			},
-			-- Brittle Bones
+			-- Talent: Brittle Bones
 			{
 				["tab"] = 2,
 				["num"] = 14,
@@ -1335,10 +1323,10 @@ elseif addon.class == "DEATHKNIGHT" then
 					0.02, 0.04,
 				},
 			},
-			-- Unholy Strength
+			-- Buff: Unholy Strength
 			{
 				["value"] = 0.15,
-				["aura"] = 53365,        -- ["Unholy Strength"],
+				["aura"] = 53365,
 			},
 		},
 	}
@@ -1347,17 +1335,17 @@ elseif addon.class == "HUNTER" then
 		["ADD_MASTERY_EFFECT_MOD_MASTERY"] = {
 			-- Mastery: Master of Beasts
 			{
-				["mastery"] = 76657,
+				["spec"] = 1,
 				["value"] = 1.67,
 			},
 			-- Mastery: Wild Quiver
 			{
-				["mastery"] = 76659,
+				["spec"] = 2,
 				["value"] = 2.1,
 			},
 			-- Mastery: Essence of the Viper
 			{
-				["mastery"] = 76658,
+				["spec"] = 3,
 				["value"] = 1,
 			},
 		},
@@ -1385,13 +1373,12 @@ elseif addon.class == "HUNTER" then
 				["value"] = -5.4500,
 			},
 		},
-		-- Hunter: Animal Handler - Passive: 87325
-		-- 4.0.6: Attack Power increased by 25%.
 		["MOD_AP"] = {
-			-- Animal Handler
+			-- Passive: Animal Handler
 			{
 				["value"] = 0.25,
-				["known"] = 87325, -- ["Animal Handler"]
+				["spellid"] = 87325,
+				["spec"] = 1,
 			},
 		},
 		-- Hunter: Hunter vs. Wild - Rank 3/3 - 3,1
@@ -1406,8 +1393,6 @@ elseif addon.class == "HUNTER" then
 				},
 			},
 		},
-		-- Hunter: Mail Specialization - Passive: 86528
-		-- 4.0.1: Increases your Agility by 5% while wearing Mail in all armor slots
 		["MOD_AGI"] = {
 			-- Mail Specialization
 			{
@@ -1420,14 +1405,13 @@ elseif addon.class == "HUNTER" then
 					[3] = true,
 				},
 			},
-			-- Hunter: Into the Wilderness - Passive: 84729
-			-- 4.0.1: Agility increased by 10%.
+			-- Passive: Into the Wilderness
 			{
 				["value"] = 0.1,
-				["known"] = 84729, -- ["Into the Wilderness"]
+				["spellid"] = 84729,
+				["spec"] = 3,
 			},
-			-- Hunter: Hunting Party - Rank 1/1 - 3,17
-			-- 4.0.6: Increases your total Agility by an additional 2%
+			-- Talent: Hunting Party
 			{
 				["tab"] = 3,
 				["num"] = 17,
@@ -1440,17 +1424,17 @@ elseif addon.class == "MAGE" then
 		["ADD_MASTERY_EFFECT_MOD_MASTERY"] = {
 			-- Mastery: Mana Adept
 			{
-				["mastery"] = 76547,
+				["spec"] = 1,
 				["value"] = 1.5,
 			},
 			-- Mastery: Flashburn
 			{
-				["mastery"] = 76595,
+				["spec"] = 2,
 				["value"] = 2.8,
 			},
 			-- Mastery: Frostburn
 			{
-				["mastery"] = 76613,
+				["spec"] = 3,
 				["value"] = 2.5,
 			},
 		},
@@ -1544,24 +1528,24 @@ elseif addon.class == "PALADIN" then
 		["ADD_MASTERY_EFFECT_MOD_MASTERY"] = {
 			-- Mastery: Illuminated Healing
 			{
-				["mastery"] = 76669,
+				["spec"] = 1,
 				["value"] = 1.5,
 			},
 			-- Mastery: Divine Bulwark
 			{
-				["mastery"] = 76671,
+				["spec"] = 2,
 				["value"] = 2.25,
 			},
 			-- Mastery: Hand of Light
 			{
-				["mastery"] = 76672,
+				["spec"] = 3,
 				["value"] = 2.1,
 			},
 		},
 		["ADD_BLOCK_CHANCE_MOD_MASTERY_EFFECT"] = {
 			-- Mastery: Divine Bulwark
 			{
-				["mastery"] = 76671,
+				["spec"] = 2,
 				["value"] = 1,
 			},
 		},
@@ -1600,10 +1584,11 @@ elseif addon.class == "PALADIN" then
 			},
 		},
 		["ADD_MANA_REG_MOD_NORMAL_MANA_REG"] = {
-			-- Meditation
+			-- Passive: Meditation
 			{
 				["value"] = 0.50,
-				["known"] = 95859,
+				["spellid"] = 95859,
+				["spec"] = 1,
 			},
 			-- Talent: Judgements of the Pure
 			{
@@ -1632,40 +1617,36 @@ elseif addon.class == "PALADIN" then
 				["value"] = 0.27,
 			},
 		},
-		-- Paladin: Sheath of Light - Passive: 53503
-		-- 4.0.1: Increases your spell power by an amount equal to 30% of your attack power
 		["ADD_SPELL_DMG_MOD_AP"] = {
-			-- Sheath of Light
+			-- Passive: Sheath of Light
 			{
-				["value"] = 0.3,
-				["known"] = 53503,
+				["value"] = 0.30,
+				["spellid"] = 53503,
+				["spec"] = 3,
 			},
 		},
-		-- Paladin: Sheath of Light - Passive: 53503
-		-- 4.0.1: Increases your spell power by an amount equal to 30% of your attack power
 		["ADD_HEALING_MOD_AP"] = {
-			-- Sheath of Light
+			-- Passive: Sheath of Light
 			{
-				["value"] = 0.3,
-				["known"] = 53503,
+				["value"] = 0.30,
+				["spellid"] = 53503,
+				["spec"] = 3,
 			},
 		},
-		-- Paladin: Touched by the Light - Passive: 53592
-		-- 4.0.1: Increases your total Stamina by 15%, increases your spell hit by 6%, and increases your spell power by an amount equal to 60% of your Strength.
 		["ADD_SPELL_DMG_MOD_STR"] = {
-			-- Touched by the Light
+			-- Passive: Touched by the Light
 			{
-				["value"] = 0.6,
-				["known"] = 53592,
+				["value"] = 0.60,
+				["spellid"] = 53592,
+				["spec"] = 2,
 			},
 		},
-		-- Paladin: Touched by the Light - Passive: 53592
-		-- 4.0.1: Increases your total Stamina by 15%, increases your spell hit by 6%, and increases your spell power by an amount equal to 60% of your Strength.
 		["ADD_HEALING_MOD_STR"] = {
-			-- Touched by the Light
+			-- Passive: Touched by the Light
 			{
-				["value"] = 0.6,
-				["known"] = 53592,
+				["value"] = 0.60,
+				["spellid"] = 53592,
+				["spec"] = 2,
 			},
 		},
 		-- Paladin: Toughness - Rank 3/3 - 2,5
@@ -1679,10 +1660,6 @@ elseif addon.class == "PALADIN" then
 				},
 			},
 		},
-		-- Paladin: Plate Specialization - Passive: 86525
-		-- 4.0.1: Increases your primary attribute by 5% while wearing Plate in all armor slots. Holy specialization grants Intellect, Protection specialization grants Stamina, and Retribution specialization grants Strength.
-		-- Paladin: Touched by the Light - Passive: 53592
-		-- 4.0.1: Increases your total Stamina by 15%, increases your spell hit by 6%, and increases your spell power by an amount equal to 60% of your Strength.
 		["MOD_STA"] = {
 			-- Plate Specialization
 			{
@@ -1692,10 +1669,11 @@ elseif addon.class == "PALADIN" then
 					[2] = true,
 				},
 			},
-			-- Touched by the Light
+			-- Passive: Touched by the Light
 			{
 				["value"] = 0.15,
-				["known"] = 53592,
+				["spellid"] = 53592,
+				["spec"] = 2,
 			},
 		},
 		-- Paladin: Plate Specialization - Passive: 86525
@@ -1728,17 +1706,17 @@ elseif addon.class == "PRIEST" then
 		["ADD_MASTERY_EFFECT_MOD_MASTERY"] = {
 			-- Mastery: Shield Discipline
 			{
-				["mastery"] = 77484,
+				["spec"] = 1,
 				["value"] = 2.5,
 			},
 			-- Mastery: Echo of Light
 			{
-				["mastery"] = 77485,
+				["spec"] = 2,
 				["value"] = 1.25,
 			},
 			-- Mastery: Shadow Orb Power
 			{
-				["mastery"] = 77486,
+				["spec"] = 3,
 				["value"] = 1.45,
 			},
 		},
@@ -1777,17 +1755,17 @@ elseif addon.class == "PRIEST" then
 			},
 		},
 		["ADD_MANA_REG_MOD_NORMAL_MANA_REG"] = {
-			-- Meditation (Discipline)
-			-- 4.0.1: Allows 50% of your mana regeneration from Spirit to continue while in combat.
+			-- Passive: Meditation (Discipline)
 			{
 				["value"] = 0.5,
-				["known"] = 95860,
+				["spellid"] = 95860,
+				["spec"] = 1,
 			},
-			-- Meditation (Holy)
-			-- 4.0.1: Allows 50% of your mana regeneration from Spirit to continue while in combat.
+			-- Passive: Meditation (Holy)
 			{
 				["value"] = 0.5,
-				["known"] = 95861,
+				["spellid"] = 95861,
+				["spec"] = 2,
 			},
 			-- Talent: Holy Concentration
 			{
@@ -1840,7 +1818,8 @@ elseif addon.class == "PRIEST" then
 			-- Passive: Enlightenment
 			{
 				["value"] = 0.15,
-				["known"] = 84732,
+				["spellid"] = 84732,
+				["spec"] = 1,
 			},
 			-- Passive: Mysticism
 			{
@@ -1854,17 +1833,17 @@ elseif addon.class == "ROGUE" then
 		["ADD_MASTERY_EFFECT_MOD_MASTERY"] = {
 			-- Mastery: Potent Poisons
 			{
-				["mastery"] = 76803,
+				["spec"] = 1,
 				["value"] = 3.5,
 			},
 			-- Mastery: Main Gauche
 			{
-				["mastery"] = 76806,
+				["spec"] = 2,
 				["value"] = 2,
 			},
 			-- Mastery: Executioner
 			{
-				["mastery"] = 76808,
+				["spec"] = 3,
 				["value"] = 2.5,
 			},
 		},
@@ -1886,12 +1865,8 @@ elseif addon.class == "ROGUE" then
 				["value"] = 1,
 			},
 		},
-		-- Rogue: Savage Combat - Rank 2/2 - 2,16
-		-- 4.2.0: Increases your total attack power by 3/6%.
-		-- Rogue: Vitality - Passive: 61329
-		-- 4.2.0: Increases your Attack Power by 30%.
 		["MOD_AP"] = {
-			-- Savage Combat
+			-- Talent: Savage Combat
 			{
 				["tab"] = 2,
 				["num"] = 16,
@@ -1899,10 +1874,11 @@ elseif addon.class == "ROGUE" then
 					0.03, 0.06,
 				},
 			},
-			-- Vitality
+			-- Passive: Vitality
 			{
-				["value"] = 0.3,
-				["known"] = 61329,
+				["value"] = 0.30,
+				["spellid"] = 61329,
+				["spec"] = 2,
 			},
 		},
 		-- Rogue: Reinforced Leather - Rank 2/2 - 2,10
@@ -1941,10 +1917,6 @@ elseif addon.class == "ROGUE" then
 				["aura"] = 31022,
 			},
 		},
-		-- Rogue: Leather Specialization - Passive: 86531
-		-- 4.0.1: Increases your Agility by 5% while wearing Leather in all armor slots.
-		-- Rogue: Sinister Calling - Passive: 31220
-		-- 4.0.6: Increases your total Agility by 30%
 		["MOD_AGI"] = {
 			-- Leather Specialization
 			{
@@ -1957,10 +1929,11 @@ elseif addon.class == "ROGUE" then
 					[3] = true,
 				},
 			},
-			-- Sinister Calling
+			-- Passive: Sinister Calling
 			{
-				["value"] = 0.3,
-				["known"] = 31220,
+				["value"] = 0.30,
+				["spellid"] = 31220,
+				["spec"] = 3,
 			},
 		},
 	}
@@ -1969,17 +1942,17 @@ elseif addon.class == "SHAMAN" then
 		["ADD_MASTERY_EFFECT_MOD_MASTERY"] = {
 			-- Mastery: Elemental Overload
 			{
-				["mastery"] = 77222,
+				["spec"] = 1,
 				["value"] = 2,
 			},
 			-- Mastery: Enhanced Elements
 			{
-				["mastery"] = 77223,
+				["spec"] = 2,
 				["value"] = 2.5,
 			},
 			-- Mastery: Deep Healing
 			{
-				["mastery"] = 77226,
+				["spec"] = 3,
 				["value"] = 3,
 			},
 		},
@@ -2003,7 +1976,8 @@ elseif addon.class == "SHAMAN" then
 			-- Passive: Mental Quickness
 			{
 				["value"] = -1,
-				["known"] = 30814,
+				["spellid"] = 30814,
+				["spec"] = 2,
 			},
 		},
 		["ADD_HEALING_MOD_INT"] = {
@@ -2014,7 +1988,8 @@ elseif addon.class == "SHAMAN" then
 			-- Passive: Mental Quickness
 			{
 				["value"] = -1,
-				["known"] = 30814,
+				["spellid"] = 30814,
+				["spec"] = 2,
 			},
 		},
 		["ADD_DODGE"] = {
@@ -2043,26 +2018,28 @@ elseif addon.class == "SHAMAN" then
 				},
 			},
 		},
-		-- Healers: Meditation
-		-- 4.0.1: Allows 50% of your mana regeneration from Spirit to continue while in combat.
 		["ADD_MANA_REG_MOD_NORMAL_MANA_REG"] = {
+			-- Passive: Meditation
 			{
 				["value"] = 0.50,
-				["known"] = 95862,
+				["spellid"] = 95862,
+				["spec"] = 3,
 			},
 		},
 		["ADD_SPELL_DMG_MOD_AP"] = {
 			-- Passive: Mental Quickness
 			{
 				["value"] = 0.55,
-				["known"] = 30814,
+				["spellid"] = 30814,
+				["spec"] = 2,
 			},
 		},
 		["ADD_HEALING_MOD_AP"] = {
 			-- Passive: Mental Quickness
 			{
 				["value"] = 0.55,
-				["known"] = 30814,
+				["spellid"] = 30814,
+				["spec"] = 2,
 			},
 		},
 		-- Shaman: Toughness - Rank 3/3 - 2,8
@@ -2114,17 +2091,17 @@ elseif addon.class == "WARLOCK" then
 		["ADD_MASTERY_EFFECT_MOD_MASTERY"] = {
 			-- Mastery: Potent Afflictions
 			{
-				["mastery"] = 77215,
+				["spec"] = 1,
 				["value"] = 1.63,
 			},
 			-- Mastery: Master Demonologist
 			{
-				["mastery"] = 77219,
+				["spec"] = 2,
 				["value"] = 2.3,
 			},
 			-- Mastery: Fiery Apocalypse
 			{
-				["mastery"] = 77220,
+				["spec"] = 3,
 				["value"] = 1.35,
 			},
 		},
@@ -2195,24 +2172,24 @@ elseif addon.class == "WARRIOR" then
 		["ADD_MASTERY_EFFECT_MOD_MASTERY"] = {
 			-- Mastery: Strikes of Opportunity
 			{
-				["mastery"] = 76838,
+				["spec"] = 1,
 				["value"] = 2.2,
 			},
 			-- Mastery: Unshackled Fury
 			{
-				["mastery"] = 76856,
+				["spec"] = 2,
 				["value"] = 5.6,
 			},
 			-- Mastery: Critical Block
 			{
-				["mastery"] = 76857,
+				["spec"] = 3,
 				["value"] = 1.5,
 			},
 		},
 		["ADD_BLOCK_CHANCE_MOD_MASTERY_EFFECT"] = {
 			-- Mastery: Critical Block
 			{
-				["mastery"] = 76857,
+				["spec"] = 3,
 				["value"] = 1,
 			},
 		},
@@ -2262,10 +2239,6 @@ elseif addon.class == "WARRIOR" then
 				},
 			},
 		},
-		-- Warrior: Plate Specialization - Passive: 86526
-		-- 4.0.1: Increases your primary attribute by 5% while wearing Plate in all armor slots. Arms specialization grants Strength, Fury specialization grants Strength, and Protection specialization grants Stamina.
-		-- Warrior: Sentinel - Passive: 29144
-		-- 4.0.1: Increases your total Stamina by 15%
 		["MOD_STA"] = {
 			-- Plate Specialization
 			{
@@ -2275,10 +2248,11 @@ elseif addon.class == "WARRIOR" then
 					[3] = true,
 				},
 			},
-			-- Sentinel
+			-- Passive: Sentinel
 			{
 				["value"] = 0.15,
-				["known"] = 29144,
+				["spellid"] = 29144,
+				["spec"] = 3,
 			},
 		},
 		-- Warrior: Plate Specialization - Passive: 86526
