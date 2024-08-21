@@ -126,7 +126,7 @@ L["Add after summary"] = "Anadir despues del resumen"
 L["Add a empty line after stat summary"] = "Anade una linea vacia despues del resumen"
 -- /rb sum icon
 L["Show icon"] = "Mostrar icono"
-L["Show the sigma icon before summary listing"] = "Muestra el icono de sumatorio antes del listado resumen"
+L["Show the sigma icon before stat summary"] = "Muestra el icono de sumatorio antes del listado resumen"
 -- /rb sum title
 L["Show title text"] = "Mostrar texto titulo"
 L["Show the title text before stat summary"] = "Muestra el titulo antes del listado resumen"

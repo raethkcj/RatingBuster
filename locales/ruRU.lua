@@ -126,7 +126,7 @@ L["Add after summary"] = "Линия после итога"
 L["Add a empty line after stat summary"] = "Добавить линию после итога"
 -- /rb sum icon
 L["Show icon"] = "Показать иконку"
-L["Show the sigma icon before summary listing"] = "Показать знак суммы перед итогом"
+L["Show the sigma icon before stat summary"] = "Показать знак суммы перед итогом"
 -- /rb sum title
 L["Show title text"] = "Показать заголовок"
 L["Show the title text before stat summary"] = "Показать заголовок до списка итога"

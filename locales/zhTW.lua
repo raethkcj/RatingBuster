@@ -127,7 +127,7 @@ L["Add after summary"] = "加在統計後"
 L["Add a empty line after stat summary"] = "在物品提示中的屬性統計後加入空白列"
 -- /rb sum icon
 L["Show icon"] = "顯示圖示"
-L["Show the sigma icon before summary listing"] = "在屬性統計前顯示圖示"
+L["Show the sigma icon before stat summary"] = "在屬性統計前顯示圖示"
 -- /rb sum title
 L["Show title text"] = "顯示標題"
 L["Show the title text before stat summary"] = "在屬性統計前顯示標題文字"

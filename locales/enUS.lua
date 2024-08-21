@@ -131,7 +131,7 @@ L["Add after summary"] = true
 L["Add a empty line after stat summary"] = true
 -- /rb sum icon
 L["Show icon"] = true
-L["Show the sigma icon before summary listing"] = true
+L["Show the sigma icon before stat summary"] = true
 -- /rb sum title
 L["Show title text"] = true
 L["Show the title text before stat summary"] = true

@@ -440,26 +440,32 @@ local options = {
 						sumShowIcon = {
 							type = 'toggle',
 							name = L["Show icon"],
-							desc = L["Show the sigma icon before summary listing"],
+							desc = L["Show the sigma icon before stat summary"],
 							order = 8,
 						},
 						sumShowTitle = {
 							type = 'toggle',
 							name = L["Show title text"],
-							desc = L["Show the title text before summary listing"],
+							desc = L["Show the title text before stat summary"],
 							order = 9,
+						},
+						sumShowProfile = {
+							type = 'toggle',
+							name = L["Show profile name"],
+							desc = L["Show profile name before stat summary"],
+							order = 10,
 						},
 						showZeroValueStat = {
 							type = 'toggle',
 							name = L["Show zero value stats"],
 							desc = L["Show zero value stats in summary for consistancy"],
-							order = 10,
+							order = 11,
 						},
 						sumSortAlpha = {
 							type = 'toggle',
 							name = L["Sort StatSummary alphabetically"],
 							desc = L["Enable to sort StatSummary alphabetically, disable to sort according to stat type(basic, physical, spell, tank)"],
-							order = 11,
+							order = 12,
 						},
 						sumStatColor = {
 							type = 'color',
@@ -467,7 +473,7 @@ local options = {
 							desc = L["Changes the color of added text"],
 							get = getColor,
 							set = setColor,
-							order = 12,
+							order = 13,
 						},
 						sumValueColor = {
 							type = 'color',
@@ -475,13 +481,13 @@ local options = {
 							desc = L["Changes the color of added text"],
 							get = getColor,
 							set = setColor,
-							order = 13,
+							order = 14,
 						},
 						space = {
 							type = 'group',
 							name = L["Add empty line"],
 							inline = true,
-							order = 14,
+							order = 15,
 							args = {
 								sumBlankLine = {
 									type = 'toggle',
@@ -1150,6 +1156,7 @@ local defaults = {
 		showItemLevel = false,
 		sumShowIcon = true,
 		sumShowTitle = true,
+		sumShowProfile = true,
 		showZeroValueStat = false,
 		sumSortAlpha = false,
 		sumStatColor = CreateColor(NORMAL_FONT_COLOR:GetRGBA()),
@@ -3564,12 +3571,28 @@ local function WriteSummary(tooltip, output)
 	if db.global.sumBlankLine then
 		tooltip:AddLine(" ")
 	end
+
+	local headerIcon
+	if db.global.sumShowIcon then
+		headerIcon = "|TInterface\\AddOns\\RatingBuster\\images\\Sigma:0|t "
+	end
+
+	local headerText
 	if db.global.sumShowTitle then
-		tooltip:AddLine(HIGHLIGHT_FONT_COLOR_CODE..L["Stat Summary"]..FONT_COLOR_CODE_CLOSE)
-		if db.global.sumShowIcon then
-			tooltip:AddTexture("Interface\\AddOns\\RatingBuster\\images\\Sigma")
+		headerText = L["StatSummary"]
+	end
+	if db.global.sumShowProfile then
+		local profile = db:GetCurrentProfile()
+		if headerText then
+			headerText = headerText .. ": " .. profile
+		else
+			headerText = profile
 		end
 	end
+	if headerIcon or headerText then
+		tooltip:AddLine((headerIcon or "") .. HIGHLIGHT_FONT_COLOR_CODE .. (headerText or "") .. FONT_COLOR_CODE_CLOSE)
+	end
+
 	local statR, statG, statB = db.global.sumStatColor:GetRGB()
 	local valueR, valueG, valueB = db.global.sumValueColor:GetRGB()
 	for _, o in ipairs(output) do

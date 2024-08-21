@@ -125,7 +125,7 @@ L["Add after summary"] = "요약 뒤에 추가"
 L["Add a empty line after stat summary"] = "능력치 요약의 뒤에 구분선을 추가합니다."
 -- /rb sum icon
 L["Show icon"] = "아이콘 표시"
-L["Show the sigma icon before summary listing"] = "요약 목록 앞에 시그마 아이콘을 표시합니다."
+L["Show the sigma icon before stat summary"] = "요약 목록 앞에 시그마 아이콘을 표시합니다."
 -- /rb sum title
 L["Show title text"] = "제목 표시"
 L["Show the title text before stat summary"] = "요약 목록 앞에 제목을 표시합니다."

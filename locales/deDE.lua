@@ -125,7 +125,7 @@ L["Add after summary"] = "Nach Berechnung hinzufügen"
 L["Add a empty line after stat summary"] = "Füge eine leere Zeile nach der Werteübersicht hinzu"
 -- /rb sum icon
 L["Show icon"] = "Zeige Symbol"
-L["Show the sigma icon before summary listing"] = "Zeige das Sigma Symbol vor der Übersichtsliste an"
+L["Show the sigma icon before stat summary"] = "Zeige das Sigma Symbol vor der Übersichtsliste an"
 -- /rb sum title
 L["Show title text"] = "Zeige Titeltext"
 L["Show the title text before stat summary"] = "Zeige Titeltext vor der Übersichtsliste an"

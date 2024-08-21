@@ -115,7 +115,7 @@ L["Add after summary"] = "Add after summary"
 L["Add a empty line after stat summary"] = "Add a empty line after stat summary"
 -- /rb sum icon
 L["Show icon"] = "Show icon"
-L["Show the sigma icon before summary listing"] = "Show the sigma icon before summary listing"
+L["Show the sigma icon before stat summary"] = "Show the sigma icon before stat summary"
 -- /rb sum title
 L["Show title text"] = "Show title text"
 L["Show the title text before stat summary"] = "Show the title text before stat summary"
