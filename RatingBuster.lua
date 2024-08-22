@@ -3597,7 +3597,7 @@ local function WriteSummary(tooltip, output)
 
 	local headerText
 	if db.global.sumShowTitle then
-		headerText = L["StatSummary"]
+		headerText = L["Stat Summary"]
 	end
 	if db.global.sumShowProfile then
 		local profile = db:GetCurrentProfile()
