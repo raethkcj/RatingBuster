@@ -113,8 +113,8 @@ Type `/rb` or `/ratingbuster` to open the options menu GUI, or add a slash comma
 - `space` - Add a empty line before or after stat summary
 	- `sumBlankLine` - Add a empty line before stat summary
 	- `sumBlankLineAfter` - Add a empty line after stat summary
-- `sumShowIcon` - Show the sigma icon before summary listing
-- `sumShowTitle` - Show the title text before summary listing
+- `sumShowIcon` - Show the sigma icon before stat summary
+- `sumShowTitle` - Show the title text before stat summary
 - `showZeroValueStat` - Show zero value stats in summary for consistancy
 - `calcSum` - Calculate the total stats for the item
 - `calcDiff` - Calculate the stat difference for the item and equipped items

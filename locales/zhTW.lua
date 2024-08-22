@@ -1,4 +1,4 @@
-﻿--[[
+--[[
 Name: RatingBuster zhTW locale
 Revision: $Revision: 73696 $
 Translated by:
@@ -127,10 +127,12 @@ L["Add after summary"] = "加在統計後"
 L["Add a empty line after stat summary"] = "在物品提示中的屬性統計後加入空白列"
 -- /rb sum icon
 L["Show icon"] = "顯示圖示"
-L["Show the sigma icon before summary listing"] = "在屬性統計前顯示圖示"
+L["Show the sigma icon before stat summary"] = "在屬性統計前顯示圖示"
 -- /rb sum title
 L["Show title text"] = "顯示標題"
-L["Show the title text before summary listing"] = "在屬性統計前顯示標題文字"
+L["Show the title text before stat summary"] = "在屬性統計前顯示標題文字"
+L["Show profile name"] = "Show profile name"
+L["Show profile name before stat summary"] = "Show profile name before stat summary"
 -- /rb sum showzerostat
 L["Show zero value stats"] = "顯示數值為 0 的屬性"
 L["Show zero value stats in summary for consistancy"] = "為了一致性，在統計中顯示數值為 0 的屬性"
@@ -259,6 +261,14 @@ L["Raid Buffs"] = "團隊Buff"
 L["Stat Multiplier"] = "總屬性提高%"
 L["Attack Power Multiplier"] = "攻擊強度提高%"
 L["Reduced Physical Damage Taken"] = "物理傷害減少%"
+
+L["Swap Profiles"] = "Swap Profiles"
+L["Swap Profile Keybinding"] = "Swap Profile Keybinding"
+L["Use a keybind to swap between Primary and Secondary Profiles.\n\nIf \"Enable spec profiles\" is enabled, will use the Primary and Secondary Talents profiles, and will preview items with that spec's talents, glyphs, and passives.\n\nYou can re-use an existing keybind! It will only be used for RatingBuster when an item tooltip is shown."] = "Use a keybind to swap between Primary and Secondary Profiles.\n\nIf \"Enable spec profiles\" is enabled, will use the Primary and Secondary Talents profiles, and will preview items with that spec's talents, glyphs, and passives.\n\nYou can re-use an existing keybind! It will only be used for RatingBuster when an item tooltip is shown."
+L["Primary Profile"] = "Primary Profile"
+L["Select the primary profile for use with the swap profile keybind. If spec profiles are enabled, this will instead use the Primary Talents profile."] = "Select the primary profile for use with the swap profile keybind. If spec profiles are enabled, this will instead use the Primary Talents profile."
+L["Secondary Profile"] = "Secondary Profile"
+L["Select the secondary profile for use with the swap profile keybind. If spec profiles are enabled, this will instead use the Secondary Talents profile."] = "Select the secondary profile for use with the swap profile keybind. If spec profiles are enabled, this will instead use the Secondary Talents profile."
 
 -----------------------
 -- Matching Patterns --
