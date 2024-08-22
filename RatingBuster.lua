@@ -2412,10 +2412,11 @@ do
 			-- Stamina --
 			-------------
 			value = value * statModContext("MOD_STA")
-			local health = value * statModContext("ADD_HEALTH_MOD_STA") * statModContext("MOD_HEALTH")
+			local health = value * statModContext("ADD_HEALTH_MOD_STA")
 			self:ProcessStat(StatLogic.Stats.Health, health, infoTable, link, color, statModContext)
 			if db.profile.showHealthFromSta then
-				infoTable[StatLogic.Stats.Health] = infoTable[StatLogic.Stats.Health] + health
+				local effect = health * statModContext("MOD_HEALTH")
+				infoTable[StatLogic.Stats.Health] = infoTable[StatLogic.Stats.Health] + effect
 			end
 			if db.profile.showSpellDmgFromSta then
 				local effect = value * statModContext("MOD_SPELL_DMG") * (statModContext("ADD_SPELL_DMG_MOD_STA")
@@ -2521,6 +2522,7 @@ do
 				infoTable[StatLogic.Stats.SpellCrit] = infoTable[StatLogic.Stats.SpellCrit] + effect
 			end
 		elseif statID == StatLogic.Stats.Health and db.profile.showStats then
+			value = value * statModContext("MOD_HEALTH")
 			if db.profile.showHP5FromHealth then
 				local effect = value * statModContext("ADD_NORMAL_HEALTH_REG_MOD_HEALTH") * statModContext("MOD_NORMAL_HEALTH_REG") * statModContext("ADD_HEALTH_REG_MOD_NORMAL_HEALTH_REG")
 				infoTable[StatLogic.Stats.HealthRegen] = infoTable[StatLogic.Stats.HealthRegen] + effect

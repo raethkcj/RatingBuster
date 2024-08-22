@@ -931,7 +931,6 @@ addon.StatModValidators = {
 		validate = function(case, _, statModContext)
 			if not NUM_GLYPH_SLOTS then
 				EventUtil.ContinueOnAddOnLoaded("Blizzard_GlyphUI", function()
-					print("foo")
 					StatLogic:InvalidateEvent("GLYPH_UPDATED")
 				end)
 				C_AddOns.LoadAddOn("Blizzard_GlyphUI")

@@ -939,6 +939,14 @@ if addon.class == "DRUID" then
 				["aura"] = 5487,
 			},
 		},
+		["ADD_AP_MOD_STA"] = {
+			-- Buff: Vengeance (100% of Stamina, not 10% of HP)
+			{
+				["value"] = 1,
+				["spec"] = 2,
+				["aura"] = 76691,
+			},
+		},
 		["ADD_SPELL_DMG_MOD_INT"] = {
 			-- Base
 			{
@@ -1286,6 +1294,14 @@ elseif addon.class == "DEATHKNIGHT" then
 				["enchant"] = 3883,
 			},
 		},
+		["ADD_AP_MOD_STA"] = {
+			-- Buff: Vengeance (100% of Stamina, not 10% of HP)
+			{
+				["value"] = 1,
+				["spec"] = 1,
+				["aura"] = 76691,
+			},
+		},
 		["MOD_STR"] = {
 			-- Plate Specialization (Frost, Unholy)
 			{
@@ -1553,6 +1569,14 @@ elseif addon.class == "PALADIN" then
 			-- Base
 			{
 				["value"] = 2,
+			},
+		},
+		["ADD_AP_MOD_STA"] = {
+			-- Buff: Vengeance (100% of Stamina, not 10% of HP)
+			{
+				["value"] = 1,
+				["spec"] = 2,
+				["aura"] = 76691,
 			},
 		},
 		["ADD_SPELL_DMG_MOD_INT"] = {
@@ -2197,6 +2221,14 @@ elseif addon.class == "WARRIOR" then
 			-- Base
 			{
 				["value"] = 2,
+			},
+		},
+		["ADD_AP_MOD_STA"] = {
+			-- Buff: Vengeance (100% of Stamina, not 10% of HP)
+			{
+				["value"] = 1,
+				["spec"] = 3,
+				["aura"] = 76691,
 			},
 		},
 		["ADD_RANGED_AP_MOD_AGI"] = {
