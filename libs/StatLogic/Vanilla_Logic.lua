@@ -1413,13 +1413,20 @@ elseif addon.class == "WARLOCK" then
 				["aura"] = 425463,
 			},
 			-- Rune: Dance of the Wicked
-			--   You and your demon pet gain dodge chance equal to your spell critical strike chance.
 			{
 				["known"] = 412798,
 				["rune"] = true,
 				["aura"] = 412800,
 				["tooltip"] = true,
-				-- TODO: ADD_DODGE_MOD_SPELL_CRIT?
+			}
+		},
+		["ADD_DODGE_MOD_SPELL_CRIT"] = {
+			-- Rune: Dance of the Wicked
+			{
+				["known"] = 412798,
+				["rune"] = true,
+				["aura"] = 412800,
+				["value"] = 1,
 			}
 		},
 		-- Warlock: Demonic Pact - Rune

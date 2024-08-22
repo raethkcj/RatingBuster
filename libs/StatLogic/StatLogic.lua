@@ -515,6 +515,10 @@ local addedInfoMods = {
 		mod = "AGI",
 	},
 	{
+		add = "DODGE",
+		mod = "SPELL_CRIT",
+	},
+	{
 		add = "HEALING",
 		mod = "AGI",
 	},

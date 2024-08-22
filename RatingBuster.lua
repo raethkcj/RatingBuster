@@ -298,12 +298,21 @@ local options = {
 					args = {},
 					hidden = true,
 				},
+				spell_crit = {
+					type = 'group',
+					name = L[StatLogic.Stats.SpellCrit],
+					desc = L["Changes the display of %s"]:format(L[StatLogic.Stats.SpellCrit]),
+					width = "full",
+					order = 9,
+					args = {},
+					hidden = true,
+				},
 				health = {
 					type = 'group',
 					name = L[StatLogic.Stats.Health],
 					desc = L["Changes the display of %s"]:format(L[StatLogic.Stats.Health]),
 					width = "full",
-					order = 8,
+					order = 9,
 					args = {},
 					hidden = true,
 				},
@@ -311,7 +320,7 @@ local options = {
 					type = 'group',
 					name = L[StatLogic.Stats.AttackPower],
 					desc = L["Changes the display of %s"]:format(L[StatLogic.Stats.AttackPower]),
-					order = 9,
+					order = 10,
 					args = {},
 					hidden = true,
 				},
@@ -319,7 +328,7 @@ local options = {
 					type = 'group',
 					name = L[StatLogic.Stats.MasteryRating],
 					desc = L["Changes the display of %s"]:format(L[StatLogic.Stats.MasteryRating]),
-					order = 10,
+					order = 11,
 					args = {},
 					hidden = true,
 				},
@@ -327,7 +336,7 @@ local options = {
 					type = 'group',
 					name = L[StatLogic.Stats.WeaponSkill],
 					desc = L["Changes the display of %s"]:format(L[StatLogic.Stats.WeaponSkill]),
-					order = 11,
+					order = 12,
 					hidden = true,
 					--[[
 					hidden = function()
@@ -347,7 +356,7 @@ local options = {
 					type = 'group',
 					name = L[StatLogic.Stats.ExpertiseRating],
 					desc = L["Changes the display of %s"]:format(L[StatLogic.Stats.ExpertiseRating]),
-					order = 12,
+					order = 13,
 					hidden = true,
 					args = {},
 				},
@@ -355,7 +364,7 @@ local options = {
 					type = 'group',
 					name = L[StatLogic.Stats.Defense],
 					desc = L["Changes the display of %s"]:format(L[StatLogic.Stats.Defense]),
-					order = 13,
+					order = 14,
 					hidden = true,
 					args = {},
 				},
@@ -363,7 +372,7 @@ local options = {
 					type = 'group',
 					name = L[StatLogic.Stats.Armor],
 					desc = L["Changes the display of %s"]:format(L[StatLogic.Stats.Armor]),
-					order = 14,
+					order = 15,
 					args = {},
 					hidden = true,
 				},
@@ -371,7 +380,7 @@ local options = {
 					type = 'group',
 					name = L[StatLogic.Stats.ResilienceRating],
 					desc = L["Changes the display of %s"]:format(L[StatLogic.Stats.ResilienceRating]),
-					order = 15,
+					order = 16,
 					args = {},
 					hidden = true,
 				},
@@ -2437,9 +2446,10 @@ do
 				local effect = value * statModContext("ADD_MANA_MOD_INT") * statModContext("MOD_MANA")
 				infoTable[StatLogic.Stats.Mana] = infoTable[StatLogic.Stats.Mana] + effect
 			end
+			local spellCrit = value * statModContext("ADD_SPELL_CRIT_MOD_INT")
+			self:ProcessStat(StatLogic.Stats.SpellCrit, spellCrit, infoTable, link, color, statModContext)
 			if db.profile.showSpellCritFromInt then
-				local effect = value * statModContext("ADD_SPELL_CRIT_MOD_INT")
-				infoTable[StatLogic.Stats.SpellCrit] = infoTable[StatLogic.Stats.SpellCrit] + effect
+				infoTable[StatLogic.Stats.SpellCrit] = infoTable[StatLogic.Stats.SpellCrit] + spellCrit
 			end
 			if db.profile.showSpellDmgFromInt then
 				local effect = value * statModContext("MOD_SPELL_DMG") * (
@@ -2530,6 +2540,11 @@ do
 			if db.profile.showHP5NCFromHealth then
 				local effect = value * statModContext("ADD_NORMAL_HEALTH_REG_MOD_HEALTH") * statModContext("MOD_NORMAL_HEALTH_REG")
 				infoTable[StatLogic.Stats.HealthRegenOutOfCombat] = infoTable[StatLogic.Stats.HealthRegenOutOfCombat] + effect
+			end
+		elseif statID == StatLogic.Stats.SpellCrit then
+			if db.profile.showDodgeFromSpellCrit then
+				local effect = value * statModContext("ADD_DODGE_MOD_SPELL_CRIT")
+				infoTable[StatLogic.Stats.Dodge] = infoTable[StatLogic.Stats.Dodge] + effect
 			end
 		elseif statID == StatLogic.Stats.Defense then
 			local blockChance = value * statModContext("ADD_BLOCK_CHANCE_MOD_DEFENSE")
@@ -3347,6 +3362,7 @@ local summaryCalcData = {
 				+ sum[StatLogic.Stats.DodgeRating] * statModContext("ADD_DODGE_MOD_DODGE_RATING")
 				+ summaryFunc[StatLogic.Stats.Defense](sum, statModContext) * statModContext("ADD_DODGE_MOD_DEFENSE")
 				+ sum[StatLogic.Stats.Agility] * statModContext("ADD_DODGE_MOD_AGI")
+				+ summaryFunc[StatLogic.Stats.SpellCrit](sum, statModContext) * statModContext("ADD_DODGE_MOD_SPELL_CRIT")
 		end,
 		ispercent = true,
 	},
