@@ -1037,10 +1037,10 @@ addon.StatModValidators = {
 		},
 	},
 	weapon = {
-		validate = function(case, _, overrideStats)
+		validate = function(case, _, statModContext)
 			local subclassID
-			if overrideStats then
-				subclassID = overrideStats.subclassID
+			if statModContext then
+				subclassID = statModContext.overrideStats.subclassID
 			else
 				local weapon = GetInventoryItemID("player", INVSLOT_MAINHAND)
 				if weapon then
@@ -1328,7 +1328,7 @@ do
 		local level = context.level
 		local profileSpec = context.profile .. context.spec
 
-		if not level or level == UnitLevel("player") then
+		if (not level or level == UnitLevel("player")) and not next(context.overrideStats) then
 			value = StatModCache[statMod][profileSpec]
 		end
 
