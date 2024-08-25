@@ -2055,9 +2055,9 @@ function RatingBuster:ProcessLine(text, link, color, statModContext)
 			return cacheText
 		end
 	elseif EmptySocketLookup[text] and db.profile[EmptySocketLookup[text]].gemText then -- Replace empty sockets with gem text
-		text = db.profile[EmptySocketLookup[text]].gemText
+		local gemText = db.profile[EmptySocketLookup[text]].gemText
+		text = RatingBuster:ProcessLine(gemText, link, color, statModContext)
 		cache[profileSpec][cacheID] = text
-		-- SetText
 		return text
 	elseif text:find("%d") then -- do nothing if we don't find a number
 		-- Temporarily replace exclusions
