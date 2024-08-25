@@ -323,7 +323,7 @@ L["Select the secondary profile for use with the swap profile keybind. If spec p
 -- or you can type /rb debug to enable it in game
 --
 -- Tip2: The strings are passed into string.find, so you should escape the magic characters ^$()%.[]*+-? with a %
-addon.numberPattern = "([%+%-]?[%d" .. LARGE_NUMBER_SEPERATOR .. "]+)%f[^%d%%+]"
+addon.numberPattern = "([%+%-]?[%d" .. LARGE_NUMBER_SEPERATOR .. "]+)%f[^%w%%+]"
 L["numberPatterns"] = {
 	" by " .. addon.numberPattern,
 	addon.numberPattern,
