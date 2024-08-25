@@ -1792,6 +1792,9 @@ function RatingBuster:InitializeDatabase()
 			LibStub("AceConfigDialog-3.0"):Open(addonNameWithVersion)
 		end
 		addon.RepaintStaticTooltips()
+		if ReforgingFrame then
+			ReforgingFrame_Update(ReforgingFrame)
+		end
 	end)
 	RatingBuster.db.RegisterCallback(RatingBuster, "OnProfileCopied", "ClearCache")
 	RatingBuster.db.RegisterCallback(RatingBuster, "OnProfileReset", "ClearCache")
@@ -2630,7 +2633,11 @@ EventUtil.ContinueOnAddOnLoaded("Blizzard_ReforgingUI", function()
 	local function hookReforgingFontString(fontString)
 		local og_SetText = fontString.SetText
 		fontString.SetText = function(self, text, ...)
-			og_SetText(self, RatingBuster:ProcessText(text))
+			local statModContext = StatLogic:NewStatModContext({
+				profile = db:GetCurrentProfile(),
+				spec = RatingBuster:GetDisplayedSpec()
+			})
+			og_SetText(self, RatingBuster:ProcessText(text, nil, nil, statModContext), ...)
 		end
 	end
 
