@@ -1778,8 +1778,8 @@ do
 
 				if not found then
 					-- Strip color codes
-					text = text:gsub("^|c%x%x%x%x%x%x%x%x", "")
-					text = text:gsub("|r$", "")
+					text = text:gsub("|c%x%x%x%x%x%x%x%x", "")
+					text = text:gsub("|r", "")
 				end
 				local rawText = text
 
