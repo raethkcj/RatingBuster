@@ -1912,39 +1912,33 @@ function StatLogic.AreColorsEqual(a, b)
 	  and math.abs(a.b - b.b) < colorPrecision
 end
 
-local BONUS_ARMOR_COLOR = CreateColorFromHexString(GREENCOLORCODE:sub(3))
+---@param item string
+---@param value integer
+---@param color ColorMixin
+---@return integer armor
+---@return integer bonusArmor
 function StatLogic:GetArmorDistribution(item, value, color)
-	-- Check item
-	if (type(item) == "string") or (type(item) == "number") then -- common case first
-	elseif type(item) == "table" and type(item.GetItem) == "function" then
-		-- Get the link
-		local _
-		_, item = item:GetItem()
-		if type(item) ~= "string" then return end
-	else
-		return
-	end
-	-- Check if item is in local cache
 	local name, _, itemQuality, itemLevel, _, _, _, _, itemEquipLoc, _, _, _, armorSubclass = C_Item.GetItemInfo(item)
 
 	local armor = value
-	local bonus_armor = 0
+	local bonusArmor = 0
+
 	if name then
 		if addon.bonusArmorItemEquipLoc and addon.bonusArmorItemEquipLoc[itemEquipLoc] then
 			armor = 0
-			bonus_armor = value
-		elseif StatLogic.AreColorsEqual(color, BONUS_ARMOR_COLOR) and addon.baseArmorTable then
+			bonusArmor = value
+		elseif addon.baseArmorTable and StatLogic.AreColorsEqual(color, INCREASE_STAT_COLOR) then
 			local qualityTable = addon.baseArmorTable[itemQuality]
 			local itemEquipLocTable = qualityTable and qualityTable[_G[itemEquipLoc]]
 			local armorSubclassTable = itemEquipLocTable and itemEquipLocTable[armorSubclass]
 
 			-- If found, subtract. Else, assume it's all bonus armor.
 			armor = armorSubclassTable and armorSubclassTable[itemLevel] or 0
-			bonus_armor = value - armor
+			bonusArmor = value - armor
 		end
 	end
 
-	return armor, bonus_armor
+	return armor, bonusArmor
 end
 
 local getSlotID = {
