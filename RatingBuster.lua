@@ -2594,7 +2594,7 @@ do
 			end
 
 			local attackPower = value * statModContext("ADD_AP_MOD_DEFENSE")
-			self:ProcessStat(StatLogic.Stats.AttackPower, value, infoTable, link, color, statModContext)
+			self:ProcessStat(StatLogic.Stats.AttackPower, attackPower, infoTable, link, color, statModContext)
 			if db.profile.showAPFromDefense then
 				infoTable[StatLogic.Stats.AttackPower] = infoTable[StatLogic.Stats.AttackPower] + attackPower
 			end
