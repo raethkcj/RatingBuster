@@ -1717,6 +1717,11 @@ StatLogic.StatModTable["ALL"] = {
 		{
 			["known"] = 3127,
 			["value"] = DODGE_PARRY_BLOCK_PERCENT_PER_DEFENSE,
-		}
+		},
+		-- Passive: Parry (Shaman)
+		{
+			["known"] = 18848,
+			["value"] = DODGE_PARRY_BLOCK_PERCENT_PER_DEFENSE,
+		},
 	},
 }
