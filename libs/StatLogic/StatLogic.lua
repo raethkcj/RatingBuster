@@ -492,6 +492,10 @@ local addedInfoMods = {
 	},
 	{
 		add = "BLOCK_VALUE",
+		mod = "SPELL_DMG",
+	},
+	{
+		add = "BLOCK_VALUE",
 		mod = "STR",
 	},
 	{

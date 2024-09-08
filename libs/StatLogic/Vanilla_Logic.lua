@@ -739,6 +739,12 @@ elseif addon.class == "PRIEST" then
 				["pieces"] = 3,
 				["value"] = 0.15,
 			},
+			-- Set: Dawn of Transcendence (SoD)
+			{
+				["set"] = 1812,
+				["pieces"] = 2,
+				["value"] = 0.15,
+			},
 		},
 		-- Priest: Spiritual Guidance (Rank 5) - 2,14
 		--         Increases spell damage and healing by up to 5%/10%/15%/20%/25% of your total Spirit.
@@ -816,7 +822,18 @@ elseif addon.class == "ROGUE" then
 			{
 				["known"] = 400016,
 				["rune"] = true,
-				["value"] = 0.30,
+				["stack"] = 0.06,
+				["max_stacks"] = 5,
+				["aura"] = 400015,
+			},
+		},
+		["MOD_ARMOR"] = {
+			-- Set: Bloodfang Battlearmor (Rolling with the Punches)
+			{
+				["known"] = 400016,
+				["rune"] = true,
+				["stack"] = 0.20,
+				["max_stacks"] = 5,
 				["aura"] = 400015,
 			},
 		},
@@ -841,6 +858,15 @@ elseif addon.class == "ROGUE" then
 				},
 				["weapon"] = {
 					[Enum.ItemWeaponSubclass.Unarmed] = true,
+				},
+			},
+			-- Set: Madcap's Outfit (SoD)
+			{
+				["set"] = 1829,
+				["pieces"] = 3,
+				["value"] = 5,
+				["weapon"] = {
+					[Enum.ItemWeaponSubclass.Dagger] = true,
 				},
 			},
 		},
@@ -913,6 +939,17 @@ elseif addon.class == "SHAMAN" then
 				["value"] = 0.05,
 			},
 		},
+		["ADD_BLOCK_VALUE_MOD_SPELL_DMG"] = {
+			-- Set: Resolve of the Ten Storms (Elemental Shield) (SoD)
+			{
+				["set"] = 1819,
+				["pieces"] = 4,
+				["stack"] = 0.10,
+				["max_stacks"] = 3,
+				["aura"] = 467910,
+				["rune"] = true,
+			},
+		},
 		["MOD_AP"] = {
 			-- Rune: Two-Handed Mastery
 			{
@@ -945,8 +982,7 @@ elseif addon.class == "SHAMAN" then
 			},
 		},
 		["MOD_BLOCK_VALUE"] = {
-			-- Shaman: Shield Specialization 5/5 - 2,2
-			--         Increases your chance to block attacks with a shield by 5% and increases the amount blocked by 5%/10%/15%/20%/25%.
+			-- Talent: Shield Specialization
 			{
 				["tab"] = 2,
 				["num"] = 2,
@@ -954,8 +990,7 @@ elseif addon.class == "SHAMAN" then
 					0.05, 0.1, 0.15, 0.2, 0.25,
 				},
 			},
-			-- Shaman: Shield Mastery - Rune
-			--   You also always gain 10% increased chance to Block and 15% increased Block value.
+			-- Rune: Shield Mastery
 			{
 				["known"] = 408524,
 				["rune"] = true,

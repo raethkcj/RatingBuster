@@ -324,6 +324,14 @@ local options = {
 					args = {},
 					hidden = true,
 				},
+				spell_dmg = {
+					type = 'group',
+					name = L[StatLogic.Stats.SpellDamage],
+					desc = L["Changes the display of %s"]:format(L[StatLogic.Stats.SpellDamage]),
+					order = 10,
+					args = {},
+					hidden = true,
+				},
 				mastery = {
 					type = 'group',
 					name = L[StatLogic.Stats.MasteryRating],
@@ -2359,8 +2367,10 @@ do
 				local effect = value * statModContext("ADD_BLOCK_VALUE_MOD_STR")
 				infoTable[StatLogic.Stats.BlockValue] = infoTable[StatLogic.Stats.BlockValue] + effect
 			end
+			local spellDamage = value * statModContext("ADD_SPELL_DMG_MOD_STR")
+			self:ProcessStat(StatLogic.Stats.SpellDamage, spellDamage, infoTable, link, color, statModContext)
 			if db.profile.showSpellDmgFromStr then
-				local effect = value * statModContext("MOD_SPELL_DMG") * statModContext("ADD_SPELL_DMG_MOD_STR")
+				local effect = spellDamage * statModContext("MOD_SPELL_DMG")
 				infoTable[StatLogic.Stats.SpellDamage] = infoTable[StatLogic.Stats.SpellDamage] + effect
 			end
 			if db.profile.showHealingFromStr then
@@ -2430,12 +2440,15 @@ do
 				local effect = health * statModContext("MOD_HEALTH")
 				infoTable[StatLogic.Stats.Health] = infoTable[StatLogic.Stats.Health] + effect
 			end
+
+			local spellDamage = value * statModContext("ADD_SPELL_DMG_MOD_STA")
+				+ statModContext("ADD_SPELL_DMG_MOD_PET_STA") * statModContext("MOD_PET_STA") * statModContext("ADD_PET_STA_MOD_STA")
+			self:ProcessStat(StatLogic.Stats.SpellDamage, spellDamage, infoTable, link, color, statModContext)
 			if db.profile.showSpellDmgFromSta then
-				local effect = value * statModContext("MOD_SPELL_DMG") * (statModContext("ADD_SPELL_DMG_MOD_STA")
-					+ statModContext("ADD_SPELL_DMG_MOD_PET_STA") * statModContext("MOD_PET_STA") * statModContext("ADD_PET_STA_MOD_STA"))
+				local effect = spellDamage * statModContext("MOD_SPELL_DMG")
 				infoTable[StatLogic.Stats.SpellDamage] = infoTable[StatLogic.Stats.SpellDamage] + effect
 			end
-			-- "ADD_AP_MOD_STA" -- Hunter: Hunter vs. Wild
+
 			if db.profile.showAPFromSta then
 				local effect = value * statModContext("ADD_AP_MOD_STA") * statModContext("MOD_AP")
 				infoTable[StatLogic.Stats.AttackPower] = infoTable[StatLogic.Stats.AttackPower] + effect
@@ -2454,14 +2467,18 @@ do
 			if db.profile.showSpellCritFromInt then
 				infoTable[StatLogic.Stats.SpellCrit] = infoTable[StatLogic.Stats.SpellCrit] + spellCrit
 			end
+
+			local spellDamage = value * (
+				statModContext("ADD_SPELL_DMG_MOD_INT")
+				+ statModContext("ADD_SPELL_DMG_MOD_PET_INT") * statModContext("MOD_PET_INT") * statModContext("ADD_PET_INT_MOD_INT")
+				+ statModContext("ADD_SPELL_DMG_MOD_MANA") * statModContext("MOD_MANA") * statModContext("ADD_MANA_MOD_INT")
+			)
+			self:ProcessStat(StatLogic.Stats.SpellDamage, spellDamage, infoTable, link, color, statModContext)
 			if db.profile.showSpellDmgFromInt then
-				local effect = value * statModContext("MOD_SPELL_DMG") * (
-					statModContext("ADD_SPELL_DMG_MOD_INT")
-					+ statModContext("ADD_SPELL_DMG_MOD_PET_INT") * statModContext("MOD_PET_INT") * statModContext("ADD_PET_INT_MOD_INT")
-					+ statModContext("ADD_SPELL_DMG_MOD_MANA") * statModContext("MOD_MANA") * statModContext("ADD_MANA_MOD_INT")
-				)
+				local effect = spellDamage * statModContext("MOD_SPELL_DMG")
 				infoTable[StatLogic.Stats.SpellDamage] = infoTable[StatLogic.Stats.SpellDamage] + effect
 			end
+
 			if db.profile.showHealingFromInt then
 				local effect = value * statModContext("MOD_HEALING") * (
 					statModContext("ADD_HEALING_MOD_INT")
@@ -2516,10 +2533,14 @@ do
 				local effect = value * statModContext("ADD_NORMAL_HEALTH_REG_MOD_SPI") * statModContext("MOD_NORMAL_HEALTH_REG")
 				infoTable[StatLogic.Stats.HealthRegenOutOfCombat] = infoTable[StatLogic.Stats.HealthRegenOutOfCombat] + effect
 			end
+
+			local spellDamage = value * statModContext("ADD_SPELL_DMG_MOD_SPI")
+			self:ProcessStat(StatLogic.Stats.SpellDamage, spellDamage, infoTable, link, color, statModContext)
 			if db.profile.showSpellDmgFromSpi then
-				local effect = value * statModContext("ADD_SPELL_DMG_MOD_SPI") * statModContext("MOD_SPELL_DMG")
+				local effect = spellDamage * statModContext("MOD_SPELL_DMG")
 				infoTable[StatLogic.Stats.SpellDamage] = infoTable[StatLogic.Stats.SpellDamage] + effect
 			end
+
 			if db.profile.showHealingFromSpi then
 				local effect = value * statModContext("ADD_HEALING_MOD_SPI") * statModContext("MOD_HEALING")
 				infoTable[StatLogic.Stats.HealingPower] = infoTable[StatLogic.Stats.HealingPower] + effect
@@ -2596,12 +2617,15 @@ do
 			local attackPower = value * statModContext("ADD_AP_MOD_DEFENSE")
 			self:ProcessStat(StatLogic.Stats.AttackPower, attackPower, infoTable, link, color, statModContext)
 			if db.profile.showAPFromDefense then
-				infoTable[StatLogic.Stats.AttackPower] = infoTable[StatLogic.Stats.AttackPower] + attackPower
+				local effect = attackPower * statModContext("MOD_AP")
+				infoTable[StatLogic.Stats.AttackPower] = infoTable[StatLogic.Stats.AttackPower] + effect
 			end
 
 			local spellDamage = value * statModContext("ADD_SPELL_DMG_MOD_DEFENSE")
+			self:ProcessStat(StatLogic.Stats.SpellDamage, spellDamage, infoTable, link, color, statModContext)
 			if db.profile.showSpellDmgFromDefense then
-				infoTable[StatLogic.Stats.SpellDamage] = infoTable[StatLogic.Stats.SpellDamage] + spellDamage
+				local effect = spellDamage * statModContext("MOD_SPELL_DMG")
+				infoTable[StatLogic.Stats.SpellDamage] = infoTable[StatLogic.Stats.SpellDamage] + effect
 			end
 		elseif statID == StatLogic.Stats.Armor then
 			local base, bonus = StatLogic:GetArmorDistribution(link, value, color)
@@ -2615,13 +2639,23 @@ do
 			-- Attack Power --
 			------------------
 			value = value * statModContext("MOD_AP")
+
+			local spellDamage = value * statModContext("ADD_SPELL_DMG_MOD_AP")
+			self:ProcessStat(StatLogic.Stats.SpellDamage, spellDamage, infoTable, link, color, statModContext)
 			if db.profile.showSpellDmgFromAP then
-				local effect = value * statModContext("ADD_SPELL_DMG_MOD_AP") * statModContext("MOD_SPELL_DMG")
+				local effect = spellDamage * statModContext("MOD_SPELL_DMG")
 				infoTable[StatLogic.Stats.SpellDamage] = infoTable[StatLogic.Stats.SpellDamage] + effect
 			end
+
 			if db.profile.showHealingFromAP then
 				local effect = value * statModContext("ADD_HEALING_MOD_AP") * statModContext("MOD_HEALING")
 				infoTable[StatLogic.Stats.HealingPower] = infoTable[StatLogic.Stats.HealingPower] + effect
+			end
+		elseif statID == StatLogic.Stats.SpellDamage then
+			value = value * statModContext("MOD_SPELL_DMG")
+			if db.profile.showBlockValueFromSpellDmg then
+				local effect = value * statModContext("ADD_BLOCK_VALUE_MOD_SPELL_DMG") * statModContext("MOD_BLOCK_VALUE")
+				infoTable[StatLogic.Stats.BlockValue] = infoTable[StatLogic.Stats.BlockValue] + effect
 			end
 		end
 	end
@@ -3468,6 +3502,7 @@ local summaryCalcData = {
 				statModContext("MOD_BLOCK_VALUE") * (
 					sum[StatLogic.Stats.BlockValue]
 					+ sum[StatLogic.Stats.Strength] * statModContext("ADD_BLOCK_VALUE_MOD_STR")
+					+ summaryFunc[StatLogic.Stats.SpellDamage](sum, statModContext) * statModContext("ADD_BLOCK_VALUE_MOD_SPELL_DMG")
 				)
 			) or 0
 		end,
