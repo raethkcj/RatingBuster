@@ -1313,6 +1313,9 @@ do
 		if not context.spec then
 			context.spec = GetActiveTalentGroup()
 		end
+		if not context.level then
+			context.level = UnitLevel("player")
+		end
 		if not context.overrideStats then
 			context.overrideStats = StatLogic.StatTable:new()
 		end
@@ -1329,10 +1332,9 @@ do
 		if not context then
 			context = self:NewStatModContext()
 		end
-		local level = context.level
 		local profileSpec = context.profile .. context.spec
 
-		if (not level or level == UnitLevel("player")) and not next(context.overrideStats) then
+		if context.level == UnitLevel("player") and not next(context.overrideStats) then
 			value = StatModCache[statMod][profileSpec]
 		end
 
@@ -1353,7 +1355,7 @@ do
 			end
 
 			value = value + statModInfo.finalAdjust
-			if not level or level == UnitLevel("player") then
+			if context.level == UnitLevel("player") then
 				StatModCache[statMod][profileSpec] = value
 			end
 		end

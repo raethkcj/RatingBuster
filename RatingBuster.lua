@@ -1983,12 +1983,12 @@ function RatingBuster.ProcessTooltip(tooltip)
 
 	RatingBuster:EnableKeybindings(tooltip)
 
-	local profile = db:GetCurrentProfile()
-	local spec = RatingBuster:GetDisplayedSpec()
+	local itemMinLevel = select(5, C_Item.GetItemInfo(link))
 
 	local statModContext = StatLogic:NewStatModContext({
-		profile = profile,
-		spec = spec,
+		profile = db:GetCurrentProfile(),
+		spec = RatingBuster:GetDisplayedSpec(),
+		level = math.max(itemMinLevel, playerLevel)
 	})
 
 	---------------------
@@ -2056,7 +2056,7 @@ end
 function RatingBuster:ProcessLine(text, link, color, statModContext)
 	-- Get data from cache if available
 	local profileSpec = statModContext.profile .. statModContext.spec
-	local cacheID = text .. playerLevel
+	local cacheID = text .. statModContext.level
 	local cacheText = cache[profileSpec][cacheID]
 	if cacheText then
 		if cacheText ~= text then
@@ -2268,7 +2268,7 @@ do
 			-- Combat Ratings --
 			--------------------
 			-- Calculate stat value
-			local effect = StatLogic:GetEffectFromRating(value, statID, playerLevel)
+			local effect = StatLogic:GetEffectFromRating(value, statID, statModContext.level)
 			if statID == StatLogic.Stats.DefenseRating then
 				if db.profile.showDefenseFromDefenseRating then
 					infoTable["Decimal"] = effect
