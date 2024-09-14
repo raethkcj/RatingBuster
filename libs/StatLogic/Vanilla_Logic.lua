@@ -925,6 +925,15 @@ elseif addon.class == "SHAMAN" then
 				["value"] = 0.071429 * 5,
 			},
 		},
+		["ADD_SPELL_DMG_MOD_INT"] = {
+			-- Rune: Burn (Burn)
+			{
+				["known"] = 415231,
+				["rune"] = true,
+				["value"] = 1,
+				["aura"] = 454042,
+			},
+		},
 		["ADD_MANA_REG_MOD_INT"] = {
 			-- Rune: Power Surge
 			{
