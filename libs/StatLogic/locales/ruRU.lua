@@ -4,6 +4,7 @@ if GetLocale() ~= "ruRU" then return end
 local StatLogic = LibStub(addonName)
 
 local W = addon.WholeTextLookup
+W["закон природы"] = {[StatLogic.Stats.SpellDamage] = 30, [StatLogic.Stats.HealingPower] = 55, }
 W["живучесть"] = {[StatLogic.Stats.ManaRegen] = 4, [StatLogic.Stats.HealthRegen] = 4, }
 W["верный шаг"] = {[StatLogic.Stats.HitRating] = 10, }
 W["варварство"] = {[StatLogic.Stats.AttackPower] = 70, }
@@ -26,12 +27,32 @@ L["%s к исцеляющим заклинаниям"] = {StatLogic.Stats.Healin
 L["%s к урону от заклинаний"] = {StatLogic.Stats.SpellDamage, }
 L["%s к урону от заклинаний и исцелению"] = {StatLogic.Stats.SpellDamage, }
 L["восполнение %s ед. маны каждые %s секунд"] = {StatLogic.Stats.ManaRegen, false, }
+L["%s к рейтингу защиты/%s к выносливости/%s к блокированию"] = {StatLogic.Stats.Defense, StatLogic.Stats.Stamina, StatLogic.Stats.BlockValue, }
+L["%s к рейтингу защиты, %s к выносливости, %s к исцеляющим заклинаниям"] = {StatLogic.Stats.Defense, StatLogic.Stats.Stamina, StatLogic.Stats.Healing, }
+L["%s к силе атаки/%s% к рейтингу уклонения"] = {StatLogic.Stats.AttackPower, StatLogic.Stats.Dodge, }
+L["%s к силе атаки дальнего боя/%s к выносливости/%s% к рейтингу меткости"] = {StatLogic.Stats.RangedAttackPower, StatLogic.Stats.Stamina, {StatLogic.Stats.MeleeHit, StatLogic.Stats.RangedHit, }, }
+L["%s к урону от заклинаний и исцелению; %s к интеллекту"] = {{StatLogic.Stats.HealingPower, StatLogic.Stats.SpellDamage, }, StatLogic.Stats.Intellect, }
 L["%s к урону от заклинаний и исцелению; %s% к рейтингу меткости"] = {{StatLogic.Stats.HealingPower, StatLogic.Stats.SpellDamage, }, StatLogic.Stats.SpellHitRating, }
+L["%s к урону от заклинаний и исцелению; %s к выносливости"] = {{StatLogic.Stats.HealingPower, StatLogic.Stats.SpellDamage, }, StatLogic.Stats.Stamina, }
 L["%s к восполнению маны, %s к выносливости, %s к исцеляющим заклинаниям"] = {StatLogic.Stats.ManaRegen, StatLogic.Stats.Stamina, StatLogic.Stats.HealingPower, }
+L["%s к интеллекту, %s к выносливости, %s к исцеляющим заклинаниям"] = {StatLogic.Stats.Intellect, StatLogic.Stats.Stamina, StatLogic.Stats.Healing, }
 L["%s к наносящим урон и исцеляющим заклинаниям"] = {StatLogic.Stats.SpellDamage, }
 L["%s к урону от темной магии"] = {StatLogic.Stats.ShadowDamage, }
 L["%s к урону от магии льда"] = {StatLogic.Stats.FrostDamage, }
 L["%s к урону от огня"] = {StatLogic.Stats.FireDamage, }
+L["%s к выносливости/%s к интеллекту/%s к силе исцеления"] = {StatLogic.Stats.Stamina, StatLogic.Stats.Intellect, StatLogic.Stats.HealingPower, }
+L["%s к выносливости/%s% к вероятности попадания/%s к силе заклинаний и исцеления"] = {StatLogic.Stats.Stamina, {StatLogic.Stats.MeleeHit, StatLogic.Stats.RangedHit, StatLogic.Stats.SpellHit, }, {StatLogic.Stats.HealingPower, StatLogic.Stats.SpellDamage, }, }
+L["%s к выносливости/%s к силе/%s к ловкости"] = {StatLogic.Stats.Stamina, StatLogic.Stats.Strength, StatLogic.Stats.Agility, }
+L["%s к выносливости/%s к силе/%s к защите"] = {StatLogic.Stats.Stamina, StatLogic.Stats.Strength, StatLogic.Stats.Defense, }
+L["%s к выносливости/%s к ловкости/%s% к вероятности попадания"] = {StatLogic.Stats.Stamina, StatLogic.Stats.Agility, {StatLogic.Stats.MeleeHit, StatLogic.Stats.RangedHit, StatLogic.Stats.SpellHit, }, }
+L["%s к выносливости/%s к защите/%s к силе заклинаний и исцеления"] = {StatLogic.Stats.Stamina, StatLogic.Stats.Defense, {StatLogic.Stats.HealingPower, StatLogic.Stats.SpellDamage, }, }
+L["%s к выносливости/%s к силе/%s к силе заклинаний и исцеления"] = {StatLogic.Stats.Stamina, StatLogic.Stats.Strength, {StatLogic.Stats.HealingPower, StatLogic.Stats.SpellDamage, }, }
+L["%s к выносливости/%s к интеллекту/%s к силе заклинаний и исцеления"] = {StatLogic.Stats.Stamina, StatLogic.Stats.Intellect, {StatLogic.Stats.HealingPower, StatLogic.Stats.SpellDamage, }, }
+L["%s к выносливости/%s к ловкости/%s к защите"] = {StatLogic.Stats.Stamina, StatLogic.Stats.Agility, StatLogic.Stats.Defense, }
+L["%s к выносливости/%s к защите/%s% к вероятности блокирования"] = {StatLogic.Stats.Stamina, StatLogic.Stats.Defense, StatLogic.Stats.BlockChance, }
+L["%s к выносливости/%s% к вероятности попадания/%s к защите"] = {StatLogic.Stats.Stamina, {StatLogic.Stats.MeleeHit, StatLogic.Stats.RangedHit, StatLogic.Stats.SpellHit, }, StatLogic.Stats.Defense, }
+L["%s к выносливости/%s к защите/%s к показателю блокирования"] = {StatLogic.Stats.Stamina, StatLogic.Stats.Defense, StatLogic.Stats.BlockValue, }
+L["%s к выносливости/%s к ловкости/%s к силе"] = {StatLogic.Stats.Stamina, StatLogic.Stats.Agility, StatLogic.Stats.Strength, }
 L["%s к рейтингу блока щитом"] = {StatLogic.Stats.BlockRating, }
 L["%s% к рейтингу критического удара"] = {StatLogic.Stats.CritRating, }
 L["%s к сопротивлению всему"] = {{StatLogic.Stats.ArcaneResistance, StatLogic.Stats.FireResistance, StatLogic.Stats.FrostResistance, StatLogic.Stats.NatureResistance, StatLogic.Stats.ShadowResistance, }, }
@@ -289,7 +310,7 @@ L["повышение целительного действия магическ
 L["восполнение %s ед. маны раз в %s сек. у всех участников группы в радиусе %s м"] = {StatLogic.Stats.ManaRegen, false, false, }
 L["повышение наносимого урона от заклинаний не более чем на %s ед. и исцеляющих эффектов на величину вплоть до %s ед"] = {StatLogic.Stats.SpellDamage, StatLogic.Stats.HealingPower, }
 L["повышает вероятность попадания атак и заклинаний на %s%"] = {{StatLogic.Stats.MeleeHit, StatLogic.Stats.RangedHit, StatLogic.Stats.SpellHit, }, }
-L["повышает вероятность критического удара атак и заклинаний на %s%"] = {{StatLogic.Stats.MeleeCrit, StatLogic.Stats.RangedCrit, StatLogic.Stats.SpellCrit, }, }
+L["повышает вероятность критического эффекта атак и заклинаний на %s%"] = {{StatLogic.Stats.MeleeCrit, StatLogic.Stats.RangedCrit, StatLogic.Stats.SpellCrit, }, }
 L["увеличение рейтинга защиты на %s ед"] = {StatLogic.Stats.Defense, }
 L["повышает вероятность блокирования атаки щитом на %s%,"] = {StatLogic.Stats.BlockChance, }
 L["увеличение урона и целительного действия магических заклинаний и эффектов не более чем на %s ед"] = {{StatLogic.Stats.SpellDamage, StatLogic.Stats.HealingPower, }, }

@@ -4,6 +4,7 @@ if GetLocale() ~= "koKR" then return end
 local StatLogic = LibStub(addonName)
 
 local W = addon.WholeTextLookup
+W["자연의 법칙"] = {[StatLogic.Stats.SpellDamage] = 30, [StatLogic.Stats.HealingPower] = 55, }
 W["활력"] = {[StatLogic.Stats.ManaRegen] = 4, [StatLogic.Stats.HealthRegen] = 4, }
 W["침착함"] = {[StatLogic.Stats.HitRating] = 10, }
 W["전투력"] = {[StatLogic.Stats.AttackPower] = 70, }
@@ -25,11 +26,31 @@ L["자연 주문 공격력 %s"] = {StatLogic.Stats.NatureDamage, }
 L["주문 피해 %s"] = {StatLogic.Stats.SpellDamage, }
 L["치유 및 주문 공격력 %s"] = {StatLogic.Stats.SpellDamage, }
 L["%s초당 마나 회복 %s"] = {false, StatLogic.Stats.ManaRegen, }
+L["방어 숙련도 %s / 체력 %s / 방패 피해 방어량 %s"] = {StatLogic.Stats.Defense, StatLogic.Stats.Stamina, StatLogic.Stats.BlockValue, }
+L["방어 숙련도 %s / 체력 %s / 치유 효과 증가 %s"] = {StatLogic.Stats.Defense, StatLogic.Stats.Stamina, StatLogic.Stats.Healing, }
+L["전투력 %s / 회피율 %s%"] = {StatLogic.Stats.AttackPower, StatLogic.Stats.Dodge, }
+L["원거리 전투력 %s / 체력 %s / 적중률 %s%"] = {StatLogic.Stats.RangedAttackPower, StatLogic.Stats.Stamina, {StatLogic.Stats.MeleeHit, StatLogic.Stats.RangedHit, }, }
+L["치유 및 주문 공격력 %s / 지능 %s"] = {{StatLogic.Stats.HealingPower, StatLogic.Stats.SpellDamage, }, StatLogic.Stats.Intellect, }
 L["치유 및 주문 공격력 %s / 주문 적중률 %s%"] = {{StatLogic.Stats.HealingPower, StatLogic.Stats.SpellDamage, }, StatLogic.Stats.SpellHit, }
+L["치유 및 주문 공격력 %s / 체력 %s"] = {{StatLogic.Stats.HealingPower, StatLogic.Stats.SpellDamage, }, StatLogic.Stats.Stamina, }
 L["마나 회복 %s / 체력 %s / 치유 효과 중가 %s"] = {StatLogic.Stats.ManaRegen, StatLogic.Stats.Stamina, StatLogic.Stats.HealingPower, }
+L["지능 %s / 체력 %s / 치유 효과 증가 %s"] = {StatLogic.Stats.Intellect, StatLogic.Stats.Stamina, StatLogic.Stats.Healing, }
 L["암흑 공격력 %s"] = {StatLogic.Stats.ShadowDamage, }
 L["냉기 공격력 %s"] = {StatLogic.Stats.FrostDamage, }
 L["화염 공격력 %s"] = {StatLogic.Stats.FireDamage, }
+L["체력 %s/지능 %s/치유 주문 %s"] = {StatLogic.Stats.Stamina, StatLogic.Stats.Intellect, StatLogic.Stats.HealingPower, }
+L["체력 %s/적중 %s%/치유량 및 주문 공격력 %s"] = {StatLogic.Stats.Stamina, {StatLogic.Stats.MeleeHit, StatLogic.Stats.RangedHit, StatLogic.Stats.SpellHit, }, {StatLogic.Stats.HealingPower, StatLogic.Stats.SpellDamage, }, }
+L["체력 %s/힘 %s/민첩성 %s"] = {StatLogic.Stats.Stamina, StatLogic.Stats.Strength, StatLogic.Stats.Agility, }
+L["체력 %s/힘 %s/방어 %s"] = {StatLogic.Stats.Stamina, StatLogic.Stats.Strength, StatLogic.Stats.Defense, }
+L["체력 %s/민첩성 %s/적중 %s%"] = {StatLogic.Stats.Stamina, StatLogic.Stats.Agility, {StatLogic.Stats.MeleeHit, StatLogic.Stats.RangedHit, StatLogic.Stats.SpellHit, }, }
+L["체력 %s/방어 %s/치유량 및 주문 공격력 %s"] = {StatLogic.Stats.Stamina, StatLogic.Stats.Defense, {StatLogic.Stats.HealingPower, StatLogic.Stats.SpellDamage, }, }
+L["체력 %s/힘 %s/치유량 및 주문 공격력 %s"] = {StatLogic.Stats.Stamina, StatLogic.Stats.Strength, {StatLogic.Stats.HealingPower, StatLogic.Stats.SpellDamage, }, }
+L["체력 %s/지능 %s/치유량 및 주문 공격력 %s"] = {StatLogic.Stats.Stamina, StatLogic.Stats.Intellect, {StatLogic.Stats.HealingPower, StatLogic.Stats.SpellDamage, }, }
+L["체력 %s/민첩성 %s/방어 %s"] = {StatLogic.Stats.Stamina, StatLogic.Stats.Agility, StatLogic.Stats.Defense, }
+L["체력 %s/방어 %s/방패 막기 확률 %s%"] = {StatLogic.Stats.Stamina, StatLogic.Stats.Defense, StatLogic.Stats.BlockChance, }
+L["체력 %s/적중 %s%/방어 %s"] = {StatLogic.Stats.Stamina, {StatLogic.Stats.MeleeHit, StatLogic.Stats.RangedHit, StatLogic.Stats.SpellHit, }, StatLogic.Stats.Defense, }
+L["체력 %s/방어 %s/방패 막기 %s"] = {StatLogic.Stats.Stamina, StatLogic.Stats.Defense, StatLogic.Stats.BlockValue, }
+L["체력 %s/민첩성 %s/힘 %s"] = {StatLogic.Stats.Stamina, StatLogic.Stats.Agility, StatLogic.Stats.Strength, }
 L["방어도 보강 (방어도 %s)"] = {StatLogic.Stats.BonusArmor, }
 L["방패 막기 숙련도 %s"] = {StatLogic.Stats.BlockRating, }
 L["주문 치유량 %s / 주문 공격력 %s"] = {StatLogic.Stats.HealingPower, StatLogic.Stats.SpellDamage, }
@@ -272,8 +293,8 @@ L["무기 막기 확률이 %s%만큼 증가합니다"] = {StatLogic.Stats.Parry,
 L["공격을 회피할 확률이 %s%만큼 증가합니다"] = {StatLogic.Stats.Dodge, }
 L["무기의 적중률이 %s%만큼 증가합니다"] = {{StatLogic.Stats.MeleeHit, StatLogic.Stats.RangedHit, }, }
 L["주문이 극대화 효과를 낼 확률이 %s%만큼 증가합니다"] = {StatLogic.Stats.SpellCrit, }
-L["지팡이류 숙련도 %s"] = {StatLogic.Stats.WeaponSkill, }
 L["신성 계열의 주문과 효과의 공격력이 최대 %s만큼 증가합니다"] = {StatLogic.Stats.HolyDamage, }
+L["지팡이류 숙련도 %s"] = {StatLogic.Stats.WeaponSkill, }
 L["석궁류 숙련도 %s"] = {StatLogic.Stats.WeaponSkill, }
 L["주문의 적중률이 %s%만큼 증가합니다"] = {StatLogic.Stats.SpellHit, }
 L["장착 무기류 숙련도 %s"] = {StatLogic.Stats.WeaponSkill, }

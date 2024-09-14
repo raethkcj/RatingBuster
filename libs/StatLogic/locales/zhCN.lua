@@ -4,6 +4,7 @@ if GetLocale() ~= "zhCN" then return end
 local StatLogic = LibStub(addonName)
 
 local W = addon.WholeTextLookup
+W["自然法则"] = {[StatLogic.Stats.SpellDamage] = 30, [StatLogic.Stats.HealingPower] = 55, }
 W["活力"] = {[StatLogic.Stats.ManaRegen] = 4, [StatLogic.Stats.HealthRegen] = 4, }
 W["稳固"] = {[StatLogic.Stats.HitRating] = 10, }
 W["野蛮"] = {[StatLogic.Stats.AttackPower] = 70, }
@@ -26,13 +27,33 @@ L["%s 治疗法术"] = {StatLogic.Stats.HealingPower, }
 L["%s 法术伤害"] = {StatLogic.Stats.SpellDamage, }
 L["治疗和法术伤害 %s"] = {StatLogic.Stats.SpellDamage, }
 L["每%s秒回复%s点法力值。"] = {false, StatLogic.Stats.ManaRegen, }
+L["防御 %s/耐力 %s/格挡值 %s"] = {StatLogic.Stats.Defense, StatLogic.Stats.Stamina, StatLogic.Stats.BlockValue, }
+L["防御 %s/耐力 %s/治疗法术 %s"] = {StatLogic.Stats.Defense, StatLogic.Stats.Stamina, StatLogic.Stats.Healing, }
+L["攻击强度 %s/躲闪 %s%"] = {StatLogic.Stats.AttackPower, StatLogic.Stats.Dodge, }
+L["远程攻击强度 %s/耐力 %s/命中 %s%"] = {StatLogic.Stats.RangedAttackPower, StatLogic.Stats.Stamina, {StatLogic.Stats.MeleeHit, StatLogic.Stats.RangedHit, }, }
+L["法术治疗和伤害 %s/智力 %s"] = {{StatLogic.Stats.HealingPower, StatLogic.Stats.SpellDamage, }, StatLogic.Stats.Intellect, }
 L["法术治疗和伤害 %s/法术命中 %s%"] = {{StatLogic.Stats.HealingPower, StatLogic.Stats.SpellDamage, }, StatLogic.Stats.SpellHit, }
+L["法术治疗和伤害 %s/耐力 %s"] = {{StatLogic.Stats.HealingPower, StatLogic.Stats.SpellDamage, }, StatLogic.Stats.Stamina, }
 L["法力回复 %s/耐力 %s/治疗法术 %s"] = {StatLogic.Stats.ManaRegen, StatLogic.Stats.Stamina, StatLogic.Stats.HealingPower, }
+L["智力 %s/耐力 %s/治疗法术 %s"] = {StatLogic.Stats.Intellect, StatLogic.Stats.Stamina, StatLogic.Stats.Healing, }
 L["%s 法术伤害和治疗"] = {StatLogic.Stats.SpellDamage, }
 L["%s 伤害和治疗法术"] = {StatLogic.Stats.SpellDamage, }
 L["暗影伤害 %s"] = {StatLogic.Stats.ShadowDamage, }
 L["冰霜伤害 %s"] = {StatLogic.Stats.FrostDamage, }
 L["火焰伤害 %s"] = {StatLogic.Stats.FireDamage, }
+L["耐力 %s/智力 %s/治疗法术 %s"] = {StatLogic.Stats.Stamina, StatLogic.Stats.Intellect, StatLogic.Stats.HealingPower, }
+L["耐力 %s/命中 %s%/治疗和法术伤害 %s"] = {StatLogic.Stats.Stamina, {StatLogic.Stats.MeleeHit, StatLogic.Stats.RangedHit, StatLogic.Stats.SpellHit, }, {StatLogic.Stats.HealingPower, StatLogic.Stats.SpellDamage, }, }
+L["耐力 %s/力量 %s/敏捷 %s"] = {StatLogic.Stats.Stamina, StatLogic.Stats.Strength, StatLogic.Stats.Agility, }
+L["耐力 %s/力量 %s/防御 %s"] = {StatLogic.Stats.Stamina, StatLogic.Stats.Strength, StatLogic.Stats.Defense, }
+L["耐力 %s/敏捷 %s/命中 %s%"] = {StatLogic.Stats.Stamina, StatLogic.Stats.Agility, {StatLogic.Stats.MeleeHit, StatLogic.Stats.RangedHit, StatLogic.Stats.SpellHit, }, }
+L["耐力 %s/防御 %s/治疗和法术伤害 %s"] = {StatLogic.Stats.Stamina, StatLogic.Stats.Defense, {StatLogic.Stats.HealingPower, StatLogic.Stats.SpellDamage, }, }
+L["耐力 %s/力量 %s/治疗和法术伤害 %s"] = {StatLogic.Stats.Stamina, StatLogic.Stats.Strength, {StatLogic.Stats.HealingPower, StatLogic.Stats.SpellDamage, }, }
+L["耐力 %s/智力 %s/治疗和法术伤害 %s"] = {StatLogic.Stats.Stamina, StatLogic.Stats.Intellect, {StatLogic.Stats.HealingPower, StatLogic.Stats.SpellDamage, }, }
+L["耐力 %s/敏捷 %s/防御 %s"] = {StatLogic.Stats.Stamina, StatLogic.Stats.Agility, StatLogic.Stats.Defense, }
+L["耐力 %s/防御 %s/格挡几率 %s%"] = {StatLogic.Stats.Stamina, StatLogic.Stats.Defense, StatLogic.Stats.BlockChance, }
+L["耐力 %s/命中 %s%/防御 %s"] = {StatLogic.Stats.Stamina, {StatLogic.Stats.MeleeHit, StatLogic.Stats.RangedHit, StatLogic.Stats.SpellHit, }, StatLogic.Stats.Defense, }
+L["耐力 %s/防御 %s/格挡值 %s"] = {StatLogic.Stats.Stamina, StatLogic.Stats.Defense, StatLogic.Stats.BlockValue, }
+L["耐力 %s/敏捷 %s/力量 %s"] = {StatLogic.Stats.Stamina, StatLogic.Stats.Agility, StatLogic.Stats.Strength, }
 L["加固（%s 护甲）"] = {StatLogic.Stats.BonusArmor, }
 L["%s 盾牌格挡等级"] = {StatLogic.Stats.BlockRating, }
 L["%s 法术治疗，%s 法术伤害"] = {StatLogic.Stats.HealingPower, StatLogic.Stats.SpellDamage, }

@@ -4,6 +4,7 @@ if GetLocale() ~= "esES" then return end
 local StatLogic = LibStub(addonName)
 
 local W = addon.WholeTextLookup
+W["ley de la naturaleza"] = {[StatLogic.Stats.SpellDamage] = 30, [StatLogic.Stats.HealingPower] = 55, }
 W["vitalidad"] = {[StatLogic.Stats.ManaRegen] = 4, [StatLogic.Stats.HealthRegen] = 4, }
 W["pies de plomo"] = {[StatLogic.Stats.HitRating] = 10, }
 W["salvajismo"] = {[StatLogic.Stats.AttackPower] = 70, }
@@ -26,13 +27,33 @@ L["%s de hechizos de curación"] = {StatLogic.Stats.HealingPower, }
 L["daño de hechizos %s"] = {StatLogic.Stats.SpellDamage, }
 L["curación y daño de hechizos %s"] = {StatLogic.Stats.SpellDamage, }
 L["%s de regeneración de maná cada %s seg"] = {StatLogic.Stats.ManaRegen, false, }
+L["defensa %s/aguante %s/valor de bloquear %s"] = {StatLogic.Stats.Defense, StatLogic.Stats.Stamina, StatLogic.Stats.BlockValue, }
+L["defensa %s/aguante %s/hechizos de curación %s"] = {StatLogic.Stats.Defense, StatLogic.Stats.Stamina, StatLogic.Stats.Healing, }
+L["poder de ataque %s/esquivar %s%"] = {StatLogic.Stats.AttackPower, StatLogic.Stats.Dodge, }
+L["poder de ataque a distancia %s/aguante %s/impacto %s%"] = {StatLogic.Stats.RangedAttackPower, StatLogic.Stats.Stamina, {StatLogic.Stats.MeleeHit, StatLogic.Stats.RangedHit, }, }
+L["curación y daño de hechizos %s/intelecto %s"] = {{StatLogic.Stats.HealingPower, StatLogic.Stats.SpellDamage, }, StatLogic.Stats.Intellect, }
 L["curación y daño de hechizos %s/hechizo impacto %s%"] = {{StatLogic.Stats.HealingPower, StatLogic.Stats.SpellDamage, }, StatLogic.Stats.SpellHit, }
+L["curación y daño de hechizos %s/aguante %s"] = {{StatLogic.Stats.HealingPower, StatLogic.Stats.SpellDamage, }, StatLogic.Stats.Stamina, }
 L["regeneración de maná %s/aguante %s/hechizos de curación %s"] = {StatLogic.Stats.ManaRegen, StatLogic.Stats.Stamina, StatLogic.Stats.HealingPower, }
+L["intelecto %s/aguante %s/hechizos de curación %s"] = {StatLogic.Stats.Intellect, StatLogic.Stats.Stamina, StatLogic.Stats.Healing, }
 L["%s de daño de hechizos y curación"] = {StatLogic.Stats.SpellDamage, }
 L["%s de daño y hechizos de curación"] = {StatLogic.Stats.SpellDamage, }
 L["daño de sombras %s"] = {StatLogic.Stats.ShadowDamage, }
 L["daño de escarcha %s"] = {StatLogic.Stats.FrostDamage, }
 L["daño de fuego %s"] = {StatLogic.Stats.FireDamage, }
+L["aguante %s/intelecto %s/hechizos de sanación %s"] = {StatLogic.Stats.Stamina, StatLogic.Stats.Intellect, StatLogic.Stats.HealingPower, }
+L["aguante %s/golpe %s%/sanación y daño con hechizos %s"] = {StatLogic.Stats.Stamina, {StatLogic.Stats.MeleeHit, StatLogic.Stats.RangedHit, StatLogic.Stats.SpellHit, }, {StatLogic.Stats.HealingPower, StatLogic.Stats.SpellDamage, }, }
+L["aguante %s/fuerza %s/agilidad %s"] = {StatLogic.Stats.Stamina, StatLogic.Stats.Strength, StatLogic.Stats.Agility, }
+L["aguante %s/fuerza %s/defensa %s"] = {StatLogic.Stats.Stamina, StatLogic.Stats.Strength, StatLogic.Stats.Defense, }
+L["aguante %s/agilidad %s/golpe %s%"] = {StatLogic.Stats.Stamina, StatLogic.Stats.Agility, {StatLogic.Stats.MeleeHit, StatLogic.Stats.RangedHit, StatLogic.Stats.SpellHit, }, }
+L["aguante %s/defensa %s/sanación y daño con hechizos %s"] = {StatLogic.Stats.Stamina, StatLogic.Stats.Defense, {StatLogic.Stats.HealingPower, StatLogic.Stats.SpellDamage, }, }
+L["aguante %s/fuerza %s/sanación y daño con hechizos %s"] = {StatLogic.Stats.Stamina, StatLogic.Stats.Strength, {StatLogic.Stats.HealingPower, StatLogic.Stats.SpellDamage, }, }
+L["aguante %s/intelecto %s/sanación y daño con hechizos %s"] = {StatLogic.Stats.Stamina, StatLogic.Stats.Intellect, {StatLogic.Stats.HealingPower, StatLogic.Stats.SpellDamage, }, }
+L["aguante %s/agilidad %s/defensa %s"] = {StatLogic.Stats.Stamina, StatLogic.Stats.Agility, StatLogic.Stats.Defense, }
+L["aguante %s/defensa %s/probabilidad de bloqueo %s%"] = {StatLogic.Stats.Stamina, StatLogic.Stats.Defense, StatLogic.Stats.BlockChance, }
+L["aguante %s/golpe %s%/defensa %s"] = {StatLogic.Stats.Stamina, {StatLogic.Stats.MeleeHit, StatLogic.Stats.RangedHit, StatLogic.Stats.SpellHit, }, StatLogic.Stats.Defense, }
+L["aguante %s/defensa %s/valor de bloqueo %s"] = {StatLogic.Stats.Stamina, StatLogic.Stats.Defense, StatLogic.Stats.BlockValue, }
+L["aguante %s/agilidad %s/fuerza %s"] = {StatLogic.Stats.Stamina, StatLogic.Stats.Agility, StatLogic.Stats.Strength, }
 L["reforzado (%s armadura)"] = {StatLogic.Stats.BonusArmor, }
 L["%s índice de bloqueo con escudo"] = {StatLogic.Stats.BlockRating, }
 L["%s hechizos de sanación y %s hechizos de daño"] = {StatLogic.Stats.HealingPower, StatLogic.Stats.SpellDamage, }
@@ -306,7 +327,7 @@ L["aumenta hasta en %s p. la curación de los hechizos mágicos y los efectos pa
 L["restaura %s p. de maná cada %s segundos de todos los miembros del grupo que estén a %s metros"] = {StatLogic.Stats.ManaRegen, false, false, }
 L["aumenta el daño de tus hechizos hasta %s p. y tu curación hasta %s p"] = {StatLogic.Stats.SpellDamage, StatLogic.Stats.HealingPower, }
 L["mejora un %s% tu probabilidad de golpear con todos los hechizos y ataques"] = {{StatLogic.Stats.MeleeHit, StatLogic.Stats.RangedHit, StatLogic.Stats.SpellHit, }, }
-L["mejora un %s% tu probabilidad de conseguir un golpe crítico con todos los hechizos y ataques"] = {{StatLogic.Stats.MeleeCrit, StatLogic.Stats.RangedCrit, StatLogic.Stats.SpellCrit, }, }
+L["mejora tu probabilidad de conseguir un golpe crítico con todos los hechizos y ataques un %s%"] = {{StatLogic.Stats.MeleeCrit, StatLogic.Stats.RangedCrit, StatLogic.Stats.SpellCrit, }, }
 L["defensa aumentada %s"] = {StatLogic.Stats.Defense, }
 L["aumenta la probabilidad de bloquear ataques con un escudo en un %s%"] = {StatLogic.Stats.BlockChance, }
 L["aumenta el daño y la curación de los hechizos mágicos y los efectos hasta en %s p"] = {{StatLogic.Stats.SpellDamage, StatLogic.Stats.HealingPower, }, }
