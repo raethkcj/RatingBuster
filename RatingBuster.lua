@@ -2923,7 +2923,6 @@ local summaryCalcData = {
 		func = function(sum, statModContext)
 			return summaryFunc[StatLogic.Stats.Mastery](sum, statModContext) * statModContext("ADD_MASTERY_EFFECT_MOD_MASTERY")
 		end,
-		ispercent = true,
 	},
 	-- Health - HEALTH, STA
 	{
@@ -3032,7 +3031,6 @@ local summaryCalcData = {
 			return sum[StatLogic.Stats.MeleeHit]
 				+ sum[StatLogic.Stats.MeleeHitRating] * statModContext("ADD_MELEE_HIT_MOD_MELEE_HIT_RATING")
 		end,
-		ispercent = true,
 	},
 	-- Hit Rating - MELEE_HIT_RATING
 	{
@@ -3050,7 +3048,6 @@ local summaryCalcData = {
 			return sum[StatLogic.Stats.RangedHit]
 				+ sum[StatLogic.Stats.RangedHitRating] * statModContext("ADD_RANGED_HIT_MOD_RANGED_HIT_RATING")
 		end,
-		ispercent = true,
 	},
 	-- Ranged Hit Rating - RANGED_HIT_RATING
 	{
@@ -3069,7 +3066,6 @@ local summaryCalcData = {
 				+ sum[StatLogic.Stats.MeleeCritRating] * statModContext("ADD_MELEE_CRIT_MOD_MELEE_CRIT_RATING")
 				+ sum[StatLogic.Stats.Agility] * statModContext("ADD_MELEE_CRIT_MOD_AGI")
 		end,
-		ispercent = true,
 	},
 	-- Crit Rating - MELEE_CRIT_RATING
 	{
@@ -3088,7 +3084,6 @@ local summaryCalcData = {
 				+ sum[StatLogic.Stats.RangedCritRating] * statModContext("ADD_RANGED_CRIT_MOD_RANGED_CRIT_RATING")
 				+ sum[StatLogic.Stats.Agility] * statModContext("ADD_RANGED_CRIT_MOD_AGI")
 		end,
-		ispercent = true,
 	},
 	-- Ranged Crit Rating - RANGED_CRIT_RATING
 	{
@@ -3105,7 +3100,6 @@ local summaryCalcData = {
 		func = function(sum, statModContext)
 			return sum[StatLogic.Stats.MeleeHasteRating] * statModContext("ADD_MELEE_HASTE_MOD_MELEE_HASTE_RATING")
 		end,
-		ispercent = true,
 	},
 	-- Haste Rating - MELEE_HASTE_RATING
 	{
@@ -3122,7 +3116,6 @@ local summaryCalcData = {
 		func = function(sum, statModContext)
 			return sum[StatLogic.Stats.RangedHasteRating] * statModContext("ADD_RANGED_HASTE_MOD_RANGED_HASTE_RATING")
 		end,
-		ispercent = true,
 	},
 	-- Ranged Haste Rating - RANGED_HASTE_RATING
 	{
@@ -3167,7 +3160,6 @@ local summaryCalcData = {
 			end
 			return effect * statModContext("ADD_DODGE_REDUCTION_MOD_EXPERTISE") + sum[StatLogic.Stats.WeaponSkill] * 0.1
 		end,
-		ispercent = true,
 	},
 	-- Parry Reduction - EXPERTISE_RATING
 	{
@@ -3180,7 +3172,6 @@ local summaryCalcData = {
 			end
 			return effect * statModContext("ADD_PARRY_REDUCTION_MOD_EXPERTISE")
 		end,
-		ispercent = true,
 	},
 	-- Weapon Average Damage - StatLogic.Stats.MinWeaponDamage, StatLogic.Stats.MaxWeaponDamage
 	{
@@ -3214,7 +3205,6 @@ local summaryCalcData = {
 		func = function(sum, statModContext)
 			return sum[StatLogic.Stats.ArmorPenetrationRating] * statModContext("ADD_ARMOR_PENETRATION_MOD_ARMOR_PENETRATION_RATING")
 		end,
-		ispercent = true,
 	},
 	-- Armor Penetration Rating - ARMOR_PENETRATION_RATING
 	{
@@ -3324,7 +3314,6 @@ local summaryCalcData = {
 			return sum[StatLogic.Stats.SpellHit]
 				+ summaryFunc[StatLogic.Stats.SpellHitRating](sum, statModContext) * statModContext("ADD_SPELL_HIT_MOD_SPELL_HIT_RATING")
 		end,
-		ispercent = true,
 	},
 	-- Spell Hit Rating - SPELL_HIT_RATING
 	{
@@ -3344,7 +3333,6 @@ local summaryCalcData = {
 				+ summaryFunc[StatLogic.Stats.SpellCritRating](sum, statModContext) * statModContext("ADD_SPELL_CRIT_MOD_SPELL_CRIT_RATING")
 				+ sum[StatLogic.Stats.Intellect] * statModContext("ADD_SPELL_CRIT_MOD_INT")
 		end,
-		ispercent = true,
 	},
 	-- Spell Crit Rating - SPELL_CRIT_RATING
 	{
@@ -3362,7 +3350,6 @@ local summaryCalcData = {
 		func = function(sum, statModContext)
 			return sum[StatLogic.Stats.SpellHasteRating] * statModContext("ADD_SPELL_HASTE_MOD_SPELL_HASTE_RATING")
 		end,
-		ispercent = true,
 	},
 	-- Spell Haste Rating - SPELL_HASTE_RATING
 	{
@@ -3405,7 +3392,6 @@ local summaryCalcData = {
 				+ sum[StatLogic.Stats.Agility] * statModContext("ADD_DODGE_MOD_AGI")
 				+ summaryFunc[StatLogic.Stats.SpellCrit](sum, statModContext) * statModContext("ADD_DODGE_MOD_SPELL_CRIT")
 		end,
-		ispercent = true,
 	},
 	-- Dodge Chance
 	{
@@ -3422,7 +3408,6 @@ local summaryCalcData = {
 			end
 			return dodge
 		 end,
-		ispercent = true,
 	},
 	-- Dodge Rating - DODGE_RATING
 	{
@@ -3443,7 +3428,6 @@ local summaryCalcData = {
 				+ summaryFunc[StatLogic.Stats.Defense](sum, statModContext) * statModContext("ADD_PARRY_MOD_DEFENSE")
 			) or 0
 		end,
-		ispercent = true,
 	},
 	-- Parry Chance
 	{
@@ -3460,7 +3444,6 @@ local summaryCalcData = {
 			end
 			return parry
 		 end,
-		ispercent = true,
 	},
 	-- Parry Rating - PARRY_RATING
 	{
@@ -3483,7 +3466,6 @@ local summaryCalcData = {
 				+ summaryFunc[StatLogic.Stats.MasteryEffect](sum, statModContext) * statModContext("ADD_BLOCK_CHANCE_MOD_MASTERY_EFFECT")
 			) or 0
 		end,
-		ispercent = true,
 	},
 	-- Block Rating - BLOCK_RATING
 	{
@@ -3514,7 +3496,6 @@ local summaryCalcData = {
 		func = function(sum, statModContext)
 			return summaryFunc[StatLogic.Stats.Defense](sum, statModContext) * statModContext("ADD_MISS_MOD_DEFENSE")
 		end,
-		ispercent = true,
 	},
 	-- Hit Avoidance
 	{
@@ -3531,7 +3512,6 @@ local summaryCalcData = {
 			end
 			return missed
 		 end,
-		ispercent = true,
 	},
 	-- Defense - DEFENSE_RATING
 	{
@@ -3546,7 +3526,6 @@ local summaryCalcData = {
 	{
 		option = "sumAvoidance",
 		stat = StatLogic.Stats.Avoidance,
-		ispercent = true,
 		func = function(sum, statModContext, sumType, link)
 			local dodge = summaryFunc[StatLogic.Stats.Dodge](sum, statModContext, sumType, link)
 			local parry = summaryFunc[StatLogic.Stats.Parry](sum, statModContext, sumType, link)
@@ -3566,7 +3545,6 @@ local summaryCalcData = {
 			return sum[StatLogic.Stats.ResilienceRating] * statModContext("ADD_RESILIENCE_MOD_RESILIENCE_RATING") * statModContext("ADD_CRIT_AVOIDANCE_MOD_RESILIENCE")
 				+ summaryFunc[StatLogic.Stats.Defense](sum, statModContext) * statModContext("ADD_CRIT_AVOIDANCE_MOD_DEFENSE")
 		 end,
-		ispercent = true,
 	},
 	-- Resilience - RESILIENCE_RATING
 	{
@@ -3807,7 +3785,6 @@ function RatingBuster:StatSummary(tooltip, link, statModContext)
 		if db.profile[calcData.option] then
 			local entry = {
 				stat = calcData.stat,
-				ispercent = calcData.ispercent,
 			}
 			for statDataType, statTable in pairs(statData) do
 				entry[statDataType] = calcData.func(statTable, statModContext, statDataType, link)
@@ -3825,7 +3802,8 @@ function RatingBuster:StatSummary(tooltip, link, statModContext)
 	local output = {}
 	output.numLines = numLines
 	for _, t in ipairs(summary) do
-		local stat, s, d1, d2, ispercent = t.stat, t.sum, t.diff1, t.diff2, t.ispercent
+		local stat, s, d1, d2 = t.stat, t.sum, t.diff1, t.diff2
+		local isPercent = stat.isPercent
 		local right, left
 		local skip
 		if not showZeroValueStat then
@@ -3835,11 +3813,11 @@ function RatingBuster:StatSummary(tooltip, link, statModContext)
 		end
 		if not skip then
 			if calcSum and calcDiff then
-				local d = ((not s) or ((s - floor(s)) == 0)) and ((not d1) or ((d1 - floor(d1)) == 0)) and ((not d2) or ((d2 - floor(d2)) == 0)) and not ispercent
+				local d = ((not s) or ((s - floor(s)) == 0)) and ((not d1) or ((d1 - floor(d1)) == 0)) and ((not d2) or ((d2 - floor(d2)) == 0)) and not isPercent
 				if s then
 					if d then
 						s = ("%d"):format(s)
-					elseif ispercent then
+					elseif isPercent then
 						s = ("%.2f%%"):format(s)
 					else
 						s = ("%.1f"):format(s)
@@ -3847,7 +3825,7 @@ function RatingBuster:StatSummary(tooltip, link, statModContext)
 					if d1 then
 						if d then
 							d1 = colorNum(("%+d"):format(d1), d1)
-						elseif ispercent then
+						elseif isPercent then
 							d1 = colorNum(("%+.2f%%"):format(d1), d1)
 						else
 							d1 = colorNum(("%+.1f"):format(d1), d1)
@@ -3855,7 +3833,7 @@ function RatingBuster:StatSummary(tooltip, link, statModContext)
 						if d2 then
 							if d then
 								d2 = colorNum(("%+d"):format(d2), d2)
-							elseif ispercent then
+							elseif isPercent then
 								d2 = colorNum(("%+.2f%%"):format(d2), d2)
 							else
 								d2 = colorNum(("%+.1f"):format(d2), d2)
@@ -3871,7 +3849,7 @@ function RatingBuster:StatSummary(tooltip, link, statModContext)
 					if d1 then
 						if d then
 							d1 = colorNum(("%+d"):format(d1), d1)
-						elseif ispercent then
+						elseif isPercent then
 							d1 = colorNum(("%+.2f%%"):format(d1), d1)
 						else
 							d1 = colorNum(("%+.1f"):format(d1), d1)
@@ -3879,7 +3857,7 @@ function RatingBuster:StatSummary(tooltip, link, statModContext)
 						if d2 then
 							if d then
 								d2 = colorNum(("%+d"):format(d2), d2)
-							elseif ispercent then
+							elseif isPercent then
 								d2 = colorNum(("%+.2f%%"):format(d2), d2)
 							else
 								d2 = colorNum(("%+.1f"):format(d2), d2)
@@ -3894,7 +3872,7 @@ function RatingBuster:StatSummary(tooltip, link, statModContext)
 				if s then
 					if (s - floor(s)) == 0 then
 						s = ("%d"):format(s)
-					elseif ispercent then
+					elseif isPercent then
 						s = ("%.2f%%"):format(s)
 					else
 						s = ("%.1f"):format(s)
@@ -3906,7 +3884,7 @@ function RatingBuster:StatSummary(tooltip, link, statModContext)
 				if d1 then
 					if d then
 						d1 = colorNum(("%+d"):format(d1), d1)
-					elseif ispercent then
+					elseif isPercent then
 						d1 = colorNum(("%+.2f%%"):format(d1), d1)
 					else
 						d1 = colorNum(("%+.1f"):format(d1), d1)
@@ -3914,7 +3892,7 @@ function RatingBuster:StatSummary(tooltip, link, statModContext)
 					if d2 then
 						if d then
 							d2 = colorNum(("%+d"):format(d2), d2)
-						elseif ispercent then
+						elseif isPercent then
 							d2 = colorNum(("%+.2f%%"):format(d2), d2)
 						else
 							d2 = colorNum(("%+.1f"):format(d2), d2)
