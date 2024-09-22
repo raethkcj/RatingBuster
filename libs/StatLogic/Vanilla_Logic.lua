@@ -559,8 +559,8 @@ elseif addon.class == "MAGE" then
 				["known"] = 428878,
 				["rune"] = true,
 				["aura"] = 428878,
-				["stack"] = -0.10,
-				["max_stacks"] = 9,
+				["stack"] = -0.20,
+				["max_stacks"] = 4,
 			}
 		}
 	}
@@ -648,7 +648,7 @@ elseif addon.class == "PALADIN" then
 			{
 				["known"] = 462834,
 				["rune"] = true,
-				["value"] = 1,
+				["value"] = 2.00,
 				["aura"] = 462832,
 			}
 		},
@@ -965,7 +965,7 @@ elseif addon.class == "SHAMAN" then
 				["known"] = 436364,
 				["rune"] = true,
 				["aura"] = 436365,
-				["value"] = 0.10,
+				["value"] = 0.15,
 			},
 		},
 		-- Shaman: Toughness (Rank 5) - 2,11
@@ -1038,7 +1038,7 @@ elseif addon.class == "SHAMAN" then
 			{
 				["known"] = 415140,
 				["rune"] = true,
-				["value"] = 0.65,
+				["value"] = 1.00,
 				["aura"] = 415144,
 			},
 		},
@@ -1047,7 +1047,7 @@ elseif addon.class == "SHAMAN" then
 			{
 				["known"] = 415140,
 				["rune"] = true,
-				["value"] = 0.20,
+				["value"] = 0.35,
 				["aura"] = 415144,
 			},
 		},
