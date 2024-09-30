@@ -1453,22 +1453,24 @@ StatLogic.StatModTable["ALL"] = {
 		},
 	},
 	["MOD_STR"] = {
-		-- Blessing of Kings - Buff
-		--   Increases stats by 10%.
+		-- Buff: Blessing of Kings
 		{
 			["value"] = 0.1,
 			["aura"] = 20217,
 			["group"] = addon.ExclusiveGroup.AllStats,
 		},
-		-- Greater Blessing of Kings - Buff
-		--   Increases stats by 10%.
+		-- Buff: Greater Blessing of Kings
 		{
 			["value"] = 0.1,
 			["aura"] = 25898,
 			["group"] = addon.ExclusiveGroup.AllStats,
 		},
-		-- Heart of the Lion - Buff
-		--   Increases stats by 10%.
+		-- Buff: Spirit of Zandalar
+		{
+			["value"] = 0.15,
+			["aura"] = 24425,
+		},
+		-- Buff: Heart of the Lion
 		{
 			["value"] = 0.1,
 			["aura"] = 409583,
@@ -1483,22 +1485,24 @@ StatLogic.StatModTable["ALL"] = {
 		},
 	},
 	["MOD_AGI"] = {
-		-- Blessing of Kings - Buff
-		--   Increases stats by 10%.
+		-- Buff: Blessing of Kings
 		{
 			["value"] = 0.1,
 			["aura"] = 20217,
 			["group"] = addon.ExclusiveGroup.AllStats,
 		},
-		-- Greater Blessing of Kings - Buff
-		--   Increases stats by 10%.
+		-- Buff: Greater Blessing of Kings
 		{
 			["value"] = 0.1,
 			["aura"] = 25898,
 			["group"] = addon.ExclusiveGroup.AllStats,
 		},
-		-- Heart of the Lion - Buff
-		--   Increases stats by 10%.
+		-- Buff: Spirit of Zandalar
+		{
+			["value"] = 0.15,
+			["aura"] = 24425,
+		},
+		-- Buff: Heart of the Lion
 		{
 			["value"] = 0.1,
 			["aura"] = 409583,
@@ -1513,22 +1517,24 @@ StatLogic.StatModTable["ALL"] = {
 		},
 	},
 	["MOD_STA"] = {
-		-- Blessing of Kings - Buff
-		--   Increases stats by 10%.
+		-- Buff: Blessing of Kings
 		{
 			["value"] = 0.1,
 			["aura"] = 20217,
 			["group"] = addon.ExclusiveGroup.AllStats,
 		},
-		-- Greater Blessing of Kings - Buff
-		--   Increases stats by 10%.
+		-- Buff: Greater Blessing of Kings
 		{
 			["value"] = 0.1,
 			["aura"] = 25898,
 			["group"] = addon.ExclusiveGroup.AllStats,
 		},
-		-- Heart of the Lion - Buff
-		--   Increases stats by 10%.
+		-- Buff: Spirit of Zandalar
+		{
+			["value"] = 0.15,
+			["aura"] = 24425,
+		},
+		-- Buff: Heart of the Lion
 		{
 			["value"] = 0.1,
 			["aura"] = 409583,
@@ -1543,22 +1549,24 @@ StatLogic.StatModTable["ALL"] = {
 		},
 	},
 	["MOD_INT"] = {
-		-- Blessing of Kings - Buff
-		--   Increases stats by 10%.
+		-- Buff: Blessing of Kings
 		{
 			["value"] = 0.1,
 			["aura"] = 20217,
 			["group"] = addon.ExclusiveGroup.AllStats,
 		},
-		-- Greater Blessing of Kings - Buff
-		--   Increases stats by 10%.
+		-- Buff: Greater Blessing of Kings
 		{
 			["value"] = 0.1,
 			["aura"] = 25898,
 			["group"] = addon.ExclusiveGroup.AllStats,
 		},
-		-- Heart of the Lion - Buff
-		--   Increases stats by 10%.
+		-- Buff: Spirit of Zandalar
+		{
+			["value"] = 0.15,
+			["aura"] = 24425,
+		},
+		-- Buff: Heart of the Lion
 		{
 			["value"] = 0.1,
 			["aura"] = 409583,
@@ -1573,22 +1581,24 @@ StatLogic.StatModTable["ALL"] = {
 		},
 	},
 	["MOD_SPI"] = {
-		-- Blessing of Kings - Buff
-		--   Increases stats by 10%.
+		-- Buff: Blessing of Kings
 		{
 			["value"] = 0.1,
 			["aura"] = 20217,
 			["group"] = addon.ExclusiveGroup.AllStats,
 		},
-		-- Greater Blessing of Kings - Buff
-		--   Increases stats by 10%.
+		-- Buff: Greater Blessing of Kings
 		{
 			["value"] = 0.1,
 			["aura"] = 25898,
 			["group"] = addon.ExclusiveGroup.AllStats,
 		},
-		-- Heart of the Lion - Buff
-		--   Increases stats by 10%.
+		-- Buff: Spirit of Zandalar
+		{
+			["value"] = 0.15,
+			["aura"] = 24425,
+		},
+		-- Buff: Heart of the Lion
 		{
 			["value"] = 0.1,
 			["aura"] = 409583,

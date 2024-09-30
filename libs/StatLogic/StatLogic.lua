@@ -375,8 +375,8 @@ StatLogic.StatModInfo = {
 		finalAdjust = 0,
 	},
 	["MOD_AGI"] = {
-		initialValue = 0,
-		finalAdjust = 1,
+		initialValue = 1,
+		finalAdjust = 0,
 	},
 	["MOD_AP"] = {
 		initialValue = 0,
@@ -407,8 +407,8 @@ StatLogic.StatModInfo = {
 		finalAdjust = 0,
 	},
 	["MOD_INT"] = {
-		initialValue = 0,
-		finalAdjust = 1,
+		initialValue = 1,
+		finalAdjust = 0,
 	},
 	["MOD_MANA"] = {
 		initialValue = 1,
@@ -435,16 +435,16 @@ StatLogic.StatModInfo = {
 		finalAdjust = 1,
 	},
 	["MOD_SPI"] = {
-		initialValue = 0,
-		finalAdjust = 1,
+		initialValue = 1,
+		finalAdjust = 0,
 	},
 	["MOD_STA"] = {
-		initialValue = 0,
-		finalAdjust = 1,
+		initialValue = 1,
+		finalAdjust = 0,
 	},
 	["MOD_STR"] = {
-		initialValue = 0,
-		finalAdjust = 1,
+		initialValue = 1,
+		finalAdjust = 0,
 	},
 }
 
