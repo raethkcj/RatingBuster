@@ -2577,7 +2577,7 @@ StatLogic.StatModTable["ALL"] = {
 			["rank"] = {
 				0.04, 0.07, 0.1,
 			},
-			["aura"] = 30809,
+			["aura"] = 30802,
 			["group"] = addon.ExclusiveGroup.AttackPower,
 		},
 		-- Paladin: Blessing of Might - Buff: 19740
