@@ -77,7 +77,6 @@ local pairs = pairs
 local ipairs = ipairs
 local type = type
 local GetInventoryItemLink = GetInventoryItemLink
-local IsUsableSpell = IsUsableSpell
 local UnitStat = UnitStat
 local GetShapeshiftForm = GetShapeshiftForm
 local GetShapeshiftFormInfo = GetShapeshiftFormInfo
@@ -709,7 +708,7 @@ do
 			for _, mods in pairs(modList) do
 				for _, mod in ipairs(mods) do
 					if mod.aura then -- if we got a buff
-						local name = GetSpellInfo(mod.aura)
+						local name = C_Spell.GetSpellName(mod.aura)
 						if name then
 							local aura = {}
 							if not mod.tab and mod.rank then
@@ -955,7 +954,7 @@ addon.StatModValidators = {
 	},
 	aura = {
 		validate = function(case, statModName)
-			return not not StatLogic:GetAuraInfo(GetSpellInfo(case.aura), StatLogic.StatModIgnoresAlwaysBuffed[statModName])
+			return not not StatLogic:GetAuraInfo(C_Spell.GetSpellName(case.aura), StatLogic.StatModIgnoresAlwaysBuffed[statModName])
 		end,
 		events = {
 			["UNIT_AURA"] = "player",
@@ -1285,11 +1284,11 @@ do
 				newValue = case.value
 			end
 		elseif case.aura and case.rank then
-			local aura = StatLogic:GetAuraInfo(GetSpellInfo(case.aura))
+			local aura = StatLogic:GetAuraInfo(C_Spell.GetSpellName(case.aura))
 			local rank = aura.rank
 			newValue = case.rank[rank]
 		elseif case.aura and case.stack then
-			local aura = StatLogic:GetAuraInfo(GetSpellInfo(case.aura))
+			local aura = StatLogic:GetAuraInfo(C_Spell.GetSpellName(case.aura))
 			newValue = case.stack * aura.stacks
 		elseif case.regen then
 			newValue = case.regen(level)
@@ -1298,7 +1297,7 @@ do
 		elseif case.level then
 			newValue = case.level[level]
 		elseif case.tooltip then
-			local aura = StatLogic:GetAuraInfo(GetSpellInfo(case.aura))
+			local aura = StatLogic:GetAuraInfo(C_Spell.GetSpellName(case.aura))
 			newValue = aura.tooltip
 		end
 
@@ -1456,9 +1455,9 @@ end
 
 local function GetTotalWeaponSkill(unit)
 	if addon.class == "DRUID" and (
-		StatLogic:GetAuraInfo(GetSpellInfo(768), true)
-		or StatLogic:GetAuraInfo(GetSpellInfo(5487), true)
-		or StatLogic:GetAuraInfo(GetSpellInfo(9634), true)
+		StatLogic:GetAuraInfo(C_Spell.GetSpellName(768), true)
+		or StatLogic:GetAuraInfo(C_Spell.GetSpellName(5487), true)
+		or StatLogic:GetAuraInfo(C_Spell.GetSpellName(9634), true)
 	) then
 		return UnitLevel("player") * 5
 	else
@@ -2059,7 +2058,7 @@ function StatLogic:GetDiffID(item, ignoreEnchant, ignoreGems, ignoreExtraSockets
 	if inventoryType == "INVTYPE_WEAPON" then
 		linkDiff1 = GetInventoryItemLink("player", 16) or "NOITEM"
 		-- If player can Dual Wield, calculate offhand difference
-		if IsUsableSpell(GetSpellInfo(674)) then		-- ["Dual Wield"]
+		if C_Spell.IsSpellUsable(C_Spell.GetSpellName(674)) then
 			local _, _, _, _, _, _, _, _, eqItemType = C_Item.GetItemInfo(linkDiff1)
 			-- If 2h is equipped, copy diff1 to diff2
 			if eqItemType == "INVTYPE_2HWEAPON" and not HasTitansGrip() then

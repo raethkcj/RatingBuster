@@ -1571,15 +1571,15 @@ do
 						end
 						local source = ""
 						if case.aura then
-							source = GetSpellInfo(case.aura) or source
+							source = C_Spell.GetSpellName(case.aura) or source
 						elseif case.tab then
 							source = StatLogic:GetOrderedTalentInfo(case.tab, case.num)
 						elseif case.glyph then
-							source = GetSpellInfo(case.glyph) or source
+							source = C_Spell.GetSpellName(case.glyph) or source
 						elseif case.known then
-							source = GetSpellInfo(case.known) or source
+							source = C_Spell.GetSpellName(case.known) or source
 						elseif case.spellid then
-							source = GetSpellInfo(case.spellid) or source
+							source = C_Spell.GetSpellName(case.spellid) or source
 						end
 						sources = sources .. source
 						firstSource = false
@@ -1630,19 +1630,19 @@ do
 				if not StatLogic.StatModIgnoresAlwaysBuffed[modName] then
 					for _, mod in ipairs(mods) do
 						if mod.aura and (not mod.rune or showRunes) then
-							local name, _, icon = GetSpellInfo(mod.aura)
-							if name then
+							local spellInfo = C_Spell.C_Spell.GetSpellName(mod.aura)
+							if spellInfo then
 								local option = {
 									type = 'toggle',
-									name = "|T"..icon..":25:25:-2:0|t"..name,
+									name = "|T"..spellInfo.iconID..":25:25:-2:0|t"..spellInfo.name,
 								}
-								options.args.alwaysBuffed.args[modType].args[name] = option
+								options.args.alwaysBuffed.args[modType].args[spellInfo.name] = option
 								options.args.alwaysBuffed.args[modType].hidden = false
 
 								-- If it's a spell the player knows, use the highest rank for the description
 								local spellId = mod.spellid or mod.known or mod.aura
 								if IsPlayerSpell(spellId) then
-									spellId = select(7,GetSpellInfo(name)) or spellId
+									spellId = C_Spell.GetSpellIDForSpellIdentifier(spellInfo.name) or spellId
 								end
 								local spell = Spell:CreateFromSpellID(spellId)
 								spell:ContinueOnSpellLoad(function()
