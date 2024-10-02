@@ -18,9 +18,6 @@ local RegenMPPerSpt = {
 	["DRUID"]   = 0.100,
 }
 
----@deprecated Defined by Blizzard in 1.15.3
-if not LE_UNIT_STAT_SPIRIT then LE_UNIT_STAT_SPIRIT = 5 end
-
 local NormalManaRegenPerSpi = function()
 	local _, spi = UnitStat("player", LE_UNIT_STAT_SPIRIT)
 	return 5 * (spi > 50 and RegenMPPerSpt[addon.class] or OCTRegenMP)
