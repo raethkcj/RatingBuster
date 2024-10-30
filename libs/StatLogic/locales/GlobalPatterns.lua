@@ -115,7 +115,7 @@ local short = {
 	[MP] = {StatLogic.Stats.Mana},
 	[ITEM_MOD_AGILITY_SHORT] = {StatLogic.Stats.Agility},
 	[ITEM_MOD_ARMOR_PENETRATION_RATING_SHORT] = {StatLogic.Stats.ArmorPenetrationRating},
-	[ITEM_MOD_ATTACK_POWER_SHORT] = {StatLogic.Stats.AttackPower},
+	[ITEM_MOD_ATTACK_POWER_SHORT] = {StatLogic.Stats.GenericAttackPower},
 	[ITEM_MOD_BLOCK_RATING_SHORT] = {StatLogic.Stats.BlockRating},
 	[ITEM_MOD_BLOCK_VALUE_SHORT] = {StatLogic.Stats.BlockValue},
 	[ITEM_MOD_CRIT_MELEE_RATING_SHORT] = {StatLogic.Stats.MeleeCritRating},
@@ -153,7 +153,7 @@ local short = {
 	[ITEM_MOD_STAMINA_SHORT] = {StatLogic.Stats.Stamina},
 	[ITEM_MOD_STRENGTH_SHORT] = {StatLogic.Stats.Strength},
 	[SPELL_STATALL] = {StatLogic.Stats.AllStats},
-	[STAT_ATTACK_POWER] = {StatLogic.Stats.AttackPower},
+	[STAT_ATTACK_POWER] = {StatLogic.Stats.GenericAttackPower},
 	[COMBAT_RATING_NAME9] = {StatLogic.Stats.CritRating},
 }
 
@@ -165,7 +165,7 @@ end
 local long = {
 	[ITEM_MOD_AGILITY] = {StatLogic.Stats.Agility},
 	[ITEM_MOD_ARMOR_PENETRATION_RATING] = {StatLogic.Stats.ArmorPenetrationRating},
-	[ITEM_MOD_ATTACK_POWER] = {StatLogic.Stats.AttackPower},
+	[ITEM_MOD_ATTACK_POWER] = {StatLogic.Stats.GenericAttackPower},
 	[ITEM_MOD_BLOCK_RATING] = {StatLogic.Stats.BlockRating},
 	[ITEM_MOD_BLOCK_VALUE] = {StatLogic.Stats.BlockValue},
 	[ITEM_MOD_CRIT_MELEE_RATING] = {StatLogic.Stats.MeleeCritRating},

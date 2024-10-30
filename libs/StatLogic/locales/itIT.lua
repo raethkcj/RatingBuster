@@ -7,7 +7,7 @@ local W = addon.WholeTextLookup
 W["law of nature"] = {[StatLogic.Stats.SpellDamage] = 30, [StatLogic.Stats.HealingPower] = 55, }
 W["vitality"] = {[StatLogic.Stats.ManaRegen] = 4, [StatLogic.Stats.HealthRegen] = 4, }
 W["surefooted"] = {[StatLogic.Stats.HitRating] = 10, }
-W["savagery"] = {[StatLogic.Stats.AttackPower] = 70, }
+W["savagery"] = {[StatLogic.Stats.GenericAttackPower] = 70, }
 W["sunfire"] = {[StatLogic.Stats.ArcaneDamage] = 50, [StatLogic.Stats.FireDamage] = 50, }
 W["soulfrost"] = {[StatLogic.Stats.ShadowDamage] = 54, [StatLogic.Stats.FrostDamage] = 54, }
 W["rune des steinhautgargoyles"] = {[StatLogic.Stats.Defense] = 25, }
@@ -29,7 +29,7 @@ L["healing and spell damage %s"] = {StatLogic.Stats.SpellDamage, }
 L["mana regen %s per %s sec"] = {StatLogic.Stats.ManaRegen, false, }
 L["defense %s/stamina %s/block value %s"] = {StatLogic.Stats.Defense, StatLogic.Stats.Stamina, StatLogic.Stats.BlockValue, }
 L["defense %s/stamina %s/healing spells %s"] = {StatLogic.Stats.Defense, StatLogic.Stats.Stamina, StatLogic.Stats.Healing, }
-L["attack power %s/dodge %s%"] = {StatLogic.Stats.AttackPower, StatLogic.Stats.Dodge, }
+L["attack power %s/dodge %s%"] = {StatLogic.Stats.GenericAttackPower, StatLogic.Stats.Dodge, }
 L["ranged attack power %s/stamina %s/hit %s%"] = {StatLogic.Stats.RangedAttackPower, StatLogic.Stats.Stamina, {StatLogic.Stats.MeleeHit, StatLogic.Stats.RangedHit, }, }
 L["healing and spell damage %s/intellect %s"] = {{StatLogic.Stats.HealingPower, StatLogic.Stats.SpellDamage, }, StatLogic.Stats.Intellect, }
 L["healing and spell damage %s/spell hit %s%"] = {{StatLogic.Stats.HealingPower, StatLogic.Stats.SpellDamage, }, StatLogic.Stats.SpellHit, }

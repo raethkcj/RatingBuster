@@ -7,7 +7,7 @@ local W = addon.WholeTextLookup
 W["自然法则"] = {[StatLogic.Stats.SpellDamage] = 30, [StatLogic.Stats.HealingPower] = 55, }
 W["活力"] = {[StatLogic.Stats.ManaRegen] = 4, [StatLogic.Stats.HealthRegen] = 4, }
 W["稳固"] = {[StatLogic.Stats.HitRating] = 10, }
-W["野蛮"] = {[StatLogic.Stats.AttackPower] = 70, }
+W["野蛮"] = {[StatLogic.Stats.GenericAttackPower] = 70, }
 W["阳炎"] = {[StatLogic.Stats.ArcaneDamage] = 50, [StatLogic.Stats.FireDamage] = 50, }
 W["魂霜"] = {[StatLogic.Stats.ShadowDamage] = 54, [StatLogic.Stats.FrostDamage] = 54, }
 W["石肤石像鬼符文"] = {[StatLogic.Stats.Defense] = 25, }
@@ -29,7 +29,7 @@ L["治疗和法术伤害 %s"] = {StatLogic.Stats.SpellDamage, }
 L["每%s秒回复%s点法力值。"] = {false, StatLogic.Stats.ManaRegen, }
 L["防御 %s/耐力 %s/格挡值 %s"] = {StatLogic.Stats.Defense, StatLogic.Stats.Stamina, StatLogic.Stats.BlockValue, }
 L["防御 %s/耐力 %s/治疗法术 %s"] = {StatLogic.Stats.Defense, StatLogic.Stats.Stamina, StatLogic.Stats.Healing, }
-L["攻击强度 %s/躲闪 %s%"] = {StatLogic.Stats.AttackPower, StatLogic.Stats.Dodge, }
+L["攻击强度 %s/躲闪 %s%"] = {StatLogic.Stats.GenericAttackPower, StatLogic.Stats.Dodge, }
 L["远程攻击强度 %s/耐力 %s/命中 %s%"] = {StatLogic.Stats.RangedAttackPower, StatLogic.Stats.Stamina, {StatLogic.Stats.MeleeHit, StatLogic.Stats.RangedHit, }, }
 L["法术治疗和伤害 %s/智力 %s"] = {{StatLogic.Stats.HealingPower, StatLogic.Stats.SpellDamage, }, StatLogic.Stats.Intellect, }
 L["法术治疗和伤害 %s/法术命中 %s%"] = {{StatLogic.Stats.HealingPower, StatLogic.Stats.SpellDamage, }, StatLogic.Stats.SpellHit, }

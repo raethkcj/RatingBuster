@@ -803,9 +803,8 @@ elseif addon.class == "ROGUE" then
 				["value"] = 0.333333 * 5,
 			},
 		},
-		-- Rogue: Deadliness (Rank 5) - 3,16
-		--        Increases your attack power by 2%/4%/6%/8%/10%.
 		["MOD_AP"] = {
+			-- Talent: Deadliness
 			{
 				["tab"] = 3,
 				["num"] = 16,
@@ -1291,7 +1290,7 @@ elseif addon.class == "WARRIOR" then
 			{
 				["known"] = 426940,
 				["rune"] = true,
-				["aura"] = 426942,
+				["aura"] = 426940,
 				["value"] = 0.10,
 			},
 		},

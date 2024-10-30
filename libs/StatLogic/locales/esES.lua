@@ -7,7 +7,7 @@ local W = addon.WholeTextLookup
 W["ley de la naturaleza"] = {[StatLogic.Stats.SpellDamage] = 30, [StatLogic.Stats.HealingPower] = 55, }
 W["vitalidad"] = {[StatLogic.Stats.ManaRegen] = 4, [StatLogic.Stats.HealthRegen] = 4, }
 W["pies de plomo"] = {[StatLogic.Stats.HitRating] = 10, }
-W["salvajismo"] = {[StatLogic.Stats.AttackPower] = 70, }
+W["salvajismo"] = {[StatLogic.Stats.GenericAttackPower] = 70, }
 W["fuego solar"] = {[StatLogic.Stats.ArcaneDamage] = 50, [StatLogic.Stats.FireDamage] = 50, }
 W["escarcha de alma"] = {[StatLogic.Stats.ShadowDamage] = 54, [StatLogic.Stats.FrostDamage] = 54, }
 W["runa de la gárgola piel de piedra"] = {[StatLogic.Stats.Defense] = 25, }
@@ -29,7 +29,7 @@ L["curación y daño de hechizos %s"] = {StatLogic.Stats.SpellDamage, }
 L["%s de regeneración de maná cada %s seg"] = {StatLogic.Stats.ManaRegen, false, }
 L["defensa %s/aguante %s/valor de bloquear %s"] = {StatLogic.Stats.Defense, StatLogic.Stats.Stamina, StatLogic.Stats.BlockValue, }
 L["defensa %s/aguante %s/hechizos de curación %s"] = {StatLogic.Stats.Defense, StatLogic.Stats.Stamina, StatLogic.Stats.Healing, }
-L["poder de ataque %s/esquivar %s%"] = {StatLogic.Stats.AttackPower, StatLogic.Stats.Dodge, }
+L["poder de ataque %s/esquivar %s%"] = {StatLogic.Stats.GenericAttackPower, StatLogic.Stats.Dodge, }
 L["poder de ataque a distancia %s/aguante %s/impacto %s%"] = {StatLogic.Stats.RangedAttackPower, StatLogic.Stats.Stamina, {StatLogic.Stats.MeleeHit, StatLogic.Stats.RangedHit, }, }
 L["curación y daño de hechizos %s/intelecto %s"] = {{StatLogic.Stats.HealingPower, StatLogic.Stats.SpellDamage, }, StatLogic.Stats.Intellect, }
 L["curación y daño de hechizos %s/hechizo impacto %s%"] = {{StatLogic.Stats.HealingPower, StatLogic.Stats.SpellDamage, }, StatLogic.Stats.SpellHit, }

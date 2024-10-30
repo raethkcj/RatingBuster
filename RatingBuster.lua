@@ -3013,9 +3013,8 @@ local summaryCalcData = {
 		option = "sumRAP",
 		stat = StatLogic.Stats.RangedAttackPower,
 		func = function(sum, statModContext)
-			return (statModContext("MOD_RANGED_AP") + statModContext("MOD_AP") - 1) * (
+			return statModContext("MOD_RANGED_AP") * (
 				sum[StatLogic.Stats.RangedAttackPower]
-				+ sum[StatLogic.Stats.AttackPower]
 				+ sum[StatLogic.Stats.Agility] * statModContext("ADD_RANGED_AP_MOD_AGI")
 				+ sum[StatLogic.Stats.Intellect] * statModContext("ADD_RANGED_AP_MOD_INT")
 				+ sum[StatLogic.Stats.Stamina] * statModContext("ADD_AP_MOD_STA")

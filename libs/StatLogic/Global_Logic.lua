@@ -68,3 +68,8 @@ for stat in pairs(StatLogic.RatingBase) do
 		}
 	}
 end
+
+StatLogic.GenericStatMap[StatLogic.Stats.GenericAttackPower] = {
+	StatLogic.Stats.AttackPower,
+	StatLogic.Stats.RangedAttackPower,
+}

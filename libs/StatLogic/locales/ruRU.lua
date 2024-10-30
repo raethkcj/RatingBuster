@@ -7,7 +7,7 @@ local W = addon.WholeTextLookup
 W["закон природы"] = {[StatLogic.Stats.SpellDamage] = 30, [StatLogic.Stats.HealingPower] = 55, }
 W["живучесть"] = {[StatLogic.Stats.ManaRegen] = 4, [StatLogic.Stats.HealthRegen] = 4, }
 W["верный шаг"] = {[StatLogic.Stats.HitRating] = 10, }
-W["варварство"] = {[StatLogic.Stats.AttackPower] = 70, }
+W["варварство"] = {[StatLogic.Stats.GenericAttackPower] = 70, }
 W["солнечный огонь"] = {[StatLogic.Stats.ArcaneDamage] = 50, [StatLogic.Stats.FireDamage] = 50, }
 W["ледяная душа"] = {[StatLogic.Stats.ShadowDamage] = 54, [StatLogic.Stats.FrostDamage] = 54, }
 W["руна каменной горгульи"] = {[StatLogic.Stats.Defense] = 25, }
@@ -29,7 +29,7 @@ L["%s к урону от заклинаний и исцелению"] = {StatLog
 L["восполнение %s ед. маны каждые %s секунд"] = {StatLogic.Stats.ManaRegen, false, }
 L["%s к рейтингу защиты/%s к выносливости/%s к блокированию"] = {StatLogic.Stats.Defense, StatLogic.Stats.Stamina, StatLogic.Stats.BlockValue, }
 L["%s к рейтингу защиты, %s к выносливости, %s к исцеляющим заклинаниям"] = {StatLogic.Stats.Defense, StatLogic.Stats.Stamina, StatLogic.Stats.Healing, }
-L["%s к силе атаки/%s% к рейтингу уклонения"] = {StatLogic.Stats.AttackPower, StatLogic.Stats.Dodge, }
+L["%s к силе атаки/%s% к рейтингу уклонения"] = {StatLogic.Stats.GenericAttackPower, StatLogic.Stats.Dodge, }
 L["%s к силе атаки дальнего боя/%s к выносливости/%s% к рейтингу меткости"] = {StatLogic.Stats.RangedAttackPower, StatLogic.Stats.Stamina, {StatLogic.Stats.MeleeHit, StatLogic.Stats.RangedHit, }, }
 L["%s к урону от заклинаний и исцелению; %s к интеллекту"] = {{StatLogic.Stats.HealingPower, StatLogic.Stats.SpellDamage, }, StatLogic.Stats.Intellect, }
 L["%s к урону от заклинаний и исцелению; %s% к рейтингу меткости"] = {{StatLogic.Stats.HealingPower, StatLogic.Stats.SpellDamage, }, StatLogic.Stats.SpellHitRating, }

@@ -447,17 +447,15 @@ if addon.class == "DRUID" then
 				},
 			},
 		},
-		-- Druid: Heart of the Wild (Rank 5) - 2,15
-		--        Increases your Intellect by 4%/8%/12%/16%/20%. In addition, while in Bear or Dire Bear Form your Stamina is increased by 4%/8%/12%/16%/20% and while in Cat Form your Strength is increased by 4%/8%/12%/16%/20%.
-		-- 2.3.0 This talent no longer provides 4/8/12/16/20% bonus Strength in Cat Form. Instead it provides 2/4/6/8/10% bonus attack power.
 		["MOD_AP"] = {
+			-- Talent: Heart of the Wild (Cat Form)
 			{
 				["tab"] = 2,
 				["num"] = 15,
 				["rank"] = {
 					0.02, 0.04, 0.06, 0.08, 0.1,
 				},
-				["aura"] = 32356,		-- ["Cat Form"],
+				["aura"] = 32356,
 			},
 		},
 		-- Druid: Survival of the Fittest (Rank 3) - 2,16
@@ -576,9 +574,8 @@ elseif addon.class == "HUNTER" then
 				},
 			},
 		},
-		-- Hunter: Survival Instincts (Rank 2) - 3,14
-		--         Reduces all damage taken by 2%/4% and increases attack power by 2%/4%.
 		["MOD_AP"] = {
+			-- Talent: Survival Instincts
 			{
 				["tab"] = 3,
 				["num"] = 14,
@@ -587,11 +584,8 @@ elseif addon.class == "HUNTER" then
 				}
 			},
 		},
-		-- Hunter: Master Marksman (Rank 5) - 2,19
-		--         Increases your ranged attack power by 2%/4%/6%/8%/10%.
-		-- Hunter: Survival Instincts (Rank 2) - 3,14
-		--         Reduces all damage taken by 2%/4% and increases attack power by 2%/4%.
 		["MOD_RANGED_AP"] = {
+			-- Talent: Master Marksman
 			{
 				["tab"] = 2,
 				["num"] = 19,
@@ -599,6 +593,7 @@ elseif addon.class == "HUNTER" then
 					0.02, 0.04, 0.06, 0.08, 0.1,
 				},
 			},
+			-- Talent: Survival Instincts
 			{
 				["tab"] = 3,
 				["num"] = 14,
@@ -1085,9 +1080,8 @@ elseif addon.class == "ROGUE" then
 				["value"] = 0.333333 * 5,
 			},
 		},
-		-- Rogue: Deadliness (Rank 5) - 3,17
-		--        Increases your attack power by 2%/4%/6%/8%/10%.
 		["MOD_AP"] = {
+			-- Talent: Deadliness
 			{
 				["tab"] = 3,
 				["num"] = 17,
@@ -1488,16 +1482,14 @@ elseif addon.class == "WARRIOR" then
 				["value"] = BLOCK_PER_STRENGTH,
 			},
 		},
-		-- Warrior: Improved Berserker Stance (Rank 5) - 2,20 - Stance
-		--          Increases attack power by 2%/4%/6%/8%/10% while in Berserker Stance.
 		["MOD_AP"] = {
+			-- Talent: Improved Berserker Stance
 			{
 				["tab"] = 2,
 				["num"] = 20,
 				["rank"] = {
 					0.02, 0.04, 0.06, 0.08, 0.1,
 				},
-				["stance"] = "Interface\\Icons\\Ability_Racial_Avatar",
 			},
 		},
 		-- Warrior: Toughness (Rank 5) - 3,5

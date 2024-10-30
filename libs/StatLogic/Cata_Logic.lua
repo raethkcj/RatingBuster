@@ -1390,9 +1390,17 @@ elseif addon.class == "HUNTER" then
 			},
 		},
 		["MOD_AP"] = {
-			-- Passive: Animal Handler
+			-- Passive: Animal Handler (Doesn't match tooltip)
 			{
 				["value"] = 0.25,
+				["spellid"] = 87325,
+				["spec"] = 1,
+			},
+		},
+		["MOD_RANGED_AP"] = {
+			-- Passive: Animal Handler
+			{
+				["value"] = 0.30,
 				["spellid"] = 87325,
 				["spec"] = 1,
 			},
@@ -2555,36 +2563,62 @@ StatLogic.StatModTable["ALL"] = {
 		},
 	},
 	["MOD_AP"] = {
-		-- Hunter: Trueshot Aura - Buff: 19506
-		-- 4.0.1: Attack power increased by 10%.
+		-- Buff: Trueshot Aura
 		{
-			["value"] = 0.1,
+			["value"] = 0.20,
 			["aura"] = 19506,
 			["group"] = addon.ExclusiveGroup.AttackPower,
 		},
-		-- Death Knight: Abomination's Might - Buff: 55972
-		-- 4.0.1: Attack power increased by 5/10%.
+		-- Buff: Abomination's Might
 		{
 			["rank"] = {
-				0.05, 0.1,
+				0.10, 0.20,
 			},
-			["aura"] = 55972,
+			["aura"] = 53137,
 			["group"] = addon.ExclusiveGroup.AttackPower,
 		},
-		-- Shaman: Unleashed Rage - Buff: 30809
-		-- 4.0.1: Melee attack power increased by 4/7/10%.
+		-- Buff: Unleashed Rage
 		{
 			["rank"] = {
-				0.04, 0.07, 0.1,
+				0.10, 0.20,
 			},
 			["aura"] = 30802,
 			["group"] = addon.ExclusiveGroup.AttackPower,
 		},
-		-- Paladin: Blessing of Might - Buff: 19740
-		-- 4.0.1: Increasing attack power by 10%.
+		-- Buff: Blessing of Might
 		{
-			["value"] = 0.1,
-			["aura"] = 19740,
+			["value"] = 0.20,
+			["aura"] = 79101,
+			["group"] = addon.ExclusiveGroup.AttackPower,
+		},
+	},
+	["MOD_RANGED_AP"] = {
+		-- Buff: Trueshot Aura
+		{
+			["value"] = 0.10,
+			["aura"] = 19506,
+			["group"] = addon.ExclusiveGroup.AttackPower,
+		},
+		-- Buff: Abomination's Might
+		{
+			["rank"] = {
+				0.05, 0.10,
+			},
+			["aura"] = 53137,
+			["group"] = addon.ExclusiveGroup.AttackPower,
+		},
+		-- Buff: Unleashed Rage
+		{
+			["rank"] = {
+				0.05, 0.10,
+			},
+			["aura"] = 30802,
+			["group"] = addon.ExclusiveGroup.AttackPower,
+		},
+		-- Buff: Blessing of Might
+		{
+			["value"] = 0.10,
+			["aura"] = 79101,
 			["group"] = addon.ExclusiveGroup.AttackPower,
 		},
 	},

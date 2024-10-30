@@ -1370,38 +1370,33 @@ if addon.class == "DRUID" then
 				},
 			},
 		},
-		-- Druid: Improved Mark of the Wild (Rank 2) - 3,1
-		--        increases all of your total attributes by 1/2%.
-		-- Druid: Heart of the Wild (Rank 5) - 2,17
-		--        Increases your Intellect by 4%/8%/12%/16%/20%. In addition,
-		--        while in Bear or Dire Bear Form your Stamina is increased by 2/4/6/8/10% and
-		--        while in Cat Form your attack power is increased by 2/4/6/8/10%.
-		-- Druid: Protector of the Pack (Rank 5) - 2,22
-		--        Increases your attack power in Bear Form and Dire Bear Form by 2%/4%/6%, and for each friendly player in your party when you enter Bear Form or Dire Bear Form, damage you take is reduced while in Bear Form and Dire Bear Form by 1%/2%/3%.
 		["MOD_AP"] = {
+			-- Talent: Heart of the Wild (Cat Form)
 			{
 				["tab"] = 2,
 				["num"] = 17,
 				["rank"] = {
 					0.02, 0.04, 0.06, 0.08, 0.1,
 				},
-				["aura"] = 32356,		-- ["Cat Form"],
+				["aura"] = 32356,
 			},
+			-- Talent: Protector of the Pack: Bear Form
 			{
 				["tab"] = 2,
 				["num"] = 22,
 				["rank"] = {
 					0.02, 0.04, 0.06,
 				},
-				["aura"] = 32357,		-- ["Bear Form"],
+				["aura"] = 32357,
 			},
+			-- Talent: Protector of the Pack: Dire Bear Form
 			{
 				["tab"] = 2,
 				["num"] = 22,
 				["rank"] = {
 					0.02, 0.04, 0.06,
 				},
-				["aura"] = 9634,		-- ["Dire Bear Form"],
+				["aura"] = 9634,
 			},
 		},
 		-- Druid: Improved Mark of the Wild (Rank 2) - 3,1
@@ -2399,11 +2394,8 @@ elseif addon.class == "ROGUE" then
 				["value"] = 1,
 			},
 		},
-		-- Rogue: Deadliness (Rank 5) - 3,18
-		--        Increases your attack power by 2%/4%/6%/8%/10%.
-		-- Rogue: Savage Combat (Rank 2) - 2,26
-		--        Increases your total attack power by 2%/4%.
 		["MOD_AP"] = {
+			-- Talent: Deadliness
 			{
 				["tab"] = 3,
 				["num"] = 18,
@@ -2411,6 +2403,7 @@ elseif addon.class == "ROGUE" then
 					0.02, 0.04, 0.06, 0.08, 0.1,
 				},
 			},
+			-- Talent: Savage Combat
 			{
 				["tab"] = 2,
 				["num"] = 26,
@@ -3112,15 +3105,13 @@ StatLogic.StatModTable["ALL"] = {
 		},
 	},
 	["MOD_AP"] = {
-		-- Hunter: Trueshot Aura - Buff
-		--         Attack power increased by 10%.
+		-- Buff: Trueshot Aura
 		{
 			["value"] = 0.1,
 			["aura"] = 19506,
 			["group"] = addon.ExclusiveGroup.AttackPower,
 		},
-		-- Death Knight: Abomination's Might - Buff
-		--               Attack power increased by 5/10%.
+		-- Buff: Abomination's Might
 		{
 			["rank"] = {
 				0.05, 0.1,
@@ -3128,8 +3119,31 @@ StatLogic.StatModTable["ALL"] = {
 			["aura"] = 53138,
 			["group"] = addon.ExclusiveGroup.AttackPower,
 		},
-		-- Shaman: Unleashed Rage - Buff
-		--         Melee attack power increased by 4/7/10%.
+		-- Buff: Unleashed Rage
+		{
+			["rank"] = {
+				0.04, 0.07, 0.1,
+			},
+			["aura"] = 30809,
+			["group"] = addon.ExclusiveGroup.AttackPower,
+		},
+	},
+	["MOD_RANGED_AP"] = {
+		-- Buff: Trueshot Aura
+		{
+			["value"] = 0.1,
+			["aura"] = 19506,
+			["group"] = addon.ExclusiveGroup.AttackPower,
+		},
+		-- Buff: Abomination's Might
+		{
+			["rank"] = {
+				0.05, 0.1,
+			},
+			["aura"] = 53138,
+			["group"] = addon.ExclusiveGroup.AttackPower,
+		},
+		-- Buff: Unleashed Rage
 		{
 			["rank"] = {
 				0.04, 0.07, 0.1,

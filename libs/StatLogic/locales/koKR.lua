@@ -7,7 +7,7 @@ local W = addon.WholeTextLookup
 W["자연의 법칙"] = {[StatLogic.Stats.SpellDamage] = 30, [StatLogic.Stats.HealingPower] = 55, }
 W["활력"] = {[StatLogic.Stats.ManaRegen] = 4, [StatLogic.Stats.HealthRegen] = 4, }
 W["침착함"] = {[StatLogic.Stats.HitRating] = 10, }
-W["전투력"] = {[StatLogic.Stats.AttackPower] = 70, }
+W["전투력"] = {[StatLogic.Stats.GenericAttackPower] = 70, }
 W["태양의 불꽃"] = {[StatLogic.Stats.ArcaneDamage] = 50, [StatLogic.Stats.FireDamage] = 50, }
 W["냉기의 영혼"] = {[StatLogic.Stats.ShadowDamage] = 54, [StatLogic.Stats.FrostDamage] = 54, }
 W["돌가죽 가고일의 룬"] = {[StatLogic.Stats.Defense] = 25, }
@@ -28,7 +28,7 @@ L["치유 및 주문 공격력 %s"] = {StatLogic.Stats.SpellDamage, }
 L["%s초당 마나 회복 %s"] = {false, StatLogic.Stats.ManaRegen, }
 L["방어 숙련도 %s / 체력 %s / 방패 피해 방어량 %s"] = {StatLogic.Stats.Defense, StatLogic.Stats.Stamina, StatLogic.Stats.BlockValue, }
 L["방어 숙련도 %s / 체력 %s / 치유 효과 증가 %s"] = {StatLogic.Stats.Defense, StatLogic.Stats.Stamina, StatLogic.Stats.Healing, }
-L["전투력 %s / 회피율 %s%"] = {StatLogic.Stats.AttackPower, StatLogic.Stats.Dodge, }
+L["전투력 %s / 회피율 %s%"] = {StatLogic.Stats.GenericAttackPower, StatLogic.Stats.Dodge, }
 L["원거리 전투력 %s / 체력 %s / 적중률 %s%"] = {StatLogic.Stats.RangedAttackPower, StatLogic.Stats.Stamina, {StatLogic.Stats.MeleeHit, StatLogic.Stats.RangedHit, }, }
 L["치유 및 주문 공격력 %s / 지능 %s"] = {{StatLogic.Stats.HealingPower, StatLogic.Stats.SpellDamage, }, StatLogic.Stats.Intellect, }
 L["치유 및 주문 공격력 %s / 주문 적중률 %s%"] = {{StatLogic.Stats.HealingPower, StatLogic.Stats.SpellDamage, }, StatLogic.Stats.SpellHit, }
