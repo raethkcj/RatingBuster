@@ -381,6 +381,7 @@ L["statList"] = {
 -- "%2$s $1$s" -> "Crit +1.34%"
 L["StatBreakdownOrder"] = "%s %s"
 L["Show %s"] = SHOW.." %s"
+L["Show Modified %s"] = "Show Modified %s"
 -- for hit rating showing both physical and spell conversions
 -- (+1.21%, S+0.98%)
 -- (+1.21%, +0.98% S)

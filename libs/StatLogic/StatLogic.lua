@@ -367,14 +367,6 @@ StatLogic.StatModInfo = {
 		initialValue = 0,
 		finalAdjust = 0,
 	},
-	["MOD_AGI"] = {
-		initialValue = 1,
-		finalAdjust = 0,
-	},
-	["MOD_AP"] = {
-		initialValue = 0,
-		finalAdjust = 1,
-	},
 	["MOD_ARMOR"] = {
 		initialValue = 1,
 		finalAdjust = 0,
@@ -399,10 +391,6 @@ StatLogic.StatModInfo = {
 		initialValue = 1,
 		finalAdjust = 0,
 	},
-	["MOD_INT"] = {
-		initialValue = 1,
-		finalAdjust = 0,
-	},
 	["MOD_MANA"] = {
 		initialValue = 1,
 		finalAdjust = 0,
@@ -419,25 +407,9 @@ StatLogic.StatModInfo = {
 		initialValue = 1,
 		finalAdjust = 0,
 	},
-	["MOD_RANGED_AP"] = {
-		initialValue = 0,
-		finalAdjust = 1,
-	},
 	["MOD_SPELL_DMG"] = {
 		initialValue = 0,
 		finalAdjust = 1,
-	},
-	["MOD_SPI"] = {
-		initialValue = 1,
-		finalAdjust = 0,
-	},
-	["MOD_STA"] = {
-		initialValue = 1,
-		finalAdjust = 0,
-	},
-	["MOD_STR"] = {
-		initialValue = 1,
-		finalAdjust = 0,
 	},
 }
 
@@ -670,12 +642,48 @@ local addedInfoMods = {
 		mod = "RESILIENCE",
 
 	},
+	{
+		mod = "AGI",
+		initialValue = 1,
+	},
+	{
+		mod = "AP",
+		finalAdjust = 1,
+	},
+	{
+		mod = "INT",
+		initialValue = 1,
+	},
+	{
+		mod = "RANGED_AP",
+		finalAdjust = 1,
+	},
+	{
+		mod = "SPI",
+		initialValue = 1,
+	},
+	{
+		mod = "STA",
+		initialValue = 1,
+	},
+	{
+		mod = "STR",
+		initialValue = 1,
+	},
 }
 
 for _, statMod in ipairs(addedInfoMods) do
-	local name = ("ADD_%s_MOD_%s"):format(statMod.add, statMod.mod)
-	statMod.initialValue = 0
-	statMod.finalAdjust = 0
+	local name = ""
+	if statMod.add then
+		name = ("ADD_%s_"):format(statMod.add)
+	end
+	name = name .. ("MOD_%s"):format(statMod.mod)
+	if not statMod.initialValue then
+		statMod.initialValue = 0
+	end
+	if not statMod.finalAdjust then
+		statMod.finalAdjust = 0
+	end
 	StatLogic.StatModInfo[name] = statMod
 end
 
