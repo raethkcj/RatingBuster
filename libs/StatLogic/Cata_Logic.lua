@@ -2117,6 +2117,15 @@ elseif addon.class == "SHAMAN" then
 				},
 			},
 		},
+		["MOD_SPI"] = {
+			-- Buff: Mana Tide
+			{
+				["tab"] = 3,
+				["num"] = 15,
+				["value"] = 2.00,
+				["aura"] = 16191,
+			},
+		},
 	}
 elseif addon.class == "WARLOCK" then
 	StatLogic.StatModTable["WARLOCK"] = {
@@ -2766,14 +2775,6 @@ StatLogic.StatModTable["ALL"] = {
 			["value"] = 0.04,
 			["aura"] = 69378,
 			["group"] = addon.ExclusiveGroup.AllStats,
-		},
-	},
-	["MOD_SPI"] = {
-		-- Shaman: Mana Tide - Buff: 16191
-		-- 4.0.1: Spirit increased by 350%.
-		{
-			["value"] = 3.5,
-			["aura"] = 16191,
 		},
 	},
 	["MOD_HEALTH"] = {
