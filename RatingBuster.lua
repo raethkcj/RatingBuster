@@ -1588,31 +1588,35 @@ do
 				if mod then
 					local sources = ""
 					local firstSource = true
-					local show = false
+					local showMod = false
 					for _, case in ipairs(cases) do
+						local showCase = false
 						if not case.rune or showRunes then
-							show = true
+							showMod = true
+							showCase = true
 						end
-						if not firstSource then
-							sources = sources .. ", "
+						if showCase then
+							if not firstSource then
+								sources = sources .. ", "
+							end
+							local source = ""
+							if case.aura then
+								source = GetSpellInfo(case.aura) or source
+							elseif case.tab then
+								source = StatLogic:GetOrderedTalentInfo(case.tab, case.num)
+							elseif case.glyph then
+								source = GetSpellInfo(case.glyph) or source
+							elseif case.known then
+								source = GetSpellInfo(case.known) or source
+							elseif case.spellid then
+								source = GetSpellInfo(case.spellid) or source
+							end
+							sources = sources .. source
+							firstSource = false
 						end
-						local source = ""
-						if case.aura then
-							source = GetSpellInfo(case.aura) or source
-						elseif case.tab then
-							source = StatLogic:GetOrderedTalentInfo(case.tab, case.num)
-						elseif case.glyph then
-							source = GetSpellInfo(case.glyph) or source
-						elseif case.known then
-							source = GetSpellInfo(case.known) or source
-						elseif case.spellid then
-							source = GetSpellInfo(case.spellid) or source
-						end
-						sources = sources .. source
-						firstSource = false
 					end
 
-					if show then
+					if showMod then
 						if add then
 							-- Molten Armor and Forceful Deflection give rating,
 							-- but we show it to the user as the converted stat
