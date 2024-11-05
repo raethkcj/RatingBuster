@@ -302,17 +302,20 @@ StatLogic.GenericStatMap = {
 	}
 }
 
+---@class StatModInfo
+-- 0: inter-mod operations are done with addition,
+-- 1: inter-mod operations are done with multiplication,
+---@field initialValue 0 | 1
+-- Added to the final result after combining two statMods,
+-- so we can adjust the result to be used with additive or multiplicative modifiers.
+-- Additive: initialValue + finalAdjust = 0
+-- Multiplicative: initialValue + finalAdjust = 1
+---@field finalAdjust 0 | 1
+---@field add string?
+---@field mod string?
+
+---@type { [Stat|string]: StatModInfo }
 StatLogic.StatModInfo = {
-	------------------------------------------------------------------------------
-	-- initialValue: sets the initial value for the stat mod
-	-- if initialValue == 0, inter-mod operations are done with addition,
-	-- if initialValue == 1, inter-mod operations are done with multiplication,
-	------------------------------------------------------------------------------
-	-- finalAdjust: added to the final result before returning,
-	-- so we can adjust the return value to be used in addition or multiplication
-	-- for addition: initialValue + finalAdjust = 0
-	-- for multiplication: initialValue + finalAdjust = 1
-	------------------------------------------------------------------------------
 	-- ADD_MELEE_CRIT, _SPELL_CRIT, and _DODGE modifiers are used to reverse engineer conversion rates of AGI and INT,
 	-- but only before max level. When adding them to StatModTables, there's no need to be exhaustive;
 	-- only add mods that would reasonably be active while leveling, which are primarily talents.

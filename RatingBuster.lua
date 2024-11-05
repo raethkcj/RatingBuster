@@ -1526,9 +1526,14 @@ do
 		end
 	})
 
+	local statModSources = {}
+
+	---@param add string?
+	---@param mod string
+	---@param sources { [string]: true }
 	local addStatModOption = function(add, mod, sources)
 		-- Override groups that are hidden by default
-		local groupID, rating = tostring(mod):lower():gsub("_rating$", "")
+		local groupID, rating = mod:lower():gsub("_rating$", "")
 		if mod == "RANGED_AP" then
 			groupID = "ap"
 		end
@@ -1565,18 +1570,31 @@ do
 				-- as well as "modified" options
 				order = (rating == 1 or not add) and 1 or nil,
 			}
-		else
-			sources = option.desc .. ", " .. sources
 		end
 
 		option.name = name
-		option.desc = sources
+
+		if next(sources) then
+			-- First, add to a set to ensure uniqueness among multiple statModTypes
+			for source in pairs(sources) do
+				statModSources[mod] = statModSources[mod] or {}
+				statModSources[mod][add or mod] = statModSources[mod][add or mod] or {}
+				statModSources[mod][add or mod][source] = true
+			end
+
+			-- Second, convert to an array just so we can use table.concat
+			local sources_array = {}
+			for source in pairs(statModSources[mod][add or mod]) do
+				table.insert(sources_array, source)
+			end
+			option.desc = table.concat(sources_array, "\n")
+		end
 
 		group.args[key] = option
 	end
 
 	local season = C_Seasons and C_Seasons.HasActiveSeason() and C_Seasons.GetActiveSeason()
-	local showRunes =  season and (season ~= Enum.SeasonID.NoSeason and season ~= Enum.SeasonID.Hardcore)
+	local showRunes = season and season == Enum.SeasonID.SeasonOfDiscovery
 
 	local function GenerateStatModOptions()
 		local statModContext = StatLogic:NewStatModContext()
@@ -1586,8 +1604,7 @@ do
 				local mod = StatLogic.StatModInfo[statMod].mod
 
 				if mod then
-					local sources = ""
-					local firstSource = true
+					local sources = {}
 					local showMod = false
 					for _, case in ipairs(cases) do
 						local showCase = false
@@ -1596,23 +1613,19 @@ do
 							showCase = true
 						end
 						if showCase then
-							if not firstSource then
-								sources = sources .. ", "
-							end
-							local source = ""
-							if case.aura then
-								source = GetSpellInfo(case.aura) or source
+							local name, icon
+							local sourceSpell = case.aura or case.glyph or case.known or case.spellid
+							if sourceSpell then
+								local sourceSpellInfo = C_Spell.GetSpellInfo(sourceSpell)
+								name = sourceSpellInfo.name
+								icon = sourceSpellInfo.iconID
 							elseif case.tab then
-								source = StatLogic:GetOrderedTalentInfo(case.tab, case.num)
-							elseif case.glyph then
-								source = GetSpellInfo(case.glyph) or source
-							elseif case.known then
-								source = GetSpellInfo(case.known) or source
-							elseif case.spellid then
-								source = GetSpellInfo(case.spellid) or source
+								name, icon = StatLogic:GetOrderedTalentInfo(case.tab, case.num)
 							end
-							sources = sources .. source
-							firstSource = false
+							if name and icon then
+								local source = "|T"..icon..":20|t"..name
+								sources[source] = true
+							end
 						end
 					end
 
@@ -1624,7 +1637,7 @@ do
 
 							-- We want to show the user Armor, regardless of where it comes from
 							if add == "BONUS_ARMOR" then
-								add = StatLogic.Stats.Armor
+								add = "ARMOR"
 							end
 
 							if mod == "NORMAL_MANA_REG" then
