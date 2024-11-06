@@ -1727,6 +1727,42 @@ function StatLogic:GetGemID(item)
 	end
 end
 
+do
+	local baseItemLink = "item:9333:"
+	C_Item.RequestLoadItemDataByID(baseItemLink)
+
+	local function GetBaseItemText()
+		tip:ClearLines()
+		tip:SetHyperlink(baseItemLink)
+		local itemText = {}
+		for i = 1, tip:NumLines() do
+			local text = tip.sides.left[i]:GetText()
+			if text then
+				itemText[i] = text
+			end
+		end
+		return itemText
+	end
+	local baseItemText
+
+	---@param enchantID integer
+	---@return string
+	function StatLogic:GetEnchantText(enchantID)
+		if not baseItemText then
+			baseItemText = GetBaseItemText()
+		end
+		tip:ClearLines()
+		tip:SetHyperlink(baseItemLink .. enchantID)
+		for i = 1, tip:NumLines() do
+			local text = tip.sides.left[i]:GetText()
+			if text and baseItemText[i] ~= text then
+				return text
+			end
+		end
+		return ""
+	end
+end
+
 local function ConvertGenericStats(table)
 	for generic, ratings in pairs(StatLogic.GenericStatMap) do
 		if table[generic] then

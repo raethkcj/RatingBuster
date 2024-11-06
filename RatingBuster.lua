@@ -1624,6 +1624,10 @@ do
 							elseif case.set then
 								name = C_Item.GetItemSetInfo(case.set)
 								icon = [[Interface/PaperDollInfoFrame/UI-EquipmentManager-Toggle]]
+							elseif case.enchant then
+								name = StatLogic:GetEnchantText(case.enchant)
+								-- Currently, all enchant statMods are Death Knight Runeforges
+								icon = [[Interface/ICONS/Spell_DeathKnight_FrozenRuneWeapon]]
 							end
 							if name and icon then
 								local source = "|T"..icon..":20|t"..name
