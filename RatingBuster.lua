@@ -1621,6 +1621,9 @@ do
 								icon = sourceSpellInfo.iconID
 							elseif case.tab then
 								name, icon = StatLogic:GetOrderedTalentInfo(case.tab, case.num)
+							elseif case.set then
+								name = C_Item.GetItemSetInfo(case.set)
+								icon = [[Interface/PaperDollInfoFrame/UI-EquipmentManager-Toggle]]
 							end
 							if name and icon then
 								local source = "|T"..icon..":20|t"..name
