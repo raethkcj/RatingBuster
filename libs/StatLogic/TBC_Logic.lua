@@ -1341,11 +1341,6 @@ elseif addon.class == "WARLOCK" then
 			},
 		},
 		["MOD_PET_STA"] = {
-			-- Blessing of Kings
-			--{
-			--	["value"] = 0.1,
-			--	["condition"] = "UnitBuff('pet', GetSpellInfo(20217)) or UnitBuff('pet', GetSpellInfo(25898))",
-			--},
 			-- Warlock: Fel Stamina (Rank 3) - 2,9
 			--          Increases the Stamina of your Imp, Voidwalker, Succubus, and Felhunter and Felguard by 5%/10%/15% and increases your maximum health and mana by 1%/2%/3%.
 			{
@@ -1377,11 +1372,6 @@ elseif addon.class == "WARLOCK" then
 			},
 		},
 		["MOD_PET_INT"] = {
-			-- Blessing of Kings
-			--{
-			--	["value"] = 0.1,
-			--	["condition"] = "UnitBuff('pet', GetSpellInfo(20217)) or UnitBuff('pet', GetSpellInfo(25898))",
-			--},
 			-- Warlock: Fel Intellect (Rank 3) - 2,6
 			--          Increases the Stamina and Intellect of your Imp, Voidwalker, Succubus, Felhunter and Felguard by 15% and increases your maximum health and mana by 1%/2%/3%.
 			{

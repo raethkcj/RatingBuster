@@ -2699,13 +2699,6 @@ elseif addon.class == "WARLOCK" then
 			},
 		},
 		["MOD_PET_STA"] = {
-			-- 3.3.0 Imp stam total 233: pet base 118, player base 90, pet sta from player sta 0.75, pet kings 1.1, fel vitality 1.15
-			-- /dump floor((118+floor(90*0.75))*1.1)*1.05 = 233.45 match
-			-- /dump (118+floor(90*0.75))*1.1*1.05 = 224.025 wrong
-			--{
-			--	["value"] = 0.1, -- BoK, BoSanc
-			--	["condition"] = "UnitBuff('pet', GetSpellInfo(20217)) or UnitBuff('pet', GetSpellInfo(25898)) or UnitBuff('pet', GetSpellInfo(20911)) or UnitBuff('pet', GetSpellInfo(25899))",
-			--},
 			-- Warlock: Fel Vitality (Rank 3) - 2,7
 			--          Increases the Stamina and Intellect of your Imp, Voidwalker, Succubus, Felhunter and Felguard by 15% and increases your maximum health and mana by 1%/2%/3%.
 			{
@@ -2737,11 +2730,6 @@ elseif addon.class == "WARLOCK" then
 			},
 		},
 		["MOD_PET_INT"] = {
-			-- Blessings on pet
-			--{
-			--	["value"] = 0.1,
-			--	["condition"] = "UnitBuff('pet', GetSpellInfo(20217)) or UnitBuff('pet', GetSpellInfo(25898)) or UnitBuff('pet', GetSpellInfo(20911)) or UnitBuff('pet', GetSpellInfo(25899))",
-			--},
 			-- Warlock: Fel Vitality (Rank 3) - 2,7
 			--          Increases the Stamina and Intellect of your Imp, Voidwalker, Succubus, Felhunter and Felguard by 15% and increases your maximum health and mana by 1%/2%/3%.
 			{

@@ -1116,13 +1116,17 @@ local options = {
 			order = 5,
 			get = function(info)
 				local db = RatingBuster.db:GetNamespace("AlwaysBuffed")
-				return db.profile[info[#info]]
+				if db then
+					return db.profile[info[#info]]
+				end
 			end,
 			set = function(info, v)
 				local db = RatingBuster.db:GetNamespace("AlwaysBuffed")
-				db.profile[info[#info]] = v
-				RatingBuster:ClearCache()
-				StatLogic:InvalidateEvent("UNIT_AURA", "player")
+				if db then
+					db.profile[info[#info]] = v
+					RatingBuster:ClearCache()
+					StatLogic:InvalidateEvent("UNIT_AURA", "player")
+				end
 			end,
 			args = {
 				description = {
@@ -1683,8 +1687,9 @@ do
 				if not StatLogic.StatModIgnoresAlwaysBuffed[modName] then
 					for _, mod in ipairs(mods) do
 						if mod.aura and (not mod.rune or showRunes) then
-							local name, _, icon = GetSpellInfo(mod.aura)
-							if name then
+							local spellInfo = C_Spell.GetSpellInfo(mod.aura)
+							if spellInfo then
+								local name, icon = spellInfo.name, spellInfo.iconID
 								local option = {
 									type = 'toggle',
 									name = "|T"..icon..":25:25:-2:0|t"..name,
@@ -1695,7 +1700,7 @@ do
 								-- If it's a spell the player knows, use the highest rank for the description
 								local spellId = mod.spellid or mod.known or mod.aura
 								if IsPlayerSpell(spellId) then
-									spellId = select(7,GetSpellInfo(name)) or spellId
+									spellId = C_Spell.GetSpellIDForSpellIdentifier(name) or spellId
 								end
 								local spell = Spell:CreateFromSpellID(spellId)
 								spell:ContinueOnSpellLoad(function()
@@ -2022,6 +2027,7 @@ local scanningTooltipOwners = {
 	["UIParent"] = true,
 }
 
+---@param tooltip ClassicGameTooltip
 function RatingBuster.ProcessTooltip(tooltip)
 	-- Do nothing if the tooltip is being used as a hidden scanning tooltip
 	if tooltip:GetAnchorType() == "ANCHOR_NONE" and (not tooltip:GetOwner() or scanningTooltipOwners[tooltip:GetOwner():GetName()]) then
@@ -4010,7 +4016,7 @@ function RatingBuster:PerformanceProfile()
 	for i = INVSLOT_FIRST_EQUIPPED, INVSLOT_LAST_EQUIPPED do
 		GameTooltip:SetOwner(UIParent, "ANCHOR_PRESERVE")
 		GameTooltip:SetInventoryItem("player", i)
-		self.ProcessTooltip(GameTooltip)
+		self.ProcessTooltip(GameTooltip --[[@as ClassicGameTooltip]])
 		GameTooltip:Hide()
 	end
 

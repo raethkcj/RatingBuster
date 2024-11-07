@@ -44,6 +44,7 @@ ignore:
   - ./*.txt
   - *.jpg
   - scripts
+  - LanguageServerOverrides.lua
   - **/libs/**/*.rockspec
   - **/libs/**/changelog.*
   - **/libs/**/CHANGELOG.*

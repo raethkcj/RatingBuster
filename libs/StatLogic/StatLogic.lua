@@ -18,7 +18,7 @@ function StatLogic:argCheck(argument, number, ...)
 end
 
 -- Tooltip with syntactic sugar
----@class StatLogicTooltip : GameTooltip
+---@class StatLogicTooltip : ClassicGameTooltip
 local tip = CreateFrame("GameTooltip", "StatLogicTooltip", nil, "GameTooltipTemplate") --[[@as GameTooltip]]
 tip:SetOwner(WorldFrame, "ANCHOR_NONE")
 
@@ -77,6 +77,7 @@ local pairs = pairs
 local ipairs = ipairs
 local type = type
 local GetInventoryItemLink = GetInventoryItemLink
+local GetSpellName = C_Spell.GetSpellName
 local IsUsableSpell = IsUsableSpell
 local UnitStat = UnitStat
 local GetShapeshiftForm = GetShapeshiftForm
@@ -89,7 +90,7 @@ local tocversion = select(4, GetBuildInfo())
 ---------------
 -- metatable for stat tables
 local statTableMetatable = {
-	__index = function(t, k)
+	__index = function(_, k)
 		if k ~= "subclassID" then
 			return 0
 		end
@@ -163,8 +164,9 @@ end
 
 ---@class StatTable
 ---@field link string
----@field numLines number
+---@field numLines integer
 ---@field inventoryType string
+---@field subclassID Enum.ItemWeaponSubclass?
 ---@field [Stat] number
 
 -- New table
@@ -720,7 +722,7 @@ do
 			for _, mods in pairs(modList) do
 				for _, mod in ipairs(mods) do
 					if mod.aura then -- if we got a buff
-						local name = GetSpellInfo(mod.aura)
+						local name = GetSpellName(mod.aura)
 						if name then
 							local aura = {}
 							if not mod.tab and mod.rank then
@@ -966,7 +968,7 @@ addon.StatModValidators = {
 	},
 	aura = {
 		validate = function(case, statModName)
-			return not not StatLogic:GetAuraInfo(GetSpellInfo(case.aura), StatLogic.StatModIgnoresAlwaysBuffed[statModName])
+			return not not StatLogic:GetAuraInfo(GetSpellName(case.aura), StatLogic.StatModIgnoresAlwaysBuffed[statModName])
 		end,
 		events = {
 			["UNIT_AURA"] = "player",
@@ -1098,7 +1100,7 @@ addon.StatModValidators = {
 					subclassID = select(7, C_Item.GetItemInfoInstant(weapon))
 				end
 			end
-			return subclassID and case.weapon[subclassID]
+			return subclassID and case.weapon[subclassID] or false
 		end,
 		events = {
 			["UNIT_INVENTORY_CHANGED"] = "player",
@@ -1296,11 +1298,11 @@ do
 				newValue = case.value
 			end
 		elseif case.aura and case.rank then
-			local aura = StatLogic:GetAuraInfo(GetSpellInfo(case.aura))
+			local aura = StatLogic:GetAuraInfo(GetSpellName(case.aura))
 			local rank = aura.rank
 			newValue = case.rank[rank]
 		elseif case.aura and case.stack then
-			local aura = StatLogic:GetAuraInfo(GetSpellInfo(case.aura))
+			local aura = StatLogic:GetAuraInfo(GetSpellName(case.aura))
 			newValue = case.stack * aura.stacks
 		elseif case.regen then
 			newValue = case.regen(level)
@@ -1309,7 +1311,7 @@ do
 		elseif case.level then
 			newValue = case.level[level]
 		elseif case.tooltip then
-			local aura = StatLogic:GetAuraInfo(GetSpellInfo(case.aura))
+			local aura = StatLogic:GetAuraInfo(GetSpellName(case.aura))
 			newValue = aura.tooltip
 		end
 
@@ -1467,9 +1469,9 @@ end
 
 local function GetTotalWeaponSkill(unit)
 	if addon.class == "DRUID" and (
-		StatLogic:GetAuraInfo(GetSpellInfo(768), true)
-		or StatLogic:GetAuraInfo(GetSpellInfo(5487), true)
-		or StatLogic:GetAuraInfo(GetSpellInfo(9634), true)
+		StatLogic:GetAuraInfo(GetSpellName(768), true)
+		or StatLogic:GetAuraInfo(GetSpellName(5487), true)
+		or StatLogic:GetAuraInfo(GetSpellName(9634), true)
 	) then
 		return UnitLevel("player") * 5
 	else
@@ -2106,7 +2108,7 @@ function StatLogic:GetDiffID(item, ignoreEnchant, ignoreGems, ignoreExtraSockets
 	if inventoryType == "INVTYPE_WEAPON" then
 		linkDiff1 = GetInventoryItemLink("player", 16) or "NOITEM"
 		-- If player can Dual Wield, calculate offhand difference
-		if IsUsableSpell(GetSpellInfo(674)) then		-- ["Dual Wield"]
+		if IsUsableSpell(GetSpellName(674)) then		-- ["Dual Wield"]
 			local _, _, _, _, _, _, _, _, eqItemType = C_Item.GetItemInfo(linkDiff1)
 			-- If 2h is equipped, copy diff1 to diff2
 			if eqItemType == "INVTYPE_2HWEAPON" and not HasTitansGrip() then
@@ -2300,7 +2302,7 @@ if GetCurrentRegion() == 1 or GetCurrentRegion() == 72 and GetLocale() == "enUS"
 			end)
 
 			local sending = false
-			local function cleanUp(delay)
+			local function cleanUp()
 				-- Wait to see if whispers failed to send
 				C_Timer.After(2, function()
 					if not failure then
@@ -2316,17 +2318,10 @@ if GetCurrentRegion() == 1 or GetCurrentRegion() == 72 and GetLocale() == "enUS"
 			local function SendStoredData()
 				if failure or sending or UnitName("player") == target then return end
 				local data = RatingBuster.conversion_data.global
-				local send = false
-				for i = 0, 4 do
-					if data[i] then
-						send = true
-						break
-					end
-				end
-				if send then
+				if data and next(data) then
 					sending = true
 					local serialized = LibStub("LibSerialize"):Serialize(data)
-					local encoded = codec:Encode(serialized)
+					local encoded = codec and codec:Encode(serialized) or ""
 					LibStub("AceComm-3.0"):SendCommMessage(prefix, encoded, "WHISPER", target, "BULK", cleanUp, true)
 				end
 			end
@@ -2386,7 +2381,7 @@ if GetCurrentRegion() == 1 or GetCurrentRegion() == 72 and GetLocale() == "enUS"
 	--@debug@
 	local receive = {}
 	function receive:OnCommReceived(_, message)
-		local decoded = codec:Decode(message)
+		local decoded = codec and codec:Decode(message)
 		if not decoded then return end
 		local success, data = LibStub("LibSerialize"):Deserialize(decoded)
 		if not success then return end
