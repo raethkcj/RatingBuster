@@ -1,4 +1,4 @@
-## Interface: 11503, 11504
+## Interface: 11504, 11505
 ## Title: RatingBuster
 ## Notes: Item stat breakdown, analysis and comparing
 ## Notes-zhTW: 裝備數值解析與比較
