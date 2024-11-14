@@ -1419,8 +1419,7 @@ StatLogic.StatModTable["ALL"] = {
 		},
 	},
 	["MOD_ARMOR"] = {
-		-- Paladin: Lay on Hands (Rank 1/2) - Buff
-		--          Armor increased by 15%/30%.
+		-- Buff: Lay on Hands
 		{
 			["rank"] = {
 				0.15, 0.30,
@@ -1428,8 +1427,7 @@ StatLogic.StatModTable["ALL"] = {
 			["aura"] = 20236,
 			["spellid"] = 20235,
 		},
-		-- Priest: Inspiration (Rank 1/2/3) - Buff
-		--         Increases armor by 8%/16%/25%.
+		-- Buff: Inspiration
 		{
 			["rank"] = {
 				0.08, 0.16, 0.25,
@@ -1437,8 +1435,7 @@ StatLogic.StatModTable["ALL"] = {
 			["aura"] = 15363,
 			["group"] = addon.ExclusiveGroup.Armor,
 		},
-		-- Shaman: Ancestral Fortitude (Rank 1/2/3) - Buff
-		--         Increases your armor value by 8%/16%/25%.
+		-- Buff: Ancestral Fortitude
 		{
 			["rank"] = {
 				0.08, 0.16, 0.25,

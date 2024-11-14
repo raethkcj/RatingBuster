@@ -372,10 +372,6 @@ StatLogic.StatModInfo = {
 		initialValue = 0,
 		finalAdjust = 0,
 	},
-	["MOD_ARMOR"] = {
-		initialValue = 1,
-		finalAdjust = 0,
-	},
 	["MOD_BLOCK_VALUE"] = {
 		initialValue = 0,
 		finalAdjust = 1,
@@ -654,6 +650,10 @@ local addedInfoMods = {
 	{
 		mod = "AP",
 		finalAdjust = 1,
+	},
+	{
+		mod = "ARMOR",
+		initialValue = 1,
 	},
 	{
 		mod = "INT",

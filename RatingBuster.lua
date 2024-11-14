@@ -2710,11 +2710,17 @@ do
 			end
 		elseif statID == StatLogic.Stats.Armor then
 			local base, bonus = StatLogic:GetArmorDistribution(link, value, color)
-			value = base * statModContext("MOD_ARMOR") + bonus
+			local mod = statModContext("MOD_ARMOR")
+			value = base * mod + bonus
+			if isBaseStat and mod ~= 1 and db.profile.showModifiedArmor then
+				infoTable["Decimal"] = value
+			end
 			self:ProcessStat(StatLogic.Stats.BonusArmor, value, infoTable, link, color, statModContext, false)
-		elseif db.profile.showAPFromArmor and statID == StatLogic.Stats.BonusArmor then
-			local effect = value * statModContext("ADD_AP_MOD_ARMOR") * statModContext("MOD_AP")
-			infoTable[StatLogic.Stats.AttackPower] = infoTable[StatLogic.Stats.AttackPower] + effect
+		elseif statID == StatLogic.Stats.BonusArmor then
+			if db.profile.showAPFromArmor then
+				local effect = value * statModContext("ADD_AP_MOD_ARMOR") * statModContext("MOD_AP")
+				infoTable[StatLogic.Stats.AttackPower] = infoTable[StatLogic.Stats.AttackPower] + effect
+			end
 		elseif statID == StatLogic.Stats.AttackPower then
 			local mod = statModContext("MOD_AP")
 			value = value * mod
