@@ -308,6 +308,8 @@ L["restaura %s de mana a cada %s s de todos os integrantes do grupo em um raio d
 L["aumenta em até %s o seu dano mágico e em até %s a sua cura"] = {StatLogic.Stats.SpellDamage, StatLogic.Stats.HealingPower, }
 L["melhora em %s% sua chance de acerto com todos os feitiços e ataques"] = {{StatLogic.Stats.MeleeHit, StatLogic.Stats.RangedHit, StatLogic.Stats.SpellHit, }, }
 L["aumenta em %s% sua chance de obter acerto crítico com todos os feitiços e ataques"] = {{StatLogic.Stats.MeleeCrit, StatLogic.Stats.RangedCrit, StatLogic.Stats.SpellCrit, }, }
+L["reduz em %s% a chance de os seus ataques serem esquivados ou aparados"] = {{StatLogic.Stats.DodgeReduction, StatLogic.Stats.ParryReduction, }, }
+L["aumenta em %s% a sua velocidade de ataque"] = {{StatLogic.Stats.MeleeHaste, StatLogic.Stats.RangedHaste, }, }
 L["defesa aumentada em %s"] = {StatLogic.Stats.Defense, }
 L["aumenta em %s% a chance de bloquear ataques com o escudo"] = {StatLogic.Stats.BlockChance, }
 L["aumenta em até %s o dano causado e a cura realizada por feitiços e efeitos mágicos"] = {{StatLogic.Stats.SpellDamage, StatLogic.Stats.HealingPower, }, }

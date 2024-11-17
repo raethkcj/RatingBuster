@@ -3191,7 +3191,8 @@ local summaryCalcData = {
 		option = "sumHaste",
 		stat = StatLogic.Stats.MeleeHaste,
 		func = function(sum, statModContext)
-			return sum[StatLogic.Stats.MeleeHasteRating] * statModContext("ADD_MELEE_HASTE_MOD_MELEE_HASTE_RATING")
+			return sum[StatLogic.Stats.MeleeHaste]
+				+ sum[StatLogic.Stats.MeleeHasteRating] * statModContext("ADD_MELEE_HASTE_MOD_MELEE_HASTE_RATING")
 		end,
 	},
 	-- Haste Rating - MELEE_HASTE_RATING
@@ -3207,7 +3208,8 @@ local summaryCalcData = {
 		option = "sumRangedHaste",
 		stat = StatLogic.Stats.RangedHaste,
 		func = function(sum, statModContext)
-			return sum[StatLogic.Stats.RangedHasteRating] * statModContext("ADD_RANGED_HASTE_MOD_RANGED_HASTE_RATING")
+			return sum[StatLogic.Stats.RangedHaste]
+				+ sum[StatLogic.Stats.RangedHasteRating] * statModContext("ADD_RANGED_HASTE_MOD_RANGED_HASTE_RATING")
 		end,
 	},
 	-- Ranged Haste Rating - RANGED_HASTE_RATING
@@ -3251,7 +3253,9 @@ local summaryCalcData = {
 			if addon.tocversion < 30000 then
 				effect = floor(effect)
 			end
-			return effect * statModContext("ADD_DODGE_REDUCTION_MOD_EXPERTISE") + sum[StatLogic.Stats.WeaponSkill] * 0.1
+			return sum[StatLogic.Stats.DodgeReduction]
+				+ effect * statModContext("ADD_DODGE_REDUCTION_MOD_EXPERTISE")
+				+ sum[StatLogic.Stats.WeaponSkill] * 0.1
 		end,
 	},
 	-- Parry Reduction - EXPERTISE_RATING
@@ -3263,7 +3267,8 @@ local summaryCalcData = {
 			if addon.tocversion < 30000 then
 				effect = floor(effect)
 			end
-			return effect * statModContext("ADD_PARRY_REDUCTION_MOD_EXPERTISE")
+			return sum[StatLogic.Stats.ParryReduction]
+				+ effect * statModContext("ADD_PARRY_REDUCTION_MOD_EXPERTISE")
 		end,
 	},
 	-- Weapon Average Damage - StatLogic.Stats.MinWeaponDamage, StatLogic.Stats.MaxWeaponDamage

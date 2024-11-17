@@ -315,6 +315,8 @@ L["使周围半径%s码范围内的所有小队成员每%s秒恢复%s点法力�
 L["使你的法术伤害提高最多%s点，治疗效果提高最多%s点。"] = {StatLogic.Stats.SpellDamage, StatLogic.Stats.HealingPower, }
 L["使你的所有法术和攻击的命中几率提高%s%。"] = {{StatLogic.Stats.MeleeHit, StatLogic.Stats.RangedHit, StatLogic.Stats.SpellHit, }, }
 L["使你的所有法术和攻击的爆击几率提高%s%。"] = {{StatLogic.Stats.MeleeCrit, StatLogic.Stats.RangedCrit, StatLogic.Stats.SpellCrit, }, }
+L["使你的攻击被躲闪或招架的几率降低%s%。"] = {{StatLogic.Stats.DodgeReduction, StatLogic.Stats.ParryReduction, }, }
+L["使你的攻击速度提高%s%。"] = {{StatLogic.Stats.MeleeHaste, StatLogic.Stats.RangedHaste, }, }
 L["防御技能提高%s点。"] = {StatLogic.Stats.Defense, }
 L["使你用盾牌格挡攻击的几率提高%s%。"] = {StatLogic.Stats.BlockChance, }
 L["提高所有法术和魔法效果所造成的伤害和治疗效果，最多%s点。"] = {{StatLogic.Stats.SpellDamage, StatLogic.Stats.HealingPower, }, }

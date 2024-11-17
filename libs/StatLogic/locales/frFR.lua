@@ -383,6 +383,8 @@ L["rend %s points de mana toutes les %s secondes à tous les membres du groupe s
 L["augmente les dégâts infligés par vos sorts d'un maximum de %s et vos soins d'un maximum de %s"] = {StatLogic.Stats.SpellDamage, StatLogic.Stats.HealingPower, }
 L["augmente de %s % les chances de toucher avec tous les sorts et attaques"] = {{StatLogic.Stats.MeleeHit, StatLogic.Stats.RangedHit, StatLogic.Stats.SpellHit, }, }
 L["augmente de %s % vos chances d’infliger un coup critique avec tous les sorts et attaques"] = {{StatLogic.Stats.MeleeCrit, StatLogic.Stats.RangedCrit, StatLogic.Stats.SpellCrit, }, }
+L["réduit les chances que vos attaques soient esquivées ou parées de %s %"] = {{StatLogic.Stats.DodgeReduction, StatLogic.Stats.ParryReduction, }, }
+L["augmente votre vitesse d’attaque de %s %"] = {{StatLogic.Stats.MeleeHaste, StatLogic.Stats.RangedHaste, }, }
 L["défense augmentée de %s"] = {StatLogic.Stats.Defense, }
 L["augmente vos chances de bloquer les attaques avec un bouclier de %s%"] = {StatLogic.Stats.BlockChance, }
 L["augmente les dégâts et les soins produits par les sorts et effets magiques de %s au maximum"] = {{StatLogic.Stats.SpellDamage, StatLogic.Stats.HealingPower, }, }

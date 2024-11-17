@@ -317,6 +317,8 @@ L["stellt alle %s sek. %s punkt(e) mana bei allen gruppenmitgliedern, die sich i
 L["erhöht euren zauberschaden um bis zu %s und eure heilung um bis zu %s"] = {StatLogic.Stats.SpellDamage, StatLogic.Stats.HealingPower, }
 L["erhöht eure trefferchance mit allen angriffen und zaubern um %s%"] = {{StatLogic.Stats.MeleeHit, StatLogic.Stats.RangedHit, StatLogic.Stats.SpellHit, }, }
 L["erhöht eure kritische trefferchance aller eurer angriffe und zauber um %s%"] = {{StatLogic.Stats.MeleeCrit, StatLogic.Stats.RangedCrit, StatLogic.Stats.SpellCrit, }, }
+L["verringert die chance, dass eure angriffe pariert werden oder ihnen ausgewichen wird, um %s%"] = {{StatLogic.Stats.DodgeReduction, StatLogic.Stats.ParryReduction, }, }
+L["erhöht eurer angriffstempo um %s%"] = {{StatLogic.Stats.MeleeHaste, StatLogic.Stats.RangedHaste, }, }
 L["verteidigung %s"] = {StatLogic.Stats.Defense, }
 L["erhöht eure chance, angriffe mit einem schild zu blocken, um %s%"] = {StatLogic.Stats.BlockChance, }
 L["erhöht durch zauber und magische effekte zugefügten schaden und heilung um bis zu %s"] = {{StatLogic.Stats.SpellDamage, StatLogic.Stats.HealingPower, }, }
