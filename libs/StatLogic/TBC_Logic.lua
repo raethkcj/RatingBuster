@@ -1796,13 +1796,17 @@ StatLogic.StatModTable["ALL"] = {
 			["value"] = 0.07,
 		},
 	},
-	-- Primal Mooncloth
-	-- Allow 5% of your Mana regeneration to continue while casting.
 	["ADD_MANA_REG_MOD_NORMAL_MANA_REG"] = {
+		-- Set: Primal Mooncloth
 		{
 			["set"] = 554,
 			["pieces"] = 3,
 			["value"] = 0.05,
+		},
+		-- Aura of the Blue Dragon
+		{
+			["aura"] = 23684,
+			["value"] = 1.00,
 		},
 	},
 	["ADD_DODGE_REDUCTION_MOD_EXPERTISE"] = {

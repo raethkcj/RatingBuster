@@ -1626,6 +1626,11 @@ StatLogic.StatModTable["ALL"] = {
 			["pieces"] = 3,
 			["value"] = 0.15,
 		},
+		-- Aura of the Blue Dragon
+		{
+			["aura"] = 23684,
+			["value"] = 1.00,
+		},
 	},
 	[StatLogic.Stats.WeaponSkill] = {
 		-- Rune: Sword Specialization
