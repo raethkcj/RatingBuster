@@ -5,6 +5,7 @@ local StatLogic = LibStub(addonName)
 
 local W = addon.WholeTextLookup
 W["loi de la nature"] = {[StatLogic.Stats.SpellDamage] = 30, [StatLogic.Stats.HealingPower] = 55, }
+W["caractéristiques vivantes"] = {[StatLogic.Stats.AllStats] = 4, [StatLogic.Stats.NatureResistance] = 15, }
 W["vitalité"] = {[StatLogic.Stats.ManaRegen] = 4, [StatLogic.Stats.HealthRegen] = 4, }
 W["pied sûr"] = {[StatLogic.Stats.HitRating] = 10, }
 W["sauvagerie"] = {[StatLogic.Stats.GenericAttackPower] = 70, }
@@ -54,6 +55,9 @@ L["endurance %s/défense %s/chances de bloquer %s %"] = {StatLogic.Stats.Stamin
 L["endurance %s/chances de toucher %s %/défense %s"] = {StatLogic.Stats.Stamina, {StatLogic.Stats.MeleeHit, StatLogic.Stats.RangedHit, StatLogic.Stats.SpellHit, }, StatLogic.Stats.Defense, }
 L["endurance %s/défense %s/valeur de blocage %s"] = {StatLogic.Stats.Stamina, StatLogic.Stats.Defense, StatLogic.Stats.BlockValue, }
 L["endurance %s/agilité %s/force %s"] = {StatLogic.Stats.Stamina, StatLogic.Stats.Agility, StatLogic.Stats.Strength, }
+L["dégâts du sacré %s"] = {StatLogic.Stats.HolyDamage, }
+L["dégâts des arcanes %s"] = {StatLogic.Stats.ArcaneDamage, }
+L["dégâts des sorts et soins %s"] = {{StatLogic.Stats.SpellDamage, StatLogic.Stats.HealingPower, }, }
 L["renforcé (%s armure)"] = {StatLogic.Stats.BonusArmor, }
 L["%s au score de blocage"] = {StatLogic.Stats.BlockRating, }
 L["%s aux sorts de soins et %s aux dégâts des sorts"] = {StatLogic.Stats.HealingPower, StatLogic.Stats.SpellDamage, }

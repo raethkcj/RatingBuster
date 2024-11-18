@@ -5,6 +5,7 @@ local StatLogic = LibStub(addonName)
 
 local W = addon.WholeTextLookup
 W["ley de la naturaleza"] = {[StatLogic.Stats.SpellDamage] = 30, [StatLogic.Stats.HealingPower] = 55, }
+W["estadísticas de vida"] = {[StatLogic.Stats.AllStats] = 4, [StatLogic.Stats.NatureResistance] = 15, }
 W["vitalidad"] = {[StatLogic.Stats.ManaRegen] = 4, [StatLogic.Stats.HealthRegen] = 4, }
 W["pies de plomo"] = {[StatLogic.Stats.HitRating] = 10, }
 W["salvajismo"] = {[StatLogic.Stats.GenericAttackPower] = 70, }
@@ -36,7 +37,7 @@ L["sanación y daño con hechizos %s/golpe con hechizos %s%"] = {{StatLogic.Stat
 L["sanación y daño con hechizos %s/aguante %s"] = {{StatLogic.Stats.HealingPower, StatLogic.Stats.SpellDamage, }, StatLogic.Stats.Stamina, }
 L["regeneración de maná %s/aguante %s/hechizos de sanación %s"] = {StatLogic.Stats.ManaRegen, StatLogic.Stats.Stamina, StatLogic.Stats.HealingPower, }
 L["intelecto %s/aguante %s/hechizos de sanación %s"] = {StatLogic.Stats.Intellect, StatLogic.Stats.Stamina, StatLogic.Stats.Healing, }
-L["daño con hechizos y sanación %s"] = {StatLogic.Stats.SpellDamage, }
+L["daño con hechizos y sanación %s"] = {{StatLogic.Stats.SpellDamage, StatLogic.Stats.HealingPower, }, }
 L["daño y hechizos de sanación %s"] = {StatLogic.Stats.SpellDamage, }
 L["daño de las sombras %s"] = {StatLogic.Stats.ShadowDamage, }
 L["daño de escarcha %s"] = {StatLogic.Stats.FrostDamage, }
@@ -54,6 +55,8 @@ L["aguante %s/defensa %s/probabilidad de bloqueo %s%"] = {StatLogic.Stats.Stamin
 L["aguante %s/golpe %s%/defensa %s"] = {StatLogic.Stats.Stamina, {StatLogic.Stats.MeleeHit, StatLogic.Stats.RangedHit, StatLogic.Stats.SpellHit, }, StatLogic.Stats.Defense, }
 L["aguante %s/defensa %s/valor de bloqueo %s"] = {StatLogic.Stats.Stamina, StatLogic.Stats.Defense, StatLogic.Stats.BlockValue, }
 L["aguante %s/agilidad %s/fuerza %s"] = {StatLogic.Stats.Stamina, StatLogic.Stats.Agility, StatLogic.Stats.Strength, }
+L["daño sagrado %s"] = {StatLogic.Stats.HolyDamage, }
+L["daño arcano %s"] = {StatLogic.Stats.ArcaneDamage, }
 L["reforzado (%s armadura)"] = {StatLogic.Stats.BonusArmor, }
 L["%s índice de bloqueo con escudo"] = {StatLogic.Stats.BlockRating, }
 L["golpe crítico %s%"] = {StatLogic.Stats.CritRating, }

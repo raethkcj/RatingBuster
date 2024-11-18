@@ -5,6 +5,7 @@ local StatLogic = LibStub(addonName)
 
 local W = addon.WholeTextLookup
 W["自然法则"] = {[StatLogic.Stats.SpellDamage] = 30, [StatLogic.Stats.HealingPower] = 55, }
+W["活跃属性"] = {[StatLogic.Stats.AllStats] = 4, [StatLogic.Stats.NatureResistance] = 15, }
 W["活力"] = {[StatLogic.Stats.ManaRegen] = 4, [StatLogic.Stats.HealthRegen] = 4, }
 W["稳固"] = {[StatLogic.Stats.HitRating] = 10, }
 W["野蛮"] = {[StatLogic.Stats.GenericAttackPower] = 70, }
@@ -54,6 +55,9 @@ L["耐力 %s/防御 %s/格挡几率 %s%"] = {StatLogic.Stats.Stamina, StatLogic.
 L["耐力 %s/命中 %s%/防御 %s"] = {StatLogic.Stats.Stamina, {StatLogic.Stats.MeleeHit, StatLogic.Stats.RangedHit, StatLogic.Stats.SpellHit, }, StatLogic.Stats.Defense, }
 L["耐力 %s/防御 %s/格挡值 %s"] = {StatLogic.Stats.Stamina, StatLogic.Stats.Defense, StatLogic.Stats.BlockValue, }
 L["耐力 %s/敏捷 %s/力量 %s"] = {StatLogic.Stats.Stamina, StatLogic.Stats.Agility, StatLogic.Stats.Strength, }
+L["神圣伤害 %s"] = {StatLogic.Stats.HolyDamage, }
+L["奥术伤害 %s"] = {StatLogic.Stats.ArcaneDamage, }
+L["法术伤害和治疗 %s"] = {{StatLogic.Stats.SpellDamage, StatLogic.Stats.HealingPower, }, }
 L["加固（%s 护甲）"] = {StatLogic.Stats.BonusArmor, }
 L["%s 盾牌格挡等级"] = {StatLogic.Stats.BlockRating, }
 L["%s 法术治疗，%s 法术伤害"] = {StatLogic.Stats.HealingPower, StatLogic.Stats.SpellDamage, }

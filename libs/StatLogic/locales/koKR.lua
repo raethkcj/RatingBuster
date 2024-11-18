@@ -5,6 +5,7 @@ local StatLogic = LibStub(addonName)
 
 local W = addon.WholeTextLookup
 W["자연의 법칙"] = {[StatLogic.Stats.SpellDamage] = 30, [StatLogic.Stats.HealingPower] = 55, }
+W["살아있는 능력치"] = {[StatLogic.Stats.AllStats] = 4, [StatLogic.Stats.NatureResistance] = 15, }
 W["활력"] = {[StatLogic.Stats.ManaRegen] = 4, [StatLogic.Stats.HealthRegen] = 4, }
 W["침착함"] = {[StatLogic.Stats.HitRating] = 10, }
 W["전투력"] = {[StatLogic.Stats.GenericAttackPower] = 70, }
@@ -51,6 +52,9 @@ L["체력 %s/방어 %s/방패 막기 확률 %s%"] = {StatLogic.Stats.Stamina, St
 L["체력 %s/적중 %s%/방어 %s"] = {StatLogic.Stats.Stamina, {StatLogic.Stats.MeleeHit, StatLogic.Stats.RangedHit, StatLogic.Stats.SpellHit, }, StatLogic.Stats.Defense, }
 L["체력 %s/방어 %s/방패 막기 %s"] = {StatLogic.Stats.Stamina, StatLogic.Stats.Defense, StatLogic.Stats.BlockValue, }
 L["체력 %s/민첩성 %s/힘 %s"] = {StatLogic.Stats.Stamina, StatLogic.Stats.Agility, StatLogic.Stats.Strength, }
+L["신성 공격력 %s"] = {StatLogic.Stats.HolyDamage, }
+L["비전 공격력 %s"] = {StatLogic.Stats.ArcaneDamage, }
+L["주문 공격력 및 치유량 %s"] = {{StatLogic.Stats.SpellDamage, StatLogic.Stats.HealingPower, }, }
 L["방어도 보강 (방어도 %s)"] = {StatLogic.Stats.BonusArmor, }
 L["방패 막기 숙련도 %s"] = {StatLogic.Stats.BlockRating, }
 L["주문 치유량 %s / 주문 공격력 %s"] = {StatLogic.Stats.HealingPower, StatLogic.Stats.SpellDamage, }

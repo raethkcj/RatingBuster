@@ -5,6 +5,7 @@ local StatLogic = LibStub(addonName)
 
 local W = addon.WholeTextLookup
 W["ley de la naturaleza"] = {[StatLogic.Stats.SpellDamage] = 30, [StatLogic.Stats.HealingPower] = 55, }
+W["estadísticas vivientes"] = {[StatLogic.Stats.AllStats] = 4, [StatLogic.Stats.NatureResistance] = 15, }
 W["vitalidad"] = {[StatLogic.Stats.ManaRegen] = 4, [StatLogic.Stats.HealthRegen] = 4, }
 W["pies de plomo"] = {[StatLogic.Stats.HitRating] = 10, }
 W["salvajismo"] = {[StatLogic.Stats.GenericAttackPower] = 70, }
@@ -54,6 +55,9 @@ L["aguante %s/defensa %s/probabilidad de bloqueo %s%"] = {StatLogic.Stats.Stamin
 L["aguante %s/golpe %s%/defensa %s"] = {StatLogic.Stats.Stamina, {StatLogic.Stats.MeleeHit, StatLogic.Stats.RangedHit, StatLogic.Stats.SpellHit, }, StatLogic.Stats.Defense, }
 L["aguante %s/defensa %s/valor de bloqueo %s"] = {StatLogic.Stats.Stamina, StatLogic.Stats.Defense, StatLogic.Stats.BlockValue, }
 L["aguante %s/agilidad %s/fuerza %s"] = {StatLogic.Stats.Stamina, StatLogic.Stats.Agility, StatLogic.Stats.Strength, }
+L["daño sagrado %s"] = {StatLogic.Stats.HolyDamage, }
+L["daño arcano %s"] = {StatLogic.Stats.ArcaneDamage, }
+L["%s de daño conr hechizos y sanación"] = {{StatLogic.Stats.SpellDamage, StatLogic.Stats.HealingPower, }, }
 L["reforzado (%s armadura)"] = {StatLogic.Stats.BonusArmor, }
 L["%s índice de bloqueo con escudo"] = {StatLogic.Stats.BlockRating, }
 L["%s hechizos de sanación y %s hechizos de daño"] = {StatLogic.Stats.HealingPower, StatLogic.Stats.SpellDamage, }

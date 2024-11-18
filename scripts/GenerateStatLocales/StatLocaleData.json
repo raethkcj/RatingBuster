@@ -42,7 +42,11 @@
 			"7629": [ "StatIDLookup", ["Stamina", "Defense", "BlockChance"] ],
 			"7631": [ "StatIDLookup", ["Stamina", ["MeleeHit", "RangedHit", "SpellHit"], "Defense"] ],
 			"7633": [ "StatIDLookup", ["Stamina", "Defense", "BlockValue"] ],
-			"7635": [ "StatIDLookup", ["Stamina", "Agility", "Strength"] ]
+			"7635": [ "StatIDLookup", ["Stamina", "Agility", "Strength"] ],
+			"7645": [ "WholeTextLookup", {"AllStats": 4, "NatureResistance": 15} ],
+			"7646": [ "StatIDLookup", ["HolyDamage"] ],
+			"7647": [ "StatIDLookup", ["ArcaneDamage"] ],
+			"7648": [ "StatIDLookup", [["SpellDamage", "HealingPower"]] ]
 		},
 		"2": {
 			"15": [ "StatIDLookup", ["BonusArmor"] ],

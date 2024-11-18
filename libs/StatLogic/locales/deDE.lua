@@ -5,6 +5,7 @@ local StatLogic = LibStub(addonName)
 
 local W = addon.WholeTextLookup
 W["naturgesetz"] = {[StatLogic.Stats.SpellDamage] = 30, [StatLogic.Stats.HealingPower] = 55, }
+W["lebendige werte"] = {[StatLogic.Stats.AllStats] = 4, [StatLogic.Stats.NatureResistance] = 15, }
 W["vitalität"] = {[StatLogic.Stats.ManaRegen] = 4, [StatLogic.Stats.HealthRegen] = 4, }
 W["sicherer stand"] = {[StatLogic.Stats.HitRating] = 10, }
 W["unbändigkeit"] = {[StatLogic.Stats.GenericAttackPower] = 70, }
@@ -54,6 +55,9 @@ L["ausdauer %s/verteidigung %s/blockchance %s%"] = {StatLogic.Stats.Stamina, Sta
 L["ausdauer %s/treffer %s%/verteidigung %s"] = {StatLogic.Stats.Stamina, {StatLogic.Stats.MeleeHit, StatLogic.Stats.RangedHit, StatLogic.Stats.SpellHit, }, StatLogic.Stats.Defense, }
 L["ausdauer %s/verteidigung %s/blockwert %s"] = {StatLogic.Stats.Stamina, StatLogic.Stats.Defense, StatLogic.Stats.BlockValue, }
 L["ausdauer %s/beweglichkeit %s/stärke %s"] = {StatLogic.Stats.Stamina, StatLogic.Stats.Agility, StatLogic.Stats.Strength, }
+L["heiligschaden %s"] = {StatLogic.Stats.HolyDamage, }
+L["arkanschaden %s"] = {StatLogic.Stats.ArcaneDamage, }
+L["zauberschaden und heilung %s"] = {{StatLogic.Stats.SpellDamage, StatLogic.Stats.HealingPower, }, }
 L["verstärkt (%s rüstung)"] = {StatLogic.Stats.BonusArmor, }
 L["%s blockwertung"] = {StatLogic.Stats.BlockRating, }
 L["%s heilzauber und %s schadenszauber"] = {StatLogic.Stats.HealingPower, StatLogic.Stats.SpellDamage, }
