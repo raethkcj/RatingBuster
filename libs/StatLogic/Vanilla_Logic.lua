@@ -618,15 +618,48 @@ elseif addon.class == "PALADIN" then
 				},
 			},
 		},
-		-- Paladin: Divine Strength (Rank 5) - 1,1
-		--          Increases your total Strength by 2%/4%/6%/8%/10%.
 		["MOD_STR"] = {
+			-- Talent: Divine Strength
 			{
 				["tab"] = 1,
 				["num"] = 1,
 				["rank"] = {
 					0.02, 0.04, 0.06, 0.08, 0.1,
 				},
+			},
+			-- Set: Avenger's Will (Blessing of Sanctuary)
+			{
+				["rune"] = true,
+				["set"] = 1844,
+				["pieces"] = 2,
+				["value"] = 0.10,
+				["tab"] = 2,
+				["num"] = 12,
+				["aura"] = 20911,
+			},
+		},
+		["MOD_AGI"] = {
+			-- Set: Avenger's Will (Blessing of Sanctuary)
+			{
+				["rune"] = true,
+				["set"] = 1844,
+				["pieces"] = 2,
+				["value"] = 0.10,
+				["tab"] = 2,
+				["num"] = 12,
+				["aura"] = 20911,
+			},
+		},
+		["MOD_STA"] = {
+			-- Set: Avenger's Will (Blessing of Sanctuary)
+			{
+				["rune"] = true,
+				["set"] = 1844,
+				["pieces"] = 2,
+				["value"] = 0.10,
+				["tab"] = 2,
+				["num"] = 12,
+				["aura"] = 20911,
 			},
 		},
 		-- Paladin: Divine Intellect (Rank 5) - 1,2
@@ -638,6 +671,28 @@ elseif addon.class == "PALADIN" then
 				["rank"] = {
 					0.02, 0.04, 0.06, 0.08, 0.1,
 				},
+			},
+			-- Set: Avenger's Will (Blessing of Sanctuary)
+			{
+				["rune"] = true,
+				["set"] = 1844,
+				["pieces"] = 2,
+				["value"] = 0.10,
+				["tab"] = 2,
+				["num"] = 12,
+				["aura"] = 20911,
+			},
+		},
+		["MOD_SPI"] = {
+			-- Set: Avenger's Will (Blessing of Sanctuary)
+			{
+				["rune"] = true,
+				["set"] = 1844,
+				["pieces"] = 2,
+				["value"] = 0.10,
+				["tab"] = 2,
+				["num"] = 12,
+				["aura"] = 20911,
 			},
 		},
 		["ADD_SPELL_DMG_MOD_INT"] = {
@@ -1020,14 +1075,20 @@ elseif addon.class == "SHAMAN" then
 			},
 		},
 		["MOD_HEALTH"] = {
-			-- Shaman: Way of Earth: Rune
-			--   While Rockbiter Weapon is active on your main hand weapon, you gain 30% increased health
+			-- Rune: Way of Earth
 			{
 				["known"] = 408531,
 				["rune"] = true,
 				["value"] = 0.3,
-				["aura"] = 408680
-			}
+				["aura"] = 408680,
+			},
+			-- Set: Stormcaller's Resolve (Pack Leader)
+			{
+				["rune"] = true,
+				["set"] = 1852,
+				["pieces"] = 4,
+				["aura"] = 1213939,
+			},
 		},
 		["ADD_AP_MOD_INT"] = {
 			-- Rune: Mental Dexterity
