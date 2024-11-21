@@ -2486,7 +2486,7 @@ do
 					effect = StatLogic:GetAvoidanceGainAfterDR(StatLogic.Stats.Dodge, processedDodge + effect) - StatLogic:GetAvoidanceGainAfterDR(StatLogic.Stats.Dodge, processedDodge)
 					processedDodge = processedDodge + effectNoDR
 				end
-				infoTable[StatLogic.Stats.Dodge] = infoTable[StatLogic.Stats.Dodge] + effect
+				infoTable[StatLogic.Stats.Dodge] = infoTable[StatLogic.Stats.Dodge] + effect * statModContext("MOD_DODGE")
 			end
 			local bonusArmor = value * statModContext("ADD_BONUS_ARMOR_MOD_AGI")
 			self:ProcessStat(StatLogic.Stats.BonusArmor, bonusArmor, infoTable, link, color, statModContext, false)
@@ -2669,7 +2669,7 @@ do
 					dodge = StatLogic:GetAvoidanceGainAfterDR(StatLogic.Stats.Dodge, processedDodge) - StatLogic:GetAvoidanceGainAfterDR(StatLogic.Stats.Dodge, processedDodge - dodge)
 				end
 				if db.profile.showDodgeFromDefense then
-					infoTable[StatLogic.Stats.Dodge] = infoTable[StatLogic.Stats.Dodge] + dodge
+					infoTable[StatLogic.Stats.Dodge] = infoTable[StatLogic.Stats.Dodge] + dodge * statModContext("MOD_DODGE")
 				end
 			end
 
@@ -3484,11 +3484,9 @@ local summaryCalcData = {
 		option = "sumDodgeBeforeDR",
 		stat = StatLogic.Stats.DodgeBeforeDR,
 		func = function(sum, statModContext)
-			return sum[StatLogic.Stats.Dodge]
-				+ sum[StatLogic.Stats.DodgeRating] * statModContext("ADD_DODGE_MOD_DODGE_RATING")
+			return sum[StatLogic.Stats.DodgeRating] * statModContext("ADD_DODGE_MOD_DODGE_RATING")
 				+ summaryFunc[StatLogic.Stats.Defense](sum, statModContext) * statModContext("ADD_DODGE_MOD_DEFENSE")
 				+ sum[StatLogic.Stats.Agility] * statModContext("ADD_DODGE_MOD_AGI")
-				+ summaryFunc[StatLogic.Stats.SpellCrit](sum, statModContext) * statModContext("ADD_DODGE_MOD_SPELL_CRIT")
 		end,
 	},
 	-- Dodge Chance
@@ -3504,7 +3502,11 @@ local summaryCalcData = {
 					dodge = StatLogic:GetAvoidanceGainAfterDR(StatLogic.Stats.Dodge, equippedDodge + dodge) - StatLogic:GetAvoidanceGainAfterDR(StatLogic.Stats.Dodge, equippedDodge)
 				end
 			end
-			return dodge
+			return statModContext("MOD_DODGE") * (
+				dodge
+				+ sum[StatLogic.Stats.Dodge]
+				+ summaryFunc[StatLogic.Stats.SpellCrit](sum, statModContext) * statModContext("ADD_DODGE_MOD_SPELL_CRIT")
+			)
 		 end,
 	},
 	-- Dodge Rating - DODGE_RATING
@@ -3520,11 +3522,8 @@ local summaryCalcData = {
 		option = "sumParryBeforeDR",
 		stat = StatLogic.Stats.ParryBeforeDR,
 		func = function(sum, statModContext)
-			return GetParryChance() > 0 and (
-				sum[StatLogic.Stats.Parry]
-				+ summaryFunc[StatLogic.Stats.ParryRating](sum, statModContext) * statModContext("ADD_PARRY_MOD_PARRY_RATING")
+			return summaryFunc[StatLogic.Stats.ParryRating](sum, statModContext) * statModContext("ADD_PARRY_MOD_PARRY_RATING")
 				+ summaryFunc[StatLogic.Stats.Defense](sum, statModContext) * statModContext("ADD_PARRY_MOD_DEFENSE")
-			) or 0
 		end,
 	},
 	-- Parry Chance
@@ -3540,7 +3539,10 @@ local summaryCalcData = {
 					parry = StatLogic:GetAvoidanceGainAfterDR(StatLogic.Stats.Parry, equippedParry + parry) - StatLogic:GetAvoidanceGainAfterDR(StatLogic.Stats.Parry, equippedParry)
 				end
 			end
-			return parry
+			return GetParryChance() > 0 and (
+				parry
+				+ sum[StatLogic.Stats.Parry]
+			) or 0
 		 end,
 	},
 	-- Parry Rating - PARRY_RATING

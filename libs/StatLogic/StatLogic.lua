@@ -376,6 +376,10 @@ StatLogic.StatModInfo = {
 		initialValue = 0,
 		finalAdjust = 1,
 	},
+	["MOD_DODGE"] = {
+		initialValue = 1,
+		finalAdjust = 0,
+	},
 	["MOD_FERAL_AP"] = {
 		initialValue = 0,
 		finalAdjust = 1,

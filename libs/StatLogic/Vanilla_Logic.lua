@@ -956,6 +956,14 @@ elseif addon.class == "ROGUE" then
 				["aura"] = 462230,
 			}
 		},
+		["MOD_DODGE"] = {
+			-- Rune: Just a Flesh Wound
+			{
+				["known"] = 400014,
+				["rune"] = true,
+				["value"] = -0.50,
+			},
+		},
 	}
 elseif addon.class == "SHAMAN" then
 	StatLogic.StatModTable["SHAMAN"] = {
