@@ -926,7 +926,7 @@ elseif addon.class == "SHAMAN" then
 			{
 				["known"] = 415231,
 				["rune"] = true,
-				["value"] = 1,
+				["value"] = 1.5,
 				["aura"] = 454042,
 			},
 		},
