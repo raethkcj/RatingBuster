@@ -2320,7 +2320,7 @@ do
 			local statList = StatLogic.GenericStatMap[statID]
 			for _, convertedStatID in ipairs(statList) do
 				if not RatingType.Ranged[convertedStatID] then
-					RatingBuster:ProcessStat(convertedStatID, value, infoTable, link, color, statModContext, true)
+					RatingBuster:ProcessStat(convertedStatID, value, infoTable, link, color, statModContext, false)
 				end
 			end
 		elseif StatLogic.RatingBase[statID] and db.profile.showRatings then
