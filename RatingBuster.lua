@@ -2042,12 +2042,13 @@ function RatingBuster.ProcessTooltip(tooltip)
 
 	RatingBuster:EnableKeybindings(tooltip)
 
-	local itemMinLevel = select(5, C_Item.GetItemInfo(link))
+	local itemMinLevel, _, _, _, _, _, _, itemClass = select(5, C_Item.GetItemInfo(link))
 
 	local statModContext = StatLogic:NewStatModContext({
 		profile = db:GetCurrentProfile(),
 		spec = RatingBuster:GetDisplayedSpec(),
-		level = math.max(itemMinLevel, playerLevel)
+		level = math.max(itemMinLevel, playerLevel),
+		itemClass = itemClass,
 	})
 
 	---------------------

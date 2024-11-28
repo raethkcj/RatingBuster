@@ -1013,6 +1013,15 @@ addon.StatModValidators = {
 			["GLYPH_REMOVED"] = true,
 		}
 	},
+	itemClass = {
+		validate = function(case, _, statModContext)
+			local itemClass = statModContext and statModContext.itemClass
+			return itemClass and case.itemClass[itemClass] or false
+		end,
+		events = {
+			["UNIT_INVENTORY_CHANGED"] = "player",
+		}
+	},
 	known = {
 		validate = function(case)
 			return not not FindSpellBookSlotBySpellID(case.known)
@@ -1341,6 +1350,7 @@ do
 	---@field profile? string
 	---@field spec? integer
 	---@field level? integer
+	---@field itemClass? Enum.ItemClass
 	---@field overrideStats? StatTable
 
 	-- Helper object for repeatedly calling GetStatMod for varying StatMods but consistent other parameters
@@ -1360,6 +1370,7 @@ do
 			self.profile,
 			self.spec,
 			self.level,
+			self.itemClass == Enum.ItemClass.Weapon and "w" or "n"
 		})
 	end
 
