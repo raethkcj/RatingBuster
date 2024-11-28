@@ -1153,7 +1153,7 @@ elseif addon.class == "ROGUE" then
 				["rank"] = {
 					1, 2, 3, 4, 5,
 				},
-				["weapon"] = {
+				["weaponSubclass"] = {
 					[Enum.ItemWeaponSubclass.Dagger] = true,
 				},
 			},
@@ -1164,7 +1164,7 @@ elseif addon.class == "ROGUE" then
 				["rank"] = {
 					1, 2, 3, 4, 5,
 				},
-				["weapon"] = {
+				["weaponSubclass"] = {
 					[Enum.ItemWeaponSubclass.Unarmed] = true,
 				},
 			},
@@ -1543,7 +1543,7 @@ elseif addon.class == "WARRIOR" then
 				["rank"] = {
 					1, 2, 3, 4, 5,
 				},
-				["weapon"] = {
+				["weaponSubclass"] = {
 					[Enum.ItemWeaponSubclass.Axe1H] = true,
 					[Enum.ItemWeaponSubclass.Axe2H] = true,
 					[Enum.ItemWeaponSubclass.Polearm] = true,
@@ -1558,7 +1558,7 @@ if addon.playerRace == "Dwarf" then
 		[StatLogic.Stats.RangedCrit] = {
 			{
 				["value"] = 1,
-				["weapon"] = {
+				["weaponSubclass"] = {
 					[Enum.ItemWeaponSubclass.Guns] = true,
 				}
 			}
@@ -1606,7 +1606,7 @@ elseif addon.playerRace == "Human" then
 		[StatLogic.Stats.Expertise] = {
 			{
 				["value"] = 5,
-				["weapon"] = {
+				["weaponSubclass"] = {
 					[Enum.ItemWeaponSubclass.Mace1H] = true,
 					[Enum.ItemWeaponSubclass.Mace2H] = true,
 					[Enum.ItemWeaponSubclass.Sword1H] = true,
@@ -1620,7 +1620,7 @@ elseif addon.playerRace == "Orc" then
 		[StatLogic.Stats.Expertise] = {
 			{
 				["value"] = 5,
-				["weapon"] = {
+				["weaponSubclass"] = {
 					[Enum.ItemWeaponSubclass.Axe1H] = true,
 					[Enum.ItemWeaponSubclass.Axe2H] = true,
 				}
@@ -1647,7 +1647,7 @@ elseif addon.playerRace == "Troll" then
 		[StatLogic.Stats.RangedCrit] = {
 			{
 				["value"] = 1,
-				["weapon"] = {
+				["weaponSubclass"] = {
 					[Enum.ItemWeaponSubclass.Bows] = true,
 					[Enum.ItemWeaponSubclass.Thrown] = true,
 				}

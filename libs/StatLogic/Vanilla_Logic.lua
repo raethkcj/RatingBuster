@@ -896,7 +896,7 @@ elseif addon.class == "ROGUE" then
 				["rank"] = {
 					1, 2, 3, 4, 5,
 				},
-				["weapon"] = {
+				["weaponSubclass"] = {
 					[Enum.ItemWeaponSubclass.Dagger] = true,
 				},
 			},
@@ -907,7 +907,7 @@ elseif addon.class == "ROGUE" then
 				["rank"] = {
 					1, 2, 3, 4, 5,
 				},
-				["weapon"] = {
+				["weaponSubclass"] = {
 					[Enum.ItemWeaponSubclass.Unarmed] = true,
 				},
 			},
@@ -916,7 +916,7 @@ elseif addon.class == "ROGUE" then
 				["set"] = 1829,
 				["pieces"] = 3,
 				["value"] = 5,
-				["weapon"] = {
+				["weaponSubclass"] = {
 					[Enum.ItemWeaponSubclass.Dagger] = true,
 				},
 			},
@@ -929,7 +929,7 @@ elseif addon.class == "ROGUE" then
 				["rank"] = {
 					1, 2, 3, 4, 5,
 				},
-				["weapon"] = {
+				["weaponSubclass"] = {
 					[Enum.ItemWeaponSubclass.Mace1H] = true,
 				},
 			},
@@ -940,7 +940,7 @@ elseif addon.class == "ROGUE" then
 				["rank"] = {
 					3, 5,
 				},
-				["weapon"] = {
+				["weaponSubclass"] = {
 					[Enum.ItemWeaponSubclass.Sword1H] = true,
 					[Enum.ItemWeaponSubclass.Dagger] = true,
 					[Enum.ItemWeaponSubclass.Unarmed] = true,
@@ -1328,7 +1328,7 @@ elseif addon.class == "WARRIOR" then
 				["rank"] = {
 					1, 2, 3, 4, 5,
 				},
-				["weapon"] = {
+				["weaponSubclass"] = {
 					[Enum.ItemWeaponSubclass.Axe1H] = true,
 					[Enum.ItemWeaponSubclass.Axe2H] = true,
 				},
@@ -1340,7 +1340,7 @@ elseif addon.class == "WARRIOR" then
 				["rank"] = {
 					1, 2, 3, 4, 5,
 				},
-				["weapon"] = {
+				["weaponSubclass"] = {
 					[Enum.ItemWeaponSubclass.Polearm] = true,
 				},
 			},
@@ -1379,7 +1379,7 @@ if addon.playerRace == "Dwarf" then
 		[StatLogic.Stats.WeaponSkill] = {
 			{
 				["value"] = 5,
-				["weapon"] = {
+				["weaponSubclass"] = {
 					[Enum.ItemWeaponSubclass.Guns] = true,
 				},
 				["group"] = addon.ExclusiveGroup.WeaponRacial,
@@ -1418,7 +1418,7 @@ elseif addon.playerRace == "Human" then
 		[StatLogic.Stats.WeaponSkill] = {
 			{
 				["value"] = 5,
-				["weapon"] = {
+				["weaponSubclass"] = {
 					[Enum.ItemWeaponSubclass.Mace1H] = true,
 					[Enum.ItemWeaponSubclass.Mace2H] = true,
 					[Enum.ItemWeaponSubclass.Sword1H] = true,
@@ -1433,7 +1433,7 @@ elseif addon.playerRace == "Orc" then
 		[StatLogic.Stats.WeaponSkill] = {
 			{
 				["value"] = 5,
-				["weapon"] = {
+				["weaponSubclass"] = {
 					[Enum.ItemWeaponSubclass.Axe1H] = true,
 					[Enum.ItemWeaponSubclass.Axe2H] = true,
 				},
@@ -1461,7 +1461,7 @@ elseif addon.playerRace == "Troll" then
 		[StatLogic.Stats.WeaponSkill] = {
 			{
 				["value"] = 5,
-				["weapon"] = {
+				["weaponSubclass"] = {
 					[Enum.ItemWeaponSubclass.Bows] = true,
 					[Enum.ItemWeaponSubclass.Thrown] = true,
 				},
@@ -1706,7 +1706,7 @@ StatLogic.StatModTable["ALL"] = {
 		{
 			["rune"] = 51232,
 			["value"] = 5,
-			["weapon"] = {
+			["weaponSubclass"] = {
 				[Enum.ItemWeaponSubclass.Sword1H] = true,
 				[Enum.ItemWeaponSubclass.Sword2H] = true,
 			},
@@ -1716,7 +1716,7 @@ StatLogic.StatModTable["ALL"] = {
 		{
 			["rune"] = 51233,
 			["value"] = 5,
-			["weapon"] = {
+			["weaponSubclass"] = {
 				[Enum.ItemWeaponSubclass.Axe1H] = true,
 				[Enum.ItemWeaponSubclass.Axe2H] = true,
 			},
@@ -1726,7 +1726,7 @@ StatLogic.StatModTable["ALL"] = {
 		{
 			["rune"] = 51234,
 			["value"] = 5,
-			["weapon"] = {
+			["weaponSubclass"] = {
 				[Enum.ItemWeaponSubclass.Mace1H] = true,
 				[Enum.ItemWeaponSubclass.Mace2H] = true,
 			},
@@ -1736,7 +1736,7 @@ StatLogic.StatModTable["ALL"] = {
 		{
 			["rune"] = 51235,
 			["value"] = 5,
-			["weapon"] = {
+			["weaponSubclass"] = {
 				[Enum.ItemWeaponSubclass.Dagger] = true,
 			},
 			["group"] = addon.ExclusiveGroup.WeaponRacial,
@@ -1745,7 +1745,7 @@ StatLogic.StatModTable["ALL"] = {
 		{
 			["rune"] = 51236,
 			["value"] = 5,
-			["weapon"] = {
+			["weaponSubclass"] = {
 				[Enum.ItemWeaponSubclass.Unarmed] = true,
 			},
 			["group"] = addon.ExclusiveGroup.WeaponRacial,
@@ -1754,7 +1754,7 @@ StatLogic.StatModTable["ALL"] = {
 		{
 			["rune"] = 51237,
 			["value"] = 5,
-			["weapon"] = {
+			["weaponSubclass"] = {
 				[Enum.ItemWeaponSubclass.Bows] = true,
 				[Enum.ItemWeaponSubclass.Guns] = true,
 				[Enum.ItemWeaponSubclass.Crossbow] = true,
@@ -1766,7 +1766,7 @@ StatLogic.StatModTable["ALL"] = {
 		{
 			["rune"] = 51238,
 			["value"] = 5,
-			["weapon"] = {
+			["weaponSubclass"] = {
 				[Enum.ItemWeaponSubclass.Staff] = true,
 				[Enum.ItemWeaponSubclass.Polearm] = true,
 			},

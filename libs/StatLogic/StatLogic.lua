@@ -91,7 +91,7 @@ local tocversion = select(4, GetBuildInfo())
 -- metatable for stat tables
 local statTableMetatable = {
 	__index = function(_, k)
-		if k ~= "subclassID" then
+		if k ~= "weaponSubclass" then
 			return 0
 		end
 	end,
@@ -166,7 +166,7 @@ end
 ---@field link string
 ---@field numLines integer
 ---@field inventoryType string
----@field subclassID Enum.ItemWeaponSubclass?
+---@field weaponSubclass Enum.ItemWeaponSubclass?
 ---@field [Stat] number
 
 -- New table
@@ -835,12 +835,12 @@ function addon.GenerateWeaponSubclassStats()
 	for _, modList in pairs(StatLogic.StatModTable) do
 		for stat, cases in pairs(modList) do
 			for _, case in ipairs(cases) do
-				if case.weapon then
-					for subclassID in pairs(case.weapon) do
-						if not addon.WeaponSubclassStats[subclassID] then
-							addon.WeaponSubclassStats[subclassID] = {}
+				if case.weaponSubclass then
+					for weaponSubclass in pairs(case.weaponSubclass) do
+						if not addon.WeaponSubclassStats[weaponSubclass] then
+							addon.WeaponSubclassStats[weaponSubclass] = {}
 						end
-						addon.WeaponSubclassStats[subclassID][stat] = true
+						addon.WeaponSubclassStats[weaponSubclass][stat] = true
 					end
 				end
 			end
@@ -1093,18 +1093,18 @@ addon.StatModValidators = {
 			["PLAYER_TALENT_UPDATE"] = true,
 		},
 	},
-	weapon = {
+	weaponSubclass = {
 		validate = function(case, _, statModContext)
-			local subclassID
+			local weaponSubclass
 			if statModContext then
-				subclassID = statModContext.overrideStats.subclassID
+				weaponSubclass = statModContext.overrideStats.weaponSubclass
 			else
 				local weapon = GetInventoryItemID("player", INVSLOT_MAINHAND)
 				if weapon then
-					subclassID = select(7, C_Item.GetItemInfoInstant(weapon))
+					weaponSubclass = select(7, C_Item.GetItemInfoInstant(weapon))
 				end
 			end
-			return subclassID and case.weapon[subclassID] or false
+			return weaponSubclass and case.weaponSubclassSubclass[weaponSubclass] or false
 		end,
 		events = {
 			["UNIT_INVENTORY_CHANGED"] = "player",
@@ -1164,7 +1164,7 @@ do
 end
 
 local function ValidateStatMod(statModName, case, statModContext)
-	if statModContext.overrideStats.subclassID and not case.weapon then
+	if statModContext.overrideStats.weaponSubclass and not case.weaponSubclass then
 		-- If we're passed a weapon type, we're only interested in StatMods with weapon cases
 		return false
 	end
@@ -1180,7 +1180,7 @@ local function ValidateStatMod(statModName, case, statModContext)
 					end
 					addon.StatModCacheInvalidators[key] = addon.StatModCacheInvalidators[key] or {}
 					table.insert(addon.StatModCacheInvalidators[key], statModName)
-					if case.weapon then
+					if case.weaponSubclass then
 						WeaponSubclassInvalidators[key] = true
 					end
 				end
@@ -1861,7 +1861,7 @@ do
 			if not statModContext then
 				statModContext = StatLogic:NewStatModContext()
 			end
-			statModContext.overrideStats["subclassID"] = itemSubclass
+			statModContext.overrideStats["weaponSubclass"] = itemSubclass
 			local statMods = addon.WeaponSubclassStats[itemSubclass]
 			if statMods then
 				for statMod in pairs(statMods) do
@@ -1870,7 +1870,7 @@ do
 				end
 			end
 			-- Unset afterwards to prevent interference with ValidateStatMod
-			statModContext.overrideStats["subclassID"] = nil
+			statModContext.overrideStats["weaponSubclass"] = nil
 		end
 
 		log(link)
