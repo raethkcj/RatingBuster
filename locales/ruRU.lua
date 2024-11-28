@@ -364,11 +364,11 @@ SPELL_STAT5_NAME = "Spirit"
 L["statList"] = {
 	{"ослабление брони противника", false}, -- Annihilator
 
-	{"сила атаки", StatLogic.Stats.AttackPower},
-	{"силу атаки", StatLogic.Stats.AttackPower},
-	{"силы атаки", StatLogic.Stats.AttackPower},
-	{"силы вашей атаки", StatLogic.Stats.AttackPower},
-	{"к силе атаки", StatLogic.Stats.AttackPower},
+	{"сила атаки", StatLogic.Stats.GenericAttackPower},
+	{"силу атаки", StatLogic.Stats.GenericAttackPower},
+	{"силы атаки", StatLogic.Stats.GenericAttackPower},
+	{"силы вашей атаки", StatLogic.Stats.GenericAttackPower},
+	{"к силе атаки", StatLogic.Stats.GenericAttackPower},
 
 	-- Resistance and Spell Damage aren't used for breakdowns,
 	-- but are needed to prevent false matches of other stats

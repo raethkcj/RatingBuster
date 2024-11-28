@@ -349,7 +349,7 @@ L["statList"] = {
 	{"spell critical rating", StatLogic.Stats.SpellCritRating},
 	{"spell crit rating", StatLogic.Stats.SpellCritRating},
 	{"spell critical", StatLogic.Stats.SpellCritRating},
-	{"attack power", StatLogic.Stats.AttackPower},
+	{"attack power", StatLogic.Stats.GenericAttackPower},
 	{"ranged critical strike", StatLogic.Stats.RangedCritRating},
 	{"ranged critical hit rating", StatLogic.Stats.RangedCritRating},
 	{"ranged critical rating", StatLogic.Stats.RangedCritRating},

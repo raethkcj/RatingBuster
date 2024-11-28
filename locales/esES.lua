@@ -371,7 +371,7 @@ L["statList"] = {
 	{"índice de penetración de armadura", StatLogic.Stats.ArmorPenetrationRating},
 	{"maestría", StatLogic.Stats.MasteryRating},
 	{ARMOR:lower(), StatLogic.Stats.Armor},
-	{"poder de ataque", StatLogic.Stats.AttackPower},
+	{"poder de ataque", StatLogic.Stats.GenericAttackPower},
 }
 -------------------------
 -- Added info patterns --

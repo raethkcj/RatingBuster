@@ -370,7 +370,7 @@ L["statList"] = {
 	{"방어구 관통력", StatLogic.Stats.ArmorPenetrationRating},	--armor penetration rating
 	{"특화", StatLogic.Stats.MasteryRating},
 	{ARMOR:lower(), StatLogic.Stats.Armor},
-	{"전투력이", StatLogic.Stats.AttackPower},
+	{"전투력이", StatLogic.Stats.GenericAttackPower},
 }
 -------------------------
 -- Added info patterns --

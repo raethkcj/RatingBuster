@@ -2721,6 +2721,11 @@ do
 				local effect = value * statModContext("ADD_AP_MOD_ARMOR") * statModContext("MOD_AP")
 				infoTable[StatLogic.Stats.AttackPower] = infoTable[StatLogic.Stats.AttackPower] + effect
 			end
+		elseif statID == StatLogic.Stats.GenericAttackPower then
+			local attackPower = value * statModContext("ADD_AP_MOD_GENERIC_ATTACK_POWER")
+			self:ProcessStat(StatLogic.Stats.AttackPower, attackPower, infoTable, link, color, statModContext, true)
+			local rangedAttackPower = value * statModContext("ADD_RANGED_AP_MOD_GENERIC_ATTACK_POWER")
+			self:ProcessStat(StatLogic.Stats.RangedAttackPower, rangedAttackPower, infoTable, link, color, statModContext, true)
 		elseif statID == StatLogic.Stats.AttackPower then
 			local mod = statModContext("MOD_AP")
 			value = value * mod
@@ -3109,6 +3114,7 @@ local summaryCalcData = {
 		func = function(sum, statModContext)
 			return statModContext("MOD_RANGED_AP") * (
 				sum[StatLogic.Stats.RangedAttackPower]
+				+ sum[StatLogic.Stats.GenericAttackPower] * statModContext("ADD_RANGED_AP_MOD_GENERIC_ATTACK_POWER")
 				+ sum[StatLogic.Stats.Agility] * statModContext("ADD_RANGED_AP_MOD_AGI")
 				+ sum[StatLogic.Stats.Intellect] * statModContext("ADD_RANGED_AP_MOD_INT")
 				+ sum[StatLogic.Stats.Stamina] * statModContext("ADD_AP_MOD_STA")

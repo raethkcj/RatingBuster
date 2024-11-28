@@ -135,7 +135,7 @@ const itemStatType = {
     35: 'ResilienceRating',
     36: 'HasteRating',
     37: 'ExpertiseRating',
-    38: 'AttackPower',
+    38: 'GenericAttackPower',
     39: 'RangedAttackPower',
     40: 'Versatility',
     41: 'HealingPower',
