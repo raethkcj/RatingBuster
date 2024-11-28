@@ -34,9 +34,9 @@ RatingBuster.date = ("$Date: 2008-07-22 15:35:19 +0800 (星期二, 22 七月 200
 -- Cache --
 -----------
 local cache = setmetatable({}, {
-	__index = function(t, profileSpec)
-		t[profileSpec] = setmetatable({}, { __mode = "kv" })
-		return t[profileSpec]
+	__index = function(t, k)
+		t[k] = setmetatable({}, { __mode = "kv" })
+		return t[k]
 	end,
 })
 
@@ -2114,9 +2114,9 @@ end
 
 function RatingBuster:ProcessLine(text, link, color, statModContext)
 	-- Get data from cache if available
-	local profileSpec = statModContext.profile .. statModContext.spec
+	local cacheKey = statModContext:CacheKey()
 	local cacheID = text .. statModContext.level
-	local cacheText = cache[profileSpec][cacheID]
+	local cacheText = cache[cacheKey][cacheID]
 	if cacheText then
 		if cacheText ~= text then
 			return cacheText
@@ -2124,7 +2124,7 @@ function RatingBuster:ProcessLine(text, link, color, statModContext)
 	elseif EmptySocketLookup[text] and db.profile[EmptySocketLookup[text]].gemText then -- Replace empty sockets with gem text
 		local gemText = db.profile[EmptySocketLookup[text]].gemText
 		text = RatingBuster:ProcessLine(gemText, link, color, statModContext)
-		cache[profileSpec][cacheID] = text
+		cache[cacheKey][cacheID] = text
 		return text
 	elseif text:find("%d") then -- do nothing if we don't find a number
 		-- Temporarily replace exclusions
@@ -2152,11 +2152,11 @@ function RatingBuster:ProcessLine(text, link, color, statModContext)
 				text = text:gsub(replacement, exclusion)
 			end
 		end
-		cache[profileSpec][cacheID] = text
+		cache[cacheKey][cacheID] = text
 		-- SetText
 		return text
 	else
-		cache[profileSpec][cacheID] = text
+		cache[cacheKey][cacheID] = text
 		return text
 	end
 end
@@ -3831,8 +3831,8 @@ function RatingBuster:StatSummary(tooltip, link, statModContext)
 	local numLines = StatLogic:GetItemTooltipNumLines(link)
 
 	-- Check Cache
-	local profileSpec = statModContext.profile .. statModContext.spec
-	local cached = cache[profileSpec][id]
+	local cacheKey = statModContext:CacheKey()
+	local cached = cache[cacheKey][id]
 	if cached and cached.numLines == numLines then
 		if table.maxn(cached) == 0 then return end
 		WriteSummary(tooltip, cached)
@@ -4014,7 +4014,7 @@ function RatingBuster:StatSummary(tooltip, link, statModContext)
 		tsort(output, sumSortAlphaComp)
 	end
 	-- Write cache
-	cache[profileSpec][id] = output
+	cache[cacheKey][id] = output
 	if table.maxn(output) == 0 then return end
 	WriteSummary(tooltip, output)
 end

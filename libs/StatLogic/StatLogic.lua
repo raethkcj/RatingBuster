@@ -1346,6 +1346,7 @@ do
 	-- Helper object for repeatedly calling GetStatMod for varying StatMods but consistent other parameters
 	---@class StatModContext : StatModContextArgs
 	local StatModContext = {}
+	StatModContext.__index = StatModContext
 
 	---@param statMod string|Stat
 	---@return number
@@ -1353,6 +1354,14 @@ do
 		return StatLogic:GetStatMod(statMod, self)
 	end
 
+	---@return string
+	function StatModContext:CacheKey()
+		return table.concat({
+			self.profile,
+			self.spec,
+			self.level,
+		})
+	end
 
 	---@param context? StatModContextArgs
 	---@return StatModContext
@@ -1385,17 +1394,17 @@ do
 		if not context then
 			context = self:NewStatModContext()
 		end
-		local profileSpec = context.profile .. context.spec
+		local cacheKey = context:CacheKey()
 
 		if context.level == UnitLevel("player") and not next(context.overrideStats) then
-			value = StatModCache[statMod][profileSpec]
+			value = StatModCache[statMod][cacheKey]
 		end
 
 		if not value then
 			wipe(ExclusiveGroupCache)
 			local statModInfo = StatLogic.StatModInfo[statMod]
 			if not statModInfo then
-				StatModCache[statMod][profileSpec] = 0
+				StatModCache[statMod][cacheKey] = 0
 				return 0
 			end
 			value = statModInfo.initialValue
@@ -1409,7 +1418,7 @@ do
 
 			value = value + statModInfo.finalAdjust
 			if context.level == UnitLevel("player") then
-				StatModCache[statMod][profileSpec] = value
+				StatModCache[statMod][cacheKey] = value
 			end
 		end
 
