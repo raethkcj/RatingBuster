@@ -1009,7 +1009,7 @@ addon.baseArmorTable = {
 StatLogic.StatModTable = {}
 if addon.class == "DRUID" then
 	StatLogic.StatModTable["DRUID"] = {
-		["ADD_AP_MOD_FERAL_AP"] = {
+		["ADD_AP_MOD_FERAL_ATTACK_POWER"] = {
 			-- Cat Form
 			{
 				["value"] = 1,
@@ -1033,6 +1033,77 @@ if addon.class == "DRUID" then
 				["value"] = 1,
 				["aura"] = 24858,
 				["group"] = addon.ExclusiveGroup.Feral,
+			},
+			-- Talent: Predatory Strikes (Cat Form)
+			{
+				["tab"] = 2,
+				["num"] = 10,
+				["rank"] = {
+					0.07, 0.14, 0.20,
+				},
+				["aura"] = 32356,
+				["group"] = addon.ExclusiveGroup.PredatoryStrikes,
+			},
+			-- Talent: Predatory Strikes (Bear Form)
+			{
+				["tab"] = 2,
+				["num"] = 10,
+				["rank"] = {
+					0.07, 0.14, 0.20,
+				},
+				["aura"] = 32357,
+				["group"] = addon.ExclusiveGroup.PredatoryStrikes,
+			},
+			-- Talent: Predatory Strikes (Dire Bear Form)
+			{
+				["tab"] = 2,
+				["num"] = 10,
+				["rank"] = {
+					0.07, 0.14, 0.20,
+				},
+				["aura"] = 9634,
+				["group"] = addon.ExclusiveGroup.PredatoryStrikes,
+			},
+		},
+		["ADD_AP_MOD_GENERIC_ATTACK_POWER"] = {
+			-- Talent: Predatory Strikes (Cat Form)
+			{
+				["tab"] = 2,
+				["num"] = 10,
+				["rank"] = {
+					0.07, 0.14, 0.20,
+				},
+				["aura"] = 32356,
+				["group"] = addon.ExclusiveGroup.PredatoryStrikes,
+				["itemClass"] = {
+					[Enum.ItemClass.Weapon] = true,
+				}
+			},
+			-- Talent: Predatory Strikes (Bear Form)
+			{
+				["tab"] = 2,
+				["num"] = 10,
+				["rank"] = {
+					0.07, 0.14, 0.20,
+				},
+				["aura"] = 32357,
+				["group"] = addon.ExclusiveGroup.PredatoryStrikes,
+				["itemClass"] = {
+					[Enum.ItemClass.Weapon] = true,
+				}
+			},
+			-- Talent: Predatory Strikes (Dire Bear Form)
+			{
+				["tab"] = 2,
+				["num"] = 10,
+				["rank"] = {
+					0.07, 0.14, 0.20,
+				},
+				["aura"] = 9634,
+				["group"] = addon.ExclusiveGroup.PredatoryStrikes,
+				["itemClass"] = {
+					[Enum.ItemClass.Weapon] = true,
+				}
 			},
 		},
 		["ADD_AP_MOD_STR"] = {
@@ -1248,35 +1319,6 @@ if addon.class == "DRUID" then
 				["num"] = 18,
 				["rank"] = {
 					0.11, 0.22, 0.33,
-				},
-				["aura"] = 9634,		-- ["Dire Bear Form"],
-			},
-		},
-		-- Druid: Predatory Strikes (Rank 3) - 2,10
-		--   Increases your melee attack power in Cat, Bear and Dire Bear Forms by
-		--   7,14,20% of any attack power on your equipped weapon.
-		["MOD_FERAL_AP"] = {
-			{
-				["tab"] = 2,
-				["num"] = 10,
-				["rank"] = {
-					0.07, 0.14, 0.20,
-				},
-				["aura"] = 32356,		-- ["Cat Form"],
-			},
-			{
-				["tab"] = 2,
-				["num"] = 10,
-				["rank"] = {
-					0.07, 0.14, 0.20,
-				},
-				["aura"] = 32357,		-- ["Bear Form"],
-			},
-			{
-				["tab"] = 2,
-				["num"] = 10,
-				["rank"] = {
-					0.07, 0.14, 0.20,
 				},
 				["aura"] = 9634,		-- ["Dire Bear Form"],
 			},

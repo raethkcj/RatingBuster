@@ -21,6 +21,16 @@ StatLogic.StatModTable["GLOBAL"] = {
 			["value"] = 0.5,
 		}
 	},
+	["ADD_AP_MOD_GENERIC_ATTACK_POWER"] = {
+		{
+			value = 1,
+		},
+	},
+	["ADD_RANGED_AP_MOD_GENERIC_ATTACK_POWER"] = {
+		{
+			value = 1,
+		},
+	},
 	["ADD_MELEE_CRIT_MOD_AGI"] = {
 		{
 			["level"] = conversionFallback(addon.CritPerAgi[addon.class], StatLogic.GetCritPerAgi),
@@ -68,8 +78,3 @@ for stat in pairs(StatLogic.RatingBase) do
 		}
 	}
 end
-
-StatLogic.GenericStatMap[StatLogic.Stats.GenericAttackPower] = {
-	StatLogic.Stats.AttackPower,
-	StatLogic.Stats.RangedAttackPower,
-}

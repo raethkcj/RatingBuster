@@ -180,7 +180,7 @@ addon.SpellCritPerInt = {
 StatLogic.StatModTable = {}
 if addon.class == "DRUID" then
 	StatLogic.StatModTable["DRUID"] = {
-		["ADD_AP_MOD_FERAL_AP"] = {
+		["ADD_AP_MOD_FERAL_ATTACK_POWER"] = {
 			-- Cat Form
 			{
 				["value"] = 1,

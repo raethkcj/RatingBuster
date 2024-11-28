@@ -348,7 +348,15 @@ StatLogic.StatModInfo = {
 		initialValue = 0,
 		finalAdjust = 0,
 	},
-	["ADD_AP_MOD_FERAL_AP"] = {
+	["ADD_AP_MOD_FERAL_ATTACK_POWER"] = {
+		initialValue = 0,
+		finalAdjust = 0,
+	},
+	["ADD_AP_MOD_GENERIC_ATTACK_POWER"] = {
+		initialValue = 0,
+		finalAdjust = 0,
+	},
+	["ADD_RANGED_AP_MOD_GENERIC_ATTACK_POWER"] = {
 		initialValue = 0,
 		finalAdjust = 0,
 	},
@@ -380,7 +388,7 @@ StatLogic.StatModInfo = {
 		initialValue = 1,
 		finalAdjust = 0,
 	},
-	["MOD_FERAL_AP"] = {
+	["MOD_WEAPON_ATTACK_POWER"] = {
 		initialValue = 0,
 		finalAdjust = 1,
 	},
@@ -1273,6 +1281,7 @@ do
 		Armor = 4,
 		Feral = 5,
 		WeaponRacial = 6,
+		PredatoryStrikes = 7,
 	}
 	local ExclusiveGroupCache = {}
 

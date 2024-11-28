@@ -69,7 +69,6 @@ StatLogic.Stats.Agility = Stat:new()
 StatLogic.Stats.Stamina = Stat:new()
 StatLogic.Stats.Intellect = Stat:new()
 StatLogic.Stats.Spirit = Stat:new()
-StatLogic.Stats.AllStats = Stat:new({ show = false })
 StatLogic.Stats.Mastery = Stat:new()
 StatLogic.Stats.MasteryEffect = Stat:new({ isPercent = true })
 StatLogic.Stats.MasteryRating = Stat:new()
@@ -83,15 +82,16 @@ StatLogic.Stats.ManaRegenNotCasting = Stat:new()
 StatLogic.Stats.ManaRegenOutOfCombat = Stat:new()
 StatLogic.Stats.HealthRegenOutOfCombat = Stat:new()
 
--- Generic Offensive Stats
-StatLogic.Stats.GenericAttackPower = Stat:new({ show = false })
+-- Generic Stats
+StatLogic.Stats.AllStats = Stat:new({ show = false })
 StatLogic.Stats.HitRating = Stat:new({ show = false })
 StatLogic.Stats.CritRating = Stat:new({ show = false })
 StatLogic.Stats.HasteRating = Stat:new({ show = false })
+StatLogic.Stats.GenericAttackPower = Stat:new({ show = false })
+StatLogic.Stats.FeralAttackPower = Stat:new({ show = false })
 
 -- Physical Stats
 StatLogic.Stats.AttackPower = Stat:new()
-StatLogic.Stats.FeralAttackPower = Stat:new()
 StatLogic.Stats.IgnoreArmor = Stat:new()
 StatLogic.Stats.ArmorPenetration = Stat:new({ isPercent = true })
 StatLogic.Stats.ArmorPenetrationRating = Stat:new()

@@ -3089,17 +3089,15 @@ local summaryCalcData = {
 	---------------------
 	-- Physical Damage --
 	---------------------
-	-- Attack Power - AP, STR, AGI
 	{
 		option = "sumAP",
 		stat = StatLogic.Stats.AttackPower,
 		func = function(sum, statModContext)
 			return statModContext("MOD_AP") * (
-				-- Feral Druid Predatory Strikes
-				(sum[StatLogic.Stats.FeralAttackPower] > 0 and statModContext("MOD_FERAL_AP") or 1) * (
-					sum[StatLogic.Stats.AttackPower]
-					+ sum[StatLogic.Stats.FeralAttackPower] * statModContext("ADD_AP_MOD_FERAL_AP")
-				) + sum[StatLogic.Stats.Strength] * statModContext("ADD_AP_MOD_STR")
+				sum[StatLogic.Stats.AttackPower]
+				+ sum[StatLogic.Stats.GenericAttackPower] * statModContext("ADD_AP_MOD_GENERIC_ATTACK_POWER")
+				+ sum[StatLogic.Stats.FeralAttackPower] * statModContext("ADD_AP_MOD_FERAL_ATTACK_POWER")
+				+ sum[StatLogic.Stats.Strength] * statModContext("ADD_AP_MOD_STR")
 				+ sum[StatLogic.Stats.Agility] * statModContext("ADD_AP_MOD_AGI")
 				+ sum[StatLogic.Stats.Stamina] * statModContext("ADD_AP_MOD_STA")
 				+ sum[StatLogic.Stats.Intellect] * statModContext("ADD_AP_MOD_INT")
