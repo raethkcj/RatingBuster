@@ -2192,6 +2192,11 @@ end
 
 local escaped_large_number_sep = LARGE_NUMBER_SEPERATOR:gsub("[-.]", "%%%1")
 
+---@param text string
+---@param link string
+---@param color ColorMixin
+---@param statModContext StatModContext
+---@return string
 function RatingBuster:ProcessText(text, link, color, statModContext)
 	-- Convert text to lower so we don't have to worry about same ratings with different cases
 	local lowerText = text:lower()
@@ -2203,6 +2208,7 @@ function RatingBuster:ProcessText(text, link, color, statModContext)
 			-- Capture the stat name
 			for _, statPattern in ipairs(L["statList"]) do
 				local pattern, stat = unpack(statPattern)
+				---@cast pattern string
 				if lowerText:find(pattern) then
 					value = value:gsub(escaped_large_number_sep, "")
 					value = tonumber(value)
@@ -2212,7 +2218,7 @@ function RatingBuster:ProcessText(text, link, color, statModContext)
 					local effects = {}
 					-- Group effects with identical values
 					for statID, effect in pairs(infoTable) do
-						if  type(statID) == "table" and statID.isPercent or statID == "Spell" then
+						if type(statID) == "table" and statID.isPercent or statID == "Spell" then
 							effect = ("%+.2f"):format(effect):gsub("(%.%d-)0+$", "%1"):trim(".") .. "%"
 							effects[effect] = effects[effect] or {}
 							tinsert(effects[effect], S[statID])
@@ -2756,7 +2762,7 @@ EventUtil.ContinueOnAddOnLoaded("Blizzard_ReforgingUI", function()
 				profile = db:GetCurrentProfile(),
 				spec = RatingBuster:GetDisplayedSpec()
 			})
-			og_SetText(self, RatingBuster:ProcessText(text, nil, nil, statModContext), ...)
+			og_SetText(self, RatingBuster:ProcessText(text, "", {}, statModContext), ...)
 		end
 	end
 

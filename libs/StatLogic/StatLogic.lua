@@ -186,19 +186,11 @@ local function newPooledTable(...)
 end
 
 -- New stat table
-local function newStatTable(...)
+---@return StatTable
+local function newStatTable()
 	local t = next(pool) or {}
 	pool[t] = nil
 	setmetatable(t, statTableMetatable)
-
-	for i = 1, select('#', ...), 2 do
-		local k = select(i, ...)
-		if k then
-			t[k] = select(i+1, ...)
-		else
-			break
-		end
-	end
 	return t
 end
 
