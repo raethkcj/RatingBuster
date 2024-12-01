@@ -483,7 +483,7 @@ L[StatLogic.Stats.SpellHasteRating] = "주문 가속도"
 
 -- Tank Stats
 L[StatLogic.Stats.Armor] = "방어도"
-S[StatLogic.Stats.Armor] = "방어도"
+L[StatLogic.Stats.BonusArmor] = "방어도"
 
 L[StatLogic.Stats.Avoidance] = "회피량"
 L[StatLogic.Stats.Dodge] = "회피율"

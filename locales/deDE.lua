@@ -483,7 +483,7 @@ L[StatLogic.Stats.SpellHasteRating] = "Zaubertempowertung"
 
 -- Tank Stats
 L[StatLogic.Stats.Armor] = "Rüstung"
-S[StatLogic.Stats.Armor] = "Rüstung"
+L[StatLogic.Stats.BonusArmor] = "Rüstung"
 
 L[StatLogic.Stats.Avoidance] = "Vermeidung"
 L[StatLogic.Stats.Dodge] = "Ausweichchance"

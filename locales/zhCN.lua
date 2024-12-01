@@ -484,7 +484,7 @@ L[StatLogic.Stats.SpellHasteRating] = "法术急速等级"
 
 -- Tank Stats
 L[StatLogic.Stats.Armor] = "护甲值"
-S[StatLogic.Stats.Armor] = "护甲"
+L[StatLogic.Stats.BonusArmor] = "护甲值"
 
 L[StatLogic.Stats.Avoidance] = "躲避"
 L[StatLogic.Stats.Dodge] = "躲闪几率"

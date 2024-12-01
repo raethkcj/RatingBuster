@@ -1121,7 +1121,7 @@ addon.StatModValidators = {
 					weaponSubclass = select(7, C_Item.GetItemInfoInstant(weapon))
 				end
 			end
-			return weaponSubclass and case.weaponSubclassSubclass[weaponSubclass] or false
+			return weaponSubclass and case.weaponSubclass[weaponSubclass] or false
 		end,
 		events = {
 			["UNIT_INVENTORY_CHANGED"] = "player",

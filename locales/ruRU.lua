@@ -579,7 +579,7 @@ L[StatLogic.Stats.SpellHasteRating] = "Рейтинг скорости закл�
 
 -- Tank Stats
 L[StatLogic.Stats.Armor] = "Броня"
-S[StatLogic.Stats.Armor] = "к броне"
+L[StatLogic.Stats.BonusArmor] = "Броня"
 
 L[StatLogic.Stats.Avoidance] = "уклонения от удара"
 L[StatLogic.Stats.Dodge] = "Вероятность уклонения"

@@ -488,8 +488,8 @@ L[StatLogic.Stats.SpellHaste] = PLAYERSTAT_SPELL_COMBAT.." "..STAT_HASTE
 L[StatLogic.Stats.SpellHasteRating] = PLAYERSTAT_SPELL_COMBAT.." "..STAT_HASTE.." "..RATING
 
 -- Tank Stats
-L[StatLogic.Stats.Armor] = ARMOR
-S[StatLogic.Stats.Armor] = "Armor"
+L[StatLogic.Stats.Armor] = "Armor"
+L[StatLogic.Stats.BonusArmor] = "Armor"
 
 L[StatLogic.Stats.Avoidance] = STAT_AVOIDANCE
 L[StatLogic.Stats.Dodge] = DODGE

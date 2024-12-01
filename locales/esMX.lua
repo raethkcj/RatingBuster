@@ -486,7 +486,7 @@ L[StatLogic.Stats.SpellHasteRating] = "Índice Velocidad Hech."
 
 -- Tank Stats
 L[StatLogic.Stats.Armor] = "Armadura"
-S[StatLogic.Stats.Armor] = "Armadura"
+L[StatLogic.Stats.BonusArmor] = "Armadura"
 
 L[StatLogic.Stats.Avoidance] = "Elusion"
 L[StatLogic.Stats.Dodge] = "Prob. Esquivar"

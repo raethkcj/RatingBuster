@@ -504,7 +504,7 @@ L[StatLogic.Stats.SpellHasteRating] = "Score de hâte des sorts"
 
 -- Tank Stats
 L[StatLogic.Stats.Armor] = "Armure"
-S[StatLogic.Stats.Armor] = "armure"
+L[StatLogic.Stats.BonusArmor] = "Armure"
 
 L[StatLogic.Stats.Avoidance] = "Évitement"
 L[StatLogic.Stats.Dodge] = "Esquive"
