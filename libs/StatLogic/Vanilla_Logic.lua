@@ -1531,6 +1531,14 @@ StatLogic.StatModTable["ALL"] = {
 		{
 			["value"] = 0.15,
 			["aura"] = 24425,
+			["group"] = addon.ExclusiveGroup.Zandalar,
+		},
+		-- Buff: Dreams of Zandalar
+		{
+			["value"] = 0.15,
+			["aura"] = 473476,
+			["rune"] = true,
+			["group"] = addon.ExclusiveGroup.Zandalar,
 		},
 		-- Buff: Heart of the Lion
 		{
@@ -1563,6 +1571,14 @@ StatLogic.StatModTable["ALL"] = {
 		{
 			["value"] = 0.15,
 			["aura"] = 24425,
+			["group"] = addon.ExclusiveGroup.Zandalar,
+		},
+		-- Buff: Dreams of Zandalar
+		{
+			["value"] = 0.15,
+			["aura"] = 473476,
+			["rune"] = true,
+			["group"] = addon.ExclusiveGroup.Zandalar,
 		},
 		-- Buff: Heart of the Lion
 		{
@@ -1595,6 +1611,14 @@ StatLogic.StatModTable["ALL"] = {
 		{
 			["value"] = 0.15,
 			["aura"] = 24425,
+			["group"] = addon.ExclusiveGroup.Zandalar,
+		},
+		-- Buff: Dreams of Zandalar
+		{
+			["value"] = 0.15,
+			["aura"] = 473476,
+			["rune"] = true,
+			["group"] = addon.ExclusiveGroup.Zandalar,
 		},
 		-- Buff: Heart of the Lion
 		{
@@ -1627,6 +1651,14 @@ StatLogic.StatModTable["ALL"] = {
 		{
 			["value"] = 0.15,
 			["aura"] = 24425,
+			["group"] = addon.ExclusiveGroup.Zandalar,
+		},
+		-- Buff: Dreams of Zandalar
+		{
+			["value"] = 0.15,
+			["aura"] = 473476,
+			["rune"] = true,
+			["group"] = addon.ExclusiveGroup.Zandalar,
 		},
 		-- Buff: Heart of the Lion
 		{
@@ -1659,6 +1691,14 @@ StatLogic.StatModTable["ALL"] = {
 		{
 			["value"] = 0.15,
 			["aura"] = 24425,
+			["group"] = addon.ExclusiveGroup.Zandalar,
+		},
+		-- Buff: Dreams of Zandalar
+		{
+			["value"] = 0.15,
+			["aura"] = 473476,
+			["rune"] = true,
+			["group"] = addon.ExclusiveGroup.Zandalar,
 		},
 		-- Buff: Heart of the Lion
 		{

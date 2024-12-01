@@ -1282,6 +1282,7 @@ do
 		Feral = 5,
 		WeaponRacial = 6,
 		PredatoryStrikes = 7,
+		Zandalar = 8,
 	}
 	local ExclusiveGroupCache = {}
 
