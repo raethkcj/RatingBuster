@@ -1275,6 +1275,7 @@ do
 		WeaponRacial = 6,
 		PredatoryStrikes = 7,
 		Zandalar = 8,
+		Moxie = 9,
 	}
 	local ExclusiveGroupCache = {}
 

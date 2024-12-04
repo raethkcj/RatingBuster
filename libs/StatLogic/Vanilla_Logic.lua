@@ -1607,6 +1607,13 @@ StatLogic.StatModTable["ALL"] = {
 			["aura"] = 25898,
 			["group"] = addon.ExclusiveGroup.AllStats,
 		},
+		-- Buff: Heart of the Lion
+		{
+			["value"] = 0.1,
+			["aura"] = 409583,
+			["group"] = addon.ExclusiveGroup.AllStats,
+			["rune"] = true,
+		},
 		-- Buff: Spirit of Zandalar
 		{
 			["value"] = 0.15,
@@ -1620,12 +1627,18 @@ StatLogic.StatModTable["ALL"] = {
 			["rune"] = true,
 			["group"] = addon.ExclusiveGroup.Zandalar,
 		},
-		-- Buff: Heart of the Lion
+		-- Buff: Mol'dar's Moxie
 		{
-			["value"] = 0.1,
-			["aura"] = 409583,
-			["group"] = addon.ExclusiveGroup.AllStats,
+			["value"] = 0.15,
+			["aura"] = 22818,
+			["group"] = addon.ExclusiveGroup.Moxie,
+		},
+		-- Buff: Blessing of Neptulon
+		{
+			["value"] = 0.15,
+			["aura"] = 473403,
 			["rune"] = true,
+			["group"] = addon.ExclusiveGroup.Moxie,
 		},
 		-- Buff: Fervor of the Temple Explorer
 		{
