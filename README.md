@@ -96,10 +96,9 @@ Type `/rb` or `/ratingbuster` to open the options menu GUI, or add a slash comma
 - `int` - Changes the display of Intellect
 	- `showSpellCritFromInt` - Show Spell Crit chance from Intellect
 	- `showManaFromInt` - Show Mana from Intellect
-	- `showMP5FromInt` - Show Mana Regen while casting from Intellect
-	- `showMP5NCFromInt` - Show Mana Regen while NOT casting from Intellect
+	- `showManaRegenFromInt` - Show Mana Regen Intellect
 - `spi` - Changes the display of Spirit
-	- `showMP5NCFromSpi` - Show Mana Regen while NOT casting from Spirit
+	- `showManaRegenFromSpi` - Show Mana Regen from Spirit
 	- `showHP5FromSpi` - Show Health Regen from Spirit
 - `sum` - Options for stat summary
 	- `showSum` - Show stat summary in tooltips
@@ -123,8 +122,9 @@ Type `/rb` or `/ratingbuster` to open the options menu GUI, or add a slash comma
 - `basic` - Choose basic stats for summary
 	- `sumHP` - Health <- Health, Stamina
 	- `sumMP` - Mana <- Mana, Intellect
-	- `sumMP5` - Mana Regen <- Mana Regen, Spirit
-	- `sumMP5NC` - Mana Regen while not casting <- Spirit
+	- `sumManaRegen` - Mana Regen
+	- `sumManaRegenNotCasting` - Mana Regen while not casting
+	- `sumManaRegenOutOfCombat` - Mana Regen while out of combat
 	- `sumHP5` - Health Regen <- Health Regen
 	- `sumHP5OC` - Health Regen when out of combat <- Spirit
 	- `sumStr` - Strength Summary

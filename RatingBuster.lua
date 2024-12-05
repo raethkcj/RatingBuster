@@ -298,12 +298,11 @@ local options = {
 					args = {},
 					hidden = true,
 				},
-				spell_crit = {
+				mastery = {
 					type = 'group',
-					name = L[StatLogic.Stats.SpellCrit],
-					desc = L["Changes the display of %s"]:format(L[StatLogic.Stats.SpellCrit]),
-					width = "full",
-					order = 9,
+					name = L[StatLogic.Stats.MasteryRating],
+					desc = L["Changes the display of %s"]:format(L[StatLogic.Stats.MasteryRating]),
+					order = 8,
 					args = {},
 					hidden = true,
 				},
@@ -316,26 +315,19 @@ local options = {
 					args = {},
 					hidden = true,
 				},
+				mana_regen = {
+					type = 'group',
+					name = L[StatLogic.Stats.ManaRegen],
+					desc = L["Changes the display of %s"]:format(L[StatLogic.Stats.ManaRegen]),
+					width = "full",
+					order = 10,
+					args = {},
+					hidden = true,
+				},
 				ap = {
 					type = 'group',
 					name = L[StatLogic.Stats.AttackPower],
 					desc = L["Changes the display of %s"]:format(L[StatLogic.Stats.AttackPower]),
-					order = 10,
-					args = {},
-					hidden = true,
-				},
-				spell_dmg = {
-					type = 'group',
-					name = L[StatLogic.Stats.SpellDamage],
-					desc = L["Changes the display of %s"]:format(L[StatLogic.Stats.SpellDamage]),
-					order = 10,
-					args = {},
-					hidden = true,
-				},
-				mastery = {
-					type = 'group',
-					name = L[StatLogic.Stats.MasteryRating],
-					desc = L["Changes the display of %s"]:format(L[StatLogic.Stats.MasteryRating]),
 					order = 11,
 					args = {},
 					hidden = true,
@@ -368,27 +360,44 @@ local options = {
 					hidden = true,
 					args = {},
 				},
-				defense = {
+				spell_dmg = {
 					type = 'group',
-					name = L[StatLogic.Stats.Defense],
-					desc = L["Changes the display of %s"]:format(L[StatLogic.Stats.Defense]),
+					name = L[StatLogic.Stats.SpellDamage],
+					desc = L["Changes the display of %s"]:format(L[StatLogic.Stats.SpellDamage]),
 					order = 14,
-					hidden = true,
 					args = {},
+					hidden = true,
+				},
+				spell_crit = {
+					type = 'group',
+					name = L[StatLogic.Stats.SpellCrit],
+					desc = L["Changes the display of %s"]:format(L[StatLogic.Stats.SpellCrit]),
+					width = "full",
+					order = 15,
+					args = {},
+					hidden = true,
 				},
 				armor = {
 					type = 'group',
 					name = L[StatLogic.Stats.Armor],
 					desc = L["Changes the display of %s"]:format(L[StatLogic.Stats.Armor]),
-					order = 15,
+					order = 16,
 					args = {},
 					hidden = true,
+				},
+				defense = {
+					type = 'group',
+					name = L[StatLogic.Stats.Defense],
+					desc = L["Changes the display of %s"]:format(L[StatLogic.Stats.Defense]),
+					order = 17,
+					hidden = true,
+					args = {},
 				},
 				resilience = {
 					type = 'group',
 					name = L[StatLogic.Stats.ResilienceRating],
 					desc = L["Changes the display of %s"]:format(L[StatLogic.Stats.ResilienceRating]),
-					order = 16,
+					order = 18,
 					args = {},
 					hidden = true,
 				},
@@ -587,17 +596,29 @@ local options = {
 							desc = L["Mana <- Mana, Intellect"],
 							order = 2,
 						},
-						sumMP5 = {
+						sumManaRegen = {
 							type = 'toggle',
 							name = L["Sum %s"]:format(L[StatLogic.Stats.ManaRegen]),
 							desc = L["Mana Regen <- Mana Regen, Spirit"],
 							order = 3,
 						},
-						sumMP5NC = {
+						sumManaRegenNotCasting = {
 							type = 'toggle',
 							name = L["Sum %s"]:format(L[StatLogic.Stats.ManaRegenNotCasting]),
 							desc = L["Mana Regen while not casting <- Spirit"],
 							order = 4,
+							hidden = function()
+								return StatLogic:GetStatMod("ADD_MANA_REGEN_NOT_CASTING_MOD_NORMAL_MANA_REGEN") == 0
+							end,
+						},
+						sumManaRegenOutOfCombat = {
+							type = 'toggle',
+							name = L["Sum %s"]:format(L[StatLogic.Stats.ManaRegenOutOfCombat]),
+							desc = L["Mana Regen while not casting <- Spirit"],
+							order = 4,
+							hidden = function()
+								return StatLogic:GetStatMod("ADD_MANA_REGEN_OUT_OF_COMBAT_MOD_NORMAL_MANA_REGEN") == 0
+							end,
 						},
 						sumHP5 = {
 							type = 'toggle',
@@ -1199,13 +1220,7 @@ local defaults = {
 		wpnBreakDown = false,
 		showStats = true,
 		sumAvoidWithBlock = false,
-		--[[
-		Str -> AP, Block
-		Agi -> Crit, Dodge, AP, RAP, Armor
-		Sta -> Health
-		Int -> Mana, SpellCrit, MP5NC
-		Spi -> MP5NC, HP5
-		--]]
+
 		-- Base stat conversions
 		showAPFromStr = false,
 		showBlockValueFromStr = false,
@@ -1219,11 +1234,9 @@ local defaults = {
 		showHealthFromSta = false,
 
 		showManaFromInt = false,
+		showManaRegenNotCastingFromManaRegen = false,
+		showManaRegenOutOfCombatFromManaRegen = false,
 		showSpellCritFromInt = true,
-		showMP5NCFromInt = false,
-
-		showMP5NCFromSpi = false,
-		showHP5NCFromSpi = false,
 
 		showModifiedRangedAttackPower = false,
 
@@ -1242,8 +1255,9 @@ local defaults = {
 		-- Basic
 		sumHP = true,
 		sumMP = true,
-		sumMP5 = true,
-		sumMP5NC = false,
+		sumManaRegen = true,
+		sumManaRegenNotCasting = false,
+		sumManaRegenOutOfCombat = false,
 		sumHP5 = false,
 		sumHP5OC = false,
 		sumStr = false,
@@ -1347,7 +1361,7 @@ if class == "DEATHKNIGHT" then
 	defaults.profile.sumAvoidance = true
 	defaults.profile.sumArmor = true
 	defaults.profile.sumMP = false
-	defaults.profile.sumMP5 = false
+	defaults.profile.sumManaRegen = false
 	defaults.profile.sumAP = true
 	defaults.profile.sumHit = true
 	defaults.profile.sumCrit = true
@@ -1424,7 +1438,7 @@ elseif class == "ROGUE" then
 	defaults.profile.sumWeaponAverageDamage = true
 	defaults.profile.sumWeaponSkill = true
 	defaults.profile.sumMP = false
-	defaults.profile.sumMP5 = false
+	defaults.profile.sumManaRegen = false
 	defaults.profile.sumAP = true
 	defaults.profile.sumHit = true
 	defaults.profile.sumCrit = true
@@ -1464,7 +1478,7 @@ elseif class == "WARRIOR" then
 	defaults.profile.sumAvoidance = true
 	defaults.profile.sumArmor = true
 	defaults.profile.sumMP = false
-	defaults.profile.sumMP5 = false
+	defaults.profile.sumManaRegen = false
 	defaults.profile.sumAP = true
 	defaults.profile.sumHit = true
 	defaults.profile.sumCrit = true
@@ -1499,8 +1513,6 @@ do
 	-- Backwards compatibility
 	local statToOptionKey = setmetatable({
 		["AP"] = "AP",
-		["MANA_REG"] = "MP5",
-		["NORMAL_MANA_REG"] = "MP5NC",
 		["HEALTH_REG"] = "HP5",
 		["NORMAL_HEALTH_REG"] = "HP5NC",
 		["RANGED_AP"] = "RAP",
@@ -1525,9 +1537,7 @@ do
 		["HEALING"] = StatLogic.Stats.HealingPower,
 		["HEALTH_REG"] = StatLogic.Stats.HealthRegen,
 		["INT"] = StatLogic.Stats.Intellect,
-		["MANA_REG"] = StatLogic.Stats.ManaRegen,
 		["NORMAL_HEALTH_REG"] = StatLogic.Stats.HealthRegenOutOfCombat,
-		["NORMAL_MANA_REG"] = StatLogic.Stats.ManaRegenNotCasting,
 		["PVP_DAMAGE_REDUCTION"] = StatLogic.Stats.PvPDamageReduction,
 		["RANGED_AP"] = StatLogic.Stats.RangedAttackPower,
 		["SPELL_DMG"] = StatLogic.Stats.SpellDamage,
@@ -1669,12 +1679,10 @@ do
 								add = "ARMOR"
 							end
 
-							if mod == "NORMAL_MANA_REG" then
-								mod = "SPI"
-								if statModContext("ADD_NORMAL_MANA_REG_MOD_INT") > 0 then
-									-- "Normal mana regen" is added from both int and spirit
-									addStatModOption(add, "INT", sources)
-								end
+							if add == "GENERIC_MANA_REGEN" or add == "NORMAL_MANA_REGEN" then
+								add = "MANA_REGEN"
+							elseif mod == "GENERIC_MANA_REGEN" or mod == "NORMAL_MANA_REGEN" then
+								mod = "MANA_REGEN"
 							elseif mod == "NORMAL_HEALTH_REG" then
 								if statModContext("ADD_NORMAL_HEALTH_REG_MOD_SPI") > 0 then
 									-- Vanilla through Wrath
