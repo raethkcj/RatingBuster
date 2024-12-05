@@ -41,6 +41,11 @@ StatLogic.StatModTable["GLOBAL"] = {
 			["level"] = addon.CritPerAgi[addon.class]
 		}
 	},
+	["ADD_MANA_REGEN_MOD_GENERIC_MANA_REGEN"] = {
+		{
+			["value"] = 1,
+		}
+	},
 	["ADD_SPELL_CRIT_MOD_INT"] = {
 		{
 			["level"] = conversionFallback(addon.SpellCritPerInt[addon.class], StatLogic.GetSpellCritPerInt),
