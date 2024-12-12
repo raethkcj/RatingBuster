@@ -4,7 +4,6 @@
 	<!-- Skip externals in local checkout -->
 	<!--@non-debug@
 		<Include file="libs\AceLocale-3.0\AceLocale-3.0.xml"/>
-		<Include file="libs\CallbackHandler-1.0\CallbackHandler-1.0.xml"/>
 		<Include file="libs\AceConsole-3.0\AceConsole-3.0.xml"/>
 		<Include file="libs\AceEvent-3.0\AceEvent-3.0.xml"/>
 		<Include file="libs\AceTimer-3.0\AceTimer-3.0.xml"/>

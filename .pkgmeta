@@ -14,8 +14,6 @@ externals:
 
   libs/AceLocale-3.0:
     url: https://repos.wowace.com/wow/ace3/trunk/AceLocale-3.0
-  libs/CallbackHandler-1.0:
-    url: https://repos.wowace.com/wow/callbackhandler/trunk/CallbackHandler-1.0
   libs/AceConsole-3.0:
     url: https://repos.wowace.com/wow/ace3/trunk/AceConsole-3.0
   libs/AceEvent-3.0:
