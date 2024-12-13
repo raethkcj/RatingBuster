@@ -1494,6 +1494,10 @@ do
 	local migrationOptions = {
 		sumMP5   = { "sumManaRegen" },
 		sumMP5NC = { "sumManaRegenNotCasting", "sumManaRegenOutOfCombat" },
+		showMP5FromInt = { "showManaRegenFromInt", "showManaRegenFromManaRegen" },
+		showMP5FromSpi = { "showManaRegenFromSpi", "showManaRegenFromManaRegen" },
+		showMP5NCFromInt = { "showManaRegenNotCastingFromManaRegen", "showManaRegenOutOfCombatFromManaRegen" },
+		showMP5NCFromSpi = { "showManaRegenNotCastingFromManaRegen", "showManaRegenOutOfCombatFromManaRegen" },
 	}
 
 	function addon.MigrateOptions(db)
