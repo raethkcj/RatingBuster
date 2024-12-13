@@ -1,42 +1,35 @@
 package-as: RatingBuster
 
 externals:
-  libs/StatLogic/libs/LibStub:
-    url: https://repos.wowace.com/wow/libstub/trunk
-  libs/StatLogic/libs/AceComm-3.0:
-    url: https://repos.wowace.com/wow/ace3/trunk/AceComm-3.0
   libs/StatLogic/libs/LibSerialize:
     url: https://github.com/rossnichols/LibSerialize.git
     tag: v1.1.3
   libs/StatLogic/libs/LibDeflate:
     url: https://github.com/SafeteeWoW/LibDeflate.git
     tag: 1.0.2-release
-
-  libs/AceLocale-3.0:
-    url: https://repos.wowace.com/wow/ace3/trunk/AceLocale-3.0
-  libs/AceConsole-3.0:
-    url: https://repos.wowace.com/wow/ace3/trunk/AceConsole-3.0
-  libs/AceEvent-3.0:
-    url: https://repos.wowace.com/wow/ace3/trunk/AceEvent-3.0
-  libs/AceTimer-3.0:
-    url: https://repos.wowace.com/wow/ace3/trunk/AceTimer-3.0
-  libs/AceBucket-3.0:
-    url: https://repos.wowace.com/wow/ace3/trunk/AceBucket-3.0
-  libs/AceDB-3.0:
-    url: https://repos.wowace.com/wow/ace3/trunk/AceDB-3.0
-  libs/AceDBOptions-3.0:
-    url: https://repos.wowace.com/wow/ace3/trunk/AceDBOptions-3.0
-  libs/AceAddon-3.0:
-    url: https://repos.wowace.com/wow/ace3/trunk/AceAddon-3.0
-  libs/AceGUI-3.0:
-    url: https://repos.wowace.com/wow/ace3/trunk/AceGUI-3.0
-  libs/AceConfig-3.0:
-    url: https://repos.wowace.com/wow/ace3/trunk/AceConfig-3.0
   libs/LibDualSpec-1.0:
     url: git://git.wowace.com/wow/libdualspec-1-0/mainline.git
+  ../Ace3:
+    url: https://github.com/WoWUIDev/Ace3.git
 
 move-folders:
   RatingBuster/libs/StatLogic: StatLogic
+  Ace3/LibStub: StatLogic/libs/LibStub
+  Ace3/AceComm-3.0: StatLogic/libs/AceComm-3.0
+  Ace3/AceLocale-3.0: RatingBuster/libs/AceLocale-3.0
+  Ace3/AceConsole-3.0: RatingBuster/libs/AceConsole-3.0
+  Ace3/AceEvent-3.0: RatingBuster/libs/AceEvent-3.0
+  Ace3/AceTimer-3.0: RatingBuster/libs/AceTimer-3.0
+  Ace3/AceBucket-3.0: RatingBuster/libs/AceBucket-3.0
+  Ace3/AceDB-3.0: RatingBuster/libs/AceDB-3.0
+  Ace3/AceDBOptions-3.0: RatingBuster/libs/AceDBOptions-3.0
+  Ace3/AceAddon-3.0: RatingBuster/libs/AceAddon-3.0
+  Ace3/AceGUI-3.0: RatingBuster/libs/AceGUI-3.0
+  Ace3/AceConfig-3.0: RatingBuster/libs/AceConfig-3.0
+
+embedded-libraries:
+  - Ace3
+  - libdeflate
 
 ignore:
   - ./*.txt
