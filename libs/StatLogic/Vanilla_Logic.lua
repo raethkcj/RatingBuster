@@ -213,7 +213,7 @@ if addon.class == "DRUID" then
 				["aura"] = 768,
 			},
 		},
-		["ADD_NORMAL_MANA_REG_MOD_SPI"] = {
+		["ADD_NORMAL_MANA_REGEN_MOD_SPI"] = {
 			{
 				["regen"] = NormalManaRegenPerSpi,
 			},
@@ -224,7 +224,7 @@ if addon.class == "DRUID" then
 				["value"] = 0.0625 * 5,
 			},
 		},
-		["ADD_MANA_REG_MOD_NORMAL_MANA_REG"] = {
+		["ADD_MANA_REGEN_MOD_NORMAL_MANA_REGEN"] = {
 			-- Talent: Reflection
 			{
 				["tab"] = 3,
@@ -374,7 +374,7 @@ elseif addon.class == "HUNTER" then
 				["aura"] = 409507,
 			},
 		},
-		["ADD_NORMAL_MANA_REG_MOD_SPI"] = {
+		["ADD_NORMAL_MANA_REGEN_MOD_SPI"] = {
 			{
 				["regen"] = NormalManaRegenPerSpi,
 			},
@@ -385,7 +385,7 @@ elseif addon.class == "HUNTER" then
 				["value"] = 0.125 * 5,
 			},
 		},
-		["ADD_MANA_REG_MOD_MANA"] = {
+		["ADD_GENERIC_MANA_REGEN_MOD_MANA"] = {
 			-- Buff: Aspect of the Viper
 			{
 				["value"] = 0.10 * 5/3,
@@ -472,7 +472,7 @@ elseif addon.class == "MAGE" then
 				["value"] = 1,
 			},
 		},
-		["ADD_NORMAL_MANA_REG_MOD_SPI"] = {
+		["ADD_NORMAL_MANA_REGEN_MOD_SPI"] = {
 			{
 				["regen"] = NormalManaRegenPerSpi,
 			},
@@ -494,7 +494,7 @@ elseif addon.class == "MAGE" then
 				},
 			},
 		},
-		["ADD_MANA_REG_MOD_NORMAL_MANA_REG"] = {
+		["ADD_MANA_REGEN_MOD_NORMAL_MANA_REGEN"] = {
 			-- Talent: Arcane Meditation
 			{
 				["tab"] = 1,
@@ -530,7 +530,7 @@ elseif addon.class == "MAGE" then
 				["aura"] = 425124,
 			},
 		},
-		["MOD_NORMAL_MANA_REG"] = {
+		["MOD_NORMAL_MANA_REGEN"] = {
 			-- Arcane Surge
 			{
 				["known"] = 425124,
@@ -569,7 +569,7 @@ elseif addon.class == "PALADIN" then
 				["value"] = 2,
 			},
 		},
-		["ADD_NORMAL_MANA_REG_MOD_SPI"] = {
+		["ADD_NORMAL_MANA_REGEN_MOD_SPI"] = {
 			{
 				["regen"] = NormalManaRegenPerSpi,
 			},
@@ -580,7 +580,7 @@ elseif addon.class == "PALADIN" then
 				["value"] = 0.125 * 5,
 			},
 		},
-		["ADD_MANA_REG_MOD_MANA"] = {
+		["ADD_GENERIC_MANA_REGEN_MOD_MANA"] = {
 			-- Rune: Guarded by the Light
 			{
 				["known"] = 415059,
@@ -756,7 +756,7 @@ elseif addon.class == "PRIEST" then
 				["value"] = 1,
 			},
 		},
-		["ADD_NORMAL_MANA_REG_MOD_SPI"] = {
+		["ADD_NORMAL_MANA_REGEN_MOD_SPI"] = {
 			{
 				["regen"] = NormalManaRegenPerSpi,
 			},
@@ -767,7 +767,7 @@ elseif addon.class == "PRIEST" then
 				["value"] = 0.041667 * 5,
 			},
 		},
-		["ADD_MANA_REG_MOD_MANA"] = {
+		["ADD_GENERIC_MANA_REGEN_MOD_MANA"] = {
 			-- Rune: Dispersion
 			{
 				["known"] = 425294,
@@ -776,7 +776,7 @@ elseif addon.class == "PRIEST" then
 				["aura"] = 425294,
 			},
 		},
-		["ADD_MANA_REG_MOD_NORMAL_MANA_REG"] = {
+		["ADD_MANA_REGEN_MOD_NORMAL_MANA_REGEN"] = {
 			-- Talent: Meditation
 			{
 				["tab"] = 1,
@@ -973,7 +973,7 @@ elseif addon.class == "SHAMAN" then
 				["value"] = 2,
 			},
 		},
-		["ADD_NORMAL_MANA_REG_MOD_SPI"] = {
+		["ADD_NORMAL_MANA_REGEN_MOD_SPI"] = {
 			{
 				["regen"] = NormalManaRegenPerSpi,
 			},
@@ -993,7 +993,7 @@ elseif addon.class == "SHAMAN" then
 				["aura"] = 454042,
 			},
 		},
-		["ADD_MANA_REG_MOD_INT"] = {
+		["ADD_GENERIC_MANA_REGEN_MOD_INT"] = {
 			-- Rune: Power Surge
 			{
 				["known"] = 415100,
@@ -1065,7 +1065,7 @@ elseif addon.class == "SHAMAN" then
 				["value"] = 0.15,
 			},
 		},
-		["ADD_MANA_REG_MOD_MANA"] = {
+		["ADD_GENERIC_MANA_REGEN_MOD_MANA"] = {
 			-- Shaman: Water Shield - Rune
 			--   The caster is surrounded by 3 globes of water, granting 1% of your maximum mana per 5 sec.
 			{
@@ -1134,7 +1134,7 @@ elseif addon.class == "WARLOCK" then
 				["value"] = 1,
 			},
 		},
-		["ADD_NORMAL_MANA_REG_MOD_SPI"] = {
+		["ADD_NORMAL_MANA_REGEN_MOD_SPI"] = {
 			{
 				["regen"] = NormalManaRegenPerSpi,
 			},
@@ -1735,7 +1735,19 @@ StatLogic.StatModTable["ALL"] = {
 			["rune"] = true,
 		},
 	},
-	["ADD_MANA_REG_MOD_NORMAL_MANA_REG"] = {
+	["ADD_MANA_REGEN_NOT_CASTING_MOD_NORMAL_MANA_REGEN"] = {
+		-- Base
+		{
+			["value"] = 1.0,
+		},
+	},
+	["ADD_MANA_REGEN_NOT_CASTING_MOD_GENERIC_MANA_REGEN"] = {
+		-- Base
+		{
+			["value"] = 1.0,
+		},
+	},
+	["ADD_MANA_REGEN_MOD_NORMAL_MANA_REGEN"] = {
 		-- Green Dragon Mail
 		{
 			["set"] = 490,

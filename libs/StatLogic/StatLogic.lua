@@ -400,7 +400,7 @@ StatLogic.StatModInfo = {
 		initialValue = 1,
 		finalAdjust = 0,
 	},
-	["MOD_NORMAL_MANA_REG"] = {
+	["MOD_NORMAL_MANA_REGEN"] = {
 		initialValue = 1,
 		finalAdjust = 0,
 	},
@@ -437,12 +437,44 @@ local addedInfoMods = {
 		mod = "SPI",
 	},
 	{
-		add = "NORMAL_MANA_REG",
+		add = "NORMAL_MANA_REGEN",
 		mod = "INT",
 	},
 	{
-		add = "NORMAL_MANA_REG",
+		add = "NORMAL_MANA_REGEN",
 		mod = "SPI",
+	},
+	{
+		add = "MANA_REGEN",
+		mod = "NORMAL_MANA_REGEN"
+	},
+	{
+		add = "MANA_REGEN_NOT_CASTING",
+		mod = "NORMAL_MANA_REGEN"
+	},
+	{
+		add = "MANA_REGEN_OUT_OF_COMBAT",
+		mod = "NORMAL_MANA_REGEN"
+	},
+	{
+		add = "GENERIC_MANA_REGEN",
+		mod = "INT",
+	},
+	{
+		add = "GENERIC_MANA_REGEN",
+		mod = "MANA",
+	},
+	{
+		add = "MANA_REGEN",
+		mod = "GENERIC_MANA_REGEN"
+	},
+	{
+		add = "MANA_REGEN_NOT_CASTING",
+		mod = "GENERIC_MANA_REGEN"
+	},
+	{
+		add = "MANA_REGEN_OUT_OF_COMBAT",
+		mod = "GENERIC_MANA_REGEN"
 	},
 	{
 		add = "AP",
@@ -527,18 +559,6 @@ local addedInfoMods = {
 	{
 		add = "MANA",
 		mod = "INT",
-	},
-	{
-		add = "MANA_REG",
-		mod = "INT",
-	},
-	{
-		add = "MANA_REG",
-		mod = "MANA",
-	},
-	{
-		add = "MANA_REG",
-		mod = "NORMAL_MANA_REG",
 	},
 	{
 		add = "MASTERY_EFFECT",

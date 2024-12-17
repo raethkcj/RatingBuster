@@ -1119,12 +1119,12 @@ if addon.class == "DRUID" then
 				["aura"] = 768,
 			},
 		},
-		["ADD_NORMAL_MANA_REG_MOD_SPI"] = {
+		["ADD_NORMAL_MANA_REGEN_MOD_SPI"] = {
 			{
 				["regen"] = NormalManaRegenPerSpi,
 			},
 		},
-		["ADD_NORMAL_MANA_REG_MOD_INT"] = {
+		["ADD_NORMAL_MANA_REGEN_MOD_INT"] = {
 			{
 				["regen"] = NormalManaRegenPerInt,
 			},
@@ -1192,7 +1192,7 @@ if addon.class == "DRUID" then
 		},
 		-- Druid: Intensity (Rank 3) - 3,6
 		--        Allows 17/33/50% of your Mana regeneration to continue while casting and causes your Enrage ability to instantly generate 10 rage.
-		["ADD_MANA_REG_MOD_NORMAL_MANA_REG"] = {
+		["ADD_MANA_REGEN_MOD_NORMAL_MANA_REGEN"] = {
 			{
 				["tab"] = 3,
 				["num"] = 7,
@@ -1203,7 +1203,7 @@ if addon.class == "DRUID" then
 		},
 		-- Druid: Dreamstate (Rank 3) - 1,15
 		--        Regenerate mana equal to 4%/7%/10% of your Intellect every 5 sec, even while casting.
-		["ADD_MANA_REG_MOD_INT"] = {
+		["ADD_GENERIC_MANA_REGEN_MOD_INT"] = {
 			{
 				["tab"] = 1,
 				["num"] = 15,
@@ -1740,17 +1740,17 @@ elseif addon.class == "HUNTER" then
 				["aura"] = 34501,
 			}
 		},
-		["ADD_NORMAL_MANA_REG_MOD_SPI"] = {
+		["ADD_NORMAL_MANA_REGEN_MOD_SPI"] = {
 			{
 				["regen"] = NormalManaRegenPerSpi,
 			},
 		},
-		["ADD_NORMAL_MANA_REG_MOD_INT"] = {
+		["ADD_NORMAL_MANA_REGEN_MOD_INT"] = {
 			{
 				["regen"] = NormalManaRegenPerInt,
 			},
 		},
-		["ADD_MANA_REG_MOD_MANA"] = {
+		["ADD_GENERIC_MANA_REGEN_MOD_MANA"] = {
 			-- Buff: Aspect of the Viper
 			{
 				["aura"] = 34074,
@@ -1909,12 +1909,12 @@ elseif addon.class == "MAGE" then
 				["value"] = 3.6587,
 			},
 		},
-		["ADD_NORMAL_MANA_REG_MOD_SPI"] = {
+		["ADD_NORMAL_MANA_REGEN_MOD_SPI"] = {
 			{
 				["regen"] = NormalManaRegenPerSpi,
 			},
 		},
-		["ADD_NORMAL_MANA_REG_MOD_INT"] = {
+		["ADD_NORMAL_MANA_REGEN_MOD_INT"] = {
 			{
 				["regen"] = NormalManaRegenPerInt,
 			},
@@ -1972,7 +1972,7 @@ elseif addon.class == "MAGE" then
 		--       Your Mage Armor spell grants an additional 20% mana regeneration while casting.
 		-- Mage: Pyromaniac (Rank 3) - 2,19
 		--       Increases chance to critically hit by 1%/2%/3% and allows 17/33/50% of your mana regeneration to continue while casting.
-		["ADD_MANA_REG_MOD_NORMAL_MANA_REG"] = {
+		["ADD_MANA_REGEN_MOD_NORMAL_MANA_REGEN"] = {
 			{
 				["tab"] = 1,
 				["num"] = 13,
@@ -2063,12 +2063,12 @@ elseif addon.class == "PALADIN" then
 				["value"] = 2,
 			},
 		},
-		["ADD_NORMAL_MANA_REG_MOD_SPI"] = {
+		["ADD_NORMAL_MANA_REGEN_MOD_SPI"] = {
 			{
 				["regen"] = NormalManaRegenPerSpi,
 			},
 		},
-		["ADD_NORMAL_MANA_REG_MOD_INT"] = {
+		["ADD_NORMAL_MANA_REGEN_MOD_INT"] = {
 			{
 				["regen"] = NormalManaRegenPerInt,
 			},
@@ -2237,17 +2237,17 @@ elseif addon.class == "PRIEST" then
 				["value"] = 3.4178,
 			},
 		},
-		["ADD_NORMAL_MANA_REG_MOD_SPI"] = {
+		["ADD_NORMAL_MANA_REGEN_MOD_SPI"] = {
 			{
 				["regen"] = NormalManaRegenPerSpi,
 			},
 		},
-		["ADD_NORMAL_MANA_REG_MOD_INT"] = {
+		["ADD_NORMAL_MANA_REGEN_MOD_INT"] = {
 			{
 				["regen"] = NormalManaRegenPerInt,
 			},
 		},
-		["MOD_NORMAL_MANA_REG"] = {
+		["MOD_NORMAL_MANA_REGEN"] = {
 			-- Priest: Holy Concentration (Rank 3) - 2,17
 			--   Your mana regeneration from spirit is increased by 16/32/50%
 			{
@@ -2261,7 +2261,7 @@ elseif addon.class == "PRIEST" then
 		},
 		-- Priest: Meditation (Rank 3) - 1,7
 		--         Allows 17/33/50% of your Mana regeneration to continue while casting.
-		["ADD_MANA_REG_MOD_NORMAL_MANA_REG"] = {
+		["ADD_MANA_REGEN_MOD_NORMAL_MANA_REGEN"] = {
 			{
 				["tab"] = 1,
 				["num"] = 7,
@@ -2288,7 +2288,7 @@ elseif addon.class == "PRIEST" then
 				},
 			},
 		},
-		["ADD_MANA_REG_MOD_MANA"] = {
+		["ADD_GENERIC_MANA_REGEN_MOD_MANA"] = {
 			-- Talent: Dispersion
 			{
 				["tab"] = 3,
@@ -2529,12 +2529,12 @@ elseif addon.class == "SHAMAN" then
 				["value"] = 1,
 			},
 		},
-		["ADD_NORMAL_MANA_REG_MOD_SPI"] = {
+		["ADD_NORMAL_MANA_REGEN_MOD_SPI"] = {
 			{
 				["regen"] = NormalManaRegenPerSpi,
 			},
 		},
-		["ADD_NORMAL_MANA_REG_MOD_INT"] = {
+		["ADD_NORMAL_MANA_REGEN_MOD_INT"] = {
 			{
 				["regen"] = NormalManaRegenPerInt,
 			},
@@ -2582,7 +2582,7 @@ elseif addon.class == "SHAMAN" then
 		},
 		-- Shaman: Unrelenting Storm (Rank 3) - 1,13
 		--         Regenerate mana equal to 4%/8%/12% of your Intellect every 5 sec, even while casting.
-		["ADD_MANA_REG_MOD_INT"] = {
+		["ADD_GENERIC_MANA_REGEN_MOD_INT"] = {
 			{
 				["tab"] = 1,
 				["num"] = 13,
@@ -2653,12 +2653,12 @@ elseif addon.class == "WARLOCK" then
 				["value"] = 2.4211,
 			},
 		},
-		["ADD_NORMAL_MANA_REG_MOD_SPI"] = {
+		["ADD_NORMAL_MANA_REGEN_MOD_SPI"] = {
 			{
 				["regen"] = NormalManaRegenPerSpi,
 			},
 		},
-		["ADD_NORMAL_MANA_REG_MOD_INT"] = {
+		["ADD_NORMAL_MANA_REGEN_MOD_INT"] = {
 			{
 				["regen"] = NormalManaRegenPerInt,
 			},
@@ -3096,20 +3096,23 @@ StatLogic.StatModTable["ALL"] = {
 			["aura"] = 69127,		-- ["Chill of the Throne"],
 		},
 	},
-	-- Replenishment - Buff
-	--   Replenishes 1% of maximum mana per 5 sec.
-	-- Priest: Vampiric Touch
-	--         Priest's party or raid members gain 1% of their maximum mana per 5 sec when the priest deals damage from Mind Blast.
-	-- Paladin: Judgements of the Wise
-	--          Your damaging Judgement spells have a 100% chance to grant the Replenishment effect to
-	--          up to 10 party or raid members mana regeneration equal to 1% of their maximum mana per 5 sec for 15 sec
-	-- Hunter: Hunting Party
-	--         Your Arcane Shot, Explosive Shot and Steady Shot critical strikes have a 100% chance to
-	--         grant up to 10 party or raid members mana regeneration equal to 1% of the maximum mana per 5 sec.
-	["ADD_MANA_REG_MOD_MANA"] = {
+	["ADD_GENERIC_MANA_REGEN_MOD_MANA"] = {
+		-- Buff: Replenishment
 		{
 			["value"] = 0.01,
-			["aura"] = 57669,		-- ["Replenishment"],
+			["aura"] = 57669,
+		},
+	},
+	["ADD_MANA_REGEN_NOT_CASTING_MOD_NORMAL_MANA_REGEN"] = {
+		-- Base
+		{
+			["value"] = 1.0,
+		},
+	},
+	["ADD_MANA_REGEN_NOT_CASTING_MOD_GENERIC_MANA_REGEN"] = {
+		-- Base
+		{
+			["value"] = 1.0,
 		},
 	},
 	-- MetaGem: Eternal Earthsiege Diamond - 41396
