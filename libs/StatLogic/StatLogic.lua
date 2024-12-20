@@ -258,13 +258,13 @@ setmetatable(log_level_colors, {
 	end
 })
 
----@param output string|table
+---@param output string
 ---@param log_level? log_level
 ---@param prefix? string
 local function log(output, log_level, prefix)
 	if DEBUG and output ~= "" then
 		local prefix_color, text_color = unpack(log_level_colors[log_level])
-		local text = type(output) == "table" and ("    " .. table.concat(output, ", ")) or output
+		local text = output
 		if prefix then
 			print(prefix_color:WrapTextInColorCode("  " .. prefix), text_color:WrapTextInColorCode("\"" .. text .. "\""))
 		else
@@ -1829,31 +1829,180 @@ function StatLogic:GetItemTooltipNumLines(link)
 	return tip:NumLines()
 end
 
--- ================== --
+------------------------
 -- Stat Summarization --
--- ================== --
+------------------------
 do
-	local statTable, currentColor
-
 	local large_sep = LARGE_NUMBER_SEPERATOR:gsub("[-.]", "%%%1")
 	local dec_sep = DECIMAL_SEPERATOR:gsub("[-.]", "%%%1")
 	local number_pattern = "[+-]?[%d." .. large_sep .. dec_sep .. "]+%f[%D]"
 
-	local function AddStat(id, value, currentStats)
-		if id == StatLogic.Stats.Armor then
-			local base, bonus = StatLogic:GetArmorDistribution(statTable.link, value, currentColor)
+	---@alias StatGroupEntry false
+	---@alias StatGroup StatGroupEntry|StatGroupEntry[]
+
+	---@param statGroups { statGroup: StatGroup, value: integer }[]
+	---@param statGroup StatGroup
+	---@param value integer
+	---@param itemLink string
+	---@param color ColorMixin
+	local function AddStat(statGroups, statGroup, value, itemLink, color)
+		if statGroup == StatLogic.Stats.Armor then
+			local base, bonus = StatLogic:GetArmorDistribution(itemLink, value, color)
 			value = base
-			AddStat(StatLogic.Stats.BonusArmor, bonus, currentStats)
+			AddStat(statGroups, StatLogic.Stats.BonusArmor, bonus, itemLink, color)
 		end
 
-		if id == StatLogic.Stats.WeaponDPS and LARGE_NUMBER_SEPERATOR == "." then
+		if statGroup == StatLogic.Stats.WeaponDPS and LARGE_NUMBER_SEPERATOR == "." then
 			-- Workaround for Blizzard forgetting to use DECIMAL_SEPERATOR for Weapon DPS
 			value = value / 10
 		end
 
-		statTable[id] = (statTable[id] or 0) + tonumber(value)
-		table.insert(currentStats, tostring(id) .. "=" .. tostring(value))
+		table.insert(statGroups, { statGroup = statGroup, value = value })
 	end
+
+	local function logStatGroups(statGroupValues)
+		if not DEBUG then return end
+		local outputText = {}
+		for _, statGroupValue in ipairs(statGroupValues) do
+			local statGroupText
+			if type(statGroupValue.statGroup) == "table" and #statGroupValue.statGroup > 0 then
+				local statText = {}
+				for _, stat in ipairs(statGroupValue.statGroup) do
+					table.insert(statText, tostring(stat))
+				end
+				statGroupText = table.concat(statText, ",")
+			else
+				statGroupText = tostring(statGroupValue.statGroup)
+			end
+			table.insert(outputText, statGroupText .. "=" .. tostring(statGroupValue.value))
+		end
+		local output = "    " .. table.concat(outputText, ", ")
+		log(output)
+	end
+
+	--- Given a line of text and its color from a tooltip, returns the stat values it represents,
+	--- grouped and ordered by the literal digits in the text that they belong to
+	---@param text string
+	---@param itemLink string
+	---@param color ColorMixin
+	---@return { statGroup: StatGroup, value: integer }[]
+	function StatLogic:GetStatGroupValues(text, itemLink, color)
+		local statGroups = {}
+		local found = not text or text == ""
+
+		if not found then
+			-- Strip color codes
+			text = text:gsub("|c%x%x%x%x%x%x%x%x", "")
+			text = text:gsub("|r", "")
+		end
+		local rawText = text
+
+		-----------------------
+		-- Whole Text Lookup --
+		-----------------------
+		-- Strings without numbers; mainly used for enchants or easy exclusions
+		if not found then
+			-- Limit to one line
+			text = text:gsub("\n.*", "")
+			-- Strip leading "Equip: ", "Socket Bonus: ", trailing ".", and lowercase
+			text = text:gsub(ITEM_SPELL_TRIGGER_ONEQUIP, "")
+			text = text:gsub(ITEM_SOCKET_BONUS:format(""), "")
+			text = text:trim()
+			text = text:gsub("%.$", "")
+			text = text:utf8lower()
+
+			local statList = addon.WholeTextLookup[text]
+			if statList ~= nil then
+				found = true
+				if statList then
+					log(rawText, "Success", "WholeText")
+					for stat, value in pairs(statList) do
+						AddStat(statGroups, stat, value, itemLink, color)
+					end
+					logStatGroups(statGroups)
+				else
+					log(rawText, "Exclude", "WholeText")
+				end
+			end
+		end
+
+		-------------------------
+		-- Substitution Lookup --
+		-------------------------
+		if not found then
+			-- Replace numbers with %s
+			local values = {}
+			local statText, count = text:gsub(number_pattern, function(match)
+				match = match:gsub(large_sep, ""):gsub(dec_sep, ".")
+				local value = tonumber(match)
+				if value then
+					values[#values + 1] = value
+					return "%s"
+				end
+			end)
+			if count > 0 then
+				statText = statText:trim()
+				-- Lookup exact sanitized string in StatIDLookup
+				local statList = addon.StatIDLookup[statText]
+				if statList then
+					found = true
+					log(rawText, "Success", "Substitution")
+					for i, value in ipairs(values) do
+						local statGroup = statList[i]
+						AddStat(statGroups, statGroup, value, itemLink, color)
+					end
+					logStatGroups(statGroups)
+				end
+			else
+				-- Contained no numbers, so we can exclude it
+				found = true
+				log(rawText, "Exclude", "Substitution")
+			end
+		end
+
+		-- Reduce noise while debugging missing patterns
+		if DEBUG then
+			-- Exclude strings by 3-5 character prefixes
+			if not found then
+				if addon.PrefixExclude[rawText:utf8sub(1, addon.PrefixExcludeLength)] or rawText:sub(1, 1) == '"' then
+					found = true
+					log(rawText, "Exclude", "Prefix")
+				end
+			end
+
+			-- Exclude lines that are not white, green, or "normal" (normal for Frozen Wrath etc.)
+			if not found then
+				local _, g, b = color:GetRGB()
+				if g < 0.8 or (b < 0.99 and b > 0.1) then
+					found = true
+					log(rawText, "Exclude", "Color")
+				end
+			end
+
+			-- Iterates a few obvious patterns, matching the whole string
+			if not found then
+				for pattern in pairs(addon.PreScanPatterns) do
+					if rawText:find(pattern) then
+						found = true
+						log(rawText, "Exclude", "PreScan")
+						break
+					end
+				end
+			end
+
+			-- If the string contains a number and was not excluded,
+			-- it might be a missing stat we want to add.
+			if not found then
+				log(rawText, "Fail", "Missed")
+			end
+		end
+
+		return statGroups
+	end
+end
+
+do
+	local statTable
 
 	-- Calculates the sum of all stats for a specified item.
 	---@param item? string itemLink of target item
@@ -1912,124 +2061,19 @@ do
 			for _, side in pairs(tip.sides) do
 				local fontString = side[i]
 				local text = fontString:GetText()
-				local found = not text or text == ""
-
-				if not found then
-					-- Strip color codes
-					text = text:gsub("|c%x%x%x%x%x%x%x%x", "")
-					text = text:gsub("|r", "")
-				end
-				local rawText = text
-
-				-----------------------
-				-- Whole Text Lookup --
-				-----------------------
-				-- Strings without numbers; mainly used for enchants or easy exclusions
-				if not found then
-					-- Limit to one line
-					text = text:gsub("\n.*", "")
-					-- Strip leading "Equip: ", "Socket Bonus: ", trailing ".", and lowercase
-					text = text:gsub(ITEM_SPELL_TRIGGER_ONEQUIP, "")
-					text = text:gsub(ITEM_SOCKET_BONUS:format(""), "")
-					text = text:trim()
-					text = text:gsub("%.$", "")
-					text = text:utf8lower()
-
-					currentColor = CreateColor(fontString:GetTextColor())
-
-					local idTable = addon.WholeTextLookup[text]
-					if idTable ~= nil then
-						found = true
-						if idTable then
-							log(rawText, "Success", "WholeText")
-							local currentStats = {}
-							for id, value in pairs(idTable) do
-								AddStat(id, value, currentStats)
-							end
-							log(currentStats)
-						else
-							log(rawText, "Exclude", "WholeText")
-						end
-					end
-				end
-
-				-------------------------
-				-- Substitution Lookup --
-				-------------------------
-				if not found then
-					-- Replace numbers with %s
-					local values = {}
-					local statText, count = text:gsub(number_pattern, function(match)
-						match = match:gsub(large_sep, ""):gsub(dec_sep, ".")
-						local value = tonumber(match)
-						if value then
-							values[#values + 1] = value
-							return "%s"
-						end
-					end)
-					if count > 0 then
-						statText = statText:trim()
-						-- Lookup exact sanitized string in StatIDLookup
-						local stats = addon.StatIDLookup[statText]
-						if stats then
-							found = true
-							log(rawText, "Success", "Substitution")
-							local currentStats = {}
-							for j, value in ipairs(values) do
-								local idTable = stats[j]
-								if type(idTable) == "table" and #idTable > 0 then
-									for _, id in ipairs(idTable) do
-										if id then
-											AddStat(id, value, currentStats)
-										end
-									end
-								elseif idTable then
-									AddStat(idTable, value, currentStats)
-								end
-							end
-							log(currentStats)
+				local color = CreateColor(fontString:GetTextColor())
+				local statGroupValues = StatLogic:GetStatGroupValues(text, link, color)
+				for _, statGroupValue in ipairs(statGroupValues) do
+					local statGroup = statGroupValue.statGroup
+					if type(statGroup) == "table" and #statGroup > 0 then
+						for _, stat in ipairs(statGroup) do
+							---@diagnostic disable-next-line: need-check-nil
+							statTable[stat] = statTable[stat] + statGroupValue.value
 						end
 					else
-						-- Contained no numbers, so we can exclude it
-						found = true
-						log(rawText, "Exclude", "Substitution")
-					end
-				end
-
-				-- Reduce noise while debugging missing patterns
-				if DEBUG then
-					-- Exclude strings by 3-5 character prefixes
-					if not found then
-						if addon.PrefixExclude[rawText:utf8sub(1, addon.PrefixExcludeLength)] or rawText:sub(1, 1) == '"' then
-							found = true
-							log(rawText, "Exclude", "Prefix")
-						end
-					end
-
-					-- Exclude lines that are not white, green, or "normal" (normal for Frozen Wrath etc.)
-					if not found then
-						local _, g, b = currentColor:GetRGB()
-						if g < 0.8 or (b < 0.99 and b > 0.1) then
-							found = true
-							log(rawText, "Exclude", "Color")
-						end
-					end
-
-					-- Iterates a few obvious patterns, matching the whole string
-					if not found then
-						for pattern in pairs(addon.PreScanPatterns) do
-							if rawText:find(pattern) then
-								found = true
-								log(rawText, "Exclude", "PreScan")
-								break
-							end
-						end
-					end
-
-					-- If the string contains a number and was not excluded,
-					-- it might be a missing stat we want to add.
-					if not found then
-						log(rawText, "Fail", "Missed")
+						-- statGroup is a single stat
+						---@diagnostic disable-next-line: need-check-nil
+						statTable[statGroup] = statTable[statGroup] + statGroupValue.value
 					end
 				end
 			end
