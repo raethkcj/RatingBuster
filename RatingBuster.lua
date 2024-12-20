@@ -1891,8 +1891,12 @@ function RatingBuster:InitializeDatabase()
 		if ReforgingFrame then
 			ReforgingFrame_Update(ReforgingFrame)
 		end
+		addon.MigrateOptions(db)
 	end)
-	RatingBuster.db.RegisterCallback(RatingBuster, "OnProfileCopied", "ClearCache")
+	RatingBuster.db.RegisterCallback(RatingBuster, "OnProfileCopied", function()
+		RatingBuster:ClearCache()
+		addon.MigrateOptions(db)
+	end)
 	RatingBuster.db.RegisterCallback(RatingBuster, "OnProfileReset", "ClearCache")
 	db = RatingBuster.db
 
