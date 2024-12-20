@@ -1476,6 +1476,24 @@ elseif class == "WARRIOR" then
 	defaults.profile.sumArmorPenetration = true
 end
 
+do
+	local migrationOptions = {
+		sumMP5   = { "sumManaRegen" },
+		sumMP5NC = { "sumManaRegenNotCasting", "sumManaRegenOutOfCombat" },
+	}
+
+	function addon.MigrateOptions(db)
+		for old, newOptions in pairs(migrationOptions) do
+			if db.profile[old] ~= nil then
+				for _, new in ipairs(newOptions) do
+					db.profile[new] = db.profile[old]
+				end
+				db.profile[old] = nil
+			end
+		end
+	end
+end
+
 -- Generate options from expansion-specific StatModTables in StatLogic
 do
 	-- Backwards compatibility
@@ -1866,6 +1884,8 @@ function RatingBuster:InitializeDatabase()
 	RatingBuster.db.RegisterCallback(RatingBuster, "OnProfileReset", "ClearCache")
 	db = RatingBuster.db
 
+	addon.MigrateOptions(db)
+
 	options.args.profiles = LibStub("AceDBOptions-3.0"):GetOptionsTable(RatingBuster.db)
 	options.args.profiles.order = 5
 
@@ -1884,6 +1904,7 @@ function RatingBuster:InitializeDatabase()
 		}
 	})
 	StatLogic:SetupAuraInfo(always_buffed)
+
 	local conversion_data = RatingBuster.db:RegisterNamespace("ConversionData", {
 		global = {
 			[LE_EXPANSION_LEVEL_CURRENT] = {
