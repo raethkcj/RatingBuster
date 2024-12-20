@@ -76,6 +76,8 @@ StatLogic.Stats.MasteryRating = Stat:new()
 -- Resources
 StatLogic.Stats.Health = Stat:new()
 StatLogic.Stats.Mana = Stat:new()
+StatLogic.Stats.NormalManaRegen = Stat:new({ show = false })
+StatLogic.Stats.GenericManaRegen = Stat:new({ show = false })
 StatLogic.Stats.ManaRegen = Stat:new()
 StatLogic.Stats.HealthRegen = Stat:new()
 StatLogic.Stats.ManaRegenNotCasting = Stat:new()

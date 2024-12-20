@@ -257,12 +257,12 @@ if addon.class == "DRUID" then
 				["aura"] = 768,
 			},
 		},
-		["ADD_NORMAL_MANA_REG_MOD_SPI"] = {
+		["ADD_NORMAL_MANA_REGEN_MOD_SPI"] = {
 			{
 				["regen"] = NormalManaRegenPerSpi,
 			},
 		},
-		["ADD_NORMAL_MANA_REG_MOD_INT"] = {
+		["ADD_NORMAL_MANA_REGEN_MOD_INT"] = {
 			{
 				["regen"] = NormalManaRegenPerInt,
 			},
@@ -309,7 +309,7 @@ if addon.class == "DRUID" then
 		},
 		-- Druid: Intensity (Rank 3) - 3,6
 		--        Allows 10/20/30% of your Mana regeneration to continue while casting and causes your Enrage ability to instantly generate 10 rage.
-		["ADD_MANA_REG_MOD_NORMAL_MANA_REG"] = {
+		["ADD_MANA_REGEN_MOD_NORMAL_MANA_REGEN"] = {
 			{
 				["tab"] = 3,
 				["num"] = 6,
@@ -320,7 +320,7 @@ if addon.class == "DRUID" then
 		},
 		-- Druid: Dreamstate (Rank 3) - 1,17
 		--        Regenerate mana equal to 4%/7%/10% of your Intellect every 5 sec, even while casting.
-		["ADD_MANA_REG_MOD_INT"] = {
+		["ADD_GENERIC_MANA_REGEN_MOD_INT"] = {
 			{
 				["tab"] = 1,
 				["num"] = 17,
@@ -530,12 +530,12 @@ elseif addon.class == "HUNTER" then
 				["value"] = 1,
 			},
 		},
-		["ADD_NORMAL_MANA_REG_MOD_SPI"] = {
+		["ADD_NORMAL_MANA_REGEN_MOD_SPI"] = {
 			{
 				["regen"] = NormalManaRegenPerSpi,
 			},
 		},
-		["ADD_NORMAL_MANA_REG_MOD_INT"] = {
+		["ADD_NORMAL_MANA_REGEN_MOD_INT"] = {
 			{
 				["regen"] = NormalManaRegenPerInt,
 			},
@@ -557,7 +557,7 @@ elseif addon.class == "HUNTER" then
 		-- that margin, it will be less effective. The mana regained never drops
 		-- below 10% of intellect every 5 sec. or goes above 50% of intellect
 		-- every 5 sec.
-		["ADD_MANA_REG_MOD_INT"] = {
+		["ADD_GENERIC_MANA_REGEN_MOD_INT"] = {
 			{
 				["value"] = 0.25,
 				["aura"] = 34074,			-- ["Aspect of the Viper"],
@@ -712,12 +712,12 @@ elseif addon.class == "MAGE" then
 				["value"] = 3.4575,
 			},
 		},
-		["ADD_NORMAL_MANA_REG_MOD_SPI"] = {
+		["ADD_NORMAL_MANA_REGEN_MOD_SPI"] = {
 			{
 				["regen"] = NormalManaRegenPerSpi,
 			},
 		},
-		["ADD_NORMAL_MANA_REG_MOD_INT"] = {
+		["ADD_NORMAL_MANA_REGEN_MOD_INT"] = {
 			{
 				["regen"] = NormalManaRegenPerInt,
 			},
@@ -742,7 +742,7 @@ elseif addon.class == "MAGE" then
 		},
 		-- Mage: Arcane Meditation (Rank 3) - 1,12
 		--       Allows 10/20/30% of your Mana regeneration to continue while casting.
-		["ADD_MANA_REG_MOD_NORMAL_MANA_REG"] = {
+		["ADD_MANA_REGEN_MOD_NORMAL_MANA_REGEN"] = {
 			{
 				["tab"] = 1,
 				["num"] = 12,
@@ -792,12 +792,12 @@ elseif addon.class == "PALADIN" then
 				["value"] = 0.6520,
 			},
 		},
-		["ADD_NORMAL_MANA_REG_MOD_SPI"] = {
+		["ADD_NORMAL_MANA_REGEN_MOD_SPI"] = {
 			{
 				["regen"] = NormalManaRegenPerSpi,
 			},
 		},
-		["ADD_NORMAL_MANA_REG_MOD_INT"] = {
+		["ADD_NORMAL_MANA_REGEN_MOD_INT"] = {
 			{
 				["regen"] = NormalManaRegenPerInt,
 			},
@@ -915,12 +915,12 @@ elseif addon.class == "PRIEST" then
 				["value"] = 3.1830,
 			},
 		},
-		["ADD_NORMAL_MANA_REG_MOD_SPI"] = {
+		["ADD_NORMAL_MANA_REGEN_MOD_SPI"] = {
 			{
 				["regen"] = NormalManaRegenPerSpi,
 			},
 		},
-		["ADD_NORMAL_MANA_REG_MOD_INT"] = {
+		["ADD_NORMAL_MANA_REGEN_MOD_INT"] = {
 			{
 				["regen"] = NormalManaRegenPerInt,
 			},
@@ -933,7 +933,7 @@ elseif addon.class == "PRIEST" then
 		},
 		-- Priest: Meditation (Rank 3) - 1,9
 		--         Allows 10/20/30% of your Mana regeneration to continue while casting.
-		["ADD_MANA_REG_MOD_NORMAL_MANA_REG"] = {
+		["ADD_MANA_REGEN_MOD_NORMAL_MANA_REGEN"] = {
 			{
 				["tab"] = 1,
 				["num"] = 9,
@@ -1178,12 +1178,12 @@ elseif addon.class == "SHAMAN" then
 				["value"] = 2,
 			},
 		},
-		["ADD_NORMAL_MANA_REG_MOD_SPI"] = {
+		["ADD_NORMAL_MANA_REGEN_MOD_SPI"] = {
 			{
 				["regen"] = NormalManaRegenPerSpi,
 			},
 		},
-		["ADD_NORMAL_MANA_REG_MOD_INT"] = {
+		["ADD_NORMAL_MANA_REGEN_MOD_INT"] = {
 			{
 				["regen"] = NormalManaRegenPerInt,
 			},
@@ -1224,7 +1224,7 @@ elseif addon.class == "SHAMAN" then
 		},
 		-- Shaman: Unrelenting Storm (Rank 5) - 1,14
 		--         Regenerate mana equal to 2%/4%/6%/8%/10% of your Intellect every 5 sec, even while casting.
-		["ADD_MANA_REG_MOD_INT"] = {
+		["ADD_GENERIC_MANA_REGEN_MOD_INT"] = {
 			{
 				["tab"] = 1,
 				["num"] = 14,
@@ -1317,12 +1317,12 @@ elseif addon.class == "WARLOCK" then
 				["value"] = 2.0350,
 			},
 		},
-		["ADD_NORMAL_MANA_REG_MOD_SPI"] = {
+		["ADD_NORMAL_MANA_REGEN_MOD_SPI"] = {
 			{
 				["regen"] = NormalManaRegenPerSpi,
 			},
 		},
-		["ADD_NORMAL_MANA_REG_MOD_INT"] = {
+		["ADD_NORMAL_MANA_REGEN_MOD_INT"] = {
 			{
 				["regen"] = NormalManaRegenPerInt,
 			},
@@ -1796,7 +1796,19 @@ StatLogic.StatModTable["ALL"] = {
 			["value"] = 0.07,
 		},
 	},
-	["ADD_MANA_REG_MOD_NORMAL_MANA_REG"] = {
+	["ADD_MANA_REGEN_NOT_CASTING_MOD_NORMAL_MANA_REGEN"] = {
+		-- Base
+		{
+			["value"] = 1.0,
+		},
+	},
+	["ADD_MANA_REGEN_NOT_CASTING_MOD_GENERIC_MANA_REGEN"] = {
+		-- Base
+		{
+			["value"] = 1.0,
+		},
+	},
+	["ADD_MANA_REGEN_MOD_NORMAL_MANA_REGEN"] = {
 		-- Set: Primal Mooncloth
 		{
 			["set"] = 554,

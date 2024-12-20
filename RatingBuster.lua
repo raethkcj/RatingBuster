@@ -298,12 +298,11 @@ local options = {
 					args = {},
 					hidden = true,
 				},
-				spell_crit = {
+				mastery = {
 					type = 'group',
-					name = L[StatLogic.Stats.SpellCrit],
-					desc = L["Changes the display of %s"]:format(L[StatLogic.Stats.SpellCrit]),
-					width = "full",
-					order = 9,
+					name = L[StatLogic.Stats.MasteryRating],
+					desc = L["Changes the display of %s"]:format(L[StatLogic.Stats.MasteryRating]),
+					order = 8,
 					args = {},
 					hidden = true,
 				},
@@ -316,26 +315,19 @@ local options = {
 					args = {},
 					hidden = true,
 				},
+				mana_regen = {
+					type = 'group',
+					name = L[StatLogic.Stats.ManaRegen],
+					desc = L["Changes the display of %s"]:format(L[StatLogic.Stats.ManaRegen]),
+					width = "full",
+					order = 10,
+					args = {},
+					hidden = true,
+				},
 				ap = {
 					type = 'group',
 					name = L[StatLogic.Stats.AttackPower],
 					desc = L["Changes the display of %s"]:format(L[StatLogic.Stats.AttackPower]),
-					order = 10,
-					args = {},
-					hidden = true,
-				},
-				spell_dmg = {
-					type = 'group',
-					name = L[StatLogic.Stats.SpellDamage],
-					desc = L["Changes the display of %s"]:format(L[StatLogic.Stats.SpellDamage]),
-					order = 10,
-					args = {},
-					hidden = true,
-				},
-				mastery = {
-					type = 'group',
-					name = L[StatLogic.Stats.MasteryRating],
-					desc = L["Changes the display of %s"]:format(L[StatLogic.Stats.MasteryRating]),
 					order = 11,
 					args = {},
 					hidden = true,
@@ -368,27 +360,44 @@ local options = {
 					hidden = true,
 					args = {},
 				},
-				defense = {
+				spell_dmg = {
 					type = 'group',
-					name = L[StatLogic.Stats.Defense],
-					desc = L["Changes the display of %s"]:format(L[StatLogic.Stats.Defense]),
+					name = L[StatLogic.Stats.SpellDamage],
+					desc = L["Changes the display of %s"]:format(L[StatLogic.Stats.SpellDamage]),
 					order = 14,
-					hidden = true,
 					args = {},
+					hidden = true,
+				},
+				spell_crit = {
+					type = 'group',
+					name = L[StatLogic.Stats.SpellCrit],
+					desc = L["Changes the display of %s"]:format(L[StatLogic.Stats.SpellCrit]),
+					width = "full",
+					order = 15,
+					args = {},
+					hidden = true,
 				},
 				armor = {
 					type = 'group',
 					name = L[StatLogic.Stats.Armor],
 					desc = L["Changes the display of %s"]:format(L[StatLogic.Stats.Armor]),
-					order = 15,
+					order = 16,
 					args = {},
 					hidden = true,
+				},
+				defense = {
+					type = 'group',
+					name = L[StatLogic.Stats.Defense],
+					desc = L["Changes the display of %s"]:format(L[StatLogic.Stats.Defense]),
+					order = 17,
+					hidden = true,
+					args = {},
 				},
 				resilience = {
 					type = 'group',
 					name = L[StatLogic.Stats.ResilienceRating],
 					desc = L["Changes the display of %s"]:format(L[StatLogic.Stats.ResilienceRating]),
-					order = 16,
+					order = 18,
 					args = {},
 					hidden = true,
 				},
@@ -587,17 +596,29 @@ local options = {
 							desc = L["Mana <- Mana, Intellect"],
 							order = 2,
 						},
-						sumMP5 = {
+						sumManaRegen = {
 							type = 'toggle',
 							name = L["Sum %s"]:format(L[StatLogic.Stats.ManaRegen]),
 							desc = L["Mana Regen <- Mana Regen, Spirit"],
 							order = 3,
 						},
-						sumMP5NC = {
+						sumManaRegenNotCasting = {
 							type = 'toggle',
 							name = L["Sum %s"]:format(L[StatLogic.Stats.ManaRegenNotCasting]),
 							desc = L["Mana Regen while not casting <- Spirit"],
 							order = 4,
+							hidden = function()
+								return StatLogic:GetStatMod("ADD_MANA_REGEN_NOT_CASTING_MOD_NORMAL_MANA_REGEN") == 0
+							end,
+						},
+						sumManaRegenOutOfCombat = {
+							type = 'toggle',
+							name = L["Sum %s"]:format(L[StatLogic.Stats.ManaRegenOutOfCombat]),
+							desc = L["Mana Regen while not casting <- Spirit"],
+							order = 4,
+							hidden = function()
+								return StatLogic:GetStatMod("ADD_MANA_REGEN_OUT_OF_COMBAT_MOD_NORMAL_MANA_REGEN") == 0
+							end,
 						},
 						sumHP5 = {
 							type = 'toggle',
@@ -1199,13 +1220,7 @@ local defaults = {
 		wpnBreakDown = false,
 		showStats = true,
 		sumAvoidWithBlock = false,
-		--[[
-		Str -> AP, Block
-		Agi -> Crit, Dodge, AP, RAP, Armor
-		Sta -> Health
-		Int -> Mana, SpellCrit, MP5NC
-		Spi -> MP5NC, HP5
-		--]]
+
 		-- Base stat conversions
 		showAPFromStr = false,
 		showBlockValueFromStr = false,
@@ -1219,11 +1234,9 @@ local defaults = {
 		showHealthFromSta = false,
 
 		showManaFromInt = false,
+		showManaRegenNotCastingFromManaRegen = false,
+		showManaRegenOutOfCombatFromManaRegen = false,
 		showSpellCritFromInt = true,
-		showMP5NCFromInt = false,
-
-		showMP5NCFromSpi = false,
-		showHP5NCFromSpi = false,
 
 		showModifiedRangedAttackPower = false,
 
@@ -1242,8 +1255,9 @@ local defaults = {
 		-- Basic
 		sumHP = true,
 		sumMP = true,
-		sumMP5 = true,
-		sumMP5NC = false,
+		sumManaRegen = true,
+		sumManaRegenNotCasting = false,
+		sumManaRegenOutOfCombat = false,
 		sumHP5 = false,
 		sumHP5OC = false,
 		sumStr = false,
@@ -1347,7 +1361,7 @@ if class == "DEATHKNIGHT" then
 	defaults.profile.sumAvoidance = true
 	defaults.profile.sumArmor = true
 	defaults.profile.sumMP = false
-	defaults.profile.sumMP5 = false
+	defaults.profile.sumManaRegen = false
 	defaults.profile.sumAP = true
 	defaults.profile.sumHit = true
 	defaults.profile.sumCrit = true
@@ -1424,7 +1438,7 @@ elseif class == "ROGUE" then
 	defaults.profile.sumWeaponAverageDamage = true
 	defaults.profile.sumWeaponSkill = true
 	defaults.profile.sumMP = false
-	defaults.profile.sumMP5 = false
+	defaults.profile.sumManaRegen = false
 	defaults.profile.sumAP = true
 	defaults.profile.sumHit = true
 	defaults.profile.sumCrit = true
@@ -1464,7 +1478,7 @@ elseif class == "WARRIOR" then
 	defaults.profile.sumAvoidance = true
 	defaults.profile.sumArmor = true
 	defaults.profile.sumMP = false
-	defaults.profile.sumMP5 = false
+	defaults.profile.sumManaRegen = false
 	defaults.profile.sumAP = true
 	defaults.profile.sumHit = true
 	defaults.profile.sumCrit = true
@@ -1480,6 +1494,10 @@ do
 	local migrationOptions = {
 		sumMP5   = { "sumManaRegen" },
 		sumMP5NC = { "sumManaRegenNotCasting", "sumManaRegenOutOfCombat" },
+		showMP5FromInt = { "showManaRegenFromInt", "showManaRegenFromManaRegen" },
+		showMP5FromSpi = { "showManaRegenFromSpi", "showManaRegenFromManaRegen" },
+		showMP5NCFromInt = { "showManaRegenNotCastingFromManaRegen", "showManaRegenOutOfCombatFromManaRegen" },
+		showMP5NCFromSpi = { "showManaRegenNotCastingFromManaRegen", "showManaRegenOutOfCombatFromManaRegen" },
 	}
 
 	function addon.MigrateOptions(db)
@@ -1499,8 +1517,6 @@ do
 	-- Backwards compatibility
 	local statToOptionKey = setmetatable({
 		["AP"] = "AP",
-		["MANA_REG"] = "MP5",
-		["NORMAL_MANA_REG"] = "MP5NC",
 		["HEALTH_REG"] = "HP5",
 		["NORMAL_HEALTH_REG"] = "HP5NC",
 		["RANGED_AP"] = "RAP",
@@ -1525,9 +1541,7 @@ do
 		["HEALING"] = StatLogic.Stats.HealingPower,
 		["HEALTH_REG"] = StatLogic.Stats.HealthRegen,
 		["INT"] = StatLogic.Stats.Intellect,
-		["MANA_REG"] = StatLogic.Stats.ManaRegen,
 		["NORMAL_HEALTH_REG"] = StatLogic.Stats.HealthRegenOutOfCombat,
-		["NORMAL_MANA_REG"] = StatLogic.Stats.ManaRegenNotCasting,
 		["PVP_DAMAGE_REDUCTION"] = StatLogic.Stats.PvPDamageReduction,
 		["RANGED_AP"] = StatLogic.Stats.RangedAttackPower,
 		["SPELL_DMG"] = StatLogic.Stats.SpellDamage,
@@ -1669,12 +1683,10 @@ do
 								add = "ARMOR"
 							end
 
-							if mod == "NORMAL_MANA_REG" then
-								mod = "SPI"
-								if statModContext("ADD_NORMAL_MANA_REG_MOD_INT") > 0 then
-									-- "Normal mana regen" is added from both int and spirit
-									addStatModOption(add, "INT", sources)
-								end
+							if add == "GENERIC_MANA_REGEN" or add == "NORMAL_MANA_REGEN" then
+								add = "MANA_REGEN"
+							elseif mod == "GENERIC_MANA_REGEN" or mod == "NORMAL_MANA_REGEN" then
+								mod = "MANA_REGEN"
 							elseif mod == "NORMAL_HEALTH_REG" then
 								if statModContext("ADD_NORMAL_HEALTH_REG_MOD_SPI") > 0 then
 									-- Vanilla through Wrath
@@ -2545,18 +2557,13 @@ do
 			local healingPower = statModContext("ADD_HEALING_MOD_INT")
 			self:ProcessStat(StatLogic.Stats.HealingPower, healingPower, infoTable, link, color, statModContext, false, db.profile.showHealingFromInt)
 
-			if db.profile.showMP5FromInt then
-				local effect = value * statModContext("ADD_MANA_REG_MOD_INT")
-					+ value * statModContext("ADD_NORMAL_MANA_REG_MOD_INT") * statModContext("MOD_NORMAL_MANA_REG") * math.min(statModContext("ADD_MANA_REG_MOD_NORMAL_MANA_REG"), 1)
-					+ value * statModContext("ADD_MANA_MOD_INT") * statModContext("MOD_MANA") * statModContext("ADD_MANA_REG_MOD_MANA") -- Replenishment
-				infoTable[StatLogic.Stats.ManaRegen] = infoTable[StatLogic.Stats.ManaRegen] + effect
-			end
-			if db.profile.showMP5NCFromInt then
-				local effect = value * statModContext("ADD_MANA_REG_MOD_INT")
-					+ value * statModContext("ADD_NORMAL_MANA_REG_MOD_INT") * statModContext("MOD_NORMAL_MANA_REG")
-					+ value * statModContext("ADD_MANA_MOD_INT") * statModContext("MOD_MANA") * statModContext("ADD_MANA_REG_MOD_MANA") -- Replenishment
-				infoTable[StatLogic.Stats.ManaRegenNotCasting] = infoTable[StatLogic.Stats.ManaRegenNotCasting] + effect
-			end
+			local genericManaRegen = value * statModContext("ADD_GENERIC_MANA_REGEN_MOD_INT")
+			-- TODO: Options key using wrong dest stat
+			self:ProcessStat(StatLogic.Stats.GenericManaRegen, genericManaRegen, infoTable, link, color, statModContext, false, db.profile.showManaRegenFromInt)
+
+			local normalManaRegen = value * statModContext("ADD_NORMAL_MANA_REGEN_MOD_INT")
+			-- TODO: Options key using wrong dest stat
+			self:ProcessStat(StatLogic.Stats.NormalManaRegen, normalManaRegen, infoTable, link, color, statModContext, false, db.profile.showManaRegenFromInt)
 
 			local rangedAttackPower = value * statModContext("ADD_RANGED_AP_MOD_INT")
 			self:ProcessStat(StatLogic.Stats.RangedAttackPower, rangedAttackPower, infoTable, link, color, statModContext, false, db.profile.showRAPFromInt)
@@ -2572,14 +2579,10 @@ do
 			if isBaseStat and mod ~= 1 and db.profile.showModifiedSpirit then
 				infoTable["Decimal"] = value
 			end
-			if db.profile.showMP5FromSpi then
-				local effect = value * statModContext("ADD_NORMAL_MANA_REG_MOD_SPI") * statModContext("MOD_NORMAL_MANA_REG") * math.min(statModContext("ADD_MANA_REG_MOD_NORMAL_MANA_REG"), 1)
-				infoTable[StatLogic.Stats.ManaRegen] = infoTable[StatLogic.Stats.ManaRegen] + effect
-			end
-			if db.profile.showMP5NCFromSpi then
-				local effect = value * statModContext("ADD_NORMAL_MANA_REG_MOD_SPI") * statModContext("MOD_NORMAL_MANA_REG")
-				infoTable[StatLogic.Stats.ManaRegenNotCasting] = infoTable[StatLogic.Stats.ManaRegenNotCasting] + effect
-			end
+
+			local normalManaRegen = value * statModContext("ADD_NORMAL_MANA_REGEN_MOD_SPI")
+			-- TODO: Options key using wrong dest stat
+			self:ProcessStat(StatLogic.Stats.NormalManaRegen, normalManaRegen, infoTable, link, color, statModContext, false, db.profile.showManaRegenFromSpi)
 
 			local healthRegenOutOfCombat = value * statModContext("ADD_NORMAL_HEALTH_REG_MOD_SPI")
 			self:ProcessStat(StatLogic.Stats.HealthRegenOutOfCombat, healthRegenOutOfCombat, infoTable, link, color, statModContext, false, db.profile.showHP5NCFromSpi)
@@ -2641,6 +2644,49 @@ do
 			local healingPower = value * statModContext("ADD_HEALING_MOD_MANA")
 			-- TODO: Options key using wrong source stat
 			self:ProcessStat(StatLogic.Stats.HealingPower, healingPower, infoTable, link, color, statModContext, false, db.profile.showHealingFromInt)
+
+			local genericManaRegen = value * statModContext("ADD_GENERIC_MANA_REGEN_MOD_MANA")
+			-- TODO: Options key using wrong dest AND source stats
+			self:ProcessStat(StatLogic.Stats.GenericManaRegen, genericManaRegen, infoTable, link, color, statModContext, false, db.profile.showManaRegenFromInt)
+		elseif stat == StatLogic.Stats.NormalManaRegen then
+			local mod = statModContext("MOD_NORMAL_MANA_REGEN")
+			value = value * mod
+
+			local manaRegen = value * math.min(statModContext("ADD_MANA_REGEN_MOD_NORMAL_MANA_REGEN"), 1)
+			-- TODO: Options key using wrong source stat
+			self:ProcessStat(StatLogic.Stats.ManaRegen, manaRegen, infoTable, link, color, statModContext, false, show and db.profile.showManaRegenFromManaRegen)
+
+			local manaRegenNotCasting = value * statModContext("ADD_MANA_REGEN_NOT_CASTING_MOD_NORMAL_MANA_REGEN")
+			-- TODO: Options key using wrong source stat
+			self:ProcessStat(StatLogic.Stats.ManaRegenNotCasting, manaRegenNotCasting, infoTable, link, color, statModContext, false, show and db.profile.showManaRegenNotCastingFromManaRegen)
+
+			local manaRegenOutOfCombat = value * statModContext("ADD_MANA_REGEN_OUT_OF_COMBAT_MOD_NORMAL_MANA_REGEN")
+			-- TODO: Options key using wrong source stat
+			self:ProcessStat(StatLogic.Stats.ManaRegenOutOfCombat, manaRegenOutOfCombat, infoTable, link, color, statModContext, false, show and db.profile.showManaRegenOutOfCombatFromManaRegen)
+		elseif stat == StatLogic.Stats.GenericManaRegen then
+			local manaRegen = value * statModContext("ADD_MANA_REGEN_MOD_GENERIC_MANA_REGEN")
+			-- TODO: Options key using wrong source stat
+			self:ProcessStat(StatLogic.Stats.ManaRegen, manaRegen, infoTable, link, color, statModContext, false, show and db.profile.showManaRegenFromManaRegen)
+
+			local manaRegenNotCasting = value * statModContext("ADD_MANA_REGEN_NOT_CASTING_MOD_GENERIC_MANA_REGEN")
+			-- TODO: Options key using wrong source stat
+			self:ProcessStat(StatLogic.Stats.ManaRegenNotCasting, manaRegenNotCasting, infoTable, link, color, statModContext, false, show and db.profile.showManaRegenNotCastingFromManaRegen)
+
+			local manaRegenOutOfCombat = value * statModContext("ADD_MANA_REGEN_OUT_OF_COMBAT_MOD_GENERIC_MANA_REGEN")
+			-- TODO: Options key using wrong source stat
+			self:ProcessStat(StatLogic.Stats.ManaRegenOutOfCombat, manaRegenOutOfCombat, infoTable, link, color, statModContext, false, show and db.profile.showManaRegenOutOfCombatFromManaRegen)
+		elseif stat == StatLogic.Stats.ManaRegen then
+			if show then
+				infoTable[stat] = infoTable[stat] + value
+			end
+		elseif stat == StatLogic.Stats.ManaRegenNotCasting then
+			if show then
+				infoTable[stat] = infoTable[stat] + value
+			end
+		elseif stat == StatLogic.Stats.ManaRegenOutOfCombat then
+			if show then
+				infoTable[stat] = infoTable[stat] + value
+			end
 		elseif stat == StatLogic.Stats.SpellCrit then
 			if show then
 				infoTable[stat] = infoTable[stat] + value
@@ -3072,30 +3118,47 @@ local summaryCalcData = {
 				+ summaryFunc[StatLogic.Stats.Health](sum, statModContext) * statModContext("ADD_NORMAL_HEALTH_REG_MOD_HEALTH") * statModContext("MOD_NORMAL_HEALTH_REG")
 		end,
 	},
-	-- Mana Regen - MANA_REG, SPI, INT
 	{
-		option = "sumMP5",
-		stat = StatLogic.Stats.ManaRegen,
+		option = "sumGenericManaRegen",
+		stat = StatLogic.Stats.GenericManaRegen,
 		func = function(sum, statModContext)
-			return sum[StatLogic.Stats.ManaRegen]
-				+ sum[StatLogic.Stats.Intellect] * statModContext("ADD_MANA_REG_MOD_INT")
-				+ math.min(statModContext("ADD_MANA_REG_MOD_NORMAL_MANA_REG"), 1) * statModContext("MOD_NORMAL_MANA_REG") * (
-					sum[StatLogic.Stats.Intellect] * statModContext("ADD_NORMAL_MANA_REG_MOD_INT")
-					+ sum[StatLogic.Stats.Spirit] * statModContext("ADD_NORMAL_MANA_REG_MOD_SPI")
-				) + summaryFunc[StatLogic.Stats.Mana](sum, statModContext) * statModContext("ADD_MANA_REG_MOD_MANA")
+			return sum[StatLogic.Stats.GenericManaRegen]
+				+ sum[StatLogic.Stats.Intellect] * statModContext("ADD_GENERIC_MANA_REGEN_MOD_INT")
+				+ summaryFunc[StatLogic.Stats.Mana](sum, statModContext) * statModContext("ADD_GENERIC_MANA_REGEN_MOD_MANA")
 		end,
 	},
-	-- Mana Regen while Not casting - MANA_REG, SPI, INT
 	{
-		option = "sumMP5NC",
+		option = "sumNormalManaRegen",
+		stat = StatLogic.Stats.NormalManaRegen,
+		func = function(sum, statModContext)
+			return statModContext("MOD_NORMAL_MANA_REGEN") * (
+				sum[StatLogic.Stats.Intellect] * statModContext("ADD_NORMAL_MANA_REGEN_MOD_INT")
+				+ sum[StatLogic.Stats.Spirit] * statModContext("ADD_NORMAL_MANA_REGEN_MOD_SPI")
+			)
+		end,
+	},
+	{
+		option = "sumManaRegen",
+		stat = StatLogic.Stats.ManaRegen,
+		func = function(sum, statModContext)
+			return summaryFunc[StatLogic.Stats.GenericManaRegen](sum, statModContext) * statModContext("ADD_MANA_REGEN_MOD_GENERIC_MANA_REGEN")
+				+ summaryFunc[StatLogic.Stats.NormalManaRegen](sum, statModContext) * math.min(statModContext("ADD_MANA_REGEN_MOD_NORMAL_MANA_REGEN"), 1)
+		end,
+	},
+	{
+		option = "sumManaRegenNotCasting",
 		stat = StatLogic.Stats.ManaRegenNotCasting,
 		func = function(sum, statModContext)
-			return sum[StatLogic.Stats.ManaRegen]
-				+ sum[StatLogic.Stats.Intellect] * statModContext("ADD_MANA_REG_MOD_INT")
-				+ statModContext("MOD_NORMAL_MANA_REG") * (
-					sum[StatLogic.Stats.Intellect] * statModContext("ADD_NORMAL_MANA_REG_MOD_INT")
-					+ sum[StatLogic.Stats.Spirit] * statModContext("ADD_NORMAL_MANA_REG_MOD_SPI")
-				) + summaryFunc[StatLogic.Stats.Mana](sum, statModContext) * statModContext("ADD_MANA_REG_MOD_MANA")
+			return summaryFunc[StatLogic.Stats.GenericManaRegen](sum, statModContext) * statModContext("ADD_MANA_REGEN_NOT_CASTING_MOD_GENERIC_MANA_REGEN")
+				+ summaryFunc[StatLogic.Stats.NormalManaRegen](sum, statModContext) * statModContext("ADD_MANA_REGEN_NOT_CASTING_MOD_NORMAL_MANA_REGEN")
+		end,
+	},
+	{
+		option = "sumManaRegenOutOfCombat",
+		stat = StatLogic.Stats.ManaRegenOutOfCombat,
+		func = function(sum, statModContext)
+			return summaryFunc[StatLogic.Stats.GenericManaRegen](sum, statModContext) * statModContext("ADD_MANA_REGEN_OUT_OF_COMBAT_MOD_GENERIC_MANA_REGEN")
+				+ summaryFunc[StatLogic.Stats.NormalManaRegen](sum, statModContext) * statModContext("ADD_MANA_REGEN_OUT_OF_COMBAT_MOD_NORMAL_MANA_REGEN")
 		end,
 	},
 	---------------------

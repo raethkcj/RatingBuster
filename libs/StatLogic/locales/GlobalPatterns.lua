@@ -136,12 +136,12 @@ local short = {
 	[ITEM_MOD_HIT_RATING_SHORT] = {StatLogic.Stats.HitRating},
 	[ITEM_MOD_HIT_SPELL_RATING_SHORT] = {StatLogic.Stats.SpellHitRating},
 	[ITEM_MOD_INTELLECT_SHORT] = {StatLogic.Stats.Intellect},
-	[ITEM_MOD_MANA_REGENERATION_SHORT] = {StatLogic.Stats.ManaRegen},
+	[ITEM_MOD_MANA_REGENERATION_SHORT] = {StatLogic.Stats.GenericManaRegen},
 	[ITEM_MOD_MANA_SHORT] = {StatLogic.Stats.Mana},
 	[ITEM_MOD_MASTERY_RATING_SHORT] = {StatLogic.Stats.MasteryRating},
 	[ITEM_MOD_MELEE_ATTACK_POWER_SHORT] = {StatLogic.Stats.AttackPower},
 	[ITEM_MOD_PARRY_RATING_SHORT] = {StatLogic.Stats.ParryRating},
-	[ITEM_MOD_POWER_REGEN0_SHORT] = {StatLogic.Stats.ManaRegen},
+	[ITEM_MOD_POWER_REGEN0_SHORT] = {StatLogic.Stats.GenericManaRegen},
 	[ITEM_MOD_RANGED_ATTACK_POWER_SHORT] = {StatLogic.Stats.RangedAttackPower},
 	[ITEM_MOD_RESILIENCE_RATING_SHORT] = {StatLogic.Stats.ResilienceRating},
 	[RESILIENCE] = {StatLogic.Stats.ResilienceRating},
@@ -213,7 +213,7 @@ end
 local regen = {
 	[ITEM_MOD_HEALTH_REGEN] = {StatLogic.Stats.HealthRegen},
 	[ITEM_MOD_HEALTH_REGENERATION] = {StatLogic.Stats.HealthRegen},
-	[ITEM_MOD_MANA_REGENERATION] = {StatLogic.Stats.ManaRegen},
+	[ITEM_MOD_MANA_REGENERATION] = {StatLogic.Stats.GenericManaRegen},
 }
 
 for pattern, stats in pairs(regen) do

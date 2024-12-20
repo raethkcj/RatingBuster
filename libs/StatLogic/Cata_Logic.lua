@@ -959,12 +959,12 @@ if addon.class == "DRUID" then
 				["value"] = 1,
 			},
 		},
-		["ADD_NORMAL_MANA_REG_MOD_SPI"] = {
+		["ADD_NORMAL_MANA_REGEN_MOD_SPI"] = {
 			{
 				["regen"] = NormalManaRegenPerSpi,
 			},
 		},
-		["ADD_NORMAL_MANA_REG_MOD_INT"] = {
+		["ADD_NORMAL_MANA_REGEN_MOD_INT"] = {
 			{
 				["regen"] = NormalManaRegenPerInt,
 			},
@@ -979,7 +979,7 @@ if addon.class == "DRUID" then
 				},
 			},
 		},
-		["ADD_MANA_REG_MOD_NORMAL_MANA_REG"] = {
+		["ADD_MANA_REGEN_MOD_NORMAL_MANA_REGEN"] = {
 			-- Passive: Meditation
 			{
 				["value"] = 0.50,
@@ -1486,12 +1486,12 @@ elseif addon.class == "MAGE" then
 				["value"] = 3.4575,
 			},
 		},
-		["ADD_NORMAL_MANA_REG_MOD_SPI"] = {
+		["ADD_NORMAL_MANA_REGEN_MOD_SPI"] = {
 			{
 				["regen"] = NormalManaRegenPerSpi,
 			},
 		},
-		["ADD_NORMAL_MANA_REG_MOD_INT"] = {
+		["ADD_NORMAL_MANA_REGEN_MOD_INT"] = {
 			{
 				["regen"] = NormalManaRegenPerInt,
 			},
@@ -1527,7 +1527,7 @@ elseif addon.class == "MAGE" then
 				["aura"] = 83098,        -- ["Improved Mana Gem"],
 			},
 		},
-		["ADD_MANA_REG_MOD_MANA"] = {
+		["ADD_GENERIC_MANA_REGEN_MOD_MANA"] = {
 			-- Buff: Mage Armor
 			{
 				["value"] = 0.03,
@@ -1605,17 +1605,17 @@ elseif addon.class == "PALADIN" then
 				["value"] = 5.0000,
 			},
 		},
-		["ADD_NORMAL_MANA_REG_MOD_SPI"] = {
+		["ADD_NORMAL_MANA_REGEN_MOD_SPI"] = {
 			{
 				["regen"] = NormalManaRegenPerSpi,
 			},
 		},
-		["ADD_NORMAL_MANA_REG_MOD_INT"] = {
+		["ADD_NORMAL_MANA_REGEN_MOD_INT"] = {
 			{
 				["regen"] = NormalManaRegenPerInt,
 			},
 		},
-		["ADD_MANA_REG_MOD_NORMAL_MANA_REG"] = {
+		["ADD_MANA_REGEN_MOD_NORMAL_MANA_REGEN"] = {
 			-- Passive: Meditation
 			{
 				["value"] = 0.50,
@@ -1776,17 +1776,17 @@ elseif addon.class == "PRIEST" then
 				["value"] = 3.1830,
 			},
 		},
-		["ADD_NORMAL_MANA_REG_MOD_SPI"] = {
+		["ADD_NORMAL_MANA_REGEN_MOD_SPI"] = {
 			{
 				["regen"] = NormalManaRegenPerSpi,
 			},
 		},
-		["ADD_NORMAL_MANA_REG_MOD_INT"] = {
+		["ADD_NORMAL_MANA_REGEN_MOD_INT"] = {
 			{
 				["regen"] = NormalManaRegenPerInt,
 			},
 		},
-		["ADD_MANA_REG_MOD_NORMAL_MANA_REG"] = {
+		["ADD_MANA_REGEN_MOD_NORMAL_MANA_REGEN"] = {
 			-- Passive: Meditation (Discipline)
 			{
 				["value"] = 0.5,
@@ -1808,7 +1808,7 @@ elseif addon.class == "PRIEST" then
 				},
 			},
 		},
-		["ADD_MANA_REG_MOD_MANA"] = {
+		["ADD_GENERIC_MANA_REGEN_MOD_MANA"] = {
 			-- Talent: Dispersion
 			{
 				["tab"] = 3,
@@ -2030,12 +2030,12 @@ elseif addon.class == "SHAMAN" then
 				["value"] = 1.6750,
 			},
 		},
-		["ADD_NORMAL_MANA_REG_MOD_SPI"] = {
+		["ADD_NORMAL_MANA_REGEN_MOD_SPI"] = {
 			{
 				["regen"] = NormalManaRegenPerSpi,
 			},
 		},
-		["ADD_NORMAL_MANA_REG_MOD_INT"] = {
+		["ADD_NORMAL_MANA_REGEN_MOD_INT"] = {
 			{
 				["regen"] = NormalManaRegenPerInt,
 			},
@@ -2050,7 +2050,7 @@ elseif addon.class == "SHAMAN" then
 				},
 			},
 		},
-		["ADD_MANA_REG_MOD_NORMAL_MANA_REG"] = {
+		["ADD_MANA_REGEN_MOD_NORMAL_MANA_REGEN"] = {
 			-- Passive: Meditation
 			{
 				["value"] = 0.50,
@@ -2170,12 +2170,12 @@ elseif addon.class == "WARLOCK" then
 				["value"] = 2.0350,
 			},
 		},
-		["ADD_NORMAL_MANA_REG_MOD_SPI"] = {
+		["ADD_NORMAL_MANA_REGEN_MOD_SPI"] = {
 			{
 				["regen"] = NormalManaRegenPerSpi,
 			},
 		},
-		["ADD_NORMAL_MANA_REG_MOD_INT"] = {
+		["ADD_NORMAL_MANA_REGEN_MOD_INT"] = {
 			{
 				["regen"] = NormalManaRegenPerInt,
 			},
@@ -2475,12 +2475,24 @@ StatLogic.StatModTable["ALL"] = {
 			["value"] = 15,
 		},
 	},
-	["ADD_MANA_REG_MOD_MANA"] = {
+	["ADD_GENERIC_MANA_REGEN_MOD_MANA"] = {
 		-- Replenishment - Buff
 		-- 4.0.1: Replenishes 1% of maximum mana per 10 sec.
 		{
 			["value"] = 0.005,
 			["aura"] = 57669,
+		},
+	},
+	["ADD_MANA_REGEN_OUT_OF_COMBAT_MOD_NORMAL_MANA_REGEN"] = {
+		-- Base
+		{
+			["value"] = 1.0,
+		},
+	},
+	["ADD_MANA_REGEN_OUT_OF_COMBAT_MOD_GENERIC_MANA_REGEN"] = {
+		-- Base
+		{
+			["value"] = 1.0,
 		},
 	},
 	["MOD_SPELL_DMG"] = {

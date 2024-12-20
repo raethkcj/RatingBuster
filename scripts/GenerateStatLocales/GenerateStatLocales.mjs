@@ -26,7 +26,7 @@ import { finished } from 'node:stream/promises'
 }
 
 function isManaRegen(stat) {
-	return stat === "ManaRegen" || stat && stat.includes && stat.includes("ManaRegen")
+	return stat === "GenericManaRegen" || stat && stat.includes && stat.includes("GenericManaRegen")
 }
 
 const scanners = {
@@ -47,7 +47,7 @@ const scanners = {
 				case "s":
 					// In theory, $s2 could come before $s1. However, this is not
 					// the case in any strings we use in any locale (for now :)).
-					// TODO: Hande ManaRegen fives
+					// TODO: Hande GenericManaRegen fives
 					stat = stats[matchedStatCount]
 					if (isManaRegen(stat)) {
 						checkForManaRegen = true
@@ -140,7 +140,7 @@ const itemStatType = {
     40: 'Versatility',
     41: 'HealingPower',
     42: 'SpellDamage',
-    43: 'ManaRegen',
+    43: 'GenericManaRegen',
     44: 'ArmorPenetrationRating',
     45: ['SpellDamage', 'HealingPower'], // SpellPower
     47: 'SpellPenetration',
@@ -157,7 +157,7 @@ function getGemStats(row) {
 			const effectStat = row[`EffectArg_${i}`]
 			const effectValue = row[`EffectPointsMin_${i}`]
 			const stat = itemStatType[effectStat]
-			if (stat === "ManaRegen" && effectValue === 5) {
+			if (stat === "GenericManaRegen" && effectValue === 5) {
 				// Impossible to distinguish stat vs interval in a string like "5 mana per 5"
 				return false
 			} else {
