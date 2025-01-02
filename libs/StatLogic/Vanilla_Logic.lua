@@ -235,7 +235,6 @@ if addon.class == "DRUID" then
 			},
 			-- Rune: Dreamstate
 			{
-				["known"] = 408258,
 				["rune"] = true,
 				["value"] = 0.5,
 				["aura"] = 408261,
