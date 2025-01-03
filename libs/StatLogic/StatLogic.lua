@@ -1296,6 +1296,7 @@ do
 		PredatoryStrikes = 7,
 		Zandalar = 8,
 		Moxie = 9,
+		SoulEngraving = 10,
 	}
 	local ExclusiveGroupCache = {}
 
