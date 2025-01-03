@@ -1653,8 +1653,10 @@ do
 							local sourceSpell = case.aura or case.glyph or case.known or case.spellid
 							if sourceSpell then
 								local sourceSpellInfo = C_Spell.GetSpellInfo(sourceSpell)
-								name = sourceSpellInfo.name
-								icon = sourceSpellInfo.iconID
+								if sourceSpellInfo then
+									name = sourceSpellInfo.name
+									icon = sourceSpellInfo.iconID
+								end
 							elseif case.tab then
 								name, icon = StatLogic:GetOrderedTalentInfo(case.tab, case.num)
 							elseif case.set then
@@ -1733,9 +1735,11 @@ do
 									spellId = C_Spell.GetSpellIDForSpellIdentifier(name) or spellId
 								end
 								local spell = Spell:CreateFromSpellID(spellId)
-								spell:ContinueOnSpellLoad(function()
-									option.desc = spell:GetSpellDescription()
-								end)
+								if not spell:IsSpellEmpty() then
+									spell:ContinueOnSpellLoad(function()
+										option.desc = spell:GetSpellDescription()
+									end)
+								end
 							end
 						end
 					end
