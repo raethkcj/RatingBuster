@@ -9,9 +9,12 @@
   "author": "",
   "license": "GPL-2.0",
   "engines": {
-	"node": "20.11.1"
+    "node": "20.11.1"
   },
   "dependencies": {
     "csv-parse": "^5.5.2"
+  },
+  "devDependencies": {
+    "@types/node": "^22.10.5"
   }
 }

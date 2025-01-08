@@ -31,7 +31,7 @@ function isManaRegen(stat) {
 
 const scanners = {
 	"StatIDLookup": function(text, stats) {
-		const newStats = []
+		const newStats: Array<string|false> = []
 		let matchedStatCount = 0
 		let checkForManaRegen = false
 		// Matches an optional leading + or -, plus one of:
@@ -83,7 +83,7 @@ const scanners = {
 }
 
 const base = import.meta.url
-const statLocaleData = JSON.parse(readFileSync(new URL("StatLocaleData.json", base), "utf-8"))
+import statLocaleData from './StatLocaleData.json'
 const databaseDirName = "DB2"
 
 async function fetchDatabase(db) {
@@ -148,7 +148,7 @@ const itemStatType = {
 }
 
 function getGemStats(row) {
-	const stats = []
+	const stats: Array<string|false> = []
 	let foundStat = false
 	for (let i = 0; i < 3; i++) {
 		const effectType = row[`Effect_${i}`]
@@ -238,7 +238,7 @@ async function combineResults(results) {
 function generateLua(text, key, value, first) {
 	if (first) {
 		for(const [k, v] of Object.entries(value)) {
-			text = generateLua(text, `${key}["${k}"]`, v)
+			text = generateLua(text, `${key}["${k}"]`, v, false)
 			text += "\n"
 		}
 		return text
@@ -252,7 +252,7 @@ function generateLua(text, key, value, first) {
 		text += "{"
 		for(const [k, v] of Object.entries(value)) {
 			const newKey = Array.isArray(value) ? false : `[StatLogic.Stats.${k}]`
-			text = generateLua(text, newKey, v)
+			text = generateLua(text, newKey, v, false)
 			text += ", "
 		}
 		text += "}"
@@ -298,7 +298,7 @@ const locales = [
 mkdirSync(new URL(databaseDirName, base), { recursive: true })
 mkdirSync(new URL(localeDirName, base), { recursive: true })
 for (const locale of locales) {
-	const localeResults = []
+	const localeResults: Promise<any>[] = []
 	for (const [name, versions] of Object.entries(statLocaleData)) {
 		for (const [version, indices] of Object.entries(versions)) {
 			localeResults.push(processDatabase({
