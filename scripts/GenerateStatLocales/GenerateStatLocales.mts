@@ -5,6 +5,8 @@ import { createReadStream, existsSync, mkdirSync, readFileSync, writeFileSync } 
 import path from 'node:path'
 import { finished } from 'node:stream/promises'
 
+import { DuckDBInstance } from '@duckdb/node-api'
+
 {
 	let versions
 	async function fetchBuilds() {
@@ -405,6 +407,9 @@ const locales = [
 	"ptBR",
 	"itIT",
 ]
+
+const instance = await DuckDBInstance.create()
+const connection = await instance.connect()
 
 mkdirSync(new URL(databaseDirName, base), { recursive: true })
 mkdirSync(new URL(localeDirName, base), { recursive: true })
