@@ -1,4 +1,4 @@
-#!/usr/bin/env node
+#!/usr/bin/env -S node --import=tsx
 
 import { parse } from 'csv-parse'
 import { createReadStream, existsSync, mkdirSync, readFileSync, writeFileSync } from 'node:fs'
