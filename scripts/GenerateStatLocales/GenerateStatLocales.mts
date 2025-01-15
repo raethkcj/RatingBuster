@@ -172,7 +172,6 @@ enum EffectAura {
 	MOD_RESISTANCE = 22, // School
 	MOD_STAT = 29, // PrimaryStats
 	MOD_SKILL = 30, // SkillLine
-	PROC_TRIGGER_SPELL = 42, // Self Join?
 	MOD_PARRY_PERCENT = 47,
 	MOD_DODGE_PERCENT = 49,
 	MOD_BLOCK_PERCENT = 51,
@@ -193,6 +192,10 @@ enum EffectAura {
 	MOD_SHIELD_BLOCKVALUE = 564,
 	MOD_COMBAT_RESULT_CHANCE = 593,
 }
+const effectAuraValues = Object.values(EffectAura).slice(Object.values(EffectAura).length / 2)
+
+// EffectAura.PROC_TRIGGER_SPELL
+const procTriggerSpell = 42
 
 enum School {
 	Physical = 0x01,
@@ -411,19 +414,58 @@ const locales = [
 const instance = await DuckDBInstance.create()
 const connection = await instance.connect()
 
+// For spells with EffectAura+MiscValue0 combos that map to stats, fetch:
+//   a) Spell description for that spell
+//   b) Spell descriptions for any proc trigger auras that proc that spell
+//   c) Enchant names for enchants with that spell as an aura
+//   d) Enchant names for enchants with any of the proc trigger auras as an aura
+async function fetchPassiveStatSpellDescriptions() {
+	const spellEffect = "DB2/SpellEffect_1_enUS.csv"
+	const spell = "DB2/Spell_1_enUS.csv"
+	const spellItemEnchantment = "DB2/SpellItemEnchantment_1_enUS.csv"
+
+	const query = `
+		WITH StatSpell AS (
+			SELECT EffectAura, EffectMiscValue_0, SpellID
+			FROM '${spellEffect}'
+			WHERE EffectAura in (${effectAuraValues})
+		)
+		SELECT StatSpell.SpellID, ProcSpell.SpellID, Enchant.ID, Spell.Description_lang, Enchant.Name_lang, StatSpell.EffectAura, StatSpell.EffectMiscValue_0
+		FROM StatSpell
+		LEFT JOIN '${spellEffect}' ProcSpell ON (StatSpell.SpellID = ProcSpell.EffectTriggerSpell)
+		LEFT JOIN '${spell}' Spell ON (Spell.ID IN (StatSpell.SpellID, ProcSpell.SpellID))
+		LEFT JOIN '${spellItemEnchantment}' Enchant ON (
+			Enchant.EffectArg_0 IN (StatSpell.SpellID, ProcSpell.SpellID)
+			OR Enchant.EffectArg_1 IN (StatSpell.SpellID, ProcSpell.SpellID)
+			OR Enchant.EffectArg_2 IN (StatSpell.SpellID, ProcSpell.SpellID)
+		)
+		WHERE NOT Spell.Description_lang = '' OR NOT Enchant.Name_lang = ''
+		ORDER BY StatSpell.SpellID, ProcSpell.SpellID, Enchant.ID
+	`
+
+	const reader = await connection.runAndReadAll(query)
+	console.log(`Rows: ${reader.getRows().length}`)
+}
+
+function processStaticLocaleData() {
+	for (const locale of locales) {
+		const localeResults: Promise<any>[] = []
+		for (const [name, versions] of Object.entries(statLocaleData)) {
+			for (const [version, indices] of Object.entries(versions)) {
+				localeResults.push(processDatabase({
+					name: name,
+					version: version,
+					locale: locale,
+					indices: indices
+				}))
+			}
+		}
+		combineResults(localeResults).then(results => writeLocale(locale, results))
+	}
+}
+
 mkdirSync(new URL(databaseDirName, base), { recursive: true })
 mkdirSync(new URL(localeDirName, base), { recursive: true })
-for (const locale of locales) {
-	const localeResults: Promise<any>[] = []
-	for (const [name, versions] of Object.entries(statLocaleData)) {
-		for (const [version, indices] of Object.entries(versions)) {
-			localeResults.push(processDatabase({
-				name: name,
-				version: version,
-				locale: locale,
-				indices: indices
-			}))
-		}
-	}
-	combineResults(localeResults).then(results => writeLocale(locale, results))
-}
+// processStaticLocaleData()
+
+await fetchPassiveStatSpellDescriptions()
