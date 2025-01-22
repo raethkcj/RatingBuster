@@ -188,61 +188,6 @@ const effectAuraValues = Object.values(EffectAura).slice(Object.values(EffectAur
 // EffectAura.PROC_TRIGGER_SPELL
 const procTriggerSpell = 42
 
-enum CombatRating {
-	CR_AMPLIFY = 0x00000001,
-	CR_DEFENSE_SKILL = 0x00000002,
-	CR_DODGE = 0x00000004,
-	CR_PARRY = 0x00000008,
-	CR_BLOCK = 0x00000010,
-	CR_HIT_MELEE = 0x00000020,
-	CR_HIT_RANGED = 0x00000040,
-	CR_HIT_SPELL = 0x00000080,
-	CR_CRIT_MELEE = 0x00000100,
-	CR_CRIT_RANGED = 0x00000200,
-	CR_CRIT_SPELL = 0x00000400,
-	CR_CORRUPTION = 0x00000800,
-	CR_CORRUPTION_RESISTANCE = 0x00001000,
-	CR_SPEED = 0x00002000,
-	CR_RESILIENCE_CRIT_TAKEN = 0x00004000,
-	CR_RESILIENCE_PLAYER_DAMAGE = 0x00008000,
-	CR_LIFESTEAL = 0x00010000,
-	CR_HASTE_MELEE = 0x00020000,
-	CR_HASTE_RANGED = 0x00040000,
-	CR_HASTE_SPELL = 0x00080000,
-	CR_AVOIDANCE = 0x00100000,
-	CR_STURDINESS = 0x00200000,
-	CR_UNUSED_7 = 0x00400000,
-	CR_EXPERTISE = 0x00800000,
-	CR_ARMOR_PENETRATION = 0x01000000,
-	CR_MASTERY = 0x02000000,
-	CR_PVP_POWER = 0x04000000,
-	CR_CLEAVE = 0x08000000,
-	CR_VERSATILITY_DAMAGE_DONE = 0x10000000,
-	CR_VERSATILITY_HEALING_DONE = 0x20000000,
-	CR_VERSATILITY_DAMAGE_TAKEN = 0x40000000,
-	CR_UNUSED_12 = 0x80000000,
-}
-
-// We map all of Sword, Mace, etc. to generic WeaponSkill
-const SkillLine = {
-	95: 'Defense',
-	43: 'WeaponSkill',
-	44: 'WeaponSkill',
-	45: 'WeaponSkill',
-	46: 'WeaponSkill',
-	54: 'WeaponSkill',
-	55: 'WeaponSkill',
-	136: 'WeaponSkill',
-	160: 'WeaponSkill',
-	172: 'WeaponSkill',
-	173: 'WeaponSkill',
-	176: 'WeaponSkill',
-	226: 'WeaponSkill',
-	228: 'WeaponSkill',
-	229: 'WeaponSkill',
-	473: 'WeaponSkill',
-}
-
 function getGemStats(row) {
 	const stats: Array<string|false> = []
 	let foundStat = false
@@ -282,7 +227,7 @@ enum School {
 	All = 0x7E,
 }
 
-function GetSchoolStat(stat: string, physicalOverride: string, allSchoolsOverride?: string) {
+function GetSchoolStat(statSuffix: string, physicalOverride: string, allSchoolsOverride?: string) {
 	return (schools: number): string[] => {
 		if (allSchoolsOverride && schools >= School.All) {
 			return [allSchoolsOverride]
@@ -294,7 +239,7 @@ function GetSchoolStat(stat: string, physicalOverride: string, allSchoolsOverrid
 					if (school === School.Physical) {
 						stats.push(physicalOverride)
 					} else {
-						stats.push(key + stat)
+						stats.push(key + statSuffix)
 					}
 				}
 			}
@@ -318,20 +263,115 @@ function GetPrimaryStat() {
 	}
 }
 
+enum CombatRating {
+	// CR_AMPLIFY = 0x00000001,
+	DefenseRating = 0x00000002,
+	DodgeRating = 0x00000004,
+	ParryRating = 0x00000008,
+	BlockRating = 0x00000010,
+	MeleeHitRating = 0x00000020,
+	RangedHitRating = 0x00000040,
+	SpellHitRating = 0x00000080,
+	MeleeCritRating = 0x00000100,
+	RangedCritRating = 0x00000200,
+	SpellCritRating = 0x00000400,
+	// CR_CORRUPTION = 0x00000800,
+	// CR_CORRUPTION_RESISTANCE = 0x00001000,
+	// CR_SPEED = 0x00002000,
+	ResilienceRating = 0x00004000,
+	// CR_RESILIENCE_PLAYER_DAMAGE = 0x00008000,
+	// CR_LIFESTEAL = 0x00010000,
+	MeleeHasteRating = 0x00020000,
+	RangedHasteRating = 0x00040000,
+	SpellHasteRating = 0x00080000,
+	// CR_AVOIDANCE = 0x00100000,
+	// CR_STURDINESS = 0x00200000,
+	// CR_UNUSED_7 = 0x00400000,
+	ExpertiseRating = 0x00800000,
+	ArmorPenetrationRating = 0x01000000,
+	MasteryRating = 0x02000000,
+	// CR_PVP_POWER = 0x04000000,
+	// CR_CLEAVE = 0x08000000,
+	// CR_VERSATILITY_DAMAGE_DONE = 0x10000000,
+	// CR_VERSATILITY_HEALING_DONE = 0x20000000,
+	// CR_VERSATILITY_DAMAGE_TAKEN = 0x40000000,
+	// CR_UNUSED_12 = 0x80000000,
+}
+
+function GetCombatRatingStat() {
+	return (ratings: number): string[] => {
+		const stats: string[] = []
+		for (const [key, value] of Object.entries(CombatRating)) {
+			const rating = Number(value)
+			if ((ratings & rating) > 0) {
+				stats.push(key)
+			}
+		}
+		return stats
+	}
+}
+
+// We map all of Sword, Mace, etc. to generic WeaponSkill
+const SkillLine = {
+	95: 'Defense',
+	43: 'WeaponSkill',
+	44: 'WeaponSkill',
+	45: 'WeaponSkill',
+	46: 'WeaponSkill',
+	54: 'WeaponSkill',
+	55: 'WeaponSkill',
+	136: 'WeaponSkill',
+	160: 'WeaponSkill',
+	172: 'WeaponSkill',
+	173: 'WeaponSkill',
+	176: 'WeaponSkill',
+	226: 'WeaponSkill',
+	228: 'WeaponSkill',
+	229: 'WeaponSkill',
+	473: 'WeaponSkill',
+}
+
+function GetSkillLineStat() {
+	return (skillLineID: number): string[] => {
+		return [SkillLine[skillLineID]]
+	}
+}
+
+enum PowerType {
+	Mana = 0,
+}
+
+function GetPowerTypeStat(statSuffix: string) {
+	return (powerType: number): string[] => {
+		return [PowerType[powerType] + statSuffix]
+	}
+}
+
+enum CombatResultType {
+	Dodge = 2,
+	Parry = 4,
+}
+
+function GetCombatResultStat(statSuffix: string) {
+	return (combatResultType: number): string[] => {
+		return [CombatResultType[combatResultType] + statSuffix]
+	}
+}
+
 const effectAuraStats: Record<EffectAura, (miscValue: number) => string[]> = {
 	[EffectAura.PERIODIC_HEAL]: PlainStat("HealthRegen"),
 	[EffectAura.MOD_DAMAGE_DONE]: GetSchoolStat("Damage", "WeaponDamage", "SpellDamage"),
 	[EffectAura.MOD_RESISTANCE]: GetSchoolStat("Resistance", "Armor"),
 	[EffectAura.MOD_STAT]: GetPrimaryStat(),
-	[EffectAura.MOD_SKILL]: PlainStat("TODO"), // SkillLine
+	[EffectAura.MOD_SKILL]: GetSkillLineStat(),
 	[EffectAura.MOD_PARRY_PERCENT]: PlainStat("Parry"),
 	[EffectAura.MOD_DODGE_PERCENT]: PlainStat("Dodge"),
 	[EffectAura.MOD_BLOCK_PERCENT]: PlainStat("BlockChance"),
 	[EffectAura.MOD_WEAPON_CRIT_PERCENT]: PlainStat("MeleeCrit"), // Also needs RangedCrit
-	[EffectAura.MOD_HIT_CHANCE]: PlainStat("MeleeHit"),
+	[EffectAura.MOD_HIT_CHANCE]: PlainStat("MeleeHit"), // Also needs RangedHit
 	[EffectAura.MOD_SPELL_HIT_CHANCE]: PlainStat("SpellHit"),
 	[EffectAura.MOD_SPELL_CRIT_CHANCE]: PlainStat("SpellCrit"),
-	[EffectAura.MOD_POWER_REGEN]: PlainStat("TODO"), // MP5 when MiscValue0 = 0
+	[EffectAura.MOD_POWER_REGEN]: GetPowerTypeStat("Regen"),
 	[EffectAura.MOD_ATTACK_POWER]: PlainStat("AttackPower"),
 	[EffectAura.MOD_TARGET_RESISTANCE]: GetSchoolStat("Resistance", "Armor"),
 	[EffectAura.MOD_RANGED_ATTACK_POWER]: PlainStat("RangedAttackPower"),
@@ -339,10 +379,10 @@ const effectAuraStats: Record<EffectAura, (miscValue: number) => string[]> = {
 	[EffectAura.MOD_MELEE_HASTE]: PlainStat("MeleeHaste"),
 	[EffectAura.MOD_RANGED_HASTE]: PlainStat("RangedHaste"),
 	[EffectAura.MOD_HEALTH_REGEN_IN_COMBAT]: PlainStat("HealthRegen"),
-	[EffectAura.MOD_RATING]: PlainStat("Foo"), // CombatRating
+	[EffectAura.MOD_RATING]: GetCombatRatingStat(),
 	[EffectAura.MOD_SPELL_CRIT_CHANCE_SCHOOL]: PlainStat("SpellCrit"), // Technically school-specific, but very rare/impossible on items
 	[EffectAura.MOD_SHIELD_BLOCKVALUE]: PlainStat("BlockValue"),
-	[EffectAura.MOD_COMBAT_RESULT_CHANCE]: PlainStat("TODO"), // Need an avoidance enum
+	[EffectAura.MOD_COMBAT_RESULT_CHANCE]: GetCombatResultStat("Reduction"),
 }
 
 const textColumns = {
