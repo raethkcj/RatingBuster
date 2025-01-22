@@ -5,7 +5,7 @@ import { createReadStream, existsSync, mkdirSync, readFileSync, writeFileSync } 
 import path from 'node:path'
 import { finished } from 'node:stream/promises'
 
-import { DuckDBInstance } from '@duckdb/node-api'
+import { DuckDBInstance, DuckDBValue } from '@duckdb/node-api'
 
 {
 	let versions
@@ -149,15 +149,6 @@ const itemStatType = {
 	49: 'MasteryRating',
 }
 
-enum PrimaryStat {
-	AllStats = -1,
-	Strength,
-	Agility,
-	Stamina,
-	Intellect,
-	Spirit,
-}
-
 enum EnchantmentEffect {
 	Proc = 1,
 	Damage,
@@ -188,7 +179,7 @@ enum EffectAura {
 	MOD_RANGED_HASTE = 140,
 	MOD_HEALTH_REGEN_IN_COMBAT = 161,
 	MOD_RATING = 189, // CombatRating
-	MOD_SPELL_CRIT_CHANCE_School = 552, // School
+	MOD_SPELL_CRIT_CHANCE_SCHOOL = 552, // School
 	MOD_SHIELD_BLOCKVALUE = 564,
 	MOD_COMBAT_RESULT_CHANCE = 593,
 }
@@ -196,18 +187,6 @@ const effectAuraValues = Object.values(EffectAura).slice(Object.values(EffectAur
 
 // EffectAura.PROC_TRIGGER_SPELL
 const procTriggerSpell = 42
-
-enum School {
-	Physical = 0x01,
-	Holy = 0x02,
-	Fire = 0x04,
-	Nature = 0x08,
-	Frost = 0x10,
-	Shadow = 0x20,
-	Arcane = 0x40,
-
-	All = 0x7E,
-}
 
 enum CombatRating {
 	CR_AMPLIFY = 0x00000001,
@@ -285,6 +264,85 @@ function getGemStats(row) {
 		}
 	}
 	return foundStat ? stats : false
+}
+
+function PlainStat(stat: string): (miscValue: number) => string[] {
+	return () => [stat]
+}
+
+enum School {
+	Physical = 0x01,
+	Holy = 0x02,
+	Fire = 0x04,
+	Nature = 0x08,
+	Frost = 0x10,
+	Shadow = 0x20,
+	Arcane = 0x40,
+
+	All = 0x7E,
+}
+
+function GetSchoolStat(stat: string, physicalOverride: string, allSchoolsOverride?: string) {
+	return (schools: number): string[] => {
+		if (allSchoolsOverride && schools >= School.All) {
+			return [allSchoolsOverride]
+		} else {
+			const stats: string[] = []
+			for (const [key, value] of Object.entries(School)) {
+				const school = Number(value)
+				if ((schools & school) > 0) {
+					if (school === School.Physical) {
+						stats.push(physicalOverride)
+					} else {
+						stats.push(key + stat)
+					}
+				}
+			}
+			return stats
+		}
+	}
+}
+
+enum PrimaryStat {
+	AllStats = -1,
+	Strength,
+	Agility,
+	Stamina,
+	Intellect,
+	Spirit,
+}
+
+function GetPrimaryStat() {
+	return (primaryStat: number): string[] => {
+		return [PrimaryStat[primaryStat]]
+	}
+}
+
+const effectAuraStats: Record<EffectAura, (miscValue: number) => string[]> = {
+	[EffectAura.PERIODIC_HEAL]: PlainStat("HealthRegen"),
+	[EffectAura.MOD_DAMAGE_DONE]: GetSchoolStat("Damage", "WeaponDamage", "SpellDamage"),
+	[EffectAura.MOD_RESISTANCE]: GetSchoolStat("Resistance", "Armor"),
+	[EffectAura.MOD_STAT]: GetPrimaryStat(),
+	[EffectAura.MOD_SKILL]: PlainStat("TODO"), // SkillLine
+	[EffectAura.MOD_PARRY_PERCENT]: PlainStat("Parry"),
+	[EffectAura.MOD_DODGE_PERCENT]: PlainStat("Dodge"),
+	[EffectAura.MOD_BLOCK_PERCENT]: PlainStat("BlockChance"),
+	[EffectAura.MOD_WEAPON_CRIT_PERCENT]: PlainStat("MeleeCrit"), // Also needs RangedCrit
+	[EffectAura.MOD_HIT_CHANCE]: PlainStat("MeleeHit"),
+	[EffectAura.MOD_SPELL_HIT_CHANCE]: PlainStat("SpellHit"),
+	[EffectAura.MOD_SPELL_CRIT_CHANCE]: PlainStat("SpellCrit"),
+	[EffectAura.MOD_POWER_REGEN]: PlainStat("TODO"), // MP5 when MiscValue0 = 0
+	[EffectAura.MOD_ATTACK_POWER]: PlainStat("AttackPower"),
+	[EffectAura.MOD_TARGET_RESISTANCE]: GetSchoolStat("Resistance", "Armor"),
+	[EffectAura.MOD_RANGED_ATTACK_POWER]: PlainStat("RangedAttackPower"),
+	[EffectAura.MOD_HEALING_DONE]: PlainStat("HealingPower"),
+	[EffectAura.MOD_MELEE_HASTE]: PlainStat("MeleeHaste"),
+	[EffectAura.MOD_RANGED_HASTE]: PlainStat("RangedHaste"),
+	[EffectAura.MOD_HEALTH_REGEN_IN_COMBAT]: PlainStat("HealthRegen"),
+	[EffectAura.MOD_RATING]: PlainStat("Foo"), // CombatRating
+	[EffectAura.MOD_SPELL_CRIT_CHANCE_SCHOOL]: PlainStat("SpellCrit"), // Technically school-specific, but very rare/impossible on items
+	[EffectAura.MOD_SHIELD_BLOCKVALUE]: PlainStat("BlockValue"),
+	[EffectAura.MOD_COMBAT_RESULT_CHANCE]: PlainStat("TODO"), // Need an avoidance enum
 }
 
 const textColumns = {
@@ -419,7 +477,7 @@ const connection = await instance.connect()
 //   b) Spell descriptions for any proc trigger auras that proc that spell
 //   c) Enchant names for enchants with that spell as an aura
 //   d) Enchant names for enchants with any of the proc trigger auras as an aura
-async function fetchPassiveStatSpellDescriptions() {
+async function fetchPassiveStatSpellSources(): Promise<DuckDBValue[][]> {
 	const spellEffect = "DB2/SpellEffect_1_enUS.csv"
 	const spell = "DB2/Spell_1_enUS.csv"
 	const spellItemEnchantment = "DB2/SpellItemEnchantment_1_enUS.csv"
@@ -444,7 +502,23 @@ async function fetchPassiveStatSpellDescriptions() {
 	`
 
 	const reader = await connection.runAndReadAll(query)
-	console.log(`Rows: ${reader.getRows().length}`)
+	return reader.getRows()
+}
+
+async function mapStatSpellStringsToStats(rows: DuckDBValue[][]) {
+	let currentStats = {}
+	let lastStatSpellID, lastProcSpellID, lastEnchantID
+	for(const row of rows) {
+		const [statSpellID, procSpellID, enchantID, spellDescription, enchantName, effectAura, effectMiscValue0] = row
+		if (statSpellID === lastStatSpellID && procSpellID === lastProcSpellID && enchantID === lastEnchantID) {
+			// Identify stat(s) and push to currentStats
+			const spellStats = effectAuraStats[effectAura as EffectAura](effectMiscValue0 as number)
+			// const enchantStats = getEnchantStats(effectTypes, effectArgs)
+		} else {
+			// Parse text with stats, clear currentStats
+		}
+	}
+	console.log(`Rows: ${rows.length}`)
 }
 
 function processStaticLocaleData() {
@@ -468,4 +542,5 @@ mkdirSync(new URL(databaseDirName, base), { recursive: true })
 mkdirSync(new URL(localeDirName, base), { recursive: true })
 // processStaticLocaleData()
 
-await fetchPassiveStatSpellDescriptions()
+const sources = await fetchPassiveStatSpellSources()
+await mapStatSpellStringsToStats(sources)
