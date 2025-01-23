@@ -528,7 +528,12 @@ async function fetchPassiveStatSpellSources(): Promise<DuckDBValue[][]> {
 			FROM '${spellEffect}'
 			WHERE EffectAura in (${effectAuraValues})
 		)
-		SELECT StatSpell.SpellID, ProcSpell.SpellID, Enchant.ID, Spell.Description_lang, Enchant.Name_lang, StatSpell.EffectAura, StatSpell.EffectMiscValue_0
+		SELECT (
+			StatSpell.SpellID, StatSpell.EffectAura, StatSpell.EffectMiscValue_0,
+			ProcSpell.SpellID,
+			Spell.Description_lang, Enchant.Name_lang,
+			Enchant.ID, Enchant.Effect_0, Enchant.Effect_1, Enchant.Effect_2, Enchant.EffectArg_0, Enchant.EffectArg_1, Enchant.EffectArg_2
+		)
 		FROM StatSpell
 		LEFT JOIN '${spellEffect}' ProcSpell ON (StatSpell.SpellID = ProcSpell.EffectTriggerSpell)
 		LEFT JOIN '${spell}' Spell ON (Spell.ID IN (StatSpell.SpellID, ProcSpell.SpellID))
