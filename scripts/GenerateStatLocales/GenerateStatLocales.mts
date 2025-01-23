@@ -211,8 +211,8 @@ function getGemStats(row) {
 	return foundStat ? stats : false
 }
 
-function PlainStat(stat: string): (miscValue: number) => string[] {
-	return () => [stat]
+function GetPlainStat(...stat: string[]): () => string[] {
+	return () => stat
 }
 
 enum School {
@@ -359,29 +359,29 @@ function GetCombatResultStat(statSuffix: string) {
 }
 
 const effectAuraStats: Record<EffectAura, (miscValue: number) => string[]> = {
-	[EffectAura.PERIODIC_HEAL]: PlainStat("HealthRegen"),
+	[EffectAura.PERIODIC_HEAL]: GetPlainStat("HealthRegen"),
 	[EffectAura.MOD_DAMAGE_DONE]: GetSchoolStat("Damage", "WeaponDamage", "SpellDamage"),
 	[EffectAura.MOD_RESISTANCE]: GetSchoolStat("Resistance", "Armor"),
 	[EffectAura.MOD_STAT]: GetPrimaryStat(),
 	[EffectAura.MOD_SKILL]: GetSkillLineStat(),
-	[EffectAura.MOD_PARRY_PERCENT]: PlainStat("Parry"),
-	[EffectAura.MOD_DODGE_PERCENT]: PlainStat("Dodge"),
-	[EffectAura.MOD_BLOCK_PERCENT]: PlainStat("BlockChance"),
-	[EffectAura.MOD_WEAPON_CRIT_PERCENT]: PlainStat("MeleeCrit"), // Also needs RangedCrit
-	[EffectAura.MOD_HIT_CHANCE]: PlainStat("MeleeHit"), // Also needs RangedHit
-	[EffectAura.MOD_SPELL_HIT_CHANCE]: PlainStat("SpellHit"),
-	[EffectAura.MOD_SPELL_CRIT_CHANCE]: PlainStat("SpellCrit"),
+	[EffectAura.MOD_PARRY_PERCENT]: GetPlainStat("Parry"),
+	[EffectAura.MOD_DODGE_PERCENT]: GetPlainStat("Dodge"),
+	[EffectAura.MOD_BLOCK_PERCENT]: GetPlainStat("BlockChance"),
+	[EffectAura.MOD_WEAPON_CRIT_PERCENT]: GetPlainStat("MeleeCrit", "RangedCrit"),
+	[EffectAura.MOD_HIT_CHANCE]: GetPlainStat("MeleeHit", "RangedHit"),
+	[EffectAura.MOD_SPELL_HIT_CHANCE]: GetPlainStat("SpellHit"),
+	[EffectAura.MOD_SPELL_CRIT_CHANCE]: GetPlainStat("SpellCrit"),
 	[EffectAura.MOD_POWER_REGEN]: GetPowerTypeStat("Regen"),
-	[EffectAura.MOD_ATTACK_POWER]: PlainStat("AttackPower"),
+	[EffectAura.MOD_ATTACK_POWER]: GetPlainStat("AttackPower"),
 	[EffectAura.MOD_TARGET_RESISTANCE]: GetSchoolStat("Resistance", "Armor"),
-	[EffectAura.MOD_RANGED_ATTACK_POWER]: PlainStat("RangedAttackPower"),
-	[EffectAura.MOD_HEALING_DONE]: PlainStat("HealingPower"),
-	[EffectAura.MOD_MELEE_HASTE]: PlainStat("MeleeHaste"),
-	[EffectAura.MOD_RANGED_HASTE]: PlainStat("RangedHaste"),
-	[EffectAura.MOD_HEALTH_REGEN_IN_COMBAT]: PlainStat("HealthRegen"),
+	[EffectAura.MOD_RANGED_ATTACK_POWER]: GetPlainStat("RangedAttackPower"),
+	[EffectAura.MOD_HEALING_DONE]: GetPlainStat("HealingPower"),
+	[EffectAura.MOD_MELEE_HASTE]: GetPlainStat("MeleeHaste"),
+	[EffectAura.MOD_RANGED_HASTE]: GetPlainStat("RangedHaste"),
+	[EffectAura.MOD_HEALTH_REGEN_IN_COMBAT]: GetPlainStat("HealthRegen"),
 	[EffectAura.MOD_RATING]: GetCombatRatingStat(),
-	[EffectAura.MOD_SPELL_CRIT_CHANCE_SCHOOL]: PlainStat("SpellCrit"), // Technically school-specific, but very rare/impossible on items
-	[EffectAura.MOD_SHIELD_BLOCKVALUE]: PlainStat("BlockValue"),
+	[EffectAura.MOD_SPELL_CRIT_CHANCE_SCHOOL]: GetPlainStat("SpellCrit"), // Technically school-specific, but very rare/impossible on items
+	[EffectAura.MOD_SHIELD_BLOCKVALUE]: GetPlainStat("BlockValue"),
 	[EffectAura.MOD_COMBAT_RESULT_CHANCE]: GetCombatResultStat("Reduction"),
 }
 
