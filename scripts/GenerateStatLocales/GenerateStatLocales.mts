@@ -525,15 +525,14 @@ async function fetchPassiveStatSpellSources(): Promise<DuckDBValue[][]> {
 	const query = `
 		WITH StatSpell AS (
 			SELECT EffectAura, EffectMiscValue_0, SpellID
-			FROM '${spellEffect}'
+			FROM read_csv('${spellEffect}', auto_type_candidates = ['INTEGER', 'DOUBLE', 'VARCHAR'])
 			WHERE EffectAura in (${effectAuraValues})
 		)
-		SELECT (
+		SELECT
 			StatSpell.SpellID, StatSpell.EffectAura, StatSpell.EffectMiscValue_0,
 			ProcSpell.SpellID,
-			Spell.Description_lang, Enchant.Name_lang,
-			Enchant.ID, Enchant.Effect_0, Enchant.Effect_1, Enchant.Effect_2, Enchant.EffectArg_0, Enchant.EffectArg_1, Enchant.EffectArg_2
-		)
+			Spell.Description_lang,
+			Enchant.ID, Enchant.Name_lang, Enchant.Effect_0, Enchant.EffectArg_0, Enchant.Effect_1, Enchant.EffectArg_1, Enchant.Effect_2, Enchant.EffectArg_2
 		FROM StatSpell
 		LEFT JOIN '${spellEffect}' ProcSpell ON (StatSpell.SpellID = ProcSpell.EffectTriggerSpell)
 		LEFT JOIN '${spell}' Spell ON (Spell.ID IN (StatSpell.SpellID, ProcSpell.SpellID))
@@ -551,13 +550,14 @@ async function fetchPassiveStatSpellSources(): Promise<DuckDBValue[][]> {
 }
 
 async function mapStatSpellStringsToStats(rows: DuckDBValue[][]) {
-	let currentStats = {}
+	let currentStats = []
 	let lastStatSpellID, lastProcSpellID, lastEnchantID
 	for(const row of rows) {
-		const [statSpellID, procSpellID, enchantID, spellDescription, enchantName, effectAura, effectMiscValue0] = row
-		if (statSpellID === lastStatSpellID && procSpellID === lastProcSpellID && enchantID === lastEnchantID) {
+		const [statSpellID, effectAura, effectMiscValue0, procSpellID, spellDescription, enchantID, enchantName, ...enchantEffects] = row
+		if (currentStats.length === 0 || (statSpellID === lastStatSpellID && procSpellID === lastProcSpellID && enchantID === lastEnchantID)) {
 			// Identify stat(s) and push to currentStats
-			const spellStats = effectAuraStats[effectAura as EffectAura](effectMiscValue0 as number)
+			const effectAuraFunc = effectAuraStats[effectAura as EffectAura]
+			const spellStats = effectAuraFunc ? effectAuraFunc(effectMiscValue0 as number) : []
 			// const enchantStats = getEnchantStats(effectTypes, effectArgs)
 		} else {
 			// Parse text with stats, clear currentStats
