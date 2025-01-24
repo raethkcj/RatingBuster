@@ -385,6 +385,42 @@ const effectAuraStats: Record<EffectAura, (miscValue: number) => string[]> = {
 	[EffectAura.MOD_COMBAT_RESULT_CHANCE]: GetCombatResultStat("Reduction"),
 }
 
+enum EnchantEffectType {
+	// Proc = 1,
+	Damage = 2,
+	// Buff = 3,
+	Resistance = 4,
+	Stat = 5,
+}
+
+enum Resistance {
+	Physical = 1,
+	Holy,
+	Fire,
+	Nature,
+	Frost,
+	Shadow,
+	Arcane,
+}
+
+function getEnchantStats(enchantEffects: DuckDBValue[]): string[] {
+	const stats: string[] = []
+	for (let i = 0; i < enchantEffects.length; i += 2) {
+		const [enchantEffectType, enchantEffectArg] = [enchantEffects[i] as EnchantEffectType, enchantEffects[i + 1] as number]
+		switch(enchantEffectType) {
+			case EnchantEffectType.Damage:
+				stats.push("WeaponDamage")
+			case EnchantEffectType.Resistance:
+				stats.push(Resistance[enchantEffectArg])
+			case EnchantEffectType.Stat:
+				stats.push(itemStatType[enchantEffectArg])
+			default:
+				// No-op
+		}
+	}
+	return stats
+}
+
 const textColumns = {
 	"SpellItemEnchantment": "Name_lang",
 	"Spell": "Description_lang"
@@ -558,7 +594,7 @@ async function mapStatSpellStringsToStats(rows: DuckDBValue[][]) {
 			// Identify stat(s) and push to currentStats
 			const effectAuraFunc = effectAuraStats[effectAura as EffectAura]
 			const spellStats = effectAuraFunc ? effectAuraFunc(effectMiscValue0 as number) : []
-			// const enchantStats = getEnchantStats(effectTypes, effectArgs)
+			const enchantStats = getEnchantStats(enchantEffects)
 		} else {
 			// Parse text with stats, clear currentStats
 		}
