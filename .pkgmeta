@@ -15,6 +15,7 @@ externals:
 move-folders:
   RatingBuster/libs/StatLogic: StatLogic
   Ace3/LibStub: StatLogic/libs/LibStub
+  Ace3/CallbackHandler-1.0: StatLogic/libs/CallbackHandler-1.0
   Ace3/AceComm-3.0: StatLogic/libs/AceComm-3.0
   Ace3/AceLocale-3.0: RatingBuster/libs/AceLocale-3.0
   Ace3/AceConsole-3.0: RatingBuster/libs/AceConsole-3.0
