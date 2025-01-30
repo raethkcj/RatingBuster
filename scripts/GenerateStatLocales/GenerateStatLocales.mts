@@ -548,37 +548,66 @@ const locales = [
 const instance = await DuckDBInstance.create()
 const connection = await instance.connect()
 
-// For spells with EffectAura+MiscValue0 combos that map to stats, fetch:
-//   a) Spell description for that spell
-//   b) Spell descriptions for any proc trigger auras that proc that spell
-//   c) Enchant names for enchants with that spell as an aura
-//   d) Enchant names for enchants with any of the proc trigger auras as an aura
-async function fetchPassiveStatSpellSources(): Promise<DuckDBValue[][]> {
+async function getTypedResults<T>(query: string, type: { new(...args: any[]): T }): Promise<T[]> {
+	const results: T[] = []
+	const result = await connection.run(query)
+	let chunk = await result.fetchChunk()
+	while(chunk && chunk.rowCount > 0) {
+		for (const row of chunk.getRows()) {
+			results.push(new type(...row))
+		}
+		chunk = await result.fetchChunk()
+	}
+
+	return results
+}
+
+class SpellEffect {
+	constructor(public spellID: number, public effectAura: EffectAura, public effectMiscValue0: number, public procSpellID: number) {}
+}
+
+async function fetchStatSpellEffects() {
 	const spellEffect = "DB2/SpellEffect_1_enUS.csv"
+
+	const query = `
+		SELECT StatSpell.SpellID, StatSpell.EffectAura, StatSpell.EffectMiscValue_0, ProcSpell.SpellID
+		FROM read_csv('${spellEffect}', auto_type_candidates = ['INTEGER', 'DOUBLE', 'VARCHAR']) StatSpell
+		LEFT JOIN '${spellEffect}' ProcSpell ON ProcSpell.EffectTriggerSpell = StatSpell.SpellID
+		WHERE StatSpell.EffectAura in (${effectAuraValues})
+		ORDER BY StatSpell.SpellID, ProcSpell.SpellID
+	`
+
+	// const reader = await connection.runAndReadAll(query)
+	return await getTypedResults<SpellEffect>(query, SpellEffect)
+}
+
+async function fetchStatSpellDescriptions(spellIDs: number[]): Promise<DuckDBValue[][]> {
 	const spell = "DB2/Spell_1_enUS.csv"
+
+	const query = `
+		SELECT Description_lang, SpellID
+		FROM read_csv('${spell}', auto_type_candidates = ['INTEGER', 'DOUBLE', 'VARCHAR'])
+		WHERE SpellID in (${spellIDs})
+	`
+
+	const reader = await connection.runAndReadAll(query)
+	return reader.getRows()
+}
+
+async function fetchStatEnchants(spellIDs: number[]): Promise<DuckDBValue[][]> {
 	const spellItemEnchantment = "DB2/SpellItemEnchantment_1_enUS.csv"
 
 	const query = `
-		WITH StatSpell AS (
-			SELECT EffectAura, EffectMiscValue_0, SpellID
-			FROM read_csv('${spellEffect}', auto_type_candidates = ['INTEGER', 'DOUBLE', 'VARCHAR'])
-			WHERE EffectAura in (${effectAuraValues})
-		)
-		SELECT
-			StatSpell.SpellID, StatSpell.EffectAura, StatSpell.EffectMiscValue_0,
-			ProcSpell.SpellID,
-			Spell.Description_lang,
-			Enchant.ID, Enchant.Name_lang, Enchant.Effect_0, Enchant.EffectArg_0, Enchant.Effect_1, Enchant.EffectArg_1, Enchant.Effect_2, Enchant.EffectArg_2
-		FROM StatSpell
-		LEFT JOIN '${spellEffect}' ProcSpell ON (StatSpell.SpellID = ProcSpell.EffectTriggerSpell)
-		LEFT JOIN '${spell}' Spell ON (Spell.ID IN (StatSpell.SpellID, ProcSpell.SpellID))
-		LEFT JOIN '${spellItemEnchantment}' Enchant ON (
-			Enchant.EffectArg_0 IN (StatSpell.SpellID, ProcSpell.SpellID)
-			OR Enchant.EffectArg_1 IN (StatSpell.SpellID, ProcSpell.SpellID)
-			OR Enchant.EffectArg_2 IN (StatSpell.SpellID, ProcSpell.SpellID)
-		)
-		WHERE NOT Spell.Description_lang = '' OR NOT Enchant.Name_lang = ''
-		ORDER BY StatSpell.SpellID, ProcSpell.SpellID, Enchant.ID
+		SELECT ID, Name_lang, Effect_0, EffectArg_0, Effect_1, EffectArg_1, Effect_2, EffectArg_2
+		FROM read_csv('${spellItemEnchantment}', auto_type_candidates = ['INTEGER', 'DOUBLE', 'VARCHAR'])
+		WHERE
+			Enchant.EffectArg_0 IN '${spellIDs}'
+			OR Enchant.EffectArg_1 IN '${spellIDs}'
+			OR Enchant.EffectArg_2 IN '${spellIDs}'
+			OR Enchant.Effect_0 = '${EnchantEffectType.Stat}'
+			OR Enchant.Effect_1 = '${EnchantEffectType.Stat}'
+			OR Enchant.Effect_2 = '${EnchantEffectType.Stat}'
+
 	`
 
 	const reader = await connection.runAndReadAll(query)
@@ -623,5 +652,19 @@ mkdirSync(new URL(databaseDirName, base), { recursive: true })
 mkdirSync(new URL(localeDirName, base), { recursive: true })
 // processStaticLocaleData()
 
-const sources = await fetchPassiveStatSpellSources()
-await mapStatSpellStringsToStats(sources)
+// For spells with EffectAura+MiscValue0 combos that map to stats, fetch:
+//   a) Spell description for that spell
+//   b) Spell descriptions for any proc trigger auras that proc that spell
+//   c) Enchant names for enchants with that spell as an aura
+//   d) Enchant names for enchants with any of the proc trigger auras as an aura
+const spellEffects = await fetchStatSpellEffects()
+const spellEffectIDs = spellEffects.map(e => e.spellID)
+const seenIDs = {}
+spellEffects.forEach(e => {
+	if (e.procSpellID && seenIDs[e.procSpellID]) {
+		console.log(e)
+	}
+	seenIDs[e.procSpellID] = true
+})
+console.log(`${spellEffects.length} rows`)
+// await mapStatSpellStringsToStats(spellEffects)
