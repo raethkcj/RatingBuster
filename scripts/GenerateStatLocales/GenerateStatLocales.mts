@@ -583,21 +583,26 @@ async function fetchStatSpellEffects() {
 		ORDER BY StatSpell.SpellID, ProcSpell.SpellID, StatSpell.EffectIndex
 	`
 
-	// const reader = await connection.runAndReadAll(query)
 	return await getTypedResults<SpellEffect>(query, SpellEffect)
 }
 
-async function fetchStatSpellDescriptions(spellIDs: number[]): Promise<DuckDBValue[][]> {
+class SpellDescription {
+	constructor(
+		public id: number,
+		public description: string
+	) {}
+}
+
+async function fetchStatSpellDescriptions(spellIDs: Set<number>): Promise<SpellDescription[]> {
 	const spell = "DB2/Spell_1_enUS.csv"
 
 	const query = `
-		SELECT Description_lang, SpellID
+		SELECT ID, Description_lang
 		FROM read_csv('${spell}', auto_type_candidates = ['INTEGER', 'DOUBLE', 'VARCHAR'])
-		WHERE SpellID in (${spellIDs})
+		WHERE ID in (${Array.from(spellIDs)})
 	`
 
-	const reader = await connection.runAndReadAll(query)
-	return reader.getRows()
+	return await getTypedResults<SpellDescription>(query, SpellDescription)
 }
 
 async function fetchStatEnchants(spellIDs: number[]): Promise<DuckDBValue[][]> {
@@ -660,6 +665,7 @@ mkdirSync(new URL(localeDirName, base), { recursive: true })
 
 class StatSpell {
 	stats: string[][] = []
+	descriptions: string[] = []
 }
 
 // For spells with EffectAura+MiscValue0 combos that map to stats, fetch:
@@ -671,9 +677,11 @@ const spellEffects = await fetchStatSpellEffects()
 
 const statSpells = new Map<number, StatSpell>()
 const spellDescIDs = new Set<number>()
-spellEffects.forEach(effect => {
+for (const effect of spellEffects) {
 	spellDescIDs.add(effect.spellID)
-	spellDescIDs.add(effect.procSpellID)
+	if (effect.procSpellID) {
+		spellDescIDs.add(effect.procSpellID)
+	}
 
 	const spell = statSpells.get(effect.spellID) || new StatSpell()
 
@@ -684,9 +692,15 @@ spellEffects.forEach(effect => {
 	}
 
 	statSpells.set(effect.spellID, spell)
-})
+}
 
 console.log(`${spellEffects.length} effects`)
 console.log(`${spellDescIDs.size} spellDescIDs`)
 console.log(`${statSpells.size} statSpells`)
+
+const spellDescriptions = await fetchStatSpellDescriptions(spellDescIDs)
+for (const spellDescription of spellDescriptions) {
+	statSpells.get(spellDescription.id)?.descriptions.push(spellDescription.description)
+}
+
 // await mapStatSpellStringsToStats(spellEffects)
