@@ -235,7 +235,7 @@ function GetSchoolStat(statSuffix: string, physicalOverride: string, allSchoolsO
 			const stats: string[] = []
 			for (const [key, value] of Object.entries(School)) {
 				const school = Number(value)
-				if ((schools & school) > 0) {
+				if ((schools & school) > 0 && school < School.All) {
 					if (school === School.Physical) {
 						stats.push(physicalOverride)
 					} else {
@@ -563,18 +563,24 @@ async function getTypedResults<T>(query: string, type: { new(...args: any[]): T 
 }
 
 class SpellEffect {
-	constructor(public spellID: number, public effectAura: EffectAura, public effectMiscValue0: number, public procSpellID: number) {}
+	constructor(
+		public spellID: number,
+		public effectIndex: number,
+		public effectAura: EffectAura,
+		public effectMiscValue0: number,
+		public procSpellID: number,
+	) {}
 }
 
 async function fetchStatSpellEffects() {
 	const spellEffect = "DB2/SpellEffect_1_enUS.csv"
 
 	const query = `
-		SELECT StatSpell.SpellID, StatSpell.EffectAura, StatSpell.EffectMiscValue_0, ProcSpell.SpellID
+		SELECT StatSpell.SpellID, StatSpell.EffectIndex, StatSpell.EffectAura, StatSpell.EffectMiscValue_0, ProcSpell.SpellID
 		FROM read_csv('${spellEffect}', auto_type_candidates = ['INTEGER', 'DOUBLE', 'VARCHAR']) StatSpell
 		LEFT JOIN '${spellEffect}' ProcSpell ON ProcSpell.EffectTriggerSpell = StatSpell.SpellID
 		WHERE StatSpell.EffectAura in (${effectAuraValues})
-		ORDER BY StatSpell.SpellID, ProcSpell.SpellID
+		ORDER BY StatSpell.SpellID, ProcSpell.SpellID, StatSpell.EffectIndex
 	`
 
 	// const reader = await connection.runAndReadAll(query)
@@ -652,19 +658,35 @@ mkdirSync(new URL(databaseDirName, base), { recursive: true })
 mkdirSync(new URL(localeDirName, base), { recursive: true })
 // processStaticLocaleData()
 
+class StatSpell {
+	stats: string[][] = []
+}
+
 // For spells with EffectAura+MiscValue0 combos that map to stats, fetch:
 //   a) Spell description for that spell
 //   b) Spell descriptions for any proc trigger auras that proc that spell
 //   c) Enchant names for enchants with that spell as an aura
 //   d) Enchant names for enchants with any of the proc trigger auras as an aura
 const spellEffects = await fetchStatSpellEffects()
-const spellEffectIDs = spellEffects.map(e => e.spellID)
-const seenIDs = {}
-spellEffects.forEach(e => {
-	if (e.procSpellID && seenIDs[e.procSpellID]) {
-		console.log(e)
+
+const statSpells = new Map<number, StatSpell>()
+const spellDescIDs = new Set<number>()
+spellEffects.forEach(effect => {
+	spellDescIDs.add(effect.spellID)
+	spellDescIDs.add(effect.procSpellID)
+
+	const spell = statSpells.get(effect.spellID) || new StatSpell()
+
+	if (!spell.stats[effect.effectIndex]) {
+		const effectAuraFunc = effectAuraStats[effect.effectAura]
+		const stats = effectAuraFunc ? effectAuraFunc(effect.effectMiscValue0) : []
+		spell.stats[effect.effectIndex] = stats
 	}
-	seenIDs[e.procSpellID] = true
+
+	statSpells.set(effect.spellID, spell)
 })
-console.log(`${spellEffects.length} rows`)
+
+console.log(`${spellEffects.length} effects`)
+console.log(`${spellDescIDs.size} spellDescIDs`)
+console.log(`${statSpells.size} statSpells`)
 // await mapStatSpellStringsToStats(spellEffects)
