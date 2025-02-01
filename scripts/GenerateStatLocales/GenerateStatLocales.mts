@@ -258,8 +258,9 @@ enum PrimaryStat {
 }
 
 function GetPrimaryStat() {
-	return (primaryStat: number): string[] => {
-		return [PrimaryStat[primaryStat]]
+	return (primaryStatID: number): string[] => {
+		const primaryStat = PrimaryStat[primaryStatID]
+		return primaryStat ? [primaryStat] : []
 	}
 }
 
@@ -333,7 +334,8 @@ const SkillLine = {
 
 function GetSkillLineStat() {
 	return (skillLineID: number): string[] => {
-		return [SkillLine[skillLineID]]
+		const skillLine = SkillLine[skillLineID]
+		return skillLine ? [skillLine] : []
 	}
 }
 
@@ -342,8 +344,9 @@ enum PowerType {
 }
 
 function GetPowerTypeStat(statSuffix: string) {
-	return (powerType: number): string[] => {
-		return [PowerType[powerType] + statSuffix]
+	return (powerTypeID: number): string[] => {
+		const powerType = PowerType[powerTypeID]
+		return powerType ? [powerType + statSuffix] : []
 	}
 }
 
@@ -353,8 +356,9 @@ enum CombatResultType {
 }
 
 function GetCombatResultStat(statSuffix: string) {
-	return (combatResultType: number): string[] => {
-		return [CombatResultType[combatResultType] + statSuffix]
+	return (combatResultTypeID: number): string[] => {
+		const combatResultType = CombatResultType[combatResultTypeID]
+		return combatResultType ? [combatResultType + statSuffix] : []
 	}
 }
 
@@ -674,27 +678,32 @@ class StatSpell {
 //   c) Enchant names for enchants with that spell as an aura
 //   d) Enchant names for enchants with any of the proc trigger auras as an aura
 const spellEffects = await fetchStatSpellEffects()
+console.log(`${spellEffects.length} effects`)
 
 const statSpells = new Map<number, StatSpell>()
 const spellDescIDs = new Set<number>()
 for (const effect of spellEffects) {
-	spellDescIDs.add(effect.spellID)
-	if (effect.procSpellID) {
-		spellDescIDs.add(effect.procSpellID)
-	}
-
 	const spell = statSpells.get(effect.spellID) || new StatSpell()
 
 	if (!spell.stats[effect.effectIndex]) {
 		const effectAuraFunc = effectAuraStats[effect.effectAura]
-		const stats = effectAuraFunc ? effectAuraFunc(effect.effectMiscValue0) : []
-		spell.stats[effect.effectIndex] = stats
+		const stats = effectAuraFunc ? effectAuraFunc(effect.effectMiscValue0) : null
+		if (stats && stats.length > 0) {
+			// May leave empty indices if a spell has non-stat effects prior to a stat effect
+			spell.stats[effect.effectIndex] = stats
+
+			spellDescIDs.add(effect.spellID)
+			if (effect.procSpellID) {
+				spellDescIDs.add(effect.procSpellID)
+			}
+		}
 	}
 
-	statSpells.set(effect.spellID, spell)
+	if (spell.stats.length > 0) {
+		statSpells.set(effect.spellID, spell)
+	}
 }
 
-console.log(`${spellEffects.length} effects`)
 console.log(`${spellDescIDs.size} spellDescIDs`)
 console.log(`${statSpells.size} statSpells`)
 
