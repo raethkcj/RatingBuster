@@ -390,9 +390,9 @@ const effectAuraStats: Record<EffectAura, (miscValue: number) => string[]> = {
 }
 
 enum EnchantEffectType {
-	// Proc = 1,
+	Proc = 1,
 	Damage = 2,
-	// Buff = 3,
+	Buff = 3,
 	Resistance = 4,
 	Stat = 5,
 }
@@ -597,53 +597,49 @@ class SpellDescription {
 	) {}
 }
 
-async function fetchStatSpellDescriptions(spellIDs: Set<number>): Promise<SpellDescription[]> {
+async function fetchStatSpellDescriptions(spellIDs: number[]): Promise<SpellDescription[]> {
 	const spell = "DB2/Spell_1_enUS.csv"
 
 	const query = `
 		SELECT ID, Description_lang
 		FROM read_csv('${spell}', auto_type_candidates = ['INTEGER', 'DOUBLE', 'VARCHAR'])
-		WHERE ID in (${Array.from(spellIDs)})
+		WHERE ID in (${spellIDs})
 	`
 
 	return await getTypedResults<SpellDescription>(query, SpellDescription)
 }
 
-async function fetchStatEnchants(spellIDs: number[]): Promise<DuckDBValue[][]> {
+class StatEnchant {
+	stats: string[][] = []
+
+	constructor(
+		public name: string,
+		public effect0: EnchantEffectType,
+		public effectArg0: number,
+		public effect1: EnchantEffectType,
+		public effectArg1: number,
+		public effect2: EnchantEffectType,
+		public effectArg2: number,
+	) {}
+}
+
+async function fetchStatEnchants(spellIDs: number[]): Promise<StatEnchant[]> {
 	const spellItemEnchantment = "DB2/SpellItemEnchantment_1_enUS.csv"
 
 	const query = `
-		SELECT ID, Name_lang, Effect_0, EffectArg_0, Effect_1, EffectArg_1, Effect_2, EffectArg_2
+		SELECT Name_lang, Effect_0, EffectArg_0, Effect_1, EffectArg_1, Effect_2, EffectArg_2
 		FROM read_csv('${spellItemEnchantment}', auto_type_candidates = ['INTEGER', 'DOUBLE', 'VARCHAR'])
 		WHERE
-			Enchant.EffectArg_0 IN '${spellIDs}'
-			OR Enchant.EffectArg_1 IN '${spellIDs}'
-			OR Enchant.EffectArg_2 IN '${spellIDs}'
-			OR Enchant.Effect_0 = '${EnchantEffectType.Stat}'
-			OR Enchant.Effect_1 = '${EnchantEffectType.Stat}'
-			OR Enchant.Effect_2 = '${EnchantEffectType.Stat}'
+			Effect_0 = '${EnchantEffectType.Buff}' AND EffectArg_0 IN (${spellIDs})
+			OR Effect_1 = '${EnchantEffectType.Buff}' AND EffectArg_1 IN (${spellIDs})
+			OR Effect_2 = '${EnchantEffectType.Buff}' AND EffectArg_2 IN (${spellIDs})
+			OR Effect_0 IN (${EnchantEffectType.Damage}, ${EnchantEffectType.Resistance}, ${EnchantEffectType.Stat})
+			OR Effect_1 IN (${EnchantEffectType.Damage}, ${EnchantEffectType.Resistance}, ${EnchantEffectType.Stat})
+			OR Effect_2 IN (${EnchantEffectType.Damage}, ${EnchantEffectType.Resistance}, ${EnchantEffectType.Stat})
 
 	`
 
-	const reader = await connection.runAndReadAll(query)
-	return reader.getRows()
-}
-
-async function mapStatSpellStringsToStats(rows: DuckDBValue[][]) {
-	let currentStats = []
-	let lastStatSpellID, lastProcSpellID, lastEnchantID
-	for(const row of rows) {
-		const [statSpellID, effectAura, effectMiscValue0, procSpellID, spellDescription, enchantID, enchantName, ...enchantEffects] = row
-		if (currentStats.length === 0 || (statSpellID === lastStatSpellID && procSpellID === lastProcSpellID && enchantID === lastEnchantID)) {
-			// Identify stat(s) and push to currentStats
-			const effectAuraFunc = effectAuraStats[effectAura as EffectAura]
-			const spellStats = effectAuraFunc ? effectAuraFunc(effectMiscValue0 as number) : []
-			const enchantStats = getEnchantStats(enchantEffects)
-		} else {
-			// Parse text with stats, clear currentStats
-		}
-	}
-	console.log(`Rows: ${rows.length}`)
+	return await getTypedResults(query, StatEnchant)
 }
 
 function processStaticLocaleData() {
@@ -681,7 +677,8 @@ const spellEffects = await fetchStatSpellEffects()
 console.log(`${spellEffects.length} effects`)
 
 const statSpells = new Map<number, StatSpell>()
-const spellDescIDs = new Set<number>()
+const statSpellIDSet = new Set<number>()
+const procSpellIDSet = new Set<number>()
 for (const effect of spellEffects) {
 	const spell = statSpells.get(effect.spellID) || new StatSpell()
 
@@ -692,9 +689,9 @@ for (const effect of spellEffects) {
 			// May leave empty indices if a spell has non-stat effects prior to a stat effect
 			spell.stats[effect.effectIndex] = stats
 
-			spellDescIDs.add(effect.spellID)
+			statSpellIDSet.add(effect.spellID)
 			if (effect.procSpellID) {
-				spellDescIDs.add(effect.procSpellID)
+				procSpellIDSet.add(effect.procSpellID)
 			}
 		}
 	}
@@ -704,12 +701,17 @@ for (const effect of spellEffects) {
 	}
 }
 
-console.log(`${spellDescIDs.size} spellDescIDs`)
 console.log(`${statSpells.size} statSpells`)
 
-const spellDescriptions = await fetchStatSpellDescriptions(spellDescIDs)
+const statSpellIDs = Array.from(statSpells.keys())
+const statAndProcSpellIDs = statSpellIDs.concat(Array.from(procSpellIDSet.keys()))
+console.log(`${statAndProcSpellIDs.length} spellDescIDs`)
+
+const spellDescriptions = await fetchStatSpellDescriptions(statAndProcSpellIDs)
 for (const spellDescription of spellDescriptions) {
 	statSpells.get(spellDescription.id)?.descriptions.push(spellDescription.description)
 }
 
+const statEnchants = await fetchStatEnchants(statSpellIDs)
+console.log(`${statEnchants.length} statEnchants`)
 // await mapStatSpellStringsToStats(spellEffects)
