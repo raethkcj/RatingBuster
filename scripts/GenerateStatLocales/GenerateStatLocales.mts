@@ -389,12 +389,12 @@ const effectAuraStats: Record<EffectAura, (miscValue: number) => string[]> = {
 	[EffectAura.MOD_COMBAT_RESULT_CHANCE]: GetCombatResultStat("Reduction"),
 }
 
-enum EnchantEffectType {
+enum EnchantEffect {
 	Proc = 1,
-	Damage = 2,
-	Buff = 3,
-	Resistance = 4,
-	Stat = 5,
+	Damage,
+	Buff,
+	Resistance,
+	Stat,
 }
 
 enum Resistance {
@@ -407,19 +407,23 @@ enum Resistance {
 	Arcane,
 }
 
-function getEnchantStats(enchantEffects: DuckDBValue[]): string[] {
-	const stats: string[] = []
-	for (let i = 0; i < enchantEffects.length; i += 2) {
-		const [enchantEffectType, enchantEffectArg] = [enchantEffects[i] as EnchantEffectType, enchantEffects[i + 1] as number]
-		switch(enchantEffectType) {
-			case EnchantEffectType.Damage:
-				stats.push("WeaponDamage")
-			case EnchantEffectType.Resistance:
-				stats.push(Resistance[enchantEffectArg])
-			case EnchantEffectType.Stat:
-				stats.push(itemStatType[enchantEffectArg])
-			default:
-				// No-op
+// TODO We actually need stat values here since many enchants will be WholeText
+function getEnchantStats(enchant: StatEnchant): Map<string, number> {
+	const stats: string[][] = []
+	for(const [effect, effectArg] of enchant.effects) {
+		let stat: string | string[] | string[][] | undefined
+		switch(effect) {
+			case EnchantEffect.Damage:
+				stat = "AverageWeaponDamage"
+			case EnchantEffect.Buff:
+				stat = statSpells.get(effectArg)?.stats
+			case EnchantEffect.Resistance:
+				stat = Resistance[effectArg]
+			case EnchantEffect.Stat:
+				stat = itemStatType[effectArg]
+		}
+		if (stat) {
+			stats.push(stat)
 		}
 	}
 	return stats
@@ -611,16 +615,19 @@ async function fetchStatSpellDescriptions(spellIDs: number[]): Promise<SpellDesc
 
 class StatEnchant {
 	stats: string[][] = []
+	effects: [effect: EnchantEffect, effectArg: number][]
 
 	constructor(
 		public name: string,
-		public effect0: EnchantEffectType,
-		public effectArg0: number,
-		public effect1: EnchantEffectType,
-		public effectArg1: number,
-		public effect2: EnchantEffectType,
-		public effectArg2: number,
-	) {}
+		effect0: EnchantEffect,
+		effectArg0: number,
+		effect1: EnchantEffect,
+		effectArg1: number,
+		effect2: EnchantEffect,
+		effectArg2: number,
+	) {
+		this.effects = [[effect0, effectArg0], [effect1, effectArg1], [effect2, effectArg2]]
+	}
 }
 
 async function fetchStatEnchants(spellIDs: number[]): Promise<StatEnchant[]> {
@@ -630,12 +637,12 @@ async function fetchStatEnchants(spellIDs: number[]): Promise<StatEnchant[]> {
 		SELECT Name_lang, Effect_0, EffectArg_0, Effect_1, EffectArg_1, Effect_2, EffectArg_2
 		FROM read_csv('${spellItemEnchantment}', auto_type_candidates = ['INTEGER', 'DOUBLE', 'VARCHAR'])
 		WHERE
-			Effect_0 = '${EnchantEffectType.Buff}' AND EffectArg_0 IN (${spellIDs})
-			OR Effect_1 = '${EnchantEffectType.Buff}' AND EffectArg_1 IN (${spellIDs})
-			OR Effect_2 = '${EnchantEffectType.Buff}' AND EffectArg_2 IN (${spellIDs})
-			OR Effect_0 IN (${EnchantEffectType.Damage}, ${EnchantEffectType.Resistance}, ${EnchantEffectType.Stat})
-			OR Effect_1 IN (${EnchantEffectType.Damage}, ${EnchantEffectType.Resistance}, ${EnchantEffectType.Stat})
-			OR Effect_2 IN (${EnchantEffectType.Damage}, ${EnchantEffectType.Resistance}, ${EnchantEffectType.Stat})
+			Effect_0 = '${EnchantEffect.Buff}' AND EffectArg_0 IN (${spellIDs})
+			OR Effect_1 = '${EnchantEffect.Buff}' AND EffectArg_1 IN (${spellIDs})
+			OR Effect_2 = '${EnchantEffect.Buff}' AND EffectArg_2 IN (${spellIDs})
+			OR Effect_0 IN (${EnchantEffect.Damage}, ${EnchantEffect.Resistance}, ${EnchantEffect.Stat})
+			OR Effect_1 IN (${EnchantEffect.Damage}, ${EnchantEffect.Resistance}, ${EnchantEffect.Stat})
+			OR Effect_2 IN (${EnchantEffect.Damage}, ${EnchantEffect.Resistance}, ${EnchantEffect.Stat})
 
 	`
 
@@ -714,4 +721,8 @@ for (const spellDescription of spellDescriptions) {
 
 const statEnchants = await fetchStatEnchants(statSpellIDs)
 console.log(`${statEnchants.length} statEnchants`)
+for (const statEnchant of statEnchants) {
+	const stats = getEnchantStats(statEnchant)
+}
+
 // await mapStatSpellStringsToStats(spellEffects)
