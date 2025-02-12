@@ -575,6 +575,8 @@ class SpellEffect {
 		public spellID: number,
 		public effectIndex: number,
 		public effectAura: EffectAura,
+		public effectBasePoints: number,
+		public effectDieSides: number,
 		public effectMiscValue0: number,
 		public procSpellID: number,
 	) {}
@@ -584,7 +586,7 @@ async function fetchStatSpellEffects() {
 	const spellEffect = "DB2/SpellEffect_1_enUS.csv"
 
 	const query = `
-		SELECT StatSpell.SpellID, StatSpell.EffectIndex, StatSpell.EffectAura, StatSpell.EffectMiscValue_0, ProcSpell.SpellID
+		SELECT StatSpell.SpellID, StatSpell.EffectIndex, StatSpell.EffectAura, StatSpell.EffectBasePoints, StatSpell.EffectDieSides, StatSpell.EffectMiscValue_0, ProcSpell.SpellID
 		FROM read_csv('${spellEffect}', auto_type_candidates = ['INTEGER', 'DOUBLE', 'VARCHAR']) StatSpell
 		LEFT JOIN '${spellEffect}' ProcSpell ON ProcSpell.EffectTriggerSpell = StatSpell.SpellID
 		WHERE StatSpell.EffectAura in (${effectAuraValues})
@@ -670,8 +672,12 @@ mkdirSync(new URL(databaseDirName, base), { recursive: true })
 mkdirSync(new URL(localeDirName, base), { recursive: true })
 // processStaticLocaleData()
 
+class StatValue {
+	constructor(public stat: string, public value: number) {}
+}
+
 class StatSpell {
-	stats: string[][] = []
+	stats: StatValue[][] = []
 	descriptions: string[] = []
 }
 
@@ -689,12 +695,14 @@ const procSpellIDSet = new Set<number>()
 for (const effect of spellEffects) {
 	const spell = statSpells.get(effect.spellID) || new StatSpell()
 
-	if (!spell.stats[effect.effectIndex]) {
+	if (!spell.stats[effect.effectIndex] && effect.effectDieSides <= 1) {
 		const effectAuraFunc = effectAuraStats[effect.effectAura]
 		const stats = effectAuraFunc ? effectAuraFunc(effect.effectMiscValue0) : null
 		if (stats && stats.length > 0) {
+			const value = effect.effectBasePoints + effect.effectDieSides
+
 			// May leave empty indices if a spell has non-stat effects prior to a stat effect
-			spell.stats[effect.effectIndex] = stats
+			spell.stats[effect.effectIndex] = stats.map((s) => new StatValue(s, value))
 
 			statSpellIDSet.add(effect.spellID)
 			if (effect.procSpellID) {
