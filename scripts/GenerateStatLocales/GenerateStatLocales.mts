@@ -111,42 +111,42 @@ async function fetchDatabase(db) {
 }
 
 // From wow.tools' enums.js, also obtainable at wowdev.wiki
-const itemStatType = {
-	0: 'Mana',
-	1: 'Health',
-	3: 'Agility',
-	4: 'Strength',
-	5: 'Intellect',
-	6: 'Spirit',
-	7: 'Stamina',
-	12: 'DefenseRating',
-	13: 'DodgeRating',
-	14: 'ParryRating',
-	15: 'BlockRating',
-	16: 'MeleeHitRating',
-	17: 'RangedHitRating',
-	18: 'SpellHitRating',
-	19: 'MeleeCritRating',
-	20: 'RangedCritRating',
-	21: 'SpellCritRating',
-	28: 'MeleeHasteRating',
-	29: 'RangedHasteRating',
-	30: 'SpellHasteRating',
-	31: 'HitRating',
-	32: 'CritRating',
-	35: 'ResilienceRating',
-	36: 'HasteRating',
-	37: 'ExpertiseRating',
-	38: 'GenericAttackPower',
-	39: 'RangedAttackPower',
-	40: 'Versatility',
-	41: 'HealingPower',
-	42: 'SpellDamage',
-	43: 'GenericManaRegen',
-	44: 'ArmorPenetrationRating',
-	45: ['SpellDamage', 'HealingPower'], // SpellPower
-	47: 'SpellPenetration',
-	49: 'MasteryRating',
+enum itemStatType {
+	Mana = 0,
+	Health = 1,
+	Agility = 3,
+	Strength = 4,
+	Intellect = 5,
+	Spirit = 6,
+	Stamina = 7,
+	DefenseRating = 12,
+	DodgeRating = 13,
+	ParryRating = 14,
+	BlockRating = 15,
+	MeleeHitRating = 16,
+	RangedHitRating = 17,
+	SpellHitRating = 18,
+	MeleeCritRating = 19,
+	RangedCritRating = 20,
+	SpellCritRating = 21,
+	MeleeHasteRating = 28,
+	RangedHasteRating = 29,
+	SpellHasteRating = 30,
+	HitRating = 31,
+	CritRating = 32,
+	ResilienceRating = 35,
+	HasteRating = 36,
+	ExpertiseRating = 37,
+	GenericAttackPower = 38,
+	RangedAttackPower = 39,
+	Versatility = 40,
+	HealingPower = 41,
+	SpellDamage = 42,
+	GenericManaRegen = 43,
+	ArmorPenetrationRating = 44,
+	SpellPower = 45,
+	SpellPenetration = 47,
+	MasteryRating = 49,
 }
 
 enum EnchantmentEffect {
@@ -398,32 +398,34 @@ enum EnchantEffect {
 }
 
 enum Resistance {
-	Physical = 1,
-	Holy,
-	Fire,
-	Nature,
-	Frost,
-	Shadow,
-	Arcane,
+	Armor = 0,
+	HolyResistance,
+	FireResistance,
+	NatureResistance,
+	FrostResistance,
+	ShadowResistance,
+	ArcaneResistance,
 }
 
-// TODO We actually need stat values here since many enchants will be WholeText
-function getEnchantStats(enchant: StatEnchant): Map<string, number> {
-	const stats: string[][] = []
-	for(const [effect, effectArg] of enchant.effects) {
-		let stat: string | string[] | string[][] | undefined
+function getEnchantStats(enchant: StatEnchant): StatValue[][] {
+	const stats: StatValue[][] = []
+	for(const [index, [effect, effectArg, pointsMin]] of enchant.effects.entries()) {
 		switch(effect) {
 			case EnchantEffect.Damage:
-				stat = "AverageWeaponDamage"
+				stats[index] = [new StatValue("AverageWeaponDamage", pointsMin)]
+				break
 			case EnchantEffect.Buff:
-				stat = statSpells.get(effectArg)?.stats
+				const buffStats = statSpells.get(effectArg)?.stats.flat()
+				if (buffStats) stats[index] = buffStats
+				break
 			case EnchantEffect.Resistance:
-				stat = Resistance[effectArg]
+				const resistance = Resistance[effectArg]
+				if (resistance) stats[index] = [new StatValue(resistance, pointsMin)]
+				break
 			case EnchantEffect.Stat:
-				stat = itemStatType[effectArg]
-		}
-		if (stat) {
-			stats.push(stat)
+				const itemStat = itemStatType[effectArg]
+				if (itemStat) stats[index] = [new StatValue(itemStat, pointsMin)]
+				break
 		}
 	}
 	return stats
@@ -617,18 +619,22 @@ async function fetchStatSpellDescriptions(spellIDs: number[]): Promise<SpellDesc
 
 class StatEnchant {
 	stats: string[][] = []
-	effects: [effect: EnchantEffect, effectArg: number][]
+	effects: [effect: EnchantEffect, effectArg: number, pointsMin: number][]
 
 	constructor(
+		public id: number,
 		public name: string,
 		effect0: EnchantEffect,
 		effectArg0: number,
+		pointsMin0: number,
 		effect1: EnchantEffect,
 		effectArg1: number,
+		pointsMin1: number,
 		effect2: EnchantEffect,
 		effectArg2: number,
+		pointsMin2: number,
 	) {
-		this.effects = [[effect0, effectArg0], [effect1, effectArg1], [effect2, effectArg2]]
+		this.effects = [[effect0, effectArg0, pointsMin0], [effect1, effectArg1, pointsMin1], [effect2, effectArg2, pointsMin2]]
 	}
 }
 
@@ -636,7 +642,7 @@ async function fetchStatEnchants(spellIDs: number[]): Promise<StatEnchant[]> {
 	const spellItemEnchantment = "DB2/SpellItemEnchantment_1_enUS.csv"
 
 	const query = `
-		SELECT Name_lang, Effect_0, EffectArg_0, Effect_1, EffectArg_1, Effect_2, EffectArg_2
+		SELECT ID, Name_lang, Effect_0, EffectArg_0, EffectPointsMin_0, Effect_1, EffectArg_1, EffectPointsMin_1, Effect_2, EffectArg_2, EffectPointsMin_2
 		FROM read_csv('${spellItemEnchantment}', auto_type_candidates = ['INTEGER', 'DOUBLE', 'VARCHAR'])
 		WHERE
 			Effect_0 = '${EnchantEffect.Buff}' AND EffectArg_0 IN (${spellIDs})
