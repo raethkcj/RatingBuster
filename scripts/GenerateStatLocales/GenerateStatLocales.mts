@@ -611,10 +611,36 @@ async function fetchStatSpellDescriptions(spellIDs: number[]): Promise<SpellDesc
 	const query = `
 		SELECT ID, Description_lang
 		FROM read_csv('${spell}', auto_type_candidates = ['INTEGER', 'DOUBLE', 'VARCHAR'])
-		WHERE ID in (${spellIDs})
+		WHERE ID in (${spellIDs}) AND Description_lang NOT NULL
 	`
 
 	return await getTypedResults<SpellDescription>(query, SpellDescription)
+}
+
+// Parses spell descriptions of the form "prefix $condition[left][right] suffix"
+// into "prefix left suffix" and "prefix right suffix", discarding the condition,
+// and working recursively if necessary.
+// Returns a flat array of all possible branches, including solely the original string if applicable.
+async function traverseDescriptionBranches(description: string): Promise<string[]> {
+	const branches = [description]
+	const pattern = new RegExp(/\$\?[$\w]+\[([^[\]]*)\]\[([^[\]]*)\]/, "d")
+	let i = 0
+	while (i < branches.length) {
+		const branch = branches[i]
+		const result = branch.match(pattern)
+		if (result && result.indices) {
+			const indices = result.indices
+			const prefix = branch.substring(0, indices[0][0])
+			const suffix = branch.substring(indices[0][1])
+			const left = result[1]
+			const right = result[2]
+			branches[i] = prefix.concat(left, suffix)
+			branches.push(prefix.concat(right, suffix))
+		} else {
+			i++
+		}
+	}
+	return branches
 }
 
 class StatEnchant {
@@ -730,7 +756,10 @@ console.log(`${statAndProcSpellIDs.length} spellDescIDs`)
 
 const spellDescriptions = await fetchStatSpellDescriptions(statAndProcSpellIDs)
 for (const spellDescription of spellDescriptions) {
-	statSpells.get(spellDescription.id)?.descriptions.push(spellDescription.description)
+	const spell = statSpells.get(spellDescription.id)
+	if (spell) {
+		const branches = await traverseDescriptionBranches(spellDescription.description)
+	}
 }
 
 const statEnchants = await fetchStatEnchants(statSpellIDs)
