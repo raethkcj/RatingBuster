@@ -623,19 +623,21 @@ async function fetchStatSpellDescriptions(spellIDs: number[]): Promise<SpellDesc
 // Returns a flat array of all possible branches, including solely the original string if applicable.
 async function traverseDescriptionBranches(description: string): Promise<string[]> {
 	const branches = [description]
-	const pattern = new RegExp(/\$\?[$\w]+\[([^[\]]*)\]\[([^[\]]*)\]/, "d")
+	const pattern = new RegExp(/\$\?([$\w|&]*?\[([^[\]]*)\]\??)+/, "d")
 	let i = 0
 	while (i < branches.length) {
 		const branch = branches[i]
 		const result = branch.match(pattern)
 		if (result && result.indices) {
-			const indices = result.indices
-			const prefix = branch.substring(0, indices[0][0])
-			const suffix = branch.substring(indices[0][1])
-			const left = result[1]
-			const right = result[2]
-			branches[i] = prefix.concat(left, suffix)
-			branches.push(prefix.concat(right, suffix))
+			const [full, outer] = result.indices
+			const prefix = branch.substring(0, full[0])
+			const suffix = branch.substring(full[1])
+			const head = branch.substring(0, outer[0])
+			const tail = result[2]
+			branches[i] = prefix.concat(tail, suffix)
+			if ((full[1] - full[0]) - (outer[1] - outer[0]) > 2) {
+				branches.push(head.concat(suffix))
+			}
 		} else {
 			i++
 		}
