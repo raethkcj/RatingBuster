@@ -84,6 +84,66 @@ const scanners = {
 	}
 }
 
+// TODO:
+// strip ${} to false. Check if it can be nested? If not, ez
+// Move toLowerCase() later in pipeline? Maybe not needed, we should never need $M
+// Add $m / $M
+// Handle $tokens that are prefixed by an explicit spellID
+function mapTextToStats(text: string, stats: StatValue[][], scanner?: string) {
+	text = text.replace(/[\s.]+$/, "").toLowerCase()
+	scanner ||= text.search(/\d/) > 0 ? "StatIDLookup" : "WholeText"
+
+	const newStats: Array<string | false> = []
+	let matchedStatCount = 0
+	let checkForManaRegen = false
+	// Matches an optional leading + or -, plus one of:
+	//   Replacement token:
+	//     Leading $
+	//     One of:
+	//       a: aura radius,
+	//       i: max target count
+	//       m: min/max effect
+	//       s: effect spread,
+	//       t: time interval,
+	//     Optional integer indicating SpellEffect Index
+	//   Literal number:
+	//     Digits 0-9 or decimal point ".", ends in digit
+	const pattern = text.replace(/[+-]?(\$(?<tokenType>[sati])(?<tokenIndex>\d?)|[\d\.]+(?<=\d))/g, function(match, _1, _2, _3, offset, string, groups) {
+		let stat
+		switch (groups.tokenType) {
+			case "s":
+			// In theory, $s2 could come before $s1. However, this is not
+			// the case in any strings we use in any locale (for now :)).
+			stat = stats[matchedStatCount]
+			if (isManaRegen(stat)) {
+				checkForManaRegen = true
+			}
+			newStats.push(stat)
+			matchedStatCount++
+			break
+			case "a":
+			case "t":
+			newStats.push(false)
+			break
+			default:
+			// tokenType i or plain number
+			stat = matchedStatCount < stats.length ? stats[matchedStatCount] : false
+			if ((isManaRegen(stat) || checkForManaRegen) && match === "5") {
+				newStats.push(false)
+				checkForManaRegen = false
+			} else {
+				if(isManaRegen(stat)) {
+					checkForManaRegen = true
+				}
+				newStats.push(stat)
+				matchedStatCount++
+			}
+		}
+		return "%s"
+	})
+	return [pattern, matchedStatCount > 0 ? newStats : false]
+}
+
 const base = import.meta.url
 import statLocaleData from './StatLocaleData.json'
 const databaseDirName = "DB2"
@@ -776,6 +836,9 @@ for (const spellDescription of spellDescriptions) {
 	const spell = statSpells.get(spellDescription.id)
 	if (spell) {
 		const branches = await traverseDescriptionBranches(spellDescription.description)
+		for (const branch of branches) {
+			await mapTextToStats(branch, spell.stats)
+		}
 	}
 }
 
@@ -784,5 +847,3 @@ console.log(`${statEnchants.length} statEnchants`)
 for (const statEnchant of statEnchants) {
 	const stats = getEnchantStats(statEnchant)
 }
-
-// await mapStatSpellStringsToStats(spellEffects)
