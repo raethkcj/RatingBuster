@@ -84,9 +84,7 @@ const scanners = {
 	}
 }
 
-// TODO:
-// strip ${} to false. Check if it can be nested? If not, ez
-// Handle $tokens that are prefixed by an explicit spellID
+// TODO: map ${...} to the same logic as "plain" integers (undefined identifiers)
 function mapTextToStats(text: string, stats: StatValue[][], scanner?: string) {
 	text = text.replace(/[\s.]+$/, "").toLowerCase()
 	scanner ||= text.search(/\d/) > 0 ? "StatIDLookup" : "WholeText"
@@ -97,35 +95,31 @@ function mapTextToStats(text: string, stats: StatValue[][], scanner?: string) {
 	// Matches an optional leading + or -, plus one of:
 	//   Replacement token:
 	//     Leading $
-	//     One of:
-	//       a: aura radius,
-	//       i: max target count
-	//       m: min/max effect
-	//       s: effect spread,
-	//       t: time interval,
+	//     Optional spellID override
+	//     An identifier from: https://wowdev.wiki/Spells#Known_identifiers
 	//     Optional integer indicating SpellEffect Index
 	//   Literal number:
 	//     Digits 0-9 or decimal point ".", ends in digit
-	const pattern = text.replace(/[+-]?(\$(?<tokenType>[satmi])(?<tokenIndex>\d?)|[\d\.]+(?<=\d))/g, function(match, _1, _2, _3, offset, string, groups) {
+	const pattern = text.replace(/[+-]?(\$(?<spellID>\d*)(?<identifier>[a-z])(?<identifierIndex>\d?)|[\d\.]+(?<=\d))/g, function(match, _1, _2, _3, _4, offset, string, groups) {
 		let stat
-		switch (groups.tokenType) {
-			case "s":
+		// TODO These identifiers are only valid for Spell.db2.
+		// SpellItemEnchantment uses an entirely separate set,
+		// e.g. https://wago.tools/db2/SpellItemEnchantment?filter[Name_lang]=%24f
+		switch (groups.identifier) {
 			case "m":
+			case "o": // TODO since this should be HP5, multiply by 5000 / EffectAuraPeriod
+			case "s":
+			case "w":
 				// Since we only parse effects with a range of 0 or 1,
 				// we can treat min, max and spread identically
-				stat = stats[groups.tokenIndex]
+				stat = stats[groups.identifierIndex]
 				if (isManaRegen(stat)) {
 					checkForManaRegen = true
 				}
 				newStats.push(stat)
 				matchedStatCount++
 				break
-			case "a":
-			case "t":
-				newStats.push(false)
-				break
-			case "i":
-			default:
+			case undefined:
 				stat = matchedStatCount < stats.length ? stats[matchedStatCount] : false
 				if ((isManaRegen(stat) || checkForManaRegen) && match === "5") {
 					newStats.push(false)
@@ -137,6 +131,28 @@ function mapTextToStats(text: string, stats: StatValue[][], scanner?: string) {
 					newStats.push(stat)
 					matchedStatCount++
 				}
+				break
+			case "a":
+			case "c":
+			case "d":
+			case "h":
+			case "i":
+			case "n":
+			case "t":
+			case "u":
+			case "x":
+				// Confirmed non-stats
+				newStats.push(false)
+				break
+			case "g":
+			case "l":
+				console.log(`Unhandled conditional identifier ${groups.identifier} in '${string}'`)
+				newStats.push(false)
+				break
+			default:
+				console.log(`Unhandled identifier ${groups.identifier} in '${string}'`)
+				newStats.push(false)
+				break
 		}
 		return "%s"
 	})
