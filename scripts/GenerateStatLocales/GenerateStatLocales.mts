@@ -683,7 +683,7 @@ async function fetchStatSpellDescriptions(spellIDs: number[]): Promise<SpellDesc
 async function traverseDescriptionBranches(description: string): Promise<string[]> {
 	const branches = [description]
 	const conditionPattern = /\$\?/g
-	const branchPattern = /[$\w|&]*?\[([^[\]]*)\]\??/gyd
+	const branchPattern = /[$\w|& ]*?\[([^[\]]*)\]\??/gyd
 	let i = 0
 	while (i < branches.length) {
 		const branch = branches[i]
