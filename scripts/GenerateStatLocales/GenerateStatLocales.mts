@@ -86,8 +86,6 @@ const scanners = {
 
 // TODO:
 // strip ${} to false. Check if it can be nested? If not, ez
-// Move toLowerCase() later in pipeline? Maybe not needed, we should never need $M
-// Add $m / $M
 // Handle $tokens that are prefixed by an explicit spellID
 function mapTextToStats(text: string, stats: StatValue[][], scanner?: string) {
 	text = text.replace(/[\s.]+$/, "").toLowerCase()
@@ -108,36 +106,37 @@ function mapTextToStats(text: string, stats: StatValue[][], scanner?: string) {
 	//     Optional integer indicating SpellEffect Index
 	//   Literal number:
 	//     Digits 0-9 or decimal point ".", ends in digit
-	const pattern = text.replace(/[+-]?(\$(?<tokenType>[sati])(?<tokenIndex>\d?)|[\d\.]+(?<=\d))/g, function(match, _1, _2, _3, offset, string, groups) {
+	const pattern = text.replace(/[+-]?(\$(?<tokenType>[satmi])(?<tokenIndex>\d?)|[\d\.]+(?<=\d))/g, function(match, _1, _2, _3, offset, string, groups) {
 		let stat
 		switch (groups.tokenType) {
 			case "s":
-			// In theory, $s2 could come before $s1. However, this is not
-			// the case in any strings we use in any locale (for now :)).
-			stat = stats[matchedStatCount]
-			if (isManaRegen(stat)) {
-				checkForManaRegen = true
-			}
-			newStats.push(stat)
-			matchedStatCount++
-			break
-			case "a":
-			case "t":
-			newStats.push(false)
-			break
-			default:
-			// tokenType i or plain number
-			stat = matchedStatCount < stats.length ? stats[matchedStatCount] : false
-			if ((isManaRegen(stat) || checkForManaRegen) && match === "5") {
-				newStats.push(false)
-				checkForManaRegen = false
-			} else {
-				if(isManaRegen(stat)) {
+			case "m":
+				// Since we only parse effects with a range of 0 or 1,
+				// we can treat min, max and spread identically
+				stat = stats[groups.tokenIndex]
+				if (isManaRegen(stat)) {
 					checkForManaRegen = true
 				}
 				newStats.push(stat)
 				matchedStatCount++
-			}
+				break
+			case "a":
+			case "t":
+				newStats.push(false)
+				break
+			case "i":
+			default:
+				stat = matchedStatCount < stats.length ? stats[matchedStatCount] : false
+				if ((isManaRegen(stat) || checkForManaRegen) && match === "5") {
+					newStats.push(false)
+					checkForManaRegen = false
+				} else {
+					if(isManaRegen(stat)) {
+						checkForManaRegen = true
+					}
+					newStats.push(stat)
+					matchedStatCount++
+				}
 		}
 		return "%s"
 	})
