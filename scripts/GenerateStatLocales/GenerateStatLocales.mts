@@ -617,26 +617,41 @@ async function fetchStatSpellDescriptions(spellIDs: number[]): Promise<SpellDesc
 	return await getTypedResults<SpellDescription>(query, SpellDescription)
 }
 
-// Parses spell descriptions of the form "prefix $condition[left][right] suffix"
-// into "prefix left suffix" and "prefix right suffix", discarding the condition,
-// and working recursively if necessary.
+// Parses spell descriptions of the form "prefix $condition1[branch1]condition2[branch2][branch3] suffix"
+// into all possible "prefix branchN suffix" forms, discarding the conditions.
 // Returns a flat array of all possible branches, including solely the original string if applicable.
 async function traverseDescriptionBranches(description: string): Promise<string[]> {
 	const branches = [description]
-	const pattern = new RegExp(/\$\?([$\w|&]*?\[([^[\]]*)\]\??)+/, "d")
+	const conditionPattern = /\$\?/g
+	const branchPattern = /[$\w|&]*?\[([^[\]]*)\]\??/gyd
 	let i = 0
 	while (i < branches.length) {
 		const branch = branches[i]
-		const result = branch.match(pattern)
-		if (result && result.indices) {
-			const [full, outer] = result.indices
-			const prefix = branch.substring(0, full[0])
-			const suffix = branch.substring(full[1])
-			const head = branch.substring(0, outer[0])
-			const tail = result[2]
-			branches[i] = prefix.concat(tail, suffix)
-			if ((full[1] - full[0]) - (outer[1] - outer[0]) > 2) {
-				branches.push(head.concat(suffix))
+		conditionPattern.lastIndex = 0
+		const conditionMatch = conditionPattern.exec(branch)
+		if (conditionMatch) {
+			branchPattern.lastIndex = conditionPattern.lastIndex
+			let lastIndex = 0
+			const branchTexts: string[] = []
+			for(const branchMatch of branch.matchAll(branchPattern)) {
+				if (branchMatch.indices) {
+					branchTexts.push(branchMatch[1])
+					lastIndex = branchMatch.indices[0][1]
+				}
+			}
+
+			const prefix = branch.substring(0, conditionMatch.index)
+			const suffix = branch.substring(lastIndex)
+
+			let first = true
+			for(const branchText of branchTexts) {
+				const newBranch = prefix.concat(branchText, suffix)
+				if (first) {
+					branches[i] = newBranch
+					first = false
+				} else {
+					branches.push(newBranch)
+				}
 			}
 		} else {
 			i++
