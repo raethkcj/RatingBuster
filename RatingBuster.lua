@@ -2477,7 +2477,7 @@ do
 			local spellDamage = value * statModContext("ADD_SPELL_DMG_MOD_STR")
 			self:ProcessStat(StatLogic.Stats.SpellDamage, spellDamage, infoTable, link, color, statModContext, false, db.profile.showSpellDmgFromStr)
 
-			local healingPower = statModContext("ADD_HEALING_MOD_STR")
+			local healingPower = value * statModContext("ADD_HEALING_MOD_STR")
 			self:ProcessStat(StatLogic.Stats.HealingPower, healingPower, infoTable, link, color, statModContext, false, db.profile.showHealingFromStr)
 
 			-- Death Knight: Forceful Deflection - Passive
@@ -2525,7 +2525,7 @@ do
 			local bonusArmor = value * statModContext("ADD_BONUS_ARMOR_MOD_AGI")
 			self:ProcessStat(StatLogic.Stats.BonusArmor, bonusArmor, infoTable, link, color, statModContext, false, db.profile.showArmorFromAgi)
 
-			local healingPower = statModContext("ADD_HEALING_MOD_AGI")
+			local healingPower = value * statModContext("ADD_HEALING_MOD_AGI")
 			self:ProcessStat(StatLogic.Stats.HealingPower, healingPower, infoTable, link, color, statModContext, false, db.profile.showHealingFromAgi)
 		elseif stat == StatLogic.Stats.Stamina and db.profile.showStats then
 			local mod = statModContext("MOD_STA")
@@ -2562,7 +2562,7 @@ do
 			)
 			self:ProcessStat(StatLogic.Stats.SpellDamage, spellDamage, infoTable, link, color, statModContext, false, db.profile.showSpellDmgFromInt)
 
-			local healingPower = statModContext("ADD_HEALING_MOD_INT")
+			local healingPower = value * statModContext("ADD_HEALING_MOD_INT")
 			self:ProcessStat(StatLogic.Stats.HealingPower, healingPower, infoTable, link, color, statModContext, false, db.profile.showHealingFromInt)
 
 			local genericManaRegen = value * statModContext("ADD_GENERIC_MANA_REGEN_MOD_INT")
