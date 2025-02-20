@@ -3534,7 +3534,8 @@ local summaryCalcData = {
 		option = "sumSpellHaste",
 		stat = StatLogic.Stats.SpellHaste,
 		func = function(sum, statModContext)
-			return sum[StatLogic.Stats.SpellHasteRating] * statModContext("ADD_SPELL_HASTE_MOD_SPELL_HASTE_RATING")
+			return sum[StatLogic.Stats.SpellHaste]
+				+ sum[StatLogic.Stats.SpellHasteRating] * statModContext("ADD_SPELL_HASTE_MOD_SPELL_HASTE_RATING")
 		end,
 	},
 	-- Spell Haste Rating - SPELL_HASTE_RATING
