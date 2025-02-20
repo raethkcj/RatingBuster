@@ -2550,7 +2550,7 @@ do
 				infoTable["Decimal"] = value
 			end
 
-			local mana = value * statModContext("ADD_MANA_MOD_INT") * statModContext("MOD_MANA")
+			local mana = value * statModContext("ADD_MANA_MOD_INT")
 			self:ProcessStat(StatLogic.Stats.Mana, mana, infoTable, link, color, statModContext, false, db.profile.showManaFromInt)
 
 			local spellCrit = value * statModContext("ADD_SPELL_CRIT_MOD_INT")
