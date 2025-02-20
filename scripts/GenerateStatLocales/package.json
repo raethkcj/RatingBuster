@@ -9,7 +9,7 @@
   "author": "",
   "license": "GPL-2.0",
   "engines": {
-	"node": "20.11.1"
+	"node": "~22"
   },
   "dependencies": {
     "csv-parse": "^5.5.2"
