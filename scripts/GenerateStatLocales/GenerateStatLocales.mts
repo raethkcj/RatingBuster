@@ -100,59 +100,63 @@ function mapTextToStats(text: string, stats: StatValue[][], scanner?: string) {
 	//     Optional integer indicating SpellEffect Index
 	//   Literal number:
 	//     Digits 0-9 or decimal point ".", ends in digit
-	const pattern = text.replace(/[+-]?(\$(?<spellID>\d*)(?<identifier>[a-z])(?<identifierIndex>\d?)|[\d\.]+(?<=\d))/g, function(match, _1, _2, _3, _4, offset, string, groups) {
+	const pattern = text.replace(/[+-]?(\$((?<expression>\{.*?\})|(?<spellID>\d*)(?<identifier>[a-z])(?<identifierIndex>\d?))|(?<plainNumber>[\d\.]+(?<=\d)))/g, function(match, _1, _2, _3, _4, _5, _6, _7, offset, string, groups) {
 		let stat
-		// TODO These identifiers are only valid for Spell.db2.
-		// SpellItemEnchantment uses an entirely separate set,
-		// e.g. https://wago.tools/db2/SpellItemEnchantment?filter[Name_lang]=%24f
-		switch (groups.identifier) {
-			case "m":
-			case "o": // TODO since this should be HP5, multiply by 5000 / EffectAuraPeriod
-			case "s":
-			case "w":
-				// Since we only parse effects with a range of 0 or 1,
-				// we can treat min, max and spread identically
-				stat = stats[groups.identifierIndex]
-				if (isManaRegen(stat)) {
+		if (groups.expression || groups.plainNumber) {
+			stat = matchedStatCount < stats.length ? stats[matchedStatCount] : false
+			if ((isManaRegen(stat) || checkForManaRegen) && match === "5") {
+				newStats.push(false)
+				checkForManaRegen = false
+			} else {
+				if(isManaRegen(stat)) {
 					checkForManaRegen = true
 				}
 				newStats.push(stat)
 				matchedStatCount++
-				break
-			case undefined:
-				stat = matchedStatCount < stats.length ? stats[matchedStatCount] : false
-				if ((isManaRegen(stat) || checkForManaRegen) && match === "5") {
-					newStats.push(false)
-					checkForManaRegen = false
-				} else {
-					if(isManaRegen(stat)) {
+			}
+		} else {
+			// TODO These identifiers are only valid for Spell.db2.
+			// SpellItemEnchantment uses an entirely separate set,
+			// e.g. https://wago.tools/db2/SpellItemEnchantment?filter[Name_lang]=%24f
+			switch (groups.identifier) {
+				case "m":
+				case "o": // TODO since this should be HP5, multiply by 5000 / EffectAuraPeriod
+				case "s":
+				case "w":
+					// Since we only parse effects with a range of 0 or 1,
+					// we can treat min, max and spread identically
+					stat = stats[groups.identifierIndex]
+					if (isManaRegen(stat)) {
 						checkForManaRegen = true
 					}
 					newStats.push(stat)
 					matchedStatCount++
-				}
-				break
-			case "a":
-			case "c":
-			case "d":
-			case "h":
-			case "i":
-			case "n":
-			case "t":
-			case "u":
-			case "x":
-				// Confirmed non-stats
-				newStats.push(false)
-				break
-			case "g":
-			case "l":
-				console.log(`Unhandled conditional identifier ${groups.identifier} in '${string}'`)
-				newStats.push(false)
-				break
-			default:
-				console.log(`Unhandled identifier ${groups.identifier} in '${string}'`)
-				newStats.push(false)
-				break
+					break
+				case "a":
+				case "c":
+				case "d":
+				case "h":
+				case "i":
+				case "n":
+				case "t":
+				case "u":
+				case "x":
+					// Confirmed non-stats
+					newStats.push(false)
+					break
+				case "g":
+				case "l":
+					console.log(`Unhandled conditional identifier ${groups.identifier} in '${string}'`)
+					newStats.push(false)
+					break
+				case undefined:
+					console.error(`Undefined identifier in '${string}'`)
+					break
+				default:
+					console.log(`Unhandled identifier ${groups.identifier} in '${string}'`)
+					newStats.push(false)
+					break
+			}
 		}
 		return "%s"
 	})
