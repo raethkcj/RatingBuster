@@ -84,7 +84,6 @@ const scanners = {
 	}
 }
 
-// TODO: map ${...} to the same logic as "plain" integers (undefined identifiers)
 function mapTextToStats(text: string, stats: StatValue[][], scanner?: string) {
 	text = text.replace(/[\s.]+$/, "").toLowerCase()
 	scanner ||= text.search(/\d/) > 0 ? "StatIDLookup" : "WholeText"
@@ -146,14 +145,14 @@ function mapTextToStats(text: string, stats: StatValue[][], scanner?: string) {
 					break
 				case "g":
 				case "l":
-					console.log(`Unhandled conditional identifier ${groups.identifier} in '${string}'`)
+					console.warn(`Unhandled conditional identifier ${groups.identifier} in '${string}'`)
 					newStats.push(false)
 					break
 				case undefined:
-					console.error(`Undefined identifier in '${string}'`)
+					console.error(`Undefined identifier, expression, and number in '${string}'`)
 					break
 				default:
-					console.log(`Unhandled identifier ${groups.identifier} in '${string}'`)
+					console.warn(`Unhandled identifier ${groups.identifier} in '${string}'`)
 					newStats.push(false)
 					break
 			}
