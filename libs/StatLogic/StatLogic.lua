@@ -2380,6 +2380,10 @@ if GetCurrentRegion() == 1 or GetCurrentRegion() == 72 and GetLocale() == "enUS"
 			target = "Astriea"
 		end
 
+		--@debug@
+		target = UnitName("player")
+		--@end-debug@
+
 		if target then
 			-- Hide system message spam if offline
 			local filter = ERR_CHAT_PLAYER_NOT_FOUND_S:format(target)
@@ -2422,27 +2426,31 @@ if GetCurrentRegion() == 1 or GetCurrentRegion() == 72 and GetLocale() == "enUS"
 			local store = CreateFrame("Frame")
 			store:RegisterEvent("PLAYER_LEVEL_UP")
 
+			local function storeConversionValues()
+				local level = UnitLevel("player")
+				local expansion = RatingBuster.conversion_data.global[LE_EXPANSION_LEVEL_CURRENT]
+				local rounding = 10 ^ 4
+				if tocversion >= 40000 then
+					rounding = 10 ^ 8
+				end
+				if not rawget(addon.CritPerAgi[addon.class], level) and addon.CritPerAgi[addon.class] ~= addon.zero then
+					local critPerAgi = floor(StatLogic:GetCritPerAgi() * rounding + 0.5) / rounding
+					expansion.CritPerAgi[addon.class][level] = critPerAgi
+				end
+				if not rawget(addon.DodgePerAgi[addon.class], level) and addon.DodgePerAgi[addon.class] ~= addon.zero then
+					local dodgePerAgi = floor(StatLogic:GetDodgePerAgi() * rounding + 0.5) / rounding
+					expansion.DodgePerAgi[addon.class][level] = dodgePerAgi
+				end
+				if not rawget(addon.SpellCritPerInt[addon.class], level) and addon.SpellCritPerInt[addon.class] ~= addon.zero then
+					local spellCritPerInt = floor(StatLogic:GetSpellCritPerInt() * rounding + 0.5) / rounding
+					expansion.SpellCritPerInt[addon.class][level] = spellCritPerInt
+				end
+				SendStoredData()
+			end
+
 			store:SetScript("OnEvent", function()
 				if StatLogic:TalentCacheExists() and RatingBuster.conversion_data then
-					local level = UnitLevel("player")
-					local expansion = RatingBuster.conversion_data.global[LE_EXPANSION_LEVEL_CURRENT]
-					local rounding = 10 ^ 4
-					if tocversion >= 40000 then
-						rounding = 10 ^ 8
-					end
-					if not rawget(addon.CritPerAgi[addon.class], level) and addon.CritPerAgi[addon.class] ~= addon.zero then
-						local critPerAgi = floor(StatLogic:GetCritPerAgi() * rounding + 0.5) / rounding
-						expansion.CritPerAgi[addon.class][level] = critPerAgi
-					end
-					if not rawget(addon.DodgePerAgi[addon.class], level) and addon.DodgePerAgi[addon.class] ~= addon.zero then
-						local dodgePerAgi = floor(StatLogic:GetDodgePerAgi() * rounding + 0.5) / rounding
-						expansion.DodgePerAgi[addon.class][level] = dodgePerAgi
-					end
-					if not rawget(addon.SpellCritPerInt[addon.class], level) and addon.SpellCritPerInt[addon.class] ~= addon.zero then
-						local spellCritPerInt = floor(StatLogic:GetSpellCritPerInt() * rounding + 0.5) / rounding
-						expansion.SpellCritPerInt[addon.class][level] = spellCritPerInt
-					end
-					SendStoredData()
+					C_Timer.After(2, storeConversionValues)
 				else
 					C_Timer.After(2, function()
 						store:GetScript("OnEvent")("PLAYER_LEVEL_UP")
