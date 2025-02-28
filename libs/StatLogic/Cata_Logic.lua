@@ -1465,7 +1465,7 @@ elseif addon.class == "MAGE" then
 		["ADD_AP_MOD_STR"] = {
 			-- Base
 			{
-				["value"] = 2,
+				["value"] = 1,
 			},
 		},
 		["ADD_SPELL_DMG_MOD_INT"] = {
@@ -1755,7 +1755,7 @@ elseif addon.class == "PRIEST" then
 		["ADD_AP_MOD_STR"] = {
 			-- Base
 			{
-				["value"] = 2,
+				["value"] = 1,
 			},
 		},
 		["ADD_SPELL_DMG_MOD_INT"] = {
@@ -2149,7 +2149,7 @@ elseif addon.class == "WARLOCK" then
 		["ADD_AP_MOD_STR"] = {
 			-- Base
 			{
-				["value"] = 2,
+				["value"] = 1,
 			},
 		},
 		["ADD_SPELL_DMG_MOD_INT"] = {
