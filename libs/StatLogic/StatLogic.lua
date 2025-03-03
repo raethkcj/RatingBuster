@@ -2366,18 +2366,16 @@ function StatLogic:GetDiff(item, diff1, diff2, ignoreEnchant, ignoreGems, ignore
 	return diff1, diff2
 end
 
--- Telemetry for agi/int conversions, will delete at the send of SoD.
-if GetCurrentRegion() == 1 or GetCurrentRegion() == 72 and GetLocale() == "enUS" then
+-- Telemetry for agi/int conversions. Only used for new game versions while data is missing.
+if (GetCurrentRegion() == 1 or GetCurrentRegion() == 72) and GetLocale() == "enUS" then
 	local commsVersion = 1
 	local prefix = addonName .. commsVersion
 	local codec = LibStub("LibDeflate"):CreateCodec("\000", "\255", "")
 
 	local function InitializeComms()
 		local target
-		if GetNormalizedRealmName() == "Whitemane" and UnitFactionGroup("player") == "Horde" and tocversion >= 30000 then
+		if GetNormalizedRealmName() == "Whitemane" and UnitFactionGroup("player") == "Horde" and tocversion >= 50000 then
 			target = "Pinstripe"
-		elseif GetNormalizedRealmName() == "Whitemane" and UnitFactionGroup("player") == "Alliance" and tocversion >= 30000 then
-			target = "Astriea"
 		end
 
 		--@debug@

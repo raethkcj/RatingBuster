@@ -34,7 +34,7 @@ StatLogic.GenericStatMap[StatLogic.Stats.HasteRating] = {
 	StatLogic.Stats.RangedHasteRating,
 }
 
--- Numbers reverse engineered by Whitetooth@Cenarius(US) (hotdogee [at] gmail [dot] com)
+-- Extracted from the client at GameTables/RegenMPPerSpt.txt via wow.tools.local
 local BaseManaRegenPerSpi = {
 	0.034965, 0.034191, 0.033465, 0.032526, 0.031661, 0.031076, 0.030523, 0.029994, 0.029307, 0.028661,
 	0.027584, 0.026215, 0.025381, 0.024300, 0.023345, 0.022748, 0.021958, 0.021386, 0.020790, 0.020121,
@@ -58,7 +58,7 @@ local NormalManaRegenPerInt = function(level)
 	return (spi * BaseManaRegenPerSpi[level] / (2 * (int ^ 0.5))) * 5
 end
 
--- Numbers reverse engineered by Whitetooth@Cenarius(US) (hotdogee [at] gmail [dot] com)
+-- Extracted from gtChanceToMeleeCrit.db2 or from gametables/chancetomeleecrit.txt via wow.tools or wago.tools
 addon.CritPerAgi = {
 	["WARRIOR"] = {
 		0.2500, 0.2381, 0.2381, 0.2273, 0.2174, 0.2083, 0.2083, 0.2000, 0.1923, 0.1923,
@@ -143,7 +143,7 @@ addon.CritPerAgi = {
 	},
 }
 
--- Numbers reverse engineered by Whitetooth (hotdogee [at] gmail [dot] com)
+-- Extracted from gtChanceToSpellCrit.db2 or from gametables/chancetospellcrit.txt via wow.tools or wago.tools
 addon.SpellCritPerInt = {
 	["WARRIOR"] = addon.zero,
 	["PALADIN"] = {
