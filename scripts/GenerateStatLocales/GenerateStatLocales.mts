@@ -695,19 +695,27 @@ async function fetchStatSpellDescriptions(spellIDs: number[]): Promise<SpellDesc
 	return await getTypedResults<SpellDescription>(query, SpellDescription)
 }
 
-// Parses spell descriptions of the form "prefix $condition1[branch1]condition2[branch2][branch3] suffix"
+// Parses conditional expressions in spell descriptions of the form
+// "prefix $condition1[branch1]condition2[branch2][branch3] suffix"
 // into all possible "prefix branchN suffix" forms, discarding the conditions.
+// Similarly parses gender and plural conditional tokens:
+// $ghis:her;
+// $lломоть:ломтя:ломтей;
 // Returns a flat array of all possible branches, including solely the original string if applicable.
 async function traverseDescriptionBranches(description: string): Promise<string[]> {
 	const branches = [description]
-	const conditionPattern = /\$\?/g
-	const branchPattern = /[$\w|& ]*?\[([^[\]]*)\]\??/gyd
+	const conditionPattern = /(?<!\()\$((?<expression>\?)|(?<token>[gl]))/g
+	// Using g and y flags, in combination with setting lastIndex to conditionPattern's,
+	// allows us to match expression/token bodies that immediately follow the opening condition
+	const expressionPattern = /[$\w|& ]*?\[([^[\]]*)\]\??/gyd
+	const tokenPattern = /([^:;]*)[:;]/gyd
 	let i = 0
 	while (i < branches.length) {
 		const branch = branches[i]
 		conditionPattern.lastIndex = 0
 		const conditionMatch = conditionPattern.exec(branch)
 		if (conditionMatch) {
+			const branchPattern = conditionMatch.groups!.expression ? expressionPattern : tokenPattern
 			branchPattern.lastIndex = conditionPattern.lastIndex
 			let lastIndex = 0
 			const branchTexts: string[] = []
