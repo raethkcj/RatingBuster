@@ -99,9 +99,9 @@ function mapTextToStats(text: string, stats: StatValue[][], scanner?: string) {
 	//     Optional integer indicating SpellEffect Index
 	//   Literal number:
 	//     Digits 0-9 or decimal point ".", ends in digit
-	const pattern = text.replace(/[+-]?(\$((?<expression>\{.*?\})|(?<spellID>\d*)(?<identifier>[a-z])(?<identifierIndex>\d?))|(?<plainNumber>[\d\.]+(?<=\d)))/g, function(match, _1, _2, _3, _4, _5, _6, _7, offset, string, groups) {
+	const pattern = text.replace(/[+-]?(?:\$(?:(\{.*?\})|(\d*)([a-z])(\d?))|([\d\.]+(?<=\d)))/g, function(match, expression, spellID, identifier, effectIndex, plainNumber, _offset, input) {
 		let stat
-		if (groups.expression || groups.plainNumber) {
+		if (expression || plainNumber) {
 			stat = matchedStatCount < stats.length ? stats[matchedStatCount] : false
 			if ((isManaRegen(stat) || checkForManaRegen) && match === "5") {
 				newStats.push(false)
@@ -117,14 +117,14 @@ function mapTextToStats(text: string, stats: StatValue[][], scanner?: string) {
 			// TODO These identifiers are only valid for Spell.db2.
 			// SpellItemEnchantment uses an entirely separate set,
 			// e.g. https://wago.tools/db2/SpellItemEnchantment?filter[Name_lang]=%24f
-			switch (groups.identifier) {
+			switch (identifier) {
 				case "m":
 				case "o": // TODO since this should be HP5, multiply by 5000 / EffectAuraPeriod
 				case "s":
 				case "w":
 					// Since we only parse effects with a range of 0 or 1,
 					// we can treat min, max and spread identically
-					stat = stats[groups.identifierIndex]
+					stat = stats[effectIndex]
 					if (isManaRegen(stat)) {
 						checkForManaRegen = true
 					}
@@ -145,14 +145,14 @@ function mapTextToStats(text: string, stats: StatValue[][], scanner?: string) {
 					break
 				case "g":
 				case "l":
-					console.warn(`Unhandled conditional identifier ${groups.identifier} in '${string}'`)
+					console.warn(`Unhandled conditional identifier ${identifier} in '${input}'`)
 					newStats.push(false)
 					break
 				case undefined:
-					console.error(`Undefined identifier, expression, and number in '${string}'`)
+					console.error(`Undefined identifier, expression, and number in '${input}'`)
 					break
 				default:
-					console.warn(`Unhandled identifier ${groups.identifier} in '${string}'`)
+					console.warn(`Unhandled identifier ${identifier} in '${input}'`)
 					newStats.push(false)
 					break
 			}
