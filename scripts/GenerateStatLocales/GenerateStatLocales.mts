@@ -707,8 +707,8 @@ async function traverseDescriptionBranches(description: string): Promise<string[
 	const conditionPattern = /(?<!\()\$((?<expression>\?)|(?<token>[gl]))/g
 	// Using g and y flags, in combination with setting lastIndex to conditionPattern's,
 	// allows us to match expression/token bodies that immediately follow the opening condition
-	const expressionPattern = /[$\w|& ]*?\[([^[\]]*)\]\??/gyd
-	const tokenPattern = /([^:;]*)[:;]/gyd
+	const expressionPattern = /[$\w|& ]*?\[([^[\]]*)\]\??/gy
+	const tokenPattern = /([^:;]*)[:;]/gy
 	let i = 0
 	while (i < branches.length) {
 		const branch = branches[i]
@@ -717,13 +717,13 @@ async function traverseDescriptionBranches(description: string): Promise<string[
 		if (conditionMatch) {
 			const branchPattern = conditionMatch.groups!.expression ? expressionPattern : tokenPattern
 			branchPattern.lastIndex = conditionPattern.lastIndex
+
 			let lastIndex = 0
 			const branchTexts: string[] = []
-			for(const branchMatch of branch.matchAll(branchPattern)) {
-				if (branchMatch.indices) {
-					branchTexts.push(branchMatch[1])
-					lastIndex = branchMatch.indices[0][1]
-				}
+			let branchMatch: RegExpExecArray | null
+			while((branchMatch = branchPattern.exec(branch)) !== null) {
+				branchTexts.push(branchMatch[1])
+				lastIndex = branchPattern.lastIndex
 			}
 
 			const prefix = branch.substring(0, conditionMatch.index)
