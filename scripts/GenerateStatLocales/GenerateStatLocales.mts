@@ -119,7 +119,7 @@ function mapTextToSpellStats(text: string, spell: StatSpell, spells: Map<number,
 			// e.g. https://wago.tools/db2/SpellItemEnchantment?filter[Name_lang]=%24f
 			switch (identifier) {
 				case "m":
-				case "o": // TODO since this should be HP5, multiply by 5000 / EffectAuraPeriod
+				case "o":
 				case "s":
 				case "w":
 					let stats: StatValue[][]
@@ -430,7 +430,7 @@ function GetSkillLineStat() {
 }
 
 enum PowerType {
-	Mana = 0,
+	GenericMana = 0,
 }
 
 function GetPowerTypeStat(statSuffix: string) {
@@ -682,6 +682,8 @@ async function fetchStatSpellEffects() {
 		FROM read_csv('${spellEffect}', auto_type_candidates = ['INTEGER', 'DOUBLE', 'VARCHAR']) StatSpell
 		LEFT JOIN '${spellEffect}' ProcSpell ON ProcSpell.EffectTriggerSpell = StatSpell.SpellID
 		WHERE StatSpell.EffectAura in (${effectAuraValues})
+		AND (StatSpell.EffectAuraPeriod = 5 OR StatSpell.EffectAura != '${EffectAura.PERIODIC_HEAL}')
+		AND (StatSpell.EffectMiscValue_0 = '${PowerType.GenericMana}' OR StatSpell.EffectAura != '${EffectAura.MOD_POWER_REGEN}')
 		ORDER BY StatSpell.SpellID, ProcSpell.SpellID, StatSpell.EffectIndex
 	`
 
