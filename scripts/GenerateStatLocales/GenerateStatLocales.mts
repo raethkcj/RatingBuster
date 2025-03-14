@@ -84,9 +84,9 @@ const scanners = {
 	}
 }
 
-function mapTextToStats(text: string, stats: StatValue[][], scanner?: string) {
+function mapTextToSpellStats(text: string, spell: StatSpell, spells: Map<number, StatSpell>) {
 	text = text.replace(/[\s.]+$/, "").toLowerCase()
-	scanner ||= text.search(/\d/) > 0 ? "StatIDLookup" : "WholeText"
+	const scanner = text.search(/\d/) > 0 ? "StatIDLookup" : "WholeText"
 
 	const newStats: Array<string | false> = []
 	let matchedStatCount = 0
@@ -99,8 +99,8 @@ function mapTextToStats(text: string, stats: StatValue[][], scanner?: string) {
 	//     Optional integer indicating SpellEffect Index
 	//   Literal number:
 	//     Digits 0-9 or decimal point ".", ends in digit
-	const pattern = text.replace(/[+-]?(?:\$(?:(\{.*?\})|(\d*)([a-z])(\d?))|([\d\.]+(?<=\d)))/g, function(match, expression, spellID, identifier, effectIndex, plainNumber, _offset, input) {
 		let stat
+	const pattern = text.replace(/[+-]?(?:\$(?:(\{.*?\})|(\d*)([a-z])(\d?))|([\d\.]+(?<=\d)))/g, function(match, expression: string, alternateSpellID: string, identifier: string, effectIndex: string, plainNumber: string, _offset: number, input: string) {
 		if (expression || plainNumber) {
 			stat = matchedStatCount < stats.length ? stats[matchedStatCount] : false
 			if ((isManaRegen(stat) || checkForManaRegen) && match === "5") {
@@ -122,6 +122,18 @@ function mapTextToStats(text: string, stats: StatValue[][], scanner?: string) {
 				case "o": // TODO since this should be HP5, multiply by 5000 / EffectAuraPeriod
 				case "s":
 				case "w":
+					let stats: StatValue[][]
+					if (alternateSpellID) {
+						const alternateSpell = spells.get(parseInt(alternateSpellID))!
+						if (alternateSpell) {
+							stats = alternateSpell.stats
+						} else {
+							newStats.push(false)
+							break
+						}
+					} else {
+						stats = spell.stats
+					}
 					// Since we only parse effects with a range of 0 or 1,
 					// we can treat min, max and spread identically
 					stat = stats[effectIndex]
@@ -863,7 +875,7 @@ for (const spellDescription of spellDescriptions) {
 	if (spell) {
 		const branches = await traverseDescriptionBranches(spellDescription.description)
 		for (const branch of branches) {
-			await mapTextToStats(branch, spell.stats)
+			await mapTextToSpellStats(branch, spell, statSpells)
 		}
 	}
 }
