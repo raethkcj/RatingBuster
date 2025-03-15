@@ -1,4 +1,4 @@
-## Interface: 11504, 11505
+## Interface: 11506, 11507
 ## Title: StatLogic
 ## Author: Whitetooth, raethkcj
 ## X-License: GPL v2
