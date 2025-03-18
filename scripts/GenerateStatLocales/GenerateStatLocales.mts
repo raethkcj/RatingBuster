@@ -88,7 +88,7 @@ function mapTextToSpellStats(text: string, spell: StatSpell, spells: Map<number,
 	text = text.replace(/[\s.]+$/, "").toLowerCase()
 	const scanner = text.search(/\d/) > 0 ? "StatIDLookup" : "WholeText"
 
-	const newStats: Array<string | false> = []
+	const newStats: (string[] | false)[] = []
 	let matchedStatCount = 0
 	let checkForManaRegen = false
 	// Matches an optional leading + or -, plus one of:
@@ -99,10 +99,15 @@ function mapTextToSpellStats(text: string, spell: StatSpell, spells: Map<number,
 	//     Optional integer indicating SpellEffect Index
 	//   Literal number:
 	//     Digits 0-9 or decimal point ".", ends in digit
-		let stat
 	const pattern = text.replace(/[+-]?(?:\$(?:(\{.*?\})|(\d*)([a-z])(\d?))|([\d\.]+(?<=\d)))/g, function(match, expression: string, alternateSpellID: string, identifier: string, effectIndex: string, plainNumber: string, _offset: number, input: string) {
 		if (expression || plainNumber) {
-			stat = matchedStatCount < stats.length ? stats[matchedStatCount] : false
+			const statEffect = spell.statEffects[matchedStatCount]
+			let stat: boolean | string[]
+			if (statEffect && matchedStatCount < spell.statEffects.length) {
+				stat = statEffect.map(v => v.stat)
+			} else {
+				stat = false
+			}
 			if ((isManaRegen(stat) || checkForManaRegen) && match === "5") {
 				newStats.push(false)
 				checkForManaRegen = false
@@ -122,26 +127,31 @@ function mapTextToSpellStats(text: string, spell: StatSpell, spells: Map<number,
 				case "o":
 				case "s":
 				case "w":
-					let stats: StatValue[][]
+					// Since we only parse effects with a range of 0 or 1,
+					// we can treat min, max and spread identically
+					let statEffects: StatValue[][]
 					if (alternateSpellID) {
 						const alternateSpell = spells.get(parseInt(alternateSpellID))!
 						if (alternateSpell) {
-							stats = alternateSpell.stats
+							statEffects = alternateSpell.statEffects
 						} else {
 							newStats.push(false)
 							break
 						}
 					} else {
-						stats = spell.stats
+						statEffects = spell.statEffects
 					}
-					// Since we only parse effects with a range of 0 or 1,
-					// we can treat min, max and spread identically
-					stat = stats[effectIndex]
-					if (isManaRegen(stat)) {
-						checkForManaRegen = true
+					const statValues = statEffects[parseInt(effectIndex) - 1]
+					if (statValues) {
+						const stat = statValues.map(v => v.stat)
+						if (isManaRegen(stat)) {
+							checkForManaRegen = true
+						}
+						newStats.push(stat)
+						matchedStatCount++
+					} else {
+						newStats.push(false)
 					}
-					newStats.push(stat)
-					matchedStatCount++
 					break
 				case "a":
 				case "c":
@@ -505,7 +515,7 @@ function getEnchantStats(enchant: StatEnchant): StatValue[][] {
 				stats[index] = [new StatValue("AverageWeaponDamage", pointsMin)]
 				break
 			case EnchantEffect.Buff:
-				const buffStats = statSpells.get(effectArg)?.stats.flat()
+				const buffStats = statSpells.get(effectArg)?.statEffects.flat()
 				if (buffStats) stats[index] = buffStats
 				break
 			case EnchantEffect.Resistance:
@@ -826,7 +836,7 @@ class StatValue {
 }
 
 class StatSpell {
-	stats: StatValue[][] = []
+	statEffects: StatValue[][] = []
 	descriptions: string[] = []
 }
 
@@ -844,14 +854,14 @@ const procSpellIDSet = new Set<number>()
 for (const effect of spellEffects) {
 	const spell = statSpells.get(effect.spellID) || new StatSpell()
 
-	if (!spell.stats[effect.effectIndex] && effect.effectDieSides <= 1) {
+	if (!spell.statEffects[effect.effectIndex] && effect.effectDieSides <= 1) {
 		const effectAuraFunc = effectAuraStats[effect.effectAura]
 		const stats = effectAuraFunc ? effectAuraFunc(effect.effectMiscValue0) : null
 		if (stats && stats.length > 0) {
 			const value = effect.effectBasePoints + effect.effectDieSides
 
 			// May leave empty indices if a spell has non-stat effects prior to a stat effect
-			spell.stats[effect.effectIndex] = stats.map((s) => new StatValue(s, value))
+			spell.statEffects[effect.effectIndex] = stats.map((s) => new StatValue(s, value))
 
 			statSpellIDSet.add(effect.spellID)
 			if (effect.procSpellID) {
@@ -860,7 +870,7 @@ for (const effect of spellEffects) {
 		}
 	}
 
-	if (spell.stats.length > 0) {
+	if (spell.statEffects.length > 0) {
 		statSpells.set(effect.spellID, spell)
 	}
 }
