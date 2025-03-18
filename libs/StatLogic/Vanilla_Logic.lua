@@ -1465,7 +1465,7 @@ elseif addon.class == "WARRIOR" then
 				["known"] = 426940,
 				["rune"] = true,
 				["aura"] = 426940,
-				["value"] = 0.10,
+				["value"] = 0.15,
 			},
 		},
 		["ADD_AP_MOD_DEFENSE"] = {
