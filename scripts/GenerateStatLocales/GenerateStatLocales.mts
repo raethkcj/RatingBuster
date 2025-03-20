@@ -263,6 +263,8 @@ enum EffectAura {
 	MOD_RESISTANCE = 22, // School
 	MOD_STAT = 29, // PrimaryStats
 	MOD_SKILL = 30, // SkillLine
+	MOD_INCREASE_HEALTH = 34,
+	MOD_INCREASE_POWER = 35,
 	MOD_PARRY_PERCENT = 47,
 	MOD_DODGE_PERCENT = 49,
 	MOD_BLOCK_PERCENT = 51,
@@ -440,13 +442,13 @@ function GetSkillLineStat() {
 }
 
 enum PowerType {
-	GenericMana = 0,
+	Mana = 0,
 }
 
-function GetPowerTypeStat(statSuffix: string) {
+function GetPowerTypeStat(statPrefix: string, statSuffix: string) {
 	return (powerTypeID: number): string[] => {
 		const powerType = PowerType[powerTypeID]
-		return powerType ? [powerType + statSuffix] : []
+		return powerType ? [statPrefix + powerType + statSuffix] : []
 	}
 }
 
@@ -468,6 +470,8 @@ const effectAuraStats: Record<EffectAura, (miscValue: number) => string[]> = {
 	[EffectAura.MOD_RESISTANCE]: GetSchoolStat("Resistance", "Armor"),
 	[EffectAura.MOD_STAT]: GetPrimaryStat(),
 	[EffectAura.MOD_SKILL]: GetSkillLineStat(),
+	[EffectAura.MOD_INCREASE_HEALTH]: GetPlainStat("Health"),
+	[EffectAura.MOD_INCREASE_POWER]: GetPowerTypeStat("", ""),
 	[EffectAura.MOD_PARRY_PERCENT]: GetPlainStat("Parry"),
 	[EffectAura.MOD_DODGE_PERCENT]: GetPlainStat("Dodge"),
 	[EffectAura.MOD_BLOCK_PERCENT]: GetPlainStat("BlockChance"),
@@ -475,7 +479,7 @@ const effectAuraStats: Record<EffectAura, (miscValue: number) => string[]> = {
 	[EffectAura.MOD_HIT_CHANCE]: GetPlainStat("MeleeHit", "RangedHit"),
 	[EffectAura.MOD_SPELL_HIT_CHANCE]: GetPlainStat("SpellHit"),
 	[EffectAura.MOD_SPELL_CRIT_CHANCE]: GetPlainStat("SpellCrit"),
-	[EffectAura.MOD_POWER_REGEN]: GetPowerTypeStat("Regen"),
+	[EffectAura.MOD_POWER_REGEN]: GetPowerTypeStat("Generic", "Regen"),
 	[EffectAura.MOD_ATTACK_POWER]: GetPlainStat("AttackPower"),
 	[EffectAura.MOD_TARGET_RESISTANCE]: GetSchoolStat("Resistance", "Armor"),
 	[EffectAura.MOD_RANGED_ATTACK_POWER]: GetPlainStat("RangedAttackPower"),
@@ -693,7 +697,7 @@ async function fetchStatSpellEffects() {
 		LEFT JOIN '${spellEffect}' ProcSpell ON ProcSpell.EffectTriggerSpell = StatSpell.SpellID
 		WHERE StatSpell.EffectAura in (${effectAuraValues})
 		AND (StatSpell.EffectAuraPeriod = 5 OR StatSpell.EffectAura != '${EffectAura.PERIODIC_HEAL}')
-		AND (StatSpell.EffectMiscValue_0 = '${PowerType.GenericMana}' OR StatSpell.EffectAura != '${EffectAura.MOD_POWER_REGEN}')
+		AND (StatSpell.EffectMiscValue_0 = '${PowerType.Mana}' OR StatSpell.EffectAura != '${EffectAura.MOD_POWER_REGEN}')
 		ORDER BY StatSpell.SpellID, ProcSpell.SpellID, StatSpell.EffectIndex
 	`
 
