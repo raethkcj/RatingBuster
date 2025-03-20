@@ -84,13 +84,15 @@ const scanners = {
 	}
 }
 
-function mapTextToSpellStats(text: string, spell: StatSpell, spells: Map<number, StatSpell>) {
+type StatEntry = StatValue[] | false
+
+function mapTextToSpellStats(text: string, spell: StatSpell, spells: Map<number, StatSpell>): [string, StatEntry[]] {
 	text = text.replace(/[\s.]+$/, "").toLowerCase()
 	const scanner = text.search(/\d/) > 0 ? "StatIDLookup" : "WholeText"
 
-	const newStats: (string[] | false)[] = []
-	let matchedStatCount = 0
-	let checkForManaRegen = false
+	const remainingEffects: StatValue[][] = [...spell.statEffects]
+
+	const statEntries: StatEntry[] = []
 	// Matches an optional leading + or -, plus one of:
 	//   Replacement token:
 	//     Leading $
@@ -99,25 +101,10 @@ function mapTextToSpellStats(text: string, spell: StatSpell, spells: Map<number,
 	//     Optional integer indicating SpellEffect Index
 	//   Literal number:
 	//     Digits 0-9 or decimal point ".", ends in digit
-	const pattern = text.replace(/[+-]?(?:\$(?:(\{.*?\})|(\d*)([a-z])(\d?))|([\d\.]+(?<=\d)))/g, function(match, expression: string, alternateSpellID: string, identifier: string, effectIndex: string, plainNumber: string, _offset: number, input: string) {
+	const pattern = text.replace(/[+-]?(?:\$(?:(\{.*?\})|(\d*)([a-z])(\d?))|([\d\.]+(?<=\d)))/g, function(match, expression: string, alternateSpellID: string, identifier: string, identifierIndex: string, plainNumber: string, _offset: number, input: string) {
 		if (expression || plainNumber) {
-			const statEffect = spell.statEffects[matchedStatCount]
-			let stat: boolean | string[]
-			if (statEffect && matchedStatCount < spell.statEffects.length) {
-				stat = statEffect.map(v => v.stat)
-			} else {
-				stat = false
-			}
-			if ((isManaRegen(stat) || checkForManaRegen) && match === "5") {
-				newStats.push(false)
-				checkForManaRegen = false
-			} else {
-				if(isManaRegen(stat)) {
-					checkForManaRegen = true
-				}
-				newStats.push(stat)
-				matchedStatCount++
-			}
+			// We can't directly identify which effectIndex this number is, so save it for later
+			statEntries.push([new StatValue('Placeholder', parseInt(plainNumber) || 0)])
 		} else {
 			// TODO These identifiers are only valid for Spell.db2.
 			// SpellItemEnchantment uses an entirely separate set,
@@ -131,26 +118,26 @@ function mapTextToSpellStats(text: string, spell: StatSpell, spells: Map<number,
 					// we can treat min, max and spread identically
 					let statEffects: StatValue[][]
 					if (alternateSpellID) {
-						const alternateSpell = spells.get(parseInt(alternateSpellID))!
+						const alternateSpell = spells.get(parseInt(alternateSpellID))
 						if (alternateSpell) {
 							statEffects = alternateSpell.statEffects
 						} else {
-							newStats.push(false)
+							statEntries.push(false)
 							break
 						}
 					} else {
 						statEffects = spell.statEffects
 					}
-					const statValues = statEffects[parseInt(effectIndex) - 1]
+
+					const effectIndex = parseInt(identifierIndex) - 1
+					const statValues = statEffects[effectIndex]
 					if (statValues) {
-						const stat = statValues.map(v => v.stat)
-						if (isManaRegen(stat)) {
-							checkForManaRegen = true
+						statEntries.push(statValues)
+						if (!alternateSpellID) {
+							delete remainingEffects[effectIndex]
 						}
-						newStats.push(stat)
-						matchedStatCount++
 					} else {
-						newStats.push(false)
+						statEntries.push(false)
 					}
 					break
 				case "a":
@@ -163,25 +150,59 @@ function mapTextToSpellStats(text: string, spell: StatSpell, spells: Map<number,
 				case "u":
 				case "x":
 					// Confirmed non-stats
-					newStats.push(false)
+					statEntries.push(false)
 					break
 				case "g":
 				case "l":
 					console.warn(`Unhandled conditional identifier ${identifier} in '${input}'`)
-					newStats.push(false)
+					statEntries.push(false)
 					break
 				case undefined:
 					console.error(`Undefined identifier, expression, and number in '${input}'`)
 					break
 				default:
 					console.warn(`Unhandled identifier ${identifier} in '${input}'`)
-					newStats.push(false)
+					statEntries.push(false)
 					break
 			}
 		}
 		return "%s"
 	})
-	return [pattern, matchedStatCount > 0 ? newStats : false]
+
+	// If the spell had more effects than could be matched by identifiers,
+	// attempt to map the remaining effects to already-assigned StatEntries with the same value
+	for (const effect of remainingEffects) {
+		if (effect) {
+			const effectValue = effect[0].value
+			const statEntryIndex = statEntries.findIndex(e => e && e.find(sv => sv.value === effectValue))
+			if (statEntryIndex >= 0) {
+				const statEntry = statEntries[statEntryIndex]
+				if (statEntry) {
+					if (statEntry[0].stat === 'Placeholder') {
+						statEntries[statEntryIndex] = effect
+					} else {
+						statEntries[statEntryIndex] = statEntry.concat(effect)
+					}
+				}
+			}
+		}
+	}
+
+	// Map any remaining Placeholders to false (meaning the number does not represent a stat)
+	for (const [i, statEntry] of Object.entries(statEntries)) {
+		if (statEntry) {
+			const plainNumberIndex = statEntry.findIndex(sv => sv.stat === 'Placeholder')
+			if (plainNumberIndex >= 0) {
+				if (statEntry.length > 1) {
+					console.warn("Unexpected Placeholder in multi-stat StatEntry")
+				} else {
+					statEntries[i] = false
+				}
+			}
+		}
+	}
+
+	return [pattern, statEntries]
 }
 
 const base = import.meta.url
