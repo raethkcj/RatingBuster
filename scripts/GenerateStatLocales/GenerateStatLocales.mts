@@ -86,7 +86,7 @@ const scanners = {
 
 type StatEntry = StatValue[] | false
 
-function mapTextToSpellStats(text: string, spell: StatSpell, spells: Map<number, StatSpell>): [string, StatEntry[]] {
+async function mapTextToSpellStats(text: string, spell: StatSpell, spells: Map<number, StatSpell>): Promise<[string, StatEntry[]]> {
 	text = text.replace(/[\s.]+$/, "").toLowerCase()
 	const scanner = text.search(/\d/) > 0 ? "StatIDLookup" : "WholeText"
 
@@ -308,6 +308,12 @@ enum EffectAura {
 }
 const effectAuraValues = Object.values(EffectAura).slice(Object.values(EffectAura).length / 2)
 
+const NegativeEffectAuras = new Set<EffectAura> ([
+	EffectAura.MOD_PARRY_PERCENT,
+	EffectAura.MOD_DODGE_PERCENT,
+	EffectAura.MOD_TARGET_RESISTANCE,
+])
+
 // EffectAura.PROC_TRIGGER_SPELL
 const procTriggerSpell = 42
 
@@ -347,7 +353,7 @@ enum School {
 	Shadow = 0x20,
 	Arcane = 0x40,
 
-	All = 0x7E,
+	All = 0x7C,
 }
 
 function GetSchoolStat(statSuffix: string, physicalOverride: string, allSchoolsOverride?: string) {
@@ -502,7 +508,7 @@ const effectAuraStats: Record<EffectAura, (miscValue: number) => string[]> = {
 	[EffectAura.MOD_SPELL_CRIT_CHANCE]: GetPlainStat("SpellCrit"),
 	[EffectAura.MOD_POWER_REGEN]: GetPowerTypeStat("Generic", "Regen"),
 	[EffectAura.MOD_ATTACK_POWER]: GetPlainStat("AttackPower"),
-	[EffectAura.MOD_TARGET_RESISTANCE]: GetSchoolStat("Resistance", "Armor"),
+	[EffectAura.MOD_TARGET_RESISTANCE]: GetSchoolStat("Penetration", "ArmorPenetration", "SpellPenetration"),
 	[EffectAura.MOD_RANGED_ATTACK_POWER]: GetPlainStat("RangedAttackPower"),
 	[EffectAura.MOD_HEALING_DONE]: GetPlainStat("HealingPower"),
 	[EffectAura.MOD_MELEE_HASTE]: GetPlainStat("MeleeHaste"),
@@ -835,6 +841,48 @@ async function fetchStatEnchants(spellIDs: number[]): Promise<StatEnchant[]> {
 	return await getTypedResults(query, StatEnchant)
 }
 
+class StatValue {
+	constructor(public stat: string, public value: number) {}
+}
+
+class StatSpell {
+	statEffects: StatValue[][] = []
+	descriptions: string[] = []
+}
+
+async function enumerateStatAndProcSpells(spellEffects: SpellEffect[]): Promise<[Map<number, StatSpell>, Set<number>]> {
+	const statSpells = new Map<number, StatSpell>()
+	const procSpellIDSet = new Set<number>()
+	for (const effect of spellEffects) {
+		const spell = statSpells.get(effect.spellID) || new StatSpell()
+
+		if (!spell.statEffects[effect.effectIndex] && effect.effectDieSides <= 1) {
+			const effectAuraFunc = effectAuraStats[effect.effectAura]
+			const stats = effectAuraFunc ? effectAuraFunc(effect.effectMiscValue0) : null
+			if (stats && stats.length > 0) {
+				let value = effect.effectBasePoints + effect.effectDieSides
+
+				if (NegativeEffectAuras.has(effect.effectAura)) {
+					value *= -1
+				}
+
+				// May leave empty indices if a spell has non-stat effects prior to a stat effect
+				spell.statEffects[effect.effectIndex] = stats.map((s) => new StatValue(s, value))
+
+				if (effect.procSpellID) {
+					procSpellIDSet.add(effect.procSpellID)
+				}
+			}
+		}
+
+		if (spell.statEffects.length > 0) {
+			statSpells.set(effect.spellID, spell)
+		}
+	}
+
+	return [statSpells, procSpellIDSet]
+}
+
 function processStaticLocaleData() {
 	for (const locale of locales) {
 		const localeResults: Promise<any>[] = []
@@ -856,15 +904,6 @@ mkdirSync(new URL(databaseDirName, base), { recursive: true })
 mkdirSync(new URL(localeDirName, base), { recursive: true })
 // processStaticLocaleData()
 
-class StatValue {
-	constructor(public stat: string, public value: number) {}
-}
-
-class StatSpell {
-	statEffects: StatValue[][] = []
-	descriptions: string[] = []
-}
-
 // For spells with EffectAura+MiscValue0 combos that map to stats, fetch:
 //   a) Spell description for that spell
 //   b) Spell descriptions for any proc trigger auras that proc that spell
@@ -873,32 +912,7 @@ class StatSpell {
 const spellEffects = await fetchStatSpellEffects()
 console.log(`${spellEffects.length} effects`)
 
-const statSpells = new Map<number, StatSpell>()
-const statSpellIDSet = new Set<number>()
-const procSpellIDSet = new Set<number>()
-for (const effect of spellEffects) {
-	const spell = statSpells.get(effect.spellID) || new StatSpell()
-
-	if (!spell.statEffects[effect.effectIndex] && effect.effectDieSides <= 1) {
-		const effectAuraFunc = effectAuraStats[effect.effectAura]
-		const stats = effectAuraFunc ? effectAuraFunc(effect.effectMiscValue0) : null
-		if (stats && stats.length > 0) {
-			const value = effect.effectBasePoints + effect.effectDieSides
-
-			// May leave empty indices if a spell has non-stat effects prior to a stat effect
-			spell.statEffects[effect.effectIndex] = stats.map((s) => new StatValue(s, value))
-
-			statSpellIDSet.add(effect.spellID)
-			if (effect.procSpellID) {
-				procSpellIDSet.add(effect.procSpellID)
-			}
-		}
-	}
-
-	if (spell.statEffects.length > 0) {
-		statSpells.set(effect.spellID, spell)
-	}
-}
+const [statSpells, procSpellIDSet] = await enumerateStatAndProcSpells(spellEffects)
 
 console.log(`${statSpells.size} statSpells`)
 
@@ -912,7 +926,7 @@ for (const spellDescription of spellDescriptions) {
 	if (spell) {
 		const branches = await traverseDescriptionBranches(spellDescription.description)
 		for (const branch of branches) {
-			await mapTextToSpellStats(branch, spell, statSpells)
+			const [pattern, statEntries] = await mapTextToSpellStats(branch, spell, statSpells)
 		}
 	}
 }
