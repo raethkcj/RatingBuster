@@ -7,23 +7,66 @@ import { finished } from 'node:stream/promises'
 
 import { DuckDBInstance, DuckDBValue } from '@duckdb/node-api'
 
+enum Expansion {
+	Vanilla = 1,
+	TBC,
+	Wrath,
+	Cata,
+	MoP
+}
+
 {
-	let versions
+	type WagoBuilds = { [product: string]: { version: string }[] }
+	let versions: WagoBuilds
 	async function fetchBuilds() {
-		return versions ||= fetch("https://wago.tools/api/builds").then(response => response.json())
+		return versions ||= fetch("https://wago.tools/api/builds").then(response => response.json()) as unknown as WagoBuilds
 	}
 
-	var getLatestVersion = async function(majorVersion) {
-		let product = "wow_classic_ptr"
-		if (majorVersion === "1") {
-			product = "wow_classic_era_ptr"
-		} else if(majorVersion === "4") {
-			product = "wow_classic_beta"
+	const publicProducts = new Set<string> ([
+		"wow_classic",
+		"wow_classic_ptr",
+		"wow_classic_era",
+		"wow_classic_era_ptr",
+		"wow_classic_beta",
+	])
+
+	class Version {
+		constructor(
+			public version = "",
+			public expansion = "",
+			public major = "",
+			public minor = "",
+			public buildNumber = "",
+		) {}
+
+		gte(other: Version): boolean {
+			return this.expansion >= other.expansion
+				&& this.major >= other.major
+				&& this.minor >= other.minor
+				&& this.buildNumber >= other.buildNumber
 		}
-		const builds = await fetchBuilds()
-		return builds[product].find(build => {
-			return build.version.match(new RegExp(`^${majorVersion}\\b`))
-		}).version
+	}
+
+	var getLatestVersion = async function(expansion: Expansion) {
+		const productBuilds = await fetchBuilds()
+		let max = new Version()
+		for (const product of publicProducts) {
+			const builds = productBuilds[product]
+			const build = builds.find(b => b.version.startsWith(`${expansion}.`))
+			const version = build?.version
+			if (version) {
+				const current = new Version(version, ...version.split("."))
+				if (current.gte(max)) {
+					max = current
+				}
+			}
+		}
+		if (max.version != "") {
+			console.log(`Found version ${max.version} for expansion ${Expansion[expansion]}`)
+			return max.version
+		} else {
+			console.error(`Couldn't find any public build for expansion ${Expansion[expansion]}`)
+		}
 	}
 }
 
@@ -890,7 +933,7 @@ function processStaticLocaleData() {
 			for (const [version, indices] of Object.entries(versions)) {
 				localeResults.push(processDatabase({
 					name: name,
-					version: version,
+					version: parseInt(version),
 					locale: locale,
 					indices: indices
 				}))
