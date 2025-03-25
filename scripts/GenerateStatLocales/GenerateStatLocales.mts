@@ -252,6 +252,65 @@ const base = import.meta.url
 import statLocaleData from './StatLocaleData.json'
 const databaseDirName = "DB2"
 
+class DatabaseTable {
+	path: URL
+
+	private constructor(
+		public name: string,
+		public expansion: Expansion,
+		public locale: string,
+		public fileName: string,
+	) {
+		this.path = new URL(path.join(DatabaseTable.directory, fileName), base)
+	}
+
+	static directory = "DB2"
+	static cache = new Map<string, DatabaseTable>()
+
+	static async get(name: string, expansion: Expansion, locale: string): Promise<DatabaseTable> {
+		const fileName = `${name}_${expansion}_${locale}.csv`
+		if (!this.cache.get(fileName)) {
+			const table = new DatabaseTable(name, expansion, locale, fileName)
+			if (existsSync(table.path)) {
+				console.log(`Found ${fileName}, skipping fetch.`)
+				this.cache.set(fileName, table)
+			} else {
+				console.log(`Fetching ${fileName}.`)
+				const build = await getLatestVersion(expansion)
+				const fetchUrl = `https://wago.tools/db2/${name}/csv?build=${build}&locale=${locale}`
+				const response = await fetch(fetchUrl)
+				if (response.ok) {
+					const text = await response.text()
+					writeFileSync(table.path, text)
+					console.log(`Fetched ${fileName}.`)
+					this.cache.set(fileName, table)
+				} else {
+					throw new Error(`Failed to fetch ${table.path}: ${response.status} ${response.statusText}`)
+				}
+			}
+		}
+
+		return this.cache.get(fileName)!
+	}
+}
+
+const instance = await DuckDBInstance.create()
+const connection = await instance.connect()
+
+async function getTypedResults<T>(query: string, type: { new(...args: any[]): T }): Promise<T[]> {
+	const results: T[] = []
+	const result = await connection.run(query)
+	let chunk = await result.fetchChunk()
+	while(chunk && chunk.rowCount > 0) {
+		for (const row of chunk.getRows()) {
+			results.push(new type(...row))
+		}
+		chunk = await result.fetchChunk()
+	}
+
+	return results
+}
+
 async function fetchDatabase(db) {
 	db.fileName = `${db.name}_${db.version}_${db.locale}.csv`
 	db.path = new URL(path.join(databaseDirName, db.fileName), base)
@@ -728,23 +787,6 @@ const locales = [
 	"ptBR",
 	"itIT",
 ]
-
-const instance = await DuckDBInstance.create()
-const connection = await instance.connect()
-
-async function getTypedResults<T>(query: string, type: { new(...args: any[]): T }): Promise<T[]> {
-	const results: T[] = []
-	const result = await connection.run(query)
-	let chunk = await result.fetchChunk()
-	while(chunk && chunk.rowCount > 0) {
-		for (const row of chunk.getRows()) {
-			results.push(new type(...row))
-		}
-		chunk = await result.fetchChunk()
-	}
-
-	return results
-}
 
 class SpellEffect {
 	constructor(
