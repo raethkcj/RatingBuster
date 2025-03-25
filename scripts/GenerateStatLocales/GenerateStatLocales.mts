@@ -253,7 +253,7 @@ import statLocaleData from './StatLocaleData.json'
 const databaseDirName = "DB2"
 
 class DatabaseTable {
-	path: URL
+	path: string
 
 	private constructor(
 		public name: string,
@@ -261,10 +261,10 @@ class DatabaseTable {
 		public locale: string,
 		public fileName: string,
 	) {
-		this.path = new URL(path.join(DatabaseTable.directory, fileName), base)
+		this.path = path.join(DatabaseTable.directory, fileName)
 	}
 
-	static directory = "DB2"
+	static directory = "./DB2"
 	static cache = new Map<string, DatabaseTable>()
 
 	static async get(name: string, expansion: Expansion, locale: string): Promise<DatabaseTable> {
