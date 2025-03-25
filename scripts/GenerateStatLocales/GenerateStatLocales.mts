@@ -581,7 +581,7 @@ enum Resistance {
 	ArcaneResistance,
 }
 
-function getEnchantStats(enchant: StatEnchant): StatValue[][] {
+function getEnchantStats(enchant: StatEnchant, statSpells: Map<number, StatSpell>): StatValue[][] {
 	const stats: StatValue[][] = []
 	for(const [index, [effect, effectArg, pointsMin]] of enchant.effects.entries()) {
 		switch(effect) {
@@ -947,35 +947,48 @@ mkdirSync(new URL(databaseDirName, base), { recursive: true })
 mkdirSync(new URL(localeDirName, base), { recursive: true })
 // processStaticLocaleData()
 
-// For spells with EffectAura+MiscValue0 combos that map to stats, fetch:
-//   a) Spell description for that spell
-//   b) Spell descriptions for any proc trigger auras that proc that spell
-//   c) Enchant names for enchants with that spell as an aura
-//   d) Enchant names for enchants with any of the proc trigger auras as an aura
-const spellEffects = await fetchStatSpellEffects()
-console.log(`${spellEffects.length} effects`)
+for (const [_, expansion] of Object.entries(Expansion)) {
+	if (typeof(expansion) != "number") { continue }
 
-const [statSpells, procSpellIDSet] = await enumerateStatAndProcSpells(spellEffects)
+	// For spells with EffectAura+MiscValue0 combos that map to stats, fetch:
+	//   a) Spell description for that spell
+	//   b) Spell descriptions for any proc trigger auras that proc that spell
+	//   c) Enchant names for enchants with that spell as an aura
+	//   d) Enchant names for enchants with any of the proc trigger auras as an aura
+	const spellEffects = await fetchStatSpellEffects()
+	console.log(`${spellEffects.length} effects`)
 
-console.log(`${statSpells.size} statSpells`)
+	const [statSpells, procSpellIDSet] = await enumerateStatAndProcSpells(spellEffects)
 
-const statSpellIDs = Array.from(statSpells.keys())
-const statAndProcSpellIDs = statSpellIDs.concat(Array.from(procSpellIDSet.keys()))
-console.log(`${statAndProcSpellIDs.length} spellDescIDs`)
+	console.log(`${statSpells.size} statSpells`)
 
-const spellDescriptions = await fetchStatSpellDescriptions(statAndProcSpellIDs)
-for (const spellDescription of spellDescriptions) {
-	const spell = statSpells.get(spellDescription.id)
-	if (spell) {
-		const branches = await traverseDescriptionBranches(spellDescription.description)
-		for (const branch of branches) {
-			const [pattern, statEntries] = await mapTextToSpellStats(branch, spell, statSpells)
+	const statSpellIDs = Array.from(statSpells.keys())
+	const statAndProcSpellIDs = statSpellIDs.concat(Array.from(procSpellIDSet.keys()))
+	console.log(`${statAndProcSpellIDs.length} spellDescIDs`)
+
+	// TODO: Since we're inverting the expansion/locale loops here,
+	// we'll also need to invert localeResults from the static/override process
+	for (const locale of locales) {
+		const spellDescriptions = await fetchStatSpellDescriptions(statAndProcSpellIDs)
+		// TODO: Fetch/override with data from StatLocaleData if it exists
+		for (const spellDescription of spellDescriptions) {
+			const spell = statSpells.get(spellDescription.id)
+			if (spell) {
+				const branches = await traverseDescriptionBranches(spellDescription.description)
+				for (const branch of branches) {
+					const [pattern, statEntries] = await mapTextToSpellStats(branch, spell, statSpells)
+					// TODO: Write results to locale table
+				}
+			}
+		}
+
+		const statEnchants = await fetchStatEnchants(statSpellIDs)
+		// TODO: Fetch/override with data from StatLocaleData if it exists
+		console.log(`${statEnchants.length} statEnchants`)
+		for (const statEnchant of statEnchants) {
+			const stats = getEnchantStats(statEnchant, statSpells)
+			// TODO: mapTextToStats equivalent
+			// TODO: Write results to locale table
 		}
 	}
-}
-
-const statEnchants = await fetchStatEnchants(statSpellIDs)
-console.log(`${statEnchants.length} statEnchants`)
-for (const statEnchant of statEnchants) {
-	const stats = getEnchantStats(statEnchant)
 }
