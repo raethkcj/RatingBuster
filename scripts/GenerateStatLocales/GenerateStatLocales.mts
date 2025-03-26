@@ -5,7 +5,7 @@ import { createReadStream, existsSync, mkdirSync, readFileSync, writeFileSync } 
 import path from 'node:path'
 import { finished } from 'node:stream/promises'
 
-import { DuckDBInstance, DuckDBValue } from '@duckdb/node-api'
+import { DuckDBInstance } from '@duckdb/node-api'
 
 enum Expansion {
 	Vanilla = 1,
@@ -245,11 +245,17 @@ async function mapTextToSpellStats(text: string, spell: StatSpell, spells: Map<n
 		}
 	}
 
+	// console.dir({
+		// [pattern]: statEntries
+	// }, {
+		// depth: 5
+	// })
+
 	return [pattern, statEntries]
 }
 
 const base = import.meta.url
-import statLocaleData from './StatLocaleData.json'
+import statLocaleData from './StatLocaleData.json' with { type: "json" }
 const databaseDirName = "DB2"
 
 class DatabaseTable {
@@ -1000,8 +1006,8 @@ for (const [_, expansion] of Object.entries(Expansion)) {
 	let spellEffects: SpellEffect[]
 	try {
 		spellEffects = await queryStatSpellEffects(expansion)
-	} catch(e) {
-		console.error(e.message)
+	} catch(e: unknown) {
+		console.error((e as Error).message)
 		continue
 	}
 	console.log(`${spellEffects.length} effects`)
