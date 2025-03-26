@@ -379,6 +379,7 @@ enum EffectAura {
 	MOD_HIT_CHANCE = 54,
 	MOD_SPELL_HIT_CHANCE = 55,
 	MOD_SPELL_CRIT_CHANCE = 57,
+	MOD_CASTING_SPEED_NOT_STACK = 65,
 	MOD_POWER_REGEN = 85, // MP5 when MiscValue0 = 0
 	MOD_ATTACK_POWER = 99,
 	MOD_TARGET_RESISTANCE = 123, // School
@@ -593,6 +594,7 @@ const effectAuraStats: Record<EffectAura, (miscValue: number) => string[]> = {
 	[EffectAura.MOD_HIT_CHANCE]: GetPlainStat("MeleeHit", "RangedHit"),
 	[EffectAura.MOD_SPELL_HIT_CHANCE]: GetPlainStat("SpellHit"),
 	[EffectAura.MOD_SPELL_CRIT_CHANCE]: GetPlainStat("SpellCrit"),
+	[EffectAura.MOD_CASTING_SPEED_NOT_STACK]: GetPlainStat("SpellHaste"),
 	[EffectAura.MOD_POWER_REGEN]: GetPowerTypeStat("Generic", "Regen"),
 	[EffectAura.MOD_ATTACK_POWER]: GetPlainStat("AttackPower"),
 	[EffectAura.MOD_TARGET_RESISTANCE]: GetSchoolStat("Penetration", "ArmorPenetration", "SpellPenetration"),
