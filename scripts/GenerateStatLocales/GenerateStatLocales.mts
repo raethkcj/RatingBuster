@@ -189,6 +189,7 @@ async function mapTextToStatEffects(text: string, statEffects: StatValue[][], sp
 				case "h":
 				case "i":
 				case "n":
+				case "r":
 				case "t":
 				case "u":
 				case "x":
