@@ -317,28 +317,6 @@ async function getTypedResults<T>(query: string, type: { new(...args: any[]): T 
 	return results
 }
 
-async function fetchDatabase(db) {
-	db.fileName = `${db.name}_${db.version}_${db.locale}.csv`
-	db.path = new URL(path.join(databaseDirName, db.fileName), base)
-	if (!existsSync(db.path)) {
-		console.log(`Fetching ${db.fileName}.`)
-		const build = await getLatestVersion(db.version)
-		const url = `https://wago.tools/db2/${db.name}/csv?build=${build}&locale=${db.locale}`
-		const response = await fetch(url)
-		if (response.ok) {
-			const text = await response.text()
-			writeFileSync(db.path, text)
-			console.log(`Fetched ${db.fileName}.`)
-		} else {
-			throw new Error(`Failed to fetch ${url}: ${response.status} ${response.statusText}`)
-		}
-		return
-	} else {
-		console.log(`Found ${db.fileName}, skipping fetch.`)
-		return
-	}
-}
-
 // From wow.tools' enums.js, also obtainable at wowdev.wiki
 enum itemStatType {
 	Mana = 0,
@@ -675,28 +653,24 @@ const textColumns = {
 	"Spell": "Description_lang"
 }
 
-async function processDatabase(db) {
+async function processDatabase(name: string, expansion: Expansion, locale: string, indices) {
 	const results = {}
-	try {
-		await fetchDatabase(db)
-	} catch(error) {
-		console.error(error)
-		return results
-	}
+	const db = await DatabaseTable.get(name, expansion, locale).catch(console.error)
+	if (!db) return results
 
 	const parser = createReadStream(db.path).pipe(parse({
 		columns: true
 	}))
 
-	const textColumn = textColumns[db.name]
+	const textColumn = textColumns[name]
 	parser.on('readable', () => {
 		let row
 		while ((row = parser.read()) !== null) {
 			let scanner, stats
-			const data = db.indices[row.ID]
+			const data = indices[row.ID]
 			if (data) {
 				[scanner, stats] = data
-			} else if (db.name === "SpellItemEnchantment" && row.GemItemID && row.GemItemID > 0) {
+			} else if (name === "SpellItemEnchantment" && row.GemItemID && row.GemItemID > 0) {
 				scanner = "StatIDLookup"
 				stats = getGemStats(row)
 			}
@@ -977,14 +951,9 @@ async function enumerateStatAndProcSpells(spellEffects: SpellEffect[]): Promise<
 function processStaticLocaleData() {
 	for (const locale of locales) {
 		const localeResults: Promise<any>[] = []
-		for (const [name, versions] of Object.entries(statLocaleData)) {
-			for (const [version, indices] of Object.entries(versions)) {
-				localeResults.push(processDatabase({
-					name: name,
-					version: parseInt(version),
-					locale: locale,
-					indices: indices
-				}))
+		for (const [name, expansions] of Object.entries(statLocaleData)) {
+			for (const [expansion, indices] of Object.entries(expansions)) {
+				localeResults.push(processDatabase(name, parseInt(expansion), locale, indices))
 			}
 		}
 		combineResults(localeResults).then(results => writeLocale(locale, results))
