@@ -800,13 +800,13 @@ class SpellEffect {
 	) {}
 }
 
-async function fetchStatSpellEffects() {
-	const spellEffect = "DB2/SpellEffect_1_enUS.csv"
+async function queryStatSpellEffects(expansion: Expansion) {
+	const spellEffect = await DatabaseTable.get("SpellEffect", expansion, "enUS")
 
 	const query = `
 		SELECT StatSpell.SpellID, StatSpell.EffectIndex, StatSpell.EffectAura, StatSpell.EffectBasePoints, StatSpell.EffectDieSides, StatSpell.EffectMiscValue_0, ProcSpell.SpellID
-		FROM read_csv('${spellEffect}', auto_type_candidates = ['INTEGER', 'DOUBLE', 'VARCHAR']) StatSpell
-		LEFT JOIN '${spellEffect}' ProcSpell ON ProcSpell.EffectTriggerSpell = StatSpell.SpellID
+		FROM read_csv('${spellEffect.path}', auto_type_candidates = ['INTEGER', 'DOUBLE', 'VARCHAR']) StatSpell
+		LEFT JOIN '${spellEffect.path}' ProcSpell ON ProcSpell.EffectTriggerSpell = StatSpell.SpellID
 		WHERE StatSpell.EffectAura in (${effectAuraValues})
 		AND (StatSpell.EffectAuraPeriod = 5 OR StatSpell.EffectAura != '${EffectAura.PERIODIC_HEAL}')
 		AND (StatSpell.EffectMiscValue_0 = '${PowerType.Mana}' OR StatSpell.EffectAura != '${EffectAura.MOD_POWER_REGEN}')
@@ -823,12 +823,12 @@ class SpellDescription {
 	) {}
 }
 
-async function fetchStatSpellDescriptions(spellIDs: number[]): Promise<SpellDescription[]> {
-	const spell = "DB2/Spell_1_enUS.csv"
+async function queryStatSpellDescriptions(expansion: Expansion, locale: string, spellIDs: number[]): Promise<SpellDescription[]> {
+	const spell = await DatabaseTable.get("Spell", expansion, locale)
 
 	const query = `
 		SELECT ID, Description_lang
-		FROM read_csv('${spell}', auto_type_candidates = ['INTEGER', 'DOUBLE', 'VARCHAR'])
+		FROM read_csv('${spell.path}', auto_type_candidates = ['INTEGER', 'DOUBLE', 'VARCHAR'])
 		WHERE ID in (${spellIDs}) AND Description_lang NOT NULL
 	`
 
@@ -907,12 +907,12 @@ class StatEnchant {
 	}
 }
 
-async function fetchStatEnchants(spellIDs: number[]): Promise<StatEnchant[]> {
-	const spellItemEnchantment = "DB2/SpellItemEnchantment_1_enUS.csv"
+async function queryStatEnchants(expansion: Expansion, locale: string, spellIDs: number[]): Promise<StatEnchant[]> {
+	const spellItemEnchantment = await DatabaseTable.get("SpellItemEnchantment", expansion, locale)
 
 	const query = `
 		SELECT ID, Name_lang, Effect_0, EffectArg_0, EffectPointsMin_0, Effect_1, EffectArg_1, EffectPointsMin_1, Effect_2, EffectArg_2, EffectPointsMin_2
-		FROM read_csv('${spellItemEnchantment}', auto_type_candidates = ['INTEGER', 'DOUBLE', 'VARCHAR'])
+		FROM read_csv('${spellItemEnchantment.path}', auto_type_candidates = ['INTEGER', 'DOUBLE', 'VARCHAR'])
 		WHERE
 			Effect_0 = '${EnchantEffect.Buff}' AND EffectArg_0 IN (${spellIDs})
 			OR Effect_1 = '${EnchantEffect.Buff}' AND EffectArg_1 IN (${spellIDs})
@@ -1011,7 +1011,7 @@ for (const [_, expansion] of Object.entries(Expansion)) {
 	// TODO: Since we're inverting the expansion/locale loops here,
 	// we'll also need to invert localeResults from the static/override process
 	for (const locale of locales) {
-		const spellDescriptions = await fetchStatSpellDescriptions(statAndProcSpellIDs)
+		const spellDescriptions = await queryStatSpellDescriptions(expansion, locale, statAndProcSpellIDs)
 		// TODO: Fetch/override with data from StatLocaleData if it exists
 		for (const spellDescription of spellDescriptions) {
 			const spell = statSpells.get(spellDescription.id)
@@ -1024,7 +1024,7 @@ for (const [_, expansion] of Object.entries(Expansion)) {
 			}
 		}
 
-		const statEnchants = await fetchStatEnchants(statSpellIDs)
+		const statEnchants = await queryStatEnchants(expansion, locale, statSpellIDs)
 		// TODO: Fetch/override with data from StatLocaleData if it exists
 		console.log(`${statEnchants.length} statEnchants`)
 		for (const statEnchant of statEnchants) {
