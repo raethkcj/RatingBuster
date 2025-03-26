@@ -788,7 +788,7 @@ async function queryStatSpellEffects(expansion: Expansion) {
 		FROM read_csv('${spellEffect.path}', auto_type_candidates = ['INTEGER', 'DOUBLE', 'VARCHAR']) StatSpell
 		LEFT JOIN '${spellEffect.path}' ProcSpell ON ProcSpell.EffectTriggerSpell = StatSpell.SpellID
 		WHERE StatSpell.EffectAura in (${effectAuraValues})
-		AND (StatSpell.EffectAuraPeriod = 5 OR StatSpell.EffectAura != '${EffectAura.PERIODIC_HEAL}')
+		AND (StatSpell.EffectAuraPeriod = 5000 OR StatSpell.EffectAura != '${EffectAura.PERIODIC_HEAL}')
 		AND (StatSpell.EffectMiscValue_0 = '${PowerType.Mana}' OR StatSpell.EffectAura != '${EffectAura.MOD_POWER_REGEN}')
 		ORDER BY StatSpell.SpellID, ProcSpell.SpellID, StatSpell.EffectIndex
 	`
