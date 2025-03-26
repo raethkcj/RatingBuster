@@ -129,11 +129,11 @@ const scanners = {
 
 type StatEntry = StatValue[] | false
 
-async function mapTextToSpellStats(text: string, spell: StatSpell, spells: Map<number, StatSpell>): Promise<[string, StatEntry[]]> {
+async function mapTextToStatEffects(text: string, statEffects: StatValue[][], spellStatEffects: Map<number, StatValue[][]>): Promise<[string, StatEntry[]]> {
 	text = text.replace(/[\s.]+$/, "").toLowerCase()
 	const scanner = text.search(/\d/) > 0 ? "StatIDLookup" : "WholeText"
 
-	const remainingEffects: StatValue[][] = [...spell.statEffects]
+	const remainingEffects: StatValue[][] = [...statEffects]
 
 	const statEntries: StatEntry[] = []
 	// Matches an optional leading + or -, plus one of:
@@ -159,21 +159,21 @@ async function mapTextToSpellStats(text: string, spell: StatSpell, spells: Map<n
 				case "w":
 					// Since we only parse effects with a range of 0 or 1,
 					// we can treat min, max and spread identically
-					let statEffects: StatValue[][]
+					let newStatEffects: StatValue[][]
 					if (alternateSpellID) {
-						const alternateSpell = spells.get(parseInt(alternateSpellID))
-						if (alternateSpell) {
-							statEffects = alternateSpell.statEffects
+						const alternateStatEffects = spellStatEffects.get(parseInt(alternateSpellID))
+						if (alternateStatEffects) {
+							newStatEffects = alternateStatEffects
 						} else {
 							statEntries.push(false)
 							break
 						}
 					} else {
-						statEffects = spell.statEffects
+						newStatEffects = statEffects
 					}
 
 					const effectIndex = parseInt(identifierIndex) - 1
-					const statValues = statEffects[effectIndex]
+					const statValues = newStatEffects[effectIndex]
 					if (statValues) {
 						statEntries.push(statValues)
 						if (!alternateSpellID) {
@@ -624,7 +624,7 @@ enum Resistance {
 	ArcaneResistance,
 }
 
-function getEnchantStats(enchant: StatEnchant, statSpells: Map<number, StatSpell>): StatValue[][] {
+function getEnchantStats(enchant: StatEnchant, spellStatEffects: Map<number, StatValue[][]>): StatValue[][] {
 	const stats: StatValue[][] = []
 	for(const [index, [effect, effectArg, pointsMin]] of enchant.effects.entries()) {
 		switch(effect) {
@@ -632,7 +632,7 @@ function getEnchantStats(enchant: StatEnchant, statSpells: Map<number, StatSpell
 				stats[index] = [new StatValue("AverageWeaponDamage", pointsMin)]
 				break
 			case EnchantEffect.Buff:
-				const buffStats = statSpells.get(effectArg)?.statEffects.flat()
+				const buffStats = spellStatEffects.get(effectArg)?.flat()
 				if (buffStats) stats[index] = buffStats
 				break
 			case EnchantEffect.Resistance:
@@ -910,18 +910,13 @@ class StatValue {
 	constructor(public stat: string, public value: number) {}
 }
 
-class StatSpell {
-	statEffects: StatValue[][] = []
-	descriptions: string[] = []
-}
-
-async function enumerateStatAndProcSpells(spellEffects: SpellEffect[]): Promise<[Map<number, StatSpell>, Set<number>]> {
-	const statSpells = new Map<number, StatSpell>()
+async function enumerateStatAndProcSpells(spellEffects: SpellEffect[]): Promise<[Map<number, StatValue[][]>, Set<number>]> {
+	const spellStatEffects = new Map<number, StatValue[][]>()
 	const procSpellIDSet = new Set<number>()
 	for (const effect of spellEffects) {
-		const spell = statSpells.get(effect.spellID) || new StatSpell()
+		const statEffects = spellStatEffects.get(effect.spellID) || []
 
-		if (!spell.statEffects[effect.effectIndex] && effect.effectDieSides <= 1) {
+		if (!statEffects[effect.effectIndex] && effect.effectDieSides <= 1) {
 			const effectAuraFunc = effectAuraStats[effect.effectAura]
 			const stats = effectAuraFunc ? effectAuraFunc(effect.effectMiscValue0) : null
 			if (stats && stats.length > 0) {
@@ -932,7 +927,7 @@ async function enumerateStatAndProcSpells(spellEffects: SpellEffect[]): Promise<
 				}
 
 				// May leave empty indices if a spell has non-stat effects prior to a stat effect
-				spell.statEffects[effect.effectIndex] = stats.map((s) => new StatValue(s, value))
+				statEffects[effect.effectIndex] = stats.map((s) => new StatValue(s, value))
 
 				if (effect.procSpellID) {
 					procSpellIDSet.add(effect.procSpellID)
@@ -940,12 +935,12 @@ async function enumerateStatAndProcSpells(spellEffects: SpellEffect[]): Promise<
 			}
 		}
 
-		if (spell.statEffects.length > 0) {
-			statSpells.set(effect.spellID, spell)
+		if (statEffects.length > 0) {
+			spellStatEffects.set(effect.spellID, statEffects)
 		}
 	}
 
-	return [statSpells, procSpellIDSet]
+	return [spellStatEffects, procSpellIDSet]
 }
 
 function processStaticLocaleData() {
@@ -981,25 +976,25 @@ for (const [_, expansion] of Object.entries(Expansion)) {
 	}
 	console.log(`${spellEffects.length} effects`)
 
-	const [statSpells, procSpellIDSet] = await enumerateStatAndProcSpells(spellEffects)
+	const [spellStatEffects, procSpellIDs] = await enumerateStatAndProcSpells(spellEffects)
 
-	console.log(`${statSpells.size} statSpells`)
+	console.log(`${spellStatEffects.size} statSpells`)
 
-	const statSpellIDs = Array.from(statSpells.keys())
-	const statAndProcSpellIDs = statSpellIDs.concat(Array.from(procSpellIDSet.keys()))
-	console.log(`${statAndProcSpellIDs.length} spellDescIDs`)
+	const statSpellIDs = Array.from(spellStatEffects.keys())
+	const spellDescIDs = procSpellIDs.union(new Set(statSpellIDs))
+	console.log(`${spellDescIDs.size} spellDescIDs`)
 
 	// TODO: Since we're inverting the expansion/locale loops here,
 	// we'll also need to invert localeResults from the static/override process
 	for (const locale of locales) {
-		const spellDescriptions = await queryStatSpellDescriptions(expansion, locale, statAndProcSpellIDs)
+		const spellDescriptions = await queryStatSpellDescriptions(expansion, locale, Array.from(spellDescIDs))
 		// TODO: Fetch/override with data from StatLocaleData if it exists
 		for (const spellDescription of spellDescriptions) {
-			const spell = statSpells.get(spellDescription.id)
-			if (spell) {
+			const statEffects = spellStatEffects.get(spellDescription.id)
+			if (statEffects) {
 				const branches = await traverseDescriptionBranches(spellDescription.description)
 				for (const branch of branches) {
-					const [pattern, statEntries] = await mapTextToSpellStats(branch, spell, statSpells)
+					const [pattern, statEntries] = await mapTextToStatEffects(branch, statEffects, spellStatEffects)
 					// TODO: Write results to locale table
 				}
 			}
@@ -1009,7 +1004,7 @@ for (const [_, expansion] of Object.entries(Expansion)) {
 		// TODO: Fetch/override with data from StatLocaleData if it exists
 		console.log(`${statEnchants.length} statEnchants`)
 		for (const statEnchant of statEnchants) {
-			const stats = getEnchantStats(statEnchant, statSpells)
+			const stats = getEnchantStats(statEnchant, spellStatEffects)
 			// TODO: mapTextToStats equivalent
 			// TODO: Write results to locale table
 		}
