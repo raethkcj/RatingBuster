@@ -65,7 +65,7 @@ enum Expansion {
 			console.log(`Found version ${max.version} for expansion ${Expansion[expansion]}`)
 			return max.version
 		} else {
-			console.error(`Couldn't find any public build for expansion ${Expansion[expansion]}`)
+			throw new Error(`Couldn't find any public build for expansion ${Expansion[expansion]}`)
 		}
 	}
 }
@@ -997,7 +997,13 @@ for (const [_, expansion] of Object.entries(Expansion)) {
 	//   b) Spell descriptions for any proc trigger auras that proc that spell
 	//   c) Enchant names for enchants with that spell as an aura
 	//   d) Enchant names for enchants with any of the proc trigger auras as an aura
-	const spellEffects = await fetchStatSpellEffects()
+	let spellEffects: SpellEffect[]
+	try {
+		spellEffects = await queryStatSpellEffects(expansion)
+	} catch(e) {
+		console.error(e.message)
+		continue
+	}
 	console.log(`${spellEffects.length} effects`)
 
 	const [statSpells, procSpellIDSet] = await enumerateStatAndProcSpells(spellEffects)
