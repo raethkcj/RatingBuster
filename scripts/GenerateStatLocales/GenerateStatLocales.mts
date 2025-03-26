@@ -1,7 +1,7 @@
 #!/usr/bin/env -S node --import=tsx
 
 import { parse } from 'csv-parse'
-import { createReadStream, existsSync, mkdirSync, readFileSync, writeFileSync } from 'node:fs'
+import { createReadStream, existsSync, mkdirSync, writeFileSync } from 'node:fs'
 import path from 'node:path'
 import { finished } from 'node:stream/promises'
 
