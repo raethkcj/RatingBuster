@@ -538,6 +538,7 @@ const SkillLine = {
 	55: 'WeaponSkill',
 	136: 'WeaponSkill',
 	160: 'WeaponSkill',
+	162: 'WeaponSkill',
 	172: 'WeaponSkill',
 	173: 'WeaponSkill',
 	176: 'WeaponSkill',
