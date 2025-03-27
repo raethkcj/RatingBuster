@@ -397,8 +397,7 @@ enum EffectAura {
 const effectAuraValues = Object.values(EffectAura).slice(Object.values(EffectAura).length / 2)
 
 const NegativeEffectAuras = new Set<EffectAura> ([
-	EffectAura.MOD_PARRY_PERCENT,
-	EffectAura.MOD_DODGE_PERCENT,
+	EffectAura.MOD_COMBAT_RESULT_CHANCE,
 	EffectAura.MOD_TARGET_RESISTANCE,
 ])
 
