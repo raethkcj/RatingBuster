@@ -890,14 +890,15 @@ class StatEnchant {
 	}
 }
 
-async function queryStatEnchants(expansion: Expansion, locale: string, spellIDs: number[]): Promise<StatEnchant[]> {
+async function queryStatEnchants(expansion: Expansion, locale: string, spellIDs: number[], overrideEnchantIDs: number[]): Promise<StatEnchant[]> {
 	const spellItemEnchantment = await DatabaseTable.get("SpellItemEnchantment", expansion, locale)
 
 	const query = `
 		SELECT ID, Name_lang, Effect_0, EffectArg_0, EffectPointsMin_0, Effect_1, EffectArg_1, EffectPointsMin_1, Effect_2, EffectArg_2, EffectPointsMin_2
 		FROM read_csv('${spellItemEnchantment.path}', auto_type_candidates = ['INTEGER', 'DOUBLE', 'VARCHAR'])
 		WHERE
-			Effect_0 = '${EnchantEffect.Buff}' AND EffectArg_0 IN (${spellIDs})
+			ID IN (${overrideEnchantIDs.length > 0 ? overrideEnchantIDs : 'null'})
+			OR Effect_0 = '${EnchantEffect.Buff}' AND EffectArg_0 IN (${spellIDs})
 			OR Effect_1 = '${EnchantEffect.Buff}' AND EffectArg_1 IN (${spellIDs})
 			OR Effect_2 = '${EnchantEffect.Buff}' AND EffectArg_2 IN (${spellIDs})
 			OR Effect_0 IN (${EnchantEffect.Damage}, ${EnchantEffect.Resistance}, ${EnchantEffect.Stat})
@@ -946,6 +947,37 @@ async function enumerateStatAndProcSpells(spellEffects: SpellEffect[]): Promise<
 	return [spellStatEffects, procSpellIDSet]
 }
 
+function overrideSpells(spellStatEffects: Map<number, StatValue[][]>, spellDescIDs: Set<number>, expansion: Expansion) {
+		for (const [sOverrideSpellID, overrideStatEffects] of Object.entries(statLocaleData["Spell"][expansion])) {
+		const overrideSpellID = parseInt(sOverrideSpellID)
+		spellDescIDs.add(overrideSpellID)
+		const overrideStatValues = overrideStatEffects.map((effect) => {
+			return effect.map(stat => new StatValue(stat, -1))
+		})
+		spellStatEffects.set(overrideSpellID, overrideStatValues)
+	}
+
+}
+
+function getOverrideEnchants(expansion: Expansion): [number[], Map<number, StatValue[][]>] {
+	const overrideEnchantIDs: number[] = []
+	const overrideEnchantStatEffects = new Map<number, StatValue[][]>
+
+	for (const [sOverrideEnchantID, overrideStatEffects] of Object.entries(statLocaleData["SpellItemEnchantment"][expansion])) {
+		overrideEnchantIDs.push(parseInt(sOverrideEnchantID))
+		const overrideStatValues = overrideStatEffects.map((effect: string[]|{[stat: string]: number}) => {
+			if (Array.isArray(effect)) {
+				return effect.map(stat => new StatValue(stat, -1))
+			} else {
+				return Object.entries(effect).map(([s, v]) => new StatValue(s, v))
+			}
+		})
+		overrideEnchantStatEffects.set(parseInt(sOverrideEnchantID), overrideStatValues)
+	}
+
+	return [overrideEnchantIDs, overrideEnchantStatEffects]
+}
+
 function processStaticLocaleData() {
 	for (const locale of locales) {
 		const localeResults: Promise<any>[] = []
@@ -985,13 +1017,14 @@ for (const [_, expansion] of Object.entries(Expansion)) {
 
 	const statSpellIDs = Array.from(spellStatEffects.keys())
 	const spellDescIDs = procSpellIDs.union(new Set(statSpellIDs))
+
+	overrideSpells(spellStatEffects, spellDescIDs, expansion)
 	console.log(`${spellDescIDs.size} spellDescIDs`)
 
-	// TODO: Since we're inverting the expansion/locale loops here,
-	// we'll also need to invert localeResults from the static/override process
+	const [overrideEnchantIDs, overrideEnchantStatEffects] = getOverrideEnchants(expansion)
+
 	for (const locale of locales) {
 		const spellDescriptions = await queryStatSpellDescriptions(expansion, locale, Array.from(spellDescIDs))
-		// TODO: Fetch/override with data from StatLocaleData if it exists
 		for (const spellDescription of spellDescriptions) {
 			const statEffects = spellStatEffects.get(spellDescription.id)
 			if (statEffects) {
@@ -1003,11 +1036,13 @@ for (const [_, expansion] of Object.entries(Expansion)) {
 			}
 		}
 
-		const statEnchants = await queryStatEnchants(expansion, locale, statSpellIDs)
-		// TODO: Fetch/override with data from StatLocaleData if it exists
+		const statEnchants = await queryStatEnchants(expansion, locale, statSpellIDs, overrideEnchantIDs)
 		console.log(`${statEnchants.length} statEnchants`)
 		for (const statEnchant of statEnchants) {
-			const stats = getEnchantStats(statEnchant, spellStatEffects)
+			let stats = overrideEnchantStatEffects.get(statEnchant.id)
+			if (!stats) {
+				stats = getEnchantStats(statEnchant, spellStatEffects)
+			}
 			// TODO: mapTextToStats equivalent
 			// TODO: Write results to locale table
 		}
