@@ -393,7 +393,7 @@ L["augmente de %s au maximum les dégâts et les soins produits par les sorts et
 L["augmente les soins prodigués d’un maximum de %s et les dégâts d’un maximum de %s pour tous les sorts et effets magiques des membres du groupe à moins de %s. cet effet spécifique ne se cumule pas avec des sources multiples"] = {StatLogic.Stats.HealingPower, StatLogic.Stats.SpellDamage, false, }
 L["augmente de %s % la vitesse d’incantation de tous les membres du groupe à moins de %s m. cet effet spécifique ne se cumule pas avec des sources multiples"] = {StatLogic.Stats.SpellHaste, false, }
 L["augmente de %s % les chances de critique des sorts de tous les membres du groupe situés à moins de %s m. cet effet spécifique ne se cumule pas avec des sources multiples"] = {StatLogic.Stats.SpellCrit, false, }
-L["augmente la vitesse d’incantation des sorts non canalisés de %s %"] = {StatLogic.Stats.SpellHaste, }
+L["augmente votre vitesse d’incantation de %s %"] = {StatLogic.Stats.SpellHaste, }
 L["défense augmentée de %s"] = {StatLogic.Stats.Defense, }
 L["augmente vos chances de bloquer les attaques avec un bouclier de %s%"] = {StatLogic.Stats.BlockChance, }
 L["augmente les dégâts et les soins produits par les sorts et effets magiques de %s au maximum"] = {{StatLogic.Stats.SpellDamage, StatLogic.Stats.HealingPower, }, }

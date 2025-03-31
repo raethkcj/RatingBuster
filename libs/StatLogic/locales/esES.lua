@@ -338,7 +338,7 @@ L["aumenta hasta %s p. el daño y la sanación de los hechizos y efectos mágico
 L["aumenta hasta %s p. la sanación realizada y hasta %s p. el daño infligido con todos los hechizos y efectos mágicos de todos los miembros del grupo en un radio de %s m. este efecto no se acumula al recibirlo de varias fuentes"] = {StatLogic.Stats.HealingPower, StatLogic.Stats.SpellDamage, false, }
 L["aumenta un %s% la velocidad de lanzamiento de hechizos de todos los miembros del grupo en un radio de %s m. este efecto no se acumula al recibirlo de varias fuentes"] = {StatLogic.Stats.SpellHaste, false, }
 L["aumenta un %s% la probabilidad de impacto crítico mediante hechizos de todos los miembros del grupo en un radio de %s m. este efecto no se acumula al recibirlo de varias fuentes"] = {StatLogic.Stats.SpellCrit, false, }
-L["aumenta un %s% la velocidad de lanzamiento de los hechizos que no se canalizan"] = {StatLogic.Stats.SpellHaste, }
+L["aumenta un %s% tu velocidad de lanzamiento"] = {StatLogic.Stats.SpellHaste, }
 L["defensa aumentada %s"] = {StatLogic.Stats.Defense, }
 L["aumenta la probabilidad de bloquear ataques con un escudo en un %s%"] = {StatLogic.Stats.BlockChance, }
 L["aumenta el daño y la curación de los hechizos mágicos y los efectos hasta en %s p"] = {{StatLogic.Stats.SpellDamage, StatLogic.Stats.HealingPower, }, }

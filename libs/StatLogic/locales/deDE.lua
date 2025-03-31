@@ -327,7 +327,7 @@ L["erhöht durch zauber und magische effekte verursachten schaden und hervorgeru
 L["erhöht für alle gruppenmitglieder innerhalb von %s metern durch sämtliche zauber und magische effekte hervorgerufene heilung um bis zu %s gesundheit und den verursachten schaden um bis zu %s. dieser spezifische effekt ist nicht über mehrere quellen stapelbar"] = {false, StatLogic.Stats.HealingPower, StatLogic.Stats.SpellDamage, }
 L["erhöht das zaubertempo aller gruppenmitglieder innerhalb von %s metern um %s%. dieser spezifische effekt ist nicht über mehrere quellen stapelbar"] = {false, StatLogic.Stats.SpellHaste, }
 L["erhöht die kritische zaubertrefferchance aller gruppenmitglieder innerhalb von %s metern um %s%. dieser spezifische effekt ist nicht über mehrere quellen stapelbar"] = {false, StatLogic.Stats.SpellCrit, }
-L["erhöht das zaubertempo eurer nicht kanalisierten zauber um %s%"] = {StatLogic.Stats.SpellHaste, }
+L["erhöht euer zaubertempo um %s%"] = {StatLogic.Stats.SpellHaste, }
 L["verteidigung %s"] = {StatLogic.Stats.Defense, }
 L["erhöht eure chance, angriffe mit einem schild zu blocken, um %s%"] = {StatLogic.Stats.BlockChance, }
 L["erhöht durch zauber und magische effekte zugefügten schaden und heilung um bis zu %s"] = {{StatLogic.Stats.SpellDamage, StatLogic.Stats.HealingPower, }, }

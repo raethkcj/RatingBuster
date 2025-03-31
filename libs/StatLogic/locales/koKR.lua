@@ -316,7 +316,7 @@ L["주위 %s미터 반경에 있는 모든 파티원의 모든 주문 및 효과
 L["주위 %s미터 반경에 있는 모든 파티원의 모든 주문 및 효과에 의한 치유량이 최대 %s만큼, 공격력이 최대 %s만큼 증가합니다. 이 효과는 다른 여러 장비와 효과에 의해 중첩되지 않습니다"] = {false, StatLogic.Stats.HealingPower, StatLogic.Stats.SpellDamage, }
 L["주위 %s미터 반경에 있는 모든 파티원의 주문 시전 속도가 %s%만큼 증가합니다. 이 효과는 다른 여러 장비와 효과에 의해 중첩되지 않습니다"] = {false, StatLogic.Stats.SpellHaste, }
 L["주위 %s미터 반경에 있는 모든 파티원의 주문 극대화 확률이 %s%만큼 증가합니다. 이 효과는 다른 여러 장비와 효과에 의해 중첩되지 않습니다"] = {false, StatLogic.Stats.SpellCrit, }
-L["정신 집중이 아닌 주문의 시전 속도가 %s%만큼 증가합니다"] = {StatLogic.Stats.SpellHaste, }
+L["시전 속도가 %s%만큼 증가합니다"] = {StatLogic.Stats.SpellHaste, }
 L["방패로 적의 공격을 방어할 확률이 %s%만큼 증가합니다"] = {StatLogic.Stats.BlockChance, }
 L["모든 주문 및 효과에 의한 피해와 치유량이 최대 %s만큼 증가합니다"] = {{StatLogic.Stats.SpellDamage, StatLogic.Stats.HealingPower, }, }
 L["모든 주문 및 효과에 의한 치유량이 최대 %s만큼 증가합니다"] = {StatLogic.Stats.HealingPower, }

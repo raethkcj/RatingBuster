@@ -325,7 +325,7 @@ L["使周围半径%s码范围内的所有小队成员的法术和魔法效果所
 L["使周围半径%s码范围内的所有小队成员的法术治疗提高最多%s点，法术伤害提高最多%s点。该特殊效果无法与许多来源的效果叠加。"] = {false, StatLogic.Stats.HealingPower, StatLogic.Stats.SpellDamage, }
 L["使周围半径%s码范围内的所有小队成员的法术施放速度提高%s%。该特殊效果无法与许多来源的效果叠加。"] = {false, StatLogic.Stats.SpellHaste, }
 L["使周围半径%s码范围内的所有小队成员的法术造成爆击的几率提高%s%。该特殊效果无法与许多来源的效果叠加。"] = {false, StatLogic.Stats.SpellCrit, }
-L["你的非引导法术的施法速度提高%s%。"] = {StatLogic.Stats.SpellHaste, }
+L["你的施法速度提高%s%。"] = {StatLogic.Stats.SpellHaste, }
 L["防御技能提高%s点。"] = {StatLogic.Stats.Defense, }
 L["使你用盾牌格挡攻击的几率提高%s%。"] = {StatLogic.Stats.BlockChance, }
 L["提高所有法术和魔法效果所造成的伤害和治疗效果，最多%s点。"] = {{StatLogic.Stats.SpellDamage, StatLogic.Stats.HealingPower, }, }
