@@ -1018,7 +1018,7 @@ elseif addon.class == "ROGUE" then
 				["aura"] = 400015,
 				["group"] = addon.ExclusiveGroup.SetBonus,
 			},
-			-- Passive: Soul of the Black Belt
+			-- Passive: Soul of the Black Belt (Rolling with the Punches)
 			{
 				["known"] = 1220023,
 				["rune"] = true,
