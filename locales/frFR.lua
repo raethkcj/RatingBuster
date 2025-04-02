@@ -354,6 +354,7 @@ L["statList"] = {
 	{SPELL_STAT2_NAME:lower(), StatLogic.Stats.Agility}, -- Agility
 	{SPELL_STAT3_NAME:lower(), StatLogic.Stats.Stamina}, -- Stamina
 	{SPELL_STAT4_NAME:lower(), StatLogic.Stats.Intellect}, -- Intellect
+	{"l'esprit d'eskhandar", false},
 	{SPELL_STAT5_NAME:lower(), StatLogic.Stats.Spirit}, -- Spirit
 	{"score de défense", StatLogic.Stats.DefenseRating},
 	{DEFENSE:lower(), StatLogic.Stats.Defense},
