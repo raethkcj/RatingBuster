@@ -1119,7 +1119,7 @@ elseif addon.class == "SHAMAN" then
 				["known"] = 436364,
 				["rune"] = true,
 				["aura"] = 436365,
-				["value"] = 0.15,
+				["value"] = 0.10,
 			},
 		},
 		-- Shaman: Toughness (Rank 5) - 2,11
