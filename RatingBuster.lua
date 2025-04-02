@@ -2466,6 +2466,8 @@ do
 			value = value * mod
 			if isBaseStat and mod ~= 1 and db.profile.showModifiedStrength then
 				infoTable["Decimal"] = value
+			elseif show then
+				infoTable[stat] = infoTable[stat] + value
 			end
 
 			local attackPower = value * statModContext("ADD_AP_MOD_STR")
@@ -2500,6 +2502,8 @@ do
 			value = value * mod
 			if isBaseStat and mod ~= 1 and db.profile.showModifiedAgility then
 				infoTable["Decimal"] = value
+			elseif show then
+				infoTable[stat] = infoTable[stat] + value
 			end
 
 			local attackPower = value * statModContext("ADD_AP_MOD_AGI")
@@ -2532,6 +2536,8 @@ do
 			value = value * mod
 			if isBaseStat and mod ~= 1 and db.profile.showModifiedStamina then
 				infoTable["Decimal"] = value
+			elseif show then
+				infoTable[stat] = infoTable[stat] + value
 			end
 
 			local health = value * statModContext("ADD_HEALTH_MOD_STA")
@@ -2548,6 +2554,8 @@ do
 			value = value * mod
 			if isBaseStat and mod ~= 1 and db.profile.showModifiedIntellect then
 				infoTable["Decimal"] = value
+			elseif show then
+				infoTable[stat] = infoTable[stat] + value
 			end
 
 			local mana = value * statModContext("ADD_MANA_MOD_INT")
@@ -2586,6 +2594,8 @@ do
 			value = value * mod
 			if isBaseStat and mod ~= 1 and db.profile.showModifiedSpirit then
 				infoTable["Decimal"] = value
+			elseif show then
+				infoTable[stat] = infoTable[stat] + value
 			end
 
 			local normalManaRegen = value * statModContext("ADD_NORMAL_MANA_REGEN_MOD_SPI")
@@ -3040,40 +3050,42 @@ local summaryCalcData = {
 	{
 		option = "sumStr",
 		stat = StatLogic.Stats.Strength,
-		func = function(sum)
-			return sum[StatLogic.Stats.Strength]
+		func = function(sum, statModContext)
+			return statModContext("MOD_STR") * (
+				sum[StatLogic.Stats.Strength]
+			)
 		end,
 	},
 	-- Agility - AGI
 	{
 		option = "sumAgi",
 		stat = StatLogic.Stats.Agility,
-		func = function(sum)
-			return sum[StatLogic.Stats.Agility]
+		func = function(sum, statModContext)
+			return statModContext("MOD_AGI") * sum[StatLogic.Stats.Agility]
 		end,
 	},
 	-- Stamina - STA
 	{
 		option = "sumSta",
 		stat = StatLogic.Stats.Stamina,
-		func = function(sum)
-			return sum[StatLogic.Stats.Stamina]
+		func = function(sum, statModContext)
+			return statModContext("MOD_STA") * sum[StatLogic.Stats.Stamina]
 		end,
 	},
 	-- Intellect - INT
 	{
 		option = "sumInt",
 		stat = StatLogic.Stats.Intellect,
-		func = function(sum)
-			return sum[StatLogic.Stats.Intellect]
+		func = function(sum, statModContext)
+			return statModContext("MOD_INT") * sum[StatLogic.Stats.Intellect]
 		end,
 	},
 	-- Spirit - SPI
 	{
 		option = "sumSpi",
 		stat = StatLogic.Stats.Spirit,
-		func = function(sum)
-			return sum[StatLogic.Stats.Spirit]
+		func = function(sum, statModContext)
+			return statModContext("MOD_SPI") * sum[StatLogic.Stats.Spirit]
 		end,
 	},
 	{
@@ -3095,7 +3107,7 @@ local summaryCalcData = {
 		option = "sumHP",
 		stat = StatLogic.Stats.Health,
 		func = function(sum, statModContext)
-			return (sum[StatLogic.Stats.Health] + (sum[StatLogic.Stats.Stamina] * statModContext("ADD_HEALTH_MOD_STA"))) * statModContext("MOD_HEALTH")
+			return (sum[StatLogic.Stats.Health] + (summaryFunc[StatLogic.Stats.Stamina](sum, statModContext) * statModContext("ADD_HEALTH_MOD_STA"))) * statModContext("MOD_HEALTH")
 		end,
 	},
 	-- Mana - MANA, INT
@@ -3103,7 +3115,7 @@ local summaryCalcData = {
 		option = "sumMP",
 		stat = StatLogic.Stats.Mana,
 		func = function(sum, statModContext)
-			return (sum[StatLogic.Stats.Mana] + (sum[StatLogic.Stats.Intellect] * statModContext("ADD_MANA_MOD_INT"))) * statModContext("MOD_MANA")
+			return (sum[StatLogic.Stats.Mana] + (summaryFunc[StatLogic.Stats.Intellect](sum, statModContext) * statModContext("ADD_MANA_MOD_INT"))) * statModContext("MOD_MANA")
 		end,
 	},
 	-- Health Regen - HEALTH_REG
@@ -3112,7 +3124,7 @@ local summaryCalcData = {
 		stat = StatLogic.Stats.HealthRegen,
 		func = function(sum, statModContext)
 			return sum[StatLogic.Stats.HealthRegen]
-				+ sum[StatLogic.Stats.Spirit] * statModContext("ADD_NORMAL_HEALTH_REG_MOD_SPI") * statModContext("MOD_NORMAL_HEALTH_REG") * statModContext("ADD_HEALTH_REG_MOD_NORMAL_HEALTH_REG")
+				+ summaryFunc[StatLogic.Stats.Spirit](sum, statModContext) * statModContext("ADD_NORMAL_HEALTH_REG_MOD_SPI") * statModContext("MOD_NORMAL_HEALTH_REG") * statModContext("ADD_HEALTH_REG_MOD_NORMAL_HEALTH_REG")
 				+ summaryFunc[StatLogic.Stats.Health](sum, statModContext) * statModContext("ADD_NORMAL_HEALTH_REG_MOD_HEALTH") * statModContext("MOD_NORMAL_HEALTH_REG") * statModContext("ADD_HEALTH_REG_MOD_NORMAL_HEALTH_REG")
 		end,
 	},
@@ -3122,7 +3134,7 @@ local summaryCalcData = {
 		stat = StatLogic.Stats.HealthRegenOutOfCombat,
 		func = function(sum, statModContext)
 			return sum[StatLogic.Stats.HealthRegen]
-				+ sum[StatLogic.Stats.Spirit] * statModContext("ADD_NORMAL_HEALTH_REG_MOD_SPI") * statModContext("MOD_NORMAL_HEALTH_REG")
+				+ summaryFunc[StatLogic.Stats.Spirit](sum, statModContext) * statModContext("ADD_NORMAL_HEALTH_REG_MOD_SPI") * statModContext("MOD_NORMAL_HEALTH_REG")
 				+ summaryFunc[StatLogic.Stats.Health](sum, statModContext) * statModContext("ADD_NORMAL_HEALTH_REG_MOD_HEALTH") * statModContext("MOD_NORMAL_HEALTH_REG")
 		end,
 	},
@@ -3131,7 +3143,7 @@ local summaryCalcData = {
 		stat = StatLogic.Stats.GenericManaRegen,
 		func = function(sum, statModContext)
 			return sum[StatLogic.Stats.GenericManaRegen]
-				+ sum[StatLogic.Stats.Intellect] * statModContext("ADD_GENERIC_MANA_REGEN_MOD_INT")
+				+ summaryFunc[StatLogic.Stats.Intellect](sum, statModContext) * statModContext("ADD_GENERIC_MANA_REGEN_MOD_INT")
 				+ summaryFunc[StatLogic.Stats.Mana](sum, statModContext) * statModContext("ADD_GENERIC_MANA_REGEN_MOD_MANA")
 		end,
 	},
@@ -3140,8 +3152,8 @@ local summaryCalcData = {
 		stat = StatLogic.Stats.NormalManaRegen,
 		func = function(sum, statModContext)
 			return statModContext("MOD_NORMAL_MANA_REGEN") * (
-				sum[StatLogic.Stats.Intellect] * statModContext("ADD_NORMAL_MANA_REGEN_MOD_INT")
-				+ sum[StatLogic.Stats.Spirit] * statModContext("ADD_NORMAL_MANA_REGEN_MOD_SPI")
+				summaryFunc[StatLogic.Stats.Intellect](sum, statModContext) * statModContext("ADD_NORMAL_MANA_REGEN_MOD_INT")
+				+ summaryFunc[StatLogic.Stats.Spirit](sum, statModContext) * statModContext("ADD_NORMAL_MANA_REGEN_MOD_SPI")
 			)
 		end,
 	},
@@ -3180,10 +3192,10 @@ local summaryCalcData = {
 				sum[StatLogic.Stats.AttackPower]
 				+ sum[StatLogic.Stats.GenericAttackPower] * statModContext("ADD_AP_MOD_GENERIC_ATTACK_POWER")
 				+ sum[StatLogic.Stats.FeralAttackPower] * statModContext("ADD_AP_MOD_FERAL_ATTACK_POWER")
-				+ sum[StatLogic.Stats.Strength] * statModContext("ADD_AP_MOD_STR")
-				+ sum[StatLogic.Stats.Agility] * statModContext("ADD_AP_MOD_AGI")
-				+ sum[StatLogic.Stats.Stamina] * statModContext("ADD_AP_MOD_STA")
-				+ sum[StatLogic.Stats.Intellect] * statModContext("ADD_AP_MOD_INT")
+				+ summaryFunc[StatLogic.Stats.Strength](sum, statModContext) * statModContext("ADD_AP_MOD_STR")
+				+ summaryFunc[StatLogic.Stats.Agility](sum, statModContext) * statModContext("ADD_AP_MOD_AGI")
+				+ summaryFunc[StatLogic.Stats.Stamina](sum, statModContext) * statModContext("ADD_AP_MOD_STA")
+				+ summaryFunc[StatLogic.Stats.Intellect](sum, statModContext) * statModContext("ADD_AP_MOD_INT")
 				+ summaryFunc[StatLogic.Stats.Armor](sum, statModContext) * statModContext("ADD_AP_MOD_ARMOR")
 				+ sum[StatLogic.Stats.Defense] * statModContext("ADD_AP_MOD_DEFENSE")
 			)
@@ -3197,9 +3209,9 @@ local summaryCalcData = {
 			return statModContext("MOD_RANGED_AP") * (
 				sum[StatLogic.Stats.RangedAttackPower]
 				+ sum[StatLogic.Stats.GenericAttackPower] * statModContext("ADD_RANGED_AP_MOD_GENERIC_ATTACK_POWER")
-				+ sum[StatLogic.Stats.Agility] * statModContext("ADD_RANGED_AP_MOD_AGI")
-				+ sum[StatLogic.Stats.Intellect] * statModContext("ADD_RANGED_AP_MOD_INT")
-				+ sum[StatLogic.Stats.Stamina] * statModContext("ADD_AP_MOD_STA")
+				+ summaryFunc[StatLogic.Stats.Agility](sum, statModContext) * statModContext("ADD_RANGED_AP_MOD_AGI")
+				+ summaryFunc[StatLogic.Stats.Intellect](sum, statModContext) * statModContext("ADD_RANGED_AP_MOD_INT")
+				+ summaryFunc[StatLogic.Stats.Stamina](sum, statModContext) * statModContext("ADD_AP_MOD_STA")
 				+ summaryFunc[StatLogic.Stats.Armor](sum, statModContext) * statModContext("ADD_AP_MOD_ARMOR")
 			)
 		end,
@@ -3245,7 +3257,7 @@ local summaryCalcData = {
 		func = function(sum, statModContext)
 			return sum[StatLogic.Stats.MeleeCrit]
 				+ sum[StatLogic.Stats.MeleeCritRating] * statModContext("ADD_MELEE_CRIT_MOD_MELEE_CRIT_RATING")
-				+ sum[StatLogic.Stats.Agility] * statModContext("ADD_MELEE_CRIT_MOD_AGI")
+				+ summaryFunc[StatLogic.Stats.Agility](sum, statModContext) * statModContext("ADD_MELEE_CRIT_MOD_AGI")
 		end,
 	},
 	-- Crit Rating - MELEE_CRIT_RATING
@@ -3263,7 +3275,7 @@ local summaryCalcData = {
 		func = function(sum, statModContext)
 			return sum[StatLogic.Stats.RangedCrit]
 				+ sum[StatLogic.Stats.RangedCritRating] * statModContext("ADD_RANGED_CRIT_MOD_RANGED_CRIT_RATING")
-				+ sum[StatLogic.Stats.Agility] * statModContext("ADD_RANGED_CRIT_MOD_AGI")
+				+ summaryFunc[StatLogic.Stats.Agility](sum, statModContext) * statModContext("ADD_RANGED_CRIT_MOD_AGI")
 		end,
 	},
 	-- Ranged Crit Rating - RANGED_CRIT_RATING
@@ -3410,12 +3422,12 @@ local summaryCalcData = {
 		func = function(sum, statModContext)
 			return statModContext("MOD_SPELL_DMG") * (
 				sum[StatLogic.Stats.SpellDamage]
-				+ sum[StatLogic.Stats.Strength] * statModContext("ADD_SPELL_DMG_MOD_STR")
-				+ sum[StatLogic.Stats.Stamina] * (statModContext("ADD_SPELL_DMG_MOD_STA") + statModContext("ADD_SPELL_DMG_MOD_PET_STA") * statModContext("MOD_PET_STA") * statModContext("ADD_PET_STA_MOD_STA"))
-				+ sum[StatLogic.Stats.Intellect] * (
+				+ summaryFunc[StatLogic.Stats.Strength](sum, statModContext) * statModContext("ADD_SPELL_DMG_MOD_STR")
+				+ summaryFunc[StatLogic.Stats.Stamina](sum, statModContext) * (statModContext("ADD_SPELL_DMG_MOD_STA") + statModContext("ADD_SPELL_DMG_MOD_PET_STA") * statModContext("MOD_PET_STA") * statModContext("ADD_PET_STA_MOD_STA"))
+				+ summaryFunc[StatLogic.Stats.Intellect](sum, statModContext) * (
 					(statModContext("ADD_SPELL_DMG_MOD_INT") + statModContext("ADD_SPELL_DMG_MOD_PET_INT") * statModContext("MOD_PET_INT") * statModContext("ADD_PET_INT_MOD_INT"))
 					+ statModContext("ADD_SPELL_DMG_MOD_MANA") * statModContext("MOD_MANA") * statModContext("ADD_MANA_MOD_INT")
-				) + sum[StatLogic.Stats.Spirit] * statModContext("ADD_SPELL_DMG_MOD_SPI")
+				) + summaryFunc[StatLogic.Stats.Spirit](sum, statModContext) * statModContext("ADD_SPELL_DMG_MOD_SPI")
 				+ summaryFunc[StatLogic.Stats.AttackPower](sum, statModContext) * statModContext("ADD_SPELL_DMG_MOD_AP")
 				+ sum[StatLogic.Stats.Defense] * statModContext("ADD_SPELL_DMG_MOD_DEFENSE")
 			)
@@ -3482,12 +3494,12 @@ local summaryCalcData = {
 		func = function(sum, statModContext)
 			return statModContext("MOD_HEALING") * (
 				sum[StatLogic.Stats.HealingPower]
-				+ (sum[StatLogic.Stats.Strength] * statModContext("ADD_HEALING_MOD_STR"))
-				+ (sum[StatLogic.Stats.Agility] * statModContext("ADD_HEALING_MOD_AGI"))
-				+ (sum[StatLogic.Stats.Intellect] * (
+				+ (summaryFunc[StatLogic.Stats.Strength](sum, statModContext) * statModContext("ADD_HEALING_MOD_STR"))
+				+ (summaryFunc[StatLogic.Stats.Agility](sum, statModContext) * statModContext("ADD_HEALING_MOD_AGI"))
+				+ (summaryFunc[StatLogic.Stats.Intellect](sum, statModContext) * (
 					statModContext("ADD_HEALING_MOD_INT"))
 					+ statModContext("ADD_HEALING_MOD_MANA") * statModContext("MOD_MANA") * statModContext("ADD_MANA_MOD_INT")
-				) + (sum[StatLogic.Stats.Spirit] * statModContext("ADD_HEALING_MOD_SPI"))
+				) + (summaryFunc[StatLogic.Stats.Spirit](sum, statModContext) * statModContext("ADD_HEALING_MOD_SPI"))
 				+ (summaryFunc[StatLogic.Stats.AttackPower](sum, statModContext) * statModContext("ADD_HEALING_MOD_AP"))
 			)
 		end,
@@ -3507,7 +3519,7 @@ local summaryCalcData = {
 		stat = StatLogic.Stats.SpellHitRating,
 		func = function(sum, statModContext)
 			return sum[StatLogic.Stats.SpellHitRating]
-				+ sum[StatLogic.Stats.Spirit] * statModContext("ADD_SPELL_HIT_RATING_MOD_SPI")
+				+ summaryFunc[StatLogic.Stats.Spirit](sum, statModContext) * statModContext("ADD_SPELL_HIT_RATING_MOD_SPI")
 		end,
 	},
 	-- Spell Crit Chance - SPELL_CRIT_RATING, INT
@@ -3517,7 +3529,7 @@ local summaryCalcData = {
 		func = function(sum, statModContext)
 			return sum[StatLogic.Stats.SpellCrit]
 				+ summaryFunc[StatLogic.Stats.SpellCritRating](sum, statModContext) * statModContext("ADD_SPELL_CRIT_MOD_SPELL_CRIT_RATING")
-				+ sum[StatLogic.Stats.Intellect] * statModContext("ADD_SPELL_CRIT_MOD_INT")
+				+ summaryFunc[StatLogic.Stats.Intellect](sum, statModContext) * statModContext("ADD_SPELL_CRIT_MOD_INT")
 		end,
 	},
 	-- Spell Crit Rating - SPELL_CRIT_RATING
@@ -3526,7 +3538,7 @@ local summaryCalcData = {
 		stat = StatLogic.Stats.SpellCritRating,
 		func = function(sum, statModContext)
 			return sum[StatLogic.Stats.SpellCritRating]
-				+ sum[StatLogic.Stats.Spirit] * statModContext("ADD_SPELL_CRIT_RATING_MOD_SPI")
+				+ summaryFunc[StatLogic.Stats.Spirit](sum, statModContext) * statModContext("ADD_SPELL_CRIT_RATING_MOD_SPI")
 		end,
 	},
 	-- Spell Haste - SPELL_HASTE_RATING
@@ -3564,8 +3576,8 @@ local summaryCalcData = {
 		func = function(sum, statModContext)
 			return statModContext("MOD_ARMOR") * sum[StatLogic.Stats.Armor]
 				+ sum[StatLogic.Stats.BonusArmor]
-				+ sum[StatLogic.Stats.Agility] * statModContext("ADD_BONUS_ARMOR_MOD_AGI")
-				+ sum[StatLogic.Stats.Intellect] * statModContext("ADD_BONUS_ARMOR_MOD_INT")
+				+ summaryFunc[StatLogic.Stats.Agility](sum, statModContext) * statModContext("ADD_BONUS_ARMOR_MOD_AGI")
+				+ summaryFunc[StatLogic.Stats.Intellect](sum, statModContext) * statModContext("ADD_BONUS_ARMOR_MOD_INT")
 		 end,
 	},
 	-- Dodge Chance Before DR - DODGE, DODGE_RATING, DEFENSE, AGI
@@ -3575,7 +3587,7 @@ local summaryCalcData = {
 		func = function(sum, statModContext)
 			return sum[StatLogic.Stats.DodgeRating] * statModContext("ADD_DODGE_MOD_DODGE_RATING")
 				+ summaryFunc[StatLogic.Stats.Defense](sum, statModContext) * statModContext("ADD_DODGE_MOD_DEFENSE")
-				+ sum[StatLogic.Stats.Agility] * statModContext("ADD_DODGE_MOD_AGI")
+				+ summaryFunc[StatLogic.Stats.Agility](sum, statModContext) * statModContext("ADD_DODGE_MOD_AGI")
 		end,
 	},
 	-- Dodge Chance
@@ -3640,7 +3652,7 @@ local summaryCalcData = {
 		stat = StatLogic.Stats.ParryRating,
 		func = function(sum, statModContext)
 			return sum[StatLogic.Stats.ParryRating]
-				+ sum[StatLogic.Stats.Strength] * statModContext("ADD_PARRY_RATING_MOD_STR")
+				+ summaryFunc[StatLogic.Stats.Strength](sum, statModContext) * statModContext("ADD_PARRY_RATING_MOD_STR")
 		end,
 	},
 	-- Block Chance - BLOCK, BLOCK_RATING, DEFENSE
@@ -3672,7 +3684,7 @@ local summaryCalcData = {
 			return GetBlockChance() > 0 and (
 				statModContext("MOD_BLOCK_VALUE") * (
 					sum[StatLogic.Stats.BlockValue]
-					+ sum[StatLogic.Stats.Strength] * statModContext("ADD_BLOCK_VALUE_MOD_STR")
+					+ summaryFunc[StatLogic.Stats.Strength](sum, statModContext) * statModContext("ADD_BLOCK_VALUE_MOD_STR")
 					+ summaryFunc[StatLogic.Stats.SpellDamage](sum, statModContext) * statModContext("ADD_BLOCK_VALUE_MOD_SPELL_DMG")
 				)
 			) or 0
@@ -3959,14 +3971,6 @@ function RatingBuster:StatSummary(tooltip, link, statModContext)
 		else
 			statData.diff1, statData.diff2 = StatLogic:GetDiff(link, nil, nil, db.global.sumIgnoreEnchant, db.global.sumIgnoreGems, db.global.sumIgnoreExtraSockets, red, yellow, blue, meta)
 		end
-	end
-	-- Apply Base Stat Mods
-	for _, v in pairs(statData) do
-		v[StatLogic.Stats.Strength] = (v[StatLogic.Stats.Strength] or 0) * statModContext("MOD_STR")
-		v[StatLogic.Stats.Agility] = (v[StatLogic.Stats.Agility] or 0) * statModContext("MOD_AGI")
-		v[StatLogic.Stats.Stamina] = (v[StatLogic.Stats.Stamina] or 0) * statModContext("MOD_STA")
-		v[StatLogic.Stats.Intellect] = (v[StatLogic.Stats.Intellect] or 0) * statModContext("MOD_INT")
-		v[StatLogic.Stats.Spirit] = (v[StatLogic.Stats.Spirit] or 0) * statModContext("MOD_SPI")
 	end
 
 	local summary = {}
