@@ -1500,6 +1500,16 @@ elseif addon.class == "WARRIOR" then
 				["aura"] = 460171,
 			}
 		},
+		["ADD_STR_MOD_DEFENSE"] = {
+			-- Set: Lightbreaker's Battlegear (Recklessness)
+			{
+				["set"] = 1933,
+				["pieces"] = 4,
+				["value"] = 0.5,
+				["aura"] = 1234031,
+				["rune"] = true,
+			},
+		}
 	}
 end
 

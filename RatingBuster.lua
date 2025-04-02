@@ -2758,6 +2758,9 @@ do
 				end
 			end
 
+			local strength = value * statModContext("ADD_STR_MOD_DEFENSE")
+			self:ProcessStat(StatLogic.Stats.Strength, strength, infoTable, link, color, statModContext, false, db.profile.showStrFromDefense)
+
 			local attackPower = value * statModContext("ADD_AP_MOD_DEFENSE")
 			self:ProcessStat(StatLogic.Stats.AttackPower, attackPower, infoTable, link, color, statModContext, false, db.profile.showAPFromDefense)
 
@@ -3053,6 +3056,7 @@ local summaryCalcData = {
 		func = function(sum, statModContext)
 			return statModContext("MOD_STR") * (
 				sum[StatLogic.Stats.Strength]
+				+ summaryFunc[StatLogic.Stats.Defense](sum, statModContext) * statModContext("ADD_STR_MOD_DEFENSE")
 			)
 		end,
 	},

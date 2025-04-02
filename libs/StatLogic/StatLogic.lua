@@ -625,6 +625,10 @@ local addedInfoMods = {
 		mod = "STR",
 	},
 	{
+		add = "STR",
+		mod = "DEFENSE",
+	},
+	{
 		add = "DODGE_REDUCTION",
 		mod = "EXPERTISE",
 	},
