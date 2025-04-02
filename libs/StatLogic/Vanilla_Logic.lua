@@ -514,7 +514,7 @@ elseif addon.class == "MAGE" then
 				["value"] = 0.15,
 				["aura"] = 6117,
 				["rune"] = true,
-				["group"] = addon.ExclusiveGroup.SoulEngraving,
+				["group"] = addon.ExclusiveGroup.SetBonus,
 			},
 			-- Passive (Soul of the Magical Armorer)
 			{
@@ -522,7 +522,7 @@ elseif addon.class == "MAGE" then
 				["value"] = 0.15,
 				["aura"] = 6117,
 				["rune"] = true,
-				["group"] = addon.ExclusiveGroup.SoulEngraving,
+				["group"] = addon.ExclusiveGroup.SetBonus,
 			},
 			-- Rune: Enlightenment
 			{
@@ -645,7 +645,7 @@ elseif addon.class == "PALADIN" then
 				["tab"] = 2,
 				["num"] = 12,
 				["aura"] = 20911,
-				["group"] = addon.ExclusiveGroup.SoulEngraving,
+				["group"] = addon.ExclusiveGroup.SetBonus,
 			},
 			-- Passive: Soul of the Ironclad (Blessing of Sanctuary)
 			{
@@ -655,7 +655,7 @@ elseif addon.class == "PALADIN" then
 				["tab"] = 2,
 				["num"] = 12,
 				["aura"] = 20911,
-				["group"] = addon.ExclusiveGroup.SoulEngraving,
+				["group"] = addon.ExclusiveGroup.SetBonus,
 			},
 		},
 		["MOD_AGI"] = {
@@ -668,7 +668,7 @@ elseif addon.class == "PALADIN" then
 				["tab"] = 2,
 				["num"] = 12,
 				["aura"] = 20911,
-				["group"] = addon.ExclusiveGroup.SoulEngraving,
+				["group"] = addon.ExclusiveGroup.SetBonus,
 			},
 			-- Passive: Soul of the Ironclad (Blessing of Sanctuary)
 			{
@@ -678,7 +678,7 @@ elseif addon.class == "PALADIN" then
 				["tab"] = 2,
 				["num"] = 12,
 				["aura"] = 20911,
-				["group"] = addon.ExclusiveGroup.SoulEngraving,
+				["group"] = addon.ExclusiveGroup.SetBonus,
 			},
 		},
 		["MOD_STA"] = {
@@ -691,7 +691,7 @@ elseif addon.class == "PALADIN" then
 				["tab"] = 2,
 				["num"] = 12,
 				["aura"] = 20911,
-				["group"] = addon.ExclusiveGroup.SoulEngraving,
+				["group"] = addon.ExclusiveGroup.SetBonus,
 			},
 			-- Passive: Soul of the Ironclad (Blessing of Sanctuary)
 			{
@@ -701,7 +701,7 @@ elseif addon.class == "PALADIN" then
 				["tab"] = 2,
 				["num"] = 12,
 				["aura"] = 20911,
-				["group"] = addon.ExclusiveGroup.SoulEngraving,
+				["group"] = addon.ExclusiveGroup.SetBonus,
 			},
 		},
 		-- Paladin: Divine Intellect (Rank 5) - 1,2
@@ -723,7 +723,7 @@ elseif addon.class == "PALADIN" then
 				["tab"] = 2,
 				["num"] = 12,
 				["aura"] = 20911,
-				["group"] = addon.ExclusiveGroup.SoulEngraving,
+				["group"] = addon.ExclusiveGroup.SetBonus,
 			},
 			-- Passive: Soul of the Ironclad (Blessing of Sanctuary)
 			{
@@ -733,7 +733,7 @@ elseif addon.class == "PALADIN" then
 				["tab"] = 2,
 				["num"] = 12,
 				["aura"] = 20911,
-				["group"] = addon.ExclusiveGroup.SoulEngraving,
+				["group"] = addon.ExclusiveGroup.SetBonus,
 			},
 		},
 		["MOD_SPI"] = {
@@ -746,7 +746,7 @@ elseif addon.class == "PALADIN" then
 				["tab"] = 2,
 				["num"] = 12,
 				["aura"] = 20911,
-				["group"] = addon.ExclusiveGroup.SoulEngraving,
+				["group"] = addon.ExclusiveGroup.SetBonus,
 			},
 			-- Passive: Soul of the Ironclad (Blessing of Sanctuary)
 			{
@@ -756,7 +756,7 @@ elseif addon.class == "PALADIN" then
 				["tab"] = 2,
 				["num"] = 12,
 				["aura"] = 20911,
-				["group"] = addon.ExclusiveGroup.SoulEngraving,
+				["group"] = addon.ExclusiveGroup.SetBonus,
 			},
 		},
 		["ADD_SPELL_DMG_MOD_INT"] = {
@@ -861,14 +861,14 @@ elseif addon.class == "PRIEST" then
 				["pieces"] = 2,
 				["value"] = 0.15,
 				["rune"] = true,
-				["group"] = addon.ExclusiveGroup.SoulEngraving,
+				["group"] = addon.ExclusiveGroup.SetBonus,
 			},
 			-- Passive: Soul of the Faithful
 			{
 				["known"] = 1220112,
 				["value"] = 0.15,
 				["rune"] = true,
-				["group"] = addon.ExclusiveGroup.SoulEngraving,
+				["group"] = addon.ExclusiveGroup.SetBonus,
 			},
 		},
 		-- Priest: Spiritual Guidance (Rank 5) - 2,14
@@ -1017,7 +1017,7 @@ elseif addon.class == "ROGUE" then
 					[Enum.ItemWeaponSubclass.Dagger] = true,
 				},
 				["rune"] = true,
-				["group"] = addon.ExclusiveGroup.SoulEngraving,
+				["group"] = addon.ExclusiveGroup.SetBonus,
 			},
 			-- Passive: Soul of the Shiv Savant
 			{
@@ -1027,7 +1027,7 @@ elseif addon.class == "ROGUE" then
 					[Enum.ItemWeaponSubclass.Dagger] = true,
 				},
 				["rune"] = true,
-				["group"] = addon.ExclusiveGroup.SoulEngraving,
+				["group"] = addon.ExclusiveGroup.SetBonus,
 			},
 		},
 		[StatLogic.Stats.WeaponSkill] = {
@@ -1125,7 +1125,7 @@ elseif addon.class == "SHAMAN" then
 				["max_stacks"] = 3,
 				["aura"] = 467910,
 				["rune"] = true,
-				["group"] = addon.ExclusiveGroup.SoulEngraving,
+				["group"] = addon.ExclusiveGroup.SetBonus,
 			},
 			-- Passive: Soul of the Spiritual Bulwark (Elemental Shield)
 			{
@@ -1134,7 +1134,7 @@ elseif addon.class == "SHAMAN" then
 				["max_stacks"] = 3,
 				["aura"] = 467910,
 				["rune"] = true,
-				["group"] = addon.ExclusiveGroup.SoulEngraving,
+				["group"] = addon.ExclusiveGroup.SetBonus,
 			},
 		},
 		["MOD_AP"] = {
@@ -1216,7 +1216,7 @@ elseif addon.class == "SHAMAN" then
 				["pieces"] = 4,
 				["aura"] = 1213939,
 				["value"] = 0.10,
-				["group"] = addon.ExclusiveGroup.SoulEngraving,
+				["group"] = addon.ExclusiveGroup.SetBonus,
 			},
 			-- Passive: Soul of the True Alpha (Pack Leader)
 			{
@@ -1224,7 +1224,7 @@ elseif addon.class == "SHAMAN" then
 				["known"] = 1220246,
 				["aura"] = 1213939,
 				["value"] = 0.10,
-				["group"] = addon.ExclusiveGroup.SoulEngraving,
+				["group"] = addon.ExclusiveGroup.SetBonus,
 			},
 		},
 		["ADD_AP_MOD_INT"] = {
