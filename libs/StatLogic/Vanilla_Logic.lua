@@ -462,6 +462,26 @@ elseif addon.class == "HUNTER" then
 				["value"] = 0.1,
 			},
 		},
+		["MOD_AP"] = {
+			-- Set: Dawnstalker Armor (Wicked Shot)
+			{
+				["set"] = 1937,
+				["pieces"] = 4,
+				["value"] = 0.25,
+				["aura"] = 1226136,
+				["rune"] = true,
+			},
+		},
+		["MOD_RANGED_AP"] = {
+			-- Set: Dawnstalker Armor (Wicked Shot)
+			{
+				["set"] = 1937,
+				["pieces"] = 4,
+				["value"] = 0.25,
+				["aura"] = 1226136,
+				["rune"] = true,
+			},
+		},
 	}
 elseif addon.class == "MAGE" then
 	StatLogic.StatModTable["MAGE"] = {
@@ -614,7 +634,16 @@ elseif addon.class == "PALADIN" then
 				},
 				["aura"] = 440668,
 				["rune"] = true,
-			}
+			},
+			-- Set: Inquisition Warplate
+			{
+				["set"] = 1940,
+				["pieces"] = 6,
+				["stack"] = 0.1,
+				["max_stacks"] = 3,
+				["aura"] = 1226464,
+				["rune"] = true,
+			},
 		},
 		-- Paladin: Toughness (Rank 5) - 2,5
 		--          Increases your armor value from items by 2%/4%/6%/8%/10%.
@@ -777,8 +806,7 @@ elseif addon.class == "PALADIN" then
 			},
 		},
 		["MOD_BLOCK_VALUE"] = {
-			-- Paladin: Shield Specialization (Rank 3) - 2,8
-			--          Increases the amount of damage absorbed by your shield by 10%/20%/30%.
+			-- Talent: Shield Specialization
 			{
 				["tab"] = 2,
 				["num"] = 8,
@@ -786,13 +814,28 @@ elseif addon.class == "PALADIN" then
 					0.1, 0.2, 0.3,
 				},
 			},
-			-- Paladin: Aegis - Rune
-			--   Increases your block value by 30%
+			-- Rune: Aegis
 			{
 				["known"] = 425589,
 				["rune"] = true,
 				["value"] = 0.3,
-			}
+			},
+			-- Set: Inquisition Bulwark (Righteous Shield)
+			{
+				["set"] = 1942,
+				["pieces"] = 2,
+				["value"] = 0.3,
+				["aura"] = 1226466,
+				["rune"] = true,
+			},
+			-- Set: Inquisition Bulwark (Avenging Shield)
+			{
+				["set"] = 1942,
+				["pieces"] = 6,
+				["value"] = 0.3,
+				["aura"] = 1233525,
+				["rune"] = true,
+			},
 		},
 		["ADD_SPELL_DMG_MOD_DEFENSE"] = {
 			-- Buff: Defender's Resolve
@@ -1447,7 +1490,17 @@ elseif addon.class == "WARRIOR" then
 				["stance"] = "interface\\icons\\achievement_featsofstrength_gladiator_08",
 				["rune"] = true,
 				["value"] = -0.30,
-			}
+				["group"] = addon.ExclusiveGroup.SetBonus,
+			},
+			-- Set: Lightbreaker's Battlegear
+			{
+				["set"] = 1933,
+				["pieces"] = 6,
+				["stance"] = "interface\\icons\\achievement_featsofstrength_gladiator_08",
+				["rune"] = true,
+				["value"] = 0,
+				["group"] = addon.ExclusiveGroup.SetBonus,
+			},
 		},
 		[StatLogic.Stats.MeleeCrit] = {
 			-- Talent: Axe Specialization
