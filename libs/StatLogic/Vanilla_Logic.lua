@@ -949,16 +949,40 @@ elseif addon.class == "ROGUE" then
 				["stack"] = 0.06,
 				["max_stacks"] = 5,
 				["aura"] = 400015,
+				["group"] = addon.ExclusiveGroup.SetBonus,
+			},
+			-- Set: Duskwraith Leathers (Rolling with the Punches)
+			{
+				["set"] = 1935,
+				["pieces"] = 6,
+				["known"] = 400016,
+				["rune"] = true,
+				["stack"] = 0.04,
+				["max_stacks"] = 10,
+				["aura"] = 400015,
+				["group"] = addon.ExclusiveGroup.SetBonus,
 			},
 		},
 		["MOD_ARMOR"] = {
 			-- Set: Bloodfang Battlearmor (Rolling with the Punches)
 			{
+				["set"] = 1815,
+				["pieces"] = 4,
 				["known"] = 400016,
 				["rune"] = true,
 				["stack"] = 0.20,
 				["max_stacks"] = 5,
 				["aura"] = 400015,
+				["group"] = addon.ExclusiveGroup.SetBonus,
+			},
+			-- Passive: Soul of the Black Belt
+			{
+				["known"] = 1220023,
+				["rune"] = true,
+				["stack"] = 0.20,
+				["max_stacks"] = 5,
+				["aura"] = 400015,
+				["group"] = addon.ExclusiveGroup.SetBonus,
 			},
 		},
 		[StatLogic.Stats.MeleeCrit] = {

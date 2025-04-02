@@ -781,10 +781,10 @@ do
 	--- Returns information about a buff or debuff on the player, including fake auras from AlwaysBuffed settings
 	---@param auraName string
 	---@param ignoreAlwaysBuffed boolean? Set to true to ignore the AlwaysBuffed settings
-	---@return AuraInfo
+	---@return AuraInfo auraInfo, boolean usedAlwaysBuffed
 	function StatLogic:GetAuraInfo(auraName, ignoreAlwaysBuffed)
 		if not ignoreAlwaysBuffed and self.always_buffed_ns.profile[auraName] then
-			return always_buffed_aura_info[auraName]
+			return always_buffed_aura_info[auraName], true
 		else
 			if needs_update then
 				local i = 1
@@ -843,7 +843,7 @@ do
 				until not auraData
 				needs_update = false
 			end
-			return aura_cache[auraName]
+			return aura_cache[auraName], false
 		end
 	end
 end
@@ -1296,7 +1296,7 @@ do
 		PredatoryStrikes = 7,
 		Zandalar = 8,
 		Moxie = 9,
-		SoulEngraving = 10,
+		SetBonus = 10,
 	}
 	local ExclusiveGroupCache = {}
 
@@ -1339,8 +1339,9 @@ do
 			local rank = aura.rank
 			newValue = case.rank[rank]
 		elseif case.aura and case.stack then
-			local aura = StatLogic:GetAuraInfo(GetSpellName(case.aura))
-			newValue = case.stack * aura.stacks
+			local aura, usedAlwaysBuffed = StatLogic:GetAuraInfo(GetSpellName(case.aura))
+			local stacks = usedAlwaysBuffed and case.max_stacks or aura.stacks
+			newValue = case.stack * stacks
 		elseif case.regen then
 			newValue = case.regen(level)
 		elseif case.value then
