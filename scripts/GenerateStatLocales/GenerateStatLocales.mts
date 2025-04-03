@@ -68,16 +68,18 @@ enum Expansion {
 	}
 }
 
+class StatEntry {
+	entries: (StatValue[] | false)[] = []
+	isWholeText = false
 }
 
-type StatEntry = StatValue[] | false
-
-async function mapTextToStatEffects(text: string, statEffects: StatValue[][], spellStatEffects: Map<number, StatValue[][]>): Promise<[string, StatEntry[]]> {
+async function mapTextToStatEntry(text: string, statEffects: StatValue[][], spellStatEffects: Map<number, StatValue[][]>): Promise<[string, StatEntry]> {
 	text = text.replace(/[\s.]+$/, "").toLowerCase()
 
 	const remainingEffects: StatValue[][] = [...statEffects]
 
-	const statEntries: StatEntry[] = []
+	const statEntry = new StatEntry()
+	const entries = statEntry.entries
 	// Matches an optional leading + or -, plus one of:
 	//   Replacement token:
 	//     Leading $
@@ -89,7 +91,7 @@ async function mapTextToStatEffects(text: string, statEffects: StatValue[][], sp
 	const pattern = text.replace(/[+-]?(?:\$(?:(\{.*?\})|(\d*)([a-z])(\d?))|([\d\.]+(?<=\d)))/g, function(match, expression: string, alternateSpellID: string, identifier: string, identifierIndex: string, plainNumber: string, _offset: number, input: string) {
 		if (expression || plainNumber) {
 			// We can't directly identify which effectIndex this number is, so save it for later
-			statEntries.push([new StatValue('Placeholder', parseInt(plainNumber) || 0)])
+			entries.push([new StatValue('Placeholder', parseInt(plainNumber) || 0)])
 		} else {
 			// TODO These identifiers are only valid for Spell.db2.
 			// SpellItemEnchantment uses an entirely separate set,
@@ -107,7 +109,7 @@ async function mapTextToStatEffects(text: string, statEffects: StatValue[][], sp
 						if (alternateStatEffects) {
 							newStatEffects = alternateStatEffects
 						} else {
-							statEntries.push(false)
+							entries.push(false)
 							break
 						}
 					} else {
@@ -117,12 +119,12 @@ async function mapTextToStatEffects(text: string, statEffects: StatValue[][], sp
 					const effectIndex = parseInt(identifierIndex) - 1
 					const statValues = newStatEffects[effectIndex]
 					if (statValues) {
-						statEntries.push(statValues)
+						entries.push(statValues)
 						if (!alternateSpellID) {
 							delete remainingEffects[effectIndex]
 						}
 					} else {
-						statEntries.push(false)
+						entries.push(false)
 					}
 					break
 				case "a":
@@ -136,19 +138,19 @@ async function mapTextToStatEffects(text: string, statEffects: StatValue[][], sp
 				case "u":
 				case "x":
 					// Confirmed non-stats
-					statEntries.push(false)
+					entries.push(false)
 					break
 				case "g":
 				case "l":
 					console.warn(`Unhandled conditional identifier ${identifier} in '${input}'`)
-					statEntries.push(false)
+					entries.push(false)
 					break
 				case undefined:
 					console.error(`Undefined identifier, expression, and number in '${input}'`)
 					break
 				default:
 					console.warn(`Unhandled identifier ${identifier} in '${input}'`)
-					statEntries.push(false)
+					entries.push(false)
 					break
 			}
 		}
@@ -157,44 +159,47 @@ async function mapTextToStatEffects(text: string, statEffects: StatValue[][], sp
 
 	// If the spell had more effects than could be matched by identifiers,
 	// attempt to map the remaining effects to already-assigned StatEntries with the same value
+	let numRemainingEffects = 0
 	for (const effect of remainingEffects) {
 		if (effect) {
 			const effectValue = effect[0].value
-			const statEntryIndex = statEntries.findIndex(e => e && e.find(sv => sv.value === effectValue))
+			const statEntryIndex = entries.findIndex(e => e && e.find(sv => sv.value === effectValue))
 			if (statEntryIndex >= 0) {
-				const statEntry = statEntries[statEntryIndex]
+				const statEntry = entries[statEntryIndex]
 				if (statEntry) {
 					if (statEntry[0].stat === 'Placeholder') {
-						statEntries[statEntryIndex] = effect
+						entries[statEntryIndex] = effect
 					} else {
-						statEntries[statEntryIndex] = statEntry.concat(effect)
+						entries[statEntryIndex] = statEntry.concat(effect)
 					}
 				}
+			} else {
+				numRemainingEffects++
 			}
 		}
 	}
 
 	// Map any remaining Placeholders to false (meaning the number does not represent a stat)
-	for (const [i, statEntry] of Object.entries(statEntries)) {
+	for (const [i, statEntry] of Object.entries(entries)) {
 		if (statEntry) {
 			const plainNumberIndex = statEntry.findIndex(sv => sv.stat === 'Placeholder')
 			if (plainNumberIndex >= 0) {
 				if (statEntry.length > 1) {
 					console.warn("Unexpected Placeholder in multi-stat StatEntry")
 				} else {
-					statEntries[i] = false
+					entries[i] = false
 				}
 			}
 		}
 	}
 
-	// console.dir({
-		// [pattern]: statEntries
-	// }, {
-		// depth: 5
-	// })
+	// We didn't match any numbers, so mark it as whole text and assign *all* the stats
+	if (numRemainingEffects === statEffects.length) {
+		statEntry.isWholeText = true
+		statEntry.entries = statEffects
+	}
 
-	return [pattern, statEntries]
+	return [pattern, statEntry]
 }
 
 const base = import.meta.url
@@ -824,7 +829,7 @@ async function enumerateStatAndProcSpells(spellEffects: SpellEffect[]): Promise<
 }
 
 function overrideSpells(spellStatEffects: Map<number, StatValue[][]>, spellDescIDs: Set<number>, expansion: Expansion) {
-		for (const [sOverrideSpellID, overrideStatEffects] of Object.entries(statLocaleData["Spell"][expansion])) {
+	for (const [sOverrideSpellID, overrideStatEffects] of Object.entries(statLocaleData["Spell"][expansion])) {
 		const overrideSpellID = parseInt(sOverrideSpellID)
 		spellDescIDs.add(overrideSpellID)
 		const overrideStatValues = overrideStatEffects.map((effect) => {
@@ -863,7 +868,7 @@ async function getLocaleStatMap(
 	overrideEnchantIDs: number[],
 	overrideEnchantStatEffects: Map<number, StatValue[][]>
 ) {
-	const statMap = new Map<string, StatEntry[]>
+	const statMap = new Map<string, StatEntry>
 
 	const spellDescriptions = await queryStatSpellDescriptions(expansion, locale, Array.from(spellDescIDs))
 	for (const spellDescription of spellDescriptions) {
@@ -871,7 +876,7 @@ async function getLocaleStatMap(
 		if (statEffects) {
 			const branches = await traverseDescriptionBranches(spellDescription.description)
 			for (const branch of branches) {
-				const [pattern, statEntries] = await mapTextToStatEffects(branch, statEffects, spellStatEffects)
+				const [pattern, statEntries] = await mapTextToStatEntry(branch, statEffects, spellStatEffects)
 				statMap.set(pattern, statEntries)
 			}
 		}
@@ -895,7 +900,7 @@ async function getLocaleStatMap(
 mkdirSync(new URL(databaseDirName, base), { recursive: true })
 mkdirSync(new URL(localeDirName, base), { recursive: true })
 
-const localeResults = new Map<Locale, Promise<Map<string, StatEntry[]>>[]>()
+const localeResults = new Map<Locale, Promise<Map<string, StatEntry>>[]>()
 
 for (const [_, expansion] of Object.entries(Expansion)) {
 	if (typeof(expansion) != "number") { continue }
