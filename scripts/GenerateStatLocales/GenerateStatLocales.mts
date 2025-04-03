@@ -978,6 +978,43 @@ function getOverrideEnchants(expansion: Expansion): [number[], Map<number, StatV
 	return [overrideEnchantIDs, overrideEnchantStatEffects]
 }
 
+async function getLocaleStatMap(
+	expansion: Expansion,
+	locale: Locale,
+	spellStatEffects: Map<number, StatValue[][]>,
+	statSpellIDs: number[],
+	spellDescIDs: Set<number>,
+	overrideEnchantIDs: number[],
+	overrideEnchantStatEffects: Map<number, StatValue[][]>
+) {
+	const statMap = new Map<string, StatEntry[]>
+
+	const spellDescriptions = await queryStatSpellDescriptions(expansion, locale, Array.from(spellDescIDs))
+	for (const spellDescription of spellDescriptions) {
+		const statEffects = spellStatEffects.get(spellDescription.id)
+		if (statEffects) {
+			const branches = await traverseDescriptionBranches(spellDescription.description)
+			for (const branch of branches) {
+				const [pattern, statEntries] = await mapTextToStatEffects(branch, statEffects, spellStatEffects)
+				statMap.set(pattern, statEntries)
+			}
+		}
+	}
+
+	const statEnchants = await queryStatEnchants(expansion, locale, statSpellIDs, overrideEnchantIDs)
+	console.log(`${statEnchants.length} statEnchants`)
+	for (const statEnchant of statEnchants) {
+		let stats = overrideEnchantStatEffects.get(statEnchant.id)
+		if (!stats) {
+			stats = getEnchantStats(statEnchant, spellStatEffects)
+		}
+		// TODO: mapTextToStats equivalent
+		// TODO: Write results to locale table
+	}
+
+	return statMap
+}
+
 function processStaticLocaleData() {
 	for (const locale of locales) {
 		const localeResults: Promise<any>[] = []
@@ -993,6 +1030,8 @@ function processStaticLocaleData() {
 mkdirSync(new URL(databaseDirName, base), { recursive: true })
 mkdirSync(new URL(localeDirName, base), { recursive: true })
 // processStaticLocaleData()
+
+const localeResults = new Map<Locale, Promise<Map<string, StatEntry[]>>[]>()
 
 for (const [_, expansion] of Object.entries(Expansion)) {
 	if (typeof(expansion) != "number") { continue }
@@ -1024,27 +1063,13 @@ for (const [_, expansion] of Object.entries(Expansion)) {
 	const [overrideEnchantIDs, overrideEnchantStatEffects] = getOverrideEnchants(expansion)
 
 	for (const locale of locales) {
-		const spellDescriptions = await queryStatSpellDescriptions(expansion, locale, Array.from(spellDescIDs))
-		for (const spellDescription of spellDescriptions) {
-			const statEffects = spellStatEffects.get(spellDescription.id)
-			if (statEffects) {
-				const branches = await traverseDescriptionBranches(spellDescription.description)
-				for (const branch of branches) {
-					const [pattern, statEntries] = await mapTextToStatEffects(branch, statEffects, spellStatEffects)
-					// TODO: Write results to locale table
-				}
-			}
-		}
-
-		const statEnchants = await queryStatEnchants(expansion, locale, statSpellIDs, overrideEnchantIDs)
-		console.log(`${statEnchants.length} statEnchants`)
-		for (const statEnchant of statEnchants) {
-			let stats = overrideEnchantStatEffects.get(statEnchant.id)
-			if (!stats) {
-				stats = getEnchantStats(statEnchant, spellStatEffects)
-			}
-			// TODO: mapTextToStats equivalent
-			// TODO: Write results to locale table
-		}
+		const localeStatMap = getLocaleStatMap(expansion, locale, spellStatEffects, statSpellIDs, spellDescIDs, overrideEnchantIDs, overrideEnchantStatEffects)
+		const localeResult = localeResults.get(locale) || []
+		localeResult.push(localeStatMap)
+		localeResults.set(locale, localeResult)
 	}
+}
+
+for (const locale of locales) {
+	combineResults(localeResults.get(locale)!).then(results => writeLocale(locale, results))
 }
