@@ -1,9 +1,7 @@
 #!/usr/bin/env -S node --import=tsx
 
-import { parse } from 'csv-parse'
-import { createReadStream, existsSync, mkdirSync, writeFileSync } from 'node:fs'
+import { existsSync, mkdirSync, writeFileSync } from 'node:fs'
 import path from 'node:path'
-import { finished } from 'node:stream/promises'
 
 import { DuckDBInstance } from '@duckdb/node-api'
 
@@ -70,68 +68,12 @@ enum Expansion {
 	}
 }
 
-function isManaRegen(stat) {
-	return stat === "GenericManaRegen" || stat && stat.includes && stat.includes("GenericManaRegen")
-}
-
-const scanners = {
-	"StatIDLookup": function(text, stats) {
-		const newStats: Array<string|false> = []
-		let matchedStatCount = 0
-		let checkForManaRegen = false
-		// Matches an optional leading + or -, plus one of:
-		//   Replacement token:
-		//     Leading $
-		//     One of: s: spell, a: aura range, t: time interval, i: unknown integer
-		//     Optional integer indicating SpellEffect Index
-		//   Literal number:
-		//     Digits 0-9 or decimal point ".", ends in digit
-		const pattern = text.replace(/[+-]?(\$(?<tokenType>[sati])(?<tokenIndex>\d?)|[\d\.]+(?<=\d))/g, function(match, _1, _2, _3, offset, string, groups) {
-			let stat
-			switch (groups.tokenType) {
-				case "s":
-					// In theory, $s2 could come before $s1. However, this is not
-					// the case in any strings we use in any locale (for now :)).
-					// TODO: Hande GenericManaRegen fives
-					stat = stats[matchedStatCount]
-					if (isManaRegen(stat)) {
-						checkForManaRegen = true
-					}
-					newStats.push(stat)
-					matchedStatCount++
-					break
-				case "a":
-				case "t":
-					newStats.push(false)
-					break
-				default:
-					// tokenType i or plain number
-					stat = matchedStatCount < stats.length ? stats[matchedStatCount] : false
-					if ((isManaRegen(stat) || checkForManaRegen) && match === "5") {
-						newStats.push(false)
-						checkForManaRegen = false
-					} else {
-						if(isManaRegen(stat)) {
-							checkForManaRegen = true
-						}
-						newStats.push(stat)
-						matchedStatCount++
-					}
-			}
-			return "%s"
-		})
-		return [pattern, matchedStatCount > 0 ? newStats : false]
-	},
-	"WholeTextLookup": function(text, stats) {
-		return [text, stats]
-	}
 }
 
 type StatEntry = StatValue[] | false
 
 async function mapTextToStatEffects(text: string, statEffects: StatValue[][], spellStatEffects: Map<number, StatValue[][]>): Promise<[string, StatEntry[]]> {
 	text = text.replace(/[\s.]+$/, "").toLowerCase()
-	const scanner = text.search(/\d/) > 0 ? "StatIDLookup" : "WholeText"
 
 	const remainingEffects: StatValue[][] = [...statEffects]
 
@@ -404,29 +346,6 @@ const NegativeEffectAuras = new Set<EffectAura> ([
 // EffectAura.PROC_TRIGGER_SPELL
 const procTriggerSpell = 42
 
-function getGemStats(row) {
-	const stats: Array<string|false> = []
-	let foundStat = false
-	for (let i = 0; i < 3; i++) {
-		const enchantmentEffect = row[`Effect_${i}`]
-		if (enchantmentEffect === EnchantmentEffect.Stat) {
-			const effectStat = row[`EffectArg_${i}`]
-			const effectValue = row[`EffectPointsMin_${i}`]
-			const stat = itemStatType[effectStat]
-			if (stat === "GenericManaRegen" && effectValue === 5) {
-				// Impossible to distinguish stat vs interval in a string like "5 mana per 5"
-				return false
-			} else {
-				foundStat = true
-				stats.push(stat)
-			}
-		} else if(enchantmentEffect > "0") {
-			stats.push(false)
-		}
-	}
-	return foundStat ? stats : false
-}
-
 function GetPlainStat(...stat: string[]): () => string[] {
 	return () => stat
 }
@@ -649,49 +568,6 @@ function getEnchantStats(enchant: StatEnchant, spellStatEffects: Map<number, Sta
 		}
 	}
 	return stats
-}
-
-const textColumns = {
-	"SpellItemEnchantment": "Name_lang",
-	"Spell": "Description_lang"
-}
-
-async function processDatabase(name: string, expansion: Expansion, locale: string, indices) {
-	const results = {}
-	const db = await DatabaseTable.get(name, expansion, locale).catch(console.error)
-	if (!db) return results
-
-	const parser = createReadStream(db.path).pipe(parse({
-		columns: true
-	}))
-
-	const textColumn = textColumns[name]
-	parser.on('readable', () => {
-		let row
-		while ((row = parser.read()) !== null) {
-			let scanner, stats
-			const data = indices[row.ID]
-			if (data) {
-				[scanner, stats] = data
-			} else if (name === "SpellItemEnchantment" && row.GemItemID && row.GemItemID > 0) {
-				scanner = "StatIDLookup"
-				stats = getGemStats(row)
-			}
-
-			if (scanner && stats) {
-				results[scanner] ||= {}
-				const text = row[textColumn].replace(/[\s.]+$/, "").toLowerCase()
-				const [pattern, newStats] = scanners[scanner](text, stats)
-				if (pattern && newStats) {
-					results[scanner][pattern] = newStats
-				}
-			}
-		}
-	})
-
-	await finished(parser)
-	console.log(`Parsed ${db.fileName}.`)
-	return results
 }
 
 async function combineResults(results) {
@@ -1015,21 +891,9 @@ async function getLocaleStatMap(
 	return statMap
 }
 
-function processStaticLocaleData() {
-	for (const locale of locales) {
-		const localeResults: Promise<any>[] = []
-		for (const [name, expansions] of Object.entries(statLocaleData)) {
-			for (const [expansion, indices] of Object.entries(expansions)) {
-				localeResults.push(processDatabase(name, parseInt(expansion), locale, indices))
-			}
-		}
-		combineResults(localeResults).then(results => writeLocale(locale, results))
-	}
-}
 
 mkdirSync(new URL(databaseDirName, base), { recursive: true })
 mkdirSync(new URL(localeDirName, base), { recursive: true })
-// processStaticLocaleData()
 
 const localeResults = new Map<Locale, Promise<Map<string, StatEntry[]>>[]>()
 
