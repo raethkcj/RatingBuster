@@ -71,14 +71,50 @@ enum Expansion {
 class StatEntry {
 	entries: (StatValue[] | false)[] = []
 	isWholeText = false
+
+	constructor(public spellID: number) {}
+
+	equals(other: StatEntry): boolean {
+		if (this.entries.length != other.entries.length) {
+			return false
+		} else if (this.isWholeText != other.isWholeText) {
+			return false
+		}
+
+		for (const [i, entry] of Object.entries(this.entries)) {
+			const otherEntry: (StatValue[] | false) = other.entries[i]
+			if (typeof entry != typeof otherEntry) {
+				return false
+			} else if (entry === false && otherEntry === false) {
+				continue
+			} else if ((entry as StatValue[]).length != (otherEntry as StatValue[]).length) {
+				return false
+			}
+
+			// We know both entries are StatValue[] of same length, even though TypeScript doesn't
+			for (const [j, sv] of Object.entries(entry as StatValue[])) {
+				const otherSV = (otherEntry as StatValue[])[j] as StatValue
+				if (this.isWholeText && sv.value != otherSV.value) {
+					// WholeTextLookup requires matching values
+					return false
+				} else if (sv.stat != otherSV.stat) {
+					// StatIDLookup only requires matching stats
+					return false
+				}
+			}
+		}
+
+		return true
+	}
 }
 
-async function mapTextToStatEntry(text: string, statEffects: StatValue[][], spellStatEffects: Map<number, StatValue[][]>): Promise<[string, StatEntry]> {
+async function mapTextToStatEntry(text: string, spellID: number, spellStatEffects: Map<number, StatValue[][]>): Promise<[string, StatEntry]> {
 	text = text.replace(/[\s.]+$/, "").toLowerCase()
 
+	const statEffects = spellStatEffects.get(spellID)!
 	const remainingEffects: StatValue[][] = [...statEffects]
 
-	const statEntry = new StatEntry()
+	const statEntry = new StatEntry(spellID)
 	const entries = statEntry.entries
 	// Matches an optional leading + or -, plus one of:
 	//   Replacement token:
@@ -575,22 +611,6 @@ function getEnchantStats(enchant: StatEnchant, spellStatEffects: Map<number, Sta
 	return stats
 }
 
-async function combineResults(results) {
-	const result = await Promise.all(results)
-	return result.reduce((acc, curr) => {
-		for (const scanner of Object.keys(scanners)) {
-			if (!acc[scanner] && !curr[scanner]) {
-				continue
-			} else if (!acc[scanner] || !curr[scanner]) {
-				acc[scanner] ||= curr[scanner]
-			} else {
-				acc[scanner] = Object.assign(acc[scanner], curr[scanner])
-			}
-		}
-		return acc
-	})
-}
-
 // This could be cleaner/more abstract but it works for now
 function generateLua(text, key, value, first) {
 	if (first) {
@@ -876,7 +896,7 @@ async function getLocaleStatMap(
 		if (statEffects) {
 			const branches = await traverseDescriptionBranches(spellDescription.description)
 			for (const branch of branches) {
-				const [pattern, statEntries] = await mapTextToStatEntry(branch, statEffects, spellStatEffects)
+				const [pattern, statEntries] = await mapTextToStatEntry(branch, spellDescription.id, spellStatEffects)
 				statMap.set(pattern, statEntries)
 			}
 		}
@@ -896,6 +916,59 @@ async function getLocaleStatMap(
 	return statMap
 }
 
+const localeBlacklist = new Map<Locale, Set<string>>()
+for (const locale of locales) {
+	localeBlacklist.set(locale, new Set())
+}
+
+async function combineResults(results: Promise<Map<string, StatEntry>>[], locale: Locale) {
+	const blacklist = localeBlacklist.get(locale)!
+	const result = await Promise.all(results)
+	return result.reduce((acc, curr) => {
+		for (const [text, newEntry] of curr) {
+			const existingEntry = acc.get(text)
+			if (existingEntry) {
+				// Blizzard's tables contain a lot of inconsistent data,
+				// so we apply several heuristics to choose the most accurate mappings
+
+				// Prefer StatIDLookup over WholeTextLookup
+				if (!newEntry.isWholeText && existingEntry.isWholeText) {
+					acc.set(text, newEntry)
+					continue
+				} else if (newEntry.isWholeText && !existingEntry.isWholeText) {
+					continue
+				}
+
+				// Prefer more stat matches over fewer matches
+				const existingMatchCount = existingEntry.entries.reduce((acc, entry) => entry ? acc+= entry.length : acc, 0)
+				const newMatchCount = newEntry.entries.reduce((acc, entry) => entry ? acc+= entry.length : acc, 0)
+
+				if (newMatchCount > existingMatchCount) {
+					acc.set(text, newEntry)
+				} else if (newMatchCount < existingMatchCount) {
+					continue
+				} else if (!existingEntry.equals(newEntry)) {
+					if (existingEntry.isWholeText && newEntry.isWholeText) {
+						// We can never accurately match this text, blacklist it
+						blacklist.add(text)
+						acc.delete(text)
+						continue
+					}
+					console.dir({
+						[`Mismatched stats, consider an override: "${text}"`]: {
+							existing: existingEntry,
+							new: newEntry,
+						},
+					}, { depth: 5 })
+				}
+			} else if (!blacklist.has(text) || !newEntry.isWholeText) {
+				// Entries can override the blacklist if they are not WholeTextLookup
+				acc.set(text, newEntry)
+			}
+		}
+		return acc
+	})
+}
 
 mkdirSync(new URL(databaseDirName, base), { recursive: true })
 mkdirSync(new URL(localeDirName, base), { recursive: true })
