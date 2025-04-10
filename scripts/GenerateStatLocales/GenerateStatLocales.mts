@@ -415,7 +415,7 @@ function GetSchoolStat(statSuffix: string, physicalOverride: string, allSchoolsO
 				if ((schools & school) > 0 && school < School.All) {
 					if (school === School.Physical) {
 						stats.push(physicalOverride)
-					} else {
+					} else if (statSuffix != "Resistance" || school != School.Holy) {
 						stats.push(key + statSuffix)
 					}
 				}
