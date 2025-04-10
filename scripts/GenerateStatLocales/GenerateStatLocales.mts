@@ -336,6 +336,7 @@ enum itemStatType {
 	GenericManaRegen = 43,
 	ArmorPenetrationRating = 44,
 	SpellPower = 45,
+	HealthRegen = 46,
 	SpellPenetration = 47,
 	MasteryRating = 49,
 }
