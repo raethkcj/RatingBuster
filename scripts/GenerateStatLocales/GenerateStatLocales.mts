@@ -597,7 +597,16 @@ function getEnchantStats(enchant: StatEnchant, spellStatEffects: Map<number, Sta
 				break
 			case EnchantEffect.Buff:
 				const buffStats = spellStatEffects.get(effectArg)?.flat()
-				if (buffStats) stats[index] = buffStats
+				if (buffStats) {
+					stats[index] = buffStats
+
+					// Attack Power from enchants shouldn't be multiplied by WOTLK Druid's Predatory Instincts
+					let apOverride: StatValue | undefined
+					if (apOverride = buffStats.find(sv => sv.stat === "GenericAttackPower")) {
+						apOverride.stat = "AttackPower"
+						buffStats.push(new StatValue("RangedAttackPower", apOverride.value))
+					}
+				}
 				break
 			case EnchantEffect.Resistance:
 				const resistance = Resistance[effectArg]
@@ -832,8 +841,21 @@ async function enumerateStatAndProcSpells(spellEffects: SpellEffect[]): Promise<
 					value *= -1
 				}
 
-				// May leave empty indices if a spell has non-stat effects prior to a stat effect
-				statEffects[effect.effectIndex] = stats.map((s) => new StatValue(s, value))
+				let apOverride: number | undefined
+				if (effect.effectAura === EffectAura.MOD_ATTACK_POWER) {
+					apOverride = statEffects.findIndex((se) => se?.find(sv => sv.stat === "RangedAttackPower"))
+				} else if (effect.effectAura === EffectAura.MOD_RANGED_ATTACK_POWER) {
+					apOverride = statEffects.findIndex((se) => se?.find(sv => sv.stat === "AttackPower"))
+				}
+
+				if (apOverride != null && apOverride >= 0) {
+					// If a spell provides both melee and ranged AP, combine them into GenericAttackPower.
+					// This is necessary for WOTLK Druid's Predatory Strikes talent.
+					statEffects[apOverride][0] = new StatValue("GenericAttackPower", value)
+				} else {
+					// May leave empty indices if a spell has non-stat effects prior to a stat effect
+					statEffects[effect.effectIndex] = stats.map((s) => new StatValue(s, value))
+				}
 
 				if (effect.procSpellID) {
 					procSpellIDSet.add(effect.procSpellID)
