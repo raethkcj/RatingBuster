@@ -639,7 +639,7 @@ elseif addon.class == "PALADIN" then
 			{
 				["set"] = 1940,
 				["pieces"] = 6,
-				["stack"] = 0.1,
+				["stack"] = 0.15,
 				["max_stacks"] = 3,
 				["aura"] = 1226464,
 				["rune"] = true,
@@ -989,7 +989,7 @@ elseif addon.class == "ROGUE" then
 			{
 				["known"] = 400016,
 				["rune"] = true,
-				["stack"] = 0.06,
+				["stack"] = 0.05,
 				["max_stacks"] = 5,
 				["aura"] = 400015,
 				["group"] = addon.ExclusiveGroup.SetBonus,
@@ -1000,8 +1000,8 @@ elseif addon.class == "ROGUE" then
 				["pieces"] = 6,
 				["known"] = 400016,
 				["rune"] = true,
-				["stack"] = 0.04,
-				["max_stacks"] = 10,
+				["stack"] = 0.07,
+				["max_stacks"] = 5,
 				["aura"] = 400015,
 				["group"] = addon.ExclusiveGroup.SetBonus,
 			},
@@ -1249,7 +1249,7 @@ elseif addon.class == "SHAMAN" then
 			{
 				["known"] = 408531,
 				["rune"] = true,
-				["value"] = 0.3,
+				["value"] = 0.25,
 				["aura"] = 408680,
 			},
 			-- Set: Stormcaller's Resolve (Pack Leader)
@@ -1258,7 +1258,7 @@ elseif addon.class == "SHAMAN" then
 				["set"] = 1852,
 				["pieces"] = 4,
 				["aura"] = 1213939,
-				["value"] = 0.10,
+				["value"] = 0.5,
 				["group"] = addon.ExclusiveGroup.SetBonus,
 			},
 			-- Passive: Soul of the True Alpha (Pack Leader)
@@ -1266,7 +1266,7 @@ elseif addon.class == "SHAMAN" then
 				["rune"] = true,
 				["known"] = 1220246,
 				["aura"] = 1213939,
-				["value"] = 0.10,
+				["value"] = 0.5,
 				["group"] = addon.ExclusiveGroup.SetBonus,
 			},
 		},
@@ -1355,7 +1355,7 @@ elseif addon.class == "WARLOCK" then
 				["known"] = 412798,
 				["rune"] = true,
 				["aura"] = 412800,
-				["value"] = 1,
+				["value"] = 0.7,
 			}
 		},
 		-- Warlock: Demonic Pact - Rune
@@ -1434,12 +1434,19 @@ elseif addon.class == "WARLOCK" then
 				["value"] = 0.30,
 				["aura"] = 426195,
 			},
+			-- Rune: Metamorphosis
+			{
+				["known"] = 403789,
+				["rune"] = true,
+				["value"] = 0.15,
+				["aura"] = 403789,
+			}
 		},
 		["ADD_SPELL_DMG_MOD_DEFENSE"] = {
 			-- Rune: Metamorphosis (Defender's Resolve)
 			{
 				["rune"] = true,
-				["value"] = 2,
+				["value"] = 4,
 				["aura"] = 460200,
 			}
 		},
