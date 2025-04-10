@@ -341,14 +341,6 @@ enum itemStatType {
 	MasteryRating = 49,
 }
 
-enum EnchantmentEffect {
-	Proc = 1,
-	Damage,
-	Buff,
-	Armor,
-	Stat,
-}
-
 enum EffectAura {
 	PERIODIC_HEAL = 8,
 	MOD_DAMAGE_DONE = 13, // School
@@ -543,7 +535,7 @@ function GetCombatResultStat(statSuffix: string) {
 const effectAuraStats: Record<EffectAura, (miscValue: number) => string[]> = {
 	[EffectAura.PERIODIC_HEAL]: GetPlainStat("HealthRegen"),
 	[EffectAura.MOD_DAMAGE_DONE]: GetSchoolStat("Damage", "AverageWeaponDamage", "SpellDamage"),
-	[EffectAura.MOD_RESISTANCE]: GetSchoolStat("Resistance", "Armor"),
+	[EffectAura.MOD_RESISTANCE]: GetSchoolStat("Resistance", "BonusArmor"),
 	[EffectAura.MOD_STAT]: GetPrimaryStat(),
 	[EffectAura.MOD_SKILL]: GetSkillLineStat(),
 	[EffectAura.MOD_INCREASE_HEALTH]: GetPlainStat("Health"),
@@ -579,7 +571,7 @@ enum EnchantEffect {
 }
 
 enum Resistance {
-	Armor = 0,
+	BonusArmor = 0,
 	HolyResistance,
 	FireResistance,
 	NatureResistance,
@@ -880,7 +872,6 @@ function overrideSpells(spellStatEffects: Map<number, StatValue[][]>, spellDescI
 		})
 		spellStatEffects.set(overrideSpellID, overrideStatValues)
 	}
-
 }
 
 function getOverrideEnchants(expansion: Expansion): [number[], Map<number, StatValue[][]>] {
