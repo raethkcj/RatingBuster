@@ -72,7 +72,7 @@ class StatEntry {
 	entries: (StatValue[] | false)[] = []
 	isWholeText = false
 
-	constructor(public spellID: number) {}
+	constructor(public id: number, public isEnchant: boolean) {}
 
 	equals(other: StatEntry): boolean {
 		if (this.entries.length != other.entries.length) {
@@ -108,13 +108,12 @@ class StatEntry {
 	}
 }
 
-async function mapTextToStatEntry(text: string, spellID: number, spellStatEffects: Map<number, StatValue[][]>): Promise<[string, StatEntry]> {
+async function mapTextToStatEntry(text: string, statEffects: StatValue[][], id: number, spellStatEffects: Map<number, StatValue[][]>, isEnchant: boolean): Promise<[string, StatEntry]> {
 	text = text.replace(/[\s.]+$/, "").toLowerCase()
 
-	const statEffects = spellStatEffects.get(spellID)!
 	const remainingEffects: StatValue[][] = [...statEffects]
 
-	const statEntry = new StatEntry(spellID)
+	const statEntry = new StatEntry(id, isEnchant)
 	const entries = statEntry.entries
 	// Matches an optional leading + or -, plus one of:
 	//   Replacement token:
@@ -129,9 +128,10 @@ async function mapTextToStatEntry(text: string, spellID: number, spellStatEffect
 			// We can't directly identify which effectIndex this number is, so save it for later
 			entries.push([new StatValue('Placeholder', parseInt(plainNumber) || 0)])
 		} else {
-			// TODO These identifiers are only valid for Spell.db2.
-			// SpellItemEnchantment uses an entirely separate set,
-			// e.g. https://wago.tools/db2/SpellItemEnchantment?filter[Name_lang]=%24f
+			// These are mostly Spell identifiers: https://wowdev.wiki/Spells#Known_identifiers
+			// SpellItemEnchantment uses a partially separate set of identifiers
+			// $i is the only one that needs to be handled for now, maps to effects in order:
+			// https://wago.tools/db2/SpellItemEnchantment?build=4.4.2.60192&filter[ID]=2906|2807
 			switch (identifier) {
 				case "m":
 				case "o":
@@ -155,7 +155,7 @@ async function mapTextToStatEntry(text: string, spellID: number, spellStatEffect
 					const effectIndex = parseInt(identifierIndex) - 1
 					const statValues = newStatEffects[effectIndex]
 					if (statValues) {
-						entries.push(statValues)
+						entries.push([...statValues])
 						if (!alternateSpellID) {
 							delete remainingEffects[effectIndex]
 						}
@@ -194,33 +194,32 @@ async function mapTextToStatEntry(text: string, spellID: number, spellStatEffect
 	})
 
 	// If the spell had more effects than could be matched by identifiers,
-	// attempt to map the remaining effects to already-assigned StatEntries with the same value
+	// attempt to map the remaining effects to already-assigned
+	// StatEntries with the same value, including Placeholders
 	let numRemainingEffects = 0
 	for (const effect of remainingEffects) {
 		if (effect) {
-			const effectValue = effect[0].value
-			const statEntryIndex = entries.findIndex(e => e && e.find(sv => sv.value === effectValue))
-			if (statEntryIndex >= 0) {
-				const statEntry = entries[statEntryIndex]
-				if (statEntry) {
-					if (statEntry[0].stat === 'Placeholder') {
-						entries[statEntryIndex] = effect
+			for (const statValue of effect) {
+				const entry = entries.find(e => e && e.find(sv => sv.value === statValue.value))
+				if (entry) {
+					if (entry[0].stat === 'Placeholder') {
+						entry[0] = statValue
 					} else {
-						entries[statEntryIndex] = statEntry.concat(effect)
+						entry.push(statValue)
 					}
+				} else {
+					numRemainingEffects++
 				}
-			} else {
-				numRemainingEffects++
 			}
 		}
 	}
 
 	// Map any remaining Placeholders to false (meaning the number does not represent a stat)
-	for (const [i, statEntry] of Object.entries(entries)) {
-		if (statEntry) {
-			const plainNumberIndex = statEntry.findIndex(sv => sv.stat === 'Placeholder')
+	for (const [i, entry] of Object.entries(entries)) {
+		if (entry) {
+			const plainNumberIndex = entry.findIndex(sv => sv.stat === 'Placeholder')
 			if (plainNumberIndex >= 0) {
-				if (statEntry.length > 1) {
+				if (entry.length > 1) {
 					console.warn("Unexpected Placeholder in multi-stat StatEntry")
 				} else {
 					entries[i] = false
@@ -893,6 +892,45 @@ function getOverrideEnchants(expansion: Expansion): [number[], Map<number, StatV
 	return [overrideEnchantIDs, overrideEnchantStatEffects]
 }
 
+const localeBlacklist = new Map<Locale, Set<string>>()
+for (const locale of locales) {
+	localeBlacklist.set(locale, new Set())
+}
+
+function insertEntry(statMap: Map<string, StatEntry>, text: string, statEntry: StatEntry, locale: Locale) {
+	const blacklist = localeBlacklist.get(locale)!
+	const existingEntry = statMap.get(text)
+	if (existingEntry) {
+		// Blizzard's tables contain a lot of inconsistent data,
+		// so we apply several heuristics to choose the most accurate mappings
+
+		// Prefer StatIDLookup over WholeTextLookup
+		if (!statEntry.isWholeText && existingEntry.isWholeText) {
+			statMap.set(text, statEntry)
+			return
+		} else if (statEntry.isWholeText && !existingEntry.isWholeText) {
+			return
+		}
+
+		// Prefer more stat matches over fewer matches
+		const existingMatchCount = existingEntry.entries.reduce((acc, entry) => entry ? acc += entry.length : acc, 0)
+		const newMatchCount = statEntry.entries.reduce((acc, entry) => entry ? acc += entry.length : acc, 0)
+
+		if (newMatchCount > existingMatchCount) {
+			statMap.set(text, statEntry)
+		} else if (newMatchCount === existingMatchCount && !existingEntry.equals(statEntry)) {
+			if (existingEntry.isWholeText && statEntry.isWholeText) {
+				// We can never accurately match this text, blacklist it
+				blacklist.add(text)
+				statMap.delete(text)
+			}
+		}
+	} else if (!blacklist.has(text) || !statEntry.isWholeText) {
+		// Entries can override the blacklist if they are not WholeTextLookup
+		statMap.set(text, statEntry)
+	}
+}
+
 async function getLocaleStatMap(
 	expansion: Expansion,
 	locale: Locale,
@@ -910,8 +948,8 @@ async function getLocaleStatMap(
 		if (statEffects) {
 			const branches = await traverseDescriptionBranches(spellDescription.description)
 			for (const branch of branches) {
-				const [pattern, statEntries] = await mapTextToStatEntry(branch, spellDescription.id, spellStatEffects)
-				statMap.set(pattern, statEntries)
+				const [pattern, statEntry] = await mapTextToStatEntry(branch, statEffects, spellDescription.id, spellStatEffects, false)
+				insertEntry(statMap, pattern, statEntry, locale)
 			}
 		}
 	}
@@ -923,62 +961,18 @@ async function getLocaleStatMap(
 		if (!stats) {
 			stats = getEnchantStats(statEnchant, spellStatEffects)
 		}
-		// TODO: mapTextToStats equivalent
-		// TODO: Write results to locale table
+		const [pattern, statEntry] = await mapTextToStatEntry(statEnchant.name, stats, statEnchant.id, spellStatEffects, true)
+		insertEntry(statMap, pattern, statEntry, locale)
 	}
 
 	return statMap
 }
 
-const localeBlacklist = new Map<Locale, Set<string>>()
-for (const locale of locales) {
-	localeBlacklist.set(locale, new Set())
-}
-
 async function combineResults(results: Promise<Map<string, StatEntry>>[], locale: Locale) {
-	const blacklist = localeBlacklist.get(locale)!
 	const result = await Promise.all(results)
 	return result.reduce((acc, curr) => {
 		for (const [text, newEntry] of curr) {
-			const existingEntry = acc.get(text)
-			if (existingEntry) {
-				// Blizzard's tables contain a lot of inconsistent data,
-				// so we apply several heuristics to choose the most accurate mappings
-
-				// Prefer StatIDLookup over WholeTextLookup
-				if (!newEntry.isWholeText && existingEntry.isWholeText) {
-					acc.set(text, newEntry)
-					continue
-				} else if (newEntry.isWholeText && !existingEntry.isWholeText) {
-					continue
-				}
-
-				// Prefer more stat matches over fewer matches
-				const existingMatchCount = existingEntry.entries.reduce((acc, entry) => entry ? acc+= entry.length : acc, 0)
-				const newMatchCount = newEntry.entries.reduce((acc, entry) => entry ? acc+= entry.length : acc, 0)
-
-				if (newMatchCount > existingMatchCount) {
-					acc.set(text, newEntry)
-				} else if (newMatchCount < existingMatchCount) {
-					continue
-				} else if (!existingEntry.equals(newEntry)) {
-					if (existingEntry.isWholeText && newEntry.isWholeText) {
-						// We can never accurately match this text, blacklist it
-						blacklist.add(text)
-						acc.delete(text)
-						continue
-					}
-					console.dir({
-						[`Mismatched stats, consider an override: "${text}"`]: {
-							existing: existingEntry,
-							new: newEntry,
-						},
-					}, { depth: 5 })
-				}
-			} else if (!blacklist.has(text) || !newEntry.isWholeText) {
-				// Entries can override the blacklist if they are not WholeTextLookup
-				acc.set(text, newEntry)
-			}
+			insertEntry(acc, text, newEntry, locale)
 		}
 		return acc
 	})
