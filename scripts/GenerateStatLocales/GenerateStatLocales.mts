@@ -197,10 +197,12 @@ async function mapTextToStatEntry(text: string, statEffects: StatValue[][], id: 
 	// attempt to map the remaining effects to already-assigned
 	// StatEntries with the same value, including Placeholders
 	let numRemainingEffects = 0
-	for (const effect of remainingEffects) {
+	for (const [i, effect] of remainingEffects.entries()) {
 		if (effect) {
 			for (const statValue of effect) {
-				const entry = entries.find(e => e && e.find(sv => sv.value === statValue.value))
+				const entry = entries.find((e, j) => e && e.find(sv => {
+					return (!statValue.isOverride && sv.value === statValue.value) || statValue.isOverride && i === j
+				}))
 				if (entry) {
 					if (entry[0].stat === 'Placeholder') {
 						entry[0] = statValue
@@ -768,7 +770,7 @@ async function queryStatEnchants(expansion: Expansion, locale: string, spellIDs:
 }
 
 class StatValue {
-	constructor(public stat: string, public value: number) {}
+	constructor(public stat: string, public value: number, public isOverride: boolean = false) {}
 }
 
 async function enumerateStatAndProcSpells(spellEffects: SpellEffect[]): Promise<[Map<number, StatValue[][]>, Set<number>]> {
@@ -822,7 +824,7 @@ function overrideSpells(spellStatEffects: Map<number, StatValue[][]>, spellDescI
 		const overrideSpellID = parseInt(sOverrideSpellID)
 		spellDescIDs.add(overrideSpellID)
 		const overrideStatValues = overrideStatEffects.map((effect) => {
-			return effect.map(stat => new StatValue(stat, -1))
+			return effect.map(stat => new StatValue(stat, 0, true))
 		})
 		spellStatEffects.set(overrideSpellID, overrideStatValues)
 	}
@@ -836,9 +838,9 @@ function getOverrideEnchants(expansion: Expansion): [number[], Map<number, StatV
 		overrideEnchantIDs.push(parseInt(sOverrideEnchantID))
 		const overrideStatValues = overrideStatEffects.map((effect: string[]|{[stat: string]: number}) => {
 			if (Array.isArray(effect)) {
-				return effect.map(stat => new StatValue(stat, -1))
+				return effect.map(stat => new StatValue(stat, 0, true))
 			} else {
-				return Object.entries(effect).map(([s, v]) => new StatValue(s, v))
+				return Object.entries(effect).map(([s, v]) => new StatValue(s, v, true))
 			}
 		})
 		overrideEnchantStatEffects.set(parseInt(sOverrideEnchantID), overrideStatValues)
