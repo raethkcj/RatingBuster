@@ -231,7 +231,7 @@ async function mapTextToStatEntry(text: string, statEffects: StatValue[][], id: 
 	// We didn't match any numbers, so mark it as whole text and assign *all* the stats
 	if (numRemainingEffects === statEffects.length) {
 		statEntry.isWholeText = true
-		statEntry.entries = statEffects
+		statEntry.entries = [statEffects.flat()]
 	}
 
 	return [pattern, statEntry]
@@ -957,18 +957,22 @@ function entryToString([text, entry]: [string, StatEntry]) {
 			entryText = currEntry.reduce((accValues, currValue) => {
 				let valueText: string
 				if (entry.isWholeText) {
-					valueText = `[Stats.${currValue.stat}] = ${currValue.value}`
+					valueText = `[Stats.${currValue.stat}] = ${currValue.value}, `
 				} else {
-					valueText = `Stats.${currValue.stat}`
+					valueText = `Stats.${currValue.stat}, `
 				}
-				return `${accValues} ${valueText}, `
-			}, "{") + "}"
+				return `${accValues}${valueText}`
+			}, "")
 		} else {
-			entryText = "false"
+			entryText = "false, "
 		}
-		return `${accEntries} ${entryText}, `
+		if (currEntry && !entry.isWholeText) {
+			return accEntries + "{ " + entryText + "} "
+		} else {
+			return accEntries + entryText
+		}
 	}, "")
-	return `${entry.isWholeText ? "W" : "L"}["${text}"] = {${stats}} -- ${entry.isEnchant ? "e" : "s"}${entry.id}\n`
+	return `${entry.isWholeText ? "W" : "L"}["${text}"] = { ${stats}} -- ${entry.isEnchant ? "e" : "s"}${entry.id}\n`
 }
 
 mkdirSync(new URL(databaseDirName, base), { recursive: true })
