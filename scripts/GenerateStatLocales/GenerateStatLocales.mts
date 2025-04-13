@@ -115,15 +115,19 @@ async function mapTextToStatEntry(text: string, statEffects: StatValue[][], id: 
 
 	const statEntry = new StatEntry(id, isEnchant)
 	const entries = statEntry.entries
+	// Only used for auto-incrementing enchant indentifier $i
+	let i = 0
 	// Matches an optional leading + or -, plus one of:
+	//   Interpolated math expression ${...}
 	//   Replacement token:
 	//     Leading $
+	//     Optional divisor /25;
 	//     Optional spellID override
 	//     An identifier from: https://wowdev.wiki/Spells#Known_identifiers
 	//     Optional integer indicating SpellEffect Index
 	//   Literal number:
 	//     Digits 0-9 or decimal point ".", ends in digit
-	const pattern = text.replace(/[+-]?(?:\$(?:(\{.*?\})|(?:\/\d+;)?(\d*)([abefkmopqstwx](?=\d)|[cdg-jlnruvyz])(\d?))|([\d\.]+(?<=\d)))/g, function(match, expression: string, alternateSpellID: string, identifier: string, identifierIndex: string, plainNumber: string, _offset: number, input: string) {
+	const pattern = text.replace(/[+-]?(?:\$(?:(\{.*?\})|(?:\/\d+;)?(\d*)([abefkmopqstwx](?=\d)|[cdg-jlnruvyz])(\d?))|([\d\.]+(?<=\d)))/g, function(_match, expression: string, alternateSpellID: string, identifier: string, identifierIndex: string, plainNumber: string, _offset: number, input: string) {
 		if (expression || plainNumber) {
 			// We can't directly identify which effectIndex this number is, so save it for later
 			entries.push([new StatValue('Placeholder', parseInt(plainNumber) || 0)])
@@ -133,6 +137,7 @@ async function mapTextToStatEntry(text: string, statEffects: StatValue[][], id: 
 			// $i is the only one that needs to be handled for now, maps to effects in order:
 			// https://wago.tools/db2/SpellItemEnchantment?build=4.4.2.60192&filter[ID]=2906|2807
 			switch (identifier) {
+				case "k":
 				case "m":
 				case "o":
 				case "s":
@@ -163,11 +168,24 @@ async function mapTextToStatEntry(text: string, statEffects: StatValue[][], id: 
 						entries.push(false)
 					}
 					break
+				case "i":
+					if (isEnchant) {
+						const statValues = statEffects[i]
+						if (statValues) {
+							entries.push([...statValues])
+							delete remainingEffects[i]
+						} else {
+							entries.push(false)
+						}
+						i++
+					} else {
+						entries.push(false)
+					}
+					break
 				case "a":
 				case "c":
 				case "d":
 				case "h":
-				case "i":
 				case "n":
 				case "r":
 				case "t":
