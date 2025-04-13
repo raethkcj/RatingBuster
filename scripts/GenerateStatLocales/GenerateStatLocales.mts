@@ -873,6 +873,7 @@ for (const locale of locales) {
 }
 
 function insertEntry(statMap: Map<string, StatEntry>, text: string, statEntry: StatEntry, locale: Locale) {
+	if (!statEntry.entries.find(e => e)) return
 	const blacklist = localeBlacklist.get(locale)!
 	const existingEntry = statMap.get(text)
 	if (existingEntry) {
