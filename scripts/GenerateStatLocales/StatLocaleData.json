@@ -9,10 +9,11 @@
 	},
 	"Spell": {
 		"1": {
-			"24697": [ ["FeralAttackPower"] ],
-			"435531": [ ["FeralAttackPower"] ]
+			"24694": [ ["FeralAttackPower"] ]
 		},
-		"2": {},
+		"2": {
+			"24694": [ ["FeralAttackPower"] ]
+		},
 		"3": {},
 		"4": {}
 	}

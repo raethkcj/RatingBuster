@@ -745,7 +745,7 @@ L["increases the critical hit chance of holy spells by %s% for %s"] = { { Stats.
 L["armor increased by %s"] = { { Stats.BonusArmor, }, } -- s24545
 L["blasts a single enemy for %s damage and lowers the attack power of all enemies in melee range by %s.  effect lasts %s"] = { false, { Stats.AttackPower, }, false, } -- s24577
 L["increases the chance to hit with spells by %s% for %s"] = { { Stats.SpellHit, }, false, } -- s24610
-L["%s attack power in cat, bear, and dire bear forms only"] = { { Stats.AttackPower, }, } -- s24694
+L["%s attack power in cat, bear, and dire bear forms only"] = { { Stats.FeralAttackPower, }, } -- s24694
 L["the druid's dodge chance will increase by %s% for %s"] = { { Stats.Dodge, }, false, } -- s24864
 L["increases your critical strike chance with spells and melee attacks by %s%.  lasts %s"] = { { Stats.MeleeCrit, Stats.RangedCrit, Stats.SpellCrit, }, false, } -- s24865
 L["increases healing done by magical spells and effects by up to %s for %s"] = { { Stats.HealingPower, }, false, } -- s24998
@@ -1195,7 +1195,7 @@ L["grants %s spell haste rating, and reduces the mana cost of rejuvenation, heal
 L["increases arcane spell damage by %s for %s"] = { { Stats.ArcaneDamage, }, false, } -- s24544
 L["grants %s spell haste rating and reduces the mana cost of your healing spells by %s% for %s"] = { { Stats.SpellHasteRating, }, false, false, } -- s24546
 L["increases spell hit rating by %s for %s"] = { { Stats.MeleeHitRating, Stats.RangedHitRating, Stats.SpellHitRating, }, false, } -- s24610
-L["increases attack power by %s in cat, bear, dire bear, and moonkin forms only"] = { { Stats.AttackPower, }, } -- s24694
+L["increases attack power by %s in cat, bear, dire bear, and moonkin forms only"] = { { Stats.FeralAttackPower, }, } -- s24694
 L["increases stamina and spirit by %s for %s"] = { { Stats.Stamina, Stats.Spirit, }, false, } -- s24829
 L["increases your critical strike rating and spell critical strike rating by %s.  lasts %s"] = { { Stats.MeleeCritRating, Stats.RangedCritRating, Stats.SpellCritRating, }, false, } -- s24865
 L["increases healing done by magical spells and effects by up to %s and damage done by spells by up to %s for %s"] = { { Stats.HealingPower, }, { Stats.SpellDamage, }, false, } -- s24998
