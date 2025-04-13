@@ -850,7 +850,7 @@ function overrideSpells(spellStatEffects: Map<number, StatValue[][]>, spellDescI
 
 function getOverrideEnchants(expansion: Expansion): [number[], Map<number, StatValue[][]>] {
 	const overrideEnchantIDs: number[] = []
-	const overrideEnchantStatEffects = new Map<number, StatValue[][]>
+	const overrideEnchantStatEffects = new Map<number, StatValue[][]>()
 
 	for (const [sOverrideEnchantID, overrideStatEffects] of Object.entries(statLocaleData["SpellItemEnchantment"][expansion])) {
 		overrideEnchantIDs.push(parseInt(sOverrideEnchantID))

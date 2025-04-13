@@ -1,45 +1,10 @@
 {
 	"SpellItemEnchantment": {
 		"1": {
-			"2504": [ ["SpellDamage"], ["HealingPower"] ],
-			"2544": [ ["SpellDamage"], ["HealingPower"] ],
-			"2583": [ ["Defense"], ["Stamina"], ["BlockValue"] ],
-			"2584": [ ["Defense"], ["Stamina"], ["HealingPower"] ],
-			"2585": [ ["GenericAttackPower"], ["Dodge"] ],
-			"2586": [ ["RangedAttackPower"], ["Stamina"], ["MeleeHit", "RangedHit"] ],
-			"2587": [ ["HealingPower", "SpellDamage"], ["Intellect"] ],
-			"2588": [ ["HealingPower", "SpellDamage"], ["SpellHit"] ],
-			"2589": [ ["HealingPower", "SpellDamage"], ["Stamina"] ],
-			"2590": [ ["GenericManaRegen"], ["Stamina"], ["HealingPower"] ],
-			"2591": [ ["Intellect"], ["Stamina"], ["HealingPower"] ],
-			"7613": [ ["Stamina"], ["Intellect"], ["HealingPower"] ],
-			"7614": [ ["Stamina"], ["MeleeHit", "RangedHit", "SpellHit"], ["HealingPower"] ],
-			"7615": [ ["Stamina"], ["Strength"], ["Agility"] ],
-			"7616": [ ["Stamina"], ["Strength"], ["Defense"] ],
-			"7617": [ ["Stamina"], ["Agility"], ["MeleeHit", "RangedHit", "SpellHit"] ],
-			"7618": [ ["Stamina"], ["Defense"], ["HealingPower", "SpellDamage"] ],
-			"7619": [ ["Stamina"], ["Strength"], ["HealingPower", "SpellDamage"] ],
-			"7621": [ ["Stamina"], ["Intellect"], ["HealingPower", "SpellDamage"] ],
-			"7624": [ ["Stamina"], ["Agility"], ["Defense"] ],
-			"7627": [ ["Stamina"], ["MeleeHit", "RangedHit", "SpellHit"], ["HealingPower", "SpellDamage"] ],
-			"7629": [ ["Stamina"], ["Defense"], ["BlockChance"] ],
-			"7631": [ ["Stamina"], ["MeleeHit", "RangedHit", "SpellHit"], ["Defense"] ],
-			"7633": [ ["Stamina"], ["Defense"], ["BlockValue"] ],
-			"7635": [ ["Stamina"], ["Agility"], ["Strength"] ]
+			"0": [ [""] ]
 		},
-		"2": {
-			"2343": [ ["HealingPower"], ["SpellDamage"] ],
-			"2506": [ ["CritRating"] ],
-			"2807": [ ["ArcaneDamage"] ],
-			"2808": [ ["FireDamage"] ],
-			"2809": [ ["NatureDamage"] ],
-			"2810": [ ["FrostDamage"] ],
-			"2811": [ ["ShadowDamage"] ]
-		},
-		"3": {
-			"2588": [ ["HealingPower", "SpellDamage"], ["HitRating"] ],
-			"2590": [ ["SpellDamage", "HealingPower"], ["Stamina"], ["GenericManaRegen"] ]
-		},
+		"2": {},
+		"3": {},
 		"4": {}
 	},
 	"Spell": {
