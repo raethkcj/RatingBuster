@@ -109,7 +109,7 @@ class StatEntry {
 }
 
 async function mapTextToStatEntry(text: string, statEffects: StatValue[][], id: number, spellStatEffects: Map<number, StatValue[][]>, isEnchant: boolean): Promise<[string, StatEntry]> {
-	text = text.replace(/[\s.]+$/, "").toLowerCase()
+	text = text.replace(/[\s.]+$/, "").replaceAll(/[\r\n]+/gm, "\\n").toLowerCase()
 
 	const remainingEffects: StatValue[][] = [...statEffects]
 
