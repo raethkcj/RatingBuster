@@ -988,7 +988,7 @@ function entryToString([text, entry]: [string, StatEntry]) {
 			entryText = "false, "
 		}
 		if (currEntry && !entry.isWholeText) {
-			return accEntries + "{ " + entryText + "} "
+			return accEntries + "{ " + entryText + "}, "
 		} else {
 			return accEntries + entryText
 		}
