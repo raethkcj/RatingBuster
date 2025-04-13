@@ -249,7 +249,7 @@ async function mapTextToStatEntry(text: string, statEffects: StatValue[][], id: 
 	}
 
 	// We didn't match any numbers, so mark it as whole text and assign *all* the stats
-	if (numRemainingEffects === statEffects.length) {
+	if (pattern === text && numRemainingEffects === statEffects.length) {
 		statEntry.isWholeText = true
 		statEntry.entries = [statEffects.flat()]
 	}
