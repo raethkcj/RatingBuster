@@ -115,6 +115,7 @@ async function mapTextToStatEntry(text: string, statEffects: StatValue[][], id: 
 
 	const statEntry = new StatEntry(id, isEnchant)
 	const entries = statEntry.entries
+	let matches = 0
 	// Only used for auto-incrementing enchant indentifier $i
 	let i = 0
 	// Matches an optional leading + or -, plus one of:
@@ -208,13 +209,13 @@ async function mapTextToStatEntry(text: string, statEffects: StatValue[][], id: 
 					break
 			}
 		}
+		matches++
 		return "%s"
 	})
 
 	// If the spell had more effects than could be matched by identifiers,
 	// attempt to map the remaining effects to already-assigned
 	// StatEntries with the same value, including Placeholders
-	let numRemainingEffects = 0
 	for (const [i, effect] of remainingEffects.entries()) {
 		if (effect) {
 			for (const statValue of effect) {
@@ -227,8 +228,6 @@ async function mapTextToStatEntry(text: string, statEffects: StatValue[][], id: 
 					} else {
 						entry.push(statValue)
 					}
-				} else {
-					numRemainingEffects++
 				}
 			}
 		}
@@ -249,7 +248,7 @@ async function mapTextToStatEntry(text: string, statEffects: StatValue[][], id: 
 	}
 
 	// We didn't match any numbers, so mark it as whole text and assign *all* the stats
-	if (pattern === text && numRemainingEffects === statEffects.length) {
+	if (pattern === text && matches === 0) {
 		statEntry.isWholeText = true
 		statEntry.entries = [statEffects.flat()]
 	}
