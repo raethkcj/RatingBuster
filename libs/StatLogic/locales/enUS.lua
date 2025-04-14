@@ -106,7 +106,7 @@ W["fires an electrical charge that slows the target"] = { [Stats.MeleeHaste] = -
 W["increases ac, mana regen"] = { [Stats.BonusArmor] = 13, [Stats.GenericManaRegen] = 65, } -- s63390
 W["reduces melee attack speed"] = { [Stats.MeleeHaste] = 0, } -- s68055
 W["attacks nearby enemies in a whirlwind of bone"] = { [Stats.MeleeHaste] = -9900, } -- s69076
-W["when the "doc" is on the clock your health won't drop"] = { [Stats.Health] = 45000, } -- s74503
+W["when the \"doc\" is on the clock your health won't drop"] = { [Stats.Health] = 45000, } -- s74503
 W["frozen in place"] = { [Stats.MeleeHit] = 0, [Stats.RangedHit] = 0, } -- s51440
 W["rune of swordshattering"] = { [Stats.Parry] = 4, } -- e3365
 W["test skill req enchant"] = { [Stats.BonusArmor] = 10, } -- e3320
@@ -1422,8 +1422,8 @@ L["restores %s mana over %s.  must remain seated while drinking.  if you spend a
 L["increases resilience rating by %s for %s"] = { { Stats.ResilienceRating, }, false, } -- s43717
 L["your holy light spell grants %s mana per %s sec. for %s"] = { { Stats.GenericManaRegen, }, false, false, } -- s43742
 L["increases the strength and spirit of your pet by %s.  lasts for %s"] = { { Stats.Strength, Stats.Spirit, }, false, } -- s43771
-L["restores %s mana over %s.  must remain seated while drinking.  if you spend at least %s seconds drinking you will become "well fed" and gain %s stamina and spirit for %s. standard alcohol"] = { { Stats.GenericManaRegen, }, false, false, { Stats.Stamina, }, false, } -- s44115
-L["restores %s mana over %s.  must remain seated while drinking.  if you spend at least %s seconds drinking you will become "well fed" and gain %s strength and spirit for %s. strong alcohol"] = { { Stats.GenericManaRegen, }, false, false, { Stats.Strength, }, false, } -- s44116
+L["restores %s mana over %s.  must remain seated while drinking.  if you spend at least %s seconds drinking you will become \"well fed\" and gain %s stamina and spirit for %s. standard alcohol"] = { { Stats.GenericManaRegen, }, false, false, { Stats.Stamina, }, false, } -- s44115
+L["restores %s mana over %s.  must remain seated while drinking.  if you spend at least %s seconds drinking you will become \"well fed\" and gain %s strength and spirit for %s. strong alcohol"] = { { Stats.GenericManaRegen, }, false, false, { Stats.Strength, }, false, } -- s44116
 L["fills the target with power, increasing its casting speed by %s% for %s sec"] = { { Stats.SpellHaste, }, false, } -- s44605
 L["inflicts frost damage to enemies in a cone in front of the caster, slowing their attack speed by %s% for %s"] = { { Stats.MeleeHaste, }, false, } -- s44799
 L["increases ranged attack speed by %s%. does not stack with quiver or ammo pouch haste effects"] = { { Stats.RangedHaste, }, } -- s44972
@@ -2060,7 +2060,7 @@ L["dodge rating increased by %s"] = { { Stats.DodgeRating, }, } -- s64963
 L["sprays flame suppressant into the air, dousing all flames within %s yards. in addition, any enemies affected will have their cast speed slowed by %s% for %s"] = { false, { Stats.SpellHaste, }, false, } -- s65192
 L["channels a beam of titan energy that destabalizes the molecular structure of certain saronite based creatures, reducing attack speed by %s% and casting speed by %s%. lasts %s"] = { false, { Stats.SpellHaste, }, false, } -- s65210
 L["inflicts %s frost damage to enemies in a %s yard cone in front of the caster. in addition, the targets' attack speed is decreased by %s% for %s"] = { false, false, { Stats.MeleeHaste, }, false, } -- s65248
-L["restores %s mana over %s.  must remain seated while drinking.  if you spend at least %s seconds drinking you will become "well fed" and gain %s critical strike rating for %s. standard alcohol"] = { { Stats.GenericManaRegen, }, false, false, { Stats.MeleeCritRating, Stats.RangedCritRating, Stats.SpellCritRating, }, false, } -- s65363
+L["restores %s mana over %s.  must remain seated while drinking.  if you spend at least %s seconds drinking you will become \"well fed\" and gain %s critical strike rating for %s. standard alcohol"] = { { Stats.GenericManaRegen, }, false, false, { Stats.MeleeCritRating, Stats.RangedCritRating, Stats.SpellCritRating, }, false, } -- s65363
 L["critical strike rating increased by %s. brewfest beers: great taste, extra-filling! lasts %s"] = { { Stats.MeleeCritRating, Stats.RangedCritRating, Stats.SpellCritRating, }, false, } -- s65365
 L["when activated, increases parry chance by %s% and grants a %s% chance to deflect spells cast by targets in front of you.  lasts %s"] = { { Stats.Parry, }, false, false, } -- s65871
 L["critical strike chance increased by %s% on next melee attack"] = { { Stats.MeleeCrit, Stats.RangedCrit, }, } -- s66889
@@ -2073,7 +2073,7 @@ L["causes you to regenerate %s mana per %s sec.  effect lasts for %s"] = { { Sta
 L["attack speed increased by %s%. damage done increased by %s%"] = { { Stats.MeleeHaste, }, false, } -- s69052
 L["the chilling presence of the frozen throne reduces the chance of an enemy to dodge melee attacks by %s%"] = { { Stats.Dodge, }, } -- s69127
 L["resilience rating and stamina increased by %s. brewfest beers: great taste, extra-filling! lasts %s"] = { { Stats.ResilienceRating, Stats.Stamina, }, false, } -- s69559
-L["restores %s mana over %s.  must remain seated while drinking.  if you spend at least %s seconds drinking you will become "well fed" and gain %s stamina and resilience rating for %s. standard alcohol"] = { { Stats.GenericManaRegen, }, false, false, { Stats.ResilienceRating, }, false, } -- s69560
+L["restores %s mana over %s.  must remain seated while drinking.  if you spend at least %s seconds drinking you will become \"well fed\" and gain %s stamina and resilience rating for %s. standard alcohol"] = { { Stats.GenericManaRegen, }, false, false, { Stats.ResilienceRating, }, false, } -- s69560
 L["increases armor by %s% and attack speed by %s%"] = { false, { Stats.MeleeHaste, }, } -- s69647
 L["inflicts %s frost damage to enemies in a %s yard cone in front of the caster. in addition, the targets' attack speed is decreased by %s% and movement decreased by %s% for %s"] = { false, false, { Stats.MeleeHaste, }, false, false, } -- s69649
 L["increases intellect by %s for all party and raid members for %s"] = { { Stats.Intellect, }, false, } -- s69994
