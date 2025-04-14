@@ -128,7 +128,7 @@ async function mapTextToStatEntry(text: string, statEffects: StatValue[][], id: 
 	//     Optional integer indicating SpellEffect Index
 	//   Literal number:
 	//     Digits 0-9 or decimal point ".", ends in digit
-	const pattern = text.replace(/[+-]?(?:\$(?:(\{.*?\})|(?:\/\d+;)?(\d*)([abefkmopqstwx](?=\d)|[cdg-jlnruvyz])(\d?))|([\d\.]+(?<=\d)))/g, function(_match, expression: string, alternateSpellID: string, identifier: string, identifierIndex: string, plainNumber: string, _offset: number, input: string) {
+	const pattern = text.replace(/[+-]?(?:\$(?:(\{.*?\})|(?:[/*]\d+;)?(\d*)([abefkmopqstwx](?=\d)|[cdg-jlnruvyz])(\d?))|([\d\.]+(?<=\d)))/g, function(_match, expression: string, alternateSpellID: string, identifier: string, identifierIndex: string, plainNumber: string, _offset: number, input: string) {
 		if (expression || plainNumber) {
 			// We can't directly identify which effectIndex this number is, so save it for later
 			entries.push([new StatValue('Placeholder', parseInt(plainNumber) || 0)])
