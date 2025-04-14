@@ -219,9 +219,13 @@ async function mapTextToStatEntry(text: string, statEffects: StatValue[][], id: 
 	for (const [i, effect] of remainingEffects.entries()) {
 		if (effect) {
 			for (const statValue of effect) {
-				const entry = entries.find((e, j) => e && e.find(sv => {
-					return (!statValue.isOverride && sv.value === statValue.value) || statValue.isOverride && i === j
-				}))
+				const entry = entries.find((e, j) => {
+					return e && e.find(sv => {
+						return (!statValue.isOverride && sv.value === statValue.value) || statValue.isOverride && i === j
+					}) && !e.find(sv => {
+						return sv.stat === statValue.stat
+					})
+				})
 				if (entry) {
 					if (entry[0].stat === 'Placeholder') {
 						entry[0] = statValue
