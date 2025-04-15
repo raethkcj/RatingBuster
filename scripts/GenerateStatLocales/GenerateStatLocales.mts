@@ -221,7 +221,16 @@ async function mapTextToStatEntry(text: string, statEffects: StatValue[][], id: 
 			for (const statValue of effect) {
 				const entry = entries.find((e, j) => {
 					return e && e.find(sv => {
-						return (!statValue.isOverride && sv.value === statValue.value) || statValue.isOverride && i === j
+						return (
+							!statValue.isOverride
+							&& sv.value === statValue.value
+							&& (
+								!isEnchant
+								|| e[0].stat === 'Placeholder'
+								|| effect.length > 1
+								|| statGroups.get(sv.stat)?.has(statValue.stat)
+							)
+						) || statValue.isOverride && i === j
 					}) && !e.find(sv => {
 						return sv.stat === statValue.stat
 					})
@@ -324,7 +333,7 @@ async function getTypedResults<T>(query: string, type: { new(...args: any[]): T 
 }
 
 // From wow.tools' enums.js, also obtainable at wowdev.wiki
-enum itemStatType {
+enum ItemStat {
 	Mana = 0,
 	Health = 1,
 	Agility = 3,
@@ -361,6 +370,35 @@ enum itemStatType {
 	HealthRegen = 46,
 	SpellPenetration = 47,
 	MasteryRating = 49,
+}
+
+const statSets = [
+	new Set([
+		"MeleeHitRating",
+		"RangedHitRating",
+		"SpellHitRating",
+	]),
+	new Set([
+		"MeleeCritRating",
+		"RangedCritRating",
+		"SpellCritRating",
+	]),
+	new Set([
+		"MeleeHasteRating",
+		"RangedHasteRating",
+		"SpellHasteRating",
+	]),
+	new Set([
+		"GenericManaRegen",
+		"HealthRegen",
+	]),
+]
+
+const statGroups = new Map<string, Set<string>>()
+for (const set of statSets) {
+	for (const stat of set) {
+		statGroups.set(stat, set)
+	}
 }
 
 enum EffectAura {
@@ -627,7 +665,7 @@ function getEnchantStats(enchant: StatEnchant, spellStatEffects: Map<number, Sta
 				if (resistance) stats[index] = [new StatValue(resistance, pointsMin)]
 				break
 			case EnchantEffect.Stat:
-				const itemStat = itemStatType[effectArg]
+				const itemStat = ItemStat[effectArg]
 				if (itemStat) stats[index] = [new StatValue(itemStat, pointsMin)]
 				break
 		}
