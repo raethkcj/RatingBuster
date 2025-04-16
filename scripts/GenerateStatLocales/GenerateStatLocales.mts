@@ -751,11 +751,11 @@ async function queryStatSpellDescriptions(expansion: Expansion, locale: string, 
 // Returns a flat array of all possible branches, including solely the original string if applicable.
 function traverseDescriptionBranches(description: string): string[] {
 	const branches = [description]
-	const conditionPattern = /(?<!\()\$((?<expression>\?)|(?<token>[gl]))/g
+	const conditionPattern = /(?<!\()\$((?<expression>\?.*?\[)|(?<token>[gl]))/g
 	// Using g and y flags, in combination with setting lastIndex to conditionPattern's,
 	// allows us to match expression/token bodies that immediately follow the opening condition
-	const expressionPattern = /[$\w|& ]*?\[([^[\]]*)\]\??/gy
-	const tokenPattern = /([^:;]*)[:;]/gy
+	const expressionPattern = /([^\]]*?)\](?:(?<continue>\?.*?\[|\[)|)/gys
+	const tokenPattern = /([^:;]*?)(?:(?<continue>:)|;)/gy
 	let i = 0
 	while (i < branches.length) {
 		const branch = branches[i]
@@ -768,10 +768,13 @@ function traverseDescriptionBranches(description: string): string[] {
 			let lastIndex = 0
 			const branchTexts: string[] = []
 			let branchMatch: RegExpExecArray | null
-			while((branchMatch = branchPattern.exec(branch)) !== null) {
-				branchTexts.push(branchMatch[1])
-				lastIndex = branchPattern.lastIndex
-			}
+			do {
+				branchMatch = branchPattern.exec(branch)
+				if (branchMatch) {
+					branchTexts.push(branchMatch[1])
+					lastIndex = branchPattern.lastIndex
+				}
+			} while (branchMatch?.groups?.continue !== undefined)
 
 			const prefix = branch.substring(0, conditionMatch.index)
 			const suffix = branch.substring(lastIndex)
