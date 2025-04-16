@@ -14,10 +14,14 @@ enum Expansion {
 }
 
 {
-	type WagoBuilds = { [product: string]: { version: string }[] }
-	let versions: WagoBuilds
-	async function fetchBuilds() {
-		return versions ||= fetch("https://wago.tools/api/builds").then(response => response.json()) as unknown as WagoBuilds
+	type ProductBuilds = { [product: string]: { version: string }[] }
+	let productBuilds: Promise<ProductBuilds>
+	async function fetchProductBuilds() {
+		if (!productBuilds) {
+			productBuilds = fetch("https://wago.tools/api/builds").then(response => response.json()) as Promise<ProductBuilds>
+		}
+
+		return productBuilds
 	}
 
 	const publicProducts = new Set<string> ([
@@ -46,7 +50,7 @@ enum Expansion {
 	}
 
 	var getLatestVersion = async function(expansion: Expansion) {
-		const productBuilds = await fetchBuilds()
+		const productBuilds = await fetchProductBuilds()
 		let max = new Version()
 		for (const product of publicProducts) {
 			const builds = productBuilds[product]
@@ -108,7 +112,7 @@ class StatEntry {
 	}
 }
 
-async function mapTextToStatEntry(text: string, statEffects: StatValue[][], id: number, spellStatEffects: Map<number, StatValue[][]>, isEnchant: boolean): Promise<[string, StatEntry]> {
+function mapTextToStatEntry(text: string, statEffects: StatValue[][], id: number, spellStatEffects: Map<number, StatValue[][]>, isEnchant: boolean): [string, StatEntry] {
 	text = text.replace(/[\s.]+$/, "").replaceAll(/[\r\n]+/gm, "\\n").replaceAll(/"/gm, "\\\"").toLowerCase()
 
 	const remainingEffects: StatValue[][] = [...statEffects]
@@ -286,29 +290,30 @@ class DatabaseTable {
 	}
 
 	static directory = "./DB2"
-	static cache = new Map<string, DatabaseTable>()
+	static cache = new Map<string, Promise<DatabaseTable>>()
 
 	static async get(name: string, expansion: Expansion, locale: string): Promise<DatabaseTable> {
 		const fileName = `${name}_${expansion}_${locale}.csv`
 		if (!this.cache.get(fileName)) {
-			const table = new DatabaseTable(name, expansion, locale, fileName)
-			if (existsSync(table.path)) {
-				console.log(`Found ${fileName}, skipping fetch.`)
-				this.cache.set(fileName, table)
-			} else {
-				console.log(`Fetching ${fileName}.`)
-				const build = await getLatestVersion(expansion)
-				const fetchUrl = `https://wago.tools/db2/${name}/csv?build=${build}&locale=${locale}`
-				const response = await fetch(fetchUrl)
-				if (response.ok) {
-					const text = await response.text()
-					writeFileSync(table.path, text)
-					console.log(`Fetched ${fileName}.`)
-					this.cache.set(fileName, table)
+			this.cache.set(fileName, new Promise<DatabaseTable>(async resolve => {
+				const table = new DatabaseTable(name, expansion, locale, fileName)
+				if (existsSync(table.path)) {
+					console.log(`Found ${fileName}, skipping fetch.`)
 				} else {
-					throw new Error(`Failed to fetch ${table.path}: ${response.status} ${response.statusText}`)
+					console.log(`Fetching ${fileName}.`)
+					const build = await getLatestVersion(expansion)
+					const fetchUrl = `https://wago.tools/db2/${name}/csv?build=${build}&locale=${locale}`
+					const response = await fetch(fetchUrl)
+					if (response.ok) {
+						const text = await response.text()
+						writeFileSync(table.path, text)
+						console.log(`Fetched ${fileName}.`)
+					} else {
+						throw new Error(`Failed to fetch ${table.path}: ${response.status} ${response.statusText}`)
+					}
 				}
-			}
+				resolve(table)
+			}))
 		}
 
 		return this.cache.get(fileName)!
@@ -744,7 +749,7 @@ async function queryStatSpellDescriptions(expansion: Expansion, locale: string, 
 // $ghis:her;
 // $lломоть:ломтя:ломтей;
 // Returns a flat array of all possible branches, including solely the original string if applicable.
-async function traverseDescriptionBranches(description: string): Promise<string[]> {
+function traverseDescriptionBranches(description: string): string[] {
 	const branches = [description]
 	const conditionPattern = /(?<!\()\$((?<expression>\?)|(?<token>[gl]))/g
 	// Using g and y flags, in combination with setting lastIndex to conditionPattern's,
@@ -833,7 +838,7 @@ class StatValue {
 	constructor(public stat: string, public value: number, public isOverride: boolean = false) {}
 }
 
-async function enumerateStatAndProcSpells(spellEffects: SpellEffect[]): Promise<[Map<number, StatValue[][]>, Set<number>]> {
+function enumerateStatAndProcSpells(spellEffects: SpellEffect[]): [Map<number, StatValue[][]>, Set<number>] {
 	const spellStatEffects = new Map<number, StatValue[][]>()
 	const procSpellIDSet = new Set<number>()
 	for (const effect of spellEffects) {
@@ -964,9 +969,9 @@ async function getLocaleStatMap(
 	for (const spellDescription of spellDescriptions) {
 		const statEffects = spellStatEffects.get(spellDescription.id)
 		if (statEffects) {
-			const branches = await traverseDescriptionBranches(spellDescription.description)
+			const branches = traverseDescriptionBranches(spellDescription.description)
 			for (const branch of branches) {
-				const [pattern, statEntry] = await mapTextToStatEntry(branch, statEffects, spellDescription.id, spellStatEffects, false)
+				const [pattern, statEntry] = mapTextToStatEntry(branch, statEffects, spellDescription.id, spellStatEffects, false)
 				insertEntry(statMap, pattern, statEntry, locale)
 			}
 		}
@@ -979,7 +984,7 @@ async function getLocaleStatMap(
 		if (!stats) {
 			stats = getEnchantStats(statEnchant, spellStatEffects)
 		}
-		const [pattern, statEntry] = await mapTextToStatEntry(statEnchant.name, stats, statEnchant.id, spellStatEffects, true)
+		const [pattern, statEntry] = mapTextToStatEntry(statEnchant.name, stats, statEnchant.id, spellStatEffects, true)
 		insertEntry(statMap, pattern, statEntry, locale)
 	}
 
@@ -1060,7 +1065,7 @@ for (const [_, expansion] of Object.entries(Expansion)) {
 	}
 	console.log(`${spellEffects.length} effects`)
 
-	const [spellStatEffects, procSpellIDs] = await enumerateStatAndProcSpells(spellEffects)
+	const [spellStatEffects, procSpellIDs] = enumerateStatAndProcSpells(spellEffects)
 
 	console.log(`${spellStatEffects.size} statSpells`)
 
