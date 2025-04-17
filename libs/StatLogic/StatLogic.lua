@@ -1838,8 +1838,7 @@ do
 	local dec_sep = DECIMAL_SEPERATOR:gsub("[-.]", "%%%1")
 	local number_pattern = "[+-]?[%d." .. large_sep .. dec_sep .. "]+%f[%D]"
 
-	---@alias StatGroupEntry false
-	---@alias StatGroup StatGroupEntry|StatGroupEntry[]
+	---@alias StatGroup (Stat | string)[] | false
 
 	---@param statGroups { statGroup: StatGroup, value: integer }[]
 	---@param statGroup StatGroup
@@ -1847,15 +1846,17 @@ do
 	---@param itemLink string
 	---@param color ColorMixin
 	local function AddStat(statGroups, statGroup, value, itemLink, color)
-		if statGroup == StatLogic.Stats.Armor then
-			local base, bonus = StatLogic:GetArmorDistribution(itemLink, value, color)
-			value = base
-			AddStat(statGroups, StatLogic.Stats.BonusArmor, bonus, itemLink, color)
-		end
+		if type(statGroup) == "table" then
+			if tContains(statGroup, StatLogic.Stats.Armor) then
+				local base, bonus = StatLogic:GetArmorDistribution(itemLink, value, color)
+				value = base
+				AddStat(statGroups, { StatLogic.Stats.BonusArmor }, bonus, itemLink, color)
+			end
 
-		if statGroup == StatLogic.Stats.WeaponDPS and LARGE_NUMBER_SEPERATOR == "." then
-			-- Workaround for Blizzard forgetting to use DECIMAL_SEPERATOR for Weapon DPS
-			value = value / 10
+			if tContains(statGroup, StatLogic.Stats.WeaponDPS) and LARGE_NUMBER_SEPERATOR == "." then
+				-- Workaround for Blizzard forgetting to use DECIMAL_SEPERATOR for Weapon DPS
+				value = value / 10
+			end
 		end
 
 		table.insert(statGroups, { statGroup = statGroup, value = value })
@@ -1912,13 +1913,14 @@ do
 			text = text:gsub("%.$", "")
 			text = text:utf8lower()
 
+			---@type WholeTextEntry
 			local statList = addon.WholeTextLookup[text]
 			if statList ~= nil then
 				found = true
 				if statList then
 					log(rawText, "Success", "WholeText")
 					for stat, value in pairs(statList) do
-						AddStat(statGroups, stat, value, itemLink, color)
+						AddStat(statGroups, { stat }, value, itemLink, color)
 					end
 					logStatGroups(statGroups)
 				else
@@ -1944,6 +1946,7 @@ do
 			if count > 0 then
 				statText = statText:trim()
 				-- Lookup exact sanitized string in StatIDLookup
+				---@type SubstitutionEntry
 				local statList = addon.StatIDLookup[statText]
 				if statList then
 					found = true
@@ -2066,7 +2069,7 @@ do
 				local statGroupValues = StatLogic:GetStatGroupValues(text, link, color)
 				for _, statGroupValue in ipairs(statGroupValues) do
 					local statGroup = statGroupValue.statGroup
-					if type(statGroup) == "table" and #statGroup > 0 then
+					if type(statGroup) == "table" then
 						for _, stat in ipairs(statGroup) do
 							---@diagnostic disable-next-line: need-check-nil
 							statTable[stat] = statTable[stat] + statGroupValue.value
