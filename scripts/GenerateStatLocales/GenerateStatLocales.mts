@@ -600,7 +600,7 @@ function GetCombatResultStat(statSuffix: string) {
 const effectAuraStats: Record<EffectAura, (miscValue: number) => string[]> = {
 	[EffectAura.PERIODIC_HEAL]: GetPlainStat("HealthRegen"),
 	[EffectAura.MOD_DAMAGE_DONE]: GetSchoolStat("Damage", "AverageWeaponDamage", "SpellDamage"),
-	[EffectAura.MOD_RESISTANCE]: GetSchoolStat("Resistance", "BonusArmor"),
+	[EffectAura.MOD_RESISTANCE]: GetSchoolStat("Resistance", "Armor"),
 	[EffectAura.MOD_STAT]: GetPrimaryStat(),
 	[EffectAura.MOD_SKILL]: GetSkillLineStat(),
 	[EffectAura.MOD_INCREASE_HEALTH]: GetPlainStat("Health"),
