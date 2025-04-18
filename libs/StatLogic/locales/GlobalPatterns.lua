@@ -103,8 +103,26 @@ for _, subclass in pairs(Enum.ItemArmorSubclass) do
 end
 
 local function unescape(pattern)
-	return pattern:gsub("%%%d?%$?c", ""):gsub("%%%d?%$?[sd]", "%%s"):gsub("%.$", "")
+	return (pattern:gsub("%%%d?%$?c", ""):gsub("%%%d?%$?[sd]", "%%s"):gsub("%.$", ""))
 end
+
+-- Patterns that should be matched for breakdowns, but ignord for summaries
+addon.IgnoreSum = setmetatable({}, lowerMT)
+
+local ignoreSumPrefixes = {
+	ITEM_SPELL_TRIGGER_ONUSE, -- "Use:"
+	ITEM_SPELL_TRIGGER_ONPROC, -- "Chance on hit:"
+	ITEM_SET_BONUS_GRAY:gsub("[()]", "%%%1"):gsub("%%d", "%%d+"):gsub("%%s", ""), -- "(%d) Set: %s"
+	ITEM_SET_BONUS:format(""), -- "Set: %s"
+}
+
+for _, pattern in ipairs(ignoreSumPrefixes) do
+	addon.IgnoreSum["^" .. pattern] = true
+end
+
+addon.OnUseCooldown = ITEM_COOLDOWN_TOTAL:utf8lower():format("[^(]+"):gsub("[()]", "%%%1") .. "$"
+print("OUC", addon.OnUseCooldown)
+
 
 -------------------------
 -- Substitution Lookup --
@@ -264,9 +282,6 @@ local prefixExclusions = {
 	ITEM_MIN_SKILL, -- "Requires %s (%d)"
 	ITEM_CLASSES_ALLOWED, -- "Classes: %s"
 	ITEM_RACES_ALLOWED, -- "Races: %s"
-	ITEM_SPELL_TRIGGER_ONUSE, -- "Use:"
-	ITEM_SPELL_TRIGGER_ONPROC, -- "Chance on hit:"
-	ITEM_SET_BONUS, -- "Set: %s"
 }
 
 addon.PrefixExclude = {}

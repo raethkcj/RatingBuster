@@ -442,8 +442,14 @@ const NegativeEffectAuras = new Set<EffectAura> ([
 	EffectAura.MOD_TARGET_RESISTANCE,
 ])
 
-// EffectAura.PROC_TRIGGER_SPELL
-const procTriggerSpell = 42
+enum ProcEffectAura {
+	PERIODIC_TRIGGER_SPELL = 23,
+	PROC_TRIGGER_SPELL = 42,
+	ADD_TARGET_TRIGGER = 109,
+	PERIODIC_TRIGGER_SPELL_WITH_VALUE = 227,
+	PROC_TRIGGER_SPELL_WITH_VALUE = 231,
+}
+const procAuraValues = Object.values(ProcEffectAura).slice(Object.values(ProcEffectAura).length / 2)
 
 function GetPlainStat(...stat: string[]): () => string[] {
 	return () => stat
@@ -713,7 +719,9 @@ async function queryStatSpellEffects(expansion: Expansion) {
 	const query = `
 		SELECT StatSpell.SpellID, StatSpell.EffectIndex, StatSpell.EffectAura, StatSpell.EffectBasePoints, StatSpell.EffectDieSides, StatSpell.EffectMiscValue_0, ProcSpell.SpellID
 		FROM read_csv('${spellEffect.path}', auto_type_candidates = ['INTEGER', 'DOUBLE', 'VARCHAR']) StatSpell
-		LEFT JOIN '${spellEffect.path}' ProcSpell ON ProcSpell.EffectTriggerSpell = StatSpell.SpellID
+		LEFT JOIN read_csv('${spellEffect.path}', auto_type_candidates = ['INTEGER', 'DOUBLE', 'VARCHAR']) ProcSpell
+		ON ProcSpell.EffectTriggerSpell = StatSpell.SpellID
+		AND ProcSpell.EffectAura in (${procAuraValues})
 		WHERE StatSpell.EffectAura in (${effectAuraValues})
 		AND (StatSpell.EffectAuraPeriod = 5000 OR StatSpell.EffectAura != '${EffectAura.PERIODIC_HEAL}')
 		AND (StatSpell.EffectMiscValue_0 = '${PowerType.Mana}' OR StatSpell.EffectAura != '${EffectAura.MOD_POWER_REGEN}')
@@ -841,9 +849,9 @@ class StatValue {
 	constructor(public stat: string, public value: number, public isOverride: boolean = false) {}
 }
 
-function enumerateStatAndProcSpells(spellEffects: SpellEffect[]): [Map<number, StatValue[][]>, Set<number>] {
+function enumerateStatAndProcSpells(spellEffects: SpellEffect[]): [Map<number, StatValue[][]>, Map<number, number>] {
 	const spellStatEffects = new Map<number, StatValue[][]>()
-	const procSpellIDSet = new Set<number>()
+	const procSpells = new Map<number, number>()
 	for (const effect of spellEffects) {
 		const statEffects = spellStatEffects.get(effect.spellID) || []
 
@@ -874,7 +882,7 @@ function enumerateStatAndProcSpells(spellEffects: SpellEffect[]): [Map<number, S
 				}
 
 				if (effect.procSpellID) {
-					procSpellIDSet.add(effect.procSpellID)
+					procSpells.set(effect.procSpellID, effect.spellID)
 				}
 			}
 		}
@@ -884,7 +892,7 @@ function enumerateStatAndProcSpells(spellEffects: SpellEffect[]): [Map<number, S
 		}
 	}
 
-	return [spellStatEffects, procSpellIDSet]
+	return [spellStatEffects, procSpells]
 }
 
 function overrideSpells(spellStatEffects: Map<number, StatValue[][]>, spellDescIDs: Set<number>, expansion: Expansion) {
@@ -962,6 +970,7 @@ async function getLocaleStatMap(
 	locale: Locale,
 	spellStatEffects: Map<number, StatValue[][]>,
 	statSpellIDs: number[],
+	procSpells: Map<number, number>,
 	spellDescIDs: Set<number>,
 	overrideEnchantIDs: number[],
 	overrideEnchantStatEffects: Map<number, StatValue[][]>
@@ -970,12 +979,20 @@ async function getLocaleStatMap(
 
 	const spellDescriptions = await queryStatSpellDescriptions(expansion, locale, Array.from(spellDescIDs))
 	for (const spellDescription of spellDescriptions) {
-		const statEffects = spellStatEffects.get(spellDescription.id)
+		let staticEffects = false
+		let statEffects = spellStatEffects.get(spellDescription.id)
+		if (statEffects) {
+			staticEffects = true
+		} else {
+			statEffects = spellStatEffects.get(procSpells.get(spellDescription.id)!)
+		}
 		if (statEffects) {
 			const branches = traverseDescriptionBranches(spellDescription.description)
 			for (const branch of branches) {
 				const [pattern, statEntry] = mapTextToStatEntry(branch, statEffects, spellDescription.id, spellStatEffects, false)
-				insertEntry(statMap, pattern, statEntry, locale)
+				if (staticEffects || !statEntry.isWholeText) {
+					insertEntry(statMap, pattern, statEntry, locale)
+				}
 			}
 		}
 	}
@@ -1068,12 +1085,13 @@ for (const [_, expansion] of Object.entries(Expansion)) {
 	}
 	console.log(`${spellEffects.length} effects`)
 
-	const [spellStatEffects, procSpellIDs] = enumerateStatAndProcSpells(spellEffects)
+	const [spellStatEffects, procSpells] = enumerateStatAndProcSpells(spellEffects)
 
 	console.log(`${spellStatEffects.size} statSpells`)
 
 	const statSpellIDs = Array.from(spellStatEffects.keys())
-	const spellDescIDs = procSpellIDs.union(new Set(statSpellIDs))
+	const spellDescIDs = new Set(statSpellIDs)
+	procSpells.forEach((_s, p) => spellDescIDs.add(p))
 
 	overrideSpells(spellStatEffects, spellDescIDs, expansion)
 	console.log(`${spellDescIDs.size} spellDescIDs`)
@@ -1081,7 +1099,7 @@ for (const [_, expansion] of Object.entries(Expansion)) {
 	const [overrideEnchantIDs, overrideEnchantStatEffects] = getOverrideEnchants(expansion)
 
 	for (const locale of locales) {
-		const localeStatMap = getLocaleStatMap(expansion, locale, spellStatEffects, statSpellIDs, spellDescIDs, overrideEnchantIDs, overrideEnchantStatEffects)
+		const localeStatMap = getLocaleStatMap(expansion, locale, spellStatEffects, statSpellIDs, procSpells, spellDescIDs, overrideEnchantIDs, overrideEnchantStatEffects)
 		const localeResult = localeResults.get(locale) || []
 		localeResult.push(localeStatMap)
 		localeResults.set(locale, localeResult)
