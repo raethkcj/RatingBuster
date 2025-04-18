@@ -121,13 +121,13 @@ for _, pattern in ipairs(ignoreSumPrefixes) do
 end
 
 addon.OnUseCooldown = ITEM_COOLDOWN_TOTAL:utf8lower():format("[^(]+"):gsub("[()]", "%%%1") .. "$"
-print("OUC", addon.OnUseCooldown)
-
 
 -------------------------
 -- Substitution Lookup --
 -------------------------
----@alias SubstitutionEntry (Stat[] | false)[]
+---@class SubstitutionEntry
+---@field ignoreSum boolean?
+---@field [number] Stat[] | false
 ---@type { [string]: SubstitutionEntry }
 addon.StatIDLookup = setmetatable({}, lowerMT)
 local L = addon.StatIDLookup

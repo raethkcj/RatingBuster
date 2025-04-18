@@ -1840,7 +1840,11 @@ do
 
 	---@alias StatGroup (Stat | string)[] | false
 
-	---@param statGroups { statGroup: StatGroup, value: integer }[]
+	---@class StatGroupValues
+	---@field ignoreSum boolean
+	---@field [number] { statGroup: StatGroup, value: number }
+
+	---@param statGroups StatGroupValues
 	---@param statGroup StatGroup
 	---@param value integer
 	---@param itemLink string
@@ -1862,12 +1866,13 @@ do
 		table.insert(statGroups, { statGroup = statGroup, value = value })
 	end
 
+	---@param statGroupValues StatGroupValues
 	local function logStatGroups(statGroupValues)
 		if not DEBUG then return end
 		local outputText = {}
 		for _, statGroupValue in ipairs(statGroupValues) do
 			local statGroupText
-			if type(statGroupValue.statGroup) == "table" and #statGroupValue.statGroup > 0 then
+			if statGroupValue.statGroup then
 				local statText = {}
 				for _, stat in ipairs(statGroupValue.statGroup) do
 					table.insert(statText, tostring(stat))
@@ -1878,6 +1883,9 @@ do
 			end
 			table.insert(outputText, statGroupText .. "=" .. tostring(statGroupValue.value))
 		end
+		if statGroupValues.ignoreSum then
+			table.insert(outputText, "ignoreSum=true")
+		end
 		local output = "    " .. table.concat(outputText, ", ")
 		log(output)
 	end
@@ -1887,9 +1895,10 @@ do
 	---@param text string
 	---@param itemLink string
 	---@param color ColorMixin
-	---@return { statGroup: StatGroup, value: integer }[]
+	---@return StatGroupValues
 	function StatLogic:GetStatGroupValues(text, itemLink, color)
-		local statGroups = {}
+		---@type StatGroupValues
+		local statGroups = { ignoreSum = false }
 		local found = not text or text == ""
 
 		if not found then
@@ -1933,6 +1942,15 @@ do
 		-- Substitution Lookup --
 		-------------------------
 		if not found then
+			for pattern in pairs(addon.IgnoreSum) do
+				local count
+				text, count = text:gsub(pattern, "")
+				if count > 0 then
+					text = text:gsub(addon.OnUseCooldown, ""):trim():gsub("%.$", "")
+					statGroups.ignoreSum = true
+				end
+			end
+
 			-- Replace numbers with %s
 			local values = {}
 			local statText, count = text:gsub(number_pattern, function(match)
@@ -1954,6 +1972,9 @@ do
 					for i, value in ipairs(values) do
 						local statGroup = statList[i]
 						AddStat(statGroups, statGroup, value, itemLink, color)
+					end
+					if statList.ignoreSum then
+						statGroups.ignoreSum = true
 					end
 					logStatGroups(statGroups)
 				end
@@ -2067,17 +2088,19 @@ do
 				local text = fontString:GetText()
 				local color = CreateColor(fontString:GetTextColor())
 				local statGroupValues = StatLogic:GetStatGroupValues(text, link, color)
-				for _, statGroupValue in ipairs(statGroupValues) do
-					local statGroup = statGroupValue.statGroup
-					if type(statGroup) == "table" then
-						for _, stat in ipairs(statGroup) do
+				if not statGroupValues.ignoreSum then
+					for _, statGroupValue in ipairs(statGroupValues) do
+						local statGroup = statGroupValue.statGroup
+						if type(statGroup) == "table" then
+							for _, stat in ipairs(statGroup) do
+								---@diagnostic disable-next-line: need-check-nil
+								statTable[stat] = statTable[stat] + statGroupValue.value
+							end
+						else
+							-- statGroup is a single stat
 							---@diagnostic disable-next-line: need-check-nil
-							statTable[stat] = statTable[stat] + statGroupValue.value
+							statTable[statGroup] = statTable[statGroup] + statGroupValue.value
 						end
-					else
-						-- statGroup is a single stat
-						---@diagnostic disable-next-line: need-check-nil
-						statTable[statGroup] = statTable[statGroup] + statGroupValue.value
 					end
 				end
 			end

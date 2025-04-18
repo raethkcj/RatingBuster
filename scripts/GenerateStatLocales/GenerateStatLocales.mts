@@ -75,6 +75,7 @@ enum Expansion {
 class StatEntry {
 	entries: (StatValue[] | false)[] = []
 	isWholeText = false
+	ignoreSum = false
 
 	constructor(public id: number, public isEnchant: boolean) {}
 
@@ -977,7 +978,7 @@ async function getLocaleStatMap(
 	overrideEnchantIDs: number[],
 	overrideEnchantStatEffects: Map<number, StatValue[][]>
 ) {
-	const statMap = new Map<string, StatEntry>
+	const statMap = new Map<string, StatEntry>()
 
 	const spellDescriptions = await queryStatSpellDescriptions(expansion, locale, Array.from(spellDescIDs))
 	for (const spellDescription of spellDescriptions) {
@@ -993,6 +994,7 @@ async function getLocaleStatMap(
 			for (const branch of branches) {
 				const [pattern, statEntry] = mapTextToStatEntry(branch, statEffects, spellDescription.id, spellStatEffects, false)
 				if (staticEffects || !statEntry.isWholeText) {
+					statEntry.ignoreSum = !staticEffects
 					insertEntry(statMap, pattern, statEntry, locale)
 				}
 			}
@@ -1062,7 +1064,7 @@ function entryToString([text, entry]: [string, StatEntry]) {
 			return accEntries + entryText
 		}
 	}, "")
-	return `${entry.isWholeText ? "W" : "L"}["${text}"] = { ${stats}} -- ${entry.isEnchant ? "e" : "s"}${entry.id}\n`
+	return `${entry.isWholeText ? "W" : "L"}["${text}"] = { ${stats}${entry.ignoreSum ? "ignoreSum = true " : ""}} -- ${entry.isEnchant ? "e" : "s"}${entry.id}\n`
 }
 
 mkdirSync(new URL(databaseDirName, base), { recursive: true })
