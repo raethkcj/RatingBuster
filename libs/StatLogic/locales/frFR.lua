@@ -33,7 +33,6 @@ W["augmente la force de $s"] = { [Stats.Strength] = 12, } -- s429864
 W["augmente largement les dégâts pendant la durée de l’inspiration"] = { [Stats.MeleeHaste] = 20, [Stats.AverageWeaponDamage] = 25, } -- s436430
 W["la prochaine attaque sera un coup critique"] = { [Stats.MeleeCrit] = 100, [Stats.RangedCrit] = 100, } -- s437716
 W["les attaques de mêlée de l’ombrefiel siphonnent l’énergie de la cible et la transforment en mana pour sa maîtresse"] = { [Stats.MeleeHit] = 9, [Stats.RangedHit] = 9, } -- s467667
-W["le chasseur adopte les qualités de l’épervier, ce qui augmente la puissance d’attaque en mêlée et à distance du même montant que son rang le plus élevé d’aspect du faucon.\nlorsque aspect de l’épervier est actif, le talent aspect du faucon amélioré peut désormais se déclencher à partir des attaques de mêlée et les améliorer. un seul aspect peut être actif à la fois"] = { [Stats.GenericAttackPower] = 0, } -- s469145
 W["entame un rituel qui invoque le membre du groupe ciblé. nécessite la présence du lanceur de sorts et deux membres du groupe supplémentaires pour mener le rituel à son terme. pour y prendre part, les joueurs doivent être hors combat, cliquer avec le bouton droit de la souris sur le portail et ne pas bouger tant que le rituel n'est pas terminé"] = { [Stats.FireResistance] = 10, [Stats.FireResistance] = 10, } -- s29134
 W["huile de sorcier mineure"] = { [Stats.SpellDamage] = 8, [Stats.HealingPower] = 8, } -- e2623
 W["huile de sorcier inférieure"] = { [Stats.SpellDamage] = 16, [Stats.HealingPower] = 16, } -- e2626
@@ -51,7 +50,6 @@ W["blocage parfait"] = { [Stats.BlockValue] = 30, } -- e7676
 W["scientifique du coutelas"] = { [Stats.MeleeCrit] = 5, [Stats.RangedCrit] = 5, } -- e7696
 W["sorts raffinés"] = { [Stats.MeleeCrit] = 2, [Stats.RangedCrit] = 2, [Stats.SpellCrit] = 2, } -- e7708
 W["ardeur épuisante"] = { [Stats.SpellCrit] = 15, } -- e6729
-W["instincts de survie"] = { [Stats.Dodge] = 0, } -- e6859
 W["maîtrise du bouclier"] = { [Stats.BlockChance] = 10, } -- e6876
 W["maître tireur"] = { [Stats.MeleeCrit] = 5, [Stats.RangedCrit] = 5, } -- e6889
 W["fanatisme"] = { [Stats.SpellCrit] = 18, } -- e6967
@@ -73,7 +71,7 @@ W["combiner un recueil de poèmes romantiques, une liasse de cartes et un assort
 W["permet à la cible de résister plus facilement aux assauts de dédain-du-néant"] = { [Stats.Defense] = 5, [Stats.Health] = -1000, } -- s30421
 W["imprègne la cible de sérénité, ce qui augmente ses capacités de soins. le coût des sorts et le maximum de mana de la cible sont également réduits"] = { [Stats.Mana] = -200, } -- s30422
 W["affaiblit un ennemi et l'empêche d'attaquer"] = { [Stats.MeleeHit] = -75, [Stats.RangedHit] = -75, } -- s34088
-W["tant que la cible est affectée par cet effet, elle ne peut pas se camoufler ou devenir invisible"] = { [Stats.Armor] = 0, [Stats.SpellHaste] = -20, } -- s35329
+W["tant que la cible est affectée par cet effet, elle ne peut pas se camoufler ou devenir invisible"] = { [Stats.SpellHaste] = -20, } -- s35329
 W["augmente les dégâts des sorts du maître d'un montant égal à un pourcentage du total d'endurance plus d'intelligence du démon actif"] = { [Stats.SpellDamage] = 12, } -- s35696
 W["augmente la résistance à l'ombre et draine la puissance des ennemis quand touché"] = { [Stats.ShadowResistance] = 120, } -- s36515
 W["augmente légèrement les dégâts et les soins produits par les sorts et effets magiques"] = { [Stats.SpellDamage] = 6, [Stats.HealingPower] = 6, } -- s37817
@@ -87,7 +85,7 @@ W["entame un rituel qui invoque le membre du groupe ciblé. nécessite la prése
 W["permet d'équiper les armes à une main dans la main gauche"] = { [Stats.MeleeHit] = 20, [Stats.RangedHit] = 20, } -- s42459
 W["vitalité"] = { [Stats.GenericManaRegen] = 4, [Stats.HealthRegen] = 4, } -- e2656
 W["pied sûr"] = { [Stats.MeleeHitRating] = 10, [Stats.RangedHitRating] = 10, } -- e2658
-W["sauvagerie"] = { [Stats.AttackPower] = 70, [Stats.RangedAttackPower] = 70, } -- e2667
+W["sauvagerie"] = { [Stats.AttackPower] = 70, } -- e2667
 W["feu solaire"] = { [Stats.FireDamage] = 50, [Stats.ArcaneDamage] = 50, } -- e2671
 W["âme de givre"] = { [Stats.FrostDamage] = 54, [Stats.ShadowDamage] = 54, } -- e2672
 W["huile de sorcier excellente"] = { [Stats.SpellDamage] = 42, [Stats.HealingPower] = 42, } -- e2678
@@ -100,18 +98,14 @@ W["votre esprit est guilleret"] = { [Stats.Spirit] = 50, } -- s25947
 W["les attaques de mêlée de l'ombrefiel siphonnent l'énergie de la cible et la transforment en mana pour son maître"] = { [Stats.MeleeHit] = 9, [Stats.RangedHit] = 9, } -- s28305
 W["réduit la puissance d'attaque des ennemis proches"] = { [Stats.GenericAttackPower] = -15, } -- s31273
 W["augmente la puissance des sorts du maître d'un montant égal à un pourcentage du total d'endurance plus d'intelligence du démon actif"] = { [Stats.SpellDamage] = 12, } -- s35696
-W["entaille l'armure d'un ennemi et réduit son efficacité"] = { [Stats.Armor] = 0, } -- s35918
 W["une attaque qui inflige des dégâts de l'arme et réduit les chances de la cible d'esquiver"] = { [Stats.Dodge] = -15, } -- s36094
 W["augmente légèrement la puissance des sorts"] = { [Stats.SpellDamage] = 6, [Stats.HealingPower] = 6, } -- s37817
 W["réduit la vitesse d'incantation d'une cible ennemie"] = { [Stats.SpellHaste] = -30, } -- s43507
 W["empower your rune weapon, immediately activating one of each rune type"] = { [Stats.ArcaneDamage] = 1, } -- s47804
-W["chances d'obtenir un coup critique augmentées"] = { [Stats.MeleeCrit] = 0, [Stats.RangedCrit] = 0, } -- s48420
 W["augmente le score de coup critique de $s"] = { [Stats.MeleeCritRating] = 61, [Stats.SpellCritRating] = 61, } -- s48836
 W["oblige la cible à se fixer sur vous. quand les effets se dissipent, elle attaquera la chose qu’elle hait le plus"] = { [Stats.MeleeHaste] = 20, } -- s49029
-W["applique un bonus passif à l'armée des morts"] = { [Stats.AttackPower] = 0, [Stats.Health] = 0, [Stats.SpellDamage] = 0, } -- s49040
 W["la force de brute du lanceur de sort permet aux attaques d'ignorer l'armure"] = { [Stats.ArmorPenetration] = 50000, } -- s54678
 W["augmente la vitesse d'incantation du lanceur de sorts lorsqu'il subit des dégâts"] = { [Stats.SpellHaste] = 1, } -- s55096
-W["donne au joaillier une chance de tailler les gemmes de norfendre de qualité inhabituelle en de parfaites gemmes"] = { [Stats.Strength] = 0, } -- s55534
 W["fait enrager le lanceur de sorts quand il est touché par des attaques ou des sorts, ce qui augmente sa vitesse d'attaque et les dégâts qu'il inflige. cumulable"] = { [Stats.MeleeHaste] = 3, } -- s57689
 W["fait enrager un grouillant, ce qui augmente sa taille et les dégâts qu'il inflige"] = { [Stats.Health] = 10000, } -- s59465
 W["prouesses au combat intensifiées par le chant de sylvanas"] = { [Stats.MeleeHit] = 100, [Stats.RangedHit] = 100, } -- s59756
@@ -120,15 +114,12 @@ W["cette attaque massive brise les os de la cible, ce qui réduit à néant ses 
 W["tire une charge électrique qui ralentit la cible"] = { [Stats.MeleeHaste] = -30, } -- s62493
 W["augmente ca et régénération de mana"] = { [Stats.Armor] = 13, [Stats.GenericManaRegen] = 65, } -- s63390
 W["réduit à néant les chances de coup critique"] = { [Stats.MeleeCrit] = -999, [Stats.RangedCrit] = -999, } -- s64481
-W["réduit la vitesse d'attaque en mêlée"] = { [Stats.MeleeHaste] = 0, } -- s68055
 W["tous les ennemis proches sont pris dans un tourbillon d’os"] = { [Stats.MeleeHaste] = -9900, } -- s69076
 W["avec un médecin aux petits soins, vous ne craignez plus rien"] = { [Stats.Health] = 45000, } -- s74503
 W["this is all just pretend.  \nyou imagine yourself stronger, and more resilient.  \nyou're sure you can handle the plague"] = { [Stats.FrostResistance] = 200, } -- s346285
-W["gelé sur place"] = { [Stats.MeleeHit] = 0, [Stats.RangedHit] = 0, } -- s51440
 W["rune de fracasse-épée"] = { [Stats.Parry] = 4, } -- e3365
 W["test de compétence requise enchantement"] = { [Stats.BonusArmor] = 10, } -- e3320
 W["huile de sorcier exceptionnelle"] = { [Stats.SpellPower] = 56, } -- e3299
-W["qa test blank purple gem enchant"] = { [Stats.Mana] = 0, } -- e3333
 W["marcheglace"] = { [Stats.Stamina] = 15, } -- e3250
 W["rune de brise-épée"] = { [Stats.Parry] = 2, } -- e3594
 W["pierre de feu magistrale"] = { [Stats.SpellCritRating] = 35, } -- e3597
@@ -146,7 +137,6 @@ W["pierre de sort démoniaque"] = { [Stats.SpellHasteRating] = 50, } -- e3619
 W["pierre de sort grandiose"] = { [Stats.SpellHasteRating] = 60, } -- e3620
 W["rune de la gargouille peau de pierre"] = { [Stats.Defense] = 25, } -- e3847
 W["rune de la carapace nérubienne"] = { [Stats.Defense] = 13, } -- e3883
-W["plaque en titane"] = { [Stats.ParryRating] = 26, } -- e3849
 W["doublure en toile flexible"] = { [Stats.Agility] = 23, } -- e3605
 W["broderie tisse-lumière"] = { [Stats.Spirit] = 1, } -- e3722
 W["broderie sombrelueur"] = { [Stats.Spirit] = 1, } -- e3728
@@ -196,8 +186,8 @@ W["il suffit parfois d’y croire.\nimaginez-vous plus forte que vous ne l’êt
 W["il suffit parfois d’y croire.\nimaginez-vous plus fort que vous ne l’êtes, plus résistante.\nvous savez que vous êtes capable de vaincre la peste…"] = { [Stats.FrostResistance] = 200, } -- s346285
 W["il suffit parfois d’y croire.\nimaginez-vous plus forte que vous ne l’êtes, plus résistante.\nvous savez que vous êtes capable de vaincre la peste…"] = { [Stats.FrostResistance] = 200, } -- s346285
 W["permet de s’équiper d’armes à une main dans la main gauche"] = { [Stats.MeleeHit] = 20, [Stats.RangedHit] = 20, } -- s42459
-W["langue de feu"] = { [Stats.SpellCrit] = 0, } -- e5
 W["viveterre"] = { [Stats.HealingPower] = 110, } -- e3345
+W["plaque en titane"] = { [Stats.ParryRating] = 26, } -- e3849
 W["dragonne en pyrium"] = { [Stats.HitRating] = 40, } -- e4217
 
 local L = addon.StatIDLookup

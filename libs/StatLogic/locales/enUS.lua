@@ -30,7 +30,6 @@ W["allows the imbiber to speak with the corpse of an individual with unfinished 
 W["increases your chance to hit by $s%"] = { [Stats.MeleeHit] = 1, [Stats.RangedHit] = 1, } -- s429863
 W["increases your strength by $s"] = { [Stats.Strength] = 12, } -- s429864
 W["greatly increases damage while inspired"] = { [Stats.MeleeHaste] = 20, [Stats.AverageWeaponDamage] = 25, } -- s436430
-W["the hunter takes on the aspects of a falcon, increasing melee and ranged attack power by the same amount as their highest rank of aspect of the hawk.\nwhile aspect of the falcon is active, the improved aspect of the hawk talent can now proc from and benefit melee attacks.  only one aspect can be active at a time"] = { [Stats.GenericAttackPower] = 0, } -- s469145
 W["minor wizard oil"] = { [Stats.SpellDamage] = 8, [Stats.HealingPower] = 8, } -- e2623
 W["lesser wizard oil"] = { [Stats.SpellDamage] = 16, [Stats.HealingPower] = 16, } -- e2626
 W["wizard oil"] = { [Stats.SpellDamage] = 24, [Stats.HealingPower] = 24, } -- e2627
@@ -47,7 +46,6 @@ W["pristine blocker"] = { [Stats.BlockValue] = 30, } -- e7676
 W["shiv savant"] = { [Stats.MeleeCrit] = 5, [Stats.RangedCrit] = 5, } -- e7696
 W["refined spells"] = { [Stats.MeleeCrit] = 2, [Stats.RangedCrit] = 2, [Stats.SpellCrit] = 2, } -- e7708
 W["burnout"] = { [Stats.SpellCrit] = 15, } -- e6729
-W["survival instincts"] = { [Stats.Dodge] = 0, } -- e6859
 W["shield mastery"] = { [Stats.BlockChance] = 10, } -- e6876
 W["master marksman"] = { [Stats.MeleeCrit] = 5, [Stats.RangedCrit] = 5, } -- e6889
 W["fanaticism"] = { [Stats.SpellCrit] = 18, } -- e6967
@@ -62,7 +60,7 @@ W["spell critical strike rating increased"] = { [Stats.SpellCritRating] = 42, } 
 W["makes the target better at withstanding the onslaught of netherspite's attacks"] = { [Stats.Defense] = 5, [Stats.Health] = -1000, } -- s30421
 W["fills the target with serenity, increasing their healing done. also reduces the cost of spells and the target's maximum mana"] = { [Stats.Mana] = -200, } -- s30422
 W["weakens an enemy, preventing him from attacking"] = { [Stats.MeleeHit] = -75, [Stats.RangedHit] = -75, } -- s34088
-W["while affected, the target cannot use stealth or invisibility"] = { [Stats.Armor] = 0, [Stats.SpellHaste] = -20, } -- s35329
+W["while affected, the target cannot use stealth or invisibility"] = { [Stats.SpellHaste] = -20, } -- s35329
 W["increases master's spell damage by a percentage of the active demon's stamina plus intellect"] = { [Stats.SpellDamage] = 12, } -- s35696
 W["increase shadow resistance and drains power from enemies when struck"] = { [Stats.ShadowResistance] = 120, } -- s36515
 W["increases damage and healing done by magical spells and effects slightly"] = { [Stats.SpellDamage] = 6, [Stats.HealingPower] = 6, } -- s37817
@@ -85,18 +83,14 @@ W["increases the caster's attack speed"] = { [Stats.MeleeHaste] = 9, } -- s19516
 W["the combination of draconian magics have transformed the target into a chromatic drakonid"] = { [Stats.Armor] = 500, [Stats.FireResistance] = 500, [Stats.NatureResistance] = 500, [Stats.FrostResistance] = 500, [Stats.ShadowResistance] = 500, [Stats.ArcaneResistance] = 500, } -- s23174
 W["reduces the attack power of nearby enemies"] = { [Stats.GenericAttackPower] = -15, } -- s31273
 W["increases master's spell power by a percentage of the active demon's stamina plus intellect"] = { [Stats.SpellDamage] = 12, } -- s35696
-W["hacks at an enemy's armor, reducing its effectiveness"] = { [Stats.Armor] = 0, } -- s35918
 W["a strike that deals weapon damage and decreases the target's chance to dodge"] = { [Stats.Dodge] = -15, } -- s36094
 W["increases spell power slightly"] = { [Stats.SpellDamage] = 6, [Stats.HealingPower] = 6, } -- s37817
 W["slows the casting speed of an enemy target"] = { [Stats.SpellHaste] = -30, } -- s43507
-W["critical strike chance increased"] = { [Stats.MeleeCrit] = 0, [Stats.RangedCrit] = 0, } -- s48420
 W["empower your rune weapon, immediately activating one of each rune type"] = { [Stats.ArcaneDamage] = 1, } -- s47804
 W["increases critical strike rating by $s"] = { [Stats.MeleeCritRating] = 61, [Stats.SpellCritRating] = 61, } -- s48836
 W["forces the target to fixate on you. when the effect wears off, he will attack the thing he hates the most"] = { [Stats.MeleeHaste] = 20, } -- s49029
-W["applies a passive bonus to the army of the dead"] = { [Stats.AttackPower] = 0, [Stats.Health] = 0, [Stats.SpellDamage] = 0, } -- s49040
 W["the brute strength of the caster causes attacks to ignore armor"] = { [Stats.ArmorPenetration] = 50000, } -- s54678
 W["increases the casting speed of the caster as he takes damage"] = { [Stats.SpellHaste] = 1, } -- s55096
-W["gives the jewelcrafter the chance to cut uncommon quality northrend gems into perfect gems"] = { [Stats.Strength] = 0, } -- s55534
 W["enrages the caster when hit by attacks and spells, increasing attack speed and damage dealt. stacks"] = { [Stats.MeleeHaste] = 3, } -- s57689
 W["enrages a swarmer, increasing size and damage done"] = { [Stats.Health] = 10000, } -- s59465
 W["battle prowess heightened by the song of sylvanas"] = { [Stats.MeleeHit] = 100, [Stats.RangedHit] = 100, } -- s59756
@@ -104,14 +98,11 @@ W["battle prowess heightened by jaina's powerful spell"] = { [Stats.MeleeHit] = 
 W["the massive attacks breaks the targets bones, negating their chance to block, dodge or parry"] = { [Stats.Parry] = -200, } -- s62354
 W["fires an electrical charge that slows the target"] = { [Stats.MeleeHaste] = -30, } -- s62493
 W["increases ac, mana regen"] = { [Stats.Armor] = 13, [Stats.GenericManaRegen] = 65, } -- s63390
-W["reduces melee attack speed"] = { [Stats.MeleeHaste] = 0, } -- s68055
 W["attacks nearby enemies in a whirlwind of bone"] = { [Stats.MeleeHaste] = -9900, } -- s69076
 W["when the \"doc\" is on the clock your health won't drop"] = { [Stats.Health] = 45000, } -- s74503
-W["frozen in place"] = { [Stats.MeleeHit] = 0, [Stats.RangedHit] = 0, } -- s51440
 W["rune of swordshattering"] = { [Stats.Parry] = 4, } -- e3365
 W["test skill req enchant"] = { [Stats.BonusArmor] = 10, } -- e3320
 W["exceptional wizard oil"] = { [Stats.SpellPower] = 56, } -- e3299
-W["qa test blank purple gem enchant"] = { [Stats.Mana] = 0, } -- e3333
 W["icewalker"] = { [Stats.Stamina] = 15, } -- e3250
 W["rune of swordbreaking"] = { [Stats.Parry] = 2, } -- e3594
 W["master firestone"] = { [Stats.SpellCritRating] = 35, } -- e3597
@@ -129,7 +120,6 @@ W["demonic spellstone"] = { [Stats.SpellHasteRating] = 50, } -- e3619
 W["grand spellstone"] = { [Stats.SpellHasteRating] = 60, } -- e3620
 W["rune of the stoneskin gargoyle"] = { [Stats.Defense] = 25, } -- e3847
 W["rune of the nerubian carapace"] = { [Stats.Defense] = 13, } -- e3883
-W["titanium plating"] = { [Stats.ParryRating] = 26, } -- e3849
 W["flexweave underlay"] = { [Stats.Agility] = 23, } -- e3605
 W["lightweave embroidery"] = { [Stats.Spirit] = 1, } -- e3722
 W["darkglow embroidery"] = { [Stats.Spirit] = 1, } -- e3728
@@ -173,8 +163,8 @@ W["increases stamina. consumed on use"] = { [Stats.Stamina] = 4, } -- s97165
 W["increases strength. consumed on use"] = { [Stats.Strength] = 4, } -- s97167
 W["teleport from one shadow gate to another, gaining a massive boost to damage and movement speed for a short duration afterwards"] = { [Stats.SpellDamage] = 100, } -- s99953
 W["increase casting speed"] = { [Stats.SpellHaste] = 15, } -- s101682
-W["flametongue"] = { [Stats.SpellCrit] = 0, } -- e5
 W["earthliving"] = { [Stats.HealingPower] = 110, } -- e3345
+W["titanium plating"] = { [Stats.ParryRating] = 26, } -- e3849
 W["pyrium weapon chain"] = { [Stats.HitRating] = 40, } -- e4217
 
 local L = addon.StatIDLookup

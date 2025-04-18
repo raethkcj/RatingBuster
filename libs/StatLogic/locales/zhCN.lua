@@ -29,7 +29,6 @@ W["使饮用者能够与尘缘未了之人的遗骸沟通。也能治疗消化�
 W["使你的命中几率提高$s%。"] = { [Stats.MeleeHit] = 1, [Stats.RangedHit] = 1, } -- s429863
 W["使你的力量提高$s点。"] = { [Stats.Strength] = 12, } -- s429864
 W["受到启迪时大幅提高伤害。"] = { [Stats.MeleeHaste] = 20, [Stats.AverageWeaponDamage] = 25, } -- s436430
-W["猎人获得猎鹰守护，使近战和远程攻击强度提高，数值等同于其习得的最高等级的雄鹰守护。\n猎鹰守护激活时，近战攻击可以触发并获得强化雄鹰守护天赋的增益。一个猎人在同一时间内只能激活一种守护。"] = { [Stats.GenericAttackPower] = 0, } -- s469145
 W["初级巫师之油"] = { [Stats.SpellDamage] = 8, [Stats.HealingPower] = 8, } -- e2623
 W["次级巫师之油"] = { [Stats.SpellDamage] = 16, [Stats.HealingPower] = 16, } -- e2626
 W["巫师之油"] = { [Stats.SpellDamage] = 24, [Stats.HealingPower] = 24, } -- e2627
@@ -46,7 +45,6 @@ W["纯粹捍卫者"] = { [Stats.BlockValue] = 30, } -- e7676
 W["毒刃专家"] = { [Stats.MeleeCrit] = 5, [Stats.RangedCrit] = 5, } -- e7696
 W["精炼法术"] = { [Stats.MeleeCrit] = 2, [Stats.RangedCrit] = 2, [Stats.SpellCrit] = 2, } -- e7708
 W["燃尽"] = { [Stats.SpellCrit] = 15, } -- e6729
-W["生存本能"] = { [Stats.Dodge] = 0, } -- e6859
 W["盾牌精通"] = { [Stats.BlockChance] = 10, } -- e6876
 W["神射手"] = { [Stats.MeleeCrit] = 5, [Stats.RangedCrit] = 5, } -- e6889
 W["狂信"] = { [Stats.SpellCrit] = 18, } -- e6967
@@ -61,7 +59,7 @@ W["法术爆击等级提高。"] = { [Stats.SpellCritRating] = 42, } -- s22820
 W["makes the caster better at surviving netherspite's attacks"] = { [Stats.Defense] = 5, [Stats.Health] = -1000, } -- s30421
 W["fills the target with serenity, increasing their healing done. also reduces the cost of spells and the target's maximum mana"] = { [Stats.Mana] = -200, } -- s30422
 W["weakens an enemy, preventing him from attacking"] = { [Stats.MeleeHit] = -75, [Stats.RangedHit] = -75, } -- s34088
-W["while affected, the target cannot use stealth or invisibility"] = { [Stats.Armor] = 0, [Stats.SpellHaste] = -20, } -- s35329
+W["while affected, the target cannot use stealth or invisibility"] = { [Stats.SpellHaste] = -20, } -- s35329
 W["使主人的法术伤害提高，数值相当于被激活的恶魔的耐力值与智力值总和的一部分。"] = { [Stats.SpellDamage] = 12, } -- s35696
 W["increase shadow resistance and drains power from enemies when struck"] = { [Stats.ShadowResistance] = 120, } -- s36515
 W["在铸魔基地：炼狱控制一个莫尔葛恶魔。"] = { [Stats.MeleeHaste] = -25, } -- s38915
@@ -73,7 +71,7 @@ W["这一切都是假的。\n你想象自己更强了，更耐寒了。\n你相�
 W["可以在副手上装备单手和副手武器。"] = { [Stats.MeleeHit] = 20, [Stats.RangedHit] = 20, } -- s42459
 W["活力"] = { [Stats.GenericManaRegen] = 4, [Stats.HealthRegen] = 4, } -- e2656
 W["稳固"] = { [Stats.MeleeHitRating] = 10, [Stats.RangedHitRating] = 10, } -- e2658
-W["野蛮"] = { [Stats.AttackPower] = 70, } -- e2667
+W["野蛮"] = { [Stats.AttackPower] = 70, [Stats.RangedAttackPower] = 70, } -- e2667
 W["阳炎"] = { [Stats.FireDamage] = 50, [Stats.ArcaneDamage] = 50, } -- e2671
 W["魂霜"] = { [Stats.FrostDamage] = 54, [Stats.ShadowDamage] = 54, } -- e2672
 W["超级巫师之油"] = { [Stats.SpellDamage] = 42, [Stats.HealingPower] = 42, } -- e2678
@@ -85,9 +83,8 @@ W["龙族魔法的混用将目标变形成了一个多彩龙人。"] = { [Stats.
 W["使目标更加经受得住虚空幽龙的攻势。"] = { [Stats.Defense] = 5, [Stats.Health] = -1000, } -- s30421
 W["使目标变得平静，造成的治疗效果提高。此外，其法力值消耗和法力值上限都会降低。"] = { [Stats.Mana] = -200, } -- s30422
 W["降低附近敌人的攻击强度。"] = { [Stats.GenericAttackPower] = -15, } -- s31273
-W["激活之后，目标无法使用潜行或隐形术。"] = { [Stats.Armor] = 0, [Stats.SpellHaste] = -20, } -- s35329
+W["激活之后，目标无法使用潜行或隐形术。"] = { [Stats.SpellHaste] = -20, } -- s35329
 W["使主人的法术强度提高，数值相当于被激活的恶魔的耐力值与智力值总和的一部分。"] = { [Stats.SpellDamage] = 12, } -- s35696
-W["破坏敌人的护甲，降低护甲值。"] = { [Stats.Armor] = 0, } -- s35918
 W["造成普通武器伤害，并降低目标躲闪的几率。"] = { [Stats.Dodge] = -15, } -- s36094
 W["被攻击时提高暗影抗性并吸取敌人的能量。"] = { [Stats.ShadowResistance] = 120, } -- s36515
 W["略微提高法术强度。"] = { [Stats.SpellDamage] = 6, [Stats.HealingPower] = 6, } -- s37817
@@ -96,13 +93,10 @@ W["冲锋目标，将其击退。"] = { [Stats.MeleeHaste] = -6000, } -- s41581
 W["冲锋目标，使其昏迷并施展一连串迅猛的攻击。"] = { [Stats.MeleeHaste] = -6000, } -- s42583
 W["降低敌人的施法速度。"] = { [Stats.SpellHaste] = -30, } -- s43507
 W["empower your rune weapon, immediately activating one of each rune type"] = { [Stats.ArcaneDamage] = 1, } -- s47804
-W["爆击几率提高。"] = { [Stats.MeleeCrit] = 0, [Stats.RangedCrit] = 0, } -- s48420
 W["爆击等级提高$s。"] = { [Stats.MeleeCritRating] = 61, [Stats.SpellCritRating] = 61, } -- s48836
 W["强制目标凝视着你。该效果结束后，他会攻击仇恨值最高的目标。"] = { [Stats.MeleeHaste] = 20, } -- s49029
-W["使王者大军获得被动奖励加成。"] = { [Stats.AttackPower] = 0, [Stats.Health] = 0, [Stats.SpellDamage] = 0, } -- s49040
 W["施法者的野蛮之力使其所有攻击忽略目标的护甲值。"] = { [Stats.ArmorPenetration] = 50000, } -- s54678
 W["施法者受到伤害后施法速度提高。"] = { [Stats.SpellHaste] = 1, } -- s55096
-W["使珠宝匠有一定几率将优秀品质的诺森德宝石切割成完美宝石。"] = { [Stats.Strength] = 0, } -- s55534
 W["当施法者受到攻击和法术伤害时激怒，攻击速度和伤害提高。效果可叠加。"] = { [Stats.MeleeHaste] = 3, } -- s57689
 W["激怒一个虫人，使其体积增大，造成的伤害提高。"] = { [Stats.Health] = 10000, } -- s59465
 W["希尔瓦娜斯的歌声提高了你的战斗力。"] = { [Stats.MeleeHit] = 100, [Stats.RangedHit] = 100, } -- s59756
@@ -111,14 +105,11 @@ W["击溃目标，使他们无法格挡、躲闪或招架。"] = { [Stats.Parry]
 W["发射一枚电球，使目标减速。"] = { [Stats.MeleeHaste] = -30, } -- s62493
 W["increases ac, mana regen"] = { [Stats.Armor] = 13, [Stats.GenericManaRegen] = 65, } -- s63390
 W["感受酋长的力量吧！为了部落的荣耀而战！"] = { [Stats.Health] = 30000, } -- s64670
-W["降低近战攻击速度。"] = { [Stats.MeleeHaste] = 0, } -- s68055
 W["以一阵白骨风暴攻击附近的敌人。"] = { [Stats.MeleeHaste] = -9900, } -- s69076
 W["当“怪医”在场时，你的生命值不会减少。"] = { [Stats.Health] = 45000, } -- s74503
-W["被冻结在原地。"] = { [Stats.MeleeHit] = 0, [Stats.RangedHit] = 0, } -- s51440
 W["裂刃符文"] = { [Stats.Parry] = 4, } -- e3365
 W["test skill req enchant"] = { [Stats.BonusArmor] = 10, } -- e3320
 W["优异巫师之油"] = { [Stats.SpellPower] = 56, } -- e3299
-W["qa test blank purple gem enchant"] = { [Stats.Mana] = 0, } -- e3333
 W["履冰"] = { [Stats.Stamina] = 15, } -- e3250
 W["破刃符文"] = { [Stats.Parry] = 2, } -- e3594
 W["特效火焰石"] = { [Stats.SpellCritRating] = 35, } -- e3597
@@ -136,7 +127,6 @@ W["恶魔法术石"] = { [Stats.SpellHasteRating] = 50, } -- e3619
 W["完美法术石"] = { [Stats.SpellHasteRating] = 60, } -- e3620
 W["石肤石像鬼符文"] = { [Stats.Defense] = 25, } -- e3847
 W["蛛魔硬甲符文"] = { [Stats.Defense] = 13, } -- e3883
-W["泰坦神铁护板"] = { [Stats.ParryRating] = 26, } -- e3849
 W["高弹力衬垫"] = { [Stats.Agility] = 23, } -- e3605
 W["亮纹刺绣"] = { [Stats.Spirit] = 1, } -- e3722
 W["黑光刺绣"] = { [Stats.Spirit] = 1, } -- e3728
@@ -181,8 +171,8 @@ W["提高耐力。一次性使用。"] = { [Stats.Stamina] = 4, } -- s97165
 W["提高力量。一次性使用。"] = { [Stats.Strength] = 4, } -- s97167
 W["从一道暗影之门传动到另一道暗影之门，随后，伤害和移动速度在短时间内获得很大提升。"] = { [Stats.SpellDamage] = 100, } -- s99953
 W["提高施法速度。"] = { [Stats.SpellHaste] = 15, } -- s101682
-W["火舌"] = { [Stats.SpellCrit] = 0, } -- e5
 W["大地生命"] = { [Stats.HealingPower] = 110, } -- e3345
+W["泰坦神铁护板"] = { [Stats.ParryRating] = 26, } -- e3849
 W["燃钢武器链"] = { [Stats.HitRating] = 40, } -- e4217
 
 local L = addon.StatIDLookup

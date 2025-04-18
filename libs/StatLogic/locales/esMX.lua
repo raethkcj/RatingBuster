@@ -31,7 +31,6 @@ W["aumenta tu probabilidad de golpear un $s%"] = { [Stats.MeleeHit] = 1, [Stats.
 W["aumenta tu fuerza $s p"] = { [Stats.Strength] = 12, } -- s429864
 W["aumenta notablemente el daño cuando tienes inspiración"] = { [Stats.MeleeHaste] = 20, [Stats.AverageWeaponDamage] = 25, } -- s436430
 W["el próximo ataque de tu mascota será un golpe crítico, si es que el ataque tiene la capacidad de asestar golpes críticos"] = { [Stats.MeleeCrit] = 100, [Stats.RangedCrit] = 100, } -- s462214
-W["el cazador asume el aspecto de un halcón, lo que aumenta el poder de ataque cuerpo a cuerpo y a distancia la misma cantidad que el rango más alto de aspecto del halcón que tenga.\nmientras aspecto del halcón está activo, los ataques cuerpo a cuerpo pueden activar aspecto del halcón mejorado, lo que los potencia. solo puede haber un aspecto activo a la vez"] = { [Stats.GenericAttackPower] = 0, } -- s469145
 W["aceite de zahorí menor"] = { [Stats.SpellDamage] = 8, [Stats.HealingPower] = 8, } -- e2623
 W["aceite de zahorí inferior"] = { [Stats.SpellDamage] = 16, [Stats.HealingPower] = 16, } -- e2626
 W["aceite de zahorí"] = { [Stats.SpellDamage] = 24, [Stats.HealingPower] = 24, } -- e2627
@@ -48,7 +47,6 @@ W["bloqueador prístino"] = { [Stats.BlockValue] = 30, } -- e7676
 W["experto en puyazos"] = { [Stats.MeleeCrit] = 5, [Stats.RangedCrit] = 5, } -- e7696
 W["hechizos refinados"] = { [Stats.MeleeCrit] = 2, [Stats.RangedCrit] = 2, [Stats.SpellCrit] = 2, } -- e7708
 W["incendio"] = { [Stats.SpellCrit] = 15, } -- e6729
-W["instintos de supervivencia"] = { [Stats.Dodge] = 0, } -- e6859
 W["maestría con escudos"] = { [Stats.BlockChance] = 10, } -- e6876
 W["maestro tirador"] = { [Stats.MeleeCrit] = 5, [Stats.RangedCrit] = 5, } -- e6889
 W["fanatismo"] = { [Stats.SpellCrit] = 18, } -- e6967
@@ -63,7 +61,7 @@ W["índice de golpe crítico con hechizos aumentado"] = { [Stats.SpellCritRating
 W["ayuda a que el taumaturgo resista mejor a los ataques de rencor abisal"] = { [Stats.Defense] = 5, [Stats.Health] = -1000, } -- s30421
 W["colma al objetivo de serenidad, aumentando la sanación que hacen. también reduce el coste de los hechizos y el maná máximo del objetivo"] = { [Stats.Mana] = -200, } -- s30422
 W["debilita a un enemigo evitando que ataque"] = { [Stats.MeleeHit] = -75, [Stats.RangedHit] = -75, } -- s34088
-W["mientras esté bajo sus efectos, el objetivo no podrá usar sigilo o invisibilidad"] = { [Stats.Armor] = 0, [Stats.SpellHaste] = -20, } -- s35329
+W["mientras esté bajo sus efectos, el objetivo no podrá usar sigilo o invisibilidad"] = { [Stats.SpellHaste] = -20, } -- s35329
 W["aumenta el daño por hechizos del maestro en el tanto por cierto del aguante de tu demonio activo más intelecto"] = { [Stats.SpellDamage] = 12, } -- s35696
 W["aumenta la resistencia a las sombras y drena poder de los enemigos que reciben golpes"] = { [Stats.ShadowResistance] = 120, } -- s36515
 W["aumenta el daño y la sanación de los hechizos mágicos y los efectos ligeramente"] = { [Stats.SpellDamage] = 6, [Stats.HealingPower] = 6, } -- s37817
@@ -88,33 +86,26 @@ W["la combinación de las magias draconianas ha transformado al objetivo en un d
 W["los ataques cuerpo a cuerpo del maligno de las sombras succionan energía del objetivo y lo convierten en maná para su amo"] = { [Stats.MeleeHit] = 9, [Stats.RangedHit] = 9, } -- s28305
 W["reduce el poder de ataque de los enemigos cercanos"] = { [Stats.GenericAttackPower] = -15, } -- s31273
 W["aumenta el poder con hechizos del maestro en el porcentaje del aguante de tu demonio activo más intelecto"] = { [Stats.SpellDamage] = 12, } -- s35696
-W["corta la armadura de un enemigo y la reduce su eficacia"] = { [Stats.Armor] = 0, } -- s35918
 W["un golpe que inflige daño con arma y reduce la probabilidad del objetivo de esquivar"] = { [Stats.Dodge] = -15, } -- s36094
 W["aumenta el poder con hechizos ligeramente"] = { [Stats.SpellDamage] = 6, [Stats.HealingPower] = 6, } -- s37817
 W["ralentiza la velocidad de movimiento de un objetivo enemigo"] = { [Stats.SpellHaste] = -30, } -- s43507
 W["empower your rune weapon, immediately activating one of each rune type"] = { [Stats.ArcaneDamage] = 1, } -- s47804
-W["posibilidad de golpe crítico aumentada"] = { [Stats.MeleeCrit] = 0, [Stats.RangedCrit] = 0, } -- s48420
 W["aumenta el índice de golpe crítico $s p"] = { [Stats.MeleeCritRating] = 61, [Stats.SpellCritRating] = 61, } -- s48836
 W["fuerza al objetivo para que se obsesione contigo. cuando el efecto desaparece, atacará lo que más odie"] = { [Stats.MeleeHaste] = 20, } -- s49029
-W["aplica un bonus pasivo al ejército de muertos"] = { [Stats.AttackPower] = 0, [Stats.Health] = 0, [Stats.SpellDamage] = 0, } -- s49040
 W["la fuerza bruta del taumaturgo provoca que los ataques ignoren la armadura"] = { [Stats.ArmorPenetration] = 50000, } -- s54678
 W["aumenta la velocidad de lanzamiento del taumaturgo a medida que recibe daño"] = { [Stats.SpellHaste] = 1, } -- s55096
-W["da al joyero la posibilidad de cortar gemas de calidad inusual de rasganorte y convertirlas en gemas perfectas"] = { [Stats.Strength] = 0, } -- s55534
 W["enfurece al taumaturgo cuando le golpean los hechizos y ataques, aumenta la velocidad de ataque y el daño infligido. se acumula"] = { [Stats.MeleeHaste] = 3, } -- s57689
 W["enfurece a un enjambrista, lo que hace que aumente su tamaño y el daño que inflige"] = { [Stats.Health] = 10000, } -- s59465
 W["el canto de sylvanas aumenta tu destreza en la batalla"] = { [Stats.MeleeHit] = 100, [Stats.RangedHit] = 100, } -- s59756
 W["el poderoso hechizo de jaina aumenta tu destreza en la batalla"] = { [Stats.MeleeHit] = 100, [Stats.RangedHit] = 100, } -- s61011
 W["el ataque masivo rompe los huesos del objetivo, anulando su probabilidad de bloquear, esquivar o parar"] = { [Stats.Parry] = -200, } -- s62354
 W["dispara una carga eléctrica que ralentiza al objetivo"] = { [Stats.MeleeHaste] = -30, } -- s62493
-W["reduce la velocidad de ataque cuerpo a cuerpo"] = { [Stats.MeleeHaste] = 0, } -- s68055
 W["ataca a los enemigos cercanos con un torbellino de huesos"] = { [Stats.MeleeHaste] = -9900, } -- s69076
 W["si el doctor está presente tu salud no se resiente"] = { [Stats.Health] = 45000, } -- s74503
 W["this is all just pretend.  \nyou imagine yourself stronger, and more resilient.  \nyou're sure you can handle the plague"] = { [Stats.FrostResistance] = 200, } -- s346285
-W["congelado en el sitio"] = { [Stats.MeleeHit] = 0, [Stats.RangedHit] = 0, } -- s51440
 W["runa de devastación de espadas"] = { [Stats.Parry] = 4, } -- e3365
 W["test skill req enchant"] = { [Stats.BonusArmor] = 10, } -- e3320
 W["aceite de zahorí excepcional"] = { [Stats.SpellPower] = 56, } -- e3299
-W["qa test blank purple gem enchant"] = { [Stats.Mana] = 0, } -- e3333
 W["caminante del hielo"] = { [Stats.Stamina] = 15, } -- e3250
 W["runa de ruptura de espadas"] = { [Stats.Parry] = 2, } -- e3594
 W["piedra de fuego maestra"] = { [Stats.SpellCritRating] = 35, } -- e3597
@@ -132,7 +123,6 @@ W["piedra de hechizo demoníaca"] = { [Stats.SpellHasteRating] = 50, } -- e3619
 W["piedra de hechizo grandiosa"] = { [Stats.SpellHasteRating] = 60, } -- e3620
 W["runa de la gárgola piel de piedra"] = { [Stats.Defense] = 25, } -- e3847
 W["runa del caparazón nerubiano"] = { [Stats.Defense] = 13, } -- e3883
-W["blindaje de titanio"] = { [Stats.ParryRating] = 26, } -- e3849
 W["base de tejido flexible"] = { [Stats.Agility] = 23, } -- e3605
 W["bordado de tejido de luz"] = { [Stats.Spirit] = 1, } -- e3722
 W["bordado de resplandor oscuro"] = { [Stats.Spirit] = 1, } -- e3728
@@ -177,8 +167,8 @@ W["aumenta la fuerza. se consume al usarla"] = { [Stats.Strength] = 4, } -- s971
 W["te teletransporta de una puerta de las sombras a otra, lo que aumenta considerablemente el daño y la velocidad de movimiento durante un periodo de duración corto"] = { [Stats.SpellDamage] = 100, } -- s99953
 W["aumenta la velocidad de lanzamiento"] = { [Stats.SpellHaste] = 15, } -- s101682
 W["todo esto es una fantasía.  \nte imaginas más fuerte y más resistente.  \ntienes la seguridad de que puedes encargarte de la peste"] = { [Stats.FrostResistance] = 200, } -- s346285
-W["lengua de fuego"] = { [Stats.SpellCrit] = 0, } -- e5
 W["vida terrestre"] = { [Stats.HealingPower] = 110, } -- e3345
+W["blindaje de titanio"] = { [Stats.ParryRating] = 26, } -- e3849
 W["cadena de pirium"] = { [Stats.HitRating] = 40, } -- e4217
 
 local L = addon.StatIDLookup

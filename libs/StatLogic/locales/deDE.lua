@@ -34,7 +34,6 @@ W["erhöht eure stärke um $s"] = { [Stats.Strength] = 12, } -- s429864
 W["erhöht den schaden drastisch, während ihr inspiriert seid"] = { [Stats.MeleeHaste] = 20, [Stats.AverageWeaponDamage] = 25, } -- s436430
 W["euer nächster angriff trifft kritisch"] = { [Stats.MeleeCrit] = 100, [Stats.RangedCrit] = 100, } -- s437716
 W["die nahkampfangriffe des schattengeistes entziehen dem ziel energie, die für seine meisterin in mana umgewandelt wird"] = { [Stats.MeleeHit] = 9, [Stats.RangedHit] = 9, } -- s467667
-W["der jäger nimmt den aspekt eines gerfalken an, wodurch sich seine nah- und distanzkampfangriffskraft um einen wert in höhe seines höchsten rangs von 'aspekt des falken' erhöht.\nwährend 'aspekt des gerfalken' aktiv ist, kann das talent 'verbesserter aspekt des falken' nun von nahkampfangriffen ausgelöst werden und diese stärken. es kann immer nur jeweils ein aspekt aktiv sein"] = { [Stats.GenericAttackPower] = 0, } -- s469145
 W["beginnt ein ritual, das das anvisierte gruppenmitglied beschwört. um das ritual zu vervollständigen, werden der zaubernde und zwei zusätzliche gruppenmitglieder benötigt. um teilzunehmen, müssen sich alle spieler außerhalb eines kampfes befinden, auf das portal rechtsklicken und dürfen sich nicht bewegen, bis das ritual abgeschlossen ist"] = { [Stats.FireResistance] = 10, [Stats.FireResistance] = 10, } -- s29134
 W["schwaches zauberöl"] = { [Stats.SpellDamage] = 8, [Stats.HealingPower] = 8, } -- e2623
 W["geringes zauberöl"] = { [Stats.SpellDamage] = 16, [Stats.HealingPower] = 16, } -- e2626
@@ -52,7 +51,6 @@ W["makelloser blocker"] = { [Stats.BlockValue] = 30, } -- e7676
 W["messerkenner"] = { [Stats.MeleeCrit] = 5, [Stats.RangedCrit] = 5, } -- e7696
 W["verfeinerte zauber"] = { [Stats.MeleeCrit] = 2, [Stats.RangedCrit] = 2, [Stats.SpellCrit] = 2, } -- e7708
 W["feuerfontäne"] = { [Stats.SpellCrit] = 15, } -- e6729
-W["überlebensinstinkte"] = { [Stats.Dodge] = 0, } -- e6859
 W["schildmeisterschaft"] = { [Stats.BlockChance] = 10, } -- e6876
 W["meister der treffsicherheit"] = { [Stats.MeleeCrit] = 5, [Stats.RangedCrit] = 5, } -- e6889
 W["fanatismus"] = { [Stats.SpellCrit] = 18, } -- e6967
@@ -74,7 +72,7 @@ W["rechtsklicken, um aus einer romantischen gedichtesammlung, einem kartenstoß 
 W["der zaubernde wird besser darin, angriffen von nethergroll zu widerstehen"] = { [Stats.Defense] = 5, [Stats.Health] = -1000, } -- s30421
 W["erfüllt das ziel mit klarheit und erhöht die verursachte heilung, die zauberkosten und das maximale mana des ziels"] = { [Stats.Mana] = -200, } -- s30422
 W["schwächt einen gegner und verhindert, dass er angreift"] = { [Stats.MeleeHit] = -75, [Stats.RangedHit] = -75, } -- s34088
-W["solange man betroffen ist, kann keine verstohlenheit oder unsichtbarkeit angewendet werden"] = { [Stats.Armor] = 0, [Stats.SpellHaste] = -20, } -- s35329
+W["solange man betroffen ist, kann keine verstohlenheit oder unsichtbarkeit angewendet werden"] = { [Stats.SpellHaste] = -20, } -- s35329
 W["erhöht den zauberschaden des meisters um einen prozentsatz, berechnet aus ausdauer plus intelligenz des aktiven dämons"] = { [Stats.SpellDamage] = 12, } -- s35696
 W["erhöht den schattenwiderstand und bei einem treffer wird dem gegner energie abgezogen"] = { [Stats.ShadowResistance] = 120, } -- s36515
 W["erhöht durch zauber und magische effekte verursachten schaden und heilung leicht"] = { [Stats.SpellDamage] = 6, [Stats.HealingPower] = 6, } -- s37817
@@ -99,20 +97,16 @@ W["kritische zaubertrefferwertung erhöht"] = { [Stats.SpellCritRating] = 42, } 
 W["die kombination drakonischer magie hat das ziel in einen chromatischen drakoniden verwandelt"] = { [Stats.Armor] = 500, [Stats.FireResistance] = 500, [Stats.NatureResistance] = 500, [Stats.FrostResistance] = 500, [Stats.ShadowResistance] = 500, [Stats.ArcaneResistance] = 500, } -- s23174
 W["verringert die angriffskraft naher gegner"] = { [Stats.GenericAttackPower] = -15, } -- s31273
 W["erhöht die zaubermacht des meisters um einen prozentsatz, berechnet aus ausdauer plus intelligenz des aktiven dämons"] = { [Stats.SpellDamage] = 12, } -- s35696
-W["hackt nach der rüstung des feindes und verringert ihre effektivität"] = { [Stats.Armor] = 0, } -- s35918
 W["ein schlag, der waffenschaden zufügt und die ausweichchance des ziels verringert"] = { [Stats.Dodge] = -15, } -- s36094
 W["erhöht die zaubermacht leicht"] = { [Stats.SpellDamage] = 6, [Stats.HealingPower] = 6, } -- s37817
 W["stürmt ein ziel an und stößt es zurück"] = { [Stats.MeleeHaste] = -6000, } -- s41581
 W["verlangsamt bei einem befeindeten ziel das zaubertempo"] = { [Stats.SpellHaste] = -30, } -- s43507
 W["wenn aktiviert, werden alle eure zauber zu spontanzaubern"] = { [Stats.SpellHaste] = 100000, } -- s45813
 W["empower your rune weapon, immediately activating one of each rune type"] = { [Stats.ArcaneDamage] = 1, } -- s47804
-W["kritische trefferchance erhöht"] = { [Stats.MeleeCrit] = 0, [Stats.RangedCrit] = 0, } -- s48420
 W["erhöht eure kritische trefferwertung um $s"] = { [Stats.MeleeCritRating] = 61, [Stats.SpellCritRating] = 61, } -- s48836
 W["zwingt das ziel, sich auf euch zu fixieren. wenn der effekt nachlässt, wird das ziel den gegner angreifen, den es am meisten hasst"] = { [Stats.MeleeHaste] = 20, } -- s49029
-W["verleiht der armee der toten einen passiven bonus"] = { [Stats.AttackPower] = 0, [Stats.Health] = 0, [Stats.SpellDamage] = 0, } -- s49040
 W["die brutale kraft des zaubernden lässt angriffe rüstung ignorieren"] = { [Stats.ArmorPenetration] = 50000, } -- s54678
 W["erhöht das zaubertempo des zaubernden, sobald er schaden erleidet"] = { [Stats.SpellHaste] = 1, } -- s55096
-W["verleiht einem juwelier eine chance, seltene edelsteine aus nordend zu perfekten edelsteinen zu schleifen"] = { [Stats.Strength] = 0, } -- s55534
 W["versetzt den zaubernden in raserei, nachdem er opfer eines angriffs oder zaubers wurde, und erhöht verursachten schaden und angriffstempo. stapelbar"] = { [Stats.MeleeHaste] = 3, } -- s57689
 W["versetzt einen schwärmer in furor, erhöht größe und den verursachten schaden"] = { [Stats.Health] = 10000, } -- s59465
 W["die kampfkraft wird durch sylvanas gesang erhöht"] = { [Stats.MeleeHit] = 100, [Stats.RangedHit] = 100, } -- s59756
@@ -121,15 +115,12 @@ W["ein massiver angriff, der die knochen des ziels bricht, wodurch es nicht mehr
 W["feuert eine elektrische ladung, die das ziel verlangsamt"] = { [Stats.MeleeHaste] = -30, } -- s62493
 W["erhöht ac, manaregeneration"] = { [Stats.Armor] = 13, [Stats.GenericManaRegen] = 65, } -- s63390
 W["badet in der macht des kriegshäuptlings! trinkt seine kraft! kämpft zum ruhm der horde!"] = { [Stats.Health] = 30000, } -- s64670
-W["verringert das nahkampfangriffstempo"] = { [Stats.MeleeHaste] = 0, } -- s68055
 W["greift in der nähe befindliche feinde mit einem wirbel aus knochen an"] = { [Stats.MeleeHaste] = -9900, } -- s69076
 W["ist der stabsarzt da, geht's allen wunderba'"] = { [Stats.Health] = 45000, } -- s74503
 W["this is all just pretend.  \nyou imagine yourself stronger, and more resilient.  \nyou're sure you can handle the plague"] = { [Stats.FrostResistance] = 200, } -- s346285
-W["festgefroren"] = { [Stats.MeleeHit] = 0, [Stats.RangedHit] = 0, } -- s51440
 W["rune des schwertberstens"] = { [Stats.Parry] = 4, } -- e3365
 W["test fertigkeitsbedingung verzauberkunst"] = { [Stats.BonusArmor] = 10, } -- e3320
 W["außergewöhnliches zauberöl"] = { [Stats.SpellPower] = 56, } -- e3299
-W["qa test leer - violette edelsteinverzauberung"] = { [Stats.Mana] = 0, } -- e3333
 W["eiswandler"] = { [Stats.Stamina] = 15, } -- e3250
 W["rune des schwertbrechens"] = { [Stats.Parry] = 2, } -- e3594
 W["meisterlicher feuerstein"] = { [Stats.SpellCritRating] = 35, } -- e3597
@@ -147,7 +138,6 @@ W["dämonischer zauberstein"] = { [Stats.SpellHasteRating] = 50, } -- e3619
 W["großartiger zauberstein"] = { [Stats.SpellHasteRating] = 60, } -- e3620
 W["rune des steinhautgargoyles"] = { [Stats.Defense] = 25, } -- e3847
 W["rune der nerubischen panzerung"] = { [Stats.Defense] = 13, } -- e3883
-W["titanbeschlag"] = { [Stats.ParryRating] = 26, } -- e3849
 W["dehnbares innenfutter"] = { [Stats.Agility] = 23, } -- e3605
 W["hell leuchtendes garn"] = { [Stats.Spirit] = 1, } -- e3722
 W["dunkel glühendes garn"] = { [Stats.Spirit] = 1, } -- e3728
@@ -194,8 +184,8 @@ W["teleportiert von einem schattentor zu einem anderen und gewinnt für kurze ze
 W["erhöht das zaubertempo"] = { [Stats.SpellHaste] = 15, } -- s101682
 W["das ist alles nur gespielt.\nihr stellt euch vor, wie ihr stärker und widerstandsfähiger werdet.\nihr seid sicher, dass die seuche kein problem für euch ist"] = { [Stats.FrostResistance] = 200, } -- s346285
 W["ermöglicht die verwendung von einhandwaffen und schildhandwaffen in der schildhand"] = { [Stats.MeleeHit] = 20, [Stats.RangedHit] = 20, } -- s42459
-W["flammenzunge"] = { [Stats.SpellCrit] = 0, } -- e5
 W["lebensgeister"] = { [Stats.HealingPower] = 110, } -- e3345
+W["titanbeschlag"] = { [Stats.ParryRating] = 26, } -- e3849
 W["pyriumwaffenkette"] = { [Stats.HitRating] = 40, } -- e4217
 
 local L = addon.StatIDLookup

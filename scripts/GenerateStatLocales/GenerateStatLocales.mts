@@ -267,7 +267,7 @@ function mapTextToStatEntry(text: string, statEffects: StatValue[][], id: number
 	// We didn't match any numbers, so mark it as whole text and assign *all* the stats
 	if (pattern === text && matches === 0) {
 		statEntry.isWholeText = true
-		statEntry.entries = [statEffects.flat()]
+		statEntry.entries = [statEffects.flat().filter(sv => sv.value !== 0)]
 	}
 
 	return [pattern, statEntry]
@@ -923,7 +923,7 @@ for (const locale of locales) {
 }
 
 function insertEntry(statMap: Map<string, StatEntry>, text: string, statEntry: StatEntry, locale: Locale) {
-	if (!statEntry.entries.find(e => e)) return
+	if (!statEntry.entries.find(e => e && e.length > 0)) return
 	const blacklist = localeBlacklist.get(locale)!
 	const existingEntry = statMap.get(text)
 	if (existingEntry) {

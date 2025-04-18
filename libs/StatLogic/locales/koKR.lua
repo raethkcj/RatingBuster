@@ -30,7 +30,6 @@ W["복용 시 필멸자의 세계에 아직 볼 일이 남아있는 존재의 �
 W["적중률이 $s%만큼 증가합니다"] = { [Stats.MeleeHit] = 1, [Stats.RangedHit] = 1, } -- s429863
 W["힘이 $s만큼 증가합니다"] = { [Stats.Strength] = 12, } -- s429864
 W["고무된 동안 공격력이 크게 증가합니다"] = { [Stats.MeleeHaste] = 20, [Stats.AverageWeaponDamage] = 25, } -- s436430
-W["사냥꾼이 송골매의 상을 취해 근접 및 원거리 전투력이 가장 높은 등급의 매의 상만큼 증가합니다.\n송골매의 상이 활성화된 동안에는 매의 상 연마 특성이 발동할 수 있게 되며 근접 공격이 이로운 효과를 받습니다. 한 번에 한 상만 취할 수 있습니다"] = { [Stats.GenericAttackPower] = 0, } -- s469145
 W["최하급 마술사 오일"] = { [Stats.SpellDamage] = 8, [Stats.HealingPower] = 8, } -- e2623
 W["하급 마술사 오일"] = { [Stats.SpellDamage] = 16, [Stats.HealingPower] = 16, } -- e2626
 W["마술사 오일"] = { [Stats.SpellDamage] = 24, [Stats.HealingPower] = 24, } -- e2627
@@ -48,7 +47,6 @@ W["검객"] = { [Stats.MeleeCrit] = 5, [Stats.RangedCrit] = 5, } -- e7696
 W["제련된 주문"] = { [Stats.MeleeCrit] = 2, [Stats.RangedCrit] = 2, [Stats.SpellCrit] = 2, } -- e7708
 W["부족장"] = { [Stats.SpellCrit] = 2, } -- e7825
 W["완전 연소"] = { [Stats.SpellCrit] = 15, } -- e6729
-W["생존 본능"] = { [Stats.Dodge] = 0, } -- e6859
 W["방패 숙련"] = { [Stats.BlockChance] = 10, } -- e6876
 W["사격의 명수"] = { [Stats.MeleeCrit] = 5, [Stats.RangedCrit] = 5, } -- e6889
 W["광신"] = { [Stats.SpellCrit] = 18, } -- e6967
@@ -62,7 +60,7 @@ W["주문 극대화 적중도가 증가합니다"] = { [Stats.SpellCritRating] =
 W["황천의 원령의 매서운 공격을 잘 이겨내도록 합니다"] = { [Stats.Defense] = 5, [Stats.Health] = -1000, } -- s30421
 W["대상을 평온한 상태로 만들어 주문 치유량을 증가시키고, 소비되는 마나 소비량을 감소시킵니다. 최대 마나가 감소합니다"] = { [Stats.Mana] = -200, } -- s30422
 W["적을 약화시켜 공격하지 못하도록 만듭니다"] = { [Stats.MeleeHit] = -75, [Stats.RangedHit] = -75, } -- s34088
-W["효과가 지속되는 동안은 은신이나 투명화가 불가능합니다"] = { [Stats.Armor] = 0, [Stats.SpellHaste] = -20, } -- s35329
+W["효과가 지속되는 동안은 은신이나 투명화가 불가능합니다"] = { [Stats.SpellHaste] = -20, } -- s35329
 W["주문 공격력이 소환한 소환수의 총 체력과 지능을 합한 수의 일정 비율만큼 증가합니다"] = { [Stats.SpellDamage] = 12, } -- s35696
 W["암흑 저항력을 증가시키고 가격 당했을 때 적의 마력을 빼앗습니다"] = { [Stats.ShadowResistance] = 120, } -- s36515
 W["모든 주문 및 효과의 공격력과 치유량이 약간 증가합니다"] = { [Stats.SpellDamage] = 6, [Stats.HealingPower] = 6, } -- s37817
@@ -89,18 +87,14 @@ W["공격 속도가 증가합니다"] = { [Stats.MeleeHaste] = 9, } -- s19516
 W["용족의 마법을 조합하여 대상을 오색용기병으로 변신시킵니다"] = { [Stats.Armor] = 500, [Stats.FireResistance] = 500, [Stats.NatureResistance] = 500, [Stats.FrostResistance] = 500, [Stats.ShadowResistance] = 500, [Stats.ArcaneResistance] = 500, } -- s23174
 W["주위 적의 전투력을 감소시킵니다"] = { [Stats.GenericAttackPower] = -15, } -- s31273
 W["소환된 악마의 전체 체력과 지능을 합한 수치의 일정 비율만큼 주문력이 증가합니다"] = { [Stats.SpellDamage] = 12, } -- s35696
-W["적의 방어구를 절단하여 방어도를 감소시킵니다"] = { [Stats.Armor] = 0, } -- s35918
 W["적을 공격하여 무기 공격력만큼의 피해를 입히고 대상의 회피 확률을 감소시킵니다"] = { [Stats.Dodge] = -15, } -- s36094
 W["주문력이 약간 증가합니다"] = { [Stats.SpellDamage] = 6, [Stats.HealingPower] = 6, } -- s37817
 W["적 대상의 주문 시전 속도를 감소시킵니다"] = { [Stats.SpellHaste] = -30, } -- s43507
 W["empower your rune weapon, immediately activating one of each rune type"] = { [Stats.ArcaneDamage] = 1, } -- s47804
-W["치명타를 적중시킬 확률이 증가합니다"] = { [Stats.MeleeCrit] = 0, [Stats.RangedCrit] = 0, } -- s48420
 W["치명타 및 주문 극대화 적중도가 $s만큼 증가합니다"] = { [Stats.MeleeCritRating] = 61, [Stats.SpellCritRating] = 61, } -- s48836
 W["대상의 시선을 자신에게 고정하도록 만듭니다. 효과가 사라지면 가장 위협 수준이 높은 대상을 공격합니다"] = { [Stats.MeleeHaste] = 20, } -- s49029
-W["사자의 군대를 지속적으로 강화시킵니다"] = { [Stats.AttackPower] = 0, [Stats.Health] = 0, [Stats.SpellDamage] = 0, } -- s49040
 W["야수의 힘으로 공격하여 적의 방어도를 무시합니다"] = { [Stats.ArmorPenetration] = 50000, } -- s54678
 W["피해를 받으면 주문 시전 속도가 증가합니다"] = { [Stats.SpellHaste] = 1, } -- s55096
-W["보석세공인이 일정 확률로 진귀한 노스렌드 보석을 완벽한 보석으로 세공할 수 있습니다"] = { [Stats.Strength] = 0, } -- s55534
 W["공격과 주문에 적중 당하면 격노하여 공격 속도와 공격력이 증가합니다. 중복됩니다"] = { [Stats.MeleeHaste] = 3, } -- s57689
 W["거미들을 분노하게 하여 크기와 공격력을 증가시킵니다"] = { [Stats.Health] = 10000, } -- s59465
 W["실바나스의 노래로 전투의 사기가 고조됩니다"] = { [Stats.MeleeHit] = 100, [Stats.RangedHit] = 100, } -- s59756
@@ -108,15 +102,12 @@ W["제이나의 강력한 주문으로 전장의 사기가 고조됩니다"] = {
 W["강력한 공격으로 대상의 뼈를 부수어 방어, 회피, 무기 막기 확률을 무효로 합니다"] = { [Stats.Parry] = -200, } -- s62354
 W["전기 탄환을 발사하여 대상의 속도를 느리게 합니다"] = { [Stats.MeleeHaste] = -30, } -- s62493
 W["적중률과 마나 회복량이 증가합니다"] = { [Stats.Armor] = 13, [Stats.GenericManaRegen] = 65, } -- s63390
-W["근접 공격 속도를 감소시킵니다"] = { [Stats.MeleeHaste] = 0, } -- s68055
 W["뼈의 소용돌이로 주위 적을 공격합니다"] = { [Stats.MeleeHaste] = -9900, } -- s69076
 W["의사 선생님이 계시는 동안 생명력 걱정은 없습니다"] = { [Stats.Health] = 45000, } -- s74503
 W["모두 가상의 상황입니다. \n더욱 강해지고 튼튼해진 당신의 모습을 상상해 봅니다. \n역병을 제어할 수 있을 듯한 확신이 듭니다"] = { [Stats.FrostResistance] = 200, } -- s346285
-W["자리에 얼어붙습니다"] = { [Stats.MeleeHit] = 0, [Stats.RangedHit] = 0, } -- s51440
 W["검분쇄자의 룬"] = { [Stats.Parry] = 4, } -- e3365
 W["숙련 요구 마법부여 test용"] = { [Stats.BonusArmor] = 10, } -- e3320
 W["특급 마법사 오일"] = { [Stats.SpellPower] = 56, } -- e3299
-W["qa test용 보라색 보석 마법부여"] = { [Stats.Mana] = 0, } -- e3333
 W["특급 마나 오일"] = { [Stats.GenericManaRegen] = 19, } -- e3298
 W["극지방랑자"] = { [Stats.Stamina] = 15, } -- e3250
 W["검파괴자의 룬"] = { [Stats.Parry] = 2, } -- e3594
@@ -135,7 +126,6 @@ W["악마의 주문석"] = { [Stats.SpellHasteRating] = 50, } -- e3619
 W["호화로운 주문석"] = { [Stats.SpellHasteRating] = 60, } -- e3620
 W["돌가죽 가고일의 룬"] = { [Stats.Defense] = 25, } -- e3847
 W["네루비안 등껍질의 룬"] = { [Stats.Defense] = 13, } -- e3883
-W["티타늄 도금"] = { [Stats.ParryRating] = 26, } -- e3849
 W["신축성 내피"] = { [Stats.Agility] = 23, } -- e3605
 W["빛매듭 자수"] = { [Stats.Spirit] = 1, } -- e3722
 W["암흑빛 자수"] = { [Stats.Spirit] = 1, } -- e3728
@@ -181,10 +171,10 @@ W["지능이 증가합니다. 한 번 사용하면 사라집니다"] = { [Stats.
 W["체력이 증가합니다. 한 번 사용하면 사라집니다"] = { [Stats.Stamina] = 4, } -- s97165
 W["힘이 증가합니다. 한 번 사용하면 사라집니다"] = { [Stats.Strength] = 4, } -- s97167
 W["암흑 관문에서 다른 암흑 관문으로 순간이동 합니다. 이동 후 짧은 시간 동안 공격력과 이동 속도가 크게 증가합니다"] = { [Stats.SpellDamage] = 100, } -- s99953
-W["불꽃의 무기"] = { [Stats.SpellCrit] = 0, } -- e5
 W["대지의 생명"] = { [Stats.HealingPower] = 110, } -- e3345
 W["뛰어난 마나 오일"] = { [Stats.Spirit] = 38, } -- e3298
 W["뛰어난 마법사 오일"] = { [Stats.SpellPower] = 56, } -- e3299
+W["티타늄 도금"] = { [Stats.ParryRating] = 26, } -- e3849
 W["황철 무기 사슬"] = { [Stats.HitRating] = 40, } -- e4217
 
 local L = addon.StatIDLookup

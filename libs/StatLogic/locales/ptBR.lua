@@ -32,7 +32,6 @@ W["quem consome pode falar com o cadáver de alguém que tenha assuntos não res
 W["aumenta em $s% sua chance de acerto"] = { [Stats.MeleeHit] = 1, [Stats.RangedHit] = 1, } -- s429863
 W["aumenta em $s a sua força"] = { [Stats.Strength] = 12, } -- s429864
 W["aumenta consideravelmente o dano durante a inspiração"] = { [Stats.MeleeHaste] = 20, [Stats.AverageWeaponDamage] = 25, } -- s436430
-W["o caçador assume o aspecto de um falcão, aumentando o poder de ataque corpo a corpo e de longo alcance na mesma quantidade que o grau mais alto de aspecto do falcão.\nenquanto o aspecto do falcão está ativo, o talento aspecto do falcão aprimorado agora pode ser ativado como efeito secundário e beneficiar ataques corpo a corpo. apenas um aspecto pode ficar ativo por vez"] = { [Stats.GenericAttackPower] = 0, } -- s469145
 W["óleo menor de teurgo"] = { [Stats.SpellDamage] = 8, [Stats.HealingPower] = 8, } -- e2623
 W["óleo inferior de teurgo"] = { [Stats.SpellDamage] = 16, [Stats.HealingPower] = 16, } -- e2626
 W["óleo de teurgo"] = { [Stats.SpellDamage] = 24, [Stats.HealingPower] = 24, } -- e2627
@@ -49,7 +48,6 @@ W["bloqueador imaculado"] = { [Stats.BlockValue] = 30, } -- e7676
 W["sábio da estocada"] = { [Stats.MeleeCrit] = 5, [Stats.RangedCrit] = 5, } -- e7696
 W["feitiços refinados"] = { [Stats.MeleeCrit] = 2, [Stats.RangedCrit] = 2, [Stats.SpellCrit] = 2, } -- e7708
 W["combustão"] = { [Stats.SpellCrit] = 15, } -- e6729
-W["instintos de sobrevivência"] = { [Stats.Dodge] = 0, } -- e6859
 W["proficiência em escudo"] = { [Stats.BlockChance] = 10, } -- e6876
 W["mestre atirador perito"] = { [Stats.MeleeCrit] = 5, [Stats.RangedCrit] = 5, } -- e6889
 W["fanatismo"] = { [Stats.SpellCrit] = 18, } -- e6967
@@ -65,7 +63,7 @@ W["faça um brinde a um amigo!"] = { [Stats.Stamina] = 10, [Stats.Stamina] = 10,
 W["melhora a resistência do alvo aos violentos ataques do eteródio"] = { [Stats.Defense] = 5, [Stats.Health] = -1000, } -- s30421
 W["preenche o alvo com serenidade, aumentando a cura realizada. também reduz o custo de feitiços e o máximo de mana do alvo"] = { [Stats.Mana] = -200, } -- s30422
 W["enfraquece um inimigo, impedindo-o de atacar"] = { [Stats.MeleeHit] = -75, [Stats.RangedHit] = -75, } -- s34088
-W["enquanto sob esse efeito, o alvo não pode usar furtividade ou invisibilidade"] = { [Stats.Armor] = 0, [Stats.SpellHaste] = -20, } -- s35329
+W["enquanto sob esse efeito, o alvo não pode usar furtividade ou invisibilidade"] = { [Stats.SpellHaste] = -20, } -- s35329
 W["aumenta o dano mágico do mestre em uma porcentagem equivalente à soma do vigor com o intelecto do demônio ativo"] = { [Stats.SpellDamage] = 12, } -- s35696
 W["aumenta a resistência à sombra e drena poder dos inimigos ao ser acertado"] = { [Stats.ShadowResistance] = 120, } -- s36515
 W["aumenta ligeiramente o dano causado e a cura realizada por feitiços e efeitos mágicos"] = { [Stats.SpellDamage] = 6, [Stats.HealingPower] = 6, } -- s37817
@@ -90,18 +88,14 @@ W["a combinação de magias draconianas transformou o alvo em um draconídeo cro
 W["os ataques corpo a corpo do demônio das sombras sugam energia do alvo, convertendo-a em vida para o mestre"] = { [Stats.MeleeHit] = 9, [Stats.RangedHit] = 9, } -- s28305
 W["reduz o poder de ataque de inimigos próximos"] = { [Stats.GenericAttackPower] = -15, } -- s31273
 W["aumenta o poder mágico do mestre em uma porcentagem igual à soma do vigor com o intelecto do demônio ativo"] = { [Stats.SpellDamage] = 12, } -- s35696
-W["abre uma fenda na armadura do inimigo, reduzindo a eficácia dela"] = { [Stats.Armor] = 0, } -- s35918
 W["um golpe que causa o dano da arma e reduz a chance de esquiva do alvo"] = { [Stats.Dodge] = -15, } -- s36094
 W["aumenta ligeiramente o poder mágico"] = { [Stats.SpellDamage] = 6, [Stats.HealingPower] = 6, } -- s37817
 W["reduz a velocidade de lançamento de um alvo inimigo"] = { [Stats.SpellHaste] = -30, } -- s43507
 W["empower your rune weapon, immediately activating one of each rune type"] = { [Stats.ArcaneDamage] = 1, } -- s47804
-W["chance de acerto crítico aumentada"] = { [Stats.MeleeCrit] = 0, [Stats.RangedCrit] = 0, } -- s48420
 W["aumenta em $s a taxa de acerto crítico"] = { [Stats.MeleeCritRating] = 61, [Stats.SpellCritRating] = 61, } -- s48836
 W["força um inimigo a fixar a atenção em você. quando acabar o efeito, ele atacará o que ele mais odeia"] = { [Stats.MeleeHaste] = 20, } -- s49029
-W["concede um bônus passivo ao exército dos mortos"] = { [Stats.AttackPower] = 0, [Stats.Health] = 0, [Stats.SpellDamage] = 0, } -- s49040
 W["a força bruta do lançador faz com que os ataques ignorem a armadura"] = { [Stats.ArmorPenetration] = 50000, } -- s54678
 W["aumenta a velocidade de lançamento do lançador à medida que ele recebe dano"] = { [Stats.SpellHaste] = 1, } -- s55096
-W["concede ao joalheiro a chance de cortar gemas nortundrianas de qualidade incomum, obtendo gemas perfeitas"] = { [Stats.Strength] = 0, } -- s55534
 W["enfurece o lançador quando for atingido por ataques e feitiços, aumentando a velocidade de ataque e o dano causado. acumula"] = { [Stats.MeleeHaste] = 3, } -- s57689
 W["enraivece um enxameador, aumentando o tamanho e o dano causado"] = { [Stats.Health] = 10000, } -- s59465
 W["destreza em batalha aumentada pelo canto de sylvana"] = { [Stats.MeleeHit] = 100, [Stats.RangedHit] = 100, } -- s59756
@@ -109,15 +103,12 @@ W["destreza em batalha aumentada pelo poderoso feitiço de jaina"] = { [Stats.Me
 W["os ataques massivos quebram os ossos do alvo, negando a chance dele de bloquear, esquivar ou aparar"] = { [Stats.Parry] = -200, } -- s62354
 W["atira uma carga elétrica que reduz a velocidade do alvo"] = { [Stats.MeleeHaste] = -30, } -- s62493
 W["aumenta armadura, regenera mana"] = { [Stats.Armor] = 13, [Stats.GenericManaRegen] = 65, } -- s63390
-W["reduz a velocidade de ataque corpo a corpo"] = { [Stats.MeleeHaste] = 0, } -- s68055
 W["ataca inimigos próximos com um redemoinho de ossos"] = { [Stats.MeleeHaste] = -9900, } -- s69076
 W["enquanto a \"doutora\" estiver dando duro, a sua vida não diminuirá"] = { [Stats.Health] = 45000, } -- s74503
 W["isso é tudo fingimento. \nvocê se imagina mais forte e mais resiliente. \nvocê tem certeza de que consegue lidar com a peste"] = { [Stats.FrostResistance] = 200, } -- s346285
-W["congelado no lugar"] = { [Stats.MeleeHit] = 0, [Stats.RangedHit] = 0, } -- s51440
 W["runa estilhaça-espadas"] = { [Stats.Parry] = 4, } -- e3365
 W["teste de encantamente de req de perícia"] = { [Stats.BonusArmor] = 10, } -- e3320
 W["óleo excepcional de teurgo"] = { [Stats.SpellPower] = 56, } -- e3299
-W["qa test blank purple gem enchant"] = { [Stats.Mana] = 0, } -- e3333
 W["trilhagelo"] = { [Stats.Stamina] = 15, } -- e3250
 W["runa quebra-espadas"] = { [Stats.Parry] = 2, } -- e3594
 W["pedra de fogo mestra"] = { [Stats.SpellCritRating] = 35, } -- e3597
@@ -135,7 +126,6 @@ W["pedra mágica demoníaca"] = { [Stats.SpellHasteRating] = 50, } -- e3619
 W["pedra mágica grandiosa"] = { [Stats.SpellHasteRating] = 60, } -- e3620
 W["runa da gárgula litopele"] = { [Stats.Defense] = 25, } -- e3847
 W["runa da carapaça nerubiana"] = { [Stats.Defense] = 13, } -- e3883
-W["blindagem de titânico"] = { [Stats.ParryRating] = 26, } -- e3849
 W["forro de flexitrama"] = { [Stats.Agility] = 23, } -- e3605
 W["bordado teceluma"] = { [Stats.Spirit] = 1, } -- e3722
 W["bordado umbralume"] = { [Stats.Spirit] = 1, } -- e3728
@@ -181,8 +171,8 @@ W["aumenta o vigor. item consumido quando usado"] = { [Stats.Stamina] = 4, } -- 
 W["aumenta a força. item consumido quando usado"] = { [Stats.Strength] = 4, } -- s97167
 W["teleporta-se de um portal de sombras para outro, recebendo um imenso bônus de dano e de velocidade de movimento por um curto período"] = { [Stats.SpellDamage] = 100, } -- s99953
 W["aumenta a velocidade de lançamento de feitiços"] = { [Stats.SpellHaste] = 15, } -- s101682
-W["labaredas"] = { [Stats.SpellCrit] = 0, } -- e5
 W["terraviva"] = { [Stats.HealingPower] = 110, } -- e3345
+W["blindagem de titânico"] = { [Stats.ParryRating] = 26, } -- e3849
 W["corrente de arma de pírio"] = { [Stats.HitRating] = 40, } -- e4217
 
 local L = addon.StatIDLookup
