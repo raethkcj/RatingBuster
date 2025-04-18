@@ -176,105 +176,105 @@ W["泰坦神铁护板"] = { [Stats.ParryRating] = 26, } -- e3849
 W["燃钢武器链"] = { [Stats.HitRating] = 40, } -- e4217
 
 local L = addon.StatIDLookup
-L["使你的攻击速度提高%s%，持续%s。"] = { { Stats.MeleeHaste, Stats.RangedHaste, }, false, } -- s28701
-L["使目标残废，移动速度降低%s%，近战攻击间隔延长%s%，远程攻击间隔延长%s%。持续%s。"] = { false, { Stats.MeleeHaste, }, { Stats.RangedHaste, }, false, } -- s89
-L["德鲁伊发出咆哮，使附近所有敌人的近战攻击强度降低%s点，持续%s。"] = { { Stats.AttackPower, }, false, } -- s99
-L["使护甲值提高%s点。如果敌人使用近战武器攻击施法者，他们的移动速度就有可能被降低%s%，攻击间隔延长%s%，冰冻效果持续%s。法师在同一时间内只能保有一种魔法护甲效果。持续%s。"] = { { Stats.Armor, }, false, { Stats.MeleeHaste, }, false, false, } -- s168
-L["使敌人的移动速度降低%s%，攻击速度降低%s%，持续%s。"] = { false, { Stats.MeleeHaste, }, false, } -- s246
-L["在%s内恢复总计%s点法力值，喝水时必须保持坐姿。"] = { false, { Stats.GenericManaRegen, }, } -- s430
+L["使你的攻击速度提高%s%，持续%s sec。"] = { { Stats.MeleeHaste, Stats.RangedHaste, }, false, } -- s28701
+L["使目标残废，移动速度降低%s%，近战攻击间隔延长%s%，远程攻击间隔延长%s%。持续%s sec。"] = { false, { Stats.MeleeHaste, }, { Stats.RangedHaste, }, false, } -- s89
+L["德鲁伊发出咆哮，使附近所有敌人的近战攻击强度降低%s点，持续%s sec。"] = { { Stats.AttackPower, }, false, } -- s99
+L["使护甲值提高%s点。如果敌人使用近战武器攻击施法者，他们的移动速度就有可能被降低%s%，攻击间隔延长%s%，冰冻效果持续%s sec。法师在同一时间内只能保有一种魔法护甲效果。持续%s sec。"] = { { Stats.Armor, }, false, { Stats.MeleeHaste, }, false, false, } -- s168
+L["使敌人的移动速度降低%s%，攻击速度降低%s%，持续%s sec。"] = { false, { Stats.MeleeHaste, }, false, } -- s246
+L["在%s sec内恢复总计%s点法力值，喝水时必须保持坐姿。"] = { false, { Stats.GenericManaRegen, }, } -- s430
 L["使半径%s码范围内的所有小队成员获得%s点额外的护甲。每个圣骑士在同一时间内只能开启一种光环，且同类光环的效果无法叠加。"] = { false, { Stats.Armor, }, } -- s465
 L["降低目标敏捷%s点。"] = { { Stats.Agility, }, } -- s474
-L["圣洁的能量充满施法者的体内，使他的防御值提高%s点。每次近战或远程伤害都会使牧师消耗一次防护能量。效果可持续%s，或在%s次防护之后消失。"] = { { Stats.Armor, }, false, false, } -- s588
-L["圣洁的能量充满施法者的体内，使她的防御值提高%s点。每次近战或远程伤害都会使牧师消耗一次防护能量。效果可持续%s，或在%s次防护之后消失。"] = { { Stats.Armor, }, false, false, } -- s588
-L["控制一个最高等级为%s的人型目标，但是使其攻击间隔延长%s%。最多持续%s。"] = { false, { Stats.MeleeHaste, }, false, } -- s605
-L["使圣骑士对所有的伤害和法术攻击免疫，持续%s，但是攻击间隔延长%s%。在受保护之后，圣盾术、保护祝福或圣佑术在%s之内无法作用在你身上。"] = { false, { Stats.MeleeHaste, }, false, } -- s642
-L["护甲值提高%s点，持续%s。"] = { { Stats.Armor, }, false, } -- s673
-L["使施法者的护甲提高%s点，同时每%s秒恢复%s点生命值，持续%s。"] = { { Stats.Armor, }, false, { Stats.HealthRegen, }, false, } -- s687
-L["使施法者的护甲提高%s点，每%s秒恢复%s点生命值，持续%s。"] = { { Stats.Armor, }, false, { Stats.HealthRegen, }, false, } -- s696
-L["目标所能造成的伤害降低%s点，持续%s。每个术士只能对一个目标施加一种诅咒，且同类诅咒不能叠加。"] = { { Stats.AverageWeaponDamage, }, false, } -- s702
-L["给目标施加鲁莽的诅咒，使其近战攻击强度提高%s点，但护甲降低%s点，持续%s。被诅咒的敌人不会逃跑，也不会受到恐惧的影响。每个术士只能对一个目标施加一种诅咒，且同类诅咒不能叠加。"] = { { Stats.AttackPower, }, { Stats.Armor, }, false, } -- s704
-L["使施法者的护甲提高%s点，暗影抗性提高%s点，同时每%s秒回复%s点生命值，持续%s。"] = { { Stats.Armor, }, { Stats.ShadowResistance, }, false, { Stats.HealthRegen, }, false, } -- s706
-L["使目标的护甲降低%s点，持续%s。在效果持续期间，目标无法潜行或隐形。"] = { { Stats.Armor, }, false, } -- s770
-L["使你的力量提高%s点，但是每%s秒对你造成%s点伤害，持续%s。"] = { { Stats.Strength, }, false, false, false, } -- s806
-L["立刻恢复%s点生命值，并在%s内恢复%s点法力值。饮用时必须保持坐姿。"] = { false, false, { Stats.GenericManaRegen, }, } -- s833
+L["圣洁的能量充满施法者的体内，使他的防御值提高%s点。每次近战或远程伤害都会使牧师消耗一次防护能量。效果可持续%s sec，或在%s次防护之后消失。"] = { { Stats.Armor, }, false, false, } -- s588
+L["圣洁的能量充满施法者的体内，使她的防御值提高%s点。每次近战或远程伤害都会使牧师消耗一次防护能量。效果可持续%s sec，或在%s次防护之后消失。"] = { { Stats.Armor, }, false, false, } -- s588
+L["控制一个最高等级为%s的人型目标，但是使其攻击间隔延长%s%。最多持续%s sec。"] = { false, { Stats.MeleeHaste, }, false, } -- s605
+L["使圣骑士对所有的伤害和法术攻击免疫，持续%s sec，但是攻击间隔延长%s%。在受保护之后，圣盾术、保护祝福或圣佑术在%s sec之内无法作用在你身上。"] = { false, { Stats.MeleeHaste, }, false, } -- s642
+L["护甲值提高%s点，持续%s sec。"] = { { Stats.Armor, }, false, } -- s673
+L["使施法者的护甲提高%s点，同时每%s秒恢复%s点生命值，持续%s sec。"] = { { Stats.Armor, }, false, { Stats.HealthRegen, }, false, } -- s687
+L["使施法者的护甲提高%s点，每%s秒恢复%s点生命值，持续%s sec。"] = { { Stats.Armor, }, false, { Stats.HealthRegen, }, false, } -- s696
+L["目标所能造成的伤害降低%s点，持续%s sec。每个术士只能对一个目标施加一种诅咒，且同类诅咒不能叠加。"] = { { Stats.AverageWeaponDamage, }, false, } -- s702
+L["给目标施加鲁莽的诅咒，使其近战攻击强度提高%s点，但护甲降低%s点，持续%s sec。被诅咒的敌人不会逃跑，也不会受到恐惧的影响。每个术士只能对一个目标施加一种诅咒，且同类诅咒不能叠加。"] = { { Stats.AttackPower, }, { Stats.Armor, }, false, } -- s704
+L["使施法者的护甲提高%s点，暗影抗性提高%s点，同时每%s秒回复%s点生命值，持续%s sec。"] = { { Stats.Armor, }, { Stats.ShadowResistance, }, false, { Stats.HealthRegen, }, false, } -- s706
+L["使目标的护甲降低%s点，持续%s sec。在效果持续期间，目标无法潜行或隐形。"] = { { Stats.Armor, }, false, } -- s770
+L["使你的力量提高%s点，但是每%s秒对你造成%s点伤害，持续%s sec。"] = { { Stats.Strength, }, false, false, false, } -- s806
+L["立刻恢复%s点生命值，并在%s sec内恢复%s点法力值。饮用时必须保持坐姿。"] = { false, false, { Stats.GenericManaRegen, }, } -- s833
 L["使目标受到痴呆的诅咒，每%s秒降低%s点智力和精神，直到这两种属性都被降低了%s点为止。每个术士只能对一个目标施加一种诅咒，且同类诅咒不能叠加。"] = { false, { Stats.Intellect, Stats.Spirit, }, { Stats.Intellect, }, } -- s1010
-L["征服等级不高于%s级的恶魔，令其听从你的命令。被征服的恶魔的攻击间隔延长%s%，施法速度降低%s%。征服效果最多持续%s。如果你反复征服同一个恶魔，它摆脱控制的几率会越来越大。"] = { false, { Stats.MeleeHaste, }, { Stats.SpellHaste, }, false, } -- s1098
+L["征服等级不高于%s级的恶魔，令其听从你的命令。被征服的恶魔的攻击间隔延长%s%，施法速度降低%s%。征服效果最多持续%s sec。如果你反复征服同一个恶魔，它摆脱控制的几率会越来越大。"] = { false, { Stats.MeleeHaste, }, { Stats.SpellHaste, }, false, } -- s1098
 L["使你的躲闪几率提高%s%。"] = { { Stats.Dodge, }, } -- s1114
-L["使友方目标的护甲值提高%s，持续%s。"] = { { Stats.Armor, }, false, } -- s1126
-L["冰霜和暗影抗性提高%s点，持续%s。"] = { { Stats.FrostResistance, Stats.ShadowResistance, }, false, } -- s1138
-L["使目标的攻击间隔延长%s%，持续%s。"] = { { Stats.MeleeHaste, }, false, } -- s1139
-L["使半径%s码范围内的敌人的近战攻击强度降低%s点，持续%s。"] = { false, { Stats.AttackPower, }, false, } -- s1160
-L["圣洁的能量充满目标全身，令其耐力提高%s点，持续%s。"] = { { Stats.Stamina, }, false, } -- s1243
-L["使目标的智力提高%s点，持续%s。"] = { { Stats.Intellect, }, false, } -- s1459
-L["对目标施放诅咒，使其火焰和冰霜抗性降低%s点，受到火焰和冰霜系攻击时所承受的伤害提高%s%，效果持续%s。每个术士只能对一个目标施加一种诅咒，且同类诅咒不能叠加。"] = { { Stats.FireResistance, Stats.FrostResistance, }, false, false, } -- s1490
-L["强迫目标使用恶魔语，使其所有法术的施放时间延长%s%，持续%s。每个术士只能对一个目标施加一种诅咒，且同类诅咒不能叠加。"] = { { Stats.SpellHaste, }, false, } -- s1714
-L["战士的爆击几率提高%s%，并且在接下来的%s内免疫恐惧效果。"] = { { Stats.MeleeCrit, Stats.RangedCrit, }, false, } -- s1719
-L["战士的爆击几率提高%s%，并且在接下来的%s内免疫恐惧效果，但受到的所有伤害提高%s%。"] = { { Stats.MeleeCrit, Stats.RangedCrit, }, false, false, } -- s1719
+L["使友方目标的护甲值提高%s，持续%s sec。"] = { { Stats.Armor, }, false, } -- s1126
+L["冰霜和暗影抗性提高%s点，持续%s sec。"] = { { Stats.FrostResistance, Stats.ShadowResistance, }, false, } -- s1138
+L["使目标的攻击间隔延长%s%，持续%s sec。"] = { { Stats.MeleeHaste, }, false, } -- s1139
+L["使半径%s码范围内的敌人的近战攻击强度降低%s点，持续%s sec。"] = { false, { Stats.AttackPower, }, false, } -- s1160
+L["圣洁的能量充满目标全身，令其耐力提高%s点，持续%s sec。"] = { { Stats.Stamina, }, false, } -- s1243
+L["使目标的智力提高%s点，持续%s sec。"] = { { Stats.Intellect, }, false, } -- s1459
+L["对目标施放诅咒，使其火焰和冰霜抗性降低%s点，受到火焰和冰霜系攻击时所承受的伤害提高%s%，效果持续%s sec。每个术士只能对一个目标施加一种诅咒，且同类诅咒不能叠加。"] = { { Stats.FireResistance, Stats.FrostResistance, }, false, false, } -- s1490
+L["强迫目标使用恶魔语，使其所有法术的施放时间延长%s%，持续%s sec。每个术士只能对一个目标施加一种诅咒，且同类诅咒不能叠加。"] = { { Stats.SpellHaste, }, false, } -- s1714
+L["战士的爆击几率提高%s%，并且在接下来的%s sec内免疫恐惧效果。"] = { { Stats.MeleeCrit, Stats.RangedCrit, }, false, } -- s1719
+L["战士的爆击几率提高%s%，并且在接下来的%s sec内免疫恐惧效果，但受到的所有伤害提高%s%。"] = { { Stats.MeleeCrit, Stats.RangedCrit, }, false, false, } -- s1719
 L["力量提高%s点。"] = { { Stats.Strength, }, } -- s2692
 L["使你的神圣魔法技能提高%s点，但暗影抗性降低%s点。"] = { false, { Stats.ShadowResistance, }, } -- s2123
-L["使力量提高%s点，持续%s。"] = { { Stats.Strength, }, false, } -- s2367
-L["使敏捷提高%s点，持续%s。"] = { { Stats.Agility, }, false, } -- s2374
-L["使智力提高%s点，持续%s。"] = { { Stats.Intellect, }, false, } -- s2376
-L["使玩家的生命值上限提高%s点，持续%s。"] = { { Stats.Health, }, false, } -- s2378
-L["使你的格档几率提高%s%，效果持续%s。最多只能格档%s次攻击。"] = { { Stats.BlockChance, }, false, false, } -- s2565
-L["在%s内恢复总计%s点生命值和%s点法力值。在进食的时候必须保持坐姿。"] = { false, false, { Stats.GenericManaRegen, }, } -- s2639
-L["使你受到的远程攻击伤害减少%s，躲闪几率提高%s%，持续%s。"] = { false, { Stats.Dodge, }, false, } -- s2651
+L["使力量提高%s点，持续%s sec。"] = { { Stats.Strength, }, false, } -- s2367
+L["使敏捷提高%s点，持续%s sec。"] = { { Stats.Agility, }, false, } -- s2374
+L["使智力提高%s点，持续%s sec。"] = { { Stats.Intellect, }, false, } -- s2376
+L["使玩家的生命值上限提高%s点，持续%s sec。"] = { { Stats.Health, }, false, } -- s2378
+L["使你的格档几率提高%s%，效果持续%s sec。最多只能格档%s次攻击。"] = { { Stats.BlockChance, }, false, false, } -- s2565
+L["在%s sec内恢复总计%s点生命值和%s点法力值。在进食的时候必须保持坐姿。"] = { false, false, { Stats.GenericManaRegen, }, } -- s2639
+L["使你受到的远程攻击伤害减少%s，躲闪几率提高%s%，持续%s sec。"] = { false, { Stats.Dodge, }, false, } -- s2651
 L["使你的法术造成爆击的几率提高%s%。"] = { { Stats.SpellCrit, }, } -- s2916
-L["使施法者用物理攻击对敌人造成的伤害提高%s点，持续%s。"] = { { Stats.AverageWeaponDamage, Stats.FireDamage, }, false, } -- s14744
-L["钉刺目标，使其力量和敏捷均降低%s点，持续%s。每个猎人在同一时间内只能对一个目标使用一种钉刺。"] = { { Stats.Strength, Stats.Agility, }, false, } -- s3043
-L["远程攻击速度提高%s%，近战攻击速度提高%s%，持续%s。"] = { { Stats.RangedHaste, }, { Stats.MeleeHaste, }, false, } -- s3045
-L["远程攻击速度提高%s%，持续%s。"] = { { Stats.RangedHaste, }, false, } -- s3045
-L["使敌人的所有属性降低%s点，持续%s。"] = { { Stats.AllStats, }, false, } -- s3105
-L["对目标造成%s点伤害，并使其攻击间隔延长%s%，持续%s。"] = { false, { Stats.MeleeHaste, }, false, } -- s3130
-L["使附近所有友方玩家的攻击速度提高%s%，持续%s。"] = { { Stats.MeleeHaste, }, false, } -- s3136
-L["使附近敌人的力量降低%s点，敏捷降低%s点，持续%s。"] = { { Stats.Strength, }, { Stats.Agility, }, false, } -- s3146
-L["使敌人的耐力降低%s点，持续%s。"] = { { Stats.Stamina, }, false, } -- s3148
-L["使附近队友的力量提高%s点，持续%s。"] = { { Stats.Strength, }, false, } -- s3149
-L["使敌人的生命值回复速度降低%s%，力量降低%s点，敏捷降低%s点，持续%s。"] = { false, { Stats.Strength, }, { Stats.Agility, }, false, } -- s3150
-L["使施法者的攻击速度提高%s%，持续%s。"] = { { Stats.MeleeHaste, }, false, } -- s3151
-L["每%s秒恢复%s点生命值，持续%s。"] = { false, { Stats.HealthRegen, }, false, } -- s3219
-L["使一个友方玩家的攻击速度提高%s%，持续%s。"] = { { Stats.MeleeHaste, }, false, } -- s3229
-L["使一个敌人的精神降低%s点，持续%s。"] = { { Stats.Spirit, }, false, } -- s3237
-L["使施法者的招架几率提高%s%，持续%s。"] = { { Stats.Parry, }, false, } -- s3238
-L["使施法者的格挡几率提高%s%，持续%s。"] = { { Stats.BlockChance, }, false, } -- s3248
-L["使目标的护甲降低%s点，持续%s。"] = { { Stats.Armor, }, false, } -- s3252
-L["使指定区域内的所有敌人的力量降低%s点，敏捷降低%s点，智力降低%s点，持续%s。"] = { { Stats.Strength, }, { Stats.Agility, }, { Stats.Intellect, }, false, } -- s3256
-L["令敌人昏迷，并使其护甲值降低%s点，持续%s。"] = { { Stats.Armor, }, false, } -- s3263
-L["使施法者的攻击速度提高%s%，持续%s。但施法者也会因此精疲力尽。"] = { { Stats.MeleeHaste, }, false, } -- s3269
-L["使附近敌人的攻击间隔延长%s%，持续%s。"] = { { Stats.MeleeHaste, }, false, } -- s3335
-L["对目标造成%s点伤害，并使其火焰抗性降低%s点，持续%s。"] = { false, { Stats.FireResistance, }, false, } -- s3356
-L["使施法者的力量提高%s点，持续%s。"] = { { Stats.Strength, }, false, } -- s3369
-L["使施法者对敌人造成的物理伤害提高%s点，移动速度提高%s%，持续%s。"] = { { Stats.AverageWeaponDamage, }, false, false, } -- s3385
-L["使敌人的护甲值降低%s点，并对其每%s秒造成%s点自然伤害，持续%s。"] = { { Stats.Armor, }, false, false, false, } -- s3396
-L["使施法者进入狂怒状态，持续%s。对敌人造成的物理伤害提高%s点，但攻击间隔延长%s%。"] = { false, { Stats.AverageWeaponDamage, }, { Stats.MeleeHaste, }, } -- s3416
-L["使目标感染疾病，在受到物理攻击时承受的伤害提高%s点，耐力降低%s点，持续%s。感染疾病的目标有%s%的几率在被击中时将疾病传染给附近的盟友。"] = { false, { Stats.Stamina, }, false, false, } -- s3436
-L["控制一个等级不高于%s级的敌对人型生物，持续%s。使其攻击间隔延长%s%。"] = { false, false, { Stats.MeleeHaste, }, } -- s3442
+L["使施法者用物理攻击对敌人造成的伤害提高%s点，持续%s sec。"] = { { Stats.AverageWeaponDamage, Stats.FireDamage, }, false, } -- s14744
+L["钉刺目标，使其力量和敏捷均降低%s点，持续%s sec。每个猎人在同一时间内只能对一个目标使用一种钉刺。"] = { { Stats.Strength, Stats.Agility, }, false, } -- s3043
+L["远程攻击速度提高%s%，近战攻击速度提高%s%，持续%s sec。"] = { { Stats.RangedHaste, }, { Stats.MeleeHaste, }, false, } -- s3045
+L["远程攻击速度提高%s%，持续%s sec。"] = { { Stats.RangedHaste, }, false, } -- s3045
+L["使敌人的所有属性降低%s点，持续%s sec。"] = { { Stats.AllStats, }, false, } -- s3105
+L["对目标造成%s点伤害，并使其攻击间隔延长%s%，持续%s sec。"] = { false, { Stats.MeleeHaste, }, false, } -- s3130
+L["使附近所有友方玩家的攻击速度提高%s%，持续%s sec。"] = { { Stats.MeleeHaste, }, false, } -- s3136
+L["使附近敌人的力量降低%s点，敏捷降低%s点，持续%s sec。"] = { { Stats.Strength, }, { Stats.Agility, }, false, } -- s3146
+L["使敌人的耐力降低%s点，持续%s sec。"] = { { Stats.Stamina, }, false, } -- s3148
+L["使附近队友的力量提高%s点，持续%s sec。"] = { { Stats.Strength, }, false, } -- s3149
+L["使敌人的生命值回复速度降低%s%，力量降低%s点，敏捷降低%s点，持续%s sec。"] = { false, { Stats.Strength, }, { Stats.Agility, }, false, } -- s3150
+L["使施法者的攻击速度提高%s%，持续%s sec。"] = { { Stats.MeleeHaste, }, false, } -- s3151
+L["每%s秒恢复%s点生命值，持续%s sec。"] = { false, { Stats.HealthRegen, }, false, } -- s3219
+L["使一个友方玩家的攻击速度提高%s%，持续%s sec。"] = { { Stats.MeleeHaste, }, false, } -- s3229
+L["使一个敌人的精神降低%s点，持续%s sec。"] = { { Stats.Spirit, }, false, } -- s3237
+L["使施法者的招架几率提高%s%，持续%s sec。"] = { { Stats.Parry, }, false, } -- s3238
+L["使施法者的格挡几率提高%s%，持续%s sec。"] = { { Stats.BlockChance, }, false, } -- s3248
+L["使目标的护甲降低%s点，持续%s sec。"] = { { Stats.Armor, }, false, } -- s3252
+L["使指定区域内的所有敌人的力量降低%s点，敏捷降低%s点，智力降低%s点，持续%s sec。"] = { { Stats.Strength, }, { Stats.Agility, }, { Stats.Intellect, }, false, } -- s3256
+L["令敌人昏迷，并使其护甲值降低%s点，持续%s sec。"] = { { Stats.Armor, }, false, } -- s3263
+L["使施法者的攻击速度提高%s%，持续%s sec。但施法者也会因此精疲力尽。"] = { { Stats.MeleeHaste, }, false, } -- s3269
+L["使附近敌人的攻击间隔延长%s%，持续%s sec。"] = { { Stats.MeleeHaste, }, false, } -- s3335
+L["对目标造成%s点伤害，并使其火焰抗性降低%s点，持续%s sec。"] = { false, { Stats.FireResistance, }, false, } -- s3356
+L["使施法者的力量提高%s点，持续%s sec。"] = { { Stats.Strength, }, false, } -- s3369
+L["使施法者对敌人造成的物理伤害提高%s点，移动速度提高%s%，持续%s sec。"] = { { Stats.AverageWeaponDamage, }, false, false, } -- s3385
+L["使敌人的护甲值降低%s点，并对其每%s秒造成%s点自然伤害，持续%s sec。"] = { { Stats.Armor, }, false, false, false, } -- s3396
+L["使施法者进入狂怒状态，持续%s sec。对敌人造成的物理伤害提高%s点，但攻击间隔延长%s%。"] = { false, { Stats.AverageWeaponDamage, }, { Stats.MeleeHaste, }, } -- s3416
+L["使目标感染疾病，在受到物理攻击时承受的伤害提高%s点，耐力降低%s点，持续%s sec。感染疾病的目标有%s%的几率在被击中时将疾病传染给附近的盟友。"] = { false, { Stats.Stamina, }, false, false, } -- s3436
+L["控制一个等级不高于%s级的敌对人型生物，持续%s sec。使其攻击间隔延长%s%。"] = { false, false, { Stats.MeleeHaste, }, } -- s3442
 L["使施法者的攻击速度提高%s%，但物理伤害能力降低%s点。"] = { { Stats.MeleeHaste, }, { Stats.AverageWeaponDamage, }, } -- s3490
-L["使施法者进入疯狂状态，持续%s。施法者的攻击速度提高%s%，移动速度降低%s%，物理攻击所能造成的伤害降低%s点。"] = { false, { Stats.MeleeHaste, }, false, { Stats.AverageWeaponDamage, }, } -- s3547
-L["使敌人的施法速度降低%s%，持续%s。"] = { { Stats.SpellHaste, }, false, } -- s3603
-L["向敌人投掷泥浆，使其命中几率降低%s%，持续%s。"] = { { Stats.MeleeHit, Stats.RangedHit, }, false, } -- s3650
-L["将目标变成麻风侏儒，使其所能造成的近战和法术伤害降低%s点，移动速度降低%s%，持续%s。"] = { { Stats.SpellDamage, }, false, false, } -- s4060
-L["有%s%的机会在被击中之后使你的护甲提高%s点，持续%s。"] = { false, { Stats.Armor, }, false, } -- s4070
+L["使施法者进入疯狂状态，持续%s sec。施法者的攻击速度提高%s%，移动速度降低%s%，物理攻击所能造成的伤害降低%s点。"] = { false, { Stats.MeleeHaste, }, false, { Stats.AverageWeaponDamage, }, } -- s3547
+L["使敌人的施法速度降低%s%，持续%s sec。"] = { { Stats.SpellHaste, }, false, } -- s3603
+L["向敌人投掷泥浆，使其命中几率降低%s%，持续%s sec。"] = { { Stats.MeleeHit, Stats.RangedHit, }, false, } -- s3650
+L["将目标变成麻风侏儒，使其所能造成的近战和法术伤害降低%s点，移动速度降低%s%，持续%s sec。"] = { { Stats.SpellDamage, }, false, false, } -- s4060
+L["有%s%的机会在被击中之后使你的护甲提高%s点，持续%s sec。"] = { false, { Stats.Armor, }, false, ignoreSum = true } -- s4070
 L["使你对冰霜法术的抗性提高%s点。"] = { { Stats.FrostResistance, }, } -- s4080
 L["你对自然法术的抗性提高了%s点。"] = { { Stats.NatureResistance, }, } -- s4081
 L["使你对暗影法术的抗性提高%s点。"] = { { Stats.ShadowResistance, }, } -- s4084
 L["激怒目标，吸引其注意力，并使其护甲值降低%s点。"] = { { Stats.Armor, }, } -- s4101
-L["使附近队友的力量提高%s点，敏捷提高%s点，持续%s。"] = { { Stats.Strength, }, { Stats.Agility, }, false, } -- s4146
-L["令半径%s码范围内的小队成员的力量提高%s点，敏捷提高%s点，持续%s"] = { false, { Stats.Strength, }, { Stats.Agility, }, false, } -- s4147
-L["使用者获得%s点额外生命值，持续%s"] = { { Stats.Health, }, false, } -- s4148
-L["护甲值提高%s点，持续%s"] = { { Stats.Armor, }, false, } -- s4149
-L["进入凶暴状态，加速%s%，但受到攻击时多承受%s点伤害，持续%s"] = { { Stats.MeleeHaste, }, false, false, } -- s4154
+L["使附近队友的力量提高%s点，敏捷提高%s点，持续%s sec。"] = { { Stats.Strength, }, { Stats.Agility, }, false, } -- s4146
+L["令半径%s码范围内的小队成员的力量提高%s点，敏捷提高%s点，持续%s sec"] = { false, { Stats.Strength, }, { Stats.Agility, }, false, } -- s4147
+L["使用者获得%s点额外生命值，持续%s sec"] = { { Stats.Health, }, false, } -- s4148
+L["护甲值提高%s点，持续%s sec"] = { { Stats.Armor, }, false, } -- s4149
+L["进入凶暴状态，加速%s%，但受到攻击时多承受%s点伤害，持续%s sec"] = { { Stats.MeleeHaste, }, false, false, } -- s4154
 L["使你的敏捷提高%s点。"] = { { Stats.Agility, }, } -- s4171
 L["耐力提高%s点。"] = { { Stats.Stamina, }, } -- s4187
 L["使你的智力提高%s点。"] = { { Stats.Intellect, }, } -- s4204
 L["使你的精神提高%s点。"] = { { Stats.Spirit, }, } -- s4222
-L["使你所在小队的成员的生命值上限提高%s点，持续%s"] = { { Stats.Health, }, false, } -- s4238
+L["使你所在小队的成员的生命值上限提高%s点，持续%s sec"] = { { Stats.Health, }, false, } -- s4238
 L["使你的生命值提高%s点。"] = { { Stats.Health, }, } -- s4247
 L["使你的法力值上限提高%s点。"] = { { Stats.Mana, }, } -- s4263
 L["使你在手持单手剑时的招架几率提高%s%。"] = { { Stats.Parry, }, } -- s4301
 L["使你用单手斧招架的几率提高%s%。"] = { { Stats.Parry, }, } -- s4307
-L["力量降低%s点，敏捷降低%s点，持续%s"] = { { Stats.Strength, }, { Stats.Agility, }, false, } -- s4316
-L["使你的敏捷提高%s点，持续%s。"] = { { Stats.Agility, }, false, } -- s4318
+L["力量降低%s点，敏捷降低%s点，持续%s sec"] = { { Stats.Strength, }, { Stats.Agility, }, false, } -- s4316
+L["使你的敏捷提高%s点，持续%s sec。"] = { { Stats.Agility, }, false, } -- s4318
 L["使你在手持单手锤时的招架几率提高%s%。"] = { { Stats.Parry, }, } -- s4328
 L["使你的单手斧造成的伤害提高%s点。"] = { { Stats.AverageWeaponDamage, }, } -- s4334
 L["使你的单手剑造成的伤害提高%s点。"] = { { Stats.AverageWeaponDamage, }, } -- s4350
@@ -290,8 +290,8 @@ L["使你的双手剑造成的伤害提高%s点。"] = { { Stats.AverageWeaponDa
 L["使你的双手锤造成的伤害提高%s点。"] = { { Stats.AverageWeaponDamage, }, } -- s4472
 L["使你的法杖造成的伤害提高%s点。"] = { { Stats.AverageWeaponDamage, }, } -- s4488
 L["使你的法杖造成的伤害提高%s点，并有%s%的机会令目标昏迷%s秒。"] = { { Stats.AverageWeaponDamage, }, false, false, } -- s4493
-L["使施法者的攻击速度提高%s%，移动速度提高%s%，持续%s，但每%s秒施法者会受到%s点暗影伤害。"] = { { Stats.MeleeHaste, }, false, false, false, false, } -- s4514
-L["使地狱火对敌人造成的伤害提高%s点，但攻击速度降低%s%，持续%s。"] = { { Stats.AverageWeaponDamage, }, false, false, } -- s4539
+L["使施法者的攻击速度提高%s%，移动速度提高%s%，持续%s sec，但每%s秒施法者会受到%s点暗影伤害。"] = { { Stats.MeleeHaste, }, false, false, false, false, } -- s4514
+L["使地狱火对敌人造成的伤害提高%s点，但攻击速度降低%s%，持续%s sec。"] = { { Stats.AverageWeaponDamage, }, false, false, } -- s4539
 L["使你对火焰法术的抗性提高%s点。"] = { { Stats.FireResistance, }, } -- s4547
 L["使你对自然法术的抗性提高%s点。"] = { { Stats.NatureResistance, }, } -- s4548
 L["使你对火焰法术的抗性提高%s点，并有%s%的几率使有害的火焰魔法反弹给施法者。"] = { { Stats.FireResistance, }, false, } -- s4553
@@ -310,101 +310,101 @@ L["使你的冰霜法术造成的伤害提高%s点。"] = { { Stats.FrostDamage,
 L["使暗影法术所造成的伤害提高%s点。"] = { { Stats.ShadowDamage, }, } -- s4880
 L["使你的弓造成爆击的几率提高%s%。"] = { { Stats.MeleeCrit, Stats.RangedCrit, }, } -- s4915
 L["使你的枪械造成爆击的几率提高%s%。"] = { { Stats.MeleeCrit, Stats.RangedCrit, }, } -- s4921
-L["使施法者在%s内每次击中目标时对其造成的伤害提高%s点，但施法者的移动速度降低%s%，攻击间隔延长%s%。"] = { false, { Stats.AverageWeaponDamage, }, false, { Stats.MeleeHaste, }, } -- s4955
-L["使敌人无法移动，并使其攻击间隔延长%s%，持续%s。"] = { { Stats.MeleeHaste, }, false, } -- s4962
-L["使敌人的耐力降低%s点，精神降低%s点，持续%s。"] = { { Stats.Stamina, }, { Stats.Spirit, }, false, } -- s4974
-L["在%s内恢复总计%s点生命值，进食时必须保持坐姿。如果你花费至少%s秒钟来进食，你的耐力和精神都将提高%s点，持续%s。"] = { false, { Stats.Stamina, Stats.Spirit, }, false, { Stats.Stamina, }, false, } -- s5004
-L["一种烈性酒，可以使你的力量提高%s点，但智力降低%s点，持续%s。"] = { { Stats.Strength, }, { Stats.Intellect, }, false, } -- s5020
-L["使你的生命值提高%s点，精神降低%s点，持续%s。"] = { false, { Stats.Spirit, }, false, } -- s5021
+L["使施法者在%s sec内每次击中目标时对其造成的伤害提高%s点，但施法者的移动速度降低%s%，攻击间隔延长%s%。"] = { false, { Stats.AverageWeaponDamage, }, false, { Stats.MeleeHaste, }, } -- s4955
+L["使敌人无法移动，并使其攻击间隔延长%s%，持续%s sec。"] = { { Stats.MeleeHaste, }, false, } -- s4962
+L["使敌人的耐力降低%s点，精神降低%s点，持续%s sec。"] = { { Stats.Stamina, }, { Stats.Spirit, }, false, } -- s4974
+L["在%s sec内恢复总计%s点生命值，进食时必须保持坐姿。如果你花费至少%s秒钟来进食，你的耐力和精神都将提高%s点，持续%s sec。"] = { false, { Stats.Stamina, Stats.Spirit, }, false, { Stats.Stamina, }, false, ignoreSum = true } -- s5004
+L["一种烈性酒，可以使你的力量提高%s点，但智力降低%s点，持续%s sec。"] = { { Stats.Strength, }, { Stats.Intellect, }, false, } -- s5020
+L["使你的生命值提高%s点，精神降低%s点，持续%s sec。"] = { false, { Stats.Spirit, }, false, } -- s5021
 L["终结技，使近战攻击速度提高%s%。根据连击点数的数量决定效果持续时间：\n   %s点：%s秒\n   %s点：%s秒\n   %s点：%s秒\n   %s点：%s秒\n   %s点：%s秒"] = { { Stats.MeleeHaste, }, false, false, false, false, false, false, false, false, false, false, } -- s5171
-L["每%s秒对目标造成%s点火焰伤害，使其攻击间隔延长%s%，移动速度降低%s%，持续%s。"] = { false, false, { Stats.MeleeHaste, }, false, false, } -- s5213
-L["使你对目标造成的伤害提高%s点，持续%s。"] = { { Stats.AverageWeaponDamage, }, false, } -- s5217
-L["使友方目标的护甲值提高%s，所有属性提高%s，持续%s。"] = { { Stats.Armor, }, { Stats.AllStats, }, false, } -- s5232
-L["使友方目标的护甲值提高%s，所有属性提高%s，所有抗性提高%s，持续%s。"] = { { Stats.Armor, }, { Stats.AllStats, }, false, false, } -- s5234
-L["战士发出怒吼，使半径%s码范围内的所有小队成员的近战攻击强度提高%s点，持续%s。"] = { false, { Stats.AttackPower, }, false, } -- s5242
+L["每%s秒对目标造成%s点火焰伤害，使其攻击间隔延长%s%，移动速度降低%s%，持续%s sec。"] = { false, false, { Stats.MeleeHaste, }, false, false, } -- s5213
+L["使你对目标造成的伤害提高%s点，持续%s sec。"] = { { Stats.AverageWeaponDamage, }, false, } -- s5217
+L["使友方目标的护甲值提高%s，所有属性提高%s，持续%s sec。"] = { { Stats.Armor, }, { Stats.AllStats, }, false, } -- s5232
+L["使友方目标的护甲值提高%s，所有属性提高%s，所有抗性提高%s，持续%s sec。"] = { { Stats.Armor, }, { Stats.AllStats, }, false, false, } -- s5234
+L["战士发出怒吼，使半径%s码范围内的所有小队成员的近战攻击强度提高%s点，持续%s sec。"] = { false, { Stats.AttackPower, }, false, } -- s5242
 L["招架几率提高%s%。"] = { { Stats.Parry, }, } -- s5256
 L["使你的耐力提高%s点。"] = { { Stats.Stamina, }, } -- s5257
-L["使潜行者的躲闪几率提高%s%，持续%s。"] = { { Stats.Dodge, }, false, } -- s5277
-L["使目标的耐力提高%s点，持续%s。"] = { { Stats.Spirit, }, false, } -- s5321
+L["使潜行者的躲闪几率提高%s%，持续%s sec。"] = { { Stats.Dodge, }, false, } -- s5277
+L["使目标的耐力提高%s点，持续%s sec。"] = { { Stats.Spirit, }, false, } -- s5321
 L["使你的双手斧造成的伤害提高%s点，并有%s%的几率令敌人的护甲降低%s点，持续%s秒。"] = { { Stats.AverageWeaponDamage, }, false, false, false, } -- s5341
 L["使你的双手锤造成的伤害提高%s点，并有%s%的机会使目标昏迷%s秒。"] = { { Stats.AverageWeaponDamage, }, false, false, } -- s5349
 L["使你的双手剑造成的伤害提高%s点，格挡几率提高%s%。"] = { { Stats.AverageWeaponDamage, }, false, } -- s5356
 L["护甲值提高%s点。"] = { { Stats.Armor, }, } -- s5363
-L["使敌人的自然抗性降低%s点，持续%s。"] = { { Stats.NatureResistance, }, false, } -- s5413
-L["使施法者的躲闪几率提高%s%，持续%s。"] = { { Stats.Dodge, }, false, } -- s5426
+L["使敌人的自然抗性降低%s点，持续%s sec。"] = { { Stats.NatureResistance, }, false, } -- s5413
+L["使施法者的躲闪几率提高%s%，持续%s sec。"] = { { Stats.Dodge, }, false, } -- s5426
 L["使你的单手斧造成的伤害提高%s点，并有%s%的机会使敌人的护甲降低%s点，持续%s秒。"] = { { Stats.AverageWeaponDamage, }, false, false, false, } -- s5429
 L["使你的单手剑造成的伤害提高%s点，格档几率提高%s%。"] = { { Stats.AverageWeaponDamage, }, { Stats.Parry, }, } -- s5449
 L["使你在手持双手剑时的招架几率提高%s%。"] = { { Stats.Parry, }, } -- s5454
 L["使你的双手斧造成爆击的几率提高%s%。"] = { { Stats.MeleeCrit, Stats.RangedCrit, }, } -- s5466
-L["使护甲值降低%s%，持续%s。"] = { { Stats.Armor, }, false, } -- s5480
+L["使护甲值降低%s%，持续%s sec。"] = { { Stats.Armor, }, false, } -- s5480
 L["使你的单手剑造成爆击的几率提高%s。"] = { { Stats.MeleeCrit, Stats.RangedCrit, }, } -- s5481
 L["使你的单手剑造成爆击的几率提高%s%。"] = { { Stats.MeleeCrit, Stats.RangedCrit, }, } -- s5482
 L["使你的单手斧造成爆击的几率提高%s%。"] = { { Stats.MeleeCrit, Stats.RangedCrit, }, } -- s5509
-L["使敌人攻击时的命中几率降低%s%，持续%s。"] = { { Stats.MeleeHit, Stats.RangedHit, }, false, } -- s5514
+L["使敌人攻击时的命中几率降低%s%，持续%s sec。"] = { { Stats.MeleeHit, Stats.RangedHit, }, false, } -- s5514
 L["使你的双手锤造成爆击的几率提高%s%。"] = { { Stats.MeleeCrit, Stats.RangedCrit, }, } -- s5527
 L["使你的单手锤造成爆击的几率提高%s%。"] = { { Stats.MeleeCrit, Stats.RangedCrit, }, } -- s5545
 L["使你的单手锤造成的伤害提高%s点，并有%s%的机会令目标昏迷%s秒。"] = { { Stats.AverageWeaponDamage, }, false, false, } -- s5549
-L["敌人被飞虫围绕，攻击命中率降低%s%，在%s内受到总计%s点自然伤害。"] = { { Stats.MeleeHit, Stats.RangedHit, }, false, false, } -- s5570
+L["敌人被飞虫围绕，攻击命中率降低%s%，在%s sec内受到总计%s点自然伤害。"] = { { Stats.MeleeHit, Stats.RangedHit, }, false, false, } -- s5570
 L["使你的匕首造成爆击的几率提高%s%。"] = { { Stats.MeleeCrit, Stats.RangedCrit, }, } -- s5585
 L["使你的枪械造成的伤害提高%s点。"] = { { Stats.AverageWeaponDamage, }, } -- s5626
 L["使你的枪械造成的伤害提高%s点，并有%s%的机会令目标昏迷%s秒。"] = { { Stats.AverageWeaponDamage, }, false, false, } -- s5638
-L["使你的攻击伤害提高%s点，持续%s。"] = { { Stats.AverageWeaponDamage, }, false, } -- s5665
+L["使你的攻击伤害提高%s点，持续%s sec。"] = { { Stats.AverageWeaponDamage, }, false, } -- s5665
 L["每%s秒恢复%s点生命值。"] = { false, { Stats.HealthRegen, }, } -- s5707
 L["使你的法杖造成爆击的几率提高%s%。"] = { { Stats.MeleeCrit, Stats.RangedCrit, }, } -- s5715
 L["使你的弓造成的伤害提高%s点。"] = { { Stats.AverageWeaponDamage, }, } -- s5742
 L["使你的弓造成的伤害提高%s点，并有%s%的机会使目标流血，在%s秒内累计造成%s点伤害。"] = { { Stats.AverageWeaponDamage, }, false, false, false, } -- s5751
-L["使敌人的力量降低%s点，敏捷降低%s点，持续%s。"] = { { Stats.Strength, }, { Stats.Agility, }, false, } -- s5781
+L["使敌人的力量降低%s点，敏捷降低%s点，持续%s sec。"] = { { Stats.Strength, }, { Stats.Agility, }, false, } -- s5781
 L["在你装备了盾牌或小圆盾的情况下，使你的护甲提高%s点。"] = { { Stats.Armor, }, } -- s5786
 L["使你的自然魔法造成爆击的几率提高%s%。"] = { { Stats.SpellCrit, }, } -- s5812
 L["使你的火焰法术造成爆击的几率提高%s%。"] = { { Stats.SpellCrit, }, } -- s5835
 L["使你的冰霜魔法造成爆击的几率提高%s%。"] = { { Stats.SpellCrit, }, } -- s5866
 L["使你的暗影魔法造成爆击的几率提高%s%。"] = { { Stats.SpellCrit, }, } -- s5896
-L["这种啤酒可以让你的精神提高%s点，但耐力降低%s点，持续%s。"] = { { Stats.Spirit, }, { Stats.Stamina, }, false, } -- s5909
-L["使目标用武器击中别人的概率降低%s%，持续%s。"] = { { Stats.MeleeHit, Stats.RangedHit, }, false, } -- s5917
+L["这种啤酒可以让你的精神提高%s点，但耐力降低%s点，持续%s sec。"] = { { Stats.Spirit, }, { Stats.Stamina, }, false, } -- s5909
+L["使目标用武器击中别人的概率降低%s%，持续%s sec。"] = { { Stats.MeleeHit, Stats.RangedHit, }, false, } -- s5917
 L["使你的神圣法术造成爆击的几率提高%s%。"] = { { Stats.SpellCrit, }, } -- s5923
 L["使你的神圣系法术造成爆击的几率提高%s%。"] = { { Stats.SpellCrit, }, } -- s5926
-L["你的每一个连击点数为你带来额外%s%的招架攻击的机会。持续%s。"] = { { Stats.Parry, }, false, } -- s5934
+L["你的每一个连击点数为你带来额外%s%的招架攻击的机会。持续%s sec。"] = { { Stats.Parry, }, false, } -- s5934
 L["使你的投掷武器所造成的伤害提高%s点。"] = { { Stats.AverageWeaponDamage, }, } -- s5952
 L["使你的弩造成的伤害提高%s点。"] = { { Stats.AverageWeaponDamage, }, } -- s5969
 L["使你的弩造成爆击的几率提高%s%。"] = { { Stats.MeleeCrit, Stats.RangedCrit, }, } -- s5970
 L["使你的弩造成的伤害提高%s点，并有%s%的机会使目标流血，在%s秒内累计造成%s点伤害。"] = { { Stats.AverageWeaponDamage, }, false, false, false, } -- s5976
 L["使你的魔杖造成的伤害提高%s点。"] = { { Stats.SpellDamage, }, } -- s6089
 L["使你的魔杖造成爆击的几率提高%s%。"] = { { Stats.MeleeCrit, Stats.RangedCrit, }, } -- s6094
-L["使你的智力提高%s点，耐力降低%s点，持续%s。"] = { { Stats.Intellect, }, { Stats.Stamina, }, false, } -- s6114
-L["对所有魔法的抗性提高%s点，施法者可在任意情况下保持%s%的法力值回复速度。法师在同一时间内只能保有一种魔法护甲效果。持续%s。"] = { { Stats.FireResistance, Stats.NatureResistance, Stats.FrostResistance, Stats.ShadowResistance, Stats.ArcaneResistance, }, false, false, } -- s6117
-L["使施法者的移动速度提高%s%，持续%s，并使其在第一次攻击时所造成的伤害提高%s点。"] = { false, false, { Stats.AverageWeaponDamage, }, } -- s6268
+L["使你的智力提高%s点，耐力降低%s点，持续%s sec。"] = { { Stats.Intellect, }, { Stats.Stamina, }, false, } -- s6114
+L["对所有魔法的抗性提高%s点，施法者可在任意情况下保持%s%的法力值回复速度。法师在同一时间内只能保有一种魔法护甲效果。持续%s sec。"] = { { Stats.FireResistance, Stats.NatureResistance, Stats.FrostResistance, Stats.ShadowResistance, Stats.ArcaneResistance, }, false, false, } -- s6117
+L["使施法者的移动速度提高%s%，持续%s sec，并使其在第一次攻击时所造成的伤害提高%s点。"] = { false, false, { Stats.AverageWeaponDamage, }, } -- s6268
 L["使宠物的最大生命值提高%s点。"] = { { Stats.Health, }, } -- s6280
 L["使小队成员的耐力提高%s点。"] = { { Stats.Stamina, }, } -- s6307
 L["使宠物造成的伤害提高%s点。"] = { { Stats.AverageWeaponDamage, }, } -- s6311
 L["使宠物的精神提高%s点。必须事先掌握宠物训练能力。"] = { { Stats.Spirit, }, } -- s6328
-L["以雷霆震击附近的敌人，使它们的攻击间隔延长%s%，持续%s，并对它们造成%s点自然伤害。最多可影响%s个目标。"] = { { Stats.MeleeHaste, }, false, false, false, } -- s6343
+L["以雷霆震击附近的敌人，使它们的攻击间隔延长%s%，持续%s sec，并对它们造成%s点自然伤害。最多可影响%s个目标。"] = { { Stats.MeleeHaste, }, false, false, false, } -- s6343
 L["使宠物对所有类型的法术的抗性提高%s点。"] = { { Stats.FireResistance, Stats.NatureResistance, Stats.FrostResistance, Stats.ShadowResistance, Stats.ArcaneResistance, }, } -- s6443
-L["战士发出怒吼，使附近所有小队成员的近身和远程伤害提高%s，持续%s。"] = { { Stats.AverageWeaponDamage, }, false, } -- s6507
+L["战士发出怒吼，使附近所有小队成员的近身和远程伤害提高%s，持续%s sec。"] = { { Stats.AverageWeaponDamage, }, false, } -- s6507
 L["锋利的边缘令这把武器的伤害提高%s点。"] = { { Stats.AverageWeaponDamage, }, } -- s6514
-L["向敌人投掷泥土，使其命中几率降低%s%，持续%s。"] = { { Stats.MeleeHit, Stats.RangedHit, }, false, } -- s6530
-L["向敌人射击，造成普通伤害，并使其护甲降低%s点，持续%s。"] = { { Stats.Armor, }, false, } -- s6685
-L["使施法者的护甲值提高%s点，持续%s。"] = { { Stats.Armor, }, false, } -- s7020
-L["每%s秒对敌人造成%s点自然伤害，使其攻击间隔延长%s%，移动速度降低%s%，持续%s。"] = { false, false, { Stats.MeleeHaste, }, false, false, } -- s6814
-L["使附近敌人的智力降低%s点，持续%s。"] = { { Stats.Intellect, }, false, } -- s6818
-L["使施法者所能造成的物理伤害提高%s点，但移动速度降低%s%。持续%s。"] = { { Stats.AverageWeaponDamage, }, false, false, } -- s6864
-L["使敌人的攻击间隔延长%s%，移动速度降低%s%，持续%s。"] = { { Stats.MeleeHaste, }, false, false, } -- s6907
-L["使施法者对敌人造成的物理伤害提高%s点，移动速度提高%s%，持续%s。在第一次成功击中敌人时诅咒敌人，使其物理伤害能力降低%s点，魔法伤害能力降低%s点，受到物理攻击时承受的伤害提高%s点，持续%s。"] = { { Stats.AverageWeaponDamage, }, false, false, { Stats.AverageWeaponDamage, }, { Stats.SpellDamage, }, false, false, } -- s6921
-L["使敌人的护甲降低%s点，持续%s。在效果持续期间，目标无法潜行或隐形。"] = { { Stats.Armor, }, false, } -- s6950
-L["使敌人的力量降低%s点，持续%s。"] = { { Stats.Strength, }, false, } -- s6951
-L["使一个盟友的力量提高%s点，持续%s。"] = { { Stats.Strength, }, false, } -- s6957
+L["向敌人投掷泥土，使其命中几率降低%s%，持续%s sec。"] = { { Stats.MeleeHit, Stats.RangedHit, }, false, } -- s6530
+L["向敌人射击，造成普通伤害，并使其护甲降低%s点，持续%s sec。"] = { { Stats.Armor, }, false, } -- s6685
+L["使施法者的护甲值提高%s点，持续%s sec。"] = { { Stats.Armor, }, false, } -- s7020
+L["每%s秒对敌人造成%s点自然伤害，使其攻击间隔延长%s%，移动速度降低%s%，持续%s sec。"] = { false, false, { Stats.MeleeHaste, }, false, false, } -- s6814
+L["使附近敌人的智力降低%s点，持续%s sec。"] = { { Stats.Intellect, }, false, } -- s6818
+L["使施法者所能造成的物理伤害提高%s点，但移动速度降低%s%。持续%s sec。"] = { { Stats.AverageWeaponDamage, }, false, false, } -- s6864
+L["使敌人的攻击间隔延长%s%，移动速度降低%s%，持续%s sec。"] = { { Stats.MeleeHaste, }, false, false, } -- s6907
+L["使施法者对敌人造成的物理伤害提高%s点，移动速度提高%s%，持续%s sec。在第一次成功击中敌人时诅咒敌人，使其物理伤害能力降低%s点，魔法伤害能力降低%s点，受到物理攻击时承受的伤害提高%s点，持续%s sec。"] = { { Stats.AverageWeaponDamage, }, false, false, { Stats.AverageWeaponDamage, }, { Stats.SpellDamage, }, false, false, } -- s6921
+L["使敌人的护甲降低%s点，持续%s sec。在效果持续期间，目标无法潜行或隐形。"] = { { Stats.Armor, }, false, } -- s6950
+L["使敌人的力量降低%s点，持续%s sec。"] = { { Stats.Strength, }, false, } -- s6951
+L["使一个盟友的力量提高%s点，持续%s sec。"] = { { Stats.Strength, }, false, } -- s6957
 L["使附近队友对敌人造成的物理伤害提高%s点。每个圣骑士在同一时间内只能开启一种光环，且同类光环的效果无法叠加。效果一直持续，直到主动取消。"] = { { Stats.AverageWeaponDamage, }, } -- s7069
-L["使目标的攻击间隔延长%s%，施法速度降低%s%，在被击中时有%s%的几率向某个盟友传播瘟疫。持续%s。"] = { { Stats.MeleeHaste, }, { Stats.SpellHaste, }, false, false, } -- s7102
-L["使敌人的攻击间隔延长%s%，施法速度降低%s%，移动速度降低%s%，持续%s。"] = { { Stats.MeleeHaste, }, { Stats.SpellHaste, }, false, false, } -- s7127
+L["使目标的攻击间隔延长%s%，施法速度降低%s%，在被击中时有%s%的几率向某个盟友传播瘟疫。持续%s sec。"] = { { Stats.MeleeHaste, }, { Stats.SpellHaste, }, false, false, } -- s7102
+L["使敌人的攻击间隔延长%s%，施法速度降低%s%，移动速度降低%s%，持续%s sec。"] = { { Stats.MeleeHaste, }, { Stats.SpellHaste, }, false, false, } -- s7127
 L["向敌人冲锋，提高移动速度，并使第一次攻击对目标造成%s点额外伤害。"] = { { Stats.AverageWeaponDamage, }, } -- s7137
-L["使附近敌人的命中率降低%s%，持续%s。"] = { { Stats.MeleeHit, Stats.RangedHit, }, false, } -- s7272
-L["使附近敌人的攻击间隔延长%s%，移动速度降低%s%，持续%s。"] = { { Stats.MeleeHaste, }, false, false, } -- s7279
-L["使敌人的力量降低%s点，耐力降低%s点，持续%s。"] = { { Stats.Strength, }, { Stats.Stamina, }, false, } -- s7289
-L["使护甲值提高%s点，冰霜抗性提高%s点。如果敌人使用近战武器攻击施法者，他们的移动速度就有可能被降低%s%，攻击间隔延长%s%，持续%s。法师在同一时间内只能保有一种魔法护甲效果。持续%s。"] = { { Stats.Armor, }, { Stats.FrostResistance, }, false, { Stats.MeleeHaste, }, false, false, } -- s7302
-L["每%s秒对敌人造成%s点自然伤害，并使其攻击间隔延长%s%，移动速度降低%s%，持续%s。"] = { false, false, { Stats.MeleeHaste, }, false, false, } -- s7357
+L["使附近敌人的命中率降低%s%，持续%s sec。"] = { { Stats.MeleeHit, Stats.RangedHit, }, false, } -- s7272
+L["使附近敌人的攻击间隔延长%s%，移动速度降低%s%，持续%s sec。"] = { { Stats.MeleeHaste, }, false, false, } -- s7279
+L["使敌人的力量降低%s点，耐力降低%s点，持续%s sec。"] = { { Stats.Strength, }, { Stats.Stamina, }, false, } -- s7289
+L["使护甲值提高%s点，冰霜抗性提高%s点。如果敌人使用近战武器攻击施法者，他们的移动速度就有可能被降低%s%，攻击间隔延长%s%，持续%s sec。法师在同一时间内只能保有一种魔法护甲效果。持续%s sec。"] = { { Stats.Armor, }, { Stats.FrostResistance, }, false, { Stats.MeleeHaste, }, false, false, } -- s7302
+L["每%s秒对敌人造成%s点自然伤害，并使其攻击间隔延长%s%，移动速度降低%s%，持续%s sec。"] = { false, false, { Stats.MeleeHaste, }, false, false, } -- s7357
 L["使附近小队成员的精神提高%s点。"] = { { Stats.Spirit, }, } -- s7363
-L["向敌人发起冲锋，使其在%s内无法移动，并使你的野猪的下一次攻击获得%s点近战攻击强度加成。"] = { false, { Stats.AttackPower, }, } -- s7371
+L["向敌人发起冲锋，使其在%s sec内无法移动，并使你的野猪的下一次攻击获得%s点近战攻击强度加成。"] = { false, { Stats.AttackPower, }, } -- s7371
 L["爆击几率提高%s%。\n受到攻击时所承受的伤害提高%s%。\n威胁值的生成速度降低%s%。"] = { { Stats.MeleeCrit, Stats.RangedCrit, }, false, false, } -- s7381
-L["击破目标的护甲，每次破甲攻击都会使其护甲值降低%s点，同时造成大量的威胁，最多可累加%s次，持续%s。"] = { { Stats.Armor, }, false, false, } -- s7386
+L["击破目标的护甲，每次破甲攻击都会使其护甲值降低%s点，同时造成大量的威胁，最多可累加%s次，持续%s sec。"] = { { Stats.Armor, }, false, false, } -- s7386
 L["%s 力量。"] = { { Stats.Strength, }, } -- s7464
 L["%s 智力。"] = { { Stats.Intellect, }, } -- s7468
 L["%s 敏捷。"] = { { Stats.Agility, }, } -- s7471
@@ -427,40 +427,40 @@ L["提高自然法术和效果所造成的伤害，最多%s点。"] = { { Stats.
 L["提高冰霜法术和效果所造成的伤害，最多%s点。"] = { { Stats.FrostDamage, }, } -- s7697
 L["提高暗影法术和效果所造成的伤害，最多%s点。"] = { { Stats.ShadowDamage, }, } -- s7704
 L["使智力提高%s点。"] = { { Stats.Intellect, }, } -- s7764
-L["使你的火焰法术造成的伤害提高%s点，持续%s。"] = { { Stats.FireDamage, }, false, } -- s7843
-L["使敌人的敏捷降低%s点，持续%s。"] = { { Stats.Agility, }, false, } -- s7901
-L["变成一条毒蛇，持续%s。攻击伤害提高%s点，但攻击间隔延长%s%。"] = { false, { Stats.AverageWeaponDamage, }, { Stats.MeleeHaste, }, } -- s7965
-L["使敌人的力量降低%s点，敏捷降低%s点，耐力降低%s点，持续%s。"] = { { Stats.Strength, }, { Stats.Agility, }, { Stats.Stamina, }, false, } -- s7997
-L["使目标的精神提高%s点，持续%s。"] = { { Stats.Spirit, }, false, } -- s8114
-L["使敌人的精神降低%s点，持续%s。"] = { { Stats.Spirit, }, false, } -- s8016
-L["变成一条毒蛇，持续%s。物理伤害提高%s点，但不能施法。"] = { false, { Stats.AverageWeaponDamage, }, } -- s8041
-L["精神提高%s点，持续%s。"] = { { Stats.Spirit, }, false, } -- s8068
-L["对附近的敌人造成%s点自然伤害，使他们的攻击间隔延长%s%，移动速度降低%s%，持续%s。"] = { false, { Stats.MeleeHaste, }, false, false, } -- s8078
-L["使目标的护甲提高%s点，持续%s。"] = { { Stats.Armor, }, false, } -- s8091
-L["使目标的敏捷提高%s点，持续%s。"] = { { Stats.Agility, }, false, } -- s8115
-L["使目标的力量提高%s点，持续%s。"] = { { Stats.Strength, }, false, } -- s8118
-L["使敌人的智力降低%s点，精神降低%s点，持续%s。"] = { { Stats.Intellect, }, { Stats.Spirit, }, false, } -- s8139
-L["能量充满施法者全身，使他的攻击伤害提高%s点，护甲提高%s点，持续%s。"] = { { Stats.AverageWeaponDamage, }, { Stats.Armor, }, false, } -- s8191
-L["能量充满施法者全身，使她的攻击伤害提高%s点，护甲提高%s点，持续%s。"] = { { Stats.AverageWeaponDamage, }, { Stats.Armor, }, false, } -- s8191
-L["你的体型增大了，同时你的力量也提高了%s点，持续%s。"] = { { Stats.Strength, }, false, } -- s8212
-L["使附近所有敌人的护甲降低%s点，持续%s。"] = { { Stats.Armor, }, false, } -- s8245
+L["使你的火焰法术造成的伤害提高%s点，持续%s sec。"] = { { Stats.FireDamage, }, false, } -- s7843
+L["使敌人的敏捷降低%s点，持续%s sec。"] = { { Stats.Agility, }, false, } -- s7901
+L["变成一条毒蛇，持续%s sec。攻击伤害提高%s点，但攻击间隔延长%s%。"] = { false, { Stats.AverageWeaponDamage, }, { Stats.MeleeHaste, }, } -- s7965
+L["使敌人的力量降低%s点，敏捷降低%s点，耐力降低%s点，持续%s sec。"] = { { Stats.Strength, }, { Stats.Agility, }, { Stats.Stamina, }, false, } -- s7997
+L["使目标的精神提高%s点，持续%s sec。"] = { { Stats.Spirit, }, false, } -- s8114
+L["使敌人的精神降低%s点，持续%s sec。"] = { { Stats.Spirit, }, false, } -- s8016
+L["变成一条毒蛇，持续%s sec。物理伤害提高%s点，但不能施法。"] = { false, { Stats.AverageWeaponDamage, }, } -- s8041
+L["精神提高%s点，持续%s sec。"] = { { Stats.Spirit, }, false, } -- s8068
+L["对附近的敌人造成%s点自然伤害，使他们的攻击间隔延长%s%，移动速度降低%s%，持续%s sec。"] = { false, { Stats.MeleeHaste, }, false, false, } -- s8078
+L["使目标的护甲提高%s点，持续%s sec。"] = { { Stats.Armor, }, false, } -- s8091
+L["使目标的敏捷提高%s点，持续%s sec。"] = { { Stats.Agility, }, false, } -- s8115
+L["使目标的力量提高%s点，持续%s sec。"] = { { Stats.Strength, }, false, } -- s8118
+L["使敌人的智力降低%s点，精神降低%s点，持续%s sec。"] = { { Stats.Intellect, }, { Stats.Spirit, }, false, } -- s8139
+L["能量充满施法者全身，使他的攻击伤害提高%s点，护甲提高%s点，持续%s sec。"] = { { Stats.AverageWeaponDamage, }, { Stats.Armor, }, false, } -- s8191
+L["能量充满施法者全身，使她的攻击伤害提高%s点，护甲提高%s点，持续%s sec。"] = { { Stats.AverageWeaponDamage, }, { Stats.Armor, }, false, } -- s8191
+L["你的体型增大了，同时你的力量也提高了%s点，持续%s sec。"] = { { Stats.Strength, }, false, } -- s8212
+L["使附近所有敌人的护甲降低%s点，持续%s sec。"] = { { Stats.Armor, }, false, } -- s8245
 L["对目标和它身边最近的敌人造成你的武器伤害再加%s点伤害，最多可影响%s个目标，使它们的攻击间隔延长%s%。"] = { false, false, { Stats.MeleeHaste, }, } -- s8255
 L["使所有小队成员获得%s点额外的护甲。每个圣骑士在同一时间内只能开启一种光环，且同类光环的效果无法叠加。"] = { { Stats.Armor, }, } -- s8258
-L["使施法者的攻击速度提高%s%，对敌人造成的物理伤害提高%s点，持续%s。"] = { { Stats.MeleeHaste, }, { Stats.AverageWeaponDamage, }, false, } -- s8269
-L["目标所能造成的伤害降低%s点，持续%s。"] = { { Stats.AverageWeaponDamage, }, false, } -- s8277
-L["使一个盟友对敌人造成的物理伤害提高%s点，持续%s。"] = { { Stats.AverageWeaponDamage, }, false, } -- s8365
-L["使一个盟友的攻击速度提高%s%，持续%s。同时该盟友每%s秒受到%s点自然伤害。"] = { { Stats.MeleeHaste, }, false, false, false, } -- s8699
-L["削弱目标，使其所能造成的伤害减少%s点，任何治疗效果降低%s%，持续%s。"] = { { Stats.AverageWeaponDamage, }, false, false, } -- s9035
+L["使施法者的攻击速度提高%s%，对敌人造成的物理伤害提高%s点，持续%s sec。"] = { { Stats.MeleeHaste, }, { Stats.AverageWeaponDamage, }, false, } -- s8269
+L["目标所能造成的伤害降低%s点，持续%s sec。"] = { { Stats.AverageWeaponDamage, }, false, } -- s8277
+L["使一个盟友对敌人造成的物理伤害提高%s点，持续%s sec。"] = { { Stats.AverageWeaponDamage, }, false, } -- s8365
+L["使一个盟友的攻击速度提高%s%，持续%s sec。同时该盟友每%s秒受到%s点自然伤害。"] = { { Stats.MeleeHaste, }, false, false, false, } -- s8699
+L["削弱目标，使其所能造成的伤害减少%s点，任何治疗效果降低%s%，持续%s sec。"] = { { Stats.AverageWeaponDamage, }, false, false, } -- s9035
 L["使你的远程武器造成爆击的几率提高%s%。"] = { { Stats.MeleeCrit, Stats.RangedCrit, }, } -- s9132
 L["%s 攻击强度。"] = { { Stats.AttackPower, }, } -- s9136
 L["提高所有法术和魔法效果所造成的伤害和治疗效果，最多%s点。"] = { { Stats.SpellDamage, Stats.HealingPower, }, } -- s9342
-L["使施法者不能移动，并使其物理攻击所能造成的伤害提高%s点，持续%s。"] = { { Stats.AverageWeaponDamage, }, false, } -- s9576
+L["使施法者不能移动，并使其物理攻击所能造成的伤害提高%s点，持续%s sec。"] = { { Stats.AverageWeaponDamage, }, false, } -- s9576
 L["%s 护甲。"] = { { Stats.Armor, }, } -- s9760
-L["牺牲施法者的生命，使附近敌人的耐力降低%s点，持续%s。"] = { { Stats.Stamina, }, false, } -- s10251
-L["防御力提高%s点，持续%s。"] = { { Stats.Defense, }, false, } -- s10351
-L["使物理攻击对目标造成的伤害提高%s点，持续%s。可叠加%s次。"] = { { Stats.AverageWeaponDamage, }, false, false, } -- s10370
-L["使目标的攻击间隔延长%s点，持续%s。"] = { { Stats.MeleeHaste, }, false, } -- s10371
-L["诅咒目标，使其所能造成的伤害降低%s点，持续%s"] = { { Stats.AverageWeaponDamage, }, false, } -- s10651
+L["牺牲施法者的生命，使附近敌人的耐力降低%s点，持续%s sec。"] = { { Stats.Stamina, }, false, } -- s10251
+L["防御力提高%s点，持续%s sec。"] = { { Stats.Defense, }, false, } -- s10351
+L["使物理攻击对目标造成的伤害提高%s点，持续%s sec。可叠加%s次。"] = { { Stats.AverageWeaponDamage, }, false, false, } -- s10370
+L["使目标的攻击间隔延长%s点，持续%s sec。"] = { { Stats.MeleeHaste, }, false, } -- s10371
+L["诅咒目标，使其所能造成的伤害降低%s点，持续%s sec"] = { { Stats.AverageWeaponDamage, }, false, } -- s10651
 L["使用后力量提高%s点，效果持续%s分钟。"] = { { Stats.Strength, }, false, } -- s10667
 L["使用后耐力提高%s点，效果持续%s分钟。"] = { { Stats.Stamina, }, false, } -- s10668
 L["使用后敏捷提高%s点，效果持续%s分钟。"] = { { Stats.Agility, }, false, } -- s10669
@@ -471,49 +471,49 @@ L["使用后智力提高%s点。"] = { { Stats.Intellect, }, } -- s10690
 L["使用后精神提高%s点。"] = { { Stats.Spirit, }, } -- s10691
 L["使用后智力提高%s点，效果持续%s分钟。"] = { { Stats.Intellect, }, false, } -- s10692
 L["使用后精神提高%s点，效果持续%s分钟。"] = { { Stats.Spirit, }, false, } -- s10693
-L["使附近的友方机械单位的攻击速度提高%s%，物理伤害提高%s点，持续%s。"] = { { Stats.MeleeHaste, }, { Stats.AverageWeaponDamage, }, false, } -- s10732
+L["使附近的友方机械单位的攻击速度提高%s%，物理伤害提高%s点，持续%s sec。"] = { { Stats.MeleeHaste, }, { Stats.AverageWeaponDamage, }, false, } -- s10732
 L["精神提高%s点。"] = { { Stats.Spirit, }, } -- s10767
-L["使敌人的攻击间隔延长%s%，移动速度降低%s%，持续%s。延迟也会造成断线效果，令敌人昏迷%s。"] = { { Stats.MeleeHaste, }, false, false, false, } -- s10855
-L["使附近敌人的攻击强度降低%s点，持续%s。"] = { { Stats.AttackPower, }, false, } -- s10968
+L["使敌人的攻击间隔延长%s%，移动速度降低%s%，持续%s sec。延迟也会造成断线效果，令敌人昏迷%s sec。"] = { { Stats.MeleeHaste, }, false, false, false, } -- s10855
+L["使附近敌人的攻击强度降低%s点，持续%s sec。"] = { { Stats.AttackPower, }, false, } -- s10968
 L["使你的目标对你的所有法术的抗性降低%s点，并使你的奥术系法术所造成的威胁值降低%s%。"] = { { Stats.SpellPenetration, }, false, } -- s11210
-L["使暗影抗性提高%s点。如果敌人使用近战武器攻击施法者，他们有%s%的几率感染疾病，使得他们在%s内受到物理攻击时承受的伤害提高%s点。阿尔萨斯的礼物的特殊效果持续%s。"] = { { Stats.ShadowResistance, }, false, false, false, false, } -- s11371
-L["使你的法术造成的伤害提高最多%s点，持续%s。"] = { { Stats.SpellDamage, }, false, } -- s11390
-L["对敌人造成普通武器伤害再加上%s点额外伤害，使其力量降低%s点，敏捷降低%s点，持续%s。"] = { false, { Stats.Strength, }, { Stats.Agility, }, false, } -- s11397
-L["使你的力量提高%s点，持续%s。"] = { { Stats.Strength, }, false, } -- s11405
-L["使敌人的攻击间隔延长%s%，移动速度降低%s%，力量降低%s%。持续%s。"] = { { Stats.MeleeHaste, }, false, false, false, } -- s11443
-L["使你的暗影法术造成的伤害提高%s点，持续%s。"] = { { Stats.ShadowDamage, }, false, } -- s11474
-L["以苏萨斯之怒攻击敌人，使其力量降低%s点，造成%s点暗影伤害，并在接下来的%s内对其造成总计%s点额外伤害。"] = { { Stats.Strength, }, false, false, false, } -- s11658
+L["使暗影抗性提高%s点。如果敌人使用近战武器攻击施法者，他们有%s%的几率感染疾病，使得他们在%s sec内受到物理攻击时承受的伤害提高%s点。阿尔萨斯的礼物的特殊效果持续%s sec。"] = { { Stats.ShadowResistance, }, false, false, false, false, } -- s11371
+L["使你的法术造成的伤害提高最多%s点，持续%s sec。"] = { { Stats.SpellDamage, }, false, } -- s11390
+L["对敌人造成普通武器伤害再加上%s点额外伤害，使其力量降低%s点，敏捷降低%s点，持续%s sec。"] = { false, { Stats.Strength, }, { Stats.Agility, }, false, } -- s11397
+L["使你的力量提高%s点，持续%s sec。"] = { { Stats.Strength, }, false, } -- s11405
+L["使敌人的攻击间隔延长%s%，移动速度降低%s%，力量降低%s%。持续%s sec。"] = { { Stats.MeleeHaste, }, false, false, false, } -- s11443
+L["使你的暗影法术造成的伤害提高%s点，持续%s sec。"] = { { Stats.ShadowDamage, }, false, } -- s11474
+L["以苏萨斯之怒攻击敌人，使其力量降低%s点，造成%s点暗影伤害，并在接下来的%s sec内对其造成总计%s点额外伤害。"] = { { Stats.Strength, }, false, false, false, } -- s11658
 L["使目标的护甲降低%s点。"] = { { Stats.Armor, }, } -- s11791
-L["使附近敌人的力量降低%s点，耐力降低%s点，持续%s。"] = { { Stats.Strength, }, { Stats.Stamina, }, false, } -- s11892
-L["击破目标的护甲，每次破甲攻击都会使其护甲值降低%s点，最多可累加%s次，持续%s。"] = { { Stats.Armor, }, false, false, } -- s11971
-L["目标所能造成的伤害降低%s点，持续%s。每个术士只能对一个目标施加一种诅咒。"] = { { Stats.AverageWeaponDamage, }, false, } -- s11980
-L["对附近的敌人造成%s点自然伤害，并使其攻击命中率降低%s%，持续%s。"] = { false, { Stats.MeleeHit, Stats.RangedHit, }, false, } -- s11983
-L["使一个敌人的注意力集中在施法者身上，并使施法者的攻击速度提高%s%，持续%s。在这段时间里，该敌人很难转而攻击其它目标。"] = { { Stats.MeleeHaste, }, false, } -- s12021
+L["使附近敌人的力量降低%s点，耐力降低%s点，持续%s sec。"] = { { Stats.Strength, }, { Stats.Stamina, }, false, } -- s11892
+L["击破目标的护甲，每次破甲攻击都会使其护甲值降低%s点，最多可累加%s次，持续%s sec。"] = { { Stats.Armor, }, false, false, } -- s11971
+L["目标所能造成的伤害降低%s点，持续%s sec。每个术士只能对一个目标施加一种诅咒。"] = { { Stats.AverageWeaponDamage, }, false, } -- s11980
+L["对附近的敌人造成%s点自然伤害，并使其攻击命中率降低%s%，持续%s sec。"] = { false, { Stats.MeleeHit, Stats.RangedHit, }, false, } -- s11983
+L["使一个敌人的注意力集中在施法者身上，并使施法者的攻击速度提高%s%，持续%s sec。在这段时间里，该敌人很难转而攻击其它目标。"] = { { Stats.MeleeHaste, }, false, } -- s12021
 L["使半径%s码范围内的小队成员的耐力提高%s点。"] = { false, { Stats.Stamina, }, } -- s12022
 L["使你的矛和长柄武器造成爆击的几率提高%s%。"] = { { Stats.MeleeCrit, Stats.RangedCrit, }, } -- s12165
-L["使目标残废，对其造成普通伤害再加上%s点伤害，并使其力量降低%s点，持续%s。"] = { false, { Stats.Strength, }, false, } -- s12166
-L["使附近敌人的施法速度降低%s%，攻击间隔延长%s%，持续%s。"] = { { Stats.SpellHaste, }, { Stats.MeleeHaste, }, false, } -- s12255
+L["使目标残废，对其造成普通伤害再加上%s点伤害，并使其力量降低%s点，持续%s sec。"] = { false, { Stats.Strength, }, false, } -- s12166
+L["使附近敌人的施法速度降低%s%，攻击间隔延长%s%，持续%s sec。"] = { { Stats.SpellHaste, }, { Stats.MeleeHaste, }, false, } -- s12255
 L["使你用盾牌格挡攻击的几率提高%s%，在成功格档后有%s%的几率得到%s点怒气。"] = { { Stats.BlockChance, }, false, false, } -- s12298
-L["在你的普通近战攻击打出爆击之后，使你的下%s次近战攻击速度提高%s%。"] = { false, { Stats.MeleeHaste, }, } -- s12319
+L["在你的普通近战攻击打出爆击之后，使你的下%s次近战攻击速度提高%s%。"] = { false, { Stats.MeleeHaste, }, ignoreSum = true } -- s12319
 L["使你用近战武器对敌人造成爆击的几率提高%s%。"] = { { Stats.MeleeCrit, Stats.RangedCrit, }, } -- s12320
-L["使附近敌人的所有属性降低%s点，持续%s。"] = { { Stats.AllStats, }, false, } -- s12530
-L["使护甲提高%s点。如果敌人使用近战武器攻击施法者，他们的移动速度就有可能降低%s%，攻击间隔延长%s%，持续%s。"] = { { Stats.Armor, }, { Stats.MeleeHaste, }, false, false, } -- s12544
-L["使你对目标造成的伤害提高%s点，攻击速度提高%s%，持续%s。"] = { { Stats.AttackPower, }, { Stats.MeleeHaste, }, false, } -- s12686
+L["使附近敌人的所有属性降低%s点，持续%s sec。"] = { { Stats.AllStats, }, false, } -- s12530
+L["使护甲提高%s点。如果敌人使用近战武器攻击施法者，他们的移动速度就有可能降低%s%，攻击间隔延长%s%，持续%s sec。"] = { { Stats.Armor, }, { Stats.MeleeHaste, }, false, false, } -- s12544
+L["使你对目标造成的伤害提高%s点，攻击速度提高%s%，持续%s sec。"] = { { Stats.AttackPower, }, { Stats.MeleeHaste, }, false, } -- s12686
 L["使你的斧类武器造成爆击的几率提高%s%。"] = { { Stats.MeleeCrit, Stats.RangedCrit, }, } -- s12700
 L["使你在普通状态下的生命值和法力值回复提高%s点。"] = { { Stats.GenericManaRegen, }, } -- s12732
-L["护甲值提高%s点，所有抗性提高%s点，免疫恐惧，持续%s。"] = { { Stats.Armor, }, { Stats.FireResistance, Stats.NatureResistance, Stats.FrostResistance, Stats.ShadowResistance, Stats.ArcaneResistance, }, false, } -- s12733
-L["使敌人暂时发疯，攻击速度提高%s%，移动速度提高%s%，并会攻击自己的盟友，持续%s。"] = { { Stats.MeleeHaste, }, false, false, } -- s12888
-L["强迫附近的敌人使用恶魔语，使其所有法术的施放时间延长%s%，持续%s。每个术士只能对一个目标施加一种诅咒。"] = { { Stats.SpellHaste, }, false, } -- s12889
-L["使附近敌人的力量降低%s点，敏捷降低%s点，持续%s，并使它们不能施法。"] = { { Stats.Strength, }, { Stats.Agility, }, false, } -- s12946
+L["护甲值提高%s点，所有抗性提高%s点，免疫恐惧，持续%s sec。"] = { { Stats.Armor, }, { Stats.FireResistance, Stats.NatureResistance, Stats.FrostResistance, Stats.ShadowResistance, Stats.ArcaneResistance, }, false, } -- s12733
+L["使敌人暂时发疯，攻击速度提高%s%，移动速度提高%s%，并会攻击自己的盟友，持续%s sec。"] = { { Stats.MeleeHaste, }, false, false, } -- s12888
+L["强迫附近的敌人使用恶魔语，使其所有法术的施放时间延长%s%，持续%s sec。每个术士只能对一个目标施加一种诅咒。"] = { { Stats.SpellHaste, }, false, } -- s12889
+L["使附近敌人的力量降低%s点，敏捷降低%s点，持续%s sec，并使它们不能施法。"] = { { Stats.Strength, }, { Stats.Agility, }, false, } -- s12946
 L["防御值提高%s点，暗影抗性提高%s点，生命值恢复速度提高。"] = { { Stats.Defense, Stats.HealthRegen, }, { Stats.ShadowResistance, }, } -- s12956
 L["猎人获得灵猴守护，使躲闪几率提高%s%。一个猎人在同一时间内只能激活一种守护。"] = { { Stats.Dodge, }, } -- s13163
 L["猎人获得雄鹰守护，使远程攻击强度提高%s点。一个猎人在同一时间内只能激活一种守护。"] = { { Stats.RangedAttackPower, }, } -- s13165
-L["使小鸡造成的物理伤害提高%s%，攻击速度提高%s%，持续%s。"] = { { Stats.AverageWeaponDamage, }, { Stats.MeleeHaste, }, false, } -- s13168
-L["强迫目标使用恶魔语，使其所有法术的施放时间延长%s%，持续%s。每个术士只能对一个目标施加一种诅咒。"] = { { Stats.SpellHaste, }, false, } -- s13338
-L["使目标的格挡几率降低%s%，持续%s。"] = { { Stats.BlockChance, }, false, } -- s13459
-L["使目标的攻击强度降低%s点，持续%s。"] = { { Stats.GenericAttackPower, }, false, } -- s13490
-L["腐蚀性的酸液，每%s秒对目标造成%s点自然伤害，并使其护甲降低%s点，持续%s。"] = { false, false, { Stats.Armor, }, false, } -- s13526
-L["使目标的力量降低%s点，持续%s。"] = { { Stats.Strength, }, false, } -- s13528
+L["使小鸡造成的物理伤害提高%s%，攻击速度提高%s%，持续%s sec。"] = { { Stats.AverageWeaponDamage, }, { Stats.MeleeHaste, }, false, } -- s13168
+L["强迫目标使用恶魔语，使其所有法术的施放时间延长%s%，持续%s sec。每个术士只能对一个目标施加一种诅咒。"] = { { Stats.SpellHaste, }, false, } -- s13338
+L["使目标的格挡几率降低%s%，持续%s sec。"] = { { Stats.BlockChance, }, false, } -- s13459
+L["使目标的攻击强度降低%s点，持续%s sec。"] = { { Stats.GenericAttackPower, }, false, } -- s13490
+L["腐蚀性的酸液，每%s秒对目标造成%s点自然伤害，并使其护甲降低%s点，持续%s sec。"] = { false, false, { Stats.Armor, }, false, } -- s13526
+L["使目标的力量降低%s点，持续%s sec。"] = { { Stats.Strength, }, false, } -- s13528
 L["使附近小队成员的攻击速度提高%s%。每个圣骑士在同一时间内只能开启一种光环，且同类光环的效果无法叠加。"] = { { Stats.MeleeHaste, }, } -- s13589
 L["提高奥术法术和效果所造成的伤害，最多%s点。"] = { { Stats.ArcaneDamage, }, } -- s13590
 L["使你招架攻击的几率提高%s%。"] = { { Stats.Parry, }, } -- s13665
@@ -522,224 +522,224 @@ L["使你用盾牌格挡攻击的几率提高%s%。"] = { { Stats.BlockChance, }
 L["使你的近战武器击中目标的几率提高%s%。"] = { { Stats.MeleeHit, Stats.RangedHit, }, } -- s13705
 L["使你的拳套造成爆击的几率提高%s%。"] = { { Stats.MeleeCrit, Stats.RangedCrit, }, } -- s13707
 L["使你的招架几率提高%s%。"] = { { Stats.Parry, }, } -- s13713
-L["使火焰抗性提高%s点，受到火焰系攻击时所承受的伤害降低最多%s点，持续%s。"] = { { Stats.FireResistance, }, false, false, } -- s13744
-L["使施法者的护甲提高%s点，暗影抗性提高%s点，同时提升生命值恢复速度，持续%s。"] = { { Stats.Armor, }, { Stats.ShadowResistance, }, false, } -- s13787
-L["使施法者对所有的伤害和法术攻击免疫，持续%s，但是攻击间隔延长%s%。"] = { false, { Stats.MeleeHaste, }, } -- s13874
-L["使你的攻击速度提高%s%。另外还可以对附近的一个额外的敌人造成伤害。持续%s。"] = { { Stats.MeleeHaste, }, false, } -- s13877
-L["腐蚀敌人的护甲，每次生效都使其护甲值降低%s点，可叠加%s次。持续%s。"] = { { Stats.Armor, }, false, false, } -- s14120
+L["使火焰抗性提高%s点，受到火焰系攻击时所承受的伤害降低最多%s点，持续%s sec。"] = { { Stats.FireResistance, }, false, false, } -- s13744
+L["使施法者的护甲提高%s点，暗影抗性提高%s点，同时提升生命值恢复速度，持续%s sec。"] = { { Stats.Armor, }, { Stats.ShadowResistance, }, false, } -- s13787
+L["使施法者对所有的伤害和法术攻击免疫，持续%s sec，但是攻击间隔延长%s%。"] = { false, { Stats.MeleeHaste, }, } -- s13874
+L["使你的攻击速度提高%s%。另外还可以对附近的一个额外的敌人造成伤害。持续%s sec。"] = { { Stats.MeleeHaste, }, false, } -- s13877
+L["腐蚀敌人的护甲，每次生效都使其护甲值降低%s点，可叠加%s次。持续%s sec。"] = { { Stats.Armor, }, false, false, } -- s14120
 L["使你的爆击几率提高%s%。"] = { { Stats.MeleeCrit, Stats.RangedCrit, }, } -- s14138
 L["使你的攻击忽视目标%s点护甲，并使你的割裂技能所造成的伤害提高%s%。削弱目标护甲的效果随着你的等级提高而提高。"] = { { Stats.ArmorPenetration, }, false, } -- s14171
-L["对敌人造成%s%的武器伤害，并使你躲闪攻击的几率提高%s%，持续%s。奖励%s个连击点数。"] = { false, { Stats.Dodge, }, false, false, } -- s14278
-L["使附近敌人的施法速度降低%s%，持续%s。"] = { { Stats.SpellHaste, }, false, } -- s14538
+L["对敌人造成%s%的武器伤害，并使你躲闪攻击的几率提高%s%，持续%s sec。奖励%s个连击点数。"] = { false, { Stats.Dodge, }, false, false, } -- s14278
+L["使附近敌人的施法速度降低%s%，持续%s sec。"] = { { Stats.SpellHaste, }, false, } -- s14538
 L["%s 火焰抗性。"] = { { Stats.FireResistance, }, } -- s14540
 L["%s 冰霜抗性。"] = { { Stats.FrostResistance, }, } -- s14541
 L["%s 自然抗性。"] = { { Stats.NatureResistance, }, } -- s14622
 L["%s 暗影抗性。"] = { { Stats.ShadowResistance, }, } -- s14663
 L["%s 奥术抗性。"] = { { Stats.ArcaneResistance, }, } -- s14664
-L["使施法者对敌人造成的伤害提高%s点，持续%s。"] = { { Stats.AverageWeaponDamage, Stats.FireDamage, }, false, } -- s14744
-L["圣洁的能量充满目标全身，令其精神提高%s点，持续%s。"] = { { Stats.Spirit, }, false, } -- s14752
-L["使一个盟友的火焰抗性提高%s点，持续%s。"] = { { Stats.FireResistance, }, false, } -- s15123
+L["使施法者对敌人造成的伤害提高%s点，持续%s sec。"] = { { Stats.AverageWeaponDamage, Stats.FireDamage, }, false, } -- s14744
+L["圣洁的能量充满目标全身，令其精神提高%s点，持续%s sec。"] = { { Stats.Spirit, }, false, } -- s14752
+L["使一个盟友的火焰抗性提高%s点，持续%s sec。"] = { { Stats.FireResistance, }, false, } -- s15123
 L["使半径%s码范围内的友方单位的攻击速度提高%s%。"] = { false, { Stats.MeleeHaste, }, } -- s15167
-L["使敌方目标的护甲降低%s点，持续%s。"] = { { Stats.Armor, }, false, } -- s15235
-L["使一个盟友使用魔法攻击对敌人造成的伤害提高%s点，持续%s。"] = { { Stats.SpellDamage, }, false, } -- s15288
-L["打出爆击的几率提高%s%，所有属性提高%s点，持续%s。"] = { { Stats.MeleeCrit, Stats.RangedCrit, Stats.SpellCrit, }, { Stats.AllStats, }, false, } -- s15366
+L["使敌方目标的护甲降低%s点，持续%s sec。"] = { { Stats.Armor, }, false, } -- s15235
+L["使一个盟友使用魔法攻击对敌人造成的伤害提高%s点，持续%s sec。"] = { { Stats.SpellDamage, }, false, } -- s15288
+L["打出爆击的几率提高%s%，所有属性提高%s点，持续%s sec。"] = { { Stats.MeleeCrit, Stats.RangedCrit, Stats.SpellCrit, }, { Stats.AllStats, }, false, } -- s15366
 L["使你击中目标的几率提高%s%。"] = { { Stats.MeleeHit, Stats.RangedHit, }, } -- s15464
-L["使敌人无法移动，攻击间隔延长%s%且不能施法，持续%s。"] = { { Stats.MeleeHaste, }, false, } -- s15471
+L["使敌人无法移动，攻击间隔延长%s%且不能施法，持续%s sec。"] = { { Stats.MeleeHaste, }, false, } -- s15471
 L["每次破甲攻击都使附近敌人的护甲降低%s点，可叠加%s次。"] = { { Stats.Armor, }, false, } -- s15502
-L["攻击强度提高%s点，持续%s。"] = { { Stats.GenericAttackPower, Stats.RangedAttackPower, }, false, } -- s60065
-L["使一个盟友被冰霜包围，持续%s。厚重的冰霜使护甲值提高%s点，令使用近战武器击中被保护者的敌人的移动速度降低%s%，并使它们的攻击间隔延长%s%。"] = { false, { Stats.Armor, }, { Stats.MeleeHaste, }, false, } -- s15784
+L["攻击强度提高%s点，持续%s sec。"] = { { Stats.GenericAttackPower, Stats.RangedAttackPower, }, false, } -- s60065
+L["使一个盟友被冰霜包围，持续%s sec。厚重的冰霜使护甲值提高%s点，令使用近战武器击中被保护者的敌人的移动速度降低%s%，并使它们的攻击间隔延长%s%。"] = { false, { Stats.Armor, }, { Stats.MeleeHaste, }, false, } -- s15784
 L["对所有魔法的抗性提高%s点。"] = { { Stats.FireResistance, Stats.NatureResistance, Stats.FrostResistance, Stats.ShadowResistance, Stats.ArcaneResistance, }, } -- s15967
 L["使你的法术和近战攻击命中目标的几率提高%s%。"] = { { Stats.MeleeHit, Stats.RangedHit, Stats.SpellHit, }, } -- s16180
-L["给目标施加鲁莽的诅咒，使其攻击强度提高%s点，但护甲降低%s点，持续%s。被诅咒的敌人不会逃跑，也不会受到恐惧的影响。每个术士只能对一个目标施加一种诅咒，且同类诅咒不能叠加。"] = { { Stats.AttackPower, }, { Stats.Armor, }, false, } -- s16231
+L["给目标施加鲁莽的诅咒，使其攻击强度提高%s点，但护甲降低%s点，持续%s sec。被诅咒的敌人不会逃跑，也不会受到恐惧的影响。每个术士只能对一个目标施加一种诅咒，且同类诅咒不能叠加。"] = { { Stats.AttackPower, }, { Stats.Armor, }, false, } -- s16231
 L["使你用盾牌格挡攻击的几率提高%s%，格挡成功所减免的伤害量提高%s%。"] = { { Stats.BlockChance, }, false, } -- s16253
 L["使你的武器造成爆击的几率提高%s%。"] = { { Stats.MeleeCrit, Stats.RangedCrit, }, } -- s16255
-L["在你打出爆击之后，使你的下%s次近战攻击速度提高%s%。"] = { false, { Stats.MeleeHaste, }, } -- s16256
-L["使目标的躲闪几率提高%s%，持续%s。"] = { { Stats.Dodge, }, false, } -- s16321
-L["使你的冰霜抗性提高%s点，持续%s。"] = { { Stats.FrostResistance, }, false, } -- s16325
-L["使你的火焰抗性提高%s点，持续%s。"] = { { Stats.FireResistance, }, false, } -- s16326
-L["使你的攻击强度提高%s点，持续%s。"] = { { Stats.GenericAttackPower, }, false, } -- s16329
-L["使一个敌人的暗影抗性降低%s点，持续%s。"] = { { Stats.ShadowResistance, }, false, } -- s16429
-L["使敌人的躲闪几率降低%s%，持续%s。"] = { { Stats.Dodge, }, false, } -- s16448
-L["使敌人的近战攻击强度降低%s点，远程攻击强度降低%s点，持续%s。"] = { { Stats.GenericAttackPower, }, false, false, } -- s16449
-L["对目标造成%s点火焰伤害，并使其在受到火焰系技能的攻击时所承受的伤害提高%s点，持续%s。"] = { false, { Stats.FireDamage, }, false, } -- s16454
-L["使一个敌人的移动速度降低%s%，它所能造成的物理和魔法降低%s点。持续%s。"] = { false, { Stats.SpellDamage, }, false, } -- s16458
-L["使敌人用近战武器造成爆击的几率降低%s%，用法术造成爆击的几率降低%s%，持续%s。"] = { { Stats.MeleeCrit, Stats.RangedCrit, }, { Stats.SpellCrit, }, false, } -- s16460
-L["护甲值提高%s点，持续%s。在法术生效期间不能施法或攻击。"] = { { Stats.Armor, }, false, } -- s16470
-L["使盟友对敌人造成暗影伤害的能力提高%s点，持续%s。"] = { { Stats.ShadowDamage, }, false, } -- s16587
+L["在你打出爆击之后，使你的下%s次近战攻击速度提高%s%。"] = { false, { Stats.MeleeHaste, }, ignoreSum = true } -- s16256
+L["使目标的躲闪几率提高%s%，持续%s sec。"] = { { Stats.Dodge, }, false, } -- s16321
+L["使你的冰霜抗性提高%s点，持续%s sec。"] = { { Stats.FrostResistance, }, false, } -- s16325
+L["使你的火焰抗性提高%s点，持续%s sec。"] = { { Stats.FireResistance, }, false, } -- s16326
+L["使你的攻击强度提高%s点，持续%s sec。"] = { { Stats.GenericAttackPower, }, false, } -- s16329
+L["使一个敌人的暗影抗性降低%s点，持续%s sec。"] = { { Stats.ShadowResistance, }, false, } -- s16429
+L["使敌人的躲闪几率降低%s%，持续%s sec。"] = { { Stats.Dodge, }, false, } -- s16448
+L["使敌人的近战攻击强度降低%s点，远程攻击强度降低%s点，持续%s sec。"] = { { Stats.GenericAttackPower, }, false, false, } -- s16449
+L["对目标造成%s点火焰伤害，并使其在受到火焰系技能的攻击时所承受的伤害提高%s点，持续%s sec。"] = { false, { Stats.FireDamage, }, false, } -- s16454
+L["使一个敌人的移动速度降低%s%，它所能造成的物理和魔法降低%s点。持续%s sec。"] = { false, { Stats.SpellDamage, }, false, } -- s16458
+L["使敌人用近战武器造成爆击的几率降低%s%，用法术造成爆击的几率降低%s%，持续%s sec。"] = { { Stats.MeleeCrit, Stats.RangedCrit, }, { Stats.SpellCrit, }, false, } -- s16460
+L["护甲值提高%s点，持续%s sec。在法术生效期间不能施法或攻击。"] = { { Stats.Armor, }, false, } -- s16470
+L["使盟友对敌人造成暗影伤害的能力提高%s点，持续%s sec。"] = { { Stats.ShadowDamage, }, false, } -- s16587
 L["生命值提高%s点。近战攻击速度提高%s%。每%s秒回复%s点法力值。"] = { { Stats.Health, }, { Stats.MeleeHaste, }, false, { Stats.GenericManaRegen, }, } -- s16609
-L["耐力提高%s点，持续%s。"] = { { Stats.Stamina, }, false, } -- s16617
-L["使施法者对敌人造成的物理伤害提高%s点，攻击速度提高%s%，持续%s。"] = { { Stats.AverageWeaponDamage, }, { Stats.MeleeHaste, }, false, } -- s16789
+L["耐力提高%s点，持续%s sec。"] = { { Stats.Stamina, }, false, } -- s16617
+L["使施法者对敌人造成的物理伤害提高%s点，攻击速度提高%s%，持续%s sec。"] = { { Stats.AverageWeaponDamage, }, { Stats.MeleeHaste, }, false, } -- s16789
 L["使敌人受到冷木诅咒，魔法抗性降低%s点。可叠加%s次。"] = { { Stats.FireResistance, Stats.NatureResistance, Stats.FrostResistance, Stats.ShadowResistance, Stats.ArcaneResistance, }, false, } -- s16871
-L["使你的力量提高%s点，耐力提高%s点，体型增大，持续%s。"] = { { Stats.Strength, }, { Stats.Stamina, }, false, } -- s16883
-L["使你的法术造成的伤害提高%s点，持续%s。"] = { { Stats.SpellDamage, }, false, } -- s16889
-L["在指定区域制造一场强烈的风暴，对该区域中的所有敌人每%s秒造成%s点自然伤害，并使其攻击间隔延长%s%，持续%s。德鲁伊必须引导法术的能量以维持此效果。"] = { false, false, { Stats.MeleeHaste, }, false, } -- s16914
-L["为自己回复%s点生命值，并使力量提高%s点，持续%s。"] = { false, { Stats.Strength, }, false, } -- s16916
-L["目标的移动速度降低%s%，攻击间隔延长%s%。持续%s。"] = { false, { Stats.MeleeHaste, }, false, } -- s16927
+L["使你的力量提高%s点，耐力提高%s点，体型增大，持续%s sec。"] = { { Stats.Strength, }, { Stats.Stamina, }, false, } -- s16883
+L["使你的法术造成的伤害提高%s点，持续%s sec。"] = { { Stats.SpellDamage, }, false, } -- s16889
+L["在指定区域制造一场强烈的风暴，对该区域中的所有敌人每%s秒造成%s点自然伤害，并使其攻击间隔延长%s%，持续%s sec。德鲁伊必须引导法术的能量以维持此效果。"] = { false, false, { Stats.MeleeHaste, }, false, } -- s16914
+L["为自己回复%s点生命值，并使力量提高%s点，持续%s sec。"] = { false, { Stats.Strength, }, false, } -- s16916
+L["目标的移动速度降低%s%，攻击间隔延长%s%。持续%s sec。"] = { false, { Stats.MeleeHaste, }, false, } -- s16927
 L["敌人的护甲值降低%s点，可叠加%s次。"] = { { Stats.Armor, }, false, } -- s16928
-L["队友的爆击率提高%s%，持续%s。"] = { { Stats.MeleeCrit, Stats.RangedCrit, }, false, } -- s16939
+L["队友的爆击率提高%s%，持续%s sec。"] = { { Stats.MeleeCrit, Stats.RangedCrit, }, false, } -- s16939
 L["使你在猎豹、熊或巨熊形态下的爆击几率提高%s%。"] = { { Stats.MeleeCrit, Stats.RangedCrit, }, } -- s16942
 L["敏捷提高%s点。"] = { { Stats.Agility, }, } -- s17013
-L["使你的近战攻击强度提高%s点，体型增大，持续%s。"] = { { Stats.AttackPower, }, false, } -- s17038
-L["对目标造成%s点伤害，并使它们的智力值降低%s点，持续%s。"] = { false, { Stats.Intellect, }, false, } -- s17148
-L["自然抗性提高%s点，并对任何使近战攻击者造成%s点自然伤害。持续%s。"] = { { Stats.NatureResistance, }, false, false, } -- s17154
-L["使一个盟友的奥术抗性提高%s点，持续%s。"] = { { Stats.ArcaneResistance, }, false, } -- s17175
+L["使你的近战攻击强度提高%s点，体型增大，持续%s sec。"] = { { Stats.AttackPower, }, false, } -- s17038
+L["对目标造成%s点伤害，并使它们的智力值降低%s点，持续%s sec。"] = { false, { Stats.Intellect, }, false, } -- s17148
+L["自然抗性提高%s点，并对任何使近战攻击者造成%s点自然伤害。持续%s sec。"] = { { Stats.NatureResistance, }, false, false, } -- s17154
+L["使一个盟友的奥术抗性提高%s点，持续%s sec。"] = { { Stats.ArcaneResistance, }, false, } -- s17175
 L["defense %s. consider yourself born again hardcore!"] = { { Stats.Defense, }, } -- s17178
-L["使施法者身边半径%s码范围内的敌人的所有属性降低%s点，每%s秒对它们造成%s点自然伤害，持续%s。"] = { false, { Stats.AllStats, }, false, false, false, } -- s17196
-L["使施法者的近战攻击强度提高%s点，持续%s。"] = { { Stats.AttackPower, }, false, } -- s17205
-L["控制一个等级不高于%s级的敌对人型生物，持续%s。使其生命值上限提高%s%。"] = { false, false, { Stats.Health, }, } -- s17244
-L["火焰抗性提高%s点，并对任何使用近战武器击中你的敌人造成%s点火焰伤害，持续%s。"] = { { Stats.FireResistance, }, false, false, } -- s17275
+L["使施法者身边半径%s码范围内的敌人的所有属性降低%s点，每%s秒对它们造成%s点自然伤害，持续%s sec。"] = { false, { Stats.AllStats, }, false, false, false, } -- s17196
+L["使施法者的近战攻击强度提高%s点，持续%s sec。"] = { { Stats.AttackPower, }, false, } -- s17205
+L["控制一个等级不高于%s级的敌对人型生物，持续%s sec。使其生命值上限提高%s%。"] = { false, false, { Stats.Health, }, } -- s17244
+L["火焰抗性提高%s点，并对任何使用近战武器击中你的敌人造成%s点火焰伤害，持续%s sec。"] = { { Stats.FireResistance, }, false, false, } -- s17275
 L["使目标的护甲降低%s点，可叠加%s次。"] = { { Stats.Armor, }, false, } -- s17315
-L["使目标的施法速度、近战和远程攻击的攻击间隔延长%s%，持续%s。"] = { { Stats.SpellHaste, }, false, } -- s17331
-L["有%s%的几率在被击中后使你的格挡几率提高%s%，持续%s秒。"] = { false, { Stats.BlockChance, }, false, } -- s17350
+L["使目标的施法速度、近战和远程攻击的攻击间隔延长%s%，持续%s sec。"] = { { Stats.SpellHaste, }, false, } -- s17331
+L["有%s%的几率在被击中后使你的格挡几率提高%s%，持续%s秒。"] = { false, { Stats.BlockChance, }, false, ignoreSum = true } -- s17350
 L["格挡几率提高%s%。"] = { { Stats.BlockChance, }, } -- s17351
-L["使目标的攻击强度降低%s点，并使你获得等量的精神值。持续%s。"] = { { Stats.GenericAttackPower, }, false, } -- s17494
-L["使目标的所有属性降低%s点，持续%s。"] = { { Stats.AllStats, }, false, } -- s17505
-L["怒气值提高%s点，力量提高%s点，持续%s。"] = { false, { Stats.Strength, }, false, } -- s17528
-L["智力和精神提高%s点，持续%s。"] = { { Stats.Intellect, Stats.Spirit, }, false, } -- s17535
-L["使你的力量和耐力提高%s点，持续%s。"] = { { Stats.Strength, Stats.Stamina, }, false, } -- s17537
-L["使敏捷提高%s点，打出爆击的几率提高%s%，持续%s。"] = { { Stats.Agility, }, { Stats.MeleeCrit, Stats.RangedCrit, }, false, } -- s17538
-L["使玩家的生命值上限提高%s点，持续%s。你在同一时间内只能保有一种合剂的效果，这种效果在死亡后仍可继续存在。"] = { { Stats.Health, }, false, } -- s17626
-L["使玩家的法力值上限提高%s点，持续%s。你在同一时间内只能保有一种合剂的效果，这种效果在死亡后仍可继续存在。"] = { { Stats.Mana, }, false, } -- s17627
-L["使法术和魔法效果所造成的伤害提高最多%s点，持续%s。你在同一时间内只能保有一种合剂的效果，这种效果在死亡后仍可继续存在。"] = { { Stats.SpellDamage, }, false, } -- s17628
-L["使你对所有魔法的抗性提高%s点，持续%s。你在同一时间内只能保有一种合剂的效果，但该效果可以和任何提高抗性的法术和物品所提供的效果共存，且在死亡后仍可继续存在。"] = { { Stats.FireResistance, Stats.NatureResistance, Stats.FrostResistance, Stats.ShadowResistance, Stats.ArcaneResistance, }, false, } -- s17629
-L["使一个盟友的施法速度提高%s%，持续%s。"] = { { Stats.SpellHaste, }, false, } -- s17633
-L["施法者被光环包围，周期性地使附近敌方的暗影抗性降低%s点。光环一直持续，直到主动取消。"] = { { Stats.ShadowResistance, }, } -- s17695
-L["对目标施放诅咒，使其暗影和奥术抗性降低%s点，受到暗影和奥术系攻击时所承受的伤害提高%s%，效果持续%s。每个术士只能对一个目标施加一种诅咒，且同类诅咒不能叠加。"] = { { Stats.ShadowResistance, Stats.ArcaneResistance, }, false, false, } -- s17862
-L["使一个敌人和它附近盟友的护甲值降低，可最多影响%s个目标。每次破甲都会令所有目标的护甲降低%s点，可叠加%s次。持续%s。"] = { false, { Stats.Armor, }, false, false, } -- s17963
-L["被击中之后有%s%的几率使你获得荆棘之盾，对攻击者造成%s点自然伤害，并使你的自然抗性提高%s点，持续%s。"] = { false, false, { Stats.NatureResistance, }, false, } -- s18097
-L["使施法者被冰霜包围，持续%s。厚重的冰霜使护甲值提高%s点，令使用近战武器击中被保护者的敌人的移动速度降低%s%，并使它们的攻击间隔延长%s%。"] = { false, { Stats.Armor, }, false, { Stats.MeleeHaste, }, } -- s18100
-L["在%s内恢复总计%s点法力值，在喝水的时候必须保持坐姿。另外你还将得到%s点精神值的加成，持续%s。"] = { false, { Stats.GenericManaRegen, }, { Stats.Spirit, }, false, } -- s18140
-L["在%s内恢复总计%s点生命值，进食时必须保持坐姿。如果你花费至少%s秒钟来进食，你的敏捷将提高$%ss点，持续%s。"] = { false, { Stats.Agility, }, false, false, false, } -- s18230
+L["使目标的攻击强度降低%s点，并使你获得等量的精神值。持续%s sec。"] = { { Stats.GenericAttackPower, }, false, } -- s17494
+L["使目标的所有属性降低%s点，持续%s sec。"] = { { Stats.AllStats, }, false, } -- s17505
+L["怒气值提高%s点，力量提高%s点，持续%s sec。"] = { false, { Stats.Strength, }, false, } -- s17528
+L["智力和精神提高%s点，持续%s sec。"] = { { Stats.Intellect, Stats.Spirit, }, false, } -- s17535
+L["使你的力量和耐力提高%s点，持续%s sec。"] = { { Stats.Strength, Stats.Stamina, }, false, } -- s17537
+L["使敏捷提高%s点，打出爆击的几率提高%s%，持续%s sec。"] = { { Stats.Agility, }, { Stats.MeleeCrit, Stats.RangedCrit, }, false, } -- s17538
+L["使玩家的生命值上限提高%s点，持续%s sec。你在同一时间内只能保有一种合剂的效果，这种效果在死亡后仍可继续存在。"] = { { Stats.Health, }, false, } -- s17626
+L["使玩家的法力值上限提高%s点，持续%s sec。你在同一时间内只能保有一种合剂的效果，这种效果在死亡后仍可继续存在。"] = { { Stats.Mana, }, false, } -- s17627
+L["使法术和魔法效果所造成的伤害提高最多%s点，持续%s sec。你在同一时间内只能保有一种合剂的效果，这种效果在死亡后仍可继续存在。"] = { { Stats.SpellDamage, }, false, } -- s17628
+L["使你对所有魔法的抗性提高%s点，持续%s sec。你在同一时间内只能保有一种合剂的效果，但该效果可以和任何提高抗性的法术和物品所提供的效果共存，且在死亡后仍可继续存在。"] = { { Stats.FireResistance, Stats.NatureResistance, Stats.FrostResistance, Stats.ShadowResistance, Stats.ArcaneResistance, }, false, } -- s17629
+L["使一个盟友的施法速度提高%s%，持续%s sec。"] = { { Stats.SpellHaste, }, false, } -- s17633
+L["施法者被光环包围，周期性地使附近敌方的暗影抗性降低%s点。光环一直持续，直到主动取消。"] = { { Stats.ShadowResistance, }, ignoreSum = true } -- s17695
+L["对目标施放诅咒，使其暗影和奥术抗性降低%s点，受到暗影和奥术系攻击时所承受的伤害提高%s%，效果持续%s sec。每个术士只能对一个目标施加一种诅咒，且同类诅咒不能叠加。"] = { { Stats.ShadowResistance, Stats.ArcaneResistance, }, false, false, } -- s17862
+L["使一个敌人和它附近盟友的护甲值降低，可最多影响%s个目标。每次破甲都会令所有目标的护甲降低%s点，可叠加%s次。持续%s sec。"] = { false, { Stats.Armor, }, false, false, } -- s17963
+L["被击中之后有%s%的几率使你获得荆棘之盾，对攻击者造成%s点自然伤害，并使你的自然抗性提高%s点，持续%s sec。"] = { false, false, { Stats.NatureResistance, }, false, ignoreSum = true } -- s18097
+L["使施法者被冰霜包围，持续%s sec。厚重的冰霜使护甲值提高%s点，令使用近战武器击中被保护者的敌人的移动速度降低%s%，并使它们的攻击间隔延长%s%。"] = { false, { Stats.Armor, }, false, { Stats.MeleeHaste, }, } -- s18100
+L["在%s sec内恢复总计%s点法力值，在喝水的时候必须保持坐姿。另外你还将得到%s点精神值的加成，持续%s sec。"] = { false, { Stats.GenericManaRegen, }, { Stats.Spirit, }, false, } -- s18140
+L["在%s sec内恢复总计%s点生命值，进食时必须保持坐姿。如果你花费至少%s秒钟来进食，你的敏捷将提高$%ss点，持续%s sec。"] = { false, { Stats.Agility, }, false, false, false, ignoreSum = true } -- s18230
 L["使半径%s码范围内的小队成员的智力提高%s点。"] = { false, { Stats.Intellect, }, } -- s18264
 L["每%s秒回复%s点法力值。"] = { false, { Stats.GenericManaRegen, }, } -- s18378
-L["使敌人的攻击强度降低%s点，持续%s。"] = { { Stats.GenericAttackPower, }, false, } -- s18381
-L["钉刺敌人，使其力量和敏捷降低%s点，持续%s。"] = { { Stats.Strength, Stats.Agility, }, false, } -- s18545
-L["使施法者不能移动，但使其攻击速度提高%s%，持续%s。"] = { { Stats.MeleeHaste, }, false, } -- s18546
+L["使敌人的攻击强度降低%s点，持续%s sec。"] = { { Stats.GenericAttackPower, }, false, } -- s18381
+L["钉刺敌人，使其力量和敏捷降低%s点，持续%s sec。"] = { { Stats.Strength, Stats.Agility, }, false, } -- s18545
+L["使施法者不能移动，但使其攻击速度提高%s%，持续%s sec。"] = { { Stats.MeleeHaste, }, false, } -- s18546
 L["%s 所有魔法抗性。"] = { { Stats.FireResistance, Stats.NatureResistance, Stats.FrostResistance, Stats.ShadowResistance, Stats.ArcaneResistance, }, } -- s18672
-L["在战斗中被敌人击中之后有%s%的几率以白骨保护施法者，使其护甲提高%s点，持续%s。"] = { false, { Stats.Armor, }, false, } -- s18828
-L["激活之后，使你的躲闪和招架几率提高%s%，持续%s。"] = { { Stats.Parry, Stats.Dodge, }, false, } -- s19263
+L["在战斗中被敌人击中之后有%s%的几率以白骨保护施法者，使其护甲提高%s点，持续%s sec。"] = { false, { Stats.Armor, }, false, } -- s18828
+L["激活之后，使你的躲闪和招架几率提高%s%，持续%s sec。"] = { { Stats.Parry, Stats.Dodge, }, false, } -- s19263
 L["使你的攻击命中敌人的几率提高%s%，并使你抵抗移动限制效果的几率提高%s%。"] = { { Stats.MeleeHit, Stats.RangedHit, }, false, } -- s19290
-L["使敌人的施法速度降低%s%，攻击间隔延长%s%，持续%s。"] = { { Stats.SpellHaste, }, { Stats.MeleeHaste, Stats.RangedHaste, }, false, } -- s19365
-L["使附近敌人的火焰抗性降低%s点，持续%s。"] = { { Stats.FireResistance, }, false, } -- s19366
+L["使敌人的施法速度降低%s%，攻击间隔延长%s%，持续%s sec。"] = { { Stats.SpellHaste, }, { Stats.MeleeHaste, Stats.RangedHaste, }, false, } -- s19365
+L["使附近敌人的火焰抗性降低%s点，持续%s sec。"] = { { Stats.FireResistance, }, false, } -- s19366
 L["使你的所有攻击造成爆击的几率提高%s%。"] = { { Stats.MeleeCrit, Stats.RangedCrit, }, } -- s19370
-L["恶魔的力量玷污地狱猎犬的血液，持续%s。如果它被近战攻击打中，则攻击者会损失%s点近战攻击强度，持续%s。腐坏之血的效果可以对单一目标叠加%s次。"] = { false, { Stats.AttackPower, }, false, false, } -- s19478
-L["使半径%s码范围内的小队成员的远程攻击强度提高%s点，并使猎人的远程攻击强度额外提高%s点。持续%s。"] = { false, { Stats.GenericAttackPower, }, { Stats.RangedAttackPower, }, false, } -- s19506
-L["使半径%s码范围内的小队成员的攻击强度提高%s点，并使猎人的远程攻击强度额外提高%s点。持续%s。"] = { false, { Stats.GenericAttackPower, }, { Stats.RangedAttackPower, }, false, } -- s19506
-L["使半径%s码范围内的小队成员的远程攻击强度提高%s点。持续%s。"] = { false, { Stats.GenericAttackPower, }, false, } -- s19506
-L["使半径%s码范围内的小队成员的攻击强度提高%s点。持续%s。"] = { false, { Stats.GenericAttackPower, }, false, } -- s19506
-L["使你的宠物在造成爆击之后攻击速度提高%s%，持续%s。"] = { { Stats.MeleeHaste, }, false, } -- s19615
-L["所有魔法抗性提高%s点，持续%s。"] = { { Stats.FireResistance, Stats.NatureResistance, Stats.FrostResistance, Stats.ShadowResistance, Stats.ArcaneResistance, }, false, } -- s19638
-L["为友方目标施加祝福，使其近战攻击强度提高%s，持续%s。每个圣骑士在同一时间内只能给目标施加一种祝福，同类型的祝福不能重叠。"] = { { Stats.AttackPower, }, false, } -- s19740
-L["使附近敌人的近战和远程攻击强度降低%s点，持续%s。"] = { { Stats.GenericAttackPower, }, false, } -- s19778
-L["使一个盟友对敌人造成的物理伤害提高%s%，攻击速度提高%s%，持续%s。"] = { false, { Stats.MeleeHaste, }, false, } -- s19779
-L["使你在遭受爆击之后使用盾牌格挡攻击的几率提高%s%。持续%s或格挡%s次攻击。"] = { { Stats.BlockChance, }, false, false, } -- s20127
-L["十字军的灵魂充满圣骑士的体内，持续%s，使其近战攻击强度提高%s点。圣骑士的攻击速度也提高%s%，但攻击时所造成的伤害会降低。圣骑士在同一时间内只能激活一种圣印。\n释放这种圣印的能量将对目标造成审判效果，持续%s。神圣系的伤害性法术对被审判的目标造成最多%s点额外的神圣伤害。你的近战攻击将使得该法术的持续时间延长。每个圣骑士在同一时间内只能给目标施加一种审判效果，同类型的审判不能重叠。"] = { false, { Stats.AttackPower, }, false, false, false, } -- s20162
+L["恶魔的力量玷污地狱猎犬的血液，持续%s sec。如果它被近战攻击打中，则攻击者会损失%s点近战攻击强度，持续%s sec。腐坏之血的效果可以对单一目标叠加%s次。"] = { false, { Stats.AttackPower, }, false, false, ignoreSum = true } -- s19478
+L["使半径%s码范围内的小队成员的远程攻击强度提高%s点，并使猎人的远程攻击强度额外提高%s点。持续%s sec。"] = { false, { Stats.GenericAttackPower, }, { Stats.RangedAttackPower, }, false, } -- s19506
+L["使半径%s码范围内的小队成员的攻击强度提高%s点，并使猎人的远程攻击强度额外提高%s点。持续%s sec。"] = { false, { Stats.GenericAttackPower, }, { Stats.RangedAttackPower, }, false, } -- s19506
+L["使半径%s码范围内的小队成员的远程攻击强度提高%s点。持续%s sec。"] = { false, { Stats.GenericAttackPower, }, false, } -- s19506
+L["使半径%s码范围内的小队成员的攻击强度提高%s点。持续%s sec。"] = { false, { Stats.GenericAttackPower, }, false, } -- s19506
+L["使你的宠物在造成爆击之后攻击速度提高%s%，持续%s sec。"] = { { Stats.MeleeHaste, }, false, } -- s19615
+L["所有魔法抗性提高%s点，持续%s sec。"] = { { Stats.FireResistance, Stats.NatureResistance, Stats.FrostResistance, Stats.ShadowResistance, Stats.ArcaneResistance, }, false, } -- s19638
+L["为友方目标施加祝福，使其近战攻击强度提高%s，持续%s sec。每个圣骑士在同一时间内只能给目标施加一种祝福，同类型的祝福不能重叠。"] = { { Stats.AttackPower, }, false, } -- s19740
+L["使附近敌人的近战和远程攻击强度降低%s点，持续%s sec。"] = { { Stats.GenericAttackPower, }, false, } -- s19778
+L["使一个盟友对敌人造成的物理伤害提高%s%，攻击速度提高%s%，持续%s sec。"] = { false, { Stats.MeleeHaste, }, false, } -- s19779
+L["使你在遭受爆击之后使用盾牌格挡攻击的几率提高%s%。持续%s sec或格挡%s次攻击。"] = { { Stats.BlockChance, }, false, false, ignoreSum = true } -- s20127
+L["十字军的灵魂充满圣骑士的体内，持续%s sec，使其近战攻击强度提高%s点。圣骑士的攻击速度也提高%s%，但攻击时所造成的伤害会降低。圣骑士在同一时间内只能激活一种圣印。\n释放这种圣印的能量将对目标造成审判效果，持续%s sec。神圣系的伤害性法术对被审判的目标造成最多%s点额外的神圣伤害。你的近战攻击将使得该法术的持续时间延长。每个圣骑士在同一时间内只能给目标施加一种审判效果，同类型的审判不能重叠。"] = { false, { Stats.AttackPower, }, false, false, false, } -- s20162
 L["自然抗性提高%s点。"] = { { Stats.NatureResistance, }, } -- s20551
 L["暗影抗性提高%s点。"] = { { Stats.ShadowResistance, }, } -- s20579
 L["躲闪几率提高%s%。"] = { { Stats.Dodge, }, } -- s20582
-L["使你的耐力提高%s点，受到物理攻击时承受的伤害降低%s点，持续%s。同时也使你的力量和敏捷降低%s点，受到魔法攻击时承受的伤害提高最多%s点。"] = { { Stats.Stamina, }, false, false, false, false, } -- s20587
+L["使你的耐力提高%s点，受到物理攻击时承受的伤害降低%s点，持续%s sec。同时也使你的力量和敏捷降低%s点，受到魔法攻击时承受的伤害提高最多%s点。"] = { { Stats.Stamina, }, false, false, false, false, } -- s20587
 L["奥术抗性提高%s点。"] = { { Stats.ArcaneResistance, }, } -- s20592
 L["冰霜抗性提高%s点。"] = { { Stats.FrostResistance, }, } -- s20596
 L["法杖技能提高%s点。"] = { { Stats.WeaponSkill, }, } -- s20607
-L["每%s秒为一个盟友治疗%s点伤害，并令其护甲值提高%s点，持续%s。"] = { false, false, { Stats.Armor, }, false, } -- s20655
-L["控制一个等级不高于%s级的敌对人型生物，持续%s。使其所能造成的魔法伤害提高%s点，并使其所能造成的物理伤害提高%s点。"] = { false, false, { Stats.SpellDamage, }, { Stats.AverageWeaponDamage, }, } -- s20668
-L["使施法者的护甲值提高%s点，生命值回复速度提高，持续%s。"] = { { Stats.Armor, }, false, } -- s20798
-L["被击中之后有%s%的几率使所有队友的护甲值提高%s点，持续%s。"] = { false, { Stats.Armor, }, false, } -- s20847
-L["使你的耐力提高%s点，持续%s，并使你酩酊大醉！"] = { { Stats.Stamina, }, false, } -- s20875
-L["征服等级不高于%s级的恶魔，强制它听从你的命令。在被征服的状态下，恶魔的攻击间隔延长%s%，施法速度降低%s%。征服效果最多持续%s。"] = { false, { Stats.MeleeHaste, }, { Stats.SpellHaste, }, false, } -- s20882
-L["使你的格挡几率提高%s%，持续%s。在此期间每次成功格挡都会对攻击者造成%s点神圣伤害。神圣之盾造成的伤害额外产生%s%的威胁值。\n激活神圣之盾时，高于%s的每一点防御技能还会使你的法术强度提高%s点，持续%s。"] = { { Stats.BlockChance, }, false, false, false, false, { Stats.SpellDamage, }, false, } -- s20925
-L["使你的格挡几率提高%s%，持续%s。在此期间每次成功格挡都会对攻击者造成%s点神圣伤害。神圣之盾造成的伤害额外产生%s%的威胁值。每次成功格挡会消耗掉一次格挡机会，最多可格挡%s次。\n激活神圣之盾时，高于%s的每一点防御技能还会使你的法术强度提高%s点，持续%s。"] = { { Stats.BlockChance, }, false, false, false, false, false, { Stats.SpellDamage, }, false, } -- s20925
-L["使你的格挡几率提高%s%，持续%s。在此期间每次成功格挡都会对攻击者造成%s点神圣伤害。神圣之盾造成的伤害额外产生%s%的威胁值。"] = { { Stats.BlockChance, }, false, false, false, } -- s20925
-L["使你的格挡几率提高%s%，持续%s。在此期间每次成功格挡都会对攻击者造成%s点神圣伤害。神圣之盾造成的伤害额外产生%s%的威胁值。每次成功格挡会消耗掉一次格挡机会，最多可格挡%s次。"] = { { Stats.BlockChance, }, false, false, false, false, } -- s20925
+L["每%s秒为一个盟友治疗%s点伤害，并令其护甲值提高%s点，持续%s sec。"] = { false, false, { Stats.Armor, }, false, } -- s20655
+L["控制一个等级不高于%s级的敌对人型生物，持续%s sec。使其所能造成的魔法伤害提高%s点，并使其所能造成的物理伤害提高%s点。"] = { false, false, { Stats.SpellDamage, }, { Stats.AverageWeaponDamage, }, } -- s20668
+L["使施法者的护甲值提高%s点，生命值回复速度提高，持续%s sec。"] = { { Stats.Armor, }, false, } -- s20798
+L["被击中之后有%s%的几率使所有队友的护甲值提高%s点，持续%s sec。"] = { false, { Stats.Armor, }, false, ignoreSum = true } -- s20847
+L["使你的耐力提高%s点，持续%s sec，并使你酩酊大醉！"] = { { Stats.Stamina, }, false, } -- s20875
+L["征服等级不高于%s级的恶魔，强制它听从你的命令。在被征服的状态下，恶魔的攻击间隔延长%s%，施法速度降低%s%。征服效果最多持续%s sec。"] = { false, { Stats.MeleeHaste, }, { Stats.SpellHaste, }, false, } -- s20882
+L["使你的格挡几率提高%s%，持续%s sec。在此期间每次成功格挡都会对攻击者造成%s点神圣伤害。神圣之盾造成的伤害额外产生%s%的威胁值。\n激活神圣之盾时，高于%s的每一点防御技能还会使你的法术强度提高%s点，持续%s sec。"] = { { Stats.BlockChance, }, false, false, false, false, { Stats.SpellDamage, }, false, } -- s20925
+L["使你的格挡几率提高%s%，持续%s sec。在此期间每次成功格挡都会对攻击者造成%s点神圣伤害。神圣之盾造成的伤害额外产生%s%的威胁值。每次成功格挡会消耗掉一次格挡机会，最多可格挡%s次。\n激活神圣之盾时，高于%s的每一点防御技能还会使你的法术强度提高%s点，持续%s sec。"] = { { Stats.BlockChance, }, false, false, false, false, false, { Stats.SpellDamage, }, false, } -- s20925
+L["使你的格挡几率提高%s%，持续%s sec。在此期间每次成功格挡都会对攻击者造成%s点神圣伤害。神圣之盾造成的伤害额外产生%s%的威胁值。"] = { { Stats.BlockChance, }, false, false, false, } -- s20925
+L["使你的格挡几率提高%s%，持续%s sec。在此期间每次成功格挡都会对攻击者造成%s点神圣伤害。神圣之盾造成的伤害额外产生%s%的威胁值。每次成功格挡会消耗掉一次格挡机会，最多可格挡%s次。"] = { { Stats.BlockChance, }, false, false, false, false, } -- s20925
 L["%s点攻击强度。"] = { { Stats.GenericAttackPower, }, } -- s20987
 L["使你的宠物的攻击强度提高%s点。"] = { { Stats.GenericAttackPower, }, } -- s20988
-L["使附近敌人的物理伤害能力降低%s点，持续%s。每个术士只能对一个目标施加一种诅咒，且同类诅咒不能叠加。"] = { { Stats.AverageWeaponDamage, }, false, } -- s21007
+L["使附近敌人的物理伤害能力降低%s点，持续%s sec。每个术士只能对一个目标施加一种诅咒，且同类诅咒不能叠加。"] = { { Stats.AverageWeaponDamage, }, false, } -- s21007
 L["%s 远程攻击强度。"] = { { Stats.RangedAttackPower, }, } -- s21013
-L["击碎敌人的护甲，使其护甲值降低%s点。可叠加%s次。持续%s。"] = { { Stats.Armor, }, false, false, } -- s21055
+L["击碎敌人的护甲，使其护甲值降低%s点。可叠加%s次。持续%s sec。"] = { { Stats.Armor, }, false, false, } -- s21055
 L["对附近的敌人造成%s点冰霜伤害，令其攻击间隔延长%s%，移动速度降低%s%。"] = { false, { Stats.MeleeHaste, }, false, } -- s21098
-L["向敌人发射一支暗影箭，对其造成%s点暗影伤害，并使所有属性降低%s点，持续%s。"] = { false, { Stats.AllStats, }, false, } -- s21151
-L["你的攻击忽略目标的%s点护甲值，持续%s。该效果可叠加最多%s次。"] = { { Stats.ArmorPenetration, }, false, false, } -- s21153
+L["向敌人发射一支暗影箭，对其造成%s点暗影伤害，并使所有属性降低%s点，持续%s sec。"] = { false, { Stats.AllStats, }, false, } -- s21151
+L["你的攻击忽略目标的%s点护甲值，持续%s sec。该效果可叠加最多%s次。"] = { { Stats.ArmorPenetration, }, false, false, } -- s21153
 L["在军官身边一定范围内时，每秒钟恢复%s点生命值和%s点法力值。"] = { { Stats.HealthRegen, }, false, } -- s21172
 L["使你招架攻击的几率降低%s%。"] = { { Stats.Parry, }, } -- s21352
 L["提高神圣法术和效果所造成的伤害，最多%s点。"] = { { Stats.HolyDamage, }, } -- s21499
 L["使你的盾牌的格挡值提高%s点。"] = { { Stats.BlockValue, }, } -- s21539
-L["圣洁的能量充满全队成员的身体，令其耐力提高%s点，持续%s。"] = { { Stats.Stamina, }, false, } -- s21562
-L["你的宠物获得%s点耐力，对所有魔法的抗性提高%s点。"] = { { Stats.Stamina, }, false, } -- s21741
-L["对指定区域内的敌人造成自然伤害，使它们的移动速度降低%s%，攻击间隔延长%s%，持续%s。"] = { false, { Stats.MeleeHaste, }, false, } -- s21793
-L["在你对敌人造成近战伤害的时候有%s%的几率令其攻击强度降低%s点，持续%s。"] = { false, { Stats.AttackPower, }, false, } -- s21841
-L["使目标所在的队伍获得野性赐福的效果，护甲值提高%s点，所有属性提高%s点，所有抗性提高%s点。持续%s。"] = { { Stats.Armor, }, { Stats.AllStats, }, false, false, } -- s21849
+L["圣洁的能量充满全队成员的身体，令其耐力提高%s点，持续%s sec。"] = { { Stats.Stamina, }, false, } -- s21562
+L["你的宠物获得%s点耐力，对所有魔法的抗性提高%s点。"] = { { Stats.Stamina, }, false, ignoreSum = true } -- s21741
+L["对指定区域内的敌人造成自然伤害，使它们的移动速度降低%s%，攻击间隔延长%s%，持续%s sec。"] = { false, { Stats.MeleeHaste, }, false, } -- s21793
+L["在你对敌人造成近战伤害的时候有%s%的几率令其攻击强度降低%s点，持续%s sec。"] = { false, { Stats.AttackPower, }, false, ignoreSum = true } -- s21841
+L["使目标所在的队伍获得野性赐福的效果，护甲值提高%s点，所有属性提高%s点，所有抗性提高%s点。持续%s sec。"] = { { Stats.Armor, }, { Stats.AllStats, }, false, false, } -- s21849
 L["使你的自然法术造成爆击的几率提高%s%。"] = { { Stats.SpellCrit, }, } -- s21870
-L["法术的冰霜伤害提高最多%s点，持续%s。"] = { { Stats.FrostDamage, }, false, } -- s21920
-L["使你的宠物的耐力提高%s点，所有法术抗性提高%s点。"] = { { Stats.Stamina, }, false, } -- s21926
+L["法术的冰霜伤害提高最多%s点，持续%s sec。"] = { { Stats.FrostDamage, }, false, } -- s21920
+L["使你的宠物的耐力提高%s点，所有法术抗性提高%s点。"] = { { Stats.Stamina, }, false, ignoreSum = true } -- s21926
 L["对目标造成%s点伤害，并使它们的护甲值降低%s点。"] = { false, { Stats.Armor, }, } -- s21961
 L["攻击强度提高%s点。"] = { { Stats.GenericAttackPower, Stats.RangedAttackPower, }, } -- s60555
-L["以闪电的力量攻击敌人，对其造成%s点自然伤害，然后攻击附近的下一个敌人。闪电每次跳跃都使目标的自然抗性降低%s点。可攻击%s个目标。你的目标也会因此被飓风吞噬，使其攻击速度降低%s%，持续%s。"] = { false, { Stats.NatureResistance, }, false, { Stats.MeleeHaste, }, false, } -- s21992
+L["以闪电的力量攻击敌人，对其造成%s点自然伤害，然后攻击附近的下一个敌人。闪电每次跳跃都使目标的自然抗性降低%s点。可攻击%s个目标。你的目标也会因此被飓风吞噬，使其攻击速度降低%s%，持续%s sec。"] = { false, { Stats.NatureResistance, }, false, { Stats.MeleeHaste, }, false, } -- s21992
 L["弩技能提高%s点。"] = { { Stats.WeaponSkill, }, } -- s22188
-L["使目标所能造成的魔法伤害降低%s点，持续%s。"] = { { Stats.SpellDamage, }, false, } -- s22371
-L["使附近敌人的耐力降低%s点，持续%s。"] = { { Stats.Stamina, }, false, } -- s22420
-L["%s内防御技能提高%s点。"] = { false, { Stats.Defense, }, } -- s22685
+L["使目标所能造成的魔法伤害降低%s点，持续%s sec。"] = { { Stats.SpellDamage, }, false, } -- s22371
+L["使附近敌人的耐力降低%s点，持续%s sec。"] = { { Stats.Stamina, }, false, } -- s22420
+L["%s sec内防御技能提高%s点。"] = { false, { Stats.Defense, }, } -- s22685
 L["使你打出爆击的几率提高%s%。"] = { { Stats.MeleeCrit, Stats.RangedCrit, }, } -- s22755
 L["使你用远程武器击中目标的几率提高%s%。"] = { { Stats.MeleeHit, Stats.RangedHit, }, } -- s22780
-L["使你的耐力提高%s点，持续%s，并使你酩酊大醉。这酒真够劲！"] = { { Stats.Stamina, }, false, } -- s22789
-L["精神提高%s点，但智力降低%s点，持续%s。爽啊……"] = { { Stats.Spirit, }, { Stats.Intellect, }, false, } -- s22790
+L["使你的耐力提高%s点，持续%s sec，并使你酩酊大醉。这酒真够劲！"] = { { Stats.Stamina, }, false, } -- s22789
+L["精神提高%s点，但智力降低%s点，持续%s sec。爽啊……"] = { { Stats.Spirit, }, { Stats.Intellect, }, false, } -- s22790
 L["使用法术打出爆击的几率提高%s%。"] = { { Stats.SpellCrit, }, } -- s22820
-L["激活之后，佩戴者可以获得%s点防御值和%s点护甲值，持续%s。"] = { { Stats.Defense, }, { Stats.Armor, }, false, } -- s22850
+L["激活之后，佩戴者可以获得%s点防御值和%s点护甲值，持续%s sec。"] = { { Stats.Defense, }, { Stats.Armor, }, false, } -- s22850
 L["使法术的爆击几率提高%s%，近战和远程攻击的爆击几率提高%s%，攻击强度提高%s点。持续%s分钟。"] = { { Stats.SpellCrit, }, { Stats.MeleeCrit, Stats.RangedCrit, }, { Stats.GenericAttackPower, }, false, } -- s22888
 L["被伊利丹的愤怒吞噬：对恶魔的攻击强度提高%s点。爆击率提高%s%。近战攻击速度提高%s%。"] = { false, { Stats.MeleeHit, Stats.RangedHit, }, { Stats.MeleeHaste, }, } -- s22988
-L["魔法的光辉笼罩着目标所在的队伍，使他们的智力提高%s点，持续%s。"] = { { Stats.Intellect, }, false, } -- s23028
-L["防御降低%s点，持续%s。同时提高命中率和爆击率，并降低目标格挡、躲闪或招架攻击的几率。"] = { { Stats.Defense, }, false, } -- s23162
-L["使一个敌人的近战攻击强度降低%s点，持续%s。"] = { { Stats.AttackPower, }, false, } -- s23262
+L["魔法的光辉笼罩着目标所在的队伍，使他们的智力提高%s点，持续%s sec。"] = { { Stats.Intellect, }, false, } -- s23028
+L["防御降低%s点，持续%s sec。同时提高命中率和爆击率，并降低目标格挡、躲闪或招架攻击的几率。"] = { { Stats.Defense, }, false, } -- s23162
+L["使一个敌人的近战攻击强度降低%s点，持续%s sec。"] = { { Stats.AttackPower, }, false, } -- s23262
 L["使治疗法术和效果所回复的生命值提高%s点。"] = { { Stats.HealingPower, }, } -- s23264
 L["使暗影法术和效果所造成的伤害提高%s点。"] = { { Stats.ShadowDamage, }, } -- s23265
-L["提高所有法术和魔法效果所造成的伤害和治疗效果，最多%s点。效果持续%s。"] = { { Stats.SpellDamage, Stats.HealingPower, }, false, } -- s23271
+L["提高所有法术和魔法效果所造成的伤害和治疗效果，最多%s点。效果持续%s sec。"] = { { Stats.SpellDamage, Stats.HealingPower, }, false, } -- s23271
 L["使你的暗影法术造成爆击的几率提高%s%。"] = { { Stats.SpellCrit, }, } -- s23440
 L["使火焰法术和效果所造成的伤害提高最多%s点。"] = { { Stats.FireDamage, }, } -- s23480
-L["使附近敌人的近战攻击强度降低%s点，持续%s。"] = { { Stats.AttackPower, }, false, } -- s23511
-L["使施法者的攻击速度提高%s%，所能造成的物理伤害提高%s点，持续%s。"] = { { Stats.MeleeHaste, }, false, false, } -- s23537
+L["使附近敌人的近战攻击强度降低%s点，持续%s sec。"] = { { Stats.AttackPower, }, false, } -- s23511
+L["使施法者的攻击速度提高%s%，所能造成的物理伤害提高%s点，持续%s sec。"] = { { Stats.MeleeHaste, }, false, false, } -- s23537
 L["使法术的治疗效果提高最多%s点。"] = { { Stats.HealingPower, }, } -- s23593
 L["使暗影法术所造成的伤害提高最多%s点。"] = { { Stats.ShadowDamage, }, } -- s23594
-L["在%s内恢复%s点法力值。进食时必须保持坐姿。另外还可使你的精神提高%s点，持续%s。"] = { false, { Stats.GenericManaRegen, }, { Stats.Spirit, }, false, } -- s23698
-L["力量提高%s点，持续%s。"] = { { Stats.Strength, }, false, } -- s23719
-L["使法师的施法速度提高%s%，持续%s。"] = { { Stats.SpellHaste, }, false, } -- s23723
+L["在%s sec内恢复%s点法力值。进食时必须保持坐姿。另外还可使你的精神提高%s点，持续%s sec。"] = { false, { Stats.GenericManaRegen, }, { Stats.Spirit, }, false, } -- s23698
+L["力量提高%s点，持续%s sec。"] = { { Stats.Strength, }, false, } -- s23719
+L["使法师的施法速度提高%s%，持续%s sec。"] = { { Stats.SpellHaste, }, false, } -- s23723
 L["使你的法术击中敌人的几率提高%s%。"] = { { Stats.SpellHit, }, } -- s23727
-L["使圣骑士被光芒笼罩，近战攻击速度提高%s%，施法速度提高%s%，持续%s。"] = { { Stats.MeleeHaste, }, { Stats.SpellHaste, }, false, } -- s23733
-L["护甲值提高%s点，每次受到近战或远程攻击时回复%s点生命值，持续%s。"] = { { Stats.Armor, }, false, false, } -- s23780
+L["使圣骑士被光芒笼罩，近战攻击速度提高%s%，施法速度提高%s%，持续%s sec。"] = { { Stats.MeleeHaste, }, { Stats.SpellHaste, }, false, } -- s23733
+L["护甲值提高%s点，每次受到近战或远程攻击时回复%s点生命值，持续%s sec。"] = { { Stats.Armor, }, false, false, } -- s23780
 L["使法术和效果所造成的治疗效果提高最多%s点。"] = { { Stats.HealingPower, }, } -- s23796
-L["increases damage done by %s for %s"] = { { Stats.AverageWeaponDamage, }, false, } -- s24043
-L["使一个盟友的攻击速度提高%s%，持续%s。"] = { { Stats.MeleeHaste, }, false, } -- s23951
+L["increases damage done by %s for %s sec"] = { { Stats.AverageWeaponDamage, }, false, } -- s24043
+L["使一个盟友的攻击速度提高%s%，持续%s sec。"] = { { Stats.MeleeHaste, }, false, } -- s23951
 L["激活之后，目标的法术和攻击造成爆击的几率提高%s%。"] = { { Stats.MeleeCrit, Stats.RangedCrit, Stats.SpellCrit, }, } -- s23964
 L["火焰抗性提高%s点。"] = { { Stats.FireResistance, }, } -- s23992
-L["使所有友军的攻击速度提高%s%，持续%s。"] = { { Stats.MeleeHaste, }, false, } -- s24185
+L["使所有友军的攻击速度提高%s%，持续%s sec。"] = { { Stats.MeleeHaste, }, false, } -- s24185
 L["%s attack power"] = { { Stats.GenericAttackPower, }, } -- s24218
 L["improves your chance to get a critical strike by %s%"] = { { Stats.MeleeCrit, Stats.RangedCrit, }, } -- s24219
-L["使施法者获得远古神灵的祝福，远程和近战攻击强度提高%s点，持续%s秒。"] = { { Stats.GenericAttackPower, }, false, } -- s24255
-L["使施法者有较小的几率获得远古神灵的祝福，在对敌人造成伤害时远程和近战攻击强度提高%s点，持续%s秒。"] = { { Stats.GenericAttackPower, }, false, } -- s24256
-L["击破敌人的护甲，每次破甲攻击可以使其护甲值降低%s点。可叠加最多%s次。持续%s。"] = { { Stats.Armor, }, false, false, } -- s24317
-L["使敌人暂时变得疯狂，攻击速度提高%s%，移动速度提高%s%，同时也会攻击自己的盟友，持续%s。"] = { { Stats.MeleeHaste, }, false, false, } -- s24327
-L["使你的攻击强度提高%s点，击中敌人的几率提高%s%。这个效果可以持续%s。"] = { { Stats.GenericAttackPower, }, { Stats.MeleeHit, Stats.RangedHit, }, false, } -- s24352
-L["使法术和魔法效果造成的治疗效果提高最多%s点，持续%s。"] = { { Stats.HealingPower, }, false, } -- s24354
-L["每%s秒回复%s点生命值，持续%s。"] = { false, { Stats.HealthRegen, }, false, } -- s24361
+L["使施法者获得远古神灵的祝福，远程和近战攻击强度提高%s点，持续%s sec秒。"] = { { Stats.GenericAttackPower, }, false, } -- s24255
+L["使施法者有较小的几率获得远古神灵的祝福，在对敌人造成伤害时远程和近战攻击强度提高%s点，持续%s秒。"] = { { Stats.GenericAttackPower, }, false, ignoreSum = true } -- s24256
+L["击破敌人的护甲，每次破甲攻击可以使其护甲值降低%s点。可叠加最多%s次。持续%s sec。"] = { { Stats.Armor, }, false, false, } -- s24317
+L["使敌人暂时变得疯狂，攻击速度提高%s%，移动速度提高%s%，同时也会攻击自己的盟友，持续%s sec。"] = { { Stats.MeleeHaste, }, false, false, } -- s24327
+L["使你的攻击强度提高%s点，击中敌人的几率提高%s%。这个效果可以持续%s sec。"] = { { Stats.GenericAttackPower, }, { Stats.MeleeHit, Stats.RangedHit, }, false, } -- s24352
+L["使法术和魔法效果造成的治疗效果提高最多%s点，持续%s sec。"] = { { Stats.HealingPower, }, false, } -- s24354
+L["每%s秒回复%s点生命值，持续%s sec。"] = { false, { Stats.HealthRegen, }, false, } -- s24361
 L["拳套武器技能提高%s点。"] = { { Stats.WeaponSkill, }, } -- s24362
-L["每%s秒回复%s点法力值，持续%s。"] = { false, { Stats.GenericManaRegen, }, false, } -- s24363
-L["使玩家的精神提高%s点，耐力提高%s点，持续%s。你在同一时间内只能附带一种赞扎药水的效果。"] = { { Stats.Spirit, }, { Stats.Stamina, }, false, } -- s24382
-L["使目标受到%s点伤害，并使其智力降低%s点，持续%s。"] = { false, { Stats.Intellect, }, false, } -- s24388
-L["恢复%s点法力值，并使你的下一个火焰法术对敌人的伤害提高最多%s点。效果持续%s。"] = { false, { Stats.FireDamage, }, false, } -- s24389
-L["使敌人的攻击间隔延长%s%，移动速度降低%s%，施法速度降低%s%，持续%s。"] = { { Stats.MeleeHaste, }, false, { Stats.SpellHaste, }, false, } -- s24415
-L["对单一目标造成%s点伤害，并使近战范围内的所有敌人的近战攻击强度降低%s点，效果持续%s。"] = { false, { Stats.AttackPower, }, false, } -- s24423
-L["每%s秒回复%s点生命值，并使你的力量提高%s点。效果持续%s。"] = { false, { Stats.HealthRegen, }, { Stats.Strength, }, false, } -- s24427
-L["使附近所有小队成员的近战攻击强度提高%s点，持续%s。"] = { { Stats.AverageWeaponDamage, }, false, } -- s24438
-L["使你的神圣系法术造成爆击效果的几率提高%s%，持续%s。"] = { { Stats.SpellCrit, }, false, } -- s24498
-L["对单一目标造成%s点伤害，并使近战范围内的所有敌人的攻击强度降低%s点，效果持续%s。"] = { false, { Stats.AttackPower, }, false, } -- s24577
-L["使你的法术命中目标的几率提高%s%，持续%s。"] = { { Stats.SpellHit, }, false, } -- s24610
+L["每%s秒回复%s点法力值，持续%s sec。"] = { false, { Stats.GenericManaRegen, }, false, } -- s24363
+L["使玩家的精神提高%s点，耐力提高%s点，持续%s sec。你在同一时间内只能附带一种赞扎药水的效果。"] = { { Stats.Spirit, }, { Stats.Stamina, }, false, } -- s24382
+L["使目标受到%s点伤害，并使其智力降低%s点，持续%s sec。"] = { false, { Stats.Intellect, }, false, } -- s24388
+L["恢复%s点法力值，并使你的下一个火焰法术对敌人的伤害提高最多%s点。效果持续%s sec。"] = { false, { Stats.FireDamage, }, false, } -- s24389
+L["使敌人的攻击间隔延长%s%，移动速度降低%s%，施法速度降低%s%，持续%s sec。"] = { { Stats.MeleeHaste, }, false, { Stats.SpellHaste, }, false, } -- s24415
+L["对单一目标造成%s点伤害，并使近战范围内的所有敌人的近战攻击强度降低%s点，效果持续%s sec。"] = { false, { Stats.AttackPower, }, false, } -- s24423
+L["每%s秒回复%s点生命值，并使你的力量提高%s点。效果持续%s sec。"] = { false, { Stats.HealthRegen, }, { Stats.Strength, }, false, } -- s24427
+L["使附近所有小队成员的近战攻击强度提高%s点，持续%s sec。"] = { { Stats.AverageWeaponDamage, }, false, } -- s24438
+L["使你的神圣系法术造成爆击效果的几率提高%s%，持续%s sec。"] = { { Stats.SpellCrit, }, false, } -- s24498
+L["对单一目标造成%s点伤害，并使近战范围内的所有敌人的攻击强度降低%s点，效果持续%s sec。"] = { false, { Stats.AttackPower, }, false, } -- s24577
+L["使你的法术命中目标的几率提高%s%，持续%s sec。"] = { { Stats.SpellHit, }, false, } -- s24610
 L["在猎豹、熊或巨熊形态下的攻击强度提高%s点。"] = { { Stats.FeralAttackPower, }, } -- s24694
-L["使友方目标的护甲提高%s点，所有属性提高%s点，所有抗性提高%s点，持续%s。"] = { { Stats.Armor, }, { Stats.AllStats, }, false, false, } -- s24752
-L["在%s内恢复%s点生命值。进食时必须保持坐姿。如果你花费至少%s秒钟进食，还会获得%s点力量的加值，持续%s。"] = { false, { Stats.Strength, }, false, { Stats.Strength, }, false, } -- s24800
+L["使友方目标的护甲提高%s点，所有属性提高%s点，所有抗性提高%s点，持续%s sec。"] = { { Stats.Armor, }, { Stats.AllStats, }, false, false, } -- s24752
+L["在%s sec内恢复%s点生命值。进食时必须保持坐姿。如果你花费至少%s秒钟进食，还会获得%s点力量的加值，持续%s sec。"] = { false, { Stats.Strength, }, false, { Stats.Strength, }, false, ignoreSum = true } -- s24800
 L["使你的自然法术造成爆击效果的几率提高%s%。"] = { { Stats.SpellCrit, }, } -- s24852
-L["使德鲁伊的躲闪几率提高%s%，持续%s。"] = { { Stats.Dodge, }, false, } -- s24864
-L["使你的近战武器和法术造成爆击的几率提高%s%，持续%s。"] = { { Stats.MeleeCrit, Stats.RangedCrit, Stats.SpellCrit, }, false, } -- s24865
-L["使法术造成的治疗效果提高最多%s点，持续%s。"] = { { Stats.HealingPower, }, false, } -- s24998
-L["使你的耐力提高%s点，持续%s，并让你喝得酩酊大醉！"] = { { Stats.Stamina, }, false, } -- s25037
-L["击碎敌人的护甲，每次破甲攻击可以使其护甲值降低%s点，可叠加%s次。持续%s。"] = { { Stats.Armor, }, false, false, } -- s25051
+L["使德鲁伊的躲闪几率提高%s%，持续%s sec。"] = { { Stats.Dodge, }, false, } -- s24864
+L["使你的近战武器和法术造成爆击的几率提高%s%，持续%s sec。"] = { { Stats.MeleeCrit, Stats.RangedCrit, Stats.SpellCrit, }, false, } -- s24865
+L["使法术造成的治疗效果提高最多%s点，持续%s sec。"] = { { Stats.HealingPower, }, false, } -- s24998
+L["使你的耐力提高%s点，持续%s sec，并让你喝得酩酊大醉！"] = { { Stats.Stamina, }, false, } -- s25037
+L["击碎敌人的护甲，每次破甲攻击可以使其护甲值降低%s点，可叠加%s次。持续%s sec。"] = { { Stats.Armor, }, false, false, } -- s25051
 L["提高暗影系法术和魔法效果所造成的伤害，最多%s点。"] = { { Stats.ShadowDamage, }, } -- s25064
 L["提高火焰系法术和魔法效果所造成的伤害，最多%s点。"] = { { Stats.FireDamage, }, } -- s25065
 L["提高冰霜系法术和魔法效果所造成的伤害，最多%s点。"] = { { Stats.FrostDamage, }, } -- s25066
@@ -747,82 +747,82 @@ L["提高法术和魔法效果所造成的治疗效果，最多%s点。"] = { { 
 L["提高所有法术和魔法效果所造成的伤害和治疗效果，最多%s点。同时也可以使法术造成爆击效果的几率提高%s%。"] = { { Stats.SpellDamage, Stats.HealingPower, }, { Stats.SpellCrit, }, } -- s25113
 L["每%s秒回复%s点法力值，并使治疗法术的效果提高%s点。"] = { false, { Stats.GenericManaRegen, }, { Stats.HealingPower, }, } -- s25116
 L["对目标和其附近的盟友造成普通武器伤害再加上%s点额外伤害，最多可影响%s个目标。同时使其护甲降低%s点。"] = { false, false, { Stats.Armor, }, } -- s25174
-L["在%s内恢复%s点生命值，进食时必须保持坐姿。如果你花费至少%s秒钟进食，还会获得%s点耐力的加值，持续%s。"] = { false, { Stats.Stamina, }, false, false, false, } -- s25660
-L["使你的耐力提高%s点，持续%s。"] = { { Stats.Stamina, }, false, } -- s25661
-L["在%s内回复%s点生命值和%s点法力值，进食时必须保持坐姿。"] = { false, false, { Stats.GenericManaRegen, }, } -- s25697
-L["在%s内回复%s点法力值，进食时必须保持坐姿。"] = { false, { Stats.GenericManaRegen, }, } -- s25701
+L["在%s sec内恢复%s点生命值，进食时必须保持坐姿。如果你花费至少%s秒钟进食，还会获得%s点耐力的加值，持续%s sec。"] = { false, { Stats.Stamina, }, false, false, false, ignoreSum = true } -- s25660
+L["使你的耐力提高%s点，持续%s sec。"] = { { Stats.Stamina, }, false, } -- s25661
+L["在%s sec内回复%s点生命值和%s点法力值，进食时必须保持坐姿。"] = { false, false, { Stats.GenericManaRegen, }, } -- s25697
+L["在%s sec内回复%s点法力值，进食时必须保持坐姿。"] = { false, { Stats.GenericManaRegen, }, } -- s25701
 L["使你的法术目标的火焰抗性降低%s点。"] = { { Stats.FirePenetration, }, } -- s25717
 L["使你的法术目标的冰霜抗性降低%s点。"] = { { Stats.FrostPenetration, }, } -- s25718
-L["你的伤害法术有一定几率在击中目标后降低其魔法抗性%s点，持续%s。"] = { { Stats.SpellPenetration, }, false, } -- s25767
-L["使团队或小队中所有与目标职业相同的玩家都获得强效力量祝福的效果，使其近战攻击强度提高%s，持续%s。每个圣骑士在同一时间内只能给目标施加一种祝福，同类型的祝福不能重叠。"] = { { Stats.AttackPower, }, false, } -- s25782
+L["你的伤害法术有一定几率在击中目标后降低其魔法抗性%s点，持续%s sec。"] = { { Stats.SpellPenetration, }, false, ignoreSum = true } -- s25767
+L["使团队或小队中所有与目标职业相同的玩家都获得强效力量祝福的效果，使其近战攻击强度提高%s，持续%s sec。每个圣骑士在同一时间内只能给目标施加一种祝福，同类型的祝福不能重叠。"] = { { Stats.AttackPower, }, false, } -- s25782
 L["使附近所有小队成员的攻击速度提高%s%，攻击伤害提高%s%。"] = { { Stats.MeleeHaste, }, false, } -- s25801
 L["所有属性降低%s点。\n每%s秒受到%s点暗影伤害。"] = { false, false, { Stats.AllStats, }, } -- s25805
-L["使目标变得虚弱，伤害降低%s点，持续%s。"] = { { Stats.AverageWeaponDamage, }, false, } -- s25816
+L["使目标变得虚弱，伤害降低%s点，持续%s sec。"] = { { Stats.AverageWeaponDamage, }, false, } -- s25816
 L["target gets %s% melee crit"] = { { Stats.MeleeCrit, Stats.RangedCrit, }, } -- s25848
-L["使你的远程和近战攻击强度提高%s点，持续%s。"] = { { Stats.GenericAttackPower, }, false, } -- s25891
+L["使你的远程和近战攻击强度提高%s点，持续%s sec。"] = { { Stats.GenericAttackPower, }, false, } -- s25891
 L["武器伤害提高%s点。"] = { { Stats.AverageWeaponDamage, }, } -- s25901
-L["你的伤害法术有一定几率在击中目标后令你的法术和魔法效果所造成的伤害提高%s点，持续%s。"] = { { Stats.SpellDamage, Stats.HealingPower, }, false, } -- s25906
+L["你的伤害法术有一定几率在击中目标后令你的法术和魔法效果所造成的伤害提高%s点，持续%s sec。"] = { { Stats.SpellDamage, Stats.HealingPower, }, false, ignoreSum = true } -- s25906
 L["使你的法术目标的魔法抗性降低%s点。"] = { { Stats.SpellPenetration, }, } -- s25975
-L["宠物受到任何攻击时所承受的伤害都降低%s%，但攻击间隔延长%s%，持续%s。"] = { false, { Stats.MeleeHaste, }, false, } -- s26064
-L["使附近队友的攻击所造成的伤害提高%s%，攻击速度提高%s%，持续%s。"] = { false, { Stats.MeleeHaste, }, false, } -- s26099
-L["你的闪电箭、闪电链和震击法术有%s%的几率获得最高%s点自然伤害加成，持续%s。"] = { false, { Stats.NatureDamage, }, false, } -- s26119
+L["宠物受到任何攻击时所承受的伤害都降低%s%，但攻击间隔延长%s%，持续%s sec。"] = { false, { Stats.MeleeHaste, }, false, } -- s26064
+L["使附近队友的攻击所造成的伤害提高%s%，攻击速度提高%s%，持续%s sec。"] = { false, { Stats.MeleeHaste, }, false, } -- s26099
+L["你的闪电箭、闪电链和震击法术有%s%的几率获得最高%s点自然伤害加成，持续%s sec。"] = { false, { Stats.NatureDamage, }, false, ignoreSum = true } -- s26119
 L["提高自然法术所造成的伤害，最多%s点。"] = { { Stats.NatureDamage, }, } -- s26120
-L["提高自然法术所造成的伤害，最多%s点，持续%s。"] = { { Stats.NatureDamage, }, false, } -- s26121
-L["当你的法术被抵抗后，法术命中率提高%s%，持续%s。"] = { { Stats.SpellHit, }, false, } -- s26128
-L["使法术命中几率提高%s%，持续%s秒。可叠加%s次。"] = { { Stats.SpellHit, }, false, false, } -- s26129
+L["提高自然法术所造成的伤害，最多%s点，持续%s sec。"] = { { Stats.NatureDamage, }, false, } -- s26121
+L["当你的法术被抵抗后，法术命中率提高%s%，持续%s sec。"] = { { Stats.SpellHit, }, false, ignoreSum = true } -- s26128
+L["使法术命中几率提高%s%，持续%s sec秒。可叠加%s次。"] = { { Stats.SpellHit, }, false, false, } -- s26129
 L["在猎豹、熊和巨熊形态下的攻击强度提高%s点。"] = { { Stats.AttackPower, }, } -- s26153
-L["提高法术所造成的伤害，最多%s点，并使目标的魔法抗性降低%s点，持续%s。"] = { { Stats.SpellDamage, }, { Stats.SpellPenetration, }, false, } -- s26166
-L["使火焰法术的伤害提高最多%s点，持续%s。"] = { { Stats.FireDamage, }, false, } -- s26276
-L["使你的近战或远程攻击有一定几率为你提供护甲穿刺的效果，持续%s。你的攻击可以令敌人对你作战时的物理护甲值降低%s点。这种护甲穿刺效果可以叠加最多%s次。"] = { false, { Stats.ArmorPenetration, }, false, } -- s26480
-L["使施法者的攻击速度提高%s%，物理伤害提高%s点，持续%s。"] = { { Stats.MeleeHaste, }, { Stats.AverageWeaponDamage, }, false, } -- s26527
-L["对敌人造成%s%的武器伤害，并使其失去平衡，防御值降低%s点，持续%s。"] = { false, { Stats.Defense, }, false, } -- s26613
+L["提高法术所造成的伤害，最多%s点，并使目标的魔法抗性降低%s点，持续%s sec。"] = { { Stats.SpellDamage, }, { Stats.SpellPenetration, }, false, } -- s26166
+L["使火焰法术的伤害提高最多%s点，持续%s sec。"] = { { Stats.FireDamage, }, false, } -- s26276
+L["使你的近战或远程攻击有一定几率为你提供护甲穿刺的效果，持续%s sec。你的攻击可以令敌人对你作战时的物理护甲值降低%s点。这种护甲穿刺效果可以叠加最多%s次。"] = { false, { Stats.ArmorPenetration, }, false, ignoreSum = true } -- s26480
+L["使施法者的攻击速度提高%s%，物理伤害提高%s点，持续%s sec。"] = { { Stats.MeleeHaste, }, { Stats.AverageWeaponDamage, }, false, } -- s26527
+L["对敌人造成%s%的武器伤害，并使其失去平衡，防御值降低%s点，持续%s sec。"] = { false, { Stats.Defense, }, false, } -- s26613
 L["每秒回复%s点法力值。"] = { { Stats.GenericManaRegen, }, } -- s26647
-L["使你的宠物的爆击几率提高%s%。"] = { { Stats.MeleeCrit, Stats.RangedCrit, }, } -- s27043
-L["有一定几率在近战攻击时使你的伤害和治疗效果提高最多%s点，持续%s。"] = { { Stats.SpellDamage, Stats.HealingPower, }, false, } -- s27498
+L["使你的宠物的爆击几率提高%s%。"] = { { Stats.MeleeCrit, Stats.RangedCrit, }, ignoreSum = true } -- s27043
+L["有一定几率在近战攻击时使你的伤害和治疗效果提高最多%s点，持续%s sec。"] = { { Stats.SpellDamage, Stats.HealingPower, }, false, ignoreSum = true } -- s27498
 L["使法术和魔法效果造成的伤害和治疗效果提高最多%s点。"] = { { Stats.SpellDamage, Stats.HealingPower, }, } -- s27499
-L["战士发出怒吼，使半径%s码范围内的所有小队成员的攻击强度提高%s点，持续%s。"] = { false, { Stats.AttackPower, }, false, } -- s27578
-L["使半径%s码范围内的敌人的攻击强度降低%s点，持续%s。"] = { false, { Stats.GenericAttackPower, }, false, } -- s27579
-L["所有法术抗性提高%s点，持续%s。"] = { { Stats.FireResistance, Stats.NatureResistance, Stats.FrostResistance, Stats.ShadowResistance, Stats.ArcaneResistance, }, false, } -- s27652
-L["躲闪几率提高%s%，持续%s。"] = { { Stats.Dodge, }, false, } -- s27653
-L["使你的法术伤害提高最多%s点，治疗效果提高最多%s点，持续%s。"] = { { Stats.SpellDamage, }, { Stats.HealingPower, }, false, } -- s27675
-L["使目标所在小队的所有成员的精神提高%s点，持续%s。"] = { { Stats.Spirit, }, false, } -- s27681
-L["防御值提高%s点，持续%s。"] = { { Stats.Defense, }, false, } -- s27720
-L["使法术伤害提高最多%s点，持续%s。"] = { { Stats.SpellDamage, }, false, } -- s27721
-L["使法术的治疗效果提高最多%s点，持续%s。"] = { { Stats.HealingPower, }, false, } -- s27722
-L["使你的攻击命中率提高%s%，持续%s。"] = { { Stats.MeleeHit, Stats.RangedHit, }, false, } -- s27723
-L["有一定几率在成功施放法术之后使你的伤害和治疗效果提高最多%s点，持续%s。"] = { { Stats.SpellDamage, Stats.HealingPower, }, false, } -- s27774
+L["战士发出怒吼，使半径%s码范围内的所有小队成员的攻击强度提高%s点，持续%s sec。"] = { false, { Stats.AttackPower, }, false, } -- s27578
+L["使半径%s码范围内的敌人的攻击强度降低%s点，持续%s sec。"] = { false, { Stats.GenericAttackPower, }, false, } -- s27579
+L["所有法术抗性提高%s点，持续%s sec。"] = { { Stats.FireResistance, Stats.NatureResistance, Stats.FrostResistance, Stats.ShadowResistance, Stats.ArcaneResistance, }, false, } -- s27652
+L["躲闪几率提高%s%，持续%s sec。"] = { { Stats.Dodge, }, false, } -- s27653
+L["使你的法术伤害提高最多%s点，治疗效果提高最多%s点，持续%s sec。"] = { { Stats.SpellDamage, }, { Stats.HealingPower, }, false, } -- s27675
+L["使目标所在小队的所有成员的精神提高%s点，持续%s sec。"] = { { Stats.Spirit, }, false, } -- s27681
+L["防御值提高%s点，持续%s sec。"] = { { Stats.Defense, }, false, } -- s27720
+L["使法术伤害提高最多%s点，持续%s sec。"] = { { Stats.SpellDamage, }, false, } -- s27721
+L["使法术的治疗效果提高最多%s点，持续%s sec。"] = { { Stats.HealingPower, }, false, } -- s27722
+L["使你的攻击命中率提高%s%，持续%s sec。"] = { { Stats.MeleeHit, Stats.RangedHit, }, false, } -- s27723
+L["有一定几率在成功施放法术之后使你的伤害和治疗效果提高最多%s点，持续%s sec。"] = { { Stats.SpellDamage, Stats.HealingPower, }, false, ignoreSum = true } -- s27774
 L["使周围半径%s码范围内的所有小队成员的法术造成爆击的几率提高%s%。"] = { false, { Stats.SpellCrit, }, } -- s28142
 L["使周围半径%s码范围内的所有小队成员的法术和魔法效果所造成的伤害和治疗效果提高最多%s点。"] = { false, { Stats.SpellDamage, Stats.HealingPower, }, } -- s28143
 L["使周围半径%s码范围内的所有小队成员的法术和魔法效果所造成的治疗效果提高最多%s点。"] = { false, { Stats.HealingPower, }, } -- s28144
 L["使周围半径%s码范围内的所有小队成员每%s秒恢复%s点法力值。"] = { false, false, { Stats.GenericManaRegen, }, } -- s28145
 L["使你的法术伤害提高最多%s点，治疗效果提高最多%s点。"] = { { Stats.SpellDamage, }, { Stats.HealingPower, }, } -- s28155
-L["你在%s秒内施放的下%s次伤害或治疗法术可以使你获得最多%s点的伤害加成或最多%s点的治疗加成，效果可重叠最多%s次。当你施放了%s个伤害或治疗法术，或效果持续%s秒之后，该效果消失。"] = { false, false, { Stats.SpellDamage, }, { Stats.HealingPower, }, false, false, false, } -- s28200
-L["使附近敌人的进展和远程攻击强度降低%s点，持续%s。"] = { { Stats.GenericAttackPower, }, false, } -- s28342
+L["你在%s秒内施放的下%s次伤害或治疗法术可以使你获得最多%s点的伤害加成或最多%s点的治疗加成，效果可重叠最多%s次。当你施放了%s个伤害或治疗法术，或效果持续%s秒之后，该效果消失。"] = { false, false, { Stats.SpellDamage, }, { Stats.HealingPower, }, false, false, false, ignoreSum = true } -- s28200
+L["使附近敌人的进展和远程攻击强度降低%s点，持续%s sec。"] = { { Stats.GenericAttackPower, }, false, } -- s28342
 L["使你的近战和远程攻击强度提高%s点。"] = { { Stats.GenericAttackPower, }, } -- s28347
-L["牺牲自己，移除激怒效果，并使自然系法术沉默，持续%s。另外还使施法速度降低%s%。"] = { false, { Stats.SpellHaste, }, } -- s28732
-L["使友方目标的生命值提高最多%s点，持续%s。"] = { { Stats.Health, }, false, } -- s28750
-L["火焰抗性提高%s点。持续%s。"] = { { Stats.FireResistance, }, false, } -- s28765
-L["冰霜抗性提高%s点。持续%s。"] = { { Stats.FrostResistance, }, false, } -- s28766
-L["自然抗性提高%s点。持续%s。"] = { { Stats.NatureResistance, }, false, } -- s28768
-L["暗影抗性提高%s点。持续%s。"] = { { Stats.ShadowResistance, }, false, } -- s28769
-L["奥术抗性提高%s点。持续%s。"] = { { Stats.ArcaneResistance, }, false, } -- s28770
-L["使你的盾牌的格挡值提高%s点，持续%s。"] = { { Stats.BlockValue, }, false, } -- s28773
-L["所有抗性提高%s点，持续%s。"] = { { Stats.FireResistance, Stats.NatureResistance, Stats.FrostResistance, Stats.ShadowResistance, Stats.ArcaneResistance, }, false, } -- s28778
-L["提高所有法术和魔法效果所造成的伤害和治疗效果，最多%s点，持续%s。"] = { { Stats.SpellDamage, Stats.HealingPower, }, false, } -- s28779
-L["使下%s次治疗法术的效果提高最多%s点，持续%s。"] = { false, { Stats.HealingPower, }, false, } -- s28780
-L["使友方目标的护甲值提高%s点，持续%s。"] = { { Stats.Armor, }, false, } -- s28790
-L["使友方目标的攻击强度提高%s点，持续%s。"] = { { Stats.GenericAttackPower, }, false, } -- s28791
-L["使友方目标的法术伤害和治疗效果提高最多%s点，持续%s。"] = { { Stats.SpellDamage, }, false, } -- s28793
-L["使友方目标的法力值回复速度每%s秒提高%s点，持续%s。"] = { false, { Stats.GenericManaRegen, }, false, } -- s28795
-L["你的每个法术都可能引发显灵效果，使你的法力值恢复提高%s点，持续%s。"] = { { Stats.GenericManaRegen, }, false, } -- s28802
-L["当闪电之盾处于激活状态的时候，你可以获得每%s秒恢复%s点法力值的效果。"] = { false, { Stats.GenericManaRegen, }, } -- s28821
+L["牺牲自己，移除激怒效果，并使自然系法术沉默，持续%s sec。另外还使施法速度降低%s%。"] = { false, { Stats.SpellHaste, }, } -- s28732
+L["使友方目标的生命值提高最多%s点，持续%s sec。"] = { { Stats.Health, }, false, } -- s28750
+L["火焰抗性提高%s点。持续%s sec。"] = { { Stats.FireResistance, }, false, } -- s28765
+L["冰霜抗性提高%s点。持续%s sec。"] = { { Stats.FrostResistance, }, false, } -- s28766
+L["自然抗性提高%s点。持续%s sec。"] = { { Stats.NatureResistance, }, false, } -- s28768
+L["暗影抗性提高%s点。持续%s sec。"] = { { Stats.ShadowResistance, }, false, } -- s28769
+L["奥术抗性提高%s点。持续%s sec。"] = { { Stats.ArcaneResistance, }, false, } -- s28770
+L["使你的盾牌的格挡值提高%s点，持续%s sec。"] = { { Stats.BlockValue, }, false, } -- s28773
+L["所有抗性提高%s点，持续%s sec。"] = { { Stats.FireResistance, Stats.NatureResistance, Stats.FrostResistance, Stats.ShadowResistance, Stats.ArcaneResistance, }, false, } -- s28778
+L["提高所有法术和魔法效果所造成的伤害和治疗效果，最多%s点，持续%s sec。"] = { { Stats.SpellDamage, Stats.HealingPower, }, false, } -- s28779
+L["使下%s次治疗法术的效果提高最多%s点，持续%s sec。"] = { false, { Stats.HealingPower, }, false, } -- s28780
+L["使友方目标的护甲值提高%s点，持续%s sec。"] = { { Stats.Armor, }, false, } -- s28790
+L["使友方目标的攻击强度提高%s点，持续%s sec。"] = { { Stats.GenericAttackPower, }, false, } -- s28791
+L["使友方目标的法术伤害和治疗效果提高最多%s点，持续%s sec。"] = { { Stats.SpellDamage, }, false, } -- s28793
+L["使友方目标的法力值回复速度每%s秒提高%s点，持续%s sec。"] = { false, { Stats.GenericManaRegen, }, false, } -- s28795
+L["你的每个法术都可能引发显灵效果，使你的法力值恢复提高%s点，持续%s sec。"] = { { Stats.GenericManaRegen, }, false, ignoreSum = true } -- s28802
+L["当闪电之盾处于激活状态的时候，你可以获得每%s秒恢复%s点法力值的效果。"] = { false, { Stats.GenericManaRegen, }, ignoreSum = true } -- s28821
 L["使你的法术对亡灵造成爆击效果的几率提高%s%。"] = { { Stats.SpellCrit, }, } -- s29069
 L["%s点护甲值。"] = { { Stats.Armor, }, } -- s29089
-L["使你的攻击性法术在造成爆击后，有一定几率令你的近战攻击爆击率提高%s%，持续%s。"] = { { Stats.MeleeCrit, Stats.RangedCrit, }, false, } -- s29179
-L["使你的命中率提高%s%，持续%s。"] = { { Stats.MeleeHit, Stats.RangedHit, }, false, } -- s29331
-L["提高法术所造成的治疗效果，最多%s点，效果持续%s。"] = { { Stats.HealingPower, }, false, } -- s29334
+L["使你的攻击性法术在造成爆击后，有一定几率令你的近战攻击爆击率提高%s%，持续%s sec。"] = { { Stats.MeleeCrit, Stats.RangedCrit, }, false, ignoreSum = true } -- s29179
+L["使你的命中率提高%s%，持续%s sec。"] = { { Stats.MeleeHit, Stats.RangedHit, }, false, } -- s29331
+L["提高法术所造成的治疗效果，最多%s点，效果持续%s sec。"] = { { Stats.HealingPower, }, false, } -- s29334
 L["使你的所有抗性提高%s点，你每次完全抵抗一个法术就可以恢复法力值总量的%s%。冷却时间%s秒钟。"] = { { Stats.FireResistance, Stats.NatureResistance, Stats.FrostResistance, Stats.ShadowResistance, Stats.ArcaneResistance, }, false, false, } -- s29441
-L["使攻击强度提高%s点，并在接下来的时间内每%s秒提高%s点，效果持续%s。"] = { { Stats.GenericAttackPower, }, false, { Stats.GenericAttackPower, }, false, } -- s29602
+L["使攻击强度提高%s点，并在接下来的时间内每%s秒提高%s点，效果持续%s sec。"] = { { Stats.GenericAttackPower, }, false, { Stats.GenericAttackPower, }, false, ignoreSum = true } -- s29602
 L["提高耐力，效果持续%s小时。"] = { { Stats.Stamina, }, } -- s30088
 L["increases stamina by %s when consumed"] = { { Stats.Stamina, }, } -- s30164
 L["increases agility by %s when consumed"] = { { Stats.Agility, }, } -- s30173
@@ -830,48 +830,48 @@ L["increases intellect by %s when consumed"] = { { Stats.Intellect, }, } -- s301
 L["increases spirit by %s when consumed"] = { { Stats.Spirit, }, } -- s30177
 L["increases strength by %s when consumed"] = { { Stats.Strength, }, } -- s30178
 L["使你被爆击的几率降低%s%。"] = { { Stats.MeleeCrit, Stats.RangedCrit, }, } -- s30297
-L["increases the player's spirit by %s and stamina by %s for %s.  you can only have the effect of one zanza potion at a time"] = { { Stats.Spirit, }, { Stats.Stamina, }, false, } -- s30336
+L["increases the player's spirit by %s and stamina by %s for %s sec.  you can only have the effect of one zanza potion at a time"] = { { Stats.Spirit, }, { Stats.Stamina, }, false, } -- s30336
 L["increases damage and healing done by magical spells and effects by up to %s"] = { { Stats.SpellDamage, Stats.HealingPower, }, } -- s30776
 L["每%s秒为你恢复相当于你的耐力值的%s%的生命值，在战斗中也可生效。"] = { false, { Stats.HealthRegen, }, } -- s30799
 L["使你在持双武器作战时的命中几率提高%s%。"] = { { Stats.MeleeHit, Stats.RangedHit, }, } -- s30816
 L["使你的剑、拳套和匕首的武器技能提高%s点。"] = { { Stats.WeaponSkill, }, } -- s30919
 L["生命值提高%s点。近战攻击速度提高%s%。每%s秒恢复%s点法力值。"] = { { Stats.Health, }, { Stats.MeleeHaste, }, false, { Stats.GenericManaRegen, }, } -- s355366
 L["每%s秒造成%s点暗影伤害。\n使你的法术和近战攻击命中目标的几率降低%s%。"] = { false, false, { Stats.MeleeHit, Stats.RangedHit, Stats.SpellHit, }, } -- s367873
-L["施法者的攻击速度提高%s%，造成的所有伤害提高%s点，持续%s。"] = { { Stats.MeleeHaste, }, false, false, } -- s368388
-L["每%s秒造成%s点自然伤害，并使近战、远程或者法术的爆击几率提高%s%，持续%s。"] = { false, false, { Stats.MeleeCrit, Stats.RangedCrit, Stats.SpellCrit, }, false, } -- s370337
+L["施法者的攻击速度提高%s%，造成的所有伤害提高%s点，持续%s sec。"] = { { Stats.MeleeHaste, }, false, false, } -- s368388
+L["每%s秒造成%s点自然伤害，并使近战、远程或者法术的爆击几率提高%s%，持续%s sec。"] = { false, false, { Stats.MeleeCrit, Stats.RangedCrit, Stats.SpellCrit, }, false, } -- s370337
 L["生命值提高%s%，伤害提高%s%。"] = { false, { Stats.SpellDamage, }, } -- s370444
-L["用蛛牙刺穿你自己，使移动速度、攻击速度和施法速度提高%s%，持续%s。"] = { { Stats.SpellHaste, Stats.MeleeHaste, Stats.RangedHaste, }, false, } -- s370832
+L["用蛛牙刺穿你自己，使移动速度、攻击速度和施法速度提高%s%，持续%s sec。"] = { { Stats.SpellHaste, Stats.MeleeHaste, Stats.RangedHaste, }, false, } -- s370832
 L["终结技，提高招架几率。根据连击点数决定持续时间和招架几率：\n   %s点：%s秒，%s%招架几率\n   %s点：%s秒，%s%招架几率\n   %s点：%s秒，%s%招架几率\n   %s点：%s秒，%s%招架几率\n   %s点：%s秒，%s%招架几率"] = { false, { Stats.Parry, }, false, false, false, false, false, false, false, false, false, false, false, false, false, } -- s398198
 L["终结技，使你的招架几率提高%s%，高于%s的每一点防御技能还会使你的攻击强度提高%s点。根据连击点数决定持续时间：\n   %s点：%s秒\n   %s点：%s秒\n   %s点：%s秒\n   %s点：%s秒\n   %s点：%s秒"] = { { Stats.Parry, }, false, false, false, false, false, false, false, false, false, false, false, false, } -- s400012
-L["对目标施放诅咒，使其暗影和奥术抗性降低%s点，受到的暗影和奥术伤害提高%s%，效果持续%s。对于一个目标，每个术士只能施加一种诅咒。"] = { { Stats.ShadowResistance, Stats.ArcaneResistance, }, false, false, } -- s402791
-L["对目标施放诅咒，使其火焰和冰霜抗性降低%s点，受到的火焰和冰霜伤害提高%s%，效果持续%s。对于一个目标，每个术士只能施加一种诅咒。"] = { { Stats.FireResistance, Stats.FrostResistance, }, false, false, } -- s402792
-L["强迫目标使用恶魔语，使其所有法术的施放时间延长%s%，持续%s。对于一个目标，每个术士只能施加一种诅咒。"] = { { Stats.SpellHaste, }, false, } -- s402794
-L["使敌人的攻击间隔延长%s%，持续%s。"] = { { Stats.MeleeHaste, }, false, } -- s402808
-L["使一名敌人的护甲降低%s点，持续%s。"] = { { Stats.Armor, }, false, } -- s402818
-L["战士发出怒吼，使半径%s码范围内的所有小队成员的耐力提高%s点，持续%s。"] = { false, { Stats.Stamina, }, false, } -- s403215
-L["施法者被邪能笼罩，使法术伤害和治疗提高%s点再加上你的精神值的%s%，另外，你每%s秒可以恢复%s%的最大生命值。术士在同一时间内只能激活一种护甲法术。持续%s。"] = { { Stats.SpellDamage, Stats.HealingPower, }, false, false, false, false, } -- s403619
-L["使施法者造成的物理伤害提高%s点，攻击速度提高%s%，持续%s。"] = { { Stats.AverageWeaponDamage, }, { Stats.MeleeHaste, }, false, } -- s37975
-L["每当你格挡时，恢复最大法力值的%s%，并提高护甲值，数值相当于盾牌护甲值的%s%，最多可叠加%s次。你的格挡几率提高%s%，格挡值提高%s%。\n每当你使用一个震击技能，高于%s的每一点防御技能还会使你的法术强度提高%s点，持续%s。"] = { false, { Stats.Armor, }, false, { Stats.BlockChance, }, false, false, false, false, } -- s408524
-L["护甲值提高，数值相当于盾牌护甲值的%s%，持续%s，最多可叠加%s次。"] = { { Stats.Armor, }, false, false, } -- s408525
-L["你的伏击和背刺技能命中后使目标失衡，使其近战攻击速度降低%s%，移动速度降低%s%，持续%s。"] = { { Stats.MeleeHaste, }, false, false, } -- s408699
+L["对目标施放诅咒，使其暗影和奥术抗性降低%s点，受到的暗影和奥术伤害提高%s%，效果持续%s sec。对于一个目标，每个术士只能施加一种诅咒。"] = { { Stats.ShadowResistance, Stats.ArcaneResistance, }, false, false, } -- s402791
+L["对目标施放诅咒，使其火焰和冰霜抗性降低%s点，受到的火焰和冰霜伤害提高%s%，效果持续%s sec。对于一个目标，每个术士只能施加一种诅咒。"] = { { Stats.FireResistance, Stats.FrostResistance, }, false, false, } -- s402792
+L["强迫目标使用恶魔语，使其所有法术的施放时间延长%s%，持续%s sec。对于一个目标，每个术士只能施加一种诅咒。"] = { { Stats.SpellHaste, }, false, } -- s402794
+L["使敌人的攻击间隔延长%s%，持续%s sec。"] = { { Stats.MeleeHaste, }, false, } -- s402808
+L["使一名敌人的护甲降低%s点，持续%s sec。"] = { { Stats.Armor, }, false, } -- s402818
+L["战士发出怒吼，使半径%s码范围内的所有小队成员的耐力提高%s点，持续%s sec。"] = { false, { Stats.Stamina, }, false, } -- s403215
+L["施法者被邪能笼罩，使法术伤害和治疗提高%s点再加上你的精神值的%s%，另外，你每%s秒可以恢复%s%的最大生命值。术士在同一时间内只能激活一种护甲法术。持续%s sec。"] = { { Stats.SpellDamage, Stats.HealingPower, }, false, false, false, false, } -- s403619
+L["使施法者造成的物理伤害提高%s点，攻击速度提高%s%，持续%s sec。"] = { { Stats.AverageWeaponDamage, }, { Stats.MeleeHaste, }, false, } -- s37975
+L["每当你格挡时，恢复最大法力值的%s%，并提高护甲值，数值相当于盾牌护甲值的%s%，最多可叠加%s次。你的格挡几率提高%s%，格挡值提高%s%。\n每当你使用一个震击技能，高于%s的每一点防御技能还会使你的法术强度提高%s点，持续%s sec。"] = { false, { Stats.Armor, }, false, { Stats.BlockChance, }, false, false, false, false, } -- s408524
+L["护甲值提高，数值相当于盾牌护甲值的%s%，持续%s sec，最多可叠加%s次。"] = { { Stats.Armor, }, false, false, } -- s408525
+L["你的伏击和背刺技能命中后使目标失衡，使其近战攻击速度降低%s%，移动速度降低%s%，持续%s sec。"] = { { Stats.MeleeHaste, }, false, false, } -- s408699
 L["你的爆击几率提高%s%，所有射击技能的法力值消耗降低%s%（急速射击除外）。"] = { { Stats.MeleeCrit, Stats.RangedCrit, }, false, } -- s409428
-L["近战和远程爆击使你的攻击强度提高，数值相当于你当前敏捷值的%s%，持续%s。"] = { { Stats.GenericAttackPower, }, false, } -- s409504
-L["远程爆击使你的攻击强度提高，数值相当于你的敏捷值的%s%，持续%s。"] = { { Stats.GenericAttackPower, }, false, } -- s409507
+L["近战和远程爆击使你的攻击强度提高，数值相当于你当前敏捷值的%s%，持续%s sec。"] = { { Stats.GenericAttackPower, }, false, ignoreSum = true } -- s409504
+L["远程爆击使你的攻击强度提高，数值相当于你的敏捷值的%s%，持续%s sec。"] = { { Stats.GenericAttackPower, }, false, } -- s409507
 L["你的所有法术的法术爆击几率提高%s%，但非周期性法术爆击现在会额外消耗基础法力值的%s%。"] = { { Stats.SpellCrit, }, false, } -- s412286
 L["使你的躲闪几率提高%s%，你的宠物的躲闪几率提高%s%。另外，你的侧翼打击技能的冷却时间缩短%s%。"] = { { Stats.Dodge, }, false, false, } -- s415428
 L["使你的躲闪几率提高%s%，在熊形态和巨熊形态下每次躲闪攻击都可以获得%s点怒气值，在猎豹形态下躲闪攻击可以获得%s点能量，在其他形态下躲闪攻击可以恢复%s%的最大法力值。"] = { { Stats.Dodge, }, false, false, false, } -- s417051
-L["向目标泼洒上古的腐蚀毒药，每%s秒对目标造成%s点自然伤害，并使其护甲降低%s点，持续%s。"] = { false, false, { Stats.Armor, }, false, } -- s422996
-L["立即用副手武器发起打击，造成通常的副手武器伤害，并使你的招架几率提高%s%，持续%s，或直到你成功招架攻击。使用左右开弓后的%s内，邪恶攻击消耗的能量降低%s点，产生的威胁值提高%s%，并且邪恶攻击和刺骨造成的伤害提高%s%。奖励%s个连击点数。\n大部分影响邪恶攻击或由其触发的天赋和效果都可以对左右开弓生效。左右开弓无法降低左右开弓的消耗或强化其效果。"] = { { Stats.Parry, }, false, false, false, false, false, false, } -- s424919
-L["澎湃着邪能之力，使你的宠物和你自身的躲闪几率提高%s%，你的所有攻击的爆击几率提高%s%。持续%s。"] = { { Stats.Dodge, }, false, false, } -- s425463
-L["提高你的施法速度，使所有法术的施法速度提高%s%，在施法时因受到伤害而承受的施法推迟时间缩短%s%，持续%s。"] = { { Stats.SpellHaste, }, false, false, } -- s425121
+L["向目标泼洒上古的腐蚀毒药，每%s秒对目标造成%s点自然伤害，并使其护甲降低%s点，持续%s sec。"] = { false, false, { Stats.Armor, }, false, } -- s422996
+L["立即用副手武器发起打击，造成通常的副手武器伤害，并使你的招架几率提高%s%，持续%s sec，或直到你成功招架攻击。使用左右开弓后的%s sec内，邪恶攻击消耗的能量降低%s点，产生的威胁值提高%s%，并且邪恶攻击和刺骨造成的伤害提高%s%。奖励%s个连击点数。\n大部分影响邪恶攻击或由其触发的天赋和效果都可以对左右开弓生效。左右开弓无法降低左右开弓的消耗或强化其效果。"] = { { Stats.Parry, }, false, false, false, false, false, false, } -- s424919
+L["澎湃着邪能之力，使你的宠物和你自身的躲闪几率提高%s%，你的所有攻击的爆击几率提高%s%。持续%s sec。"] = { { Stats.Dodge, }, false, false, } -- s425463
+L["提高你的施法速度，使所有法术的施法速度提高%s%，在施法时因受到伤害而承受的施法推迟时间缩短%s%，持续%s sec。"] = { { Stats.SpellHaste, }, false, false, } -- s425121
 L["使你的审判射程扩大%s码，所有法术的命中几率提高%s%。"] = { false, { Stats.SpellHit, }, } -- s426173
-L["激活之后，暂时使你的最大生命值提高%s%，持续%s。在效果解除之后，这些生命值会被扣除。另外，在恶魔变形时，复仇使恶魔之翼减慢你的坠落速度。"] = { { Stats.Health, }, false, } -- s426195
-L["发出集结呐喊，使%s码内的所有小队和团队成员的最大生命值提高%s%，持续%s。"] = { false, { Stats.Health, }, false, } -- s426490
-L["宠物的近战攻击速度提高%s%，持续%s。"] = { { Stats.MeleeHaste, }, false, } -- s428728
-L["你的燃烧技能还会使施法急速提高%s%，持续%s，并且不再消耗献祭。"] = { { Stats.SpellHaste, }, false, } -- s427713
-L["消耗宠物的所有狂乱层数，消耗的每层狂乱使你的远程攻击速度提高%s%，并使宠物获得%s点集中值，持续%s。\n你的宠物使用基础攻击使获得狂乱，使其近战攻击速度提高%s%，持续%s，最多叠加%s次。"] = { { Stats.RangedHaste, }, false, false, { Stats.MeleeHaste, }, false, false, } -- s428726
-L["在被击中时对攻击者造成%s点火焰伤害，使你的法术爆击几率提高%s%，并使你受到爆击的几率降低%s%。法师在同一时间内只能保有一种魔法护甲效果。持续%s。"] = { false, { Stats.SpellCrit, }, false, false, } -- s428741
-L["你的神圣法术的爆击几率提高%s%，你的治疗爆击可以在%s内继续为目标进行治疗，治疗量相当于该次产生爆击的治疗法术所造成治疗量的%s%。"] = { { Stats.SpellCrit, }, false, false, } -- s429142
+L["激活之后，暂时使你的最大生命值提高%s%，持续%s sec。在效果解除之后，这些生命值会被扣除。另外，在恶魔变形时，复仇使恶魔之翼减慢你的坠落速度。"] = { { Stats.Health, }, false, } -- s426195
+L["发出集结呐喊，使%s码内的所有小队和团队成员的最大生命值提高%s%，持续%s sec。"] = { false, { Stats.Health, }, false, } -- s426490
+L["宠物的近战攻击速度提高%s%，持续%s sec。"] = { { Stats.MeleeHaste, }, false, } -- s428728
+L["你的燃烧技能还会使施法急速提高%s%，持续%s sec，并且不再消耗献祭。"] = { { Stats.SpellHaste, }, false, ignoreSum = true } -- s427713
+L["消耗宠物的所有狂乱层数，消耗的每层狂乱使你的远程攻击速度提高%s%，并使宠物获得%s点集中值，持续%s sec。\n你的宠物使用基础攻击使获得狂乱，使其近战攻击速度提高%s%，持续%s sec，最多叠加%s次。"] = { { Stats.RangedHaste, }, false, false, { Stats.MeleeHaste, }, false, false, } -- s428726
+L["在被击中时对攻击者造成%s点火焰伤害，使你的法术爆击几率提高%s%，并使你受到爆击的几率降低%s%。法师在同一时间内只能保有一种魔法护甲效果。持续%s sec。"] = { false, { Stats.SpellCrit, }, false, false, } -- s428741
+L["你的神圣法术的爆击几率提高%s%，你的治疗爆击可以在%s sec内继续为目标进行治疗，治疗量相当于该次产生爆击的治疗法术所造成治疗量的%s%。"] = { { Stats.SpellCrit, }, false, false, } -- s429142
 L["附魔的刃锋使你的命中几率提高%s%。该效果在黑暗深渊外无法生效。"] = { { Stats.MeleeHit, Stats.RangedHit, }, } -- s430391
 L["每%s秒恢复%s点法力值，使法术命中几率提高%s%。该效果仅在黑暗深渊中生效。"] = { false, { Stats.SpellHit, }, false, } -- s430406
 L["使法术命中几率提高%s%，近战和远程爆击几率提高%s%，攻击强度提高%s点，法术伤害提高%s点，移动速度提高%s%。持续%s分钟。"] = { { Stats.SpellHit, }, { Stats.MeleeCrit, Stats.RangedCrit, }, { Stats.GenericAttackPower, }, { Stats.SpellDamage, }, false, false, } -- s430947
@@ -882,160 +882,160 @@ L["装备双手武器时，你的攻击速度提高%s%。"] = { { Stats.MeleeHas
 L["永久性地为一件肩部栏位物品附魔，使你的攻击速度提高%s%。"] = { { Stats.MeleeHaste, }, } -- s432137
 L["使你的所有法术和攻击的命中几率提高%s%。"] = { { Stats.MeleeHit, Stats.RangedHit, Stats.SpellHit, }, } -- s432639
 L["刺破目标的护甲，使护甲降低%s点。"] = { { Stats.Armor, }, } -- s434837
-L["释放一股奥术能量冲击，造成%s点奥术伤害，使所有抗性降低%s点，受到的所有法术伤害提高%s%，持续%s。只对%s级以下的敌人有效。"] = { false, { Stats.FireResistance, Stats.FrostResistance, Stats.ShadowResistance, Stats.ArcaneResistance, Stats.NatureResistance, }, false, false, false, } -- s434841
-L["护甲提高%s点，但移动速度降低%s%。效果无法被移除，持续%s。"] = { { Stats.Armor, }, false, false, } -- s435359
+L["释放一股奥术能量冲击，造成%s点奥术伤害，使所有抗性降低%s点，受到的所有法术伤害提高%s%，持续%s sec。只对%s级以下的敌人有效。"] = { false, { Stats.FireResistance, Stats.FrostResistance, Stats.ShadowResistance, Stats.ArcaneResistance, Stats.NatureResistance, }, false, false, false, } -- s434841
+L["护甲提高%s点，但移动速度降低%s%。效果无法被移除，持续%s sec。"] = { { Stats.Armor, }, false, false, } -- s435359
 L["强化拳套武器 %s。"] = { { Stats.WeaponSkill, }, } -- s435535
-L["恢复%s点法力值和%s点生命值，同时使攻击强度提高%s点，所有法术造成的伤害提高%s点，持续%s。"] = { false, false, { Stats.GenericAttackPower, }, { Stats.SpellDamage, }, false, } -- s435973
+L["恢复%s点法力值和%s点生命值，同时使攻击强度提高%s点，所有法术造成的伤害提高%s点，持续%s sec。"] = { false, false, { Stats.GenericAttackPower, }, { Stats.SpellDamage, }, false, } -- s435973
 L["使法术和魔法效果的治疗和伤害提高最多%s点。"] = { { Stats.SpellDamage, Stats.HealingPower, }, } -- s435975
-L["施法时有几率使你的伤害和治疗效果提高最多%s点，持续%s。"] = { { Stats.SpellDamage, Stats.HealingPower, }, false, } -- s435977
+L["施法时有几率使你的伤害和治疗效果提高最多%s点，持续%s sec。"] = { { Stats.SpellDamage, Stats.HealingPower, }, false, ignoreSum = true } -- s435977
 L["使你的所有法术和攻击的爆击几率提高%s%。"] = { { Stats.MeleeCrit, Stats.RangedCrit, Stats.SpellCrit, }, } -- s436239
-L["你的宠物获得%s点耐力和%s点智力。"] = { { Stats.Stamina, }, { Stats.Intellect, }, } -- s436375
-L["有一定几率在命中目标时使你的力量提高%s点，持续%s。"] = { { Stats.Strength, }, false, } -- s436469
-L["驾驭周围空气中潜藏的奥术能量，使你获得充能启迪，所有法术的法力值消耗降低$m%，造成的伤害和治疗效果提高最多%s点，持续%s"] = { { Stats.SpellDamage, Stats.HealingPower, }, false, } -- s437327
-L["引发神经逻辑震荡，立即对自身造成%s点伤害，并使你的近战和远程攻击速度提高%s%，持续%s。"] = { false, { Stats.MeleeHaste, Stats.RangedHaste, }, false, } -- s437349
-L["获得神经漫游冥想，使你在施法时仍可保留$s%的法力值恢复，法术造成的伤害和治疗效果提高最多%s点，持续%s。"] = { { Stats.SpellDamage, Stats.HealingPower, }, false, } -- s437357
-L["获得专注凝神，使移动速度降低$s%，但对所有魔法的抗性都提高%s，近战攻击速度提高$s%，持续%s。"] = { { Stats.FireResistance, Stats.NatureResistance, Stats.FrostResistance, Stats.ShadowResistance, Stats.ArcaneResistance, }, false, } -- s437377
-L["施法者向玩家喷吐昏睡毒液，每%s秒造成%s点自然伤害，持续%s。该毒液会使命中几率降低%s%，技能消耗提高%s%。"] = { false, false, false, { Stats.MeleeHit, Stats.RangedHit, }, false, } -- s437390
+L["你的宠物获得%s点耐力和%s点智力。"] = { { Stats.Stamina, }, { Stats.Intellect, }, ignoreSum = true } -- s436375
+L["有一定几率在命中目标时使你的力量提高%s点，持续%s sec。"] = { { Stats.Strength, }, false, ignoreSum = true } -- s436469
+L["驾驭周围空气中潜藏的奥术能量，使你获得充能启迪，所有法术的法力值消耗降低$m%，造成的伤害和治疗效果提高最多%s点，持续%s sec"] = { { Stats.SpellDamage, Stats.HealingPower, }, false, } -- s437327
+L["引发神经逻辑震荡，立即对自身造成%s点伤害，并使你的近战和远程攻击速度提高%s%，持续%s sec。"] = { false, { Stats.MeleeHaste, Stats.RangedHaste, }, false, } -- s437349
+L["获得神经漫游冥想，使你在施法时仍可保留$s%的法力值恢复，法术造成的伤害和治疗效果提高最多%s点，持续%s sec。"] = { { Stats.SpellDamage, Stats.HealingPower, }, false, } -- s437357
+L["获得专注凝神，使移动速度降低$s%，但对所有魔法的抗性都提高%s，近战攻击速度提高$s%，持续%s sec。"] = { { Stats.FireResistance, Stats.NatureResistance, Stats.FrostResistance, Stats.ShadowResistance, Stats.ArcaneResistance, }, false, } -- s437377
+L["施法者向玩家喷吐昏睡毒液，每%s秒造成%s点自然伤害，持续%s sec。该毒液会使命中几率降低%s%，技能消耗提高%s%。"] = { false, false, false, { Stats.MeleeHit, Stats.RangedHit, }, false, } -- s437390
 L["使法术爆击几率提高%s%，法术伤害和治疗效果提高%s点，近战和远程攻击速度提高%s%。持续%s分钟。"] = { { Stats.SpellCrit, }, { Stats.SpellDamage, Stats.HealingPower, }, { Stats.MeleeHaste, Stats.RangedHaste, }, false, } -- s438536
-L["获得强化的创新魔印，使你的法术造成的伤害和治疗效果提高最多%s点，攻击强度提高%s点，持续%s。该效果只能在战斗之外施加。"] = { { Stats.SpellDamage, Stats.HealingPower, }, { Stats.GenericAttackPower, }, false, } -- s439155
-L["法术伤害提高最多%s点，持续%s。"] = { { Stats.SpellDamage, }, false, } -- s439959
+L["获得强化的创新魔印，使你的法术造成的伤害和治疗效果提高最多%s点，攻击强度提高%s点，持续%s sec。该效果只能在战斗之外施加。"] = { { Stats.SpellDamage, Stats.HealingPower, }, { Stats.GenericAttackPower, }, false, } -- s439155
+L["法术伤害提高最多%s点，持续%s sec。"] = { { Stats.SpellDamage, }, false, } -- s439959
 L["%s 武器伤害。"] = { { Stats.AverageWeaponDamage, }, } -- s440981
 L["在熊形态、猎豹形态或巨熊形态下，近战攻击的命中几率提高%s%，敌人躲闪你的近战攻击的几率降低%s%。无法与其他戒指符文叠加。"] = { { Stats.MeleeHit, Stats.RangedHit, }, false, } -- s442901
-L["强迫附近的敌人使用恶魔语，使其施法速度降低%s%，持续%s。"] = { { Stats.SpellHaste, }, false, } -- s444046
+L["强迫附近的敌人使用恶魔语，使其施法速度降低%s%，持续%s sec。"] = { { Stats.SpellHaste, }, false, } -- s444046
 L["攻击强度、法术伤害和治疗效果提高%s点。"] = { { Stats.SpellDamage, Stats.HealingPower, Stats.AttackPower, }, } -- s446219
-L["烈焰震击使攻击强度、法术伤害和治疗效果提高%s点，持续%s。"] = { { Stats.SpellDamage, Stats.HealingPower, Stats.AttackPower, }, false, } -- s446220
+L["烈焰震击使攻击强度、法术伤害和治疗效果提高%s点，持续%s sec。"] = { { Stats.SpellDamage, Stats.HealingPower, Stats.AttackPower, }, false, ignoreSum = true } -- s446220
 L["远程和近战攻击强度提高%s点。该合剂只能在受到梦魇影响的区域中生效。"] = { { Stats.GenericAttackPower, }, } -- s446228
-L["使施法者获得远古神灵的祝福，远程和近战攻击强度提高%s点，持续%s。"] = { { Stats.GenericAttackPower, }, false, } -- s446231
-L["造成远程或近战伤害时，有较小的几率使持有者获得腾蛇祝福。远程和攻击强度提高%s点，持续%s。"] = { { Stats.GenericAttackPower, }, false, } -- s446233
-L["获得强化的鲜活之梦魔印，使你的法术造成的伤害和治疗效果提高最多%s点，攻击强度提高%s点，持续%s。该效果只能在战斗之外施加。"] = { { Stats.SpellDamage, Stats.HealingPower, }, { Stats.GenericAttackPower, }, false, } -- s446240
+L["使施法者获得远古神灵的祝福，远程和近战攻击强度提高%s点，持续%s sec。"] = { { Stats.GenericAttackPower, }, false, } -- s446231
+L["造成远程或近战伤害时，有较小的几率使持有者获得腾蛇祝福。远程和攻击强度提高%s点，持续%s sec。"] = { { Stats.GenericAttackPower, }, false, ignoreSum = true } -- s446233
+L["获得强化的鲜活之梦魔印，使你的法术造成的伤害和治疗效果提高最多%s点，攻击强度提高%s点，持续%s sec。该效果只能在战斗之外施加。"] = { { Stats.SpellDamage, Stats.HealingPower, }, { Stats.GenericAttackPower, }, false, } -- s446240
 L["使法术强度提高%s点。法术成功命中时有几率对目标施放一支暗影箭。同一时间只能激活一种阿塔莱药水。在沉没的神庙之外无效。"] = { { Stats.SpellDamage, }, } -- s446256
-L["造成的伤害提高%s点，攻击速度提高%s%，持续%s。"] = { { Stats.AverageWeaponDamage, }, { Stats.MeleeHaste, }, false, } -- s446327
-L["受到战争魔精的鼓舞，你的体型增大了，你的力量也提高了%s点。持续%s。"] = { { Stats.Strength, }, false, } -- s446335
-L["使近战和远程的攻击强度提高%s点。近战或远程攻击有几率使体型增大，使力量或敏捷（取其高者）提高%s点，持续%s秒。同一时间只能激活一种阿塔莱药水。在沉没的神庙之外无效。"] = { { Stats.GenericAttackPower, }, { Stats.Strength, }, false, } -- s446336
+L["造成的伤害提高%s点，攻击速度提高%s%，持续%s sec。"] = { { Stats.AverageWeaponDamage, }, { Stats.MeleeHaste, }, false, } -- s446327
+L["受到战争魔精的鼓舞，你的体型增大了，你的力量也提高了%s点。持续%s sec。"] = { { Stats.Strength, }, false, } -- s446335
+L["使近战和远程的攻击强度提高%s点。近战或远程攻击有几率使体型增大，使力量或敏捷（取其高者）提高%s点，持续%s sec秒。同一时间只能激活一种阿塔莱药水。在沉没的神庙之外无效。"] = { { Stats.GenericAttackPower, }, { Stats.Strength, }, false, } -- s446336
 L["造成的治疗效果提高%s点，每%s秒恢复的法力值提高%s点，你的治疗有几率恢复%s点能量值、%s%的法力值或%s点怒气值。同一时间只能激活一种阿塔莱药水。在沉没的神庙之外无效。"] = { { Stats.HealingPower, }, false, { Stats.GenericManaRegen, }, false, false, false, } -- s446396
 L["提高法术和效果造成的治疗，最多%s点。"] = { { Stats.HealingPower, }, } -- s446470
-L["伤害性法术有几率使你的施法速度提高%s%，持续%s。在受到梦魇影响的区域之外无效。"] = { { Stats.SpellHaste, }, false, } -- s446518
+L["伤害性法术有几率使你的施法速度提高%s%，持续%s sec。在受到梦魇影响的区域之外无效。"] = { { Stats.SpellHaste, }, false, ignoreSum = true } -- s446518
 L["虚空的回响令你陷入疯狂。使你的施法速度提高%s%。在受到梦魇影响的区域之外无效。"] = { { Stats.SpellHaste, }, } -- s446528
 L["虚空的回响令你陷入癫狂。使你的治疗效果提高最多%s点。在受到梦魇影响的区域之外无效。"] = { { Stats.HealingPower, }, } -- s446541
-L["治疗法术有几率使你的治疗效果提高最多%s点，持续%s。在受到梦魇影响的区域之外无效。"] = { { Stats.HealingPower, }, false, } -- s446545
-L["伤害性法术有几率使你的法术伤害提高%s点，躲闪几率提高%s%，持续%s。在受到梦魇影响的区域之外无效。"] = { { Stats.SpellDamage, }, { Stats.Dodge, }, false, } -- s446570
+L["治疗法术有几率使你的治疗效果提高最多%s点，持续%s sec。在受到梦魇影响的区域之外无效。"] = { { Stats.HealingPower, }, false, ignoreSum = true } -- s446545
+L["伤害性法术有几率使你的法术伤害提高%s点，躲闪几率提高%s%，持续%s sec。在受到梦魇影响的区域之外无效。"] = { { Stats.SpellDamage, }, { Stats.Dodge, }, false, ignoreSum = true } -- s446570
 L["虚空的回响腐化了你的思维。使你的法术伤害提高%s点，躲闪几率提高%s%。在受到梦魇影响的区域之外无效。"] = { { Stats.SpellDamage, }, { Stats.Dodge, }, } -- s446572
 L["你的近战攻击有几率释放虚空的回响，为你注入深沉的惊惧感。使你的攻击速度提高%s%，攻击强度提高%s点。在受到梦魇影响的区域之外无效。"] = { { Stats.MeleeHaste, }, { Stats.AttackPower, }, } -- s446577
-L["近战攻击有几率使你的攻击速度提高%s%，攻击强度提高%s点，持续%s。在受到梦魇影响的区域之外无效。"] = { { Stats.MeleeHaste, }, { Stats.AttackPower, }, false, } -- s446579
-L["近战攻击和有害法术有几率使你的法术伤害提高最多%s点，持续%s。在受到梦魇影响的区域之外无效。"] = { { Stats.SpellDamage, }, false, } -- s446592
+L["近战攻击有几率使你的攻击速度提高%s%，攻击强度提高%s点，持续%s sec。在受到梦魇影响的区域之外无效。"] = { { Stats.MeleeHaste, }, { Stats.AttackPower, }, false, ignoreSum = true } -- s446579
+L["近战攻击和有害法术有几率使你的法术伤害提高最多%s点，持续%s sec。在受到梦魇影响的区域之外无效。"] = { { Stats.SpellDamage, }, false, ignoreSum = true } -- s446592
 L["你的近战攻击和有害法术有几率释放虚空的回响，为你注入恐惧。使你的法术伤害提高%s点。在受到梦魇影响的区域之外无效。"] = { { Stats.SpellDamage, }, } -- s446597
-L["近战攻击有几率使你的攻击强度提高%s点，躲闪几率提高%s%。在受到梦魇影响的区域之外无效。"] = { { Stats.AttackPower, }, { Stats.Dodge, }, } -- s446628
+L["近战攻击有几率使你的攻击强度提高%s点，躲闪几率提高%s%。在受到梦魇影响的区域之外无效。"] = { { Stats.AttackPower, }, { Stats.Dodge, }, ignoreSum = true } -- s446628
 L["下一次攻击、技能或法术造成的伤害或治疗效果提高%s点。"] = { { Stats.SpellDamage, Stats.HealingPower, }, } -- s446687
-L["在消灭一个可以为你提供经验值或荣誉值的敌人之后，使你下一次攻击、技能或法术造成的伤害或治疗效果提高%s点。该效果每%s秒只能触发一次。"] = { { Stats.SpellDamage, Stats.HealingPower, }, false, } -- s446689
+L["在消灭一个可以为你提供经验值或荣誉值的敌人之后，使你下一次攻击、技能或法术造成的伤害或治疗效果提高%s点。该效果每%s秒只能触发一次。"] = { { Stats.SpellDamage, Stats.HealingPower, }, false, ignoreSum = true } -- s446689
 L["爆击几率提高%s%，法术伤害提高%s点，所有属性提高%s%。持续%s分钟。"] = { false, { Stats.SpellDamage, }, false, false, } -- s446695
-L["你的有害法术有一定几率使你的法术伤害提高%s点，持续%s。"] = { { Stats.SpellDamage, }, false, } -- s446705
-L["治疗强度提高%s点，持续%s。"] = { { Stats.HealingPower, }, false, } -- s446712
-L["有一定几率在命中目标时使力量提高%s点，持续%s。"] = { { Stats.Strength, }, false, } -- s446723
-L["使敌人中毒，造成%s点自然伤害，使自然抗性降低%s点，并使受到的神圣和自然伤害提高%s%，持续%s。只对%s级以下的敌人有效。"] = { false, { Stats.NatureResistance, }, false, false, false, } -- s447894
-L["法术造成的伤害提高%s点，造成的治疗效果提高%s点，每%s秒恢复%s点法力值，持续%s。该合剂只能在受到梦魇影响的区域中生效。"] = { { Stats.SpellDamage, }, { Stats.HealingPower, }, false, { Stats.GenericManaRegen, }, false, } -- s448084
-L["你的神圣伤害法术使你的伤害和治疗强度提高%s点，持续%s。"] = { { Stats.HealingPower, Stats.SpellDamage, }, false, } -- s449921
+L["你的有害法术有一定几率使你的法术伤害提高%s点，持续%s sec。"] = { { Stats.SpellDamage, }, false, ignoreSum = true } -- s446705
+L["治疗强度提高%s点，持续%s sec。"] = { { Stats.HealingPower, }, false, } -- s446712
+L["有一定几率在命中目标时使力量提高%s点，持续%s sec。"] = { { Stats.Strength, }, false, ignoreSum = true } -- s446723
+L["使敌人中毒，造成%s点自然伤害，使自然抗性降低%s点，并使受到的神圣和自然伤害提高%s%，持续%s sec。只对%s级以下的敌人有效。"] = { false, { Stats.NatureResistance, }, false, false, false, } -- s447894
+L["法术造成的伤害提高%s点，造成的治疗效果提高%s点，每%s秒恢复%s点法力值，持续%s sec。该合剂只能在受到梦魇影响的区域中生效。"] = { { Stats.SpellDamage, }, { Stats.HealingPower, }, false, { Stats.GenericManaRegen, }, false, } -- s448084
+L["你的神圣伤害法术使你的伤害和治疗强度提高%s点，持续%s sec。"] = { { Stats.HealingPower, Stats.SpellDamage, }, false, ignoreSum = true } -- s449921
 L["使你在熊形态和巨熊形态下的法术和攻击的命中几率提高%s%。"] = { { Stats.MeleeHit, Stats.RangedHit, Stats.SpellHit, }, } -- s449926
-L["造成火焰伤害使你的攻击强度提高%s点，最多叠加%s次。持续%s。"] = { { Stats.AttackPower, }, false, false, } -- s449931
+L["造成火焰伤害使你的攻击强度提高%s点，最多叠加%s次。持续%s sec。"] = { { Stats.AttackPower, }, false, false, ignoreSum = true } -- s449931
 L["神圣法术的爆击几率提高%s%。"] = { { Stats.SpellCrit, }, } -- s449933
 L["自然法术造成的伤害和治疗效果提高最多%s点。"] = { { Stats.NatureDamage, Stats.HealingPower, }, } -- s449934
-L["施法时有几率使你的自然法术伤害和治疗效果提高最多%s点，持续%s。"] = { { Stats.NatureDamage, Stats.HealingPower, }, false, } -- s449935
-L["格挡后%s内格挡值提高%s点。"] = { false, { Stats.BlockValue, }, } -- s449974
+L["施法时有几率使你的自然法术伤害和治疗效果提高最多%s点，持续%s sec。"] = { { Stats.NatureDamage, Stats.HealingPower, }, false, ignoreSum = true } -- s449935
+L["格挡后%s sec内格挡值提高%s点。"] = { false, { Stats.BlockValue, }, ignoreSum = true } -- s449974
 L["使你的盾牌格挡值提高%s点。"] = { { Stats.BlockValue, }, } -- s449975
-L["急速射击还会使近战攻击速度提高%s%，持续%s。"] = { { Stats.MeleeHaste, }, false, } -- s450083
+L["急速射击还会使近战攻击速度提高%s%，持续%s sec。"] = { { Stats.MeleeHaste, }, false, ignoreSum = true } -- s450083
 L["近战攻击速度提高%s%。"] = { { Stats.MeleeHaste, }, } -- s450084
 L["%s 攻击强度，法术伤害最多%s点，法术治疗效果最多%s点。"] = { { Stats.GenericAttackPower, }, { Stats.SpellDamage, }, { Stats.HealingPower, }, } -- s450512
 L["攻击强度提高%s点，法术治疗效果提高最多%s点。"] = { { Stats.GenericAttackPower, }, false, } -- s450516
 L["使你的法术和攻击的命中几率提高%s%。"] = { { Stats.MeleeHit, Stats.RangedHit, Stats.SpellHit, }, } -- s455858
-L["你的猫鼬撕咬还会使目标的躲闪几率降低%s%，并使你的命中几率提高%s%，持续%s。"] = { { Stats.Dodge, }, { Stats.MeleeHit, Stats.RangedHit, }, false, } -- s456389
+L["你的猫鼬撕咬还会使目标的躲闪几率降低%s%，并使你的命中几率提高%s%，持续%s sec。"] = { { Stats.Dodge, }, { Stats.MeleeHit, Stats.RangedHit, }, false, ignoreSum = true } -- s456389
 L["使你的法术和攻击造成爆击的几率提高%s%。"] = { { Stats.MeleeCrit, Stats.RangedCrit, Stats.SpellCrit, }, } -- s456489
-L["使你的攻击速度提高%s%，持续%s。无法影响%s级以上的角色。"] = { { Stats.MeleeHaste, }, false, false, } -- s460455
-L["使你的力量提高%s点，效果持续%s。"] = { { Stats.Strength, }, false, } -- s461224
-L["使你的自然抗性提高%s点。效果持续%s。"] = { { Stats.NatureResistance, }, false, } -- s461226
-L["使你的自然伤害提高最多%s点。效果持续%s。"] = { { Stats.NatureDamage, }, false, } -- s461227
-L["激活剑刃乱舞使你被暗影烈焰吞没，你的攻击忽略目标的%s点护甲值。"] = { { Stats.ArmorPenetration, }, } -- s461253
-L["近战攻击命中时有较小的几率呼唤玛格曼达的灵魂协助你作战。使你的攻击速度提高%s%，持续%s。"] = { { Stats.MeleeHaste, }, false, } -- s461268
-L["你的风暴打击法术使你的攻击强度提高%s点，持续%s。（使用双手武器时更为有效）"] = { { Stats.AttackPower, }, false, } -- s461298
-L["法术和效果造成的治疗提高最多%s点，持续%s。"] = { { Stats.HealingPower, }, false, } -- s461317
-L["激励小队或团队中的所有成员，为艾泽拉斯之勇而战，所有法术和攻击的爆击几率提高%s%，攻击强度提高%s点。持续%s。\n无法与其他类似的长时间持续效果同时生效。"] = { { Stats.SpellCrit, Stats.MeleeCrit, Stats.RangedCrit, }, false, false, } -- s461475
-L["使法术和魔法效果的治疗和伤害提高最多%s点，持续%s。"] = { { Stats.SpellDamage, Stats.HealingPower, }, false, } -- s461680
+L["使你的攻击速度提高%s%，持续%s sec。无法影响%s级以上的角色。"] = { { Stats.MeleeHaste, }, false, false, } -- s460455
+L["使你的力量提高%s点，效果持续%s sec。"] = { { Stats.Strength, }, false, } -- s461224
+L["使你的自然抗性提高%s点。效果持续%s sec。"] = { { Stats.NatureResistance, }, false, } -- s461226
+L["使你的自然伤害提高最多%s点。效果持续%s sec。"] = { { Stats.NatureDamage, }, false, } -- s461227
+L["激活剑刃乱舞使你被暗影烈焰吞没，你的攻击忽略目标的%s点护甲值。"] = { { Stats.ArmorPenetration, }, ignoreSum = true } -- s461253
+L["近战攻击命中时有较小的几率呼唤玛格曼达的灵魂协助你作战。使你的攻击速度提高%s%，持续%s sec。"] = { { Stats.MeleeHaste, }, false, ignoreSum = true } -- s461268
+L["你的风暴打击法术使你的攻击强度提高%s点，持续%s sec。（使用双手武器时更为有效）"] = { { Stats.AttackPower, }, false, ignoreSum = true } -- s461298
+L["法术和效果造成的治疗提高最多%s点，持续%s sec。"] = { { Stats.HealingPower, }, false, } -- s461317
+L["激励小队或团队中的所有成员，为艾泽拉斯之勇而战，所有法术和攻击的爆击几率提高%s%，攻击强度提高%s点。持续%s sec。\n无法与其他类似的长时间持续效果同时生效。"] = { { Stats.SpellCrit, Stats.MeleeCrit, Stats.RangedCrit, }, false, false, } -- s461475
+L["使法术和魔法效果的治疗和伤害提高最多%s点，持续%s sec。"] = { { Stats.SpellDamage, Stats.HealingPower, }, false, } -- s461680
 L["魔法法术和效果的伤害量提高最多%s点。"] = { { Stats.SpellDamage, }, } -- s461697
-L["以雷霆震击附近的敌人，使它们的攻击间隔延长%s%，持续%s，并对它们造成%s点伤害。最多可影响%s个目标。"] = { { Stats.MeleeHaste, }, false, false, false, } -- s461810
-L["震击附近的敌人，使它们的攻击间隔延长%s%，持续%s，并对它们造成%s点伤害。最多可影响%s个目标。"] = { { Stats.MeleeHaste, }, false, false, false, } -- s461830
+L["以雷霆震击附近的敌人，使它们的攻击间隔延长%s%，持续%s sec，并对它们造成%s点伤害。最多可影响%s个目标。"] = { { Stats.MeleeHaste, }, false, false, false, } -- s461810
+L["震击附近的敌人，使它们的攻击间隔延长%s%，持续%s sec，并对它们造成%s点伤害。最多可影响%s个目标。"] = { { Stats.MeleeHaste, }, false, false, false, } -- s461830
 L["暗影法术和效果的伤害量提高最多%s点。"] = { { Stats.ShadowDamage, }, } -- s461956
-L["被击中之后有一定几率令攻击者因恐惧而逃跑，持续%s秒。"] = { { Stats.MeleeCrit, Stats.RangedCrit, }, } -- s462229
-L["对敌人造成%s%的武器伤害，并使其失去平衡，防御技能降低%s点，持续%s。"] = { false, { Stats.Defense, }, false, } -- s462584
-L["使你的法术伤害提高最多%s点，造成的治疗提高最多%s点，持续%s。"] = { { Stats.SpellDamage, }, { Stats.HealingPower, }, false, } -- s462636
-L["激活时，持有者的防御提高%s点，护甲值提高%s，持续%s。"] = { { Stats.Defense, }, { Stats.Armor, }, false, } -- s463105
-L["使你的盾牌格挡值提高%s点，持续%s。"] = { { Stats.BlockValue, }, false, } -- s463564
-L["获得强化的流水魔印，使你的团队的法术造成的伤害和治疗效果提高最多%s点，攻击强度提高%s点，持续%s。"] = { { Stats.SpellDamage, Stats.HealingPower, }, { Stats.GenericAttackPower, }, false, } -- s463864
+L["被击中之后有一定几率令攻击者因恐惧而逃跑，持续%s秒。"] = { { Stats.MeleeCrit, Stats.RangedCrit, }, ignoreSum = true } -- s462229
+L["对敌人造成%s%的武器伤害，并使其失去平衡，防御技能降低%s点，持续%s sec。"] = { false, { Stats.Defense, }, false, } -- s462584
+L["使你的法术伤害提高最多%s点，造成的治疗提高最多%s点，持续%s sec。"] = { { Stats.SpellDamage, }, { Stats.HealingPower, }, false, } -- s462636
+L["激活时，持有者的防御提高%s点，护甲值提高%s，持续%s sec。"] = { { Stats.Defense, }, { Stats.Armor, }, false, } -- s463105
+L["使你的盾牌格挡值提高%s点，持续%s sec。"] = { { Stats.BlockValue, }, false, } -- s463564
+L["获得强化的流水魔印，使你的团队的法术造成的伤害和治疗效果提高最多%s点，攻击强度提高%s点，持续%s sec。"] = { { Stats.SpellDamage, Stats.HealingPower, }, { Stats.GenericAttackPower, }, false, } -- s463864
 L["魔法法术和效果的伤害量提高最多%s点，魔法法术和效果造成的治疗量提高最多$%s点。"] = { { Stats.SpellDamage, }, false, } -- s463873
-L["加速思维，使法师的施法速度提高%s%，持续%s。"] = { { Stats.SpellHaste, }, false, } -- s467141
+L["加速思维，使法师的施法速度提高%s%，持续%s sec。"] = { { Stats.SpellHaste, }, false, } -- s467141
 L["使法术治疗提高最多%s点，法术伤害提高最多%s点。"] = { { Stats.HealingPower, }, { Stats.SpellDamage, }, } -- s467142
 L["奥术法术和效果的伤害量提高最多%s点。"] = { { Stats.ArcaneDamage, }, } -- s467410
 L["冰霜法术和效果的伤害量提高最多%s点。"] = { { Stats.FrostDamage, }, } -- s467412
 L["自然法术和效果的伤害量提高最多%s点。"] = { { Stats.NatureDamage, }, } -- s467413
 L["火焰法术和效果的伤害量提高最多%s点。"] = { { Stats.FireDamage, }, } -- s467414
-L["为自己恢复%s%的生命值，并使你的最大生命值提高%s%，持续%s。"] = { { Stats.Health, }, false, false, } -- s467498
-L["为你的目标恢复%s%的最大生命值，并使其最大生命值提高%s%，持续%s。"] = { false, { Stats.Health, }, false, } -- s467525
-L["使施法者有较小的几率获得远古神灵的祝福，在对敌人造成伤害时远程和近战攻击强度提高%s，持续%s。"] = { { Stats.GenericAttackPower, }, false, } -- s467743
-L["召唤一条魅惑的蛇来崇拜你，使你的精神提高%s点，持续%s。"] = { { Stats.Spirit, }, false, } -- s467754
-L["你的烈焰震击还会使你的格挡几率提高%s%，持续%s或直到格挡一次攻击。"] = { { Stats.BlockChance, }, false, } -- s467889
-L["使你的所有法术和攻击的命中几率提高%s%，持续%s。"] = { { Stats.SpellHit, Stats.MeleeHit, Stats.RangedHit, }, false, } -- s468164
-L["使德鲁伊与自然调谐如一，使法术造成的伤害提高%s%，治疗效果提高%s%，法术的爆击几率提高%s%，持续%s。"] = { false, false, { Stats.SpellCrit, }, false, } -- s468387
+L["为自己恢复%s%的生命值，并使你的最大生命值提高%s%，持续%s sec。"] = { { Stats.Health, }, false, false, } -- s467498
+L["为你的目标恢复%s%的最大生命值，并使其最大生命值提高%s%，持续%s sec。"] = { false, { Stats.Health, }, false, } -- s467525
+L["使施法者有较小的几率获得远古神灵的祝福，在对敌人造成伤害时远程和近战攻击强度提高%s，持续%s sec。"] = { { Stats.GenericAttackPower, }, false, ignoreSum = true } -- s467743
+L["召唤一条魅惑的蛇来崇拜你，使你的精神提高%s点，持续%s sec。"] = { { Stats.Spirit, }, false, } -- s467754
+L["你的烈焰震击还会使你的格挡几率提高%s%，持续%s sec或直到格挡一次攻击。"] = { { Stats.BlockChance, }, false, ignoreSum = true } -- s467889
+L["使你的所有法术和攻击的命中几率提高%s%，持续%s sec。"] = { { Stats.SpellHit, Stats.MeleeHit, Stats.RangedHit, }, false, } -- s468164
+L["使德鲁伊与自然调谐如一，使法术造成的伤害提高%s%，治疗效果提高%s%，法术的爆击几率提高%s%，持续%s sec。"] = { false, false, { Stats.SpellCrit, }, false, } -- s468387
 L["神圣法术和效果的伤害量提高最多%s点。"] = { { Stats.HolyDamage, }, } -- s468401
-L["攻击速度提高%s%，持续%s。"] = { { Stats.MeleeHaste, }, false, } -- s468408
+L["攻击速度提高%s%，持续%s sec。"] = { { Stats.MeleeHaste, }, false, } -- s468408
 L["防御增强 %s。"] = { { Stats.Defense, }, } -- s468411
-L["使神圣法术的爆击几率提高%s%，持续%s。如果铭刻了震慑，则额外提高%s%。"] = { { Stats.SpellCrit, }, false, false, } -- s468461
-L["使你的盾牌格挡值提高%s点，持续%s，并立即使你的怒气提高%s点。"] = { { Stats.BlockValue, }, false, false, } -- s468462
-L["使你的爆击几率提高%s%，你的宠物的攻击速度提高%s%，持续%s。该法术不对临时宠物或征服的恶魔生效。"] = { { Stats.SpellCrit, Stats.MeleeCrit, Stats.RangedCrit, }, { Stats.MeleeHaste, }, false, } -- s468540
+L["使神圣法术的爆击几率提高%s%，持续%s sec。如果铭刻了震慑，则额外提高%s%。"] = { { Stats.SpellCrit, }, false, false, } -- s468461
+L["使你的盾牌格挡值提高%s点，持续%s sec，并立即使你的怒气提高%s点。"] = { { Stats.BlockValue, }, false, false, } -- s468462
+L["使你的爆击几率提高%s%，你的宠物的攻击速度提高%s%，持续%s sec。该法术不对临时宠物或征服的恶魔生效。"] = { { Stats.SpellCrit, Stats.MeleeCrit, Stats.RangedCrit, }, { Stats.MeleeHaste, }, false, } -- s468540
 L["提高法术和效果造成的治疗，最多%s点。该效果不与其他戒指符文叠加。"] = { { Stats.HealingPower, }, } -- s468758
 L["每%s秒恢复%s点法力值。该效果不与其他戒指符文叠加。"] = { false, { Stats.GenericManaRegen, }, } -- s468762
-L["使你的奥术和暗影法术的伤害量提高最多%s点，持续%s。"] = { { Stats.ShadowDamage, Stats.ArcaneDamage, }, false, } -- s468784
+L["使你的奥术和暗影法术的伤害量提高最多%s点，持续%s sec。"] = { { Stats.ShadowDamage, Stats.ArcaneDamage, }, false, } -- s468784
 L["暗影和奥术法术和效果的伤害量提高最多%s点。"] = { { Stats.ShadowDamage, Stats.ArcaneDamage, }, } -- s468785
 L["爆击几率提高%s%。"] = { { Stats.MeleeCrit, Stats.RangedCrit, Stats.SpellCrit, }, } -- s469208
 L["法术伤害提高最多%s点。"] = { { Stats.SpellDamage, }, } -- s469209
 L["治疗效果提高最多%s点。"] = { { Stats.HealingPower, }, } -- s469210
-L["法术伤害提高%s点，持续%s。"] = { { Stats.SpellDamage, }, false, } -- s470361
-L["在%s内恢复总计%s点生命值，进食时必须保持坐姿。如果你花费至少%s秒钟来进食，你的法术伤害将提高%s点，持续%s。"] = { false, { Stats.SpellDamage, }, false, { Stats.SpellDamage, }, false, } -- s470362
-L["治疗效果提高%s点，持续%s。"] = { { Stats.HealingPower, }, false, } -- s470367
-L["在%s内恢复总计%s点生命值，进食时必须保持坐姿。如果你花费至少%s秒钟来进食，你造成的治疗效果提高%s点，持续%s。"] = { false, { Stats.HealingPower, }, false, { Stats.HealingPower, }, false, } -- s470369
+L["法术伤害提高%s点，持续%s sec。"] = { { Stats.SpellDamage, }, false, } -- s470361
+L["在%s sec内恢复总计%s点生命值，进食时必须保持坐姿。如果你花费至少%s秒钟来进食，你的法术伤害将提高%s点，持续%s sec。"] = { false, { Stats.SpellDamage, }, false, { Stats.SpellDamage, }, false, ignoreSum = true } -- s470362
+L["治疗效果提高%s点，持续%s sec。"] = { { Stats.HealingPower, }, false, } -- s470367
+L["在%s sec内恢复总计%s点生命值，进食时必须保持坐姿。如果你花费至少%s秒钟来进食，你造成的治疗效果提高%s点，持续%s sec。"] = { false, { Stats.HealingPower, }, false, { Stats.HealingPower, }, false, ignoreSum = true } -- s470369
 L["使法术和魔法效果的治疗和伤害提高最多%s点。使法术的爆击几率提高%s%。"] = { { Stats.SpellDamage, Stats.HealingPower, }, { Stats.SpellCrit, }, } -- s471402
-L["集结你附近的小队或团队成员，使他们的法术爆击几率提高%s%，近战和远程爆击几率提高%s%，攻击强度提高%s点，持续%s。无法和类似的世界效果同时生效。不受时光祝福影响。"] = { { Stats.SpellCrit, }, { Stats.MeleeCrit, Stats.RangedCrit, }, { Stats.GenericAttackPower, }, false, } -- s473387
-L["召唤一朵轻歌花，使你的所有小队或团队成员的近战、远程或法术爆击几率提高%s%，所有属性提高%s点，持续%s。无法和类似的世界效果同时生效。不受时光祝福影响。"] = { { Stats.MeleeCrit, Stats.RangedCrit, Stats.SpellCrit, }, { Stats.AllStats, }, false, } -- s473399
-L["使你附近的所有小队或团队成员的攻击强度提高%s点，耐力提高%s%，法术爆击几率提高%s%，持续%s。无法和类似的世界效果同时生效。不受时光祝福影响。"] = { { Stats.GenericAttackPower, }, false, { Stats.SpellCrit, }, false, } -- s473403
+L["集结你附近的小队或团队成员，使他们的法术爆击几率提高%s%，近战和远程爆击几率提高%s%，攻击强度提高%s点，持续%s sec。无法和类似的世界效果同时生效。不受时光祝福影响。"] = { { Stats.SpellCrit, }, { Stats.MeleeCrit, Stats.RangedCrit, }, { Stats.GenericAttackPower, }, false, } -- s473387
+L["召唤一朵轻歌花，使你的所有小队或团队成员的近战、远程或法术爆击几率提高%s%，所有属性提高%s点，持续%s sec。无法和类似的世界效果同时生效。不受时光祝福影响。"] = { { Stats.MeleeCrit, Stats.RangedCrit, Stats.SpellCrit, }, { Stats.AllStats, }, false, } -- s473399
+L["使你附近的所有小队或团队成员的攻击强度提高%s点，耐力提高%s%，法术爆击几率提高%s%，持续%s sec。无法和类似的世界效果同时生效。不受时光祝福影响。"] = { { Stats.GenericAttackPower, }, false, { Stats.SpellCrit, }, false, } -- s473403
 L["生命值提高%s点。近战攻击急速提高%s%。每%s秒恢复%s点法力值。"] = { { Stats.Health, }, { Stats.MeleeHaste, }, false, { Stats.GenericManaRegen, }, } -- s473441
 L["法术和效果的伤害量提高最多%s点。"] = { { Stats.SpellDamage, }, } -- s474126
-L["你的非周期性自然伤害法术爆击时，有几率使你的法术伤害提高%s点，持续%s。"] = { { Stats.SpellDamage, }, false, } -- s474127
-L["使敌人暂时发疯，攻击速度提高%s%，移动速度提高%s%，并会攻击自己的盟友，持续%s。受影响的目标受到的伤害降低%s%。"] = { { Stats.MeleeHaste, }, false, false, false, } -- s474400
-L["使法术和魔法效果所造成的治疗效果提高最多%s点，持续%s。"] = { { Stats.HealingPower, }, false, } -- s1213147
+L["你的非周期性自然伤害法术爆击时，有几率使你的法术伤害提高%s点，持续%s sec。"] = { { Stats.SpellDamage, }, false, ignoreSum = true } -- s474127
+L["使敌人暂时发疯，攻击速度提高%s%，移动速度提高%s%，并会攻击自己的盟友，持续%s sec。受影响的目标受到的伤害降低%s%。"] = { { Stats.MeleeHaste, }, false, false, false, } -- s474400
+L["使法术和魔法效果所造成的治疗效果提高最多%s点，持续%s sec。"] = { { Stats.HealingPower, }, false, } -- s1213147
 L["你的近战攻击被躲闪或招架的几率降低%s%。"] = { { Stats.DodgeReduction, Stats.ParryReduction, }, } -- s1213201
 L["使法术和效果的伤害提高最多%s点。"] = { { Stats.SpellDamage, }, } -- s1213241
 L["使你的攻击被躲闪或招架的几率降低%s%。"] = { { Stats.DodgeReduction, Stats.ParryReduction, }, } -- s1213288
 L["使神圣法术和效果的伤害提高最多%s点。"] = { { Stats.HolyDamage, }, } -- s1213619
 L["使奥术法术和效果造成的伤害提高最多%s点。"] = { { Stats.ArcaneDamage, }, } -- s1213625
 L["使法术和魔法效果的伤害和治疗提高最多%s点。"] = { { Stats.SpellDamage, Stats.HealingPower, }, } -- s1213830
-L["使法术和魔法效果的治疗效果提高最多%s点，造成的伤害提高最多%s点，并且每%s秒回复的法力值提高%s点，持续%s。你在同一时间内只能保有一种合剂的效果，这种效果在死亡后仍可继续存在。"] = { { Stats.HealingPower, }, { Stats.SpellDamage, }, false, { Stats.GenericManaRegen, }, false, } -- s1213886
-L["使攻击强度提高%s点，持续%s。你在同一时间内只能保有一种合剂的效果，这种效果在死亡后仍可继续存在。"] = { { Stats.GenericAttackPower, }, false, } -- s1213897
-L["使耐力提高%s点，并使防御值提高%s点，持续%s。你在同一时间内只能保有一种合剂的效果，这种效果在死亡后仍可继续存在、"] = { { Stats.Stamina, }, { Stats.Defense, }, false, } -- s1213901
-L["使敏捷提高%s点，打出爆击的几率提高%s%，并使自然抗性提高%s点，持续%s。"] = { { Stats.Agility, }, { Stats.MeleeCrit, Stats.RangedCrit, }, { Stats.NatureResistance, }, false, } -- s1213904
-L["使你的法术造成的伤害提高最多%s点，并使自然抗性提高%s点，持续%s。"] = { { Stats.SpellDamage, }, { Stats.NatureResistance, }, false, } -- s1213914
-L["护甲值提高%s点，防御值提高%s点，并使自然抗性提高%s点，持续%s。"] = { { Stats.Armor, }, { Stats.Defense, }, { Stats.NatureResistance, }, false, } -- s1213917
+L["使法术和魔法效果的治疗效果提高最多%s点，造成的伤害提高最多%s点，并且每%s秒回复的法力值提高%s点，持续%s sec。你在同一时间内只能保有一种合剂的效果，这种效果在死亡后仍可继续存在。"] = { { Stats.HealingPower, }, { Stats.SpellDamage, }, false, { Stats.GenericManaRegen, }, false, } -- s1213886
+L["使攻击强度提高%s点，持续%s sec。你在同一时间内只能保有一种合剂的效果，这种效果在死亡后仍可继续存在。"] = { { Stats.GenericAttackPower, }, false, } -- s1213897
+L["使耐力提高%s点，并使防御值提高%s点，持续%s sec。你在同一时间内只能保有一种合剂的效果，这种效果在死亡后仍可继续存在、"] = { { Stats.Stamina, }, { Stats.Defense, }, false, } -- s1213901
+L["使敏捷提高%s点，打出爆击的几率提高%s%，并使自然抗性提高%s点，持续%s sec。"] = { { Stats.Agility, }, { Stats.MeleeCrit, Stats.RangedCrit, }, { Stats.NatureResistance, }, false, } -- s1213904
+L["使你的法术造成的伤害提高最多%s点，并使自然抗性提高%s点，持续%s sec。"] = { { Stats.SpellDamage, }, { Stats.NatureResistance, }, false, } -- s1213914
+L["护甲值提高%s点，防御值提高%s点，并使自然抗性提高%s点，持续%s sec。"] = { { Stats.Armor, }, { Stats.Defense, }, { Stats.NatureResistance, }, false, } -- s1213917
 L["使你的攻击速度提高%s%。"] = { { Stats.MeleeHaste, Stats.RangedHaste, }, } -- s1213971
-L["阅读卷轴，召唤虫群之怒，使你的团队的法术造成的伤害和治疗效果提高最多%s点，攻击强度提高%s点，持续%s。"] = { { Stats.SpellDamage, Stats.HealingPower, }, { Stats.GenericAttackPower, }, false, } -- s1214001
-L["使目标陷入猛烈狂热，使其近战攻击强度提高%s点，但护甲降低%s点，持续%s。猛烈狂热的敌人不会逃跑，也不会受到恐惧和惊骇的影响。"] = { { Stats.AttackPower, }, { Stats.Armor, }, false, } -- s1218358
+L["阅读卷轴，召唤虫群之怒，使你的团队的法术造成的伤害和治疗效果提高最多%s点，攻击强度提高%s点，持续%s sec。"] = { { Stats.SpellDamage, Stats.HealingPower, }, { Stats.GenericAttackPower, }, false, } -- s1214001
+L["使目标陷入猛烈狂热，使其近战攻击强度提高%s点，但护甲降低%s点，持续%s sec。猛烈狂热的敌人不会逃跑，也不会受到恐惧和惊骇的影响。"] = { { Stats.AttackPower, }, { Stats.Armor, }, false, } -- s1218358
 L["你的低吼技能不会出现未命中，你被躲闪或招架的几率降低%s%。"] = { { Stats.DodgeReduction, Stats.ParryReduction, }, } -- s1218482
 L["你的清算之手技能不会出现未命中，你被躲闪或招架的几率降低%s%。"] = { { Stats.DodgeReduction, Stats.ParryReduction, }, } -- s1219205
 L["你的挑逗技能不会出现未命中，你被躲闪或招架的几率降低%s%。"] = { { Stats.DodgeReduction, Stats.ParryReduction, }, } -- s1219356
 L["你的大地震击技能用于嘲讽时不会出现未命中，你被躲闪或招架的几率降低%s%。"] = { { Stats.DodgeReduction, Stats.ParryReduction, }, } -- s1219382
 L["你的威吓技能不会出现未命中，你被躲闪或招架的几率和法术未命中几率降低%s%。"] = { { Stats.DodgeReduction, Stats.ParryReduction, Stats.SpellHit, }, } -- s1219474
-L["反射对使用者施放的下一个进攻法术，并使所有抗性提高%s点，持续%s。"] = { { Stats.FireResistance, Stats.NatureResistance, Stats.FrostResistance, Stats.ShadowResistance, Stats.ArcaneResistance, }, false, } -- s1219501
+L["反射对使用者施放的下一个进攻法术，并使所有抗性提高%s点，持续%s sec。"] = { { Stats.FireResistance, Stats.NatureResistance, Stats.FrostResistance, Stats.ShadowResistance, Stats.ArcaneResistance, }, false, } -- s1219501
 L["你的嘲讽技能不会出现未命中，你被躲闪或招架的几率降低%s%。"] = { { Stats.DodgeReduction, Stats.ParryReduction, }, } -- s1219540
 L["使周围半径%s码范围内的所有小队成员的法术和魔法效果所造成的伤害和治疗效果提高最多%s点。该特殊效果无法与许多来源的效果叠加。"] = { false, { Stats.SpellDamage, Stats.HealingPower, }, } -- s1219552
 L["使周围半径%s码范围内的所有小队成员的法术治疗提高最多%s点，法术伤害提高最多%s点。该特殊效果无法与许多来源的效果叠加。"] = { false, { Stats.HealingPower, }, { Stats.SpellDamage, }, } -- s1219553
 L["使周围半径%s码范围内的所有小队成员的法术施放速度提高%s%。该特殊效果无法与许多来源的效果叠加。"] = { false, { Stats.SpellHaste, }, } -- s1219557
 L["使周围半径%s码范围内的所有小队成员的法术造成爆击的几率提高%s%。该特殊效果无法与许多来源的效果叠加。"] = { false, { Stats.SpellCrit, }, } -- s1219558
 L["你的施法速度提高%s%。"] = { { Stats.SpellHaste, }, } -- s1220654
-L["使装备者的力量提高%s点，但从所有来源受到的伤害提高%s%，持续%s。"] = { { Stats.Strength, }, false, false, } -- s1220668
+L["使装备者的力量提高%s点，但从所有来源受到的伤害提高%s%，持续%s sec。"] = { { Stats.Strength, }, false, false, } -- s1220668
 L["给你的头部或腿部装备附加魔法效果，使自然抗性提高%s点。无法与其它附加于指定装备的魔法效果重叠。"] = { { Stats.NatureResistance, }, } -- s28162
 L["给你的头部或腿部装备附加魔法效果，使冰霜抗性提高%s点。无法与其它附加于指定装备的魔法效果重叠。"] = { { Stats.FrostResistance, }, } -- s28164
 L["给你的头部或腿部装备附加魔法效果，使暗影抗性提高%s点。无法与其它附加于指定装备的魔法效果重叠。"] = { { Stats.ShadowResistance, }, } -- s28166
@@ -1182,51 +1182,51 @@ L["%s 攻击强度，%s% 爆击几率"] = { { Stats.AttackPower, }, { Stats.Mele
 L["%s 耐力，%s 防御"] = { { Stats.Stamina, }, { Stats.Defense, }, } -- e7885
 L["poultry precision scope (%s damage)"] = { { Stats.AverageWeaponDamage, }, } -- e7944
 L["%s 治疗，每%s秒%s 法力值。"] = { { Stats.HealingPower, }, false, { Stats.GenericManaRegen, }, } -- e7882
-L["使你的近战攻击急速等级提高%s，持续%s。"] = { { Stats.MeleeHasteRating, Stats.RangedHasteRating, Stats.SpellHasteRating, }, false, } -- s65
-L["使目标残废，移动速度降低%s%，近战和远程攻击间隔延长%s%。持续%s。"] = { false, { Stats.MeleeHaste, Stats.RangedHaste, }, false, } -- s89
-L["使护甲提高%s点。如果敌人使用近战武器攻击施法者，他们的移动速度就有可能被降低%s%，攻击间隔延长%s%，冰冻效果持续%s。法师在同一时间内只能保有一种魔法护甲效果。持续%s。"] = { { Stats.Armor, }, false, { Stats.MeleeHaste, }, false, false, } -- s168
-L["圣洁的能量充满施法者的体内，使护甲值提高%s点。牧师每受到一次近战或远程伤害，就消耗一层心灵之火效果。持续%s或者直到消耗了%s次效果。"] = { { Stats.Armor, }, false, false, } -- s588
-L["使圣骑士对所有的伤害和法术攻击免疫，持续%s，但是攻击间隔延长%s%。在受保护之后的%s内，圣盾术、保护祝福或圣佑术无法作用在你身上，你也无法使用复仇之怒。"] = { false, { Stats.MeleeHaste, }, false, } -- s642
-L["护甲提高%s点，持续%s。守护药剂。"] = { { Stats.Armor, }, false, } -- s673
-L["目标的近战攻击强度降低%s点，持续%s。每个术士只能对一个目标施加一种诅咒，且同类诅咒不能叠加。"] = { { Stats.AttackPower, }, false, } -- s702
-L["使施法者的护甲提高%s点，暗影抗性提高%s点，同时每%s秒回复%s点生命值，持续%s。术士在同一时间内只能激活一种护甲法术。"] = { { Stats.Armor, }, { Stats.ShadowResistance, }, false, { Stats.HealthRegen, }, false, } -- s706
+L["使你的近战攻击急速等级提高%s，持续%s sec。"] = { { Stats.MeleeHasteRating, Stats.RangedHasteRating, Stats.SpellHasteRating, }, false, } -- s65
+L["使目标残废，移动速度降低%s%，近战和远程攻击间隔延长%s%。持续%s sec。"] = { false, { Stats.MeleeHaste, Stats.RangedHaste, }, false, } -- s89
+L["使护甲提高%s点。如果敌人使用近战武器攻击施法者，他们的移动速度就有可能被降低%s%，攻击间隔延长%s%，冰冻效果持续%s sec。法师在同一时间内只能保有一种魔法护甲效果。持续%s sec。"] = { { Stats.Armor, }, false, { Stats.MeleeHaste, }, false, false, } -- s168
+L["圣洁的能量充满施法者的体内，使护甲值提高%s点。牧师每受到一次近战或远程伤害，就消耗一层心灵之火效果。持续%s sec或者直到消耗了%s次效果。"] = { { Stats.Armor, }, false, false, } -- s588
+L["使圣骑士对所有的伤害和法术攻击免疫，持续%s sec，但是攻击间隔延长%s%。在受保护之后的%s sec内，圣盾术、保护祝福或圣佑术无法作用在你身上，你也无法使用复仇之怒。"] = { false, { Stats.MeleeHaste, }, false, } -- s642
+L["护甲提高%s点，持续%s sec。守护药剂。"] = { { Stats.Armor, }, false, } -- s673
+L["目标的近战攻击强度降低%s点，持续%s sec。每个术士只能对一个目标施加一种诅咒，且同类诅咒不能叠加。"] = { { Stats.AttackPower, }, false, } -- s702
+L["使施法者的护甲提高%s点，暗影抗性提高%s点，同时每%s秒回复%s点生命值，持续%s sec。术士在同一时间内只能激活一种护甲法术。"] = { { Stats.Armor, }, { Stats.ShadowResistance, }, false, { Stats.HealthRegen, }, false, } -- s706
 L["所有魔法抗性提高%s点。"] = { { Stats.FireResistance, Stats.NatureResistance, Stats.FrostResistance, Stats.ShadowResistance, Stats.ArcaneResistance, }, } -- s822
-L["奴役等级不高于%s级的恶魔，令其听从你的命令。被奴役的恶魔的攻击间隔延长%s%，施法速度降低%s%。奴役效果最多持续%s。如果你反复奴役同一个恶魔，它摆脱控制的几率会越来越大。"] = { false, { Stats.MeleeHaste, }, { Stats.SpellHaste, }, false, } -- s1098
-L["对目标施放诅咒，使其奥术、火焰、冰霜和暗影抗性降低%s点，受到奥术、火焰、冰霜和暗影系攻击时所承受的伤害提高%s%，效果持续%s。每个术士只能对一个目标施加一种诅咒，且同类诅咒不能叠加。"] = { { Stats.FireResistance, Stats.FrostResistance, Stats.ShadowResistance, Stats.ArcaneResistance, }, false, false, } -- s1490
-L["使力量提高%s点，持续%s。战斗药剂。"] = { { Stats.Strength, }, false, } -- s2367
-L["使敏捷提高%s点，持续%s。战斗药剂。"] = { { Stats.Agility, }, false, } -- s2374
-L["使智力提高%s点，持续%s。守护药剂。"] = { { Stats.Intellect, }, false, } -- s2376
-L["使玩家的生命值上限提高%s点，持续%s。守护药剂。"] = { { Stats.Health, }, false, } -- s2378
-L["钉刺目标，使其近战和远程攻击的命中几率降低%s%，持续%s。每个猎人在同一时间内只能对一个目标使用一种钉刺，且同类钉刺无法叠加。"] = { { Stats.MeleeHit, Stats.RangedHit, }, false, } -- s3043
-L["射击时间缩短%s%，持续%s。"] = { { Stats.RangedHaste, }, false, } -- s3045
-L["对目标造成普通伤害外加%s点伤害，并使其攻击间隔延长%s%，持续%s。"] = { false, { Stats.MeleeHaste, }, false, } -- s3130
-L["每%s秒恢复%s点生命值，持续%s。守护药剂。"] = { false, { Stats.HealthRegen, }, false, } -- s3219
-L["使施法者的攻击速度提高%s%，持续%s，但物理伤害能力降低%s点。"] = { { Stats.MeleeHaste, }, false, { Stats.AverageWeaponDamage, }, } -- s3490
+L["奴役等级不高于%s级的恶魔，令其听从你的命令。被奴役的恶魔的攻击间隔延长%s%，施法速度降低%s%。奴役效果最多持续%s sec。如果你反复奴役同一个恶魔，它摆脱控制的几率会越来越大。"] = { false, { Stats.MeleeHaste, }, { Stats.SpellHaste, }, false, } -- s1098
+L["对目标施放诅咒，使其奥术、火焰、冰霜和暗影抗性降低%s点，受到奥术、火焰、冰霜和暗影系攻击时所承受的伤害提高%s%，效果持续%s sec。每个术士只能对一个目标施加一种诅咒，且同类诅咒不能叠加。"] = { { Stats.FireResistance, Stats.FrostResistance, Stats.ShadowResistance, Stats.ArcaneResistance, }, false, false, } -- s1490
+L["使力量提高%s点，持续%s sec。战斗药剂。"] = { { Stats.Strength, }, false, } -- s2367
+L["使敏捷提高%s点，持续%s sec。战斗药剂。"] = { { Stats.Agility, }, false, } -- s2374
+L["使智力提高%s点，持续%s sec。守护药剂。"] = { { Stats.Intellect, }, false, } -- s2376
+L["使玩家的生命值上限提高%s点，持续%s sec。守护药剂。"] = { { Stats.Health, }, false, } -- s2378
+L["钉刺目标，使其近战和远程攻击的命中几率降低%s%，持续%s sec。每个猎人在同一时间内只能对一个目标使用一种钉刺，且同类钉刺无法叠加。"] = { { Stats.MeleeHit, Stats.RangedHit, }, false, } -- s3043
+L["射击时间缩短%s%，持续%s sec。"] = { { Stats.RangedHaste, }, false, } -- s3045
+L["对目标造成普通伤害外加%s点伤害，并使其攻击间隔延长%s%，持续%s sec。"] = { false, { Stats.MeleeHaste, }, false, } -- s3130
+L["每%s秒恢复%s点生命值，持续%s sec。守护药剂。"] = { false, { Stats.HealthRegen, }, false, } -- s3219
+L["使施法者的攻击速度提高%s%，持续%s sec，但物理伤害能力降低%s点。"] = { { Stats.MeleeHaste, }, false, { Stats.AverageWeaponDamage, }, } -- s3490
 L["使施法者的躲闪几率提高%s%。效果一直持续，直到取消。"] = { { Stats.Dodge, }, } -- s4086
 L["使你的单手剑伤害提高%s点。"] = { { Stats.AverageWeaponDamage, }, } -- s4354
 L["使你的双手斧伤害提高%s点。"] = { { Stats.AverageWeaponDamage, }, } -- s4443
 L["使你的双手剑伤害提高%s点。"] = { { Stats.AverageWeaponDamage, }, } -- s4464
 L["使你的法杖伤害提高%s点，并有%s%的机会令目标昏迷%s秒。"] = { { Stats.AverageWeaponDamage, }, false, false, } -- s4493
-L["护甲提高%s点，持续%s。"] = { { Stats.Armor, }, false, } -- s4941
+L["护甲提高%s点，持续%s sec。"] = { { Stats.Armor, }, false, } -- s4941
 L["使你的双手剑造伤害提高%s点，格挡几率提高%s%。"] = { { Stats.AverageWeaponDamage, }, false, } -- s5361
 L["护甲提高%s点。"] = { { Stats.Armor, }, } -- s5363
 L["使你的双手斧伤害提高%s点，并有%s%的几率令敌人的护甲降低%s点，持续%s秒。"] = { { Stats.AverageWeaponDamage, }, false, false, false, } -- s5427
-L["以雷霆震击附近的敌人，使它们的攻击间隔延长%s%，持续%s，并对它们造成%s点伤害。这个技能可以造成额外的威胁值，最多可影响%s个目标。"] = { { Stats.MeleeHaste, }, false, false, false, } -- s6343
+L["以雷霆震击附近的敌人，使它们的攻击间隔延长%s%，持续%s sec，并对它们造成%s点伤害。这个技能可以造成额外的威胁值，最多可影响%s个目标。"] = { { Stats.MeleeHaste, }, false, false, false, } -- s6343
 L["使你和身边半径%s码范围内的所有小队成员的命中几率提高%s%。"] = { false, { Stats.MeleeHit, Stats.RangedHit, }, } -- s6562
-L["使护甲值提高%s点，冰霜抗性提高%s点。如果敌人使用近战武器攻击施法者，他们的移动速度就有可能被降低%s%，攻击间隔延长%s%，冰冻效果持续%s。法师在同一时间内只能保有一种魔法护甲效果。持续%s。"] = { { Stats.Armor, }, { Stats.FrostResistance, }, false, { Stats.MeleeHaste, }, false, false, } -- s7302
+L["使护甲值提高%s点，冰霜抗性提高%s点。如果敌人使用近战武器攻击施法者，他们的移动速度就有可能被降低%s%，攻击间隔延长%s%，冰冻效果持续%s sec。法师在同一时间内只能保有一种魔法护甲效果。持续%s sec。"] = { { Stats.Armor, }, { Stats.FrostResistance, }, false, { Stats.MeleeHaste, }, false, false, } -- s7302
 L["防御等级提高%s。"] = { { Stats.DefenseRating, }, } -- s7511
 L["使你的爆击等级提高%s。"] = { { Stats.MeleeCritRating, Stats.RangedCritRating, Stats.SpellCritRating, }, } -- s7597
-L["法术的火焰伤害提高最多%s点，持续%s。战斗药剂。"] = { { Stats.FireDamage, }, false, } -- s7844
-L["你的体型增大了，同时你的力量也提高了%s点，持续%s。战斗药剂。"] = { { Stats.Strength, }, false, } -- s8212
-L["对一名敌人和它身边最近的敌人造成普通伤害及%s点额外伤害，最多可影响%s个目标，并使它们的攻击间隔延长%s%，持续%s。"] = { false, false, { Stats.MeleeHaste, }, false, } -- s8255
-L["使所有小队成员获得%s点额外的护甲，持续%s。每个圣骑士在同一时间内只能开启一种光环，且同类光环的效果无法叠加。"] = { { Stats.Armor, }, false, } -- s8258
-L["终结技，降低目标的护甲值，效果持续%s。根据连击点数决定降低目标护甲值的效果：\n   %s点：%s护甲\n   %s点：%s护甲\n   %s点：%s护甲\n   %s点：%s护甲\n   %s点：%s护甲"] = { false, false, { Stats.Armor, }, false, false, false, false, false, false, false, false, } -- s8647
-L["削弱目标，使其所能造成的伤害减少%s点，并使其受到的任何治疗效果降低%s%，持续%s。"] = { { Stats.AverageWeaponDamage, }, false, false, } -- s9035
+L["法术的火焰伤害提高最多%s点，持续%s sec。战斗药剂。"] = { { Stats.FireDamage, }, false, } -- s7844
+L["你的体型增大了，同时你的力量也提高了%s点，持续%s sec。战斗药剂。"] = { { Stats.Strength, }, false, } -- s8212
+L["对一名敌人和它身边最近的敌人造成普通伤害及%s点额外伤害，最多可影响%s个目标，并使它们的攻击间隔延长%s%，持续%s sec。"] = { false, false, { Stats.MeleeHaste, }, false, } -- s8255
+L["使所有小队成员获得%s点额外的护甲，持续%s sec。每个圣骑士在同一时间内只能开启一种光环，且同类光环的效果无法叠加。"] = { { Stats.Armor, }, false, } -- s8258
+L["终结技，降低目标的护甲值，效果持续%s sec。根据连击点数决定降低目标护甲值的效果：\n   %s点：%s护甲\n   %s点：%s护甲\n   %s点：%s护甲\n   %s点：%s护甲\n   %s点：%s护甲"] = { false, false, { Stats.Armor, }, false, false, false, false, false, false, false, false, } -- s8647
+L["削弱目标，使其所能造成的伤害减少%s点，并使其受到的任何治疗效果降低%s%，持续%s sec。"] = { { Stats.AverageWeaponDamage, }, false, false, } -- s9035
 L["使你的远程爆击等级提高%s。"] = { { Stats.RangedCritRating, }, } -- s9132
-L["能量灌注目标全身，使其施法速度提高%s%，所有法术的消耗降低%s%，持续%s。"] = { { Stats.SpellHaste, }, false, false, } -- s10060
+L["能量灌注目标全身，使其施法速度提高%s%，所有法术的消耗降低%s%，持续%s sec。"] = { { Stats.SpellHaste, }, false, false, } -- s10060
 L["使半径%s码范围内的所有小队成员的攻击强度提高%s点。每个圣骑士在同一时间内只能开启一种光环，且同类光环的效果无法叠加。"] = { false, { Stats.AttackPower, }, } -- s10270
-L["防御等级提高%s，持续%s。"] = { { Stats.DefenseRating, }, false, } -- s10351
-L["使目标的攻击间隔延长%s，持续%s。"] = { { Stats.MeleeHaste, }, false, } -- s10371
+L["防御等级提高%s，持续%s sec。"] = { { Stats.DefenseRating, }, false, } -- s10351
+L["使目标的攻击间隔延长%s，持续%s sec。"] = { { Stats.MeleeHaste, }, false, } -- s10371
 L["使用后力量提高%s点，效果持续%s分钟。战斗药剂。"] = { { Stats.Strength, }, false, } -- s10667
 L["使用后耐力提高%s点，效果持续%s分钟。守护药剂。"] = { { Stats.Stamina, }, false, } -- s10668
 L["使用后敏捷提高%s点，效果持续%s分钟。战斗药剂。"] = { { Stats.Agility, }, false, } -- s10669
@@ -1237,387 +1237,387 @@ L["使用后智力提高%s点。守护药剂。"] = { { Stats.Intellect, }, } --
 L["使用后精神提高%s点。守护药剂。"] = { { Stats.Spirit, }, } -- s10691
 L["使用后智力提高%s点，效果持续%s分钟。守护药剂。"] = { { Stats.Intellect, }, false, } -- s10692
 L["使用后精神提高%s点，效果持续%s分钟。守护药剂。"] = { { Stats.Spirit, }, false, } -- s10693
-L["使暗影抗性提高%s点。如果敌人使用近战武器攻击施法者，他们有%s%的几率感染疾病，使得他们在%s内受到物理攻击时承受的伤害提高%s点。阿尔萨斯的礼物的特殊效果持续%s。守护药剂。"] = { { Stats.ShadowResistance, }, false, false, false, false, } -- s11371
-L["使你的法术造成的伤害提高最多%s点，持续%s。战斗药剂。"] = { { Stats.SpellDamage, }, false, } -- s11390
-L["使你的力量提高%s点，持续%s。战斗药剂。"] = { { Stats.Strength, }, false, } -- s11405
-L["increases the time between an enemies attacks by %s% and slows its movement by %s%, in addition to reducing its strength by %s%. lasts %s"] = { { Stats.MeleeHaste, }, false, false, false, } -- s11443
-L["使你的暗影法术造成的伤害提高%s点，持续%s。战斗药剂。"] = { { Stats.ShadowDamage, }, false, } -- s11474
-L["提高你的施法速度，使得所有法术的施法速度提高%s%，避免因受到伤害而打断施法的几率提高%s%，效果持续%s。"] = { { Stats.SpellHaste, }, false, false, } -- s12472
-L["使你对目标造成的伤害提高%s点，急速等级提高%s，持续%s。"] = { { Stats.AverageWeaponDamage, }, { Stats.MeleeHasteRating, Stats.RangedHasteRating, Stats.SpellHasteRating, }, false, } -- s12686
+L["使暗影抗性提高%s点。如果敌人使用近战武器攻击施法者，他们有%s%的几率感染疾病，使得他们在%s sec内受到物理攻击时承受的伤害提高%s点。阿尔萨斯的礼物的特殊效果持续%s sec。守护药剂。"] = { { Stats.ShadowResistance, }, false, false, false, false, } -- s11371
+L["使你的法术造成的伤害提高最多%s点，持续%s sec。战斗药剂。"] = { { Stats.SpellDamage, }, false, } -- s11390
+L["使你的力量提高%s点，持续%s sec。战斗药剂。"] = { { Stats.Strength, }, false, } -- s11405
+L["increases the time between an enemies attacks by %s% and slows its movement by %s%, in addition to reducing its strength by %s%. lasts %s sec"] = { { Stats.MeleeHaste, }, false, false, false, } -- s11443
+L["使你的暗影法术造成的伤害提高%s点，持续%s sec。战斗药剂。"] = { { Stats.ShadowDamage, }, false, } -- s11474
+L["提高你的施法速度，使得所有法术的施法速度提高%s%，避免因受到伤害而打断施法的几率提高%s%，效果持续%s sec。"] = { { Stats.SpellHaste, }, false, false, } -- s12472
+L["使你对目标造成的伤害提高%s点，急速等级提高%s，持续%s sec。"] = { { Stats.AverageWeaponDamage, }, { Stats.MeleeHasteRating, Stats.RangedHasteRating, Stats.SpellHasteRating, }, false, } -- s12686
 L["使你的斧类武器和长柄武器的爆击几率提高%s%。"] = { { Stats.MeleeCrit, Stats.RangedCrit, }, } -- s12700
-L["护甲值提高%s点，所有抗性提高%s点，免疫恐惧，持续%s。对%s级以上玩家的效果降低。"] = { { Stats.Armor, }, { Stats.FireResistance, Stats.NatureResistance, Stats.FrostResistance, Stats.ShadowResistance, Stats.ArcaneResistance, }, false, false, } -- s12733
+L["护甲值提高%s点，所有抗性提高%s点，免疫恐惧，持续%s sec。对%s级以上玩家的效果降低。"] = { { Stats.Armor, }, { Stats.FireResistance, Stats.NatureResistance, Stats.FrostResistance, Stats.ShadowResistance, Stats.ArcaneResistance, }, false, false, } -- s12733
 L["防御等级提高%s，暗影抗性提高%s点，生命值恢复速度提高%s点。"] = { { Stats.DefenseRating, }, { Stats.ShadowResistance, }, { Stats.HealthRegen, }, } -- s12956
-L["使你的急速等级提高%s，持续%s。"] = { { Stats.MeleeHasteRating, Stats.RangedHasteRating, Stats.SpellHasteRating, }, false, } -- s13494
+L["使你的急速等级提高%s，持续%s sec。"] = { { Stats.MeleeHasteRating, Stats.RangedHasteRating, Stats.SpellHasteRating, }, false, } -- s13494
 L["使你的招架等级提高%s。"] = { { Stats.ParryRating, }, } -- s13665
 L["使你的躲闪等级提高%s。"] = { { Stats.DodgeRating, }, } -- s13669
 L["使你的格挡等级提高%s。"] = { { Stats.BlockRating, }, } -- s13674
 L["使你的武器命中几率提高%s%。"] = { { Stats.MeleeHit, Stats.RangedHit, }, } -- s13705
-L["使一位盟友的耐力提高%s点，持续%s。"] = { { Stats.Stamina, }, false, } -- s13864
-L["使你在打出一次爆击之后接连%s次攻击的攻击速度提高%s%。"] = { false, { Stats.MeleeHaste, }, } -- s15088
-L["使目标的精神提高%s点，持续%s。守护药剂。"] = { { Stats.Spirit, }, false, } -- s15231
-L["使目标的护甲提高%s点，持续%s。守护药剂。"] = { { Stats.Armor, }, false, } -- s15233
-L["攻击和法术的爆击等级提高%s，所有属性提高%s点，持续%s。"] = { { Stats.MeleeCritRating, Stats.RangedCritRating, Stats.SpellCritRating, }, { Stats.AllStats, }, false, } -- s15366
+L["使一位盟友的耐力提高%s点，持续%s sec。"] = { { Stats.Stamina, }, false, } -- s13864
+L["使你在打出一次爆击之后接连%s次攻击的攻击速度提高%s%。"] = { false, { Stats.MeleeHaste, }, ignoreSum = true } -- s15088
+L["使目标的精神提高%s点，持续%s sec。守护药剂。"] = { { Stats.Spirit, }, false, } -- s15231
+L["使目标的护甲提高%s点，持续%s sec。守护药剂。"] = { { Stats.Armor, }, false, } -- s15233
+L["攻击和法术的爆击等级提高%s，所有属性提高%s点，持续%s sec。"] = { { Stats.MeleeCritRating, Stats.RangedCritRating, Stats.SpellCritRating, }, { Stats.AllStats, }, false, } -- s15366
 L["使你的命中等级提高%s。"] = { { Stats.MeleeHitRating, Stats.RangedHitRating, Stats.SpellHitRating, }, } -- s15464
-L["每次破甲攻击都使附近敌人的护甲降低%s点，可叠加%s次。持续%s。"] = { { Stats.Armor, }, false, false, } -- s15502
+L["每次破甲攻击都使附近敌人的护甲降低%s点，可叠加%s次。持续%s sec。"] = { { Stats.Armor, }, false, false, } -- s15502
 L["使你的法术和近战攻击的命中几率提高%s%。"] = { { Stats.MeleeHit, Stats.RangedHit, Stats.SpellHit, }, } -- s16180
-L["使你的躲闪等级提高%s，持续%s。守护药剂。"] = { { Stats.DodgeRating, }, false, } -- s16321
-L["使你的法术、远程攻击和近战攻击的急速等级提高%s，持续%s。战斗药剂。"] = { { Stats.MeleeHasteRating, Stats.RangedHasteRating, Stats.SpellHasteRating, }, false, } -- s16322
-L["使目标的智力提高%s点，持续%s。守护药剂。"] = { { Stats.Intellect, }, false, } -- s16327
-L["攻击强度提高%s点，持续%s。战斗药剂。"] = { { Stats.GenericAttackPower, }, false, } -- s16329
-L["为自己恢复%s点生命值，并使力量提高%s点，持续%s。"] = { false, { Stats.Strength, }, false, } -- s16916
-L["队友有一定几率获得爆击等级提高%s的效果，持续%s。"] = { { Stats.MeleeCritRating, Stats.RangedCritRating, Stats.SpellCritRating, }, false, } -- s16939
-L["使你的近战攻击强度提高%s点，体型增大，持续%s。战斗药剂。"] = { { Stats.GenericAttackPower, }, false, } -- s17038
-L["有%s%的几率在被击中后使你的格挡等级提高%s，持续%s秒。"] = { false, { Stats.BlockRating, }, false, } -- s17350
+L["使你的躲闪等级提高%s，持续%s sec。守护药剂。"] = { { Stats.DodgeRating, }, false, } -- s16321
+L["使你的法术、远程攻击和近战攻击的急速等级提高%s，持续%s sec。战斗药剂。"] = { { Stats.MeleeHasteRating, Stats.RangedHasteRating, Stats.SpellHasteRating, }, false, } -- s16322
+L["使目标的智力提高%s点，持续%s sec。守护药剂。"] = { { Stats.Intellect, }, false, } -- s16327
+L["攻击强度提高%s点，持续%s sec。战斗药剂。"] = { { Stats.GenericAttackPower, }, false, } -- s16329
+L["为自己恢复%s点生命值，并使力量提高%s点，持续%s sec。"] = { false, { Stats.Strength, }, false, } -- s16916
+L["队友有一定几率获得爆击等级提高%s的效果，持续%s sec。"] = { { Stats.MeleeCritRating, Stats.RangedCritRating, Stats.SpellCritRating, }, false, } -- s16939
+L["使你的近战攻击强度提高%s点，体型增大，持续%s sec。战斗药剂。"] = { { Stats.GenericAttackPower, }, false, } -- s17038
+L["有%s%的几率在被击中后使你的格挡等级提高%s，持续%s秒。"] = { false, { Stats.BlockRating, }, false, ignoreSum = true } -- s17350
 L["格挡等级提高%s。"] = { { Stats.BlockRating, }, } -- s17351
-L["智力和精神提高%s点，持续%s。守护药剂。"] = { { Stats.Intellect, Stats.Spirit, }, false, } -- s17535
-L["使你的力量和耐力提高%s点，持续%s。战斗药剂。"] = { { Stats.Strength, Stats.Stamina, }, false, } -- s17537
-L["使敏捷提高%s点，爆击等级提高%s，持续%s。战斗药剂。"] = { { Stats.Agility, }, { Stats.MeleeCritRating, Stats.RangedCritRating, Stats.SpellCritRating, }, false, } -- s17538
-L["使玩家的生命值上限提高%s点，持续%s。这种效果在死亡后仍可继续存在。战斗和守护药剂。"] = { { Stats.Health, }, false, } -- s17626
-L["使玩家的智力提高%s点，持续%s。这种效果在死亡后仍可继续存在。战斗和守护药剂。"] = { { Stats.Intellect, }, false, } -- s17627
-L["使法术和魔法效果所造成的伤害提高最多%s点，持续%s。这种效果在死亡后仍可继续存在。战斗和守护药剂。"] = { { Stats.SpellDamage, }, false, } -- s17628
-L["使你对所有魔法的抗性提高%s点，持续%s。这个效果在死亡后仍可继续存在。战斗和守护药剂。"] = { { Stats.FireResistance, Stats.NatureResistance, Stats.FrostResistance, Stats.ShadowResistance, Stats.ArcaneResistance, }, false, } -- s17629
-L["使敌人攻击时的命中几率降低%s%，持续%s。%s级以上的玩家抵抗该效果的几率提高。"] = { { Stats.MeleeHit, Stats.RangedHit, }, false, false, } -- s17639
-L["在%s内恢复%s点法力值。饮水时必须保持坐姿。另外还可使你的精神提高%s点，持续%s。"] = { false, { Stats.GenericManaRegen, }, { Stats.Spirit, }, false, } -- s18140
+L["智力和精神提高%s点，持续%s sec。守护药剂。"] = { { Stats.Intellect, Stats.Spirit, }, false, } -- s17535
+L["使你的力量和耐力提高%s点，持续%s sec。战斗药剂。"] = { { Stats.Strength, Stats.Stamina, }, false, } -- s17537
+L["使敏捷提高%s点，爆击等级提高%s，持续%s sec。战斗药剂。"] = { { Stats.Agility, }, { Stats.MeleeCritRating, Stats.RangedCritRating, Stats.SpellCritRating, }, false, } -- s17538
+L["使玩家的生命值上限提高%s点，持续%s sec。这种效果在死亡后仍可继续存在。战斗和守护药剂。"] = { { Stats.Health, }, false, } -- s17626
+L["使玩家的智力提高%s点，持续%s sec。这种效果在死亡后仍可继续存在。战斗和守护药剂。"] = { { Stats.Intellect, }, false, } -- s17627
+L["使法术和魔法效果所造成的伤害提高最多%s点，持续%s sec。这种效果在死亡后仍可继续存在。战斗和守护药剂。"] = { { Stats.SpellDamage, }, false, } -- s17628
+L["使你对所有魔法的抗性提高%s点，持续%s sec。这个效果在死亡后仍可继续存在。战斗和守护药剂。"] = { { Stats.FireResistance, Stats.NatureResistance, Stats.FrostResistance, Stats.ShadowResistance, Stats.ArcaneResistance, }, false, } -- s17629
+L["使敌人攻击时的命中几率降低%s%，持续%s sec。%s级以上的玩家抵抗该效果的几率提高。"] = { { Stats.MeleeHit, Stats.RangedHit, }, false, false, } -- s17639
+L["在%s sec内恢复%s点法力值。饮水时必须保持坐姿。另外还可使你的精神提高%s点，持续%s sec。"] = { false, { Stats.GenericManaRegen, }, { Stats.Spirit, }, false, } -- s18140
 L["使你的法术爆击等级提高%s。"] = { { Stats.MeleeCritRating, Stats.RangedCritRating, Stats.SpellCritRating, }, } -- s32789
 L["法术急速等级提高%s。"] = { { Stats.MeleeHasteRating, Stats.RangedHasteRating, Stats.SpellHasteRating, }, } -- s40483
 L["使你的近战武器和法术命中几率提高%s%。"] = { { Stats.MeleeHit, Stats.RangedHit, Stats.SpellHit, }, } -- s20189
-L["使你的攻击间隔缩短%s%，持续%s。"] = { { Stats.MeleeHaste, }, false, } -- s19451
-L["使半径%s码范围内的小队成员的攻击强度提高%s点，持续%s。"] = { false, { Stats.GenericAttackPower, }, false, } -- s19506
-L["为友方目标施加祝福，使其攻击强度提高%s点，持续%s。每个圣骑士在同一时间内只能给目标施加一种祝福，同类型的祝福不能重叠。"] = { { Stats.GenericAttackPower, }, false, } -- s19740
-L["为友方目标施加祝福，每%s秒恢复%s点法力值，持续%s。每个圣骑士在同一时间内只能给目标施加一种祝福，同类型的祝福不能重叠。"] = { false, { Stats.GenericManaRegen, }, false, } -- s19742
-L["使你在受到近战和远程伤害之后有%s%的几率获得盾牌格挡几率提高%s%的效果。持续%s或格挡%s次攻击。"] = { false, { Stats.BlockChance, }, false, false, } -- s20127
+L["使你的攻击间隔缩短%s%，持续%s sec。"] = { { Stats.MeleeHaste, }, false, } -- s19451
+L["使半径%s码范围内的小队成员的攻击强度提高%s点，持续%s sec。"] = { false, { Stats.GenericAttackPower, }, false, } -- s19506
+L["为友方目标施加祝福，使其攻击强度提高%s点，持续%s sec。每个圣骑士在同一时间内只能给目标施加一种祝福，同类型的祝福不能重叠。"] = { { Stats.GenericAttackPower, }, false, } -- s19740
+L["为友方目标施加祝福，每%s秒恢复%s点法力值，持续%s sec。每个圣骑士在同一时间内只能给目标施加一种祝福，同类型的祝福不能重叠。"] = { false, { Stats.GenericManaRegen, }, false, } -- s19742
+L["使你在受到近战和远程伤害之后有%s%的几率获得盾牌格挡几率提高%s%的效果。持续%s sec或格挡%s次攻击。"] = { false, { Stats.BlockChance, }, false, false, ignoreSum = true } -- s20127
 L["投掷武器的爆击几率提高%s%。"] = { { Stats.MeleeCrit, Stats.RangedCrit, }, } -- s20558
-L["攻击强度提高%s点，但是对你施放的治疗法术效果降低%s%，持续%s。"] = { { Stats.GenericAttackPower, }, false, false, } -- s20572
+L["攻击强度提高%s点，但是对你施放的治疗法术效果降低%s%，持续%s sec。"] = { { Stats.GenericAttackPower, }, false, false, } -- s20572
 L["枪械武器的爆击几率提高%s%。"] = { { Stats.MeleeCrit, Stats.RangedCrit, }, } -- s20595
-L["奴役等级不高于%s级的恶魔，强制它听从你的命令。在被奴役的状态下，恶魔的攻击间隔延长%s%，施法速度降低%s%。奴役效果最多持续%s。"] = { false, { Stats.MeleeHaste, }, { Stats.SpellHaste, }, false, } -- s20882
-L["使你的格挡几率提高%s%，持续%s。在此期间每次成功格挡都会对攻击者造成%s点神圣伤害，由神圣之盾造成的伤害所产生的威胁值提高%s%。每次成功格挡会消耗掉一次格挡机会，最多可格挡%s次。"] = { { Stats.BlockChance, }, false, false, false, false, } -- s20925
+L["奴役等级不高于%s级的恶魔，强制它听从你的命令。在被奴役的状态下，恶魔的攻击间隔延长%s%，施法速度降低%s%。奴役效果最多持续%s sec。"] = { false, { Stats.MeleeHaste, }, { Stats.SpellHaste, }, false, } -- s20882
+L["使你的格挡几率提高%s%，持续%s sec。在此期间每次成功格挡都会对攻击者造成%s点神圣伤害，由神圣之盾造成的伤害所产生的威胁值提高%s%。每次成功格挡会消耗掉一次格挡机会，最多可格挡%s次。"] = { { Stats.BlockChance, }, false, false, false, false, } -- s20925
 L["远程攻击强度提高%s点。"] = { { Stats.RangedAttackPower, }, } -- s21013
 L["使你的神圣法术的爆击等级提高%s。"] = { { Stats.SpellCritRating, }, } -- s21092
 L["对附近的敌人造成%s点冰霜伤害，令其攻击速度降低%s%，移动速度降低%s%。"] = { false, { Stats.MeleeHaste, }, false, } -- s21098
-L["你的攻击无视目标的%s点护甲值，持续%s。这个效果可以叠加%s次。"] = { { Stats.ArmorPenetration, }, false, false, } -- s21153
+L["你的攻击无视目标的%s点护甲值，持续%s sec。这个效果可以叠加%s次。"] = { { Stats.ArmorPenetration, }, false, false, } -- s21153
 L["使你的自然法术的爆击等级提高%s。"] = { { Stats.SpellCritRating, }, } -- s21870
-L["法术的冰霜伤害提高最多%s点，持续%s。战斗药剂。"] = { { Stats.FrostDamage, }, false, } -- s21920
-L["将施法者的皮肤变成石头，护甲值提高%s点，持续%s。"] = { { Stats.Armor, }, false, } -- s22693
+L["法术的冰霜伤害提高最多%s点，持续%s sec。战斗药剂。"] = { { Stats.FrostDamage, }, false, } -- s21920
+L["将施法者的皮肤变成石头，护甲值提高%s点，持续%s sec。"] = { { Stats.Armor, }, false, } -- s22693
 L["使你的远程命中等级提高%s。"] = { { Stats.RangedHitRating, }, } -- s22780
-L["精神提高%s点，但智力降低%s点，持续%s。爽啊"] = { { Stats.Spirit, }, { Stats.Intellect, }, false, } -- s22790
-L["激活之后，佩戴者的防御等级提高%s，护甲值提高%s点，持续%s。"] = { { Stats.DefenseRating, }, { Stats.Armor, }, false, } -- s22850
+L["精神提高%s点，但智力降低%s点，持续%s sec。爽啊"] = { { Stats.Spirit, }, { Stats.Intellect, }, false, } -- s22790
+L["激活之后，佩戴者的防御等级提高%s，护甲值提高%s点，持续%s sec。"] = { { Stats.DefenseRating, }, { Stats.Armor, }, false, } -- s22850
 L["被伊利丹的愤怒吞噬：对恶魔的攻击强度提高%s点。爆击几率提高%s%。近战攻击速度提高%s%。"] = { false, { Stats.MeleeHit, Stats.RangedHit, }, { Stats.MeleeHaste, }, } -- s22988
 L["使你的暗影系法术的爆击等级提高%s。"] = { { Stats.SpellCritRating, }, } -- s23443
-L["强化你的宠物，使其所造成的法术伤害提高%s点，攻击强度提高%s点，护甲值提高%s点，持续%s。只对小鬼、魅魔、夜魔、虚空行者、地狱猎犬和恶魔卫士有效。"] = { { Stats.SpellDamage, }, { Stats.AttackPower, }, { Stats.Armor, }, false, } -- s23720
-L["使法师的法术急速等级提高%s，持续%s。"] = { { Stats.SpellHasteRating, }, false, } -- s23723
+L["强化你的宠物，使其所造成的法术伤害提高%s点，攻击强度提高%s点，护甲值提高%s点，持续%s sec。只对小鬼、魅魔、夜魔、虚空行者、地狱猎犬和恶魔卫士有效。"] = { { Stats.SpellDamage, }, { Stats.AttackPower, }, { Stats.Armor, }, false, } -- s23720
+L["使法师的法术急速等级提高%s，持续%s sec。"] = { { Stats.SpellHasteRating, }, false, } -- s23723
 L["使你的法术命中等级提高%s。"] = { { Stats.SpellHitRating, }, } -- s23727
-L["使圣骑士被光芒笼罩，急速等级提高%s，法术急速等级提高%s，持续%s。"] = { { Stats.MeleeHasteRating, }, { Stats.SpellHasteRating, }, false, } -- s23733
-L["法术伤害和治疗效果提高最多%s点，法力消耗提高%s%。效果持续%s。"] = { { Stats.SpellDamage, Stats.HealingPower, }, false, false, } -- s23734
-L["inflicts the target with poison, which increases the time between attacks by %s%, reduces their movement by %s% and puts them to sleep after %s"] = { { Stats.MeleeHaste, }, false, false, } -- s24002
-L["击破敌人的护甲，每次破甲可以使其护甲值降低%s点。可叠加最多%s次。持续%s。"] = { { Stats.Armor, }, false, false, } -- s24317
-L["使你的攻击强度提高%s点，命中等级提高%s。这个效果可以持续%s。"] = { { Stats.GenericAttackPower, }, { Stats.MeleeHitRating, Stats.RangedHitRating, Stats.SpellHitRating, }, false, } -- s24352
-L["使法术治疗提高最多%s点，法术伤害提高最多%s点，持续%s。"] = { { Stats.HealingPower, }, { Stats.SpellDamage, }, false, } -- s24354
-L["每%s秒回复%s点法力值，持续%s。守护药剂。"] = { false, { Stats.GenericManaRegen, }, false, } -- s24363
-L["使玩家的精神提高%s点，耐力提高%s点，持续%s。守护药剂。"] = { { Stats.Spirit, }, { Stats.Stamina, }, false, } -- s24382
-L["施法者被%s个水球环绕，每%s秒恢复%s点法力值。如果施法者受到了近战、远程或法术伤害，则施法者恢复%s点法力值，并会消耗掉一个水球。每一小段时间内只会有一个水球被激活。效果持续%s。萨满祭司在同一时间内只能激活一种元素护盾。"] = { false, false, { Stats.GenericManaRegen, }, false, false, } -- s24398
+L["使圣骑士被光芒笼罩，急速等级提高%s，法术急速等级提高%s，持续%s sec。"] = { { Stats.MeleeHasteRating, }, { Stats.SpellHasteRating, }, false, } -- s23733
+L["法术伤害和治疗效果提高最多%s点，法力消耗提高%s%。效果持续%s sec。"] = { { Stats.SpellDamage, Stats.HealingPower, }, false, false, } -- s23734
+L["inflicts the target with poison, which increases the time between attacks by %s%, reduces their movement by %s% and puts them to sleep after %s sec"] = { { Stats.MeleeHaste, }, false, false, } -- s24002
+L["击破敌人的护甲，每次破甲可以使其护甲值降低%s点。可叠加最多%s次。持续%s sec。"] = { { Stats.Armor, }, false, false, } -- s24317
+L["使你的攻击强度提高%s点，命中等级提高%s。这个效果可以持续%s sec。"] = { { Stats.GenericAttackPower, }, { Stats.MeleeHitRating, Stats.RangedHitRating, Stats.SpellHitRating, }, false, } -- s24352
+L["使法术治疗提高最多%s点，法术伤害提高最多%s点，持续%s sec。"] = { { Stats.HealingPower, }, { Stats.SpellDamage, }, false, } -- s24354
+L["每%s秒回复%s点法力值，持续%s sec。守护药剂。"] = { false, { Stats.GenericManaRegen, }, false, } -- s24363
+L["使玩家的精神提高%s点，耐力提高%s点，持续%s sec。守护药剂。"] = { { Stats.Spirit, }, { Stats.Stamina, }, false, } -- s24382
+L["施法者被%s个水球环绕，每%s秒恢复%s点法力值。如果施法者受到了近战、远程或法术伤害，则施法者恢复%s点法力值，并会消耗掉一个水球。每一小段时间内只会有一个水球被激活。效果持续%s sec。萨满祭司在同一时间内只能激活一种元素护盾。"] = { false, false, { Stats.GenericManaRegen, }, false, false, } -- s24398
 L["法术爆击等级提高%s。"] = { { Stats.SpellCritRating, }, } -- s24433
-L["使你的法术爆击等级提高%s，持续%s。"] = { { Stats.MeleeCritRating, Stats.RangedCritRating, Stats.SpellCritRating, }, false, } -- s24498
-L["使你的法术急速等级提高%s，治疗之触、回春术、愈合和宁静的法力值消耗减少%s%，持续%s。"] = { { Stats.SpellHasteRating, }, false, false, } -- s24542
-L["奥术系法术的伤害提高%s点，持续%s。"] = { { Stats.ArcaneDamage, }, false, } -- s24544
-L["使你的法术急速等级提高%s，治疗类法术所消耗的法力值减少%s%，持续%s。"] = { { Stats.SpellHasteRating, }, false, false, } -- s24546
-L["法术命中等级提高%s，持续%s。"] = { { Stats.MeleeHitRating, Stats.RangedHitRating, Stats.SpellHitRating, }, false, } -- s24610
+L["使你的法术爆击等级提高%s，持续%s sec。"] = { { Stats.MeleeCritRating, Stats.RangedCritRating, Stats.SpellCritRating, }, false, } -- s24498
+L["使你的法术急速等级提高%s，治疗之触、回春术、愈合和宁静的法力值消耗减少%s%，持续%s sec。"] = { { Stats.SpellHasteRating, }, false, false, } -- s24542
+L["奥术系法术的伤害提高%s点，持续%s sec。"] = { { Stats.ArcaneDamage, }, false, } -- s24544
+L["使你的法术急速等级提高%s，治疗类法术所消耗的法力值减少%s%，持续%s sec。"] = { { Stats.SpellHasteRating, }, false, false, } -- s24546
+L["法术命中等级提高%s，持续%s sec。"] = { { Stats.MeleeHitRating, Stats.RangedHitRating, Stats.SpellHitRating, }, false, } -- s24610
 L["在猎豹、熊、巨熊和枭兽形态下的攻击强度提高%s点。"] = { { Stats.FeralAttackPower, }, } -- s24694
-L["耐力和精神提高%s点，持续%s。"] = { { Stats.Stamina, Stats.Spirit, }, false, } -- s24829
-L["使你的近战攻击和法术的爆击等级提高%s，持续%s。"] = { { Stats.MeleeCritRating, Stats.RangedCritRating, Stats.SpellCritRating, }, false, } -- s24865
-L["击碎敌人的护甲，每次破甲可以使其护甲值降低%s点，可叠加%s次。持续%s。"] = { { Stats.Armor, }, false, false, } -- s25051
+L["耐力和精神提高%s点，持续%s sec。"] = { { Stats.Stamina, Stats.Spirit, }, false, } -- s24829
+L["使你的近战攻击和法术的爆击等级提高%s，持续%s sec。"] = { { Stats.MeleeCritRating, Stats.RangedCritRating, Stats.SpellCritRating, }, false, } -- s24865
+L["击碎敌人的护甲，每次破甲可以使其护甲值降低%s点，可叠加%s次。持续%s sec。"] = { { Stats.Armor, }, false, false, } -- s25051
 L["提高所有法术和魔法效果所造成的伤害和治疗效果，最多%s点。同时也可以使法术爆击等级提高%s。"] = { { Stats.SpellDamage, Stats.HealingPower, }, { Stats.SpellCritRating, }, } -- s25113
 L["每%s秒恢复%s点法力值，并使治疗法术的效果提高%s点。"] = { false, { Stats.GenericManaRegen, }, { Stats.HealingPower, }, } -- s25116
-L["使附近的小队成员获得%s点精神加成，持续%s。"] = { { Stats.Spirit, }, false, } -- s25207
-L["使附近的小队成员获得%s点力量加成，持续%s。"] = { { Stats.Strength, }, false, } -- s25211
-L["使一个敌人的护甲值降低%s点，持续%s。在此效果影响下，目标不能潜行或者隐形。"] = { { Stats.Armor, }, false, } -- s25602
-L["使附近的小队成员获得%s点耐力加成，持续%s。"] = { { Stats.Stamina, }, false, } -- s25606
-L["附近所有小队成员的法术伤害提高最多%s点，持续%s。"] = { { Stats.HolyDamage, Stats.FireDamage, Stats.NatureDamage, Stats.FrostDamage, Stats.ShadowDamage, Stats.ArcaneDamage, }, false, } -- s25607
-L["每%s秒为附近所有小队成员恢复%s点生命值，持续%s。"] = { false, { Stats.HealthRegen, }, false, } -- s25608
-L["在%s内恢复%s点生命值和%s点法力值，进食时必须保持坐姿。"] = { false, false, { Stats.GenericManaRegen, }, } -- s25697
-L["在%s内恢复总计%s点法力值，进食时必须保持坐姿。"] = { false, { Stats.GenericManaRegen, }, } -- s25701
+L["使附近的小队成员获得%s点精神加成，持续%s sec。"] = { { Stats.Spirit, }, false, } -- s25207
+L["使附近的小队成员获得%s点力量加成，持续%s sec。"] = { { Stats.Strength, }, false, } -- s25211
+L["使一个敌人的护甲值降低%s点，持续%s sec。在此效果影响下，目标不能潜行或者隐形。"] = { { Stats.Armor, }, false, } -- s25602
+L["使附近的小队成员获得%s点耐力加成，持续%s sec。"] = { { Stats.Stamina, }, false, } -- s25606
+L["附近所有小队成员的法术伤害提高最多%s点，持续%s sec。"] = { { Stats.HolyDamage, Stats.FireDamage, Stats.NatureDamage, Stats.FrostDamage, Stats.ShadowDamage, Stats.ArcaneDamage, }, false, } -- s25607
+L["每%s秒为附近所有小队成员恢复%s点生命值，持续%s sec。"] = { false, { Stats.HealthRegen, }, false, } -- s25608
+L["在%s sec内恢复%s点生命值和%s点法力值，进食时必须保持坐姿。"] = { false, false, { Stats.GenericManaRegen, }, } -- s25697
+L["在%s sec内恢复总计%s点法力值，进食时必须保持坐姿。"] = { false, { Stats.GenericManaRegen, }, } -- s25701
 L["使你的火焰法术穿透提高%s。"] = { { Stats.FirePenetration, }, } -- s25717
-L["使团队或小队中所有与目标职业相同的玩家都获得强效力量祝福的效果，使其攻击强度提高%s点，持续%s。每个圣骑士在同一时间内只能给目标施加一种祝福，同类型的祝福不能重叠。"] = { { Stats.GenericAttackPower, }, false, } -- s25782
-L["使团队或小队中所有与目标职业相同的玩家都获得强效智慧祝福的效果，每%s秒回复%s点法力值，持续%s。每个圣骑士在同一时间内只能给目标施加一种祝福，同类型的祝福不能重叠。"] = { false, { Stats.GenericManaRegen, }, false, } -- s25894
+L["使团队或小队中所有与目标职业相同的玩家都获得强效力量祝福的效果，使其攻击强度提高%s点，持续%s sec。每个圣骑士在同一时间内只能给目标施加一种祝福，同类型的祝福不能重叠。"] = { { Stats.GenericAttackPower, }, false, } -- s25782
+L["使团队或小队中所有与目标职业相同的玩家都获得强效智慧祝福的效果，每%s秒回复%s点法力值，持续%s sec。每个圣骑士在同一时间内只能给目标施加一种祝福，同类型的祝福不能重叠。"] = { false, { Stats.GenericManaRegen, }, false, } -- s25894
 L["使你的法术穿透提高%s。"] = { { Stats.SpellPenetration, }, } -- s25975
-L["你的震击和闪电法术有%s%的几率获得最高%s点自然伤害加成，持续%s。"] = { false, { Stats.NatureDamage, }, false, } -- s26119
-L["法术命中等级提高%s，持续%s。可叠加%s次。"] = { { Stats.SpellHitRating, }, false, false, } -- s26129
+L["你的震击和闪电法术有%s%的几率获得最高%s点自然伤害加成，持续%s sec。"] = { false, { Stats.NatureDamage, }, false, ignoreSum = true } -- s26119
+L["法术命中等级提高%s，持续%s sec。可叠加%s次。"] = { { Stats.SpellHitRating, }, false, false, } -- s26129
 L["弓类武器的爆击几率提高%s%。"] = { { Stats.MeleeCrit, Stats.RangedCrit, }, } -- s26290
-L["使%s码范围内的团队成员获得%s点耐力加成，持续%s。"] = { false, { Stats.Stamina, }, false, } -- s26562
-L["使施法者的攻击速度提高%s%，对敌人造成的所有伤害提高%s%，持续%s。"] = { { Stats.MeleeHaste, }, false, false, } -- s26662
-L["使你的躲闪几率提高%s%，被远程攻击命中的几率降低%s%。持续%s。"] = { { Stats.Dodge, }, false, false, } -- s26669
+L["使%s码范围内的团队成员获得%s点耐力加成，持续%s sec。"] = { false, { Stats.Stamina, }, false, } -- s26562
+L["使施法者的攻击速度提高%s%，对敌人造成的所有伤害提高%s%，持续%s sec。"] = { { Stats.MeleeHaste, }, false, false, } -- s26662
+L["使你的躲闪几率提高%s%，被远程攻击命中的几率降低%s%。持续%s sec。"] = { { Stats.Dodge, }, false, false, } -- s26669
 L["提高火焰和奥术法术和效果所造成的伤害，最多%s点。"] = { { Stats.FireDamage, Stats.ArcaneDamage, }, } -- s26692
-L["对所有魔法的抗性提高%s点，在施法时也可保持%s%的法力值回复速度。法师在同一时间内只能保有一种魔法护甲效果。持续%s。"] = { { Stats.FireResistance, Stats.NatureResistance, Stats.FrostResistance, Stats.ShadowResistance, Stats.ArcaneResistance, }, false, false, } -- s27125
-L["术士被虚空能量笼罩，对下一次物理伤害攻击免疫。另外，攻击者的命中几率降低%s%，对恐惧效果的抵抗几率降低%s%，持续%s。虚空斗篷效果持续%s。"] = { { Stats.MeleeHit, Stats.RangedHit, }, false, false, false, } -- s27181
-L["嘲讽附近半径%s码范围内的所有敌人，使它们有更高的几率转而攻击虚空行者，并使它们的命中几率降低%s%，效果持续%s。比受难（等级 %s）更有效。"] = { false, { Stats.MeleeHit, Stats.RangedHit, }, false, false, } -- s27271
-L["安抚目标，提高令它不再攻击你的几率，并使其近战攻击速度降低%s%，持续%s。比安抚之吻（等级 %s）更有效。"] = { { Stats.MeleeHaste, }, false, false, } -- s27275
-L["近战攻击命中之后有一定几率使你的伤害和治疗效果提高最多%s点，持续%s。"] = { { Stats.SpellDamage, Stats.HealingPower, }, false, } -- s27498
+L["对所有魔法的抗性提高%s点，在施法时也可保持%s%的法力值回复速度。法师在同一时间内只能保有一种魔法护甲效果。持续%s sec。"] = { { Stats.FireResistance, Stats.NatureResistance, Stats.FrostResistance, Stats.ShadowResistance, Stats.ArcaneResistance, }, false, false, } -- s27125
+L["术士被虚空能量笼罩，对下一次物理伤害攻击免疫。另外，攻击者的命中几率降低%s%，对恐惧效果的抵抗几率降低%s%，持续%s sec。虚空斗篷效果持续%s sec。"] = { { Stats.MeleeHit, Stats.RangedHit, }, false, false, false, ignoreSum = true } -- s27181
+L["嘲讽附近半径%s码范围内的所有敌人，使它们有更高的几率转而攻击虚空行者，并使它们的命中几率降低%s%，效果持续%s sec。比受难（等级 %s）更有效。"] = { false, { Stats.MeleeHit, Stats.RangedHit, }, false, false, } -- s27271
+L["安抚目标，提高令它不再攻击你的几率，并使其近战攻击速度降低%s%，持续%s sec。比安抚之吻（等级 %s）更有效。"] = { { Stats.MeleeHaste, }, false, false, } -- s27275
+L["近战攻击命中之后有一定几率使你的伤害和治疗效果提高最多%s点，持续%s sec。"] = { { Stats.SpellDamage, Stats.HealingPower, }, false, ignoreSum = true } -- s27498
 L["躲闪等级提高%s。"] = { { Stats.DodgeRating, }, } -- s27653
-L["使你的命中等级提高%s，持续%s。"] = { { Stats.MeleeHitRating, Stats.RangedHitRating, Stats.SpellHitRating, }, false, } -- s27723
+L["使你的命中等级提高%s，持续%s sec。"] = { { Stats.MeleeHitRating, Stats.RangedHitRating, Stats.SpellHitRating, }, false, } -- s27723
 L["每%s秒恢复%s点生命值和法力值。"] = { false, { Stats.GenericManaRegen, Stats.HealthRegen, }, } -- s27949
 L["命中等级提高%s，抵抗移动限制效果的几率提高%s%。"] = { { Stats.MeleeHitRating, Stats.RangedHitRating, Stats.SpellHitRating, }, false, } -- s27953
-L["敏捷提高%s点，攻击速度略微提高，持续%s。"] = { { Stats.Agility, }, false, } -- s28093
-L["施法者被邪能笼罩，通过法术和魔法效果所恢复的生命值提高%s%，法术伤害提高最多%s点。术士在同一时间内只能激活一种护甲法术。持续%s。"] = { false, { Stats.SpellDamage, }, false, } -- s28176
+L["敏捷提高%s点，攻击速度略微提高，持续%s sec。"] = { { Stats.Agility, }, false, } -- s28093
+L["施法者被邪能笼罩，通过法术和魔法效果所恢复的生命值提高%s%，法术伤害提高最多%s点。术士在同一时间内只能激活一种护甲法术。持续%s sec。"] = { false, { Stats.SpellDamage, }, false, } -- s28176
 L["没有及时摄入血蓟，使你的精神下降了%s点。"] = { { Stats.Spirit, }, } -- s28274
-L["使你所施放的治疗法术所造成的治疗效果提高最多%s点，持续%s。战斗药剂。"] = { { Stats.HealingPower, }, false, } -- s28491
-L["使你的冰霜法术伤害提高最多%s点，持续%s。战斗药剂。"] = { { Stats.FrostDamage, }, false, } -- s28493
-L["使你的力量提高%s点，防御等级降低%s，持续%s。"] = { { Stats.Strength, }, { Stats.DefenseRating, }, false, } -- s28494
-L["使你的敏捷提高%s点，爆击等级提高%s，持续%s。战斗药剂。"] = { { Stats.Agility, }, { Stats.MeleeCritRating, Stats.RangedCritRating, }, false, } -- s28497
-L["使你的火焰法术伤害提高最多%s点，持续%s。战斗药剂。"] = { { Stats.FireDamage, }, false, } -- s28501
-L["使你的暗影法术伤害提高最多%s点，持续%s。战斗药剂。"] = { { Stats.ShadowDamage, }, false, } -- s28503
-L["力量提高%s点，暂时使生命值提高%s点，持续%s。"] = { { Stats.Strength, }, { Stats.Health, }, false, } -- s28506
-L["急速等级提高%s，效果持续%s。"] = { { Stats.MeleeHasteRating, Stats.RangedHasteRating, Stats.SpellHasteRating, }, false, } -- s28507
-L["法术爆击等级提高%s%，法术伤害提高%s点，持续%s。"] = { { Stats.SpellCrit, }, { Stats.SpellDamage, }, false, } -- s28508
-L["每%s秒恢复%s点法力值，持续%s。守护药剂。"] = { false, { Stats.GenericManaRegen, }, false, } -- s28509
-L["使你的法术目标的魔法抗性降低%s点，持续%s。守护药剂。"] = { { Stats.SpellPenetration, }, false, } -- s28514
-L["使玩家的生命值上限提高%s点，防御等级提高%s，持续%s。这种效果在死亡后仍可继续存在。战斗和守护药剂。"] = { { Stats.Health, }, { Stats.DefenseRating, }, false, } -- s28518
-L["使玩家的每%s秒法力值回复提高%s点，持续%s。这种效果在死亡后仍可继续存在。战斗和守护药剂。"] = { false, { Stats.GenericManaRegen, }, false, } -- s28519
-L["攻击强度提高%s点，持续%s。这种效果在死亡后仍可继续存在。战斗与守护药剂。"] = { { Stats.GenericAttackPower, }, false, } -- s28520
-L["使玩家的奥术、神圣和自然法术所造成的伤害提高最多%s点，持续%s。这种效果在死亡后仍可继续存在。战斗和守护药剂。"] = { { Stats.HolyDamage, Stats.NatureDamage, Stats.ArcaneDamage, }, false, } -- s28521
-L["使玩家的暗影、火焰和冰霜法术所造成的伤害提高最多%s点，持续%s。这种效果在死亡后仍可继续存在。战斗和守护药剂。"] = { { Stats.FireDamage, Stats.FrostDamage, Stats.ShadowDamage, }, false, } -- s28540
-L["有一定几率对远程或近战目标造成%s点火焰伤害。你的火焰法术伤害提高最多%s点，持续%s。"] = { false, { Stats.FireDamage, }, false, } -- s28714
-L["使你的生命值提高%s点，持续%s。此效果结束时，额外的生命值会被扣除。"] = { { Stats.Health, }, false, } -- s28726
-L["使下%s次法术的治疗效果提高最多%s点，伤害提高最多%s点，持续%s。"] = { false, { Stats.HealingPower, }, { Stats.SpellDamage, }, false, } -- s28780
+L["使你所施放的治疗法术所造成的治疗效果提高最多%s点，持续%s sec。战斗药剂。"] = { { Stats.HealingPower, }, false, } -- s28491
+L["使你的冰霜法术伤害提高最多%s点，持续%s sec。战斗药剂。"] = { { Stats.FrostDamage, }, false, } -- s28493
+L["使你的力量提高%s点，防御等级降低%s，持续%s sec。"] = { { Stats.Strength, }, { Stats.DefenseRating, }, false, } -- s28494
+L["使你的敏捷提高%s点，爆击等级提高%s，持续%s sec。战斗药剂。"] = { { Stats.Agility, }, { Stats.MeleeCritRating, Stats.RangedCritRating, }, false, } -- s28497
+L["使你的火焰法术伤害提高最多%s点，持续%s sec。战斗药剂。"] = { { Stats.FireDamage, }, false, } -- s28501
+L["使你的暗影法术伤害提高最多%s点，持续%s sec。战斗药剂。"] = { { Stats.ShadowDamage, }, false, } -- s28503
+L["力量提高%s点，暂时使生命值提高%s点，持续%s sec。"] = { { Stats.Strength, }, { Stats.Health, }, false, } -- s28506
+L["急速等级提高%s，效果持续%s sec。"] = { { Stats.MeleeHasteRating, Stats.RangedHasteRating, Stats.SpellHasteRating, }, false, } -- s28507
+L["法术爆击等级提高%s%，法术伤害提高%s点，持续%s sec。"] = { { Stats.SpellCrit, }, { Stats.SpellDamage, }, false, } -- s28508
+L["每%s秒恢复%s点法力值，持续%s sec。守护药剂。"] = { false, { Stats.GenericManaRegen, }, false, } -- s28509
+L["使你的法术目标的魔法抗性降低%s点，持续%s sec。守护药剂。"] = { { Stats.SpellPenetration, }, false, } -- s28514
+L["使玩家的生命值上限提高%s点，防御等级提高%s，持续%s sec。这种效果在死亡后仍可继续存在。战斗和守护药剂。"] = { { Stats.Health, }, { Stats.DefenseRating, }, false, } -- s28518
+L["使玩家的每%s秒法力值回复提高%s点，持续%s sec。这种效果在死亡后仍可继续存在。战斗和守护药剂。"] = { false, { Stats.GenericManaRegen, }, false, } -- s28519
+L["攻击强度提高%s点，持续%s sec。这种效果在死亡后仍可继续存在。战斗与守护药剂。"] = { { Stats.GenericAttackPower, }, false, } -- s28520
+L["使玩家的奥术、神圣和自然法术所造成的伤害提高最多%s点，持续%s sec。这种效果在死亡后仍可继续存在。战斗和守护药剂。"] = { { Stats.HolyDamage, Stats.NatureDamage, Stats.ArcaneDamage, }, false, } -- s28521
+L["使玩家的暗影、火焰和冰霜法术所造成的伤害提高最多%s点，持续%s sec。这种效果在死亡后仍可继续存在。战斗和守护药剂。"] = { { Stats.FireDamage, Stats.FrostDamage, Stats.ShadowDamage, }, false, } -- s28540
+L["有一定几率对远程或近战目标造成%s点火焰伤害。你的火焰法术伤害提高最多%s点，持续%s sec。"] = { false, { Stats.FireDamage, }, false, } -- s28714
+L["使你的生命值提高%s点，持续%s sec。此效果结束时，额外的生命值会被扣除。"] = { { Stats.Health, }, false, } -- s28726
+L["使下%s次法术的治疗效果提高最多%s点，伤害提高最多%s点，持续%s sec。"] = { false, { Stats.HealingPower, }, { Stats.SpellDamage, }, false, } -- s28780
 L["使你和身边半径%s码范围内的所有小队成员的法术命中几率提高%s%。"] = { false, { Stats.SpellHit, }, } -- s28878
-L["使一位盟友的攻击速度提高%s%，持续%s。"] = { { Stats.MeleeHaste, }, false, } -- s28902
+L["使一位盟友的攻击速度提高%s%，持续%s sec。"] = { { Stats.MeleeHaste, }, false, } -- s28902
 L["使你对亡灵的法术爆击等级提高%s。"] = { { Stats.SpellCritRating, }, } -- s29069
-L["increases all spell damage done by an enemy by up to %s for %s.\nincreases all spell damage taken by an enemy by up to %s for %s"] = { { Stats.SpellDamage, }, false, false, false, } -- s29109
-L["使敌人的攻击间隔延长%s%，移动速度降低%s%，力量降低%s%，持续%s。"] = { { Stats.MeleeHaste, }, false, false, false, } -- s29212
+L["increases all spell damage done by an enemy by up to %s for %s sec.\nincreases all spell damage taken by an enemy by up to %s for %s sec"] = { { Stats.SpellDamage, }, false, false, false, } -- s29109
+L["使敌人的攻击间隔延长%s%，移动速度降低%s%，力量降低%s%，持续%s sec。"] = { { Stats.MeleeHaste, }, false, false, false, } -- s29212
 L["释放储存在能量核心中的能量，使法术和魔法效果所造成的伤害提高最多%s点，持续%s秒。"] = { { Stats.SpellDamage, }, false, } -- s29271
 L["slows melee attack speed by %s% per dose.  stacks"] = { { Stats.MeleeHaste, }, } -- s29290
-L["命中等级提高%s，持续%s。"] = { { Stats.MeleeHitRating, Stats.RangedHitRating, Stats.SpellHitRating, }, false, } -- s29332
-L["使你的生命值上限提高%s点，持续%s。"] = { { Stats.Health, }, false, } -- s29348
-L["使附近所有友方目标的攻击强度提高%s点，持续%s。"] = { { Stats.AttackPower, }, false, } -- s29381
-L["protects the caster from all attacks and spells for %s., but also reduces attack speed by %s% during that time"] = { false, { Stats.MeleeHaste, }, } -- s29382
+L["命中等级提高%s，持续%s sec。"] = { { Stats.MeleeHitRating, Stats.RangedHitRating, Stats.SpellHitRating, }, false, } -- s29332
+L["使你的生命值上限提高%s点，持续%s sec。"] = { { Stats.Health, }, false, } -- s29348
+L["使附近所有友方目标的攻击强度提高%s点，持续%s sec。"] = { { Stats.AttackPower, }, false, } -- s29381
+L["protects the caster from all attacks and spells for %s sec., but also reduces attack speed by %s% during that time"] = { false, { Stats.MeleeHaste, }, } -- s29382
 L["increases the dance and attack speed of all nearby party members by %s%. the aura lasts until cancelled"] = { { Stats.MeleeHaste, }, } -- s29521
-L["a strong hit that inflicts weapon damage plus %s and throws the enemy off balance, reducing their chance to hit with physical attacks by %s for %s"] = { false, { Stats.MeleeHit, Stats.RangedHit, }, false, } -- s29555
-L["reduces the melee attack power of nearby enemies by %s for %s"] = { { Stats.AttackPower, }, false, } -- s29584
+L["a strong hit that inflicts weapon damage plus %s and throws the enemy off balance, reducing their chance to hit with physical attacks by %s for %s sec"] = { false, { Stats.MeleeHit, Stats.RangedHit, }, false, } -- s29555
+L["reduces the melee attack power of nearby enemies by %s for %s sec"] = { { Stats.AttackPower, }, false, } -- s29584
 L["使你的近战武器的命中几率提高%s%。"] = { { Stats.MeleeHit, Stats.RangedHit, }, } -- s29590
-L["%s秒内施放的每个法术都可以使你获得一个每%s秒恢复%s点法力值的可叠加效果，%s秒后效果结束。不使用法力值的技能不会触发该效果。"] = { false, false, { Stats.GenericManaRegen, }, false, } -- s29601
-L["increases a nearby spectral patron's attack speed by %s% for %s, but slows attacks when it wears off"] = { { Stats.MeleeHaste, }, false, } -- s29612
-L["reduces an enemy's attack speed by %s% and movement speed by %s% for %s.  also deals %s damage"] = { { Stats.MeleeHaste, }, false, false, false, } -- s29673
+L["%s秒内施放的每个法术都可以使你获得一个每%s秒恢复%s点法力值的可叠加效果，%s秒后效果结束。不使用法力值的技能不会触发该效果。"] = { false, false, { Stats.GenericManaRegen, }, false, ignoreSum = true } -- s29601
+L["increases a nearby spectral patron's attack speed by %s% for %s sec, but slows attacks when it wears off"] = { { Stats.MeleeHaste, }, false, } -- s29612
+L["reduces an enemy's attack speed by %s% and movement speed by %s% for %s sec.  also deals %s damage"] = { { Stats.MeleeHaste, }, false, false, false, } -- s29673
 L["使目标的物理攻击命中率降低%s%，可叠加。"] = { { Stats.MeleeHit, Stats.RangedHit, }, } -- s29716
-L["对所有魔法的抗性提高%s点，持续%s。"] = { { Stats.FireResistance, Stats.NatureResistance, Stats.FrostResistance, Stats.ShadowResistance, Stats.ArcaneResistance, }, false, } -- s29718
+L["对所有魔法的抗性提高%s点，持续%s sec。"] = { { Stats.FireResistance, Stats.NatureResistance, Stats.FrostResistance, Stats.ShadowResistance, Stats.ArcaneResistance, }, false, } -- s29718
 L["reduces an enemy's chance to hit by %s%. \nreduces an enemy's chance to hit with spells by %s%"] = { { Stats.MeleeHit, Stats.RangedHit, }, { Stats.SpellHit, }, } -- s29833
 L["increases the caster's physical damage by %s%., but reduces its movement speed by %s% and slows its attacks by %s%"] = { false, false, { Stats.MeleeHaste, }, } -- s29837
-L["increases all spell damage done by nearby enemies by up to %s.\nincreases all spell damage taken by an enemy by up to %s.  lasts %s"] = { { Stats.SpellDamage, }, false, false, } -- s29900
-L["对敌人造成普通伤害再加上%s点额外伤害，并继续对其造成每%s秒%s点额外的自然伤害，同时使护甲值降低%s点，可叠加最多%s次。持续%s。"] = { false, false, false, { Stats.Armor, }, false, false, } -- s29901
-L["reduces an enemy's attack speed by %s% and slows its movement by %s% for %s"] = { { Stats.MeleeHaste, }, false, false, } -- s29990
+L["increases all spell damage done by nearby enemies by up to %s.\nincreases all spell damage taken by an enemy by up to %s.  lasts %s sec"] = { { Stats.SpellDamage, }, false, false, } -- s29900
+L["对敌人造成普通伤害再加上%s点额外伤害，并继续对其造成每%s秒%s点额外的自然伤害，同时使护甲值降低%s点，可叠加最多%s次。持续%s sec。"] = { false, false, false, { Stats.Armor, }, false, false, } -- s29901
+L["reduces an enemy's attack speed by %s% and slows its movement by %s% for %s sec"] = { { Stats.MeleeHaste, }, false, false, } -- s29990
 L["使你的法术和技能命中目标的几率提高%s%。"] = { { Stats.MeleeHit, Stats.RangedHit, Stats.SpellHit, }, } -- s30130
-L["使一位盟友的暗影抗性提高%s点，持续%s。"] = { { Stats.ShadowResistance, }, false, } -- s30479
+L["使一位盟友的暗影抗性提高%s点，持续%s sec。"] = { { Stats.ShadowResistance, }, false, } -- s30479
 L["使你的护甲值提高%s点。\n使你的法术抗性提高%s点。"] = { { Stats.Armor, }, { Stats.FireResistance, Stats.NatureResistance, Stats.FrostResistance, Stats.ShadowResistance, Stats.ArcaneResistance, }, } -- s30559
-L["躲闪等级提高%s，持续%s。"] = { { Stats.DodgeRating, }, false, } -- s31039
-L["inflicts %s nature damage to nearby enemies, reducing their attack speed by %s% and slowing their movement by %s% for %s"] = { false, { Stats.MeleeHaste, }, false, false, } -- s30633
+L["躲闪等级提高%s，持续%s sec。"] = { { Stats.DodgeRating, }, false, } -- s31039
+L["inflicts %s nature damage to nearby enemies, reducing their attack speed by %s% and slowing their movement by %s% for %s sec"] = { false, { Stats.MeleeHaste, }, false, false, } -- s30633
 L["使你的力量降低%s点。"] = { { Stats.Strength, }, } -- s30762
 L["使你的敏捷降低%s点。"] = { { Stats.Agility, }, } -- s30763
 L["使你的耐力降低%s点。"] = { { Stats.Stamina, }, } -- s30764
 L["使你的智力降低%s点。"] = { { Stats.Intellect, }, } -- s30765
 L["使你的精神降低%s点。"] = { { Stats.Spirit, }, } -- s30766
-L["increases the physical damage dealt by the caster by %s% and the caster's attack speed by %s% for %s"] = { false, { Stats.MeleeHaste, }, false, } -- s30841
+L["increases the physical damage dealt by the caster by %s% and the caster's attack speed by %s% for %s sec"] = { false, { Stats.MeleeHaste, }, false, } -- s30841
 L["耐力提高%s点，持续%s分钟。"] = { { Stats.Stamina, }, false, } -- s30845
 L["智力提高%s点，持续%s分钟。"] = { { Stats.Intellect, }, false, } -- s30847
 L["攻击强度提高%s点，持续%s分钟。"] = { { Stats.AttackPower, }, false, } -- s30848
-L["使附近所有友方单位的近战攻击强度提高%s点，持续%s。"] = { { Stats.AttackPower, }, false, } -- s30931
+L["使附近所有友方单位的近战攻击强度提高%s点，持续%s sec。"] = { { Stats.AttackPower, }, false, } -- s30931
 L["increases melee and ranged attack speed and spell haste by %s%"] = { { Stats.MeleeHaste, Stats.SpellHaste, }, } -- s30939
-L["使附近小队成员的耐力提高%s点，持续%s。"] = { { Stats.Stamina, }, false, } -- s31023
-L["使附近小队成员的爆击等级提高%s，持续%s。"] = { { Stats.MeleeCritRating, Stats.RangedCritRating, Stats.SpellCritRating, }, false, } -- s31025
-L["附近小队成员的所有属性提高%s点，持续%s。"] = { { Stats.AllStats, }, false, } -- s31026
-L["使附近小队成员的法术爆击几率提高%s%，持续%s。"] = { { Stats.SpellCrit, }, false, } -- s31035
+L["使附近小队成员的耐力提高%s点，持续%s sec。"] = { { Stats.Stamina, }, false, } -- s31023
+L["使附近小队成员的爆击等级提高%s，持续%s sec。"] = { { Stats.MeleeCritRating, Stats.RangedCritRating, Stats.SpellCritRating, }, false, } -- s31025
+L["附近小队成员的所有属性提高%s点，持续%s sec。"] = { { Stats.AllStats, }, false, } -- s31026
+L["使附近小队成员的法术爆击几率提高%s%，持续%s sec。"] = { { Stats.SpellCrit, }, false, } -- s31035
 L["法术伤害提高%s点。"] = { { Stats.SpellDamage, }, } -- s31037
-L["shreds an enemy's armor, reducing it by %s for %s"] = { { Stats.Armor, }, false, } -- s31042
-L["encases the caster in a layer of frost that lasts %s. the thick ice increases armor by %s, slows melee attackers' movement to %s%, and increases the time between their attacks by %s%"] = { false, { Stats.Armor, }, false, { Stats.MeleeHaste, }, } -- s31256
+L["shreds an enemy's armor, reducing it by %s for %s sec"] = { { Stats.Armor, }, false, } -- s31042
+L["encases the caster in a layer of frost that lasts %s sec. the thick ice increases armor by %s, slows melee attackers' movement to %s%, and increases the time between their attacks by %s%"] = { false, { Stats.Armor, }, false, { Stats.MeleeHaste, }, } -- s31256
 L["使附近敌人的攻击强度降低%s点。"] = { { Stats.GenericAttackPower, }, } -- s31273
 L["increases the caster's chance to dodge by %s%. lasts until cancelled"] = { { Stats.Dodge, }, } -- s31379
-L["reduces an enemy's intellect by %s and its spirit by %s for %s"] = { { Stats.Intellect, }, { Stats.Spirit, }, false, } -- s31381
-L["increased the time between an enemy's attacks by %s% and its movement by %s%, in addition to reducing its strength by %s%. lasts %s"] = { { Stats.MeleeHaste, }, false, false, false, } -- s31406
-L["每%s秒恢复%s点生命值和法力值，持续%s。"] = { false, { Stats.GenericManaRegen, }, false, } -- s31462
+L["reduces an enemy's intellect by %s and its spirit by %s for %s sec"] = { { Stats.Intellect, }, { Stats.Spirit, }, false, } -- s31381
+L["increased the time between an enemy's attacks by %s% and its movement by %s%, in addition to reducing its strength by %s%. lasts %s sec"] = { { Stats.MeleeHaste, }, false, false, false, } -- s31406
+L["每%s秒恢复%s点生命值和法力值，持续%s sec。"] = { false, { Stats.GenericManaRegen, }, false, } -- s31462
 L["increases attack power and ranged attack power for all friendly units within %s by %s"] = { false, { Stats.GenericAttackPower, }, } -- s31519
-L["使一个敌人的力量降低%s点，持续%s。"] = { { Stats.Strength, }, false, } -- s31552
-L["when activated, increases your dodge and parry chance by %s% for %s"] = { { Stats.Parry, Stats.Dodge, }, false, } -- s31567
-L["reduces intelligence of target by %s for %s.  stacks up to %s times"] = { { Stats.Intellect, }, false, false, } -- s31604
-L["increases an ally's attack speed by %s% for %s., but also inflicts %s nature damage to that ally every %s sec"] = { { Stats.MeleeHaste, }, false, false, false, } -- s31626
-L["reduces an enemy's chance to hit by %s% for %s"] = { { Stats.MeleeHit, Stats.RangedHit, }, false, } -- s31651
-L["使你的格挡几率提高%s%，持续%s。每次成功格挡都会对攻击者造成%s点神圣伤害。"] = { { Stats.BlockChance, }, false, false, } -- s31904
+L["使一个敌人的力量降低%s点，持续%s sec。"] = { { Stats.Strength, }, false, } -- s31552
+L["when activated, increases your dodge and parry chance by %s% for %s sec"] = { { Stats.Parry, Stats.Dodge, }, false, } -- s31567
+L["reduces intelligence of target by %s for %s sec.  stacks up to %s times"] = { { Stats.Intellect, }, false, false, } -- s31604
+L["increases an ally's attack speed by %s% for %s sec., but also inflicts %s nature damage to that ally every %s sec"] = { { Stats.MeleeHaste, }, false, false, false, } -- s31626
+L["reduces an enemy's chance to hit by %s% for %s sec"] = { { Stats.MeleeHit, Stats.RangedHit, }, false, } -- s31651
+L["使你的格挡几率提高%s%，持续%s sec。每次成功格挡都会对攻击者造成%s点神圣伤害。"] = { { Stats.BlockChance, }, false, false, } -- s31904
 L["encumbers the target with moss, slowing attack and casting speed by %s%"] = { { Stats.MeleeHaste, Stats.SpellHaste, }, } -- s31948
-L["reduces an enemy's chance to hit with spells and abilities by %s% for %s"] = { { Stats.MeleeHit, Stats.RangedHit, Stats.SpellHit, }, false, } -- s32017
-L["使一个敌人的耐力降低%s点，持续%s。"] = { { Stats.Stamina, }, false, } -- s32022
+L["reduces an enemy's chance to hit with spells and abilities by %s% for %s sec"] = { { Stats.MeleeHit, Stats.RangedHit, Stats.SpellHit, }, false, } -- s32017
+L["使一个敌人的耐力降低%s点，持续%s sec。"] = { { Stats.Stamina, }, false, } -- s32022
 L["你的所有法术和近战攻击的爆击几率提高%s%，你的圣印被驱散的几率降低%s%。"] = { { Stats.SpellCrit, Stats.MeleeCrit, Stats.RangedCrit, }, false, } -- s32043
-L["你的伤害性法术命中之后有一定几率使你的法术伤害提高最多%s点，持续%s。"] = { { Stats.SpellDamage, Stats.HealingPower, }, false, } -- s32106
-L["在%s内恢复总计%s点生命值，进食时必须保持坐姿。如果你花费至少%s秒钟来进食，你的精神将提高%s点，持续%s。"] = { false, { Stats.Spirit, }, false, { Stats.Spirit, }, false, } -- s32112
+L["你的伤害性法术命中之后有一定几率使你的法术伤害提高最多%s点，持续%s sec。"] = { { Stats.SpellDamage, Stats.HealingPower, }, false, ignoreSum = true } -- s32106
+L["在%s sec内恢复总计%s点生命值，进食时必须保持坐姿。如果你花费至少%s秒钟来进食，你的精神将提高%s点，持续%s sec。"] = { false, { Stats.Spirit, }, false, { Stats.Spirit, }, false, ignoreSum = true } -- s32112
 L["%s 韧性等级。"] = { { Stats.ResilienceRating, }, } -- s32145
-L["移除%s个中毒效果，自然抗性降低%s点，持续%s。"] = { false, { Stats.NatureResistance, }, false, } -- s32305
-L["极大地振奋小队成员的士气，使他们每%s秒恢复%s点法力值。这个效果可以持续%s。"] = { false, { Stats.GenericManaRegen, }, false, } -- s32548
+L["移除%s个中毒效果，自然抗性降低%s点，持续%s sec。"] = { false, { Stats.NatureResistance, }, false, } -- s32305
+L["极大地振奋小队成员的士气，使他们每%s秒恢复%s点法力值。这个效果可以持续%s sec。"] = { false, { Stats.GenericManaRegen, }, false, } -- s32548
 L["使目标的智力提高%s点。"] = { { Stats.Intellect, }, } -- s32557
-L["increases the caster's chance to block by %s% for %s., but will only block %s attack"] = { { Stats.BlockChance, }, false, false, } -- s32587
-L["increases the caster's chance to block by %s% for %s., but will only block %s attacks"] = { { Stats.BlockChance, }, false, false, } -- s32587
-L["curses an enemy for %s., increasing the physical damage it takes by %s and reducing its stamina by %s. the cursed target has %s% chance of inflicting bleeding damage on it's current target"] = { false, false, { Stats.Stamina, }, false, } -- s32682
-L["使一位盟友的法术伤害提高最多%s点，持续%s。"] = { { Stats.SpellDamage, }, false, } -- s32689
+L["increases the caster's chance to block by %s% for %s sec., but will only block %s attack"] = { { Stats.BlockChance, }, false, false, } -- s32587
+L["increases the caster's chance to block by %s% for %s sec., but will only block %s attacks"] = { { Stats.BlockChance, }, false, false, } -- s32587
+L["curses an enemy for %s sec., increasing the physical damage it takes by %s and reducing its stamina by %s. the cursed target has %s% chance of inflicting bleeding damage on it's current target"] = { false, false, { Stats.Stamina, }, false, } -- s32682
+L["使一位盟友的法术伤害提高最多%s点，持续%s sec。"] = { { Stats.SpellDamage, }, false, } -- s32689
 L["increases the casting speed of caster by %s%"] = { { Stats.SpellHaste, }, } -- s32693
 L["使暗影法术和效果所造成的伤害提高最多%s点。"] = { { Stats.ShadowDamage, }, } -- s32697
 L["每%s秒回复%s点生命值。"] = { false, { Stats.HealthRegen, }, } -- s32703
-L["使你的格挡几率提高%s%，持续%s。每次成功格挡都会对攻击者造成%s点神圣伤害。可使用%s次。"] = { { Stats.BlockChance, }, false, false, false, } -- s32777
-L["成功施放法术之后，有一定几率令你的法术急速等级提高%s，持续%s秒。"] = { { Stats.MeleeHasteRating, Stats.RangedHasteRating, Stats.SpellHasteRating, }, false, } -- s32837
-L["decreases the attack power of nearby enemies by %s for %s"] = { { Stats.AttackPower, }, false, } -- s32918
-L["法术伤害提高最多%s点，法术治疗效果提高最多%s点，持续%s。"] = { { Stats.SpellDamage, }, { Stats.HealingPower, }, false, } -- s32925
-L["使附近盟友的施法速度提高%s%，持续%s。"] = { { Stats.SpellHaste, }, false, } -- s32940
-L["使你的生命值上限提高%s点，持续%s。这个效果在死亡后仍然存在，且被视为合剂效果。"] = { { Stats.Health, }, false, } -- s33053
+L["使你的格挡几率提高%s%，持续%s sec。每次成功格挡都会对攻击者造成%s点神圣伤害。可使用%s次。"] = { { Stats.BlockChance, }, false, false, false, } -- s32777
+L["成功施放法术之后，有一定几率令你的法术急速等级提高%s，持续%s秒。"] = { { Stats.MeleeHasteRating, Stats.RangedHasteRating, Stats.SpellHasteRating, }, false, ignoreSum = true } -- s32837
+L["decreases the attack power of nearby enemies by %s for %s sec"] = { { Stats.AttackPower, }, false, } -- s32918
+L["法术伤害提高最多%s点，法术治疗效果提高最多%s点，持续%s sec。"] = { { Stats.SpellDamage, }, { Stats.HealingPower, }, false, } -- s32925
+L["使附近盟友的施法速度提高%s%，持续%s sec。"] = { { Stats.SpellHaste, }, false, } -- s32940
+L["使你的生命值上限提高%s点，持续%s sec。这个效果在死亡后仍然存在，且被视为合剂效果。"] = { { Stats.Health, }, false, } -- s33053
 L["channels fel power into the target, increasing size by %s% and physical damage done by %s"] = { { Stats.AverageWeaponDamage, }, { Stats.AverageWeaponDamage, }, } -- s33111
-L["施法者所能造成的物理伤害提高%s点，近战攻击速度提高%s%。效果持续%s。"] = { { Stats.MeleeHaste, }, { Stats.MeleeHaste, }, false, } -- s33232
-L["在%s内恢复总计%s点生命值，进食时必须保持坐姿。如果你花费至少%s秒钟来进食，你的力量和精神都将提高%s点，持续%s。"] = { false, { Stats.Strength, Stats.Spirit, }, false, { Stats.Strength, }, false, } -- s33255
-L["在%s内恢复总计%s点生命值，进食时必须保持坐姿。如果你花费至少%s秒钟来进食，你的耐力将提高%s点，精神将提高%s点，持续%s。"] = { false, { Stats.Stamina, Stats.Spirit, }, false, { Stats.Stamina, }, { Stats.Spirit, }, false, } -- s41030
-L["在%s内恢复总计%s点生命值，进食时必须保持坐姿。如果你花费至少%s秒钟来进食，你的攻击强度将提高%s点，精神将提高%s点，持续%s。"] = { false, { Stats.GenericAttackPower, }, false, { Stats.GenericAttackPower, }, { Stats.Spirit, }, false, } -- s33260
-L["在%s内恢复总计%s点生命值，进食时必须保持坐姿。如果你花费至少%s秒钟来进食，你的敏捷和精神都将提高%s点，持续%s。"] = { false, { Stats.Agility, Stats.Spirit, }, false, { Stats.Agility, }, false, } -- s33262
-L["在%s内恢复总计%s点生命值，进食时必须保持坐姿。如果你花费至少%s秒钟来进食，你的法术伤害将提高%s点，精神将提高%s点，持续%s。"] = { false, { Stats.SpellDamage, }, false, { Stats.SpellDamage, }, { Stats.Spirit, }, false, } -- s33264
-L["在%s内恢复总计%s点生命值，进食时必须保持坐姿。如果你花费至少%s秒钟来进食，你的耐力将提高%s点，每%s秒回复法力值提高%s点，持续%s。"] = { false, { Stats.Stamina, }, { Stats.GenericManaRegen, }, { Stats.Stamina, }, false, { Stats.GenericManaRegen, }, false, } -- s33266
-L["在%s内恢复总计%s点生命值，进食时必须保持坐姿。如果你花费至少%s秒钟来进食，你的法术治疗效果将提高%s点，精神将提高%s点，持续%s。"] = { false, { Stats.HealingPower, }, false, { Stats.HealingPower, }, { Stats.Spirit, }, false, } -- s33269
-L["使你的宠物的耐力和精神提高%s点，持续%s。"] = { { Stats.Stamina, Stats.Spirit, }, false, } -- s33272
-L["你的伤害法术有一定几率令你的法术急速等级提高%s，持续%s秒。"] = { { Stats.MeleeHasteRating, Stats.RangedHasteRating, Stats.SpellHasteRating, }, false, } -- s33297
-L["法术急速等级提高%s，持续%s。"] = { { Stats.MeleeHasteRating, Stats.RangedHasteRating, Stats.SpellHasteRating, }, false, } -- s33370
-L["有一定几率在打出爆击之后使你的攻击强度提高%s点，持续%s秒。"] = { { Stats.GenericAttackPower, }, false, } -- s33648
-L["法术伤害提高最多%s点，治疗效果提高最多%s点，持续%s。"] = { { Stats.SpellDamage, }, { Stats.HealingPower, }, false, } -- s33662
+L["施法者所能造成的物理伤害提高%s点，近战攻击速度提高%s%。效果持续%s sec。"] = { { Stats.MeleeHaste, }, { Stats.MeleeHaste, }, false, } -- s33232
+L["在%s sec内恢复总计%s点生命值，进食时必须保持坐姿。如果你花费至少%s秒钟来进食，你的力量和精神都将提高%s点，持续%s sec。"] = { false, { Stats.Strength, Stats.Spirit, }, false, { Stats.Strength, }, false, ignoreSum = true } -- s33255
+L["在%s sec内恢复总计%s点生命值，进食时必须保持坐姿。如果你花费至少%s秒钟来进食，你的耐力将提高%s点，精神将提高%s点，持续%s sec。"] = { false, { Stats.Stamina, Stats.Spirit, }, false, { Stats.Stamina, }, { Stats.Spirit, }, false, ignoreSum = true } -- s41030
+L["在%s sec内恢复总计%s点生命值，进食时必须保持坐姿。如果你花费至少%s秒钟来进食，你的攻击强度将提高%s点，精神将提高%s点，持续%s sec。"] = { false, { Stats.GenericAttackPower, }, false, { Stats.GenericAttackPower, }, { Stats.Spirit, }, false, ignoreSum = true } -- s33260
+L["在%s sec内恢复总计%s点生命值，进食时必须保持坐姿。如果你花费至少%s秒钟来进食，你的敏捷和精神都将提高%s点，持续%s sec。"] = { false, { Stats.Agility, Stats.Spirit, }, false, { Stats.Agility, }, false, ignoreSum = true } -- s33262
+L["在%s sec内恢复总计%s点生命值，进食时必须保持坐姿。如果你花费至少%s秒钟来进食，你的法术伤害将提高%s点，精神将提高%s点，持续%s sec。"] = { false, { Stats.SpellDamage, }, false, { Stats.SpellDamage, }, { Stats.Spirit, }, false, ignoreSum = true } -- s33264
+L["在%s sec内恢复总计%s点生命值，进食时必须保持坐姿。如果你花费至少%s秒钟来进食，你的耐力将提高%s点，每%s秒回复法力值提高%s点，持续%s sec。"] = { false, { Stats.Stamina, }, { Stats.GenericManaRegen, }, { Stats.Stamina, }, false, { Stats.GenericManaRegen, }, false, ignoreSum = true } -- s33266
+L["在%s sec内恢复总计%s点生命值，进食时必须保持坐姿。如果你花费至少%s秒钟来进食，你的法术治疗效果将提高%s点，精神将提高%s点，持续%s sec。"] = { false, { Stats.HealingPower, }, false, { Stats.HealingPower, }, { Stats.Spirit, }, false, ignoreSum = true } -- s33269
+L["使你的宠物的耐力和精神提高%s点，持续%s sec。"] = { { Stats.Stamina, Stats.Spirit, }, false, } -- s33272
+L["你的伤害法术有一定几率令你的法术急速等级提高%s，持续%s秒。"] = { { Stats.MeleeHasteRating, Stats.RangedHasteRating, Stats.SpellHasteRating, }, false, ignoreSum = true } -- s33297
+L["法术急速等级提高%s，持续%s sec。"] = { { Stats.MeleeHasteRating, Stats.RangedHasteRating, Stats.SpellHasteRating, }, false, } -- s33370
+L["有一定几率在打出爆击之后使你的攻击强度提高%s点，持续%s秒。"] = { { Stats.GenericAttackPower, }, false, ignoreSum = true } -- s33648
+L["法术伤害提高最多%s点，治疗效果提高最多%s点，持续%s sec。"] = { { Stats.SpellDamage, }, { Stats.HealingPower, }, false, } -- s33662
 L["channels incited delirium into the target, increasing size by %s% and physical damage done by %s"] = { { Stats.AverageWeaponDamage, }, { Stats.AverageWeaponDamage, }, } -- s33664
-L["生命值上限提高%s点，持续%s。"] = { { Stats.Health, }, false, } -- s33668
-L["近战攻击强度提高%s点，伤害和治疗法术获得最多%s点加成，但是对你施放的治疗法术效果降低%s%，持续%s。"] = { { Stats.AttackPower, }, { Stats.SpellDamage, Stats.HealingPower, }, false, false, } -- s33697
-L["使你的伤害和治疗法术获得最多%s点加成，但是对你施放的治疗法术效果降低%s%，持续%s。"] = { { Stats.SpellDamage, Stats.HealingPower, }, false, false, } -- s33702
-L["法术伤害和治疗效果提高最多%s点，法术爆击等级提高%s，持续%s。战斗药剂。"] = { { Stats.SpellDamage, Stats.HealingPower, }, { Stats.SpellCritRating, }, false, } -- s33721
-L["所有属性提高%s点，持续%s。战斗药剂。"] = { { Stats.AllStats, }, false, } -- s33726
-L["increases your attack speed by %s%.  in addition, attacks strike an additional nearby opponent.  lasts %s"] = { { Stats.MeleeHaste, }, false, } -- s33735
-L["increases shadow damage done by up to %s for %s.  stacks %s times"] = { { Stats.ShadowDamage, }, false, false, } -- s33783
-L["你的法术爆击几率提高%s%，受到近战和远程爆击之后会获得天然完美效果，使你承受的所有伤害降低%s%。可叠加最多%s次，效果持续%s。"] = { { Stats.SpellCrit, }, false, false, false, } -- s33881
-L["使一个敌人的耐力降低%s点，精神降低%s点，持续%s。"] = { { Stats.Stamina, }, { Stats.Spirit, }, false, } -- s33951
-L["inflicts %s nature damage to nearby enemies, increasing the time between their attacks by %s% and slowing their movement by %s% for %s"] = { false, { Stats.MeleeHaste, }, false, false, } -- s33967
-L["你的攻击无视目标的%s点护甲值，持续%s。"] = { { Stats.ArmorPenetration, }, false, } -- s34106
-L["使你的次级治疗波可以令目标的韧性等级提高%s，持续%s。"] = { { Stats.ResilienceRating, }, false, } -- s34138
-L["使你的圣光闪现可以令目标的韧性等级提高%s，持续%s。"] = { { Stats.ResilienceRating, }, false, } -- s34139
-L["提高携带者对物理攻击的抵抗能力，护甲值提高%s点，持续%s。"] = { { Stats.Armor, }, false, } -- s34199
-L["使你的精神提高%s点，持续%s。"] = { { Stats.Spirit, }, false, } -- s34210
-L["你的命令审判、正义审判、鲜血审判和腐蚀审判可以令你的爆击等级提高%s，持续%s。"] = { { Stats.MeleeCritRating, Stats.SpellCritRating, }, false, } -- s34258
-L["你的命令审判、正义审判、殉难审判和腐蚀审判可以令你的爆击等级提高%s，持续%s。"] = { { Stats.MeleeCritRating, Stats.SpellCritRating, }, false, } -- s34258
-L["你的命令审判、正义审判、鲜血审判和复仇审判可以令你的爆击等级提高%s，持续%s。"] = { { Stats.MeleeCritRating, Stats.SpellCritRating, }, false, } -- s34258
-L["你的命令审判、正义审判、殉难审判和复仇审判可以令你的爆击等级提高%s，持续%s。"] = { { Stats.MeleeCritRating, Stats.SpellCritRating, }, false, } -- s34258
+L["生命值上限提高%s点，持续%s sec。"] = { { Stats.Health, }, false, } -- s33668
+L["近战攻击强度提高%s点，伤害和治疗法术获得最多%s点加成，但是对你施放的治疗法术效果降低%s%，持续%s sec。"] = { { Stats.AttackPower, }, { Stats.SpellDamage, Stats.HealingPower, }, false, false, } -- s33697
+L["使你的伤害和治疗法术获得最多%s点加成，但是对你施放的治疗法术效果降低%s%，持续%s sec。"] = { { Stats.SpellDamage, Stats.HealingPower, }, false, false, } -- s33702
+L["法术伤害和治疗效果提高最多%s点，法术爆击等级提高%s，持续%s sec。战斗药剂。"] = { { Stats.SpellDamage, Stats.HealingPower, }, { Stats.SpellCritRating, }, false, } -- s33721
+L["所有属性提高%s点，持续%s sec。战斗药剂。"] = { { Stats.AllStats, }, false, } -- s33726
+L["increases your attack speed by %s%.  in addition, attacks strike an additional nearby opponent.  lasts %s sec"] = { { Stats.MeleeHaste, }, false, } -- s33735
+L["increases shadow damage done by up to %s for %s sec.  stacks %s times"] = { { Stats.ShadowDamage, }, false, false, } -- s33783
+L["你的法术爆击几率提高%s%，受到近战和远程爆击之后会获得天然完美效果，使你承受的所有伤害降低%s%。可叠加最多%s次，效果持续%s sec。"] = { { Stats.SpellCrit, }, false, false, false, } -- s33881
+L["使一个敌人的耐力降低%s点，精神降低%s点，持续%s sec。"] = { { Stats.Stamina, }, { Stats.Spirit, }, false, } -- s33951
+L["inflicts %s nature damage to nearby enemies, increasing the time between their attacks by %s% and slowing their movement by %s% for %s sec"] = { false, { Stats.MeleeHaste, }, false, false, } -- s33967
+L["你的攻击无视目标的%s点护甲值，持续%s sec。"] = { { Stats.ArmorPenetration, }, false, } -- s34106
+L["使你的次级治疗波可以令目标的韧性等级提高%s，持续%s sec。"] = { { Stats.ResilienceRating, }, false, ignoreSum = true } -- s34138
+L["使你的圣光闪现可以令目标的韧性等级提高%s，持续%s sec。"] = { { Stats.ResilienceRating, }, false, ignoreSum = true } -- s34139
+L["提高携带者对物理攻击的抵抗能力，护甲值提高%s点，持续%s sec。"] = { { Stats.Armor, }, false, } -- s34199
+L["使你的精神提高%s点，持续%s sec。"] = { { Stats.Spirit, }, false, } -- s34210
+L["你的命令审判、正义审判、鲜血审判和腐蚀审判可以令你的爆击等级提高%s，持续%s sec。"] = { { Stats.MeleeCritRating, Stats.SpellCritRating, }, false, ignoreSum = true } -- s34258
+L["你的命令审判、正义审判、殉难审判和腐蚀审判可以令你的爆击等级提高%s，持续%s sec。"] = { { Stats.MeleeCritRating, Stats.SpellCritRating, }, false, ignoreSum = true } -- s34258
+L["你的命令审判、正义审判、鲜血审判和复仇审判可以令你的爆击等级提高%s，持续%s sec。"] = { { Stats.MeleeCritRating, Stats.SpellCritRating, }, false, ignoreSum = true } -- s34258
+L["你的命令审判、正义审判、殉难审判和复仇审判可以令你的爆击等级提高%s，持续%s sec。"] = { { Stats.MeleeCritRating, Stats.SpellCritRating, }, false, ignoreSum = true } -- s34258
 L["爆击等级和法术爆击等级提高%s。"] = { { Stats.MeleeCritRating, Stats.SpellCritRating, }, } -- s34260
-L["法术爆击之后有一定几率使你的法术伤害和治疗提高%s点，持续%s秒。"] = { { Stats.SpellDamage, Stats.HealingPower, }, false, } -- s34320
-L["increases a nearby plant's size by %s%, attack speed by %s% and the physical damage it deals by %s% for %s"] = { false, { Stats.MeleeHaste, }, false, false, } -- s34350
+L["法术爆击之后有一定几率使你的法术伤害和治疗提高%s点，持续%s秒。"] = { { Stats.SpellDamage, Stats.HealingPower, }, false, ignoreSum = true } -- s34320
+L["increases a nearby plant's size by %s%, attack speed by %s% and the physical damage it deals by %s% for %s sec"] = { false, { Stats.MeleeHaste, }, false, false, } -- s34350
 L["使你的躲闪几率提高%s%，你的宠物的躲闪几率提高%s%。"] = { { Stats.Dodge, }, false, } -- s34462
 L["你的远程攻击速度提高%s%，你的宠物的近战攻击速度提高%s%。"] = { { Stats.RangedHaste, }, false, } -- s34466
-L["你的远程攻击命中后有%s%的几率使你的所有攻击的爆击几率提高%s%，效果持续%s。"] = { false, { Stats.MeleeCrit, Stats.RangedCrit, }, false, } -- s34506
-L["生命值提高%s点，力量提高%s点，持续%s。"] = { { Stats.Health, }, { Stats.Strength, }, false, } -- s34511
-L["使你的躲闪等级提高%s，持续%s。"] = { { Stats.DodgeRating, }, false, } -- s34519
-L["成功施法之后有一定几率使你的精神提高%s点，持续%s秒。"] = { { Stats.Spirit, }, false, } -- s34584
-L["reduces an enemy's chance to critically hit with a melee attack by %s%, and reduces its chance to critically hit with a spell attack by %s%. lasts %s"] = { { Stats.MeleeCrit, Stats.RangedCrit, }, { Stats.SpellCrit, }, false, } -- s34640
-L["使施法者的攻击速度提高%s%，对敌人造成的物理伤害提高%s%，持续%s。"] = { { Stats.MeleeHaste, }, { Stats.AverageWeaponDamage, }, false, } -- s56625
-L["causes an enemy to fixate upon the caster and increases the caster's attack speed by %s% for %s. while the target is fixated upon the caster, the target is very reluctant to attack anything else"] = { { Stats.MeleeHaste, }, false, } -- s34719
-L["当你的法术被抵抗之后，使你获得%s点法术伤害加成，持续%s。"] = { { Stats.SpellDamage, Stats.HealingPower, }, false, } -- s34749
-L["你的近战和远程攻击有一定几率使你的急速等级提高%s，持续%s。"] = { { Stats.MeleeHasteRating, Stats.RangedHasteRating, Stats.SpellHasteRating, }, false, } -- s34774
+L["你的远程攻击命中后有%s%的几率使你的所有攻击的爆击几率提高%s%，效果持续%s sec。"] = { false, { Stats.MeleeCrit, Stats.RangedCrit, }, false, ignoreSum = true } -- s34506
+L["生命值提高%s点，力量提高%s点，持续%s sec。"] = { { Stats.Health, }, { Stats.Strength, }, false, } -- s34511
+L["使你的躲闪等级提高%s，持续%s sec。"] = { { Stats.DodgeRating, }, false, } -- s34519
+L["成功施法之后有一定几率使你的精神提高%s点，持续%s秒。"] = { { Stats.Spirit, }, false, ignoreSum = true } -- s34584
+L["reduces an enemy's chance to critically hit with a melee attack by %s%, and reduces its chance to critically hit with a spell attack by %s%. lasts %s sec"] = { { Stats.MeleeCrit, Stats.RangedCrit, }, { Stats.SpellCrit, }, false, } -- s34640
+L["使施法者的攻击速度提高%s%，对敌人造成的物理伤害提高%s%，持续%s sec。"] = { { Stats.MeleeHaste, }, { Stats.AverageWeaponDamage, }, false, } -- s56625
+L["causes an enemy to fixate upon the caster and increases the caster's attack speed by %s% for %s sec. while the target is fixated upon the caster, the target is very reluctant to attack anything else"] = { { Stats.MeleeHaste, }, false, } -- s34719
+L["当你的法术被抵抗之后，使你获得%s点法术伤害加成，持续%s sec。"] = { { Stats.SpellDamage, Stats.HealingPower, }, false, ignoreSum = true } -- s34749
+L["你的近战和远程攻击有一定几率使你的急速等级提高%s，持续%s sec。"] = { { Stats.MeleeHasteRating, Stats.RangedHasteRating, Stats.SpellHasteRating, }, false, ignoreSum = true } -- s34774
 L["急速等级提高%s。"] = { { Stats.MeleeHasteRating, Stats.RangedHasteRating, Stats.SpellHasteRating, }, } -- s18803
-L["hacks at the armor of an enemy and its nearby allies, affecting up to %s targets. a target's armor is reduced by %s per sunder armor. can be applied up to %s times. lasts %s"] = { false, { Stats.Armor, }, false, false, } -- s34886
-L["increases the caster's health by %s% and attack speed by %s%. lasts %s"] = { false, { Stats.MeleeHaste, }, false, } -- s34932
-L["使你的法术爆击几率提高%s%，并使你有%s%的几率在受到物理攻击之后的下一个暗影箭或燃尽法术的施法时间减少%s%。这个效果可以持续%s，且在%s秒内只能出现一次。"] = { { Stats.SpellCrit, }, false, false, false, false, } -- s34935
+L["hacks at the armor of an enemy and its nearby allies, affecting up to %s targets. a target's armor is reduced by %s per sunder armor. can be applied up to %s times. lasts %s sec"] = { false, { Stats.Armor, }, false, false, } -- s34886
+L["increases the caster's health by %s% and attack speed by %s%. lasts %s sec"] = { false, { Stats.MeleeHaste, }, false, } -- s34932
+L["使你的法术爆击几率提高%s%，并使你有%s%的几率在受到物理攻击之后的下一个暗影箭或燃尽法术的施法时间减少%s%。这个效果可以持续%s sec，且在%s秒内只能出现一次。"] = { { Stats.SpellCrit, }, false, false, false, false, } -- s34935
 L["increases the caster's hp by %s%, attack speed by %s% and the for %s min"] = { false, { Stats.MeleeHaste, }, false, } -- s34998
-L["在战斗中被击中之后有一定几率令你的护甲值提高%s点，持续%s。"] = { { Stats.Armor, }, false, } -- s35077
-L["有一定几率在命中目标之后获得%s点攻击强度加成，持续%s秒。"] = { { Stats.GenericAttackPower, }, false, } -- s35080
-L["你的攻击法术命中之后有一定几率令你的法术伤害提高%s点，效果持续%s秒。"] = { { Stats.SpellDamage, Stats.HealingPower, }, false, } -- s35083
-L["你的治疗或伤害法术有一定几率令你的治疗效果提高最多%s点，法术伤害提高最多%s点，持续%s秒。"] = { { Stats.HealingPower, }, { Stats.SpellDamage, }, false, } -- s35086
-L["法术治疗效果提高最多%s点，伤害提高最多%s点，持续%s。"] = { { Stats.HealingPower, }, { Stats.SpellDamage, }, false, } -- s35087
-L["使一个敌人的耐力降低%s点，攻击速度降低%s%，持续%s。"] = { { Stats.Stamina, }, false, false, } -- s35105
-L["swipes at an enemy, dealing weapon damage and reducing the target's armor by %s per sundering swipe. can be applied up to %s times. lasts %s"] = { { Stats.Armor, }, false, false, } -- s35147
-L["使附近敌人的护甲值降低%s点，持续%s。"] = { { Stats.Armor, }, false, } -- s35185
-L["increases the target's attack speed by %s% and the physical damage it deals by %s for %s"] = { { Stats.MeleeHaste, }, { Stats.AverageWeaponDamage, }, false, } -- s35289
+L["在战斗中被击中之后有一定几率令你的护甲值提高%s点，持续%s sec。"] = { { Stats.Armor, }, false, ignoreSum = true } -- s35077
+L["有一定几率在命中目标之后获得%s点攻击强度加成，持续%s秒。"] = { { Stats.GenericAttackPower, }, false, ignoreSum = true } -- s35080
+L["你的攻击法术命中之后有一定几率令你的法术伤害提高%s点，效果持续%s秒。"] = { { Stats.SpellDamage, Stats.HealingPower, }, false, ignoreSum = true } -- s35083
+L["你的治疗或伤害法术有一定几率令你的治疗效果提高最多%s点，法术伤害提高最多%s点，持续%s秒。"] = { { Stats.HealingPower, }, { Stats.SpellDamage, }, false, ignoreSum = true } -- s35086
+L["法术治疗效果提高最多%s点，伤害提高最多%s点，持续%s sec。"] = { { Stats.HealingPower, }, { Stats.SpellDamage, }, false, } -- s35087
+L["使一个敌人的耐力降低%s点，攻击速度降低%s%，持续%s sec。"] = { { Stats.Stamina, }, false, false, } -- s35105
+L["swipes at an enemy, dealing weapon damage and reducing the target's armor by %s per sundering swipe. can be applied up to %s times. lasts %s sec"] = { { Stats.Armor, }, false, false, } -- s35147
+L["使附近敌人的护甲值降低%s点，持续%s sec。"] = { { Stats.Armor, }, false, } -- s35185
+L["increases the target's attack speed by %s% and the physical damage it deals by %s for %s sec"] = { { Stats.MeleeHaste, }, { Stats.AverageWeaponDamage, }, false, } -- s35289
 L["increases the enemy's stats by %s"] = { { Stats.AllStats, }, } -- s35336
-L["使敌人陷入时间裂隙，攻击间隔延长%s%，持续%s。"] = { { Stats.MeleeHaste, }, false, } -- s35353
-L["使附近小队成员的攻击强度提高%s点，法术伤害提高%s点，持续%s。"] = { { Stats.GenericAttackPower, }, { Stats.SpellDamage, }, false, } -- s35475
-L["使附近小队成员的近战、远程攻击和施法急速等级提高%s，持续%s。"] = { { Stats.MeleeHasteRating, Stats.RangedHasteRating, Stats.SpellHasteRating, }, false, } -- s35476
-L["使你的近战和远程攻击强度提高%s点。效果持续%s。"] = { { Stats.GenericAttackPower, Stats.RangedAttackPower, }, false, } -- s39439
-L["sunders the target's armor, reducing it by %s per sunder armor and causes a high amount of threat.  can be applied up to %s times.  lasts %s"] = { { Stats.Armor, }, false, false, } -- s35851
+L["使敌人陷入时间裂隙，攻击间隔延长%s%，持续%s sec。"] = { { Stats.MeleeHaste, }, false, } -- s35353
+L["使附近小队成员的攻击强度提高%s点，法术伤害提高%s点，持续%s sec。"] = { { Stats.GenericAttackPower, }, { Stats.SpellDamage, }, false, } -- s35475
+L["使附近小队成员的近战、远程攻击和施法急速等级提高%s，持续%s sec。"] = { { Stats.MeleeHasteRating, Stats.RangedHasteRating, Stats.SpellHasteRating, }, false, } -- s35476
+L["使你的近战和远程攻击强度提高%s点。效果持续%s sec。"] = { { Stats.GenericAttackPower, Stats.RangedAttackPower, }, false, } -- s39439
+L["sunders the target's armor, reducing it by %s per sunder armor and causes a high amount of threat.  can be applied up to %s times.  lasts %s sec"] = { { Stats.Armor, }, false, false, } -- s35851
 L["increases your attack power by %s, all stats by %s, and total stats by %s%"] = { { Stats.AttackPower, }, { Stats.AllStats, }, false, } -- s35874
 L["increases a friendly target's intellect by %s, restores %s mana every %s seconds, and totals stats increased by %s%"] = { { Stats.Intellect, }, false, false, false, } -- s35912
 L["智力提高%s点。\n火焰法术和效果所造成的伤害提高%s点。"] = { { Stats.Intellect, }, { Stats.FireDamage, }, } -- s35917
 L["击破敌人的护甲，使其护甲值降低%s点。"] = { { Stats.Armor, }, } -- s35918
 L["increases damage from spells and effects by %s"] = { { Stats.SpellDamage, }, } -- s36001
 L["使你在%s秒内进行的下一次攻击的爆击等级提高%s。"] = { false, { Stats.MeleeCritRating, Stats.RangedCritRating, Stats.SpellCritRating, }, } -- s36111
-L["steals %s armor from an enemy. lasts %s"] = { { Stats.Armor, }, false, } -- s36250
+L["steals %s armor from an enemy. lasts %s sec"] = { { Stats.Armor, }, false, } -- s36250
 L["使当前目标的攻击强度降低%s点。"] = { { Stats.AttackPower, }, } -- s36299
-L["向目标发射能量射线，使其攻击强度降低%s点，持续%s。"] = { { Stats.GenericAttackPower, }, false, } -- s36341
-L["向目标友方单位发射能量射线，使其攻击强度提高%s点，持续%s。"] = { { Stats.AttackPower, }, false, } -- s36346
-L["格挡等级提高%s，持续%s。"] = { { Stats.BlockRating, }, false, } -- s36372
-L["使你的移动速度提高%s%，近战攻击速度提高%s%，持续%s。"] = { false, { Stats.MeleeHaste, }, false, } -- s36479
-L["reduces an enemy's armor by %s and inflicts %s nature damage every %s sec. for %s"] = { { Stats.Armor, }, false, false, false, } -- s36694
-L["使一个敌人的力量降低%s点，耐力降低%s点，持续%s。"] = { { Stats.Strength, }, { Stats.Stamina, }, false, } -- s36697
-L["inflicts nature damage to an enemy, reducing its armor by %s for %s.  stacks up to %s times"] = { { Stats.Armor, }, false, false, } -- s36796
-L["curses the target for %s, reducing fire and frost resistances by %s and increasing fire and frost damage taken by %s%"] = { false, { Stats.FireResistance, Stats.FrostResistance, }, false, } -- s36831
-L["移动速度提高%s%，攻击速度提高%s%，持续%s。"] = { false, { Stats.MeleeHaste, }, false, } -- s36910
-L["耐力提高%s点，持续%s，并使饮用者更健谈。"] = { { Stats.Stamina, }, false, } -- s37058
+L["向目标发射能量射线，使其攻击强度降低%s点，持续%s sec。"] = { { Stats.GenericAttackPower, }, false, } -- s36341
+L["向目标友方单位发射能量射线，使其攻击强度提高%s点，持续%s sec。"] = { { Stats.AttackPower, }, false, } -- s36346
+L["格挡等级提高%s，持续%s sec。"] = { { Stats.BlockRating, }, false, } -- s36372
+L["使你的移动速度提高%s%，近战攻击速度提高%s%，持续%s sec。"] = { false, { Stats.MeleeHaste, }, false, } -- s36479
+L["reduces an enemy's armor by %s and inflicts %s nature damage every %s sec. for %s sec"] = { { Stats.Armor, }, false, false, false, } -- s36694
+L["使一个敌人的力量降低%s点，耐力降低%s点，持续%s sec。"] = { { Stats.Strength, }, { Stats.Stamina, }, false, } -- s36697
+L["inflicts nature damage to an enemy, reducing its armor by %s for %s sec.  stacks up to %s times"] = { { Stats.Armor, }, false, false, } -- s36796
+L["curses the target for %s sec, reducing fire and frost resistances by %s and increasing fire and frost damage taken by %s%"] = { false, { Stats.FireResistance, Stats.FrostResistance, }, false, } -- s36831
+L["移动速度提高%s%，攻击速度提高%s%，持续%s sec。"] = { false, { Stats.MeleeHaste, }, false, } -- s36910
+L["耐力提高%s点，持续%s sec，并使饮用者更健谈。"] = { { Stats.Stamina, }, false, } -- s37058
 L["使你的神圣法术和效果所造成的伤害提高最多%s点。"] = { { Stats.HolyDamage, }, } -- s37139
-L["你的偷袭和肾击技能可以使你获得%s急速等级，效果持续%s。"] = { { Stats.MeleeHasteRating, Stats.RangedHasteRating, }, false, } -- s37165
-L["你的特殊攻击有一定几率令你获得%s点护甲穿透效果，持续%s。"] = { { Stats.ArmorPenetration, }, false, } -- s37173
+L["你的偷袭和肾击技能可以使你获得%s急速等级，效果持续%s sec。"] = { { Stats.MeleeHasteRating, Stats.RangedHasteRating, }, false, ignoreSum = true } -- s37165
+L["你的特殊攻击有一定几率令你获得%s点护甲穿透效果，持续%s sec。"] = { { Stats.ArmorPenetration, }, false, ignoreSum = true } -- s37173
 L["你的攻击无视目标的%s点护甲值。"] = { { Stats.ArmorPenetration, }, } -- s37174
-L["你施放任何法术之后都有一定几率获得最多%s点法术伤害和治疗加成。"] = { { Stats.SpellDamage, Stats.HealingPower, }, } -- s37197
+L["你施放任何法术之后都有一定几率获得最多%s点法术伤害和治疗加成。"] = { { Stats.SpellDamage, Stats.HealingPower, }, ignoreSum = true } -- s37197
 L["使你在熊形态和巨熊形态下的护甲值提高%s点。"] = { { Stats.Armor, }, } -- s37298
 L["使你在猎豹形态下的力量提高%s点。"] = { { Stats.Strength, }, } -- s37299
 L["使你的护甲提高%s点。"] = { { Stats.Armor, }, } -- s37340
 L["使你的力量提高%s点。"] = { { Stats.Strength, }, } -- s37341
 L["使你的治疗提高最多%s点。"] = { { Stats.HealingPower, }, } -- s37342
 L["使你的伤害提高最多%s点。"] = { { Stats.SpellDamage, }, } -- s37343
-L["你的暗影系伤害法术有一定几率使你获得%s点暗影伤害加成，持续%s。"] = { { Stats.FireDamage, }, false, } -- s37378
+L["你的暗影系伤害法术有一定几率使你获得%s点暗影伤害加成，持续%s sec。"] = { { Stats.FireDamage, }, false, } -- s37378
 L["使你的宠物的抗性提高%s点，你的法术伤害提高最多%s点。"] = { false, { Stats.SpellDamage, }, } -- s37386
-L["你的法术爆击可以使你获得最多%s点法术伤害加成，效果持续%s。"] = { { Stats.SpellDamage, }, false, } -- s37443
-L["你被击中之后有一定几率获得%s急速等级，效果持续%s。"] = { { Stats.MeleeHasteRating, Stats.RangedHasteRating, }, false, } -- s37525
-L["你的压制技能可以使你获得%s点攻击强度，效果持续%s。"] = { { Stats.GenericAttackPower, }, false, } -- s37528
+L["你的法术爆击可以使你获得最多%s点法术伤害加成，效果持续%s sec。"] = { { Stats.SpellDamage, }, false, ignoreSum = true } -- s37443
+L["你被击中之后有一定几率获得%s急速等级，效果持续%s sec。"] = { { Stats.MeleeHasteRating, Stats.RangedHasteRating, }, false, ignoreSum = true } -- s37525
+L["你的压制技能可以使你获得%s点攻击强度，效果持续%s sec。"] = { { Stats.GenericAttackPower, }, false, ignoreSum = true } -- s37528
 L["受到任何攻击时承受的伤害减少%s%。"] = { { Stats.Armor, Stats.FireResistance, Stats.NatureResistance, Stats.FrostResistance, Stats.ShadowResistance, Stats.ArcaneResistance, }, } -- s37590
-L["你施放的暗言术：痛每一跳都有一定几率使你在%s内施放的下一个法术获得最多%s点伤害和治疗加成。"] = { false, { Stats.SpellDamage, Stats.HealingPower, }, } -- s37603
-L["decreases the time between your attacks by %s% for %s"] = { { Stats.MeleeHaste, }, false, } -- s37605
-L["你的攻击有一定几率令你获得%s点攻击强度，效果持续%s。"] = { { Stats.GenericAttackPower, Stats.RangedAttackPower, }, false, } -- s37611
-L["你的伤害法术有一定几率令你获得最多%s点法术伤害和治疗效果加成，持续%s。"] = { { Stats.SpellDamage, Stats.HealingPower, }, false, } -- s37619
-L["你施放任何法术之后都有一定几率获得每%s秒恢复最多%s点法力值的效果，持续%s。"] = { false, { Stats.GenericManaRegen, }, false, } -- s37655
-L["使你的躲闪几率提高%s%，持续%s。"] = { { Stats.Dodge, }, false, } -- s37683
+L["你施放的暗言术：痛每一跳都有一定几率使你在%s sec内施放的下一个法术获得最多%s点伤害和治疗加成。"] = { false, { Stats.SpellDamage, Stats.HealingPower, }, ignoreSum = true } -- s37603
+L["decreases the time between your attacks by %s% for %s sec"] = { { Stats.MeleeHaste, }, false, } -- s37605
+L["你的攻击有一定几率令你获得%s点攻击强度，效果持续%s sec。"] = { { Stats.GenericAttackPower, Stats.RangedAttackPower, }, false, ignoreSum = true } -- s37611
+L["你的伤害法术有一定几率令你获得最多%s点法术伤害和治疗效果加成，持续%s sec。"] = { { Stats.SpellDamage, Stats.HealingPower, }, false, ignoreSum = true } -- s37619
+L["你施放任何法术之后都有一定几率获得每%s秒恢复最多%s点法力值的效果，持续%s sec。"] = { false, { Stats.GenericManaRegen, }, false, ignoreSum = true } -- s37655
+L["使你的躲闪几率提高%s%，持续%s sec。"] = { { Stats.Dodge, }, false, } -- s37683
 L["使你的急速等级提高%s。"] = { { Stats.MeleeHasteRating, Stats.RangedHasteRating, }, } -- s37728
 L["a frozen crest of water splashes over targets in front of the caster, dealing %s frost damage and increasing the time between attacks by %s%"] = { false, { Stats.MeleeHaste, }, } -- s37730
-L["increases the physical damage dealt by the caster by %s and speeds its attacks by %s% for %s"] = { { Stats.AverageWeaponDamage, }, { Stats.MeleeHaste, }, false, } -- s37975
-L["使一个敌人的耐力降低%s点，智力降低%s点，持续%s。"] = { { Stats.Stamina, }, { Stats.Intellect, }, false, } -- s38254
-L["你的远程攻击有一定几率令你的攻击强度提高%s点，持续%s秒。"] = { { Stats.GenericAttackPower, }, false, } -- s38290
-L["你的法术爆击有一定几率令你的法术伤害提高%s点，效果持续%s。"] = { { Stats.SpellDamage, }, false, } -- s38347
-L["使你的防御等级提高%s，但近战和远程攻击强度降低%s点。持续%s。"] = { { Stats.DefenseRating, }, { Stats.GenericAttackPower, }, false, } -- s38351
-L["当你使用风暴打击技能时，可以获得%s点攻击强度加成，持续%s。"] = { { Stats.AttackPower, }, false, } -- s38430
+L["increases the physical damage dealt by the caster by %s and speeds its attacks by %s% for %s sec"] = { { Stats.AverageWeaponDamage, }, { Stats.MeleeHaste, }, false, } -- s37975
+L["使一个敌人的耐力降低%s点，智力降低%s点，持续%s sec。"] = { { Stats.Stamina, }, { Stats.Intellect, }, false, } -- s38254
+L["你的远程攻击有一定几率令你的攻击强度提高%s点，持续%s秒。"] = { { Stats.GenericAttackPower, }, false, ignoreSum = true } -- s38290
+L["你的法术爆击有一定几率令你的法术伤害提高%s点，效果持续%s sec。"] = { { Stats.SpellDamage, }, false, ignoreSum = true } -- s38347
+L["使你的防御等级提高%s，但近战和远程攻击强度降低%s点。持续%s sec。"] = { { Stats.DefenseRating, }, { Stats.GenericAttackPower, }, false, } -- s38351
+L["当你使用风暴打击技能时，可以获得%s点攻击强度加成，持续%s sec。"] = { { Stats.AttackPower, }, false, } -- s38430
 L["当你同时激活了一种空气图腾、一种大地图腾、一种火焰图腾和一种水图腾时，你可以获得每%s秒恢复%s点法力值、法术爆击等级提高%s、法术伤害提高最多%s点的增益效果。"] = { false, { Stats.GenericManaRegen, }, { Stats.SpellCritRating, }, { Stats.SpellDamage, }, } -- s38437
-L["increases damage dealt by %s% and reduces time between attacks by %s% for %s.  stacks up to %s times"] = { false, { Stats.MeleeHaste, }, false, false, } -- s38449
+L["increases damage dealt by %s% and reduces time between attacks by %s% for %s sec.  stacks up to %s times"] = { false, { Stats.MeleeHaste, }, false, false, } -- s38449
 L["使你的远程攻击强度提高%s点，所有属性提高%s点，总属性提高%s%。"] = { { Stats.RangedAttackPower, }, { Stats.AllStats, }, false, } -- s38734
 L["所有属性降低%s点。"] = { { Stats.AllStats, }, } -- s38910
 L["法术伤害降低最多%s点，治疗效果降低最多%s点。"] = { { Stats.SpellDamage, }, { Stats.HealingPower, }, } -- s38927
-L["使你的攻击强度提高%s点，耐力降低%s点，持续%s。战斗药剂。"] = { { Stats.GenericAttackPower, }, { Stats.Stamina, }, false, } -- s38954
+L["使你的攻击强度提高%s点，耐力降低%s点，持续%s sec。战斗药剂。"] = { { Stats.GenericAttackPower, }, { Stats.Stamina, }, false, } -- s38954
 L["a brutal attack that deals %s nature damage and causes the target to atrophy, reducing strength and stamina by %s per application.  stacks up to %s times"] = { false, { Stats.Strength, Stats.Stamina, }, false, } -- s39015
 L["blasts your enemy with shadowy death, dealing %s shadow damage and then jumping to additional nearby enemies.  each jump reduces that victim's shadow resistance by %s. affects %s targets"] = { false, { Stats.ShadowResistance, }, false, } -- s39153
-L["power infuses the target's party, increasing their stamina by %s for %s"] = { { Stats.Stamina, }, false, } -- s39231
-L["disorients nearby targets, slowing their casting speed by %s for %s"] = { { Stats.SpellHaste, }, false, } -- s39261
+L["power infuses the target's party, increasing their stamina by %s for %s sec"] = { { Stats.Stamina, }, false, } -- s39231
+L["disorients nearby targets, slowing their casting speed by %s for %s sec"] = { { Stats.SpellHaste, }, false, } -- s39261
 L["防御值提高%s点。"] = { { Stats.Defense, }, } -- s39421
-L["你每次对敌人造成近战或远程伤害，都可以在接下来的%s秒内获得%s点攻击强度加成，这个效果可以叠加最多%s次。你每次对敌人造成法术伤害，都可以在接下来的%s秒内获得%s点法术伤害加成，这个效果可以叠加最多%s次。"] = { false, { Stats.GenericAttackPower, }, false, false, false, false, } -- s39438
-L["使你的法术伤害提高最多%s点，效果持续%s。"] = { { Stats.SpellDamage, }, false, } -- s39441
-L["你的直接伤害攻击如果未能爆击，则你可以获得%s爆击等级和%s法术爆击等级，效果持续%s秒。这个效果在你打出爆击之后消失。"] = { { Stats.MeleeCritRating, Stats.RangedCritRating, Stats.SpellCritRating, }, { Stats.MeleeCritRating, Stats.RangedCritRating, Stats.SpellCritRating, }, false, } -- s39442
-L["生命值上限提高%s点，每%s秒恢复%s点生命值，持续%s。守护药剂。"] = { { Stats.Health, }, false, { Stats.HealthRegen, }, false, } -- s39625
-L["韧性等级提高%s，持续%s。守护药剂。"] = { { Stats.ResilienceRating, }, false, } -- s39628
-L["creates a violent storm in the target area causing %s nature damage to enemies every %s sec, and increasing the time between the attacks of enemies by %s%.  lasts %s. must channel to maintain the spell"] = { false, false, { Stats.MeleeHaste, }, false, } -- s40090
-L["increases spell haste rating by %s for %s"] = { { Stats.SpellHasteRating, }, false, } -- s40395
-L["吸取颅骨中的能量，使法术急速等级提高%s，持续%s。"] = { { Stats.SpellHasteRating, }, false, } -- s40396
-L["在战斗中被击中之后有%s%的几率令你的护甲值提高%s点，持续%s秒。"] = { false, { Stats.Armor, }, false, } -- s40407
+L["你每次对敌人造成近战或远程伤害，都可以在接下来的%s秒内获得%s点攻击强度加成，这个效果可以叠加最多%s次。你每次对敌人造成法术伤害，都可以在接下来的%s秒内获得%s点法术伤害加成，这个效果可以叠加最多%s次。"] = { false, { Stats.GenericAttackPower, }, false, false, false, false, ignoreSum = true } -- s39438
+L["使你的法术伤害提高最多%s点，效果持续%s sec。"] = { { Stats.SpellDamage, }, false, } -- s39441
+L["你的直接伤害攻击如果未能爆击，则你可以获得%s爆击等级和%s法术爆击等级，效果持续%s秒。这个效果在你打出爆击之后消失。"] = { { Stats.MeleeCritRating, Stats.RangedCritRating, Stats.SpellCritRating, }, { Stats.MeleeCritRating, Stats.RangedCritRating, Stats.SpellCritRating, }, false, ignoreSum = true } -- s39442
+L["生命值上限提高%s点，每%s秒恢复%s点生命值，持续%s sec。守护药剂。"] = { { Stats.Health, }, false, { Stats.HealthRegen, }, false, } -- s39625
+L["韧性等级提高%s，持续%s sec。守护药剂。"] = { { Stats.ResilienceRating, }, false, } -- s39628
+L["creates a violent storm in the target area causing %s nature damage to enemies every %s sec, and increasing the time between the attacks of enemies by %s%.  lasts %s sec. must channel to maintain the spell"] = { false, false, { Stats.MeleeHaste, }, false, } -- s40090
+L["increases spell haste rating by %s for %s sec"] = { { Stats.SpellHasteRating, }, false, } -- s40395
+L["吸取颅骨中的能量，使法术急速等级提高%s，持续%s sec。"] = { { Stats.SpellHasteRating, }, false, } -- s40396
+L["在战斗中被击中之后有%s%的几率令你的护甲值提高%s点，持续%s秒。"] = { false, { Stats.Armor, }, false, ignoreSum = true } -- s40407
 L["法术和魔法效果所造成的治疗效果提高最多%s点。"] = { { Stats.HealingPower, }, } -- s40440
 L["提高法术和魔法效果所造成的伤害，最多%s点。"] = { { Stats.SpellDamage, }, } -- s40441
-L["你的致死打击、嗜血和盾牌猛击有%s%的几率使你恢复%s点生命值，并使你获得%s点力量值，持续%s。"] = { false, false, { Stats.Strength, }, false, } -- s40458
-L["当你使用终结技时，每个连击点数有%s%的几率使你的爆击等级提高%s，持续%s。"] = { false, { Stats.MeleeCritRating, Stats.RangedCritRating, }, false, } -- s40460
-L["你的近战和远程攻击有一定几率使你忽略目标的%s点护甲值，持续%s秒。"] = { { Stats.ArmorPenetration, }, false, } -- s40475
-L["你的腐蚀术每一跳都有%s%的几率使你获得%s点法术伤害加成，效果持续%s。"] = { false, { Stats.SpellDamage, }, false, } -- s40478
-L["inflicts nature damage to an enemy every %s sec. and reduces its armor by %s.  stacks up to %s times, lasts %s"] = { false, { Stats.Armor, }, false, false, } -- s40481
-L["你的法术爆击有%s%的几率使你的法术急速等级提高%s，效果持续%s。"] = { false, { Stats.MeleeHasteRating, Stats.RangedHasteRating, Stats.SpellHasteRating, }, false, } -- s40482
-L["你的稳固射击有%s%的几率令你获得%s点攻击强度，效果持续%s。"] = { false, { Stats.GenericAttackPower, }, false, } -- s40485
-L["你的稳固射击技能有%s%的几率令你获得%s点攻击强度加成，持续%s。"] = { false, { Stats.GenericAttackPower, }, false, } -- s40487
-L["敏捷提高%s点，持续%s。"] = { { Stats.Agility, }, false, } -- s40729
-L["你的裂伤技能可以使你的攻击强度提高%s，持续%s。"] = { { Stats.GenericAttackPower, }, false, } -- s41037
+L["你的致死打击、嗜血和盾牌猛击有%s%的几率使你恢复%s点生命值，并使你获得%s点力量值，持续%s sec。"] = { false, false, { Stats.Strength, }, false, ignoreSum = true } -- s40458
+L["当你使用终结技时，每个连击点数有%s%的几率使你的爆击等级提高%s，持续%s sec。"] = { false, { Stats.MeleeCritRating, Stats.RangedCritRating, }, false, ignoreSum = true } -- s40460
+L["你的近战和远程攻击有一定几率使你忽略目标的%s点护甲值，持续%s秒。"] = { { Stats.ArmorPenetration, }, false, ignoreSum = true } -- s40475
+L["你的腐蚀术每一跳都有%s%的几率使你获得%s点法术伤害加成，效果持续%s sec。"] = { false, { Stats.SpellDamage, }, false, ignoreSum = true } -- s40478
+L["inflicts nature damage to an enemy every %s sec. and reduces its armor by %s.  stacks up to %s times, lasts %s sec"] = { false, { Stats.Armor, }, false, false, } -- s40481
+L["你的法术爆击有%s%的几率使你的法术急速等级提高%s，效果持续%s sec。"] = { false, { Stats.MeleeHasteRating, Stats.RangedHasteRating, Stats.SpellHasteRating, }, false, ignoreSum = true } -- s40482
+L["你的稳固射击有%s%的几率令你获得%s点攻击强度，效果持续%s sec。"] = { false, { Stats.GenericAttackPower, }, false, ignoreSum = true } -- s40485
+L["你的稳固射击技能有%s%的几率令你获得%s点攻击强度加成，持续%s sec。"] = { false, { Stats.GenericAttackPower, }, false, } -- s40487
+L["敏捷提高%s点，持续%s sec。"] = { { Stats.Agility, }, false, } -- s40729
+L["你的裂伤技能可以使你的攻击强度提高%s，持续%s sec。"] = { { Stats.GenericAttackPower, }, false, ignoreSum = true } -- s41037
 L["increases attack speed by %s%"] = { { Stats.MeleeHaste, }, } -- s41106
-L["当你杀死一个可以为你提供经验值或荣誉值的目标之后，有%s%的几率获得%s点的攻击强度加成，持续%s。这个效果每%s秒只能出现一次。"] = { false, { Stats.GenericAttackPower, }, false, false, } -- s41260
-L["当你杀死一个可以为你提供经验值或荣誉值的目标之后，有%s%的几率获得%s点的法术伤害和治疗效果加成，持续%s。这个效果每%s秒只能出现一次。"] = { false, { Stats.SpellDamage, Stats.HealingPower, }, false, false, } -- s41262
-L["increases the time between an enemy's attacks by %s% and its movement by %s%, in addition to reducing its strength by %s%. lasts %s"] = { { Stats.MeleeHaste, }, false, false, false, } -- s41281
-L["你的近战攻击有一定几率令你的急速等级提高%s，持续%s。"] = { { Stats.MeleeHasteRating, }, false, } -- s41434
+L["当你杀死一个可以为你提供经验值或荣誉值的目标之后，有%s%的几率获得%s点的攻击强度加成，持续%s sec。这个效果每%s秒只能出现一次。"] = { false, { Stats.GenericAttackPower, }, false, false, ignoreSum = true } -- s41260
+L["当你杀死一个可以为你提供经验值或荣誉值的目标之后，有%s%的几率获得%s点的法术伤害和治疗效果加成，持续%s sec。这个效果每%s秒只能出现一次。"] = { false, { Stats.SpellDamage, Stats.HealingPower, }, false, false, ignoreSum = true } -- s41262
+L["increases the time between an enemy's attacks by %s% and its movement by %s%, in addition to reducing its strength by %s%. lasts %s sec"] = { { Stats.MeleeHaste, }, false, false, false, } -- s41281
+L["你的近战攻击有一定几率令你的急速等级提高%s，持续%s sec。"] = { { Stats.MeleeHasteRating, }, false, ignoreSum = true } -- s41434
 L["近战急速等级提高%s。"] = { { Stats.MeleeHasteRating, }, } -- s41435
-L["使施法者的攻击速度提高%s%，物理伤害提高%s%，持续%s。"] = { { Stats.MeleeHaste, }, false, false, } -- s41447
-L["increases the resistance of nearby group members to all schools of magic by %s for %s"] = { { Stats.FireResistance, Stats.NatureResistance, Stats.FrostResistance, Stats.ShadowResistance, Stats.ArcaneResistance, }, false, } -- s41453
-L["使你的生命值上限提高%s点，防御等级提高%s，持续%s。这个效果在死亡后仍然存在。战斗和守护药剂。"] = { { Stats.Health, }, { Stats.DefenseRating, }, false, } -- s41607
+L["使施法者的攻击速度提高%s%，物理伤害提高%s%，持续%s sec。"] = { { Stats.MeleeHaste, }, false, false, } -- s41447
+L["increases the resistance of nearby group members to all schools of magic by %s for %s sec"] = { { Stats.FireResistance, Stats.NatureResistance, Stats.FrostResistance, Stats.ShadowResistance, Stats.ArcaneResistance, }, false, } -- s41453
+L["使你的生命值上限提高%s点，防御等级提高%s，持续%s sec。这个效果在死亡后仍然存在。战斗和守护药剂。"] = { { Stats.Health, }, { Stats.DefenseRating, }, false, } -- s41607
 L["使你的防御等级提高%s。"] = { { Stats.DefenseRating, }, } -- s41641
 L["%s 所有抗性。"] = { { Stats.FireResistance, Stats.NatureResistance, Stats.FrostResistance, Stats.ShadowResistance, Stats.ArcaneResistance, }, } -- s41662
 L["招架等级提高%s。"] = { { Stats.ParryRating, }, } -- s41701
@@ -1631,69 +1631,69 @@ L["韧性提高%s。"] = { { Stats.ResilienceRating, }, } -- s41876
 L["poisons the target, increasing the time between attacks by %s%, increasing their spell cast time by %s% and dealing %s nature damage every %s sec"] = { false, { Stats.SpellHaste, }, false, false, } -- s41978
 L["使你的法术穿透等级提高%s。"] = { { Stats.SpellPenetration, }, } -- s42056
 L["使你的近战命中等级提高%s。"] = { { Stats.MeleeHitRating, }, } -- s42155
-L["使附近友方目标的近战攻击强度提高%s点，持续%s。"] = { { Stats.AttackPower, }, false, } -- s42247
-L["在%s内恢复总计%s点法力值。进食时必须保持坐姿。"] = { false, { Stats.GenericManaRegen, }, } -- s42308
-L["你的圣光闪现可以令目标的韧性等级提高%s，持续%s。"] = { { Stats.ResilienceRating, }, false, } -- s42368
-L["使你的所有魔法抗性提高%s点，所有属性提高%s点，持续%s。这种效果在死亡后仍可继续存在。战斗和守护药剂。"] = { { Stats.FireResistance, Stats.NatureResistance, Stats.FrostResistance, Stats.ShadowResistance, Stats.ArcaneResistance, }, { Stats.AllStats, }, false, } -- s42735
-L["使一名敌人的护甲值降低%s点，持续%s。"] = { { Stats.Armor, }, false, } -- s42747
+L["使附近友方目标的近战攻击强度提高%s点，持续%s sec。"] = { { Stats.AttackPower, }, false, } -- s42247
+L["在%s sec内恢复总计%s点法力值。进食时必须保持坐姿。"] = { false, { Stats.GenericManaRegen, }, } -- s42308
+L["你的圣光闪现可以令目标的韧性等级提高%s，持续%s sec。"] = { { Stats.ResilienceRating, }, false, ignoreSum = true } -- s42368
+L["使你的所有魔法抗性提高%s点，所有属性提高%s点，持续%s sec。这种效果在死亡后仍可继续存在。战斗和守护药剂。"] = { { Stats.FireResistance, Stats.NatureResistance, Stats.FrostResistance, Stats.ShadowResistance, Stats.ArcaneResistance, }, { Stats.AllStats, }, false, } -- s42735
+L["使一名敌人的护甲值降低%s点，持续%s sec。"] = { { Stats.Armor, }, false, } -- s42747
 L["fills the target with power, increasing its casting speed by %s% and movement speed by %s%"] = { { Stats.SpellHaste, }, false, } -- s43242
 L["frenzies the target, increasing its attack speed by %s%"] = { { Stats.MeleeHaste, }, } -- s43292
-L["inflicts %s% weapon damage and reduces the target's armor by %s for %s"] = { false, { Stats.Armor, }, false, } -- s43529
-L["increases the caster's attack speed by %s% for %s"] = { { Stats.MeleeHaste, }, false, } -- s43547
+L["inflicts %s% weapon damage and reduces the target's armor by %s for %s sec"] = { false, { Stats.Armor, }, false, } -- s43529
+L["increases the caster's attack speed by %s% for %s sec"] = { { Stats.MeleeHaste, }, false, } -- s43547
 L["(internal only) increases spell damage by up to %s% and healing by up to %s% of your total attack power. increases expertise by %s"] = { false, { Stats.ExpertiseRating, }, false, } -- s43574
-L["increases an ally's attack speed by %s% for %s"] = { { Stats.MeleeHaste, }, false, } -- s43578
+L["increases an ally's attack speed by %s% for %s sec"] = { { Stats.MeleeHaste, }, false, } -- s43578
 L["damages all nearby enemies for %s nature damage and slows attack speed by %s%"] = { false, { Stats.MeleeHaste, }, } -- s43583
-L["在%s内恢复%s点法力值。饮水时必须保持坐姿。如果你花费至少%s秒来饮水，你将获得启迪效果，精神值和法术爆击等级提高%s，持续%s。"] = { false, { Stats.GenericManaRegen, }, false, { Stats.SpellCritRating, }, false, } -- s43706
-L["韧性等级提高%s，持续%s。"] = { { Stats.ResilienceRating, }, false, } -- s43717
-L["使你的圣光闪现法术可以令目标的韧性等级提高%s，持续%s。"] = { { Stats.ResilienceRating, }, false, } -- s43726
-L["你的裂伤技能有一定几率使你的敏捷值提高%s点，持续%s。"] = { { Stats.Agility, }, false, } -- s43737
-L["你的月火术有一定几率使你获得%s点法术伤害和治疗加成，持续%s。"] = { { Stats.SpellDamage, Stats.HealingPower, }, false, } -- s43739
-L["你的圣光术令你获得每%s秒恢复%s点法力值的效果，持续%s。"] = { false, { Stats.GenericManaRegen, }, false, } -- s43741
-L["你的命令审判法术有一定几率使你获得%s点攻击强度加成，持续%s。"] = { { Stats.AttackPower, }, false, } -- s43745
-L["你的震击法术有一定几率使你获得%s点攻击强度加成，持续%s。"] = { { Stats.AttackPower, }, false, } -- s43748
-L["你的闪电箭法术有一定几率使你的法术急速等级提高%s，持续%s。"] = { { Stats.SpellHasteRating, }, false, } -- s43750
-L["在%s内恢复%s点生命值。进食时必须保持坐姿。如果你花费至少%s秒来进食，你将获得进食充分效果，精神值和命中等级提高%s，持续%s。"] = { false, { Stats.MeleeHitRating, Stats.RangedHitRating, Stats.SpellHitRating, Stats.Spirit, }, false, { Stats.MeleeHitRating, Stats.RangedHitRating, Stats.SpellHitRating, }, false, } -- s43763
-L["使你的宠物的力量和精神提高%s点，持续%s。"] = { { Stats.Strength, Stats.Spirit, }, false, } -- s43771
-L["你的近战攻击有%s%的几率令你的下一次攻击获得%s点护甲穿透，并降低你对当前目标的威胁值。"] = { false, { Stats.ArmorPenetration, }, } -- s43816
-L["你的裂伤技能可以使你的韧性等级提高%s，效果持续%s。"] = { { Stats.ResilienceRating, }, false, } -- s43840
+L["在%s sec内恢复%s点法力值。饮水时必须保持坐姿。如果你花费至少%s秒来饮水，你将获得启迪效果，精神值和法术爆击等级提高%s，持续%s sec。"] = { false, { Stats.GenericManaRegen, }, false, { Stats.SpellCritRating, }, false, } -- s43706
+L["韧性等级提高%s，持续%s sec。"] = { { Stats.ResilienceRating, }, false, } -- s43717
+L["使你的圣光闪现法术可以令目标的韧性等级提高%s，持续%s sec。"] = { { Stats.ResilienceRating, }, false, ignoreSum = true } -- s43726
+L["你的裂伤技能有一定几率使你的敏捷值提高%s点，持续%s sec。"] = { { Stats.Agility, }, false, ignoreSum = true } -- s43737
+L["你的月火术有一定几率使你获得%s点法术伤害和治疗加成，持续%s sec。"] = { { Stats.SpellDamage, Stats.HealingPower, }, false, ignoreSum = true } -- s43739
+L["你的圣光术令你获得每%s秒恢复%s点法力值的效果，持续%s sec。"] = { false, { Stats.GenericManaRegen, }, false, ignoreSum = true } -- s43741
+L["你的命令审判法术有一定几率使你获得%s点攻击强度加成，持续%s sec。"] = { { Stats.AttackPower, }, false, ignoreSum = true } -- s43745
+L["你的震击法术有一定几率使你获得%s点攻击强度加成，持续%s sec。"] = { { Stats.AttackPower, }, false, ignoreSum = true } -- s43748
+L["你的闪电箭法术有一定几率使你的法术急速等级提高%s，持续%s sec。"] = { { Stats.SpellHasteRating, }, false, ignoreSum = true } -- s43750
+L["在%s sec内恢复%s点生命值。进食时必须保持坐姿。如果你花费至少%s秒来进食，你将获得进食充分效果，精神值和命中等级提高%s，持续%s sec。"] = { false, { Stats.MeleeHitRating, Stats.RangedHitRating, Stats.SpellHitRating, Stats.Spirit, }, false, { Stats.MeleeHitRating, Stats.RangedHitRating, Stats.SpellHitRating, }, false, ignoreSum = true } -- s43763
+L["使你的宠物的力量和精神提高%s点，持续%s sec。"] = { { Stats.Strength, Stats.Spirit, }, false, } -- s43771
+L["你的近战攻击有%s%的几率令你的下一次攻击获得%s点护甲穿透，并降低你对当前目标的威胁值。"] = { false, { Stats.ArmorPenetration, }, ignoreSum = true } -- s43816
+L["你的裂伤技能可以使你的韧性等级提高%s，效果持续%s sec。"] = { { Stats.ResilienceRating, }, false, ignoreSum = true } -- s43840
 L["使法术伤害提高最多%s点。"] = { { Stats.SpellDamage, }, } -- s43921
-L["在%s内恢复总计%s点法力值，喝酒时必须保持坐姿。如果你花费至少%s秒来喝酒，你会变得醉醺醺的，并获得%s点耐力和精神加成，持续%s。普通的酒精饮料。"] = { false, { Stats.GenericManaRegen, }, false, { Stats.Stamina, }, false, } -- s44115
-L["在%s内恢复总计%s点法力值，喝酒时必须保持坐姿。如果你花费至少%s秒来喝酒，你会变得醉醺醺的，并获得%s点力量和精神加成，持续%s。高度数的酒精饮料。"] = { false, { Stats.GenericManaRegen, }, false, { Stats.Strength, }, false, } -- s44116
-L["curses the target for %s, reducing fire and frost resistances by %s and increasing fire and frost damage taken by %s%.  only one curse per warlock can be active on any one target"] = { false, { Stats.FireResistance, Stats.FrostResistance, }, false, } -- s44332
-L["fills the target with power, increasing its casting speed by %s% for %s sec"] = { { Stats.SpellHaste, }, false, } -- s44605
-L["increases the caster's attack speed by %s% and the physical damage it deals by %s for %s"] = { { Stats.MeleeHaste, }, false, false, } -- s44779
-L["inflicts frost damage to enemies in a cone in front of the caster, slowing their attack speed by %s% for %s"] = { { Stats.MeleeHaste, }, false, } -- s44799
-L["increases the caster's attack speed by %s% and the physical damage it deals by %s% for %s"] = { { Stats.MeleeHaste, }, false, false, } -- s44806
+L["在%s sec内恢复总计%s点法力值，喝酒时必须保持坐姿。如果你花费至少%s秒来喝酒，你会变得醉醺醺的，并获得%s点耐力和精神加成，持续%s sec。普通的酒精饮料。"] = { false, { Stats.GenericManaRegen, }, false, { Stats.Stamina, }, false, } -- s44115
+L["在%s sec内恢复总计%s点法力值，喝酒时必须保持坐姿。如果你花费至少%s秒来喝酒，你会变得醉醺醺的，并获得%s点力量和精神加成，持续%s sec。高度数的酒精饮料。"] = { false, { Stats.GenericManaRegen, }, false, { Stats.Strength, }, false, } -- s44116
+L["curses the target for %s sec, reducing fire and frost resistances by %s and increasing fire and frost damage taken by %s%.  only one curse per warlock can be active on any one target"] = { false, { Stats.FireResistance, Stats.FrostResistance, }, false, } -- s44332
+L["fills the target with power, increasing its casting speed by %s% for %s sec sec"] = { { Stats.SpellHaste, }, false, } -- s44605
+L["increases the caster's attack speed by %s% and the physical damage it deals by %s for %s sec"] = { { Stats.MeleeHaste, }, false, false, } -- s44779
+L["inflicts frost damage to enemies in a cone in front of the caster, slowing their attack speed by %s% for %s sec"] = { { Stats.MeleeHaste, }, false, } -- s44799
+L["increases the caster's attack speed by %s% and the physical damage it deals by %s% for %s sec"] = { { Stats.MeleeHaste, }, false, false, } -- s44806
 L["使远程攻击速度提高%s%。这个效果不与箭袋或弹药包的加速效果叠加。"] = { { Stats.RangedHaste, }, } -- s44972
-L["在%s内恢复%s点法力值。饮水时必须保持坐姿。如果你花费至少%s秒来饮水，你将获得进食充分效果，耐力和精神提高%s点，持续%s。"] = { false, { Stats.GenericManaRegen, }, false, { Stats.Stamina, }, false, } -- s45019
-L["在%s内恢复%s点法力值。饮水时必须保持坐姿。如果你花费至少%s秒来饮水，你将获得进食充分效果，耐力和精神提高%s点，持续%s。普通的酒精饮料。"] = { false, { Stats.GenericManaRegen, }, false, { Stats.Stamina, }, false, } -- s45020
-L["你的下%s次近战或远程攻击每一次都会使你获得%s点攻击强度的加成，可叠加最多%s次。这个效果在%s后失效。"] = { false, { Stats.GenericAttackPower, }, false, false, } -- s45040
-L["导致你的生命值低于%s%的近战攻击将令你的躲闪等级提高%s，持续%s。这个效果每%s秒只能触发一次。"] = { { Stats.DodgeRating, }, { Stats.DodgeRating, }, false, false, } -- s45057
-L["有一定几率在命中目标时使你的攻击强度提高%s点，持续%s。"] = { { Stats.GenericAttackPower, }, false, } -- s45354
-L["精准等级提高%s，持续%s。"] = { { Stats.ExpertiseRating, }, false, } -- s45431
-L["在%s内恢复总计%s点生命值，进食时必须保持坐姿。如果你花费至少%s秒钟来进食，你对所有魔法的抗性都将提高%s点，持续%s。"] = { false, { Stats.FireResistance, Stats.NatureResistance, Stats.FrostResistance, Stats.ShadowResistance, Stats.ArcaneResistance, }, false, { Stats.FireResistance, Stats.NatureResistance, Stats.FrostResistance, Stats.ShadowResistance, Stats.ArcaneResistance, }, false, } -- s45618
+L["在%s sec内恢复%s点法力值。饮水时必须保持坐姿。如果你花费至少%s秒来饮水，你将获得进食充分效果，耐力和精神提高%s点，持续%s sec。"] = { false, { Stats.GenericManaRegen, }, false, { Stats.Stamina, }, false, } -- s45019
+L["在%s sec内恢复%s点法力值。饮水时必须保持坐姿。如果你花费至少%s秒来饮水，你将获得进食充分效果，耐力和精神提高%s点，持续%s sec。普通的酒精饮料。"] = { false, { Stats.GenericManaRegen, }, false, { Stats.Stamina, }, false, } -- s45020
+L["你的下%s次近战或远程攻击每一次都会使你获得%s点攻击强度的加成，可叠加最多%s次。这个效果在%s sec后失效。"] = { false, { Stats.GenericAttackPower, }, false, false, ignoreSum = true } -- s45040
+L["导致你的生命值低于%s%的近战攻击将令你的躲闪等级提高%s，持续%s sec。这个效果每%s秒只能触发一次。"] = { { Stats.DodgeRating, }, { Stats.DodgeRating, }, false, false, ignoreSum = true } -- s45057
+L["有一定几率在命中目标时使你的攻击强度提高%s点，持续%s sec。"] = { { Stats.GenericAttackPower, }, false, ignoreSum = true } -- s45354
+L["精准等级提高%s，持续%s sec。"] = { { Stats.ExpertiseRating, }, false, } -- s45431
+L["在%s sec内恢复总计%s点生命值，进食时必须保持坐姿。如果你花费至少%s秒钟来进食，你对所有魔法的抗性都将提高%s点，持续%s sec。"] = { false, { Stats.FireResistance, Stats.NatureResistance, Stats.FrostResistance, Stats.ShadowResistance, Stats.ArcaneResistance, }, false, { Stats.FireResistance, Stats.NatureResistance, Stats.FrostResistance, Stats.ShadowResistance, Stats.ArcaneResistance, }, false, ignoreSum = true } -- s45618
 L["grants %s mana every %s seconds"] = { { Stats.GenericManaRegen, }, false, } -- s45659
 L["the warm radiance of the sunwell empowers the target, increasing its chance to hit increased by %s% and reducing the enemies' chance to dodge by %s%"] = { { Stats.MeleeHit, Stats.RangedHit, }, false, } -- s45769
-L["你的次级治疗波可以令目标的韧性等级提高%s，持续%s。"] = { { Stats.ResilienceRating, }, false, } -- s46098
-L["reduces an enemy's shadow resistance by %s for %s"] = { { Stats.ShadowResistance, }, false, } -- s46297
-L["reduces an enemy's strength by %s and stamina by %s for %s"] = { { Stats.Strength, }, { Stats.Stamina, }, false, } -- s46298
-L["increases the time between an enemy's attacks speed by %s%, slows its casting speed by %s%, and slows its movement by %s%. lasts %s"] = { { Stats.MeleeHaste, }, { Stats.SpellHaste, }, false, false, } -- s46299
+L["你的次级治疗波可以令目标的韧性等级提高%s，持续%s sec。"] = { { Stats.ResilienceRating, }, false, ignoreSum = true } -- s46098
+L["reduces an enemy's shadow resistance by %s for %s sec"] = { { Stats.ShadowResistance, }, false, } -- s46297
+L["reduces an enemy's strength by %s and stamina by %s for %s sec"] = { { Stats.Strength, }, { Stats.Stamina, }, false, } -- s46298
+L["increases the time between an enemy's attacks speed by %s%, slows its casting speed by %s%, and slows its movement by %s%. lasts %s sec"] = { { Stats.MeleeHaste, }, { Stats.SpellHaste, }, false, false, } -- s46299
 L["基鲁鼓舞着你，耐力提高%s点，智力提高%s点。"] = { { Stats.Stamina, }, { Stats.Intellect, }, } -- s46302
-L["reduces the armor of the target by %s for %s"] = { { Stats.Armor, }, false, } -- s46469
-L["increases the caster's attack speed by %s% and all damage it deals by %s% for %s"] = { { Stats.MeleeHaste, }, false, false, } -- s46587
-L["在%s内恢复总计%s点生命值，进食时必须保持坐姿。如果你花费至少%s秒钟来进食，你的法术伤害和治疗效果将提高%s点，持续%s。"] = { false, { Stats.SpellDamage, Stats.HealingPower, }, false, { Stats.SpellDamage, }, false, } -- s46683
-L["increases the damage of nearby party members by %s% and attack speed by %s% for %s"] = { false, { Stats.MeleeHaste, }, false, } -- s46763
-L["使你的暗影、火焰和冰霜法术所造成的伤害提高最多%s点，持续%s。这种效果在死亡后仍可继续存在。战斗和守护药剂。"] = { { Stats.FireDamage, Stats.FrostDamage, Stats.ShadowDamage, }, false, } -- s46838
-L["使你的奥术、神圣和自然法术所造成的伤害提高最多%s点，持续%s。这种效果在死亡后仍可继续存在。战斗和守护药剂。"] = { { Stats.HolyDamage, Stats.NatureDamage, Stats.ArcaneDamage, }, false, } -- s46840
-L["在%s内恢复总计%s点生命值，进食时必须保持坐姿。如果你花费至少%s秒钟来进食，你的攻击强度将提高%s点，持续%s。"] = { false, { Stats.GenericAttackPower, }, false, { Stats.GenericAttackPower, }, false, } -- s46898
-L["使法术的伤害效果提高最多%s点，持续%s。"] = { { Stats.SpellDamage, }, false, } -- s48889
-L["在%s内回复%s点法力值并使你清醒。饮水时必须保持坐姿。"] = { false, { Stats.GenericManaRegen, }, } -- s49472
-L["reduces an enemy's strength by %s and agility by %s for %s"] = { { Stats.Strength, }, { Stats.Agility, }, false, } -- s50739
-L["使$a码内的小队成员的近战、远程攻击和施法急速等级提高%s。持续%s。战鼓可以在变形状态下使用。"] = { { Stats.MeleeHasteRating, Stats.RangedHasteRating, Stats.SpellHasteRating, }, false, } -- s351355
-L["使$a码内的小队成员移攻击强度提高%s点，法术伤害提高%s点。持续%s。战鼓可以在变形状态下使用。"] = { { Stats.GenericAttackPower, }, { Stats.SpellDamage, }, false, } -- s351360
-L["向敌人冲锋，造成普通伤害外加%s点伤害，并使其昏迷%s。"] = { { Stats.MeleeHaste, }, false, } -- s35412
-L["protects the caster from all attacks and spells for %s., but also increases the time between attacks by %s% during that time"] = { false, { Stats.MeleeHaste, }, } -- s41367
-L["变形成为一头熊，造成的伤害提高，但是攻击速度降低%s%，持续%s。"] = { { Stats.MeleeHaste, }, false, } -- s42607
+L["reduces the armor of the target by %s for %s sec"] = { { Stats.Armor, }, false, } -- s46469
+L["increases the caster's attack speed by %s% and all damage it deals by %s% for %s sec"] = { { Stats.MeleeHaste, }, false, false, } -- s46587
+L["在%s sec内恢复总计%s点生命值，进食时必须保持坐姿。如果你花费至少%s秒钟来进食，你的法术伤害和治疗效果将提高%s点，持续%s sec。"] = { false, { Stats.SpellDamage, Stats.HealingPower, }, false, { Stats.SpellDamage, }, false, ignoreSum = true } -- s46683
+L["increases the damage of nearby party members by %s% and attack speed by %s% for %s sec"] = { false, { Stats.MeleeHaste, }, false, } -- s46763
+L["使你的暗影、火焰和冰霜法术所造成的伤害提高最多%s点，持续%s sec。这种效果在死亡后仍可继续存在。战斗和守护药剂。"] = { { Stats.FireDamage, Stats.FrostDamage, Stats.ShadowDamage, }, false, } -- s46838
+L["使你的奥术、神圣和自然法术所造成的伤害提高最多%s点，持续%s sec。这种效果在死亡后仍可继续存在。战斗和守护药剂。"] = { { Stats.HolyDamage, Stats.NatureDamage, Stats.ArcaneDamage, }, false, } -- s46840
+L["在%s sec内恢复总计%s点生命值，进食时必须保持坐姿。如果你花费至少%s秒钟来进食，你的攻击强度将提高%s点，持续%s sec。"] = { false, { Stats.GenericAttackPower, }, false, { Stats.GenericAttackPower, }, false, ignoreSum = true } -- s46898
+L["使法术的伤害效果提高最多%s点，持续%s sec。"] = { { Stats.SpellDamage, }, false, } -- s48889
+L["在%s sec内回复%s点法力值并使你清醒。饮水时必须保持坐姿。"] = { false, { Stats.GenericManaRegen, }, } -- s49472
+L["reduces an enemy's strength by %s and agility by %s for %s sec"] = { { Stats.Strength, }, { Stats.Agility, }, false, } -- s50739
+L["使$a码内的小队成员的近战、远程攻击和施法急速等级提高%s。持续%s sec。战鼓可以在变形状态下使用。"] = { { Stats.MeleeHasteRating, Stats.RangedHasteRating, Stats.SpellHasteRating, }, false, } -- s351355
+L["使$a码内的小队成员移攻击强度提高%s点，法术伤害提高%s点。持续%s sec。战鼓可以在变形状态下使用。"] = { { Stats.GenericAttackPower, }, { Stats.SpellDamage, }, false, } -- s351360
+L["向敌人冲锋，造成普通伤害外加%s点伤害，并使其昏迷%s sec。"] = { { Stats.MeleeHaste, }, false, } -- s35412
+L["protects the caster from all attacks and spells for %s sec., but also increases the time between attacks by %s% during that time"] = { false, { Stats.MeleeHaste, }, } -- s41367
+L["变形成为一头熊，造成的伤害提高，但是攻击速度降低%s%，持续%s sec。"] = { { Stats.MeleeHaste, }, false, } -- s42607
 L["磨快（%s 伤害）"] = { { Stats.AverageWeaponDamage, }, } -- e13
 L["增重（%s 伤害）"] = { { Stats.AverageWeaponDamage, }, } -- e19
 L["%s 法力值"] = { { Stats.Mana, }, } -- e24
@@ -1851,781 +1851,781 @@ L["%s 法术急速等级，%s 耐力"] = { { Stats.SpellHasteRating, }, { Stats.
 L["%s 防御等级，%s% 盾牌格挡值"] = { { Stats.DefenseRating, }, false, } -- e3274
 L["%s 敏捷，速度略微提高"] = { { Stats.Agility, }, } -- e2939
 L["%s 耐力，速度略微提高"] = { { Stats.Stamina, }, } -- e2940
-L["使圣骑士的伤害性攻击有一定的几率令目标的攻击强度降低%s点，持续%s。"] = { { Stats.AttackPower, }, false, } -- s67
+L["使圣骑士的伤害性攻击有一定的几率令目标的攻击强度降低%s点，持续%s sec。"] = { { Stats.AttackPower, }, false, } -- s67
 L["使附近半径%s码范围内的所有队友获得%s点额外的护甲值。每个圣骑士在同一时间内只能开启一种光环，且同类光环的效果无法叠加。"] = { false, { Stats.Armor, }, } -- s465
-L["使施法者的护甲值提高%s点，通过法术和效果恢复的生命值提高%s%。术士在同一时间内只能激活一种护甲法术。持续%s。"] = { { Stats.Armor, }, false, false, } -- s687
-L["目标的近战攻击强度降低%s点，护甲值降低%s%，持续%s。对于一个目标，每个术士只能施加一种诅咒。"] = { { Stats.AttackPower, }, false, false, } -- s702
-L["征服等级不高于%s级的恶魔，使其听从你的命令。被征服的恶魔的攻击间隔延长%s%，施法速度降低%s%。征服效果最多持续%s。"] = { false, { Stats.MeleeHaste, }, { Stats.SpellHaste, }, false, } -- s1098
-L["对目标施放诅咒，使其奥术、火焰、冰霜、自然和暗影抗性降低%s点，受到的法术伤害提高%s%，效果持续%s。对于一个目标，每个术士只能施加一种诅咒。"] = { { Stats.FireResistance, Stats.NatureResistance, Stats.FrostResistance, Stats.ShadowResistance, Stats.ArcaneResistance, }, false, false, } -- s1490
-L["战士发出怒吼，使半径%s码范围内的所有小队和团队成员的攻击强度提高%s点，持续%s。"] = { false, { Stats.GenericAttackPower, }, false, } -- s2048
-L["使你的格档几率和格挡值提高%s%，持续%s。"] = { { Stats.BlockChance, }, false, } -- s2565
-L["将目标变成麻风侏儒，使其近战伤害和法术强度降低%s点，移动速度降低%s%，持续%s。"] = { { Stats.SpellDamage, }, false, false, } -- s4060
-L["每%s秒对一名敌人造成火焰伤害，使其攻击间隔延长%s%并且移动速度降低%s%，持续%s。"] = { false, { Stats.MeleeHaste, }, false, false, } -- s5213
-L["使友方目标的护甲值提高%s点，所有属性提高%s点，持续%s。"] = { { Stats.Armor, }, { Stats.AllStats, }, false, } -- s5232
-L["使友方目标的护甲值提高%s点，所有属性提高%s点，所有抗性提高%s点，持续%s。"] = { { Stats.Armor, }, { Stats.AllStats, }, false, false, } -- s5234
-L["使护甲值提高。如果敌人攻击施法者，可能会使他们的移动速度降低%s%，攻击间隔提高%s%，持续%s。法师在同一时间内只能保有一种魔法护甲效果。"] = { false, { Stats.MeleeHaste, }, false, } -- s6136
-L["以雷霆震击附近的敌人，使它们的攻击间隔延长%s%，持续%s，并对它们造成%s点伤害（此伤害值受到攻击强度加成影响）。这个技能可以造成额外的威胁值。"] = { { Stats.MeleeHaste, }, false, false, } -- s6343
+L["使施法者的护甲值提高%s点，通过法术和效果恢复的生命值提高%s%。术士在同一时间内只能激活一种护甲法术。持续%s sec。"] = { { Stats.Armor, }, false, false, } -- s687
+L["目标的近战攻击强度降低%s点，护甲值降低%s%，持续%s sec。对于一个目标，每个术士只能施加一种诅咒。"] = { { Stats.AttackPower, }, false, false, } -- s702
+L["征服等级不高于%s级的恶魔，使其听从你的命令。被征服的恶魔的攻击间隔延长%s%，施法速度降低%s%。征服效果最多持续%s sec。"] = { false, { Stats.MeleeHaste, }, { Stats.SpellHaste, }, false, } -- s1098
+L["对目标施放诅咒，使其奥术、火焰、冰霜、自然和暗影抗性降低%s点，受到的法术伤害提高%s%，效果持续%s sec。对于一个目标，每个术士只能施加一种诅咒。"] = { { Stats.FireResistance, Stats.NatureResistance, Stats.FrostResistance, Stats.ShadowResistance, Stats.ArcaneResistance, }, false, false, } -- s1490
+L["战士发出怒吼，使半径%s码范围内的所有小队和团队成员的攻击强度提高%s点，持续%s sec。"] = { false, { Stats.GenericAttackPower, }, false, } -- s2048
+L["使你的格档几率和格挡值提高%s%，持续%s sec。"] = { { Stats.BlockChance, }, false, } -- s2565
+L["将目标变成麻风侏儒，使其近战伤害和法术强度降低%s点，移动速度降低%s%，持续%s sec。"] = { { Stats.SpellDamage, }, false, false, } -- s4060
+L["每%s秒对一名敌人造成火焰伤害，使其攻击间隔延长%s%并且移动速度降低%s%，持续%s sec。"] = { false, { Stats.MeleeHaste, }, false, false, } -- s5213
+L["使友方目标的护甲值提高%s点，所有属性提高%s点，持续%s sec。"] = { { Stats.Armor, }, { Stats.AllStats, }, false, } -- s5232
+L["使友方目标的护甲值提高%s点，所有属性提高%s点，所有抗性提高%s点，持续%s sec。"] = { { Stats.Armor, }, { Stats.AllStats, }, false, false, } -- s5234
+L["使护甲值提高。如果敌人攻击施法者，可能会使他们的移动速度降低%s%，攻击间隔提高%s%，持续%s sec。法师在同一时间内只能保有一种魔法护甲效果。"] = { false, { Stats.MeleeHaste, }, false, } -- s6136
+L["以雷霆震击附近的敌人，使它们的攻击间隔延长%s%，持续%s sec，并对它们造成%s点伤害（此伤害值受到攻击强度加成影响）。这个技能可以造成额外的威胁值。"] = { { Stats.MeleeHaste, }, false, false, } -- s6343
 L["使你和身边半径%s码范围内的所有小队成员的法术和攻击命中几率提高%s%。"] = { false, { Stats.MeleeHit, Stats.RangedHit, Stats.SpellHit, }, } -- s6562
-L["诅咒一个敌人，持续%s，周期性地使其某项技能降低%s点。"] = { false, { Stats.WeaponSkill, Stats.Defense, }, } -- s7048
-L["使目标的攻击间隔延长%s%，施法速度降低%s%，在被击中时有%s%的几率向某个盟友传染疾病。持续%s。"] = { { Stats.MeleeHaste, }, { Stats.SpellHaste, }, false, false, } -- s7102
-L["一大片沙尘暴侵袭邻近的敌人，使他们攻击命中的几率降低%s%，持续%s。"] = { { Stats.MeleeHit, Stats.RangedHit, }, false, } -- s7272
+L["诅咒一个敌人，持续%s sec，周期性地使其某项技能降低%s点。"] = { false, { Stats.WeaponSkill, Stats.Defense, }, } -- s7048
+L["使目标的攻击间隔延长%s%，施法速度降低%s%，在被击中时有%s%的几率向某个盟友传染疾病。持续%s sec。"] = { { Stats.MeleeHaste, }, { Stats.SpellHaste, }, false, false, } -- s7102
+L["一大片沙尘暴侵袭邻近的敌人，使他们攻击命中的几率降低%s%，持续%s sec。"] = { { Stats.MeleeHit, Stats.RangedHit, }, false, } -- s7272
 L["使攻击者的移动速度降低%s%，攻击速度降低%s%。"] = { false, { Stats.MeleeHaste, }, } -- s7321
-L["对一名敌人每%s秒造成自然伤害，并使其攻击间隔延长%s%，移动速度降低，持续%s。"] = { false, { Stats.MeleeHaste, }, false, } -- s7357
+L["对一名敌人每%s秒造成自然伤害，并使其攻击间隔延长%s%，移动速度降低，持续%s sec。"] = { false, { Stats.MeleeHaste, }, false, } -- s7357
 L["造成的物理伤害提高%s点。\n造成的法术伤害提高%s点。"] = { { Stats.AverageWeaponDamage, }, { Stats.SpellDamage, }, } -- s7657
 L["法术强度提高%s点。"] = { { Stats.HealingPower, Stats.SpellDamage, }, } -- s7675
 L["火焰法术强度提高%s点。"] = { { Stats.FireDamage, }, } -- s7683
 L["自然法术强度提高%s点。"] = { { Stats.NatureDamage, }, } -- s7690
 L["冰霜法术强度提高%s点。"] = { { Stats.FrostDamage, }, } -- s7697
 L["暗影法术强度提高%s点。"] = { { Stats.ShadowDamage, }, } -- s7704
-L["火焰法术强度提高%s点，持续%s。战斗药剂。"] = { { Stats.FireDamage, }, false, } -- s7844
-L["对附近的敌人造成自然伤害，使其攻击间隔延长%s%并且移动速度降低，持续%s。"] = { { Stats.MeleeHaste, }, false, } -- s8078
-L["使一名敌人的攻击间隔提高%s%，并使其移动速度降低，持续%s。"] = { { Stats.MeleeHaste, }, false, } -- s7992
-L["攻击间隔延长%s%，持续%s。"] = { { Stats.MeleeHaste, }, false, } -- s7998
-L["立即以震撼性的力量攻击目标，对其造成%s点自然伤害，并使其近战攻击速度下降%s%，持续%s。"] = { false, { Stats.MeleeHaste, }, false, } -- s8042
-L["使目标的护甲提高%s点，持续%s。同一时间内只能保持一种卷轴效果。"] = { { Stats.Armor, }, false, } -- s8091
-L["使目标的智力提高%s点，持续%s。同一时间内只能保持一种卷轴效果。"] = { { Stats.Intellect, }, false, } -- s8096
-L["使目标的耐力提高%s点，持续%s。同一时间内只能保持一种卷轴效果。"] = { { Stats.Stamina, }, false, } -- s8099
-L["使目标的精神提高%s点，持续%s。同一时间内只能保持一种卷轴效果。"] = { { Stats.Spirit, }, false, } -- s8112
-L["使目标的敏捷提高%s点，持续%s。同一时间内只能保持一种卷轴效果。"] = { { Stats.Agility, }, false, } -- s8115
-L["使目标的力量提高%s点，持续%s。同一时间内只能保持一种卷轴效果。"] = { { Stats.Strength, }, false, } -- s8118
-L["对附近的敌人造成自然伤害，使其攻击间隔延长%s%并且移动速度降低%s%，持续%s。"] = { { Stats.MeleeHaste, }, false, false, } -- s8147
+L["火焰法术强度提高%s点，持续%s sec。战斗药剂。"] = { { Stats.FireDamage, }, false, } -- s7844
+L["对附近的敌人造成自然伤害，使其攻击间隔延长%s%并且移动速度降低，持续%s sec。"] = { { Stats.MeleeHaste, }, false, } -- s8078
+L["使一名敌人的攻击间隔提高%s%，并使其移动速度降低，持续%s sec。"] = { { Stats.MeleeHaste, }, false, } -- s7992
+L["攻击间隔延长%s%，持续%s sec。"] = { { Stats.MeleeHaste, }, false, } -- s7998
+L["立即以震撼性的力量攻击目标，对其造成%s点自然伤害，并使其近战攻击速度下降%s%，持续%s sec。"] = { false, { Stats.MeleeHaste, }, false, } -- s8042
+L["使目标的护甲提高%s点，持续%s sec。同一时间内只能保持一种卷轴效果。"] = { { Stats.Armor, }, false, } -- s8091
+L["使目标的智力提高%s点，持续%s sec。同一时间内只能保持一种卷轴效果。"] = { { Stats.Intellect, }, false, } -- s8096
+L["使目标的耐力提高%s点，持续%s sec。同一时间内只能保持一种卷轴效果。"] = { { Stats.Stamina, }, false, } -- s8099
+L["使目标的精神提高%s点，持续%s sec。同一时间内只能保持一种卷轴效果。"] = { { Stats.Spirit, }, false, } -- s8112
+L["使目标的敏捷提高%s点，持续%s sec。同一时间内只能保持一种卷轴效果。"] = { { Stats.Agility, }, false, } -- s8115
+L["使目标的力量提高%s点，持续%s sec。同一时间内只能保持一种卷轴效果。"] = { { Stats.Strength, }, false, } -- s8118
+L["对附近的敌人造成自然伤害，使其攻击间隔延长%s%并且移动速度降低%s%，持续%s sec。"] = { { Stats.MeleeHaste, }, false, false, } -- s8147
 L["智力提高%s点。\n精神提高%s点。\n冰霜伤害提高%s点。"] = { { Stats.Intellect, }, { Stats.Spirit, }, { Stats.FrostDamage, }, } -- s8733
 L["物理伤害能力降低%s点。"] = { { Stats.AverageWeaponDamage, }, } -- s10072
 L["攻击速度提高%s%。\n施法速度提高%s%。\n移动速度提高%s%。"] = { { Stats.MeleeHaste, }, { Stats.SpellHaste, }, false, } -- s10348
-L["使暗影抗性提高%s点。如果敌人使用近战武器攻击施法者，他们有%s%的几率受到诅咒，使得他们在%s内受到物理攻击时承受的伤害提高%s点。阿尔萨斯的礼物的特殊效果持续%s。守护药剂。"] = { { Stats.ShadowResistance, }, false, false, false, false, } -- s11371
-L["法术强度提高%s点，持续%s。战斗药剂。"] = { { Stats.SpellDamage, Stats.HealingPower, }, false, } -- s11390
-L["使敌人的攻击间隔延长%s%，移动速度降低%s%，此外还会使其力量降低%s%，效果持续%s。"] = { { Stats.MeleeHaste, }, false, false, false, } -- s11443
-L["暗影法术强度提高%s点，持续%s。战斗药剂。"] = { { Stats.ShadowDamage, }, false, } -- s11474
-L["诅咒目标，使其攻击强度降低%s点，持续%s。"] = { { Stats.AttackPower, }, false, } -- s11960
-L["使一名敌人凝视着施法者，施法者的攻击速度提高%s%，持续%s。在施法者被目标凝视的期间内，施法者会很不愿意攻击其他的目标。"] = { { Stats.MeleeHaste, }, false, } -- s12021
+L["使暗影抗性提高%s点。如果敌人使用近战武器攻击施法者，他们有%s%的几率受到诅咒，使得他们在%s sec内受到物理攻击时承受的伤害提高%s点。阿尔萨斯的礼物的特殊效果持续%s sec。守护药剂。"] = { { Stats.ShadowResistance, }, false, false, false, false, } -- s11371
+L["法术强度提高%s点，持续%s sec。战斗药剂。"] = { { Stats.SpellDamage, Stats.HealingPower, }, false, } -- s11390
+L["使敌人的攻击间隔延长%s%，移动速度降低%s%，此外还会使其力量降低%s%，效果持续%s sec。"] = { { Stats.MeleeHaste, }, false, false, false, } -- s11443
+L["暗影法术强度提高%s点，持续%s sec。战斗药剂。"] = { { Stats.ShadowDamage, }, false, } -- s11474
+L["诅咒目标，使其攻击强度降低%s点，持续%s sec。"] = { { Stats.AttackPower, }, false, } -- s11960
+L["使一名敌人凝视着施法者，施法者的攻击速度提高%s%，持续%s sec。在施法者被目标凝视的期间内，施法者会很不愿意攻击其他的目标。"] = { { Stats.MeleeHaste, }, false, } -- s12021
 L["使你用盾牌格挡攻击的几率提高%s%，在成功格档、躲闪或招架后有%s%的几率得到%s点怒气。"] = { { Stats.BlockChance, }, false, false, } -- s12298
-L["在你的近战攻击打出爆击之后，使你的下%s次近战攻击速度提高%s%。"] = { false, { Stats.MeleeHaste, }, } -- s12319
+L["在你的近战攻击打出爆击之后，使你的下%s次近战攻击速度提高%s%。"] = { false, { Stats.MeleeHaste, }, ignoreSum = true } -- s12319
 L["命中率降低%s%。"] = { { Stats.MeleeHit, Stats.RangedHit, }, } -- s12541
 L["使你的斧类武器和长柄武器的爆击几率及爆击伤害提高%s%。"] = { { Stats.MeleeCrit, Stats.RangedCrit, }, } -- s12700
 L["猎人获得雄鹰守护，使远程攻击强度提高%s点。猎人在同一时间内只能激活一种守护。"] = { { Stats.RangedAttackPower, }, } -- s13165
-L["使目标的护甲值降低%s点，持续%s。在效果持续期间，目标无法潜行或隐形。"] = { { Stats.Armor, }, false, } -- s13424
+L["使目标的护甲值降低%s点，持续%s sec。在效果持续期间，目标无法潜行或隐形。"] = { { Stats.Armor, }, false, } -- s13424
 L["使附近小队成员的攻击速度提高%s%。"] = { { Stats.MeleeHaste, }, } -- s13589
 L["奥术法术强度提高%s点。"] = { { Stats.ArcaneDamage, }, } -- s13590
 L["使你的武器和毒药的命中几率提高%s%。"] = { { Stats.MeleeHit, Stats.RangedHit, Stats.SpellHit, }, } -- s13705
 L["使你的匕首和拳套的爆击几率提高%s%。"] = { { Stats.MeleeCrit, Stats.RangedCrit, }, } -- s13706
 L["使你的躲闪几率提高%s%，近战急速提高%s%。"] = { { Stats.Dodge, }, { Stats.MeleeHaste, }, } -- s13712
-L["在招架了敌人的攻击之后可以使用的技能，对目标造成%s%的武器伤害，并使其近战攻击速度降低%s%，持续%s。奖励%s个连击点数。"] = { false, { Stats.MeleeHaste, }, false, false, } -- s14251
-L["对敌人造成%s%的武器伤害（如果装备匕首则造成%s%的武器伤害），并使你躲闪攻击的几率提高%s%，持续%s。奖励%s个连击点数。"] = { false, false, { Stats.Dodge, }, false, false, } -- s14278
-L["使你的精神提高%s点，持续%s。守护药剂。"] = { { Stats.Spirit, }, false, } -- s15231
-L["使你的护甲值提高%s点，持续%s。守护药剂。"] = { { Stats.Armor, }, false, } -- s15233
-L["爆击等级提高%s，所有属性提高%s点，持续%s。"] = { { Stats.MeleeCritRating, Stats.RangedCritRating, Stats.SpellCritRating, }, { Stats.AllStats, }, false, } -- s15366
-L["使施法者的攻击速度提高%s%且造成的物理伤害提高%s。"] = { { Stats.MeleeHaste, }, false, } -- s15716
-L["给目标施加鲁莽的诅咒，使其攻击强度提高%s点，但护甲降低%s点，持续%s。被诅咒的敌人不会逃跑，也不会受到恐惧的影响。对于一个目标，每个术士只能施加一种诅咒。"] = { { Stats.AttackPower, }, { Stats.Armor, }, false, } -- s16231
+L["在招架了敌人的攻击之后可以使用的技能，对目标造成%s%的武器伤害，并使其近战攻击速度降低%s%，持续%s sec。奖励%s个连击点数。"] = { false, { Stats.MeleeHaste, }, false, false, } -- s14251
+L["对敌人造成%s%的武器伤害（如果装备匕首则造成%s%的武器伤害），并使你躲闪攻击的几率提高%s%，持续%s sec。奖励%s个连击点数。"] = { false, false, { Stats.Dodge, }, false, false, } -- s14278
+L["使你的精神提高%s点，持续%s sec。守护药剂。"] = { { Stats.Spirit, }, false, } -- s15231
+L["使你的护甲值提高%s点，持续%s sec。守护药剂。"] = { { Stats.Armor, }, false, } -- s15233
+L["爆击等级提高%s，所有属性提高%s点，持续%s sec。"] = { { Stats.MeleeCritRating, Stats.RangedCritRating, Stats.SpellCritRating, }, { Stats.AllStats, }, false, } -- s15366
+L["使施法者的攻击速度提高%s%且造成的物理伤害提高%s sec。"] = { { Stats.MeleeHaste, }, false, } -- s15716
+L["给目标施加鲁莽的诅咒，使其攻击强度提高%s点，但护甲降低%s点，持续%s sec。被诅咒的敌人不会逃跑，也不会受到恐惧的影响。对于一个目标，每个术士只能施加一种诅咒。"] = { { Stats.AttackPower, }, { Stats.Armor, }, false, } -- s16231
 L["使你的躲闪几率提高%s%，受到的所有缴械效果持续时间缩短%s%。这个效果不与任何其它缩短缴械持续时间的效果叠加。"] = { { Stats.Dodge, }, false, } -- s16254
-L["使雷德和盖斯的命中几率提高%s%，并使他们受到的伤害降低%s%，持续%s。"] = { { Stats.MeleeHit, Stats.RangedHit, }, false, false, } -- s16337
-L["火焰抗性提高%s点，持续%s。"] = { { Stats.FireResistance, }, false, } -- s16373
-L["造成的物理伤害提高%s点。\n攻击速度提高%s%。\n持续%s。"] = { { Stats.AverageWeaponDamage, }, { Stats.MeleeHaste, }, false, } -- s16791
+L["使雷德和盖斯的命中几率提高%s%，并使他们受到的伤害降低%s%，持续%s sec。"] = { { Stats.MeleeHit, Stats.RangedHit, }, false, false, } -- s16337
+L["火焰抗性提高%s点，持续%s sec。"] = { { Stats.FireResistance, }, false, } -- s16373
+L["造成的物理伤害提高%s点。\n攻击速度提高%s%。\n持续%s sec。"] = { { Stats.AverageWeaponDamage, }, { Stats.MeleeHaste, }, false, } -- s16791
 L["使你在施放星火术、休眠和飓风时因受到伤害而承受的施法推迟时间缩短%s%，并使你的法术急速总值提高%s%。"] = { false, { Stats.SpellHaste, }, } -- s16850
-L["你的任何非持续性法术爆击之后都有%s%的几率获得自然的赐福，使你的施法速度提高%s%，持续%s。"] = { false, { Stats.SpellHaste, }, false, } -- s16880
-L["在目标区域制造一场强烈的风暴，对该区域中的所有敌人每%s秒造成%s点自然伤害，并使其移动速度降低%s%，攻击间隔延长%s%，持续%s。德鲁伊必须引导法术的能量以维持此效果。"] = { false, false, false, { Stats.MeleeHaste, }, false, } -- s16914
-L["在目标区域制造一场强烈的风暴，对该区域中的所有敌人每%s秒造成%s点自然伤害， 攻击间隔延长%s%，持续%s。德鲁伊必须引导法术的能量以维持此效果。"] = { false, false, { Stats.MeleeHaste, }, false, } -- s16914
-L["目标所能造成的伤害降低%s点，持续%s。对于一个目标，每个术士只能施加一种诅咒。"] = { { Stats.AverageWeaponDamage, }, false, } -- s17227
-L["法术强度提高%s点，爆击等级提高%s，持续%s。战斗药剂。"] = { { Stats.SpellDamage, Stats.HealingPower, }, { Stats.MeleeCritRating, Stats.RangedCritRating, Stats.SpellCritRating, }, false, } -- s17539
-L["法术强度提高%s点，持续%s。这种效果在死亡后仍可继续存在。战斗和守护药剂。"] = { { Stats.SpellDamage, Stats.HealingPower, }, false, } -- s17628
-L["使施法者下三次攻击速度提高%s%，持续%s，"] = { { Stats.MeleeHaste, }, false, } -- s17687
-L["一层寒冰包裹施法者，持续%s。这层厚重的寒冰能提高护甲值，并且使攻击者的移动速度降低%s%，攻击间隔增加%s%。"] = { false, false, { Stats.MeleeHaste, }, } -- s18100
+L["你的任何非持续性法术爆击之后都有%s%的几率获得自然的赐福，使你的施法速度提高%s%，持续%s sec。"] = { false, { Stats.SpellHaste, }, false, ignoreSum = true } -- s16880
+L["在目标区域制造一场强烈的风暴，对该区域中的所有敌人每%s秒造成%s点自然伤害，并使其移动速度降低%s%，攻击间隔延长%s%，持续%s sec。德鲁伊必须引导法术的能量以维持此效果。"] = { false, false, false, { Stats.MeleeHaste, }, false, } -- s16914
+L["在目标区域制造一场强烈的风暴，对该区域中的所有敌人每%s秒造成%s点自然伤害， 攻击间隔延长%s%，持续%s sec。德鲁伊必须引导法术的能量以维持此效果。"] = { false, false, { Stats.MeleeHaste, }, false, } -- s16914
+L["目标所能造成的伤害降低%s点，持续%s sec。对于一个目标，每个术士只能施加一种诅咒。"] = { { Stats.AverageWeaponDamage, }, false, } -- s17227
+L["法术强度提高%s点，爆击等级提高%s，持续%s sec。战斗药剂。"] = { { Stats.SpellDamage, Stats.HealingPower, }, { Stats.MeleeCritRating, Stats.RangedCritRating, Stats.SpellCritRating, }, false, } -- s17539
+L["法术强度提高%s点，持续%s sec。这种效果在死亡后仍可继续存在。战斗和守护药剂。"] = { { Stats.SpellDamage, Stats.HealingPower, }, false, } -- s17628
+L["使施法者下三次攻击速度提高%s%，持续%s sec，"] = { { Stats.MeleeHaste, }, false, } -- s17687
+L["一层寒冰包裹施法者，持续%s sec。这层厚重的寒冰能提高护甲值，并且使攻击者的移动速度降低%s%，攻击间隔增加%s%。"] = { false, false, { Stats.MeleeHaste, }, } -- s18100
 L["使敌人的攻击间隔提高%s%并降低%s%的移动速度。"] = { { Stats.MeleeHaste, }, false, } -- s18101
-L["激活之后，使你的招架几率提高%s%，闪避远程攻击的几率提高%s%，偏转法术的几率提高%s%。当威慑处于激活状态下时，你不能攻击。持续%s。"] = { { Stats.Parry, }, { Stats.Parry, }, false, false, } -- s19263
+L["激活之后，使你的招架几率提高%s%，闪避远程攻击的几率提高%s%，偏转法术的几率提高%s%。当威慑处于激活状态下时，你不能攻击。持续%s sec。"] = { { Stats.Parry, }, { Stats.Parry, }, false, false, } -- s19263
 L["使你的招架几率提高%s%，受到的所有缴械效果持续时间缩短%s%。这个效果不与任何其它缩短缴械持续时间的效果叠加。"] = { { Stats.Parry, }, false, } -- s19295
-L["使你的宠物在造成暴击之后攻击速度提高%s%，持续%s。"] = { { Stats.MeleeHaste, }, false, } -- s19615
-L["耐力和精神提高%s点。持续%s。"] = { { Stats.Stamina, Stats.Spirit, }, false, } -- s19705
-L["造成暗影伤害并使目标所能造成的物理伤害降低%s点，持续%s。"] = { { Stats.AverageWeaponDamage, }, false, } -- s20006
-L["使你的格挡值提高%s%，在受到近战和远程伤害之后有%s%的几率获得盾牌格挡几率提高%s%的效果。持续%s或格挡%s次攻击。"] = { false, false, { Stats.BlockChance, }, false, false, } -- s20127
+L["使你的宠物在造成暴击之后攻击速度提高%s%，持续%s sec。"] = { { Stats.MeleeHaste, }, false, } -- s19615
+L["耐力和精神提高%s点。持续%s sec。"] = { { Stats.Stamina, Stats.Spirit, }, false, } -- s19705
+L["造成暗影伤害并使目标所能造成的物理伤害降低%s点，持续%s sec。"] = { { Stats.AverageWeaponDamage, }, false, } -- s20006
+L["使你的格挡值提高%s%，在受到近战和远程伤害之后有%s%的几率获得盾牌格挡几率提高%s%的效果。持续%s sec或格挡%s次攻击。"] = { false, false, { Stats.BlockChance, }, false, false, ignoreSum = true } -- s20127
 L["使你的攻击被躲闪的几率降低%s%，并使你受到的缴械效果持续时间缩短%s%。不与其它缴械时间缩短效果叠加。"] = { { Stats.DodgeReduction, }, false, } -- s20504
-L["使你的格挡几率提高%s%，持续%s。在此期间每次成功格挡都会对攻击者造成%s点神圣伤害，每次成功格挡会消耗掉一次格挡机会，最多可格挡%s次。"] = { { Stats.BlockChance, }, false, false, false, } -- s20925
-L["使附近敌人的物理伤害能力降低%s点，持续%s。对于一个目标，每个术士只能施加一种诅咒。"] = { { Stats.AverageWeaponDamage, }, false, } -- s21007
-L["你的护甲穿透等级提高%s，持续%s。这个效果可以叠加最多%s次。"] = { { Stats.ArmorPenetrationRating, }, false, false, } -- s21153
+L["使你的格挡几率提高%s%，持续%s sec。在此期间每次成功格挡都会对攻击者造成%s点神圣伤害，每次成功格挡会消耗掉一次格挡机会，最多可格挡%s次。"] = { { Stats.BlockChance, }, false, false, false, } -- s20925
+L["使附近敌人的物理伤害能力降低%s点，持续%s sec。对于一个目标，每个术士只能施加一种诅咒。"] = { { Stats.AverageWeaponDamage, }, false, } -- s21007
+L["你的护甲穿透等级提高%s，持续%s sec。这个效果可以叠加最多%s次。"] = { { Stats.ArmorPenetrationRating, }, false, false, } -- s21153
 L["神圣法术强度提高%s点。"] = { { Stats.HolyDamage, }, } -- s21499
-L["圣洁的能量充满小队和团队成员的身体，使其耐力提高%s点，持续%s。"] = { { Stats.Stamina, }, false, } -- s21562
-L["使小队和团队中的所有成员获得野性赐福的效果，护甲值提高%s点，所有属性提高%s点，所有抗性提高%s点。持续%s。"] = { { Stats.Armor, }, { Stats.AllStats, }, false, false, } -- s21849
-L["冰霜法术强度提高%s点，持续%s。战斗药剂。"] = { { Stats.FrostDamage, }, false, } -- s21920
+L["圣洁的能量充满小队和团队成员的身体，使其耐力提高%s点，持续%s sec。"] = { { Stats.Stamina, }, false, } -- s21562
+L["使小队和团队中的所有成员获得野性赐福的效果，护甲值提高%s点，所有属性提高%s点，所有抗性提高%s点。持续%s sec。"] = { { Stats.Armor, }, { Stats.AllStats, }, false, false, } -- s21849
+L["冰霜法术强度提高%s点，持续%s sec。战斗药剂。"] = { { Stats.FrostDamage, }, false, } -- s21920
 L["移动速度降低%s%。\n攻击间隔延长%s%。\n施法速度降低%s%。"] = { false, { Stats.MeleeHaste, }, { Stats.SpellHaste, }, } -- s22247
-L["造成%s点冰霜伤害，燃烧法力值并使攻击间隔延长%s%，持续%s。"] = { false, { Stats.MeleeHaste, }, false, } -- s22290
-L["施法者进入狂乱状态，攻击速度提高%s%，持续%s。"] = { { Stats.MeleeHaste, }, false, } -- s22428
+L["造成%s点冰霜伤害，燃烧法力值并使攻击间隔延长%s%，持续%s sec。"] = { false, { Stats.MeleeHaste, }, false, } -- s22290
+L["施法者进入狂乱状态，攻击速度提高%s%，持续%s sec。"] = { { Stats.MeleeHaste, }, false, } -- s22428
 L["对施法者正面的敌人造成%s点冰霜伤害，使其损失%s点法力值并且攻击间隔延长%s%。"] = { { Stats.MeleeHaste, }, false, { Stats.MeleeHaste, }, } -- s22559
-L["对施法者正面的敌人造成%s点奥术伤害，并使其施法速度降低%s%，攻击间隔提高%s%，持续%s。"] = { false, { Stats.SpellHaste, }, { Stats.MeleeHaste, }, false, } -- s22642
-L["魔法的光辉笼罩着小队和团队中的所有成员，使他们的智力提高%s点，持续%s。"] = { { Stats.Intellect, }, false, } -- s23028
+L["对施法者正面的敌人造成%s点奥术伤害，并使其施法速度降低%s%，攻击间隔提高%s%，持续%s sec。"] = { false, { Stats.SpellHaste, }, { Stats.MeleeHaste, }, false, } -- s22642
+L["魔法的光辉笼罩着小队和团队中的所有成员，使他们的智力提高%s点，持续%s sec。"] = { { Stats.Intellect, }, false, } -- s23028
 L["每%s秒燃烧%s点法力值。\n施法速度降低%s%。\n移动速度降低%s%。"] = { false, false, { Stats.SpellHaste, }, false, } -- s23153
-L["对所有敌人造成%s点冰霜伤害，吸取%s点法力值，并使其攻击间隔延长%s%，持续%s。"] = { false, false, { Stats.MeleeHaste, }, false, } -- s23187
-L["对所有敌人造成%s点冰霜伤害，吸取%s点法力值并使其攻击间隔延长%s%，持续%s。"] = { false, false, { Stats.MeleeHaste, }, false, } -- s23189
-L["法术强度提高%s点，持续%s。"] = { { Stats.SpellDamage, Stats.HealingPower, }, false, } -- s23271
-L["每%s秒造成%s点伤害。\n护甲值降低%s点。\n持续%s。"] = { false, false, { Stats.Armor, }, false, } -- s23313
-L["使法师的急速等级提高%s，持续%s。"] = { { Stats.MeleeHasteRating, Stats.RangedHasteRating, Stats.SpellHasteRating, }, false, } -- s23723
-L["使圣骑士被光芒笼罩，近战急速等级提高%s，法术急速等级提高%s，持续%s。"] = { { Stats.MeleeHasteRating, }, { Stats.SpellHasteRating, }, false, } -- s23733
-L["法术强度提高%s点，法力消耗提高%s%。效果持续%s。"] = { { Stats.SpellDamage, Stats.HealingPower, }, false, false, } -- s23734
+L["对所有敌人造成%s点冰霜伤害，吸取%s点法力值，并使其攻击间隔延长%s%，持续%s sec。"] = { false, false, { Stats.MeleeHaste, }, false, } -- s23187
+L["对所有敌人造成%s点冰霜伤害，吸取%s点法力值并使其攻击间隔延长%s%，持续%s sec。"] = { false, false, { Stats.MeleeHaste, }, false, } -- s23189
+L["法术强度提高%s点，持续%s sec。"] = { { Stats.SpellDamage, Stats.HealingPower, }, false, } -- s23271
+L["每%s秒造成%s点伤害。\n护甲值降低%s点。\n持续%s sec。"] = { false, false, { Stats.Armor, }, false, } -- s23313
+L["使法师的急速等级提高%s，持续%s sec。"] = { { Stats.MeleeHasteRating, Stats.RangedHasteRating, Stats.SpellHasteRating, }, false, } -- s23723
+L["使圣骑士被光芒笼罩，近战急速等级提高%s，法术急速等级提高%s，持续%s sec。"] = { { Stats.MeleeHasteRating, }, { Stats.SpellHasteRating, }, false, } -- s23733
+L["法术强度提高%s点，法力消耗提高%s%。效果持续%s sec。"] = { { Stats.SpellDamage, Stats.HealingPower, }, false, false, } -- s23734
 L["使术士和他所召唤的恶魔均获得一个特殊效果，只要该恶魔处于激活状态就不会消失。\n小鬼 - 使你的火焰伤害提高%s%，你的火焰法术的爆击几率提高%s%。\n虚空行者 - 受到物理攻击时承受的伤害降低%s%。\n魅魔 - 使你的暗影伤害提高%s%，你的暗影法术的爆击几率提高%s%。\n地狱猎犬 - 受到的所有法术伤害降低%s%。\n恶魔卫士 - 造成的所有伤害提高%s%，受到的所有伤害降低%s%。"] = { false, { Stats.SpellCrit, }, false, false, { Stats.SpellCrit, }, false, false, false, } -- s23759
 L["使术士和她所召唤的恶魔均获得一个特殊效果，只要该恶魔处于激活状态就不会消失。\n小鬼 - 使你的火焰伤害提高%s%，你的火焰法术的爆击几率提高%s%。\n虚空行者 - 受到物理攻击时承受的伤害降低%s%。\n魅魔 - 使你的暗影伤害提高%s%，你的暗影法术的爆击几率提高%s%。\n地狱猎犬 - 受到的所有法术伤害降低%s%。\n恶魔卫士 - 造成的所有伤害提高%s%，受到的所有伤害降低%s%。"] = { false, { Stats.SpellCrit, }, false, false, { Stats.SpellCrit, }, false, false, false, } -- s23759
 L["使术士和他所召唤的恶魔均获得一个特殊效果，只要该恶魔处于激活状态就不会消失。\n小鬼 - 使你的火焰伤害提高%s%，你的火焰法术的爆击几率提高%s%。\n虚空行者 - 受到物理攻击时承受的伤害降低%s%。\n魅魔 - 使你的暗影伤害提高%s%，你的暗影法术的爆击几率提高%s%。\n地狱猎犬 - 受到的所有法术伤害降低 %s%。\n恶魔卫士 - 造成的所有伤害提高%s%，受到的所有伤害降低%s%。"] = { false, { Stats.SpellCrit, }, false, false, { Stats.SpellCrit, }, false, false, false, } -- s23826
 L["使术士和她所召唤的恶魔均获得一个特殊效果，只要该恶魔处于激活状态就不会消失。\n小鬼 - 使你的火焰伤害提高%s%，你的火焰法术的爆击几率提高%s%。\n虚空行者 - 受到物理攻击时承受的伤害降低%s%。\n魅魔 - 使你的暗影伤害提高%s%，你的暗影法术的爆击几率提高%s%。\n地狱猎犬 - 受到的所有法术伤害降低 %s%。\n恶魔卫士 - 造成的所有伤害提高%s%，受到的所有伤害降低%s%。"] = { false, { Stats.SpellCrit, }, false, false, { Stats.SpellCrit, }, false, false, false, } -- s23826
-L["使目标中毒，使其攻击间隔延长%s%，移动速度降低%s%，并在%s后陷入沉睡。"] = { { Stats.MeleeHaste, }, false, false, } -- s24002
-L["恢复%s点法力值，并使你的下一个火焰法术的法术强度提高%s点。效果持续%s。"] = { false, { Stats.FireDamage, }, false, } -- s24389
-L["使你的急速等级提高%s，治疗之触、回春术、愈合和宁静的法力值消耗减少%s%，持续%s。"] = { { Stats.MeleeHasteRating, Stats.RangedHasteRating, Stats.SpellHasteRating, }, false, false, } -- s24542
-L["使你的爆击等级提高%s，持续%s。"] = { { Stats.MeleeCritRating, Stats.RangedCritRating, Stats.SpellCritRating, }, false, } -- s24543
-L["奥术法术强度提高%s点，持续%s。"] = { { Stats.ArcaneDamage, }, false, } -- s24544
-L["使你的急速等级提高%s，治疗类法术所消耗的法力值减少%s%，持续%s。"] = { { Stats.MeleeHasteRating, Stats.RangedHasteRating, Stats.SpellHasteRating, }, false, false, } -- s24546
-L["狼及其主人的近战和远程攻击强度提高%s点，持续%s。"] = { { Stats.GenericAttackPower, }, false, } -- s24604
+L["使目标中毒，使其攻击间隔延长%s%，移动速度降低%s%，并在%s sec后陷入沉睡。"] = { { Stats.MeleeHaste, }, false, false, } -- s24002
+L["恢复%s点法力值，并使你的下一个火焰法术的法术强度提高%s点。效果持续%s sec。"] = { false, { Stats.FireDamage, }, false, } -- s24389
+L["使你的急速等级提高%s，治疗之触、回春术、愈合和宁静的法力值消耗减少%s%，持续%s sec。"] = { { Stats.MeleeHasteRating, Stats.RangedHasteRating, Stats.SpellHasteRating, }, false, false, } -- s24542
+L["使你的爆击等级提高%s，持续%s sec。"] = { { Stats.MeleeCritRating, Stats.RangedCritRating, Stats.SpellCritRating, }, false, } -- s24543
+L["奥术法术强度提高%s点，持续%s sec。"] = { { Stats.ArcaneDamage, }, false, } -- s24544
+L["使你的急速等级提高%s，治疗类法术所消耗的法力值减少%s%，持续%s sec。"] = { { Stats.MeleeHasteRating, Stats.RangedHasteRating, Stats.SpellHasteRating, }, false, false, } -- s24546
+L["狼及其主人的近战和远程攻击强度提高%s点，持续%s sec。"] = { { Stats.GenericAttackPower, }, false, } -- s24604
 L["法术爆击几率提高%s%。"] = { { Stats.SpellCrit, }, } -- s24907
 L["在猎豹、熊或巨熊形态下，使半径%s码范围内的所有小队成员的远程和近战攻击的爆击几率提高%s%。"] = { false, { Stats.MeleeCrit, Stats.RangedCrit, }, } -- s24932
-L["敌人被飞虫围绕，近战和远程攻击命中率降低%s%，在%s内受到总计%s点自然伤害。"] = { { Stats.MeleeHit, Stats.RangedHit, }, false, false, } -- s24974
+L["敌人被飞虫围绕，近战和远程攻击命中率降低%s%，在%s sec内受到总计%s点自然伤害。"] = { { Stats.MeleeHit, Stats.RangedHit, }, false, false, } -- s24974
 L["每%s秒恢复%s点法力值，并使法术强度提高%s点。"] = { false, { Stats.GenericManaRegen, }, { Stats.HealingPower, Stats.SpellDamage, }, } -- s25116
 L["为施法者注入邪恶复仇的力量，使其攻击速度提高%s%，移动速度提高%s%。"] = { { Stats.MeleeHaste, }, false, } -- s25164
 L["每%s秒获得%s点法力值。"] = { false, { Stats.GenericManaRegen, }, } -- s25569
-L["附近所有小队成员的法术强度提高%s点，持续%s。"] = { { Stats.SpellDamage, Stats.HealingPower, }, false, } -- s25607
-L["每%s秒法力回复提高%s点，持续%s。"] = { false, { Stats.GenericManaRegen, }, false, } -- s25694
+L["附近所有小队成员的法术强度提高%s点，持续%s sec。"] = { { Stats.SpellDamage, Stats.HealingPower, }, false, } -- s25607
+L["每%s秒法力回复提高%s点，持续%s sec。"] = { false, { Stats.GenericManaRegen, }, false, } -- s25694
 L["攻击速度提高%s%。\n物理伤害提高%s%。"] = { { Stats.MeleeHaste, }, false, } -- s25790
-L["使圣骑士的伤害性攻击有一定的几率令目标的攻击强度降低%s，持续%s。"] = { { Stats.AttackPower, }, false, } -- s26016
-L["你的闪电箭、闪电链和震击法术有%s%的几率获得%s点自然法术强度加成，持续%s。"] = { false, { Stats.NatureDamage, }, false, } -- s26119
-L["自然法术强度提高%s点，持续%s。"] = { { Stats.NatureDamage, }, false, } -- s26121
-L["法术强度提高%s点，并使目标的魔法抗性降低%s点，持续%s。"] = { { Stats.SpellDamage, Stats.HealingPower, }, { Stats.SpellPenetration, }, false, } -- s26166
-L["你的近战或远程攻击有一定几率为你提供护甲穿刺的效果，使你的护甲穿透等级提高%s，持续%s。这个效果可以叠加最多%s次。"] = { { Stats.ArmorPenetrationRating, }, false, false, } -- s26480
+L["使圣骑士的伤害性攻击有一定的几率令目标的攻击强度降低%s，持续%s sec。"] = { { Stats.AttackPower, }, false, ignoreSum = true } -- s26016
+L["你的闪电箭、闪电链和震击法术有%s%的几率获得%s点自然法术强度加成，持续%s sec。"] = { false, { Stats.NatureDamage, }, false, ignoreSum = true } -- s26119
+L["自然法术强度提高%s点，持续%s sec。"] = { { Stats.NatureDamage, }, false, } -- s26121
+L["法术强度提高%s点，并使目标的魔法抗性降低%s点，持续%s sec。"] = { { Stats.SpellDamage, Stats.HealingPower, }, { Stats.SpellPenetration, }, false, } -- s26166
+L["你的近战或远程攻击有一定几率为你提供护甲穿刺的效果，使你的护甲穿透等级提高%s，持续%s sec。这个效果可以叠加最多%s次。"] = { { Stats.ArmorPenetrationRating, }, false, false, ignoreSum = true } -- s26480
 L["月亮带来的好运！生命值提高%s点。"] = { { Stats.Health, }, } -- s26522
 L["施法者进入狂暴状态，变得势不可挡。攻击速度提高%s。"] = { { Stats.MeleeHaste, }, } -- s26615
-L["使施法者的攻击和移动速度提高%s%，对敌人造成的所有伤害提高%s%，持续%s。在效果持续期间免疫嘲讽。"] = { { Stats.MeleeHaste, }, false, false, } -- s26662
+L["使施法者的攻击和移动速度提高%s%，对敌人造成的所有伤害提高%s%，持续%s sec。在效果持续期间免疫嘲讽。"] = { { Stats.MeleeHaste, }, false, false, } -- s26662
 L["火焰和奥术法术强度提高%s点。"] = { { Stats.FireDamage, Stats.ArcaneDamage, }, } -- s26692
-L["近战攻击命中之后有一定几率使你的法术强度提高%s点，持续%s。"] = { { Stats.SpellDamage, Stats.HealingPower, }, false, } -- s27498
-L["变成一头猎豹，攻击速度提高%s%，持续%s。"] = { { Stats.MeleeHaste, }, false, } -- s27545
-L["使你的法术强度提高%s点，持续%s。"] = { { Stats.SpellDamage, Stats.HealingPower, }, false, } -- s27675
-L["使目标所在小队或团队成员的精神提高%s点，持续%s。"] = { { Stats.Spirit, }, false, } -- s27681
-L["有一定几率在成功施放法术之后使你的法术强度提高%s点，持续%s。"] = { { Stats.SpellDamage, Stats.HealingPower, }, false, } -- s27774
+L["近战攻击命中之后有一定几率使你的法术强度提高%s点，持续%s sec。"] = { { Stats.SpellDamage, Stats.HealingPower, }, false, ignoreSum = true } -- s27498
+L["变成一头猎豹，攻击速度提高%s%，持续%s sec。"] = { { Stats.MeleeHaste, }, false, } -- s27545
+L["使你的法术强度提高%s点，持续%s sec。"] = { { Stats.SpellDamage, Stats.HealingPower, }, false, } -- s27675
+L["使目标所在小队或团队成员的精神提高%s点，持续%s sec。"] = { { Stats.Spirit, }, false, } -- s27681
+L["有一定几率在成功施放法术之后使你的法术强度提高%s点，持续%s sec。"] = { { Stats.SpellDamage, Stats.HealingPower, }, false, ignoreSum = true } -- s27774
 L["暗影和冰霜法术强度提高%s点。"] = { { Stats.FrostDamage, Stats.ShadowDamage, }, } -- s27980
-L["使施法者的攻击速度提高%s%并且造成的物理伤害提高%s%，持续%s。"] = { { Stats.MeleeHaste, }, false, false, } -- s28131
+L["使施法者的攻击速度提高%s%并且造成的物理伤害提高%s%，持续%s sec。"] = { { Stats.MeleeHaste, }, false, false, } -- s28131
 L["使周围半径%s码范围内的所有小队成员的法术强度提高%s点。"] = { false, { Stats.SpellDamage, Stats.HealingPower, }, } -- s28143
 L["使你的法术强度提高%s点。"] = { { Stats.SpellDamage, Stats.HealingPower, }, } -- s28155
-L["施法者被邪能笼罩，使法术强度提高%s点再加上你的精神值的%s%，另外，你每%s秒可以恢复%s%的生命值。术士在同一时间内只能激活一种护甲法术。持续%s。"] = { { Stats.SpellDamage, }, false, false, false, false, } -- s28176
-L["你在%s秒内施放的下%s次伤害或治疗法术可以使你获得%s点法术强度加成，效果可重叠最多%s次。当你施放了%s个伤害或治疗法术，或效果持续%s秒之后，该效果消失。"] = { false, false, { Stats.SpellDamage, Stats.HealingPower, }, false, false, false, } -- s28200
+L["施法者被邪能笼罩，使法术强度提高%s点再加上你的精神值的%s%，另外，你每%s秒可以恢复%s%的生命值。术士在同一时间内只能激活一种护甲法术。持续%s sec。"] = { { Stats.SpellDamage, }, false, false, false, false, } -- s28176
+L["你在%s秒内施放的下%s次伤害或治疗法术可以使你获得%s点法术强度加成，效果可重叠最多%s次。当你施放了%s个伤害或治疗法术，或效果持续%s秒之后，该效果消失。"] = { false, false, { Stats.SpellDamage, Stats.HealingPower, }, false, false, false, ignoreSum = true } -- s28200
 L["略微提高法术强度，持续%s分钟。"] = { { Stats.SpellDamage, Stats.HealingPower, }, } -- s28273
-L["法术强度提高%s点，精神值提高%s点，持续%s。战斗药剂。"] = { { Stats.HealingPower, Stats.SpellDamage, }, { Stats.Spirit, }, false, } -- s28491
-L["使你的敏捷提高%s点，持续%s。战斗药剂。"] = { { Stats.Agility, }, false, } -- s28497
-L["法术爆击等级提高%s%，法术强度提高%s点，持续%s。"] = { { Stats.SpellCrit, }, { Stats.SpellDamage, Stats.HealingPower, }, false, } -- s28508
-L["奥术、神圣和自然法术强度提高%s点，持续%s。这种效果在死亡后仍可继续存在。战斗和守护药剂。"] = { { Stats.HolyDamage, Stats.NatureDamage, Stats.ArcaneDamage, }, false, } -- s28521
-L["暗影、火焰和冰霜法术强度提高%s点，持续%s。这种效果在死亡后仍可继续存在。战斗和守护药剂。"] = { { Stats.FireDamage, Stats.FrostDamage, Stats.ShadowDamage, }, false, } -- s28540
-L["智力提高%s点，持续%s。"] = { { Stats.Intellect, }, false, } -- s28706
-L["有一定几率对远程或近战目标造成%s点火焰伤害。你的火焰法术强度提高%s点，持续%s。"] = { false, { Stats.FireDamage, }, false, } -- s28714
-L["prevents and removes frenzy. silences nature spells for %s.  reduces casting speed by %s%"] = { false, { Stats.SpellHaste, }, } -- s28732
-L["使下%s次法术的法术强度提高%s点，持续%s。"] = { false, { Stats.SpellDamage, Stats.HealingPower, }, false, } -- s28780
-L["使友方目标的法术强度提高%s点，持续%s。"] = { { Stats.SpellDamage, Stats.HealingPower, }, false, } -- s28793
-L["使一名敌人造成的法术伤害最多提高%s点，持续%s。\n使一名敌人受到的法术伤害最多提高%s点，持续%s。"] = { { Stats.SpellDamage, }, false, false, false, } -- s29109
-L["命中几率降低%s%，持续%s。"] = { { Stats.MeleeHit, Stats.RangedHit, Stats.SpellHit, }, false, } -- s49865
-L["你的攻击法术在造成爆击之后可以使你的近战爆击几率提高%s%，持续%s。"] = { { Stats.MeleeCrit, Stats.RangedCrit, }, false, } -- s29177
-L["你的非周期性攻击法术在造成爆击之后可以使你的近战爆击几率提高%s%，持续%s。"] = { { Stats.MeleeCrit, Stats.RangedCrit, }, false, } -- s29179
+L["法术强度提高%s点，精神值提高%s点，持续%s sec。战斗药剂。"] = { { Stats.HealingPower, Stats.SpellDamage, }, { Stats.Spirit, }, false, } -- s28491
+L["使你的敏捷提高%s点，持续%s sec。战斗药剂。"] = { { Stats.Agility, }, false, } -- s28497
+L["法术爆击等级提高%s%，法术强度提高%s点，持续%s sec。"] = { { Stats.SpellCrit, }, { Stats.SpellDamage, Stats.HealingPower, }, false, } -- s28508
+L["奥术、神圣和自然法术强度提高%s点，持续%s sec。这种效果在死亡后仍可继续存在。战斗和守护药剂。"] = { { Stats.HolyDamage, Stats.NatureDamage, Stats.ArcaneDamage, }, false, } -- s28521
+L["暗影、火焰和冰霜法术强度提高%s点，持续%s sec。这种效果在死亡后仍可继续存在。战斗和守护药剂。"] = { { Stats.FireDamage, Stats.FrostDamage, Stats.ShadowDamage, }, false, } -- s28540
+L["智力提高%s点，持续%s sec。"] = { { Stats.Intellect, }, false, } -- s28706
+L["有一定几率对远程或近战目标造成%s点火焰伤害。你的火焰法术强度提高%s点，持续%s sec。"] = { false, { Stats.FireDamage, }, false, } -- s28714
+L["prevents and removes frenzy. silences nature spells for %s sec.  reduces casting speed by %s%"] = { false, { Stats.SpellHaste, }, } -- s28732
+L["使下%s次法术的法术强度提高%s点，持续%s sec。"] = { false, { Stats.SpellDamage, Stats.HealingPower, }, false, } -- s28780
+L["使友方目标的法术强度提高%s点，持续%s sec。"] = { { Stats.SpellDamage, Stats.HealingPower, }, false, } -- s28793
+L["使一名敌人造成的法术伤害最多提高%s点，持续%s sec。\n使一名敌人受到的法术伤害最多提高%s点，持续%s sec。"] = { { Stats.SpellDamage, }, false, false, false, } -- s29109
+L["命中几率降低%s%，持续%s sec。"] = { { Stats.MeleeHit, Stats.RangedHit, Stats.SpellHit, }, false, } -- s49865
+L["你的攻击法术在造成爆击之后可以使你的近战爆击几率提高%s%，持续%s sec。"] = { { Stats.MeleeCrit, Stats.RangedCrit, }, false, } -- s29177
+L["你的非周期性攻击法术在造成爆击之后可以使你的近战爆击几率提高%s%，持续%s sec。"] = { { Stats.MeleeCrit, Stats.RangedCrit, }, false, ignoreSum = true } -- s29179
 L["使目标的爆击几率提高%s%，法术和技能不造成任何威胁值。"] = { { Stats.MeleeCrit, Stats.RangedCrit, Stats.SpellCrit, }, } -- s29232
 L["释放储存在能量核心中的能量，使法术强度提高%s点，持续%s秒。"] = { { Stats.SpellDamage, Stats.HealingPower, }, false, } -- s29271
 L["每一层都降低近战%s%攻击速度，可以叠加。"] = { { Stats.MeleeHaste, }, } -- s29290
-L["急速等级提高%s，持续%s。"] = { { Stats.MeleeHasteRating, Stats.RangedHasteRating, Stats.SpellHasteRating, }, false, } -- s29333
-L["使施法者免受一切物理和法术攻击伤害，持续%s。但在效果持续时间内，施法者的攻击速度也降低%s%。"] = { false, { Stats.MeleeHaste, }, } -- s29382
+L["急速等级提高%s，持续%s sec。"] = { { Stats.MeleeHasteRating, Stats.RangedHasteRating, Stats.SpellHasteRating, }, false, } -- s29333
+L["使施法者免受一切物理和法术攻击伤害，持续%s sec。但在效果持续时间内，施法者的攻击速度也降低%s%。"] = { false, { Stats.MeleeHaste, }, } -- s29382
 L["使你的法术消耗的法力值降低%s%，命中几率提高%s%。"] = { { Stats.SpellHit, }, { Stats.SpellHit, }, } -- s29438
 L["使你的所有抗性提高每等级%s点，你每次完全抵抗一个法术就可以恢复法力值总量的%s%。冷却时间%s秒钟。"] = { { Stats.FireResistance, Stats.NatureResistance, Stats.FrostResistance, Stats.ShadowResistance, Stats.ArcaneResistance, }, false, false, } -- s29441
 L["使附近所有小队成员的舞蹈速度和攻击速度提高%s%。光环效果一直持续直到主动取消。"] = { { Stats.MeleeHaste, }, } -- s29521
-L["一击有力的钩拳，造成武器伤害再加上%s点额外伤害，并使敌人失去平衡，降低物理攻击的命中几率%s，持续%s。"] = { false, { Stats.MeleeHit, Stats.RangedHit, }, false, } -- s29555
-L["使附近的鬼灵顾客的攻击速度提高%s%，持续%s。但该效果结束后攻击速度会降低。"] = { { Stats.MeleeHaste, }, false, } -- s29612
-L["使一名敌人的攻击速度降低%s%，移动速度降低%s%，持续%s。并造成%s点伤害。"] = { { Stats.MeleeHaste, }, false, false, false, } -- s29673
+L["一击有力的钩拳，造成武器伤害再加上%s点额外伤害，并使敌人失去平衡，降低物理攻击的命中几率%s，持续%s sec。"] = { false, { Stats.MeleeHit, Stats.RangedHit, }, false, } -- s29555
+L["使附近的鬼灵顾客的攻击速度提高%s%，持续%s sec。但该效果结束后攻击速度会降低。"] = { { Stats.MeleeHaste, }, false, } -- s29612
+L["使一名敌人的攻击速度降低%s%，移动速度降低%s%，持续%s sec。并造成%s点伤害。"] = { { Stats.MeleeHaste, }, false, false, false, } -- s29673
 L["造成的物理伤害提高%s%。\n攻击速度提高%s%。"] = { false, { Stats.MeleeHaste, }, } -- s29691
 L["使周围半径%s码范围内所有小队和团队成员的远程和近战爆击几率提高%s%。"] = { false, { Stats.MeleeCrit, Stats.RangedCrit, }, } -- s29801
 L["使一名敌人的命中几率降低%s%。\n使一名敌人的法术命中几率降低%s%。"] = { { Stats.MeleeHit, Stats.RangedHit, }, { Stats.SpellHit, }, } -- s29833
 L["你的攻击速度提高%s%。另外，你的撕裂和重伤技能也可以使目标受到的所有物理伤害提高%s%。"] = { { Stats.MeleeHaste, }, false, } -- s29836
 L["使施法者的物理伤害提高%s%，但是移动速度降低%s%并且攻击速度降低%s%。"] = { false, false, { Stats.MeleeHaste, }, } -- s29837
-L["使附近所有敌人造成的法术伤害提高，最多%s。\n使附近所有敌人受到的法术伤害提高，最多%s。持续%s。"] = { { Stats.SpellDamage, }, false, false, } -- s29900
-L["使一名敌人的攻击速度降低%s%，移动速度降低%s%，持续%s。"] = { { Stats.MeleeHaste, }, false, false, } -- s29990
+L["使附近所有敌人造成的法术伤害提高，最多%s。\n使附近所有敌人受到的法术伤害提高，最多%s。持续%s sec。"] = { { Stats.SpellDamage, }, false, false, } -- s29900
+L["使一名敌人的攻击速度降低%s%，移动速度降低%s%，持续%s sec。"] = { { Stats.MeleeHaste, }, false, false, } -- s29990
 L["%s% less chance to hit.\n%s% slower attacks.\n%s% increase damage taken from the physical school"] = { { Stats.MeleeHit, Stats.RangedHit, }, false, false, } -- s30601
-L["对附近敌人造成%s点自然伤害，并使其攻击速度降低%s%，移动速度降低%s%，持续%s。"] = { false, { Stats.MeleeHaste, }, false, false, } -- s30633
-L["使施法者造成的物理伤害提高%s%并使施法者的攻击速度提高%s%，持续%s。"] = { false, { Stats.MeleeHaste, }, false, } -- s30841
-L["使施法者造成的物理伤害提高%s%，攻击速度提高%s%，持续%s。"] = { false, { Stats.SpellHaste, }, false, } -- s30887
+L["对附近敌人造成%s点自然伤害，并使其攻击速度降低%s%，移动速度降低%s%，持续%s sec。"] = { false, { Stats.MeleeHaste, }, false, false, } -- s30633
+L["使施法者造成的物理伤害提高%s%并使施法者的攻击速度提高%s%，持续%s sec。"] = { false, { Stats.MeleeHaste, }, false, } -- s30841
+L["使施法者造成的物理伤害提高%s%，攻击速度提高%s%，持续%s sec。"] = { false, { Stats.SpellHaste, }, false, } -- s30887
 L["近战攻击、远程攻击速度以及法术急速提高%s%。"] = { { Stats.MeleeHaste, Stats.SpellHaste, }, } -- s30939
-L["撕碎敌人的护甲，降低其护甲值%s点，持续%s。"] = { { Stats.Armor, }, false, } -- s31042
-L["一层寒冰包裹施法者，持续%s。这层厚重的寒冰提高%s点护甲值，并且使攻击者的移动速度降低%s%，攻击间隔增加%s%。"] = { false, { Stats.Armor, }, false, { Stats.MeleeHaste, }, } -- s31256
+L["撕碎敌人的护甲，降低其护甲值%s点，持续%s sec。"] = { { Stats.Armor, }, false, } -- s31042
+L["一层寒冰包裹施法者，持续%s sec。这层厚重的寒冰提高%s点护甲值，并且使攻击者的移动速度降低%s%，攻击间隔增加%s%。"] = { false, { Stats.Armor, }, false, { Stats.MeleeHaste, }, } -- s31256
 L["冻结攻击者，使其移动速度降低%s%，攻击速度降低%s%。"] = { false, { Stats.MeleeHaste, }, } -- s31257
 L["crit chance increased by %s%.\nall haste increased by %s%"] = { { Stats.MeleeCrit, Stats.RangedCrit, }, false, } -- s31305
 L["你感到神志不清……\n耐力降低%s点。\n精神提高%s点。"] = { { Stats.Stamina, }, { Stats.Spirit, }, } -- s31376
 L["使施法者躲闪的几率提高%s%，效果一直持续直到主动取消。"] = { { Stats.Dodge, }, } -- s31379
-L["使一名敌人的智力降低%s点，精神降低%s点，持续%s。"] = { { Stats.Intellect, }, { Stats.Spirit, }, false, } -- s31381
-L["使一名敌人的攻击间隔延长%s%并且移动速度降低%s%，此外，其力量也会降低%s%，持续%s。"] = { { Stats.MeleeHaste, }, false, false, false, } -- s31406
-L["近战和移动速度提高%s%，持续%s。"] = { { Stats.MeleeHaste, }, false, } -- s31458
+L["使一名敌人的智力降低%s点，精神降低%s点，持续%s sec。"] = { { Stats.Intellect, }, { Stats.Spirit, }, false, } -- s31381
+L["使一名敌人的攻击间隔延长%s%并且移动速度降低%s%，此外，其力量也会降低%s%，持续%s sec。"] = { { Stats.MeleeHaste, }, false, false, false, } -- s31406
+L["近战和移动速度提高%s%，持续%s sec。"] = { { Stats.MeleeHaste, }, false, } -- s31458
 L["使%s内所有友方目标的攻击强度和远程攻击强度提高%s点。"] = { false, { Stats.GenericAttackPower, }, } -- s31519
-L["躲闪和招架几率提高%s%，持续%s。"] = { { Stats.Parry, Stats.Dodge, }, false, } -- s31567
-L["使目标的智力降低%s点，持续%s。效果可以叠加%s次。"] = { { Stats.Intellect, }, false, false, } -- s31604
-L["使一名盟友的攻击速度提高%s%，持续%s，但每%s秒对该盟友造成%s点自然伤害。"] = { { Stats.MeleeHaste, }, false, false, false, } -- s31626
-L["使一名敌人命中的几率降低%s%，持续%s。"] = { { Stats.MeleeHit, Stats.RangedHit, Stats.SpellHit, }, false, } -- s51899
+L["躲闪和招架几率提高%s%，持续%s sec。"] = { { Stats.Parry, Stats.Dodge, }, false, } -- s31567
+L["使目标的智力降低%s点，持续%s sec。效果可以叠加%s次。"] = { { Stats.Intellect, }, false, false, } -- s31604
+L["使一名盟友的攻击速度提高%s%，持续%s sec，但每%s秒对该盟友造成%s点自然伤害。"] = { { Stats.MeleeHaste, }, false, false, false, } -- s31626
+L["使一名敌人命中的几率降低%s%，持续%s sec。"] = { { Stats.MeleeHit, Stats.RangedHit, Stats.SpellHit, }, false, } -- s51899
 L["苔藓黏着目标，使其攻击和施法速度降低%s%。"] = { { Stats.MeleeHaste, Stats.SpellHaste, }, } -- s31948
 L["%s% increased chance to be crit.\n%s reduced attack power.\n%s% increased bleed damage"] = { false, { Stats.AttackPower, }, false, } -- s31966
 L["攻击间隔延长%s%。\n施法时间延长%s%。\n每%s秒%s点自然伤害。"] = { false, { Stats.SpellHaste, }, false, false, } -- s32013
-L["使一名敌人法术和技能攻击的命中几率降低%s%，持续%s。"] = { { Stats.MeleeHit, Stats.RangedHit, Stats.SpellHit, }, false, } -- s32017
+L["使一名敌人法术和技能攻击的命中几率降低%s%，持续%s sec。"] = { { Stats.MeleeHit, Stats.RangedHit, Stats.SpellHit, }, false, } -- s32017
 L["你的所有法术和攻击的爆击几率提高%s%，驱邪术和十字军打击造成的伤害提高%s%。"] = { { Stats.SpellCrit, Stats.MeleeCrit, Stats.RangedCrit, }, false, } -- s32043
 L["attack power increased by %s. (battle shout)\nattack power increased by %s%. (unleashed rage)"] = { { Stats.GenericAttackPower, }, false, } -- s32120
-L["诅咒一名敌人，使其在%s内承受的物理伤害提高%s点并且耐力降低%s点。受诅咒的目标有%s%的几率对当前目标造成流血伤害。"] = { false, false, { Stats.Stamina, }, false, } -- s32682
+L["诅咒一名敌人，使其在%s sec内承受的物理伤害提高%s点并且耐力降低%s点。受诅咒的目标有%s%的几率对当前目标造成流血伤害。"] = { false, false, { Stats.Stamina, }, false, } -- s32682
 L["使目标的攻击速度提高%s%，移动速度提高%s%。"] = { { Stats.MeleeHaste, }, false, } -- s32829
-L["使一位盟友的法术强度提高%s点，持续%s。"] = { { Stats.SpellDamage, }, false, } -- s32689
+L["使一位盟友的法术强度提高%s点，持续%s sec。"] = { { Stats.SpellDamage, }, false, } -- s32689
 L["使施法者的施法速度提高%s%。"] = { { Stats.SpellHaste, }, } -- s32693
-L["在目标区域制造一场强烈的飓风，每%s秒对区域内的敌人造成自然伤害，并使其攻击间隔延长%s%，持续%s。"] = { false, { Stats.MeleeHaste, }, false, } -- s32717
+L["在目标区域制造一场强烈的飓风，每%s秒对区域内的敌人造成自然伤害，并使其攻击间隔延长%s%，持续%s sec。"] = { false, { Stats.MeleeHaste, }, false, } -- s32717
 L["将邪能引导至目标体内，使其体型增大%s%，并且造成的物理伤害提高%s。"] = { { Stats.AverageWeaponDamage, }, { Stats.AverageWeaponDamage, }, } -- s33111
 L["在ψ?、熊、巨熊和枭兽形态下的攻击强度提高%s点。"] = { { Stats.AttackPower, }, } -- s33180
-L["力量和精神提高%s点，持续%s。"] = { { Stats.Strength, Stats.Spirit, }, false, } -- s33256
-L["耐力提高%s点，精神提高%s点，持续%s。"] = { { Stats.Stamina, }, { Stats.Spirit, }, false, } -- s33257
-L["攻击强度提高%s点，精神提高%s点，持续%s。"] = { { Stats.GenericAttackPower, }, { Stats.Spirit, }, false, } -- s33259
-L["敏捷和精神提高%s点，持续%s。"] = { { Stats.Agility, Stats.Spirit, }, false, } -- s33261
-L["法术强度提高%s点，精神提高%s点，持续%s。"] = { { Stats.SpellDamage, Stats.HealingPower, }, { Stats.Spirit, }, false, } -- s33263
-L["在%s内恢复总计%s点生命值，进食时必须保持坐姿。如果你花费至少%s秒钟来进食，你的法术强度将提高%s点，精神将提高%s点，持续%s。"] = { false, { Stats.SpellDamage, Stats.HealingPower, }, false, { Stats.SpellDamage, }, { Stats.Spirit, }, false, } -- s33264
-L["每%s秒法力回复提高%s点，耐力提高%s点，持续%s。"] = { false, { Stats.GenericManaRegen, }, { Stats.Stamina, }, false, } -- s33265
-L["向施法者前方的敌人喷射出一股腐蚀性的酸液，每%s秒造成%s点自然伤害并使他们的护甲降低%s，持续%s。"] = { false, false, { Stats.Armor, }, false, } -- s33551
-L["有一定几率在打出近战或远程爆击之后使你的攻击强度提高%s点，持续%s秒。"] = { { Stats.GenericAttackPower, Stats.RangedAttackPower, }, false, } -- s33648
+L["力量和精神提高%s点，持续%s sec。"] = { { Stats.Strength, Stats.Spirit, }, false, } -- s33256
+L["耐力提高%s点，精神提高%s点，持续%s sec。"] = { { Stats.Stamina, }, { Stats.Spirit, }, false, } -- s33257
+L["攻击强度提高%s点，精神提高%s点，持续%s sec。"] = { { Stats.GenericAttackPower, }, { Stats.Spirit, }, false, } -- s33259
+L["敏捷和精神提高%s点，持续%s sec。"] = { { Stats.Agility, Stats.Spirit, }, false, } -- s33261
+L["法术强度提高%s点，精神提高%s点，持续%s sec。"] = { { Stats.SpellDamage, Stats.HealingPower, }, { Stats.Spirit, }, false, } -- s33263
+L["在%s sec内恢复总计%s点生命值，进食时必须保持坐姿。如果你花费至少%s秒钟来进食，你的法术强度将提高%s点，精神将提高%s点，持续%s sec。"] = { false, { Stats.SpellDamage, Stats.HealingPower, }, false, { Stats.SpellDamage, }, { Stats.Spirit, }, false, ignoreSum = true } -- s33264
+L["每%s秒法力回复提高%s点，耐力提高%s点，持续%s sec。"] = { false, { Stats.GenericManaRegen, }, { Stats.Stamina, }, false, } -- s33265
+L["向施法者前方的敌人喷射出一股腐蚀性的酸液，每%s秒造成%s点自然伤害并使他们的护甲降低%s，持续%s sec。"] = { false, false, { Stats.Armor, }, false, } -- s33551
+L["有一定几率在打出近战或远程爆击之后使你的攻击强度提高%s点，持续%s秒。"] = { { Stats.GenericAttackPower, Stats.RangedAttackPower, }, false, ignoreSum = true } -- s33648
 L["使目标进入狂喜的状态，体型增大%s%，并且造成的物理伤害提高%s。"] = { { Stats.AverageWeaponDamage, }, { Stats.AverageWeaponDamage, }, } -- s33664
-L["近战攻击强度提高%s点，法术伤害提高%s点，持续%s。"] = { { Stats.AttackPower, }, { Stats.SpellDamage, }, false, } -- s33697
-L["使你的攻击速度提高%s%，并可以额外攻击一个邻近的敌人，持续%s。"] = { { Stats.MeleeHaste, }, false, } -- s33735
-L["造成的暗影伤害最多提高%s点，持续%s。效果最多叠加%s次。"] = { { Stats.ShadowDamage, }, false, false, } -- s33783
-L["你的法术爆击几率提高%s%，受到爆击之后会获得天然完美效果，使你承受的所有伤害降低%s%。可叠加最多%s次，效果持续%s。"] = { { Stats.SpellCrit, }, false, false, false, } -- s33881
-L["你的直接治疗法术和持续治疗法术有一定几率使你的急速等级提高%s，持续%s秒。"] = { { Stats.MeleeHasteRating, Stats.RangedHasteRating, Stats.SpellHasteRating, }, false, } -- s33953
-L["对附近敌人造成%s点自然伤害，并使其攻击间隔延长%s%，移动速度降低%s%，持续%s。"] = { false, { Stats.MeleeHaste, }, false, false, } -- s33967
-L["使一名敌人变得虚弱，使其命中几率降低%s%，持续%s。"] = { { Stats.MeleeHit, Stats.RangedHit, }, false, } -- s34088
+L["近战攻击强度提高%s点，法术伤害提高%s点，持续%s sec。"] = { { Stats.AttackPower, }, { Stats.SpellDamage, }, false, } -- s33697
+L["使你的攻击速度提高%s%，并可以额外攻击一个邻近的敌人，持续%s sec。"] = { { Stats.MeleeHaste, }, false, } -- s33735
+L["造成的暗影伤害最多提高%s点，持续%s sec。效果最多叠加%s次。"] = { { Stats.ShadowDamage, }, false, false, } -- s33783
+L["你的法术爆击几率提高%s%，受到爆击之后会获得天然完美效果，使你承受的所有伤害降低%s%。可叠加最多%s次，效果持续%s sec。"] = { { Stats.SpellCrit, }, false, false, false, } -- s33881
+L["你的直接治疗法术和持续治疗法术有一定几率使你的急速等级提高%s，持续%s秒。"] = { { Stats.MeleeHasteRating, Stats.RangedHasteRating, Stats.SpellHasteRating, }, false, ignoreSum = true } -- s33953
+L["对附近敌人造成%s点自然伤害，并使其攻击间隔延长%s%，移动速度降低%s%，持续%s sec。"] = { false, { Stats.MeleeHaste, }, false, false, } -- s33967
+L["使一名敌人变得虚弱，使其命中几率降低%s%，持续%s sec。"] = { { Stats.MeleeHit, Stats.RangedHit, }, false, } -- s34088
 L["你的护甲穿透等级提高%s。"] = { { Stats.ArmorPenetrationRating, }, } -- s34106
-L["你的审判可以令你的爆击等级提高%s，持续%s。"] = { { Stats.MeleeCritRating, Stats.SpellCritRating, }, false, } -- s34258
+L["你的审判可以令你的爆击等级提高%s，持续%s sec。"] = { { Stats.MeleeCritRating, Stats.SpellCritRating, }, false, ignoreSum = true } -- s34258
 L["爆击几率提高%s%，在施法时仍可保持%s%的法力值回复速度。"] = { { Stats.SpellCrit, }, false, } -- s34293
-L["法术爆击之后有一定几率使你的法术强度提高%s点，持续%s秒。"] = { { Stats.SpellDamage, Stats.HealingPower, }, false, } -- s34320
-L["使附近一棵植物的体型增大%s%，攻击速度提高%s%，造成的物理伤害提高%s%，持续%s。"] = { false, { Stats.MeleeHaste, }, false, false, } -- s34350
+L["法术爆击之后有一定几率使你的法术强度提高%s点，持续%s秒。"] = { { Stats.SpellDamage, Stats.HealingPower, }, false, ignoreSum = true } -- s34320
+L["使附近一棵植物的体型增大%s%，攻击速度提高%s%，造成的物理伤害提高%s%，持续%s sec。"] = { false, { Stats.MeleeHaste, }, false, false, } -- s34350
 L["使你的躲闪几率提高%s%，你的宠物的躲闪几率提高%s%。另外，你的杀戮命令技能的冷却时间缩短%s秒。"] = { { Stats.Dodge, }, false, false, } -- s34462
 L["使你的爆击几率提高%s%，稳固射击、瞄准射击和奇美拉射击的法力值消耗降低%s%。"] = { { Stats.MeleeCrit, Stats.RangedCrit, }, false, } -- s34485
-L["你的伤害性法术命中之后有一定几率使你的法术强度提高%s点，持续%s。"] = { { Stats.SpellDamage, Stats.HealingPower, }, false, } -- s34598
-L["用致人精神混乱的毒药使目标中毒，使其施法速度降低%s%，持续%s。"] = { { Stats.SpellHaste, }, false, } -- s34615
-L["使敌人的近战爆击几率降低%s%，法术爆击几率降低%s%，持续%s。"] = { { Stats.MeleeCrit, Stats.RangedCrit, }, { Stats.SpellCrit, }, false, } -- s34640
-L["使一名敌人凝视着施法者，施法者的攻击速度提高%s%，持续%s。在目标被施法者凝视的期间内，目标会很不愿意攻击其他的目标。"] = { { Stats.MeleeHaste, }, false, } -- s34719
-L["当你的法术被抵抗之后，使你获得%s点法术强度加成，持续%s。"] = { { Stats.SpellDamage, Stats.HealingPower, }, false, } -- s34749
-L["你的远程攻击命中目标之后有一定几率使你的所有攻击的爆击等级提高%s%，持续%s。"] = { { Stats.MeleeCrit, Stats.RangedCrit, }, false, } -- s34833
-L["击破敌人及其附近盟友的护甲，最多影响%s个目标。每次破甲可以使敌人的护甲值降低%s点。可叠加最多%s次。持续%s。"] = { false, { Stats.Armor, }, false, false, } -- s34886
+L["你的伤害性法术命中之后有一定几率使你的法术强度提高%s点，持续%s sec。"] = { { Stats.SpellDamage, Stats.HealingPower, }, false, ignoreSum = true } -- s34598
+L["用致人精神混乱的毒药使目标中毒，使其施法速度降低%s%，持续%s sec。"] = { { Stats.SpellHaste, }, false, } -- s34615
+L["使敌人的近战爆击几率降低%s%，法术爆击几率降低%s%，持续%s sec。"] = { { Stats.MeleeCrit, Stats.RangedCrit, }, { Stats.SpellCrit, }, false, } -- s34640
+L["使一名敌人凝视着施法者，施法者的攻击速度提高%s%，持续%s sec。在目标被施法者凝视的期间内，目标会很不愿意攻击其他的目标。"] = { { Stats.MeleeHaste, }, false, } -- s34719
+L["当你的法术被抵抗之后，使你获得%s点法术强度加成，持续%s sec。"] = { { Stats.SpellDamage, Stats.HealingPower, }, false, ignoreSum = true } -- s34749
+L["你的远程攻击命中目标之后有一定几率使你的所有攻击的爆击等级提高%s%，持续%s sec。"] = { { Stats.MeleeCrit, Stats.RangedCrit, }, false, } -- s34833
+L["击破敌人及其附近盟友的护甲，最多影响%s个目标。每次破甲可以使敌人的护甲值降低%s点。可叠加最多%s次。持续%s sec。"] = { false, { Stats.Armor, }, false, false, } -- s34886
 L["使你的精神总值提高%s%，法术急速提高%s%。"] = { false, { Stats.SpellHaste, }, } -- s34908
-L["使施法者的生命值提高%s%，攻击速度提高%s%，效果持续%s。"] = { false, { Stats.MeleeHaste, }, false, } -- s34932
-L["使施法者的攻击速度提高%s%，对敌人造成的物理伤害提高，持续%s。"] = { { Stats.MeleeHaste, }, false, } -- s34970
-L["你的攻击法术命中之后有一定几率令你的法术强度提高%s点，效果持续%s秒。"] = { { Stats.SpellDamage, Stats.HealingPower, }, false, } -- s35083
-L["你的治疗和伤害法术有一定几率使你的法术强度提高%s点，持续%s秒。"] = { { Stats.SpellDamage, Stats.HealingPower, }, false, } -- s35086
-L["重击敌人，造成武器伤害并且每次破甲重击都会使目标的护甲值降低%s点，效果可以最多叠加%s次，持续%s。"] = { { Stats.Armor, }, false, false, } -- s35147
-L["使目标的攻击速度提高%s%，造成的物理伤害提高%s点，持续%s。"] = { { Stats.MeleeHaste, }, { Stats.AverageWeaponDamage, }, false, } -- s35289
+L["使施法者的生命值提高%s%，攻击速度提高%s%，效果持续%s sec。"] = { false, { Stats.MeleeHaste, }, false, } -- s34932
+L["使施法者的攻击速度提高%s%，对敌人造成的物理伤害提高，持续%s sec。"] = { { Stats.MeleeHaste, }, false, } -- s34970
+L["你的攻击法术命中之后有一定几率令你的法术强度提高%s点，效果持续%s秒。"] = { { Stats.SpellDamage, Stats.HealingPower, }, false, ignoreSum = true } -- s35083
+L["你的治疗和伤害法术有一定几率使你的法术强度提高%s点，持续%s秒。"] = { { Stats.SpellDamage, Stats.HealingPower, }, false, ignoreSum = true } -- s35086
+L["重击敌人，造成武器伤害并且每次破甲重击都会使目标的护甲值降低%s点，效果可以最多叠加%s次，持续%s sec。"] = { { Stats.Armor, }, false, false, } -- s35147
+L["使目标的攻击速度提高%s%，造成的物理伤害提高%s点，持续%s sec。"] = { { Stats.MeleeHaste, }, { Stats.AverageWeaponDamage, }, false, } -- s35289
 L["使敌人的所有属性提高%s点。"] = { { Stats.AllStats, }, } -- s35336
-L["使附近小队成员的攻击强度提高%s点，法术强度提高%s点，持续%s。对%s级以上的目标无效。"] = { { Stats.GenericAttackPower, }, { Stats.SpellDamage, }, false, false, } -- s35475
-L["使附近小队成员的急速等级提高%s，持续%s。无法对%s级以上的目标生效。"] = { { Stats.MeleeHasteRating, Stats.RangedHasteRating, Stats.SpellHasteRating, }, false, false, } -- s35476
-L["造成的物理伤害降低%s%。\n攻击速度提升%s%。\n持续%s。"] = { false, { Stats.MeleeHaste, }, false, } -- s35491
+L["使附近小队成员的攻击强度提高%s点，法术强度提高%s点，持续%s sec。对%s级以上的目标无效。"] = { { Stats.GenericAttackPower, }, { Stats.SpellDamage, }, false, false, } -- s35475
+L["使附近小队成员的急速等级提高%s，持续%s sec。无法对%s级以上的目标生效。"] = { { Stats.MeleeHasteRating, Stats.RangedHasteRating, Stats.SpellHasteRating, }, false, false, } -- s35476
+L["造成的物理伤害降低%s%。\n攻击速度提升%s%。\n持续%s sec。"] = { false, { Stats.MeleeHaste, }, false, } -- s35491
 L["使你的法术和魔法效果所造成的伤害提高%s点。"] = { { Stats.SpellDamage, }, } -- s35778
 L["debuff the target increasing spell damage taken by %s%, reducing fire, frost, shadow, nature, and arcane resistances by %s, and reducing armor by %s"] = { false, { Stats.FireResistance, Stats.NatureResistance, Stats.FrostResistance, Stats.ShadowResistance, Stats.ArcaneResistance, }, { Stats.Armor, }, } -- s55504
 L["你的攻击强度提高%s点，所有属性提高%s点，属性总值提高%s%。"] = { { Stats.AttackPower, }, { Stats.AllStats, }, false, } -- s35874
 L["使一个友方目标的智力提高%s点，每%s秒恢复%s点法力值，并且所有属性提高%s%。"] = { { Stats.Intellect, }, false, false, false, } -- s35912
 L["法术和技能造成的伤害提高%s点。"] = { { Stats.SpellDamage, }, } -- s36001
 L["护甲降低%s。"] = { { Stats.Armor, }, } -- s36650
-L["将一名敌人的护甲值降低%s点，每%s秒导致%s点自然伤害，持续%s。"] = { { Stats.Armor, }, false, false, false, } -- s36694
-L["使一名敌人的智力值降低%s，精神值降低%s，持续%s。"] = { { Stats.Intellect, }, { Stats.Spirit, }, false, } -- s36695
-L["使虚空生物的伤害提高%s%，持续%s。"] = { { Stats.SpellDamage, }, false, } -- s36729
-L["对一名敌人造成自然伤害，并使其护甲值降低%s点，持续%s。该效果最多可以叠加%s次。"] = { { Stats.Armor, }, false, false, } -- s36796
-L["对目标施放诅咒，使其火焰和冰霜抗性降低%s点，受到的火焰和冰霜伤害提高%s%，效果持续%s。"] = { { Stats.FireResistance, Stats.FrostResistance, }, false, false, } -- s36831
-L["使护甲值提高%s点，冰霜抗性提高%s点。如果敌人使用近战武器攻击施法者，他们的移动速度就有可能被降低到%s%，攻击速度降低%s%，持续%s。法师在同一时间内只能保有一种魔法护甲效果。持续%s。"] = { { Stats.Armor, }, { Stats.FrostResistance, }, { Stats.MeleeHaste, }, false, false, false, } -- s36881
-L["你的特殊攻击有一定几率令你的护甲穿透等级提高%s，持续%s。"] = { { Stats.ArmorPenetrationRating, }, false, } -- s37173
-L["你每次使用神圣之盾技能，都可以对%s内受到的下一次攻击获得%s点格挡值加成。"] = { false, { Stats.BlockValue, }, } -- s37191
-L["你施放任何法术之后都有一定几率获得%s点法术强度加成。"] = { { Stats.SpellDamage, Stats.HealingPower, }, } -- s37197
-L["你的暗影系伤害法术有一定几率使你获得%s点火焰法术强度加成，持续%s。"] = { { Stats.FireDamage, }, false, } -- s37378
-L["你的暗影系伤害法术有一定几率使你获得%s点暗影法术强度加成，持续%s。"] = { { Stats.ShadowDamage, }, false, } -- s37379
+L["将一名敌人的护甲值降低%s点，每%s秒导致%s点自然伤害，持续%s sec。"] = { { Stats.Armor, }, false, false, false, } -- s36694
+L["使一名敌人的智力值降低%s，精神值降低%s，持续%s sec。"] = { { Stats.Intellect, }, { Stats.Spirit, }, false, } -- s36695
+L["使虚空生物的伤害提高%s%，持续%s sec。"] = { { Stats.SpellDamage, }, false, } -- s36729
+L["对一名敌人造成自然伤害，并使其护甲值降低%s点，持续%s sec。该效果最多可以叠加%s次。"] = { { Stats.Armor, }, false, false, } -- s36796
+L["对目标施放诅咒，使其火焰和冰霜抗性降低%s点，受到的火焰和冰霜伤害提高%s%，效果持续%s sec。"] = { { Stats.FireResistance, Stats.FrostResistance, }, false, false, } -- s36831
+L["使护甲值提高%s点，冰霜抗性提高%s点。如果敌人使用近战武器攻击施法者，他们的移动速度就有可能被降低到%s%，攻击速度降低%s%，持续%s sec。法师在同一时间内只能保有一种魔法护甲效果。持续%s sec。"] = { { Stats.Armor, }, { Stats.FrostResistance, }, { Stats.MeleeHaste, }, false, false, false, } -- s36881
+L["你的特殊攻击有一定几率令你的护甲穿透等级提高%s，持续%s sec。"] = { { Stats.ArmorPenetrationRating, }, false, ignoreSum = true } -- s37173
+L["你每次使用神圣之盾技能，都可以对%s sec内受到的下一次攻击获得%s点格挡值加成。"] = { false, { Stats.BlockValue, }, ignoreSum = true } -- s37191
+L["你施放任何法术之后都有一定几率获得%s点法术强度加成。"] = { { Stats.SpellDamage, Stats.HealingPower, }, ignoreSum = true } -- s37197
+L["你的暗影系伤害法术有一定几率使你获得%s点火焰法术强度加成，持续%s sec。"] = { { Stats.FireDamage, }, false, } -- s37378
+L["你的暗影系伤害法术有一定几率使你获得%s点暗影法术强度加成，持续%s sec。"] = { { Stats.ShadowDamage, }, false, } -- s37379
 L["使你的宠物的抗性提高%s点，你的法术强度提高%s点。"] = { false, { Stats.SpellDamage, }, } -- s37386
-L["你的法术爆击可以使你的法术强度提高%s点，持续%s。"] = { { Stats.SpellDamage, Stats.HealingPower, }, false, } -- s37443
-L["你的护甲穿透等级提高%s，持续%s。"] = { { Stats.ArmorPenetrationRating, }, false, } -- s37482
-L["你每次使用盾牌格挡技能，都可以在接下来的%s内获得对一次攻击的%s点格挡值加成。"] = { false, { Stats.BlockValue, }, } -- s37522
-L["你的战斗怒吼技能所提供的攻击强度加成提高%s点。"] = { { Stats.AttackPower, }, } -- s37536
-L["你施放的暗言术：痛每一跳都有一定几率使你在%s内施放的下一个法术获得%s点法术强度加成。"] = { false, { Stats.SpellDamage, Stats.HealingPower, }, } -- s37603
-L["你的伤害法术有一定几率令你获得%s点法术强度加成，持续%s。"] = { { Stats.SpellDamage, Stats.HealingPower, }, false, } -- s37619
+L["你的法术爆击可以使你的法术强度提高%s点，持续%s sec。"] = { { Stats.SpellDamage, Stats.HealingPower, }, false, ignoreSum = true } -- s37443
+L["你的护甲穿透等级提高%s，持续%s sec。"] = { { Stats.ArmorPenetrationRating, }, false, } -- s37482
+L["你每次使用盾牌格挡技能，都可以在接下来的%s sec内获得对一次攻击的%s点格挡值加成。"] = { false, { Stats.BlockValue, }, ignoreSum = true } -- s37522
+L["你的战斗怒吼技能所提供的攻击强度加成提高%s点。"] = { { Stats.AttackPower, }, ignoreSum = true } -- s37536
+L["你施放的暗言术：痛每一跳都有一定几率使你在%s sec内施放的下一个法术获得%s点法术强度加成。"] = { false, { Stats.SpellDamage, Stats.HealingPower, }, ignoreSum = true } -- s37603
+L["你的伤害法术有一定几率令你获得%s点法术强度加成，持续%s sec。"] = { { Stats.SpellDamage, Stats.HealingPower, }, false, ignoreSum = true } -- s37619
 L["冻结的巨浪冲刷施法者前方的目标，造成%s点冰霜伤害并使攻击间隔延长%s%。"] = { false, { Stats.MeleeHaste, }, } -- s37730
-L["你的攻击有一定几率使你的护甲穿透等级提高%s，持续%s。这个效果可以叠加%s次。"] = { { Stats.ArmorPenetrationRating, }, false, false, } -- s38307
-L["你的伤害法术有一定几率使你的急速等级提高%s，持续%s秒。"] = { { Stats.MeleeHasteRating, Stats.RangedHasteRating, Stats.SpellHasteRating, }, false, } -- s38319
-L["你的法术爆击有一定几率令你的法术强度提高%s点，持续%s。"] = { { Stats.SpellDamage, Stats.HealingPower, }, false, } -- s38347
+L["你的攻击有一定几率使你的护甲穿透等级提高%s，持续%s sec。这个效果可以叠加%s次。"] = { { Stats.ArmorPenetrationRating, }, false, false, } -- s38307
+L["你的伤害法术有一定几率使你的急速等级提高%s，持续%s秒。"] = { { Stats.MeleeHasteRating, Stats.RangedHasteRating, Stats.SpellHasteRating, }, false, ignoreSum = true } -- s38319
+L["你的法术爆击有一定几率令你的法术强度提高%s点，持续%s sec。"] = { { Stats.SpellDamage, Stats.HealingPower, }, false, ignoreSum = true } -- s38347
 L["当你同时激活了一种空气图腾、一种大地图腾、一种火焰图腾和一种水图腾时，你可以获得每%s秒恢复%s点法力值、法术爆击等级提高%s、法术强度提高%s点的增益效果。"] = { false, { Stats.Spirit, }, { Stats.MeleeCritRating, Stats.RangedCritRating, Stats.SpellCritRating, }, { Stats.Intellect, Stats.HealingPower, }, } -- s61692
-L["造成的伤害提高%s%并且攻击间隔缩短%s%，持续%s。效果最多可以叠加%s次。"] = { false, { Stats.MeleeHaste, }, false, false, } -- s38449
-L["使一名盟友的奥术法术能量提高%s点，持续%s。"] = { { Stats.ArcaneDamage, }, false, } -- s38647
-L["使一位盟友的冰霜法术强度提高%s点，持续%s。"] = { { Stats.FrostDamage, }, false, } -- s38649
+L["造成的伤害提高%s%并且攻击间隔缩短%s%，持续%s sec。效果最多可以叠加%s次。"] = { false, { Stats.MeleeHaste, }, false, false, } -- s38449
+L["使一名盟友的奥术法术能量提高%s点，持续%s sec。"] = { { Stats.ArcaneDamage, }, false, } -- s38647
+L["使一位盟友的冰霜法术强度提高%s点，持续%s sec。"] = { { Stats.FrostDamage, }, false, } -- s38649
 L["法术强度降低%s点。"] = { { Stats.SpellDamage, Stats.HealingPower, }, } -- s38927
 L["一次野蛮的攻击，造成%s自然伤害并导致目标萎缩，每次降低%s点耐力和力量。效果最多叠加%s次。"] = { false, { Stats.Strength, Stats.Stamina, }, false, } -- s39015
 L["攻击间隔缩短%s%。"] = { { Stats.MeleeHaste, }, } -- s39031
 L["暗影死亡的能量冲击敌人，造成%s点暗影伤害并继续攻击下一个邻近的敌人。法术每一跳都会使受术者的暗影魔法抗性降低%s点。最多影响%s个目标。"] = { false, { Stats.ShadowResistance, }, false, } -- s39153
-L["使附近的目标陷入迷失，施法速度降低%s，持续%s。"] = { { Stats.SpellHaste, }, false, } -- s39261
-L["你每次对敌人造成近战或远程伤害，都可以在接下来的%s秒内获得%s点攻击强度加成，这个效果可以叠加最多%s次。你每次对敌人造成法术伤害，都可以在接下来的%s秒内获得%s点法术强度加成，这个效果可以叠加最多%s次。"] = { false, { Stats.GenericAttackPower, Stats.RangedAttackPower, }, false, false, false, false, } -- s39438
+L["使附近的目标陷入迷失，施法速度降低%s，持续%s sec。"] = { { Stats.SpellHaste, }, false, } -- s39261
+L["你每次对敌人造成近战或远程伤害，都可以在接下来的%s秒内获得%s点攻击强度加成，这个效果可以叠加最多%s次。你每次对敌人造成法术伤害，都可以在接下来的%s秒内获得%s点法术强度加成，这个效果可以叠加最多%s次。"] = { false, { Stats.GenericAttackPower, Stats.RangedAttackPower, }, false, false, false, false, ignoreSum = true } -- s39438
 L["护甲穿透等级提高%s。"] = { { Stats.ArmorPenetrationRating, }, } -- s39922
 L["使你的生命之树光环提供的治疗法术强度加成提高%s点，兽群领袖光环提供的爆击等级加成提高%s，枭兽光环提供的法术爆击等级加成提高%s。"] = { false, { Stats.MeleeCritRating, }, { Stats.SpellCritRating, }, } -- s39926
-L["近战和远程攻击急速等级提高%s，持续%s。"] = { { Stats.MeleeHasteRating, Stats.RangedHasteRating, }, false, } -- s39959
-L["在目标区域制造一场强烈的飓风，每%s秒对区域内的敌人造成%s点自然伤害，并使其攻击间隔延长%s%，持续%s。需要持续引导来维持法术。"] = { false, false, { Stats.MeleeHaste, }, false, } -- s40090
-L["吸取徽记中的能量，使急速等级提高%s，持续%s。"] = { { Stats.MeleeHasteRating, Stats.RangedHasteRating, Stats.SpellHasteRating, }, false, } -- s40396
-L["攻击强度提高%s点??续%s。"] = { { Stats.AttackPower, }, false, } -- s40466
-L["你的近战和远程攻击有一定几率使你的护甲穿透等级提高%s，持续%s秒。"] = { { Stats.ArmorPenetrationRating, }, false, } -- s40475
-L["你的腐蚀术每一跳都有%s%的几率使你获得%s点法术强度加成，效果持续%s。"] = { false, { Stats.SpellDamage, }, false, } -- s40478
-L["每%s秒对一名敌人造成自然伤害，并使其护甲值降低%s点。效果最多可以叠加%s次，持续%s。"] = { false, { Stats.Armor, }, false, false, } -- s40481
-L["你的审判技能也会令你的盾牌格挡值提高%s点，持续%s。"] = { { Stats.BlockValue, }, false, } -- s41042
+L["近战和远程攻击急速等级提高%s，持续%s sec。"] = { { Stats.MeleeHasteRating, Stats.RangedHasteRating, }, false, } -- s39959
+L["在目标区域制造一场强烈的飓风，每%s秒对区域内的敌人造成%s点自然伤害，并使其攻击间隔延长%s%，持续%s sec。需要持续引导来维持法术。"] = { false, false, { Stats.MeleeHaste, }, false, } -- s40090
+L["吸取徽记中的能量，使急速等级提高%s，持续%s sec。"] = { { Stats.MeleeHasteRating, Stats.RangedHasteRating, Stats.SpellHasteRating, }, false, } -- s40396
+L["攻击强度提高%s点??续%s sec。"] = { { Stats.AttackPower, }, false, } -- s40466
+L["你的近战和远程攻击有一定几率使你的护甲穿透等级提高%s，持续%s秒。"] = { { Stats.ArmorPenetrationRating, }, false, ignoreSum = true } -- s40475
+L["你的腐蚀术每一跳都有%s%的几率使你获得%s点法术强度加成，效果持续%s sec。"] = { false, { Stats.SpellDamage, }, false, ignoreSum = true } -- s40478
+L["每%s秒对一名敌人造成自然伤害，并使其护甲值降低%s点。效果最多可以叠加%s次，持续%s sec。"] = { false, { Stats.Armor, }, false, false, } -- s40481
+L["你的审判技能也会令你的盾牌格挡值提高%s点，持续%s sec。"] = { { Stats.BlockValue, }, false, ignoreSum = true } -- s41042
 L["攻击速度提高%s%。"] = { { Stats.MeleeHaste, }, } -- s41106
-L["危险的药膏麻痹目标的心智，使其施法速度降低%s%，持续%s。"] = { { Stats.SpellHaste, }, false, } -- s41190
-L["当你杀死一个可以为你提供经验值或荣誉值的目标之后，有%s%的几率获得%s点的法术强度加成，持续%s。这个效果每%s秒只能出现一次。"] = { false, { Stats.SpellDamage, Stats.HealingPower, }, false, false, } -- s41262
-L["使邻近小队成员对所有法术的魔法抗性提高%s，持续%s。"] = { { Stats.FireResistance, Stats.NatureResistance, Stats.FrostResistance, Stats.ShadowResistance, Stats.ArcaneResistance, }, false, } -- s41453
+L["危险的药膏麻痹目标的心智，使其施法速度降低%s%，持续%s sec。"] = { { Stats.SpellHaste, }, false, } -- s41190
+L["当你杀死一个可以为你提供经验值或荣誉值的目标之后，有%s%的几率获得%s点的法术强度加成，持续%s sec。这个效果每%s秒只能出现一次。"] = { false, { Stats.SpellDamage, Stats.HealingPower, }, false, false, ignoreSum = true } -- s41262
+L["使邻近小队成员对所有法术的魔法抗性提高%s，持续%s sec。"] = { { Stats.FireResistance, Stats.NatureResistance, Stats.FrostResistance, Stats.ShadowResistance, Stats.ArcaneResistance, }, false, } -- s41453
 L["使目标中毒，攻击间隔延长%s%，施法时间延长%s%，并于每%s秒造成%s点自然伤害。"] = { false, { Stats.SpellHaste, }, false, false, } -- s41978
 L["治疗效果降低%s%。\n恢复效果降低%s%。\n护甲值降低%s%。\n防御等级降低%s。"] = { false, { Stats.Defense, }, false, false, } -- s42017
 L["使目标衰老，力量降低%s点，移动速度降低%s%。"] = { { Stats.Strength, }, false, } -- s42702
 L["每次施放都使攻击速度提高%s%，体型增大%s%。效果最多叠加%s次。"] = { { Stats.MeleeHaste, }, false, false, } -- s42705
-L["对所有魔法的抗性提高%s点，施法者可在任意情况下保持%s%的法力值回复速度。另外还可以使你身上的所有不利魔法效果持续时间缩短%s%。法师在同一时间内只能保有一种魔法护甲效果。持续%s。"] = { { Stats.FireResistance, Stats.NatureResistance, Stats.FrostResistance, Stats.ShadowResistance, Stats.ArcaneResistance, }, false, false, false, } -- s43023
-L["在%s内恢复%s点法力值。饮水时必须保持坐姿。"] = { false, { Stats.GenericManaRegen, }, } -- s43182
-L["使目标的护甲值提高%s点，持续%s。"] = { { Stats.Armor, }, false, } -- s43196
+L["对所有魔法的抗性提高%s点，施法者可在任意情况下保持%s%的法力值回复速度。另外还可以使你身上的所有不利魔法效果持续时间缩短%s%。法师在同一时间内只能保有一种魔法护甲效果。持续%s sec。"] = { { Stats.FireResistance, Stats.NatureResistance, Stats.FrostResistance, Stats.ShadowResistance, Stats.ArcaneResistance, }, false, false, false, } -- s43023
+L["在%s sec内恢复%s点法力值。饮水时必须保持坐姿。"] = { false, { Stats.GenericManaRegen, }, } -- s43182
+L["使目标的护甲值提高%s点，持续%s sec。"] = { { Stats.Armor, }, false, } -- s43196
 L["使目标充满力量，施法速度提高%s%，移动速度提高%s%。"] = { { Stats.SpellHaste, }, false, } -- s43242
 L["使目标狂暴，攻击速度提高%s%。"] = { { Stats.MeleeHaste, }, } -- s43292
-L["有一定几率在受到伤害后腐蚀攻击者的魔法，使其施法速度降低%s，持续%s。"] = { { Stats.SpellHaste, }, false, } -- s43508
-L["对目标造成%s%武器伤害并使其护甲值降低%s点，持续%s。"] = { false, { Stats.Armor, }, false, } -- s43529
-L["诅咒目标，使其魔法抗性降低%s点，受到的魔法伤害提高%s%，持续%s。"] = { { Stats.FireResistance, Stats.NatureResistance, Stats.FrostResistance, Stats.ShadowResistance, Stats.ArcaneResistance, }, false, false, } -- s43556
-L["使一名盟友的攻击速度提升%s%，持续%s。"] = { { Stats.MeleeHaste, }, false, } -- s43578
+L["有一定几率在受到伤害后腐蚀攻击者的魔法，使其施法速度降低%s，持续%s sec。"] = { { Stats.SpellHaste, }, false, ignoreSum = true } -- s43508
+L["对目标造成%s%武器伤害并使其护甲值降低%s点，持续%s sec。"] = { false, { Stats.Armor, }, false, } -- s43529
+L["诅咒目标，使其魔法抗性降低%s点，受到的魔法伤害提高%s%，持续%s sec。"] = { { Stats.FireResistance, Stats.NatureResistance, Stats.FrostResistance, Stats.ShadowResistance, Stats.ArcaneResistance, }, false, false, } -- s43556
+L["使一名盟友的攻击速度提升%s%，持续%s sec。"] = { { Stats.MeleeHaste, }, false, } -- s43578
 L["对所有邻近敌人造成%s点自然伤害并使其攻击速度降低%s%。"] = { false, { Stats.MeleeHaste, }, } -- s43583
-L["使一名盟友的攻击速度提高%s%，持续%s，但每%s秒对该盟友造成%s点暗影伤害。"] = { { Stats.MeleeHaste, }, false, false, false, } -- s43664
-L["在%s内恢复%s点法力值。饮水时必须保持坐姿。如果你花费至少%s秒来饮水，你将获得启迪效果，精神值和爆击等级提高%s，持续%s。"] = { false, false, false, { Stats.MeleeCritRating, Stats.RangedCritRating, Stats.SpellCritRating, Stats.Spirit, }, false, } -- s43706
+L["使一名盟友的攻击速度提高%s%，持续%s sec，但每%s秒对该盟友造成%s点暗影伤害。"] = { { Stats.MeleeHaste, }, false, false, false, } -- s43664
+L["在%s sec内恢复%s点法力值。饮水时必须保持坐姿。如果你花费至少%s秒来饮水，你将获得启迪效果，精神值和爆击等级提高%s，持续%s sec。"] = { false, false, false, { Stats.MeleeCritRating, Stats.RangedCritRating, Stats.SpellCritRating, Stats.Spirit, }, false, ignoreSum = true } -- s43706
 L["死亡骑士发出怒吼，提升其近战攻击强度%s点。"] = { { Stats.AttackPower, }, } -- s43735
-L["你的月火术有一定几率使你获得%s点法术强度加成，持续%s。"] = { { Stats.SpellDamage, Stats.HealingPower, }, false, } -- s43739
-L["你的命令审判法术有一定几率使你获得%s点攻击强度加成，持续%s。对%s级或以上的玩家不生效。"] = { { Stats.AttackPower, }, false, false, } -- s43745
-L["你的闪电箭法术有一定几率使你的急速等级提高%s，持续%s。"] = { { Stats.MeleeHasteRating, Stats.RangedHasteRating, Stats.SpellHasteRating, }, false, } -- s43750
-L["命中等级和精神提高%s，持续%s。"] = { { Stats.MeleeHitRating, Stats.RangedHitRating, Stats.SpellHitRating, Stats.Spirit, }, false, } -- s43764
-L["使你的宠物的力量和耐力提高%s点，持续%s。"] = { { Stats.Strength, Stats.Stamina, }, false, } -- s43771
-L["你的近战攻击有%s%的几率令你的下一次攻击获得%s点护甲穿透等级，并降低你对当前目标的威胁值。"] = { false, { Stats.ArmorPenetrationRating, }, } -- s43816
-L["为附近所有友方目标施加祝福，使其攻击强度提高%s点，持续%s。"] = { { Stats.AttackPower, }, false, } -- s43940
-L["耐力和精神提高%s点。美酒节的啤酒：绝世美酒，回味无穷！持续%s。"] = { { Stats.Stamina, Stats.Spirit, }, false, } -- s44097
-L["力量和精神提高%s点。美酒节啤酒，味道好极了！持续%s。"] = { { Stats.Strength, Stats.Spirit, }, false, } -- s44106
+L["你的月火术有一定几率使你获得%s点法术强度加成，持续%s sec。"] = { { Stats.SpellDamage, Stats.HealingPower, }, false, ignoreSum = true } -- s43739
+L["你的命令审判法术有一定几率使你获得%s点攻击强度加成，持续%s sec。对%s级或以上的玩家不生效。"] = { { Stats.AttackPower, }, false, false, ignoreSum = true } -- s43745
+L["你的闪电箭法术有一定几率使你的急速等级提高%s，持续%s sec。"] = { { Stats.MeleeHasteRating, Stats.RangedHasteRating, Stats.SpellHasteRating, }, false, ignoreSum = true } -- s43750
+L["命中等级和精神提高%s，持续%s sec。"] = { { Stats.MeleeHitRating, Stats.RangedHitRating, Stats.SpellHitRating, Stats.Spirit, }, false, } -- s43764
+L["使你的宠物的力量和耐力提高%s点，持续%s sec。"] = { { Stats.Strength, Stats.Stamina, }, false, } -- s43771
+L["你的近战攻击有%s%的几率令你的下一次攻击获得%s点护甲穿透等级，并降低你对当前目标的威胁值。"] = { false, { Stats.ArmorPenetrationRating, }, ignoreSum = true } -- s43816
+L["为附近所有友方目标施加祝福，使其攻击强度提高%s点，持续%s sec。"] = { { Stats.AttackPower, }, false, } -- s43940
+L["耐力和精神提高%s点。美酒节的啤酒：绝世美酒，回味无穷！持续%s sec。"] = { { Stats.Stamina, Stats.Spirit, }, false, } -- s44097
+L["力量和精神提高%s点。美酒节啤酒，味道好极了！持续%s sec。"] = { { Stats.Strength, Stats.Spirit, }, false, } -- s44106
 L["使你的法术急速提高%s%。"] = { { Stats.SpellHaste, }, } -- s44400
-L["施法者被邪能笼罩，通过法术和魔法效果所恢复的生命值提高%s%，法术强度提高%s点。术士在同一时间内只能激活一种护甲法术。持续%s。"] = { false, { Stats.SpellDamage, }, false, } -- s44520
-L["在施放法术时，施法速度提高%s%。"] = { { Stats.SpellHaste, }, } -- s44604
-L["使目标充满力量，施法速度提高%s%，持续%s。"] = { { Stats.SpellHaste, }, false, } -- s44605
-L["使施法者的攻击速度提高%s%并且造成的物理伤害提高%s点，持续%s。"] = { { Stats.MeleeHaste, }, false, false, } -- s44779
-L["对施法者正面锥形范围内所有敌人造成冰霜伤害，并且使受影响目标的攻击速度降低%s%，持续%s。"] = { { Stats.MeleeHaste, }, false, } -- s44799
+L["施法者被邪能笼罩，通过法术和魔法效果所恢复的生命值提高%s%，法术强度提高%s点。术士在同一时间内只能激活一种护甲法术。持续%s sec。"] = { false, { Stats.SpellDamage, }, false, } -- s44520
+L["在施放法术时，施法速度提高%s%。"] = { { Stats.SpellHaste, }, ignoreSum = true } -- s44604
+L["使目标充满力量，施法速度提高%s%，持续%s sec。"] = { { Stats.SpellHaste, }, false, } -- s44605
+L["使施法者的攻击速度提高%s%并且造成的物理伤害提高%s点，持续%s sec。"] = { { Stats.MeleeHaste, }, false, false, } -- s44779
+L["对施法者正面锥形范围内所有敌人造成冰霜伤害，并且使受影响目标的攻击速度降低%s%，持续%s sec。"] = { { Stats.MeleeHaste, }, false, } -- s44799
 L["近战和远程命中几率降低%s%。"] = { { Stats.MeleeHit, Stats.RangedHit, }, } -- s45002
-L["使你的法术爆击几率提高%s%。在受到爆击之后获得专注意志效果，受到的所有伤害降低%s%，受到的治疗效果提高%s%，可叠加最多%s次。效果持续%s。"] = { { Stats.SpellCrit, }, false, false, false, false, } -- s45234
-L["使一个友方单位的智力提高%s点，持续%s。"] = { { Stats.Intellect, }, false, } -- s45525
+L["使你的法术爆击几率提高%s%。在受到爆击之后获得专注意志效果，受到的所有伤害降低%s%，受到的治疗效果提高%s%，可叠加最多%s次。效果持续%s sec。"] = { { Stats.SpellCrit, }, false, false, false, false, } -- s45234
+L["使一个友方单位的智力提高%s点，持续%s sec。"] = { { Stats.Intellect, }, false, } -- s45525
 L["太阳之井温暖的光辉强化了目标，使其命中几率提高%s%，并使敌人躲闪的几率降低%s%。"] = { { Stats.MeleeHit, Stats.RangedHit, }, false, } -- s45769
-L["使友方目标的护甲值提高%s点，所有属性提高%s点，所有抗性提高%s点，持续%s。只能在北风苔原生效。"] = { { Stats.Armor, }, { Stats.AllStats, }, false, false, } -- s46119
-L["攻击速度提高%s%。\n移动速度提高%s%。\n持续%s。"] = { { Stats.MeleeHaste, }, false, false, } -- s46160
-L["对目标造成%s点暗影伤害，并使其攻击速度降低%s%，持续%s。"] = { false, { Stats.MeleeHaste, }, false, } -- s46161
+L["使友方目标的护甲值提高%s点，所有属性提高%s点，所有抗性提高%s点，持续%s sec。只能在北风苔原生效。"] = { { Stats.Armor, }, { Stats.AllStats, }, false, false, } -- s46119
+L["攻击速度提高%s%。\n移动速度提高%s%。\n持续%s sec。"] = { { Stats.MeleeHaste, }, false, false, } -- s46160
+L["对目标造成%s点暗影伤害，并使其攻击速度降低%s%，持续%s sec。"] = { false, { Stats.MeleeHaste, }, false, } -- s46161
 L["造成的物理伤害提高%s点。"] = { { Stats.AverageWeaponDamage, }, } -- s46278
-L["使一名敌人的暗影抗性降低%s，持续%s。"] = { { Stats.ShadowResistance, }, false, } -- s46297
-L["使敌人的攻击间隔延长%s%，施法速度降低%s%，并且移动速度降低%s%，持续%s。"] = { { Stats.MeleeHaste, }, { Stats.SpellHaste, }, false, false, } -- s46299
+L["使一名敌人的暗影抗性降低%s，持续%s sec。"] = { { Stats.ShadowResistance, }, false, } -- s46297
+L["使敌人的攻击间隔延长%s%，施法速度降低%s%，并且移动速度降低%s%，持续%s sec。"] = { { Stats.MeleeHaste, }, { Stats.SpellHaste, }, false, false, } -- s46299
 L["爆击几率提高%s%，对攻击者造成火焰伤害。"] = { { Stats.MeleeCrit, Stats.RangedCrit, Stats.SpellCrit, }, } -- s46352
-L["使目标的护甲值降低%s ，持续%s。"] = { { Stats.Armor, }, false, } -- s46469
-L["使施法者的攻击速度提高%s%且造成的所有伤害提高%s%，持续%s。"] = { { Stats.MeleeHaste, }, false, false, } -- s46587
-L["在%s内恢复总计%s点生命值，进食时必须保持坐姿。如果你花费至少%s秒钟来进食，你的法术强度将提高%s点，持续%s。"] = { false, { Stats.SpellDamage, Stats.HealingPower, }, false, { Stats.SpellDamage, }, false, } -- s46683
-L["攻击间隔延长%s%。\n移动速度降低%s%。\n持续%s。"] = { { Stats.MeleeHaste, }, false, false, } -- s46744
-L["使附近小队成员的伤害提高%s%，攻击速度提高%s%，持续%s。"] = { false, { Stats.MeleeHaste, }, false, } -- s46763
+L["使目标的护甲值降低%s ，持续%s sec。"] = { { Stats.Armor, }, false, } -- s46469
+L["使施法者的攻击速度提高%s%且造成的所有伤害提高%s%，持续%s sec。"] = { { Stats.MeleeHaste, }, false, false, } -- s46587
+L["在%s sec内恢复总计%s点生命值，进食时必须保持坐姿。如果你花费至少%s秒钟来进食，你的法术强度将提高%s点，持续%s sec。"] = { false, { Stats.SpellDamage, Stats.HealingPower, }, false, { Stats.SpellDamage, }, false, ignoreSum = true } -- s46683
+L["攻击间隔延长%s%。\n移动速度降低%s%。\n持续%s sec。"] = { { Stats.MeleeHaste, }, false, false, ignoreSum = true } -- s46744
+L["使附近小队成员的伤害提高%s%，攻击速度提高%s%，持续%s sec。"] = { false, { Stats.MeleeHaste, }, false, } -- s46763
 L["increases spell power by %s"] = { { Stats.SpellDamage, Stats.HealingPower, }, } -- s47182
-L["当你的腐蚀术造成伤害时，你有%s%的几率获得施法速度提高%s%的效果，持续%s。"] = { false, { Stats.SpellHaste, }, false, } -- s47195
-L["攻击强度提高%s点，持续%s。你喝醉了！"] = { { Stats.GenericAttackPower, }, false, } -- s47217
-L["使施法者的攻击速度提高%s%，持续%s。效果可叠加。"] = { { Stats.MeleeHaste, }, false, } -- s47774
-L["使邻近友方单位的施法速度提高%s%，并使其法术伤害提高%s，持续%s。"] = { { Stats.SpellHaste, }, { Stats.SpellDamage, }, false, } -- s47791
-L["法术急速提高%s%，持续%s。"] = { { Stats.SpellHaste, }, false, } -- s47940
+L["当你的腐蚀术造成伤害时，你有%s%的几率获得施法速度提高%s%的效果，持续%s sec。"] = { false, { Stats.SpellHaste, }, false, ignoreSum = true } -- s47195
+L["攻击强度提高%s点，持续%s sec。你喝醉了！"] = { { Stats.GenericAttackPower, }, false, } -- s47217
+L["使施法者的攻击速度提高%s%，持续%s sec。效果可叠加。"] = { { Stats.MeleeHaste, }, false, } -- s47774
+L["使邻近友方单位的施法速度提高%s%，并使其法术伤害提高%s，持续%s sec。"] = { { Stats.SpellHaste, }, { Stats.SpellDamage, }, false, } -- s47791
+L["法术急速提高%s%，持续%s sec。"] = { { Stats.SpellHaste, }, false, } -- s47940
 L["restores %s mana per %s sec"] = { { Stats.GenericManaRegen, }, false, } -- s48014
-L["圣洁的能量充满施法者的体内，使护甲值提高%s点，法术强度提高%s点。牧师每受到一次近战或远程伤害，就消耗一层心灵之火效果。持续%s或者直到消耗了%s次效果。"] = { { Stats.Armor, }, { Stats.HealingPower, Stats.SpellDamage, }, false, false, } -- s48040
-L["向敌人吐出一颗酸性球体，对其造成%s点自然伤害，并使他们的护甲值降低%s。最多可叠加%s次，持续%s。"] = { false, { Stats.Armor, }, false, false, } -- s48132
-L["对周围的敌人造成%s点伤害并使其生命值降低%s点。该效果最多可以叠加%s次，持续%s。"] = { false, { Stats.Health, }, false, false, } -- s48256
-L["%s后治疗所有盟军，恢复%s点生命值。"] = { false, { Stats.HealthRegen, }, } -- s48264
+L["圣洁的能量充满施法者的体内，使护甲值提高%s点，法术强度提高%s点。牧师每受到一次近战或远程伤害，就消耗一层心灵之火效果。持续%s sec或者直到消耗了%s次效果。"] = { { Stats.Armor, }, { Stats.HealingPower, Stats.SpellDamage, }, false, false, } -- s48040
+L["向敌人吐出一颗酸性球体，对其造成%s点自然伤害，并使他们的护甲值降低%s。最多可叠加%s次，持续%s sec。"] = { false, { Stats.Armor, }, false, false, } -- s48132
+L["对周围的敌人造成%s点伤害并使其生命值降低%s点。该效果最多可以叠加%s次，持续%s sec。"] = { false, { Stats.Health, }, false, false, } -- s48256
+L["%s sec后治疗所有盟军，恢复%s点生命值。"] = { false, { Stats.HealthRegen, }, } -- s48264
 L["死亡骑士体内充满邪恶的愤怒气息，攻击速度提高%s%，移动速度提高%s%，所有技能的公共冷却时间缩短%s%s秒。同一时间内只能激活一种灵气。"] = { { Stats.MeleeHaste, }, false, false, false, } -- s48265
-L["你的撕碎、重殴和裂伤技能使目标受到感染伤口效果的影响，移动速度降低%s%，攻击速度降低%s%。效果持续%s。"] = { false, { Stats.MeleeHaste, }, false, } -- s48483
+L["你的撕碎、重殴和裂伤技能使目标受到感染伤口效果的影响，移动速度降低%s%，攻击速度降低%s%。效果持续%s sec。"] = { false, { Stats.MeleeHaste, }, false, ignoreSum = true } -- s48483
 L["法力值恢复提高%s点。"] = { { Stats.GenericManaRegen, }, } -- s49623
-L["对附近的敌人造成%s点自然伤害，使其攻击间隔延长%s%，移动速度降低%s%，持续%s。"] = { false, { Stats.MeleeHaste, }, false, false, } -- s48783
-L["你的裂伤技能有一定几率使你的敏捷提高%s点，持续%s。"] = { { Stats.Agility, }, false, } -- s48833
-L["你的震击法术有一定几率使你的攻击强度提高%s点，持续%s。"] = { { Stats.AttackPower, }, false, } -- s48837
-L["使周围敌人造成的伤害降低%s持续%s。"] = { { Stats.SpellDamage, }, false, } -- s48849
+L["对附近的敌人造成%s点自然伤害，使其攻击间隔延长%s%，移动速度降低%s%，持续%s sec。"] = { false, { Stats.MeleeHaste, }, false, false, } -- s48783
+L["你的裂伤技能有一定几率使你的敏捷提高%s点，持续%s sec。"] = { { Stats.Agility, }, false, ignoreSum = true } -- s48833
+L["你的震击法术有一定几率使你的攻击强度提高%s点，持续%s sec。"] = { { Stats.AttackPower, }, false, ignoreSum = true } -- s48837
+L["使周围敌人造成的伤害降低%s持续%s sec。"] = { { Stats.SpellDamage, }, false, } -- s48849
 L["使你的法术命中几率提高%s%，并使你所施放的造成持续伤害的疾病效果被驱散的几率降低%s%。"] = { { Stats.SpellHit, }, false, } -- s48962
 L["使你的近战武器、法术和技能的爆击几率提高%s%。"] = { { Stats.MeleeCrit, Stats.RangedCrit, Stats.SpellCrit, }, } -- s48987
-L["攻击速度提高%s%。施法者的近战攻击会使目标受到撕碎效果影响，在%s内承受的物理伤害提高%s点。该效果持续%s。"] = { { Stats.MeleeHaste, }, false, false, false, } -- s49121
-L["使用狼化巫术，在%s之后将施法者变为狼之幽魂。在狼之幽魂形态下造成的物理伤害增加%s，攻击速度提高%s%，施法者不能被减速也无法停止，在此形态下不能施法，持续%s。"] = { false, { Stats.SpellDamage, }, false, false, } -- s49180
+L["攻击速度提高%s%。施法者的近战攻击会使目标受到撕碎效果影响，在%s sec内承受的物理伤害提高%s点。该效果持续%s sec。"] = { { Stats.MeleeHaste, }, false, false, false, } -- s49121
+L["使用狼化巫术，在%s sec之后将施法者变为狼之幽魂。在狼之幽魂形态下造成的物理伤害增加%s，攻击速度提高%s%，施法者不能被减速也无法停止，在此形态下不能施法，持续%s sec。"] = { false, { Stats.SpellDamage, }, false, false, } -- s49180
 L["使你的单手近战武器的命中几率提高%s%，并使你的副手武器所造成的伤害提高%s%。"] = { { Stats.MeleeHit, Stats.RangedHit, }, false, } -- s49226
 L["使你所造成的伤害提高%s%，并且可以看清敌人的真正面目。只能在银溪丘陵使用。"] = { { Stats.SpellDamage, }, } -- s49559
-L["你每次施放一个法术，都有一定几率获得每%s秒恢复最多%s点法力值的效果，持续%s。"] = { false, { Stats.GenericManaRegen, }, false, } -- s49622
+L["你每次施放一个法术，都有一定几率获得每%s秒恢复最多%s点法力值的效果，持续%s sec。"] = { false, { Stats.GenericManaRegen, }, false, ignoreSum = true } -- s49622
 L["符文之力，可以使体型增大，攻击强度提高%s点。"] = { { Stats.AttackPower, }, } -- s49643
-L["使用机关枪扫射，每%s秒造成%s点伤害，持续%s。\n开火时命中几率降低%s%。"] = { false, false, false, { Stats.MeleeHit, Stats.RangedHit, }, } -- s49981
+L["使用机关枪扫射，每%s秒造成%s点伤害，持续%s sec。\n开火时命中几率降低%s%。"] = { false, false, false, { Stats.MeleeHit, Stats.RangedHit, }, } -- s49981
 L["每次成功的攻击都将使物理伤害提高%s点。效果最多叠加%s次。"] = { { Stats.AverageWeaponDamage, }, false, } -- s50045
-L["命中几率降低%s% ，持续%s。"] = { { Stats.MeleeHit, Stats.RangedHit, Stats.SpellHit, }, false, } -- s50047
-L["在目标区域制造一场强烈的飓风，每%s秒对区域内的敌人造成%s点自然伤害，并使其攻击间隔延长%s%，持续%s。"] = { false, false, { Stats.MeleeHaste, }, false, } -- s50105
+L["命中几率降低%s% ，持续%s sec。"] = { { Stats.MeleeHit, Stats.RangedHit, Stats.SpellHit, }, false, } -- s50047
+L["在目标区域制造一场强烈的飓风，每%s秒对区域内的敌人造成%s点自然伤害，并使其攻击间隔延长%s%，持续%s sec。"] = { false, false, { Stats.MeleeHaste, }, false, } -- s50105
 L["使你的法术爆击几率提高%s%。"] = { { Stats.SpellCrit, }, } -- s50122
 L["抽取周围敌人的魔法，使你造成的伤害提高%s%并使周围敌人的伤害和治疗效果降低%s点。"] = { false, { Stats.HealingPower, Stats.SpellDamage, }, } -- s50132
-L["使施法者的施法速度提高%s%并使其法术伤害提高%s点，持续%s。"] = { { Stats.SpellHaste, }, { Stats.SpellDamage, }, false, } -- s50182
+L["使施法者的施法速度提高%s%并使其法术伤害提高%s点，持续%s sec。"] = { { Stats.SpellHaste, }, { Stats.SpellDamage, }, false, } -- s50182
 L["疯狂地挥动连枷。命中几率降低%s%。"] = { { Stats.MeleeHit, Stats.RangedHit, }, } -- s50188
-L["护甲值提高%s%，持续%s。"] = { { Stats.Armor, }, false, } -- s50204
-L["使施法者的移动速度提高%s%，持续%s，并且使用该技能后的前%s次攻击都会造成%s点额外伤害。"] = { false, false, false, { Stats.AverageWeaponDamage, }, } -- s50262
-L["使附近敌人的攻击强度降低%s点，持续%s。\n造成魔法伤害的能力降低%s点 ，持续%s。"] = { { Stats.AttackPower, }, false, { Stats.SpellDamage, }, false, } -- s50267
+L["护甲值提高%s%，持续%s sec。"] = { { Stats.Armor, }, false, } -- s50204
+L["使施法者的移动速度提高%s%，持续%s sec，并且使用该技能后的前%s次攻击都会造成%s点额外伤害。"] = { false, false, false, { Stats.AverageWeaponDamage, }, } -- s50262
+L["使附近敌人的攻击强度降低%s点，持续%s sec。\n造成魔法伤害的能力降低%s点 ，持续%s sec。"] = { { Stats.AttackPower, }, false, { Stats.SpellDamage, }, false, } -- s50267
 L["使你目标未命中的几率提高%s%，并使其移动速度降低%s%。"] = { { Stats.MeleeHit, Stats.RangedHit, }, { Stats.SpellHit, }, } -- s50269
 L["使附近敌人受到的法术伤害最多提高%s点。"] = { { Stats.SpellDamage, }, } -- s50275
 L["召唤蜂拥的虫群，对站在虫群中的目标造成%s点自然伤害。\n并使他们攻击命中的几率降低%s%。"] = { false, { Stats.MeleeHit, Stats.RangedHit, Stats.SpellHit, }, } -- s50283
-L["激活之后，这个技能使你暂时获得相当于生命值上限%s%的生命值，持续%s。只能在熊、猎豹和巨熊形态下使用。效果消失后，额外的生命值会被扣除。"] = { { Stats.Health, }, false, } -- s50322
-L["灾尸变得愤怒，造成的物理伤害提高%s点并使承受的伤害降低%s%，持续%s。"] = { { Stats.AverageWeaponDamage, }, false, false, } -- s50332
-L["使施法者造成的物理伤害提高%s点，移动速度提高%s%，持续%s。"] = { { Stats.AverageWeaponDamage, }, false, false, } -- s50346
-L["如果敌人在你激活了冰霜灵气的状态下近战攻击命中你，有%s%的几率使他们的移动速度降低%s%，攻击间隔延长%s%，持续%s。"] = { false, false, { Stats.MeleeHaste, }, false, } -- s50459
-L["对施法者正面%s码锥形范围内所有敌人造成%s点冰霜伤害，并且使受影响目标的攻击速度降低%s%，持续%s。"] = { false, false, { Stats.MeleeHaste, }, false, } -- s50505
-L["使施法者的攻击速度提高%s%且造成的物理伤害提高%s%，持续%s。"] = { { Stats.MeleeHaste, }, false, false, } -- s50627
-L["向敌人的眼睛里泼洒沥青，使其命中几率降低%s%，持续%s。"] = { { Stats.MeleeHit, Stats.RangedHit, }, false, } -- s50701
-L["使你的宠物的攻击强度提高%s点，持续%s。"] = { { Stats.AttackPower, }, false, } -- s50708
-L["每一次攻击都使先锋军获得力量，使施法者造成的物理伤害提高%s点，持续%s。"] = { { Stats.AverageWeaponDamage, }, false, } -- s50713
-L["使一名敌人的力量降低%s，敏捷降低%s，持续%s。"] = { { Stats.Strength, }, { Stats.Agility, }, false, } -- s50739
-L["使一名盟友的攻击速度提高%s%，持续%s。"] = { { Stats.MeleeHaste, }, false, } -- s50743
-L["你吸取带有你所施加的冰冷触摸效果的目标身上的热量，使得目标的近战攻击速度降低的同时，你自身的近战攻击速度提高%s%，持续%s。"] = { { Stats.MeleeHaste, }, false, } -- s50882
-L["你吸取带有你所施加的冰霜疫病效果的目标身上的热量，使得目标的近战攻击速度降低的同时，你自身的近战攻击速度提高%s%，持续%s秒。"] = { false, { Stats.MeleeHaste, }, } -- s50887
-L["使护甲提高%s，并使魔法抗性提高%s点，持续%s。"] = { { Stats.Armor, }, { Stats.FireResistance, Stats.NatureResistance, Stats.FrostResistance, Stats.ShadowResistance, Stats.ArcaneResistance, }, false, } -- s50994
+L["激活之后，这个技能使你暂时获得相当于生命值上限%s%的生命值，持续%s sec。只能在熊、猎豹和巨熊形态下使用。效果消失后，额外的生命值会被扣除。"] = { { Stats.Health, }, false, } -- s50322
+L["灾尸变得愤怒，造成的物理伤害提高%s点并使承受的伤害降低%s%，持续%s sec。"] = { { Stats.AverageWeaponDamage, }, false, false, } -- s50332
+L["使施法者造成的物理伤害提高%s点，移动速度提高%s%，持续%s sec。"] = { { Stats.AverageWeaponDamage, }, false, false, } -- s50346
+L["如果敌人在你激活了冰霜灵气的状态下近战攻击命中你，有%s%的几率使他们的移动速度降低%s%，攻击间隔延长%s%，持续%s sec。"] = { false, false, { Stats.MeleeHaste, }, false, } -- s50459
+L["对施法者正面%s码锥形范围内所有敌人造成%s点冰霜伤害，并且使受影响目标的攻击速度降低%s%，持续%s sec。"] = { false, false, { Stats.MeleeHaste, }, false, } -- s50505
+L["使施法者的攻击速度提高%s%且造成的物理伤害提高%s%，持续%s sec。"] = { { Stats.MeleeHaste, }, false, false, } -- s50627
+L["向敌人的眼睛里泼洒沥青，使其命中几率降低%s%，持续%s sec。"] = { { Stats.MeleeHit, Stats.RangedHit, }, false, } -- s50701
+L["使你的宠物的攻击强度提高%s点，持续%s sec。"] = { { Stats.AttackPower, }, false, } -- s50708
+L["每一次攻击都使先锋军获得力量，使施法者造成的物理伤害提高%s点，持续%s sec。"] = { { Stats.AverageWeaponDamage, }, false, } -- s50713
+L["使一名敌人的力量降低%s，敏捷降低%s，持续%s sec。"] = { { Stats.Strength, }, { Stats.Agility, }, false, } -- s50739
+L["使一名盟友的攻击速度提高%s%，持续%s sec。"] = { { Stats.MeleeHaste, }, false, } -- s50743
+L["你吸取带有你所施加的冰冷触摸效果的目标身上的热量，使得目标的近战攻击速度降低的同时，你自身的近战攻击速度提高%s%，持续%s sec。"] = { { Stats.MeleeHaste, }, false, } -- s50882
+L["你吸取带有你所施加的冰霜疫病效果的目标身上的热量，使得目标的近战攻击速度降低的同时，你自身的近战攻击速度提高%s%，持续%s秒。"] = { false, { Stats.MeleeHaste, }, ignoreSum = true } -- s50887
+L["使护甲提高%s，并使魔法抗性提高%s点，持续%s sec。"] = { { Stats.Armor, }, { Stats.FireResistance, Stats.NatureResistance, Stats.FrostResistance, Stats.ShadowResistance, Stats.ArcaneResistance, }, false, } -- s50994
 L["你的墓穴热病转化为黑色热疫，除了令疾病效果对目标造成的伤害提高之外，还使其受到的魔法伤害提高%s%。另外，你的武器和法术攻击的爆击几率提高%s%。"] = { false, { Stats.MeleeCrit, Stats.RangedCrit, Stats.SpellCrit, }, } -- s51099
-L["造成的伤害提高%s%并且施法速度提高%s%，持续%s。"] = { false, { Stats.SpellHaste, }, false, } -- s51170
+L["造成的伤害提高%s%并且施法速度提高%s%，持续%s sec。"] = { false, { Stats.SpellHaste, }, false, } -- s51170
 L["施放生命绽放时，使你的总法术急速提高%s%，并使你的公共冷却时间缩减少%s%。"] = { { Stats.SpellHaste, }, false, } -- s51179
 L["使你的攻击强度提高%s点。"] = { { Stats.AttackPower, }, } -- s51225
 L["使你的耐力值提高%s点。"] = { { Stats.Stamina, }, } -- s51263
-L["为友方目标施加祝福，使其攻击强度提高%s点，持续%s。只能在祖达克使用。"] = { { Stats.GenericAttackPower, }, false, } -- s51265
-L["呕吐造成%s点自然伤害，并使敌人的命中几率降低%s%，持续%s。"] = { false, { Stats.MeleeHit, Stats.RangedHit, }, false, } -- s51356
+L["为友方目标施加祝福，使其攻击强度提高%s点，持续%s sec。只能在祖达克使用。"] = { { Stats.GenericAttackPower, }, false, } -- s51265
+L["呕吐造成%s点自然伤害，并使敌人的命中几率降低%s%，持续%s sec。"] = { false, { Stats.MeleeHit, Stats.RangedHit, }, false, } -- s51356
 L["当元素集中天赋触发节能施法效果时，你的法术伤害提高%s%。此外，%s码内的小队和团队成员的法术爆击几率提高%s%。"] = { false, false, { Stats.SpellCrit, }, } -- s51466
-L["使目标的攻击速度提高%s%，造成的物理伤害提高%s%，持续%s。"] = { { Stats.MeleeHaste, }, false, false, } -- s51499
+L["使目标的攻击速度提高%s%，造成的物理伤害提高%s%，持续%s sec。"] = { { Stats.MeleeHaste, }, false, false, } -- s51499
 L["使你的法术爆击几率提高%s%，对生命值低于%s%的目标施加大地生命武器的持续治疗效果的几率提高%s%。"] = { { Stats.SpellCrit, }, false, false, } -- s51554
-L["用头猛撞敌人，造成%s%武器伤害并使其躲闪和招架攻击的几率降低%s%，持续%s。"] = { false, { Stats.Dodge, Stats.Parry, }, false, } -- s51601
+L["用头猛撞敌人，造成%s%武器伤害并使其躲闪和招架攻击的几率降低%s%，持续%s sec。"] = { false, { Stats.Dodge, Stats.Parry, }, false, } -- s51601
 L["用能量灌注目标，使其施法速度提高%s%。"] = { { Stats.SpellHaste, }, } -- s51605
-L["使一名盟友的施法速度提高%s%，持续%s。"] = { { Stats.SpellHaste, }, false, } -- s51777
-L["施放秘法箭，撕裂敌人与物质世界的联系，造成%s点奥术伤害，但会使目标的爆击几率提高%s%，持续%s。\n最多叠加%s次。"] = { false, { Stats.MeleeCrit, Stats.RangedCrit, }, false, false, } -- s51787
-L["使目标的智力提高%s点，法术命中等级提高%s，持续%s。"] = { { Stats.Intellect, }, { Stats.SpellHitRating, }, false, } -- s51799
+L["使一名盟友的施法速度提高%s%，持续%s sec。"] = { { Stats.SpellHaste, }, false, } -- s51777
+L["施放秘法箭，撕裂敌人与物质世界的联系，造成%s点奥术伤害，但会使目标的爆击几率提高%s%，持续%s sec。\n最多叠加%s次。"] = { false, { Stats.MeleeCrit, Stats.RangedCrit, }, false, false, } -- s51787
+L["使目标的智力提高%s点，法术命中等级提高%s，持续%s sec。"] = { { Stats.Intellect, }, { Stats.SpellHitRating, }, false, } -- s51799
 L["使施法者的攻击速度提高%s%，对敌人造成的物理伤害提高%s%。"] = { { Stats.MeleeHaste, }, false, } -- s51819
-L["每%s秒造成%s点自然伤害，持续%s。爆击几率提高%s%，爆击伤害提高%s%。"] = { false, { Stats.MeleeCrit, Stats.RangedCrit, Stats.SpellCrit, }, false, { Stats.MeleeCrit, Stats.RangedCrit, }, false, } -- s51950
-L["你的撕碎和横扫技能有一定几率使你获得%s点力量值加成，持续%s。"] = { { Stats.Strength, }, false, } -- s52020
-L["为友方目标施加祝福，使其每%s秒恢复%s点法力值，持续%s。只能在祖达克使用。"] = { false, { Stats.GenericManaRegen, }, false, } -- s52051
-L["召唤先知的力量，使施法者的法术伤害提高%s，持续%s。"] = { { Stats.SpellDamage, }, false, } -- s52281
-L["护甲值提高%s点，伤害提高%s%，持续%s。"] = { { Stats.Armor, }, false, false, } -- s52309
-L["招架等级提高%s，持续%s。"] = { { Stats.ParryRating, }, false, } -- s52419
-L["导致你的生命值低于%s%的近战攻击将令你的招架等级提高%s ，持续%s。这个效果每%s秒只能触发一次。"] = { { Stats.ParryRating, }, { Stats.ParryRating, }, false, false, } -- s52420
+L["每%s秒造成%s点自然伤害，持续%s sec。爆击几率提高%s%，爆击伤害提高%s%。"] = { false, { Stats.MeleeCrit, Stats.RangedCrit, Stats.SpellCrit, }, false, { Stats.MeleeCrit, Stats.RangedCrit, }, false, } -- s51950
+L["你的撕碎和横扫技能有一定几率使你获得%s点力量值加成，持续%s sec。"] = { { Stats.Strength, }, false, ignoreSum = true } -- s52020
+L["为友方目标施加祝福，使其每%s秒恢复%s点法力值，持续%s sec。只能在祖达克使用。"] = { false, { Stats.GenericManaRegen, }, false, } -- s52051
+L["召唤先知的力量，使施法者的法术伤害提高%s，持续%s sec。"] = { { Stats.SpellDamage, }, false, } -- s52281
+L["护甲值提高%s点，伤害提高%s%，持续%s sec。"] = { { Stats.Armor, }, false, false, } -- s52309
+L["招架等级提高%s，持续%s sec。"] = { { Stats.ParryRating, }, false, } -- s52419
+L["导致你的生命值低于%s%的近战攻击将令你的招架等级提高%s ，持续%s sec。这个效果每%s秒只能触发一次。"] = { { Stats.ParryRating, }, { Stats.ParryRating, }, false, false, ignoreSum = true } -- s52420
 L["使附近队友的护甲值提高%s点。"] = { { Stats.Armor, }, } -- s52442
-L["使施法者的攻击速度提高%s%，对敌人造成的物理伤害提高%s%，持续%s。施法者无法被阻止。"] = { { Stats.MeleeHaste, }, false, false, } -- s52461
-L["使施法者的攻击速度提高%s%，但是物理伤害能力降低%s%，持续%s。"] = { { Stats.MeleeHaste, }, false, false, } -- s52470
-L["钉刺目标，使其命中几率降低%s%，持续%s。每个猎人在同一时间内只能对一个目标使用一种钉刺。"] = { { Stats.MeleeHit, Stats.RangedHit, Stats.SpellHit, }, false, } -- s52604
-L["使施法者近战爆击的几率提高%s%，持续%s。"] = { { Stats.MeleeCrit, Stats.RangedCrit, }, false, } -- s52624
-L["削弱目标，使其造成的伤害降低%s点，受到的治疗效果降低%s%，持续%s。"] = { { Stats.AverageWeaponDamage, }, false, false, } -- s52645
-L["%s之后为施法者恢复%s点生命值。"] = { false, { Stats.HealthRegen, }, } -- s52714
-L["在施放真言术：盾之后，使你的下一个法术获得%s%的法术急速，并使你的真言术：盾所吸收的伤害值提高，数值相当于你的法术强度的%s%。"] = { { Stats.SpellHaste, }, false, } -- s52795
-L["使你变得醉醺醺的，在%s内恢复总计%s点法力值。饮酒时必须保持坐姿。"] = { false, { Stats.GenericManaRegen, }, } -- s52911
+L["使施法者的攻击速度提高%s%，对敌人造成的物理伤害提高%s%，持续%s sec。施法者无法被阻止。"] = { { Stats.MeleeHaste, }, false, false, } -- s52461
+L["使施法者的攻击速度提高%s%，但是物理伤害能力降低%s%，持续%s sec。"] = { { Stats.MeleeHaste, }, false, false, } -- s52470
+L["钉刺目标，使其命中几率降低%s%，持续%s sec。每个猎人在同一时间内只能对一个目标使用一种钉刺。"] = { { Stats.MeleeHit, Stats.RangedHit, Stats.SpellHit, }, false, } -- s52604
+L["使施法者近战爆击的几率提高%s%，持续%s sec。"] = { { Stats.MeleeCrit, Stats.RangedCrit, }, false, } -- s52624
+L["削弱目标，使其造成的伤害降低%s点，受到的治疗效果降低%s%，持续%s sec。"] = { { Stats.AverageWeaponDamage, }, false, false, } -- s52645
+L["%s sec之后为施法者恢复%s点生命值。"] = { false, { Stats.HealthRegen, }, } -- s52714
+L["在施放真言术：盾之后，使你的下一个法术获得%s%的法术急速，并使你的真言术：盾所吸收的伤害值提高，数值相当于你的法术强度的%s%。"] = { { Stats.SpellHaste, }, false, ignoreSum = true } -- s52795
+L["使你变得醉醺醺的，在%s sec内恢复总计%s点法力值。饮酒时必须保持坐姿。"] = { false, { Stats.GenericManaRegen, }, } -- s52911
 L["由于长年从事剥皮工作，你变得非常敏捷灵巧，急速等级提高%s。"] = { { Stats.MeleeHasteRating, Stats.RangedHasteRating, Stats.SpellHasteRating, }, } -- s53128
 L["由于长期从事采矿工作，你变得非常强壮，耐力值提高%s点。"] = { { Stats.Stamina, }, } -- s53040
 L["目标变成一名狼人。变身时，目标不能施法，但攻击强度提高%s点。"] = { { Stats.AttackPower, }, } -- s53095
 L["由于长年从死去的动物身上剥皮，你积累了非常丰富的解剖学知识，爆击等级提高%s。"] = { { Stats.MeleeCritRating, Stats.RangedCritRating, Stats.SpellCritRating, }, } -- s53125
 L["使你的宠物的护甲值提高%s%，躲闪几率提高%s%。"] = { false, { Stats.Dodge, }, } -- s53175
-L["在目标区域制造一场强烈的风暴，对该区域中的所有敌人每%s秒造成%s点自然伤害，并使其攻击间隔延长%s%，持续%s。"] = { false, false, { Stats.MeleeHaste, }, false, } -- s53229
-L["在%s内恢复总计%s点生命值，进食时必须保持坐姿。如果你花费至少%s秒钟来进食，你的耐力和精神将提高%s点，持续%s。"] = { false, { Stats.Stamina, Stats.Spirit, }, false, { Stats.Stamina, }, false, } -- s53283
-L["在%s内恢复%s点法力值。饮水时必须保持坐姿。如果你花费至少%s秒饮水，你的体形会增大。"] = { false, { Stats.GenericManaRegen, }, false, } -- s53373
+L["在目标区域制造一场强烈的风暴，对该区域中的所有敌人每%s秒造成%s点自然伤害，并使其攻击间隔延长%s%，持续%s sec。"] = { false, false, { Stats.MeleeHaste, }, false, } -- s53229
+L["在%s sec内恢复总计%s点生命值，进食时必须保持坐姿。如果你花费至少%s秒钟来进食，你的耐力和精神将提高%s点，持续%s sec。"] = { false, { Stats.Stamina, Stats.Spirit, }, false, { Stats.Stamina, }, false, ignoreSum = true } -- s53283
+L["在%s sec内恢复%s点法力值。饮水时必须保持坐姿。如果你花费至少%s秒饮水，你的体形会增大。"] = { false, { Stats.GenericManaRegen, }, false, } -- s53373
 L["increases attack power by %s"] = { { Stats.GenericAttackPower, }, } -- s53419
 L["使你的圣光审判和智慧审判的射程延长%s码，命中几率提高%s%。"] = { false, { Stats.MeleeHit, Stats.RangedHit, Stats.SpellHit, }, } -- s53556
 L["使你在施放稳固射击时因受到伤害而承受的施法推迟时间缩短%s%，并使你的命中几率提高%s%。"] = { false, { Stats.MeleeHit, Stats.RangedHit, }, } -- s53620
-L["护甲值降低%s%，但是攻击强度提高%s点，持续%s。"] = { false, { Stats.GenericAttackPower, }, false, } -- s53650
-L["附近所有小队成员的法术强度提高%s点，攻击强度提高%s点，持续%s。"] = { false, { Stats.AttackPower, }, false, } -- s53681
-L["精神值提高%s点，持续%s。守护药剂。"] = { { Stats.Spirit, }, false, } -- s53747
-L["使你的力量值提高%s点，持续%s。战斗药剂。"] = { { Stats.Strength, }, false, } -- s53748
-L["韧性等级提高%s，持续%s。这种效果在死亡后仍可继续存在。战斗和守护药剂。"] = { { Stats.ResilienceRating, }, false, } -- s53752
-L["攻击强度提高%s点，持续%s。这种效果在死亡后仍可继续存在。战斗和守护药剂。"] = { { Stats.GenericAttackPower, }, false, } -- s53760
-L["护甲值提高%s点，持续%s。守护药剂。"] = { { Stats.Armor, }, false, } -- s53763
-L["爆击等级提高%s，法术强度提高%s点，持续%s。"] = { { Stats.MeleeCritRating, Stats.RangedCritRating, Stats.SpellCritRating, Stats.HealingPower, }, { Stats.SpellDamage, }, false, } -- s53909
-L["阻止并移除狂乱效果。在%s内不能使用自然法术，施法速度降低%s%。"] = { false, { Stats.SpellHaste, }, } -- s54097
+L["护甲值降低%s%，但是攻击强度提高%s点，持续%s sec。"] = { false, { Stats.GenericAttackPower, }, false, } -- s53650
+L["附近所有小队成员的法术强度提高%s点，攻击强度提高%s点，持续%s sec。"] = { false, { Stats.AttackPower, }, false, } -- s53681
+L["精神值提高%s点，持续%s sec。守护药剂。"] = { { Stats.Spirit, }, false, } -- s53747
+L["使你的力量值提高%s点，持续%s sec。战斗药剂。"] = { { Stats.Strength, }, false, } -- s53748
+L["韧性等级提高%s，持续%s sec。这种效果在死亡后仍可继续存在。战斗和守护药剂。"] = { { Stats.ResilienceRating, }, false, } -- s53752
+L["攻击强度提高%s点，持续%s sec。这种效果在死亡后仍可继续存在。战斗和守护药剂。"] = { { Stats.GenericAttackPower, }, false, } -- s53760
+L["护甲值提高%s点，持续%s sec。守护药剂。"] = { { Stats.Armor, }, false, } -- s53763
+L["爆击等级提高%s，法术强度提高%s点，持续%s sec。"] = { { Stats.MeleeCritRating, Stats.RangedCritRating, Stats.SpellCritRating, Stats.HealingPower, }, { Stats.SpellDamage, }, false, } -- s53909
+L["阻止并移除狂乱效果。在%s sec内不能使用自然法术，施法速度降低%s%。"] = { false, { Stats.SpellHaste, }, } -- s54097
 L["increases the target's spell critical strike chance by %s%"] = { { Stats.SpellCrit, }, } -- s54283
-L["holy power infuses the target, increasing their spirit by %s for %s"] = { { Stats.Armor, }, false, } -- s54303
-L["施法速度提高%s%，造成的物理伤害提高%s%，持续%s。"] = { { Stats.SpellHaste, }, false, false, } -- s54312
-L["使施法者躲闪的几率提高%s%，持续%s。"] = { { Stats.Dodge, }, false, } -- s54386
+L["holy power infuses the target, increasing their spirit by %s for %s sec"] = { { Stats.Armor, }, false, } -- s54303
+L["施法速度提高%s%，造成的物理伤害提高%s%，持续%s sec。"] = { { Stats.SpellHaste, }, false, false, } -- s54312
+L["使施法者躲闪的几率提高%s%，持续%s sec。"] = { { Stats.Dodge, }, false, } -- s54386
 L["使小队和团队成员的智力提高%s点，精神提高%s点。"] = { { Stats.Intellect, }, { Stats.Spirit, }, } -- s54424
-L["你的虚空行者的生命值上限暂时提高%s%，通过攻击产生的威胁值提高%s%，持续%s。这个效果消失后，额外的生命值和威胁值加成效果会被扣除。"] = { { Stats.Health, }, false, false, } -- s54443
+L["你的虚空行者的生命值上限暂时提高%s%，通过攻击产生的威胁值提高%s%，持续%s sec。这个效果消失后，额外的生命值和威胁值加成效果会被扣除。"] = { { Stats.Health, }, false, false, } -- s54443
 L["使小鬼的爆击几率提高%s%。"] = { { Stats.SpellCrit, }, } -- s54444
-L["使施法者的攻击速度提高%s%，对敌人造成的物理伤害提高%s%，持续%s。%s后进入疲劳状态。"] = { { Stats.MeleeHaste, }, false, false, false, } -- s54475
-L["使你的敏捷值提高%s点，爆击等级提高%s，持续%s。战斗药剂。"] = { { Stats.Agility, }, { Stats.MeleeCritRating, Stats.RangedCritRating, Stats.SpellCritRating, }, false, } -- s54494
-L["用能量灌注目标，使其施法速度提高%s%，所有法术的法力消耗减少%s%，持续%s。"] = { { Stats.SpellHaste, }, false, false, } -- s54521
-L["使施法者的攻击速度提高%s%且造成的伤害提高%s%，持续%s。"] = { { Stats.MeleeHaste, }, false, false, } -- s54529
+L["使施法者的攻击速度提高%s%，对敌人造成的物理伤害提高%s%，持续%s sec。%s sec后进入疲劳状态。"] = { { Stats.MeleeHaste, }, false, false, false, } -- s54475
+L["使你的敏捷值提高%s点，爆击等级提高%s，持续%s sec。战斗药剂。"] = { { Stats.Agility, }, { Stats.MeleeCritRating, Stats.RangedCritRating, Stats.SpellCritRating, }, false, } -- s54494
+L["用能量灌注目标，使其施法速度提高%s%，所有法术的法力消耗减少%s%，持续%s sec。"] = { { Stats.SpellHaste, }, false, false, } -- s54521
+L["使施法者的攻击速度提高%s%且造成的伤害提高%s%，持续%s sec。"] = { { Stats.MeleeHaste, }, false, false, } -- s54529
 L["凝固之后造成的物理伤害提高%s点。"] = { { Stats.AverageWeaponDamage, }, } -- s54580
-L["进入毒蛇形态，造成的伤害提高%s点并使攻击速度和施法速度提高%s%，持续%s。"] = { { Stats.AverageWeaponDamage, }, false, false, } -- s54601
-L["将你的能量集中在目标身上，使其法术爆击几率提高%s%。当目标打出爆击之后，施法者的法术爆击几率也会提高%s%，持续%s。不能对自己使用。"] = { { Stats.SpellCrit, }, { Stats.SpellCrit, }, false, } -- s54646
+L["进入毒蛇形态，造成的伤害提高%s点并使攻击速度和施法速度提高%s%，持续%s sec。"] = { { Stats.AverageWeaponDamage, }, false, false, } -- s54601
+L["将你的能量集中在目标身上，使其法术爆击几率提高%s%。当目标打出爆击之后，施法者的法术爆击几率也会提高%s%，持续%s sec。不能对自己使用。"] = { { Stats.SpellCrit, }, { Stats.SpellCrit, }, false, } -- s54646
 L["将你的能量集中在目标身上，使其法术爆击几率提高%s%。当目标打出爆击之后，施法者的法术爆击几率也会提高。"] = { { Stats.SpellCrit, }, } -- s54648
-L["变成没有实体的形态，躲闪几率提高%s，持续%s。"] = { { Stats.Dodge, }, false, } -- s54657
-L["holy power infuses the target, increasing their spell crit by %s for %s"] = { { Stats.SpellCrit, }, false, } -- s54675
-L["你的下%s次近战或远程攻击每次都可以使你的爆击等级提高%s，可叠加最多%s次。%s后效果消失。"] = { false, { Stats.MeleeCritRating, Stats.RangedCritRating, Stats.SpellCritRating, }, false, false, } -- s54696
-L["近战攻击产生的噪音有时会让你获得音速警觉效果，攻击强度提高%s点，持续%s。这个效果每分钟只能触发一次。"] = { { Stats.GenericAttackPower, }, false, } -- s54707
+L["变成没有实体的形态，躲闪几率提高%s，持续%s sec。"] = { { Stats.Dodge, }, false, } -- s54657
+L["holy power infuses the target, increasing their spell crit by %s for %s sec"] = { { Stats.SpellCrit, }, false, } -- s54675
+L["你的下%s次近战或远程攻击每次都可以使你的爆击等级提高%s，可叠加最多%s次。%s sec后效果消失。"] = { false, { Stats.MeleeCritRating, Stats.RangedCritRating, Stats.SpellCritRating, }, false, false, ignoreSum = true } -- s54696
+L["近战攻击产生的噪音有时会让你获得音速警觉效果，攻击强度提高%s点，持续%s sec。这个效果每分钟只能触发一次。"] = { { Stats.GenericAttackPower, }, false, ignoreSum = true } -- s54707
 L["为主手武器附加火焰魔法效果，使直接伤害法术的法术强度提高%s点，法术爆击等级提高%s。"] = { false, { Stats.SpellCritRating, }, } -- s54718
 L["为主手武器附加暗影魔法效果，使持续伤害效果所造成的伤害提高%s点，法术急速等级提高%s。"] = { false, { Stats.SpellHasteRating, }, } -- s54731
-L["法术爆击之后有一定几率使你的爆击等级提高%s，持续%s秒。"] = { { Stats.MeleeCritRating, Stats.RangedCritRating, Stats.SpellCritRating, }, false, } -- s54738
-L["爆击等级提高%s，持续%s。"] = { { Stats.MeleeCritRating, Stats.RangedCritRating, Stats.SpellCritRating, }, false, } -- s54739
+L["法术爆击之后有一定几率使你的爆击等级提高%s，持续%s秒。"] = { { Stats.MeleeCritRating, Stats.RangedCritRating, Stats.SpellCritRating, }, false, ignoreSum = true } -- s54738
+L["爆击等级提高%s，持续%s sec。"] = { { Stats.MeleeCritRating, Stats.RangedCritRating, Stats.SpellCritRating, }, false, } -- s54739
 L["抛出一把骨头。\n命中几率降低%s%。"] = { { Stats.MeleeHit, Stats.RangedHit, }, } -- s54770
 L["施法者跃向目标，并使施法者的攻击速度提高%s%。"] = { { Stats.MeleeHaste, }, } -- s54781
-L["提高你的施法速度，使所有法术的施法速度提高%s%，持续%s。"] = { { Stats.SpellHaste, }, false, } -- s54792
-L["法术命中目标之后有一定几率使你的精神提高%s点，持续%s秒。"] = { { Stats.Spirit, }, false, } -- s54838
-L["精神值提高%s点，持续%s。"] = { { Stats.Spirit, }, false, } -- s54839
-L["对目标每%s秒造成一次冰霜伤害，并附带疾病效果，使其近战和远程攻击速度降低%s%，持续%s。"] = { false, { Stats.MeleeHaste, Stats.RangedHaste, }, false, } -- s55095
-L["发出震耳欲聋的咆哮麻痹敌人的心智，使其施法速度降低%s%，持续%s。"] = { { Stats.SpellHaste, }, false, } -- s55100
-L["发出震耳欲聋的咆哮，使敌人的施法速度降低%s%，持续%s。"] = { { Stats.SpellHaste, }, false, } -- s55106
+L["提高你的施法速度，使所有法术的施法速度提高%s%，持续%s sec。"] = { { Stats.SpellHaste, }, false, } -- s54792
+L["法术命中目标之后有一定几率使你的精神提高%s点，持续%s秒。"] = { { Stats.Spirit, }, false, ignoreSum = true } -- s54838
+L["精神值提高%s点，持续%s sec。"] = { { Stats.Spirit, }, false, } -- s54839
+L["对目标每%s秒造成一次冰霜伤害，并附带疾病效果，使其近战和远程攻击速度降低%s%，持续%s sec。"] = { false, { Stats.MeleeHaste, Stats.RangedHaste, }, false, } -- s55095
+L["发出震耳欲聋的咆哮麻痹敌人的心智，使其施法速度降低%s%，持续%s sec。"] = { { Stats.SpellHaste, }, false, } -- s55100
+L["发出震耳欲聋的咆哮，使敌人的施法速度降低%s%，持续%s sec。"] = { { Stats.SpellHaste, }, false, } -- s55106
 L["使施法者的移动速度提高%s%，并且使用该技能后的首次攻击会造成%s点额外伤害。"] = { false, { Stats.AverageWeaponDamage, }, } -- s55193
-L["使死亡骑士暂时获得%s%的生命总值并使你通过法术和魔法效果恢复的生命值提高%s%，持续%s。在效果结束之后，这些生命值会被扣除。"] = { { Stats.Health, }, false, false, } -- s55233
+L["使死亡骑士暂时获得%s%的生命总值并使你通过法术和魔法效果恢复的生命值提高%s%，持续%s sec。在效果结束之后，这些生命值会被扣除。"] = { { Stats.Health, }, false, false, } -- s55233
 L["使周围半径%s码范围内的小队成员的耐力提高%s点。"] = { false, { Stats.Stamina, }, } -- s55245
 L["物理伤害提高%s%。\n攻击速度提高%s%。"] = { false, { Stats.MeleeHaste, }, } -- s55462
-L["对目标造成%s%武器伤害并使其失去平衡，防御技能降低%s，持续%s。"] = { false, { Stats.Defense, }, false, } -- s55470
+L["对目标造成%s%武器伤害并使其失去平衡，防御技能降低%s，持续%s sec。"] = { false, { Stats.Defense, }, false, } -- s55470
 L["使你的精神值提高%s点。"] = { { Stats.Spirit, }, } -- s55564
 L["使%s码内的所有小队和团队成员的近战急速提高%s%，你的急速额外提高%s%。"] = { false, { Stats.MeleeHaste, }, false, } -- s55610
-L["使施法者每次命中都能额外造成%s%的伤害，但施法者会被固定在原地，并且攻击间隔延长%s%，持续%s。"] = { false, { Stats.MeleeHaste, }, false, } -- s55633
+L["使施法者每次命中都能额外造成%s%的伤害，但施法者会被固定在原地，并且攻击间隔延长%s%，持续%s sec。"] = { false, { Stats.MeleeHaste, }, false, } -- s55633
 L["攻击强度提高%s。"] = { { Stats.GenericAttackPower, }, } -- s55775
 L["伊克进入狂暴状态，攻击速度提高%s%，造成的所有伤害增加%s%。"] = { { Stats.MeleeHaste, }, false, } -- s55816
-L["爆击几率提高%s%，持续%s。"] = { { Stats.MeleeCrit, Stats.RangedCrit, }, false, } -- s56410
-L["为友方目标施加祝福，使其攻击强度提高%s点，持续%s。每个圣骑士在同一时间内只能给目标施加一种祝福。"] = { { Stats.GenericAttackPower, }, false, } -- s56520
-L["为友方目标施加祝福，每%s秒为其回复%s点法力值，持续%s。每个圣骑士在同一时间内只能给目标施加一种祝福，同类型的祝福不能重叠。"] = { false, { Stats.GenericManaRegen, }, false, } -- s56521
-L["使一名敌人的攻击间隔延长%s%，施法时间延长%s%，并且有%s%几率在被命中时向友军传染疾病，效果持续%s。"] = { { Stats.MeleeHaste, }, { Stats.SpellHaste, }, false, false, } -- s56707
-L["冰冷的寒风围绕着施法者，寒冷使其施法速度降低%s%，但会使所有冰霜法术造成的伤害提高%s%，持续%s。"] = { { Stats.SpellHaste, }, false, false, } -- s56716
+L["爆击几率提高%s%，持续%s sec。"] = { { Stats.MeleeCrit, Stats.RangedCrit, }, false, } -- s56410
+L["为友方目标施加祝福，使其攻击强度提高%s点，持续%s sec。每个圣骑士在同一时间内只能给目标施加一种祝福。"] = { { Stats.GenericAttackPower, }, false, } -- s56520
+L["为友方目标施加祝福，每%s秒为其回复%s点法力值，持续%s sec。每个圣骑士在同一时间内只能给目标施加一种祝福，同类型的祝福不能重叠。"] = { false, { Stats.GenericManaRegen, }, false, } -- s56521
+L["使一名敌人的攻击间隔延长%s%，施法时间延长%s%，并且有%s%几率在被命中时向友军传染疾病，效果持续%s sec。"] = { { Stats.MeleeHaste, }, { Stats.SpellHaste, }, false, false, } -- s56707
+L["冰冷的寒风围绕着施法者，寒冷使其施法速度降低%s%，但会使所有冰霜法术造成的伤害提高%s%，持续%s sec。"] = { { Stats.SpellHaste, }, false, false, } -- s56716
 L["使附近敌人的伤害降低%s%，防御降低%s。"] = { false, { Stats.Defense, }, } -- s57055
-L["攻击强度提高%s点，耐力提高%s点，持续%s。"] = { { Stats.GenericAttackPower, Stats.RangedAttackPower, }, { Stats.Stamina, }, false, } -- s57111
-L["在%s内恢复总计%s点生命值和%s点法力值。如果你花费至少%s秒钟来进食，你的攻击强度将提高%s点，耐力将提高%s点，持续%s。"] = { false, false, false, false, { Stats.GenericAttackPower, Stats.RangedAttackPower, }, { Stats.Stamina, }, false, } -- s57335
-L["在%s内恢复总计%s点生命值和%s点法力值。如果你花费至少%s秒钟来进食，你的法术强度将提高%s点，耐力将提高%s点，持续%s。"] = { false, false, false, false, { Stats.SpellDamage, Stats.HealingPower, }, { Stats.Stamina, }, false, } -- s57096
-L["法术强度提高%s点，耐力提高%s点，持续%s。"] = { { Stats.SpellDamage, Stats.HealingPower, }, { Stats.Stamina, }, false, } -- s57097
-L["在%s内恢复总计%s点生命值和%s点法力值。如果你花费至少%s秒钟来进食，你的爆击等级将提高%s，耐力将提高%s点，持续%s。"] = { false, false, false, false, { Stats.MeleeCritRating, Stats.RangedCritRating, Stats.SpellCritRating, }, { Stats.Stamina, }, false, } -- s57098
-L["爆击等级提高%s，耐力提高%s点，持续%s。"] = { { Stats.MeleeCritRating, Stats.RangedCritRating, Stats.SpellCritRating, }, { Stats.Stamina, }, false, } -- s57100
-L["在%s内恢复总计%s点生命值和%s点法力值。如果你花费至少%s秒钟来进食，你的急速等级将提高%s，耐力将提高%s点，持续%s。"] = { false, false, false, false, { Stats.MeleeHasteRating, Stats.RangedHasteRating, Stats.SpellHasteRating, }, { Stats.Stamina, }, false, } -- s57101
-L["急速等级提高%s，耐力提高%s点，持续%s。"] = { { Stats.MeleeHasteRating, Stats.RangedHasteRating, Stats.SpellHasteRating, }, { Stats.Stamina, }, false, } -- s57102
-L["在%s内恢复总计%s点生命值和%s点法力值。如果你花费至少%s秒钟来进食，你的每%s秒法力恢复将提高%s点，耐力将提高%s点，持续%s。"] = { false, false, false, false, false, { Stats.GenericManaRegen, }, { Stats.Stamina, }, false, } -- s57106
-L["在%s内恢复总计%s点生命值。如果你花费至少%s秒钟来进食，你的攻击强度将提高%s点，耐力将提高%s点，持续%s。"] = { false, false, false, { Stats.GenericAttackPower, Stats.RangedAttackPower, }, { Stats.Stamina, }, false, } -- s57110
-L["在%s内恢复总计%s点生命值。如果你花费至少%s秒钟来进食，你的法术强度将提高%s点，耐力将提高%s点，持续%s。"] = { false, false, false, { Stats.SpellDamage, Stats.HealingPower, }, { Stats.Stamina, }, false, } -- s57138
-L["在%s内恢复总计%s点生命值。如果你花费至少%s秒钟来进食，你的爆击等级将提高%s，耐力将提高%s点，持续%s。"] = { false, false, false, { Stats.MeleeCritRating, Stats.RangedCritRating, Stats.SpellCritRating, Stats.Stamina, }, { Stats.Stamina, Stats.MeleeCritRating, Stats.RangedCritRating, Stats.SpellCritRating, }, false, } -- s57285
-L["在%s内恢复总计%s点生命值。如果你花费至少%s秒钟来进食，你的急速等级将提高%s，耐力将提高%s点，持续%s。"] = { false, false, false, { Stats.MeleeHasteRating, Stats.RangedHasteRating, Stats.SpellHasteRating, Stats.Stamina, }, { Stats.Stamina, Stats.MeleeHasteRating, Stats.RangedHasteRating, Stats.SpellHasteRating, }, false, } -- s57287
-L["在%s内恢复总计%s点生命值。如果你花费至少%s秒钟来进食，你将获得每%s秒法力回复提高%s点,耐力提高%s点的效果，持续%s。"] = { false, false, false, false, { Stats.GenericManaRegen, }, { Stats.Stamina, }, false, } -- s57289
-L["攻击强度提高%s点，法术强度提高%s点，耐力提高%s点，持续%s。"] = { { Stats.GenericAttackPower, Stats.RangedAttackPower, }, { Stats.SpellDamage, Stats.HealingPower, }, { Stats.Stamina, }, false, } -- s57294
-L["死亡骑士吹响寒冬号角，产生%s点符文能量值，并使周围半径%s码范围内的小队或团队成员的力量和敏捷总值提高%s点。持续%s。"] = { false, false, { Stats.Strength, Stats.Agility, }, false, } -- s57330
-L["在%s内恢复总计%s点生命值。如果你花费至少%s秒钟来进食，你的每%s秒法力恢复将提高%s点，耐力将提高%s点，持续%s。"] = { false, false, false, false, { Stats.GenericManaRegen, }, { Stats.Stamina, }, false, } -- s57333
-L["你有一定几率在战斗中击中目标或被击中时获得狂暴效果，爆击等级提高%s，持续%s秒。这个效果可以叠加最多%s次。"] = { { Stats.MeleeCritRating, Stats.RangedCritRating, Stats.SpellCritRating, }, false, false, } -- s57351
-L["在%s内恢复总计%s点生命值。如果你花费至少%s秒钟来进食，你的精准将提高%s，耐力将提高%s点，持续%s。"] = { false, false, false, { Stats.ExpertiseRating, Stats.Stamina, }, { Stats.Stamina, Stats.ExpertiseRating, }, false, } -- s57355
-L["精准等级提高%s，耐力提高%s点，持续%s。"] = { { Stats.ExpertiseRating, }, { Stats.Stamina, }, false, } -- s57356
-L["在%s内恢复总计%s点生命值。如果你花费至少%s秒钟来进食，你的护甲穿透将提高%s，耐力将提高%s点，持续%s。"] = { false, false, false, { Stats.ArmorPenetrationRating, Stats.Stamina, }, { Stats.Stamina, Stats.ArmorPenetrationRating, }, false, } -- s57357
-L["护甲穿透等级提高%s，耐力提高%s点，持续%s。"] = { { Stats.ArmorPenetrationRating, }, { Stats.Stamina, }, false, } -- s57358
-L["在%s内恢复总计%s点生命值和%s点法力值。如果你花费至少%s秒钟来进食，你的命中等级将提高%s，耐力将提高%s点，持续%s。"] = { false, false, false, false, { Stats.MeleeHitRating, Stats.RangedHitRating, Stats.SpellHitRating, Stats.Stamina, }, { Stats.Stamina, Stats.MeleeHitRating, Stats.RangedHitRating, Stats.SpellHitRating, }, false, } -- s57359
-L["命中等级提高%s，耐力提高%s点，持续%s。"] = { { Stats.MeleeHitRating, Stats.RangedHitRating, Stats.SpellHitRating, }, { Stats.Stamina, }, false, } -- s57360
-L["在%s内恢复总计%s点生命值和%s点法力值。如果你花费至少%s秒钟来进食，你的精神将提高%s点，耐力将提高%s点，持续%s。"] = { false, false, false, false, { Stats.Spirit, Stats.Stamina, }, { Stats.Stamina, Stats.Spirit, }, false, } -- s57364
-L["精神提高%s点，耐力提高%s点，持续%s。"] = { { Stats.Spirit, }, { Stats.Stamina, }, false, } -- s57365
-L["在%s内恢复总计%s点生命值和%s点法力值。如果你花费至少%s秒钟来进食，你的敏捷将提高%s点，耐力将提高%s点，持续%s。"] = { false, false, false, false, { Stats.Agility, Stats.Stamina, }, { Stats.Stamina, Stats.Agility, }, false, } -- s57366
-L["敏捷提高%s点，耐力提高%s点，持续%s。"] = { { Stats.Agility, }, { Stats.Stamina, }, false, } -- s57367
-L["在%s内恢复总计%s点生命值和%s点法力值。如果你花费至少%s秒钟来进食，你的力量将提高%s点，耐力将提高%s点，持续%s。"] = { false, false, false, false, { Stats.Strength, Stats.Stamina, }, { Stats.Stamina, Stats.Strength, }, false, } -- s57370
-L["力量提高%s点，耐力提高%s点，持续%s。"] = { { Stats.Strength, }, { Stats.Stamina, }, false, } -- s57371
-L["受到的爆击伤害和你造成的爆击伤害都提高%s%，且施法者的爆击几率提高%s%，持续%s。"] = { false, { Stats.MeleeCrit, Stats.RangedCrit, }, false, } -- s57524
+L["攻击强度提高%s点，耐力提高%s点，持续%s sec。"] = { { Stats.GenericAttackPower, Stats.RangedAttackPower, }, { Stats.Stamina, }, false, } -- s57111
+L["在%s sec内恢复总计%s点生命值和%s点法力值。如果你花费至少%s秒钟来进食，你的攻击强度将提高%s点，耐力将提高%s点，持续%s sec。"] = { false, false, false, false, { Stats.GenericAttackPower, Stats.RangedAttackPower, }, { Stats.Stamina, }, false, ignoreSum = true } -- s57335
+L["在%s sec内恢复总计%s点生命值和%s点法力值。如果你花费至少%s秒钟来进食，你的法术强度将提高%s点，耐力将提高%s点，持续%s sec。"] = { false, false, false, false, { Stats.SpellDamage, Stats.HealingPower, }, { Stats.Stamina, }, false, ignoreSum = true } -- s57096
+L["法术强度提高%s点，耐力提高%s点，持续%s sec。"] = { { Stats.SpellDamage, Stats.HealingPower, }, { Stats.Stamina, }, false, } -- s57097
+L["在%s sec内恢复总计%s点生命值和%s点法力值。如果你花费至少%s秒钟来进食，你的爆击等级将提高%s，耐力将提高%s点，持续%s sec。"] = { false, false, false, false, { Stats.MeleeCritRating, Stats.RangedCritRating, Stats.SpellCritRating, }, { Stats.Stamina, }, false, ignoreSum = true } -- s57098
+L["爆击等级提高%s，耐力提高%s点，持续%s sec。"] = { { Stats.MeleeCritRating, Stats.RangedCritRating, Stats.SpellCritRating, }, { Stats.Stamina, }, false, } -- s57100
+L["在%s sec内恢复总计%s点生命值和%s点法力值。如果你花费至少%s秒钟来进食，你的急速等级将提高%s，耐力将提高%s点，持续%s sec。"] = { false, false, false, false, { Stats.MeleeHasteRating, Stats.RangedHasteRating, Stats.SpellHasteRating, }, { Stats.Stamina, }, false, ignoreSum = true } -- s57101
+L["急速等级提高%s，耐力提高%s点，持续%s sec。"] = { { Stats.MeleeHasteRating, Stats.RangedHasteRating, Stats.SpellHasteRating, }, { Stats.Stamina, }, false, } -- s57102
+L["在%s sec内恢复总计%s点生命值和%s点法力值。如果你花费至少%s秒钟来进食，你的每%s秒法力恢复将提高%s点，耐力将提高%s点，持续%s sec。"] = { false, false, false, false, false, { Stats.GenericManaRegen, }, { Stats.Stamina, }, false, ignoreSum = true } -- s57106
+L["在%s sec内恢复总计%s点生命值。如果你花费至少%s秒钟来进食，你的攻击强度将提高%s点，耐力将提高%s点，持续%s sec。"] = { false, false, false, { Stats.GenericAttackPower, Stats.RangedAttackPower, }, { Stats.Stamina, }, false, ignoreSum = true } -- s57110
+L["在%s sec内恢复总计%s点生命值。如果你花费至少%s秒钟来进食，你的法术强度将提高%s点，耐力将提高%s点，持续%s sec。"] = { false, false, false, { Stats.SpellDamage, Stats.HealingPower, }, { Stats.Stamina, }, false, ignoreSum = true } -- s57138
+L["在%s sec内恢复总计%s点生命值。如果你花费至少%s秒钟来进食，你的爆击等级将提高%s，耐力将提高%s点，持续%s sec。"] = { false, false, false, { Stats.MeleeCritRating, Stats.RangedCritRating, Stats.SpellCritRating, Stats.Stamina, }, { Stats.Stamina, Stats.MeleeCritRating, Stats.RangedCritRating, Stats.SpellCritRating, }, false, ignoreSum = true } -- s57285
+L["在%s sec内恢复总计%s点生命值。如果你花费至少%s秒钟来进食，你的急速等级将提高%s，耐力将提高%s点，持续%s sec。"] = { false, false, false, { Stats.MeleeHasteRating, Stats.RangedHasteRating, Stats.SpellHasteRating, Stats.Stamina, }, { Stats.Stamina, Stats.MeleeHasteRating, Stats.RangedHasteRating, Stats.SpellHasteRating, }, false, ignoreSum = true } -- s57287
+L["在%s sec内恢复总计%s点生命值。如果你花费至少%s秒钟来进食，你将获得每%s秒法力回复提高%s点,耐力提高%s点的效果，持续%s sec。"] = { false, false, false, false, { Stats.GenericManaRegen, }, { Stats.Stamina, }, false, ignoreSum = true } -- s57289
+L["攻击强度提高%s点，法术强度提高%s点，耐力提高%s点，持续%s sec。"] = { { Stats.GenericAttackPower, Stats.RangedAttackPower, }, { Stats.SpellDamage, Stats.HealingPower, }, { Stats.Stamina, }, false, } -- s57294
+L["死亡骑士吹响寒冬号角，产生%s点符文能量值，并使周围半径%s码范围内的小队或团队成员的力量和敏捷总值提高%s点。持续%s sec。"] = { false, false, { Stats.Strength, Stats.Agility, }, false, } -- s57330
+L["在%s sec内恢复总计%s点生命值。如果你花费至少%s秒钟来进食，你的每%s秒法力恢复将提高%s点，耐力将提高%s点，持续%s sec。"] = { false, false, false, false, { Stats.GenericManaRegen, }, { Stats.Stamina, }, false, ignoreSum = true } -- s57333
+L["你有一定几率在战斗中击中目标或被击中时获得狂暴效果，爆击等级提高%s，持续%s秒。这个效果可以叠加最多%s次。"] = { { Stats.MeleeCritRating, Stats.RangedCritRating, Stats.SpellCritRating, }, false, false, ignoreSum = true } -- s57351
+L["在%s sec内恢复总计%s点生命值。如果你花费至少%s秒钟来进食，你的精准将提高%s，耐力将提高%s点，持续%s sec。"] = { false, false, false, { Stats.ExpertiseRating, Stats.Stamina, }, { Stats.Stamina, Stats.ExpertiseRating, }, false, ignoreSum = true } -- s57355
+L["精准等级提高%s，耐力提高%s点，持续%s sec。"] = { { Stats.ExpertiseRating, }, { Stats.Stamina, }, false, } -- s57356
+L["在%s sec内恢复总计%s点生命值。如果你花费至少%s秒钟来进食，你的护甲穿透将提高%s，耐力将提高%s点，持续%s sec。"] = { false, false, false, { Stats.ArmorPenetrationRating, Stats.Stamina, }, { Stats.Stamina, Stats.ArmorPenetrationRating, }, false, ignoreSum = true } -- s57357
+L["护甲穿透等级提高%s，耐力提高%s点，持续%s sec。"] = { { Stats.ArmorPenetrationRating, }, { Stats.Stamina, }, false, } -- s57358
+L["在%s sec内恢复总计%s点生命值和%s点法力值。如果你花费至少%s秒钟来进食，你的命中等级将提高%s，耐力将提高%s点，持续%s sec。"] = { false, false, false, false, { Stats.MeleeHitRating, Stats.RangedHitRating, Stats.SpellHitRating, Stats.Stamina, }, { Stats.Stamina, Stats.MeleeHitRating, Stats.RangedHitRating, Stats.SpellHitRating, }, false, ignoreSum = true } -- s57359
+L["命中等级提高%s，耐力提高%s点，持续%s sec。"] = { { Stats.MeleeHitRating, Stats.RangedHitRating, Stats.SpellHitRating, }, { Stats.Stamina, }, false, } -- s57360
+L["在%s sec内恢复总计%s点生命值和%s点法力值。如果你花费至少%s秒钟来进食，你的精神将提高%s点，耐力将提高%s点，持续%s sec。"] = { false, false, false, false, { Stats.Spirit, Stats.Stamina, }, { Stats.Stamina, Stats.Spirit, }, false, ignoreSum = true } -- s57364
+L["精神提高%s点，耐力提高%s点，持续%s sec。"] = { { Stats.Spirit, }, { Stats.Stamina, }, false, } -- s57365
+L["在%s sec内恢复总计%s点生命值和%s点法力值。如果你花费至少%s秒钟来进食，你的敏捷将提高%s点，耐力将提高%s点，持续%s sec。"] = { false, false, false, false, { Stats.Agility, Stats.Stamina, }, { Stats.Stamina, Stats.Agility, }, false, ignoreSum = true } -- s57366
+L["敏捷提高%s点，耐力提高%s点，持续%s sec。"] = { { Stats.Agility, }, { Stats.Stamina, }, false, } -- s57367
+L["在%s sec内恢复总计%s点生命值和%s点法力值。如果你花费至少%s秒钟来进食，你的力量将提高%s点，耐力将提高%s点，持续%s sec。"] = { false, false, false, false, { Stats.Strength, Stats.Stamina, }, { Stats.Stamina, Stats.Strength, }, false, ignoreSum = true } -- s57370
+L["力量提高%s点，耐力提高%s点，持续%s sec。"] = { { Stats.Strength, }, { Stats.Stamina, }, false, } -- s57371
+L["受到的爆击伤害和你造成的爆击伤害都提高%s%，且施法者的爆击几率提高%s%，持续%s sec。"] = { false, { Stats.MeleeCrit, Stats.RangedCrit, }, false, } -- s57524
 L["所有法术的爆击几率提高%s%。"] = { { Stats.SpellCrit, }, } -- s57529
-L["雷霆一般震击附近的敌人，使它们的攻击间隔延长%s%，持续%s，并对它们造成%s点伤害（此伤害值受到攻击强度加成影响）。这个技能最多影响%s个目标并可以造成额外的威胁值。"] = { { Stats.MeleeHaste, }, false, false, false, } -- s57832
+L["雷霆一般震击附近的敌人，使它们的攻击间隔延长%s%，持续%s sec，并对它们造成%s点伤害（此伤害值受到攻击强度加成影响）。这个技能最多影响%s个目标并可以造成额外的威胁值。"] = { { Stats.MeleeHaste, }, false, false, false, } -- s57832
 L["使你在熊形态和巨熊形态下的躲闪几率提高%s%，在熊形态和巨熊形态下每次躲闪攻击都可以获得%s点怒气值。"] = { { Stats.Dodge, }, false, } -- s57878
-L["月火术有一定几率使你的精神提高%s点。"] = { { Stats.Spirit, }, } -- s57907
-L["你的撕碎、重殴和裂伤技能使目标受到感染伤口效果的影响，移动速度降低%s%，攻击速度降低%s%，效果持续%s。"] = { false, { Stats.MeleeHaste, }, false, } -- s58179
-L["近战和远程爆击之后有一定几率使你的急速等级提高%s，持续%s秒。"] = { { Stats.MeleeHasteRating, Stats.RangedHasteRating, Stats.SpellHasteRating, }, false, } -- s58901
-L["使一名盟友的耐力提高%s点，持续%s。"] = { { Stats.Stamina, }, false, } -- s58921
+L["月火术有一定几率使你的精神提高%s点。"] = { { Stats.Spirit, }, ignoreSum = true } -- s57907
+L["你的撕碎、重殴和裂伤技能使目标受到感染伤口效果的影响，移动速度降低%s%，攻击速度降低%s%，效果持续%s sec。"] = { false, { Stats.MeleeHaste, }, false, } -- s58179
+L["近战和远程爆击之后有一定几率使你的急速等级提高%s，持续%s秒。"] = { { Stats.MeleeHasteRating, Stats.RangedHasteRating, Stats.SpellHasteRating, }, false, ignoreSum = true } -- s58901
+L["使一名盟友的耐力提高%s点，持续%s sec。"] = { { Stats.Stamina, }, false, } -- s58921
 L["猛击地面，扬起一团令人窒息的粉尘，每秒对所有被抓住的敌人造成%s点自然伤害，并使他们的命中几率降低%s%。"] = { false, { Stats.MeleeHit, Stats.RangedHit, }, } -- s58965
 L["your attacks ignore %s of your opponent's armor"] = { { Stats.ArmorPenetration, }, } -- s58990
-L["使你的属性提高%s点，持续%s。"] = { { Stats.AllStats, }, false, } -- s59191
-L["在%s内恢复总计%s点生命值。如果你花费至少%s秒钟来进食，你的躲闪等级将提高%s，持续%s。"] = { false, false, false, { Stats.DodgeRating, }, false, } -- s59227
-L["你浑身沾满了鱼油！不过从好的方面来看，至少你的躲闪等级提高了%s，持续%s。"] = { { Stats.DodgeRating, }, false, } -- s59230
-L["你的近战和远程攻击有一定几率使你的精准等级提高%s，持续%s。"] = { { Stats.ExpertiseRating, }, false, } -- s59345
-L["使周围敌人造成的伤害降低%s点，持续%s。"] = { { Stats.SpellDamage, }, false, } -- s59422
+L["使你的属性提高%s点，持续%s sec。"] = { { Stats.AllStats, }, false, } -- s59191
+L["在%s sec内恢复总计%s点生命值。如果你花费至少%s秒钟来进食，你的躲闪等级将提高%s，持续%s sec。"] = { false, false, false, { Stats.DodgeRating, }, false, ignoreSum = true } -- s59227
+L["你浑身沾满了鱼油！不过从好的方面来看，至少你的躲闪等级提高了%s，持续%s sec。"] = { { Stats.DodgeRating, }, false, } -- s59230
+L["你的近战和远程攻击有一定几率使你的精准等级提高%s，持续%s sec。"] = { { Stats.ExpertiseRating, }, false, ignoreSum = true } -- s59345
+L["使周围敌人造成的伤害降低%s点，持续%s sec。"] = { { Stats.SpellDamage, }, false, } -- s59422
 L["释放瓦里玛萨斯之力，攻击速度提高%s%，造成的所有伤害提高%s%。"] = { { Stats.MeleeHaste, }, false, } -- s59424
-L["你的攻击强度提高%s，但护甲值降低%s%。持续%s。"] = { { Stats.AttackPower, }, false, false, } -- s59620
+L["你的攻击强度提高%s，但护甲值降低%s%。持续%s sec。"] = { { Stats.AttackPower, }, false, false, } -- s59620
 L["increases attack power by %s. lasts %s mins"] = { { Stats.AttackPower, }, false, } -- s59774
 L["你的爆击等级提高%s。"] = { { Stats.MeleeCritRating, Stats.RangedCritRating, Stats.SpellCritRating, }, } -- s59821
-L["使你的精神值提高%s点，持续%s。"] = { { Stats.Spirit, }, false, } -- s60060
-L["你的伤害法术有一定几率使你的法术强度提高%s点，持续%s。"] = { { Stats.SpellDamage, Stats.HealingPower, }, false, } -- s60063
-L["爆击之后有一定几率使你的攻击强度提高%s点，持续%s秒。"] = { { Stats.GenericAttackPower, }, false, } -- s60066
-L["施放生命分流之后，你可以获得%s点精神值的加成，持续%s秒。"] = { { Stats.Spirit, }, false, } -- s60172
-L["使你的力量值提高%s点，持续%s。"] = { { Stats.Strength, }, false, } -- s60229
-L["使你的智力提高%s点，持续%s。"] = { { Stats.Intellect, }, false, } -- s60234
-L["躲闪提高%s点，持续%s。"] = { { Stats.DodgeRating, }, false, } -- s60286
+L["使你的精神值提高%s点，持续%s sec。"] = { { Stats.Spirit, }, false, } -- s60060
+L["你的伤害法术有一定几率使你的法术强度提高%s点，持续%s sec。"] = { { Stats.SpellDamage, Stats.HealingPower, }, false, ignoreSum = true } -- s60063
+L["爆击之后有一定几率使你的攻击强度提高%s点，持续%s秒。"] = { { Stats.GenericAttackPower, }, false, ignoreSum = true } -- s60066
+L["施放生命分流之后，你可以获得%s点精神值的加成，持续%s秒。"] = { { Stats.Spirit, }, false, ignoreSum = true } -- s60172
+L["使你的力量值提高%s点，持续%s sec。"] = { { Stats.Strength, }, false, } -- s60229
+L["使你的智力提高%s点，持续%s sec。"] = { { Stats.Intellect, }, false, } -- s60234
+L["躲闪提高%s点，持续%s sec。"] = { { Stats.DodgeRating, }, false, } -- s60286
 L["使你的护甲穿透等级提高%s，持续%s秒。"] = { { Stats.ArmorPenetrationRating, }, false, } -- s60299
-L["使一名盟友的攻击速度和造成的伤害提高%s%，持续%s。"] = { { Stats.MeleeHaste, }, false, } -- s60300
-L["each time you deal melee or ranged damage to an opponent, you gain %s attack power for the next %s sec., stacking up to %s times.  each time you land a harmful spell on an opponent, you gain %s spell power for the next %s sec., stacking up to %s times"] = { { Stats.GenericAttackPower, Stats.RangedAttackPower, }, false, false, false, false, false, } -- s60312
-L["你每次对敌人造成近战或远程伤害，就可以获得%s点攻击强度加成，持续%s秒。可以叠加最多%s次。"] = { { Stats.GenericAttackPower, }, false, false, } -- s60313
-L["使你的近战和远程攻击强度提高%s点，持续%s。"] = { { Stats.GenericAttackPower, }, false, } -- s60314
-L["使你的命中等级提高%s，持续%s。战斗药剂。"] = { { Stats.MeleeHitRating, Stats.RangedHitRating, Stats.SpellHitRating, }, false, } -- s60340
-L["使你的爆击等级提高%s，持续%s。战斗药剂。"] = { { Stats.MeleeCritRating, Stats.RangedCritRating, Stats.SpellCritRating, }, false, } -- s60341
-L["使你的防御等级提高%s，持续%s。守护药剂。"] = { { Stats.DefenseRating, }, false, } -- s60343
-L["使你的精准等级提高%s，持续%s。战斗药剂。"] = { { Stats.ExpertiseRating, }, false, } -- s60344
-L["使你的护甲穿透等级提高%s，持续%s。战斗药剂。"] = { { Stats.ArmorPenetrationRating, }, false, } -- s60345
-L["使你的急速等级提高%s，持续%s。战斗药剂。"] = { { Stats.MeleeHasteRating, Stats.RangedHasteRating, Stats.SpellHasteRating, }, false, } -- s60346
-L["使你的智力提高%s点，持续%s。守护药剂。"] = { { Stats.Intellect, }, false, } -- s60347
-L["你的近战和远程攻击有一定几率使你的护甲穿透等级提高%s，持续%s。"] = { { Stats.ArmorPenetrationRating, }, false, } -- s60436
-L["你的伤害和治疗法术有一定几率使你的法术强度提高%s点，持续%s。"] = { { Stats.SpellDamage, Stats.HealingPower, }, false, } -- s60473
-L["你每次施放伤害或治疗法术，都可以获得%s点法术强度加成，持续%s。可叠加最多%s次。"] = { { Stats.SpellDamage, Stats.HealingPower, }, false, false, } -- s60485
-L["你的法术有一定几率使你的急速等级提高%s，持续%s秒。"] = { { Stats.MeleeHasteRating, Stats.RangedHasteRating, Stats.SpellHasteRating, }, false, } -- s60490
-L["你的法术有一定几率使你的法术强度提高%s点，持续%s。"] = { { Stats.SpellDamage, Stats.HealingPower, }, false, } -- s60493
-L["你每次施放一个伤害或治疗法术，都有一定几率获得每%s秒恢复最多%s点法力值的效果，持续%s。"] = { false, { Stats.GenericManaRegen, }, false, } -- s60519
-L["你每次施放法术，就可以获得%s点精神加成，持续%s秒。可以叠加最多%s次。"] = { { Stats.Spirit, }, false, false, } -- s60524
-L["你的熔岩猛击使你获得%s点攻击强度加成，持续%s。"] = { { Stats.GenericAttackPower, Stats.RangedAttackPower, }, false, } -- s60554
-L["你的震击法术使你获得%s点法术强度加成，持续%s。"] = { { Stats.SpellDamage, Stats.HealingPower, }, false, } -- s60564
-L["法术强度提高%s，持续%s。"] = { { Stats.SpellDamage, Stats.HealingPower, }, false, } -- s60569
-L["你的十字军打击使你获得%s点攻击强度加成，持续%s。"] = { { Stats.GenericAttackPower, Stats.RangedAttackPower, }, false, } -- s60636
-L["使一名敌人的护甲值降低%s ，持续%s。"] = { { Stats.Armor, }, false, } -- s60708
-L["你的风暴打击可以使你的急速等级提高%s，持续%s。"] = { { Stats.MeleeHasteRating, Stats.RangedHasteRating, Stats.SpellHasteRating, }, false, } -- s60765
-L["你的闪电箭有一定几率使你的急速等级提高%s，持续%s。"] = { { Stats.MeleeHasteRating, Stats.RangedHasteRating, Stats.SpellHasteRating, }, false, } -- s60770
-L["你的审判技能也可以使你的盾牌格挡值提高%s点，持续%s。"] = { { Stats.BlockValue, }, false, } -- s60794
-L["你的命令审判有一定几率使你的爆击等级提高%s，持续%s。"] = { { Stats.MeleeCritRating, Stats.RangedCritRating, Stats.SpellCritRating, }, false, } -- s60818
-L["你的鲜血打击和心脏打击有一定几率使你的爆击等级提高%s，持续%s。"] = { { Stats.MeleeCritRating, Stats.RangedCritRating, Stats.SpellCritRating, }, false, } -- s60826
+L["使一名盟友的攻击速度和造成的伤害提高%s%，持续%s sec。"] = { { Stats.MeleeHaste, }, false, } -- s60300
+L["each time you deal melee or ranged damage to an opponent, you gain %s attack power for the next %s sec., stacking up to %s times.  each time you land a harmful spell on an opponent, you gain %s spell power for the next %s sec., stacking up to %s times"] = { { Stats.GenericAttackPower, Stats.RangedAttackPower, }, false, false, false, false, false, ignoreSum = true } -- s60312
+L["你每次对敌人造成近战或远程伤害，就可以获得%s点攻击强度加成，持续%s秒。可以叠加最多%s次。"] = { { Stats.GenericAttackPower, }, false, false, ignoreSum = true } -- s60313
+L["使你的近战和远程攻击强度提高%s点，持续%s sec。"] = { { Stats.GenericAttackPower, }, false, } -- s60314
+L["使你的命中等级提高%s，持续%s sec。战斗药剂。"] = { { Stats.MeleeHitRating, Stats.RangedHitRating, Stats.SpellHitRating, }, false, } -- s60340
+L["使你的爆击等级提高%s，持续%s sec。战斗药剂。"] = { { Stats.MeleeCritRating, Stats.RangedCritRating, Stats.SpellCritRating, }, false, } -- s60341
+L["使你的防御等级提高%s，持续%s sec。守护药剂。"] = { { Stats.DefenseRating, }, false, } -- s60343
+L["使你的精准等级提高%s，持续%s sec。战斗药剂。"] = { { Stats.ExpertiseRating, }, false, } -- s60344
+L["使你的护甲穿透等级提高%s，持续%s sec。战斗药剂。"] = { { Stats.ArmorPenetrationRating, }, false, } -- s60345
+L["使你的急速等级提高%s，持续%s sec。战斗药剂。"] = { { Stats.MeleeHasteRating, Stats.RangedHasteRating, Stats.SpellHasteRating, }, false, } -- s60346
+L["使你的智力提高%s点，持续%s sec。守护药剂。"] = { { Stats.Intellect, }, false, } -- s60347
+L["你的近战和远程攻击有一定几率使你的护甲穿透等级提高%s，持续%s sec。"] = { { Stats.ArmorPenetrationRating, }, false, ignoreSum = true } -- s60436
+L["你的伤害和治疗法术有一定几率使你的法术强度提高%s点，持续%s sec。"] = { { Stats.SpellDamage, Stats.HealingPower, }, false, ignoreSum = true } -- s60473
+L["你每次施放伤害或治疗法术，都可以获得%s点法术强度加成，持续%s sec。可叠加最多%s次。"] = { { Stats.SpellDamage, Stats.HealingPower, }, false, false, ignoreSum = true } -- s60485
+L["你的法术有一定几率使你的急速等级提高%s，持续%s秒。"] = { { Stats.MeleeHasteRating, Stats.RangedHasteRating, Stats.SpellHasteRating, }, false, ignoreSum = true } -- s60490
+L["你的法术有一定几率使你的法术强度提高%s点，持续%s sec。"] = { { Stats.SpellDamage, Stats.HealingPower, }, false, ignoreSum = true } -- s60493
+L["你每次施放一个伤害或治疗法术，都有一定几率获得每%s秒恢复最多%s点法力值的效果，持续%s sec。"] = { false, { Stats.GenericManaRegen, }, false, ignoreSum = true } -- s60519
+L["你每次施放法术，就可以获得%s点精神加成，持续%s秒。可以叠加最多%s次。"] = { { Stats.Spirit, }, false, false, ignoreSum = true } -- s60524
+L["你的熔岩猛击使你获得%s点攻击强度加成，持续%s sec。"] = { { Stats.GenericAttackPower, Stats.RangedAttackPower, }, false, ignoreSum = true } -- s60554
+L["你的震击法术使你获得%s点法术强度加成，持续%s sec。"] = { { Stats.SpellDamage, Stats.HealingPower, }, false, ignoreSum = true } -- s60564
+L["法术强度提高%s，持续%s sec。"] = { { Stats.SpellDamage, Stats.HealingPower, }, false, } -- s60569
+L["你的十字军打击使你获得%s点攻击强度加成，持续%s sec。"] = { { Stats.GenericAttackPower, Stats.RangedAttackPower, }, false, ignoreSum = true } -- s60636
+L["使一名敌人的护甲值降低%s ，持续%s sec。"] = { { Stats.Armor, }, false, } -- s60708
+L["你的风暴打击可以使你的急速等级提高%s，持续%s sec。"] = { { Stats.MeleeHasteRating, Stats.RangedHasteRating, Stats.SpellHasteRating, }, false, ignoreSum = true } -- s60765
+L["你的闪电箭有一定几率使你的急速等级提高%s，持续%s sec。"] = { { Stats.MeleeHasteRating, Stats.RangedHasteRating, Stats.SpellHasteRating, }, false, ignoreSum = true } -- s60770
+L["你的审判技能也可以使你的盾牌格挡值提高%s点，持续%s sec。"] = { { Stats.BlockValue, }, false, ignoreSum = true } -- s60794
+L["你的命令审判有一定几率使你的爆击等级提高%s，持续%s sec。"] = { { Stats.MeleeCritRating, Stats.RangedCritRating, Stats.SpellCritRating, }, false, ignoreSum = true } -- s60818
+L["你的鲜血打击和心脏打击有一定几率使你的爆击等级提高%s，持续%s sec。"] = { { Stats.MeleeCritRating, Stats.RangedCritRating, Stats.SpellCritRating, }, false, ignoreSum = true } -- s60826
 L["你的精神提高%s点。"] = { { Stats.Spirit, }, } -- s61082
 L["每秒恢复%s点法力值。移动会取消这个效果。"] = { { Stats.GenericManaRegen, }, } -- s61268
-L["你的神圣风暴技能可以使你的爆击等级提高%s，持续%s。"] = { { Stats.MeleeCritRating, Stats.SpellCritRating, }, false, } -- s61324
+L["你的神圣风暴技能可以使你的爆击等级提高%s，持续%s sec。"] = { { Stats.MeleeCritRating, Stats.SpellCritRating, }, false, ignoreSum = true } -- s61324
 L["抵御寒冷天气。你的冰霜抗性提高%s点。"] = { { Stats.FrostResistance, }, } -- s61477
 L["使施法者的攻击速度提高%s%，并使其造成的物理伤害提高%s%。"] = { { Stats.MeleeHaste, }, false, } -- s61514
 L["当蝰蛇守护处于激活状态下时，你的远程攻击速度提高%s%。"] = { { Stats.RangedHaste, }, } -- s61609
-L["你的近战和远程攻击有一定几率使你的爆击等级提高%s，持续%s。"] = { { Stats.MeleeCritRating, Stats.RangedCritRating, Stats.SpellCritRating, }, false, } -- s61618
+L["你的近战和远程攻击有一定几率使你的爆击等级提高%s，持续%s sec。"] = { { Stats.MeleeCritRating, Stats.RangedCritRating, Stats.SpellCritRating, }, false, ignoreSum = true } -- s61618
 L["使宠物的生命值提高%s点。"] = { { Stats.Health, }, } -- s61679
 L["debuff the target increasing spell damage taken by %s%, reducing fire, frost, shadow, nature, and arcane resistances by %s, and reducing armor by %s%"] = { false, { Stats.FireResistance, Stats.NatureResistance, Stats.FrostResistance, Stats.ShadowResistance, Stats.ArcaneResistance, }, false, } -- s61729
-L["在%s内恢复总计%s点法力值。饮水时必须保持坐姿。"] = { false, { Stats.GenericManaRegen, }, } -- s61830
+L["在%s sec内恢复总计%s点法力值。饮水时必须保持坐姿。"] = { false, { Stats.GenericManaRegen, }, } -- s61830
 L["猎人获得龙鹰守护，远程攻击强度提高%s点，躲闪几率提高%s%。猎人在同一时间内只能激活一种守护。"] = { { Stats.RangedAttackPower, }, { Stats.Dodge, }, } -- s61846
 L["使你在猎豹、熊或巨熊形态下的爆击等级提高%s。"] = { { Stats.MeleeCritRating, Stats.RangedCritRating, }, } -- s62106
 L["使你在枭兽形态下的法术爆击等级提高%s。"] = { { Stats.SpellCritRating, }, } -- s62107
 L["使你在生命之树形态下的治疗效果提高%s点。"] = { { Stats.HealingPower, }, } -- s62111
-L["近战或远程攻击命中目标时有一定几率使你的攻击强度提高%s点，持续%s秒。"] = { { Stats.GenericAttackPower, Stats.RangedAttackPower, }, false, } -- s62115
-L["对一个敌人造成%s%的武器伤害，并使其防御技能降低%s点，持续%s。"] = { false, { Stats.Defense, }, false, } -- s62130
+L["近战或远程攻击命中目标时有一定几率使你的攻击强度提高%s点，持续%s秒。"] = { { Stats.GenericAttackPower, Stats.RangedAttackPower, }, false, ignoreSum = true } -- s62115
+L["对一个敌人造成%s%的武器伤害，并使其防御技能降低%s点，持续%s sec。"] = { false, { Stats.Defense, }, false, } -- s62130
 L["你的防御等级提高%s。"] = { { Stats.DefenseRating, }, } -- s62146
-L["你的冰冷触摸可以使你的防御等级提高%s。"] = { { Stats.DefenseRating, }, } -- s62147
-L["石拳使施法者的移动速度降低%s%，伤害提高%s%。另外，毁灭性的攻击有一定几率打断目标的骨头，使其招架、格挡和躲闪几率降低%s%，持续%s。"] = { { Stats.Parry, }, false, false, false, } -- s62344
-L["在%s内恢复总计%s点生命值。如果你花费至少%s秒钟来进食，你的命中等级将提高%s，耐力将提高%s点，持续%s。"] = { false, false, false, { Stats.MeleeHitRating, Stats.RangedHitRating, Stats.SpellHitRating, }, { Stats.Stamina, }, false, } -- s62351
+L["你的冰冷触摸可以使你的防御等级提高%s。"] = { { Stats.DefenseRating, }, ignoreSum = true } -- s62147
+L["石拳使施法者的移动速度降低%s%，伤害提高%s%。另外，毁灭性的攻击有一定几率打断目标的骨头，使其招架、格挡和躲闪几率降低%s%，持续%s sec。"] = { { Stats.Parry, }, false, false, false, ignoreSum = true } -- s62344
+L["在%s sec内恢复总计%s点生命值。如果你花费至少%s秒钟来进食，你的命中等级将提高%s，耐力将提高%s点，持续%s sec。"] = { false, false, false, { Stats.MeleeHitRating, Stats.RangedHitRating, Stats.SpellHitRating, }, { Stats.Stamina, }, false, ignoreSum = true } -- s62351
 L["施法者熔化，急速提高%s%。另外，每秒都有烈焰从施法者身上冒出，对周围半径%s码范围内的敌人造成%s点火焰伤害。"] = { { Stats.MeleeHaste, }, false, false, } -- s62373
-L["使你对所有魔法的抗性提高%s点，持续%s。这种效果在死亡后仍可继续存在。战斗和守护药剂。"] = { { Stats.FireResistance, Stats.NatureResistance, Stats.FrostResistance, Stats.ShadowResistance, Stats.ArcaneResistance, }, false, } -- s62380
+L["使你对所有魔法的抗性提高%s点，持续%s sec。这种效果在死亡后仍可继续存在。战斗和守护药剂。"] = { { Stats.FireResistance, Stats.NatureResistance, Stats.FrostResistance, Stats.ShadowResistance, Stats.ArcaneResistance, }, false, } -- s62380
 L["伤害提高%s%，攻击速度提高%s%。"] = { false, { Stats.MeleeHaste, }, } -- s62555
 L["阻止几乎所有类型的法力值自然回复方式。只有蝰蛇守护、智慧审判、萨满之怒和灵魂协调可以保持一部分效果。近战攻击速度降低%s%。"] = { { Stats.MeleeHaste, }, } -- s62692
 L["温暖附近的友方单位，避免他们受到冰冻和刺骨之寒效果的影响，并使其精神提高%s点。另外，你的法术和远程攻击有一定几率灼烧敌人。温暖的火焰可以被坠落的冰块或快速冻结熄灭。"] = { { Stats.Spirit, }, } -- s62821
-L["每%s秒造成%s点暗影伤害，但是物理伤害能力提高%s点，持续%s。"] = { false, false, { Stats.AverageWeaponDamage, }, false, } -- s63147
-L["使圣骑士免疫所有攻击和法术，持续%s，但是在此期间攻击间隔延长%s%。使用之后的%s内，目标无法再受到圣盾术、圣佑术和保护之手的影响。"] = { false, { Stats.MeleeHaste, }, false, } -- s63148
-L["命中时有一定几率使你的爆击等级提高%s，持续%s秒。"] = { { Stats.MeleeCritRating, Stats.RangedCritRating, Stats.SpellCritRating, }, false, } -- s63251
+L["每%s秒造成%s点暗影伤害，但是物理伤害能力提高%s点，持续%s sec。"] = { false, false, { Stats.AverageWeaponDamage, }, false, } -- s63147
+L["使圣骑士免疫所有攻击和法术，持续%s sec，但是在此期间攻击间隔延长%s%。使用之后的%s sec内，目标无法再受到圣盾术、圣佑术和保护之手的影响。"] = { false, { Stats.MeleeHaste, }, false, } -- s63148
+L["命中时有一定几率使你的爆击等级提高%s，持续%s秒。"] = { { Stats.MeleeCritRating, Stats.RangedCritRating, Stats.SpellCritRating, }, false, ignoreSum = true } -- s63251
 L["你的天怒图腾提供的法术强度加成提高%s%。"] = { { Stats.SpellDamage, }, } -- s63283
-L["使你的宠物获得%s%的急速，持续%s。在此期间为宠物恢复%s%的生命值。"] = { { Stats.MeleeHaste, }, false, false, } -- s63560
-L["power infuses the target increasing their stamina by %s for %s"] = { { Stats.Stamina, }, false, } -- s63613
+L["使你的宠物获得%s%的急速，持续%s sec。在此期间为宠物恢复%s%的生命值。"] = { { Stats.MeleeHaste, }, false, false, } -- s63560
+L["power infuses the target increasing their stamina by %s for %s sec"] = { { Stats.Stamina, }, false, } -- s63613
 L["同伴的死亡激起了复仇的能量，伤害提高%s%，攻击速度提高%s%。"] = { false, { Stats.MeleeHaste, }, } -- s63630
 L["对附近的所有敌人造成%s点自然伤害，并使其攻击速度降低%s%。"] = { false, { Stats.MeleeHaste, }, } -- s63757
-L["在%s内恢复总计%s点生命值和%s点法力值。进食时必须保持坐姿。如果你花费至少%s秒钟进食，还会获得%s点攻击强度加成和%s点法术强度加成，持续%s。"] = { false, { Stats.AttackPower, }, false, false, { Stats.AttackPower, }, { Stats.SpellDamage, Stats.HealingPower, }, false, } -- s64056
-L["附近队友造成的伤害提高%s%，攻击速度提高%s%，持续%s。"] = { false, { Stats.MeleeHaste, }, false, } -- s64062
+L["在%s sec内恢复总计%s点生命值和%s点法力值。进食时必须保持坐姿。如果你花费至少%s秒钟进食，还会获得%s点攻击强度加成和%s点法术强度加成，持续%s sec。"] = { false, { Stats.AttackPower, }, false, false, { Stats.AttackPower, }, { Stats.SpellDamage, Stats.HealingPower, }, false, ignoreSum = true } -- s64056
+L["附近队友造成的伤害提高%s%，攻击速度提高%s%，持续%s sec。"] = { false, { Stats.MeleeHaste, }, false, } -- s64062
 L["格挡等级提高%s，在下一次成功格挡一次攻击时，对攻击者造成%s点伤害。最多叠加%s层。格挡成功后会消耗所有叠加的层数。"] = { { Stats.ParryRating, }, false, false, } -- s64440
-L["狼和它的主人的近战和远程攻击强度提高%s点，持续%s。"] = { { Stats.GenericAttackPower, }, false, } -- s64491
-L["使施法者免疫所有攻击和法术，持续%s，但是在此期间攻击间隔延长%s%。"] = { false, { Stats.MeleeHaste, }, } -- s64505
-L["法术强度最多提高%s点，持续%s。"] = { { Stats.SpellDamage, Stats.HealingPower, }, false, } -- s64525
-L["向空中喷洒灭火剂，熄灭所有火焰。另外，受到这个效果影响的敌人的施法速度降低%s%，持续%s。"] = { { Stats.SpellHaste, }, false, } -- s64570
-L["对一个敌人造成自然伤害，使其护甲值降低%s点，持续%s。可叠加最多%s次。"] = { { Stats.Armor, }, false, false, } -- s64638
-L["激活之后，你的下一个闪电箭、闪电链或熔岩爆裂法术成为瞬发法术。另外，你的法术急速等级提高%s%，持续%s。元素掌握与自然迅捷共享冷却时间。"] = { { Stats.SpellHaste, }, false, } -- s64701
-L["每当你施放一个法术，就有一定几率获得每%s秒回复最多%s点法力值的效果，持续%s。"] = { false, { Stats.GenericManaRegen, }, false, } -- s64738
+L["狼和它的主人的近战和远程攻击强度提高%s点，持续%s sec。"] = { { Stats.GenericAttackPower, }, false, } -- s64491
+L["使施法者免疫所有攻击和法术，持续%s sec，但是在此期间攻击间隔延长%s%。"] = { false, { Stats.MeleeHaste, }, } -- s64505
+L["法术强度最多提高%s点，持续%s sec。"] = { { Stats.SpellDamage, Stats.HealingPower, }, false, } -- s64525
+L["向空中喷洒灭火剂，熄灭所有火焰。另外，受到这个效果影响的敌人的施法速度降低%s%，持续%s sec。"] = { { Stats.SpellHaste, }, false, } -- s64570
+L["对一个敌人造成自然伤害，使其护甲值降低%s点，持续%s sec。可叠加最多%s次。"] = { { Stats.Armor, }, false, false, } -- s64638
+L["激活之后，你的下一个闪电箭、闪电链或熔岩爆裂法术成为瞬发法术。另外，你的法术急速等级提高%s%，持续%s sec。元素掌握与自然迅捷共享冷却时间。"] = { { Stats.SpellHaste, }, false, } -- s64701
+L["每当你施放一个法术，就有一定几率获得每%s秒回复最多%s点法力值的效果，持续%s sec。"] = { false, { Stats.GenericManaRegen, }, false, ignoreSum = true } -- s64738
 L["法力回复提高%s点。"] = { { Stats.GenericManaRegen, }, } -- s64739
-L["近战和远程爆击有一定几率使你的攻击强度提高%s点，持续%s秒。"] = { { Stats.GenericAttackPower, }, false, } -- s64792
-L["你的稳固射击有一定几率使你获得%s点攻击强度加成，持续%s。"] = { { Stats.GenericAttackPower, }, false, } -- s64860
-L["你的奥术冲击、寒冰箭、霜火之箭和火球术有一定几率使你的法术强度提高%s点，持续%s。"] = { { Stats.SpellDamage, Stats.HealingPower, }, false, } -- s64867
-L["当你施放正义盾击时及这之后的%s内，你的盾牌格挡值提高%s点。"] = { false, { Stats.BlockValue, }, } -- s64882
-L["你朗诵一首希望的圣歌，恢复陷入绝望的队友们的斗志。在%s内，每%s秒为周围法力值最低的%s个小队或团队成员恢复%s%的法力值，并使他们的法力值上限提高%s%，持续%s。最多恢复%s次法力值。牧师必须引导此法术。"] = { false, false, false, false, { Stats.Mana, }, false, { Stats.Mana, }, } -- s64901
-L["你的心灵震爆可以使你的急速等级提高%s，持续%s。"] = { { Stats.MeleeHasteRating, Stats.RangedHasteRating, Stats.SpellHasteRating, }, false, } -- s64908
-L["施放真言术：盾之后，你的法术强度提高%s点，持续%s。"] = { { Stats.SpellDamage, Stats.HealingPower, }, false, } -- s64912
-L["英勇打击和猛击技能爆击之后有一定几率使你的急速等级提高%s，持续%s。"] = { { Stats.MeleeHasteRating, Stats.RangedHasteRating, Stats.SpellHasteRating, }, false, } -- s64938
-L["每次使用神圣之盾时，你的盾牌格挡值提高%s点，持续%s。"] = { { Stats.BlockValue, }, false, } -- s64955
-L["你的符文打击技能可以使你的躲闪等级提高%s，持续%s。"] = { { Stats.DodgeRating, }, false, } -- s64964
-L["在%s秒内每次施法都可以获得每%s秒回复%s点法力值的可叠加效果。%s秒后失效。不消耗法力值的技能不会触发这个效果。"] = { false, false, { Stats.GenericManaRegen, }, false, } -- s64999
-L["你每次施放法术，都有一定几率获得每%s秒回复%s点法力值的效果，持续%s。"] = { false, { Stats.GenericManaRegen, }, false, } -- s65002
+L["近战和远程爆击有一定几率使你的攻击强度提高%s点，持续%s秒。"] = { { Stats.GenericAttackPower, }, false, ignoreSum = true } -- s64792
+L["你的稳固射击有一定几率使你获得%s点攻击强度加成，持续%s sec。"] = { { Stats.GenericAttackPower, }, false, ignoreSum = true } -- s64860
+L["你的奥术冲击、寒冰箭、霜火之箭和火球术有一定几率使你的法术强度提高%s点，持续%s sec。"] = { { Stats.SpellDamage, Stats.HealingPower, }, false, ignoreSum = true } -- s64867
+L["当你施放正义盾击时及这之后的%s sec内，你的盾牌格挡值提高%s点。"] = { false, { Stats.BlockValue, }, ignoreSum = true } -- s64882
+L["你朗诵一首希望的圣歌，恢复陷入绝望的队友们的斗志。在%s sec内，每%s秒为周围法力值最低的%s个小队或团队成员恢复%s%的法力值，并使他们的法力值上限提高%s%，持续%s sec。最多恢复%s次法力值。牧师必须引导此法术。"] = { false, false, false, false, { Stats.Mana, }, false, { Stats.Mana, }, ignoreSum = true } -- s64901
+L["你的心灵震爆可以使你的急速等级提高%s，持续%s sec。"] = { { Stats.MeleeHasteRating, Stats.RangedHasteRating, Stats.SpellHasteRating, }, false, ignoreSum = true } -- s64908
+L["施放真言术：盾之后，你的法术强度提高%s点，持续%s sec。"] = { { Stats.SpellDamage, Stats.HealingPower, }, false, ignoreSum = true } -- s64912
+L["英勇打击和猛击技能爆击之后有一定几率使你的急速等级提高%s，持续%s sec。"] = { { Stats.MeleeHasteRating, Stats.RangedHasteRating, Stats.SpellHasteRating, }, false, ignoreSum = true } -- s64938
+L["每次使用神圣之盾时，你的盾牌格挡值提高%s点，持续%s sec。"] = { { Stats.BlockValue, }, false, ignoreSum = true } -- s64955
+L["你的符文打击技能可以使你的躲闪等级提高%s，持续%s sec。"] = { { Stats.DodgeRating, }, false, ignoreSum = true } -- s64964
+L["在%s秒内每次施法都可以获得每%s秒回复%s点法力值的可叠加效果。%s秒后失效。不消耗法力值的技能不会触发这个效果。"] = { false, false, { Stats.GenericManaRegen, }, false, ignoreSum = true } -- s64999
+L["你每次施放法术，都有一定几率获得每%s秒回复%s点法力值的效果，持续%s sec。"] = { false, { Stats.GenericManaRegen, }, false, ignoreSum = true } -- s65002
 L["法力值回复速度提高%s点。"] = { { Stats.GenericManaRegen, }, } -- s65003
-L["你的伤害性法术有一定几率使你的急速等级提高%s，持续%s。"] = { { Stats.MeleeHasteRating, Stats.RangedHasteRating, Stats.SpellHasteRating, }, false, } -- s65005
-L["你每次施放伤害或治疗法术，都可以使你的法术强度提高%s，持续%s。可叠加最多%s次。"] = { { Stats.SpellDamage, Stats.HealingPower, }, false, false, } -- s65007
-L["近战和远程爆击有一定几率使你的攻击强度提高%s点，持续%s。"] = { { Stats.GenericAttackPower, }, false, } -- s65013
-L["使施法者的攻击速度提高%s%，造成的所有伤害提高%s%，持续%s。"] = { { Stats.MeleeHaste, }, false, false, } -- s65126
-L["向空中喷洒灭火剂，熄灭周围半径%s码范围内的所有火焰。另外，受到这个效果影响的敌人的施法速度降低%s%，持续%s。"] = { false, { Stats.SpellHaste, }, false, } -- s65192
-L["引导泰坦能量，瓦解萨隆邪铁生物的分子结构，使其攻击速度降低%s%，施法速度降低%s%，持续%s。"] = { false, { Stats.SpellHaste, }, false, } -- s65210
-L["对施法者面前半径%s码范围的一个锥形区域内的敌人造成%s点冰霜伤害。另外，目标的攻击速度降低%s%，持续%s。"] = { false, false, { Stats.MeleeHaste, }, false, } -- s65248
-L["在%s内恢复总计%s点法力值，喝酒时必须保持坐姿。如果你花费至少%s秒来喝酒，你会获得“进食充分”效果，耐力和精神提高%s点，持续%s。普通的酒精饮料。"] = { false, { Stats.GenericManaRegen, }, false, { Stats.MeleeCritRating, Stats.RangedCritRating, Stats.SpellCritRating, }, false, } -- s65363
-L["爆击等级提高%s。美酒节的啤酒：绝世美酒，回味无穷！持续%s。"] = { { Stats.MeleeCritRating, Stats.RangedCritRating, Stats.SpellCritRating, }, false, } -- s65365
-L["激活之后，使你的招架几率提高%s%，有%s%的几率偏转你前方的施法者对你施放的法术。持续%s。"] = { { Stats.Parry, }, false, false, } -- s65871
+L["你的伤害性法术有一定几率使你的急速等级提高%s，持续%s sec。"] = { { Stats.MeleeHasteRating, Stats.RangedHasteRating, Stats.SpellHasteRating, }, false, ignoreSum = true } -- s65005
+L["你每次施放伤害或治疗法术，都可以使你的法术强度提高%s，持续%s sec。可叠加最多%s次。"] = { { Stats.SpellDamage, Stats.HealingPower, }, false, false, ignoreSum = true } -- s65007
+L["近战和远程爆击有一定几率使你的攻击强度提高%s点，持续%s sec。"] = { { Stats.GenericAttackPower, }, false, ignoreSum = true } -- s65013
+L["使施法者的攻击速度提高%s%，造成的所有伤害提高%s%，持续%s sec。"] = { { Stats.MeleeHaste, }, false, false, } -- s65126
+L["向空中喷洒灭火剂，熄灭周围半径%s码范围内的所有火焰。另外，受到这个效果影响的敌人的施法速度降低%s%，持续%s sec。"] = { false, { Stats.SpellHaste, }, false, } -- s65192
+L["引导泰坦能量，瓦解萨隆邪铁生物的分子结构，使其攻击速度降低%s%，施法速度降低%s%，持续%s sec。"] = { false, { Stats.SpellHaste, }, false, } -- s65210
+L["对施法者面前半径%s码范围的一个锥形区域内的敌人造成%s点冰霜伤害。另外，目标的攻击速度降低%s%，持续%s sec。"] = { false, false, { Stats.MeleeHaste, }, false, } -- s65248
+L["在%s sec内恢复总计%s点法力值，喝酒时必须保持坐姿。如果你花费至少%s秒来喝酒，你会获得“进食充分”效果，耐力和精神提高%s点，持续%s sec。普通的酒精饮料。"] = { false, { Stats.GenericManaRegen, }, false, { Stats.MeleeCritRating, Stats.RangedCritRating, Stats.SpellCritRating, }, false, } -- s65363
+L["爆击等级提高%s。美酒节的啤酒：绝世美酒，回味无穷！持续%s sec。"] = { { Stats.MeleeCritRating, Stats.RangedCritRating, Stats.SpellCritRating, }, false, } -- s65365
+L["激活之后，使你的招架几率提高%s%，有%s%的几率偏转你前方的施法者对你施放的法术。持续%s sec。"] = { { Stats.Parry, }, false, false, } -- s65871
 L["下一次近战攻击的爆击几率提高%s%。"] = { { Stats.MeleeCrit, Stats.RangedCrit, }, } -- s66889
 L["法术强度提高%s点。这个效果在死亡后仍然存在。战斗和守护药剂。"] = { { Stats.SpellDamage, Stats.HealingPower, }, } -- s67016
 L["攻击强度提高%s点。这个效果在死亡后仍然存在。战斗和守护药剂。"] = { { Stats.GenericAttackPower, }, } -- s67017
 L["力量提高%s点。这个效果在死亡后仍然存在。战斗和守护药剂。"] = { { Stats.Strength, }, } -- s67018
-L["你的鲜血打击和心脏打击技能有一定几率使你获得%s点额外力量，持续%s。"] = { { Stats.Strength, }, false, } -- s67115
-L["使施法者的攻击速度提高%s%，但施法者每次击中敌人造成的伤害降低%s%。持续%s。"] = { { Stats.MeleeHaste, }, false, false, } -- s67233
+L["你的鲜血打击和心脏打击技能有一定几率使你获得%s点额外力量，持续%s sec。"] = { { Stats.Strength, }, false, ignoreSum = true } -- s67115
+L["使施法者的攻击速度提高%s%，但施法者每次击中敌人造成的伤害降低%s%。持续%s sec。"] = { { Stats.MeleeHaste, }, false, false, } -- s67233
 L["躲闪等级提高%s点。"] = { { Stats.DodgeRating, }, } -- s67354
-L["每当你的回春术造成持续性治疗，就有一定几率使你获得%s点法术强度，持续%s。"] = { { Stats.HealingPower, Stats.SpellDamage, }, false, } -- s67356
-L["每当你的月火术造成持续性伤害，就有一定几率使你获得%s爆击等级，持续%s。"] = { { Stats.MeleeCritRating, Stats.RangedCritRating, Stats.SpellCritRating, }, false, } -- s67361
-L["每当你施放圣光术，就有一定几率获得%s点法术强度，持续%s。"] = { { Stats.HealingPower, Stats.SpellDamage, }, false, } -- s67363
-L["每当你的复仇圣印或腐蚀圣印技能造成持续性伤害，就有一定几率使你获得%s点力量，持续%s。"] = { { Stats.Strength, }, false, } -- s67365
-L["每当你使用正义之锤技能，就有一定几率获得%s躲闪等级，持续%s。"] = { { Stats.DodgeRating, }, false, } -- s67379
-L["每当你使用符文打击技能，就有一定几率获得%s躲闪等级，持续%s。"] = { { Stats.DodgeRating, }, false, } -- s67381
-L["每当你使用灵界打击、湮没或天灾打击技能，就有一定几率获得%s点力量，持续%s。"] = { { Stats.Strength, }, false, } -- s67384
-L["每当你施放闪电箭，就有一定几率获得%s急速等级，持续%s。"] = { { Stats.MeleeHasteRating, Stats.RangedHasteRating, Stats.SpellHasteRating, }, false, } -- s67386
-L["每当你施放治疗链，就有一定几率获得%s点法术强度，持续%s。"] = { { Stats.SpellDamage, Stats.HealingPower, }, false, } -- s67389
-L["你每次使用熔岩猛击技能都有一定几率获得%s攻击强度加成，持续%s。"] = { { Stats.AttackPower, }, false, } -- s67391
-L["每当你使用熔岩猛击技能，就有一定几率获得%s点攻击强度，持续%s。"] = { { Stats.AttackPower, }, false, } -- s67392
-L["每当你被近战攻击打中，就有一定几率获得%s点护甲值，持续%s。"] = { { Stats.Armor, }, false, } -- s67653
-L["每当你施放伤害性的法术，就有一定几率获得%s点法术强度，持续%s。"] = { { Stats.SpellDamage, Stats.HealingPower, }, false, } -- s67670
-L["每当你的远程或近战攻击击中目标，就有一定几率使你获得%s点攻击强度，持续%s。"] = { { Stats.GenericAttackPower, }, false, } -- s67672
-L["使你每%s秒回复%s点法力值。效果持续%s。"] = { false, { Stats.GenericManaRegen, }, false, } -- s67696
-L["每当你施放法术，就会在接下来的%s内每%s秒恢复%s点法力值。最多可以叠加%s次。"] = { false, false, { Stats.GenericManaRegen, }, false, } -- s67698
+L["每当你的回春术造成持续性治疗，就有一定几率使你获得%s点法术强度，持续%s sec。"] = { { Stats.HealingPower, Stats.SpellDamage, }, false, ignoreSum = true } -- s67356
+L["每当你的月火术造成持续性伤害，就有一定几率使你获得%s爆击等级，持续%s sec。"] = { { Stats.MeleeCritRating, Stats.RangedCritRating, Stats.SpellCritRating, }, false, ignoreSum = true } -- s67361
+L["每当你施放圣光术，就有一定几率获得%s点法术强度，持续%s sec。"] = { { Stats.HealingPower, Stats.SpellDamage, }, false, ignoreSum = true } -- s67363
+L["每当你的复仇圣印或腐蚀圣印技能造成持续性伤害，就有一定几率使你获得%s点力量，持续%s sec。"] = { { Stats.Strength, }, false, ignoreSum = true } -- s67365
+L["每当你使用正义之锤技能，就有一定几率获得%s躲闪等级，持续%s sec。"] = { { Stats.DodgeRating, }, false, ignoreSum = true } -- s67379
+L["每当你使用符文打击技能，就有一定几率获得%s躲闪等级，持续%s sec。"] = { { Stats.DodgeRating, }, false, ignoreSum = true } -- s67381
+L["每当你使用灵界打击、湮没或天灾打击技能，就有一定几率获得%s点力量，持续%s sec。"] = { { Stats.Strength, }, false, ignoreSum = true } -- s67384
+L["每当你施放闪电箭，就有一定几率获得%s急速等级，持续%s sec。"] = { { Stats.MeleeHasteRating, Stats.RangedHasteRating, Stats.SpellHasteRating, }, false, ignoreSum = true } -- s67386
+L["每当你施放治疗链，就有一定几率获得%s点法术强度，持续%s sec。"] = { { Stats.SpellDamage, Stats.HealingPower, }, false, ignoreSum = true } -- s67389
+L["你每次使用熔岩猛击技能都有一定几率获得%s攻击强度加成，持续%s sec。"] = { { Stats.AttackPower, }, false, } -- s67391
+L["每当你使用熔岩猛击技能，就有一定几率获得%s点攻击强度，持续%s sec。"] = { { Stats.AttackPower, }, false, ignoreSum = true } -- s67392
+L["每当你被近战攻击打中，就有一定几率获得%s点护甲值，持续%s sec。"] = { { Stats.Armor, }, false, ignoreSum = true } -- s67653
+L["每当你施放伤害性的法术，就有一定几率获得%s点法术强度，持续%s sec。"] = { { Stats.SpellDamage, Stats.HealingPower, }, false, ignoreSum = true } -- s67670
+L["每当你的远程或近战攻击击中目标，就有一定几率使你获得%s点攻击强度，持续%s sec。"] = { { Stats.GenericAttackPower, }, false, ignoreSum = true } -- s67672
+L["使你每%s秒回复%s点法力值。效果持续%s sec。"] = { false, { Stats.GenericManaRegen, }, false, } -- s67696
+L["每当你施放法术，就会在接下来的%s sec内每%s秒恢复%s点法力值。最多可以叠加%s次。"] = { false, false, { Stats.GenericManaRegen, }, false, ignoreSum = true } -- s67698
 L["法术强度提高%s。"] = { { Stats.SpellDamage, Stats.HealingPower, }, } -- s67723
-L["你每次施放增益法术，都可以获得%s点法术强度加成。最多叠加%s次。整个效果持续%s。"] = { { Stats.SpellDamage, Stats.HealingPower, }, false, false, } -- s67726
-L["你每次受到攻击，都可以获得%s点护甲值加成。可叠加最多%s次。整个效果持续%s。"] = { { Stats.Armor, }, false, false, } -- s67728
-L["你每次施放伤害法术，都可以获得急速等级提高%s的效果。可叠加最多%s次。整个效果持续%s。"] = { { Stats.MeleeHasteRating, Stats.RangedHasteRating, Stats.SpellHasteRating, }, false, false, } -- s67736
-L["你每次攻击敌人，都可以获得%s点攻击强度加成。可叠加最多%s次。整个效果持续%s。"] = { { Stats.GenericAttackPower, }, false, false, } -- s67738
-L["使施法者的攻击速度提高%s%，对敌人造成的所有伤害伤害提高%s%，持续%s。"] = { { Stats.MeleeHaste, }, false, false, } -- s68378
-L["使一名敌人的攻击间隔延长%s%，移动速度提高%s%。持续%s。"] = { { Stats.MeleeHaste, }, false, false, } -- s68902
+L["你每次施放增益法术，都可以获得%s点法术强度加成。最多叠加%s次。整个效果持续%s sec。"] = { { Stats.SpellDamage, Stats.HealingPower, }, false, false, ignoreSum = true } -- s67726
+L["你每次受到攻击，都可以获得%s点护甲值加成。可叠加最多%s次。整个效果持续%s sec。"] = { { Stats.Armor, }, false, false, ignoreSum = true } -- s67728
+L["你每次施放伤害法术，都可以获得急速等级提高%s的效果。可叠加最多%s次。整个效果持续%s sec。"] = { { Stats.MeleeHasteRating, Stats.RangedHasteRating, Stats.SpellHasteRating, }, false, false, ignoreSum = true } -- s67736
+L["你每次攻击敌人，都可以获得%s点攻击强度加成。可叠加最多%s次。整个效果持续%s sec。"] = { { Stats.GenericAttackPower, }, false, false, ignoreSum = true } -- s67738
+L["使施法者的攻击速度提高%s%，对敌人造成的所有伤害伤害提高%s%，持续%s sec。"] = { { Stats.MeleeHaste, }, false, false, } -- s68378
+L["使一名敌人的攻击间隔延长%s%，移动速度提高%s%。持续%s sec。"] = { { Stats.MeleeHaste, }, false, false, } -- s68902
 L["攻击速度提高%s%。所造成的伤害提高%s%。"] = { { Stats.MeleeHaste, }, false, } -- s69052
 L["冰封王座的严寒使敌人躲避近战攻击的几率降低%s%。"] = { { Stats.Dodge, }, } -- s69127
-L["使施法者的攻击速度提高%s%，持续%s，最多影响%s次攻击。"] = { { Stats.MeleeHaste, }, false, false, } -- s69264
-L["提高远程攻击速度%s%，持续%s。"] = { { Stats.RangedHaste, }, false, } -- s69277
-L["耐力和韧性等级提高%s。美酒节的啤酒：绝世美酒，回味无穷！持续%s。"] = { { Stats.ResilienceRating, Stats.Stamina, }, false, } -- s69559
-L["在%s内恢复总计%s点法力值，喝酒时必须保持坐姿。如果你花费至少%s秒来喝酒，你会获得“进食充分”效果，耐力和韧性等级提高%s，持续%s。普通的酒精饮料。"] = { false, { Stats.GenericManaRegen, }, false, { Stats.ResilienceRating, }, false, } -- s69560
-L["在%s内恢复总计%s点法力值，喝酒时必须保持坐姿。如果你花费至少%s秒来喝酒，你会获得“进食充分”效果，爆击等级提高%s，持续%s。普通的酒精饮料。"] = { false, { Stats.GenericManaRegen, }, false, { Stats.MeleeCritRating, Stats.RangedCritRating, Stats.SpellCritRating, }, false, } -- s69561
-L["使施法者的格挡几率提高%s%，持续%s，但只能格挡%s次攻击。"] = { { Stats.BlockChance, }, false, false, } -- s69580
+L["使施法者的攻击速度提高%s%，持续%s sec，最多影响%s次攻击。"] = { { Stats.MeleeHaste, }, false, false, } -- s69264
+L["提高远程攻击速度%s%，持续%s sec。"] = { { Stats.RangedHaste, }, false, } -- s69277
+L["耐力和韧性等级提高%s。美酒节的啤酒：绝世美酒，回味无穷！持续%s sec。"] = { { Stats.ResilienceRating, Stats.Stamina, }, false, } -- s69559
+L["在%s sec内恢复总计%s点法力值，喝酒时必须保持坐姿。如果你花费至少%s秒来喝酒，你会获得“进食充分”效果，耐力和韧性等级提高%s，持续%s sec。普通的酒精饮料。"] = { false, { Stats.GenericManaRegen, }, false, { Stats.ResilienceRating, }, false, } -- s69560
+L["在%s sec内恢复总计%s点法力值，喝酒时必须保持坐姿。如果你花费至少%s秒来喝酒，你会获得“进食充分”效果，爆击等级提高%s，持续%s sec。普通的酒精饮料。"] = { false, { Stats.GenericManaRegen, }, false, { Stats.MeleeCritRating, Stats.RangedCritRating, Stats.SpellCritRating, }, false, } -- s69561
+L["使施法者的格挡几率提高%s%，持续%s sec，但只能格挡%s次攻击。"] = { { Stats.BlockChance, }, false, false, } -- s69580
 L["护甲值提高%s%，攻击速度提高%s%。"] = { false, { Stats.MeleeHaste, }, } -- s69647
-L["对施法者面前半径%s码范围的一个锥形区域内的敌人造成%s点冰霜伤害。另外，目标的攻击速度降低%s%，移动速度降低%s%，持续%s。"] = { false, false, { Stats.MeleeHaste, }, false, false, } -- s69649
-L["疾病效果，每%s秒造成一次冰霜伤害，并使目标的近战和远程攻击速度降低%s%，持续%s。"] = { false, { Stats.MeleeHaste, Stats.RangedHaste, }, false, } -- s69917
-L["所有小队和团队成员的智力提高%s点，持续%s。"] = { { Stats.Intellect, }, false, } -- s69994
-L["攻击强度提高%s点，并吸引那些喷过古龙水的人。持续%s。"] = { { Stats.GenericAttackPower, }, false, } -- s70233
-L["法术强度提高%s点，并吸引那些喷过古龙水的人。持续%s。"] = { { Stats.SpellDamage, Stats.HealingPower, }, false, } -- s70234
-L["防御等级提高%s，并吸引那些喷过古龙水的人。持续%s。"] = { { Stats.DefenseRating, }, false, } -- s70235
-L["攻击强度提高%s点，并吸引那些喷过香水的人。持续%s。"] = { { Stats.GenericAttackPower, }, false, } -- s70242
-L["防御等级提高%s，并吸引那些喷过香水的人。持续%s。"] = { { Stats.DefenseRating, }, false, } -- s70243
-L["法术强度提高%s点，并吸引那些喷过香水的人。持续%s。"] = { { Stats.SpellDamage, Stats.HealingPower, }, false, } -- s70244
-L["使附近队友所造成的伤害提高%s%，攻击速度提高%s%，持续%s。"] = { false, { Stats.MeleeHaste, }, false, } -- s70750
+L["对施法者面前半径%s码范围的一个锥形区域内的敌人造成%s点冰霜伤害。另外，目标的攻击速度降低%s%，移动速度降低%s%，持续%s sec。"] = { false, false, { Stats.MeleeHaste, }, false, false, } -- s69649
+L["疾病效果，每%s秒造成一次冰霜伤害，并使目标的近战和远程攻击速度降低%s%，持续%s sec。"] = { false, { Stats.MeleeHaste, Stats.RangedHaste, }, false, } -- s69917
+L["所有小队和团队成员的智力提高%s点，持续%s sec。"] = { { Stats.Intellect, }, false, } -- s69994
+L["攻击强度提高%s点，并吸引那些喷过古龙水的人。持续%s sec。"] = { { Stats.GenericAttackPower, }, false, } -- s70233
+L["法术强度提高%s点，并吸引那些喷过古龙水的人。持续%s sec。"] = { { Stats.SpellDamage, Stats.HealingPower, }, false, } -- s70234
+L["防御等级提高%s，并吸引那些喷过古龙水的人。持续%s sec。"] = { { Stats.DefenseRating, }, false, } -- s70235
+L["攻击强度提高%s点，并吸引那些喷过香水的人。持续%s sec。"] = { { Stats.GenericAttackPower, }, false, } -- s70242
+L["防御等级提高%s，并吸引那些喷过香水的人。持续%s sec。"] = { { Stats.DefenseRating, }, false, } -- s70243
+L["法术强度提高%s点，并吸引那些喷过香水的人。持续%s sec。"] = { { Stats.SpellDamage, Stats.HealingPower, }, false, } -- s70244
+L["使附近队友所造成的伤害提高%s%，攻击速度提高%s%，持续%s sec。"] = { false, { Stats.MeleeHaste, }, false, } -- s70750
 L["法术急速提高%s%。"] = { { Stats.SpellHaste, }, } -- s70753
-L["当你激活神圣恳求后，你的躲闪几率提高%s%，持续%s。"] = { { Stats.Dodge, }, false, } -- s70761
+L["当你激活神圣恳求后，你的躲闪几率提高%s%，持续%s sec。"] = { { Stats.Dodge, }, false, ignoreSum = true } -- s70761
 L["提高法术急速等级%s%。"] = { { Stats.SpellHaste, }, } -- s70806
-L["你的激流法术使你在%s内施放的下一个法术的急速等级提高%s%。"] = { false, { Stats.SpellHaste, }, } -- s70807
+L["你的激流法术使你在%s sec内施放的下一个法术的急速等级提高%s%。"] = { false, { Stats.SpellHaste, }, ignoreSum = true } -- s70807
 L["使施法者的攻击获得狂怒效果，攻击速度提高%s%。"] = { { Stats.MeleeHaste, }, } -- s70960
-L["你的割伤和斜掠所造成的周期性伤害可使敏捷提高%s，持续%s。该效果最多可叠加%s次。"] = { { Stats.Agility, }, false, false, } -- s71174
-L["你的虫群和月火术所造成的周期性伤害可使爆击等级提高%s，持续%s。该效果最多可叠加%s次。"] = { { Stats.MeleeCritRating, Stats.RangedCritRating, Stats.SpellCritRating, }, false, false, } -- s71176
-L["你的回春术所造成的周期性治疗效果可使法术强度提高%s点，持续%s。该效果最多可叠加%s次。"] = { { Stats.SpellDamage, Stats.HealingPower, }, false, false, } -- s71178
+L["你的割伤和斜掠所造成的周期性伤害可使敏捷提高%s，持续%s sec。该效果最多可叠加%s次。"] = { { Stats.Agility, }, false, false, ignoreSum = true } -- s71174
+L["你的虫群和月火术所造成的周期性伤害可使爆击等级提高%s，持续%s sec。该效果最多可叠加%s次。"] = { { Stats.MeleeCritRating, Stats.RangedCritRating, Stats.SpellCritRating, }, false, false, ignoreSum = true } -- s71176
+L["你的回春术所造成的周期性治疗效果可使法术强度提高%s点，持续%s sec。该效果最多可叠加%s次。"] = { { Stats.SpellDamage, Stats.HealingPower, }, false, false, ignoreSum = true } -- s71178
 L["法术强度提高%s%。"] = { { Stats.SpellDamage, Stats.HealingPower, }, } -- s71184
-L["你的十字军打击技能使你获得%s点力量加成，持续%s。该效果最多可叠加%s次。"] = { { Stats.Strength, }, false, false, } -- s71186
+L["你的十字军打击技能使你获得%s点力量加成，持续%s sec。该效果最多可叠加%s次。"] = { { Stats.Strength, }, false, false, ignoreSum = true } -- s71186
 L["力量提高%s点。该效果最多可叠加%s次。"] = { { Stats.Strength, }, false, } -- s71187
-L["你的神圣震击可使你获得%s点法术强度加成，持续%s。该效果最多可叠加%s次。"] = { { Stats.SpellDamage, Stats.HealingPower, }, false, false, } -- s71191
+L["你的神圣震击可使你获得%s点法术强度加成，持续%s sec。该效果最多可叠加%s次。"] = { { Stats.SpellDamage, Stats.HealingPower, }, false, false, ignoreSum = true } -- s71191
 L["法术强度提高%s点。该效果最多可叠加%s次。"] = { { Stats.SpellDamage, Stats.HealingPower, }, false, } -- s71192
-L["你的正义盾击技能使你的躲闪等级提高%s，持续%s。该效果最多可叠加%s次。"] = { { Stats.DodgeRating, }, false, false, } -- s71194
+L["你的正义盾击技能使你的躲闪等级提高%s，持续%s sec。该效果最多可叠加%s次。"] = { { Stats.DodgeRating, }, false, false, ignoreSum = true } -- s71194
 L["躲闪等级提高%s。该效果可叠加最多%s次。"] = { { Stats.DodgeRating, }, false, } -- s71197
-L["你的烈焰震击所造成的周期性伤害可使急速等级提高%s，持续%s。该效果最多可叠加%s次。"] = { { Stats.MeleeHasteRating, Stats.RangedHasteRating, Stats.SpellHasteRating, }, false, false, } -- s71198
-L["急速等级提高%s，持续%s。该效果可叠加最多%s次。"] = { { Stats.MeleeHasteRating, Stats.RangedHasteRating, Stats.SpellHasteRating, }, false, false, } -- s71199
-L["你的风暴打击技能使你的攻击强度提高%s点，持续%s。该效果最多可叠加%s次。"] = { { Stats.AttackPower, }, false, false, } -- s71214
+L["你的烈焰震击所造成的周期性伤害可使急速等级提高%s，持续%s sec。该效果最多可叠加%s次。"] = { { Stats.MeleeHasteRating, Stats.RangedHasteRating, Stats.SpellHasteRating, }, false, false, ignoreSum = true } -- s71198
+L["急速等级提高%s，持续%s sec。该效果可叠加最多%s次。"] = { { Stats.MeleeHasteRating, Stats.RangedHasteRating, Stats.SpellHasteRating, }, false, false, } -- s71199
+L["你的风暴打击技能使你的攻击强度提高%s点，持续%s sec。该效果最多可叠加%s次。"] = { { Stats.AttackPower, }, false, false, ignoreSum = true } -- s71214
 L["攻击强度提高%s点。最多叠加%s次。"] = { { Stats.AttackPower, }, false, } -- s71216
-L["你的激流法术使你的法术强度提高%s点，持续%s。该效果最多可叠加%s次。"] = { { Stats.SpellDamage, Stats.HealingPower, }, false, false, } -- s71217
-L["你的湮没、天灾打击和灵界打击技能可使你力量提高%s点，持续%s。该效果最多可叠加%s次。"] = { { Stats.Strength, }, false, false, } -- s71226
-L["你的符文打击技能使你的躲闪等级提高%s，持续%s。该效果最多可叠加%s次。"] = { { Stats.DodgeRating, }, false, false, } -- s71228
-L["窒息毒气造成%s点伤害并使你窒息，使你的命中几率降低%s%，持续%s。"] = { false, { Stats.MeleeHit, Stats.RangedHit, }, false, } -- s71278
-L["爆炸对%s码范围内的敌人造成%s点伤害，将其击退并使其命中几率降低%s%，持续%s。"] = { false, false, { Stats.MeleeHit, Stats.RangedHit, }, false, } -- s71279
-L["对施法者面前锥形区域内的敌人造成冰霜伤害，使其攻击速度降低%s%，持续%s。"] = { { Stats.MeleeHaste, }, false, } -- s71386
-L["使你的近战和远程攻击强度提高%s点。效果持续%s。最多叠加%s次。"] = { { Stats.GenericAttackPower, }, false, false, } -- s71396
-L["每当你对敌人造成近战或远程伤害，你即可在接下来的%s内获得%s点攻击强度加成，该效果最多可叠加%s次。"] = { false, { Stats.GenericAttackPower, }, false, } -- s71397
-L["每当你造成伤害，你都有一定几率获得%s点攻击强度加成，持续%s。"] = { { Stats.GenericAttackPower, }, false, } -- s71402
-L["护甲穿透等级提高%s，持续%s。"] = { { Stats.ArmorPenetrationRating, }, false, } -- s71403
-L["有一定几率在近战或远程攻击造成爆击时，使你的护甲穿透等级提高%s，持续%s。"] = { { Stats.ArmorPenetrationRating, }, false, } -- s71404
-L["使你的爆击等级提高%s，持续%s，每造成一次爆击即降低%s点爆击等级。"] = { false, false, { Stats.MeleeCritRating, Stats.RangedCritRating, Stats.SpellCritRating, }, } -- s71564
-L["获得%s点急速等级，持续%s。"] = { { Stats.MeleeHasteRating, Stats.RangedHasteRating, Stats.SpellHasteRating, }, false, } -- s71568
-L["使你的法术强度提高%s点。该效果持续%s。可叠加最多%s次。"] = { { Stats.SpellDamage, Stats.HealingPower, }, false, false, } -- s71570
-L["每当你对敌人造成法术伤害，你即可在接下来的%s内获得%s点法术强度加成，该效果最多可叠加%s次。"] = { false, { Stats.SpellDamage, Stats.HealingPower, }, false, } -- s71571
-L["使你的耐力提高%s点。该效果持续%s。可叠加最多%s次。"] = { { Stats.Stamina, }, false, false, } -- s71575
-L["每当你成功躲闪，你就有%s%的几率在接下来的%s内获得%s点耐力加成，该效果最多可叠加%s次。"] = { false, false, { Stats.Stamina, }, false, } -- s71576
-L["法力回复提高%s点，持续%s。"] = { { Stats.GenericManaRegen, }, false, } -- s71584
-L["你施法后有一定几率每%s秒获得%s点魔法值，持续%s。"] = { false, { Stats.GenericManaRegen, }, false, } -- s71585
-L["提高法术强度%s点，每%s秒获得额外的%s点法术强度。持续%s。"] = { { Stats.SpellDamage, Stats.HealingPower, }, false, { Stats.SpellDamage, }, false, } -- s71600
-L["提高法术强度%s点，每%s秒获得额外的%s点强度。持续%s。"] = { { Stats.SpellDamage, Stats.HealingPower, }, false, { Stats.SpellDamage, }, false, } -- s71601
-L["提高法术强度%s点，持续%s。"] = { { Stats.HealingPower, Stats.SpellDamage, }, false, } -- s71605
-L["你的持续伤害法术每次对敌人造成伤害，都有一定几率获得%s点法术强度加成，持续%s。"] = { { Stats.SpellDamage, Stats.HealingPower, }, false, } -- s71606
-L["导致你的生命值低于%s%的近战攻击将令你的护甲值提高%s，持续%s。这个效果每%s秒只能触发一次。"] = { { Stats.Armor, }, { Stats.Armor, }, false, false, } -- s71634
-L["对奥术、火焰、冰霜、自然、暗影等法术的抗性提高%s，持续%s。"] = { { Stats.FireResistance, Stats.NatureResistance, Stats.FrostResistance, Stats.ShadowResistance, Stats.ArcaneResistance, }, false, } -- s71635
-L["力量提高%s点，如果施法者的法术强度高于%s点，则受到的治疗量提高，持续%s。"] = { { Stats.Strength, }, false, false, } -- s71870
-L["你的近战攻击有一定几率使你获得光明祝福的效果，使你的力量提高%s点，并使你受到的治疗效果提高最多%s点，持续%s。"] = { { Stats.Strength, }, false, false, } -- s71871
-L["获得一枚灵魂残片，每获得一枚灵魂残片则力量提高%s点。当灵魂残片累积到%s枚时，它们将会释放，触发森罗万象，持续%s。"] = { { Stats.Strength, }, false, false, } -- s71905
+L["你的激流法术使你的法术强度提高%s点，持续%s sec。该效果最多可叠加%s次。"] = { { Stats.SpellDamage, Stats.HealingPower, }, false, false, ignoreSum = true } -- s71217
+L["你的湮没、天灾打击和灵界打击技能可使你力量提高%s点，持续%s sec。该效果最多可叠加%s次。"] = { { Stats.Strength, }, false, false, ignoreSum = true } -- s71226
+L["你的符文打击技能使你的躲闪等级提高%s，持续%s sec。该效果最多可叠加%s次。"] = { { Stats.DodgeRating, }, false, false, ignoreSum = true } -- s71228
+L["窒息毒气造成%s点伤害并使你窒息，使你的命中几率降低%s%，持续%s sec。"] = { false, { Stats.MeleeHit, Stats.RangedHit, }, false, } -- s71278
+L["爆炸对%s码范围内的敌人造成%s点伤害，将其击退并使其命中几率降低%s%，持续%s sec。"] = { false, false, { Stats.MeleeHit, Stats.RangedHit, }, false, } -- s71279
+L["对施法者面前锥形区域内的敌人造成冰霜伤害，使其攻击速度降低%s%，持续%s sec。"] = { { Stats.MeleeHaste, }, false, } -- s71386
+L["使你的近战和远程攻击强度提高%s点。效果持续%s sec。最多叠加%s次。"] = { { Stats.GenericAttackPower, }, false, false, } -- s71396
+L["每当你对敌人造成近战或远程伤害，你即可在接下来的%s sec内获得%s点攻击强度加成，该效果最多可叠加%s次。"] = { false, { Stats.GenericAttackPower, }, false, ignoreSum = true } -- s71397
+L["每当你造成伤害，你都有一定几率获得%s点攻击强度加成，持续%s sec。"] = { { Stats.GenericAttackPower, }, false, ignoreSum = true } -- s71402
+L["护甲穿透等级提高%s，持续%s sec。"] = { { Stats.ArmorPenetrationRating, }, false, } -- s71403
+L["有一定几率在近战或远程攻击造成爆击时，使你的护甲穿透等级提高%s，持续%s sec。"] = { { Stats.ArmorPenetrationRating, }, false, ignoreSum = true } -- s71404
+L["使你的爆击等级提高%s，持续%s sec，每造成一次爆击即降低%s点爆击等级。"] = { false, false, { Stats.MeleeCritRating, Stats.RangedCritRating, Stats.SpellCritRating, }, } -- s71564
+L["获得%s点急速等级，持续%s sec。"] = { { Stats.MeleeHasteRating, Stats.RangedHasteRating, Stats.SpellHasteRating, }, false, } -- s71568
+L["使你的法术强度提高%s点。该效果持续%s sec。可叠加最多%s次。"] = { { Stats.SpellDamage, Stats.HealingPower, }, false, false, } -- s71570
+L["每当你对敌人造成法术伤害，你即可在接下来的%s sec内获得%s点法术强度加成，该效果最多可叠加%s次。"] = { false, { Stats.SpellDamage, Stats.HealingPower, }, false, ignoreSum = true } -- s71571
+L["使你的耐力提高%s点。该效果持续%s sec。可叠加最多%s次。"] = { { Stats.Stamina, }, false, false, } -- s71575
+L["每当你成功躲闪，你就有%s%的几率在接下来的%s sec内获得%s点耐力加成，该效果最多可叠加%s次。"] = { false, false, { Stats.Stamina, }, false, ignoreSum = true } -- s71576
+L["法力回复提高%s点，持续%s sec。"] = { { Stats.GenericManaRegen, }, false, } -- s71584
+L["你施法后有一定几率每%s秒获得%s点魔法值，持续%s sec。"] = { false, { Stats.GenericManaRegen, }, false, ignoreSum = true } -- s71585
+L["提高法术强度%s点，每%s秒获得额外的%s点法术强度。持续%s sec。"] = { { Stats.SpellDamage, Stats.HealingPower, }, false, { Stats.SpellDamage, }, false, } -- s71600
+L["提高法术强度%s点，每%s秒获得额外的%s点强度。持续%s sec。"] = { { Stats.SpellDamage, Stats.HealingPower, }, false, { Stats.SpellDamage, }, false, ignoreSum = true } -- s71601
+L["提高法术强度%s点，持续%s sec。"] = { { Stats.HealingPower, Stats.SpellDamage, }, false, } -- s71605
+L["你的持续伤害法术每次对敌人造成伤害，都有一定几率获得%s点法术强度加成，持续%s sec。"] = { { Stats.SpellDamage, Stats.HealingPower, }, false, ignoreSum = true } -- s71606
+L["导致你的生命值低于%s%的近战攻击将令你的护甲值提高%s，持续%s sec。这个效果每%s秒只能触发一次。"] = { { Stats.Armor, }, { Stats.Armor, }, false, false, ignoreSum = true } -- s71634
+L["对奥术、火焰、冰霜、自然、暗影等法术的抗性提高%s，持续%s sec。"] = { { Stats.FireResistance, Stats.NatureResistance, Stats.FrostResistance, Stats.ShadowResistance, Stats.ArcaneResistance, }, false, } -- s71635
+L["力量提高%s点，如果施法者的法术强度高于%s点，则受到的治疗量提高，持续%s sec。"] = { { Stats.Strength, }, false, false, } -- s71870
+L["你的近战攻击有一定几率使你获得光明祝福的效果，使你的力量提高%s点，并使你受到的治疗效果提高最多%s点，持续%s sec。"] = { { Stats.Strength, }, false, false, ignoreSum = true } -- s71871
+L["获得一枚灵魂残片，每获得一枚灵魂残片则力量提高%s点。当灵魂残片累积到%s枚时，它们将会释放，触发森罗万象，持续%s sec。"] = { { Stats.Strength, }, false, false, } -- s71905
 L["提高近战攻击速度%s%。"] = { { Stats.MeleeHaste, }, } -- s72203
-L["有一定几率在命中目标之后获得%s点攻击强度加成，持续%s。"] = { { Stats.GenericAttackPower, }, false, } -- s72413
-L["在战斗中有一定几率使你的护甲值提高%s点，持续%s。"] = { { Stats.Armor, }, false, } -- s72415
-L["你的攻击法术命中之后有一定几率令你的法术强度提高%s点，持续%s。"] = { { Stats.SpellDamage, Stats.HealingPower, }, false, } -- s72417
-L["你的有益法术有一定几率使你的法术强度提高%s点，持续%s。"] = { { Stats.SpellDamage, Stats.HealingPower, }, false, } -- s72419
-L["向敌人发动一次令人畏惧的攻击，造成一次普通近战攻击%s%的伤害，并使目标的躲闪几率降低%s%，持续%s。该攻击无法被避免。"] = { false, { Stats.Dodge, }, false, } -- s72422
-L["所有小队和团队成员的耐力提高%s点，持续%s。"] = { { Stats.Stamina, }, false, } -- s72590
+L["有一定几率在命中目标之后获得%s点攻击强度加成，持续%s sec。"] = { { Stats.GenericAttackPower, }, false, ignoreSum = true } -- s72413
+L["在战斗中有一定几率使你的护甲值提高%s点，持续%s sec。"] = { { Stats.Armor, }, false, ignoreSum = true } -- s72415
+L["你的攻击法术命中之后有一定几率令你的法术强度提高%s点，持续%s sec。"] = { { Stats.SpellDamage, Stats.HealingPower, }, false, ignoreSum = true } -- s72417
+L["你的有益法术有一定几率使你的法术强度提高%s点，持续%s sec。"] = { { Stats.SpellDamage, Stats.HealingPower, }, false, ignoreSum = true } -- s72419
+L["向敌人发动一次令人畏惧的攻击，造成一次普通近战攻击%s%的伤害，并使目标的躲闪几率降低%s%，持续%s sec。该攻击无法被避免。"] = { false, { Stats.Dodge, }, false, } -- s72422
+L["所有小队和团队成员的耐力提高%s点，持续%s sec。"] = { { Stats.Stamina, }, false, } -- s72590
 L["萨鲁法尔陷入了疯狂，他的攻击速度提高了%s%。"] = { { Stats.MeleeHaste, }, } -- s72737
-L["释放森罗万象，获得%s点力量值，持续%s。"] = { { Stats.Strength, }, false, } -- s73422
-L["使一名敌人的攻击速度降低%s%，持续%s。"] = { { Stats.MeleeHaste, }, false, } -- s74781
-L["当你造成伤害时你有一定几率获得%s点攻击强度，持续%s。"] = { { Stats.GenericAttackPower, Stats.RangedAttackPower, }, false, } -- s75455
-L["当你造成伤害时，你有一定几率获得%s点攻击强度，持续%s。"] = { { Stats.GenericAttackPower, }, false, } -- s75457
-L["你的伤害法术有一定几率使你获得%s点法术强度，持续%s。"] = { { Stats.SpellDamage, Stats.HealingPower, }, false, } -- s75465
-L["当近战攻击使你的生命值低于%s%时，你的闪避等级会提高%s，持续%s。这个效果每%s秒只能出现一次。"] = { { Stats.DodgeRating, }, { Stats.DodgeRating, }, false, false, } -- s75475
-L["闪避等级提高%s，持续%s。"] = { { Stats.DodgeRating, }, false, } -- s75477
+L["释放森罗万象，获得%s点力量值，持续%s sec。"] = { { Stats.Strength, }, false, } -- s73422
+L["使一名敌人的攻击速度降低%s%，持续%s sec。"] = { { Stats.MeleeHaste, }, false, } -- s74781
+L["当你造成伤害时你有一定几率获得%s点攻击强度，持续%s sec。"] = { { Stats.GenericAttackPower, Stats.RangedAttackPower, }, false, ignoreSum = true } -- s75455
+L["当你造成伤害时，你有一定几率获得%s点攻击强度，持续%s sec。"] = { { Stats.GenericAttackPower, }, false, ignoreSum = true } -- s75457
+L["你的伤害法术有一定几率使你获得%s点法术强度，持续%s sec。"] = { { Stats.SpellDamage, Stats.HealingPower, }, false, ignoreSum = true } -- s75465
+L["当近战攻击使你的生命值低于%s%时，你的闪避等级会提高%s，持续%s sec。这个效果每%s秒只能出现一次。"] = { { Stats.DodgeRating, }, { Stats.DodgeRating, }, false, false, ignoreSum = true } -- s75475
+L["闪避等级提高%s，持续%s sec。"] = { { Stats.DodgeRating, }, false, } -- s75477
 L["海里昂的步法极为精妙，这让他的攻击捉摸不定，命中几率提高%s%并使敌人闪避他的攻击的几率降低%s%。"] = { { Stats.MeleeHit, Stats.RangedHit, }, false, } -- s78243
-L["使你的攻击间隔时间缩短%s%，持续%s。"] = { { Stats.MeleeHaste, }, false, } -- s78722
-L["使某些萨隆邪铁构成的生物的分子结构变得不稳定，使其攻击速度降低%s%，施法速度降低%s%。持续%s。"] = { false, { Stats.SpellHaste, }, false, } -- s413118
-L["使施法者免受一切物理和法术攻击伤害，持续%s。但在效果持续时间内，施法者的攻击间隔也将延长%s%。"] = { false, { Stats.MeleeHaste, }, } -- s41367
-L["施法速度降低%s%，持续%s。"] = { { Stats.SpellHaste, }, false, } -- s52430
+L["使你的攻击间隔时间缩短%s%，持续%s sec。"] = { { Stats.MeleeHaste, }, false, } -- s78722
+L["使某些萨隆邪铁构成的生物的分子结构变得不稳定，使其攻击速度降低%s%，施法速度降低%s%。持续%s sec。"] = { false, { Stats.SpellHaste, }, false, } -- s413118
+L["使施法者免受一切物理和法术攻击伤害，持续%s sec。但在效果持续时间内，施法者的攻击间隔也将延长%s%。"] = { false, { Stats.MeleeHaste, }, } -- s41367
+L["施法速度降低%s%，持续%s sec。"] = { { Stats.SpellHaste, }, false, } -- s52430
 L["所造成的伤害提高%s%。\n法术不消耗法力值且为瞬发。\n近战和远程攻击速度提高%s%。"] = { false, { Stats.MeleeHaste, }, } -- s70304
 L["所造成的伤害提高%s%。\n生命值提高%s%。\n法术不消耗法力值且为瞬发。\n近战和远程攻击速度提高%s%。"] = { false, { Stats.SpellHaste, }, false, } -- s70320
 L["以强大的热能冲击附近的所有铁铸像，使它们的移动速度提高%s，急速提高%s。这个效果可以叠加最多%s次。叠加到%s次之后，铁铸像会熔化。"] = { false, { Stats.MeleeHaste, }, false, false, } -- s65667
@@ -2739,525 +2739,525 @@ L["%s 法术强度，每%s秒回复法力%s"] = { { Stats.SpellPower, }, { Stats
 L["test %s intellect and %s mana every %s seconds"] = { { Stats.Intellect, }, { Stats.GenericManaRegen, }, false, } -- e3591
 L["%s 急速等级，每%s秒法力回复%s"] = { { Stats.HasteRating, }, false, { Stats.GenericManaRegen, }, } -- e3714
 L["使附近%s码范围内的所有小队和团队成员获得%s点额外的护甲值。每个圣骑士在同一时间内只能开启一种光环。"] = { false, { Stats.Armor, }, } -- s465
-L["产生%s点怒气值，并使身边半径%s码范围内的小队和团队成员的耐力提高%s点。持续%s。"] = { false, false, { Stats.Stamina, }, false, } -- s469
+L["产生%s点怒气值，并使身边半径%s码范围内的小队和团队成员的耐力提高%s点。持续%s sec。"] = { false, false, { Stats.Stamina, }, false, } -- s469
 L["圣洁的能量充满施法者的体内，使装备提供的护甲值提高$<innerfire>%，法术强度提高%s点。\n你在同一时间内只能激活心灵意志或心灵之火中的一种。"] = { { Stats.HealingPower, Stats.SpellDamage, }, } -- s588
 L["圣洁的能量充满施法者的体内，使装备提供的护甲值提高$<innerfire>%，法术强度提高%s点。"] = { { Stats.HealingPower, Stats.SpellDamage, }, } -- s588
 L["保护施法者，使施法者的护甲值提高%s点，通过法术和效果恢复的生命值提高$<healing>%。\n术士在同一时间内只能激活一种护甲法术。"] = { { Stats.Armor, }, } -- s687
-L["奴役目标恶魔，使其听从你的命令。被奴役的恶魔攻击间隔延长%s%，施法速度降低%s%。奴役效果最多持续%s。"] = { { Stats.MeleeHaste, }, { Stats.SpellHaste, }, false, } -- s1098
-L["使你的格挡几率提高%s%，持续%s。此外，当你全部的格挡或躲避攻击的几率超过%s%时，则多余部分可使精确格挡几率提高。"] = { { Stats.BlockChance, }, false, false, } -- s2565
-L["对目标造成%s%武器伤害，并使其攻击间隔延长%s%，持续%s。"] = { { Stats.MeleeHaste, }, { Stats.MeleeHaste, }, false, } -- s3130
-L["使敌人的生命值回复速度降低%s%，耐力降低%s%，智力降低%s%，持续%s。"] = { false, false, { Stats.Intellect, }, false, } -- s3150
+L["奴役目标恶魔，使其听从你的命令。被奴役的恶魔攻击间隔延长%s%，施法速度降低%s%。奴役效果最多持续%s sec。"] = { { Stats.MeleeHaste, }, { Stats.SpellHaste, }, false, } -- s1098
+L["使你的格挡几率提高%s%，持续%s sec。此外，当你全部的格挡或躲避攻击的几率超过%s%时，则多余部分可使精确格挡几率提高。"] = { { Stats.BlockChance, }, false, false, } -- s2565
+L["对目标造成%s%武器伤害，并使其攻击间隔延长%s%，持续%s sec。"] = { { Stats.MeleeHaste, }, { Stats.MeleeHaste, }, false, } -- s3130
+L["使敌人的生命值回复速度降低%s%，耐力降低%s%，智力降低%s%，持续%s sec。"] = { false, false, { Stats.Intellect, }, false, } -- s3150
 L["使敏捷提高%s点，持续%s小时。战斗药剂。"] = { { Stats.Agility, }, false, } -- s3160
 L["使力量提高%s点，持续%s小时。战斗药剂。"] = { { Stats.Strength, }, false, } -- s3164
 L["使你的智力提高%s点，持续%s小时。战斗药剂。"] = { { Stats.Intellect, }, false, } -- s3166
-L["使你的智力提高%s点，持续%s。战斗药剂。"] = { { Stats.Intellect, }, false, } -- s3166
+L["使你的智力提高%s点，持续%s sec。战斗药剂。"] = { { Stats.Intellect, }, false, } -- s3166
 L["每%s秒恢复%s点生命值，持续%s小时。守护药剂。"] = { false, false, { Stats.HealthRegen, }, } -- s3219
 L["护甲提高%s点，持续%s小时。守护药剂。"] = { { Stats.Armor, }, false, } -- s3220
 L["使玩家的生命值上限提高%s点，持续%s小时。守护药剂。"] = { { Stats.Health, }, false, } -- s3593
 L["攻击间隔延长%s%。"] = { { Stats.MeleeHaste, }, } -- s3826
-L["使你的生命值提高%s点，但智力降低%s点，持续%s。"] = { false, { Stats.Intellect, }, false, } -- s5021
-L["使潜行者的躲闪几率提高%s%，并使远程攻击命中潜行者的几率降低%s%。持续%s。"] = { { Stats.Dodge, }, false, false, } -- s5277
-L["使你对所有魔法的抗性提高%s点，并使你每%s秒可以回复最大法力值的%s%的法力。另外，对你施放的所有负面法术效果的持续时间缩短%s%。法师在同一时间内只能激活一种魔法护甲效果。持续%s。"] = { { Stats.FireResistance, Stats.NatureResistance, Stats.FrostResistance, Stats.ShadowResistance, Stats.ArcaneResistance, }, false, false, false, false, } -- s6117
+L["使你的生命值提高%s点，但智力降低%s点，持续%s sec。"] = { false, { Stats.Intellect, }, false, } -- s5021
+L["使潜行者的躲闪几率提高%s%，并使远程攻击命中潜行者的几率降低%s%。持续%s sec。"] = { { Stats.Dodge, }, false, false, } -- s5277
+L["使你对所有魔法的抗性提高%s点，并使你每%s秒可以回复最大法力值的%s%的法力。另外，对你施放的所有负面法术效果的持续时间缩短%s%。法师在同一时间内只能激活一种魔法护甲效果。持续%s sec。"] = { { Stats.FireResistance, Stats.NatureResistance, Stats.FrostResistance, Stats.ShadowResistance, Stats.ArcaneResistance, }, false, false, false, false, } -- s6117
 L["使小队和团队成员的耐力提高%s点。"] = { { Stats.Stamina, }, } -- s6307
 L["使你的法术和攻击命中几率提高%s%。"] = { { Stats.MeleeHit, Stats.RangedHit, Stats.SpellHit, }, } -- s6562
-L["使半径%s码范围内的所有小队和团队成员的力量和敏捷提高%s点，并获得%s点怒气值。持续%s。"] = { false, { Stats.Strength, Stats.Agility, }, false, false, } -- s6673
+L["使半径%s码范围内的所有小队和团队成员的力量和敏捷提高%s点，并获得%s点怒气值。持续%s sec。"] = { false, { Stats.Strength, Stats.Agility, }, false, false, } -- s6673
 L["使造成的物理伤害提高%s点。"] = { { Stats.AverageWeaponDamage, }, } -- s7072
 L["攻击间隔延长%s%。\n施法速度降低%s%。\n在被击中时有%s%的几率向某个盟友传染疾病。"] = { { Stats.MeleeHaste, }, { Stats.SpellHaste, }, false, } -- s7103
 L["火焰法术强度提高%s点，持续%s小时。战斗药剂。"] = { { Stats.FireDamage, }, false, } -- s7844
-L["使目标的护甲提高%s点，持续%s。该效果等同于守护药剂。"] = { { Stats.Armor, }, false, } -- s8091
-L["使目标的智力提高%s点，持续%s。该效果等同于战斗药剂。"] = { { Stats.Intellect, }, false, } -- s8096
-L["使目标的耐力提高%s点，持续%s。该效果等同于守护药剂。"] = { { Stats.Stamina, }, false, } -- s8099
-L["使目标的精神提高%s点，持续%s。该效果等同于战斗药剂。"] = { { Stats.Spirit, }, false, } -- s8112
-L["使目标的敏捷提高%s点，持续%s。该效果等同于战斗药剂。"] = { { Stats.Agility, }, false, } -- s8115
-L["使目标的力量提高%s点，持续%s。该效果等同于战斗药剂。"] = { { Stats.Strength, }, false, } -- s8118
+L["使目标的护甲提高%s点，持续%s sec。该效果等同于守护药剂。"] = { { Stats.Armor, }, false, } -- s8091
+L["使目标的智力提高%s点，持续%s sec。该效果等同于战斗药剂。"] = { { Stats.Intellect, }, false, } -- s8096
+L["使目标的耐力提高%s点，持续%s sec。该效果等同于守护药剂。"] = { { Stats.Stamina, }, false, } -- s8099
+L["使目标的精神提高%s点，持续%s sec。该效果等同于战斗药剂。"] = { { Stats.Spirit, }, false, } -- s8112
+L["使目标的敏捷提高%s点，持续%s sec。该效果等同于战斗药剂。"] = { { Stats.Agility, }, false, } -- s8115
+L["使目标的力量提高%s点，持续%s sec。该效果等同于战斗药剂。"] = { { Stats.Strength, }, false, } -- s8118
 L["使所有系的魔法抗性提高%s点。"] = { { Stats.FireResistance, Stats.NatureResistance, Stats.FrostResistance, Stats.ShadowResistance, Stats.ArcaneResistance, }, } -- s8263
-L["使施放者的攻击速度提高%s%，持续%s。"] = { { Stats.MeleeHaste, }, false, } -- s8269
+L["使施放者的攻击速度提高%s%，持续%s sec。"] = { { Stats.MeleeHaste, }, false, } -- s8269
 L["智力提高%s点。"] = { { Stats.Intellect, }, } -- s9417
-L["使躲闪等级提高%s，持续%s。"] = { { Stats.DodgeRating, }, false, } -- s10351
+L["使躲闪等级提高%s，持续%s sec。"] = { { Stats.DodgeRating, }, false, } -- s10351
 L["使用后精神提高%s点。战斗药剂。"] = { { Stats.Spirit, }, } -- s10691
 L["使用后精神提高%s点，效果持续%s分钟。战斗药剂。"] = { { Stats.Spirit, }, false, } -- s10693
 L["使你法术的爆击几率提高%s%。"] = { { Stats.SpellCrit, }, } -- s11151
 L["使护甲提高%s点，持续%s小时。守护药剂。"] = { { Stats.Armor, }, false, } -- s11349
-L["使护甲提高%s点，持续%s。守护药剂。"] = { { Stats.Armor, }, false, } -- s11349
+L["使护甲提高%s点，持续%s sec。守护药剂。"] = { { Stats.Armor, }, false, } -- s11349
 L["智力提高%s点，爆击等级提高%s。持续%s小时。战斗药剂。"] = { { Stats.Intellect, Stats.MeleeCritRating, Stats.RangedCritRating, Stats.SpellCritRating, }, { Stats.Intellect, }, false, } -- s11390
-L["智力提高%s点，爆击等级提高%s。持续%s。战斗药剂。"] = { { Stats.Intellect, Stats.MeleeCritRating, Stats.RangedCritRating, Stats.SpellCritRating, }, { Stats.Intellect, }, false, } -- s11390
-L["对附近的敌人造成自然伤害，并使其命中几率降低%s%，持续%s。"] = { { Stats.SpellHit, Stats.MeleeHit, Stats.RangedHit, }, false, } -- s11983
+L["智力提高%s点，爆击等级提高%s。持续%s sec。战斗药剂。"] = { { Stats.Intellect, Stats.MeleeCritRating, Stats.RangedCritRating, Stats.SpellCritRating, }, { Stats.Intellect, }, false, } -- s11390
+L["对附近的敌人造成自然伤害，并使其命中几率降低%s%，持续%s sec。"] = { { Stats.SpellHit, Stats.MeleeHit, Stats.RangedHit, }, false, } -- s11983
 L["力量降低%s点。\n敏捷降低%s点。\n智力降低%s点。"] = { { Stats.Strength, }, { Stats.Agility, }, { Stats.Intellect, }, } -- s12001
-L["提高你的施法速度，使所有法术的施法速度提高%s%，在施法时因受到伤害而承受的施法推迟时间缩短%s%。施放冰冷血脉可以移出所有降低移动和施法速度的效果。  持续%s。"] = { { Stats.SpellHaste, }, false, false, } -- s12472
-L["提高你的施法速度，使所有法术的施法速度提高%s%，在施法时因受到伤害而承受的施法推迟时间缩短%s%。 持续%s。"] = { { Stats.SpellHaste, }, false, false, } -- s12472
-L["护甲值提高%s点，所有抗性提高%s点，持续%s。对%s级以下玩家，还会有免疫恐惧的效果。"] = { { Stats.FireResistance, Stats.NatureResistance, Stats.FrostResistance, Stats.ShadowResistance, Stats.ArcaneResistance, }, false, false, false, } -- s12733
+L["提高你的施法速度，使所有法术的施法速度提高%s%，在施法时因受到伤害而承受的施法推迟时间缩短%s%。施放冰冷血脉可以移出所有降低移动和施法速度的效果。  持续%s sec。"] = { { Stats.SpellHaste, }, false, false, } -- s12472
+L["提高你的施法速度，使所有法术的施法速度提高%s%，在施法时因受到伤害而承受的施法推迟时间缩短%s%。 持续%s sec。"] = { { Stats.SpellHaste, }, false, false, } -- s12472
+L["护甲值提高%s点，所有抗性提高%s点，持续%s sec。对%s级以下玩家，还会有免疫恐惧的效果。"] = { { Stats.FireResistance, Stats.NatureResistance, Stats.FrostResistance, Stats.ShadowResistance, Stats.ArcaneResistance, }, false, false, false, } -- s12733
 L["使用震撼性的力量冲击一名敌人，对其造成自然伤害，并使攻击间隔时间缩短%s%"] = { { Stats.MeleeHaste, }, } -- s13281
-L["强迫目标使用恶魔语，使其所有法术的施放时间延长%s%，持续%s。"] = { { Stats.SpellHaste, }, false, } -- s13338
+L["强迫目标使用恶魔语，使其所有法术的施放时间延长%s%，持续%s sec。"] = { { Stats.SpellHaste, }, false, } -- s13338
 L["使你的匕首的爆击几率提高%s%。"] = { { Stats.MeleeCrit, Stats.RangedCrit, }, } -- s13706
 L["使你的躲闪敌人攻击的几率提高%s%，攻击速度提高%s%。"] = { { Stats.Dodge, }, false, } -- s13712
-L["使你的精神提高%s点法力值，持续%s。战斗药剂。"] = { { Stats.Spirit, }, false, } -- s15231
-L["强迫附近的敌人使用恶魔语，使其所有法术的施放速度减慢%s%，持续%s。"] = { { Stats.SpellHaste, }, false, } -- s15470
-L["在施法者身边召唤一个生命值为施法者生命值%s%的法力之潮图腾，持续%s。图腾周围半径%s码范围内的小队或团队成员可以获得施法者%s%的精神（不包括短时间内的精神加成）。"] = { false, false, false, { Stats.Spirit, }, } -- s16191
-L["使你施放月火、愈合或虫群法术后，你的法术急速提高%s%，持续%s。该效果有%s分钟的冷却时间。当你获得月蚀或日蚀效果时，自然之赐的冷却时间将立即重置。"] = { { Stats.SpellHaste, }, false, false, } -- s16880
-L["保护性的法力护盾环绕施法者，可吸收%s点伤害。护盾存在时，精神将提高%s点，持续%s。"] = { false, { Stats.Spirit, }, false, } -- s17252
-L["有%s%的几率在被击中后使你的躲闪等级提高%s，持续%s秒。"] = { false, { Stats.DodgeRating, }, false, } -- s17350
-L["怒气值立即恢复%s到%s点，力量提高%s点，持续%s。"] = { false, false, { Stats.Strength, }, false, } -- s17528
-L["使法力值上限提高%s点，精神提高%s点，持续%s。战斗药剂"] = { { Stats.Mana, }, { Stats.Spirit, }, false, } -- s17535
-L["使附近敌人的物理伤害能力降低%s点，持续%s。"] = { { Stats.AverageWeaponDamage, }, false, } -- s21007
-L["你的爆击等级提高%s，持续%s。这个效果可以叠加最多%s次。"] = { { Stats.MeleeCritRating, Stats.RangedCritRating, Stats.SpellCritRating, }, false, false, } -- s21153
+L["使你的精神提高%s点法力值，持续%s sec。战斗药剂。"] = { { Stats.Spirit, }, false, } -- s15231
+L["强迫附近的敌人使用恶魔语，使其所有法术的施放速度减慢%s%，持续%s sec。"] = { { Stats.SpellHaste, }, false, } -- s15470
+L["在施法者身边召唤一个生命值为施法者生命值%s%的法力之潮图腾，持续%s sec。图腾周围半径%s码范围内的小队或团队成员可以获得施法者%s%的精神（不包括短时间内的精神加成）。"] = { false, false, false, { Stats.Spirit, }, } -- s16191
+L["使你施放月火、愈合或虫群法术后，你的法术急速提高%s%，持续%s sec。该效果有%s分钟的冷却时间。当你获得月蚀或日蚀效果时，自然之赐的冷却时间将立即重置。"] = { { Stats.SpellHaste, }, false, false, ignoreSum = true } -- s16880
+L["保护性的法力护盾环绕施法者，可吸收%s点伤害。护盾存在时，精神将提高%s点，持续%s sec。"] = { false, { Stats.Spirit, }, false, } -- s17252
+L["有%s%的几率在被击中后使你的躲闪等级提高%s，持续%s秒。"] = { false, { Stats.DodgeRating, }, false, ignoreSum = true } -- s17350
+L["怒气值立即恢复%s到%s点，力量提高%s点，持续%s sec。"] = { false, false, { Stats.Strength, }, false, } -- s17528
+L["使法力值上限提高%s点，精神提高%s点，持续%s sec。战斗药剂"] = { { Stats.Mana, }, { Stats.Spirit, }, false, } -- s17535
+L["使附近敌人的物理伤害能力降低%s点，持续%s sec。"] = { { Stats.AverageWeaponDamage, }, false, } -- s21007
+L["你的爆击等级提高%s，持续%s sec。这个效果可以叠加最多%s次。"] = { { Stats.MeleeCritRating, Stats.RangedCritRating, Stats.SpellCritRating, }, false, false, } -- s21153
 L["精神值提高%s点。"] = { { Stats.Spirit, }, } -- s21894
 L["冰霜法术强度提高%s点，持续%s小时。战斗药剂。"] = { { Stats.FrostDamage, }, false, } -- s21920
-L["敌方目标枯萎，立刻受到%s点自然伤害，并且每%s秒受到%s点自然伤害，持续%s。目标的力量也会降低%s。"] = { false, false, false, false, { Stats.Strength, }, } -- s22662
-L["向一个目标喷吐烈酒，使其近战命中几率降低%s%，并醉酒%s。"] = { { Stats.MeleeHit, Stats.RangedHit, }, false, } -- s22833
-L["使携带者的躲闪等级提高%s，护甲值提高%s点，持续%s。"] = { { Stats.DodgeRating, }, { Stats.Armor, }, false, } -- s22850
+L["敌方目标枯萎，立刻受到%s点自然伤害，并且每%s秒受到%s点自然伤害，持续%s sec。目标的力量也会降低%s。"] = { false, false, false, false, { Stats.Strength, }, } -- s22662
+L["向一个目标喷吐烈酒，使其近战命中几率降低%s%，并醉酒%s sec。"] = { { Stats.MeleeHit, Stats.RangedHit, }, false, } -- s22833
+L["使携带者的躲闪等级提高%s，护甲值提高%s点，持续%s sec。"] = { { Stats.DodgeRating, }, { Stats.Armor, }, false, } -- s22850
 L["伊莫塔尔之眼凝视一名敌人目标，使其移动速度减慢%s%，施法速度减慢%s%。近战攻击间隔延长%s%。"] = { false, { Stats.SpellHaste, }, { Stats.MeleeHaste, }, } -- s22909
-L["使你的精神提高%s点，持续%s。战斗药剂。"] = { { Stats.Spirit, }, false, } -- s24363
-L["使玩家的精神提高%s点，耐力提高%s点，持续%s。战斗药剂。"] = { { Stats.Spirit, }, { Stats.Stamina, }, false, } -- s24382
+L["使你的精神提高%s点，持续%s sec。战斗药剂。"] = { { Stats.Spirit, }, false, } -- s24363
+L["使玩家的精神提高%s点，耐力提高%s点，持续%s sec。战斗药剂。"] = { { Stats.Spirit, }, { Stats.Stamina, }, false, } -- s24382
 L["德鲁伊进入枭兽形态。在这种形态下，你的奥术法术和自然法术造成的伤害提高%s%，受到的所有伤害降低%s%，并使所有小队或团队成员的法术急速提高%s%。枭兽形态下不能施放治疗或复活类法术。\n变身可以解除施法者身上的所有移动限制效果。"] = { false, false, { Stats.SpellHaste, }, } -- s24907
-L["你的有害法术有一定几率在击中目标后降低其魔法抗性%s点，持续%s。"] = { { Stats.SpellPenetration, }, false, } -- s25767
-L["你的有害法术有一定几率在击中目标后令你的法术和魔法效果所造成的伤害提高%s点，持续%s。"] = { { Stats.SpellDamage, Stats.HealingPower, }, false, } -- s25906
-L["你的近战或远程攻击有一定几率使爆击等级提高%s，持续%s。这个效果可以叠加最多%s次。"] = { { Stats.MeleeCritRating, Stats.RangedCritRating, Stats.SpellCritRating, }, false, false, } -- s26480
+L["你的有害法术有一定几率在击中目标后降低其魔法抗性%s点，持续%s sec。"] = { { Stats.SpellPenetration, }, false, ignoreSum = true } -- s25767
+L["你的有害法术有一定几率在击中目标后令你的法术和魔法效果所造成的伤害提高%s点，持续%s sec。"] = { { Stats.SpellDamage, Stats.HealingPower, }, false, ignoreSum = true } -- s25906
+L["你的近战或远程攻击有一定几率使爆击等级提高%s，持续%s sec。这个效果可以叠加最多%s次。"] = { { Stats.MeleeCritRating, Stats.RangedCritRating, Stats.SpellCritRating, }, false, false, ignoreSum = true } -- s26480
 L["施法者进入狂暴状态，变得势不可挡。攻击速度提高%s%。"] = { { Stats.MeleeHaste, }, } -- s26615
 L["使施法者的攻击和移动速度提高%s%，对敌人造成的所有伤害提高%s%。并且免疫嘲讽。"] = { { Stats.MeleeHaste, }, false, } -- s26662
-L["有一定几率在成功施放法术之后使你的智力提高%s点，持续%s。"] = { { Stats.Intellect, }, false, } -- s27774
+L["有一定几率在成功施放法术之后使你的智力提高%s点，持续%s sec。"] = { { Stats.Intellect, }, false, ignoreSum = true } -- s27774
 L["使周围半径%s码范围内的所有小队成员的精神提高%s点。"] = { false, { Stats.Spirit, }, } -- s28145
 L["施法者被邪能笼罩，使法术强度提高%s点，且对你进行治疗，治疗量为单一目标法术伤害的%s%。\n术士在同一时间内只能激活一种护甲法术。"] = { { Stats.SpellDamage, }, false, } -- s28176
 L["没有及时摄入血蓟，使你的智力下降了%s点。"] = { { Stats.Intellect, }, } -- s28274
-L["使你的力量提高%s点，但躲闪等级降低%s，持续%s。"] = { { Stats.Strength, }, { Stats.DodgeRating, }, false, } -- s28494
-L["生命值上限提高%s点，躲闪等级提高%s，持续%s。这种效果在死亡后仍可继续存在。战斗和守护药剂。"] = { { Stats.Health, }, { Stats.DodgeRating, }, false, } -- s28518
-L["使玩家的精神提高%s点，持续%s。这种效果在死亡后仍可继续存在。战斗和守护药剂。"] = { { Stats.Spirit, }, false, } -- s28519
-L["你的每个法术都可能引发显灵效果，使你的精神提高%s点，持续%s。"] = { { Stats.Spirit, }, false, } -- s28802
-L["使友方目标的精神提高%s点，持续%s。"] = { { Stats.Spirit, }, false, } -- s28804
+L["使你的力量提高%s点，但躲闪等级降低%s，持续%s sec。"] = { { Stats.Strength, }, { Stats.DodgeRating, }, false, } -- s28494
+L["生命值上限提高%s点，躲闪等级提高%s，持续%s sec。这种效果在死亡后仍可继续存在。战斗和守护药剂。"] = { { Stats.Health, }, { Stats.DodgeRating, }, false, } -- s28518
+L["使玩家的精神提高%s点，持续%s sec。这种效果在死亡后仍可继续存在。战斗和守护药剂。"] = { { Stats.Spirit, }, false, } -- s28519
+L["你的每个法术都可能引发显灵效果，使你的精神提高%s点，持续%s sec。"] = { { Stats.Spirit, }, false, ignoreSum = true } -- s28802
+L["使友方目标的精神提高%s点，持续%s sec。"] = { { Stats.Spirit, }, false, } -- s28804
 L["使精神提高%s点。"] = { { Stats.Spirit, }, } -- s28820
-L["当闪电之盾处于激活状态的时候，你可以获得精神提高%s点的效果。"] = { { Stats.Spirit, }, } -- s28821
+L["当闪电之盾处于激活状态的时候，你可以获得精神提高%s点的效果。"] = { { Stats.Spirit, }, ignoreSum = true } -- s28821
 L["使你的耐力提高%s%，格挡几率提高%s%。如果你所攻击的对象的目标不是你，你将额外产生%s%的怒气。"] = { false, { Stats.BlockChance, }, false, } -- s29144
-L["当你的非持续性伤害法术造成爆击之后，你的近战攻击造成爆击的几率提高%s%，持续%s。"] = { { Stats.MeleeCrit, Stats.RangedCrit, }, false, } -- s29179
-L["使你的生命值上限提高%s点，持续%s。守护药剂。"] = { { Stats.Health, }, false, } -- s29348
+L["当你的非持续性伤害法术造成爆击之后，你的近战攻击造成爆击的几率提高%s%，持续%s sec。"] = { { Stats.MeleeCrit, Stats.RangedCrit, }, false, ignoreSum = true } -- s29179
+L["使你的生命值上限提高%s点，持续%s sec。守护药剂。"] = { { Stats.Health, }, false, } -- s29348
 L["使你攻击的命中几率提高%s%，自动攻击的伤害提高%s%。"] = { { Stats.MeleeHit, Stats.RangedHit, }, false, } -- s29592
-L["在%s秒内每次施法都会使精神提高%s点，效果可叠加。效果在%s后消失。不消耗法力值的技能不会触发这个效果。"] = { false, { Stats.Spirit, }, false, } -- s29601
+L["在%s秒内每次施法都会使精神提高%s点，效果可叠加。效果在%s sec后消失。不消耗法力值的技能不会触发这个效果。"] = { false, { Stats.Spirit, }, false, ignoreSum = true } -- s29601
 L["使周围半径%s码范围内所有小队和团队成员的爆击几率提高%s%。除此之外，你的爆击几率还会提高%s%。"] = { false, false, { Stats.MeleeCrit, Stats.RangedCrit, }, } -- s29801
-L["使你被击中时对攻击者造成%s点火焰伤害，并使你的法术爆击几率提高%s%，且使你受到爆击的几率降低%s%。法师在同一时间内只能保有一种魔法护甲效果。持续%s。"] = { false, { Stats.SpellCrit, }, false, false, } -- s30482
-L["对敌人造成%s%的武器伤害，并使你躲闪攻击的几率提高%s%，持续%s。"] = { false, { Stats.Dodge, }, false, } -- s31022
+L["使你被击中时对攻击者造成%s点火焰伤害，并使你的法术爆击几率提高%s%，且使你受到爆击的几率降低%s%。法师在同一时间内只能保有一种魔法护甲效果。持续%s sec。"] = { false, { Stats.SpellCrit, }, false, false, } -- s30482
+L["对敌人造成%s%的武器伤害，并使你躲闪攻击的几率提高%s%，持续%s sec。"] = { false, { Stats.Dodge, }, false, } -- s31022
 L["使施放者躲闪的几率提高%s%。"] = { { Stats.Dodge, }, } -- s31379
-L["使你的法术急速提高%s%，法术爆击几率提高%s%，持续%s。"] = { { Stats.SpellHaste, }, { Stats.SpellCrit, }, false, } -- s31842
-L["你的有害法术命中之后有一定几率使你的法术伤害提高最多%s点，持续%s。"] = { { Stats.SpellDamage, Stats.HealingPower, }, false, } -- s32106
+L["使你的法术急速提高%s%，法术爆击几率提高%s%，持续%s sec。"] = { { Stats.SpellHaste, }, { Stats.SpellCrit, }, false, } -- s31842
+L["你的有害法术命中之后有一定几率使你的法术伤害提高最多%s点，持续%s sec。"] = { { Stats.SpellDamage, Stats.HealingPower, }, false, ignoreSum = true } -- s32106
 L["strength increased by %s.\nagility increased by %s. \nattack power increased by %s%"] = { { Stats.Strength, }, { Stats.Agility, }, false, } -- s32120
-L["你的有害法术有一定几率令你的法术急速等级提高%s，持续%s秒。"] = { { Stats.MeleeHasteRating, Stats.RangedHasteRating, Stats.SpellHasteRating, }, false, } -- s33297
-L["近战攻击强度提高%s点，法术强度提高%s点，持续%s。"] = { { Stats.AttackPower, }, { Stats.SpellDamage, Stats.HealingPower, }, false, } -- s33697
-L["你的有害法术命中之后有一定几率使你的法术强度提高%s点，持续%s。"] = { { Stats.SpellDamage, Stats.HealingPower, }, false, } -- s34598
+L["你的有害法术有一定几率令你的法术急速等级提高%s，持续%s秒。"] = { { Stats.MeleeHasteRating, Stats.RangedHasteRating, Stats.SpellHasteRating, }, false, ignoreSum = true } -- s33297
+L["近战攻击强度提高%s点，法术强度提高%s点，持续%s sec。"] = { { Stats.AttackPower, }, { Stats.SpellDamage, Stats.HealingPower, }, false, } -- s33697
+L["你的有害法术命中之后有一定几率使你的法术强度提高%s点，持续%s sec。"] = { { Stats.SpellDamage, Stats.HealingPower, }, false, ignoreSum = true } -- s34598
 L["对目标施放水箭，造成冰霜伤害并使其施法速度延长%s%。"] = { { Stats.SpellHaste, }, } -- s34828
-L["横扫一个敌人，造成武器伤害并且每次破甲重击都会使目标的护甲值降低%s点，效果可以最多叠加%s次，持续%s。"] = { { Stats.Armor, }, false, false, } -- s35147
-L["使附近小队成员的攻击强度提高%s点，智力提高%s点，持续%s。对%s级及以上等级的目标无效。"] = { { Stats.GenericAttackPower, }, { Stats.Intellect, }, false, false, } -- s35475
-L["使一名敌人的智力值降低%s，力量降低%s，持续%s。"] = { { Stats.Intellect, }, { Stats.Strength, }, false, } -- s36695
-L["你的特殊攻击有一定几率令你的爆击等级提高%s，持续%s。"] = { { Stats.MeleeCritRating, Stats.RangedCritRating, Stats.SpellCritRating, }, false, } -- s37173
-L["你每次使用神圣之盾技能时，在接下来%s内对你发起的单体攻击都可以使你的躲闪等级提高%s。"] = { false, { Stats.DodgeRating, }, } -- s37191
+L["横扫一个敌人，造成武器伤害并且每次破甲重击都会使目标的护甲值降低%s点，效果可以最多叠加%s次，持续%s sec。"] = { { Stats.Armor, }, false, false, } -- s35147
+L["使附近小队成员的攻击强度提高%s点，智力提高%s点，持续%s sec。对%s级及以上等级的目标无效。"] = { { Stats.GenericAttackPower, }, { Stats.Intellect, }, false, false, } -- s35475
+L["使一名敌人的智力值降低%s，力量降低%s，持续%s sec。"] = { { Stats.Intellect, }, { Stats.Strength, }, false, } -- s36695
+L["你的特殊攻击有一定几率令你的爆击等级提高%s，持续%s sec。"] = { { Stats.MeleeCritRating, Stats.RangedCritRating, Stats.SpellCritRating, }, false, ignoreSum = true } -- s37173
+L["你每次使用神圣之盾技能时，在接下来%s sec内对你发起的单体攻击都可以使你的躲闪等级提高%s。"] = { false, { Stats.DodgeRating, }, ignoreSum = true } -- s37191
 L["使你在猎豹形态下的敏捷提高%s点。"] = { { Stats.Agility, }, } -- s37299
-L["你的爆击等级提高%s，持续%s。"] = { { Stats.MeleeCritRating, Stats.RangedCritRating, Stats.SpellCritRating, }, false, } -- s37482
-L["每次你使用盾牌格挡技能，在接下来%s内对你发起的单体攻击都可以使你的躲闪等级提高%s。"] = { false, { Stats.DodgeRating, }, } -- s37522
-L["你的压制技能可以使你获得%s点力量，效果持续%s。"] = { { Stats.Strength, }, false, } -- s37528
-L["你的攻击有一定几率令你获得%s点力量，效果持续%s。"] = { { Stats.Strength, }, false, } -- s37611
-L["你的攻击有一定几率令你获得%s点敏捷，持续%s。"] = { { Stats.Agility, }, false, } -- s37617
-L["你的有害法术有一定几率令你获得%s点法术强度加成，持续%s。"] = { { Stats.SpellDamage, Stats.HealingPower, }, false, } -- s37619
-L["你每次施放一个法术都有一定几率获得精神最多提高%s点的效果，持续%s。"] = { { Stats.Spirit, }, false, } -- s37655
-L["你的攻击有一定几率使你的爆击等级提高%s，持续%s。这个效果可以堆叠%s次。"] = { { Stats.MeleeCritRating, Stats.RangedCritRating, Stats.SpellCritRating, }, false, false, } -- s38307
-L["你的有害法术有一定几率使你的急速等级提高%s，持续%s秒。"] = { { Stats.MeleeHasteRating, Stats.RangedHasteRating, Stats.SpellHasteRating, }, false, } -- s38319
-L["使你的躲闪等级提高%s，但近战和远程攻击强度降低%s点。持续%s。"] = { { Stats.DodgeRating, }, { Stats.GenericAttackPower, }, false, } -- s38351
-L["当你使用风暴打击技能时，可以获得%s点敏捷，持续%s。"] = { { Stats.Agility, }, false, } -- s38430
+L["你的爆击等级提高%s，持续%s sec。"] = { { Stats.MeleeCritRating, Stats.RangedCritRating, Stats.SpellCritRating, }, false, } -- s37482
+L["每次你使用盾牌格挡技能，在接下来%s sec内对你发起的单体攻击都可以使你的躲闪等级提高%s。"] = { false, { Stats.DodgeRating, }, ignoreSum = true } -- s37522
+L["你的压制技能可以使你获得%s点力量，效果持续%s sec。"] = { { Stats.Strength, }, false, ignoreSum = true } -- s37528
+L["你的攻击有一定几率令你获得%s点力量，效果持续%s sec。"] = { { Stats.Strength, }, false, ignoreSum = true } -- s37611
+L["你的攻击有一定几率令你获得%s点敏捷，持续%s sec。"] = { { Stats.Agility, }, false, ignoreSum = true } -- s37617
+L["你的有害法术有一定几率令你获得%s点法术强度加成，持续%s sec。"] = { { Stats.SpellDamage, Stats.HealingPower, }, false, ignoreSum = true } -- s37619
+L["你每次施放一个法术都有一定几率获得精神最多提高%s点的效果，持续%s sec。"] = { { Stats.Spirit, }, false, ignoreSum = true } -- s37655
+L["你的攻击有一定几率使你的爆击等级提高%s，持续%s sec。这个效果可以堆叠%s次。"] = { { Stats.MeleeCritRating, Stats.RangedCritRating, Stats.SpellCritRating, }, false, false, } -- s38307
+L["你的有害法术有一定几率使你的急速等级提高%s，持续%s秒。"] = { { Stats.MeleeHasteRating, Stats.RangedHasteRating, Stats.SpellHasteRating, }, false, ignoreSum = true } -- s38319
+L["使你的躲闪等级提高%s，但近战和远程攻击强度降低%s点。持续%s sec。"] = { { Stats.DodgeRating, }, { Stats.GenericAttackPower, }, false, } -- s38351
+L["当你使用风暴打击技能时，可以获得%s点敏捷，持续%s sec。"] = { { Stats.Agility, }, false, } -- s38430
 L["当你同时激活了一种空气图腾、一种大地图腾、一种火焰图腾和一种水图腾时，你可以获得精神提高%s点、法术爆击等级提高%s、智力提高%s点的增益效果。"] = { { Stats.Spirit, }, { Stats.MeleeCritRating, Stats.RangedCritRating, Stats.SpellCritRating, }, { Stats.Intellect, }, } -- s38437
 L["increases dodge by %s"] = { { Stats.DodgeRating, }, } -- s39421
-L["你每次对敌人造成近战或远程伤害，都可以在接下来的%s秒内获得%s点攻击强度加成，这个效果可以叠加最多%s次。你每次对敌人施放有害法术，都可以在接下来的%s秒内获得%s点法术强度加成，这个效果可以叠加最多%s次。"] = { false, { Stats.GenericAttackPower, Stats.RangedAttackPower, }, false, false, false, false, } -- s39438
-L["你的致死打击、嗜血和盾牌猛击有一定几率治疗你%s点生命值，并使你获得%s点力量值，持续%s。"] = { false, { Stats.Strength, }, false, } -- s40459
-L["你的近战和远程攻击有一定几率使你的爆击等级提高%s，持续%s秒。"] = { { Stats.MeleeCritRating, Stats.RangedCritRating, Stats.SpellCritRating, }, false, } -- s40475
-L["你的稳固射击有一定几率使你获得%s点攻击强度，持续%s。"] = { { Stats.GenericAttackPower, }, false, } -- s40487
-L["你的审判技能也会使你的躲闪等级提高%s点，持续%s。"] = { { Stats.DodgeRating, }, false, } -- s41042
-L["使你的精神提高%s点，持续%s。这种效果在死亡后仍可继续存在。战斗和守护药剂。"] = { { Stats.Spirit, }, false, } -- s41605
-L["使你的生命值上限提高%s点，躲闪等级提高%s，持续%s。这个效果在死亡后仍然存在。战斗和守护药剂。"] = { { Stats.Health, }, { Stats.DodgeRating, }, false, } -- s41607
+L["你每次对敌人造成近战或远程伤害，都可以在接下来的%s秒内获得%s点攻击强度加成，这个效果可以叠加最多%s次。你每次对敌人施放有害法术，都可以在接下来的%s秒内获得%s点法术强度加成，这个效果可以叠加最多%s次。"] = { false, { Stats.GenericAttackPower, Stats.RangedAttackPower, }, false, false, false, false, ignoreSum = true } -- s39438
+L["你的致死打击、嗜血和盾牌猛击有一定几率治疗你%s点生命值，并使你获得%s点力量值，持续%s sec。"] = { false, { Stats.Strength, }, false, } -- s40459
+L["你的近战和远程攻击有一定几率使你的爆击等级提高%s，持续%s秒。"] = { { Stats.MeleeCritRating, Stats.RangedCritRating, Stats.SpellCritRating, }, false, ignoreSum = true } -- s40475
+L["你的稳固射击有一定几率使你获得%s点攻击强度，持续%s sec。"] = { { Stats.GenericAttackPower, }, false, } -- s40487
+L["你的审判技能也会使你的躲闪等级提高%s点，持续%s sec。"] = { { Stats.DodgeRating, }, false, ignoreSum = true } -- s41042
+L["使你的精神提高%s点，持续%s sec。这种效果在死亡后仍可继续存在。战斗和守护药剂。"] = { { Stats.Spirit, }, false, } -- s41605
+L["使你的生命值上限提高%s点，躲闪等级提高%s，持续%s sec。这个效果在死亡后仍然存在。战斗和守护药剂。"] = { { Stats.Health, }, { Stats.DodgeRating, }, false, } -- s41607
 L["%s点智力。"] = { { Stats.Intellect, }, } -- s41741
-L["你的爆击等级额外提高%s，持续%s。"] = { { Stats.MeleeCritRating, Stats.RangedCritRating, Stats.SpellCritRating, }, false, } -- s42976
+L["你的爆击等级额外提高%s，持续%s sec。"] = { { Stats.MeleeCritRating, Stats.RangedCritRating, Stats.SpellCritRating, }, false, } -- s42976
 L["使目标狂暴，攻击速度提高%s%，且该目标免疫昏迷、诱捕和群体控制效果。"] = { { Stats.MeleeHaste, }, } -- s43292
-L["你的近战和远程攻击有%s%的几率令你的近战及远程爆击等级提高%s，持续%s。"] = { false, { Stats.MeleeCritRating, Stats.RangedCritRating, }, false, } -- s43816
+L["你的近战和远程攻击有%s%的几率令你的近战及远程爆击等级提高%s，持续%s sec。"] = { false, { Stats.MeleeCritRating, Stats.RangedCritRating, }, false, ignoreSum = true } -- s43816
 L["使近战和远程爆击等级提高%s。"] = { { Stats.MeleeCritRating, Stats.RangedCritRating, }, } -- s43817
-L["你的攻击性法术有%s%的几率使你的施法速度提高%s%，持续%s秒，并降低你对当前目标的威胁值。"] = { false, { Stats.SpellHaste, }, false, } -- s43818
+L["你的攻击性法术有%s%的几率使你的施法速度提高%s%，持续%s秒，并降低你对当前目标的威胁值。"] = { false, { Stats.SpellHaste, }, false, ignoreSum = true } -- s43818
 L["施法速度提高%s%。"] = { { Stats.SpellHaste, }, } -- s43819
-L["近战和远程命中几率降低%s%，持续%s。"] = { { Stats.MeleeHit, Stats.RangedHit, }, false, } -- s45002
-L["使一名敌人的智力降低%s点，力量降低%s点，持续%s。"] = { { Stats.Intellect, }, { Stats.Strength, }, false, } -- s46294
+L["近战和远程命中几率降低%s%，持续%s sec。"] = { { Stats.MeleeHit, Stats.RangedHit, }, false, } -- s45002
+L["使一名敌人的智力降低%s点，力量降低%s点，持续%s sec。"] = { { Stats.Intellect, }, { Stats.Strength, }, false, } -- s46294
 L["爆击几率的百分比数值提高%s，对攻击者造成火焰伤害。"] = { { Stats.MeleeCrit, Stats.RangedCrit, Stats.SpellCrit, }, } -- s46352
-L["在%s内恢复总计%s点生命值，进食时必须保持坐姿。如果你花费至少%s秒钟来进食，你的智力将提高%s点，持续%s。"] = { false, { Stats.Intellect, }, false, { Stats.Intellect, }, false, } -- s46683
+L["在%s sec内恢复总计%s点生命值，进食时必须保持坐姿。如果你花费至少%s秒钟来进食，你的智力将提高%s点，持续%s sec。"] = { false, { Stats.Intellect, }, false, { Stats.Intellect, }, false, ignoreSum = true } -- s46683
 L["死亡骑士体内充满邪恶的狂怒气息，攻击速度和符文回复速度提高%s%，移动速度提高%s%。同时使你的公共冷却时间缩短%s%s秒。同一时间内只能激活一种灵气，切换新的灵气会消耗所有现存的符文能量。"] = { { Stats.MeleeHaste, }, false, false, false, } -- s48265
 L["使你的单手近战武器的命中目标的几率提高%s%，并使你的副手武器所造成的伤害提高%s%。"] = { { Stats.MeleeHit, Stats.RangedHit, }, false, } -- s49226
 L["进入暗影形态，使你的暗影伤害提高%s%，受到的所有伤害降低%s%，并使附近所有友方目标的法术急速提高%s%。但是在这种形态下，你不能施放神圣系的法术。"] = { false, false, { Stats.SpellHaste, }, } -- s49868
 L["每次攻击命中都将使物理伤害提高%s点。效果最多叠加%s次。"] = { { Stats.AverageWeaponDamage, }, false, } -- s50045
-L["使你的躲闪等级提高%s点，持续%s。"] = { { Stats.DodgeRating, }, false, } -- s51952
+L["使你的躲闪等级提高%s点，持续%s sec。"] = { { Stats.DodgeRating, }, false, } -- s51952
 L["远程急速提高%s%。"] = { { Stats.RangedHaste, }, } -- s52783
-L["在施放真言术：盾之后，使你的下一个法术的施法速度提高%s%。持续%s。"] = { { Stats.SpellHaste, }, false, } -- s52795
+L["在施放真言术：盾之后，使你的下一个法术的施法速度提高%s%。持续%s sec。"] = { { Stats.SpellHaste, }, false, ignoreSum = true } -- s52795
 L["使你的法术强度提高，数值相当于你的攻击强度的%s%。你的法术命中率提高%s%。"] = { false, { Stats.SpellHit, }, } -- s53503
-L["精神值提高%s点，持续%s。战斗药剂。"] = { { Stats.Spirit, }, false, } -- s53747
+L["精神值提高%s点，持续%s sec。战斗药剂。"] = { { Stats.Spirit, }, false, } -- s53747
 L["使小队和团队成员的法力值上限提高%s点，并且每%s秒回复%s点法力值。"] = { { Stats.Mana, }, false, { Stats.GenericManaRegen, }, } -- s54424
-L["使目标的法术爆击几率提高%s%，持续%s。当目标打出爆击之后，你的法术爆击几率也会提高%s%，持续%s。不能对自己使用。目标限制为%s个。"] = { { Stats.SpellCrit, }, false, { Stats.SpellCrit, }, false, false, } -- s54646
-L["使死亡骑士暂时获得%s%的生命总值并使你从治疗法术和效果获得的治疗量提高%s%，持续%s。在效果解除之后，这些生命值会被扣除。"] = { { Stats.Health, }, false, false, } -- s55233
-L["使用你的草药学知识，吸收大地中的自然能量，立即治疗你少量伤害，并使你的急速等级提高%s点，持续%s。可以在潜行或隐身状态下使用。"] = { { Stats.MeleeHasteRating, Stats.RangedHasteRating, Stats.SpellHasteRating, }, false, } -- s55428
-L["在%s内恢复总计%s点生命值。如果你花费至少%s秒钟来进食，你的精神将提高%s点，耐力将提高%s点，持续%s。"] = { false, false, false, { Stats.Spirit, Stats.Stamina, }, { Stats.Stamina, Stats.Spirit, }, false, } -- s57289
-L["精神和耐力提高%s点，持续%s。"] = { { Stats.Spirit, Stats.Stamina, }, false, } -- s57291
+L["使目标的法术爆击几率提高%s%，持续%s sec。当目标打出爆击之后，你的法术爆击几率也会提高%s%，持续%s sec。不能对自己使用。目标限制为%s个。"] = { { Stats.SpellCrit, }, false, { Stats.SpellCrit, }, false, false, } -- s54646
+L["使死亡骑士暂时获得%s%的生命总值并使你从治疗法术和效果获得的治疗量提高%s%，持续%s sec。在效果解除之后，这些生命值会被扣除。"] = { { Stats.Health, }, false, false, } -- s55233
+L["使用你的草药学知识，吸收大地中的自然能量，立即治疗你少量伤害，并使你的急速等级提高%s点，持续%s sec。可以在潜行或隐身状态下使用。"] = { { Stats.MeleeHasteRating, Stats.RangedHasteRating, Stats.SpellHasteRating, }, false, } -- s55428
+L["在%s sec内恢复总计%s点生命值。如果你花费至少%s秒钟来进食，你的精神将提高%s点，耐力将提高%s点，持续%s sec。"] = { false, false, false, { Stats.Spirit, Stats.Stamina, }, { Stats.Stamina, Stats.Spirit, }, false, ignoreSum = true } -- s57289
+L["精神和耐力提高%s点，持续%s sec。"] = { { Stats.Spirit, Stats.Stamina, }, false, } -- s57291
 L["使你在熊形态下所承受的伤害降低%s%，熊形态下的躲闪提高%s%，熊形态下每次躲闪攻击获得%s点怒气值。"] = { false, { Stats.Dodge, }, false, } -- s57878
-L["你的爆击等级提高%s，持续%s。这个效果最多可以堆叠%s次。"] = { { Stats.MeleeCritRating, Stats.RangedCritRating, Stats.SpellCritRating, }, false, false, } -- s59043
-L["你的有害法术有一定几率使你的法术强度提高%s点，持续%s。"] = { { Stats.SpellDamage, Stats.HealingPower, }, false, } -- s60063
+L["你的爆击等级提高%s，持续%s sec。这个效果最多可以堆叠%s次。"] = { { Stats.MeleeCritRating, Stats.RangedCritRating, Stats.SpellCritRating, }, false, false, } -- s59043
+L["你的有害法术有一定几率使你的法术强度提高%s点，持续%s sec。"] = { { Stats.SpellDamage, Stats.HealingPower, }, false, ignoreSum = true } -- s60063
 L["你的远程攻击速度提高%s%。"] = { { Stats.RangedHaste, }, } -- s60144
-L["施放生命分流之后，你可以获得%s点法术强度的加成，持续%s。"] = { { Stats.SpellDamage, Stats.HealingPower, }, false, } -- s60172
+L["施放生命分流之后，你可以获得%s点法术强度的加成，持续%s sec。"] = { { Stats.SpellDamage, Stats.HealingPower, }, false, ignoreSum = true } -- s60172
 L["使你的爆击率提高%s，持续%s秒。"] = { { Stats.MeleeCritRating, Stats.RangedCritRating, Stats.SpellCritRating, }, false, } -- s60299
-L["使你的最大法力值提高%s点，持续%s。守护药剂。"] = { { Stats.Mana, }, false, } -- s60347
-L["你的近战和远程攻击有一定几率使你的爆击等级提高%s点，持续%s。"] = { { Stats.MeleeCritRating, Stats.RangedCritRating, Stats.SpellCritRating, }, false, } -- s60436
+L["使你的最大法力值提高%s点，持续%s sec。守护药剂。"] = { { Stats.Mana, }, false, } -- s60347
+L["你的近战和远程攻击有一定几率使你的爆击等级提高%s点，持续%s sec。"] = { { Stats.MeleeCritRating, Stats.RangedCritRating, Stats.SpellCritRating, }, false, ignoreSum = true } -- s60436
 L["使爆击等级提高%s。"] = { { Stats.MeleeCritRating, Stats.RangedCritRating, Stats.SpellCritRating, }, } -- s60437
-L["你每次施放一个伤害或治疗法术，都有一定几率获得精神最多提高%s点的效果，持续%s。"] = { { Stats.Spirit, }, false, } -- s60519
-L["你的暗影打击使你获得%s点攻击强度加成，持续%s。"] = { { Stats.AttackPower, }, false, } -- s60687
+L["你每次施放一个伤害或治疗法术，都有一定几率获得精神最多提高%s点的效果，持续%s sec。"] = { { Stats.Spirit, }, false, ignoreSum = true } -- s60519
+L["你的暗影打击使你获得%s点攻击强度加成，持续%s sec。"] = { { Stats.AttackPower, }, false, ignoreSum = true } -- s60687
 L["与其他施法职业不同，死亡骑士的法术爆击可以造成双倍伤害，且命中几率提高%s%。法术是指死亡骑士除直接武器打击之外的技能。"] = { { Stats.SpellHit, }, } -- s61455
 L["replenishes %s% of maximum mana every sec.\nplus %s% mp%s"] = { false, { Stats.GenericManaRegen, }, false, } -- s61782
 L["你的躲闪等级提高%s点。"] = { { Stats.DodgeRating, }, } -- s62146
-L["你的冰冷触摸也会使你的躲闪等级提高%s点。"] = { { Stats.DodgeRating, }, } -- s62147
-L["攻击速度提高%s%，伤害提高%s%，持续%s。"] = { { Stats.MeleeHaste, }, false, false, } -- s63227
+L["你的冰冷触摸也会使你的躲闪等级提高%s点。"] = { { Stats.DodgeRating, }, ignoreSum = true } -- s62147
+L["攻击速度提高%s%，伤害提高%s%，持续%s sec。"] = { { Stats.MeleeHaste, }, false, false, } -- s63227
 L["使你的命中等级提高%s，持续%s小时。战斗药剂。"] = { { Stats.MeleeHitRating, Stats.RangedHitRating, Stats.SpellHitRating, }, false, } -- s63729
-L["在%s内恢复总计%s点生命值和%s点法力值。进食时必须保持坐姿。如果你花费至少%s秒钟进食，还会获得%s点攻击强度和%s点智力，持续%s。"] = { false, { Stats.AttackPower, }, false, false, { Stats.AttackPower, }, { Stats.Intellect, }, false, } -- s64056
-L["激活之后，你的下一个闪电箭、闪电链或熔岩爆裂法术成为瞬发法术。另外，你所造成的火焰、冰霜以及自然伤害提高%s%，你的法术急速提高%s%，持续%s。"] = { false, { Stats.SpellHaste, }, false, } -- s64701
-L["你的稳固射击有一定几率使你获得敏捷提高%s点的效果，持续%s。"] = { { Stats.Agility, }, false, } -- s64860
-L["在%s秒内每次施法都会使精神提高%s点，效果可叠加。效果在%s秒后消失。不消耗法力值的技能不会触发这个效果。"] = { false, { Stats.Spirit, }, false, } -- s64999
-L["你的有害法术有一定几率使你的急速等级提高%s，持续%s。"] = { { Stats.MeleeHasteRating, Stats.RangedHasteRating, Stats.SpellHasteRating, }, false, } -- s65005
+L["在%s sec内恢复总计%s点生命值和%s点法力值。进食时必须保持坐姿。如果你花费至少%s秒钟进食，还会获得%s点攻击强度和%s点智力，持续%s sec。"] = { false, { Stats.AttackPower, }, false, false, { Stats.AttackPower, }, { Stats.Intellect, }, false, ignoreSum = true } -- s64056
+L["激活之后，你的下一个闪电箭、闪电链或熔岩爆裂法术成为瞬发法术。另外，你所造成的火焰、冰霜以及自然伤害提高%s%，你的法术急速提高%s%，持续%s sec。"] = { false, { Stats.SpellHaste, }, false, } -- s64701
+L["你的稳固射击有一定几率使你获得敏捷提高%s点的效果，持续%s sec。"] = { { Stats.Agility, }, false, ignoreSum = true } -- s64860
+L["在%s秒内每次施法都会使精神提高%s点，效果可叠加。效果在%s秒后消失。不消耗法力值的技能不会触发这个效果。"] = { false, { Stats.Spirit, }, false, ignoreSum = true } -- s64999
+L["你的有害法术有一定几率使你的急速等级提高%s，持续%s sec。"] = { { Stats.MeleeHasteRating, Stats.RangedHasteRating, Stats.SpellHasteRating, }, false, ignoreSum = true } -- s65005
 L["使急速等级提高%s。"] = { { Stats.MeleeHasteRating, Stats.RangedHasteRating, Stats.SpellHasteRating, }, } -- s65019
-L["你的近战和远程攻击有一定几率使你的急速等级提高%s点，持续%s。"] = { { Stats.MeleeHasteRating, Stats.RangedHasteRating, Stats.SpellHasteRating, }, false, } -- s65020
+L["你的近战和远程攻击有一定几率使你的急速等级提高%s点，持续%s sec。"] = { { Stats.MeleeHasteRating, Stats.RangedHasteRating, Stats.SpellHasteRating, }, false, ignoreSum = true } -- s65020
 L["智力提高%s点。这个效果在死亡后仍然存在。战斗和守护药剂。"] = { { Stats.Intellect, }, } -- s67016
 L["敏捷提高%s点。这个效果在死亡后仍然存在。战斗和守护药剂。"] = { { Stats.Agility, }, } -- s67017
-L["每次你施放有害法术都有一定几率获得%s点法术强度，持续%s。"] = { { Stats.SpellDamage, Stats.HealingPower, }, false, } -- s67670
-L["使你的精神提高%s点。效果持续%s。"] = { { Stats.Spirit, }, false, } -- s67696
-L["你每次施放一个法术都会使精神提高%s点，持续%s。最多可以叠加%s次。"] = { { Stats.Spirit, }, false, false, } -- s67698
-L["你每次施放有害法术，都可以获得急速等级提高%s的效果。可叠加最多%s次。整个效果持续%s。"] = { { Stats.MeleeHasteRating, Stats.RangedHasteRating, Stats.SpellHasteRating, }, false, false, } -- s67736
+L["每次你施放有害法术都有一定几率获得%s点法术强度，持续%s sec。"] = { { Stats.SpellDamage, Stats.HealingPower, }, false, ignoreSum = true } -- s67670
+L["使你的精神提高%s点。效果持续%s sec。"] = { { Stats.Spirit, }, false, } -- s67696
+L["你每次施放一个法术都会使精神提高%s点，持续%s sec。最多可以叠加%s次。"] = { { Stats.Spirit, }, false, false, ignoreSum = true } -- s67698
+L["你每次施放有害法术，都可以获得急速等级提高%s的效果。可叠加最多%s次。整个效果持续%s sec。"] = { { Stats.MeleeHasteRating, Stats.RangedHasteRating, Stats.SpellHasteRating, }, false, false, ignoreSum = true } -- s67736
 L["造成的伤害和承受的伤害都提高%s%。"] = { { Stats.SpellDamage, }, } -- s67887
 L["不在战斗中，每%s秒钟恢复%s点生命值。"] = { false, { Stats.HealthRegen, }, } -- s68177
 L["使近战攻击速度提高%s%。"] = { { Stats.MeleeHaste, }, } -- s68541
-L["在%s内恢复%s点法力值。采取任何行动或者进入战斗都会被取消。"] = { false, { Stats.GenericManaRegen, }, } -- s69176
-L["以雷霆震击附近的敌人，使它们的攻击间隔延长%s%，持续%s，并对它们造成%s点伤害，此伤害值受到攻击强度加成影响。而且此技能会导致额外的威胁值。"] = { { Stats.MeleeHaste, }, false, false, } -- s69304
-L["战士发出怒吼，使半径%s码范围内的所有小队及团队成员的攻击强度提高%s点，持续%s。"] = { false, { Stats.GenericAttackPower, }, false, } -- s69305
-L["躲闪等级提高%s，并吸引那些喷过古龙水的人。持续%s。"] = { { Stats.DodgeRating, }, false, } -- s70235
-L["躲闪等级提高%s，并吸引那些喷过香水的人。持续%s。"] = { { Stats.DodgeRating, }, false, } -- s70243
-L["将目标的智力提高%s点，持续%s。"] = { { Stats.Intellect, }, false, } -- s70483
-L["使急速等级提高%s，持续%s。"] = { { Stats.MeleeHasteRating, Stats.RangedHasteRating, Stats.SpellHasteRating, }, false, } -- s71403
-L["有一定几率在近战或远程攻击造成爆击时，使你的急速等级提高%s，持续%s。"] = { { Stats.MeleeHasteRating, Stats.RangedHasteRating, Stats.SpellHasteRating, }, false, } -- s71404
-L["每当你被击中时，你就有%s%的几率在接下来的%s内获得%s点耐力加成，该效果最多可叠加%s次。"] = { false, false, { Stats.Stamina, }, false, } -- s71576
-L["你施法后有一定几率获得精神提高%s点的效果，持续%s。"] = { { Stats.Spirit, }, false, } -- s71585
-L["使一名敌人的力量降低%s点，耐力降低%s点，持续%s。"] = { { Stats.Strength, }, { Stats.Stamina, }, false, } -- s74003
-L["你的法术和攻击有时能使你的急速等级提高%s，持续%s。"] = { { Stats.MeleeHasteRating, Stats.RangedHasteRating, Stats.SpellHasteRating, }, false, } -- s74221
-L["你的法术和攻击有时能使你的精神提高%s，持续%s。"] = { { Stats.Spirit, }, false, } -- s74224
+L["在%s sec内恢复%s点法力值。采取任何行动或者进入战斗都会被取消。"] = { false, { Stats.GenericManaRegen, }, } -- s69176
+L["以雷霆震击附近的敌人，使它们的攻击间隔延长%s%，持续%s sec，并对它们造成%s点伤害，此伤害值受到攻击强度加成影响。而且此技能会导致额外的威胁值。"] = { { Stats.MeleeHaste, }, false, false, } -- s69304
+L["战士发出怒吼，使半径%s码范围内的所有小队及团队成员的攻击强度提高%s点，持续%s sec。"] = { false, { Stats.GenericAttackPower, }, false, } -- s69305
+L["躲闪等级提高%s，并吸引那些喷过古龙水的人。持续%s sec。"] = { { Stats.DodgeRating, }, false, } -- s70235
+L["躲闪等级提高%s，并吸引那些喷过香水的人。持续%s sec。"] = { { Stats.DodgeRating, }, false, } -- s70243
+L["将目标的智力提高%s点，持续%s sec。"] = { { Stats.Intellect, }, false, } -- s70483
+L["使急速等级提高%s，持续%s sec。"] = { { Stats.MeleeHasteRating, Stats.RangedHasteRating, Stats.SpellHasteRating, }, false, } -- s71403
+L["有一定几率在近战或远程攻击造成爆击时，使你的急速等级提高%s，持续%s sec。"] = { { Stats.MeleeHasteRating, Stats.RangedHasteRating, Stats.SpellHasteRating, }, false, ignoreSum = true } -- s71404
+L["每当你被击中时，你就有%s%的几率在接下来的%s sec内获得%s点耐力加成，该效果最多可叠加%s次。"] = { false, false, { Stats.Stamina, }, false, ignoreSum = true } -- s71576
+L["你施法后有一定几率获得精神提高%s点的效果，持续%s sec。"] = { { Stats.Spirit, }, false, ignoreSum = true } -- s71585
+L["使一名敌人的力量降低%s点，耐力降低%s点，持续%s sec。"] = { { Stats.Strength, }, { Stats.Stamina, }, false, } -- s74003
+L["你的法术和攻击有时能使你的急速等级提高%s，持续%s sec。"] = { { Stats.MeleeHasteRating, Stats.RangedHasteRating, Stats.SpellHasteRating, }, false, } -- s74221
+L["你的法术和攻击有时能使你的精神提高%s，持续%s sec。"] = { { Stats.Spirit, }, false, } -- s74224
 L["乌比斯将军进入狂乱状态，其攻击速度提高%s%，造成的物理伤害提高%s%。"] = { { Stats.MeleeHaste, }, false, } -- s74853
-L["将尘土扔进一个敌人的眼睛，让他的命中几率降低%s%，持续%s。"] = { { Stats.MeleeHit, Stats.RangedHit, }, false, } -- s74972
-L["对目标施放诅咒，使其奥术和暗影抗性降低%s点，受到的奥术和暗影伤害提高%s%，效果持续%s。"] = { { Stats.ShadowResistance, Stats.ArcaneResistance, }, false, false, } -- s75015
-L["对目标施放诅咒，使其火焰、冰霜和自然抗性降低%s点，受到的火焰、冰霜和自然伤害提高%s%，效果持续%s。对于一个目标，每个术士只能施加一种诅咒。"] = { { Stats.FireResistance, Stats.NatureResistance, Stats.FrostResistance, }, false, false, } -- s75021
-L["使精神提高%s点，持续%s。"] = { { Stats.Spirit, }, false, } -- s75173
-L["当近战攻击使你的生命值低于%s%时，你的躲闪等级会提高%s，持续%s。这个效果每%s秒只能出现一次。"] = { { Stats.DodgeRating, }, { Stats.DodgeRating, }, false, false, } -- s75475
-L["目标的近战攻击强度降低%s点，护甲值减少%s%，持续%s。"] = { { Stats.AttackPower, }, false, false, } -- s75527
-L["移动速度减慢%s%，攻击时间间隔延长%s%，持续%s。"] = { false, { Stats.MeleeHaste, }, false, } -- s75530
-L["任何一次近战攻击、远程攻击、施放有害法术或治疗性法术都有一定几率使你的急速等级提高%s点，持续%s。"] = { { Stats.MeleeHasteRating, Stats.RangedHasteRating, Stats.SpellHasteRating, }, false, } -- s76145
-L["使你的攻击速度提高%s%，但是命中几率降低%s%。持续%s。"] = { { Stats.MeleeHaste, }, { Stats.MeleeHit, Stats.RangedHit, }, false, } -- s76487
-L["附近盟友的施法速度提高%s%，法术伤害提高%s点，持续%s。"] = { { Stats.SpellHaste, }, { Stats.SpellDamage, }, false, } -- s76592
+L["将尘土扔进一个敌人的眼睛，让他的命中几率降低%s%，持续%s sec。"] = { { Stats.MeleeHit, Stats.RangedHit, }, false, } -- s74972
+L["对目标施放诅咒，使其奥术和暗影抗性降低%s点，受到的奥术和暗影伤害提高%s%，效果持续%s sec。"] = { { Stats.ShadowResistance, Stats.ArcaneResistance, }, false, false, } -- s75015
+L["对目标施放诅咒，使其火焰、冰霜和自然抗性降低%s点，受到的火焰、冰霜和自然伤害提高%s%，效果持续%s sec。对于一个目标，每个术士只能施加一种诅咒。"] = { { Stats.FireResistance, Stats.NatureResistance, Stats.FrostResistance, }, false, false, } -- s75021
+L["使精神提高%s点，持续%s sec。"] = { { Stats.Spirit, }, false, } -- s75173
+L["当近战攻击使你的生命值低于%s%时，你的躲闪等级会提高%s，持续%s sec。这个效果每%s秒只能出现一次。"] = { { Stats.DodgeRating, }, { Stats.DodgeRating, }, false, false, ignoreSum = true } -- s75475
+L["目标的近战攻击强度降低%s点，护甲值减少%s%，持续%s sec。"] = { { Stats.AttackPower, }, false, false, } -- s75527
+L["移动速度减慢%s%，攻击时间间隔延长%s%，持续%s sec。"] = { false, { Stats.MeleeHaste, }, false, } -- s75530
+L["任何一次近战攻击、远程攻击、施放有害法术或治疗性法术都有一定几率使你的急速等级提高%s点，持续%s sec。"] = { { Stats.MeleeHasteRating, Stats.RangedHasteRating, Stats.SpellHasteRating, }, false, ignoreSum = true } -- s76145
+L["使你的攻击速度提高%s%，但是命中几率降低%s%。持续%s sec。"] = { { Stats.MeleeHaste, }, { Stats.MeleeHit, Stats.RangedHit, }, false, } -- s76487
+L["附近盟友的施法速度提高%s%，法术伤害提高%s点，持续%s sec。"] = { { Stats.SpellHaste, }, { Stats.SpellDamage, }, false, } -- s76592
 L["使你的近战格挡几率额外提高%s%。每点精通值可使格挡几率额外提高%s%s%。"] = { { Stats.BlockChance, }, false, false, } -- s76671
 L["使你的近战格挡几率额外提高%s%。每点精通值可使你的格挡几率额外提高%s%s%。"] = { { Stats.BlockChance, }, false, false, } -- s76671
 L["使你的格挡几率提高%s%，精确格挡几率提高%s%。每点精通值可使你的格挡几率提高%s%s%，精确格挡几率提高%s%s%。"] = { { Stats.BlockChance, }, false, false, false, false, false, } -- s76857
-L["使施法者的攻击速度提高%s%，造成的物理伤害提高%s%，持续%s。"] = { { Stats.MeleeHaste, }, false, false, } -- s76862
-L["使施法者的攻击速度提高%s%，并且造成的物理伤害提高，持续%s。"] = { { Stats.MeleeHaste, }, false, } -- s77238
+L["使施法者的攻击速度提高%s%，造成的物理伤害提高%s%，持续%s sec。"] = { { Stats.MeleeHaste, }, false, false, } -- s76862
+L["使施法者的攻击速度提高%s%，并且造成的物理伤害提高，持续%s sec。"] = { { Stats.MeleeHaste, }, false, } -- s77238
 L["施放者周围发出耀眼的光芒，使其躲闪几率提高%s%。"] = { { Stats.Dodge, }, } -- s77457
 L["使目标中毒，将目标的躲闪和招架几率降低%s%。使其移动速度提高%s%。"] = { { Stats.Parry, Stats.Dodge, }, false, } -- s77517
-L["立即攻击目标，造成%s%的武器伤害。攻击伤害提高%s%，但是命中几率降低%s%。持续%s。"] = { false, false, { Stats.MeleeHit, Stats.RangedHit, }, false, } -- s77558
+L["立即攻击目标，造成%s%的武器伤害。攻击伤害提高%s%，但是命中几率降低%s%。持续%s sec。"] = { false, false, { Stats.MeleeHit, Stats.RangedHit, }, false, } -- s77558
 L["撕咬敌人，对其造成物理伤害，并在他们身上覆盖一层稀有的龙香涎，使其命中几率降低%s%。"] = { { Stats.MeleeHit, Stats.RangedHit, }, } -- s77962
 L["给萨满祭司的武器附加火焰的力量，使其法术伤害提高%s点。每次击中敌人都会造成$/%sm%s到%s点的额外火焰伤害。"] = { { Stats.SpellDamage, }, false, false, false, } -- s78273
-L["将施行者的皮肤变成石头，使其护甲值提高%s点，持续%s。"] = { { Stats.Armor, }, false, } -- s78530
+L["将施行者的皮肤变成石头，使其护甲值提高%s点，持续%s sec。"] = { { Stats.Armor, }, false, } -- s78530
 L["奈法利安和奥妮克希亚在一起的时候，他们的攻击速度提高了%s%。"] = { { Stats.MeleeHaste, }, } -- s78619
-L["使施法者的近战攻击速度提高%s%，持续%s。"] = { { Stats.MeleeHaste, }, false, } -- s78710
-L["使一名敌人的智力降低%s点，持续%s。"] = { { Stats.Intellect, }, false, } -- s78867
-L["魔法的光辉笼罩着小队和团队中的所有成员，使他们的最大法力值提高%s点，法术强度提高%s%，持续%s。如果目标在你的小队或团队中，全体小队或团队成员都会获得此效果。"] = { { Stats.Mana, }, false, false, } -- s79038
-L["为友方目标施加祝福，使其近战攻击强度提高%s%，远程攻击强度提高%s%，并且每%s秒钟回复%s点法力值，持续%s。如果目标在你的小队或团队中，全体小队或团队成员都会接受此效果。每个圣骑士在同一时间内只能给目标施加一种祝福。"] = { false, false, false, { Stats.GenericManaRegen, }, false, } -- s79101
-L["圣洁的能量充满小队和团队成员的身体，使其耐力提高%s点，持续%s。如果目标在你的小队或团队中，全体小队或团队成员都会接受此效果。"] = { { Stats.Stamina, }, false, } -- s79104
+L["使施法者的近战攻击速度提高%s%，持续%s sec。"] = { { Stats.MeleeHaste, }, false, } -- s78710
+L["使一名敌人的智力降低%s点，持续%s sec。"] = { { Stats.Intellect, }, false, } -- s78867
+L["魔法的光辉笼罩着小队和团队中的所有成员，使他们的最大法力值提高%s点，法术强度提高%s%，持续%s sec。如果目标在你的小队或团队中，全体小队或团队成员都会获得此效果。"] = { { Stats.Mana, }, false, false, } -- s79038
+L["为友方目标施加祝福，使其近战攻击强度提高%s%，远程攻击强度提高%s%，并且每%s秒钟回复%s点法力值，持续%s sec。如果目标在你的小队或团队中，全体小队或团队成员都会接受此效果。每个圣骑士在同一时间内只能给目标施加一种祝福。"] = { false, false, false, { Stats.GenericManaRegen, }, false, } -- s79101
+L["圣洁的能量充满小队和团队成员的身体，使其耐力提高%s点，持续%s sec。如果目标在你的小队或团队中，全体小队或团队成员都会接受此效果。"] = { { Stats.Stamina, }, false, } -- s79104
 L["力量和智力降低%s点。"] = { { Stats.Strength, Stats.Intellect, }, } -- s79400
 L["使生命值提高，数值相当于%s%的最大生命值。"] = { { Stats.Health, }, } -- s79437
 L["使急速提高%s%，伤害提高%s%。"] = { { Stats.SpellHaste, }, false, } -- s79462
-L["精神提高%s点，持续%s。战斗药剂。"] = { { Stats.Spirit, }, false, } -- s79468
-L["使耐力提高%s点，持续%s。这种效果在死亡后仍可继续存在。战斗和守护药剂。"] = { { Stats.Stamina, }, false, } -- s79469
-L["使智力提高%s点，持续%s。这种效果在死亡后仍可继续存在。战斗和守护药剂。"] = { { Stats.Intellect, }, false, } -- s79470
-L["使敏捷提高%s点，持续%s。这种效果在死亡后仍可继续存在。战斗和守护药剂。"] = { { Stats.Agility, }, false, } -- s79471
-L["使力量提高%s点，持续%s。这种效果在死亡后仍可继续存在。战斗和守护药剂。"] = { { Stats.Strength, }, false, } -- s79472
-L["使精准等级提高%s，持续%s。战斗药剂。"] = { { Stats.ExpertiseRating, }, false, } -- s79474
-L["使护甲值提高%s点，持续%s。"] = { { Stats.Armor, }, false, } -- s79475
-L["使爆击等级提高%s，持续%s。战斗药剂。"] = { { Stats.MeleeCritRating, Stats.RangedCritRating, Stats.SpellCritRating, }, false, } -- s79477
-L["使护甲值提高%s点，持续%s。守护药剂。"] = { { Stats.Armor, }, false, } -- s79480
+L["精神提高%s点，持续%s sec。战斗药剂。"] = { { Stats.Spirit, }, false, } -- s79468
+L["使耐力提高%s点，持续%s sec。这种效果在死亡后仍可继续存在。战斗和守护药剂。"] = { { Stats.Stamina, }, false, } -- s79469
+L["使智力提高%s点，持续%s sec。这种效果在死亡后仍可继续存在。战斗和守护药剂。"] = { { Stats.Intellect, }, false, } -- s79470
+L["使敏捷提高%s点，持续%s sec。这种效果在死亡后仍可继续存在。战斗和守护药剂。"] = { { Stats.Agility, }, false, } -- s79471
+L["使力量提高%s点，持续%s sec。这种效果在死亡后仍可继续存在。战斗和守护药剂。"] = { { Stats.Strength, }, false, } -- s79472
+L["使精准等级提高%s，持续%s sec。战斗药剂。"] = { { Stats.ExpertiseRating, }, false, } -- s79474
+L["使护甲值提高%s点，持续%s sec。"] = { { Stats.Armor, }, false, } -- s79475
+L["使爆击等级提高%s，持续%s sec。战斗药剂。"] = { { Stats.MeleeCritRating, Stats.RangedCritRating, Stats.SpellCritRating, }, false, } -- s79477
+L["使护甲值提高%s点，持续%s sec。守护药剂。"] = { { Stats.Armor, }, false, } -- s79480
 L["使施放者造成的物理伤害降低%s点，近战攻击速度提高%s%。"] = { false, { Stats.MeleeHaste, }, } -- s79503
-L["使一个敌人的躲闪几率降低%s%，敏捷降低%s%，持续%s。在此效果影响下，目标不能潜行或者隐形。"] = { { Stats.Dodge, }, false, false, } -- s79559
-L["智慧的能量充满小队和团队成员的身体，使其最大法力值提高%s点，持续%s。如果目标在你的小队或团队中，全体小队或团队成员都会接受此效果。"] = { { Stats.Mana, }, false, } -- s79579
+L["使一个敌人的躲闪几率降低%s%，敏捷降低%s%，持续%s sec。在此效果影响下，目标不能潜行或者隐形。"] = { { Stats.Dodge, }, false, false, } -- s79559
+L["智慧的能量充满小队和团队成员的身体，使其最大法力值提高%s点，持续%s sec。如果目标在你的小队或团队中，全体小队或团队成员都会接受此效果。"] = { { Stats.Mana, }, false, } -- s79579
 L["对%s码内的所有敌人造成%s点自然伤害，并使其攻击速度降低%s%。"] = { false, false, { Stats.MeleeHaste, }, } -- s79604
-L["使魔法抗性提高%s点，持续%s。守护药剂。"] = { { Stats.FireResistance, Stats.NatureResistance, Stats.FrostResistance, Stats.ShadowResistance, Stats.ArcaneResistance, }, false, } -- s79631
-L["将急速等级提高%s，持续%s。战斗药剂。"] = { { Stats.MeleeHasteRating, Stats.RangedHasteRating, Stats.SpellHasteRating, }, false, } -- s79632
-L["使你的精通等级提高%s，持续%s。战斗药剂。"] = { { Stats.MasteryRating, }, false, } -- s79635
+L["使魔法抗性提高%s点，持续%s sec。守护药剂。"] = { { Stats.FireResistance, Stats.NatureResistance, Stats.FrostResistance, Stats.ShadowResistance, Stats.ArcaneResistance, }, false, } -- s79631
+L["将急速等级提高%s，持续%s sec。战斗药剂。"] = { { Stats.MeleeHasteRating, Stats.RangedHasteRating, Stats.SpellHasteRating, }, false, } -- s79632
+L["使你的精通等级提高%s，持续%s sec。战斗药剂。"] = { { Stats.MasteryRating, }, false, } -- s79635
 L["使力量提高%s点。这种效果在死亡后仍可继续存在。战斗和守护药剂。"] = { { Stats.Strength, }, } -- s79638
 L["使敏捷提高%s点。这种效果在死亡后仍可继续存在。战斗和守护药剂。"] = { { Stats.Agility, }, } -- s79639
 L["使智力提高%s点。这种效果在死亡后仍可继续存在。战斗和守护药剂。"] = { { Stats.Intellect, }, } -- s79640
 L["对目标和它身边最近的敌人造成你的武器伤害再加%s点伤害，最多可影响%s个目标，并使护甲值降低%s点。"] = { false, false, { Stats.Armor, }, } -- s79687
-L["已转换能量使魔法伤害提高%s%，施法速度提高%s%，持续%s。可叠加。"] = { false, { Stats.SpellHaste, }, false, } -- s79735
-L["在被击中时对攻击者造成火焰伤害，使你的法术爆击几率提高%s%，并使你受到爆击的几率降低%s%。法师在同一时间内只能保有一种魔法护甲效果。持续%s。"] = { { Stats.SpellCrit, }, false, false, } -- s79849
+L["已转换能量使魔法伤害提高%s%，施法速度提高%s%，持续%s sec。可叠加。"] = { false, { Stats.SpellHaste, }, false, } -- s79735
+L["在被击中时对攻击者造成火焰伤害，使你的法术爆击几率提高%s%，并使你受到爆击的几率降低%s%。法师在同一时间内只能保有一种魔法护甲效果。持续%s sec。"] = { { Stats.SpellCrit, }, false, false, } -- s79849
 L["使施放者的躲闪几率提高%s%。"] = { { Stats.Dodge, }, } -- s79853
-L["死亡骑士吹响寒冬号角，它会产生%s符文能量，使其力量和敏捷提高%s点，持续%s。"] = { false, { Stats.Strength, Stats.Agility, }, false, } -- s79891
-L["使你的格挡几率提高%s%，持续%s。在此期间每次成功格挡都会对攻击者造成神圣伤害，每次成功格挡会消耗掉一次格挡机会，最多可格挡%s次。"] = { { Stats.BlockChance, }, false, false, } -- s79967
-L["为友方目标施加祝福，使其攻击强度提高%s%，远程攻击强度提高%s%，并且每%s秒回复%s点法力值，持续%s。"] = { false, false, false, { Stats.GenericManaRegen, }, false, } -- s79977
+L["死亡骑士吹响寒冬号角，它会产生%s符文能量，使其力量和敏捷提高%s点，持续%s sec。"] = { false, { Stats.Strength, Stats.Agility, }, false, } -- s79891
+L["使你的格挡几率提高%s%，持续%s sec。在此期间每次成功格挡都会对攻击者造成神圣伤害，每次成功格挡会消耗掉一次格挡机会，最多可格挡%s次。"] = { { Stats.BlockChance, }, false, false, } -- s79967
+L["为友方目标施加祝福，使其攻击强度提高%s%，远程攻击强度提高%s%，并且每%s秒回复%s点法力值，持续%s sec。"] = { false, false, false, { Stats.GenericManaRegen, }, false, } -- s79977
 L["同伴的死亡唤醒了一股强大的能量，造成的伤害提高%s%，攻击速度提高%s%。"] = { false, { Stats.MeleeHaste, }, } -- s80035
-L["使你的攻击间隔缩短%s%，持续%s。造成的伤害提高%s%。"] = { { Stats.MeleeHaste, }, false, false, } -- s80084
-L["在%s内恢复%s点法力值。在喝水时必须保持坐姿。"] = { false, { Stats.GenericManaRegen, }, } -- s80166
-L["提高%s点敏捷和爆击等级，持续%s。战斗药剂。"] = { { Stats.MeleeCritRating, Stats.RangedCritRating, Stats.SpellCritRating, Stats.Agility, }, false, } -- s80532
-L["提高施法者%s%攻击速度，持续%s。"] = { { Stats.MeleeHaste, }, false, } -- s80597
+L["使你的攻击间隔缩短%s%，持续%s sec。造成的伤害提高%s%。"] = { { Stats.MeleeHaste, }, false, false, } -- s80084
+L["在%s sec内恢复%s点法力值。在喝水时必须保持坐姿。"] = { false, { Stats.GenericManaRegen, }, } -- s80166
+L["提高%s点敏捷和爆击等级，持续%s sec。战斗药剂。"] = { { Stats.MeleeCritRating, Stats.RangedCritRating, Stats.SpellCritRating, Stats.Agility, }, false, } -- s80532
+L["提高施法者%s%攻击速度，持续%s sec。"] = { { Stats.MeleeHaste, }, false, } -- s80597
 L["对附近的所有敌人造成%s点自然伤害，并使其攻击速度减慢%s%。"] = { false, { Stats.MeleeHaste, }, } -- s80649
-L["造成暗影伤害，并使其护甲值降低%s，持续%s。"] = { { Stats.Armor, }, false, } -- s80966
-L["当你使用野性冲锋（熊）之后，你在%s内的近战攻击速度提高%s%。且在你使用了野性冲锋（猎豹）之后，下一次毁灭在%s之内将不需要潜行或者站位要求，且消耗的能量值降低%s%。"] = { false, { Stats.MeleeHaste, }, false, false, } -- s81016
-L["召唤一把符文武器独立作战，进行与死亡骑士相同的攻击动作，但是只有%s%的伤害。符文武器持续%s。符文武器还会守御自己的主人，让主人额外获得%s%的招架几率。"] = { false, false, { Stats.Parry, }, } -- s81256
+L["造成暗影伤害，并使其护甲值降低%s，持续%s sec。"] = { { Stats.Armor, }, false, } -- s80966
+L["当你使用野性冲锋（熊）之后，你在%s sec内的近战攻击速度提高%s%。且在你使用了野性冲锋（猎豹）之后，下一次毁灭在%s sec之内将不需要潜行或者站位要求，且消耗的能量值降低%s%。"] = { false, { Stats.MeleeHaste, }, false, false, } -- s81016
+L["召唤一把符文武器独立作战，进行与死亡骑士相同的攻击动作，但是只有%s%的伤害。符文武器持续%s sec。符文武器还会守御自己的主人，让主人额外获得%s%的招架几率。"] = { false, false, { Stats.Parry, }, } -- s81256
 L["尾巴用力抽打，将尘土泥石甩向空中，造成越来越高的自然伤害，并降低%s%的目标命中几率。"] = { { Stats.MeleeHit, Stats.RangedHit, }, } -- s81673
-L["命中率降低%s%，持续%s。"] = { { Stats.MeleeHit, Stats.RangedHit, Stats.SpellHit, }, false, } -- s81678
-L["单宁酸液造成自然伤害，并让你窒息，使你的命中几率降低%s%，持续%s。"] = { { Stats.MeleeHit, Stats.RangedHit, }, false, } -- s81702
-L["使用你的草药学知识，吸收大地中的能量和营养，立刻治疗小伤口，并使你的急速等级提高%s，持续%s。可以在潜行或隐形状态下使用。"] = { { Stats.MeleeHasteRating, Stats.RangedHasteRating, Stats.SpellHasteRating, }, false, } -- s81708
-L["使施放者的攻击速度提高%s%，对敌人造成的物理伤害提高%s%，持续%s。%s后进入疲劳状态。"] = { { Stats.MeleeHaste, }, false, false, false, } -- s81772
-L["每当你的生命值为%s%或者更低时，你的招架几率都会提高%s%，持续%s。这一效果每%s分钟只能触发一次。"] = { false, { Stats.Parry, }, false, false, } -- s81913
-L["使你的护甲值提高%s点，持续%s。"] = { { Stats.Armor, }, false, } -- s82176
-L["消耗你宠物的狂乱效果，每一层狂乱效果可以为你的宠物恢复%s点集中值，并使你的远程攻击速度提高%s%。持续%s。"] = { false, { Stats.RangedHaste, }, false, } -- s82692
-L["将你的攻击间隔时间缩短%s%，持续%s。造成的伤害提高%s%。"] = { { Stats.MeleeHaste, }, false, false, } -- s82759
-L["将尘土踢进进攻者的眼睛，使其命中率降低%s%，持续%s。"] = { { Stats.MeleeHit, Stats.RangedHit, }, false, } -- s82829
-L["巨猪的力量注入目标体内，使其智力提高%s，持续%s。"] = { { Stats.Intellect, }, false, } -- s82846
-L["敌方目标被虫群包裹，使他们的近战和远程命中几率降低%s%，并在%s内受到自然伤害。"] = { { Stats.MeleeHit, Stats.RangedHit, }, false, } -- s83017
+L["命中率降低%s%，持续%s sec。"] = { { Stats.MeleeHit, Stats.RangedHit, Stats.SpellHit, }, false, } -- s81678
+L["单宁酸液造成自然伤害，并让你窒息，使你的命中几率降低%s%，持续%s sec。"] = { { Stats.MeleeHit, Stats.RangedHit, }, false, } -- s81702
+L["使用你的草药学知识，吸收大地中的能量和营养，立刻治疗小伤口，并使你的急速等级提高%s，持续%s sec。可以在潜行或隐形状态下使用。"] = { { Stats.MeleeHasteRating, Stats.RangedHasteRating, Stats.SpellHasteRating, }, false, } -- s81708
+L["使施放者的攻击速度提高%s%，对敌人造成的物理伤害提高%s%，持续%s sec。%s sec后进入疲劳状态。"] = { { Stats.MeleeHaste, }, false, false, false, } -- s81772
+L["每当你的生命值为%s%或者更低时，你的招架几率都会提高%s%，持续%s sec。这一效果每%s分钟只能触发一次。"] = { false, { Stats.Parry, }, false, false, ignoreSum = true } -- s81913
+L["使你的护甲值提高%s点，持续%s sec。"] = { { Stats.Armor, }, false, } -- s82176
+L["消耗你宠物的狂乱效果，每一层狂乱效果可以为你的宠物恢复%s点集中值，并使你的远程攻击速度提高%s%。持续%s sec。"] = { false, { Stats.RangedHaste, }, false, } -- s82692
+L["将你的攻击间隔时间缩短%s%，持续%s sec。造成的伤害提高%s%。"] = { { Stats.MeleeHaste, }, false, false, } -- s82759
+L["将尘土踢进进攻者的眼睛，使其命中率降低%s%，持续%s sec。"] = { { Stats.MeleeHit, Stats.RangedHit, }, false, } -- s82829
+L["巨猪的力量注入目标体内，使其智力提高%s，持续%s sec。"] = { { Stats.Intellect, }, false, } -- s82846
+L["敌方目标被虫群包裹，使他们的近战和远程命中几率降低%s%，并在%s sec内受到自然伤害。"] = { { Stats.MeleeHit, Stats.RangedHit, }, false, } -- s83017
 L["使躲闪几率提高%s%。"] = { { Stats.Dodge, }, } -- s83567
 L["当你的法术对%s个或以上的目标造成持续性火焰伤害时，使你的法术急速提高%s%。"] = { false, { Stats.SpellHaste, }, } -- s83582
 L["使目标中毒，令其造成的伤害降低%s点。"] = { { Stats.SpellDamage, }, } -- s83609
 L["虚空迷雾遮蔽了目标的双眼，削弱他的视力，使其命中几率，攻击速度和造成伤害降低%s%。"] = { { Stats.MeleeHit, Stats.RangedHit, Stats.MeleeHaste, }, } -- s83611
 L["使施法者的攻击速度提高%s%。"] = { { Stats.MeleeHaste, }, } -- s83693
-L["每%s秒对敌人造成一次自然伤害，让敌人的命中几率降低%s%，持续%s。"] = { false, { Stats.MeleeHit, Stats.RangedHit, }, false, } -- s83983
+L["每%s秒对敌人造成一次自然伤害，让敌人的命中几率降低%s%，持续%s sec。"] = { false, { Stats.MeleeHit, Stats.RangedHit, }, false, } -- s83983
 L["用旋风卷动目标，使其施法速度降低%s%。"] = { { Stats.SpellHaste, }, } -- s84092
 L["使躲闪等级提高%s。"] = { { Stats.DodgeRating, }, } -- s84247
-L["力量、敏捷、智力和耐力提高%s点，持续%s。"] = { { Stats.AllStats, }, false, } -- s84354
-L["使一个盟友的爆击等级提高%s，持续%s。"] = { { Stats.MeleeCritRating, Stats.RangedCritRating, Stats.SpellCritRating, }, false, } -- s84378
-L["在你成功招架之后，你的爆击和精确格挡几率提高%s%，持续%s。"] = { { Stats.MeleeCrit, Stats.RangedCrit, }, false, } -- s84604
-L["使法术强度提高%s点，持续%s。"] = { { Stats.SpellDamage, Stats.HealingPower, }, false, } -- s84968
-L["当你造成伤害时你有一定几率获得%s点敏捷，持续%s。"] = { { Stats.Agility, }, false, } -- s85011
-L["当你造成伤害或者治疗一个目标时，你有一定几率获得%s点法术强度，持续%s。"] = { { Stats.SpellDamage, Stats.HealingPower, }, false, } -- s85024
-L["当你造成伤害时你有一定几率获得%s点力量，持续%s。"] = { { Stats.Strength, }, false, } -- s85034
+L["力量、敏捷、智力和耐力提高%s点，持续%s sec。"] = { { Stats.AllStats, }, false, } -- s84354
+L["使一个盟友的爆击等级提高%s，持续%s sec。"] = { { Stats.MeleeCritRating, Stats.RangedCritRating, Stats.SpellCritRating, }, false, } -- s84378
+L["在你成功招架之后，你的爆击和精确格挡几率提高%s%，持续%s sec。"] = { { Stats.MeleeCrit, Stats.RangedCrit, }, false, ignoreSum = true } -- s84604
+L["使法术强度提高%s点，持续%s sec。"] = { { Stats.SpellDamage, Stats.HealingPower, }, false, } -- s84968
+L["当你造成伤害时你有一定几率获得%s点敏捷，持续%s sec。"] = { { Stats.Agility, }, false, ignoreSum = true } -- s85011
+L["当你造成伤害或者治疗一个目标时，你有一定几率获得%s点法术强度，持续%s sec。"] = { { Stats.SpellDamage, Stats.HealingPower, }, false, ignoreSum = true } -- s85024
+L["当你造成伤害时你有一定几率获得%s点力量，持续%s sec。"] = { { Stats.Strength, }, false, ignoreSum = true } -- s85034
 L["当生命值低于%s%时，使你的招架几率提高%s%。"] = { false, { Stats.Parry, }, } -- s85386
-L["使你的法术急速提高%s%。另外，施放圣佑术将使你的移动速度提高%s%，持续%s。"] = { { Stats.SpellHaste, }, false, false, } -- s85495
-L["诅咒目标，使其在%s内的奥术、火焰、冰霜、自然和暗影抗性降低%s点，受到的魔法伤害提高%s%。对于一个目标，每个术士只能施加一种诅咒。"] = { false, { Stats.FireResistance, Stats.NatureResistance, Stats.FrostResistance, Stats.ShadowResistance, Stats.ArcaneResistance, }, false, } -- s85547
+L["使你的法术急速提高%s%。另外，施放圣佑术将使你的移动速度提高%s%，持续%s sec。"] = { { Stats.SpellHaste, }, false, false, } -- s85495
+L["诅咒目标，使其在%s sec内的奥术、火焰、冰霜、自然和暗影抗性降低%s点，受到的魔法伤害提高%s%。对于一个目标，每个术士只能施加一种诅咒。"] = { false, { Stats.FireResistance, Stats.NatureResistance, Stats.FrostResistance, Stats.ShadowResistance, Stats.ArcaneResistance, }, false, } -- s85547
 L["获得地之祝福。\n伤害提高%s%。\n攻击间隔时间缩短%s%。"] = { false, { Stats.MeleeHaste, }, } -- s85712
 L["向敌人眼中发射致盲之网，使其命中几率降低%s%。"] = { { Stats.MeleeHit, Stats.RangedHit, }, } -- s85826
 L["使你可以在副手上装备单手和副手武器，让你可以招架正面的近战攻击，并使你近战攻击命中目标的几率提高%s%。"] = { { Stats.MeleeHit, Stats.RangedHit, }, } -- s86629
 L["使施法者疯狂地刺击，攻击速度极大提高，但是命中几率降低%s%。"] = { { Stats.MeleeHit, Stats.RangedHit, }, } -- s86726
-L["使施放者的攻击速度提高%s%，造成的物理伤害提高%s%，持续%s。"] = { { Stats.MeleeHaste, }, false, false, } -- s86736
+L["使施放者的攻击速度提高%s%，造成的物理伤害提高%s%，持续%s sec。"] = { { Stats.MeleeHaste, }, false, false, } -- s86736
 L["呼唤洛丹伦之力。\n使近战攻击之间的间隔缩短%s%。\n造成的伤害提高%s%。"] = { { Stats.MeleeHaste, }, false, } -- s87104
-L["使附近一个盟友的攻击速度提高%s%，持续%s。"] = { { Stats.MeleeHaste, }, false, } -- s87277
-L["使你在%s内回复%s点生命值和%s点法力值。进食时必须保持坐姿。如果你花费至少%s秒钟来进食，你的力量将提高%s点，你的耐力将提高%s点，持续%s。"] = { false, { Stats.Strength, Stats.Stamina, }, false, false, { Stats.Strength, }, { Stats.Stamina, }, false, } -- s87544
-L["使力量和耐力提高%s点。持续%s。"] = { { Stats.Strength, Stats.Stamina, }, false, } -- s87545
-L["使敏捷和耐力提高%s点，持续%s。"] = { { Stats.Agility, Stats.Stamina, }, false, } -- s87546
-L["使智力提高%s点，耐力提高%s点，持续%s。"] = { { Stats.Intellect, Stats.Stamina, }, { Stats.Intellect, }, false, } -- s87547
-L["使精神和耐力分别提高%s点。持续%s。"] = { { Stats.Spirit, Stats.Stamina, }, false, } -- s87548
-L["使精通等级提高%s，耐力提高%s点。持续%s。"] = { { Stats.MasteryRating, Stats.Stamina, }, { Stats.MasteryRating, }, false, } -- s87549
-L["使命中等级提高%s，耐力提高%s点。持续%s。"] = { { Stats.MeleeHitRating, Stats.RangedHitRating, Stats.SpellHitRating, Stats.Stamina, }, { Stats.MeleeHitRating, Stats.RangedHitRating, Stats.SpellHitRating, }, false, } -- s87550
-L["使爆击等级提高%s，耐力提高%s点。持续%s。"] = { { Stats.MeleeCritRating, Stats.RangedCritRating, Stats.SpellCritRating, Stats.Stamina, }, { Stats.MeleeCritRating, Stats.RangedCritRating, Stats.SpellCritRating, }, false, } -- s87551
-L["急速等级提高%s，耐力提高%s点。持续%s。"] = { { Stats.MeleeHasteRating, Stats.RangedHasteRating, Stats.SpellHasteRating, Stats.Stamina, }, { Stats.MeleeHasteRating, Stats.RangedHasteRating, Stats.SpellHasteRating, }, false, } -- s87552
-L["使躲闪等级提高%s，耐力提高%s点。持续%s。"] = { { Stats.DodgeRating, Stats.Stamina, }, { Stats.DodgeRating, }, false, } -- s87554
-L["使招架等级提高%s，耐力提高%s点。持续%s。"] = { { Stats.ParryRating, Stats.Stamina, }, { Stats.ParryRating, }, false, } -- s87555
-L["使你在%s内回复%s点生命值和%s点法力值。进食时必须保持坐姿。如果你花费至少%s秒钟来进食，你的敏捷将提高%s点，你的耐力将提高%s点，持续%s。"] = { false, { Stats.Agility, Stats.Stamina, }, false, false, { Stats.Agility, }, { Stats.Stamina, }, false, } -- s87566
-L["使你在%s内回复%s点生命值和%s点法力值。进食时必须保持坐姿。如果你花费至少%s秒钟来进食，你的智力将提高%s点，你的耐力将提高%s点，持续%s。"] = { false, { Stats.Intellect, Stats.Stamina, }, false, false, { Stats.Intellect, }, { Stats.Stamina, }, false, } -- s87567
-L["使你在%s内回复%s点生命值和%s点法力值。进食时必须保持坐姿。如果你花费至少%s秒钟来进食，你的精神将提高%s点，你的耐力将提高%s点，持续%s。"] = { false, { Stats.Spirit, Stats.Stamina, }, false, false, { Stats.Spirit, }, { Stats.Stamina, }, false, } -- s87568
-L["使你在%s内回复%s点生命值和%s点法力值。进食时必须保持坐姿。如果你花费至少%s秒钟来进食，你的精通等级将提高%s，你的耐力将提高%s点，持续%s。"] = { false, { Stats.MasteryRating, Stats.Stamina, }, false, false, { Stats.MasteryRating, }, { Stats.Stamina, }, false, } -- s87570
-L["使你在%s内回复%s点生命值和%s点法力值。进食时必须保持坐姿。如果你花费至少%s秒钟来进食，你的命中等级将提高%s，你的耐力将提高%s点，持续%s。"] = { false, { Stats.MeleeHitRating, Stats.RangedHitRating, Stats.SpellHitRating, Stats.Stamina, }, false, false, { Stats.MeleeHitRating, Stats.RangedHitRating, Stats.SpellHitRating, }, { Stats.Stamina, }, false, } -- s87571
-L["使你在%s内回复%s点生命值和%s点法力值。进食时必须保持坐姿。如果你花费至少%s秒钟来进食，你的爆击等级将提高%s，你的耐力将提高%s点，持续%s。"] = { false, { Stats.MeleeCritRating, Stats.RangedCritRating, Stats.SpellCritRating, Stats.Stamina, }, false, false, { Stats.MeleeCritRating, Stats.RangedCritRating, Stats.SpellCritRating, }, { Stats.Stamina, }, false, } -- s87572
-L["使你在%s内回复%s点生命值和%s点法力值。进食时必须保持坐姿。如果你花费至少%s秒钟来进食，你的急速等级将提高%s，你的耐力将提高%s点，持续%s。"] = { false, { Stats.MeleeHasteRating, Stats.RangedHasteRating, Stats.SpellHasteRating, Stats.Stamina, }, false, false, { Stats.MeleeHasteRating, Stats.RangedHasteRating, Stats.SpellHasteRating, }, { Stats.Stamina, }, false, } -- s87573
-L["使你在%s内回复%s点生命值和%s点法力值。进食时必须保持坐姿。如果你花费至少%s秒钟来进食，你的躲闪等级将提高%s，你的耐力将提高%s点，持续%s。"] = { false, { Stats.DodgeRating, Stats.Stamina, }, false, false, { Stats.DodgeRating, }, { Stats.Stamina, }, false, } -- s87577
-L["使你在%s内回复%s点生命值和%s点法力值。进食时必须保持坐姿。如果你花费至少%s秒钟来进食，你的招架等级将提高%s，你的耐力将提高%s点，持续%s。"] = { false, { Stats.ParryRating, Stats.Stamina, }, false, false, { Stats.ParryRating, }, { Stats.Stamina, }, false, } -- s87580
-L["使精准等级提高%s，耐力提高%s点。持续%s。"] = { { Stats.ExpertiseRating, Stats.Stamina, }, { Stats.ExpertiseRating, }, false, } -- s87634
-L["使你在%s内回复%s点生命值和%s点法力值。进食时必须保持坐姿。如果你花费至少%s秒钟来进食，你的精准等级将提高%s，你的耐力将提高%s点，持续%s。"] = { false, { Stats.ExpertiseRating, Stats.Stamina, }, false, false, { Stats.ExpertiseRating, }, { Stats.Stamina, }, false, } -- s87636
-L["使你的宠物力量提高%s点。持续%s。"] = { { Stats.Strength, }, false, } -- s87697
-L["使你的宠物耐力提高%s点。持续%s。"] = { { Stats.Stamina, }, false, } -- s87699
-L["使施法速度提高%s%，持续%s。"] = { { Stats.SpellHaste, }, false, } -- s87780
-L["在%s内回复%s点法力值。饮用时必须保持坐姿。"] = { false, { Stats.GenericManaRegen, }, } -- s87958
-L["在目标区域制造一股强力的风暴，每%s秒对敌人造成%s点自然伤害，并使敌人的攻击间隔延长%s%。持续%s。"] = { false, false, { Stats.MeleeHaste, }, false, } -- s88171
+L["使附近一个盟友的攻击速度提高%s%，持续%s sec。"] = { { Stats.MeleeHaste, }, false, } -- s87277
+L["使你在%s sec内回复%s点生命值和%s点法力值。进食时必须保持坐姿。如果你花费至少%s秒钟来进食，你的力量将提高%s点，你的耐力将提高%s点，持续%s sec。"] = { false, { Stats.Strength, Stats.Stamina, }, false, false, { Stats.Strength, }, { Stats.Stamina, }, false, ignoreSum = true } -- s87544
+L["使力量和耐力提高%s点。持续%s sec。"] = { { Stats.Strength, Stats.Stamina, }, false, } -- s87545
+L["使敏捷和耐力提高%s点，持续%s sec。"] = { { Stats.Agility, Stats.Stamina, }, false, } -- s87546
+L["使智力提高%s点，耐力提高%s点，持续%s sec。"] = { { Stats.Intellect, Stats.Stamina, }, { Stats.Intellect, }, false, } -- s87547
+L["使精神和耐力分别提高%s点。持续%s sec。"] = { { Stats.Spirit, Stats.Stamina, }, false, } -- s87548
+L["使精通等级提高%s，耐力提高%s点。持续%s sec。"] = { { Stats.MasteryRating, Stats.Stamina, }, { Stats.MasteryRating, }, false, } -- s87549
+L["使命中等级提高%s，耐力提高%s点。持续%s sec。"] = { { Stats.MeleeHitRating, Stats.RangedHitRating, Stats.SpellHitRating, Stats.Stamina, }, { Stats.MeleeHitRating, Stats.RangedHitRating, Stats.SpellHitRating, }, false, } -- s87550
+L["使爆击等级提高%s，耐力提高%s点。持续%s sec。"] = { { Stats.MeleeCritRating, Stats.RangedCritRating, Stats.SpellCritRating, Stats.Stamina, }, { Stats.MeleeCritRating, Stats.RangedCritRating, Stats.SpellCritRating, }, false, } -- s87551
+L["急速等级提高%s，耐力提高%s点。持续%s sec。"] = { { Stats.MeleeHasteRating, Stats.RangedHasteRating, Stats.SpellHasteRating, Stats.Stamina, }, { Stats.MeleeHasteRating, Stats.RangedHasteRating, Stats.SpellHasteRating, }, false, } -- s87552
+L["使躲闪等级提高%s，耐力提高%s点。持续%s sec。"] = { { Stats.DodgeRating, Stats.Stamina, }, { Stats.DodgeRating, }, false, } -- s87554
+L["使招架等级提高%s，耐力提高%s点。持续%s sec。"] = { { Stats.ParryRating, Stats.Stamina, }, { Stats.ParryRating, }, false, } -- s87555
+L["使你在%s sec内回复%s点生命值和%s点法力值。进食时必须保持坐姿。如果你花费至少%s秒钟来进食，你的敏捷将提高%s点，你的耐力将提高%s点，持续%s sec。"] = { false, { Stats.Agility, Stats.Stamina, }, false, false, { Stats.Agility, }, { Stats.Stamina, }, false, ignoreSum = true } -- s87566
+L["使你在%s sec内回复%s点生命值和%s点法力值。进食时必须保持坐姿。如果你花费至少%s秒钟来进食，你的智力将提高%s点，你的耐力将提高%s点，持续%s sec。"] = { false, { Stats.Intellect, Stats.Stamina, }, false, false, { Stats.Intellect, }, { Stats.Stamina, }, false, ignoreSum = true } -- s87567
+L["使你在%s sec内回复%s点生命值和%s点法力值。进食时必须保持坐姿。如果你花费至少%s秒钟来进食，你的精神将提高%s点，你的耐力将提高%s点，持续%s sec。"] = { false, { Stats.Spirit, Stats.Stamina, }, false, false, { Stats.Spirit, }, { Stats.Stamina, }, false, ignoreSum = true } -- s87568
+L["使你在%s sec内回复%s点生命值和%s点法力值。进食时必须保持坐姿。如果你花费至少%s秒钟来进食，你的精通等级将提高%s，你的耐力将提高%s点，持续%s sec。"] = { false, { Stats.MasteryRating, Stats.Stamina, }, false, false, { Stats.MasteryRating, }, { Stats.Stamina, }, false, ignoreSum = true } -- s87570
+L["使你在%s sec内回复%s点生命值和%s点法力值。进食时必须保持坐姿。如果你花费至少%s秒钟来进食，你的命中等级将提高%s，你的耐力将提高%s点，持续%s sec。"] = { false, { Stats.MeleeHitRating, Stats.RangedHitRating, Stats.SpellHitRating, Stats.Stamina, }, false, false, { Stats.MeleeHitRating, Stats.RangedHitRating, Stats.SpellHitRating, }, { Stats.Stamina, }, false, ignoreSum = true } -- s87571
+L["使你在%s sec内回复%s点生命值和%s点法力值。进食时必须保持坐姿。如果你花费至少%s秒钟来进食，你的爆击等级将提高%s，你的耐力将提高%s点，持续%s sec。"] = { false, { Stats.MeleeCritRating, Stats.RangedCritRating, Stats.SpellCritRating, Stats.Stamina, }, false, false, { Stats.MeleeCritRating, Stats.RangedCritRating, Stats.SpellCritRating, }, { Stats.Stamina, }, false, ignoreSum = true } -- s87572
+L["使你在%s sec内回复%s点生命值和%s点法力值。进食时必须保持坐姿。如果你花费至少%s秒钟来进食，你的急速等级将提高%s，你的耐力将提高%s点，持续%s sec。"] = { false, { Stats.MeleeHasteRating, Stats.RangedHasteRating, Stats.SpellHasteRating, Stats.Stamina, }, false, false, { Stats.MeleeHasteRating, Stats.RangedHasteRating, Stats.SpellHasteRating, }, { Stats.Stamina, }, false, ignoreSum = true } -- s87573
+L["使你在%s sec内回复%s点生命值和%s点法力值。进食时必须保持坐姿。如果你花费至少%s秒钟来进食，你的躲闪等级将提高%s，你的耐力将提高%s点，持续%s sec。"] = { false, { Stats.DodgeRating, Stats.Stamina, }, false, false, { Stats.DodgeRating, }, { Stats.Stamina, }, false, ignoreSum = true } -- s87577
+L["使你在%s sec内回复%s点生命值和%s点法力值。进食时必须保持坐姿。如果你花费至少%s秒钟来进食，你的招架等级将提高%s，你的耐力将提高%s点，持续%s sec。"] = { false, { Stats.ParryRating, Stats.Stamina, }, false, false, { Stats.ParryRating, }, { Stats.Stamina, }, false, ignoreSum = true } -- s87580
+L["使精准等级提高%s，耐力提高%s点。持续%s sec。"] = { { Stats.ExpertiseRating, Stats.Stamina, }, { Stats.ExpertiseRating, }, false, } -- s87634
+L["使你在%s sec内回复%s点生命值和%s点法力值。进食时必须保持坐姿。如果你花费至少%s秒钟来进食，你的精准等级将提高%s，你的耐力将提高%s点，持续%s sec。"] = { false, { Stats.ExpertiseRating, Stats.Stamina, }, false, false, { Stats.ExpertiseRating, }, { Stats.Stamina, }, false, ignoreSum = true } -- s87636
+L["使你的宠物力量提高%s点。持续%s sec。"] = { { Stats.Strength, }, false, } -- s87697
+L["使你的宠物耐力提高%s点。持续%s sec。"] = { { Stats.Stamina, }, false, } -- s87699
+L["使施法速度提高%s%，持续%s sec。"] = { { Stats.SpellHaste, }, false, } -- s87780
+L["在%s sec内回复%s点法力值。饮用时必须保持坐姿。"] = { false, { Stats.GenericManaRegen, }, } -- s87958
+L["在目标区域制造一股强力的风暴，每%s秒对敌人造成%s点自然伤害，并使敌人的攻击间隔延长%s%。持续%s sec。"] = { false, false, { Stats.MeleeHaste, }, false, } -- s88171
 L["spell power increased by %s%.\nspell haste increased by %s%"] = { false, { Stats.SpellHaste, }, } -- s88324
 L["攻击速度提高%s%。\n远程攻击强度提高%s%。\n护甲值提高%s点。"] = { false, false, { Stats.Armor, }, } -- s88325
-L["使一个盟友的耐力提高%s点，持续%s。"] = { { Stats.Stamina, }, false, } -- s88663
-L["使你在用法术造成伤害后，有一定几率对目标造成%s点额外的火焰伤害，并获得%s点智力，持续%s。"] = { false, { Stats.Intellect, }, false, } -- s89088
-L["对一个敌人造成%s点火焰伤害，并使你的智力提高%s点，持续%s。"] = { false, { Stats.Intellect, }, false, } -- s89091
-L["你的治疗法术有一定几率使你的精神提高%s点，持续%s。这一效果最多可以堆叠%s层。"] = { { Stats.Spirit, }, false, false, } -- s89183
+L["使一个盟友的耐力提高%s点，持续%s sec。"] = { { Stats.Stamina, }, false, } -- s88663
+L["使你在用法术造成伤害后，有一定几率对目标造成%s点额外的火焰伤害，并获得%s点智力，持续%s sec。"] = { false, { Stats.Intellect, }, false, ignoreSum = true } -- s89088
+L["对一个敌人造成%s点火焰伤害，并使你的智力提高%s点，持续%s sec。"] = { false, { Stats.Intellect, }, false, } -- s89091
+L["你的治疗法术有一定几率使你的精神提高%s点，持续%s sec。这一效果最多可以堆叠%s层。"] = { { Stats.Spirit, }, false, false, ignoreSum = true } -- s89183
 L["法术急速等级提高%s%。\n施法者会周期性地向%s码范围内的目标射出火球。"] = { { Stats.SpellHaste, }, false, } -- s89542
 L["食人魔的战斗风格使近战攻击间隔缩短%s%。效果一直持续到食人魔匪徒不再嚷嚷为止。"] = { { Stats.MeleeHaste, }, } -- s89652
 L["在脉轮状态下使你的精神提高%s点。"] = { { Stats.Spirit, }, } -- s89912
-L["施放苦修后精神提高%s点。持续%s。"] = { { Stats.Spirit, }, false, } -- s89913
-L["当相生精通对持续治疗的加成激活时，你获得%s点精神。"] = { { Stats.Spirit, }, } -- s90158
+L["施放苦修后精神提高%s点。持续%s sec。"] = { { Stats.Spirit, }, false, } -- s89913
+L["当相生精通对持续治疗的加成激活时，你获得%s点精神。"] = { { Stats.Spirit, }, ignoreSum = true } -- s90158
 L["当你相生精通的持续治疗加成处于激活状态时，使你获得%s点精神。"] = { { Stats.Spirit, }, } -- s90159
 L["使你的法术爆击几率提高%s%。每次爆击都会使该加成几率降低%s%。"] = { false, { Stats.SpellCrit, }, } -- s90164
-L["使你在施放神圣震击后获得%s点精神，持续%s。"] = { { Stats.Spirit, }, false, } -- s90311
+L["使你在施放神圣震击后获得%s点精神，持续%s sec。"] = { { Stats.Spirit, }, false, } -- s90311
 L["使所有小队及团队成员的耐力提高%s点。"] = { { Stats.Stamina, }, } -- s90364
-L["使你在施放激流后获得%s点精神。持续%s。"] = { { Stats.Spirit, }, false, } -- s90499
-L["你的法术有一定几率使你获得%s点法术强度，持续%s。"] = { { Stats.SpellDamage, Stats.HealingPower, }, false, } -- s90848
-L["使你的法术强度提高%s点，持续%s。可叠加最多%s次。"] = { { Stats.SpellDamage, Stats.HealingPower, }, false, false, } -- s90854
-L["你的法术使你获得%s点法术强度，持续%s。最多可叠加%s次。"] = { { Stats.SpellDamage, Stats.HealingPower, }, false, false, } -- s90855
-L["你的法术有一定几率使你的急速等级提高%s，持续%s。"] = { { Stats.MeleeHasteRating, Stats.RangedHasteRating, Stats.SpellHasteRating, }, false, } -- s90886
-L["你的法术有一定几率使你的爆击等级提高%s，持续%s。"] = { { Stats.MeleeCritRating, Stats.RangedCritRating, Stats.SpellCritRating, }, false, } -- s90892
-L["你的法术使你有一定几率获得%s点法术强度，持续%s。"] = { { Stats.SpellDamage, Stats.HealingPower, }, false, } -- s90897
-L["使命中几率降低%s%，持续%s。"] = { { Stats.MeleeHit, Stats.RangedHit, Stats.SpellHit, }, false, } -- s90920
-L["你的持续性治疗或伤害法术每次施放治疗或造成伤害时，可以使你获得%s点法术强度。持续%s，最多可叠加%s次。"] = { { Stats.SpellDamage, Stats.HealingPower, }, false, false, } -- s90943
-L["当你的法术对一个生命值低于%s%的目标造成伤害后，使你获得%s点法术强度，持续%s。加成效果结束后的%s内无法再次激活。"] = { { Stats.SpellDamage, Stats.HealingPower, }, { Stats.SpellDamage, }, false, false, } -- s90998
-L["你的有害法术一定几率使你获得%s点法术强度，持续%s。"] = { { Stats.SpellDamage, Stats.HealingPower, }, false, } -- s91011
-L["使精通等级提高%s，持续%s。"] = { { Stats.MasteryRating, }, false, } -- s91024
-L["使你的有害法术有一定几率令你的精通等级提高%s，持续%s。"] = { { Stats.MasteryRating, }, false, } -- s91025
-L["你的伤害性法术使你获得心灵启示，使法术强度提高%s点，持续%s，最多可叠加%s次。"] = { { Stats.SpellDamage, Stats.HealingPower, }, false, false, } -- s91031
-L["使施放者的近战攻击速度提高%s%，持续%s。"] = { { Stats.MeleeHaste, }, false, } -- s91034
-L["消耗所有心灵启示，每一层可以使你的急速等级提高%s。持续%s。"] = { { Stats.MeleeHasteRating, Stats.RangedHasteRating, Stats.SpellHasteRating, }, false, } -- s91041
-L["你的有害法术有一定几率令你获得%s点法术强度，持续%s。"] = { { Stats.SpellDamage, Stats.HealingPower, }, false, } -- s91048
-L["猛敲一名敌人的头部，造成%s%的武器伤害，并使其躲闪或招架一次攻击的几率降低%s%，持续%s。"] = { false, { Stats.Dodge, Stats.Parry, }, false, } -- s91050
-L["施放者的攻击速度提高%s%，持续%s。"] = { { Stats.MeleeHaste, }, false, } -- s91053
-L["狂躁恶鬼扑向猎物，其攻击速度提高%s%，持续%s。"] = { { Stats.MeleeHaste, }, false, } -- s91077
-L["你的治疗法术造成爆击后有一定几率使你获得%s点精神，持续%s。"] = { { Stats.Spirit, }, false, } -- s91137
-L["你的治疗法术有一定几率使你的急速等级提高%s，持续%s。"] = { { Stats.MeleeHasteRating, Stats.RangedHasteRating, Stats.SpellHasteRating, }, false, } -- s91142
-L["你的治疗法术使你有一定几率获得%s点精神，持续%s。"] = { { Stats.Spirit, }, false, } -- s91148
-L["你的精神值提高%s点，持续%s。"] = { { Stats.Spirit, }, false, } -- s91155
-L["你的治疗法术有一定几率使你获得%s点智力，持续%s。"] = { { Stats.Intellect, }, false, } -- s91193
-L["使你的精神提高%s点，持续%s。最多可堆叠%s层。"] = { { Stats.Spirit, }, false, false, } -- s91320
-L["你的治疗法术使你获得慧眼效果，精神提高%s点，持续%s，最多可叠加%s次。"] = { { Stats.Spirit, }, false, false, } -- s91321
-L["你的力量值提高%s点，持续%s。"] = { { Stats.Strength, }, false, } -- s91336
-L["你的近战攻击使你获得%s点力量。持续%s，最多可叠加%s次。"] = { { Stats.Strength, }, false, false, } -- s91339
-L["你的近战爆击有一定几率使你获得急速等级提高%s的效果，持续%s。"] = { { Stats.MeleeHasteRating, Stats.RangedHasteRating, Stats.SpellHasteRating, }, false, } -- s91353
-L["你的近战攻击有一定几率使你获得力量提高%s点的效果，持续%s。"] = { { Stats.Strength, }, false, } -- s91361
-L["你的近战爆击有一定几率使你获得力量提高%s点的效果，持续%s。"] = { { Stats.Strength, }, false, } -- s91366
-L["使你的精通等级提高%s，持续%s。"] = { { Stats.MasteryRating, }, false, } -- s91374
+L["使你在施放激流后获得%s点精神。持续%s sec。"] = { { Stats.Spirit, }, false, ignoreSum = true } -- s90499
+L["你的法术有一定几率使你获得%s点法术强度，持续%s sec。"] = { { Stats.SpellDamage, Stats.HealingPower, }, false, ignoreSum = true } -- s90848
+L["使你的法术强度提高%s点，持续%s sec。可叠加最多%s次。"] = { { Stats.SpellDamage, Stats.HealingPower, }, false, false, } -- s90854
+L["你的法术使你获得%s点法术强度，持续%s sec。最多可叠加%s次。"] = { { Stats.SpellDamage, Stats.HealingPower, }, false, false, ignoreSum = true } -- s90855
+L["你的法术有一定几率使你的急速等级提高%s，持续%s sec。"] = { { Stats.MeleeHasteRating, Stats.RangedHasteRating, Stats.SpellHasteRating, }, false, ignoreSum = true } -- s90886
+L["你的法术有一定几率使你的爆击等级提高%s，持续%s sec。"] = { { Stats.MeleeCritRating, Stats.RangedCritRating, Stats.SpellCritRating, }, false, ignoreSum = true } -- s90892
+L["你的法术使你有一定几率获得%s点法术强度，持续%s sec。"] = { { Stats.SpellDamage, Stats.HealingPower, }, false, ignoreSum = true } -- s90897
+L["使命中几率降低%s%，持续%s sec。"] = { { Stats.MeleeHit, Stats.RangedHit, Stats.SpellHit, }, false, } -- s90920
+L["你的持续性治疗或伤害法术每次施放治疗或造成伤害时，可以使你获得%s点法术强度。持续%s sec，最多可叠加%s次。"] = { { Stats.SpellDamage, Stats.HealingPower, }, false, false, ignoreSum = true } -- s90943
+L["当你的法术对一个生命值低于%s%的目标造成伤害后，使你获得%s点法术强度，持续%s sec。加成效果结束后的%s sec内无法再次激活。"] = { { Stats.SpellDamage, Stats.HealingPower, }, { Stats.SpellDamage, }, false, false, ignoreSum = true } -- s90998
+L["你的有害法术一定几率使你获得%s点法术强度，持续%s sec。"] = { { Stats.SpellDamage, Stats.HealingPower, }, false, ignoreSum = true } -- s91011
+L["使精通等级提高%s，持续%s sec。"] = { { Stats.MasteryRating, }, false, } -- s91024
+L["使你的有害法术有一定几率令你的精通等级提高%s，持续%s sec。"] = { { Stats.MasteryRating, }, false, ignoreSum = true } -- s91025
+L["你的伤害性法术使你获得心灵启示，使法术强度提高%s点，持续%s sec，最多可叠加%s次。"] = { { Stats.SpellDamage, Stats.HealingPower, }, false, false, ignoreSum = true } -- s91031
+L["使施放者的近战攻击速度提高%s%，持续%s sec。"] = { { Stats.MeleeHaste, }, false, } -- s91034
+L["消耗所有心灵启示，每一层可以使你的急速等级提高%s。持续%s sec。"] = { { Stats.MeleeHasteRating, Stats.RangedHasteRating, Stats.SpellHasteRating, }, false, } -- s91041
+L["你的有害法术有一定几率令你获得%s点法术强度，持续%s sec。"] = { { Stats.SpellDamage, Stats.HealingPower, }, false, ignoreSum = true } -- s91048
+L["猛敲一名敌人的头部，造成%s%的武器伤害，并使其躲闪或招架一次攻击的几率降低%s%，持续%s sec。"] = { false, { Stats.Dodge, Stats.Parry, }, false, } -- s91050
+L["施放者的攻击速度提高%s%，持续%s sec。"] = { { Stats.MeleeHaste, }, false, } -- s91053
+L["狂躁恶鬼扑向猎物，其攻击速度提高%s%，持续%s sec。"] = { { Stats.MeleeHaste, }, false, } -- s91077
+L["你的治疗法术造成爆击后有一定几率使你获得%s点精神，持续%s sec。"] = { { Stats.Spirit, }, false, ignoreSum = true } -- s91137
+L["你的治疗法术有一定几率使你的急速等级提高%s，持续%s sec。"] = { { Stats.MeleeHasteRating, Stats.RangedHasteRating, Stats.SpellHasteRating, }, false, ignoreSum = true } -- s91142
+L["你的治疗法术使你有一定几率获得%s点精神，持续%s sec。"] = { { Stats.Spirit, }, false, ignoreSum = true } -- s91148
+L["你的精神值提高%s点，持续%s sec。"] = { { Stats.Spirit, }, false, } -- s91155
+L["你的治疗法术有一定几率使你获得%s点智力，持续%s sec。"] = { { Stats.Intellect, }, false, ignoreSum = true } -- s91193
+L["使你的精神提高%s点，持续%s sec。最多可堆叠%s层。"] = { { Stats.Spirit, }, false, false, } -- s91320
+L["你的治疗法术使你获得慧眼效果，精神提高%s点，持续%s sec，最多可叠加%s次。"] = { { Stats.Spirit, }, false, false, ignoreSum = true } -- s91321
+L["你的力量值提高%s点，持续%s sec。"] = { { Stats.Strength, }, false, } -- s91336
+L["你的近战攻击使你获得%s点力量。持续%s sec，最多可叠加%s次。"] = { { Stats.Strength, }, false, false, ignoreSum = true } -- s91339
+L["你的近战爆击有一定几率使你获得急速等级提高%s的效果，持续%s sec。"] = { { Stats.MeleeHasteRating, Stats.RangedHasteRating, Stats.SpellHasteRating, }, false, ignoreSum = true } -- s91353
+L["你的近战攻击有一定几率使你获得力量提高%s点的效果，持续%s sec。"] = { { Stats.Strength, }, false, ignoreSum = true } -- s91361
+L["你的近战爆击有一定几率使你获得力量提高%s点的效果，持续%s sec。"] = { { Stats.Strength, }, false, ignoreSum = true } -- s91366
+L["使你的精通等级提高%s，持续%s sec。"] = { { Stats.MasteryRating, }, false, } -- s91374
 L["攻击速度提高%s%。\n伤害提高%s%。"] = { { Stats.MeleeHaste, }, false, } -- s91415
-L["你的近战攻击可使你获得力量提高%s点的效果。持续%s，最多可叠加%s次。"] = { { Stats.Strength, }, false, false, } -- s91811
-L["你的近战攻击有一定几率使你获得急速等级提高%s的效果，持续%s。"] = { { Stats.MeleeHasteRating, Stats.RangedHasteRating, Stats.SpellHasteRating, }, false, } -- s91822
-L["将%s层原始狂怒凝聚成黑翼龙族的形态，获得%s点力量，持续%s。"] = { false, { Stats.Strength, }, false, } -- s91836
-L["你的近战和远程攻击有一定几率使你获得急速等级提高%s的效果，持续%s。"] = { { Stats.MeleeHasteRating, Stats.RangedHasteRating, Stats.SpellHasteRating, }, false, } -- s92044
-L["你的近战和远程攻击有一定几率使你获得爆击等级提高%s的效果，持续%s。"] = { { Stats.MeleeCritRating, Stats.RangedCritRating, Stats.SpellCritRating, }, false, } -- s92054
-L["你的近战和远程爆击有一定几率使你获得急速等级提高%s的效果，持续%s。"] = { { Stats.MeleeHasteRating, Stats.RangedHasteRating, Stats.SpellHasteRating, }, false, } -- s92056
-L["你的近战和远程攻击有一定几率使你获得敏捷提高%s点的效果，持续%s。"] = { { Stats.Agility, }, false, } -- s92070
-L["你的近战和远程攻击可使你获得%s点敏捷。持续%s，最多可叠加%s次。"] = { { Stats.Agility, }, false, false, } -- s92086
-L["你的近战和远程爆击有一定几率使你获得敏捷提高%s点的效果，持续%s。"] = { { Stats.Agility, }, false, } -- s92095
+L["你的近战攻击可使你获得力量提高%s点的效果。持续%s sec，最多可叠加%s次。"] = { { Stats.Strength, }, false, false, ignoreSum = true } -- s91811
+L["你的近战攻击有一定几率使你获得急速等级提高%s的效果，持续%s sec。"] = { { Stats.MeleeHasteRating, Stats.RangedHasteRating, Stats.SpellHasteRating, }, false, ignoreSum = true } -- s91822
+L["将%s层原始狂怒凝聚成黑翼龙族的形态，获得%s点力量，持续%s sec。"] = { false, { Stats.Strength, }, false, } -- s91836
+L["你的近战和远程攻击有一定几率使你获得急速等级提高%s的效果，持续%s sec。"] = { { Stats.MeleeHasteRating, Stats.RangedHasteRating, Stats.SpellHasteRating, }, false, ignoreSum = true } -- s92044
+L["你的近战和远程攻击有一定几率使你获得爆击等级提高%s的效果，持续%s sec。"] = { { Stats.MeleeCritRating, Stats.RangedCritRating, Stats.SpellCritRating, }, false, ignoreSum = true } -- s92054
+L["你的近战和远程爆击有一定几率使你获得急速等级提高%s的效果，持续%s sec。"] = { { Stats.MeleeHasteRating, Stats.RangedHasteRating, Stats.SpellHasteRating, }, false, ignoreSum = true } -- s92056
+L["你的近战和远程攻击有一定几率使你获得敏捷提高%s点的效果，持续%s sec。"] = { { Stats.Agility, }, false, ignoreSum = true } -- s92070
+L["你的近战和远程攻击可使你获得%s点敏捷。持续%s sec，最多可叠加%s次。"] = { { Stats.Agility, }, false, false, ignoreSum = true } -- s92086
+L["你的近战和远程爆击有一定几率使你获得敏捷提高%s点的效果，持续%s sec。"] = { { Stats.Agility, }, false, ignoreSum = true } -- s92095
 L["使攻击强度提高%s点。"] = { { Stats.GenericAttackPower, }, } -- s92108
-L["你的近战攻击有一定几率使你的攻击强度提高%s，持续%s。"] = { { Stats.GenericAttackPower, }, false, } -- s92114
-L["你的近战攻击有一定几率使你获得精通等级提高%s的效果，持续%s。"] = { { Stats.MasteryRating, }, false, } -- s92164
-L["使你的招架等级提高%s，持续%s。"] = { { Stats.ParryRating, }, false, } -- s92199
-L["当你对攻击进行成功招架时，你将获得躲闪等级提高%s的效果，持续%s。该效果每%s秒只能触发一次。"] = { { Stats.DodgeRating, }, false, false, } -- s92207
-L["当你造成伤害时有一定几率获得力量提高%s点的效果，持续%s。"] = { { Stats.Strength, }, false, } -- s92217
-L["当你造成伤害或者治疗一个目标时有一定几率获得法术强度提高%s点的效果，持续%s。"] = { { Stats.SpellDamage, Stats.HealingPower, }, false, } -- s92219
-L["当你造成伤害时有一定几率获得敏捷提高%s点的效果，持续%s。"] = { { Stats.Agility, }, false, } -- s92221
-L["使奥术、火焰、冰霜、自然和暗影抗性提高%s点，持续%s。"] = { { Stats.FireResistance, Stats.NatureResistance, Stats.FrostResistance, Stats.ShadowResistance, Stats.ArcaneResistance, }, false, } -- s92222
-L["躲闪等级提高%s点，持续%s。"] = { { Stats.DodgeRating, }, false, } -- s92233
-L["导致你的生命值低于%s%的近战攻击将令你的精通等级提高%s，持续%s。这个效果每%s秒只能触发一次。"] = { { Stats.MasteryRating, }, { Stats.DodgeRating, }, false, false, } -- s92236
+L["你的近战攻击有一定几率使你的攻击强度提高%s，持续%s sec。"] = { { Stats.GenericAttackPower, }, false, ignoreSum = true } -- s92114
+L["你的近战攻击有一定几率使你获得精通等级提高%s的效果，持续%s sec。"] = { { Stats.MasteryRating, }, false, ignoreSum = true } -- s92164
+L["使你的招架等级提高%s，持续%s sec。"] = { { Stats.ParryRating, }, false, } -- s92199
+L["当你对攻击进行成功招架时，你将获得躲闪等级提高%s的效果，持续%s sec。该效果每%s秒只能触发一次。"] = { { Stats.DodgeRating, }, false, false, ignoreSum = true } -- s92207
+L["当你造成伤害时有一定几率获得力量提高%s点的效果，持续%s sec。"] = { { Stats.Strength, }, false, ignoreSum = true } -- s92217
+L["当你造成伤害或者治疗一个目标时有一定几率获得法术强度提高%s点的效果，持续%s sec。"] = { { Stats.SpellDamage, Stats.HealingPower, }, false, ignoreSum = true } -- s92219
+L["当你造成伤害时有一定几率获得敏捷提高%s点的效果，持续%s sec。"] = { { Stats.Agility, }, false, ignoreSum = true } -- s92221
+L["使奥术、火焰、冰霜、自然和暗影抗性提高%s点，持续%s sec。"] = { { Stats.FireResistance, Stats.NatureResistance, Stats.FrostResistance, Stats.ShadowResistance, Stats.ArcaneResistance, }, false, } -- s92222
+L["躲闪等级提高%s点，持续%s sec。"] = { { Stats.DodgeRating, }, false, } -- s92233
+L["导致你的生命值低于%s%的近战攻击将令你的精通等级提高%s，持续%s sec。这个效果每%s秒只能触发一次。"] = { { Stats.MasteryRating, }, { Stats.DodgeRating, }, false, false, ignoreSum = true } -- s92236
 L["%s韧性等级。"] = { { Stats.ResilienceRating, }, } -- s92254
-L["精神提高%s点，持续%s。最多可叠加%s次。"] = { { Stats.Spirit, }, false, false, } -- s92271
-L["你的有害法术有一定几率使你获得%s点法术强度，持续%s。"] = { { Stats.SpellDamage, Stats.HealingPower, }, false, } -- s92319
-L["你的有害法术有一定几率令你获得精通等级提高%s的效果，持续%s。"] = { { Stats.MasteryRating, }, false, } -- s92322
-L["你的治疗法术有一定几率使你获得精神提高%s点的效果，持续%s。"] = { { Stats.Spirit, }, false, } -- s92333
-L["激活之后，使你的招架几率提高%s%，敌方远程攻击对你的命中几率降低%s%，并且你偏转法术的几率提高%s%。持续%s。"] = { { Stats.Parry, }, { Stats.Parry, }, false, false, } -- s92614
-L["敏捷提高%s点，持续%s。这种效果在死亡后仍可继续存在。战斗和守护药剂。"] = { { Stats.Agility, }, false, } -- s92725
-L["耐力提高%s点，持续%s。战斗和守护药剂。这种效果在死亡后仍可继续存在。"] = { { Stats.Stamina, }, false, } -- s92729
-L["使玩家的智力提高%s点，持续%s。战斗和守护药剂。这种效果在死亡之后仍然存在。"] = { { Stats.Intellect, }, false, } -- s92730
-L["力量提高%s点，持续%s。战斗和守护药剂。这种效果在死亡后仍可继续存在。"] = { { Stats.Strength, }, false, } -- s92731
-L["在%s内恢复总计%s点法力值。喝水时必须保持坐姿。"] = { false, { Stats.GenericManaRegen, }, } -- s92736
-L["使你的攻击速度提高%s%。此外，可以攻击到附近一个额外的对手。持续%s。"] = { { Stats.MeleeHaste, }, false, } -- s92796
-L["生命值提高%s点，持续%s。这个法术只在冬泉谷有效。"] = { { Stats.Health, }, false, } -- s93150
+L["精神提高%s点，持续%s sec。最多可叠加%s次。"] = { { Stats.Spirit, }, false, false, } -- s92271
+L["你的有害法术有一定几率使你获得%s点法术强度，持续%s sec。"] = { { Stats.SpellDamage, Stats.HealingPower, }, false, ignoreSum = true } -- s92319
+L["你的有害法术有一定几率令你获得精通等级提高%s的效果，持续%s sec。"] = { { Stats.MasteryRating, }, false, ignoreSum = true } -- s92322
+L["你的治疗法术有一定几率使你获得精神提高%s点的效果，持续%s sec。"] = { { Stats.Spirit, }, false, ignoreSum = true } -- s92333
+L["激活之后，使你的招架几率提高%s%，敌方远程攻击对你的命中几率降低%s%，并且你偏转法术的几率提高%s%。持续%s sec。"] = { { Stats.Parry, }, { Stats.Parry, }, false, false, } -- s92614
+L["敏捷提高%s点，持续%s sec。这种效果在死亡后仍可继续存在。战斗和守护药剂。"] = { { Stats.Agility, }, false, } -- s92725
+L["耐力提高%s点，持续%s sec。战斗和守护药剂。这种效果在死亡后仍可继续存在。"] = { { Stats.Stamina, }, false, } -- s92729
+L["使玩家的智力提高%s点，持续%s sec。战斗和守护药剂。这种效果在死亡之后仍然存在。"] = { { Stats.Intellect, }, false, } -- s92730
+L["力量提高%s点，持续%s sec。战斗和守护药剂。这种效果在死亡后仍可继续存在。"] = { { Stats.Strength, }, false, } -- s92731
+L["在%s sec内恢复总计%s点法力值。喝水时必须保持坐姿。"] = { false, { Stats.GenericManaRegen, }, } -- s92736
+L["使你的攻击速度提高%s%。此外，可以攻击到附近一个额外的对手。持续%s sec。"] = { { Stats.MeleeHaste, }, false, } -- s92796
+L["生命值提高%s点，持续%s sec。这个法术只在冬泉谷有效。"] = { { Stats.Health, }, false, } -- s93150
 L["爆击等级提高%s%，急速等级提高%s%。"] = { { Stats.MeleeCrit, Stats.RangedCrit, }, false, } -- s93157
-L["野兽发出勇气咆哮，使%s码内所有小队及团队成员的力量和敏捷提高%s点，持续%s。"] = { false, { Stats.Agility, Stats.Strength, }, false, } -- s93435
-L["为团队成员施加祝福，使其近战攻击强度提高%s%，远程攻击强度提高%s%，并且每%s秒回复%s点法力值，持续%s。一位玩家在同一时间内只能对成员施加一种祝福效果。"] = { false, false, false, { Stats.GenericManaRegen, }, false, } -- s93744
-L["攻击强度提高%s点，并将世界缩小，持续%s。"] = { { Stats.GenericAttackPower, }, false, } -- s93765
-L["精神值提高%s点，持续%s。战斗和守护药剂。这种效果在死亡后仍可继续存在。"] = { { Stats.Spirit, }, false, } -- s94160
-L["使你的爆击等级提高%s点，并使体型变大，持续%s。"] = { { Stats.MeleeCritRating, Stats.RangedCritRating, Stats.SpellCritRating, }, false, } -- s95227
+L["野兽发出勇气咆哮，使%s码内所有小队及团队成员的力量和敏捷提高%s点，持续%s sec。"] = { false, { Stats.Agility, Stats.Strength, }, false, } -- s93435
+L["为团队成员施加祝福，使其近战攻击强度提高%s%，远程攻击强度提高%s%，并且每%s秒回复%s点法力值，持续%s sec。一位玩家在同一时间内只能对成员施加一种祝福效果。"] = { false, false, false, { Stats.GenericManaRegen, }, false, } -- s93744
+L["攻击强度提高%s点，并将世界缩小，持续%s sec。"] = { { Stats.GenericAttackPower, }, false, } -- s93765
+L["精神值提高%s点，持续%s sec。战斗和守护药剂。这种效果在死亡后仍可继续存在。"] = { { Stats.Spirit, }, false, } -- s94160
+L["使你的爆击等级提高%s点，并使体型变大，持续%s sec。"] = { { Stats.MeleeCritRating, Stats.RangedCritRating, Stats.SpellCritRating, }, false, } -- s95227
 L["使耐力提高%s点。"] = { { Stats.Stamina, }, } -- s95671
 L["使精通等级提高%s。"] = { { Stats.MasteryRating, }, } -- s95672
-L["使你在%s内的爆击等级提高%s。该效果最多可叠加%s次。"] = { false, { Stats.MeleeCritRating, Stats.RangedCritRating, Stats.SpellCritRating, }, false, } -- s95678
-L["你的近战和远程攻击有一定几率使急速等级提高%s，持续%s。"] = { { Stats.MeleeHasteRating, Stats.RangedHasteRating, Stats.SpellHasteRating, }, false, } -- s95763
-L["急速等级提高%s点，持续%s。"] = { { Stats.MeleeHasteRating, Stats.RangedHasteRating, Stats.SpellHasteRating, }, false, } -- s95876
-L["使精通等级提高%s，耐力提高%s点，持续%s。战斗和守护药剂。这种效果在死亡后仍可继续存在。"] = { { Stats.MasteryRating, }, { Stats.Stamina, }, false, } -- s96092
-L["使所有小队或团队成员的耐力提高%s点，持续%s。"] = { { Stats.Stamina, }, false, } -- s96175
+L["使你在%s sec内的爆击等级提高%s。该效果最多可叠加%s次。"] = { false, { Stats.MeleeCritRating, Stats.RangedCritRating, Stats.SpellCritRating, }, false, } -- s95678
+L["你的近战和远程攻击有一定几率使急速等级提高%s，持续%s sec。"] = { { Stats.MeleeHasteRating, Stats.RangedHasteRating, Stats.SpellHasteRating, }, false, ignoreSum = true } -- s95763
+L["急速等级提高%s点，持续%s sec。"] = { { Stats.MeleeHasteRating, Stats.RangedHasteRating, Stats.SpellHasteRating, }, false, } -- s95876
+L["使精通等级提高%s，耐力提高%s点，持续%s sec。战斗和守护药剂。这种效果在死亡后仍可继续存在。"] = { { Stats.MasteryRating, }, { Stats.Stamina, }, false, } -- s96092
+L["使所有小队或团队成员的耐力提高%s点，持续%s sec。"] = { { Stats.Stamina, }, false, } -- s96175
 L["使附近的所有敌人受到%s点自然伤害并使其攻击速度降低%s%。"] = { false, { Stats.MeleeHaste, }, } -- s96340
 L["血领主曼多基尔进入狂乱状态，攻击速度提高%s%，并使斩首的冷却时间缩短。"] = { { Stats.MeleeHaste, }, } -- s96800
-L["你的近战或远程攻击有一定几率使你的急速等级提高%s，持续%s。"] = { { Stats.MeleeHasteRating, Stats.RangedHasteRating, Stats.SpellHasteRating, }, false, } -- s96910
-L["使你每次造成持续性法术伤害后精通等级在%s内提高%s，最多可叠加%s次。"] = { false, { Stats.MasteryRating, }, false, } -- s96963
-L["精通等级提高%s，持续%s。"] = { { Stats.MasteryRating, }, false, } -- s96979
-L["当你近战攻击造成爆击时，你在%s内的爆击等级提高%s，最多可叠加%s次。"] = { false, { Stats.MeleeCritRating, Stats.RangedCritRating, Stats.SpellCritRating, }, false, } -- s96981
-L["creates a violent storm in the target area causing %s nature damage to enemies every %s sec, reducing movement speed by %s%, and increasing the time between attacks of enemies by %s%.  lasts %s.  druid must channel to maintain the spell"] = { false, false, false, { Stats.MeleeHaste, }, false, } -- s97067
-L["creates a violent storm in the target area causing %s nature damage to enemies every %s sec, and increasing the time between attacks of enemies by %s%.  lasts %s.  druid must channel to maintain the spell"] = { false, false, { Stats.MeleeHaste, }, false, } -- s97067
+L["你的近战或远程攻击有一定几率使你的急速等级提高%s，持续%s sec。"] = { { Stats.MeleeHasteRating, Stats.RangedHasteRating, Stats.SpellHasteRating, }, false, ignoreSum = true } -- s96910
+L["使你每次造成持续性法术伤害后精通等级在%s sec内提高%s，最多可叠加%s次。"] = { false, { Stats.MasteryRating, }, false, ignoreSum = true } -- s96963
+L["精通等级提高%s，持续%s sec。"] = { { Stats.MasteryRating, }, false, } -- s96979
+L["当你近战攻击造成爆击时，你在%s sec内的爆击等级提高%s，最多可叠加%s次。"] = { false, { Stats.MeleeCritRating, Stats.RangedCritRating, Stats.SpellCritRating, }, false, ignoreSum = true } -- s96981
+L["creates a violent storm in the target area causing %s nature damage to enemies every %s sec, reducing movement speed by %s%, and increasing the time between attacks of enemies by %s%.  lasts %s sec.  druid must channel to maintain the spell"] = { false, false, false, { Stats.MeleeHaste, }, false, } -- s97067
+L["creates a violent storm in the target area causing %s nature damage to enemies every %s sec, and increasing the time between attacks of enemies by %s%.  lasts %s sec.  druid must channel to maintain the spell"] = { false, false, { Stats.MeleeHaste, }, false, } -- s97067
 L["制造一片抑制魔法的区域。在该区域内的单位受到的法术伤害降低%s%，但是施法速度降低%s%。"] = { false, { Stats.SpellHaste, }, } -- s97600
 L["向地上扔一个烟雾弹，造成%s点伤害，并使站在其中的玩家命中几率降低%s%。"] = { false, { Stats.MeleeHit, Stats.RangedHit, Stats.SpellHit, }, } -- s97644
 L["攻击速度提高%s%。\n造成的伤害提高%s%。"] = { { Stats.MeleeHaste, }, false, } -- s98239
-L["树皮术结束后，躲闪几率提高%s%，持续%s。"] = { { Stats.Dodge, }, false, } -- s99011
-L["圣佑术结束后，招架几率提高%s%，持续%s。"] = { { Stats.Parry, }, false, } -- s99090
-L["急速等级提高%s%，持续%s。"] = { { Stats.MeleeHasteRating, Stats.RangedHasteRating, Stats.SpellHasteRating, }, false, } -- s99186
-L["爆击等级提高%s%，持续%s。"] = { { Stats.MeleeCritRating, Stats.RangedCritRating, Stats.SpellCritRating, }, false, } -- s99187
-L["精通等级提高%s%，持续%s。"] = { { Stats.MasteryRating, }, false, } -- s99188
-L["盾牌格挡结束后，招架几率提高%s%，持续%s。"] = { { Stats.Parry, }, false, } -- s99243
+L["树皮术结束后，躲闪几率提高%s%，持续%s sec。"] = { { Stats.Dodge, }, false, } -- s99011
+L["圣佑术结束后，招架几率提高%s%，持续%s sec。"] = { { Stats.Parry, }, false, } -- s99090
+L["急速等级提高%s%，持续%s sec。"] = { { Stats.MeleeHasteRating, Stats.RangedHasteRating, Stats.SpellHasteRating, }, false, } -- s99186
+L["爆击等级提高%s%，持续%s sec。"] = { { Stats.MeleeCritRating, Stats.RangedCritRating, Stats.SpellCritRating, }, false, } -- s99187
+L["精通等级提高%s%，持续%s sec。"] = { { Stats.MasteryRating, }, false, } -- s99188
+L["盾牌格挡结束后，招架几率提高%s%，持续%s sec。"] = { { Stats.Parry, }, false, } -- s99243
 L["正在发脾气！近战急速提高%s%。造成的物理伤害提高%s%。"] = { { Stats.MeleeHaste, }, false, } -- s99362
-L["当你造成伤害时，你有一定几率获得%s点敏捷，持续%s。"] = { { Stats.Agility, }, false, } -- s99718
-L["当你对目标造成伤害或者进行治疗时，你有一定几率获得%s点法术强度，持续%s。"] = { { Stats.SpellDamage, Stats.HealingPower, }, false, } -- s99720
-L["当你造成伤害时，你有一定几率获得%s点力量，持续%s。"] = { { Stats.Strength, }, false, } -- s99722
+L["当你造成伤害时，你有一定几率获得%s点敏捷，持续%s sec。"] = { { Stats.Agility, }, false, ignoreSum = true } -- s99718
+L["当你对目标造成伤害或者进行治疗时，你有一定几率获得%s点法术强度，持续%s sec。"] = { { Stats.SpellDamage, Stats.HealingPower, }, false, ignoreSum = true } -- s99720
+L["当你造成伤害时，你有一定几率获得%s点力量，持续%s sec。"] = { { Stats.Strength, }, false, ignoreSum = true } -- s99722
 L["使施法者的攻击和移动速度提高%s%，造成的所有伤害提高%s%。"] = { { Stats.MeleeHaste, }, false, } -- s100064
 L["成功施放一个法术！造成的伤害提高%s%，施法速度提高%s%。"] = { false, { Stats.SpellHaste, }, } -- s100093
-L["当你造成伤害时，你有一定几率获得%s点爆击等级，持续%s。"] = { { Stats.MeleeCritRating, Stats.RangedCritRating, Stats.SpellCritRating, }, false, } -- s100309
-L["在%s内回复%s点生命值和%s点法力值。进食时必须保持坐姿。如果你花费至少%s秒钟进食，你将获得进食充分效果，智力提高%s，耐力提高%s，持续%s。"] = { false, { Stats.Intellect, Stats.Stamina, }, false, false, { Stats.Intellect, }, { Stats.Stamina, }, false, } -- s100365
-L["使智力和耐力分别提高%s点。持续%s。"] = { { Stats.Intellect, Stats.Stamina, }, false, } -- s100368
-L["敏捷和耐力提高%s点。持续%s。"] = { { Stats.Agility, Stats.Stamina, }, false, } -- s100373
-L["在%s内回复%s点生命值和%s点法力值。进食时必须保持坐姿。如果你花费至少%s秒钟进食，你将获得进食充分效果，敏捷提高%s，耐力提高%s，持续%s。"] = { false, { Stats.Agility, Stats.Stamina, }, false, false, { Stats.Intellect, }, { Stats.Stamina, }, false, } -- s100374
-L["在%s内回复%s点生命值和%s点法力值。进食时必须保持坐姿。如果你花费至少%s秒钟进食，你将获得进食充分效果，精神提高%s，耐力提高%s，持续%s。"] = { false, { Stats.Spirit, Stats.Stamina, }, false, false, { Stats.Intellect, }, { Stats.Stamina, }, false, } -- s100376
-L["力量和耐力提高%s点，持续%s。"] = { { Stats.Strength, Stats.Stamina, }, false, } -- s100377
-L["在%s内回复%s点生命值和%s点法力值。进食时必须保持坐姿。如果你花费至少%s秒钟进食，你将获得进食充分效果，力量提高%s，耐力提高%s，持续%s。"] = { false, { Stats.Strength, Stats.Stamina, }, false, false, { Stats.Intellect, }, { Stats.Stamina, }, false, } -- s100379
+L["当你造成伤害时，你有一定几率获得%s点爆击等级，持续%s sec。"] = { { Stats.MeleeCritRating, Stats.RangedCritRating, Stats.SpellCritRating, }, false, ignoreSum = true } -- s100309
+L["在%s sec内回复%s点生命值和%s点法力值。进食时必须保持坐姿。如果你花费至少%s秒钟进食，你将获得进食充分效果，智力提高%s，耐力提高%s，持续%s sec。"] = { false, { Stats.Intellect, Stats.Stamina, }, false, false, { Stats.Intellect, }, { Stats.Stamina, }, false, ignoreSum = true } -- s100365
+L["使智力和耐力分别提高%s点。持续%s sec。"] = { { Stats.Intellect, Stats.Stamina, }, false, } -- s100368
+L["敏捷和耐力提高%s点。持续%s sec。"] = { { Stats.Agility, Stats.Stamina, }, false, } -- s100373
+L["在%s sec内回复%s点生命值和%s点法力值。进食时必须保持坐姿。如果你花费至少%s秒钟进食，你将获得进食充分效果，敏捷提高%s，耐力提高%s，持续%s sec。"] = { false, { Stats.Agility, Stats.Stamina, }, false, false, { Stats.Intellect, }, { Stats.Stamina, }, false, ignoreSum = true } -- s100374
+L["在%s sec内回复%s点生命值和%s点法力值。进食时必须保持坐姿。如果你花费至少%s秒钟进食，你将获得进食充分效果，精神提高%s，耐力提高%s，持续%s sec。"] = { false, { Stats.Spirit, Stats.Stamina, }, false, false, { Stats.Intellect, }, { Stats.Stamina, }, false, ignoreSum = true } -- s100376
+L["力量和耐力提高%s点，持续%s sec。"] = { { Stats.Strength, Stats.Stamina, }, false, } -- s100377
+L["在%s sec内回复%s点生命值和%s点法力值。进食时必须保持坐姿。如果你花费至少%s秒钟进食，你将获得进食充分效果，力量提高%s，耐力提高%s，持续%s sec。"] = { false, { Stats.Strength, Stats.Stamina, }, false, false, { Stats.Intellect, }, { Stats.Stamina, }, false, ignoreSum = true } -- s100379
 L["从附近的敌人身上吸取魔法，使造成的伤害提高%s%，附近敌人造成的伤害和治疗降低%s点。"] = { false, { Stats.HealingPower, Stats.SpellDamage, }, } -- s100394
 L["精通等级提高%s。"] = { { Stats.MasteryRating, }, } -- s100403
 L["攻击速度提高%s%，造成的物理伤害提高%s%。"] = { { Stats.MeleeHaste, }, false, } -- s100522
-L["符文刃舞结束后，招架几率提高%s%，持续%s。"] = { { Stats.Parry, }, false, } -- s101162
-L["使攻击强度提高%s点，持续%s。"] = { { Stats.GenericAttackPower, }, false, } -- s101287
-L["打出近战或远程爆击之后，有一定几率使你的攻击强度提高%s点，持续%s秒。"] = { { Stats.GenericAttackPower, }, false, } -- s101288
-L["你的直接治疗法术和持续性治疗法术有一定几率使你的急速等级提高%s，持续%s秒。"] = { { Stats.MeleeHasteRating, Stats.RangedHasteRating, Stats.SpellHasteRating, }, false, } -- s101290
-L["你的有害法术有一定几率使你的法术强度提高%s，持续%s。"] = { { Stats.SpellDamage, Stats.HealingPower, }, false, } -- s101292
+L["符文刃舞结束后，招架几率提高%s%，持续%s sec。"] = { { Stats.Parry, }, false, } -- s101162
+L["使攻击强度提高%s点，持续%s sec。"] = { { Stats.GenericAttackPower, }, false, } -- s101287
+L["打出近战或远程爆击之后，有一定几率使你的攻击强度提高%s点，持续%s秒。"] = { { Stats.GenericAttackPower, }, false, ignoreSum = true } -- s101288
+L["你的直接治疗法术和持续性治疗法术有一定几率使你的急速等级提高%s，持续%s秒。"] = { { Stats.MeleeHasteRating, Stats.RangedHasteRating, Stats.SpellHasteRating, }, false, ignoreSum = true } -- s101290
+L["你的有害法术有一定几率使你的法术强度提高%s，持续%s sec。"] = { { Stats.SpellDamage, Stats.HealingPower, }, false, ignoreSum = true } -- s101292
 L["黑暗月光使施法速度降低%s%。"] = { { Stats.SpellHaste, }, } -- s102414
-L["当你造成伤害时，有一定几率获得%s点力量，持续%s。"] = { { Stats.Strength, }, false, } -- s102433
-L["当你造成伤害，或治疗一个目标时，有一定几率获得%s点法术强度，持续%s。"] = { { Stats.SpellDamage, Stats.HealingPower, }, false, } -- s102436
-L["当你造成伤害时，有一定几率获得%s点敏捷，持续%s。"] = { { Stats.Agility, }, false, } -- s102440
-L["每次施放奥术冲击，都会使奥术法术的伤害提高%s%，施法时间减少%s%。这个效果可以最多叠加%s次，持续%s。"] = { false, { Stats.SpellHaste, }, false, false, } -- s102442
+L["当你造成伤害时，有一定几率获得%s点力量，持续%s sec。"] = { { Stats.Strength, }, false, ignoreSum = true } -- s102433
+L["当你造成伤害，或治疗一个目标时，有一定几率获得%s点法术强度，持续%s sec。"] = { { Stats.SpellDamage, Stats.HealingPower, }, false, ignoreSum = true } -- s102436
+L["当你造成伤害时，有一定几率获得%s点敏捷，持续%s sec。"] = { { Stats.Agility, }, false, ignoreSum = true } -- s102440
+L["每次施放奥术冲击，都会使奥术法术的伤害提高%s%，施法时间减少%s%。这个效果可以最多叠加%s次，持续%s sec。"] = { false, { Stats.SpellHaste, }, false, false, } -- s102442
 L["被艾露恩的指引之光所祝福。施法急速提高%s%。"] = { { Stats.SpellHaste, }, } -- s102472
-L["你的近战攻击有一定几率使你的爆击等级提高%s，持续%s。"] = { { Stats.MeleeCritRating, Stats.RangedCritRating, Stats.SpellCritRating, }, false, } -- s102661
-L["你的治疗和伤害法术有一定几率使你的精通等级提高%s，持续%s。"] = { { Stats.MasteryRating, }, false, } -- s102663
-L["你的近战攻击有一定几率使你的精通等级提高%s，持续%s。"] = { { Stats.MasteryRating, }, false, } -- s102665
-L["你的近战攻击有一定几率使你的躲闪等级提高%s，持续%s。"] = { { Stats.DodgeRating, }, false, } -- s102666
-L["精通值提高%s点，持续%s。"] = { { Stats.MasteryRating, }, false, } -- s102742
-L["当你造成伤害时，有一定几率使你的急速等级提高%s，持续%s。"] = { { Stats.MeleeHasteRating, Stats.RangedHasteRating, Stats.SpellHasteRating, }, false, } -- s102745
-L["当你造成伤害时，有一定几率获得%s点精通，持续%s。"] = { { Stats.MasteryRating, }, false, } -- s102776
-L["当你造成伤害时，有一定几率使你的闪躲升级提高%s，持续 %s。"] = { { Stats.DodgeRating, }, false, } -- s102778
-L["当你造成伤害时，有一定几率获得%s点智力，持续%s。"] = { { Stats.Intellect, }, false, } -- s102779
-L["你的治疗法术有一定几率使你的精神提高%s点，持续%s。"] = { { Stats.Spirit, }, false, } -- s102780
-L["%s码内所有小队或团队成员的力量和敏捷提高%s点，并恢复%s点怒气。持续lasts %s。"] = { false, { Stats.Strength, Stats.Agility, }, false, false, } -- s102927
-L["攻击速度提高%s%，但是命中几率降低%s%。持续%s。"] = { { Stats.MeleeHaste, }, { Stats.MeleeHit, Stats.RangedHit, }, false, } -- s102989
-L["造成%s%的武器伤害并使目标失去平衡，使其躲闪技能的效果降低%s%，持续%s。"] = { false, { Stats.Dodge, }, false, } -- s103000
+L["你的近战攻击有一定几率使你的爆击等级提高%s，持续%s sec。"] = { { Stats.MeleeCritRating, Stats.RangedCritRating, Stats.SpellCritRating, }, false, ignoreSum = true } -- s102661
+L["你的治疗和伤害法术有一定几率使你的精通等级提高%s，持续%s sec。"] = { { Stats.MasteryRating, }, false, ignoreSum = true } -- s102663
+L["你的近战攻击有一定几率使你的精通等级提高%s，持续%s sec。"] = { { Stats.MasteryRating, }, false, ignoreSum = true } -- s102665
+L["你的近战攻击有一定几率使你的躲闪等级提高%s，持续%s sec。"] = { { Stats.DodgeRating, }, false, ignoreSum = true } -- s102666
+L["精通值提高%s点，持续%s sec。"] = { { Stats.MasteryRating, }, false, } -- s102742
+L["当你造成伤害时，有一定几率使你的急速等级提高%s，持续%s sec。"] = { { Stats.MeleeHasteRating, Stats.RangedHasteRating, Stats.SpellHasteRating, }, false, ignoreSum = true } -- s102745
+L["当你造成伤害时，有一定几率获得%s点精通，持续%s sec。"] = { { Stats.MasteryRating, }, false, ignoreSum = true } -- s102776
+L["当你造成伤害时，有一定几率使你的闪躲升级提高%s，持续 %s sec。"] = { { Stats.DodgeRating, }, false, ignoreSum = true } -- s102778
+L["当你造成伤害时，有一定几率获得%s点智力，持续%s sec。"] = { { Stats.Intellect, }, false, ignoreSum = true } -- s102779
+L["你的治疗法术有一定几率使你的精神提高%s点，持续%s sec。"] = { { Stats.Spirit, }, false, ignoreSum = true } -- s102780
+L["%s码内所有小队或团队成员的力量和敏捷提高%s点，并恢复%s点怒气。持续lasts %s sec。"] = { false, { Stats.Strength, Stats.Agility, }, false, false, } -- s102927
+L["攻击速度提高%s%，但是命中几率降低%s%。持续%s sec。"] = { { Stats.MeleeHaste, }, { Stats.MeleeHit, Stats.RangedHit, }, false, } -- s102989
+L["造成%s%的武器伤害并使目标失去平衡，使其躲闪技能的效果降低%s%，持续%s sec。"] = { false, { Stats.Dodge, }, false, } -- s103000
 L["萨格拉斯之赐使伊利丹有着超乎寻常的视界，躲闪敌人攻击的几率提高%s%。"] = { { Stats.Dodge, }, } -- s104746
-L["使你的攻击间隔缩短%s%，伤害提高%s%，持续%s。"] = { { Stats.MeleeHaste, }, false, false, } -- s103846
+L["使你的攻击间隔缩短%s%，伤害提高%s%，持续%s sec。"] = { { Stats.MeleeHaste, }, false, false, } -- s103846
 L["注入古神的微光血。\n虚空箭现在具有范围效果。\n技能的冷却时间缩短为标准时间的一半。\n攻击速度提高%s%。"] = { { Stats.MeleeHaste, }, } -- s104901
 L["吸收附近的堕落熔岩残渣。融合怪每吸收一次残渣就会变得更不稳定，造成的伤害提高%s%，攻击速度提高%s%。叠加%s层后将进入超热状态。"] = { false, { Stats.MeleeHaste, }, false, } -- s105248
-L["元素掌握也会使你的精通等级提高%s，持续%s。"] = { { Stats.MasteryRating, }, false, } -- s105780
-L["急速等级提高%s，持续%s。最多可以叠加%s次。"] = { { Stats.MeleeHasteRating, Stats.RangedHasteRating, Stats.SpellHasteRating, }, false, false, } -- s105785
-L["你的奥术冲击有%s%的几率，你的火球术，炎爆术，霜火之箭和寒冰箭有%s%的几率使你获得窃取时间效果，使你的急速等级提高%s，持续%s，最多可以叠加%s次。当奥术强化，燃烧或冰冷血脉效果结束时，所有窃取时间效果也将消失。"] = { false, { Stats.MeleeHasteRating, Stats.RangedHasteRating, Stats.SpellHasteRating, }, { Stats.MeleeHasteRating, Stats.RangedHasteRating, Stats.SpellHasteRating, }, false, false, } -- s105788
+L["元素掌握也会使你的精通等级提高%s，持续%s sec。"] = { { Stats.MasteryRating, }, false, ignoreSum = true } -- s105780
+L["急速等级提高%s，持续%s sec。最多可以叠加%s次。"] = { { Stats.MeleeHasteRating, Stats.RangedHasteRating, Stats.SpellHasteRating, }, false, false, } -- s105785
+L["你的奥术冲击有%s%的几率，你的火球术，炎爆术，霜火之箭和寒冰箭有%s%的几率使你获得窃取时间效果，使你的急速等级提高%s，持续%s sec，最多可以叠加%s次。当奥术强化，燃烧或冰冷血脉效果结束时，所有窃取时间效果也将消失。"] = { false, { Stats.MeleeHasteRating, Stats.RangedHasteRating, Stats.SpellHasteRating, }, { Stats.MeleeHasteRating, Stats.RangedHasteRating, Stats.SpellHasteRating, }, false, false, ignoreSum = true } -- s105788
 L["时光领域使周围地区的时间流逝放缓，攻击速度降低%s%。"] = { { Stats.MeleeHaste, Stats.SpellHaste, }, } -- s105830
 L["为目标注入魔法的精华，使其所有法术的法力值消耗降低%s%，法术急速提高%s%。"] = { false, { Stats.SpellHaste, }, } -- s105903
-L["使你的急速等级提高%s，持续%s，并使%s码范围内最多%s名盟友的急速等级提高%s。"] = { false, false, false, false, { Stats.MeleeHasteRating, Stats.RangedHasteRating, Stats.SpellHasteRating, }, } -- s107804
-L["你的法术有一定几率使你获得%s急速等级，持续%s，并使%s码范围内最多%s名盟友获得%s急速等级。"] = { false, false, false, false, { Stats.MeleeHasteRating, Stats.RangedHasteRating, Stats.SpellHasteRating, }, } -- s107805
-L["使你的敏捷提高%s点，持续%s。进行移动会移除这个效果。"] = { { Stats.Agility, }, false, } -- s107823
-L["每次施放奥能毁灭，奥术法术的伤害提高%s%，施法时间减少%s%。这个效果最多叠加%s层，持续%s。"] = { false, { Stats.SpellHaste, }, false, false, } -- s107867
-L["只要你保持在离敌人%s码范围内，你的近战攻击有一定几率使你从敌人处获得%s躲闪等级，持续%s。"] = { false, { Stats.DodgeRating, }, false, } -- s107896
-L["你的攻击使得敏捷提高%s点，持续%s，最多可叠加%s层。"] = { { Stats.Agility, }, false, false, } -- s107961
-L["你的治疗法术使你的精神提高%s点，持续%s，最多可叠加%s层。"] = { { Stats.Spirit, }, false, false, } -- s107963
-L["你的近战攻击使得力量提高%s点，持续%s，最多可以叠加%s层。"] = { { Stats.Strength, }, false, false, } -- s107967
-L["你的近战攻击使你获得%s躲闪等级，持续%s，最多可以叠加%s层。"] = { { Stats.DodgeRating, }, false, false, } -- s107969
-L["你的伤害性法术使你的智力提高%s点，持续%s，最多可以叠加%s层。"] = { { Stats.Intellect, }, false, false, } -- s107971
-L["当你造成伤害时，你有一定几率获得%s急速等级，持续%s。"] = { { Stats.MeleeHasteRating, Stats.RangedHasteRating, Stats.SpellHasteRating, }, false, } -- s107983
-L["当你造成伤害时，你有一定几率获得%s精通等级，持续%s。"] = { { Stats.MasteryRating, }, false, } -- s107987
-L["当你造成伤害时，你有一定几率获得%s爆击等级，持续%s。"] = { { Stats.MeleeCritRating, Stats.RangedCritRating, Stats.SpellCritRating, }, false, } -- s107989
-L["每%s秒获得%s点敏捷，体型增大%s%。持续%s。"] = { false, { Stats.Agility, }, false, false, } -- s108011
+L["使你的急速等级提高%s，持续%s sec，并使%s码范围内最多%s名盟友的急速等级提高%s。"] = { false, false, false, false, { Stats.MeleeHasteRating, Stats.RangedHasteRating, Stats.SpellHasteRating, }, } -- s107804
+L["你的法术有一定几率使你获得%s急速等级，持续%s sec，并使%s码范围内最多%s名盟友获得%s急速等级。"] = { false, false, false, false, { Stats.MeleeHasteRating, Stats.RangedHasteRating, Stats.SpellHasteRating, }, ignoreSum = true } -- s107805
+L["使你的敏捷提高%s点，持续%s sec。进行移动会移除这个效果。"] = { { Stats.Agility, }, false, } -- s107823
+L["每次施放奥能毁灭，奥术法术的伤害提高%s%，施法时间减少%s%。这个效果最多叠加%s层，持续%s sec。"] = { false, { Stats.SpellHaste, }, false, false, } -- s107867
+L["只要你保持在离敌人%s码范围内，你的近战攻击有一定几率使你从敌人处获得%s躲闪等级，持续%s sec。"] = { false, { Stats.DodgeRating, }, false, } -- s107896
+L["你的攻击使得敏捷提高%s点，持续%s sec，最多可叠加%s层。"] = { { Stats.Agility, }, false, false, ignoreSum = true } -- s107961
+L["你的治疗法术使你的精神提高%s点，持续%s sec，最多可叠加%s层。"] = { { Stats.Spirit, }, false, false, ignoreSum = true } -- s107963
+L["你的近战攻击使得力量提高%s点，持续%s sec，最多可以叠加%s层。"] = { { Stats.Strength, }, false, false, ignoreSum = true } -- s107967
+L["你的近战攻击使你获得%s躲闪等级，持续%s sec，最多可以叠加%s层。"] = { { Stats.DodgeRating, }, false, false, ignoreSum = true } -- s107969
+L["你的伤害性法术使你的智力提高%s点，持续%s sec，最多可以叠加%s层。"] = { { Stats.Intellect, }, false, false, ignoreSum = true } -- s107971
+L["当你造成伤害时，你有一定几率获得%s急速等级，持续%s sec。"] = { { Stats.MeleeHasteRating, Stats.RangedHasteRating, Stats.SpellHasteRating, }, false, ignoreSum = true } -- s107983
+L["当你造成伤害时，你有一定几率获得%s精通等级，持续%s sec。"] = { { Stats.MasteryRating, }, false, ignoreSum = true } -- s107987
+L["当你造成伤害时，你有一定几率获得%s爆击等级，持续%s sec。"] = { { Stats.MeleeCritRating, Stats.RangedCritRating, Stats.SpellCritRating, }, false, ignoreSum = true } -- s107989
+L["每%s秒获得%s点敏捷，体型增大%s%。持续%s sec。"] = { false, { Stats.Agility, }, false, false, ignoreSum = true } -- s108011
 L["注入古神的微光血。\n技能的冷却时间缩短为标准时间的一半。\n攻击速度提高%s%。"] = { { Stats.MeleeHaste, }, } -- s108221
-L["当你进行治疗时，你有一定几率获得%s急速等级，持续%s。"] = { { Stats.MeleeHasteRating, Stats.RangedHasteRating, Stats.SpellHasteRating, }, false, } -- s109803
-L["每$%s秒获得%s点敏捷，体型增大%s%。持续%s。"] = { false, { Stats.Agility, }, false, false, } -- s109860
-L["使你的攻击强度提高%s点，体型增大，持续%s。战斗药剂。"] = { { Stats.GenericAttackPower, }, false, } -- s109933
-L["你的近战攻击有一定几率赋予你灭世者之影，使你的敏捷提高%s点，最多叠加%s层。当此效果叠加到%s层时，就有几率触发灭世者之怒。灭世者之影效果叠加层数越高，触发几率越大；而一旦你触发灭世者之怒，所有灭世者之影效果消失。灭世者之怒立即使你获得%s个连击点数，使你在使用终结技后获得%s个连击点数。持续%s。"] = { { Stats.Agility, }, false, false, false, false, false, } -- s109939
-L["使你的敏捷提高%s点，最多叠加%s层。当你获得%s层灭世者之影效果时，就有几率触发灭世者之怒。灭世者之影效果叠加层数越高，触发几率越大；而一旦你触发灭世者之怒，所有灭世者之影效果消失。灭世者之怒立即使你获得%s个连击点数，并使你在使用终结技后获得%s个连击点数，持续%s。"] = { { Stats.Agility, }, false, false, false, false, false, } -- s109941
+L["当你进行治疗时，你有一定几率获得%s急速等级，持续%s sec。"] = { { Stats.MeleeHasteRating, Stats.RangedHasteRating, Stats.SpellHasteRating, }, false, ignoreSum = true } -- s109803
+L["每$%s秒获得%s点敏捷，体型增大%s%。持续%s sec。"] = { false, { Stats.Agility, }, false, false, } -- s109860
+L["使你的攻击强度提高%s点，体型增大，持续%s sec。战斗药剂。"] = { { Stats.GenericAttackPower, }, false, } -- s109933
+L["你的近战攻击有一定几率赋予你灭世者之影，使你的敏捷提高%s点，最多叠加%s层。当此效果叠加到%s层时，就有几率触发灭世者之怒。灭世者之影效果叠加层数越高，触发几率越大；而一旦你触发灭世者之怒，所有灭世者之影效果消失。灭世者之怒立即使你获得%s个连击点数，使你在使用终结技后获得%s个连击点数。持续%s sec。"] = { { Stats.Agility, }, false, false, false, false, false, ignoreSum = true } -- s109939
+L["使你的敏捷提高%s点，最多叠加%s层。当你获得%s层灭世者之影效果时，就有几率触发灭世者之怒。灭世者之影效果叠加层数越高，触发几率越大；而一旦你触发灭世者之怒，所有灭世者之影效果消失。灭世者之怒立即使你获得%s个连击点数，并使你在使用终结技后获得%s个连击点数，持续%s sec。"] = { { Stats.Agility, }, false, false, false, false, false, } -- s109941
 L["使你的敏捷提高%s点，最多叠加%s层。"] = { { Stats.Agility, }, false, } -- s109955
-L["你的近战攻击有一定几率赋予梦魇效果，使你的敏捷提高%s点，叠加最多%s层。"] = { { Stats.Agility, }, false, } -- s109956
-L["你的近战攻击有一定几率赋予受难效果，使你的敏捷提高%s点，叠加最多%s层。"] = { { Stats.Agility, }, false, } -- s109960
-L["获得%s精通等级，持续%s。"] = { { Stats.MasteryRating, }, false, } -- s109993
-L["你的近战攻击有一定几率使你获得%s精通等级，持续%s。"] = { { Stats.MasteryRating, }, false, } -- s109995
-L["使%s码内所有小队成员的生命值上限提高%s点。持续%s。"] = { false, { Stats.Health, }, false, } -- s82061
-L["使一名敌人的近战攻击和远程攻击间隔延长%s%，施法时间延长%s%，并使其移动速度降低%s%，持续%s。"] = { { Stats.SpellHaste, }, false, false, false, } -- s110907
+L["你的近战攻击有一定几率赋予梦魇效果，使你的敏捷提高%s点，叠加最多%s层。"] = { { Stats.Agility, }, false, ignoreSum = true } -- s109956
+L["你的近战攻击有一定几率赋予受难效果，使你的敏捷提高%s点，叠加最多%s层。"] = { { Stats.Agility, }, false, ignoreSum = true } -- s109960
+L["获得%s精通等级，持续%s sec。"] = { { Stats.MasteryRating, }, false, } -- s109993
+L["你的近战攻击有一定几率使你获得%s精通等级，持续%s sec。"] = { { Stats.MasteryRating, }, false, ignoreSum = true } -- s109995
+L["使%s码内所有小队成员的生命值上限提高%s点。持续%s sec。"] = { false, { Stats.Health, }, false, } -- s82061
+L["使一名敌人的近战攻击和远程攻击间隔延长%s%，施法时间延长%s%，并使其移动速度降低%s%，持续%s sec。"] = { { Stats.SpellHaste, }, false, false, false, } -- s110907
 L["%s 敏捷，%s 护甲"] = { { Stats.Agility, }, { Stats.BonusArmor, }, } -- e3256
 L["%s 敏捷，%s 躲闪等级"] = { { Stats.Agility, }, { Stats.DodgeRating, }, } -- e910
 L["%s 精神，%s 耐力"] = { { Stats.Spirit, }, { Stats.Stamina, }, } -- e1890

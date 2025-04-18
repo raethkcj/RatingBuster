@@ -187,9 +187,11 @@ function mapTextToStatEntry(text: string, statEffects: StatValue[][], id: number
 						entries.push(false)
 					}
 					break
+				case "d":
+					entries.push(false)
+					return "%s sec"
 				case "a":
 				case "c":
-				case "d":
 				case "h":
 				case "n":
 				case "r":
