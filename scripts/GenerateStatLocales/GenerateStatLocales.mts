@@ -762,7 +762,7 @@ async function queryStatSpellDescriptions(expansion: Expansion, locale: string, 
 // Returns a flat array of all possible branches, including solely the original string if applicable.
 function traverseDescriptionBranches(description: string): string[] {
 	const branches = [description]
-	const conditionPattern = /(?<!\()\$((?<expression>\?.*?\[)|(?<token>[gl]))/g
+	const conditionPattern = /(?<!\()\$((?<expression>\?.*?\[)|(?<token>[gl]))/gi
 	// Using g and y flags, in combination with setting lastIndex to conditionPattern's,
 	// allows us to match expression/token bodies that immediately follow the opening condition
 	const expressionPattern = /([^\]]*?)\](?:(?<continue>\?.*?\[|\[)|)/gys
