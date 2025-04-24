@@ -1,0 +1,3 @@
+local addonName, addon = ...
+---@class StatLogic
+local StatLogic = LibStub:GetLibrary(addonName)

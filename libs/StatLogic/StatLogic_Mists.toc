@@ -1,0 +1,24 @@
+## Interface: 50500
+## Title: StatLogic
+## Author: Whitetooth, raethkcj
+## X-License: GPL v2
+
+#@non-debug@
+# libs\LibStub\LibStub.lua
+# libs\CallbackHandler-1.0\CallbackHandler-1.0.xml
+# libs\AceComm-3.0\AceComm-3.0.xml
+# libs\LibSerialize\lib.xml
+# libs\LibDeflate\lib.xml
+#@end-non-debug@
+
+libs\UTF8\utf8data.lua
+libs\UTF8\utf8.lua
+
+Init.lua
+Stats.lua
+
+locales\locales.xml
+
+StatLogic.lua
+Mists_Logic.lua
+Global_Logic.lua
