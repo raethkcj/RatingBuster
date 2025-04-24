@@ -1967,7 +1967,7 @@ function RatingBuster:OnDisable()
 end
 
 do
-	local spec = GetActiveTalentGroup()
+	local spec = C_SpecializationInfo.GetActiveSpecGroup()
 
 	function RatingBuster:GetDisplayedSpec()
 		return spec
@@ -1981,7 +1981,7 @@ do
 			spec = 3 - spec
 			db:SetProfile(db:GetDualSpecProfile(spec))
 		else
-			spec = GetActiveTalentGroup()
+			spec = C_SpecializationInfo.GetActiveSpecGroup()
 			local currentProfile = db:GetCurrentProfile()
 			if currentProfile ~= db.char.primaryProfile then
 				db:SetProfile(db.char.primaryProfile or currentProfile)
@@ -3954,7 +3954,7 @@ function RatingBuster:StatSummary(tooltip, link, statModContext)
 	end
 
 	if db.global.sumIgnoreNonPrimaryStat and addon.tocversion >= 40000 then
-		local spec = GetPrimaryTalentTree()
+		local spec = C_SpecializationInfo.GetSpecialization()
 		if spec then
 			local primaryStat = specPrimaryStats[class][spec]
 			if statData.sum[primaryStat] == 0 then

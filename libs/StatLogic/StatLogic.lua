@@ -984,7 +984,7 @@ addon.StatModValidators = {
 		validate = function(case, _, statModContext)
 			if armor_spec_active then
 				-- TODO: May be replaced by GetSpecialization, check on Cata Beta launch
-				return case.armorspec[GetPrimaryTalentTree(false, false, statModContext.spec) or 0]
+				return case.armorspec[C_SpecializationInfo.GetSpecialization(false, false, statModContext.spec) or 0]
 			else
 				return false
 			end
@@ -1101,7 +1101,7 @@ addon.StatModValidators = {
 	},
 	spec = {
 		validate = function(case, _, statModContext)
-			return case.spec == GetPrimaryTalentTree(false, false, statModContext.spec)
+			return case.spec == C_SpecializationInfo.GetSpecialization(false, false, statModContext.spec)
 		end,
 		events = {
 			["PLAYER_TALENT_UPDATE"] = true,
@@ -1233,7 +1233,8 @@ end
 -- and keep StatModTables human-readable.
 local orderedTalentCache = {}
 function StatLogic:GetOrderedTalentInfo(tab, num, ...)
-	return GetTalentInfo(tab, orderedTalentCache[tab][num], ...)
+	local ordered_num = tocversion < 50000 and orderedTalentCache[tab][num] or num
+	return GetTalentInfo(tab, ordered_num, ...)
 end
 
 local talentCacheExists = false
@@ -1241,7 +1242,7 @@ function StatLogic:TalentCacheExists()
 	return talentCacheExists
 end
 
-do
+if tocversion < 50000 then
 	local function GenerateOrderedTalents()
 		local temp = {}
 		local numTabs = GetNumTalentTabs()
@@ -1287,6 +1288,8 @@ do
 		end
 		self:UnregisterEvent("SPELLS_CHANGED")
 	end)
+else
+	talentCacheExists = true
 end
 
 do
@@ -1413,7 +1416,7 @@ do
 			context.profile = ""
 		end
 		if not context.spec then
-			context.spec = GetActiveTalentGroup()
+			context.spec = C_SpecializationInfo.GetActiveSpecGroup()
 		end
 		if not context.level then
 			context.level = UnitLevel("player")
