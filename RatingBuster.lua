@@ -2406,7 +2406,7 @@ do
 					infoTable[StatLogic.Stats.ParryReduction] = infoTable[StatLogic.Stats.ParryReduction] + parryReduction
 				end
 			elseif stat == StatLogic.Stats.ResilienceRating then
-				if db.profile.enableAvoidanceDiminishingReturns and StatLogic.GetResilienceEffectGainAfterDR then
+				if db.profile.enableAvoidanceDiminishingReturns and addon.tocversion >= 40000 then
 					effect = StatLogic:GetResilienceEffectGainAfterDR(processedResilience + value, processedResilience)
 					processedResilience = processedResilience + value
 				end

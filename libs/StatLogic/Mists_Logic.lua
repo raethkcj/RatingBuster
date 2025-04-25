@@ -162,3 +162,55 @@ end
 
 StatLogic.StatModTable["ALL"] = {
 }
+
+-----------------------------------
+-- Avoidance diminishing returns --
+-----------------------------------
+-- TODO: These are still Cata values
+addon.K = {
+	["WARRIOR"]     = 0.956,
+	["PALADIN"]     = 0.956,
+	["HUNTER"]      = 0.988,
+	["ROGUE"]       = 0.988,
+	["PRIEST"]      = 0.983,
+	["DEATHKNIGHT"] = 0.956,
+	["SHAMAN"]      = 0.988,
+	["MAGE"]        = 0.983,
+	["WARLOCK"]     = 0.983,
+	["DRUID"]       = 0.972,
+}
+addon.C_p = {
+	["WARRIOR"]     = 1/0.0152366,
+	["PALADIN"]     = 1/0.0152366,
+	["HUNTER"]      = 1/0.006870,
+	["ROGUE"]       = 1/0.006870,
+	["PRIEST"]      = 1/0.0152366,
+	["DEATHKNIGHT"] = 1/0.0152366,
+	["SHAMAN"]      = 1/0.006870,
+	["MAGE"]        = 1/0.0152366,
+	["WARLOCK"]     = 1/0.0152366,
+	["DRUID"]       = 1/0.0152366,
+}
+addon.C_d = {
+	["WARRIOR"]     = 1/0.0152366,
+	["PALADIN"]     = 1/0.0152366,
+	["HUNTER"]      = 1/0.006870,
+	["ROGUE"]       = 1/0.006870,
+	["PRIEST"]      = 1/0.006650,
+	["DEATHKNIGHT"] = 1/0.0152366,
+	["SHAMAN"]      = 1/0.006870,
+	["MAGE"]        = 1/0.006650,
+	["WARLOCK"]     = 1/0.006650,
+	["DRUID"]       = 1/0.008555,
+}
+
+addon.C_m = setmetatable({}, { __index = function()
+	return 16
+end})
+
+addon.ModAgiClasses = {
+	["DRUID"] = true,
+	["HUNTER"] = true,
+	["ROGUE"] = true,
+	["SHAMAN"] = true,
+}

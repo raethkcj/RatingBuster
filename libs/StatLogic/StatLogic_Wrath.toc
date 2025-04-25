@@ -21,4 +21,5 @@ locales\locales.xml
 
 StatLogic.lua
 Wrath_Logic.lua
+DiminishingReturns.lua
 Global_Logic.lua
