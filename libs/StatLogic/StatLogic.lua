@@ -911,6 +911,7 @@ do
 		SHAMAN = Enum.ItemArmorSubclass.Mail,
 		ROGUE = Enum.ItemArmorSubclass.Leather,
 		DRUID = Enum.ItemArmorSubclass.Leather,
+		MONK = Enum.ItemArmorSubclass.Leather,
 	}
 
 	local armor_spec_slots = {

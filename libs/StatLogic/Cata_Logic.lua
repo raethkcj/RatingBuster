@@ -2832,6 +2832,7 @@ addon.K = {
 	["WARLOCK"]     = 0.983,
 	["DRUID"]       = 0.972,
 }
+
 addon.C_p = {
 	["WARRIOR"]     = 1/0.0152366,
 	["PALADIN"]     = 1/0.0152366,
@@ -2844,6 +2845,7 @@ addon.C_p = {
 	["WARLOCK"]     = 1/0.0152366,
 	["DRUID"]       = 1/0.0152366,
 }
+
 addon.C_d = {
 	["WARRIOR"]     = 1/0.0152366,
 	["PALADIN"]     = 1/0.0152366,

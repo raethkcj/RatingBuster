@@ -47,6 +47,8 @@ addon.CritPerAgi = {
 	},
 	["MAGE"] = {
 	},
+	["MONK"] = {
+	},
 	["WARLOCK"] = {
 	},
 	["DRUID"] = {
@@ -68,6 +70,8 @@ addon.SpellCritPerInt = {
 	},
 	["MAGE"] = {
 	},
+	["MONK"] = {
+	},
 	["WARLOCK"] = {
 	},
 	["DRUID"] = {
@@ -87,6 +91,8 @@ addon.DodgePerAgi = {
 	["SHAMAN"] = {
 	},
 	["MAGE"] = {
+	},
+	["MONK"] = {
 	},
 	["WARLOCK"] = {
 	},
@@ -122,6 +128,9 @@ elseif addon.class == "HUNTER" then
 	}
 elseif addon.class == "MAGE" then
 	StatLogic.StatModTable["MAGE"] = {
+	}
+elseif addon.class == "MONK" then
+	StatLogic.StatModTable["MONK"] = {
 	}
 elseif addon.class == "PALADIN" then
 	StatLogic.StatModTable["PALADIN"] = {
@@ -175,6 +184,7 @@ addon.K = {
 	["PRIEST"]      = 0.983,
 	["DEATHKNIGHT"] = 0.956,
 	["SHAMAN"]      = 0.988,
+	["MONK"]        = 0.972,
 	["MAGE"]        = 0.983,
 	["WARLOCK"]     = 0.983,
 	["DRUID"]       = 0.972,
@@ -188,6 +198,7 @@ addon.C_p = {
 	["DEATHKNIGHT"] = 1/0.0152366,
 	["SHAMAN"]      = 1/0.006870,
 	["MAGE"]        = 1/0.0152366,
+	["MONK"]        = 1/0.0152366,
 	["WARLOCK"]     = 1/0.0152366,
 	["DRUID"]       = 1/0.0152366,
 }
@@ -200,6 +211,7 @@ addon.C_d = {
 	["DEATHKNIGHT"] = 1/0.0152366,
 	["SHAMAN"]      = 1/0.006870,
 	["MAGE"]        = 1/0.006650,
+	["MONK"]        = 1/0.008555,
 	["WARLOCK"]     = 1/0.006650,
 	["DRUID"]       = 1/0.008555,
 }

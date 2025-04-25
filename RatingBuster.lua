@@ -1408,6 +1408,21 @@ elseif class == "MAGE" then
 	defaults.profile.showCritFromAgi = false
 	defaults.profile.showDodgeFromAgi = false
 	defaults.profile.ratingSpell = true
+elseif class == "MONK" then
+	defaults.profile.sumAP = true
+	defaults.profile.sumHit = true
+	defaults.profile.sumCrit = true
+	defaults.profile.sumHaste = true
+	defaults.profile.sumExpertise = true
+	defaults.profile.sumAvoidance = true
+	defaults.profile.sumArmor = true
+	defaults.profile.sumSpellDmg = true
+	defaults.profile.sumSpellHit = true
+	defaults.profile.sumSpellCrit = true
+	defaults.profile.sumSpellHaste = true
+	defaults.profile.sumHealing = true
+	defaults.profile.ratingPhysical = true
+	defaults.profile.ratingSpell = true
 elseif class == "PALADIN" then
 	defaults.profile.sumWeaponAverageDamage = true
 	defaults.profile.sumWeaponSkill = true
@@ -2950,6 +2965,9 @@ local classArmorTypes = {
 	MAGE = {
 		[Enum.ItemArmorSubclass.Cloth] = true,
 	},
+	MONK = {
+		[Enum.ItemArmorSubclass.Leather] = true,
+	},
 	WARLOCK = {
 		[Enum.ItemArmorSubclass.Cloth] = true,
 	},
@@ -3024,6 +3042,11 @@ local specPrimaryStats = {
 		StatLogic.Stats.Intellect,
 		StatLogic.Stats.Intellect,
 		StatLogic.Stats.Intellect,
+	},
+	MONK = {
+		StatLogic.Stats.Agility,
+		StatLogic.Stats.Intellect,
+		StatLogic.Stats.Agility,
 	},
 	WARLOCK = {
 		StatLogic.Stats.Intellect,
