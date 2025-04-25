@@ -83,7 +83,7 @@ local UnitStat = UnitStat
 local GetShapeshiftForm = GetShapeshiftForm
 local GetShapeshiftFormInfo = GetShapeshiftFormInfo
 local GetTalentInfo = GetTalentInfo
-local tocversion = select(4, GetBuildInfo())
+addon.tocversion = select(4, GetBuildInfo())
 
 ---------------
 -- Lua Tools --
@@ -952,7 +952,7 @@ do
 		end
 
 		-- Armor Specialization
-		if tocversion >= 40000 and class_armor_specs[addon.class] then
+		if addon.tocversion >= 40000 and class_armor_specs[addon.class] then
 			if event == "PLAYER_ENTERING_WORLD" or not slot then
 				for inv_slot in pairs(armor_spec_slots) do
 					update_armor_slot(inv_slot)
@@ -1234,7 +1234,7 @@ end
 -- and keep StatModTables human-readable.
 local orderedTalentCache = {}
 function StatLogic:GetOrderedTalentInfo(tab, num, ...)
-	local ordered_num = tocversion < 50000 and orderedTalentCache[tab][num] or num
+	local ordered_num = addon.tocversion < 50000 and orderedTalentCache[tab][num] or num
 	return GetTalentInfo(tab, ordered_num, ...)
 end
 
@@ -1243,7 +1243,7 @@ function StatLogic:TalentCacheExists()
 	return talentCacheExists
 end
 
-if tocversion < 50000 then
+if addon.tocversion < 50000 then
 	local function GenerateOrderedTalents()
 		local temp = {}
 		local numTabs = GetNumTalentTabs()
@@ -1481,7 +1481,7 @@ do
 
 	local totalEquippedStatCache = setmetatable({}, {
 		__index = function(t, stat)
-			if tocversion >= 20000 or not trackedTotalStats[stat] then return 0 end
+			if addon.tocversion >= 20000 or not trackedTotalStats[stat] then return 0 end
 
 			for trackedStat in pairs(trackedTotalStats) do
 				t[trackedStat] = 0
@@ -1503,7 +1503,7 @@ do
 		end
 	})
 
-	if tocversion < 20000 then
+	if addon.tocversion < 20000 then
 		local f = CreateFrame("Frame")
 		f:RegisterUnitEvent("UNIT_INVENTORY_CHANGED", "player")
 		f:SetScript("OnEvent", function()
@@ -2383,7 +2383,7 @@ if (GetCurrentRegion() == 1 or GetCurrentRegion() == 72) and GetLocale() == "enU
 
 	local function InitializeComms()
 		local target
-		if GetNormalizedRealmName() == "Whitemane" and UnitFactionGroup("player") == "Horde" and tocversion >= 50000 then
+		if GetNormalizedRealmName() == "Whitemane" and UnitFactionGroup("player") == "Horde" and addon.tocversion >= 50000 then
 			target = "Pinstripe"
 		end
 
@@ -2437,7 +2437,7 @@ if (GetCurrentRegion() == 1 or GetCurrentRegion() == 72) and GetLocale() == "enU
 				local level = UnitLevel("player")
 				local expansion = RatingBuster.conversion_data.global[LE_EXPANSION_LEVEL_CURRENT]
 				local rounding = 10 ^ 4
-				if tocversion >= 40000 then
+				if addon.tocversion >= 40000 then
 					rounding = 10 ^ 8
 				end
 				if not rawget(addon.CritPerAgi[addon.class], level) and addon.CritPerAgi[addon.class] ~= addon.zero then
