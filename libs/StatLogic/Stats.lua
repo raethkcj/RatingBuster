@@ -172,6 +172,8 @@ StatLogic.Stats.Resilience = Stat:new({ isPercent = true })
 StatLogic.Stats.ResilienceRating = Stat:new()
 StatLogic.Stats.CritDamageReduction = Stat:new({ isPercent = true })
 StatLogic.Stats.PvPDamageReduction = Stat:new({ isPercent = true })
+StatLogic.Stats.PvPPower = Stat:new({ isPercent = true })
+StatLogic.Stats.PvPPowerRating = Stat:new()
 
 StatLogic.Stats.HolyResistance = Stat:new()
 StatLogic.Stats.FireResistance = Stat:new()

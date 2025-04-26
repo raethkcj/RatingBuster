@@ -3,7 +3,24 @@ local addonName, addon = ...
 local StatLogic = LibStub:GetLibrary(addonName)
 
 -- Level 60 rating base
-StatLogic.RatingBase = {}
+StatLogic.RatingBase = {
+	[StatLogic.Stats.DodgeRating] = 20.700001,
+	[StatLogic.Stats.ParryRating] = 20.700001,
+	[StatLogic.Stats.BlockRating] = 6.900001,
+	[StatLogic.Stats.MeleeHitRating] = 8,
+	[StatLogic.Stats.RangedHitRating] = 8,
+	[StatLogic.Stats.SpellHitRating] = 8,
+	[StatLogic.Stats.MeleeCritRating] = 14,
+	[StatLogic.Stats.RangedCritRating] = 14,
+	[StatLogic.Stats.SpellCritRating] = 14,
+	[StatLogic.Stats.ResilienceRating] = 9.29154,
+	[StatLogic.Stats.MeleeHasteRating] = 10,
+	[StatLogic.Stats.RangedHasteRating] = 10,
+	[StatLogic.Stats.SpellHasteRating] = 10,
+	[StatLogic.Stats.ExpertiseRating] = 8,
+	[StatLogic.Stats.MasteryRating] = 14,
+	[StatLogic.Stats.PvPPowerRating] = 14,
+}
 
 StatLogic.GenericStatMap[StatLogic.Stats.HitRating] = {
 	StatLogic.Stats.MeleeHitRating,
