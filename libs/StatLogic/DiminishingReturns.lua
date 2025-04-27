@@ -150,6 +150,50 @@ function StatLogic:GetDodgeChanceBeforeDR()
 	return modDodge, drFreeDodge
 end
 
+---@return number parry Parry percentage per strength
+function StatLogic:GetParryPerStr()
+	-- Collect data
+	local P_dr = GetParryChance()
+	if P_dr == 0 then
+		return 0
+	end
+	local parryFromParryRating = GetCombatRatingBonus(CR_PARRY)
+	local P_r = parryFromParryRating
+	local P_b = self:GetStatMod("ADD_PARRY")
+	local stat, effectiveStat, posBuff, negBuff = UnitStat("player", LE_UNIT_STAT_STRENGTH)
+	local modStr = 1
+	-- if addon.ModStrClasses[addon.class] then
+	-- 	modStr = self:GetStatMod("MOD_STR")
+	-- 	-- Talents that modify Str will not add to posBuff, so we need to calculate baseStr
+	-- 	-- But Str from Kings etc. will add to posBuff, so we subtract those if present
+	-- 	for _, case in ipairs(StatLogic.StatModTable["ALL"]["MOD_STR"]) do
+	-- 		if case.group == addon.ExclusiveGroup.AllStats then
+	-- 			if StatLogic:GetAuraInfo(C_Spell.GetSpellName(case.aura), true) then
+	-- 				modStr = modStr - case.value
+	-- 			end
+	-- 		end
+	-- 	end
+	-- end
+	local A = effectiveStat
+	local A_b = ceil((stat - posBuff - negBuff) / modStr)
+	local A_g = A - A_b
+	local C = addon.C_p[addon.class]
+	local k = addon.K[addon.class]
+	-- Solve a*x^2+b*x+c
+	local a = -A_g*A_b
+	local b = A_g*(P_dr-P_b)-A_b*(P_r+C*k)-C*A_g
+	local c = (P_dr-P_b)*(P_r+C*k)-C*P_r
+
+	local parryPerStr
+	if a == 0 then
+		parryPerStr = -c / b
+	else
+		parryPerStr = (-b-(b^2-4*a*c)^0.5)/(2*a)
+	end
+
+	return parryPerStr
+end
+
 --[[
 Calculates your current Parry% before diminishing returns.
 Parry% = modParry + drFreeParry

@@ -330,6 +330,10 @@ StatLogic.StatModInfo = {
 		initialValue = 0,
 		finalAdjust = 0,
 	},
+	["ADD_PARRY"] = {
+		initialValue = 0,
+		finalAdjust = 0,
+	},
 	["ADD_SPELL_CRIT"] = {
 		initialValue = 0,
 		finalAdjust = 0,
@@ -565,6 +569,10 @@ local addedInfoMods = {
 	{
 		add = "MASTERY_EFFECT",
 		mod = "MASTERY",
+	},
+	{
+		add = "PARRY",
+		mod = "STR",
 	},
 	{
 		add = "PARRY_RATING",
@@ -973,6 +981,7 @@ end
 -- Ignore Stat Mods that are only used for reverse-engineering agi/int conversion rates
 StatLogic.StatModIgnoresAlwaysBuffed = {
 	["ADD_DODGE"] = true,
+	["ADD_PARRY"] = true,
 	[StatLogic.Stats.MeleeCrit] = true,
 	["ADD_SPELL_CRIT"] = true,
 }
@@ -2363,6 +2372,12 @@ function StatLogic:GetDiff(item, diff1, diff2, ignoreEnchant, ignoreGems, ignore
 	return diff1, diff2
 end
 
+function addon.conversionFallback(classTable, conversionFunc)
+	return setmetatable({}, { __index = function(_, level)
+		return classTable[level] or level == UnitLevel("player") and conversionFunc(StatLogic) or 0
+	end })
+end
+
 -- Telemetry for agi/int conversions. Only used for new game versions while data is missing.
 if (GetCurrentRegion() == 1 or GetCurrentRegion() == 72) and GetLocale() == "enUS" then
 	local commsVersion = 1
@@ -2439,6 +2454,10 @@ if (GetCurrentRegion() == 1 or GetCurrentRegion() == 72) and GetLocale() == "enU
 				if not rawget(addon.SpellCritPerInt[addon.class], level) and addon.SpellCritPerInt[addon.class] ~= addon.zero then
 					local spellCritPerInt = floor(StatLogic:GetSpellCritPerInt() * rounding + 0.5) / rounding
 					expansion.SpellCritPerInt[addon.class][level] = spellCritPerInt
+				end
+				if addon.tocversion >= 50000 and not rawget(addon.ParryPerStr[addon.class], level) and addon.ParryPerStr[addon.class] ~= addon.zero then
+					local parryPerStr = floor(StatLogic:GetParryPerStr() * rounding + 0.5) / rounding
+					expansion.ParryPerStr[addon.class][level] = parryPerStr
 				end
 				SendStoredData()
 			end

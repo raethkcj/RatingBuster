@@ -254,6 +254,26 @@ addon.DodgePerAgi = {
 	},
 }
 
+addon.ParryPerStr = {
+	["WARRIOR"] = {
+		[85] = 0.004105,
+	},
+	["PALADIN"] = {
+		[85] = 0.004105,
+	},
+	["HUNTER"] = addon.zero,
+	["ROGUE"] = ten_thousandth,
+	["PRIEST"] = addon.zero,
+	["DEATHKNIGHT"] = {
+		[85] = 0.004105,
+	},
+	["SHAMAN"] = ten_thousandth,
+	["MAGE"] = addon.zero,
+	["MONK"] = ten_thousandth,
+	["WARLOCK"] = addon.zero,
+	["DRUID"] = addon.zero,
+}
+
 addon.bonusArmorInventoryTypes = {
 	["INVTYPE_WEAPON"] = true,
 	["INVTYPE_2HWEAPON"] = true,
@@ -276,6 +296,12 @@ if addon.class == "DRUID" then
 	}
 elseif addon.class == "DEATHKNIGHT" then
 	StatLogic.StatModTable["DEATHKNIGHT"] = {
+		["ADD_PARRY"] = {
+			-- Base
+			{
+				["value"] = 3.0,
+			},
+		},
 	}
 elseif addon.class == "HUNTER" then
 	StatLogic.StatModTable["HUNTER"] = {
@@ -285,24 +311,59 @@ elseif addon.class == "MAGE" then
 	}
 elseif addon.class == "MONK" then
 	StatLogic.StatModTable["MONK"] = {
+		["ADD_PARRY"] = {
+			-- Base
+			{
+				["value"] = 3.0,
+			},
+			-- Passive: Swift Reflexes
+			{
+				["known"] = 124334,
+				["value"] = 5.0,
+			},
+		},
 	}
 elseif addon.class == "PALADIN" then
 	StatLogic.StatModTable["PALADIN"] = {
+		["ADD_PARRY"] = {
+			-- Base
+			{
+				["value"] = 3.0,
+			},
+		},
 	}
 elseif addon.class == "PRIEST" then
 	StatLogic.StatModTable["PRIEST"] = {
 	}
 elseif addon.class == "ROGUE" then
 	StatLogic.StatModTable["ROGUE"] = {
+		["ADD_PARRY"] = {
+			-- Base
+			{
+				["value"] = 3.0,
+			},
+		},
 	}
 elseif addon.class == "SHAMAN" then
 	StatLogic.StatModTable["SHAMAN"] = {
+		["ADD_PARRY"] = {
+			-- Base
+			{
+				["value"] = 3.0,
+			},
+		},
 	}
 elseif addon.class == "WARLOCK" then
 	StatLogic.StatModTable["WARLOCK"] = {
 	}
 elseif addon.class == "WARRIOR" then
 	StatLogic.StatModTable["WARRIOR"] = {
+		["ADD_PARRY"] = {
+			-- Base
+			{
+				["value"] = 3.0,
+			},
+		},
 	}
 end
 
@@ -324,6 +385,8 @@ elseif addon.playerRace == "Troll" then
 end
 
 StatLogic.StatModTable["ALL"] = {
+	["MOD_STR"] = {
+	},
 	["MOD_AGI"] = {
 	},
 	["ADD_DODGE"] = {
@@ -331,6 +394,11 @@ StatLogic.StatModTable["ALL"] = {
 		{
 			["value"] = 3.0,
 		},
+	},
+	["ADD_PARRY_MOD_STR"] = {
+		{
+			["level"] = addon.conversionFallback(addon.ParryPerStr[addon.class], StatLogic.GetParryPerStr)
+		}
 	},
 }
 

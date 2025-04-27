@@ -2,12 +2,6 @@ local addonName, addon = ...
 ---@class StatLogic
 local StatLogic = LibStub(addonName)
 
-local function conversionFallback(classTable, conversionFunc)
-	return setmetatable({}, { __index = function(_, level)
-		return classTable[level] or level == UnitLevel("player") and conversionFunc(StatLogic) or 0
-	end })
-end
-
 local RatingScalars = {
 	0.03846150, 0.03846150, 0.03846150, 0.03846150,  0.03846150,  0.03846150,  0.03846150,  0.03846150,  0.03846150,  0.03846150,
 	0.05769232, 0.07692309, 0.09615381, 0.11538458,  0.13461540,  0.15384622,  0.17307690,  0.19230772,  0.21153854,  0.23076922,
@@ -70,7 +64,7 @@ StatLogic.StatModTable["GLOBAL"] = {
 	},
 	["ADD_MELEE_CRIT_MOD_AGI"] = {
 		{
-			["level"] = conversionFallback(addon.CritPerAgi[addon.class], StatLogic.GetCritPerAgi),
+			["level"] = addon.conversionFallback(addon.CritPerAgi[addon.class], StatLogic.GetCritPerAgi),
 		}
 	},
 	["ADD_RANGED_CRIT_MOD_AGI"] = {
@@ -85,12 +79,12 @@ StatLogic.StatModTable["GLOBAL"] = {
 	},
 	["ADD_SPELL_CRIT_MOD_INT"] = {
 		{
-			["level"] = conversionFallback(addon.SpellCritPerInt[addon.class], StatLogic.GetSpellCritPerInt),
+			["level"] = addon.conversionFallback(addon.SpellCritPerInt[addon.class], StatLogic.GetSpellCritPerInt),
 		}
 	},
 	["ADD_DODGE_MOD_AGI"] = {
 		{
-			["level"] = conversionFallback(addon.DodgePerAgi[addon.class], StatLogic.GetDodgePerAgi)
+			["level"] = addon.conversionFallback(addon.DodgePerAgi[addon.class], StatLogic.GetDodgePerAgi)
 		}
 	},
 }
