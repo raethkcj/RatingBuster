@@ -46,14 +46,14 @@ local NormalManaRegenPerInt = function(level)
 	return 0
 end
 
-local constant_crit = setmetatable({}, { __index = function()
+local ten_thousandth = setmetatable({}, { __index = function()
 	return 0.0001
 end})
 
 -- Extracted from gtChanceToMeleeCrit.db2 or from gametables/chancetomeleecrit.txt via wow.tools or wago.tools
 addon.CritPerAgi = {
-	["WARRIOR"] = constant_crit,
-	["PALADIN"] = constant_crit,
+	["WARRIOR"] = ten_thousandth,
+	["PALADIN"] = ten_thousandth,
 	["HUNTER"] = {
 		0.28399998, 0.28343450, 0.27107434, 0.25299009, 0.24300528, 0.23373590, 0.22510740, 0.21705529, 0.20513687, 0.19836421,
 		0.18475310, 0.16697281, 0.15469900, 0.14408800, 0.13299321, 0.12666360, 0.11942229, 0.11166529, 0.10597830, 0.09980580,
@@ -87,7 +87,7 @@ addon.CritPerAgi = {
 		0.03721430, 0.03440570, 0.03199120, 0.02989340, 0.02762880, 0.02568310, 0.02399340, 0.02223780, 0.02072160, 0.01919470,
 		0.01460000, 0.01110000, 0.00850000, 0.00650000, 0.00490000, 0.00373818, 0.00284295, 0.00216372, 0.00164817, 0.00125496,
 	},
-	["DEATHKNIGHT"] = constant_crit,
+	["DEATHKNIGHT"] = ten_thousandth,
 	["SHAMAN"] = {
 		0.10389999, 0.10389999, 0.09895240, 0.09895240, 0.09445460, 0.09445460, 0.09445460, 0.09034780, 0.09034780, 0.08658330,
 		0.08658330, 0.08312000, 0.08312000, 0.07992310, 0.07696300, 0.07421430, 0.07421430, 0.07165520, 0.07165520, 0.06703230,
@@ -147,7 +147,7 @@ addon.CritPerAgi = {
 
 -- Extracted from gtChanceToSpellCrit.db2 or from gametables/chancetospellcrit.txt via wow.tools or wago.tools
 addon.SpellCritPerInt = {
-	["WARRIOR"] = constant_crit,
+	["WARRIOR"] = ten_thousandth,
 	["PALADIN"] = {
 		0.08322500, 0.07926190, 0.07926190, 0.07565909, 0.07565909, 0.07236956, 0.06935417, 0.06935417, 0.06658000, 0.06658000,
 		0.06401923, 0.06164815, 0.05944643, 0.05739655, 0.05369355, 0.05369355, 0.05201562, 0.04895588, 0.04895588, 0.04623611,
@@ -159,8 +159,8 @@ addon.SpellCritPerInt = {
 		0.01162642, 0.01079815, 0.01005528, 0.00934361, 0.00868896, 0.00807199, 0.00749542, 0.00697189, 0.00647547, 0.00601838,
 		0.00458339, 0.00349034, 0.00265690, 0.00202346, 0.00154105, 0.00117566, 0.00089411, 0.00068049, 0.00051835, 0.00039469,
 	},
-	["HUNTER"] = constant_crit,
-	["ROGUE"] = constant_crit,
+	["HUNTER"] = ten_thousandth,
+	["ROGUE"] = ten_thousandth,
 	["PRIEST"] = {
 		0.17102273, 0.16358695, 0.15677085, 0.15050001, 0.13935185, 0.13437499, 0.12974138, 0.12541667, 0.12137098, 0.11401515,
 		0.10451388, 0.09406250, 0.08750000, 0.07838542, 0.07235577, 0.06840909, 0.06270833, 0.05972222, 0.05615672, 0.05225694,
@@ -172,7 +172,7 @@ addon.SpellCritPerInt = {
 		0.01162642, 0.01079815, 0.01005528, 0.00934361, 0.00868896, 0.00807199, 0.00749542, 0.00697189, 0.00647547, 0.00601838,
 		0.00458339, 0.00349034, 0.00265690, 0.00202346, 0.00154105, 0.00117566, 0.00089411, 0.00068049, 0.00051835, 0.00039469,
 	},
-	["DEATHKNIGHT"] = constant_crit,
+	["DEATHKNIGHT"] = ten_thousandth,
 	["SHAMAN"] = {
 		0.13328572, 0.12722727, 0.12169566, 0.12169566, 0.11662501, 0.11195999, 0.10765384, 0.10366667, 0.09996429, 0.09996429,
 		0.09330000, 0.08746875, 0.07997143, 0.07564865, 0.06997500, 0.06664286, 0.06361364, 0.05955319, 0.05712245, 0.05382692,
@@ -231,24 +231,26 @@ addon.SpellCritPerInt = {
 }
 
 addon.DodgePerAgi = {
-	["WARRIOR"] = addon.zero,
-	["PALADIN"] = addon.zero,
+	["WARRIOR"] = ten_thousandth,
+	["PALADIN"] = ten_thousandth,
 	["HUNTER"] = {
+		[85] = 0.002273,
 	},
 	["ROGUE"] = {
+		[85] = 0.004107,
 	},
-	["PRIEST"] = {
-	},
-	["DEATHKNIGHT"] = addon.zero,
+	["PRIEST"] = ten_thousandth,
+	["DEATHKNIGHT"] = ten_thousandth,
 	["SHAMAN"] = {
+		[85] = 0.003289,
 	},
-	["MAGE"] = {
-	},
+	["MAGE"] = ten_thousandth,
 	["MONK"] = {
+		[85] = 0.004105,
 	},
-	["WARLOCK"] = {
-	},
+	["WARLOCK"] = ten_thousandth,
 	["DRUID"] = {
+		[85] = 0.004105,
 	},
 }
 
@@ -323,7 +325,13 @@ end
 
 StatLogic.StatModTable["ALL"] = {
 	["MOD_AGI"] = {
-	}
+	},
+	["ADD_DODGE"] = {
+		-- Base (All Classes)
+		{
+			["value"] = 3.0,
+		},
+	},
 }
 
 -----------------------------------
