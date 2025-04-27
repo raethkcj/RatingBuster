@@ -83,6 +83,8 @@ local UnitStat = UnitStat
 local GetShapeshiftForm = GetShapeshiftForm
 local GetShapeshiftFormInfo = GetShapeshiftFormInfo
 local GetTalentInfo = GetTalentInfo
+local GetActiveTalentGroup = GetActiveTalentGroup or C_SpecializationInfo.GetActiveSpecGroup
+local GetPrimaryTalentTree = GetPrimaryTalentTree or C_SpecializationInfo.GetSpecialization
 addon.tocversion = select(4, GetBuildInfo())
 
 ---------------
@@ -985,7 +987,7 @@ addon.StatModValidators = {
 		validate = function(case, _, statModContext)
 			if armor_spec_active then
 				-- TODO: May be replaced by GetSpecialization, check on Cata Beta launch
-				return case.armorspec[C_SpecializationInfo.GetSpecialization(false, false, statModContext.spec) or 0]
+				return case.armorspec[GetPrimaryTalentTree(false, false, statModContext.spec) or 0]
 			else
 				return false
 			end
@@ -1102,7 +1104,7 @@ addon.StatModValidators = {
 	},
 	spec = {
 		validate = function(case, _, statModContext)
-			return case.spec == C_SpecializationInfo.GetSpecialization(false, false, statModContext.spec)
+			return case.spec == GetPrimaryTalentTree(false, false, statModContext.spec)
 		end,
 		events = {
 			["PLAYER_TALENT_UPDATE"] = true,
@@ -1417,7 +1419,7 @@ do
 			context.profile = ""
 		end
 		if not context.spec then
-			context.spec = C_SpecializationInfo.GetActiveSpecGroup()
+			context.spec = GetActiveTalentGroup()
 		end
 		if not context.level then
 			context.level = UnitLevel("player")

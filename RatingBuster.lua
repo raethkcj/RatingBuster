@@ -62,6 +62,8 @@ local tonumber = tonumber
 local GetParryChance = GetParryChance
 local GetBlockChance = GetBlockChance
 
+local GetActiveTalentGroup = GetActiveTalentGroup or C_SpecializationInfo.GetActiveSpecGroup()
+
 ---------------------------
 -- Slash Command Options --
 ---------------------------
@@ -1982,7 +1984,7 @@ function RatingBuster:OnDisable()
 end
 
 do
-	local spec = C_SpecializationInfo.GetActiveSpecGroup()
+	local spec = GetActiveTalentGroup()
 
 	function RatingBuster:GetDisplayedSpec()
 		return spec
@@ -1996,7 +1998,7 @@ do
 			spec = 3 - spec
 			db:SetProfile(db:GetDualSpecProfile(spec))
 		else
-			spec = C_SpecializationInfo.GetActiveSpecGroup()
+			spec = GetActiveTalentGroup()
 			local currentProfile = db:GetCurrentProfile()
 			if currentProfile ~= db.char.primaryProfile then
 				db:SetProfile(db.char.primaryProfile or currentProfile)
