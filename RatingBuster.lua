@@ -62,7 +62,7 @@ local tonumber = tonumber
 local GetParryChance = GetParryChance
 local GetBlockChance = GetBlockChance
 
-local GetActiveTalentGroup = GetActiveTalentGroup or C_SpecializationInfo.GetActiveSpecGroup()
+local GetActiveTalentGroup = GetActiveTalentGroup or C_SpecializationInfo.GetActiveSpecGroup
 
 ---------------------------
 -- Slash Command Options --
