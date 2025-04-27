@@ -2400,12 +2400,10 @@ do
 					infoTable["Decimal"] = effect
 				end
 				self:ProcessStat(StatLogic.Stats.Defense, effect, infoTable, link, color, statModContext, false, db.profile.showDefenseFromDefenseRating)
-			elseif stat == StatLogic.Stats.DodgeRating and db.profile.enableAvoidanceDiminishingReturns then
-				infoTable["Percent"] = StatLogic:GetAvoidanceGainAfterDR(StatLogic.Stats.Dodge, processedDodge + effect) - StatLogic:GetAvoidanceGainAfterDR(StatLogic.Stats.Dodge, processedDodge)
-				processedDodge = processedDodge + effect
-			elseif stat == StatLogic.Stats.ParryRating and db.profile.enableAvoidanceDiminishingReturns then
-				infoTable["Percent"] = StatLogic:GetAvoidanceGainAfterDR(StatLogic.Stats.Parry, processedParry + effect) - StatLogic:GetAvoidanceGainAfterDR(StatLogic.Stats.Parry, processedParry)
-				processedParry = processedParry + effect
+			elseif stat == StatLogic.Stats.DodgeRating then
+				self:ProcessStat(StatLogic.Stats.Dodge, effect, infoTable, link, color, statModContext, isBaseStat, show or isBaseStat)
+			elseif stat == StatLogic.Stats.ParryRating then
+				self:ProcessStat(StatLogic.Stats.Parry, effect, infoTable, link, color, statModContext, isBaseStat, show or isBaseStat)
 			elseif stat == StatLogic.Stats.ExpertiseRating then
 				if addon.tocversion < 30000 then
 					-- Expertise is truncated in TBC but not in Wrath
@@ -2499,21 +2497,8 @@ do
 			local healingPower = value * statModContext("ADD_HEALING_MOD_STR")
 			self:ProcessStat(StatLogic.Stats.HealingPower, healingPower, infoTable, link, color, statModContext, false, db.profile.showHealingFromStr)
 
-			-- Death Knight: Forceful Deflection - Passive
-			if db.profile.showParryFromStr then
-				local rating = value * statModContext("ADD_PARRY_RATING_MOD_STR")
-				local effect = rating * statModContext("ADD_PARRY_MOD_PARRY_RATING")
-				if db.profile.enableAvoidanceDiminishingReturns then
-					local effectNoDR = effect
-					effect = StatLogic:GetAvoidanceGainAfterDR(StatLogic.Stats.Parry, processedParry + effect) - StatLogic:GetAvoidanceGainAfterDR(StatLogic.Stats.Parry, processedParry)
-					processedParry = processedParry + effectNoDR
-				end
-				infoTable[StatLogic.Stats.Parry] = infoTable[StatLogic.Stats.Parry] + effect
-			else
-				local rating = value * statModContext("ADD_PARRY_RATING_MOD_STR")
-				local effect = rating * statModContext("ADD_PARRY_MOD_PARRY_RATING")
-				processedParry = processedParry + effect
-			end
+			local parryRating = value * statModContext("ADD_PARRY_RATING_MOD_STR")
+			self:ProcessStat(StatLogic.Stats.ParryRating, parryRating, infoTable, link, color, statModContext, false, db.profile.showParryFromStr)
 		elseif stat == StatLogic.Stats.Agility and db.profile.showStats then
 			local mod = statModContext("MOD_AGI")
 			value = value * mod
@@ -2533,15 +2518,9 @@ do
 				local effect = value * statModContext("ADD_MELEE_CRIT_MOD_AGI")
 				infoTable[StatLogic.Stats.MeleeCrit] = infoTable[StatLogic.Stats.MeleeCrit] + effect
 			end
-			if db.profile.showDodgeFromAgi then
-				local effect = value * statModContext("ADD_DODGE_MOD_AGI")
-				if db.profile.enableAvoidanceDiminishingReturns then
-					local effectNoDR = effect
-					effect = StatLogic:GetAvoidanceGainAfterDR(StatLogic.Stats.Dodge, processedDodge + effect) - StatLogic:GetAvoidanceGainAfterDR(StatLogic.Stats.Dodge, processedDodge)
-					processedDodge = processedDodge + effectNoDR
-				end
-				infoTable[StatLogic.Stats.Dodge] = infoTable[StatLogic.Stats.Dodge] + effect * statModContext("MOD_DODGE")
-			end
+
+			local dodge = value * statModContext("ADD_DODGE_MOD_AGI")
+			self:ProcessStat(StatLogic.Stats.Dodge, dodge, infoTable, link, color, statModContext, false, db.profile.showDodgeFromAgi)
 
 			local bonusArmor = value * statModContext("ADD_BONUS_ARMOR_MOD_AGI")
 			self:ProcessStat(StatLogic.Stats.BonusArmor, bonusArmor, infoTable, link, color, statModContext, false, db.profile.showArmorFromAgi)
@@ -2743,15 +2722,7 @@ do
 			end
 
 			local dodge = value * statModContext("ADD_DODGE_MOD_DEFENSE")
-			if dodge > 0 then
-				if db.profile.enableAvoidanceDiminishingReturns then
-					processedDodge = processedDodge + dodge
-					dodge = StatLogic:GetAvoidanceGainAfterDR(StatLogic.Stats.Dodge, processedDodge) - StatLogic:GetAvoidanceGainAfterDR(StatLogic.Stats.Dodge, processedDodge - dodge)
-				end
-				if db.profile.showDodgeFromDefense then
-					infoTable[StatLogic.Stats.Dodge] = infoTable[StatLogic.Stats.Dodge] + dodge * statModContext("MOD_DODGE")
-				end
-			end
+			self:ProcessStat(StatLogic.Stats.Dodge, dodge, infoTable, link, color, statModContext, false, db.profile.showDodgeFromDefense)
 
 			local miss = value * statModContext("ADD_MISS_MOD_DEFENSE")
 			if miss > 0 then
@@ -2765,15 +2736,7 @@ do
 			end
 
 			local parry = value * statModContext("ADD_PARRY_MOD_DEFENSE")
-			if parry > 0 then
-				if db.profile.enableAvoidanceDiminishingReturns then
-					processedParry = processedParry + parry
-					parry = StatLogic:GetAvoidanceGainAfterDR(StatLogic.Stats.Parry, processedParry) - StatLogic:GetAvoidanceGainAfterDR(StatLogic.Stats.Parry, processedParry - parry)
-				end
-				if db.profile.showParryFromDefense then
-					infoTable[StatLogic.Stats.Parry] = infoTable[StatLogic.Stats.Parry] + parry
-				end
-			end
+			self:ProcessStat(StatLogic.Stats.Parry, parry, infoTable, link, color, statModContext, false, db.profile.showParryFromDefense)
 
 			local strength = value * statModContext("ADD_STR_MOD_DEFENSE")
 			self:ProcessStat(StatLogic.Stats.Strength, strength, infoTable, link, color, statModContext, false, db.profile.showStrFromDefense)
@@ -2783,6 +2746,26 @@ do
 
 			local spellDamage = value * statModContext("ADD_SPELL_DMG_MOD_DEFENSE")
 			self:ProcessStat(StatLogic.Stats.SpellDamage, spellDamage, infoTable, link, color, statModContext, false, db.profile.showSpellDmgFromDefense)
+		elseif stat == StatLogic.Stats.Dodge then
+			if db.profile.enableAvoidanceDiminishingReturns then
+				value = StatLogic:GetAvoidanceGainAfterDR(StatLogic.Stats.Dodge, processedDodge + value) - StatLogic:GetAvoidanceGainAfterDR(StatLogic.Stats.Dodge, processedDodge)
+				processedDodge = processedDodge + value
+			end
+			if show and isBaseStat then
+				infoTable["Percent"] = value
+			elseif show then
+				infoTable[StatLogic.Stats.Dodge] = infoTable[StatLogic.Stats.Dodge] + value
+			end
+		elseif stat == StatLogic.Stats.Parry then
+			if db.profile.enableAvoidanceDiminishingReturns then
+				value = StatLogic:GetAvoidanceGainAfterDR(StatLogic.Stats.Parry, processedParry + value) - StatLogic:GetAvoidanceGainAfterDR(StatLogic.Stats.Parry, processedParry)
+				processedParry = processedParry + value
+			end
+			if show and isBaseStat then
+				infoTable["Percent"] = value
+			elseif show then
+				infoTable[StatLogic.Stats.Parry] = infoTable[StatLogic.Stats.Parry] + value
+			end
 		elseif stat == StatLogic.Stats.Armor then
 			local base, bonus = StatLogic:GetArmorDistribution(link, value, color)
 			local mod = statModContext("MOD_ARMOR")
