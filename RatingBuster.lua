@@ -2499,6 +2499,9 @@ do
 
 			local parryRating = value * statModContext("ADD_PARRY_RATING_MOD_STR")
 			self:ProcessStat(StatLogic.Stats.ParryRating, parryRating, infoTable, link, color, statModContext, false, db.profile.showParryFromStr)
+
+			local parry = value * statModContext("ADD_PARRY_MOD_STR")
+			self:ProcessStat(StatLogic.Stats.Parry, parry, infoTable, link, color, statModContext, false, db.profile.showParryFromStr)
 		elseif stat == StatLogic.Stats.Agility and db.profile.showStats then
 			local mod = statModContext("MOD_AGI")
 			value = value * mod
@@ -3637,6 +3640,7 @@ local summaryCalcData = {
 		func = function(sum, statModContext)
 			return summaryFunc[StatLogic.Stats.ParryRating](sum, statModContext) * statModContext("ADD_PARRY_MOD_PARRY_RATING")
 				+ summaryFunc[StatLogic.Stats.Defense](sum, statModContext) * statModContext("ADD_PARRY_MOD_DEFENSE")
+				+ summaryFunc[StatLogic.Stats.Strength](sum, statModContext) * statModContext("ADD_PARRY_MOD_STR")
 		end,
 	},
 	-- Parry Chance

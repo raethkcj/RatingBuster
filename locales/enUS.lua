@@ -348,17 +348,16 @@ L["statList"] = {
 	{"lowers intellect of target", false}, -- Brain Hacker
 	{"reduces an enemy's armor", false}, -- Annihilator
 
-	{SPELL_STAT1_NAME:lower(), StatLogic.Stats.Strength}, -- Strength
-	{SPELL_STAT2_NAME:lower(), StatLogic.Stats.Agility}, -- Agility
-	{SPELL_STAT3_NAME:lower(), StatLogic.Stats.Stamina}, -- Stamina
-	{SPELL_STAT4_NAME:lower(), StatLogic.Stats.Intellect}, -- Intellect
-	{SPELL_STAT5_NAME:lower(), StatLogic.Stats.Spirit}, -- Spirit
+	{SPELL_STAT1_NAME:lower(), StatLogic.Stats.Strength},
+	{SPELL_STAT2_NAME:lower(), StatLogic.Stats.Agility},
+	{SPELL_STAT3_NAME:lower(), StatLogic.Stats.Stamina},
+	{SPELL_STAT4_NAME:lower(), StatLogic.Stats.Intellect},
+	{SPELL_STAT5_NAME:lower(), StatLogic.Stats.Spirit},
 	{"defense rating", StatLogic.Stats.DefenseRating},
 	{DEFENSE:lower(), StatLogic.Stats.Defense},
-	{"dodge rating", StatLogic.Stats.DodgeRating},
-	{"increases dodge", StatLogic.Stats.DodgeRating},
-	{"block rating", StatLogic.Stats.BlockRating}, -- block enchant: "+10 Shield Block Rating"
-	{"parry rating", StatLogic.Stats.ParryRating},
+	{"dodge", StatLogic.Stats.DodgeRating},
+	{"block", StatLogic.Stats.BlockRating},
+	{"parry", StatLogic.Stats.ParryRating},
 
 	{"spell power", false}, -- Shiffar's Nexus-Horn
 	{"spell critical strikes", false}, -- Cyclone Regalia, Tirisfal Regalia
