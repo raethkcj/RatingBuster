@@ -405,47 +405,47 @@ StatLogic.StatModTable["ALL"] = {
 -----------------------------------
 -- Avoidance diminishing returns --
 -----------------------------------
--- TODO: These are still Cata values
+-- Obtained using https://github.com/raethkcj/MistsDiminishingReturns
 addon.K = {
 	["WARRIOR"]     = 0.956,
-	["PALADIN"]     = 0.956,
+	["PALADIN"]     = 0.886,
 	["HUNTER"]      = 0.988,
 	["ROGUE"]       = 0.988,
 	["PRIEST"]      = 0.983,
 	["DEATHKNIGHT"] = 0.956,
 	["SHAMAN"]      = 0.988,
-	["MONK"]        = 0.972,
+	["MONK"]        = 1.422,
 	["MAGE"]        = 0.983,
 	["WARLOCK"]     = 0.983,
-	["DRUID"]       = 0.972,
+	["DRUID"]       = 1.222,
 }
 
 addon.C_p = {
-	["WARRIOR"]     = 237.1861,
-	["PALADIN"]     = 1/0.0152366,
-	["HUNTER"]      = 1/0.006870,
-	["ROGUE"]       = 1/0.006870,
-	["PRIEST"]      = 1/0.0152366,
-	["DEATHKNIGHT"] = 1/0.0152366,
-	["SHAMAN"]      = 1/0.006870,
-	["MAGE"]        = 1/0.0152366,
-	["MONK"]        = 1/0.0152366,
-	["WARLOCK"]     = 1/0.0152366,
-	["DRUID"]       = 1/0.0152366,
+	["WARRIOR"]     = 237.186,
+	["PALADIN"]     = 237.186,
+	["HUNTER"]      = 0,
+	["ROGUE"]       = 145.560,
+	["PRIEST"]      = 0,
+	["DEATHKNIGHT"] = 237.186,
+	["SHAMAN"]      = 145.560,
+	["MAGE"]        = 0,
+	["MONK"]        = 90.6425,
+	["WARLOCK"]     = 0,
+	["DRUID"]       = 0,
 }
 
 addon.C_d = {
-	["WARRIOR"]     = 90.64276,
-	["PALADIN"]     = 1/0.0152366,
-	["HUNTER"]      = 1/0.006870,
-	["ROGUE"]       = 1/0.006870,
-	["PRIEST"]      = 1/0.006650,
-	["DEATHKNIGHT"] = 1/0.0152366,
-	["SHAMAN"]      = 1/0.006870,
-	["MAGE"]        = 1/0.006650,
-	["MONK"]        = 1/0.008555,
-	["WARLOCK"]     = 1/0.006650,
-	["DRUID"]       = 1/0.008555,
+	["WARRIOR"]     = 90.6425,
+	["PALADIN"]     = 66.5675,
+	["HUNTER"]      = 145.560,
+	["ROGUE"]       = 145.560,
+	["PRIEST"]      = 150.376,
+	["DEATHKNIGHT"] = 90.6425,
+	["SHAMAN"]      = 145.560,
+	["MAGE"]        = 150.376,
+	["MONK"]        = 501.253,
+	["WARLOCK"]     = 150.376,
+	["DRUID"]       = 150.376,
 }
 
 addon.C_m = setmetatable({}, { __index = function()
