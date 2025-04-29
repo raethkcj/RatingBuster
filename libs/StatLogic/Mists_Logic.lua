@@ -293,6 +293,30 @@ addon.baseArmorTable = {}
 StatLogic.StatModTable = {}
 if addon.class == "DRUID" then
 	StatLogic.StatModTable["DRUID"] = {
+		["ADD_MASTERY_EFFECT_MOD_MASTERY"] = {
+			-- Mastery: Total Eclipse
+			{
+				["spec"] = 1,
+				["value"] = 1.875,
+			},
+			-- Mastery: Razor Claws (Cat Form)
+			{
+				["spec"] = 2,
+				["value"] = 3.13,
+				["aura"] = 768,
+			},
+			-- Mastery: Nature's Guardian (Bear Form)
+			{
+				["spec"] = 2,
+				["value"] = 2,
+				["aura"] = 5487,
+			},
+			-- Mastery: Harmony
+			{
+				["spec"] = 3,
+				["value"] = 1.25,
+			},
+		},
 		["ADD_AP_MOD_STR"] = {
 			-- Base
 			{
@@ -314,6 +338,23 @@ if addon.class == "DRUID" then
 	}
 elseif addon.class == "DEATHKNIGHT" then
 	StatLogic.StatModTable["DEATHKNIGHT"] = {
+		["ADD_MASTERY_EFFECT_MOD_MASTERY"] = {
+			-- Mastery: Blood Shield
+			{
+				["spec"] = 1,
+				["value"] = 6.25,
+			},
+			-- Mastery: Frozen Heart
+			{
+				["spec"] = 2,
+				["value"] = 2,
+			},
+			-- Mastery: Dreadblade
+			{
+				["spec"] = 3,
+				["value"] = 2.5,
+			},
+		},
 		["ADD_PARRY"] = {
 			-- Base
 			{
@@ -329,6 +370,23 @@ elseif addon.class == "DEATHKNIGHT" then
 	}
 elseif addon.class == "HUNTER" then
 	StatLogic.StatModTable["HUNTER"] = {
+		["ADD_MASTERY_EFFECT_MOD_MASTERY"] = {
+			-- Mastery: Master of Beasts
+			{
+				["spec"] = 1,
+				["value"] = 2,
+			},
+			-- Mastery: Wild Quiver
+			{
+				["spec"] = 2,
+				["value"] = 2,
+			},
+			-- Mastery: Essence of the Viper
+			{
+				["spec"] = 3,
+				["value"] = 1,
+			},
+		},
 		["ADD_AP_MOD_STR"] = {
 			-- Base
 			{
@@ -350,6 +408,23 @@ elseif addon.class == "HUNTER" then
 	}
 elseif addon.class == "MAGE" then
 	StatLogic.StatModTable["MAGE"] = {
+		["ADD_MASTERY_EFFECT_MOD_MASTERY"] = {
+			-- Mastery: Mana Adept
+			{
+				["spec"] = 1,
+				["value"] = 2,
+			},
+			-- Mastery: Ignite
+			{
+				["spec"] = 2,
+				["value"] = 1.5,
+			},
+			-- Mastery: Icicles
+			{
+				["spec"] = 3,
+				["value"] = 2,
+			},
+		},
 		["ADD_AP_MOD_STR"] = {
 			-- Base
 			{
@@ -359,6 +434,23 @@ elseif addon.class == "MAGE" then
 	}
 elseif addon.class == "MONK" then
 	StatLogic.StatModTable["MONK"] = {
+		["ADD_MASTERY_EFFECT_MOD_MASTERY"] = {
+			-- Mastery: Elusive Brawler
+			{
+				["spec"] = 1,
+				["value"] = 0.625,
+			},
+			-- Mastery: Gift of the Serpent
+			{
+				["spec"] = 2,
+				["value"] = 1.25,
+			},
+			-- Mastery: Bottled Fury
+			{
+				["spec"] = 3,
+				["value"] = 2.5,
+			},
+		},
 		["ADD_PARRY"] = {
 			-- Base
 			{
@@ -391,6 +483,23 @@ elseif addon.class == "MONK" then
 	}
 elseif addon.class == "PALADIN" then
 	StatLogic.StatModTable["PALADIN"] = {
+		["ADD_MASTERY_EFFECT_MOD_MASTERY"] = {
+			-- Mastery: Illuminated Healing
+			{
+				["spec"] = 1,
+				["value"] = 1.25,
+			},
+			-- Mastery: Divine Bulwark
+			{
+				["spec"] = 2,
+				["value"] = 1,
+			},
+			-- Mastery: Hand of Light
+			{
+				["spec"] = 3,
+				["value"] = 1.85,
+			},
+		},
 		["ADD_PARRY"] = {
 			-- Base
 			{
@@ -406,6 +515,23 @@ elseif addon.class == "PALADIN" then
 	}
 elseif addon.class == "PRIEST" then
 	StatLogic.StatModTable["PRIEST"] = {
+		["ADD_MASTERY_EFFECT_MOD_MASTERY"] = {
+			-- Mastery: Shield Discipline
+			{
+				["spec"] = 1,
+				["value"] = 2.5,
+			},
+			-- Mastery: Echo of Light
+			{
+				["spec"] = 2,
+				["value"] = 1.3,
+			},
+			-- Mastery: Shadowy Recall
+			{
+				["spec"] = 3,
+				["value"] = 1.8,
+			},
+		},
 		["ADD_AP_MOD_STR"] = {
 			-- Base
 			{
@@ -415,6 +541,23 @@ elseif addon.class == "PRIEST" then
 	}
 elseif addon.class == "ROGUE" then
 	StatLogic.StatModTable["ROGUE"] = {
+		["ADD_MASTERY_EFFECT_MOD_MASTERY"] = {
+			-- Mastery: Potent Poisons
+			{
+				["spec"] = 1,
+				["value"] = 3.5,
+			},
+			-- Mastery: Main Gauche
+			{
+				["spec"] = 2,
+				["value"] = 2,
+			},
+			-- Mastery: Executioner
+			{
+				["spec"] = 3,
+				["value"] = 3,
+			},
+		},
 		["ADD_PARRY"] = {
 			-- Base
 			{
@@ -442,6 +585,23 @@ elseif addon.class == "ROGUE" then
 	}
 elseif addon.class == "SHAMAN" then
 	StatLogic.StatModTable["SHAMAN"] = {
+		["ADD_MASTERY_EFFECT_MOD_MASTERY"] = {
+			-- Mastery: Elemental Overload
+			{
+				["spec"] = 1,
+				["value"] = 2,
+			},
+			-- Mastery: Enhanced Elements
+			{
+				["spec"] = 2,
+				["value"] = 2,
+			},
+			-- Mastery: Deep Healing
+			{
+				["spec"] = 3,
+				["value"] = 3,
+			},
+		},
 		["ADD_PARRY"] = {
 			-- Base
 			{
@@ -463,6 +623,23 @@ elseif addon.class == "SHAMAN" then
 	}
 elseif addon.class == "WARLOCK" then
 	StatLogic.StatModTable["WARLOCK"] = {
+		["ADD_MASTERY_EFFECT_MOD_MASTERY"] = {
+			-- Mastery: Potent Afflictions
+			{
+				["spec"] = 1,
+				["value"] = 3.1,
+			},
+			-- Mastery: Master Demonologist
+			{
+				["spec"] = 2,
+				["value"] = 1,
+			},
+			-- Mastery: Emberstorm
+			{
+				["spec"] = 3,
+				["value"] = 1,
+			},
+		},
 		["ADD_AP_MOD_STR"] = {
 			-- Base
 			{
@@ -472,6 +649,23 @@ elseif addon.class == "WARLOCK" then
 	}
 elseif addon.class == "WARRIOR" then
 	StatLogic.StatModTable["WARRIOR"] = {
+		["ADD_MASTERY_EFFECT_MOD_MASTERY"] = {
+			-- Mastery: Strikes of Opportunity
+			{
+				["spec"] = 1,
+				["value"] = 2.2,
+			},
+			-- Mastery: Unshackled Fury
+			{
+				["spec"] = 2,
+				["value"] = 1.4,
+			},
+			-- Mastery: Critical Block
+			{
+				["spec"] = 3,
+				["value"] = 2.2,
+			},
+		},
 		["ADD_PARRY"] = {
 			-- Base
 			{
