@@ -574,10 +574,6 @@ addon.C_d = {
 	["DRUID"]       = 150.376,
 }
 
-addon.C_m = setmetatable({}, { __index = function()
-	return 16
-end})
-
 addon.ModAgiClasses = {
 	["DRUID"] = true,
 	["HUNTER"] = true,

@@ -2859,13 +2859,6 @@ addon.C_d = {
 	["DRUID"]       = 1/0.008555,
 }
 
--- I've done extensive tests that show the miss cap is 16% for warriors.
--- Because the only tank I have with 150 pieces of epic gear required for the tests is a warrior,
--- Until someone that has the will and gear to preform the tests for other classes, I'm going to assume the cap is the same(which most likely isn't)
-addon.C_m = setmetatable({}, { __index = function()
-	return 16
-end})
-
 addon.ModAgiClasses = {
 	["DRUID"] = true,
 	["HUNTER"] = true,
