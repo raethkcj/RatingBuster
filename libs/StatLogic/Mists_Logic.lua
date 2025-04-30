@@ -782,6 +782,20 @@ addon.C_d = {
 	["DRUID"]       = 150.376,
 }
 
+addon.C_b = {
+	["WARRIOR"]     = 150.3759,
+	["PALADIN"]     = 150.3759,
+	["HUNTER"]      = 0,
+	["ROGUE"]       = 0,
+	["PRIEST"]      = 0,
+	["DEATHKNIGHT"] = 0,
+	["SHAMAN"]      = 0,
+	["MAGE"]        = 0,
+	["MONK"]        = 0,
+	["WARLOCK"]     = 0,
+	["DRUID"]       = 0,
+}
+
 addon.ModAgiClasses = {
 	["DRUID"] = true,
 	["HUNTER"] = true,

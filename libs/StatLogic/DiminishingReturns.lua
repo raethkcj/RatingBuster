@@ -223,6 +223,17 @@ function StatLogic:GetParryChanceBeforeDR()
 	return diminishableParry, drFreeParry
 end
 
+---@return number diminishableBlockChance The part that is affected by diminishing returns.
+---@return number drFreeBlockChance The part that isn't affected by diminishing returns.
+function StatLogic:GetBlockChanceBeforeDR()
+	local diminishableBlockChance = GetMastery() * self:GetStatMod("ADD_BLOCK_CHANCE_MOD_MASTERY_EFFECT")
+		+ floor(GetCombatRatingBonus(CR_DEFENSE_SKILL) or 0) * 0.04
+
+	local drFreeBlockChance = GetBlockChance() - self:GetAvoidanceAfterDR(StatLogic.Stats.BlockChance, diminishableBlockChance)
+
+	return diminishableBlockChance, drFreeBlockChance
+end
+
 --[[
 Avoidance DR formula and k, C_p, C_d constants derived by Whitetooth (hotdogee [at] gmail [dot] com)
 avoidanceBeforeDR is the part that is affected by diminishing returns.
@@ -247,31 +258,34 @@ Formula details:
 * Indirect avoidance gains from talents and spells(ex: +Agility from Kings) are affected by DR
 * c and k values depend on class but does not change with level.
 ]]
----@param stat `StatLogic.Stats.Dodge`|`StatLogic.Stats.Parry`|`StatLogic.Stats.Miss`
+---@param stat `StatLogic.Stats.Dodge`|`StatLogic.Stats.Parry`|`StatLogic.Stats.Miss|`StatLogic.Stats.BlockChance`
 ---@param avoidanceBeforeDR number Amount of avoidance before diminishing returns in percentages.
 ---@return number avoidanceAfterDR Avoidance after diminishing returns in percentages.
 function StatLogic:GetAvoidanceAfterDR(stat, avoidanceBeforeDR)
-	-- argCheck for invalid input
-	self:argCheck(stat, 2, "table")
-	self:argCheck(avoidanceBeforeDR, 3, "number")
-
 	local C = addon.C_d
+	local rounding = 1
 	if stat == StatLogic.Stats.Parry then
 		C = addon.C_p
 	elseif stat == StatLogic.Stats.Miss then
 		C = addon.C_m
+	elseif stat == StatLogic.Stats.BlockChance then
+		C = addon.C_b
+		-- See https://sacreddutydotnet.wordpress.com/2012/09/14/avoidance-diminishing-returns-in-mop-followup-2/
+		rounding = 128
 	end
 
-	if avoidanceBeforeDR > 0 then
+	if C and avoidanceBeforeDR > 0 then
 		local class = addon.class
-		return 1 / (1 / C[class] + addon.K[class] / avoidanceBeforeDR)
+		return 1 / (1 / C[class] + addon.K[class] / (math.floor(rounding * avoidanceBeforeDR + 0.5) / rounding))
+	elseif avoidanceBeforeDR > 0 then
+		return avoidanceBeforeDR
 	else
 		return 0
 	end
 end
 
 -- Calculates the avoidance gain after diminishing returns with player's current stats.
----@param stat `StatLogic.Stats.Dodge`|`StatLogic.Stats.Parry`|`StatLogic.Stats.Miss`
+---@param stat `StatLogic.Stats.Dodge`|`StatLogic.Stats.Parry`|`StatLogic.Stats.Miss`|`StatLogic.Stats.BlockChance`
 ---@param gainBeforeDR number Avoidance gain before diminishing returns in percentages.
 ---@return number gainAfterDR Avoidance gain after diminishing returns in percentages.
 function StatLogic:GetAvoidanceGainAfterDR(stat, gainBeforeDR)
@@ -291,6 +305,11 @@ function StatLogic:GetAvoidanceGainAfterDR(stat, gainBeforeDR)
 	elseif stat == StatLogic.Stats.Miss then
 		local modAvoidance = self:GetMissedChanceBeforeDR()
 		return self:GetAvoidanceAfterDR(stat, modAvoidance + gainBeforeDR) - self:GetAvoidanceAfterDR(stat, modAvoidance)
+	elseif stat == StatLogic.Stats.BlockChance then
+		local modAvoidance, drFreeAvoidance = self:GetBlockChanceBeforeDR()
+		local newAvoidanceChance = self:GetAvoidanceAfterDR(stat, modAvoidance + gainBeforeDR) + drFreeAvoidance
+		if newAvoidanceChance < 0 then newAvoidanceChance = 0 end
+		return newAvoidanceChance - GetBlockChance()
 	else
 		return gainBeforeDR
 	end
