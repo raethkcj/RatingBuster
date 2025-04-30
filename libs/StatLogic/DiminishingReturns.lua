@@ -121,7 +121,7 @@ end
 
 --[[
 Calculates your current Dodge% before diminishing returns.
-Dodge% = modDodge + drFreeDodge
+Dodge% = diminishableDodge + drFreeDodge
 
 drFreeDodge includes:
 * Base dodge
@@ -129,25 +129,24 @@ drFreeDodge includes:
 * Dodge modifier from base defense
 * Dodge modifers from talents or spells
 
-modDodge includes
+diminishableDodge includes
 * Dodge from dodge rating
 * Dodge from additional defense
-* Dodge from additional dodge
+* Dodge from non-base agility
 ]]
----@return number modDodge The part that is affected by diminishing returns.
+---@return number diminishableDodge The part that is affected by diminishing returns.
 ---@return number drFreeDodge The part that isn't affected by diminishing returns.
 function StatLogic:GetDodgeChanceBeforeDR()
-	local stat, effectiveStat, posBuff, negBuff = UnitStat("player", LE_UNIT_STAT_AGILITY)
-	local baseAgi = stat - posBuff - negBuff
-	local dodgePerAgi = self:GetDodgePerAgi()
-	local dodgeFromDodgeRating = GetCombatRatingBonus(CR_DODGE)
-	local dodgeFromDefenseRating = floor(GetCombatRatingBonus(CR_DEFENSE_SKILL)) * 0.04
-	local dodgeFromAdditionalAgi = dodgePerAgi * (effectiveStat - baseAgi)
-	local modDodge = dodgeFromDodgeRating + dodgeFromDefenseRating + dodgeFromAdditionalAgi
+	local agility, _, posBuff, negBuff = UnitStat("player", LE_UNIT_STAT_AGILITY)
+	local baseAgi = agility - posBuff - negBuff
 
-	local drFreeDodge = GetDodgeChance() - self:GetAvoidanceAfterDR(StatLogic.Stats.Dodge, modDodge)
+	local diminishableDodge = GetCombatRatingBonus(CR_DODGE)
+		+ floor(GetCombatRatingBonus(CR_DEFENSE_SKILL) or 0) * 0.04
+		+ (agility - baseAgi) * self:GetStatMod("ADD_DODGE_MOD_AGI")
 
-	return modDodge, drFreeDodge
+	local drFreeDodge = GetDodgeChance() - self:GetAvoidanceAfterDR(StatLogic.Stats.Dodge, diminishableDodge)
+
+	return diminishableDodge, drFreeDodge
 end
 
 ---@return number parry Parry percentage per strength
@@ -196,31 +195,32 @@ end
 
 --[[
 Calculates your current Parry% before diminishing returns.
-Parry% = modParry + drFreeParry
+Parry% = diminishableParry + drFreeParry
 
 drFreeParry includes:
 * Base parry
-* Parry from base agility
+* Parry from base strength
 * Parry modifier from base defense
 * Parry modifers from talents or spells
 
-modParry includes
+diminishableParry includes
 * Parry from parry rating
 * Parry from additional defense
-* Parry from additional parry
+* Parry from non-base strength
 ]]
----@return number modParry The part that is affected by diminishing returns.
+---@return number diminishableParry The part that is affected by diminishing returns.
 ---@return number drFreeParry The part that isn't affected by diminishing returns.
 function StatLogic:GetParryChanceBeforeDR()
-	-- Defense is floored
-	local parryFromParryRating = GetCombatRatingBonus(CR_PARRY)
-	local parryFromDefenseRating = floor(GetCombatRatingBonus(CR_DEFENSE_SKILL)) * 0.04
-	local modParry = parryFromParryRating + parryFromDefenseRating
+	local strength, _, posBuff, negBuff = UnitStat("player", LE_UNIT_STAT_STRENGTH)
+	local baseStr = strength - posBuff - negBuff
 
-	-- drFreeParry
-	local drFreeParry = GetParryChance() - self:GetAvoidanceAfterDR(StatLogic.Stats.Parry, modParry)
+	local diminishableParry = GetCombatRatingBonus(CR_PARRY)
+		+ floor(GetCombatRatingBonus(CR_DEFENSE_SKILL) or 0) * 0.04
+		+ (strength - baseStr) * self:GetStatMod("ADD_PARRY_MOD_STR")
 
-	return modParry, drFreeParry
+	local drFreeParry = GetParryChance() - self:GetAvoidanceAfterDR(StatLogic.Stats.Parry, diminishableParry)
+
+	return diminishableParry, drFreeParry
 end
 
 --[[

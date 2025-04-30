@@ -2751,23 +2751,23 @@ do
 			self:ProcessStat(StatLogic.Stats.SpellDamage, spellDamage, infoTable, link, color, statModContext, false, db.profile.showSpellDmgFromDefense)
 		elseif stat == StatLogic.Stats.Dodge then
 			if db.profile.enableAvoidanceDiminishingReturns then
-				value = StatLogic:GetAvoidanceGainAfterDR(StatLogic.Stats.Dodge, processedDodge + value) - StatLogic:GetAvoidanceGainAfterDR(StatLogic.Stats.Dodge, processedDodge)
 				processedDodge = processedDodge + value
+				value = StatLogic:GetAvoidanceGainAfterDR(StatLogic.Stats.Dodge, processedDodge) - StatLogic:GetAvoidanceGainAfterDR(StatLogic.Stats.Dodge, processedDodge - value)
 			end
 			if show and isBaseStat then
 				infoTable["Percent"] = value
 			elseif show then
-				infoTable[StatLogic.Stats.Dodge] = infoTable[StatLogic.Stats.Dodge] + value
+				infoTable[stat] = infoTable[stat] + value
 			end
 		elseif stat == StatLogic.Stats.Parry then
 			if db.profile.enableAvoidanceDiminishingReturns then
-				value = StatLogic:GetAvoidanceGainAfterDR(StatLogic.Stats.Parry, processedParry + value) - StatLogic:GetAvoidanceGainAfterDR(StatLogic.Stats.Parry, processedParry)
 				processedParry = processedParry + value
+				value = StatLogic:GetAvoidanceGainAfterDR(StatLogic.Stats.Parry, processedParry) - StatLogic:GetAvoidanceGainAfterDR(StatLogic.Stats.Parry, processedParry - value)
 			end
 			if show and isBaseStat then
 				infoTable["Percent"] = value
 			elseif show then
-				infoTable[StatLogic.Stats.Parry] = infoTable[StatLogic.Stats.Parry] + value
+				infoTable[stat] = infoTable[stat] + value
 			end
 		elseif stat == StatLogic.Stats.Armor then
 			local base, bonus = StatLogic:GetArmorDistribution(link, value, color)
