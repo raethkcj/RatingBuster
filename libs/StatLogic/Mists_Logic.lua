@@ -500,6 +500,13 @@ elseif addon.class == "PALADIN" then
 				["value"] = 1.85,
 			},
 		},
+		["ADD_BLOCK_CHANCE_MOD_MASTERY_EFFECT"] = {
+			-- Mastery: Divine Bulwark
+			{
+				["spec"] = 2,
+				["value"] = 1,
+			},
+		},
 		["ADD_PARRY"] = {
 			-- Base
 			{
@@ -519,7 +526,7 @@ elseif addon.class == "PRIEST" then
 			-- Mastery: Shield Discipline
 			{
 				["spec"] = 1,
-				["value"] = 2.5,
+				["value"] = 1.6,
 			},
 			-- Mastery: Echo of Light
 			{
@@ -664,6 +671,13 @@ elseif addon.class == "WARRIOR" then
 			{
 				["spec"] = 3,
 				["value"] = 2.2,
+			},
+		},
+		["ADD_BLOCK_CHANCE_MOD_MASTERY_EFFECT"] = {
+			-- Mastery: Critical Block
+			{
+				["spec"] = 3,
+				["value"] = 0.5 / 2.2,
 			},
 		},
 		["ADD_PARRY"] = {

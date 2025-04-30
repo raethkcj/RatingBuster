@@ -1590,6 +1590,9 @@ do
 		if mod == "RANGED_AP" then
 			groupID = "ap"
 		end
+		if mod == "MASTERY_EFFECT" then
+			groupID = "mastery"
+		end
 		local group = options.args.stat.args[groupID]
 		if not group then return end
 		group.hidden = false
@@ -2077,8 +2080,8 @@ local summaryFunc = {}
 local equippedSum = setmetatable({}, {
 	__index = function() return 0 end
 })
-local equippedDodge, equippedParry, equippedMissed
-local processedDodge, processedParry, processedMissed, processedResilience
+local equippedBlock, equippedDodge, equippedParry, equippedMissed
+local processedBlock, processedDodge, processedParry, processedMissed, processedResilience
 
 local scanningTooltipOwners = {
 	["WorldFrame"] = true,
@@ -2122,17 +2125,21 @@ function RatingBuster.ProcessTooltip(tooltip)
 		StatLogic:GetSum(difflink1, equippedSum, statModContext)
 		equippedSum[StatLogic.Stats.Strength] = equippedSum[StatLogic.Stats.Strength] * statModContext("MOD_STR")
 		equippedSum[StatLogic.Stats.Agility] = equippedSum[StatLogic.Stats.Agility] * statModContext("MOD_AGI")
+		equippedBlock = summaryFunc[StatLogic.Stats.BlockChanceBeforeDR](equippedSum, statModContext, "sum", difflink1) * -1
 		equippedDodge = summaryFunc[StatLogic.Stats.DodgeBeforeDR](equippedSum, statModContext, "sum", difflink1) * -1
 		equippedParry = summaryFunc[StatLogic.Stats.ParryBeforeDR](equippedSum, statModContext, "sum", difflink1) * -1
 		equippedMissed = summaryFunc[StatLogic.Stats.MissBeforeDR](equippedSum, statModContext, "sum", difflink1) * -1
+		processedBlock = equippedBlock
 		processedDodge = equippedDodge
 		processedParry = equippedParry
 		processedMissed = equippedMissed
 		processedResilience = equippedSum[StatLogic.Stats.ResilienceRating] * -1
 	else
+		equippedBlock = 0
 		equippedDodge = 0
 		equippedParry = 0
 		equippedMissed = 0
+		processedBlock = 0
 		processedDodge = 0
 		processedParry = 0
 		processedMissed = 0
@@ -2442,13 +2449,7 @@ do
 					infoTable[StatLogic.Stats.PvPDamageReduction] = infoTable[StatLogic.Stats.PvPDamageReduction] + pvpDmgReduction
 				end
 			elseif stat == StatLogic.Stats.MasteryRating then
-				if db.profile.showMasteryFromMasteryRating then
-					infoTable["Decimal"] = infoTable[StatLogic.Stats.Mastery] + effect
-				end
-				if db.profile.showMasteryEffectFromMastery then
-					effect = effect * statModContext("ADD_MASTERY_EFFECT_MOD_MASTERY")
-					infoTable["Percent"] = infoTable[StatLogic.Stats.MasteryEffect] + effect
-				end
+				self:ProcessStat(StatLogic.Stats.Mastery, effect, infoTable, link, color, statModContext, isBaseStat, db.profile.showMasteryFromMasteryRating)
 			else
 				local show = false
 				local displayType = "Percent"
@@ -2749,6 +2750,16 @@ do
 
 			local spellDamage = value * statModContext("ADD_SPELL_DMG_MOD_DEFENSE")
 			self:ProcessStat(StatLogic.Stats.SpellDamage, spellDamage, infoTable, link, color, statModContext, false, db.profile.showSpellDmgFromDefense)
+		elseif stat == StatLogic.Stats.BlockChance then
+			if db.profile.enableAvoidanceDiminishingReturns then
+				processedBlock = processedBlock + value
+				value = StatLogic:GetAvoidanceGainAfterDR(StatLogic.Stats.BlockChance, processedBlock) - StatLogic:GetAvoidanceGainAfterDR(StatLogic.Stats.BlockChance, processedBlock - value)
+			end
+			if show and isBaseStat then
+				infoTable["Percent"] = value
+			elseif show then
+				infoTable[stat] = infoTable[stat] + value
+			end
 		elseif stat == StatLogic.Stats.Dodge then
 			if db.profile.enableAvoidanceDiminishingReturns then
 				processedDodge = processedDodge + value
@@ -2769,6 +2780,21 @@ do
 			elseif show then
 				infoTable[stat] = infoTable[stat] + value
 			end
+		elseif stat == StatLogic.Stats.Mastery then
+			if show and isBaseStat then
+				infoTable["Decimal"] = value
+			elseif show then
+				infoTable[stat] = infoTable[stat] + value
+			end
+			local masteryEffect = value * statModContext("ADD_MASTERY_EFFECT_MOD_MASTERY")
+			self:ProcessStat(StatLogic.Stats.MasteryEffect, masteryEffect, infoTable, link, color, statModContext, false, db.profile.showMasteryEffectFromMastery)
+		elseif stat == StatLogic.Stats.MasteryEffect then
+			if show then
+				-- Always use Percent for now. Ideally we'd set up localizations to map MasteryEffect to invididual Mastery names
+				infoTable["Percent"] = infoTable[stat] + value
+			end
+			local blockChance = value * statModContext("ADD_BLOCK_CHANCE_MOD_MASTERY_EFFECT")
+			self:ProcessStat(StatLogic.Stats.BlockChance, blockChance, infoTable, link, color, statModContext, false, db.profile.showBlockChanceFromMasteryEffect)
 		elseif stat == StatLogic.Stats.Armor then
 			local base, bonus = StatLogic:GetArmorDistribution(link, value, color)
 			local mod = statModContext("MOD_ARMOR")
@@ -3671,16 +3697,31 @@ local summaryCalcData = {
 				+ summaryFunc[StatLogic.Stats.Strength](sum, statModContext) * statModContext("ADD_PARRY_RATING_MOD_STR")
 		end,
 	},
+	{
+		option = "sumBlockChanceBeforeDR",
+		stat = StatLogic.Stats.BlockChanceBeforeDR,
+		func = function(sum, statModContext)
+			return  sum[StatLogic.Stats.BlockRating] * statModContext("ADD_BLOCK_MOD_BLOCK_RATING")
+				+ summaryFunc[StatLogic.Stats.Defense](sum, statModContext) * statModContext("ADD_BLOCK_CHANCE_MOD_DEFENSE")
+				+ summaryFunc[StatLogic.Stats.MasteryEffect](sum, statModContext) * statModContext("ADD_BLOCK_CHANCE_MOD_MASTERY_EFFECT")
+		end,
+	},
 	-- Block Chance - BLOCK, BLOCK_RATING, DEFENSE
 	{
 		option = "sumBlock",
 		stat = StatLogic.Stats.BlockChance,
-		func = function(sum, statModContext)
+		func = function(sum, statModContext, sumType)
+			local blockChance = summaryFunc[StatLogic.Stats.BlockChanceBeforeDR](sum, statModContext)
+			if db.profile.enableAvoidanceDiminishingReturns then
+				if (sumType == "diff1") or (sumType == "diff2") then
+					blockChance = StatLogic:GetAvoidanceGainAfterDR(StatLogic.Stats.BlockChance, blockChance)
+				elseif sumType == "sum" then
+					blockChance = StatLogic:GetAvoidanceGainAfterDR(StatLogic.Stats.BlockChance, equippedBlock + blockChance) - StatLogic:GetAvoidanceGainAfterDR(StatLogic.Stats.BlockChance, equippedBlock)
+				end
+			end
 			return GetBlockChance() > 0 and (
-				sum[StatLogic.Stats.BlockChance]
-				+ sum[StatLogic.Stats.BlockRating] * statModContext("ADD_BLOCK_MOD_BLOCK_RATING")
-				+ summaryFunc[StatLogic.Stats.Defense](sum, statModContext) * statModContext("ADD_BLOCK_CHANCE_MOD_DEFENSE")
-				+ summaryFunc[StatLogic.Stats.MasteryEffect](sum, statModContext) * statModContext("ADD_BLOCK_CHANCE_MOD_MASTERY_EFFECT")
+				blockChance
+				+ sum[StatLogic.Stats.BlockChance]
 			) or 0
 		end,
 	},

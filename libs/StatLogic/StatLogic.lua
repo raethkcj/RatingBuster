@@ -358,10 +358,6 @@ StatLogic.StatModInfo = {
 		initialValue = 0,
 		finalAdjust = 0,
 	},
-	["ADD_BLOCK_CHANCE_MOD_MASTERY_EFFECT"] = {
-		initialValue = 0,
-		finalAdjust = 0,
-	},
 	["ADD_PET_INT_MOD_INT"] = {
 		initialValue = 0,
 		finalAdjust = 0,
@@ -497,6 +493,10 @@ local addedInfoMods = {
 	{
 		add = "AP",
 		mod = "STA",
+	},
+	{
+		add = "BLOCK_CHANCE",
+		mod = "MASTERY_EFFECT",
 	},
 	{
 		add = "BLOCK_VALUE",
