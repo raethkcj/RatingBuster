@@ -2282,12 +2282,16 @@ function RatingBuster:ProcessText(text, link, color, statModContext)
 					-- Group effects with identical values
 					for statID, effect in pairs(infoTable) do
 						if type(statID) == "table" and statID.isPercent or statID == "Spell" then
-							effect = ("%+.2f"):format(effect):gsub("(%.%d-)0+$", "%1"):trim(".") .. "%"
-							effects[effect] = effects[effect] or {}
-							tinsert(effects[effect], S[statID])
+							if floor(abs(effect) * 100 + 0.5) > 0 then
+								effect = ("%+.2f"):format(effect):gsub("(%.%d-)0+$", "%1"):trim(".") .. "%"
+								effects[effect] = effects[effect] or {}
+								tinsert(effects[effect], S[statID])
+							end
 						elseif statID == "Percent" then
-							effect = ("%+.2f"):format(effect):gsub("(%.%d-)0+$", "%1"):trim(".") .. "%"
-							effects[effect] = effects[effect] or {}
+							if floor(abs(effect) * 100 + 0.5) > 0 then
+								effect = ("%+.2f"):format(effect):gsub("(%.%d-)0+$", "%1"):trim(".") .. "%"
+								effects[effect] = effects[effect] or {}
+							end
 						else
 							if floor(abs(effect) * 10 + 0.5) > 0 then
 								effect = ("%+.1f"):format(effect):gsub("(%.%d-)0+$", "%1"):trim(".")
