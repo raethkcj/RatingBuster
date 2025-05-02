@@ -263,7 +263,6 @@ Formula details:
 ---@return number avoidanceAfterDR Avoidance after diminishing returns in percentages.
 function StatLogic:GetAvoidanceAfterDR(stat, avoidanceBeforeDR)
 	local C = addon.C_d
-	local rounding = 1
 	if stat == StatLogic.Stats.Parry then
 		C = addon.C_p
 	elseif stat == StatLogic.Stats.Miss then
@@ -271,12 +270,12 @@ function StatLogic:GetAvoidanceAfterDR(stat, avoidanceBeforeDR)
 	elseif stat == StatLogic.Stats.BlockChance then
 		C = addon.C_b
 		-- See https://sacreddutydotnet.wordpress.com/2012/09/14/avoidance-diminishing-returns-in-mop-followup-2/
-		rounding = 128
+		avoidanceBeforeDR = math.floor(128 * avoidanceBeforeDR + 0.5) / 128
 	end
 
 	if C and avoidanceBeforeDR > 0 then
 		local class = addon.class
-		return 1 / (1 / C[class] + addon.K[class] / (math.floor(rounding * avoidanceBeforeDR + 0.5) / rounding))
+		return 1 / (1 / C[class] + addon.K[class] / avoidanceBeforeDR)
 	elseif avoidanceBeforeDR > 0 then
 		return avoidanceBeforeDR
 	else
