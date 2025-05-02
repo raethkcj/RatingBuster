@@ -3568,8 +3568,10 @@ local summaryCalcData = {
 		option = "sumNatureDmg",
 		stat = StatLogic.Stats.NatureDamage,
 		func = function(sum, statModContext)
-			return statModContext("MOD_SPELL_DMG") * sum[StatLogic.Stats.NatureDamage]
-				+ summaryFunc[StatLogic.Stats.SpellDamage](sum, statModContext)
+			return statModContext("MOD_SPELL_DMG") * (
+				sum[StatLogic.Stats.NatureDamage]
+				+ sum[StatLogic.Stats.Agility] * statModContext("ADD_NATURE_DAMAGE_MOD_AGI")
+			) + summaryFunc[StatLogic.Stats.SpellDamage](sum, statModContext)
 		 end,
 	},
 	-- Frost Damage - FROST_SPELL_DMG, SPELL_DMG, INT

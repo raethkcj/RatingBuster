@@ -479,6 +479,10 @@ local addedInfoMods = {
 		mod = "STR",
 	},
 	{
+		add = "NATURE_DAMAGE",
+		mod = "AGI",
+	},
+	{
 		add = "NORMAL_HEALTH_REG",
 		mod = "HEALTH",
 	},
