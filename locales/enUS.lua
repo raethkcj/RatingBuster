@@ -334,16 +334,11 @@ L["exclusions"] = {
 	["head, chest, shoulders, legs,"] = "head chest shoulders legs", -- Borean Armor Kit
 	["chest, legs,"] = "chest legs", -- Vindicator's Armor Kit
 }
+
 L["separators"] = {
 	"/", " and ", ",%f[^%d]", "%. ", " for ", "&", ":", "\n"
 }
---[[
-SPELL_STAT1_NAME = "Strength"
-SPELL_STAT2_NAME = "Agility"
-SPELL_STAT3_NAME = "Stamina"
-SPELL_STAT4_NAME = "Intellect"
-SPELL_STAT5_NAME = "Spirit"
---]]
+
 L["statList"] = {
 	{"lowers intellect of target", false}, -- Brain Hacker
 	{"reduces an enemy's armor", false}, -- Annihilator
@@ -371,22 +366,22 @@ L["statList"] = {
 	{"ranged critical hit rating", StatLogic.Stats.RangedCritRating},
 	{"ranged critical rating", StatLogic.Stats.RangedCritRating},
 	{"ranged crit rating", StatLogic.Stats.RangedCritRating},
-	{"critical strike rating", StatLogic.Stats.CritRating},
+	{"critical strike", StatLogic.Stats.CritRating},
 	{"critical hit rating", StatLogic.Stats.CritRating},
 	{"critical rating", StatLogic.Stats.CritRating},
 	{"crit rating", StatLogic.Stats.CritRating},
 
 	{"spell hit rating", StatLogic.Stats.SpellHitRating},
 	{"ranged hit rating", StatLogic.Stats.RangedHitRating},
-	{"hit rating", StatLogic.Stats.HitRating},
+	{"hit", StatLogic.Stats.HitRating},
 
-	{"resilience", StatLogic.Stats.ResilienceRating}, -- resilience is implicitly a rating
+	{"resilience", StatLogic.Stats.ResilienceRating},
 
 	{"spell haste rating", StatLogic.Stats.SpellHasteRating},
 	{"ranged haste rating", StatLogic.Stats.RangedHasteRating},
-	{"haste rating", StatLogic.Stats.HasteRating},
+	{"haste", StatLogic.Stats.HasteRating},
 
-	{"expertise rating", StatLogic.Stats.ExpertiseRating},
+	{"expertise", StatLogic.Stats.ExpertiseRating},
 
 	{SPELL_STATALL:lower(), StatLogic.Stats.AllStats},
 	{"health", false}, -- Scroll of Enchant Chest - Health (prevents matching Armor)
