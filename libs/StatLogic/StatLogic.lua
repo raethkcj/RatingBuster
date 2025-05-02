@@ -354,6 +354,42 @@ StatLogic.StatModInfo = {
 		initialValue = 0,
 		finalAdjust = 0,
 	},
+	["ADD_MELEE_HIT_RATING_MOD_HIT_RATING"] = {
+		initialValue = 0,
+		finalAdjust = 0,
+	},
+	["ADD_RANGED_HIT_RATING_MOD_HIT_RATING"] = {
+		initialValue = 0,
+		finalAdjust = 0,
+	},
+	["ADD_SPELL_HIT_RATING_MOD_HIT_RATING"] = {
+		initialValue = 0,
+		finalAdjust = 0,
+	},
+	["ADD_MELEE_CRIT_RATING_MOD_CRIT_RATING"] = {
+		initialValue = 0,
+		finalAdjust = 0,
+	},
+	["ADD_RANGED_CRIT_RATING_MOD_CRIT_RATING"] = {
+		initialValue = 0,
+		finalAdjust = 0,
+	},
+	["ADD_SPELL_CRIT_RATING_MOD_CRIT_RATING"] = {
+		initialValue = 0,
+		finalAdjust = 0,
+	},
+	["ADD_MELEE_HASTE_RATING_MOD_HASTE_RATING"] = {
+		initialValue = 0,
+		finalAdjust = 0,
+	},
+	["ADD_RANGED_HASTE_RATING_MOD_HASTE_RATING"] = {
+		initialValue = 0,
+		finalAdjust = 0,
+	},
+	["ADD_SPELL_HASTE_RATING_MOD_HASTE_RATING"] = {
+		initialValue = 0,
+		finalAdjust = 0,
+	},
 	["ADD_RANGED_AP_MOD_GENERIC_ATTACK_POWER"] = {
 		initialValue = 0,
 		finalAdjust = 0,
@@ -378,19 +414,27 @@ StatLogic.StatModInfo = {
 		initialValue = 0,
 		finalAdjust = 1,
 	},
+	["MOD_CRIT_RATING"] = {
+		initialValue = 1,
+		finalAdjust = 0,
+	},
 	["MOD_DODGE"] = {
 		initialValue = 1,
 		finalAdjust = 0,
 	},
-	["MOD_WEAPON_ATTACK_POWER"] = {
-		initialValue = 0,
-		finalAdjust = 1,
+	["MOD_HASTE_RATING"] = {
+		initialValue = 1,
+		finalAdjust = 0,
 	},
 	["MOD_HEALING"] = {
 		initialValue = 0,
 		finalAdjust = 1,
 	},
 	["MOD_HEALTH"] = {
+		initialValue = 1,
+		finalAdjust = 0,
+	},
+	["MOD_MASTERY_RATING"] = {
 		initialValue = 1,
 		finalAdjust = 0,
 	},
@@ -415,6 +459,10 @@ StatLogic.StatModInfo = {
 		finalAdjust = 0,
 	},
 	["MOD_SPELL_DMG"] = {
+		initialValue = 0,
+		finalAdjust = 1,
+	},
+	["MOD_WEAPON_ATTACK_POWER"] = {
 		initialValue = 0,
 		finalAdjust = 1,
 	},

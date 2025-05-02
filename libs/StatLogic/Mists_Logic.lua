@@ -22,22 +22,6 @@ StatLogic.RatingBase = {
 	[StatLogic.Stats.PvPPowerRating] = 14,
 }
 
-StatLogic.GenericStatMap[StatLogic.Stats.HitRating] = {
-	StatLogic.Stats.MeleeHitRating,
-	StatLogic.Stats.RangedHitRating,
-	StatLogic.Stats.SpellHitRating,
-}
-StatLogic.GenericStatMap[StatLogic.Stats.CritRating] = {
-	StatLogic.Stats.MeleeCritRating,
-	StatLogic.Stats.RangedCritRating,
-	StatLogic.Stats.SpellCritRating,
-}
-StatLogic.GenericStatMap[StatLogic.Stats.HasteRating] = {
-	StatLogic.Stats.MeleeHasteRating,
-	StatLogic.Stats.RangedHasteRating,
-	StatLogic.Stats.SpellHasteRating,
-}
-
 local NormalManaRegenPerSpi = function(level)
 	return 0
 end
@@ -719,6 +703,51 @@ elseif addon.playerRace == "Troll" then
 end
 
 StatLogic.StatModTable["ALL"] = {
+	["ADD_MELEE_HIT_RATING_MOD_HIT_RATING"] = {
+		{
+			["value"] = 1.0,
+		},
+	},
+	["ADD_RANGED_HIT_RATING_MOD_HIT_RATING"] = {
+		{
+			["value"] = 1.0,
+		},
+	},
+	["ADD_SPELL_HIT_RATING_MOD_HIT_RATING"] = {
+		{
+			["value"] = 1.0,
+		},
+	},
+	["ADD_MELEE_CRIT_RATING_MOD_CRIT_RATING"] = {
+		{
+			["value"] = 1.0,
+		},
+	},
+	["ADD_RANGED_CRIT_RATING_MOD_CRIT_RATING"] = {
+		{
+			["value"] = 1.0,
+		},
+	},
+	["ADD_SPELL_CRIT_RATING_MOD_CRIT_RATING"] = {
+		{
+			["value"] = 1.0,
+		},
+	},
+	["ADD_MELEE_HASTE_RATING_MOD_HASTE_RATING"] = {
+		{
+			["value"] = 1.0,
+		},
+	},
+	["ADD_RANGED_HASTE_RATING_MOD_HASTE_RATING"] = {
+		{
+			["value"] = 1.0,
+		},
+	},
+	["ADD_SPELL_HASTE_RATING_MOD_HASTE_RATING"] = {
+		{
+			["value"] = 1.0,
+		},
+	},
 	["MOD_STR"] = {
 	},
 	["MOD_AGI"] = {

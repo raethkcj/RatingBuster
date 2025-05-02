@@ -207,8 +207,7 @@ local options = {
 					order = 2,
 					width = "full",
 					hidden = function()
-						local genericHit = StatLogic.GenericStatMap[StatLogic.Stats.HitRating]
-						return (not genericHit)
+						return StatLogic:GetStatMod("ADD_MELEE_HIT_RATING_MOD_HIT_RATING") == 0
 					end
 				},
 				ratingSpell = {
@@ -218,8 +217,7 @@ local options = {
 					order = 3,
 					width = "full",
 					hidden = function()
-						local genericHit = StatLogic.GenericStatMap[StatLogic.Stats.HitRating]
-						return (not genericHit) or (not tContains(genericHit, StatLogic.Stats.SpellHitRating))
+						return StatLogic:GetStatMod("ADD_SPELL_HIT_RATING_MOD_HIT_RATING") == 0
 					end
 				},
 				enableAvoidanceDiminishingReturns = {
@@ -2392,10 +2390,39 @@ do
 		if StatLogic.GenericStatMap[stat] then
 			local statList = StatLogic.GenericStatMap[stat]
 			for _, convertedStatID in ipairs(statList) do
-				if not RatingType.Ranged[convertedStatID] then
-					RatingBuster:ProcessStat(convertedStatID, value, infoTable, link, color, statModContext, false, true)
-				end
+				RatingBuster:ProcessStat(convertedStatID, value, infoTable, link, color, statModContext, false, true)
 			end
+		elseif stat == StatLogic.Stats.HitRating then
+			local meleeHitRating = value * statModContext("ADD_MELEE_HIT_RATING_MOD_HIT_RATING")
+			self:ProcessStat(StatLogic.Stats.MeleeHitRating, meleeHitRating, infoTable, link, color, statModContext, isBaseStat, true)
+
+			local rangedHitRating = value * statModContext("ADD_RANGED_HIT_RATING_MOD_HIT_RATING")
+			self:ProcessStat(StatLogic.Stats.RangedHitRating, rangedHitRating, infoTable, link, color, statModContext, isBaseStat, true)
+
+			local spellHitRating = value * statModContext("ADD_SPELL_HIT_RATING_MOD_HIT_RATING")
+			self:ProcessStat(StatLogic.Stats.SpellHitRating, spellHitRating, infoTable, link, color, statModContext, isBaseStat, true)
+		elseif stat == StatLogic.Stats.CritRating then
+			value = value * statModContext("MOD_CRIT_RATING")
+
+			local meleeCritRating = value * statModContext("ADD_MELEE_CRIT_RATING_MOD_CRIT_RATING")
+			self:ProcessStat(StatLogic.Stats.MeleeCritRating, meleeCritRating, infoTable, link, color, statModContext, isBaseStat, true)
+
+			local rangedCritRating = value * statModContext("ADD_RANGED_CRIT_RATING_MOD_CRIT_RATING")
+			self:ProcessStat(StatLogic.Stats.RangedCritRating, rangedCritRating, infoTable, link, color, statModContext, isBaseStat, true)
+
+			local spellCritRating = value * statModContext("ADD_SPELL_CRIT_RATING_MOD_CRIT_RATING")
+			self:ProcessStat(StatLogic.Stats.SpellCritRating, spellCritRating, infoTable, link, color, statModContext, isBaseStat, true)
+		elseif stat == StatLogic.Stats.HasteRating then
+			value = value * statModContext("MOD_HASTE_RATING")
+
+			local meleeHasteRating = value * statModContext("ADD_MELEE_HASTE_RATING_MOD_HASTE_RATING")
+			self:ProcessStat(StatLogic.Stats.MeleeHasteRating, meleeHasteRating, infoTable, link, color, statModContext, isBaseStat, true)
+
+			local rangedHasteRating = value * statModContext("ADD_RANGED_HASTE_RATING_MOD_HASTE_RATING")
+			self:ProcessStat(StatLogic.Stats.RangedHasteRating, rangedHasteRating, infoTable, link, color, statModContext, isBaseStat, true)
+
+			local spellHasteRating = value * statModContext("ADD_SPELL_HASTE_RATING_MOD_HASTE_RATING")
+			self:ProcessStat(StatLogic.Stats.SpellHasteRating, spellHasteRating, infoTable, link, color, statModContext, isBaseStat, true)
 		elseif StatLogic.RatingBase[stat] and db.profile.showRatings then
 			--------------------
 			-- Combat Ratings --
@@ -2449,6 +2476,7 @@ do
 					infoTable[StatLogic.Stats.PvPDamageReduction] = infoTable[StatLogic.Stats.PvPDamageReduction] + pvpDmgReduction
 				end
 			elseif stat == StatLogic.Stats.MasteryRating then
+				effect = effect * statModContext("MOD_MASTERY_RATING")
 				self:ProcessStat(StatLogic.Stats.Mastery, effect, infoTable, link, color, statModContext, isBaseStat, db.profile.showMasteryFromMasteryRating)
 			else
 				local show = false
@@ -2461,7 +2489,12 @@ do
 					if db.profile.ratingSpell then
 						if not db.profile.ratingPhysical then
 							show = true
-						elseif ( stat == StatLogic.Stats.SpellHitRating or (stat == StatLogic.Stats.SpellHasteRating and StatLogic.ExtraHasteClasses[class])) then
+						elseif (
+							stat == StatLogic.Stats.SpellHitRating
+							and StatLogic:GetStatMod("ADD_SPELL_HIT_MOD_SPELL_HIT_RATING") ~= StatLogic:GetStatMod("ADD_MELEE_HIT_MOD_MELEE_HIT_RATING")
+							or stat == StatLogic.Stats.SpellHasteRating
+							and StatLogic:GetStatMod("ADD_SPELL_HASTE_MOD_SPELL_HASTE_RATING") ~= StatLogic:GetStatMod("ADD_MELEE_HASTE_MOD_MELEE_HASTE_RATING")
+						) then
 							show = true
 							displayType = "Spell"
 						end
@@ -3077,7 +3110,7 @@ local specPrimaryStats = {
 ---@alias SummaryCalcFunction fun(sum: StatTable, statModContext: StatModContext, sumType?, link?): number
 
 ---@class SummaryCalcData
----@field option string
+---@field option string?
 ---@field stat Stat
 ---@field func SummaryCalcFunction
 
@@ -3130,10 +3163,16 @@ local summaryCalcData = {
 		end,
 	},
 	{
+		stat = StatLogic.Stats.MasteryRating,
+		func = function(sum, statModContext)
+			return statModContext("MOD_MASTERY_RATING") * sum[StatLogic.Stats.MasteryRating]
+		end,
+	},
+	{
 		option = "sumMastery",
 		stat = StatLogic.Stats.Mastery,
 		func = function(sum, statModContext)
-			return sum[StatLogic.Stats.MasteryRating] * statModContext("ADD_MASTERY_MOD_MASTERY_RATING")
+			return summaryFunc[StatLogic.Stats.MasteryRating](sum, statModContext) * statModContext("ADD_MASTERY_MOD_MASTERY_RATING")
 		end,
 	},
 	{
@@ -3263,15 +3302,16 @@ local summaryCalcData = {
 		stat = StatLogic.Stats.MeleeHit,
 		func = function(sum, statModContext)
 			return sum[StatLogic.Stats.MeleeHit]
-				+ sum[StatLogic.Stats.MeleeHitRating] * statModContext("ADD_MELEE_HIT_MOD_MELEE_HIT_RATING")
+				+ summaryFunc[StatLogic.Stats.MeleeHitRating](sum, statModContext) * statModContext("ADD_MELEE_HIT_MOD_MELEE_HIT_RATING")
 		end,
 	},
 	-- Hit Rating - MELEE_HIT_RATING
 	{
 		option = "sumHitRating",
 		stat = StatLogic.Stats.MeleeHitRating,
-		func = function(sum)
+		func = function(sum, statModContext)
 			return sum[StatLogic.Stats.MeleeHitRating]
+				+ sum[StatLogic.Stats.HitRating] * statModContext("ADD_MELEE_HIT_RATING_MOD_HIT_RATING")
 		end,
 	},
 	-- Ranged Hit Chance - MELEE_HIT_RATING, RANGED_HIT_RATING, AGI
@@ -3280,15 +3320,22 @@ local summaryCalcData = {
 		stat = StatLogic.Stats.RangedHit,
 		func = function(sum, statModContext)
 			return sum[StatLogic.Stats.RangedHit]
-				+ sum[StatLogic.Stats.RangedHitRating] * statModContext("ADD_RANGED_HIT_MOD_RANGED_HIT_RATING")
+				+ summaryFunc[StatLogic.Stats.RangedHitRating](sum, statModContext) * statModContext("ADD_RANGED_HIT_MOD_RANGED_HIT_RATING")
 		end,
 	},
 	-- Ranged Hit Rating - RANGED_HIT_RATING
 	{
 		option = "sumRangedHitRating",
 		stat = StatLogic.Stats.RangedHitRating,
-		func = function(sum)
+		func = function(sum, statModContext)
 			return sum[StatLogic.Stats.RangedHitRating]
+				+ sum[StatLogic.Stats.HitRating] * statModContext("ADD_RANGED_HIT_RATING_MOD_HIT_RATING")
+		end,
+	},
+	{
+		stat = StatLogic.Stats.CritRating,
+		func = function (sum, statModContext)
+			return statModContext("MOD_CRIT_RATING") * sum[StatLogic.Stats.CritRating]
 		end,
 	},
 	-- Crit Chance - MELEE_CRIT, MELEE_CRIT_RATING, AGI
@@ -3298,6 +3345,7 @@ local summaryCalcData = {
 		func = function(sum, statModContext)
 			return sum[StatLogic.Stats.MeleeCrit]
 				+ sum[StatLogic.Stats.MeleeCritRating] * statModContext("ADD_MELEE_CRIT_MOD_MELEE_CRIT_RATING")
+				+ summaryFunc[StatLogic.Stats.MeleeCritRating](sum, statModContext) * statModContext("ADD_MELEE_CRIT_MOD_MELEE_CRIT_RATING")
 				+ summaryFunc[StatLogic.Stats.Agility](sum, statModContext) * statModContext("ADD_MELEE_CRIT_MOD_AGI")
 		end,
 	},
@@ -3305,8 +3353,9 @@ local summaryCalcData = {
 	{
 		option = "sumCritRating",
 		stat = StatLogic.Stats.MeleeCritRating,
-		func = function(sum)
+		func = function(sum, statModContext)
 			return sum[StatLogic.Stats.MeleeCritRating]
+				+ summaryFunc[StatLogic.Stats.CritRating](sum, statModContext) * statModContext("ADD_MELEE_CRIT_RATING_MOD_CRIT_RATING")
 		end,
 	},
 	-- Ranged Crit Chance - MELEE_CRIT_RATING, RANGED_CRIT_RATING, AGI
@@ -3315,7 +3364,7 @@ local summaryCalcData = {
 		stat = StatLogic.Stats.RangedCrit,
 		func = function(sum, statModContext)
 			return sum[StatLogic.Stats.RangedCrit]
-				+ sum[StatLogic.Stats.RangedCritRating] * statModContext("ADD_RANGED_CRIT_MOD_RANGED_CRIT_RATING")
+				+ summaryFunc[StatLogic.Stats.RangedCritRating](sum, statModContext) * statModContext("ADD_RANGED_CRIT_MOD_RANGED_CRIT_RATING")
 				+ summaryFunc[StatLogic.Stats.Agility](sum, statModContext) * statModContext("ADD_RANGED_CRIT_MOD_AGI")
 		end,
 	},
@@ -3323,8 +3372,15 @@ local summaryCalcData = {
 	{
 		option = "sumRangedCritRating",
 		stat = StatLogic.Stats.RangedCritRating,
-		func = function(sum)
+		func = function(sum, statModContext)
 			return sum[StatLogic.Stats.RangedCritRating]
+				+ summaryFunc[StatLogic.Stats.CritRating](sum, statModContext) * statModContext("ADD_RANGED_CRIT_RATING_MOD_CRIT_RATING")
+		end,
+	},
+	{
+		stat = StatLogic.Stats.HasteRating,
+		func = function (sum, statModContext)
+			return statModContext("MOD_HASTE_RATING") * sum[StatLogic.Stats.HasteRating]
 		end,
 	},
 	-- Haste - MELEE_HASTE_RATING
@@ -3333,15 +3389,16 @@ local summaryCalcData = {
 		stat = StatLogic.Stats.MeleeHaste,
 		func = function(sum, statModContext)
 			return sum[StatLogic.Stats.MeleeHaste]
-				+ sum[StatLogic.Stats.MeleeHasteRating] * statModContext("ADD_MELEE_HASTE_MOD_MELEE_HASTE_RATING")
+				+ summaryFunc[StatLogic.Stats.MeleeHasteRating](sum, statModContext) * statModContext("ADD_MELEE_HASTE_MOD_MELEE_HASTE_RATING")
 		end,
 	},
 	-- Haste Rating - MELEE_HASTE_RATING
 	{
 		option = "sumHasteRating",
 		stat = StatLogic.Stats.MeleeHasteRating,
-		func = function(sum)
+		func = function(sum, statModContext)
 			return sum[StatLogic.Stats.MeleeHasteRating]
+				+ summaryFunc[StatLogic.Stats.HasteRating](sum, statModContext) * statModContext("ADD_MELEE_HASTE_RATING_MOD_HASTE_RATING")
 		end,
 	},
 	-- Ranged Haste - RANGED_HASTE_RATING
@@ -3350,15 +3407,16 @@ local summaryCalcData = {
 		stat = StatLogic.Stats.RangedHaste,
 		func = function(sum, statModContext)
 			return sum[StatLogic.Stats.RangedHaste]
-				+ sum[StatLogic.Stats.RangedHasteRating] * statModContext("ADD_RANGED_HASTE_MOD_RANGED_HASTE_RATING")
+				+ summaryFunc[StatLogic.Stats.RangedHasteRating](sum, statModContext) * statModContext("ADD_RANGED_HASTE_MOD_RANGED_HASTE_RATING")
 		end,
 	},
 	-- Ranged Haste Rating - RANGED_HASTE_RATING
 	{
 		option = "sumRangedHasteRating",
 		stat = StatLogic.Stats.RangedHasteRating,
-		func = function(sum)
+		func = function(sum, statModContext)
 			return sum[StatLogic.Stats.RangedHasteRating]
+				+ summaryFunc[StatLogic.Stats.HasteRating](sum, statModContext) * statModContext("ADD_RANGED_HASTE_RATING_MOD_HASTE_RATING")
 		end,
 	},
 	{
@@ -3560,6 +3618,7 @@ local summaryCalcData = {
 		stat = StatLogic.Stats.SpellHitRating,
 		func = function(sum, statModContext)
 			return sum[StatLogic.Stats.SpellHitRating]
+				+ sum[StatLogic.Stats.HitRating] * statModContext("ADD_SPELL_HIT_RATING_MOD_HIT_RATING")
 				+ summaryFunc[StatLogic.Stats.Spirit](sum, statModContext) * statModContext("ADD_SPELL_HIT_RATING_MOD_SPI")
 		end,
 	},
@@ -3579,6 +3638,7 @@ local summaryCalcData = {
 		stat = StatLogic.Stats.SpellCritRating,
 		func = function(sum, statModContext)
 			return sum[StatLogic.Stats.SpellCritRating]
+				+ summaryFunc[StatLogic.Stats.CritRating](sum, statModContext) * statModContext("ADD_SPELL_CRIT_RATING_MOD_CRIT_RATING")
 				+ summaryFunc[StatLogic.Stats.Spirit](sum, statModContext) * statModContext("ADD_SPELL_CRIT_RATING_MOD_SPI")
 		end,
 	},
@@ -3588,15 +3648,16 @@ local summaryCalcData = {
 		stat = StatLogic.Stats.SpellHaste,
 		func = function(sum, statModContext)
 			return sum[StatLogic.Stats.SpellHaste]
-				+ sum[StatLogic.Stats.SpellHasteRating] * statModContext("ADD_SPELL_HASTE_MOD_SPELL_HASTE_RATING")
+				+ summaryFunc[StatLogic.Stats.SpellHasteRating](sum, statModContext) * statModContext("ADD_SPELL_HASTE_MOD_SPELL_HASTE_RATING")
 		end,
 	},
 	-- Spell Haste Rating - SPELL_HASTE_RATING
 	{
 		option = "sumSpellHasteRating",
 		stat = StatLogic.Stats.SpellHasteRating,
-		func = function(sum)
+		func = function(sum, statModContext)
 			return sum[StatLogic.Stats.SpellHasteRating]
+				+ summaryFunc[StatLogic.Stats.HasteRating](sum, statModContext) * statModContext("ADD_SPELL_HASTE_RATING_MOD_HASTE_RATING")
 		end,
 	},
 	-- Spell Penetration - SPELLPEN
