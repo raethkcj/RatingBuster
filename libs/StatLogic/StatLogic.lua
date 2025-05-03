@@ -3,19 +3,6 @@ local addonName, addon = ...
 ---@class StatLogic
 local StatLogic = LibStub(addonName)
 
-function StatLogic:argCheck(argument, number, ...)
-	local arg = {...}
-	local validTypeString = table.concat(arg, ", ")
-	local t = type(argument)
-	assert(
-		arg[1] == t or
-		arg[2] == t or
-		arg[3] == t or
-		arg[4] == t or
-		arg[5] == t,
-		"Bad argument #"..tostring(number).." ("..validTypeString.." expected, got "..t..")"
-	)
-end
 
 -- Tooltip with syntactic sugar
 ---@class StatLogicTooltip : ClassicGameTooltip

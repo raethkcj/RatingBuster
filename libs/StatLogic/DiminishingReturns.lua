@@ -288,9 +288,6 @@ end
 ---@param gainBeforeDR number Avoidance gain before diminishing returns in percentages.
 ---@return number gainAfterDR Avoidance gain after diminishing returns in percentages.
 function StatLogic:GetAvoidanceGainAfterDR(stat, gainBeforeDR)
-	-- argCheck for invalid input
-	self:argCheck(gainBeforeDR, 2, "number")
-
 	if stat == StatLogic.Stats.Parry then
 		local modAvoidance, drFreeAvoidance = self:GetParryChanceBeforeDR()
 		local newAvoidanceChance = self:GetAvoidanceAfterDR(stat, modAvoidance + gainBeforeDR) + drFreeAvoidance
@@ -315,15 +312,10 @@ function StatLogic:GetAvoidanceGainAfterDR(stat, gainBeforeDR)
 end
 
 function StatLogic:GetResilienceEffectAfterDR(damageReductionBeforeDR)
-	-- argCheck for invalid input
-	self:argCheck(damageReductionBeforeDR, 2, "number")
 	return 100 - 100 * 0.99 ^ damageReductionBeforeDR
 end
 
 function StatLogic:GetResilienceEffectGainAfterDR(resAfter, resBefore)
-	-- argCheck for invalid input
-	self:argCheck(resAfter, 2, "number")
-	self:argCheck(resBefore, 2, "nil", "number")
 	local resCurrent = GetCombatRating(COMBAT_RATING_RESILIENCE_PLAYER_DAMAGE_TAKEN)
 	local drBefore
 	if resBefore then
