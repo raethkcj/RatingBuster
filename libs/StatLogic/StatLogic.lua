@@ -558,6 +558,14 @@ local addedInfoMods = {
 		mod = "INT",
 	},
 	{
+		add = "CRIT_RATING",
+		mod = "DODGE_RATING",
+	},
+	{
+		add = "CRIT_RATING",
+		mod = "PARRY_RATING",
+	},
+	{
 		add = "MELEE_CRIT",
 		mod = "AGI",
 	},

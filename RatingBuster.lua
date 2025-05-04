@@ -2431,8 +2431,14 @@ do
 				self:ProcessStat(StatLogic.Stats.Defense, effect, infoTable, link, color, statModContext, false, db.profile.showDefenseFromDefenseRating)
 			elseif stat == StatLogic.Stats.DodgeRating then
 				self:ProcessStat(StatLogic.Stats.Dodge, effect, infoTable, link, color, statModContext, isBaseStat, show or isBaseStat)
+
+				local critRating = value * statModContext("ADD_CRIT_RATING_MOD_DODGE_RATING")
+				self:ProcessStat(StatLogic.Stats.CritRating, critRating, infoTable, link, color, statModContext, false, db.profile.showCritFromDodgeRating)
 			elseif stat == StatLogic.Stats.ParryRating then
 				self:ProcessStat(StatLogic.Stats.Parry, effect, infoTable, link, color, statModContext, isBaseStat, show or isBaseStat)
+
+				local critRating = value * statModContext("ADD_CRIT_RATING_MOD_PARRY_RATING")
+				self:ProcessStat(StatLogic.Stats.CritRating, critRating, infoTable, link, color, statModContext, false, db.profile.showCritFromParryRating)
 			elseif stat == StatLogic.Stats.MeleeHitRating then
 				self:ProcessStat(StatLogic.Stats.MeleeHit, effect, infoTable, link, color, statModContext, isBaseStat, show)
 			elseif stat == StatLogic.Stats.RangedHitRating then
@@ -3416,7 +3422,11 @@ local summaryCalcData = {
 	{
 		stat = StatLogic.Stats.CritRating,
 		func = function (sum, statModContext)
-			return statModContext("MOD_CRIT_RATING") * sum[StatLogic.Stats.CritRating]
+			return statModContext("MOD_CRIT_RATING") * (
+				sum[StatLogic.Stats.CritRating]
+				+ summaryFunc[StatLogic.Stats.DodgeRating](sum, statModContext) * statModContext("ADD_CRIT_RATING_MOD_DODGE_RATING")
+				+ summaryFunc[StatLogic.Stats.ParryRating](sum, statModContext) * statModContext("ADD_CRIT_RATING_MOD_PARRY_RATING")
+			)
 		end,
 	},
 	-- Crit Chance - MELEE_CRIT, MELEE_CRIT_RATING, AGI
