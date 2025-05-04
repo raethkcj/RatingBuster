@@ -312,12 +312,206 @@ if addon.class == "DRUID" then
 			{
 				["value"] = 2,
 				["aura"] = 768,
+				["group"] = addon.ExclusiveGroup.Feral,
 			},
 			-- Druid: Bear Form - Buff
 			{
 				["value"] = 2,
 				["aura"] = 5487,
+				["group"] = addon.ExclusiveGroup.Feral,
 			},
+		},
+		["MOD_ARMOR"] = {
+			-- Buff: Bear Form
+			{
+				["aura"] = 5487,
+				["value"] = 1.2,
+				["group"] = addon.ExclusiveGroup.Feral,
+			},
+			-- Passive: Thick Hide (Bear Form)
+			{
+				["aura"] = 5487,
+				["value"] = 3.3,
+				["group"] = addon.ExclusiveGroup.Feral,
+				["known"] = 16931,
+			},
+			-- Buff: Tree of Life
+			{
+				["value"] = 1.2,
+				["aura"] = 33891,
+				["group"] = addon.ExclusiveGroup.Feral,
+			},
+			-- Passive: Mastery: Nature's Guardian
+			-- TODO: Get value from tooltip?
+			{
+				["known"] = 77494,
+				["value"] = 0.16,
+			},
+			-- Buff: Moonkin Form
+			{
+				["value"] = 1.0,
+				["aura"] = 24858,
+				["group"] = addon.ExclusiveGroup.Feral,
+			},
+			-- Buff: Tree of Life Form
+			{
+				["value"] = 1.2,
+				["aura"] = 33891,
+				["group"] = addon.ExclusiveGroup.Feral,
+			},
+			-- Talent: Heart of the Wild (Bear Form)
+			{
+				["tab"] = 1,
+				["row"] = 6,
+				["value"] = 0.95,
+				["aura"] = 5487,
+			},
+		},
+		["MOD_AGI"] = {
+			-- Leather Specialization (Feral)
+			{
+				["value"] = 0.05,
+				["armorspec"] = {
+					[2] = true,
+				},
+				["known"] = 86097,
+			},
+			-- Talent: Heart of the Wild
+			{
+				["tab"] = 1,
+				["row"] = 6,
+				["value"] = 0.06,
+			},
+			-- Talent: Heart of the Wild (Bear Form)
+			{
+				["tab"] = 1,
+				["row"] = 6,
+				["value"] = 0.5,
+				["aura"] = 5487,
+			},
+			-- Talent: Heart of the Wild (Cat Form)
+			{
+				["tab"] = 1,
+				["row"] = 6,
+				["value"] = 1.1,
+				["aura"] = 768,
+			},
+		},
+		["MOD_STA"] = {
+			-- Buff: Bear Form
+			{
+				["aura"] = 5487,
+				["value"] = 0.4,
+				["group"] = addon.ExclusiveGroup.Feral,
+			},
+			-- Leather Specialization (Guardian) (Bear Form)
+			{
+				["value"] = 0.05,
+				["armorspec"] = {
+					[3] = true,
+				},
+				["known"] = 86096,
+				["aura"] = 5487,
+			},
+			-- Talent: Heart of the Wild
+			{
+				["tab"] = 1,
+				["row"] = 6,
+				["value"] = 0.06,
+			},
+		},
+		["MOD_INT"] = {
+			-- Leather Specialization (Balance)
+			{
+				["value"] = 0.05,
+				["armorspec"] = {
+					[1] = true,
+				},
+				["known"] = 86104,
+			},
+			-- Leather Specialization (Restoration)
+			{
+				["value"] = 0.05,
+				["armorspec"] = {
+					[4] = true,
+				},
+				["known"] = 86093,
+			},
+			-- Talent: Heart of the Wild
+			{
+				["tab"] = 1,
+				["row"] = 6,
+				["value"] = 0.06,
+			},
+		},
+		["MOD_HASTE_RATING"] = {
+			-- Buff: Bear Form
+			{
+				["aura"] = 5487,
+				["value"] = 0.5,
+			},
+		},
+		["MOD_CRIT_RATING"] = {
+			-- Buff: Bear Form
+			{
+				["aura"] = 5487,
+				["value"] = 0.5,
+			},
+		},
+		["MOD_HEALTH"] = {
+			-- Buff: Might of Ursoc
+			{
+				["aura"] = 106922,
+				["value"] = 0.3,
+			},
+		},
+		["ADD_DODGE"] = {
+			-- Buff: Savage Defense
+			{
+				["aura"] = 62606,
+				["value"] = 45,
+			},
+		},
+		["ADD_NATURE_DAMAGE_MOD_AGI"] = {
+			-- Passive: Nurturing Instinct
+			{
+				["known"] = 33873,
+				["value"] = 1,
+			},
+		},
+		["ADD_HEALING_MOD_AGI"] = {
+			-- Passive: Nurturing Instinct
+			{
+				["known"] = 33873,
+				["value"] = 1,
+			},
+		},
+		["ADD_HIT_RATING_MOD_SPI"] = {
+			-- Passive: Balance of Power
+			{
+				["known"] = 33596,
+				["value"] = 1,
+			},
+		},
+		["ADD_AGI_MOD_INT"] = {
+			-- Passive: Killer Instinct
+			{
+				["known"] = 108299,
+				["value"] = 1,
+			},
+		},
+		["ADD_MANA_REGEN_MOD_NORMAL_MANA_REGEN"] = {
+			-- Passive: Meditation
+			{
+				["known"] = 85101,
+				["value"] = 0.5,
+			},
+		},
+		["ADD_HEALTH_REG_MOD_HEALTH"] = {
+			-- Talent: Ysera's Gift
+			["tab"] = 1,
+			["num"] = 1,
+			["value"] = 0.05,
 		},
 	}
 elseif addon.class == "DEATHKNIGHT" then

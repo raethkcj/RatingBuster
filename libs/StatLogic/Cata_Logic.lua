@@ -916,11 +916,13 @@ if addon.class == "DRUID" then
 			{
 				["value"] = 2,
 				["aura"] = 768,
+				["group"] = addon.ExclusiveGroup.Feral,
 			},
 			-- Druid: Bear Form - Buff
 			{
 				["value"] = 2,
 				["aura"] = 5487,
+				["group"] = addon.ExclusiveGroup.Feral,
 			},
 		},
 		["ADD_AP_MOD_STA"] = {
