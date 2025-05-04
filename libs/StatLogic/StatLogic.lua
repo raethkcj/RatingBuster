@@ -603,6 +603,10 @@ local addedInfoMods = {
 	},
 	{
 		add = "HEALTH_REG",
+		mod = "HEALTH",
+	},
+	{
+		add = "HEALTH_REG",
 		mod = "NORMAL_HEALTH_REG",
 	},
 	{

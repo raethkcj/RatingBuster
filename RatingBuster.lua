@@ -2679,8 +2679,11 @@ do
 
 			local healthRegenOutOfCombat = value * statModContext("ADD_NORMAL_HEALTH_REG_MOD_HEALTH")
 			self:ProcessStat(StatLogic.Stats.HealthRegenOutOfCombat, healthRegenOutOfCombat, infoTable, link, color, statModContext, false, db.profile.showHP5NCFromHealth)
+
+			local healthRegen = value * statModContext("ADD_HEALTH_REG_MOD_HEALTH")
+			self:ProcessStat(StatLogic.Stats.HealthRegen, healthRegen, infoTable, link, color, statModContext, false, db.profile.showHP5FromHealth)
 		elseif stat == StatLogic.Stats.HealthRegenOutOfCombat then
-			local mod = statModContext("MOD_NORMAL_HEALTH_REGEN")
+			local mod = statModContext("MOD_NORMAL_HEALTH_REG")
 			value = value * mod
 			if show then
 				infoTable[stat] = infoTable[stat] + value
@@ -3273,7 +3276,10 @@ local summaryCalcData = {
 		func = function(sum, statModContext)
 			return sum[StatLogic.Stats.HealthRegen]
 				+ summaryFunc[StatLogic.Stats.Spirit](sum, statModContext) * statModContext("ADD_NORMAL_HEALTH_REG_MOD_SPI") * statModContext("MOD_NORMAL_HEALTH_REG") * statModContext("ADD_HEALTH_REG_MOD_NORMAL_HEALTH_REG")
-				+ summaryFunc[StatLogic.Stats.Health](sum, statModContext) * statModContext("ADD_NORMAL_HEALTH_REG_MOD_HEALTH") * statModContext("MOD_NORMAL_HEALTH_REG") * statModContext("ADD_HEALTH_REG_MOD_NORMAL_HEALTH_REG")
+				+ summaryFunc[StatLogic.Stats.Health](sum, statModContext) * (
+					statModContext("ADD_HEALTH_REG_MOD_HEALTH")
+					+ statModContext("ADD_NORMAL_HEALTH_REG_MOD_HEALTH") * statModContext("MOD_NORMAL_HEALTH_REG") * statModContext("ADD_HEALTH_REG_MOD_NORMAL_HEALTH_REG")
+				)
 		end,
 	},
 	-- Health Regen while Out of Combat - HEALTH_REG, SPI
