@@ -942,6 +942,37 @@ StatLogic.StatModTable["ALL"] = {
 			["value"] = 1.0,
 		},
 	},
+	["ADD_HEALTH_MOD_STA"] = {
+		{
+			["level"] = setmetatable({
+				[81] = 10.8,
+				[82] = 11.6,
+				[83] = 12.4,
+				[84] = 13.2,
+				[85] = 14.0,
+			}, {
+				__index = function(_, level)
+					if level > 85 then
+						return 14
+					else
+						return 10
+					end
+				end
+			})
+		},
+	},
+	["ADD_MANA_REGEN_OUT_OF_COMBAT_MOD_NORMAL_MANA_REGEN"] = {
+		-- Base
+		{
+			["value"] = 1.0,
+		},
+	},
+	["ADD_MANA_REGEN_OUT_OF_COMBAT_MOD_GENERIC_MANA_REGEN"] = {
+		-- Base
+		{
+			["value"] = 1.0,
+		},
+	},
 	["MOD_STR"] = {
 	},
 	["MOD_AGI"] = {
