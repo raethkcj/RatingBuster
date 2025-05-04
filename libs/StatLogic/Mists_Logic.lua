@@ -361,8 +361,8 @@ if addon.class == "DRUID" then
 			},
 			-- Talent: Heart of the Wild (Bear Form)
 			{
-				["tab"] = 1,
-				["row"] = 6,
+				["tab"] = 6,
+				["num"] = 1,
 				["value"] = 0.95,
 				["aura"] = 5487,
 			},
@@ -378,21 +378,21 @@ if addon.class == "DRUID" then
 			},
 			-- Talent: Heart of the Wild
 			{
-				["tab"] = 1,
-				["row"] = 6,
+				["tab"] = 6,
+				["num"] = 1,
 				["value"] = 0.06,
 			},
 			-- Talent: Heart of the Wild (Bear Form)
 			{
-				["tab"] = 1,
-				["row"] = 6,
+				["tab"] = 6,
+				["num"] = 1,
 				["value"] = 0.5,
 				["aura"] = 5487,
 			},
 			-- Talent: Heart of the Wild (Cat Form)
 			{
-				["tab"] = 1,
-				["row"] = 6,
+				["tab"] = 6,
+				["num"] = 1,
 				["value"] = 1.1,
 				["aura"] = 768,
 			},
@@ -415,8 +415,8 @@ if addon.class == "DRUID" then
 			},
 			-- Talent: Heart of the Wild
 			{
-				["tab"] = 1,
-				["row"] = 6,
+				["tab"] = 6,
+				["num"] = 1,
 				["value"] = 0.06,
 			},
 		},
@@ -432,8 +432,8 @@ if addon.class == "DRUID" then
 			},
 			-- Talent: Heart of the Wild
 			{
-				["tab"] = 1,
-				["row"] = 6,
+				["tab"] = 6,
+				["num"] = 1,
 				["value"] = 0.06,
 			},
 		},
@@ -502,9 +502,11 @@ if addon.class == "DRUID" then
 		},
 		["ADD_HEALTH_REG_MOD_HEALTH"] = {
 			-- Talent: Ysera's Gift
-			["tab"] = 1,
-			["num"] = 1,
-			["value"] = 0.05,
+			{
+				["tab"] = 2,
+				["num"] = 1,
+				["value"] = 0.05,
+			},
 		},
 	}
 elseif addon.class == "DEATHKNIGHT" then
@@ -622,8 +624,8 @@ elseif addon.class == "DEATHKNIGHT" then
 		["ADD_HEALTH_REG_MOD_HEALTH"] = {
 			-- Talent: Conversion
 			{
-				["tab"] = 3,
-				["num"] = 4,
+				["tab"] = 4,
+				["num"] = 3,
 				["aura"] = 119975,
 				["value"] = 0.03 * 5,
 			},

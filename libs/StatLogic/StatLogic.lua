@@ -1405,12 +1405,20 @@ do
 
 		local newValue
 		if case.tab and case.num then
-			-- Talent Rank
-			local r = select(5, StatLogic:GetOrderedTalentInfo(case.tab, case.num, false, false, context.spec))
-			if case.rank then
-				newValue = case.rank[r]
-			elseif r > 0 then
-				newValue = case.value
+			if addon.tocversion < 50000 then
+				-- Vanilla-style talents with tabs and ranks
+				local r = select(5, StatLogic:GetOrderedTalentInfo(case.tab, case.num, false, false, context.spec))
+				if case.rank then
+					newValue = case.rank[r]
+				elseif r > 0 then
+					newValue = case.value
+				end
+			else
+				-- Mists-style talents with rows, columns and no ranks
+				local selected = select(4, StatLogic:GetOrderedTalentInfo(case.tab, case.num, context.spec))
+				if selected then
+					newValue = case.value
+				end
 			end
 		elseif case.aura and case.rank then
 			local aura = StatLogic:GetAuraInfo(GetSpellName(case.aura))
