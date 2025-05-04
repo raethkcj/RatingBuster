@@ -421,21 +421,14 @@ if addon.class == "DRUID" then
 			},
 		},
 		["MOD_INT"] = {
-			-- Leather Specialization (Balance)
+			-- Leather Specialization (Balance, Restoration)
 			{
 				["value"] = 0.05,
 				["armorspec"] = {
 					[1] = true,
-				},
-				["known"] = 86104,
-			},
-			-- Leather Specialization (Restoration)
-			{
-				["value"] = 0.05,
-				["armorspec"] = {
 					[4] = true,
 				},
-				["known"] = 86093,
+				["spellid"] = 86104,
 			},
 			-- Talent: Heart of the Wild
 			{
@@ -533,16 +526,106 @@ elseif addon.class == "DEATHKNIGHT" then
 				["value"] = 2.5,
 			},
 		},
+		["ADD_DODGE"] = {
+			-- Veteran of the Third War
+			{
+				["known"] = 50029,
+				["value"] = 2,
+			},
+		},
 		["ADD_PARRY"] = {
 			-- Base
 			{
 				["value"] = 3.0,
+			},
+			-- Buff: Dancing Rune Weapon
+			{
+				["aura"] = 81256,
+				["value"] = 20,
 			},
 		},
 		["ADD_AP_MOD_STR"] = {
 			-- Base
 			{
 				["value"] = 2,
+			},
+		},
+		["MOD_STR"] = {
+			-- Buff: Pillar of Frost
+			{
+				["aura"] = 51271,
+				["value"] = 0.2,
+			},
+			-- Plate Specialization (Frost, Unholy)
+			{
+				["value"] = 0.05,
+				["armorspec"] = {
+					[2] = true,
+					[3] = true,
+				},
+				["spellid"] = 86113,
+			},
+			-- Passive: Unholy Might
+			{
+				["known"] = 91107,
+				["value"] = 0.35,
+			},
+		},
+		["MOD_STA"] = {
+			-- Buff: Blood Presence
+			{
+				["aura"] = 48263,
+				["value"] = 0.25,
+			},
+			-- Passive: Veteran of the Third War
+			{
+				["known"] = 50029,
+				["value"] = 0.09,
+			},
+			-- Plate Specialization (Blood)
+			{
+				["value"] = 0.05,
+				["armorspec"] = {
+					[1] = true,
+				},
+				["known"] = 86537,
+			},
+		},
+		["MOD_ARMOR"] = {
+			-- Buff: Blood Presence
+			{
+				["aura"] = 48263,
+				["value"] = 0.55,
+			},
+		},
+		["MOD_HEALTH"] = {
+			-- Buff: Vampiric Blood
+			{
+				["aura"] = 5233,
+				["value"] = 0.15,
+			},
+		},
+		["ADD_CRIT_RATING_MOD_DODGE_RATING"] = {
+			-- Buff: Riposte
+			{
+				["aura"] = 145677,
+				["value"] = 0.75,
+			},
+		},
+		["ADD_CRIT_RATING_MOD_PARRY_RATING"] = {
+			-- Buff: Riposte
+			{
+				["aura"] = 145677,
+				["value"] = 0.75,
+			},
+		},
+		["ADD_HEALTH_REG_MOD_HEALTH"] = {
+			-- Talent: Conversion
+			{
+				["tab"] = 3,
+				["num"] = 4,
+				["aura"] = 119975,
+				["value"] = 0.03 * 5,
 			},
 		},
 	}
