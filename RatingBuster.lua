@@ -2635,6 +2635,9 @@ do
 
 			local attackPower = value * statModContext("ADD_AP_MOD_INT")
 			self:ProcessStat(StatLogic.Stats.AttackPower, attackPower, infoTable, link, color, statModContext, false, db.profile.showAPFromInt)
+
+			local agility = value * statModContext("ADD_AGI_MOD_INT")
+			self:ProcessStat(StatLogic.Stats.Agility, agility, infoTable, link, color, statModContext, false, db.profile.showAgiFromInt)
 		elseif stat == StatLogic.Stats.Spirit and db.profile.showStats then
 			local mod = statModContext("MOD_SPI")
 			value = value * mod
@@ -3197,7 +3200,10 @@ local summaryCalcData = {
 		option = "sumAgi",
 		stat = StatLogic.Stats.Agility,
 		func = function(sum, statModContext)
-			return statModContext("MOD_AGI") * sum[StatLogic.Stats.Agility]
+			return statModContext("MOD_AGI") * (
+				sum[StatLogic.Stats.Agility]
+				+ summaryFunc[StatLogic.Stats.Intellect](sum, statModContext) * statModContext("ADD_AGI_MOD_INT")
+			)
 		end,
 	},
 	-- Stamina - STA

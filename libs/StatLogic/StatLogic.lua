@@ -458,6 +458,10 @@ StatLogic.StatModInfo = {
 -- StatMods used by RatingBuster to dynamically add options for stat breakdowns
 local addedInfoMods = {
 	{
+		add = "AGI",
+		mod = "INT",
+	},
+	{
 		add = "AP",
 		mod = "AGI",
 	},
