@@ -668,6 +668,41 @@ elseif addon.class == "HUNTER" then
 				["value"] = 2,
 			},
 		},
+		["MOD_RANGED_AP"] = {
+			-- Buff: Aspect of the Hawk
+			{
+				["buff"] = 13165,
+				["value"] = 0.35,
+				["group"] = addon.ExclusiveGroup.Aspect,
+			},
+			-- Buff: Aspect of the Iron Hawk
+			{
+				["buff"] = 109260,
+				["value"] = 0.35,
+				["group"] = addon.ExclusiveGroup.Aspect,
+			},
+		},
+		["MOD_AGI"] = {
+			-- Mail Specialization
+			{
+				["value"] = 0.05,
+				["known"] = 86538,
+				["armorspec"] = {
+					[0] = true,
+					[1] = true,
+					[2] = true,
+					[3] = true,
+				},
+			},
+		},
+		["ADD_HEALTH_REG_MOD_HEALTH"] = {
+			-- Talent: Spirit Bond
+			{
+				["tab"] = 3,
+				["num"] = 3,
+				["value"] = 0.03 * 2.5,
+			},
+		},
 	}
 elseif addon.class == "MAGE" then
 	StatLogic.StatModTable["MAGE"] = {

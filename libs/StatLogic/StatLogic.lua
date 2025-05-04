@@ -1375,6 +1375,7 @@ do
 		Zandalar = 8,
 		Moxie = 9,
 		SetBonus = 10,
+		Aspect = 11,
 	}
 	local ExclusiveGroupCache = {}
 
