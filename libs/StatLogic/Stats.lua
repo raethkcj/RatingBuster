@@ -86,8 +86,11 @@ StatLogic.Stats.HealthRegenOutOfCombat = Stat:new()
 
 -- Generic Stats
 StatLogic.Stats.AllStats = Stat:new({ show = false })
+StatLogic.Stats.Hit = Stat:new({ show = false })
 StatLogic.Stats.HitRating = Stat:new({ show = false })
+StatLogic.Stats.Crit = Stat:new({ show = false })
 StatLogic.Stats.CritRating = Stat:new({ show = false })
+StatLogic.Stats.Haste = Stat:new({ show = false })
 StatLogic.Stats.HasteRating = Stat:new({ show = false })
 StatLogic.Stats.GenericAttackPower = Stat:new({ show = false })
 StatLogic.Stats.FeralAttackPower = Stat:new({ show = false })

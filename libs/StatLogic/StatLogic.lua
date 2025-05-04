@@ -602,6 +602,10 @@ local addedInfoMods = {
 		mod = "NORMAL_HEALTH_REG",
 	},
 	{
+		add = "HIT_RATING",
+		mod = "SPI",
+	},
+	{
 		add = "MANA",
 		mod = "INT",
 	},

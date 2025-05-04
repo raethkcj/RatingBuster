@@ -2398,35 +2398,26 @@ do
 			end
 		elseif stat == StatLogic.Stats.HitRating then
 			local meleeHitRating = value * statModContext("ADD_MELEE_HIT_RATING_MOD_HIT_RATING")
-			self:ProcessStat(StatLogic.Stats.MeleeHitRating, meleeHitRating, infoTable, link, color, statModContext, isBaseStat, true)
-
-			local rangedHitRating = value * statModContext("ADD_RANGED_HIT_RATING_MOD_HIT_RATING")
-			self:ProcessStat(StatLogic.Stats.RangedHitRating, rangedHitRating, infoTable, link, color, statModContext, isBaseStat, true)
+			self:ProcessStat(StatLogic.Stats.MeleeHitRating, meleeHitRating, infoTable, link, color, statModContext, isBaseStat, db.profile.ratingPhysical)
 
 			local spellHitRating = value * statModContext("ADD_SPELL_HIT_RATING_MOD_HIT_RATING")
-			self:ProcessStat(StatLogic.Stats.SpellHitRating, spellHitRating, infoTable, link, color, statModContext, isBaseStat, true)
+			self:ProcessStat(StatLogic.Stats.SpellHitRating, spellHitRating, infoTable, link, color, statModContext, isBaseStat, db.profile.ratingSpell)
 		elseif stat == StatLogic.Stats.CritRating then
 			value = value * statModContext("MOD_CRIT_RATING")
 
 			local meleeCritRating = value * statModContext("ADD_MELEE_CRIT_RATING_MOD_CRIT_RATING")
-			self:ProcessStat(StatLogic.Stats.MeleeCritRating, meleeCritRating, infoTable, link, color, statModContext, isBaseStat, true)
-
-			local rangedCritRating = value * statModContext("ADD_RANGED_CRIT_RATING_MOD_CRIT_RATING")
-			self:ProcessStat(StatLogic.Stats.RangedCritRating, rangedCritRating, infoTable, link, color, statModContext, isBaseStat, true)
+			self:ProcessStat(StatLogic.Stats.MeleeCritRating, meleeCritRating, infoTable, link, color, statModContext, isBaseStat, db.profile.ratingPhysical)
 
 			local spellCritRating = value * statModContext("ADD_SPELL_CRIT_RATING_MOD_CRIT_RATING")
-			self:ProcessStat(StatLogic.Stats.SpellCritRating, spellCritRating, infoTable, link, color, statModContext, isBaseStat, true)
+			self:ProcessStat(StatLogic.Stats.SpellCritRating, spellCritRating, infoTable, link, color, statModContext, isBaseStat, db.profile.ratingSpell)
 		elseif stat == StatLogic.Stats.HasteRating then
 			value = value * statModContext("MOD_HASTE_RATING")
 
 			local meleeHasteRating = value * statModContext("ADD_MELEE_HASTE_RATING_MOD_HASTE_RATING")
-			self:ProcessStat(StatLogic.Stats.MeleeHasteRating, meleeHasteRating, infoTable, link, color, statModContext, isBaseStat, true)
-
-			local rangedHasteRating = value * statModContext("ADD_RANGED_HASTE_RATING_MOD_HASTE_RATING")
-			self:ProcessStat(StatLogic.Stats.RangedHasteRating, rangedHasteRating, infoTable, link, color, statModContext, isBaseStat, true)
+			self:ProcessStat(StatLogic.Stats.MeleeHasteRating, meleeHasteRating, infoTable, link, color, statModContext, isBaseStat, db.profile.ratingPhysical)
 
 			local spellHasteRating = value * statModContext("ADD_SPELL_HASTE_RATING_MOD_HASTE_RATING")
-			self:ProcessStat(StatLogic.Stats.SpellHasteRating, spellHasteRating, infoTable, link, color, statModContext, isBaseStat, true)
+			self:ProcessStat(StatLogic.Stats.SpellHasteRating, spellHasteRating, infoTable, link, color, statModContext, isBaseStat, db.profile.ratingSpell)
 		elseif StatLogic.RatingBase[stat] and db.profile.showRatings then
 			--------------------
 			-- Combat Ratings --
@@ -2442,6 +2433,24 @@ do
 				self:ProcessStat(StatLogic.Stats.Dodge, effect, infoTable, link, color, statModContext, isBaseStat, show or isBaseStat)
 			elseif stat == StatLogic.Stats.ParryRating then
 				self:ProcessStat(StatLogic.Stats.Parry, effect, infoTable, link, color, statModContext, isBaseStat, show or isBaseStat)
+			elseif stat == StatLogic.Stats.MeleeHitRating then
+				self:ProcessStat(StatLogic.Stats.MeleeHit, effect, infoTable, link, color, statModContext, isBaseStat, show)
+			elseif stat == StatLogic.Stats.RangedHitRating then
+				self:ProcessStat(StatLogic.Stats.RangedHit, effect, infoTable, link, color, statModContext, isBaseStat, show)
+			elseif stat == StatLogic.Stats.SpellHitRating then
+				self:ProcessStat(StatLogic.Stats.SpellHit, effect, infoTable, link, color, statModContext, isBaseStat, show)
+			elseif stat == StatLogic.Stats.MeleeCritRating then
+				self:ProcessStat(StatLogic.Stats.MeleeCrit, effect, infoTable, link, color, statModContext, isBaseStat, show)
+			elseif stat == StatLogic.Stats.RangedCritRating then
+				self:ProcessStat(StatLogic.Stats.RangedCrit, effect, infoTable, link, color, statModContext, isBaseStat, show)
+			elseif stat == StatLogic.Stats.SpellCritRating then
+				self:ProcessStat(StatLogic.Stats.SpellCrit, effect, infoTable, link, color, statModContext, isBaseStat, show)
+			elseif stat == StatLogic.Stats.MeleeHasteRating then
+				self:ProcessStat(StatLogic.Stats.MeleeHaste, effect, infoTable, link, color, statModContext, isBaseStat, show)
+			elseif stat == StatLogic.Stats.RangedHasteRating then
+				self:ProcessStat(StatLogic.Stats.RangedHaste, effect, infoTable, link, color, statModContext, isBaseStat, show)
+			elseif stat == StatLogic.Stats.SpellHasteRating then
+				self:ProcessStat(StatLogic.Stats.SpellHaste, effect, infoTable, link, color, statModContext, isBaseStat, show)
 			elseif stat == StatLogic.Stats.ExpertiseRating then
 				if addon.tocversion < 30000 then
 					-- Expertise is truncated in TBC but not in Wrath
@@ -2648,16 +2657,14 @@ do
 			local healingPower = value * statModContext("ADD_HEALING_MOD_SPI")
 			self:ProcessStat(StatLogic.Stats.HealingPower, healingPower, infoTable, link, color, statModContext, false, db.profile.showHealingFromSpi)
 
-			if db.profile.showSpellHitFromSpi then
-				local rating = value * statModContext("ADD_SPELL_HIT_RATING_MOD_SPI")
-				local effect = rating * statModContext("ADD_SPELL_HIT_MOD_SPELL_HIT_RATING")
-				infoTable[StatLogic.Stats.SpellHit] = infoTable[StatLogic.Stats.SpellHit] + effect
-			end
-			if db.profile.showSpellCritFromSpi then
-				local rating = value * statModContext("ADD_SPELL_CRIT_RATING_MOD_SPI")
-				local effect = rating * statModContext("ADD_SPELL_CRIT_MOD_SPELL_CRIT_RATING")
-				infoTable[StatLogic.Stats.SpellCrit] = infoTable[StatLogic.Stats.SpellCrit] + effect
-			end
+			local hitRating = value * statModContext("ADD_HIT_RATING_MOD_SPI")
+			self:ProcessStat(StatLogic.Stats.HitRating, hitRating, infoTable, link, color, statModContext, false, db.profile.showHitFromSpi)
+
+			local spellHitRating = value * statModContext("ADD_SPELL_HIT_RATING_MOD_SPI")
+			self:ProcessStat(StatLogic.Stats.SpellHitRating, spellHitRating, infoTable, link, color, statModContext, false, db.profile.showSpellHitFromSpi)
+
+			local spellCritRating = value * statModContext("ADD_SPELL_CRIT_RATING_MOD_SPI")
+			self:ProcessStat(StatLogic.Stats.SpellCritRating, spellCritRating, infoTable, link, color, statModContext, false, db.profile.showSpellCritFromSpi)
 		elseif stat == StatLogic.Stats.Health then
 			local mod = statModContext("MOD_HEALTH")
 			value = value * mod
@@ -2742,15 +2749,6 @@ do
 			if show then
 				infoTable[stat] = infoTable[stat] + value
 			end
-		elseif stat == StatLogic.Stats.SpellCrit then
-			if show then
-				infoTable[stat] = infoTable[stat] + value
-			end
-
-			if db.profile.showDodgeFromSpellCrit then
-				local effect = value * statModContext("ADD_DODGE_MOD_SPELL_CRIT")
-				infoTable[StatLogic.Stats.Dodge] = infoTable[StatLogic.Stats.Dodge] + effect
-			end
 		elseif stat == StatLogic.Stats.Defense then
 			local blockChance = value * statModContext("ADD_BLOCK_CHANCE_MOD_DEFENSE")
 			if db.profile.showBlockChanceFromDefense then
@@ -2814,6 +2812,66 @@ do
 			end
 			if show and isBaseStat then
 				infoTable["Percent"] = value
+			elseif show then
+				infoTable[stat] = infoTable[stat] + value
+			end
+		elseif stat == StatLogic.Stats.MeleeHit then
+			if show and isBaseStat then
+				infoTable["Percent"] = value
+			elseif show then
+				infoTable[stat] = infoTable[stat] + value
+			end
+		elseif stat == StatLogic.Stats.SpellHit then
+			if show and isBaseStat then
+				local displayType = "Percent"
+				if (
+					db.profile.ratingPhysical
+					and statModContext("ADD_SPELL_HIT_MOD_SPELL_HIT_RATING") ~= statModContext("ADD_MELEE_HIT_MOD_MELEE_HIT_RATING")
+				) then
+					displayType = "Spell"
+				end
+				infoTable[displayType] = value
+			elseif show then
+				infoTable[stat] = infoTable[stat] + value
+			end
+		elseif stat == StatLogic.Stats.MeleeCrit then
+			if show and isBaseStat then
+				infoTable["Percent"] = value
+			elseif show then
+				infoTable[stat] = infoTable[stat] + value
+			end
+		elseif stat == StatLogic.Stats.SpellCrit then
+			if show and isBaseStat then
+				local displayType = "Percent"
+				if (
+					db.profile.ratingPhysical
+					and statModContext("ADD_SPELL_CRIT_MOD_SPELL_CRIT_RATING") ~= statModContext("ADD_MELEE_CRIT_MOD_MELEE_CRIT_RATING")
+				) then
+					displayType = "Spell"
+				end
+				infoTable[displayType] = value
+			elseif show then
+				infoTable[stat] = infoTable[stat] + value
+			end
+
+			local dodge = value * statModContext("ADD_DODGE_MOD_SPELL_CRIT")
+			self:ProcessStat(StatLogic.Stats.Dodge, dodge, infoTable, link, color, statModContext, false, db.profile.showDodgeFromSpellCrit)
+		elseif stat == StatLogic.Stats.MeleeHaste then
+			if show and isBaseStat then
+				infoTable["Percent"] = value
+			elseif show then
+				infoTable[stat] = infoTable[stat] + value
+			end
+		elseif stat == StatLogic.Stats.SpellHaste then
+			if show and isBaseStat then
+				local displayType = "Percent"
+				if (
+					db.profile.ratingPhysical
+					and statModContext("ADD_SPELL_HASTE_MOD_SPELL_HASTE_RATING") ~= statModContext("ADD_MELEE_HASTE_MOD_MELEE_HASTE_RATING")
+				) then
+					displayType = "Spell"
+				end
+				infoTable[displayType] = value
 			elseif show then
 				infoTable[stat] = infoTable[stat] + value
 			end
@@ -3300,6 +3358,13 @@ local summaryCalcData = {
 			)
 		end,
 	},
+	{
+		stat = StatLogic.Stats.HitRating,
+		func = function(sum, statModContext)
+			return sum[StatLogic.Stats.HitRating]
+				+ sum[StatLogic.Stats.Spirit] * statModContext("ADD_HIT_RATING_MOD_SPI")
+		end,
+	},
 	-- Hit Chance - MELEE_HIT_RATING, WEAPON_SKILL
 	{
 		option = "sumHit",
@@ -3315,7 +3380,7 @@ local summaryCalcData = {
 		stat = StatLogic.Stats.MeleeHitRating,
 		func = function(sum, statModContext)
 			return sum[StatLogic.Stats.MeleeHitRating]
-				+ sum[StatLogic.Stats.HitRating] * statModContext("ADD_MELEE_HIT_RATING_MOD_HIT_RATING")
+				+ summaryFunc[StatLogic.Stats.HitRating](sum, statModContext) * statModContext("ADD_MELEE_HIT_RATING_MOD_HIT_RATING")
 		end,
 	},
 	-- Ranged Hit Chance - MELEE_HIT_RATING, RANGED_HIT_RATING, AGI
@@ -3333,7 +3398,7 @@ local summaryCalcData = {
 		stat = StatLogic.Stats.RangedHitRating,
 		func = function(sum, statModContext)
 			return sum[StatLogic.Stats.RangedHitRating]
-				+ sum[StatLogic.Stats.HitRating] * statModContext("ADD_RANGED_HIT_RATING_MOD_HIT_RATING")
+				+ summaryFunc[StatLogic.Stats.HitRating](sum, statModContext) * statModContext("ADD_RANGED_HIT_RATING_MOD_HIT_RATING")
 		end,
 	},
 	{
@@ -3624,7 +3689,7 @@ local summaryCalcData = {
 		stat = StatLogic.Stats.SpellHitRating,
 		func = function(sum, statModContext)
 			return sum[StatLogic.Stats.SpellHitRating]
-				+ sum[StatLogic.Stats.HitRating] * statModContext("ADD_SPELL_HIT_RATING_MOD_HIT_RATING")
+				+ summaryFunc[StatLogic.Stats.HitRating](sum, statModContext) * statModContext("ADD_SPELL_HIT_RATING_MOD_HIT_RATING")
 				+ summaryFunc[StatLogic.Stats.Spirit](sum, statModContext) * statModContext("ADD_SPELL_HIT_RATING_MOD_SPI")
 		end,
 	},
