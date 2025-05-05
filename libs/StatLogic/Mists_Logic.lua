@@ -729,6 +729,25 @@ elseif addon.class == "MAGE" then
 				["value"] = 1,
 			},
 		},
+		["MOD_INT"] = {
+			-- Passive: Wizardry
+			{
+				["known"] = 89744,
+				["value"] = 0.05,
+			},
+		},
+		["MOD_MANA_REGEN"] = {
+			-- Talent: Invocation
+			{
+				["aura"] = 116257,
+				["value"] = -0.5,
+			},
+			-- Talent: Rune of Power
+			{
+				["aura"] = 116014,
+				["value"] = 0.75,
+			},
+		},
 	}
 elseif addon.class == "MONK" then
 	StatLogic.StatModTable["MONK"] = {
