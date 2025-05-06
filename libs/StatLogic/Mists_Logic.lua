@@ -768,6 +768,18 @@ elseif addon.class == "MONK" then
 				["value"] = 2.5,
 			},
 		},
+		["ADD_DODGE"] = {
+			-- Buff: Elusive Brew
+			-- TODO: Needs to be exact spell ID
+			{
+				["aura"] = 115308,
+				["value"] = 30,
+			},
+			{
+				["aura"] = 126050,
+				["value"] = 25,
+			},
+		},
 		["ADD_PARRY"] = {
 			-- Base
 			{
@@ -778,11 +790,27 @@ elseif addon.class == "MONK" then
 				["known"] = 124334,
 				["value"] = 5.0,
 			},
+			-- Buff: Shuffle
+			{
+				["aura"] = 115307,
+				["value"] = 20,
+			},
+			-- Buff: Sparring
+			{
+				["aura"] = 116033,
+				["stack"] = 5,
+				["max_stacks"] = 3,
+			},
 		},
 		["ADD_AP_MOD_STR"] = {
 			-- Base
 			{
 				["value"] = 1,
+			},
+			-- Stance of the Wise Serpent
+			{
+				["stance"] = "interface/icons/monk_stance_wiseserpent",
+				["value"] = -1,
 			},
 		},
 		["ADD_AP_MOD_AGI"] = {
@@ -790,11 +818,99 @@ elseif addon.class == "MONK" then
 			{
 				["value"] = 2,
 			},
+			-- Stance of the Wise Serpent
+			{
+				["stance"] = "interface/icons/monk_stance_wiseserpent",
+				["value"] = -2,
+			},
 		},
 		["ADD_RANGED_AP_MOD_AGI"] = {
 			-- Base
 			{
 				["value"] = 1,
+			},
+		},
+		["ADD_SPELL_POWER_MOD_INT"] = {
+			-- Base
+			{
+				["value"] = 1,
+			},
+		},
+		["MOD_HEALTH"] = {
+			-- Buff: Fortifying Brew
+			{
+				["aura"] = 120954,
+				["value"] = 0.2,
+			},
+		},
+		["MOD_AGI"] = {
+			-- Leather Specialization
+			{
+				["value"] = 0.05,
+				["known"] = 120227,
+				["armorspec"] = {
+					[3] = true,
+				},
+			},
+		},
+		["MOD_STA"] = {
+			-- Stance of the Sturdy Ox
+			{
+				["stance"] = "interface/icons/monk_stance_drunkenox",
+				["value"] = 0.2,
+			},
+			-- Leather Specialization
+			{
+				["value"] = 0.05,
+				["known"] = 120225,
+				["armorspec"] = {
+					[1] = true,
+				},
+			},
+		},
+		["MOD_INT"] = {
+			-- Leather Specialization
+			{
+				["value"] = 0.05,
+				["known"] = 120224,
+				["armorspec"] = {
+					[2] = true,
+				},
+			},
+		},
+		["ADD_HIT_RATING_MOD_SPI"] = {
+			-- Stance of the Wise Serpent
+			{
+				["stance"] = "interface/icons/monk_stance_wiseserpent",
+				["value"] = 0.5,
+			},
+		},
+		["ADD_EXPERTISE_RATING_MOD_SPI"] = {
+			-- Stance of the Wise Serpent
+			{
+				["stance"] = "interface/icons/monk_stance_wiseserpent",
+				["value"] = 0.5,
+			},
+		},
+		["MOD_HASTE_RATING"] = {
+			-- Stance of the Wise Serpent
+			{
+				["stance"] = "interface/icons/monk_stance_wiseserpent",
+				["value"] = 0.5,
+			},
+		},
+		["ADD_AP_MOD_SPELL_POWER"] = {
+			-- Stance of the Wise Serpent
+			{
+				["stance"] = "interface/icons/monk_stance_wiseserpent",
+				["value"] = 2,
+			},
+		},
+		["ADD_MANA_REGEN_MOD_NORMAL_MANA_REGEN"] = {
+			-- Passive: Mana Meditation
+			{
+				["known"] = 121278,
+				["value"] = 0.5,
 			},
 		},
 	}
