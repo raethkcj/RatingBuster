@@ -2909,7 +2909,7 @@ do
 			local parryReduction = value * -statModContext("ADD_PARRY_REDUCTION_MOD_EXPERTISE")
 			self:ProcessStat(StatLogic.Stats.ParryReduction, parryReduction, infoTable, link, color, statModContext, false, db.profile.showParryReductionFromExpertise)
 
-			local spellHit = value * -statModContext("ADD_SPELL_HIT_MOD_EXPERTISE")
+			local spellHit = value * statModContext("ADD_SPELL_HIT_MOD_EXPERTISE")
 			self:ProcessStat(StatLogic.Stats.SpellHit, spellHit, infoTable, link, color, statModContext, false, db.profile.showSpellHitFromExpertise)
 		elseif stat == StatLogic.Stats.DodgeReduction then
 			if show then
