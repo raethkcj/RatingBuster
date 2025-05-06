@@ -321,6 +321,12 @@ if addon.class == "DRUID" then
 				["group"] = addon.ExclusiveGroup.Feral,
 			},
 		},
+		["ADD_SPELL_POWER_MOD_INT"] = {
+			-- Base
+			{
+				["value"] = 1,
+			},
+		},
 		["MOD_ARMOR"] = {
 			-- Buff: Bear Form
 			{
@@ -729,6 +735,12 @@ elseif addon.class == "MAGE" then
 				["value"] = 1,
 			},
 		},
+		["ADD_SPELL_POWER_MOD_INT"] = {
+			-- Base
+			{
+				["value"] = 1,
+			},
+		},
 		["MOD_INT"] = {
 			-- Passive: Wizardry
 			{
@@ -952,6 +964,12 @@ elseif addon.class == "PALADIN" then
 				["value"] = 2,
 			},
 		},
+		["ADD_SPELL_POWER_MOD_INT"] = {
+			-- Base
+			{
+				["value"] = 1,
+			},
+		},
 	}
 elseif addon.class == "PRIEST" then
 	StatLogic.StatModTable["PRIEST"] = {
@@ -973,6 +991,12 @@ elseif addon.class == "PRIEST" then
 			},
 		},
 		["ADD_AP_MOD_STR"] = {
+			-- Base
+			{
+				["value"] = 1,
+			},
+		},
+		["ADD_SPELL_POWER_MOD_INT"] = {
 			-- Base
 			{
 				["value"] = 1,
@@ -1060,6 +1084,12 @@ elseif addon.class == "SHAMAN" then
 				["value"] = 2,
 			},
 		},
+		["ADD_SPELL_POWER_MOD_INT"] = {
+			-- Base
+			{
+				["value"] = 1,
+			},
+		},
 	}
 elseif addon.class == "WARLOCK" then
 	StatLogic.StatModTable["WARLOCK"] = {
@@ -1081,6 +1111,12 @@ elseif addon.class == "WARLOCK" then
 			},
 		},
 		["ADD_AP_MOD_STR"] = {
+			-- Base
+			{
+				["value"] = 1,
+			},
+		},
+		["ADD_SPELL_POWER_MOD_INT"] = {
 			-- Base
 			{
 				["value"] = 1,
