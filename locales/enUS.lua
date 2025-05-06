@@ -354,7 +354,7 @@ L["statList"] = {
 	{"block", StatLogic.Stats.BlockRating},
 	{"parry", StatLogic.Stats.ParryRating},
 
-	{"spell power", false}, -- Shiffar's Nexus-Horn
+	{"spell power", StatLogic.Stats.SpellPower},
 	{"spell critical strikes", false}, -- Cyclone Regalia, Tirisfal Regalia
 	{"spell critical strike rating", StatLogic.Stats.SpellCritRating},
 	{"spell critical hit rating", StatLogic.Stats.SpellCritRating},

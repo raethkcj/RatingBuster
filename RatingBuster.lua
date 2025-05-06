@@ -360,6 +360,14 @@ local options = {
 					hidden = true,
 					args = {},
 				},
+				spell_power = {
+					type = 'group',
+					name = L[StatLogic.Stats.SpellPower],
+					desc = L["Changes the display of %s"]:format(L[StatLogic.Stats.SpellPower]),
+					order = 14,
+					args = {},
+					hidden = true,
+				},
 				spell_dmg = {
 					type = 'group',
 					name = L[StatLogic.Stats.SpellDamage],
@@ -859,6 +867,11 @@ local options = {
 					name = L["Stat - Spell"],
 					desc = L["Choose spell damage and healing stats for summary"],
 					args = {
+						sumSpellPower = {
+							type = 'toggle',
+							name = L["Sum %s"]:format(L[StatLogic.Stats.SpellPower]),
+							desc = L[StatLogic.Stats.SpellPower],
+						},
 						sumSpellDmg = {
 							type = 'toggle',
 							name = L["Sum %s"]:format(L[StatLogic.Stats.SpellDamage]),
@@ -2606,6 +2619,9 @@ do
 			local spellCrit = value * statModContext("ADD_SPELL_CRIT_MOD_INT")
 			self:ProcessStat(StatLogic.Stats.SpellCrit, spellCrit, infoTable, link, color, statModContext, false, db.profile.showSpellCritFromInt)
 
+			local spellPower = value * statModContext("ADD_SPELL_POWER_MOD_INT")
+			self:ProcessStat(StatLogic.Stats.SpellPower, spellPower, infoTable, link, color, statModContext, false, db.profile.showSpellPowerFromInt)
+
 			local spellDamage = value * (
 				statModContext("ADD_SPELL_DMG_MOD_INT")
 				+ statModContext("ADD_SPELL_DMG_MOD_PET_INT") * statModContext("MOD_PET_INT") * statModContext("ADD_PET_INT_MOD_INT")
@@ -2958,6 +2974,20 @@ do
 			elseif show then
 				infoTable[stat] = infoTable[stat] + value
 			end
+		elseif stat == StatLogic.Stats.SpellPower then
+			local mod = statModContext("MOD_SPELL_POWER")
+			value = value * mod
+			if isBaseStat and mod ~= 1 and db.profile.showModifiedSpellPower then
+				infoTable["Decimal"] = value
+			elseif show then
+				infoTable[stat] = infoTable[stat] + value
+			end
+
+			local spellDamage = value * statModContext("ADD_SPELL_DMG_MOD_SPELL_POWER")
+			self:ProcessStat(StatLogic.Stats.SpellDamage, spellDamage, infoTable, link, color, statModContext, false, db.profile.showSpellDmgFromSpellPower)
+
+			local healingPower = value * statModContext("ADD_HEALING_MOD_SPELL_POWER")
+			self:ProcessStat(StatLogic.Stats.HealingPower, healingPower, infoTable, link, color, statModContext, false, db.profile.showHealingFromSpellPower)
 		elseif stat == StatLogic.Stats.SpellDamage then
 			local mod = statModContext("MOD_SPELL_DMG")
 			value = value * mod
@@ -3621,11 +3651,22 @@ local summaryCalcData = {
 	------------------------------
 	-- Spell Damage - SPELL_DMG, STA, INT, SPI
 	{
+		option = "sumSpellPower",
+		stat = StatLogic.Stats.SpellPower,
+		func = function(sum, statModContext)
+			return statModContext("MOD_SPELL_POWER") * (
+				sum[StatLogic.Stats.SpellPower]
+				+ summaryFunc[StatLogic.Stats.Intellect](sum, statModContext) * statModContext("ADD_SPELL_POWER_MOD_INT")
+			)
+		end,
+	},
+	{
 		option = "sumSpellDmg",
 		stat = StatLogic.Stats.SpellDamage,
 		func = function(sum, statModContext)
 			return statModContext("MOD_SPELL_DMG") * (
 				sum[StatLogic.Stats.SpellDamage]
+				+ summaryFunc[StatLogic.Stats.SpellPower](sum, statModContext) * statModContext("ADD_SPELL_DMG_MOD_SPELL_POWER")
 				+ summaryFunc[StatLogic.Stats.Strength](sum, statModContext) * statModContext("ADD_SPELL_DMG_MOD_STR")
 				+ summaryFunc[StatLogic.Stats.Stamina](sum, statModContext) * (statModContext("ADD_SPELL_DMG_MOD_STA") + statModContext("ADD_SPELL_DMG_MOD_PET_STA") * statModContext("MOD_PET_STA") * statModContext("ADD_PET_STA_MOD_STA"))
 				+ summaryFunc[StatLogic.Stats.Intellect](sum, statModContext) * (
@@ -3700,6 +3741,7 @@ local summaryCalcData = {
 		func = function(sum, statModContext)
 			return statModContext("MOD_HEALING") * (
 				sum[StatLogic.Stats.HealingPower]
+				+ summaryFunc[StatLogic.Stats.SpellPower](sum, statModContext) * statModContext("ADD_HEALING_MOD_SPELL_POWER")
 				+ (summaryFunc[StatLogic.Stats.Strength](sum, statModContext) * statModContext("ADD_HEALING_MOD_STR"))
 				+ (summaryFunc[StatLogic.Stats.Agility](sum, statModContext) * statModContext("ADD_HEALING_MOD_AGI"))
 				+ (summaryFunc[StatLogic.Stats.Intellect](sum, statModContext) * (

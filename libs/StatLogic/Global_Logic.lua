@@ -87,6 +87,16 @@ StatLogic.StatModTable["GLOBAL"] = {
 			["level"] = addon.conversionFallback(addon.DodgePerAgi[addon.class], StatLogic.GetDodgePerAgi)
 		}
 	},
+	["ADD_SPELL_DMG_MOD_SPELL_POWER"] = {
+		{
+			["value"] = 1,
+		},
+	},
+	["ADD_HEALING_MOD_SPELL_POWER"] = {
+		{
+			["value"] = 1,
+		},
+	},
 }
 
 addon.GenerateWeaponSubclassStats()

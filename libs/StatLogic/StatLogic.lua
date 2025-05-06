@@ -479,7 +479,7 @@ local addedInfoMods = {
 	},
 	{
 		add = "AP",
-		mod = "ARMOR",
+		mod = "SPELL_POWER",
 	},
 	{
 		add = "AP",
@@ -576,6 +576,10 @@ local addedInfoMods = {
 	{
 		add = "HEALING",
 		mod = "MANA",
+	},
+	{
+		add = "HEALING",
+		mod = "SPELL_POWER",
 	},
 	{
 		add = "HEALING",
@@ -702,10 +706,6 @@ local addedInfoMods = {
 		mod = "SPI",
 	},
 	{
-		add = "SPELL_HIT_RATING",
-		mod = "SPI",
-	},
-	{
 		add = "SPELL_DMG",
 		mod = "AP",
 	},
@@ -731,6 +731,10 @@ local addedInfoMods = {
 	},
 	{
 		add = "SPELL_DMG",
+		mod = "SPELL_POWER",
+	},
+	{
+		add = "SPELL_DMG",
 		mod = "SPI",
 	},
 	{
@@ -740,6 +744,14 @@ local addedInfoMods = {
 	{
 		add = "SPELL_DMG",
 		mod = "STR",
+	},
+	{
+		add = "SPELL_HIT_RATING",
+		mod = "SPI",
+	},
+	{
+		add = "SPELL_POWER",
+		mod = "INT",
 	},
 	{
 		add = "STR",
@@ -763,6 +775,10 @@ local addedInfoMods = {
 	},
 	{
 		mod = "RANGED_AP",
+		finalAdjust = 1,
+	},
+	{
+		mod = "SPELL_POWER",
 		finalAdjust = 1,
 	},
 	{
