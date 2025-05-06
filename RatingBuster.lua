@@ -2462,17 +2462,7 @@ do
 					-- Expertise is truncated in TBC but not in Wrath
 					effect = floor(effect)
 				end
-				if db.profile.showExpertiseFromExpertiseRating then
-					infoTable["Decimal"] = effect
-				end
-				if db.profile.showDodgeReductionFromExpertise then
-					local dodgeReduction = effect * -statModContext("ADD_DODGE_REDUCTION_MOD_EXPERTISE")
-					infoTable[StatLogic.Stats.DodgeReduction] = infoTable[StatLogic.Stats.DodgeReduction] + dodgeReduction
-				end
-				if db.profile.showParryReductionFromExpertise then
-					local parryReduction = effect * -statModContext("ADD_PARRY_REDUCTION_MOD_EXPERTISE")
-					infoTable[StatLogic.Stats.ParryReduction] = infoTable[StatLogic.Stats.ParryReduction] + parryReduction
-				end
+				self:ProcessStat(StatLogic.Stats.Expertise, effect, infoTable, link, color, statModContext, isBaseStat, db.profile.showExpertiseFromExpertiseRating)
 			elseif stat == StatLogic.Stats.ResilienceRating then
 				if db.profile.enableAvoidanceDiminishingReturns and addon.tocversion >= 40000 then
 					effect = StatLogic:GetResilienceEffectGainAfterDR(processedResilience + value, processedResilience)
@@ -2668,6 +2658,9 @@ do
 
 			local hitRating = value * statModContext("ADD_HIT_RATING_MOD_SPI")
 			self:ProcessStat(StatLogic.Stats.HitRating, hitRating, infoTable, link, color, statModContext, false, db.profile.showHitFromSpi)
+
+			local expertiseRating = value * statModContext("ADD_EXPERTISE_RATING_MOD_SPI")
+			self:ProcessStat(StatLogic.Stats.ExpertiseRating, expertiseRating, infoTable, link, color, statModContext, false, db.profile.showExpertiseFromSpi)
 
 			local spellHitRating = value * statModContext("ADD_SPELL_HIT_RATING_MOD_SPI")
 			self:ProcessStat(StatLogic.Stats.SpellHitRating, spellHitRating, infoTable, link, color, statModContext, false, db.profile.showSpellHitFromSpi)
@@ -2885,6 +2878,26 @@ do
 				end
 				infoTable[displayType] = value
 			elseif show then
+				infoTable[stat] = infoTable[stat] + value
+			end
+		elseif stat == StatLogic.Stats.Expertise then
+			if show and isBaseStat then
+				infoTable["Decimal"] = value
+			elseif show then
+				infoTable[stat] = infoTable[stat] + value
+			end
+
+			local dodgeReduction = value * -statModContext("ADD_DODGE_REDUCTION_MOD_EXPERTISE")
+			self:ProcessStat(StatLogic.Stats.DodgeReduction, dodgeReduction, infoTable, link, color, statModContext, false, db.profile.showDodgeReductionFromExpertise)
+
+			local parryReduction = value * -statModContext("ADD_PARRY_REDUCTION_MOD_EXPERTISE")
+			self:ProcessStat(StatLogic.Stats.ParryReduction, parryReduction, infoTable, link, color, statModContext, false, db.profile.showParryReductionFromExpertise)
+		elseif stat == StatLogic.Stats.DodgeReduction then
+			if show then
+				infoTable[stat] = infoTable[stat] + value
+			end
+		elseif stat == StatLogic.Stats.ParryReduction then
+			if show then
 				infoTable[stat] = infoTable[stat] + value
 			end
 		elseif stat == StatLogic.Stats.Mastery then
@@ -3523,15 +3536,16 @@ local summaryCalcData = {
 		stat = StatLogic.Stats.Expertise,
 		func = function(sum, statModContext)
 			return sum[StatLogic.Stats.Expertise]
-				+ sum[StatLogic.Stats.ExpertiseRating] * statModContext("ADD_EXPERTISE_MOD_EXPERTISE_RATING")
+				+ summaryFunc[StatLogic.Stats.ExpertiseRating](sum, statModContext) * statModContext("ADD_EXPERTISE_MOD_EXPERTISE_RATING")
 		end,
 	},
 	-- Expertise Rating - EXPERTISE_RATING
 	{
 		option = "sumExpertiseRating",
 		stat = StatLogic.Stats.ExpertiseRating,
-		func = function(sum)
+		func = function(sum, statModContext)
 			return sum[StatLogic.Stats.ExpertiseRating]
+				+ summaryFunc[StatLogic.Stats.Spirit](sum, statModContext) * statModContext("ADD_EXPERTISE_RATING_MOD_SPI")
 		end,
 	},
 	-- Dodge Reduction - EXPERTISE_RATING, WEAPON_SKILL

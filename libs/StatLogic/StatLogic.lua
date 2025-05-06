@@ -467,62 +467,6 @@ local addedInfoMods = {
 	},
 	{
 		add = "AP",
-		mod = "STR",
-	},
-	{
-		add = "NATURE_DAMAGE",
-		mod = "AGI",
-	},
-	{
-		add = "NORMAL_HEALTH_REG",
-		mod = "HEALTH",
-	},
-	{
-		add = "NORMAL_HEALTH_REG",
-		mod = "SPI",
-	},
-	{
-		add = "NORMAL_MANA_REGEN",
-		mod = "INT",
-	},
-	{
-		add = "NORMAL_MANA_REGEN",
-		mod = "SPI",
-	},
-	{
-		add = "MANA_REGEN",
-		mod = "NORMAL_MANA_REGEN"
-	},
-	{
-		add = "MANA_REGEN_NOT_CASTING",
-		mod = "NORMAL_MANA_REGEN"
-	},
-	{
-		add = "MANA_REGEN_OUT_OF_COMBAT",
-		mod = "NORMAL_MANA_REGEN"
-	},
-	{
-		add = "GENERIC_MANA_REGEN",
-		mod = "INT",
-	},
-	{
-		add = "GENERIC_MANA_REGEN",
-		mod = "MANA",
-	},
-	{
-		add = "MANA_REGEN",
-		mod = "GENERIC_MANA_REGEN"
-	},
-	{
-		add = "MANA_REGEN_NOT_CASTING",
-		mod = "GENERIC_MANA_REGEN"
-	},
-	{
-		add = "MANA_REGEN_OUT_OF_COMBAT",
-		mod = "GENERIC_MANA_REGEN"
-	},
-	{
-		add = "AP",
 		mod = "ARMOR",
 	},
 	{
@@ -535,11 +479,23 @@ local addedInfoMods = {
 	},
 	{
 		add = "AP",
+		mod = "ARMOR",
+	},
+	{
+		add = "AP",
 		mod = "STA",
+	},
+	{
+		add = "AP",
+		mod = "STR",
 	},
 	{
 		add = "BLOCK_CHANCE",
 		mod = "MASTERY_EFFECT",
+	},
+	{
+		add = "BLOCK_CHANCE",
+		mod = "DEFENSE",
 	},
 	{
 		add = "BLOCK_VALUE",
@@ -558,6 +514,18 @@ local addedInfoMods = {
 		mod = "INT",
 	},
 	{
+		add = "CRIT_AVOIDANCE",
+		mod = "DEFENSE",
+	},
+	{
+		add = "CRIT_AVOIDANCE",
+		mod = "RESILIENCE",
+	},
+	{
+		add = "CRIT_DAMAGE_REDUCTION",
+		mod = "RESILIENCE",
+	},
+	{
 		add = "CRIT_RATING",
 		mod = "DODGE_RATING",
 	},
@@ -566,20 +534,32 @@ local addedInfoMods = {
 		mod = "PARRY_RATING",
 	},
 	{
-		add = "MELEE_CRIT",
-		mod = "AGI",
-	},
-	{
-		add = "RANGED_CRIT",
+		add = "DODGE",
 		mod = "AGI",
 	},
 	{
 		add = "DODGE",
-		mod = "AGI",
+		mod = "DEFENSE",
 	},
 	{
 		add = "DODGE",
 		mod = "SPELL_CRIT",
+	},
+	{
+		add = "DODGE_REDUCTION",
+		mod = "EXPERTISE",
+	},
+	{
+		add = "EXPERTISE_RATING",
+		mod = "SPI",
+	},
+	{
+		add = "GENERIC_MANA_REGEN",
+		mod = "INT",
+	},
+	{
+		add = "GENERIC_MANA_REGEN",
+		mod = "MANA",
 	},
 	{
 		add = "HEALING",
@@ -626,8 +606,64 @@ local addedInfoMods = {
 		mod = "INT",
 	},
 	{
+		add = "MANA_REGEN",
+		mod = "GENERIC_MANA_REGEN"
+	},
+	{
+		add = "MANA_REGEN_NOT_CASTING",
+		mod = "GENERIC_MANA_REGEN"
+	},
+	{
+		add = "MANA_REGEN_OUT_OF_COMBAT",
+		mod = "GENERIC_MANA_REGEN"
+	},
+	{
+		add = "MANA_REGEN",
+		mod = "NORMAL_MANA_REGEN"
+	},
+	{
+		add = "MANA_REGEN_NOT_CASTING",
+		mod = "NORMAL_MANA_REGEN"
+	},
+	{
+		add = "MANA_REGEN_OUT_OF_COMBAT",
+		mod = "NORMAL_MANA_REGEN"
+	},
+	{
 		add = "MASTERY_EFFECT",
 		mod = "MASTERY",
+	},
+	{
+		add = "MELEE_CRIT",
+		mod = "AGI",
+	},
+	{
+		add = "MISS",
+		mod = "DEFENSE",
+	},
+	{
+		add = "NATURE_DAMAGE",
+		mod = "AGI",
+	},
+	{
+		add = "NORMAL_HEALTH_REG",
+		mod = "HEALTH",
+	},
+	{
+		add = "NORMAL_HEALTH_REG",
+		mod = "SPI",
+	},
+	{
+		add = "NORMAL_MANA_REGEN",
+		mod = "INT",
+	},
+	{
+		add = "NORMAL_MANA_REGEN",
+		mod = "SPI",
+	},
+	{
+		add = "PARRY",
+		mod = "DEFENSE",
 	},
 	{
 		add = "PARRY",
@@ -638,12 +674,24 @@ local addedInfoMods = {
 		mod = "STR",
 	},
 	{
+		add = "PARRY_REDUCTION",
+		mod = "EXPERTISE",
+	},
+	{
+		add = "PVP_DAMAGE_REDUCTION",
+		mod = "RESILIENCE",
+	},
+	{
 		add = "RANGED_AP",
 		mod = "AGI",
 	},
 	{
 		add = "RANGED_AP",
 		mod = "INT",
+	},
+	{
+		add = "RANGED_CRIT",
+		mod = "AGI",
 	},
 	{
 		add = "SPELL_CRIT",
@@ -696,49 +744,6 @@ local addedInfoMods = {
 	{
 		add = "STR",
 		mod = "DEFENSE",
-	},
-	{
-		add = "DODGE_REDUCTION",
-		mod = "EXPERTISE",
-	},
-	{
-		add = "PARRY_REDUCTION",
-		mod = "EXPERTISE",
-	},
-	{
-		add = "BLOCK_CHANCE",
-		mod = "DEFENSE",
-	},
-	{
-		add = "CRIT_AVOIDANCE",
-		mod = "DEFENSE",
-	},
-	{
-		add = "DODGE",
-		mod = "DEFENSE",
-	},
-	{
-		add = "MISS",
-		mod = "DEFENSE",
-	},
-	{
-		add = "PARRY",
-		mod = "DEFENSE",
-	},
-	{
-		add = "CRIT_AVOIDANCE",
-		mod = "RESILIENCE",
-
-	},
-	{
-		add = "CRIT_DAMAGE_REDUCTION",
-		mod = "RESILIENCE",
-
-	},
-	{
-		add = "PVP_DAMAGE_REDUCTION",
-		mod = "RESILIENCE",
-
 	},
 	{
 		mod = "AGI",
