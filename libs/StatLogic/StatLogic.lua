@@ -746,6 +746,10 @@ local addedInfoMods = {
 		mod = "STR",
 	},
 	{
+		add = "SPELL_HIT",
+		mod = "EXPERTISE",
+	},
+	{
 		add = "SPELL_HIT_RATING",
 		mod = "SPI",
 	},

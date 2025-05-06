@@ -2908,6 +2908,9 @@ do
 
 			local parryReduction = value * -statModContext("ADD_PARRY_REDUCTION_MOD_EXPERTISE")
 			self:ProcessStat(StatLogic.Stats.ParryReduction, parryReduction, infoTable, link, color, statModContext, false, db.profile.showParryReductionFromExpertise)
+
+			local spellHit = value * -statModContext("ADD_SPELL_HIT_MOD_EXPERTISE")
+			self:ProcessStat(StatLogic.Stats.SpellHit, spellHit, infoTable, link, color, statModContext, false, db.profile.showSpellHitFromExpertise)
 		elseif stat == StatLogic.Stats.DodgeReduction then
 			if show then
 				infoTable[stat] = infoTable[stat] + value
@@ -3763,6 +3766,7 @@ local summaryCalcData = {
 		func = function(sum, statModContext)
 			return sum[StatLogic.Stats.SpellHit]
 				+ summaryFunc[StatLogic.Stats.SpellHitRating](sum, statModContext) * statModContext("ADD_SPELL_HIT_MOD_SPELL_HIT_RATING")
+				+ summaryFunc[StatLogic.Stats.Expertise](sum, statModContext) * statModContext("ADD_SPELL_HIT_MOD_EXPERTISE")
 		end,
 	},
 	-- Spell Hit Rating - SPELL_HIT_RATING

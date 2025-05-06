@@ -1081,6 +1081,21 @@ StatLogic.StatModTable["ALL"] = {
 			["value"] = 1.0,
 		},
 	},
+	["ADD_DODGE_REDUCTION_MOD_EXPERTISE"] = {
+		{
+			["value"] = 1.0,
+		},
+	},
+	["ADD_PARRY_REDUCTION_MOD_EXPERTISE"] = {
+		{
+			["value"] = 1.0,
+		},
+	},
+	["ADD_SPELL_HIT_MOD_EXPERTISE"] = {
+		{
+			["value"] = 1.0,
+		},
+	},
 	["ADD_HEALTH_MOD_STA"] = {
 		{
 			["level"] = setmetatable({
