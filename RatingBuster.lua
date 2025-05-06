@@ -2988,6 +2988,9 @@ do
 
 			local healingPower = value * statModContext("ADD_HEALING_MOD_SPELL_POWER")
 			self:ProcessStat(StatLogic.Stats.HealingPower, healingPower, infoTable, link, color, statModContext, false, db.profile.showHealingFromSpellPower)
+
+			local attackPower = value * statModContext("ADD_AP_MOD_SPELL_POWER")
+			self:ProcessStat(StatLogic.Stats.AttackPower, attackPower, infoTable, link, color, statModContext, false, db.profile.showAPFromSpellPower)
 		elseif stat == StatLogic.Stats.SpellDamage then
 			local mod = statModContext("MOD_SPELL_DMG")
 			value = value * mod
@@ -3401,6 +3404,7 @@ local summaryCalcData = {
 				+ summaryFunc[StatLogic.Stats.Intellect](sum, statModContext) * statModContext("ADD_AP_MOD_INT")
 				+ summaryFunc[StatLogic.Stats.Armor](sum, statModContext) * statModContext("ADD_AP_MOD_ARMOR")
 				+ sum[StatLogic.Stats.Defense] * statModContext("ADD_AP_MOD_DEFENSE")
+				+ summaryFunc[StatLogic.Stats.SpellPower](sum, statModContext) * statModContext("ADD_AP_MOD_SPELL_POWER")
 			)
 		end,
 	},
