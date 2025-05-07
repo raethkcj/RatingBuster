@@ -2404,6 +2404,7 @@ do
 	---@param isBaseStat boolean
 	---@param show boolean
 	function RatingBuster:ProcessStat(stat, value, infoTable, link, color, statModContext, isBaseStat, show)
+		if value == 0 then return end
 		if StatLogic.GenericStatMap[stat] then
 			local statList = StatLogic.GenericStatMap[stat]
 			for _, convertedStatID in ipairs(statList) do
@@ -2964,6 +2965,9 @@ do
 				infoTable[stat] = infoTable[stat] + value
 			end
 
+			local spellPower = value * statModContext("ADD_SPELL_POWER_MOD_AP")
+			self:ProcessStat(StatLogic.Stats.SpellPower, spellPower, infoTable, link, color, statModContext, false, db.profile.showSpellPowerFromAP)
+
 			local spellDamage = value * statModContext("ADD_SPELL_DMG_MOD_AP")
 			self:ProcessStat(StatLogic.Stats.SpellDamage, spellDamage, infoTable, link, color, statModContext, false, db.profile.showSpellDmgFromAP)
 
@@ -3397,6 +3401,7 @@ local summaryCalcData = {
 		option = "sumAP",
 		stat = StatLogic.Stats.AttackPower,
 		func = function(sum, statModContext)
+			local apPerSP = statModContext("ADD_AP_MOD_SPELL_POWER")
 			return statModContext("MOD_AP") * (
 				sum[StatLogic.Stats.AttackPower]
 				+ sum[StatLogic.Stats.GenericAttackPower] * statModContext("ADD_AP_MOD_GENERIC_ATTACK_POWER")
@@ -3407,7 +3412,7 @@ local summaryCalcData = {
 				+ summaryFunc[StatLogic.Stats.Intellect](sum, statModContext) * statModContext("ADD_AP_MOD_INT")
 				+ summaryFunc[StatLogic.Stats.Armor](sum, statModContext) * statModContext("ADD_AP_MOD_ARMOR")
 				+ sum[StatLogic.Stats.Defense] * statModContext("ADD_AP_MOD_DEFENSE")
-				+ summaryFunc[StatLogic.Stats.SpellPower](sum, statModContext) * statModContext("ADD_AP_MOD_SPELL_POWER")
+				+ (apPerSP == 0 and 0 or apPerSP * summaryFunc[StatLogic.Stats.SpellPower](sum, statModContext))
 			)
 		end,
 	},
@@ -3661,9 +3666,11 @@ local summaryCalcData = {
 		option = "sumSpellPower",
 		stat = StatLogic.Stats.SpellPower,
 		func = function(sum, statModContext)
+			local spPerAP = statModContext("ADD_SPELL_POWER_MOD_AP")
 			return statModContext("MOD_SPELL_POWER") * (
 				sum[StatLogic.Stats.SpellPower]
 				+ summaryFunc[StatLogic.Stats.Intellect](sum, statModContext) * statModContext("ADD_SPELL_POWER_MOD_INT")
+				+ (spPerAP == 0 and 0 or spPerAP * summaryFunc[StatLogic.Stats.AttackPower](sum, statModContext))
 			)
 		end,
 	},
@@ -3919,7 +3926,7 @@ local summaryCalcData = {
 		option = "sumBlockChanceBeforeDR",
 		stat = StatLogic.Stats.BlockChanceBeforeDR,
 		func = function(sum, statModContext)
-			return  sum[StatLogic.Stats.BlockRating] * statModContext("ADD_BLOCK_MOD_BLOCK_RATING")
+			return sum[StatLogic.Stats.BlockRating] * statModContext("ADD_BLOCK_MOD_BLOCK_RATING")
 				+ summaryFunc[StatLogic.Stats.Defense](sum, statModContext) * statModContext("ADD_BLOCK_CHANCE_MOD_DEFENSE")
 				+ summaryFunc[StatLogic.Stats.MasteryEffect](sum, statModContext) * statModContext("ADD_BLOCK_CHANCE_MOD_MASTERY_EFFECT")
 		end,

@@ -755,6 +755,10 @@ local addedInfoMods = {
 	},
 	{
 		add = "SPELL_POWER",
+		mod = "AP",
+	},
+	{
+		add = "SPELL_POWER",
 		mod = "INT",
 	},
 	{
