@@ -1086,6 +1086,51 @@ elseif addon.class == "PRIEST" then
 				["value"] = 1,
 			},
 		},
+		["ADD_HIT_RATING_MOD_SPI"] = {
+			-- Passive: Spiritual Precision
+			{
+				["known"] = 47573,
+				["value"] = 1,
+			},
+		},
+		["MOD_ARMOR"] = {
+			-- Buff: Inner Fire
+			{
+				["aura"] = 588,
+				["value"] = 0.6,
+			},
+			-- Buff: Shadowform
+			{
+				["aura"] = 15473,
+				["value"] = 1,
+			},
+		},
+		["MOD_SPELL_POWER"] = {
+			-- Buff: Inner Fire
+			{
+				["aura"] = 588,
+				["value"] = 0.1,
+			},
+		},
+		["MOD_INT"] = {
+			-- Passive: Mysticism
+			{
+				["known"] = 89745,
+				["value"] = 0.05,
+			},
+		},
+		["ADD_MANA_REGEN_MOD_NORMAL_MANA_REGEN"] = {
+			-- Passive: Meditation
+			{
+				["known"] = 95860,
+				["value"] = 0.5,
+			},
+			-- Passive: Meditation
+			{
+				["known"] = 95861,
+				["value"] = 0.5,
+			},
+		},
 	}
 elseif addon.class == "ROGUE" then
 	StatLogic.StatModTable["ROGUE"] = {
