@@ -952,6 +952,13 @@ elseif addon.class == "PALADIN" then
 				["value"] = 1,
 			},
 		},
+		["ADD_DODGE"] = {
+			-- Passive: Sanctuary
+			{
+				["known"] = 105805,
+				["value"] = 2,
+			},
+		},
 		["ADD_PARRY"] = {
 			-- Base
 			{
@@ -968,6 +975,83 @@ elseif addon.class == "PALADIN" then
 			-- Base
 			{
 				["value"] = 1,
+			},
+			-- Passive: Guarded by the Light
+			{
+				["known"] = 53592,
+				["value"] = -1,
+			},
+			-- Passive: Sword of Light
+			{
+				["known"] = 53503,
+				["value"] = -1,
+			},
+		},
+		["MOD_STR"] = {
+			-- Buff: Ancient Power
+			{
+				["aura"] = 86700,
+				["stack"] = 0.01,
+				["max_stacks"] = 12,
+			},
+			-- Plate Specialization
+			{
+				["value"] = 0.05,
+				["known"] = 86539,
+				["armorspec"] = {
+					[3] = true,
+				},
+			},
+		},
+		["MOD_STA"] = {
+			-- Passive: Guarded by the Light
+			{
+				["known"] = 53592,
+				["value"] = 0.25,
+			},
+			-- Plate Specialization
+			{
+				["value"] = 0.05,
+				["known"] = 86102,
+				["armorspec"] = {
+					[2] = true,
+				},
+			},
+		},
+		["MOD_INT"] = {
+			-- Plate Specialization
+			{
+				["value"] = 0.05,
+				["known"] = 86103,
+				["armorspec"] = {
+					[1] = true,
+				},
+			},
+		},
+		["ADD_SPELL_POWER_MOD_AP"] = {
+			-- Passive: Guarded by the Light
+			{
+				["known"] = 53592,
+				["value"] = 0.5,
+			},
+			-- Passive: Sword of Light
+			{
+				["known"] = 53503,
+				["value"] = 0.5,
+			},
+		},
+		["MOD_ARMOR"] = {
+			-- Passive: Sanctuary
+			{
+				["known"] = 105805,
+				["value"] = 0.1,
+			},
+		},
+		["ADD_MANA_REGEN_MOD_NORMAL_MANA_REGEN"] = {
+			-- Passive: Holy Insight
+			{
+				["known"] = 112859,
+				["value"] = 0.5,
 			},
 		},
 	}
