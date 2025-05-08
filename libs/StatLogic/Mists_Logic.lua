@@ -1151,6 +1151,13 @@ elseif addon.class == "ROGUE" then
 				["value"] = 3,
 			},
 		},
+		["ADD_DODGE"] = {
+			-- Buff: Evasion
+			{
+				["aura"] = 5277,
+				["value"] = 100,
+			},
+		},
 		["ADD_PARRY"] = {
 			-- Base
 			{
@@ -1173,6 +1180,32 @@ elseif addon.class == "ROGUE" then
 			-- Base
 			{
 				["value"] = 1,
+			},
+		},
+		["ADD_HEALTH_REG_MOD_HEALTH"] = {
+			-- Buff: Recuperate
+			{
+				["aura"] = 73651,
+				["value"] = 0.04 * 5/3,
+			},
+		},
+		["MOD_AGI"] = {
+			-- Leather Specialization
+			{
+				["known"] = 86092,
+				["value"] = 0.05,
+			},
+			-- Passive: Sinister Calling
+			{
+				["known"] = 31220,
+				["value"] = 0.3,
+			},
+		},
+		["MOD_AP"] = {
+			-- Passive: Vitality
+			{
+				["known"] = 61329,
+				["value"] = 0.4,
 			},
 		},
 	}
