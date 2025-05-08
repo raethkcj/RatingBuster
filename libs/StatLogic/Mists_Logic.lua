@@ -1284,6 +1284,52 @@ elseif addon.class == "WARLOCK" then
 				["value"] = 1,
 			},
 		},
+		["MOD_HEALTH"] = {
+			-- Passive: Fel Armor
+			{
+				["known"] = 104938,
+				["value"] = 0.1,
+			},
+		},
+		["MOD_INT"] = {
+			-- Passive: Nethermancy
+			{
+				["known"] = 86091,
+				["value"] = 0.05,
+			},
+		},
+		["MOD_ARMOR"] = {
+			-- Passive: Nether Plating (Metamorphosis)
+			{
+				["known"] = 114129,
+				["value"] = 2.5,
+				["aura"] = 103958,
+				["group"] = addon.ExclusiveGroup.Feral,
+			},
+			-- Passive: Nether Plating (Dark Apotheosis)
+			{
+				["known"] = 114129,
+				["value"] = 2.5,
+				["aura"] = 114168,
+				["group"] = addon.ExclusiveGroup.Feral,
+			},
+		},
+		["ADD_HEALTH_REG_MOD_HEALTH"] = {
+			-- Talent: Burning Rush
+			{
+				["tab"] = 4,
+				["num"] = 2,
+				["aura"] = 111400,
+				["value"] = 0.04 * 5,
+			},
+			-- Talent: Grimoire of Sacrifice
+			{
+				["tab"] = 5,
+				["num"] = 3,
+				["aura"] = 108503,
+				["value"] = 0.02,
+			},
+		},
 	}
 elseif addon.class == "WARRIOR" then
 	StatLogic.StatModTable["WARRIOR"] = {
