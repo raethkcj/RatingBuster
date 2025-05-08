@@ -854,6 +854,17 @@ elseif addon.class == "PALADIN" then
 				["aura"] = 460200,
 			},
 		},
+		["MOD_SPELL_DMG"] = {
+			-- Set: Inquisition Shockplate
+			{
+				["set"] = 1963,
+				["pieces"] = 6,
+				["stack"] = 0.15,
+				["max_stacks"] = 3,
+				["aura"] = 1240574,
+				["rune"] = true,
+			},
+		},
 	}
 elseif addon.class == "PRIEST" then
 	StatLogic.StatModTable["PRIEST"] = {
