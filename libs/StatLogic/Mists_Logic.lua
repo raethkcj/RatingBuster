@@ -1290,6 +1290,13 @@ elseif addon.class == "WARLOCK" then
 				["known"] = 104938,
 				["value"] = 0.1,
 			},
+			-- Talent: Soul Link (Grimoire of Sacrifice)
+			{
+				["tab"] = 3,
+				["num"] = 1,
+				["aura"] = 108503,
+				["value"] = 0.2,
+			},
 		},
 		["MOD_INT"] = {
 			-- Passive: Nethermancy
