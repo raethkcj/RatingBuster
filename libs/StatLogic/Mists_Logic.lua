@@ -1251,6 +1251,67 @@ elseif addon.class == "SHAMAN" then
 			{
 				["value"] = 1,
 			},
+			-- Passive: Mental Quickness
+			{
+				["known"] = 30814,
+				["value"] = -1,
+			},
+		},
+		["ADD_HIT_RATING_MOD_SPI"] = {
+			-- Passive: Elemental Precision
+			{
+				["known"] = 30674,
+				["value"] = 1,
+			},
+		},
+		["MOD_HASTE_RATING"] = {
+			-- Buff: Flurry
+			{
+				["aura"] = 16278,
+				["value"] = 0.5,
+			},
+		},
+		["ADD_SPELL_POWER_MOD_AP"] = {
+			-- Passive: Mental Quickness
+			{
+				["known"] = 30814,
+				["value"] = 0.65,
+			},
+		},
+		["ADD_MANA_REGEN_MOD_NORMAL_MANA_REGEN"] = {
+			-- Passive: Meditation
+			{
+				["known"] = 95862,
+				["value"] = 0.5,
+			},
+		},
+		["MOD_HEALTH"] = {
+			-- Buff: Nature's Guardian
+			{
+				["aura"] = 31616,
+				["value"] = 0.25,
+			},
+		},
+		["MOD_AGI"] = {
+			-- Mail Specialization
+			{
+				["value"] = 0.05,
+				["known"] = 86529,
+				["armorspec"] = {
+					[2] = true,
+				},
+			},
+		},
+		["MOD_INT"] = {
+			-- Mail Specialization
+			{
+				["value"] = 0.05,
+				["known"] = 86529,
+				["armorspec"] = {
+					[1] = true,
+					[3] = true,
+				},
+			},
 		},
 	}
 elseif addon.class == "WARLOCK" then
