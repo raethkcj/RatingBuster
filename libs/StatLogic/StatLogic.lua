@@ -69,7 +69,6 @@ local IsUsableSpell = IsUsableSpell
 local UnitStat = UnitStat
 local GetShapeshiftForm = GetShapeshiftForm
 local GetShapeshiftFormInfo = GetShapeshiftFormInfo
-local GetTalentInfo = GetTalentInfo
 local GetActiveTalentGroup = GetActiveTalentGroup or C_SpecializationInfo.GetActiveSpecGroup
 local GetPrimaryTalentTree = GetPrimaryTalentTree or C_SpecializationInfo.GetSpecialization
 addon.tocversion = select(4, GetBuildInfo())
@@ -1333,8 +1332,12 @@ end
 -- and keep StatModTables human-readable.
 local orderedTalentCache = {}
 function StatLogic:GetOrderedTalentInfo(tab, num, ...)
-	local ordered_num = addon.tocversion < 50000 and orderedTalentCache[tab][num] or num
-	return GetTalentInfo(tab, ordered_num, ...)
+	if addon.tocversion < 50000 then
+		local ordered_num = orderedTalentCache[tab][num]
+		return GetTalentInfo(tab, ordered_num, ...)
+	else
+		return C_SpecializationInfo.GetTalentInfo({ tier = tab, column = num })
+	end
 end
 
 local talentCacheExists = false
