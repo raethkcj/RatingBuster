@@ -1622,8 +1622,210 @@ StatLogic.StatModTable["ALL"] = {
 		},
 	},
 	["MOD_STR"] = {
+		-- Buff: Mark of the Wild
+		{
+			["aura"] = 1126,
+			["value"] = 0.05,
+			["group"] = addon.ExclusiveGroup.AllStats,
+		},
+		-- Buff: Legacy of the Emperor
+		{
+			["aura"] = 117666,
+			["value"] = 0.05,
+			["group"] = addon.ExclusiveGroup.AllStats,
+		},
+		-- Buff: Blessing of Kings
+		{
+			["aura"] = 20217,
+			["value"] = 0.05,
+			["group"] = addon.ExclusiveGroup.AllStats,
+		},
+		-- Buff: Embrace of the Shale Spider
+		{
+			["aura"] = 90363,
+			["value"] = 0.05,
+			["group"] = addon.ExclusiveGroup.AllStats,
+		},
+		-- Buff: Blessing of Forgotten Kings
+		{
+			["aura"] = 72586,
+			["value"] = 0.05,
+			["group"] = addon.ExclusiveGroup.AllStats,
+		},
+		-- Buff: Timeless Nutriment
+		{
+			["aura"] = 146385,
+			["value"] = 0.05,
+			["group"] = addon.ExclusiveGroup.AllStats,
+		},
 	},
 	["MOD_AGI"] = {
+		-- Buff: Mark of the Wild
+		{
+			["aura"] = 1126,
+			["value"] = 0.05,
+			["group"] = addon.ExclusiveGroup.AllStats,
+		},
+		-- Buff: Legacy of the Emperor
+		{
+			["aura"] = 117666,
+			["value"] = 0.05,
+			["group"] = addon.ExclusiveGroup.AllStats,
+		},
+		-- Buff: Blessing of Kings
+		{
+			["aura"] = 20217,
+			["value"] = 0.05,
+			["group"] = addon.ExclusiveGroup.AllStats,
+		},
+		-- Buff: Embrace of the Shale Spider
+		{
+			["aura"] = 90363,
+			["value"] = 0.05,
+			["group"] = addon.ExclusiveGroup.AllStats,
+		},
+		-- Buff: Blessing of Forgotten Kings
+		{
+			["aura"] = 72586,
+			["value"] = 0.05,
+			["group"] = addon.ExclusiveGroup.AllStats,
+		},
+		-- Buff: Timeless Nutriment
+		{
+			["aura"] = 146385,
+			["value"] = 0.05,
+			["group"] = addon.ExclusiveGroup.AllStats,
+		},
+	},
+	["MOD_INT"] = {
+		-- Buff: Mark of the Wild
+		{
+			["aura"] = 1126,
+			["value"] = 0.05,
+			["group"] = addon.ExclusiveGroup.AllStats,
+		},
+		-- Buff: Legacy of the Emperor
+		{
+			["aura"] = 117666,
+			["value"] = 0.05,
+			["group"] = addon.ExclusiveGroup.AllStats,
+		},
+		-- Buff: Blessing of Kings
+		{
+			["aura"] = 20217,
+			["value"] = 0.05,
+			["group"] = addon.ExclusiveGroup.AllStats,
+		},
+		-- Buff: Embrace of the Shale Spider
+		{
+			["aura"] = 90363,
+			["value"] = 0.05,
+			["group"] = addon.ExclusiveGroup.AllStats,
+		},
+		-- Buff: Blessing of Forgotten Kings
+		{
+			["aura"] = 72586,
+			["value"] = 0.05,
+			["group"] = addon.ExclusiveGroup.AllStats,
+		},
+		-- Buff: Timeless Nutriment
+		{
+			["aura"] = 146385,
+			["value"] = 0.05,
+			["group"] = addon.ExclusiveGroup.AllStats,
+		},
+	},
+	["MOD_STA"] = {
+		-- Buff: Power Word: Fortitude
+		{
+			["aura"] = 21562,
+			["value"] = 0.1,
+			["group"] = addon.ExclusiveGroup.Stamina,
+		},
+		-- Buff: Dark Intent
+		{
+			["aura"] = 109773,
+			["value"] = 0.1,
+			["group"] = addon.ExclusiveGroup.Stamina,
+		},
+		-- Buff: Commanding Shout
+		{
+			["aura"] = 469,
+			["value"] = 0.1,
+			["group"] = addon.ExclusiveGroup.Stamina,
+		},
+	},
+	["MOD_AP"] = {
+		-- Buff: Horn of Winter
+		{
+			["aura"] = 57330,
+			["value"] = 0.1,
+			["group"] = addon.ExclusiveGroup.AttackPower,
+		},
+		-- Buff: Trueshot Aura
+		{
+			["aura"] = 19506,
+			["value"] = 0.1,
+			["group"] = addon.ExclusiveGroup.AttackPower,
+		},
+		-- Buff: Battle Shout
+		{
+			["aura"] = 6673,
+			["value"] = 0.1,
+			["group"] = addon.ExclusiveGroup.AttackPower,
+		},
+	},
+	["MOD_RANGED_AP"] = {
+		-- Buff: Horn of Winter
+		{
+			["aura"] = 57330,
+			["value"] = 0.1,
+			["group"] = addon.ExclusiveGroup.AttackPower,
+		},
+		-- Buff: Trueshot Aura
+		{
+			["aura"] = 19506,
+			["value"] = 0.1,
+			["group"] = addon.ExclusiveGroup.AttackPower,
+		},
+		-- Buff: Battle Shout
+		{
+			["aura"] = 6673,
+			["value"] = 0.1,
+			["group"] = addon.ExclusiveGroup.AttackPower,
+		},
+	},
+	["MOD_SPELL_POWER"] = {
+		-- Buff: Arcane Brilliance
+		{
+			["value"] = 0.1,
+			["aura"] = 1459,
+			["group"] = addon.ExclusiveGroup.SpellPower,
+		},
+		-- Buff: Burning Wrath
+		{
+			["aura"] = 77747,
+			["value"] = 0.1,
+			["group"] = addon.ExclusiveGroup.SpellPower,
+		},
+		-- Buff: Dark Intent
+		{
+			["aura"] = 109773,
+			["value"] = 0.1,
+			["group"] = addon.ExclusiveGroup.SpellPower,
+		},
+	},
+	["MOD_HEALTH"] = {
+		-- Buff: Ancestral Vigor
+		{
+			["aura"] = 105284,
+			["value"] = 0.1,
+		},
+		-- Buff: Rallying Cry
+		{
+			["aura"] = 97463,
+			["value"] = 0.2,
+		},
 	},
 	["ADD_DODGE"] = {
 		-- Base (All Classes)

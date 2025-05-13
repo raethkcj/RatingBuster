@@ -1408,6 +1408,7 @@ do
 		Moxie = 9,
 		SetBonus = 10,
 		Aspect = 11,
+		Stamina = 12,
 	}
 	local ExclusiveGroupCache = {}
 
