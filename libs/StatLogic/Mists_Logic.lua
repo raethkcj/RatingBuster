@@ -1425,10 +1425,22 @@ elseif addon.class == "WARRIOR" then
 				["value"] = 0.5 / 2.2,
 			},
 		},
+		["ADD_DODGE"] = {
+			-- Passive: Bastion of Defense
+			{
+				["known"] = 84608,
+				["value"] = 2,
+			},
+		},
 		["ADD_PARRY"] = {
 			-- Base
 			{
 				["value"] = 3.0,
+			},
+			-- Buff: Die by the Sword
+			{
+				["aura"] = 118038,
+				["value"] = 100,
 			},
 		},
 		["ADD_AP_MOD_STR"] = {
@@ -1441,6 +1453,60 @@ elseif addon.class == "WARRIOR" then
 			-- Base
 			{
 				["value"] = 1,
+			},
+		},
+		["MOD_STR"] = {
+			-- Plate Specialization (Arms, Fury)
+			{
+				["value"] = 0.05,
+				["spell"] = 86101,
+				["armorspec"] = {
+					[1] = true,
+					[2] = true,
+				},
+			},
+		},
+		["MOD_STA"] = {
+			-- Plate Specialization (Protection)
+			{
+				["value"] = 0.05,
+				["known"] = 86535,
+				["armorspec"] = {
+					[3] = true,
+				},
+			},
+			-- Passive: Unwavering Sentinel
+			{
+				["known"] = 29144,
+				["value"] = 0.15,
+			},
+		},
+		["MOD_HEALTH"] = {
+			-- Buff: Last Stand
+			{
+				["aura"] = 12975,
+				["value"] = 0.3,
+			},
+		},
+		["ADD_CRIT_RATING_MOD_DODGE_RATING"] = {
+			-- Buff: Riposte
+			{
+				["aura"] = 145674,
+				["value"] = 0.75,
+			},
+		},
+		["ADD_CRIT_RATING_MOD_PARRY_RATING"] = {
+			-- Buff: Riposte
+			{
+				["aura"] = 145674,
+				["value"] = 0.75,
+			},
+		},
+		["MOD_ARMOR"] = {
+			-- Passive: Unwavering Sentinel
+			{
+				["known"] = 29144,
+				["value"] = 0.25,
 			},
 		},
 	}
