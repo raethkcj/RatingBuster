@@ -322,9 +322,11 @@ L["numberPatterns"] = {
 -- Exclusions are used to ignore instances of separators that should not get separated
 L["exclusions"] = {
 }
+
 L["separators"] = {
 	"/", "和", ",%f[^%d]", "。", " 持续 ", "&", "及", "并", "，","、", "\n"
 }
+
 --[[
 SPELL_STAT1_NAME = "Strength"
 SPELL_STAT2_NAME = "Agility"
@@ -333,17 +335,21 @@ SPELL_STAT4_NAME = "Intellect"
 SPELL_STAT5_NAME = "Spirit"
 --]]
 L["statList"] = {
-	{SPELL_STAT1_NAME:lower(), StatLogic.Stats.Strength}, -- Strength
-	{SPELL_STAT2_NAME:lower(), StatLogic.Stats.Agility}, -- Agility
-	{SPELL_STAT3_NAME:lower(), StatLogic.Stats.Stamina}, -- Stamina
-	{SPELL_STAT4_NAME:lower(), StatLogic.Stats.Intellect}, -- Intellect
-	{SPELL_STAT5_NAME:lower(), StatLogic.Stats.Spirit}, -- Spirit
+	{SPELL_STAT1_NAME:lower(), StatLogic.Stats.Strength},
+	{SPELL_STAT2_NAME:lower(), StatLogic.Stats.Agility},
+	{SPELL_STAT3_NAME:lower(), StatLogic.Stats.Stamina},
+	{SPELL_STAT4_NAME:lower(), StatLogic.Stats.Intellect},
+	{SPELL_STAT5_NAME:lower(), StatLogic.Stats.Spirit},
 	{"防御等级", StatLogic.Stats.DefenseRating},
 	{DEFENSE:lower(), StatLogic.Stats.Defense},
 	{"躲闪等级", StatLogic.Stats.DodgeRating},
+	{"躲闪", StatLogic.Stats.DodgeRating},
 	{"格挡等级", StatLogic.Stats.BlockRating}, -- block enchant: "+10 Shield Block Rating"
+	{"格挡", StatLogic.Stats.BlockRating},
 	{"招架等级", StatLogic.Stats.ParryRating},
+	{"招架", StatLogic.Stats.ParryRating},
 
+	{"法术强度", StatLogic.Stats.SpellPower},
 	{"法术爆击等级", StatLogic.Stats.SpellCritRating},
 	{"法术爆击命中等级", StatLogic.Stats.SpellCritRating},
 	{"法术爆击等级", StatLogic.Stats.SpellCritRating},
@@ -352,19 +358,24 @@ L["statList"] = {
 	{"远程爆击等级", StatLogic.Stats.RangedCritRating},
 	{"近战爆击等级", StatLogic.Stats.MeleeCritRating},
 	{"爆击等级", StatLogic.Stats.CritRating},
+	{"爆击", StatLogic.Stats.CritRating},
 
 	{"法术命中等级", StatLogic.Stats.SpellHitRating},
 	{"远程命中等级", StatLogic.Stats.RangedHitRating},
 	{"命中等级", StatLogic.Stats.HitRating},
+	{"命中", StatLogic.Stats.HitRating},
 
-	{"韧性等级", StatLogic.Stats.ResilienceRating}, -- resilience is implicitly a rating
+	{"韧性等级", StatLogic.Stats.ResilienceRating},
+	{"韧性", StatLogic.Stats.ResilienceRating},
 
 	{"法术急速等级", StatLogic.Stats.SpellHasteRating},
 	{"远程急速等级", StatLogic.Stats.RangedHasteRating},
 	{"急速等级", StatLogic.Stats.HasteRating},
+	{"急速", StatLogic.Stats.HasteRating},
 	{"加速等级", StatLogic.Stats.HasteRating}, -- [Drums of Battle]
 
 	{"精准等级", StatLogic.Stats.ExpertiseRating},
+	{"精准", StatLogic.Stats.ExpertiseRating},
 
 	{SPELL_STATALL:lower(), StatLogic.Stats.AllStats},
 
@@ -430,6 +441,10 @@ L[StatLogic.Stats.ArmorPenetrationRating] = "护甲穿透等级"
 -- Weapon Stats
 L[StatLogic.Stats.AverageWeaponDamage] = "近战伤害" -- DAMAGE = "Damage"
 L[StatLogic.Stats.WeaponDPS] = "每秒伤害"
+
+L[StatLogic.Stats.Hit] = STAT_HIT_CHANCE
+L[StatLogic.Stats.Crit] = MELEE_CRIT_CHANCE
+L[StatLogic.Stats.Haste] = STAT_HASTE
 
 -- Melee Stats
 L[StatLogic.Stats.MeleeHit] = "物理命中几率"

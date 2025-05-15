@@ -326,9 +326,11 @@ L["numberPatterns"] = {
 -- Exclusions are used to ignore instances of separators that should not get separated
 L["exclusions"] = {
 }
+
 L["separators"] = {
 	"/", "和", ",%f[^%d]", "。", " 持續 ", "&", "及", "並", "，", "\n"
 }
+
 --[[
 SPELL_STAT1_NAME = "Strength"
 SPELL_STAT2_NAME = "Agility"
@@ -337,33 +339,41 @@ SPELL_STAT4_NAME = "Intellect"
 SPELL_STAT5_NAME = "Spirit"
 --]]
 L["statList"] = {
-	{SPELL_STAT1_NAME:lower(), StatLogic.Stats.Strength}, -- Strength
-	{SPELL_STAT2_NAME:lower(), StatLogic.Stats.Agility}, -- Agility
-	{SPELL_STAT3_NAME:lower(), StatLogic.Stats.Stamina}, -- Stamina
-	{SPELL_STAT4_NAME:lower(), StatLogic.Stats.Intellect}, -- Intellect
-	{SPELL_STAT5_NAME:lower(), StatLogic.Stats.Spirit}, -- Spirit
+	{SPELL_STAT1_NAME:lower(), StatLogic.Stats.Strength},
+	{SPELL_STAT2_NAME:lower(), StatLogic.Stats.Agility},
+	{SPELL_STAT3_NAME:lower(), StatLogic.Stats.Stamina},
+	{SPELL_STAT4_NAME:lower(), StatLogic.Stats.Intellect},
+	{SPELL_STAT5_NAME:lower(), StatLogic.Stats.Spirit},
 	{"防禦等級", StatLogic.Stats.DefenseRating},
 	{DEFENSE:lower(), StatLogic.Stats.Defense},
 	{"閃躲等級", StatLogic.Stats.DodgeRating},
+	{"閃躲", StatLogic.Stats.DodgeRating},
 	{"格擋等級", StatLogic.Stats.BlockRating}, -- block enchant: "+10 Shield Block Rating"
+	{"格擋", StatLogic.Stats.BlockRating},
 	{"招架等級", StatLogic.Stats.ParryRating},
+	{"招架", StatLogic.Stats.ParryRating},
 
+	{"法術能量", StatLogic.Stats.SpellPower},
 	{"法術致命一擊等級", StatLogic.Stats.SpellCritRating},
 	{"遠程攻擊致命一擊等級", StatLogic.Stats.RangedCritRating},
 	{"致命一擊等級", StatLogic.Stats.CritRating},
+	{"致命一擊", StatLogic.Stats.CritRating},
 
 	{"法術命中等級", StatLogic.Stats.SpellHitRating},
 	{"遠程命中等級", StatLogic.Stats.RangedHitRating},
 	{"命中等級", StatLogic.Stats.HitRating},
+	{"命中", StatLogic.Stats.HitRating},
 
-	{"韌性", StatLogic.Stats.ResilienceRating}, -- resilience is implicitly a rating
+	{"韌性", StatLogic.Stats.ResilienceRating},
 
 	{"法術加速等級", StatLogic.Stats.SpellHasteRating},
 	{"遠程攻擊加速等級", StatLogic.Stats.RangedHasteRating},
 	{"加速等級", StatLogic.Stats.HasteRating},
+	{"加速", StatLogic.Stats.HasteRating},
 	{"攻擊速度等級", StatLogic.Stats.HasteRating}, -- [Drums of Battle]
 
-	{"熟練等級", StatLogic.Stats.ExpertiseRating}, -- 2.3
+	{"熟練等級", StatLogic.Stats.ExpertiseRating},
+	{"熟練", StatLogic.Stats.ExpertiseRating},
 
 	{SPELL_STATALL:lower(), StatLogic.Stats.AllStats},
 
@@ -429,6 +439,10 @@ L[StatLogic.Stats.ArmorPenetrationRating] = "護甲穿透等級"
 -- Weapon Stats
 L[StatLogic.Stats.AverageWeaponDamage] = "近戰傷害" -- DAMAGE = "Damage"
 L[StatLogic.Stats.WeaponDPS] = "每秒傷害"
+
+L[StatLogic.Stats.Hit] = STAT_HIT_CHANCE
+L[StatLogic.Stats.Crit] = MELEE_CRIT_CHANCE
+L[StatLogic.Stats.Haste] = STAT_HASTE
 
 -- Melee Stats
 L[StatLogic.Stats.MeleeHit] = "命中機率"

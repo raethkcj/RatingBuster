@@ -350,8 +350,11 @@ L["statList"] = {
 	{SPELL_STAT5_NAME:lower(), StatLogic.Stats.Spirit},
 	{"defense rating", StatLogic.Stats.DefenseRating},
 	{DEFENSE:lower(), StatLogic.Stats.Defense},
+	{"dodge rating", StatLogic.Stats.DodgeRating},
 	{"dodge", StatLogic.Stats.DodgeRating},
+	{"block rating", StatLogic.Stats.BlockRating},
 	{"block", StatLogic.Stats.BlockRating},
+	{"parry rating", StatLogic.Stats.ParryRating},
 	{"parry", StatLogic.Stats.ParryRating},
 
 	{"spell power", StatLogic.Stats.SpellPower},
