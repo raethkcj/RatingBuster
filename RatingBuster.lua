@@ -2140,9 +2140,9 @@ function RatingBuster.ProcessTooltip(tooltip)
 		equippedDodge = summaryFunc[StatLogic.Stats.DodgeBeforeDR](equippedSum, statModContext, "sum", difflink1) * -1
 		equippedParry = summaryFunc[StatLogic.Stats.ParryBeforeDR](equippedSum, statModContext, "sum", difflink1) * -1
 		equippedMissed = summaryFunc[StatLogic.Stats.MissBeforeDR](equippedSum, statModContext, "sum", difflink1) * -1
-		processedBlock = equippedBlock
-		processedDodge = equippedDodge
-		processedParry = equippedParry
+		processedBlock = GetBlockChance() > 0 and equippedBlock or 0
+		processedDodge = GetDodgeChance() > 0 and equippedDodge or 0
+		processedParry = GetParryChance() > 0 and equippedParry or 0
 		processedMissed = equippedMissed
 		processedResilience = equippedSum[StatLogic.Stats.ResilienceRating] * -1
 	else

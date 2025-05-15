@@ -1231,6 +1231,7 @@ elseif addon.class == "SHAMAN" then
 		["ADD_PARRY"] = {
 			-- Base
 			{
+				["known"] = 86629,
 				["value"] = 3.0,
 			},
 		},
