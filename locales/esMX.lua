@@ -325,9 +325,11 @@ L["numberPatterns"] = {
 -- Exclusions are used to ignore instances of separators that should not get separated
 L["exclusions"] = {
 }
+
 L["separators"] = {
 	"/", " y ", ",%f[^%d]", "%f[p%.]%. ", " durante ", "&", "\n"
 }
+
 --[[
 SPELL_STAT1_NAME = "Strength"
 SPELL_STAT2_NAME = "Agility"
@@ -336,18 +338,22 @@ SPELL_STAT4_NAME = "Intellect"
 SPELL_STAT5_NAME = "Spirit"
 --]]
 L["statList"] = {
-	{SPELL_STAT1_NAME:lower(), StatLogic.Stats.Strength}, -- Strength
-	{SPELL_STAT2_NAME:lower(), StatLogic.Stats.Agility}, -- Agility
-	{SPELL_STAT3_NAME:lower(), StatLogic.Stats.Stamina}, -- Stamina
-	{SPELL_STAT4_NAME:lower(), StatLogic.Stats.Intellect}, -- Intellect
-	{SPELL_STAT5_NAME:lower(), StatLogic.Stats.Spirit}, -- Spirit
+	{SPELL_STAT1_NAME:lower(), StatLogic.Stats.Strength},
+	{SPELL_STAT2_NAME:lower(), StatLogic.Stats.Agility},
+	{SPELL_STAT3_NAME:lower(), StatLogic.Stats.Stamina},
+	{SPELL_STAT4_NAME:lower(), StatLogic.Stats.Intellect},
+	{SPELL_STAT5_NAME:lower(), StatLogic.Stats.Spirit},
 	{"la defensa", StatLogic.Stats.DefenseRating},
 	{DEFENSE:lower(), StatLogic.Stats.Defense},
 	{"índice de esquivar", StatLogic.Stats.DodgeRating},
+	{"esquivar", StatLogic.Stats.DodgeRating},
 	{"índice de bloqueo", StatLogic.Stats.BlockRating}, -- block enchant: "+10 Shield Block Rating"
+	{"bloquear", StatLogic.Stats.BlockRating},
 	{"índice de parada", StatLogic.Stats.ParryRating},
+	{"parar", StatLogic.Stats.ParryRating},
 
 	{"recibir un golpe", false},
+	{"poder con hechizos", StatLogic.Stats.SpellPower},
 	{"golpe crítico con hechizos", StatLogic.Stats.SpellCritRating},
 	{"golpe crítico a distancia", StatLogic.Stats.RangedCritRating},
 	{"golpe crítico cuerpo a cuerpo", StatLogic.Stats.MeleeCritRating},
@@ -358,7 +364,8 @@ L["statList"] = {
 	{"golpe cuerpo a cuerpo", StatLogic.Stats.MeleeHitRating},
 	{"golpe", StatLogic.Stats.HitRating},
 
-	{"temple", StatLogic.Stats.ResilienceRating}, -- resilience is implicitly a rating
+	{"temple jcj", StatLogic.Stats.ResilienceRating},
+	{"temple", StatLogic.Stats.ResilienceRating},
 
 	{"celeridad con hechizos", StatLogic.Stats.SpellHasteRating},
 	{"celeridad a distancia", StatLogic.Stats.RangedHasteRating},
@@ -432,6 +439,10 @@ L[StatLogic.Stats.ArmorPenetrationRating] = "Indice Penetracion Armadura"
 -- Weapon Stats
 L[StatLogic.Stats.AverageWeaponDamage] = "Average Damage"
 L[StatLogic.Stats.WeaponDPS] = "Damage Per Second"
+
+L[StatLogic.Stats.Hit] = STAT_HIT_CHANCE
+L[StatLogic.Stats.Crit] = MELEE_CRIT_CHANCE
+L[StatLogic.Stats.Haste] = STAT_HASTE
 
 -- Melee Stats
 L[StatLogic.Stats.MeleeHit] = "Prob. Golpe"

@@ -334,33 +334,30 @@ L["exclusions"] = {
 	["head, chest, shoulders, legs,"] = "head chest shoulders legs", -- Borean Armor Kit
 	["chest, legs,"] = "chest legs", -- Vindicator's Armor Kit
 }
+
 L["separators"] = {
 	"/", " and ", ",%f[^%d]", "%. ", " for ", "&", ":", "\n"
 }
---[[
-SPELL_STAT1_NAME = "Strength"
-SPELL_STAT2_NAME = "Agility"
-SPELL_STAT3_NAME = "Stamina"
-SPELL_STAT4_NAME = "Intellect"
-SPELL_STAT5_NAME = "Spirit"
---]]
+
 L["statList"] = {
 	{"lowers intellect of target", false}, -- Brain Hacker
 	{"reduces an enemy's armor", false}, -- Annihilator
 
-	{SPELL_STAT1_NAME:lower(), StatLogic.Stats.Strength}, -- Strength
-	{SPELL_STAT2_NAME:lower(), StatLogic.Stats.Agility}, -- Agility
-	{SPELL_STAT3_NAME:lower(), StatLogic.Stats.Stamina}, -- Stamina
-	{SPELL_STAT4_NAME:lower(), StatLogic.Stats.Intellect}, -- Intellect
-	{SPELL_STAT5_NAME:lower(), StatLogic.Stats.Spirit}, -- Spirit
+	{SPELL_STAT1_NAME:lower(), StatLogic.Stats.Strength},
+	{SPELL_STAT2_NAME:lower(), StatLogic.Stats.Agility},
+	{SPELL_STAT3_NAME:lower(), StatLogic.Stats.Stamina},
+	{SPELL_STAT4_NAME:lower(), StatLogic.Stats.Intellect},
+	{SPELL_STAT5_NAME:lower(), StatLogic.Stats.Spirit},
 	{"defense rating", StatLogic.Stats.DefenseRating},
 	{DEFENSE:lower(), StatLogic.Stats.Defense},
 	{"dodge rating", StatLogic.Stats.DodgeRating},
-	{"increases dodge", StatLogic.Stats.DodgeRating},
-	{"block rating", StatLogic.Stats.BlockRating}, -- block enchant: "+10 Shield Block Rating"
+	{"dodge", StatLogic.Stats.DodgeRating},
+	{"block rating", StatLogic.Stats.BlockRating},
+	{"block", StatLogic.Stats.BlockRating},
 	{"parry rating", StatLogic.Stats.ParryRating},
+	{"parry", StatLogic.Stats.ParryRating},
 
-	{"spell power", false}, -- Shiffar's Nexus-Horn
+	{"spell power", StatLogic.Stats.SpellPower},
 	{"spell critical strikes", false}, -- Cyclone Regalia, Tirisfal Regalia
 	{"spell critical strike rating", StatLogic.Stats.SpellCritRating},
 	{"spell critical hit rating", StatLogic.Stats.SpellCritRating},
@@ -372,22 +369,22 @@ L["statList"] = {
 	{"ranged critical hit rating", StatLogic.Stats.RangedCritRating},
 	{"ranged critical rating", StatLogic.Stats.RangedCritRating},
 	{"ranged crit rating", StatLogic.Stats.RangedCritRating},
-	{"critical strike rating", StatLogic.Stats.CritRating},
+	{"critical strike", StatLogic.Stats.CritRating},
 	{"critical hit rating", StatLogic.Stats.CritRating},
 	{"critical rating", StatLogic.Stats.CritRating},
 	{"crit rating", StatLogic.Stats.CritRating},
 
 	{"spell hit rating", StatLogic.Stats.SpellHitRating},
 	{"ranged hit rating", StatLogic.Stats.RangedHitRating},
-	{"hit rating", StatLogic.Stats.HitRating},
+	{"hit", StatLogic.Stats.HitRating},
 
-	{"resilience", StatLogic.Stats.ResilienceRating}, -- resilience is implicitly a rating
+	{"resilience", StatLogic.Stats.ResilienceRating},
 
 	{"spell haste rating", StatLogic.Stats.SpellHasteRating},
 	{"ranged haste rating", StatLogic.Stats.RangedHasteRating},
-	{"haste rating", StatLogic.Stats.HasteRating},
+	{"haste", StatLogic.Stats.HasteRating},
 
-	{"expertise rating", StatLogic.Stats.ExpertiseRating},
+	{"expertise", StatLogic.Stats.ExpertiseRating},
 
 	{SPELL_STATALL:lower(), StatLogic.Stats.AllStats},
 	{"health", false}, -- Scroll of Enchant Chest - Health (prevents matching Armor)
@@ -455,6 +452,10 @@ L[StatLogic.Stats.ArmorPenetrationRating] = ITEM_MOD_ARMOR_PENETRATION_RATING_SH
 -- Weapon Stats
 L[StatLogic.Stats.AverageWeaponDamage] = "Average Damage"
 L[StatLogic.Stats.WeaponDPS] = "Damage Per Second"
+
+L[StatLogic.Stats.Hit] = STAT_HIT_CHANCE
+L[StatLogic.Stats.Crit] = MELEE_CRIT_CHANCE
+L[StatLogic.Stats.Haste] = STAT_HASTE
 
 -- Melee Stats
 L[StatLogic.Stats.MeleeHit] = STAT_HIT_CHANCE

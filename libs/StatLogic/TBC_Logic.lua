@@ -21,19 +21,6 @@ StatLogic.RatingBase = {
 	[StatLogic.Stats.ExpertiseRating] = 2.5,
 }
 
-StatLogic.GenericStatMap[StatLogic.Stats.HitRating] = {
-	StatLogic.Stats.MeleeHitRating,
-	StatLogic.Stats.RangedHitRating,
-}
-StatLogic.GenericStatMap[StatLogic.Stats.CritRating] = {
-	StatLogic.Stats.MeleeCritRating,
-	StatLogic.Stats.RangedCritRating,
-}
-StatLogic.GenericStatMap[StatLogic.Stats.HasteRating] = {
-	StatLogic.Stats.MeleeHasteRating,
-	StatLogic.Stats.RangedHasteRating,
-}
-
 -- Extracted from the client at GameTables/RegenMPPerSpt.txt via wow.tools.local
 local BaseManaRegenPerSpi = {
 	0.034965, 0.034191, 0.033465, 0.032526, 0.031661, 0.031076, 0.030523, 0.029994, 0.029307, 0.028661,
@@ -1657,6 +1644,41 @@ elseif addon.playerRace == "Troll" then
 end
 
 StatLogic.StatModTable["ALL"] = {
+	["ADD_MELEE_HIT_RATING_MOD_HIT_RATING"] = {
+		{
+			["value"] = 1.0,
+		},
+	},
+	["ADD_RANGED_HIT_RATING_MOD_HIT_RATING"] = {
+		{
+			["value"] = 1.0,
+		},
+	},
+	["ADD_MELEE_CRIT_RATING_MOD_CRIT_RATING"] = {
+		{
+			["value"] = 1.0,
+		},
+	},
+	["ADD_RANGED_CRIT_RATING_MOD_CRIT_RATING"] = {
+		{
+			["value"] = 1.0,
+		},
+	},
+	["ADD_MELEE_HASTE_RATING_MOD_HASTE_RATING"] = {
+		{
+			["value"] = 1.0,
+		},
+	},
+	["ADD_RANGED_HASTE_RATING_MOD_HASTE_RATING"] = {
+		{
+			["value"] = 1.0,
+		},
+	},
+	["ADD_SPELL_HASTE_RATING_MOD_HASTE_RATING"] = {
+		{
+			["value"] = 1.0,
+		},
+	},
 	["ADD_HEALTH_MOD_STA"] = {
 		{
 			["value"] = 10,
