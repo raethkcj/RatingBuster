@@ -63,6 +63,8 @@ local GetParryChance = GetParryChance
 local GetBlockChance = GetBlockChance
 
 local GetActiveTalentGroup = GetActiveTalentGroup or C_SpecializationInfo.GetActiveSpecGroup
+local GetSpecialization = GetSpecialization or C_SpecializationInfo.GetSpecialization
+local GetSpecializationInfo = GetSpecializationInfo or C_SpecializationInfo.GetSpecializationInfo
 
 ---------------------------
 -- Slash Command Options --
@@ -3186,64 +3188,6 @@ local armorTypes = {
 	[Enum.ItemArmorSubclass["Cloth"]] = true,
 }
 
-local specPrimaryStats = {
-	WARRIOR = {
-		StatLogic.Stats.Strength,
-		StatLogic.Stats.Strength,
-		StatLogic.Stats.Strength,
-	},
-	PALADIN = {
-		StatLogic.Stats.Intellect,
-		StatLogic.Stats.Strength,
-		StatLogic.Stats.Strength,
-	},
-	HUNTER = {
-		StatLogic.Stats.Agility,
-		StatLogic.Stats.Agility,
-		StatLogic.Stats.Agility,
-	},
-	ROGUE = {
-		StatLogic.Stats.Agility,
-		StatLogic.Stats.Agility,
-		StatLogic.Stats.Agility,
-	},
-	PRIEST = {
-		StatLogic.Stats.Intellect,
-		StatLogic.Stats.Intellect,
-		StatLogic.Stats.Intellect,
-	},
-	DEATHKNIGHT = {
-		StatLogic.Stats.Strength,
-		StatLogic.Stats.Strength,
-		StatLogic.Stats.Strength,
-	},
-	SHAMAN = {
-		StatLogic.Stats.Intellect,
-		StatLogic.Stats.Agility,
-		StatLogic.Stats.Intellect,
-	},
-	MAGE = {
-		StatLogic.Stats.Intellect,
-		StatLogic.Stats.Intellect,
-		StatLogic.Stats.Intellect,
-	},
-	MONK = {
-		StatLogic.Stats.Agility,
-		StatLogic.Stats.Intellect,
-		StatLogic.Stats.Agility,
-	},
-	WARLOCK = {
-		StatLogic.Stats.Intellect,
-		StatLogic.Stats.Intellect,
-		StatLogic.Stats.Intellect,
-	},
-	DRUID = {
-		StatLogic.Stats.Intellect,
-		StatLogic.Stats.Agility,
-		StatLogic.Stats.Intellect,
-	},
-}
-
 ---@alias SummaryCalcFunction fun(sum: StatTable, statModContext: StatModContext, sumType?, link?): number
 
 ---@class SummaryCalcData
@@ -4134,6 +4078,14 @@ local function WriteSummary(tooltip, output)
 	end
 end
 
+local primaryStats = {
+	StatLogic.Stats.Strength,
+	StatLogic.Stats.Agility,
+	StatLogic.Stats.Stamina,
+	StatLogic.Stats.Intellect,
+	StatLogic.Stats.Spirit,
+}
+
 function RatingBuster:StatSummary(tooltip, link, statModContext)
 	-- Hide stat summary for equipped items
 	if db.global.sumIgnoreEquipped and C_Item.IsEquippedItem(link) then return end
@@ -4242,9 +4194,10 @@ function RatingBuster:StatSummary(tooltip, link, statModContext)
 	end
 
 	if db.global.sumIgnoreNonPrimaryStat and addon.tocversion >= 40000 then
-		local spec = C_SpecializationInfo.GetSpecialization()
+		local spec = GetSpecialization()
 		if spec then
-			local primaryStat = specPrimaryStats[class][spec]
+			local specPrimaryStat = select(6, GetSpecializationInfo(spec))
+			local primaryStat = primaryStats[specPrimaryStat]
 			if statData.sum[primaryStat] == 0 then
 				return
 			end
