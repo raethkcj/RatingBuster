@@ -2480,7 +2480,13 @@ function addon.conversionFallback(classTable, conversionFunc)
 end
 
 -- Telemetry for agi/int conversions. Only used for new game versions while data is missing.
-if (GetCurrentRegion() == 1 or GetCurrentRegion() == 72) and GetLocale() == "enUS" then
+local regions = {
+	[1]  = true, -- NA
+	[72] = true, -- PTR
+	[90] = true, -- Beta
+}
+
+if regions[GetCurrentRegion()] and GetLocale() == "enUS" then
 	local commsVersion = 1
 	local prefix = addonName .. commsVersion
 	local codec = LibStub("LibDeflate"):CreateCodec("\000", "\255", "")
