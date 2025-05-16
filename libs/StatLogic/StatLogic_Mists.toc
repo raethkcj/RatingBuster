@@ -20,6 +20,6 @@ Stats.lua
 locales\locales.xml
 
 StatLogic.lua
-Mists_Logic.lua
 DiminishingReturns.lua
+Mists_Logic.lua
 Global_Logic.lua
