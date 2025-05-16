@@ -1256,8 +1256,7 @@ local defaults = {
 		showHP5NCFromHealth = false,
 
 		showDefenseFromDefenseRating = false,
-		showDodgeReductionFromExpertise = false,
-		showParryReductionFromExpertise = false,
+		showExpertiseFromExpertiseRating = false,
 		showCritAvoidanceFromResilience = false,
 		showCritDamageReductionFromResilience = false,
 		showPvpDamageReductionFromResilience = false,
@@ -1384,6 +1383,7 @@ if class == "DEATHKNIGHT" then
 	defaults.profile.showSpellCritFromInt = false
 	defaults.profile.ratingPhysical = true
 	defaults.profile.sumArmorPenetration = true
+	defaults.profile.showSpellHitFromExpertise = false
 elseif class == "DRUID" then
 	defaults.profile.sumAP = true
 	defaults.profile.sumHit = true
@@ -1413,6 +1413,8 @@ elseif class == "HUNTER" then
 	defaults.profile.showSpellCritFromInt = false
 	defaults.profile.ratingPhysical = true
 	defaults.profile.sumArmorPenetration = true
+	defaults.profile.showSpellHitFromExpertise = false
+	defaults.profile.showParryReductionFromExpertise = false
 elseif class == "MAGE" then
 	defaults.profile.sumSpellDmg = true
 	defaults.profile.sumSpellHit = true
@@ -1421,6 +1423,8 @@ elseif class == "MAGE" then
 	defaults.profile.showCritFromAgi = false
 	defaults.profile.showDodgeFromAgi = false
 	defaults.profile.ratingSpell = true
+	defaults.profile.showDodgeReductionFromExpertise = false
+	defaults.profile.showParryReductionFromExpertise = false
 elseif class == "MONK" then
 	defaults.profile.sumAP = true
 	defaults.profile.sumHit = true
@@ -1462,6 +1466,8 @@ elseif class == "PRIEST" then
 	defaults.profile.showCritFromAgi = false
 	defaults.profile.showDodgeFromAgi = false
 	defaults.profile.ratingSpell = true
+	defaults.profile.showDodgeReductionFromExpertise = false
+	defaults.profile.showParryReductionFromExpertise = false
 elseif class == "ROGUE" then
 	defaults.profile.sumWeaponAverageDamage = true
 	defaults.profile.sumWeaponSkill = true
@@ -1476,6 +1482,7 @@ elseif class == "ROGUE" then
 	defaults.profile.showSpellCritFromInt = false
 	defaults.profile.ratingPhysical = true
 	defaults.profile.sumArmorPenetration = true
+	defaults.profile.showSpellHitFromExpertise = false
 elseif class == "SHAMAN" then
 	defaults.profile.sumWeaponAverageDamage = true
 	defaults.profile.sumWeaponSkill = true
@@ -1500,6 +1507,8 @@ elseif class == "WARLOCK" then
 	defaults.profile.showCritFromAgi = false
 	defaults.profile.showDodgeFromAgi = false
 	defaults.profile.ratingSpell = true
+	defaults.profile.showDodgeReductionFromExpertise = false
+	defaults.profile.showParryReductionFromExpertise = false
 elseif class == "WARRIOR" then
 	defaults.profile.sumWeaponAverageDamage = true
 	defaults.profile.sumWeaponSkill = true
@@ -1516,6 +1525,7 @@ elseif class == "WARRIOR" then
 	defaults.profile.showSpellCritFromInt = false
 	defaults.profile.ratingPhysical = true
 	defaults.profile.sumArmorPenetration = true
+	defaults.profile.showSpellHitFromExpertise = false
 end
 
 do
