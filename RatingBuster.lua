@@ -2154,6 +2154,11 @@ function RatingBuster.ProcessTooltip(tooltip)
 	tooltip:Show()
 end
 
+---@param text string
+---@param link string
+---@param color ColorMixin
+---@param statModContext StatModContext
+---@return unknown
 function RatingBuster:ProcessLine(text, link, color, statModContext)
 	-- Get data from cache if available
 	local cacheKey = statModContext:CacheKey()
@@ -2197,10 +2202,10 @@ function RatingBuster:ProcessLine(text, link, color, statModContext)
 		cache[cacheKey][cacheID] = text
 		-- SetText
 		return text
-	else
-		cache[cacheKey][cacheID] = text
-		return text
 	end
+
+	cache[cacheKey][cacheID] = text
+	return text
 end
 
 ---------------------------------------------------------------------------------
