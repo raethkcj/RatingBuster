@@ -1530,18 +1530,104 @@ end
 
 if addon.playerRace == "Dwarf" then
 	StatLogic.StatModTable["Dwarf"] = {
+		[StatLogic.Stats.Expertise] = {
+			-- Passive: Mace Specialization, Crack Shot
+			{
+				["value"] = 1,
+				["weaponSubclass"] = {
+					[Enum.ItemWeaponSubclass.Mace1H] = true,
+					[Enum.ItemWeaponSubclass.Mace2H] = true,
+					[Enum.ItemWeaponSubclass.Bows] = true,
+					[Enum.ItemWeaponSubclass.Crossbow] = true,
+					[Enum.ItemWeaponSubclass.Guns] = true,
+				},
+			},
+		},
 	}
 elseif addon.playerRace == "Gnome" then
 	StatLogic.StatModTable["Gnome"] = {
+		[StatLogic.Stats.Expertise] = {
+			-- Passive: Shortblade Specialization
+			{
+				["value"] = 1,
+				["weaponSubclass"] = {
+					[Enum.ItemWeaponSubclass.Dagger] = true,
+					[Enum.ItemWeaponSubclass.Sword1H] = true,
+				}
+			},
+		},
 	}
 elseif addon.playerRace == "Human" then
 	StatLogic.StatModTable["Human"] = {
+		["MOD_SPI"] = {
+			-- Passive: The Human Spirit
+			{
+				["value"] = 0.03,
+				["spellid"] = 20598,
+			},
+		},
+		[StatLogic.Stats.Expertise] = {
+			-- Passive: Mace Specialization, Sword Specialization
+			{
+				["value"] = 1,
+				["weaponSubclass"] = {
+					[Enum.ItemWeaponSubclass.Mace1H] = true,
+					[Enum.ItemWeaponSubclass.Mace2H] = true,
+					[Enum.ItemWeaponSubclass.Sword1H] = true,
+					[Enum.ItemWeaponSubclass.Sword2H] = true,
+				},
+			},
+		},
+	}
+elseif addon.playerRace == "NightElf" then
+	StatLogic.StatModTable["NightElf"] = {
+		["ADD_DODGE"] = {
+			-- Passive: Quickness
+			{
+				["value"] = 2,
+			},
+		},
 	}
 elseif addon.playerRace == "Orc" then
 	StatLogic.StatModTable["Orc"] = {
+		[StatLogic.Stats.Expertise] = {
+			-- Passive: Axe Specialization
+			{
+				["value"] = 1,
+				["weaponSubclass"] = {
+					[Enum.ItemWeaponSubclass.Axe1H] = true,
+					[Enum.ItemWeaponSubclass.Axe2H] = true,
+					[Enum.ItemWeaponSubclass.Unarmed] = true,
+				},
+			},
+		},
 	}
 elseif addon.playerRace == "Troll" then
 	StatLogic.StatModTable["Troll"] = {
+		["MOD_NORMAL_HEALTH_REG"] = {
+			-- Passive: Regeneration
+			{
+				["value"] = 0.1,
+			},
+		},
+		["ADD_HEALTH_REG_MOD_NORMAL_HEALTH_REG"] = {
+			-- Passive: Regeneration
+			{
+				["value"] = 0.1,
+				["spellid"] = 20555,
+			},
+		},
+		[StatLogic.Stats.Expertise] = {
+			-- Passive: Dead Eye
+			{
+				["value"] = 1,
+				["weaponSubclass"] = {
+					[Enum.ItemWeaponSubclass.Bows] = true,
+					[Enum.ItemWeaponSubclass.Crossbow] = true,
+					[Enum.ItemWeaponSubclass.Guns] = true,
+				},
+			},
+		},
 	}
 end
 
