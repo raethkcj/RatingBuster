@@ -311,17 +311,8 @@ function StatLogic:GetAvoidanceGainAfterDR(stat, gainBeforeDR)
 	end
 end
 
-function StatLogic:GetResilienceEffectAfterDR(damageReductionBeforeDR)
-	return 100 - 100 * 0.99 ^ damageReductionBeforeDR
-end
-
-function StatLogic:GetResilienceEffectGainAfterDR(resAfter, resBefore)
-	local resCurrent = GetCombatRating(COMBAT_RATING_RESILIENCE_PLAYER_DAMAGE_TAKEN)
-	local drBefore
-	if resBefore then
-		drBefore = self:GetResilienceEffectAfterDR(self:GetEffectFromRating(resCurrent + resBefore, StatLogic.Stats.ResilienceRating))
-	else
-		drBefore = GetCombatRatingBonus(COMBAT_RATING_RESILIENCE_PLAYER_DAMAGE_TAKEN)
-	end
-	return self:GetResilienceEffectAfterDR(self:GetEffectFromRating(resCurrent + resAfter, StatLogic.Stats.ResilienceRating)) - drBefore
+function StatLogic:GetResilienceEffectGainAfterDR(gainBeforeDR)
+	local currentResilienceBeforeDR = self:GetEffectFromRating(GetCombatRating(COMBAT_RATING_RESILIENCE_PLAYER_DAMAGE_TAKEN), StatLogic.Stats.ResilienceRating)
+	local currentResilienceAfterDR = GetCombatRatingBonus(COMBAT_RATING_RESILIENCE_PLAYER_DAMAGE_TAKEN)
+	return self:GetResilienceEffectAfterDR(currentResilienceBeforeDR + gainBeforeDR) - currentResilienceAfterDR
 end

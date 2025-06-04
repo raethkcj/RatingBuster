@@ -2490,26 +2490,7 @@ do
 				end
 				self:ProcessStat(StatLogic.Stats.Expertise, effect, infoTable, link, color, statModContext, isBaseStat, db.profile.showExpertiseFromExpertiseRating)
 			elseif stat == StatLogic.Stats.ResilienceRating then
-				if db.profile.enableAvoidanceDiminishingReturns and addon.tocversion >= 40000 then
-					effect = StatLogic:GetResilienceEffectGainAfterDR(processedResilience + value, processedResilience)
-					processedResilience = processedResilience + value
-				end
-
-				if db.profile.showResilienceFromResilienceRating then
-					infoTable["Percent"] = effect
-				end
-				local critAvoidance = effect * statModContext("ADD_CRIT_AVOIDANCE_MOD_RESILIENCE")
-				if db.profile.showCritAvoidanceFromResilience then
-					infoTable[StatLogic.Stats.CritAvoidance] = infoTable[StatLogic.Stats.CritAvoidance] + critAvoidance
-				end
-				local critDmgReduction = effect * statModContext("ADD_CRIT_DAMAGE_REDUCTION_MOD_RESILIENCE")
-				if db.profile.showCritDamageReductionFromResilience then
-					infoTable[StatLogic.Stats.CritDamageReduction] = infoTable[StatLogic.Stats.CritDamageReduction] + critDmgReduction
-				end
-				local pvpDmgReduction = effect * statModContext("ADD_PVP_DAMAGE_REDUCTION_MOD_RESILIENCE")
-				if db.profile.showPvpDamageReductionFromResilience then
-					infoTable[StatLogic.Stats.PvPDamageReduction] = infoTable[StatLogic.Stats.PvPDamageReduction] + pvpDmgReduction
-				end
+				self:ProcessStat(StatLogic.Stats.Resilience, effect, infoTable, link, color, statModContext, isBaseStat, db.profile.showResilienceFromResilienceRating)
 			elseif stat == StatLogic.Stats.MasteryRating then
 				effect = effect * statModContext("MOD_MASTERY_RATING")
 				self:ProcessStat(StatLogic.Stats.Mastery, effect, infoTable, link, color, statModContext, isBaseStat, db.profile.showMasteryFromMasteryRating)
@@ -2790,9 +2771,7 @@ do
 			end
 
 			local critAvoidance = value * statModContext("ADD_CRIT_AVOIDANCE_MOD_DEFENSE")
-			if db.profile.showCritAvoidanceFromDefense then
-				infoTable[StatLogic.Stats.CritAvoidance] = infoTable[StatLogic.Stats.CritAvoidance] + critAvoidance
-			end
+			self:ProcessStat(StatLogic.Stats.CritAvoidance, critAvoidance, infoTable, link, color, statModContext, false, db.profile.showCritAvoidanceFromDefense)
 
 			local dodge = value * statModContext("ADD_DODGE_MOD_DEFENSE")
 			self:ProcessStat(StatLogic.Stats.Dodge, dodge, infoTable, link, color, statModContext, false, db.profile.showDodgeFromDefense)
@@ -2824,6 +2803,24 @@ do
 				processedBlock = processedBlock + value
 				value = StatLogic:GetAvoidanceGainAfterDR(StatLogic.Stats.BlockChance, processedBlock) - StatLogic:GetAvoidanceGainAfterDR(StatLogic.Stats.BlockChance, processedBlock - value)
 			end
+			if show and isBaseStat then
+				infoTable["Percent"] = value
+			elseif show then
+				infoTable[stat] = infoTable[stat] + value
+			end
+		elseif stat == StatLogic.Stats.CritAvoidance then
+			if show and isBaseStat then
+				infoTable["Percent"] = value
+			elseif show then
+				infoTable[stat] = infoTable[stat] + value
+			end
+		elseif stat == StatLogic.Stats.CritDamageReduction then
+			if show and isBaseStat then
+				infoTable["Percent"] = value
+			elseif show then
+				infoTable[stat] = infoTable[stat] + value
+			end
+		elseif stat == StatLogic.Stats.PvPDamageReduction then
 			if show and isBaseStat then
 				infoTable["Percent"] = value
 			elseif show then
@@ -2924,6 +2921,26 @@ do
 
 			local spellHit = value * statModContext("ADD_SPELL_HIT_MOD_EXPERTISE")
 			self:ProcessStat(StatLogic.Stats.SpellHit, spellHit, infoTable, link, color, statModContext, false, db.profile.showSpellHitFromExpertise)
+		elseif stat == StatLogic.Stats.Resilience then
+			if db.profile.enableAvoidanceDiminishingReturns and addon.tocversion >= 40000 then
+				processedResilience = processedResilience + value
+				value = StatLogic:GetResilienceEffectGainAfterDR(processedResilience) - StatLogic:GetResilienceEffectAfterDR(processedResilience - value)
+			end
+
+			if show and isBaseStat then
+				infoTable["Percent"] = value
+			elseif show then
+				infoTable[stat] = infoTable[stat] + value
+			end
+
+			local critAvoidance = value * statModContext("ADD_CRIT_AVOIDANCE_MOD_RESILIENCE")
+			self:ProcessStat(StatLogic.Stats.CritAvoidance, critAvoidance, infoTable, link, color, statModContext, false, db.profile.showCritAvoidanceFromResilience)
+
+			local critDmgReduction = value * statModContext("ADD_CRIT_DAMAGE_REDUCTION_MOD_RESILIENCE")
+			self:ProcessStat(StatLogic.Stats.CritDamageReduction, critDmgReduction, infoTable, link, color, statModContext, false, db.profile.showCritDamageReductionFromResilience)
+
+			local pvpDmgReduction = value * statModContext("ADD_PVP_DAMAGE_REDUCTION_MOD_RESILIENCE")
+			self:ProcessStat(StatLogic.Stats.PvPDamageReduction, pvpDmgReduction, infoTable, link, color, statModContext, false, db.profile.showPvpDamageReductionFromResilience)
 		elseif stat == StatLogic.Stats.DodgeReduction then
 			if show then
 				infoTable[stat] = infoTable[stat] + value

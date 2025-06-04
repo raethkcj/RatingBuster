@@ -6,7 +6,6 @@ local StatLogic = LibStub:GetLibrary(addonName)
 StatLogic.RatingBase = {
 	[StatLogic.Stats.DodgeRating] = 20.700001,
 	[StatLogic.Stats.ParryRating] = 20.700001,
-	[StatLogic.Stats.BlockRating] = 6.900001,
 	[StatLogic.Stats.MeleeHitRating] = 8,
 	[StatLogic.Stats.RangedHitRating] = 8,
 	[StatLogic.Stats.SpellHitRating] = 8,
@@ -1940,6 +1939,12 @@ StatLogic.StatModTable["ALL"] = {
 			["level"] = addon.conversionFallback(addon.ParryPerStr[addon.class], StatLogic.GetParryPerStr)
 		}
 	},
+	["ADD_PVP_DAMAGE_REDUCTION_MOD_RESILIENCE"] = {
+		-- Base
+		{
+			["value"] = 1,
+		},
+	},
 }
 
 -----------------------------------
@@ -2008,3 +2013,21 @@ addon.ModAgiClasses = {
 	["ROGUE"] = true,
 	["SHAMAN"] = true,
 }
+
+do
+	-- Derived by fitting a curve to the values in GameTables/ResilienceDR.txt
+	-- baseResilience changed patch-by-patch in original Mists, and the values
+	-- in the GameTable were regenerated each time to reflect the new base.
+	-- In Mists Classic, it appears that the in-game base resilience will
+	-- change patch-by-patch, but the GameTable (and thus DR) will stay locked
+	-- to the values generated from a base of 77.
+	local baseResilience = 77
+	local k = 2610.65913
+
+	---@param damageReductionBeforeDR number
+	---@return number
+	---@diagnostic disable-next-line: duplicate-set-field
+	function StatLogic:GetResilienceEffectAfterDR(damageReductionBeforeDR)
+		return 100 - baseResilience + 1 / (1 / (baseResilience - 100) - damageReductionBeforeDR / k)
+	end
+end

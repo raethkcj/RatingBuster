@@ -2842,7 +2842,7 @@ StatLogic.StatModTable["ALL"] = {
 	["ADD_PVP_DAMAGE_REDUCTION_MOD_RESILIENCE"] = {
 		-- Base
 		{
-			["value"] = -1,
+			["value"] = 1,
 		},
 	},
 }
@@ -2896,3 +2896,10 @@ addon.ModAgiClasses = {
 	["ROGUE"] = true,
 	["SHAMAN"] = true,
 }
+
+---@param damageReductionBeforeDR number
+---@return number
+---@diagnostic disable-next-line: duplicate-set-field
+function StatLogic:GetResilienceEffectAfterDR(damageReductionBeforeDR)
+	return 100 - 100 * 0.99 ^ damageReductionBeforeDR
+end
