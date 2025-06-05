@@ -173,6 +173,7 @@ StatLogic.Stats.DefenseRating = Stat:new()
 StatLogic.Stats.CritAvoidance = Stat:new({ isPercent = true })
 
 StatLogic.Stats.Resilience = Stat:new({ isPercent = true })
+StatLogic.Stats.ResilienceBeforeDR = Stat:new({ isPercent = true })
 StatLogic.Stats.ResilienceRating = Stat:new()
 StatLogic.Stats.CritDamageReduction = Stat:new({ isPercent = true })
 StatLogic.Stats.PvPDamageReduction = Stat:new({ isPercent = true })

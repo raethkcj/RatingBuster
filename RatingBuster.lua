@@ -1059,7 +1059,7 @@ local options = {
 						},
 						sumResilience = {
 							type = 'toggle',
-							name = L["Sum %s"]:format(L[StatLogic.Stats.ResilienceRating]),
+							name = L["Sum %s"]:format(L[StatLogic.Stats.Resilience]),
 							order = 14,
 						},
 						sumArcaneResist = {
@@ -2103,7 +2103,7 @@ local summaryFunc = {}
 local equippedSum = setmetatable({}, {
 	__index = function() return 0 end
 })
-local equippedBlock, equippedDodge, equippedParry, equippedMissed
+local equippedBlock, equippedDodge, equippedParry, equippedMissed, equippedResilience
 local processedBlock, processedDodge, processedParry, processedMissed, processedResilience
 
 local scanningTooltipOwners = {
@@ -2152,16 +2152,18 @@ function RatingBuster.ProcessTooltip(tooltip)
 		equippedDodge = summaryFunc[StatLogic.Stats.DodgeBeforeDR](equippedSum, statModContext, "sum", difflink1) * -1
 		equippedParry = summaryFunc[StatLogic.Stats.ParryBeforeDR](equippedSum, statModContext, "sum", difflink1) * -1
 		equippedMissed = summaryFunc[StatLogic.Stats.MissBeforeDR](equippedSum, statModContext, "sum", difflink1) * -1
+		equippedResilience = summaryFunc[StatLogic.Stats.ResilienceBeforeDR](equippedSum, statModContext, "sum", difflink1) * -1
 		processedBlock = GetBlockChance() > 0 and equippedBlock or 0
 		processedDodge = GetDodgeChance() > 0 and equippedDodge or 0
 		processedParry = GetParryChance() > 0 and equippedParry or 0
 		processedMissed = equippedMissed
-		processedResilience = equippedSum[StatLogic.Stats.ResilienceRating] * -1
+		processedResilience = equippedResilience
 	else
 		equippedBlock = 0
 		equippedDodge = 0
 		equippedParry = 0
 		equippedMissed = 0
+		equippedResilience = 0
 		processedBlock = 0
 		processedDodge = 0
 		processedParry = 0
@@ -3996,17 +3998,38 @@ local summaryCalcData = {
 		option = "sumCritAvoid",
 		stat = StatLogic.Stats.CritAvoidance,
 		func = function(sum, statModContext)
-			return sum[StatLogic.Stats.ResilienceRating] * statModContext("ADD_RESILIENCE_MOD_RESILIENCE_RATING") * statModContext("ADD_CRIT_AVOIDANCE_MOD_RESILIENCE")
+			return summaryFunc[StatLogic.Stats.Resilience](sum, statModContext) * statModContext("ADD_CRIT_AVOIDANCE_MOD_RESILIENCE")
 				+ summaryFunc[StatLogic.Stats.Defense](sum, statModContext) * statModContext("ADD_CRIT_AVOIDANCE_MOD_DEFENSE")
 		 end,
 	},
 	-- Resilience - RESILIENCE_RATING
 	{
-		option = "sumResilience",
+		option = "sumResilienceRating",
 		stat = StatLogic.Stats.ResilienceRating,
 		func = function(sum)
 			return sum[StatLogic.Stats.ResilienceRating]
 		end,
+	},
+	{
+		stat = StatLogic.Stats.ResilienceBeforeDR,
+		func = function(sum, statModContext)
+			return summaryFunc[StatLogic.Stats.ResilienceRating](sum, statModContext) * statModContext("ADD_RESILIENCE_MOD_RESILIENCE_RATING")
+		end,
+	},
+	{
+		option = "sumResilience",
+		stat = StatLogic.Stats.Resilience,
+		func = function(sum, statModContext, sumType)
+			local resilience = summaryFunc[StatLogic.Stats.ResilienceBeforeDR](sum, statModContext)
+			if db.profile.enableAvoidanceDiminishingReturns then
+				if (sumType == "diff1") or (sumType == "diff2") then
+					resilience = StatLogic:GetResilienceEffectGainAfterDR(resilience)
+				elseif sumType == "sum" then
+					resilience = StatLogic:GetResilienceEffectGainAfterDR(equippedResilience + resilience) - StatLogic:GetResilienceEffectGainAfterDR(equippedResilience)
+				end
+			end
+			return resilience
+		 end,
 	},
 	-- Arcane Resistance - ARCANE_RES
 	{
