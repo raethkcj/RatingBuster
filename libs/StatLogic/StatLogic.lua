@@ -2232,37 +2232,37 @@ function StatLogic:GetArmorDistribution(item, value, color)
 end
 
 local getSlotID = {
-	INVTYPE_AMMO           = 0,
-	INVTYPE_GUNPROJECTILE  = 0,
-	INVTYPE_BOWPROJECTILE  = 0,
-	INVTYPE_HEAD           = 1,
-	INVTYPE_NECK           = 2,
-	INVTYPE_SHOULDER       = 3,
-	INVTYPE_BODY           = 4,
-	INVTYPE_CHEST          = 5,
-	INVTYPE_ROBE           = 5,
-	INVTYPE_WAIST          = 6,
-	INVTYPE_LEGS           = 7,
-	INVTYPE_FEET           = 8,
-	INVTYPE_WRIST          = 9,
-	INVTYPE_HAND           = 10,
-	INVTYPE_FINGER         = {11,12},
-	INVTYPE_TRINKET        = {13,14},
-	INVTYPE_CLOAK          = 15,
-	INVTYPE_WEAPON         = {16,17},
-	INVTYPE_2HWEAPON       = 16+17,
-	INVTYPE_WEAPONMAINHAND = 16,
-	INVTYPE_WEAPONOFFHAND  = 17,
-	INVTYPE_SHIELD         = 17,
-	INVTYPE_HOLDABLE       = 17,
-	INVTYPE_RANGED         = 18,
-	INVTYPE_RANGEDRIGHT    = 18,
-	INVTYPE_RELIC          = 18,
-	INVTYPE_GUN            = 18,
-	INVTYPE_CROSSBOW       = 18,
-	INVTYPE_WAND           = 18,
-	INVTYPE_THROWN         = 18,
-	INVTYPE_TABARD         = 19,
+	INVTYPE_AMMO           = INVSLOT_AMMO,
+	INVTYPE_GUNPROJECTILE  = INVSLOT_AMMO,
+	INVTYPE_BOWPROJECTILE  = INVSLOT_AMMO,
+	INVTYPE_HEAD           = INVSLOT_HEAD,
+	INVTYPE_NECK           = INVSLOT_NECK,
+	INVTYPE_SHOULDER       = INVSLOT_SHOULDER,
+	INVTYPE_BODY           = INVSLOT_BODY,
+	INVTYPE_CHEST          = INVSLOT_CHEST,
+	INVTYPE_ROBE           = INVSLOT_CHEST,
+	INVTYPE_WAIST          = INVSLOT_WAIST,
+	INVTYPE_LEGS           = INVSLOT_LEGS,
+	INVTYPE_FEET           = INVSLOT_FEET,
+	INVTYPE_WRIST          = INVSLOT_WRIST,
+	INVTYPE_HAND           = INVSLOT_HAND,
+	INVTYPE_FINGER         = {INVSLOT_FINGER1, INVSLOT_FINGER2},
+	INVTYPE_TRINKET        = {INVSLOT_TRINKET1, INVSLOT_TRINKET2},
+	INVTYPE_CLOAK          = INVSLOT_BACK,
+	INVTYPE_WEAPON         = {INVSLOT_MAINHAND, INVSLOT_OFFHAND},
+	INVTYPE_2HWEAPON       = INVSLOT_MAINHAND + INVSLOT_OFFHAND,
+	INVTYPE_WEAPONMAINHAND = INVSLOT_MAINHAND,
+	INVTYPE_WEAPONOFFHAND  = INVSLOT_OFFHAND,
+	INVTYPE_SHIELD         = INVSLOT_OFFHAND,
+	INVTYPE_HOLDABLE       = INVSLOT_OFFHAND,
+	INVTYPE_RANGED         = addon.tocversion >= 50000 and INVSLOT_MAINHAND or INVSLOT_RANGED,
+	INVTYPE_RANGEDRIGHT    = addon.tocversion >= 50000 and INVSLOT_MAINHAND or INVSLOT_RANGED,
+	INVTYPE_RELIC          = INVSLOT_RANGED,
+	INVTYPE_GUN            = addon.tocversion >= 50000 and INVSLOT_MAINHAND or INVSLOT_RANGED,
+	INVTYPE_CROSSBOW       = addon.tocversion >= 50000 and INVSLOT_MAINHAND or INVSLOT_RANGED,
+	INVTYPE_WAND           = addon.tocversion >= 50000 and INVSLOT_MAINHAND or INVSLOT_RANGED,
+	INVTYPE_THROWN         = INVSLOT_RANGED,
+	INVTYPE_TABARD         = INVSLOT_TABARD,
 }
 
 local function HasTitansGrip()
@@ -2305,7 +2305,7 @@ function StatLogic:GetDiffID(item, ignoreEnchant, ignoreGems, ignoreExtraSockets
 
 	-- 1h weapon, check if player can dual wield, check for 2h equipped
 	if inventoryType == "INVTYPE_WEAPON" then
-		linkDiff1 = GetInventoryItemLink("player", 16) or "NOITEM"
+		linkDiff1 = GetInventoryItemLink("player", INVSLOT_MAINHAND) or "NOITEM"
 		-- If player can Dual Wield, calculate offhand difference
 		if IsUsableSpell(GetSpellName(674)) then		-- ["Dual Wield"]
 			local _, _, _, _, _, _, _, _, eqItemType = C_Item.GetItemInfo(linkDiff1)
@@ -2313,7 +2313,7 @@ function StatLogic:GetDiffID(item, ignoreEnchant, ignoreGems, ignoreExtraSockets
 			if eqItemType == "INVTYPE_2HWEAPON" and not HasTitansGrip() then
 				linkDiff2 = linkDiff1
 			else
-				linkDiff2 = GetInventoryItemLink("player", 17) or "NOITEM"
+				linkDiff2 = GetInventoryItemLink("player", INVSLOT_OFFHAND) or "NOITEM"
 			end
 		end
 	-- Ring or trinket
@@ -2323,15 +2323,15 @@ function StatLogic:GetDiffID(item, ignoreEnchant, ignoreGems, ignoreExtraSockets
 		linkDiff2 = GetInventoryItemLink("player", slotID[2]) or "NOITEM"
 	-- 2h weapon, so we calculate the difference with equipped main hand and off hand
 	elseif inventoryType == "INVTYPE_2HWEAPON" then
-		linkDiff1 = GetInventoryItemLink("player", 16) or "NOITEM"
-		linkDiff2= GetInventoryItemLink("player", 17) or "NOITEM"
+		linkDiff1 = GetInventoryItemLink("player", INVSLOT_MAINHAND) or "NOITEM"
+		linkDiff2= GetInventoryItemLink("player", INVSLOT_OFFHAND) or "NOITEM"
 	-- Off hand slot, check if we have 2h equipped
-	elseif slotID == 17 then
-		linkDiff1 = GetInventoryItemLink("player", 16) or "NOITEM"
+	elseif slotID == INVSLOT_OFFHAND then
+		linkDiff1 = GetInventoryItemLink("player", INVSLOT_MAINHAND) or "NOITEM"
 		-- If 2h is equipped
 		local _, _, _, _, _, _, _, _, eqItemType = C_Item.GetItemInfo(linkDiff1)
 		if eqItemType ~= "INVTYPE_2HWEAPON" then
-			linkDiff1 = GetInventoryItemLink("player", 17) or "NOITEM"
+			linkDiff1 = GetInventoryItemLink("player", INVSLOT_OFFHAND) or "NOITEM"
 		end
 	-- Single slot item
 	else
