@@ -14,7 +14,7 @@ local RatingScalars = {
 	4.30560143, 5.65397461, 7.42754553, 9.75272320, 12.80571629, 16.18357410, 20.77294586, 26.32850114, 33.81642349, 42.75362112,
 }
 
-local ResilienceScalars = {
+local PvpScalars = {
 	[81] = 4.09289612,
 	[82] = 5.10881490,
 	[83] = 6.37689952,
@@ -26,14 +26,14 @@ local ResilienceScalars = {
 	[89] = 26.36807246,
 	[90] = 33.36368352,
 }
-setmetatable(ResilienceScalars, { __index = RatingScalars })
+setmetatable(PvpScalars, { __index = RatingScalars })
 
 ---@param stat Stat
 ---@param level number
 ---@return number
 function addon.GetRatingScalar(stat, level)
-	if stat == StatLogic.Stats.ResilienceRating then
-		return ResilienceScalars[level]
+	if stat == StatLogic.Stats.ResilienceRating or stat == StatLogic.Stats.PvpPowerRating then
+		return PvpScalars[level]
 	else
 		return RatingScalars[level]
 	end

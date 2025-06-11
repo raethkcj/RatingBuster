@@ -411,6 +411,14 @@ local options = {
 					args = {},
 					hidden = true,
 				},
+				pvp_power = {
+					type = 'group',
+					name = L[StatLogic.Stats.PvpPowerRating],
+					desc = L["Changes the display of %s"]:format(L[StatLogic.Stats.PvpPowerRating]),
+					order = 19,
+					args = {},
+					hidden = true,
+				},
 			},
 		},
 		sum = {
@@ -2496,6 +2504,8 @@ do
 			elseif stat == StatLogic.Stats.MasteryRating then
 				effect = effect * statModContext("MOD_MASTERY_RATING")
 				self:ProcessStat(StatLogic.Stats.Mastery, effect, infoTable, link, color, statModContext, isBaseStat, db.profile.showMasteryFromMasteryRating)
+			elseif stat == StatLogic.Stats.PvpPowerRating then
+				self:ProcessStat(StatLogic.Stats.PvpPower, effect, infoTable, link, color, statModContext, isBaseStat, db.profile.showPvpPowerFromPvpPowerRating)
 			else
 				local show = false
 				local displayType = "Percent"
@@ -2823,6 +2833,12 @@ do
 				infoTable[stat] = infoTable[stat] + value
 			end
 		elseif stat == StatLogic.Stats.PvPDamageReduction then
+			if show and isBaseStat then
+				infoTable["Percent"] = value
+			elseif show then
+				infoTable[stat] = infoTable[stat] + value
+			end
+		elseif stat == StatLogic.Stats.PvpPower then
 			if show and isBaseStat then
 				infoTable["Percent"] = value
 			elseif show then

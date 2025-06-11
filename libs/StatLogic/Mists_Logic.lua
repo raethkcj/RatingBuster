@@ -18,7 +18,7 @@ StatLogic.RatingBase = {
 	[StatLogic.Stats.SpellHasteRating] = 10,
 	[StatLogic.Stats.ExpertiseRating] = 8,
 	[StatLogic.Stats.MasteryRating] = 14,
-	[StatLogic.Stats.PvPPowerRating] = 14,
+	[StatLogic.Stats.PvpPowerRating] = 12.021399,
 }
 
 local NormalManaRegenPerSpi = function(level)
