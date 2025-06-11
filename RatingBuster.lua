@@ -1069,31 +1069,42 @@ local options = {
 							type = 'toggle',
 							name = L["Sum %s"]:format(L[StatLogic.Stats.Resilience]),
 							order = 14,
+							hidden = function()
+								return addon.tocversion < 20000
+							end,
+						},
+						sumPvpPower = {
+							type = 'toggle',
+							name = L["Sum %s"]:format(L[StatLogic.Stats.PvpPower]),
+							order = 15,
+							hidden = function()
+								return addon.tocversion < 50000
+							end,
 						},
 						sumArcaneResist = {
 							type = 'toggle',
 							name = L["Sum %s"]:format(L[StatLogic.Stats.ArcaneResistance]),
-							order = 15,
+							order = 16,
 						},
 						sumFireResist = {
 							type = 'toggle',
 							name = L["Sum %s"]:format(L[StatLogic.Stats.FireResistance]),
-							order = 16,
+							order = 17,
 						},
 						sumNatureResist = {
 							type = 'toggle',
 							name = L["Sum %s"]:format(L[StatLogic.Stats.NatureResistance]),
-							order = 17,
+							order = 18,
 						},
 						sumFrostResist = {
 							type = 'toggle',
 							name = L["Sum %s"]:format(L[StatLogic.Stats.FrostResistance]),
-							order = 18,
+							order = 19,
 						},
 						sumShadowResist = {
 							type = 'toggle',
 							name = L["Sum %s"]:format(L[StatLogic.Stats.ShadowResistance]),
-							order = 19,
+							order = 20,
 						},
 					},
 				},
@@ -1322,20 +1333,20 @@ local defaults = {
 		sumHolyDmg = false,
 		sumHealing = false,
 		sumSpellHit = false,
-		sumSpellHitRating = false, -- new
+		sumSpellHitRating = false,
 		sumSpellCrit = false,
-		sumSpellCritRating = false, -- new
-		sumSpellHaste = false, -- new
-		sumSpellHasteRating = false, -- new
-		sumPenetration = false, -- new
+		sumSpellCritRating = false,
+		sumSpellHaste = false,
+		sumSpellHasteRating = false,
+		sumPenetration = false,
 		-- Tank
 		sumArmor = false,
 		sumDodge = false,
-		sumDodgeRating = false, -- new
+		sumDodgeRating = false,
 		sumParry = false,
-		sumParryRating = false, -- new
+		sumParryRating = false,
 		sumBlock = false,
-		sumBlockRating = false, -- new
+		sumBlockRating = false,
 		sumBlockValue = false,
 		sumHitAvoid = false,
 		sumCritAvoid = false,
@@ -1344,7 +1355,8 @@ local defaults = {
 		sumNatureResist = false,
 		sumFireResist = false,
 		sumShadowResist = false,
-		sumResilience = true, -- new
+		sumResilience = true,
+		sumPvpPower = true,
 		sumDefense = false,
 		sumAvoidance = false,
 		sumMasteryEffect = true,
@@ -4045,6 +4057,19 @@ local summaryCalcData = {
 				end
 			end
 			return resilience
+		 end,
+	},
+	{
+		stat = StatLogic.Stats.PvpPowerRating,
+		func = function(sum)
+			return sum[StatLogic.Stats.PvpPowerRating]
+		end,
+	},
+	{
+		option = "sumPvpPower",
+		stat = StatLogic.Stats.PvpPower,
+		func = function(sum, statModContext)
+			return summaryFunc[StatLogic.Stats.PvpPowerRating](sum, statModContext) * statModContext("ADD_PVP_POWER_MOD_PVP_POWER_RATING")
 		 end,
 	},
 	-- Arcane Resistance - ARCANE_RES

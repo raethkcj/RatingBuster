@@ -95,7 +95,8 @@
 			"3847": [ "WholeTextLookup", {"Defense": 25} ],
 			"3883": [ "WholeTextLookup", {"Defense": 13} ]
 		},
-		"4": {}
+		"4": {},
+		"5": {}
 	},
 	"Spell": {
 		"1": {
@@ -166,6 +167,7 @@
 		"3": {
 			"42095": [ "StatIDLookup", ["ArmorPenetrationRating"] ]
 		},
-		"4": {}
+		"4": {},
+		"5": {}
 	}
 }

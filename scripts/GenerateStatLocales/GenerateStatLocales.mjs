@@ -15,7 +15,7 @@ import { finished } from 'node:stream/promises'
 		let product = "wow_classic_ptr"
 		if (majorVersion === "1") {
 			product = "wow_classic_era_ptr"
-		} else if(majorVersion === "4") {
+		} else if(majorVersion === "5") {
 			product = "wow_classic_beta"
 		}
 		const builds = await fetchBuilds()
@@ -145,6 +145,21 @@ const itemStatType = {
     45: ['SpellDamage', 'HealingPower'], // SpellPower
     47: 'SpellPenetration',
     49: 'MasteryRating',
+	50: 'BonusArmor',
+	51: 'FireResistance',
+	52: 'FrostResistance',
+	53: 'HolyResistance',
+	54: 'ShadowResistance',
+	55: 'NatureResistance',
+	56: 'ArcaneResistance',
+    57: 'PvpPowerRating',
+    // 58: 'AmplifyRating',
+    // 59: 'MultistrikeRating',
+    // 60: 'ReadinessRating',
+    // 61: 'SpeedRating',
+    // 62: 'LifestealRating',
+    // 63: 'AvoidanceRating',
+    // 64: 'SturdinessRating',
 }
 
 function getGemStats(row) {
