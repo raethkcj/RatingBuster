@@ -363,6 +363,7 @@ L["statList"] = {
 
 	{"abhärtungswertung", StatLogic.Stats.ResilienceRating},
 	{"abhärtung", StatLogic.Stats.ResilienceRating},
+	{ITEM_MOD_PVP_POWER_SHORT:lower(), StatLogic.Stats.PvpPowerRating},
 
 	{"zaubertempowertung", StatLogic.Stats.SpellHasteRating},
 	{"distanztempowertung", StatLogic.Stats.RangedHasteRating},
@@ -521,6 +522,9 @@ L[StatLogic.Stats.Resilience] = COMBAT_RATING_NAME15
 L[StatLogic.Stats.ResilienceRating] = "Abhärtung"
 L[StatLogic.Stats.CritDamageReduction] = "Krit Schadenverminderung"
 S[StatLogic.Stats.CritDamageReduction] = "erlittener krit. Schaden"
+L[StatLogic.Stats.PvPDamageReduction] = "PvP Damage Reduction"
+L[StatLogic.Stats.PvpPower] = ITEM_MOD_PVP_POWER_SHORT
+L[StatLogic.Stats.PvpPowerRating] = ITEM_MOD_PVP_POWER_SHORT .. " " .. RATING
 L[StatLogic.Stats.PvPDamageReduction] = "erlitter Schaden im PVP"
 
 L[StatLogic.Stats.FireResistance] = "Feuerwiderstand"

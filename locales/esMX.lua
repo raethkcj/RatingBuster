@@ -366,6 +366,7 @@ L["statList"] = {
 
 	{"temple jcj", StatLogic.Stats.ResilienceRating},
 	{"temple", StatLogic.Stats.ResilienceRating},
+	{ITEM_MOD_PVP_POWER_SHORT:lower(), StatLogic.Stats.PvpPowerRating},
 
 	{"celeridad con hechizos", StatLogic.Stats.SpellHasteRating},
 	{"celeridad a distancia", StatLogic.Stats.RangedHasteRating},
@@ -521,6 +522,9 @@ L[StatLogic.Stats.Resilience] = COMBAT_RATING_NAME15
 L[StatLogic.Stats.ResilienceRating] = "Temple"
 L[StatLogic.Stats.CritDamageReduction] = "Crit Damage Reduction"
 S[StatLogic.Stats.CritDamageReduction] = "Daño crit recib"
+L[StatLogic.Stats.PvPDamageReduction] = "PvP Damage Reduction"
+L[StatLogic.Stats.PvpPower] = ITEM_MOD_PVP_POWER_SHORT
+L[StatLogic.Stats.PvpPowerRating] = ITEM_MOD_PVP_POWER_SHORT .. " " .. RATING
 L[StatLogic.Stats.PvPDamageReduction] = "Daño recib"
 
 L[StatLogic.Stats.FireResistance] = "Resist. Fuego"

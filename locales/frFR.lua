@@ -391,6 +391,7 @@ L["statList"] = {
 
 	{"résilience (jcj)", StatLogic.Stats.ResilienceRating},
 	{"résilience", StatLogic.Stats.ResilienceRating},
+	{ITEM_MOD_PVP_POWER_SHORT:lower(), StatLogic.Stats.PvpPowerRating},
 
 	{"score de hâte des sorts", StatLogic.Stats.SpellHasteRating},
 	{"score de hâte à distance", StatLogic.Stats.RangedHasteRating},
@@ -547,6 +548,9 @@ L[StatLogic.Stats.Resilience] = COMBAT_RATING_NAME15
 L[StatLogic.Stats.ResilienceRating] = "Score de résilience"
 L[StatLogic.Stats.CritDamageReduction] = "Diminution des dégâts des coups critiques en mêlée"
 S[StatLogic.Stats.CritDamageReduction] = "dégâts CC"
+L[StatLogic.Stats.PvPDamageReduction] = "PvP Damage Reduction"
+L[StatLogic.Stats.PvpPower] = ITEM_MOD_PVP_POWER_SHORT
+L[StatLogic.Stats.PvpPowerRating] = ITEM_MOD_PVP_POWER_SHORT .. " " .. RATING
 L[StatLogic.Stats.PvPDamageReduction] = "PvP Damage Taken"
 
 L[StatLogic.Stats.FireResistance] = "Résistance au Feu"

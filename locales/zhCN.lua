@@ -367,6 +367,7 @@ L["statList"] = {
 
 	{"韧性等级", StatLogic.Stats.ResilienceRating},
 	{"韧性", StatLogic.Stats.ResilienceRating},
+	{ITEM_MOD_PVP_POWER_SHORT:lower(), StatLogic.Stats.PvpPowerRating},
 
 	{"法术急速等级", StatLogic.Stats.SpellHasteRating},
 	{"远程急速等级", StatLogic.Stats.RangedHasteRating},
@@ -523,6 +524,9 @@ L[StatLogic.Stats.Resilience] = COMBAT_RATING_NAME15
 L[StatLogic.Stats.ResilienceRating] = "韧性"
 L[StatLogic.Stats.CritDamageReduction] = "爆击减伤"
 S[StatLogic.Stats.CritDamageReduction] = "致命一击伤害减免"
+L[StatLogic.Stats.PvPDamageReduction] = "PvP Damage Reduction"
+L[StatLogic.Stats.PvpPower] = ITEM_MOD_PVP_POWER_SHORT
+L[StatLogic.Stats.PvpPowerRating] = ITEM_MOD_PVP_POWER_SHORT .. " " .. RATING
 L[StatLogic.Stats.PvPDamageReduction] = "PvP Damage Taken"
 
 L[StatLogic.Stats.FireResistance] = "火焰抗性"

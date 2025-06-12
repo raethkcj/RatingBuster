@@ -458,6 +458,7 @@ L["statList"] = {
 	{"рейтингу устойчивости", StatLogic.Stats.ResilienceRating},
 	{"рейтинга устойчивости", StatLogic.Stats.ResilienceRating},
 	{"устойчивости", StatLogic.Stats.ResilienceRating},
+	{ITEM_MOD_PVP_POWER_SHORT:lower(), StatLogic.Stats.PvpPowerRating},
 
 	{"рейтинг скорости %(заклинания%)", StatLogic.Stats.SpellHasteRating},
 	{"рейтингу скорости %(заклинания%)", StatLogic.Stats.SpellHasteRating},
@@ -618,6 +619,9 @@ L[StatLogic.Stats.Resilience] = COMBAT_RATING_NAME15
 L[StatLogic.Stats.ResilienceRating] = "устойчивости"
 L[StatLogic.Stats.CritDamageReduction] = "Понижение входящего урона от крит. ударов"
 S[StatLogic.Stats.CritDamageReduction] = "к получению крит. урона"
+L[StatLogic.Stats.PvPDamageReduction] = "PvP Damage Reduction"
+L[StatLogic.Stats.PvpPower] = ITEM_MOD_PVP_POWER_SHORT
+L[StatLogic.Stats.PvpPowerRating] = ITEM_MOD_PVP_POWER_SHORT .. " " .. RATING
 L[StatLogic.Stats.PvPDamageReduction] = "PvP Damage Taken"
 
 L[StatLogic.Stats.FireResistance] = "Сопротивление огню"

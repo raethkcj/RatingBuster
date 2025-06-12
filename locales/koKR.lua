@@ -366,6 +366,7 @@ L["statList"] = {
 
 	{"탄력도", StatLogic.Stats.ResilienceRating},
 	{"탄력", StatLogic.Stats.ResilienceRating},
+	{ITEM_MOD_PVP_POWER_SHORT:lower(), StatLogic.Stats.PvpPowerRating},
 
 	{"주문 시전 가속도", StatLogic.Stats.SpellHasteRating},
 	{"원거리 공격 가속도", StatLogic.Stats.RangedHasteRating},
@@ -522,6 +523,9 @@ L[StatLogic.Stats.Resilience] = COMBAT_RATING_NAME15
 L[StatLogic.Stats.ResilienceRating] = "탄력도"
 L[StatLogic.Stats.CritDamageReduction] = "치명타 피해 감소"
 S[StatLogic.Stats.CritDamageReduction] = "가질 치명타 데미지"
+L[StatLogic.Stats.PvPDamageReduction] = "PvP Damage Reduction"
+L[StatLogic.Stats.PvpPower] = ITEM_MOD_PVP_POWER_SHORT
+L[StatLogic.Stats.PvpPowerRating] = ITEM_MOD_PVP_POWER_SHORT .. " " .. RATING
 L[StatLogic.Stats.PvPDamageReduction] = "PvP Damage Taken"
 
 L[StatLogic.Stats.FireResistance] = "화염 저항력"

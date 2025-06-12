@@ -366,6 +366,7 @@ L["statList"] = {
 	{"hit rating", StatLogic.Stats.HitRating},
 
 	{"resilience", StatLogic.Stats.ResilienceRating},
+	{ITEM_MOD_PVP_POWER_SHORT:lower(), StatLogic.Stats.PvpPowerRating},
 
 	{"spell haste rating", StatLogic.Stats.SpellHasteRating},
 	{"ranged haste rating", StatLogic.Stats.RangedHasteRating},
@@ -518,7 +519,10 @@ S[StatLogic.Stats.CritAvoidance] = "Crit Avoid"
 L[StatLogic.Stats.Resilience] = COMBAT_RATING_NAME15
 L[StatLogic.Stats.ResilienceRating] = COMBAT_RATING_NAME15.." "..RATING
 L[StatLogic.Stats.CritDamageReduction] = "Crit Damage Reduction"
-S[StatLogic.Stats.CritDamageReduction] = "Crit Dmg Taken"
+S[StatLogic.Stats.CritDamageReduction] = "Crit Dmg Reduction"
+L[StatLogic.Stats.PvPDamageReduction] = "PvP Damage Reduction"
+L[StatLogic.Stats.PvpPower] = ITEM_MOD_PVP_POWER_SHORT
+L[StatLogic.Stats.PvpPowerRating] = ITEM_MOD_PVP_POWER_SHORT .. " " .. RATING
 L[StatLogic.Stats.PvPDamageReduction] = "PvP Damage Taken"
 
 L[StatLogic.Stats.FireResistance] = RESISTANCE2_NAME
