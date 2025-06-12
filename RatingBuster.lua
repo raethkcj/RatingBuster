@@ -4167,6 +4167,83 @@ local primaryStats = {
 	StatLogic.Stats.Spirit,
 }
 
+local primaryStatsByClassAndSpec = {
+	ROGUE = {
+		StatLogic.Stats.Agility,
+		StatLogic.Stats.Agility,
+		StatLogic.Stats.Agility,
+	},
+	HUNTER = {
+		StatLogic.Stats.Agility,
+		StatLogic.Stats.Agility,
+		StatLogic.Stats.Agility,
+	},
+	WARRIOR = {
+		StatLogic.Stats.Strength,
+		StatLogic.Stats.Strength,
+		StatLogic.Stats.Strength,
+	},
+	DEATHKNIGHT = {
+		StatLogic.Stats.Strength,
+		StatLogic.Stats.Strength,
+		StatLogic.Stats.Strength,
+	},
+	PRIEST = {
+		StatLogic.Stats.Intellect,
+		StatLogic.Stats.Intellect,
+		StatLogic.Stats.Intellect,
+	},
+	MAGE = {
+		StatLogic.Stats.Intellect,
+		StatLogic.Stats.Intellect,
+		StatLogic.Stats.Intellect,
+	},
+	WARLOCK = {
+		StatLogic.Stats.Intellect,
+		StatLogic.Stats.Intellect,
+		StatLogic.Stats.Intellect,
+	},
+	DRUID = {
+		StatLogic.Stats.Intellect,
+		StatLogic.Stats.Agility,
+		StatLogic.Stats.Intellect,
+	},
+	PALADIN = {
+		StatLogic.Stats.Intellect,
+		StatLogic.Stats.Strength,
+		StatLogic.Stats.Strength,
+	},
+	SHAMAN = {
+		StatLogic.Stats.Intellect,
+		StatLogic.Stats.Agility,
+		StatLogic.Stats.Intellect,
+	},
+}
+
+local function GetInferredPrimaryStat()
+	local _, class = UnitClass("player")
+	local spec = GetPrimaryTalentTree()
+	if not class or not spec then
+		return nil
+	end
+	return primaryStatsByClassAndSpec[class][spec]
+end
+
+local function GetPrimaryStat()
+	if addon.tocversion < 40000 then
+		return nil
+	end
+	if not GetSpecialization or not GetSpecializationInfo then
+		return GetInferredPrimaryStat()
+	end
+	local spec = GetSpecialization()
+	if not spec then
+		return nil
+	end
+	local specPrimaryStat = select(6, GetSpecializationInfo(spec))
+	return primaryStats[specPrimaryStat]
+end
+
 function RatingBuster:StatSummary(tooltip, link, statModContext)
 	-- Hide stat summary for equipped items
 	if db.global.sumIgnoreEquipped and C_Item.IsEquippedItem(link) then return end
@@ -4274,14 +4351,10 @@ function RatingBuster:StatSummary(tooltip, link, statModContext)
 		statData.sum = nil
 	end
 
-	if db.global.sumIgnoreNonPrimaryStat and addon.tocversion >= 40000 then
-		local spec = GetSpecialization()
-		if spec then
-			local specPrimaryStat = select(6, GetSpecializationInfo(spec))
-			local primaryStat = primaryStats[specPrimaryStat]
-			if statData.sum[primaryStat] == 0 then
-				return
-			end
+	if db.global.sumIgnoreNonPrimaryStat then
+		local primaryStat = GetPrimaryStat()
+		if primaryStat and statData.sum[primaryStat] == 0 then
+			return
 		end
 	end
 
