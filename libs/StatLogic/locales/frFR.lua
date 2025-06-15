@@ -397,6 +397,7 @@ L["augmente votre vitesse d’incantation de %s %"] = {StatLogic.Stats.SpellHas
 L["défense augmentée de %s"] = {StatLogic.Stats.Defense, }
 L["augmente vos chances de bloquer les attaques avec un bouclier de %s%"] = {StatLogic.Stats.BlockChance, }
 L["augmente les dégâts et les soins produits par les sorts et effets magiques de %s au maximum"] = {{StatLogic.Stats.SpellDamage, StatLogic.Stats.HealingPower, }, }
+L["augmente les soins et dégâts produits par les sorts et effets magiques de %s au maximum"] = {{StatLogic.Stats.SpellDamage, StatLogic.Stats.HealingPower, }, }
 L["augmente les soins prodigués par les sorts et effets de %s au maximum"] = {StatLogic.Stats.HealingPower, }
 L["%s à la puissance d'attaque pour les formes de félin, d'ours et d'ours redoutable uniquement"] = {StatLogic.Stats.FeralAttackPower, }
 L["%s à la puissance d’attaque pour les formes de félin, d’ours et d’ours redoutable uniquement"] = {StatLogic.Stats.FeralAttackPower, }
