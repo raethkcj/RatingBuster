@@ -623,8 +623,14 @@ elseif addon.class == "DEATHKNIGHT" then
 		["MOD_HEALTH"] = {
 			-- Buff: Vampiric Blood
 			{
-				["aura"] = 5233,
+				["aura"] = 55233,
 				["value"] = 0.15,
+			},
+			-- Glyph of Vampiric Blood
+			{
+				["value"] = -0.15 / (1 + 0.15),
+				["aura"] = 55233,
+				["glyph"] = 58676,
 			},
 		},
 		["ADD_CRIT_RATING_MOD_DODGE_RATING"] = {
@@ -774,6 +780,13 @@ elseif addon.class == "MAGE" then
 				["value"] = 0.75,
 			},
 		},
+		["ADD_HEALTH_REG_MOD_HEALTH"] = {
+			-- Talent: Rune of Power
+			{
+				["aura"] = 116014,
+				["value"] = 0.01 * 5,
+			},
+		},
 	}
 elseif addon.class == "MONK" then
 	StatLogic.StatModTable["MONK"] = {
@@ -827,6 +840,12 @@ elseif addon.class == "MONK" then
 				["stack"] = 5,
 				["max_stacks"] = 3,
 			},
+			-- Glyph of Fists of Fury
+			{
+				["glyph"] = 125671,
+				["value"] = 100,
+				["aura"] = 113656,
+			},
 		},
 		["ADD_AP_MOD_STR"] = {
 			-- Base
@@ -867,6 +886,12 @@ elseif addon.class == "MONK" then
 			{
 				["aura"] = 120954,
 				["value"] = 0.2,
+			},
+			-- Glyph of Fortifying Brew
+			{
+				["glyph"] = 124997,
+				["aura"] = 120954,
+				["value"] = -0.1 / (1 + 0.2),
 			},
 		},
 		["MOD_AGI"] = {
@@ -1068,6 +1093,14 @@ elseif addon.class == "PALADIN" then
 				["value"] = 0.5,
 			},
 		},
+		["ADD_HEALTH_REG_MOD_HEALTH"] = {
+			-- Glyph of Avenging Wrath
+			{
+				["glyph"] = 54927,
+				["value"] = 0.01 * 2.5,
+				["aura"] = 31884,
+			},
+		},
 	}
 elseif addon.class == "PRIEST" then
 	StatLogic.StatModTable["PRIEST"] = {
@@ -1112,6 +1145,14 @@ elseif addon.class == "PRIEST" then
 			{
 				["aura"] = 588,
 				["value"] = 0.6,
+				["group"] = addon.ExclusiveGroup.Armor,
+			},
+			-- Glyph of Inner Fire
+			{
+				["glyph"] = 55686,
+				["aura"] = 588,
+				["value"] = 0.9,
+				["group"] = addon.ExclusiveGroup.Armor,
 			},
 			-- Buff: Shadowform
 			{
@@ -1201,6 +1242,12 @@ elseif addon.class == "ROGUE" then
 			{
 				["aura"] = 73651,
 				["value"] = 0.04 * 5/3,
+			},
+			-- Glyph of Recuperate
+			{
+				["glyph"] = 56806,
+				["aura"] = 73651,
+				["value"] = 0.01 * 5/3,
 			},
 		},
 		["MOD_AGI"] = {
@@ -1403,7 +1450,7 @@ elseif addon.class == "WARLOCK" then
 				["tab"] = 4,
 				["num"] = 2,
 				["aura"] = 111400,
-				["value"] = 0.04 * 5,
+				["value"] = -0.04 * 5,
 			},
 			-- Talent: Grimoire of Sacrifice
 			{
@@ -1411,6 +1458,18 @@ elseif addon.class == "WARLOCK" then
 				["num"] = 3,
 				["aura"] = 108503,
 				["value"] = 0.02,
+			},
+			-- Glyph of Ember Tap
+			{
+				["glyph"] = 63304,
+				["aura"] = 114635,
+				["value"] = 0.0248 * 5,
+			},
+			-- Glyph of Healthstone
+			{
+				["glyph"] = 56224,
+				["aura"] = 6262,
+				["value"] = 0.04 * 5,
 			},
 		},
 	}
@@ -1522,6 +1581,22 @@ elseif addon.class == "WARRIOR" then
 			{
 				["known"] = 29144,
 				["value"] = 0.25,
+			},
+		},
+		["ADD_HEALTH_REG_MOD_HEALTH"] = {
+			-- Talent: Enraged Regeneration
+			{
+				["tab"] = 2,
+				["num"] = 1,
+				["aura"] = 55694,
+				["value"] = 0.02 * 5,
+			},
+			-- Talent: Second Wind
+			{
+				["tab"] = 2,
+				["num"] = 2,
+				["aura"] = 125667,
+				["value"] = 0.03 * 5,
 			},
 		},
 	}
