@@ -577,6 +577,15 @@ elseif addon.class == "DEATHKNIGHT" then
 			{
 				["aura"] = 51271,
 				["value"] = 0.2,
+				["group"] = addon.ExclusiveGroup.SetBonus,
+			},
+			-- Set: Battlegear of the Lost Catacomb (Pillar of Frost)
+			{
+				["set"] = 1123,
+				["pieces"] = 4,
+				["aura"] = 51271,
+				["value"] = 0.25,
+				["group"] = addon.ExclusiveGroup.SetBonus,
 			},
 			-- Plate Specialization (Frost, Unholy)
 			{
