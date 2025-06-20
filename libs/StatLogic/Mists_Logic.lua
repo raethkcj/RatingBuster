@@ -21,12 +21,18 @@ StatLogic.RatingBase = {
 	[StatLogic.Stats.PvpPowerRating] = 12.021399,
 }
 
-local NormalManaRegenPerSpi = function(level)
-	return 0
-end
+-- Extracted from the client at GameTables/RegenMPPerSpt.txt via wow.tools.local
+local RegenMPPerSpt = {
+	["PALADIN"]     = 0.225754,
+	["PRIEST"]      = 0.225754,
+	["SHAMAN"]      = 0.225754,
+	["MAGE"]        = 0.056438,
+	["MONK"]        = 0.225754,
+	["DRUID"]       = 0.225754,
+}
 
-local NormalManaRegenPerInt = function(level)
-	return 0
+local NormalManaRegenPerSpi = function()
+	return 5 * RegenMPPerSpt[addon.class]
 end
 
 local ten_thousandth = setmetatable({}, { __index = function()
@@ -513,6 +519,11 @@ if addon.class == "DRUID" then
 				["value"] = 1,
 			},
 		},
+		["ADD_NORMAL_MANA_REGEN_MOD_SPI"] = {
+			{
+				["regen"] = NormalManaRegenPerSpi,
+			},
+		},
 		["ADD_MANA_REGEN_MOD_NORMAL_MANA_REGEN"] = {
 			-- Passive: Meditation
 			{
@@ -777,6 +788,11 @@ elseif addon.class == "MAGE" then
 				["value"] = 0.05,
 			},
 		},
+		["ADD_NORMAL_MANA_REGEN_MOD_SPI"] = {
+			{
+				["regen"] = NormalManaRegenPerSpi,
+			},
+		},
 		["MOD_MANA_REGEN"] = {
 			-- Talent: Invocation
 			{
@@ -966,6 +982,11 @@ elseif addon.class == "MONK" then
 				["value"] = 2,
 			},
 		},
+		["ADD_NORMAL_MANA_REGEN_MOD_SPI"] = {
+			{
+				["regen"] = NormalManaRegenPerSpi,
+			},
+		},
 		["ADD_MANA_REGEN_MOD_NORMAL_MANA_REGEN"] = {
 			-- Passive: Mana Meditation
 			{
@@ -1095,6 +1116,11 @@ elseif addon.class == "PALADIN" then
 				["value"] = 0.1,
 			},
 		},
+		["ADD_NORMAL_MANA_REGEN_MOD_SPI"] = {
+			{
+				["regen"] = NormalManaRegenPerSpi,
+			},
+		},
 		["ADD_MANA_REGEN_MOD_NORMAL_MANA_REGEN"] = {
 			-- Passive: Holy Insight
 			{
@@ -1181,6 +1207,11 @@ elseif addon.class == "PRIEST" then
 			{
 				["known"] = 89745,
 				["value"] = 0.05,
+			},
+		},
+		["ADD_NORMAL_MANA_REGEN_MOD_SPI"] = {
+			{
+				["regen"] = NormalManaRegenPerSpi,
 			},
 		},
 		["ADD_MANA_REGEN_MOD_NORMAL_MANA_REGEN"] = {
@@ -1347,6 +1378,11 @@ elseif addon.class == "SHAMAN" then
 			{
 				["known"] = 30814,
 				["value"] = 0.65,
+			},
+		},
+		["ADD_NORMAL_MANA_REGEN_MOD_SPI"] = {
+			{
+				["regen"] = NormalManaRegenPerSpi,
 			},
 		},
 		["ADD_MANA_REGEN_MOD_NORMAL_MANA_REGEN"] = {
