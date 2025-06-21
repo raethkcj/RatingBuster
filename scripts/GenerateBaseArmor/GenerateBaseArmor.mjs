@@ -30,8 +30,8 @@ const InventoryTypeSlots = {
 // https://warcraft.wiki.gg/wiki/Enum.ItemQuality
 const ItemQualities = {
 	0: "Enum.ItemQuality.Poor",
-	1: "Enum.ItemQuality.Standard", // in-game doesn't match wiki
-	2: "Enum.ItemQuality.Good",     // in-game doesn't match wiki
+	1: "Enum.ItemQuality.Standard or Enum.ItemQuality.Common", // in-game doesn't match wiki
+	2: "Enum.ItemQuality.Good or Enum.ItemQuality.Uncommon",   // in-game doesn't match wiki
 	3: "Enum.ItemQuality.Rare",
 	4: "Enum.ItemQuality.Epic",
 	5: "Enum.ItemQuality.Legendary",

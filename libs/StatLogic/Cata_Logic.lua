@@ -781,7 +781,7 @@ addon.baseArmorTable = {
 			},
 		},
 	},
-	[Enum.ItemQuality.Good] = {
+	[Enum.ItemQuality.Good or Enum.ItemQuality.Uncommon] = {
 		[WRISTSLOT] = {
 			[Enum.ItemArmorSubclass.Mail] = {
 				[33] = 95,
@@ -858,7 +858,7 @@ addon.baseArmorTable = {
 			},
 		},
 	},
-	[Enum.ItemQuality.Standard] = {
+	[Enum.ItemQuality.Standard or Enum.ItemQuality.Common] = {
 		[SECONDARYHANDSLOT] = {
 			[Enum.ItemArmorSubclass.Shield] = {
 				[1] = 57,
