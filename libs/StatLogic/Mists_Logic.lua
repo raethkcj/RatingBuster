@@ -793,7 +793,7 @@ elseif addon.class == "MAGE" then
 				["regen"] = NormalManaRegenPerSpi,
 			},
 		},
-		["MOD_MANA_REGEN"] = {
+		["MOD_NORMAL_MANA_REGEN"] = {
 			-- Talent: Invocation
 			{
 				["aura"] = 116257,
