@@ -292,7 +292,496 @@ addon.bonusArmorInventoryTypes = {
 	["INVTYPE_TRINKET"] = true,
 }
 
-addon.baseArmorTable = {}
+addon.baseArmorTable = {
+	[Enum.ItemQuality.Good or Enum.ItemQuality.Uncommon] = {
+		[CHESTSLOT] = {
+			[Enum.ItemArmorSubclass.Leather] = {
+				[57] = 219,
+			},
+			[Enum.ItemArmorSubclass.Mail] = {
+				[16] = 120,
+				[20] = 143,
+				[40] = 259,
+			},
+			[Enum.ItemArmorSubclass.Plate] = {
+				[46] = 441,
+				[62] = 551,
+			},
+		},
+		[LEGSSLOT] = {
+			[Enum.ItemArmorSubclass.Leather] = {
+				[54] = 182,
+			},
+			[Enum.ItemArmorSubclass.Plate] = {
+				[45] = 378,
+				[62] = 482,
+			},
+		},
+		[SHOULDERSLOT] = {
+			[Enum.ItemArmorSubclass.Leather] = {
+				[61] = 171,
+			},
+			[Enum.ItemArmorSubclass.Plate] = {
+				[60] = 409,
+			},
+		},
+		[BACKSLOT] = {
+			[Enum.ItemArmorSubclass.Cloth] = {
+				[60] = 75,
+				[108] = 160,
+			},
+		},
+		[WRISTSLOT] = {
+			[Enum.ItemArmorSubclass.Mail] = {
+				[33] = 95,
+			},
+		},
+		[SECONDARYHANDSLOT] = {
+			[Enum.ItemArmorSubclass.Shield] = {
+				[41] = 1110,
+			},
+		},
+		[HANDSSLOT] = {
+			[Enum.ItemArmorSubclass.Mail] = {
+				[28] = 118,
+			},
+			[Enum.ItemArmorSubclass.Plate] = {
+				[45] = 270,
+			},
+		},
+		[FEETSLOT] = {
+			[Enum.ItemArmorSubclass.Plate] = {
+				[47] = 309,
+				[60] = 375,
+			},
+		},
+		[HEADSLOT] = {
+			[Enum.ItemArmorSubclass.Plate] = {
+				[47] = 365,
+				[61] = 445,
+			},
+			[Enum.ItemArmorSubclass.Cloth] = {
+				[114] = 271,
+			},
+		},
+		[WAISTSLOT] = {
+			[Enum.ItemArmorSubclass.Plate] = {
+				[174] = 934,
+			},
+		},
+	},
+	[Enum.ItemQuality.Epic] = {
+		[CHESTSLOT] = {
+			[Enum.ItemArmorSubclass.Mail] = {
+				[62] = 506,
+				[63] = 510,
+				[74] = 549,
+			},
+			[Enum.ItemArmorSubclass.Leather] = {
+				[65] = 325,
+				[69] = 337,
+				[74] = 353,
+				[75] = 357,
+				[83] = 384,
+				[90] = 438,
+				[105] = 581,
+				[123] = 662,
+				[136] = 722,
+				[146] = 790,
+				[159] = 887,
+			},
+			[Enum.ItemArmorSubclass.Plate] = {
+				[65] = 767,
+				[74] = 804,
+				[251] = 2540,
+				[264] = 2638,
+				[277] = 2764,
+			},
+		},
+		[FEETSLOT] = {
+			[Enum.ItemArmorSubclass.Cloth] = {
+				[71] = 163,
+				[78] = 178,
+				[146] = 393,
+				[159] = 439,
+			},
+			[Enum.ItemArmorSubclass.Leather] = {
+				[71] = 236,
+				[77] = 250,
+				[83] = 264,
+				[90] = 301,
+				[123] = 455,
+				[136] = 496,
+				[146] = 543,
+				[159] = 610,
+			},
+			[Enum.ItemArmorSubclass.Mail] = {
+				[71] = 370,
+			},
+			[Enum.ItemArmorSubclass.Plate] = {
+				[70] = 541,
+				[71] = 544,
+				[73] = 550,
+			},
+		},
+		[HANDSSLOT] = {
+			[Enum.ItemArmorSubclass.Cloth] = {
+				[71] = 148,
+				[136] = 328,
+				[146] = 357,
+				[159] = 399,
+			},
+			[Enum.ItemArmorSubclass.Leather] = {
+				[71] = 215,
+				[78] = 229,
+				[81] = 235,
+				[90] = 274,
+				[105] = 363,
+				[123] = 414,
+				[136] = 451,
+				[146] = 494,
+				[159] = 555,
+			},
+			[Enum.ItemArmorSubclass.Mail] = {
+				[71] = 336,
+			},
+			[Enum.ItemArmorSubclass.Plate] = {
+				[71] = 495,
+				[90] = 585,
+				[130] = 910,
+				[251] = 1587,
+				[264] = 1649,
+				[277] = 1728,
+			},
+		},
+		[HEADSLOT] = {
+			[Enum.ItemArmorSubclass.Cloth] = {
+				[74] = 200,
+				[81] = 217,
+				[136] = 426,
+				[146] = 464,
+				[159] = 518,
+			},
+			[Enum.ItemArmorSubclass.Leather] = {
+				[74] = 287,
+				[75] = 290,
+				[90] = 356,
+				[105] = 472,
+				[123] = 538,
+				[136] = 587,
+				[146] = 642,
+				[159] = 721,
+			},
+			[Enum.ItemArmorSubclass.Mail] = {
+				[74] = 446,
+			},
+			[Enum.ItemArmorSubclass.Plate] = {
+				[66] = 626,
+				[74] = 653,
+				[105] = 1063,
+			},
+		},
+		[LEGSSLOT] = {
+			[Enum.ItemArmorSubclass.Cloth] = {
+				[65] = 192,
+				[71] = 207,
+				[81] = 234,
+				[136] = 459,
+				[146] = 500,
+				[159] = 558,
+			},
+			[Enum.ItemArmorSubclass.Leather] = {
+				[65] = 284,
+				[71] = 301,
+				[90] = 383,
+				[105] = 508,
+				[123] = 580,
+				[136] = 632,
+				[146] = 691,
+				[159] = 777,
+			},
+			[Enum.ItemArmorSubclass.Mail] = {
+				[71] = 471,
+			},
+			[Enum.ItemArmorSubclass.Plate] = {
+				[60] = 653,
+				[61] = 657,
+				[71] = 693,
+				[232] = 2094,
+				[264] = 2308,
+			},
+		},
+		[SHOULDERSLOT] = {
+			[Enum.ItemArmorSubclass.Cloth] = {
+				[65] = 164,
+				[74] = 184,
+				[78] = 194,
+				[136] = 393,
+				[146] = 428,
+				[159] = 479,
+			},
+			[Enum.ItemArmorSubclass.Leather] = {
+				[65] = 243,
+				[74] = 265,
+				[90] = 328,
+				[105] = 436,
+				[123] = 497,
+				[136] = 542,
+				[146] = 592,
+				[159] = 666,
+			},
+			[Enum.ItemArmorSubclass.Mail] = {
+				[71] = 404,
+				[74] = 412,
+			},
+			[Enum.ItemArmorSubclass.Plate] = {
+				[90] = 702,
+			},
+		},
+		[WRISTSLOT] = {
+			[Enum.ItemArmorSubclass.Plate] = {
+				[59] = 325,
+				[251] = 1111,
+				[264] = 1154,
+			},
+			[Enum.ItemArmorSubclass.Leather] = {
+				[61] = 137,
+				[113] = 278,
+				[126] = 293,
+				[141] = 330,
+				[154] = 371,
+			},
+			[Enum.ItemArmorSubclass.Cloth] = {
+				[141] = 239,
+				[154] = 267,
+			},
+		},
+		[BACKSLOT] = {
+			[Enum.ItemArmorSubclass.Cloth] = {
+				[72] = 120,
+				[73] = 121,
+				[77] = 128,
+				[83] = 137,
+				[105] = 207,
+				[110] = 224,
+				[115] = 230,
+				[128] = 246,
+				[200] = 404,
+				[213] = 426,
+				[232] = 461,
+				[264] = 556,
+				[353] = 604,
+				[403] = 793,
+				[480] = 1081,
+			},
+		},
+		[SECONDARYHANDSLOT] = {
+			[Enum.ItemArmorSubclass.Shield] = {
+				[46] = 1766,
+				[65] = 2186,
+				[90] = 2477,
+			},
+		},
+		[WAISTSLOT] = {
+			[Enum.ItemArmorSubclass.Leather] = {
+				[61] = 176,
+				[66] = 184,
+				[76] = 202,
+				[123] = 373,
+				[136] = 406,
+				[146] = 444,
+				[159] = 499,
+			},
+			[Enum.ItemArmorSubclass.Plate] = {
+				[90] = 526,
+				[264] = 1484,
+			},
+			[Enum.ItemArmorSubclass.Cloth] = {
+				[146] = 321,
+				[159] = 359,
+			},
+		},
+	},
+	[Enum.ItemQuality.Rare] = {
+		[CHESTSLOT] = {
+			[Enum.ItemArmorSubclass.Plate] = {
+				[59] = 596,
+				[63] = 609,
+				[65] = 616,
+			},
+			[Enum.ItemArmorSubclass.Mail] = {
+				[30] = 221,
+				[36] = 259,
+				[62] = 407,
+			},
+			[Enum.ItemArmorSubclass.Leather] = {
+				[68] = 268,
+				[115] = 515,
+			},
+		},
+		[BACKSLOT] = {
+			[Enum.ItemArmorSubclass.Cloth] = {
+				[35] = 51,
+				[45] = 64,
+				[50] = 70,
+				[52] = 73,
+				[62] = 85,
+				[63] = 86,
+				[71] = 95,
+				[91] = 128,
+				[112] = 182,
+				[115] = 185,
+				[167] = 312,
+				[187] = 363,
+			},
+		},
+		[SECONDARYHANDSLOT] = {
+			[Enum.ItemArmorSubclass.Shield] = {
+				[21] = 700,
+				[30] = 945,
+				[59] = 1687,
+			},
+		},
+		[WRISTSLOT] = {
+			[Enum.ItemArmorSubclass.Plate] = {
+				[50] = 229,
+			},
+			[Enum.ItemArmorSubclass.Mail] = {
+				[62] = 178,
+			},
+			[Enum.ItemArmorSubclass.Cloth] = {
+				[61] = 73,
+			},
+		},
+		[FEETSLOT] = {
+			[Enum.ItemArmorSubclass.Mail] = {
+				[41] = 200,
+			},
+			[Enum.ItemArmorSubclass.Leather] = {
+				[33] = 101,
+				[43] = 128,
+				[53] = 155,
+				[63] = 176,
+				[66] = 181,
+				[71] = 190,
+			},
+			[Enum.ItemArmorSubclass.Cloth] = {
+				[33] = 66,
+				[43] = 84,
+				[53] = 101,
+				[61] = 115,
+				[63] = 118,
+				[66] = 123,
+			},
+			[Enum.ItemArmorSubclass.Plate] = {
+				[56] = 399,
+			},
+		},
+		[LEGSSLOT] = {
+			[Enum.ItemArmorSubclass.Plate] = {
+				[52] = 475,
+				[65] = 539,
+				[114] = 985,
+				[166] = 1697,
+			},
+			[Enum.ItemArmorSubclass.Leather] = {
+				[52] = 194,
+				[68] = 235,
+				[71] = 241,
+				[100] = 371,
+				[115] = 451,
+			},
+			[Enum.ItemArmorSubclass.Cloth] = {
+				[62] = 148,
+				[68] = 160,
+			},
+		},
+		[SHOULDERSLOT] = {
+			[Enum.ItemArmorSubclass.Leather] = {
+				[55] = 175,
+				[68] = 201,
+				[71] = 207,
+				[115] = 386,
+			},
+			[Enum.ItemArmorSubclass.Cloth] = {
+				[61] = 125,
+				[71] = 143,
+			},
+		},
+		[WAISTSLOT] = {
+			[Enum.ItemArmorSubclass.Leather] = {
+				[33] = 83,
+				[43] = 105,
+				[53] = 127,
+				[63] = 144,
+				[100] = 239,
+			},
+			[Enum.ItemArmorSubclass.Cloth] = {
+				[33] = 54,
+				[43] = 69,
+				[53] = 83,
+				[60] = 93,
+				[63] = 96,
+				[109] = 201,
+				[115] = 208,
+			},
+			[Enum.ItemArmorSubclass.Plate] = {
+				[71] = 358,
+			},
+		},
+		[HANDSSLOT] = {
+			[Enum.ItemArmorSubclass.Leather] = {
+				[65] = 163,
+				[66] = 164,
+				[71] = 172,
+				[115] = 322,
+			},
+			[Enum.ItemArmorSubclass.Mail] = {
+				[62] = 254,
+			},
+			[Enum.ItemArmorSubclass.Cloth] = {
+				[61] = 104,
+				[66] = 111,
+			},
+			[Enum.ItemArmorSubclass.Plate] = {
+				[114] = 704,
+			},
+		},
+		[HEADSLOT] = {
+			[Enum.ItemArmorSubclass.Cloth] = {
+				[63] = 139,
+				[71] = 155,
+			},
+			[Enum.ItemArmorSubclass.Leather] = {
+				[71] = 224,
+				[100] = 345,
+				[115] = 419,
+			},
+			[Enum.ItemArmorSubclass.Plate] = {
+				[43] = 371,
+				[60] = 487,
+				[115] = 917,
+			},
+		},
+	},
+	[Enum.ItemQuality.Standard or Enum.ItemQuality.Common] = {
+		[SECONDARYHANDSLOT] = {
+			[Enum.ItemArmorSubclass.Shield] = {
+				[1] = 57,
+			},
+		},
+		[HANDSSLOT] = {
+			[Enum.ItemArmorSubclass.Leather] = {
+				[1] = 12,
+			},
+		},
+		[CHESTSLOT] = {
+			[Enum.ItemArmorSubclass.Plate] = {
+				[60] = 518,
+			},
+		},
+	},
+}
 
 StatLogic.StatModTable = {}
 if addon.class == "DRUID" then
