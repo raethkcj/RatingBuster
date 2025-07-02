@@ -1256,12 +1256,8 @@ local defaults = {
 		sumAvoidWithBlock = false,
 
 		-- Base stat conversions
-		showAPFromStr = false,
 		showBlockValueFromStr = false,
 
-		showCritFromAgi = true,
-		showDodgeFromAgi = true,
-		showAPFromAgi = false,
 		showRAPFromAgi = false,
 		showArmorFromAgi = false,
 
@@ -1401,7 +1397,6 @@ if class == "DEATHKNIGHT" then
 	defaults.profile.sumCrit = true
 	defaults.profile.sumHaste = true
 	defaults.profile.sumExpertise = true
-	defaults.profile.showAPFromStr = true
 	defaults.profile.showSpellCritFromInt = false
 	defaults.profile.ratingPhysical = true
 	defaults.profile.sumArmorPenetration = true
@@ -1414,12 +1409,17 @@ elseif class == "DRUID" then
 	defaults.profile.sumExpertise = true
 	defaults.profile.sumAvoidance = true
 	defaults.profile.sumArmor = true
-	defaults.profile.sumSpellDmg = true
 	defaults.profile.sumSpellHit = true
 	defaults.profile.sumSpellCrit = true
 	defaults.profile.sumSpellHaste = true
-	defaults.profile.sumHealing = true
-	defaults.profile.showAPFromStr = true
+	if addon.tocversion >= 30000 then
+		defaults.profile.sumSpellPower = true
+		defaults.profile.showSpellDmgFromSpellPower = false
+		defaults.profile.showHealingFromSpellPower = false
+	else
+		defaults.profile.sumSpellDmg = true
+		defaults.profile.sumHealing = true
+	end
 	defaults.profile.ratingPhysical = true
 	defaults.profile.ratingSpell = true
 	defaults.profile.sumArmorPenetration = true
@@ -1432,13 +1432,22 @@ elseif class == "HUNTER" then
 	defaults.profile.sumRangedHaste = true
 	defaults.profile.showModifiedRangedAttackPower = true
 	defaults.profile.showDodgeFromAgi = false
+	defaults.profile.showAPFromAgi = false
+	defaults.profile.showRAPFromAgi = true
 	defaults.profile.showSpellCritFromInt = false
 	defaults.profile.ratingPhysical = true
 	defaults.profile.sumArmorPenetration = true
 	defaults.profile.showSpellHitFromExpertise = false
 	defaults.profile.showParryReductionFromExpertise = false
 elseif class == "MAGE" then
-	defaults.profile.sumSpellDmg = true
+	if addon.tocversion >= 30000 then
+		defaults.profile.sumSpellPower = true
+		defaults.profile.showSpellDmgFromSpellPower = false
+		defaults.profile.showHealingFromSpellPower = false
+	else
+		defaults.profile.sumSpellDmg = true
+		defaults.profile.sumHealing = true
+	end
 	defaults.profile.sumSpellHit = true
 	defaults.profile.sumSpellCrit = true
 	defaults.profile.sumSpellHaste = true
@@ -1447,6 +1456,7 @@ elseif class == "MAGE" then
 	defaults.profile.ratingSpell = true
 	defaults.profile.showDodgeReductionFromExpertise = false
 	defaults.profile.showParryReductionFromExpertise = false
+	defaults.profile.showAPFromStr = false
 elseif class == "MONK" then
 	defaults.profile.sumAP = true
 	defaults.profile.sumHit = true
@@ -1455,11 +1465,17 @@ elseif class == "MONK" then
 	defaults.profile.sumExpertise = true
 	defaults.profile.sumAvoidance = true
 	defaults.profile.sumArmor = true
-	defaults.profile.sumSpellDmg = true
 	defaults.profile.sumSpellHit = true
 	defaults.profile.sumSpellCrit = true
 	defaults.profile.sumSpellHaste = true
-	defaults.profile.sumHealing = true
+	if addon.tocversion >= 30000 then
+		defaults.profile.sumSpellPower = true
+		defaults.profile.showSpellDmgFromSpellPower = false
+		defaults.profile.showHealingFromSpellPower = false
+	else
+		defaults.profile.sumSpellDmg = true
+		defaults.profile.sumHealing = true
+	end
 	defaults.profile.ratingPhysical = true
 	defaults.profile.ratingSpell = true
 elseif class == "PALADIN" then
@@ -1471,25 +1487,37 @@ elseif class == "PALADIN" then
 	defaults.profile.sumCrit = true
 	defaults.profile.sumHaste = true
 	defaults.profile.sumExpertise = true
-	defaults.profile.sumHolyDmg = true
 	defaults.profile.sumSpellHit = true
 	defaults.profile.sumSpellCrit = true
 	defaults.profile.sumSpellHaste = true
-	defaults.profile.sumHealing = true
-	defaults.profile.showAPFromStr = true
+	if addon.tocversion >= 30000 then
+		defaults.profile.sumSpellPower = true
+		defaults.profile.showSpellDmgFromSpellPower = false
+		defaults.profile.showHealingFromSpellPower = false
+	else
+		defaults.profile.sumHolyDmg = true
+		defaults.profile.sumHealing = true
+	end
 	defaults.profile.ratingPhysical = true
 	defaults.profile.ratingSpell = true
 elseif class == "PRIEST" then
-	defaults.profile.sumSpellDmg = true
 	defaults.profile.sumSpellHit = true
 	defaults.profile.sumSpellCrit = true
 	defaults.profile.sumSpellHaste = true
-	defaults.profile.sumHealing = true
+	if addon.tocversion >= 30000 then
+		defaults.profile.sumSpellPower = true
+		defaults.profile.showSpellDmgFromSpellPower = false
+		defaults.profile.showHealingFromSpellPower = false
+	else
+		defaults.profile.sumShadowDmg = true
+		defaults.profile.sumHealing = true
+	end
 	defaults.profile.showCritFromAgi = false
 	defaults.profile.showDodgeFromAgi = false
 	defaults.profile.ratingSpell = true
 	defaults.profile.showDodgeReductionFromExpertise = false
 	defaults.profile.showParryReductionFromExpertise = false
+	defaults.profile.showAPFromStr = false
 elseif class == "ROGUE" then
 	defaults.profile.sumWeaponAverageDamage = true
 	defaults.profile.sumWeaponSkill = true
@@ -1500,7 +1528,6 @@ elseif class == "ROGUE" then
 	defaults.profile.sumCrit = true
 	defaults.profile.sumHaste = true
 	defaults.profile.sumExpertise = true
-	defaults.profile.showAPFromStr = true
 	defaults.profile.showSpellCritFromInt = false
 	defaults.profile.ratingPhysical = true
 	defaults.profile.sumArmorPenetration = true
@@ -1512,17 +1539,29 @@ elseif class == "SHAMAN" then
 	defaults.profile.sumCrit = true
 	defaults.profile.sumHaste = true
 	defaults.profile.sumExpertise = true
-	defaults.profile.sumSpellDmg = true
 	defaults.profile.sumSpellHit = true
 	defaults.profile.sumSpellCrit = true
 	defaults.profile.sumSpellHaste = true
-	defaults.profile.sumHealing = true
-	defaults.profile.showAPFromStr = true
+	if addon.tocversion >= 30000 then
+		defaults.profile.sumSpellPower = true
+		defaults.profile.showSpellDmgFromSpellPower = false
+		defaults.profile.showHealingFromSpellPower = false
+	else
+		defaults.profile.sumSpellDmg = true
+		defaults.profile.sumHealing = true
+	end
 	defaults.profile.showDodgeFromAgi = false
 	defaults.profile.ratingPhysical = true
 	defaults.profile.ratingSpell = true
 elseif class == "WARLOCK" then
-	defaults.profile.sumSpellDmg = true
+	if addon.tocversion >= 30000 then
+		defaults.profile.sumSpellPower = true
+		defaults.profile.showSpellDmgFromSpellPower = false
+		defaults.profile.showHealingFromSpellPower = false
+	else
+		defaults.profile.sumSpellDmg = true
+		defaults.profile.sumHealing = true
+	end
 	defaults.profile.sumSpellHit = true
 	defaults.profile.sumSpellCrit = true
 	defaults.profile.sumSpellHaste = true
@@ -1531,6 +1570,7 @@ elseif class == "WARLOCK" then
 	defaults.profile.ratingSpell = true
 	defaults.profile.showDodgeReductionFromExpertise = false
 	defaults.profile.showParryReductionFromExpertise = false
+	defaults.profile.showAPFromStr = false
 elseif class == "WARRIOR" then
 	defaults.profile.sumWeaponAverageDamage = true
 	defaults.profile.sumWeaponSkill = true
@@ -1543,7 +1583,6 @@ elseif class == "WARRIOR" then
 	defaults.profile.sumCrit = true
 	defaults.profile.sumHaste = true
 	defaults.profile.sumExpertise = true
-	defaults.profile.showAPFromStr = true
 	defaults.profile.showSpellCritFromInt = false
 	defaults.profile.ratingPhysical = true
 	defaults.profile.sumArmorPenetration = true
