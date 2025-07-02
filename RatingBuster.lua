@@ -2526,6 +2526,8 @@ do
 
 				local critRating = value * statModContext("ADD_CRIT_RATING_MOD_PARRY_RATING")
 				self:ProcessStat(StatLogic.Stats.CritRating, critRating, infoTable, link, color, statModContext, false, db.profile.showCritFromParryRating)
+			elseif stat == StatLogic.Stats.BlockRating then
+				self:ProcessStat(StatLogic.Stats.BlockChance, effect, infoTable, link, color, statModContext, isBaseStat, show)
 			elseif stat == StatLogic.Stats.MeleeHitRating then
 				self:ProcessStat(StatLogic.Stats.MeleeHit, effect, infoTable, link, color, statModContext, isBaseStat, show)
 			elseif stat == StatLogic.Stats.RangedHitRating then
@@ -2550,6 +2552,8 @@ do
 					effect = floor(effect)
 				end
 				self:ProcessStat(StatLogic.Stats.Expertise, effect, infoTable, link, color, statModContext, isBaseStat, db.profile.showExpertiseFromExpertiseRating)
+			elseif stat == StatLogic.Stats.ArmorPenetrationRating then
+				self:ProcessStat(StatLogic.Stats.ArmorPenetration, effect, infoTable, link, color, statModContext, isBaseStat, show)
 			elseif stat == StatLogic.Stats.ResilienceRating then
 				self:ProcessStat(StatLogic.Stats.Resilience, effect, infoTable, link, color, statModContext, isBaseStat, db.profile.showResilienceFromResilienceRating)
 			elseif stat == StatLogic.Stats.MasteryRating then
@@ -2829,9 +2833,7 @@ do
 			end
 		elseif stat == StatLogic.Stats.Defense then
 			local blockChance = value * statModContext("ADD_BLOCK_CHANCE_MOD_DEFENSE")
-			if db.profile.showBlockChanceFromDefense then
-				infoTable[StatLogic.Stats.BlockChance] = infoTable[StatLogic.Stats.BlockChance] + blockChance
-			end
+			self:ProcessStat(StatLogic.Stats.BlockChance, blockChance, infoTable, link, color, statModContext, false, db.profile.showBlockChanceFromDefense)
 
 			local critAvoidance = value * statModContext("ADD_CRIT_AVOIDANCE_MOD_DEFENSE")
 			self:ProcessStat(StatLogic.Stats.CritAvoidance, critAvoidance, infoTable, link, color, statModContext, false, db.profile.showCritAvoidanceFromDefense)
@@ -2990,6 +2992,12 @@ do
 
 			local spellHit = value * statModContext("ADD_SPELL_HIT_MOD_EXPERTISE")
 			self:ProcessStat(StatLogic.Stats.SpellHit, spellHit, infoTable, link, color, statModContext, false, db.profile.showSpellHitFromExpertise)
+		elseif stat == StatLogic.Stats.ArmorPenetration then
+			if show and isBaseStat then
+				infoTable["Percent"] = value
+			elseif show then
+				infoTable[stat] = infoTable[stat] + value
+			end
 		elseif stat == StatLogic.Stats.Resilience then
 			if db.profile.enableAvoidanceDiminishingReturns and addon.tocversion >= 40000 then
 				processedResilience = processedResilience + value
