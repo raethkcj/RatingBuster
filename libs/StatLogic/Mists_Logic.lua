@@ -1206,13 +1206,13 @@ elseif addon.class == "HUNTER" then
 		["MOD_RANGED_AP"] = {
 			-- Buff: Aspect of the Hawk
 			{
-				["buff"] = 13165,
+				["aura"] = 13165,
 				["value"] = 0.35,
 				["group"] = addon.ExclusiveGroup.Aspect,
 			},
 			-- Buff: Aspect of the Iron Hawk
 			{
-				["buff"] = 109260,
+				["aura"] = 109260,
 				["value"] = 0.35,
 				["group"] = addon.ExclusiveGroup.Aspect,
 			},
