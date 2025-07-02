@@ -2162,8 +2162,8 @@ local summaryFunc = {}
 local equippedSum = setmetatable({}, {
 	__index = function() return 0 end
 })
-local equippedBlock, equippedDodge, equippedParry, equippedMissed, equippedResilience
-local processedBlock, processedDodge, processedParry, processedMissed, processedResilience
+local equippedBlock, equippedDodge, equippedParry, equippedMiss, equippedResilience
+local processedBlock, processedDodge, processedParry, processedMiss, processedResilience
 
 local scanningTooltipOwners = {
 	["WorldFrame"] = true,
@@ -2210,23 +2210,23 @@ function RatingBuster.ProcessTooltip(tooltip)
 		equippedBlock = summaryFunc[StatLogic.Stats.BlockChanceBeforeDR](equippedSum, statModContext, "sum", difflink1) * -1
 		equippedDodge = summaryFunc[StatLogic.Stats.DodgeBeforeDR](equippedSum, statModContext, "sum", difflink1) * -1
 		equippedParry = summaryFunc[StatLogic.Stats.ParryBeforeDR](equippedSum, statModContext, "sum", difflink1) * -1
-		equippedMissed = summaryFunc[StatLogic.Stats.MissBeforeDR](equippedSum, statModContext, "sum", difflink1) * -1
+		equippedMiss = summaryFunc[StatLogic.Stats.MissBeforeDR](equippedSum, statModContext, "sum", difflink1) * -1
 		equippedResilience = summaryFunc[StatLogic.Stats.ResilienceBeforeDR](equippedSum, statModContext, "sum", difflink1) * -1
 		processedBlock = GetBlockChance() > 0 and equippedBlock or 0
 		processedDodge = GetDodgeChance() > 0 and equippedDodge or 0
 		processedParry = GetParryChance() > 0 and equippedParry or 0
-		processedMissed = equippedMissed
+		processedMiss = equippedMiss
 		processedResilience = equippedResilience
 	else
 		equippedBlock = 0
 		equippedDodge = 0
 		equippedParry = 0
-		equippedMissed = 0
+		equippedMiss = 0
 		equippedResilience = 0
 		processedBlock = 0
 		processedDodge = 0
 		processedParry = 0
-		processedMissed = 0
+		processedMiss = 0
 		processedResilience = 0
 	end
 	-- Loop through tooltip lines starting at line 2
@@ -2489,9 +2489,6 @@ function RatingBuster:ProcessStat(stat, value, infoTable, link, color, statModCo
 		-- Calculate stat value
 		local effect = StatLogic:GetEffectFromRating(value, stat, statModContext.level)
 		if stat == StatLogic.Stats.DefenseRating then
-			if db.profile.showDefenseFromDefenseRating then
-				infoTable["Decimal"] = effect
-			end
 			self:ProcessStat(StatLogic.Stats.Defense, effect, infoTable, link, color, statModContext, false, db.profile.showDefenseFromDefenseRating)
 		elseif stat == StatLogic.Stats.DodgeRating then
 			self:ProcessStat(StatLogic.Stats.Dodge, effect, infoTable, link, color, statModContext, isBaseStat, show or isBaseStat)
@@ -2580,10 +2577,8 @@ function RatingBuster:ProcessStat(stat, value, infoTable, link, color, statModCo
 		local rangedAttackPower = value * statModContext("ADD_RANGED_AP_MOD_AGI")
 		self:ProcessStat(StatLogic.Stats.RangedAttackPower, rangedAttackPower, infoTable, link, color, statModContext, false, db.profile.showRAPFromAgi)
 
-		if db.profile.showMeleeCritFromAgi then
-			local effect = value * statModContext("ADD_MELEE_CRIT_MOD_AGI")
-			infoTable[StatLogic.Stats.MeleeCrit] = infoTable[StatLogic.Stats.MeleeCrit] + effect
-		end
+		local meleeCrit = value * statModContext("ADD_MELEE_CRIT_MOD_AGI")
+		self:ProcessStat(StatLogic.Stats.MeleeCrit, meleeCrit, infoTable, link, color, statModContext, false, db.profile.showMeleeCritFromAgi)
 
 		local dodge = value * statModContext("ADD_DODGE_MOD_AGI")
 		self:ProcessStat(StatLogic.Stats.Dodge, dodge, infoTable, link, color, statModContext, false, db.profile.showDodgeFromAgi)
@@ -2778,6 +2773,11 @@ function RatingBuster:ProcessStat(stat, value, infoTable, link, color, statModCo
 			infoTable[stat] = infoTable[stat] + value
 		end
 	elseif stat == StatLogic.Stats.Defense then
+		if show and isBaseStat then
+			infoTable["Decimal"] = value
+		elseif show then
+			infoTable[stat] = value
+		end
 		local blockChance = value * statModContext("ADD_BLOCK_CHANCE_MOD_DEFENSE")
 		self:ProcessStat(StatLogic.Stats.BlockChance, blockChance, infoTable, link, color, statModContext, false, db.profile.showBlockChanceFromDefense)
 
@@ -2788,15 +2788,7 @@ function RatingBuster:ProcessStat(stat, value, infoTable, link, color, statModCo
 		self:ProcessStat(StatLogic.Stats.Dodge, dodge, infoTable, link, color, statModContext, false, db.profile.showDodgeFromDefense)
 
 		local miss = value * statModContext("ADD_MISS_MOD_DEFENSE")
-		if miss > 0 then
-			if db.profile.enableAvoidanceDiminishingReturns then
-				processedMissed = processedMissed + miss
-				miss = StatLogic:GetAvoidanceGainAfterDR(StatLogic.Stats.Miss, processedMissed) - StatLogic:GetAvoidanceGainAfterDR(StatLogic.Stats.Miss, processedMissed - miss)
-			end
-			if db.profile.showMissFromDefense then
-				infoTable[StatLogic.Stats.Miss] = infoTable[StatLogic.Stats.Miss] + miss
-			end
-		end
+		self:ProcessStat(StatLogic.Stats.Miss, dodge, infoTable, link, color, statModContext, false, db.profile.showMissFromDefense)
 
 		local parry = value * statModContext("ADD_PARRY_MOD_DEFENSE")
 		self:ProcessStat(StatLogic.Stats.Parry, parry, infoTable, link, color, statModContext, false, db.profile.showParryFromDefense)
@@ -2820,6 +2812,16 @@ function RatingBuster:ProcessStat(stat, value, infoTable, link, color, statModCo
 			infoTable[stat] = infoTable[stat] + value
 		end
 	elseif stat == StatLogic.Stats.CritAvoidance then
+		if show and isBaseStat then
+			infoTable["Percent"] = value
+		elseif show then
+			infoTable[stat] = infoTable[stat] + value
+		end
+	elseif stat == StatLogic.Stats.Miss then
+		if db.profile.enableAvoidanceDiminishingReturns then
+			processedMiss = processedMiss + value
+			value = StatLogic:GetAvoidanceGainAfterDR(StatLogic.Stats.Miss, processedMiss) - StatLogic:GetAvoidanceGainAfterDR(StatLogic.Stats.Miss, processedMiss - value)
+		end
 		if show and isBaseStat then
 			infoTable["Percent"] = value
 		elseif show then
@@ -3979,15 +3981,15 @@ local summaryCalcData = {
 		option = "sumHitAvoid",
 		stat = StatLogic.Stats.Miss,
 		func = function(sum, statModContext, sumType)
-			local missed = summaryFunc[StatLogic.Stats.MissBeforeDR](sum, statModContext)
+			local miss = summaryFunc[StatLogic.Stats.MissBeforeDR](sum, statModContext)
 			if db.profile.enableAvoidanceDiminishingReturns then
 				if (sumType == "diff1") or (sumType == "diff2") then
-					missed = StatLogic:GetAvoidanceGainAfterDR(StatLogic.Stats.Miss, missed)
+					miss = StatLogic:GetAvoidanceGainAfterDR(StatLogic.Stats.Miss, miss)
 				elseif sumType == "sum" then
-					missed = StatLogic:GetAvoidanceGainAfterDR(StatLogic.Stats.Miss, equippedMissed + missed) - StatLogic:GetAvoidanceGainAfterDR(StatLogic.Stats.Miss, equippedMissed)
+					miss = StatLogic:GetAvoidanceGainAfterDR(StatLogic.Stats.Miss, equippedMiss + miss) - StatLogic:GetAvoidanceGainAfterDR(StatLogic.Stats.Miss, equippedMiss)
 				end
 			end
-			return missed
+			return miss
 		 end,
 	},
 	-- Defense - DEFENSE_RATING
@@ -4006,12 +4008,12 @@ local summaryCalcData = {
 		func = function(sum, statModContext, sumType, link)
 			local dodge = summaryFunc[StatLogic.Stats.Dodge](sum, statModContext, sumType, link)
 			local parry = summaryFunc[StatLogic.Stats.Parry](sum, statModContext, sumType, link)
-			local missed = summaryFunc[StatLogic.Stats.Miss](sum, statModContext, sumType, link)
+			local miss = summaryFunc[StatLogic.Stats.Miss](sum, statModContext, sumType, link)
 			local block = 0
 			if db.profile.sumAvoidWithBlock then
 				block = summaryFunc[StatLogic.Stats.BlockChance](sum, statModContext, sumType, link)
 			end
-			return parry + dodge + missed + block
+			return parry + dodge + miss + block
 		end,
 	},
 	-- Crit Avoidance - RESILIENCE_RATING, DEFENSE
