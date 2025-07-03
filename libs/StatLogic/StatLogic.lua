@@ -340,42 +340,6 @@ StatLogic.StatModInfo = {
 		initialValue = 0,
 		finalAdjust = 0,
 	},
-	["ADD_MELEE_HIT_RATING_MOD_HIT_RATING"] = {
-		initialValue = 0,
-		finalAdjust = 0,
-	},
-	["ADD_RANGED_HIT_RATING_MOD_HIT_RATING"] = {
-		initialValue = 0,
-		finalAdjust = 0,
-	},
-	["ADD_SPELL_HIT_RATING_MOD_HIT_RATING"] = {
-		initialValue = 0,
-		finalAdjust = 0,
-	},
-	["ADD_MELEE_CRIT_RATING_MOD_CRIT_RATING"] = {
-		initialValue = 0,
-		finalAdjust = 0,
-	},
-	["ADD_RANGED_CRIT_RATING_MOD_CRIT_RATING"] = {
-		initialValue = 0,
-		finalAdjust = 0,
-	},
-	["ADD_SPELL_CRIT_RATING_MOD_CRIT_RATING"] = {
-		initialValue = 0,
-		finalAdjust = 0,
-	},
-	["ADD_MELEE_HASTE_RATING_MOD_HASTE_RATING"] = {
-		initialValue = 0,
-		finalAdjust = 0,
-	},
-	["ADD_RANGED_HASTE_RATING_MOD_HASTE_RATING"] = {
-		initialValue = 0,
-		finalAdjust = 0,
-	},
-	["ADD_SPELL_HASTE_RATING_MOD_HASTE_RATING"] = {
-		initialValue = 0,
-		finalAdjust = 0,
-	},
 	["ADD_RANGED_AP_MOD_GENERIC_ATTACK_POWER"] = {
 		initialValue = 0,
 		finalAdjust = 0,
@@ -385,6 +349,18 @@ StatLogic.StatModInfo = {
 		finalAdjust = 0,
 	},
 	["ADD_PET_STA_MOD_STA"] = {
+		initialValue = 0,
+		finalAdjust = 0,
+	},
+	["ADD_RANGED_HIT_RATING_MOD_HIT_RATING"] = {
+		initialValue = 0,
+		finalAdjust = 0,
+	},
+	["ADD_RANGED_CRIT_RATING_MOD_CRIT_RATING"] = {
+		initialValue = 0,
+		finalAdjust = 0,
+	},
+	["ADD_RANGED_HASTE_RATING_MOD_HASTE_RATING"] = {
 		initialValue = 0,
 		finalAdjust = 0,
 	},
@@ -635,6 +611,30 @@ local addedInfoMods = {
 	{
 		add = "MASTERY_EFFECT",
 		mod = "MASTERY",
+	},
+	{
+		add = "MELEE_HIT_RATING",
+		mod = "HIT_RATING",
+	},
+	{
+		add = "SPELL_HIT_RATING",
+		mod = "HIT_RATING",
+	},
+	{
+		add = "MELEE_CRIT_RATING",
+		mod = "CRIT_RATING",
+	},
+	{
+		add = "SPELL_CRIT_RATING",
+		mod = "CRIT_RATING",
+	},
+	{
+		add = "MELEE_HASTE_RATING",
+		mod = "HASTE_RATING",
+	},
+	{
+		add = "SPELL_HASTE_RATING",
+		mod = "HASTE_RATING",
 	},
 	{
 		add = "MELEE_CRIT",

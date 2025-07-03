@@ -202,26 +202,6 @@ local options = {
 					order = 1,
 					width = "full",
 				},
-				ratingPhysical = {
-					type = 'toggle',
-					name = L["Show Physical Hit/Haste"],
-					desc = L["Show Physical Hit/Haste from Hit/Haste Rating"],
-					order = 2,
-					width = "full",
-					hidden = function()
-						return StatLogic:GetStatMod("ADD_MELEE_HIT_RATING_MOD_HIT_RATING") == 0
-					end
-				},
-				ratingSpell = {
-					type = 'toggle',
-					name = L["Show Spell Hit/Haste"],
-					desc = L["Show Spell Hit/Haste from Hit/Haste Rating"],
-					order = 3,
-					width = "full",
-					hidden = function()
-						return StatLogic:GetStatMod("ADD_SPELL_HIT_RATING_MOD_HIT_RATING") == 0
-					end
-				},
 				enableAvoidanceDiminishingReturns = {
 					type = 'toggle',
 					name = L["Enable Avoidance Diminishing Returns"],
@@ -300,11 +280,38 @@ local options = {
 					args = {},
 					hidden = true,
 				},
+				hit = {
+					type = 'group',
+					name = L[StatLogic.Stats.HitRating],
+					desc = L["Changes the display of %s"]:format(L[StatLogic.Stats.HitRating]),
+					width = "full",
+					order = 8,
+					args = {},
+					hidden = true,
+				},
+				crit = {
+					type = 'group',
+					name = L[StatLogic.Stats.CritRating],
+					desc = L["Changes the display of %s"]:format(L[StatLogic.Stats.CritRating]),
+					width = "full",
+					order = 9,
+					args = {},
+					hidden = true,
+				},
+				haste = {
+					type = 'group',
+					name = L[StatLogic.Stats.HasteRating],
+					desc = L["Changes the display of %s"]:format(L[StatLogic.Stats.HasteRating]),
+					width = "full",
+					order = 10,
+					args = {},
+					hidden = true,
+				},
 				mastery = {
 					type = 'group',
 					name = L[StatLogic.Stats.MasteryRating],
 					desc = L["Changes the display of %s"]:format(L[StatLogic.Stats.MasteryRating]),
-					order = 8,
+					order = 11,
 					args = {},
 					hidden = true,
 				},
@@ -313,7 +320,7 @@ local options = {
 					name = L[StatLogic.Stats.Health],
 					desc = L["Changes the display of %s"]:format(L[StatLogic.Stats.Health]),
 					width = "full",
-					order = 9,
+					order = 12,
 					args = {},
 					hidden = true,
 				},
@@ -322,7 +329,7 @@ local options = {
 					name = L[StatLogic.Stats.ManaRegen],
 					desc = L["Changes the display of %s"]:format(L[StatLogic.Stats.ManaRegen]),
 					width = "full",
-					order = 10,
+					order = 13,
 					args = {},
 					hidden = true,
 				},
@@ -330,7 +337,7 @@ local options = {
 					type = 'group',
 					name = L[StatLogic.Stats.AttackPower],
 					desc = L["Changes the display of %s"]:format(L[StatLogic.Stats.AttackPower]),
-					order = 11,
+					order = 14,
 					args = {},
 					hidden = true,
 				},
@@ -338,7 +345,7 @@ local options = {
 					type = 'group',
 					name = L[StatLogic.Stats.WeaponSkill],
 					desc = L["Changes the display of %s"]:format(L[StatLogic.Stats.WeaponSkill]),
-					order = 12,
+					order = 15,
 					hidden = true,
 					--[[
 					hidden = function()
@@ -358,7 +365,7 @@ local options = {
 					type = 'group',
 					name = L[StatLogic.Stats.ExpertiseRating],
 					desc = L["Changes the display of %s"]:format(L[StatLogic.Stats.ExpertiseRating]),
-					order = 13,
+					order = 16,
 					hidden = true,
 					args = {},
 				},
@@ -366,7 +373,7 @@ local options = {
 					type = 'group',
 					name = L[StatLogic.Stats.SpellPower],
 					desc = L["Changes the display of %s"]:format(L[StatLogic.Stats.SpellPower]),
-					order = 14,
+					order = 17,
 					args = {},
 					hidden = true,
 				},
@@ -374,7 +381,7 @@ local options = {
 					type = 'group',
 					name = L[StatLogic.Stats.SpellDamage],
 					desc = L["Changes the display of %s"]:format(L[StatLogic.Stats.SpellDamage]),
-					order = 14,
+					order = 18,
 					args = {},
 					hidden = true,
 				},
@@ -383,7 +390,7 @@ local options = {
 					name = L[StatLogic.Stats.SpellCrit],
 					desc = L["Changes the display of %s"]:format(L[StatLogic.Stats.SpellCrit]),
 					width = "full",
-					order = 15,
+					order = 19,
 					args = {},
 					hidden = true,
 				},
@@ -391,7 +398,7 @@ local options = {
 					type = 'group',
 					name = L[StatLogic.Stats.Armor],
 					desc = L["Changes the display of %s"]:format(L[StatLogic.Stats.Armor]),
-					order = 16,
+					order = 20,
 					args = {},
 					hidden = true,
 				},
@@ -399,7 +406,7 @@ local options = {
 					type = 'group',
 					name = L[StatLogic.Stats.Defense],
 					desc = L["Changes the display of %s"]:format(L[StatLogic.Stats.Defense]),
-					order = 17,
+					order = 21,
 					hidden = true,
 					args = {},
 				},
@@ -407,7 +414,7 @@ local options = {
 					type = 'group',
 					name = L[StatLogic.Stats.ResilienceRating],
 					desc = L["Changes the display of %s"]:format(L[StatLogic.Stats.ResilienceRating]),
-					order = 18,
+					order = 22,
 					args = {},
 					hidden = true,
 				},
@@ -415,7 +422,7 @@ local options = {
 					type = 'group',
 					name = L[StatLogic.Stats.PvpPowerRating],
 					desc = L["Changes the display of %s"]:format(L[StatLogic.Stats.PvpPowerRating]),
-					order = 19,
+					order = 23,
 					args = {},
 					hidden = true,
 				},
@@ -1272,6 +1279,13 @@ local defaults = {
 
 		showHP5NCFromHealth = false,
 
+		showMeleeHitFromHitRating = false,
+		showMeleeCritFromCritRating = false,
+		showMeleeHasteFromHasteRating = false,
+		showSpellHitFromHitRating = false,
+		showSpellCritFromCritRating = false,
+		showSpellHasteFromHasteRating = false,
+
 		showDefenseFromDefenseRating = false,
 		showExpertiseFromExpertiseRating = false,
 		showCritAvoidanceFromResilience = false,
@@ -1398,7 +1412,9 @@ if class == "DEATHKNIGHT" then
 	defaults.profile.sumHaste = true
 	defaults.profile.sumExpertise = true
 	defaults.profile.showSpellCritFromInt = false
-	defaults.profile.ratingPhysical = true
+	defaults.profile.showMeleeHitFromHitRating = true
+	defaults.profile.showMeleeCritFromCritRating = true
+	defaults.profile.showMeleeHasteFromHasteRating = true
 	defaults.profile.sumArmorPenetration = true
 	defaults.profile.showSpellHitFromExpertise = false
 elseif class == "DRUID" then
@@ -1420,8 +1436,12 @@ elseif class == "DRUID" then
 		defaults.profile.sumSpellDmg = true
 		defaults.profile.sumHealing = true
 	end
-	defaults.profile.ratingPhysical = true
-	defaults.profile.ratingSpell = true
+	defaults.profile.showMeleeHitFromHitRating = true
+	defaults.profile.showMeleeCritFromCritRating = true
+	defaults.profile.showMeleeHasteFromHasteRating = true
+	defaults.profile.showSpellHitFromHitRating = true
+	defaults.profile.showSpellCritFromCritRating = true
+	defaults.profile.showSpellHasteFromHasteRating = true
 	defaults.profile.sumArmorPenetration = true
 elseif class == "HUNTER" then
 	defaults.profile.sumWeaponAverageDamage = true
@@ -1435,7 +1455,9 @@ elseif class == "HUNTER" then
 	defaults.profile.showAPFromAgi = false
 	defaults.profile.showRAPFromAgi = true
 	defaults.profile.showSpellCritFromInt = false
-	defaults.profile.ratingPhysical = true
+	defaults.profile.showMeleeHitFromHitRating = true
+	defaults.profile.showMeleeCritFromCritRating = true
+	defaults.profile.showMeleeHasteFromHasteRating = true
 	defaults.profile.sumArmorPenetration = true
 	defaults.profile.showSpellHitFromExpertise = false
 	defaults.profile.showParryReductionFromExpertise = false
@@ -1453,7 +1475,9 @@ elseif class == "MAGE" then
 	defaults.profile.sumSpellHaste = true
 	defaults.profile.showCritFromAgi = false
 	defaults.profile.showDodgeFromAgi = false
-	defaults.profile.ratingSpell = true
+	defaults.profile.showSpellHitFromHitRating = true
+	defaults.profile.showSpellCritFromCritRating = true
+	defaults.profile.showSpellHasteFromHasteRating = true
 	defaults.profile.showDodgeReductionFromExpertise = false
 	defaults.profile.showParryReductionFromExpertise = false
 	defaults.profile.showAPFromStr = false
@@ -1476,8 +1500,12 @@ elseif class == "MONK" then
 		defaults.profile.sumSpellDmg = true
 		defaults.profile.sumHealing = true
 	end
-	defaults.profile.ratingPhysical = true
-	defaults.profile.ratingSpell = true
+	defaults.profile.showMeleeHitFromHitRating = true
+	defaults.profile.showMeleeCritFromCritRating = true
+	defaults.profile.showMeleeHasteFromHasteRating = true
+	defaults.profile.showSpellHitFromHitRating = true
+	defaults.profile.showSpellCritFromCritRating = true
+	defaults.profile.showSpellHasteFromHasteRating = true
 elseif class == "PALADIN" then
 	defaults.profile.sumWeaponAverageDamage = true
 	defaults.profile.sumWeaponSkill = true
@@ -1498,8 +1526,12 @@ elseif class == "PALADIN" then
 		defaults.profile.sumHolyDmg = true
 		defaults.profile.sumHealing = true
 	end
-	defaults.profile.ratingPhysical = true
-	defaults.profile.ratingSpell = true
+	defaults.profile.showMeleeHitFromHitRating = true
+	defaults.profile.showMeleeCritFromCritRating = true
+	defaults.profile.showMeleeHasteFromHasteRating = true
+	defaults.profile.showSpellHitFromHitRating = true
+	defaults.profile.showSpellCritFromCritRating = true
+	defaults.profile.showSpellHasteFromHasteRating = true
 elseif class == "PRIEST" then
 	defaults.profile.sumSpellHit = true
 	defaults.profile.sumSpellCrit = true
@@ -1514,7 +1546,9 @@ elseif class == "PRIEST" then
 	end
 	defaults.profile.showCritFromAgi = false
 	defaults.profile.showDodgeFromAgi = false
-	defaults.profile.ratingSpell = true
+	defaults.profile.showSpellHitFromHitRating = true
+	defaults.profile.showSpellCritFromCritRating = true
+	defaults.profile.showSpellHasteFromHasteRating = true
 	defaults.profile.showDodgeReductionFromExpertise = false
 	defaults.profile.showParryReductionFromExpertise = false
 	defaults.profile.showAPFromStr = false
@@ -1529,7 +1563,9 @@ elseif class == "ROGUE" then
 	defaults.profile.sumHaste = true
 	defaults.profile.sumExpertise = true
 	defaults.profile.showSpellCritFromInt = false
-	defaults.profile.ratingPhysical = true
+	defaults.profile.showMeleeHitFromHitRating = true
+	defaults.profile.showMeleeCritFromCritRating = true
+	defaults.profile.showMeleeHasteFromHasteRating = true
 	defaults.profile.sumArmorPenetration = true
 	defaults.profile.showSpellHitFromExpertise = false
 elseif class == "SHAMAN" then
@@ -1551,8 +1587,12 @@ elseif class == "SHAMAN" then
 		defaults.profile.sumHealing = true
 	end
 	defaults.profile.showDodgeFromAgi = false
-	defaults.profile.ratingPhysical = true
-	defaults.profile.ratingSpell = true
+	defaults.profile.showMeleeHitFromHitRating = true
+	defaults.profile.showMeleeCritFromCritRating = true
+	defaults.profile.showMeleeHasteFromHasteRating = true
+	defaults.profile.showSpellHitFromHitRating = true
+	defaults.profile.showSpellCritFromCritRating = true
+	defaults.profile.showSpellHasteFromHasteRating = true
 elseif class == "WARLOCK" then
 	if addon.tocversion >= 30000 then
 		defaults.profile.sumSpellPower = true
@@ -1567,7 +1607,9 @@ elseif class == "WARLOCK" then
 	defaults.profile.sumSpellHaste = true
 	defaults.profile.showCritFromAgi = false
 	defaults.profile.showDodgeFromAgi = false
-	defaults.profile.ratingSpell = true
+	defaults.profile.showSpellHitFromHitRating = true
+	defaults.profile.showSpellCritFromCritRating = true
+	defaults.profile.showSpellHasteFromHasteRating = true
 	defaults.profile.showDodgeReductionFromExpertise = false
 	defaults.profile.showParryReductionFromExpertise = false
 	defaults.profile.showAPFromStr = false
@@ -1584,7 +1626,9 @@ elseif class == "WARRIOR" then
 	defaults.profile.sumHaste = true
 	defaults.profile.sumExpertise = true
 	defaults.profile.showSpellCritFromInt = false
-	defaults.profile.ratingPhysical = true
+	defaults.profile.showMeleeHitFromHitRating = true
+	defaults.profile.showMeleeCritFromCritRating = true
+	defaults.profile.showMeleeHasteFromHasteRating = true
 	defaults.profile.sumArmorPenetration = true
 	defaults.profile.showSpellHitFromExpertise = false
 end
@@ -1597,6 +1641,8 @@ do
 		showMP5FromSpi = { "showManaRegenFromSpi", "showManaRegenFromManaRegen" },
 		showMP5NCFromInt = { "showManaRegenNotCastingFromManaRegen", "showManaRegenOutOfCombatFromManaRegen" },
 		showMP5NCFromSpi = { "showManaRegenNotCastingFromManaRegen", "showManaRegenOutOfCombatFromManaRegen" },
+		ratingPhysical = { "showMeleeHitFromHitRating", "showMeleeCritFromCritRating", "showMeleeHasteFromHasteRating" },
+		ratingSpell = { "showSpellHitFromHitRating", "showSpellCritFromCritRating", "showSpellHasteFromHasteRating" },
 	}
 
 	function addon.MigrateOptions(db)
@@ -1675,6 +1721,7 @@ do
 		if mod == "MASTERY_EFFECT" then
 			groupID = "mastery"
 		end
+
 		local group = options.args.stat.args[groupID]
 		if not group then return end
 		group.hidden = false
@@ -2462,26 +2509,26 @@ function RatingBuster:ProcessStat(stat, value, infoTable, link, color, statModCo
 		end
 	elseif stat == StatLogic.Stats.HitRating then
 		local meleeHitRating = value * statModContext("ADD_MELEE_HIT_RATING_MOD_HIT_RATING")
-		self:ProcessStat(StatLogic.Stats.MeleeHitRating, meleeHitRating, infoTable, link, color, statModContext, isBaseStat, db.profile.ratingPhysical)
+		self:ProcessStat(StatLogic.Stats.MeleeHitRating, meleeHitRating, infoTable, link, color, statModContext, isBaseStat, db.profile.showMeleeHitFromHitRating)
 
 		local spellHitRating = value * statModContext("ADD_SPELL_HIT_RATING_MOD_HIT_RATING")
-		self:ProcessStat(StatLogic.Stats.SpellHitRating, spellHitRating, infoTable, link, color, statModContext, isBaseStat, db.profile.ratingSpell)
+		self:ProcessStat(StatLogic.Stats.SpellHitRating, spellHitRating, infoTable, link, color, statModContext, isBaseStat, db.profile.showSpellHitFromHitRating)
 	elseif stat == StatLogic.Stats.CritRating then
 		value = value * statModContext("MOD_CRIT_RATING")
 
 		local meleeCritRating = value * statModContext("ADD_MELEE_CRIT_RATING_MOD_CRIT_RATING")
-		self:ProcessStat(StatLogic.Stats.MeleeCritRating, meleeCritRating, infoTable, link, color, statModContext, isBaseStat, db.profile.ratingPhysical)
+		self:ProcessStat(StatLogic.Stats.MeleeCritRating, meleeCritRating, infoTable, link, color, statModContext, isBaseStat, db.profile.showMeleeCritFromCritRating)
 
 		local spellCritRating = value * statModContext("ADD_SPELL_CRIT_RATING_MOD_CRIT_RATING")
-		self:ProcessStat(StatLogic.Stats.SpellCritRating, spellCritRating, infoTable, link, color, statModContext, isBaseStat, db.profile.ratingSpell)
+		self:ProcessStat(StatLogic.Stats.SpellCritRating, spellCritRating, infoTable, link, color, statModContext, isBaseStat, db.profile.showSpellCritFromCritRating)
 	elseif stat == StatLogic.Stats.HasteRating then
 		value = value * statModContext("MOD_HASTE_RATING")
 
 		local meleeHasteRating = value * statModContext("ADD_MELEE_HASTE_RATING_MOD_HASTE_RATING")
-		self:ProcessStat(StatLogic.Stats.MeleeHasteRating, meleeHasteRating, infoTable, link, color, statModContext, isBaseStat, db.profile.ratingPhysical)
+		self:ProcessStat(StatLogic.Stats.MeleeHasteRating, meleeHasteRating, infoTable, link, color, statModContext, isBaseStat, db.profile.showMeleeHasteFromHasteRating)
 
 		local spellHasteRating = value * statModContext("ADD_SPELL_HASTE_RATING_MOD_HASTE_RATING")
-		self:ProcessStat(StatLogic.Stats.SpellHasteRating, spellHasteRating, infoTable, link, color, statModContext, isBaseStat, db.profile.ratingSpell)
+		self:ProcessStat(StatLogic.Stats.SpellHasteRating, spellHasteRating, infoTable, link, color, statModContext, isBaseStat, db.profile.showSpellHasteFromHasteRating)
 	elseif StatLogic.RatingBase[stat] and db.profile.showRatings then
 		--------------------
 		-- Combat Ratings --
@@ -2875,7 +2922,7 @@ function RatingBuster:ProcessStat(stat, value, infoTable, link, color, statModCo
 		if show and isBaseStat then
 			local displayType = "Percent"
 			if (
-				db.profile.ratingPhysical
+				db.profile.showMeleeHitFromHitRating
 				and statModContext("ADD_SPELL_HIT_MOD_SPELL_HIT_RATING") ~= statModContext("ADD_MELEE_HIT_MOD_MELEE_HIT_RATING")
 			) then
 				displayType = "Spell"
@@ -2894,7 +2941,7 @@ function RatingBuster:ProcessStat(stat, value, infoTable, link, color, statModCo
 		if show and isBaseStat then
 			local displayType = "Percent"
 			if (
-				db.profile.ratingPhysical
+				db.profile.showMeleeCritFromCritRating
 				and statModContext("ADD_SPELL_CRIT_MOD_SPELL_CRIT_RATING") ~= statModContext("ADD_MELEE_CRIT_MOD_MELEE_CRIT_RATING")
 			) then
 				displayType = "Spell"
@@ -2916,7 +2963,7 @@ function RatingBuster:ProcessStat(stat, value, infoTable, link, color, statModCo
 		if show and isBaseStat then
 			local displayType = "Percent"
 			if (
-				db.profile.ratingPhysical
+				db.profile.showMeleeHasteFromHasteRating
 				and statModContext("ADD_SPELL_HASTE_MOD_SPELL_HASTE_RATING") ~= statModContext("ADD_MELEE_HASTE_MOD_MELEE_HASTE_RATING")
 			) then
 				displayType = "Spell"

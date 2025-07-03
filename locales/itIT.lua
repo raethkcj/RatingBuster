@@ -443,6 +443,10 @@ L[StatLogic.Stats.Hit] = STAT_HIT_CHANCE
 L[StatLogic.Stats.Crit] = MELEE_CRIT_CHANCE
 L[StatLogic.Stats.Haste] = STAT_HASTE
 
+L[StatLogic.Stats.HitRating] = ITEM_MOD_HIT_RATING_SHORT
+L[StatLogic.Stats.CritRating] = ITEM_MOD_CRIT_RATING_SHORT
+L[StatLogic.Stats.HasteRating] = ITEM_MOD_HASTE_RATING_SHORT
+
 -- Melee Stats
 L[StatLogic.Stats.MeleeHit] = STAT_HIT_CHANCE
 L[StatLogic.Stats.MeleeHitRating] = COMBAT_RATING_NAME6 -- COMBAT_RATING_NAME6 = "Hit Rating"
