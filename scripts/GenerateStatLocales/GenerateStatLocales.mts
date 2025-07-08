@@ -326,20 +326,6 @@ class DatabaseTable {
 const instance = await DuckDBInstance.create()
 const connection = await instance.connect()
 
-async function getTypedResults<T>(query: string, type: { new(...args: any[]): T }): Promise<T[]> {
-	const results: T[] = []
-	const result = await connection.run(query)
-	let chunk = await result.fetchChunk()
-	while(chunk && chunk.rowCount > 0) {
-		for (const row of chunk.getRows()) {
-			results.push(new type(...row))
-		}
-		chunk = await result.fetchChunk()
-	}
-
-	return results
-}
-
 // From wow.tools' enums.js, also obtainable at wowdev.wiki
 enum ItemStat {
 	Mana = 0,
@@ -656,7 +642,8 @@ enum Resistance {
 
 function getEnchantStats(enchant: StatEnchant, spellStatEffects: Map<number, StatValue[][]>): StatValue[][] {
 	const stats: StatValue[][] = []
-	for(const [index, [effect, effectArg, pointsMin]] of enchant.effects.entries()) {
+	for(const [index, effectvalues] of enchant.Effects.items.entries()) {
+		const [effect, effectArg, pointsMin] = effectvalues.items
 		switch(effect) {
 			case EnchantEffect.Damage:
 				stats[index] = [new StatValue("AverageWeaponDamage", pointsMin)]
@@ -704,23 +691,21 @@ const locales = [
 ] as const
 type Locale = typeof locales[number]
 
-class SpellEffect {
-	constructor(
-		public spellID: number,
-		public effectIndex: number,
-		public effectAura: EffectAura,
-		public effectBasePoints: number,
-		public effectDieSides: number,
-		public effectMiscValue0: number,
-		public procSpellID: number,
-	) {}
+type SpellEffect = {
+	SpellID: number,
+	EffectIndex: number,
+	EffectAura: EffectAura,
+	EffectBasePoints: number,
+	EffectDieSides: number,
+	EffectMiscValue_0: number,
+	ProcSpellID: number,
 }
 
 async function queryStatSpellEffects(expansion: Expansion) {
 	const spellEffect = await DatabaseTable.get("SpellEffect", expansion, "enUS")
 
 	const query = `
-		SELECT StatSpell.SpellID, StatSpell.EffectIndex, StatSpell.EffectAura, StatSpell.EffectBasePoints, StatSpell.EffectDieSides, StatSpell.EffectMiscValue_0, ProcSpell.SpellID
+		SELECT StatSpell.SpellID, StatSpell.EffectIndex, StatSpell.EffectAura, StatSpell.EffectBasePoints, StatSpell.EffectDieSides, StatSpell.EffectMiscValue_0, ProcSpell.SpellID AS ProcSpellID
 		FROM read_csv('${spellEffect.path}', auto_type_candidates = ['INTEGER', 'DOUBLE', 'VARCHAR']) StatSpell
 		LEFT JOIN read_csv('${spellEffect.path}', auto_type_candidates = ['INTEGER', 'DOUBLE', 'VARCHAR']) ProcSpell
 		ON ProcSpell.EffectTriggerSpell = StatSpell.SpellID
@@ -731,14 +716,13 @@ async function queryStatSpellEffects(expansion: Expansion) {
 		ORDER BY StatSpell.SpellID, ProcSpell.SpellID, StatSpell.EffectIndex
 	`
 
-	return await getTypedResults<SpellEffect>(query, SpellEffect)
+	const reader = await connection.runAndReadAll(query)
+	return reader.getRowObjects() as SpellEffect[]
 }
 
-class SpellDescription {
-	constructor(
-		public id: number,
-		public description: string
-	) {}
+type SpellDescription = {
+	ID: number,
+	Description_lang: string
 }
 
 async function queryStatSpellDescriptions(expansion: Expansion, locale: string, spellIDs: number[]): Promise<SpellDescription[]> {
@@ -750,7 +734,8 @@ async function queryStatSpellDescriptions(expansion: Expansion, locale: string, 
 		WHERE ID in (${spellIDs}) AND Description_lang NOT NULL
 	`
 
-	return await getTypedResults<SpellDescription>(query, SpellDescription)
+	const reader = await connection.runAndReadAll(query)
+	return reader.getRowObjects() as SpellDescription[]
 }
 
 // Parses conditional expressions in spell descriptions of the form
@@ -807,32 +792,27 @@ function traverseDescriptionBranches(description: string): string[] {
 	return branches
 }
 
-class StatEnchant {
-	stats: string[][] = []
-	effects: [effect: EnchantEffect, effectArg: number, pointsMin: number][]
-
-	constructor(
-		public id: number,
-		public name: string,
-		effect0: EnchantEffect,
-		effectArg0: number,
-		pointsMin0: number,
-		effect1: EnchantEffect,
-		effectArg1: number,
-		pointsMin1: number,
-		effect2: EnchantEffect,
-		effectArg2: number,
-		pointsMin2: number,
-	) {
-		this.effects = [[effect0, effectArg0, pointsMin0], [effect1, effectArg1, pointsMin1], [effect2, effectArg2, pointsMin2]]
+type StatEnchant = {
+	ID: number
+	Name_lang: string
+	Effects: {
+		items: {
+			items: [effect: EnchantEffect, effectArg: number, pointsMin: number]
+		}[]
 	}
+
+	stats: string[][]
 }
 
 async function queryStatEnchants(expansion: Expansion, locale: string, spellIDs: number[], overrideEnchantIDs: number[]): Promise<StatEnchant[]> {
 	const spellItemEnchantment = await DatabaseTable.get("SpellItemEnchantment", expansion, locale)
 
 	const query = `
-		SELECT ID, Name_lang, Effect_0, EffectArg_0, EffectPointsMin_0, Effect_1, EffectArg_1, EffectPointsMin_1, Effect_2, EffectArg_2, EffectPointsMin_2
+		SELECT ID, Name_lang, [
+			array_value(Effect_0, EffectArg_0, EffectPointsMin_0),
+			array_value(Effect_1, EffectArg_1, EffectPointsMin_1),
+			array_value(Effect_2, EffectArg_2, EffectPointsMin_2),
+		] As Effects
 		FROM read_csv('${spellItemEnchantment.path}', auto_type_candidates = ['INTEGER', 'DOUBLE', 'VARCHAR'])
 		WHERE
 			ID IN (${overrideEnchantIDs.length > 0 ? overrideEnchantIDs : 'null'})
@@ -845,7 +825,8 @@ async function queryStatEnchants(expansion: Expansion, locale: string, spellIDs:
 
 	`
 
-	return await getTypedResults(query, StatEnchant)
+	const reader = await connection.runAndReadAll(query)
+	return reader.getRowObjects() as unknown as StatEnchant[]
 }
 
 class StatValue {
@@ -856,22 +837,22 @@ function enumerateStatAndProcSpells(spellEffects: SpellEffect[]): [Map<number, S
 	const spellStatEffects = new Map<number, StatValue[][]>()
 	const procSpells = new Map<number, number>()
 	for (const effect of spellEffects) {
-		const statEffects = spellStatEffects.get(effect.spellID) || []
+		const statEffects = spellStatEffects.get(effect.SpellID) || []
 
-		if (!statEffects[effect.effectIndex] && effect.effectDieSides <= 1) {
-			const effectAuraFunc = effectAuraStats[effect.effectAura]
-			const stats = effectAuraFunc ? effectAuraFunc(effect.effectMiscValue0) : null
+		if (!statEffects[effect.EffectIndex] && effect.EffectDieSides <= 1) {
+			const effectAuraFunc = effectAuraStats[effect.EffectAura]
+			const stats = effectAuraFunc ? effectAuraFunc(effect.EffectMiscValue_0) : null
 			if (stats && stats.length > 0) {
-				let value = effect.effectBasePoints + effect.effectDieSides
+				let value = effect.EffectBasePoints + effect.EffectDieSides
 
-				if (NegativeEffectAuras.has(effect.effectAura)) {
+				if (NegativeEffectAuras.has(effect.EffectAura)) {
 					value *= -1
 				}
 
 				let apOverride: number | undefined
-				if (effect.effectAura === EffectAura.MOD_ATTACK_POWER) {
+				if (effect.EffectAura === EffectAura.MOD_ATTACK_POWER) {
 					apOverride = statEffects.findIndex((se) => se?.find(sv => sv.stat === "RangedAttackPower"))
-				} else if (effect.effectAura === EffectAura.MOD_RANGED_ATTACK_POWER) {
+				} else if (effect.EffectAura === EffectAura.MOD_RANGED_ATTACK_POWER) {
 					apOverride = statEffects.findIndex((se) => se?.find(sv => sv.stat === "AttackPower"))
 				}
 
@@ -881,17 +862,17 @@ function enumerateStatAndProcSpells(spellEffects: SpellEffect[]): [Map<number, S
 					statEffects[apOverride][0] = new StatValue("GenericAttackPower", value)
 				} else {
 					// May leave empty indices if a spell has non-stat effects prior to a stat effect
-					statEffects[effect.effectIndex] = stats.map((s) => new StatValue(s, value))
+					statEffects[effect.EffectIndex] = stats.map((s) => new StatValue(s, value))
 				}
 
-				if (effect.procSpellID) {
-					procSpells.set(effect.procSpellID, effect.spellID)
+				if (effect.ProcSpellID) {
+					procSpells.set(effect.ProcSpellID, effect.SpellID)
 				}
 			}
 		}
 
 		if (statEffects.length > 0) {
-			spellStatEffects.set(effect.spellID, statEffects)
+			spellStatEffects.set(effect.SpellID, statEffects)
 		}
 	}
 
@@ -983,16 +964,16 @@ async function getLocaleStatMap(
 	const spellDescriptions = await queryStatSpellDescriptions(expansion, locale, Array.from(spellDescIDs))
 	for (const spellDescription of spellDescriptions) {
 		let staticEffects = false
-		let statEffects = spellStatEffects.get(spellDescription.id)
+		let statEffects = spellStatEffects.get(spellDescription.ID)
 		if (statEffects) {
 			staticEffects = true
 		} else {
-			statEffects = spellStatEffects.get(procSpells.get(spellDescription.id)!)
+			statEffects = spellStatEffects.get(procSpells.get(spellDescription.ID)!)
 		}
 		if (statEffects) {
-			const branches = traverseDescriptionBranches(spellDescription.description)
+			const branches = traverseDescriptionBranches(spellDescription.Description_lang)
 			for (const branch of branches) {
-				const [pattern, statEntry] = mapTextToStatEntry(branch, statEffects, spellDescription.id, spellStatEffects, false)
+				const [pattern, statEntry] = mapTextToStatEntry(branch, statEffects, spellDescription.ID, spellStatEffects, false)
 				if (staticEffects || !statEntry.isWholeText) {
 					statEntry.ignoreSum = !staticEffects
 					insertEntry(statMap, pattern, statEntry, locale)
@@ -1004,11 +985,11 @@ async function getLocaleStatMap(
 	const statEnchants = await queryStatEnchants(expansion, locale, statSpellIDs, overrideEnchantIDs)
 	console.log(`${statEnchants.length} statEnchants`)
 	for (const statEnchant of statEnchants) {
-		let stats = overrideEnchantStatEffects.get(statEnchant.id)
+		let stats = overrideEnchantStatEffects.get(statEnchant.ID)
 		if (!stats) {
 			stats = getEnchantStats(statEnchant, spellStatEffects)
 		}
-		const [pattern, statEntry] = mapTextToStatEntry(statEnchant.name, stats, statEnchant.id, spellStatEffects, true)
+		const [pattern, statEntry] = mapTextToStatEntry(statEnchant.Name_lang, stats, statEnchant.ID, spellStatEffects, true)
 		insertEntry(statMap, pattern, statEntry, locale)
 	}
 

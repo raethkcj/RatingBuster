@@ -25,11 +25,17 @@ W["讓飲用者可以和對凡間尚有牽掛的屍體對話。另外還能治�
 W["你的命中率提高$s%。"] = { [Stats.MeleeHit] = 1, [Stats.RangedHit] = 1, } -- s429863
 W["你的力量提高$s點。"] = { [Stats.Strength] = 12, } -- s429864
 W["受到激勵時，大幅提高傷害。"] = { [Stats.MeleeHaste] = 20, [Stats.AverageWeaponDamage] = 25, } -- s436430
+W["破甲"] = { [Stats.AverageWeaponDamage] = -10, } -- e27
 W["贊達拉魔精徽記"] = { [Stats.SpellDamage] = 18, [Stats.HealingPower] = 18, } -- e2605
 W["贊達拉力量徽記"] = { [Stats.AttackPower] = 30, } -- e2606
 W["初級巫師之油"] = { [Stats.SpellDamage] = 8, [Stats.HealingPower] = 8, } -- e2623
 W["次級巫師之油"] = { [Stats.SpellDamage] = 16, [Stats.HealingPower] = 16, } -- e2626
 W["巫師之油"] = { [Stats.SpellDamage] = 24, [Stats.HealingPower] = 24, } -- e2627
+W["燃盡"] = { [Stats.SpellCrit] = 15, } -- e6729
+W["精通盾牌"] = { [Stats.BlockChance] = 10, } -- e6876
+W["狙擊大師"] = { [Stats.MeleeCrit] = 5, [Stats.RangedCrit] = 5, } -- e6889
+W["狂熱"] = { [Stats.SpellCrit] = 18, } -- e6967
+W["靈貓迅閃"] = { [Stats.Dodge] = 20, } -- e6990
 W["黑澗深淵法力之油"] = { [Stats.SpellHit] = 2, [Stats.GenericManaRegen] = 12, } -- e7099
 W["全自動懲戒錘"] = { [Stats.MeleeHaste] = 50, } -- e7123
 W["傳導盾牌塗料"] = { [Stats.SpellDamage] = 24, [Stats.HealingPower] = 24, } -- e7602
@@ -42,12 +48,6 @@ W["附魔防水劑"] = { [Stats.SpellDamage] = 45, [Stats.HealingPower] = 45, [S
 W["純淨阻擋者"] = { [Stats.BlockValue] = 30, } -- e7676
 W["剃刃專家"] = { [Stats.MeleeCrit] = 5, [Stats.RangedCrit] = 5, } -- e7696
 W["精煉法術"] = { [Stats.MeleeCrit] = 2, [Stats.RangedCrit] = 2, [Stats.SpellCrit] = 2, } -- e7708
-W["燃盡"] = { [Stats.SpellCrit] = 15, } -- e6729
-W["精通盾牌"] = { [Stats.BlockChance] = 10, } -- e6876
-W["狙擊大師"] = { [Stats.MeleeCrit] = 5, [Stats.RangedCrit] = 5, } -- e6889
-W["狂熱"] = { [Stats.SpellCrit] = 18, } -- e6967
-W["靈貓迅閃"] = { [Stats.Dodge] = 20, } -- e6990
-W["破甲"] = { [Stats.AverageWeaponDamage] = -10, } -- e27
 W["酋長"] = { [Stats.SpellCrit] = 2, } -- e7825
 W["先祖看守者"] = { [Stats.BlockChance] = 10, } -- e7839
 W["狂徒"] = { [Stats.MeleeHit] = 3, [Stats.RangedHit] = 3, [Stats.SpellHit] = 3, } -- e7866
@@ -105,12 +105,13 @@ W["發射電流減緩目標的攻擊速度。"] = { [Stats.MeleeHaste] = -30, } 
 W["提高護甲值和法力恢復速度。"] = { [Stats.Armor] = 13, [Stats.GenericManaRegen] = 65, } -- s63390
 W["像旋風一般揮舞骸骨攻擊周圍的敵人。"] = { [Stats.MeleeHaste] = -9900, } -- s69076
 W["只要『醫生』還在值班，你的生命力就不會減少。"] = { [Stats.Health] = 45000, } -- s74503
-W["碎劍符文"] = { [Stats.Parry] = 4, } -- e3365
-W["test skill req enchant"] = { [Stats.BonusArmor] = 10, } -- e3320
-W["卓效巫師之油"] = { [Stats.SpellPower] = 56, } -- e3299
 W["冰行者"] = { [Stats.Stamina] = 15, } -- e3250
+W["卓效巫師之油"] = { [Stats.SpellPower] = 56, } -- e3299
+W["test skill req enchant"] = { [Stats.BonusArmor] = 10, } -- e3320
+W["碎劍符文"] = { [Stats.Parry] = 4, } -- e3365
 W["破劍符文"] = { [Stats.Parry] = 2, } -- e3594
 W["極強效火焰石"] = { [Stats.SpellCritRating] = 35, } -- e3597
+W["彈性編織襯底"] = { [Stats.Agility] = 23, } -- e3605
 W["次級火焰石"] = { [Stats.SpellCritRating] = 7, } -- e3609
 W["火焰石"] = { [Stats.SpellCritRating] = 14, } -- e3610
 W["強效火焰石"] = { [Stats.SpellCritRating] = 21, } -- e3611
@@ -123,14 +124,13 @@ W["極效法術石"] = { [Stats.SpellHasteRating] = 30, } -- e3617
 W["極強效法術石"] = { [Stats.SpellHasteRating] = 40, } -- e3618
 W["惡魔法術石"] = { [Stats.SpellHasteRating] = 50, } -- e3619
 W["極大法術石"] = { [Stats.SpellHasteRating] = 60, } -- e3620
-W["石膚石像鬼符文"] = { [Stats.Defense] = 25, } -- e3847
-W["奈幽蟲甲符文"] = { [Stats.Defense] = 13, } -- e3883
-W["彈性編織襯底"] = { [Stats.Agility] = 23, } -- e3605
 W["光紋刺繡"] = { [Stats.Spirit] = 1, } -- e3722
 W["暗輝刺繡"] = { [Stats.Spirit] = 1, } -- e3728
 W["劍衛刺繡"] = { [Stats.Spirit] = 1, } -- e3730
 W["泰坦鋼武器鍊"] = { [Stats.HitRating] = 28, } -- e3731
+W["石膚石像鬼符文"] = { [Stats.Defense] = 25, } -- e3847
 W["腦波增幅碟型天線"] = { [Stats.Stamina] = 45, } -- e3878
+W["奈幽蟲甲符文"] = { [Stats.Defense] = 13, } -- e3883
 W["提高移動速度，並在第一次攻擊時造成額外的傷害。"] = { [Stats.AverageWeaponDamage] = 10, } -- s7137
 W["使施法者的護甲值和法術抗性提高。"] = { [Stats.Armor] = 10000, [Stats.FireResistance] = 10000, [Stats.NatureResistance] = 10000, [Stats.FrostResistance] = 10000, [Stats.ShadowResistance] = 10000, [Stats.ArcaneResistance] = 10000, [Stats.Armor] = 10000, } -- s8909
 W["降低命中率。"] = { [Stats.MeleeHit] = -10, [Stats.RangedHit] = -10, } -- s12541
@@ -148,7 +148,7 @@ W["讓你看起來很火熱。"] = { [Stats.HealingPower] = 6, } -- s48889
 W["你不是個好人。"] = { [Stats.AttackPower] = 8, [Stats.SpellDamage] = 8, } -- s65629
 W["雄獅之力增強你的攻擊強度。"] = { [Stats.GenericAttackPower] = 85, } -- s70340
 W["鍛造大師開始揮舞兩把武器，提高他的攻擊命中率，而且有時候可揮擊兩次。"] = { [Stats.MeleeHit] = 20, [Stats.RangedHit] = 20, } -- s74981
-W["柯爾菈附近的友方生物獲得加速效果，提升其攻擊與移動速度。"] = { [Stats.MeleeHaste] = 35, } -- s75817
+W["柯爾菈附近的友方生物獲得加速效果，提升其攻擊與移動速度。"] = { [Stats.MeleeHaste] = 35, [Stats.MeleeHaste] = 15, } -- s75817
 W["夢魘真可怕!"] = { [Stats.MeleeCrit] = -100, [Stats.RangedCrit] = -100, } -- s75822
 W["怒火中燒，傷害和體型同時增大，但速度降低。"] = { [Stats.SpellDamage] = 30, } -- s76423
 W["造成火焰傷害，並且降低一名敵方目標的護甲值。需引導。"] = { [Stats.Armor] = -20000, } -- s76688
@@ -173,6 +173,30 @@ W["可以在副手上裝備單手或副手武器。"] = { [Stats.MeleeHit] = 20,
 W["大地生命武器"] = { [Stats.HealingPower] = 110, } -- e3345
 W["泰坦鋼板"] = { [Stats.ParryRating] = 26, } -- e3849
 W["黃鐵武器鍊"] = { [Stats.HitRating] = 40, } -- e4217
+W["使生命力、近戰加速還有法力恢復速度提高。"] = { [Stats.Health] = 300, [Stats.MeleeHasteRating] = 150, [Stats.GenericManaRegen] = 10, } -- s16609
+W["『狂野變形者』奧茲恩變形成為樹木形態，使其護甲值與近戰傷害提高。"] = { [Stats.Armor] = 3000, } -- s22688
+W["法術致命一擊提高。"] = { [Stats.SpellCritRating] = 42, } -- s22820
+W["將有機生物包覆在薄膜之中，使其隨著時間像植物般發芽。"] = { [Stats.SpellDamage] = 50, } -- s81096
+W["施法者擺出架式全心進行防禦，招架或抵抗所有來自正面的攻擊。施法者會在招架或抵抗攻擊的同時進行反擊。"] = { [Stats.Parry] = 100, } -- s106447
+W["可以在副手上裝備所有武器。"] = { [Stats.MeleeHit] = 19, [Stats.RangedHit] = 19, } -- s114355
+W["施法者利用超出凡人存在領域的力量。"] = { [Stats.MeleeHit] = 20, [Stats.RangedHit] = 20, } -- s115964
+W["快吃我。"] = { [Stats.MeleeHaste] = 30, [Stats.SpellHaste] = 1, } -- s117164
+W["提高敏捷、致命一擊、加速或精通。"] = { [Stats.MeleeCritRating] = 5, [Stats.RangedCritRating] = 5, [Stats.SpellCritRating] = 5, [Stats.MeleeHasteRating] = 5, [Stats.RangedHasteRating] = 5, [Stats.SpellHasteRating] = 5, [Stats.MasteryRating] = 5, [Stats.Agility] = 5, } -- s118522
+W["提高致命一擊、加速或精通。"] = { [Stats.MeleeCritRating] = 5, [Stats.RangedCritRating] = 5, [Stats.SpellCritRating] = 5, [Stats.MeleeHasteRating] = 5, [Stats.RangedHasteRating] = 5, [Stats.SpellHasteRating] = 5, [Stats.MasteryRating] = 5, [Stats.Agility] = 5, } -- s118522
+W["黑暗能量在施法者面前形成一道護盾，使前方來襲的法術與攻擊偏斜。"] = { [Stats.BlockChance] = 100, } -- s119083
+W["將一名敵人轉變成琥珀怪物，使其生命力大幅提高，並試圖讓他們轉而攻擊自己的盟友。"] = { [Stats.Health] = 8500000, [Stats.Dodge] = -100, } -- s122370
+W["幽暗恐懼獸的近戰攻擊會從目標身上吸取能量，並轉化成主人的法力。"] = { [Stats.MeleeHit] = 9, [Stats.RangedHit] = 9, } -- s123050
+W["嘯天的心靈支配弱化了目標的戰鬥能力。"] = { [Stats.SpellDamage] = -50, } -- s123205
+W["索拉格從他房間的低處吸入費洛蒙，提高自身的力量。"] = { [Stats.MeleeHaste] = 20, } -- s123833
+W["大幅提高格擋前方攻擊與偏斜前方法術的機率。使施法者無法移動、轉向或者被擊退。"] = { [Stats.BlockChance] = 100, } -- s124071
+W["大幅提高從正面格擋攻擊和使法術偏斜的機率。"] = { [Stats.BlockChance] = 200, } -- s128346
+W["施法者舉起盾牌，偏斜前方所有的攻擊。"] = { [Stats.BlockChance] = 200, } -- s135360
+W["舉起盾牌，使來自前方的所有遠程和法術攻擊偏斜，並格擋所有近戰攻擊。"] = { [Stats.BlockChance] = 100, } -- s147689
+W["這個生物被灌注並縛靈了一個贊達拉羅亞，得到了額外的力量而且更加兇暴了。"] = { [Stats.MeleeHaste] = 25, } -- s136638
+W["隨機鎖定一名玩家，被嘲諷前只會攻擊該目標。"] = { [Stats.MeleeCrit] = -100, [Stats.RangedCrit] = -100, } -- s143292
+W["placeholder shoulder enchant"] = { [Stats.Strength] = 130, [Stats.CritRating] = 25, } -- e4719
+W["活化鋼武器鍊"] = { [Stats.ExpertiseRating] = 200, } -- e4918
+W["敏捷王子之息"] = { [Stats.Agility] = 500, } -- e4994
 
 local L = addon.StatIDLookup
 L["使你的攻擊速度提高%s%，持續%s sec。"] = { { Stats.MeleeHaste, Stats.RangedHaste, }, false, } -- s1219500
@@ -1092,17 +1116,23 @@ L["使持有者的力量提高%s點，但受到的所有傷害也會提高%s%，
 L["給你的頭部或腿部裝備附加魔法效果，使自然抗性提%s點。無法與其他附加於指定裝備的魔法效果重疊。"] = { { Stats.NatureResistance, }, } -- s28162
 L["給你的頭部或腿部裝備附加魔法效果，使冰霜抗性提高%s點。無法與其他附加於指定裝備的魔法效果重疊。"] = { { Stats.FrostResistance, }, } -- s28164
 L["給你的頭部或腿部裝備附加魔法效果，使暗影抗性提高%s點。無法與其他附加於指定裝備的魔法效果重疊。"] = { { Stats.ShadowResistance, }, } -- s28166
+L["磨快 %s"] = { { Stats.AverageWeaponDamage, }, } -- e13
+L["強化護甲 %s"] = { { Stats.BonusArmor, }, } -- e15
+L["增重 %s"] = { { Stats.AverageWeaponDamage, }, } -- e19
 L["法力 %s"] = { { Stats.Mana, }, } -- e24
+L["瞄準鏡（%s 傷害）"] = { { Stats.AverageWeaponDamage, }, } -- e30
 L["平衡錘 %s%攻擊速度"] = { { Stats.MeleeHaste, }, } -- e34
 L["生命力 %s"] = { { Stats.Health, }, } -- e41
 L["精神 %s"] = { { Stats.Spirit, }, } -- e64
 L["所有抗性 %s"] = { { Stats.FireResistance, Stats.NatureResistance, Stats.FrostResistance, Stats.ShadowResistance, Stats.ArcaneResistance, }, } -- e65
 L["耐力 %s"] = { { Stats.Stamina, }, } -- e66
+L["%s 傷害"] = { { Stats.AverageWeaponDamage, }, } -- e67
 L["%s 力量"] = { { Stats.Strength, }, } -- e68
 L["%s 耐力"] = { { Stats.Stamina, }, } -- e71
 L["%s 敏捷"] = { { Stats.Agility, }, } -- e74
 L["%s 智力"] = { { Stats.Intellect, }, } -- e79
 L["%s 精神"] = { { Stats.Spirit, }, } -- e82
+L["%s 護甲"] = { { Stats.BonusArmor, }, } -- e85
 L["%s 防禦"] = { { Stats.Defense, }, } -- e110
 L["劍技能 %s"] = { { Stats.WeaponSkill, }, } -- e125
 L["雙手劍技能 %s"] = { { Stats.WeaponSkill, }, } -- e132
@@ -1119,11 +1149,14 @@ L["提高火焰傷害 %s"] = { { Stats.FireDamage, }, } -- e218
 L["提高自然效果 %s"] = { { Stats.NatureDamage, }, } -- e220
 L["提高冰霜效果 %s"] = { { Stats.FrostDamage, }, } -- e227
 L["提高暗影效果 %s"] = { { Stats.ShadowDamage, }, } -- e234
+L["武器傷害 %s"] = { { Stats.AverageWeaponDamage, }, } -- e241
 L["智力 %s"] = { { Stats.Intellect, }, } -- e244
+L["護甲 %s"] = { { Stats.BonusArmor, }, } -- e245
 L["敏捷 %s"] = { { Stats.Agility, }, } -- e247
 L["力量 %s"] = { { Stats.Strength, }, } -- e248
 L["%s 火焰抗性"] = { { Stats.FireResistance, }, } -- e256
 L["提高法術傷害 %s"] = { { Stats.SpellDamage, Stats.HealingPower, }, } -- e423
+L["石化 %s"] = { { Stats.AverageWeaponDamage, }, } -- e504
 L["%s 敏捷/%s 精神"] = { { Stats.Agility, }, { Stats.Spirit, }, } -- e583
 L["%s 敏捷/%s 智力"] = { { Stats.Agility, }, { Stats.Intellect, }, } -- e584
 L["%s 敏捷/%s 耐力"] = { { Stats.Agility, }, { Stats.Stamina, }, } -- e585
@@ -1142,7 +1175,6 @@ L["%s 冰霜抗性"] = { { Stats.FrostResistance, }, } -- e926
 L["攻擊速度 %s%"] = { { Stats.MeleeHaste, Stats.RangedHaste, }, } -- e931
 L["%s 秘法抗性"] = { { Stats.ArcaneResistance, }, } -- e1243
 L["%s 自然抗性"] = { { Stats.NatureResistance, }, } -- e1381
-L["護甲 %s"] = { { Stats.Armor, }, } -- e1504
 L["mana/fr %s/%s"] = { { Stats.Mana, }, { Stats.FireResistance, }, } -- e1523
 L["hp/fr %s/%s"] = { { Stats.Health, }, { Stats.FireResistance, }, } -- e1524
 L["ac/fr %s/%s"] = { { Stats.Armor, }, { Stats.FireResistance, }, } -- e1525
@@ -1156,6 +1188,7 @@ L["str/sta/ac/fr %s/%s/%s/%s"] = { { Stats.Strength, Stats.Stamina, }, false, { 
 L["int/spi/mana/fr %s/%s/%s/%s"] = { { Stats.Intellect, Stats.Spirit, }, false, { Stats.Mana, }, { Stats.FireResistance, }, } -- e1543
 L["%s 攻擊強度"] = { { Stats.AttackPower, }, } -- e1563
 L["%s 遠程攻擊強度"] = { { Stats.AttackPower, }, } -- e1588
+L["攻擊力 %s"] = { { Stats.AverageWeaponDamage, }, } -- e1895
 L["%s 防禦技能"] = { { Stats.Defense, }, } -- e1944
 L["%s% 格擋"] = { { Stats.BlockChance, }, } -- e1983
 L["%s 遠程攻擊傷害"] = { { Stats.RangedAttackPower, }, } -- e2040
@@ -1193,15 +1226,25 @@ L["治療%s及每%s秒%s法力"] = { { Stats.HealingPower, }, { Stats.GenericMan
 L["耐力%s及護甲%s"] = { { Stats.Stamina, }, { Stats.Armor, }, } -- e2716
 L["攻擊強度%s並%s%致命一擊機率"] = { { Stats.AttackPower, }, { Stats.MeleeCrit, Stats.RangedCrit, }, } -- e2717
 L["法術傷害%s及%s%法術致命一擊機率"] = { { Stats.SpellDamage, Stats.HealingPower, }, { Stats.SpellCrit, }, } -- e2721
+L["%s敏捷"] = { { Stats.Agility, }, } -- e2802
+L["%s耐力"] = { { Stats.Stamina, }, } -- e2803
+L["%s智力"] = { { Stats.Intellect, }, } -- e2804
+L["%s力量"] = { { Stats.Strength, }, } -- e2805
+L["%s點精神"] = { { Stats.Spirit, }, } -- e2806
+L["%s閃躲"] = { { Stats.DodgeRating, }, } -- e2815
+L["%s秘法抗性"] = { { Stats.ArcaneResistance, }, } -- e2817
+L["%s火焰抗性"] = { { Stats.FireResistance, }, } -- e2818
+L["%s冰霜抗性"] = { { Stats.FrostResistance, }, } -- e2819
+L["%s暗影抗性"] = { { Stats.ShadowResistance, }, } -- e2821
+L["%s致命一擊"] = { { Stats.CritRating, }, } -- e2823
+L["%s攻擊強度"] = { { Stats.GenericAttackPower, }, } -- e2825
+L["%s格擋"] = { { Stats.BlockRating, }, } -- e2826
+L["%s加速"] = { { Stats.HasteRating, }, } -- e3726
 L["所有屬性%s"] = { { Stats.Stamina, }, } -- e7007
 L["命中%s%"] = { { Stats.MeleeHit, Stats.RangedHit, }, } -- e7098
 L["%s 法術傷害和治療效果"] = { { Stats.SpellDamage, Stats.HealingPower, }, } -- e7325
 L["%s 治療法術"] = { { Stats.HealingPower, }, } -- e7326
-L["%s耐力"] = { { Stats.Stamina, }, } -- e7480
-L["%s智力"] = { { Stats.Intellect, }, } -- e7481
 L["%s傷害與治療法術"] = { { Stats.SpellDamage, Stats.HealingPower, }, } -- e7482
-L["%s力量"] = { { Stats.Strength, }, } -- e7484
-L["%s敏捷"] = { { Stats.Agility, }, } -- e7485
 L["%s點火焰抗性"] = { { Stats.FireResistance, }, } -- e7563
 L["%s生命力"] = { { Stats.Health, }, } -- e7565
 L["耐力%s/智力%s/治療法術%s"] = { { Stats.Stamina, }, { Stats.Intellect, }, { Stats.HealingPower, }, } -- e7620
@@ -1221,38 +1264,19 @@ L["神聖傷害 %s"] = { { Stats.HolyDamage, }, } -- e7646
 L["秘法傷害 %s"] = { { Stats.ArcaneDamage, }, } -- e7647
 L["法術傷害和治療效果 %s"] = { { Stats.SpellDamage, Stats.HealingPower, }, } -- e7648
 L["%s法術傷害"] = { { Stats.SpellDamage, Stats.HealingPower, }, } -- e7655
-L["%s%致命一擊機率"] = { { Stats.MeleeCrit, Stats.RangedCrit, }, } -- e7664
-L["磨快 %s"] = { { Stats.AverageWeaponDamage, }, } -- e13
-L["增重 %s"] = { { Stats.AverageWeaponDamage, }, } -- e19
-L["瞄準鏡（%s 傷害）"] = { { Stats.AverageWeaponDamage, }, } -- e30
-L["%s 傷害"] = { { Stats.AverageWeaponDamage, }, } -- e67
-L["武器傷害 %s"] = { { Stats.AverageWeaponDamage, }, } -- e241
-L["石化 %s"] = { { Stats.AverageWeaponDamage, }, } -- e504
-L["攻擊力 %s"] = { { Stats.AverageWeaponDamage, }, } -- e1895
 L["瞄準鏡(%s 傷害)"] = { { Stats.AverageWeaponDamage, }, } -- e7657
-L["強化護甲 %s"] = { { Stats.BonusArmor, }, } -- e15
-L["%s 護甲"] = { { Stats.BonusArmor, }, } -- e85
-L["%s秘法抗性"] = { { Stats.ArcaneResistance, }, } -- e2817
-L["%s火焰抗性"] = { { Stats.FireResistance, }, } -- e2818
-L["%s冰霜抗性"] = { { Stats.FrostResistance, }, } -- e2819
-L["%s暗影抗性"] = { { Stats.ShadowResistance, }, } -- e2821
-L["%s點精神"] = { { Stats.Spirit, }, } -- e2806
-L["%s閃躲"] = { { Stats.DodgeRating, }, } -- e2815
-L["%s致命一擊"] = { { Stats.CritRating, }, } -- e2823
-L["%s攻擊強度"] = { { Stats.GenericAttackPower, }, } -- e2825
-L["%s格擋"] = { { Stats.BlockRating, }, } -- e2826
-L["%s加速"] = { { Stats.HasteRating, }, } -- e3726
 L["%s點智力"] = { { Stats.Intellect, }, } -- e7659
 L["%s點智力和%s點精神"] = { { Stats.Intellect, }, { Stats.Spirit, }, } -- e7661
 L["%s點法術能量"] = { { Stats.SpellPower, }, } -- e7662
 L["%s點耐力"] = { { Stats.Stamina, }, } -- e7663
+L["%s%致命一擊機率"] = { { Stats.MeleeCrit, Stats.RangedCrit, }, } -- e7664
 L["%s點力量"] = { { Stats.Strength, }, } -- e7666
 L["%s點敏捷"] = { { Stats.Agility, }, } -- e7667
+L["治療效果%s點，每%s秒%s點法力。"] = { { Stats.HealingPower, }, false, { Stats.GenericManaRegen, }, } -- e7882
 L["法術傷害%s點，致命一擊%s%"] = { { Stats.SpellDamage, Stats.HealingPower, }, { Stats.SpellCrit, Stats.MeleeCrit, Stats.RangedCrit, }, } -- e7883
 L["攻擊強度%s點，致命一擊%s%"] = { { Stats.AttackPower, }, { Stats.MeleeCrit, Stats.RangedCrit, Stats.SpellCrit, }, } -- e7884
 L["耐力%s點，防禦%s點"] = { { Stats.Stamina, }, { Stats.Defense, }, } -- e7885
 L["poultry precision scope (%s damage)"] = { { Stats.AverageWeaponDamage, }, } -- e7944
-L["治療效果%s點，每%s秒%s點法力。"] = { { Stats.HealingPower, }, false, { Stats.GenericManaRegen, }, } -- e7882
 L["使你的近戰攻擊加速等級提高%s點，持續%s sec。"] = { { Stats.MeleeHasteRating, }, false, } -- s65
 L["使目標殘廢，移動速度降低%s%，近戰和遠程攻擊間隔時間延長%s%。持續%s sec。"] = { false, { Stats.MeleeHaste, Stats.RangedHaste, }, false, } -- s89
 L["德魯伊發出咆哮，使附近所有敵人的近戰攻擊強度降低%s點，持續%s sec。"] = { { Stats.AttackPower, }, false, } -- s99
@@ -1600,7 +1624,7 @@ L["以雷霆震擊附近的敵人，使它們的攻擊速度降低%s%，持續%s
 L["使附近小隊成員的耐力額外提高%s點，持續%s sec。"] = { { Stats.Stamina, }, false, } -- s25606
 L["使附近所有小隊隊員的法術傷害提高最多%s點，持續%s sec。"] = { { Stats.HolyDamage, Stats.FireDamage, Stats.NatureDamage, Stats.FrostDamage, Stats.ShadowDamage, Stats.ArcaneDamage, }, false, } -- s25607
 L["每%s秒為附近所有隊友恢復%s點生命力，持續%s sec。"] = { false, { Stats.HealthRegen, }, false, } -- s25608
-L["在%s sec內恢復總計%s點生命力。進食時必須保持坐姿。如果你花費至少%s秒鐘來進食，你將因充分進食而獲得%s點耐力，持續%s sec。"] = { false, { Stats.Stamina, }, false, false, false, ignoreSum = true } -- s25660
+L["在%s sec內恢復總計%s點生命力。進食時必須保持坐姿。如果你花費至少%s秒鐘來進食，你將因充分進食而獲得%s點耐力，持續%s sec。"] = { false, { Stats.Stamina, }, false, { Stats.Stamina, }, false, ignoreSum = true } -- s25660
 L["在%s sec內恢復總計%s點生命力和%s點法力，進食時必須保持坐姿。"] = { false, false, { Stats.GenericManaRegen, }, } -- s25697
 L["在%s sec內恢復總計%s點法力。進食時必須保持坐姿。"] = { false, { Stats.GenericManaRegen, }, } -- s25701
 L["使你的火焰法術穿透力提高%s點。"] = { { Stats.FirePenetration, }, } -- s25717
@@ -1947,21 +1971,27 @@ L["向敵人衝鋒，造成普通攻擊再加上%s點傷害，並使其昏迷%s 
 L["使附近所有隊友對所有系別的魔法抗性提高%s點，持續%s sec。"] = { { Stats.FireResistance, Stats.NatureResistance, Stats.FrostResistance, Stats.ShadowResistance, Stats.ArcaneResistance, }, false, } -- s41453
 L["變身為熊，持續%s sec。在此期間內提升傷害力但降低攻擊速度%s%。"] = { false, { Stats.MeleeHaste, }, } -- s42607
 L["磨快(%s傷害)"] = { { Stats.AverageWeaponDamage, }, } -- e13
+L["%s強化護甲"] = { { Stats.BonusArmor, }, } -- e15
 L["增重(%s傷害)"] = { { Stats.AverageWeaponDamage, }, } -- e19
 L["%s點法力"] = { { Stats.Mana, }, } -- e24
+L["瞄準鏡(%s傷害)"] = { { Stats.AverageWeaponDamage, }, } -- e30
 L["平衡錘(%s加速等級)"] = { { Stats.MeleeHasteRating, }, } -- e34
 L["%s點生命力"] = { { Stats.Health, }, } -- e41
 L["%s所有抗性"] = { { Stats.FireResistance, Stats.NatureResistance, Stats.FrostResistance, Stats.ShadowResistance, Stats.ArcaneResistance, }, } -- e65
+L["%s傷害"] = { { Stats.AverageWeaponDamage, }, } -- e67
 L["%s精神"] = { { Stats.Spirit, }, } -- e82
+L["%s護甲"] = { { Stats.BonusArmor, }, } -- e85
 L["%s防禦等級"] = { { Stats.DefenseRating, }, } -- e110
 L["%s致命一擊等級"] = { { Stats.MeleeCritRating, Stats.RangedCritRating, }, } -- e195
 L["%s治療"] = { { Stats.HealingPower, }, } -- e206
 L["%s火焰法術傷害"] = { { Stats.FireDamage, }, } -- e213
 L["%s自然法術傷害"] = { { Stats.NatureDamage, }, } -- e220
 L["%s冰霜法術傷害"] = { { Stats.FrostDamage, }, } -- e227
+L["%s點武器傷害"] = { { Stats.AverageWeaponDamage, }, } -- e241
 L["%s治療和法術傷害"] = { { Stats.SpellDamage, Stats.HealingPower, }, } -- e423
 L["zzold %s healing and spell damage"] = { { Stats.SpellDamage, Stats.HealingPower, }, } -- e425
 L["%s治療和%s法術傷害"] = { { Stats.HealingPower, }, { Stats.SpellDamage, }, } -- e441
+L["石化%s"] = { { Stats.AverageWeaponDamage, }, } -- e504
 L["%s敏捷/%s精神"] = { { Stats.Agility, }, { Stats.Spirit, }, } -- e583
 L["%s敏捷/%s智力"] = { { Stats.Agility, }, { Stats.Intellect, }, } -- e584
 L["%s敏捷/%s耐力"] = { { Stats.Agility, }, { Stats.Stamina, }, } -- e585
@@ -1975,7 +2005,6 @@ L["%s耐力/%s力量"] = { { Stats.Stamina, }, { Stats.Strength, }, } -- e592
 L["%s盾牌格擋等級"] = { { Stats.BlockRating, }, } -- e763
 L["%s所有屬性"] = { { Stats.AllStats, }, } -- e847
 L["%s加速等級"] = { { Stats.MeleeHasteRating, Stats.RangedHasteRating, }, } -- e931
-L["%s護甲"] = { { Stats.Armor, }, } -- e1504
 L["%s法力/%s火焰抗性"] = { { Stats.Mana, }, { Stats.FireResistance, }, } -- e1523
 L["%s生命力/%s火焰抗性"] = { { Stats.Health, }, { Stats.FireResistance, }, } -- e1524
 L["%s護甲/%s火焰抗性"] = { { Stats.Armor, }, { Stats.FireResistance, }, } -- e1525
@@ -1993,7 +2022,7 @@ L["%s閃躲等級"] = { { Stats.DodgeRating, }, } -- e2078
 L["%s秘法法術傷害"] = { { Stats.ArcaneDamage, }, } -- e2079
 L["%s神聖法術傷害"] = { { Stats.HolyDamage, }, } -- e2193
 L["%s治療法術和%s傷害法術"] = { { Stats.HealingPower, }, { Stats.SpellDamage, }, } -- e2307
-L["%s命中等級"] = { { Stats.MeleeHitRating, Stats.RangedHitRating, }, } -- e3219
+L["%s命中等級"] = { { Stats.MeleeHitRating, Stats.RangedHitRating, }, } -- e2697
 L["%s防禦等級/%s耐力/%s格擋值"] = { { Stats.Stamina, Stats.DefenseRating, }, false, false, } -- e2583
 L["%s防禦/%s耐力/%s治療法術"] = { false, { Stats.Stamina, Stats.DefenseRating, }, { Stats.HealingPower, }, } -- e2584
 L["%s攻擊強度/%s閃躲等級"] = { { Stats.AttackPower, }, { Stats.DodgeRating, }, } -- e2585
@@ -2005,122 +2034,117 @@ L["%s法力恢復/%s耐力/%s治療法術"] = { { Stats.GenericManaRegen, }, { S
 L["%s智力/%s耐力/%s治療法術"] = { { Stats.Stamina, Stats.Intellect, }, false, { Stats.HealingPower, }, } -- e2591
 L["%s法術傷害和治療"] = { { Stats.SpellDamage, Stats.HealingPower, }, } -- e2605
 L["%s傷害和治療法術"] = { { Stats.SpellDamage, Stats.HealingPower, }, } -- e2607
+L["%s法術致命一擊等級"] = { { Stats.SpellCritRating, }, } -- e2695
 L["%s法術穿透力"] = { { Stats.SpellPenetration, }, } -- e2700
 L["每%s秒恢復%s點法力"] = { false, { Stats.GenericManaRegen, }, } -- e2701
+L["%s顆藍色寶石皆裝備上後%s力量"] = { false, { Stats.Strength, }, } -- e2704
+L["%s治療和%s法術傷害及%s智力"] = { { Stats.HealingPower, }, { Stats.Intellect, Stats.SpellDamage, }, false, } -- e2705
+L["%s防禦等級和%s耐力"] = { { Stats.DefenseRating, }, { Stats.Stamina, }, } -- e2706
 L["%s智力和每%s秒恢復%s點法力"] = { { Stats.Intellect, }, false, { Stats.GenericManaRegen, }, } -- e2707
 L["%s法術傷害和%s耐力"] = { { Stats.SpellDamage, Stats.HealingPower, }, { Stats.Stamina, }, } -- e2708
 L["%s治療和%s法術傷害及每%s秒恢復%s點法力"] = { { Stats.HealingPower, }, { Stats.SpellDamage, }, false, { Stats.GenericManaRegen, }, } -- e2709
+L["%s敏捷和%s耐力"] = { { Stats.Agility, }, { Stats.Stamina, }, } -- e2710
+L["%s力量和%s耐力"] = { { Stats.Strength, }, { Stats.Stamina, }, } -- e2711
 L["磨快(%s致命一擊等級和%s傷害)"] = { { Stats.MeleeCritRating, }, { Stats.AverageWeaponDamage, }, } -- e2713
 L["%s治療和%s法術傷害及每%s秒恢復%s點法力。"] = { { Stats.HealingPower, }, { Stats.SpellDamage, }, { Stats.GenericManaRegen, }, false, } -- e2715
 L["%s耐力和%s護甲"] = { { Stats.Stamina, }, { Stats.Armor, }, } -- e2716
 L["%s攻擊強度和%s致命一擊等級"] = { { Stats.AttackPower, }, { Stats.MeleeCritRating, Stats.RangedCritRating, }, } -- e2717
 L["%s法術傷害和%s法術致命一擊等級"] = { { Stats.SpellDamage, Stats.HealingPower, }, { Stats.SpellCritRating, }, } -- e2721
 L["瞄準鏡(%s致命一擊等級)"] = { { Stats.RangedCritRating, }, } -- e2724
-L["%s治療和%s法術傷害及%s智力"] = { { Stats.HealingPower, }, { Stats.SpellDamage, }, { Stats.Intellect, }, } -- e2742
 L["%s治療和%s法術傷害及%s耐力"] = { { Stats.HealingPower, }, { Stats.SpellDamage, }, { Stats.Stamina, }, } -- e2745
+L["%s致命一擊等級和%s力量"] = { { Stats.Strength, }, { Stats.MeleeCritRating, Stats.RangedCritRating, }, } -- e2752
+L["%s招架等級"] = { { Stats.ParryRating, }, } -- e2754
+L["%s命中等級和%s敏捷"] = { { Stats.Agility, }, { Stats.MeleeHitRating, Stats.RangedHitRating, }, } -- e2756
+L["%s致命一擊等級和%s耐力"] = { { Stats.MeleeCritRating, Stats.RangedCritRating, }, { Stats.Stamina, }, } -- e2757
+L["%s韌性等級"] = { { Stats.ResilienceRating, }, } -- e2759
+L["%s法術致命一擊等級和%s法術傷害"] = { { Stats.SpellCritRating, }, { Stats.SpellDamage, Stats.HealingPower, }, } -- e2760
+L["%s法術致命一擊等級和%s法術穿透力"] = { { Stats.SpellCritRating, }, { Stats.SpellPenetration, }, } -- e2762
+L["%s法術命中等級"] = { { Stats.SpellHitRating, }, } -- e2767
+L["%s韌性"] = { { Stats.ResilienceRating, }, } -- e2788
 L["%s智力(%s/+$f)"] = { { Stats.Intellect, }, false, } -- e2798
+L["%s耐力(%s/+$f)"] = { { Stats.Stamina, }, false, } -- e2799
+L["%s護甲(%s/+$f)"] = { { Stats.BonusArmor, }, false, } -- e2800
 L["%s秘法傷害"] = { { Stats.ArcaneDamage, }, } -- e2807
 L["%s火焰傷害"] = { { Stats.FireDamage, }, } -- e2808
 L["%s自然傷害"] = { { Stats.NatureDamage, }, } -- e2809
 L["%s冰霜傷害"] = { { Stats.FrostDamage, }, } -- e2810
 L["%s暗影傷害"] = { { Stats.ShadowDamage, }, } -- e2811
-L["%s攻擊強度和略微提高奔跑速度"] = { { Stats.AttackPower, }, } -- e2829
-L["%s治療和%s法術傷害及降低%s%威脅值"] = { { Stats.HealingPower, }, { Stats.SpellDamage, }, false, } -- e2832
-L["%s近戰傷害和有機率擊昏目標"] = { { Stats.AverageWeaponDamage, }, } -- e2834
-L["%s點武器傷害"] = { { Stats.AverageWeaponDamage, }, } -- e2929
-L["增重(%s致命一擊等級和%s傷害)"] = { { Stats.MeleeCritRating, Stats.RangedCritRating, }, { Stats.AverageWeaponDamage, }, } -- e2955
-L["%s法術傷害和略微提高奔跑速度"] = { { Stats.SpellDamage, Stats.HealingPower, }, } -- e2970
-L["%s治療和%s法術傷害及%s法力恢復"] = { { Stats.HealingPower, }, { Stats.SpellDamage, }, { Stats.GenericManaRegen, }, } -- e2980
-L["%s法術能量"] = { { Stats.SpellDamage, Stats.HealingPower, }, } -- e2981
-L["%s法術能量和%s法術致命一擊等級"] = { { Stats.SpellDamage, Stats.HealingPower, }, { Stats.SpellCritRating, }, } -- e2982
-L["%s法力恢復"] = { { Stats.GenericManaRegen, }, } -- e2992
-L["%s法力恢復和%s治療"] = { { Stats.GenericManaRegen, }, { Stats.HealingPower, }, } -- e2993
-L["%s法術致命一擊等級和%s法術傷害和治療"] = { { Stats.SpellCritRating, }, { Stats.SpellDamage, Stats.HealingPower, }, } -- e2995
-L["%s致命一擊等級和%s攻擊強度"] = { { Stats.MeleeCritRating, Stats.RangedCritRating, }, { Stats.AttackPower, }, } -- e3112
-L["%s法術能量和%s法術命中等級"] = { { Stats.SpellDamage, Stats.HealingPower, }, { Stats.SpellHitRating, }, } -- e3002
-L["%s攻擊強度和%s命中等級"] = { { Stats.AttackPower, }, { Stats.HitRating, }, } -- e3003
-L["%s法術傷害和%s法術穿透力"] = { { Stats.SpellDamage, Stats.HealingPower, }, { Stats.SpellPenetration, }, } -- e3066
-L["%s攻擊強度和%s耐力"] = { { Stats.AttackPower, }, { Stats.Stamina, }, } -- e3067
-L["%s治療和%s法術傷害及%s韌性等級"] = { { Stats.HealingPower, }, { Stats.SpellDamage, }, { Stats.ResilienceRating, }, } -- e3069
-L["%s法術致命一擊等級和%s法術穿透力"] = { { Stats.SpellPenetration, }, { Stats.SpellCritRating, }, } -- e3091
-L["%s攻擊強度和每%s秒恢復%s點法力"] = { { Stats.AttackPower, }, false, { Stats.GenericManaRegen, }, } -- e3108
-L["%s法術命中等級和%s法術傷害"] = { { Stats.SpellHitRating, }, { Stats.SpellDamage, Stats.HealingPower, }, } -- e3111
-L["%s攻擊強度和%s%昏迷抗性"] = { { Stats.AttackPower, }, false, } -- e3162
-L["%s法術傷害和%s%昏迷抗性"] = { { Stats.SpellDamage, Stats.HealingPower, }, false, } -- e3163
-L["%s韌性等級"] = { { Stats.ResilienceRating, }, } -- e3215
-L["%s法術致命一擊等級"] = { { Stats.SpellCritRating, }, } -- e3217
-L["%s法術命中等級"] = { { Stats.SpellHitRating, }, } -- e3218
-L["%s法術傷害和%s%智力"] = { { Stats.SpellDamage, Stats.HealingPower, }, false, } -- e3275
-L["%s治療和%s法術傷害及%s精神"] = { { Stats.HealingPower, }, { Stats.SpellDamage, }, { Stats.Spirit, }, } -- e3318
-L["%s法術致命一擊等級和%s法術傷害"] = { { Stats.SpellCritRating, }, { Stats.SpellDamage, Stats.HealingPower, }, } -- e2760
-L["%s致命一擊等級和每%s秒恢復%s點法力。"] = { { Stats.CritRating, }, false, { Stats.GenericManaRegen, }, } -- e3049
-L["%s法術傷害和%s智力"] = { { Stats.SpellDamage, Stats.HealingPower, }, { Stats.Intellect, }, } -- e3050
-L["%s法術致命一擊等級和每%s秒恢復%s點法力。"] = { { Stats.SpellCritRating, }, false, { Stats.GenericManaRegen, }, } -- e3058
-L["%s法術傷害和%s法術命中等級"] = { { Stats.SpellDamage, Stats.HealingPower, }, { Stats.SpellHitRating, }, } -- e3061
-L["%s精神和%s治療及%s法術傷害"] = { { Stats.Spirit, }, { Stats.HealingPower, }, { Stats.SpellDamage, }, } -- e3064
-L["%s智力和每%s秒恢復%s點法力。"] = { { Stats.Intellect, }, false, { Stats.GenericManaRegen, }, } -- e3077
-L["%s攻擊強度和%s韌性等級"] = { { Stats.AttackPower, }, { Stats.ResilienceRating, }, } -- e3079
-L["%s治療和%s法術傷害及%s法術致命一擊等級"] = { { Stats.HealingPower, }, { Stats.SpellCritRating, Stats.SpellDamage, }, false, } -- e3081
-L["%s防禦等級和每%s秒恢復%s點法力。"] = { { Stats.DefenseRating, }, false, { Stats.GenericManaRegen, }, } -- e3082
-L["%s法術傷害和%s精神"] = { { Stats.SpellDamage, Stats.HealingPower, }, { Stats.Spirit, }, } -- e3083
-L["%s法術命中等級和每%s秒恢復%s點法力。"] = { { Stats.SpellHitRating, }, false, { Stats.GenericManaRegen, }, } -- e3089
-L["%s精神和%s治療"] = { { Stats.Spirit, }, { Stats.HealingPower, }, } -- e3200
-L["%s法術加速等級和%s法術傷害"] = { { Stats.SpellHasteRating, }, { Stats.SpellDamage, Stats.HealingPower, }, } -- e3271
-L["瞄準鏡(%s傷害)"] = { { Stats.AverageWeaponDamage, }, } -- e30
-L["%s傷害"] = { { Stats.AverageWeaponDamage, }, } -- e67
-L["石化%s"] = { { Stats.AverageWeaponDamage, }, } -- e504
-L["%s強化護甲"] = { { Stats.BonusArmor, }, } -- e15
-L["%s護甲(%s/+$f)"] = { { Stats.BonusArmor, }, false, } -- e2800
-L["%s顆藍色寶石皆裝備上後%s力量"] = { false, { Stats.Strength, }, } -- e2704
-L["%s防禦等級和%s耐力"] = { { Stats.DefenseRating, }, { Stats.Stamina, }, } -- e2706
-L["%s敏捷和%s耐力"] = { { Stats.Agility, }, { Stats.Stamina, }, } -- e2710
-L["%s力量和%s耐力"] = { { Stats.Strength, }, { Stats.Stamina, }, } -- e2711
-L["%s致命一擊等級和%s力量"] = { { Stats.Strength, }, { Stats.MeleeCritRating, Stats.RangedCritRating, }, } -- e2752
-L["%s招架等級"] = { { Stats.ParryRating, }, } -- e2754
-L["%s命中等級和%s敏捷"] = { { Stats.Agility, }, { Stats.MeleeHitRating, Stats.RangedHitRating, }, } -- e2756
-L["%s致命一擊等級和%s耐力"] = { { Stats.MeleeCritRating, Stats.RangedCritRating, }, { Stats.Stamina, }, } -- e2757
-L["%s韌性"] = { { Stats.ResilienceRating, }, } -- e2788
-L["%s耐力(%s/+$f)"] = { { Stats.Stamina, }, false, } -- e2799
 L["%s法術致命一擊等級和%s%法術反射"] = { { Stats.SpellCritRating, }, false, } -- e2827
+L["%s攻擊強度和略微提高奔跑速度"] = { { Stats.AttackPower, }, } -- e2829
 L["%s致命一擊等級和%s%緩速及定身抗性"] = { { Stats.CritRating, }, false, } -- e2830
 L["%s耐力和%s%昏迷抗性"] = { { Stats.Stamina, }, false, } -- e2831
+L["%s治療和%s法術傷害及降低%s%威脅值"] = { { Stats.HealingPower, }, { Stats.SpellDamage, }, false, } -- e2832
 L["%s防禦等級和擊中時有機率恢愎生命力"] = { { Stats.DefenseRating, }, } -- e2833
+L["%s近戰傷害和有機率擊昏目標"] = { { Stats.AverageWeaponDamage, }, } -- e2834
 L["%s智力和有機率在施放法術時恢愎法力"] = { { Stats.Intellect, }, } -- e2835
 L["%s耐力和%s致命一擊等級"] = { { Stats.Stamina, }, { Stats.CritRating, }, } -- e2897
 L["%s耐力和%s法術致命一擊等級"] = { { Stats.Stamina, }, { Stats.SpellCritRating, }, } -- e2898
 L["%s耐力和%s智力"] = { { Stats.Stamina, }, { Stats.Intellect, }, } -- e2906
 L["%s力量和%s致命一擊等級"] = { { Stats.Strength, }, { Stats.CritRating, }, } -- e2915
+L["初級速度和%s敏捷"] = { { Stats.Agility, }, } -- e2939
+L["初級速度和%s耐力"] = { { Stats.Stamina, }, } -- e2940
+L["增重(%s致命一擊等級和%s傷害)"] = { { Stats.MeleeCritRating, Stats.RangedCritRating, }, { Stats.AverageWeaponDamage, }, } -- e2955
+L["%s法術傷害和略微提高奔跑速度"] = { { Stats.SpellDamage, Stats.HealingPower, }, } -- e2970
 L["%s閃躲等級和%s防禦等級"] = { { Stats.DodgeRating, }, { Stats.DefenseRating, }, } -- e2978
+L["%s治療和%s法術傷害及%s法力恢復"] = { { Stats.HealingPower, }, { Stats.SpellDamage, }, { Stats.GenericManaRegen, }, } -- e2980
+L["%s法術能量"] = { { Stats.SpellDamage, Stats.HealingPower, }, } -- e2981
+L["%s法術能量和%s法術致命一擊等級"] = { { Stats.SpellDamage, Stats.HealingPower, }, { Stats.SpellCritRating, }, } -- e2982
 L["%s防禦等級和%s閃躲等級"] = { { Stats.DefenseRating, }, { Stats.DodgeRating, }, } -- e2991
+L["%s法力恢復"] = { { Stats.GenericManaRegen, }, } -- e2992
+L["%s法力恢復和%s治療"] = { { Stats.GenericManaRegen, }, { Stats.HealingPower, }, } -- e2993
+L["%s法術致命一擊等級和%s法術傷害和治療"] = { { Stats.SpellCritRating, }, { Stats.SpellDamage, Stats.HealingPower, }, } -- e2995
+L["%s致命一擊等級和%s攻擊強度"] = { { Stats.MeleeCritRating, Stats.RangedCritRating, }, { Stats.AttackPower, }, } -- e3112
 L["%s耐力/%s閃躲等級/%s韌性等級"] = { { Stats.Stamina, }, { Stats.ResilienceRating, }, { Stats.DefenseRating, }, } -- e3000
+L["%s法術能量和%s法術命中等級"] = { { Stats.SpellDamage, Stats.HealingPower, }, { Stats.SpellHitRating, }, } -- e3002
+L["%s攻擊強度和%s命中等級"] = { { Stats.AttackPower, }, { Stats.HitRating, }, } -- e3003
 L["%s耐力和%s韌性等級"] = { { Stats.Stamina, }, { Stats.ResilienceRating, }, } -- e3004
 L["%s耐力和%s敏捷"] = { { Stats.Stamina, }, { Stats.Agility, }, } -- e3011
+L["%s致命一擊等級和每%s秒恢復%s點法力。"] = { { Stats.CritRating, }, false, { Stats.GenericManaRegen, }, } -- e3049
+L["%s法術傷害和%s智力"] = { { Stats.SpellDamage, Stats.HealingPower, }, { Stats.Intellect, }, } -- e3050
 L["%s敏捷和%s命中等級"] = { { Stats.Agility, }, { Stats.HitRating, }, } -- e3055
 L["%s招架等級和%s防禦等級"] = { { Stats.ParryRating, }, { Stats.DefenseRating, }, } -- e3056
 L["%s力量和%s命中等級"] = { { Stats.Strength, }, { Stats.HitRating, }, } -- e3057
+L["%s法術致命一擊等級和每%s秒恢復%s點法力。"] = { { Stats.SpellCritRating, }, false, { Stats.GenericManaRegen, }, } -- e3058
 L["%s閃躲等級和%s耐力"] = { { Stats.DodgeRating, }, { Stats.Stamina, }, } -- e3060
+L["%s法術傷害和%s法術命中等級"] = { { Stats.SpellDamage, Stats.HealingPower, }, { Stats.SpellHitRating, }, } -- e3061
 L["%s致命一擊等級和%s閃躲等級"] = { { Stats.CritRating, }, { Stats.DodgeRating, }, } -- e3062
 L["%s招架等級和%s耐力"] = { { Stats.ParryRating, }, { Stats.Stamina, }, } -- e3063
+L["%s精神和%s治療及%s法術傷害"] = { { Stats.Spirit, }, { Stats.HealingPower, }, { Stats.SpellDamage, }, } -- e3064
+L["%s法術傷害和%s法術穿透力"] = { { Stats.SpellDamage, Stats.HealingPower, }, { Stats.SpellPenetration, }, } -- e3066
+L["%s攻擊強度和%s耐力"] = { { Stats.AttackPower, }, { Stats.Stamina, }, } -- e3067
 L["%s閃躲等級和%s命中等級"] = { { Stats.DodgeRating, }, { Stats.HitRating, }, } -- e3068
+L["%s治療和%s法術傷害及%s韌性等級"] = { { Stats.HealingPower, }, { Stats.SpellDamage, }, { Stats.ResilienceRating, }, } -- e3069
 L["%s智力和%s耐力"] = { { Stats.Intellect, }, { Stats.Stamina, }, } -- e3071
 L["%s敏捷和%s防禦等級"] = { { Stats.Agility, }, { Stats.DefenseRating, }, } -- e3073
 L["%s智力和%s精神"] = { { Stats.Intellect, }, { Stats.Spirit, }, } -- e3074
 L["%s力量和%s防禦等級"] = { { Stats.Strength, }, { Stats.DefenseRating, }, } -- e3075
+L["%s智力和每%s秒恢復%s點法力。"] = { { Stats.Intellect, }, false, { Stats.GenericManaRegen, }, } -- e3077
 L["%s耐力和%s防禦等級"] = { { Stats.Stamina, }, { Stats.DefenseRating, }, } -- e3078
+L["%s攻擊強度和%s韌性等級"] = { { Stats.AttackPower, }, { Stats.ResilienceRating, }, } -- e3079
+L["%s治療和%s法術傷害及%s法術致命一擊等級"] = { { Stats.HealingPower, }, { Stats.SpellCritRating, Stats.SpellDamage, }, false, } -- e3081
+L["%s防禦等級和每%s秒恢復%s點法力。"] = { { Stats.DefenseRating, }, false, { Stats.GenericManaRegen, }, } -- e3082
+L["%s法術傷害和%s精神"] = { { Stats.SpellDamage, Stats.HealingPower, }, { Stats.Spirit, }, } -- e3083
 L["%s閃躲等級和%s韌性等級"] = { { Stats.DodgeRating, }, { Stats.ResilienceRating, }, } -- e3084
 L["%s力量和%s韌性等級"] = { { Stats.Strength, }, { Stats.ResilienceRating, }, } -- e3087
 L["%s法術命中等級和%s耐力"] = { { Stats.SpellHitRating, }, { Stats.Stamina, }, } -- e3088
+L["%s法術命中等級和每%s秒恢復%s點法力。"] = { { Stats.SpellHitRating, }, false, { Stats.GenericManaRegen, }, } -- e3089
 L["%s招架等級和%s韌性等級"] = { { Stats.ParryRating, }, { Stats.ResilienceRating, }, } -- e3090
 L["%s熟練等級"] = { { Stats.ExpertiseRating, }, } -- e3094
 L["%s力量和%s智力"] = { { Stats.Strength, }, { Stats.Intellect, }, } -- e3096
+L["%s攻擊強度和每%s秒恢復%s點法力"] = { { Stats.AttackPower, }, false, { Stats.GenericManaRegen, }, } -- e3108
+L["%s法術命中等級和%s法術傷害"] = { { Stats.SpellHitRating, }, { Stats.SpellDamage, Stats.HealingPower, }, } -- e3110
 L["%s敏捷和提高%s%致命一擊傷害"] = { { Stats.Agility, }, false, } -- e3154
+L["%s治療和%s法術傷害及%s精神"] = { { Stats.HealingPower, }, { Stats.SpellDamage, }, { Stats.Spirit, }, } -- e3158
+L["%s攻擊強度和%s%昏迷抗性"] = { { Stats.AttackPower, }, false, } -- e3162
+L["%s法術傷害和%s%昏迷抗性"] = { { Stats.SpellDamage, Stats.HealingPower, }, false, } -- e3163
+L["%s精神和%s治療"] = { { Stats.Spirit, }, { Stats.HealingPower, }, } -- e3200
 L["%s韌性等級和%s耐力"] = { { Stats.ResilienceRating, }, { Stats.Stamina, }, } -- e3226
 L["%s法術致命一擊等級和提高%s%致命一擊傷害"] = { { Stats.SpellCritRating, }, false, } -- e3261
 L["%s法術加速等級"] = { { Stats.SpellHasteRating, }, } -- e3270
+L["%s法術加速等級和%s法術傷害"] = { { Stats.SpellHasteRating, }, { Stats.SpellDamage, Stats.HealingPower, }, } -- e3271
 L["%s法術加速等級和%s耐力"] = { { Stats.SpellHasteRating, }, { Stats.Stamina, }, } -- e3272
 L["%s防禦等級和%s%盾牌格擋值"] = { { Stats.DefenseRating, }, false, } -- e3274
-L["初級速度和%s敏捷"] = { { Stats.Agility, }, } -- e2939
-L["初級速度和%s耐力"] = { { Stats.Stamina, }, } -- e2940
+L["%s法術傷害和%s%智力"] = { { Stats.SpellDamage, Stats.HealingPower, }, false, } -- e3275
 L["使你的近戰加速等級提高%s點，持續%s sec。"] = { { Stats.MeleeHasteRating, Stats.RangedHasteRating, Stats.SpellHasteRating, }, false, } -- s65
 L["使聖騎士的近戰攻擊有一定機率使目標的攻擊強度降低%s點，持續%s sec。"] = { { Stats.AttackPower, }, false, } -- s67
 L["使半徑%s碼範圍內的所有小隊和團隊成員獲得%s點額外的護甲值。每個聖騎士在同一時間內只能開啟一種光環。"] = { false, { Stats.Armor, }, } -- s465
@@ -2814,7 +2838,7 @@ L["每次施法時將會獲得每%s秒可恢復%s點法力的可堆疊加成效�
 L["每次施法時，有一定的機率使你每%s秒獲得%s點法力，持續%s sec。"] = { false, { Stats.GenericManaRegen, }, false, ignoreSum = true } -- s65002
 L["你的有害法術有一定的機率使你提高%s點加速等級，持續%s sec。"] = { { Stats.MeleeHasteRating, Stats.RangedHasteRating, Stats.SpellHasteRating, }, false, ignoreSum = true } -- s65005
 L["每當你施放傷害或治療法術時，可使你在%s sec內獲得%s點法術能量，最多可堆疊%s次。"] = { false, { Stats.SpellDamage, Stats.HealingPower, }, false, ignoreSum = true } -- s65007
-L["使你造成近戰或遠程致命一擊時，有一定的機率提高%s點攻擊強度，持續%s sec。"] = { { Stats.GenericAttackPower, }, false, ignoreSum = true } -- s65013
+L["使你造成近戰或遠程致命一擊時，有一定的機率提高%s點攻擊強度，持續%s sec。"] = { { Stats.GenericAttackPower, Stats.RangedAttackPower, }, false, ignoreSum = true } -- s33648
 L["你的近戰和遠程攻擊有一定的機率提高%s點護甲穿透等級，持續%s sec。"] = { { Stats.ArmorPenetrationRating, }, false, ignoreSum = true } -- s65020
 L["在空氣中散播熾焰抑制劑，熄滅所有%s碼範圍內的熾焰。此外，所有受影響敵人的施法速度將降低%s%，持續%s sec。"] = { false, { Stats.SpellHaste, }, false, } -- s65192
 L["引導一道泰坦能源光束，令某些薩鋼生物的分子結構失序，攻擊速度降低%s%，施法速度降低%s%，持續%s sec。"] = { false, { Stats.SpellHaste, }, false, } -- s65210
@@ -2929,55 +2953,65 @@ L["施法速度降低%s%，持續%s sec。"] = { { Stats.SpellHaste, }, false, }
 L["以高溫衝擊周圍的鐵之傀儡，使其移動速度提高%s點，加速提高%s點。此效果最多可堆疊%s次。堆疊%s次之後，鐵之傀儡將會開始熔化。"] = { false, { Stats.MeleeHaste, }, false, false, } -- s65667
 L["造成的傷害提高%s%。\n法術不需消耗法力且變成瞬發。\n近戰與遠程攻擊速度提高%s%。"] = { false, { Stats.MeleeHaste, }, } -- s70304
 L["造成的傷害提高%s%。\n生命力提高%s%。\n法術不需消耗法力且變成瞬發。\n近戰與遠程攻擊速度提高%s%。"] = { false, { Stats.SpellHaste, }, false, } -- s70320
+L["%s法力"] = { { Stats.Mana, }, } -- e24
+L["%s武器傷害"] = { { Stats.AverageWeaponDamage, }, } -- e241
+L["每%s秒恢復%s生命力和法力"] = { false, { Stats.GenericManaRegen, Stats.HealthRegen, }, } -- e1890
 L["每%s秒恢復%s法力"] = { false, { Stats.GenericManaRegen, }, } -- e2363
 L["每%s秒恢復%s生命力"] = { false, { Stats.HealthRegen, }, } -- e2401
-L["%s暗影法術能量"] = { { Stats.ShadowDamage, }, } -- e2614
-L["%s冰霜法術能量"] = { { Stats.FrostDamage, }, } -- e2615
-L["%s火焰法術能量"] = { { Stats.FireDamage, }, } -- e2616
-L["%s格擋值"] = { { Stats.BlockValue, }, } -- e2653
-L["%s秘法和火焰法術能量"] = { { Stats.FireDamage, Stats.ArcaneDamage, }, } -- e2671
-L["%s暗影和冰霜法術能量"] = { { Stats.FrostDamage, Stats.ShadowDamage, }, } -- e2672
-L["%s武器傷害"] = { { Stats.AverageWeaponDamage, }, } -- e2929
-L["%s致命一擊等級和%s法術穿透力"] = { { Stats.SpellPenetration, }, { Stats.CritRating, }, } -- e3091
-L["%s法術能量和%s法術穿透力"] = { { Stats.SpellPower, }, { Stats.SpellPenetration, }, } -- e3066
-L["%s命中等級和%s法術穿透力"] = { { Stats.HitRating, }, { Stats.SpellPenetration, }, } -- e3444
-L["%s加速等級和%s法術穿透力"] = { { Stats.HasteRating, }, { Stats.SpellPenetration, }, } -- e3445
-L["每%s秒恢復%s生命力和法力"] = { false, { Stats.GenericManaRegen, Stats.HealthRegen, }, } -- e1890
-L["%s防禦等級和%s耐力及%s格擋值"] = { { Stats.DefenseRating, }, { Stats.Stamina, }, { Stats.BlockValue, }, } -- e2583
-L["%s法力"] = { { Stats.Mana, }, } -- e24
 L["%s近戰致命一擊等級"] = { { Stats.MeleeCritRating, }, } -- e2506
 L["%s遠程命中等級"] = { { Stats.RangedHitRating, }, } -- e2523
+L["%s防禦等級和%s耐力及%s格擋值"] = { { Stats.DefenseRating, }, { Stats.Stamina, }, { Stats.BlockValue, }, } -- e2583
 L["%s防禦和%s耐力及%s法術能量"] = { { Stats.DefenseRating, }, { Stats.Stamina, }, { Stats.SpellPower, }, } -- e2584
 L["%s法術能量和%s智力"] = { { Stats.SpellPower, }, { Stats.Intellect, }, } -- e2587
 L["%s法術能量和%s命中等級"] = { { Stats.SpellPower, }, { Stats.HitRating, }, } -- e2588
 L["%s法術能量和%s耐力"] = { { Stats.SpellPower, }, { Stats.Stamina, }, } -- e2589
+L["%s法術能量和%s耐力及每%s秒恢復%s法力"] = { { Stats.SpellPower, }, { Stats.Stamina, }, { Stats.GenericManaRegen, }, false, } -- e2590
 L["%s智力和%s耐力及%s法術能量"] = { { Stats.Stamina, }, { Stats.Intellect, }, { Stats.SpellPower, }, } -- e2591
+L["%s暗影法術能量"] = { { Stats.ShadowDamage, }, } -- e2614
+L["%s冰霜法術能量"] = { { Stats.FrostDamage, }, } -- e2615
+L["%s火焰法術能量"] = { { Stats.FireDamage, }, } -- e2616
+L["%s格擋值"] = { { Stats.BlockValue, }, } -- e2653
 L["%s命中等級和%s致命一擊等級"] = { { Stats.HitRating, }, { Stats.CritRating, }, } -- e2658
+L["%s秘法和火焰法術能量"] = { { Stats.FireDamage, Stats.ArcaneDamage, }, } -- e2671
+L["%s暗影和冰霜法術能量"] = { { Stats.FrostDamage, Stats.ShadowDamage, }, } -- e2672
+L["%s智力和每%s秒恢復%s法力"] = { { Stats.Intellect, }, false, { Stats.GenericManaRegen, }, } -- e2707
+L["%s法術能量和每%s秒恢復%s法力"] = { { Stats.SpellPower, }, false, { Stats.GenericManaRegen, }, } -- e2709
 L["%s法術能量和%s致命一擊等級"] = { { Stats.SpellPower, }, { Stats.CritRating, }, } -- e2721
 L["%s致命一擊等級和%s法術能量"] = { { Stats.CritRating, }, { Stats.SpellPower, }, } -- e2760
+L["%s致命一擊等級和%s法術穿透力"] = { { Stats.CritRating, }, { Stats.SpellPenetration, }, } -- e2762
 L["%s致命一擊等級和%s%法術反射"] = { { Stats.CritRating, }, false, } -- e2827
 L["%s致命一擊等級和縮短%s%緩速及定身持續時間"] = { { Stats.CritRating, }, false, } -- e2830
 L["%s耐力和縮短%s%昏迷持續時間"] = { { Stats.Stamina, }, false, } -- e2831
 L["%s法術能量和降低%s%威脅值"] = { { Stats.SpellPower, }, false, } -- e2832
 L["%s法術能量和略微提高奔跑速度"] = { { Stats.SpellPower, }, } -- e2970
+L["%s致命一擊等級和每%s秒恢復%s法力"] = { { Stats.CritRating, }, false, { Stats.GenericManaRegen, }, } -- e3049
 L["%s命中等級和%s法術能量"] = { { Stats.HitRating, }, { Stats.SpellPower, }, } -- e3061
 L["%s精神和%s法術能量"] = { { Stats.Spirit, }, { Stats.SpellPower, }, } -- e3064
+L["%s法術能量和%s法術穿透力"] = { { Stats.SpellPower, }, { Stats.SpellPenetration, }, } -- e3066
+L["%s法術能量和%s韌性等級"] = { { Stats.SpellPower, }, { Stats.ResilienceRating, }, } -- e3069
+L["%s防禦等級和每%s秒恢復%s法力"] = { { Stats.DefenseRating, }, false, { Stats.GenericManaRegen, }, } -- e3082
 L["%s法術能量和%s精神"] = { { Stats.SpellPower, }, { Stats.Spirit, }, } -- e3083
 L["%s命中等級和%s耐力"] = { { Stats.HitRating, }, { Stats.Stamina, }, } -- e3088
+L["%s命中等級和每%s秒恢復%s法力"] = { { Stats.HitRating, }, false, { Stats.GenericManaRegen, }, } -- e3089
+L["%s攻擊強度和每%s秒恢復%s法力"] = { { Stats.GenericAttackPower, }, false, { Stats.GenericManaRegen, }, } -- e3108
 L["%s敏捷和%s%致命一擊傷害"] = { { Stats.Agility, }, false, } -- e3154
 L["%s法術能量和%s%昏迷抗性"] = { { Stats.SpellPower, }, false, } -- e3163
+L["%s耐力和移動速度略微提升"] = { { Stats.Stamina, }, } -- e3232
+L["%s%威脅值和%s招架等級"] = { false, { Stats.ParryRating, }, } -- e3253
+L["潛行提升和%s敏捷"] = { { Stats.Agility, }, } -- e3256
 L["%s致命一擊等級和%s%致命一擊傷害"] = { { Stats.CritRating, }, false, } -- e3261
 L["%s加速等級和%s法術能量"] = { { Stats.HasteRating, }, { Stats.SpellPower, }, } -- e3271
 L["%s加速等級和%s耐力"] = { { Stats.HasteRating, }, { Stats.Stamina, }, } -- e3272
 L["%s法術能量和%s%智力"] = { { Stats.SpellPower, }, false, } -- e3275
+L["%s精神和降低%s%威脅值"] = { { Stats.Spirit, }, false, } -- e3296
 L["%s護甲穿透等級"] = { { Stats.ArmorPenetrationRating, }, } -- e3378
 L["%s護甲穿透等級和%s耐力"] = { { Stats.ArmorPenetrationRating, }, { Stats.Stamina, }, } -- e3391
 L["%s熟練等級和%s耐力"] = { { Stats.ExpertiseRating, }, { Stats.Stamina, }, } -- e3398
+L["%s敏捷和每%s秒恢復%s法力"] = { { Stats.Agility, }, false, { Stats.GenericManaRegen, }, } -- e3400
 L["%s力量和%s加速等級"] = { { Stats.Strength, }, { Stats.HasteRating, }, } -- e3409
 L["%s敏捷和%s致命一擊等級"] = { { Stats.Agility, }, { Stats.CritRating, }, } -- e3410
 L["%s敏捷和%s韌性等級"] = { { Stats.Agility, }, { Stats.ResilienceRating, }, } -- e3412
 L["%s敏捷和%s加速等級"] = { { Stats.Agility, }, { Stats.HasteRating, }, } -- e3413
-L["%s法術能量和%s韌性等級"] = { { Stats.SpellPower, }, { Stats.ResilienceRating, }, } -- e3416
 L["%s法術能量和%s加速等級"] = { { Stats.SpellPower, }, { Stats.HasteRating, }, } -- e3417
 L["%s熟練等級和%s命中等級"] = { { Stats.ExpertiseRating, }, { Stats.HitRating, }, } -- e3420
 L["%s熟練等級和%s防禦等級"] = { { Stats.ExpertiseRating, }, { Stats.DefenseRating, }, } -- e3421
@@ -2986,27 +3020,14 @@ L["%s致命一擊等級和%s精神"] = { { Stats.CritRating, }, { Stats.Spirit, 
 L["%s命中等級和%s精神"] = { { Stats.HitRating, }, { Stats.Spirit, }, } -- e3435
 L["%s韌性等級和%s精神"] = { { Stats.ResilienceRating, }, { Stats.Spirit, }, } -- e3436
 L["%s加速等級和%s精神"] = { { Stats.HasteRating, }, { Stats.Spirit, }, } -- e3437
-L["%s智力和每%s秒恢復%s法力"] = { { Stats.Intellect, }, false, { Stats.GenericManaRegen, }, } -- e2707
-L["%s法術能量和每%s秒恢復%s法力"] = { { Stats.SpellPower, }, false, { Stats.GenericManaRegen, }, } -- e2709
-L["%s致命一擊等級和每%s秒恢復%s法力"] = { { Stats.CritRating, }, false, { Stats.GenericManaRegen, }, } -- e3049
-L["%s防禦等級和每%s秒恢復%s法力"] = { { Stats.DefenseRating, }, false, { Stats.GenericManaRegen, }, } -- e3082
-L["%s命中等級和每%s秒恢復%s法力"] = { { Stats.HitRating, }, false, { Stats.GenericManaRegen, }, } -- e3089
-L["%s攻擊強度和每%s秒恢復%s法力"] = { { Stats.GenericAttackPower, }, false, { Stats.GenericManaRegen, }, } -- e3108
-L["%s敏捷和每%s秒恢復%s法力"] = { { Stats.Agility, }, false, { Stats.GenericManaRegen, }, } -- e3400
 L["%s韌性等級和每%s秒恢復%s法力"] = { { Stats.ResilienceRating, }, false, { Stats.GenericManaRegen, }, } -- e3441
 L["%s加速等級和每%s秒恢復%s法力"] = { { Stats.HasteRating, }, false, { Stats.GenericManaRegen, }, } -- e3442
-L["%s法術能量和%s耐力及每%s秒恢復%s法力"] = { { Stats.SpellPower, }, { Stats.Stamina, }, { Stats.GenericManaRegen, }, false, } -- e2590
-L["%s耐力和移動速度略微提升"] = { { Stats.Stamina, }, } -- e3232
-L["%s%威脅值和%s招架等級"] = { false, { Stats.ParryRating, }, } -- e3253
-L["潛行提升和%s敏捷"] = { { Stats.Agility, }, } -- e3256
-L["%s精神和降低%s%威脅值"] = { { Stats.Spirit, }, false, } -- e3296
-L["%s冰霜抗性和%s耐力"] = { { Stats.FrostResistance, }, { Stats.Stamina, }, } -- e3812
-L["%s自然抗性和%s耐力"] = { { Stats.NatureResistance, }, { Stats.Stamina, }, } -- e3813
-L["%s暗影抗性和%s耐力"] = { { Stats.ShadowResistance, }, { Stats.Stamina, }, } -- e3814
-L["%s秘法抗性和%s耐力"] = { { Stats.ArcaneResistance, }, { Stats.Stamina, }, } -- e3815
-L["%s火焰抗性和%s耐力"] = { { Stats.FireResistance, }, { Stats.Stamina, }, } -- e3816
+L["%s命中等級和%s法術穿透力"] = { { Stats.HitRating, }, { Stats.SpellPenetration, }, } -- e3444
+L["%s加速等級和%s法術穿透力"] = { { Stats.HasteRating, }, { Stats.SpellPenetration, }, } -- e3445
+L["測試%s智力和每%s秒恢復%s法力"] = { { Stats.Intellect, }, false, { Stats.GenericManaRegen, }, } -- e3591
 L["%s遠程加速等級"] = { { Stats.RangedHasteRating, }, } -- e3607
 L["%s遠程致命一擊等級"] = { { Stats.RangedCritRating, }, } -- e3608
+L["每%s秒恢復%s法力和%s%極效治療效果"] = { false, { Stats.GenericManaRegen, }, false, } -- e3633
 L["%s耐力和減少%s%法術傷害"] = { { Stats.Stamina, }, false, } -- e3634
 L["%s法術能量和縮短%s%沉默持續時間"] = { { Stats.SpellPower, }, false, } -- e3635
 L["%s致命一擊等級和縮短%s%恐懼持續時間"] = { { Stats.CritRating, }, false, } -- e3636
@@ -3018,8 +3039,11 @@ L["%s致命一擊等級和%s%法力"] = { { Stats.CritRating, }, false, } -- e36
 L["%s攻擊強度和%s致命一擊等級 (old)"] = { { Stats.GenericAttackPower, }, { Stats.CritRating, }, } -- e3676
 L["%s攻擊強度和%s耐力及%s命中等級"] = { { Stats.GenericAttackPower, }, { Stats.HitRating, }, { Stats.Stamina, }, } -- e3754
 L["%s攻擊強度和%s閃躲等級"] = { { Stats.GenericAttackPower, }, { Stats.DodgeRating, }, } -- e3755
-L["每%s秒恢復%s法力和%s%極效治療效果"] = { false, { Stats.GenericManaRegen, }, false, } -- e3633
-L["測試%s智力和每%s秒恢復%s法力"] = { { Stats.Intellect, }, false, { Stats.GenericManaRegen, }, } -- e3591
+L["%s冰霜抗性和%s耐力"] = { { Stats.FrostResistance, }, { Stats.Stamina, }, } -- e3812
+L["%s自然抗性和%s耐力"] = { { Stats.NatureResistance, }, { Stats.Stamina, }, } -- e3813
+L["%s暗影抗性和%s耐力"] = { { Stats.ShadowResistance, }, { Stats.Stamina, }, } -- e3814
+L["%s秘法抗性和%s耐力"] = { { Stats.ArcaneResistance, }, { Stats.Stamina, }, } -- e3815
+L["%s火焰抗性和%s耐力"] = { { Stats.FireResistance, }, { Stats.Stamina, }, } -- e3816
 L["使半徑%s碼範圍內的所有小隊和團隊成員獲得%s點額外的護甲值。每個聖騎士在同一時間內只能為隊友施加一種光環。"] = { false, { Stats.Armor, }, } -- s465
 L["產生%s點怒氣，並使%s碼範圍內所有隊伍和團隊成員的耐力提高%s點，持續%s sec。"] = { false, false, { Stats.Stamina, }, false, } -- s469
 L["聖潔的能量充滿施法者的體內，使你從裝備獲得的護甲值提高$<innerfire>%，法術能量提高%s點。\n你在同一時間內只能保有心靈意志或心靈之火其中一種效果。"] = { { Stats.HealingPower, Stats.SpellDamage, }, } -- s588
@@ -3497,8 +3521,7 @@ L["你的近戰攻擊有機率賦予%s點精通等級，持續%s sec。"] = { { 
 L["對施法者面前%s碼錐形範圍內的敵人造成%s點冰霜傷害。此外，使目標的攻擊速度降低%s%，持續%s sec。"] = { false, false, { Stats.MeleeHaste, }, false, } -- s70116
 L["使半徑%s碼範圍內所有隊友的生命力上限提高%s點，持續%s sec。"] = { false, { Stats.Health, }, false, } -- s82061
 L["使敵人的近戰攻擊與遠程攻擊間隔時間延長%s%、施法時間延長%s%以及移動速度降低%s%，持續%s sec。"] = { { Stats.SpellHaste, }, false, false, false, } -- s110907
-L["磨利(%s傷害)"] = { { Stats.AverageWeaponDamage, }, } -- e39
-L["%s敏捷和%s護甲"] = { { Stats.Agility, }, { Stats.BonusArmor, }, } -- e3256
+L["磨利(%s傷害)"] = { { Stats.AverageWeaponDamage, }, } -- e13
 L["%s敏捷和%s閃躲等級"] = { { Stats.Agility, }, { Stats.DodgeRating, }, } -- e910
 L["%s精神和%s耐力"] = { { Stats.Spirit, }, { Stats.Stamina, }, } -- e1890
 L["%s閃躲等級%s耐力及%s招架等級"] = { { Stats.DodgeRating, }, { Stats.Stamina, }, { Stats.ParryRating, }, } -- e2583
@@ -3518,6 +3541,7 @@ L["%s招架和%s閃躲等級"] = { { Stats.ParryRating, }, { Stats.DodgeRating, 
 L["%s智力和%s命中等級"] = { { Stats.Intellect, }, { Stats.HitRating, }, } -- e3061
 L["%s精神和%s智力"] = { { Stats.Spirit, }, { Stats.Intellect, }, } -- e3064
 L["%s智力和%s法術穿透力"] = { { Stats.Intellect, }, { Stats.SpellPenetration, }, } -- e3066
+L["%s智力和%s韌性等級"] = { { Stats.Intellect, }, { Stats.ResilienceRating, }, } -- e3069
 L["%s力量和%s閃躲等級"] = { { Stats.Strength, }, { Stats.DodgeRating, }, } -- e3075
 L["%s耐力和%s閃躲等級"] = { { Stats.Stamina, }, { Stats.DodgeRating, }, } -- e3078
 L["%s命中等級和%s閃躲等級"] = { { Stats.HitRating, }, { Stats.DodgeRating, }, } -- e3088
@@ -3526,11 +3550,11 @@ L["%s致命一擊等級和%s敏捷"] = { { Stats.Agility, }, { Stats.CritRating,
 L["%s敏捷和%s%致命一擊效果"] = { { Stats.Agility, }, false, } -- e3154
 L["%s致命一擊等級和%s%昏迷抗性"] = { { Stats.CritRating, }, false, } -- e3162
 L["%s智力和%s%昏迷抗性"] = { { Stats.Intellect, }, false, } -- e3163
+L["%s敏捷和%s護甲"] = { { Stats.Agility, }, { Stats.BonusArmor, }, } -- e3256
 L["%s致命一擊等級和%s%致命一擊效果"] = { { Stats.CritRating, }, false, } -- e3261
 L["%s閃躲等級和%s%盾牌格擋值"] = { { Stats.DodgeRating, }, false, } -- e3274
 L["%s智力和%s%最大法力"] = { { Stats.Intellect, }, false, } -- e3275
 L["%s敏捷和%s精神"] = { { Stats.Agility, }, { Stats.HitRating, }, } -- e3402
-L["%s智力和%s韌性等級"] = { { Stats.Intellect, }, { Stats.ResilienceRating, }, } -- e3416
 L["%s閃躲等級和%s招架等級"] = { { Stats.DodgeRating, }, { Stats.ParryRating, }, } -- e3418
 L["%s熟練等級和%s閃躲等級"] = { { Stats.ExpertiseRating, }, { Stats.DodgeRating, }, } -- e3421
 L["%s精神和%s韌性等級"] = { { Stats.ResilienceRating, }, { Stats.Spirit, }, } -- e3513
@@ -3571,3 +3595,716 @@ L["%s法術穿透力和%s韌性等級"] = { { Stats.SpellPenetration, }, { Stats
 L["%s熟練等級和%s致命一擊等級"] = { { Stats.ExpertiseRating, }, { Stats.CritRating, }, } -- e4296
 L["%s熟練等級和%s加速等級"] = { { Stats.ExpertiseRating, }, { Stats.HasteRating, }, } -- e4304
 L["%s熟練等級和%s韌性等級"] = { { Stats.ExpertiseRating, }, { Stats.ResilienceRating, }, } -- e4313
+L["使你的近戰加速提高%s點，持續%s sec。"] = { { Stats.MeleeHasteRating, Stats.RangedHasteRating, Stats.SpellHasteRating, }, false, } -- s65
+L["遠程加速提高%s%，持續%s sec。"] = { { Stats.RangedHaste, }, false, } -- s3045
+L["使你的智力提高%s點，持續%s sec。作戰藥劑。"] = { { Stats.Intellect, }, false, } -- s3166
+L["控制一個等級不高於%s級的敵對人形生物，持續%s sec。使其攻擊間隔時間延長%s%。"] = { false, false, { Stats.MeleeHaste, }, } -- s3442
+L["在%s sec內恢復總計%s點生命力，進食時必須保持坐姿。如果你花費至少%s秒鐘來進食，你將因充分進食而獲得%s點耐力，持續%s sec。"] = { false, { Stats.Stamina, }, false, { Stats.Stamina, }, false, ignoreSum = true } -- s5004
+L["一種強勁的飲料，可以使你的力量提高%s點，但智力降低%s點，持續%s sec。"] = { { Stats.Strength, }, { Stats.Intellect, }, false, } -- s5020
+L["使你的閃躲機率提高%s%，持續%s sec。"] = { { Stats.Dodge, }, false, } -- s5277
+L["使你的精通提高%s點。\n使你身上所有有害魔法效果的持續時間縮短%s%。\n$@spellname%s\n$@spelldesc%s"] = { { Stats.MasteryRating, }, false, false, false, } -- s6117
+L["使你的法術加速提高%s%。\n如果敵人攻擊施法者，他們的移動速度會降低%s%，持續%s sec。\n$@spellname%s\n$@spelldesc%s"] = { { Stats.SpellHaste, }, false, false, false, false, } -- s7302
+L["造成的物理傷害降低%s點。\n造成的魔法傷害降低%s點。"] = { { Stats.AverageWeaponDamage, }, { Stats.SpellDamage, }, } -- s7656
+L["使你的體型增大，並且力量也跟著提高%s點，持續%s sec。作戰藥劑。"] = { { Stats.Strength, }, false, } -- s8212
+L["對牧師注入能量，使其法術加速提高%s%，所有傷害提高%s%，施放所有法術的法力消耗降低%s%。持續%s sec。"] = { { Stats.SpellHaste, }, false, false, false, } -- s10060
+L["提高%s點閃躲，持續%s sec。"] = { { Stats.DodgeRating, }, false, } -- s10351
+L["使用後提高%s點精神。作戰藥劑。"] = { { Stats.Spirit, }, } -- s10691
+L["使用後提高%s點精神，效果持續%s分鐘。作戰藥劑。"] = { { Stats.Spirit, }, false, } -- s10693
+L["提高$?%s點敏捷，持續%s sec。作戰藥劑。"] = { { Stats.Agility, }, false, } -- s11328
+L["提高%s點智力和致命一擊，持續%s sec。作戰藥劑。"] = { { Stats.Intellect, Stats.MeleeCritRating, Stats.RangedCritRating, Stats.SpellCritRating, }, false, } -- s11390
+L["加速你的施法，使法術加速提高%s%，並且在施法時因受到傷害性攻擊而損失的施法時間縮短%s%。施放冰寒脈動的同時將移除所有減緩移動及施法速度的效果。持續%s sec。"] = { { Stats.SpellHaste, }, false, false, } -- s12472
+L["加速你的施法，使法術加速提高%s%，並且在施法時因受到傷害性攻擊而損失的施法時間縮短%s%。持續%s sec。"] = { { Stats.SpellHaste, }, false, false, } -- s12472
+L["使你對目標所造成的傷害提高%s點，加速提高%s點，持續%s sec。"] = { { Stats.AverageWeaponDamage, }, { Stats.MeleeHasteRating, Stats.RangedHasteRating, Stats.SpellHasteRating, }, false, } -- s12686
+L["提高%s點加速，持續%s sec。"] = { { Stats.MeleeHasteRating, Stats.RangedHasteRating, Stats.SpellHasteRating, }, false, } -- s13494
+L["火焰抗性提高%s點，受到的火焰傷害降低最多%s點，持續%s sec。"] = { { Stats.FireResistance, }, false, false, } -- s13744
+L["致命一擊提高%s點，所有屬性提高%s點，持續%s sec。"] = { { Stats.MeleeCritRating, Stats.RangedCritRating, Stats.SpellCritRating, }, { Stats.AllStats, }, false, } -- s15366
+L["提高%s點命中。"] = { { Stats.MeleeHitRating, Stats.RangedHitRating, Stats.SpellHitRating, }, } -- s15464
+L["在施法者身邊召喚出一個相當於施法者%s%生命力的法力之潮圖騰，持續%s sec。它可以為半徑%s碼範圍內的小隊和團隊成員提高精神，其數值相當於施法者精神的%s%(不含短時效的精神加成)。"] = { false, false, false, { Stats.Spirit, }, } -- s16191
+L["使你的閃躲提高%s點，持續%s sec。守護藥劑。"] = { { Stats.DodgeRating, }, false, } -- s16321
+L["使你的法術、遠程以及近戰加速提高%s點，持續%s sec。作戰藥劑。"] = { { Stats.MeleeHasteRating, Stats.RangedHasteRating, Stats.SpellHasteRating, }, false, } -- s16322
+L["每當你觸發蝕星蔽月時，法術加速提高%s%。"] = { { Stats.SpellHaste, }, } -- s16886
+L["有機會使隊友的致命一擊提高%s點，持續%s sec。"] = { { Stats.MeleeCritRating, Stats.RangedCritRating, Stats.SpellCritRating, }, false, } -- s16939
+L["控制一個等級不高於%s級的敵對人形生物，持續%s sec。使其生命力上限提高%s點，造成的傷害提高%s%。"] = { false, false, { Stats.Health, }, false, } -- s17244
+L["有%s%的機率在被擊中後使你的閃躲提高%s點，持續%s秒。"] = { false, { Stats.DodgeRating, }, false, ignoreSum = true } -- s17350
+L["提高%s點敏捷，%s點致命一擊，持續%s sec。作戰藥劑。"] = { { Stats.Agility, }, { Stats.MeleeCritRating, Stats.RangedCritRating, Stats.SpellCritRating, }, false, } -- s17538
+L["提高%s點法術能量和%s點致命一擊，持續%s sec。作戰藥劑。"] = { { Stats.SpellDamage, Stats.HealingPower, }, { Stats.MeleeCritRating, Stats.RangedCritRating, Stats.SpellCritRating, }, false, } -- s17539
+L["提高%s點加速。"] = { { Stats.MeleeHasteRating, Stats.RangedHasteRating, Stats.SpellHasteRating, }, } -- s18803
+L["使耐力與精神提高%s點，持續%s sec。"] = { { Stats.Stamina, Stats.Spirit, }, false, } -- s19706
+L["為友方目標施加祝福，使其精通提高%s點。\n如果目標在你的隊伍或團隊，所有的隊伍或團隊成員都會受到影響。每個聖騎士在同一時間內只能給目標施加一種祝福。"] = { { Stats.MasteryRating, }, } -- s19740
+L["聖光的能量充滿你的體內，施法速度提高%s%，治療法術效果提高%s%，近戰攻擊有一定的機率治療傷勢最重的隊伍或團隊成員%s點生命力。"] = { { Stats.SpellHaste, }, false, false, } -- s20165
+L["聖光的能量充滿你的體內，施法速度提高%s%，治療法術效果提高%s%，近戰攻擊有一定的機率治療你%s點生命力。"] = { { Stats.SpellHaste, }, false, false, } -- s20165
+L["使你閃躲近戰和遠程攻擊的機率提高%s%。"] = { { Stats.Dodge, }, } -- s20582
+L["使你的致命一擊提高%s點。"] = { { Stats.MeleeCritRating, Stats.RangedCritRating, Stats.SpellCritRating, }, } -- s21092
+L["你獲得%s點致命一擊，持續%s sec。最多可堆疊%s次。"] = { { Stats.MeleeCritRating, Stats.RangedCritRating, Stats.SpellCritRating, }, false, false, } -- s21153
+L["使佩帶者獲得%s點閃躲和%s點護甲值，持續%s sec。"] = { { Stats.DodgeRating, }, { Stats.Armor, }, false, } -- s22850
+L["提高%s點致命一擊。"] = { { Stats.MeleeCritRating, Stats.RangedCritRating, Stats.SpellCritRating, }, } -- s23570
+L["強化你的寵物，使其攻擊強度提高%s點，持續%s sec。只對小鬼、魅魔、虛無行者、惡魔獵犬以及惡魔守衛有效。"] = { { Stats.AttackPower, }, false, } -- s23720
+L["思維加速，使法師的加速提高%s點，持續%s sec。"] = { { Stats.MeleeHasteRating, Stats.RangedHasteRating, Stats.SpellHasteRating, }, false, } -- s23723
+L["以聖光之力灌注聖騎士，使其近戰加速提高%s點，法術加速提高%s點，持續%s sec。"] = { { Stats.MeleeHasteRating, }, { Stats.SpellHasteRating, }, false, } -- s23733
+L["提高%s點攻擊強度和%s點命中。此效果可以持續%s sec。"] = { { Stats.GenericAttackPower, }, { Stats.MeleeHitRating, Stats.RangedHitRating, Stats.SpellHitRating, }, false, } -- s24352
+L["使玩家的精神提高%s點，耐力提高%s點，持續%s sec。作戰藥劑。"] = { { Stats.Spirit, }, { Stats.Stamina, }, false, } -- s24382
+L["提高%s點法術致命一擊。"] = { { Stats.SpellCritRating, }, } -- s24433
+L["使你的法術致命一擊提高%s點，持續%s sec。"] = { { Stats.MeleeCritRating, Stats.RangedCritRating, Stats.SpellCritRating, }, false, } -- s24498
+L["使你獲得%s點加速，同時降低回春術、治療之觸、癒合以及寧靜%s%的法力消耗值，持續%s sec。"] = { { Stats.MeleeHasteRating, Stats.RangedHasteRating, Stats.SpellHasteRating, }, false, false, } -- s24542
+L["提高%s點致命一擊，持續%s sec。"] = { { Stats.MeleeCritRating, Stats.RangedCritRating, Stats.SpellCritRating, }, false, } -- s24543
+L["獲得%s點加速並使你的治療法術所消耗的法力減少%s%，持續%s sec。"] = { { Stats.MeleeHasteRating, Stats.RangedHasteRating, Stats.SpellHasteRating, }, false, false, } -- s24546
+L["提高%s點法術命中，持續%s sec。"] = { { Stats.MeleeHitRating, Stats.RangedHitRating, Stats.SpellHitRating, }, false, } -- s24610
+L["使你的物理攻擊以及法術致命一擊提高%s點，持續%s sec。"] = { { Stats.MeleeCritRating, Stats.RangedCritRating, Stats.SpellCritRating, }, false, } -- s24865
+L["在%s sec內每秒恢復%s點生命力和法力。進食時必須保持坐姿。如果你花費至少%s秒鐘來進食，你將因充分進食而使所有屬性提高%s點，持續%s sec。"] = { false, { Stats.AllStats, }, false, { Stats.AllStats, }, false, ignoreSum = true } -- s24869
+L["在梟獸形態下，在%s碼範圍內的所有隊伍和團隊成員的法術加速提高%s%。"] = { false, { Stats.SpellHaste, }, } -- s24907
+L["提高%s點法術命中，持續%s sec。最多可堆疊%s次。"] = { { Stats.SpellHitRating, }, false, false, } -- s26129
+L["你的近戰或遠程攻擊有一定機率為你提供致命一擊的效果，令你的致命一擊提高%s點，持續%s sec。此效果最多可堆疊%s次。"] = { { Stats.MeleeCritRating, Stats.RangedCritRating, Stats.SpellCritRating, }, false, false, ignoreSum = true } -- s26480
+L["在施法者指定的區域製造一場強烈的風暴，對範圍內的所有敵人每%s秒造成%s點自然傷害，並使其攻擊間隔時間延長%s%，持續%s sec。德魯伊必須引導以維持法術效果。"] = { false, false, { Stats.MeleeHaste, }, false, } -- s27530
+L["變身成獵豹形態，提高攻擊速度%s%，持續%s sec。"] = { { Stats.MeleeHaste, }, false, } -- s27545
+L["提高%s點命中，持續%s sec。"] = { { Stats.MeleeHitRating, Stats.RangedHitRating, Stats.SpellHitRating, }, false, } -- s27723
+L["使你的命中提高%s點，並使你抵抗移動限制效果的機率提高%s%。"] = { { Stats.MeleeHitRating, Stats.RangedHitRating, Stats.SpellHitRating, }, false, } -- s27953
+L["使半徑%s碼範圍內隊友的法術能量提高%s點。"] = { false, { Stats.SpellDamage, Stats.HealingPower, }, } -- s28143
+L["你在%s秒內所施放的%s次傷害或治療法術，將獲得最多%s點的法術能量加成，最多可堆疊%s次。第%s次施放傷害或治療法術時，或經過%s秒後會移除此效果。"] = { false, false, { Stats.SpellDamage, Stats.HealingPower, }, false, false, false, ignoreSum = true } -- s28200
+L["提高%s點力量，並且降低%s點閃躲，持續%s sec。"] = { { Stats.Strength, }, { Stats.DodgeRating, }, false, } -- s28494
+L["提高%s點閃躲和%s點生命力上限，持續%s sec。此效果同時屬於作戰藥劑與守護藥劑，並且在死亡之後仍然有效。"] = { { Stats.DodgeRating, }, { Stats.Health, }, false, } -- s28518
+L["使你的法術對不死生物提高%s點致命一擊。"] = { { Stats.SpellCritRating, }, } -- s29069
+L["釋放出能量核心裡的能量，提高%s點法術能量，持續%s秒。"] = { { Stats.SpellDamage, Stats.HealingPower, }, false, } -- s29271
+L["使命中提高%s點，持續%s sec。"] = { { Stats.MeleeHitRating, Stats.RangedHitRating, Stats.SpellHitRating, }, false, } -- s29332
+L["使你受到致命一擊的機率降低%s%。"] = { { Stats.MeleeCrit, Stats.RangedCrit, }, } -- s30297
+L["法術致命一擊機率提高%s%。\n受到的所有物理傷害降低%s%。\n$@spellname%s\n$@spelldesc%s"] = { { Stats.SpellCrit, }, false, false, false, } -- s30482
+L["使附近隊友的致命一擊提高%s點，持續%s sec。"] = { { Stats.MeleeCritRating, Stats.RangedCritRating, Stats.SpellCritRating, }, false, } -- s31025
+L["使施法者被冰霜包覆，持續%s sec。厚重的冰霜可使護甲值提高%s點，並且使近戰攻擊者的移動速度降低%s%，以及使其攻擊間隔時間延長%s%。"] = { false, { Stats.Armor, }, false, { Stats.MeleeHaste, }, } -- s31256
+L["你感覺有點模糊...\n耐力降低%s點。\n精神提高%s點。"] = { { Stats.Stamina, }, { Stats.Spirit, }, } -- s31376
+L["%s點pvp韌性。"] = { { Stats.ResilienceRating, }, } -- s32145
+L["成功施放法術後有機會使你在%s秒內獲得%s點法術加速。"] = { false, { Stats.MeleeHasteRating, Stats.RangedHasteRating, Stats.SpellHasteRating, }, ignoreSum = true } -- s32837
+L["每%s秒法力恢復提高%s點法力，耐力提高%s點，持續%s sec。"] = { false, { Stats.GenericManaRegen, }, { Stats.Stamina, }, false, } -- s33265
+L["你的有害法術有機會使你的法術加速提升%s點，持續%s sec。"] = { { Stats.MeleeHasteRating, Stats.RangedHasteRating, Stats.SpellHasteRating, }, false, ignoreSum = true } -- s33297
+L["法術加速提高%s點，持續%s sec。"] = { { Stats.MeleeHasteRating, Stats.RangedHasteRating, Stats.SpellHasteRating, }, false, } -- s33370
+L["你的直接性治療法術和週期性治療法術有一定的機率使你的加速提高%s點，持續%s sec。"] = { { Stats.MeleeHasteRating, Stats.RangedHasteRating, Stats.SpellHasteRating, }, false, ignoreSum = true } -- s33953
+L["你獲得額外%s點致命一擊。"] = { { Stats.MeleeCritRating, Stats.RangedCritRating, Stats.SpellCritRating, }, } -- s34106
+L["法術造成致命一擊時有機會使你的法術能量提高%s點，持續%s sec。"] = { { Stats.SpellDamage, Stats.HealingPower, }, false, ignoreSum = true } -- s34320
+L["你的近戰和遠程攻擊有機會使你的加速提高%s點，持續%s sec。"] = { { Stats.MeleeHasteRating, Stats.RangedHasteRating, Stats.SpellHasteRating, }, false, ignoreSum = true } -- s34774
+L["使附近隊伍成員的加速提高%s點，持續%s sec。無法作用於%s級以上的目標。"] = { { Stats.MeleeHasteRating, Stats.RangedHasteRating, Stats.SpellHasteRating, }, false, false, } -- s35476
+L["使你在%s秒內的下一次攻擊致命一擊提高%s點。"] = { false, { Stats.MeleeCritRating, Stats.RangedCritRating, Stats.SpellCritRating, }, } -- s36111
+L["你的偷襲和腎擊使你獲得%s點加速，持續%s sec。"] = { { Stats.MeleeHasteRating, Stats.RangedHasteRating, }, false, ignoreSum = true } -- s37165
+L["你的特殊攻擊使你有一定的機率獲得%s點致命一擊，持續%s sec。"] = { { Stats.MeleeCritRating, Stats.RangedCritRating, Stats.SpellCritRating, }, false, ignoreSum = true } -- s37173
+L["每當你使用神聖之盾技能時，均可使你獲得%s點閃躲，直到%s sec內受到一次攻擊為止。"] = { { Stats.DodgeRating, }, false, ignoreSum = true } -- s37191
+L["當你被近戰攻擊命中時，有一定機率獲得%s點法術能量，持續%s sec。"] = { { Stats.SpellDamage, Stats.HealingPower, }, false, ignoreSum = true } -- s37424
+L["你獲得額外%s點致命一擊，持續%s sec。"] = { { Stats.MeleeCritRating, Stats.RangedCritRating, Stats.SpellCritRating, }, false, } -- s37482
+L["每當你使用盾牌格擋技能時，均可使你獲得%s點閃躲，直到%s sec內受到一次攻擊為止。"] = { { Stats.DodgeRating, }, false, ignoreSum = true } -- s37522
+L["每當你被命中時，均有一定的機會使你獲得%s點加速，持續%s sec。"] = { { Stats.MeleeHasteRating, Stats.RangedHasteRating, }, false, ignoreSum = true } -- s37525
+L["你的遠程攻擊有機會使你的攻擊強度提高%s點，持續%s sec。"] = { { Stats.GenericAttackPower, }, false, ignoreSum = true } -- s38290
+L["你的攻擊有一定的機率讓你獲得%s點致命一擊，持續%s sec。此效果最多可堆疊%s次。"] = { { Stats.MeleeCritRating, Stats.RangedCritRating, Stats.SpellCritRating, }, false, false, } -- s38307
+L["加速提高%s點，持續%s sec。"] = { { Stats.MeleeHasteRating, Stats.RangedHasteRating, Stats.SpellHasteRating, }, false, } -- s38317
+L["你的有害法術有機會使你的加速提高%s點，持續%s秒。"] = { { Stats.MeleeHasteRating, Stats.RangedHasteRating, Stats.SpellHasteRating, }, false, ignoreSum = true } -- s38319
+L["提高%s點閃躲，但降低%s點近戰和遠程攻擊強度。此效果持續%s sec。"] = { { Stats.DodgeRating, }, { Stats.GenericAttackPower, }, false, } -- s38351
+L["當你的風之圖騰、大地圖騰、火焰圖騰還有水之圖騰同時處於使用狀態時，你可獲得%s點精神、%s點致命一擊，以及%s點智力。"] = { { Stats.Spirit, }, { Stats.MeleeCritRating, Stats.RangedCritRating, Stats.SpellCritRating, }, { Stats.Intellect, }, } -- s38437
+L["每當你的直接性攻擊傷害未造成致命一擊時，將在%s秒內使你的致命一擊提高%s點以及法術致命一擊提高%s點。此效果在你造成致命一擊時取消。"] = { false, { Stats.MeleeCritRating, Stats.RangedCritRating, Stats.SpellCritRating, }, { Stats.MeleeCritRating, Stats.RangedCritRating, Stats.SpellCritRating, }, ignoreSum = true } -- s39442
+L["提高%s點pvp韌性，持續%s sec。守護藥劑。"] = { { Stats.ResilienceRating, }, false, } -- s39628
+L["使你的閃躲提高%s點。"] = { { Stats.DodgeRating, }, } -- s39880
+L["提高%s點近戰和遠程加速，持續%s sec。"] = { { Stats.MeleeHasteRating, Stats.RangedHasteRating, }, false, } -- s39959
+L["在施法者指定的區域製造一場強烈的風暴，對範圍內的所有敵人每%s秒造成%s點自然傷害，並使其攻擊間隔時間延長%s%，持續%s sec。必須引導以維持法術效果。"] = { false, false, { Stats.MeleeHaste, }, false, } -- s40090
+L["吸取骷髏的力量，提高加速%s點，持續%s sec。"] = { { Stats.MeleeHasteRating, Stats.RangedHasteRating, Stats.SpellHasteRating, }, false, } -- s40396
+L["當你使用終結技時，每個連擊點數有%s%的機率提高你%s點致命一擊，持續%s sec。"] = { false, { Stats.MeleeCritRating, Stats.RangedCritRating, }, false, ignoreSum = true } -- s40460
+L["你的近戰與遠程攻擊有一定的機率使你的致命一擊提高%s點，持續%s sec。"] = { { Stats.MeleeCritRating, Stats.RangedCritRating, Stats.SpellCritRating, }, false, ignoreSum = true } -- s40475
+L["你獲得%s點致命一擊。"] = { { Stats.MeleeCritRating, Stats.RangedCritRating, Stats.SpellCritRating, }, } -- s40477
+L["當你法術造成致命一擊時有%s%的機率提高%s點法術加速，持續%s sec。"] = { false, { Stats.MeleeHasteRating, Stats.RangedHasteRating, Stats.SpellHasteRating, }, false, ignoreSum = true } -- s40482
+L["提高%s點法術加速。"] = { { Stats.MeleeHasteRating, Stats.RangedHasteRating, Stats.SpellHasteRating, }, } -- s40483
+L["你的近戰攻擊有一定的機率使你提高%s點加速，持續%s sec。"] = { { Stats.MeleeHasteRating, }, false, ignoreSum = true } -- s41434
+L["提高%s點近戰加速。"] = { { Stats.MeleeHasteRating, }, } -- s41435
+L["提高%s點玩家的生命力上限和%s點閃躲，持續%s sec。此效果同時屬於作戰藥劑與守護藥劑，並且在死亡之後仍然有效。"] = { { Stats.Health, }, { Stats.DodgeRating, }, false, } -- s41607
+L["使你的招架提高%s點。"] = { { Stats.ParryRating, }, } -- s41674
+L["提高%s點熟練。"] = { { Stats.ExpertiseRating, }, } -- s41730
+L["提高%s點pvp韌性。"] = { { Stats.ResilienceRating, }, } -- s41876
+L["使你造成致命一擊時有一定的機率提高%s點攻擊強度，持續%s sec。"] = { { Stats.GenericAttackPower, }, false, ignoreSum = true } -- s42083
+L["你的致命一擊提高%s點，持續%s sec。"] = { { Stats.MeleeCritRating, Stats.RangedCritRating, Stats.SpellCritRating, }, false, } -- s42976
+L["在%s sec內恢復總計%s點法力。喝飲料時必須保持坐姿。如果你花費至少%s秒鐘喝飲料，你將獲得啟發並且提高%s點致命一擊和精神，持續%s sec。"] = { false, false, false, { Stats.MeleeCritRating, Stats.RangedCritRating, Stats.SpellCritRating, Stats.Spirit, }, false, ignoreSum = true } -- s43706
+L["提高%s點pvp韌性，持續%s sec。"] = { { Stats.ResilienceRating, }, false, } -- s43717
+L["在%s sec內恢復總計%s點生命力，進食時必須保持坐姿。如果你花費至少%s秒鐘來進食，你將因充分進食而獲得%s點命中和精神，持續%s sec。"] = { false, { Stats.MeleeHitRating, Stats.RangedHitRating, Stats.SpellHitRating, Stats.Spirit, }, false, { Stats.MeleeHitRating, Stats.RangedHitRating, Stats.SpellHitRating, }, false, ignoreSum = true } -- s43763
+L["提高%s點命中和精神，持續%s sec。"] = { { Stats.MeleeHitRating, Stats.RangedHitRating, Stats.SpellHitRating, Stats.Spirit, }, false, } -- s43764
+L["當受到近戰攻擊而使你的生命力低於%s%時，可獲得%s點閃躲，持續%s sec。此效果每%s秒只能發動一次。"] = { { Stats.DodgeRating, }, { Stats.DodgeRating, }, false, false, ignoreSum = true } -- s45057
+L["提高%s點熟練，持續%s sec。"] = { { Stats.ExpertiseRating, }, false, } -- s45431
+L["使你的致命一擊百分比機率提高%s%，並對攻擊者造成火焰傷害。"] = { { Stats.MeleeCrit, Stats.RangedCrit, Stats.SpellCrit, }, } -- s46352
+L["進入暗影形態，使你造成的暗影傷害提高%s%，受到的所有傷害降低%s%，並且使所有附近的友方目標的法術加速提高%s%。但是在此形態下，你無法施放神聖系的法術。"] = { false, false, { Stats.SpellHaste, }, } -- s49868
+L["使你的總耐力提高%s%，閃躲機率提高%s%。"] = { false, { Stats.Dodge, }, } -- s50029
+L["使%s碼內的隊伍和團隊成員法術加速提高%s%。"] = { false, { Stats.SpellHaste, }, } -- s51470
+L["提高目標%s點智力和%s點法術命中，持續%s sec。"] = { { Stats.Intellect, }, { Stats.SpellHitRating, }, false, } -- s51799
+L["施法者被水球環繞，每%s秒獲得%s點法力。施法者被法術、近戰或遠程攻擊擊中時，會啟動護盾恢復%s點法力。該效果每%s秒內只能啟動一次。持續%s sec。\n同一時間只能在自身上啟動一種元素之盾。"] = { false, { Stats.GenericManaRegen, }, false, false, false, } -- s52127
+L["提高%s點招架，持續%s sec。"] = { { Stats.ParryRating, }, false, } -- s52419
+L["當受到近戰攻擊而使你的生命力低於%s%時，可獲得%s點招架，持續%s sec。此效果每%s秒只能發動一次。"] = { { Stats.ParryRating, }, { Stats.ParryRating, }, false, false, ignoreSum = true } -- s52420
+L["長年的剝皮經驗使你的動作變得異常地敏捷，加速提高%s點。"] = { { Stats.MeleeHasteRating, Stats.RangedHasteRating, Stats.SpellHasteRating, }, } -- s53041
+L["從動物屍體剝皮的經驗使你精通解剖之道，致命一擊提高%s點。"] = { { Stats.MeleeCritRating, Stats.RangedCritRating, Stats.SpellCritRating, }, } -- s53125
+L["使你的總耐力提高%s%、格擋機率提高%s%。\n使你受到近戰致命一擊的機率降低%s%。\n榮耀聖言不再觸發共用冷卻時間。\n使你的法術能量等於你攻擊強度的%s%，而其他提高法術能量的來源則不再有效。\n每%s秒恢復%s%法力。"] = { false, { Stats.BlockChance, }, false, false, false, false, } -- s53592
+L["提高%s點pvp韌性，持續%s sec。此效果同時屬於作戰藥劑與守護藥劑，並且在死亡之後仍然有效。"] = { { Stats.ResilienceRating, }, false, } -- s53752
+L["提高%s點致命一擊和%s點法術能量，持續%s sec。"] = { { Stats.MeleeCritRating, Stats.RangedCritRating, Stats.SpellCritRating, Stats.HealingPower, }, { Stats.SpellDamage, }, false, } -- s53909
+L["提高%s點智力和致命一擊，持續%s小時。作戰藥劑。"] = { { Stats.Intellect, Stats.MeleeCritRating, Stats.RangedCritRating, Stats.SpellCritRating, }, false, } -- s54452
+L["提高%s點敏捷和%s點致命一擊，持續%s sec。作戰藥劑。"] = { { Stats.Agility, }, { Stats.MeleeCritRating, Stats.RangedCritRating, Stats.SpellCritRating, }, false, } -- s54494
+L["你的下%s次近戰或遠程攻擊均會提高%s點致命一擊，最多可堆疊%s次。此效果在%s sec後將消失。"] = { false, { Stats.MeleeCritRating, Stats.RangedCritRating, Stats.SpellCritRating, }, false, false, ignoreSum = true } -- s54696
+L["致命一擊提高%s點。"] = { { Stats.MeleeCritRating, Stats.RangedCritRating, Stats.SpellCritRating, }, } -- s54697
+L["法術造成致命一擊時，有一定的機率使你的致命一擊提高%s點，持續%s sec。"] = { { Stats.MeleeCritRating, Stats.RangedCritRating, Stats.SpellCritRating, }, false, ignoreSum = true } -- s54738
+L["近戰和遠程加速提高%s點，持續%s sec。"] = { { Stats.MeleeHasteRating, Stats.RangedHasteRating, }, false, } -- s55379
+L["使用草藥學的技能來吸取大地的能量和養分，立即治療小傷口並提高%s點加速，持續%s sec。可在潛行或隱形狀態下使用。"] = { { Stats.MeleeHasteRating, Stats.RangedHasteRating, Stats.SpellHasteRating, }, false, } -- s55428
+L["在%s sec內恢復總計%s點生命力和%s點法力。如果你花費至少%s秒鐘來進食，你將因充分進食而獲得%s點致命一擊和%s點耐力，持續%s sec。"] = { false, false, false, false, { Stats.MeleeCritRating, Stats.RangedCritRating, Stats.SpellCritRating, }, { Stats.Stamina, }, false, ignoreSum = true } -- s57098
+L["致命一擊提高%s點，耐力提高%s點，持續%s sec。"] = { { Stats.MeleeCritRating, Stats.RangedCritRating, Stats.SpellCritRating, }, { Stats.Stamina, }, false, } -- s57100
+L["在%s sec內恢復總計%s點生命力和%s點法力。如果你花費至少%s秒鐘來進食，你將因充分進食而獲得%s點加速和%s點耐力，持續%s sec。"] = { false, false, false, false, { Stats.MeleeHasteRating, Stats.RangedHasteRating, Stats.SpellHasteRating, }, { Stats.Stamina, }, false, ignoreSum = true } -- s57101
+L["加速提高%s點，耐力提高%s點，持續%s sec。"] = { { Stats.MeleeHasteRating, Stats.RangedHasteRating, Stats.SpellHasteRating, }, { Stats.Stamina, }, false, } -- s57102
+L["在%s sec內恢復總計%s點生命力。如果你花費至少%s秒鐘來進食，你將因充分進食而獲得%s點致命一擊和%s點耐力，持續%s sec。"] = { false, false, false, { Stats.MeleeCritRating, Stats.RangedCritRating, Stats.SpellCritRating, Stats.Stamina, }, { Stats.Stamina, Stats.MeleeCritRating, Stats.RangedCritRating, Stats.SpellCritRating, }, false, ignoreSum = true } -- s57285
+L["在%s sec內恢復總計%s點生命力。如果你花費至少%s秒鐘來進食，你將因充分進食而獲得%s點加速和%s點耐力，持續%s sec。"] = { false, false, false, { Stats.MeleeHasteRating, Stats.RangedHasteRating, Stats.SpellHasteRating, Stats.Stamina, }, { Stats.Stamina, Stats.MeleeHasteRating, Stats.RangedHasteRating, Stats.SpellHasteRating, }, false, ignoreSum = true } -- s57287
+L["你在戰鬥中造成或受到傷害時有一定的機率獲得狂戰士的效果，使你的致命一擊提高%s點，持續%s sec。最多可堆疊%s次。"] = { { Stats.MeleeCritRating, Stats.RangedCritRating, Stats.SpellCritRating, }, false, false, ignoreSum = true } -- s57351
+L["在%s sec內恢復總計%s點生命力。如果你花費至少%s秒鐘來進食，你將因充分進食而獲得%s點熟練和%s點耐力，持續%s sec。"] = { false, false, false, { Stats.ExpertiseRating, Stats.Stamina, }, { Stats.Stamina, Stats.ExpertiseRating, }, false, ignoreSum = true } -- s57355
+L["提高%s點熟練和%s點耐力，持續%s sec。"] = { { Stats.ExpertiseRating, }, { Stats.Stamina, }, false, } -- s57356
+L["在%s sec內恢復總計%s點生命力和%s點法力。如果你花費至少%s秒鐘來進食，你將因充分進食而獲得%s點命中和%s點耐力，持續%s sec。"] = { false, false, false, false, { Stats.MeleeHitRating, Stats.RangedHitRating, Stats.SpellHitRating, Stats.Stamina, }, { Stats.Stamina, Stats.MeleeHitRating, Stats.RangedHitRating, Stats.SpellHitRating, }, false, ignoreSum = true } -- s57359
+L["提高%s點命中和%s點耐力，持續%s sec。"] = { { Stats.MeleeHitRating, Stats.RangedHitRating, Stats.SpellHitRating, }, { Stats.Stamina, }, false, } -- s57360
+L["近戰和遠程攻擊造成致命一擊時，有機會提高%s點加速，持續%s sec。"] = { { Stats.MeleeHasteRating, Stats.RangedHasteRating, Stats.SpellHasteRating, }, false, ignoreSum = true } -- s58901
+L["你獲得額外%s點的致命一擊，持續%s sec。此效果最高可堆疊%s次。"] = { { Stats.MeleeCritRating, Stats.RangedCritRating, Stats.SpellCritRating, }, false, false, } -- s59043
+L["使你的閃躲提高%s點，持續%s sec。"] = { { Stats.DodgeRating, }, false, } -- s59202
+L["在%s sec內恢復總計%s點生命力。如果你花費至少%s秒鐘來進食，你將因充分進食而獲得%s點閃躲，持續%s sec。"] = { false, false, false, { Stats.DodgeRating, }, false, ignoreSum = true } -- s59227
+L["你全身都是鰻魚油!往好的方面想，至少你的閃躲提高了%s點，持續%s sec。"] = { { Stats.DodgeRating, }, false, } -- s59230
+L["你的近戰和遠程攻擊有一定的機率使你的熟練提高%s點，持續%s sec。"] = { { Stats.ExpertiseRating, }, false, ignoreSum = true } -- s59345
+L["加速提高%s點。"] = { { Stats.MeleeHasteRating, Stats.RangedHasteRating, Stats.SpellHasteRating, }, } -- s59626
+L["你的致命一擊提高%s點。"] = { { Stats.MeleeCritRating, Stats.RangedCritRating, Stats.SpellCritRating, }, } -- s59821
+L["提高%s點法術加速，持續%s sec。"] = { { Stats.MeleeHasteRating, Stats.RangedHasteRating, Stats.SpellHasteRating, }, false, } -- s60062
+L["提高%s點致命一擊，持續%s秒。"] = { { Stats.MeleeCritRating, Stats.RangedCritRating, Stats.SpellCritRating, }, false, } -- s60299
+L["你的近戰和遠程攻擊有一定的機率提高%s點加速，持續%s sec。"] = { { Stats.MeleeHasteRating, Stats.RangedHasteRating, Stats.SpellHasteRating, }, false, ignoreSum = true } -- s60301
+L["你的近戰和遠程攻擊有機率提高你的加速%s點，持續%s sec。"] = { { Stats.MeleeHasteRating, Stats.RangedHasteRating, Stats.SpellHasteRating, }, false, ignoreSum = true } -- s60317
+L["提高%s點命中，持續%s sec。作戰藥劑。"] = { { Stats.MeleeHitRating, Stats.RangedHitRating, Stats.SpellHitRating, }, false, } -- s60340
+L["提高%s點致命一擊，持續%s sec。作戰藥劑。"] = { { Stats.MeleeCritRating, Stats.RangedCritRating, Stats.SpellCritRating, }, false, } -- s60341
+L["提高%s點熟練，持續%s sec。作戰藥劑。"] = { { Stats.ExpertiseRating, }, false, } -- s60344
+L["使你的加速提高%s點，持續%s sec。作戰藥劑。"] = { { Stats.MeleeHasteRating, Stats.RangedHasteRating, Stats.SpellHasteRating, }, false, } -- s60346
+L["你的近戰和遠程攻擊有一定的機率提高%s點致命一擊，持續%s sec。"] = { { Stats.MeleeCritRating, Stats.RangedCritRating, Stats.SpellCritRating, }, false, ignoreSum = true } -- s60436
+L["你的法術有一定的機率提高%s點加速，持續%s秒。"] = { { Stats.MeleeHasteRating, Stats.RangedHasteRating, Stats.SpellHasteRating, }, false, ignoreSum = true } -- s60490
+L["你的近戰和遠程攻擊有一定的機率使你的致命一擊提高%s點，持續%s sec。"] = { { Stats.MeleeCritRating, Stats.RangedCritRating, Stats.SpellCritRating, }, false, ignoreSum = true } -- s61618
+L["當你的風之圖騰、大地圖騰、火焰圖騰還有水之圖騰同時處於使用狀態時，你可獲得每%s秒%s點法力、%s點法術致命一擊，以及%s點法術能量。"] = { false, { Stats.Spirit, }, { Stats.MeleeCritRating, Stats.RangedCritRating, Stats.SpellCritRating, }, { Stats.Intellect, Stats.HealingPower, }, } -- s61692
+L["使你的近戰或遠程攻擊命中時，有一定的機率提高%s點攻擊強度，持續%s sec。"] = { { Stats.GenericAttackPower, Stats.RangedAttackPower, }, false, ignoreSum = true } -- s62115
+L["你的冰結之觸可同時提高%s點閃躲。"] = { { Stats.DodgeRating, }, ignoreSum = true } -- s62147
+L["在%s sec內恢復總計%s點生命力。如果你花費至少%s秒鐘來進食，你將因充分進食而獲得%s點命中和%s點耐力，持續%s sec。"] = { false, false, false, { Stats.MeleeHitRating, Stats.RangedHitRating, Stats.SpellHitRating, }, { Stats.Stamina, }, false, ignoreSum = true } -- s62351
+L["攻擊命中時有機率提高%s點致命一擊，持續%s秒。"] = { { Stats.MeleeCritRating, Stats.RangedCritRating, Stats.SpellCritRating, }, false, ignoreSum = true } -- s63251
+L["提高%s點招架，並且下一次招架攻擊時可造成%s點傷害。最多可堆疊%s次。成功招架後將會消耗所有堆疊的次數。"] = { { Stats.ParryRating, }, false, false, } -- s64440
+L["你的近戰和遠程攻擊有一定的機率使你的加速提高%s點，持續%s sec。"] = { { Stats.MeleeHasteRating, Stats.RangedHasteRating, Stats.SpellHasteRating, }, false, ignoreSum = true } -- s64786
+L["每%s秒使周圍%s名法力最低的友方隊伍或團隊目標恢復%s%法力，持續%s sec，並使其法力上限在%s sec內提高%s%。最多可恢復%s次法力。牧師必須引導以維持法術。"] = { false, false, false, false, false, { Stats.Mana, }, { Stats.Mana, }, ignoreSum = true } -- s64901
+L["使你的心靈震爆可同時賦予你%s點加速，持續%s sec。"] = { { Stats.MeleeHasteRating, Stats.RangedHasteRating, Stats.SpellHasteRating, }, false, ignoreSum = true } -- s64908
+L["使你的英勇打擊和猛擊造成致命一擊時，有一定的機率賦予你%s點加速，持續%s sec。"] = { { Stats.MeleeHasteRating, Stats.RangedHasteRating, Stats.SpellHasteRating, }, false, ignoreSum = true } -- s64938
+L["你的有害法術有一定的機率使你提高%s點加速，持續%s sec。"] = { { Stats.MeleeHasteRating, Stats.RangedHasteRating, Stats.SpellHasteRating, }, false, ignoreSum = true } -- s65005
+L["在%s sec內恢復總計%s點法力。喝飲料時必須保持坐姿。如果花費至少%s秒鐘來喝飲料，你將因「充分進食」而獲得%s點致命一擊，持續%s sec。這屬於一般酒。"] = { false, { Stats.GenericManaRegen, }, false, { Stats.MeleeCritRating, Stats.RangedCritRating, Stats.SpellCritRating, }, false, } -- s65363
+L["致命一擊提高%s點。啤酒節的啤酒口味絕佳，給您全新的感受!持續%s sec。"] = { { Stats.MeleeCritRating, Stats.RangedCritRating, Stats.SpellCritRating, }, false, } -- s65365
+L["每秒恢復%s點法力，持續%s sec。"] = { { Stats.GenericManaRegen, }, false, } -- s66041
+L["每%s秒造成一次冰霜傷害的疾病，並使目標的近戰和遠程攻擊速度降低%s%，持續%s sec。"] = { false, { Stats.MeleeHaste, Stats.RangedHaste, }, false, } -- s67719
+L["每當你施放有害法術時，可獲得%s點加速，最多可堆疊%s次。整體效果可持續%s sec。"] = { { Stats.MeleeHasteRating, Stats.RangedHasteRating, Stats.SpellHasteRating, }, false, false, ignoreSum = true } -- s67736
+L["戰士發出怒吼，使半徑%s碼範圍內所有隊伍和團隊成員的攻擊強度提高%s點，持續%s sec。"] = { false, { Stats.GenericAttackPower, }, false, } -- s69305
+L["pvp韌性和耐力提高%s點。啤酒節的啤酒口味絕佳，給您全新的感受!持續%s sec。"] = { { Stats.ResilienceRating, Stats.Stamina, }, false, } -- s69559
+L["在%s sec內恢復總計%s點法力。喝飲料時必須保持坐姿。如果花費至少%s秒鐘來喝飲料，你將因「充分進食」而獲得%s點耐力和pvp韌性，持續%s sec。這屬於一般酒。"] = { false, { Stats.GenericManaRegen, }, false, { Stats.ResilienceRating, }, false, } -- s69560
+L["使所有隊伍與團隊成員的智力提高%s點，持續%s sec。"] = { { Stats.Intellect, }, false, } -- s69994
+L["提高%s點閃躲，並吸引擦古龍水的人。持續%s sec。"] = { { Stats.DodgeRating, }, false, } -- s70235
+L["提高%s點閃躲，並吸引擦香水的人。持續%s sec。"] = { { Stats.DodgeRating, }, false, } -- s70243
+L["近戰或遠程攻擊造成致命一擊時有一定的機率使你的加速提高%s點，持續%s sec。"] = { { Stats.MeleeHasteRating, Stats.RangedHasteRating, Stats.SpellHasteRating, }, false, ignoreSum = true } -- s71404
+L["賦予%s點致命一擊，持續%s sec，每次造成致命一擊將會減少%s點致命一擊。"] = { false, false, { Stats.MeleeCritRating, Stats.RangedCritRating, Stats.SpellCritRating, }, } -- s71564
+L["賦予%s點加速，持續%s sec。"] = { { Stats.MeleeHasteRating, Stats.RangedHasteRating, Stats.SpellHasteRating, }, false, } -- s71568
+L["使你的閃躲提高%s點。持續%s sec。"] = { { Stats.DodgeRating, }, false, } -- s73550
+L["你的法術和攻擊偶爾能提高%s點加速，持續%s sec。"] = { { Stats.MeleeHasteRating, Stats.RangedHasteRating, Stats.SpellHasteRating, }, false, } -- s74221
+L["每次的近戰攻擊、遠程攻擊、有害法術或治療法術有一定的機率使你加速提高%s點，持續%s sec。"] = { { Stats.MeleeHasteRating, Stats.RangedHasteRating, Stats.SpellHasteRating, }, false, ignoreSum = true } -- s76145
+L["使你公正之盾的傷害減免效果提高%s%，榮耀壁壘的效果提高%s%，格擋近戰攻擊的機率提高%s%。"] = { false, false, { Stats.BlockChance, }, } -- s76671
+L["使你格擋的機率提高%s%，致命格擋的機率提高%s%。"] = { { Stats.BlockChance, }, false, } -- s76857
+L["以火焰的力量強化薩滿的武器，提高總法術傷害%s點。每次命中時會額外造成%s至%s點火焰傷害，持續%s分鐘。"] = { { Stats.SpellDamage, }, false, false, false, } -- s78273
+L["提高%s點加速，持續%s sec。作戰藥劑。"] = { { Stats.MeleeHasteRating, Stats.RangedHasteRating, Stats.SpellHasteRating, }, false, } -- s79632
+L["使你的精通提高%s點，持續%s sec。作戰藥劑。"] = { { Stats.MasteryRating, }, false, } -- s79635
+L["使敏捷提高%s點。此效果同時屬於作戰藥劑與守護藥劑，並且在死亡之後仍然有效。"] = { { Stats.Agility, }, } -- s79639
+L["使智力提高%s點。此效果同時屬於作戰藥劑與守護藥劑，並且在死亡之後仍然有效。"] = { { Stats.Intellect, }, } -- s79640
+L["敲擊一名敵人的頭部，造成%s%普通傷害，使其閃躲和招架攻擊的機率降低%s%，持續%s sec。"] = { false, { Stats.Dodge, Stats.Parry, }, false, } -- s80146
+L["提高%s點敏捷和致命一擊，持續%s sec。作戰藥劑。"] = { { Stats.MeleeCritRating, Stats.RangedCritRating, Stats.SpellCritRating, Stats.Agility, }, false, } -- s80532
+L["吸取你寵物疊加的狂亂效果，每吸收一層狂亂效果可使你的寵物恢復%s點集中值，並使你的遠程攻擊加速提高%s%，持續%s sec。"] = { false, { Stats.RangedHaste, }, false, } -- s82692
+L["使你的格擋機率提高%s%，閃躲機率提高%s%。\n使你的盾牆冷卻時間縮短%s分鐘。"] = { { Stats.BlockChance, }, { Stats.Dodge, }, false, } -- s84608
+L["使你月火術和憤怒命中目標的機率提高%s%。\n使你施放治療之觸、癒合、寧靜、復生、糾纏根鬚、颶風術和滋補術時因受到傷害性攻擊而損失的施法時間縮短%s%。"] = { { Stats.SpellHit, }, false, } -- s84736
+L["精通和耐力提高%s點，持續%s sec"] = { { Stats.MasteryRating, Stats.Stamina, }, false, } -- s87549
+L["命中和耐力提高%s點，持續%s sec。"] = { { Stats.MeleeHitRating, Stats.RangedHitRating, Stats.SpellHitRating, Stats.Stamina, }, false, } -- s87550
+L["致命一擊和耐力提高%s點，持續%s sec"] = { { Stats.MeleeCritRating, Stats.RangedCritRating, Stats.SpellCritRating, Stats.Stamina, }, false, } -- s87551
+L["加速和耐力提高%s點，持續%s sec。"] = { { Stats.MeleeHasteRating, Stats.RangedHasteRating, Stats.SpellHasteRating, Stats.Stamina, }, false, } -- s87552
+L["閃躲和耐力提高%s點，持續%s sec。"] = { { Stats.DodgeRating, Stats.Stamina, }, false, } -- s87554
+L["招架和耐力提高%s點，持續%s sec。"] = { { Stats.ParryRating, Stats.Stamina, }, false, } -- s87555
+L["精通和耐力提高%s點，持續%s sec。"] = { { Stats.MasteryRating, Stats.Stamina, }, false, } -- s87560
+L["致命一擊和耐力提高%s點，持續%s sec。"] = { { Stats.MeleeCritRating, Stats.RangedCritRating, Stats.SpellCritRating, Stats.Stamina, }, false, } -- s87562
+L["在%s sec內恢復總計%s點生命力與%s點法力，進食時必須保持坐姿。如果你花費至少%s秒鐘來進食，你將因充分進食而獲得%s點精通與%s點耐力，持續%s sec。"] = { false, { Stats.MasteryRating, Stats.Stamina, }, false, false, { Stats.MasteryRating, }, { Stats.Stamina, }, false, ignoreSum = true } -- s87570
+L["在%s sec內恢復總計%s點生命力與%s點法力，進食時必須保持坐姿。如果你花費至少%s秒鐘來進食，你將因充分進食而獲得%s點命中與%s點耐力，持續%s sec。"] = { false, { Stats.MeleeHitRating, Stats.RangedHitRating, Stats.SpellHitRating, Stats.Stamina, }, false, false, { Stats.MeleeHitRating, Stats.RangedHitRating, Stats.SpellHitRating, }, { Stats.Stamina, }, false, ignoreSum = true } -- s87571
+L["在%s sec內恢復總計%s點生命力與%s點法力，進食時必須保持坐姿。如果你花費至少%s秒鐘來進食，你將因充分進食而獲得%s點致命一擊與%s點耐力，持續%s sec。"] = { false, { Stats.MeleeCritRating, Stats.RangedCritRating, Stats.SpellCritRating, Stats.Stamina, }, false, false, { Stats.MeleeCritRating, Stats.RangedCritRating, Stats.SpellCritRating, }, { Stats.Stamina, }, false, ignoreSum = true } -- s87572
+L["在%s sec內恢復總計%s點生命力與%s點法力，進食時必須保持坐姿。如果你花費至少%s秒鐘來進食，你將因充分進食而獲得%s點加速與%s點耐力，持續%s sec。"] = { false, { Stats.MeleeHasteRating, Stats.RangedHasteRating, Stats.SpellHasteRating, Stats.Stamina, }, false, false, { Stats.MeleeHasteRating, Stats.RangedHasteRating, Stats.SpellHasteRating, }, { Stats.Stamina, }, false, ignoreSum = true } -- s87573
+L["在%s sec內恢復總計%s點生命力與%s點法力，進食時必須保持坐姿。如果你花費至少%s秒鐘來進食，你將因充分進食而獲得%s點閃躲與%s點耐力，持續%s sec。"] = { false, { Stats.DodgeRating, Stats.Stamina, }, false, false, { Stats.DodgeRating, }, { Stats.Stamina, }, false, ignoreSum = true } -- s87577
+L["在%s sec內恢復總計%s點生命力與%s點法力，進食時必須保持坐姿。如果你花費至少%s秒鐘來進食，你將因充分進食而獲得%s點招架與%s點耐力，持續%s sec。"] = { false, { Stats.ParryRating, Stats.Stamina, }, false, false, { Stats.ParryRating, }, { Stats.Stamina, }, false, ignoreSum = true } -- s87580
+L["在%s sec內恢復總計%s點生命力與%s點法力，進食時必須保持坐姿。如果你花費至少%s秒鐘來進食，你將因充分進食而獲得%s精通與%s點耐力，持續%s sec。"] = { false, { Stats.MasteryRating, Stats.Stamina, }, false, false, { Stats.MasteryRating, }, { Stats.Stamina, }, false, ignoreSum = true } -- s87594
+L["在%s sec內恢復總計%s點生命力與%s點法力，進食時必須保持坐姿。如果你花費至少%s秒鐘來進食，你將因充分進食而獲得%s閃躲與%s點耐力，持續%s sec。"] = { false, { Stats.DodgeRating, Stats.Stamina, }, false, false, { Stats.DodgeRating, }, { Stats.Stamina, }, false, ignoreSum = true } -- s87601
+L["在%s sec內恢復總計%s點生命力與%s點法力，進食時必須保持坐姿。如果你花費至少%s秒鐘來進食，你將因充分進食而獲得%s招架與%s點耐力，持續%s sec。"] = { false, { Stats.ParryRating, Stats.Stamina, }, false, false, { Stats.ParryRating, }, { Stats.Stamina, }, false, ignoreSum = true } -- s87602
+L["熟練和耐力提高%s點，持續%s sec。"] = { { Stats.ExpertiseRating, Stats.Stamina, }, false, } -- s87634
+L["在%s sec內恢復總計%s點生命力與%s點法力，進食時必須保持坐姿。如果你花費至少%s秒鐘來進食，你將因充分進食而獲得%s點熟練與%s點耐力，持續%s sec。"] = { false, { Stats.ExpertiseRating, Stats.Stamina, }, false, false, { Stats.ExpertiseRating, }, { Stats.Stamina, }, false, ignoreSum = true } -- s87636
+L["你的法術有機率賦予你%s點加速，持續%s sec。"] = { { Stats.MeleeHasteRating, Stats.RangedHasteRating, Stats.SpellHasteRating, }, false, ignoreSum = true } -- s90886
+L["你的法術有機率賦予你%s點致命一擊，持續%s sec。"] = { { Stats.MeleeCritRating, Stats.RangedCritRating, Stats.SpellCritRating, }, false, ignoreSum = true } -- s90892
+L["致命一擊提高%s點，持續%s sec。"] = { { Stats.MeleeCritRating, Stats.RangedCritRating, Stats.SpellCritRating, }, false, } -- s90895
+L["精通提高%s點，持續%s sec。"] = { { Stats.MasteryRating, }, false, } -- s91024
+L["你的有害法術有機率賦予你%s點精通，持續%s sec。"] = { { Stats.MasteryRating, }, false, ignoreSum = true } -- s91025
+L["消耗所有的心之啟示，每消耗%s層心之啟示可提高%s點加速。持續%s sec。"] = { false, { Stats.MeleeHasteRating, Stats.RangedHasteRating, Stats.SpellHasteRating, }, false, } -- s91041
+L["你的治療法術有機率賦予你%s點加速，持續%s sec。"] = { { Stats.MeleeHasteRating, Stats.RangedHasteRating, Stats.SpellHasteRating, }, false, ignoreSum = true } -- s91142
+L["使你的加速提高%s點，持續%s sec。"] = { { Stats.MeleeHasteRating, Stats.RangedHasteRating, Stats.SpellHasteRating, }, false, } -- s91173
+L["你的近戰和遠程攻擊造成致命一擊時有機率賦予你%s點加速，持續%s sec。"] = { { Stats.MeleeHasteRating, Stats.RangedHasteRating, Stats.SpellHasteRating, }, false, ignoreSum = true } -- s91353
+L["使你的精通提高%s點，持續%s sec。"] = { { Stats.MasteryRating, }, false, } -- s91374
+L["你的近戰攻擊有機率賦予你%s點加速，持續%s sec。"] = { { Stats.MeleeHasteRating, Stats.RangedHasteRating, Stats.SpellHasteRating, }, false, ignoreSum = true } -- s91822
+L["你的近戰和遠程攻擊有機率賦予你%s點加速，持續%s sec。"] = { { Stats.MeleeHasteRating, Stats.RangedHasteRating, Stats.SpellHasteRating, }, false, ignoreSum = true } -- s92044
+L["提高致命一擊%s點，持續%s sec。"] = { { Stats.MeleeCritRating, Stats.RangedCritRating, Stats.SpellCritRating, }, false, } -- s92052
+L["你的近戰和遠程攻擊有機率賦予你%s點致命一擊，持續%s sec。"] = { { Stats.MeleeCritRating, Stats.RangedCritRating, Stats.SpellCritRating, }, false, ignoreSum = true } -- s92054
+L["你的近戰攻擊有機率賦予你%s點精通，持續%s sec。"] = { { Stats.MasteryRating, }, false, ignoreSum = true } -- s92164
+L["使你的招架提高%s點，持續%s sec。"] = { { Stats.ParryRating, }, false, } -- s92199
+L["閃躲提高%s點，持續%s sec。"] = { { Stats.DodgeRating, }, false, } -- s92205
+L["招架攻擊時可獲得%s點閃躲，持續%s sec。此效果每%s秒只能發動一次。"] = { { Stats.DodgeRating, }, false, false, ignoreSum = true } -- s92207
+L["使你生命值降至低於%s%的近戰攻擊將使你獲得%s點閃躲，持續%s sec。此效果每%s秒只能發動一次。"] = { { Stats.DodgeRating, }, { Stats.DodgeRating, }, false, false, ignoreSum = true } -- s92234
+L["使你生命值降至%s%以下的近戰攻擊將使你獲得%s點精通，持續%s sec。此效果每%s秒只能發動一次。"] = { { Stats.MasteryRating, }, { Stats.DodgeRating, }, false, false, ignoreSum = true } -- s92236
+L["野獸發出一聲激勵咆哮，使%s碼範圍內所有隊伍和團隊成員的精通提高%s點，持續%s sec。"] = { false, { Stats.MasteryRating, }, false, } -- s93435
+L["為團隊的成員施加祝福，使其精通提高%s點。每個玩家在同一時間內只能獲得一種祝福。"] = { { Stats.MasteryRating, }, } -- s93744
+L["提高%s點致命一擊，並使體型增大，持續%s sec。"] = { { Stats.MeleeCritRating, Stats.RangedCritRating, Stats.SpellCritRating, }, false, } -- s95227
+L["你額外獲得%s點致命一擊，持續%s sec。此效果最多可堆疊%s次。"] = { { Stats.MeleeCritRating, Stats.RangedCritRating, Stats.SpellCritRating, }, false, false, } -- s95678
+L["你的近戰與遠程攻擊有一定的機率使你提高%s點加速，持續%s sec。"] = { { Stats.MeleeHasteRating, Stats.RangedHasteRating, Stats.SpellHasteRating, }, false, ignoreSum = true } -- s95763
+L["提高%s點精通和%s點耐力，持續%s sec。此效果同時屬於作戰藥劑與守護藥劑，並且在死亡之後仍然有效。"] = { { Stats.MasteryRating, }, { Stats.Stamina, }, false, } -- s96092
+L["你的近戰和遠程攻擊有機率使你的加速提高%s點，持續%s sec。"] = { { Stats.MeleeHasteRating, Stats.RangedHasteRating, Stats.SpellHasteRating, }, false, ignoreSum = true } -- s96910
+L["提高%s點精通，持續%s sec。"] = { { Stats.MasteryRating, }, false, } -- s96962
+L["每當你造成週期性法術傷害時，將在%s sec內獲得%s點精通，最多堆疊%s次。"] = { false, { Stats.MasteryRating, }, false, ignoreSum = true } -- s96963
+L["每次造成近戰致命一擊時使你獲得%s點致命一擊，持續%s sec，最多可堆疊%s次。"] = { { Stats.MeleeCritRating, Stats.RangedCritRating, Stats.SpellCritRating, }, false, false, ignoreSum = true } -- s96981
+L["使近戰加速提高%s%，造成的物理傷害提高%s%。"] = { { Stats.MeleeHaste, }, false, } -- s97303
+L["攻擊速度提高%s%。\n|cffffffff連擊:|r\n|cff%sff%s火焰連集造成魔法傷害並降低攻擊強度。|r"] = { { Stats.MeleeHaste, }, false, false, } -- s97874
+L["攻擊速度提高%s%，造成的傷害提高%s%，持續%s sec。"] = { { Stats.MeleeHaste, }, false, false, } -- s98461
+L["加速提高%s%，持續%s sec。"] = { { Stats.MeleeHasteRating, Stats.RangedHasteRating, Stats.SpellHasteRating, }, false, } -- s99186
+L["致命一擊提高%s%，持續%s sec。"] = { { Stats.MeleeCritRating, Stats.RangedCritRating, Stats.SpellCritRating, }, false, } -- s99187
+L["精通提高%s%，持續%s sec。"] = { { Stats.MasteryRating, }, false, } -- s99188
+L["當你造成傷害時，有一定的機率獲得%s點致命一擊，持續%s sec。"] = { { Stats.MeleeCritRating, Stats.RangedCritRating, Stats.SpellCritRating, }, false, ignoreSum = true } -- s100309
+L["出現一個小月井，祝福你並讓你獲得%s點精通，持續%s sec。"] = { { Stats.MasteryRating, }, false, } -- s100612
+L["你的直接性治療法術和週期性治療法術有一定的機率提高%s點加速，持續%s秒。"] = { { Stats.MeleeHasteRating, Stats.RangedHasteRating, Stats.SpellHasteRating, }, false, ignoreSum = true } -- s101290
+L["你的近戰攻擊與遠程攻擊有一定的機率賦予你%s點加速，持續%s sec。"] = { { Stats.MeleeHasteRating, Stats.RangedHasteRating, Stats.SpellHasteRating, }, false, ignoreSum = true } -- s102658
+L["賦予%s點致命一擊，持續%s sec。"] = { { Stats.MeleeCritRating, Stats.RangedCritRating, Stats.SpellCritRating, }, false, } -- s102660
+L["你的近戰攻擊有機率使致命一擊提高%s點，持續%s sec。"] = { { Stats.MeleeCritRating, Stats.RangedCritRating, Stats.SpellCritRating, }, false, ignoreSum = true } -- s102661
+L["賦予%s點精通，持續%s sec。"] = { { Stats.MasteryRating, }, false, } -- s102662
+L["你的治療及傷害法術有一定機率賦予你%s點精通，持續%s sec。"] = { { Stats.MasteryRating, }, false, ignoreSum = true } -- s102663
+L["你的近戰攻擊有機會賦予你%s點精通，持續%s sec。"] = { { Stats.MasteryRating, }, false, ignoreSum = true } -- s102665
+L["你的近戰攻擊有機率賦予你%s點閃躲，持續%s sec。"] = { { Stats.DodgeRating, }, false, ignoreSum = true } -- s102666
+L["賦予%s點閃躲，持續%s sec。"] = { { Stats.DodgeRating, }, false, } -- s102667
+L["你每次造成傷害時有一定機率使你的加速提高%s點，持續%s sec。"] = { { Stats.MeleeHasteRating, Stats.RangedHasteRating, Stats.SpellHasteRating, }, false, ignoreSum = true } -- s102745
+L["你每次造成傷害時有機率使你的精通提高%s點，持續%s sec。"] = { { Stats.MasteryRating, }, false, ignoreSum = true } -- s102776
+L["當你造成傷害時，有一定的機率使你的閃躲提高%s點，持續%s sec。"] = { { Stats.DodgeRating, }, false, ignoreSum = true } -- s102778
+L["所有%s碼範圍內的隊伍與團隊成員的力量與敏捷提高%s點，並產生%s點怒氣，持續%s sec。"] = { false, { Stats.Strength, Stats.Agility, }, false, false, } -- s102927
+L["制伏目標惡魔，令其聽從你的命令。被制伏的惡魔攻擊間隔時間延長%s%、施法速度降低%s%。制伏效果最多持續%s sec。"] = { { Stats.MeleeHaste, }, { Stats.SpellHaste, }, false, } -- s104043
+L["在%s sec內恢復總計%s點生命力與%s點法力，進食時必須保持坐姿。如果你花費至少%s秒鐘來進食，你將因充分進食而獲得%s點力量，持續%s sec。"] = { false, false, false, false, { Stats.Strength, }, false, ignoreSum = true } -- s104263
+L["在%s sec內恢復總計%s點生命力與%s點法力，進食時必須保持坐姿。如果你花費至少%s秒鐘來進食，你將因充分進食而獲得%s點智力，持續 %s sec。"] = { false, false, false, false, { Stats.Intellect, }, false, ignoreSum = true } -- s104266
+L["在%s sec內恢復總計%s點生命力與%s點法力，進食時必須保持坐姿。如果你花費至少%s秒鐘來進食，你將因充分進食而獲得%s點敏捷，持續 %s sec。"] = { false, false, false, false, { Stats.Agility, }, false, ignoreSum = true } -- s104286
+L["精通提高%s點。"] = { { Stats.MasteryRating, }, } -- s104510
+L["在%s sec內恢復總計%s點生命力與%s點法力，進食時必須保持坐姿。如果你花費至少%s秒鐘來進食，你將因充分進食而獲得%s點敏捷，持續%s sec。"] = { false, false, false, { Stats.Agility, }, { Stats.Agility, }, false, ignoreSum = true } -- s130366
+L["在%s sec內恢復總計%s點生命力與%s點法力，進食時必須保持坐姿。如果你花費至少%s秒鐘來進食，你將因充分進食而獲得%s點智力，持續%s sec。"] = { false, false, false, { Stats.Intellect, }, { Stats.Intellect, }, false, ignoreSum = true } -- s130359
+L["在%s sec內恢復總計%s點生命力與%s點法力，進食時必須保持坐姿。如果你花費至少%s秒鐘來進食，你將因充分進食而獲得%s點精神，持續 %s sec。"] = { false, false, false, false, { Stats.Spirit, }, false, ignoreSum = true } -- s104291
+L["在%s sec內恢復總計%s點生命力與%s點法力，進食時必須保持坐姿。如果你花費至少%s秒鐘來進食，你將因充分進食而獲得%s點精神，持續%s sec。"] = { false, false, false, false, { Stats.Spirit, }, false, ignoreSum = true } -- s104292
+L["在%s sec內恢復總計%s點生命力與%s點法力，進食時必須保持坐姿。如果你花費至少%s秒鐘來進食，你將因充分進食而獲得%s點耐力，持續 %s sec。"] = { false, false, false, false, { Stats.Stamina, }, false, ignoreSum = true } -- s104294
+L["在%s sec內恢復總計%s點生命力與%s點法力，進食時必須保持坐姿。如果你花費至少%s秒鐘來進食，你將因充分進食而獲得%s點耐力，持續%s sec。"] = { false, false, false, false, { Stats.Stamina, }, false, ignoreSum = true } -- s104295
+L["當你造成傷害時，有一定的機率獲得%s點智力，持續%s sec。"] = { { Stats.Intellect, }, false, ignoreSum = true } -- s105620
+L["使招架提高%s點，持續%s sec。"] = { { Stats.ParryRating, }, false, } -- s105623
+L["當你造成傷害時，有一定的機率獲得%s點招架，持續%s sec。"] = { { Stats.ParryRating, }, false, ignoreSum = true } -- s105624
+L["當你施法時，有一定的機率獲得%s點智力，持續%s sec。"] = { { Stats.Intellect, }, false, ignoreSum = true } -- s105638
+L["當你造成傷害時，有一定的機率獲得%s點精通，持續%s sec。"] = { { Stats.MasteryRating, }, false, ignoreSum = true } -- s105641
+L["當你造成傷害時，有一定的機率獲得%s點加速，持續%s sec。"] = { { Stats.MeleeHasteRating, Stats.RangedHasteRating, Stats.SpellHasteRating, }, false, ignoreSum = true } -- s105642
+L["當你施法時，有一定的機率獲得%s點精通，持續%s sec。"] = { { Stats.Spirit, }, false, ignoreSum = true } -- s105644
+L["使熟練提高%s點，持續%s sec。作戰藥劑。"] = { { Stats.ExpertiseRating, }, false, } -- s105683
+L["使加速提高%s點，持續%s sec。作戰藥劑。"] = { { Stats.MeleeHasteRating, Stats.RangedHasteRating, Stats.SpellHasteRating, }, false, } -- s105684
+L["使精神提高%s點，持續%s sec。作戰藥劑。"] = { { Stats.Spirit, }, false, } -- s105685
+L["使你的命中提高%s點，持續%s sec。作戰藥劑。"] = { { Stats.MeleeHitRating, Stats.RangedHitRating, Stats.SpellHitRating, }, false, } -- s105686
+L["使閃躲提高%s點，持續%s sec。守護藥劑。"] = { { Stats.DodgeRating, }, false, } -- s105687
+L["使敏捷提高%s點，持續%s sec。此效果同時屬於作戰藥劑與守護藥劑，並且在死亡之後仍然有效。"] = { { Stats.Agility, }, false, } -- s105689
+L["使智力提高%s點，持續%s sec。此效果同時屬於作戰藥劑與守護藥劑，並且在死亡之後仍然有效。"] = { { Stats.Intellect, }, false, } -- s105691
+L["使精神提高%s點，持續%s sec。此效果同時屬於作戰藥劑與守護藥劑，並且在死亡之後仍然有效。"] = { { Stats.Spirit, }, false, } -- s105693
+L["使耐力提高%s點，持續%s sec。此效果同時屬於作戰藥劑與守護藥劑，並且在死亡之後仍然有效。"] = { { Stats.Stamina, }, false, } -- s105694
+L["使力量提高%s點，持續%s sec。此效果同時屬於作戰藥劑與守護藥劑，並且在死亡之後仍然有效。"] = { { Stats.Strength, }, false, } -- s105696
+L["精通元素會額外賦予你%s點精通，持續%s sec。"] = { { Stats.MasteryRating, }, false, ignoreSum = true } -- s105780
+L["加速提高%s點，持續%s sec。最多可堆疊%s次。"] = { { Stats.MeleeHasteRating, Stats.RangedHasteRating, Stats.SpellHasteRating, }, false, false, } -- s105785
+L["你的秘法衝擊有%s%的機率，而你的火球術、炎爆術、霜火箭與寒冰箭有%s%的機率賦予你偷取時間的效果，使你的加速提高%s點，持續%s sec。最多可堆疊%s次。當秘法強化，燃火與冰寒脈動失效之後，偷取時間的所有堆疊效果也將隨之喪失。"] = { false, { Stats.MeleeHasteRating, Stats.RangedHasteRating, Stats.SpellHasteRating, }, { Stats.MeleeHasteRating, Stats.RangedHasteRating, Stats.SpellHasteRating, }, false, false, ignoreSum = true } -- s105788
+L["受到的傷害降低%s%，從裝備獲得的護甲值提高%s%，閃躲機率提高%s%。"] = { false, false, { Stats.Dodge, }, } -- s105805
+L["賦予目標魔力的精華，所有法術的法力消耗降低%s%，法術加速提高%s%。"] = { false, { Stats.SpellHaste, }, } -- s105903
+L["在黑暗旋風中攻擊附近敵人，每%s秒造成%s%點武器傷害，並使目標造成致命一擊的機率降低%s%。"] = { false, false, { Stats.MeleeCrit, Stats.RangedCrit, }, ignoreSum = true } -- s106826
+L["在黑暗旋風中攻擊附近敵人，造成%s%武器傷害並使其造成致命一擊的機率降低%s%，持續%s sec。此效果移除時，受影響的目標可獲得脫離煙幕效果。"] = { false, { Stats.MeleeCrit, Stats.RangedCrit, }, false, } -- s106827
+L["在施法者指定的區域製造一場強烈的魔法風暴，對範圍內的所有敵人每%s%s秒造成%s點秘法傷害，使其移動速度降低%s%，攻擊間隔時間延長%s%，持續%s sec。德魯伊必須引導以維持法術效果。"] = { false, false, false, false, { Stats.MeleeHaste, }, false, } -- s106996
+L["在施法者指定的區域製造一場強烈的魔法風暴，對範圍內的所有敵人每%s%s秒造成%s點秘法傷害，使其 攻擊間隔時間延長%s%，持續%s sec。德魯伊必須引導以維持法術效果。"] = { false, false, false, { Stats.MeleeHaste, }, false, } -- s106996
+L["你憎恨的程度無以復加。儘管你的物理傷害提高%s%，但命中的機率降低%s%，且你造成的治療效果降低%s%。"] = { false, { Stats.MeleeHit, Stats.RangedHit, Stats.SpellHit, }, false, } -- s107087
+L["你的加速提高%s點，持續%s sec，並且為%s碼範圍內最多%s名盟友賦予%s點加速。"] = { false, false, false, false, { Stats.MeleeHasteRating, Stats.RangedHasteRating, Stats.SpellHasteRating, }, } -- s107804
+L["你的法術有機率賦予你%s點加速，持續%s sec。並賦予%s碼範圍內最多三名盟友%s點加速。"] = { false, false, false, { Stats.MeleeHasteRating, Stats.RangedHasteRating, Stats.SpellHasteRating, }, ignoreSum = true } -- s107805
+L["只要你待在攻擊目標%s碼範圍內，你的近戰攻擊就有機率使你的敵人賦予你%s點閃躲，持續%s sec。"] = { false, { Stats.DodgeRating, }, false, } -- s107896
+L["閃躲提高%s點，效果持續%s sec。"] = { { Stats.DodgeRating, }, false, } -- s107968
+L["你的近戰攻擊賦予你%s點閃躲，持續%s sec，最多可堆疊%s次。"] = { { Stats.DodgeRating, }, false, false, ignoreSum = true } -- s107969
+L["在%s sec內恢復總計%s點生命力，進食時必須保持坐姿。如果你花費至少%s秒鐘來進食，你將因充分進食而獲得%s點智力，持續%s sec。"] = { false, false, false, { Stats.Intellect, }, false, ignoreSum = true } -- s108029
+L["在%s sec內恢復總計%s點生命力，進食時必須保持坐姿。如果你花費至少%s秒鐘來進食，你將因充分進食而獲得%s點力量，持續%s sec。"] = { false, false, false, { Stats.Strength, }, false, ignoreSum = true } -- s108033
+L["在%s sec內恢復總計%s點生命力，進食時必須保持坐姿。如果你花費至少%s秒鐘來進食，你將因充分進食而獲得%s點敏捷，持續%s sec。"] = { false, false, false, { Stats.Agility, }, false, ignoreSum = true } -- s108034
+L["變身為熊形態或獵豹形態時，提高相當於敏捷%s%的智力。"] = { { Stats.Agility, }, } -- s108300
+L["使攻擊速度提高%s%，但命中機率降低%s%。"] = { { Stats.MeleeHaste, }, { Stats.MeleeHit, Stats.RangedHit, }, } -- s109084
+L["當你治療傷害時，有一定的機率獲得%s點加速，持續%s sec。"] = { { Stats.MeleeHasteRating, Stats.RangedHasteRating, Stats.SpellHasteRating, }, false, ignoreSum = true } -- s109803
+L["你的法術有一定機率賦予你%s點加速，持續%s sec。並賦予%s碼範圍內最多三名盟友%s點加速。"] = { false, false, false, { Stats.MeleeHasteRating, Stats.RangedHasteRating, Stats.SpellHasteRating, }, ignoreSum = true } -- s109843
+L["你的近戰攻擊有一定機率賦予你毀滅者之影效果，使你的敏捷提高%s點，最多可堆疊%s次。當你的毀滅者之影堆疊%s次之後，之後獲得的每一層堆疊都將使觸發毀滅者之怒的機率提高，並立即賦予你%s點連擊點數，並使你的終結技賦予你%s點連擊點數，持續%s sec。"] = { { Stats.Agility, }, false, false, false, false, false, ignoreSum = true } -- s109939
+L["使閃躲機率提高%s%。"] = { { Stats.Dodge, }, } -- s110182
+L["使你的敏捷提高%s點，最多可堆疊%s次。當你的毀滅者之影堆疊%s次之後，獲得的每一層堆疊都將提高觸發毀滅者之怒的機率。毀滅者之怒將立即賦予你%s點連擊點數，並使你的終結技賦予你%s點連擊點數，持續%s sec。"] = { { Stats.Agility, }, false, false, false, false, false, } -- s109941
+L["你的近戰攻擊有機率賦予%s點精通，持續%s sec。"] = { { Stats.MasteryRating, }, false, ignoreSum = true } -- s109995
+L["使所有屬性提高%s點。"] = { { Stats.AllStats, }, } -- s110645
+L["使目標的施法速度提高%s，持續%s sec。"] = { { Stats.SpellHaste, }, false, } -- s111376
+L["操控指定的不死生物，使其聽從你的命令。在操控期間內，該不死僕從的攻擊間隔時間延長%s%，施法速度降低%s%。最多持續%s sec。"] = { { Stats.MeleeHaste, }, { Stats.SpellHaste, }, false, } -- s111673
+L["在%s sec內恢復總計%s點生命力與%s點法力，進食時必須保持坐姿。如果你花費至少%s秒鐘來進食，你將因充分進食而獲得%s點耐力並感到非常健康，持續%s sec。"] = { false, false, false, false, { Stats.Stamina, }, false, ignoreSum = true } -- s111842
+L["法力上限提高%s%，並使閃電箭、熔岩爆發、元素衝擊、 妖術和烈焰震擊的命中機率提高%s%。"] = { false, { Stats.SpellHit, }, } -- s112858
+L["法力上限提高%s%，並使閃電箭、熔岩爆發、妖術和烈焰震擊的命中機率提高%s%。"] = { false, { Stats.SpellHit, }, } -- s112858
+L["迅速拳打你前方的所有目標，使他們昏迷並立即造成%s至%s點傷害，接著每%s%s秒都會再造成一次傷害，持續%s sec。傷害量會平均分攤給全部目標。\n引導時，你的招架機率提高%s%。"] = { { Stats.Parry, }, false, false, false, false, false, } -- s113656
+L["迅速拳打你前方的所有目標，使他們昏迷並立即造成%s至%s點傷害，接著每%s%s秒都會再造成一次傷害，持續%s sec。傷害量會平均分攤給全部目標。"] = { { Stats.Parry, }, false, false, false, false, } -- s113656
+L["血骨傀儡的鈍刀隨著每次成功的近戰攻擊生鏽，使傷害提高%s%但攻擊速度降低%s%，且移動速度降低%s%。最多可堆疊%s次。"] = { false, { Stats.MeleeHaste, }, false, false, } -- s113765
+L["施放迅癒後，使你下個法術的法術加速提高%s%，持續%s sec。"] = { { Stats.SpellHaste, }, false, } -- s114108
+L["一股勉強被壓抑住的對鮮血的飢餓感使攻擊速度提高%s%，但同時使受到的傷害提高%s%。最多可堆疊%s次並在死亡時散佈到卡斯迪諾夫附近的信眾身上。"] = { { Stats.MeleeHaste, }, false, false, } -- s114141
+L["強大又超級有勁的美酒，使命中率降低%s%，持續%s sec。也讓你喝醉!"] = { { Stats.MeleeHit, Stats.RangedHit, }, false, } -- s114381
+L["攻擊速度提高%s%，但移動速度降低%s%，持續%s sec。"] = { { Stats.MeleeHaste, }, false, false, } -- s114456
+L["濃烈的藥草使%r碼範圍內，所有粗麻小徑雪爾潘的加速提高%s%，持續%s sec。"] = { { Stats.MeleeHaste, }, false, } -- s114618
+L["濃烈的藥草使%s碼範圍內的所有粗麻小徑雪爾潘的加速提高%s%，持續%s sec。"] = { false, { Stats.MeleeHaste, }, false, } -- s114619
+L["使法術加速提高%s%。"] = { { Stats.SpellHaste, }, } -- s114719
+L["使精通提高%s點。"] = { { Stats.MasteryRating, }, } -- s114722
+L["在%s sec內恢復總計%s點生命力與%s點法力，進食時必須保持坐姿。如果你花費至少%s秒鐘來進食，你將因充分進食而獲得一項有用的屬性%s點，持續%s sec。"] = { false, { Stats.Intellect, }, false, false, { Stats.Intellect, }, false, ignoreSum = true } -- s114726
+L["在%s sec內恢復%s點法力。喝飲料時必須保持坐姿。"] = { false, { Stats.GenericManaRegen, }, } -- s114731
+L["使施法速度降低%s%。"] = { { Stats.SpellHaste, }, } -- s114732
+L["收割一名死亡的敵方靈魂，加速提高%s%，移動速度提高%s%，持續%s sec。"] = { { Stats.MeleeHaste, }, false, false, } -- s114868
+L["收割一名死亡的敵方靈魂，加速提高%s%，持續%s sec。"] = { { Stats.MeleeHaste, }, false, } -- s114868
+L["飄渺絕釀技能可使你閃躲近戰和遠程攻擊的機率提高%s%，每一層堆疊將使該效果持續%s sec，並耗盡飄渺絕釀的堆疊次數。"] = { { Stats.Dodge, }, false, } -- s115308
+L["一陣狂風護住施法者，使其閃躲機率提高%s%。"] = { { Stats.Dodge, }, } -- s115997
+L["造成%s點自然傷害，傷害將依據目標和地震的震源距離做調整。致盲煙塵使你命中的機率降低%s%。"] = { false, { Stats.MeleeHit, Stats.RangedHit, Stats.SpellHit, }, } -- s116040
+L["受傷的馴犬者布勞恩進入狂怒狀態，攻擊速度提高%s%，造成的傷害提高%s%。"] = { { Stats.MeleeHaste, }, { Stats.SpellDamage, }, } -- s116140
+L["當你治療傷害時，有一定的機率獲得%s點精通，持續%s sec。"] = { { Stats.MasteryRating, }, false, ignoreSum = true } -- s116432
+L["你的近戰攻擊與遠程攻擊有一定的機率賦予你%s點精通，持續%s sec。"] = { { Stats.MasteryRating, }, false, ignoreSum = true } -- s116437
+L["賦予%s點招架，持續%s sec。"] = { { Stats.ParryRating, }, false, } -- s116448
+L["你的近戰攻擊與遠程攻擊有一定的機率賦予你%s點招架，持續%s sec。"] = { { Stats.ParryRating, }, false, ignoreSum = true } -- s116449
+L["你的治療及傷害法術有一定機率賦予你%s點致命一擊，持續 %s sec。"] = { { Stats.MeleeCritRating, Stats.RangedCritRating, Stats.SpellCritRating, }, false, ignoreSum = true } -- s116453
+L["閃躲提高%s。"] = { { Stats.DodgeRating, }, } -- s116660
+L["賦予%s點敏捷，持續%s sec。"] = { { Stats.Agility, }, false, } -- s116718
+L["你的近戰攻擊有一定的機率賦予你%s點招架，持續%s sec。"] = { { Stats.ParryRating, }, false, ignoreSum = true } -- s116766
+L["泰坦的能量被驅散，對%s碼範圍內的玩家造成%s點自然傷害，並將傀儡充能，使其攻擊速度提高%s%，持續%s sec。最多可堆疊%s次。"] = { false, false, { Stats.MeleeHaste, }, false, false, } -- s116805
+L["攻擊速度降低%s%。\n移動速度降低%s%。"] = { { Stats.MeleeHaste, }, false, } -- s116864
+L["攻擊速度降低%s%。\n所有受到的傷害提高%s%。"] = { { Stats.MeleeHaste, }, false, } -- s116952
+L["強化風旋圍繞在薩滿身邊，使附近的所有隊伍與團隊成員獲得%s點精通。"] = { { Stats.MasteryRating, }, } -- s116956
+L["使施法者的攻擊速度提高%s%。"] = { { Stats.MeleeHaste, }, } -- s116958
+L["生活在扭曲虛空的這個惡魔行動格外敏捷，其閃躲與招架機率提高%s%。"] = { { Stats.Dodge, Stats.Parry, }, } -- s117225
+L["使移動速度提高%s%，持續%s sec並使下一次攻擊命中的傷害提高%s%。"] = { false, false, { Stats.SpellDamage, }, } -- s117516
+L["你的治療及傷害法術有一定機率使你的加速提高%s點，持續%s sec。"] = { { Stats.Spirit, }, false, ignoreSum = true } -- s117652
+L["你的治療及傷害法術有一定機率賦予你%s點致命一擊，持續%s sec。"] = { { Stats.MeleeCritRating, Stats.RangedCritRating, Stats.SpellCritRating, }, false, ignoreSum = true } -- s117657
+L["你的近戰攻擊有一定的機率使你的精通提高%s點，持續%s sec。"] = { { Stats.MasteryRating, }, false, ignoreSum = true } -- s117660
+L["讓目標絕望，每%s秒造成%s點暗影傷害並使其近戰攻擊、遠程攻擊及法術加速提高%s%，持續%s sec。"] = { false, false, { Stats.SpellHaste, }, false, } -- s117715
+L["當『縛靈者』卡拉賈剩下%s%生命力時會進入狂亂狀態，獲得%s%近戰加速，且造成%s%額外傷害。"] = { false, { Stats.MeleeHaste, }, false, } -- s117752
+L["大聲嗥叫，攻擊速度及傷害提高%s%，持續%s sec。"] = { { Stats.MeleeHaste, }, false, } -- s117780
+L["使你的招架機率提高%s%並使受到的傷害降低%s%，持續%s sec。"] = { { Stats.Parry, }, false, false, } -- s118038
+L["對目標敵人眼睛擲撒塵土，造成物理傷害並使其命中機率降低%s%，持續%s sec。"] = { { Stats.MeleeHit, Stats.RangedHit, }, false, } -- s118090
+L["加速提高%s%，但命中機率降低%s%，持續%s sec。"] = { false, { Stats.MeleeHit, Stats.RangedHit, }, false, } -- s118101
+L["攻擊敵人造成%s%武器傷害並觸發衰弱毒藥，每%s秒造成一次自然傷害並使其造成的傷害降低%s%，持續%s sec。"] = { false, false, { Stats.SpellDamage, }, false, } -- s118316
+L["你的近戰攻擊有一定的機率賦予你%s點精通，持續%s sec。"] = { { Stats.MasteryRating, }, false, ignoreSum = true } -- s118619
+L["你的治療及傷害法術有一定機率賦予你%s點加速，持續%s sec。"] = { { Stats.MeleeHasteRating, Stats.RangedHasteRating, Stats.SpellHasteRating, }, false, ignoreSum = true } -- s118621
+L["你的近戰攻擊有一定的機率賦予你%s點閃躲，持續%s sec。"] = { { Stats.DodgeRating, }, false, ignoreSum = true } -- s118624
+L["你的近戰攻擊與遠程攻擊有一定的機率賦予你%s點致命一擊，持續%s sec。"] = { { Stats.MeleeCritRating, Stats.RangedCritRating, Stats.SpellCritRating, }, false, ignoreSum = true } -- s118878
+L["你的近戰與遠程攻擊有一定的機率賦予你%s點致命一擊，持續%s sec。"] = { { Stats.MeleeCritRating, Stats.RangedCritRating, Stats.SpellCritRating, }, false, ignoreSum = true } -- s118880
+L["造成%s點暗影傷害並使施法速度降低%s%，持續%s sec。最多可堆疊%s次。"] = { false, { Stats.SpellHaste, }, false, false, } -- s118903
+L["使一名盟友的近戰攻擊速度提高%s%。"] = { { Stats.MeleeHaste, }, } -- s119902
+L["使力量或敏捷提高%s點。"] = { { Stats.Agility, Stats.Strength, }, } -- s120032
+L["對附近所有火焰犬煽動狂亂，使其攻擊速度與移動速度提高%s%，持續%s sec。"] = { { Stats.MeleeHaste, }, false, } -- s120093
+L["將目標脫得精光，使護甲值降低%s%，閃躲及招架機率降低%s%。"] = { false, { Stats.Dodge, Stats.Parry, }, } -- s120669
+L["指揮官沃賈克被無能的手下給激怒了，加快攻擊的節奏，使其攻擊速度提高%s%。"] = { { Stats.MeleeHaste, }, } -- s120758
+L["使目標飽受折磨，每%s秒造成一次暗影傷害，並且命中機率降低%s%，持續%s sec。"] = { false, { Stats.MeleeHit, Stats.RangedHit, }, false, } -- s120810
+L["造成%s%武器傷害並使敵人的護甲值降低%s%，持續%s sec。"] = { false, { Stats.Armor, }, false, } -- s121445
+L["從樹脂中解脫激勵了你，使施法及移動速度提高%s%，持續%s sec。"] = { { Stats.SpellHaste, }, false, } -- s121449
+L["精通提高%s。"] = { { Stats.MasteryRating, }, } -- s121993
+L["使你懺悟、懲擊、真言術:慰、神聖箭矢、神性之星、輝環與神聖之火的命中率提高%s%。"] = { { Stats.SpellHit, }, } -- s122098
+L["為瑪爾加拉克的蟲群加速，使其造成的傷害和攻擊速度提高%s%，持續%s sec。此效果可堆疊。"] = { { Stats.MeleeHaste, }, false, } -- s122149
+L["你的治療和傷害法術有一定的機率使你的精通提高%s點，持續%s sec。"] = { { Stats.MasteryRating, }, false, ignoreSum = true } -- s122273
+L["你的近戰攻擊有一定的機率使你的招架提高%s點，持續%s sec。"] = { { Stats.ParryRating, }, false, ignoreSum = true } -- s122276
+L["|c%sfff%s共生:|r閃躲機率提高%s%，持續%s sec。"] = { false, false, { Stats.Dodge, }, false, } -- s122286
+L["你的治療及傷害法術有一定機率使你的精神提高%s點，持續 %s sec。"] = { { Stats.Spirit, }, false, ignoreSum = true } -- s122324
+L["生命力提高%s點。"] = { { Stats.Health, }, } -- s122516
+L["集中的琥珀能量使造成的傷害提高%s%，攻擊速度提高%s%。此效果為永久性。"] = { false, { Stats.MeleeHaste, }, } -- s122556
+L["當你造成傷害時有一定機率獲得%s點精通，持續%s sec。"] = { { Stats.MasteryRating, }, false, ignoreSum = true } -- s122702
+L["你的近戰與遠程攻擊有一定機率賦予你%s點致命一擊，持續%s sec。"] = { { Stats.MeleeCritRating, Stats.RangedCritRating, Stats.SpellCritRating, }, false, ignoreSum = true } -- s122705
+L["你的治療及傷害法術有一定機率賦予你%s精通，持續 %s sec。"] = { { Stats.MasteryRating, }, false, ignoreSum = true } -- s122901
+L["悠格魯姆生氣了! \n攻擊速度提高%s%，移動速度提高%s%，持續%s sec。"] = { { Stats.MeleeHaste, }, false, false, } -- s123936
+L["熟練提高%s點，持續%s sec。"] = { { Stats.ExpertiseRating, }, false, } -- s124210
+L["命中提高%s點，持續%s sec。"] = { { Stats.MeleeHitRating, Stats.RangedHitRating, Stats.SpellHitRating, }, false, } -- s124215
+L["在%s sec內恢復總計%s點生命力，進食時必須保持坐姿。如果你花費至少%s秒鐘來進食，你將因充分進食而獲得%s點熟練，持續%s sec。"] = { false, false, false, { Stats.ExpertiseRating, }, false, ignoreSum = true } -- s124239
+L["在%s sec內恢復總計%s點生命力，進食時必須保持坐姿。如果你花費至少%s秒鐘來進食，你將因充分進食而獲得%s點加速，持續%s sec。"] = { false, false, false, { Stats.MeleeHasteRating, Stats.RangedHasteRating, Stats.SpellHasteRating, }, false, ignoreSum = true } -- s124240
+L["在%s sec內恢復總計%s點生命力，進食時必須保持坐姿。如果你花費至少%s秒鐘來進食，你將因充分進食而獲得%s點致命一擊，持續%s sec。"] = { false, false, false, { Stats.MeleeCritRating, Stats.RangedCritRating, Stats.SpellCritRating, }, false, ignoreSum = true } -- s124241
+L["在%s sec內恢復總計%s點生命力與%s點法力，進食時必須保持坐姿。如果你花費至少%s秒鐘來進食，你將因充分進食而獲得%s點精通，持續%s sec。"] = { false, false, false, false, { Stats.Strength, Stats.MasteryRating, }, false, ignoreSum = true } -- s145300
+L["在%s sec內恢復總計%s點生命力，進食時必須保持坐姿。如果你花費至少%s秒鐘來進食，你將因充分進食而獲得%s點閃躲，持續%s sec。"] = { false, false, false, { Stats.DodgeRating, }, false, ignoreSum = true } -- s124243
+L["在%s sec內恢復總計%s點生命力，進食時必須保持坐姿。如果你花費至少%s秒鐘來進食，你將因充分進食而獲得%s點命中，持續%s sec。"] = { false, false, false, { Stats.MeleeHitRating, Stats.RangedHitRating, Stats.SpellHitRating, }, false, ignoreSum = true } -- s124244
+L["提高你的招架機率%s%。\n在招架攻擊之後迅速反擊，對該敵人造成%s至%s點傷害。具有%s秒冷卻時間。"] = { { Stats.Parry, }, false, false, false, } -- s124334
+L["招架提高%s點，持續%s sec。"] = { { Stats.ParryRating, }, false, } -- s125070
+L["在%s sec內恢復總計%s點生命力，進食時必須保持坐姿。如果你花費至少%s秒鐘來進食，你將因充分進食而獲得%s點招架，持續%s sec。"] = { false, false, false, { Stats.ParryRating, }, false, ignoreSum = true } -- s125073
+L["在%s sec內恢復總計%s點生命力與%s點法力，進食時必須保持坐姿。如果你花費至少%s秒鐘來進食，你將因充分進食而獲得%s點命中，持續%s sec。"] = { false, false, false, false, { Stats.MeleeHitRating, Stats.RangedHitRating, Stats.SpellHitRating, }, false, ignoreSum = true } -- s125103
+L["在%s sec內恢復總計%s點生命力與%s點法力，進食時必須保持坐姿。如果你花費至少%s秒鐘來進食，你將因充分進食而獲得%s點熟練，持續%s sec。"] = { false, false, false, false, { Stats.MeleeHitRating, Stats.RangedHitRating, Stats.SpellHitRating, }, false, ignoreSum = true } -- s125105
+L["使你的加速提高%s點，持續%s sec，並且使你感到清醒。"] = { { Stats.MeleeHasteRating, Stats.RangedHasteRating, Stats.SpellHasteRating, }, false, } -- s125282
+L["使施法者免疫定身與緩速，並且提高%s%攻擊速度與%s%移動速度。"] = { { Stats.MeleeHaste, }, false, } -- s125373
+L["被繳械時，閃躲機率提高%s%，持續%s sec。"] = { { Stats.Dodge, }, false, ignoreSum = true } -- s126046
+L["你的刀刃受到無形之力引導，命中率提高%s%，持續%s sec，或直到你離開影潘僧院。"] = { { Stats.MeleeHit, Stats.RangedHit, Stats.SpellHit, }, false, } -- s126156
+L["你的攻擊有一定機率賦予你%s點閃躲，持續%s sec。(%s%的機率，%s秒冷卻時間)"] = { { Stats.DodgeRating, }, false, false, false, ignoreSum = true } -- s126237
+L["近戰攻擊速度與造成的所有傷害提高%s%。"] = { { Stats.MeleeHaste, }, } -- s126254
+L["你的治療法術有一定機率賦予你%s點智力，持續%s sec。"] = { { Stats.Intellect, }, false, ignoreSum = true } -- s126268
+L["使目標充滿能量，提高%s%施法速度和%s%移動速度。"] = { { Stats.SpellHaste, }, false, } -- s126305
+L["狂怒，提高%s%近戰攻擊速度，持續%s sec。"] = { { Stats.MeleeHaste, }, false, } -- s126370
+L["閃躲近戰和遠程攻擊的機率提高%s%，持續%s sec。"] = { { Stats.Dodge, }, false, } -- s126453
+L["使你的皮膚變成石頭，生命力上限提高%s%，受到的傷害降低%s%，持續%s sec。"] = { { Stats.Health, }, false, false, } -- s126456
+L["當你的法術造成傷害時，有一定的機率獲得%s點致命一擊，持續%s sec。(%s%的機率，%s秒冷卻時間)"] = { { Stats.MeleeCritRating, Stats.RangedCritRating, Stats.SpellCritRating, }, false, false, false, ignoreSum = true } -- s126473
+L["你的攻擊每次命中時，有一定機率獲得%s點加速，持續%s sec。"] = { { Stats.MeleeHasteRating, Stats.RangedHasteRating, Stats.SpellHasteRating, }, false, ignoreSum = true } -- s126482
+L["當你的攻擊對目標造成致命一擊時，有一定的機率獲得%s點敏捷，持續%s sec。(%s%的機率，%s秒冷卻時間)"] = { { Stats.Agility, }, false, false, false, ignoreSum = true } -- s126490
+L["你的攻擊每次命中時，有一定機率獲得%s點致命一擊，持續%s sec。(%s%的機率，%s秒冷卻時間)"] = { { Stats.MeleeCritRating, Stats.RangedCritRating, Stats.SpellCritRating, }, false, false, false, ignoreSum = true } -- s126516
+L["你的攻擊有一定機率賦予你%s點敏捷，持續%s sec。(%s%的機率，%s秒冷卻時間)"] = { { Stats.Agility, }, false, false, false, ignoreSum = true } -- s126552
+L["你每次造成週期性傷害時，有一定機率獲得%s點智力，持續%s sec。(%s%的機率，%s秒冷卻時間)"] = { { Stats.Intellect, }, false, false, false, ignoreSum = true } -- s126579
+L["你的攻擊有一定機率賦予你%s點力量，持續%s sec。(%s%的機率，%s秒冷卻時間)"] = { { Stats.Strength, }, false, false, false, ignoreSum = true } -- s126583
+L["你的法術每次治療時，有一定機率獲得%s點智力，持續%s sec。(%s%的機率，%s秒冷卻時間)"] = { { Stats.Intellect, }, false, false, false, ignoreSum = true } -- s126590
+L["使你的致命一擊提高%s點，持續%s sec。"] = { { Stats.MeleeCritRating, Stats.RangedCritRating, Stats.SpellCritRating, }, false, } -- s126605
+L["你的法術每次治療時，有一定機率獲得%s點精神，持續%s sec。(%s%的機率，%s秒冷卻時間)"] = { { Stats.Spirit, }, false, false, false, ignoreSum = true } -- s126641
+L["你的攻擊每次命中時，有一定機率獲得%s點閃躲，持續%s sec。(%s%的機率，%s秒冷卻時間)"] = { { Stats.DodgeRating, }, false, false, false, ignoreSum = true } -- s126647
+L["你的攻擊每次命中時，有一定機率獲得%s點加速，持續%s sec。(%s%的機率，%s秒冷卻時間)"] = { { Stats.MeleeHasteRating, Stats.RangedHasteRating, Stats.SpellHasteRating, }, false, false, false, ignoreSum = true } -- s126658
+L["你的有害法術每次命中時，有一定機率獲得%s點加速，持續%s sec。(%s%的機率，%s秒冷卻時間)"] = { { Stats.MeleeHasteRating, Stats.RangedHasteRating, Stats.SpellHasteRating, }, false, false, false, ignoreSum = true } -- s126660
+L["當你治療或是造成傷害時，你有機率獲得%s點智力，持續%s sec。"] = { { Stats.Intellect, }, false, ignoreSum = true } -- s126706
+L["看到其他看守者同伴死去而暴怒，攻擊速度提高%s%。"] = { { Stats.MeleeHaste, }, } -- s126970
+L["所有屬性提高%s點，持續%s sec。此效果同時屬於作戰藥劑與守護藥劑。"] = { { Stats.AllStats, }, false, } -- s127230
+L["讓施法者有一定的機率在攻擊命中時對目標造成痛苦效果，使其格擋、閃躲及招架機率降低%s%，持續%s sec。"] = { { Stats.BlockChance, Stats.Parry, Stats.Dodge, }, false, ignoreSum = true } -- s127262
+L["施法者以痛苦傷害目標，使其格擋、閃躲及招架機率降低%s%，持續%s sec。"] = { { Stats.BlockChance, Stats.Parry, Stats.Dodge, }, false, } -- s127264
+L["使周圍%s碼範圍內的友方單位攻擊速度提高%s%。"] = { false, { Stats.MeleeHaste, }, } -- s127423
+L["你的治療法術有一定機率賦予你%s點法術能量，持續%s sec。(%s%的機率，%s秒冷卻時間)"] = { { Stats.Intellect, }, false, false, false, ignoreSum = true } -- s127573
+L["使你的加速提高%s點，持續%s sec，並且提振你的精神。只能在崑萊峰使用。"] = { { Stats.MeleeHasteRating, Stats.RangedHasteRating, Stats.SpellHasteRating, }, false, } -- s127770
+L["靈獸祝福你的盟友，使附近%s碼範圍內所有隊伍和團隊成員的精通提高%s點，持續%s sec。"] = { false, { Stats.MasteryRating, }, false, } -- s127830
+L["你的直接性治療法術和週期性治療法術有一定的機率使你提高%s點加速，持續%s sec。(%s%的機率，%s秒冷卻時間)"] = { { Stats.MeleeHasteRating, Stats.RangedHasteRating, Stats.SpellHasteRating, }, false, false, false, ignoreSum = true } -- s127914
+L["你的有害法術有一定的機率使你提高%s點法術能量，持續%s sec。(%s%的機率，%s秒冷卻時間)"] = { { Stats.SpellDamage, Stats.HealingPower, }, false, false, false, ignoreSum = true } -- s127924
+L["造成近戰或遠程致命一擊時，有一定的機率提高%s點攻擊強度，持續%s sec。"] = { { Stats.GenericAttackPower, }, false, ignoreSum = true } -- s127926
+L["見血之後這頭動物開始發狂，攻擊速度提高%s%。此效果可堆疊。"] = { { Stats.MeleeHaste, }, } -- s128006
+L["當你造成近戰或遠程致命一擊時，有一定的機率獲得天尊賜福的效果，使你的敏捷提高%s點，持續%s sec。"] = { { Stats.Agility, }, false, ignoreSum = true } -- s128445
+L["你的傷害性攻擊與技能有一定的機率賦予你%s點致命一擊，持續%s sec。"] = { { Stats.MeleeCritRating, Stats.RangedCritRating, Stats.SpellCritRating, }, false, ignoreSum = true } -- s128520
+L["你的傷害性攻擊與技能有一定的機率賦予%s點精通，持續%s sec。"] = { { Stats.MasteryRating, }, false, ignoreSum = true } -- s128522
+L["你的傷害性攻擊與技能有一定的機率賦予你%s點加速，持續%s sec。"] = { { Stats.MeleeHasteRating, Stats.RangedHasteRating, Stats.SpellHasteRating, }, false, ignoreSum = true } -- s128525
+L["卡塌克羞辱姜·杜克的自尊，使他的攻擊速度提高%s%，受到的物理傷害提高%s%。"] = { { Stats.MeleeHaste, }, false, } -- s128809
+L["當你施展近戰攻擊時，有一定機率獲得天尊賜福的效果，使你的力量提高%s點，持續%s sec。(%s%的機率，%s秒冷卻時間)"] = { { Stats.Strength, }, false, false, false, ignoreSum = true } -- s128989
+L["當你造成法術傷害時，有一定機率獲得天尊賜福的效果，使你的智力提高%s點，持續%s sec。"] = { { Stats.Agility, Stats.Intellect, }, false, ignoreSum = true } -- s128990
+L["當你施放治療法術時，有一定的機率獲得天尊賜福的效果，使你的精神提高%s點，持續%s sec。(%s%的機率，%s秒冷卻時間)"] = { { Stats.Spirit, }, false, false, false, ignoreSum = true } -- s128991
+L["對敵人的顱骨施展猛烈的痛擊，造成物理傷害並使其命中機率降低%s%，持續%s sec。"] = { { Stats.MeleeHit, Stats.RangedHit, }, false, } -- s129111
+L["毛毛蟲進入狂亂狀態，攻擊速度提高%s%，持續%s sec。"] = { { Stats.MeleeHaste, }, false, } -- s129936
+L["閃躲機率提高%s%，移動速度提高%s%，持續%s sec。"] = { { Stats.Dodge, }, false, false, } -- s130182
+L["使你的精通提高%s點。持續%s sec。"] = { { Stats.MasteryRating, }, false, } -- s130283
+L["拉奇拉痛苦地呼叫幼獸前來幫忙。如果幼獸已經在場，則使其攻擊速度提高%s%，持續%s sec。"] = { { Stats.MeleeHaste, }, false, } -- s131199
+L["使目標身手加快，攻擊速度提高%s%，移動速度提高%s%。"] = { { Stats.MeleeHaste, }, false, } -- s131764
+L["使加速提高%s點，持續%s sec。"] = { { Stats.MeleeHasteRating, Stats.RangedHasteRating, Stats.SpellHasteRating, }, false, } -- s133024
+L["造成的傷害提高%s%。\n法術施法速度提高%s%。"] = { false, { Stats.SpellHaste, }, } -- s133532
+L["為友方目標施加祝福，使其精通提高%s點。只能在喀撒朗蠻荒使用。"] = { { Stats.MasteryRating, }, } -- s133535
+L["使目標的法術加速提高%s%。只能在喀撒朗蠻荒使用。"] = { { Stats.SpellHaste, }, } -- s133545
+L["敏捷提高%s點，持續%s sec。只能在喀撒朗蠻荒使用。"] = { { Stats.Agility, }, false, } -- s133593
+L["智力提高%s點，持續%s sec。只能在喀撒朗蠻荒使用。"] = { { Stats.Intellect, }, false, } -- s133594
+L["力量提高%s點，持續%s sec。只能在喀撒朗蠻荒使用。"] = { { Stats.Strength, }, false, } -- s133595
+L["耐力提高%s點，持續%s sec。只能在喀撒朗蠻荒使用。"] = { { Stats.Stamina, }, false, } -- s133596
+L["你的攻擊每次命中時，有一定機率獲得%s點精通，持續%s sec。"] = { { Stats.MeleeHasteRating, Stats.RangedHasteRating, Stats.SpellHasteRating, Stats.MasteryRating, }, false, ignoreSum = true } -- s133631
+L["pvp韌性提高%s點，持續%s sec。守護藥劑。"] = { { Stats.ResilienceRating, }, false, } -- s134873
+L["提高施法者的攻擊速度%s%和所造成的物理傷害%s%。施法者無法被阻止。"] = { { Stats.MeleeHaste, }, false, } -- s134911
+L["使你的力量提高%s點，持續%s sec。只能在鬥陣競技場使用。"] = { { Stats.Strength, }, false, } -- s134986
+L["使智力提高%s點，持續%s sec。只能在鬥陣競技場使用。"] = { { Stats.Intellect, }, false, } -- s134987
+L["使你的敏捷提高%s點，持續%s sec。只能在鬥陣競技場使用。"] = { { Stats.Agility, }, false, } -- s134989
+L["閃躲機率提高%s%，持續%s sec。只能使用於鬥陣競技場。"] = { { Stats.Dodge, }, false, } -- s135088
+L["你站在盲區之中。\n攻擊與被命中的機率降低%s%。"] = { { Stats.SpellHit, Stats.MeleeHit, Stats.RangedHit, }, } -- s135147
+L["對一名敵人與其附近最多%s名盟友造成普通攻擊再加上%s點傷害，並使他們的攻擊間隔時間延長%s%，持續%s sec。"] = { false, false, { Stats.MeleeHaste, }, false, } -- s135434
+L["以秘法魔法衝擊敵人，並且使施法者的加速提高%s%。"] = { { Stats.SpellHaste, }, } -- s135538
+L["強力的攻擊，對附近%s碼範圍內的所有敵人造成%s%武器傷害，並使其攻擊未命中的機率提高%s%。"] = { false, false, { Stats.MeleeHit, Stats.RangedHit, Stats.SpellHit, }, } -- s135619
+L["能量孢子包圍所有友方隊伍和團隊成員，使其法術加速提高%s%。"] = { { Stats.SpellHaste, }, } -- s135678
+L["因為施法被中斷而狂怒，施法速度提高%s%。可堆疊。"] = { { Stats.SpellHaste, }, ignoreSum = true } -- s144585
+L["施法速度提高%s%。可堆疊。"] = { { Stats.SpellHaste, }, } -- s144588
+L["神恩術的冷卻時間縮短%s秒。在神恩術的作用期間，你的精通提高%s點。"] = { false, { Stats.MasteryRating, }, ignoreSum = true } -- s144613
+L["在神恩術的作用期間，你的精通提高%s點。"] = { { Stats.MasteryRating, }, } -- s144622
+L["殺戮酷刑和厄運驟臨可使你的加速或精通提高%s點，取決於何者最高，持續%s秒，最多可堆疊%s次。"] = { { Stats.MeleeHasteRating, Stats.MasteryRating, }, false, false, ignoreSum = true } -- s144899
+L["你閃躲或招架攻擊時，可獲得相當於閃躲加上招架總和為%s%的致命一擊加成，持續%s sec。"] = { { Stats.MeleeCritRating, Stats.RangedCritRating, Stats.SpellCritRating, }, false, ignoreSum = true } -- s145672
+L["使施法者造成的傷害和攻擊速度提高%s%，持續%s sec。"] = { { Stats.MeleeHaste, }, false, } -- s145974
+L["你的攻擊有一定機率使你的智力提高%s點，持續%s sec。(%s%的機率，%s秒冷卻時間)"] = { { Stats.Intellect, }, false, false, false, ignoreSum = true } -- s146047
+L["當你的法術造成傷害時，有一定的機率使你的致命一擊提高%s點，持續%s sec。(%s%的機率，%s秒冷卻時間)"] = { { Stats.MeleeCritRating, Stats.RangedCritRating, Stats.SpellCritRating, }, false, false, false, ignoreSum = true } -- s146219
+L["你的攻擊有一定機率使你的力量提高%s點，持續%s sec。(%s%的機率，%s秒冷卻時間)"] = { { Stats.Strength, }, false, false, false, ignoreSum = true } -- s146247
+L["你的近戰攻擊每次命中時，有一定機率獲得%s點加速，持續%s sec。(%s%的機率，%s秒冷卻時間)"] = { { Stats.MeleeHasteRating, Stats.RangedHasteRating, Stats.SpellHasteRating, }, false, false, false, ignoreSum = true } -- s146295
+L["你的攻擊有一定機率使你的敏捷提高%s點，持續%s sec。(%s%的機率，%s秒冷卻時間)"] = { { Stats.Agility, }, false, false, false, ignoreSum = true } -- s146309
+L["你的近戰和遠程攻擊有一定機率賦予你%s點敏捷，持續%s sec。此效果賦予的敏捷每%s秒降低%s點。(每分鐘大約可觸發%s%s次)"] = { false, false, false, { Stats.Agility, }, false, false, ignoreSum = true } -- s146311
+L["你的攻擊每次命中時，有一定機率獲得%s點精通，持續%s sec。(%s%的機率，%s秒冷卻時間)"] = { { Stats.MasteryRating, }, false, false, false, ignoreSum = true } -- s146313
+L["你的法術每次治療時，有一定機率獲得%s點智力，持續%s sec。(%s%的機率，%s秒冷卻時間)。只影響天賦專精為治療者角色。"] = { { Stats.Intellect, }, false, false, false, ignoreSum = true } -- s146315
+L["你的治療有一定機率賦予你%s點精神，持續%s sec。此效果賦予的精神每%s秒降低%s點。(每分鐘大約可觸發%s%s次)"] = { false, false, false, { Stats.Spirit, }, false, false, ignoreSum = true } -- s146316
+L["力量提高%s點，近戰攻擊效果會更加血腥，即使是攻擊沒有血液的敵人也一樣，持續%s sec。"] = { { Stats.Strength, }, false, } -- s146804
+L["敏捷提高%s點。近戰和遠程攻擊同時帶有神秘視覺效果，持續%s sec。"] = { { Stats.Agility, }, false, } -- s146805
+L["智力提高%s點，施法時產生飛向法術目標的火花視覺效果，持續%s sec。"] = { { Stats.Intellect, }, false, } -- s146806
+L["精神提高%s點，施放有益法術時產生飛向法術目標的火花視覺效果，持續%s sec。"] = { { Stats.Spirit, }, false, } -- s146807
+L["耐力提高%s點，受到傷害時會使你體型變大，而且看起來很像石頭，持續%s sec。"] = { { Stats.Stamina, }, false, } -- s146808
+L["精通提高%s點，受到傷害時會使你看起來更大、更冷颼颼的感覺，持續%s sec。"] = { { Stats.MasteryRating, }, false, } -- s146809
+L["近戰攻擊速度提高%s%，持續%s sec。"] = { { Stats.MeleeHaste, }, false, } -- s147306
+L["感受歐朵斯燃燒的怒氣，攻擊速度提高%s%，施法者每%s秒因燃燒而受到%s點火焰傷害，持續%s sec。"] = { { Stats.MeleeHaste, }, false, false, false, } -- s147703
+L["致命一擊機率提高%s%，致命一擊傷害提高%s%。最多可堆疊%s次，每次堆疊可延長持續時間。"] = { { Stats.MeleeCrit, Stats.RangedCrit, }, false, false, } -- s147983
+L["你的攻擊有一定機率使你的敏捷提高%s點，持續%s sec。(每分鐘大約可觸發%s%s次)"] = { { Stats.Agility, }, false, false, false, ignoreSum = true } -- s148904
+L["你的攻擊有一定機率使你的智力提高%s點，持續%s sec。(每分鐘大約可觸發%s%s次)"] = { { Stats.Intellect, }, false, false, false, ignoreSum = true } -- s148907
+L["你的助益法術有一定機率獲得增幅，使你的智力提高%s點，持續%s sec。(每分鐘大約可觸發%s%s次)"] = { { Stats.Intellect, }, false, false, false, ignoreSum = true } -- s148909
+L["你的直接性治療法術和週期性治療法術有一定的機率使你的ˊ加速等級提高%s點，持續%s秒。"] = { { Stats.MeleeHasteRating, Stats.RangedHasteRating, Stats.SpellHasteRating, }, false, ignoreSum = true } -- s469353
+L["新陳代謝速度異常提高，使施法者更頻繁的使用技能，同時攻擊速度提高%s%。"] = { { Stats.MeleeHaste, }, } -- s136245
+L["哈里登看見主人倒下後陷入暴怒狀態，使其造成的傷害提高%s%，攻擊速度提高%s%。"] = { false, { Stats.MeleeHaste, }, } -- s136821
+L["哈里登發出強力的怒吼，對所有敵人造成%s點物理傷害並強化盟友，使其近戰攻擊速度提高%s%。"] = { false, { Stats.MeleeHaste, }, } -- s137458
+L["施法者引導一道核子煉獄，轟擊團隊每%s秒造成%s點傷害。\n在她引導此效果時，她的遠程偏斜與法術偏斜提高%s%。她的閃躲機率也提高%s%。"] = { false, false, false, { Stats.Dodge, }, } -- s137491
+L["召喚冰浪包圍守護盧凜並且湧向四周，擊中目標時會造成%s點冰霜傷害。引導此效果時，她避開遠程攻擊與法術的機率提高%s%，同時閃躲機率提高%s%。"] = { false, false, { Stats.Dodge, }, } -- s137531
+L["生命力到達%s%時，魔古會恢復它的力量，使其造成的傷害提高%s%，施法速度提高%s%。"] = { false, false, { Stats.SpellHaste, }, } -- s137550
+L["提高%s%加速，持續%s sec。"] = { { Stats.SpellHaste, }, false, } -- s137590
+L["造成法術傷害有機會獲得%s%法術加速，持續%s sec。(每分鐘大約可觸發%s%s次)"] = { { Stats.SpellHaste, }, false, false, false, ignoreSum = true } -- s137592
+L["格擋機率提高%s%，持續%s sec。"] = { { Stats.BlockChance, }, false, } -- s138242
+L["時光倒轉結束時提高%s點加速、致命一擊與精通，持續%s sec。"] = { { Stats.MeleeHasteRating, Stats.RangedHasteRating, Stats.SpellHasteRating, Stats.MeleeCritRating, Stats.RangedCritRating, Stats.SpellCritRating, Stats.MasteryRating, }, false, } -- s138317
+L["使目標造成的傷害提高%s%，攻擊和移動速度提高%s%，同時免疫嘲諷效果。"] = { false, { Stats.MeleeHaste, }, } -- s138361
+L["靠近的憎惡魔像會彼此連結在一起，使其攻擊速度提高%s%，移動速度提高%s%。此外，連結魔像的移動速度提高%s%，並對緩速的效果免疫。"] = { { Stats.MeleeHaste, }, false, false, } -- s138453
+L["賦予%s點閃躲，每%s秒將會減少%s點閃躲，持續%s sec。"] = { false, false, { Stats.DodgeRating, }, false, } -- s138728
+L["賦予%s點敏捷。"] = { { Stats.Agility, }, } -- s138737
+L["賦予%s點力量。"] = { { Stats.Strength, }, } -- s138760
+L["賦予%s點智力。"] = { { Stats.Intellect, }, } -- s138788
+L["你在閃躲時有%s%機率獲得%s點精通，持續%s sec。該效果最多可堆疊%s次。"] = { false, { Stats.MasteryRating, }, false, false, ignoreSum = true } -- s138865
+L["你的攻擊有一定機率賦予你%s點力量，持續%s sec。此效果最多可堆疊%s次。(每分鐘大約可觸發%s%s次)"] = { { Stats.Strength, }, false, false, false, false, ignoreSum = true } -- s138871
+L["你的攻擊有一定機率賦予你%s點加速，持續%s sec。此效果最多可堆疊%s次。(每分鐘大約可觸發%s%s次)"] = { { Stats.MeleeHasteRating, Stats.RangedHasteRating, Stats.SpellHasteRating, }, false, false, false, false, ignoreSum = true } -- s138894
+L["你的週期性傷害法術有一定機率賦予你%s點智力，持續%s sec。(約每分鐘大約可觸發%s%s次)"] = { { Stats.Intellect, }, false, false, false, ignoreSum = true } -- s138896
+L["你的攻擊每次命中時，有一定機率獲得%s點敏捷並且召喚%s個巫毒地精，持續%s sec。(每分鐘大約可觸發%s%s次)"] = { { Stats.Agility, }, { Stats.Agility, }, false, false, false, ignoreSum = true } -- s138939
+L["你的法術每次造成致命一擊傷害時，有一定機率獲得%s點智力，持續%s sec。(每分鐘大約可觸發%s%s次)"] = { { Stats.Intellect, }, false, false, false, ignoreSum = true } -- s139134
+L["致命一擊提高%s點，持續%s sec。最多可堆疊%s次。"] = { { Stats.MeleeCritRating, Stats.RangedCritRating, Stats.SpellCritRating, }, false, false, } -- s139170
+L["你的攻擊造成致命一擊時，有一定機率賦予你%s點致命一擊，持續%s sec。此效果最多可堆疊%s次。(每分鐘大約可觸發%s%s次)"] = { { Stats.MeleeCritRating, Stats.RangedCritRating, Stats.SpellCritRating, }, false, false, false, false, ignoreSum = true } -- s139171
+L["施法者強化自己的武器，使其近戰攻擊命中時有機會造成自然傷害。\n攻擊速度提高%s%。"] = { { Stats.MeleeHaste, }, } -- s139218
+L["擊碎目標的脊骨，使他們被定在原地並且降低其%s%的閃躲與招架機率，持續%s sec。"] = { { Stats.Parry, Stats.Dodge, }, false, } -- s139260
+L["在雷王的宮殿中，所有有益符文地磚的持續時間延長%s%。"] = { { Stats.Agility, }, } -- s139497
+L["近戰加速提高%s%。"] = { { Stats.MeleeHaste, }, } -- s140146
+L["徵召兵受到附近野獸管理員的強化。\n成功進行近戰攻擊使攻擊速度提高%s%。此效果最多可堆疊%s次。"] = { { Stats.MeleeHaste, }, false, ignoreSum = true } -- s140148
+L["對敵人造成暗影傷害，並降低命中率%s%。"] = { { Stats.MeleeHit, Stats.RangedHit, }, } -- s140496
+L["機器人重新調整伺服電動器以進行近戰攻擊。每%s秒將會提高%s%的攻擊速度並提高%s%的傷害。該效果可堆疊。"] = { false, { Stats.MeleeHaste, }, false, ignoreSum = true } -- s141395
+L["機器人穩固地面支架並啟動追蹤感應器以進行遠程攻擊。每%s秒將會提高%s%的施法速度並提高擊中目標的精準度。該效果可堆疊。"] = { false, { Stats.MeleeHaste, Stats.SpellHaste, }, ignoreSum = true } -- s141400
+L["治療一位盟友，使其每%s秒恢復%s點傷害，持續%s sec。"] = { false, { Stats.HealthRegen, }, false, } -- s141734
+L["召喚持續%s sec的落石之雨，使範圍內的所有敵人命中的機率降低%s%，並且每%s秒受到物理傷害。"] = { false, { Stats.MeleeHit, Stats.RangedHit, }, false, } -- s142139
+L["when you deal spell damage, you have a chance to gain blessing of the celestials, increasing your intellect by %s for %s sec"] = { { Stats.Intellect, }, false, ignoreSum = true } -- s142195
+L["你的火舌武器技能賦予額外%s點的法術能量。"] = { { Stats.SpellDamage, }, } -- s461993
+L["平衡錘(%s加速)"] = { { Stats.HasteRating, }, } -- e34
+L["%s盾牌格擋"] = { { Stats.BlockRating, }, } -- e763
+L["%s招架"] = { { Stats.ParryRating, }, } -- e863
+L["%s敏捷和%s閃躲"] = { { Stats.Agility, }, { Stats.DodgeRating, }, } -- e910
+L["%s法力和%s火焰抗性"] = { { Stats.Mana, }, { Stats.FireResistance, }, } -- e1523
+L["%s生命力和%s火焰抗性"] = { { Stats.Health, }, { Stats.FireResistance, }, } -- e1524
+L["%s護甲和%s火焰抗性"] = { { Stats.BonusArmor, }, { Stats.FireResistance, }, } -- e1525
+L["%s力量和%s火焰抗性"] = { { Stats.Strength, }, { Stats.FireResistance, }, } -- e1526
+L["%s耐力和%s火焰抗性"] = { { Stats.Stamina, }, { Stats.FireResistance, }, } -- e1527
+L["%s敏捷和%s火焰抗性"] = { { Stats.Agility, }, false, } -- e1528
+L["%s智力和%s火焰抗性"] = { { Stats.Intellect, }, false, } -- e1529
+L["%s精神和%s火焰抗性"] = { { Stats.Spirit, }, false, } -- e1530
+L["%s力量，%s護甲和%s火焰抗性"] = { { Stats.Strength, }, { Stats.BonusArmor, }, { Stats.FireResistance, }, } -- e1532
+L["%s智力，%s法力，和%s火焰抗性"] = { { Stats.Intellect, }, { Stats.Mana, }, { Stats.FireResistance, }, } -- e1543
+L["每%s秒恢復法力%s"] = { false, { Stats.GenericManaRegen, }, } -- e2363
+L["每%s秒恢復生命力%s"] = { { Stats.HealthRegen, }, { Stats.HealthRegen, }, } -- e2412
+L["%s近戰致命一擊"] = { { Stats.MeleeCritRating, }, } -- e2506
+L["%s遠程命中"] = { { Stats.RangedHitRating, }, } -- e2523
+L["%s閃躲%s耐力及%s招架"] = { { Stats.DodgeRating, }, { Stats.Stamina, }, { Stats.ParryRating, }, } -- e2583
+L["%s閃躲和%s耐力及%s智力"] = { { Stats.Intellect, }, { Stats.DodgeRating, }, { Stats.Stamina, }, } -- e2584
+L["%s攻擊強度/%s閃躲"] = { { Stats.GenericAttackPower, }, { Stats.DodgeRating, }, } -- e2585
+L["%s遠程攻擊強度/%s耐力/%s命中"] = { { Stats.RangedAttackPower, }, { Stats.Stamina, }, { Stats.HitRating, }, } -- e2586
+L["%s法術能量和%s命中"] = { { Stats.SpellPower, }, { Stats.HitRating, }, } -- e2588
+L["%s命中和%s致命一擊"] = { { Stats.HitRating, }, { Stats.CritRating, }, } -- e2658
+L["%s命中"] = { { Stats.HitRating, }, } -- e2697
+L["%s加速和%s智力"] = { { Stats.HasteRating, }, { Stats.Intellect, }, } -- e2705
+L["%s閃躲和%s耐力"] = { { Stats.DodgeRating, }, { Stats.Stamina, }, } -- e2706
+L["磨利(%s致命一擊和%s傷害)"] = { { Stats.CritRating, }, { Stats.AverageWeaponDamage, }, } -- e2713
+L["%s攻擊強度和%s致命一擊"] = { { Stats.GenericAttackPower, }, { Stats.CritRating, }, } -- e2717
+L["%s法術能量和%s致命一擊"] = { { Stats.SpellPower, }, { Stats.CritRating, }, } -- e2721
+L["瞄準鏡(%s致命一擊)"] = { { Stats.RangedCritRating, }, } -- e2724
+L["%s智力和%s加速"] = { { Stats.Intellect, }, { Stats.HasteRating, }, } -- e2742
+L["%s致命一擊和%s力量"] = { { Stats.CritRating, }, { Stats.Strength, }, } -- e2752
+L["%s命中和%s敏捷"] = { { Stats.HitRating, }, { Stats.Agility, }, } -- e2755
+L["%s敏捷和%s命中"] = { { Stats.Agility, }, { Stats.HitRating, }, } -- e2756
+L["%s致命一擊和%s耐力"] = { { Stats.CritRating, }, { Stats.Stamina, }, } -- e2757
+L["%spvp韌性"] = { { Stats.ResilienceRating, }, } -- e2759
+L["%s致命一擊和%s智力"] = { { Stats.Intellect, }, { Stats.CritRating, }, } -- e2760
+L["%s智力和%s致命一擊"] = { { Stats.Intellect, }, { Stats.CritRating, }, } -- e2761
+L["%s致命一擊和%spvp強度"] = { { Stats.CritRating, }, false, } -- e2762
+L["%s致命一擊和%s%法術反射"] = { { Stats.CritRating, }, false, } -- e2827
+L["%s致命一擊和略微提高奔跑速度"] = { { Stats.CritRating, }, } -- e2829
+L["%s致命一擊和縮短%s%緩速及定身持續時間"] = { { Stats.CritRating, }, false, } -- e2830
+L["%s閃躲和擊中時有機率恢愎生命力"] = { { Stats.DodgeRating, }, } -- e2833
+L["%s耐力和%s致命一擊"] = { { Stats.Stamina, }, { Stats.CritRating, }, } -- e2897
+L["%s力量和%s致命一擊"] = { { Stats.Strength, }, { Stats.CritRating, }, } -- e2915
+L["%s敏捷和%s致命一擊"] = { { Stats.Agility, }, { Stats.CritRating, }, } -- e2946
+L["增重(%s致命一擊和%s傷害)"] = { { Stats.CritRating, }, { Stats.AverageWeaponDamage, }, } -- e2955
+L["%s招架和%s閃躲"] = { { Stats.ParryRating, }, { Stats.DodgeRating, }, } -- e2991
+L["%s致命一擊和%s法術能量"] = { { Stats.CritRating, }, { Stats.SpellPower, }, } -- e2995
+L["%s致命一擊和%s攻擊強度"] = { { Stats.CritRating, }, { Stats.GenericAttackPower, }, } -- e2997
+L["%s耐力和%s閃躲及%spvp韌性"] = { { Stats.Stamina, }, { Stats.ResilienceRating, }, { Stats.DodgeRating, }, } -- e3000
+L["%s攻擊強度和%s命中"] = { { Stats.GenericAttackPower, }, { Stats.HitRating, }, } -- e3003
+L["%s耐力和%spvp韌性"] = { { Stats.Stamina, }, { Stats.ResilienceRating, }, } -- e3004
+L["%s致命一擊和%s精神"] = { { Stats.CritRating, }, { Stats.Spirit, }, } -- e3049
+L["%s力量和%s命中"] = { { Stats.Strength, }, { Stats.HitRating, }, } -- e3057
+L["%s致命一擊和%s每%s秒恢復法力"] = { { Stats.CritRating, }, { Stats.GenericManaRegen, }, false, } -- e3059
+L["%s智力和%s命中"] = { { Stats.Intellect, }, { Stats.HitRating, }, } -- e3061
+L["%s招架和%s耐力"] = { { Stats.ParryRating, }, { Stats.Stamina, }, } -- e3063
+L["%s智力和%spvp強度"] = { { Stats.Intellect, }, false, } -- e3066
+L["%s閃躲和%s命中"] = { { Stats.DodgeRating, }, { Stats.HitRating, }, } -- e3068
+L["%s智力和%spvp韌性"] = { { Stats.Intellect, }, { Stats.ResilienceRating, }, } -- e3069
+L["%s力量和%s閃躲"] = { { Stats.Strength, }, { Stats.DodgeRating, }, } -- e3075
+L["%s耐力和%s閃躲"] = { { Stats.Stamina, }, { Stats.DodgeRating, }, } -- e3078
+L["%s敏捷和%s韌性"] = { { Stats.Agility, }, { Stats.ResilienceRating, }, } -- e3079
+L["%spvp韌性和%s耐力"] = { { Stats.ResilienceRating, }, { Stats.Stamina, }, } -- e3084
+L["%s力量和%spvp韌性"] = { { Stats.Strength, }, { Stats.ResilienceRating, }, } -- e3087
+L["%s命中和%s閃躲"] = { { Stats.HitRating, }, { Stats.DodgeRating, }, } -- e3088
+L["%s命中和%s加速"] = { { Stats.HitRating, }, { Stats.HasteRating, }, } -- e3089
+L["%s招架和%spvp韌性"] = { { Stats.ParryRating, }, { Stats.ResilienceRating, }, } -- e3090
+L["%s熟練"] = { { Stats.ExpertiseRating, }, } -- e3094
+L["%s致命一擊和%s敏捷"] = { { Stats.Agility, }, { Stats.CritRating, }, } -- e3113
+L["%s敏捷和致命一擊效果提高%s%"] = { { Stats.Agility, }, false, } -- e3154
+L["%s致命一擊和%s%昏迷抗性"] = { { Stats.CritRating, }, false, } -- e3162
+L["%s%威脅值和%s招架"] = { false, { Stats.ParryRating, }, } -- e3253
+L["%s致命一擊和%s%致命一擊效果"] = { { Stats.CritRating, }, false, } -- e3261
+L["%s加速和%s耐力"] = { { Stats.HasteRating, }, { Stats.Stamina, }, } -- e3272
+L["%s閃躲和%s%盾牌格擋值"] = { { Stats.DodgeRating, }, false, } -- e3274
+L["%s熟練和%s耐力"] = { { Stats.ExpertiseRating, }, { Stats.Stamina, }, } -- e3398
+L["%s力量和%s加速"] = { { Stats.Strength, }, { Stats.HasteRating, }, } -- e3409
+L["%s敏捷和%spvp韌性"] = { { Stats.Agility, }, { Stats.ResilienceRating, }, } -- e3412
+L["%s敏捷和%s加速"] = { { Stats.Agility, }, { Stats.HasteRating, }, } -- e3413
+L["%s閃躲和%s招架"] = { { Stats.DodgeRating, }, { Stats.ParryRating, }, } -- e3418
+L["%s熟練和%s命中"] = { { Stats.ExpertiseRating, }, { Stats.HitRating, }, } -- e3420
+L["%s熟練和%s閃躲"] = { { Stats.ExpertiseRating, }, { Stats.DodgeRating, }, } -- e3421
+L["%spvp韌性和%s精神"] = { { Stats.ResilienceRating, }, { Stats.Spirit, }, } -- e3436
+L["%s加速和%s精神"] = { { Stats.HasteRating, }, { Stats.Spirit, }, } -- e3437
+L["%s加速和%spvp強度"] = { { Stats.HasteRating, }, false, } -- e3445
+L["%s精神和%spvp韌性"] = { { Stats.ResilienceRating, }, { Stats.Spirit, }, } -- e3513
+L["測試%s智力和每%s秒恢復法力%s"] = { { Stats.Intellect, }, false, { Stats.GenericManaRegen, }, } -- e3591
+L["%s遠程加速"] = { { Stats.RangedHasteRating, }, } -- e3607
+L["%s遠程致命一擊"] = { { Stats.RangedCritRating, }, } -- e3608
+L["%s精神和%s%極效治療效果"] = { { Stats.Spirit, }, false, } -- e3633
+L["%s致命一擊和縮短%s%恐懼持續時間"] = { { Stats.CritRating, }, false, } -- e3636
+L["%s致命一擊和縮短%s%昏迷持續時間"] = { { Stats.CritRating, }, false, } -- e3638
+L["%s加速和致命一擊時偶爾恢復生命力"] = { { Stats.HasteRating, }, } -- e3640
+L["%s致命一擊和%s%法力"] = { { Stats.CritRating, }, false, } -- e3641
+L["%s攻擊強度和%s致命一擊 (old)"] = { { Stats.GenericAttackPower, }, { Stats.CritRating, }, } -- e3676
+L["%s攻擊強度和%s耐力及%s命中"] = { { Stats.GenericAttackPower, }, { Stats.HitRating, }, { Stats.Stamina, }, } -- e3754
+L["%s攻擊強度和%s閃躲"] = { { Stats.GenericAttackPower, }, { Stats.DodgeRating, }, } -- e3755
+L["%s攻擊強度和%spvp韌性"] = { { Stats.GenericAttackPower, }, { Stats.ResilienceRating, }, } -- e3793
+L["%s法術能量和%spvp韌性"] = { { Stats.SpellPower, }, { Stats.ResilienceRating, }, } -- e3794
+L["%s致命一擊和縮短%s%陷阱/定身效果的持續時間"] = { { Stats.CritRating, }, false, } -- e3803
+L["%s精通和%s精神"] = { { Stats.Spirit, }, { Stats.MasteryRating, }, } -- e3885
+L["%s精通和%s命中"] = { { Stats.HitRating, }, { Stats.MasteryRating, }, } -- e3886
+L["%s精通"] = { { Stats.MasteryRating, }, } -- e3901
+L["%s招架和%s命中"] = { { Stats.ParryRating, }, { Stats.HitRating, }, } -- e3910
+L["%s力量和%s精通"] = { { Stats.Strength, }, { Stats.MasteryRating, }, } -- e3921
+L["%s敏捷和%s精通"] = { { Stats.Agility, }, { Stats.MasteryRating, }, } -- e3922
+L["%s招架和%s精通"] = { { Stats.ParryRating, }, { Stats.MasteryRating, }, } -- e3923
+L["%s智力和%s精通"] = { { Stats.Intellect, }, { Stats.MasteryRating, }, } -- e3924
+L["%s熟練和%s精通"] = { { Stats.ExpertiseRating, }, { Stats.MasteryRating, }, } -- e3925
+L["%s致命一擊和%s命中"] = { { Stats.CritRating, }, { Stats.HitRating, }, } -- e3929
+L["%s加速和%s命中"] = { { Stats.HasteRating, }, { Stats.HitRating, }, } -- e3932
+L["%s精通和%s耐力"] = { { Stats.MasteryRating, }, { Stats.Stamina, }, } -- e3933
+L["%s精通和略微提高奔跑速度"] = { { Stats.MasteryRating, }, } -- e4045
+L["%s精通和些許移動速度"] = { { Stats.MasteryRating, }, } -- e4104
+L["%spvp韌性和%spvp強度"] = { { Stats.ResilienceRating, }, false, } -- e4244
+L["%s精神和%s致命一擊"] = { { Stats.Spirit, }, { Stats.CritRating, }, } -- e4277
+L["%s命中和%s精通"] = { { Stats.MasteryRating, }, { Stats.HitRating, }, } -- e4280
+L["%spvp強度和%s精通"] = { false, { Stats.MasteryRating, }, } -- e4281
+L["%s精神和%s精通"] = { { Stats.MasteryRating, }, { Stats.Spirit, }, } -- e4282
+L["%s命中和%spvp韌性"] = { { Stats.HitRating, }, { Stats.ResilienceRating, }, } -- e4283
+L["%spvp強度和%spvp韌性"] = { false, { Stats.ResilienceRating, }, } -- e4284
+L["%s熟練和%s致命一擊"] = { { Stats.ExpertiseRating, }, { Stats.CritRating, }, } -- e4296
+L["%s熟練和%s加速"] = { { Stats.ExpertiseRating, }, { Stats.HasteRating, }, } -- e4304
+L["%s熟練和%spvp韌性"] = { { Stats.ExpertiseRating, }, { Stats.ResilienceRating, }, } -- e4313
+L["%s敏捷和移動速度略微提升"] = { { Stats.Agility, }, } -- e4428
+L["%s精通和移動速度略微提升"] = { { Stats.MasteryRating, }, } -- e4429
+L["%s命中和%s耐力"] = { { Stats.HitRating, }, { Stats.Stamina, }, } -- e4472
+L["%s力量和致命一擊效果提高%s%"] = { { Stats.Strength, }, false, } -- e4657
+L["%s智力和致命一擊效果提高%s%"] = { { Stats.Intellect, }, false, } -- e4658
+L["%s精神和致命一擊效果提高%s%"] = { { Stats.Spirit, }, false, } -- e4660
+L["%s耐力和昏迷持續時間縮短%s%"] = { { Stats.Stamina, }, false, } -- e4662
+L["%s耐力和從裝備獲得的護甲值提高%s%"] = { { Stats.Stamina, }, false, } -- e4667
+L["%s耐力和受到的法術傷害降低%s%"] = { { Stats.Stamina, }, false, } -- e4669
+L["%s力量%s招架%s致命一擊"] = { false, { Stats.ParryRating, }, false, } -- e4671
+L["%s力量和 %s致命一擊"] = { { Stats.Strength, }, { Stats.CritRating, }, } -- e4911
+L["%s智力和 %s致命一擊"] = { { Stats.Intellect, }, { Stats.CritRating, }, } -- e4915
+L["%s生命力上限"] = { { Stats.Health, }, } -- e4920
+L["%s力量和%spvp強度"] = { { Stats.Strength, }, false, } -- e4984
+L["%s敏捷和%spvp強度"] = { { Stats.Agility, }, false, } -- e4988
+L["%s力量(增幅)"] = { { Stats.Strength, }, } -- e4992
+L["%s耐力且被擊中時有機率使受到的傷害降低%s%"] = { { Stats.Stamina, }, false, } -- e5030
+L["%s智力，且施放對友方目標有益的法術時，有機率使你接下來%s秒內的法術不消耗法力。"] = { { Stats.Intellect, }, false, } -- e5031
+L["%s致命一擊且近戰或遠程攻擊命中時有機率獲得充蓄電能"] = { { Stats.CritRating, }, } -- e5032
+L["%s致命一擊且造成法術傷害時有機率獲得%s%法術加速"] = { { Stats.CritRating, }, { Stats.SpellHaste, }, } -- e5033
+L["%spvp強度和%s韌性"] = { false, { Stats.ResilienceRating, }, } -- e5034
