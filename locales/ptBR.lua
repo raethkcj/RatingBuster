@@ -314,9 +314,11 @@ L["numberPatterns"] = {
 -- Exclusions are used to ignore instances of separators that should not get separated
 L["exclusions"] = {
 }
+
 L["separators"] = {
 	"/", " and ", ",", "%. ", " for ", "&", ":", "\n"
 }
+
 --[[
 SPELL_STAT1_NAME = "Strength"
 SPELL_STAT2_NAME = "Agility"
@@ -328,11 +330,11 @@ L["statList"] = {
 	{"lowers intellect of target", false}, -- Brain Hacker
 	{"reduces an enemy's armor", false}, -- Annihilator
 
-	{SPELL_STAT1_NAME:lower(), StatLogic.Stats.Strength}, -- Strength
-	{SPELL_STAT2_NAME:lower(), StatLogic.Stats.Agility}, -- Agility
-	{SPELL_STAT3_NAME:lower(), StatLogic.Stats.Stamina}, -- Stamina
-	{SPELL_STAT4_NAME:lower(), StatLogic.Stats.Intellect}, -- Intellect
-	{SPELL_STAT5_NAME:lower(), StatLogic.Stats.Spirit}, -- Spirit
+	{SPELL_STAT1_NAME:lower(), StatLogic.Stats.Strength},
+	{SPELL_STAT2_NAME:lower(), StatLogic.Stats.Agility},
+	{SPELL_STAT3_NAME:lower(), StatLogic.Stats.Stamina},
+	{SPELL_STAT4_NAME:lower(), StatLogic.Stats.Intellect},
+	{SPELL_STAT5_NAME:lower(), StatLogic.Stats.Spirit},
 	{"defense rating", StatLogic.Stats.DefenseRating},
 	{DEFENSE:lower(), StatLogic.Stats.Defense},
 	{"dodge rating", StatLogic.Stats.DodgeRating},
@@ -361,7 +363,8 @@ L["statList"] = {
 	{"ranged hit rating", StatLogic.Stats.RangedHitRating},
 	{"hit rating", StatLogic.Stats.HitRating},
 
-	{"resilience", StatLogic.Stats.ResilienceRating}, -- resilience is implicitly a rating
+	{"resilience", StatLogic.Stats.ResilienceRating},
+	{ITEM_MOD_PVP_POWER_SHORT:lower(), StatLogic.Stats.PvpPowerRating},
 
 	{"spell haste rating", StatLogic.Stats.SpellHasteRating},
 	{"ranged haste rating", StatLogic.Stats.RangedHasteRating},
@@ -433,6 +436,14 @@ L[StatLogic.Stats.ArmorPenetrationRating] = ITEM_MOD_ARMOR_PENETRATION_RATING_SH
 -- Weapon Stats
 L[StatLogic.Stats.AverageWeaponDamage] = "Average Damage"
 L[StatLogic.Stats.WeaponDPS] = "Damage Per Second"
+
+L[StatLogic.Stats.Hit] = STAT_HIT_CHANCE
+L[StatLogic.Stats.Crit] = MELEE_CRIT_CHANCE
+L[StatLogic.Stats.Haste] = STAT_HASTE
+
+L[StatLogic.Stats.HitRating] = ITEM_MOD_HIT_RATING_SHORT
+L[StatLogic.Stats.CritRating] = ITEM_MOD_CRIT_RATING_SHORT
+L[StatLogic.Stats.HasteRating] = ITEM_MOD_HASTE_RATING_SHORT
 
 -- Melee Stats
 L[StatLogic.Stats.MeleeHit] = STAT_HIT_CHANCE
@@ -510,7 +521,10 @@ S[StatLogic.Stats.CritAvoidance] = "Crit Avoid"
 L[StatLogic.Stats.Resilience] = COMBAT_RATING_NAME15
 L[StatLogic.Stats.ResilienceRating] = COMBAT_RATING_NAME15.." "..RATING
 L[StatLogic.Stats.CritDamageReduction] = "Crit Damage Reduction"
-S[StatLogic.Stats.CritDamageReduction] = "Crit Dmg Taken"
+S[StatLogic.Stats.CritDamageReduction] = "Crit Dmg Reduction"
+L[StatLogic.Stats.PvPDamageReduction] = "PvP Damage Reduction"
+L[StatLogic.Stats.PvpPower] = ITEM_MOD_PVP_POWER_SHORT
+L[StatLogic.Stats.PvpPowerRating] = ITEM_MOD_PVP_POWER_SHORT .. " " .. RATING
 L[StatLogic.Stats.PvPDamageReduction] = "PvP Damage Taken"
 
 L[StatLogic.Stats.FireResistance] = RESISTANCE2_NAME

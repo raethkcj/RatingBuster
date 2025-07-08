@@ -323,9 +323,11 @@ L["numberPatterns"] = {
 -- Exclusions are used to ignore instances of separators that should not get separated
 L["exclusions"] = {
 }
+
 L["separators"] = {
 	"/", " and ", ",%f[^%d]", "%. ", " for ", "&", ":", "\n"
 }
+
 --[[
 SPELL_STAT1_NAME = "힘"
 SPELL_STAT2_NAME = "민첩성"
@@ -334,36 +336,46 @@ SPELL_STAT4_NAME = "지능"
 SPELL_STAT5_NAME = "정신력"
 --]]
 L["statList"] = {
-	{SPELL_STAT1_NAME:lower(), StatLogic.Stats.Strength}, -- Strength
-	{SPELL_STAT2_NAME:lower(), StatLogic.Stats.Agility}, -- Agility
-	{SPELL_STAT3_NAME:lower(), StatLogic.Stats.Stamina}, -- Stamina
-	{SPELL_STAT4_NAME:lower(), StatLogic.Stats.Intellect}, -- Intellect
-	{SPELL_STAT5_NAME:lower(), StatLogic.Stats.Spirit}, -- Spirit
+	{SPELL_STAT1_NAME:lower(), StatLogic.Stats.Strength},
+	{SPELL_STAT2_NAME:lower(), StatLogic.Stats.Agility},
+	{SPELL_STAT3_NAME:lower(), StatLogic.Stats.Stamina},
+	{SPELL_STAT4_NAME:lower(), StatLogic.Stats.Intellect},
+	{SPELL_STAT5_NAME:lower(), StatLogic.Stats.Spirit},
 	{"방어 숙련도", StatLogic.Stats.DefenseRating},
 	{DEFENSE:lower(), StatLogic.Stats.Defense},
 	{"회피 숙련도", StatLogic.Stats.DodgeRating},
+	{"회피", StatLogic.Stats.DodgeRating},
 	{"방패 막기 숙련도", StatLogic.Stats.BlockRating}, -- block enchant: "+10 Shield Block Rating"
+	{"방패 막기", StatLogic.Stats.BlockRating},
 	{"무기 막기 숙련도", StatLogic.Stats.ParryRating},
+	{"무기 막기", StatLogic.Stats.ParryRating},
 
+	{"주문력", StatLogic.Stats.SpellPower},
 	{"주문 극대화 적중도", StatLogic.Stats.SpellCritRating},
 	{"주문의 극대화 적중도", StatLogic.Stats.SpellCritRating},
 	{"원거리 치명타 적중도", StatLogic.Stats.RangedCritRating},
 	{"치명타 적중도", StatLogic.Stats.CritRating},
+	{"치명타 및 극대화", StatLogic.Stats.CritRating},
 	{"근접 치명타 적중도", StatLogic.Stats.MeleeCritRating},
 
 	--		{"주문의 적중도", StatLogic.Stats.SpellHitRating},
 	{"주문 적중도", StatLogic.Stats.SpellHitRating},
 	{"원거리 적중도", StatLogic.Stats.RangedHitRating},
 	{"적중도", StatLogic.Stats.HitRating},
+	{"적중", StatLogic.Stats.HitRating},
 
-	{"탄력도", StatLogic.Stats.ResilienceRating}, -- resilience is implicitly a rating
+	{"탄력도", StatLogic.Stats.ResilienceRating},
+	{"탄력", StatLogic.Stats.ResilienceRating},
+	{ITEM_MOD_PVP_POWER_SHORT:lower(), StatLogic.Stats.PvpPowerRating},
 
 	{"주문 시전 가속도", StatLogic.Stats.SpellHasteRating},
 	{"원거리 공격 가속도", StatLogic.Stats.RangedHasteRating},
 	{"공격 가속도", StatLogic.Stats.HasteRating},
+	{"가속", StatLogic.Stats.HasteRating},
 	{"가속도", StatLogic.Stats.HasteRating}, -- [Drums of Battle]
 
 	{"숙련도", StatLogic.Stats.ExpertiseRating},
+	{"숙련", StatLogic.Stats.ExpertiseRating},
 
 	{SPELL_STATALL:lower(), StatLogic.Stats.AllStats},
 
@@ -429,6 +441,14 @@ L[StatLogic.Stats.ArmorPenetrationRating] = "방어도 관통도 합계"
 -- Weapon Stats
 L[StatLogic.Stats.AverageWeaponDamage] = "근접 무기 "..DAMAGE -- DAMAGE = "Damage"
 L[StatLogic.Stats.WeaponDPS] = "초당 공격력"
+
+L[StatLogic.Stats.Hit] = STAT_HIT_CHANCE
+L[StatLogic.Stats.Crit] = MELEE_CRIT_CHANCE
+L[StatLogic.Stats.Haste] = STAT_HASTE
+
+L[StatLogic.Stats.HitRating] = ITEM_MOD_HIT_RATING_SHORT
+L[StatLogic.Stats.CritRating] = ITEM_MOD_CRIT_RATING_SHORT
+L[StatLogic.Stats.HasteRating] = ITEM_MOD_HASTE_RATING_SHORT
 
 -- Melee Stats
 L[StatLogic.Stats.MeleeHit] = "적중률"
@@ -507,6 +527,9 @@ L[StatLogic.Stats.Resilience] = COMBAT_RATING_NAME15
 L[StatLogic.Stats.ResilienceRating] = "탄력도"
 L[StatLogic.Stats.CritDamageReduction] = "치명타 피해 감소"
 S[StatLogic.Stats.CritDamageReduction] = "가질 치명타 데미지"
+L[StatLogic.Stats.PvPDamageReduction] = "PvP Damage Reduction"
+L[StatLogic.Stats.PvpPower] = ITEM_MOD_PVP_POWER_SHORT
+L[StatLogic.Stats.PvpPowerRating] = ITEM_MOD_PVP_POWER_SHORT .. " " .. RATING
 L[StatLogic.Stats.PvPDamageReduction] = "PvP Damage Taken"
 
 L[StatLogic.Stats.FireResistance] = "화염 저항력"

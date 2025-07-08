@@ -339,9 +339,11 @@ L["numberPatterns"] = {
 -- Exclusions are used to ignore instances of separators that should not get separated
 L["exclusions"] = {
 }
+
 L["separators"] = {
 	"/", " et ", ",", "%. ", " pour ", "&", " : ", "\n"
 }
+
 --[[
 SPELL_STAT1_NAME = "Strength"
 SPELL_STAT2_NAME = "Agility"
@@ -350,19 +352,27 @@ SPELL_STAT4_NAME = "Intellect"
 SPELL_STAT5_NAME = "Spirit"
 --]]
 L["statList"] = {
-	{SPELL_STAT1_NAME:lower(), StatLogic.Stats.Strength}, -- Strength
-	{SPELL_STAT2_NAME:lower(), StatLogic.Stats.Agility}, -- Agility
-	{SPELL_STAT3_NAME:lower(), StatLogic.Stats.Stamina}, -- Stamina
-	{SPELL_STAT4_NAME:lower(), StatLogic.Stats.Intellect}, -- Intellect
-	{SPELL_STAT5_NAME:lower(), StatLogic.Stats.Spirit}, -- Spirit
+	{SPELL_STAT1_NAME:lower(), StatLogic.Stats.Strength},
+	{SPELL_STAT2_NAME:lower(), StatLogic.Stats.Agility},
+	{SPELL_STAT3_NAME:lower(), StatLogic.Stats.Stamina},
+	{SPELL_STAT4_NAME:lower(), StatLogic.Stats.Intellect},
+	{"esprits", false},
+	{"esprit hurleur", false},
+	{"l'esprit d'eskhandar", false},
+	{SPELL_STAT5_NAME:lower(), StatLogic.Stats.Spirit},
 	{"score de défense", StatLogic.Stats.DefenseRating},
+	{"défense de huran", false},
 	{DEFENSE:lower(), StatLogic.Stats.Defense},
 	{"score d’esquive", StatLogic.Stats.DodgeRating},
 	{"score d'esquive", StatLogic.Stats.DodgeRating},
+	{"esquive", StatLogic.Stats.DodgeRating},
 	{"score de blocage", StatLogic.Stats.BlockRating}, --Ench. de bouclier (Blocage inférieur)
-	{"score de Maîtrise du blocage", StatLogic.Stats.BlockRating}, --Ench. de bouclier (Maîtrise du blocage)
+	{"score de maîtrise du blocage", StatLogic.Stats.BlockRating}, --Ench. de bouclier (Maîtrise du blocage)
+	{"blocage", StatLogic.Stats.BlockRating}, --Ench. de bouclier (Blocage inférieur)
 	{"score de parade", StatLogic.Stats.ParryRating},
+	{"parade", StatLogic.Stats.ParryRating},
 
+	{"puissance des sorts", StatLogic.Stats.SpellPower},
 	{"score de critique des sorts", StatLogic.Stats.SpellCritRating},
 	{"score de coup critique des sorts", StatLogic.Stats.SpellCritRating},
 	{"score de toucher critique des sorts", StatLogic.Stats.SpellCritRating},
@@ -370,21 +380,27 @@ L["statList"] = {
 	{"score de coup critique à distance", StatLogic.Stats.RangedCritRating},
 	{"score de toucher critique à distance", StatLogic.Stats.RangedCritRating},
 	{"score de critique", StatLogic.Stats.CritRating}, --ex : https://fr.tbc.wowhead.com/item=30565/opale-de-feu-dassassin
+	{"score de crit.", StatLogic.Stats.CritRating},
 	{"score de coup critique", StatLogic.Stats.CritRating},
 	{"score de toucher critique", StatLogic.Stats.CritRating},
 
 	{"score de toucher des sorts", StatLogic.Stats.SpellHitRating},
 	{"score de toucher à distance", StatLogic.Stats.RangedHitRating},
 	{"score de toucher", StatLogic.Stats.HitRating},
+	{"toucher", StatLogic.Stats.HitRating},
 
-	{"résilience", StatLogic.Stats.ResilienceRating}, -- resilience is implicitly a rating
+	{"résilience (jcj)", StatLogic.Stats.ResilienceRating},
+	{"résilience", StatLogic.Stats.ResilienceRating},
+	{ITEM_MOD_PVP_POWER_SHORT:lower(), StatLogic.Stats.PvpPowerRating},
 
 	{"score de hâte des sorts", StatLogic.Stats.SpellHasteRating},
 	{"score de hâte à distance", StatLogic.Stats.RangedHasteRating},
 	{"score de hâte", StatLogic.Stats.HasteRating},
+	{"hâte", StatLogic.Stats.HasteRating},
 	{"score de hâte en mêlée", StatLogic.Stats.MeleeHasteRating}, -- [Tambours de Bataille] "score de hâte en mêlée, à distance et avec les sorts" complete drums line
 	{"score d’expertise", StatLogic.Stats.ExpertiseRating},
 	{"score d'expertise", StatLogic.Stats.ExpertiseRating},
+	{"expertise", StatLogic.Stats.ExpertiseRating},
 
 	{SPELL_STATALL:lower(), StatLogic.Stats.AllStats},
 
@@ -450,6 +466,14 @@ L[StatLogic.Stats.ArmorPenetrationRating] = "Score de pénétration d'armure"
 -- Weapon Stats
 L[StatLogic.Stats.AverageWeaponDamage] = "Dégâts de l'arme"
 L[StatLogic.Stats.WeaponDPS] = "Dégâts par seconde"
+
+L[StatLogic.Stats.Hit] = STAT_HIT_CHANCE
+L[StatLogic.Stats.Crit] = MELEE_CRIT_CHANCE
+L[StatLogic.Stats.Haste] = STAT_HASTE
+
+L[StatLogic.Stats.HitRating] = ITEM_MOD_HIT_RATING_SHORT
+L[StatLogic.Stats.CritRating] = ITEM_MOD_CRIT_RATING_SHORT
+L[StatLogic.Stats.HasteRating] = ITEM_MOD_HASTE_RATING_SHORT
 
 -- Melee Stats
 L[StatLogic.Stats.MeleeHit] = "Toucher"
@@ -528,6 +552,9 @@ L[StatLogic.Stats.Resilience] = COMBAT_RATING_NAME15
 L[StatLogic.Stats.ResilienceRating] = "Score de résilience"
 L[StatLogic.Stats.CritDamageReduction] = "Diminution des dégâts des coups critiques en mêlée"
 S[StatLogic.Stats.CritDamageReduction] = "dégâts CC"
+L[StatLogic.Stats.PvPDamageReduction] = "PvP Damage Reduction"
+L[StatLogic.Stats.PvpPower] = ITEM_MOD_PVP_POWER_SHORT
+L[StatLogic.Stats.PvpPowerRating] = ITEM_MOD_PVP_POWER_SHORT .. " " .. RATING
 L[StatLogic.Stats.PvPDamageReduction] = "PvP Damage Taken"
 
 L[StatLogic.Stats.FireResistance] = "Résistance au Feu"

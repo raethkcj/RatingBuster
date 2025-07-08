@@ -462,6 +462,26 @@ elseif addon.class == "HUNTER" then
 				["value"] = 0.1,
 			},
 		},
+		["MOD_AP"] = {
+			-- Set: Dawnstalker Armor (Wicked Shot)
+			{
+				["set"] = 1937,
+				["pieces"] = 4,
+				["value"] = 0.25,
+				["aura"] = 1226136,
+				["rune"] = true,
+			},
+		},
+		["MOD_RANGED_AP"] = {
+			-- Set: Dawnstalker Armor (Wicked Shot)
+			{
+				["set"] = 1937,
+				["pieces"] = 4,
+				["value"] = 0.25,
+				["aura"] = 1226136,
+				["rune"] = true,
+			},
+		},
 	}
 elseif addon.class == "MAGE" then
 	StatLogic.StatModTable["MAGE"] = {
@@ -514,7 +534,7 @@ elseif addon.class == "MAGE" then
 				["value"] = 0.15,
 				["aura"] = 6117,
 				["rune"] = true,
-				["group"] = addon.ExclusiveGroup.SoulEngraving,
+				["group"] = addon.ExclusiveGroup.SetBonus,
 			},
 			-- Passive (Soul of the Magical Armorer)
 			{
@@ -522,7 +542,7 @@ elseif addon.class == "MAGE" then
 				["value"] = 0.15,
 				["aura"] = 6117,
 				["rune"] = true,
-				["group"] = addon.ExclusiveGroup.SoulEngraving,
+				["group"] = addon.ExclusiveGroup.SetBonus,
 			},
 			-- Rune: Enlightenment
 			{
@@ -614,7 +634,16 @@ elseif addon.class == "PALADIN" then
 				},
 				["aura"] = 440668,
 				["rune"] = true,
-			}
+			},
+			-- Set: Inquisition Warplate
+			{
+				["set"] = 1940,
+				["pieces"] = 6,
+				["stack"] = 0.15,
+				["max_stacks"] = 3,
+				["aura"] = 1226464,
+				["rune"] = true,
+			},
 		},
 		-- Paladin: Toughness (Rank 5) - 2,5
 		--          Increases your armor value from items by 2%/4%/6%/8%/10%.
@@ -645,7 +674,7 @@ elseif addon.class == "PALADIN" then
 				["tab"] = 2,
 				["num"] = 12,
 				["aura"] = 20911,
-				["group"] = addon.ExclusiveGroup.SoulEngraving,
+				["group"] = addon.ExclusiveGroup.SetBonus,
 			},
 			-- Passive: Soul of the Ironclad (Blessing of Sanctuary)
 			{
@@ -655,7 +684,7 @@ elseif addon.class == "PALADIN" then
 				["tab"] = 2,
 				["num"] = 12,
 				["aura"] = 20911,
-				["group"] = addon.ExclusiveGroup.SoulEngraving,
+				["group"] = addon.ExclusiveGroup.SetBonus,
 			},
 		},
 		["MOD_AGI"] = {
@@ -668,7 +697,7 @@ elseif addon.class == "PALADIN" then
 				["tab"] = 2,
 				["num"] = 12,
 				["aura"] = 20911,
-				["group"] = addon.ExclusiveGroup.SoulEngraving,
+				["group"] = addon.ExclusiveGroup.SetBonus,
 			},
 			-- Passive: Soul of the Ironclad (Blessing of Sanctuary)
 			{
@@ -678,7 +707,7 @@ elseif addon.class == "PALADIN" then
 				["tab"] = 2,
 				["num"] = 12,
 				["aura"] = 20911,
-				["group"] = addon.ExclusiveGroup.SoulEngraving,
+				["group"] = addon.ExclusiveGroup.SetBonus,
 			},
 		},
 		["MOD_STA"] = {
@@ -691,7 +720,7 @@ elseif addon.class == "PALADIN" then
 				["tab"] = 2,
 				["num"] = 12,
 				["aura"] = 20911,
-				["group"] = addon.ExclusiveGroup.SoulEngraving,
+				["group"] = addon.ExclusiveGroup.SetBonus,
 			},
 			-- Passive: Soul of the Ironclad (Blessing of Sanctuary)
 			{
@@ -701,7 +730,7 @@ elseif addon.class == "PALADIN" then
 				["tab"] = 2,
 				["num"] = 12,
 				["aura"] = 20911,
-				["group"] = addon.ExclusiveGroup.SoulEngraving,
+				["group"] = addon.ExclusiveGroup.SetBonus,
 			},
 		},
 		-- Paladin: Divine Intellect (Rank 5) - 1,2
@@ -723,7 +752,7 @@ elseif addon.class == "PALADIN" then
 				["tab"] = 2,
 				["num"] = 12,
 				["aura"] = 20911,
-				["group"] = addon.ExclusiveGroup.SoulEngraving,
+				["group"] = addon.ExclusiveGroup.SetBonus,
 			},
 			-- Passive: Soul of the Ironclad (Blessing of Sanctuary)
 			{
@@ -733,7 +762,7 @@ elseif addon.class == "PALADIN" then
 				["tab"] = 2,
 				["num"] = 12,
 				["aura"] = 20911,
-				["group"] = addon.ExclusiveGroup.SoulEngraving,
+				["group"] = addon.ExclusiveGroup.SetBonus,
 			},
 		},
 		["MOD_SPI"] = {
@@ -746,7 +775,7 @@ elseif addon.class == "PALADIN" then
 				["tab"] = 2,
 				["num"] = 12,
 				["aura"] = 20911,
-				["group"] = addon.ExclusiveGroup.SoulEngraving,
+				["group"] = addon.ExclusiveGroup.SetBonus,
 			},
 			-- Passive: Soul of the Ironclad (Blessing of Sanctuary)
 			{
@@ -756,7 +785,7 @@ elseif addon.class == "PALADIN" then
 				["tab"] = 2,
 				["num"] = 12,
 				["aura"] = 20911,
-				["group"] = addon.ExclusiveGroup.SoulEngraving,
+				["group"] = addon.ExclusiveGroup.SetBonus,
 			},
 		},
 		["ADD_SPELL_DMG_MOD_INT"] = {
@@ -777,8 +806,7 @@ elseif addon.class == "PALADIN" then
 			},
 		},
 		["MOD_BLOCK_VALUE"] = {
-			-- Paladin: Shield Specialization (Rank 3) - 2,8
-			--          Increases the amount of damage absorbed by your shield by 10%/20%/30%.
+			-- Talent: Shield Specialization
 			{
 				["tab"] = 2,
 				["num"] = 8,
@@ -786,13 +814,28 @@ elseif addon.class == "PALADIN" then
 					0.1, 0.2, 0.3,
 				},
 			},
-			-- Paladin: Aegis - Rune
-			--   Increases your block value by 30%
+			-- Rune: Aegis
 			{
 				["known"] = 425589,
 				["rune"] = true,
 				["value"] = 0.3,
-			}
+			},
+			-- Set: Inquisition Bulwark (Righteous Shield)
+			{
+				["set"] = 1942,
+				["pieces"] = 2,
+				["value"] = 0.3,
+				["aura"] = 1226466,
+				["rune"] = true,
+			},
+			-- Set: Inquisition Bulwark (Avenging Shield)
+			{
+				["set"] = 1942,
+				["pieces"] = 6,
+				["value"] = 0.3,
+				["aura"] = 1233525,
+				["rune"] = true,
+			},
 		},
 		["ADD_SPELL_DMG_MOD_DEFENSE"] = {
 			-- Buff: Defender's Resolve
@@ -809,6 +852,17 @@ elseif addon.class == "PALADIN" then
 				["rune"] = true,
 				["value"] = 4,
 				["aura"] = 460200,
+			},
+		},
+		["MOD_SPELL_DMG"] = {
+			-- Set: Inquisition Shockplate
+			{
+				["set"] = 1963,
+				["pieces"] = 6,
+				["stack"] = 0.15,
+				["max_stacks"] = 3,
+				["aura"] = 1240574,
+				["rune"] = true,
 			},
 		},
 	}
@@ -861,14 +915,14 @@ elseif addon.class == "PRIEST" then
 				["pieces"] = 2,
 				["value"] = 0.15,
 				["rune"] = true,
-				["group"] = addon.ExclusiveGroup.SoulEngraving,
+				["group"] = addon.ExclusiveGroup.SetBonus,
 			},
 			-- Passive: Soul of the Faithful
 			{
 				["known"] = 1220112,
 				["value"] = 0.15,
 				["rune"] = true,
-				["group"] = addon.ExclusiveGroup.SoulEngraving,
+				["group"] = addon.ExclusiveGroup.SetBonus,
 			},
 		},
 		-- Priest: Spiritual Guidance (Rank 5) - 2,14
@@ -946,19 +1000,43 @@ elseif addon.class == "ROGUE" then
 			{
 				["known"] = 400016,
 				["rune"] = true,
-				["stack"] = 0.06,
+				["stack"] = 0.05,
 				["max_stacks"] = 5,
 				["aura"] = 400015,
+				["group"] = addon.ExclusiveGroup.SetBonus,
+			},
+			-- Set: Duskwraith Leathers (Rolling with the Punches)
+			{
+				["set"] = 1935,
+				["pieces"] = 6,
+				["known"] = 400016,
+				["rune"] = true,
+				["stack"] = 0.07,
+				["max_stacks"] = 5,
+				["aura"] = 400015,
+				["group"] = addon.ExclusiveGroup.SetBonus,
 			},
 		},
 		["MOD_ARMOR"] = {
 			-- Set: Bloodfang Battlearmor (Rolling with the Punches)
 			{
+				["set"] = 1815,
+				["pieces"] = 4,
 				["known"] = 400016,
 				["rune"] = true,
 				["stack"] = 0.20,
 				["max_stacks"] = 5,
 				["aura"] = 400015,
+				["group"] = addon.ExclusiveGroup.SetBonus,
+			},
+			-- Passive: Soul of the Black Belt (Rolling with the Punches)
+			{
+				["known"] = 1220023,
+				["rune"] = true,
+				["stack"] = 0.20,
+				["max_stacks"] = 5,
+				["aura"] = 400015,
+				["group"] = addon.ExclusiveGroup.SetBonus,
 			},
 		},
 		[StatLogic.Stats.MeleeCrit] = {
@@ -993,7 +1071,7 @@ elseif addon.class == "ROGUE" then
 					[Enum.ItemWeaponSubclass.Dagger] = true,
 				},
 				["rune"] = true,
-				["group"] = addon.ExclusiveGroup.SoulEngraving,
+				["group"] = addon.ExclusiveGroup.SetBonus,
 			},
 			-- Passive: Soul of the Shiv Savant
 			{
@@ -1003,7 +1081,7 @@ elseif addon.class == "ROGUE" then
 					[Enum.ItemWeaponSubclass.Dagger] = true,
 				},
 				["rune"] = true,
-				["group"] = addon.ExclusiveGroup.SoulEngraving,
+				["group"] = addon.ExclusiveGroup.SetBonus,
 			},
 		},
 		[StatLogic.Stats.WeaponSkill] = {
@@ -1101,7 +1179,7 @@ elseif addon.class == "SHAMAN" then
 				["max_stacks"] = 3,
 				["aura"] = 467910,
 				["rune"] = true,
-				["group"] = addon.ExclusiveGroup.SoulEngraving,
+				["group"] = addon.ExclusiveGroup.SetBonus,
 			},
 			-- Passive: Soul of the Spiritual Bulwark (Elemental Shield)
 			{
@@ -1110,7 +1188,7 @@ elseif addon.class == "SHAMAN" then
 				["max_stacks"] = 3,
 				["aura"] = 467910,
 				["rune"] = true,
-				["group"] = addon.ExclusiveGroup.SoulEngraving,
+				["group"] = addon.ExclusiveGroup.SetBonus,
 			},
 		},
 		["MOD_AP"] = {
@@ -1119,7 +1197,7 @@ elseif addon.class == "SHAMAN" then
 				["known"] = 436364,
 				["rune"] = true,
 				["aura"] = 436365,
-				["value"] = 0.15,
+				["value"] = 0.10,
 			},
 		},
 		-- Shaman: Toughness (Rank 5) - 2,11
@@ -1182,7 +1260,7 @@ elseif addon.class == "SHAMAN" then
 			{
 				["known"] = 408531,
 				["rune"] = true,
-				["value"] = 0.3,
+				["value"] = 0.25,
 				["aura"] = 408680,
 			},
 			-- Set: Stormcaller's Resolve (Pack Leader)
@@ -1191,16 +1269,16 @@ elseif addon.class == "SHAMAN" then
 				["set"] = 1852,
 				["pieces"] = 4,
 				["aura"] = 1213939,
-				["value"] = 0.10,
-				["group"] = addon.ExclusiveGroup.SoulEngraving,
+				["value"] = 0.5,
+				["group"] = addon.ExclusiveGroup.SetBonus,
 			},
 			-- Passive: Soul of the True Alpha (Pack Leader)
 			{
 				["rune"] = true,
 				["known"] = 1220246,
 				["aura"] = 1213939,
-				["value"] = 0.10,
-				["group"] = addon.ExclusiveGroup.SoulEngraving,
+				["value"] = 0.5,
+				["group"] = addon.ExclusiveGroup.SetBonus,
 			},
 		},
 		["ADD_AP_MOD_INT"] = {
@@ -1288,7 +1366,7 @@ elseif addon.class == "WARLOCK" then
 				["known"] = 412798,
 				["rune"] = true,
 				["aura"] = 412800,
-				["value"] = 1,
+				["value"] = 0.7,
 			}
 		},
 		-- Warlock: Demonic Pact - Rune
@@ -1367,12 +1445,19 @@ elseif addon.class == "WARLOCK" then
 				["value"] = 0.30,
 				["aura"] = 426195,
 			},
+			-- Rune: Metamorphosis
+			{
+				["known"] = 403789,
+				["rune"] = true,
+				["value"] = 0.15,
+				["aura"] = 403789,
+			}
 		},
 		["ADD_SPELL_DMG_MOD_DEFENSE"] = {
 			-- Rune: Metamorphosis (Defender's Resolve)
 			{
 				["rune"] = true,
-				["value"] = 2,
+				["value"] = 4,
 				["aura"] = 460200,
 			}
 		},
@@ -1423,7 +1508,17 @@ elseif addon.class == "WARRIOR" then
 				["stance"] = "interface\\icons\\achievement_featsofstrength_gladiator_08",
 				["rune"] = true,
 				["value"] = -0.30,
-			}
+				["group"] = addon.ExclusiveGroup.SetBonus,
+			},
+			-- Set: Lightbreaker's Battlegear
+			{
+				["set"] = 1933,
+				["pieces"] = 6,
+				["stance"] = "interface\\icons\\achievement_featsofstrength_gladiator_08",
+				["rune"] = true,
+				["value"] = 0,
+				["group"] = addon.ExclusiveGroup.SetBonus,
+			},
 		},
 		[StatLogic.Stats.MeleeCrit] = {
 			-- Talent: Axe Specialization
@@ -1465,7 +1560,7 @@ elseif addon.class == "WARRIOR" then
 				["known"] = 426940,
 				["rune"] = true,
 				["aura"] = 426940,
-				["value"] = 0.10,
+				["value"] = 0.15,
 			},
 		},
 		["ADD_AP_MOD_DEFENSE"] = {
@@ -1476,6 +1571,16 @@ elseif addon.class == "WARRIOR" then
 				["aura"] = 460171,
 			}
 		},
+		["ADD_STR_MOD_DEFENSE"] = {
+			-- Set: Lightbreaker's Battlegear (Recklessness)
+			{
+				["set"] = 1933,
+				["pieces"] = 4,
+				["value"] = 0.5,
+				["aura"] = 1234031,
+				["rune"] = true,
+			},
+		}
 	}
 end
 

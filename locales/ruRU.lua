@@ -343,6 +343,7 @@ L["numberPatterns"] = {
 -- Exclusions are used to ignore instances of separators that should not get separated
 L["exclusions"] = {
 }
+
 L["separators"] = {
 	"/", " и ", ",%f[^%d]", "%. ", " для ", "&", ": %f[^%d]", "\n",
 	-- Fix for [Mirror of Truth]
@@ -350,6 +351,7 @@ L["separators"] = {
 	-- 1000 was falsely detected detected as ranged critical strike
 	"повысить вашу",
 }
+
 --[[
 SPELL_STAT1_NAME = "Strength"
 SPELL_STAT2_NAME = "Agility"
@@ -387,18 +389,18 @@ L["statList"] = {
 	{"брони", StatLogic.Stats.Armor},
 	{"броню", StatLogic.Stats.Armor},
 	{"броне", StatLogic.Stats.Armor},
-	{"сила", StatLogic.Stats.Strength}, -- Strength
-	{"силу", StatLogic.Stats.Strength}, -- Strength
-	{"силе", StatLogic.Stats.Strength}, -- Strength
-	{"силы", StatLogic.Stats.Strength}, -- Strength
-	{"ловкость", StatLogic.Stats.Agility}, -- Agility
-	{"ловкости", StatLogic.Stats.Agility}, -- Agility
-	{"выносливость", StatLogic.Stats.Stamina}, -- Stamina
-	{"выносливости", StatLogic.Stats.Stamina}, -- Stamina
-	{"интеллекту", StatLogic.Stats.Intellect}, -- Intellect
-	{"интеллект", StatLogic.Stats.Intellect}, -- Intellect
-	{"духу", StatLogic.Stats.Spirit}, -- Spirit
-	{"дух", StatLogic.Stats.Spirit}, -- Spirit
+	{"сила", StatLogic.Stats.Strength},
+	{"силу", StatLogic.Stats.Strength},
+	{"силе", StatLogic.Stats.Strength},
+	{"силы", StatLogic.Stats.Strength},
+	{"ловкость", StatLogic.Stats.Agility},
+	{"ловкости", StatLogic.Stats.Agility},
+	{"выносливость", StatLogic.Stats.Stamina},
+	{"выносливости", StatLogic.Stats.Stamina},
+	{"интеллекту", StatLogic.Stats.Intellect},
+	{"интеллект", StatLogic.Stats.Intellect},
+	{"духу", StatLogic.Stats.Spirit},
+	{"дух", StatLogic.Stats.Spirit},
 
 	{"рейтинг защиты", StatLogic.Stats.DefenseRating},
 	{"рейтингу защиты", StatLogic.Stats.DefenseRating},
@@ -409,6 +411,7 @@ L["statList"] = {
 	{"рейтингу уклонения", StatLogic.Stats.DodgeRating},
 	{"рейтинга уклонения", StatLogic.Stats.DodgeRating},
 	{"эффективность уклонения", StatLogic.Stats.DodgeRating},
+	{"уклонению", StatLogic.Stats.DodgeRating},
 	{"рейтинг блокирования щитом", StatLogic.Stats.BlockRating}, -- block enchant: "+10 Shield Block Rating"
 	{"рейтинга блокирования щитом", StatLogic.Stats.BlockRating},
 	{"рейтингу блокирования щитом", StatLogic.Stats.BlockRating},
@@ -416,10 +419,13 @@ L["statList"] = {
 	{"рейтинг блока", StatLogic.Stats.BlockRating},
 	{"рейтинга блока", StatLogic.Stats.BlockRating},
 	{"рейтингу блока", StatLogic.Stats.BlockRating},
+	{"блокированию", StatLogic.Stats.BlockRating},
 	{"рейтинг парирования", StatLogic.Stats.ParryRating},
 	{"рейтинга парирования", StatLogic.Stats.ParryRating},
 	{"рейтингу парирования", StatLogic.Stats.ParryRating},
+	{"парированию", StatLogic.Stats.ParryRating},
 
+	{"к силе заклинаний", StatLogic.Stats.SpellPower},
 	{"рейтинг критического удара %(заклинания%)", StatLogic.Stats.SpellCritRating},
 	{"рейтингу критического удара %(заклинания%)", StatLogic.Stats.SpellCritRating},
 	{"рейтинга критического удара %(заклинания%)", StatLogic.Stats.SpellCritRating},
@@ -433,6 +439,7 @@ L["statList"] = {
 	{"к рейтингу критического эффекта", StatLogic.Stats.CritRating},
 	{"рейтингу критического удара", StatLogic.Stats.CritRating},
 	{"рейтинга критического удара", StatLogic.Stats.CritRating},
+	{"к показателю критического удара", StatLogic.Stats.CritRating},
 	{"рейтинг крит. удара оруж. ближнего боя", StatLogic.Stats.MeleeCritRating},
 
 	{"рейтинг меткости %(заклинания%)", StatLogic.Stats.SpellHitRating},
@@ -445,10 +452,13 @@ L["statList"] = {
 	{"рейтинг меткости", StatLogic.Stats.HitRating},
 	{"рейтинга меткости", StatLogic.Stats.HitRating},
 	{"рейтингу меткости", StatLogic.Stats.HitRating},
+	{"меткости", StatLogic.Stats.HitRating},
 
-	{"рейтинг устойчивости", StatLogic.Stats.ResilienceRating}, -- resilience is implicitly a rating
+	{"рейтинг устойчивости", StatLogic.Stats.ResilienceRating},
 	{"рейтингу устойчивости", StatLogic.Stats.ResilienceRating},
 	{"рейтинга устойчивости", StatLogic.Stats.ResilienceRating},
+	{"устойчивости", StatLogic.Stats.ResilienceRating},
+	{ITEM_MOD_PVP_POWER_SHORT:lower(), StatLogic.Stats.PvpPowerRating},
 
 	{"рейтинг скорости %(заклинания%)", StatLogic.Stats.SpellHasteRating},
 	{"рейтингу скорости %(заклинания%)", StatLogic.Stats.SpellHasteRating},
@@ -461,8 +471,10 @@ L["statList"] = {
 	{"рейтинг скорости", StatLogic.Stats.HasteRating},
 	{"рейтингу скорости", StatLogic.Stats.HasteRating},
 	{"рейтинга скорости", StatLogic.Stats.HasteRating},
+	{"скорости", StatLogic.Stats.HasteRating},
 
 	{"мастерства", StatLogic.Stats.ExpertiseRating},
+	{"мастерству", StatLogic.Stats.ExpertiseRating},
 
 	{SPELL_STATALL:lower(), StatLogic.Stats.AllStats},
 
@@ -525,6 +537,14 @@ L[StatLogic.Stats.ArmorPenetrationRating] = "Рейтинг пробивания
 -- Weapon Stats
 L[StatLogic.Stats.AverageWeaponDamage] = "Average Damage"
 L[StatLogic.Stats.WeaponDPS] = "Урон в секунду"
+
+L[StatLogic.Stats.Hit] = STAT_HIT_CHANCE
+L[StatLogic.Stats.Crit] = MELEE_CRIT_CHANCE
+L[StatLogic.Stats.Haste] = STAT_HASTE
+
+L[StatLogic.Stats.HitRating] = ITEM_MOD_HIT_RATING_SHORT
+L[StatLogic.Stats.CritRating] = ITEM_MOD_CRIT_RATING_SHORT
+L[StatLogic.Stats.HasteRating] = ITEM_MOD_HASTE_RATING_SHORT
 
 -- Melee Stats
 L[StatLogic.Stats.MeleeHit] = "Вероятность попадания"
@@ -603,6 +623,9 @@ L[StatLogic.Stats.Resilience] = COMBAT_RATING_NAME15
 L[StatLogic.Stats.ResilienceRating] = "устойчивости"
 L[StatLogic.Stats.CritDamageReduction] = "Понижение входящего урона от крит. ударов"
 S[StatLogic.Stats.CritDamageReduction] = "к получению крит. урона"
+L[StatLogic.Stats.PvPDamageReduction] = "PvP Damage Reduction"
+L[StatLogic.Stats.PvpPower] = ITEM_MOD_PVP_POWER_SHORT
+L[StatLogic.Stats.PvpPowerRating] = ITEM_MOD_PVP_POWER_SHORT .. " " .. RATING
 L[StatLogic.Stats.PvPDamageReduction] = "PvP Damage Taken"
 
 L[StatLogic.Stats.FireResistance] = "Сопротивление огню"

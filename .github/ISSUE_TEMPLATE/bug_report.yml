@@ -1,6 +1,6 @@
 name: Bug Report
 description: File a bug report
-title: "[Bug]: "
+title: "[Bug] "
 labels: ["bug"]
 body:
   - type: textarea
@@ -42,9 +42,12 @@ body:
         - Chinese (Taiwan)
         - French
         - German
+        - Italian
         - Korean
+        - Portuguese
         - Russian
-        - Spanish
+        - Spanish (Mexico)
+        - Spanish (Spain)
         - Other
     validations:
       required: true
@@ -60,6 +63,7 @@ body:
         - Unholy Death Knight
         - Balance Druid
         - Feral Druid
+        - Guardian Druid
         - Restoration Druid
         - Beast Mastery Hunter
         - Marksmanship Hunter
@@ -67,6 +71,9 @@ body:
         - Arcane Mage
         - Fire Mage
         - Frost Mage
+        - Brewmaster Monk
+        - Mistweaver Monk
+        - Windwalker Monk
         - Holy Paladin
         - Protection Paladin
         - Retribution Paladin
@@ -94,15 +101,18 @@ body:
       description: What is your character's race?
       multiple: true
       options:
+        - Blood Elf
         - Draenei
         - Dwarf
         - Gnome
+        - Goblin
         - Human
         - Night Elf
-        - Blood Elf
         - Orc
+        - Pandaren
         - Tauren
         - Troll
         - Undead
+        - Worgen
     validations:
       required: true

@@ -3,19 +3,6 @@ local addonName, addon = ...
 ---@class StatLogic
 local StatLogic = LibStub(addonName)
 
-function StatLogic:argCheck(argument, number, ...)
-	local arg = {...}
-	local validTypeString = table.concat(arg, ", ")
-	local t = type(argument)
-	assert(
-		arg[1] == t or
-		arg[2] == t or
-		arg[3] == t or
-		arg[4] == t or
-		arg[5] == t,
-		"Bad argument #"..tostring(number).." ("..validTypeString.." expected, got "..t..")"
-	)
-end
 
 -- Tooltip with syntactic sugar
 ---@class StatLogicTooltip : ClassicGameTooltip
@@ -82,8 +69,9 @@ local IsUsableSpell = IsUsableSpell
 local UnitStat = UnitStat
 local GetShapeshiftForm = GetShapeshiftForm
 local GetShapeshiftFormInfo = GetShapeshiftFormInfo
-local GetTalentInfo = GetTalentInfo
-local tocversion = select(4, GetBuildInfo())
+local GetActiveTalentGroup = GetActiveTalentGroup or C_SpecializationInfo.GetActiveSpecGroup
+local GetPrimaryTalentTree = GetPrimaryTalentTree or C_SpecializationInfo.GetSpecialization
+addon.tocversion = select(4, GetBuildInfo())
 
 ---------------
 -- Lua Tools --
@@ -328,6 +316,10 @@ StatLogic.StatModInfo = {
 		initialValue = 0,
 		finalAdjust = 0,
 	},
+	["ADD_PARRY"] = {
+		initialValue = 0,
+		finalAdjust = 0,
+	},
 	["ADD_SPELL_CRIT"] = {
 		initialValue = 0,
 		finalAdjust = 0,
@@ -352,15 +344,23 @@ StatLogic.StatModInfo = {
 		initialValue = 0,
 		finalAdjust = 0,
 	},
-	["ADD_BLOCK_CHANCE_MOD_MASTERY_EFFECT"] = {
-		initialValue = 0,
-		finalAdjust = 0,
-	},
 	["ADD_PET_INT_MOD_INT"] = {
 		initialValue = 0,
 		finalAdjust = 0,
 	},
 	["ADD_PET_STA_MOD_STA"] = {
+		initialValue = 0,
+		finalAdjust = 0,
+	},
+	["ADD_RANGED_HIT_RATING_MOD_HIT_RATING"] = {
+		initialValue = 0,
+		finalAdjust = 0,
+	},
+	["ADD_RANGED_CRIT_RATING_MOD_CRIT_RATING"] = {
+		initialValue = 0,
+		finalAdjust = 0,
+	},
+	["ADD_RANGED_HASTE_RATING_MOD_HASTE_RATING"] = {
 		initialValue = 0,
 		finalAdjust = 0,
 	},
@@ -376,19 +376,27 @@ StatLogic.StatModInfo = {
 		initialValue = 0,
 		finalAdjust = 1,
 	},
+	["MOD_CRIT_RATING"] = {
+		initialValue = 1,
+		finalAdjust = 0,
+	},
 	["MOD_DODGE"] = {
 		initialValue = 1,
 		finalAdjust = 0,
 	},
-	["MOD_WEAPON_ATTACK_POWER"] = {
-		initialValue = 0,
-		finalAdjust = 1,
+	["MOD_HASTE_RATING"] = {
+		initialValue = 1,
+		finalAdjust = 0,
 	},
 	["MOD_HEALING"] = {
 		initialValue = 0,
 		finalAdjust = 1,
 	},
 	["MOD_HEALTH"] = {
+		initialValue = 1,
+		finalAdjust = 0,
+	},
+	["MOD_MASTERY_RATING"] = {
 		initialValue = 1,
 		finalAdjust = 0,
 	},
@@ -416,65 +424,21 @@ StatLogic.StatModInfo = {
 		initialValue = 0,
 		finalAdjust = 1,
 	},
+	["MOD_WEAPON_ATTACK_POWER"] = {
+		initialValue = 0,
+		finalAdjust = 1,
+	},
 }
 
 -- StatMods used by RatingBuster to dynamically add options for stat breakdowns
 local addedInfoMods = {
 	{
+		add = "AGI",
+		mod = "INT",
+	},
+	{
 		add = "AP",
 		mod = "AGI",
-	},
-	{
-		add = "AP",
-		mod = "STR",
-	},
-	{
-		add = "NORMAL_HEALTH_REG",
-		mod = "HEALTH",
-	},
-	{
-		add = "NORMAL_HEALTH_REG",
-		mod = "SPI",
-	},
-	{
-		add = "NORMAL_MANA_REGEN",
-		mod = "INT",
-	},
-	{
-		add = "NORMAL_MANA_REGEN",
-		mod = "SPI",
-	},
-	{
-		add = "MANA_REGEN",
-		mod = "NORMAL_MANA_REGEN"
-	},
-	{
-		add = "MANA_REGEN_NOT_CASTING",
-		mod = "NORMAL_MANA_REGEN"
-	},
-	{
-		add = "MANA_REGEN_OUT_OF_COMBAT",
-		mod = "NORMAL_MANA_REGEN"
-	},
-	{
-		add = "GENERIC_MANA_REGEN",
-		mod = "INT",
-	},
-	{
-		add = "GENERIC_MANA_REGEN",
-		mod = "MANA",
-	},
-	{
-		add = "MANA_REGEN",
-		mod = "GENERIC_MANA_REGEN"
-	},
-	{
-		add = "MANA_REGEN_NOT_CASTING",
-		mod = "GENERIC_MANA_REGEN"
-	},
-	{
-		add = "MANA_REGEN_OUT_OF_COMBAT",
-		mod = "GENERIC_MANA_REGEN"
 	},
 	{
 		add = "AP",
@@ -490,7 +454,23 @@ local addedInfoMods = {
 	},
 	{
 		add = "AP",
+		mod = "SPELL_POWER",
+	},
+	{
+		add = "AP",
 		mod = "STA",
+	},
+	{
+		add = "AP",
+		mod = "STR",
+	},
+	{
+		add = "BLOCK_CHANCE",
+		mod = "MASTERY_EFFECT",
+	},
+	{
+		add = "BLOCK_CHANCE",
+		mod = "DEFENSE",
 	},
 	{
 		add = "BLOCK_VALUE",
@@ -509,20 +489,52 @@ local addedInfoMods = {
 		mod = "INT",
 	},
 	{
-		add = "MELEE_CRIT",
-		mod = "AGI",
+		add = "CRIT_AVOIDANCE",
+		mod = "DEFENSE",
 	},
 	{
-		add = "RANGED_CRIT",
-		mod = "AGI",
+		add = "CRIT_AVOIDANCE",
+		mod = "RESILIENCE",
+	},
+	{
+		add = "CRIT_DAMAGE_REDUCTION",
+		mod = "RESILIENCE",
+	},
+	{
+		add = "CRIT_RATING",
+		mod = "DODGE_RATING",
+	},
+	{
+		add = "CRIT_RATING",
+		mod = "PARRY_RATING",
 	},
 	{
 		add = "DODGE",
 		mod = "AGI",
+	},
+	{
+		add = "DODGE",
+		mod = "DEFENSE",
 	},
 	{
 		add = "DODGE",
 		mod = "SPELL_CRIT",
+	},
+	{
+		add = "DODGE_REDUCTION",
+		mod = "EXPERTISE",
+	},
+	{
+		add = "EXPERTISE_RATING",
+		mod = "SPI",
+	},
+	{
+		add = "GENERIC_MANA_REGEN",
+		mod = "INT",
+	},
+	{
+		add = "GENERIC_MANA_REGEN",
+		mod = "MANA",
 	},
 	{
 		add = "HEALING",
@@ -542,6 +554,10 @@ local addedInfoMods = {
 	},
 	{
 		add = "HEALING",
+		mod = "SPELL_POWER",
+	},
+	{
+		add = "HEALING",
 		mod = "SPI",
 	},
 	{
@@ -554,19 +570,119 @@ local addedInfoMods = {
 	},
 	{
 		add = "HEALTH_REG",
+		mod = "HEALTH",
+	},
+	{
+		add = "HEALTH_REG",
 		mod = "NORMAL_HEALTH_REG",
+	},
+	{
+		add = "HIT_RATING",
+		mod = "SPI",
 	},
 	{
 		add = "MANA",
 		mod = "INT",
 	},
 	{
+		add = "MANA_REGEN",
+		mod = "GENERIC_MANA_REGEN"
+	},
+	{
+		add = "MANA_REGEN_NOT_CASTING",
+		mod = "GENERIC_MANA_REGEN"
+	},
+	{
+		add = "MANA_REGEN_OUT_OF_COMBAT",
+		mod = "GENERIC_MANA_REGEN"
+	},
+	{
+		add = "MANA_REGEN",
+		mod = "NORMAL_MANA_REGEN"
+	},
+	{
+		add = "MANA_REGEN_NOT_CASTING",
+		mod = "NORMAL_MANA_REGEN"
+	},
+	{
+		add = "MANA_REGEN_OUT_OF_COMBAT",
+		mod = "NORMAL_MANA_REGEN"
+	},
+	{
 		add = "MASTERY_EFFECT",
 		mod = "MASTERY",
 	},
 	{
+		add = "MELEE_HIT_RATING",
+		mod = "HIT_RATING",
+	},
+	{
+		add = "SPELL_HIT_RATING",
+		mod = "HIT_RATING",
+	},
+	{
+		add = "MELEE_CRIT_RATING",
+		mod = "CRIT_RATING",
+	},
+	{
+		add = "SPELL_CRIT_RATING",
+		mod = "CRIT_RATING",
+	},
+	{
+		add = "MELEE_HASTE_RATING",
+		mod = "HASTE_RATING",
+	},
+	{
+		add = "SPELL_HASTE_RATING",
+		mod = "HASTE_RATING",
+	},
+	{
+		add = "MELEE_CRIT",
+		mod = "AGI",
+	},
+	{
+		add = "MISS",
+		mod = "DEFENSE",
+	},
+	{
+		add = "NATURE_DAMAGE",
+		mod = "AGI",
+	},
+	{
+		add = "NORMAL_HEALTH_REG",
+		mod = "HEALTH",
+	},
+	{
+		add = "NORMAL_HEALTH_REG",
+		mod = "SPI",
+	},
+	{
+		add = "NORMAL_MANA_REGEN",
+		mod = "INT",
+	},
+	{
+		add = "NORMAL_MANA_REGEN",
+		mod = "SPI",
+	},
+	{
+		add = "PARRY",
+		mod = "DEFENSE",
+	},
+	{
+		add = "PARRY",
+		mod = "STR",
+	},
+	{
 		add = "PARRY_RATING",
 		mod = "STR",
+	},
+	{
+		add = "PARRY_REDUCTION",
+		mod = "EXPERTISE",
+	},
+	{
+		add = "PVP_DAMAGE_REDUCTION",
+		mod = "RESILIENCE",
 	},
 	{
 		add = "RANGED_AP",
@@ -577,15 +693,15 @@ local addedInfoMods = {
 		mod = "INT",
 	},
 	{
+		add = "RANGED_CRIT",
+		mod = "AGI",
+	},
+	{
 		add = "SPELL_CRIT",
 		mod = "INT",
 	},
 	{
 		add = "SPELL_CRIT_RATING",
-		mod = "SPI",
-	},
-	{
-		add = "SPELL_HIT_RATING",
 		mod = "SPI",
 	},
 	{
@@ -614,6 +730,10 @@ local addedInfoMods = {
 	},
 	{
 		add = "SPELL_DMG",
+		mod = "SPELL_POWER",
+	},
+	{
+		add = "SPELL_DMG",
 		mod = "SPI",
 	},
 	{
@@ -625,47 +745,24 @@ local addedInfoMods = {
 		mod = "STR",
 	},
 	{
-		add = "DODGE_REDUCTION",
+		add = "SPELL_HIT",
 		mod = "EXPERTISE",
 	},
 	{
-		add = "PARRY_REDUCTION",
-		mod = "EXPERTISE",
+		add = "SPELL_HIT_RATING",
+		mod = "SPI",
 	},
 	{
-		add = "BLOCK_CHANCE",
+		add = "SPELL_POWER",
+		mod = "AP",
+	},
+	{
+		add = "SPELL_POWER",
+		mod = "INT",
+	},
+	{
+		add = "STR",
 		mod = "DEFENSE",
-	},
-	{
-		add = "CRIT_AVOIDANCE",
-		mod = "DEFENSE",
-	},
-	{
-		add = "DODGE",
-		mod = "DEFENSE",
-	},
-	{
-		add = "MISS",
-		mod = "DEFENSE",
-	},
-	{
-		add = "PARRY",
-		mod = "DEFENSE",
-	},
-	{
-		add = "CRIT_AVOIDANCE",
-		mod = "RESILIENCE",
-
-	},
-	{
-		add = "CRIT_DAMAGE_REDUCTION",
-		mod = "RESILIENCE",
-
-	},
-	{
-		add = "PVP_DAMAGE_REDUCTION",
-		mod = "RESILIENCE",
-
 	},
 	{
 		mod = "AGI",
@@ -685,6 +782,10 @@ local addedInfoMods = {
 	},
 	{
 		mod = "RANGED_AP",
+		finalAdjust = 1,
+	},
+	{
+		mod = "SPELL_POWER",
 		finalAdjust = 1,
 	},
 	{
@@ -781,10 +882,10 @@ do
 	--- Returns information about a buff or debuff on the player, including fake auras from AlwaysBuffed settings
 	---@param auraName string
 	---@param ignoreAlwaysBuffed boolean? Set to true to ignore the AlwaysBuffed settings
-	---@return AuraInfo
+	---@return AuraInfo auraInfo, boolean usedAlwaysBuffed
 	function StatLogic:GetAuraInfo(auraName, ignoreAlwaysBuffed)
 		if not ignoreAlwaysBuffed and self.always_buffed_ns.profile[auraName] then
-			return always_buffed_aura_info[auraName]
+			return always_buffed_aura_info[auraName], true
 		else
 			if needs_update then
 				local i = 1
@@ -843,7 +944,7 @@ do
 				until not auraData
 				needs_update = false
 			end
-			return aura_cache[auraName]
+			return aura_cache[auraName], false
 		end
 	end
 end
@@ -907,6 +1008,7 @@ do
 		SHAMAN = Enum.ItemArmorSubclass.Mail,
 		ROGUE = Enum.ItemArmorSubclass.Leather,
 		DRUID = Enum.ItemArmorSubclass.Leather,
+		MONK = Enum.ItemArmorSubclass.Leather,
 	}
 
 	local armor_spec_slots = {
@@ -947,7 +1049,7 @@ do
 		end
 
 		-- Armor Specialization
-		if tocversion >= 40000 and class_armor_specs[addon.class] then
+		if addon.tocversion >= 40000 and class_armor_specs[addon.class] then
 			if event == "PLAYER_ENTERING_WORLD" or not slot then
 				for inv_slot in pairs(armor_spec_slots) do
 					update_armor_slot(inv_slot)
@@ -966,6 +1068,7 @@ end
 -- Ignore Stat Mods that are only used for reverse-engineering agi/int conversion rates
 StatLogic.StatModIgnoresAlwaysBuffed = {
 	["ADD_DODGE"] = true,
+	["ADD_PARRY"] = true,
 	[StatLogic.Stats.MeleeCrit] = true,
 	["ADD_SPELL_CRIT"] = true,
 }
@@ -1229,7 +1332,12 @@ end
 -- and keep StatModTables human-readable.
 local orderedTalentCache = {}
 function StatLogic:GetOrderedTalentInfo(tab, num, ...)
-	return GetTalentInfo(tab, orderedTalentCache[tab][num], ...)
+	if addon.tocversion < 50000 then
+		local ordered_num = orderedTalentCache[tab][num]
+		return GetTalentInfo(tab, ordered_num, ...)
+	else
+		return C_SpecializationInfo.GetTalentInfo({ tier = tab, column = num })
+	end
 end
 
 local talentCacheExists = false
@@ -1237,7 +1345,7 @@ function StatLogic:TalentCacheExists()
 	return talentCacheExists
 end
 
-do
+if addon.tocversion < 50000 then
 	local function GenerateOrderedTalents()
 		local temp = {}
 		local numTabs = GetNumTalentTabs()
@@ -1283,6 +1391,8 @@ do
 		end
 		self:UnregisterEvent("SPELLS_CHANGED")
 	end)
+else
+	talentCacheExists = true
 end
 
 do
@@ -1296,7 +1406,9 @@ do
 		PredatoryStrikes = 7,
 		Zandalar = 8,
 		Moxie = 9,
-		SoulEngraving = 10,
+		SetBonus = 10,
+		Aspect = 11,
+		Stamina = 12,
 	}
 	local ExclusiveGroupCache = {}
 
@@ -1327,20 +1439,29 @@ do
 
 		local newValue
 		if case.tab and case.num then
-			-- Talent Rank
-			local r = select(5, StatLogic:GetOrderedTalentInfo(case.tab, case.num, false, false, context.spec))
-			if case.rank then
-				newValue = case.rank[r]
-			elseif r > 0 then
-				newValue = case.value
+			if addon.tocversion < 50000 then
+				-- Vanilla-style talents with tabs and ranks
+				local r = select(5, StatLogic:GetOrderedTalentInfo(case.tab, case.num, false, false, context.spec))
+				if case.rank then
+					newValue = case.rank[r]
+				elseif r > 0 then
+					newValue = case.value
+				end
+			else
+				-- Mists-style talents with rows, columns and no ranks
+				local selected = select(4, StatLogic:GetOrderedTalentInfo(case.tab, case.num, context.spec))
+				if selected then
+					newValue = case.value
+				end
 			end
 		elseif case.aura and case.rank then
 			local aura = StatLogic:GetAuraInfo(GetSpellName(case.aura))
 			local rank = aura.rank
 			newValue = case.rank[rank]
 		elseif case.aura and case.stack then
-			local aura = StatLogic:GetAuraInfo(GetSpellName(case.aura))
-			newValue = case.stack * aura.stacks
+			local aura, usedAlwaysBuffed = StatLogic:GetAuraInfo(GetSpellName(case.aura))
+			local stacks = usedAlwaysBuffed and case.max_stacks or aura.stacks
+			newValue = case.stack * stacks
 		elseif case.regen then
 			newValue = case.regen(level)
 		elseif case.value then
@@ -1472,7 +1593,7 @@ do
 
 	local totalEquippedStatCache = setmetatable({}, {
 		__index = function(t, stat)
-			if tocversion >= 20000 or not trackedTotalStats[stat] then return 0 end
+			if addon.tocversion >= 20000 or not trackedTotalStats[stat] then return 0 end
 
 			for trackedStat in pairs(trackedTotalStats) do
 				t[trackedStat] = 0
@@ -1494,7 +1615,7 @@ do
 		end
 	})
 
-	if tocversion < 20000 then
+	if addon.tocversion < 20000 then
 		local f = CreateFrame("Frame")
 		f:RegisterUnitEvent("UNIT_INVENTORY_CHANGED", "player")
 		f:SetScript("OnEvent", function()
@@ -1569,21 +1690,7 @@ function StatLogic:GetEffectFromRating(rating, stat, level)
 	if level < 34 and Level34Ratings[stat] then
 		level = 34
 	end
-	if level >= 80 then
-		local H = 15.2545
-		if stat == StatLogic.Stats.ResilienceRating then
-			H = 9.18109
-		end
-		return rating/StatLogic.RatingBase[stat]/((5371/1638)*H^((level-80)/10))
-	elseif level >= 70 then
-		return rating/StatLogic.RatingBase[stat]/((82/52)*(131/63)^((level-70)/10))
-	elseif level >= 60 then
-		return rating/StatLogic.RatingBase[stat]*((-3/82)*level+(131/41))
-	elseif level >= 10 then
-		return rating/StatLogic.RatingBase[stat]/((1/52)*level-(8/52))
-	else
-		return rating/StatLogic.RatingBase[stat]/((1/52)*10-(8/52))
-	end
+	return rating / (StatLogic.RatingBase[stat] * addon.GetRatingScalar(stat, level))
 end
 
 if not CR_DODGE then CR_DODGE = 3 end;
@@ -2151,37 +2258,37 @@ function StatLogic:GetArmorDistribution(item, value, color)
 end
 
 local getSlotID = {
-	INVTYPE_AMMO           = 0,
-	INVTYPE_GUNPROJECTILE  = 0,
-	INVTYPE_BOWPROJECTILE  = 0,
-	INVTYPE_HEAD           = 1,
-	INVTYPE_NECK           = 2,
-	INVTYPE_SHOULDER       = 3,
-	INVTYPE_BODY           = 4,
-	INVTYPE_CHEST          = 5,
-	INVTYPE_ROBE           = 5,
-	INVTYPE_WAIST          = 6,
-	INVTYPE_LEGS           = 7,
-	INVTYPE_FEET           = 8,
-	INVTYPE_WRIST          = 9,
-	INVTYPE_HAND           = 10,
-	INVTYPE_FINGER         = {11,12},
-	INVTYPE_TRINKET        = {13,14},
-	INVTYPE_CLOAK          = 15,
-	INVTYPE_WEAPON         = {16,17},
-	INVTYPE_2HWEAPON       = 16+17,
-	INVTYPE_WEAPONMAINHAND = 16,
-	INVTYPE_WEAPONOFFHAND  = 17,
-	INVTYPE_SHIELD         = 17,
-	INVTYPE_HOLDABLE       = 17,
-	INVTYPE_RANGED         = 18,
-	INVTYPE_RANGEDRIGHT    = 18,
-	INVTYPE_RELIC          = 18,
-	INVTYPE_GUN            = 18,
-	INVTYPE_CROSSBOW       = 18,
-	INVTYPE_WAND           = 18,
-	INVTYPE_THROWN         = 18,
-	INVTYPE_TABARD         = 19,
+	INVTYPE_AMMO           = INVSLOT_AMMO,
+	INVTYPE_GUNPROJECTILE  = INVSLOT_AMMO,
+	INVTYPE_BOWPROJECTILE  = INVSLOT_AMMO,
+	INVTYPE_HEAD           = INVSLOT_HEAD,
+	INVTYPE_NECK           = INVSLOT_NECK,
+	INVTYPE_SHOULDER       = INVSLOT_SHOULDER,
+	INVTYPE_BODY           = INVSLOT_BODY,
+	INVTYPE_CHEST          = INVSLOT_CHEST,
+	INVTYPE_ROBE           = INVSLOT_CHEST,
+	INVTYPE_WAIST          = INVSLOT_WAIST,
+	INVTYPE_LEGS           = INVSLOT_LEGS,
+	INVTYPE_FEET           = INVSLOT_FEET,
+	INVTYPE_WRIST          = INVSLOT_WRIST,
+	INVTYPE_HAND           = INVSLOT_HAND,
+	INVTYPE_FINGER         = {INVSLOT_FINGER1, INVSLOT_FINGER2},
+	INVTYPE_TRINKET        = {INVSLOT_TRINKET1, INVSLOT_TRINKET2},
+	INVTYPE_CLOAK          = INVSLOT_BACK,
+	INVTYPE_WEAPON         = {INVSLOT_MAINHAND, INVSLOT_OFFHAND},
+	INVTYPE_2HWEAPON       = INVSLOT_MAINHAND + INVSLOT_OFFHAND,
+	INVTYPE_WEAPONMAINHAND = INVSLOT_MAINHAND,
+	INVTYPE_WEAPONOFFHAND  = INVSLOT_OFFHAND,
+	INVTYPE_SHIELD         = INVSLOT_OFFHAND,
+	INVTYPE_HOLDABLE       = INVSLOT_OFFHAND,
+	INVTYPE_RANGED         = addon.tocversion >= 50000 and INVSLOT_MAINHAND or INVSLOT_RANGED,
+	INVTYPE_RANGEDRIGHT    = addon.tocversion >= 50000 and INVSLOT_MAINHAND or INVSLOT_RANGED,
+	INVTYPE_RELIC          = INVSLOT_RANGED,
+	INVTYPE_GUN            = addon.tocversion >= 50000 and INVSLOT_MAINHAND or INVSLOT_RANGED,
+	INVTYPE_CROSSBOW       = addon.tocversion >= 50000 and INVSLOT_MAINHAND or INVSLOT_RANGED,
+	INVTYPE_WAND           = addon.tocversion >= 50000 and INVSLOT_MAINHAND or INVSLOT_RANGED,
+	INVTYPE_THROWN         = INVSLOT_RANGED,
+	INVTYPE_TABARD         = INVSLOT_TABARD,
 }
 
 local function HasTitansGrip()
@@ -2224,7 +2331,7 @@ function StatLogic:GetDiffID(item, ignoreEnchant, ignoreGems, ignoreExtraSockets
 
 	-- 1h weapon, check if player can dual wield, check for 2h equipped
 	if inventoryType == "INVTYPE_WEAPON" then
-		linkDiff1 = GetInventoryItemLink("player", 16) or "NOITEM"
+		linkDiff1 = GetInventoryItemLink("player", INVSLOT_MAINHAND) or "NOITEM"
 		-- If player can Dual Wield, calculate offhand difference
 		if IsUsableSpell(GetSpellName(674)) then		-- ["Dual Wield"]
 			local _, _, _, _, _, _, _, _, eqItemType = C_Item.GetItemInfo(linkDiff1)
@@ -2232,7 +2339,7 @@ function StatLogic:GetDiffID(item, ignoreEnchant, ignoreGems, ignoreExtraSockets
 			if eqItemType == "INVTYPE_2HWEAPON" and not HasTitansGrip() then
 				linkDiff2 = linkDiff1
 			else
-				linkDiff2 = GetInventoryItemLink("player", 17) or "NOITEM"
+				linkDiff2 = GetInventoryItemLink("player", INVSLOT_OFFHAND) or "NOITEM"
 			end
 		end
 	-- Ring or trinket
@@ -2242,15 +2349,15 @@ function StatLogic:GetDiffID(item, ignoreEnchant, ignoreGems, ignoreExtraSockets
 		linkDiff2 = GetInventoryItemLink("player", slotID[2]) or "NOITEM"
 	-- 2h weapon, so we calculate the difference with equipped main hand and off hand
 	elseif inventoryType == "INVTYPE_2HWEAPON" then
-		linkDiff1 = GetInventoryItemLink("player", 16) or "NOITEM"
-		linkDiff2= GetInventoryItemLink("player", 17) or "NOITEM"
+		linkDiff1 = GetInventoryItemLink("player", INVSLOT_MAINHAND) or "NOITEM"
+		linkDiff2= GetInventoryItemLink("player", INVSLOT_OFFHAND) or "NOITEM"
 	-- Off hand slot, check if we have 2h equipped
-	elseif slotID == 17 then
-		linkDiff1 = GetInventoryItemLink("player", 16) or "NOITEM"
+	elseif slotID == INVSLOT_OFFHAND then
+		linkDiff1 = GetInventoryItemLink("player", INVSLOT_MAINHAND) or "NOITEM"
 		-- If 2h is equipped
 		local _, _, _, _, _, _, _, _, eqItemType = C_Item.GetItemInfo(linkDiff1)
 		if eqItemType ~= "INVTYPE_2HWEAPON" then
-			linkDiff1 = GetInventoryItemLink("player", 17) or "NOITEM"
+			linkDiff1 = GetInventoryItemLink("player", INVSLOT_OFFHAND) or "NOITEM"
 		end
 	-- Single slot item
 	else
@@ -2392,15 +2499,27 @@ function StatLogic:GetDiff(item, diff1, diff2, ignoreEnchant, ignoreGems, ignore
 	return diff1, diff2
 end
 
+function addon.conversionFallback(classTable, conversionFunc)
+	return setmetatable({}, { __index = function(_, level)
+		return classTable[level] or level == UnitLevel("player") and conversionFunc(StatLogic) or 0
+	end })
+end
+
 -- Telemetry for agi/int conversions. Only used for new game versions while data is missing.
-if (GetCurrentRegion() == 1 or GetCurrentRegion() == 72) and GetLocale() == "enUS" then
+local regions = {
+	[1]  = true, -- NA
+	[72] = true, -- PTR
+	[90] = true, -- Beta
+}
+
+if regions[GetCurrentRegion()] and GetLocale() == "enUS" then
 	local commsVersion = 1
 	local prefix = addonName .. commsVersion
 	local codec = LibStub("LibDeflate"):CreateCodec("\000", "\255", "")
 
 	local function InitializeComms()
 		local target
-		if GetNormalizedRealmName() == "Whitemane" and UnitFactionGroup("player") == "Horde" and tocversion >= 50000 then
+		if GetNormalizedRealmName() == "Whitemane" and UnitFactionGroup("player") == "Horde" and addon.tocversion >= 50000 then
 			target = "Pinstripe"
 		end
 
@@ -2454,7 +2573,7 @@ if (GetCurrentRegion() == 1 or GetCurrentRegion() == 72) and GetLocale() == "enU
 				local level = UnitLevel("player")
 				local expansion = RatingBuster.conversion_data.global[LE_EXPANSION_LEVEL_CURRENT]
 				local rounding = 10 ^ 4
-				if tocversion >= 40000 then
+				if addon.tocversion >= 40000 then
 					rounding = 10 ^ 8
 				end
 				if not rawget(addon.CritPerAgi[addon.class], level) and addon.CritPerAgi[addon.class] ~= addon.zero then
@@ -2468,6 +2587,10 @@ if (GetCurrentRegion() == 1 or GetCurrentRegion() == 72) and GetLocale() == "enU
 				if not rawget(addon.SpellCritPerInt[addon.class], level) and addon.SpellCritPerInt[addon.class] ~= addon.zero then
 					local spellCritPerInt = floor(StatLogic:GetSpellCritPerInt() * rounding + 0.5) / rounding
 					expansion.SpellCritPerInt[addon.class][level] = spellCritPerInt
+				end
+				if addon.tocversion >= 50000 and not rawget(addon.ParryPerStr[addon.class], level) and addon.ParryPerStr[addon.class] ~= addon.zero then
+					local parryPerStr = floor(StatLogic:GetParryPerStr() * rounding + 0.5) / rounding
+					expansion.ParryPerStr[addon.class][level] = parryPerStr
 				end
 				SendStoredData()
 			end

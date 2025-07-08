@@ -324,9 +324,11 @@ L["numberPatterns"] = {
 L["exclusions"] = {
 	["Sek."] = "SECOND"
 }
+
 L["separators"] = {
 	"/", " und ", ",", "%. ", " für ", "&", ":", "\n"
 }
+
 --[[
 SPELL_STAT1_NAME = "Stärke"
 SPELL_STAT2_NAME = "Beweglichkeit"
@@ -343,26 +345,35 @@ L["statList"] = {
 	{"verteidigungswertung", StatLogic.Stats.DefenseRating},
 	{DEFENSE:lower(), StatLogic.Stats.Defense},
 	{"ausweichwertung", StatLogic.Stats.DodgeRating},
+	{"ausweichen", StatLogic.Stats.DodgeRating},
 	{"blockwertung", StatLogic.Stats.BlockRating},
+	{"blocken", StatLogic.Stats.BlockRating},
 	{"parierwertung", StatLogic.Stats.ParryRating},
+	{"parieren", StatLogic.Stats.ParryRating},
 
+	{"zaubermacht", StatLogic.Stats.SpellPower},
 	{"kritische zaubertrefferwertung", StatLogic.Stats.SpellCritRating},
 	{"kritische distanztrefferwertung", StatLogic.Stats.RangedCritRating},
 	{"kritische trefferwertung", StatLogic.Stats.CritRating},
+	{"kritischer trefferwert", StatLogic.Stats.CritRating},
 
 	{"zaubertrefferwertung", StatLogic.Stats.SpellHitRating},
-	{"trefferwertung", StatLogic.Stats.RangedHitRating},
 	{"trefferwertung", StatLogic.Stats.HitRating},
+	{"trefferwert", StatLogic.Stats.HitRating},
 
 	{"abhärtungswertung", StatLogic.Stats.ResilienceRating},
+	{"abhärtung", StatLogic.Stats.ResilienceRating},
+	{ITEM_MOD_PVP_POWER_SHORT:lower(), StatLogic.Stats.PvpPowerRating},
 
 	{"zaubertempowertung", StatLogic.Stats.SpellHasteRating},
 	{"distanztempowertung", StatLogic.Stats.RangedHasteRating},
 	{"angriffstempowertung", StatLogic.Stats.HasteRating},
 	{"nahkampftempowertung", StatLogic.Stats.MeleeHasteRating},
 	{"tempowertung", StatLogic.Stats.HasteRating}, -- [Drums of Battle]
+	{"tempo", StatLogic.Stats.HasteRating},
 
 	{"waffenkundewertung", StatLogic.Stats.ExpertiseRating},
+	{"waffenkunde", StatLogic.Stats.ExpertiseRating},
 
 	{SPELL_STATALL:lower(), StatLogic.Stats.AllStats},
 
@@ -429,6 +440,14 @@ L[StatLogic.Stats.ArmorPenetrationRating] = "Rüstungsdurchschlagwertung"
 -- Weapon Stats
 L[StatLogic.Stats.AverageWeaponDamage] = "Waffenschaden" -- DAMAGE = "Damage"
 L[StatLogic.Stats.WeaponDPS] = "Schaden pro Sekunde"
+
+L[StatLogic.Stats.Hit] = STAT_HIT_CHANCE
+L[StatLogic.Stats.Crit] = MELEE_CRIT_CHANCE
+L[StatLogic.Stats.Haste] = STAT_HASTE
+
+L[StatLogic.Stats.HitRating] = ITEM_MOD_HIT_RATING_SHORT
+L[StatLogic.Stats.CritRating] = ITEM_MOD_CRIT_RATING_SHORT
+L[StatLogic.Stats.HasteRating] = ITEM_MOD_HASTE_RATING_SHORT
 
 -- Melee Stats
 L[StatLogic.Stats.MeleeHit] = "Trefferchance"
@@ -507,6 +526,9 @@ L[StatLogic.Stats.Resilience] = COMBAT_RATING_NAME15
 L[StatLogic.Stats.ResilienceRating] = "Abhärtung"
 L[StatLogic.Stats.CritDamageReduction] = "Krit Schadenverminderung"
 S[StatLogic.Stats.CritDamageReduction] = "erlittener krit. Schaden"
+L[StatLogic.Stats.PvPDamageReduction] = "PvP Damage Reduction"
+L[StatLogic.Stats.PvpPower] = ITEM_MOD_PVP_POWER_SHORT
+L[StatLogic.Stats.PvpPowerRating] = ITEM_MOD_PVP_POWER_SHORT .. " " .. RATING
 L[StatLogic.Stats.PvPDamageReduction] = "erlitter Schaden im PVP"
 
 L[StatLogic.Stats.FireResistance] = "Feuerwiderstand"

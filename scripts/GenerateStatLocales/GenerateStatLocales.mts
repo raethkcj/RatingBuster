@@ -364,6 +364,21 @@ enum ItemStat {
 	HealthRegen = 46,
 	SpellPenetration = 47,
 	MasteryRating = 49,
+	BonusArmor = 50,
+	FireResistance = 51,
+	FrostResistance = 52,
+	HolyResistance = 53,
+	ShadowResistance = 54,
+	NatureResistance = 55,
+	ArcaneResistance = 56,
+    PvpPowerRating = 57,
+    // AmplifyRating = 58,
+    // MultistrikeRating = 59,
+    // ReadinessRating = 60,
+    // SpeedRating = 61,
+    // LifestealRating = 62,
+    // AvoidanceRating = 63,
+    // SturdinessRating = 64,
 }
 
 const statSets = [
