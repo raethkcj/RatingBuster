@@ -29,8 +29,6 @@ W["seu próximo ataque acertará criticamente"] = { [Stats.MeleeCrit] = 100, [St
 W["concede um pequeno benefício ao dano e aos poderes curativos do seu grupo"] = { [Stats.AverageWeaponDamage] = 5, [Stats.SpellDamage] = 10, [Stats.HealingPower] = 16, } -- s418510
 W["exausto"] = { [Stats.MeleeHaste] = -100, } -- s424574
 W["quem consome pode falar com o cadáver de alguém que tenha assuntos não resolvidos no mundo mortal. também cura indigestão"] = { [Stats.AllStats] = 1, } -- s426606
-W["aumenta em $s% sua chance de acerto"] = { [Stats.MeleeHit] = 1, [Stats.RangedHit] = 1, } -- s429863
-W["aumenta em $s a sua força"] = { [Stats.Strength] = 12, } -- s429864
 W["aumenta consideravelmente o dano durante a inspiração"] = { [Stats.MeleeHaste] = 20, [Stats.AverageWeaponDamage] = 25, } -- s436430
 W["partido"] = { [Stats.AverageWeaponDamage] = -10, } -- e27
 W["óleo menor de teurgo"] = { [Stats.SpellDamage] = 8, [Stats.HealingPower] = 8, } -- e2623
@@ -92,7 +90,6 @@ W["um golpe que causa o dano da arma e reduz a chance de esquiva do alvo"] = { [
 W["aumenta ligeiramente o poder mágico"] = { [Stats.SpellDamage] = 6, [Stats.HealingPower] = 6, } -- s37817
 W["reduz a velocidade de lançamento de um alvo inimigo"] = { [Stats.SpellHaste] = -30, } -- s43507
 W["empower your rune weapon, immediately activating one of each rune type"] = { [Stats.ArcaneDamage] = 1, } -- s47804
-W["aumenta em $s a taxa de acerto crítico"] = { [Stats.MeleeCritRating] = 61, [Stats.SpellCritRating] = 61, } -- s48836
 W["força um inimigo a fixar a atenção em você. quando acabar o efeito, ele atacará o que ele mais odeia"] = { [Stats.MeleeHaste] = 20, } -- s49029
 W["a força bruta do lançador faz com que os ataques ignorem a armadura"] = { [Stats.ArmorPenetration] = 50000, } -- s54678
 W["aumenta a velocidade de lançamento do lançador à medida que ele recebe dano"] = { [Stats.SpellHaste] = 1, } -- s55096
@@ -673,7 +670,7 @@ L["corrói a armadura de um inimigo, reduzindo-a em %s a cada aplicação. acumu
 L["ao ser atingido em combate, você tem %s% de chance de criar um escudo de espinhos que causará %s de dano de natureza aos atacantes que acertarem golpes em você, além de aumentar em %s a sua resistência à natureza por %s sec"] = { false, false, { Stats.NatureResistance, }, false, ignoreSum = true } -- s18097
 L["restaura %s pontos de mana ao longo de %s sec. é preciso permanecer sentado enquanto bebe. também aumenta em %s o espírito por %s sec"] = { { Stats.GenericManaRegen, }, false, { Stats.Spirit, }, false, } -- s18140
 L["aumenta em %s o vigor por %s sec"] = { { Stats.Stamina, }, false, } -- s18191
-L["restaura %s pontos de vida ao longo de %s sec. é preciso ficar sentado enquanto come. se você gastar pelo menos %s s comendo, ganhará $%ss de agilidade por %s sec"] = { { Stats.Agility, }, false, false, false, false, ignoreSum = true } -- s18230
+L["restaura %s pontos de vida ao longo de %s sec. é preciso ficar sentado enquanto come. se você gastar pelo menos %s s comendo, ganhará %s de agilidade por %s sec"] = { { Stats.Agility, }, false, false, { Stats.Agility, }, false, ignoreSum = true } -- s18230
 L["concede %s de intelecto adicional a membros do grupo em um raio de %s m"] = { { Stats.Intellect, }, false, } -- s18264
 L["restaura %s de mana a cada %s s"] = { { Stats.GenericManaRegen, }, false, } -- s18378
 L["diminui em %s o poder de ataque do alvo inimigo por %s sec"] = { { Stats.GenericAttackPower, }, false, } -- s18381
@@ -917,6 +914,9 @@ L["aumenta em %s% a velocidade de ataque corpo a corpo da mascote por %s sec"] =
 L["causa %s de dano de fogo ao receber acertos, aumenta em %s% sua chance de acerto crítico com feitiços e reduz em %s% a chance de você receber acertos críticos. apenas um tipo de feitiço de armadura pode estar ativo no mago por vez. dura %s sec"] = { false, { Stats.SpellCrit, }, false, false, } -- s428741
 L["acelera seu lançamento de feitiços, aumentando em %s% a velocidade de lançamento e reduzindo em %s% efeitos de retardo de ataques recebidos ao lançar. dura %s sec"] = { { Stats.SpellHaste, }, false, false, } -- s429125
 L["aumenta em %s% sua chance de acerto crítico com feitiços sagrados. além disso, suas curas críticas com feitiços de cura concedem ao alvo %s% da quantidade curada ao longo de %s sec"] = { { Stats.SpellCrit, }, false, false, } -- s429142
+L["aumenta em %s% sua chance de acerto"] = { { Stats.MeleeHit, Stats.RangedHit, }, } -- s429863
+L["aumenta em %s a sua força"] = { { Stats.Strength, }, } -- s429864
+L["mergulha na loucura, aumentando em %s% a velocidade de ataque, além de aumentar a ameaça que você gera em %s sec"] = { { Stats.MeleeHaste, Stats.RangedHaste, }, false, } -- s429867
 L["um gume encantado aumenta em %s% sua chance de acertar. não tem efeito fora das profundezas negras"] = { { Stats.MeleeHit, Stats.RangedHit, }, } -- s430391
 L["restaura %s pontos de mana por %s s e aumenta em %s% o acerto de feitiço. este efeito fica ativo somente nas profundezas negras"] = { { Stats.SpellHit, }, false, false, } -- s430406
 L["aumenta em %s% a chance de acerto de feitiços, em %s% a chance de acerto crítico de ataques corpo a corpo e de longo alcance, concede %s de poder de ataque, %s de dano mágico e aumenta em %s% a velocidade de movimento. dura %s min"] = { { Stats.SpellHit, }, { Stats.MeleeCrit, Stats.RangedCrit, }, { Stats.GenericAttackPower, }, { Stats.SpellDamage, }, false, false, } -- s430947
@@ -936,10 +936,11 @@ L["chance de aumentar em até %s o seu dano e a sua cura por %s sec ao lançar f
 L["aumenta em %s% sua chance de obter acerto crítico com todos os feitiços e ataques"] = { { Stats.MeleeCrit, Stats.RangedCrit, Stats.SpellCrit, }, } -- s436239
 L["sua mascote ganha %s de vigor e %s de intelecto"] = { { Stats.Stamina, }, { Stats.Intellect, }, ignoreSum = true } -- s436375
 L["chance ao acertar um ataque de aumentar em %s a força por %s sec"] = { { Stats.Strength, }, false, ignoreSum = true } -- s436469
-L["controla a energia arcana latente no ar ao redor para receber uma inspiração carregada, reduzindo em $m% o custo de mana de todos os feitiços e aumentando em até %s o dano causado e a cura realizada por %s sec"] = { { Stats.SpellDamage, Stats.HealingPower, }, false, } -- s437327
+L["controla a energia arcana latente no ar ao redor para receber uma inspiração carregada, reduzindo em %s% o custo de mana de todos os feitiços e aumentando em até %s o dano causado e a cura realizada por %s sec"] = { false, { Stats.SpellDamage, Stats.HealingPower, }, false, } -- s437327
 L["causa um choque gneuro-lógico, causando instantaneamente %s de dano a si, mas aumentando também em %s% sua velocidade de ataque corpo a corpo e de longo alcance por %s sec"] = { false, { Stats.MeleeHaste, Stats.RangedHaste, }, false, } -- s437349
-L["ganha meditação gneuromante, permitindo que $s% da sua regeneração de mana continue durante o lançamento de feitiços e aumentando em até %s o dano causado e a cura realizada com feitiços por %s sec"] = { { Stats.SpellDamage, Stats.HealingPower, }, false, } -- s437357
-L["ganha concentração intensa, reduzindo em $s% a velocidade de movimento, mas aumentando em %s sua resistência a feitiços de todas as escolas e aumentando em $s% a velocidade de ataque corpo a corpo por %s sec"] = { { Stats.FireResistance, Stats.NatureResistance, Stats.FrostResistance, Stats.ShadowResistance, Stats.ArcaneResistance, }, false, } -- s437377
+L["ganha meditação gneuromante, permitindo que %s% da sua regeneração de mana continue durante o lançamento de feitiços e aumentando em até %s o dano causado e a cura realizada com feitiços por %s sec"] = { false, { Stats.SpellDamage, Stats.HealingPower, }, false, } -- s437357
+L["causa um choque hipercondutor, causando instantaneamente %s de dano a si, mas também aumentando em %s% sua velocidade de lançamento de feitiços por %s sec"] = { false, { Stats.SpellHaste, }, false, } -- s437362
+L["ganha concentração intensa, reduzindo em %s% a velocidade de movimento, mas aumentando em %s sua resistência a feitiços de todas as escolas e aumentando em %s% a velocidade de ataque corpo a corpo por %s sec"] = { { Stats.MeleeHaste, }, { Stats.FireResistance, Stats.NatureResistance, Stats.FrostResistance, Stats.ShadowResistance, Stats.ArcaneResistance, }, { Stats.MeleeHaste, }, false, } -- s437377
 L["o lançador cospe um veneno letárgico nos jogadores, causando %s de dano de natureza a cada %s s por %s sec. o veneno reduz em %s% a chance de acerto e aumenta em %s% os custos das habilidades"] = { false, false, false, { Stats.MeleeHit, Stats.RangedHit, }, false, } -- s437390
 L["aumenta em %s% a chance de acerto crítico de feitiços, concede %s de cura e de dano mágico, e aumenta em %s% a velocidade de ataque corpo a corpo e de longo alcance. %s min de duração"] = { { Stats.SpellCrit, }, { Stats.SpellDamage, Stats.HealingPower, }, { Stats.MeleeHaste, Stats.RangedHaste, }, false, } -- s438536
 L["ganha um signo da inovação encantado que fortalece e aumenta em até %s o dano que você causa e a cura que você realiza com feitiços, além de aumentar em %s o poder de ataque por %s sec. só é possível aplicar fora de combate"] = { { Stats.SpellDamage, Stats.HealingPower, }, { Stats.GenericAttackPower, }, false, } -- s439155
@@ -1349,6 +1350,7 @@ L["aumenta em %s a sua taxa de acerto por %s sec"] = { { Stats.MeleeHitRating, S
 L["recupera %s pontos de vida e de mana a cada %s s"] = { { Stats.GenericManaRegen, Stats.HealthRegen, }, false, } -- s27949
 L["aumenta em %s a taxa de acerto e em mais %s% a chance de resistir a efeitos que dificultem o movimento"] = { { Stats.MeleeHitRating, Stats.RangedHitRating, Stats.SpellHitRating, }, false, } -- s27953
 L["aumenta em %s a agilidade. aumenta ligeiramente a velocidade de ataque por %s sec"] = { { Stats.Agility, }, false, } -- s28093
+L["aumenta em %s a taxa de acerto crítico de feitiços de todos os integrantes do grupo em um raio de %s m"] = { { Stats.SpellCritRating, }, false, } -- s28142
 L["envolve o lançador em energia vil, aumentando em %s% a quantidade de pontos de vida gerada com feitiços e efeitos. também aumenta em até %s o dano mágico. somente um tipo de feitiço de armadura pode estar ativo no bruxo por vez. dura %s sec"] = { false, { Stats.SpellDamage, }, false, } -- s28176
 L["aumenta um pouco o dano causado e a cura realizada por feitiços e efeitos mágicos por %s minutos"] = { { Stats.SpellDamage, Stats.HealingPower, }, } -- s28273
 L["a falta de cardossangue reduziu em %s seu espírito"] = { { Stats.Spirit, }, } -- s28274
@@ -1438,6 +1440,7 @@ L["ao lançar um feitiço bem-sucedido, você tem chance de ganhar %s de taxa de
 L["reduz em %s o poder de ataque dos inimigos próximos por %s sec"] = { { Stats.AttackPower, }, false, } -- s32918
 L["aumenta em até %s o dano mágico e em até %s a cura por %s sec"] = { { Stats.SpellDamage, }, { Stats.HealingPower, }, false, } -- s32925
 L["reduz em %s% a velocidade de lançamento de feitiços dos aliados próximos. dura %s sec"] = { { Stats.SpellHaste, }, false, } -- s32940
+L["%s% de chance de seus lançamentos de feitiços bem-sucedidos aumentarem em até %s o seu dano mágico por %s sec"] = { false, { Stats.SpellDamage, }, false, ignoreSum = true } -- s32980
 L["aumenta em %s o total de pontos de vida do jogador por %s sec. este efeito continua após a morte e conta como um frasco"] = { { Stats.Health, }, false, } -- s33053
 L["canaliza poder vil para o alvo, aumentando em %s% o tamanho e em %s o dano físico causado"] = { { Stats.AverageWeaponDamage, }, { Stats.AverageWeaponDamage, }, } -- s33111
 L["aumenta em %s o dano físico causado pelo lançador por %s sec. aumenta em %s% a velocidade de ataque corpo a corpo do lançador"] = { { Stats.MeleeHaste, }, false, { Stats.MeleeHaste, }, } -- s33232
@@ -1535,7 +1538,6 @@ L["toda vez que lança um feitiço, você tem a chance de receber até %s de dan
 L["aumenta em %s a sua armadura na forma de urso e na forma de urso hediondo"] = { { Stats.Armor, }, } -- s37298
 L["aumenta em %s a sua força na forma de felino"] = { { Stats.Strength, }, } -- s37299
 L["aumenta em %s a sua armadura"] = { { Stats.Armor, }, } -- s37340
-L["aumenta em %s a sua força"] = { { Stats.Strength, }, } -- s37341
 L["aumenta em até %s sua cura"] = { { Stats.HealingPower, }, } -- s37342
 L["aumenta em até %s o dano causado"] = { { Stats.SpellDamage, }, } -- s37343
 L["seus feitiços de dano de sombra têm chance de conceder %s de bônus de dano de sombra a você por %s sec"] = { { Stats.FireDamage, }, false, } -- s37378
@@ -1642,8 +1644,8 @@ L["aumenta em %s% a velocidade de ataque do lançador e em %s% todo dano por ele
 L["restaura %s pontos de vida ao longo de %s sec. é preciso ficar sentado enquanto come. se você gastar pelo menos %s s comendo, aumentará o dano causado e a cura realizada de feitiços e efeitos mágicos em até %s por %s sec"] = { { Stats.SpellDamage, Stats.HealingPower, }, false, false, { Stats.SpellDamage, }, false, ignoreSum = true } -- s46683
 L["recupera %s pontos de vida ao longo de %s sec. é preciso ficar sentado enquanto come. se você gastar pelo menos %s s comendo, ficará bem alimentado e ganhará %s de poder de ataque por %s sec"] = { { Stats.GenericAttackPower, }, false, false, { Stats.GenericAttackPower, }, false, ignoreSum = true } -- s46898
 L["recupera %s pontos de mana ao longo de %s sec e deixa você sóbrio. é preciso ficar sentado enquanto bebe"] = { { Stats.GenericManaRegen, }, false, } -- s49472
-L["aumenta em %s a taxa de aceleração corpo a corpo, de longo alcance e de feitiço de integrantes do grupo em um raio de $a. dura %s sec. os tambores podem ser usados durante a metamorfose"] = { { Stats.MeleeHasteRating, Stats.RangedHasteRating, Stats.SpellHasteRating, }, false, } -- s351355
-L["aumenta em %s o poder de ataque e em %s o dano mágico de integrantes do grupo em um raio de $a. dura %s sec. o tambores podem ser usados durante a metamorfose"] = { { Stats.GenericAttackPower, }, { Stats.SpellDamage, }, false, } -- s351360
+L["aumenta em %s a taxa de aceleração corpo a corpo, de longo alcance e de feitiço de integrantes do grupo em um raio de %s. dura %s sec. os tambores podem ser usados durante a metamorfose"] = { { Stats.MeleeHasteRating, Stats.RangedHasteRating, Stats.SpellHasteRating, }, false, false, } -- s351355
+L["aumenta em %s o poder de ataque e em %s o dano mágico de integrantes do grupo em um raio de %s. dura %s sec. o tambores podem ser usados durante a metamorfose"] = { { Stats.GenericAttackPower, }, { Stats.SpellDamage, }, false, false, } -- s351360
 L["investe contra um inimigo, causando dano normal mais %s e atordoando a vítima por %s sec"] = { { Stats.MeleeHaste, }, false, } -- s35412
 L["aumenta em %s a resistência de integrantes do grupo próximos a todas as escolas de magia por %s sec"] = { { Stats.FireResistance, Stats.NatureResistance, Stats.FrostResistance, Stats.ShadowResistance, Stats.ArcaneResistance, }, false, } -- s41453
 L["transforma-se em urso por %s sec. aumenta o dano, mas reduz a velocidade de ataque em %s%"] = { false, { Stats.MeleeHaste, }, } -- s42607
@@ -1998,6 +2000,7 @@ L["attack power increased by %s. (battle shout)\nattack power increased by %s%. 
 L["aumenta em %s o poder mágico de um aliado por %s sec"] = { { Stats.SpellDamage, }, false, } -- s32689
 L["cria uma tempestade violenta na área selecionada, causando  de dano de natureza aos inimigos a cada %s s. aumenta em %s% o intervalo entre ataques dos inimigos. dura %s sec"] = { false, { Stats.MeleeHaste, }, false, } -- s32717
 L["aumenta em %s% a velocidade de ataque do alvo e em %s% a velocidade de movimento"] = { { Stats.MeleeHaste, }, false, } -- s32829
+L["%s% de chance de seus lançamentos de feitiços bem-sucedidos aumentarem em %s o seu poder mágico por %s sec"] = { false, { Stats.SpellDamage, Stats.HealingPower, }, false, ignoreSum = true } -- s32980
 L["força e espírito aumentados em %s. dura %s sec"] = { { Stats.Strength, Stats.Spirit, }, false, } -- s33256
 L["vigor aumentado em %s e espírito aumentado em %s. dura %s sec"] = { { Stats.Stamina, }, { Stats.Spirit, }, false, } -- s33257
 L["aumenta em %s o poder de ataque e em %s o espírito. dura %s sec"] = { { Stats.GenericAttackPower, }, { Stats.Spirit, }, false, } -- s33259
@@ -2184,6 +2187,7 @@ L["convoca o poder do vidente para aumentar em %s o dano mágico do lançador po
 L["aumenta em %s a armadura e em %s% o dano causado por %s sec"] = { { Stats.Armor, }, false, false, } -- s52309
 L["aumenta em %s a taxa de aparo por %s sec"] = { { Stats.ParryRating, }, false, } -- s52419
 L["ataques corpo a corpo que reduzam seus pontos de vida a menos de %s% do total de pontos de vida causam um aumento de %s na sua taxa de esquiva por %s sec. não pode acontecer mais de uma vez a cada %s s"] = { { Stats.ParryRating, }, { Stats.ParryRating, }, false, false, ignoreSum = true } -- s52420
+L["chance de ganhar %s de força por %s sec ao aparar um ataque"] = { { Stats.Strength, }, false, ignoreSum = true } -- s52423
 L["reduz em %s% a velocidade de lançamento de feitiços por %s sec"] = { { Stats.SpellHaste, }, false, } -- s52430
 L["aumenta em %s a armadura de amigos próximos"] = { { Stats.Armor, }, } -- s52442
 L["aumenta em %s% a velocidade de ataque do alvo e em %s% o dano físico que ele causa por %s sec. o lançador não pode ser interrompido"] = { { Stats.MeleeHaste, }, false, false, } -- s52461
@@ -2505,8 +2509,8 @@ L["poder mágico aumentado em %s por %s sec"] = { { Stats.SpellDamage, Stats.Hea
 L["ataques corpo a corpo que reduzem seus pontos de vida a menos de %s% do total geram um aumento de %s na sua taxa de esquiva por %s sec. só pode ocorrer uma vez a cada %s s"] = { { Stats.DodgeRating, }, { Stats.DodgeRating, }, false, false, ignoreSum = true } -- s75475
 L["ataques corpo a corpo que reduzem seus pontos de vida a menos de %s% do total geram um aumento de %s na sua taxa de esquiva por %s sec. só pode ocorrer a cada %s s"] = { { Stats.DodgeRating, }, { Stats.DodgeRating, }, false, false, ignoreSum = true } -- s75481
 L["o conhecimento de halion sobre a movimentação entre fases permite a ele desferir golpes inesperados, aumentando em %s% a chance de acerto dele e reduzindo em %s% a chance de esquiva do inimigo contra seus ataques"] = { { Stats.MeleeHit, Stats.RangedHit, }, false, } -- s78243
-L["aumenta em %s a taxa de aceleração de integrantes do grupo em um raio de $a m. dura %s sec. o tambores podem ser usados durante a metamorfose. não pode afetar alvos de nível %s ou acima"] = { { Stats.MeleeHasteRating, Stats.RangedHasteRating, Stats.SpellHasteRating, }, false, false, } -- s351355
-L["aumenta em %s o poder de ataque e em %s o dano mágico de integrantes do grupo em um raio de $a. dura %s sec. o tambores podem ser usados durante a metamorfose. não pode afetar alvos de nível %s ou acima"] = { { Stats.GenericAttackPower, }, { Stats.SpellDamage, }, false, false, } -- s351360
+L["aumenta em %s a taxa de aceleração de integrantes do grupo em um raio de %s m. dura %s sec. o tambores podem ser usados durante a metamorfose. não pode afetar alvos de nível %s ou acima"] = { { Stats.MeleeHasteRating, Stats.RangedHasteRating, Stats.SpellHasteRating, }, false, false, false, } -- s351355
+L["aumenta em %s o poder de ataque e em %s o dano mágico de integrantes do grupo em um raio de %s. dura %s sec. o tambores podem ser usados durante a metamorfose. não pode afetar alvos de nível %s ou acima"] = { { Stats.GenericAttackPower, }, { Stats.SpellDamage, }, false, false, false, } -- s351360
 L["desestabiliza a estrutura molecular de certas criaturas baseadas em saronita, reduzindo em %s% a velocidade de ataque e em %s% a velocidade de lançamento. dura %s sec"] = { false, { Stats.SpellHaste, }, false, } -- s413118
 L["aumenta em %s% a chance de acerto crítico de seu ajudante"] = { { Stats.MeleeCrit, Stats.RangedCrit, }, } -- s53203
 L["atinge todos os constructos de ferro com um intenso calor, aumentando em %s a velocidade de movimento deles e em %s a aceleração. este efeito pode acumular até %s vezes. ao acumular %s vezes, o constructo de ferro afetado ficará derretido"] = { false, { Stats.MeleeHaste, }, false, false, } -- s65667
@@ -2916,6 +2920,7 @@ L["taxa de aceleração aumentada por %s por %s sec"] = { { Stats.MeleeHasteRati
 L["seus feitiços têm chance de conceder %s de taxa de aceleração por %s sec"] = { { Stats.MeleeHasteRating, Stats.RangedHasteRating, Stats.SpellHasteRating, }, false, ignoreSum = true } -- s90886
 L["seus feitiços têm chance de conceder %s de taxa de acerto crítico o por %s sec"] = { { Stats.MeleeCritRating, Stats.RangedCritRating, Stats.SpellCritRating, }, false, ignoreSum = true } -- s90892
 L["seus feitiços tem chance de aumentar em %s o poder mágico por %s sec"] = { { Stats.SpellDamage, Stats.HealingPower, }, false, ignoreSum = true } -- s90897
+L["os seus próximos %s feitiços lançados dentro de %s sec aumentarão em %s o seu poder mágico, acumulando até %s vezes. dura %s sec"] = { false, false, { Stats.SpellDamage, Stats.HealingPower, }, false, false, ignoreSum = true } -- s90900
 L["seus feitiços periódicos de cura e de dano aumentam em %s o poder mágico sempre que causaram dano ou curarem. dura %s sec, e acumula até %s vezes"] = { { Stats.SpellDamage, Stats.HealingPower, }, false, false, ignoreSum = true } -- s90943
 L["seus feitiços que deixarem o alvo com menos de %s% de pontos de vida aumentarão em %s o seu poder mágico por %s sec. não pode ser ativado novamente por %s sec após o bônus acabe"] = { { Stats.SpellDamage, Stats.HealingPower, }, { Stats.SpellDamage, }, false, false, ignoreSum = true } -- s90998
 L["seus feitiços nocivos podem aumenta o seu poder mágico em %s por %s sec"] = { { Stats.SpellDamage, Stats.HealingPower, }, false, ignoreSum = true } -- s91011
@@ -3184,6 +3189,7 @@ L["chance de, ao atacar corpo a corpo ou à distância, aplicar um efeito em voc
 L["aumenta em %s% as velocidades de ataque e movimento do lançador e em %s% todo dano por ele causado. também concede imunidade a efeitos de provocação"] = { { Stats.MeleeHaste, }, false, } -- s26662
 L["aumenta em %s seu acerto por %s sec"] = { { Stats.MeleeHitRating, Stats.RangedHitRating, Stats.SpellHitRating, }, false, } -- s27723
 L["aumenta em %s o acerto e em mais %s% a chance de resistir a efeitos que dificultem o movimento"] = { { Stats.MeleeHitRating, Stats.RangedHitRating, Stats.SpellHitRating, }, false, } -- s27953
+L["aumenta em %s o acerto crítico de feitiços de todos os integrantes do grupo em um raio de %s"] = { { Stats.SpellCritRating, }, false, } -- s28142
 L["seus %s próximos lançamentos de feitiços de dano ou cura feitos em até %s segundos concederão um bônus de %s de poder mágico, podendo acumular até %s vezes. este efeito expira após lançar %s feitiços de cura ou dano, ou após %s segundos"] = { false, false, { Stats.SpellDamage, Stats.HealingPower, }, false, false, false, ignoreSum = true } -- s28200
 L["aumenta em %s a força e reduz em %s a esquiva por %s sec"] = { { Stats.Strength, }, { Stats.DodgeRating, }, false, } -- s28494
 L["aumenta em %s a esquiva e em %s o máximo de pontos de vida por %s sec. conta como elixir de batalha e guardião. este efeito continua após a morte"] = { { Stats.DodgeRating, }, { Stats.Health, }, false, } -- s28518
@@ -3471,6 +3477,7 @@ L["seus ataques corpo a corpo e de longo alcance tem uma chance de conceder %s d
 L["seus feitiços de cura e de dano têm chance de conceder %s de taxa de acerto crítico por %s sec"] = { { Stats.MeleeCritRating, Stats.RangedCritRating, Stats.SpellCritRating, }, false, ignoreSum = true } -- s116453
 L["seus ataques corpo a corpo e de longo alcance têm chance de conceder %s de taxa de maestria por %s sec"] = { { Stats.MasteryRating, }, false, ignoreSum = true } -- s116461
 L["grants %s haste rating for %s sec"] = { { Stats.MeleeHasteRating, Stats.RangedHasteRating, Stats.SpellHasteRating, }, false, } -- s116462
+L["o lançador aumenta em %s% a velocidade de lançamento por %s sec"] = { { Stats.SpellHaste, }, false, } -- s116592
 L["concede %s de agilidade por %s sec"] = { { Stats.Agility, }, false, } -- s116718
 L["concede %s de aparo por %s sec"] = { { Stats.ParryRating, }, false, } -- s116723
 L["seus ataques corpo a corpo têm chance de conceder %s de aparo por %s sec"] = { { Stats.ParryRating, }, false, ignoreSum = true } -- s116766

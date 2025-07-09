@@ -22,8 +22,6 @@ W["你的下一次攻擊會是致命一擊。"] = { [Stats.MeleeCrit] = 100, [St
 W["能為你隊伍的傷害與治療強度給予少量的強化。"] = { [Stats.AverageWeaponDamage] = 5, [Stats.SpellDamage] = 10, [Stats.HealingPower] = 16, } -- s418510
 W["力竭。"] = { [Stats.MeleeHaste] = -100, } -- s424574
 W["讓飲用者可以和對凡間尚有牽掛的屍體對話。另外還能治療消化不良。"] = { [Stats.AllStats] = 1, } -- s426606
-W["你的命中率提高$s%。"] = { [Stats.MeleeHit] = 1, [Stats.RangedHit] = 1, } -- s429863
-W["你的力量提高$s點。"] = { [Stats.Strength] = 12, } -- s429864
 W["受到激勵時，大幅提高傷害。"] = { [Stats.MeleeHaste] = 20, [Stats.AverageWeaponDamage] = 25, } -- s436430
 W["破甲"] = { [Stats.AverageWeaponDamage] = -10, } -- e27
 W["贊達拉魔精徽記"] = { [Stats.SpellDamage] = 18, [Stats.HealingPower] = 18, } -- e2605
@@ -92,7 +90,6 @@ W["對目標造成武器傷害的攻擊，並降低目標的閃躲機率。"] = 
 W["略微提高法術能量。"] = { [Stats.SpellDamage] = 6, [Stats.HealingPower] = 6, } -- s37817
 W["使敵方目標的施法速度減緩。"] = { [Stats.SpellHaste] = -30, } -- s43507
 W["empower your rune weapon, immediately activating one of each rune type"] = { [Stats.ArcaneDamage] = 1, } -- s47804
-W["提高$s點致命一擊等級。"] = { [Stats.MeleeCritRating] = 61, [Stats.SpellCritRating] = 61, } -- s48836
 W["迫使目標將注意力放在你身上。當效果的持續時間結束時，目標將會攻擊對他造成最大仇恨值的敵人。"] = { [Stats.MeleeHaste] = 20, } -- s49029
 W["施法者的蠻橫之力使得攻擊無視護甲值。"] = { [Stats.ArmorPenetration] = 50000, } -- s54678
 W["當施法者受到傷害時，提高施法速度。"] = { [Stats.SpellHaste] = 1, } -- s55096
@@ -639,7 +636,7 @@ L["使一個敵人和它附近盟友的護甲值降低，可最多影響%s個目
 L["使你的命中率提高%s%。"] = { { Stats.MeleeHit, Stats.RangedHit, }, } -- s18066
 L["被擊中之後有%s%的機率使你獲得荊棘之盾，對攻擊者造成%s點自然傷害，並使你的自然抗性提高%s點，持續%s sec。"] = { false, false, { Stats.NatureResistance, }, false, ignoreSum = true } -- s18097
 L["在%s sec內恢復總計%s點法力，飲用時必須保持坐姿。另外你還將得到%s點精神的加成，持續%s sec。"] = { false, { Stats.GenericManaRegen, }, { Stats.Spirit, }, false, } -- s18140
-L["在%s sec內恢復總計%s點生命力，進食時必須保持坐姿。如果你花費至少%s秒鐘來進食，你的敏捷將提高$%ss點，持續%s sec。"] = { false, { Stats.Agility, }, false, false, false, ignoreSum = true } -- s18230
+L["在%s sec內恢復總計%s點生命力，進食時必須保持坐姿。如果你花費至少%s秒鐘來進食，你的敏捷將提高%s點，持續%s sec。"] = { false, { Stats.Agility, }, false, { Stats.Agility, }, false, ignoreSum = true } -- s18230
 L["使半徑%s碼範圍內的小隊成員的智力額外提高%s點。"] = { false, { Stats.Intellect, }, } -- s18264
 L["每%s秒恢復%s點法力。"] = { false, { Stats.GenericManaRegen, }, } -- s18378
 L["使敵人的攻擊強度降低%s點，持續%s sec。"] = { { Stats.GenericAttackPower, }, false, } -- s18381
@@ -922,6 +919,9 @@ L["被擊中時對攻擊者造成%s點火焰傷害，並使你法術造成致命
 L["加速你的施法，使施法速度提高%s%，並且在施法時因受到傷害性攻擊而損失的施法時間縮短%s%，持續%s sec。"] = { { Stats.SpellHaste, }, false, false, } -- s429125
 L["使你神聖法術的致命一擊機率提高%s%。此外，你造成極效治療效果的法術可在%s sec內恢復目標相當於該治療量%s%的生命力。"] = { { Stats.SpellCrit, }, false, false, } -- s429142
 L["控制一個等級不高於%s級的敵對人型生物，持續%s sec。使其攻擊間隔時間延長%s%。"] = { false, false, { Stats.MeleeHaste, }, } -- s429688
+L["你的命中率提高%s%。"] = { { Stats.MeleeHit, Stats.RangedHit, }, } -- s429863
+L["你的力量提高%s點。"] = { { Stats.Strength, }, } -- s429864
+L["陷入瘋狂，攻擊速度提高%s%，同時提高你產生的威脅值，持續%s sec。"] = { { Stats.MeleeHaste, Stats.RangedHaste, }, false, } -- s429867
 L["附魔刀刃使你的命中率提高%s%。在黑澗深淵外無法生效。"] = { { Stats.MeleeHit, Stats.RangedHit, }, } -- s430391
 L["每%s秒恢復%s點法力，且法術命中提高%s%。此效果只能在黑澗深淵生效。"] = { false, { Stats.SpellHit, }, false, } -- s430406
 L["法術命中的機率提高%s%，近戰與遠程的致命一擊機率提高%s%，攻擊強度提高%s點，法術傷害提高%s點，移動速度提高%s%，持續%s分鐘。"] = { { Stats.SpellHit, }, { Stats.MeleeCrit, Stats.RangedCrit, }, { Stats.GenericAttackPower, }, { Stats.SpellDamage, }, false, false, } -- s430947
@@ -945,10 +945,11 @@ L["你寵物的耐力提高%s點，智力提高%s點。"] = { { Stats.Stamina, }
 L["命中時有機率使力量提高%s點，持續%s sec。"] = { { Stats.Strength, }, false, ignoreSum = true } -- s436469
 L["使你寵物造成致命一擊的機率提高$%s%。"] = { { Stats.MeleeCrit, Stats.RangedCrit, }, } -- s436689
 L["使你寵物造成致命一擊的機率提高%s%。"] = { { Stats.MeleeCrit, Stats.RangedCrit, }, ignoreSum = true } -- s436690
-L["駕馭周遭空氣中潛在的秘法能量讓你獲得湧現的靈感，使你所有法術的法力消耗降低$m%，且造成的傷害與治療效果最多提高%s點，持續%s sec。"] = { { Stats.SpellDamage, Stats.HealingPower, }, false, } -- s437327
+L["駕馭周遭空氣中潛在的秘法能量讓你獲得湧現的靈感，使你所有法術的法力消耗降低%s%，且造成的傷害與治療效果最多提高%s點，持續%s sec。"] = { false, { Stats.SpellDamage, Stats.HealingPower, }, false, } -- s437327
 L["造成神「精」震擊，立即對自己造成%s點傷害，但使你的近戰與遠程速度提高%s%，持續%s sec。"] = { false, { Stats.MeleeHaste, Stats.RangedHaste, }, false, } -- s437349
-L["獲得精神明想，使你在施法時仍保持$s%的法力恢復速度，且造成的傷害與治療效果最多提高%s點，持續%s sec秒。"] = { { Stats.SpellDamage, Stats.HealingPower, }, false, } -- s437357
-L["獲得極高的專注力，使移動速度降低$s%，但同時使你對任一法術類別的抗性提高%s點，並使你近戰攻擊速度提高$s%，持續%s sec。"] = { { Stats.FireResistance, Stats.NatureResistance, Stats.FrostResistance, Stats.ShadowResistance, Stats.ArcaneResistance, }, false, } -- s437377
+L["獲得精神明想，使你在施法時仍保持%s%的法力恢復速度，且造成的傷害與治療效果最多提高%s點，持續%s sec秒。"] = { false, { Stats.SpellDamage, Stats.HealingPower, }, false, } -- s437357
+L["造成超導震擊，立即對自己造成%s點傷害，但使你的施法速度提高%s%，持續%s sec。"] = { false, { Stats.SpellHaste, }, false, } -- s437362
+L["獲得極高的專注力，使移動速度降低%s%，但同時使你對任一法術類別的抗性提高%s點，並使你近戰攻擊速度提高%s%，持續%s sec。"] = { { Stats.MeleeHaste, }, { Stats.FireResistance, Stats.NatureResistance, Stats.FrostResistance, Stats.ShadowResistance, Stats.ArcaneResistance, }, { Stats.MeleeHaste, }, false, } -- s437377
 L["施法者對玩家吐出昏睡毒藥，每%s秒造成%s點自然傷害，持續%s sec。此毒藥會使命中率降低%s%，且技能消耗提高%s%。"] = { false, false, false, { Stats.MeleeHit, Stats.RangedHit, }, false, } -- s437390
 L["法術造成致命一擊的機率提高%s%，賦予%s點法術傷害和治療，並且近戰攻擊和遠程攻擊速度提高%s%。持續%s分鐘。"] = { { Stats.SpellCrit, }, { Stats.SpellDamage, Stats.HealingPower, }, { Stats.MeleeHaste, Stats.RangedHaste, }, false, } -- s438536
 L["獲得一枚附魔的創新符印，使你以法術造成的傷害與治療效果最多提高%s點，攻擊強度提高%s點，持續%s sec。此效果只可在非戰鬥狀態下施加。"] = { { Stats.SpellDamage, Stats.HealingPower, }, { Stats.GenericAttackPower, }, false, } -- s439155
@@ -1186,8 +1187,8 @@ L["spi/fr %s/%s"] = { { Stats.Spirit, }, { Stats.FireResistance, }, } -- e1530
 L["str/sta %s/%s"] = { { Stats.Strength, Stats.Stamina, }, false, } -- e1531
 L["str/sta/ac/fr %s/%s/%s/%s"] = { { Stats.Strength, Stats.Stamina, }, false, { Stats.Armor, }, { Stats.FireResistance, }, } -- e1532
 L["int/spi/mana/fr %s/%s/%s/%s"] = { { Stats.Intellect, Stats.Spirit, }, false, { Stats.Mana, }, { Stats.FireResistance, }, } -- e1543
-L["%s 攻擊強度"] = { { Stats.AttackPower, Stats.RangedAttackPower, }, } -- e1563
-L["%s 遠程攻擊強度"] = { { Stats.AttackPower, Stats.RangedAttackPower, }, } -- e1588
+L["%s 攻擊強度"] = { { Stats.AttackPower, }, } -- e1563
+L["%s 遠程攻擊強度"] = { { Stats.AttackPower, }, } -- e1588
 L["攻擊力 %s"] = { { Stats.AverageWeaponDamage, }, } -- e1895
 L["%s 防禦技能"] = { { Stats.Defense, }, } -- e1944
 L["%s% 格擋"] = { { Stats.BlockChance, }, } -- e1983
@@ -1224,7 +1225,7 @@ L["火焰傷害 %s"] = { { Stats.FireDamage, }, } -- e2616
 L["%s自然抗性"] = { { Stats.NatureResistance, }, } -- e2681
 L["治療%s及每%s秒%s法力"] = { { Stats.HealingPower, }, { Stats.GenericManaRegen, }, false, } -- e2715
 L["耐力%s及護甲%s"] = { { Stats.Stamina, }, { Stats.Armor, }, } -- e2716
-L["攻擊強度%s並%s%致命一擊機率"] = { { Stats.AttackPower, Stats.RangedAttackPower, }, { Stats.MeleeCrit, Stats.RangedCrit, }, } -- e2717
+L["攻擊強度%s並%s%致命一擊機率"] = { { Stats.AttackPower, }, { Stats.MeleeCrit, Stats.RangedCrit, }, } -- e2717
 L["法術傷害%s及%s%法術致命一擊機率"] = { { Stats.SpellDamage, Stats.HealingPower, }, { Stats.SpellCrit, }, } -- e2721
 L["%s敏捷"] = { { Stats.Agility, }, } -- e2802
 L["%s耐力"] = { { Stats.Stamina, }, } -- e2803
@@ -1274,7 +1275,7 @@ L["%s點力量"] = { { Stats.Strength, }, } -- e7666
 L["%s點敏捷"] = { { Stats.Agility, }, } -- e7667
 L["治療效果%s點，每%s秒%s點法力。"] = { { Stats.HealingPower, }, false, { Stats.GenericManaRegen, }, } -- e7882
 L["法術傷害%s點，致命一擊%s%"] = { { Stats.SpellDamage, Stats.HealingPower, }, { Stats.SpellCrit, Stats.MeleeCrit, Stats.RangedCrit, }, } -- e7883
-L["攻擊強度%s點，致命一擊%s%"] = { { Stats.AttackPower, Stats.RangedAttackPower, }, { Stats.MeleeCrit, Stats.RangedCrit, Stats.SpellCrit, }, } -- e7884
+L["攻擊強度%s點，致命一擊%s%"] = { { Stats.AttackPower, }, { Stats.MeleeCrit, Stats.RangedCrit, Stats.SpellCrit, }, } -- e7884
 L["耐力%s點，防禦%s點"] = { { Stats.Stamina, }, { Stats.Defense, }, } -- e7885
 L["poultry precision scope (%s damage)"] = { { Stats.AverageWeaponDamage, }, } -- e7944
 L["使你的近戰攻擊加速等級提高%s點，持續%s sec。"] = { { Stats.MeleeHasteRating, }, false, } -- s65
@@ -1663,6 +1664,7 @@ L["使你的命中等級提高%s點，持續%s sec。"] = { { Stats.MeleeHitRati
 L["每%s秒恢復%s點生命力和法力。"] = { false, { Stats.GenericManaRegen, Stats.HealthRegen, }, } -- s27949
 L["使你的命中等級提高%s點，並使你抵抗移動限制效果的機率提高%s%。"] = { { Stats.MeleeHitRating, Stats.RangedHitRating, Stats.SpellHitRating, }, false, } -- s27953
 L["使敏捷提高%s點，並使攻擊速度略微提高，持續%s sec。"] = { { Stats.Agility, }, false, } -- s28093
+L["使半徑%s碼範圍內所有小隊成員的法術致命一擊等級提高%s點。"] = { false, { Stats.SpellCritRating, }, } -- s28142
 L["使周圍半徑%s碼範圍內隊友的所有法術和魔法效果所造成的傷害和治療效果提高最多%s點。"] = { false, { Stats.SpellDamage, Stats.HealingPower, }, } -- s28143
 L["使周圍半徑%s碼範圍內隊友的所有法術和魔法效果所造成的治療效果提高最多%s點。"] = { false, { Stats.HealingPower, }, } -- s28144
 L["使你的法術傷害提高最多%s點，以及你的治療效果最多%s點。"] = { { Stats.SpellDamage, }, { Stats.HealingPower, }, } -- s28155
@@ -1767,6 +1769,7 @@ L["使你的格擋機率提高%s%，持續%s sec。在此期間每次成功格�
 L["成功施放法術後有機會使你在%s秒內獲得%s點法術加速等級。"] = { false, { Stats.MeleeHasteRating, Stats.RangedHasteRating, Stats.SpellHasteRating, }, ignoreSum = true } -- s32837
 L["使法術所造成的傷害最多提高%s點和治療效果最多提高%s點，持續%s sec。"] = { { Stats.SpellDamage, }, { Stats.HealingPower, }, false, } -- s32925
 L["使附近盟友的施法速度降低%s%，持續%s sec。"] = { { Stats.SpellHaste, }, false, } -- s32940
+L["成功施放法術後有%s%的機率使你的法術傷害提高最多%s點，持續%s sec。"] = { false, { Stats.SpellDamage, }, false, ignoreSum = true } -- s32980
 L["使玩家的生命力上限提高%s點，持續%s sec。此效果在死亡之後依然存在，並歸類為精煉藥劑效果。"] = { { Stats.Health, }, false, } -- s33053
 L["使目標敏捷提高%s點，持續%s sec。"] = { { Stats.Agility, }, false, } -- s33077
 L["引導魔化能量注入目標，使其體型增大%s%和所造成的物理傷害提高%s點。"] = { { Stats.AverageWeaponDamage, }, { Stats.AverageWeaponDamage, }, } -- s33111
@@ -1965,8 +1968,8 @@ L["在%s sec內恢復總計%s點生命力，進食時必須保持坐姿。如果
 L["法術造成的傷害提高最多%s點，持續%s sec。"] = { { Stats.SpellDamage, }, false, } -- s48889
 L["防禦等級提高%s點，持續%s sec。"] = { { Stats.DefenseRating, }, false, } -- s48890
 L["在%s sec內恢復總計%s點法力，並讓你清醒過來。喝飲料時必須保持坐姿。"] = { false, { Stats.GenericManaRegen, }, } -- s49472
-L["使$a碼內的隊伍成員近戰、遠程以及法術的加速等級提高%s點。持續%s sec。戰鼓可以在變身狀態下使用。"] = { { Stats.MeleeHasteRating, Stats.RangedHasteRating, Stats.SpellHasteRating, }, false, } -- s351355
-L["使$a碼範圍內的隊伍成員攻擊強度提高%s點，法術傷害提高%s點。持續%s sec。戰鼓可以在變身狀態下使用。"] = { { Stats.GenericAttackPower, }, { Stats.SpellDamage, }, false, } -- s351360
+L["使%s碼內的隊伍成員近戰、遠程以及法術的加速等級提高%s點。持續%s sec。戰鼓可以在變身狀態下使用。"] = { false, { Stats.MeleeHasteRating, Stats.RangedHasteRating, Stats.SpellHasteRating, }, false, } -- s351355
+L["使%s碼範圍內的隊伍成員攻擊強度提高%s點，法術傷害提高%s點。持續%s sec。戰鼓可以在變身狀態下使用。"] = { false, { Stats.GenericAttackPower, }, { Stats.SpellDamage, }, false, } -- s351360
 L["向敵人衝鋒，造成普通攻擊再加上%s點傷害，並使其昏迷%s sec。"] = { { Stats.MeleeHaste, }, false, } -- s35412
 L["使附近所有隊友對所有系別的魔法抗性提高%s點，持續%s sec。"] = { { Stats.FireResistance, Stats.NatureResistance, Stats.FrostResistance, Stats.ShadowResistance, Stats.ArcaneResistance, }, false, } -- s41453
 L["變身為熊，持續%s sec。在此期間內提升傷害力但降低攻擊速度%s%。"] = { false, { Stats.MeleeHaste, }, } -- s42607
@@ -2426,6 +2429,7 @@ L["attack power increased by %s. (battle shout)\nattack power increased by %s%. 
 L["使一個盟友的法術能量提高%s點，持續%s sec。"] = { { Stats.SpellDamage, }, false, } -- s32689
 L["在施法者指定的區域製造一場強烈的風暴，對範圍內的所有敵人每%s秒造成自然傷害，並使其攻擊間隔時間延長%s%，持續%s sec。"] = { false, { Stats.MeleeHaste, }, false, } -- s32717
 L["提高目標的攻擊速度%s%，移動速度%s%。"] = { { Stats.MeleeHaste, }, false, } -- s32829
+L["成功施放法術後有%s%的機率使你的法術能量提高%s點，持續%s sec。"] = { false, { Stats.SpellDamage, Stats.HealingPower, }, false, ignoreSum = true } -- s32980
 L["提高玩家的生命力上限%s點，持續%s sec。此效果在死亡之後依然存在，並歸類為精鍊藥劑效果。"] = { { Stats.Health, }, false, } -- s33053
 L["提高%s點力量和精神，持續%s sec。"] = { { Stats.Strength, Stats.Spirit, }, false, } -- s33256
 L["提高%s點耐力和%s點精神，持續%s sec。"] = { { Stats.Stamina, }, { Stats.Spirit, }, false, } -- s33257
@@ -2641,6 +2645,7 @@ L["呼喚先知之力提高施法者造成的法術傷害%s點，持續%s sec。
 L["護甲值提高%s點，造成的傷害提高%s%，持續%s sec。"] = { { Stats.Armor, }, false, false, } -- s52309
 L["提高%s點招架等級，持續%s sec。"] = { { Stats.ParryRating, }, false, } -- s52419
 L["當受到近戰攻擊而使你的生命力低於%s%時，可獲得%s點招架等級，持續%s sec。此效果每%s秒只能發動一次。"] = { { Stats.ParryRating, }, { Stats.ParryRating, }, false, false, ignoreSum = true } -- s52420
+L["招架攻擊時有機率獲得%s點力量，持續%s sec。"] = { { Stats.Strength, }, false, ignoreSum = true } -- s52423
 L["提高周圍的友方目標護甲值%s點。"] = { { Stats.Armor, }, } -- s52442
 L["提高施法者的攻擊速度%s%和所造成的物理傷害%s%，持續%s sec。施法者無法被阻擋。"] = { { Stats.MeleeHaste, }, false, false, } -- s52461
 L["提高施法者的攻擊速度%s%，但降低造成的物理傷害%s%，持續%s sec。"] = { { Stats.MeleeHaste, }, false, false, } -- s52470
@@ -2946,8 +2951,8 @@ L["使敵人的攻擊速度降低%s%，持續%s sec。"] = { { Stats.MeleeHaste,
 L["你的傷害法術有一定的機率提高法術能量%s點，持續%s sec。"] = { { Stats.SpellDamage, Stats.HealingPower, }, false, ignoreSum = true } -- s75465
 L["法術能量提高%s點，持續%s sec。"] = { { Stats.SpellDamage, Stats.HealingPower, }, false, } -- s75466
 L["海萊恩對於相位的洞察力讓他能夠進行出其不意的攻擊，使他的命中機率提高%s%並使敵人對他的攻擊閃躲機率降低%s%。"] = { { Stats.MeleeHit, Stats.RangedHit, }, false, } -- s78243
-L["使$a碼內的隊伍成員加速等級提高%s點。持續%s sec。戰鼓可以在變身狀態下使用。無法作用於%s級以上的目標。"] = { { Stats.MeleeHasteRating, Stats.RangedHasteRating, Stats.SpellHasteRating, }, false, false, } -- s351355
-L["使$a碼範圍內的隊伍成員攻擊強度提高%s點，法術傷害提高%s點。持續%s sec。戰鼓可以在變身狀態下使用。無法作用於%s級以上的目標。"] = { { Stats.GenericAttackPower, }, { Stats.SpellDamage, }, false, false, } -- s351360
+L["使%s碼內的隊伍成員加速等級提高%s點。持續%s sec。戰鼓可以在變身狀態下使用。無法作用於%s級以上的目標。"] = { false, { Stats.MeleeHasteRating, Stats.RangedHasteRating, Stats.SpellHasteRating, }, false, false, } -- s351355
+L["使%s碼範圍內的隊伍成員攻擊強度提高%s點，法術傷害提高%s點。持續%s sec。戰鼓可以在變身狀態下使用。無法作用於%s級以上的目標。"] = { false, { Stats.GenericAttackPower, }, { Stats.SpellDamage, }, false, false, } -- s351360
 L["令某些薩鋼生物的分子結構失序，攻擊速度降低%s%，施法速度降低%s%，持續%s sec。"] = { false, { Stats.SpellHaste, }, false, } -- s413118
 L["施法速度降低%s%，持續%s sec。"] = { { Stats.SpellHaste, }, false, } -- s52430
 L["以高溫衝擊周圍的鐵之傀儡，使其移動速度提高%s點，加速提高%s點。此效果最多可堆疊%s次。堆疊%s次之後，鐵之傀儡將會開始熔化。"] = { false, { Stats.MeleeHaste, }, false, false, } -- s65667
@@ -3379,6 +3384,7 @@ L["加速等級提高%s點，持續%s sec。"] = { { Stats.MeleeHasteRating, Sta
 L["你的法術有機率賦予你%s點加速等級，持續%s sec。"] = { { Stats.MeleeHasteRating, Stats.RangedHasteRating, Stats.SpellHasteRating, }, false, ignoreSum = true } -- s90886
 L["你的法術有機率賦予你%s點致命一擊等級，持續%s sec。"] = { { Stats.MeleeCritRating, Stats.RangedCritRating, Stats.SpellCritRating, }, false, ignoreSum = true } -- s90892
 L["致命一擊等級提高%s點，持續%s sec。"] = { { Stats.MeleeCritRating, Stats.RangedCritRating, Stats.SpellCritRating, }, false, } -- s90895
+L["在%s sec內施放下%s個法術時，可以額外獲得%s點法術能量，可堆疊%s次，持續%s sec。"] = { false, false, { Stats.SpellDamage, Stats.HealingPower, }, false, false, ignoreSum = true } -- s90900
 L["每次你的週期性治療和傷害法術作用時可賦予%s點法術傷害。持續%s sec，最多可堆疊%s次。"] = { { Stats.SpellDamage, Stats.HealingPower, }, false, false, ignoreSum = true } -- s90943
 L["你的法術在造成傷害並使目標的生命值降至%s%以下時將賦予你%s點法術能量，持續%s sec。在效果消失後的%s sec內無法再次獲得此效果。"] = { { Stats.SpellDamage, Stats.HealingPower, }, { Stats.SpellDamage, }, false, false, ignoreSum = true } -- s90998
 L["你的有害法術造成致命一擊後有機率賦予你%s點法術能量，持續%s sec。"] = { { Stats.SpellDamage, Stats.HealingPower, }, false, ignoreSum = true } -- s91011
@@ -3658,6 +3664,7 @@ L["在施法者指定的區域製造一場強烈的風暴，對範圍內的所�
 L["變身成獵豹形態，提高攻擊速度%s%，持續%s sec。"] = { { Stats.MeleeHaste, }, false, } -- s27545
 L["提高%s點命中，持續%s sec。"] = { { Stats.MeleeHitRating, Stats.RangedHitRating, Stats.SpellHitRating, }, false, } -- s27723
 L["使你的命中提高%s點，並使你抵抗移動限制效果的機率提高%s%。"] = { { Stats.MeleeHitRating, Stats.RangedHitRating, Stats.SpellHitRating, }, false, } -- s27953
+L["使半徑%s碼範圍內所有小隊成員的法術致命一擊提高%s點。"] = { false, { Stats.SpellCritRating, }, } -- s28142
 L["使半徑%s碼範圍內隊友的法術能量提高%s點。"] = { false, { Stats.SpellDamage, Stats.HealingPower, }, } -- s28143
 L["你在%s秒內所施放的%s次傷害或治療法術，將獲得最多%s點的法術能量加成，最多可堆疊%s次。第%s次施放傷害或治療法術時，或經過%s秒後會移除此效果。"] = { false, false, { Stats.SpellDamage, Stats.HealingPower, }, false, false, false, ignoreSum = true } -- s28200
 L["提高%s點力量，並且降低%s點閃躲，持續%s sec。"] = { { Stats.Strength, }, { Stats.DodgeRating, }, false, } -- s28494
@@ -3964,6 +3971,7 @@ L["你的近戰攻擊與遠程攻擊有一定的機率賦予你%s點精通，持
 L["賦予%s點招架，持續%s sec。"] = { { Stats.ParryRating, }, false, } -- s116448
 L["你的近戰攻擊與遠程攻擊有一定的機率賦予你%s點招架，持續%s sec。"] = { { Stats.ParryRating, }, false, ignoreSum = true } -- s116449
 L["你的治療及傷害法術有一定機率賦予你%s點致命一擊，持續 %s sec。"] = { { Stats.MeleeCritRating, Stats.RangedCritRating, Stats.SpellCritRating, }, false, ignoreSum = true } -- s116453
+L["施法者使自己的施法速度提高%s%，持續%s sec。"] = { { Stats.SpellHaste, }, false, } -- s116592
 L["閃躲提高%s。"] = { { Stats.DodgeRating, }, } -- s116660
 L["賦予%s點敏捷，持續%s sec。"] = { { Stats.Agility, }, false, } -- s116718
 L["你的近戰攻擊有一定的機率賦予你%s點招架，持續%s sec。"] = { { Stats.ParryRating, }, false, ignoreSum = true } -- s116766

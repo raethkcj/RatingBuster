@@ -28,8 +28,6 @@ W["tu siguiente ataque será un golpe crítico"] = { [Stats.MeleeCrit] = 100, [S
 W["ofrece una pequeña ventaja a los poderes de daño y sanación de tu grupo"] = { [Stats.AverageWeaponDamage] = 5, [Stats.SpellDamage] = 10, [Stats.HealingPower] = 16, } -- s418510
 W["agotado"] = { [Stats.MeleeHaste] = -100, } -- s424574
 W["permite al objetivo hablar con el cadáver de alguien con asuntos pendientes en el mundo de los mortales. también alivia la indigestión"] = { [Stats.AllStats] = 1, } -- s426606
-W["aumenta tu probabilidad de golpear un $s%"] = { [Stats.MeleeHit] = 1, [Stats.RangedHit] = 1, } -- s429863
-W["aumenta tu fuerza $s p"] = { [Stats.Strength] = 12, } -- s429864
 W["aumenta el daño en gran medida cuando estás inspirado"] = { [Stats.MeleeHaste] = 20, [Stats.AverageWeaponDamage] = 25, } -- s436430
 W["hendido"] = { [Stats.AverageWeaponDamage] = -10, } -- e27
 W["aceite menor de zahorí"] = { [Stats.SpellDamage] = 8, [Stats.HealingPower] = 8, } -- e2623
@@ -80,7 +78,7 @@ W["aceite de zahorí"] = { [Stats.SpellDamage] = 24, [Stats.HealingPower] = 24, 
 W["aceite de zahorí luminoso"] = { [Stats.SpellDamage] = 36, [Stats.HealingPower] = 36, [Stats.SpellCritRating] = 14, } -- e2628
 W["vitalidad"] = { [Stats.GenericManaRegen] = 4, [Stats.HealthRegen] = 4, } -- e2656
 W["pies de plomo"] = { [Stats.MeleeHitRating] = 10, [Stats.RangedHitRating] = 10, } -- e2658
-W["salvajismo"] = { [Stats.AttackPower] = 70, } -- e2667
+W["salvajismo"] = { [Stats.AttackPower] = 70, [Stats.RangedAttackPower] = 70, } -- e2667
 W["fuego solar"] = { [Stats.FireDamage] = 50, [Stats.ArcaneDamage] = 50, } -- e2671
 W["escarcha de alma"] = { [Stats.FrostDamage] = 54, [Stats.ShadowDamage] = 54, } -- e2672
 W["aceite de zahorí excelente"] = { [Stats.SpellDamage] = 42, [Stats.HealingPower] = 42, } -- e2678
@@ -99,7 +97,6 @@ W["aumenta el poder con hechizos ligeramente"] = { [Stats.SpellDamage] = 6, [Sta
 W["carga contra un objetivo y lo derriba"] = { [Stats.MeleeHaste] = -6000, } -- s41581
 W["ralentiza la velocidad de movimiento de un objetivo enemigo"] = { [Stats.SpellHaste] = -30, } -- s43507
 W["empower your rune weapon, immediately activating one of each rune type"] = { [Stats.ArcaneDamage] = 1, } -- s47804
-W["aumenta el índice de golpe crítico $s p"] = { [Stats.MeleeCritRating] = 61, [Stats.SpellCritRating] = 61, } -- s48836
 W["fuerza al objetivo para que se obsesione contigo. cuando el efecto desaparece, atacará lo que más odie"] = { [Stats.MeleeHaste] = 20, } -- s49029
 W["la fuerza bruta del taumaturgo provoca que los ataques ignoren la armadura"] = { [Stats.ArmorPenetration] = 50000, } -- s54678
 W["aumenta la velocidad de lanzamiento del taumaturgo a medida que recibe daño"] = { [Stats.SpellHaste] = 1, } -- s55096
@@ -679,8 +676,8 @@ L["al recibir un golpe en combate hay un %s% de probabilidad de presentar un esc
 L["restaura %s p. de maná durante %s sec. debes permanecer sentado mientras bebes. también aumenta tu espíritu en %s p. durante %s sec"] = { { Stats.GenericManaRegen, }, false, { Stats.Spirit, }, false, } -- s18140
 L["restaura %s p. de maná durante %s sec. debes permanecer sentada mientras bebes. también aumenta tu espíritu en %s p. durante %s sec"] = { { Stats.GenericManaRegen, }, false, { Stats.Spirit, }, false, } -- s18140
 L["aumenta el aguante en %s p. durante %s sec"] = { { Stats.Stamina, }, false, } -- s18191
-L["restaura %s p. de salud durante %s sec. debes permanecer sentado mientras comes. si comes durante %s segundos también aumentarás tu agilidad en $%ss p. durante %s sec"] = { { Stats.Agility, }, false, false, false, false, ignoreSum = true } -- s18230
-L["restaura %s p. de salud durante %s sec. debes permanecer sentada mientras comes. si comes durante %s segundos también aumentarás tu agilidad en $%ss p. durante %s sec"] = { { Stats.Agility, }, false, false, false, false, ignoreSum = true } -- s18230
+L["restaura %s p. de salud durante %s sec. debes permanecer sentado mientras comes. si comes durante %s segundos también aumentarás tu agilidad en %s p. durante %s sec"] = { { Stats.Agility, }, false, false, { Stats.Agility, }, false, ignoreSum = true } -- s18230
+L["restaura %s p. de salud durante %s sec. debes permanecer sentada mientras comes. si comes durante %s segundos también aumentarás tu agilidad en %s p. durante %s sec"] = { { Stats.Agility, }, false, false, { Stats.Agility, }, false, ignoreSum = true } -- s18230
 L["da %s p. de intelecto extra a los miembros del grupo en un radio de %s metros"] = { { Stats.Intellect, }, false, } -- s18264
 L["restaura %s p. de maná cada %s s"] = { { Stats.GenericManaRegen, }, false, } -- s18378
 L["reduce el poder de ataque de un enemigo en %s p. durante %s sec"] = { { Stats.GenericAttackPower, }, false, } -- s18381
@@ -919,6 +916,9 @@ L["aumenta un %s% durante %s sec la velocidad de ataque cuerpo a cuerpo de tu ma
 L["inflige %s p. de daño de fuego al recibir un golpe, aumenta un %s% la probabilidad de golpe crítico con hechizos y reduce un %s% la de recibir un golpe crítico. solo puede haber un hechizo de armadura activo sobre el mago a la vez. dura %s sec"] = { false, { Stats.SpellCrit, }, false, false, } -- s428741
 L["aumenta un %s% tu probabilidad de golpe crítico con hechizos sagrados. además, tus hechizos de sanación crítica sanan al objetivo un %s% de la cantidad sanada durante %s sec"] = { { Stats.SpellCrit, }, false, false, } -- s429142
 L["controla a un enemigo humanoide de hasta el nivel %s durante %s sec, pero aumenta el tiempo entre sus ataques un %s%"] = { false, false, { Stats.MeleeHaste, }, } -- s429688
+L["aumenta tu probabilidad de golpear un %s%"] = { { Stats.MeleeHit, Stats.RangedHit, }, } -- s429863
+L["aumenta tu fuerza %s p"] = { { Stats.Strength, }, } -- s429864
+L["pierdes la cordura, lo que aumenta tu velocidad de ataque un %s% y la amenaza que generas durante %s sec"] = { { Stats.MeleeHaste, Stats.RangedHaste, }, false, } -- s429867
 L["encanta el filo de tu arma y aumenta tu probabilidad de golpear un %s%. no surte efecto fuera de las cavernas de brazanegra"] = { { Stats.MeleeHit, Stats.RangedHit, }, } -- s430391
 L["restaura %s p. de maná cada %s s y aumenta el índice de golpe con hechizos un %s%. solo surte efecto en las cavernas de brazanegra"] = { { Stats.SpellHit, }, false, false, } -- s430406
 L["aumenta un %s% la probabilidad de golpe de los hechizos y un %s% la probabilidad de golpe crítico de los ataques cuerpo a cuerpo y a distancia, otorga %s p. de poder de ataque y %s p. de daño con hechizos y aumenta un %s% la velocidad de movimiento. dura %s min"] = { { Stats.SpellHit, }, { Stats.MeleeCrit, Stats.RangedCrit, }, { Stats.GenericAttackPower, }, { Stats.SpellDamage, }, false, false, } -- s430947
@@ -941,10 +941,11 @@ L["tu mascota obtiene %s p. de aguante y %s p. de intelecto"] = { { Stats.Stamin
 L["puede aumentar la fuerza en %s p. durante %s sec al acertar"] = { { Stats.Strength, }, false, ignoreSum = true } -- s436469
 L["aumenta un $%s% la probabilidad de que tu mascota aseste un golpe crítico"] = { { Stats.MeleeCrit, Stats.RangedCrit, }, } -- s436689
 L["aumenta un %s% la probabilidad de que tu mascota aseste un golpe crítico"] = { { Stats.MeleeCrit, Stats.RangedCrit, }, ignoreSum = true } -- s436690
-L["reúne la energía arcana latente en el aire para obtener una inspiración energizada que reduce un $m% el coste de maná de todos los hechizos y aumenta hasta %s p. el daño infligido y la sanación realizada durante %s sec"] = { { Stats.SpellDamage, Stats.HealingPower, }, false, } -- s437327
+L["reúne la energía arcana latente en el aire para obtener una inspiración energizada que reduce un %s% el coste de maná de todos los hechizos y aumenta hasta %s p. el daño infligido y la sanación realizada durante %s sec"] = { false, { Stats.SpellDamage, Stats.HealingPower, }, false, } -- s437327
 L["lanza una descarga gneurológica que te inflige instantáneamente %s p. de daño, pero aumenta un %s% tu velocidad de ataque a distancia y cuerpo a cuerpo durante %s sec"] = { false, { Stats.MeleeHaste, Stats.RangedHaste, }, false, } -- s437349
-L["obtienes meditación gneuromántica, lo que te permite mantener un $s% de tu regeneración de maná mientras lanzas hechizos y aumenta hasta %s p. el daño infligido y la sanación realizada con hechizos durante %s sec"] = { { Stats.SpellDamage, Stats.HealingPower, }, false, } -- s437357
-L["obtienes concentración intensa, lo que reduce un $s% la velocidad de movimiento, pero aumenta %s p. la resistencia a todos los tipos de magia y un $s% la velocidad de ataque cuerpo a cuerpo durante %s sec"] = { { Stats.FireResistance, Stats.NatureResistance, Stats.FrostResistance, Stats.ShadowResistance, Stats.ArcaneResistance, }, false, } -- s437377
+L["obtienes meditación gneuromántica, lo que te permite mantener un %s% de tu regeneración de maná mientras lanzas hechizos y aumenta hasta %s p. el daño infligido y la sanación realizada con hechizos durante %s sec"] = { false, { Stats.SpellDamage, Stats.HealingPower, }, false, } -- s437357
+L["lanza una descarga hiperconductora que te inflige instantáneamente %s p. de daño, pero aumenta un %s% tu velocidad de lanzamiento de hechizos durante %s sec"] = { false, { Stats.SpellHaste, }, false, } -- s437362
+L["obtienes concentración intensa, lo que reduce un %s% la velocidad de movimiento, pero aumenta %s p. la resistencia a todos los tipos de magia y un %s% la velocidad de ataque cuerpo a cuerpo durante %s sec"] = { { Stats.MeleeHaste, }, { Stats.FireResistance, Stats.NatureResistance, Stats.FrostResistance, Stats.ShadowResistance, Stats.ArcaneResistance, }, { Stats.MeleeHaste, }, false, } -- s437377
 L["el taumaturgo escupe a los jugadores un veneno letárgico que inflige %s p. de daño de naturaleza cada %s s durante %s sec. este veneno reduce un %s% la probabilidad de golpe y aumenta un %s% el coste de las facultades"] = { false, false, false, { Stats.MeleeHit, Stats.RangedHit, }, false, } -- s437390
 L["aumenta un %s% la probabilidad de golpe crítico con hechizos, otorga %s p. de sanación y de daño con hechizos, y aumenta un %s% la velocidad de ataque cuerpo a cuerpo y ataque a distancia. dura %s minutos"] = { { Stats.SpellCrit, }, { Stats.SpellDamage, Stats.HealingPower, }, { Stats.MeleeHaste, Stats.RangedHaste, }, false, } -- s438536
 L["obtienes un sigilo encantado de innovación que te potencia. aumentas hasta %s p. más el daño y la sanación con hechizos, e incrementas en %s p. tu poder de ataque durante %s sec. solo se puede aplicar cuando no estás en combate"] = { { Stats.SpellDamage, Stats.HealingPower, }, { Stats.GenericAttackPower, }, false, } -- s439155
@@ -965,7 +966,7 @@ L["aumenta %s p. el poder de ataque cuerpo a cuerpo y a distancia. existe la pos
 L["aumenta la probabilidad de bloquear del taumaturgo un %s% durante %s sec"] = { { Stats.BlockChance, }, false, } -- s446356
 L["reduce todos los atributos de los enemigos cercanos %s p. durante %s sec"] = { { Stats.AllStats, }, false, } -- s446364
 L["aumenta %s p. la sanación realizada y la regeneración de maná a un ritmo de %s p. de maná cada %s s. además, existe la posibilidad de que tus sanaciones restauren %s p. de energía, un %s% de maná o %s p. de ira. solo puede haber un tipo de poción atal'ai activo al mismo tiempo. no surte efecto fuera del templo sumergido"] = { { Stats.HealingPower, }, { Stats.GenericManaRegen, }, false, false, false, false, } -- s446396
-L["%s poder de ataque"] = { { Stats.AttackPower, }, } -- s446450
+L["%s poder de ataque"] = { { Stats.AttackPower, Stats.RangedAttackPower, }, } -- e1563
 L["aumenta la sanación por hechizos y efectos hasta %s p"] = { { Stats.HealingPower, }, } -- s446470
 L["existe la posibilidad de que los hechizos dañinos aumenten un %s% tu velocidad de lanzamiento con hechizos durante %s sec. no surte efecto en las áreas que no estén bajo la influencia de la pesadilla"] = { { Stats.SpellHaste, }, false, ignoreSum = true } -- s446518
 L["unos ecos del vacío te llevan a la locura, lo que aumenta un %s% tu velocidad de lanzamiento con hechizos. no surte efecto en las áreas que no estén bajo la influencia de la pesadilla"] = { { Stats.SpellHaste, }, } -- s446528
@@ -1414,7 +1415,7 @@ L["aumenta el daño causado por los hechizos mágicos y efectos hasta %s p. dura
 L["aumenta la resistencia a todos los tipos de magia en %s p. durante %s sec. cuenta como elixir de batalla y guardián. este efecto persiste en la muerte"] = { { Stats.FireResistance, Stats.NatureResistance, Stats.FrostResistance, Stats.ShadowResistance, Stats.ArcaneResistance, }, false, } -- s17629
 L["reduce la probabilidad de un enemigo de golpear en un %s% durante %s sec. puede fallar contra enemigos con un nivel superior a %s"] = { { Stats.MeleeHit, Stats.RangedHit, }, false, false, } -- s17639
 L["maldice al objetivo durante %s sec, disminuyendo su resistencia a las sombras y a lo arcano en %s p. y aumentando el daño de las sombras y arcano que recibe en un %s%. un brujo solo puede tener una maldición activa a la vez sobre un mismo objetivo"] = { false, { Stats.ShadowResistance, Stats.ArcaneResistance, }, false, } -- s17862
-L["restaura %s p. de salud durante %s sec. debes permanecer sentado mientras comes. si comes durante %s s también aumentarás tu agilidad en $%ss p. durante %s sec"] = { { Stats.Agility, }, false, false, false, false, ignoreSum = true } -- s18230
+L["restaura %s p. de salud durante %s sec. debes permanecer sentado mientras comes. si comes durante %s s también aumentarás tu agilidad en %s p. durante %s sec"] = { { Stats.Agility, }, false, false, { Stats.Agility, }, false, ignoreSum = true } -- s18230
 L["da %s p. de intelecto extra a los miembros del grupo en un radio de %s m"] = { { Stats.Intellect, }, false, } -- s18264
 L["aumenta tu índice de golpe crítico con hechizos en %s p"] = { { Stats.SpellCritRating, }, } -- s18382
 L["pica al enemigo y reduce su fuerza y agilidad en %s p. durante %s sec"] = { { Stats.Strength, Stats.Agility, }, false, } -- s18545
@@ -1525,6 +1526,7 @@ L["probabilidad en el lanzamiento de hechizos de aumentar el daño y la sanació
 L["restaura %s p. de salud y de maná cada %s s"] = { { Stats.GenericManaRegen, Stats.HealthRegen, }, false, } -- s27949
 L["aumenta el índice de golpe en %s p. y aumenta la probabilidad de resistir los efectos inhibidores de movimiento en un %s% adicional"] = { { Stats.MeleeHitRating, Stats.RangedHitRating, }, false, } -- s27953
 L["aumenta la agilidad en %s p. y aumenta la velocidad de ataque ligeramente durante %s sec"] = { { Stats.Agility, }, false, } -- s28093
+L["aumenta el índice de golpe crítico con hechizos de todos los miembros del grupo a %s m. en %s p"] = { false, { Stats.SpellCritRating, }, } -- s28142
 L["aumenta hasta en %s p. el daño y la sanación de los hechizos mágicos y los efectos para todos los miembros del grupo en un radio de %s m"] = { { Stats.SpellDamage, Stats.HealingPower, }, false, } -- s28143
 L["aumenta hasta en %s p. la sanación de los hechizos mágicos y los efectos para todos los miembros del grupo en un radio de %s m"] = { { Stats.HealingPower, }, false, } -- s28144
 L["restaura %s p. de maná cada %s s de todos los miembros del grupo que estén a %s m"] = { { Stats.GenericManaRegen, }, false, false, } -- s28145
@@ -1628,6 +1630,7 @@ L["disminuye el poder de ataque de los enemigos cercanos en %s p. durante %s sec
 L["aumenta el daño con hechizos hasta %s p. y la sanación hasta %s p. durante %s sec"] = { { Stats.SpellDamage, }, { Stats.HealingPower, }, false, } -- s32925
 L["reduce la velocidad de lanzamiento de los aliados cercanos en un %s%. dura %s sec"] = { { Stats.SpellHaste, }, false, } -- s32940
 L["aumenta el daño con hechizos hasta en %s p. y la sanación hasta %s p. durante %s sec"] = { { Stats.SpellDamage, }, { Stats.HealingPower, }, false, } -- s32956
+L["%s% de probabilidad de que un hechizo que alcance al objetivo aumente tu daño con hechizos hasta en %s p. durante %s sec"] = { false, { Stats.SpellDamage, }, false, ignoreSum = true } -- s32980
 L["aumenta la salud máxima del jugador en %s p. durante %s sec. este efecto persiste más allá de la muerte y cuenta como un frasco"] = { { Stats.Health, }, false, } -- s33053
 L["canaliza poder vil hacia el objetivo y aumenta su tamaño en un %s%, y el daño físico causado en %s p"] = { { Stats.AverageWeaponDamage, }, { Stats.AverageWeaponDamage, }, } -- s33111
 L["aumenta el daño y la sanación de los hechizos y efectos mágicos hasta en %s p"] = { { Stats.SpellDamage, Stats.HealingPower, }, } -- s33139
@@ -1827,8 +1830,8 @@ L["tus ataques ignoran %s p. de la armadura de tus enemigos"] = { { Stats.ArmorP
 L["aumenta la sanación de los hechizos mágicos hasta en %s p. durante %s sec"] = { { Stats.HealingPower, }, false, } -- s48891
 L["restaura %s p. de maná durante %s sec y hace que se te pase la borrachera. debes permanecer sentado mientras bebes"] = { { Stats.GenericManaRegen, }, false, } -- s49472
 L["aumenta la sanación por hechizos hasta en %s p. y el daño por hechizos hasta en %s p. durante %s sec"] = { { Stats.HealingPower, }, { Stats.SpellDamage, }, false, } -- s51954
-L["aumenta los índices de celeridad con hechizos, con ataques a distancia y con ataques cuerpo a cuerpo de los miembros del grupo en un radio de $a en %s p. dura %s sec. se pueden usar los tambores mientras estás bajo cambio de forma"] = { { Stats.MeleeHasteRating, Stats.RangedHasteRating, Stats.SpellHasteRating, }, false, } -- s351355
-L["aumenta el poder de ataque en %s p. y el daño con hechizos en %s p. de los miembros de tu grupo en un radio de $a. dura %s sec. se pueden usar los tambores mientras estás bajo cambio de forma"] = { { Stats.GenericAttackPower, }, { Stats.SpellDamage, }, false, } -- s351360
+L["aumenta los índices de celeridad con hechizos, con ataques a distancia y con ataques cuerpo a cuerpo de los miembros del grupo en un radio de %s en %s p. dura %s sec. se pueden usar los tambores mientras estás bajo cambio de forma"] = { false, { Stats.MeleeHasteRating, Stats.RangedHasteRating, Stats.SpellHasteRating, }, false, } -- s351355
+L["aumenta el poder de ataque en %s p. y el daño con hechizos en %s p. de los miembros de tu grupo en un radio de %s. dura %s sec. se pueden usar los tambores mientras estás bajo cambio de forma"] = { { Stats.GenericAttackPower, }, { Stats.SpellDamage, }, false, false, } -- s351360
 L["carga contra un enemigo, infligiendo el daño habitual más %s p. y aturde al oponente durante %s sec"] = { { Stats.MeleeHaste, }, false, } -- s35412
 L["aumenta en %s p. la resistencia a todos los tipos de magia de todos los miembros del grupo cercanos durante %s sec"] = { { Stats.FireResistance, Stats.NatureResistance, Stats.FrostResistance, Stats.ShadowResistance, Stats.ArcaneResistance, }, false, } -- s41453
 L["cambio de forma a oso durante %s sec, aumentado el daño pero disminuyendo la velocidad de ataque en un %s%"] = { false, { Stats.MeleeHaste, }, } -- s42607
@@ -1912,7 +1915,7 @@ L["%s fuerza y %s aguante"] = { { Stats.Strength, }, { Stats.Stamina, }, } -- e2
 L["afilado (%s índice de golpe crítico y %s daño)"] = { { Stats.MeleeCritRating, }, { Stats.AverageWeaponDamage, }, } -- e2713
 L["%s sanación %s daño de hechizos y y %s maná cada %s s"] = { { Stats.HealingPower, }, { Stats.SpellDamage, }, { Stats.GenericManaRegen, }, false, } -- e2715
 L["%s aguante y %s armadura"] = { { Stats.Stamina, }, { Stats.Armor, }, } -- e2716
-L["%s poder de ataque y %s índice de golpe crítico"] = { { Stats.AttackPower, }, { Stats.MeleeCritRating, Stats.RangedCritRating, }, } -- e2717
+L["%s poder de ataque y %s índice de golpe crítico"] = { { Stats.AttackPower, Stats.RangedAttackPower, }, { Stats.MeleeCritRating, Stats.RangedCritRating, }, } -- e2717
 L["%s daño con hechizos y %s índice de golpe crítico con hechizos"] = { { Stats.SpellDamage, Stats.HealingPower, }, { Stats.SpellCritRating, }, } -- e2721
 L["alcance (%s índice de golpe crítico)"] = { { Stats.RangedCritRating, }, } -- e2724
 L["%s intelecto y %s maná cada %s s"] = { { Stats.Intellect, }, { Stats.GenericManaRegen, }, false, } -- e2744
@@ -2013,7 +2016,7 @@ L["%s índice de parar y %s índice de temple"] = { { Stats.ParryRating, }, { St
 L["%s índice de pericia"] = { { Stats.ExpertiseRating, }, } -- e3094
 L["%s fuerza y %s intelecto"] = { { Stats.Strength, }, { Stats.Intellect, }, } -- e3096
 L["%s sanación + %s daño con hechizos"] = { { Stats.HealingPower, }, { Stats.SpellDamage, }, } -- e3098
-L["%s poder de ataque y %s aguante"] = { { Stats.AttackPower, }, { Stats.Stamina, }, } -- e3106
+L["%s poder de ataque y %s aguante"] = { { Stats.AttackPower, Stats.RangedAttackPower, }, { Stats.Stamina, }, } -- e3156
 L["%s poder de ataque y %s maná cada %s s"] = { { Stats.AttackPower, }, { Stats.GenericManaRegen, }, false, } -- e3108
 L["%s índice de golpe con hechizos y %s daño con hechizos"] = { { Stats.SpellHitRating, }, { Stats.SpellDamage, Stats.HealingPower, }, } -- e3110
 L["%s índice esquivar"] = { { Stats.DodgeRating, }, } -- e3120
@@ -2024,7 +2027,7 @@ L["%s índice de golpe crítico con hechizos y %s penetración de hechizos"] = {
 L["%s agilidad y %s% de daño crítico aumentado"] = { { Stats.Agility, }, false, } -- e3154
 L["%s sanación %s daño con hechizos y %s espíritu"] = { { Stats.HealingPower, }, { Stats.SpellDamage, }, { Stats.Spirit, }, } -- e3158
 L["%s daño con hechizos y %s intelecto"] = { { Stats.SpellDamage, Stats.HealingPower, }, { Stats.Intellect, }, } -- e3160
-L["%s poder de ataque y %s% resistencia al aturdimiento"] = { { Stats.AttackPower, }, false, } -- e3162
+L["%s poder de ataque y %s% resistencia al aturdimiento"] = { { Stats.AttackPower, Stats.RangedAttackPower, }, false, } -- e3162
 L["%s daño con hechizos y %s% resistencia a aturdir"] = { { Stats.SpellDamage, Stats.HealingPower, }, false, } -- e3163
 L["%s espíritu y %s sanación"] = { { Stats.Spirit, }, { Stats.HealingPower, }, } -- e3200
 L["%s sanación y %s de daño con hechizos"] = { { Stats.HealingPower, }, { Stats.SpellDamage, }, } -- e3211
@@ -2529,6 +2532,7 @@ L["aumenta el índice de golpe %s p. y aumenta la probabilidad de resistir los e
 L["aumenta el poder con hechizos de escarcha y de las sombras %s p"] = { { Stats.FrostDamage, Stats.ShadowDamage, }, } -- s27980
 L["aumenta la agilidad %s p. y aumenta la velocidad de ataque ligeramente durante %s sec"] = { { Stats.Agility, }, false, } -- s28093
 L["aumenta un %s% la velocidad de ataque del taumaturgo y el daño físico que inflige un %s% durante %s sec"] = { { Stats.MeleeHaste, }, { Stats.AverageWeaponDamage, }, false, } -- s56625
+L["aumenta el índice de golpe crítico con hechizos de todos los miembros del grupo en un radio de %s m en %s p"] = { false, { Stats.SpellCritRating, }, } -- s28142
 L["aumenta hasta %s p. el poder con hechizos a todos los miembros del grupo en un radio de %s m"] = { { Stats.SpellDamage, Stats.HealingPower, }, false, } -- s28143
 L["restaura %s p. de maná cada %s s de todos los miembros del grupo que estén en un radio de %s m"] = { { Stats.GenericManaRegen, }, false, false, } -- s28145
 L["aumenta tu poder con hechizos hasta %s p"] = { { Stats.SpellDamage, Stats.HealingPower, }, } -- s28155
@@ -2651,6 +2655,7 @@ L["aumenta tu índice de golpe crítico con hechizos %s p"] = { { Stats.MeleeCri
 L["aumenta la velocidad de ataque del objetivo un %s% y la velocidad de movimiento un %s%"] = { { Stats.MeleeHaste, }, false, } -- s32829
 L["reduce el poder de ataque de los enemigos cercanos %s p. durante %s sec"] = { { Stats.AttackPower, }, false, } -- s32918
 L["reduce la velocidad de lanzamiento de los aliados cercanos un %s%. dura %s sec"] = { { Stats.SpellHaste, }, false, } -- s32940
+L["%s% de probabilidad de que un hechizo que alcance al objetivo aumente tu poder con hechizos hasta %s p. durante %s sec"] = { false, { Stats.SpellDamage, Stats.HealingPower, }, false, ignoreSum = true } -- s32980
 L["aumenta la salud máxima del jugador %s p. durante %s sec. este efecto persiste más allá de la muerte y cuenta como un frasco"] = { { Stats.Health, }, false, } -- s33053
 L["canaliza poder vil hacia el objetivo y aumenta su tamaño un %s%, y el daño físico causado %s p"] = { { Stats.AverageWeaponDamage, }, { Stats.AverageWeaponDamage, }, } -- s33111
 L["aumenta el daño físico que el taumaturgo inflige %s p. durante %s sec. velocidad de ataque cuerpo a cuerpo un %s%"] = { { Stats.MeleeHaste, }, false, { Stats.MeleeHaste, }, } -- s33232
@@ -2735,7 +2740,6 @@ L["cada vez que lanzas un hechizo, existe la posibilidad de que ganes %s p. de p
 L["aumenta tu armadura %s p. en forma de oso y forma de oso temible"] = { { Stats.Armor, }, } -- s37298
 L["aumenta tu fuerza %s p. mientras tengas forma felina"] = { { Stats.Strength, }, } -- s37299
 L["aumenta tu armadura %s p"] = { { Stats.Armor, }, } -- s37340
-L["aumenta tu fuerza %s p"] = { { Stats.Strength, }, } -- s37341
 L["aumenta tu poder con hechizos %s p"] = { { Stats.HealingPower, Stats.SpellDamage, }, } -- s37342
 L["tus hechizos de daño de las sombras tienen la posibilidad de otorgarte %s p. de poder con hechizos de fuego durante %s sec"] = { { Stats.FireDamage, }, false, } -- s37378
 L["tus hechizos de daño de las sombras dañinos tienen la posibilidad de otorgarte %s p. de poder con hechizos de las sombras durante %s sec"] = { { Stats.ShadowDamage, }, false, } -- s37379
@@ -2855,6 +2859,7 @@ L["sana a un aliado %s p. de daño tras %s sec"] = { { Stats.HealthRegen, }, fal
 L["imbuye al caballero de la muerte con furia profana, que aumenta la velocidad de ataque un %s%, la velocidad de movimiento un %s% y reduce el tiempo de reutilización global de todas las facultades %s%s s. solo se puede activar una presencia a la vez"] = { { Stats.MeleeHaste, }, false, false, false, } -- s48265
 L["tus ataques triturar, magullar y destrozar infligen herida infectada al objetivo. herida infectada reduce un %s% la velocidad de movimiento del objetivo y un %s% la velocidad de ataque. dura %s sec"] = { false, { Stats.MeleeHaste, }, false, ignoreSum = true } -- s48483
 L["agilidad aumentada %s p"] = { { Stats.Agility, }, } -- s48834
+L["aumenta el índice de golpe crítico %s p"] = { { Stats.MeleeCritRating, Stats.RangedCritRating, Stats.SpellCritRating, }, } -- s59676
 L["tus hechizos de choque tienen una probabilidad de otorgarte %s p. de poder de ataque durante %s sec"] = { { Stats.AttackPower, }, false, ignoreSum = true } -- s48837
 L["reduce todo el daño infligido por los enemigos cercanos %s p. durante %s sec"] = { { Stats.SpellDamage, }, false, } -- s48849
 L["aumenta la probabilidad de que golpees con tus hechizos un %s% y reduce la probabilidad de que se curen tus enfermedades de daño en el tiempo un %s%"] = { { Stats.SpellHit, }, false, } -- s48962
@@ -2916,6 +2921,7 @@ L["invoca el poder del vidente para aumentar el daño con hechizos infligido por
 L["aumenta la armadura %s p. y aumenta el daño infligido un %s% durante %s sec"] = { { Stats.Armor, }, false, false, } -- s52309
 L["aumenta el índice de parada %s p. durante %s sec"] = { { Stats.ParryRating, }, false, } -- s52419
 L["los ataques cuerpo a cuerpo que reducen tu salud por debajo del %s% provocan que ganes %s p. de índice de parada durante %s sec. no puede tener lugar más de una vez cada %s s"] = { { Stats.ParryRating, }, { Stats.ParryRating, }, false, false, ignoreSum = true } -- s52420
+L["posibilidad al parar un ataque de ganar %s p. de fuerza durante %s sec"] = { { Stats.Strength, }, false, ignoreSum = true } -- s52423
 L["reduce la velocidad de lanzamiento un %s% durante %s sec"] = { { Stats.SpellHaste, }, false, } -- s52430
 L["aumenta la armadura de los amigos cercanos %s p"] = { { Stats.Armor, }, } -- s52442
 L["aumenta un %s% la velocidad de ataque del taumaturgo y el daño físico que inflige un %s% durante %s sec. el taumaturgo no se puede detener"] = { { Stats.MeleeHaste, }, false, false, } -- s52461
@@ -3028,7 +3034,6 @@ L["¡estás cubierto de aceite de anguila! al menos, mirándolo por el lado posi
 L["tus golpes cuerpo a cuerpo y a distancia tienen la posibilidad de aumentar tu índice de pericia %s p. durante %s sec"] = { { Stats.ExpertiseRating, }, false, ignoreSum = true } -- s59345
 L["desata el poder de varimathras, aumentando la velocidad de ataque un %s% y todo el daño infligido un %s%"] = { { Stats.MeleeHaste, }, false, } -- s59424
 L["aumenta tu poder de ataque %s p. pero reduce tu armadura %s%. dura %s sec"] = { { Stats.AttackPower, }, false, false, } -- s59620
-L["aumenta el índice de golpe crítico %s p"] = { { Stats.MeleeCritRating, Stats.RangedCritRating, Stats.SpellCritRating, }, } -- s59676
 L["tu índice de golpe crítico aumenta %s p"] = { { Stats.MeleeCritRating, Stats.RangedCritRating, Stats.SpellCritRating, }, } -- s59821
 L["aumenta el índice de celeridad con hechizos %s p. durante %s sec"] = { { Stats.MeleeHasteRating, Stats.RangedHasteRating, Stats.SpellHasteRating, }, false, } -- s60062
 L["tus hechizos dañinos tienen la posibilidad de aumentar tu poder con hechizos %s p. durante %s sec"] = { { Stats.SpellDamage, Stats.HealingPower, }, false, ignoreSum = true } -- s60063
@@ -3208,8 +3213,8 @@ L["tus hechizos de daño tienen la opción de otorgar %s p. de poder con hechizo
 L["poder con hechizos aumentado %s p. durante %s sec"] = { { Stats.SpellDamage, Stats.HealingPower, }, false, } -- s75466
 L["los ataques cuerpo a cuerpo que reducen tu salud por debajo del %s% provocan que ganes %s p. de índice de esquivar durante %s sec. no puede tener lugar más de una vez cada %s s"] = { { Stats.DodgeRating, }, { Stats.DodgeRating, }, false, false, ignoreSum = true } -- s75475
 L["la perspicacia de halion para moverse entre fases le permite asestar golpes inesperados, lo que aumenta un %s% su probabilidad de golpear y reduce un %s% la probabilidad de los enemigos de esquivar sus ataques"] = { { Stats.MeleeHit, Stats.RangedHit, }, false, } -- s78243
-L["aumenta %s p. el índice de celeridad de los miembros del grupo en un radio de $a m. dura %s sec. se pueden usar los tambores mientras estás bajo cambio de forma. no afecta a objetivos de nivel %s o superior"] = { { Stats.MeleeHasteRating, Stats.RangedHasteRating, Stats.SpellHasteRating, }, false, false, } -- s351355
-L["aumenta %s p. el poder de ataque y %s p. el daño con hechizos de los miembros del grupo en un radio de $a m. dura %s sec. se pueden usar los tambores mientras estás bajo cambio de forma. no afecta a objetivos de nivel %s o superior"] = { { Stats.GenericAttackPower, }, { Stats.SpellDamage, }, false, false, } -- s351360
+L["aumenta %s p. el índice de celeridad de los miembros del grupo en un radio de %s m. dura %s sec. se pueden usar los tambores mientras estás bajo cambio de forma. no afecta a objetivos de nivel %s o superior"] = { { Stats.MeleeHasteRating, Stats.RangedHasteRating, Stats.SpellHasteRating, }, false, false, false, } -- s351355
+L["aumenta %s p. el poder de ataque y %s p. el daño con hechizos de los miembros del grupo en un radio de %s m. dura %s sec. se pueden usar los tambores mientras estás bajo cambio de forma. no afecta a objetivos de nivel %s o superior"] = { { Stats.GenericAttackPower, }, { Stats.SpellDamage, }, false, false, false, } -- s351360
 L["desestabiliza la estructura molecular de algunas criaturas basadas en saronita, reduciendo la velocidad de ataque un %s% y la velocidad de lanzamiento un %s%. dura %s sec"] = { false, { Stats.SpellHaste, }, false, } -- s413118
 L["aumenta %s p. la resistencia a todos los tipos de magia de todos los miembros del grupo cercanos durante %s sec"] = { { Stats.FireResistance, Stats.NatureResistance, Stats.FrostResistance, Stats.ShadowResistance, Stats.ArcaneResistance, }, false, } -- s41453
 L["cambio de forma a oso durante %s sec, que aumenta el daño pero reduce la velocidad de ataque un %s%"] = { false, { Stats.MeleeHaste, }, } -- s42607
@@ -3684,6 +3689,7 @@ L["índice de celeridad aumentado %s p. durante %s sec"] = { { Stats.MeleeHasteR
 L["tus hechizos tienen una probabilidad de otorgar %s p. de índice de celeridad durante %s sec"] = { { Stats.MeleeHasteRating, Stats.RangedHasteRating, Stats.SpellHasteRating, }, false, ignoreSum = true } -- s90886
 L["tus hechizos tienen una probabilidad de otorgar %s p. de índice de golpe crítico durante %s sec"] = { { Stats.MeleeCritRating, Stats.RangedCritRating, Stats.SpellCritRating, }, false, ignoreSum = true } -- s90892
 L["índice de golpe crítico aumentado %s p. durante %s sec"] = { { Stats.MeleeCritRating, Stats.RangedCritRating, Stats.SpellCritRating, }, false, } -- s90895
+L["tus siguientes %s lanzamientos de hechizos durante %s sec te otorgarán un bonus de %s p. de poder con hechizos, lo que se acumula hasta %s veces. dura %s sec"] = { false, false, { Stats.SpellDamage, Stats.HealingPower, }, false, false, ignoreSum = true } -- s90900
 L["tus hechizos periódicos dañinos y de sanación otorgan %s p. de poder con hechizos cada vez que sanan o infligen daño. dura %s sec y se acumula hasta %s veces"] = { { Stats.SpellDamage, Stats.HealingPower, }, false, false, ignoreSum = true } -- s90943
 L["tus hechizos que infligen daño a un objetivo con menos de un %s% de salud otorgan %s p. de poder con hechizos durante %s sec. no se puede volver a activar hasta %s sec después de que expire el bonus"] = { { Stats.SpellDamage, Stats.HealingPower, }, { Stats.SpellDamage, }, false, false, ignoreSum = true } -- s90998
 L["tus hechizos dañinos tienen una probabilidad de otorgarte %s p. de poder con hechizos durante %s sec"] = { { Stats.SpellDamage, Stats.HealingPower, }, false, ignoreSum = true } -- s91011
@@ -3974,6 +3980,7 @@ L["da %s p. de aguante extra a los miembros del grupo en un radio de %s m. dura 
 L["crea una violenta tormenta en el área objetivo lo que inflige %s p. de daño de naturaleza a los enemigos cada %s s y aumentando el tiempo entre los ataques de los enemigos un %s%. dura %s sec. el druida debe canalizar su magia para mantener el hechizo"] = { false, false, { Stats.MeleeHaste, }, false, } -- s27530
 L["aumenta tu golpe %s p. durante %s sec"] = { { Stats.MeleeHitRating, Stats.RangedHitRating, Stats.SpellHitRating, }, false, } -- s27723
 L["aumenta el golpe %s p. y aumenta la probabilidad de resistir los efectos inhibidores de movimiento un %s% adicional"] = { { Stats.MeleeHitRating, Stats.RangedHitRating, Stats.SpellHitRating, }, false, } -- s27953
+L["aumenta el golpe crítico con hechizos de todos los miembros del grupo en un radio de %s m en %s p"] = { false, { Stats.SpellCritRating, }, } -- s28142
 L["tus próximos %s hechizos de daño o de sanación lanzados en %s s otorgarán un bonus de %s p. de poder con hechizos que se acumula hasta %s veces. expira a los %s s o tras %s hechizos de sanación o de daño, lo que suceda primero"] = { false, false, { Stats.SpellDamage, Stats.HealingPower, }, false, false, false, ignoreSum = true } -- s28200
 L["aumenta tu fuerza %s p. y reduce tu esquivar %s p. durante %s sec"] = { { Stats.Strength, }, { Stats.DodgeRating, }, false, } -- s28494
 L["aumenta la celeridad %s p. durante %s sec"] = { { Stats.MeleeHasteRating, Stats.RangedHasteRating, Stats.SpellHasteRating, }, false, } -- s28507
@@ -4285,6 +4292,7 @@ L["your melee and ranged attacks have a chance to grant %s mastery rating for %s
 L["otorga %s p. de índice de parada durante %s sec"] = { { Stats.ParryRating, }, false, } -- s116448
 L["your melee and ranged attacks have a chance to grant %s parry rating for %s sec"] = { { Stats.ParryRating, }, false, ignoreSum = true } -- s116449
 L["your healing and damaging spells have a chance to grant %s critical rating for %s sec"] = { { Stats.MeleeCritRating, Stats.RangedCritRating, Stats.SpellCritRating, }, false, ignoreSum = true } -- s116453
+L["aumenta la velocidad de lanzamiento de hechizos del taumaturgo un %s% durante %s sec"] = { { Stats.SpellHaste, }, false, } -- s116592
 L["esquivar aumentado %s p"] = { { Stats.DodgeRating, }, } -- s116660
 L["otorga %s p. de agilidad durante %s sec"] = { { Stats.Agility, }, false, } -- s116718
 L["otorga %s p. de parada durante %s sec"] = { { Stats.ParryRating, }, false, } -- s116723
