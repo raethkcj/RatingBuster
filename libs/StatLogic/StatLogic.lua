@@ -1685,12 +1685,19 @@ local Level34Ratings = {
 function StatLogic:GetEffectFromRating(rating, stat, level)
 	-- check for invalid input
 	if type(rating) ~= "number" or not StatLogic.RatingBase[stat] then return 0 end
+
 	-- defaults to player level if not given
 	level = level or UnitLevel("player")
 	if level < 34 and Level34Ratings[stat] then
 		level = 34
 	end
-	return rating / (StatLogic.RatingBase[stat] * addon.GetRatingScalar(stat, level))
+
+	local scalar = StatLogic.RatingBase[stat] * addon.GetRatingScalar(stat, level)
+	if level > 85 then
+		scalar = math.floor(scalar)
+	end
+
+	return rating / scalar
 end
 
 if not CR_DODGE then CR_DODGE = 3 end;
