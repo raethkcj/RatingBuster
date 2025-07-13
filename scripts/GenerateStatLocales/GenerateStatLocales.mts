@@ -113,10 +113,10 @@ class StatEntry {
 	}
 }
 
-function mapTextToStatEntry(text: string, statEffects: StatValue[][], id: number, spellStatEffects: Map<number, StatValue[][]>, isEnchant: boolean): [string, StatEntry] {
+function mapTextToStatEntry(text: string, statEffects: StatValue[][] | undefined, id: number, spellStatEffects: Map<number, StatValue[][]>, isEnchant: boolean): [string, StatEntry] {
 	text = text.replace(/[\s.]+$/, "").replaceAll(/[\r\n]+/gm, "\\n").replaceAll(/"/gm, "\\\"").toLowerCase()
 
-	const remainingEffects: StatValue[][] = [...statEffects]
+	const remainingEffects: StatValue[][] = statEffects ? [...statEffects] : []
 
 	const statEntry = new StatEntry(id, isEnchant)
 	const entries = statEntry.entries
@@ -150,7 +150,7 @@ function mapTextToStatEntry(text: string, statEffects: StatValue[][], id: number
 				case "w":
 					// Since we only parse effects with a range of 0 or 1,
 					// we can treat min, max and spread identically
-					let newStatEffects: StatValue[][]
+					let newStatEffects: StatValue[][] | undefined = undefined
 					if (alternateSpellID) {
 						const alternateStatEffects = spellStatEffects.get(parseInt(alternateSpellID))
 						if (alternateStatEffects) {
@@ -159,12 +159,12 @@ function mapTextToStatEntry(text: string, statEffects: StatValue[][], id: number
 							entries.push(false)
 							break
 						}
-					} else {
+					} else if (statEffects) {
 						newStatEffects = statEffects
 					}
 
 					const effectIndex = identifierIndex ? parseInt(identifierIndex) - 1 : 0
-					const statValues = newStatEffects[effectIndex]
+					const statValues = newStatEffects ? newStatEffects[effectIndex] : undefined
 					if (statValues) {
 						entries.push([...statValues])
 						if (!alternateSpellID) {
@@ -176,7 +176,7 @@ function mapTextToStatEntry(text: string, statEffects: StatValue[][], id: number
 					break
 				case "i":
 					if (isEnchant) {
-						const statValues = statEffects[i]
+						const statValues = statEffects ? statEffects[i] : undefined
 						if (statValues) {
 							entries.push([...statValues])
 							delete remainingEffects[i]
@@ -270,7 +270,7 @@ function mapTextToStatEntry(text: string, statEffects: StatValue[][], id: number
 	// We didn't match any numbers, so mark it as whole text and assign *all* the stats
 	if (pattern === text && matches === 0) {
 		statEntry.isWholeText = true
-		statEntry.entries = [statEffects.flat().filter(sv => sv.value !== 0)]
+		statEntry.entries = statEffects ? [statEffects.flat().filter(sv => sv.value !== 0)] : []
 	}
 
 	return [pattern, statEntry]
@@ -978,17 +978,12 @@ async function getLocaleStatMap(
 
 	const spellDescriptions = await queryStatSpellDescriptions(expansion, locale, Array.from(spellDescIDs))
 	for (const spellDescription of spellDescriptions) {
-		let staticEffects = false
-		let statEffects = spellStatEffects.get(spellDescription.ID)
-		if (statEffects) {
-			staticEffects = true
-		} else {
-			statEffects = spellStatEffects.get(procSpells.get(spellDescription.ID)!)
-		}
-		if (statEffects) {
+		let staticEffects = spellStatEffects.get(spellDescription.ID)
+		let procEffects = spellStatEffects.get(procSpells.get(spellDescription.ID)!)
+		if (staticEffects || procEffects) {
 			const branches = traverseDescriptionBranches(spellDescription.Description_lang)
 			for (const branch of branches) {
-				const [pattern, statEntry] = mapTextToStatEntry(branch, statEffects, spellDescription.ID, spellStatEffects, false)
+				const [pattern, statEntry] = mapTextToStatEntry(branch, staticEffects, spellDescription.ID, spellStatEffects, false)
 				if (staticEffects || !statEntry.isWholeText) {
 					statEntry.ignoreSum = !staticEffects
 					insertEntry(statMap, pattern, statEntry, locale)
