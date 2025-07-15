@@ -71,6 +71,7 @@ local GetShapeshiftForm = GetShapeshiftForm
 local GetShapeshiftFormInfo = GetShapeshiftFormInfo
 local GetActiveTalentGroup = GetActiveTalentGroup or C_SpecializationInfo.GetActiveSpecGroup
 local GetPrimaryTalentTree = GetPrimaryTalentTree or C_SpecializationInfo.GetSpecialization
+local GetSpecializationInfo = GetSpecializationInfo or C_SpecializationInfo.GetSpecializationInfo
 addon.tocversion = select(4, GetBuildInfo())
 
 ---------------
@@ -1146,8 +1147,24 @@ addon.StatModValidators = {
 		}
 	},
 	known = {
-		validate = function(case)
-			return not not FindSpellBookSlotBySpellID(case.known)
+		validate = function(case, _, statModContext)
+			if addon.tocversion >= 50000 then
+				local specID = GetSpecializationInfo(statModContext.spec)
+				for i = 1, GetNumSpellTabs() do
+					local offset, numSlots, _, _, _, tabSpecID = select(3, GetSpellTabInfo(i))
+					for slot = offset + 1, offset + numSlots do
+						local spellType, id = GetSpellBookItemInfo(slot, BOOKTYPE_SPELL)
+						if id == case.known and spellType == "SPELL" and (not tabSpecID or tabSpecID == specID) then
+							-- We don't early-return false on a matching spell ID with mismatched spec ID,
+							-- because the spec ID might match in a later tab
+							return true
+						end
+					end
+				end
+				return false
+			else
+				return not not FindSpellBookSlotBySpellID(case.known)
+			end
 		end,
 		events = {
 			["SPELLS_CHANGED"] = true,
