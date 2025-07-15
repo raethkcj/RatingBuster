@@ -943,7 +943,7 @@ if addon.class == "DRUID" then
 					[1] = true,
 					[4] = true,
 				},
-				["spellid"] = 86104,
+				["known"] = 86104,
 			},
 			-- Talent: Heart of the Wild
 			{
@@ -1094,6 +1094,7 @@ elseif addon.class == "DEATHKNIGHT" then
 					[2] = true,
 					[3] = true,
 				},
+				["known"] = 86524,
 				["spellid"] = 86113,
 			},
 			-- Passive: Unholy Might
@@ -1119,7 +1120,8 @@ elseif addon.class == "DEATHKNIGHT" then
 				["armorspec"] = {
 					[1] = true,
 				},
-				["known"] = 86537,
+				["known"] = 86524,
+				["spellid"] = 86537,
 			},
 		},
 		["MOD_ARMOR"] = {
@@ -1896,17 +1898,27 @@ elseif addon.class == "SHAMAN" then
 				["armorspec"] = {
 					[2] = true,
 				},
+				["spellid"] = 86099,
 			},
 		},
 		["MOD_INT"] = {
-			-- Mail Specialization
+			-- Mail Specialization (Elemental)
 			{
 				["value"] = 0.05,
 				["known"] = 86529,
 				["armorspec"] = {
 					[1] = true,
+				},
+				["spellid"] = 86108,
+			},
+			-- Mail Specialization (Restoration)
+			{
+				["value"] = 0.05,
+				["known"] = 86529,
+				["armorspec"] = {
 					[3] = true,
 				},
+				["spellid"] = 86100,
 			},
 		},
 	}
@@ -2064,12 +2076,19 @@ elseif addon.class == "WARRIOR" then
 			},
 		},
 		["MOD_STR"] = {
-			-- Plate Specialization (Arms, Fury)
+			-- Plate Specialization (Arms)
 			{
 				["value"] = 0.05,
-				["spell"] = 86101,
+				["known"] = 86101,
 				["armorspec"] = {
 					[1] = true,
+				},
+			},
+			-- Plate Specialization (Fury)
+			{
+				["value"] = 0.05,
+				["known"] = 86110,
+				["armorspec"] = {
 					[2] = true,
 				},
 			},
