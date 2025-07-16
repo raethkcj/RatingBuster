@@ -874,12 +874,29 @@ if addon.class == "DRUID" then
 				["aura"] = 33891,
 				["group"] = addon.ExclusiveGroup.Feral,
 			},
-			-- Talent: Heart of the Wild (Bear Form)
+			-- Talent: Heart of the Wild (Bear Form) (Balance)
 			{
 				["tab"] = 6,
 				["num"] = 1,
 				["value"] = 0.95,
 				["aura"] = 5487,
+				["spec"] = 1,
+			},
+			-- Talent: Heart of the Wild (Bear Form) (Feral)
+			{
+				["tab"] = 6,
+				["num"] = 1,
+				["value"] = 0.95,
+				["aura"] = 5487,
+				["spec"] = 2,
+			},
+			-- Talent: Heart of the Wild (Bear Form) (Restoration)
+			{
+				["tab"] = 6,
+				["num"] = 1,
+				["value"] = 0.95,
+				["aura"] = 5487,
+				["spec"] = 4,
 			},
 		},
 		["MOD_AGI"] = {
@@ -897,19 +914,53 @@ if addon.class == "DRUID" then
 				["num"] = 1,
 				["value"] = 0.06,
 			},
-			-- Talent: Heart of the Wild (Bear Form)
+			-- Talent: Heart of the Wild (Bear Form) (Balance)
 			{
 				["tab"] = 6,
 				["num"] = 1,
 				["value"] = 0.5,
 				["aura"] = 5487,
+				["spec"] = 1,
 			},
-			-- Talent: Heart of the Wild (Cat Form)
+			-- Talent: Heart of the Wild (Bear Form) (Feral)
+			{
+				["tab"] = 6,
+				["num"] = 1,
+				["value"] = 0.5,
+				["aura"] = 5487,
+				["spec"] = 2,
+			},
+			-- Talent: Heart of the Wild (Bear Form) (Restoration)
+			{
+				["tab"] = 6,
+				["num"] = 1,
+				["value"] = 0.5,
+				["aura"] = 5487,
+				["spec"] = 4,
+			},
+			-- Talent: Heart of the Wild (Cat Form) (Balance)
 			{
 				["tab"] = 6,
 				["num"] = 1,
 				["value"] = 1.1,
 				["aura"] = 768,
+				["spec"] = 1,
+			},
+			-- Talent: Heart of the Wild (Cat Form) (Guardian)
+			{
+				["tab"] = 6,
+				["num"] = 1,
+				["value"] = 1.1,
+				["aura"] = 768,
+				["spec"] = 3,
+			},
+			-- Talent: Heart of the Wild (Cat Form) (Restoration)
+			{
+				["tab"] = 6,
+				["num"] = 1,
+				["value"] = 1.1,
+				["aura"] = 768,
+				["spec"] = 4,
 			},
 		},
 		["MOD_STA"] = {
