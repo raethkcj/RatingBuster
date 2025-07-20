@@ -83,7 +83,7 @@ W["entame un rituel qui invoque le membre du groupe ciblé. nécessite la prése
 W["permet d'équiper les armes à une main dans la main gauche"] = { [Stats.MeleeHit] = 20, [Stats.RangedHit] = 20, } -- s42459
 W["vitalité"] = { [Stats.GenericManaRegen] = 4, [Stats.HealthRegen] = 4, } -- e2656
 W["pied sûr"] = { [Stats.MeleeHitRating] = 10, [Stats.RangedHitRating] = 10, } -- e2658
-W["sauvagerie"] = { [Stats.AttackPower] = 70, [Stats.RangedAttackPower] = 70, } -- e2667
+W["sauvagerie"] = { [Stats.AttackPower] = 70, } -- e2667
 W["feu solaire"] = { [Stats.FireDamage] = 50, [Stats.ArcaneDamage] = 50, } -- e2671
 W["âme de givre"] = { [Stats.FrostDamage] = 54, [Stats.ShadowDamage] = 54, } -- e2672
 W["huile de sorcier excellente"] = { [Stats.SpellDamage] = 42, [Stats.HealingPower] = 42, } -- e2678
@@ -505,7 +505,7 @@ L["augmente l'armure de la cible alliée de %s, toutes les caractéristiques de 
 L["affaiblit la cible ennemie, réduit les dégâts qu'elle inflige de %s et l'efficacité de tous ses soins de %s%. dure %s sec"] = { { Stats.AverageWeaponDamage, }, false, false, } -- s9035
 L["augmente de %s la puissance d'attaque en mêlée des membres de votre groupe qui se trouvent à proximité pendant %s sec"] = { { Stats.AttackPower, }, false, } -- s9128
 L["augmente de %s% vos chances d'infliger un coup critique avec une arme de trait"] = { { Stats.MeleeCrit, Stats.RangedCrit, }, } -- s9132
-L["%s à la puissance d'attaque"] = { { Stats.AttackPower, Stats.RangedAttackPower, }, } -- e1563
+L["%s à la puissance d'attaque"] = { { Stats.AttackPower, }, } -- s9136
 L["réduit l'armure de la cible de %s pendant %s sec"] = { { Stats.Armor, }, false, } -- s9176
 L["augmente les dégâts et les soins produits par les sorts et effets magiques de %s au maximum"] = { { Stats.SpellDamage, Stats.HealingPower, }, } -- s9342
 L["augmente les soins et dégâts produits par les sorts et effets magiques de %s au maximum"] = { { Stats.SpellDamage, Stats.HealingPower, }, } -- s9392
@@ -1860,7 +1860,7 @@ L["%s force et %s endurance"] = { { Stats.Strength, }, { Stats.Stamina, }, } -- 
 L["aiguisé (%s au score de critique et %s aux points de dégâts)"] = { { Stats.MeleeCritRating, }, { Stats.AverageWeaponDamage, }, } -- e2713
 L["%s aux soins, %s aux dégâts des sorts et %s points de mana toutes les %s sec"] = { { Stats.HealingPower, }, { Stats.SpellDamage, }, { Stats.GenericManaRegen, }, false, } -- e2715
 L["%s endurance et %s armure"] = { { Stats.Stamina, }, { Stats.Armor, }, } -- e2716
-L["%s à la puissance d'attaque/%s au score de coup critique"] = { { Stats.AttackPower, Stats.RangedAttackPower, }, { Stats.MeleeCritRating, Stats.RangedCritRating, }, } -- e2717
+L["%s à la puissance d'attaque/%s au score de coup critique"] = { { Stats.AttackPower, }, { Stats.MeleeCritRating, Stats.RangedCritRating, }, } -- e2717
 L["%s aux dégâts des sorts et %s au score de critique des sorts"] = { { Stats.SpellDamage, Stats.HealingPower, }, { Stats.SpellCritRating, }, } -- e2721
 L["lunette (%s au score de coup critique)"] = { { Stats.RangedCritRating, }, } -- e2724
 L["%s aux soins, %s aux dégâts des sorts et %s points de mana toutes les %s secondes"] = { { Stats.HealingPower, }, { Stats.SpellDamage, }, { Stats.GenericManaRegen, }, false, } -- e2741
@@ -1933,10 +1933,10 @@ L["+ %s au score de critique et %s au score d'esquive"] = { { Stats.CritRating, 
 L["%s au score de parade et %s endurance"] = { { Stats.ParryRating, }, { Stats.Stamina, }, } -- e3063
 L["%s esprit, %s aux dégâts des sorts et %s aux soins"] = { { Stats.Spirit, }, { Stats.SpellDamage, }, { Stats.HealingPower, }, } -- e3064
 L["%s aux dégâts des sorts et %s à la pénétration des sorts"] = { { Stats.SpellDamage, Stats.HealingPower, }, { Stats.SpellPenetration, }, } -- e3066
-L["%s à la puissance d'attaque et %s endurance"] = { { Stats.AttackPower, Stats.RangedAttackPower, }, { Stats.Stamina, }, } -- e3156
+L["%s à la puissance d'attaque et %s endurance"] = { { Stats.AttackPower, }, { Stats.Stamina, }, } -- e3067
 L["%s au score d'esquive et %s au score de toucher"] = { { Stats.DodgeRating, }, { Stats.HitRating, }, } -- e3068
 L["%s aux soins, %s aux dégâts des sorts et %s au score de résilience"] = { { Stats.HealingPower, }, { Stats.SpellDamage, }, { Stats.ResilienceRating, }, } -- e3069
-L["%s à la puissance d'attaque et %s au score de critique"] = { { Stats.AttackPower, Stats.RangedAttackPower, }, { Stats.CritRating, }, } -- e3159
+L["%s à la puissance d'attaque et %s au score de critique"] = { { Stats.AttackPower, }, { Stats.CritRating, }, } -- e3070
 L["%s intelligence et %s endurance"] = { { Stats.Intellect, }, { Stats.Stamina, }, } -- e3071
 L["%s force et %s score de critique"] = { { Stats.Strength, }, { Stats.CritRating, }, } -- e3072
 L["%s agilité et %s au score de défense"] = { { Stats.Agility, }, { Stats.DefenseRating, }, } -- e3073
@@ -1964,7 +1964,7 @@ L["%s à la puissance d'attaque & %s points de mana toutes les %s secondes"] = {
 L["%s agilité & dégâts critiques augmentés de %s%"] = { { Stats.Agility, }, false, } -- e3154
 L["%s aux soins, %s aux dégâts des sorts et %s esprit"] = { { Stats.HealingPower, }, { Stats.SpellDamage, }, { Stats.Spirit, }, } -- e3158
 L["%s endurance et %s au score de coup critique des sorts"] = { { Stats.SpellCritRating, }, { Stats.Stamina, }, } -- e3161
-L["%s à la puissance d'attaque et %s% à la résistance aux étourdissements"] = { { Stats.AttackPower, Stats.RangedAttackPower, }, false, } -- e3162
+L["%s à la puissance d'attaque et %s% à la résistance aux étourdissements"] = { { Stats.AttackPower, }, false, } -- e3162
 L["%s aux dégâts des sorts & %s% à la résistance aux étourdissements"] = { { Stats.SpellDamage, Stats.HealingPower, }, false, } -- e3163
 L["%s esprit et %s aux soins"] = { { Stats.Spirit, }, { Stats.HealingPower, }, } -- e3200
 L["%s au score de résilience et %s endurance"] = { { Stats.ResilienceRating, }, { Stats.Stamina, }, } -- e3226
@@ -2807,9 +2807,9 @@ L["%s à la résistance au feu et %s endurance"] = { { Stats.FireResistance, }, 
 L["%s à la puissance des sorts et %s points de mana/%s secondes"] = { { Stats.SpellPower, }, { Stats.GenericManaRegen, }, false, } -- e3836
 L["confère %s points d’armure supplémentaires aux membres du groupe et du raid se trouvant à moins de %s mètres. les personnages ne peuvent bénéficier que des effets d'une aura par paladin présent à la fois"] = { { Stats.Armor, }, false, } -- s465
 L["génère %s points de rage et augmente de %s l'endurance de tous les membres du groupe et du raid se trouvant à moins de %s mètres. dure %s sec"] = { false, { Stats.Stamina, }, false, false, } -- s469
-L["une vague d'énergie sacrée emplit le lanceur de sorts. elle augmente de $<innerfire>% la valeur d'armure apportée par les objets et de %s la puissance des sorts. \nvous ne pouvez avoir que volonté intérieure ou feu intérieur actif à la fois"] = { { Stats.HealingPower, Stats.SpellDamage, }, } -- s588
-L["une vague d'énergie sacrée emplit le lanceur de sorts. elle augmente de $<innerfire>% la valeur d'armure apportée par les objets et de %s la puissance des sorts"] = { { Stats.HealingPower, Stats.SpellDamage, }, } -- s588
-L["protège le lanceur de sorts en augmentant l’armure de %s ainsi que le montant de points de vie rendus par les sorts et effets de $<healing>%. \nvous ne pouvez bénéficier que d’un seul type de sort d’armure à la fois"] = { { Stats.Armor, }, } -- s687
+L["une vague d'énergie sacrée emplit le lanceur de sorts. elle augmente de %s% la valeur d'armure apportée par les objets et de %s la puissance des sorts. \nvous ne pouvez avoir que volonté intérieure ou feu intérieur actif à la fois"] = { { Stats.SpellDamage, }, { Stats.HealingPower, }, } -- s588
+L["une vague d'énergie sacrée emplit le lanceur de sorts. elle augmente de %s% la valeur d'armure apportée par les objets et de %s la puissance des sorts"] = { { Stats.SpellDamage, }, { Stats.HealingPower, }, } -- s588
+L["protège le lanceur de sorts en augmentant l’armure de %s ainsi que le montant de points de vie rendus par les sorts et effets de %s%. \nvous ne pouvez bénéficier que d’un seul type de sort d’armure à la fois"] = { { Stats.Armor, }, false, } -- s687
 L["augmente l’armure de %s pendant %s sec. elixir du gardien"] = { { Stats.Armor, }, false, } -- s834
 L["asservit le démon ciblé et le contraint à vous obéir. tant que le démon est asservi, le temps entre ses attaques est augmenté de %s% et sa vitesse d’incantation est réduite de %s%. dure %s sec au maximum"] = { { Stats.MeleeHaste, }, { Stats.SpellHaste, }, false, } -- s1098
 L["augmente vos chances de bloquer de %s% pendant %s sec. de plus, si votre total de chances de bloquer ou d'éviter une attaque est supérieur à %s%, vos chances de blocage critique sont augmentées par cet excédent"] = { { Stats.BlockChance, }, false, false, } -- s2565
@@ -3861,6 +3861,7 @@ L["donne un coup sec sur la tête de l'ennemi, lui infligeant des dégâts physi
 L["la chenille est prise de frénésie et sa vitesse d'attaque est augmentée de %s% pendant %s sec"] = { { Stats.MeleeHaste, }, false, } -- s129936
 L["augmente les chances d’esquiver de %s% et la vitesse de déplacement de %s% pendant %s sec"] = { { Stats.Dodge, }, false, false, } -- s130182
 L["augmente votre maîtrise de %s. dure %s sec"] = { { Stats.MasteryRating, }, false, } -- s130283
+L["augmente l’expérience que vous obtenez en tuant des ennemis et en accomplissant des quêtes de %s%. dure %s sec"] = { { Stats.MasteryRating, }, false, } -- s130283
 L["rend %s points de vie et %s points de mana en %s sec. vous devez rester assis pendant que vous mangez. si vous passez au moins %s secondes à manger, vous serez \"bien nourri\" et vous bénéficierez d'un bonus de %s à l'intelligence pendant %s sec"] = { false, false, false, false, { Stats.Intellect, }, false, ignoreSum = true } -- s130359
 L["rend %s points de vie et %s points de mana en %s sec. vous devez rester assis pendant que vous mangez. si vous passez au moins %s secondes à manger, vous serez \"bien nourri\" et vous bénéficierez d’un bonus de %s à l’intelligence pendant %s sec"] = { false, false, false, false, { Stats.Intellect, }, false, ignoreSum = true } -- s130360
 L["rend %s points de vie et %s points de mana en %s sec. vous devez rester assis pendant que vous mangez. si vous passez au moins %s secondes à manger, vous serez \"bien nourri\" et vous bénéficierez d'un bonus de %s à l'agilité pendant %s sec"] = { false, false, false, false, { Stats.Agility, }, false, ignoreSum = true } -- s130366

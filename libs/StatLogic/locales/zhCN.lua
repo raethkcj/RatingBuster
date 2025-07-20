@@ -2721,9 +2721,9 @@ L["%s法术强度，%s 爆击等级"] = { { Stats.SpellPower, }, { Stats.CritRat
 L["%s护甲值"] = { { Stats.BonusArmor, }, } -- e3860
 L["使附近%s码范围内的所有小队和团队成员获得%s点额外的护甲值。每个圣骑士在同一时间内只能开启一种光环。"] = { false, { Stats.Armor, }, } -- s465
 L["产生%s点怒气值，并使身边半径%s码范围内的小队和团队成员的耐力提高%s点。持续%s sec。"] = { false, false, { Stats.Stamina, }, false, } -- s469
-L["圣洁的能量充满施法者的体内，使装备提供的护甲值提高$<innerfire>%，法术强度提高%s点。\n你在同一时间内只能激活心灵意志或心灵之火中的一种。"] = { { Stats.HealingPower, Stats.SpellDamage, }, } -- s588
-L["圣洁的能量充满施法者的体内，使装备提供的护甲值提高$<innerfire>%，法术强度提高%s点。"] = { { Stats.HealingPower, Stats.SpellDamage, }, } -- s588
-L["保护施法者，使施法者的护甲值提高%s点，通过法术和效果恢复的生命值提高$<healing>%。\n术士在同一时间内只能激活一种护甲法术。"] = { { Stats.Armor, }, } -- s687
+L["圣洁的能量充满施法者的体内，使装备提供的护甲值提高%s%，法术强度提高%s点。\n你在同一时间内只能激活心灵意志或心灵之火中的一种。"] = { { Stats.SpellDamage, }, { Stats.HealingPower, }, } -- s588
+L["圣洁的能量充满施法者的体内，使装备提供的护甲值提高%s%，法术强度提高%s点。"] = { { Stats.SpellDamage, }, { Stats.HealingPower, }, } -- s588
+L["保护施法者，使施法者的护甲值提高%s点，通过法术和效果恢复的生命值提高%s%。\n术士在同一时间内只能激活一种护甲法术。"] = { { Stats.Armor, }, false, } -- s687
 L["奴役目标恶魔，使其听从你的命令。被奴役的恶魔攻击间隔延长%s%，施法速度降低%s%。奴役效果最多持续%s sec。"] = { { Stats.MeleeHaste, }, { Stats.SpellHaste, }, false, } -- s1098
 L["使你的格挡几率提高%s%，持续%s sec。此外，当你全部的格挡或躲避攻击的几率超过%s%时，则多余部分可使精确格挡几率提高。"] = { { Stats.BlockChance, }, false, false, } -- s2565
 L["对目标造成%s%武器伤害，并使其攻击间隔延长%s%，持续%s sec。"] = { { Stats.MeleeHaste, }, { Stats.MeleeHaste, }, false, } -- s3130
@@ -3746,6 +3746,7 @@ L["使盟友的智力提高%s点，持续%s sec。"] = { { Stats.Intellect, }, f
 L["蠕虫进入狂乱状态，攻击速度提高%s%，持续%s sec。"] = { { Stats.MeleeHaste, }, false, } -- s129936
 L["躲闪几率提高%s%，移动速度提高%s%，持续%s sec。"] = { { Stats.Dodge, }, false, false, } -- s130182
 L["你的精通等级提高%s。持续%s sec。"] = { { Stats.MasteryRating, }, false, } -- s130283
+L["你通过杀死敌人和完成任务获得的经验值提高%s%。持续%s sec。"] = { { Stats.MasteryRating, }, false, } -- s130283
 L["在%s sec内回复%s点法力值。饮水时必须保持坐姿。"] = { false, { Stats.GenericManaRegen, }, } -- s130335
 L["在%s sec内恢复总计%s点生命值和%s点法力值。进食时必须保持坐姿。如果你花费至少%s秒钟来进食，你将获得进食充分效果，使你的智力提高%s点，持续%s sec。"] = { false, false, false, false, { Stats.Intellect, }, false, ignoreSum = true } -- s130359
 L["在%s sec内恢复总计%s点生命值和%s点法力值。进食时必须保持坐姿。如果你花费至少%s秒钟来进食，你将获得进食充分效果，使你的智力提高%s点，持续 %s sec。"] = { false, false, false, false, { Stats.Intellect, }, false, ignoreSum = true } -- s130365
