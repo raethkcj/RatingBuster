@@ -3858,9 +3858,7 @@ L["aumenta la celeridad a distancia un %s% durante %s sec"] = { { Stats.RangedHa
 L["restaura %s p. de salud durante %s sec. debes permanecer sentado mientras comes. si comes durante al menos %s s, estarás bien alimentado y ganarás %s p. de aguante durante %s sec"] = { false, false, false, { Stats.Stamina, }, false, ignoreSum = true } -- s5004
 L["una potente bebida que aumenta tu fuerza %s p. y reduce tu intelecto %s p. durante %s sec"] = { { Stats.Strength, }, { Stats.Intellect, }, false, } -- s5020
 L["aumenta tu probabilidad de esquivar un %s% durante %s sec"] = { { Stats.Dodge, }, false, } -- s5277
-L["aumenta tu maestría %s p.\nse reduce la duración de todos los efectos mágicos dañinos usados contra ti un %s%. \n$@spellname%s\n$@spelldesc%s"] = { { Stats.MasteryRating, }, false, false, false, } -- s6117
 L["aumenta %s p. el daño físico infligido por el taumaturgo y acelera su velocidad de movimiento un %s% durante %s sec. además, echa una maldición al enemigo la primera vez que lo alcanza, lo que reduce en %s p. el daño físico que cause, en %s p. el daño mágico que inflija y aumenta en %s p. el daño físico que sufra durante %s sec"] = { { Stats.AverageWeaponDamage, }, false, false, { Stats.AverageWeaponDamage, }, { Stats.SpellDamage, }, false, false, } -- s6921
-L["aumenta tu celeridad con hechizos un %s%.\nsi un enemigo golpea al taumaturgo, su movimiento se ralentiza un %s% durante %s sec.\n$@spellname%s\n$@spelldesc%s"] = { { Stats.SpellHaste, }, false, false, false, false, } -- s7302
 L["el daño físico infligido se reduce %s p.\nel daño mágico infligido se reduce %s p"] = { { Stats.AverageWeaponDamage, }, { Stats.SpellDamage, }, } -- s7656
 L["tu tamaño aumenta y tu fuerza aumenta %s p. de acuerdo a tu nuevo tamaño. dura %s sec. elixir de batalla"] = { { Stats.Strength, }, false, } -- s8212
 L["imbuye de poder al sacerdote, lo que aumenta un %s% su celeridad con hechizos, un %s% todo el daño y reduce un %s% el coste de maná de todos los hechizos. dura %s sec"] = { { Stats.SpellHaste, }, false, false, false, } -- s10060
@@ -3929,7 +3927,6 @@ L["aumenta el esquivar del jugador %s p. y su salud máxima %s p. durante %s sec
 L["aumenta tu golpe crítico con hechizos %s p. contra los no-muertos"] = { { Stats.SpellCritRating, }, } -- s29069
 L["aumenta el golpe %s p. durante %s sec"] = { { Stats.MeleeHitRating, Stats.RangedHitRating, Stats.SpellHitRating, }, false, } -- s29332
 L["reduce tu probabilidad de sufrir un golpe crítico un %s%"] = { { Stats.MeleeCrit, Stats.RangedCrit, }, } -- s30297
-L["aumenta un %s% tu probabilidad de golpe crítico con hechizos.\nreduce todo el daño físico recibido un %s%. \n$@spellname%s\n$@spelldesc%s"] = { { Stats.SpellCrit, }, false, false, false, } -- s30482
 L["aumenta el aguante de los miembros del grupo que se encuentren cerca %s p. durante %s sec"] = { { Stats.Stamina, }, false, } -- s31023
 L["aumenta el golpe crítico de los miembros del grupo cercanos %s p. durante %s sec"] = { { Stats.MeleeCritRating, Stats.RangedCritRating, Stats.SpellCritRating, }, false, } -- s31025
 L["aumenta el poder de ataque y el poder de ataque a distancia de todas las unidades aliadas en un radio de %s m %s p"] = { false, { Stats.GenericAttackPower, }, } -- s31519

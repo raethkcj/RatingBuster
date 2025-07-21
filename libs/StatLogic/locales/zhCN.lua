@@ -3309,8 +3309,6 @@ L["使你的最大生命值提高%s点，持续%s sec。守护药剂。"] = { { 
 L["远程急速提高%s%，持续%s sec。"] = { { Stats.RangedHaste, }, false, } -- s3045
 L["在%s sec内恢复%s点生命值。进食时必须保持坐姿。如果你花费至少%s秒钟来进食，你将获得进食充分效果，耐力提高%s点，持续%s sec。"] = { false, false, false, { Stats.Stamina, }, false, ignoreSum = true } -- s5004
 L["你的躲闪几率提高%s%，持续%s sec。"] = { { Stats.Dodge, }, false, } -- s5277
-L["使你的精通提高%s点。\n对你施放的所有伤害性魔法效果的持续时间缩短%s%。\n$@spellname%s\n$@spelldesc%s"] = { { Stats.MasteryRating, }, false, false, false, } -- s6117
-L["使你的法术急速提高%s%。\n如果敌人攻击施法者，则其移动速度降低%s%，持续%s sec。\n$@spellname%s\n$@spelldesc%s"] = { { Stats.SpellHaste, }, false, false, false, false, } -- s7302
 L["物理伤害降低%s点。\n魔法伤害降低%s点。"] = { { Stats.AverageWeaponDamage, }, { Stats.SpellDamage, }, } -- s7656
 L["能量灌注牧师全身，使其法术急速提高%s%，所有伤害提高%s%，并且所有法术的法力消耗降低%s%，持续%s sec。"] = { { Stats.SpellHaste, }, false, false, false, } -- s10060
 L["使敏捷提高$?%s点，持续%s sec。战斗药剂。"] = { { Stats.Agility, }, false, } -- s11328
@@ -3370,7 +3368,6 @@ L["躲闪提高%s点，最大生命值提高%s点，持续%s sec。战斗和守�
 L["你对亡灵的法术爆击提高%s点。"] = { { Stats.SpellCritRating, }, } -- s29069
 L["命中提高%s点，持续%s sec。"] = { { Stats.MeleeHitRating, Stats.RangedHitRating, Stats.SpellHitRating, }, false, } -- s29332
 L["你被爆击的几率降低%s%。"] = { { Stats.MeleeCrit, Stats.RangedCrit, }, } -- s30297
-L["你的法术爆击几率提高%s%。\n受到的所有物理伤害降低%s%。\n$@spellname%s\n$@spelldesc%s"] = { { Stats.SpellCrit, }, false, false, false, } -- s30482
 L["附近小队成员的爆击提高%s点，持续%s sec。"] = { { Stats.MeleeCritRating, Stats.RangedCritRating, Stats.SpellCritRating, }, false, } -- s31025
 L["使施法者躲闪的几率提高%s%。"] = { { Stats.Dodge, }, } -- s31379
 L["%s pvp韧性。"] = { { Stats.ResilienceRating, }, } -- s32145

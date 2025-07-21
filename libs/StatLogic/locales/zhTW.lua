@@ -3552,8 +3552,6 @@ L["控制一個等級不高於%s級的敵對人形生物，持續%s sec。使其
 L["在%s sec內恢復總計%s點生命力，進食時必須保持坐姿。如果你花費至少%s秒鐘來進食，你將因充分進食而獲得%s點耐力，持續%s sec。"] = { false, false, false, { Stats.Stamina, }, false, ignoreSum = true } -- s5004
 L["一種強勁的飲料，可以使你的力量提高%s點，但智力降低%s點，持續%s sec。"] = { { Stats.Strength, }, { Stats.Intellect, }, false, } -- s5020
 L["使你的閃躲機率提高%s%，持續%s sec。"] = { { Stats.Dodge, }, false, } -- s5277
-L["使你的精通提高%s點。\n使你身上所有有害魔法效果的持續時間縮短%s%。\n$@spellname%s\n$@spelldesc%s"] = { { Stats.MasteryRating, }, false, false, false, } -- s6117
-L["使你的法術加速提高%s%。\n如果敵人攻擊施法者，他們的移動速度會降低%s%，持續%s sec。\n$@spellname%s\n$@spelldesc%s"] = { { Stats.SpellHaste, }, false, false, false, false, } -- s7302
 L["造成的物理傷害降低%s點。\n造成的魔法傷害降低%s點。"] = { { Stats.AverageWeaponDamage, }, { Stats.SpellDamage, }, } -- s7656
 L["使你的體型增大，並且力量也跟著提高%s點，持續%s sec。作戰藥劑。"] = { { Stats.Strength, }, false, } -- s8212
 L["對牧師注入能量，使其法術加速提高%s%，所有傷害提高%s%，施放所有法術的法力消耗降低%s%。持續%s sec。"] = { { Stats.SpellHaste, }, false, false, false, } -- s10060
@@ -3617,7 +3615,6 @@ L["使你的法術對不死生物提高%s點致命一擊。"] = { { Stats.SpellC
 L["釋放出能量核心裡的能量，提高%s點法術能量，持續%s秒。"] = { { Stats.SpellDamage, Stats.HealingPower, }, false, } -- s29271
 L["使命中提高%s點，持續%s sec。"] = { { Stats.MeleeHitRating, Stats.RangedHitRating, Stats.SpellHitRating, }, false, } -- s29332
 L["使你受到致命一擊的機率降低%s%。"] = { { Stats.MeleeCrit, Stats.RangedCrit, }, } -- s30297
-L["法術致命一擊機率提高%s%。\n受到的所有物理傷害降低%s%。\n$@spellname%s\n$@spelldesc%s"] = { { Stats.SpellCrit, }, false, false, false, } -- s30482
 L["使附近隊友的致命一擊提高%s點，持續%s sec。"] = { { Stats.MeleeCritRating, Stats.RangedCritRating, Stats.SpellCritRating, }, false, } -- s31025
 L["使施法者被冰霜包覆，持續%s sec。厚重的冰霜可使護甲值提高%s點，並且使近戰攻擊者的移動速度降低%s%，以及使其攻擊間隔時間延長%s%。"] = { false, { Stats.Armor, }, false, { Stats.MeleeHaste, }, } -- s31256
 L["你感覺有點模糊...\n耐力降低%s點。\n精神提高%s點。"] = { { Stats.Stamina, }, { Stats.Spirit, }, } -- s31376

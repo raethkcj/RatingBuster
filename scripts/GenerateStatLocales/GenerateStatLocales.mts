@@ -981,6 +981,12 @@ async function getLocaleStatMap(
 		let staticEffects = spellStatEffects.get(spellDescription.ID)
 		let procEffects = spellStatEffects.get(procSpells.get(spellDescription.ID)!)
 		if (staticEffects || procEffects) {
+			if (spellDescription.Description_lang.search("@spell") >= 0) {
+				// In theory we could support these by loading SpellName and requerying individual descriptions,
+				// but since currently they're only used in Mage Armor spells, it's just not worth it
+				continue
+			}
+
 			const branches = traverseDescriptionBranches(spellDescription.Description_lang)
 			for (const branch of branches) {
 				const [pattern, statEntry] = mapTextToStatEntry(branch, staticEffects, spellDescription.ID, spellStatEffects, false)

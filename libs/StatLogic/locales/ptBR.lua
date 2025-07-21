@@ -3088,8 +3088,6 @@ L["aumenta em %s% a aceleração de habilidades de longo alcance por %s sec"] = 
 L["aumenta em %s seu intelecto por %s sec. elixir de batalha"] = { { Stats.Intellect, }, false, } -- s3166
 L["recupera %s pontos de vida ao longo de %s sec. é preciso ficar sentado enquanto come. se você gastar pelo menos %s segundos comendo, ficará bem alimentado e ganhará %s de vigor por %s sec"] = { false, false, false, { Stats.Stamina, }, false, ignoreSum = true } -- s5004
 L["aumenta em %s% sua chance de esquiva por %s sec"] = { { Stats.Dodge, }, false, } -- s5277
-L["aumenta em %s a sua maestria. \na duração de efeitos mágicos de dano usados contra você é reduzida em %s%. \n$@spellname%s\n$@spelldesc%s"] = { { Stats.MasteryRating, }, false, false, false, } -- s6117
-L["aumenta sua aceleração de feitiços em %s%. \nse um inimigo atingir o lançador, sua velocidade de movimento é reduzida em %s% por %s sec. \n$@spellname%s\n$@spelldesc%s"] = { { Stats.SpellHaste, }, false, false, false, false, } -- s7302
 L["dano físico causado reduzido em %s.\ndano mágico causado reduzido em %s"] = { { Stats.AverageWeaponDamage, }, { Stats.SpellDamage, }, } -- s7656
 L["você aumenta de tamanho e a sua força aumenta em %s em virtude desse crescimento. dura %s sec. elixir de batalha"] = { { Stats.Strength, }, false, } -- s8212
 L["imbui o sacerdote em poder, aumentando em %s% a aceleração de feitiços, em %s% todo o dano e reduzindo em %s% o custo de mana de todos os feitiços. dura %s sec"] = { { Stats.SpellHaste, }, false, false, false, } -- s10060
@@ -3144,7 +3142,6 @@ L["aumenta o seu acerto crítico com feitiços contra mortos-vivos em %s"] = { {
 L["aumenta em %s o seu acerto crítico com feitiços contra mortos-vivos"] = { { Stats.SpellCritRating, }, } -- s29159
 L["aumenta em %s o seu acerto por %s sec"] = { { Stats.MeleeHitRating, Stats.RangedHitRating, Stats.SpellHitRating, }, false, } -- s29332
 L["reduz em %s% a sua chance de ser acertado criticamente"] = { { Stats.MeleeCrit, Stats.RangedCrit, }, } -- s30297
-L["aumenta em %s% seu acerto crítico com feitiços. \nreduz em %s% todo o dano físico recebido. \n$@spellname%s\n$@spelldesc%s"] = { { Stats.SpellCrit, }, false, false, false, } -- s30482
 L["aumenta em %s o acerto crítico de membros do grupo próximos por %s sec"] = { { Stats.MeleeCritRating, Stats.RangedCritRating, Stats.SpellCritRating, }, false, } -- s31025
 L["%s resiliência jxj"] = { { Stats.ResilienceRating, }, } -- s32145
 L["regeneração de mana aumentada em %s pontos de mana a cada %s segundos, e vigor aumentado em %s. dura %s sec"] = { { Stats.GenericManaRegen, }, false, { Stats.Stamina, }, false, } -- s33265

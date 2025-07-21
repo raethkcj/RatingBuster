@@ -3432,8 +3432,6 @@ L["augmente la vitesse d'attaque du lanceur de sorts de %s% pendant %s sec, mais
 L["rend %s points de vie en %s sec. vous devez rester assis pendant que vous mangez. si vous passez au moins %s secondes à manger, vous serez \"bien nourri\" et vous bénéficierez d'un bonus de %s à l'endurance pendant %s sec"] = { false, false, false, { Stats.Stamina, }, false, ignoreSum = true } -- s5004
 L["une boisson corsée qui augmente votre force de %s et diminue votre intelligence de %s pendant %s sec"] = { { Stats.Strength, }, { Stats.Intellect, }, false, } -- s5020
 L["augmente de %s les points de dégâts que vous infligez avec les haches à deux mains et vous donne %s% de chances de réduire l’armure de l'adversaire de %s points pendant %s secondes"] = { { Stats.AverageWeaponDamage, }, false, false, false, } -- s5427
-L["augmente votre maîtrise de %s. \nla durée de tous les effets magiques néfastes utilisés contre vous est réduite de %s%. \n$@spellname%s\n$@spelldesc%s"] = { { Stats.MasteryRating, }, false, false, false, } -- s6117
-L["augmente la hâte de vos sorts de %s%. \nsi un ennemi frappe le lanceur, sa vitesse de déplacement est réduite de %s% pendant %s sec. \n$@spellname%s\n$@spelldesc%s"] = { { Stats.SpellHaste, }, false, false, false, false, } -- s7302
 L["les dégâts physiques infligés sont réduits de %s.\nles dégâts magiques infligés sont réduits de %s"] = { { Stats.AverageWeaponDamage, }, { Stats.SpellDamage, }, } -- s7656
 L["vous grandissez et votre force s'adapte en augmentant de %s. dure %s sec. elixir de bataille"] = { { Stats.Strength, }, false, } -- s8212
 L["réduit l’armure de la cible de %s pendant %s sec. tant qu’elle est affectée, la cible ne peut pas se camoufler ni se rendre invisible"] = { { Stats.Armor, }, false, } -- s9806
@@ -3492,7 +3490,6 @@ L["augmente le score de critique des sorts contre les morts-vivants de %s"] = { 
 L["libère l'énergie emmagasinée dans la batterie, ce qui augmente la puissance des sorts de %s au maximum pendant %s s"] = { { Stats.SpellDamage, Stats.HealingPower, }, false, } -- s29271
 L["augmente le toucher de %s pendant %s sec"] = { { Stats.MeleeHitRating, Stats.RangedHitRating, Stats.SpellHitRating, }, false, } -- s29332
 L["augmente l’esquive de %s pendant %s sec"] = { { Stats.DodgeRating, }, false, } -- s29335
-L["augmente vos chances de coup critique avec les sorts de %s%. \nréduit de %s% tous les dégâts physiques subis. \n$@spellname%s\n$@spelldesc%s"] = { { Stats.SpellCrit, }, false, false, false, } -- s30482
 L["augmente de %s le score de critique des membres du groupe proches pendant %s sec"] = { { Stats.MeleeCritRating, Stats.RangedCritRating, Stats.SpellCritRating, }, false, } -- s31025
 L["glace les attaquants, ce qui réduit leur vitesse de déplacement de %s% et leur vitesse d'attaque de %s%"] = { false, { Stats.MeleeHaste, }, } -- s31257
 L["%s à la résilience (jcj)"] = { { Stats.ResilienceRating, }, } -- s32145

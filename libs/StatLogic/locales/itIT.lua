@@ -3166,8 +3166,6 @@ L["increases ranged haste by %s% for %s sec"] = { { Stats.RangedHaste, }, false,
 L["restores %s health over %s sec.  must remain seated while eating.  if you spend at least %s seconds eating you will become well fed and gain %s stamina for %s sec"] = { false, false, false, { Stats.Stamina, }, false, ignoreSum = true } -- s5004
 L["a powerful beverage that increases your strength by %s and decreases your intellect by %s for %s sec"] = { { Stats.Strength, }, { Stats.Intellect, }, false, } -- s5020
 L["increases your dodge chance by %s% for %s sec"] = { { Stats.Dodge, }, false, } -- s5277
-L["increases your mastery by %s. \nthe duration of all harmful magic effects used against you is reduced by %s%.  \n$@spellname%s\n$@spelldesc%s"] = { { Stats.MasteryRating, }, false, false, false, } -- s6117
-L["increases your spell haste by %s%. \nif an enemy strikes the caster, their movement is slowed by %s% for %s sec.  \n$@spellname%s\n$@spelldesc%s"] = { { Stats.SpellHaste, }, false, false, false, false, } -- s7302
 L["physical damage dealt is reduced by %s.\nmagical damage dealt is reduced by %s"] = { { Stats.AverageWeaponDamage, }, { Stats.SpellDamage, }, } -- s7656
 L["you grow larger and your strength is increased by %s to match your new size.  lasts %s sec.  battle elixir"] = { { Stats.Strength, }, false, } -- s8212
 L["infuses the priest with power, increasing spell haste by %s%, all damage by %s%, and reducing the mana cost of all spells by %s%. lasts %s sec"] = { { Stats.SpellHaste, }, false, false, false, } -- s10060
@@ -3224,7 +3222,6 @@ L["increases your spell critical strike against undead by %s"] = { { Stats.Spell
 L["increases your spell critical strike by %s against undead"] = { { Stats.SpellCritRating, }, } -- s29159
 L["increases hit by %s for %s sec"] = { { Stats.MeleeHitRating, Stats.RangedHitRating, Stats.SpellHitRating, }, false, } -- s29332
 L["decreases your chance to be hit by a critical strike by %s%"] = { { Stats.MeleeCrit, Stats.RangedCrit, }, } -- s30297
-L["increases your spell critical strike chance by %s%. \nreduces all physical damage taken by %s%.  \n$@spellname%s\n$@spelldesc%s"] = { { Stats.SpellCrit, }, false, false, false, } -- s30482
 L["increases the critical strike of nearby party members by %s for %s sec"] = { { Stats.MeleeCritRating, Stats.RangedCritRating, Stats.SpellCritRating, }, false, } -- s31025
 L["%s pvp resilience"] = { { Stats.ResilienceRating, }, } -- s32145
 L["your harmful spells have a chance to increase your spell haste by %s for %s sec"] = { { Stats.MeleeHasteRating, Stats.RangedHasteRating, Stats.SpellHasteRating, }, false, ignoreSum = true } -- s33297

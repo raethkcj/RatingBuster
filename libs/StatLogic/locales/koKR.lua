@@ -3063,8 +3063,6 @@ L["시전자의 회피율이 %s%만큼 증가합니다. 취소할 때까지 지�
 L["%s sec에 걸쳐 총 %s의 생명력이 회복됩니다. 음식을 먹으려면 앉아 있어야 합니다. 음식을 꾸준히 %s초 이상 먹으면 포만감을 느끼게 되고 %s sec 동안 체력이 %s만큼 증가합니다"] = { false, false, false, false, { Stats.Stamina, }, ignoreSum = true } -- s5004
 L["이 독한 음료를 마시면 %s sec 동안 힘이 %s만큼 증가하지만 지능은 %s만큼 감소합니다"] = { false, { Stats.Strength, }, { Stats.Intellect, }, } -- s5020
 L["%s sec 동안 시전자의 회피율이 %s%만큼 증가합니다"] = { false, { Stats.Dodge, }, } -- s5426
-L["특화가 %s만큼 증가합니다.\n자신에게 시전된 해로운 마법 효과의 지속시간이 %s%만큼 감소합니다.\n$@spellname%s\n$@spelldesc%s"] = { { Stats.MasteryRating, }, false, false, false, } -- s6117
-L["주문 가속이 %s%만큼 증가합니다.\n시전자를 공격하는 적의 이동 속도가 %s sec 동안 %s%만큼 감소합니다.\n$@spellname%s\n$@spelldesc%s"] = { { Stats.SpellHaste, }, false, false, false, false, } -- s7302
 L["물리 공격력이 %s만큼 감소하고 마법 공격력이 %s만큼 감소합니다"] = { { Stats.AverageWeaponDamage, }, { Stats.SpellDamage, }, } -- s7656
 L["사제에게 마력을 주입하여 주문 가속을 %s%만큼, 모든 공격력을 %s%만큼 증가시키고, 주문 시전에 필요한 마나를 %s%만큼 감소시킵니다. %s sec 동안 지속됩니다"] = { { Stats.SpellHaste, }, false, false, false, } -- s10060
 L["%s sec 동안 민첩성이 $?%s만큼 증가합니다. 전투 비약으로 간주됩니다"] = { false, { Stats.Agility, }, } -- s11328
@@ -3117,7 +3115,6 @@ L["%s sec 동안 회피가 %s만큼 증가하고 최대 생명력이 %s만큼 �
 L["언데드에 대한 주문의 극대화가 %s만큼 증가합니다"] = { { Stats.SpellCritRating, }, } -- s29069
 L["언데드에 대한 주문 극대화가 %s만큼 증가합니다"] = { { Stats.SpellCritRating, }, } -- s29159
 L["%s sec 동안 회피 %s만큼 증가합니다"] = { false, { Stats.DodgeRating, }, } -- s29335
-L["주문 극대화 효과를 발휘할 확률이 %s%만큼 증가합니다.\n받는 모든 물리 피해가 %s%만큼 감소합니다.\n$@spellname%s\n$@spelldesc%s"] = { { Stats.SpellCrit, }, false, false, false, } -- s30482
 L["적을 공격하여 무기 공격력의 %s%에 해당하는 피해를 입히고 %s sec 동안 자신의 회피율을 %s%만큼 증가시킵니다"] = { false, false, { Stats.Dodge, }, } -- s31022
 L["%s sec 동안 주위 파티원의 치명타 및 극대화가 %s만큼 증가합니다"] = { false, { Stats.MeleeCritRating, Stats.RangedCritRating, Stats.SpellCritRating, }, } -- s31025
 L["시전자의 회피율이 %s%만큼 증가합니다"] = { { Stats.Dodge, }, } -- s31379
