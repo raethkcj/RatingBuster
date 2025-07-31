@@ -720,7 +720,7 @@ async function queryStatSpellEffects(expansion: Expansion) {
 	const spellEffect = await DatabaseTable.get("SpellEffect", expansion, "enUS")
 
 	const query = `
-		SELECT StatSpell.SpellID, StatSpell.EffectIndex, StatSpell.EffectAura, StatSpell.EffectBasePoints, StatSpell.EffectDieSides, StatSpell.EffectMiscValue_0, ProcSpell.SpellID AS ProcSpellID
+		SELECT StatSpell.SpellID, StatSpell.EffectIndex, StatSpell.EffectAura, IF(StatSpell.Coefficient != 0 AND StatSpell.EffectBasePoints = 0, 1, StatSpell.EffectBasePoints) AS EffectBasePoints, StatSpell.EffectDieSides, StatSpell.EffectMiscValue_0, ProcSpell.SpellID AS ProcSpellID
 		FROM read_csv('${spellEffect.path}', auto_type_candidates = ['INTEGER', 'DOUBLE', 'VARCHAR']) StatSpell
 		LEFT JOIN read_csv('${spellEffect.path}', auto_type_candidates = ['INTEGER', 'DOUBLE', 'VARCHAR']) ProcSpell
 		ON ProcSpell.EffectTriggerSpell = StatSpell.SpellID
