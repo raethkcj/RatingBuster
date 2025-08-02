@@ -262,14 +262,6 @@ local function log(output, log_level, prefix)
 	end
 end
 
--- SetTip("item:3185:0:0:0:0:0:1957")
-function SetTip(item)
-	local _, link = C_Item.GetItemInfo(item)
-	ItemRefTooltip:ClearLines()
-	ItemRefTooltip:SetHyperlink(link)
-	ItemRefTooltip:Show()
-end
-
 ----------------
 -- Stat Tools --
 ----------------
