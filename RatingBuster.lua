@@ -2835,7 +2835,7 @@ function RatingBuster:ProcessStat(stat, value, infoTable, link, color, statModCo
 		self:ProcessStat(StatLogic.Stats.Dodge, dodge, infoTable, link, color, statModContext, false, db.profile.showDodgeFromDefense)
 
 		local miss = value * statModContext("ADD_MISS_MOD_DEFENSE")
-		self:ProcessStat(StatLogic.Stats.Miss, dodge, infoTable, link, color, statModContext, false, db.profile.showMissFromDefense)
+		self:ProcessStat(StatLogic.Stats.Miss, miss, infoTable, link, color, statModContext, false, db.profile.showMissFromDefense)
 
 		local parry = value * statModContext("ADD_PARRY_MOD_DEFENSE")
 		self:ProcessStat(StatLogic.Stats.Parry, parry, infoTable, link, color, statModContext, false, db.profile.showParryFromDefense)
