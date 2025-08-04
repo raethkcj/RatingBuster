@@ -2470,6 +2470,24 @@ StatLogic.StatModTable["ALL"] = {
 			["value"] = 0.05,
 			["group"] = addon.ExclusiveGroup.AllStats,
 		},
+		-- Buff: Blessing of Niuzao
+		{
+			["aura"] = 1244203,
+			["value"] = 0.10,
+			["group"] = addon.ExclusiveGroup.Zandalar
+		},
+		-- Buff: Blessing of Niuzao (Oxen Fortitude)
+		{
+			["aura"] = 1244374,
+			["stack"] = 0.04,
+			["max_stacks"] = 20,
+		},
+		-- Buff: Blessing of Xuen
+		{
+			["aura"] = 1243315,
+			["value"] = 0.15,
+			["group"] = addon.ExclusiveGroup.Zandalar
+		},
 	},
 	["MOD_AGI"] = {
 		-- Buff: Mark of the Wild
@@ -2507,6 +2525,24 @@ StatLogic.StatModTable["ALL"] = {
 			["aura"] = 146385,
 			["value"] = 0.05,
 			["group"] = addon.ExclusiveGroup.AllStats,
+		},
+		-- Buff: Blessing of Niuzao
+		{
+			["aura"] = 1244203,
+			["value"] = 0.10,
+			["group"] = addon.ExclusiveGroup.Zandalar
+		},
+		-- Buff: Blessing of Niuzao (Oxen Fortitude)
+		{
+			["aura"] = 1244374,
+			["stack"] = 0.04,
+			["max_stacks"] = 20,
+		},
+		-- Buff: Blessing of Xuen
+		{
+			["aura"] = 1243315,
+			["value"] = 0.15,
+			["group"] = addon.ExclusiveGroup.Zandalar
 		},
 	},
 	["MOD_INT"] = {
@@ -2546,6 +2582,30 @@ StatLogic.StatModTable["ALL"] = {
 			["value"] = 0.05,
 			["group"] = addon.ExclusiveGroup.AllStats,
 		},
+		-- Buff: Blessing of Yu'lon
+		{
+			["aura"] = 1244204,
+			["value"] = 0.15,
+			["group"] = addon.ExclusiveGroup.Zandalar
+		},
+		-- Buff: Blessing of Niuzao
+		{
+			["aura"] = 1244203,
+			["value"] = 0.10,
+			["group"] = addon.ExclusiveGroup.Zandalar
+		},
+		-- Buff: Blessing of Niuzao (Oxen Fortitude)
+		{
+			["aura"] = 1244374,
+			["stack"] = 0.04,
+			["max_stacks"] = 20,
+		},
+		-- Buff: Blessing of Chi-Ji
+		{
+			["aura"] = 1244285,
+			["value"] = 0.10,
+			["group"] = addon.ExclusiveGroup.Zandalar
+		},
 	},
 	["MOD_STA"] = {
 		-- Buff: Power Word: Fortitude
@@ -2565,6 +2625,30 @@ StatLogic.StatModTable["ALL"] = {
 			["aura"] = 469,
 			["value"] = 0.1,
 			["group"] = addon.ExclusiveGroup.Stamina,
+		},
+		-- Buff: Blessing of Yu'lon
+		{
+			["aura"] = 1244204,
+			["value"] = 0.05,
+			["group"] = addon.ExclusiveGroup.Zandalar
+		},
+		-- Buff: Blessing of Niuzao
+		{
+			["aura"] = 1244203,
+			["value"] = 0.20,
+			["group"] = addon.ExclusiveGroup.Zandalar
+		},
+		-- Buff: Blessing of Niuzao (Oxen Fortitude)
+		{
+			["aura"] = 1244374,
+			["stack"] = 0.05,
+			["max_stacks"] = 20,
+		},
+		-- Buff: Blessing of Chi-Ji
+		{
+			["aura"] = 1244285,
+			["value"] = 0.10,
+			["group"] = addon.ExclusiveGroup.Zandalar
 		},
 	},
 	["MOD_AP"] = {
