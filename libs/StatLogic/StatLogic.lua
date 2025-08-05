@@ -871,10 +871,11 @@ do
 	---@field rank integer?
 
 	--- Returns information about a buff or debuff on the player, including fake auras from AlwaysBuffed settings
-	---@param auraName string
+	---@param auraSpellID integer
 	---@param ignoreAlwaysBuffed boolean? Set to true to ignore the AlwaysBuffed settings
 	---@return AuraInfo auraInfo, boolean usedAlwaysBuffed
-	function StatLogic:GetAuraInfo(auraName, ignoreAlwaysBuffed)
+	function StatLogic:GetAuraInfo(auraSpellID, ignoreAlwaysBuffed)
+		local auraName = GetSpellName(auraSpellID)
 		if not ignoreAlwaysBuffed and self.always_buffed_ns.profile[auraName] then
 			return always_buffed_aura_info[auraName], true
 		else
@@ -1086,7 +1087,7 @@ addon.StatModValidators = {
 	},
 	aura = {
 		validate = function(case, statModName)
-			return not not StatLogic:GetAuraInfo(GetSpellName(case.aura), StatLogic.StatModIgnoresAlwaysBuffed[statModName])
+			return not not StatLogic:GetAuraInfo(case.aura, StatLogic.StatModIgnoresAlwaysBuffed[statModName])
 		end,
 		events = {
 			["UNIT_AURA"] = "player",
@@ -1462,11 +1463,11 @@ do
 				end
 			end
 		elseif case.aura and case.rank then
-			local aura = StatLogic:GetAuraInfo(GetSpellName(case.aura))
+			local aura = StatLogic:GetAuraInfo(case.aura)
 			local rank = aura.rank
 			newValue = case.rank[rank]
 		elseif case.aura and case.stack then
-			local aura, usedAlwaysBuffed = StatLogic:GetAuraInfo(GetSpellName(case.aura))
+			local aura, usedAlwaysBuffed = StatLogic:GetAuraInfo(case.aura)
 			local stacks = usedAlwaysBuffed and case.max_stacks or aura.stacks
 			newValue = case.stack * stacks
 		elseif case.regen then
@@ -1476,7 +1477,7 @@ do
 		elseif case.level then
 			newValue = case.level[level]
 		elseif case.tooltip then
-			local aura = StatLogic:GetAuraInfo(GetSpellName(case.aura))
+			local aura = StatLogic:GetAuraInfo(case.aura)
 			newValue = aura.tooltip
 		end
 
@@ -1645,9 +1646,9 @@ end
 
 local function GetTotalWeaponSkill(unit)
 	if addon.class == "DRUID" and (
-		StatLogic:GetAuraInfo(GetSpellName(768), true)
-		or StatLogic:GetAuraInfo(GetSpellName(5487), true)
-		or StatLogic:GetAuraInfo(GetSpellName(9634), true)
+		StatLogic:GetAuraInfo(768, true)
+		or StatLogic:GetAuraInfo(5487, true)
+		or StatLogic:GetAuraInfo(9634, true)
 	) then
 		return UnitLevel("player") * 5
 	else

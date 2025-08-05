@@ -93,7 +93,7 @@ function StatLogic:GetDodgePerAgi()
 		-- But Agi from Kings etc. will add to posBuff, so we subtract those if present
 		for _, case in ipairs(StatLogic.StatModTable["ALL"]["MOD_AGI"]) do
 			if case.group == addon.ExclusiveGroup.AllStats then
-				if StatLogic:GetAuraInfo(C_Spell.GetSpellName(case.aura), true) then
+				if StatLogic:GetAuraInfo(case.aura, true) then
 					modAgi = modAgi - case.value
 				end
 			end
@@ -167,7 +167,7 @@ function StatLogic:GetParryPerStr()
 	-- 	-- But Str from Kings etc. will add to posBuff, so we subtract those if present
 	-- 	for _, case in ipairs(StatLogic.StatModTable["ALL"]["MOD_STR"]) do
 	-- 		if case.group == addon.ExclusiveGroup.AllStats then
-	-- 			if StatLogic:GetAuraInfo(C_Spell.GetSpellName(case.aura), true) then
+	-- 			if StatLogic:GetAuraInfo(case.aura, true) then
 	-- 				modStr = modStr - case.value
 	-- 			end
 	-- 		end
