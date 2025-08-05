@@ -583,7 +583,7 @@ S[StatLogic.Stats.SpellPower] = "к силе заклинаний"
 L[StatLogic.Stats.SpellDamage] = "Урон от заклинаний"
 S[StatLogic.Stats.SpellDamage] = "к урону от заклинаний"
 L[StatLogic.Stats.HealingPower] = "Лечение"
-S[StatLogic.Stats.HealingPower] = "к лечениям"
+S[StatLogic.Stats.HealingPower] = "к лечению"
 L[StatLogic.Stats.SpellPenetration] = "Проникающая способность"
 
 L[StatLogic.Stats.HolyDamage] = "Урон от светлой магии"
