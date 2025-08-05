@@ -575,10 +575,11 @@ L[StatLogic.Stats.RangedHasteRating] = "Рейтинг скорости даль
 
 -- Spell Stats
 L[StatLogic.Stats.SpellPower] = "Сила заклинаний"
-L[StatLogic.Stats.SpellDamage] = "Сила заклинаний" -- Changed from Damage to Power
-S[StatLogic.Stats.SpellDamage] = "к силе заклинаний"
-L[StatLogic.Stats.HealingPower] = "Исцеление"
-S[StatLogic.Stats.HealingPower] = "к силе заклинаний"
+S[StatLogic.Stats.SpellPower] = "к силе заклинаний"
+L[StatLogic.Stats.SpellDamage] = "Урон от заклинаний"
+S[StatLogic.Stats.SpellDamage] = "к урону от заклинаний"
+L[StatLogic.Stats.HealingPower] = "Лечение"
+S[StatLogic.Stats.HealingPower] = "к лечениям"
 L[StatLogic.Stats.SpellPenetration] = "Проникающая способность"
 
 L[StatLogic.Stats.HolyDamage] = "Урон от светлой магии"
