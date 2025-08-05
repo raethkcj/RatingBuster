@@ -478,6 +478,8 @@ L["statList"] = {
 
 	{SPELL_STATALL:lower(), StatLogic.Stats.AllStats},
 
+	{"искусности", StatLogic.Stats.MasteryRating},
+	{"искусность", StatLogic.Stats.MasteryRating},
 	{"искусност", StatLogic.Stats.MasteryRating},
 }
 -------------------------
