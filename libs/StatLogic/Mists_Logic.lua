@@ -2,6 +2,9 @@ local addonName, addon = ...
 ---@class StatLogic
 local StatLogic = LibStub:GetLibrary(addonName)
 
+-- Extracted from the client at GameTables/OCTClassCombatRatingScalar.txt
+local extraHaste = addon.class == "WARRIOR" and 1.5 or 1
+
 -- Level 60 rating base
 StatLogic.RatingBase = {
 	[StatLogic.Stats.DodgeRating] = 20.700001,
@@ -13,9 +16,9 @@ StatLogic.RatingBase = {
 	[StatLogic.Stats.RangedCritRating] = 14,
 	[StatLogic.Stats.SpellCritRating] = 14,
 	[StatLogic.Stats.ResilienceRating] = 9.29154,
-	[StatLogic.Stats.MeleeHasteRating] = 10,
-	[StatLogic.Stats.RangedHasteRating] = 10,
-	[StatLogic.Stats.SpellHasteRating] = 10,
+	[StatLogic.Stats.MeleeHasteRating] = 10 / extraHaste,
+	[StatLogic.Stats.RangedHasteRating] = 10 / extraHaste,
+	[StatLogic.Stats.SpellHasteRating] = 10 / extraHaste,
 	[StatLogic.Stats.ExpertiseRating] = 8,
 	[StatLogic.Stats.MasteryRating] = 14,
 	[StatLogic.Stats.PvpPowerRating] = 12.021399,

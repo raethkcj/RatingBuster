@@ -265,8 +265,6 @@ end
 ----------------
 -- Stat Tools --
 ----------------
-StatLogic.ExtraHasteClasses = {}
-
 StatLogic.GenericStatMap = {
 	[StatLogic.Stats.AllStats] = {
 		StatLogic.Stats.Strength,
