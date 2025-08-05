@@ -314,9 +314,10 @@ L["Select the secondary profile for use with the swap profile keybind. If spec p
 -- or you can type /rb debug to enable it in game
 --
 -- Tip2: The strings are passed into string.find, so you should escape the magic characters ^$()%.[]*+-? with a %
-addon.numberPattern = addon.numberPattern .. "\231?\130?\185?" -- 点
 L["numberPatterns"] = {
+	"提高" .. addon.numberPattern .. "点",
 	"提高" .. addon.numberPattern,
+	addon.numberPattern .. "点",
 	addon.numberPattern,
 }
 -- Exclusions are used to ignore instances of separators that should not get separated
