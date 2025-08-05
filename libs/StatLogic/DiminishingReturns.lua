@@ -87,7 +87,7 @@ function StatLogic:GetDodgePerAgi()
 	end
 	local stat, effectiveStat, posBuff, negBuff = UnitStat("player", LE_UNIT_STAT_AGILITY)
 	local modAgi = 1
-	if addon.ModAgiClasses[addon.class] then
+	if addon.ModAgiClasses and addon.ModAgiClasses[addon.class] then
 		modAgi = self:GetStatMod("MOD_AGI")
 		-- Talents that modify Agi will not add to posBuff, so we need to calculate baseAgi
 		-- But Agi from Kings etc. will add to posBuff, so we subtract those if present

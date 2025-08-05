@@ -2805,13 +2805,6 @@ addon.C_b = {
 	["DRUID"]       = 0,
 }
 
-addon.ModAgiClasses = {
-	["DRUID"] = true,
-	["HUNTER"] = true,
-	["ROGUE"] = true,
-	["SHAMAN"] = true,
-}
-
 do
 	-- Derived by fitting a curve to the values in GameTables/ResilienceDR.txt
 	-- baseResilience changed patch-by-patch in original Mists, and the values
