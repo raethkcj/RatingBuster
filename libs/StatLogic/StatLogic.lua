@@ -813,56 +813,10 @@ end
 --------------------
 
 do
-	-- Aura Cache is a cache of our actual auras, wiped on UNIT_AURA
-	-- and not populated until we try to access it. This is for
-	-- performance during combat, when many auras will be updating,
-	-- but the user is unlikely to be checking item tooltips.
-	local aura_cache = {}
 	-- Auras whose StatMod requires scanning the tooltip to get a dynamic value
-	local tooltip_auras = {}
-	local rank_auras = {}
-
-	local needs_update = true
-	local f = CreateFrame("Frame")
-	f:RegisterUnitEvent("UNIT_AURA", "player")
-	f:SetScript("OnEvent", function()
-		wipe(aura_cache)
-		needs_update = true
-	end)
-
-	-- AuraInfo is a layer on top of aura_cache to hold Always Buffed settings.
-	local always_buffed_aura_info = {}
-	function StatLogic:SetupAuraInfo(always_buffed_ns)
-		self.always_buffed_ns = always_buffed_ns
-		for _, modList in pairs(StatLogic.StatModTable) do
-			for _, mods in pairs(modList) do
-				for _, mod in ipairs(mods) do
-					if mod.aura then -- if we got a buff
-						local name = GetSpellName(mod.aura)
-						if name then
-							local aura = {}
-							if not mod.tab and mod.rank then
-								-- Not a talent, so the rank is the buff rank
-								aura.rank = #(mod.rank)
-								rank_auras[name] = true
-							end
-
-							if mod.stack then
-								aura.stacks = mod.max_stacks
-							end
-
-							always_buffed_aura_info[name] = aura
-							if mod.tooltip then
-								tooltip_auras[name] = true
-							end
-						end
-					end
-				end
-			end
-		end
-	end
-
-	local GetSpellSubtext = C_Spell.GetSpellSubtext or GetSpellSubtext
+	local tooltipAuras = {}
+	local rankAuras = {}
+	local exactAuras = {}
 
 	---@class AuraInfo
 	---@field spellId integer
@@ -870,73 +824,119 @@ do
 	---@field tooltip integer?
 	---@field rank integer?
 
+	-- A layer on top of auraCache to hold Always Buffed settings.
+	---@type { [string|integer]: AuraInfo }
+	local alwaysBuffedAuraInfo = {}
+	function StatLogic:SetupAuraInfo(alwaysBuffedNamespace)
+		self.always_buffed_ns = alwaysBuffedNamespace
+		for _, modList in pairs(StatLogic.StatModTable) do
+			for _, mods in pairs(modList) do
+				for _, mod in ipairs(mods) do
+					if mod.aura then
+						local key = mod.exact and mod.aura or GetSpellName(mod.aura)
+						if key then
+							local aura = {
+								spellId = mod.aura
+							}
+							if not mod.tab and mod.rank then
+								-- Not a talent, so the rank is the buff rank
+								aura.rank = #(mod.rank)
+								rankAuras[key] = true
+							end
+
+							if mod.stack then
+								aura.stacks = mod.max_stacks
+							end
+
+							if mod.tooltip then
+								tooltipAuras[key] = true
+							end
+
+							if mod.exact then
+								exactAuras[key] = true
+							end
+
+							alwaysBuffedAuraInfo[key] = aura
+						end
+					end
+				end
+			end
+		end
+	end
+
+	-- Aura Cache is a cache of our actual auras, wiped on UNIT_AURA
+	-- and not populated until we try to access it. This is for
+	-- performance during combat, when many auras will be updating,
+	-- but the user is unlikely to be checking item tooltips.
+	---@type { [string|integer]: AuraInfo }
+	local auraCache = {}
+	local needsUpdate = true
+	local f = CreateFrame("Frame")
+	f:RegisterUnitEvent("UNIT_AURA", "player")
+	f:SetScript("OnEvent", function()
+		wipe(auraCache)
+		needsUpdate = true
+	end)
+
+	local GetSpellSubtext = C_Spell.GetSpellSubtext or GetSpellSubtext
+
+	local AuraGettersSetters = {
+		[C_UnitAuras.GetBuffDataByIndex] = "SetUnitBuff",
+		[C_UnitAuras.GetDebuffDataByIndex] = "SetUnitDebuff",
+	}
+
+	local function UpdateAuras()
+		for GetAuraDataByIndex, SetTooltipAura in pairs(AuraGettersSetters) do
+			local i = 1
+			repeat
+				local auraData = GetAuraDataByIndex("player", i)
+				if auraData then
+					local auraName = auraData.name
+					local auraInfo = {
+						spellId = auraData.spellId,
+						stacks = auraData.applications,
+					}
+					auraCache[auraName] = auraInfo
+
+					if tooltipAuras[auraName] then
+						tip[SetTooltipAura]("player", i)
+						local numString = tip.sides.left[2]:GetText():match("%d+")
+						local value = numString and tonumber(numString) or 0
+						auraInfo.tooltip = value
+					end
+
+					if rankAuras[auraName] then
+						local subtext = GetSpellSubtext(auraInfo.spellId)
+						if subtext then
+							auraInfo.rank = tonumber(subtext:match("%d+") or "") or 1
+						end
+					end
+
+					if exactAuras[auraData.spellId] then
+						auraCache[auraData.spellId] = auraInfo
+					end
+				end
+				i = i + 1
+			until not auraData
+		end
+		needsUpdate = false
+	end
+
 	--- Returns information about a buff or debuff on the player, including fake auras from AlwaysBuffed settings
 	---@param auraSpellID integer
 	---@param ignoreAlwaysBuffed boolean? Set to true to ignore the AlwaysBuffed settings
+	---@param requireExactSpell boolean? Match an aura with exactly auraSpellID, rather than just a matching name
 	---@return AuraInfo auraInfo, boolean usedAlwaysBuffed
-	function StatLogic:GetAuraInfo(auraSpellID, ignoreAlwaysBuffed)
+	function StatLogic:GetAuraInfo(auraSpellID, ignoreAlwaysBuffed, requireExactSpell)
 		local auraName = GetSpellName(auraSpellID)
+		local key = requireExactSpell and auraSpellID or auraName
 		if not ignoreAlwaysBuffed and self.always_buffed_ns.profile[auraName] then
-			return always_buffed_aura_info[auraName], true
+			return alwaysBuffedAuraInfo[key], true
 		else
-			if needs_update then
-				local i = 1
-				repeat
-					local auraData = C_UnitAuras.GetBuffDataByIndex("player", i)
-					if auraData then
-						local buffName = auraData.name
-						local auraInfo = {
-							spellId = auraData.spellId,
-							stacks = auraData.applications,
-						}
-						aura_cache[buffName] = auraInfo
-
-						if tooltip_auras[buffName] then
-							tip:SetUnitBuff("player", i)
-							local numString = tip.sides.left[2]:GetText():match("%d+")
-							local value = numString and tonumber(numString) or 0
-							auraInfo.tooltip = value
-						end
-
-						if rank_auras[buffName] then
-							local subtext = GetSpellSubtext(auraInfo.spellId)
-							if subtext then
-								auraInfo.rank = tonumber(subtext:match("%d+") or "") or 1
-							end
-						end
-					end
-					i = i+1
-				until not auraData
-				i = 1
-				repeat
-					local auraData = C_UnitAuras.GetDebuffDataByIndex("player", i)
-					if auraData then
-						local debuffName = auraData.name
-						local auraInfo = {
-							spellId = auraData.spellId,
-							stacks = auraData.applications,
-						}
-						aura_cache[debuffName] = auraInfo
-
-						if tooltip_auras[debuffName] then
-							tip:SetUnitDebuff("player", i)
-							local numString = tip.sides.left[2]:GetText():match("%d+")
-							local value = numString and tonumber(numString) or 0
-							auraInfo.tooltip = value
-						end
-
-						if rank_auras[debuffName] then
-							local subtext = GetSpellSubtext(auraInfo.spellId)
-							if subtext then
-								auraInfo.rank = tonumber(subtext:match("%d+") or "") or 1
-							end
-						end
-					end
-					i = i+1
-				until not auraData
-				needs_update = false
+			if needsUpdate then
+				UpdateAuras()
 			end
-			return aura_cache[auraName], false
+			return auraCache[key], false
 		end
 	end
 end
@@ -1087,7 +1087,7 @@ addon.StatModValidators = {
 	},
 	aura = {
 		validate = function(case, statModName)
-			return not not StatLogic:GetAuraInfo(case.aura, StatLogic.StatModIgnoresAlwaysBuffed[statModName])
+			return not not StatLogic:GetAuraInfo(case.aura, StatLogic.StatModIgnoresAlwaysBuffed[statModName], case.exact)
 		end,
 		events = {
 			["UNIT_AURA"] = "player",
@@ -1463,11 +1463,11 @@ do
 				end
 			end
 		elseif case.aura and case.rank then
-			local aura = StatLogic:GetAuraInfo(case.aura)
+			local aura = StatLogic:GetAuraInfo(case.aura, false, case.exact)
 			local rank = aura.rank
 			newValue = case.rank[rank]
 		elseif case.aura and case.stack then
-			local aura, usedAlwaysBuffed = StatLogic:GetAuraInfo(case.aura)
+			local aura, usedAlwaysBuffed = StatLogic:GetAuraInfo(case.aura, false, case.exact)
 			local stacks = usedAlwaysBuffed and case.max_stacks or aura.stacks
 			newValue = case.stack * stacks
 		elseif case.regen then
@@ -1477,7 +1477,7 @@ do
 		elseif case.level then
 			newValue = case.level[level]
 		elseif case.tooltip then
-			local aura = StatLogic:GetAuraInfo(case.aura)
+			local aura = StatLogic:GetAuraInfo(case.aura, false, case.exact)
 			newValue = aura.tooltip
 		end
 
