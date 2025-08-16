@@ -2320,186 +2320,115 @@ function RatingBuster:ProcessLine(text, link, color, statModContext)
 	local cacheID = text .. statModContext.level
 	local cacheText = cache[cacheKey][cacheID]
 	if cacheText then
-		if cacheText ~= text then
-			return cacheText
-		end
+		return cacheText
 	elseif EmptySocketLookup[text] and db.profile[EmptySocketLookup[text]].gemText then -- Replace empty sockets with gem text
 		local gemText = db.profile[EmptySocketLookup[text]].gemText
 		text = RatingBuster:ProcessLine(gemText, link, color, statModContext)
 		cache[cacheKey][cacheID] = text
 		return text
-	elseif text:find("%d") then -- do nothing if we don't find a number
-		-- Temporarily replace exclusions
-		local exclusions = false
-		for exclusion, replacement in pairs(L["exclusions"]) do
-			local count
-			text, count = text:gsub(exclusion, replacement)
-			if count > 0 then
-				exclusions = true
+	else
+		local addedCharacters = 0
+		local statGroupValues = StatLogic:GetStatGroupValues(text, link, color)
+		for _, statGroupValue in ipairs(statGroupValues) do
+			local statGroup = statGroupValue.statGroup
+			if statGroup then
+				for _, stat in ipairs(statGroup) do
+					local infoTable = StatLogic.StatTable.new()
+					RatingBuster:ProcessStat(stat, statGroupValue.value, infoTable, link, color, statModContext, true, false)
+					local breakdown = RatingBuster:GetBreakdown(infoTable)
+					if breakdown ~= "" then
+						-- TODO: Override position when localized stat match occurs later in string
+						-- TODO: Handle WholeText matches without positions
+						text = RatingBuster:InsertBreakdown(text, breakdown, statGroupValue.position + addedCharacters)
+						addedCharacters = addedCharacters + #breakdown
+					end
+				end
 			end
 		end
-		-- Initial pattern check, do nothing if not found
-		-- Check for separators and bulid separatorTable
-		local separatorTable = {}
-		for _, sep in ipairs(L["separators"]) do
-			if text:find(sep) then
-				tinsert(separatorTable, sep)
-			end
-		end
-		-- RecursivelySplitLine
-		text = RatingBuster:RecursivelySplitLine(text, separatorTable, link, color, statModContext)
-		-- Revert exclusions
-		if exclusions then
-			for exclusion, replacement in pairs(L["exclusions"]) do
-				text = text:gsub(replacement, exclusion)
-			end
-		end
-		cache[cacheKey][cacheID] = text
-		-- SetText
-		return text
 	end
 
 	cache[cacheKey][cacheID] = text
 	return text
 end
 
----------------------------------------------------------------------------------
--- Recursive algorithm that divides a string into pieces using the separators in separatorTable,
--- processes them separately, then joins them back together
----------------------------------------------------------------------------------
--- text = "+24 Agility/+4 Stamina and +4 Spell Crit/+5 Spirit"
--- separatorTable = {"/", " and ", ","}
--- RatingBuster:RecursivelySplitLine("+24 Agility/+4 Stamina, +4 Dodge and +4 Spell Crit/+5 Spirit", {"/", " and ", ",", "%. ", " for ", "&"})
--- RatingBuster:RecursivelySplitLine("+6法術傷害及5耐力", {"/", "和", ",", "。", " 持續 ", "&", "及",})
-function RatingBuster:RecursivelySplitLine(text, separatorTable, link, color, statModContext)
-	if type(separatorTable) == "table" and table.maxn(separatorTable) > 0 then
-		local sep = tremove(separatorTable, 1)
-		text = text:gsub(sep, "@")
-		text = strsplittable("@", text)
-		local processedText = {}
-		local tempTable = {}
-		for _, t in ipairs(text) do
-			copyTable(tempTable, separatorTable)
-			tinsert(processedText, self:RecursivelySplitLine(t, tempTable, link, color, statModContext))
-		end
-		-- Remove frontier patterns, as they get printed oddly in the repl of a gsub
-		sep = sep:gsub("%%f%[.-%]", "")
-		-- Join text
-		return (table.concat(processedText, "@"):gsub("@", sep))
-	else
-		return self:ProcessText(text, link, color, statModContext)
-	end
-end
-
-local escaped_large_number_sep = LARGE_NUMBER_SEPERATOR:gsub("[-.]", "%%%1")
-
----@param text string
----@param link string
----@param color ColorMixin
----@param statModContext StatModContext
+---@param infoTable StatTable
 ---@return string
-function RatingBuster:ProcessText(text, link, color, statModContext)
-	-- Convert text to lower so we don't have to worry about same ratings with different cases
-	local lowerText = text:lower()
-	-- Check if text has a matching pattern
-	for _, numPattern in ipairs(L["numberPatterns"]) do
-		-- Capture the stat value
-		local _, insertionPoint, value = lowerText:find(numPattern)
-		if value then
-			-- Capture the stat name
-			for _, statPattern in ipairs(L["statList"]) do
-				local pattern, stat = unpack(statPattern)
-				---@cast pattern string
-				if lowerText:find(pattern) then
-					value = value:gsub(escaped_large_number_sep, "")
-					value = tonumber(value)
-					if not value then return text end
-					local infoTable = StatLogic.StatTable.new()
-					RatingBuster:ProcessStat(stat, value, infoTable, link, color, statModContext, true, false)
-					local effects = {}
-					-- Group effects with identical values
-					for statID, effect in pairs(infoTable) do
-						if type(statID) == "table" and statID.isPercent or statID == "Spell" then
-							if floor(abs(effect) * 100 + 0.5) > 0 then
-								effect = ("%+.2f"):format(effect):gsub("(%.%d-)0+$", "%1"):trim(".") .. "%"
-								effects[effect] = effects[effect] or {}
-								tinsert(effects[effect], S[statID])
-							end
-						elseif statID == "Percent" then
-							if floor(abs(effect) * 100 + 0.5) > 0 then
-								effect = ("%+.2f"):format(effect):gsub("(%.%d-)0+$", "%1"):trim(".") .. "%"
-								effects[effect] = effects[effect] or {}
-							end
-						else
-							if floor(abs(effect) * 10 + 0.5) > 0 then
-								effect = ("%+.1f"):format(effect):gsub("(%.%d-)0+$", "%1"):trim(".")
-							elseif floor(abs(effect) + 0.5) > 0 then
-								effect = ("%+.0f"):format(effect)
-							else
-								-- Effect is too small to show
-								effect = false
-							end
+function RatingBuster:GetBreakdown(infoTable)
+	local effects = {}
+	-- Group effects with identical values
+	for statID, effect in pairs(infoTable) do
+		if type(statID) == "table" and statID.isPercent or statID == "Spell" then
+			if floor(abs(effect) * 100 + 0.5) > 0 then
+				effect = ("%+.2f"):format(effect):gsub("(%.%d-)0+$", "%1"):trim(".") .. "%"
+				effects[effect] = effects[effect] or {}
+				tinsert(effects[effect], S[statID])
+			end
+		elseif statID == "Percent" then
+			if floor(abs(effect) * 100 + 0.5) > 0 then
+				effect = ("%+.2f"):format(effect):gsub("(%.%d-)0+$", "%1"):trim(".") .. "%"
+				effects[effect] = effects[effect] or {}
+			end
+		else
+			if floor(abs(effect) * 10 + 0.5) > 0 then
+				effect = ("%+.1f"):format(effect):gsub("(%.%d-)0+$", "%1"):trim(".")
+			elseif floor(abs(effect) + 0.5) > 0 then
+				effect = ("%+.0f"):format(effect)
+			else
+				-- Effect is too small to show
+				effect = false
+			end
 
-							if effect then
-								effects[effect] = effects[effect] or {}
-								if statID ~= "Decimal" then
-									tinsert(effects[effect], S[statID])
-								end
-							end
-						end
-					end
-					local info = {}
-					for effect, stats in pairs(effects) do
-						if #stats > 0 then
-							effect = effect .. " " .. table.concat(stats, ", ")
-						end
-						tinsert(info, tostring(effect))
-					end
-					table.sort(info, function(a, b)
-						return #a < #b
-					end)
-					local infoString = table.concat(info, ", ")
-					if infoString ~= "" then
-						-- Change insertion point if necessary
-						local _, statInsertionPoint = lowerText:find(pattern)
-						if statInsertionPoint > insertionPoint then
-							insertionPoint = statInsertionPoint
-						end
-
-						-- Backwards Compatibility
-						if not db.global.textColor.GenerateHexColorMarkup then
-							local old = db.global.textColor
-							if type(old) == "table" and old.r and old.g and old.b then
-								db.global.textColor = CreateColor(old.r, old.g, old.b)
-							else
-								db.global.textColor = defaults.global.textColor
-							end
-						end
-
-						-- Insert info into text. table.concat should be more efficient than many .. concats
-						return table.concat({
-							text:sub(1, insertionPoint),
-							" ",
-							db.global.textColor:GenerateHexColorMarkup(),
-							"(",
-							infoString,
-							")",
-							"|r",
-							text:sub(insertionPoint + 1)
-						})
-					else
-						return text
-					end
+			if effect then
+				effects[effect] = effects[effect] or {}
+				if statID ~= "Decimal" then
+					tinsert(effects[effect], S[statID])
 				end
 			end
 		end
 	end
-	return text
+	local info = {}
+	for effect, stats in pairs(effects) do
+		if #stats > 0 then
+			effect = effect .. " " .. table.concat(stats, ", ")
+		end
+		tinsert(info, tostring(effect))
+	end
+	table.sort(info, function(a, b)
+		return #a < #b
+	end)
+	local infoString = table.concat(info, ", ")
+	return infoString
+end
+
+---@param text string
+---@param breakdown string
+---@param position integer
+---@return string
+function RatingBuster:InsertBreakdown(text, breakdown, position)
+	-- Backwards Compatibility
+	if not db.global.textColor.GenerateHexColorMarkup then
+		local old = db.global.textColor
+		if type(old) == "table" and old.r and old.g and old.b then
+			db.global.textColor = CreateColor(old.r, old.g, old.b)
+		else
+			db.global.textColor = defaults.global.textColor
+		end
+	end
+
+	return table.concat({
+		text:sub(1, position),
+		" ",
+		db.global.textColor:GenerateHexColorMarkup(),
+		"(",
+		breakdown,
+		")|r",
+		text:sub(position + 1)
+	})
 end
 
 ---@param stat Stat
 ---@param value number
----@param infoTable table
+---@param infoTable StatTable
 ---@param link string
 ---@param color any
 ---@param statModContext StatModContext
@@ -3145,7 +3074,7 @@ EventUtil.ContinueOnAddOnLoaded("Blizzard_ReforgingUI", function()
 				profile = db:GetCurrentProfile(),
 				spec = RatingBuster:GetDisplayedSpec()
 			})
-			og_SetText(self, RatingBuster:ProcessText(text, "", {}, statModContext), ...)
+			og_SetText(self, RatingBuster:ProcessLine(text, "", {}, statModContext), ...)
 		end
 	end
 

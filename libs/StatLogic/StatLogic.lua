@@ -1943,25 +1943,25 @@ end
 do
 	local large_sep = LARGE_NUMBER_SEPERATOR:gsub("[-.]", "%%%1")
 	local dec_sep = DECIMAL_SEPERATOR:gsub("[-.]", "%%%1")
-	local number_pattern = "[+-]?[%d." .. large_sep .. dec_sep .. "]+%f[%D]"
+	local numberPattern = "[+-]?[%d." .. large_sep .. dec_sep .. "]+%f[%D]()"
 
 	---@alias StatGroup (Stat | string)[] | false
 
 	---@class StatGroupValues
 	---@field ignoreSum boolean
-	---@field [number] { statGroup: StatGroup, value: number }
+	---@field [number] { statGroup: StatGroup, value: number, position: number? }
 
 	---@param statGroups StatGroupValues
 	---@param statGroup StatGroup
 	---@param value integer
 	---@param itemLink string
 	---@param color ColorMixin
-	local function AddStat(statGroups, statGroup, value, itemLink, color)
+	local function AddStat(statGroups, statGroup, value, itemLink, color, position)
 		if type(statGroup) == "table" then
 			if tContains(statGroup, StatLogic.Stats.Armor) then
 				local base, bonus = StatLogic:GetArmorDistribution(itemLink, value, color)
 				value = base
-				AddStat(statGroups, { StatLogic.Stats.BonusArmor }, bonus, itemLink, color)
+				AddStat(statGroups, { StatLogic.Stats.BonusArmor }, bonus, itemLink, color, position)
 			end
 
 			if tContains(statGroup, StatLogic.Stats.WeaponDPS) and LARGE_NUMBER_SEPERATOR == "." then
@@ -1970,7 +1970,11 @@ do
 			end
 		end
 
-		table.insert(statGroups, { statGroup = statGroup, value = value })
+		table.insert(statGroups, {
+			statGroup = statGroup,
+			value = value,
+			position = position
+		})
 	end
 
 	---@param statGroupValues StatGroupValues
@@ -2059,12 +2063,12 @@ do
 			end
 
 			-- Replace numbers with %s
-			local values = {}
-			local statText, count = text:gsub(number_pattern, function(match)
+			local valuePositions = {}
+			local statText, count = text:gsub(numberPattern, function(match, position)
 				match = match:gsub(large_sep, ""):gsub(dec_sep, ".")
 				local value = tonumber(match)
 				if value then
-					values[#values + 1] = value
+					valuePositions[#valuePositions + 1] = { value, position }
 					return "%s"
 				end
 			end)
@@ -2076,9 +2080,10 @@ do
 				if statList then
 					found = true
 					log(rawText, "Success", "Substitution")
-					for i, value in ipairs(values) do
+					for i, valuePosition in ipairs(valuePositions) do
 						local statGroup = statList[i]
-						AddStat(statGroups, statGroup, value, itemLink, color)
+						local value, position = unpack(valuePosition)
+						AddStat(statGroups, statGroup, value, itemLink, color, position)
 					end
 					if statList.ignoreSum then
 						statGroups.ignoreSum = true
