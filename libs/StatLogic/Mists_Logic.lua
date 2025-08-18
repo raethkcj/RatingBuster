@@ -2482,7 +2482,7 @@ StatLogic.StatModTable["ALL"] = {
 		-- Buff: Blessing of Niuzao (Oxen Fortitude)
 		{
 			["aura"] = 1244374,
-			["stack"] = 0.04,
+			["stack"] = 0.05,
 			["max_stacks"] = 20,
 		},
 		-- Buff: Blessing of Xuen
