@@ -1,8 +1,9 @@
 --[[
 Name: RatingBuster ruRU locale
-Revision: $Revision: 343 $
 Translated by:
-- Orsana \ StingerSoft \ Swix
+- Orsana
+- StingerSoft
+- Swix
 ]]
 
 local _, addon = ...

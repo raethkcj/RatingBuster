@@ -1,6 +1,5 @@
 --[[
 Name: RatingBuster deDE locale
-Revision: $Revision: 75639 $
 Translated by:
 - Kuja
 ]]

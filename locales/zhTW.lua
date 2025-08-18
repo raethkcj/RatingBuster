@@ -1,6 +1,5 @@
 --[[
 Name: RatingBuster zhTW locale
-Revision: $Revision: 73696 $
 Translated by:
 - Whitetooth@Cenarius (hotdogee@bahamut.twbbs.org)
 - CuteMiyu

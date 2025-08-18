@@ -2,7 +2,6 @@ local addonName, addon = ...
 
 --[[
 Name: RatingBuster
-Revision: $Revision: 78903 $
 Author: Whitetooth, raethkcj
 Description: Converts combat ratings in tooltips into normal percentages.
 ]]
@@ -28,7 +27,6 @@ RatingBuster.version = "@project-version@"
 RatingBuster.version = "(development)"
 --@end-debug@
 local addonNameWithVersion = ("%s %s"):format(addonName, RatingBuster.version)
-RatingBuster.date = ("$Date: 2008-07-22 15:35:19 +0800 (星期二, 22 七月 2008) $"):gsub("^.-(%d%d%d%d%-%d%d%-%d%d).-$", "%1")
 
 -----------
 -- Cache --
