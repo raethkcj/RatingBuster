@@ -12,7 +12,7 @@ addon.tocversion = select(4, GetBuildInfo())
 ---@field numberPatterns table
 ---@field exclusions table
 ---@field separators table
----@field statList { [1]: string, [2]: Stat|false }[]
+---@field statPatterns { [Stat]: string[] }
 ---@field [string] string
 
 ---@class RatingBusterDefaultLocale : RatingBusterLocale
@@ -275,126 +275,55 @@ L["Select the primary profile for use with the swap profile keybind. If spec pro
 L["Secondary Profile"] = true
 L["Select the secondary profile for use with the swap profile keybind. If spec profiles are enabled, this will instead use the Secondary Talents profile."] = true
 
------------------------
--- Matching Patterns --
------------------------
--- Items to check --
---------------------
--- [Potent Ornate Topaz]
--- +6 Spell Damage, +5 Spell Crit Rating
---------------------
--- ZG enchant
--- +10 Defense Rating/+10 Stamina/+15 Block Value
---------------------
--- [Glinting Flam Spessarite]
--- +3 Hit Rating and +3 Agility
---------------------
--- ItemID: 22589
--- [Atiesh, Greatstaff of the Guardian] warlock version
--- Equip: Increases the spell critical strike rating of all party members within 30 yards by 28.
---------------------
--- [Brilliant Wizard Oil]
--- Use: While applied to target weapon it increases spell damage by up to 36 and increases spell critical strike rating by 14 . Lasts for 30 minutes.
-----------------------------------------------------------------------------------------------------
--- I redesigned the tooltip scanner using a more locale friendly, 2 pass matching matching algorithm.
---
--- The first pass searches for the rating number, the patterns are read from ["numberPatterns"] here,
--- " by (%d+)" will match strings like: "Increases defense rating by 16."
--- "%+(%d+)" will match strings like: "+10 Defense Rating"
--- You can add additional patterns if needed, its not limited to 2 patterns.
--- The separators are a table of strings used to break up a line into multiple lines what will be parsed seperately.
--- For example "+3 Hit Rating, +5 Spell Crit Rating" will be split into "+3 Hit Rating" and " +5 Spell Crit Rating"
---
--- The second pass searches for the rating name, the names are read from ["statList"] here,
--- It will look through the table in order, so you can put common strings at the begining to speed up the search,
--- and longer strings should be listed first, like "spell critical strike" should be listed before "critical strike",
--- this way "spell critical strike" does get matched by "critical strike".
--- Strings need to be in lower case letters, because string.lower is called on lookup
---
--- IMPORTANT: there may not exist a one-to-one correspondence, meaning you can't just translate this file,
--- but will need to go in game and find out what needs to be put in here.
--- For example, in english I found 3 different strings that maps to StatLogic.Stats.MeleeCritRating: "critical strike", "critical hit" and "crit".
--- You will need to find out every string that represents StatLogic.Stats.MeleeCritRating, and so on.
--- In other languages there may be 5 different strings that should all map to StatLogic.Stats.MeleeCritRating.
--- so please check in game that you have all strings, and not translate directly off this table.
---
--- Tip1: When doing localizations, I recommend you set debugging to true in RatingBuster.lua
--- Find RatingBuster:SetDebugging(false) and change it to RatingBuster:SetDebugging(true)
--- or you can type /rb debug to enable it in game
---
--- Tip2: The strings are passed into string.find, so you should escape the magic characters ^$()%.[]*+-? with a %
-addon.numberPattern = "([%+%-]?[%d" .. LARGE_NUMBER_SEPERATOR .. "]+)%f[^%w%%+]"
-L["numberPatterns"] = {
-	" by " .. addon.numberPattern,
-	addon.numberPattern,
-}
+-- These patterns are used to reposition stat breakdowns.
+-- They are not mandatory; if not present for a given stat,
+-- the breakdown will simply appear after the number.
+-- They will only ever position the breakdown further after the number; not before it.
+-- E.g. default positioning:
+--   "Strength +5 (10 AP)"
+--   "+5 (10 AP) Strength"
+-- If "strength" is added in statPatterns:
+--   "Strength +5 (10 AP)"
+--   "+5 Strength (10 AP)"
+-- The strings are lowerecased and passed into string.find,
+-- so you should escape the magic characters ^$()%.[]*+-? with a %
+-- Use /rb debug to help with debugging stat patterns
+L["statPatterns"] = {
+	[StatLogic.Stats.Strength] = { SPELL_STAT1_NAME:lower() },
+	[StatLogic.Stats.Agility] = { SPELL_STAT2_NAME:lower() },
+	[StatLogic.Stats.Stamina] = { SPELL_STAT3_NAME:lower() },
+	[StatLogic.Stats.Intellect] = { SPELL_STAT4_NAME:lower() },
+	[StatLogic.Stats.Spirit] = { SPELL_STAT5_NAME:lower() },
+	[StatLogic.Stats.DefenseRating] = { "defense rating" },
+	[StatLogic.Stats.Defense] = { DEFENSE:lower() },
+	[StatLogic.Stats.DodgeRating] = { "dodge rating", "dodge" },
+	[StatLogic.Stats.BlockRating] = { "block rating", "block" },
+	[StatLogic.Stats.ParryRating] = { "parry rating", "parry" },
 
--- Exclusions are used to ignore instances of separators that should not get separated
-L["exclusions"] = {
-	["head, chest, shoulders, legs,"] = "head chest shoulders legs", -- Borean Armor Kit
-	["chest, legs,"] = "chest legs", -- Vindicator's Armor Kit
-}
+	[StatLogic.Stats.SpellPower] = { "spell power" },
+	[StatLogic.Stats.SpellCritRating] = { "spell critical strike rating", "spell critical hit rating", "spell critical rating", "spell crit rating", "spell critical" },
+	[StatLogic.Stats.GenericAttackPower] = { "attack power" },
+	[StatLogic.Stats.RangedCritRating] = { "ranged critical strike", "ranged critical hit rating", "ranged critical rating", "ranged crit rating" },
+	[StatLogic.Stats.CritRating] = { "critical strike", "critical hit rating", "critical rating", "crit rating" },
 
-L["separators"] = {
-	"/", " and ", ",%f[^%d]", "%. ", " for ", "&", ":", "\n"
-}
+	[StatLogic.Stats.SpellHitRating] = { "spell hit rating" },
+	[StatLogic.Stats.RangedHitRating] = { "ranged hit rating" },
+	[StatLogic.Stats.HitRating] = { "hit" },
 
-L["statList"] = {
-	{"lowers intellect of target", false}, -- Brain Hacker
-	{"reduces an enemy's armor", false}, -- Annihilator
+	[StatLogic.Stats.ResilienceRating] = { "resilience" },
+	[StatLogic.Stats.PvpPowerRating] = { ITEM_MOD_PVP_POWER_SHORT:lower() },
 
-	{SPELL_STAT1_NAME:lower(), StatLogic.Stats.Strength},
-	{SPELL_STAT2_NAME:lower(), StatLogic.Stats.Agility},
-	{SPELL_STAT3_NAME:lower(), StatLogic.Stats.Stamina},
-	{SPELL_STAT4_NAME:lower(), StatLogic.Stats.Intellect},
-	{SPELL_STAT5_NAME:lower(), StatLogic.Stats.Spirit},
-	{"defense rating", StatLogic.Stats.DefenseRating},
-	{DEFENSE:lower(), StatLogic.Stats.Defense},
-	{"dodge rating", StatLogic.Stats.DodgeRating},
-	{"dodge", StatLogic.Stats.DodgeRating},
-	{"block rating", StatLogic.Stats.BlockRating},
-	{"block", StatLogic.Stats.BlockRating},
-	{"parry rating", StatLogic.Stats.ParryRating},
-	{"parry", StatLogic.Stats.ParryRating},
+	[StatLogic.Stats.SpellHasteRating] = { "spell haste rating" },
+	[StatLogic.Stats.RangedHasteRating] = { "ranged haste rating" },
+	[StatLogic.Stats.HasteRating] = { "haste" },
 
-	{"spell power", StatLogic.Stats.SpellPower},
-	{"spell critical strikes", false}, -- Cyclone Regalia, Tirisfal Regalia
-	{"spell critical strike rating", StatLogic.Stats.SpellCritRating},
-	{"spell critical hit rating", StatLogic.Stats.SpellCritRating},
-	{"spell critical rating", StatLogic.Stats.SpellCritRating},
-	{"spell crit rating", StatLogic.Stats.SpellCritRating},
-	{"spell critical", StatLogic.Stats.SpellCritRating},
-	{"attack power", StatLogic.Stats.GenericAttackPower},
-	{"ranged critical strike", StatLogic.Stats.RangedCritRating},
-	{"ranged critical hit rating", StatLogic.Stats.RangedCritRating},
-	{"ranged critical rating", StatLogic.Stats.RangedCritRating},
-	{"ranged crit rating", StatLogic.Stats.RangedCritRating},
-	{"critical strike", StatLogic.Stats.CritRating},
-	{"critical hit rating", StatLogic.Stats.CritRating},
-	{"critical rating", StatLogic.Stats.CritRating},
-	{"crit rating", StatLogic.Stats.CritRating},
+	[StatLogic.Stats.ExpertiseRating] = { "expertise" },
 
-	{"spell hit rating", StatLogic.Stats.SpellHitRating},
-	{"ranged hit rating", StatLogic.Stats.RangedHitRating},
-	{"hit", StatLogic.Stats.HitRating},
+	[StatLogic.Stats.AllStats] = { SPELL_STATALL:lower() },
 
-	{"resilience", StatLogic.Stats.ResilienceRating},
-	{ITEM_MOD_PVP_POWER_SHORT:lower(), StatLogic.Stats.PvpPowerRating},
-
-	{"spell haste rating", StatLogic.Stats.SpellHasteRating},
-	{"ranged haste rating", StatLogic.Stats.RangedHasteRating},
-	{"haste", StatLogic.Stats.HasteRating},
-
-	{"expertise", StatLogic.Stats.ExpertiseRating},
-
-	{SPELL_STATALL:lower(), StatLogic.Stats.AllStats},
-	{"health", false}, -- Scroll of Enchant Chest - Health (prevents matching Armor)
-
-	{"armor penetration", StatLogic.Stats.ArmorPenetrationRating},
-	{"elemental mastery", false}, -- Frost Witch's Regalia
-	{"mastery rating", StatLogic.Stats.MasteryRating},
-	{"mastery", StatLogic.Stats.MasteryRating},
-	{ARMOR:lower(), StatLogic.Stats.Armor},
+	[StatLogic.Stats.ArmorPenetrationRating] = { "armor penetration" },
+	[StatLogic.Stats.MasteryRating] = { "mastery rating", "mastery" },
+	[StatLogic.Stats.Armor] = { ARMOR:lower() },
 }
 -------------------------
 -- Added info patterns --

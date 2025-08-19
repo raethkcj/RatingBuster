@@ -2310,10 +2310,29 @@ function RatingBuster.ProcessTooltip(tooltip)
 end
 
 ---@param text string
+---@param stat Stat
+---@param startPosition integer
+---@param endPosition integer
+---@return integer
+local function getBreakdownPosition(text, stat, startPosition, endPosition)
+	local patterns = L["statPatterns"][stat]
+	if patterns then
+		local lowerText = text:utf8lower()
+		for _, pattern in ipairs(patterns) do
+			local _, newPosition = lowerText:find(pattern, startPosition)
+			if newPosition and newPosition < endPosition then
+				return newPosition
+			end
+		end
+	end
+	return startPosition
+end
+
+---@param text string
 ---@param link string
 ---@param color ColorMixin
 ---@param statModContext StatModContext
----@return unknown
+---@return string
 function RatingBuster:ProcessLine(text, link, color, statModContext)
 	local cacheKey = statModContext:CacheKey()
 	local cacheID = text
@@ -2323,12 +2342,10 @@ function RatingBuster:ProcessLine(text, link, color, statModContext)
 	elseif EmptySocketLookup[text] and db.profile[EmptySocketLookup[text]].gemText then
 		local gemText = db.profile[EmptySocketLookup[text]].gemText
 		text = RatingBuster:ProcessLine(gemText, link, color, statModContext)
-		cache[cacheKey][cacheID] = text
-		return text
 	else
 		local addedCharacters = 0
 		local statGroupValues = StatLogic:GetStatGroupValues(text, link, color)
-		for _, statGroupValue in ipairs(statGroupValues) do
+		for i, statGroupValue in ipairs(statGroupValues) do
 			local statGroup = statGroupValue.statGroup
 			if statGroup then
 				for _, stat in ipairs(statGroup) do
@@ -2336,9 +2353,11 @@ function RatingBuster:ProcessLine(text, link, color, statModContext)
 					RatingBuster:ProcessStat(stat, statGroupValue.value, breakdownStats, link, color, statModContext, true, false)
 					local breakdownText = RatingBuster:GetBreakdownText(breakdownStats)
 					if breakdownText ~= "" then
-						-- TODO: Override position when localized stat match occurs later in string
+						local nextStatGroupValue = statGroupValues[i + 1]
+						local nextPosition = nextStatGroupValue and nextStatGroupValue.position or #text
+						local position = getBreakdownPosition(text, stat, statGroupValue.position + addedCharacters, nextPosition)
 						-- TODO: Handle WholeText matches without positions
-						text = RatingBuster:InsertBreakdownText(text, breakdownText, statGroupValue.position + addedCharacters)
+						text = RatingBuster:InsertBreakdownText(text, breakdownText, position)
 						addedCharacters = addedCharacters + #breakdownText
 					end
 				end

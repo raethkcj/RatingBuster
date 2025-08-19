@@ -269,120 +269,58 @@ L["Select the primary profile for use with the swap profile keybind. If spec pro
 L["Secondary Profile"] = "Secondary Profile"
 L["Select the secondary profile for use with the swap profile keybind. If spec profiles are enabled, this will instead use the Secondary Talents profile."] = "Select the secondary profile for use with the swap profile keybind. If spec profiles are enabled, this will instead use the Secondary Talents profile."
 
------------------------
--- Matching Patterns --
------------------------
--- Items to check --
---------------------
--- [Potent Ornate Topaz]
--- +6 Spell Damage, +5 Spell Crit Rating
---------------------
--- ZG enchant
--- +10 Defense Rating/+10 Stamina/+15 Block Value
---------------------
--- [Glinting Flam Spessarite]
--- +3 Hit Rating and +3 Agility
---------------------
--- ItemID: 22589
--- [Atiesh, Greatstaff of the Guardian] warlock version
--- Equip: Increases the spell critical strike rating of all party members within 30 yards by 28.
---------------------
--- [Brilliant Wizard Oil]
--- Use: While applied to target weapon it increases spell damage by up to 36 and increases spell critical strike rating by 14 . Lasts for 30 minutes.
-----------------------------------------------------------------------------------------------------
--- I redesigned the tooltip scanner using a more locale friendly, 2 pass matching matching algorithm.
---
--- The first pass searches for the rating number, the patterns are read from ["numberPatterns"] here,
--- " by (%d+)" will match strings like: "Increases defense rating by 16."
--- "%+(%d+)" will match strings like: "+10 Defense Rating"
--- You can add additional patterns if needed, its not limited to 2 patterns.
--- The separators are a table of strings used to break up a line into multiple lines what will be parsed seperately.
--- For example "+3 Hit Rating, +5 Spell Crit Rating" will be split into "+3 Hit Rating" and " +5 Spell Crit Rating"
---
--- The second pass searches for the rating name, the names are read from ["statList"] here,
--- It will look through the table in order, so you can put common strings at the begining to speed up the search,
--- and longer strings should be listed first, like "spell critical strike" should be listed before "critical strike",
--- this way "spell critical strike" does get matched by "critical strike".
--- Strings need to be in lower case letters, because string.lower is called on lookup
---
--- IMPORTANT: there may not exist a one-to-one correspondence, meaning you can't just translate this file,
--- but will need to go in game and find out what needs to be put in here.
--- For example, in english I found 3 different strings that maps to StatLogic.Stats.MeleeCritRating: "critical strike", "critical hit" and "crit".
--- You will need to find out every string that represents StatLogic.Stats.MeleeCritRating, and so on.
--- In other languages there may be 5 different strings that should all map to StatLogic.Stats.MeleeCritRating.
--- so please check in game that you have all strings, and not translate directly off this table.
---
--- Tip1: When doing localizations, I recommend you set debugging to true in RatingBuster.lua
--- Find RatingBuster:SetDebugging(false) and change it to RatingBuster:SetDebugging(true)
--- or you can type /rb debug to enable it in game
---
--- Tip2: The strings are passed into string.find, so you should escape the magic characters ^$()%.[]*+-? with a %
-L["numberPatterns"] = {
-	" en " .. addon.numberPattern .. " ?p?%.?",
-	addon.numberPattern .. " ?p?%.?",
-}
--- Exclusions are used to ignore instances of separators that should not get separated
-L["exclusions"] = {
-}
+-- These patterns are used to reposition stat breakdowns.
+-- They are not mandatory; if not present for a given stat,
+-- the breakdown will simply appear after the number.
+-- They will only ever position the breakdown further after the number; not before it.
+-- E.g. default positioning:
+--   "Strength +5 (10 AP)"
+--   "+5 (10 AP) Strength"
+-- If "strength" is added in statPatterns:
+--   "Strength +5 (10 AP)"
+--   "+5 Strength (10 AP)"
+-- The strings are lowerecased and passed into string.find,
+-- so you should escape the magic characters ^$()%.[]*+-? with a %
+-- Use /rb debug to help with debugging stat patterns
+L["statPatterns"] = {
+	[StatLogic.Stats.Strength] = { SPELL_STAT1_NAME:lower() },
+	[StatLogic.Stats.Agility] = { SPELL_STAT2_NAME:lower() },
+	[StatLogic.Stats.Stamina] = { SPELL_STAT3_NAME:lower() },
+	[StatLogic.Stats.Intellect] = { SPELL_STAT4_NAME:lower() },
+	[StatLogic.Stats.Spirit] = { SPELL_STAT5_NAME:lower() },
+	[StatLogic.Stats.DefenseRating] = { "índice de defensa" },
+	[StatLogic.Stats.Defense] = { DEFENSE:lower() },
+	[StatLogic.Stats.DodgeRating] = { "índice de esquivar", "esquivar" },
+	[StatLogic.Stats.BlockRating] = { "índice de bloqueo", "bloquear" },
+	[StatLogic.Stats.ParryRating] = { "índice de parada", "parar" },
 
-L["separators"] = {
-	"/", " y ", ",%f[^%d]", "%f[p%.]%. ", " durante ", "&", "\n"
-}
+	[StatLogic.Stats.SpellPower] = { "poder con hechizos" },
+	[StatLogic.Stats.SpellCritRating] = { "índice de golpe crítico con hechizos" },
+	[StatLogic.Stats.RangedCritRating] = { "índice de golpe crítico a distancia" },
+	[StatLogic.Stats.MeleeCritRating] = { "índice de golpe crítico cuerpo a cuerpo" },
+	[StatLogic.Stats.CritRating] = { "índice de golpe crítico", "golpe crítico" },
 
---[[
-SPELL_STAT1_NAME = "Strength"
-SPELL_STAT2_NAME = "Agility"
-SPELL_STAT3_NAME = "Stamina"
-SPELL_STAT4_NAME = "Intellect"
-SPELL_STAT5_NAME = "Spirit"
---]]
-L["statList"] = {
-	{SPELL_STAT1_NAME:lower(), StatLogic.Stats.Strength},
-	{SPELL_STAT2_NAME:lower(), StatLogic.Stats.Agility},
-	{SPELL_STAT3_NAME:lower(), StatLogic.Stats.Stamina},
-	{SPELL_STAT4_NAME:lower(), StatLogic.Stats.Intellect},
-	{SPELL_STAT5_NAME:lower(), StatLogic.Stats.Spirit},
-	{"índice de defensa", StatLogic.Stats.DefenseRating},
-	{DEFENSE:lower(), StatLogic.Stats.Defense},
-	{"índice de esquivar", StatLogic.Stats.DodgeRating},
-	{"esquivar", StatLogic.Stats.DodgeRating},
-	{"índice de bloqueo", StatLogic.Stats.BlockRating}, -- block enchant: "+10 Shield Block Rating"
-	{"bloquear", StatLogic.Stats.BlockRating},
-	{"índice de parada", StatLogic.Stats.ParryRating},
-	{"parar", StatLogic.Stats.ParryRating},
+	[StatLogic.Stats.SpellHitRating] = { "índice de golpe con hechizo" },
+	[StatLogic.Stats.RangedHitRating] = { "índice de golpe a distancia" },
+	[StatLogic.Stats.MeleeHitRating] = { "índice de golpe cuerpo a cuerpo" },
+	[StatLogic.Stats.HitRating] = { "índice de golpe", "golpe" },
 
-	{"poder con hechizos", StatLogic.Stats.SpellPower},
-	{"índice de golpe crítico con hechizos", StatLogic.Stats.SpellCritRating},
-	{"índice de golpe crítico a distancia", StatLogic.Stats.RangedCritRating},
-	{"índice de golpe crítico cuerpo a cuerpo", StatLogic.Stats.MeleeCritRating},
-	{"índice de golpe crítico", StatLogic.Stats.CritRating},
-	{"golpe crítico", StatLogic.Stats.CritRating},
+	[StatLogic.Stats.ResilienceRating] = { "índice de temple", "temple jcj" },
+	[StatLogic.Stats.PvpPowerRating] = { ITEM_MOD_PVP_POWER_SHORT:lower() },
 
-	{"índice de golpe con hechizo", StatLogic.Stats.SpellHitRating},
-	{"índice de golpe a distancia", StatLogic.Stats.RangedHitRating},
-	{"índice de golpe cuerpo a cuerpo", StatLogic.Stats.MeleeHitRating},
-	{"índice de golpe", StatLogic.Stats.HitRating},
-	{"golpe", StatLogic.Stats.HitRating},
+	[StatLogic.Stats.SpellHasteRating] = { "índice de celeridad con hechizos" },
+	[StatLogic.Stats.RangedHasteRating] = { "índice de celeridad a distancia" },
+	[StatLogic.Stats.MeleeHasteRating] = { "índice de celeridad con cuerpo a cuerpo" },
+	[StatLogic.Stats.HasteRating] = { "celeridad", "Aumenta el índice de velocidad de lanzamiento de ataques y de ataque de los miembros del grupo cercanos" },
 
-	{"índice de temple", StatLogic.Stats.ResilienceRating},
-	{"temple jcj", StatLogic.Stats.ResilienceRating},
-	{ITEM_MOD_PVP_POWER_SHORT:lower(), StatLogic.Stats.PvpPowerRating},
+	[StatLogic.Stats.ExpertiseRating] = { "índice de pericia", "pericia" },
 
-	{"índice de celeridad con hechizos", StatLogic.Stats.SpellHasteRating},
-	{"índice de celeridad a distancia", StatLogic.Stats.RangedHasteRating},
-	{"índice de celeridad con cuerpo a cuerpo", StatLogic.Stats.MeleeHasteRating},
-	{"celeridad", StatLogic.Stats.HasteRating},
-	{"Aumenta el índice de velocidad de lanzamiento de ataques y de ataque de los miembros del grupo cercanos", StatLogic.Stats.HasteRating}, -- [Drums of Battle]
+	[StatLogic.Stats.AllStats] = { SPELL_STATALL:lower() },
 
-	{"índice de pericia", StatLogic.Stats.ExpertiseRating},
-	{"pericia", StatLogic.Stats.ExpertiseRating},
-
-	{SPELL_STATALL:lower(), StatLogic.Stats.AllStats},
-
-	{"índice de penetración de armadura", StatLogic.Stats.ArmorPenetrationRating},
-	{"maestría", StatLogic.Stats.MasteryRating},
-	{ARMOR:lower(), StatLogic.Stats.Armor},
-	{"poder de ataque", StatLogic.Stats.GenericAttackPower},
+	[StatLogic.Stats.ArmorPenetrationRating] = { "índice de penetración de armadura" },
+	[StatLogic.Stats.MasteryRating] = { "maestría" },
+	[StatLogic.Stats.Armor] = { ARMOR:lower() },
+	[StatLogic.Stats.GenericAttackPower] = { "poder de ataque" },
 }
 -------------------------
 -- Added info patterns --
