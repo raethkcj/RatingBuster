@@ -1774,12 +1774,13 @@ do
 	end
 
 	local EmptySocketLookup = {
-		[EMPTY_SOCKET_RED] = 0, -- EMPTY_SOCKET_RED = "Red Socket";
-		[EMPTY_SOCKET_YELLOW] = 0, -- EMPTY_SOCKET_YELLOW = "Yellow Socket";
-		[EMPTY_SOCKET_BLUE] = 0, -- EMPTY_SOCKET_BLUE = "Blue Socket";
-		[EMPTY_SOCKET_META] = 0, -- EMPTY_SOCKET_META = "Meta Socket";
-		[EMPTY_SOCKET_PRISMATIC] = 0, -- EMPTY_SOCKET_PRISMATIC = "Prismatic Socket";
+		[EMPTY_SOCKET_RED] = 0,
+		[EMPTY_SOCKET_YELLOW] = 0,
+		[EMPTY_SOCKET_BLUE] = 0,
+		[EMPTY_SOCKET_META] = 0,
+		[EMPTY_SOCKET_PRISMATIC] = 0,
 	}
+
 	-- Returns a modified link with all empty sockets replaced with the specified gems,
 	-- sockets already gemmed will remain.
 	---@param link string itemLink
@@ -1815,25 +1816,29 @@ do
 		EmptySocketLookup[EMPTY_SOCKET_META] = meta
 		EmptySocketLookup[EMPTY_SOCKET_PRISMATIC] = prismatic
 
-		-- Build socket list
-		local arguments = {"%1"}
-		-- Start parsing
+		-- Since this is passed to gsub, the first entry is
+		-- the capture group containing the item and enchant IDs
+		local gemIDs = { "%1" }
+
 		tip:ClearLines()
 		tip:SetHyperlink(link)
 		for i = 2, tip:NumLines() do
 			local text = tip.sides.left[i]:GetText()
-			local socketFound = EmptySocketLookup[text]
-			arguments[#arguments+1] = socketFound
+			local gemID = EmptySocketLookup[text]
+			gemIDs[#gemIDs+1] = gemID
 		end
-		-- If there are no sockets
-		if #arguments == 1 then
+
+		if #gemIDs == 1 then
+			-- No sockets found
 			return link
 		else
-			for i = #arguments + 1, 5 do
-				arguments[i] = ""
+			-- Pad up to 4 empty gems so we create a valid item link
+			for i = #gemIDs + 1, 5 do
+				gemIDs[i] = ""
 			end
-			local repl = table.concat(arguments, ":")
-			-- This will not replace anything if *any* of the four gem sockets is filled
+			local repl = table.concat(gemIDs, ":")
+			-- Since we only match 0 or empty, this will not replace anything
+			-- if the item link contains *any* real gems
 			return (link:gsub("(item:%d+:%d*):0?:0?:0?:0?", repl))
 		end
 	end
@@ -1945,7 +1950,7 @@ do
 	local dec_sep = DECIMAL_SEPERATOR:gsub("[-.]", "%%%1")
 	local numberPattern = "[+-]?[%d." .. large_sep .. dec_sep .. "]+%f[%D]()"
 
-	---@alias StatGroup (Stat | string)[] | false
+	---@alias StatGroup Stat[] | false
 
 	---@class StatGroupValues
 	---@field ignoreSum boolean

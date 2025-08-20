@@ -15,20 +15,19 @@ local lowerMT = {
 -- Whole Text Lookup --
 -----------------------
 -- Strings without numbers; mainly used for enchants or easy exclusions
----@alias WholeTextEntry { [Stat|string]: number } | false
+---@alias WholeTextEntry { [Stat]: number } | false
 ---@type { [string]: WholeTextEntry }
 addon.WholeTextLookup = setmetatable({}, lowerMT)
 local W = addon.WholeTextLookup
 
-W[EMPTY_SOCKET_RED] = {["EMPTY_SOCKET_RED"] = 1}
-W[EMPTY_SOCKET_YELLOW] = {["EMPTY_SOCKET_YELLOW"] = 1}
-W[EMPTY_SOCKET_BLUE] = {["EMPTY_SOCKET_BLUE"] = 1}
-W[EMPTY_SOCKET_META] = {["EMPTY_SOCKET_META"] = 1}
-W[EMPTY_SOCKET_PRISMATIC] = {["EMPTY_SOCKET_PRISMATIC"] = 1}
-
 local exclusions = {
 	"",
 	" \n",
+	EMPTY_SOCKET_RED,
+	EMPTY_SOCKET_YELLOW,
+	EMPTY_SOCKET_BLUE,
+	EMPTY_SOCKET_META,
+	EMPTY_SOCKET_PRISMATIC,
 	ITEM_BIND_ON_EQUIP,
 	ITEM_BIND_ON_PICKUP,
 	ITEM_BIND_ON_USE,

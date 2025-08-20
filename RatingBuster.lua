@@ -95,20 +95,11 @@ end
 
 local function setGem(info, value)
 	if value == "" then
-		db.profile[info[#info]].itemID = nil
-		db.profile[info[#info]].gemID = nil
-		db.profile[info[#info]].gemName = nil
-		db.profile[info[#info]].gemLink = nil
+		wipe(db.profile[info[#info]].itemID)
 		return
 	end
 	local gemID, gemText = StatLogic:GetGemID(value)
 	if gemID and gemText then
-		local name, link = C_Item.GetItemInfo(value)
-		local itemID = link:match("item:(%d+)")
-		db.profile[info[#info]].itemID = itemID
-		db.profile[info[#info]].gemID = gemID
-		db.profile[info[#info]].gemName = name
-		db.profile[info[#info]].gemLink = link
 		-- Trim spaces
 		gemText = gemText:trim()
 		-- Strip color codes
@@ -118,7 +109,15 @@ local function setGem(info, value)
 		if gemText:sub(1, 10):find("|c%x%x%x%x%x%x%x%x") then
 			gemText = gemText:sub(11)
 		end
-		db.profile[info[#info]].gemText = gemText
+		local name, link = C_Item.GetItemInfo(value)
+		local itemID = link:match("item:(%d+)")
+		db.profile[info[#info]] = {
+			gemText = gemText,
+			itemID = itemID,
+			gemID = gemID,
+			gemName = name,
+			gemLink = link,
+		}
 		RatingBuster:ClearCache()
 		local socket = "EMPTY_SOCKET_" .. info[#info]:sub(7):upper()
 		if not debugstack():find("AceConsole") then
@@ -2183,24 +2182,13 @@ function RatingBuster:UNIT_AURA(units)
 	end
 end
 
---------------------------
--- Process Tooltip Core --
---------------------------
---[[
-"+15 Agility"
--> "+15 Agility (+0.46% Crit)"
-"+15 Crit Rating"
--> "+15 Crit Rating (+1.20%)"
-"Equip: Increases your hit rating by 10."
--> "Equip: Increases your hit rating by 10 (+1.20%)."
---]]
 -- Empty Sockets
 local EmptySocketLookup = {
-	[EMPTY_SOCKET_RED] = "sumGemRed", -- EMPTY_SOCKET_RED = "Red Socket";
-	[EMPTY_SOCKET_YELLOW] = "sumGemYellow", -- EMPTY_SOCKET_YELLOW = "Yellow Socket";
-	[EMPTY_SOCKET_BLUE] = "sumGemBlue", -- EMPTY_SOCKET_BLUE = "Blue Socket";
-	[EMPTY_SOCKET_META] = "sumGemMeta", -- EMPTY_SOCKET_META = "Meta Socket";
-	[EMPTY_SOCKET_PRISMATIC] = "sumGemPrismatic", -- EMPTY_SOCKET_PRISMATIC = "Prismatic Socket";
+	[EMPTY_SOCKET_RED] = "sumGemRed",
+	[EMPTY_SOCKET_YELLOW] = "sumGemYellow",
+	[EMPTY_SOCKET_BLUE] = "sumGemBlue",
+	[EMPTY_SOCKET_META] = "sumGemMeta",
+	[EMPTY_SOCKET_PRISMATIC] = "sumGemPrismatic",
 }
 
 -- Avoidance Diminishing Returns
@@ -2339,9 +2327,11 @@ function RatingBuster:ProcessLine(text, link, color, statModContext)
 	local cacheText = cache[cacheKey][cacheID]
 	if cacheText then
 		return cacheText
-	elseif EmptySocketLookup[text] and db.profile[EmptySocketLookup[text]].gemText then
+	elseif EmptySocketLookup[text] then
 		local gemText = db.profile[EmptySocketLookup[text]].gemText
-		text = RatingBuster:ProcessLine(gemText, link, color, statModContext)
+		if gemText then
+			text = RatingBuster:ProcessLine(gemText, link, color, statModContext)
+		end
 	else
 		local addedCharacters = 0
 		local statGroupValues = StatLogic:GetStatGroupValues(text, link, color)
