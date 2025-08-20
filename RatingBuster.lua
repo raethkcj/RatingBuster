@@ -54,10 +54,7 @@ local ipairs = ipairs
 local type = type
 local select = select
 local tinsert = tinsert
-local tremove = tremove
 local tsort = table.sort
-local unpack = unpack
-local tonumber = tonumber
 
 local GetParryChance = GetParryChance
 local GetBlockChance = GetBlockChance
@@ -1919,32 +1916,6 @@ do
 		end
 		f:UnregisterEvent("SPELLS_CHANGED")
 	end)
-end
-
------------
--- Tools --
------------
--- copyTable
-local function copyTable(to, from)
-	if to then
-		for k in pairs(to) do
-			to[k] = nil
-		end
-		setmetatable(to, nil)
-	else
-		to = {}
-	end
-	for k,v in pairs(from) do
-		if type(k) == "table" then
-			k = copyTable({}, k)
-		end
-		if type(v) == "table" then
-			v = copyTable({}, v)
-		end
-		to[k] = v
-	end
-	setmetatable(to, getmetatable(from))
-	return to
 end
 
 local function AddProfileSwapOptions(profileOptions, db)
