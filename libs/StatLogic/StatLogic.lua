@@ -71,6 +71,7 @@ local GetShapeshiftForm = GetShapeshiftForm
 local GetShapeshiftFormInfo = GetShapeshiftFormInfo
 local GetActiveTalentGroup = GetActiveTalentGroup or C_SpecializationInfo.GetActiveSpecGroup
 local GetPrimaryTalentTree = GetPrimaryTalentTree or C_SpecializationInfo.GetSpecialization
+local GetSpecializationInfo = GetSpecializationInfo or C_SpecializationInfo.GetSpecializationInfo
 addon.tocversion = select(4, GetBuildInfo())
 
 ---------------
@@ -261,19 +262,9 @@ local function log(output, log_level, prefix)
 	end
 end
 
--- SetTip("item:3185:0:0:0:0:0:1957")
-function SetTip(item)
-	local _, link = C_Item.GetItemInfo(item)
-	ItemRefTooltip:ClearLines()
-	ItemRefTooltip:SetHyperlink(link)
-	ItemRefTooltip:Show()
-end
-
 ----------------
 -- Stat Tools --
 ----------------
-StatLogic.ExtraHasteClasses = {}
-
 StatLogic.GenericStatMap = {
 	[StatLogic.Stats.AllStats] = {
 		StatLogic.Stats.Strength,
@@ -880,10 +871,11 @@ do
 	---@field rank integer?
 
 	--- Returns information about a buff or debuff on the player, including fake auras from AlwaysBuffed settings
-	---@param auraName string
+	---@param auraSpellID integer
 	---@param ignoreAlwaysBuffed boolean? Set to true to ignore the AlwaysBuffed settings
 	---@return AuraInfo auraInfo, boolean usedAlwaysBuffed
-	function StatLogic:GetAuraInfo(auraName, ignoreAlwaysBuffed)
+	function StatLogic:GetAuraInfo(auraSpellID, ignoreAlwaysBuffed)
+		local auraName = GetSpellName(auraSpellID)
 		if not ignoreAlwaysBuffed and self.always_buffed_ns.profile[auraName] then
 			return always_buffed_aura_info[auraName], true
 		else
@@ -1095,7 +1087,7 @@ addon.StatModValidators = {
 	},
 	aura = {
 		validate = function(case, statModName)
-			return not not StatLogic:GetAuraInfo(GetSpellName(case.aura), StatLogic.StatModIgnoresAlwaysBuffed[statModName])
+			return not not StatLogic:GetAuraInfo(case.aura, StatLogic.StatModIgnoresAlwaysBuffed[statModName])
 		end,
 		events = {
 			["UNIT_AURA"] = "player",
@@ -1146,8 +1138,24 @@ addon.StatModValidators = {
 		}
 	},
 	known = {
-		validate = function(case)
-			return not not FindSpellBookSlotBySpellID(case.known)
+		validate = function(case, _, statModContext)
+			if addon.tocversion >= 50000 then
+				local specID = GetSpecializationInfo(statModContext.spec)
+				for i = 1, GetNumSpellTabs() do
+					local offset, numSlots, _, _, _, tabSpecID = select(3, GetSpellTabInfo(i))
+					for slot = offset + 1, offset + numSlots do
+						local spellType, id = GetSpellBookItemInfo(slot, BOOKTYPE_SPELL)
+						if id == case.known and spellType == "SPELL" and (not tabSpecID or tabSpecID == specID) then
+							-- We don't early-return false on a matching spell ID with mismatched spec ID,
+							-- because the spec ID might match in a later tab
+							return true
+						end
+					end
+				end
+				return false
+			else
+				return not not FindSpellBookSlotBySpellID(case.known)
+			end
 		end,
 		events = {
 			["SPELLS_CHANGED"] = true,
@@ -1455,11 +1463,11 @@ do
 				end
 			end
 		elseif case.aura and case.rank then
-			local aura = StatLogic:GetAuraInfo(GetSpellName(case.aura))
+			local aura = StatLogic:GetAuraInfo(case.aura)
 			local rank = aura.rank
 			newValue = case.rank[rank]
 		elseif case.aura and case.stack then
-			local aura, usedAlwaysBuffed = StatLogic:GetAuraInfo(GetSpellName(case.aura))
+			local aura, usedAlwaysBuffed = StatLogic:GetAuraInfo(case.aura)
 			local stacks = usedAlwaysBuffed and case.max_stacks or aura.stacks
 			newValue = case.stack * stacks
 		elseif case.regen then
@@ -1469,7 +1477,7 @@ do
 		elseif case.level then
 			newValue = case.level[level]
 		elseif case.tooltip then
-			local aura = StatLogic:GetAuraInfo(GetSpellName(case.aura))
+			local aura = StatLogic:GetAuraInfo(case.aura)
 			newValue = aura.tooltip
 		end
 
@@ -1638,9 +1646,9 @@ end
 
 local function GetTotalWeaponSkill(unit)
 	if addon.class == "DRUID" and (
-		StatLogic:GetAuraInfo(GetSpellName(768), true)
-		or StatLogic:GetAuraInfo(GetSpellName(5487), true)
-		or StatLogic:GetAuraInfo(GetSpellName(9634), true)
+		StatLogic:GetAuraInfo(768, true)
+		or StatLogic:GetAuraInfo(5487, true)
+		or StatLogic:GetAuraInfo(9634, true)
 	) then
 		return UnitLevel("player") * 5
 	else
@@ -1685,12 +1693,19 @@ local Level34Ratings = {
 function StatLogic:GetEffectFromRating(rating, stat, level)
 	-- check for invalid input
 	if type(rating) ~= "number" or not StatLogic.RatingBase[stat] then return 0 end
+
 	-- defaults to player level if not given
 	level = level or UnitLevel("player")
 	if level < 34 and Level34Ratings[stat] then
 		level = 34
 	end
-	return rating / (StatLogic.RatingBase[stat] * addon.GetRatingScalar(stat, level))
+
+	local scalar = StatLogic.RatingBase[stat] * addon.GetRatingScalar(stat, level)
+	if level > 85 then
+		scalar = math.floor(scalar)
+	end
+
+	return rating / scalar
 end
 
 if not CR_DODGE then CR_DODGE = 3 end;

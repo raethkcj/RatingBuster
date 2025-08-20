@@ -1,6 +1,5 @@
 --[[
 Name: RatingBuster zhCN locale
-Revision: $Revision: 73696 $
 Translated by:
 - iceburn
 ]]

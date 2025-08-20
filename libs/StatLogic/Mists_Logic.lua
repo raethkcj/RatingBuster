@@ -2,6 +2,9 @@ local addonName, addon = ...
 ---@class StatLogic
 local StatLogic = LibStub:GetLibrary(addonName)
 
+-- Extracted from the client at GameTables/OCTClassCombatRatingScalar.txt
+local extraHaste = addon.class == "WARRIOR" and 1.5 or 1
+
 -- Level 60 rating base
 StatLogic.RatingBase = {
 	[StatLogic.Stats.DodgeRating] = 20.700001,
@@ -13,9 +16,9 @@ StatLogic.RatingBase = {
 	[StatLogic.Stats.RangedCritRating] = 14,
 	[StatLogic.Stats.SpellCritRating] = 14,
 	[StatLogic.Stats.ResilienceRating] = 9.29154,
-	[StatLogic.Stats.MeleeHasteRating] = 10,
-	[StatLogic.Stats.RangedHasteRating] = 10,
-	[StatLogic.Stats.SpellHasteRating] = 10,
+	[StatLogic.Stats.MeleeHasteRating] = 10 / extraHaste,
+	[StatLogic.Stats.RangedHasteRating] = 10 / extraHaste,
+	[StatLogic.Stats.SpellHasteRating] = 10 / extraHaste,
 	[StatLogic.Stats.ExpertiseRating] = 8,
 	[StatLogic.Stats.MasteryRating] = 14,
 	[StatLogic.Stats.PvpPowerRating] = 12.021399,
@@ -874,12 +877,29 @@ if addon.class == "DRUID" then
 				["aura"] = 33891,
 				["group"] = addon.ExclusiveGroup.Feral,
 			},
-			-- Talent: Heart of the Wild (Bear Form)
+			-- Talent: Heart of the Wild (Bear Form) (Balance)
 			{
 				["tab"] = 6,
 				["num"] = 1,
 				["value"] = 0.95,
 				["aura"] = 5487,
+				["spec"] = 1,
+			},
+			-- Talent: Heart of the Wild (Bear Form) (Feral)
+			{
+				["tab"] = 6,
+				["num"] = 1,
+				["value"] = 0.95,
+				["aura"] = 5487,
+				["spec"] = 2,
+			},
+			-- Talent: Heart of the Wild (Bear Form) (Restoration)
+			{
+				["tab"] = 6,
+				["num"] = 1,
+				["value"] = 0.95,
+				["aura"] = 5487,
+				["spec"] = 4,
 			},
 		},
 		["MOD_AGI"] = {
@@ -897,19 +917,53 @@ if addon.class == "DRUID" then
 				["num"] = 1,
 				["value"] = 0.06,
 			},
-			-- Talent: Heart of the Wild (Bear Form)
+			-- Talent: Heart of the Wild (Bear Form) (Balance)
 			{
 				["tab"] = 6,
 				["num"] = 1,
 				["value"] = 0.5,
 				["aura"] = 5487,
+				["spec"] = 1,
 			},
-			-- Talent: Heart of the Wild (Cat Form)
+			-- Talent: Heart of the Wild (Bear Form) (Feral)
+			{
+				["tab"] = 6,
+				["num"] = 1,
+				["value"] = 0.5,
+				["aura"] = 5487,
+				["spec"] = 2,
+			},
+			-- Talent: Heart of the Wild (Bear Form) (Restoration)
+			{
+				["tab"] = 6,
+				["num"] = 1,
+				["value"] = 0.5,
+				["aura"] = 5487,
+				["spec"] = 4,
+			},
+			-- Talent: Heart of the Wild (Cat Form) (Balance)
 			{
 				["tab"] = 6,
 				["num"] = 1,
 				["value"] = 1.1,
 				["aura"] = 768,
+				["spec"] = 1,
+			},
+			-- Talent: Heart of the Wild (Cat Form) (Guardian)
+			{
+				["tab"] = 6,
+				["num"] = 1,
+				["value"] = 1.1,
+				["aura"] = 768,
+				["spec"] = 3,
+			},
+			-- Talent: Heart of the Wild (Cat Form) (Restoration)
+			{
+				["tab"] = 6,
+				["num"] = 1,
+				["value"] = 1.1,
+				["aura"] = 768,
+				["spec"] = 4,
 			},
 		},
 		["MOD_STA"] = {
@@ -943,7 +997,7 @@ if addon.class == "DRUID" then
 					[1] = true,
 					[4] = true,
 				},
-				["spellid"] = 86104,
+				["known"] = 86104,
 			},
 			-- Talent: Heart of the Wild
 			{
@@ -1094,6 +1148,7 @@ elseif addon.class == "DEATHKNIGHT" then
 					[2] = true,
 					[3] = true,
 				},
+				["known"] = 86524,
 				["spellid"] = 86113,
 			},
 			-- Passive: Unholy Might
@@ -1119,7 +1174,8 @@ elseif addon.class == "DEATHKNIGHT" then
 				["armorspec"] = {
 					[1] = true,
 				},
-				["known"] = 86537,
+				["known"] = 86524,
+				["spellid"] = 86537,
 			},
 		},
 		["MOD_ARMOR"] = {
@@ -1896,17 +1952,27 @@ elseif addon.class == "SHAMAN" then
 				["armorspec"] = {
 					[2] = true,
 				},
+				["spellid"] = 86099,
 			},
 		},
 		["MOD_INT"] = {
-			-- Mail Specialization
+			-- Mail Specialization (Elemental)
 			{
 				["value"] = 0.05,
 				["known"] = 86529,
 				["armorspec"] = {
 					[1] = true,
+				},
+				["spellid"] = 86108,
+			},
+			-- Mail Specialization (Restoration)
+			{
+				["value"] = 0.05,
+				["known"] = 86529,
+				["armorspec"] = {
 					[3] = true,
 				},
+				["spellid"] = 86100,
 			},
 		},
 	}
@@ -2064,12 +2130,19 @@ elseif addon.class == "WARRIOR" then
 			},
 		},
 		["MOD_STR"] = {
-			-- Plate Specialization (Arms, Fury)
+			-- Plate Specialization (Arms)
 			{
 				["value"] = 0.05,
-				["spell"] = 86101,
+				["known"] = 86101,
 				["armorspec"] = {
 					[1] = true,
+				},
+			},
+			-- Plate Specialization (Fury)
+			{
+				["value"] = 0.05,
+				["known"] = 86110,
+				["armorspec"] = {
 					[2] = true,
 				},
 			},
@@ -2400,6 +2473,24 @@ StatLogic.StatModTable["ALL"] = {
 			["value"] = 0.05,
 			["group"] = addon.ExclusiveGroup.AllStats,
 		},
+		-- Buff: Blessing of Niuzao
+		{
+			["aura"] = 1244203,
+			["value"] = 0.10,
+			["group"] = addon.ExclusiveGroup.Zandalar
+		},
+		-- Buff: Blessing of Niuzao (Oxen Fortitude)
+		{
+			["aura"] = 1244374,
+			["stack"] = 0.05,
+			["max_stacks"] = 20,
+		},
+		-- Buff: Blessing of Xuen
+		{
+			["aura"] = 1243315,
+			["value"] = 0.15,
+			["group"] = addon.ExclusiveGroup.Zandalar
+		},
 	},
 	["MOD_AGI"] = {
 		-- Buff: Mark of the Wild
@@ -2437,6 +2528,24 @@ StatLogic.StatModTable["ALL"] = {
 			["aura"] = 146385,
 			["value"] = 0.05,
 			["group"] = addon.ExclusiveGroup.AllStats,
+		},
+		-- Buff: Blessing of Niuzao
+		{
+			["aura"] = 1244203,
+			["value"] = 0.10,
+			["group"] = addon.ExclusiveGroup.Zandalar
+		},
+		-- Buff: Blessing of Niuzao (Oxen Fortitude)
+		{
+			["aura"] = 1244374,
+			["stack"] = 0.04,
+			["max_stacks"] = 20,
+		},
+		-- Buff: Blessing of Xuen
+		{
+			["aura"] = 1243315,
+			["value"] = 0.15,
+			["group"] = addon.ExclusiveGroup.Zandalar
 		},
 	},
 	["MOD_INT"] = {
@@ -2476,6 +2585,30 @@ StatLogic.StatModTable["ALL"] = {
 			["value"] = 0.05,
 			["group"] = addon.ExclusiveGroup.AllStats,
 		},
+		-- Buff: Blessing of Yu'lon
+		{
+			["aura"] = 1244204,
+			["value"] = 0.15,
+			["group"] = addon.ExclusiveGroup.Zandalar
+		},
+		-- Buff: Blessing of Niuzao
+		{
+			["aura"] = 1244203,
+			["value"] = 0.10,
+			["group"] = addon.ExclusiveGroup.Zandalar
+		},
+		-- Buff: Blessing of Niuzao (Oxen Fortitude)
+		{
+			["aura"] = 1244374,
+			["stack"] = 0.04,
+			["max_stacks"] = 20,
+		},
+		-- Buff: Blessing of Chi-Ji
+		{
+			["aura"] = 1244285,
+			["value"] = 0.10,
+			["group"] = addon.ExclusiveGroup.Zandalar
+		},
 	},
 	["MOD_STA"] = {
 		-- Buff: Power Word: Fortitude
@@ -2495,6 +2628,30 @@ StatLogic.StatModTable["ALL"] = {
 			["aura"] = 469,
 			["value"] = 0.1,
 			["group"] = addon.ExclusiveGroup.Stamina,
+		},
+		-- Buff: Blessing of Yu'lon
+		{
+			["aura"] = 1244204,
+			["value"] = 0.05,
+			["group"] = addon.ExclusiveGroup.Zandalar
+		},
+		-- Buff: Blessing of Niuzao
+		{
+			["aura"] = 1244203,
+			["value"] = 0.20,
+			["group"] = addon.ExclusiveGroup.Zandalar
+		},
+		-- Buff: Blessing of Niuzao (Oxen Fortitude)
+		{
+			["aura"] = 1244374,
+			["stack"] = 0.05,
+			["max_stacks"] = 20,
+		},
+		-- Buff: Blessing of Chi-Ji
+		{
+			["aura"] = 1244285,
+			["value"] = 0.10,
+			["group"] = addon.ExclusiveGroup.Zandalar
 		},
 	},
 	["MOD_AP"] = {
@@ -2646,13 +2803,6 @@ addon.C_b = {
 	["MONK"]        = 0,
 	["WARLOCK"]     = 0,
 	["DRUID"]       = 0,
-}
-
-addon.ModAgiClasses = {
-	["DRUID"] = true,
-	["HUNTER"] = true,
-	["ROGUE"] = true,
-	["SHAMAN"] = true,
 }
 
 do

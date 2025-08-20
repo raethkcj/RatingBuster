@@ -1,8 +1,9 @@
 --[[
-Name: RatingBuster frFR locale (incomplete)
-Revision: $Revision: 73696 $
-Translated by: Tixu@Curse, Silaor, renchap
-
+Name: RatingBuster frFR locale
+Translated by:
+- Tixu@Curse
+- Silaor
+- renchap
 --]]
 
 local _, addon = ...

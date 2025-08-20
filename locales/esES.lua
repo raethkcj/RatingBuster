@@ -1,6 +1,5 @@
 --[[
 Name: RatingBuster esES locale
-Revision: $Revision: 73697 $
 Translated by:
 - carahuevo@Curse
 - Zendor@Mandokir

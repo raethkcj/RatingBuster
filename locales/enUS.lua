@@ -1,8 +1,7 @@
 --[[
 Name: RatingBuster enUS locale
-Revision: $Revision: 73696 $
 Translated by:
-- Whitetooth (hotdogee [at] gmail [dot] com)
+- raethkcj
 ]]
 
 local _, addon = ...

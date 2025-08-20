@@ -2,7 +2,6 @@ local addonName, addon = ...
 
 --[[
 Name: RatingBuster
-Revision: $Revision: 78903 $
 Author: Whitetooth, raethkcj
 Description: Converts combat ratings in tooltips into normal percentages.
 ]]
@@ -28,7 +27,6 @@ RatingBuster.version = "@project-version@"
 RatingBuster.version = "(development)"
 --@end-debug@
 local addonNameWithVersion = ("%s %s"):format(addonName, RatingBuster.version)
-RatingBuster.date = ("$Date: 2008-07-22 15:35:19 +0800 (星期二, 22 七月 2008) $"):gsub("^.-(%d%d%d%d%-%d%d%-%d%d).-$", "%1")
 
 -----------
 -- Cache --
@@ -2748,7 +2746,7 @@ function RatingBuster:ProcessStat(stat, value, breakdownStats, link, color, stat
 		self:ProcessStat(StatLogic.Stats.Dodge, dodge, breakdownStats, link, color, statModContext, false, db.profile.showDodgeFromDefense)
 
 		local miss = value * statModContext("ADD_MISS_MOD_DEFENSE")
-		self:ProcessStat(StatLogic.Stats.Miss, dodge, breakdownStats, link, color, statModContext, false, db.profile.showMissFromDefense)
+		self:ProcessStat(StatLogic.Stats.Miss, miss, breakdownStats, link, color, statModContext, false, db.profile.showMissFromDefense)
 
 		local parry = value * statModContext("ADD_PARRY_MOD_DEFENSE")
 		self:ProcessStat(StatLogic.Stats.Parry, parry, breakdownStats, link, color, statModContext, false, db.profile.showParryFromDefense)

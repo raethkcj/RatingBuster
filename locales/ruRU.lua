@@ -1,8 +1,9 @@
 --[[
 Name: RatingBuster ruRU locale
-Revision: $Revision: 343 $
 Translated by:
-- Orsana \ StingerSoft \ Swix
+- Orsana
+- StingerSoft
+- Swix
 ]]
 
 local _, addon = ...
@@ -344,7 +345,7 @@ L["statPatterns"] = {
 
 	[StatLogic.Stats.AllStats] = { SPELL_STATALL:lower() },
 
-	[StatLogic.Stats.MasteryRating] = { "искусност" },
+	[StatLogic.Stats.MasteryRating] = { "искусности", "искусность", "искусност" },
 }
 -------------------------
 -- Added info patterns --
@@ -441,10 +442,11 @@ L[StatLogic.Stats.RangedHasteRating] = "Рейтинг скорости даль
 
 -- Spell Stats
 L[StatLogic.Stats.SpellPower] = "Сила заклинаний"
-L[StatLogic.Stats.SpellDamage] = "Сила заклинаний" -- Changed from Damage to Power
-S[StatLogic.Stats.SpellDamage] = "к силе заклинаний"
-L[StatLogic.Stats.HealingPower] = "Исцеление"
-S[StatLogic.Stats.HealingPower] = "к силе заклинаний"
+S[StatLogic.Stats.SpellPower] = "к силе заклинаний"
+L[StatLogic.Stats.SpellDamage] = "Урон от заклинаний"
+S[StatLogic.Stats.SpellDamage] = "к урону от заклинаний"
+L[StatLogic.Stats.HealingPower] = "Лечение"
+S[StatLogic.Stats.HealingPower] = "к лечению"
 L[StatLogic.Stats.SpellPenetration] = "Проникающая способность"
 
 L[StatLogic.Stats.HolyDamage] = "Урон от светлой магии"

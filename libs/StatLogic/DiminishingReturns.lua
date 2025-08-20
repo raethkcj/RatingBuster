@@ -87,13 +87,13 @@ function StatLogic:GetDodgePerAgi()
 	end
 	local stat, effectiveStat, posBuff, negBuff = UnitStat("player", LE_UNIT_STAT_AGILITY)
 	local modAgi = 1
-	if addon.ModAgiClasses[addon.class] then
+	if addon.ModAgiClasses and addon.ModAgiClasses[addon.class] then
 		modAgi = self:GetStatMod("MOD_AGI")
 		-- Talents that modify Agi will not add to posBuff, so we need to calculate baseAgi
 		-- But Agi from Kings etc. will add to posBuff, so we subtract those if present
 		for _, case in ipairs(StatLogic.StatModTable["ALL"]["MOD_AGI"]) do
 			if case.group == addon.ExclusiveGroup.AllStats then
-				if StatLogic:GetAuraInfo(C_Spell.GetSpellName(case.aura), true) then
+				if StatLogic:GetAuraInfo(case.aura, true) then
 					modAgi = modAgi - case.value
 				end
 			end
@@ -167,7 +167,7 @@ function StatLogic:GetParryPerStr()
 	-- 	-- But Str from Kings etc. will add to posBuff, so we subtract those if present
 	-- 	for _, case in ipairs(StatLogic.StatModTable["ALL"]["MOD_STR"]) do
 	-- 		if case.group == addon.ExclusiveGroup.AllStats then
-	-- 			if StatLogic:GetAuraInfo(C_Spell.GetSpellName(case.aura), true) then
+	-- 			if StatLogic:GetAuraInfo(case.aura, true) then
 	-- 				modStr = modStr - case.value
 	-- 			end
 	-- 		end

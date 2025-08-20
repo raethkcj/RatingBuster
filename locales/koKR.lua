@@ -1,8 +1,8 @@
 --[[
 Name: RatingBuster koKR locale
-Revision: $Revision: 73696 $
 Translated by:
-- kcgcom, fenlis (jungseop.park@gmail.com)
+- kcgcom
+- fenlis (jungseop.park@gmail.com)
 ]]
 
 local _, addon = ...
