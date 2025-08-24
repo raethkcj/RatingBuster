@@ -341,6 +341,8 @@ L["separators"] = {
 L["statList"] = {
 	{"lowers intellect of target", false}, -- Brain Hacker
 	{"reduces an enemy's armor", false}, -- Annihilator
+	{"blood spirit", false},
+	{"spirit of", false},
 
 	{SPELL_STAT1_NAME:lower(), StatLogic.Stats.Strength},
 	{SPELL_STAT2_NAME:lower(), StatLogic.Stats.Agility},
