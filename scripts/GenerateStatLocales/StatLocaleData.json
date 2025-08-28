@@ -1,12 +1,50 @@
 {
 	"SpellItemEnchantment": {
 		"1": {
-			"0": [ [""] ]
+			"2412": [ ["HealthRegen"] ],
+			"2591": [ ["Intellect"], ["Stamina"], ["HealingPower"] ],
+			"7615": [ ["Stamina"], ["Strength"], ["Agility"] ],
+			"7635": [ ["Stamina"], ["Agility"], ["Strength"] ]
 		},
-		"2": {},
-		"3": {},
-		"4": {},
-		"5": {}
+		"2": {
+			"2583": [ ["DefenseRating"], ["Stamina"], ["BlockValue"] ],
+			"2584": [ ["Defense"], ["Stamina"], ["HealingPower"] ],
+			"2586": [ ["RangedAttackPower"], ["Stamina"], ["HitRating"] ],
+			"2591": [ ["Intellect"], ["Stamina"], ["HealingPower"] ],
+			"2705": [ ["HealingPower"], ["SpellDamage"], ["Intellect"] ],
+			"2752": [ ["MeleeCritRating", "RangedCritRating"], ["Strength"] ],
+			"2756": [ ["MeleeHitRating", "RangedHitRating"], ["Agility"] ],
+			"3000": [ ["Stamina"], ["DodgeRating"], ["ResilienceRating"] ],
+			"3081": [ ["HealingPower"], ["SpellDamage"], ["SpellCritRating"] ],
+			"3161": [ ["Stamina"], ["SpellCritRating"] ]
+		},
+		"3": {
+			"2591": [ ["Intellect"], ["Stamina"], ["SpellPower"] ],
+			"3754": [ ["GenericAttackPower"], ["Stamina"], ["HitRating"] ]
+		},
+		"4": {
+			"2584": [ ["DodgeRating"], ["Stamina"], ["Intellect"] ],
+			"2705": [ ["HasteRating"], ["Intellect"] ],
+			"3113": [ ["CritRating"], ["Agility"] ],
+			"3513": [ ["Spirit"], ["ResilienceRating"] ],
+			"3885": [ ["MasteryRating"], ["Spirit"] ],
+			"3886": [ ["MasteryRating"], ["HitRating"] ],
+			"4280": [ ["HitRating"], ["MasteryRating"] ],
+			"4282": [ ["Spirit"], ["MasteryRating"] ]
+		},
+		"5": {
+			"2584": [ ["DodgeRating"], ["Stamina"], ["Intellect"] ],
+			"2760": [ ["CritRating"], ["Intellect"] ],
+			"3000": [ ["Stamina"], ["DodgeRating"], ["ResilienceRating"] ],
+			"3113": [ ["CritRating"], ["Agility"] ],
+			"3513": [ ["Spirit"], ["ResilienceRating"] ],
+			"3754": [ ["GenericAttackPower"], ["Stamina"], ["HitRating"] ],
+			"3885": [ ["MasteryRating"], ["Spirit"] ],
+			"3886": [ ["MasteryRating"], ["HitRating"] ],
+			"4280": [ ["HitRating"], ["MasteryRating"] ],
+			"4282": [ ["Spirit"], ["MasteryRating"] ],
+			"4671": [ ["Strength"], ["ParryRating"], ["CritRating"] ]
+		}
 	},
 	"Spell": {
 		"1": {
