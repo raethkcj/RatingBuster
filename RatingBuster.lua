@@ -2461,23 +2461,23 @@ function RatingBuster:ProcessStat(stat, value, breakdownStats, link, color, stat
 		elseif stat == StatLogic.Stats.BlockRating then
 			self:ProcessStat(StatLogic.Stats.BlockChance, effect, breakdownStats, link, color, statModContext, isBaseStat, show)
 		elseif stat == StatLogic.Stats.MeleeHitRating then
-			self:ProcessStat(StatLogic.Stats.MeleeHit, effect, breakdownStats, link, color, statModContext, isBaseStat, show)
+			self:ProcessStat(StatLogic.Stats.MeleeHit, effect, breakdownStats, link, color, statModContext, isBaseStat, db.profile.showMeleeHitFromHitRating)
 		elseif stat == StatLogic.Stats.RangedHitRating then
-			self:ProcessStat(StatLogic.Stats.RangedHit, effect, breakdownStats, link, color, statModContext, isBaseStat, show)
+			self:ProcessStat(StatLogic.Stats.RangedHit, effect, breakdownStats, link, color, statModContext, isBaseStat, db.profile.showRangedHitFromHitRating)
 		elseif stat == StatLogic.Stats.SpellHitRating then
-			self:ProcessStat(StatLogic.Stats.SpellHit, effect, breakdownStats, link, color, statModContext, isBaseStat, show)
+			self:ProcessStat(StatLogic.Stats.SpellHit, effect, breakdownStats, link, color, statModContext, isBaseStat, db.profile.showSpellHitFromHitRating)
 		elseif stat == StatLogic.Stats.MeleeCritRating then
-			self:ProcessStat(StatLogic.Stats.MeleeCrit, effect, breakdownStats, link, color, statModContext, isBaseStat, show)
+			self:ProcessStat(StatLogic.Stats.MeleeCrit, effect, breakdownStats, link, color, statModContext, isBaseStat, db.profile.showMeleeCritFromCritRating)
 		elseif stat == StatLogic.Stats.RangedCritRating then
-			self:ProcessStat(StatLogic.Stats.RangedCrit, effect, breakdownStats, link, color, statModContext, isBaseStat, show)
+			self:ProcessStat(StatLogic.Stats.RangedCrit, effect, breakdownStats, link, color, statModContext, isBaseStat, db.profile.showRangedCritFromCritRating)
 		elseif stat == StatLogic.Stats.SpellCritRating then
-			self:ProcessStat(StatLogic.Stats.SpellCrit, effect, breakdownStats, link, color, statModContext, isBaseStat, show)
+			self:ProcessStat(StatLogic.Stats.SpellCrit, effect, breakdownStats, link, color, statModContext, isBaseStat, db.profile.showSpellCritFromCritRating)
 		elseif stat == StatLogic.Stats.MeleeHasteRating then
-			self:ProcessStat(StatLogic.Stats.MeleeHaste, effect, breakdownStats, link, color, statModContext, isBaseStat, show)
+			self:ProcessStat(StatLogic.Stats.MeleeHaste, effect, breakdownStats, link, color, statModContext, isBaseStat, db.profile.showMeleeHasteFromHasteRating)
 		elseif stat == StatLogic.Stats.RangedHasteRating then
-			self:ProcessStat(StatLogic.Stats.RangedHaste, effect, breakdownStats, link, color, statModContext, isBaseStat, show)
+			self:ProcessStat(StatLogic.Stats.RangedHaste, effect, breakdownStats, link, color, statModContext, isBaseStat, db.profile.showRangedHasteFromHasteRating)
 		elseif stat == StatLogic.Stats.SpellHasteRating then
-			self:ProcessStat(StatLogic.Stats.SpellHaste, effect, breakdownStats, link, color, statModContext, isBaseStat, show)
+			self:ProcessStat(StatLogic.Stats.SpellHaste, effect, breakdownStats, link, color, statModContext, isBaseStat, db.profile.showSpellHasteFromHasteRating)
 		elseif stat == StatLogic.Stats.ExpertiseRating then
 			if addon.tocversion < 30000 then
 				-- Expertise is truncated in TBC but not in Wrath
