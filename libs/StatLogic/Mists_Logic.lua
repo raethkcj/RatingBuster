@@ -1379,11 +1379,12 @@ elseif addon.class == "MONK" then
 		},
 		["ADD_DODGE"] = {
 			-- Buff: Elusive Brew
-			-- TODO: Needs to be exact spell ID
 			{
 				["aura"] = 115308,
 				["value"] = 30,
+				["exact"] = true,
 			},
+			-- Buff: Adaptation
 			{
 				["aura"] = 126050,
 				["value"] = 25,
