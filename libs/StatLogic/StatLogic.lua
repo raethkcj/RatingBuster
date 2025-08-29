@@ -1963,7 +1963,7 @@ end
 do
 	local large_sep = LARGE_NUMBER_SEPERATOR:gsub("[-.]", "%%%1")
 	local dec_sep = DECIMAL_SEPERATOR:gsub("[-.]", "%%%1")
-	local numberPattern = "[+-]?[%d." .. large_sep .. dec_sep .. "]+%f[%D]()"
+	local numberPattern = "([+-]?[%d." .. large_sep .. dec_sep .. "]+%f[%D])()"
 
 	---@alias StatGroup Stat[] | false
 
