@@ -2277,7 +2277,7 @@ local function getBreakdownPosition(text, stat, startPosition, endPosition)
 		local lowerText = text:utf8lower()
 		for _, pattern in ipairs(patterns) do
 			local _, newPosition = lowerText:find(pattern, startPosition)
-			if newPosition and newPosition < endPosition then
+			if newPosition and newPosition <= endPosition then
 				return newPosition
 			end
 		end
@@ -2316,8 +2316,9 @@ function RatingBuster:ProcessLine(text, link, color, statModContext)
 						local nextPosition = nextStatGroupValue and nextStatGroupValue.position or #text
 						local position = getBreakdownPosition(text, stat, statGroupValue.position + addedCharacters, nextPosition)
 						-- TODO: Handle WholeText matches without positions
+						local length = #text
 						text = RatingBuster:InsertBreakdownText(text, breakdownText, position)
-						addedCharacters = addedCharacters + #breakdownText
+						addedCharacters = addedCharacters + #text - length
 					end
 				end
 			end

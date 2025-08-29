@@ -1997,6 +1997,22 @@ do
 		})
 	end
 
+	-- Removes each of the prefixes from text, and returns the modified text and the total number of removed characters
+	---@param text string
+	---@param prefixes table<string, true>
+	---@return string
+	---@return integer
+	local function trimPrefixes(text, prefixes)
+		for prefix in pairs(prefixes) do
+			local _, length = text:find(prefix)
+			if length then
+				text = text:sub(length + 1)
+				return text, length - 1
+			end
+		end
+		return text, 0
+	end
+
 	---@param statGroupValues StatGroupValues
 	local function logStatGroups(statGroupValues)
 		if not DEBUG then return end
@@ -2031,6 +2047,7 @@ do
 		---@type StatGroupValues
 		local statGroups = { ignoreSum = false }
 		local found = not text or text == ""
+		local length, offset = 0, 0
 
 		if not found then
 			-- Strip color codes
@@ -2047,8 +2064,8 @@ do
 			-- Limit to one line
 			text = text:gsub("\n.*", "")
 			-- Strip leading "Equip: ", "Socket Bonus: ", trailing ".", and lowercase
-			text = text:gsub(ITEM_SPELL_TRIGGER_ONEQUIP, "")
-			text = text:gsub(ITEM_SOCKET_BONUS:format(""), "")
+			text, length = trimPrefixes(text, addon.TrimmedPrefixes)
+			offset = offset + length
 			text = text:trim()
 			text = text:gsub("%.$", "")
 			text = text:utf8lower()
@@ -2073,13 +2090,11 @@ do
 		-- Substitution Lookup --
 		-------------------------
 		if not found then
-			for pattern in pairs(addon.IgnoreSum) do
-				local count
-				text, count = text:gsub(pattern, "")
-				if count > 0 then
-					text = text:gsub(addon.OnUseCooldown, ""):trim():gsub("%.$", "")
-					statGroups.ignoreSum = true
-				end
+			text, length = trimPrefixes(text, addon.IgnoreSum)
+			offset = offset + length
+			if length > 0 then
+				text = text:gsub(addon.OnUseCooldown, ""):trim():gsub("%.$", "")
+				statGroups.ignoreSum = true
 			end
 
 			-- Replace numbers with %s
@@ -2088,7 +2103,7 @@ do
 				match = match:gsub(large_sep, ""):gsub(dec_sep, ".")
 				local value = tonumber(match)
 				if value then
-					valuePositions[#valuePositions + 1] = { value, position }
+					valuePositions[#valuePositions + 1] = { value, position + offset }
 					return "%s"
 				end
 			end)

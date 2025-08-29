@@ -105,7 +105,24 @@ local function unescape(pattern)
 	return (pattern:gsub("%%%d?%$?c", ""):gsub("%%%d?%$?[sd]", "%%s"):gsub("%.$", ""))
 end
 
+local function setPrefixPatterns(input, output)
+	for _, pattern in ipairs(input) do
+		output["^" .. pattern .. " *"] = true
+	end
+end
+
+---@type table<string, true>
+addon.TrimmedPrefixes = {}
+
+local trimmedPrefixes = {
+	ITEM_SPELL_TRIGGER_ONEQUIP,
+	ITEM_SOCKET_BONUS:format("")
+}
+
+setPrefixPatterns(trimmedPrefixes, addon.TrimmedPrefixes)
+
 -- Patterns that should be matched for breakdowns, but ignord for summaries
+---@type table<string, true>
 addon.IgnoreSum = setmetatable({}, lowerMT)
 
 local ignoreSumPrefixes = {
@@ -115,9 +132,7 @@ local ignoreSumPrefixes = {
 	ITEM_SET_BONUS:format(""), -- "Set: %s"
 }
 
-for _, pattern in ipairs(ignoreSumPrefixes) do
-	addon.IgnoreSum["^" .. pattern] = true
-end
+setPrefixPatterns(ignoreSumPrefixes, addon.IgnoreSum)
 
 addon.OnUseCooldown = ITEM_COOLDOWN_TOTAL:utf8lower():format("[^(]+"):gsub("[()]", "%%%1") .. "$"
 
