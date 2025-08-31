@@ -2307,19 +2307,21 @@ function RatingBuster:ProcessLine(text, link, color, statModContext)
 		for i, statGroupValue in ipairs(statGroupValues) do
 			local statGroup = statGroupValue.statGroup
 			if statGroup then
+				local breakdownStats = StatLogic.StatTable.new()
+				local position = statGroupValue.position + addedCharacters
+				local nextStatGroupValue = statGroupValues[i + 1]
+				local nextPosition = nextStatGroupValue and nextStatGroupValue.position or #text
 				for _, stat in ipairs(statGroup) do
-					local breakdownStats = StatLogic.StatTable.new()
 					RatingBuster:ProcessStat(stat, statGroupValue.value, breakdownStats, link, color, statModContext, true, false)
-					local breakdownText = RatingBuster:GetBreakdownText(breakdownStats)
-					if breakdownText ~= "" then
-						local nextStatGroupValue = statGroupValues[i + 1]
-						local nextPosition = nextStatGroupValue and nextStatGroupValue.position or #text
-						local position = getBreakdownPosition(text, stat, statGroupValue.position + addedCharacters, nextPosition)
-						-- TODO: Handle WholeText matches without positions
-						local length = #text
-						text = RatingBuster:InsertBreakdownText(text, breakdownText, position)
-						addedCharacters = addedCharacters + #text - length
-					end
+					position = getBreakdownPosition(text, stat, position, nextPosition)
+				end
+
+				local breakdownText = RatingBuster:GetBreakdownText(breakdownStats)
+				if breakdownText ~= "" then
+					-- TODO: Handle WholeText matches without positions
+					local length = #text
+					text = RatingBuster:InsertBreakdownText(text, breakdownText, position)
+					addedCharacters = addedCharacters + #text - length
 				end
 			end
 		end
