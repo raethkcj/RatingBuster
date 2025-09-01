@@ -2308,17 +2308,24 @@ function RatingBuster:ProcessLine(text, link, color, statModContext)
 			local statGroup = statGroupValue.statGroup
 			if statGroup then
 				local breakdownStats = StatLogic.StatTable.new()
-				local position = statGroupValue.position + addedCharacters
+				local position = statGroupValue.position
+				local isBaseStat = true
+				if position then
+					position = position + addedCharacters
+				else
+					-- WholeTextLookup
+					position = #text
+					isBaseStat = false
+				end
 				local nextStatGroupValue = statGroupValues[i + 1]
 				local nextPosition = nextStatGroupValue and nextStatGroupValue.position or #text
 				for _, stat in ipairs(statGroup) do
-					RatingBuster:ProcessStat(stat, statGroupValue.value, breakdownStats, link, color, statModContext, true, false)
+					RatingBuster:ProcessStat(stat, statGroupValue.value, breakdownStats, link, color, statModContext, isBaseStat, false)
 					position = getBreakdownPosition(text, stat, position, nextPosition)
 				end
 
 				local breakdownText = RatingBuster:GetBreakdownText(breakdownStats)
 				if breakdownText ~= "" then
-					-- TODO: Handle WholeText matches without positions
 					local length = #text
 					text = RatingBuster:InsertBreakdownText(text, breakdownText, position)
 					addedCharacters = addedCharacters + #text - length
