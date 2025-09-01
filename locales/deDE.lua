@@ -301,6 +301,7 @@ L["statPatterns"] = {
 	[StatLogic.Stats.CritRating] = { "kritische trefferwertung", "kritischer trefferwert" },
 
 	[StatLogic.Stats.MeleeHitRating] = { "trefferwertung", "trefferwert" },
+	[StatLogic.Stats.RangedHitRating] = {},
 	[StatLogic.Stats.SpellHitRating] = { "zaubertrefferwertung" },
 	[StatLogic.Stats.HitRating] = { "trefferwertung", "trefferwert" },
 

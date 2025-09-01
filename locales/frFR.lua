@@ -320,7 +320,7 @@ L["statPatterns"] = {
 
 	[StatLogic.Stats.MeleeHitRating] = { "score de toucher", "toucher" },
 	[StatLogic.Stats.RangedHitRating] = { "score de toucher à distance" },
-	[StatLogic.Statsk.SpellHitRating] = { "score de toucher des sorts" },
+	[StatLogic.Stats.SpellHitRating] = { "score de toucher des sorts" },
 	[StatLogic.Stats.HitRating] = { "score de toucher", "toucher" },
 
 	[StatLogic.Stats.ResilienceRating] = { "résilience (jcj)", "résilience" },

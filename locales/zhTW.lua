@@ -295,7 +295,7 @@ L["statPatterns"] = {
 	[StatLogic.Stats.ParryRating] = { "招架等級", "招架" },
 
 	[StatLogic.Stats.SpellPower] = { "法術能量" },
-	[StatLogic.Stats.AttackPower] = { "攻击强度" },
+	[StatLogic.Stats.GenericAttackPower] = { "攻击强度" },
 
 	[StatLogic.Stats.MeleeCritRating] = { "致命一擊等級", "致命一擊" },
 	[StatLogic.Stats.RangedCritRating] = { "遠程攻擊致命一擊等級" },
