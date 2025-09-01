@@ -293,21 +293,24 @@ L["statPatterns"] = {
 	[StatLogic.Stats.ParryRating] = { "parierwertung", "parieren" },
 
 	[StatLogic.Stats.SpellPower] = { "zaubermacht" },
-	[StatLogic.Stats.SpellCritRating] = { "kritische zaubertrefferwertung" },
+	[StatLogic.Stats.GenericAttackPower] = { "angriffskraft" },
+
+	[StatLogic.Stats.MeleeCritRating] = { "kritische trefferwertung", "kritischer trefferwert" },
 	[StatLogic.Stats.RangedCritRating] = { "kritische distanztrefferwertung" },
+	[StatLogic.Stats.SpellCritRating] = { "kritische zaubertrefferwertung" },
 	[StatLogic.Stats.CritRating] = { "kritische trefferwertung", "kritischer trefferwert" },
 
+	[StatLogic.Stats.MeleeHitRating] = { "trefferwertung", "trefferwert" },
 	[StatLogic.Stats.SpellHitRating] = { "zaubertrefferwertung" },
 	[StatLogic.Stats.HitRating] = { "trefferwertung", "trefferwert" },
 
 	[StatLogic.Stats.ResilienceRating] = { "abhärtungswertung", "abhärtung" },
 	[StatLogic.Stats.PvpPowerRating] = { ITEM_MOD_PVP_POWER_SHORT:lower() },
 
-	[StatLogic.Stats.SpellHasteRating] = { "zaubertempowertung" },
+	[StatLogic.Stats.MeleeHasteRating] = { "angriffstempowertung", "nahkampftempowertung", "tempowertung", "tempo" },
 	[StatLogic.Stats.RangedHasteRating] = { "distanztempowertung" },
-	[StatLogic.Stats.HasteRating] = { "angriffstempowertung" },
-	[StatLogic.Stats.MeleeHasteRating] = { "nahkampftempowertung" },
-	[StatLogic.Stats.HasteRating] = { "tempowertung", "tempo" },
+	[StatLogic.Stats.SpellHasteRating] = { "zaubertempowertung" },
+	[StatLogic.Stats.HasteRating] = { "angriffstempowertung", "tempowertung", "tempo" },
 
 	[StatLogic.Stats.ExpertiseRating] = { "waffenkundewertung", "waffenkunde" },
 
@@ -316,7 +319,6 @@ L["statPatterns"] = {
 	[StatLogic.Stats.ArmorPenetrationRating] = { "rüstungsdurchschlagwertung", "rüstungsdurchschlag" },
 	[StatLogic.Stats.MasteryRating] = { "meisterschaft" },
 	[StatLogic.Stats.Armor] = { ARMOR:lower() },
-	[StatLogic.Stats.GenericAttackPower] = { "angriffskraft" },
 }
 -------------------------
 -- Added info patterns --

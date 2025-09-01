@@ -294,20 +294,24 @@ L["statPatterns"] = {
 	[StatLogic.Stats.ParryRating] = { "무기 막기 숙련도", "무기 막기" },
 
 	[StatLogic.Stats.SpellPower] = { "주문력" },
-	[StatLogic.Stats.SpellCritRating] = { "주문 극대화 적중도", "주문의 극대화 적중도" },
-	[StatLogic.Stats.RangedCritRating] = { "원거리 치명타 적중도" },
-	[StatLogic.Stats.CritRating] = { "치명타 적중도", "치명타 및 극대화" },
-	[StatLogic.Stats.MeleeCritRating] = { "근접 치명타 적중도" },
+	[StatLogic.Stats.GenericAttackPower] = { "전투력이" },
 
-	[StatLogic.Stats.SpellHitRating] = { "주문 적중도" },
+	[StatLogic.Stats.MeleeCritRating] = { "근접 치명타 적중도", "치명타 적중도", "치명타 및 극대화" },
+	[StatLogic.Stats.RangedCritRating] = { "원거리 치명타 적중도" },
+	[StatLogic.Stats.SpellCritRating] = { "주문 극대화 적중도", "주문의 극대화 적중도" },
+	[StatLogic.Stats.CritRating] = { "치명타 적중도", "치명타 및 극대화" },
+
+	[StatLogic.Stats.MeleeHitRating] = { "적중도", "적중" },
 	[StatLogic.Stats.RangedHitRating] = { "원거리 적중도" },
+	[StatLogic.Stats.SpellHitRating] = { "주문 적중도" },
 	[StatLogic.Stats.HitRating] = { "적중도", "적중" },
 
 	[StatLogic.Stats.ResilienceRating] = { "탄력도", "탄력" },
 	[StatLogic.Stats.PvpPowerRating] = { ITEM_MOD_PVP_POWER_SHORT:lower() },
 
-	[StatLogic.Stats.SpellHasteRating] = { "주문 시전 가속도" },
+	[StatLogic.Stats.MeleeHasteRating] = { "공격 가속도", "가속", "가속도" },
 	[StatLogic.Stats.RangedHasteRating] = { "원거리 공격 가속도" },
+	[StatLogic.Stats.SpellHasteRating] = { "주문 시전 가속도" },
 	[StatLogic.Stats.HasteRating] = { "공격 가속도", "가속", "가속도" },
 
 	[StatLogic.Stats.ExpertiseRating] = { "숙련도", "숙련" },
@@ -317,7 +321,6 @@ L["statPatterns"] = {
 	[StatLogic.Stats.ArmorPenetrationRating] = { "방어구 관통력" },	--armor penetration rating
 	[StatLogic.Stats.MasteryRating] = { "특화" },
 	[StatLogic.Stats.Armor] = { ARMOR:lower() },
-	[StatLogic.Stats.GenericAttackPower] = { "전투력이" },
 }
 -------------------------
 -- Added info patterns --

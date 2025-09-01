@@ -294,22 +294,24 @@ L["statPatterns"] = {
 	[StatLogic.Stats.ParryRating] = { "índice de parada", "parar" },
 
 	[StatLogic.Stats.SpellPower] = { "poder con hechizos" },
-	[StatLogic.Stats.SpellCritRating] = { "golpe crítico con hechizos" },
+	[StatLogic.Stats.GenericAttackPower] = { "poder de ataque" },
+
+	[StatLogic.Stats.MeleeCritRating] = { "golpe crítico cuerpo a cuerpo", "golpe crítico" },
 	[StatLogic.Stats.RangedCritRating] = { "golpe crítico a distancia" },
-	[StatLogic.Stats.MeleeCritRating] = { "golpe crítico cuerpo a cuerpo" },
+	[StatLogic.Stats.SpellCritRating] = { "golpe crítico con hechizos" },
 	[StatLogic.Stats.CritRating] = { "golpe crítico" },
 
-	[StatLogic.Stats.SpellHitRating] = { "golpe con hechizo" },
+	[StatLogic.Stats.MeleeHitRating] = { "golpe cuerpo a cuerpo", "golpe" },
 	[StatLogic.Stats.RangedHitRating] = { "golpe a distancia" },
-	[StatLogic.Stats.MeleeHitRating] = { "golpe cuerpo a cuerpo" },
+	[StatLogic.Stats.SpellHitRating] = { "golpe con hechizo" },
 	[StatLogic.Stats.HitRating] = { "golpe" },
 
 	[StatLogic.Stats.ResilienceRating] = { "temple jcj", "temple" },
 	[StatLogic.Stats.PvpPowerRating] = { ITEM_MOD_PVP_POWER_SHORT:lower() },
 
-	[StatLogic.Stats.SpellHasteRating] = { "celeridad con hechizos" },
+	[StatLogic.Stats.MeleeHasteRating] = { "celeridad con cuerpo a cuerpo", "celeridad", "índice de velocidad" },
 	[StatLogic.Stats.RangedHasteRating] = { "celeridad a distancia" },
-	[StatLogic.Stats.MeleeHasteRating] = { "celeridad con cuerpo a cuerpo" },
+	[StatLogic.Stats.SpellHasteRating] = { "celeridad con hechizos" },
 	[StatLogic.Stats.HasteRating] = { "celeridad", "índice de velocidad" },
 
 	[StatLogic.Stats.ExpertiseRating] = { "pericia" },
@@ -319,7 +321,6 @@ L["statPatterns"] = {
 	[StatLogic.Stats.ArmorPenetrationRating] = { "penetración de armadura" },
 	[StatLogic.Stats.MasteryRating] = { "maestría" },
 	[StatLogic.Stats.Armor] = { ARMOR:lower() },
-	[StatLogic.Stats.GenericAttackPower] = { "poder de ataque" },
 }
 -------------------------
 -- Added info patterns --

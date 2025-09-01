@@ -311,21 +311,26 @@ L["statPatterns"] = {
 	[StatLogic.Stats.ParryRating] = { "score de parade", "parade" },
 
 	[StatLogic.Stats.SpellPower] = { "puissance des sorts" },
-	[StatLogic.Stats.SpellCritRating] = { "score de critique des sorts", "score de coup critique des sorts", "score de toucher critique des sorts" },
+	[StatLogic.Stats.GenericAttackPower] = { "puissance d'attaque" },
+
+	[StatLogic.Stats.MeleeCritRating] = { "score de critique", "score de crit.", "score de coup critique", "score de toucher critique" },
 	[StatLogic.Stats.RangedCritRating] = { "score de critique à distance", "score de coup critique à distance", "score de toucher critique à distance" },
+	[StatLogic.Stats.SpellCritRating] = { "score de critique des sorts", "score de coup critique des sorts", "score de toucher critique des sorts" },
 	[StatLogic.Stats.CritRating] = { "score de critique", "score de crit.", "score de coup critique", "score de toucher critique" },
 
-	[StatLogic.Stats.SpellHitRating] = { "score de toucher des sorts" },
+	[StatLogic.Stats.MeleeHitRating] = { "score de toucher", "toucher" },
 	[StatLogic.Stats.RangedHitRating] = { "score de toucher à distance" },
+	[StatLogic.Statsk.SpellHitRating] = { "score de toucher des sorts" },
 	[StatLogic.Stats.HitRating] = { "score de toucher", "toucher" },
 
 	[StatLogic.Stats.ResilienceRating] = { "résilience (jcj)", "résilience" },
 	[StatLogic.Stats.PvpPowerRating] = { ITEM_MOD_PVP_POWER_SHORT:lower() },
 
-	[StatLogic.Stats.SpellHasteRating] = { "score de hâte des sorts" },
-	[StatLogic.Stats.RangedHasteRating] = { "score de hâte à distance" },
-	[StatLogic.Stats.HasteRating] = { "score de hâte", "hâte" },
 	[StatLogic.Stats.MeleeHasteRating] = { "score de hâte en mêlée" },
+	[StatLogic.Stats.RangedHasteRating] = { "score de hâte à distance" },
+	[StatLogic.Stats.SpellHasteRating] = { "score de hâte des sorts" },
+	[StatLogic.Stats.HasteRating] = { "score de hâte", "hâte" },
+
 	[StatLogic.Stats.ExpertiseRating] = { "score d’expertise", "score d'expertise", "expertise" },
 
 	[StatLogic.Stats.AllStats] = { SPELL_STATALL:lower() },
@@ -333,7 +338,6 @@ L["statPatterns"] = {
 	[StatLogic.Stats.ArmorPenetrationRating] = { "pénétration d'armure" },
 	[StatLogic.Stats.MasteryRating] = { "maîtrise" },
 	[StatLogic.Stats.Armor] = { ARMOR:lower() },
-	[StatLogic.Stats.GenericAttackPower] = { "puissance d'attaque" },
 }
 -------------------------
 -- Added info patterns --

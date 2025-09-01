@@ -280,32 +280,37 @@ L["statPatterns"] = {
 	[StatLogic.Stats.Spirit] = { SPELL_STAT5_NAME:lower() },
 	[StatLogic.Stats.DefenseRating] = { "defense rating" },
 	[StatLogic.Stats.Defense] = { DEFENSE:lower() },
-	[StatLogic.Stats.DodgeRating] = { "dodge rating", "increases dodge" },
-	[StatLogic.Stats.BlockRating] = { "block rating" },
-	[StatLogic.Stats.ParryRating] = { "parry rating" },
+	[StatLogic.Stats.DodgeRating] = { "dodge rating", "dodge" },
+	[StatLogic.Stats.BlockRating] = { "block rating", "block" },
+	[StatLogic.Stats.ParryRating] = { "parry rating", "parry" },
 
-	[StatLogic.Stats.SpellCritRating] = { "spell critical strike rating", "spell critical hit rating", "spell critical rating", "spell crit rating", "spell critical" },
+	[StatLogic.Stats.SpellPower] = { "spell power" },
 	[StatLogic.Stats.GenericAttackPower] = { "attack power" },
-	[StatLogic.Stats.RangedCritRating] = { "ranged critical strike", "ranged critical hit rating", "ranged critical rating", "ranged crit rating" },
-	[StatLogic.Stats.CritRating] = { "critical strike rating", "critical hit rating", "critical rating", "crit rating" },
 
+	[StatLogic.Stats.MeleeCritRating] = { "critical strike", "critical hit rating", "critical rating", "crit rating", "crit" },
+	[StatLogic.Stats.SpellCritRating] = { "spell critical strike rating", "spell critical hit rating", "spell critical rating", "spell crit rating", "spell critical" },
+	[StatLogic.Stats.RangedCritRating] = { "ranged critical strike", "ranged critical hit rating", "ranged critical rating", "ranged crit rating" },
+	[StatLogic.Stats.CritRating] = { "critical strike", "critical hit rating", "critical rating", "crit rating", "crit" },
+
+	[StatLogic.Stats.HitRating] = { "hit rating", "hit" },
 	[StatLogic.Stats.SpellHitRating] = { "spell hit rating" },
 	[StatLogic.Stats.RangedHitRating] = { "ranged hit rating" },
-	[StatLogic.Stats.HitRating] = { "hit rating" },
+	[StatLogic.Stats.HitRating] = { "hit rating", "hit" },
 
 	[StatLogic.Stats.ResilienceRating] = { "resilience" },
 	[StatLogic.Stats.PvpPowerRating] = { ITEM_MOD_PVP_POWER_SHORT:lower() },
 
+	[StatLogic.Stats.MeleeHasteRating] = { "haste rating", "haste" },
 	[StatLogic.Stats.SpellHasteRating] = { "spell haste rating" },
 	[StatLogic.Stats.RangedHasteRating] = { "ranged haste rating" },
-	[StatLogic.Stats.HasteRating] = { "haste rating" },
+	[StatLogic.Stats.HasteRating] = { "haste rating", "haste" },
 
-	[StatLogic.Stats.ExpertiseRating] = { "expertise rating" },
+	[StatLogic.Stats.ExpertiseRating] = { "expertise" },
 
 	[StatLogic.Stats.AllStats] = { SPELL_STATALL:lower() },
 
 	[StatLogic.Stats.ArmorPenetrationRating] = { "armor penetration" },
-	[StatLogic.Stats.MasteryRating] = { "mastery" },
+	[StatLogic.Stats.MasteryRating] = { "mastery rating", "mastery" },
 	[StatLogic.Stats.Armor] = { ARMOR:lower() },
 }
 -------------------------

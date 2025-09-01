@@ -295,19 +295,24 @@ L["statPatterns"] = {
 	[StatLogic.Stats.ParryRating] = { "招架等級", "招架" },
 
 	[StatLogic.Stats.SpellPower] = { "法術能量" },
-	[StatLogic.Stats.SpellCritRating] = { "法術致命一擊等級" },
+	[StatLogic.Stats.AttackPower] = { "攻击强度" },
+
+	[StatLogic.Stats.MeleeCritRating] = { "致命一擊等級", "致命一擊" },
 	[StatLogic.Stats.RangedCritRating] = { "遠程攻擊致命一擊等級" },
+	[StatLogic.Stats.SpellCritRating] = { "法術致命一擊等級" },
 	[StatLogic.Stats.CritRating] = { "致命一擊等級", "致命一擊" },
 
-	[StatLogic.Stats.SpellHitRating] = { "法術命中等級" },
+	[StatLogic.Stats.MeleeHitRating] = { "命中等級", "命中" },
 	[StatLogic.Stats.RangedHitRating] = { "遠程命中等級" },
+	[StatLogic.Stats.SpellHitRating] = { "法術命中等級" },
 	[StatLogic.Stats.HitRating] = { "命中等級", "命中" },
 
 	[StatLogic.Stats.ResilienceRating] = { "韌性" },
 	[StatLogic.Stats.PvpPowerRating] = { ITEM_MOD_PVP_POWER_SHORT:lower() },
 
-	[StatLogic.Stats.SpellHasteRating] = { "法術加速等級" },
+	[StatLogic.Stats.MeleeHasteRating] = { "加速等級", "加速", "攻擊速度等級" },
 	[StatLogic.Stats.RangedHasteRating] = { "遠程攻擊加速等級" },
+	[StatLogic.Stats.SpellHasteRating] = { "法術加速等級" },
 	[StatLogic.Stats.HasteRating] = { "加速等級", "加速", "攻擊速度等級" },
 
 	[StatLogic.Stats.ExpertiseRating] = { "熟練等級", "熟練" },
@@ -317,7 +322,6 @@ L["statPatterns"] = {
 	[StatLogic.Stats.ArmorPenetrationRating] = { "護甲穿透等級" },
 	[StatLogic.Stats.MasteryRating] = { "精通" },
 	[StatLogic.Stats.Armor] = { ARMOR:lower() },
-	[StatLogic.Stats.AttackPower] = { "攻击强度" },
 }
 -------------------------
 -- Added info patterns --

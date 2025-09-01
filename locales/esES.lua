@@ -294,23 +294,25 @@ L["statPatterns"] = {
 	[StatLogic.Stats.ParryRating] = { "índice de parada", "parar" },
 
 	[StatLogic.Stats.SpellPower] = { "poder con hechizos" },
-	[StatLogic.Stats.SpellCritRating] = { "índice de golpe crítico con hechizos" },
+	[StatLogic.Stats.GenericAttackPower] = { "poder de ataque" },
+
+	[StatLogic.Stats.MeleeCritRating] = { "índice de golpe crítico cuerpo a cuerpo", "índice de golpe crítico", "golpe crítico" },
 	[StatLogic.Stats.RangedCritRating] = { "índice de golpe crítico a distancia" },
-	[StatLogic.Stats.MeleeCritRating] = { "índice de golpe crítico cuerpo a cuerpo" },
+	[StatLogic.Stats.SpellCritRating] = { "índice de golpe crítico con hechizos" },
 	[StatLogic.Stats.CritRating] = { "índice de golpe crítico", "golpe crítico" },
 
-	[StatLogic.Stats.SpellHitRating] = { "índice de golpe con hechizo" },
+	[StatLogic.Stats.MeleeHitRating] = { "índice de golpe cuerpo a cuerpo", "índice de golpe", "golpe" },
 	[StatLogic.Stats.RangedHitRating] = { "índice de golpe a distancia" },
-	[StatLogic.Stats.MeleeHitRating] = { "índice de golpe cuerpo a cuerpo" },
+	[StatLogic.Stats.SpellHitRating] = { "índice de golpe con hechizo" },
 	[StatLogic.Stats.HitRating] = { "índice de golpe", "golpe" },
 
 	[StatLogic.Stats.ResilienceRating] = { "índice de temple", "temple jcj" },
 	[StatLogic.Stats.PvpPowerRating] = { ITEM_MOD_PVP_POWER_SHORT:lower() },
 
-	[StatLogic.Stats.SpellHasteRating] = { "índice de celeridad con hechizos" },
+	[StatLogic.Stats.MeleeHasteRating] = { "índice de celeridad con cuerpo a cuerpo", "índice de velocidad de lanzamiento de ataques", "celeridad" },
 	[StatLogic.Stats.RangedHasteRating] = { "índice de celeridad a distancia" },
-	[StatLogic.Stats.MeleeHasteRating] = { "índice de celeridad con cuerpo a cuerpo" },
-	[StatLogic.Stats.HasteRating] = { "celeridad", "Aumenta el índice de velocidad de lanzamiento de ataques y de ataque de los miembros del grupo cercanos" },
+	[StatLogic.Stats.SpellHasteRating] = { "índice de celeridad con hechizos" },
+	[StatLogic.Stats.HasteRating] = { "índice de velocidad de lanzamiento de ataques", "celeridad" },
 
 	[StatLogic.Stats.ExpertiseRating] = { "índice de pericia", "pericia" },
 
@@ -319,7 +321,6 @@ L["statPatterns"] = {
 	[StatLogic.Stats.ArmorPenetrationRating] = { "índice de penetración de armadura" },
 	[StatLogic.Stats.MasteryRating] = { "maestría" },
 	[StatLogic.Stats.Armor] = { ARMOR:lower() },
-	[StatLogic.Stats.GenericAttackPower] = { "poder de ataque" },
 }
 -------------------------
 -- Added info patterns --

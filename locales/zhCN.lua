@@ -291,20 +291,24 @@ L["statPatterns"] = {
 	[StatLogic.Stats.ParryRating] = { "招架等级", "招架" },
 
 	[StatLogic.Stats.SpellPower] = { "法术强度" },
-	[StatLogic.Stats.SpellCritRating] = { "法术爆击等级", "法术爆击命中等级", "法术爆击等级" },
+	[StatLogic.Stats.AttackPower] = { "攻击强度" },
+
+	[StatLogic.Stats.MeleeCritRating] = { "近战爆击等级", "爆击等级", "爆击" },
 	[StatLogic.Stats.RangedCritRating] = { "远程爆击等级", "远程爆击命中等级", "远程爆击等级" },
-	[StatLogic.Stats.MeleeCritRating] = { "近战爆击等级" },
+	[StatLogic.Stats.SpellCritRating] = { "法术爆击等级", "法术爆击命中等级", "法术爆击等级" },
 	[StatLogic.Stats.CritRating] = { "爆击等级", "爆击" },
 
-	[StatLogic.Stats.SpellHitRating] = { "法术命中等级" },
+	[StatLogic.Stats.MeleeHitRating] = { "命中等级", "命中" },
 	[StatLogic.Stats.RangedHitRating] = { "远程命中等级" },
+	[StatLogic.Stats.SpellHitRating] = { "法术命中等级" },
 	[StatLogic.Stats.HitRating] = { "命中等级", "命中" },
 
 	[StatLogic.Stats.ResilienceRating] = { "韧性等级", "韧性" },
 	[StatLogic.Stats.PvpPowerRating] = { ITEM_MOD_PVP_POWER_SHORT:lower() },
 
-	[StatLogic.Stats.SpellHasteRating] = { "法术急速等级" },
+	[StatLogic.Stats.MeleeHasteRating] = { "急速等级", "急速", "加速等级" },
 	[StatLogic.Stats.RangedHasteRating] = { "远程急速等级" },
+	[StatLogic.Stats.SpellHasteRating] = { "法术急速等级" },
 	[StatLogic.Stats.HasteRating] = { "急速等级", "急速", "加速等级" },
 
 	[StatLogic.Stats.ExpertiseRating] = { "精准等级", "精准" },
@@ -314,7 +318,6 @@ L["statPatterns"] = {
 	[StatLogic.Stats.ArmorPenetrationRating] = { "护甲穿透等级" },
 	[StatLogic.Stats.MasteryRating] = { "精通" },
 	[StatLogic.Stats.Armor] = { ARMOR:lower() },
-	[StatLogic.Stats.AttackPower] = { "攻击强度" },
 }
 -------------------------
 -- Added info patterns --
