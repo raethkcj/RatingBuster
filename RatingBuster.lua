@@ -90,7 +90,7 @@ end
 
 local function setGem(info, value)
 	if value == "" then
-		wipe(db.profile[info[#info]].itemID)
+		wipe(db.profile[info[#info]])
 		return
 	end
 	local gemID, gemText = StatLogic:GetGemID(value)
