@@ -330,6 +330,7 @@ L["statPatterns"] = {
 -- "%s %s"     -> "+1.34% Crit"
 -- "%2$s $1$s" -> "Crit +1.34%"
 L["StatBreakdownOrder"] = "%s %s"
+L["numberSuffix"] = "點"
 L["Show %s"] = SHOW.." %s"
 L["Show Modified %s"] = "Show Modified %s"
 -- for hit rating showing both physical and spell conversions

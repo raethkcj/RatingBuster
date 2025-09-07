@@ -2282,6 +2282,15 @@ local function getBreakdownPosition(text, stat, startPosition, endPosition)
 			end
 		end
 	end
+
+	local numberSuffix = L["numberSuffix"]
+	if numberSuffix ~= "" then
+		local _, newPosition = text:find(numberSuffix, startPosition)
+		if newPosition and newPosition <= endPosition then
+			return newPosition
+		end
+	end
+
 	return startPosition
 end
 
