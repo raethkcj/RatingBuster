@@ -113,7 +113,7 @@ class StatEntry {
 	}
 }
 
-function mapTextToStatEntry(text: string, statEffects: StatValue[][] | undefined, id: number, spellStatEffects: Map<number, StatValue[][]>, isEnchant: boolean): [string, StatEntry] {
+function mapTextToStatEntry(text: string, statEffects: StatValue[][] | undefined, id: number, spellStatEffects: Map<number, StatValue[][]>, isEnchant: boolean, spellDurationFormat: string): [string, StatEntry] {
 	text = text.replace(/[\s.]+$/, "").replaceAll(/[\r\n]+/gm, "\\n").replaceAll(/"/gm, "\\\"").toLowerCase()
 
 	const remainingEffects: StatValue[][] = statEffects ? [...statEffects] : []
@@ -190,7 +190,7 @@ function mapTextToStatEntry(text: string, statEffects: StatValue[][] | undefined
 					break
 				case "d":
 					entries.push(false)
-					return "%s sec"
+					return spellDurationFormat
 				case "a":
 				case "c":
 				case "h":
@@ -735,6 +735,21 @@ async function queryStatSpellEffects(expansion: Expansion) {
 	return reader.getRowObjects() as SpellEffect[]
 }
 
+async function getSpellDurationFormat(expansion: Expansion, locale: string): Promise<string> {
+	const globalStrings = await DatabaseTable.get("GlobalStrings", expansion, locale)
+
+	const query = `
+		SELECT TagText_lang
+		FROM read_csv('${globalStrings.path}', auto_type_candidates = ['INTEGER', 'DOUBLE', 'VARCHAR'])
+		WHERE BaseTag = 'INT_SPELL_DURATION_SEC'
+	`
+
+	const reader = await connection.runAndReadAll(query)
+	const results = reader.getRowObjects() as { TagText_lang: string }[]
+	const format = results[0].TagText_lang
+	return format.replace("%d", "%s")
+}
+
 type SpellDescription = {
 	ID: number,
 	Description_lang: string
@@ -976,6 +991,7 @@ async function getLocaleStatMap(
 ) {
 	const statMap = new Map<string, StatEntry>()
 
+	const spellDurationFormat = await getSpellDurationFormat(expansion, locale)
 	const spellDescriptions = await queryStatSpellDescriptions(expansion, locale, Array.from(spellDescIDs))
 	for (const spellDescription of spellDescriptions) {
 		let staticEffects = spellStatEffects.get(spellDescription.ID)
@@ -989,7 +1005,7 @@ async function getLocaleStatMap(
 
 			const branches = traverseDescriptionBranches(spellDescription.Description_lang)
 			for (const branch of branches) {
-				const [pattern, statEntry] = mapTextToStatEntry(branch, staticEffects, spellDescription.ID, spellStatEffects, false)
+				const [pattern, statEntry] = mapTextToStatEntry(branch, staticEffects, spellDescription.ID, spellStatEffects, false, spellDurationFormat)
 				if (staticEffects || !statEntry.isWholeText) {
 					statEntry.ignoreSum = !staticEffects
 					insertEntry(statMap, pattern, statEntry, locale)
@@ -1005,7 +1021,7 @@ async function getLocaleStatMap(
 		if (!stats) {
 			stats = getEnchantStats(statEnchant, spellStatEffects)
 		}
-		const [pattern, statEntry] = mapTextToStatEntry(statEnchant.Name_lang, stats, statEnchant.ID, spellStatEffects, true)
+		const [pattern, statEntry] = mapTextToStatEntry(statEnchant.Name_lang, stats, statEnchant.ID, spellStatEffects, true, spellDurationFormat)
 		insertEntry(statMap, pattern, statEntry, locale)
 	}
 
