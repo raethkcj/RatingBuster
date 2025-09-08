@@ -2103,7 +2103,7 @@ do
 				match = match:gsub(large_sep, ""):gsub(dec_sep, ".")
 				local value = tonumber(match)
 				if value then
-					valuePositions[#valuePositions + 1] = { value, position + offset }
+					valuePositions[#valuePositions + 1] = { value, position - 1 + offset }
 					return "%s"
 				end
 			end)
