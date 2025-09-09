@@ -2970,9 +2970,10 @@ function RatingBuster:ProcessStat(stat, value, breakdownStats, link, color, stat
 		local base, bonus = StatLogic:GetArmorDistribution(link, value, color)
 		local mod = statModContext("MOD_ARMOR")
 		value = base * mod + bonus
-		self:ProcessStat(StatLogic.Stats.BonusArmor, value, breakdownStats, link, color, statModContext, mod ~= 1 and db.profile.showModifiedArmor, false)
+		self:ProcessStat(StatLogic.Stats.BonusArmor, value, breakdownStats, link, color, statModContext, true, false)
 	elseif stat == StatLogic.Stats.BonusArmor then
-		if isBaseStat then
+		local mod = statModContext("MOD_ARMOR")
+		if isBaseStat and mod ~= 1 and db.profile.showModifiedArmor then
 			breakdownStats["Decimal"] = value
 		elseif show then
 			breakdownStats[stat] = breakdownStats[stat] + value
