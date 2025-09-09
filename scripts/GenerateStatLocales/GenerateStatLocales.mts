@@ -273,6 +273,32 @@ function mapTextToStatEntry(text: string, statEffects: StatValue[][] | undefined
 		statEntry.entries = statEffects ? [statEffects.flat().filter(sv => sv.value !== 0)] : []
 	}
 
+	// Combine SpellDamage & Healing into SpellPower
+	for (const [i, entry] of Object.entries(statEntry.entries)) {
+		if (entry) {
+			let spellDamage = -1, healing = -1
+			let value: number|undefined = undefined
+			for (const [j, sv] of entry.entries()) {
+				if (sv.stat === "SpellDamage") {
+					spellDamage = j
+					value ||= sv.value
+				} else if (sv.stat === "HealingPower") {
+					healing = j
+					value ||= sv.value
+				}
+
+				if (spellDamage >= 0 && healing >= 0) {
+					if (sv.value === value) {
+						const newEntry = entry.toSpliced(spellDamage, 1, new StatValue("SpellPower", value, sv.isOverride))
+						newEntry.splice(healing, 1)
+						statEntry.entries[i] = newEntry
+					}
+					break
+				}
+			}
+		}
+	}
+
 	return [pattern, statEntry]
 }
 
@@ -944,7 +970,7 @@ for (const locale of locales) {
 	localeBlacklist.set(locale, new Set())
 }
 
-function insertEntry(statMap: Map<string, StatEntry>, text: string, statEntry: StatEntry, locale: Locale) {
+function insertEntry(statMap: Map<string, StatEntry>, text: string, statEntry: StatEntry, locale: Locale, allowWholeTextMismatch?: boolean) {
 	if (!statEntry.entries.find(e => e && e.length > 0)) return
 	const blacklist = localeBlacklist.get(locale)!
 	const existingEntry = statMap.get(text)
@@ -967,8 +993,10 @@ function insertEntry(statMap: Map<string, StatEntry>, text: string, statEntry: S
 		if (newMatchCount > existingMatchCount) {
 			statMap.set(text, statEntry)
 		} else if (newMatchCount === existingMatchCount && !existingEntry.equals(statEntry)) {
-			if (existingEntry.isWholeText && statEntry.isWholeText) {
+			if (existingEntry.isWholeText && statEntry.isWholeText && !allowWholeTextMismatch) {
 				// We can never accurately match this text, blacklist it
+				// We don't blacklist when allowWholeTextMismatch is true,
+				// in order to allow earlier expansions to take precedent on mismatched WholeTexts
 				blacklist.add(text)
 				statMap.delete(text)
 			}
@@ -1032,7 +1060,7 @@ async function combineResults(results: Promise<Map<string, StatEntry>>[], locale
 	const result = await Promise.all(results)
 	return result.reduce((acc, curr) => {
 		for (const [text, newEntry] of curr) {
-			insertEntry(acc, text, newEntry, locale)
+			insertEntry(acc, text, newEntry, locale, true)
 		}
 		return acc
 	})
