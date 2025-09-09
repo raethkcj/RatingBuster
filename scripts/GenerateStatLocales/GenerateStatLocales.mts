@@ -646,7 +646,7 @@ enum EnchantEffect {
 }
 
 enum Resistance {
-	BonusArmor = 0,
+	Armor = 0,
 	HolyResistance,
 	FireResistance,
 	NatureResistance,

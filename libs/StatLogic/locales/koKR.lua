@@ -73,12 +73,12 @@ W["미사용 주문 설명"] = { [Stats.MeleeHaste] = 50, } -- s4154
 W["두 가지의 한손 무기를 동시에 착용할 수 있습니다"] = { [Stats.MeleeHit] = 20, [Stats.RangedHit] = 20, } -- s42459
 W["활력"] = { [Stats.GenericManaRegen] = 4, [Stats.HealthRegen] = 4, } -- e2656
 W["침착함"] = { [Stats.MeleeHitRating] = 10, [Stats.RangedHitRating] = 10, } -- e2658
-W["전투력"] = { [Stats.AttackPower] = 70, [Stats.RangedAttackPower] = 70, } -- e2667
+W["전투력"] = { [Stats.AttackPower] = 70, } -- e2667
 W["태양의 불꽃"] = { [Stats.FireDamage] = 50, [Stats.ArcaneDamage] = 50, } -- e2671
 W["냉기의 영혼"] = { [Stats.FrostDamage] = 54, [Stats.ShadowDamage] = 54, } -- e2672
 W["최고급 마나 오일"] = { [Stats.GenericManaRegen] = 14, } -- e2677
 W["최고급 마술사 오일"] = { [Stats.SpellDamage] = 42, [Stats.HealingPower] = 42, } -- e2678
-W["시험용 보석 마법부여"] = { [Stats.BonusArmor] = 100, } -- e2917
+W["시험용 보석 마법부여"] = { [Stats.Armor] = 100, } -- e2917
 W["아다만타이트 무기 사슬"] = { [Stats.ParryRating] = 15, } -- e3223
 W["대상의 물리 공격력을 감소시킵니다"] = { [Stats.AverageWeaponDamage] = -10, } -- s9459
 W["공격 속도가 증가합니다"] = { [Stats.MeleeHaste] = 9, } -- s19516
@@ -105,7 +105,7 @@ W["모두 가상의 상황입니다. \n더욱 강해지고 튼튼해진 당신�
 W["극지방랑자"] = { [Stats.Stamina] = 15, } -- e3250
 W["특급 마나 오일"] = { [Stats.GenericManaRegen] = 19, } -- e3298
 W["특급 마법사 오일"] = { [Stats.SpellPower] = 56, } -- e3299
-W["숙련 요구 마법부여 test용"] = { [Stats.BonusArmor] = 10, } -- e3320
+W["숙련 요구 마법부여 test용"] = { [Stats.Armor] = 10, } -- e3320
 W["검분쇄자의 룬"] = { [Stats.Parry] = 4, } -- e3365
 W["검파괴자의 룬"] = { [Stats.Parry] = 2, } -- e3594
 W["지배자의 화염석"] = { [Stats.SpellCritRating] = 35, } -- e3597
@@ -471,7 +471,7 @@ L["%s초 동안 대상의 공격 속도를 %s%만큼 향상시키지만 매 %s�
 L["적을 약화시켜 %s초 동안 공격력을 %s만큼 감소시키고 해당 대상이 받는 치유 효과를 %s%만큼 감소시킵니다"] = { false, { Stats.AverageWeaponDamage, }, false, } -- s9035
 L["주위 파티원의 근접 전투력이 %s만큼 증가됩니다. %s초 동안 지속됩니다"] = { { Stats.AttackPower, }, false, } -- s9128
 L["원거리 무기로 치명타를 적중시킬 확률이 %s%만큼 증가합니다"] = { { Stats.MeleeCrit, Stats.RangedCrit, }, } -- s9132
-L["전투력 %s"] = { { Stats.AttackPower, Stats.RangedAttackPower, }, } -- e1563
+L["전투력 %s"] = { { Stats.AttackPower, }, } -- s9136
 L["%s초 동안 대상의 방어도를 %s만큼 감소시킵니다"] = { false, { Stats.Armor, }, } -- s9176
 L["모든 주문 및 효과에 의한 피해와 치유량이 최대 %s만큼 증가합니다"] = { { Stats.SpellDamage, Stats.HealingPower, }, } -- s9342
 L["%s초 동안 시전자를 이동 불가 상태로 만들고 물리 공격력을 %s만큼 증가시킵니다"] = { false, { Stats.AverageWeaponDamage, }, } -- s9576
@@ -1005,7 +1005,7 @@ L["다리나 머리 방어구에 부여하여 자연 저항력을 %s만큼 증�
 L["다리나 머리 방어구에 부여하여 냉기 저항력을 %s만큼 증가시킵니다. 해당 방어구의 다른 마법부여 효과와 중복하여 사용할 수 없습니다"] = { { Stats.FrostResistance, }, } -- s28164
 L["다리나 머리 방어구에 부여하여 암흑 저항력을 %s만큼 증가시킵니다. 해당 방어구의 다른 마법부여 효과와 중복하여 사용할 수 없습니다"] = { { Stats.ShadowResistance, }, } -- s28166
 L["무기 연마 %s"] = { { Stats.AverageWeaponDamage, }, } -- e13
-L["방어도 보강 %s"] = { { Stats.BonusArmor, }, } -- e15
+L["방어도 보강 %s"] = { { Stats.Armor, }, } -- e15
 L["무게 증강 %s"] = { { Stats.AverageWeaponDamage, }, } -- e19
 L["마나 %s"] = { { Stats.Mana, }, } -- e24
 L["조준경 (피해 %s)"] = { { Stats.AverageWeaponDamage, }, } -- e30
@@ -1517,7 +1517,7 @@ L["적에게 돌진하여 일반 피해에 추가로 %s만큼의 피해를 입�
 L["%s초 동안 주위 파티원의 모든 계열에 대한 저항력이 %s만큼 증가합니다"] = { false, { Stats.FireResistance, Stats.NatureResistance, Stats.FrostResistance, Stats.ShadowResistance, Stats.ArcaneResistance, }, } -- s41453
 L["%s초 동안 곰의 모습으로 변신합니다. 공격력이 증가하고 공격 속도가 %s%만큼 감소합니다"] = { false, { Stats.MeleeHaste, }, } -- s42607
 L["무기 연마 (공격력 %s)"] = { { Stats.AverageWeaponDamage, }, } -- e13
-L["방어도 보강 (방어도 %s)"] = { { Stats.BonusArmor, }, } -- e15
+L["방어도 보강 (방어도 %s)"] = { { Stats.Armor, }, } -- e15
 L["무게 증강 (공격력 %s)"] = { { Stats.AverageWeaponDamage, }, } -- e19
 L["평형추 (공격 가속도 %s)"] = { { Stats.MeleeHasteRating, }, } -- e34
 L["치명타 적중도 %s"] = { { Stats.MeleeCritRating, Stats.RangedCritRating, }, } -- e195
@@ -1547,7 +1547,7 @@ L["주문 공격력 %s / 체력 %s"] = { { Stats.SpellDamage, Stats.HealingPower
 L["주문 치유량 %s / 주문 공격력 %s / %s초당 마나 회복량 %s"] = { { Stats.HealingPower, }, { Stats.SpellDamage, }, false, { Stats.GenericManaRegen, }, } -- e2709
 L["힘 %s / 체력 %s"] = { { Stats.Strength, }, { Stats.Stamina, }, } -- e2711
 L["무기 연마 (치명타 적중도 %s / 공격력 %s)"] = { { Stats.MeleeCritRating, }, { Stats.AverageWeaponDamage, }, } -- e2713
-L["전투력 %s / 치명타 적중도 %s"] = { { Stats.AttackPower, Stats.RangedAttackPower, }, { Stats.MeleeCritRating, Stats.RangedCritRating, }, } -- e2717
+L["전투력 %s / 치명타 적중도 %s"] = { { Stats.AttackPower, }, { Stats.MeleeCritRating, Stats.RangedCritRating, }, } -- e2717
 L["주문 공격력 %s / 주문 극대화 적중도 %s"] = { { Stats.SpellDamage, Stats.HealingPower, }, { Stats.SpellCritRating, }, } -- e2721
 L["조준경 (치명타 적중도 %s)"] = { { Stats.RangedCritRating, }, } -- e2724
 L["주문 치유량 %s / 주문 공격력 %s / 체력 %s"] = { { Stats.HealingPower, }, { Stats.SpellDamage, }, { Stats.Stamina, }, } -- e2745
@@ -1560,7 +1560,7 @@ L["주문 극대화 적중도 %s / 주문 관통력 %s"] = { { Stats.SpellCritRa
 L["주문 적중도 %s"] = { { Stats.SpellHitRating, }, } -- e2767
 L["지능 %s (%s/+$f)"] = { { Stats.Intellect, }, false, } -- e2798
 L["체력 %s (%s/+$f)"] = { { Stats.Stamina, }, false, } -- e2799
-L["방어도 %s (%s/+$f)"] = { { Stats.BonusArmor, }, false, } -- e2800
+L["방어도 %s (%s/+$f)"] = { { Stats.Armor, }, false, } -- e2800
 L["%s초당 생명력 회복량 %s"] = { false, { Stats.HealthRegen, }, } -- e2814
 L["주문 극대화 적중도 %s / %s% 확률로 주문 반사"] = { { Stats.SpellCritRating, }, false, } -- e2827
 L["전투력 %s / 최하급 달리기 속도 증가"] = { { Stats.AttackPower, }, } -- e2829
@@ -1601,7 +1601,7 @@ L["치명타 적중도 %s / 회피 숙련도 %s"] = { { Stats.CritRating, }, { S
 L["무기 막기 숙련도 %s / 체력 %s"] = { { Stats.ParryRating, }, { Stats.Stamina, }, } -- e3063
 L["정신력 %s / 주문 치유량 %s / 주문 공격력 %s"] = { { Stats.Spirit, }, { Stats.HealingPower, }, { Stats.SpellDamage, }, } -- e3064
 L["주문 공격력 %s / 주문 관통력 %s"] = { { Stats.SpellDamage, Stats.HealingPower, }, { Stats.SpellPenetration, }, } -- e3066
-L["전투력 %s / 체력 %s"] = { { Stats.AttackPower, Stats.RangedAttackPower, }, { Stats.Stamina, }, } -- e3156
+L["전투력 %s / 체력 %s"] = { { Stats.AttackPower, }, { Stats.Stamina, }, } -- e3067
 L["회피 숙련도 %s / 적중도 %s"] = { { Stats.DodgeRating, }, { Stats.HitRating, }, } -- e3068
 L["주문 치유량 %s / 주문 공격력 %s / 탄력도 %s"] = { { Stats.HealingPower, }, { Stats.SpellDamage, }, { Stats.ResilienceRating, }, } -- e3069
 L["민첩성 %s / 방어 숙련도 %s"] = { { Stats.Agility, }, { Stats.DefenseRating, }, } -- e3073
@@ -1621,7 +1621,7 @@ L["전투력 %s / %s초당 마나 회복량 %s"] = { { Stats.AttackPower, }, fal
 L["주문 적중도 %s / 주문 공격력 %s"] = { { Stats.SpellHitRating, }, { Stats.SpellDamage, Stats.HealingPower, }, } -- e3110
 L["민첩성 %s / 치명타 피해 %s%만큼 증가"] = { { Stats.Agility, }, false, } -- e3154
 L["주문 치유량 %s / 주문 공격력 %s / 정신력 %s"] = { { Stats.HealingPower, }, { Stats.SpellDamage, }, { Stats.Spirit, }, } -- e3158
-L["전투력 %s / 기절에 대한 저항력 %s%"] = { { Stats.AttackPower, Stats.RangedAttackPower, }, false, } -- e3162
+L["전투력 %s / 기절에 대한 저항력 %s%"] = { { Stats.AttackPower, }, false, } -- e3162
 L["주문 공격력 %s / 기절에 대한 저항력 %s%"] = { { Stats.SpellDamage, Stats.HealingPower, }, false, } -- e3163
 L["정신력 %s / 주문 치유량 %s"] = { { Stats.Spirit, }, { Stats.HealingPower, }, } -- e3200
 L["탄력도 %s / 체력 %s"] = { { Stats.ResilienceRating, }, { Stats.Stamina, }, } -- e3226
@@ -3004,7 +3004,7 @@ L["치명타 및 극대화도 %s / 기절에 대한 저항력 %s%"] = { { Stats.
 L["지능 %s / 기절에 대한 저항력 %s%"] = { { Stats.Intellect, }, false, } -- e3163
 L["체력 %s / 최하급 이동 속도 증가"] = { { Stats.Stamina, }, } -- e3232
 L["위협 수준 %s% / 무기 막기 숙련도 %s"] = { false, { Stats.ParryRating, }, } -- e3253
-L["민첩성 %s / 방어도 %s"] = { { Stats.Agility, }, { Stats.BonusArmor, }, } -- e3256
+L["민첩성 %s / 방어도 %s"] = { { Stats.Agility, }, { Stats.Armor, }, } -- e3256
 L["치명타 및 극대화도 %s / 치명타 및 극대화 효과 %s%"] = { { Stats.CritRating, }, false, } -- e3261
 L["회피 숙련도 %s / 방패 피해 방어량 %s%"] = { { Stats.DodgeRating, }, false, } -- e3274
 L["지능 %s / 최대 마나 %s%"] = { { Stats.Intellect, }, false, } -- e3275
@@ -3540,7 +3540,7 @@ L["평형추 (가속 %s)"] = { { Stats.HasteRating, }, } -- e34
 L["방패 막기 %s"] = { { Stats.BlockRating, }, } -- e763
 L["무기 막기 %s"] = { { Stats.ParryRating, }, } -- e863
 L["민첩성 %s / 회피 %s"] = { { Stats.Agility, }, { Stats.DodgeRating, }, } -- e910
-L["힘 %s / 방어도 %s / 화염 저항력 %s"] = { { Stats.Strength, }, { Stats.BonusArmor, }, { Stats.FireResistance, }, } -- e1532
+L["힘 %s / 방어도 %s / 화염 저항력 %s"] = { { Stats.Strength, }, { Stats.Armor, }, { Stats.FireResistance, }, } -- e1532
 L["지능 %s / 마나 %s / 화염 저항력 %s"] = { { Stats.Intellect, }, { Stats.Mana, }, { Stats.FireResistance, }, } -- e1543
 L["근접 치명타 %s"] = { { Stats.MeleeCritRating, }, } -- e2506
 L["원거리 적중 %s"] = { { Stats.RangedHitRating, }, } -- e2523

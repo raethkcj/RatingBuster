@@ -73,7 +73,7 @@ W["野蛮"] = { [Stats.AttackPower] = 70, } -- e2667
 W["阳炎"] = { [Stats.FireDamage] = 50, [Stats.ArcaneDamage] = 50, } -- e2671
 W["魂霜"] = { [Stats.FrostDamage] = 54, [Stats.ShadowDamage] = 54, } -- e2672
 W["超级巫师之油"] = { [Stats.SpellDamage] = 42, [Stats.HealingPower] = 42, } -- e2678
-W["gem test enchantment"] = { [Stats.BonusArmor] = 100, } -- e2917
+W["gem test enchantment"] = { [Stats.Armor] = 100, } -- e2917
 W["精金武器链"] = { [Stats.ParryRating] = 15, } -- e3223
 W["降低目标造成的物理伤害。"] = { [Stats.AverageWeaponDamage] = -10, } -- s9459
 W["使施法者的攻击速度提高。"] = { [Stats.MeleeHaste] = 9, } -- s19516
@@ -106,7 +106,7 @@ W["以一阵白骨风暴攻击附近的敌人。"] = { [Stats.MeleeHaste] = -990
 W["当“怪医”在场时，你的生命值不会减少。"] = { [Stats.Health] = 45000, } -- s74503
 W["履冰"] = { [Stats.Stamina] = 15, } -- e3250
 W["优异巫师之油"] = { [Stats.SpellPower] = 56, } -- e3299
-W["test skill req enchant"] = { [Stats.BonusArmor] = 10, } -- e3320
+W["test skill req enchant"] = { [Stats.Armor] = 10, } -- e3320
 W["裂刃符文"] = { [Stats.Parry] = 4, } -- e3365
 W["破刃符文"] = { [Stats.Parry] = 2, } -- e3594
 W["特效火焰石"] = { [Stats.SpellCritRating] = 35, } -- e3597
@@ -1056,7 +1056,7 @@ L["给你的头部或腿部装备附加魔法效果，使冰霜抗性提高%s点
 L["给你的头部或腿部装备附加魔法效果，使暗影抗性提高%s点。无法与其它附加于指定装备的魔法效果重叠。"] = { { Stats.ShadowResistance, }, } -- s28166
 L["使你的宠物的爆击几率提高$%s%。"] = { { Stats.MeleeCrit, Stats.RangedCrit, }, } -- s436689
 L["磨快 %s"] = { { Stats.AverageWeaponDamage, }, } -- e13
-L["强化护甲 %s"] = { { Stats.BonusArmor, }, } -- e15
+L["强化护甲 %s"] = { { Stats.Armor, }, } -- e15
 L["增重 %s"] = { { Stats.AverageWeaponDamage, }, } -- e19
 L["法力值 %s"] = { { Stats.Mana, }, } -- e24
 L["瞄准镜（%s 伤害）"] = { { Stats.AverageWeaponDamage, }, } -- e30
@@ -1071,7 +1071,7 @@ L["%s 耐力"] = { { Stats.Stamina, }, } -- e71
 L["%s 敏捷"] = { { Stats.Agility, }, } -- e74
 L["%s 智力"] = { { Stats.Intellect, }, } -- e79
 L["%s 精神"] = { { Stats.Spirit, }, } -- e82
-L["%s 护甲"] = { { Stats.BonusArmor, }, } -- e85
+L["%s 护甲"] = { { Stats.Armor, }, } -- e85
 L["%s 防御"] = { { Stats.Defense, }, } -- e110
 L["剑技能 %s"] = { { Stats.WeaponSkill, }, } -- e125
 L["双手剑技能 %s"] = { { Stats.WeaponSkill, }, } -- e132
@@ -1090,7 +1090,7 @@ L["提高冰霜效果 %s"] = { { Stats.FrostDamage, }, } -- e227
 L["提高暗影效果 %s"] = { { Stats.ShadowDamage, }, } -- e234
 L["武器伤害 %s"] = { { Stats.AverageWeaponDamage, }, } -- e241
 L["智力 %s"] = { { Stats.Intellect, }, } -- e244
-L["护甲 %s"] = { { Stats.BonusArmor, }, } -- e245
+L["护甲 %s"] = { { Stats.Armor, }, } -- e245
 L["敏捷 %s"] = { { Stats.Agility, }, } -- e247
 L["力量 %s"] = { { Stats.Strength, }, } -- e248
 L["%s 火焰抗性"] = { { Stats.FireResistance, }, } -- e256
@@ -1697,7 +1697,7 @@ L["向敌人冲锋，造成普通伤害外加%s点伤害，并使其昏迷%s秒�
 L["protects the caster from all attacks and spells for %s秒., but also increases the time between attacks by %s% during that time"] = { false, { Stats.MeleeHaste, }, } -- s41367
 L["变形成为一头熊，造成的伤害提高，但是攻击速度降低%s%，持续%s秒。"] = { { Stats.MeleeHaste, }, false, } -- s42607
 L["磨快（%s 伤害）"] = { { Stats.AverageWeaponDamage, }, } -- e13
-L["加固（%s 护甲）"] = { { Stats.BonusArmor, }, } -- e15
+L["加固（%s 护甲）"] = { { Stats.Armor, }, } -- e15
 L["增重（%s 伤害）"] = { { Stats.AverageWeaponDamage, }, } -- e19
 L["%s 法力值"] = { { Stats.Mana, }, } -- e24
 L["平衡锤（%s急速等级）"] = { { Stats.MeleeHasteRating, }, } -- e34
@@ -1769,7 +1769,7 @@ L["%s 法术命中等级"] = { { Stats.SpellHitRating, }, } -- e2767
 L["%s 韧性"] = { { Stats.ResilienceRating, }, } -- e2788
 L["%s 智力 （%s/+$f）"] = { { Stats.Intellect, }, false, } -- e2798
 L["%s 耐力 （%s/+$f）"] = { { Stats.Stamina, }, false, } -- e2799
-L["%s 护甲 （%s/+$f）"] = { { Stats.BonusArmor, }, false, } -- e2800
+L["%s 护甲 （%s/+$f）"] = { { Stats.Armor, }, false, } -- e2800
 L["%s 奥术伤害"] = { { Stats.ArcaneDamage, }, } -- e2807
 L["%s 火焰伤害"] = { { Stats.FireDamage, }, } -- e2808
 L["%s 自然伤害"] = { { Stats.NatureDamage, }, } -- e2809
@@ -2655,7 +2655,7 @@ L["%s 急速等级，%s 法术强度"] = { { Stats.HasteRating, }, { Stats.Spell
 L["%s 急速等级，%s 耐力"] = { { Stats.HasteRating, }, { Stats.Stamina, }, } -- e3272
 L["%s 法术强度，%s% 智力"] = { { Stats.SpellPower, }, false, } -- e3275
 L["%s攻击强度"] = { { Stats.GenericAttackPower, }, } -- e3292
-L["%s 护甲值"] = { { Stats.BonusArmor, }, } -- e3294
+L["%s 护甲值"] = { { Stats.Armor, }, } -- e3294
 L["%s 精神，威胁降低%s%"] = { { Stats.Spirit, }, false, } -- e3296
 L["每%s秒%s点法力值"] = { false, { Stats.GenericManaRegen, }, } -- e3306
 L["%s 护甲穿透等级"] = { { Stats.ArmorPenetrationRating, }, } -- e3378
@@ -2717,7 +2717,7 @@ L["%s 奥术抗性，%s 耐力"] = { { Stats.ArcaneResistance, }, { Stats.Stamin
 L["%s 火焰抗性，%s 耐力"] = { { Stats.FireResistance, }, { Stats.Stamina, }, } -- e3816
 L["%s躲闪等级，%s 防御等级"] = { { Stats.DodgeRating, }, { Stats.DefenseRating, }, } -- e3837
 L["%s法术强度，%s 爆击等级"] = { { Stats.SpellPower, }, { Stats.CritRating, }, } -- e3838
-L["%s护甲值"] = { { Stats.BonusArmor, }, } -- e3860
+L["%s护甲值"] = { { Stats.Armor, }, } -- e3860
 L["使附近%s码范围内的所有小队和团队成员获得%s点额外的护甲值。每个圣骑士在同一时间内只能开启一种光环。"] = { false, { Stats.Armor, }, } -- s465
 L["产生%s点怒气值，并使身边半径%s码范围内的小队和团队成员的耐力提高%s点。持续%s秒。"] = { false, false, { Stats.Stamina, }, false, } -- s469
 L["圣洁的能量充满施法者的体内，使装备提供的护甲值提高%s%，法术强度提高%s点。\n你在同一时间内只能激活心灵意志或心灵之火中的一种。"] = { false, { Stats.HealingPower, Stats.SpellDamage, }, } -- s588
@@ -3253,7 +3253,7 @@ L["%s 爆击等级，%s 敏捷"] = { { Stats.CritRating, }, { Stats.Agility, }, 
 L["%s 敏捷，%s% 爆击效果"] = { { Stats.Agility, }, false, } -- e3154
 L["%s 爆击等级，%s%昏迷抵抗"] = { { Stats.CritRating, }, false, } -- e3162
 L["%s 智力，%s%昏迷抵抗"] = { { Stats.Intellect, }, false, } -- e3163
-L["%s 敏捷，%s 护甲"] = { { Stats.Agility, }, { Stats.BonusArmor, }, } -- e3256
+L["%s 敏捷，%s 护甲"] = { { Stats.Agility, }, { Stats.Armor, }, } -- e3256
 L["%s 爆击等级，%s% 爆击效果"] = { { Stats.CritRating, }, false, } -- e3261
 L["%s 躲闪等级，%s% 盾牌格挡值"] = { { Stats.DodgeRating, }, false, } -- e3274
 L["%s 智力，%s% 法力最大值"] = { { Stats.Intellect, }, false, } -- e3275
@@ -3827,13 +3827,13 @@ L["%s 招架"] = { { Stats.ParryRating, }, } -- e863
 L["%s 敏捷，%s 躲闪"] = { { Stats.Agility, }, { Stats.DodgeRating, }, } -- e910
 L["%s 法力值，%s 火焰抗性"] = { { Stats.Mana, }, { Stats.FireResistance, }, } -- e1523
 L["%s 生命值，%s 火焰抗性"] = { { Stats.Health, }, { Stats.FireResistance, }, } -- e1524
-L["%s 护甲值，%s 火焰抗性"] = { { Stats.BonusArmor, }, { Stats.FireResistance, }, } -- e1525
+L["%s 护甲值，%s 火焰抗性"] = { { Stats.Armor, }, { Stats.FireResistance, }, } -- e1525
 L["%s 力量，%s 火焰抗性"] = { { Stats.Strength, }, { Stats.FireResistance, }, } -- e1526
 L["%s 耐力，%s 火焰抗性"] = { { Stats.Stamina, }, { Stats.FireResistance, }, } -- e1527
 L["%s 敏捷，%s 火焰抗性"] = { { Stats.Agility, }, { Stats.FireResistance, }, } -- e1528
 L["%s 智力，%s 火焰抗性"] = { { Stats.Intellect, }, { Stats.FireResistance, }, } -- e1529
 L["%s 精神，%s 火焰抗性"] = { { Stats.Spirit, }, { Stats.FireResistance, }, } -- e1530
-L["%s 力量，%s 护甲值，%s 火焰抗性"] = { { Stats.Strength, }, { Stats.BonusArmor, }, { Stats.FireResistance, }, } -- e1532
+L["%s 力量，%s 护甲值，%s 火焰抗性"] = { { Stats.Strength, }, { Stats.Armor, }, { Stats.FireResistance, }, } -- e1532
 L["%s 智力，%s 法力值，%s 火焰抗性"] = { { Stats.Intellect, }, { Stats.Mana, }, { Stats.FireResistance, }, } -- e1543
 L["%s 近战爆击"] = { { Stats.MeleeCritRating, }, } -- e2506
 L["%s 远程命中"] = { { Stats.RangedHitRating, }, } -- e2523

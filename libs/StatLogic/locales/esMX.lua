@@ -76,7 +76,7 @@ W["salvajismo"] = { [Stats.AttackPower] = 70, } -- e2667
 W["fuego solar"] = { [Stats.FireDamage] = 50, [Stats.ArcaneDamage] = 50, } -- e2671
 W["escarcha de alma"] = { [Stats.FrostDamage] = 54, [Stats.ShadowDamage] = 54, } -- e2672
 W["aceite de zahorí excelente"] = { [Stats.SpellDamage] = 42, [Stats.HealingPower] = 42, } -- e2678
-W["encanto de prueba de gemas"] = { [Stats.BonusArmor] = 100, } -- e2917
+W["encanto de prueba de gemas"] = { [Stats.Armor] = 100, } -- e2917
 W["cadena de adamantita"] = { [Stats.ParryRating] = 15, } -- e3223
 W["reduce el daño físico infligido por el objetivo"] = { [Stats.AverageWeaponDamage] = -10, } -- s9459
 W["aumenta la velocidad de ataque del taumaturgo"] = { [Stats.MeleeHaste] = 9, } -- s19516
@@ -102,7 +102,7 @@ W["si el doctor está presente tu salud no se resiente"] = { [Stats.Health] = 45
 W["this is all just pretend.  \nyou imagine yourself stronger, and more resilient.  \nyou're sure you can handle the plague"] = { [Stats.FrostResistance] = 200, } -- s346285
 W["caminante del hielo"] = { [Stats.Stamina] = 15, } -- e3250
 W["aceite de zahorí excepcional"] = { [Stats.SpellPower] = 56, } -- e3299
-W["test skill req enchant"] = { [Stats.BonusArmor] = 10, } -- e3320
+W["test skill req enchant"] = { [Stats.Armor] = 10, } -- e3320
 W["runa de devastación de espadas"] = { [Stats.Parry] = 4, } -- e3365
 W["runa de ruptura de espadas"] = { [Stats.Parry] = 2, } -- e3594
 W["piedra de fuego maestra"] = { [Stats.SpellCritRating] = 35, } -- e3597
@@ -1154,7 +1154,7 @@ L["añade de forma permanente %s p. de resistencia a la naturaleza a un objeto d
 L["añade de forma permanente %s p. de resistencia a la escarcha a un objeto de la casilla para pierna o cabeza. no se suma a otros encantamientos de la casilla de equipamiento seleccionada"] = { { Stats.FrostResistance, }, } -- s28164
 L["añade de forma permanente %s p. de resistencia a las sombras a un objeto de la casilla para pierna o cabeza. no se suma a otros encantamientos de la casilla de equipamiento seleccionada"] = { { Stats.ShadowResistance, }, } -- s28166
 L["afilado %s"] = { { Stats.AverageWeaponDamage, }, } -- e13
-L["armadura reforzada %s"] = { { Stats.BonusArmor, }, } -- e15
+L["armadura reforzada %s"] = { { Stats.Armor, }, } -- e15
 L["pesado %s"] = { { Stats.AverageWeaponDamage, }, } -- e19
 L["maná %s"] = { { Stats.Mana, }, } -- e24
 L["alcance (%s daño)"] = { { Stats.AverageWeaponDamage, }, } -- e30
@@ -1169,7 +1169,7 @@ L["%s aguante"] = { { Stats.Stamina, }, } -- e71
 L["%s agilidad"] = { { Stats.Agility, }, } -- e74
 L["%s intelecto"] = { { Stats.Intellect, }, } -- e79
 L["%s espíritu"] = { { Stats.Spirit, }, } -- e82
-L["%s armadura"] = { { Stats.BonusArmor, }, } -- e85
+L["%s armadura"] = { { Stats.Armor, }, } -- e85
 L["%s de defensa"] = { { Stats.Defense, }, } -- e110
 L["habilidad con espadas %s"] = { { Stats.WeaponSkill, }, } -- e125
 L["habilidad con espadas de dos manos %s"] = { { Stats.WeaponSkill, }, } -- e132
@@ -1187,7 +1187,7 @@ L["aumenta los efectos de naturaleza %s"] = { { Stats.NatureDamage, }, } -- e220
 L["aumenta los efectos de escarcha %s"] = { { Stats.FrostDamage, }, } -- e227
 L["aumenta los efectos de las sombras %s"] = { { Stats.ShadowDamage, }, } -- e234
 L["intelecto %s"] = { { Stats.Intellect, }, } -- e244
-L["armadura %s"] = { { Stats.BonusArmor, }, } -- e245
+L["armadura %s"] = { { Stats.Armor, }, } -- e245
 L["agilidad %s"] = { { Stats.Agility, }, } -- e247
 L["fuerza %s"] = { { Stats.Strength, }, } -- e248
 L["%s resistencia al fuego"] = { { Stats.FireResistance, }, } -- e256
@@ -1771,7 +1771,7 @@ L["carga contra un enemigo, infligiendo el daño habitual más %s p. y aturde al
 L["aumenta %s p. la resistencia a todos los tipos de magia de todos los miembros del grupo cercanos durante %s s"] = { { Stats.FireResistance, Stats.NatureResistance, Stats.FrostResistance, Stats.ShadowResistance, Stats.ArcaneResistance, }, false, } -- s41453
 L["cambio de forma a oso durante %s s, aumentado el daño pero disminuyendo la velocidad de ataque en un %s%"] = { false, { Stats.MeleeHaste, }, } -- s42607
 L["afilado (%s daño)"] = { { Stats.AverageWeaponDamage, }, } -- e13
-L["reforzado (%s armadura)"] = { { Stats.BonusArmor, }, } -- e15
+L["reforzado (%s armadura)"] = { { Stats.Armor, }, } -- e15
 L["pesado (%s daño)"] = { { Stats.AverageWeaponDamage, }, } -- e19
 L["%s maná"] = { { Stats.Mana, }, } -- e24
 L["contrapeso (%s índice de celeridad)"] = { { Stats.MeleeHasteRating, }, } -- e34
@@ -1832,7 +1832,7 @@ L["%s temple"] = { { Stats.ResilienceRating, }, } -- e2788
 L["%s maná recuperado cada %s s"] = { { Stats.GenericManaRegen, }, false, } -- e2794
 L["%s intelecto (%s/+$f)"] = { { Stats.Intellect, }, false, } -- e2798
 L["%s aguante (%s/+$f)"] = { { Stats.Stamina, }, false, } -- e2799
-L["%s armadura (%s/+$f)"] = { { Stats.BonusArmor, }, false, } -- e2800
+L["%s armadura (%s/+$f)"] = { { Stats.Armor, }, false, } -- e2800
 L["%s daño arcano"] = { { Stats.ArcaneDamage, }, } -- e2807
 L["%s daño de fuego"] = { { Stats.FireDamage, }, } -- e2808
 L["%s daño de naturaleza"] = { { Stats.NatureDamage, }, } -- e2809
@@ -3160,7 +3160,7 @@ L["%s índice de golpe crítico y %s agilidad"] = { { Stats.CritRating, }, { Sta
 L["%s agilidad y %s% de efecto crítico aumentado"] = { { Stats.Agility, }, false, } -- e3154
 L["%s índice de golpe crítico y %s% resistencia al aturdimiento"] = { { Stats.CritRating, }, false, } -- e3162
 L["%s intelecto y %s% resistencia al aturdimiento"] = { { Stats.Intellect, }, false, } -- e3163
-L["%s agilidad y %s armadura"] = { { Stats.Agility, }, { Stats.BonusArmor, }, } -- e3256
+L["%s agilidad y %s armadura"] = { { Stats.Agility, }, { Stats.Armor, }, } -- e3256
 L["%s índice de golpe crítico y %s% efecto crítico aumentado"] = { { Stats.CritRating, }, false, } -- e3261
 L["%s índice de esquivar y %s% valor de bloqueo de escudo"] = { { Stats.DodgeRating, }, false, } -- e3274
 L["%s intelecto y %s% de maná máximo"] = { { Stats.Intellect, }, false, } -- e3275
@@ -3801,13 +3801,13 @@ L["%s agilidad y %s esquivar"] = { { Stats.Agility, }, { Stats.DodgeRating, }, }
 L["%s celeridad"] = { { Stats.HasteRating, }, } -- e931
 L["%s maná y %s resistencia al fuego"] = { { Stats.Mana, }, { Stats.FireResistance, }, } -- e1523
 L["%s salud y %s resistencia al fuego"] = { { Stats.Health, }, { Stats.FireResistance, }, } -- e1524
-L["%s armadura y %s resistencia al fuego"] = { { Stats.BonusArmor, }, { Stats.FireResistance, }, } -- e1525
+L["%s armadura y %s resistencia al fuego"] = { { Stats.Armor, }, { Stats.FireResistance, }, } -- e1525
 L["%s fuerza y %s resistencia al fuego"] = { { Stats.Strength, }, { Stats.FireResistance, }, } -- e1526
 L["%s aguante y %s resistencia al fuego"] = { { Stats.Stamina, }, { Stats.FireResistance, }, } -- e1527
 L["%s agilidad y %s resistencia al fuego"] = { { Stats.Agility, }, { Stats.FireResistance, }, } -- e1528
 L["%s intelecto y %s resistencia al fuego"] = { { Stats.Intellect, }, { Stats.FireResistance, }, } -- e1529
 L["%s espíritu y %s resistencia al fuego"] = { { Stats.Spirit, }, { Stats.FireResistance, }, } -- e1530
-L["%s fuerza, %s armadura y %s resistencia al fuego"] = { { Stats.Strength, }, { Stats.BonusArmor, }, { Stats.FireResistance, }, } -- e1532
+L["%s fuerza, %s armadura y %s resistencia al fuego"] = { { Stats.Strength, }, { Stats.Armor, }, { Stats.FireResistance, }, } -- e1532
 L["%s intelecto, %s maná y %s resistencia al fuego"] = { { Stats.Intellect, }, { Stats.Mana, }, { Stats.FireResistance, }, } -- e1543
 L["%s bloqueo"] = { { Stats.BlockRating, }, } -- e1983
 L["%s golpe crítico cuerpo a cuerpo"] = { { Stats.MeleeCritRating, }, } -- e2506

@@ -70,11 +70,11 @@ W["when activated, all of your spells become instant cast"] = { [Stats.SpellHast
 W["allows one-hand and off-hand weapons to be equipped in the off-hand"] = { [Stats.MeleeHit] = 20, [Stats.RangedHit] = 20, } -- s42459
 W["vitality"] = { [Stats.GenericManaRegen] = 4, [Stats.HealthRegen] = 4, } -- e2656
 W["surefooted"] = { [Stats.MeleeHitRating] = 10, [Stats.RangedHitRating] = 10, } -- e2658
-W["savagery"] = { [Stats.AttackPower] = 70, } -- e2667
+W["savagery"] = { [Stats.AttackPower] = 70, [Stats.RangedAttackPower] = 70, } -- e2667
 W["sunfire"] = { [Stats.FireDamage] = 50, [Stats.ArcaneDamage] = 50, } -- e2671
 W["soulfrost"] = { [Stats.FrostDamage] = 54, [Stats.ShadowDamage] = 54, } -- e2672
 W["superior wizard oil"] = { [Stats.SpellDamage] = 42, [Stats.HealingPower] = 42, } -- e2678
-W["gem test enchantment"] = { [Stats.BonusArmor] = 100, } -- e2917
+W["gem test enchantment"] = { [Stats.Armor] = 100, } -- e2917
 W["adamantite weapon chain"] = { [Stats.ParryRating] = 15, } -- e3223
 W["reduces the physical damage dealt by the target"] = { [Stats.AverageWeaponDamage] = -10, } -- s9459
 W["increases the caster's attack speed"] = { [Stats.MeleeHaste] = 9, } -- s19516
@@ -99,7 +99,7 @@ W["attacks nearby enemies in a whirlwind of bone"] = { [Stats.MeleeHaste] = -990
 W["when the \"doc\" is on the clock your health won't drop"] = { [Stats.Health] = 45000, } -- s74503
 W["icewalker"] = { [Stats.Stamina] = 15, } -- e3250
 W["exceptional wizard oil"] = { [Stats.SpellPower] = 56, } -- e3299
-W["test skill req enchant"] = { [Stats.BonusArmor] = 10, } -- e3320
+W["test skill req enchant"] = { [Stats.Armor] = 10, } -- e3320
 W["rune of swordshattering"] = { [Stats.Parry] = 4, } -- e3365
 W["rune of swordbreaking"] = { [Stats.Parry] = 2, } -- e3594
 W["master firestone"] = { [Stats.SpellCritRating] = 35, } -- e3597
@@ -476,7 +476,7 @@ L["increases an ally's attack speed by %s% for %s sec., but also inflicts %s nat
 L["weakens the target enemy, reducing damage caused by %s and reducing the effectiveness of any healing by %s%.  lasts %s sec"] = { { Stats.AverageWeaponDamage, }, false, false, } -- s9035
 L["increases the melee attack power of nearby party members by %s for %s sec"] = { { Stats.AttackPower, }, false, } -- s9128
 L["improves your chance to get a critical strike with missile weapons by %s%"] = { { Stats.MeleeCrit, Stats.RangedCrit, }, } -- s9132
-L["%s attack power"] = { { Stats.AttackPower, }, } -- s9136
+L["%s attack power"] = { { Stats.AttackPower, Stats.RangedAttackPower, }, } -- e1563
 L["decrease the armor of target by %s for %s sec"] = { { Stats.Armor, }, false, } -- s9176
 L["increases damage and healing done by magical spells and effects by up to %s"] = { { Stats.SpellDamage, Stats.HealingPower, }, } -- s9342
 L["immobilizes the caster and increases the physical damage it deals by %s for %s sec"] = { { Stats.AverageWeaponDamage, }, false, } -- s9576
@@ -1018,7 +1018,7 @@ L["permanently adds %s shadow resistance to a leg or head slot item. does not st
 L["increases your pet's critical strike chance by $%s%"] = { { Stats.MeleeCrit, Stats.RangedCrit, }, } -- s436689
 L["heals yourself for %s%, and increases your maximum health by %s% for %s sec"] = { { Stats.Health, }, false, false, } -- s467498
 L["sharpened %s"] = { { Stats.AverageWeaponDamage, }, } -- e13
-L["reinforced armor %s"] = { { Stats.BonusArmor, }, } -- e15
+L["reinforced armor %s"] = { { Stats.Armor, }, } -- e15
 L["weighted %s"] = { { Stats.AverageWeaponDamage, }, } -- e19
 L["mana %s"] = { { Stats.Mana, }, } -- e24
 L["scope (%s damage)"] = { { Stats.AverageWeaponDamage, }, } -- e30
@@ -1046,7 +1046,7 @@ L["increases frost effects %s"] = { { Stats.FrostDamage, }, } -- e227
 L["increases shadow effects %s"] = { { Stats.ShadowDamage, }, } -- e234
 L["weapon damage %s"] = { { Stats.AverageWeaponDamage, }, } -- e241
 L["intellect %s"] = { { Stats.Intellect, }, } -- e244
-L["armor %s"] = { { Stats.BonusArmor, }, } -- e245
+L["armor %s"] = { { Stats.Armor, }, } -- e245
 L["agility %s"] = { { Stats.Agility, }, } -- e247
 L["strength %s"] = { { Stats.Strength, }, } -- e248
 L["increase spell damage %s"] = { { Stats.SpellDamage, Stats.HealingPower, }, } -- e423
@@ -1116,7 +1116,7 @@ L["frost damage %s"] = { { Stats.FrostDamage, }, } -- e2615
 L["fire damage %s"] = { { Stats.FireDamage, }, } -- e2616
 L["healing %s and %s mana per %s sec"] = { { Stats.HealingPower, }, { Stats.GenericManaRegen, }, false, } -- e2715
 L["stamina %s and armor %s"] = { { Stats.Stamina, }, { Stats.Armor, }, } -- e2716
-L["attack power %s and %s% critical strike"] = { { Stats.AttackPower, }, { Stats.MeleeCrit, Stats.RangedCrit, Stats.SpellCrit, }, } -- e7884
+L["attack power %s and %s% critical strike"] = { { Stats.AttackPower, Stats.RangedAttackPower, }, { Stats.MeleeCrit, Stats.RangedCrit, Stats.SpellCrit, }, } -- e7884
 L["spell damage %s and %s% spell critical strike"] = { { Stats.SpellDamage, Stats.HealingPower, }, { Stats.SpellCrit, }, } -- e2721
 L["%s dodge"] = { { Stats.DodgeRating, }, } -- e2815
 L["%s critical strike"] = { { Stats.CritRating, }, } -- e2823
@@ -1558,7 +1558,7 @@ L["charges an enemy, inflicting normal damage plus %s and stuns the opponent for
 L["increases the resistance of nearby group members to all schools of magic by %s for %s sec"] = { { Stats.FireResistance, Stats.NatureResistance, Stats.FrostResistance, Stats.ShadowResistance, Stats.ArcaneResistance, }, false, } -- s41453
 L["shapeshift into a bear for %s sec, increasing damage but decreasing attack speed by %s%"] = { false, { Stats.MeleeHaste, }, } -- s42607
 L["sharpened (%s damage)"] = { { Stats.AverageWeaponDamage, }, } -- e13
-L["reinforced (%s armor)"] = { { Stats.BonusArmor, }, } -- e15
+L["reinforced (%s armor)"] = { { Stats.Armor, }, } -- e15
 L["weighted (%s damage)"] = { { Stats.AverageWeaponDamage, }, } -- e19
 L["%s mana"] = { { Stats.Mana, }, } -- e24
 L["counterweight (%s haste rating)"] = { { Stats.MeleeHasteRating, }, } -- e34
@@ -1614,7 +1614,7 @@ L["%s strength and %s stamina"] = { { Stats.Strength, }, { Stats.Stamina, }, } -
 L["sharpened (%s crit rating and %s damage)"] = { { Stats.MeleeCritRating, }, { Stats.AverageWeaponDamage, }, } -- e2713
 L["%s healing %s spell damage and %s mana per %s sec"] = { { Stats.HealingPower, }, { Stats.SpellDamage, }, { Stats.GenericManaRegen, }, false, } -- e2715
 L["%s stamina and %s armor"] = { { Stats.Stamina, }, { Stats.Armor, }, } -- e2716
-L["%s attack power and %s critical strike rating"] = { { Stats.AttackPower, }, { Stats.MeleeCritRating, Stats.RangedCritRating, }, } -- e2717
+L["%s attack power and %s critical strike rating"] = { { Stats.AttackPower, Stats.RangedAttackPower, }, { Stats.MeleeCritRating, Stats.RangedCritRating, }, } -- e2717
 L["%s spell damage and %s spell critical rating"] = { { Stats.SpellDamage, Stats.HealingPower, }, { Stats.SpellCritRating, }, } -- e2721
 L["scope (%s critical strike rating)"] = { { Stats.RangedCritRating, }, } -- e2724
 L["%s healing %s spell damage and %s mana every %s seconds"] = { { Stats.HealingPower, }, { Stats.SpellDamage, }, { Stats.GenericManaRegen, }, false, } -- e2741
@@ -1633,7 +1633,7 @@ L["%s resilience"] = { { Stats.ResilienceRating, }, } -- e2788
 L["%s mana restored per %s seconds"] = { { Stats.GenericManaRegen, }, false, } -- e2794
 L["%s intellect (%s/+$f)"] = { { Stats.Intellect, }, false, } -- e2798
 L["%s stamina (%s/+$f)"] = { { Stats.Stamina, }, false, } -- e2799
-L["%s armor (%s/+$f)"] = { { Stats.BonusArmor, }, false, } -- e2800
+L["%s armor (%s/+$f)"] = { { Stats.Armor, }, false, } -- e2800
 L["%s arcane damage"] = { { Stats.ArcaneDamage, }, } -- e2807
 L["%s fire damage"] = { { Stats.FireDamage, }, } -- e2808
 L["%s nature damage"] = { { Stats.NatureDamage, }, } -- e2809
@@ -1692,10 +1692,10 @@ L["%s critical rating and %s dodge rating"] = { { Stats.CritRating, }, { Stats.D
 L["%s parry rating and %s stamina"] = { { Stats.ParryRating, }, { Stats.Stamina, }, } -- e3063
 L["%s spirit and %s healing %s spell damage"] = { { Stats.Spirit, }, { Stats.HealingPower, }, { Stats.SpellDamage, }, } -- e3064
 L["%s spell damage and %s spell penetration"] = { { Stats.SpellDamage, Stats.HealingPower, }, { Stats.SpellPenetration, }, } -- e3066
-L["%s attack power and %s stamina"] = { { Stats.AttackPower, }, { Stats.Stamina, }, } -- e3067
+L["%s attack power and %s stamina"] = { { Stats.AttackPower, Stats.RangedAttackPower, }, { Stats.Stamina, }, } -- e3156
 L["%s dodge rating and %s hit rating"] = { { Stats.DodgeRating, }, { Stats.HitRating, }, } -- e3068
 L["%s healing %s spell damage and %s resilience rating"] = { { Stats.HealingPower, }, { Stats.SpellDamage, }, { Stats.ResilienceRating, }, } -- e3069
-L["%s attack power and %s critical rating"] = { { Stats.AttackPower, }, { Stats.CritRating, }, } -- e3070
+L["%s attack power and %s critical rating"] = { { Stats.AttackPower, Stats.RangedAttackPower, }, { Stats.CritRating, }, } -- e3159
 L["%s intellect and %s stamina"] = { { Stats.Intellect, }, { Stats.Stamina, }, } -- e3071
 L["%s strength and %s critical rating"] = { { Stats.Strength, }, { Stats.CritRating, }, } -- e3072
 L["%s agility and %s defense rating"] = { { Stats.Agility, }, { Stats.DefenseRating, }, } -- e3073
@@ -1720,7 +1720,7 @@ L["%s spell hit rating and %s spell damage"] = { { Stats.SpellHitRating, }, { St
 L["%s agility & %s% increased critical damage"] = { { Stats.Agility, }, false, } -- e3154
 L["%s healing %s spell damage and %s spirit"] = { { Stats.HealingPower, }, { Stats.SpellDamage, }, { Stats.Spirit, }, } -- e3158
 L["%s stamina and %s spell critical strike rating"] = { { Stats.Stamina, }, { Stats.SpellCritRating, }, } -- e3161
-L["%s attack power and %s% stun resistance"] = { { Stats.AttackPower, }, false, } -- e3162
+L["%s attack power and %s% stun resistance"] = { { Stats.AttackPower, Stats.RangedAttackPower, }, false, } -- e3162
 L["%s spell damage & %s% stun resistance"] = { { Stats.SpellDamage, Stats.HealingPower, }, false, } -- e3163
 L["%s spirit and %s healing"] = { { Stats.Spirit, }, { Stats.HealingPower, }, } -- e3200
 L["%s resilience rating and %s stamina"] = { { Stats.ResilienceRating, }, { Stats.Stamina, }, } -- e3226
@@ -2913,7 +2913,7 @@ L["%s critical strike rating and %s agility"] = { { Stats.CritRating, }, { Stats
 L["%s agility and %s% increased critical effect"] = { { Stats.Agility, }, false, } -- e3154
 L["%s critical strike rating and %s% stun resistance"] = { { Stats.CritRating, }, false, } -- e3162
 L["%s intellect and %s% stun resistance"] = { { Stats.Intellect, }, false, } -- e3163
-L["%s agility and %s armor"] = { { Stats.Agility, }, { Stats.BonusArmor, }, } -- e3256
+L["%s agility and %s armor"] = { { Stats.Agility, }, { Stats.Armor, }, } -- e3256
 L["%s critical strike rating and %s% increased critical effect"] = { { Stats.CritRating, }, false, } -- e3261
 L["%s dodge rating and %s% shield block value"] = { { Stats.DodgeRating, }, false, } -- e3274
 L["%s intellect and %s% maximum mana"] = { { Stats.Intellect, }, false, } -- e3275
@@ -3463,13 +3463,13 @@ L["%s parry"] = { { Stats.ParryRating, }, } -- e863
 L["%s agility and %s dodge"] = { { Stats.Agility, }, { Stats.DodgeRating, }, } -- e910
 L["%s mana and %s fire resistance"] = { { Stats.Mana, }, { Stats.FireResistance, }, } -- e1523
 L["%s health and %s fire resistance"] = { { Stats.Health, }, { Stats.FireResistance, }, } -- e1524
-L["%s armor and %s fire resistance"] = { { Stats.BonusArmor, }, { Stats.FireResistance, }, } -- e1525
+L["%s armor and %s fire resistance"] = { { Stats.Armor, }, { Stats.FireResistance, }, } -- e1525
 L["%s strength and %s fire resistance"] = { { Stats.Strength, }, { Stats.FireResistance, }, } -- e1526
 L["%s stamina and %s fire resistance"] = { { Stats.Stamina, }, { Stats.FireResistance, }, } -- e1527
 L["%s agility and %s fire resistance"] = { { Stats.Agility, }, { Stats.FireResistance, }, } -- e1528
 L["%s intellect and %s fire resistance"] = { { Stats.Intellect, }, { Stats.FireResistance, }, } -- e1529
 L["%s spirit and %s fire resistance"] = { { Stats.Spirit, }, { Stats.FireResistance, }, } -- e1530
-L["%s strength, %s armor and %s fire resistance"] = { { Stats.Strength, }, { Stats.BonusArmor, }, { Stats.FireResistance, }, } -- e1532
+L["%s strength, %s armor and %s fire resistance"] = { { Stats.Strength, }, { Stats.Armor, }, { Stats.FireResistance, }, } -- e1532
 L["%s intellect, %s mana and %s fire resistance"] = { { Stats.Intellect, }, { Stats.Mana, }, { Stats.FireResistance, }, } -- e1543
 L["%s melee critical strike"] = { { Stats.MeleeCritRating, }, } -- e2506
 L["%s ranged hit"] = { { Stats.RangedHitRating, }, } -- e2523

@@ -79,7 +79,7 @@ W["兇蠻"] = { [Stats.AttackPower] = 70, } -- e2667
 W["烈日火焰"] = { [Stats.FireDamage] = 50, [Stats.ArcaneDamage] = 50, } -- e2671
 W["靈魂冰霜"] = { [Stats.FrostDamage] = 54, [Stats.ShadowDamage] = 54, } -- e2672
 W["超強巫師之油"] = { [Stats.SpellDamage] = 42, [Stats.HealingPower] = 42, } -- e2678
-W["gem test enchantment"] = { [Stats.BonusArmor] = 100, } -- e2917
+W["gem test enchantment"] = { [Stats.Armor] = 100, } -- e2917
 W["堅鋼武器鍊"] = { [Stats.ParryRating] = 15, } -- e3223
 W["使目標造成的物理傷害降低。"] = { [Stats.AverageWeaponDamage] = -10, } -- s9459
 W["提高施法者的攻擊速度。"] = { [Stats.MeleeHaste] = 9, } -- s19516
@@ -104,7 +104,7 @@ W["像旋風一般揮舞骸骨攻擊周圍的敵人。"] = { [Stats.MeleeHaste] 
 W["只要『醫生』還在值班，你的生命力就不會減少。"] = { [Stats.Health] = 45000, } -- s74503
 W["冰行者"] = { [Stats.Stamina] = 15, } -- e3250
 W["卓效巫師之油"] = { [Stats.SpellPower] = 56, } -- e3299
-W["test skill req enchant"] = { [Stats.BonusArmor] = 10, } -- e3320
+W["test skill req enchant"] = { [Stats.Armor] = 10, } -- e3320
 W["碎劍符文"] = { [Stats.Parry] = 4, } -- e3365
 W["破劍符文"] = { [Stats.Parry] = 2, } -- e3594
 W["極強效火焰石"] = { [Stats.SpellCritRating] = 35, } -- e3597
@@ -1109,7 +1109,7 @@ L["給你的頭部或腿部裝備附加魔法效果，使自然抗性提%s點。
 L["給你的頭部或腿部裝備附加魔法效果，使冰霜抗性提高%s點。無法與其他附加於指定裝備的魔法效果重疊。"] = { { Stats.FrostResistance, }, } -- s28164
 L["給你的頭部或腿部裝備附加魔法效果，使暗影抗性提高%s點。無法與其他附加於指定裝備的魔法效果重疊。"] = { { Stats.ShadowResistance, }, } -- s28166
 L["磨快 %s"] = { { Stats.AverageWeaponDamage, }, } -- e13
-L["強化護甲 %s"] = { { Stats.BonusArmor, }, } -- e15
+L["強化護甲 %s"] = { { Stats.Armor, }, } -- e15
 L["增重 %s"] = { { Stats.AverageWeaponDamage, }, } -- e19
 L["法力 %s"] = { { Stats.Mana, }, } -- e24
 L["瞄準鏡（%s 傷害）"] = { { Stats.AverageWeaponDamage, }, } -- e30
@@ -1124,7 +1124,7 @@ L["%s 耐力"] = { { Stats.Stamina, }, } -- e71
 L["%s 敏捷"] = { { Stats.Agility, }, } -- e74
 L["%s 智力"] = { { Stats.Intellect, }, } -- e79
 L["%s 精神"] = { { Stats.Spirit, }, } -- e82
-L["%s 護甲"] = { { Stats.BonusArmor, }, } -- e85
+L["%s 護甲"] = { { Stats.Armor, }, } -- e85
 L["%s 防禦"] = { { Stats.Defense, }, } -- e110
 L["劍技能 %s"] = { { Stats.WeaponSkill, }, } -- e125
 L["雙手劍技能 %s"] = { { Stats.WeaponSkill, }, } -- e132
@@ -1143,7 +1143,7 @@ L["提高冰霜效果 %s"] = { { Stats.FrostDamage, }, } -- e227
 L["提高暗影效果 %s"] = { { Stats.ShadowDamage, }, } -- e234
 L["武器傷害 %s"] = { { Stats.AverageWeaponDamage, }, } -- e241
 L["智力 %s"] = { { Stats.Intellect, }, } -- e244
-L["護甲 %s"] = { { Stats.BonusArmor, }, } -- e245
+L["護甲 %s"] = { { Stats.Armor, }, } -- e245
 L["敏捷 %s"] = { { Stats.Agility, }, } -- e247
 L["力量 %s"] = { { Stats.Strength, }, } -- e248
 L["%s 火焰抗性"] = { { Stats.FireResistance, }, } -- e256
@@ -1945,7 +1945,7 @@ L["向敵人衝鋒，造成普通攻擊再加上%s點傷害，並使其昏迷%s�
 L["使附近所有隊友對所有系別的魔法抗性提高%s點，持續%s秒。"] = { { Stats.FireResistance, Stats.NatureResistance, Stats.FrostResistance, Stats.ShadowResistance, Stats.ArcaneResistance, }, false, } -- s41453
 L["變身為熊，持續%s秒。在此期間內提升傷害力但降低攻擊速度%s%。"] = { false, { Stats.MeleeHaste, }, } -- s42607
 L["磨快(%s傷害)"] = { { Stats.AverageWeaponDamage, }, } -- e13
-L["%s強化護甲"] = { { Stats.BonusArmor, }, } -- e15
+L["%s強化護甲"] = { { Stats.Armor, }, } -- e15
 L["增重(%s傷害)"] = { { Stats.AverageWeaponDamage, }, } -- e19
 L["%s點法力"] = { { Stats.Mana, }, } -- e24
 L["瞄準鏡(%s傷害)"] = { { Stats.AverageWeaponDamage, }, } -- e30
@@ -1954,7 +1954,7 @@ L["%s點生命力"] = { { Stats.Health, }, } -- e41
 L["%s所有抗性"] = { { Stats.FireResistance, Stats.NatureResistance, Stats.FrostResistance, Stats.ShadowResistance, Stats.ArcaneResistance, }, } -- e65
 L["%s傷害"] = { { Stats.AverageWeaponDamage, }, } -- e67
 L["%s精神"] = { { Stats.Spirit, }, } -- e82
-L["%s護甲"] = { { Stats.BonusArmor, }, } -- e85
+L["%s護甲"] = { { Stats.Armor, }, } -- e85
 L["%s防禦等級"] = { { Stats.DefenseRating, }, } -- e110
 L["%s致命一擊等級"] = { { Stats.MeleeCritRating, Stats.RangedCritRating, }, } -- e195
 L["%s治療"] = { { Stats.HealingPower, }, } -- e206
@@ -2037,7 +2037,7 @@ L["%s法術命中等級"] = { { Stats.SpellHitRating, }, } -- e2767
 L["%s韌性"] = { { Stats.ResilienceRating, }, } -- e2788
 L["%s智力(%s/+$f)"] = { { Stats.Intellect, }, false, } -- e2798
 L["%s耐力(%s/+$f)"] = { { Stats.Stamina, }, false, } -- e2799
-L["%s護甲(%s/+$f)"] = { { Stats.BonusArmor, }, false, } -- e2800
+L["%s護甲(%s/+$f)"] = { { Stats.Armor, }, false, } -- e2800
 L["%s秘法傷害"] = { { Stats.ArcaneDamage, }, } -- e2807
 L["%s火焰傷害"] = { { Stats.FireDamage, }, } -- e2808
 L["%s自然傷害"] = { { Stats.NatureDamage, }, } -- e2809
@@ -3497,7 +3497,7 @@ L["%s致命一擊等級和%s敏捷"] = { { Stats.CritRating, }, { Stats.Agility,
 L["%s敏捷和%s%致命一擊效果"] = { { Stats.Agility, }, false, } -- e3154
 L["%s致命一擊等級和%s%昏迷抗性"] = { { Stats.CritRating, }, false, } -- e3162
 L["%s智力和%s%昏迷抗性"] = { { Stats.Intellect, }, false, } -- e3163
-L["%s敏捷和%s護甲"] = { { Stats.Agility, }, { Stats.BonusArmor, }, } -- e3256
+L["%s敏捷和%s護甲"] = { { Stats.Agility, }, { Stats.Armor, }, } -- e3256
 L["%s致命一擊等級和%s%致命一擊效果"] = { { Stats.CritRating, }, false, } -- e3261
 L["%s閃躲等級和%s%盾牌格擋值"] = { { Stats.DodgeRating, }, false, } -- e3274
 L["%s智力和%s%最大法力"] = { { Stats.Intellect, }, false, } -- e3275
@@ -4108,13 +4108,13 @@ L["%s招架"] = { { Stats.ParryRating, }, } -- e863
 L["%s敏捷和%s閃躲"] = { { Stats.Agility, }, { Stats.DodgeRating, }, } -- e910
 L["%s法力和%s火焰抗性"] = { { Stats.Mana, }, { Stats.FireResistance, }, } -- e1523
 L["%s生命力和%s火焰抗性"] = { { Stats.Health, }, { Stats.FireResistance, }, } -- e1524
-L["%s護甲和%s火焰抗性"] = { { Stats.BonusArmor, }, { Stats.FireResistance, }, } -- e1525
+L["%s護甲和%s火焰抗性"] = { { Stats.Armor, }, { Stats.FireResistance, }, } -- e1525
 L["%s力量和%s火焰抗性"] = { { Stats.Strength, }, { Stats.FireResistance, }, } -- e1526
 L["%s耐力和%s火焰抗性"] = { { Stats.Stamina, }, { Stats.FireResistance, }, } -- e1527
 L["%s敏捷和%s火焰抗性"] = { { Stats.Agility, }, { Stats.FireResistance, }, } -- e1528
 L["%s智力和%s火焰抗性"] = { { Stats.Intellect, }, { Stats.FireResistance, }, } -- e1529
 L["%s精神和%s火焰抗性"] = { { Stats.Spirit, }, { Stats.FireResistance, }, } -- e1530
-L["%s力量，%s護甲和%s火焰抗性"] = { { Stats.Strength, }, { Stats.BonusArmor, }, { Stats.FireResistance, }, } -- e1532
+L["%s力量，%s護甲和%s火焰抗性"] = { { Stats.Strength, }, { Stats.Armor, }, { Stats.FireResistance, }, } -- e1532
 L["%s智力，%s法力，和%s火焰抗性"] = { { Stats.Intellect, }, { Stats.Mana, }, { Stats.FireResistance, }, } -- e1543
 L["每%s秒恢復法力%s"] = { false, { Stats.GenericManaRegen, }, } -- e2363
 L["每%s秒恢復生命力%s"] = { { Stats.HealthRegen, }, { Stats.HealthRegen, }, } -- e2412
