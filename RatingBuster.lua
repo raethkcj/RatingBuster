@@ -3032,8 +3032,11 @@ function RatingBuster:ProcessStat(stat, value, breakdownStats, link, color, stat
 		self:ProcessStat(StatLogic.Stats.AttackPower, attackPower, breakdownStats, link, color, statModContext, false, db.profile.showAPFromSpellPower)
 	elseif stat == StatLogic.Stats.SpellDamage then
 		local mod = statModContext("MOD_SPELL_DMG")
+		if isBaseStat then
+			mod = mod * statModContext("MOD_SPELL_POWER")
+		end
 		value = value * mod
-		if isBaseStat and mod ~= 1 and db.profile.showModifiedSpellDamage then
+		if isBaseStat and mod ~= 1 and (db.profile.showModifiedSpellDamage or db.profile.showModifiedSpellPower) then
 			breakdownStats["Decimal"] = value
 		elseif show then
 			breakdownStats[stat] = breakdownStats[stat] + value
@@ -3043,8 +3046,11 @@ function RatingBuster:ProcessStat(stat, value, breakdownStats, link, color, stat
 		self:ProcessStat(StatLogic.Stats.BlockValue, blockValue, breakdownStats, link, color, statModContext, false, db.profile.showBlockValueFromSpellDmg)
 	elseif stat == StatLogic.Stats.HealingPower then
 		local mod = statModContext("MOD_HEALING")
+		if isBaseStat then
+			mod = mod * statModContext("MOD_SPELL_POWER")
+		end
 		value = value * mod
-		if isBaseStat and mod ~= 1 and db.profile.showModifiedHealing then
+		if isBaseStat and mod ~= 1 and (db.profile.showModifiedSpellDamage or db.profile.showModifiedSpellPower) then
 			breakdownStats["Decimal"] = value
 		elseif show then
 			breakdownStats[stat] = breakdownStats[stat] + value
