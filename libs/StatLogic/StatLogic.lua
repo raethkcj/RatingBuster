@@ -1789,12 +1789,13 @@ do
 	end
 
 	local EmptySocketLookup = {
-		[EMPTY_SOCKET_RED] = 0, -- EMPTY_SOCKET_RED = "Red Socket";
-		[EMPTY_SOCKET_YELLOW] = 0, -- EMPTY_SOCKET_YELLOW = "Yellow Socket";
-		[EMPTY_SOCKET_BLUE] = 0, -- EMPTY_SOCKET_BLUE = "Blue Socket";
-		[EMPTY_SOCKET_META] = 0, -- EMPTY_SOCKET_META = "Meta Socket";
-		[EMPTY_SOCKET_PRISMATIC] = 0, -- EMPTY_SOCKET_PRISMATIC = "Prismatic Socket";
+		[EMPTY_SOCKET_RED] = 0,
+		[EMPTY_SOCKET_YELLOW] = 0,
+		[EMPTY_SOCKET_BLUE] = 0,
+		[EMPTY_SOCKET_META] = 0,
+		[EMPTY_SOCKET_PRISMATIC] = 0,
 	}
+
 	-- Returns a modified link with all empty sockets replaced with the specified gems,
 	-- sockets already gemmed will remain.
 	---@param link string itemLink
@@ -1830,25 +1831,29 @@ do
 		EmptySocketLookup[EMPTY_SOCKET_META] = meta
 		EmptySocketLookup[EMPTY_SOCKET_PRISMATIC] = prismatic
 
-		-- Build socket list
-		local arguments = {"%1"}
-		-- Start parsing
+		-- Since this is passed to gsub, the first entry is
+		-- the capture group containing the item and enchant IDs
+		local gemIDs = { "%1" }
+
 		tip:ClearLines()
 		tip:SetHyperlink(link)
 		for i = 2, tip:NumLines() do
 			local text = tip.sides.left[i]:GetText()
-			local socketFound = EmptySocketLookup[text]
-			arguments[#arguments+1] = socketFound
+			local gemID = EmptySocketLookup[text]
+			gemIDs[#gemIDs+1] = gemID
 		end
-		-- If there are no sockets
-		if #arguments == 1 then
+
+		if #gemIDs == 1 then
+			-- No sockets found
 			return link
 		else
-			for i = #arguments + 1, 5 do
-				arguments[i] = ""
+			-- Pad up to 4 empty gems so we create a valid item link
+			for i = #gemIDs + 1, 5 do
+				gemIDs[i] = ""
 			end
-			local repl = table.concat(arguments, ":")
-			-- This will not replace anything if *any* of the four gem sockets is filled
+			local repl = table.concat(gemIDs, ":")
+			-- Since we only match 0 or empty, this will not replace anything
+			-- if the item link contains *any* real gems
 			return (link:gsub("(item:%d+:%d*):0?:0?:0?:0?", repl))
 		end
 	end
@@ -1958,37 +1963,63 @@ end
 do
 	local large_sep = LARGE_NUMBER_SEPERATOR:gsub("[-.]", "%%%1")
 	local dec_sep = DECIMAL_SEPERATOR:gsub("[-.]", "%%%1")
-	local number_pattern = "[+-]?[%d." .. large_sep .. dec_sep .. "]+%f[%D]"
+	local numberPattern = "([+-]?[%d." .. large_sep .. dec_sep .. "]+%f[%D])()"
 
-	---@alias StatGroupEntry false
-	---@alias StatGroup StatGroupEntry|StatGroupEntry[]
+	---@alias StatGroup Stat[] | false
 
-	---@param statGroups { statGroup: StatGroup, value: integer }[]
+	---@class StatGroupValues
+	---@field ignoreSum boolean
+	---@field [number] { statGroup: StatGroup, value: number, position: number? }
+
+	---@param statGroups StatGroupValues
 	---@param statGroup StatGroup
 	---@param value integer
 	---@param itemLink string
 	---@param color ColorMixin
-	local function AddStat(statGroups, statGroup, value, itemLink, color)
-		if statGroup == StatLogic.Stats.Armor then
-			local base, bonus = StatLogic:GetArmorDistribution(itemLink, value, color)
-			value = base
-			AddStat(statGroups, StatLogic.Stats.BonusArmor, bonus, itemLink, color)
+	local function AddStat(statGroups, statGroup, value, itemLink, color, position)
+		if type(statGroup) == "table" then
+			if tContains(statGroup, StatLogic.Stats.Armor) then
+				local base, bonus = StatLogic:GetArmorDistribution(itemLink, value, color)
+				value = base
+				AddStat(statGroups, { StatLogic.Stats.BonusArmor }, bonus, itemLink, color, position)
+			end
+
+			if tContains(statGroup, StatLogic.Stats.WeaponDPS) and LARGE_NUMBER_SEPERATOR == "." then
+				-- Workaround for Blizzard forgetting to use DECIMAL_SEPERATOR for Weapon DPS
+				value = value / 10
+			end
 		end
 
-		if statGroup == StatLogic.Stats.WeaponDPS and LARGE_NUMBER_SEPERATOR == "." then
-			-- Workaround for Blizzard forgetting to use DECIMAL_SEPERATOR for Weapon DPS
-			value = value / 10
-		end
-
-		table.insert(statGroups, { statGroup = statGroup, value = value })
+		table.insert(statGroups, {
+			statGroup = statGroup,
+			value = value,
+			position = position
+		})
 	end
 
+	-- Removes each of the prefixes from text, and returns the modified text and the total number of removed characters
+	---@param text string
+	---@param prefixes table<string, true>
+	---@return string
+	---@return integer
+	local function trimPrefixes(text, prefixes)
+		for prefix in pairs(prefixes) do
+			local _, length = text:find(prefix)
+			if length then
+				text = text:sub(length + 1)
+				return text, length
+			end
+		end
+		return text, 0
+	end
+
+	---@param statGroupValues StatGroupValues
 	local function logStatGroups(statGroupValues)
 		if not DEBUG then return end
 		local outputText = {}
 		for _, statGroupValue in ipairs(statGroupValues) do
 			local statGroupText
-			if type(statGroupValue.statGroup) == "table" and #statGroupValue.statGroup > 0 then
+			if statGroupValue.statGroup then
 				local statText = {}
 				for _, stat in ipairs(statGroupValue.statGroup) do
 					table.insert(statText, tostring(stat))
@@ -1999,6 +2030,9 @@ do
 			end
 			table.insert(outputText, statGroupText .. "=" .. tostring(statGroupValue.value))
 		end
+		if statGroupValues.ignoreSum then
+			table.insert(outputText, "ignoreSum=true")
+		end
 		local output = "    " .. table.concat(outputText, ", ")
 		log(output)
 	end
@@ -2008,14 +2042,18 @@ do
 	---@param text string
 	---@param itemLink string
 	---@param color ColorMixin
-	---@return { statGroup: StatGroup, value: integer }[]
+	---@return StatGroupValues
 	function StatLogic:GetStatGroupValues(text, itemLink, color)
-		local statGroups = {}
+		---@type StatGroupValues
+		local statGroups = { ignoreSum = false }
 		local found = not text or text == ""
+		local length, offset = 0, 0
 
 		if not found then
 			-- Strip color codes
-			text = text:gsub("|c%x%x%x%x%x%x%x%x", "")
+			local count
+			text, count = text:gsub("|c%x%x%x%x%x%x%x%x", "")
+			offset = offset + count * 10
 			text = text:gsub("|r", "")
 		end
 		local rawText = text
@@ -2028,19 +2066,20 @@ do
 			-- Limit to one line
 			text = text:gsub("\n.*", "")
 			-- Strip leading "Equip: ", "Socket Bonus: ", trailing ".", and lowercase
-			text = text:gsub(ITEM_SPELL_TRIGGER_ONEQUIP, "")
-			text = text:gsub(ITEM_SOCKET_BONUS:format(""), "")
+			text, length = trimPrefixes(text, addon.TrimmedPrefixes)
+			offset = offset + length
 			text = text:trim()
 			text = text:gsub("%.$", "")
 			text = text:utf8lower()
 
+			---@type WholeTextEntry
 			local statList = addon.WholeTextLookup[text]
 			if statList ~= nil then
 				found = true
 				if statList then
 					log(rawText, "Success", "WholeText")
 					for stat, value in pairs(statList) do
-						AddStat(statGroups, stat, value, itemLink, color)
+						AddStat(statGroups, { stat }, value, itemLink, color)
 					end
 					logStatGroups(statGroups)
 				else
@@ -2053,26 +2092,38 @@ do
 		-- Substitution Lookup --
 		-------------------------
 		if not found then
+			text, length = trimPrefixes(text, addon.IgnoreSum)
+			offset = offset + length
+			if length > 0 then
+				text = text:gsub(addon.OnUseCooldown, ""):trim():gsub("%.$", "")
+				statGroups.ignoreSum = true
+			end
+
 			-- Replace numbers with %s
-			local values = {}
-			local statText, count = text:gsub(number_pattern, function(match)
+			local valuePositions = {}
+			local statText, count = text:gsub(numberPattern, function(match, position)
 				match = match:gsub(large_sep, ""):gsub(dec_sep, ".")
 				local value = tonumber(match)
 				if value then
-					values[#values + 1] = value
+					valuePositions[#valuePositions + 1] = { value, position - 1 + offset }
 					return "%s"
 				end
 			end)
 			if count > 0 then
 				statText = statText:trim()
 				-- Lookup exact sanitized string in StatIDLookup
+				---@type SubstitutionEntry
 				local statList = addon.StatIDLookup[statText]
 				if statList then
 					found = true
 					log(rawText, "Success", "Substitution")
-					for i, value in ipairs(values) do
+					for i, valuePosition in ipairs(valuePositions) do
 						local statGroup = statList[i]
-						AddStat(statGroups, statGroup, value, itemLink, color)
+						local value, position = unpack(valuePosition)
+						AddStat(statGroups, statGroup, value, itemLink, color, position)
+					end
+					if statList.ignoreSum then
+						statGroups.ignoreSum = true
 					end
 					logStatGroups(statGroups)
 				end
@@ -2186,17 +2237,19 @@ do
 				local text = fontString:GetText()
 				local color = CreateColor(fontString:GetTextColor())
 				local statGroupValues = StatLogic:GetStatGroupValues(text, link, color)
-				for _, statGroupValue in ipairs(statGroupValues) do
-					local statGroup = statGroupValue.statGroup
-					if type(statGroup) == "table" and #statGroup > 0 then
-						for _, stat in ipairs(statGroup) do
+				if not statGroupValues.ignoreSum then
+					for _, statGroupValue in ipairs(statGroupValues) do
+						local statGroup = statGroupValue.statGroup
+						if type(statGroup) == "table" then
+							for _, stat in ipairs(statGroup) do
+								---@diagnostic disable-next-line: need-check-nil
+								statTable[stat] = statTable[stat] + statGroupValue.value
+							end
+						else
+							-- statGroup is a single stat
 							---@diagnostic disable-next-line: need-check-nil
-							statTable[stat] = statTable[stat] + statGroupValue.value
+							statTable[statGroup] = statTable[statGroup] + statGroupValue.value
 						end
-					else
-						-- statGroup is a single stat
-						---@diagnostic disable-next-line: need-check-nil
-						statTable[statGroup] = statTable[statGroup] + statGroupValue.value
 					end
 				end
 			end

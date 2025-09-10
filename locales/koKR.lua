@@ -268,121 +268,59 @@ L["Select the primary profile for use with the swap profile keybind. If spec pro
 L["Secondary Profile"] = "Secondary Profile"
 L["Select the secondary profile for use with the swap profile keybind. If spec profiles are enabled, this will instead use the Secondary Talents profile."] = "Select the secondary profile for use with the swap profile keybind. If spec profiles are enabled, this will instead use the Secondary Talents profile."
 
------------------------
--- Matching Patterns --
------------------------
--- Items to check --
---------------------
--- [Potent Ornate Topaz]
--- +6 Spell Damage, +5 Spell Crit Rating
---------------------
--- ZG enchant
--- +10 Defense Rating/+10 Stamina/+15 Block Value
---------------------
--- [Glinting Flam Spessarite]
--- +3 Hit Rating and +3 Agility
---------------------
--- ItemID: 22589
--- [Atiesh, Greatstaff of the Guardian] warlock version
--- Equip: Increases the spell critical strike rating of all party members within 30 yards by 28.
---------------------
--- [Brilliant Wizard Oil]
--- Use: While applied to target weapon it increases spell damage by up to 36 and increases spell critical strike rating by 14 . Lasts for 30 minutes.
-----------------------------------------------------------------------------------------------------
--- I redesigned the tooltip scanner using a more locale friendly, 2 pass matching matching algorithm.
---
--- The first pass searches for the rating number, the patterns are read from ["numberPatterns"] here,
--- " by (%d+)" will match strings like: "Increases defense rating by 16."
--- "%+(%d+)" will match strings like: "+10 Defense Rating"
--- You can add additional patterns if needed, its not limited to 2 patterns.
--- The separators are a table of strings used to break up a line into multiple lines what will be parsed seperately.
--- For example "+3 Hit Rating, +5 Spell Crit Rating" will be split into "+3 Hit Rating" and " +5 Spell Crit Rating"
---
--- The second pass searches for the rating name, the names are read from ["statList"] here,
--- It will look through the table in order, so you can put common strings at the begining to speed up the search,
--- and longer strings should be listed first, like "spell critical strike" should be listed before "critical strike",
--- this way "spell critical strike" does get matched by "critical strike".
--- Strings need to be in lower case letters, because string.lower is called on lookup
---
--- IMPORTANT: there may not exist a one-to-one correspondence, meaning you can't just translate this file,
--- but will need to go in game and find out what needs to be put in here.
--- For example, in english I found 3 different strings that maps to StatLogic.Stats.MeleeCritRating: "critical strike", "critical hit" and "crit".
--- You will need to find out every string that represents StatLogic.Stats.MeleeCritRating, and so on.
--- In other languages there may be 5 different strings that should all map to StatLogic.Stats.MeleeCritRating.
--- so please check in game that you have all strings, and not translate directly off this table.
---
--- Tip1: When doing localizations, I recommend you set debugging to true in RatingBuster.lua
--- Find RatingBuster:SetDebugging(false) and change it to RatingBuster:SetDebugging(true)
--- or you can type /rb debug to enable it in game
---
--- Tip2: The strings are passed into string.find, so you should escape the magic characters ^$()%.[]*+-? with a %
-L["numberPatterns"] = {
-	addon.numberPattern .. "만큼 증가합니다.",
-	addon.numberPattern,
-}
--- Exclusions are used to ignore instances of separators that should not get separated
-L["exclusions"] = {
-}
+-- These patterns are used to reposition stat breakdowns.
+-- They are not mandatory; if not present for a given stat,
+-- the breakdown will simply appear after the number.
+-- They will only ever position the breakdown further after the number; not before it.
+-- E.g. default positioning:
+--   "Strength +5 (10 AP)"
+--   "+5 (10 AP) Strength"
+-- If "strength" is added in statPatterns:
+--   "Strength +5 (10 AP)"
+--   "+5 Strength (10 AP)"
+-- The strings are lowerecased and passed into string.find,
+-- so you should escape the magic characters ^$()%.[]*+-? with a %
+-- Use /rb debug to help with debugging stat patterns
+L["statPatterns"] = {
+	[StatLogic.Stats.Strength] = { SPELL_STAT1_NAME:lower() },
+	[StatLogic.Stats.Agility] = { SPELL_STAT2_NAME:lower() },
+	[StatLogic.Stats.Stamina] = { SPELL_STAT3_NAME:lower() },
+	[StatLogic.Stats.Intellect] = { SPELL_STAT4_NAME:lower() },
+	[StatLogic.Stats.Spirit] = { SPELL_STAT5_NAME:lower() },
+	[StatLogic.Stats.DefenseRating] = { "방어 숙련도" },
+	[StatLogic.Stats.Defense] = { DEFENSE:lower() },
+	[StatLogic.Stats.DodgeRating] = { "회피 숙련도", "회피" },
+	[StatLogic.Stats.BlockRating] = { "방패 막기 숙련도", "방패 막기" },
+	[StatLogic.Stats.ParryRating] = { "무기 막기 숙련도", "무기 막기" },
 
-L["separators"] = {
-	"/", " and ", ",%f[^%d]", "%. ", " for ", "&", ":", "\n"
-}
+	[StatLogic.Stats.SpellPower] = { "주문력" },
+	[StatLogic.Stats.GenericAttackPower] = { "전투력이" },
 
---[[
-SPELL_STAT1_NAME = "힘"
-SPELL_STAT2_NAME = "민첩성"
-SPELL_STAT3_NAME = "체력"
-SPELL_STAT4_NAME = "지능"
-SPELL_STAT5_NAME = "정신력"
---]]
-L["statList"] = {
-	{SPELL_STAT1_NAME:lower(), StatLogic.Stats.Strength},
-	{SPELL_STAT2_NAME:lower(), StatLogic.Stats.Agility},
-	{SPELL_STAT3_NAME:lower(), StatLogic.Stats.Stamina},
-	{SPELL_STAT4_NAME:lower(), StatLogic.Stats.Intellect},
-	{SPELL_STAT5_NAME:lower(), StatLogic.Stats.Spirit},
-	{"방어 숙련도", StatLogic.Stats.DefenseRating},
-	{DEFENSE:lower(), StatLogic.Stats.Defense},
-	{"회피 숙련도", StatLogic.Stats.DodgeRating},
-	{"회피", StatLogic.Stats.DodgeRating},
-	{"방패 막기 숙련도", StatLogic.Stats.BlockRating}, -- block enchant: "+10 Shield Block Rating"
-	{"방패 막기", StatLogic.Stats.BlockRating},
-	{"무기 막기 숙련도", StatLogic.Stats.ParryRating},
-	{"무기 막기", StatLogic.Stats.ParryRating},
+	[StatLogic.Stats.MeleeCritRating] = { "근접 치명타 적중도", "치명타 적중도", "치명타 및 극대화" },
+	[StatLogic.Stats.RangedCritRating] = { "원거리 치명타 적중도" },
+	[StatLogic.Stats.SpellCritRating] = { "주문 극대화 적중도", "주문의 극대화 적중도" },
+	[StatLogic.Stats.CritRating] = { "치명타 적중도", "치명타 및 극대화" },
 
-	{"주문력", StatLogic.Stats.SpellPower},
-	{"주문 극대화 적중도", StatLogic.Stats.SpellCritRating},
-	{"주문의 극대화 적중도", StatLogic.Stats.SpellCritRating},
-	{"원거리 치명타 적중도", StatLogic.Stats.RangedCritRating},
-	{"치명타 적중도", StatLogic.Stats.CritRating},
-	{"치명타 및 극대화", StatLogic.Stats.CritRating},
-	{"근접 치명타 적중도", StatLogic.Stats.MeleeCritRating},
+	[StatLogic.Stats.MeleeHitRating] = { "적중도", "적중" },
+	[StatLogic.Stats.RangedHitRating] = { "원거리 적중도" },
+	[StatLogic.Stats.SpellHitRating] = { "주문 적중도" },
+	[StatLogic.Stats.HitRating] = { "적중도", "적중" },
 
-	--		{"주문의 적중도", StatLogic.Stats.SpellHitRating},
-	{"주문 적중도", StatLogic.Stats.SpellHitRating},
-	{"원거리 적중도", StatLogic.Stats.RangedHitRating},
-	{"적중도", StatLogic.Stats.HitRating},
-	{"적중", StatLogic.Stats.HitRating},
+	[StatLogic.Stats.ResilienceRating] = { "탄력도", "탄력" },
+	[StatLogic.Stats.PvpPowerRating] = { ITEM_MOD_PVP_POWER_SHORT:lower() },
 
-	{"탄력도", StatLogic.Stats.ResilienceRating},
-	{"탄력", StatLogic.Stats.ResilienceRating},
-	{ITEM_MOD_PVP_POWER_SHORT:lower(), StatLogic.Stats.PvpPowerRating},
+	[StatLogic.Stats.MeleeHasteRating] = { "공격 가속도", "가속", "가속도" },
+	[StatLogic.Stats.RangedHasteRating] = { "원거리 공격 가속도" },
+	[StatLogic.Stats.SpellHasteRating] = { "주문 시전 가속도" },
+	[StatLogic.Stats.HasteRating] = { "공격 가속도", "가속", "가속도" },
 
-	{"주문 시전 가속도", StatLogic.Stats.SpellHasteRating},
-	{"원거리 공격 가속도", StatLogic.Stats.RangedHasteRating},
-	{"공격 가속도", StatLogic.Stats.HasteRating},
-	{"가속", StatLogic.Stats.HasteRating},
-	{"가속도", StatLogic.Stats.HasteRating}, -- [Drums of Battle]
+	[StatLogic.Stats.ExpertiseRating] = { "숙련도", "숙련" },
 
-	{"숙련도", StatLogic.Stats.ExpertiseRating},
-	{"숙련", StatLogic.Stats.ExpertiseRating},
+	[StatLogic.Stats.AllStats] = { SPELL_STATALL:lower() },
 
-	{SPELL_STATALL:lower(), StatLogic.Stats.AllStats},
-
-	{"방어구 관통력", StatLogic.Stats.ArmorPenetrationRating},	--armor penetration rating
-	{"특화", StatLogic.Stats.MasteryRating},
-	{ARMOR:lower(), StatLogic.Stats.Armor},
-	{"전투력이", StatLogic.Stats.GenericAttackPower},
+	[StatLogic.Stats.ArmorPenetrationRating] = { "방어구 관통력" },	--armor penetration rating
+	[StatLogic.Stats.MasteryRating] = { "특화" },
+	[StatLogic.Stats.Armor] = { ARMOR:lower() },
 }
 -------------------------
 -- Added info patterns --
@@ -391,6 +329,7 @@ L["statList"] = {
 -- "%s %s"     -> "+1.34% Crit"
 -- "%2$s $1$s" -> "Crit +1.34%"
 L["StatBreakdownOrder"] = "%s %s"
+L["numberSuffix"] = "만큼 증가합니다"
 L["Show %s"] = "%s "..SHOW
 L["Show Modified %s"] = "Show Modified %s"
 -- for hit rating showing both physical and spell conversions
