@@ -2007,7 +2007,7 @@ do
 			local _, length = text:find(prefix)
 			if length then
 				text = text:sub(length + 1)
-				return text, length - 1
+				return text, length
 			end
 		end
 		return text, 0
