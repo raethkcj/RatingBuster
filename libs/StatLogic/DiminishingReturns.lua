@@ -273,9 +273,9 @@ function StatLogic:GetAvoidanceAfterDR(stat, avoidanceBeforeDR)
 		avoidanceBeforeDR = math.floor(128 * avoidanceBeforeDR + 0.5) / 128
 	end
 
-	if C and avoidanceBeforeDR > 0 then
-		local class = addon.class
-		return 1 / (1 / C[class] + addon.K[class] / avoidanceBeforeDR)
+	local cap = C and C[addon.class] or 0
+	if cap > 0 and avoidanceBeforeDR > 0 then
+		return 1 / (1 / cap + addon.K[addon.class] / avoidanceBeforeDR)
 	elseif avoidanceBeforeDR > 0 then
 		return avoidanceBeforeDR
 	else
