@@ -2097,6 +2097,8 @@ do
 			if length > 0 then
 				text = text:gsub(addon.OnUseCooldown, ""):trim():gsub("%.$", "")
 				statGroups.ignoreSum = true
+			else
+				text = text:gsub(addon.ReforgeSuffix, "")
 			end
 
 			-- Replace numbers with %s

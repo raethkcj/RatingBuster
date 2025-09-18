@@ -136,6 +136,8 @@ setPrefixPatterns(ignoreSumPrefixes, addon.IgnoreSum)
 
 addon.OnUseCooldown = ITEM_COOLDOWN_TOTAL:utf8lower():format("[^(]+"):gsub("[()]", "%%%1") .. "$"
 
+addon.ReforgeSuffix = "%s*" .. REFORGE_TOOLTIP_LINE:format(0, "", "", ".*"):utf8lower():trim():gsub("[()]", "%%%1")
+
 -------------------------
 -- Substitution Lookup --
 -------------------------
