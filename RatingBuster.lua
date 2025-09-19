@@ -2084,10 +2084,10 @@ function RatingBuster:OnDisable()
 end
 
 do
-	local spec = GetActiveTalentGroup()
+	local specGroup = GetActiveTalentGroup()
 
-	function RatingBuster:GetDisplayedSpec()
-		return spec
+	function RatingBuster:GetDisplayedSpecGroup()
+		return specGroup
 	end
 
 	local f = CreateFrame("Button", addonName .. "ProfileSwap")
@@ -2095,10 +2095,10 @@ do
 	f:SetScript("OnClick", function()
 		if db.IsDualSpecEnabled and db:IsDualSpecEnabled() then
 			-- Toggle between 1 and 2
-			spec = 3 - spec
-			db:SetProfile(db:GetDualSpecProfile(spec))
+			specGroup = 3 - specGroup
+			db:SetProfile(db:GetDualSpecProfile(specGroup))
 		else
-			spec = GetActiveTalentGroup()
+			specGroup = GetActiveTalentGroup()
 			local currentProfile = db:GetCurrentProfile()
 			if currentProfile ~= db.char.primaryProfile then
 				db:SetProfile(db.char.primaryProfile or currentProfile)
@@ -2131,7 +2131,7 @@ do
 		if event == "PLAYER_REGEN_DISABLED" then
 			ClearOverrideBindings(self)
 		elseif event == "ACTIVE_TALENT_GROUP_CHANGED" then
-			spec = ...
+			specGroup = ...
 		end
 	end)
 end
@@ -2193,7 +2193,7 @@ function RatingBuster.ProcessTooltip(tooltip)
 
 	local statModContext = StatLogic:NewStatModContext({
 		profile = db:GetCurrentProfile(),
-		spec = RatingBuster:GetDisplayedSpec(),
+		specGroup = RatingBuster:GetDisplayedSpecGroup(),
 		level = math.max(itemMinLevel, playerLevel),
 		itemClass = itemClass,
 	})
@@ -3075,7 +3075,7 @@ EventUtil.ContinueOnAddOnLoaded("Blizzard_ReforgingUI", function()
 		fontString.SetText = function(self, text, ...)
 			local statModContext = StatLogic:NewStatModContext({
 				profile = db:GetCurrentProfile(),
-				spec = RatingBuster:GetDisplayedSpec()
+				specGroup = RatingBuster:GetDisplayedSpecGroup()
 			})
 			og_SetText(self, RatingBuster:ProcessLine(text, "", {}, statModContext), ...)
 		end

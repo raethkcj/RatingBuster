@@ -1074,8 +1074,7 @@ addon.StatModValidators = {
 	armorspec = {
 		validate = function(case, _, statModContext)
 			if armor_spec_active then
-				-- TODO: May be replaced by GetSpecialization, check on Cata Beta launch
-				return case.armorspec[GetPrimaryTalentTree(false, false, statModContext.spec) or 0]
+				return case.armorspec[GetPrimaryTalentTree(false, false, statModContext.specGroup) or 0]
 			else
 				return false
 			end
@@ -1114,7 +1113,7 @@ addon.StatModValidators = {
 			end
 
 			for i = 1, NUM_GLYPH_SLOTS do
-				local _, _, _, glyphSpellID = GetGlyphSocketInfo(i, statModContext.spec)
+				local _, _, _, glyphSpellID = GetGlyphSocketInfo(i, statModContext.specGroup)
 				if case.glyph == glyphSpellID then
 					return true
 				end
@@ -1140,7 +1139,8 @@ addon.StatModValidators = {
 	known = {
 		validate = function(case, _, statModContext)
 			if addon.tocversion >= 50000 then
-				local specID = GetSpecializationInfo(statModContext.spec)
+				local spec = GetPrimaryTalentTree(false, false, statModContext.specGroup)
+				local specID = GetSpecializationInfo(spec)
 				for i = 1, GetNumSpellTabs() do
 					local offset, numSlots, _, _, _, tabSpecID = select(3, GetSpellTabInfo(i))
 					for slot = offset + 1, offset + numSlots do
@@ -1208,7 +1208,7 @@ addon.StatModValidators = {
 	},
 	spec = {
 		validate = function(case, _, statModContext)
-			return case.spec == GetPrimaryTalentTree(false, false, statModContext.spec)
+			return case.spec == GetPrimaryTalentTree(false, false, statModContext.specGroup)
 		end,
 		events = {
 			["PLAYER_TALENT_UPDATE"] = true,
@@ -1501,7 +1501,7 @@ do
 
 	---@class StatModContextArgs
 	---@field profile? string
-	---@field spec? integer
+	---@field specGroup? integer
 	---@field level? integer
 	---@field itemClass? Enum.ItemClass
 	---@field overrideStats? StatTable
@@ -1521,7 +1521,7 @@ do
 	function StatModContext:CacheKey()
 		return table.concat({
 			self.profile,
-			self.spec,
+			self.specGroup,
 			self.level,
 			self.itemClass == Enum.ItemClass.Weapon and "w" or "n"
 		})
@@ -1536,8 +1536,8 @@ do
 		if not context.profile then
 			context.profile = ""
 		end
-		if not context.spec then
-			context.spec = GetActiveTalentGroup()
+		if not context.specGroup then
+			context.specGroup = GetActiveTalentGroup()
 		end
 		if not context.level then
 			context.level = UnitLevel("player")
