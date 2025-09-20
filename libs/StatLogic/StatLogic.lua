@@ -1166,6 +1166,11 @@ addon.StatModValidators = {
 			["PLAYER_LEVEL_UP"] = true,
 		},
 	},
+	mastery = {
+		events = {
+			["UNIT_STATS"] = "player",
+		},
+	},
 	meta = {
 		validate = function(case)
 			return case.meta == equipped_meta_gem
@@ -1479,6 +1484,8 @@ do
 		elseif case.tooltip then
 			local aura = StatLogic:GetAuraInfo(case.aura, false, case.exact)
 			newValue = aura.tooltip
+		elseif case.mastery then
+			newValue = GetMasteryEffect() / 100
 		end
 
 		if newValue then

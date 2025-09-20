@@ -859,11 +859,11 @@ if addon.class == "DRUID" then
 				["aura"] = 33891,
 				["group"] = addon.ExclusiveGroup.Feral,
 			},
-			-- Passive: Mastery: Nature's Guardian
-			-- TODO: Get value from tooltip?
+			-- Passive: Mastery: Nature's Guardian (Bear Form)
 			{
+				["aura"] = 5487,
 				["known"] = 77494,
-				["value"] = 0.16,
+				["mastery"] = true,
 			},
 			-- Buff: Moonkin Form
 			{
