@@ -1986,7 +1986,7 @@ do
 	local function AddStat(statGroups, statGroup, value, itemLink, color, position)
 		if type(statGroup) == "table" then
 			if tContains(statGroup, StatLogic.Stats.Armor) then
-				local base, bonus = StatLogic:GetArmorDistribution(itemLink, value, color)
+				local base, bonus = StatLogic:GetArmorDistribution(itemLink, value, color, statGroups.ignoreSum)
 				value = base
 				AddStat(statGroups, { StatLogic.Stats.BonusArmor }, bonus, itemLink, color, position)
 			end
@@ -2282,15 +2282,19 @@ end
 ---@param item string
 ---@param value integer
 ---@param color ColorMixin
+---@param ignoreSum boolean?
 ---@return integer armor
 ---@return integer bonusArmor
-function StatLogic:GetArmorDistribution(item, value, color)
+function StatLogic:GetArmorDistribution(item, value, color, ignoreSum)
 	local name, _, itemQuality, itemLevel, _, _, _, _, itemEquipLoc, _, _, _, armorSubclass = C_Item.GetItemInfo(item)
 
 	local armor = value
 	local bonusArmor = 0
 
-	if name then
+	if ignoreSum then
+		armor = 0
+		bonusArmor = value
+	elseif name then
 		if addon.bonusArmorItemEquipLoc and addon.bonusArmorItemEquipLoc[itemEquipLoc] then
 			armor = 0
 			bonusArmor = value
