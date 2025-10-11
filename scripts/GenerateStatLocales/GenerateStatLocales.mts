@@ -715,7 +715,7 @@ function getEnchantStats(enchant: StatEnchant, spellStatEffects: Map<number, Sta
 	return stats
 }
 
-const localeDirName = "locales"
+const localeDirName = "../../libs/StatLogic/locales"
 
 const locales = [
 	"enUS",
