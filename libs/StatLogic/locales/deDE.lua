@@ -218,39 +218,39 @@ W["odem des beweglichen prinzen"] = { [Stats.Agility] = 500, } -- e4994
 
 local L = addon.StatIDLookup
 L["verstärkt eurer angriffstempo %s Sek. lang um %s%"] = { false, { Stats.MeleeHaste, }, } -- s65
-L["verkrüppelt das ziel und verringert dessen bewegungstempo um %s und erhöht die zeit zwischen nahkampfangriffen um %s% und zwischen distanzangriffen um %s%. hält %s Sek. lang an"] = { false, { Stats.MeleeHaste, }, { Stats.RangedHaste, }, false, } -- s89
-L["der druide brüllt und verringert damit die nahkampfangriffskraft von in der nähe befindlichen feinden um %s punkt(e). hält %s Sek. lang an"] = { { Stats.AttackPower, }, false, } -- s99
+L["verkrüppelt das ziel und verringert dessen bewegungstempo um %s und erhöht die zeit zwischen nahkampfangriffen um %s% und zwischen distanzangriffen um %s%. hält %s Sek. lang an"] = { false, { Stats.MeleeHaste, }, { Stats.RangedHaste, }, false, reduction = true } -- s89
+L["der druide brüllt und verringert damit die nahkampfangriffskraft von in der nähe befindlichen feinden um %s punkt(e). hält %s Sek. lang an"] = { { Stats.AttackPower, }, false, reduction = true } -- s99
 L["erhöht die rüstung um %s. wenn ein gegner den zaubernden schlägt, kann %s Sek. lang seine bewegungsgeschwidigkeit um %s% verlangsamt und die zeit zwischen angriffen um %s% erhöht werden. es kann immer nur ein rüstungszauber zur selben zeit auf dem magier aktiv sein. hält %s Sek. lang an"] = { { Stats.Armor, }, false, false, { Stats.MeleeHaste, }, false, } -- s168
-L["verlangsamt %s Sek. lang die bewegung des feindes um %s% und sein angriffstempo um %s%"] = { false, false, { Stats.MeleeHaste, }, } -- s246
+L["verlangsamt %s Sek. lang die bewegung des feindes um %s% und sein angriffstempo um %s%"] = { false, false, { Stats.MeleeHaste, }, reduction = true } -- s246
 L["stellt im verlauf von %s Sek. %s punkt(e) mana wieder her. ihr müsst beim trinken sitzen bleiben"] = { false, { Stats.GenericManaRegen, }, } -- s430
 L["gibt gruppenmitgliedern in einem umkreis von %s metern %s zusätzliche rüstung. spieler können pro paladin immer nur jeweils eine aura besitzen"] = { false, { Stats.Armor, }, } -- s465
-L["verringert die beweglichkeit des ziels um %s"] = { { Stats.Agility, }, } -- s474
+L["verringert die beweglichkeit des ziels um %s"] = { { Stats.Agility, }, reduction = true } -- s474
 L["der zaubernde wird von einer explosion der heiligen energie erfüllt, die seine rüstung um %s erhöht. ein erlittener nahkampf- oder distanzangriffstreffer verbraucht eine aufladung. hält %s Sek. lang an oder bis alle %s aufladungen verbraucht sind"] = { { Stats.Armor, }, false, false, } -- s588
-L["kontrolliert die gedanken eines humanoiden bis stufe %s, erhöht jedoch die zeit zwischen angriffen um %s%. hält bis zu %s Sek. lang an"] = { false, { Stats.MeleeHaste, }, false, } -- s605
-L["schützt den paladin %s Sek. lang vor allen schäden und zaubern, erhöht jedoch die zeit zwischen seinen angriffen um %s%. einmal geschützt, kann der paladin %s Sek. lang nicht erneut durch 'gottesschild', 'göttlicher schutz' oder 'segen des schutzes' unverwundbar gemacht werden"] = { false, { Stats.MeleeHaste, }, false, } -- s642
+L["kontrolliert die gedanken eines humanoiden bis stufe %s, erhöht jedoch die zeit zwischen angriffen um %s%. hält bis zu %s Sek. lang an"] = { false, { Stats.MeleeHaste, }, false, reduction = true } -- s605
+L["schützt den paladin %s Sek. lang vor allen schäden und zaubern, erhöht jedoch die zeit zwischen seinen angriffen um %s%. einmal geschützt, kann der paladin %s Sek. lang nicht erneut durch 'gottesschild', 'göttlicher schutz' oder 'segen des schutzes' unverwundbar gemacht werden"] = { false, { Stats.MeleeHaste, }, false, reduction = true } -- s642
 L["erhöht die rüstung %s Sek. lang um %s"] = { false, { Stats.Armor, }, } -- s673
 L["schützt den zaubernden, indem es %s Sek. lang die rüstung um %s erhöht und %s punkt(e) gesundheit alle %s sek. wiederherstellt"] = { false, { Stats.Armor, }, { Stats.HealthRegen, }, false, } -- s687
 L["schützt den zaubernden, indem es %s Sek. lang die rüstung um %s erhöht und alle %s sek. %s punkt(e) gesundheit wiederherstellt"] = { false, { Stats.Armor, }, false, { Stats.HealthRegen, }, } -- s696
-L["der vom ziel verursachte schaden wird %s Sek. lang um %s reduziert. es kann immer nur jeweils ein fluch pro hexenmeister auf einem beliebigen ziel aktiv sein"] = { false, { Stats.AverageWeaponDamage, }, } -- s702
+L["der vom ziel verursachte schaden wird %s Sek. lang um %s reduziert. es kann immer nur jeweils ein fluch pro hexenmeister auf einem beliebigen ziel aktiv sein"] = { false, { Stats.AverageWeaponDamage, }, reduction = true } -- s702
 L["verflucht das ziel mit tollkühnheit, wodurch sich die nahkampfangriffskraft %s Sek. lang um %s erhöht, jedoch die rüstung um %s verringert. mit einem fluch belegte feinde fliehen nicht und ignorieren furcht- und entsetzenseffekte. es kann immer nur jeweils ein fluch pro hexenmeister auf einem beliebigen ziel aktiv sein"] = { false, { Stats.AttackPower, }, { Stats.Armor, }, } -- s704
 L["schützt den zaubernden und verbessert die rüstung um %s, den schattenwiderstand um %s und stellt alle %s sek. %s gesundheit wieder her. hält %s Sek. an"] = { { Stats.Armor, }, { Stats.ShadowResistance, }, false, { Stats.HealthRegen, }, false, } -- s706
-L["verringert die rüstung des ziels %s Sek. lang um %s. während der wirkungsdauer kann das ziel weder verstohlenheit anwenden noch unsichtbar werden"] = { false, { Stats.Armor, }, } -- s770
+L["verringert die rüstung des ziels %s Sek. lang um %s. während der wirkungsdauer kann das ziel weder verstohlenheit anwenden noch unsichtbar werden"] = { false, { Stats.Armor, }, reduction = true } -- s770
 L["erhöht stärke um %s und fügt euch %s Sek. lang alle %s sekunden %s punkt(e) schaden zu"] = { { Stats.Strength, }, false, false, false, } -- s806
 L["heilt sofort %s punkt(e) schaden. stellt im verlauf von %s Sek. %s punkt(e) mana wieder her. ihr müsst beim trinken sitzen bleiben"] = { false, false, { Stats.GenericManaRegen, }, } -- s833
-L["verflucht das ziel mit torheit, verringert intelligenz und willenskraft alle %s sek. um %s punkt(e), bis beides um insgesamt %s punkt(e) verringert worden ist. es kann immer nur jeweils ein fluch pro hexenmeister auf einem beliebigen ziel aktiv sein"] = { false, { Stats.Intellect, Stats.Spirit, }, { Stats.Intellect, }, } -- s1010
-L["unterwirft den zieldämon bis zur stufe %s und zwingt ihn, euren befehlen folge zu leisten. während er unterworfen ist, wird die zeit zwischen angriffen des dämons um %s% erhöht und sein zaubertempo um %s% verlangsamt. hält bis zu %s Sek. lang an. wenn ihr denselben dämon mehrmals unterwerft, wird es mit jedem versuch schwieriger, ihn zu kontrollieren"] = { false, { Stats.MeleeHaste, }, { Stats.SpellHaste, }, false, } -- s1098
+L["verflucht das ziel mit torheit, verringert intelligenz und willenskraft alle %s sek. um %s punkt(e), bis beides um insgesamt %s punkt(e) verringert worden ist. es kann immer nur jeweils ein fluch pro hexenmeister auf einem beliebigen ziel aktiv sein"] = { false, { Stats.Intellect, Stats.Spirit, }, { Stats.Intellect, }, reduction = true } -- s1010
+L["unterwirft den zieldämon bis zur stufe %s und zwingt ihn, euren befehlen folge zu leisten. während er unterworfen ist, wird die zeit zwischen angriffen des dämons um %s% erhöht und sein zaubertempo um %s% verlangsamt. hält bis zu %s Sek. lang an. wenn ihr denselben dämon mehrmals unterwerft, wird es mit jedem versuch schwieriger, ihn zu kontrollieren"] = { false, { Stats.MeleeHaste, }, { Stats.SpellHaste, }, false, reduction = true } -- s1098
 L["erhöht eure chance auszuweichen um %s%"] = { { Stats.Dodge, }, } -- s1114
 L["erhöht %s Sek. lang die rüstung des befreundeten ziels um %s punkt(e)"] = { false, { Stats.Armor, }, } -- s1126
 L["verstärkt frost- und schattenwiderstand %s Sek. lang um %s"] = { false, { Stats.FrostResistance, Stats.ShadowResistance, }, } -- s1138
-L["erhöht %s Sek. lang die zeit zwischen angriffen des ziels um %s%"] = { false, { Stats.MeleeHaste, }, } -- s1139
-L["verringert %s Sek. lang die nahkampfangriffskraft von feinden innerhalb eines radius von %s metern um %s"] = { false, false, { Stats.AttackPower, }, } -- s1160
+L["erhöht %s Sek. lang die zeit zwischen angriffen des ziels um %s%"] = { false, { Stats.MeleeHaste, }, reduction = true } -- s1139
+L["verringert %s Sek. lang die nahkampfangriffskraft von feinden innerhalb eines radius von %s metern um %s"] = { false, false, { Stats.AttackPower, }, reduction = true } -- s1160
 L["macht erfüllt das ziel und erhöht %s Sek. lang seine ausdauer um %s"] = { false, { Stats.Stamina, }, } -- s1243
 L["erhöht %s Sek. lang die intelligenz des ziels um %s"] = { false, { Stats.Intellect, }, } -- s1459
-L["verflucht das ziel und verringert %s Sek. lang seinen feuer- und frostwiderstand um %s. erhöht außerdem den erlittenen feuer- und frostschaden um %s%. es kann immer nur jeweils ein fluch pro hexenmeister auf einem beliebigen ziel aktiv sein"] = { false, { Stats.FireResistance, Stats.FrostResistance, }, false, } -- s1490
-L["zwingt das ziel, dämonisch zu sprechen, und verlangsamt die zauberzeit um %s%. es kann immer nur jeweils ein fluch pro hexenmeister auf einem ziel aktiv sein. hält %s Sek. lang an"] = { { Stats.SpellHaste, }, false, } -- s1714
+L["verflucht das ziel und verringert %s Sek. lang seinen feuer- und frostwiderstand um %s. erhöht außerdem den erlittenen feuer- und frostschaden um %s%. es kann immer nur jeweils ein fluch pro hexenmeister auf einem beliebigen ziel aktiv sein"] = { false, { Stats.FireResistance, Stats.FrostResistance, }, false, reduction = true } -- s1490
+L["zwingt das ziel, dämonisch zu sprechen, und verlangsamt die zauberzeit um %s%. es kann immer nur jeweils ein fluch pro hexenmeister auf einem ziel aktiv sein. hält %s Sek. lang an"] = { { Stats.SpellHaste, }, false, reduction = true } -- s1714
 L["der krieger erhält %s% erhöhte kritische trefferchance und ist für die nächsten %s Sek. immun gegen furchteffekte"] = { { Stats.MeleeCrit, Stats.RangedCrit, }, false, } -- s1719
 L["der krieger erhält %s% erhöhte kritische trefferchance und ist für die nächsten %s Sek. immun gegen furchteffekte, aber sämtlicher erlittene schaden wird um %s% erhöht"] = { { Stats.MeleeCrit, Stats.RangedCrit, }, false, false, } -- s1719
-L["erhöht eure 'heilige magie'-fertigkeit um %s und verringert euren schattenwiderstand um %s"] = { false, { Stats.ShadowResistance, }, } -- s2123
+L["erhöht eure 'heilige magie'-fertigkeit um %s und verringert euren schattenwiderstand um %s"] = { false, { Stats.ShadowResistance, }, reduction = true } -- s2123
 L["erhöht die stärke %s Sek. lang um %s"] = { false, { Stats.Strength, }, } -- s2367
 L["erhöht die beweglichkeit %s Sek. lang um %s"] = { false, { Stats.Agility, }, } -- s2374
 L["erhöht die intelligenz %s Sek. lang um %s"] = { false, { Stats.Intellect, }, } -- s2376
@@ -262,45 +262,45 @@ L["verringert den erlittenen distanzschaden um %s und erhöht die ausweichchance
 L["stärke um %s erhöht"] = { { Stats.Strength, }, } -- s2692
 L["erhöht eure chance, mit einem zauber einen kritischen treffer zu erzielen, um %s%"] = { { Stats.SpellCrit, }, } -- s2916
 L["erhöht den vom zaubernden zugefügten körperlichen schaden %s Sek. lang um %s punkt(e)"] = { false, { Stats.AverageWeaponDamage, }, } -- s3019
-L["sticht das ziel und verringert %s Sek. lang stärke und beweglichkeit des ziels um %s. es kann immer nur jeweils ein biss oder stich pro jäger auf einem beliebigen ziel aktiv sein"] = { false, { Stats.Strength, Stats.Agility, }, } -- s3043
+L["sticht das ziel und verringert %s Sek. lang stärke und beweglichkeit des ziels um %s. es kann immer nur jeweils ein biss oder stich pro jäger auf einem beliebigen ziel aktiv sein"] = { false, { Stats.Strength, Stats.Agility, }, reduction = true } -- s3043
 L["erhöht %s Sek. lang euer distanzangriffstempo um %s% und euer nahkampfangriffstempo um %s%"] = { false, { Stats.RangedHaste, }, { Stats.MeleeHaste, }, } -- s3045
 L["erhöht %s Sek. lang euer distanzangriffstempo um %s%"] = { false, { Stats.RangedHaste, }, } -- s3045
-L["verringert alle attribute eines feindes %s Sek. lang um %s"] = { false, { Stats.AllStats, }, } -- s3105
-L["verursacht normalen schaden plus %s bei einem feind und erhöht die zeit zwischen sein angriffen %s Sek. lang um %s%"] = { false, false, { Stats.MeleeHaste, }, } -- s3130
+L["verringert alle attribute eines feindes %s Sek. lang um %s"] = { false, { Stats.AllStats, }, reduction = true } -- s3105
+L["verursacht normalen schaden plus %s bei einem feind und erhöht die zeit zwischen sein angriffen %s Sek. lang um %s%"] = { false, false, { Stats.MeleeHaste, }, reduction = true } -- s3130
 L["erhöht das angriffstempo von in der nähe befindlichen verbündeten %s Sek. lang um %s%"] = { false, { Stats.MeleeHaste, }, } -- s3136
-L["verringert %s Sek. lang die stärke von in der nähe befindlichen feinden um %s punkt(e) und die beweglichkeit um %s punkt(e)"] = { false, { Stats.Strength, }, { Stats.Agility, }, } -- s3146
-L["verringert die ausdauer eines feindes %s Sek. lang um %s"] = { false, { Stats.Stamina, }, } -- s3148
+L["verringert %s Sek. lang die stärke von in der nähe befindlichen feinden um %s punkt(e) und die beweglichkeit um %s punkt(e)"] = { false, { Stats.Strength, }, { Stats.Agility, }, reduction = true } -- s3146
+L["verringert die ausdauer eines feindes %s Sek. lang um %s"] = { false, { Stats.Stamina, }, reduction = true } -- s3148
 L["erhöht die stärke der in der nähe befindlichen gruppenmitglieder %s lang um %s Sek."] = { { Stats.Strength, }, false, } -- s3149
-L["verringert die gesundheitsregenerationsrate eines feindes um %s% zusätzlich zur verringerung seiner stärke um %s punkt(e) und seiner beweglichkeit um %s punkt(e). hält %s Sek. lang an"] = { false, { Stats.Strength, }, { Stats.Agility, }, false, } -- s3150
+L["verringert die gesundheitsregenerationsrate eines feindes um %s% zusätzlich zur verringerung seiner stärke um %s punkt(e) und seiner beweglichkeit um %s punkt(e). hält %s Sek. lang an"] = { false, { Stats.Strength, }, { Stats.Agility, }, false, reduction = true } -- s3150
 L["erhöht %s Sek. lang das angriffstempo des zaubernden um %s%"] = { false, { Stats.MeleeHaste, }, } -- s3151
 L["%s Sek. lang alle %s sekunden %s punkt(e) gesundheit regenerieren"] = { false, false, { Stats.HealthRegen, }, } -- s3219
 L["erhöht %s Sek. lang das angriffstempo eines verbündeten um %s%"] = { false, { Stats.MeleeHaste, }, } -- s3229
-L["verringert %s Sek. lang die willenskraft eines feindes um %s"] = { false, { Stats.Spirit, }, } -- s3237
+L["verringert %s Sek. lang die willenskraft eines feindes um %s"] = { false, { Stats.Spirit, }, reduction = true } -- s3237
 L["erhöht %s Sek. lang die chance des ziels zu parieren um %s%"] = { false, { Stats.Parry, }, } -- s3238
 L["erhöht %s Sek. lang die chance des zaubernden zu blocken um %s%"] = { false, { Stats.BlockChance, }, } -- s3248
-L["verringert die rüstung eines feindes %s Sek. lang um %s"] = { false, { Stats.Armor, }, } -- s3252
-L["verringert bei allen feinden in einem ausgewählten gebiet %s Sek. lang die stärke um %s, die beweglichkeit um %s und die intelligenz um %s"] = { false, { Stats.Strength, }, { Stats.Agility, }, { Stats.Intellect, }, } -- s3256
-L["betäubt einen feind und verringert dessen rüstung %s Sek. lang um %s"] = { false, { Stats.Armor, }, } -- s3263
+L["verringert die rüstung eines feindes %s Sek. lang um %s"] = { false, { Stats.Armor, }, reduction = true } -- s3252
+L["verringert bei allen feinden in einem ausgewählten gebiet %s Sek. lang die stärke um %s, die beweglichkeit um %s und die intelligenz um %s"] = { false, { Stats.Strength, }, { Stats.Agility, }, { Stats.Intellect, }, reduction = true } -- s3256
+L["betäubt einen feind und verringert dessen rüstung %s Sek. lang um %s"] = { false, { Stats.Armor, }, reduction = true } -- s3263
 L["erhöht %s Sek. lang das angriffstempo des zaubernden um %s%. der zaubernde wird jedoch durch die zusätzliche anstrengung erschöpft"] = { false, { Stats.MeleeHaste, }, } -- s3269
-L["erhöht die zeit zwischen angriffen in der nähe befindlicher feinde %s Sek. lang um %s%"] = { false, { Stats.MeleeHaste, }, } -- s3335
-L["verbrennt einen feind für %s punkt(e) schaden und verringert dessen feuerwiderstand %s Sek. lang um %s"] = { false, false, { Stats.FireResistance, }, } -- s3356
+L["erhöht die zeit zwischen angriffen in der nähe befindlicher feinde %s Sek. lang um %s%"] = { false, { Stats.MeleeHaste, }, reduction = true } -- s3335
+L["verbrennt einen feind für %s punkt(e) schaden und verringert dessen feuerwiderstand %s Sek. lang um %s"] = { false, false, { Stats.FireResistance, }, reduction = true } -- s3356
 L["erhöht %s Sek. lang die stärke des zaubernden um %s"] = { false, { Stats.Strength, }, } -- s3369
 L["erhöht den vom zaubernden zugefügten körperlichen schaden %s Sek. lang um %s punkt(e) und sein bewegungstempo um %s%"] = { false, { Stats.AverageWeaponDamage, }, false, } -- s3385
-L["verringert die rüstung eines feindes %s Sek. lang um %s und fügt alle %s sek. %s punkt(e) naturschaden zu"] = { false, { Stats.Armor, }, false, false, } -- s3396
+L["verringert die rüstung eines feindes %s Sek. lang um %s und fügt alle %s sek. %s punkt(e) naturschaden zu"] = { false, { Stats.Armor, }, false, false, reduction = true } -- s3396
 L["lässt den zaubernden in wut verfallen, die %s Sek. lang anhält und den von ihm zugefügten körperlichen schaden um %s und die zeit zwischen seinen angriffen um %s% erhöht"] = { false, { Stats.AverageWeaponDamage, }, { Stats.MeleeHaste, }, } -- s3416
-L["lässt einen feind %s Sek. lang erkranken, erhöht dabei den körperlichen schaden, den er erleidet, um %s punkt(e) und verringert seine ausdauer um %s punkt(e). das erkrankte ziel hat eine chance von %s%, seine krankheit auf einen seiner in der nähe befindlichen verbündeten zu übertragen, wenn er im gefecht getroffen wird"] = { false, false, { Stats.Stamina, }, false, } -- s3436
-L["kontrolliert %s Sek. lang die gedanken eines humanoiden bis stufe %s, erhöht jedoch die zeit zwischen seinen angriffen um %s%"] = { false, false, { Stats.MeleeHaste, }, } -- s3442
+L["lässt einen feind %s Sek. lang erkranken, erhöht dabei den körperlichen schaden, den er erleidet, um %s punkt(e) und verringert seine ausdauer um %s punkt(e). das erkrankte ziel hat eine chance von %s%, seine krankheit auf einen seiner in der nähe befindlichen verbündeten zu übertragen, wenn er im gefecht getroffen wird"] = { false, false, { Stats.Stamina, }, false, reduction = true } -- s3436
+L["kontrolliert %s Sek. lang die gedanken eines humanoiden bis stufe %s, erhöht jedoch die zeit zwischen seinen angriffen um %s%"] = { false, false, { Stats.MeleeHaste, }, reduction = true } -- s3442
 L["erhöht %s Sek. lang das angriffstempo des zaubernden um %s%, verringert aber den von ihm zugefügten körperlichen schaden um %s punkt(e)"] = { false, { Stats.MeleeHaste, }, { Stats.AverageWeaponDamage, }, } -- s3490
 L["lässt den zaubernden %s Sek. lang in eine irrsinnige raserei verfallen. erhöht das angriffstempo des zaubernden um %s%, verlangsamt aber seine bewegungstempo um %s% und verringert den von ihm zugefügten körperlichen schaden um %s punkt(e)"] = { false, { Stats.MeleeHaste, }, false, { Stats.AverageWeaponDamage, }, } -- s3547
-L["verringert das zaubertempo eines feindes %s Sek. lang um %s%"] = { false, { Stats.SpellHaste, }, } -- s3603
-L["wirft matsch in die augen eines feindes, sodass dessen trefferchance %s Sek. lang um %s% verringert wird"] = { false, { Stats.MeleeHit, Stats.RangedHit, }, } -- s3650
-L["verwandelt das ziel in einen lepragnom und verringert %s Sek. lang seinen nahkampf- und zauberschaden um %s, sowie sein bewegungstempo um %s%"] = { false, { Stats.SpellDamage, }, false, } -- s4060
+L["verringert das zaubertempo eines feindes %s Sek. lang um %s%"] = { false, { Stats.SpellHaste, }, reduction = true } -- s3603
+L["wirft matsch in die augen eines feindes, sodass dessen trefferchance %s Sek. lang um %s% verringert wird"] = { false, { Stats.MeleeHit, Stats.RangedHit, }, reduction = true } -- s3650
+L["verwandelt das ziel in einen lepragnom und verringert %s Sek. lang seinen nahkampf- und zauberschaden um %s, sowie sein bewegungstempo um %s%"] = { false, { Stats.SpellDamage, }, false, reduction = true } -- s4060
 L["wenn ihr im gefecht getroffen werdet, habt ihr eine chance von %s%, eure rüstung %s Sek. lang um %s zu erhöhen"] = { false, false, { Stats.Armor, }, ignoreSum = true } -- s4070
 L["euer widerstand gegen frostzauber wird um %s erhöht"] = { { Stats.FrostResistance, }, } -- s4080
 L["euer widerstand gegen naturzauber wird um %s erhöht"] = { { Stats.NatureResistance, }, } -- s4081
 L["euer widerstand gegen schattenzauber wird um %s erhöht"] = { { Stats.ShadowResistance, }, } -- s4084
 L["erhöht die chance des zaubernden auszuweichen um %s%. hält an, bis die aktion abgebrochen wird"] = { { Stats.Dodge, }, } -- s4086
-L["verärgert ein ziel, erregt seine aufmerksamkeit und verringert seinen rüstungswert um %s"] = { { Stats.Armor, }, } -- s4101
+L["verärgert ein ziel, erregt seine aufmerksamkeit und verringert seinen rüstungswert um %s"] = { { Stats.Armor, }, reduction = true } -- s4101
 L["erhöht %s Sek. lang die stärke der in der nähe befindlichen gruppenmitglieder um %s und erhöht ihre beweglichkeit um %s"] = { false, { Stats.Strength, }, { Stats.Agility, }, } -- s4146
 L["gibt gruppenmitgliedern in einem umkreis von %s metern %s Sek. lang %s punkt(e) stärke und %s punkt(e) beweglichkeit"] = { false, false, { Stats.Strength, }, { Stats.Agility, }, } -- s4147
 L["gewährt dem benutzer %s Sek. lang %s zusätzliche gesundheitspunkt(e)"] = { false, { Stats.Health, }, } -- s4148
@@ -315,7 +315,7 @@ L["eure gesundheit wird um %s erhöht"] = { { Stats.Health, }, } -- s4247
 L["erhöht euer mana um %s"] = { { Stats.Mana, }, } -- s4263
 L["erhöht eure chance, mit einhandschwertern zu parieren, um %s%"] = { { Stats.Parry, }, } -- s4301
 L["erhöht eure chance, mit einhandäxten zu parieren, um %s%"] = { { Stats.Parry, }, } -- s4307
-L["verringert %s Sek. lang stärke um %s und beweglichkeit um %s"] = { false, { Stats.Strength, }, { Stats.Agility, }, } -- s4316
+L["verringert %s Sek. lang stärke um %s und beweglichkeit um %s"] = { false, { Stats.Strength, }, { Stats.Agility, }, reduction = true } -- s4316
 L["erhöht eure beweglichkeit %s Sek. lang um %s"] = { false, { Stats.Agility, }, } -- s4318
 L["erhöht eure chance, mit einhandstreitkolben zu parieren, um %s%"] = { { Stats.Parry, }, } -- s4328
 L["erhöht eure schadenswirkung mit einhandäxten um %s"] = { { Stats.AverageWeaponDamage, }, } -- s4334
@@ -346,9 +346,9 @@ L["schattenwiderstand um %s erhöhen. verleiht eine chance von %s%, feindliche s
 L["widerstand gegen alle arten von zaubern um %s erhöhen"] = { { Stats.FireResistance, Stats.NatureResistance, Stats.FrostResistance, Stats.ShadowResistance, Stats.ArcaneResistance, }, } -- s4579
 L["erhöht eure chance, mit einem schild (kein rundschild) zu blocken, um %s%"] = { { Stats.BlockChance, }, } -- s4760
 L["erhöht eure chance, mit einem schild (kein rundschild) zu blocken, um %s% und wirft %s% der feindlichen zauber auf den zaubernden zurück"] = { { Stats.BlockChance, }, false, } -- s4762
-L["erhöht eure feuermagie-fertigkeit um %s und verringert euren frostwiderstand um %s"] = { false, { Stats.FrostResistance, }, } -- s4788
-L["erhöht eure naturmagie-fertigkeit um %s, verringert jedoch euren schatten- und feuerwiderstand um %s"] = { false, { Stats.ShadowResistance, Stats.FireResistance, }, } -- s4792
-L["erhöht eure frostmagie-fertigkeit um %s und verringert euren feuerwiderstand um %s"] = { false, { Stats.FireResistance, }, } -- s4796
+L["erhöht eure feuermagie-fertigkeit um %s und verringert euren frostwiderstand um %s"] = { false, { Stats.FrostResistance, }, reduction = true } -- s4788
+L["erhöht eure naturmagie-fertigkeit um %s, verringert jedoch euren schatten- und feuerwiderstand um %s"] = { false, { Stats.ShadowResistance, Stats.FireResistance, }, reduction = true } -- s4792
+L["erhöht eure frostmagie-fertigkeit um %s und verringert euren feuerwiderstand um %s"] = { false, { Stats.FireResistance, }, reduction = true } -- s4796
 L["erhöht feuerzauber-schaden um %s"] = { { Stats.FireDamage, }, } -- s4832
 L["erhöht naturzauber-schaden um %s"] = { { Stats.NatureDamage, }, } -- s4848
 L["erhöht frostzauber-schaden um %s"] = { { Stats.FrostDamage, }, } -- s4864
@@ -357,41 +357,41 @@ L["erhöht eure chance auf einen kritischen treffer mit bogen um %s%"] = { { Sta
 L["erhöht eure chance auf einen kritischen treffer mit schusswaffen um %s%"] = { { Stats.MeleeCrit, Stats.RangedCrit, }, } -- s4921
 L["erhöht eure chance auf einen kritischen treffer mit allen schusswaffen um %s%"] = { { Stats.MeleeCrit, Stats.RangedCrit, }, } -- s4923
 L["gewährt dem zaubernden %s Sek. lang zusätzlich %s schaden pro treffer, verringert aber sein bewegungstempo um %s% und erhöht die zeit zwischen seinen angriffen um %s%"] = { false, { Stats.AverageWeaponDamage, }, false, { Stats.MeleeHaste, }, } -- s4955
-L["macht einen feind bewegungsunfähig und erhöht die zeit zwischen seinen angriffen %s Sek. lang um %s%"] = { false, { Stats.MeleeHaste, }, } -- s4962
-L["verringert die ausdauer eines feindes %s Sek. lang um %s und seine willenskraft um %s"] = { false, { Stats.Stamina, }, { Stats.Spirit, }, } -- s4974
+L["macht einen feind bewegungsunfähig und erhöht die zeit zwischen seinen angriffen %s Sek. lang um %s%"] = { false, { Stats.MeleeHaste, }, reduction = true } -- s4962
+L["verringert die ausdauer eines feindes %s Sek. lang um %s und seine willenskraft um %s"] = { false, { Stats.Stamina, }, { Stats.Spirit, }, reduction = true } -- s4974
 L["stellt im verlauf von %s Sek. %s punkt(e) gesundheit wieder her. ihr müsst beim essen sitzen bleiben. wenn ihr mindestens %s sekunden lang mit essen verbringt, werdet ihr satt und erhaltet %s Sek. lang %s punkt(e) ausdauer und willenskraft"] = { false, false, false, false, { Stats.Stamina, }, ignoreSum = true } -- s5004
 L["ein mächtiges gebräu, das eure stärke %s Sek. lang um %s erhöht und eure intelligenz um %s verringert"] = { false, { Stats.Strength, }, { Stats.Intellect, }, } -- s5020
-L["erhöht eure gesundheit um %s, verringert jedoch eure willenskraft %s Sek. lang um %s"] = { false, false, { Stats.Spirit, }, } -- s5021
+L["erhöht eure gesundheit um %s, verringert jedoch eure willenskraft %s Sek. lang um %s"] = { false, false, { Stats.Spirit, }, reduction = true } -- s5021
 L["finishing-move, der das nahkampfangriffstempo um %s% erhöht. hält pro combopunkt länger an:\n %s punkt: %s sekunden\n %s punkte: %s sekunden\n %s punkte: %s sekunden\n %s punkte: %s sekunden\n %s punkte: %s sekunden"] = { { Stats.MeleeHaste, }, false, false, false, false, false, false, false, false, false, false, } -- s5171
-L["verursacht alle %s sek. %s feuerschaden bei einem feind, erhöht die zeit zwischen seinen angriffen um %s% und verringert sein bewegungstempo um %s%. hält %s Sek. lang an"] = { false, false, { Stats.MeleeHaste, }, false, false, } -- s5213
+L["verursacht alle %s sek. %s feuerschaden bei einem feind, erhöht die zeit zwischen seinen angriffen um %s% und verringert sein bewegungstempo um %s%. hält %s Sek. lang an"] = { false, false, { Stats.MeleeHaste, }, false, false, reduction = true } -- s5213
 L["erhöht den zugefügten schaden %s Sek. lang um %s"] = { false, { Stats.AverageWeaponDamage, }, } -- s5217
 L["erhöht %s Sek. lang die rüstung des befreundeten ziels um %s und alle attribute um %s"] = { false, { Stats.Armor, }, { Stats.AllStats, }, } -- s5232
 L["erhöht %s Sek. lang die rüstung des befreundeten ziels um %s, alle attribute um %s und alle widerstandsarten um %s"] = { false, { Stats.Armor, }, { Stats.AllStats, }, false, } -- s5234
 L["der krieger schreit, wodurch sich die nahkampfangriffskraft der gruppe innerhalb eines radius von %s metern um %s erhöht. hält %s Sek. lang an"] = { false, { Stats.AttackPower, }, false, } -- s5242
 L["chance zu parieren um %s% erhöhen"] = { { Stats.Parry, }, } -- s5256
 L["erhöht ausdauer um %s"] = { { Stats.Stamina, }, } -- s5257
-L["erhöht die zeit zwischen angriffen eines feindes %s Sek. lang um %s%"] = { false, { Stats.MeleeHaste, }, } -- s5271
+L["erhöht die zeit zwischen angriffen eines feindes %s Sek. lang um %s%"] = { false, { Stats.MeleeHaste, }, reduction = true } -- s5271
 L["die ausweichchance des schurken erhöht sich %s Sek. lang um %s%"] = { false, { Stats.Dodge, }, } -- s5277
 L["erhöht %s Sek. lang die ausdauer des ziels um %s"] = { false, { Stats.Spirit, }, } -- s5321
 L["erhöht eure schadenswirkung mit zweihandäxten um %s und verleiht eine chance von %s%, die rüstung des feindes %s sekunden lang um %s zu reduzieren"] = { { Stats.AverageWeaponDamage, }, false, false, false, } -- s5341
 L["erhöht eure schadenswirkung mit zweihandstreitkolben um %s und verleiht eine chance von %s%, den feind %s sekunden lang zu betäuben"] = { { Stats.AverageWeaponDamage, }, false, false, } -- s5349
 L["erhöht eure schadenswirkung mit zweihandschwertern um %s und eure chance zu parieren um %s%"] = { { Stats.AverageWeaponDamage, }, false, } -- s5356
 L["erhöht die rüstung um %s"] = { { Stats.Armor, }, } -- s5363
-L["verringert den naturwiderstand eines feindes %s Sek. lang um %s"] = { false, { Stats.NatureResistance, }, } -- s5413
+L["verringert den naturwiderstand eines feindes %s Sek. lang um %s"] = { false, { Stats.NatureResistance, }, reduction = true } -- s5413
 L["erhöht %s Sek. lang die chance des zaubernden auszuweichen um %s%"] = { false, { Stats.Dodge, }, } -- s5426
 L["erhöht eure schadenswirkung mit einhandäxten um %s und verleiht eine chance von %s%, die rüstung des feindes %s sekunden lang um %s zu reduzieren"] = { { Stats.AverageWeaponDamage, }, false, false, false, } -- s5429
 L["erhöht eure schadenswirkung mit einhandschwertern um %s und eure chance zu parieren um %s%"] = { { Stats.AverageWeaponDamage, }, { Stats.Parry, }, } -- s5449
 L["erhöht eure chance zu parieren, während ihr ein zweihandschwert schwingt, um %s%"] = { { Stats.Parry, }, } -- s5454
 L["erhöht eure chance, mit zweihandäxten einen kritischen treffer zu erzielen, um %s%"] = { { Stats.MeleeCrit, Stats.RangedCrit, }, } -- s5466
-L["verringert die rüstung %s Sek. lang um %s%"] = { false, { Stats.Armor, }, } -- s5480
+L["verringert die rüstung %s Sek. lang um %s%"] = { false, { Stats.Armor, }, reduction = true } -- s5480
 L["erhöht eure chance, mit einhandschwertern einen kritischen treffer zu erzielen, um %s"] = { { Stats.MeleeCrit, Stats.RangedCrit, }, } -- s5481
 L["erhöht eure chance, mit einhandschwertern einen kritischen treffer zu erzielen, um %s%"] = { { Stats.MeleeCrit, Stats.RangedCrit, }, } -- s5482
 L["erhöht eure chance, mit einhandäxten einen kritischen treffer zu erzielen, um %s%"] = { { Stats.MeleeCrit, Stats.RangedCrit, }, } -- s5509
-L["verringert die chance eines feindes zu treffen %s Sek. lang um %s%"] = { false, { Stats.MeleeHit, Stats.RangedHit, Stats.SpellHit, }, } -- s51899
+L["verringert die chance eines feindes zu treffen %s Sek. lang um %s%"] = { false, { Stats.MeleeHit, Stats.RangedHit, Stats.SpellHit, }, reduction = true } -- s51899
 L["erhöht eure chance, mit zweihandstreitkolben einen kritischen treffer zu erzielen, um %s%"] = { { Stats.MeleeCrit, Stats.RangedCrit, }, } -- s5527
 L["erhöht eure chance, mit einhandstreitkolben einen kritischen treffer zu erzielen, um %s%"] = { { Stats.MeleeCrit, Stats.RangedCrit, }, } -- s5545
 L["erhöht eure schadenswirkung mit einhandstreitkolben um %s und verleiht eine chance von %s%, den feind %s sekunden lang zu betäuben"] = { { Stats.AverageWeaponDamage, }, false, false, } -- s5549
-L["das feindliche ziel wird von insekten umschwärmt, die dessen trefferchance um %s% verringern und beim betroffenen über %s Sek. %s naturschaden verursachen"] = { { Stats.MeleeHit, Stats.RangedHit, }, false, false, } -- s5570
+L["das feindliche ziel wird von insekten umschwärmt, die dessen trefferchance um %s% verringern und beim betroffenen über %s Sek. %s naturschaden verursachen"] = { { Stats.MeleeHit, Stats.RangedHit, }, false, false, reduction = true } -- s5570
 L["erhöht eure chance, mit dolchen einen kritischen treffer zu erzielen, um %s%"] = { { Stats.MeleeCrit, Stats.RangedCrit, }, } -- s5585
 L["erhöht eure schadenswirkung mit schusswaffen um %s"] = { { Stats.AverageWeaponDamage, }, } -- s5626
 L["erhöht eure schadenswirkung mit schusswaffen um %s und verleiht eine chance von %s%, das ziel %s sekunden lang zu betäuben"] = { { Stats.AverageWeaponDamage, }, false, false, } -- s5638
@@ -400,7 +400,7 @@ L["stellt alle %s sek. %s punkt(e) gesundheit wieder her"] = { false, { Stats.He
 L["erhöht eure chance, mit stäben einen kritischen treffer zu erzielen, um %s%"] = { { Stats.MeleeCrit, Stats.RangedCrit, }, } -- s5715
 L["erhöht eure schadenswirkung mit bogen um %s"] = { { Stats.AverageWeaponDamage, }, } -- s5742
 L["erhöht eure schadenswirkung mit bogen um %s und verleiht eine chance von %s%, das ziel %s sekunden lang bluten zu lassen und ihm damit %s punkte schaden zuzufügen"] = { { Stats.AverageWeaponDamage, }, false, false, false, } -- s5751
-L["verringert die stärke eines feindes um %s und seine beweglichkeit %s Sek. lang um %s"] = { { Stats.Strength, }, false, { Stats.Agility, }, } -- s5781
+L["verringert die stärke eines feindes um %s und seine beweglichkeit %s Sek. lang um %s"] = { { Stats.Strength, }, false, { Stats.Agility, }, reduction = true } -- s5781
 L["erhöht eure rüstung um %s, während ihr einen schild oder rundschild benutzt"] = { { Stats.Armor, }, } -- s5786
 L["erhöht eure chance auf einen kritischen treffer durch naturmagie um %s%"] = { { Stats.SpellCrit, }, } -- s5812
 L["erhöht eure chance auf einen kritischen treffer durch feuermagie um %s%"] = { { Stats.SpellCrit, }, } -- s5835
@@ -408,7 +408,7 @@ L["heilige macht erfüllt das ziel und erhöht %s Sek. lang seine ausdauer um %s
 L["erhöht eure chance auf einen kritischen treffer durch frostmagie um %s%"] = { { Stats.SpellCrit, }, } -- s5866
 L["erhöht eure chance auf einen kritischen treffer durch schattenmagie um %s%"] = { { Stats.SpellCrit, }, } -- s5896
 L["dieses schwache bier erhöht eure willenskraft um %s und verringert %s Sek. lang eure ausdauer um %s"] = { { Stats.Spirit, }, false, { Stats.Stamina, }, } -- s5909
-L["verringert die chance des ziels zu treffen %s Sek. lang um %s%"] = { false, { Stats.MeleeHit, Stats.RangedHit, }, } -- s5917
+L["verringert die chance des ziels zu treffen %s Sek. lang um %s%"] = { false, { Stats.MeleeHit, Stats.RangedHit, }, reduction = true } -- s5917
 L["erhöht die chance auf einen kritischen effekt mit heiligzaubern um %s%"] = { { Stats.SpellCrit, }, } -- s5923
 L["erhöht eure chance zu parieren pro combopunkt um zusätzliche %s%. hält %s Sek. lang an"] = { { Stats.Parry, }, false, } -- s5934
 L["erhöht eure schadenswirkung mit wurfwaffen um %s"] = { { Stats.AverageWeaponDamage, }, } -- s5952
@@ -425,35 +425,35 @@ L["erhöht die gesundheit des tiers um %s"] = { { Stats.Health, }, } -- s6280
 L["erhöht die ausdauer der gruppenmitglieder um %s"] = { { Stats.Stamina, }, } -- s6307
 L["erhöht den vom tier verursachten schaden um %s"] = { { Stats.AverageWeaponDamage, }, } -- s6311
 L["erhöht die willenskraft des tiers um %s. muss mit 'wildtierausbildung' ausgebildet werden"] = { { Stats.Spirit, }, } -- s6328
-L["dröhnt in der nähe befindliche feinde mit donner zu, erhöht die zeit zwischen ihren angriffen %s Sek. lang um %s% und fügt ihnen %s schaden zu. wirkt auf maximal %s ziele"] = { false, { Stats.MeleeHaste, }, false, false, } -- s6343
+L["dröhnt in der nähe befindliche feinde mit donner zu, erhöht die zeit zwischen ihren angriffen %s Sek. lang um %s% und fügt ihnen %s schaden zu. wirkt auf maximal %s ziele"] = { false, { Stats.MeleeHaste, }, false, false, reduction = true } -- s6343
 L["erhöht den widerstand des tiers gegen alle arten von magie um %s"] = { { Stats.FireResistance, Stats.NatureResistance, Stats.FrostResistance, Stats.ShadowResistance, Stats.ArcaneResistance, }, } -- s6443
 L["erhöht den von in der nähe befindlichen gruppenmitgliedern zugefügten körperlichen schaden %s Sek. lang um %s punkt(e)"] = { false, { Stats.AverageWeaponDamage, }, } -- s6507
 L["eine schneidenkante erhöht eure schadenswirkung mit dieser waffe um %s"] = { { Stats.AverageWeaponDamage, }, } -- s6514
-L["wirft erde in die augen eines feindes, sodass dessen chance zu treffen %s Sek. lang um %s% verringert wird"] = { false, { Stats.MeleeHit, Stats.RangedHit, }, } -- s6530
-L["schießt auf den feind, fügt normalen schaden zu und verringert die rüstung eines feindes %s Sek. lang um %s"] = { false, { Stats.Armor, }, } -- s6685
-L["verursacht alle %s sek. %s naturschaden bei einem feind, erhöht die zeit zwischen seinen angriffen um %s% und verlangsamt sein bewegungstempo um %s%. hält %s Sek. lang an"] = { false, false, { Stats.MeleeHaste, }, false, false, } -- s6814
-L["verringert die intelligenz von in der nähe befindlichen feinden %s Sek. lang um %s"] = { false, { Stats.Intellect, }, } -- s6818
+L["wirft erde in die augen eines feindes, sodass dessen chance zu treffen %s Sek. lang um %s% verringert wird"] = { false, { Stats.MeleeHit, Stats.RangedHit, }, reduction = true } -- s6530
+L["schießt auf den feind, fügt normalen schaden zu und verringert die rüstung eines feindes %s Sek. lang um %s"] = { false, { Stats.Armor, }, reduction = true } -- s6685
+L["verursacht alle %s sek. %s naturschaden bei einem feind, erhöht die zeit zwischen seinen angriffen um %s% und verlangsamt sein bewegungstempo um %s%. hält %s Sek. lang an"] = { false, false, { Stats.MeleeHaste, }, false, false, reduction = true } -- s6814
+L["verringert die intelligenz von in der nähe befindlichen feinden %s Sek. lang um %s"] = { false, { Stats.Intellect, }, reduction = true } -- s6818
 L["erhöht den vom zaubernden zugefügten körperlichen schaden um %s, aber verringert sein bewegungstempo um %s%. hält %s Sek. lang an"] = { { Stats.AverageWeaponDamage, }, false, false, } -- s6864
-L["erhöht die zeit zwischen angriffen eines feindes um %s% und verlangsamt sein bewegungstempo um %s%. hält %s Sek. lang an"] = { { Stats.MeleeHaste, }, false, false, } -- s6907
+L["erhöht die zeit zwischen angriffen eines feindes um %s% und verlangsamt sein bewegungstempo um %s%. hält %s Sek. lang an"] = { { Stats.MeleeHaste, }, false, false, reduction = true } -- s6907
 L["erhöht den vom zaubernden zugefügten körperlichen schaden um %s punkt(e) und sein bewegungstempo %s Sek. lang um %s%. verflucht den feind außerdem beim ersten erfolgreichen treffer und verringert den von ihm zugefügten körperlichen schaden um %s punkt(e), den von ihm zugefügten magieschaden um %s punkt(e) und erhöht den ihm zugefügten körperlichen schaden %s Sek. lang um %s punkt(e)"] = { { Stats.AverageWeaponDamage, }, false, false, { Stats.AverageWeaponDamage, }, { Stats.SpellDamage, }, false, false, } -- s6921
-L["verringert die rüstung eines feindes %s Sek. lang um %s. während der wirkungsdauer kann das ziel weder verstohlenheit noch unsichtbarkeit anwenden"] = { false, { Stats.Armor, }, } -- s6950
-L["verringert die stärke eines feindes %s Sek. lang um %s"] = { false, { Stats.Strength, }, } -- s6951
+L["verringert die rüstung eines feindes %s Sek. lang um %s. während der wirkungsdauer kann das ziel weder verstohlenheit noch unsichtbarkeit anwenden"] = { false, { Stats.Armor, }, reduction = true } -- s6950
+L["verringert die stärke eines feindes %s Sek. lang um %s"] = { false, { Stats.Strength, }, reduction = true } -- s6951
 L["erhöht %s Sek. lang die stärke eines verbündeten um %s"] = { false, { Stats.Strength, }, } -- s6957
 L["erhöht %s Sek. lang die rüstung des zaubernden um %s"] = { false, { Stats.Armor, }, } -- s7020
 L["erhöht den von in der nähe befindlichen gruppenmitgliedern zugefügten körperlichen schaden um %s punkt(e). spieler können pro paladin immer nur jeweils eine aura besitzen. die aura hält an, bis die aktion abgebrochen wird"] = { { Stats.AverageWeaponDamage, }, } -- s7069
-L["erhöht die zeit zwischen angriffen eines feindes um %s% und verlangsamt sein zauberwirken um %s%, fügt außerdem eine chance von %s% hinzu, die verpestung bei einem treffer auf einen verbündeten zu verbreiten. hält %s Sek. lang an"] = { { Stats.MeleeHaste, }, { Stats.SpellHaste, }, false, false, } -- s7102
-L["erhöht die zeit zwischen den angriffen eines feindes um %s%, verlangsamt sein zaubertempo um %s% und sein bewegungstempo um %s%. hält %s Sek. lang an"] = { { Stats.MeleeHaste, }, { Stats.SpellHaste, }, false, false, } -- s7127
+L["erhöht die zeit zwischen angriffen eines feindes um %s% und verlangsamt sein zauberwirken um %s%, fügt außerdem eine chance von %s% hinzu, die verpestung bei einem treffer auf einen verbündeten zu verbreiten. hält %s Sek. lang an"] = { { Stats.MeleeHaste, }, { Stats.SpellHaste, }, false, false, reduction = true } -- s7102
+L["erhöht die zeit zwischen den angriffen eines feindes um %s%, verlangsamt sein zaubertempo um %s% und sein bewegungstempo um %s%. hält %s Sek. lang an"] = { { Stats.MeleeHaste, }, { Stats.SpellHaste, }, false, false, reduction = true } -- s7127
 L["einen feind attackieren, dabei das tempo erhöhen und beim ersten angriff einen zusätzlichen schaden von %s verursachen"] = { { Stats.AverageWeaponDamage, }, } -- s7137
-L["verringert die trefferchance von in der nähe befindlichen feinden %s Sek. lang um %s%"] = { false, { Stats.MeleeHit, Stats.RangedHit, }, } -- s7272
-L["erhöht die zeit zwischen angriffen in der nähe befindlicher feinde um %s% und verlangsamt ihr bewegungstempo um %s%. hält %s Sek. lang an"] = { { Stats.MeleeHaste, }, false, false, } -- s7279
-L["verringert die stärke eines feindes um %s und seine ausdauer %s Sek. lang um %s"] = { { Stats.Strength, }, false, { Stats.Stamina, }, } -- s7289
+L["verringert die trefferchance von in der nähe befindlichen feinden %s Sek. lang um %s%"] = { false, { Stats.MeleeHit, Stats.RangedHit, }, reduction = true } -- s7272
+L["erhöht die zeit zwischen angriffen in der nähe befindlicher feinde um %s% und verlangsamt ihr bewegungstempo um %s%. hält %s Sek. lang an"] = { { Stats.MeleeHaste, }, false, false, reduction = true } -- s7279
+L["verringert die stärke eines feindes um %s und seine ausdauer %s Sek. lang um %s"] = { { Stats.Strength, }, false, { Stats.Stamina, }, reduction = true } -- s7289
 L["erhöht die rüstung um %s. wenn ein feind den zaubernden schlägt, kann %s Sek. lang sein bewegungstempo um %s% verlangsamt und die zeit zwischen angriffen um %s% erhöht werden. es kann immer nur ein rüstungszauber zur selben zeit auf dem magier aktiv sein. hält %s Sek. lang an"] = { { Stats.Armor, }, false, false, { Stats.MeleeHaste, }, false, } -- s7300
 L["erhöht die rüstung um %s und den frostwiderstand um %s. wenn ein feind den zaubernden schlägt, kann %s Sek. lang sein bewegungstempo um %s% verlangsamt und die zeit zwischen seinen angriffen um %s% erhöht werden. es kann immer nur ein rüstungszauber zur selben zeit auf dem magier aktiv sein. hält %s Sek. lang an"] = { { Stats.Armor, }, { Stats.FrostResistance, }, false, false, { Stats.MeleeHaste, }, false, } -- s7302
 L["erhöht eure willenskraft um %s"] = { { Stats.Spirit, }, } -- s7353
 L["erhöht die willenskraft der in der nähe befindlichen gruppenmitglieder um %s"] = { { Stats.Spirit, }, } -- s7363
 L["auf einen feind zustürmen, wobei er %s Sek. lang bewegungsunfähig wird und außerdem die nahkampfangriffskraft des ebers beim nächsten angriff um %s erhöht wird"] = { false, { Stats.AttackPower, }, } -- s7371
 L["erhöht chance auf kritischen treffer um %s%.\nerhöht jeglichen erlittenen schaden um %s%.\nverringert erzeugte bedrohung um %s%"] = { { Stats.MeleeCrit, Stats.RangedCrit, }, false, false, } -- s7381
-L["zerreißt die rüstung des ziels und verringert sie um %s punkt(e) pro einsatz von 'rüstung zerreißen' und verursacht ein hohes maß an bedrohung. kann bis zu %s-mal angewendet werden. hält %s Sek. lang an"] = { { Stats.Armor, }, false, false, } -- s7386
+L["zerreißt die rüstung des ziels und verringert sie um %s punkt(e) pro einsatz von 'rüstung zerreißen' und verursacht ein hohes maß an bedrohung. kann bis zu %s-mal angewendet werden. hält %s Sek. lang an"] = { { Stats.Armor, }, false, false, reduction = true } -- s7386
 L["%s stärke"] = { { Stats.Strength, }, } -- s7464
 L["%s intelligenz"] = { { Stats.Intellect, }, } -- s7468
 L["%s beweglichkeit"] = { { Stats.Agility, }, } -- s7471
@@ -479,41 +479,41 @@ L["erhöht durch schattenzauber und schatteneffekte zugefügten schaden um bis z
 L["erhöht intelligenz um %s"] = { { Stats.Intellect, }, } -- s7764
 L["erhöht die schadenswirkung von feuerzaubern %s Sek. lang um %s"] = { false, { Stats.FireDamage, }, } -- s7843
 L["erhöht die schadenswirkung von feuerzaubern %s Sek. lang um bis zu %s"] = { false, { Stats.FireDamage, }, } -- s7844
-L["verringert die beweglichkeit eines feindes %s Sek. lang um %s"] = { false, { Stats.Agility, }, } -- s7901
+L["verringert die beweglichkeit eines feindes %s Sek. lang um %s"] = { false, { Stats.Agility, }, reduction = true } -- s7901
 L["ermöglicht %s Sek. lang gestaltwandlung in eine schlange, erhöht angriffsschaden um %s die zeit zwischen angriffen um %s%"] = { false, { Stats.AverageWeaponDamage, }, { Stats.MeleeHaste, }, } -- s7965
-L["verringert die stärke eines feindes um %s, seine beweglichkeit um %s und seine ausdauer %s Sek. lang um %s"] = { { Stats.Strength, }, { Stats.Agility, }, false, { Stats.Stamina, }, } -- s7997
-L["verringert die willenskraft eines feindes %s Sek. lang um %s"] = { false, { Stats.Spirit, }, } -- s8016
+L["verringert die stärke eines feindes um %s, seine beweglichkeit um %s und seine ausdauer %s Sek. lang um %s"] = { { Stats.Strength, }, { Stats.Agility, }, false, { Stats.Stamina, }, reduction = true } -- s7997
+L["verringert die willenskraft eines feindes %s Sek. lang um %s"] = { false, { Stats.Spirit, }, reduction = true } -- s8016
 L["ermöglicht %s Sek. lang gestaltwandlung in eine schlange, erhöht körperlichen schaden um %s, zauber wirken ist allerdings nicht mehr möglich"] = { false, { Stats.AverageWeaponDamage, }, } -- s8041
-L["verursacht %s naturschaden bei in der nähe befindlichen feinden, erhöht die zeit zwischen ihren angriffen um %s% und verlangsamt ihr bewegungstempo um %s%. hält %s Sek. lang an"] = { false, { Stats.MeleeHaste, }, false, false, } -- s8078
+L["verursacht %s naturschaden bei in der nähe befindlichen feinden, erhöht die zeit zwischen ihren angriffen um %s% und verlangsamt ihr bewegungstempo um %s%. hält %s Sek. lang an"] = { false, { Stats.MeleeHaste, }, false, false, reduction = true } -- s8078
 L["erhöht %s Sek. lang die rüstung des ziels um %s"] = { false, { Stats.Armor, }, } -- s8091
 L["erhöht %s Sek. lang die willenskraft des ziels um %s"] = { false, { Stats.Spirit, }, } -- s8112
 L["erhöht %s Sek. lang die beweglichkeit des ziels um %s"] = { false, { Stats.Agility, }, } -- s8115
 L["erhöht %s Sek. lang die stärke des ziels um %s"] = { false, { Stats.Strength, }, } -- s8118
-L["verringert die intelligenz eines feindes %s Sek. lang um %s und seine willenskraft um %s"] = { false, { Stats.Intellect, }, { Stats.Spirit, }, } -- s8139
+L["verringert die intelligenz eines feindes %s Sek. lang um %s und seine willenskraft um %s"] = { false, { Stats.Intellect, }, { Stats.Spirit, }, reduction = true } -- s8139
 L["der zaubernde wird von einer explosion der energie erfüllt, die seine schadenswirkung %s Sek. lang um %s und die rüstung um %s erhöht"] = { false, { Stats.AverageWeaponDamage, }, { Stats.Armor, }, } -- s8191
 L["eure größe nimmt zu und eure stärke wächst um %s, um eurer neuen größe gerecht zu werden. hält %s Sek. lang an"] = { { Stats.Strength, }, false, } -- s8212
-L["verringert die rüstung von in der nähe befindlichen feinden %s Sek. lang um %s"] = { false, { Stats.Armor, }, } -- s8245
-L["fügt einem feind und seinen nächsten verbündeten normalen schaden plus %s zu, wirkt sich auf bis zu %s ziele aus und erhöht die zeit zwischen ihren angriffen %s Sek. lang um %s%"] = { false, false, false, { Stats.MeleeHaste, }, } -- s8255
+L["verringert die rüstung von in der nähe befindlichen feinden %s Sek. lang um %s"] = { false, { Stats.Armor, }, reduction = true } -- s8245
+L["fügt einem feind und seinen nächsten verbündeten normalen schaden plus %s zu, wirkt sich auf bis zu %s ziele aus und erhöht die zeit zwischen ihren angriffen %s Sek. lang um %s%"] = { false, false, false, { Stats.MeleeHaste, }, reduction = true } -- s8255
 L["gibt in der nähe befindlichen gruppenmitgliedern %s Sek. lang %s zusätzliche rüstung. spieler können pro paladin immer nur jeweils eine aura besitzen"] = { false, { Stats.Armor, }, } -- s8258
 L["erhöht %s Sek. lang das angriffstempo des zaubernden um %s% und den von ihm zugefügten körperlichen schaden um %s punkt(e)"] = { false, { Stats.MeleeHaste, }, { Stats.AverageWeaponDamage, }, } -- s8269
-L["verringert den vom ziel verursachten körperlichen schaden %s Sek. lang um %s"] = { false, { Stats.AverageWeaponDamage, }, } -- s8277
+L["verringert den vom ziel verursachten körperlichen schaden %s Sek. lang um %s"] = { false, { Stats.AverageWeaponDamage, }, reduction = true } -- s8277
 L["erhöht den von einem verbündeten zugefügten körperlichen schaden %s Sek. lang um %s punkt(e)"] = { false, { Stats.AverageWeaponDamage, }, } -- s8365
-L["verringert den vom ziel verursachten schaden %s Sek. lang um %s"] = { false, { Stats.AverageWeaponDamage, }, } -- s8552
+L["verringert den vom ziel verursachten schaden %s Sek. lang um %s"] = { false, { Stats.AverageWeaponDamage, }, reduction = true } -- s8552
 L["erhöht das angriffstempo eines verbündeten %s Sek. lang um %s%, fügt diesem verbündeten aber auch alle %s sek. %s punkt(e) naturschaden zu"] = { false, { Stats.MeleeHaste, }, false, false, } -- s8699
-L["schwächt das feindliche ziel und verringert den verursachten schaden um %s sowie die wirksamkeit jeglicher heilung um %s%. hält %s Sek. lang an"] = { { Stats.AverageWeaponDamage, }, false, false, } -- s9035
+L["schwächt das feindliche ziel und verringert den verursachten schaden um %s sowie die wirksamkeit jeglicher heilung um %s%. hält %s Sek. lang an"] = { { Stats.AverageWeaponDamage, }, false, false, reduction = true } -- s9035
 L["erhöht die nahkampfangriffskraft der in der nähe befindlichen gruppenmitglieder %s Sek. lang um %s"] = { false, { Stats.AttackPower, }, } -- s9128
 L["erhöht eure chance, mit geschosswaffen einen kritischen treffer zu erzielen, um %s%"] = { { Stats.MeleeCrit, Stats.RangedCrit, }, } -- s9132
-L["%s angriffskraft"] = { { Stats.AttackPower, }, } -- s9136
-L["verringert die rüstung des ziels %s Sek. lang um %s"] = { false, { Stats.Armor, }, } -- s9176
+L["%s angriffskraft"] = { { Stats.AttackPower, Stats.RangedAttackPower, }, } -- e1563
+L["verringert die rüstung des ziels %s Sek. lang um %s"] = { false, { Stats.Armor, }, reduction = true } -- s9176
 L["erhöht durch zauber und magische effekte zugefügten schaden und heilung um bis zu %s"] = { { Stats.SpellPower, }, } -- s9342
 L["macht den zaubernden bewegungsunfähig und erhöht den ihm zugefügten körperlichen schaden %s Sek. lang um %s punkt(e)"] = { false, { Stats.AverageWeaponDamage, }, } -- s9576
 L["%s rüstung"] = { { Stats.Armor, }, } -- s9760
 L["erhöht rüstung um %s und frostwiderstand um %s. wenn ein gegner den zaubernden schlägt, kann %s Sek. lang sein bewegungstempo um %s% verlangsamt und die zeit zwischen seinen angriffen um %s% erhöht werden. es kann immer nur ein rüstungszauber zur selben zeit auf dem magier aktiv sein. hält %s Sek. lang an"] = { { Stats.Armor, }, { Stats.FrostResistance, }, false, false, { Stats.MeleeHaste, }, false, } -- s10219
-L["opfert das leben des zaubernden, um die ausdauer von in der nähe befindlichen feinden %s Sek. lang um %s punkt(e) zu verringern"] = { false, { Stats.Stamina, }, } -- s10251
+L["opfert das leben des zaubernden, um die ausdauer von in der nähe befindlichen feinden %s Sek. lang um %s punkt(e) zu verringern"] = { false, { Stats.Stamina, }, reduction = true } -- s10251
 L["verteidigung %s Sek. lang %s"] = { false, { Stats.Defense, }, } -- s10351
 L["erhöht %s Sek. lang den dem ziel durch körperliche angriffe zugefügten schaden um %s punkt(e). ergänzt sich bis zu %s mal"] = { false, { Stats.AverageWeaponDamage, }, false, } -- s10370
-L["erhöht %s Sek. lang die zeit zwischen angriffen des feindlichen ziels um %s"] = { false, { Stats.MeleeHaste, }, } -- s10371
-L["verflucht ein ziel und verringert %s Sek. lang den zugefügten schaden um %s"] = { false, { Stats.AverageWeaponDamage, }, } -- s10651
+L["erhöht %s Sek. lang die zeit zwischen angriffen des feindlichen ziels um %s"] = { false, { Stats.MeleeHaste, }, reduction = true } -- s10371
+L["verflucht ein ziel und verringert %s Sek. lang den zugefügten schaden um %s"] = { false, { Stats.AverageWeaponDamage, }, reduction = true } -- s10651
 L["erhöht nach verzehr stärke um %s. effekt hält %s minuten lang an"] = { { Stats.Strength, }, false, } -- s10667
 L["erhöht nach verzehr ausdauer um %s. effekt hält %s minuten lang an"] = { { Stats.Stamina, }, false, } -- s10668
 L["erhöht nach verzehr beweglichkeit um %s. effekt hält %s minuten lang an"] = { { Stats.Agility, }, false, } -- s10669
@@ -526,54 +526,54 @@ L["erhöht nach verzehr intelligenz um %s. effekt hält %s minuten lang an"] = {
 L["erhöht nach verzehr willenskraft um %s. effekt hält %s minuten lang an"] = { { Stats.Spirit, }, false, } -- s10693
 L["erhöht %s Sek. lang das angriffstempo von in der nähe befindlichen mechanischen verbündeten um %s% und den von ihnen zugefügten körperlichen schaden um %s punkt(e)"] = { false, { Stats.MeleeHaste, }, { Stats.AverageWeaponDamage, }, } -- s10732
 L["erhöht willenskraft um %s"] = { { Stats.Spirit, }, } -- s10767
-L["erhöht %s Sek. lang die zeit zwischen angriffen eines feindes um %s% und verlangsamt sein bewegungstempo um %s%. 'verzögerung' führt auch zu verbindungstod und betäubt den feind %s Sek. lang"] = { false, { Stats.MeleeHaste, }, false, false, } -- s10855
-L["kontrolliert die gedanken eines humanoiden bis stufe %s, erhöht jedoch die zeit zwischen seinen angriffen um %s%. hält bis zu %s Sek. lang an"] = { false, { Stats.MeleeHaste, }, false, } -- s10911
-L["verringert die nahkampfangriffskraft von in der nähe befindlichen feinden %s Sek. lang um %s"] = { false, { Stats.AttackPower, }, } -- s10968
+L["erhöht %s Sek. lang die zeit zwischen angriffen eines feindes um %s% und verlangsamt sein bewegungstempo um %s%. 'verzögerung' führt auch zu verbindungstod und betäubt den feind %s Sek. lang"] = { false, { Stats.MeleeHaste, }, false, false, reduction = true } -- s10855
+L["kontrolliert die gedanken eines humanoiden bis stufe %s, erhöht jedoch die zeit zwischen seinen angriffen um %s%. hält bis zu %s Sek. lang an"] = { false, { Stats.MeleeHaste, }, false, reduction = true } -- s10911
+L["verringert die nahkampfangriffskraft von in der nähe befindlichen feinden %s Sek. lang um %s"] = { false, { Stats.AttackPower, }, reduction = true } -- s10968
 L["verringert die widerstände eures ziels gegen alle eure zauber um %s. alle eure arkanzauber verursachen %s% weniger bedrohung"] = { { Stats.SpellPenetration, }, false, } -- s11210
 L["erhöht den schattenwiderstand um %s. wenn ein feind den benutzer trifft, besteht eine chance von %s%, dass der angreifende feind mit einer krankheit infiziert wird, die seinen erlittenen schaden %s Sek. lang um %s erhöht. hält %s Sek. lang an"] = { { Stats.ShadowResistance, }, false, false, false, false, } -- s11371
 L["erhöht die schadenswirkung von zaubern %s Sek. lang um %s"] = { false, { Stats.SpellDamage, }, } -- s11390
-L["fügt einem feind normalen schaden plus %s zu, verringert seine stärke um %s und seine beweglichkeit %s Sek. lang um %s"] = { false, { Stats.Strength, }, false, { Stats.Agility, }, } -- s11397
+L["fügt einem feind normalen schaden plus %s zu, verringert seine stärke um %s und seine beweglichkeit %s Sek. lang um %s"] = { false, { Stats.Strength, }, false, { Stats.Agility, }, reduction = true } -- s11397
 L["erhöht eure stärke %s Sek. lang um %s"] = { false, { Stats.Strength, }, } -- s11405
-L["erhöht die zeit zwischen angriffen eines feindes um %s%, verringert sein bewegungstempo um %s% und zusätzlich seine stärke um %s%. hält %s Sek. lang an"] = { { Stats.MeleeHaste, }, false, false, false, } -- s11443
+L["erhöht die zeit zwischen angriffen eines feindes um %s%, verringert sein bewegungstempo um %s% und zusätzlich seine stärke um %s%. hält %s Sek. lang an"] = { { Stats.MeleeHaste, }, false, false, false, reduction = true } -- s11443
 L["erhöht die schadenswirkung von schattenzaubern %s Sek. lang um bis zu %s"] = { false, { Stats.ShadowDamage, }, } -- s11474
-L["schlägt einen feind mit der wut von sul'thraze. verringert die stärke des ziels um %s und fügt %s punkt(e) schattenschaden sowie %s punkt(e) zusätzlichen schaden im verlauf von %s Sek. zu"] = { { Stats.Strength, }, false, false, false, } -- s11658
-L["durchsticht die rüstung des ziels und verringert sie um %s"] = { { Stats.Armor, }, } -- s11791
-L["verringert %s Sek. lang die stärke von in der nähe befindlichen feinden um %s punkt(e) und die ausdauer um %s punkt(e)"] = { false, { Stats.Strength, }, { Stats.Stamina, }, } -- s11892
+L["schlägt einen feind mit der wut von sul'thraze. verringert die stärke des ziels um %s und fügt %s punkt(e) schattenschaden sowie %s punkt(e) zusätzlichen schaden im verlauf von %s Sek. zu"] = { { Stats.Strength, }, false, false, false, reduction = true } -- s11658
+L["durchsticht die rüstung des ziels und verringert sie um %s"] = { { Stats.Armor, }, reduction = true } -- s11791
+L["verringert %s Sek. lang die stärke von in der nähe befindlichen feinden um %s punkt(e) und die ausdauer um %s punkt(e)"] = { false, { Stats.Strength, }, { Stats.Stamina, }, reduction = true } -- s11892
 L["hackt nach der rüstung des feindes und verringert sie um %s punkt(e) pro einsatz von 'rüstung zerreißen'. kann bis zu %s-mal angewendet werden. hält %s Sek. lang an"] = { { Stats.Armor, }, false, false, } -- s11971
-L["verringert den von einem feind zugefügten körperlichen schaden %s Sek. lang um %s punkt(e). es kann immer nur jeweils ein fluch pro hexenmeister auf einem beliebigen ziel aktiv sein"] = { false, { Stats.AverageWeaponDamage, }, } -- s11980
-L["verursacht %s punkt(e) naturschaden bei in der nähe befindlichen feinden und verringert ihre trefferchance um %s%. hält %s Sek. lang an"] = { false, { Stats.MeleeHit, Stats.RangedHit, }, false, } -- s11983
+L["verringert den von einem feind zugefügten körperlichen schaden %s Sek. lang um %s punkt(e). es kann immer nur jeweils ein fluch pro hexenmeister auf einem beliebigen ziel aktiv sein"] = { false, { Stats.AverageWeaponDamage, }, reduction = true } -- s11980
+L["verursacht %s punkt(e) naturschaden bei in der nähe befindlichen feinden und verringert ihre trefferchance um %s%. hält %s Sek. lang an"] = { false, { Stats.MeleeHit, Stats.RangedHit, }, false, reduction = true } -- s11983
 L["fixiert einen feind auf den zaubernden und erhöht das angriffstempo des zaubernden %s Sek. lang um %s%. solange das ziel auf den zaubernden fixiert ist, ist es kaum willig, irgendetwas anderes anzugreifen"] = { false, { Stats.MeleeHaste, }, } -- s12021
 L["erhöht die ausdauer aller gruppenmitglieder im umkreis von %s metern um %s"] = { false, { Stats.Stamina, }, } -- s12022
 L["erhöht eure chance, mit stangenwaffen einen kritischen treffer zu erzielen, um %s%"] = { { Stats.MeleeCrit, Stats.RangedCrit, }, } -- s12165
-L["verkrüppelt einen feind, verursacht normalen schaden plus %s und verringert seine stärke %s Sek. lang um %s"] = { false, false, { Stats.Strength, }, } -- s12166
+L["verkrüppelt einen feind, verursacht normalen schaden plus %s und verringert seine stärke %s Sek. lang um %s"] = { false, false, { Stats.Strength, }, reduction = true } -- s12166
 L["erhöht %s Sek. lang die chance des zaubernden zu blocken um %s%, blockt jedoch nur %s angriff"] = { false, { Stats.BlockChance, }, false, } -- s12169
 L["erhöht %s Sek. lang die chance des zaubernden zu blocken um %s%, blockt jedoch nur %s angriffe"] = { false, { Stats.BlockChance, }, false, } -- s12169
-L["verringert das zaubertempo von in der nähe befindlichen feinden um %s% und erhöht die zeit zwischen ihren angriffen um %s%. hält %s Sek. lang an"] = { { Stats.SpellHaste, }, { Stats.MeleeHaste, }, false, } -- s12255
+L["verringert das zaubertempo von in der nähe befindlichen feinden um %s% und erhöht die zeit zwischen ihren angriffen um %s%. hält %s Sek. lang an"] = { { Stats.SpellHaste, }, { Stats.MeleeHaste, }, false, reduction = true } -- s12255
 L["erhöht eure chance, angriffe mit einem schild zu blocken, um %s% und besitzt eine %s% chance %s wutpunkt zu generieren, wenn erfolgreich geblockt wurde"] = { { Stats.BlockChance, }, false, false, } -- s12298
 L["erhöht euer angriffstempo für die nächsten %s waffenschwünge um %s%, nachdem ihr einen kritischen treffer zugefügt habt"] = { false, { Stats.MeleeHaste, }, ignoreSum = true } -- s12319
 L["erhöht eure chance, mit nahkampfwaffen einen kritischen treffer zu erzielen, um %s%"] = { { Stats.MeleeCrit, Stats.RangedCrit, }, } -- s12320
-L["verringert alle attribute von in der nähe befindlichen feinden %s Sek. lang um %s"] = { false, { Stats.AllStats, }, } -- s12530
+L["verringert alle attribute von in der nähe befindlichen feinden %s Sek. lang um %s"] = { false, { Stats.AllStats, }, reduction = true } -- s12530
 L["umgibt den zaubernden mit einer frostschicht, die %s Sek. lang bestehen bleibt. das dicke eis erhöht die rüstung um %s, verlangsamt das bewegungstempo von nahkampfangreifern um %s% und erhöht die zeit zwischen ihren angriffen um %s%"] = { false, { Stats.Armor, }, { Stats.MeleeHaste, }, false, } -- s12544
 L["erhöht %s Sek. lang den zugefügten schaden um %s und das angriffstempo um %s"] = { false, { Stats.AttackPower, }, { Stats.MeleeHaste, }, } -- s12686
 L["erhöht eure chance, mit äxten einen kritischen treffer zu erzielen, um %s%"] = { { Stats.MeleeCrit, Stats.RangedCrit, }, } -- s12700
 L["erhöht den schaden %s Sek. lang um %s"] = { false, { Stats.AverageWeaponDamage, }, } -- s12731
 L["erhöht eure normale gesundheits- und manaregeneration um %s"] = { { Stats.GenericManaRegen, }, } -- s12732
 L["erhöht die rüstung um %s, alle widerstände um %s und gewährt %s Sek. lang immunität gegenüber furcht"] = { { Stats.Armor, }, { Stats.FireResistance, Stats.NatureResistance, Stats.FrostResistance, Stats.ShadowResistance, Stats.ArcaneResistance, }, false, } -- s12733
-L["verringert den von in der nähe befindlichen feinden zugefügten körperlichen schaden %s Sek. lang um %s punkt(e). es kann immer nur jeweils ein fluch pro hexenmeister auf einem beliebigen ziel aktiv sein"] = { false, { Stats.AverageWeaponDamage, }, } -- s12741
+L["verringert den von in der nähe befindlichen feinden zugefügten körperlichen schaden %s Sek. lang um %s punkt(e). es kann immer nur jeweils ein fluch pro hexenmeister auf einem beliebigen ziel aktiv sein"] = { false, { Stats.AverageWeaponDamage, }, reduction = true } -- s12741
 L["treibt ein feindliches ziel für begrenzte zeit in den wahnsinn, erhöht sein angriffstempo um %s% und seine bewegung um %s% und lässt es außerdem %s Sek. lang seine eigenen verbündeten angreifen"] = { { Stats.MeleeHaste, }, false, false, } -- s12888
-L["zwingt in der nähe befindliche feinde, dämonisch zu sprechen, was ihr zaubertempo %s Sek. lang um %s% verringert. es kann immer nur jeweils ein fluch pro hexenmeister auf einem beliebigen ziel aktiv sein"] = { false, { Stats.SpellHaste, }, } -- s12889
-L["verringert %s Sek. lang die stärke von in der nähe befindlichen feinden um %s punkt(e) sowie die beweglichkeit um %s punkt(e) und hindert sie daran, zauber zu wirken"] = { false, { Stats.Strength, }, { Stats.Agility, }, } -- s12946
+L["zwingt in der nähe befindliche feinde, dämonisch zu sprechen, was ihr zaubertempo %s Sek. lang um %s% verringert. es kann immer nur jeweils ein fluch pro hexenmeister auf einem beliebigen ziel aktiv sein"] = { false, { Stats.SpellHaste, }, reduction = true } -- s12889
+L["verringert %s Sek. lang die stärke von in der nähe befindlichen feinden um %s punkt(e) sowie die beweglichkeit um %s punkt(e) und hindert sie daran, zauber zu wirken"] = { false, { Stats.Strength, }, { Stats.Agility, }, reduction = true } -- s12946
 L["verbessert verteidigung um %s, schattenwiderstand um %s sowie gesundheitsregeneration um %s"] = { { Stats.Defense, Stats.HealthRegen, }, { Stats.ShadowResistance, }, false, } -- s12956
 L["der jäger nimmt die aspekte eines affen an: die chance auszuweichen, wird um %s% erhöht. es kann immer nur jeweils ein aspekt aktiv sein"] = { { Stats.Dodge, }, } -- s13163
 L["der jäger nimmt die aspekte eines falken an: die distanzangriffskraft wird um %s erhöht. es kann immer nur jeweils ein aspekt aktiv sein"] = { { Stats.RangedAttackPower, }, } -- s13165
 L["erhöht den vom huhn zugefügten körperlichen schaden um %s% und lässt die angriffe des huhns %s Sek. lang um %s% schneller werden"] = { { Stats.AverageWeaponDamage, }, false, { Stats.MeleeHaste, }, } -- s13168
 L["erhöht %s Sek. lang die intelligenz eines verbündeten um %s"] = { false, { Stats.Intellect, }, } -- s13326
-L["zwingt einen feind, dämonisch zu sprechen, was sein zaubertempo %s Sek. lang um %s% verringert. es kann immer nur jeweils ein fluch pro hexenmeister auf einem beliebigen ziel aktiv sein"] = { false, { Stats.SpellHaste, }, } -- s13338
-L["verringert die chance des ziels zu blocken %s Sek. lang um %s%"] = { false, { Stats.BlockChance, }, } -- s13459
-L["verringert %s Sek. lang die angriffskraft des ziels um %s"] = { false, { Stats.GenericAttackPower, }, } -- s13490
+L["zwingt einen feind, dämonisch zu sprechen, was sein zaubertempo %s Sek. lang um %s% verringert. es kann immer nur jeweils ein fluch pro hexenmeister auf einem beliebigen ziel aktiv sein"] = { false, { Stats.SpellHaste, }, reduction = true } -- s13338
+L["verringert die chance des ziels zu blocken %s Sek. lang um %s%"] = { false, { Stats.BlockChance, }, reduction = true } -- s13459
+L["verringert %s Sek. lang die angriffskraft des ziels um %s"] = { false, { Stats.GenericAttackPower, }, reduction = true } -- s13490
 L["erhöht euer angriffstempo %s Sek. lang um %s%"] = { false, { Stats.MeleeHaste, Stats.RangedHaste, }, } -- s28866
-L["ätzende säure, die alle %s sekunden %s punkt(e) naturschaden zufügt und %s Sek. lang die rüstung des ziels um %s verringert"] = { false, false, false, { Stats.Armor, }, } -- s13526
-L["verringert die stärke des ziels %s Sek. lang um %s"] = { false, { Stats.Strength, }, } -- s13528
+L["ätzende säure, die alle %s sekunden %s punkt(e) naturschaden zufügt und %s Sek. lang die rüstung des ziels um %s verringert"] = { false, false, false, { Stats.Armor, }, reduction = true } -- s13526
+L["verringert die stärke des ziels %s Sek. lang um %s"] = { false, { Stats.Strength, }, reduction = true } -- s13528
 L["erhöht das angriffstempo aller in der nähe befindlichen gruppenmitglieder um %s%. spieler können pro paladin immer nur jeweils eine aura besitzen. die aura hält an, bis die aktion abgebrochen wird"] = { { Stats.MeleeHaste, }, } -- s13589
 L["erhöht durch arkanzauber und arkaneffekte zugefügten schaden um bis zu %s"] = { { Stats.ArcaneDamage, }, } -- s13590
 L["erhöht eure chance, einen angriff zu parieren, um %s%"] = { { Stats.Parry, }, } -- s13665
@@ -586,14 +586,14 @@ L["erhöht eure parierchance um %s%"] = { { Stats.Parry, }, } -- s13713
 L["erhöht feuerwiderstand um %s und verringert jeglichen feuerschaden %s Sek. lang um bis zu %s punkte"] = { { Stats.FireResistance, }, false, false, } -- s13744
 L["schützt den zaubernden, verbessert die rüstung um %s, den schattenwiderstand um %s und %s Sek. lang die gesundheitsregeneration"] = { { Stats.Armor, }, { Stats.ShadowResistance, }, false, } -- s13787
 L["erhöht %s Sek. lang die ausdauer eines verbündeten um %s"] = { false, { Stats.Stamina, }, } -- s13864
-L["schützt den zaubernden %s Sek. lang vor allen schäden und zaubern, erhöht jedoch währenddessen die zeit zwischen seinen angriffen um %s%"] = { false, { Stats.MeleeHaste, }, } -- s13874
+L["schützt den zaubernden %s Sek. lang vor allen schäden und zaubern, erhöht jedoch währenddessen die zeit zwischen seinen angriffen um %s%"] = { false, { Stats.MeleeHaste, }, reduction = true } -- s13874
 L["erhöht euer angriffstempo um %s%. zusätzlich treffen angriffe einen weiteren in der nähe befindlichen gegner. hält %s Sek. lang an"] = { { Stats.MeleeHaste, }, false, } -- s13877
 L["zerfrisst die rüstung eines feindes und verringert sie um %s pro anwendung. kann bis zu %s-mal angewendet werden. hält %s Sek. lang an"] = { { Stats.Armor, }, false, false, } -- s14120
 L["erhöht eure chance auf einen kritischen treffer um %s%"] = { { Stats.MeleeCrit, Stats.RangedCrit, }, } -- s14138
 L["eure angriffe ignorieren %s rüstung eures ziels. außerdem wird der schaden eurer fähigkeit 'blutung' um %s% erhöht. die rüstungsverringerung steigt mit eurer stufe"] = { { Stats.ArmorPenetration, }, false, } -- s14171
 L["ein schlag, der %s% waffenschaden zufügt und eure ausweichchance %s Sek. lang um %s% erhöht. gewährt %s combopunkt"] = { false, false, { Stats.Dodge, }, false, } -- s14278
 L["ein schlag, der %s% waffenschaden zufügt und eure ausweichchance %s Sek. lang um %s% erhöht. gewährt %s combopunkte"] = { false, false, { Stats.Dodge, }, false, } -- s14278
-L["verringert das zaubertempo von in der nähe befindlichen feinden %s Sek. lang um %s%"] = { false, { Stats.SpellHaste, }, } -- s14538
+L["verringert das zaubertempo von in der nähe befindlichen feinden %s Sek. lang um %s%"] = { false, { Stats.SpellHaste, }, reduction = true } -- s14538
 L["%s feuerwiderstand"] = { { Stats.FireResistance, }, } -- s14540
 L["%s frostwiderstand"] = { { Stats.FrostResistance, }, } -- s14541
 L["%s naturwiderstand"] = { { Stats.NatureResistance, }, } -- s14622
@@ -607,16 +607,16 @@ L["erhöht %s Sek. lang den feuerwiderstand eines verbündeten um %s"] = { false
 L["lässt befreundete einheiten in einem umkreis von %s metern um %s% schneller angreifen"] = { false, { Stats.MeleeHaste, }, } -- s15167
 L["erhöht %s Sek. lang die willenskraft des ziels um %s punkt(e)"] = { false, { Stats.Spirit, }, } -- s15231
 L["erhöht %s Sek. lang die rüstung des ziels um %s punkt(e)"] = { false, { Stats.Armor, }, } -- s15233
-L["verringert die rüstung eines feindlichen ziels für %s Sek. um %s punkt(e)"] = { false, { Stats.Armor, }, } -- s15235
-L["reduziert die rüstung des ziels %s Sek. lang um %s punkt(e)"] = { false, { Stats.Armor, }, } -- s15280
+L["verringert die rüstung eines feindlichen ziels für %s Sek. um %s punkt(e)"] = { false, { Stats.Armor, }, reduction = true } -- s15235
+L["reduziert die rüstung des ziels %s Sek. lang um %s punkt(e)"] = { false, { Stats.Armor, }, reduction = true } -- s15280
 L["erhöht den von einem verbündeten zugefügten magieschaden %s Sek. lang um %s punkt(e)"] = { false, { Stats.SpellDamage, }, } -- s15288
 L["erhöht %s Sek. lang die chance auf einen kritischen treffer mit nahkampf-, fernkampfangriffen und zaubern um %s% und alle attribute um %s"] = { false, { Stats.MeleeCrit, Stats.RangedCrit, Stats.SpellCrit, }, { Stats.AllStats, }, } -- s15366
 L["verbessert eure trefferchance um %s%"] = { { Stats.MeleeHit, Stats.RangedHit, }, } -- s15464
-L["macht einen feind bewegungsunfähig, erhöht die zeit zwischen seinen angriffen um %s% und hindert ihn %s Sek. lang, zauber zu wirken"] = { { Stats.MeleeHaste, }, false, } -- s15471
+L["macht einen feind bewegungsunfähig, erhöht die zeit zwischen seinen angriffen um %s% und hindert ihn %s Sek. lang, zauber zu wirken"] = { { Stats.MeleeHaste, }, false, reduction = true } -- s15471
 L["hackt nach in der nähe befindlichen feinden und verringert ihre rüstung um %s punkt(e) pro einsatz von 'rüstung zerreißen'. kann bis zu %s-mal angewendet werden. hält %s Sek. lang an"] = { { Stats.Armor, }, false, false, } -- s15502
-L["verursacht %s naturschaden bei in der nähe befindlichen feinden, erhöht die zeit zwischen ihren angriffen um %s% und verringert das bewegungstempo um %s%. hält %s Sek. lang an"] = { false, { Stats.MeleeHaste, }, false, false, } -- s15548
+L["verursacht %s naturschaden bei in der nähe befindlichen feinden, erhöht die zeit zwischen ihren angriffen um %s% und verringert das bewegungstempo um %s%. hält %s Sek. lang an"] = { false, { Stats.MeleeHaste, }, false, false, reduction = true } -- s15548
 L["erhöht %s Sek. lang die angriffskraft um %s"] = { false, { Stats.GenericAttackPower, Stats.RangedAttackPower, }, } -- s60065
-L["verursacht alle %s sek. %s naturschaden bei einem feind, erhöht die zeit zwischen seinen angriffen um %s% und verringert sein bewegungstempo um %s%. hält %s Sek. lang an"] = { false, false, { Stats.MeleeHaste, }, false, false, } -- s15656
+L["verursacht alle %s sek. %s naturschaden bei einem feind, erhöht die zeit zwischen seinen angriffen um %s% und verringert sein bewegungstempo um %s%. hält %s Sek. lang an"] = { false, false, { Stats.MeleeHaste, }, false, false, reduction = true } -- s15656
 L["umgibt einen verbündeten mit einer frostschicht, die %s Sek. lang bestehen bleibt. das dicke eis erhöht die rüstung um %s, verlangsamt das bewegungstempo von nahkampfangreifern um %s% und erhöht die zeit zwischen ihren angriffen um %s%"] = { false, { Stats.Armor, }, { Stats.MeleeHaste, }, false, } -- s15784
 L["erhöht widerstand gegen alle arten von magie um %s"] = { { Stats.FireResistance, Stats.NatureResistance, Stats.FrostResistance, Stats.ShadowResistance, Stats.ArcaneResistance, }, } -- s15967
 L["erhöht eure trefferchance mit nahkampfangriffen und zaubern um %s%"] = { { Stats.MeleeHit, Stats.RangedHit, Stats.SpellHit, }, } -- s16180
@@ -626,41 +626,41 @@ L["erhöht eure chance, angriffe mit einem schild zu blocken, um %s% und erhöht
 L["erhöht %s Sek. lang die ausweichchance des ziels um %s%"] = { false, { Stats.Dodge, }, } -- s16321
 L["frostwiderstand %s Sek. lang um %s erhöhen"] = { false, { Stats.FrostResistance, }, } -- s16325
 L["erhöht %s Sek. lang den feuerwiderstand um %s"] = { false, { Stats.FireResistance, }, } -- s16326
-L["verringert den schattenwiderstand eines feindes %s Sek. lang um %s"] = { false, { Stats.ShadowResistance, }, } -- s16429
-L["verringert die chance eines feindes auszuweichen %s Sek. lang um %s%"] = { false, { Stats.Dodge, }, } -- s16448
-L["verringert die nahkampfangriffskraft eines feindes um %s und seine distanzangriffskraft %s Sek. lang um %s"] = { { Stats.GenericAttackPower, }, false, false, } -- s16449
+L["verringert den schattenwiderstand eines feindes %s Sek. lang um %s"] = { false, { Stats.ShadowResistance, }, reduction = true } -- s16429
+L["verringert die chance eines feindes auszuweichen %s Sek. lang um %s%"] = { false, { Stats.Dodge, }, reduction = true } -- s16448
+L["verringert die nahkampfangriffskraft eines feindes um %s und seine distanzangriffskraft %s Sek. lang um %s"] = { { Stats.GenericAttackPower, }, false, false, reduction = true } -- s16449
 L["fügt dem ziel %s punkt(e) feuerschaden zu und erhöht den vom ziel erlittenen feuerschaden %s Sek. lang um %s"] = { false, false, { Stats.FireDamage, }, } -- s16454
-L["verringert das bewegungstempo eines feindes um %s% sowie alle körperlichen und magischen schäden, die er zufügt, um %s. hält %s Sek. lang an"] = { false, { Stats.SpellDamage, }, false, } -- s16458
-L["verringert die chance eines feindes, bei einem nahkampfangriff einen kritischen treffer zu erzielen, um %s% und verringert seine chance, bei einem zauberangriff einen kritischen treffer zu erzielen, um %s%. hält %s Sek. lang an"] = { { Stats.MeleeCrit, Stats.RangedCrit, }, { Stats.SpellCrit, }, false, } -- s16460
+L["verringert das bewegungstempo eines feindes um %s% sowie alle körperlichen und magischen schäden, die er zufügt, um %s. hält %s Sek. lang an"] = { false, { Stats.SpellDamage, }, false, reduction = true } -- s16458
+L["verringert die chance eines feindes, bei einem nahkampfangriff einen kritischen treffer zu erzielen, um %s% und verringert seine chance, bei einem zauberangriff einen kritischen treffer zu erzielen, um %s%. hält %s Sek. lang an"] = { { Stats.MeleeCrit, Stats.RangedCrit, }, { Stats.SpellCrit, }, false, reduction = true } -- s16460
 L["erhöht die rüstung %s Sek. lang um %s punkt(e). für die dauer des zaubers kann jedoch weder gezaubert noch angegriffen werden"] = { false, { Stats.Armor, }, } -- s16470
 L["erhöht den von einem verbündeten zugefügten schattenschaden %s Sek. lang um %s punkt(e)"] = { false, { Stats.ShadowDamage, }, } -- s16587
 L["erhöht die trefferpunkte um %s und das angriffstempo bei nahkampfangriffen um %s%. regeneriert %s mana alle %s sekunden"] = { { Stats.Health, }, { Stats.MeleeHaste, }, { Stats.GenericManaRegen, }, false, } -- s16609
 L["erhöht stärke um %s"] = { { Stats.Strength, }, } -- s16612
 L["erhöht ausdauer um %s. hält %s Sek. lang an"] = { { Stats.Stamina, }, false, } -- s16617
 L["erhöht den vom zaubernden zugefügten körperlichen schaden um %s punkt(e) und macht seine angriffe %s Sek. lang um %s% schneller"] = { { Stats.AverageWeaponDamage, }, false, { Stats.MeleeHaste, }, } -- s16789
-L["der feind wird vom kahlholz-fluch getroffen, der seinen magiewiderstand um %s verringert. kann bis zu %s-mal angewendet werden"] = { { Stats.FireResistance, Stats.NatureResistance, Stats.FrostResistance, Stats.ShadowResistance, Stats.ArcaneResistance, }, false, } -- s16871
+L["der feind wird vom kahlholz-fluch getroffen, der seinen magiewiderstand um %s verringert. kann bis zu %s-mal angewendet werden"] = { { Stats.FireResistance, Stats.NatureResistance, Stats.FrostResistance, Stats.ShadowResistance, Stats.ArcaneResistance, }, false, reduction = true } -- s16871
 L["erhöht %s Sek. lang eure stärke um %s, eure ausdauer um %s und eure größe"] = { false, { Stats.Strength, }, { Stats.Stamina, }, } -- s16883
-L["erzeugt einen wütenden sturm im zielgebiet, der allen in der nähe befindlichen feinden alle %s sek. %s naturschaden zufügt und die zeit zwischen angriffen betroffener feinde um %s% erhöht. hält %s Sek. lang an. ein druide muss seine kräfte kanalisieren, um den zauber aufrechtzuerhalten"] = { false, false, { Stats.MeleeHaste, }, false, } -- s16914
+L["erzeugt einen wütenden sturm im zielgebiet, der allen in der nähe befindlichen feinden alle %s sek. %s naturschaden zufügt und die zeit zwischen angriffen betroffener feinde um %s% erhöht. hält %s Sek. lang an. ein druide muss seine kräfte kanalisieren, um den zauber aufrechtzuerhalten"] = { false, false, { Stats.MeleeHaste, }, false, reduction = true } -- s16914
 L["sich selbst um %s heilen und stärke %s Sek. lang um %s punkt(e) erhöhen"] = { false, false, { Stats.Strength, }, } -- s16916
-L["bewegungstempo des ziels um %s% verlangsamt und zeit zwischen angriffen um %s% erhöht. hält %s Sek. lang an"] = { false, { Stats.MeleeHaste, }, false, } -- s16927
-L["rüstung eines feindes um %s verringert. ergänzt sich bis zu dreimal"] = { { Stats.Armor, }, } -- s16928
+L["bewegungstempo des ziels um %s% verlangsamt und zeit zwischen angriffen um %s% erhöht. hält %s Sek. lang an"] = { false, { Stats.MeleeHaste, }, false, reduction = true } -- s16927
+L["rüstung eines feindes um %s verringert. ergänzt sich bis zu dreimal"] = { { Stats.Armor, }, reduction = true } -- s16928
 L["gruppenmitglieder haben eine um %s% erhöhte chance auf einen kritischen treffer. hält %s Sek. lang an"] = { { Stats.MeleeCrit, Stats.RangedCrit, }, false, } -- s16939
 L["erhöht eure chance auf einen kritischen treffer, während ihr in bären-, terrorbären- oder katzengestalt seid, um %s%"] = { { Stats.MeleeCrit, Stats.RangedCrit, }, } -- s16942
 L["beweglichkeit um %s erhöht"] = { { Stats.Agility, }, } -- s17013
 L["erhöht %s Sek. lang eure nahkampfangriffskraft um %s sowie auch eure größe"] = { false, { Stats.AttackPower, }, } -- s17038
-L["verwundet das ziel und fügt %s punkt(e) schaden zu, verringert die intelligenz des ziels %s Sek. lang um %s punkt(e)"] = { false, false, { Stats.Intellect, }, } -- s17148
+L["verwundet das ziel und fügt %s punkt(e) schaden zu, verringert die intelligenz des ziels %s Sek. lang um %s punkt(e)"] = { false, false, { Stats.Intellect, }, reduction = true } -- s17148
 L["fügt bei einem treffer angreifern %s punkt(e) naturschaden zu und erhöht %s Sek. lang naturwiderstand um %s punkt(e)"] = { false, false, { Stats.NatureResistance, }, } -- s17154
 L["erhöht %s Sek. lang den arkanwiderstand eines verbündeten um %s"] = { false, { Stats.ArcaneResistance, }, } -- s17175
 L["verteidigung %s. betrachtet euch als wiedergeborenen profi!"] = { { Stats.Defense, }, } -- s17178
-L["verringert alle werte um %s und fügt jedem feind in einem umkreis von %s metern um den zaubernden %s Sek. lang alle %s sek. %s punkt(e) naturschaden zu"] = { { Stats.AllStats, }, false, false, false, false, } -- s17196
+L["verringert alle werte um %s und fügt jedem feind in einem umkreis von %s metern um den zaubernden %s Sek. lang alle %s sek. %s punkt(e) naturschaden zu"] = { { Stats.AllStats, }, false, false, false, false, reduction = true } -- s17196
 L["erhöht %s Sek. lang die nahkampfangriffskraft des zaubernden um %s"] = { false, { Stats.AttackPower, }, } -- s17205
 L["kontrolliert %s Sek. lang einen humanoiden feind bis stufe %s und erhöht seine maximale gesundheit um %s%"] = { false, false, { Stats.Health, }, } -- s17244
 L["erhöht feuerwiderstand um %s und fügt %s Sek. lang jedem, der euch mit einer nahkampfattacke schlägt, %s punkte feuerschaden zu"] = { { Stats.FireResistance, }, false, false, } -- s17275
-L["durchsticht die rüstung des ziels und verringert sie um %s. kann bis zu %s-mal angewendet werden"] = { { Stats.Armor, }, false, } -- s17315
-L["verlangsamt %s Sek. lang das zaubertempo des feindlichen ziels und erhöht die zeit zwischen nahkampf- und distanzangriffen um %s%"] = { false, { Stats.SpellHaste, }, } -- s17331
+L["durchsticht die rüstung des ziels und verringert sie um %s. kann bis zu %s-mal angewendet werden"] = { { Stats.Armor, }, false, reduction = true } -- s17315
+L["verlangsamt %s Sek. lang das zaubertempo des feindlichen ziels und erhöht die zeit zwischen nahkampf- und distanzangriffen um %s%"] = { false, { Stats.SpellHaste, }, reduction = true } -- s17331
 L["chance zu blocken um %s% erhöht"] = { { Stats.BlockChance, }, } -- s17351
-L["verringert angriffskraft des ziels %s Sek. lang um %s und überträgt sie in eure willenskraft"] = { false, { Stats.GenericAttackPower, }, } -- s17494
-L["verringert %s Sek. lang alle attribute des ziels um %s"] = { false, { Stats.AllStats, }, } -- s17505
+L["verringert angriffskraft des ziels %s Sek. lang um %s und überträgt sie in eure willenskraft"] = { false, { Stats.GenericAttackPower, }, reduction = true } -- s17494
+L["verringert %s Sek. lang alle attribute des ziels um %s"] = { false, { Stats.AllStats, }, reduction = true } -- s17505
 L["erhöht %s Sek. lang wut um %s und stärke um %s"] = { false, false, { Stats.Strength, }, } -- s17528
 L["erhöht intelligenz und willenskraft %s Sek. lang um %s"] = { false, { Stats.Intellect, Stats.Spirit, }, } -- s17535
 L["erhöht stärke und ausdauer %s Sek. lang um %s"] = { false, { Stats.Strength, Stats.Stamina, }, } -- s17537
@@ -670,31 +670,31 @@ L["erhöht das maximale mana des spielers %s Sek. lang um %s. es kann immer nur 
 L["erhöht die schadenswirkung von zaubern und magischen effekten %s Sek. lang um bis zu %s. es kann immer nur der effekt von jeweils einem fläschchen aktiv sein. dieser effekt hält über den tod hinaus an"] = { false, { Stats.SpellDamage, }, } -- s17628
 L["erhöht euren widerstand gegen alle arten von magie %s Sek. lang um %s. es kann immer nur der effekt von jeweils einem fläschchen aktiv sein. dieser effekt hält über den tod hinaus an und ist mit allen anderen widerstandssteigernden zaubern und gegenständen stapelbar"] = { false, { Stats.FireResistance, Stats.NatureResistance, Stats.FrostResistance, Stats.ShadowResistance, Stats.ArcaneResistance, }, } -- s17629
 L["erhöht %s Sek. lang das zaubertempo eines verbündeten um %s%"] = { false, { Stats.SpellHaste, }, } -- s17633
-L["umgibt den zaubernden mit einer aura, die in regelmäßigen abständen den schattenwiderstand von in der nähe befindlichen feinden um %s verringert. die aura hält an, bis die aktion abgebrochen wird"] = { { Stats.ShadowResistance, }, ignoreSum = true } -- s17695
-L["verflucht das ziel und verringert %s Sek. lang seinen schatten- und arkanwiderstand um %s. erhöht außerdem den erlittenen schatten- und arkanschaden um %s%. es kann immer nur jeweils ein fluch pro hexenmeister auf einem beliebigen ziel aktiv sein"] = { false, { Stats.ShadowResistance, Stats.ArcaneResistance, }, false, } -- s17862
-L["hackt auf die rüstung des feindes und seiner nächsten verbündeten ein. wirkt sich auf bis zu %s ziele aus. die rüstung des ziels wird um %s punkt(e) pro einsatz von 'rüstung zerreißen' verringert. kann bis zu %s-mal angewendet werden. hält %s Sek. lang an"] = { false, { Stats.Armor, }, false, false, } -- s17963
+L["umgibt den zaubernden mit einer aura, die in regelmäßigen abständen den schattenwiderstand von in der nähe befindlichen feinden um %s verringert. die aura hält an, bis die aktion abgebrochen wird"] = { { Stats.ShadowResistance, }, ignoreSum = true, reduction = true } -- s17695
+L["verflucht das ziel und verringert %s Sek. lang seinen schatten- und arkanwiderstand um %s. erhöht außerdem den erlittenen schatten- und arkanschaden um %s%. es kann immer nur jeweils ein fluch pro hexenmeister auf einem beliebigen ziel aktiv sein"] = { false, { Stats.ShadowResistance, Stats.ArcaneResistance, }, false, reduction = true } -- s17862
+L["hackt auf die rüstung des feindes und seiner nächsten verbündeten ein. wirkt sich auf bis zu %s ziele aus. die rüstung des ziels wird um %s punkt(e) pro einsatz von 'rüstung zerreißen' verringert. kann bis zu %s-mal angewendet werden. hält %s Sek. lang an"] = { false, { Stats.Armor, }, false, false, reduction = true } -- s17963
 L["bei erlittenem treffer im gefecht besteht eine chance von %s%, einen dornenschild aufzubauen, der angreifern beim treffer %s punkt(e) naturschaden zufügt und den naturwiderstand %s Sek. lang um %s erhöht"] = { false, false, false, { Stats.NatureResistance, }, ignoreSum = true } -- s18097
 L["stellt im verlauf von %s Sek. %s punkt(e) mana wieder her. ihr müsst beim trinken sitzen bleiben. erhöht willenskraft auch um %s punkt(e) für %s Sek."] = { false, { Stats.GenericManaRegen, }, { Stats.Spirit, }, false, } -- s18140
 L["erhöht die ausdauer %s Sek. lang um %s"] = { false, { Stats.Stamina, }, } -- s18191
 L["stellt im verlauf von %s Sek. %s punkt(e) gesundheit wieder her. ihr müsst beim essen sitzen bleiben. wenn ihr %s sekunden lang esst, wird außerdem eure beweglichkeit %s Sek. lang um %s erhöht"] = { false, false, false, false, { Stats.Agility, }, ignoreSum = true } -- s18230
 L["erhöht die intelligenz aller gruppenmitglieder in einem umkreis von %s metern um %s"] = { false, { Stats.Intellect, }, } -- s18264
 L["stellt alle %s sek. %s punkt(e) mana wieder her"] = { false, { Stats.GenericManaRegen, }, } -- s18378
-L["verringert %s Sek. lang die angriffskraft des anvisierten feindes um %s"] = { false, { Stats.GenericAttackPower, }, } -- s18381
+L["verringert %s Sek. lang die angriffskraft des anvisierten feindes um %s"] = { false, { Stats.GenericAttackPower, }, reduction = true } -- s18381
 L["erhöht eure chance, einen kritischen treffer durch zauber zu erzielen, um %s%"] = { { Stats.SpellCrit, }, } -- s18382
 L["erhöht den vom zaubernden zugefügten körperlichen schaden um %s punkt(e) und sein angriffstempo %s Sek. lang um %s%"] = { { Stats.AverageWeaponDamage, }, false, { Stats.MeleeHaste, }, } -- s18501
-L["sticht einen feind und verringert %s Sek. lang stärke und beweglichkeit des ziels um %s"] = { false, { Stats.Strength, Stats.Agility, }, } -- s18545
+L["sticht einen feind und verringert %s Sek. lang stärke und beweglichkeit des ziels um %s"] = { false, { Stats.Strength, Stats.Agility, }, reduction = true } -- s18545
 L["macht den zaubernden bewegungsunfähig, erhöht aber %s Sek. lang sein angriffstempo um %s%"] = { false, { Stats.MeleeHaste, }, } -- s18546
 L["%s zu allen widerstandsarten"] = { { Stats.FireResistance, Stats.NatureResistance, Stats.FrostResistance, Stats.ShadowResistance, Stats.ArcaneResistance, }, } -- s18672
 L["bei einem treffer im kampf besteht eine chance von %s%, den zaubernden in knochen einzuhüllen und die rüstung um %s Sek. lang um %s punkt(e) zu erhöhen"] = { false, false, { Stats.Armor, }, } -- s18828
 L["erhöht bei aktivierung eure ausweich- und parierchance %s Sek. lang um %s%"] = { false, { Stats.Parry, Stats.Dodge, }, } -- s19263
 L["erhöht die trefferchance um %s% und die chance, dass bewegungseinschränkenden effekten  widerstanden werden kann, um weitere %s%"] = { { Stats.MeleeHit, Stats.RangedHit, }, false, } -- s19290
-L["verringert %s Sek. lang das zaubertempo eines feindes um %s% und erhöht die zeit zwischen seinen angriffen um %s%"] = { false, { Stats.SpellHaste, }, { Stats.MeleeHaste, Stats.RangedHaste, }, } -- s19365
-L["verringert den feuerwiderstand von in der nähe befindlichen feinden %s Sek. lang um %s"] = { false, { Stats.FireResistance, }, } -- s19366
+L["verringert %s Sek. lang das zaubertempo eines feindes um %s% und erhöht die zeit zwischen seinen angriffen um %s%"] = { false, { Stats.SpellHaste, }, { Stats.MeleeHaste, Stats.RangedHaste, }, reduction = true } -- s19365
+L["verringert den feuerwiderstand von in der nähe befindlichen feinden %s Sek. lang um %s"] = { false, { Stats.FireResistance, }, reduction = true } -- s19366
 L["erhöht eure chance mit jeglichem angriff einen kritischen treffer zu erzielen um %s%"] = { { Stats.MeleeCrit, Stats.RangedCrit, }, } -- s19370
 L["bei einem treffer im kampf besteht eine chance von %s%, den zaubernden in knochen einzuhüllen und die rüstung %s Sek. lang um %s punkt(e) zu erhöhen"] = { false, false, { Stats.Armor, }, ignoreSum = true } -- s19409
 L["erhöht eure chance,  einen kritischen treffer zu erzielen, um %s%"] = { { Stats.MeleeCrit, Stats.RangedCrit, }, } -- s19426
 L["erhöht eure chance, mit distanzwaffen einen kritischen treffer zu erzielen, um %s%"] = { { Stats.MeleeCrit, Stats.RangedCrit, }, } -- s19426
-L["besudelt %s Sek. lang das teufelsjägerblut. wenn der teufelsjäger mit einem nahkampfangriff getroffen wird, verliert der angreifer %s Sek. lang %s nahkampfangriffskraft. kann bis zu %s-mal auf ein einzelnes ziel angewendet werden"] = { false, false, { Stats.AttackPower, }, false, ignoreSum = true } -- s19478
+L["besudelt %s Sek. lang das teufelsjägerblut. wenn der teufelsjäger mit einem nahkampfangriff getroffen wird, verliert der angreifer %s Sek. lang %s nahkampfangriffskraft. kann bis zu %s-mal auf ein einzelnes ziel angewendet werden"] = { false, false, { Stats.AttackPower, }, false, ignoreSum = true, reduction = true } -- s19478
 L["erhöht die distanzangriffskraft von gruppenmitgliedern in einem umkreis von %s metern um %s und die distanzangriffskraft des jägers zusätzlich um %s. hält %s Sek. lang an"] = { false, { Stats.GenericAttackPower, }, { Stats.RangedAttackPower, }, false, } -- s19506
 L["erhöht die angriffskraft von gruppenmitgliedern in einem umkreis von %s metern um %s und die distanzangriffskraft des jägers zusätzlich um %s. hält %s Sek. lang an"] = { false, { Stats.GenericAttackPower, }, { Stats.RangedAttackPower, }, false, } -- s19506
 L["erhöht die distanzangriffskraft von gruppenmitgliedern in einem umkreis von %s metern um %s. hält %s Sek. lang an"] = { false, { Stats.GenericAttackPower, }, false, } -- s19506
@@ -702,7 +702,7 @@ L["erhöht die angriffskraft von gruppenmitgliedern in einem umkreis von %s mete
 L["verleiht eurem tier eine chance, dass sein angriffstempo nach einem erzielten kritischen treffer %s Sek. lang um %s% erhöht wird"] = { false, { Stats.MeleeHaste, }, } -- s19615
 L["erhöht alle widerstände %s Sek. lang um %s"] = { false, { Stats.FireResistance, Stats.NatureResistance, Stats.FrostResistance, Stats.ShadowResistance, Stats.ArcaneResistance, }, } -- s19638
 L["belegt ein befreundetes ziel mit einem segen und erhöht %s Sek. lang die nahkampfangriffskraft um %s. spieler können pro paladin immer nur mit einem einzigen segen belegt sein"] = { false, { Stats.AttackPower, }, } -- s19740
-L["verringert nahkampf- und distanzangriffskraft von in der nähe befindlichen feinden %s Sek. lang um %s"] = { false, { Stats.GenericAttackPower, }, } -- s19778
+L["verringert nahkampf- und distanzangriffskraft von in der nähe befindlichen feinden %s Sek. lang um %s"] = { false, { Stats.GenericAttackPower, }, reduction = true } -- s19778
 L["erhöht den von einem verbündeten zugefügten körperlichen schaden um %s% und sein angriffstempo %s Sek. lang um %s%"] = { false, false, { Stats.MeleeHaste, }, } -- s19779
 L["arkanwiderstand um %s erhöht"] = { { Stats.ArcaneResistance, }, } -- s20592
 L["erhöht eure chance, angriffe mit eurem schild zu blocken, um %s%, nachdem ihr einem kritischen treffer zum opfer gefallen seid. hält %s Sek. lang an oder überdauert %s mal blocken"] = { { Stats.BlockChance, }, false, false, ignoreSum = true } -- s20127
@@ -716,10 +716,10 @@ L["stäbe %s"] = { { Stats.WeaponSkill, }, } -- s20607
 L["heilt einen verbündeten %s Sek. lang alle %s sek. um %s punkt(e) schaden und erhöht seine rüstung um %s"] = { false, false, false, { Stats.Armor, }, } -- s20655
 L["übernimmt %s Sek. lang die kontrolle eines humanoiden feindes bis zu stufe %s, erhöht den von ihm zugefügten magischen schaden um %s und den von ihm zugefügten körperlichen schaden um %s"] = { false, false, { Stats.SpellDamage, }, { Stats.AverageWeaponDamage, }, } -- s20668
 L["erhöht %s Sek. lang die rüstung des zaubernden um %s sowie seine gesundheitsregeneration"] = { false, { Stats.Armor, }, } -- s20798
-L["erhöht die zeit zwischen angriffen eines feindes um %s%, verlangsamt sein bewegungstempo um %s% und verringert zusätzlich seine stärke um %s%. hält %s Sek. lang an"] = { { Stats.MeleeHaste, }, false, false, false, } -- s20812
+L["erhöht die zeit zwischen angriffen eines feindes um %s%, verlangsamt sein bewegungstempo um %s% und verringert zusätzlich seine stärke um %s%. hält %s Sek. lang an"] = { { Stats.MeleeHaste, }, false, false, false, reduction = true } -- s20812
 L["bei einem treffer im kampf besteht eine chance von %s%, die rüstung aller gruppenmitglieder %s Sek. lang um %s punkt(e) zu erhöhen"] = { false, false, { Stats.Armor, }, ignoreSum = true } -- s20847
 L["erhöht ausdauer %s Sek. lang um %s und macht euch ziemlich betrunken!"] = { false, { Stats.Stamina, }, } -- s20875
-L["unterwirft den zieldämon bis zur stufe %s und zwingt ihn, euren befehlen folge zu leisten. während er unterworfen ist, wird die zeit zwischen angriffen des dämons um %s% erhöht und sein zaubertempo um %s% verlangsamt. hält bis zu %s Sek. lang an"] = { false, { Stats.MeleeHaste, }, { Stats.SpellHaste, }, false, } -- s20882
+L["unterwirft den zieldämon bis zur stufe %s und zwingt ihn, euren befehlen folge zu leisten. während er unterworfen ist, wird die zeit zwischen angriffen des dämons um %s% erhöht und sein zaubertempo um %s% verlangsamt. hält bis zu %s Sek. lang an"] = { false, { Stats.MeleeHaste, }, { Stats.SpellHaste, }, false, reduction = true } -- s20882
 L["stellt alle %s sek. %s gesundheit wieder her"] = { false, { Stats.HealthRegen, }, } -- s20885
 L["erhöht die blockchance %s Sek. lang um %s% und verursacht, solange aktiv, mit jedem geblockten angriff %s heiligschaden. durch 'heiliger schild' verursachter schaden verursacht %s% zusätzliche bedrohung.\ndas aktivieren von 'heiliger schild' gewährt euch auch %s zaubermacht pro punkt eurer verteidigungsfähigkeit, der über %s hinausgeht. hält %s Sek. lang an"] = { false, { Stats.BlockChance, }, false, false, { Stats.SpellDamage, }, false, false, } -- s20925
 L["erhöht die blockchance %s Sek. lang um %s% und verursacht, solange aktiv, mit jedem geblockten angriff %s heiligschaden. durch 'heiliger schild' verursachter schaden verursacht %s% zusätzliche bedrohung. jedes blocken verbraucht eine aufladung. %s aufladungen.\ndas aktivieren von 'heiliger schild' gewährt euch auch %s zaubermacht pro punkt eurer verteidigungsfähigkeit, der über %s hinausgeht. hält %s Sek. lang an"] = { false, { Stats.BlockChance, }, false, false, false, { Stats.SpellDamage, }, false, false, } -- s20925
@@ -730,11 +730,11 @@ L["erhöht die blockchance %s Sek. lang um %s% und verursacht, solange aktiv, mi
 L["erhöht die angriffskraft eures tiers um %s"] = { { Stats.GenericAttackPower, }, } -- s20988
 L["%s distanzangriffskraft"] = { { Stats.RangedAttackPower, }, } -- s21013
 L["auf die rüstung eines feindes einschlagen und sie um %s punkt(e) pro einsatz von 'rüstung zerschmettern' verringern. kann bis zu %s-mal angewendet werden. hält %s Sek. lang an"] = { { Stats.Armor, }, false, false, } -- s21055
-L["verringert eure chance, einen angriff zu parieren, um %s%"] = { { Stats.Parry, }, } -- s21352
+L["verringert eure chance, einen angriff zu parieren, um %s%"] = { { Stats.Parry, }, reduction = true } -- s21352
 L["erfüllt den paladin %s Sek. lang mit dem geist eines kreuzfahrers und verleiht %s nahkampfangriffskraft. außerdem greift der paladin um %s% schneller an, verursacht jedoch bei jedem angriff weniger schaden. es kann immer nur jeweils ein siegel auf dem paladin aktiv sein.\ndie entfesselung der energie dieses siegels richtet einen feind %s Sek. lang und erhöht den erlittenen heiligschaden um bis zu %s. eure nahkampfangriffe frischen die dauer dieses siegels auf. es kann immer nur jeweils ein richturteil pro paladin aktiv sein"] = { false, { Stats.AttackPower, }, false, false, false, } -- s21082
 L["erhöht eure chance, einen kritischen effekt durch heiligzauber zu erzielen, um %s%"] = { { Stats.SpellCrit, }, } -- s21092
-L["überzieht in der nähe befindliche feinde mit eis und fügt %s schaden zu, erhöht die zeit zwischen ihren angriffen um %s% und verlangsamt ihr bewegungstempo um %s%"] = { false, { Stats.MeleeHaste, }, false, } -- s21098
-L["schleudert einen schattenblitz auf den feind, verursacht %s punkt(e) schattenschaden und verringert für %s Sek. alle werte um %s"] = { false, false, { Stats.AllStats, }, } -- s21151
+L["überzieht in der nähe befindliche feinde mit eis und fügt %s schaden zu, erhöht die zeit zwischen ihren angriffen um %s% und verlangsamt ihr bewegungstempo um %s%"] = { false, { Stats.MeleeHaste, }, false, reduction = true } -- s21098
+L["schleudert einen schattenblitz auf den feind, verursacht %s punkt(e) schattenschaden und verringert für %s Sek. alle werte um %s"] = { false, false, { Stats.AllStats, }, reduction = true } -- s21151
 L["eure angriffe ignorieren %s Sek. lang %s rüstung eures gegners. bis zu %s mal stapelbar"] = { false, { Stats.ArmorPenetration, }, false, } -- s21153
 L["stellt %s punkt(e) gesundheit und %s punkt(e) mana pro sekunde wieder her, wenn ihr euch in der nähe eures kommandanten befindet"] = { { Stats.HealthRegen, }, false, } -- s21172
 L["regeneriert pro sekunde %s gesundheitspunkte und %s manapunkte, solange ihr euch in reichweite eines lieutnants befindet"] = { { Stats.HealthRegen, }, false, } -- s21174
@@ -742,18 +742,18 @@ L["erhöht durch heiligzauber und heiligeffekte zugefügten schaden um bis zu %s
 L["erhöht den blockwert eures schilds um %s"] = { { Stats.BlockValue, }, } -- s21539
 L["macht erfüllt die gruppe und erhöht %s Sek. lang ihre ausdauer um %s"] = { false, { Stats.Stamina, }, } -- s21562
 L["euer begleiter erhält %s ausdauer und %s zauberwiderstand gegen alle arten von magie"] = { { Stats.Stamina, }, false, ignoreSum = true } -- s21741
-L["fügt feinden in einem gebiet %s Sek. lang naturschaden zu, verlangsamt ihr bewegungstempo um %s% und erhöht die zeit zwischen ihren angriffen um %s%"] = { false, false, { Stats.MeleeHaste, }, } -- s21793
-L["bei jedem von euch zugefügten nahkampfschaden habt ihr eine chance von %s%, %s Sek. lang die angriffskraft eures opfers um %s zu verringern"] = { false, false, { Stats.AttackPower, }, ignoreSum = true } -- s21841
+L["fügt feinden in einem gebiet %s Sek. lang naturschaden zu, verlangsamt ihr bewegungstempo um %s% und erhöht die zeit zwischen ihren angriffen um %s%"] = { false, false, { Stats.MeleeHaste, }, reduction = true } -- s21793
+L["bei jedem von euch zugefügten nahkampfschaden habt ihr eine chance von %s%, %s Sek. lang die angriffskraft eures opfers um %s zu verringern"] = { false, false, { Stats.AttackPower, }, ignoreSum = true, reduction = true } -- s21841
 L["erhöht %s Sek. lang die rüstung der gruppenmitglieder um %s, alle attribute um %s und alle widerstandsarten um %s"] = { false, { Stats.Armor, }, { Stats.AllStats, }, false, } -- s21849
 L["erhöht eure chance, einen kritischen treffer durch naturzauber zu erzielen, um %s%"] = { { Stats.SpellCrit, }, } -- s21870
 L["erhöht die schadenswirkung von frostzaubern %s Sek. lang um bis zu %s"] = { false, { Stats.FrostDamage, }, } -- s21920
 L["euer tier erhält %s ausdauer und %s zauberwiderstand gegen alle arten von magie"] = { { Stats.Stamina, }, false, ignoreSum = true } -- s21926
-L["verwundet das ziel, fügt ihm %s punkt(e) schaden zu und verringert seine rüstung um %s"] = { false, { Stats.Armor, }, } -- s21961
+L["verwundet das ziel, fügt ihm %s punkt(e) schaden zu und verringert seine rüstung um %s"] = { false, { Stats.Armor, }, reduction = true } -- s21961
 L["angriffskraft um %s erhöht"] = { { Stats.GenericAttackPower, Stats.RangedAttackPower, }, } -- s60555
-L["deckt euren gegner mit blitzschlägen ein, die %s naturschaden verursachen und zu in der nähe befindlichen feinden weiterspringen. jeder sprung verringert den naturwiderstand des ziels um %s. wirkt auf insgesamt %s ziele. euer hauptziel wird außerdem von einem wirbelsturm umgeben, welcher dessen angriffstempo für %s Sek. um %s% verringert"] = { false, { Stats.NatureResistance, }, false, false, { Stats.MeleeHaste, }, } -- s21992
+L["deckt euren gegner mit blitzschlägen ein, die %s naturschaden verursachen und zu in der nähe befindlichen feinden weiterspringen. jeder sprung verringert den naturwiderstand des ziels um %s. wirkt auf insgesamt %s ziele. euer hauptziel wird außerdem von einem wirbelsturm umgeben, welcher dessen angriffstempo für %s Sek. um %s% verringert"] = { false, { Stats.NatureResistance, }, false, false, { Stats.MeleeHaste, }, reduction = true } -- s21992
 L["armbrüste %s"] = { { Stats.WeaponSkill, }, } -- s22188
-L["verringert den magischen schaden den das ziel verursacht %s Sek. lang um %s"] = { false, { Stats.SpellDamage, }, } -- s22371
-L["verringert die ausdauer von in der nähe befindlichen gegnern %s Sek. lang um %s"] = { false, { Stats.Stamina, }, } -- s22420
+L["verringert den magischen schaden den das ziel verursacht %s Sek. lang um %s"] = { false, { Stats.SpellDamage, }, reduction = true } -- s22371
+L["verringert die ausdauer von in der nähe befindlichen gegnern %s Sek. lang um %s"] = { false, { Stats.Stamina, }, reduction = true } -- s22420
 L["erhöht eure verteidigungsfertigkeit um %s für %s Sek."] = { { Stats.Defense, }, false, } -- s22685
 L["erhöht intelligenz für %s Sek. um %s"] = { false, { Stats.Intellect, }, } -- s22730
 L["eine scharfe klinge erhöht eure chance auf einen kritischen treffer um %s%"] = { { Stats.MeleeCrit, Stats.RangedCrit, }, } -- s22755
@@ -767,13 +767,13 @@ L["erhöht den blockwert eures schildes um %s"] = { { Stats.BlockValue, }, } -- 
 L["erhöht die kritische trefferchance von zaubern um %s%, nahkampfangriffen und distanzangriffen um %s%. verleiht %s angriffskraft. dauer: %s minuten"] = { { Stats.SpellCrit, }, { Stats.MeleeCrit, Stats.RangedCrit, }, { Stats.GenericAttackPower, }, false, } -- s22888
 L["aufgezehrt von illidans zorn: %s angriffskraftbonus gegen dämonen. %s% bonuschance auf treffer. %s% nahkampfgeschwindigkeit"] = { false, { Stats.MeleeHit, Stats.RangedHit, }, { Stats.MeleeHaste, }, } -- s22988
 L["erfüllt die gruppe des ziels mit brillanz und erhöht ihre intelligenz %s Sek. lang um %s"] = { false, { Stats.Intellect, }, } -- s23028
-L["verringert die verteidigung um  %s für %s Sek.. diese verringerung erhöht die chance eines treffers, sowie die chance einen kritischen treffer zu landen, darüber hinaus reduziert es die chance des gegners den angriff zu blocken, auszuweichen oder zu parieren"] = { { Stats.Defense, }, false, } -- s23162
-L["verringert die verteidigung um %s für %s Sek.. diese verringerung erhöht die chance eines treffers, sowie die chance einen kritischen treffer zu landen, darüber hinaus reduziert es die chance des gegners den angriff zu blocken, auszuweichen oder zu parieren"] = { { Stats.Defense, }, false, } -- s23165
-L["verringert die nahkampfangriffskraft eines gegners um %s verringert. hält %s Sek. lang an"] = { { Stats.AttackPower, }, false, } -- s23262
+L["verringert die verteidigung um  %s für %s Sek.. diese verringerung erhöht die chance eines treffers, sowie die chance einen kritischen treffer zu landen, darüber hinaus reduziert es die chance des gegners den angriff zu blocken, auszuweichen oder zu parieren"] = { { Stats.Defense, }, false, reduction = true } -- s23162
+L["verringert die verteidigung um %s für %s Sek.. diese verringerung erhöht die chance eines treffers, sowie die chance einen kritischen treffer zu landen, darüber hinaus reduziert es die chance des gegners den angriff zu blocken, auszuweichen oder zu parieren"] = { { Stats.Defense, }, false, reduction = true } -- s23165
+L["verringert die nahkampfangriffskraft eines gegners um %s verringert. hält %s Sek. lang an"] = { { Stats.AttackPower, }, false, reduction = true } -- s23262
 L["erhöht durch magische zauber und magische effekte zugefügten schaden und heilung %s Sek. lang um bis zu %s punkt(e)"] = { false, { Stats.SpellPower, }, } -- s23271
 L["erhöht die chance auf einen kritischen zauber um %s%"] = { { Stats.SpellCrit, }, } -- s23433
 L["erhöht die chance auf einen kritischen treffer mit schattenzaubern um %s%"] = { { Stats.SpellCrit, }, } -- s23440
-L["verringert %s Sek. lang die angriffskraft von in der nähe befindlichen feinden um %s"] = { false, { Stats.AttackPower, }, } -- s23511
+L["verringert %s Sek. lang die angriffskraft von in der nähe befindlichen feinden um %s"] = { false, { Stats.AttackPower, }, reduction = true } -- s23511
 L["erhöht %s Sek. lang das angriffstempo des zaubernden um %s% und den von ihm zugefügten schaden um %s punkt(e)"] = { false, { Stats.MeleeHaste, }, false, } -- s23537
 L["erhöht den durch schattenzauber und schatteneffekte zugefügten schaden um bis zu %s"] = { { Stats.ShadowDamage, }, } -- s23594
 L["stellt %s Sek. lang, %s mana wieder her. ihr müsst beim trinken sitzen bleiben. erhöht zusätzlich eure willenskraft für %s Sek. lang um %s"] = { false, { Stats.GenericManaRegen, }, false, { Stats.Spirit, }, } -- s23698
@@ -781,7 +781,7 @@ L["beschleunigt die gedanken und erhöht somit die zaubergeschwindigkeit des mag
 L["erhöht eure chance mit zaubern zu treffen um %s%"] = { { Stats.SpellHit, }, } -- s23727
 L["erfüllt einen paladin mit licht und erhöht %s Sek. lang das nahkampfangriffstempo um %s% und die zaubergeschwindigkeit um %s%"] = { false, { Stats.MeleeHaste, }, { Stats.SpellHaste, }, } -- s23733
 L["erhöht %s Sek. lang die rüstung um %s und heilt jedesmal bei erlittenem distanz- oder nahkampfschaden %s schaden"] = { false, { Stats.Armor, }, false, } -- s23780
-L["verursacht bei in der nähe befindlichen feinden %s naturschaden, erhöht die zeit zwischen ihren angriffen um %s% und verlangsamt ihr bewegungstempo um %s%. hält %s Sek. lang an"] = { false, { Stats.MeleeHaste, }, false, false, } -- s23931
+L["verursacht bei in der nähe befindlichen feinden %s naturschaden, erhöht die zeit zwischen ihren angriffen um %s% und verlangsamt ihr bewegungstempo um %s%. hält %s Sek. lang an"] = { false, { Stats.MeleeHaste, }, false, false, reduction = true } -- s23931
 L["bei aktivierung wird beim ziel die chance auf einen kritischen treffer durch zauber und angriffe um %s% erhöht"] = { { Stats.MeleeCrit, Stats.RangedCrit, Stats.SpellCrit, }, } -- s23964
 L["erhöht den feuerwiderstand um %s"] = { { Stats.FireResistance, }, } -- s23992
 L["%s attack power"] = { { Stats.GenericAttackPower, }, } -- s24218
@@ -793,10 +793,10 @@ L["alle %s sekunden %s punkt(e) gesundheit regenerieren. hält %s Sek. lang an"]
 L["faustwaffen %s"] = { { Stats.WeaponSkill, }, } -- s24362
 L["alle %s sekunden %s mana regenerieren. hält %s Sek. lang an"] = { false, { Stats.GenericManaRegen, }, false, } -- s24363
 L["erhöht  %s Sek. lang die willenskraft des spielers um %s und die ausdauer um %s. es kann immer nur der effekt von jeweils einem zanzatrank aktiv sein"] = { false, { Stats.Spirit, }, { Stats.Stamina, }, } -- s24382
-L["verwundet das ziel für %s schaden und verringert %s Sek. lang dessen intelligenz um %s"] = { false, false, { Stats.Intellect, }, } -- s24388
+L["verwundet das ziel für %s schaden und verringert %s Sek. lang dessen intelligenz um %s"] = { false, false, { Stats.Intellect, }, reduction = true } -- s24388
 L["erhöht den schaden eures nächsten feuerzaubers um bis zu %s und stellt %s mana wieder her. effekt hält %s Sek. lang an"] = { { Stats.FireDamage, }, false, false, } -- s24389
-L["erhöht die zeit zwischen angriffen in der nähe befindlicher feinde um %s%, verlangsamt ihr bewegungstempo um %s% und verringert zusätzlich ihr zaubertempo um %s%. hält %s Sek. lang an"] = { { Stats.MeleeHaste, }, false, { Stats.SpellHaste, }, false, } -- s24415
-L["ein ziel erleidet %s schaden, zusätzlich erfahren alle feindlichen ziele in nahkampfreichweite eine reduzierung ihrer nahkampfangriffskraft um %s. dieser effekt hält %s Sek. lang an"] = { false, { Stats.AttackPower, }, false, } -- s24423
+L["erhöht die zeit zwischen angriffen in der nähe befindlicher feinde um %s%, verlangsamt ihr bewegungstempo um %s% und verringert zusätzlich ihr zaubertempo um %s%. hält %s Sek. lang an"] = { { Stats.MeleeHaste, }, false, { Stats.SpellHaste, }, false, reduction = true } -- s24415
+L["ein ziel erleidet %s schaden, zusätzlich erfahren alle feindlichen ziele in nahkampfreichweite eine reduzierung ihrer nahkampfangriffskraft um %s. dieser effekt hält %s Sek. lang an"] = { false, { Stats.AttackPower, }, false, reduction = true } -- s24423
 L["stellt alle %s sekunden %s gesundheit wieder her und erhöht eure stärke um %s. hält %s Sek. lang an"] = { false, { Stats.HealthRegen, }, { Stats.Strength, }, false, } -- s24427
 L["frostwiderstand erhöht um %s"] = { { Stats.FrostResistance, }, } -- s24446
 L["erhöht den frostwiderstand um %s"] = { { Stats.FrostResistance, }, } -- s24449
@@ -807,7 +807,7 @@ L["erhöht die chance auf einen kritischen treffer mit heiligzaubern %s Sek. lan
 L["erhöht den arkanwiderstand um %s"] = { { Stats.ArcaneResistance, }, } -- s24500
 L["erhöht den schattenwiderstand um %s"] = { { Stats.ShadowResistance, }, } -- s24507
 L["rüstung um %s erhöht"] = { { Stats.Armor, }, } -- s24545
-L["ein ziel erleidet %s schaden; zusätzlich erfahren alle feindlichen ziele in nahkampfreichweite eine reduzierung ihrer angriffskraft um %s. dieser effekt hält %s Sek. lang an"] = { false, { Stats.AttackPower, }, false, } -- s24577
+L["ein ziel erleidet %s schaden; zusätzlich erfahren alle feindlichen ziele in nahkampfreichweite eine reduzierung ihrer angriffskraft um %s. dieser effekt hält %s Sek. lang an"] = { false, { Stats.AttackPower, }, false, reduction = true } -- s24577
 L["erhöht die zaubertrefferchance %s Sek. lang um %s%"] = { false, { Stats.SpellHit, }, } -- s24610
 L["erhöht das angriffstempo eines verbündeten %s Sek. lang um %s%, fügt diesem verbündeten aber auch alle %s sek. %s naturschaden zu"] = { false, { Stats.MeleeHaste, }, false, false, } -- s24672
 L["%s angriffskraft in katzengestalt, bärengestalt oder terrorbärengestalt"] = { { Stats.FeralAttackPower, }, } -- s24694
@@ -816,26 +816,26 @@ L["stellt im verlauf von %s Sek. %s gesundheit wieder her. ihr müsst beim essen
 L["die ausweichchance des druiden erhöht sich %s Sek. lang um %s%"] = { false, { Stats.Dodge, }, } -- s24864
 L["erhöht eure chance mit zaubern und nahkampfangriffen einen kritischen treffer zu erzielen um %s%. hält %s Sek. lang an"] = { { Stats.MeleeCrit, Stats.RangedCrit, Stats.SpellCrit, }, false, } -- s24865
 L["erhöht %s Sek. lang die durch zauber und effekte verursachte heilung um bis zu %s"] = { false, { Stats.HealingPower, }, } -- s24998
-L["hackt auf die rüstung des feindes ein und verringert sie um %s pro einsatz von 'rüstung zerreißen'. kann bis zu %s-mal angewendet werden. hält %s Sek. lang an"] = { { Stats.Armor, }, false, false, } -- s25051
+L["hackt auf die rüstung des feindes ein und verringert sie um %s pro einsatz von 'rüstung zerreißen'. kann bis zu %s-mal angewendet werden. hält %s Sek. lang an"] = { { Stats.Armor, }, false, false, reduction = true } -- s25051
 L["erhöht durch frostzauber und feuereffekte zugefügten schaden um bis zu %s"] = { { Stats.FrostDamage, }, } -- s25066
 L["erhöht durch zauber und magische effekte zugefügten schaden und heilung um bis zu %s. erhöht außerdem die chance auf einen kritischen treffer mit zaubern um %s%"] = { { Stats.SpellPower, }, { Stats.SpellCrit, }, } -- s25113
 L["stellt alle %s sek. %s punkt(e) mana wieder her und erhöht heilung um %s"] = { false, { Stats.GenericManaRegen, }, { Stats.HealingPower, }, } -- s25116
-L["fügt einem gegner und seinen nächsten verbündeten zusätzlich zum normalen schaden noch %s zusatzschaden zu. wirkt auf maximal %s ziele.treffer reduzieren außerdem die rüstung um %s"] = { false, false, { Stats.Armor, }, } -- s25174
-L["zwingt nahe gegner dazu in dämonisch zu sprechen, was ihre zaubergeschwindigkeit %s Sek. lang um %s% verringert. es kann immer nur jeweils ein fluch pro hexenmeister auf einem beliebigen ziel aktiv sein"] = { false, { Stats.SpellHaste, }, } -- s25195
+L["fügt einem gegner und seinen nächsten verbündeten zusätzlich zum normalen schaden noch %s zusatzschaden zu. wirkt auf maximal %s ziele.treffer reduzieren außerdem die rüstung um %s"] = { false, false, { Stats.Armor, }, reduction = true } -- s25174
+L["zwingt nahe gegner dazu in dämonisch zu sprechen, was ihre zaubergeschwindigkeit %s Sek. lang um %s% verringert. es kann immer nur jeweils ein fluch pro hexenmeister auf einem beliebigen ziel aktiv sein"] = { false, { Stats.SpellHaste, }, reduction = true } -- s25195
 L["stellt im verlauf von %s Sek. %s punkt(e) mana wieder her. ihr müsst beim essen sitzen bleiben"] = { false, { Stats.GenericManaRegen, }, } -- s25701
 L["senkt den feuerwiderstand der ziele des zaubers um %s"] = { { Stats.FirePenetration, }, } -- s25717
 L["senkt den frostwiderstand der ziele des zaubers um %s"] = { { Stats.FrostPenetration, }, } -- s25718
 L["verleiht zaubersprüchen, die erfolgreich schaden zufügen, %s Sek. lang eine chance den zauberwiderstand ihrer ziele um %s zu senken"] = { false, { Stats.SpellPenetration, }, ignoreSum = true } -- s25767
 L["belegt alle mitglieder einer gruppe oder eines schlachtzuges, die dieselbe klasse wie das ziel haben, mit dem großen segen der macht. der große segen der macht erhöht die nahkampfangriffskraft %s Sek. lang um %s. spieler können pro paladin immer nur mit einem einzigen segen belegt sein"] = { false, { Stats.AttackPower, }, } -- s25782
 L["erhöht das angriffstempo aller nahen gruppenmitglieder um %s% und den angriffsschaden um %s%"] = { { Stats.MeleeHaste, }, false, } -- s25801
-L["alle werte um %s verringert.\nes werden alle %s sekunden %s schattenschaden zugefügt"] = { false, false, { Stats.AllStats, }, } -- s25805
-L["schwächt das feindliche ziel und verringert verursachten schaden %s Sek. lang um %s"] = { false, { Stats.AverageWeaponDamage, }, } -- s25816
+L["alle werte um %s verringert.\nes werden alle %s sekunden %s schattenschaden zugefügt"] = { false, false, { Stats.AllStats, }, reduction = true } -- s25805
+L["schwächt das feindliche ziel und verringert verursachten schaden %s Sek. lang um %s"] = { false, { Stats.AverageWeaponDamage, }, reduction = true } -- s25816
 L["das ziel erhält im nahkampf einen bonus von %s% auf die chance, einen kritischen treffer zu erzielen"] = { { Stats.MeleeCrit, Stats.RangedCrit, }, } -- s25848
 L["erhöht die nahkampf- und distanzangriffskraft %s Sek. lang um %s"] = { false, { Stats.GenericAttackPower, Stats.RangedAttackPower, }, } -- s39439
 L["%s waffenschaden"] = { { Stats.AverageWeaponDamage, }, } -- s25901
 L["gewährt euren schaden verursachenden zaubern eine chance, den schaden eurer zauber und effekte %s Sek. lang um %s zu erhöhen"] = { false, { Stats.SpellDamage, }, ignoreSum = true } -- s25906
 L["reduziert die magiewiderstände der ziele eurer zauber um %s"] = { { Stats.SpellPenetration, }, } -- s25975
-L["reduziert jeglichen von eurem begleiter erlittenen schaden um %s%, erhöht aber dafür die zeit zwischen dessen angriffen um %s%. hält %s Sek. lang an"] = { false, { Stats.MeleeHaste, }, false, } -- s26064
+L["reduziert jeglichen von eurem begleiter erlittenen schaden um %s%, erhöht aber dafür die zeit zwischen dessen angriffen um %s%. hält %s Sek. lang an"] = { false, { Stats.MeleeHaste, }, false, reduction = true } -- s26064
 L["erhöht %s Sek. lang den schaden naher verbündeter um %s% und das angriffstempo um %s%"] = { false, false, { Stats.MeleeHaste, }, } -- s26099
 L["eure zauber 'blitzschlag', 'kettenblitzschlag' und 'schock' haben eine chance von %s%, %s Sek. lang den schaden von zaubern zusätzlich um %s naturschaden zu erhöhen"] = { false, false, { Stats.NatureDamage, }, ignoreSum = true } -- s26119
 L["erhöht durch naturzauber und natureffekte zugefügten schaden %s Sek. sekunden lang um bis zu %s"] = { false, { Stats.NatureDamage, }, } -- s26121
@@ -844,12 +844,12 @@ L["erhöht die zaubertrefferchance %s Sek. lang um %s%. kann bis zu viermal auf 
 L["erhöht den schaden von zaubern und magischen effekten um bis zu %s und reduziert die zauberwiderstände der ziele des zaubernden %s Sek. lang um %s"] = { { Stats.SpellDamage, }, false, { Stats.SpellPenetration, }, } -- s26166
 L["gewährt nahkampf- und distanzangriffen eine chance, %s Sek. lang einen rüstungsdurchschlagseffekt zu erhalten, der die physische rüstung des gegners um %s im verhältnis zu den eigenen attacken reduziert. dieser rüstungsdurchschlagseffekt kann bis zu %s-mal angewendet werden"] = { false, { Stats.ArmorPenetration, }, false, ignoreSum = true } -- s26480
 L["erhöht %s Sek. lang das angriffstempo des zaubernden um %s% und den von ihm zugefügten körperlichen schaden um %s"] = { false, { Stats.MeleeHaste, }, { Stats.AverageWeaponDamage, }, } -- s26527
-L["verursacht %s% waffenschaden und bringt das ziel aus dem gleichgewicht. reduziert die verteidigungsfertigkeit des ziels %s Sek. lang um %s"] = { false, false, { Stats.Defense, }, } -- s26613
+L["verursacht %s% waffenschaden und bringt das ziel aus dem gleichgewicht. reduziert die verteidigungsfertigkeit des ziels %s Sek. lang um %s"] = { false, false, { Stats.Defense, }, reduction = true } -- s26613
 L["stellt jede sekunde %s punkt(e) mana wieder her"] = { { Stats.GenericManaRegen, }, } -- s26647
 L["bei einem nahkampfangriff besteht eine chance, dass %s Sek. lang euer zauberschaden und eure heilung um %s erhöht werden"] = { false, { Stats.SpellDamage, }, ignoreSum = true } -- s27498
-L["erzeugt einen wütenden sturm im zielgebiet, der allen in der nähe befindlichen feinden alle %s sek. %s naturschaden zufügt und die zeit zwischen angriffen der betroffenen feinde um %s% erhöht. hält %s Sek. lang an. ein druide muss seine kräfte kanalisieren, um den zauber aufrechtzuerhalten"] = { false, false, { Stats.MeleeHaste, }, false, } -- s27530
+L["erzeugt einen wütenden sturm im zielgebiet, der allen in der nähe befindlichen feinden alle %s sek. %s naturschaden zufügt und die zeit zwischen angriffen der betroffenen feinde um %s% erhöht. hält %s Sek. lang an. ein druide muss seine kräfte kanalisieren, um den zauber aufrechtzuerhalten"] = { false, false, { Stats.MeleeHaste, }, false, reduction = true } -- s27530
 L["der krieger schreit, wodurch sich die angriffskraft der gruppe innerhalb eines radius von %s metern um %s erhöht. hält %s Sek. lang an"] = { false, { Stats.AttackPower, }, false, } -- s27578
-L["verringert %s Sek. lang die angriffskraft von feinden innerhalb eines radius von %s metern um %s"] = { false, false, { Stats.GenericAttackPower, }, } -- s27579
+L["verringert %s Sek. lang die angriffskraft von feinden innerhalb eines radius von %s metern um %s"] = { false, false, { Stats.GenericAttackPower, }, reduction = true } -- s27579
 L["erhöht alle magiewiderstände %s Sek. lang um %s"] = { false, { Stats.FireResistance, Stats.NatureResistance, Stats.FrostResistance, Stats.ShadowResistance, Stats.ArcaneResistance, }, } -- s27652
 L["erhöht die chance auszuweichen %s Sek. lang um %s%"] = { false, { Stats.Dodge, }, } -- s27653
 L["erhöht %s Sek. lang euren zauberschaden um bis zu %s punkte und eure heilung um bis zu %s punkte"] = { false, { Stats.SpellDamage, }, { Stats.HealingPower, }, } -- s27675
@@ -864,9 +864,9 @@ L["erhöht durch zauber und magische effekte zugefügten schaden und heilung all
 L["erhöht durch zauber und magische effekte verursachte heilung aller gruppenmitglieder, die sich im umkreis von %s befinden, um bis zu %s"] = { false, { Stats.HealingPower, }, } -- s28144
 L["stellt alle %s sek. %s punkt(e) mana bei allen gruppenmitgliedern, die sich im umkreis von %s befinden, wieder her"] = { false, { Stats.GenericManaRegen, }, false, } -- s28145
 L["erhöht euren zauberschaden um bis zu %s und eure heilung um bis zu %s"] = { { Stats.SpellDamage, }, { Stats.HealingPower, }, } -- s28155
-L["verringert %s Sek. lang die nahkampf- und distanzangriffskraft von in der nähe befindlichen feinden um %s"] = { false, { Stats.GenericAttackPower, }, } -- s28342
+L["verringert %s Sek. lang die nahkampf- und distanzangriffskraft von in der nähe befindlichen feinden um %s"] = { false, { Stats.GenericAttackPower, }, reduction = true } -- s28342
 L["erhöht die nahkampf- und distanzangriffskraft um %s"] = { { Stats.GenericAttackPower, }, } -- s28347
-L["opfert euch selbst, verhindert und entfernt 'wutanfall', bringt %s Sek. lang naturzauber zum schweigen und verringert das zaubertempo um %s%"] = { false, { Stats.SpellHaste, }, } -- s28732
+L["opfert euch selbst, verhindert und entfernt 'wutanfall', bringt %s Sek. lang naturzauber zum schweigen und verringert das zaubertempo um %s%"] = { false, { Stats.SpellHaste, }, reduction = true } -- s28732
 L["erhöht %s Sek. lang die gesundheit eines befreundeten ziels um bis zu %s"] = { false, { Stats.Health, }, } -- s28750
 L["erhöht %s Sek. lang die stärke um %s"] = { false, { Stats.Strength, }, } -- s28754
 L["erhöht die angriffskraft um %s"] = { { Stats.GenericAttackPower, }, } -- s28758
@@ -897,43 +897,43 @@ L["erhöht %s Sek. lang die durch zauber verursachte heilung um bis zu %s"] = { 
 L["verbessert %s Sek. lang die verteidigung um %s"] = { false, { Stats.Defense, }, } -- s29335
 L["erhöht alle widerstandsarten um %s. durch jeden zauber, dem ihr vollständig widersteht, werden %s% eures gesamten manas wiederhergestellt. %s sek. abklingzeit"] = { { Stats.FireResistance, Stats.NatureResistance, Stats.FrostResistance, Stats.ShadowResistance, Stats.ArcaneResistance, }, false, false, } -- s29441
 L["erhöht die angriffskraft um %s und alle %s sek. um zusätzliche %s. hält %s Sek. lang an"] = { { Stats.GenericAttackPower, }, false, { Stats.GenericAttackPower, }, false, ignoreSum = true } -- s29602
-L["lässt einen feind %s Sek. lang erkranken, erhöht dabei den körperlichen schaden, den er erleidet, um %s und verringert seine ausdauer um %s. das erkrankte ziel hat eine chance von %s%, seine krankheit auf einen seiner in der nähe befindlichen verbündeten zu übertragen, wenn er im gefecht getroffen wird"] = { false, false, { Stats.Stamina, }, false, } -- s30081
+L["lässt einen feind %s Sek. lang erkranken, erhöht dabei den körperlichen schaden, den er erleidet, um %s und verringert seine ausdauer um %s. das erkrankte ziel hat eine chance von %s%, seine krankheit auf einen seiner in der nähe befindlichen verbündeten zu übertragen, wenn er im gefecht getroffen wird"] = { false, false, { Stats.Stamina, }, false, reduction = true } -- s30081
 L["erhöht %s stunde lang die ausdauer"] = { { Stats.Stamina, }, } -- s30088
 L["erhöht bei verzehr die ausdauer um %s"] = { { Stats.Stamina, }, } -- s30164
 L["erhöht bei verzehr die beweglichkeit um %s"] = { { Stats.Agility, }, } -- s30173
 L["erhöht bei verzehr die intelligenz um %s"] = { { Stats.Intellect, }, } -- s30175
 L["erhöht bei verzehr die willenskraft um %s"] = { { Stats.Spirit, }, } -- s30177
 L["erhöht bei verzehr die stärke um %s"] = { { Stats.Strength, }, } -- s30178
-L["verringert eure chance, einen kritischen treffer zu erleiden, um %s%"] = { { Stats.MeleeCrit, Stats.RangedCrit, }, } -- s30297
+L["verringert eure chance, einen kritischen treffer zu erleiden, um %s%"] = { { Stats.MeleeCrit, Stats.RangedCrit, }, reduction = true } -- s30297
 L["ihr regeneriert alle %s sek. gesundheit entsprechend %s% eurer ausdauer, selbst wenn ihr im kampf seid"] = { false, { Stats.HealthRegen, }, } -- s30799
 L["erhöht eure trefferchance beim beidhändigen führen von waffen um zusätzliche %s%"] = { { Stats.MeleeHit, Stats.RangedHit, }, } -- s30816
 L["erhöht eure fertigkeit mit schwertern, faustwaffen und dolchen um %s"] = { { Stats.WeaponSkill, }, } -- s30919
 L["erhöht durch zauber und magische effekte verursachten schaden und heilung um bis zu %s"] = { { Stats.SpellPower, }, } -- s31750
 L["erhöht trefferpunkte um %s. %s% tempo für nahkampfattacken. %s mana alle %s sek"] = { { Stats.Health, }, { Stats.MeleeHaste, }, { Stats.GenericManaRegen, }, false, } -- s355366
-L["verursacht alle %s sek. %s schattenschaden.\nverringert die trefferchance mit zaubern und nahkampfattacken um %s%"] = { false, false, { Stats.MeleeHit, Stats.RangedHit, Stats.SpellHit, }, } -- s367873
+L["verursacht alle %s sek. %s schattenschaden.\nverringert die trefferchance mit zaubern und nahkampfattacken um %s%"] = { false, false, { Stats.MeleeHit, Stats.RangedHit, Stats.SpellHit, }, reduction = true } -- s367873
 L["erhöht %s Sek. lang das angriffstempo des zaubernden um %s% und jeglichen von ihm zugefügten schaden um %s"] = { false, { Stats.MeleeHaste, }, false, } -- s368388
 L["verursacht alle %s sek. %s naturschaden und erhöht die chance auf einen kritischen treffer mit nahkampf-, distanzangriffen und zaubern %s Sek. lang um %s%"] = { false, false, false, { Stats.MeleeCrit, Stats.RangedCrit, Stats.SpellCrit, }, } -- s370337
 L["erhöht die gesundheit um %s% und den schaden um %s%"] = { false, { Stats.SpellDamage, }, } -- s370444
 L["stecht euch mit dem fangzahn, was die bewegungsgeschwindigkeit, das angriffstempo und das zaubertempo %s Sek. lang um %s% erhöht"] = { false, { Stats.SpellHaste, Stats.MeleeHaste, Stats.RangedHaste, }, } -- s370832
 L["finishing-move, der eure parierchance erhöht. combopunkte erhöhen die dauer und die parierchance:\n   %s punkt: %s sek., %s% parierchance\n   %s punkte: %s sek., %s% parierchance\n   %s punkte: %s sek., %s% parierchance\n   %s punkte: %s sek., %s% parierchance\n   %s punkte: %s sek., %s% parierchance"] = { false, { Stats.Parry, }, false, false, false, false, false, false, false, false, false, false, false, false, false, } -- s398198
 L["finishing-move, der eure parierchance um %s% erhöht und euch %s angriffskraft pro punkt eurer verteidigungsfähigkeit über %s hinaus gewährt. hält pro combopunkt länger an:\n   %s punkt: %s sek.\n   %s punkte: %s sek.\n   %s punkte: %s sek.\n   %s punkte: %s sek.\n   %s punkte: %s sek"] = { { Stats.Parry, }, false, false, false, false, false, false, false, false, false, false, false, false, } -- s400012
-L["zwingt das ziel, dämonisch zu sprechen, und erhöht die zauberzeit um %s%. es kann immer nur jeweils ein fluch pro hexenmeister auf einem ziel aktiv sein. hält %s Sek. lang an"] = { { Stats.SpellHaste, }, false, } -- s402794
-L["erhöht die zeit zwischen angriffen eines gegners um %s%. hält %s Sek. lang an"] = { { Stats.MeleeHaste, }, false, } -- s402808
-L["verringert die angriffskraft des ziels um %s. hält %s Sek. lang an"] = { { Stats.GenericAttackPower, }, false, } -- s402811
-L["verringert die rüstung eines gegners um %s. hält %s Sek. lang an"] = { { Stats.Armor, }, false, } -- s402818
+L["zwingt das ziel, dämonisch zu sprechen, und erhöht die zauberzeit um %s%. es kann immer nur jeweils ein fluch pro hexenmeister auf einem ziel aktiv sein. hält %s Sek. lang an"] = { { Stats.SpellHaste, }, false, reduction = true } -- s402794
+L["erhöht die zeit zwischen angriffen eines gegners um %s%. hält %s Sek. lang an"] = { { Stats.MeleeHaste, }, false, reduction = true } -- s402808
+L["verringert die angriffskraft des ziels um %s. hält %s Sek. lang an"] = { { Stats.GenericAttackPower, }, false, reduction = true } -- s402811
+L["verringert die rüstung eines gegners um %s. hält %s Sek. lang an"] = { { Stats.Armor, }, false, reduction = true } -- s402818
 L["der krieger schreit, wodurch sich die ausdauer aller gruppenmitglieder innerhalb von %s metern um %s erhöht. hält %s Sek. lang an"] = { false, { Stats.Stamina, }, false, } -- s403215
 L["umgibt den zaubernden mit teufelsenergie, die zauberschaden und -heilung um %s erhöht und zusätzlich zauberschaden bzw. -heilung in höhe von %s% eurer willenskraft verursacht. außerdem stellt ihr alle %s sek. %s% eurer maximalen gesundheit wieder her. es kann immer nur eine art rüstungszauber gleichzeitig beim hexenmeister aktiv sein. hält %s Sek. lang an"] = { { Stats.SpellPower, }, false, false, false, false, } -- s403619
 L["erhöht den vom zaubernden verursachten körperlichen schaden um %s und sein angriffstempo um %s%. hält %s Sek. lang an"] = { false, { Stats.MeleeHaste, }, false, } -- s407791
 L["jedes mal, wenn ihr blockt, regeneriert ihr mana in höhe von %s% eures maximalen manas und erhaltet rüstung in der höhe von %s% des rüstungswertes eures schildes. bis zu %s-mal stapelbar. ihr erhaltet außerdem immer eine um %s% erhöhte blockchance und einen um %s% erhöhten blockwert.\naußerdem erhaltet ihr immer, wenn ihr eine schockfähigkeit einsetzt, %s zauberschaden pro punkt eurer verteidigungsfertigkeit, der über %s hinausgeht. hält %s Sek. lang an"] = { false, { Stats.Armor, }, false, { Stats.BlockChance, }, false, false, false, false, } -- s408524
 L["erhöht die rüstung %s Sek. lang um %s% des rüstungswertes eures schildes. bis zu %s-mal stapelbar"] = { false, { Stats.Armor, }, false, } -- s408525
-L["die treffer eurer fähigkeiten 'hinterhalt' und 'meucheln' bringen euer ziel aus dem gleichgewicht, was die zeit zwischen seinen nahkampfangriffen um %s% erhöht sowie seine bewegungsgeschwindigkeit um %s% verringert. hält %s Sek. lang an"] = { { Stats.MeleeHaste, }, false, false, } -- s408699
+L["die treffer eurer fähigkeiten 'hinterhalt' und 'meucheln' bringen euer ziel aus dem gleichgewicht, was die zeit zwischen seinen nahkampfangriffen um %s% erhöht sowie seine bewegungsgeschwindigkeit um %s% verringert. hält %s Sek. lang an"] = { { Stats.MeleeHaste, }, false, false, reduction = true } -- s408699
 L["erhöht eure kritische trefferchance um %s% und verringert die manakosten aller eurer schussfähigkeiten um %s%"] = { { Stats.MeleeCrit, Stats.RangedCrit, }, false, } -- s409428
 L["eure kritischen treffer mit nahkampf- und distanzangriffen erhöhen %s Sek. lang eure angriffskraft um %s% eurer aktuellen beweglichkeit"] = { false, { Stats.GenericAttackPower, }, ignoreSum = true } -- s409504
 L["eure kritischen treffer mit distanzangriffen erhöhen %s Sek. lang eure angriffskraft um %s% eurer beweglichkeit"] = { false, { Stats.GenericAttackPower, }, } -- s409507
 L["erhöht die kritische trefferchance aller eurer zauber um %s%, aber die kritischen treffer eurer zauber ohne regelmäßige effekte kosten zusätzlich %s% eures grundmanas"] = { { Stats.SpellCrit, }, false, } -- s412286
 L["erhöht eure ausweichchance um %s% und die eures begleiters um %s%. außerdem wird die abklingzeit eurer fähigkeit 'flankenangriff' um %s% verringert"] = { { Stats.Dodge, }, false, false, } -- s415428
 L["erhöht eure ausweichchance um %s%. zusätzlich regeneriert ihr bei jedem ausweichen in bärengestalt oder terrorbärengestalt %s wut, in katzengestalt %s energie oder in jeder anderen gestalt %s% eures maximalen manas"] = { { Stats.Dodge, }, false, false, false, } -- s417051
-L["besprengt das ziel mit uraltem ätzgift, das alle %s sek. %s naturschaden verursacht und %s Sek. lang die rüstung des ziels um %s verringert"] = { false, false, false, { Stats.Armor, }, } -- s422996
+L["besprengt das ziel mit uraltem ätzgift, das alle %s sek. %s naturschaden verursacht und %s Sek. lang die rüstung des ziels um %s verringert"] = { false, false, false, { Stats.Armor, }, reduction = true } -- s422996
 L["greift sofort mit eurer schildhandwaffe an und verursacht normalen schildhandwaffenschaden. erhöht eure parierchance %s Sek. lang um %s% oder bis ihr erfolgreich pariert. nach dem einsatz von 'parierdolch' kostet 'finsterer stoß' %s Sek. lang %s weniger energie, verursacht %s% mehr bedrohung und sowohl 'finsterer stoß' als auch 'ausweiden' verursachen %s% mehr schaden. gewährt %s combopunkt.\n'parierdolch' nutzt die vorteile der meisten talente und effekte, die durch 'finsterer stoß' ausgelöst werden oder 'finsterer stoß' modifizieren. der effekt von 'parierdolch' wird 'parierdolch' selbst nicht verstärken oder günstiger machen"] = { false, { Stats.Parry, }, false, false, false, false, false, } -- s424919
 L["greift sofort mit eurer schildhandwaffe an und verursacht normalen schildhandwaffenschaden. erhöht eure parierchance %s Sek. lang um %s% oder bis ihr erfolgreich pariert. nach dem einsatz von 'parierdolch' kostet 'finsterer stoß' %s Sek. lang %s weniger energie, verursacht %s% mehr bedrohung und sowohl 'finsterer stoß' als auch 'ausweiden' verursachen %s% mehr schaden. gewährt %s combopunkte.\n'parierdolch' nutzt die vorteile der meisten talente und effekte, die durch 'finsterer stoß' ausgelöst werden oder 'finsterer stoß' modifizieren. der effekt von 'parierdolch' wird 'parierdolch' selbst nicht verstärken oder günstiger machen"] = { false, { Stats.Parry, }, false, false, false, false, false, } -- s424919
 L["beschleunigt euer wirken von zaubern, erhöht das zaubertempo um %s% und verringert die dauer der durch erlittenen schaden verursachten zauberzeiterhöhung beim wirken von zaubern um %s%. hält %s Sek. lang an"] = { { Stats.SpellHaste, }, false, false, } -- s425121
@@ -960,7 +960,7 @@ L["erhöht eure chance auf kritische treffer mit zaubern um %s%"] = { { Stats.Sp
 L["während ihr zweihandwaffen tragt, ist euer angriffstempo um %s% erhöht"] = { { Stats.MeleeHaste, }, } -- s431046
 L["einen gegenstand für den schulterplatz dauerhaft verzaubern, sodass euer angriffstempo um %s% erhöht wird"] = { { Stats.MeleeHaste, }, } -- s432137
 L["erhöht eure trefferchance mit allen angriffen und zaubern um %s%"] = { { Stats.MeleeHit, Stats.RangedHit, Stats.SpellHit, }, } -- s432639
-L["entlädt eine explosion arkaner energie, die %s arkanschaden verursacht, sämtliche widerstände um %s verringert und sämtlichen erlittenen zauberschaden %s Sek. lang um %s% erhöht. wirkt nur bei gegnern der stufe %s oder niedriger"] = { false, { Stats.FireResistance, Stats.FrostResistance, Stats.ShadowResistance, Stats.ArcaneResistance, Stats.NatureResistance, }, false, false, false, } -- s434841
+L["entlädt eine explosion arkaner energie, die %s arkanschaden verursacht, sämtliche widerstände um %s verringert und sämtlichen erlittenen zauberschaden %s Sek. lang um %s% erhöht. wirkt nur bei gegnern der stufe %s oder niedriger"] = { false, { Stats.FireResistance, Stats.FrostResistance, Stats.ShadowResistance, Stats.ArcaneResistance, Stats.NatureResistance, }, false, false, false, reduction = true } -- s434841
 L["erhöht die rüstung um %s, verringert aber die bewegungsgeschwindigkeit um %s%. der effekt kann nicht entfernt werden und hält %s Sek. lang an"] = { { Stats.Armor, }, false, false, } -- s435359
 L["einhandfaustwaffen um %s erhöht"] = { { Stats.WeaponSkill, }, } -- s435535
 L["stellt %s mana und %s gesundheit wieder her. erhöht zudem %s Sek. lang die angriffskraft um %s und den durch alle zauber verursachten schaden um %s"] = { false, false, false, { Stats.GenericAttackPower, }, { Stats.SpellDamage, }, } -- s435973
@@ -975,13 +975,13 @@ L["belegt euch mit 'gneurologischer schock', was euch sofort %s schaden zufügt,
 L["gewährt 'gneuromantische meditation', wodurch %s Sek. lang %s% eurer manaregeneration während des zauberwirkens erhalten bleibt und der verursachte schaden und die hervorgerufene heilung eurer zauber um bis zu %s erhöht werden"] = { false, false, { Stats.SpellPower, }, } -- s437357
 L["belegt euch mit 'hyperleitender schock', was euch sofort %s schaden zufügt, aber auch euer zauberwirken %s Sek. lang um %s% beschleunigt"] = { false, false, { Stats.SpellHaste, }, } -- s437362
 L["gewährt höchste konzentration, die %s Sek. lang die bewegungsgeschwindigkeit um %s% verringert, aber währenddessen euren zauberwiderstand gegen alle magiearten um %s sowie das angriffstempo im nahkampf um %s% erhöht"] = { false, { Stats.MeleeHaste, }, { Stats.FireResistance, Stats.NatureResistance, Stats.FrostResistance, Stats.ShadowResistance, Stats.ArcaneResistance, }, { Stats.MeleeHaste, }, } -- s437377
-L["der zaubernde spuckt lethargisches gift auf die spielercharaktere, das %s Sek. lang alle %s sek. %s naturschaden verursacht. dieses gift verringert die trefferchance um %s% und erhöht die kosten von fähigkeiten um %s%"] = { false, false, false, { Stats.MeleeHit, Stats.RangedHit, }, false, } -- s437390
+L["der zaubernde spuckt lethargisches gift auf die spielercharaktere, das %s Sek. lang alle %s sek. %s naturschaden verursacht. dieses gift verringert die trefferchance um %s% und erhöht die kosten von fähigkeiten um %s%"] = { false, false, false, { Stats.MeleeHit, Stats.RangedHit, }, false, reduction = true } -- s437390
 L["erhöht die kritische trefferchance von zaubern um %s%, zauberschaden und -heilung um %s sowie nahkampf- und distanzangriffstempo um %s%. dauer: %s min"] = { { Stats.SpellCrit, }, { Stats.SpellPower, }, { Stats.MeleeHaste, Stats.RangedHaste, }, false, } -- s438536
 L["erhaltet ein verzaubertes siegel der innovation, das euch ermächtigt, wodurch %s Sek. lang der verursachte schaden und die hervorgerufene heilung eurer zauber um bis zu %s und eure angriffskraft um %s erhöht wird. dieser effekt kann nur außerhalb des kampfes angewandt werden"] = { false, { Stats.SpellPower, }, { Stats.GenericAttackPower, }, } -- s439155
 L["erhöht faustwaffen um %s"] = { { Stats.WeaponSkill, }, } -- s439651
 L["erhöht den zauberschaden %s Sek. lang um bis zu %s"] = { false, { Stats.SpellDamage, }, } -- s439959
 L["erhöht die trefferchance eurer nahkampfangriffe um %s% und verringert die ausweichchance von gegnern gegenüber euren nahkampfangriffen um %s%, wenn ihr in bärengestalt, katzengestalt oder terrorbärengestalt seid. nicht mit anderen ringrunen stapelbar"] = { { Stats.MeleeHit, Stats.RangedHit, }, false, } -- s442901
-L["zwingt gegner in der nähe, dämonisch zu sprechen, was ihr zaubertempo %s Sek. lang um %s% verringert"] = { false, { Stats.SpellHaste, }, } -- s444046
+L["zwingt gegner in der nähe, dämonisch zu sprechen, was ihr zaubertempo %s Sek. lang um %s% verringert"] = { false, { Stats.SpellHaste, }, reduction = true } -- s444046
 L["angriffskraft, zauberschaden und heilung um %s erhöht"] = { { Stats.SpellPower, Stats.AttackPower, }, } -- s446219
 L["'flammenschock' erhöht %s Sek. lang angriffskraft, zauberschaden und heilung um %s"] = { false, { Stats.SpellDamage, }, ignoreSum = true } -- s446220
 L["erhöht die distanz- und nahkampfangriffskraft um %s. die vorteile dieses fläschchens wirken nur in gebieten, die unter dem einfluss des alptraums stehen"] = { { Stats.GenericAttackPower, }, } -- s446228
@@ -993,7 +993,7 @@ L["erhöht den verursachten schaden um %s und das angriffstempo um %s%. hält %s
 L["beeinflusst durch das mojo des krieges nimmt eure größe zu und eure stärke wächst um %s, um eurer neuen größe gerecht zu werden. hält %s Sek. lang an"] = { { Stats.Strength, }, false, } -- s446335
 L["erhöht die nahkampf- und distanzangriffskraft um %s. bei nahkampf- und distanzangriffen besteht eine chance, größer zu werden, wodurch %s Sek. lang die stärke oder beweglichkeit um %s erhöht wird (je nach dem, welcher wert höher ist). es kann immer nur ein trank der atal'ai zur selben zeit aktiv sein. dies hat außerhalb des versunkenen tempels keinen effekt"] = { { Stats.GenericAttackPower, }, false, { Stats.Strength, }, } -- s446336
 L["erhöht %s Sek. lang die blockchance des zaubernden um %s%"] = { false, { Stats.BlockChance, }, } -- s446356
-L["verringert alle attribute von gegnern in der nähe %s Sek. lang um %s"] = { false, { Stats.AllStats, }, } -- s446364
+L["verringert alle attribute von gegnern in der nähe %s Sek. lang um %s"] = { false, { Stats.AllStats, }, reduction = true } -- s446364
 L["erhöht die verursachte heilung um %s, die manaregeneration alle %s sek. um %s und eure heilungen haben eine chance, %s energie, %s% mana oder %s wut wiederherzustellen. es kann immer nur ein trank der atal'ai zur selben zeit aktiv sein. dies hat außerhalb des versunkenen tempels keinen effekt"] = { { Stats.HealingPower, }, false, { Stats.GenericManaRegen, }, false, false, false, } -- s446396
 L["erhöht den durch zauber und magische effekte verursachten schaden und hervorgerufene heilung um bis zu %s"] = { { Stats.SpellPower, }, } -- s446458
 L["echos aus der leere treiben euch in den wahnsinn. euer zaubertempo wird um %s% erhöht. dies hat außerhalb von gebieten, die unter dem einfluss des alptraums stehen, keinen effekt"] = { { Stats.SpellHaste, }, } -- s446528
@@ -1011,7 +1011,7 @@ L["erhöht die kritische trefferchance um %s%, den zauberschaden um %s sowie all
 L["eure offensivzauber haben eine chance, euren zauberschaden %s Sek. lang um %s zu erhöhen"] = { false, { Stats.SpellDamage, }, ignoreSum = true } -- s446705
 L["erhöht %s Sek. lang die heilkraft um %s gesundheit"] = { false, { Stats.HealingPower, }, } -- s446712
 L["übernimmt %s Sek. lang die kontrolle über einen humanoiden gegner bis zu stufe %s, erhöht den von ihm verursachten magischen schaden um %s und den von ihm verursachten körperlichen schaden um %s"] = { false, false, { Stats.SpellDamage, }, { Stats.AverageWeaponDamage, }, } -- s446733
-L["vergiftet den gegner und verursacht %s naturschaden, verringert den naturwiderstand um %s und erhöht sämtlichen erlittenen heilig- und naturschaden %s Sek. lang um %s%. wirkt nur bei gegnern der stufe %s oder niedriger"] = { false, { Stats.NatureResistance, }, false, false, false, } -- s447894
+L["vergiftet den gegner und verursacht %s naturschaden, verringert den naturwiderstand um %s und erhöht sämtlichen erlittenen heilig- und naturschaden %s Sek. lang um %s%. wirkt nur bei gegnern der stufe %s oder niedriger"] = { false, { Stats.NatureResistance, }, false, false, false, reduction = true } -- s447894
 L["erhöht %s Sek. lang den durch zauber verursachten schaden um %s, die verursachte heilung um bis zu %s gesundheit und die manaregeneration um %s mana pro %s sek. die vorteile dieses fläschchens wirken nur in gebieten, die unter dem einfluss des alptraums stehen"] = { false, { Stats.SpellDamage, }, { Stats.HealingPower, }, { Stats.GenericManaRegen, }, false, } -- s448084
 L["erhöht eure kritische trefferchance mit allen angriffen und zaubern um %s%"] = { { Stats.MeleeCrit, Stats.RangedCrit, Stats.SpellCrit, }, } -- s448324
 L["eure zauber, die heiligschaden verursachen, gewähren euch %s Sek. lang %s erhöhten schaden und heilung"] = { false, { Stats.HealingPower, }, ignoreSum = true } -- s449921
@@ -1026,12 +1026,12 @@ L["nahkampfangriffstempo um %s% erhöht"] = { { Stats.MeleeHaste, }, } -- s45008
 L["macht erfüllt die gruppe des ziels und erhöht %s Sek. lang ihre ausdauer um %s"] = { false, { Stats.Stamina, }, } -- s450086
 L["%s angriffskraft, bis zu %s erhöhter schaden durch zauber und bis zu %s erhöhte heilung durch zauber"] = { { Stats.GenericAttackPower, }, { Stats.SpellDamage, }, { Stats.HealingPower, }, } -- s450512
 L["%s angriffskraft und bis zu %s erhöhte heilung durch zauber"] = { { Stats.GenericAttackPower, }, false, } -- s450516
-L["lässt einen gegner %s Sek. lang erkranken, was seinen erlittenen körperlichen schaden um %s erhöht und seine ausdauer um %s verringert. bei dem erkrankten ziel besteht eine chance von %s%, dass es seine krankheit auf einen seiner verbündeten in der nähe überträgt, wenn es im gefecht getroffen wird"] = { false, false, { Stats.Stamina, }, false, } -- s450607
+L["lässt einen gegner %s Sek. lang erkranken, was seinen erlittenen körperlichen schaden um %s erhöht und seine ausdauer um %s verringert. bei dem erkrankten ziel besteht eine chance von %s%, dass es seine krankheit auf einen seiner verbündeten in der nähe überträgt, wenn es im gefecht getroffen wird"] = { false, false, { Stats.Stamina, }, false, reduction = true } -- s450607
 L["erhöht die blockchance um %s%"] = { { Stats.BlockChance, }, } -- s452464
 L["erhöht eure chance auf treffer mit zaubern und angriffen um %s%"] = { { Stats.MeleeHit, Stats.RangedHit, Stats.SpellHit, }, } -- s455858
 L["euer 'mungobiss' verringert zudem die ausweichchance seines ziels um %s% und erhöht eure trefferchance %s Sek. lang um %s%"] = { { Stats.Dodge, }, false, { Stats.MeleeHit, Stats.RangedHit, }, ignoreSum = true } -- s456389
 L["erhöht die kritische trefferchance eurer zauber und angriffe um %s%"] = { { Stats.MeleeCrit, Stats.RangedCrit, Stats.SpellCrit, }, } -- s456489
-L["verringert nahkampf- und distanzangriffskraft von in der nähe befindlichen gegnern %s Sek. lang um %s"] = { false, { Stats.GenericAttackPower, }, } -- s459165
+L["verringert nahkampf- und distanzangriffskraft von in der nähe befindlichen gegnern %s Sek. lang um %s"] = { false, { Stats.GenericAttackPower, }, reduction = true } -- s459165
 L["verbessert eure chance auf treffer mit allen zaubern und angriffen um %s%"] = { { Stats.MeleeHit, Stats.RangedHit, Stats.SpellHit, }, } -- s460230
 L["erhöht euer angriffstempo %s Sek. lang um %s%. keine wirkung auf charaktere über stufe %s"] = { false, { Stats.MeleeHaste, }, false, } -- s460455
 L["erhöht euren naturschaden %s Sek. lang um bis zu %s"] = { false, { Stats.NatureDamage, }, } -- s461227
@@ -1042,18 +1042,18 @@ L["erhöht durch zauber und effekte verursachte heilung %s Sek. lang um bis zu %
 L["ermutigt alle mitglieder eurer gruppe oder eures schlachtzugs, für die ehre von azeroth zu kämpfen, wodurch sich die kritische trefferchance aller zauber und angriffe um %s% und die angriffskraft um %s erhöht. hält %s Sek. lang an.\nkann nicht mit ähnlichen langanhaltenden effekten kombiniert werden"] = { { Stats.SpellCrit, Stats.MeleeCrit, Stats.RangedCrit, }, false, false, } -- s461475
 L["stellt im verlauf von %s Sek. insgesamt %s mana wieder her. ihr müsst beim trinken sitzen bleiben"] = { false, { Stats.GenericManaRegen, }, } -- s461632
 L["erhöht den durch zauber und magische effekte verursachten schaden und hervorgerufene heilung %s Sek. lang um bis zu %s"] = { false, { Stats.SpellPower, }, } -- s461680
-L["schleudert einen schattenblitz auf den gegner, verursacht %s schattenschaden und verringert %s Sek. lang alle werte um %s"] = { false, false, { Stats.AllStats, }, } -- s461682
+L["schleudert einen schattenblitz auf den gegner, verursacht %s schattenschaden und verringert %s Sek. lang alle werte um %s"] = { false, false, { Stats.AllStats, }, reduction = true } -- s461682
 L["stellt %s gesundheit alle %s sek. wieder her"] = { { Stats.HealthRegen, }, false, } -- s461696
 L["erhöht den von zaubern und effekten verursachten schaden um bis zu %s"] = { { Stats.SpellDamage, }, } -- s461697
-L["dröhnt gegner in der nähe mit donner zu, erhöht die zeit zwischen ihren angriffen %s Sek. lang um %s% und fügt ihnen %s schaden zu. diese fähigkeit wirkt auf maximal %s ziele"] = { false, { Stats.MeleeHaste, }, false, false, } -- s461810
+L["dröhnt gegner in der nähe mit donner zu, erhöht die zeit zwischen ihren angriffen %s Sek. lang um %s% und fügt ihnen %s schaden zu. diese fähigkeit wirkt auf maximal %s ziele"] = { false, { Stats.MeleeHaste, }, false, false, reduction = true } -- s461810
 L["erhöht die kritische trefferchance von heiligzaubern um %s%"] = { { Stats.SpellCrit, }, } -- s461953
 L["erhöht den von schattenzaubern und effekten verursachten schaden um bis zu %s"] = { { Stats.ShadowDamage, }, } -- s461956
-L["verringert die stärke eines gegners um %s und seine ausdauer um %s. hält %s Sek. lang an"] = { { Stats.Strength, }, { Stats.Stamina, }, false, } -- s462178
+L["verringert die stärke eines gegners um %s und seine ausdauer um %s. hält %s Sek. lang an"] = { { Stats.Strength, }, { Stats.Stamina, }, false, reduction = true } -- s462178
 L["erhöht %s Sek. lang euren zauberschaden um bis zu %s und eure heilung um bis zu %s gesundheit"] = { false, { Stats.SpellDamage, }, { Stats.HealingPower, }, } -- s462636
 L["verleiht dem träger bei aktivierung %s Sek. lang %s verteidigung und %s rüstung"] = { false, { Stats.Defense, }, { Stats.Armor, }, } -- s463105
 L["erhaltet ein verzaubertes siegel des fließenden wassers, das euren schlachtzug ermächtigt, wodurch %s Sek. lang der verursachte schaden und die hervorgerufene heilung mit zaubern um bis zu %s und die angriffskraft um %s erhöht wird"] = { false, { Stats.SpellPower, }, { Stats.GenericAttackPower, }, } -- s463864
 L["erhöht den von magischen zaubern und effekten verursachten schaden um bis zu %s und die heilwirkung von magischen zaubern und effekten um bis zu $%s"] = { { Stats.SpellDamage, }, false, } -- s463873
-L["verringert die nahkampf- und distanzangriffskraft von gegnern in der nähe %s Sek. lang um %s"] = { false, { Stats.GenericAttackPower, }, } -- s464743
+L["verringert die nahkampf- und distanzangriffskraft von gegnern in der nähe %s Sek. lang um %s"] = { false, { Stats.GenericAttackPower, }, reduction = true } -- s464743
 L["erhöht durch sämtliche zauber und magische effekte verursachte heilung um bis zu %s und den verursachten schaden um bis zu %s"] = { { Stats.HealingPower, }, { Stats.SpellDamage, }, } -- s467142
 L["erhöht den von arkanzaubern und -effekten verursachten schaden um bis zu %s"] = { { Stats.ArcaneDamage, }, } -- s467410
 L["erhöht den von schattenzaubern und -effekten verursachten schaden um bis zu %s"] = { { Stats.ShadowDamage, }, } -- s467411
@@ -1066,7 +1066,7 @@ L["heilt euer ziel um %s% seiner maximalen gesundheit und erhöht seine maximale
 L["gewährt beim verursachen von distanz- oder nahkampfschaden eine kleine chance, mit dem segen der wilden götter erfüllt zu werden, was die distanz- und nahkampfangriffskraft %s Sek. lang um %s erhöht"] = { false, { Stats.GenericAttackPower, }, ignoreSum = true } -- s467743
 L["ruft eine verzauberte schlange herbei, die euch verehrt und so %s Sek. lang eure willenskraft um %s erhöht"] = { false, { Stats.Spirit, }, } -- s467754
 L["euer 'flammenschock' gewährt auch eine %s% höhere chance, zu blocken. hält %s Sek. lang an oder bis ihr einen angriff blockt"] = { { Stats.BlockChance, }, false, ignoreSum = true } -- s467889
-L["deckt euren gegner mit blitzschlägen ein, die %s naturschaden verursachen und auf gegner in der nähe überspringen. jeder sprung verringert den naturwiderstand des ziels um %s. wirkt auf insgesamt %s ziele. euer hauptziel wird außerdem von einem wirbelsturm umgeben, welcher dessen angriffstempo %s Sek. lang um %s% verringert"] = { false, { Stats.NatureResistance, }, false, false, { Stats.MeleeHaste, }, } -- s468156
+L["deckt euren gegner mit blitzschlägen ein, die %s naturschaden verursachen und auf gegner in der nähe überspringen. jeder sprung verringert den naturwiderstand des ziels um %s. wirkt auf insgesamt %s ziele. euer hauptziel wird außerdem von einem wirbelsturm umgeben, welcher dessen angriffstempo %s Sek. lang um %s% verringert"] = { false, { Stats.NatureResistance, }, false, false, { Stats.MeleeHaste, }, reduction = true } -- s468156
 L["erhöht eure trefferchance bei allen zaubern und angriffen %s Sek. lang um %s%"] = { false, { Stats.SpellHit, Stats.MeleeHit, Stats.RangedHit, }, } -- s468164
 L["verleiht eurem begleiter eine chance, dass sein angriffstempo nach einem erzielten kritischen treffer %s Sek. lang um %s% erhöht wird"] = { false, { Stats.MeleeHaste, }, } -- s468183
 L["bringt den druiden in einklang mit der natur. erhöht %s Sek. lang den verursachten schaden durch zauber um %s%, verbessert heileffekte um %s% und erhöht die kritische trefferchance von zaubern um %s%"] = { false, false, false, { Stats.SpellCrit, }, } -- s468387
@@ -1097,9 +1097,9 @@ L["treibt ein gegnerisches ziel für begrenzte zeit in den wahnsinn, erhöht sei
 L["erhöht %s Sek. lang die durch zauber und magische effekte hervorgerufene heilung um bis zu %s gesundheit"] = { false, { Stats.HealingPower, }, } -- s1213147
 L["die chance, dass eure nahkampfangriffe pariert werden oder ihnen ausgewichen wird, ist um %s% verringert"] = { { Stats.DodgeReduction, Stats.ParryReduction, }, } -- s1213201
 L["verringert die chance, dass eure angriffe pariert werden oder ihnen ausgewichen wird, um %s%"] = { { Stats.DodgeReduction, Stats.ParryReduction, }, } -- s1213288
-L["kontrolliert %s Sek. lang die gedanken eines humanoiden gegners bis stufe %s, erhöht jedoch die zeit zwischen seinen angriffen um %s%"] = { false, false, { Stats.MeleeHaste, }, } -- s1213356
+L["kontrolliert %s Sek. lang die gedanken eines humanoiden gegners bis stufe %s, erhöht jedoch die zeit zwischen seinen angriffen um %s%"] = { false, false, { Stats.MeleeHaste, }, reduction = true } -- s1213356
 L["erhöht die angriffskraft um %s und alle %s sek. um zusätzlich %s. hält %s Sek. lang an"] = { { Stats.GenericAttackPower, }, false, { Stats.GenericAttackPower, }, false, ignoreSum = true } -- s1213366
-L["fügt gegnern in der nähe %s naturschaden zu, erhöht die zeit zwischen ihren angriffen um %s% und verringert ihre bewegungsgeschwindigkeit um %s%. hält %s Sek. lang an"] = { false, { Stats.MeleeHaste, }, false, false, } -- s1213464
+L["fügt gegnern in der nähe %s naturschaden zu, erhöht die zeit zwischen ihren angriffen um %s% und verringert ihre bewegungsgeschwindigkeit um %s%. hält %s Sek. lang an"] = { false, { Stats.MeleeHaste, }, false, false, reduction = true } -- s1213464
 L["erhöht durch zauber und magische effekte verursachten schaden und hervorgerufene heilung um bis zu %s"] = { { Stats.SpellPower, }, } -- s1213830
 L["erhöht %s Sek. lang die hervorgerufene heilung von zaubern und magischen effekten um bis zu %s gesundheit, den schaden von zaubern und magischen effekten um bis zu %s und die manaregeneration um %s mana pro %s sek. es kann immer nur der effekt von jeweils einem fläschchen aktiv sein. dieser effekt hält über den tod hinaus an"] = { false, { Stats.HealingPower, }, { Stats.SpellDamage, }, { Stats.GenericManaRegen, }, false, } -- s1213886
 L["erhöht %s Sek. lang die angriffskraft um %s. es kann immer nur der effekt von jeweils einem fläschchen aktiv sein. dieser effekt hält über den tod hinaus an"] = { false, { Stats.GenericAttackPower, }, } -- s1213897
@@ -1238,7 +1238,7 @@ L["frostschaden %s"] = { { Stats.FrostDamage, }, } -- e2615
 L["feuerschaden %s"] = { { Stats.FireDamage, }, } -- e2616
 L["heilung %s und %s mana alle %s sek"] = { { Stats.HealingPower, }, { Stats.GenericManaRegen, }, false, } -- e2715
 L["ausdauer %s und rüstung %s"] = { { Stats.Stamina, }, { Stats.Armor, }, } -- e2716
-L["angriffskraft %s und %s% kritische treffer"] = { { Stats.AttackPower, }, { Stats.MeleeCrit, Stats.RangedCrit, }, } -- e2717
+L["angriffskraft %s und %s% kritische treffer"] = { { Stats.AttackPower, Stats.RangedAttackPower, }, { Stats.MeleeCrit, Stats.RangedCrit, }, } -- e2717
 L["zauberschaden %s und %s% kritische zaubertreffer"] = { { Stats.SpellPower, }, { Stats.SpellCrit, }, } -- e2721
 L["%s ausweichen"] = { { Stats.DodgeRating, }, } -- e2815
 L["%s kritischer trefferwert"] = { { Stats.CritRating, }, } -- e2823
@@ -1271,41 +1271,41 @@ L["%s zaubermacht"] = { { Stats.SpellPower, }, } -- e7662
 L["%s% kritische trefferchance"] = { { Stats.MeleeCrit, Stats.RangedCrit, }, } -- e7664
 L["heilung %s und %s mana pro %s sek"] = { { Stats.HealingPower, }, { Stats.GenericManaRegen, }, false, } -- e7882
 L["zauberschaden %s und %s% kritischer trefferwert"] = { { Stats.SpellPower, }, { Stats.SpellCrit, Stats.MeleeCrit, Stats.RangedCrit, }, } -- e7883
-L["angriffskraft %s und %s% kritischer trefferwert"] = { { Stats.AttackPower, }, { Stats.MeleeCrit, Stats.RangedCrit, Stats.SpellCrit, }, } -- e7884
+L["angriffskraft %s und %s% kritischer trefferwert"] = { { Stats.AttackPower, Stats.RangedAttackPower, }, { Stats.MeleeCrit, Stats.RangedCrit, Stats.SpellCrit, }, } -- e7884
 L["ausdauer %s und verteidigung %s"] = { { Stats.Stamina, }, { Stats.Defense, }, } -- e7885
 L["poultry precision scope (%s damage)"] = { { Stats.AverageWeaponDamage, }, } -- e7944
 L["erhöht eure nahkampftempowertung %s Sek. lang um %s"] = { false, { Stats.MeleeHasteRating, Stats.RangedHasteRating, Stats.SpellHasteRating, }, } -- s65
-L["verkrüppelt das ziel und verringert dessen bewegungstempo um %s und erhöht die zeit zwischen nahkampf- und distanzangriffen um %s%. hält %s Sek. lang an"] = { false, { Stats.MeleeHaste, Stats.RangedHaste, }, false, } -- s89
-L["der druide brüllt und verringert damit die nahkampfangriffskraft von in der nähe befindlichen feinden um %s. hält %s Sek. lang an"] = { { Stats.AttackPower, }, false, } -- s99
+L["verkrüppelt das ziel und verringert dessen bewegungstempo um %s und erhöht die zeit zwischen nahkampf- und distanzangriffen um %s%. hält %s Sek. lang an"] = { false, { Stats.MeleeHaste, Stats.RangedHaste, }, false, reduction = true } -- s89
+L["der druide brüllt und verringert damit die nahkampfangriffskraft von in der nähe befindlichen feinden um %s. hält %s Sek. lang an"] = { { Stats.AttackPower, }, false, reduction = true } -- s99
 L["der zaubernde wird von einem schub heiliger energie erfüllt, der seine rüstung um %s erhöht. ein erlittener nahkampf- oder distanzangriffstreffer verbraucht eine aufladung. hält %s Sek. lang an oder bis alle %s aufladungen verbraucht sind"] = { { Stats.Armor, }, false, false, } -- s588
-L["schützt den paladin %s Sek. lang vor allen schäden und zaubern, erhöht jedoch die zeit zwischen seinen angriffen um %s%. einmal geschützt, kann der paladin %s Sek. lang nicht erneut durch gottesschild, göttlicher schutz oder segen des schutzes unverwundbar gemacht werden oder zornige vergeltung nutzen"] = { false, { Stats.MeleeHaste, }, false, } -- s642
+L["schützt den paladin %s Sek. lang vor allen schäden und zaubern, erhöht jedoch die zeit zwischen seinen angriffen um %s%. einmal geschützt, kann der paladin %s Sek. lang nicht erneut durch gottesschild, göttlicher schutz oder segen des schutzes unverwundbar gemacht werden oder zornige vergeltung nutzen"] = { false, { Stats.MeleeHaste, }, false, reduction = true } -- s642
 L["erhöht die rüstung %s Sek. lang um %s. wächterelixier"] = { false, { Stats.Armor, }, } -- s673
 L["schützt den zaubernden, indem es %s Sek. lang die rüstung um %s erhöht und %s gesundheit alle %s sek. wiederherstellt"] = { false, { Stats.Armor, }, { Stats.HealthRegen, }, false, } -- s687
 L["erhöht die stärke %s Sek. lang um %s. kampfelixier"] = { false, { Stats.Strength, }, } -- s2367
 L["schützt den zaubernden, indem es %s Sek. lang die rüstung um %s erhöht und alle %s sek. %s gesundheit wiederherstellt"] = { false, { Stats.Armor, }, false, { Stats.HealthRegen, }, } -- s696
-L["die nahkampfangriffskraft des ziels wird %s Sek. lang um %s reduziert. es kann immer nur jeweils ein fluch pro hexenmeister auf einem beliebigen ziel aktiv sein"] = { false, { Stats.AttackPower, }, } -- s702
+L["die nahkampfangriffskraft des ziels wird %s Sek. lang um %s reduziert. es kann immer nur jeweils ein fluch pro hexenmeister auf einem beliebigen ziel aktiv sein"] = { false, { Stats.AttackPower, }, reduction = true } -- s702
 L["schützt den zaubernden und erhöht die rüstung um %s, den schattenwiderstand um %s und stellt alle %s sek. %s gesundheit wieder her. es kann immer nur ein rüstungszauber zur selben zeit auf dem hexenmeister aktiv sein. hält %s Sek. an"] = { { Stats.Armor, }, { Stats.ShadowResistance, }, false, { Stats.HealthRegen, }, false, } -- s706
 L["erhöht stärke um %s und fügt euch %s Sek. lang alle %s sek. %s schaden zu"] = { { Stats.Strength, }, false, false, false, } -- s806
 L["alle widerstände um %s erhöht"] = { { Stats.FireResistance, Stats.NatureResistance, Stats.FrostResistance, Stats.ShadowResistance, Stats.ArcaneResistance, }, } -- s822
 L["heilt sofort %s schaden. stellt im verlauf von %s Sek. insgesamt %s mana wieder her. ihr müsst beim trinken sitzen bleiben"] = { false, false, { Stats.GenericManaRegen, }, } -- s833
-L["verflucht das ziel mit torheit, verringert intelligenz und willenskraft alle %s sek. um %s, bis beides um insgesamt %s verringert worden ist. es kann immer nur jeweils ein fluch pro hexenmeister auf einem beliebigen ziel aktiv sein"] = { false, { Stats.Intellect, Stats.Spirit, }, { Stats.Intellect, }, } -- s1010
-L["versklavt den zieldämon bis zur stufe %s und zwingt ihn, euren befehlen folge zu leisten. während er versklavt ist, wird die zeit zwischen angriffen des dämons um %s% erhöht und sein zaubertempo um %s% verlangsamt. hält bis zu %s Sek. lang an. wenn ihr denselben dämon mehrmals versklavt, wird es mit jedem versuch schwieriger, ihn zu kontrollieren"] = { false, { Stats.MeleeHaste, }, { Stats.SpellHaste, }, false, } -- s1098
+L["verflucht das ziel mit torheit, verringert intelligenz und willenskraft alle %s sek. um %s, bis beides um insgesamt %s verringert worden ist. es kann immer nur jeweils ein fluch pro hexenmeister auf einem beliebigen ziel aktiv sein"] = { false, { Stats.Intellect, Stats.Spirit, }, { Stats.Intellect, }, reduction = true } -- s1010
+L["versklavt den zieldämon bis zur stufe %s und zwingt ihn, euren befehlen folge zu leisten. während er versklavt ist, wird die zeit zwischen angriffen des dämons um %s% erhöht und sein zaubertempo um %s% verlangsamt. hält bis zu %s Sek. lang an. wenn ihr denselben dämon mehrmals versklavt, wird es mit jedem versuch schwieriger, ihn zu kontrollieren"] = { false, { Stats.MeleeHaste, }, { Stats.SpellHaste, }, false, reduction = true } -- s1098
 L["erhöht %s Sek. lang die rüstung des befreundeten ziels um %s"] = { false, { Stats.Armor, }, } -- s1126
-L["verflucht das ziel und verringert %s Sek. lang seinen arkan-, feuer-, frost- und schattenwiderstand um %s. erhöht außerdem den erlittenen arkan-, feuer-, frost- und schattenschaden des ziels um %s%. es kann immer nur jeweils ein fluch pro hexenmeister auf einem beliebigen ziel aktiv sein"] = { false, { Stats.FireResistance, Stats.FrostResistance, Stats.ShadowResistance, Stats.ArcaneResistance, }, false, } -- s1490
+L["verflucht das ziel und verringert %s Sek. lang seinen arkan-, feuer-, frost- und schattenwiderstand um %s. erhöht außerdem den erlittenen arkan-, feuer-, frost- und schattenschaden des ziels um %s%. es kann immer nur jeweils ein fluch pro hexenmeister auf einem beliebigen ziel aktiv sein"] = { false, { Stats.FireResistance, Stats.FrostResistance, Stats.ShadowResistance, Stats.ArcaneResistance, }, false, reduction = true } -- s1490
 L["der krieger lässt einen wilden schlachtruf ertönen, der bei allen gruppenmitgliedern in einem umkreis von %s metern die nahkampfangriffskraft um %s erhöht. hält %s Sek. lang an"] = { false, { Stats.AttackPower, }, false, } -- s2048
 L["erhöht die beweglichkeit %s Sek. lang um %s. kampfelixier"] = { false, { Stats.Agility, }, } -- s2374
 L["erhöht die intelligenz %s Sek. lang um %s. wächterelixier"] = { false, { Stats.Intellect, }, } -- s2376
 L["erhöht die maximale gesundheit des spielers %s Sek. lang um %s. wächterelixier"] = { false, { Stats.Health, }, } -- s2378
 L["stellt %s Sek. lang %s gesundheit und %s mana wieder her. ihr müsst beim essen sitzen bleiben"] = { false, false, { Stats.GenericManaRegen, }, } -- s2639
 L["erhöht den vom zaubernden verursachten körperlichen schaden %s Sek. lang um %s"] = { false, { Stats.AverageWeaponDamage, }, } -- s3019
-L["sticht das ziel und verringert %s Sek. lang dessen trefferchance mit nahkampf- und distanzangriffen um %s%. es kann immer nur jeweils ein biss oder stich pro jäger auf einem beliebigen ziel aktiv sein"] = { false, { Stats.MeleeHit, Stats.RangedHit, }, } -- s3043
+L["sticht das ziel und verringert %s Sek. lang dessen trefferchance mit nahkampf- und distanzangriffen um %s%. es kann immer nur jeweils ein biss oder stich pro jäger auf einem beliebigen ziel aktiv sein"] = { false, { Stats.MeleeHit, Stats.RangedHit, }, reduction = true } -- s3043
 L["erhöht distanzangriffstempo %s Sek. lang um %s%"] = { false, { Stats.RangedHaste, }, } -- s3045
-L["verringert %s Sek. lang die stärke von in der nähe befindlichen feinden um %s und die beweglichkeit um %s"] = { false, { Stats.Strength, }, { Stats.Agility, }, } -- s3146
-L["verringert die gesundheitsregenerationsrate eines feindes um %s% zusätzlich zur verringerung seiner stärke um %s und seiner beweglichkeit um %s. hält %s Sek. lang an"] = { false, { Stats.Strength, }, { Stats.Agility, }, false, } -- s3150
+L["verringert %s Sek. lang die stärke von in der nähe befindlichen feinden um %s und die beweglichkeit um %s"] = { false, { Stats.Strength, }, { Stats.Agility, }, reduction = true } -- s3146
+L["verringert die gesundheitsregenerationsrate eines feindes um %s% zusätzlich zur verringerung seiner stärke um %s und seiner beweglichkeit um %s. hält %s Sek. lang an"] = { false, { Stats.Strength, }, { Stats.Agility, }, false, reduction = true } -- s3150
 L["%s Sek. lang alle %s sekunden %s gesundheit regenerieren. wächterelixier"] = { false, false, { Stats.HealthRegen, }, } -- s3219
-L["verbrennt einen feind für %s schaden und verringert dessen feuerwiderstand %s Sek. lang um %s"] = { false, false, { Stats.FireResistance, }, } -- s3356
+L["verbrennt einen feind für %s schaden und verringert dessen feuerwiderstand %s Sek. lang um %s"] = { false, false, { Stats.FireResistance, }, reduction = true } -- s3356
 L["erhöht den vom zaubernden zugefügten körperlichen schaden %s Sek. lang um %s und sein bewegungstempo um %s%"] = { false, { Stats.AverageWeaponDamage, }, false, } -- s3385
-L["verringert die rüstung eines gegners %s Sek. lang um %s und fügt alle %s sek. %s naturschaden zu"] = { false, { Stats.Armor, }, false, false, } -- s3396
+L["verringert die rüstung eines gegners %s Sek. lang um %s und fügt alle %s sek. %s naturschaden zu"] = { false, { Stats.Armor, }, false, false, reduction = true } -- s3396
 L["erhöht %s Sek. lang das angriffstempo des zaubernden um %s%, verringert aber den von ihm zugefügten körperlichen schaden um %s"] = { false, { Stats.MeleeHaste, }, { Stats.AverageWeaponDamage, }, } -- s3490
 L["lässt den zaubernden %s Sek. lang in eine irrsinnige raserei verfallen. erhöht das angriffstempo des zaubernden um %s%, verlangsamt aber seine bewegungstempo um %s% und verringert den von ihm zugefügten körperlichen schaden um %s"] = { false, { Stats.MeleeHaste, }, false, { Stats.AverageWeaponDamage, }, } -- s3547
 L["gibt gruppenmitgliedern in einem umkreis von %s metern %s Sek. lang %s stärke und %s beweglichkeit"] = { false, false, { Stats.Strength, }, { Stats.Agility, }, } -- s4147
@@ -1315,13 +1315,13 @@ L["erhöht %s Sek. lang die maximale gesundheit) von verbündeten in eurer grupp
 L["beschleunigt die angriffe des zaubernden um %s% und seine bewegung %s Sek. lang um %s%, fügt dem zaubernden aber auch alle %s sek. %s schattenschaden zu"] = { { Stats.MeleeHaste, }, false, false, false, false, } -- s4514
 L["stellt im verlauf von %s Sek. %s gesundheit wieder her. ihr müsst beim essen sitzen bleiben. wenn ihr mindestens %s sekunden lang mit essen verbringt, werdet ihr satt und erhaltet %s Sek. lang %s ausdauer und willenskraft"] = { false, false, false, false, { Stats.Stamina, }, ignoreSum = true } -- s5004
 L["erhöht das bewegungstempo des zaubernden %s Sek. lang um %s%, und lässt ihn bei seinem ersten angriff zusätzlich %s schaden zufügen"] = { false, false, { Stats.AverageWeaponDamage, }, } -- s6268
-L["dröhnt in der nähe befindliche feinde mit donner zu, erhöht die zeit zwischen ihren angriffen %s Sek. lang um %s% und fügt ihnen %s schaden zu. diese fähigkeit verursacht zusätzliche bedrohung und wirkt auf maximal %s ziele"] = { false, { Stats.MeleeHaste, }, false, false, } -- s6343
+L["dröhnt in der nähe befindliche feinde mit donner zu, erhöht die zeit zwischen ihren angriffen %s Sek. lang um %s% und fügt ihnen %s schaden zu. diese fähigkeit verursacht zusätzliche bedrohung und wirkt auf maximal %s ziele"] = { false, { Stats.MeleeHaste, }, false, false, reduction = true } -- s6343
 L["erhöht den von in der nähe befindlichen gruppenmitgliedern zugefügten körperlichen schaden %s Sek. lang um %s"] = { false, { Stats.AverageWeaponDamage, }, } -- s6507
 L["erhöht eure trefferchance und die aller gruppenmitglieder im umkreis von %s metern um %s%"] = { false, { Stats.SpellHit, Stats.MeleeHit, Stats.RangedHit, }, } -- s28878
 L["erhöht %s Sek. lang den vom zaubernden zugefügten körperlichen schaden um %s und sein bewegungstempo um %s%. verflucht den feind außerdem beim ersten erfolgreichen treffer und verringert den von ihm zugefügten körperlichen schaden um %s, den von ihm zugefügten magieschaden um %s und erhöht den von ihm erlittenen körperlichen schaden %s Sek. lang um %s"] = { false, { Stats.AverageWeaponDamage, }, false, { Stats.AverageWeaponDamage, }, { Stats.SpellDamage, }, false, false, } -- s6921
 L["erhöht den von in der nähe befindlichen gruppenmitgliedern zugefügten körperlichen schaden um %s. spieler können pro paladin immer nur jeweils eine aura besitzen. die aura hält an, bis die aktion abgebrochen wird"] = { { Stats.AverageWeaponDamage, }, } -- s7069
 L["stürmt auf einen gegner zu, erhöht dabei das tempo und verursacht beim ersten angriff einen zusätzlichen schaden von %s"] = { { Stats.AverageWeaponDamage, }, } -- s7137
-L["zerreißt die rüstung des ziels, verringert sie um %s pro einsatz von 'rüstung zerreißen' und verursacht ein hohes maß an bedrohung. kann bis zu %s-mal angewendet werden. hält %s Sek. lang an"] = { { Stats.Armor, }, false, false, } -- s7386
+L["zerreißt die rüstung des ziels, verringert sie um %s pro einsatz von 'rüstung zerreißen' und verursacht ein hohes maß an bedrohung. kann bis zu %s-mal angewendet werden. hält %s Sek. lang an"] = { { Stats.Armor, }, false, false, reduction = true } -- s7386
 L["erhöht verteidigungswertung um %s"] = { { Stats.DefenseRating, }, } -- s7511
 L["erhöht eure kritische trefferwertung um %s"] = { { Stats.MeleeCritRating, Stats.RangedCritRating, Stats.SpellCritRating, }, } -- s7597
 L["erhöht die schadenswirkung von feuerzaubern %s Sek. lang um bis zu %s. kampfelixier"] = { false, { Stats.FireDamage, }, } -- s7844
@@ -1331,8 +1331,8 @@ L["finishing-move, der eine schwachstelle in der rüstung des ziels ausfindig ma
 L["erhöht eure kritische distanztrefferwertung um %s"] = { { Stats.RangedCritRating, }, } -- s9132
 L["macht den zaubernden bewegungsunfähig und erhöht den ihm zugefügten körperlichen schaden %s Sek. lang um %s"] = { false, { Stats.AverageWeaponDamage, }, } -- s9576
 L["erfüllt das ziel mit macht, erhöht das zaubertempo um %s% und senkt die manakosten jeglicher zauber um %s%. hält %s Sek. lang an"] = { { Stats.SpellHaste, }, false, false, } -- s10060
-L["opfert das leben des zaubernden, um die ausdauer von in der nähe befindlichen feinden %s Sek. lang um %s zu verringern"] = { false, { Stats.Stamina, }, } -- s10251
-L["verringert die angriffskraft aller gruppenmitglieder in einem umkreis von %s metern um %s. spieler können pro paladin immer nur jeweils eine aura besitzen"] = { false, { Stats.AttackPower, }, } -- s10270
+L["opfert das leben des zaubernden, um die ausdauer von in der nähe befindlichen feinden %s Sek. lang um %s zu verringern"] = { false, { Stats.Stamina, }, reduction = true } -- s10251
+L["verringert die angriffskraft aller gruppenmitglieder in einem umkreis von %s metern um %s. spieler können pro paladin immer nur jeweils eine aura besitzen"] = { false, { Stats.AttackPower, }, reduction = true } -- s10270
 L["erhöht %s Sek. lang die verteidigungswertung um %s"] = { false, { Stats.DefenseRating, }, } -- s10351
 L["erhöht %s Sek. lang den dem ziel durch körperliche angriffe zugefügten schaden um %s. bis zu %s-mal stapelbar"] = { false, { Stats.AverageWeaponDamage, }, false, } -- s10370
 L["erhöht nach verzehr stärke um %s. effekt hält %s minuten lang an. kampfelixier"] = { { Stats.Strength, }, false, } -- s10667
@@ -1350,22 +1350,22 @@ L["erhöht den schattenwiderstand um %s. wenn ein feind den benutzer trifft, bes
 L["erhöht die schadenswirkung von zaubern %s Sek. lang um %s. kampfelixier"] = { false, { Stats.SpellDamage, }, } -- s11390
 L["erhöht eure stärke %s Sek. lang um %s. kampfelixier"] = { false, { Stats.Strength, }, } -- s11405
 L["erhöht die schadenswirkung von schattenzaubern %s Sek. lang um bis zu %s. kampfelixier"] = { false, { Stats.ShadowDamage, }, } -- s11474
-L["schlägt einen feind mit der wut von sul'thraze. verringert die stärke des ziels um %s und fügt %s schattenschaden sowie insgesamt %s zusätzlichen schaden im verlauf von %s Sek. zu"] = { { Stats.Strength, }, false, false, false, } -- s11658
-L["verringert %s Sek. lang die stärke von in der nähe befindlichen feinden um %s und die ausdauer um %s"] = { false, { Stats.Strength, }, { Stats.Stamina, }, } -- s11892
+L["schlägt einen feind mit der wut von sul'thraze. verringert die stärke des ziels um %s und fügt %s schattenschaden sowie insgesamt %s zusätzlichen schaden im verlauf von %s Sek. zu"] = { { Stats.Strength, }, false, false, false, reduction = true } -- s11658
+L["verringert %s Sek. lang die stärke von in der nähe befindlichen feinden um %s und die ausdauer um %s"] = { false, { Stats.Strength, }, { Stats.Stamina, }, reduction = true } -- s11892
 L["hackt nach der rüstung des feindes und verringert sie um %s pro einsatz von 'rüstung zerreißen'. kann bis zu %s-mal angewendet werden. hält %s Sek. lang an"] = { { Stats.Armor, }, false, false, } -- s11971
-L["verringert den von einem feind zugefügten körperlichen schaden %s Sek. lang um %s. es kann immer nur jeweils ein fluch pro hexenmeister auf einem beliebigen ziel aktiv sein"] = { false, { Stats.AverageWeaponDamage, }, } -- s11980
-L["verursacht %s naturschaden bei in der nähe befindlichen feinden und verringert ihre trefferchance um %s%. hält %s Sek. lang an"] = { false, { Stats.MeleeHit, Stats.RangedHit, }, false, } -- s11983
+L["verringert den von einem feind zugefügten körperlichen schaden %s Sek. lang um %s. es kann immer nur jeweils ein fluch pro hexenmeister auf einem beliebigen ziel aktiv sein"] = { false, { Stats.AverageWeaponDamage, }, reduction = true } -- s11980
+L["verursacht %s naturschaden bei in der nähe befindlichen feinden und verringert ihre trefferchance um %s%. hält %s Sek. lang an"] = { false, { Stats.MeleeHit, Stats.RangedHit, }, false, reduction = true } -- s11983
 L["erhöht euer angriffstempo für die nächsten %s waffenschwünge um %s%, nachdem ihr einen kritischen nahkampftreffer zugefügt habt"] = { false, { Stats.MeleeHaste, }, ignoreSum = true } -- s12319
 L["beschleunigt euer wirken von zaubern, erhöht das zaubertempo um %s% und verleiht euch eine chance von %s%, durch schaden verursachte unterbrechungen beim wirken von zaubern zu vermeiden. hält %s Sek. lang an"] = { { Stats.SpellHaste, }, false, false, } -- s12472
 L["erhöht %s Sek. lang den zugefügten schaden um %s und die angriffstempowertung um %s"] = { false, { Stats.AverageWeaponDamage, }, { Stats.MeleeHasteRating, Stats.RangedHasteRating, }, } -- s12686
 L["erhöht eure chance, mit äxten und stangenwaffe einen kritischen treffer zu erzielen, um %s%"] = { { Stats.MeleeCrit, Stats.RangedCrit, }, } -- s12700
 L["erhöht die rüstung um %s, alle widerstände um %s und gewährt %s Sek. lang immunität gegenüber furcht. es besteht die chance, dass dem effekt widerstanden wird, wenn der zaubernde über stufe %s ist"] = { { Stats.Armor, }, { Stats.FireResistance, Stats.NatureResistance, Stats.FrostResistance, Stats.ShadowResistance, Stats.ArcaneResistance, }, false, false, } -- s12733
-L["verringert den von in der nähe befindlichen feinden zugefügten körperlichen schaden %s Sek. lang um %s. es kann immer nur jeweils ein fluch pro hexenmeister auf einem beliebigen ziel aktiv sein"] = { false, { Stats.AverageWeaponDamage, }, } -- s12741
-L["verringert %s Sek. lang die stärke von in der nähe befindlichen feinden um %s sowie die beweglichkeit um %s und hindert sie daran, zauber zu wirken"] = { false, { Stats.Strength, }, { Stats.Agility, }, } -- s12946
+L["verringert den von in der nähe befindlichen feinden zugefügten körperlichen schaden %s Sek. lang um %s. es kann immer nur jeweils ein fluch pro hexenmeister auf einem beliebigen ziel aktiv sein"] = { false, { Stats.AverageWeaponDamage, }, reduction = true } -- s12741
+L["verringert %s Sek. lang die stärke von in der nähe befindlichen feinden um %s sowie die beweglichkeit um %s und hindert sie daran, zauber zu wirken"] = { false, { Stats.Strength, }, { Stats.Agility, }, reduction = true } -- s12946
 L["verbessert verteidigungswertung um %s, schattenwiderstand um %s sowie eure normale gesundheitsregeneration um %s"] = { { Stats.DefenseRating, }, { Stats.ShadowResistance, }, { Stats.HealthRegen, }, } -- s12956
 L["erhöht eure angriffstempowertung %s Sek. lang um %s"] = { false, { Stats.MeleeHasteRating, Stats.RangedHasteRating, }, } -- s13494
-L["ätzende säure, die alle %s sekunden %s naturschaden zufügt und %s Sek. lang die rüstung des ziels um %s verringert"] = { false, false, false, { Stats.Armor, }, } -- s13526
-L["dröhnt in der nähe befindliche feinde mit donner zu, erhöht die zeit zwischen ihren angriffen %s Sek. lang um %s% und fügt ihnen %s naturschaden zu. diese fähigkeit wirkt auf maximal %s ziele"] = { false, { Stats.MeleeHaste, }, false, false, } -- s13532
+L["ätzende säure, die alle %s sekunden %s naturschaden zufügt und %s Sek. lang die rüstung des ziels um %s verringert"] = { false, false, false, { Stats.Armor, }, reduction = true } -- s13526
+L["dröhnt in der nähe befindliche feinde mit donner zu, erhöht die zeit zwischen ihren angriffen %s Sek. lang um %s% und fügt ihnen %s naturschaden zu. diese fähigkeit wirkt auf maximal %s ziele"] = { false, { Stats.MeleeHaste, }, false, false, reduction = true } -- s13532
 L["erhöht eure parierwertung um %s"] = { { Stats.ParryRating, }, } -- s13665
 L["erhöht eure ausweichwertung um %s"] = { { Stats.DodgeRating, }, } -- s13669
 L["erhöht eure blockwertung um %s"] = { { Stats.BlockRating, }, } -- s13674
@@ -1375,8 +1375,8 @@ L["erhöht den vom zaubernden zugefügten schaden %s Sek. lang um %s"] = { false
 L["erhöht das angriffstempo des zaubernden um %s% und den von ihm zugefügten körperlichen schaden %s Sek. lang um %s"] = { { Stats.MeleeHaste, }, false, { Stats.AverageWeaponDamage, }, } -- s14872
 L["erhöht %s Sek. lang die willenskraft des ziels um %s. wächterelixier"] = { false, { Stats.Spirit, }, } -- s15231
 L["erhöht %s Sek. lang die rüstung des ziels um %s. wächterelixier"] = { false, { Stats.Armor, }, } -- s15233
-L["verringert die rüstung eines feindlichen ziels für %s Sek. um %s"] = { false, { Stats.Armor, }, } -- s15235
-L["reduziert die rüstung des ziels %s Sek. lang um %s"] = { false, { Stats.Armor, }, } -- s15280
+L["verringert die rüstung eines feindlichen ziels für %s Sek. um %s"] = { false, { Stats.Armor, }, reduction = true } -- s15235
+L["reduziert die rüstung des ziels %s Sek. lang um %s"] = { false, { Stats.Armor, }, reduction = true } -- s15280
 L["erhöht den von einem verbündeten zugefügten magieschaden %s Sek. lang um %s"] = { false, { Stats.SpellDamage, }, } -- s15288
 L["erhöht %s Sek. lang die kritische trefferwertung und kritische zaubertrefferwertung um %s und alle attribute um %s"] = { false, { Stats.MeleeCritRating, Stats.RangedCritRating, Stats.SpellCritRating, }, { Stats.AllStats, }, } -- s15366
 L["erhöht eure trefferwertung um %s"] = { { Stats.MeleeHitRating, Stats.RangedHitRating, Stats.SpellHitRating, }, } -- s15464
@@ -1389,14 +1389,14 @@ L["erhöht %s Sek. lang eure angriffskraft um %s. kampfelixier"] = { false, { St
 L["erhöht die rüstung %s Sek. lang um %s. für die dauer des zaubers kann jedoch weder gezaubert noch angegriffen werden"] = { false, { Stats.Armor, }, } -- s16470
 L["erhöht den von einem verbündeten zugefügten schattenschaden %s Sek. lang um %s"] = { false, { Stats.ShadowDamage, }, } -- s16587
 L["erhöht den vom zaubernden zugefügten körperlichen schaden um %s und macht seine angriffe %s Sek. lang um %s% schneller"] = { { Stats.AverageWeaponDamage, }, false, { Stats.MeleeHaste, }, } -- s16789
-L["der feind wird vom kahlholzfluch getroffen, der seinen magiewiderstand um %s verringert. kann bis zu %s-mal angewendet werden"] = { { Stats.FireResistance, Stats.NatureResistance, Stats.FrostResistance, Stats.ShadowResistance, Stats.ArcaneResistance, }, false, } -- s16871
+L["der feind wird vom kahlholzfluch getroffen, der seinen magiewiderstand um %s verringert. kann bis zu %s-mal angewendet werden"] = { { Stats.FireResistance, Stats.NatureResistance, Stats.FrostResistance, Stats.ShadowResistance, Stats.ArcaneResistance, }, false, reduction = true } -- s16871
 L["%s Sek. lang alle %s sekunden %s gesundheit regenerieren"] = { false, false, { Stats.HealthRegen, }, } -- s16890
 L["sich selbst um %s heilen und stärke %s Sek. lang um %s erhöhen"] = { false, false, { Stats.Strength, }, } -- s16916
 L["gruppenmitglieder haben eine chance auf um %s erhöhte kritische trefferwertung. hält %s Sek. lang an"] = { { Stats.MeleeCritRating, Stats.RangedCritRating, Stats.SpellCritRating, }, false, } -- s16939
 L["erhöht %s Sek. lang eure angriffskraft um %s sowie auch eure größe. kampfelixier"] = { false, { Stats.GenericAttackPower, }, } -- s17038
-L["verwundet das ziel und fügt %s schaden zu, verringert die intelligenz des ziels %s Sek. lang um %s"] = { false, false, { Stats.Intellect, }, } -- s17148
+L["verwundet das ziel und fügt %s schaden zu, verringert die intelligenz des ziels %s Sek. lang um %s"] = { false, false, { Stats.Intellect, }, reduction = true } -- s17148
 L["fügt bei einem treffer angreifern %s naturschaden zu und erhöht %s Sek. lang naturwiderstand um %s"] = { false, false, { Stats.NatureResistance, }, } -- s17154
-L["verringert alle werte um %s und fügt jedem feind in einem umkreis von %s metern um den zaubernden %s Sek. lang alle %s sek. %s naturschaden zu"] = { { Stats.AllStats, }, false, false, false, false, } -- s17196
+L["verringert alle werte um %s und fügt jedem feind in einem umkreis von %s metern um den zaubernden %s Sek. lang alle %s sek. %s naturschaden zu"] = { { Stats.AllStats, }, false, false, false, false, reduction = true } -- s17196
 L["blockwertung um %s erhöht"] = { { Stats.BlockRating, }, } -- s17351
 L["erhöht intelligenz und willenskraft %s Sek. lang um %s. wächterelixier"] = { false, { Stats.Intellect, Stats.Spirit, }, } -- s17535
 L["erhöht stärke und ausdauer %s Sek. lang um %s. kampfelixier"] = { false, { Stats.Strength, Stats.Stamina, }, } -- s17537
@@ -1405,8 +1405,8 @@ L["erhöht die maximale gesundheit des spielers %s Sek. lang um %s. gilt sowohl 
 L["erhöht die intelligenz %s Sek. lang um %s. gilt sowohl als kampfelixier als auch als wächterelixier. dieser effekt hält über den tod hinaus an"] = { false, { Stats.Intellect, }, } -- s17627
 L["erhöht die schadenswirkung von zaubern und magischen effekten %s Sek. lang um bis zu %s. gilt sowohl als kampfelixier als auch als wächterelixier. dieser effekt hält über den tod hinaus an"] = { false, { Stats.SpellDamage, }, } -- s17628
 L["erhöht den widerstand gegen alle arten von magie %s Sek. lang um %s. gilt sowohl als kampfelixier als auch als wächterelixier. dieser effekt hält über den tod hinaus an"] = { false, { Stats.FireResistance, Stats.NatureResistance, Stats.FrostResistance, Stats.ShadowResistance, Stats.ArcaneResistance, }, } -- s17629
-L["verringert die chance eines feindes zu treffen %s Sek. lang um %s%. es besteht die chance, dass der effekt gegen ziele über stufe %s nicht wirkt"] = { false, { Stats.MeleeHit, Stats.RangedHit, }, false, } -- s17639
-L["hackt auf die rüstung des feindes und seiner nächsten verbündeten ein. wirkt sich auf bis zu %s ziele aus. die rüstung des ziels wird um %s pro einsatz von 'rüstung zerreißen' verringert. kann bis zu %s-mal angewendet werden. hält %s Sek. lang an"] = { false, { Stats.Armor, }, false, false, } -- s17963
+L["verringert die chance eines feindes zu treffen %s Sek. lang um %s%. es besteht die chance, dass der effekt gegen ziele über stufe %s nicht wirkt"] = { false, { Stats.MeleeHit, Stats.RangedHit, }, false, reduction = true } -- s17639
+L["hackt auf die rüstung des feindes und seiner nächsten verbündeten ein. wirkt sich auf bis zu %s ziele aus. die rüstung des ziels wird um %s pro einsatz von 'rüstung zerreißen' verringert. kann bis zu %s-mal angewendet werden. hält %s Sek. lang an"] = { false, { Stats.Armor, }, false, false, reduction = true } -- s17963
 L["bei erlittenem treffer im gefecht besteht eine chance von %s%, einen dornenschild aufzubauen, der angreifern beim treffer %s naturschaden zufügt und den naturwiderstand %s Sek. lang um %s erhöht"] = { false, false, false, { Stats.NatureResistance, }, ignoreSum = true } -- s18097
 L["stellt im verlauf von %s Sek. insgesamt %s mana wieder her. ihr müsst beim trinken sitzen bleiben. erhöht zusätzlich %s Sek. lang eure willenskraft um %s"] = { false, { Stats.GenericManaRegen, }, false, { Stats.Spirit, }, } -- s18140
 L["stellt im verlauf von %s Sek. %s gesundheit wieder her. ihr müsst beim essen sitzen bleiben. wenn ihr %s sekunden lang esst, wird außerdem eure beweglichkeit %s Sek. lang um %s erhöht"] = { false, false, false, false, { Stats.Agility, }, ignoreSum = true } -- s18230
@@ -1427,19 +1427,19 @@ L["erhöht die angriffskraft um %s, verringert aber die effektivität von auf eu
 L["eure chance, mit schusswaffen einen kritischen treffer zu erzielen, wird um %s% erhöht"] = { { Stats.MeleeCrit, Stats.RangedCrit, }, } -- s20595
 L["heilt einen verbündeten %s Sek. lang alle %s sek. um %s schaden und erhöht seine rüstung um %s"] = { false, false, false, { Stats.Armor, }, } -- s20655
 L["bei einem treffer im kampf besteht eine chance von %s%, die rüstung aller gruppenmitglieder %s Sek. lang um %s zu erhöhen"] = { false, false, { Stats.Armor, }, ignoreSum = true } -- s20847
-L["versklavt den zieldämon bis zur stufe %s und zwingt ihn, euren befehlen folge zu leisten. während er versklavt ist, wird die zeit zwischen angriffen des dämons um %s% erhöht  und sein zaubertempo um %s% verlangsamt. hält bis zu %s Sek. lang an"] = { false, { Stats.MeleeHaste, }, { Stats.SpellHaste, }, false, } -- s20882
+L["versklavt den zieldämon bis zur stufe %s und zwingt ihn, euren befehlen folge zu leisten. während er versklavt ist, wird die zeit zwischen angriffen des dämons um %s% erhöht  und sein zaubertempo um %s% verlangsamt. hält bis zu %s Sek. lang an"] = { false, { Stats.MeleeHaste, }, { Stats.SpellHaste, }, false, reduction = true } -- s20882
 L["erhöht die blockchance %s Sek. lang um %s% und fügt, solange aktiv, für jeden geblockten angriff %s heiligschaden zu. der durch 'heiliger schild' verursachte schaden erzeugt %s% zusätzliche bedrohung. jedes blocken verbraucht eine der %s aufladungen"] = { false, { Stats.BlockChance, }, false, false, false, } -- s20925
 L["erhöht die distanzangriffskraft um %s"] = { { Stats.RangedAttackPower, }, } -- s21013
 L["auf die rüstung eines feindes einschlagen und sie um %s pro einsatz von 'rüstung zerschmettern' verringern. kann bis zu %s-mal angewendet werden. hält %s Sek. lang an"] = { { Stats.Armor, }, false, false, } -- s21055
-L["überzieht in der nähe befindliche feinde mit eis und fügt %s schaden zu, verlangsamt ihr angriffstempo um %s% und ihr bewegungstempo um %s%"] = { false, { Stats.MeleeHaste, }, false, } -- s21098
-L["schleudert einen schattenblitz auf den feind, verursacht %s schattenschaden und verringert für %s Sek. alle werte um %s"] = { false, false, { Stats.AllStats, }, } -- s21151
+L["überzieht in der nähe befindliche feinde mit eis und fügt %s schaden zu, verlangsamt ihr angriffstempo um %s% und ihr bewegungstempo um %s%"] = { false, { Stats.MeleeHaste, }, false, reduction = true } -- s21098
+L["schleudert einen schattenblitz auf den feind, verursacht %s schattenschaden und verringert für %s Sek. alle werte um %s"] = { false, false, { Stats.AllStats, }, reduction = true } -- s21151
 L["eure angriffe ignorieren %s Sek. lang %s rüstung eures gegners. bis zu %s-mal stapelbar"] = { false, { Stats.ArmorPenetration, }, false, } -- s21153
 L["stellt %s gesundheit und %s mana pro sekunde wieder her, wenn ihr euch in der nähe eures kommandanten befindet"] = { { Stats.HealthRegen, }, false, } -- s21172
 L["regeneriert pro sekunde %s gesundheitspunkte und %s manapunkte, solange ihr euch in reichweite eines leutnants befindet"] = { { Stats.HealthRegen, }, false, } -- s21174
 L["erhöht eure kritische zaubertrefferwertung mit naturzaubern um %s"] = { { Stats.SpellCritRating, }, } -- s21870
 L["erhöht die schadenswirkung von frostzaubern %s Sek. lang um bis zu %s. kampfelixier"] = { false, { Stats.FrostDamage, }, } -- s21920
 L["erhöht die angriffskraft eures begleiters um %s"] = { { Stats.GenericAttackPower, }, ignoreSum = true } -- s21938
-L["verwundet das ziel, fügt ihm %s schaden zu und verringert seine rüstung um %s"] = { false, { Stats.Armor, }, } -- s21961
+L["verwundet das ziel, fügt ihm %s schaden zu und verringert seine rüstung um %s"] = { false, { Stats.Armor, }, reduction = true } -- s21961
 L["verwandelt die haut des zaubernden in stein und erhöht seine rüstung %s Sek. lang um %s"] = { false, { Stats.Armor, }, } -- s22693
 L["erhöht eure distanztrefferwertung um %s"] = { { Stats.RangedHitRating, }, } -- s22780
 L["verleiht dem träger bei aktivierung %s Sek. lang %s verteidigungswertung und %s rüstung"] = { false, { Stats.DefenseRating, }, { Stats.Armor, }, } -- s22850
@@ -1449,7 +1449,7 @@ L["beschleunigt die gedanken und erhöht somit die zaubertempowertung des magier
 L["erhöht eure zaubertrefferwertung um %s"] = { { Stats.SpellHitRating, }, } -- s23727
 L["erfüllt einen paladin mit licht und erhöht %s Sek. lang die angriffstempowertung um %s und die zaubertempowertung um %s"] = { false, { Stats.MeleeHasteRating, }, { Stats.SpellHasteRating, }, } -- s23733
 L["erhöht den zauberschaden und heilung um bis zu %s und und erhöht die manakosten von zaubern um %s%. hält %s Sek. lang an"] = { { Stats.SpellPower, }, false, false, } -- s23734
-L["vergiftet das ziel. das gift erhöht die zeit zwischen seinen angriffen um %s%, verringert sein bewegungstempo um %s% und lässt es nach %s Sek. einschlafen"] = { { Stats.MeleeHaste, }, false, false, } -- s24002
+L["vergiftet das ziel. das gift erhöht die zeit zwischen seinen angriffen um %s%, verringert sein bewegungstempo um %s% und lässt es nach %s Sek. einschlafen"] = { { Stats.MeleeHaste, }, false, false, reduction = true } -- s24002
 L["erhöht eure angriffskraft um %s und erhöht eure trefferwertung um %s. hält %s Sek. lang an"] = { { Stats.GenericAttackPower, }, { Stats.MeleeHitRating, Stats.RangedHitRating, Stats.SpellHitRating, }, false, } -- s24352
 L["erhöht %s Sek. lang durch zauber und effekte verursachte heilung um bis zu %s und den durch zauber verursachten schaden um bis zu %s"] = { false, { Stats.HealingPower, }, { Stats.SpellDamage, }, } -- s24354
 L["alle %s sekunden %s mana regenerieren. hält %s Sek. lang an. wächterelixier"] = { false, { Stats.GenericManaRegen, }, false, } -- s24363
@@ -1462,7 +1462,7 @@ L["erhöht eure zaubertempowertung um %s, reduziert %s Sek. lang die manakosten 
 L["erhöht eure kritische zaubertrefferwertung %s Sek. lang um %s"] = { false, { Stats.SpellCritRating, }, } -- s24543
 L["erhöht %s Sek. lang den schaden von arkanzaubern um %s"] = { false, { Stats.ArcaneDamage, }, } -- s24544
 L["erhöht %s Sek. lang die zaubertempowertung um %s und verringert die manakosten eurer heilzauber um %s%"] = { false, { Stats.SpellHasteRating, }, false, } -- s24546
-L["ein ziel erleidet %s schaden; zusätzlich erfahren alle feindlichen ziele in nahkampfreichweite eine reduzierung ihrer nahkampfsangriffskraft um %s. dieser effekt hält %s Sek. lang an"] = { false, { Stats.AttackPower, }, false, } -- s24577
+L["ein ziel erleidet %s schaden; zusätzlich erfahren alle feindlichen ziele in nahkampfreichweite eine reduzierung ihrer nahkampfsangriffskraft um %s. dieser effekt hält %s Sek. lang an"] = { false, { Stats.AttackPower, }, false, reduction = true } -- s24577
 L["erhöht die zaubertrefferwertung %s Sek. lang um %s"] = { false, { Stats.MeleeHitRating, Stats.RangedHitRating, Stats.SpellHitRating, }, } -- s24610
 L["erhöht die angriffskraft in katzengestalt, bärengestalt, terrorbärengestalt oder mondkingestalt um %s"] = { { Stats.FeralAttackPower, }, } -- s24694
 L["erhöht %s Sek. lang ausdauer und willenskraft um %s"] = { false, { Stats.Stamina, Stats.Spirit, }, } -- s24829
@@ -1470,10 +1470,10 @@ L["erhöht eure kritische trefferwertung und kritische zaubertrefferwertung um %
 L["erhöht %s Sek. lang durch zauber und magische effekte verursachte heilung um bis zu %s und den durch zauber verursachten schaden um bis zu %s"] = { false, { Stats.HealingPower, }, { Stats.SpellDamage, }, } -- s24998
 L["erhöht durch zauber und magische effekte zugefügten schaden und heilung um bis zu %s. erhöht außerdem die kritische zaubertrefferwertung um %s"] = { { Stats.SpellPower, }, { Stats.SpellCritRating, }, } -- s25113
 L["stellt alle %s sek. %s mana wieder her und erhöht heilung um %s"] = { false, { Stats.GenericManaRegen, }, { Stats.HealingPower, }, } -- s25116
-L["verringert %s Sek. lang die nahkampfsangriffskraft von feinden innerhalb eines radius von %s metern um %s"] = { false, false, { Stats.AttackPower, }, } -- s25202
+L["verringert %s Sek. lang die nahkampfsangriffskraft von feinden innerhalb eines radius von %s metern um %s"] = { false, false, { Stats.AttackPower, }, reduction = true } -- s25202
 L["gewährt nahen gruppenmitgliedern %s Sek. lang %s zusätzliche willenskraft"] = { false, { Stats.Spirit, }, } -- s25207
 L["gewährt nahen gruppenmitgliedern %s Sek. lang %s zusätzliche stärke"] = { false, { Stats.Strength, }, } -- s25211
-L["zerreißt die rüstung des ziels und verringert sie um %s pro einsatz von 'rüstung zerreißen' und verursacht ein hohes maß an bedrohung. kann bis zu %s-mal angewendet werden. hält %s Sek. lang an"] = { { Stats.Armor, }, false, false, } -- s25225
+L["zerreißt die rüstung des ziels und verringert sie um %s pro einsatz von 'rüstung zerreißen' und verursacht ein hohes maß an bedrohung. kann bis zu %s-mal angewendet werden. hält %s Sek. lang an"] = { { Stats.Armor, }, false, false, reduction = true } -- s25225
 L["gewährt nahen gruppenmitgliedern %s Sek. lang %s zusätzliche ausdauer"] = { false, { Stats.Stamina, }, } -- s25606
 L["erhöht den von nahen gruppenmitgliedern verursachten zauberschaden %s Sek. lang um bis zu %s"] = { false, { Stats.HolyDamage, Stats.FireDamage, Stats.NatureDamage, Stats.FrostDamage, Stats.ShadowDamage, Stats.ArcaneDamage, }, } -- s25607
 L["stellt bei nahen gruppenmitgliedern alle %s sekunden %s gesundheit wieder her. hält %s Sek. lang an"] = { false, { Stats.HealthRegen, }, false, } -- s25608
@@ -1481,7 +1481,7 @@ L["stellt %s Sek. lang insgesamt %s gesundheit und %s mana wieder her. ihr müss
 L["stellt im verlauf von %s Sek. insgesamt %s mana wieder her. ihr müsst beim essen sitzen bleiben"] = { false, { Stats.GenericManaRegen, }, } -- s25701
 L["erhöht die zauberdurchschlagskraft eurer feuerzauber um %s"] = { { Stats.FirePenetration, }, } -- s25717
 L["belegt alle mitglieder einer gruppe oder eines schlachtzuges, die dieselbe klasse wie das ziel haben, mit dem großen segen der macht. der große segen der macht erhöht die angriffskraft %s Sek. lang um %s. spieler können pro paladin immer nur mit einem einzigen segen belegt sein"] = { false, { Stats.GenericAttackPower, }, } -- s25782
-L["alle werte um %s verringert.\nes werden alle %s sek. %s schattenschaden zugefügt"] = { false, false, { Stats.AllStats, }, } -- s25805
+L["alle werte um %s verringert.\nes werden alle %s sek. %s schattenschaden zugefügt"] = { false, false, { Stats.AllStats, }, reduction = true } -- s25805
 L["belegt alle mitglieder einer gruppe oder eines schlachtzuges, die dieselbe klasse wie das ziel haben, mit dem großen segen der weisheit. der große segen der weisheit stellt %s Sek. lang alle %s sek. %s mana wieder her. spieler können pro paladin immer nur mit einem einzigen segen belegt sein"] = { false, false, { Stats.GenericManaRegen, }, } -- s25894
 L["erhöht eure zauberdurchschlagskraft um %s"] = { { Stats.SpellPenetration, }, } -- s25975
 L["erhöht durch naturzauber und natureffekte zugefügten schaden %s Sek. lang um bis zu %s"] = { false, { Stats.NatureDamage, }, } -- s26121
@@ -1492,15 +1492,15 @@ L["stellt jede sekunde %s mana wieder her"] = { { Stats.GenericManaRegen, }, } -
 L["erhöht %s Sek. lang das angriffstempo des zaubernden um %s% und jeglichen von ihm zugefügten schaden um %s%"] = { false, { Stats.MeleeHaste, }, false, } -- s26662
 L["erhöht die ausweichchance des schurken um %s% und verringert die chance, durch distanzangriffe getroffen zu werden, um %s%. hält %s Sek. lang an"] = { { Stats.Dodge, }, false, false, } -- s26669
 L["erhöht den durch feuer- und arkanzauber und -effekte zugefügten schaden um bis zu %s"] = { { Stats.FireDamage, Stats.ArcaneDamage, }, } -- s26692
-L["erzeugt einen wütenden sturm im zielgebiet, der feinden alle %s sek. %s naturschaden zufügt und die zeit zwischen angriffen um %s% verringert. hält %s Sek. lang an. ein druide muss seine kräfte kanalisieren, um den zauber aufrechtzuerhalten"] = { false, false, { Stats.MeleeHaste, }, false, } -- s27012
+L["erzeugt einen wütenden sturm im zielgebiet, der feinden alle %s sek. %s naturschaden zufügt und die zeit zwischen angriffen um %s% verringert. hält %s Sek. lang an. ein druide muss seine kräfte kanalisieren, um den zauber aufrechtzuerhalten"] = { false, false, { Stats.MeleeHaste, }, false, reduction = true } -- s27012
 L["erhöht die chance eures begleiters für einen kritischen treffer um %s%"] = { { Stats.MeleeCrit, Stats.RangedCrit, }, } -- s27042
-L["ein ziel erleidet %s schaden, zusätzlich erfahren alle feindlichen ziele in nahkampfreichweite eine reduzierung ihrer nahkampfsangriffskraft um %s. dieser effekt hält %s Sek. lang an"] = { false, { Stats.AttackPower, }, false, } -- s27051
+L["ein ziel erleidet %s schaden, zusätzlich erfahren alle feindlichen ziele in nahkampfreichweite eine reduzierung ihrer nahkampfsangriffskraft um %s. dieser effekt hält %s Sek. lang an"] = { false, { Stats.AttackPower, }, false, reduction = true } -- s27051
 L["erhöht den naturwiderstand um %s"] = { { Stats.NatureResistance, }, } -- s27055
-L["der hexenmeister hüllt sich in netherenergie und wird dadurch immun gegen den nächsten körperlichen schaden verursachende angriff. zusätzlich werden %s Sek. lang die trefferchance des angreifers um %s% und sein widerstand gegen furcht- und schreckenseffekte um %s% verringert. hält %s Sek. lang an"] = { false, { Stats.MeleeHit, Stats.RangedHit, }, false, false, ignoreSum = true } -- s27181
+L["der hexenmeister hüllt sich in netherenergie und wird dadurch immun gegen den nächsten körperlichen schaden verursachende angriff. zusätzlich werden %s Sek. lang die trefferchance des angreifers um %s% und sein widerstand gegen furcht- und schreckenseffekte um %s% verringert. hält %s Sek. lang an"] = { false, { Stats.MeleeHit, Stats.RangedHit, }, false, false, ignoreSum = true, reduction = true } -- s27181
 L["erhöht den von feuerzaubern und -effekten zugefügten schaden um bis zu %s"] = { { Stats.FireDamage, }, } -- s27256
-L["verspottet alle gegner im umkreis von %s metern, erhöht damit die chance, dass sie den leerwandler angreifen, und verringert die trefferchance %s Sek. lang um %s%. wirkungsvoller als 'leiden' (rang %s)"] = { false, false, { Stats.MeleeHit, Stats.RangedHit, }, false, } -- s27271
-L["besänftigt das ziel und erhöht die chance, dass es etwas anderes angreift. verringert zusätzlich das nahkampfangriffstempo %s Sek. lang um %s%. effektiver als besänftigender kuss (rang %s)"] = { false, { Stats.MeleeHaste, }, false, } -- s27275
-L["besudelt %s Sek. lang das teufelsjägerblut. wenn der teufelsjäger mit einem nahkampfangriff getroffen wird, verliert der angreifer %s Sek. lang %s angriffskraft. kann bis zu %s-mal auf ein einzelnes ziel angewendet werden"] = { false, false, { Stats.AttackPower, }, false, ignoreSum = true } -- s27280
+L["verspottet alle gegner im umkreis von %s metern, erhöht damit die chance, dass sie den leerwandler angreifen, und verringert die trefferchance %s Sek. lang um %s%. wirkungsvoller als 'leiden' (rang %s)"] = { false, false, { Stats.MeleeHit, Stats.RangedHit, }, false, reduction = true } -- s27271
+L["besänftigt das ziel und erhöht die chance, dass es etwas anderes angreift. verringert zusätzlich das nahkampfangriffstempo %s Sek. lang um %s%. effektiver als besänftigender kuss (rang %s)"] = { false, { Stats.MeleeHaste, }, false, reduction = true } -- s27275
+L["besudelt %s Sek. lang das teufelsjägerblut. wenn der teufelsjäger mit einem nahkampfangriff getroffen wird, verliert der angreifer %s Sek. lang %s angriffskraft. kann bis zu %s-mal auf ein einzelnes ziel angewendet werden"] = { false, false, { Stats.AttackPower, }, false, ignoreSum = true, reduction = true } -- s27280
 L["erhöht verteidigungswertung %s Sek. lang um %s"] = { false, { Stats.DefenseRating, }, } -- s27720
 L["erhöht die trefferwertung %s Sek. lang um %s"] = { false, { Stats.MeleeHitRating, Stats.RangedHitRating, Stats.SpellHitRating, }, } -- s27723
 L["stellt alle %s sek. %s gesundheit und mana wieder her"] = { false, { Stats.GenericManaRegen, Stats.HealthRegen, }, } -- s27949
@@ -1510,7 +1510,7 @@ L["erhöht die kritische zaubertrefferwertung aller gruppenmitglieder innerhalb 
 L["stellt alle %s sek. %s mana bei allen gruppenmitgliedern, die sich im umkreis von %s befinden, wieder her"] = { false, { Stats.GenericManaRegen, }, false, } -- s28145
 L["umgibt den zaubernden mit teufelsenergie, die zauberschaden um bis zu %s und durch zauber und effekte erzeugte heilung um %s% erhöht. es kann immer nur eine art rüstungszauber gleichzeitig beim hexenmeister aktiv sein. hält %s Sek. lang an"] = { { Stats.SpellDamage, }, false, false, } -- s28176
 L["erhöht durch zauber und magische effekte verursachten schaden und heilung %s minuten lang um einen geringen betrag"] = { { Stats.SpellPower, }, } -- s28273
-L["der mangel an blutdistel hat eure willenskraft um %s verringert"] = { { Stats.Spirit, }, } -- s28274
+L["der mangel an blutdistel hat eure willenskraft um %s verringert"] = { { Stats.Spirit, }, reduction = true } -- s28274
 L["erhöht die effekte eurer heilzauber %s Sek. lang um bis zu %s. kampfelixier"] = { false, { Stats.HealingPower, }, } -- s28491
 L["erhöht den schaden von frostzaubern %s Sek. lang um %s. kampfelixier"] = { false, { Stats.FrostDamage, }, } -- s28493
 L["erhöht eure stärke um %s und verringert eure verteidigungswertung um %s. hält %s Sek. lang an"] = { { Stats.Strength, }, { Stats.DefenseRating, }, false, } -- s28494
@@ -1537,39 +1537,39 @@ L["erhöht eure kritische zaubertrefferwertung gegen untote um %s"] = { { Stats.
 L["erhöht bei einem gegner %s Sek. lang allen zugefügten zauberschaden um bis zu %s sowie allen erlittenen zauberschaden %s Sek. lang um bis zu %s"] = { false, { Stats.SpellDamage, }, false, false, } -- s29109
 L["erhöht die wertung für kritische zaubertreffer gegen untote um %s"] = { { Stats.SpellCritRating, }, } -- s29159
 L["setzt die im kraftkern gespeicherte energie frei. von zaubern und magischen effekten zugefügter schaden wird %s sek. lang um bis zu %s erhöht"] = { false, { Stats.SpellDamage, }, } -- s29271
-L["verringert das nahkampfangriffstempo um %s% pro dosis. stapelbar"] = { { Stats.MeleeHaste, }, } -- s29290
+L["verringert das nahkampfangriffstempo um %s% pro dosis. stapelbar"] = { { Stats.MeleeHaste, }, reduction = true } -- s29290
 L["erhöht eure trefferwertung %s Sek. lang um %s"] = { false, { Stats.MeleeHitRating, Stats.RangedHitRating, Stats.SpellHitRating, }, } -- s29332
 L["verbessert %s Sek. lang die verteidigungswertung um %s"] = { false, { Stats.DefenseRating, }, } -- s29335
 L["erhöht das angriffstempo eines verbündeten %s Sek. lang um %s%"] = { false, { Stats.MeleeHaste, }, } -- s29340
 L["verleiht allen in der nähe befindlichen befreundeten zielen eine segen, der ihre angriffskraft %s Sek. lang um %s erhöht"] = { false, { Stats.AttackPower, }, } -- s29381
-L["schützt den zaubernden %s Sek. lang vor allen schäden und zaubern, verringert jedoch während dieser zeit sein angriffstempo um %s%"] = { false, { Stats.MeleeHaste, }, } -- s29382
+L["schützt den zaubernden %s Sek. lang vor allen schäden und zaubern, verringert jedoch während dieser zeit sein angriffstempo um %s%"] = { false, { Stats.MeleeHaste, }, reduction = true } -- s29382
 L["erhöht das tanz- und angriffstempo naher gruppenmitglieder um %s%. die aura hält an, bis sie abgebrochen wird"] = { { Stats.MeleeHaste, }, } -- s29521
-L["ein starker treffer, der waffenschaden plus %s zufügt und den gegner aus dem gleichgewicht bringt, und so dessen trefferchance mit körperlichen attacken %s Sek. lang um %s verringert"] = { false, false, { Stats.MeleeHit, Stats.RangedHit, }, } -- s29555
+L["ein starker treffer, der waffenschaden plus %s zufügt und den gegner aus dem gleichgewicht bringt, und so dessen trefferchance mit körperlichen attacken %s Sek. lang um %s verringert"] = { false, false, { Stats.MeleeHit, Stats.RangedHit, }, reduction = true } -- s29555
 L["erhöht das angriffstempo eines in der nähe befindlichen spektralen gastes %s Sek. lang um %s%, verlangsamt aber die angriffe nachdem die wirkung abgelaufen ist"] = { false, { Stats.MeleeHaste, }, } -- s29612
-L["verringert bei einem gegner %s Sek. lang das angriffstempo um %s% und das bewegungstempo um %s% und fügt %s schaden zu"] = { false, { Stats.MeleeHaste, }, false, false, } -- s29673
-L["verringert die trefferchance mit körperlichen angriffen um %s%. stapelbar"] = { { Stats.MeleeHit, Stats.RangedHit, }, } -- s29716
+L["verringert bei einem gegner %s Sek. lang das angriffstempo um %s% und das bewegungstempo um %s% und fügt %s schaden zu"] = { false, { Stats.MeleeHaste, }, false, false, reduction = true } -- s29673
+L["verringert die trefferchance mit körperlichen angriffen um %s%. stapelbar"] = { { Stats.MeleeHit, Stats.RangedHit, }, reduction = true } -- s29716
 L["erhöht den widerstand gegen alle arten der magie %s Sek. lang um %s"] = { false, { Stats.FireResistance, Stats.NatureResistance, Stats.FrostResistance, Stats.ShadowResistance, Stats.ArcaneResistance, }, } -- s29718
-L["verringert die trefferchance eines gegners um %s%. verringert die chance eines gegners, mit zaubern zu treffen, um %s%"] = { { Stats.MeleeHit, Stats.RangedHit, }, { Stats.SpellHit, }, } -- s29833
-L["erhöht den verursachten körperlichen schaden um %s%, verringert aber das bewegungstempo um %s% und das angriffstempo um %s%"] = { false, false, { Stats.MeleeHaste, }, } -- s29837
+L["verringert die trefferchance eines gegners um %s%. verringert die chance eines gegners, mit zaubern zu treffen, um %s%"] = { { Stats.MeleeHit, Stats.RangedHit, }, { Stats.SpellHit, }, reduction = true } -- s29833
+L["erhöht den verursachten körperlichen schaden um %s%, verringert aber das bewegungstempo um %s% und das angriffstempo um %s%"] = { false, false, { Stats.MeleeHaste, }, reduction = true } -- s29837
 L["erhöht allen von nahen feinden verursachten zauberschaden um %s.\nerhöht allen von nahen feinden erlittenen zauberschaden um %s. hält %s Sek. lang an"] = { { Stats.SpellDamage, }, false, false, } -- s29900
-L["fügt einem gegner normalen schaden plus %s zu, danach %s Sek. lang zusätzliche %s naturschaden alle %s sek. verringert die rüstung um %s. bis zu %s-mal stapelbar"] = { false, false, false, false, { Stats.Armor, }, false, } -- s29901
-L["verringert das angriffstempo eines gegners um %s% und verlangsamt seine bewegung um %s%. hält %s Sek. lang an"] = { { Stats.MeleeHaste, }, false, false, } -- s29990
-L["verringert die trefferchance mit zaubern und fähigkeiten um %s%"] = { { Stats.MeleeHit, Stats.RangedHit, Stats.SpellHit, }, } -- s30130
+L["fügt einem gegner normalen schaden plus %s zu, danach %s Sek. lang zusätzliche %s naturschaden alle %s sek. verringert die rüstung um %s. bis zu %s-mal stapelbar"] = { false, false, false, false, { Stats.Armor, }, false, reduction = true } -- s29901
+L["verringert das angriffstempo eines gegners um %s% und verlangsamt seine bewegung um %s%. hält %s Sek. lang an"] = { { Stats.MeleeHaste, }, false, false, reduction = true } -- s29990
+L["verringert die trefferchance mit zaubern und fähigkeiten um %s%"] = { { Stats.MeleeHit, Stats.RangedHit, Stats.SpellHit, }, reduction = true } -- s30130
 L["erhöht die angriffsgeschwindigkeit des zaubernden %s Sek. lang um %s%"] = { false, { Stats.MeleeHaste, }, } -- s30470
 L["erhöht den schattenwiderstand eines verbündeten %s Sek. lang um %s"] = { false, { Stats.ShadowResistance, }, } -- s30479
 L["verursacht %s feuerschaden, wenn ihr getroffen werdet, erhöht eure kritische trefferchance mit zaubern um %s% und verringert die chance, dass ihr kritische treffer erleidet, um %s%. es kann immer nur ein rüstungszauber zur selben zeit auf dem magier aktiv sein. hält %s Sek. lang an"] = { false, { Stats.SpellCrit, }, false, false, } -- s30482
 L["increases your armor by %s. \nincreases your resistance to spells by %s"] = { { Stats.Armor, }, { Stats.FireResistance, Stats.NatureResistance, Stats.FrostResistance, Stats.ShadowResistance, Stats.ArcaneResistance, }, } -- s30559
 L["erhöht die nahkampfangriffskraft naher gruppenmitglieder %s Sek. lang um %s"] = { false, { Stats.AttackPower, }, } -- s30635
-L["verringert eure stärke um %s"] = { { Stats.Strength, }, } -- s30762
-L["verringert eure beweglichkeit um %s"] = { { Stats.Agility, }, } -- s30763
-L["verringert eure ausdauer um %s"] = { { Stats.Stamina, }, } -- s30764
-L["verringert eure intelligenz um %s"] = { { Stats.Intellect, }, } -- s30765
-L["verringert eure willenskraft um %s"] = { { Stats.Spirit, }, } -- s30766
+L["verringert eure stärke um %s"] = { { Stats.Strength, }, reduction = true } -- s30762
+L["verringert eure beweglichkeit um %s"] = { { Stats.Agility, }, reduction = true } -- s30763
+L["verringert eure ausdauer um %s"] = { { Stats.Stamina, }, reduction = true } -- s30764
+L["verringert eure intelligenz um %s"] = { { Stats.Intellect, }, reduction = true } -- s30765
+L["verringert eure willenskraft um %s"] = { { Stats.Spirit, }, reduction = true } -- s30766
 L["erhöht den vom zaubernden verursachten körperlichen schaden um %s% und die angriffsgeschwindigkeit um %s%. hält %s Sek. lang an"] = { false, { Stats.MeleeHaste, }, false, } -- s30841
 L["erhöht ausdauer um %s. hält %s min. lang an"] = { { Stats.Stamina, }, false, } -- s30845
 L["erhöht intelligenz um %s. hält %s min. lang an"] = { { Stats.Intellect, }, false, } -- s30847
 L["erhöht angriffskraft um %s. hält %s min. lang an"] = { { Stats.AttackPower, }, false, } -- s30848
-L["verringert den magischen schaden, den das ziel verursacht, %s Sek. lang um %s"] = { false, { Stats.SpellDamage, }, } -- s30900
+L["verringert den magischen schaden, den das ziel verursacht, %s Sek. lang um %s"] = { false, { Stats.SpellDamage, }, reduction = true } -- s30900
 L["erhöht die nahkampfangriffskraft naher befreundeter ziele %s Sek. lang um %s"] = { false, { Stats.AttackPower, }, } -- s30931
 L["erhöht das tempo von nahkampf- und distanzangriffen sowie zaubern um %s%"] = { { Stats.MeleeHaste, Stats.SpellHaste, }, } -- s30939
 L["erhöht die ausdauer naher gruppenmitglieder %s Sek. lang um %s"] = { false, { Stats.Stamina, }, } -- s31023
@@ -1580,30 +1580,30 @@ L["erhöht die chance auf einen kritischen zaubertreffer für nahe gruppenmitgli
 L["zauberschaden um %s erhöht"] = { { Stats.SpellDamage, }, } -- s31037
 L["erhöht die ausweichwertung %s Sek. lang um %s"] = { false, { Stats.DodgeRating, }, } -- s31039
 L["erhöht durch zauber und magische effekte verursachten schaden und heilung %s Sek. lang um bis zu %s"] = { false, { Stats.SpellPower, }, } -- s31040
-L["schreddert die rüstung eines gegners und reduziert sie %s Sek. lang um %s"] = { false, { Stats.Armor, }, } -- s31042
-L["verringert die angriffskraft naher gegner um %s"] = { { Stats.GenericAttackPower, }, } -- s31273
-L["erhöht die zeit zwischen angriffen eines gegners um %s% und verlangsamt sein bewegungstempo um %s%. hält %s Sek. lang an"] = { { Stats.MeleeHaste, }, false, false, } -- s31295
+L["schreddert die rüstung eines gegners und reduziert sie %s Sek. lang um %s"] = { false, { Stats.Armor, }, reduction = true } -- s31042
+L["verringert die angriffskraft naher gegner um %s"] = { { Stats.GenericAttackPower, }, reduction = true } -- s31273
+L["erhöht die zeit zwischen angriffen eines gegners um %s% und verlangsamt sein bewegungstempo um %s%. hält %s Sek. lang an"] = { { Stats.MeleeHaste, }, false, false, reduction = true } -- s31295
 L["stürmt auf einen gegner zu, macht ihn %s Sek. lang bewegungsunfähig und fügt zum nächsten angriff des ebers %s nahkampfangriffskraft hinzu"] = { false, { Stats.AttackPower, }, } -- s31426
 L["regeneriert %s Sek. lang alle %s sek. %s gesundheit und mana"] = { false, false, { Stats.GenericManaRegen, }, } -- s31462
 L["erhöht die nahkampf- und distanzangriffskraft von gruppenmitgliedern in einem umkreis von %s metern um %s"] = { false, { Stats.GenericAttackPower, }, } -- s31519
-L["verringert die stärke eines gegners %s Sek. lang um %s"] = { false, { Stats.Strength, }, } -- s31552
-L["verringert die intelligenz des ziels %s Sek. lang um %s. bis zu %s-mal stapelbar"] = { false, { Stats.Intellect, }, false, } -- s31604
-L["verringert die trefferchance eines gegners %s Sek. lang um %s%"] = { false, { Stats.MeleeHit, Stats.RangedHit, }, } -- s31651
+L["verringert die stärke eines gegners %s Sek. lang um %s"] = { false, { Stats.Strength, }, reduction = true } -- s31552
+L["verringert die intelligenz des ziels %s Sek. lang um %s. bis zu %s-mal stapelbar"] = { false, { Stats.Intellect, }, false, reduction = true } -- s31604
+L["verringert die trefferchance eines gegners %s Sek. lang um %s%"] = { false, { Stats.MeleeHit, Stats.RangedHit, }, reduction = true } -- s31651
 L["erhöht die chance zu blocken %s Sek. lang um %s% und fügt, solange aktiv, für jeden geblockten angriff %s heiligschaden zu"] = { false, { Stats.BlockChance, }, false, } -- s31904
 L["erhöht die blockchance des zaubernden %s Sek. lang um %s%"] = { false, { Stats.BlockChance, }, } -- s31905
-L["hüllt das ziel in moos ein, verringert das angriffs- und zaubertempo um %s%"] = { { Stats.MeleeHaste, Stats.SpellHaste, }, } -- s31948
-L["verringert die chance eines gegners, mit zaubern oder fähigkeiten zu treffen, %s Sek. lang um %s%"] = { false, { Stats.MeleeHit, Stats.RangedHit, Stats.SpellHit, }, } -- s32017
-L["verringert die ausdauer eines gegners %s Sek. lang um %s"] = { false, { Stats.Stamina, }, } -- s32022
+L["hüllt das ziel in moos ein, verringert das angriffs- und zaubertempo um %s%"] = { { Stats.MeleeHaste, Stats.SpellHaste, }, reduction = true } -- s31948
+L["verringert die chance eines gegners, mit zaubern oder fähigkeiten zu treffen, %s Sek. lang um %s%"] = { false, { Stats.MeleeHit, Stats.RangedHit, Stats.SpellHit, }, reduction = true } -- s32017
+L["verringert die ausdauer eines gegners %s Sek. lang um %s"] = { false, { Stats.Stamina, }, reduction = true } -- s32022
 L["erhöht die kritische trefferchance aller zauber und nahkampfangriffe um %s% und verringert die chance, dass eure siegel gebannt werden, um %s%"] = { { Stats.SpellCrit, Stats.MeleeCrit, Stats.RangedCrit, }, false, } -- s32043
 L["stellt im verlauf von %s Sek. %s gesundheit wieder her. ihr müsst beim essen sitzen bleiben. wenn ihr mindestens %s sekunden lang mit essen verbringt, werdet ihr satt und erhaltet %s Sek. lang %s willenskraft"] = { false, false, false, false, { Stats.Spirit, }, ignoreSum = true } -- s32112
 L["%s abhärtungswertung"] = { { Stats.ResilienceRating, }, } -- s32145
-L["entfernt %s gifteffekt. verringert %s Sek. lang den naturwiderstand um %s"] = { false, false, { Stats.NatureResistance, }, } -- s32305
-L["entfernt %s gifteffekte. verringert %s Sek. lang den naturwiderstand um %s"] = { false, false, { Stats.NatureResistance, }, } -- s32305
-L["hackt auf die rüstung des gegners ein und verringert sie um %s pro 'rüstung zerreißen'. kann bis zu %s-mal angewendet werden. hält %s Sek. lang an"] = { { Stats.Armor, }, false, false, } -- s32376
+L["entfernt %s gifteffekt. verringert %s Sek. lang den naturwiderstand um %s"] = { false, false, { Stats.NatureResistance, }, reduction = true } -- s32305
+L["entfernt %s gifteffekte. verringert %s Sek. lang den naturwiderstand um %s"] = { false, false, { Stats.NatureResistance, }, reduction = true } -- s32305
+L["hackt auf die rüstung des gegners ein und verringert sie um %s pro 'rüstung zerreißen'. kann bis zu %s-mal angewendet werden. hält %s Sek. lang an"] = { { Stats.Armor, }, false, false, reduction = true } -- s32376
 L["verbessert die moral der gruppenmitglieder erheblich. %s Sek. lang wird alle %s sek. %s mana wiederhergestellt"] = { false, false, { Stats.GenericManaRegen, }, } -- s32548
 L["erhöht die intelligenz des ziels um %s"] = { { Stats.Intellect, }, } -- s32557
 L["erhöht eure ausweichwertung %s Sek. lang um %s"] = { false, { Stats.DodgeRating, }, } -- s32600
-L["verflucht einen gegner %s Sek. lang, erhöht erlittenen körperlichen schaden um %s und verringert die ausdauer um %s. das verfluchte ziel hat eine chance von %s%, dessen aktuellem ziel blutungsschaden zuzufügen"] = { false, false, { Stats.Stamina, }, false, } -- s32682
+L["verflucht einen gegner %s Sek. lang, erhöht erlittenen körperlichen schaden um %s und verringert die ausdauer um %s. das verfluchte ziel hat eine chance von %s%, dessen aktuellem ziel blutungsschaden zuzufügen"] = { false, false, { Stats.Stamina, }, false, reduction = true } -- s32682
 L["erhöht den zauberschaden eines verbündeten %s Sek. lang um %s"] = { false, { Stats.SpellDamage, }, } -- s32689
 L["erhöht das zaubertempo des zaubernden um %s%"] = { { Stats.SpellHaste, }, } -- s32693
 L["erhöht den durch zauber und effekte zugefügten arkanschaden um bis zu %s"] = { { Stats.ArcaneDamage, }, } -- s32694
@@ -1612,7 +1612,7 @@ L["erhöht den durch zauber und effekte zugefügten naturschaden um bis zu %s"] 
 L["erhöht den durch zauber und effekte zugefügten frostschaden um bis zu %s"] = { { Stats.FrostDamage, }, } -- s32698
 L["erhöht die chance zu blocken %s Sek. lang um %s% und fügt, solange aktiv, für jeden geblockten angriff %s heiligschaden zu. jedes blocken verbraucht eine der %s aufladungen"] = { false, { Stats.BlockChance, }, false, false, } -- s32777
 L["erhöt das angriffstempo eines verbündeten %s Sek. lang um %s%"] = { false, { Stats.MeleeHaste, }, } -- s32886
-L["verringert die angriffskraft naher gegner %s Sek. lang um %s"] = { false, { Stats.AttackPower, }, } -- s32918
+L["verringert die angriffskraft naher gegner %s Sek. lang um %s"] = { false, { Stats.AttackPower, }, reduction = true } -- s32918
 L["erhöht %s Sek. lang den zauberschaden um bis zu %s und die heilung um bis zu %s"] = { false, { Stats.SpellDamage, }, { Stats.HealingPower, }, } -- s32925
 L["verringert das zaubertempo naher gegner um %s%. hält %s Sek. lang an"] = { { Stats.SpellHaste, }, false, } -- s32940
 L["erhöht die verteidigungswertung %s Sek. lang um %s"] = { false, { Stats.DefenseRating, }, } -- s32957
@@ -1640,7 +1640,7 @@ L["erhöht %s Sek. lang verursachten zauberschaden um bis zu %s und verursachte 
 L["kanalisiert 'hitziges delirium' auf das ziel, erhöht größe um %s% und verursachten körperlichen schaden um %s"] = { { Stats.AverageWeaponDamage, }, { Stats.AverageWeaponDamage, }, } -- s33664
 L["erhöht %s Sek. lang die maximale gesundheit um %s"] = { false, { Stats.Health, }, } -- s33668
 L["erhöht eure nahkampfangriffskraft um %s, schaden und heilung durch zauber und effekte um %s, verringert aber auf euch gerichtete heileffekte um %s%. hält %s Sek. lang an"] = { { Stats.AttackPower, }, { Stats.SpellPower, }, false, false, } -- s33697
-L["verspottet alle gegner im umkreis von %s metern, erhöht damit die chance, dass sie den leerwandler angreifen und verringert ihre trefferchance %s Sek. lang um %s%. wirkungsvoller als 'leiden' (rang %s)"] = { false, false, { Stats.MeleeHit, Stats.RangedHit, }, false, } -- s33701
+L["verspottet alle gegner im umkreis von %s metern, erhöht damit die chance, dass sie den leerwandler angreifen und verringert ihre trefferchance %s Sek. lang um %s%. wirkungsvoller als 'leiden' (rang %s)"] = { false, false, { Stats.MeleeHit, Stats.RangedHit, }, false, reduction = true } -- s33701
 L["erhöht durch zauber und magische effekte verursachten schaden und heilung um bis zu %s, aber verringert auf euch gewirkte heileffekte um %s%. hält %s Sek. lang an"] = { { Stats.SpellPower, }, false, false, } -- s33702
 L["erhöht %s Sek. lang die angriffskraft um %s. kampfelixier"] = { false, { Stats.GenericAttackPower, }, } -- s33720
 L["erhöht %s Sek. lang zauberschaden und heilung um %s und kritische zaubertrefferwertung um %s. kampfelixier"] = { false, { Stats.SpellPower, }, { Stats.SpellCritRating, }, } -- s33721
@@ -1652,7 +1652,7 @@ L["durch arkanzauber und -effekte verursachter schaden um bis zu %s erhöht"] = 
 L["durch frostzauber und -effekte verursachter schaden um bis zu %s erhöht"] = { { Stats.FrostDamage, }, } -- s33818
 L["eure kritische zaubertrefferchance ist um %s% erhöht und kritische treffer gegen euch verleihen euch den effekt 'vollkommenheit der natur', wodurch jeglicher erlittener schaden um %s% verringert wird. bis zu %s-mal stapelbar. hält %s Sek. lang an"] = { { Stats.SpellCrit, }, false, false, false, } -- s33881
 L["hackt auf die rüstung eines gegners ein, verringert sie um %s pro anwendung von 'rüstung zerreißen'. kann bis zu %s-mal angewendet werden. hält %s Sek. lang an"] = { { Stats.Armor, }, false, false, } -- s33911
-L["verringert %s Sek. lang die ausdauer eines gegners um %s und die willenskraft um %s"] = { false, { Stats.Stamina, }, { Stats.Spirit, }, } -- s33951
+L["verringert %s Sek. lang die ausdauer eines gegners um %s und die willenskraft um %s"] = { false, { Stats.Stamina, }, { Stats.Spirit, }, reduction = true } -- s33951
 L["durch zauber und magische effekte verursachter schaden und heilung %s Sek. lang um bis zu %s erhöht"] = { false, { Stats.SpellPower, }, } -- s34000
 L["erhöht die ausdauer eines verbündeten %s Sek. lang um %s"] = { false, { Stats.Stamina, }, } -- s34020
 L["eure angriffe ignorieren %s Sek. lang %s rüstung eures gegners"] = { false, { Stats.ArmorPenetration, }, } -- s34106
@@ -1672,29 +1672,29 @@ L["erhöht euer distanzangriffstempo um %s% und das nahkampfangriffstempo eures 
 L["eure erfolgreichen distanzangriffe haben eine chance von %s%, eure kritische trefferchance mit allen angriffen %s Sek. lang um %s% zu erhöhen"] = { false, false, { Stats.MeleeCrit, Stats.RangedCrit, }, ignoreSum = true } -- s34506
 L["erhöht %s Sek. lang gesundheit um %s und stärke um %s"] = { false, { Stats.Health, }, { Stats.Strength, }, } -- s34511
 L["erhöht %s Sek. lang eure willenskraft um %s"] = { false, { Stats.Spirit, }, } -- s34585
-L["verringert die chance eines gegners mit nahkampfangriffen kritisch zu treffen um %s% und seine chance mit zaubern kritisch zu treffen um %s%. hält %s Sek. lang an"] = { { Stats.MeleeCrit, Stats.RangedCrit, }, { Stats.SpellCrit, }, false, } -- s34640
+L["verringert die chance eines gegners mit nahkampfangriffen kritisch zu treffen um %s% und seine chance mit zaubern kritisch zu treffen um %s%. hält %s Sek. lang an"] = { { Stats.MeleeCrit, Stats.RangedCrit, }, { Stats.SpellCrit, }, false, reduction = true } -- s34640
 L["erhöht %s Sek. lang das angriffstempo des zaubernden um %s% und den von ihm zugefügten körperlichen schaden um %s%"] = { false, { Stats.MeleeHaste, }, { Stats.AverageWeaponDamage, }, } -- s56625
 L["gewährt %s Sek. lang um %s erhöhten zauberschaden, wenn einem eurer zauber widerstanden wird"] = { false, { Stats.SpellDamage, }, ignoreSum = true } -- s34749
 L["eure nahkampf- und distanzangriffe haben eine chance, eure angriffstempowertung %s Sek. lang um %s zu erhöhen"] = { false, { Stats.MeleeHasteRating, Stats.RangedHasteRating, }, ignoreSum = true } -- s34774
 L["erhöht eure angriffstempowertung um %s"] = { { Stats.MeleeHasteRating, Stats.RangedHasteRating, }, } -- s34775
 L["erhöht den zauberschaden eines verbündeten %s Sek. lang um bis zu %s"] = { false, { Stats.SpellDamage, }, } -- s34809
-L["verringert den vom ziel verursachten zauberschaden %s Sek. lang um %s"] = { false, { Stats.SpellDamage, }, } -- s34925
+L["verringert den vom ziel verursachten zauberschaden %s Sek. lang um %s"] = { false, { Stats.SpellDamage, }, reduction = true } -- s34925
 L["erhöht die gesundheit des zaubernden um %s% und das angriffstempo um %s%. hält %s Sek. lang an"] = { false, { Stats.MeleeHaste, }, false, } -- s34932
-L["hackt auf die rüstung des gegners und seiner nahen verbündeten ein, wirkt auf bis zu %s ziele. die rüstung eines ziels wird um %s pro anwendung verringert. bis zu %s-mal stapelbar. hält %s Sek. lang an"] = { false, { Stats.Armor, }, false, false, } -- s34886
+L["hackt auf die rüstung des gegners und seiner nahen verbündeten ein, wirkt auf bis zu %s ziele. die rüstung eines ziels wird um %s pro anwendung verringert. bis zu %s-mal stapelbar. hält %s Sek. lang an"] = { false, { Stats.Armor, }, false, false, reduction = true } -- s34886
 L["erhöht eure kritische trefferchance mit zaubern um zusätzliche %s% und gewährt euch eine chance von %s%, nach erleiden eines körperlichen treffers die zauberzeit eures nächsten zaubers 'schattenblitz' oder 'verbrennen' um %s% zu verringern. dieser effekt hält %s Sek. lang an und kann innerhalb von %s sek. nur ein mal auftreten"] = { { Stats.SpellCrit, }, false, false, false, false, } -- s34935
 L["erhöht die gesundheit des zaubernden um %s%, angriffstempo um %s% und das dingens für %s min"] = { false, { Stats.MeleeHaste, }, false, } -- s34998
 L["wenn ihr im kampf getroffen werdet, besteht eine chance, eure rüstung %s Sek. lang um %s zu erhöhen"] = { false, { Stats.Armor, }, ignoreSum = true } -- s35077
 L["angriffskraft %s Sek. lang um %s erhöht"] = { false, { Stats.GenericAttackPower, }, } -- s35081
 L["erhöht durch zauber und effekte verursachten schaden und heilung %s Sek. lang um bis zu %s"] = { false, { Stats.SpellPower, }, } -- s35084
 L["erhöht %s Sek. lang durch zauber und magische effekte verursachte heilung um bis zu %s und verursachten schaden um bis zu %s"] = { false, { Stats.HealingPower, }, { Stats.SpellDamage, }, } -- s35087
-L["verringert %s Sek. lang die ausdauer eines gegners um %s und die angriffsgeschwindigkeit um %s%"] = { false, { Stats.Stamina, }, false, } -- s35105
-L["schlägt nach einem gegner, fügt waffenschaden zu und verringert die rüstung des ziels um %s pro anwendung. bis zu %s-mal stapelbar. hält %s Sek. lang an"] = { { Stats.Armor, }, false, false, } -- s35147
-L["verringert die rüstung naher gegner %s Sek. lang um %s"] = { false, { Stats.Armor, }, } -- s35185
+L["verringert %s Sek. lang die ausdauer eines gegners um %s und die angriffsgeschwindigkeit um %s%"] = { false, { Stats.Stamina, }, false, reduction = true } -- s35105
+L["schlägt nach einem gegner, fügt waffenschaden zu und verringert die rüstung des ziels um %s pro anwendung. bis zu %s-mal stapelbar. hält %s Sek. lang an"] = { { Stats.Armor, }, false, false, reduction = true } -- s35147
+L["verringert die rüstung naher gegner %s Sek. lang um %s"] = { false, { Stats.Armor, }, reduction = true } -- s35185
 L["stellt im verlauf von %s Sek. insgesamt %s gesundheit wieder her. ihr müsst beim essen sitzen bleiben. wenn ihr mindestens %s sekunden lang mit essen verbringt, werdet ihr satt und eure ausdauer und willenskraft wird %s Sek. lang um %s erhöht"] = { false, false, false, false, { Stats.Stamina, }, ignoreSum = true } -- s35271
 L["erhöht %s Sek. lang das angriffstempo des ziels um %s% und den verursachten körperlichen schaden um %s"] = { false, { Stats.MeleeHaste, }, { Stats.AverageWeaponDamage, }, } -- s35289
 L["verringert die rüstung eines gegners %s Sek. lang um %s. solange man betroffen ist, kann keine verstohlenheit oder unsichtbarkeit angewendet werden"] = { false, { Stats.Armor, }, } -- s35325
 L["erhöht die attribute eines befreundeten ziels um %s"] = { { Stats.AllStats, }, } -- s35336
-L["schließt den gegner in einen temporalriss ein, erhöht die zeit zwischen seinen angriffen %s Sek. lang um %s%"] = { false, { Stats.MeleeHaste, }, } -- s35353
+L["schließt den gegner in einen temporalriss ein, erhöht die zeit zwischen seinen angriffen %s Sek. lang um %s%"] = { false, { Stats.MeleeHaste, }, reduction = true } -- s35353
 L["bei allen in der nähe befindlichen gruppenmitgliedern wird die angriffskraft um %s und der zauberschaden um %s erhöht. hält %s Sek. lang an"] = { { Stats.GenericAttackPower, }, { Stats.SpellDamage, }, false, } -- s35475
 L["erhöht die nahkampf-, distanz- und zaubertempowertung aller in der nähe befindlichen gruppenmitglieder um %s. hält %s Sek. lang an"] = { { Stats.MeleeHasteRating, Stats.RangedHasteRating, Stats.SpellHasteRating, }, false, } -- s35476
 L["erhöht eure angriffskraft um %s, alle werte um %s und die gesamtwerte um %s%"] = { { Stats.AttackPower, }, { Stats.AllStats, }, false, } -- s35874
@@ -1704,18 +1704,18 @@ L["hackt nach der rüstung des feindes und verringert sie um %s"] = { { Stats.Ar
 L["erhöht den schaden von zaubern und effekten um %s"] = { { Stats.SpellDamage, }, } -- s36001
 L["erhöht die kritische trefferwertung eures nächsten, innerhalb von %s sek. durchgeführten, angriffs um %s"] = { false, { Stats.MeleeCritRating, Stats.RangedCritRating, Stats.SpellCritRating, }, } -- s36111
 L["stielt dem gegner %s rüstung. hält %s Sek. lang an"] = { { Stats.Armor, }, false, } -- s36250
-L["verringert die angriffskraft des aktuellen ziels um %s"] = { { Stats.AttackPower, }, } -- s36299
-L["feuert einen machtvollen energiestrahl auf das ziel, der die angriffskraft des ziel %s Sek. lang um %s verringert"] = { false, { Stats.GenericAttackPower, }, } -- s36341
+L["verringert die angriffskraft des aktuellen ziels um %s"] = { { Stats.AttackPower, }, reduction = true } -- s36299
+L["feuert einen machtvollen energiestrahl auf das ziel, der die angriffskraft des ziel %s Sek. lang um %s verringert"] = { false, { Stats.GenericAttackPower, }, reduction = true } -- s36341
 L["feuert einen energiestrahl auf einen nahen freund, der seine angriffskraft %s Sek. lang um %s erhöht"] = { false, { Stats.AttackPower, }, } -- s36346
 L["erhöht %s Sek. lang durch sämtliche zauber und magische effekte verursachte heilung um bis zu %s und den verursachten schaden um bis zu %s"] = { false, { Stats.HealingPower, }, { Stats.SpellDamage, }, } -- s36347
 L["blockwertung %s Sek. lang um %s erhöht"] = { false, { Stats.BlockRating, }, } -- s36372
 L["erhöht %s Sek. lang das bewegungstempo um %s% und das nahkampfangriffstempo um %s%"] = { false, false, { Stats.MeleeHaste, }, } -- s36479
-L["verringert %s Sek. lang die stärke eines gegners um %s und dessen ausdauer um %s"] = { false, { Stats.Strength, }, { Stats.Stamina, }, } -- s36697
-L["verringert den schattenwiderstand eines gegners %s Sek. lang um %s"] = { false, { Stats.ShadowResistance, }, } -- s36698
-L["erhöht die zeit zwischen angriffen eines gegners um %s%, verlangsamt dessen zaubertempo um %s% und sein bewegungstempo um %s%. hält %s Sek. lang an"] = { { Stats.MeleeHaste, }, { Stats.SpellHaste, }, false, false, } -- s36699
-L["fügt einem gegner naturschaden zu und verringert %s Sek. lang seine rüstung um %s. bis zu %s-mal stapelbar"] = { false, { Stats.Armor, }, false, } -- s36796
+L["verringert %s Sek. lang die stärke eines gegners um %s und dessen ausdauer um %s"] = { false, { Stats.Strength, }, { Stats.Stamina, }, reduction = true } -- s36697
+L["verringert den schattenwiderstand eines gegners %s Sek. lang um %s"] = { false, { Stats.ShadowResistance, }, reduction = true } -- s36698
+L["erhöht die zeit zwischen angriffen eines gegners um %s%, verlangsamt dessen zaubertempo um %s% und sein bewegungstempo um %s%. hält %s Sek. lang an"] = { { Stats.MeleeHaste, }, { Stats.SpellHaste, }, false, false, reduction = true } -- s36699
+L["fügt einem gegner naturschaden zu und verringert %s Sek. lang seine rüstung um %s. bis zu %s-mal stapelbar"] = { false, { Stats.Armor, }, false, reduction = true } -- s36796
 L["erhöht %s Sek. lang das distanzangriffstempo um %s%"] = { false, { Stats.RangedHaste, }, } -- s36828
-L["verflucht das ziel %s Sek. lang, verringert feuer- und frostwiderstand um %s und erhöht erlittenen feuer- und frostschaden um %s%"] = { false, { Stats.FireResistance, Stats.FrostResistance, }, false, } -- s36831
+L["verflucht das ziel %s Sek. lang, verringert feuer- und frostwiderstand um %s und erhöht erlittenen feuer- und frostschaden um %s%"] = { false, { Stats.FireResistance, Stats.FrostResistance, }, false, reduction = true } -- s36831
 L["erhöht %s Sek. lang das bewegungstempo um %s% und das angriffstempo um %s%"] = { false, false, { Stats.MeleeHaste, }, } -- s36910
 L["erhöht die ausdauer %s Sek. lang um %s und verstärkt den wunsch des trinkenden, zu reden"] = { false, { Stats.Stamina, }, } -- s37058
 L["erhöht das angriffstempo des zaubernden um %s% und dessen verursachten körperlichen schaden um %s. hält %s Sek. lang an"] = { { Stats.MeleeHaste, }, false, false, } -- s37076
@@ -1733,13 +1733,13 @@ L["erhöht die widerstände eures begleiters um %s und euren zauberschaden um bi
 L["eure kritischen treffer mit zaubern gewähren euch %s Sek. lang bis zu %s zauberschaden"] = { false, { Stats.SpellDamage, }, ignoreSum = true } -- s37443
 L["jedes mal, wenn ihr getroffen werdet, besteht eine chance, dass eure tempowertung %s Sek. lang um %s erhöht wird"] = { false, { Stats.MeleeHasteRating, Stats.RangedHasteRating, }, ignoreSum = true } -- s37525
 L["eure fähigkeit 'überwältigen' gewährt euch %s Sek. lang %s angriffskraft"] = { false, { Stats.GenericAttackPower, }, ignoreSum = true } -- s37528
-L["verringert erlittenen schaden aller magiearten um %s%"] = { { Stats.Armor, Stats.FireResistance, Stats.NatureResistance, Stats.FrostResistance, Stats.ShadowResistance, Stats.ArcaneResistance, }, } -- s37590
+L["verringert erlittenen schaden aller magiearten um %s%"] = { { Stats.Armor, Stats.FireResistance, Stats.NatureResistance, Stats.FrostResistance, Stats.ShadowResistance, Stats.ArcaneResistance, }, reduction = true } -- s37590
 L["jedes mal, wenn euer zauber 'schattenwort: schmerz' schaden verursacht, besteht die chance, um bis zu %s erhöhten zauberschaden und heilung für den nächsten innerhalb von %s Sek. gewirkten zauber zu erhalten"] = { { Stats.SpellDamage, }, false, ignoreSum = true } -- s37603
 L["eure angriffe haben eine chance, eure angriffskraft %s Sek. lang um %s zu erhöhen"] = { false, { Stats.GenericAttackPower, }, ignoreSum = true } -- s37611
 L["eure schadenszauber haben eine chance, euren zauberschaden und eure heilung %s Sek. lang um bis zu %s zu erhöhen"] = { false, { Stats.SpellDamage, }, ignoreSum = true } -- s37619
 L["jedes mal, wenn ihr einen zauber wirkt, besteht die chance, dass ihr %s Sek. lang alle %s sek. bis zu %s mana regeneriert"] = { false, false, { Stats.GenericManaRegen, }, ignoreSum = true } -- s37655
-L["eine eisige welle schlägt über ziele vor dem zaubernden hinweg, fügt %s frostschaden zu und erhöht die zeit zwischen angriffen um %s%"] = { false, { Stats.MeleeHaste, }, } -- s37730
-L["verringert die ausdauer eines gegners um %s und dessen intelligenz um %s. hält %s Sek. lang an"] = { { Stats.Stamina, }, { Stats.Intellect, }, false, } -- s38254
+L["eine eisige welle schlägt über ziele vor dem zaubernden hinweg, fügt %s frostschaden zu und erhöht die zeit zwischen angriffen um %s%"] = { false, { Stats.MeleeHaste, }, reduction = true } -- s37730
+L["verringert die ausdauer eines gegners um %s und dessen intelligenz um %s. hält %s Sek. lang an"] = { { Stats.Stamina, }, { Stats.Intellect, }, false, reduction = true } -- s38254
 L["erhöht die zaubertempowirkung %s Sek. lang um %s"] = { false, { Stats.SpellHasteRating, }, } -- s38317
 L["eure kritischen zaubertreffer haben eine chance, dass euer zauberschaden  und eure heilung %s Sek. lang um %s erhöht wird"] = { false, { Stats.SpellDamage, }, ignoreSum = true } -- s38347
 L["erhöht eure verteidigungswertung um %s, aber verringert eure nahkampf- und distanzangriffskraft um %s. hält %s Sek. lang an"] = { { Stats.DefenseRating, }, { Stats.GenericAttackPower, }, false, } -- s38351
@@ -1747,18 +1747,18 @@ L["jedes mal, wenn ihr 'sturmschlag' wirkt, wird eure angriffskraft %s Sek. lang
 L["jedes mal, wenn gleichzeitig ein lufttotem, ein feuertotem, ein erdtotem und ein wassertotem von euch aktiv sind, erhaltet ihr alle %s sek. %s mana, %s kritische zaubertrefferwertung und bis zu %s zusätzlichen zauberschaden"] = { false, { Stats.GenericManaRegen, }, { Stats.SpellCritRating, }, { Stats.SpellDamage, }, } -- s38437
 L["erhöht %s Sek. lang den zugefügten schaden um %s% und verringert die zeit zwischen angriffen um %s%. bis zu %s-mal stapelbar"] = { false, false, { Stats.MeleeHaste, }, false, } -- s38449
 L["erhöht eure distanzangriffskraft um %s, alle werte um %s und die gesamtwerte um %s%"] = { { Stats.RangedAttackPower, }, { Stats.AllStats, }, false, } -- s38734
-L["alle werte um %s verringert"] = { { Stats.AllStats, }, } -- s38910
-L["verringert den zauberschaden um bis zu %s und gewirkte heilung um bis zu %s"] = { { Stats.SpellDamage, }, { Stats.HealingPower, }, } -- s38927
+L["alle werte um %s verringert"] = { { Stats.AllStats, }, reduction = true } -- s38910
+L["verringert den zauberschaden um bis zu %s und gewirkte heilung um bis zu %s"] = { { Stats.SpellDamage, }, { Stats.HealingPower, }, reduction = true } -- s38927
 L["erhöht %s Sek. lang die angriffskraft um %s und verringert die ausdauer um %s. kampfelixier"] = { false, { Stats.GenericAttackPower, }, { Stats.Stamina, }, } -- s38954
-L["ein heftiger angriff, der %s naturschaden verursacht und das ziel verkümmern lässt. mit jeder anwendung sinken die stärke und die ausdauer des ziels um %s. bis zu %s-mal stapelbar"] = { false, { Stats.Strength, Stats.Stamina, }, false, } -- s39015
-L["deckt euren gegner mit schattenblitzen ein, die %s schattenschaden verursachen und zu in der nähe befindlichen feinden weiterspringen. jeder sprung verringert den schattenwiderstand des ziels um %s. wirkt auf insgesamt %s ziele"] = { false, { Stats.ShadowResistance, }, false, } -- s39153
-L["in der nähe befindliche ziele werden desorientiert, wodurch ihr zaubertempo %s Sek. lang um %s verlangsamt wird"] = { false, { Stats.SpellHaste, }, } -- s39261
+L["ein heftiger angriff, der %s naturschaden verursacht und das ziel verkümmern lässt. mit jeder anwendung sinken die stärke und die ausdauer des ziels um %s. bis zu %s-mal stapelbar"] = { false, { Stats.Strength, Stats.Stamina, }, false, reduction = true } -- s39015
+L["deckt euren gegner mit schattenblitzen ein, die %s schattenschaden verursachen und zu in der nähe befindlichen feinden weiterspringen. jeder sprung verringert den schattenwiderstand des ziels um %s. wirkt auf insgesamt %s ziele"] = { false, { Stats.ShadowResistance, }, false, reduction = true } -- s39153
+L["in der nähe befindliche ziele werden desorientiert, wodurch ihr zaubertempo %s Sek. lang um %s verlangsamt wird"] = { false, { Stats.SpellHaste, }, reduction = true } -- s39261
 L["erhöht die verteidigung um %s"] = { { Stats.Defense, }, } -- s39421
 L["erhöht %s Sek. lang euren zauberschaden um bis zu %s"] = { false, { Stats.SpellDamage, }, } -- s39441
 L["jedes mal, wenn einer eurer direkt schaden verursachenden angriffe nicht kritisch trifft, werden %s sek. lang eure kritische trefferwertung um %s und eure kritische zaubertrefferwertung um %s erhöht. ein von euch zugefügter kritischer treffer verbraucht den effekt"] = { false, { Stats.MeleeCritRating, Stats.RangedCritRating, Stats.SpellCritRating, }, { Stats.MeleeCritRating, Stats.RangedCritRating, Stats.SpellCritRating, }, ignoreSum = true } -- s39442
 L["erhöht %s Sek. lang die maximale gesundheit um %s und regeneriert alle %s sek. %s gesundheit. wächterelixier"] = { false, { Stats.Health, }, false, { Stats.HealthRegen, }, } -- s39625
 L["erhöht %s Sek. lang die abhärtungswertung um %s. wächterelixier"] = { false, { Stats.ResilienceRating, }, } -- s39628
-L["erzeugt einen wütenden sturm im zielgebiet, der allen in der nähe befindlichen feinden alle %s sek. %s naturschaden zufügt und die zeit zwischen angriffen betroffener feinde um %s% erhöht. hält %s Sek. lang an. muss kanalisiert werden, um den zauber aufrechtzuerhalten"] = { false, false, { Stats.MeleeHaste, }, false, } -- s40090
+L["erzeugt einen wütenden sturm im zielgebiet, der allen in der nähe befindlichen feinden alle %s sek. %s naturschaden zufügt und die zeit zwischen angriffen betroffener feinde um %s% erhöht. hält %s Sek. lang an. muss kanalisiert werden, um den zauber aufrechtzuerhalten"] = { false, false, { Stats.MeleeHaste, }, false, reduction = true } -- s40090
 L["erhöht %s Sek. lang die zaubertempowertung um %s"] = { false, { Stats.SpellHasteRating, }, } -- s40395
 L["zapft die macht des schädels an, erhöht %s Sek. lang die zaubertempowertung um %s"] = { false, { Stats.SpellHasteRating, }, } -- s40396
 L["erhöht durch zauber und magische effekte verursachte heilung um bis zu %s"] = { { Stats.HealingPower, }, } -- s40440
@@ -1769,7 +1769,7 @@ L["eure finishing-moves haben eine chance von %s% pro combopunkt, %s Sek. lang %
 L["erhöht eure maximale gesundheit %s Sek. lang um %s"] = { false, { Stats.Health, }, } -- s40464
 L["jedes mal, wenn euer zauber 'verderbnis' schaden zufügt, besteht eine chance von %s%, euren zauberschaden %s Sek. lang um %s zu erhöhen"] = { false, false, { Stats.SpellDamage, }, ignoreSum = true } -- s40478
 L["erhöht von zaubern und effekten verursachten schaden um bis zu %s"] = { { Stats.SpellDamage, }, } -- s40480
-L["fügt einem gegner alle %s sek. naturschaden zu und verringert seine rüstung um %s. bis zu %s-mal stapelbar. hält %s Sek. lang an"] = { false, { Stats.Armor, }, false, false, } -- s40481
+L["fügt einem gegner alle %s sek. naturschaden zu und verringert seine rüstung um %s. bis zu %s-mal stapelbar. hält %s Sek. lang an"] = { false, { Stats.Armor, }, false, false, reduction = true } -- s40481
 L["eure kritischen treffer mit zaubern haben eine chance von %s%, euch %s Sek. lang %s zaubertempowertung zu gewähren"] = { false, false, { Stats.MeleeHasteRating, Stats.RangedHasteRating, Stats.SpellHasteRating, }, ignoreSum = true } -- s40482
 L["erhöht die zaubertempowertung um bis zu %s"] = { { Stats.MeleeHasteRating, Stats.RangedHasteRating, Stats.SpellHasteRating, }, } -- s40483
 L["eure fähigkeit 'zuverlässiger schuss' hat eine chance von %s%, euch %s Sek. lang %s angriffskraft zu gewähren"] = { false, false, { Stats.GenericAttackPower, }, ignoreSum = true } -- s40485
@@ -1785,15 +1785,15 @@ L["erhöht %s Sek. lang die angriffskraft um %s. gilt sowohl als kampfelixier al
 L["erhöht die maximale gesundheit des spielers %s Sek. lang um %s und die verteidigungswertung um %s. gilt sowohl als kampfelixier als auch als wächterelixier. dieser effekt hält über den tod hinaus an"] = { false, { Stats.Health, }, { Stats.DefenseRating, }, } -- s41607
 L["erhöht die waffenkundewertung um %s"] = { { Stats.ExpertiseRating, }, } -- s41730
 L["erhöht eure abhärtung um %s"] = { { Stats.ResilienceRating, }, } -- s41876
-L["vergiftet das ziel, erhöht die zeit zwischen seinen angriffen um %s%, erhöht seine zauberzeit um %s% und fügt alle %s sek. %s naturschaden zu"] = { false, { Stats.SpellHaste, }, false, false, } -- s41978
+L["vergiftet das ziel, erhöht die zeit zwischen seinen angriffen um %s%, erhöht seine zauberzeit um %s% und fügt alle %s sek. %s naturschaden zu"] = { false, { Stats.SpellHaste, }, false, false, reduction = true } -- s41978
 L["erhöht eure nahkampftrefferwertung um %s"] = { { Stats.MeleeHitRating, }, } -- s42155
 L["erhöht %s Sek. lang den widerstand gegen alle arten von magie um %s und alle werte um %s. gilt sowohl als kampfelixier als auch als wächterelixier. dieser effekt hält über den tod hinaus an"] = { false, { Stats.FireResistance, Stats.NatureResistance, Stats.FrostResistance, Stats.ShadowResistance, Stats.ArcaneResistance, }, { Stats.AllStats, }, } -- s42735
-L["verringert die rüstung eines gegners %s Sek. lang um %s"] = { false, { Stats.Armor, }, } -- s42747
+L["verringert die rüstung eines gegners %s Sek. lang um %s"] = { false, { Stats.Armor, }, reduction = true } -- s42747
 L["erfüllt das ziel mit macht, verringert seine zauberzeit um %s% und erhöht sein bewegungstempo um %s%"] = { { Stats.SpellHaste, }, false, } -- s43242
 L["versetzt das ziel in raserei und erhöht sein angriffstempo um %s%"] = { { Stats.MeleeHaste, }, } -- s43292
-L["fügt %s% waffenschaden zu und verringert die rüstung des ziels %s Sek. lang um %s"] = { false, false, { Stats.Armor, }, } -- s43529
+L["fügt %s% waffenschaden zu und verringert die rüstung des ziels %s Sek. lang um %s"] = { false, false, { Stats.Armor, }, reduction = true } -- s43529
 L["erhöht den zauberschaden um bis zu %s% und die heilung um bis zu %s% der gesamten angriffskraft. erhöht die expertise um %s"] = { false, { Stats.ExpertiseRating, }, false, } -- s43574
-L["fügt allen nahen feinden %s naturschaden zu und verringert das angriffstempo um %s%"] = { false, { Stats.MeleeHaste, }, } -- s43583
+L["fügt allen nahen feinden %s naturschaden zu und verringert das angriffstempo um %s%"] = { false, { Stats.MeleeHaste, }, reduction = true } -- s43583
 L["stellt im verlauf von %s Sek. insgesamt %s mana wieder her. ihr müsst beim trinken sitzen bleiben. wenn ihr mindestens %s sekunden mit trinken verbringt, werdet ihr erleuchtet und erhaltet %s Sek. lang %s kritische zaubertrefferwertung und willenskraft"] = { false, { Stats.GenericManaRegen, }, false, false, { Stats.SpellCritRating, }, } -- s43706
 L["erhöht die abhärtungswertung %s Sek. lang um %s"] = { false, { Stats.ResilienceRating, }, } -- s43717
 L["eure fähigkeit 'zerfleischen' hat die chance, %s Sek. lang %s beweglichkeit zu gewähren"] = { false, { Stats.Agility, }, ignoreSum = true } -- s43737
@@ -1808,7 +1808,7 @@ L["eure nahkampfangriffe haben eine chance von %s%, bei eurem nächsten angriff 
 L["eure fähigkeit 'zerfleischen' gewährt euch zusätzlich %s Sek. lang %s abhärtungswertung"] = { false, { Stats.ResilienceRating, }, ignoreSum = true } -- s43840
 L["stellt im verlauf von %s Sek. insgesamt %s mana wieder her. ihr müsst beim trinken sitzen bleiben. wenn ihr mindestens %s sekunden mit trinken verbringt, werdet ihr satt und erhaltet %s Sek. lang %s ausdauer und willenskraft. normaler alkohol"] = { false, { Stats.GenericManaRegen, }, false, false, { Stats.Stamina, }, } -- s44115
 L["stellt im verlauf von %s Sek. insgesamt %s mana wieder her. ihr müsst beim trinken sitzen bleiben. wenn ihr mindestens %s sekunden mit trinken verbringt, werdet ihr satt und erhaltet %s Sek. lang %s stärke und willenskraft. starker alkohol"] = { false, { Stats.GenericManaRegen, }, false, false, { Stats.Strength, }, } -- s44116
-L["fügt feinden in einem kegelförmigen bereich vor dem zaubernden frostschaden zu und verlangsamt ihr angriffstempo %s Sek. lang um %s%"] = { false, { Stats.MeleeHaste, }, } -- s44799
+L["fügt feinden in einem kegelförmigen bereich vor dem zaubernden frostschaden zu und verlangsamt ihr angriffstempo %s Sek. lang um %s%"] = { false, { Stats.MeleeHaste, }, reduction = true } -- s44799
 L["erfüllt das ziel mit macht, verringert seine zauberzeit %s Sek. sek. lang um %s%"] = { false, { Stats.SpellHaste, }, } -- s44605
 L["erhöht das distanzangriffstempo um %s%. ergänzt sich nicht mit hasteffekten von köchern oder munitionsbeuteln"] = { { Stats.RangedHaste, }, } -- s44972
 L["stellt im verlauf von %s Sek. %s mana wieder her. ihr müsst beim trinken sitzen bleiben. wenn ihr mindestens %s sekunden lang mit trinken verbringt, werdet ihr satt und erhaltet %s Sek. lang %s ausdauer und willenskraft"] = { false, { Stats.GenericManaRegen, }, false, false, { Stats.Stamina, }, } -- s45019
@@ -1825,11 +1825,11 @@ L["gewährt alle %s sekunden %s mana"] = { false, { Stats.GenericManaRegen, }, }
 L["die warme ausstrahlung des sonnenbrunnens erfüllt das ziel mit macht, erhöht seiner trefferchance um %s% und verringert die ausweichchance von gegnern um %s%"] = { { Stats.MeleeHit, Stats.RangedHit, }, false, } -- s45769
 L["erhöht euren zauberdurchschlag um %s"] = { { Stats.SpellPenetration, }, } -- s46055
 L["eure fähigkeit 'zerfleischen' verleiht euch %s Sek. lang %s abhärtungswertung"] = { false, { Stats.ResilienceRating, }, ignoreSum = true } -- s46088
-L["verringert %s Sek. lang die intelligenz eines gegners um %s und seine willenskraft um %s"] = { false, { Stats.Intellect, }, { Stats.Spirit, }, } -- s46294
-L["verringert %s Sek. lang den schattenwiderstand eines gegners um %s"] = { false, { Stats.ShadowResistance, }, } -- s46297
-L["verringert %s Sek. lang die stärke eines gegners um %s und seine ausdauer um %s"] = { false, { Stats.Strength, }, { Stats.Stamina, }, } -- s46298
+L["verringert %s Sek. lang die intelligenz eines gegners um %s und seine willenskraft um %s"] = { false, { Stats.Intellect, }, { Stats.Spirit, }, reduction = true } -- s46294
+L["verringert %s Sek. lang den schattenwiderstand eines gegners um %s"] = { false, { Stats.ShadowResistance, }, reduction = true } -- s46297
+L["verringert %s Sek. lang die stärke eines gegners um %s und seine ausdauer um %s"] = { false, { Stats.Strength, }, { Stats.Stamina, }, reduction = true } -- s46298
 L["k'irus anwesenheit erhöht eure ausdauer um %s und eure intelligenz um %s"] = { { Stats.Stamina, }, { Stats.Intellect, }, } -- s46302
-L["verringert die rüstung von nahen gegnern %s Sek. lang um %s"] = { false, { Stats.Armor, }, } -- s46469
+L["verringert die rüstung von nahen gegnern %s Sek. lang um %s"] = { false, { Stats.Armor, }, reduction = true } -- s46469
 L["stellt im verlauf von %s Sek. insgesamt %s gesundheit wieder her. ihr müsst beim essen sitzen bleiben. wenn ihr mindestens %s sekunden mit essen verbringt, werdet ihr satt und euer zauberschaden und eure heilung werden %s Sek. lang um bis zu %s erhöht"] = { false, false, false, false, { Stats.SpellDamage, }, ignoreSum = true } -- s46683
 L["erhöht %s Sek. lang den von nahen gruppenmitgliedern zugefügten schaden %s% und die angriffskraft um %s%"] = { false, false, { Stats.MeleeHaste, }, } -- s46763
 L["erhöht %s Sek. lang die ausweichwertung um %s"] = { false, { Stats.DodgeRating, }, } -- s46780
@@ -1842,7 +1842,7 @@ L["erhöht %s Sek. lang die heilung um bis zu %s und den zauberschaden um bis zu
 L["erhöht nahkampf-, distanz- und zaubertempowertung von gruppenmitgliedern innerhalb von %s metern um %s. hält %s Sek. lang an. trommeln können in gestaltverändertem zustand benutzt werden"] = { false, { Stats.MeleeHasteRating, Stats.RangedHasteRating, Stats.SpellHasteRating, }, false, } -- s351355
 L["erhöht bei allen gruppenmitgliedern innerhalb von %s metern die angriffskraft um %s und den zauberschaden um %s. hält %s Sek. lang an. trommeln können in gestaltverändertem zustand benutzt werden"] = { false, { Stats.GenericAttackPower, }, { Stats.SpellDamage, }, false, } -- s351360
 L["verteidigungswertung um %s erhöht"] = { { Stats.DefenseRating, }, } -- s352336
-L["stürmt auf einen gegner zu, fügt dem ziel normalen schaden plus %s zu und betäubt ihn %s Sek. lang"] = { { Stats.MeleeHaste, }, false, } -- s35412
+L["stürmt auf einen gegner zu, fügt dem ziel normalen schaden plus %s zu und betäubt ihn %s Sek. lang"] = { { Stats.MeleeHaste, }, false, reduction = true } -- s35412
 L["erhöht den widerstand von in der nähe befindlichen gruppenmitgliedern gegen alle arten von magie %s Sek. lang um %s"] = { false, { Stats.FireResistance, Stats.NatureResistance, Stats.FrostResistance, Stats.ShadowResistance, Stats.ArcaneResistance, }, } -- s41453
 L["ermöglicht %s Sek. lang die verwandlung in einen bären, erhöht den schaden und verringert das angriffstempo um %s%"] = { false, { Stats.MeleeHaste, }, } -- s42607
 L["geschärft (%s schaden)"] = { { Stats.AverageWeaponDamage, }, } -- e13
@@ -1987,27 +1987,27 @@ L["%s zaubertempowertung und %s zauberschaden"] = { { Stats.SpellHasteRating, },
 L["%s zaubertempowertung und %s ausdauer"] = { { Stats.SpellHasteRating, }, { Stats.Stamina, }, } -- e3272
 L["%s verteidigungswertung & %s% schildblockwert"] = { { Stats.DefenseRating, }, false, } -- e3274
 L["%s zauberschaden & %s% intelligenz"] = { { Stats.SpellPower, }, false, } -- e3275
-L["gewährt den schaden verursachenden nahkampfangriffen des paladins eine chance, die angriffskraft des ziels %s Sek. lang um %s zu verringern"] = { false, { Stats.AttackPower, }, } -- s67
-L["verkrüppelt das ziel, verringert dessen bewegungstempo um %s% und erhöht die zeit zwischen nahkampf- und distanzangriffen um %s%. hält %s Sek. lang an"] = { false, { Stats.MeleeHaste, Stats.RangedHaste, }, false, } -- s89
+L["gewährt den schaden verursachenden nahkampfangriffen des paladins eine chance, die angriffskraft des ziels %s Sek. lang um %s zu verringern"] = { false, { Stats.AttackPower, }, reduction = true } -- s67
+L["verkrüppelt das ziel, verringert dessen bewegungstempo um %s% und erhöht die zeit zwischen nahkampf- und distanzangriffen um %s%. hält %s Sek. lang an"] = { false, { Stats.MeleeHaste, Stats.RangedHaste, }, false, reduction = true } -- s89
 L["gibt gruppen- und schlachtzugsmitgliedern in einem umkreis von %s metern %s zusätzliche rüstung. spieler können pro paladin immer nur jeweils eine aura besitzen"] = { false, { Stats.Armor, }, } -- s465
 L["schützt den zaubernden, erhöht die rüstung um %s und erhöht die durch zauber und effekte erzeugte gesundheit um %s%. es kann immer nur ein rüstungszauber zur selben zeit auf dem hexenmeister aktiv sein. hält %s Sek. an"] = { { Stats.Armor, }, false, false, } -- s687
-L["die nahkampfangriffskraft des ziels wird um %s verringert, seine rüstung um %s%. hält %s Sek. lang an. es kann immer nur jeweils ein fluch pro hexenmeister auf einem beliebigen ziel aktiv sein"] = { { Stats.AttackPower, }, false, false, } -- s702
-L["verflucht das ziel und verringert %s Sek. lang seinen arkan-, feuer-, frost-, natur- und schattenwiderstand um %s. erhöht außerdem den erlittenen magieschaden des ziels um %s%. es kann immer nur jeweils ein fluch pro hexenmeister auf einem beliebigen ziel aktiv sein"] = { false, { Stats.FireResistance, Stats.NatureResistance, Stats.FrostResistance, Stats.ShadowResistance, Stats.ArcaneResistance, }, false, } -- s1490
+L["die nahkampfangriffskraft des ziels wird um %s verringert, seine rüstung um %s%. hält %s Sek. lang an. es kann immer nur jeweils ein fluch pro hexenmeister auf einem beliebigen ziel aktiv sein"] = { { Stats.AttackPower, }, false, false, reduction = true } -- s702
+L["verflucht das ziel und verringert %s Sek. lang seinen arkan-, feuer-, frost-, natur- und schattenwiderstand um %s. erhöht außerdem den erlittenen magieschaden des ziels um %s%. es kann immer nur jeweils ein fluch pro hexenmeister auf einem beliebigen ziel aktiv sein"] = { false, { Stats.FireResistance, Stats.NatureResistance, Stats.FrostResistance, Stats.ShadowResistance, Stats.ArcaneResistance, }, false, reduction = true } -- s1490
 L["der krieger schreit und erhöht so die angriffskraft aller gruppen- und schlachtzugsmitglieder im umkreis von %s metern um %s. hält %s Sek. lang an"] = { false, { Stats.GenericAttackPower, }, false, } -- s2048
 L["erhöht eure blockchance und euren blockwert %s Sek. lang um %s%"] = { false, { Stats.BlockChance, }, } -- s2565
 L["lässt den zaubernden %s Sek. lang in eine irrsinnige raserei verfallen. erhöht das angriffstempo des zaubernden um %s%, verlangsamt aber sein bewegungstempo um %s% und verringert den von ihm zugefügten körperlichen schaden um %s"] = { false, { Stats.MeleeHaste, }, false, { Stats.AverageWeaponDamage, }, } -- s3547
-L["verwandelt das ziel in einen lepragnom und verringert %s Sek. lang seinen nahkampfschaden und seine zaubermacht um %s sowie sein bewegungstempo um %s%"] = { false, { Stats.SpellDamage, }, false, } -- s4060
+L["verwandelt das ziel in einen lepragnom und verringert %s Sek. lang seinen nahkampfschaden und seine zaubermacht um %s sowie sein bewegungstempo um %s%"] = { false, { Stats.SpellDamage, }, false, reduction = true } -- s4060
 L["gibt gruppenmitgliedern in einem radius von %s metern %s Sek. lang %s stärke und %s beweglichkeit"] = { false, false, { Stats.Strength, }, { Stats.Agility, }, } -- s4147
-L["verursacht alle %s sek. feuerschaden bei einem feind, erhöht die zeit zwischen seinen angriffen um %s% und verringert sein bewegungstempo um %s%. hält %s Sek. lang an"] = { false, { Stats.MeleeHaste, }, false, false, } -- s5213
+L["verursacht alle %s sek. feuerschaden bei einem feind, erhöht die zeit zwischen seinen angriffen um %s% und verringert sein bewegungstempo um %s%. hält %s Sek. lang an"] = { false, { Stats.MeleeHaste, }, false, false, reduction = true } -- s5213
 L["erhöht den verursachten schaden %s Sek. lang um %s"] = { false, { Stats.AverageWeaponDamage, }, } -- s5217
 L["erhöht den widerstand gegen alle arten von magie um %s und gewährt dem zaubernden %s% manaregeneration während des zauberwirkens. es kann immer nur ein rüstungszauber zur selben zeit auf dem magier aktiv sein. hält %s Sek. lang an"] = { { Stats.FireResistance, Stats.NatureResistance, Stats.FrostResistance, Stats.ShadowResistance, Stats.ArcaneResistance, }, false, false, } -- s6117
-L["erhöht die rüstung. schlägt ein feind den zaubernden, besteht eine chance, dass sein bewegungstempo %s Sek. lang um %s% verringert sowie die zeit zwischen seinen angriffen um %s% erhöht wird. es kann immer nur ein rüstungszauber zur selben zeit auf dem magier aktiv sein"] = { false, false, { Stats.MeleeHaste, }, } -- s6136
-L["trifft nahe feinde, erhöht die zeit zwischen ihren angriffen %s Sek. lang um %s% und verursacht %s schaden. schaden wird durch angriffskraft erhöht. diese fähigkeit verursacht zusätzliche bedrohung"] = { false, { Stats.MeleeHaste, }, false, } -- s6343
+L["erhöht die rüstung. schlägt ein feind den zaubernden, besteht eine chance, dass sein bewegungstempo %s Sek. lang um %s% verringert sowie die zeit zwischen seinen angriffen um %s% erhöht wird. es kann immer nur ein rüstungszauber zur selben zeit auf dem magier aktiv sein"] = { false, false, { Stats.MeleeHaste, }, reduction = true } -- s6136
+L["trifft nahe feinde, erhöht die zeit zwischen ihren angriffen %s Sek. lang um %s% und verursacht %s schaden. schaden wird durch angriffskraft erhöht. diese fähigkeit verursacht zusätzliche bedrohung"] = { false, { Stats.MeleeHaste, }, false, reduction = true } -- s6343
 L["erhöht eure chance und die aller gruppenmitglieder im umkreis von %s metern, mit angriffen und zaubern einen treffer zu erzielen, um %s%"] = { false, { Stats.MeleeHit, Stats.RangedHit, Stats.SpellHit, }, } -- s6562
-L["verflucht einen gegner %s Sek. lang und verringert regelmäßig eine seiner fähigkeiten um %s"] = { false, { Stats.WeaponSkill, Stats.Defense, }, } -- s7048
-L["eine donnernde staubwolke fliegt ins gesicht der gegner in der nähe und verringert %s Sek. lang ihre trefferchance um %s%"] = { false, { Stats.MeleeHit, Stats.RangedHit, }, } -- s7272
-L["verringert das bewegungstempo des angreifers um %s% und erhöht die zeit zwischen seinen angriffen um %s%"] = { false, { Stats.MeleeHaste, }, } -- s7321
-L["verursacht alle %s sek. naturschaden bei einem feind, erhöht die zeit zwischen seinen angriffen um %s% und verringert %s Sek. lang sein bewegungstempo"] = { false, { Stats.MeleeHaste, }, false, } -- s7357
+L["verflucht einen gegner %s Sek. lang und verringert regelmäßig eine seiner fähigkeiten um %s"] = { false, { Stats.WeaponSkill, Stats.Defense, }, reduction = true } -- s7048
+L["eine donnernde staubwolke fliegt ins gesicht der gegner in der nähe und verringert %s Sek. lang ihre trefferchance um %s%"] = { false, { Stats.MeleeHit, Stats.RangedHit, }, reduction = true } -- s7272
+L["verringert das bewegungstempo des angreifers um %s% und erhöht die zeit zwischen seinen angriffen um %s%"] = { false, { Stats.MeleeHaste, }, reduction = true } -- s7321
+L["verursacht alle %s sek. naturschaden bei einem feind, erhöht die zeit zwischen seinen angriffen um %s% und verringert %s Sek. lang sein bewegungstempo"] = { false, { Stats.MeleeHaste, }, false, reduction = true } -- s7357
 L["verursachter körperlicher schaden wird um %s erhöht.\nverursachter magieschaden wird um %s erhöht"] = { { Stats.AverageWeaponDamage, }, { Stats.SpellDamage, }, } -- s7657
 L["erhöht die zaubermacht um %s"] = { { Stats.SpellPower, }, } -- s7675
 L["erhöht die feuerzaubermacht um %s"] = { { Stats.FireDamage, }, } -- s7683
@@ -2015,29 +2015,29 @@ L["erhöht die naturzaubermacht um %s"] = { { Stats.NatureDamage, }, } -- s7690
 L["erhöht die frostzaubermacht um %s"] = { { Stats.FrostDamage, }, } -- s7697
 L["erhöht die schattenzaubermacht um %s"] = { { Stats.ShadowDamage, }, } -- s7704
 L["erhöht die feuerzaubermacht %s Sek. lang um %s. kampfelixier"] = { false, { Stats.FireDamage, }, } -- s7844
-L["erhöht die zeit zwischen angriffen eines gegners um %s% und verlangsamt sein bewegungstempo. hält %s Sek. lang an"] = { { Stats.MeleeHaste, }, false, } -- s7992
-L["zeit zwischen angriffen %s Sek. lang um %s% erhöht"] = { false, { Stats.MeleeHaste, }, } -- s7998
-L["schockt das ziel unmittelbar mit erschütternder kraft, verursacht %s naturschaden und verringert %s Sek. lang das nahkampfangriffstempo des gegners um %s%"] = { false, false, { Stats.MeleeHaste, }, } -- s8042
-L["verursacht naturschaden bei nahen gegnern, erhöht die zeit zwischen ihren angriffen um %s% und verlangsamt ihr bewegungstempo. hält %s Sek. lang an"] = { { Stats.MeleeHaste, }, false, } -- s8078
+L["erhöht die zeit zwischen angriffen eines gegners um %s% und verlangsamt sein bewegungstempo. hält %s Sek. lang an"] = { { Stats.MeleeHaste, }, false, reduction = true } -- s7992
+L["zeit zwischen angriffen %s Sek. lang um %s% erhöht"] = { false, { Stats.MeleeHaste, }, reduction = true } -- s7998
+L["schockt das ziel unmittelbar mit erschütternder kraft, verursacht %s naturschaden und verringert %s Sek. lang das nahkampfangriffstempo des gegners um %s%"] = { false, false, { Stats.MeleeHaste, }, reduction = true } -- s8042
+L["verursacht naturschaden bei nahen gegnern, erhöht die zeit zwischen ihren angriffen um %s% und verlangsamt ihr bewegungstempo. hält %s Sek. lang an"] = { { Stats.MeleeHaste, }, false, reduction = true } -- s8078
 L["erhöht %s Sek. lang die rüstung des ziels um %s. es kann immer nur ein schriftrolleneffekt gleichzeitig wirken"] = { false, { Stats.Armor, }, } -- s8091
 L["erhöht %s Sek. lang die intelligenz des ziels um %s. es kann immer nur ein schriftrolleneffekt gleichzeitig wirken"] = { false, { Stats.Intellect, }, } -- s8096
 L["erhöht %s Sek. lang die ausdauer des ziels um %s. es kann immer nur ein schriftrolleneffekt gleichzeitig wirken"] = { false, { Stats.Stamina, }, } -- s8099
 L["erhöht %s Sek. lang die willenskraft des ziels um %s. es kann immer nur ein schriftrolleneffekt gleichzeitig wirken"] = { false, { Stats.Spirit, }, } -- s8112
 L["erhöht %s Sek. lang die beweglichkeit des ziels um %s. es kann immer nur ein schriftrolleneffekt gleichzeitig wirken"] = { false, { Stats.Agility, }, } -- s8115
 L["erhöht %s Sek. lang die stärke des ziels um %s. es kann immer nur ein schriftrolleneffekt gleichzeitig wirken"] = { false, { Stats.Strength, }, } -- s8118
-L["fügt gegnern in der nähe naturschaden zu, erhöht die zeit zwischen ihren angriffen um %s% und verlangsamt ihre bewegungen um %s%. hält %s Sek. lang an"] = { { Stats.MeleeHaste, }, false, false, } -- s8147
+L["fügt gegnern in der nähe naturschaden zu, erhöht die zeit zwischen ihren angriffen um %s% und verlangsamt ihre bewegungen um %s%. hält %s Sek. lang an"] = { { Stats.MeleeHaste, }, false, false, reduction = true } -- s8147
 L["erhöht die intelligenz um %s.\nerhöht die willenskraft um %s.\nerhöht den verursachten frostschaden um %s"] = { { Stats.Intellect, }, { Stats.Spirit, }, { Stats.FrostDamage, }, } -- s8733
-L["gewährt den schaden verursachenden angriffen des paladins eine chance, die angriffskraft des ziels %s Sek. lang um %s zu verringern"] = { false, { Stats.AttackPower, }, ignoreSum = true } -- s9452
-L["verringert verursachten körperlichen schaden um %s"] = { { Stats.AverageWeaponDamage, }, } -- s10072
+L["gewährt den schaden verursachenden angriffen des paladins eine chance, die angriffskraft des ziels %s Sek. lang um %s zu verringern"] = { false, { Stats.AttackPower, }, ignoreSum = true, reduction = true } -- s9452
+L["verringert verursachten körperlichen schaden um %s"] = { { Stats.AverageWeaponDamage, }, reduction = true } -- s10072
 L["erhöht angriffstempo um %s%.\nerhöht zaubertempo um %s%.\nerhöht bewegungstempo um %s%"] = { { Stats.MeleeHaste, }, { Stats.SpellHaste, }, false, } -- s10348
 L["erhöht die chance für einen kritischen treffer eurer feuerzauber um %s%"] = { { Stats.SpellCrit, }, } -- s11115
 L["erhöht den schattenwiderstand um %s. wenn ein feind den benutzer trifft, besteht eine chance von %s%, dass der angreifende feind verflucht wird. der fluch erhöht %s Sek. lang den erlittenen schaden um %s. hält %s Sek. lang an. wächterelixier"] = { { Stats.ShadowResistance, }, false, false, false, false, } -- s11371
 L["erhöht die zaubermacht %s Sek. lang um %s. kampfelixier"] = { false, { Stats.SpellPower, }, } -- s11390
 L["erhöht die schattenzaubermacht %s Sek. lang um bis zu %s. kampfelixier"] = { false, { Stats.ShadowDamage, }, } -- s11474
-L["verflucht das ziel und verringert %s Sek. lang seine nahkampfangriffskraft um %s"] = { false, { Stats.AttackPower, }, } -- s11960
+L["verflucht das ziel und verringert %s Sek. lang seine nahkampfangriffskraft um %s"] = { false, { Stats.AttackPower, }, reduction = true } -- s11960
 L["fixiert einen feind auf den zaubernden und erhöht das angriffstempo des zaubernden %s Sek. lang um %s%. solange der zaubernde auf das ziel fixiert ist, ist er kaum willig, irgendetwas anderes anzugreifen"] = { false, { Stats.MeleeHaste, }, } -- s12021
 L["erhöht eure chance, angriffe mit einem schild zu blocken, um %s% und gewährt eine %s% chance %s wut zu generieren, wenn erfolgreich geblockt, ausgewichen oder pariert wurde"] = { { Stats.BlockChance, }, false, false, } -- s12298
-L["trefferchance um %s% reduziert"] = { { Stats.MeleeHit, Stats.RangedHit, }, } -- s12541
+L["trefferchance um %s% reduziert"] = { { Stats.MeleeHit, Stats.RangedHit, }, reduction = true } -- s12541
 L["erhöht %s Sek. lang den verursachten schaden um %s und die tempowertung um %s"] = { false, { Stats.AverageWeaponDamage, }, { Stats.MeleeHasteRating, Stats.RangedHasteRating, Stats.SpellHasteRating, }, } -- s12686
 L["erhöht eure chance, mit äxten und stangenwaffe einen kritischen treffer zu erzielen sowie den verursachten kritischen schaden um %s%"] = { { Stats.MeleeCrit, Stats.RangedCrit, }, } -- s12700
 L["erhöht eure tempowertung %s Sek. lang um %s"] = { false, { Stats.MeleeHasteRating, Stats.RangedHasteRating, Stats.SpellHasteRating, }, } -- s13494
@@ -2046,14 +2046,14 @@ L["erhöht die arkanzaubermacht um %s"] = { { Stats.ArcaneDamage, }, } -- s13590
 L["erhöht eure chance, mit waffen und giftangriffen zu treffen, um %s%"] = { { Stats.MeleeHit, Stats.RangedHit, Stats.SpellHit, }, } -- s13705
 L["erhöht eure chance, mit dolchen und faustwaffen einen kritischen treffer zu erzielen, um %s%"] = { { Stats.MeleeCrit, Stats.RangedCrit, }, } -- s13706
 L["erhöht eure ausweichchance um %s% und gewährt euch %s% nahkampfangriffstempo"] = { { Stats.Dodge, }, { Stats.MeleeHaste, }, } -- s13712
-L["ein schlag, der aktiv wird, nachdem ein gegnerischer angriff pariert wurde. dieser angriff verursacht %s% waffenschaden und verlangsamt das nahkampfangriffstempo des gegners %s Sek. lang um %s%. gewährt %s combopunkt"] = { false, false, { Stats.MeleeHaste, }, false, } -- s14251
-L["ein schlag, der aktiv wird, nachdem ein gegnerischer angriff pariert wurde. dieser angriff verursacht %s% waffenschaden und verlangsamt das nahkampfangriffstempo des gegners %s Sek. lang um %s%. gewährt %s combopunkte"] = { false, false, { Stats.MeleeHaste, }, false, } -- s14251
+L["ein schlag, der aktiv wird, nachdem ein gegnerischer angriff pariert wurde. dieser angriff verursacht %s% waffenschaden und verlangsamt das nahkampfangriffstempo des gegners %s Sek. lang um %s%. gewährt %s combopunkt"] = { false, false, { Stats.MeleeHaste, }, false, reduction = true } -- s14251
+L["ein schlag, der aktiv wird, nachdem ein gegnerischer angriff pariert wurde. dieser angriff verursacht %s% waffenschaden und verlangsamt das nahkampfangriffstempo des gegners %s Sek. lang um %s%. gewährt %s combopunkte"] = { false, false, { Stats.MeleeHaste, }, false, reduction = true } -- s14251
 L["ein stoß, der %s% waffenschaden (oder bei ausrüstung mit einem dolch %s% waffenschaden) verursacht und eure ausweichchance %s Sek. lang um %s% erhöht. gewährt %s combopunkt"] = { false, false, false, { Stats.Dodge, }, false, } -- s14278
 L["ein stoß, der %s% waffenschaden (oder bei ausrüstung mit einem dolch %s% waffenschaden) verursacht und eure ausweichchance %s Sek. lang um %s% erhöht. gewährt %s combopunkte"] = { false, false, false, { Stats.Dodge, }, false, } -- s14278
 L["lässt befreundete einheiten in einem radius von %s metern um %s% schneller angreifen"] = { false, { Stats.MeleeHaste, }, } -- s15167
 L["erhöht %s Sek. lang eure willenskraft um %s. wächterelixier"] = { false, { Stats.Spirit, }, } -- s15231
 L["erhöht %s Sek. lang eure rüstung um %s. wächterelixier"] = { false, { Stats.Armor, }, } -- s15233
-L["verringert die rüstung eines feindlichen ziels %s Sek. lang um %s"] = { false, { Stats.Armor, }, } -- s15235
+L["verringert die rüstung eines feindlichen ziels %s Sek. lang um %s"] = { false, { Stats.Armor, }, reduction = true } -- s15235
 L["erhöht %s Sek. lang die kritische trefferwertung um %s und alle attribute um %s"] = { false, { Stats.MeleeCritRating, Stats.RangedCritRating, Stats.SpellCritRating, }, { Stats.AllStats, }, } -- s15366
 L["erhöht %s Sek. lang das angriffstempo und den zugefügten körperlichen schaden des zaubernden um %s%"] = { false, { Stats.MeleeHaste, }, } -- s15716
 L["nach dem erzielen eines kritischen treffers wird euer angriffstempo für die nächsten %s schwünge um %s% erhöht"] = { false, { Stats.MeleeHaste, }, } -- s16277
@@ -2063,21 +2063,21 @@ L["erhöht feuerwiderstand %s Sek. lang um %s"] = { false, { Stats.FireResistanc
 L["verursachter körperlicher schaden um %s erhöht.\nangriffsgeschwindigkeit um %s% erhöht.\nhält %s Sek. an"] = { { Stats.AverageWeaponDamage, }, { Stats.MeleeHaste, }, false, } -- s16791
 L["verringert die durch erlittenen schaden verursachte verzögerung der zauberzeit beim wirken von 'sternenfeuer', 'winterschlaf' und 'hurrikan' um %s% und erhöht euer gesamtes zaubertempo um %s%"] = { false, { Stats.SpellHaste, }, } -- s16850
 L["kritische zaubertreffer von unregelmäßigen zaubern haben eine chance von %s%, euch den segen der natur zu gewähren, der euer zaubertempo %s Sek. lang um %s% erhöht"] = { false, false, { Stats.SpellHaste, }, ignoreSum = true } -- s16880
-L["erzeugt einen wütenden sturm im zielgebiet, der feinden alle %s sek. %s naturschaden zufügt, ihr bewegungstempo um %s% verringertund die zeit zwischen ihren angriffen um %s% erhöht. hält %s Sek. lang an. ein druide muss seine kräfte kanalisieren, um den zauber aufrechtzuerhalten"] = { false, false, false, { Stats.MeleeHaste, }, false, } -- s16914
-L["erzeugt einen wütenden sturm im zielgebiet, der feinden alle %s sek. %s naturschaden zufügt und die zeit zwischen ihren angriffen um %s% erhöht. hält %s Sek. lang an. ein druide muss seine kräfte kanalisieren, um den zauber aufrechtzuerhalten"] = { false, false, { Stats.MeleeHaste, }, false, } -- s16914
-L["verringert die rüstung eines feindes um %s. bis zu %s-mal stapelbar"] = { { Stats.Armor, }, false, } -- s16928
-L["verringert alle werte um %s und fügt jedem feind in einem radius von %s metern um den zaubernden %s Sek. lang alle %s sek. %s naturschaden zu"] = { { Stats.AllStats, }, false, false, false, false, } -- s17196
+L["erzeugt einen wütenden sturm im zielgebiet, der feinden alle %s sek. %s naturschaden zufügt, ihr bewegungstempo um %s% verringertund die zeit zwischen ihren angriffen um %s% erhöht. hält %s Sek. lang an. ein druide muss seine kräfte kanalisieren, um den zauber aufrechtzuerhalten"] = { false, false, false, { Stats.MeleeHaste, }, false, reduction = true } -- s16914
+L["erzeugt einen wütenden sturm im zielgebiet, der feinden alle %s sek. %s naturschaden zufügt und die zeit zwischen ihren angriffen um %s% erhöht. hält %s Sek. lang an. ein druide muss seine kräfte kanalisieren, um den zauber aufrechtzuerhalten"] = { false, false, { Stats.MeleeHaste, }, false, reduction = true } -- s16914
+L["verringert die rüstung eines feindes um %s. bis zu %s-mal stapelbar"] = { { Stats.Armor, }, false, reduction = true } -- s16928
+L["verringert alle werte um %s und fügt jedem feind in einem radius von %s metern um den zaubernden %s Sek. lang alle %s sek. %s naturschaden zu"] = { { Stats.AllStats, }, false, false, false, false, reduction = true } -- s17196
 L["erhöht die zaubermacht um %s und die kritische trefferwertung um %s. hält %s Sek. lang an. kampfelixier"] = { { Stats.SpellPower, }, { Stats.MeleeCritRating, Stats.RangedCritRating, Stats.SpellCritRating, }, false, } -- s17539
 L["erhöht die zaubermacht %s Sek. lang um %s. gilt sowohl als kampfelixier als auch als wächterelixier. dieser effekt hält über den tod hinaus an"] = { false, { Stats.SpellPower, }, } -- s17628
 L["erhöht %s Sek. lang die angriffsgeschwindigkeit des zaubernden um %s% und wirkt sich auf bis zu drei schwünge aus"] = { false, { Stats.MeleeHaste, }, } -- s17687
-L["umgibt den zaubernden mit einer frostschicht, die %s Sek. lang bestehen bleibt. das dicke eis erhöht die rüstung, verlangsamt das bewegungstempo von nahkampfangreifern um %s% und erhöht die zeit zwischen ihren angriffen um %s%"] = { false, false, { Stats.MeleeHaste, }, } -- s18100
-L["erhöht die zeit zwischen den angriffen eines gegners um %s% und verringert sein bewegungstempo um %s%"] = { { Stats.MeleeHaste, }, false, } -- s18101
+L["umgibt den zaubernden mit einer frostschicht, die %s Sek. lang bestehen bleibt. das dicke eis erhöht die rüstung, verlangsamt das bewegungstempo von nahkampfangreifern um %s% und erhöht die zeit zwischen ihren angriffen um %s%"] = { false, false, { Stats.MeleeHaste, }, reduction = true } -- s18100
+L["erhöht die zeit zwischen den angriffen eines gegners um %s% und verringert sein bewegungstempo um %s%"] = { { Stats.MeleeHaste, }, false, reduction = true } -- s18101
 L["regeneriert alle %s sekunden %s gesundheit"] = { false, { Stats.HealthRegen, }, } -- s18222
 L["erhöht die tempowertung um %s"] = { { Stats.MeleeHasteRating, Stats.RangedHasteRating, Stats.SpellHasteRating, }, } -- s18803
 L["erhöht bei aktivierung eure parierchance um %s%, verringert die chance, von distanzangriffen getroffen zu werden, um %s% und gewährt euch eine chance von %s%, zauber abzuwehren. ihr könnt nicht angreifen, solange 'abschreckung' aktiv ist. hält %s Sek. lang an"] = { { Stats.Parry, }, { Stats.Parry, }, false, false, } -- s19263
 L["erhöht eure parierchance um %s% und verringert die dauer aller auf euch angewandten entwaffnungseffekte um %s%. dieser effekt ist mit anderen effekten, welche die entwaffnungsdauer verringern, nicht stapelbar"] = { { Stats.Parry, }, false, } -- s19295
 L["erhöht ausdauer und willenskraft um %s. hält %s Sek. lang an"] = { { Stats.Stamina, Stats.Spirit, }, false, } -- s19705
-L["verursacht schattenschaden und verringert den verursachten körperlichen schaden %s Sek. lang um %s"] = { false, { Stats.AverageWeaponDamage, }, } -- s20006
+L["verursacht schattenschaden und verringert den verursachten körperlichen schaden %s Sek. lang um %s"] = { false, { Stats.AverageWeaponDamage, }, reduction = true } -- s20006
 L["erhöht eure chance, mit allen angriffen und zaubern einen kritischen treffer zu erzielen, um %s%"] = { { Stats.MeleeCrit, Stats.RangedCrit, Stats.SpellCrit, }, } -- s20117
 L["erhöht euren blockwert um %s%. nahkampf- und distanzangriffe, durch die ihr schaden erleidet, haben eine chance von %s%, eure blockchance um %s% zu erhöhen. hält %s Sek. lang oder bis %s-mal geblockt wurde"] = { false, false, { Stats.BlockChance, }, false, false, ignoreSum = true } -- s20127
 L["verringert die chance, euren angriffen auszuweichen, um %s% und reduziert die wirkungsdauer aller entwaffnungseffekte gegen euch um %s%. dieser effekt ist nicht mit anderen effekten, welche die wirkungsdauer von entwaffnung verringern stapelbar"] = { { Stats.DodgeReduction, }, false, } -- s20504
@@ -2086,18 +2086,18 @@ L["erhöht %s Sek. lang ausdauer um %s und verringert erlittenen körperlichen s
 L["erhöht eure verteidigungsfertigkeit %s Sek. lang um %s"] = { false, { Stats.Defense, }, } -- s22685
 L["übernimmt %s Sek. lang die kontrolle eines humanoiden feindes bis zu stufe %s, erhöht den von ihm verursachten magischen schaden um %s und den von ihm verursachten körperlichen schaden um %s"] = { false, false, { Stats.SpellDamage, }, { Stats.AverageWeaponDamage, }, } -- s20668
 L["erhöht die blockchance %s Sek. lang um %s% und verursacht, solang aktiv, mit jedem geblockten angriff %s heiligschaden. jedes blocken verbraucht eine der %s aufladungen"] = { false, { Stats.BlockChance, }, false, false, } -- s20925
-L["schleudert einen schattenblitz auf den feind, verursacht %s schattenschaden und verringert %s Sek. lang alle werte um %s"] = { false, false, { Stats.AllStats, }, } -- s21151
+L["schleudert einen schattenblitz auf den feind, verursacht %s schattenschaden und verringert %s Sek. lang alle werte um %s"] = { false, false, { Stats.AllStats, }, reduction = true } -- s21151
 L["ihr erhaltet %s Sek. lang eine zusätzliche rüstungsdurchschlagwertung von %s. dieser effekt ist bis zu %s-mal stapelbar"] = { false, { Stats.ArmorPenetrationRating, }, false, } -- s21153
 L["erhöht die heiligzaubermacht um %s"] = { { Stats.HolyDamage, }, } -- s21499
 L["macht erfüllt alle gruppen- und schlachtzugsmitglieder und erhöht %s Sek. lang ihre ausdauer um %s"] = { false, { Stats.Stamina, }, } -- s21562
 L["verleiht allen gruppen- und schlachtzugsmitgliedern die gabe der wildnis. erhöht %s Sek. lang die rüstung um %s, alle attribute um %s und alle widerstandsarten um %s"] = { false, { Stats.Armor, }, { Stats.AllStats, }, false, } -- s21849
 L["erhöht die frostzaubermacht %s Sek. lang um %s. kampfelixier"] = { false, { Stats.FrostDamage, }, } -- s21920
-L["deckt euren gegner mit blitzschlägen ein, die %s naturschaden verursachen und zu in der nähe befindlichen feinden weiterspringen. jeder sprung verringert den naturwiderstand des ziels um %s. wirkt auf insgesamt %s ziele. euer hauptziel wird außerdem von einem wirbelsturm umgeben, welcher dessen angriffstempo %s Sek. lang um %s% verringert"] = { false, { Stats.NatureResistance, }, false, false, { Stats.MeleeHaste, }, } -- s21992
-L["bewegungstempo um %s% verlangsamt.\nzeit zwischen angriffen um %s% erhöht.\nzaubertempo um %s% verringert"] = { false, { Stats.MeleeHaste, }, { Stats.SpellHaste, }, } -- s22247
-L["verursacht %s frostschaden, verbrennt mana und erhöht die zeit zwischen den angriffen um %s%. hält %s Sek. an"] = { false, { Stats.MeleeHaste, }, false, } -- s22290
+L["deckt euren gegner mit blitzschlägen ein, die %s naturschaden verursachen und zu in der nähe befindlichen feinden weiterspringen. jeder sprung verringert den naturwiderstand des ziels um %s. wirkt auf insgesamt %s ziele. euer hauptziel wird außerdem von einem wirbelsturm umgeben, welcher dessen angriffstempo %s Sek. lang um %s% verringert"] = { false, { Stats.NatureResistance, }, false, false, { Stats.MeleeHaste, }, reduction = true } -- s21992
+L["bewegungstempo um %s% verlangsamt.\nzeit zwischen angriffen um %s% erhöht.\nzaubertempo um %s% verringert"] = { false, { Stats.MeleeHaste, }, { Stats.SpellHaste, }, reduction = true } -- s22247
+L["verursacht %s frostschaden, verbrennt mana und erhöht die zeit zwischen den angriffen um %s%. hält %s Sek. an"] = { false, { Stats.MeleeHaste, }, false, reduction = true } -- s22290
 L["der zaubernde versetzt sich in raserei und erhöht damit %s Sek. lang sein angriffstempo um %s%"] = { false, { Stats.MeleeHaste, }, } -- s22428
-L["fügt gegnern vor dem zaubernden %s frostschaden zu, zerstört %s mana und erhöht die zeit zwischen ihren angriffen um %s%"] = { { Stats.MeleeHaste, }, false, { Stats.MeleeHaste, }, } -- s22559
-L["fügt gegnern vor dem zaubernden %s arkanschaden zu, verringert ihr zaubertempo um %s% und erhöht die zeit zwischen ihren angriffen um %s%. hält %s Sek. lang an"] = { false, { Stats.SpellHaste, }, { Stats.MeleeHaste, }, false, } -- s22642
+L["fügt gegnern vor dem zaubernden %s frostschaden zu, zerstört %s mana und erhöht die zeit zwischen ihren angriffen um %s%"] = { { Stats.MeleeHaste, }, false, { Stats.MeleeHaste, }, reduction = true } -- s22559
+L["fügt gegnern vor dem zaubernden %s arkanschaden zu, verringert ihr zaubertempo um %s% und erhöht die zeit zwischen ihren angriffen um %s%. hält %s Sek. lang an"] = { false, { Stats.SpellHaste, }, { Stats.MeleeHaste, }, false, reduction = true } -- s22642
 L["erhöht intelligenz %s Sek. lang um %s"] = { false, { Stats.Intellect, }, } -- s22730
 L["erhöht eure ausdauer %s Sek. lang um %s und füllt euch bis oben hin ab! grün ist gut für euch!"] = { false, { Stats.Stamina, }, } -- s22789
 L["erhöht willenskraft um %s, verringert jedoch die intelligenz um %s. hält %s Sek. lang an. krrrrrraaaassss"] = { { Stats.Spirit, }, { Stats.Intellect, }, false, } -- s22790
@@ -2105,11 +2105,11 @@ L["verleiht dem träger %s Sek. lang %s verteidigungswertung und %s rüstung"] =
 L["aufgezehrt von illidans zorn: %s angriffskraftbonus gegen dämonen. %s% bonuschance auf treffer. %s% nahkampfangriffstempo"] = { false, { Stats.MeleeHit, Stats.RangedHit, }, { Stats.MeleeHaste, }, } -- s22988
 L["erfüllt alle gruppen- und schlachtzugsmitglieder mit brillanz und erhöht ihre intelligenz %s Sek. lang um %s"] = { false, { Stats.Intellect, }, } -- s23028
 L["erhöht %s Sek. lang das angriffstempo um %s%"] = { false, { Stats.MeleeHaste, }, } -- s23060
-L["verbrennt alle %s sek. %s mana.\nzaubertempo um %s% verringert.\nbewegungstempo um %s% verringert"] = { false, false, { Stats.SpellHaste, }, false, } -- s23153
-L["fügt allen feinden %s frostschaden zu, entzieht %s mana und erhöht %s Sek. lang die zeit zwischen angriffen um %s%"] = { false, false, false, { Stats.MeleeHaste, }, } -- s23187
-L["fügt allen gegnern %s frostschaden zu, zieht ihnen %s Sek. lang %s mana ab und erhöht dabei die zeit zwischen ihren angriffen um %s%"] = { false, false, false, { Stats.MeleeHaste, }, } -- s23189
+L["verbrennt alle %s sek. %s mana.\nzaubertempo um %s% verringert.\nbewegungstempo um %s% verringert"] = { false, false, { Stats.SpellHaste, }, false, reduction = true } -- s23153
+L["fügt allen feinden %s frostschaden zu, entzieht %s mana und erhöht %s Sek. lang die zeit zwischen angriffen um %s%"] = { false, false, false, { Stats.MeleeHaste, }, reduction = true } -- s23187
+L["fügt allen gegnern %s frostschaden zu, zieht ihnen %s Sek. lang %s mana ab und erhöht dabei die zeit zwischen ihren angriffen um %s%"] = { false, false, false, { Stats.MeleeHaste, }, reduction = true } -- s23189
 L["erhöht die zaubermacht %s Sek. lang um %s"] = { false, { Stats.SpellPower, }, } -- s23271
-L["verursacht alle %s sek. %s schaden.\nrüstung um %s verringert.\nhält %s Sek. lang an"] = { false, false, { Stats.Armor, }, false, } -- s23313
+L["verursacht alle %s sek. %s schaden.\nrüstung um %s verringert.\nhält %s Sek. lang an"] = { false, false, { Stats.Armor, }, false, reduction = true } -- s23313
 L["beschleunigt die gedanken, erhöht die tempowertung des magiers %s Sek. lang um %s"] = { false, { Stats.MeleeHasteRating, Stats.RangedHasteRating, Stats.SpellHasteRating, }, } -- s23723
 L["erfüllt einen paladin mit licht, erhöht %s Sek. lang die nahkampftempowertung um %s und die zaubertempowertung um %s"] = { false, { Stats.MeleeHasteRating, }, { Stats.SpellHasteRating, }, } -- s23733
 L["erhöht die zaubermacht um %s und die manakosten von zaubern um %s%. hält %s Sek. lang an"] = { { Stats.SpellPower, }, false, false, } -- s23734
@@ -2121,12 +2121,12 @@ L["gewährt %s tempowertung, verringert %s Sek. lang die manakosten eurer zauber
 L["erhöht eure kritische trefferwertung %s Sek. lang um %s"] = { false, { Stats.MeleeCritRating, Stats.RangedCritRating, Stats.SpellCritRating, }, } -- s24543
 L["erhöht die arkanzaubermacht %s Sek. lang um %s"] = { false, { Stats.ArcaneDamage, }, } -- s24544
 L["gewährt %s Sek. lang %s tempowertung und verringert die manakosten eurer heilzauber um %s%"] = { false, { Stats.MeleeHasteRating, Stats.RangedHasteRating, Stats.SpellHasteRating, }, false, } -- s24546
-L["ein ziel erleidet %s schaden; zusätzlich erfahren alle feindlichen ziele in nahkampfreichweite eine reduzierung ihrer nahkampfangriffskraft um %s. dieser effekt hält %s Sek. lang an"] = { false, { Stats.AttackPower, }, false, } -- s24577
+L["ein ziel erleidet %s schaden; zusätzlich erfahren alle feindlichen ziele in nahkampfreichweite eine reduzierung ihrer nahkampfangriffskraft um %s. dieser effekt hält %s Sek. lang an"] = { false, { Stats.AttackPower, }, false, reduction = true } -- s24577
 L["erhöht %s Sek. lang die nahkampf- und distanzangriffskraft des wolfs und seines meisters um %s"] = { false, { Stats.GenericAttackPower, }, } -- s24604
 L["stärke um %s erhöht. hält %s Sek. lang an"] = { { Stats.Strength, }, false, } -- s24799
 L["erhöht die kritische trefferchance von zaubern um %s%"] = { { Stats.SpellCrit, }, } -- s24907
 L["befindet ihr euch in bären-, terrorbären- oder katzengestalt, erhöht das talent 'rudelführer' die kritische distanz- und nahkampftrefferchance aller gruppen- und schlachtzugsmitglieder in einem umkreis von %s metern um %s%"] = { false, { Stats.MeleeCrit, Stats.RangedCrit, }, } -- s24932
-L["das feindliche ziel wird von insekten umschwärmt, die dessen trefferchance mit nahkampf- und distanzangriffen um %s% verringern und beim betroffenen über %s Sek. %s naturschaden verursachen"] = { { Stats.MeleeHit, Stats.RangedHit, }, false, false, } -- s24974
+L["das feindliche ziel wird von insekten umschwärmt, die dessen trefferchance mit nahkampf- und distanzangriffen um %s% verringern und beim betroffenen über %s Sek. %s naturschaden verursachen"] = { { Stats.MeleeHit, Stats.RangedHit, }, false, false, reduction = true } -- s24974
 L["stellt alle %s sek. %s mana wieder her und erhöht die zaubermacht um %s"] = { false, { Stats.GenericManaRegen, }, { Stats.SpellPower, }, } -- s25116
 L["erfüllt den zaubernden mit unheiliger vergeltung, erhöht das angriffstempo des zaubernden um %s% und das bewegungstempo um %s%"] = { { Stats.MeleeHaste, }, false, } -- s25164
 L["erzeugt alle %s sek. %s mana"] = { false, { Stats.GenericManaRegen, }, } -- s25569
@@ -2145,7 +2145,7 @@ L["der zaubernde wird zum berserker, und damit unaufhaltbar. erhöht angriffstem
 L["stellt pro sekunde %s mana wieder her"] = { { Stats.GenericManaRegen, }, } -- s26647
 L["erhöht %s Sek. lang das angriffs- und bewegungstempo des zaubernden um %s% und jeglichen von ihm zugefügten schaden um %s%. gewährt zudem immunität gegen spotteffekte"] = { false, { Stats.MeleeHaste, }, false, } -- s26662
 L["erhöht die feuer- und arkanzaubermacht um %s"] = { { Stats.FireDamage, Stats.ArcaneDamage, }, } -- s26692
-L["verspottet alle gegner im umkreis von %s metern, erhöht damit die chance, dass sie den leerwandler angreifen, und verringert ihre trefferchance %s Sek. lang um %s%. wirkungsvoller als 'leiden' (rang %s)"] = { false, false, { Stats.MeleeHit, Stats.RangedHit, }, false, } -- s27271
+L["verspottet alle gegner im umkreis von %s metern, erhöht damit die chance, dass sie den leerwandler angreifen, und verringert ihre trefferchance %s Sek. lang um %s%. wirkungsvoller als 'leiden' (rang %s)"] = { false, false, { Stats.MeleeHit, Stats.RangedHit, }, false, reduction = true } -- s27271
 L["bei einem nahkampfangriff besteht eine chance, dass %s Sek. lang eure zaubermacht um %s erhöht wird"] = { false, { Stats.SpellDamage, }, ignoreSum = true } -- s27498
 L["verändert die gestalt %s Sek. lang in eine katze und erhöht das angriffstempo um %s%"] = { false, { Stats.MeleeHaste, }, } -- s27545
 L["erhöht %s Sek. lang eure zaubermacht um %s"] = { false, { Stats.SpellPower, }, } -- s27675
@@ -2166,12 +2166,12 @@ L["stellt im verlauf von %s Sek. alle %s sek. %s gesundheit wieder her"] = { fal
 L["erhöht eure ausdauer %s Sek. lang um %s"] = { false, { Stats.Stamina, }, } -- s28704
 L["erhöht eure intelligenz %s Sek. lang um %s"] = { false, { Stats.Intellect, }, } -- s28706
 L["chance, euer nahkampf- oder distanzziel mit %s feuerschaden zu treffen. erhöht zusätzlich die feuerzaubermacht um %s. hält %s Sek. lang an"] = { false, { Stats.FireDamage, }, false, } -- s28714
-L["verhindert und entfernt raserei. verhindert %s Sek. lang naturzauber. verringert das zaubertempo um %s%"] = { false, { Stats.SpellHaste, }, } -- s28732
+L["verhindert und entfernt raserei. verhindert %s Sek. lang naturzauber. verringert das zaubertempo um %s%"] = { false, { Stats.SpellHaste, }, reduction = true } -- s28732
 L["erhöht %s Sek. lang das angriffstempo des zaubernden um %s% und den von ihm verursachten körperlichen schaden um %s%"] = { false, { Stats.MeleeHaste, }, { Stats.AverageWeaponDamage, }, } -- s56625
 L["erhöht den frostwiderstand um %s. hält %s Sek. lang an"] = { { Stats.FrostResistance, }, false, } -- s28766
 L["erhöht die zaubermacht der nächsten %s zauber um %s. hält %s Sek. lang an"] = { false, { Stats.SpellPower, }, false, } -- s28780
 L["erhöht %s Sek. lang die zaubermacht eines befreundeten ziels um %s"] = { false, { Stats.SpellPower, }, } -- s28793
-L["trefferchance %s Sek. lang um %s% reduziert"] = { false, { Stats.MeleeHit, Stats.RangedHit, }, } -- s29117
+L["trefferchance %s Sek. lang um %s% reduziert"] = { false, { Stats.MeleeHit, Stats.RangedHit, }, reduction = true } -- s29117
 L["erhöht die kritische zaubertrefferwertung gegen untote um %s"] = { { Stats.SpellCritRating, }, } -- s29159
 L["kritische treffer eurer offensiven zauber erhöhen eure chance, mit nahkampfangriffen einen kritischen treffer zu erzielen, %s Sek. lang um %s%"] = { false, { Stats.MeleeCrit, Stats.RangedCrit, }, } -- s29177
 L["kritische treffer eurer unregelmäßigen offensivzauber erhöhen %s Sek. lang die chance auf einen kritischen treffer mit nahkampfangriffen um %s%"] = { false, { Stats.MeleeCrit, Stats.RangedCrit, }, ignoreSum = true } -- s29179
@@ -2187,20 +2187,20 @@ L["erhöht euer nahkampfangriffstempo um %s%. zusätzlich erhöhen eure fähigke
 L["erhöht allen von nahen feinden verursachten zauberschaden um bis zu %s.\nerhöht allen von nahen feinden erlittenen zauberschaden um bis zu %s. hält %s Sek. lang an"] = { { Stats.SpellDamage, }, false, false, } -- s29900
 L["kritische treffer eurer offensiven zauber erhöhen %s Sek. lang eure chance, kritische nahkampftreffer zu erzielen, um %s%"] = { false, { Stats.MeleeCrit, Stats.RangedCrit, }, } -- s30165
 L["erhöht %s Sek. lang die willenskraft des spielers um %s und die ausdauer um %s. es kann immer nur der effekt von jeweils einem zanzatrank aktiv sein"] = { false, { Stats.Spirit, }, { Stats.Stamina, }, } -- s30336
-L["%s% less chance to hit.\n%s% slower attacks.\n%s% increase damage taken from the physical school"] = { { Stats.MeleeHit, Stats.RangedHit, }, false, false, } -- s30601
+L["%s% less chance to hit.\n%s% slower attacks.\n%s% increase damage taken from the physical school"] = { { Stats.MeleeHit, Stats.RangedHit, }, false, false, reduction = true } -- s30601
 L["erhöht die zaubermacht aller in der nähe befindlichen gruppenmitglieder %s Sek. lang um %s"] = { false, { Stats.SpellPower, }, } -- s31033
 L["zaubermacht um %s erhöht"] = { { Stats.SpellPower, }, } -- s31037
-L["unterkühlt angreifer, verlangsamt ihr bewegungstempo um %s% und ihr angriffstempo um %s%"] = { false, { Stats.MeleeHaste, }, } -- s31257
+L["unterkühlt angreifer, verlangsamt ihr bewegungstempo um %s% und ihr angriffstempo um %s%"] = { false, { Stats.MeleeHaste, }, reduction = true } -- s31257
 L["crit chance increased by %s%.\nall haste increased by %s%"] = { { Stats.MeleeCrit, Stats.RangedCrit, }, false, } -- s31305
 L["ihr fühlt euch unwohl...\nausdauer um %s verringert.\nwillenskraft um %s erhöht"] = { { Stats.Stamina, }, { Stats.Spirit, }, } -- s31376
 L["nahkampf- und bewegungstempo %s Sek. lang um %s% erhöht"] = { false, { Stats.MeleeHaste, }, } -- s31458
 L["erhöht die nahkampf- und distanzangriffskraft aller befreundeten einheiten in einem umkreis von %s metern um %s"] = { false, { Stats.GenericAttackPower, }, } -- s31519
-L["%s% increased chance to be crit.\n%s reduced attack power.\n%s% increased bleed damage"] = { false, { Stats.AttackPower, }, false, } -- s31966
-L["zeit zwischen angriffen um %s% erhöht.\nzauberzeit um %s% erhöht.\nalle %s sek. %s naturschaden"] = { false, { Stats.SpellHaste, }, false, false, } -- s32013
+L["%s% increased chance to be crit.\n%s reduced attack power.\n%s% increased bleed damage"] = { false, { Stats.AttackPower, }, false, reduction = true } -- s31966
+L["zeit zwischen angriffen um %s% erhöht.\nzauberzeit um %s% erhöht.\nalle %s sek. %s naturschaden"] = { false, { Stats.SpellHaste, }, false, false, reduction = true } -- s32013
 L["erhöht eure kritische trefferchance mit allen zaubern und angriffen um %s% und erhöht den schaden von 'exorzismus' und 'kreuzfahrerstoß' um %s%"] = { { Stats.SpellCrit, Stats.MeleeCrit, Stats.RangedCrit, }, false, } -- s32043
 L["attack power increased by %s. (battle shout)\nattack power increased by %s%. (unleashed rage)"] = { { Stats.GenericAttackPower, }, false, } -- s32120
 L["erhöht die zaubermacht eines verbündeten %s Sek. lang um %s"] = { false, { Stats.SpellDamage, }, } -- s32689
-L["erzeugt einen wütenden sturm im zielgebiet, der allen in der nähe befindlichen feinden alle %s sek. naturschaden zufügt und die zeit zwischen angriffen betroffener feinde um %s% erhöht. hält %s Sek. lang an"] = { false, { Stats.MeleeHaste, }, false, } -- s32717
+L["erzeugt einen wütenden sturm im zielgebiet, der allen in der nähe befindlichen feinden alle %s sek. naturschaden zufügt und die zeit zwischen angriffen betroffener feinde um %s% erhöht. hält %s Sek. lang an"] = { false, { Stats.MeleeHaste, }, false, reduction = true } -- s32717
 L["erhöht das angriffstempo des ziels um %s% und sein bewegungstempo um %s%"] = { { Stats.MeleeHaste, }, false, } -- s32829
 L["chance von %s%, bei erfolgreichem zauberwirken die zaubermacht %s Sek. lang um bis zu %s zu erhöhen"] = { false, false, { Stats.SpellDamage, }, ignoreSum = true } -- s32980
 L["erhöht den vom zaubernden verursachten körperlichen schaden %s Sek. lang um %s. erhöht das nahkampfangriffstempo um %s%"] = { false, { Stats.MeleeHaste, }, { Stats.MeleeHaste, }, } -- s33232
@@ -2215,21 +2215,21 @@ L["ausdauer um %s erhöht und %s mana alle %s sek. wiederhergestellt. hält %s S
 L["zaubermacht um %s und willenskraft um %s erhöht. hält %s Sek. lang an"] = { { Stats.SpellPower, }, { Stats.Spirit, }, false, } -- s33268
 L["stellt im verlauf von %s Sek. insgesamt %s gesundheit wieder her. ihr müsst beim essen sitzen bleiben. wenn ihr mindestens %s sekunden mit essen verbringt, werdet ihr satt und erhaltet %s Sek. lang um %s erhöhte zaubermacht und %s willenskraft"] = { false, false, false, false, { Stats.HealingPower, }, { Stats.Spirit, }, ignoreSum = true } -- s33269
 L["erhöht %s Sek. lang die zaubermacht um %s"] = { false, { Stats.SpellPower, }, } -- s33400
-L["ein sprühregen ätzender säure trifft gegner vor dem zaubernden, verursacht %s Sek. lang alle %s sek. %s naturschaden und verringert dabei ihre rüstung um %s"] = { false, false, false, { Stats.Armor, }, } -- s33551
+L["ein sprühregen ätzender säure trifft gegner vor dem zaubernden, verursacht %s Sek. lang alle %s sek. %s naturschaden und verringert dabei ihre rüstung um %s"] = { false, false, false, { Stats.Armor, }, reduction = true } -- s33551
 L["erhöht die nahkampfangriffskraft um %s und euren zauberschaden um %s. hält %s Sek. lang an"] = { { Stats.AttackPower, }, { Stats.SpellDamage, }, false, } -- s33697
 L["erhöht eure zaubermacht um %s. hält %s Sek. lang an"] = { { Stats.SpellDamage, }, false, } -- s33702
 L["erhöht %s Sek. lang die zaubermacht um %s. kampfelixier"] = { false, { Stats.SpellPower, }, } -- s33721
 L["erhöht %s Sek. lang alle werte um %s. kampfelixier"] = { false, { Stats.AllStats, }, } -- s33726
 L["erhöht %s Sek. lang den verursachten schattenschaden um bis zu %s. %s-mal stapelbar"] = { false, { Stats.ShadowDamage, }, false, } -- s33783
 L["eure kritische zaubertrefferchance ist um %s% erhöht und kritische treffer gegen euch verleihen euch den effekt 'vollkommenheit der natur', wodurch jeglicher erlittene schaden um %s% verringert wird. bis zu %s-mal stapelbar. hält %s Sek. lang an"] = { { Stats.SpellCrit, }, false, false, false, } -- s33881
-L["schwächt einen gegner und verringert %s Sek. lang seine trefferchance um %s%"] = { false, { Stats.MeleeHit, Stats.RangedHit, }, } -- s34088
+L["schwächt einen gegner und verringert %s Sek. lang seine trefferchance um %s%"] = { false, { Stats.MeleeHit, Stats.RangedHit, }, reduction = true } -- s34088
 L["eure rüstungsdurchschlagwertung wird um %s erhöht"] = { { Stats.ArmorPenetrationRating, }, } -- s34106
 L["eure richturteile erhöhen %s Sek. lang eure kritische trefferwertung um %s"] = { false, { Stats.MeleeCritRating, Stats.SpellCritRating, }, ignoreSum = true } -- s34258
 L["erhöht die kritische trefferchance um %s% und gestattet, dass %s% eurer manaregeneration während des zauberwirkens weiterläuft"] = { { Stats.SpellCrit, }, false, } -- s34293
 L["erhöht die gesundheit um %s, das nahkampfangriffstempo um %s% und gewährt alle %s sek. %s mana"] = { { Stats.Health, }, { Stats.MeleeHaste, }, false, { Stats.GenericManaRegen, }, } -- s34410
 L["erhöht eure ausweichchance um %s% und die eures tieres um zusätzliche %s%. außerdem wird die abklingzeit eurer fähigkeit 'fass!' um %s sek. verringert"] = { { Stats.Dodge, }, false, false, } -- s34462
 L["erhöht eure kritische trefferchance um %s% und verringert die manakosten von 'zuverlässiger schuss', 'gezielter schuss' und 'schimärenschuss' um %s%"] = { { Stats.MeleeCrit, Stats.RangedCrit, }, false, } -- s34485
-L["vergiftet das ziel mit gedankenverkrüppelndem gift, das sein zaubertempo %s Sek. lang um %s% senkt"] = { false, { Stats.SpellHaste, }, } -- s34615
+L["vergiftet das ziel mit gedankenverkrüppelndem gift, das sein zaubertempo %s Sek. lang um %s% senkt"] = { false, { Stats.SpellHaste, }, reduction = true } -- s34615
 L["gewährt %s Sek. lang um %s erhöhte zaubermacht, wenn einem eurer zauber widerstanden wird"] = { false, { Stats.SpellDamage, }, ignoreSum = true } -- s34749
 L["eure nahkampf- und distanzangriffe haben eine chance, eure tempowertung %s Sek. lang um %s zu erhöhen"] = { false, { Stats.MeleeHasteRating, Stats.RangedHasteRating, Stats.SpellHasteRating, }, ignoreSum = true } -- s34774
 L["erhöht eure tempowertung um %s"] = { { Stats.MeleeHasteRating, Stats.RangedHasteRating, Stats.SpellHasteRating, }, } -- s34775
@@ -2242,9 +2242,9 @@ L["erhöht bei nahen gruppenmitgliedern die angriffskraft um %s und die zauberma
 L["erhöht die tempowertung aller in der nähe befindlichen gruppenmitglieder um bis zu %s. hält %s Sek. lang an. unwirksam bei zielen auf stufe %s oder höher"] = { { Stats.MeleeHasteRating, Stats.RangedHasteRating, Stats.SpellHasteRating, }, false, false, } -- s35476
 L["verringert den verursachten körperlichen schaden um %s%.\nerhöht das angriffstempo um %s%.\nhält %s Sek. lang an"] = { false, { Stats.MeleeHaste, }, false, } -- s35491
 L["erhöht die schadenswirkung von zaubern und magischen effekten um %s"] = { { Stats.SpellDamage, }, } -- s35778
-L["schwächt das ziel, erhöht den erlittenen zauberschaden um %s%, verringert den feuer-, frost-, schatten-, natur- und arkanwiderstand um %s sowie die rüstung um %s"] = { false, { Stats.FireResistance, Stats.NatureResistance, Stats.FrostResistance, Stats.ShadowResistance, Stats.ArcaneResistance, }, { Stats.Armor, }, } -- s55504
-L["feuert einen machtvollen energiestrahl auf das ziel, der die angriffskraft des ziels %s Sek. lang um %s verringert"] = { false, { Stats.GenericAttackPower, }, } -- s36341
-L["rüstung um %s verringert"] = { { Stats.Armor, }, } -- s36650
+L["schwächt das ziel, erhöht den erlittenen zauberschaden um %s%, verringert den feuer-, frost-, schatten-, natur- und arkanwiderstand um %s sowie die rüstung um %s"] = { false, { Stats.FireResistance, Stats.NatureResistance, Stats.FrostResistance, Stats.ShadowResistance, Stats.ArcaneResistance, }, { Stats.Armor, }, reduction = true } -- s55504
+L["feuert einen machtvollen energiestrahl auf das ziel, der die angriffskraft des ziels %s Sek. lang um %s verringert"] = { false, { Stats.GenericAttackPower, }, reduction = true } -- s36341
+L["rüstung um %s verringert"] = { { Stats.Armor, }, reduction = true } -- s36650
 L["erhöht den schaden von kreaturen der leere %s Sek. lang um %s%"] = { false, { Stats.SpellDamage, }, } -- s36729
 L["eure angriffe mit den fähigkeiten 'fieser trick' und 'nierenhieb' erhöhen %s Sek. lang die tempowertung um %s"] = { false, { Stats.MeleeHasteRating, Stats.RangedHasteRating, }, ignoreSum = true } -- s37165
 L["eure spezialangriffe haben eine chance, eure rüstungsdurchschlagwertung %s Sek. lang um %s zu erhöhen"] = { false, { Stats.ArmorPenetrationRating, }, ignoreSum = true } -- s37173
@@ -2264,7 +2264,7 @@ L["eure kritischen zaubertreffer haben eine chance, eure zaubermacht %s Sek. lan
 L["wenn gleichzeitig ein lufttotem, ein feuertotem, ein erdtotem und ein wassertotem von euch aktiv sind, erhaltet ihr alle %s sek. %s mana, %s kritische zaubertrefferwertung und %s zaubermacht"] = { false, { Stats.Spirit, }, { Stats.MeleeCritRating, Stats.RangedCritRating, Stats.SpellCritRating, }, { Stats.Intellect, Stats.HealingPower, }, } -- s61692
 L["erhöht die arkanzaubermacht eines verbündeten %s Sek. lang um %s"] = { false, { Stats.ArcaneDamage, }, } -- s38647
 L["erhöht die frostzaubermacht eines verbündeten %s Sek. lang um %s"] = { false, { Stats.FrostDamage, }, } -- s38649
-L["verringert die zaubermacht um %s"] = { { Stats.SpellPower, }, } -- s38927
+L["verringert die zaubermacht um %s"] = { { Stats.SpellPower, }, reduction = true } -- s38927
 L["zeit zwischen angriffen um %s% verringert"] = { { Stats.MeleeHaste, }, } -- s39031
 L["erhöht die rüstungsdurchschlagwertung um %s"] = { { Stats.ArmorPenetrationRating, }, } -- s39922
 L["erhöht eure heilzaubermacht in baumgestalt um %s. erhöht eure kritische trefferwertung um %s, solange von euch die aura des rudelführers ausgeht, und eure kritische zaubertrefferwertung um %s, solange von euch die aura des mondkin ausgeht"] = { false, { Stats.MeleeCritRating, }, { Stats.SpellCritRating, }, } -- s39926
@@ -2273,15 +2273,15 @@ L["zapft die macht des schädels an, erhöht %s Sek. lang die tempowertung um %s
 L["ihr erhaltet %s rüstungsdurchschlagwertung"] = { { Stats.ArmorPenetrationRating, }, } -- s40477
 L["jedes mal, wenn euer zauber 'verderbnis' schaden zufügt, besteht eine chance von %s%, eure zaubermacht %s Sek. lang um %s zu erhöhen"] = { false, false, { Stats.SpellDamage, }, ignoreSum = true } -- s40478
 L["eure fähigkeit 'richturteil' erhöht zusätzlich euren schildblockwert %s Sek. lang um %s"] = { false, { Stats.BlockValue, }, ignoreSum = true } -- s41042
-L["ein gefährliches gift betäubt den verstand des ziels, verringert sein zaubertempo %s Sek. lang um %s%"] = { false, { Stats.SpellHaste, }, } -- s41190
+L["ein gefährliches gift betäubt den verstand des ziels, verringert sein zaubertempo %s Sek. lang um %s%"] = { false, { Stats.SpellHaste, }, reduction = true } -- s41190
 L["chance von %s%, die zaubermacht %s Sek. lang um %s zu erhöhen, wenn ihr ein ziel tötet, das erfahrung oder ehre gewährt. dieser effekt kann innerhalb von %s sek. nur einmal auftreten"] = { false, false, { Stats.SpellDamage, }, false, ignoreSum = true } -- s41262
-L["heileffekte um %s% verringert.\nregenerationseffekte um %s% verringert.\nrüstung um %s% verringert.\nverteidigung um %s verringert"] = { false, { Stats.Defense, }, false, false, } -- s42017
-L["schwächt das ziel, verringert die stärke um %s und das bewegungstempo um %s%"] = { { Stats.Strength, }, false, } -- s42702
+L["heileffekte um %s% verringert.\nregenerationseffekte um %s% verringert.\nrüstung um %s% verringert.\nverteidigung um %s verringert"] = { false, { Stats.Defense, }, false, false, reduction = true } -- s42017
+L["schwächt das ziel, verringert die stärke um %s und das bewegungstempo um %s%"] = { { Stats.Strength, }, false, reduction = true } -- s42702
 L["erhöht bei jedem wirken das angriffstempo um %s% und die größe um %s%. bis zu %s-mal stapelbar"] = { { Stats.MeleeHaste, }, false, false, } -- s42705
 L["ihr habt %s Sek. lang zusätzlich %s rüstungsdurchschlagwertung"] = { false, { Stats.ArmorPenetrationRating, }, } -- s42976
 L["erhöht den widerstand gegen alle arten von magie um %s und gewährt dem zaubernden %s% manaregeneration während des zauberwirkens. zusätzlich wird die wirkungsdauer aller schädlichen magischen effekte gegen euch um %s% verringert. es kann immer nur ein rüstungszauber zur selben zeit auf dem magier aktiv sein. hält %s Sek. lang an"] = { { Stats.FireResistance, Stats.NatureResistance, Stats.FrostResistance, Stats.ShadowResistance, Stats.ArcaneResistance, }, false, false, false, } -- s43023
-L["chance, bei einem schaden verursachenden treffer die magie des angreifers zu verderben und sein zaubertempo %s Sek. lang um %s zu verringern"] = { false, { Stats.SpellHaste, }, ignoreSum = true } -- s43508
-L["verflucht das ziel %s Sek. lang, verringert magische widerstände um %s und erhöht erlittenen magischen schaden um %s%"] = { false, { Stats.FireResistance, Stats.NatureResistance, Stats.FrostResistance, Stats.ShadowResistance, Stats.ArcaneResistance, }, false, } -- s43556
+L["chance, bei einem schaden verursachenden treffer die magie des angreifers zu verderben und sein zaubertempo %s Sek. lang um %s zu verringern"] = { false, { Stats.SpellHaste, }, ignoreSum = true, reduction = true } -- s43508
+L["verflucht das ziel %s Sek. lang, verringert magische widerstände um %s und erhöht erlittenen magischen schaden um %s%"] = { false, { Stats.FireResistance, Stats.NatureResistance, Stats.FrostResistance, Stats.ShadowResistance, Stats.ArcaneResistance, }, false, reduction = true } -- s43556
 L["erhöht das angriffstempo eines verbündeten %s Sek. lang um %s%, fügt diesem verbündeten aber auch alle %s sek. %s schattenschaden zu"] = { false, { Stats.MeleeHaste, }, false, false, } -- s43664
 L["stellt im verlauf von %s Sek. insgesamt %s mana wieder her. ihr müsst beim trinken sitzen bleiben. wenn ihr mindestens %s sekunden mit trinken verbringt, werdet ihr erleuchtet und erhaltet %s Sek. lang %s kritische trefferwertung und willenskraft"] = { false, false, false, false, { Stats.MeleeCritRating, Stats.RangedCritRating, Stats.SpellCritRating, }, ignoreSum = true } -- s43706
 L["der todesritter schreit, wodurch ihre nahkampfangriffskraft um %s erhöht wird"] = { { Stats.AttackPower, }, } -- s43735
@@ -2297,7 +2297,7 @@ L["stärke und willenskraft um %s erhöht. braufestbiere: fantastischer geschmac
 L["umgibt den zaubernden mit teufelsenergie, die die durch zauber und effekte erzeugte heilung um %s% und die zaubermacht um %s erhöht. es kann immer nur eine art rüstungszauber gleichzeitig beim hexenmeister aktiv sein. hält %s Sek. lang an"] = { false, { Stats.SpellDamage, }, false, } -- s44520
 L["erhöht das zaubertempo beim zauberwirken um %s%"] = { { Stats.SpellHaste, }, ignoreSum = true } -- s44604
 L["erfüllt das ziel mit macht und verringert seine zauberzeit %s Sek. lang um %s%"] = { false, { Stats.SpellHaste, }, } -- s44605
-L["trefferchance mit nahkampf- und distanzangriffen %s Sek. lang um %s% verringert"] = { false, { Stats.MeleeHit, Stats.RangedHit, }, } -- s45002
+L["trefferchance mit nahkampf- und distanzangriffen %s Sek. lang um %s% verringert"] = { false, { Stats.MeleeHit, Stats.RangedHit, }, reduction = true } -- s45002
 L["eure nächsten %s nahkampf- oder distanzangriffe gewähren jeweils %s angriffskraft. bis zu %s-mal stapelbar. läuft nach %s Sek. ab"] = { false, { Stats.GenericAttackPower, }, false, false, ignoreSum = true } -- s45040
 L["erhöht die chance auf kritische effekte eurer zauber um %s%. nach einem erlittenen kritischen treffer wird euch der effekt 'fokussierter wille' gewährt, wodurch jeglicher erlittene schaden um %s% verringert und erhaltene heileffekte um %s% erhöht werden. bis zu %s-mal stapelbar. hält %s Sek. lang an"] = { { Stats.SpellCrit, }, false, false, false, false, } -- s45234
 L["ausdauer und willenskraft erhöht um %s. hält %s Sek. lang an"] = { { Stats.Stamina, Stats.Spirit, }, false, } -- s45245
@@ -2305,13 +2305,13 @@ L["widerstand gegen alle arten von magie um %s erhöht. hält %s Sek. lang an"] 
 L["fügt, wenn getroffen, dem angreifer %s feuerschaden zu. erhöht eure chance, mit zaubern kritisch zu treffen um %s% und verringert eure chance, einen kritischen treffer zu erleiden um %s%. hält %s Sek. lang an"] = { false, { Stats.SpellCrit, }, false, false, } -- s45985
 L["erhöht %s Sek. lang den rüstungswert des ziels um %s, alle attribute um %s und alle widerstandsarten um %s. dieser stärkungszauber wirkt nur in der boreanischen tundra"] = { false, { Stats.Armor, }, { Stats.AllStats, }, false, } -- s46119
 L["erhöht angriffstempo um %s%.\nerhöht bewegungstempo um %s%.\nhält %s Sek. lang an"] = { { Stats.MeleeHaste, }, false, false, } -- s46160
-L["fügt dem ziel %s schattenschaden zu und verringert sein angriffstempo %s Sek. lang um %s%"] = { false, false, { Stats.MeleeHaste, }, } -- s46161
+L["fügt dem ziel %s schattenschaden zu und verringert sein angriffstempo %s Sek. lang um %s%"] = { false, false, { Stats.MeleeHaste, }, reduction = true } -- s46161
 L["erhöht den verursachten körperlichen schaden um %s"] = { { Stats.AverageWeaponDamage, }, } -- s46278
 L["erhöht die prozentuale kritische trefferchance um %s und fügt angreifern feuerschaden zu"] = { { Stats.MeleeCrit, Stats.RangedCrit, Stats.SpellCrit, }, } -- s46352
 L["angriffskraft um %s erhöht. hält %s Sek. lang an"] = { { Stats.AttackPower, }, false, } -- s46682
 L["stellt im verlauf von %s Sek. insgesamt %s gesundheit wieder her. ihr müsst beim essen sitzen bleiben. wenn ihr mindestens %s sekunden mit essen verbringt, wird eure zaubermacht %s Sek. lang um %s erhöht"] = { false, false, false, false, { Stats.SpellDamage, }, ignoreSum = true } -- s46683
 L["erhöht die zaubermacht um %s. hält %s Sek. lang an"] = { { Stats.SpellPower, }, false, } -- s46687
-L["zeit zwischen angriffen um %s% erhöht.\nbewegungstempo um %s% verringert.\nhält %s Sek. an"] = { { Stats.MeleeHaste, }, false, false, ignoreSum = true } -- s46744
+L["zeit zwischen angriffen um %s% erhöht.\nbewegungstempo um %s% verringert.\nhält %s Sek. an"] = { { Stats.MeleeHaste, }, false, false, ignoreSum = true, reduction = true } -- s46744
 L["stellt über %s Sek. %s gesundheit wieder her. ihr müsst beim essen sitzen bleiben. wenn ihr mindestens %s sekunden lang mit essen verbringt, werdet ihr satt und erhaltet %s Sek. lang %s angriffskraft"] = { false, false, false, false, { Stats.GenericAttackPower, }, ignoreSum = true } -- s46898
 L["erhöht %s Sek. lang das angriffstempo des zaubernden um %s% und jeglichen von ihm verursachten schaden um %s%"] = { false, { Stats.MeleeHaste, }, false, } -- s47008
 L["wenn ihr durch den zauber 'verderbnis' schaden verursacht, besteht eine chance von %s%, dass euer zaubertempo %s Sek. lang um %s% erhöht wird"] = { false, false, { Stats.SpellHaste, }, ignoreSum = true } -- s47195
@@ -2320,15 +2320,15 @@ L["erhöht %s Sek. lang das angriffstempo des zaubernden um %s%. stapelbar"] = {
 L["erhöht %s Sek. lang das zaubertempo von nahen freunden um %s% sowie den zauberschaden um %s"] = { false, { Stats.SpellHaste, }, { Stats.SpellDamage, }, } -- s47791
 L["erhöht das zaubertempo %s Sek. lang um %s%"] = { false, { Stats.SpellHaste, }, } -- s47940
 L["der zaubernde wird von einem schub heiliger energie erfüllt, der seine rüstung um %s und seine zaubermacht um %s erhöht. ein erlittener nahkampf- oder distanzangriffstreffer verbraucht eine aufladung. hält %s Sek. lang an oder bis alle %s aufladungen verbraucht sind"] = { { Stats.Armor, }, { Stats.SpellPower, }, false, false, } -- s48040
-L["speit eine säurekugel auf einen feind, verursacht %s naturschaden und verringert seine rüstung um %s. bis zu %s-mal stapelbar. hält %s Sek. lang an"] = { false, { Stats.Armor, }, false, false, } -- s48132
-L["verursacht bei umstehenden feinden %s schaden und verringert ihre gesundheit um %s. bis zu %s-mal stapelbar. hält %s Sek. lang an"] = { false, { Stats.Health, }, false, false, } -- s48256
+L["speit eine säurekugel auf einen feind, verursacht %s naturschaden und verringert seine rüstung um %s. bis zu %s-mal stapelbar. hält %s Sek. lang an"] = { false, { Stats.Armor, }, false, false, reduction = true } -- s48132
+L["verursacht bei umstehenden feinden %s schaden und verringert ihre gesundheit um %s. bis zu %s-mal stapelbar. hält %s Sek. lang an"] = { false, { Stats.Health, }, false, false, reduction = true } -- s48256
 L["heilt einen verbündeten um %s schaden nach %s Sek."] = { { Stats.HealthRegen, }, false, } -- s48264
 L["erfüllt den todesritter mit unheiligem zorn. erhöht das angriffstempo um %s%, das bewegungstempo um %s% und verringert die globale abklingzeit aller fähigkeiten um %s%s sek. es kann jeweils nur eine präsenz aktiv sein"] = { { Stats.MeleeHaste, }, false, false, false, } -- s48265
-L["eure angriffe 'schreddern', 'zermalmen' und 'zerfleischen' schlagen dem ziel eine infizierte wunde. die infizierte wunde verringert das bewegungstempo des ziels um %s% und sein angriffstempo um %s%. hält %s Sek. lang an"] = { false, { Stats.MeleeHaste, }, false, ignoreSum = true } -- s48483
+L["eure angriffe 'schreddern', 'zermalmen' und 'zerfleischen' schlagen dem ziel eine infizierte wunde. die infizierte wunde verringert das bewegungstempo des ziels um %s% und sein angriffstempo um %s%. hält %s Sek. lang an"] = { false, { Stats.MeleeHaste, }, false, ignoreSum = true, reduction = true } -- s48483
 L["eure fähigkeit 'zerfleischen' hat die chance, euch %s Sek. lang %s beweglichkeit zu gewähren"] = { false, { Stats.Agility, }, ignoreSum = true } -- s48833
 L["eure schockzauber haben eine chance, eure angriffskraft %s Sek. lang um %s zu erhöhen"] = { false, { Stats.AttackPower, }, ignoreSum = true } -- s48837
 L["erhöht die angriffskraft %s Sek. lang um %s"] = { false, { Stats.GenericAttackPower, Stats.RangedAttackPower, }, } -- s60065
-L["verringert den verursachten schaden naher feinde %s Sek. lang um %s"] = { false, { Stats.SpellDamage, }, } -- s48849
+L["verringert den verursachten schaden naher feinde %s Sek. lang um %s"] = { false, { Stats.SpellDamage, }, reduction = true } -- s48849
 L["erhöht eure zaubertrefferchance um %s% und verringert die chance, dass eure krankheiten, die schaden im laufe der zeit verursachen, aufgehoben werden, um %s%"] = { { Stats.SpellHit, }, false, } -- s48962
 L["erhöht eure chance, mit waffen, zaubern und fähigkeiten einen kritischen treffer zu erzielen um %s%"] = { { Stats.MeleeCrit, Stats.RangedCrit, Stats.SpellCrit, }, } -- s48987
 L["erhöht das angriffstempo um %s%. nahkampfangriffe des zaubernden haben den effekt von 'schreddern' auf das ziel, was den erlittenen körperlichen schaden %s Sek. lang um %s erhöht. hält %s Sek. lang an"] = { { Stats.MeleeHaste, }, false, false, false, } -- s49121
@@ -2337,29 +2337,29 @@ L["erhöht eure trefferchance mit einhandwaffen um %s% und erhöht den von eurer
 L["erhöht euren verursachten schaden um %s% und lässt euch die wahre gestalt eurer feinde erkennen. kann nur in den hügeln bei silberwasser genutzt werden"] = { { Stats.SpellDamage, }, } -- s49559
 L["manaregeneration um %s erhöht"] = { { Stats.GenericManaRegen, }, } -- s49623
 L["runenmacht erhöht die angriffskraft um %s sowie die größe"] = { { Stats.AttackPower, }, } -- s49643
-L["verringert %s Sek. lang die trefferchance um %s%"] = { false, { Stats.MeleeHit, Stats.RangedHit, Stats.SpellHit, }, } -- s49865
-L["feuert ein maschinengewehr ab und verursacht %s Sek. lang alle %s sek. %s schaden.\nverringert während des feuerns die trefferchance um %s%"] = { false, false, false, { Stats.MeleeHit, Stats.RangedHit, }, } -- s49981
+L["verringert %s Sek. lang die trefferchance um %s%"] = { false, { Stats.MeleeHit, Stats.RangedHit, Stats.SpellHit, }, reduction = true } -- s49865
+L["feuert ein maschinengewehr ab und verursacht %s Sek. lang alle %s sek. %s schaden.\nverringert während des feuerns die trefferchance um %s%"] = { false, false, false, { Stats.MeleeHit, Stats.RangedHit, }, reduction = true } -- s49981
 L["jeder erfolgreiche angriff erhöht den verursachten körperlichen schaden um %s. kann bis zu %s-mal gestapelt werden"] = { { Stats.AverageWeaponDamage, }, false, } -- s50045
 L["erhöht %s Sek. lang die ausweich- und parierchance um %s%"] = { false, { Stats.Dodge, Stats.Parry, }, } -- s50054
-L["erzeugt einen wütenden sturm im zielgebiet, der allen in der nähe befindlichen feinden alle %s sek. %s naturschaden zufügt und die zeit zwischen angriffen betroffener feinde um %s% erhöht. hält %s Sek. lang an"] = { false, false, { Stats.MeleeHaste, }, false, } -- s50105
+L["erzeugt einen wütenden sturm im zielgebiet, der allen in der nähe befindlichen feinden alle %s sek. %s naturschaden zufügt und die zeit zwischen angriffen betroffener feinde um %s% erhöht. hält %s Sek. lang an"] = { false, false, { Stats.MeleeHaste, }, false, reduction = true } -- s50105
 L["erhöht eure chance, mit zaubern einen kritischen treffer zu erzielen, um %s%"] = { { Stats.SpellCrit, }, } -- s50122
-L["entzieht gegnern in der nähe magie, erhöht den verursachten schaden um %s% und verringert den verursachten schaden und die heilung durch gegner in der nähe um %s"] = { false, { Stats.SpellPower, }, } -- s50132
+L["entzieht gegnern in der nähe magie, erhöht den verursachten schaden um %s% und verringert den verursachten schaden und die heilung durch gegner in der nähe um %s"] = { false, { Stats.SpellPower, }, reduction = true } -- s50132
 L["erhöht %s Sek. lang das zaubertempo des zaubernden um %s% sowie den zauberschaden um %s"] = { false, { Stats.SpellHaste, }, { Stats.SpellDamage, }, } -- s50182
-L["drescht wild. trefferchance um %s% verringert"] = { { Stats.MeleeHit, Stats.RangedHit, }, } -- s50188
+L["drescht wild. trefferchance um %s% verringert"] = { { Stats.MeleeHit, Stats.RangedHit, }, reduction = true } -- s50188
 L["erhöht die rüstung %s Sek. lang um %s%"] = { false, { Stats.Armor, }, } -- s50204
 L["erhöht das bewegungstempo des zaubernden %s Sek. lang um %s% und lässt ihn bei seinen ersten drei angriffen zusätzlich %s schaden zufügen"] = { false, false, { Stats.AverageWeaponDamage, }, } -- s50262
-L["verringert %s Sek. lang die nahkampfangriffskraft von gegnern in der nähe um %s.\nverursachter magieschaden wird %s Sek. lang um %s verringert"] = { false, { Stats.AttackPower, }, false, { Stats.SpellDamage, }, } -- s50267
-L["erhöht die chance eures ziels zu verfehlen um %s% und verringert sein bewegungstempo um %s%"] = { { Stats.MeleeHit, Stats.RangedHit, }, { Stats.SpellHit, }, } -- s50269
+L["verringert %s Sek. lang die nahkampfangriffskraft von gegnern in der nähe um %s.\nverursachter magieschaden wird %s Sek. lang um %s verringert"] = { false, { Stats.AttackPower, }, false, { Stats.SpellDamage, }, reduction = true } -- s50267
+L["erhöht die chance eures ziels zu verfehlen um %s% und verringert sein bewegungstempo um %s%"] = { { Stats.MeleeHit, Stats.RangedHit, }, { Stats.SpellHit, }, reduction = true } -- s50269
 L["erhöht allen von nahen feinden verursachten zauberschaden um bis zu %s"] = { { Stats.SpellDamage, }, } -- s50275
-L["ein insektenschwarm, der bei zielen, die in seinem bereich stehen, %s naturschaden verursacht.\ntrefferchance im einflussbereich um %s% verringert"] = { false, { Stats.MeleeHit, Stats.RangedHit, Stats.SpellHit, }, } -- s50283
-L["verringert die rüstung eines feindes %s Sek. lang um %s und fügt alle %s sek. %s naturschaden zu"] = { false, { Stats.Armor, }, false, false, } -- s50293
+L["ein insektenschwarm, der bei zielen, die in seinem bereich stehen, %s naturschaden verursacht.\ntrefferchance im einflussbereich um %s% verringert"] = { false, { Stats.MeleeHit, Stats.RangedHit, Stats.SpellHit, }, reduction = true } -- s50283
+L["verringert die rüstung eines feindes %s Sek. lang um %s und fügt alle %s sek. %s naturschaden zu"] = { false, { Stats.Armor, }, false, false, reduction = true } -- s50293
 L["wenn aktiv, gewährt euch diese fähigkeit %s Sek. lang %s% eurer aktuellen maximalen gesundheit. kann nur in katzen-, bären- oder terrorbärengestalt genutzt werden. wenn der effekt endet, geht die zusätzliche gesundheit verloren"] = { false, { Stats.Health, }, } -- s50322
 L["fluch wird wütend. %s Sek. lang verursachter körperlicher schaden um %s erhöht, erlittener schaden um %s% verringert"] = { false, { Stats.AverageWeaponDamage, }, false, } -- s50332
 L["erhöht das bewegungstempo des zaubernden %s Sek. lang um %s%, und lässt ihn bei seinen ersten drei angriffen zusätzlich %s schaden zufügen"] = { false, false, { Stats.AverageWeaponDamage, }, } -- s50413
-L["ist eure frostpräsenz aktiv, während ihr einen treffer erleidet, besteht eine chance von %s%, dass das bewegungstempo eures angreifers %s Sek. lang um %s% verringert sowie die zeit zwischen seinen angriffen um %s% erhöht wird"] = { false, false, false, { Stats.MeleeHaste, }, } -- s50459
-L["verursacht in einem kegelförmigen bereich von %s metern vor dem zaubernden %s frostschaden, zusätzlich wird das angriffstempo der ziele %s Sek. lang um %s% verringert"] = { false, false, false, { Stats.MeleeHaste, }, } -- s50505
+L["ist eure frostpräsenz aktiv, während ihr einen treffer erleidet, besteht eine chance von %s%, dass das bewegungstempo eures angreifers %s Sek. lang um %s% verringert sowie die zeit zwischen seinen angriffen um %s% erhöht wird"] = { false, false, false, { Stats.MeleeHaste, }, reduction = true } -- s50459
+L["verursacht in einem kegelförmigen bereich von %s metern vor dem zaubernden %s frostschaden, zusätzlich wird das angriffstempo der ziele %s Sek. lang um %s% verringert"] = { false, false, false, { Stats.MeleeHaste, }, reduction = true } -- s50505
 L["erhöht %s Sek. lang das angriffstempo des zaubernden um %s% und seinen verursachten körperlichen schaden um %s%"] = { false, { Stats.MeleeHaste, }, false, } -- s50627
-L["wirft mörtel in die augen eines feindes, sodass dessen trefferchance %s Sek. lang um %s% verringert wird"] = { false, { Stats.MeleeHit, Stats.RangedHit, }, } -- s50701
+L["wirft mörtel in die augen eines feindes, sodass dessen trefferchance %s Sek. lang um %s% verringert wird"] = { false, { Stats.MeleeHit, Stats.RangedHit, }, reduction = true } -- s50701
 L["erhöht die angriffskraft eures begleiters %s Sek. lang um %s"] = { false, { Stats.AttackPower, }, } -- s50708
 L["jeder angriff verstärkt den ansturm, erhöht %s Sek. lang den verursachten körperlichen schaden des zaubernden um %s"] = { false, { Stats.AverageWeaponDamage, }, } -- s50713
 L["entzieht den opfern eures frostfiebers die wärme. während ihr nahkampfangriffstempo verringert wird, wird eures für die nächsten %s Sek. um %s% erhöht"] = { false, { Stats.MeleeHaste, }, } -- s50882
@@ -2370,11 +2370,11 @@ L["beim zaubern von 'blühendes leben' wird euer gesamtes zaubertempo um %s% erh
 L["erhöht eure angriffskraft um %s"] = { { Stats.AttackPower, }, } -- s51225
 L["erhöht eure ausdauer um %s"] = { { Stats.Stamina, }, } -- s51263
 L["belegt das freundliche ziel mit einem segen, der %s Sek. lang seine angriffskraft um %s erhöht. auf das gebiet von zul'drak beschränkt"] = { false, { Stats.GenericAttackPower, }, } -- s51265
-L["das erbrochene verursacht %s naturschaden und verringert %s Sek. lang die trefferchance des gegners um %s%"] = { false, false, { Stats.MeleeHit, Stats.RangedHit, }, } -- s51356
+L["das erbrochene verursacht %s naturschaden und verringert %s Sek. lang die trefferchance des gegners um %s%"] = { false, false, { Stats.MeleeHit, Stats.RangedHit, }, reduction = true } -- s51356
 L["ist der freizaubereffekt eures talents 'elementarfokus' aktiv, wird euer zauberschaden um %s% erhöht. zusätzlich wird die kritische zaubertrefferchance aller gruppen- und schlachtzugsmitglieder innerhalb von %s metern um %s% erhöht"] = { false, false, { Stats.SpellCrit, }, } -- s51466
 L["erhöht %s Sek. lang das angriffstempo des ziels um %s% und den verursachten körperlichen schaden um %s%"] = { false, { Stats.MeleeHaste, }, false, } -- s51499
 L["erhöht die chance auf kritische effekte eurer zauber um %s% und erhöht die chance, bei einem ziel mit %s% gesundheit oder weniger den effekt von 'lebensgeister', der heilung über zeit verursacht, auszulösen um %s%"] = { { Stats.SpellCrit, }, false, false, } -- s51554
-L["eine kopfnuss, die %s% waffenschaden verursacht und die ausweich- und parierchance des ziels %s Sek. lang um %s% verringert"] = { false, false, { Stats.Dodge, Stats.Parry, }, } -- s51601
+L["eine kopfnuss, die %s% waffenschaden verursacht und die ausweich- und parierchance des ziels %s Sek. lang um %s% verringert"] = { false, false, { Stats.Dodge, Stats.Parry, }, reduction = true } -- s51601
 L["erfüllt das ziel mit macht und erhöht sein zaubertempo um %s%"] = { { Stats.SpellHaste, }, } -- s51605
 L["erhöht das zaubertempo eines verbündeten %s Sek. lang um %s%"] = { false, { Stats.SpellHaste, }, } -- s51777
 L["zaubert einen mystischen blitz herbei, der an der verbindung des gegners zur materiellen welt zerrt. er verursacht dabei %s arkanschaden, erhöht aber %s Sek. lang die kritische trefferchance des zieles um %s%.\nkann bis zu %s-mal gestapelt werden"] = { false, false, { Stats.MeleeCrit, Stats.RangedCrit, }, false, } -- s51787
@@ -2391,14 +2391,14 @@ L["erhöht %s Sek. lang das angriffstempo des zaubernden um %s% und seinen körp
 L["erhöht parierwertung %s Sek. lang um %s"] = { false, { Stats.ParryRating, }, } -- s52419
 L["ihr erhaltet %s Sek. lang eine parierwertung von %s, wenn nahkampfangriffe eure gesundheit unter %s% sinken lassen. kann nicht mehr als einmal in %s sek. eintreten"] = { false, { Stats.ParryRating, }, false, false, ignoreSum = true } -- s52420
 L["chance, beim parieren die stärke %s Sek. lang um %s zu erhöhen"] = { false, { Stats.Strength, }, ignoreSum = true } -- s52423
-L["verringert %s Sek. lang das zaubertempo um %s%"] = { false, { Stats.SpellHaste, }, } -- s52430
+L["verringert %s Sek. lang das zaubertempo um %s%"] = { false, { Stats.SpellHaste, }, reduction = true } -- s52430
 L["erhöht die rüstung naher freunde um %s"] = { { Stats.Armor, }, } -- s52442
 L["erhöht das angriffstempo des zaubernden um %s% und den durch ihn verursachten körperlichen schaden um %s%. hält %s Sek. lang an. der zaubernde kann nicht aufgehalten werden"] = { { Stats.MeleeHaste, }, false, false, } -- s52461
 L["erhöht %s Sek. lang das angriffstempo des zaubernden um %s%, verringert jedoch seinen verursachten körperlichen schaden um %s%"] = { false, { Stats.MeleeHaste, }, false, } -- s52470
 L["erhöht die kritische trefferchance um %s%"] = { { Stats.MeleeCrit, Stats.RangedCrit, Stats.SpellCrit, }, } -- s52503
-L["sticht das ziel und verringert damit %s Sek. lang die trefferchance um %s%. es kann immer nur jeweils ein stich pro jäger auf einem beliebigen ziel aktiv sein"] = { false, { Stats.MeleeHit, Stats.RangedHit, Stats.SpellHit, }, } -- s52604
+L["sticht das ziel und verringert damit %s Sek. lang die trefferchance um %s%. es kann immer nur jeweils ein stich pro jäger auf einem beliebigen ziel aktiv sein"] = { false, { Stats.MeleeHit, Stats.RangedHit, Stats.SpellHit, }, reduction = true } -- s52604
 L["erhöht %s Sek. lang die kritische trefferchance des zaubernden bei nahkampfangriffen um %s%"] = { false, { Stats.MeleeCrit, Stats.RangedCrit, }, } -- s52624
-L["schwächt das ziel, verringert seinen verursachten schaden um %s und verringert die wirksamkeit seiner erhaltenen heileffekte um %s%. hält %s Sek. lang an"] = { { Stats.AverageWeaponDamage, }, false, false, } -- s52645
+L["schwächt das ziel, verringert seinen verursachten schaden um %s und verringert die wirksamkeit seiner erhaltenen heileffekte um %s%. hält %s Sek. lang an"] = { { Stats.AverageWeaponDamage, }, false, false, reduction = true } -- s52645
 L["heilt den zaubernden nach ablauf von %s Sek. um %s"] = { false, { Stats.HealthRegen, }, } -- s52714
 L["erhöht eure chance, angriffe zu parieren, um %s%"] = { { Stats.Parry, }, } -- s52879
 L["macht euch beschwipst und stellt im verlauf von %s Sek. %s mana wieder her. ihr müsst beim trinken sitzen bleiben"] = { false, { Stats.GenericManaRegen, }, } -- s52911
@@ -2409,7 +2409,7 @@ L["das ziel wird zu einem worgen und kann während der verwandlung keine zauber 
 L["das häuten so vieler tiere hat eure anatomischen kenntnisse vergrößert. eure kritische trefferwertung wird um %s erhöht"] = { { Stats.MeleeCritRating, Stats.RangedCritRating, Stats.SpellCritRating, }, } -- s53125
 L["erhöht die rüstung eures tiers um %s% und seine ausweichchance um %s%"] = { false, { Stats.Dodge, }, } -- s53175
 L["erhöht die kritische trefferchance eures tiers um %s%"] = { { Stats.MeleeCrit, Stats.RangedCrit, }, } -- s53203
-L["erzeugt einen wütenden sturm im zielgebiet, der allen in der nähe befindlichen feinden alle %s sek. %s naturschaden zufügt und die zeit zwischen angriffen der betroffenen feinde um %s% erhöht. hält %s Sek. lang an"] = { false, false, { Stats.MeleeHaste, }, false, } -- s53229
+L["erzeugt einen wütenden sturm im zielgebiet, der allen in der nähe befindlichen feinden alle %s sek. %s naturschaden zufügt und die zeit zwischen angriffen der betroffenen feinde um %s% erhöht. hält %s Sek. lang an"] = { false, false, { Stats.MeleeHaste, }, false, reduction = true } -- s53229
 L["stellt im verlauf von %s Sek. insgesamt %s mana wieder her. ihr müsst beim trinken sitzen bleiben. wenn ihr mindestens %s sekunden mit trinken verbringt, werdet ihr wahrscheinlich kräftig wachsen"] = { false, { Stats.GenericManaRegen, }, false, } -- s53373
 L["erhöht die reichweite eurer zauber 'richturteil des lichts' und 'richturteil der weisheit' um %s meter und erhöht eure trefferchance um %s%"] = { false, { Stats.MeleeHit, Stats.RangedHit, Stats.SpellHit, }, } -- s53556
 L["verringert die durch erlittenen schaden verursachte zauberzeiterhöhung beim wirken von 'zuverlässiger schuss' um %s% und erhöht eure trefferchance um %s%"] = { false, { Stats.MeleeHit, Stats.RangedHit, }, } -- s53620
@@ -2449,25 +2449,25 @@ L["in manchen fällen schärft der lärm von nahkämpfen euer schallbewusstsein 
 L["verzaubert die waffenhandwaffe mit feuer, erhöht die zaubermacht direkter schadenszauber um %s und die kritische zaubertrefferwertung um %s"] = { false, { Stats.SpellCritRating, }, } -- s54718
 L["verzaubert die waffenhandwaffe mit schatten, erhöht die zaubermacht regelmäßiger zauber um %s und die zaubertempowertung um %s"] = { false, { Stats.SpellHasteRating, }, } -- s54731
 L["erhöht %s Sek. lang die kritische trefferwertung um %s"] = { false, { Stats.MeleeCritRating, Stats.RangedCritRating, Stats.SpellCritRating, }, } -- s54739
-L["wirft einen knochenwirbel.\ntrefferchance um %s% verringert"] = { { Stats.MeleeHit, Stats.RangedHit, }, } -- s54770
+L["wirft einen knochenwirbel.\ntrefferchance um %s% verringert"] = { { Stats.MeleeHit, Stats.RangedHit, }, reduction = true } -- s54770
 L["der zaubernde springt auf sein ziel zu, erhöht das angriffstempo um %s%"] = { { Stats.MeleeHaste, }, } -- s54781
 L["beschleunigt euer wirken von zaubern und erhöht dadurch das zaubertempo um %s%. hält %s Sek. lang an"] = { { Stats.SpellHaste, }, false, } -- s54792
 L["chance, bei einem zaubertreffer die willenskraft %s sek. lang um %s zu erhöhen"] = { false, { Stats.Spirit, }, ignoreSum = true } -- s54838
-L["eine krankheit, die alle %s sek. frostschaden verursacht und %s Sek. lang das nahkampf- und distanzangriffstempo des ziels um %s% verringert"] = { false, false, { Stats.MeleeHaste, Stats.RangedHaste, }, } -- s55095
-L["ein lautes brüllen benebelt die gedanken aller gegner, die ihn hören, und verringert das zaubertempo %s Sek. lang um %s%"] = { false, { Stats.SpellHaste, }, } -- s55100
-L["ein lautes brüllen benebelt die gedanken aller gegner in hörweite und verringert ihr zaubertempo %s Sek. lang um %s%"] = { false, { Stats.SpellHaste, }, } -- s55106
+L["eine krankheit, die alle %s sek. frostschaden verursacht und %s Sek. lang das nahkampf- und distanzangriffstempo des ziels um %s% verringert"] = { false, false, { Stats.MeleeHaste, Stats.RangedHaste, }, reduction = true } -- s55095
+L["ein lautes brüllen benebelt die gedanken aller gegner, die ihn hören, und verringert das zaubertempo %s Sek. lang um %s%"] = { false, { Stats.SpellHaste, }, reduction = true } -- s55100
+L["ein lautes brüllen benebelt die gedanken aller gegner in hörweite und verringert ihr zaubertempo %s Sek. lang um %s%"] = { false, { Stats.SpellHaste, }, reduction = true } -- s55106
 L["verzaubert die waffenhandwaffe mit schatten, erhöht den von regelmäßigen zaubern verursachten schaden um %s und die zaubertempowertung um %s"] = { false, { Stats.SpellHasteRating, }, } -- s55172
 L["erhöht das bewegungstempo des zaubernden um %s% und lässt ihn bei seinem ersten angriff zusätzlich %s schaden zufügen"] = { false, { Stats.AverageWeaponDamage, }, } -- s55193
 L["erhöht das nahkampfangriffstempo um %s%"] = { { Stats.MeleeHaste, }, } -- s55222
 L["gewährt dem todesritter zeitweise %s% seiner maximalen gesundheit und erhöht die durch zauber und effekte erzeugte gesundheit %s Sek. lang um %s%. wenn der effekt endet, geht die zusätzliche gesundheit verloren"] = { { Stats.Health, }, false, false, } -- s55233
 L["erhöht das nahkampfangriffstempo aller gruppen- oder schlachtzugsmitglieder im umkreis von %s metern um %s%, euer tempo wird zusätzlich um %s% erhöht"] = { false, { Stats.MeleeHaste, }, false, } -- s55610
-L["erhöht %s Sek. lang den verursachten körperlichen schaden des zaubernden um %s%, macht ihn jedoch bewegungsunfähig und erhöht die zeit zwischen seinen angriffen um %s%"] = { false, false, { Stats.MeleeHaste, }, } -- s55633
+L["erhöht %s Sek. lang den verursachten körperlichen schaden des zaubernden um %s%, macht ihn jedoch bewegungsunfähig und erhöht die zeit zwischen seinen angriffen um %s%"] = { false, false, { Stats.MeleeHaste, }, reduction = true } -- s55633
 L["erhöht eure zaubermacht %s Sek. lang um %s"] = { false, { Stats.SpellPower, }, } -- s55637
 L["eck wird zum berserker, erhöht sein angriffstempo um %s% und seinen verursachten schaden um %s%"] = { { Stats.MeleeHaste, }, false, } -- s55816
 L["erhöht %s Sek. lang die kritische trefferchance um %s%"] = { false, { Stats.MeleeCrit, Stats.RangedCrit, }, } -- s56410
-L["eisige winde umwehen %s Sek. lang den zaubernden. die kälte verlangsamt das zaubertempo um %s%, erhöht aber den schaden von frostzaubern um %s%"] = { false, { Stats.SpellHaste, }, false, } -- s56716
+L["eisige winde umwehen %s Sek. lang den zaubernden. die kälte verlangsamt das zaubertempo um %s%, erhöht aber den schaden von frostzaubern um %s%"] = { false, { Stats.SpellHaste, }, false, reduction = true } -- s56716
 L["der zaubernde springt auf das ziel zu, die angriffsgeschwindigkeit des zaubernden ist um %s% erhöht"] = { { Stats.MeleeHaste, }, } -- s56729
-L["verringert den schaden in der nähe befindlicher gegner um %s% und verringert deren verteidigung um %s"] = { false, { Stats.Defense, }, } -- s57055
+L["verringert den schaden in der nähe befindlicher gegner um %s% und verringert deren verteidigung um %s"] = { false, { Stats.Defense, }, reduction = true } -- s57055
 L["stellt im verlauf von %s Sek. %s mana wieder her. ihr müsst beim trinken sitzen bleiben"] = { false, { Stats.GenericManaRegen, }, } -- s57073
 L["angriffskraft um %s, ausdauer um %s erhöht. hält %s Sek. lang an"] = { { Stats.GenericAttackPower, Stats.RangedAttackPower, }, { Stats.Stamina, }, false, } -- s57111
 L["stellt im verlauf von %s Sek. %s gesundheit und %s mana wieder her. ihr müsst beim essen sitzen bleiben. wenn ihr mindestens %s sekunden lang mit essen verbringt, werdet ihr satt und erhaltet %s Sek. lang %s angriffskraft und %s ausdauer"] = { false, false, false, false, false, { Stats.GenericAttackPower, }, { Stats.Stamina, }, ignoreSum = true } -- s57085
@@ -2502,10 +2502,10 @@ L["stellt im verlauf von %s Sek. %s gesundheit und %s mana wieder her. ihr müss
 L["stärke um %s, ausdauer um %s erhöht. hält %s Sek. lang an"] = { { Stats.Strength, }, { Stats.Stamina, }, false, } -- s57371
 L["erhöht den erlittenen und verursachten kritischen schaden um %s% und erhöht die kritische trefferchance des zaubernden um %s%. hält %s Sek.. lang an"] = { false, { Stats.MeleeCrit, Stats.RangedCrit, }, false, } -- s57524
 L["erhöht die kritische zaubertrefferchance um %s%"] = { { Stats.SpellCrit, }, } -- s57529
-L["trifft nahe feinde, erhöht die zeit zwischen ihren angriffen %s Sek. lang um %s% und verursacht %s schaden. schaden wird durch angriffskraft erhöht. diese fähigkeit verursacht zusätzliche bedrohung und wirkt auf maximal %s ziele"] = { false, { Stats.MeleeHaste, }, false, false, } -- s57832
+L["trifft nahe feinde, erhöht die zeit zwischen ihren angriffen %s Sek. lang um %s% und verursacht %s schaden. schaden wird durch angriffskraft erhöht. diese fähigkeit verursacht zusätzliche bedrohung und wirkt auf maximal %s ziele"] = { false, { Stats.MeleeHaste, }, false, false, reduction = true } -- s57832
 L["erhöht eure ausweichchance in bärengestalt oder terrorbärengestalt um %s%. zusätzlich gewinnt ihr bei jedem ausweichen in bärengestalt oder terrorbärengestalt %s wut"] = { { Stats.Dodge, }, false, } -- s57878
 L["es besteht eine chance, dass beim wirken von 'mondfeuer' eure willenskraft um %s erhöht wird"] = { { Stats.Spirit, }, ignoreSum = true } -- s57907
-L["schmettert auf den boden und wirbelt eine wolke erstickenden staubs auf, der bei allen davon betroffenen feinden pro sekunde %s naturschaden verursacht und ihre trefferchance um %s% verringert"] = { false, { Stats.MeleeHit, Stats.RangedHit, }, } -- s58965
+L["schmettert auf den boden und wirbelt eine wolke erstickenden staubs auf, der bei allen davon betroffenen feinden pro sekunde %s naturschaden verursacht und ihre trefferchance um %s% verringert"] = { false, { Stats.MeleeHit, Stats.RangedHit, }, reduction = true } -- s58965
 L["erhöht %s Sek. lang die kritische nahkampftrefferchance des zaubernden um %s%"] = { false, { Stats.MeleeCrit, Stats.RangedCrit, }, } -- s59183
 L["erhöht eure werte %s Sek. lang um %s"] = { false, { Stats.AllStats, }, } -- s59191
 L["stellt im verlauf von %s Sek. %s gesundheit wieder her. wenn ihr mindestens %s sekunden lang mit essen verbringt, werdet ihr satt und erhaltet %s Sek. lang %s ausweichwertung"] = { false, false, false, false, { Stats.DodgeRating, }, ignoreSum = true } -- s59227
@@ -2548,7 +2548,7 @@ L["erhöht das angriffstempo um %s%. nahkampfangriffe des zaubernden haben den e
 L["euer distanzangriffstempo wird um %s% erhöht, während 'aspekt der viper' aktiv ist"] = { { Stats.RangedHaste, }, } -- s61609
 L["erhöht die gesundheit des begleiters um %s"] = { { Stats.Health, }, } -- s61679
 L["erhöht %s Sek. lang sowohl das angriffstempo des zaubernden um %s% als auch jeglichen verursachten schaden um %s%"] = { false, { Stats.MeleeHaste, }, false, } -- s61714
-L["debuff the target increasing spell damage taken by %s%, reducing fire, frost, shadow, nature, and arcane resistances by %s, and reducing armor by %s%"] = { false, { Stats.FireResistance, Stats.NatureResistance, Stats.FrostResistance, Stats.ShadowResistance, Stats.ArcaneResistance, }, false, } -- s61729
+L["debuff the target increasing spell damage taken by %s%, reducing fire, frost, shadow, nature, and arcane resistances by %s, and reducing armor by %s%"] = { false, { Stats.FireResistance, Stats.NatureResistance, Stats.FrostResistance, Stats.ShadowResistance, Stats.ArcaneResistance, }, false, reduction = true } -- s61729
 L["der jäger nimmt die aspekte eines drachenfalken an. die distanzangriffskraft wird um %s und die ausweichchance um %s% erhöht. es kann immer nur jeweils ein aspekt aktiv sein"] = { { Stats.RangedAttackPower, }, { Stats.Dodge, }, } -- s61846
 L["erhöht die kritische trefferwertung und die kritische zaubertrefferwertung um %s"] = { { Stats.MeleeCritRating, Stats.SpellCritRating, }, } -- s61850
 L["erhöht eure kritische trefferwertung um %s, während ihr euch in katzen-, bären- oder terrorbärengestalt befindet"] = { { Stats.MeleeCritRating, Stats.RangedCritRating, }, } -- s62106
@@ -2561,10 +2561,10 @@ L["stellt im verlauf von %s Sek. insgesamt %s gesundheit wieder her. wenn ihr mi
 L["der zaubernde wird geschmolzen, sein tempo um %s% erhöht. pro sekunde schlagen flammen aus dem zaubernden und verursachen an allen feinden innerhalb von %s metern %s feuerschaden"] = { { Stats.MeleeHaste, }, false, false, } -- s62373
 L["erhöht euren widerstand gegen alle arten von magie %s Sek. lang um %s. gilt sowohl als kampfelixier als auch als wächterelixier. der effekt hält auch nach dem tode an"] = { false, { Stats.FireResistance, Stats.NatureResistance, Stats.FrostResistance, Stats.ShadowResistance, Stats.ArcaneResistance, }, } -- s62380
 L["erhöht den schaden um %s% und die angriffsgeschwindigkeit um %s%"] = { false, { Stats.MeleeHaste, }, } -- s62555
-L["verhindert die manaregeneration aus beinahe allen natürlichen quellen. die fähigkeiten 'aspekt der viper', 'richturteil des weisen', 'schamanistische wut' und 'einklang des geistes' bleiben zumindest teilweise effektiv. verringert auch das nahkampfangriffstempo um %s%"] = { { Stats.MeleeHaste, }, } -- s62692
+L["verhindert die manaregeneration aus beinahe allen natürlichen quellen. die fähigkeiten 'aspekt der viper', 'richturteil des weisen', 'schamanistische wut' und 'einklang des geistes' bleiben zumindest teilweise effektiv. verringert auch das nahkampfangriffstempo um %s%"] = { { Stats.MeleeHaste, }, reduction = true } -- s62692
 L["wärmt nahe befreundete kreaturen, verhindert einfrierungseffekte und beißende kälte und erhöht die willenskraft um %s. zusätzlich haben zauber und distanzangriffe eine chance, gegner anzusengen. das wärmende feuer kann von fallendem eis oder mächtiger frostmagie gelöscht werden"] = { { Stats.Spirit, }, } -- s62821
 L["fügt alle %s sek. %s schattenschaden zu, erhöht jedoch den verursachten körperlichen schaden um %s. hält %s Sek. lang an"] = { false, false, { Stats.AverageWeaponDamage, }, false, } -- s63147
-L["schützt den paladin %s Sek. lang vor jeglichem schaden und jeglichen zaubern, erhöht jedoch die zeit zwischen seinen angriffen um %s%. einmal geschützt, kann der paladin %s Sek. lang nicht erneut durch 'gottesschild', 'göttlicher schutz' oder 'hand des schutzes' unverwundbar gemacht werden"] = { false, { Stats.MeleeHaste, }, false, } -- s63148
+L["schützt den paladin %s Sek. lang vor jeglichem schaden und jeglichen zaubern, erhöht jedoch die zeit zwischen seinen angriffen um %s%. einmal geschützt, kann der paladin %s Sek. lang nicht erneut durch 'gottesschild', 'göttlicher schutz' oder 'hand des schutzes' unverwundbar gemacht werden"] = { false, { Stats.MeleeHaste, }, false, reduction = true } -- s63148
 L["verringert %s Sek. lang die zeit zwischen angriffen um %s%"] = { false, { Stats.MeleeHaste, }, } -- s63227
 L["chance, bei einem treffer eure kritische trefferwertung %s sek. lang um %s zu erhöhen"] = { false, { Stats.MeleeCritRating, Stats.RangedCritRating, Stats.SpellCritRating, }, ignoreSum = true } -- s63251
 L["erhöht die zaubermacht um %s% der von eurem totem des ingrimms gewährten bonuszaubermacht"] = { { Stats.SpellDamage, }, } -- s63283
@@ -2576,10 +2576,10 @@ L["erhöht das angriffstempo des zaubernden um %s% und allen verursachten schade
 L["stellt im verlauf von %s Sek. %s mana wieder her. ihr müsst beim essen sitzen bleiben"] = { false, { Stats.GenericManaRegen, }, } -- s64356
 L["erhöht die parierwertung um %s und verursacht, wenn ihr das nächste mal erfolgreich einen angriff pariert, %s schaden. bis zu %s-mal stapelbar. bei erfolgreichem parieren wreden alle stapel entfernt"] = { { Stats.ParryRating, }, false, false, } -- s64440
 L["erhöht die nahkampf- und distanzangriffskraft des wolfs und seines meisters %s Sek. lang um %s"] = { false, { Stats.GenericAttackPower, }, } -- s64491
-L["schützt den zaubernden %s Sek. lang vor allen angriffen und zaubern, die zeit zwischen angiffen wird während dieser zeit jedoch um %s% erhöht"] = { false, { Stats.MeleeHaste, }, } -- s64505
+L["schützt den zaubernden %s Sek. lang vor allen angriffen und zaubern, die zeit zwischen angiffen wird während dieser zeit jedoch um %s% erhöht"] = { false, { Stats.MeleeHaste, }, reduction = true } -- s64505
 L["erhöht die zaubermacht %s Sek. lang um bis zu %s"] = { false, { Stats.SpellPower, }, } -- s64525
-L["sprüht löschschaum in die luft, der sich im raum verteilt und flammen erstickt. zusätzlich wird die zauberzeit von betroffenen feinden %s Sek. lang um %s% verringert"] = { false, { Stats.SpellHaste, }, } -- s64570
-L["verursacht naturschaden an einem feind und verringert dessen rüstung %s Sek. lang um %s. bis zu %s-mal stapelbar"] = { false, { Stats.Armor, }, false, } -- s64638
+L["sprüht löschschaum in die luft, der sich im raum verteilt und flammen erstickt. zusätzlich wird die zauberzeit von betroffenen feinden %s Sek. lang um %s% verringert"] = { false, { Stats.SpellHaste, }, reduction = true } -- s64570
+L["verursacht naturschaden an einem feind und verringert dessen rüstung %s Sek. lang um %s. bis zu %s-mal stapelbar"] = { false, { Stats.Armor, }, false, reduction = true } -- s64638
 L["bei aktivierung wird euer nächstes wirken von 'blitzschlag', 'kettenblitzschlag' oder 'lavaeruption' zu einem spontanzauber. zusätzlich wird euer zaubertempo %s Sek. lang um %s% erhöht. 'elementarbeherrschung' und 'schnelligkeit der natur' unterliegen derselben abklingzeit"] = { false, { Stats.SpellHaste, }, } -- s64701
 L["eure schaden verursachenden zauber haben eine chance, eure zaubermacht %s Sek. um %s zu erhöhen"] = { false, { Stats.SpellDamage, }, ignoreSum = true } -- s64714
 L["jedes mal, wenn ihr einen zauber wirkt, besteht die chance, dass ihr %s Sek. lang alle %s sek. %s mana regeneriert"] = { false, false, { Stats.GenericManaRegen, }, ignoreSum = true } -- s64738
@@ -2606,9 +2606,9 @@ L["jedes mal, wenn ihr einen schadens- oder heilzauber wirkt erhöht sich eure z
 L["erhöht die parierwertung %s Sek. lang um %s"] = { false, { Stats.ParryRating, }, } -- s65012
 L["eure kritischen nahkampf- und distanzangriffe haben eine chance, eure angriffskraft %s Sek. lang um %s zu erhöhen"] = { false, { Stats.GenericAttackPower, }, ignoreSum = true } -- s65013
 L["eure nahkampf- und distanzangriffe haben eine chance, eure kritische trefferwertung %s Sek. lang um %s zu erhöhen"] = { false, { Stats.MeleeCritRating, Stats.RangedCritRating, Stats.SpellCritRating, }, ignoreSum = true } -- s65025
-L["sprüht löschschaum in die luft, der flammen innerhalb von %s metern erstickt. zusätzlich wird die zauberzeit von betroffenen feinden %s Sek. lang um %s% verringert"] = { false, false, { Stats.SpellHaste, }, } -- s65192
-L["kanalisiert einen strahl titanenenergie, der die molekularstruktur gewisser saronitbasierter kreaturen destabilisiert, wodurch %s Sek. lang ihr angriffstempo um %s% und ihr zaubertempo um %s% verringert wird"] = { false, false, { Stats.SpellHaste, }, } -- s65210
-L["verursacht in einem kegelförmigen bereich von %s metern vor dem zaubernden %s frostschaden. zusätzlich wird das angriffstempo der ziele %s Sek. lang um %s% verringert"] = { false, false, false, { Stats.MeleeHaste, }, } -- s65248
+L["sprüht löschschaum in die luft, der flammen innerhalb von %s metern erstickt. zusätzlich wird die zauberzeit von betroffenen feinden %s Sek. lang um %s% verringert"] = { false, false, { Stats.SpellHaste, }, reduction = true } -- s65192
+L["kanalisiert einen strahl titanenenergie, der die molekularstruktur gewisser saronitbasierter kreaturen destabilisiert, wodurch %s Sek. lang ihr angriffstempo um %s% und ihr zaubertempo um %s% verringert wird"] = { false, false, { Stats.SpellHaste, }, reduction = true } -- s65210
+L["verursacht in einem kegelförmigen bereich von %s metern vor dem zaubernden %s frostschaden. zusätzlich wird das angriffstempo der ziele %s Sek. lang um %s% verringert"] = { false, false, false, { Stats.MeleeHaste, }, reduction = true } -- s65248
 L["stellt im verlauf von %s Sek. insgesamt %s mana wieder her. ihr müsst beim trinken sitzen bleiben. wenn ihr mindestens %s sekunden mit trinken verbringt, werdet ihr satt und erhaltet %s Sek. lang %s kritische trefferwertung. normaler alkohol"] = { false, { Stats.GenericManaRegen, }, false, false, { Stats.MeleeCritRating, Stats.RangedCritRating, Stats.SpellCritRating, }, } -- s65363
 L["kritische trefferwertung um %s erhöht. braufestbiere: fantastischer geschmack und besonders sättigend! hält %s Sek. lang an"] = { { Stats.MeleeCritRating, Stats.RangedCritRating, Stats.SpellCritRating, }, false, } -- s65365
 L["erhöht bei aktivierung eure parierchance um %s% und gewährt euch eine chance von %s%, zauber von vor euch befindlichen zielen abzuwehren. hält %s Sek. lang an"] = { { Stats.Parry, }, false, false, } -- s65871
@@ -2634,20 +2634,20 @@ L["jedes mal, wenn ihr einen schadenszauber wirkt, besteht eine chance, dass ihr
 L["jedes mal, wenn ihr mit einem nahkampf- oder distanzangriff trefft, habt ihr eine chance, %s Sek. lang %s angriffskraft zu gewinnen"] = { false, { Stats.GenericAttackPower, }, ignoreSum = true } -- s67672
 L["lässt euch alle %s sek. %s mana regenerieren. hält %s Sek. lang an"] = { false, { Stats.GenericManaRegen, }, false, } -- s67696
 L["jedes mal, wenn ihr einen zauber wirkt, gewinnt ihr %s Sek. lang alle %s sek. %s mana. bis zu %s-mal stapelbar"] = { false, false, { Stats.GenericManaRegen, }, false, ignoreSum = true } -- s67698
-L["eine krankheit, die alle %s sek. frostschaden verursacht und das nahkampf- und distanzangriffstempo des ziels %s Sek. lang um %s% verringert"] = { false, false, { Stats.MeleeHaste, Stats.RangedHaste, }, } -- s67719
+L["eine krankheit, die alle %s sek. frostschaden verursacht und das nahkampf- und distanzangriffstempo des ziels %s Sek. lang um %s% verringert"] = { false, false, { Stats.MeleeHaste, Stats.RangedHaste, }, reduction = true } -- s67719
 L["jedes mal, wenn ihr einen hilfreichen zauber wirkt, erhaltet ihr %s zaubermacht. bis zu %s-mal stapelbar. der ganze effekt dauert %s Sek. lang an"] = { { Stats.SpellDamage, }, false, false, ignoreSum = true } -- s67726
 L["jedes mal, wenn ihr von einem angriff getroffen werdet, erhaltet ihr %s rüstung. bis zu %s-mal stapelbar. der ganze effekt dauert %s Sek. lang an"] = { { Stats.Armor, }, false, false, ignoreSum = true } -- s67728
 L["jedes mal, wenn ihr einen schadenszauber wirkt, erhaltet ihr %s tempowertung. bis zu %s-mal stapelbar. der ganze effekt dauert %s Sek. lang an"] = { { Stats.MeleeHasteRating, Stats.RangedHasteRating, Stats.SpellHasteRating, }, false, false, ignoreSum = true } -- s67736
 L["jedes mal, wenn ihr einen feind mit einem nahkampfangriff trefft, erhaltet ihr %s angriffskraft. bis zu %s-mal stapelbar. der ganze effekt dauert %s Sek. lang an"] = { { Stats.GenericAttackPower, }, false, false, ignoreSum = true } -- s67738
 L["erhöht das angriffstempo der zaubernden um %s% und seinen verursachten schaden um %s%. hält %s Sek. lang an"] = { { Stats.MeleeHaste, }, false, false, } -- s68378
-L["erhöht die zeit zwischen den angriffen eines feindes um %s% und verlangsamt sein bewegungstempo um %s%. hält %s Sek. lang an"] = { { Stats.MeleeHaste, }, false, false, } -- s68902
+L["erhöht die zeit zwischen den angriffen eines feindes um %s% und verlangsamt sein bewegungstempo um %s%. hält %s Sek. lang an"] = { { Stats.MeleeHaste, }, false, false, reduction = true } -- s68902
 L["angriffstempo um %s% erhöht. verursachter schaden um %s% erhöht"] = { { Stats.MeleeHaste, }, false, } -- s69052
-L["die eisige anwesenheit des frostthrones verringert die chance eines feindes, nahkampfangriffen auszuweichen, um %s%"] = { { Stats.Dodge, }, } -- s69127
+L["die eisige anwesenheit des frostthrones verringert die chance eines feindes, nahkampfangriffen auszuweichen, um %s%"] = { { Stats.Dodge, }, reduction = true } -- s69127
 L["erhöht das angriffstempo des zaubernden %s Sek. lang um %s%. wirkt auf bis zu %s waffenschwünge"] = { false, { Stats.MeleeHaste, }, false, } -- s69264
 L["abhärtungswertung und ausdauer um %s erhöht. braufestbiere: fantastischer geschmack und besonders sättigend! hält %s Sek. lang an"] = { { Stats.ResilienceRating, Stats.Stamina, }, false, } -- s69559
 L["stellt im verlauf von %s Sek. insgesamt %s mana wieder her. ihr müsst beim trinken sitzen bleiben. wenn ihr mindestens %s sekunden mit trinken verbringt, werdet ihr satt und erhaltet %s Sek. lang %s ausdauer und abhärtungswertung. normaler alkohol"] = { false, { Stats.GenericManaRegen, }, false, false, { Stats.ResilienceRating, }, } -- s69560
 L["erhöht die rüstung um %s% und das angriffstempo um %s%"] = { false, { Stats.MeleeHaste, }, } -- s69647
-L["verursacht in einem kegelförmigen bereich von %s metern vor dem zaubernden %s frostschaden, zusätzlich wird %s Sek. lang das angriffstempo der ziele um %s% und ihr bewegungstempo um %s% verringert"] = { false, false, false, { Stats.MeleeHaste, }, false, } -- s69649
+L["verursacht in einem kegelförmigen bereich von %s metern vor dem zaubernden %s frostschaden, zusätzlich wird %s Sek. lang das angriffstempo der ziele um %s% und ihr bewegungstempo um %s% verringert"] = { false, false, false, { Stats.MeleeHaste, }, false, reduction = true } -- s69649
 L["erhöht die intelligenz aller gruppen- und schlachtzugsmitglieder %s Sek. lang um %s"] = { false, { Stats.Intellect, }, } -- s69994
 L["erhöht die ausweichchance des schurken %s Sek. lang um %s%"] = { false, { Stats.Dodge, }, } -- s70188
 L["erhöht die angriffskraft um %s und lockt jene an, die duftwasser aufgetragen haben. hält %s Sek. lang an"] = { { Stats.GenericAttackPower, }, false, } -- s70233
@@ -2677,8 +2677,8 @@ L["angriffskraft um %s erhöht. bis zu %s-mal stapelbar"] = { { Stats.AttackPowe
 L["euer zauber 'springflut' gewährt %s Sek. lang %s zaubermacht. bis zu %s-mal stapelbar"] = { false, { Stats.SpellDamage, }, false, ignoreSum = true } -- s71217
 L["eure fähigkeiten 'auslöschen', 'geißelstoß' und 'todesstoß' gewähren euch %s Sek. lang %s stärke. bis zu %s-mal stapelbar"] = { false, { Stats.Strength, }, false, ignoreSum = true } -- s71226
 L["eure fähigkeit 'runenstoß' gewährt euch %s Sek. lang %s ausweichwertung. bis zu %s-mal stapelbar"] = { false, { Stats.DodgeRating, }, false, ignoreSum = true } -- s71228
-L["das erstickende gas verursacht %s schaden und nimmt euch den atem, wodurch eure trefferchance %s Sek. lang um %s% verringert wird"] = { false, false, { Stats.MeleeHit, Stats.RangedHit, }, } -- s71278
-L["die explosion fügt feinden im umkreis von %s metern %s schaden zu, stößt sie zurück und verringert ihre trefferchance %s Sek. lang um %s%"] = { false, false, false, { Stats.MeleeHit, Stats.RangedHit, }, } -- s71279
+L["das erstickende gas verursacht %s schaden und nimmt euch den atem, wodurch eure trefferchance %s Sek. lang um %s% verringert wird"] = { false, false, { Stats.MeleeHit, Stats.RangedHit, }, reduction = true } -- s71278
+L["die explosion fügt feinden im umkreis von %s metern %s schaden zu, stößt sie zurück und verringert ihre trefferchance %s Sek. lang um %s%"] = { false, false, false, { Stats.MeleeHit, Stats.RangedHit, }, reduction = true } -- s71279
 L["erhöht die nahkampf- und distanzangriffskraft um %s. hält %s Sek. lang an. bis zu %s-mal stapelbar"] = { { Stats.GenericAttackPower, }, false, false, } -- s71396
 L["immer, wenn ihr einem gegner nahkampf- oder distanzschaden zufügt, erhaltet ihr %s Sek. lang %s angriffskraft. dieser effekt ist bis zu %s-mal stapelbar"] = { false, { Stats.GenericAttackPower, }, false, ignoreSum = true } -- s71397
 L["wenn ihr schaden verursacht, besteht eine chance, dass ihr %s Sek. lang %s angriffskraft erhaltet"] = { false, { Stats.GenericAttackPower, }, ignoreSum = true } -- s71402
@@ -2703,18 +2703,18 @@ L["hat ein seelenfragment erhalten, dass pro stück %s stärke gewährt. wenn %s
 L["bei einem treffer im kampf besteht die chance, dass eure rüstung %s Sek. lang um %s erhöht wird"] = { false, { Stats.Armor, }, ignoreSum = true } -- s72415
 L["eure offensivzauber haben eine chance, bei einem treffer eure zaubermacht %s Sek. lang um %s zu erhöhen"] = { false, { Stats.SpellDamage, }, ignoreSum = true } -- s72417
 L["eure hilfreichen zauber haben eine chance, eure zaubermacht %s Sek. lang um %s zu erhöhen"] = { false, { Stats.SpellDamage, }, ignoreSum = true } -- s72419
-L["ein zuckender stoß trifft den gegner, der %s% des schadens eines normalen nahkampfangriffs verursacht und die ausweichschance des ziels %s Sek. lang um %s% verringert. dieser stoß kann nicht vermieden verden"] = { false, false, { Stats.Dodge, }, } -- s72422
+L["ein zuckender stoß trifft den gegner, der %s% des schadens eines normalen nahkampfangriffs verursacht und die ausweichschance des ziels %s Sek. lang um %s% verringert. dieser stoß kann nicht vermieden verden"] = { false, false, { Stats.Dodge, }, reduction = true } -- s72422
 L["erhöht die ausdauer aller gruppen- und schlachtzugsmitglieder %s Sek. lang um %s"] = { false, { Stats.Stamina, }, } -- s72590
 L["saurfang verfällt in raserei, die sein angriffstempo um %s% erhöht"] = { { Stats.MeleeHaste, }, } -- s72737
 L["entfesselt den chaosbann, der %s Sek. lang %s stärke gewährt"] = { false, { Stats.Strength, }, } -- s73422
-L["verringert das angriffstempo eines gegners %s Sek. lang um %s%"] = { false, { Stats.MeleeHaste, }, } -- s74781
+L["verringert das angriffstempo eines gegners %s Sek. lang um %s%"] = { false, { Stats.MeleeHaste, }, reduction = true } -- s74781
 L["wenn ihr schaden verursacht, besteht eine chance, dass ihr %s Sek. lang %s angriffskraft gewinnt"] = { false, { Stats.GenericAttackPower, }, ignoreSum = true } -- s75455
 L["eure schadensverursachenden zauber haben eine chance, euch %s Sek. lang %s zaubermacht zu gewähren"] = { false, { Stats.SpellDamage, }, ignoreSum = true } -- s75465
 L["nahkampfangriffe, die eure gesundheit unter %s% sinken lassen, erhöhen eure ausweichwertung %s Sek. lang um %s. kann nur einmal alle %s sek. auftreten"] = { false, false, { Stats.DodgeRating, }, false, ignoreSum = true } -- s75475
 L["halions wissen über die bewegung durch verschiedene phasen ermöglicht es ihm, unerwartete angriffe auszuführen. seine trefferchance wird um %s% erhöht und die chance von feinden, seinen angriffen auszuweichen, um %s% verringert"] = { { Stats.MeleeHit, Stats.RangedHit, }, false, } -- s78243
 L["erhöht die tempowertung von gruppenmitgliedern innerhalb von %s metern um %s. hält %s Sek. lang an. trommeln können in gestaltverändertem zustand benutzt werden. unwirksam bei zielen der stufe %s oder höher"] = { false, { Stats.MeleeHasteRating, Stats.RangedHasteRating, Stats.SpellHasteRating, }, false, false, } -- s351355
 L["erhöht die angriffskraft von gruppenmitgliedern innerhalb von %s metern um %s und ihren zauberschaden um %s. hält %s Sek. lang an. trommeln können in gestaltverändertem zustand benutzt werden. unwirksam bei zielen der stufe %s oder höher"] = { false, { Stats.GenericAttackPower, }, { Stats.SpellDamage, }, false, false, } -- s351360
-L["destabilisiert die molekularstruktur gewisser saronitbasierter kreaturen, wodurch %s Sek. lang ihr angriffstempo um %s% und ihr zaubertempo um %s% verringert wird"] = { false, false, { Stats.SpellHaste, }, } -- s413118
+L["destabilisiert die molekularstruktur gewisser saronitbasierter kreaturen, wodurch %s Sek. lang ihr angriffstempo um %s% und ihr zaubertempo um %s% verringert wird"] = { false, false, { Stats.SpellHaste, }, reduction = true } -- s413118
 L["überzieht alle nahen eisenkonstrukte mit intensiver hitze, was ihr bewegungstempo um %s und ihr tempo um %s erhöht. dieser effekt ist bis zu %s-mal stapelbar. wenn der effekt %s stapel erreicht hat, wird das betroffene eisenkonstrukt schmelzen"] = { false, { Stats.MeleeHaste, }, false, false, } -- s65667
 L["verursachter schaden um %s% erhöht.\nzauber kosten nichts und wirken sofort.\nnahkampf- und distanzangriffstempo um %s% erhöht"] = { false, { Stats.MeleeHaste, }, } -- s70304
 L["verursachter schaden um %s% erhöht.\ngesundheit um %s% erhöht.\nzauber kosten nichts und wirken sofort.\nnahkampf- und distanzangriffstempo um %s% erhöht"] = { false, { Stats.SpellHaste, }, false, } -- s70320
@@ -2817,10 +2817,10 @@ L["erzeugt %s wut und erhöht die ausdauer aller gruppen- und schlachtzugsmitgli
 L["der zaubernde wird von einem schub heiliger energie erfüllt, der seinen durch gegenstände erhaltenen rüstungswert um %s% und seine zaubermacht um %s erhöht. \nes kann nur entweder 'innerer wille' oder 'inneres feuer' aktiv sein"] = { false, { Stats.SpellPower, }, } -- s588
 L["der zaubernde wird von einem schub heiliger energie erfüllt, der seinen durch gegenstände erhaltenen rüstungswert um %s% und seine zaubermacht um %s erhöht"] = { false, { Stats.SpellPower, }, } -- s588
 L["schützt den zaubernden, erhöht die rüstung um %s und erhöht die durch zauber und effekte erzeugte gesundheit um %s%.\nes kann immer nur ein rüstungszauber gleichzeitig auf dem hexenmeister aktiv sein"] = { { Stats.Armor, }, false, } -- s687
-L["versklavt den gewählten dämon und zwingt ihn, euren befehlen folge zu leisten. während der dämon versklavt ist, wird die zeit zwischen seinen angriffen um %s% erhöht und sein zaubertempo um %s% verlangsamt. hält bis zu %s Sek. lang an"] = { { Stats.MeleeHaste, }, { Stats.SpellHaste, }, false, } -- s1098
+L["versklavt den gewählten dämon und zwingt ihn, euren befehlen folge zu leisten. während der dämon versklavt ist, wird die zeit zwischen seinen angriffen um %s% erhöht und sein zaubertempo um %s% verlangsamt. hält bis zu %s Sek. lang an"] = { { Stats.MeleeHaste, }, { Stats.SpellHaste, }, false, reduction = true } -- s1098
 L["erhöht eure blockchance %s Sek. lang um %s%. wenn eure gesamte chance, einen angriff zu blocken oder ihn zu vermeiden, %s% überschreitet, wird zusätzlich eure kritische blockchance um den überschüssigen wert erhöht"] = { false, { Stats.BlockChance, }, false, } -- s2565
-L["fügt einem feind %s% waffenschaden zu und erhöht die zeit zwischen seinen angriffen %s Sek. lang um %s%"] = { { Stats.MeleeHaste, }, false, { Stats.MeleeHaste, }, } -- s3130
-L["verringert die gesundheitsregenerationsrate eines feindes um %s%, seine ausdauer um %s% und seine intelligenz um %s%. hält %s Sek. lang an"] = { false, false, { Stats.Intellect, }, false, } -- s3150
+L["fügt einem feind %s% waffenschaden zu und erhöht die zeit zwischen seinen angriffen %s Sek. lang um %s%"] = { { Stats.MeleeHaste, }, false, { Stats.MeleeHaste, }, reduction = true } -- s3130
+L["verringert die gesundheitsregenerationsrate eines feindes um %s%, seine ausdauer um %s% und seine intelligenz um %s%. hält %s Sek. lang an"] = { false, false, { Stats.Intellect, }, false, reduction = true } -- s3150
 L["erhöht eure beweglichkeit %s stunden lang um %s. kampfelixier"] = { false, { Stats.Agility, }, } -- s3160
 L["erhöht die stärke %s stunden lang um %s. kampfelixier"] = { false, { Stats.Strength, }, } -- s3164
 L["erhöht eure intelligenz %s stunden lang um %s. kampfelixier"] = { false, { Stats.Intellect, }, } -- s3166
@@ -2829,8 +2829,8 @@ L["%s stunden lang alle %s sekunden %s gesundheit regenerieren. wächterelixier"
 L["erhöht die rüstung %s stunden lang um %s. wächterelixier"] = { false, { Stats.Armor, }, } -- s3220
 L["erhöht eure maximale gesundheit %s stunden lang um %s. wächterelixier"] = { false, { Stats.Health, }, } -- s3593
 L["erhöht eure maximale gesundheit %s Sek. lang um %s. wächterelixier"] = { false, { Stats.Health, }, } -- s3593
-L["zeit zwischen angriffen um %s% erhöht"] = { { Stats.MeleeHaste, }, } -- s3826
-L["erhöht eure gesundheit um %s, verringert jedoch eure intelligenz %s Sek. lang um %s"] = { false, false, { Stats.Intellect, }, } -- s5021
+L["zeit zwischen angriffen um %s% erhöht"] = { { Stats.MeleeHaste, }, reduction = true } -- s3826
+L["erhöht eure gesundheit um %s, verringert jedoch eure intelligenz %s Sek. lang um %s"] = { false, false, { Stats.Intellect, }, reduction = true } -- s5021
 L["erhöht die ausweichchance des schurken um %s% und verringert die chance, dass er von distanzangriffen getroffen wird, um %s%. hält %s Sek. lang an"] = { { Stats.Dodge, }, false, false, } -- s5277
 L["willenskraft um %s erhöht"] = { { Stats.Spirit, }, } -- s5320
 L["erhöht %s Sek. lang die ausweichchance des zaubernden um %s%"] = { false, { Stats.Dodge, }, } -- s5426
@@ -2838,7 +2838,7 @@ L["erhöht den widerstand gegen jegliche magie um %s und gewährt euch alle %s s
 L["erhöht die ausdauer aller gruppen- und schlachtzugsmitglieder um %s"] = { { Stats.Stamina, }, } -- s6307
 L["erhöht eure trefferchance mit allen zaubern und angriffen um %s%"] = { { Stats.MeleeHit, Stats.RangedHit, Stats.SpellHit, }, } -- s6562
 L["erhöht die stärke und beweglichkeit aller gruppen- und schlachtzugsmitglieder im umkreis von %s metern um %s, zudem gewinnt ihr %s wut. hält %s Sek. lang an"] = { false, { Stats.Strength, Stats.Agility, }, false, false, } -- s6673
-L["zeit zwischen angriffen um %s% erhöht.\nzaubertempo um %s% verringert.\nchance von %s%, die fäulnis bei einem treffer auf verbündete auszubreiten"] = { { Stats.MeleeHaste, }, { Stats.SpellHaste, }, false, } -- s7103
+L["zeit zwischen angriffen um %s% erhöht.\nzaubertempo um %s% verringert.\nchance von %s%, die fäulnis bei einem treffer auf verbündete auszubreiten"] = { { Stats.MeleeHaste, }, { Stats.SpellHaste, }, false, reduction = true } -- s7103
 L["erhöht die intelligenz um %s"] = { { Stats.Intellect, }, } -- s7764
 L["erhöht die feuerzaubermacht %s stunden lang um %s. kampfelixier"] = { false, { Stats.FireDamage, }, } -- s7844
 L["erhöht %s Sek. lang die rüstung des ziels um %s. dieser effekt zählt als wächterelixier"] = { false, { Stats.Armor, }, } -- s8091
@@ -2857,18 +2857,18 @@ L["erhöht die beweglichkeit um %s. hält %s stunden lang an. kampfelixier"] = {
 L["erhöht die beweglichkeit um %s. hält %s Sek. lang an. kampfelixier"] = { { Stats.Agility, }, false, } -- s11328
 L["erhöht die intelligenz und kritische trefferwertung %s stunden lang um %s. kampfelixier"] = { false, { Stats.Intellect, Stats.MeleeCritRating, Stats.RangedCritRating, Stats.SpellCritRating, }, } -- s11390
 L["erhöht die intelligenz und kritische trefferwertung %s Sek. lang um %s. kampfelixier"] = { false, { Stats.Intellect, Stats.MeleeCritRating, Stats.RangedCritRating, Stats.SpellCritRating, }, } -- s11390
-L["fügt nahen gegnern naturschaden zu und verringert ihre trefferchance %s Sek. lang um %s%"] = { false, { Stats.SpellHit, Stats.MeleeHit, Stats.RangedHit, }, } -- s11983
-L["stärke um %s verringert.\nbeweglichkeit um %s verringert.\nintelligenz um %s verringert"] = { { Stats.Strength, }, { Stats.Agility, }, { Stats.Intellect, }, } -- s12001
+L["fügt nahen gegnern naturschaden zu und verringert ihre trefferchance %s Sek. lang um %s%"] = { false, { Stats.SpellHit, Stats.MeleeHit, Stats.RangedHit, }, reduction = true } -- s11983
+L["stärke um %s verringert.\nbeweglichkeit um %s verringert.\nintelligenz um %s verringert"] = { { Stats.Strength, }, { Stats.Agility, }, { Stats.Intellect, }, reduction = true } -- s12001
 L["erhöht euer angriffstempo für die nächsten %s waffenschwünge um %s%, nachdem ihr einen kritischen nahkampftreffer erzielt habt"] = { false, { Stats.MeleeHaste, }, ignoreSum = true } -- s12319
 L["beschleunigt euer wirken von zaubern, erhöht das zaubertempo um %s% und verringert die dauer der durch erlittenen schaden verursachten zauberzeiterhöhung beim wirken von zaubern um %s%. das wirken von 'eisige adern' entfernt alle auf euch wirkenden bewegungsverlangsamenden und zauberzeitverringernden effekte. hält %s Sek. lang an"] = { { Stats.SpellHaste, }, false, false, } -- s12472
 L["erhöht %s Sek. lang die rüstung um %s und alle widerstände um %s. gewährt außerdem immunität gegen furcht, wenn ihr stufe %s oder niedriger seid"] = { false, { Stats.FireResistance, Stats.NatureResistance, Stats.FrostResistance, Stats.ShadowResistance, Stats.ArcaneResistance, }, false, false, } -- s12733
-L["verringert %s Sek. lang die stärke von in der nähe befindlichen feinden um %s sowie die beweglichkeit um %s"] = { false, { Stats.Strength, }, { Stats.Agility, }, } -- s12946
-L["schockt einen gegner mit erschütternder kraft, verursacht naturschaden und erhöht die zeit zwischen angriffen um %s%"] = { { Stats.MeleeHaste, }, } -- s13281
-L["zwingt einen feind, dämonisch zu sprechen, was sein zaubertempo %s Sek. lang um %s% verringert"] = { false, { Stats.SpellHaste, }, } -- s13338
+L["verringert %s Sek. lang die stärke von in der nähe befindlichen feinden um %s sowie die beweglichkeit um %s"] = { false, { Stats.Strength, }, { Stats.Agility, }, reduction = true } -- s12946
+L["schockt einen gegner mit erschütternder kraft, verursacht naturschaden und erhöht die zeit zwischen angriffen um %s%"] = { { Stats.MeleeHaste, }, reduction = true } -- s13281
+L["zwingt einen feind, dämonisch zu sprechen, was sein zaubertempo %s Sek. lang um %s% verringert"] = { false, { Stats.SpellHaste, }, reduction = true } -- s13338
 L["erhöht eure kritische trefferchance mit dolchen um %s%"] = { { Stats.MeleeCrit, Stats.RangedCrit, }, } -- s13706
 L["erhöht eure chance, feindlichen angriffen auszuweichen, um %s% und gewährt euch %s% angriffstempo"] = { { Stats.Dodge, }, false, } -- s13712
 L["erhöht eure willenskraft %s Sek. lang um %s. kampfelixier"] = { false, { Stats.Spirit, }, } -- s15231
-L["zwingt in der nähe befindliche feinde, dämonisch zu sprechen, was ihr zaubertempo %s Sek. lang um %s% verringert"] = { false, { Stats.SpellHaste, }, } -- s15470
+L["zwingt in der nähe befindliche feinde, dämonisch zu sprechen, was ihr zaubertempo %s Sek. lang um %s% verringert"] = { false, { Stats.SpellHaste, }, reduction = true } -- s15470
 L["beschwört %s Sek. lang ein totem der manaflut zu füßen des zaubernden, das über %s% seiner gesundheit verfügt und die willenskraft von gruppen- und schlachtzugsmitgliedern in einem umkreis von %s metern um einen betrag erhöht, der %s% der willenskraft des zaubernden schamanen entspricht (kurzzeitige willenskraftboni werden aus der berechnung ausgeschlossen)"] = { false, false, false, { Stats.Spirit, }, } -- s16191
 L["erhöht %s Sek. lang eure zauber-, distanz- und nahkampftempowertung um %s. kampfelixier"] = { false, { Stats.MeleeHasteRating, Stats.RangedHasteRating, Stats.SpellHasteRating, }, } -- s16322
 L["erhöht die stärke um %s"] = { { Stats.Strength, }, } -- s16612
@@ -2877,15 +2877,15 @@ L["ein schützender manaschild umgibt den zaubernden und absorbiert %s schadensp
 L["erhöht die ausweichwertung um %s"] = { { Stats.DodgeRating, }, } -- s17351
 L["erzeugt sofort %s bis %s wut und erhöht stärke %s Sek. lang um %s"] = { false, false, false, { Stats.Strength, }, } -- s17528
 L["erhöht %s Sek. lang das maximale mana um %s und die willenskraft um %s. kampfelixier"] = { false, { Stats.Mana, }, { Stats.Spirit, }, } -- s17535
-L["verbrennt einen feind, verursacht %s schaden und verringert seinen feuerwiderstand %s Sek. lang um %s"] = { false, false, { Stats.FireResistance, }, } -- s18958
+L["verbrennt einen feind, verursacht %s schaden und verringert seinen feuerwiderstand %s Sek. lang um %s"] = { false, false, { Stats.FireResistance, }, reduction = true } -- s18958
 L["schaden zufügende nahkampf- und distanzangriffe gegen euch haben eine chance von %s%, eure blockchance um %s% zu erhöhen. hält %s Sek. lang oder bis %s-mal geblockt wurde"] = { false, { Stats.BlockChance, }, false, false, } -- s20128
-L["verringert %s Sek. lang den körperlichen schaden naher gegner um %s"] = { false, { Stats.AverageWeaponDamage, }, } -- s21007
+L["verringert %s Sek. lang den körperlichen schaden naher gegner um %s"] = { false, { Stats.AverageWeaponDamage, }, reduction = true } -- s21007
 L["ihr erhaltet %s Sek. lang eine zusätzliche kritische trefferwertung von %s. dieser effekt ist bis zu %s-mal stapelbar"] = { false, { Stats.MeleeCritRating, Stats.RangedCritRating, Stats.SpellCritRating, }, false, } -- s21153
 L["erhöht die frostzaubermacht %s stunden lang um %s. kampfelixier"] = { false, { Stats.FrostDamage, }, } -- s21920
-L["das ziel welkt, erleidet sofort %s naturschaden und zusätzlich %s Sek. lang alle %s sek. %s naturschaden. zudem wird die stärke des ziels um %s verringert"] = { false, false, false, false, { Stats.Strength, }, } -- s22662
-L["dem ziel wird alkohol entgegen gespien, wodurch es %s Sek. lang aus dem gleichgewicht gerät und sich seine nahkampftrefferchance um %s% verringert"] = { false, { Stats.MeleeHit, Stats.RangedHit, }, } -- s22833
+L["das ziel welkt, erleidet sofort %s naturschaden und zusätzlich %s Sek. lang alle %s sek. %s naturschaden. zudem wird die stärke des ziels um %s verringert"] = { false, false, false, false, { Stats.Strength, }, reduction = true } -- s22662
+L["dem ziel wird alkohol entgegen gespien, wodurch es %s Sek. lang aus dem gleichgewicht gerät und sich seine nahkampftrefferchance um %s% verringert"] = { false, { Stats.MeleeHit, Stats.RangedHit, }, reduction = true } -- s22833
 L["verleiht dem träger %s Sek. lang %s ausweichwertung und %s rüstung"] = { false, { Stats.DodgeRating, }, { Stats.Armor, }, } -- s22850
-L["das auge von immol'thar richtet den blick auf ein feindliches ziel, wodurch sein bewegungstempo um %s% und sein zaubertempo um %s% verlangsamt sowie die zeit zwischen seinen nahkampfangriffen um %s% erhöht wird"] = { false, { Stats.SpellHaste, }, { Stats.MeleeHaste, }, } -- s22909
+L["das auge von immol'thar richtet den blick auf ein feindliches ziel, wodurch sein bewegungstempo um %s% und sein zaubertempo um %s% verlangsamt sowie die zeit zwischen seinen nahkampfangriffen um %s% erhöht wird"] = { false, { Stats.SpellHaste, }, { Stats.MeleeHaste, }, reduction = true } -- s22909
 L["erhöht %s Sek. lang die willenskraft um %s und die ausdauer um %s. kampfelixier"] = { false, { Stats.Spirit, }, { Stats.Stamina, }, } -- s24382
 L["erhöht die angriffskraft in katzen-, bären- oder mondkingestalt um %s"] = { { Stats.AttackPower, }, } -- s24694
 L["verwandelt eure gestalt in die eines mondkin. in dieser gestalt wird euer arkan- und naturzauberschaden um %s% und die zaubertempowertung aller nahen gruppen- und schlachtzugsmitglieder um %s% erhöht. zudem wird euer gesamter erlittener schaden um %s% verringert. in mondkingestalt können keine heil- oder wiederbelebungszauber gewirkt werden.\nder akt des gestaltwandelns befreit euch von bewegungseinschränkenden effekten"] = { false, { Stats.SpellHaste, }, false, } -- s24907
@@ -2896,7 +2896,7 @@ L["erhöht das angriffs- und bewegungstempo des zaubernden um %s% sowie seinen v
 L["beim wirken eines zaubers besteht eine chance, dass %s Sek. lang eure intelligenz um %s erhöht wird"] = { false, { Stats.Intellect, }, ignoreSum = true } -- s27774
 L["erhöht die willenskraft aller gruppenmitglieder im umkreis von %s metern um %s"] = { false, { Stats.Spirit, }, } -- s28145
 L["umgibt den zaubernden mit teufelsenergie. erhöht die zaubermacht um %s und heilt den zaubernden um %s% seines verursachten einzelziel-zauberschadens.\nes kann immer nur ein rüstungszauber gleichzeitig auf dem hexenmeister aktiv sein"] = { { Stats.SpellDamage, }, false, } -- s28176
-L["der mangel an blutdistel hat eure intelligenz um %s verringert"] = { { Stats.Intellect, }, } -- s28274
+L["der mangel an blutdistel hat eure intelligenz um %s verringert"] = { { Stats.Intellect, }, reduction = true } -- s28274
 L["erhöht eure stärke um %s und verringert eure ausweichwertung um %s. hält %s Sek. lang an"] = { { Stats.Strength, }, { Stats.DodgeRating, }, false, } -- s28494
 L["erhöht eure feuerzaubermacht %s Sek. lang um %s. kampfelixier"] = { false, { Stats.FireDamage, }, } -- s28501
 L["erhöht %s Sek. lang die maximale gesundheit um %s und die ausweichwertung um %s. gilt sowohl als kampfelixier als auch als wächterelixier. der effekt hält auch nach dem tode an"] = { false, { Stats.Health, }, { Stats.DodgeRating, }, } -- s28518
@@ -2919,10 +2919,10 @@ L["stärke um %s erhöht.\nbeweglichkeit um %s erhöht. \nangriffskraft um %s% e
 L["erhöht eure nahkampfangriffskraft um %s sowie eure zaubermacht um %s. hält %s Sek. lang an"] = { { Stats.AttackPower, }, { Stats.SpellPower, }, false, } -- s33697
 L["erhöht euer angriffstempo um %s%. zusätzlich treffen angriffe einen weiteren in der nähe befindlichen gegner. hält %s Sek. an"] = { { Stats.MeleeHaste, }, false, } -- s33735
 L["ihr erhaltet zusätzlich %s kritische trefferwertung"] = { { Stats.MeleeCritRating, Stats.RangedCritRating, Stats.SpellCritRating, }, } -- s34106
-L["schleudert ein wassergeschoss auf das ziel, verursacht frostschaden und erhöht die zauberzeit um %s%"] = { { Stats.SpellHaste, }, } -- s34828
+L["schleudert ein wassergeschoss auf das ziel, verursacht frostschaden und erhöht die zauberzeit um %s%"] = { { Stats.SpellHaste, }, reduction = true } -- s34828
 L["erhöht sowohl die angriffskraft naher gruppenmitglieder um %s als auch ihre intelligenz um %s. hält %s Sek. lang an. unwirksam bei zielen der stufe %s oder höher"] = { { Stats.GenericAttackPower, }, { Stats.Intellect, }, false, false, } -- s35475
-L["trefferchance %s Sek. lang um %s% verringert"] = { false, { Stats.MeleeHit, Stats.RangedHit, }, } -- s36592
-L["verringert %s Sek. lang die intelligenz eines gegners um %s und seine stärke um %s"] = { false, { Stats.Intellect, }, { Stats.Strength, }, } -- s36695
+L["trefferchance %s Sek. lang um %s% verringert"] = { false, { Stats.MeleeHit, Stats.RangedHit, }, reduction = true } -- s36592
+L["verringert %s Sek. lang die intelligenz eines gegners um %s und seine stärke um %s"] = { false, { Stats.Intellect, }, { Stats.Strength, }, reduction = true } -- s36695
 L["eure spezialangriffe haben eine chance, eure kritische trefferwertung %s Sek. lang um %s zu erhöhen"] = { false, { Stats.MeleeCritRating, Stats.RangedCritRating, Stats.SpellCritRating, }, ignoreSum = true } -- s37173
 L["ihr gewinnt %s kritische trefferwertung"] = { { Stats.MeleeCritRating, Stats.RangedCritRating, Stats.SpellCritRating, }, } -- s37174
 L["jedes mal, wenn ihr die fähigkeit 'heiliger schild' einsetzt, erhaltet ihr gegen einen einzelnen angriff innerhalb der nächsten %s Sek. %s zusätzliche ausweichwertung"] = { false, { Stats.DodgeRating, }, ignoreSum = true } -- s37191
@@ -2956,7 +2956,7 @@ L["erfüllt euch mit unheiligem zorn, der euer angriffstempo und eure runenregen
 L["jedes mal, wenn ihr einen zauber wirkt, besteht eine chance, dass eure willenskraft %s Sek. lang um bis zu %s erhöht wird"] = { false, { Stats.Spirit, }, ignoreSum = true } -- s49622
 L["ihr nehmt eine schattengestalt an, erhöht euren schattenschaden um %s% und verringert euren erlittenen schaden um %s%. zudem erhöht ihr die zaubertempowertung aller in der nähe befindlichen befreundeten ziele um %s%. ihr könnt in dieser gestalt jedoch keine heiligzauber wirken"] = { false, false, { Stats.SpellHaste, }, } -- s49868
 L["erhöht eure beweglichkeit um %s"] = { { Stats.Agility, }, } -- s51225
-L["ein gift, welches die %s Sek. lang die trefferchance des ziels um %s% verringert. es kann immer nur jeweils ein gift pro jäger auf einem beliebigen ziel aktiv sein"] = { false, { Stats.MeleeHit, Stats.RangedHit, Stats.SpellHit, }, } -- s52604
+L["ein gift, welches die %s Sek. lang die trefferchance des ziels um %s% verringert. es kann immer nur jeweils ein gift pro jäger auf einem beliebigen ziel aktiv sein"] = { false, { Stats.MeleeHit, Stats.RangedHit, Stats.SpellHit, }, reduction = true } -- s52604
 L["erhöht das distanzangriffstempo um %s%"] = { { Stats.RangedHaste, }, } -- s52783
 L["erhöht eure zaubermacht um einen wert, der %s% eurer angriffskraft entspricht, sowie eure zaubertrefferchance um %s%"] = { false, { Stats.SpellHit, }, } -- s53503
 L["erhöht die willenskraft %s Sek. lang um %s. kampfelixier"] = { false, { Stats.Spirit, }, } -- s53747
@@ -3006,27 +3006,27 @@ L["erhöht die rüstung des zaubernden %s Sek. lang um %s"] = { false, { Stats.A
 L["eure zauber und angriffe erhöhen manchmal eure tempowertung %s Sek. lang um %s"] = { false, { Stats.MeleeHasteRating, Stats.RangedHasteRating, Stats.SpellHasteRating, }, } -- s74221
 L["eure zauber und angriffe erhöhen manchmal eure willenskraft %s Sek. lang um %s"] = { false, { Stats.Spirit, }, } -- s74224
 L["general umbriss gerät in raserei und erhöht sein angriffstempo um %s% und den körperlichen schaden um %s%"] = { { Stats.MeleeHaste, }, false, } -- s74853
-L["verflucht das ziel %s Sek. lang. verringert den schatten- und arkanwiderstand des ziels um %s und erhöht seinen erlittenen schatten- und arkanschaden um %s%"] = { false, { Stats.ShadowResistance, Stats.ArcaneResistance, }, false, } -- s75015
-L["verflucht das ziel %s Sek. lang, verringert feuer-, frost- und naturwiderstand um %s und erhöht den erlittenen feuer-, frost- und naturschaden um %s%. pro hexenmeister und ziel kann immer nur ein fluch gleichzeitig aktiv sein"] = { false, { Stats.FireResistance, Stats.NatureResistance, Stats.FrostResistance, }, false, } -- s75021
-L["die nahkampfangriffskraft des ziels wird %s Sek. lang um %s und die rüstung um %s% verringert"] = { false, { Stats.AttackPower, }, false, } -- s75527
-L["verringert das bewegungstempo um %s% und erhöht die zeit zwischen angriffen um %s%. hält %s Sek. lang an"] = { false, { Stats.MeleeHaste, }, false, } -- s75530
+L["verflucht das ziel %s Sek. lang. verringert den schatten- und arkanwiderstand des ziels um %s und erhöht seinen erlittenen schatten- und arkanschaden um %s%"] = { false, { Stats.ShadowResistance, Stats.ArcaneResistance, }, false, reduction = true } -- s75015
+L["verflucht das ziel %s Sek. lang, verringert feuer-, frost- und naturwiderstand um %s und erhöht den erlittenen feuer-, frost- und naturschaden um %s%. pro hexenmeister und ziel kann immer nur ein fluch gleichzeitig aktiv sein"] = { false, { Stats.FireResistance, Stats.NatureResistance, Stats.FrostResistance, }, false, reduction = true } -- s75021
+L["die nahkampfangriffskraft des ziels wird %s Sek. lang um %s und die rüstung um %s% verringert"] = { false, { Stats.AttackPower, }, false, reduction = true } -- s75527
+L["verringert das bewegungstempo um %s% und erhöht die zeit zwischen angriffen um %s%. hält %s Sek. lang an"] = { false, { Stats.MeleeHaste, }, false, reduction = true } -- s75530
 L["jeder nahkampfangriff, distanzangriff, offensivzauber und heilzauber gewährt eine chance, eure tempowertung %s Sek. lang um %s zu erhöhen"] = { false, { Stats.MeleeHasteRating, Stats.RangedHasteRating, Stats.SpellHasteRating, }, ignoreSum = true } -- s76145
 L["erhöht das angriffstempo um %s% und verringert die trefferchance um %s%. hält %s Sek. lang an"] = { { Stats.MeleeHaste, }, { Stats.MeleeHit, Stats.RangedHit, }, false, } -- s76487
 L["erhöht eure chance, nahkampfangriffe zu blocken, um %s%. jeder punkt meisterschaft erhöht eure blockchance um zusätzlich %s%s%"] = { { Stats.BlockChance, }, false, false, } -- s76671
 L["erhöht eure blockchance um %s% und eure kritische blockchance um %s%. jeder punkt meisterschaft erhöht eure blockchance um zusätzlich %s%s% und eure kritische blockchance um zusätzlich %s%s%"] = { { Stats.BlockChance, }, false, false, false, false, false, } -- s76857
 L["zaubert blendende lichter, die den zaubernden umgeben. erhöht die ausweichchance um %s%"] = { { Stats.Dodge, }, } -- s77457
-L["vergiftet das ziel und verringert die ausweich- und parierchance um %s%. erhöht das bewegungstempo um %s%"] = { { Stats.Parry, Stats.Dodge, }, false, } -- s77517
-L["ein sofortiger angriff, der %s% waffenschaden verursacht. erhöht angriffsschaden um %s%, aber die trefferchance um %s% verringert. hält %s Sek. lang an"] = { false, false, { Stats.MeleeHit, Stats.RangedHit, }, false, } -- s77558
-L["beißt einen gegner, fügt körperlichen schaden zu, überzieht ihn mit ambra und verringert die trefferchance um %s%"] = { { Stats.MeleeHit, Stats.RangedHit, }, } -- s77962
+L["vergiftet das ziel und verringert die ausweich- und parierchance um %s%. erhöht das bewegungstempo um %s%"] = { { Stats.Parry, Stats.Dodge, }, false, reduction = true } -- s77517
+L["ein sofortiger angriff, der %s% waffenschaden verursacht. erhöht angriffsschaden um %s%, aber die trefferchance um %s% verringert. hält %s Sek. lang an"] = { false, false, { Stats.MeleeHit, Stats.RangedHit, }, false, reduction = true } -- s77558
+L["beißt einen gegner, fügt körperlichen schaden zu, überzieht ihn mit ambra und verringert die trefferchance um %s%"] = { { Stats.MeleeHit, Stats.RangedHit, }, reduction = true } -- s77962
 L["erfüllt die waffe des schamanen mit feuer und erhöht so den gesamten zauberschaden um %s. jeder treffer verursacht zusätzlich $/%sm%s bis %s feuerschaden. hält %s min. lang an"] = { { Stats.SpellDamage, }, false, false, false, false, } -- s78273
 L["die angriffsgeschwindigkeit von nefarian und onyxia wird um %s% erhöht, wenn sie zusammen sind"] = { { Stats.MeleeHaste, }, } -- s78619
 L["erhöht das nahkampfangriffstempo des zaubernden und seiner nahen verbündeten %s Sek. lang um %s%"] = { false, { Stats.MeleeHaste, }, } -- s78710
-L["verringert %s Sek. lang die intelligenz eines gegners um %s"] = { false, { Stats.Intellect, }, } -- s78867
+L["verringert %s Sek. lang die intelligenz eines gegners um %s"] = { false, { Stats.Intellect, }, reduction = true } -- s78867
 L["erfüllt das ziel mit brillanz, welche sein maximales mana um %s und seine zaubermacht um %s% erhöht. hält %s Sek. lang an. wenn sich das ziel in eurer gruppe oder eurem schlachtzug befindet, werden alle mitglieder den effekt erhalten"] = { { Stats.Mana, }, false, false, } -- s79038
 L["belegt ein befreundetes ziel mit einem segen, welcher seine angriffskraft um %s%, seine distanzangriffskraft um %s%, erhöht und alle %s sek. %s mana regeneriert. hält %s Sek. lang an. wenn sich das ziel in eurer gruppe oder eurem schlachtzug befindet, werden alle mitglieder den effekt erhalten. spieler können pro paladin immer nur mit einem einzigen segen belegt sein"] = { false, false, false, { Stats.GenericManaRegen, }, false, } -- s79101
 L["belegt ein befreundetes ziel mit einem segen, welcher seine angriffskraft um %s%, seine distanzangriffskraft um %s% erhöht und alle %s sek. %s mana regeneriert. hält %s Sek. lang an. wenn sich das ziel in eurer gruppe oder eurem schlachtzug befindet, werden alle mitglieder den effekt erhalten. spieler können pro paladin immer nur mit einem einzigen segen belegt sein"] = { false, false, false, { Stats.GenericManaRegen, }, false, } -- s79102
 L["erfüllt das ziel mit macht, welche seine ausdauer um %s erhöht. hält %s Sek. lang an. wenn sich das ziel in eurer gruppe oder eurem schlachtzug befindet, werden alle mitglieder den effekt erhalten"] = { { Stats.Stamina, }, false, } -- s79104
-L["verringert stärke und intelligenz um %s"] = { { Stats.Strength, Stats.Intellect, }, } -- s79400
+L["verringert stärke und intelligenz um %s"] = { { Stats.Strength, Stats.Intellect, }, reduction = true } -- s79400
 L["gesundheit um %s% des maximalwerts erhöht"] = { { Stats.Health, }, } -- s79437
 L["euer tempo wird um %s% und euer schaden um %s% erhöht"] = { { Stats.SpellHaste, }, false, } -- s79462
 L["erhöht die ausdauer %s Sek. lang um %s. gilt sowohl als kampfelixier als auch als wächterelixier. dieser effekt hält über den tod hinaus an"] = { false, { Stats.Stamina, }, } -- s79469
@@ -3035,40 +3035,40 @@ L["erhöht die stärke %s Sek. lang um %s. gilt sowohl als kampfelixier als auch
 L["erhöht die waffenkunde %s Sek. lang um %s. kampfelixier"] = { false, { Stats.ExpertiseRating, }, } -- s79474
 L["erhöht die kritische trefferwertung %s Sek. lang um %s. kampfelixier"] = { false, { Stats.MeleeCritRating, Stats.RangedCritRating, Stats.SpellCritRating, }, } -- s79477
 L["verringert den verursachten körperlichen schaden des zaubernden um %s%. erhöht das nahkampfangriffstempo um %s%"] = { false, { Stats.MeleeHaste, }, } -- s79503
-L["verringert %s Sek. lang die ausweichchance eines feindes um %s% und seine beweglichkeit um %s%. während dieses effekts kann das ziel weder 'verstohlenheit' noch 'unsichtbarkeit' anwenden"] = { false, { Stats.Dodge, }, false, } -- s79559
+L["verringert %s Sek. lang die ausweichchance eines feindes um %s% und seine beweglichkeit um %s%. während dieses effekts kann das ziel weder 'verstohlenheit' noch 'unsichtbarkeit' anwenden"] = { false, { Stats.Dodge, }, false, reduction = true } -- s79559
 L["infuses all  party and raid members with brilliance, increasing their maximum mana by %s for %s Sek..  if target is in your party or raid, all party and raid members will be affected"] = { { Stats.Mana, }, false, } -- s79579
-L["fügt allen feinden im umkreis von %s metern %s naturschaden zu und verlangsamt das angriffstempo um %s%"] = { false, false, { Stats.MeleeHaste, }, } -- s79604
+L["fügt allen feinden im umkreis von %s metern %s naturschaden zu und verlangsamt das angriffstempo um %s%"] = { false, false, { Stats.MeleeHaste, }, reduction = true } -- s79604
 L["erhöht den magiewiderstand %s Sek. lang um %s. wächterelixier"] = { false, { Stats.FireResistance, Stats.NatureResistance, Stats.FrostResistance, Stats.ShadowResistance, Stats.ArcaneResistance, }, } -- s79631
 L["erhöht die tempowertung %s Sek. lang um %s. kampfelixier"] = { false, { Stats.MeleeHasteRating, Stats.RangedHasteRating, Stats.SpellHasteRating, }, } -- s79632
 L["erhöht eure meisterschaftswertung %s Sek. lang um %s. kampfelixier"] = { false, { Stats.MasteryRating, }, } -- s79635
 L["die konvertierte kraft erhöht den verursachten zauberschaden um %s% und erhöht das zaubertempo %s Sek. lang um %s%. stapelbar"] = { false, false, { Stats.SpellHaste, }, } -- s79735
 L["verursacht feuerschaden, wenn getroffen, erhöht eure kritische zaubertrefferchance um %s% und verringert die chance, kritische treffer zu erleiden, um %s%. es kann immer nur eine art rüstungszauber gleichzeitig aktiv sein. hält %s Sek. lang an"] = { { Stats.SpellCrit, }, false, false, } -- s79849
 L["der todesritter bläst das horn des winters und erhält %s runenmacht. stärke und beweglichkeit werden um %s erhöht. hält %s Sek. lang an"] = { false, { Stats.Strength, Stats.Agility, }, false, } -- s79891
-L["verflucht das ziel %s Sek. lang und verringert so seinen widerstand gegen arkan-, feuer-, frost-, natur- und schattenschaden um %s, während der erlittene magieschaden um %s% erhöht wird. es kann immer nur jeweils ein fluch pro zauberndem auf einem beliebigen ziel aktiv sein"] = { false, { Stats.FireResistance, Stats.NatureResistance, Stats.FrostResistance, Stats.ShadowResistance, Stats.ArcaneResistance, }, false, } -- s79956
+L["verflucht das ziel %s Sek. lang und verringert so seinen widerstand gegen arkan-, feuer-, frost-, natur- und schattenschaden um %s, während der erlittene magieschaden um %s% erhöht wird. es kann immer nur jeweils ein fluch pro zauberndem auf einem beliebigen ziel aktiv sein"] = { false, { Stats.FireResistance, Stats.NatureResistance, Stats.FrostResistance, Stats.ShadowResistance, Stats.ArcaneResistance, }, false, reduction = true } -- s79956
 L["erhöht die blockchance %s Sek. lang um %s% und verursacht, während der effekt aktiv ist, mit jedem blocken heiligschaden. jedes blocken zehrt eine aufladung auf. %s aufladungen"] = { false, { Stats.BlockChance, }, false, } -- s79967
 L["belegt ein befreundetes ziel mit einem segen, welcher %s Sek. lang seine angriffskraft um %s%, seine distanzangriffskraft um %s% erhöht und alle %s sek. %s mana regeneriert"] = { false, false, false, false, { Stats.GenericManaRegen, }, } -- s79977
 L["verringert die zeit zwischen euren angriffen %s Sek. lang um %s%. verursachter schaden um %s% erhöht"] = { false, { Stats.MeleeHaste, }, false, } -- s80084
 L["erhöht %s Sek. lang eure beweglichkeit und kritische trefferwertung um %s. kampfelixier"] = { false, { Stats.MeleeCritRating, Stats.RangedCritRating, Stats.SpellCritRating, Stats.Agility, }, } -- s80532
-L["fügt allen nahen feinden %s naturschaden zu und verlangsamt das angriffstempo um %s%"] = { false, { Stats.MeleeHaste, }, } -- s80649
-L["verursacht schattenschaden und verringert die rüstung %s Sek. lang um %s"] = { false, { Stats.Armor, }, } -- s80966
+L["fügt allen nahen feinden %s naturschaden zu und verlangsamt das angriffstempo um %s%"] = { false, { Stats.MeleeHaste, }, reduction = true } -- s80649
+L["verursacht schattenschaden und verringert die rüstung %s Sek. lang um %s"] = { false, { Stats.Armor, }, reduction = true } -- s80966
 L["erhöht nach der benutzung von 'wilde attacke (bär)' euer nahkampftempo %s Sek. lang um %s%. zusätzlich ist es euch innerhalb von %s Sek. nach der anwendung von 'wilde attacke (katze)' möglich, euer nächstes 'verheeren' zu nutzen, ohne dass verstohlenheit oder eine bestimmte positionierung notwendig ist. zudem werden die energiekosten der fähigkeit um %s% verringert"] = { false, { Stats.MeleeHaste, }, false, false, } -- s81016
 L["beschwört eine zweite runenwaffe, die %s Sek. lang eigenständig kämpft. die waffe imitiert die angriffe des todesritters, verursacht jedoch %s% weniger schaden. die runenwaffe unterstützt, während sie aktiv ist, auch die verteidigung ihres meisters, indem sie %s% zusätzliche parierchance gewährt"] = { false, false, { Stats.Parry, }, } -- s81256
-L["ein mächtiger schwanzhieb, der staub und steine in die luft wirbelt, zunehmenden naturschaden verursacht und die trefferchance des ziels um %s% verringert"] = { { Stats.MeleeHit, Stats.RangedHit, }, } -- s81673
-L["die gerblösung verursacht naturschaden und lässt euch nach luft ringen, was eure trefferchance %s Sek. lang um %s% verringert"] = { false, { Stats.MeleeHit, Stats.RangedHit, }, } -- s81702
+L["ein mächtiger schwanzhieb, der staub und steine in die luft wirbelt, zunehmenden naturschaden verursacht und die trefferchance des ziels um %s% verringert"] = { { Stats.MeleeHit, Stats.RangedHit, }, reduction = true } -- s81673
+L["die gerblösung verursacht naturschaden und lässt euch nach luft ringen, was eure trefferchance %s Sek. lang um %s% verringert"] = { false, { Stats.MeleeHit, Stats.RangedHit, }, reduction = true } -- s81702
 L["wenn eure gesundheit auf %s% oder weniger sinkt, wird eure parierchance %s Sek. lang um %s% erhöht. dieser effekt kann nur ein mal alle %s min. auftreten"] = { false, false, { Stats.Parry, }, false, ignoreSum = true } -- s81913
 L["erhöht eure rüstung %s Sek. lang um %s"] = { false, { Stats.Armor, }, } -- s82176
 L["zehrt rasereieffekte eures tiers auf, stellt dabei %s fokus eures tiers wieder her und erhöht euer distanztempo pro aufgezehrtem stapel raserei um %s%. hält %s Sek. lang an"] = { false, { Stats.RangedHaste, }, false, } -- s82692
-L["schleudert staub in die augen eines angreifers und verringert seine trefferchance %s Sek. lang um %s%"] = { false, { Stats.MeleeHit, Stats.RangedHit, }, } -- s82829
+L["schleudert staub in die augen eines angreifers und verringert seine trefferchance %s Sek. lang um %s%"] = { false, { Stats.MeleeHit, Stats.RangedHit, }, reduction = true } -- s82829
 L["schweinische macht ergreift besitz vom ziel und erhöht %s Sek. lang seine intelligenz um %s"] = { false, { Stats.Intellect, }, } -- s82846
-L["das feindliche ziel wird von insekten umschwärmt, weswegen ihre trefferchance mit nahkampf- oder fernkampfangriffen %s Sek. lang um %s% verringert sind un sie naturschaden erleiden"] = { false, { Stats.MeleeHit, Stats.RangedHit, }, } -- s83017
+L["das feindliche ziel wird von insekten umschwärmt, weswegen ihre trefferchance mit nahkampf- oder fernkampfangriffen %s Sek. lang um %s% verringert sind un sie naturschaden erleiden"] = { false, { Stats.MeleeHit, Stats.RangedHit, }, reduction = true } -- s83017
 L["kritische trefferchance um %s% erhöht"] = { { Stats.MeleeCrit, Stats.RangedCrit, }, } -- s83523
 L["erhöht die ausweichchance um %s%"] = { { Stats.Dodge, }, } -- s83567
 L["wenn %s oder mehr ziele durch eure regelmäßigen effekte feuerschaden erleiden, wird euer zaubertempo um %s% erhöht"] = { false, { Stats.SpellHaste, }, } -- s83582
-L["vergiftet das ziel und verringert seinen verursachten schaden um %s"] = { { Stats.SpellDamage, }, } -- s83609
-L["nethernebel trüben die sicht des ziels und verringern so trefferchance, angriffstempo und den verursachten schaden um %s%"] = { { Stats.MeleeHit, Stats.RangedHit, Stats.MeleeHaste, }, } -- s83611
+L["vergiftet das ziel und verringert seinen verursachten schaden um %s"] = { { Stats.SpellDamage, }, reduction = true } -- s83609
+L["nethernebel trüben die sicht des ziels und verringern so trefferchance, angriffstempo und den verursachten schaden um %s%"] = { { Stats.MeleeHit, Stats.RangedHit, Stats.MeleeHaste, }, reduction = true } -- s83611
 L["erhöht das angriffstempo des zaubernden um %s%"] = { { Stats.MeleeHaste, }, } -- s83693
-L["fügt einem feind alle %s sek. schaden zu und verringert seine trefferchance um %s%. hält %s Sek. lang an"] = { false, { Stats.MeleeHit, Stats.RangedHit, }, false, } -- s83983
-L["hüllt das ziel in einen zyklon ein, der sein zaubertempo um %s% erhöht"] = { { Stats.SpellHaste, }, } -- s84092
+L["fügt einem feind alle %s sek. schaden zu und verringert seine trefferchance um %s%. hält %s Sek. lang an"] = { false, { Stats.MeleeHit, Stats.RangedHit, }, false, reduction = true } -- s83983
+L["hüllt das ziel in einen zyklon ein, der sein zaubertempo um %s% erhöht"] = { { Stats.SpellHaste, }, reduction = true } -- s84092
 L["erhöht stärke, beweglichkeit, intelligenz und ausdauer %s Sek. lang um %s"] = { false, { Stats.AllStats, }, } -- s84354
 L["erhöht die kritische trefferrate %s Sek. lang um %s"] = { false, { Stats.MeleeCritRating, Stats.RangedCritRating, Stats.SpellCritRating, }, } -- s84378
 L["nach erfolgreichem parieren wird eure kritische trefferchance und kritische blockchance %s Sek. lang um %s% erhöht"] = { false, { Stats.MeleeCrit, Stats.RangedCrit, }, ignoreSum = true } -- s84604
@@ -3077,12 +3077,12 @@ L["wenn ihr schaden verursacht oder ein ziel heilt, besteht eine chance, dass eu
 L["wenn ihr schaden verursacht, besteht eine chance, dass ihr %s Sek. lang %s stärke hinzugewinnt"] = { false, { Stats.Strength, }, ignoreSum = true } -- s85034
 L["erhöht unter %s% gesundheit die parierchance um %s%"] = { false, { Stats.Parry, }, } -- s85386
 L["gewährt %s% zaubertempo. zudem erhöht das wirken von 'göttlicher schutz' euer bewegungstempo %s Sek. lang um %s%"] = { { Stats.SpellHaste, }, false, false, } -- s85495
-L["verflucht das ziel %s Sek. lang, reduziert den widerstand gegen arkan-, feuer-, frost-, natur- und schattenschaden um %s. erhöht den erlittenen magieschaden um %s%. es kann immer nur jeweils ein fluch pro hexenmeister auf einem beliebigen ziel aktiv sein"] = { false, { Stats.FireResistance, Stats.NatureResistance, Stats.FrostResistance, Stats.ShadowResistance, Stats.ArcaneResistance, }, false, } -- s85547
+L["verflucht das ziel %s Sek. lang, reduziert den widerstand gegen arkan-, feuer-, frost-, natur- und schattenschaden um %s. erhöht den erlittenen magieschaden um %s%. es kann immer nur jeweils ein fluch pro hexenmeister auf einem beliebigen ziel aktiv sein"] = { false, { Stats.FireResistance, Stats.NatureResistance, Stats.FrostResistance, Stats.ShadowResistance, Stats.ArcaneResistance, }, false, reduction = true } -- s85547
 L["erhaltet den segen der erde.\nschaden um %s% erhöht.\nzeit zwischen angriffen um %s% verringert"] = { false, { Stats.MeleeHaste, }, } -- s85712
-L["schleudert netze auf die augen eines feindes, die seine trefferchance um %s% verringern"] = { { Stats.MeleeHit, Stats.RangedHit, }, } -- s85826
-L["verflucht das ziel %s Sek. lang und verringert so seinen widerstand gegen arkan-, feuer-, frost-, natur- und schattenschaden um %s, während der erlittene magieschaden um %s% erhöht wird. es kann immer nur jeweils ein fluch pro hexenmeister auf einem beliebigen ziel aktiv sein"] = { false, { Stats.FireResistance, Stats.NatureResistance, Stats.FrostResistance, Stats.ShadowResistance, Stats.ArcaneResistance, }, false, } -- s86105
+L["schleudert netze auf die augen eines feindes, die seine trefferchance um %s% verringern"] = { { Stats.MeleeHit, Stats.RangedHit, }, reduction = true } -- s85826
+L["verflucht das ziel %s Sek. lang und verringert so seinen widerstand gegen arkan-, feuer-, frost-, natur- und schattenschaden um %s, während der erlittene magieschaden um %s% erhöht wird. es kann immer nur jeweils ein fluch pro hexenmeister auf einem beliebigen ziel aktiv sein"] = { false, { Stats.FireResistance, Stats.NatureResistance, Stats.FrostResistance, Stats.ShadowResistance, Stats.ArcaneResistance, }, false, reduction = true } -- s86105
 L["ermöglicht euch die verwendung von einhand- und schildhandwaffen in der schildhand. gestattet es euch zudem, frontale nahkampfangriffe zu parieren und erhöht eure nahkampftrefferchance um %s%"] = { { Stats.MeleeHit, Stats.RangedHit, }, } -- s86629
-L["der zaubernde beginnt, wild um sich zu stechen. das angriffstempo ist stark erhöht, allerdings ist die trefferchance um %s% verringert"] = { { Stats.MeleeHit, Stats.RangedHit, }, } -- s86726
+L["der zaubernde beginnt, wild um sich zu stechen. das angriffstempo ist stark erhöht, allerdings ist die trefferchance um %s% verringert"] = { { Stats.MeleeHit, Stats.RangedHit, }, reduction = true } -- s86726
 L["ruft die macht von lordaeron an.\nverringert die zeit zwischen nahkampfangriffen um %s%.\nerhöht schaden um %s%"] = { { Stats.MeleeHaste, }, false, } -- s87104
 L["erhöht stärke und ausdauer um %s. hält %s Sek. lang an"] = { { Stats.Strength, Stats.Stamina, }, false, } -- s87545
 L["erhöht die ausdauer und beweglichkeit um %s. hält %s Sek. lang an"] = { { Stats.Agility, Stats.Stamina, }, false, } -- s87546
@@ -3181,8 +3181,8 @@ L["gewährt %s Sek. lang %s meisterschaftswertung"] = { false, { Stats.MasteryRa
 L["jedes mal, wenn ihr regelmäßigen zauberschaden verursacht, gewinnt ihr %s Sek. lang %s meisterschaftswertung. bis zu %s-mal stapelbar"] = { false, { Stats.MasteryRating, }, false, ignoreSum = true } -- s96963
 L["jedes mal, wenn ihr einen kritischen nahkampftreffer erzielt, gewinnt ihr %s Sek. lang %s kritische trefferwertung. bis zu %s-mal stapelbar"] = { false, { Stats.MeleeCritRating, Stats.RangedCritRating, Stats.SpellCritRating, }, false, ignoreSum = true } -- s96981
 L["angriffstempo %s Sek. lang um %s% erhöht"] = { false, { Stats.MeleeHaste, }, } -- s97088
-L["erschafft ein feld aus gedämpfter magie. einheiten in diesem feld erleiden %s% weniger magieschaden, ihr zaubertempo wird jedoch um %s% verringert"] = { false, { Stats.SpellHaste, }, } -- s97600
-L["schleudert eine rauchbombe auf den boden, verursacht %s schaden und reduziert die trefferchance der spieler, die in der rauchwolke stehen, um %s%"] = { false, { Stats.MeleeHit, Stats.RangedHit, Stats.SpellHit, }, } -- s97644
+L["erschafft ein feld aus gedämpfter magie. einheiten in diesem feld erleiden %s% weniger magieschaden, ihr zaubertempo wird jedoch um %s% verringert"] = { false, { Stats.SpellHaste, }, reduction = true } -- s97600
+L["schleudert eine rauchbombe auf den boden, verursacht %s schaden und reduziert die trefferchance der spieler, die in der rauchwolke stehen, um %s%"] = { false, { Stats.MeleeHit, Stats.RangedHit, Stats.SpellHit, }, reduction = true } -- s97644
 L["angriffstempo um %s% erhöht.\nverursachter schaden um %s% erhöht"] = { { Stats.MeleeHaste, }, false, } -- s98239
 L["erhöht, wenn der effekt eures zaubers 'baumrinde' endet, eure ausweichchance %s Sek. lang um %s%"] = { false, { Stats.Dodge, }, } -- s99011
 L["erhöht, nachdem der effekt eurer fähigkeit 'göttlicher schutz' abgelaufen ist, eure parierchance %s Sek. lang um %s%"] = { false, { Stats.Parry, }, } -- s99090
@@ -3198,13 +3198,13 @@ L["erhöht das angriffs- und bewegungstempo des zaubernden um %s% sowie seinen v
 L["hat erfolgreich einen zauber gewirkt! erhöht den verursachten schaden um %s% und das zaubertempo um %s%"] = { false, { Stats.SpellHaste, }, } -- s100093
 L["wenn ihr schaden verursacht, besteht eine chance, dass eure kritische trefferwertung %s Sek. lang um %s erhöht wird"] = { false, { Stats.MeleeCritRating, Stats.RangedCritRating, Stats.SpellCritRating, }, ignoreSum = true } -- s100309
 L["erhöht die ausdauer und willenskraft %s Sek. lang um %s"] = { false, { Stats.Spirit, Stats.Stamina, }, } -- s100375
-L["entzieht nahen gegnern magie und erhöht euren verursachten schaden um %s%, während der verursachte schaden und die hervorgerufene heilung betroffener gegner um %s verringert wird"] = { false, { Stats.SpellPower, }, } -- s100394
+L["entzieht nahen gegnern magie und erhöht euren verursachten schaden um %s%, während der verursachte schaden und die hervorgerufene heilung betroffener gegner um %s verringert wird"] = { false, { Stats.SpellPower, }, reduction = true } -- s100394
 L["erhöht die meisterschaft um %s"] = { { Stats.MasteryRating, }, } -- s100403
 L["angriffstempo um %s% erhöht.\nschaden um %s% erhöht"] = { { Stats.MeleeHaste, }, false, } -- s100457
 L["erhöht das angriffstempo um %s% und den verursachten körperlichen schaden um %s%"] = { { Stats.MeleeHaste, }, false, } -- s100522
 L["erhöht nach ablauf eures effektes 'tanzende runenwaffe' eure parierchance %s Sek. lang um %s%"] = { false, { Stats.Parry, }, } -- s101162
 L["eure direkten und regelmäßigen heilungszauber haben eine chance, eure tempowertung %s sek. lang um %s zu erhöhen"] = { false, { Stats.MeleeHasteRating, Stats.RangedHasteRating, Stats.SpellHasteRating, }, ignoreSum = true } -- s101290
-L["das dunkle mondlicht verringert das zaubertempo um %s%"] = { { Stats.SpellHaste, }, } -- s102414
+L["das dunkle mondlicht verringert das zaubertempo um %s%"] = { { Stats.SpellHaste, }, reduction = true } -- s102414
 L["wenn ihr schaden verursacht, besteht eine chance, dass eure stärke %s Sek. lang um %s erhöht wird"] = { false, { Stats.Strength, }, ignoreSum = true } -- s102433
 L["wenn ihr schaden verursacht, besteht eine chance, dass eure beweglichkeit %s Sek. lang um %s erhöht wird"] = { false, { Stats.Agility, }, ignoreSum = true } -- s102440
 L["jedes mal, wenn 'arkanschlag' gewirkt wird, wird der schaden von arkanzaubern um %s% erhöht und ihre zauberzeit um %s% verringert. dieser effekt ist bis zu %s-mal stapelbar und hält %s Sek. lang an"] = { false, { Stats.SpellHaste, }, false, false, } -- s102442
@@ -3221,7 +3221,7 @@ L["wenn ihr schaden verursacht, besteht eine chance, dass eure ausweichwertung %
 L["wenn ihr schaden verursacht, besteht eine chance, dass eure intelligenz %s Sek. lang um %s erhöht wird"] = { false, { Stats.Intellect, }, ignoreSum = true } -- s102779
 L["increases strength and agility of all raid and party members within %s yards by %s, and generates %s rage.  lasts %s Sek."] = { false, { Stats.Strength, Stats.Agility, }, false, false, } -- s102927
 L["erhöht die angriffskraft um %s%, verringert jedoch die trefferchance um %s%. hält %s Sek. lang an"] = { { Stats.MeleeHaste, }, { Stats.MeleeHit, Stats.RangedHit, }, false, } -- s102989
-L["verursacht %s% waffenschaden und bringt das ziel aus dem gleichgewicht, wodurch seine ausweichchance %s Sek. lang um %s% verringert wird"] = { false, false, { Stats.Dodge, }, } -- s103000
+L["verursacht %s% waffenschaden und bringt das ziel aus dem gleichgewicht, wodurch seine ausweichchance %s Sek. lang um %s% verringert wird"] = { false, false, { Stats.Dodge, }, reduction = true } -- s103000
 L["verringert die zeit zwischen euren angriffen um %s% und erhöht den schaden um %s%. hält %s Sek. lang an"] = { { Stats.MeleeHaste, }, false, false, } -- s103846
 L["die gabe von sargeras hat illidan übernatürliche sicht gewährt, wodurch er %s% gegnerischer angriffe ausweichen kann"] = { { Stats.Dodge, }, } -- s104746
 L["mit dem glühenden blut der alten götter erfüllt.\nder zauber 'leerenblitz' ist nun ein flächeneffekt.\ndie abklingzeit aller fähigkeiten ist um die hälfte verringert.\nangriffstempo um %s% erhöht"] = { { Stats.MeleeHaste, }, } -- s104901
@@ -3230,7 +3230,7 @@ L["erhöht die angriffskraft um %s%"] = { { Stats.MeleeHaste, }, } -- s105526
 L["euer effekt 'elementarbeherrschung' gewährt euch zusätzlich %s Sek. lang %s meisterschaftswertung"] = { false, { Stats.MasteryRating, }, ignoreSum = true } -- s105780
 L["erhöht die tempowertung %s Sek. lang um %s. bis zu %s-mal stapelbar"] = { false, { Stats.MeleeHasteRating, Stats.RangedHasteRating, Stats.SpellHasteRating, }, false, } -- s105785
 L["euer zauber 'arkanschlag' gewährt eine chance von %s% und eure zauber 'feuerball', 'pyroschlag', 'frostfeuerblitz' und 'frostblitz' eine chance von %s%, euch mit dem effekt 'gestohlene zeit' zu belegen. dieser effekt erhöht eure tempowertung %s Sek. lang um %s und ist bis zu %s-mal stapelbar. wenn ein auf euch wirkender effekt von 'arkane macht', 'einäschern' oder 'eisige adern' endet, werden alle vorhandenen stapel von 'gestohlene zeit' aufgezehrt"] = { false, false, false, { Stats.MeleeHasteRating, Stats.RangedHasteRating, Stats.SpellHasteRating, }, false, ignoreSum = true } -- s105788
-L["die zeitzone verlangsamt die zeit im umgebenden gebiet und verringert so das angriffs- und zaubertempo um %s%"] = { { Stats.MeleeHaste, Stats.SpellHaste, }, } -- s105830
+L["die zeitzone verlangsamt die zeit im umgebenden gebiet und verringert so das angriffs- und zaubertempo um %s%"] = { { Stats.MeleeHaste, Stats.SpellHaste, }, reduction = true } -- s105830
 L["erfüllt ein ziel mit der essenz der magie, die die manakosten aller zauber um %s% verringert und das zaubertempo um %s% erhöht"] = { false, { Stats.SpellHaste, }, } -- s105903
 L["erhöht eure tempowertung %s Sek. lang um %s und gewährt bis zu %s verbündeten im umkreis von %s metern %s tempowertung"] = { false, false, false, false, { Stats.MeleeHasteRating, Stats.RangedHasteRating, Stats.SpellHasteRating, }, } -- s107804
 L["eure zauber haben eine chance, euch %s tempowertung sowie bis zu %s verbündeten im umkreis von %s metern %s tempowertung zu gewähren. hält %s Sek. lang an"] = { false, false, false, { Stats.MeleeHasteRating, Stats.RangedHasteRating, Stats.SpellHasteRating, }, false, ignoreSum = true } -- s107805
@@ -3260,7 +3260,7 @@ L["eure nahkampfangriffe gewähren eine chance, den effekt 'alptraum' hervorzuru
 L["eure nahkampfangriffe gewähren eine chance, den effekt 'leiden' hervorzurufen, der eure beweglichkeit um %s erhöht. bis zu %s-mal stapelbar"] = { { Stats.Agility, }, false, ignoreSum = true } -- s109960
 L["erhöht %s Sek. lang die meisterschaftswertung um %s"] = { false, { Stats.MasteryRating, }, } -- s109993
 L["erhöht die maximale gesundheit aller gruppenmitglieder im umkreis von %s metern um %s. hält %s Sek. lang an"] = { false, { Stats.Health, }, false, } -- s82061
-L["erhöht die zeit zwischen den nahkampf- und distanzangriffen eines gegners um %s%, erhöht seine zauberzeit um %s% und verringert sein bewegungstempo um %s%. hält %s Sek. lang an"] = { { Stats.SpellHaste, }, false, false, false, } -- s110907
+L["erhöht die zeit zwischen den nahkampf- und distanzangriffen eines gegners um %s%, erhöht seine zauberzeit um %s% und verringert sein bewegungstempo um %s%. hält %s Sek. lang an"] = { { Stats.SpellHaste, }, false, false, false, reduction = true } -- s110907
 L["%s beweglichkeit und %s ausweichwertung"] = { { Stats.Agility, }, { Stats.DodgeRating, }, } -- e910
 L["%s/%s/%s/%s int/will/mana/fr"] = { { Stats.Intellect, Stats.Spirit, }, false, { Stats.Mana, }, { Stats.FireResistance, }, } -- e1543
 L["%s willenskraft und %s ausdauer"] = { { Stats.Spirit, }, { Stats.Stamina, }, } -- e1890
@@ -3357,7 +3357,7 @@ L["stellt im verlauf von %s Sek. %s gesundheit wieder her. ihr müsst beim essen
 L["ein mächtiges getränk, das eure stärke um %s erhöht und eure intelligenz um %s verringert. hält %s Sek. lang an"] = { { Stats.Strength, }, { Stats.Intellect, }, false, } -- s5020
 L["erhöht eure ausweichchance %s Sek. lang um %s%"] = { false, { Stats.Dodge, }, } -- s5277
 L["erhöht %s Sek. lang euer nahkampftempo um %s"] = { false, { Stats.MeleeHasteRating, Stats.RangedHasteRating, Stats.SpellHasteRating, }, } -- s7396
-L["verursachter körperlicher schaden um %s verringert.\nverursachter magieschaden um %s verringert"] = { { Stats.AverageWeaponDamage, }, { Stats.SpellDamage, }, } -- s7656
+L["verursachter körperlicher schaden um %s verringert.\nverursachter magieschaden um %s verringert"] = { { Stats.AverageWeaponDamage, }, { Stats.SpellDamage, }, reduction = true } -- s7656
 L["ihr werdet größer. zusätzlich wird eure stärke um %s erhöht, um eurer neuen größe gerecht zu werden. hält %s Sek. lang an. kampfelixier"] = { { Stats.Strength, }, false, } -- s8212
 L["erfüllt den priester mit macht, erhöht das zaubertempo um %s%, den verursachten schaden um %s% und verringert die manakosten jeglicher zauber um %s%. hält %s Sek. lang an"] = { { Stats.SpellHaste, }, false, false, false, } -- s10060
 L["erhöht das ausweichen %s Sek. lang um %s"] = { false, { Stats.DodgeRating, }, } -- s10351
@@ -3367,7 +3367,7 @@ L["beschleunigt euer wirken von zaubern. erhöht das zaubertempo um %s% und verr
 L["beschleunigt euer wirken von zaubern. erhöht das zaubertempo um %s% und verringert die dauer der durch erlittenen schaden verursachten zauberzeiterhöhung beim wirken von zaubern um %s%. hält %s Sek. lang an"] = { { Stats.SpellHaste, }, false, false, } -- s12472
 L["erhöht %s Sek. lang den verursachten schaden um %s und das tempo um %s"] = { false, { Stats.AverageWeaponDamage, }, { Stats.MeleeHasteRating, Stats.RangedHasteRating, Stats.SpellHasteRating, }, } -- s12686
 L["erhöht %s Sek. lang euer tempo um %s"] = { false, { Stats.MeleeHasteRating, Stats.RangedHasteRating, Stats.SpellHasteRating, }, } -- s13494
-L["ätzende säure, die alle %s sek. %s naturschaden zufügt und %s Sek. lang die rüstung des ziels um %s verringert"] = { false, false, false, { Stats.Armor, }, } -- s13526
+L["ätzende säure, die alle %s sek. %s naturschaden zufügt und %s Sek. lang die rüstung des ziels um %s verringert"] = { false, false, false, { Stats.Armor, }, reduction = true } -- s13526
 L["erhöht feuerwiderstand um %s und verringert jeglichen feuerschaden %s Sek. lang um bis zu %s"] = { { Stats.FireResistance, }, false, false, } -- s13744
 L["erhöht %s Sek. lang den kritischen trefferwert um %s und alle attribute um %s"] = { false, { Stats.MeleeCritRating, Stats.RangedCritRating, Stats.SpellCritRating, }, { Stats.AllStats, }, } -- s15366
 L["erhöht euren trefferwert um %s"] = { { Stats.MeleeHitRating, Stats.RangedHitRating, Stats.SpellHitRating, }, } -- s15464
@@ -3391,7 +3391,7 @@ L["erfüllt euch mit heiligem licht, das euer zaubertempo um %s% und eure gewirk
 L["erhöht eure chance, nahkampf- und distanzangriffen auszuweichen um %s%"] = { { Stats.Dodge, }, } -- s20582
 L["erhöht euren kritischen trefferwert um %s"] = { { Stats.MeleeCritRating, Stats.RangedCritRating, Stats.SpellCritRating, }, } -- s21092
 L["ihr erhaltet %s Sek. lang eine zusätzliche kritischer trefferwert von %s. dieser effekt ist bis zu %s-mal stapelbar"] = { false, { Stats.MeleeCritRating, Stats.RangedCritRating, Stats.SpellCritRating, }, false, } -- s21153
-L["verringert das bewegungstempo um %s%.\nerhöht die zeit zwischen angriffen um %s%.\nverringert das zaubertempo um %s%"] = { false, { Stats.MeleeHaste, }, { Stats.SpellHaste, }, } -- s22247
+L["verringert das bewegungstempo um %s%.\nerhöht die zeit zwischen angriffen um %s%.\nverringert das zaubertempo um %s%"] = { false, { Stats.MeleeHaste, }, { Stats.SpellHaste, }, reduction = true } -- s22247
 L["verleiht dem träger %s Sek. lang %s ausweichen und %s rüstung"] = { false, { Stats.DodgeRating, }, { Stats.Armor, }, } -- s22850
 L["erhöht euer ausweichen um %s"] = { { Stats.DodgeRating, }, } -- s23562
 L["erfüllt euren begleiter mit macht, was seine angriffskraft um %s erhöht. hält %s Sek. lang an. dieser zauber wirkt nur bei einem wichtel, sukkubus, leerwandler, teufelsjäger oder einer teufelswache"] = { { Stats.AttackPower, }, false, } -- s23720
@@ -3426,11 +3426,11 @@ L["erhöht %s Sek. lang euer ausweichen um %s und eure maximalgesundheit um %s. 
 L["erhöht euren kritischen zaubertreffer gegen untote um %s"] = { { Stats.SpellCritRating, }, } -- s29069
 L["erhöht den kritischen zaubertrefferwert gegen untote um %s"] = { { Stats.SpellCritRating, }, } -- s29159
 L["erhöht euren trefferwert %s Sek. lang um %s"] = { false, { Stats.MeleeHitRating, Stats.RangedHitRating, Stats.SpellHitRating, }, } -- s29332
-L["ein starker treffer, der waffenschaden plus %s verursacht, den gegner aus dem gleichgewicht bringt und so dessen trefferchance mit körperlichen attacken %s Sek. lang um %s% verringert"] = { false, false, { Stats.MeleeHit, Stats.RangedHit, }, } -- s29555
+L["ein starker treffer, der waffenschaden plus %s verursacht, den gegner aus dem gleichgewicht bringt und so dessen trefferchance mit körperlichen attacken %s Sek. lang um %s% verringert"] = { false, false, { Stats.MeleeHit, Stats.RangedHit, }, reduction = true } -- s29555
 L["jeder zauber, der innerhalb von %s sek. gewirkt wird, gewährt einen stapelbaren bonus von %s willenskraft. endet nach %s Sek. fähigkeiten, die kein mana verbrauchen, lösen dieses schmuckstück nicht aus"] = { false, { Stats.Spirit, }, false, ignoreSum = true } -- s29601
 L["erhöht den vom zaubernden verursachten körperlichen schaden um %s% und das angriffstempo um %s%. hält %s Sek. lang an"] = { false, { Stats.MeleeHaste, }, false, } -- s30841
 L["erhöht den kritischen trefferwert naher gruppenmitglieder %s Sek. lang um %s"] = { false, { Stats.MeleeCritRating, Stats.RangedCritRating, Stats.SpellCritRating, }, } -- s31025
-L["erhöht die zeit zwischen angriffen eines gegners um %s% und verringert sein bewegungstempo um %s%. hält %s Sek. lang an"] = { { Stats.MeleeHaste, }, false, false, } -- s31295
+L["erhöht die zeit zwischen angriffen eines gegners um %s% und verringert sein bewegungstempo um %s%. hält %s Sek. lang an"] = { { Stats.MeleeHaste, }, false, false, reduction = true } -- s31295
 L["stellt im verlauf von %s Sek. %s gesundheit wieder her. ihr müsst beim essen sitzen bleiben. wenn ihr mindestens %s sekunden mit essen verbringt, werdet ihr satt und erhaltet %s Sek. lang %s willenskraft"] = { false, false, false, false, { Stats.Spirit, }, ignoreSum = true } -- s32112
 L["%s pvp-abhärtung"] = { { Stats.ResilienceRating, }, } -- s32145
 L["eure offensivzauber haben eine chance, euer zaubertempo %s Sek. lang um %s zu erhöhen"] = { false, { Stats.MeleeHasteRating, Stats.RangedHasteRating, Stats.SpellHasteRating, }, ignoreSum = true } -- s33297
@@ -3442,7 +3442,7 @@ L["ihr erhaltet zusätzlich %s kritischer trefferwert"] = { { Stats.MeleeCritRat
 L["chance, bei einem kritischen zaubertreffer die zaubermacht %s Sek. lang um %s zu erhöhen"] = { false, { Stats.SpellDamage, }, ignoreSum = true } -- s34320
 L["erhöht die größe einer nahen pflanze um %s%, angriffstempo um %s% und verursachten körperlichen schaden um %s%. hält %s Sek. lang an"] = { false, { Stats.MeleeHaste, }, false, false, } -- s34350
 L["eure nahkampf- und distanzangriffe gewähren eine chance, %s Sek. lang euer tempo um %s zu erhöhen"] = { false, { Stats.MeleeHasteRating, Stats.RangedHasteRating, Stats.SpellHasteRating, }, ignoreSum = true } -- s34774
-L["verringert %s Sek. lang die ausdauer eines gegners um %s und das angriffstempo um %s%"] = { false, { Stats.Stamina, }, false, } -- s35105
+L["verringert %s Sek. lang die ausdauer eines gegners um %s und das angriffstempo um %s%"] = { false, { Stats.Stamina, }, false, reduction = true } -- s35105
 L["stellt im verlauf von %s Sek. insgesamt %s gesundheit wieder her. ihr müsst beim essen sitzen bleiben. wenn ihr mindestens %s sekunden mit essen verbringt, werdet ihr satt und eure ausdauer und willenskraft wird %s Sek. lang um %s erhöht"] = { false, false, false, false, { Stats.Stamina, }, ignoreSum = true } -- s35271
 L["erhöht das tempo aller in der nähe befindlichen gruppenmitglieder um bis zu %s. hält %s Sek. lang an. unwirksam bei zielen auf stufe %s oder höher"] = { { Stats.MeleeHasteRating, Stats.RangedHasteRating, Stats.SpellHasteRating, }, false, false, } -- s35476
 L["erhöht den kritischen trefferwert eures nächsten treffers, der innerhalb von %s sek. erfolgt, um %s"] = { false, { Stats.MeleeCritRating, Stats.RangedCritRating, Stats.SpellCritRating, }, } -- s36111
@@ -3486,7 +3486,7 @@ L["stellt im verlauf von %s Sek. insgesamt %s mana wieder her. ihr müsst beim t
 L["erhöht die pvp-abhärtung %s Sek. lang um %s"] = { false, { Stats.ResilienceRating, }, } -- s43717
 L["stellt im verlauf von %s Sek. %s gesundheit wieder her. ihr müsst beim essen sitzen bleiben. wenn ihr mindestens %s sekunden mit essen verbringt, werdet ihr satt und erhaltet %s Sek. lang %s trefferwert und willenskraft"] = { false, false, false, false, { Stats.MeleeHitRating, Stats.RangedHitRating, Stats.SpellHitRating, }, ignoreSum = true } -- s43763
 L["erhöht trefferwert und willenskraft um %s. hält %s Sek. lang an"] = { { Stats.MeleeHitRating, Stats.RangedHitRating, Stats.SpellHitRating, Stats.Spirit, }, false, } -- s43764
-L["fügt gegnern in einem kegelförmigen bereich vor dem zaubernden frostschaden zu und verlangsamt ihr angriffstempo %s Sek. lang um %s%"] = { false, { Stats.MeleeHaste, }, } -- s44799
+L["fügt gegnern in einem kegelförmigen bereich vor dem zaubernden frostschaden zu und verlangsamt ihr angriffstempo %s Sek. lang um %s%"] = { false, { Stats.MeleeHaste, }, reduction = true } -- s44799
 L["stellt im verlauf von %s Sek. %s mana wieder her. ihr müsst beim trinken sitzen bleiben. wenn ihr mindestens %s sekunden mit trinken verbringt, werdet ihr satt und erhaltet %s Sek. lang %s ausdauer und willenskraft"] = { false, { Stats.GenericManaRegen, }, false, false, { Stats.Stamina, }, } -- s45019
 L["stellt im verlauf von %s Sek. %s mana wieder her. ihr müsst beim trinken sitzen bleiben. wenn ihr mindestens %s sekunden mit trinken verbringt, werdet ihr satt und erhaltet %s Sek. lang %s ausdauer und willenskraft. normaler alkohol"] = { false, { Stats.GenericManaRegen, }, false, false, { Stats.Stamina, }, } -- s45020
 L["nahkampfangriffe, die eure gesundheit auf unter %s% verringern, gewähren euch %s Sek. lang %s ausweichen. kann maximal einmal alle %s sek. auftreten"] = { false, false, { Stats.DodgeRating, }, false, ignoreSum = true } -- s45057
@@ -3574,7 +3574,7 @@ L["euer gedankenschlag erhöht außerdem %s Sek. lang euer tempo um %s"] = { fal
 L["kritische treffer durch 'heldenhafter stoß' und 'zerschmettern' haben eine chance, euer tempo %s Sek. lang um %s zu erhöhen"] = { false, { Stats.MeleeHasteRating, Stats.RangedHasteRating, Stats.SpellHasteRating, }, ignoreSum = true } -- s64938
 L["eure schadenszauber gewähren eine chance, %s Sek. lang euer tempo um %s zu erhöhen"] = { false, { Stats.MeleeHasteRating, Stats.RangedHasteRating, Stats.SpellHasteRating, }, ignoreSum = true } -- s65005
 L["erhöht das parieren %s Sek. lang um %s"] = { false, { Stats.ParryRating, }, } -- s65012
-L["kanalisiert einen strahl titanischer energie, der die molekularstruktur gewisser saronitbasierter kreaturen destabilisiert, wodurch %s Sek. lang ihr angriffstempo um %s% und ihr zaubertempo um %s% verringert wird"] = { false, false, { Stats.SpellHaste, }, } -- s65210
+L["kanalisiert einen strahl titanischer energie, der die molekularstruktur gewisser saronitbasierter kreaturen destabilisiert, wodurch %s Sek. lang ihr angriffstempo um %s% und ihr zaubertempo um %s% verringert wird"] = { false, false, { Stats.SpellHaste, }, reduction = true } -- s65210
 L["stellt im verlauf von %s Sek. insgesamt %s mana wieder her. ihr müsst beim trinken sitzen bleiben. wenn ihr mindestens %s sekunden mit trinken verbringt, werdet ihr satt und erhaltet %s Sek. lang %s kritischen trefferwert. normaler alkohol"] = { false, { Stats.GenericManaRegen, }, false, false, { Stats.MeleeCritRating, Stats.RangedCritRating, Stats.SpellCritRating, }, } -- s65363
 L["kritischer trefferwert um %s erhöht. braufestbiere: fantastischer geschmack und besonders sättigend! hält %s Sek. lang an"] = { { Stats.MeleeCritRating, Stats.RangedCritRating, Stats.SpellCritRating, }, false, } -- s65365
 L["stellt im verlauf von %s Sek. pro sekunde %s mana wieder her"] = { false, { Stats.GenericManaRegen, }, } -- s66041
@@ -3598,13 +3598,13 @@ L["erfüllt die waffe des schamanen mit feuer und erhöht so den gesamten zauber
 L["das angriffstempo von nefarian und onyxia wird um %s% erhöht, wenn sie zusammen sind"] = { { Stats.MeleeHaste, }, } -- s78619
 L["erhöht den kritischen trefferwert %s Sek. lang um %s. kampfelixier"] = { false, { Stats.MeleeCritRating, Stats.RangedCritRating, Stats.SpellCritRating, }, } -- s79477
 L["verringert den verursachten körperlichen schaden des zaubernden um %s. erhöht das nahkampfangriffstempo um %s%"] = { false, { Stats.MeleeHaste, }, } -- s79503
-L["fügt allen gegnern im umkreis von %s metern %s naturschaden zu und verringert das angriffstempo um %s%"] = { false, false, { Stats.MeleeHaste, }, } -- s79604
+L["fügt allen gegnern im umkreis von %s metern %s naturschaden zu und verringert das angriffstempo um %s%"] = { false, false, { Stats.MeleeHaste, }, reduction = true } -- s79604
 L["erhöht eure meisterschaft %s Sek. lang um %s. kampfelixier"] = { false, { Stats.MasteryRating, }, } -- s79635
-L["eine kopfnuss, die %s% normalen schaden verursacht und die ausweich- und parierchance des ziels %s Sek. lang um %s% verringert"] = { false, false, { Stats.Dodge, Stats.Parry, }, } -- s80146
+L["eine kopfnuss, die %s% normalen schaden verursacht und die ausweich- und parierchance des ziels %s Sek. lang um %s% verringert"] = { false, false, { Stats.Dodge, Stats.Parry, }, reduction = true } -- s80146
 L["erhöht %s Sek. lang eure beweglichkeit und kritischen trefferwert um %s. kampfelixier"] = { false, { Stats.MeleeCritRating, Stats.RangedCritRating, Stats.SpellCritRating, Stats.Agility, }, } -- s80532
-L["fügt allen gegnern in der nähe %s naturschaden zu und verringert das angriffstempo um %s%"] = { false, { Stats.MeleeHaste, }, } -- s80649
+L["fügt allen gegnern in der nähe %s naturschaden zu und verringert das angriffstempo um %s%"] = { false, { Stats.MeleeHaste, }, reduction = true } -- s80649
 L["zehrt die rasereieffekte eures begleiters auf, stellt pro aufgezehrtem stapel raserei %s fokus eures begleiters wieder her und erhöht euer distanztempo um %s%. hält %s Sek. lang an"] = { false, { Stats.RangedHaste, }, false, } -- s82692
-L["fügt einem feind alle %s sek. naturschaden zu und verringert seine trefferchance um %s%. hält %s Sek. lang an"] = { false, { Stats.MeleeHit, Stats.RangedHit, }, false, } -- s83983
+L["fügt einem feind alle %s sek. naturschaden zu und verringert seine trefferchance um %s%. hält %s Sek. lang an"] = { false, { Stats.MeleeHit, Stats.RangedHit, }, false, reduction = true } -- s83983
 L["erhöht eure blockchance um %s% und eure ausweichchance um %s%.\nverringert die abklingzeit eurer fähigkeit 'schildwall' um %s min"] = { { Stats.BlockChance, }, { Stats.Dodge, }, false, } -- s84608
 L["erhöht eure trefferchance mit euren zaubern 'mondfeuer' und 'zorn' um %s%.\nverringert die zauberzeitverlängerung durch erlittene treffer, während ihr eure zauber 'heilende berührung', 'nachwachsen', 'gelassenheit', 'wiedergeburt', 'wucherwurzeln', 'wirbelsturm' und 'pflege' wirkt, um %s%"] = { { Stats.SpellHit, }, false, } -- s84736
 L["stellt im verlauf von %s Sek. %s gesundheit und %s mana wieder her. ihr müsst beim essen sitzen bleiben. wenn ihr mindestens %s sekunden mit essen verbringt, werdet ihr satt und erhaltet %s Sek. lang %s stärke und %s ausdauer"] = { false, false, false, false, false, { Stats.Strength, }, { Stats.Stamina, }, ignoreSum = true } -- s87544
@@ -3669,7 +3669,7 @@ L["eure nahkampfangriffe gewähren eine chance, euer ausweichen %s Sek. lang um 
 L["gewährt %s Sek. lang %s ausweichen"] = { false, { Stats.DodgeRating, }, } -- s102667
 L["wenn ihr schaden verursacht, besteht eine chance, dass euer tempo %s Sek. lang um %s erhöht wird"] = { false, { Stats.MeleeHasteRating, Stats.RangedHasteRating, Stats.SpellHasteRating, }, ignoreSum = true } -- s102745
 L["wenn ihr schaden verursacht, besteht eine chance, dass ausweichen %s Sek. lang um %s erhöht wird"] = { false, { Stats.DodgeRating, }, ignoreSum = true } -- s102778
-L["unterwirft den zieldämon und zwingt ihn, euch zu dienen. während er unterworfen ist, wird die zeit zwischen angriffen des dämons um %s% erhöht und sein zaubertempo um %s% verringert. hält bis zu %s Sek. lang an"] = { { Stats.MeleeHaste, }, { Stats.SpellHaste, }, false, } -- s104043
+L["unterwirft den zieldämon und zwingt ihn, euch zu dienen. während er unterworfen ist, wird die zeit zwischen angriffen des dämons um %s% erhöht und sein zaubertempo um %s% verringert. hält bis zu %s Sek. lang an"] = { { Stats.MeleeHaste, }, { Stats.SpellHaste, }, false, reduction = true } -- s104043
 L["stellt im verlauf von %s Sek. %s gesundheit und %s mana wieder her. ihr müsst beim essen sitzen bleiben. wenn ihr mindestens %s sekunden mit essen verbringt, werdet ihr satt und erhaltet %s Sek. lang %s stärke"] = { false, false, false, false, false, { Stats.Strength, }, ignoreSum = true } -- s104263
 L["stellt im verlauf von %s Sek. %s gesundheit und %s mana wieder her. ihr müsst beim essen sitzen bleiben. wenn ihr mindestens %s sekunden mit essen verbringt, werdet ihr satt und erhaltet %s Sek. lang %s intelligenz"] = { false, false, false, false, false, { Stats.Intellect, }, ignoreSum = true } -- s104266
 L["erhöht die beweglichkeit um %s. hält %s Sek. lang an"] = { { Stats.Agility, }, false, } -- s104273
@@ -3695,11 +3695,11 @@ L["erhöht das tempo %s Sek. lang um %s. bis zu %s-mal stapelbar"] = { false, { 
 L["euer zauber 'arkanschlag' hat eine chance von %s% und eure zauber 'feuerball', 'pyroschlag', 'frostfeuerblitz' und 'frostblitz' haben eine chance von %s%, euch 'gestohlene zeit' zu gewähren. dieser effekt erhöht euer tempo %s Sek. lang um %s und ist bis zu %s-mal stapelbar. wenn 'arkane macht', 'verbrennung' oder 'eisige adern' endet, gehen alle stapel von 'gestohlene zeit' verloren"] = { false, false, false, { Stats.MeleeHasteRating, Stats.RangedHasteRating, Stats.SpellHasteRating, }, false, ignoreSum = true } -- s105788
 L["verringert den erlittenen schaden um %s%, erhöht den durch gegenstände erhaltenen rüstungswert um %s% und erhöht eure ausweichchance um %s%"] = { false, false, { Stats.Dodge, }, } -- s105805
 L["erhöht %s Sek. das angriffstempo des zaubernden um %s%"] = { false, { Stats.MeleeHaste, }, } -- s106652
-L["greift in der nähe befindliche feinde in einem rauchvernebelten wirbelwind an, der alle %s sek. %s% waffenschaden verursacht und die kritische trefferchance von getroffenen zielen um %s% verringert"] = { false, false, { Stats.MeleeCrit, Stats.RangedCrit, }, ignoreSum = true } -- s106826
-L["greift in der nähe befindliche feinde in einem rauchvernebelten wirbelwind an, der %s% waffenschaden verursacht und die kritische trefferchance von getroffenen zielen bis zu %s Sek. lang um %s% verringert. betroffene ziele erhalten 'lichtender rauch', wenn dieser effekt aufgehoben wird"] = { false, false, { Stats.MeleeCrit, Stats.RangedCrit, }, } -- s106827
-L["erzeugt einen wütenden magischen sturm im zielgebiet, der allen gegnern in der nähe alle %s%s sek. %s arkanschaden zufügt, ihr bewegungstempo um %s% verringert, und die zeit zwischen angriffen betroffener gegner um %s% erhöht. hält %s Sek. lang an. der druide muss seine kräfte kanalisieren, um den zauber aufrechtzuerhalten"] = { false, false, false, false, { Stats.MeleeHaste, }, false, } -- s106996
-L["erzeugt einen wütenden magischen sturm im zielgebiet, der allen gegnern in der nähe alle %s%s sek. %s arkanschaden zufügt und die zeit zwischen angriffen betroffener gegner um %s% erhöht. hält %s Sek. lang an. der druide muss seine kräfte kanalisieren, um den zauber aufrechtzuerhalten"] = { false, false, false, { Stats.MeleeHaste, }, false, } -- s106996
-L["ihr werdet von hass überwältigt. euer körperlicher schaden ist zwar um %s% erhöht, eure trefferchance jedoch um %s% und eure verursachte heilung um %s% verringert"] = { false, { Stats.MeleeHit, Stats.RangedHit, Stats.SpellHit, }, false, } -- s107087
+L["greift in der nähe befindliche feinde in einem rauchvernebelten wirbelwind an, der alle %s sek. %s% waffenschaden verursacht und die kritische trefferchance von getroffenen zielen um %s% verringert"] = { false, false, { Stats.MeleeCrit, Stats.RangedCrit, }, ignoreSum = true, reduction = true } -- s106826
+L["greift in der nähe befindliche feinde in einem rauchvernebelten wirbelwind an, der %s% waffenschaden verursacht und die kritische trefferchance von getroffenen zielen bis zu %s Sek. lang um %s% verringert. betroffene ziele erhalten 'lichtender rauch', wenn dieser effekt aufgehoben wird"] = { false, false, { Stats.MeleeCrit, Stats.RangedCrit, }, reduction = true } -- s106827
+L["erzeugt einen wütenden magischen sturm im zielgebiet, der allen gegnern in der nähe alle %s%s sek. %s arkanschaden zufügt, ihr bewegungstempo um %s% verringert, und die zeit zwischen angriffen betroffener gegner um %s% erhöht. hält %s Sek. lang an. der druide muss seine kräfte kanalisieren, um den zauber aufrechtzuerhalten"] = { false, false, false, false, { Stats.MeleeHaste, }, false, reduction = true } -- s106996
+L["erzeugt einen wütenden magischen sturm im zielgebiet, der allen gegnern in der nähe alle %s%s sek. %s arkanschaden zufügt und die zeit zwischen angriffen betroffener gegner um %s% erhöht. hält %s Sek. lang an. der druide muss seine kräfte kanalisieren, um den zauber aufrechtzuerhalten"] = { false, false, false, { Stats.MeleeHaste, }, false, reduction = true } -- s106996
+L["ihr werdet von hass überwältigt. euer körperlicher schaden ist zwar um %s% erhöht, eure trefferchance jedoch um %s% und eure verursachte heilung um %s% verringert"] = { false, { Stats.MeleeHit, Stats.RangedHit, Stats.SpellHit, }, false, reduction = true } -- s107087
 L["erhöht euer tempo %s Sek. lang um %s und gewährt bis zu %s verbündeten im umkreis von %s metern %s tempo"] = { false, false, false, false, { Stats.MeleeHasteRating, Stats.RangedHasteRating, Stats.SpellHasteRating, }, } -- s107804
 L["eure zauber haben eine chance, %s Sek. lang euer tempo um %s und das tempo von bis zu %s verbündeten in einem umkreis von %s metern um %s zu erhöhen"] = { false, false, false, false, { Stats.MeleeHasteRating, Stats.RangedHasteRating, Stats.SpellHasteRating, }, ignoreSum = true } -- s107805
 L["eure nahkampfangriffe gewähren eine chance, dass euer gegner euch %s Sek. lang %s ausweichen gewährt, sofern ihr euch nicht weiter als %s meter voneinander entfernt befindet"] = { false, { Stats.DodgeRating, }, false, } -- s107896
@@ -3718,27 +3718,27 @@ L["erhöht ausweichchance um %s%"] = { { Stats.Dodge, }, } -- s110182
 L["erhöht alle werte um %s"] = { { Stats.AllStats, }, } -- s110645
 L["erhöht die ausweichchance des druiden %s Sek. lang um %s%"] = { false, { Stats.Dodge, }, } -- s110791
 L["erhöht das zaubertempo des ziels %s Sek. lang um %s"] = { false, { Stats.SpellHaste, }, } -- s111376
-L["versklavt die gewählte untote kreatur und zwingt sie, euren befehlen folge zu leisten. während die kreatur versklavt ist, wird die zeit zwischen ihren angriffen um %s% erhöht und ihr zaubertempo um %s% verringert. hält bis zu %s Sek. lang an"] = { { Stats.MeleeHaste, }, { Stats.SpellHaste, }, false, } -- s111673
+L["versklavt die gewählte untote kreatur und zwingt sie, euren befehlen folge zu leisten. während die kreatur versklavt ist, wird die zeit zwischen ihren angriffen um %s% erhöht und ihr zaubertempo um %s% verringert. hält bis zu %s Sek. lang an"] = { { Stats.MeleeHaste, }, { Stats.SpellHaste, }, false, reduction = true } -- s111673
 L["ausdauer um %s erhöht. hält %s Sek. lang an"] = { { Stats.Stamina, }, false, } -- s111840
 L["stellt im verlauf von %s Sek. %s gesundheit und %s mana wieder her. ihr müsst beim essen sitzen bleiben. wenn ihr mindestens %s sekunden mit essen verbringt, werdet ihr satt und erhaltet %s Sek. lang %s ausdauer. außerdem fühlt ihr euch sehr gesund!"] = { false, false, false, false, false, { Stats.Stamina, }, ignoreSum = true } -- s111842
 L["erhöht eure manamenge um %s% und die trefferchance eurer zauber 'blitzschlag', 'kettenblitzschlag', 'lavaeruption', elementarschlag, 'verhexen' und 'flammenschock' um %s%"] = { false, { Stats.SpellHit, }, } -- s112858
 L["erhöht eure manamenge um %s% und die trefferchance eurer zauber 'blitzschlag', 'kettenblitzschlag', 'lavaeruption', 'verhexen' und 'flammenschock' um %s%"] = { false, { Stats.SpellHit, }, } -- s112858
 L["verprügelt alle ziele vor euch mit schnellen handschlägen, die sie betäuben, ihnen sofort sowie außerdem %s Sek. lang alle %s%s sek %s bis %s schaden zufügen. der schaden wird gleichmäßig auf alle ziele verteilt.\neure parierchance ist während des kanalisierens um %s% erhöht"] = { false, { Stats.Parry, }, false, false, false, false, } -- s113656
 L["verprügelt alle ziele vor euch mit schnellen handschlägen, die sie betäuben, ihnen sofort sowie außerdem %s Sek. lang alle %s%s sek %s bis %s schaden zufügen. der schaden wird gleichmäßig auf alle ziele verteilt"] = { false, { Stats.Parry, }, false, false, false, } -- s113656
-L["blutrippes stumpfe klingen rosten mit jedem erfolgreichen nahkampfangriff. das erhöht den schaden um %s%, verringert aber das angriffstempo um %s% und das bewegungstempo um %s%. bis zu %s-mal stapelbar"] = { false, { Stats.MeleeHaste, }, false, false, } -- s113765
+L["blutrippes stumpfe klingen rosten mit jedem erfolgreichen nahkampfangriff. das erhöht den schaden um %s%, verringert aber das angriffstempo um %s% und das bewegungstempo um %s%. bis zu %s-mal stapelbar"] = { false, { Stats.MeleeHaste, }, false, false, reduction = true } -- s113765
 L["ihr erhaltet %s% zaubertempo für euren nächsten zauber, nachdem ihr 'rasche heilung' gewirkt habt. hält %s Sek. lang an"] = { { Stats.SpellHaste, }, false, } -- s114108
 L["ein kaum zähmbarer durst nach blut erhöht das angriffstempo um %s%, erhöht jedoch auch den erlittenen schaden um %s%. bis zu %s-mal stapelbar. beim tod breitet sich dieser effekt auf nahe zöglinge krastinovs aus"] = { { Stats.MeleeHaste, }, false, false, } -- s114141
-L["ein kräftiges und geschmacksintensives bier, dass eure trefferchance %s Sek. lang um %s% verringert. macht euch außerdem betrunken!"] = { false, { Stats.MeleeHit, Stats.RangedHit, }, } -- s114381
+L["ein kräftiges und geschmacksintensives bier, dass eure trefferchance %s Sek. lang um %s% verringert. macht euch außerdem betrunken!"] = { false, { Stats.MeleeHit, Stats.RangedHit, }, reduction = true } -- s114381
 L["erhöht das angriffstempo um %s% und verringert das bewegungstempo um %s%. hält %s Sek. lang an"] = { { Stats.MeleeHaste, }, false, false, } -- s114456
 L["intensive heilkräuter erhöhen das tempo aller jutepfadsherpas in einem umkreis von %s metern %s Sek. lang um %s%"] = { false, false, { Stats.MeleeHaste, }, } -- s114618
 L["stellt im verlauf von %s Sek. %s gesundheit und %s mana wieder her. ihr müsst beim essen sitzen bleiben. wenn ihr mindestens %s sekunden mit essen verbringt, werdet ihr satt und ein für euch nützlicher wert wird %s Sek. lang um %s erhöht"] = { false, false, false, false, false, { Stats.Intellect, }, ignoreSum = true } -- s114726
-L["verringert das zaubertempo um %s%"] = { { Stats.SpellHaste, }, } -- s114732
+L["verringert das zaubertempo um %s%"] = { { Stats.SpellHaste, }, reduction = true } -- s114732
 L["rafft die seele eines gefallenen gegners dahin, wodurch sich %s Sek. lang euer tempo um %s% und euer bewegungstempo um %s% erhöht"] = { false, { Stats.MeleeHaste, }, false, } -- s114868
 L["rafft die seele eines gefallenen gegners dahin, wodurch sich %s Sek. lang euer tempo um %s% erhöht"] = { false, { Stats.MeleeHaste, }, } -- s114868
 L["erhöht eure chance, nahkampf- und distanzangriffen auszuweichen, pro aufladung von 'flüchtiges gebräu' %s Sek. lang um %s% und zehrt sämtliche aufladungen von 'flüchtiges gebräu' auf"] = { false, { Stats.Dodge, }, } -- s115308
 L["gewährt %s Sek. lang %s kritischen trefferwert"] = { false, { Stats.MeleeCritRating, Stats.RangedCritRating, Stats.SpellCritRating, }, } -- s116452
 L["ein windstoß schützt den zaubernden indem er seine ausweichchance um %s% erhöht"] = { { Stats.Dodge, }, } -- s115997
-L["verursacht %s naturschaden, der mit der nähe des ziels zum epizentrum skaliert. der blendende staub verringert die trefferchance um %s%"] = { false, { Stats.MeleeHit, Stats.RangedHit, Stats.SpellHit, }, } -- s116040
+L["verursacht %s naturschaden, der mit der nähe des ziels zum epizentrum skaliert. der blendende staub verringert die trefferchance um %s%"] = { false, { Stats.MeleeHit, Stats.RangedHit, Stats.SpellHit, }, reduction = true } -- s116040
 L["wenn er verletzt ist, gerät hundemeister braun in rage, erhöht sein angriffstempo um %s% und den schaden um %s%"] = { { Stats.MeleeHaste, }, { Stats.SpellDamage, }, } -- s116140
 L["eure nahkampf- und distanzangriffe haben eine chance, euch %s Sek. lang %s tempo zu gewähren"] = { false, { Stats.MeleeHasteRating, Stats.RangedHasteRating, Stats.SpellHasteRating, }, ignoreSum = true } -- s116420
 L["eure heilzauber haben eine chance, euch %s Sek. lang %s meisterschaft zu gewähren"] = { false, { Stats.MasteryRating, }, ignoreSum = true } -- s116432
@@ -3751,8 +3751,8 @@ L["gewährt %s Sek. lang %s beweglichkeit"] = { false, { Stats.Agility, }, } -- 
 L["eure heil- und schadenszauber haben eine chance, euch %s Sek. lang %s meisterschaft zu gewähren"] = { false, { Stats.MasteryRating, }, ignoreSum = true } -- s116763
 L["eure nahkampfangriffe haben eine chance, euch %s Sek. lang %s parieren zu gewähren"] = { false, { Stats.ParryRating, }, ignoreSum = true } -- s116766
 L["titanische energie wird freigesetzt. fügt spielercharakteren im umkreis von %s metern %s naturschaden zu und verleiht konstrukten energie, sodass sich ihr angriffstempo %s Sek. lang um %s% erhöht. bis zu %s-mal stapelbar"] = { false, false, false, { Stats.MeleeHaste, }, false, } -- s116805
-L["angriffstempo um %s% verringert.\nbewegungstempo um %s% verringert"] = { { Stats.MeleeHaste, }, false, } -- s116864
-L["angriffstempo um %s% verringert.\njeglicher erlittener schaden um %s% erhöht"] = { { Stats.MeleeHaste, }, false, } -- s116952
+L["angriffstempo um %s% verringert.\nbewegungstempo um %s% verringert"] = { { Stats.MeleeHaste, }, false, reduction = true } -- s116864
+L["angriffstempo um %s% verringert.\njeglicher erlittener schaden um %s% erhöht"] = { { Stats.MeleeHaste, }, false, reduction = true } -- s116952
 L["stärkende winde umkreisen den schamanen und gewähren allen gruppen- und schlachtzugsmitgliedern %s meisterschaft"] = { { Stats.MasteryRating, }, } -- s116956
 L["das leben im wirbelnden nether hat diesen dämon außergewöhnlich agil gemacht. seine ausweich- und parierchance ist um %s% erhöht"] = { { Stats.Dodge, Stats.Parry, }, } -- s117225
 L["erhöht bewegungstempo um %s% und den schaden des nächsten angriffs um %s%. effekt hält %s Sek. lang an"] = { false, { Stats.SpellDamage, }, false, } -- s117516
@@ -3763,20 +3763,20 @@ L["erfüllt das ziel mit verzweiflung, die ihm %s Sek. lang alle %s sek. %s scha
 L["bei %s% verbleibender gesundheit verfällt gara'jal der geisterbinder in raserei, sein nahkampftempo erhöht sich um %s% und er verursacht zusätzlich %s% schaden"] = { false, { Stats.MeleeHaste, }, false, } -- s117752
 L["stößt ein heulen aus, das das angriffstempo und den schaden %s Sek. lang um %s% erhöht"] = { false, { Stats.MeleeHaste, }, } -- s117780
 L["erhöht eure parierchance um %s% und verringert den erlittenen schaden um %s%. hält %s Sek. lang an"] = { { Stats.Parry, }, false, false, } -- s118038
-L["schleudert dem ziel dreck in die augen, fügt ihm körperlichen schaden zu und verringert %s Sek. lang die trefferchance des ziels um %s%"] = { false, { Stats.MeleeHit, Stats.RangedHit, }, } -- s118090
-L["erhöht tempo um %s%, verringert aber die trefferchance um %s%. effekt hält %s Sek. lang an"] = { false, { Stats.MeleeHit, Stats.RangedHit, }, false, } -- s118101
-L["schlägt den gegner und fügt ihm %s% waffenschaden zu. bewirkt 'entkräftendes gift', was im verlauf von %s Sek. alle %s sekunden naturschaden verursacht und den verursachten schaden um %s% verringert"] = { false, false, false, { Stats.SpellDamage, }, } -- s118316
+L["schleudert dem ziel dreck in die augen, fügt ihm körperlichen schaden zu und verringert %s Sek. lang die trefferchance des ziels um %s%"] = { false, { Stats.MeleeHit, Stats.RangedHit, }, reduction = true } -- s118090
+L["erhöht tempo um %s%, verringert aber die trefferchance um %s%. effekt hält %s Sek. lang an"] = { false, { Stats.MeleeHit, Stats.RangedHit, }, false, reduction = true } -- s118101
+L["schlägt den gegner und fügt ihm %s% waffenschaden zu. bewirkt 'entkräftendes gift', was im verlauf von %s Sek. alle %s sekunden naturschaden verursacht und den verursachten schaden um %s% verringert"] = { false, false, false, { Stats.SpellDamage, }, reduction = true } -- s118316
 L["eure heil- und schadenszauber haben eine chance, euch %s Sek. lang %s tempo zu gewähren"] = { false, { Stats.MeleeHasteRating, Stats.RangedHasteRating, Stats.SpellHasteRating, }, ignoreSum = true } -- s118621
 L["eure nahkampfangriffe haben eine chance, euch %s Sek. lang %s ausweichen zu gewähren"] = { false, { Stats.DodgeRating, }, ignoreSum = true } -- s118624
 L["wenn ihr schaden verursacht, besteht eine chance, dass ihr %s Sek. lang %s kritischen trefferwert erhaltet"] = { false, { Stats.MeleeCritRating, Stats.RangedCritRating, Stats.SpellCritRating, }, ignoreSum = true } -- s118877
 L["eure nahkampf- und distanzangriffe haben eine chance, euch %s Sek. lang %s kritischen trefferwert zu gewähren"] = { false, { Stats.MeleeCritRating, Stats.RangedCritRating, Stats.SpellCritRating, }, ignoreSum = true } -- s118878
-L["verursacht %s schattenschaden und verringert das zaubertempo %s Sek. lang um %s%. bis zu %s-mal stapelbar"] = { false, false, { Stats.SpellHaste, }, false, } -- s118903
+L["verursacht %s schattenschaden und verringert das zaubertempo %s Sek. lang um %s%. bis zu %s-mal stapelbar"] = { false, false, { Stats.SpellHaste, }, false, reduction = true } -- s118903
 L["erhöht das nahkampfangriffstempo eines verbündeten um %s%"] = { { Stats.MeleeHaste, }, } -- s119902
 L["erhöht die stärke oder beweglichkeit um %s"] = { { Stats.Agility, Stats.Strength, }, } -- s120032
 L["versetzt alle in der nähe befindlichen flammenhunde in raserei, wodurch ihr angriffstempo und ihr bewegungstempo %s Sek. lang um %s% erhöht wird"] = { false, { Stats.MeleeHaste, }, } -- s120093
-L["zieht das ziel bis auf die haut aus, verringert seine rüstung um %s% und die ausweich- und parierchance um %s%"] = { false, { Stats.Dodge, Stats.Parry, }, } -- s120669
+L["zieht das ziel bis auf die haut aus, verringert seine rüstung um %s% und die ausweich- und parierchance um %s%"] = { false, { Stats.Dodge, Stats.Parry, }, reduction = true } -- s120669
 L["aufgebracht durch seine unfähigen diener greift kommandant vo'jak immer schneller an und sein angriffstempo erhöht sich um %s%"] = { { Stats.MeleeHaste, }, } -- s120758
-L["lässt das ziel qualen erleiden, die ihm %s Sek. lang alle %s sek. schattenschaden zufügen und seine trefferchance um %s% verringern"] = { false, false, { Stats.MeleeHit, Stats.RangedHit, }, } -- s120810
+L["lässt das ziel qualen erleiden, die ihm %s Sek. lang alle %s sek. schattenschaden zufügen und seine trefferchance um %s% verringern"] = { false, false, { Stats.MeleeHit, Stats.RangedHit, }, reduction = true } -- s120810
 L["ihr tretet gestärkt aus der substanz heraus und euer zauber- und bewegungstempo erhöht sich %s Sek. lang um %s%"] = { false, { Stats.SpellHaste, }, } -- s121449
 L["erhöht die trefferchance eurer zauber 'sühne', 'heilige pein', 'machtwort: trost', 'kaskade', 'göttlicher stern', 'strahlenkranz' und 'heiliges feuer' um %s%"] = { { Stats.SpellHit, }, } -- s122098
 L["lässt die mitglieder von mel'jaraks schwarm schneller werden und erhöht %s Sek. lang ihren verursachten schaden und ihr angriffstempo um %s%. dieser effekt ist stapelbar"] = { false, { Stats.MeleeHaste, }, } -- s122149
@@ -3827,8 +3827,8 @@ L["jedes mal, wenn eure schadenszauber treffen, besteht eine chance, dass ihr %s
 L["wenn ihr schaden verursacht oder ein ziel heilt, besteht eine chance, dass eure intelligenz %s Sek. lang um %s erhöht wird"] = { false, { Stats.Intellect, }, ignoreSum = true } -- s126706
 L["zeuge des todes seines wächtergefährten zu werden erzürnt ihn so sehr, dass sich sein angriffstempo um %s% erhöht"] = { { Stats.MeleeHaste, }, } -- s126970
 L["erhöht %s Sek. lang alle werte um %s. zählt sowohl als kampf- als auch als wächterelixier"] = { false, { Stats.AllStats, }, } -- s127230
-L["gewährt dem zaubernden die chance, mit jedem treffer bei seinen opfern schmerz auszulösen. der schmerz verringert %s Sek. lang die chance des opfers zu blockieren, auszuweichen oder zu parieren um %s%"] = { false, { Stats.BlockChance, }, ignoreSum = true } -- s127262
-L["der zaubernde fügt dem opfer schmerzen zu und verringert %s Sek. lang dessen chance, zu blocken, auszuweichen oder zu parieren, um %s%"] = { false, { Stats.BlockChance, Stats.Parry, Stats.Dodge, }, } -- s127264
+L["gewährt dem zaubernden die chance, mit jedem treffer bei seinen opfern schmerz auszulösen. der schmerz verringert %s Sek. lang die chance des opfers zu blockieren, auszuweichen oder zu parieren um %s%"] = { false, { Stats.BlockChance, }, ignoreSum = true, reduction = true } -- s127262
+L["der zaubernde fügt dem opfer schmerzen zu und verringert %s Sek. lang dessen chance, zu blocken, auszuweichen oder zu parieren, um %s%"] = { false, { Stats.BlockChance, Stats.Parry, Stats.Dodge, }, reduction = true } -- s127264
 L["erhöht das angriffstempo von freunden im umkreis von %s metern um %s%"] = { false, { Stats.MeleeHaste, }, } -- s127423
 L["eure heilzauber haben eine chance, eure zaubermacht %s Sek. lang um %s zu erhöhen. (%s% chance, %s sek. abklingzeit)"] = { false, { Stats.Intellect, }, false, false, ignoreSum = true } -- s127573
 L["die ausweichchance wird um %s% erhöht"] = { { Stats.Dodge, }, } -- s127669
@@ -3845,7 +3845,7 @@ L["kataks beleidigungen verletzen jung duks stolz und erhöhen sein angriffstemp
 L["eure nahkampfangriffe gewähren eine chance, euch 'segen der erhabenen' zu gewähren und eure stärke %s Sek. lang um %s zu erhöhen. (%s% chance, %s sek. abklingzeit)"] = { false, { Stats.Strength, }, false, false, ignoreSum = true } -- s128989
 L["wenn ihr zauberschaden verursacht, besteht eine chance, dass ihr den effekt 'segen der erhabenen' erhaltet, der eure intelligenz %s Sek. lang um %s erhöht"] = { false, { Stats.Agility, }, ignoreSum = true } -- s128990
 L["eure heilzauber haben eine chance, euch 'segen der erhabenen' zu gewähren und eure willenskraft %s Sek. lang um %s zu erhöhen. (%s% chance, %s sek. abklingzeit)"] = { false, { Stats.Spirit, }, false, false, ignoreSum = true } -- s128991
-L["fügt einem gegner einen harten schlag auf den schädel zu, verursacht dabei körperlichen schaden und verringert %s Sek. lang die trefferchance des ziels um %s%"] = { false, { Stats.MeleeHit, Stats.RangedHit, }, } -- s129111
+L["fügt einem gegner einen harten schlag auf den schädel zu, verursacht dabei körperlichen schaden und verringert %s Sek. lang die trefferchance des ziels um %s%"] = { false, { Stats.MeleeHit, Stats.RangedHit, }, reduction = true } -- s129111
 L["die raupe verfällt in raserei, wobei ihr angriffstempo %s Sek. lang um %s% erhöht wird"] = { false, { Stats.MeleeHaste, }, } -- s129936
 L["erhöht %s Sek. lang die ausweichchance um %s% und das bewegungstempo um %s%"] = { false, { Stats.Dodge, }, false, } -- s130182
 L["erhöht eure meisterschaft um %s. hält %s Sek. lang an"] = { { Stats.MasteryRating, }, false, } -- s130283
@@ -3865,9 +3865,9 @@ L["erhöht eure stärke %s Sek. lang um %s. kann nur in einer kampfarena verwend
 L["erhöht die intelligenz %s Sek. lang um %s. kann nur in einer kampfarena verwendet werden"] = { false, { Stats.Intellect, }, } -- s134987
 L["erhöht eure beweglichkeit %s Sek. lang um %s. kann nur in einer kampfarena verwendet werden"] = { false, { Stats.Agility, }, } -- s134989
 L["erhöht die ausweichchance %s Sek. lang um %s%. kann nur in einem grubenkampf verwendet werden"] = { false, { Stats.Dodge, }, } -- s135088
-L["ihr seid in einer totzone.\ntrefferchance und chance, getroffen zu werden um %s% verringert"] = { { Stats.SpellHit, Stats.MeleeHit, Stats.RangedHit, }, } -- s135147
+L["ihr seid in einer totzone.\ntrefferchance und chance, getroffen zu werden um %s% verringert"] = { { Stats.SpellHit, Stats.MeleeHit, Stats.RangedHit, }, reduction = true } -- s135147
 L["überzieht einen gegner mit arkanmagie und erhöht das tempo des zaubernden um %s%"] = { { Stats.SpellHaste, }, } -- s135538
-L["ein mächtiger angriff, der allen gegnern im umkreis von %s metern %s% waffenschaden zufügt und ihre chance, zu verfehlen, um %s% erhöht"] = { false, false, { Stats.MeleeHit, Stats.RangedHit, Stats.SpellHit, }, } -- s135619
+L["ein mächtiger angriff, der allen gegnern im umkreis von %s metern %s% waffenschaden zufügt und ihre chance, zu verfehlen, um %s% erhöht"] = { false, false, { Stats.MeleeHit, Stats.RangedHit, Stats.SpellHit, }, reduction = true } -- s135619
 L["umgibt alle gruppen- oder schlachtzugsmitglieder mit energiereichen sporen, die das zaubertempo um %s% erhöhen"] = { { Stats.SpellHaste, }, } -- s135678
 L["zauberunterbrechungen lösen 'furor' aus, wodurch das zaubertempo um %s% erhöht wird. stapelbar"] = { { Stats.SpellHaste, }, ignoreSum = true } -- s144585
 L["erhöht das zaubertempo um %s%. stapelbar"] = { { Stats.SpellHaste, }, } -- s144588
@@ -3895,7 +3895,7 @@ L["eure angriffe haben eine chance, euch %s Sek. lang %s beweglichkeit zu gewäh
 L["eure angriffe haben eine chance, %s Sek. lang %s intelligenz zu gewähren. (ungefähr %s%s auslösungen pro minute)"] = { false, { Stats.Intellect, }, false, false, ignoreSum = true } -- s148907
 L["eure hilfreichen zauber haben eine chance, %s Sek. lang %s intelligenz zu gewähren. (ungefähr %s%s auslösungen pro minute)"] = { false, { Stats.Intellect, }, false, false, ignoreSum = true } -- s148909
 L["eure schaden verursachenden zauber haben eine chance, eure zaubermacht %s Sek. lang um %s zu erhöhen"] = { false, { Stats.SpellDamage, }, ignoreSum = true } -- s469351
-L["verursacht %s% waffenschaden und verringert die rüstung des ziels %s Sek. lang um %s%"] = { false, false, { Stats.Armor, }, } -- s121445
+L["verursacht %s% waffenschaden und verringert die rüstung des ziels %s Sek. lang um %s%"] = { false, false, { Stats.Armor, }, reduction = true } -- s121445
 L["ein hyperaktiver metabolismus lässt den zaubernden seine fähigkeiten häufiger einsetzen und erhöht das angriffstempo um %s%"] = { { Stats.MeleeHaste, }, } -- s136245
 L["horridon tobt, nachdem er mit ansehen musste, wie sein meister gefallen ist. der von ihm verursachte schaden ist um %s% und sein angriffstempo um %s% erhöht"] = { false, { Stats.MeleeHaste, }, } -- s136821
 L["horridon stößt ein mächtiges gebrüll aus, das %s körperlichen schaden verursacht und das nahkampfangriffstempo von verbündeten um %s% erhöht"] = { false, { Stats.MeleeHaste, }, } -- s137458
@@ -3923,15 +3923,15 @@ L["wenn eure zauber kritischen schaden verursachen, besteht eine chance, dass eu
 L["kritischer trefferwert %s Sek. lang um %s erhöht. bis zu %s-mal stapelbar"] = { false, { Stats.MeleeCritRating, Stats.RangedCritRating, Stats.SpellCritRating, }, false, } -- s139170
 L["eure erzielten kritischen treffer haben eine chance, euren kritischen trefferwert %s Sek. lang um %s zu erhöhen. dieser effekt ist bis zu %s-mal stapelbar. (ungefähr %s%s auslösungen pro minute)"] = { false, { Stats.MeleeCritRating, Stats.RangedCritRating, Stats.SpellCritRating, }, false, false, false, ignoreSum = true } -- s139171
 L["der zaubernde erfüllt seine waffe mit magie. erfolgreiche nahkampfangriffe haben eine chance, naturschaden zu verursachen.\nangriffstempo um %s% erhöht"] = { { Stats.MeleeHaste, }, } -- s139218
-L["zermalmt das rückgrat des ziels, macht es bewegungsunfähig und verringert seine ausweich- und parierchance %s Sek. lang um %s%"] = { false, { Stats.Parry, Stats.Dodge, }, } -- s139260
+L["zermalmt das rückgrat des ziels, macht es bewegungsunfähig und verringert seine ausweich- und parierchance %s Sek. lang um %s%"] = { false, { Stats.Parry, Stats.Dodge, }, reduction = true } -- s139260
 L["lässt alle positiven effekte von bodenkacheln im palast des donnerkönigs %s% länger andauern"] = { { Stats.Agility, }, } -- s139497
 L["erhöht das nahkampftempo um %s%"] = { { Stats.MeleeHaste, }, } -- s140146
-L["fügt einem gegner schattenschaden zu und verringert seine trefferchance um %s%"] = { { Stats.MeleeHit, Stats.RangedHit, }, } -- s140496
+L["fügt einem gegner schattenschaden zu und verringert seine trefferchance um %s%"] = { { Stats.MeleeHit, Stats.RangedHit, }, reduction = true } -- s140496
 L["eure heilzauber verfügen über eine chance, für %s Sek. %s intelligenz zu verleihen"] = { false, { Stats.Intellect, }, ignoreSum = true } -- s141159
 L["der roboter konfiguriert seine systeme für nahkampfangriffe um. alle %s sek. erhöhen sich seine angriffsgeschwindigkeit um %s% und sein schaden um %s%. dieser effekt ist stapelbar"] = { false, { Stats.MeleeHaste, }, false, ignoreSum = true } -- s141395
 L["der roboter verankert seine füße im boden und schaltet seine langstreckensensoren für distanzangriffe ein. alle %s sek. erhöht sich sein zaubertempo um %s% und seine zielgenauigkeit erhöht sich. dieser effekt ist stapelbar"] = { false, { Stats.MeleeHaste, }, ignoreSum = true } -- s141400
 L["heilt einen verbündeten %s Sek. lang alle %s sek. um %s schaden"] = { false, false, { Stats.HealthRegen, }, } -- s141734
-L["ruft einen steinregen herbei, der %s Sek. lang anhält. verringert die trefferchance aller feinde, die sich im betroffenen bereich aufhalten, um %s% und fügt ihnen alle %s sek. körperlichen schaden zu"] = { false, { Stats.MeleeHit, Stats.RangedHit, }, false, } -- s142139
+L["ruft einen steinregen herbei, der %s Sek. lang anhält. verringert die trefferchance aller feinde, die sich im betroffenen bereich aufhalten, um %s% und fügt ihnen alle %s sek. körperlichen schaden zu"] = { false, { Stats.MeleeHit, Stats.RangedHit, }, false, reduction = true } -- s142139
 L["jedes mal, wenn eure schädlichen zauber treffen, besteht eine chance, dass ihr %s Sek. lang %s tempo erhaltet. (%s% chance, %s sek. abklingzeit)"] = { false, { Stats.MeleeHasteRating, Stats.RangedHasteRating, Stats.SpellHasteRating, }, false, false, ignoreSum = true } -- s142160
 L["eure waffe der flammenzunge gewährt zusätzliche %s zaubermacht"] = { { Stats.SpellDamage, }, } -- s461993
 L["gegengewicht (%s tempo)"] = { { Stats.HasteRating, }, } -- e34

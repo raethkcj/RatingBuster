@@ -76,6 +76,7 @@ class StatEntry {
 	entries: (StatValue[] | false)[] = []
 	isWholeText = false
 	ignoreSum = false
+	reduction = true
 
 	constructor(public id: number, public isEnchant: boolean) {}
 
@@ -273,29 +274,35 @@ function mapTextToStatEntry(text: string, statEffects: StatValue[][] | undefined
 		statEntry.entries = statEffects ? [statEffects.flat().filter(sv => sv.value !== 0)] : []
 	}
 
-	// Combine SpellDamage & Healing into SpellPower
 	for (const [i, entry] of Object.entries(statEntry.entries)) {
 		if (entry) {
-			let spellDamage = -1, healing = -1
-			let value: number|undefined = undefined
+			let spellDamageIndex = -1, healingIndex = -1
+			let spellPowerValue: number|undefined = undefined
+
 			for (const [j, sv] of entry.entries()) {
-				if (sv.stat === "SpellDamage") {
-					spellDamage = j
-					value ||= sv.value
-				} else if (sv.stat === "HealingPower") {
-					healing = j
-					value ||= sv.value
+				if (sv.value >= 0) {
+					statEntry.reduction = false
 				}
 
-				if (spellDamage >= 0 && healing >= 0) {
-					if (sv.value === value) {
-						const newEntry = entry.toSpliced(spellDamage, 1, new StatValue("SpellPower", value, sv.isOverride))
-						newEntry.splice(healing, 1)
+				if (sv.stat === "SpellDamage") {
+					spellDamageIndex = j
+					spellPowerValue ||= sv.value
+				} else if (sv.stat === "HealingPower") {
+					healingIndex = j
+					spellPowerValue ||= sv.value
+				}
+
+				// Combine SpellDamage & Healing into SpellPower
+				if (spellDamageIndex >= 0 && healingIndex >= 0) {
+					if (sv.value === spellPowerValue) {
+						const newEntry = entry.toSpliced(spellDamageIndex, 1, new StatValue("SpellPower", spellPowerValue, sv.isOverride))
+						newEntry.splice(healingIndex, 1)
 						statEntry.entries[i] = newEntry
 					}
 					break
 				}
 			}
+
 		}
 	}
 
@@ -1105,7 +1112,14 @@ function entryToString([text, entry]: [string, StatEntry]) {
 			return accEntries + entryText
 		}
 	}, "")
-	return `${entry.isWholeText ? "W" : "L"}["${text}"] = { ${stats}${entry.ignoreSum ? "ignoreSum = true " : ""}} -- ${entry.isEnchant ? "e" : "s"}${entry.id}\n`
+	const flags: string[] = []
+	if (entry.ignoreSum) {
+		flags.push("ignoreSum = true")
+	}
+	if (entry.reduction && !entry.isWholeText) {
+		flags.push("reduction = true")
+	}
+	return `${entry.isWholeText ? "W" : "L"}["${text}"] = { ${stats}${flags.join(", ") + (flags.length > 0 ? " " : "")}} -- ${entry.isEnchant ? "e" : "s"}${entry.id}\n`
 }
 
 mkdirSync(new URL(databaseDirName, base), { recursive: true })
