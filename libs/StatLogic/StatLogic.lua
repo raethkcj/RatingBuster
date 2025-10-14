@@ -2129,6 +2129,9 @@ do
 					for i, valuePosition in ipairs(valuePositions) do
 						local statGroup = statList[i]
 						local value, position = unpack(valuePosition)
+						if statList.reduction then
+							value = value * -1
+						end
 						AddStat(statGroups, statGroup, value, itemLink, color, position)
 					end
 					if statList.ignoreSum then

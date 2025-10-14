@@ -143,6 +143,7 @@ addon.ReforgeSuffix = "%s*" .. REFORGE_TOOLTIP_LINE:format(0, "", "", ".*"):utf8
 -------------------------
 ---@class SubstitutionEntry
 ---@field ignoreSum boolean?
+---@field reduction boolean?
 ---@field [number] Stat[] | false
 ---@type { [string]: SubstitutionEntry }
 addon.StatIDLookup = setmetatable({}, lowerMT)
