@@ -2329,7 +2329,7 @@ function RatingBuster:ProcessLine(text, link, color, statModContext)
 				local nextStatGroupValue = statGroupValues[i + 1]
 				local nextPosition = nextStatGroupValue and nextStatGroupValue.position or #text
 				for _, stat in ipairs(statGroup) do
-					RatingBuster:ProcessStat(stat, statGroupValue.value, breakdownStats, link, color, statModContext, isBaseStat, false)
+					RatingBuster:ProcessStat(stat, statGroupValue.value, breakdownStats, link, color, statModContext, false, isBaseStat, false)
 					position = getBreakdownPosition(text, stat, position, nextPosition)
 				end
 
@@ -2428,37 +2428,38 @@ end
 ---@param link string
 ---@param color ColorMixin
 ---@param statModContext StatModContext
+---@param isParentModified boolean
 ---@param isBaseStat boolean
 ---@param show boolean
-function RatingBuster:ProcessStat(stat, value, breakdownStats, link, color, statModContext, isBaseStat, show)
+function RatingBuster:ProcessStat(stat, value, breakdownStats, link, color, statModContext, isParentModified, isBaseStat, show)
 	if value == 0 then return end
 	if StatLogic.GenericStatMap[stat] then
 		local statList = StatLogic.GenericStatMap[stat]
 		for _, convertedStatID in ipairs(statList) do
-			RatingBuster:ProcessStat(convertedStatID, value, breakdownStats, link, color, statModContext, false, true)
+			RatingBuster:ProcessStat(convertedStatID, value, breakdownStats, link, color, statModContext, true, false, true)
 		end
 	elseif stat == StatLogic.Stats.HitRating then
 		local meleeHitRating = value * statModContext("ADD_MELEE_HIT_RATING_MOD_HIT_RATING")
-		self:ProcessStat(StatLogic.Stats.MeleeHitRating, meleeHitRating, breakdownStats, link, color, statModContext, isBaseStat, db.profile.showMeleeHitFromHitRating)
+		self:ProcessStat(StatLogic.Stats.MeleeHitRating, meleeHitRating, breakdownStats, link, color, statModContext, true, isBaseStat, db.profile.showMeleeHitFromHitRating)
 
 		local spellHitRating = value * statModContext("ADD_SPELL_HIT_RATING_MOD_HIT_RATING")
-		self:ProcessStat(StatLogic.Stats.SpellHitRating, spellHitRating, breakdownStats, link, color, statModContext, isBaseStat, db.profile.showSpellHitFromHitRating)
+		self:ProcessStat(StatLogic.Stats.SpellHitRating, spellHitRating, breakdownStats, link, color, statModContext, true, isBaseStat, db.profile.showSpellHitFromHitRating)
 	elseif stat == StatLogic.Stats.CritRating then
 		value = value * statModContext("MOD_CRIT_RATING")
 
 		local meleeCritRating = value * statModContext("ADD_MELEE_CRIT_RATING_MOD_CRIT_RATING")
-		self:ProcessStat(StatLogic.Stats.MeleeCritRating, meleeCritRating, breakdownStats, link, color, statModContext, isBaseStat, db.profile.showMeleeCritFromCritRating)
+		self:ProcessStat(StatLogic.Stats.MeleeCritRating, meleeCritRating, breakdownStats, link, color, statModContext, true, isBaseStat, db.profile.showMeleeCritFromCritRating)
 
 		local spellCritRating = value * statModContext("ADD_SPELL_CRIT_RATING_MOD_CRIT_RATING")
-		self:ProcessStat(StatLogic.Stats.SpellCritRating, spellCritRating, breakdownStats, link, color, statModContext, isBaseStat, db.profile.showSpellCritFromCritRating)
+		self:ProcessStat(StatLogic.Stats.SpellCritRating, spellCritRating, breakdownStats, link, color, statModContext, true, isBaseStat, db.profile.showSpellCritFromCritRating)
 	elseif stat == StatLogic.Stats.HasteRating then
 		value = value * statModContext("MOD_HASTE_RATING")
 
 		local meleeHasteRating = value * statModContext("ADD_MELEE_HASTE_RATING_MOD_HASTE_RATING")
-		self:ProcessStat(StatLogic.Stats.MeleeHasteRating, meleeHasteRating, breakdownStats, link, color, statModContext, isBaseStat, db.profile.showMeleeHasteFromHasteRating)
+		self:ProcessStat(StatLogic.Stats.MeleeHasteRating, meleeHasteRating, breakdownStats, link, color, statModContext, true, isBaseStat, db.profile.showMeleeHasteFromHasteRating)
 
 		local spellHasteRating = value * statModContext("ADD_SPELL_HASTE_RATING_MOD_HASTE_RATING")
-		self:ProcessStat(StatLogic.Stats.SpellHasteRating, spellHasteRating, breakdownStats, link, color, statModContext, isBaseStat, db.profile.showSpellHasteFromHasteRating)
+		self:ProcessStat(StatLogic.Stats.SpellHasteRating, spellHasteRating, breakdownStats, link, color, statModContext, true, isBaseStat, db.profile.showSpellHasteFromHasteRating)
 	elseif StatLogic.RatingBase[stat] and db.profile.showRatings then
 		--------------------
 		-- Combat Ratings --
@@ -2466,52 +2467,70 @@ function RatingBuster:ProcessStat(stat, value, breakdownStats, link, color, stat
 		-- Calculate stat value
 		local effect = StatLogic:GetEffectFromRating(value, stat, statModContext.level)
 		if stat == StatLogic.Stats.DefenseRating then
-			self:ProcessStat(StatLogic.Stats.Defense, effect, breakdownStats, link, color, statModContext, false, db.profile.showDefenseFromDefenseRating)
+			self:ProcessStat(StatLogic.Stats.Defense, effect, breakdownStats, link, color, statModContext, true, false, db.profile.showDefenseFromDefenseRating)
 		elseif stat == StatLogic.Stats.DodgeRating then
-			self:ProcessStat(StatLogic.Stats.Dodge, effect, breakdownStats, link, color, statModContext, isBaseStat, show or isBaseStat)
+			self:ProcessStat(StatLogic.Stats.Dodge, effect, breakdownStats, link, color, statModContext, true, isBaseStat, show or isBaseStat)
 
 			local critRating = value * statModContext("ADD_CRIT_RATING_MOD_DODGE_RATING")
-			self:ProcessStat(StatLogic.Stats.CritRating, critRating, breakdownStats, link, color, statModContext, false, db.profile.showCritFromDodgeRating)
+			self:ProcessStat(StatLogic.Stats.CritRating, critRating, breakdownStats, link, color, statModContext, true, false, db.profile.showCritFromDodgeRating)
 		elseif stat == StatLogic.Stats.ParryRating then
-			self:ProcessStat(StatLogic.Stats.Parry, effect, breakdownStats, link, color, statModContext, isBaseStat, show or isBaseStat)
+			self:ProcessStat(StatLogic.Stats.Parry, effect, breakdownStats, link, color, statModContext, true, isBaseStat, show or isBaseStat)
 
 			local critRating = value * statModContext("ADD_CRIT_RATING_MOD_PARRY_RATING")
-			self:ProcessStat(StatLogic.Stats.CritRating, critRating, breakdownStats, link, color, statModContext, false, db.profile.showCritFromParryRating)
+			self:ProcessStat(StatLogic.Stats.CritRating, critRating, breakdownStats, link, color, statModContext, true, false, db.profile.showCritFromParryRating)
 		elseif stat == StatLogic.Stats.BlockRating then
-			self:ProcessStat(StatLogic.Stats.BlockChance, effect, breakdownStats, link, color, statModContext, isBaseStat, show)
+			self:ProcessStat(StatLogic.Stats.BlockChance, effect, breakdownStats, link, color, statModContext, true, isBaseStat, show)
 		elseif stat == StatLogic.Stats.MeleeHitRating then
-			self:ProcessStat(StatLogic.Stats.MeleeHit, effect, breakdownStats, link, color, statModContext, isBaseStat, db.profile.showMeleeHitFromHitRating)
+			self:ProcessStat(StatLogic.Stats.MeleeHit, effect, breakdownStats, link, color, statModContext, true, isBaseStat, db.profile.showMeleeHitFromHitRating)
 		elseif stat == StatLogic.Stats.RangedHitRating then
-			self:ProcessStat(StatLogic.Stats.RangedHit, effect, breakdownStats, link, color, statModContext, isBaseStat, db.profile.showRangedHitFromHitRating)
+			self:ProcessStat(StatLogic.Stats.RangedHit, effect, breakdownStats, link, color, statModContext, true, isBaseStat, db.profile.showRangedHitFromHitRating)
 		elseif stat == StatLogic.Stats.SpellHitRating then
-			self:ProcessStat(StatLogic.Stats.SpellHit, effect, breakdownStats, link, color, statModContext, isBaseStat, db.profile.showSpellHitFromHitRating)
+			self:ProcessStat(StatLogic.Stats.SpellHit, effect, breakdownStats, link, color, statModContext, true, isBaseStat, db.profile.showSpellHitFromHitRating)
 		elseif stat == StatLogic.Stats.MeleeCritRating then
-			self:ProcessStat(StatLogic.Stats.MeleeCrit, effect, breakdownStats, link, color, statModContext, isBaseStat, db.profile.showMeleeCritFromCritRating)
+			if not isParentModified then
+				effect = effect * statModContext("MOD_CRIT_RATING")
+			end
+			self:ProcessStat(StatLogic.Stats.MeleeCrit, effect, breakdownStats, link, color, statModContext, true, false, db.profile.showMeleeCritFromCritRating)
 		elseif stat == StatLogic.Stats.RangedCritRating then
-			self:ProcessStat(StatLogic.Stats.RangedCrit, effect, breakdownStats, link, color, statModContext, isBaseStat, db.profile.showRangedCritFromCritRating)
+			if not isParentModified then
+				effect = effect * statModContext("MOD_CRIT_RATING")
+			end
+			self:ProcessStat(StatLogic.Stats.RangedCrit, effect, breakdownStats, link, color, statModContext, true, false, db.profile.showRangedCritFromCritRating)
 		elseif stat == StatLogic.Stats.SpellCritRating then
-			self:ProcessStat(StatLogic.Stats.SpellCrit, effect, breakdownStats, link, color, statModContext, isBaseStat, db.profile.showSpellCritFromCritRating)
+			if not isParentModified then
+				effect = effect * statModContext("MOD_CRIT_RATING")
+			end
+			self:ProcessStat(StatLogic.Stats.SpellCrit, effect, breakdownStats, link, color, statModContext, true, false, db.profile.showSpellCritFromCritRating)
 		elseif stat == StatLogic.Stats.MeleeHasteRating then
-			self:ProcessStat(StatLogic.Stats.MeleeHaste, effect, breakdownStats, link, color, statModContext, isBaseStat, db.profile.showMeleeHasteFromHasteRating)
+			if not isParentModified then
+				effect = effect * statModContext("MOD_HASTE_RATING")
+			end
+			self:ProcessStat(StatLogic.Stats.MeleeHaste, effect, breakdownStats, link, color, statModContext, true, isBaseStat, db.profile.showMeleeHasteFromHasteRating)
 		elseif stat == StatLogic.Stats.RangedHasteRating then
-			self:ProcessStat(StatLogic.Stats.RangedHaste, effect, breakdownStats, link, color, statModContext, isBaseStat, db.profile.showRangedHasteFromHasteRating)
+			if not isParentModified then
+				effect = effect * statModContext("MOD_HASTE_RATING")
+			end
+			self:ProcessStat(StatLogic.Stats.RangedHaste, effect, breakdownStats, link, color, statModContext, true, isBaseStat, db.profile.showRangedHasteFromHasteRating)
 		elseif stat == StatLogic.Stats.SpellHasteRating then
-			self:ProcessStat(StatLogic.Stats.SpellHaste, effect, breakdownStats, link, color, statModContext, isBaseStat, db.profile.showSpellHasteFromHasteRating)
+			if not isParentModified then
+				effect = effect * statModContext("MOD_HASTE_RATING")
+			end
+			self:ProcessStat(StatLogic.Stats.SpellHaste, effect, breakdownStats, link, color, statModContext, true, isBaseStat, db.profile.showSpellHasteFromHasteRating)
 		elseif stat == StatLogic.Stats.ExpertiseRating then
 			if addon.tocversion < 30000 then
 				-- Expertise is truncated in TBC but not in Wrath
 				effect = floor(effect)
 			end
-			self:ProcessStat(StatLogic.Stats.Expertise, effect, breakdownStats, link, color, statModContext, isBaseStat, db.profile.showExpertiseFromExpertiseRating)
+			self:ProcessStat(StatLogic.Stats.Expertise, effect, breakdownStats, link, color, statModContext, true, isBaseStat, db.profile.showExpertiseFromExpertiseRating)
 		elseif stat == StatLogic.Stats.ArmorPenetrationRating then
-			self:ProcessStat(StatLogic.Stats.ArmorPenetration, effect, breakdownStats, link, color, statModContext, isBaseStat, show)
+			self:ProcessStat(StatLogic.Stats.ArmorPenetration, effect, breakdownStats, link, color, statModContext, true, isBaseStat, show)
 		elseif stat == StatLogic.Stats.ResilienceRating then
-			self:ProcessStat(StatLogic.Stats.Resilience, effect, breakdownStats, link, color, statModContext, isBaseStat, db.profile.showResilienceFromResilienceRating)
+			self:ProcessStat(StatLogic.Stats.Resilience, effect, breakdownStats, link, color, statModContext, true, isBaseStat, db.profile.showResilienceFromResilienceRating)
 		elseif stat == StatLogic.Stats.MasteryRating then
 			effect = effect * statModContext("MOD_MASTERY_RATING")
-			self:ProcessStat(StatLogic.Stats.Mastery, effect, breakdownStats, link, color, statModContext, isBaseStat, db.profile.showMasteryFromMasteryRating)
+			self:ProcessStat(StatLogic.Stats.Mastery, effect, breakdownStats, link, color, statModContext, true, isBaseStat, db.profile.showMasteryFromMasteryRating)
 		elseif stat == StatLogic.Stats.PvpPowerRating then
-			self:ProcessStat(StatLogic.Stats.PvpPower, effect, breakdownStats, link, color, statModContext, isBaseStat, db.profile.showPvpPowerFromPvpPowerRating)
+			self:ProcessStat(StatLogic.Stats.PvpPower, effect, breakdownStats, link, color, statModContext, true, isBaseStat, db.profile.showPvpPowerFromPvpPowerRating)
 		end
 	elseif stat == StatLogic.Stats.Strength and db.profile.showStats then
 		local mod = statModContext("MOD_STR")
@@ -2523,22 +2542,22 @@ function RatingBuster:ProcessStat(stat, value, breakdownStats, link, color, stat
 		end
 
 		local attackPower = value * statModContext("ADD_AP_MOD_STR")
-		self:ProcessStat(StatLogic.Stats.AttackPower, attackPower, breakdownStats, link, color, statModContext, false, db.profile.showAPFromStr)
+		self:ProcessStat(StatLogic.Stats.AttackPower, attackPower, breakdownStats, link, color, statModContext, true, false, db.profile.showAPFromStr)
 
 		local blockValue = value * statModContext("ADD_BLOCK_VALUE_MOD_STR")
-		self:ProcessStat(StatLogic.Stats.BlockValue, blockValue, breakdownStats, link, color, statModContext, false, db.profile.showBlockValueFromStr)
+		self:ProcessStat(StatLogic.Stats.BlockValue, blockValue, breakdownStats, link, color, statModContext, true, false, db.profile.showBlockValueFromStr)
 
 		local spellDamage = value * statModContext("ADD_SPELL_DMG_MOD_STR")
-		self:ProcessStat(StatLogic.Stats.SpellDamage, spellDamage, breakdownStats, link, color, statModContext, false, db.profile.showSpellDmgFromStr)
+		self:ProcessStat(StatLogic.Stats.SpellDamage, spellDamage, breakdownStats, link, color, statModContext, true, false, db.profile.showSpellDmgFromStr)
 
 		local healingPower = value * statModContext("ADD_HEALING_MOD_STR")
-		self:ProcessStat(StatLogic.Stats.HealingPower, healingPower, breakdownStats, link, color, statModContext, false, db.profile.showHealingFromStr)
+		self:ProcessStat(StatLogic.Stats.HealingPower, healingPower, breakdownStats, link, color, statModContext, true, false, db.profile.showHealingFromStr)
 
 		local parryRating = value * statModContext("ADD_PARRY_RATING_MOD_STR")
-		self:ProcessStat(StatLogic.Stats.ParryRating, parryRating, breakdownStats, link, color, statModContext, false, db.profile.showParryFromStr)
+		self:ProcessStat(StatLogic.Stats.ParryRating, parryRating, breakdownStats, link, color, statModContext, true, false, db.profile.showParryFromStr)
 
 		local parry = value * statModContext("ADD_PARRY_MOD_STR")
-		self:ProcessStat(StatLogic.Stats.Parry, parry, breakdownStats, link, color, statModContext, false, db.profile.showParryFromStr)
+		self:ProcessStat(StatLogic.Stats.Parry, parry, breakdownStats, link, color, statModContext, true, false, db.profile.showParryFromStr)
 	elseif stat == StatLogic.Stats.Agility and db.profile.showStats then
 		local mod = statModContext("MOD_AGI")
 		value = value * mod
@@ -2549,22 +2568,22 @@ function RatingBuster:ProcessStat(stat, value, breakdownStats, link, color, stat
 		end
 
 		local attackPower = value * statModContext("ADD_AP_MOD_AGI")
-		self:ProcessStat(StatLogic.Stats.AttackPower, attackPower, breakdownStats, link, color, statModContext, false, db.profile.showAPFromAgi)
+		self:ProcessStat(StatLogic.Stats.AttackPower, attackPower, breakdownStats, link, color, statModContext, true, false, db.profile.showAPFromAgi)
 
 		local rangedAttackPower = value * statModContext("ADD_RANGED_AP_MOD_AGI")
-		self:ProcessStat(StatLogic.Stats.RangedAttackPower, rangedAttackPower, breakdownStats, link, color, statModContext, false, db.profile.showRAPFromAgi)
+		self:ProcessStat(StatLogic.Stats.RangedAttackPower, rangedAttackPower, breakdownStats, link, color, statModContext, true, false, db.profile.showRAPFromAgi)
 
 		local meleeCrit = value * statModContext("ADD_MELEE_CRIT_MOD_AGI")
-		self:ProcessStat(StatLogic.Stats.MeleeCrit, meleeCrit, breakdownStats, link, color, statModContext, false, db.profile.showMeleeCritFromAgi)
+		self:ProcessStat(StatLogic.Stats.MeleeCrit, meleeCrit, breakdownStats, link, color, statModContext, true, false, db.profile.showMeleeCritFromAgi)
 
 		local dodge = value * statModContext("ADD_DODGE_MOD_AGI")
-		self:ProcessStat(StatLogic.Stats.Dodge, dodge, breakdownStats, link, color, statModContext, false, db.profile.showDodgeFromAgi)
+		self:ProcessStat(StatLogic.Stats.Dodge, dodge, breakdownStats, link, color, statModContext, true, false, db.profile.showDodgeFromAgi)
 
 		local bonusArmor = value * statModContext("ADD_BONUS_ARMOR_MOD_AGI")
-		self:ProcessStat(StatLogic.Stats.BonusArmor, bonusArmor, breakdownStats, link, color, statModContext, false, db.profile.showArmorFromAgi)
+		self:ProcessStat(StatLogic.Stats.BonusArmor, bonusArmor, breakdownStats, link, color, statModContext, true, false, db.profile.showArmorFromAgi)
 
 		local healingPower = value * statModContext("ADD_HEALING_MOD_AGI")
-		self:ProcessStat(StatLogic.Stats.HealingPower, healingPower, breakdownStats, link, color, statModContext, false, db.profile.showHealingFromAgi)
+		self:ProcessStat(StatLogic.Stats.HealingPower, healingPower, breakdownStats, link, color, statModContext, true, false, db.profile.showHealingFromAgi)
 	elseif stat == StatLogic.Stats.Stamina and db.profile.showStats then
 		local mod = statModContext("MOD_STA")
 		value = value * mod
@@ -2575,14 +2594,14 @@ function RatingBuster:ProcessStat(stat, value, breakdownStats, link, color, stat
 		end
 
 		local health = value * statModContext("ADD_HEALTH_MOD_STA")
-		self:ProcessStat(StatLogic.Stats.Health, health, breakdownStats, link, color, statModContext, false, db.profile.showHealthFromSta)
+		self:ProcessStat(StatLogic.Stats.Health, health, breakdownStats, link, color, statModContext, true, false, db.profile.showHealthFromSta)
 
 		local spellDamage = value * statModContext("ADD_SPELL_DMG_MOD_STA")
 			+ statModContext("ADD_SPELL_DMG_MOD_PET_STA") * statModContext("MOD_PET_STA") * statModContext("ADD_PET_STA_MOD_STA")
-		self:ProcessStat(StatLogic.Stats.SpellDamage, spellDamage, breakdownStats, link, color, statModContext, false, db.profile.showSpellDmgFromSta)
+		self:ProcessStat(StatLogic.Stats.SpellDamage, spellDamage, breakdownStats, link, color, statModContext, true, false, db.profile.showSpellDmgFromSta)
 
 		local attackPower = value * statModContext("ADD_AP_MOD_STA")
-		self:ProcessStat(StatLogic.Stats.AttackPower, attackPower, breakdownStats, link, color, statModContext, false, db.profile.showAPFromSta)
+		self:ProcessStat(StatLogic.Stats.AttackPower, attackPower, breakdownStats, link, color, statModContext, true, false, db.profile.showAPFromSta)
 	elseif stat == StatLogic.Stats.Intellect and db.profile.showStats then
 		local mod = statModContext("MOD_INT")
 		value = value * mod
@@ -2593,42 +2612,42 @@ function RatingBuster:ProcessStat(stat, value, breakdownStats, link, color, stat
 		end
 
 		local mana = value * statModContext("ADD_MANA_MOD_INT")
-		self:ProcessStat(StatLogic.Stats.Mana, mana, breakdownStats, link, color, statModContext, false, db.profile.showManaFromInt)
+		self:ProcessStat(StatLogic.Stats.Mana, mana, breakdownStats, link, color, statModContext, true, false, db.profile.showManaFromInt)
 
 		local spellCrit = value * statModContext("ADD_SPELL_CRIT_MOD_INT")
-		self:ProcessStat(StatLogic.Stats.SpellCrit, spellCrit, breakdownStats, link, color, statModContext, false, db.profile.showSpellCritFromInt)
+		self:ProcessStat(StatLogic.Stats.SpellCrit, spellCrit, breakdownStats, link, color, statModContext, true, false, db.profile.showSpellCritFromInt)
 
 		local spellPower = value * statModContext("ADD_SPELL_POWER_MOD_INT")
-		self:ProcessStat(StatLogic.Stats.SpellPower, spellPower, breakdownStats, link, color, statModContext, false, db.profile.showSpellPowerFromInt)
+		self:ProcessStat(StatLogic.Stats.SpellPower, spellPower, breakdownStats, link, color, statModContext, true, false, db.profile.showSpellPowerFromInt)
 
 		local spellDamage = value * (
 			statModContext("ADD_SPELL_DMG_MOD_INT")
 			+ statModContext("ADD_SPELL_DMG_MOD_PET_INT") * statModContext("MOD_PET_INT") * statModContext("ADD_PET_INT_MOD_INT")
 		)
-		self:ProcessStat(StatLogic.Stats.SpellDamage, spellDamage, breakdownStats, link, color, statModContext, false, db.profile.showSpellDmgFromInt)
+		self:ProcessStat(StatLogic.Stats.SpellDamage, spellDamage, breakdownStats, link, color, statModContext, true, false, db.profile.showSpellDmgFromInt)
 
 		local healingPower = value * statModContext("ADD_HEALING_MOD_INT")
-		self:ProcessStat(StatLogic.Stats.HealingPower, healingPower, breakdownStats, link, color, statModContext, false, db.profile.showHealingFromInt)
+		self:ProcessStat(StatLogic.Stats.HealingPower, healingPower, breakdownStats, link, color, statModContext, true, false, db.profile.showHealingFromInt)
 
 		local genericManaRegen = value * statModContext("ADD_GENERIC_MANA_REGEN_MOD_INT")
 		-- TODO: Options key using wrong dest stat
-		self:ProcessStat(StatLogic.Stats.GenericManaRegen, genericManaRegen, breakdownStats, link, color, statModContext, false, db.profile.showManaRegenFromInt)
+		self:ProcessStat(StatLogic.Stats.GenericManaRegen, genericManaRegen, breakdownStats, link, color, statModContext, true, false, db.profile.showManaRegenFromInt)
 
 		local normalManaRegen = value * statModContext("ADD_NORMAL_MANA_REGEN_MOD_INT")
 		-- TODO: Options key using wrong dest stat
-		self:ProcessStat(StatLogic.Stats.NormalManaRegen, normalManaRegen, breakdownStats, link, color, statModContext, false, db.profile.showManaRegenFromInt)
+		self:ProcessStat(StatLogic.Stats.NormalManaRegen, normalManaRegen, breakdownStats, link, color, statModContext, true, false, db.profile.showManaRegenFromInt)
 
 		local rangedAttackPower = value * statModContext("ADD_RANGED_AP_MOD_INT")
-		self:ProcessStat(StatLogic.Stats.RangedAttackPower, rangedAttackPower, breakdownStats, link, color, statModContext, false, db.profile.showRAPFromInt)
+		self:ProcessStat(StatLogic.Stats.RangedAttackPower, rangedAttackPower, breakdownStats, link, color, statModContext, true, false, db.profile.showRAPFromInt)
 
 		local bonusArmor = value * statModContext("ADD_BONUS_ARMOR_MOD_INT")
-		self:ProcessStat(StatLogic.Stats.BonusArmor, bonusArmor, breakdownStats, link, color, statModContext, false, db.profile.showArmorFromInt)
+		self:ProcessStat(StatLogic.Stats.BonusArmor, bonusArmor, breakdownStats, link, color, statModContext, true, false, db.profile.showArmorFromInt)
 
 		local attackPower = value * statModContext("ADD_AP_MOD_INT")
-		self:ProcessStat(StatLogic.Stats.AttackPower, attackPower, breakdownStats, link, color, statModContext, false, db.profile.showAPFromInt)
+		self:ProcessStat(StatLogic.Stats.AttackPower, attackPower, breakdownStats, link, color, statModContext, true, false, db.profile.showAPFromInt)
 
 		local agility = value * statModContext("ADD_AGI_MOD_INT")
-		self:ProcessStat(StatLogic.Stats.Agility, agility, breakdownStats, link, color, statModContext, false, db.profile.showAgiFromInt)
+		self:ProcessStat(StatLogic.Stats.Agility, agility, breakdownStats, link, color, statModContext, true, false, db.profile.showAgiFromInt)
 	elseif stat == StatLogic.Stats.Spirit and db.profile.showStats then
 		local mod = statModContext("MOD_SPI")
 		value = value * mod
@@ -2640,28 +2659,28 @@ function RatingBuster:ProcessStat(stat, value, breakdownStats, link, color, stat
 
 		local normalManaRegen = value * statModContext("ADD_NORMAL_MANA_REGEN_MOD_SPI")
 		-- TODO: Options key using wrong dest stat
-		self:ProcessStat(StatLogic.Stats.NormalManaRegen, normalManaRegen, breakdownStats, link, color, statModContext, false, db.profile.showManaRegenFromSpi)
+		self:ProcessStat(StatLogic.Stats.NormalManaRegen, normalManaRegen, breakdownStats, link, color, statModContext, true, false, db.profile.showManaRegenFromSpi)
 
 		local healthRegenOutOfCombat = value * statModContext("ADD_NORMAL_HEALTH_REG_MOD_SPI")
-		self:ProcessStat(StatLogic.Stats.HealthRegenOutOfCombat, healthRegenOutOfCombat, breakdownStats, link, color, statModContext, false, db.profile.showHP5NCFromSpi)
+		self:ProcessStat(StatLogic.Stats.HealthRegenOutOfCombat, healthRegenOutOfCombat, breakdownStats, link, color, statModContext, true, false, db.profile.showHP5NCFromSpi)
 
 		local spellDamage = value * statModContext("ADD_SPELL_DMG_MOD_SPI")
-		self:ProcessStat(StatLogic.Stats.SpellDamage, spellDamage, breakdownStats, link, color, statModContext, false, db.profile.showSpellDmgFromSpi)
+		self:ProcessStat(StatLogic.Stats.SpellDamage, spellDamage, breakdownStats, link, color, statModContext, true, false, db.profile.showSpellDmgFromSpi)
 
 		local healingPower = value * statModContext("ADD_HEALING_MOD_SPI")
-		self:ProcessStat(StatLogic.Stats.HealingPower, healingPower, breakdownStats, link, color, statModContext, false, db.profile.showHealingFromSpi)
+		self:ProcessStat(StatLogic.Stats.HealingPower, healingPower, breakdownStats, link, color, statModContext, true, false, db.profile.showHealingFromSpi)
 
 		local hitRating = value * statModContext("ADD_HIT_RATING_MOD_SPI")
-		self:ProcessStat(StatLogic.Stats.HitRating, hitRating, breakdownStats, link, color, statModContext, false, db.profile.showHitFromSpi)
+		self:ProcessStat(StatLogic.Stats.HitRating, hitRating, breakdownStats, link, color, statModContext, true, false, db.profile.showHitFromSpi)
 
 		local expertiseRating = value * statModContext("ADD_EXPERTISE_RATING_MOD_SPI")
-		self:ProcessStat(StatLogic.Stats.ExpertiseRating, expertiseRating, breakdownStats, link, color, statModContext, false, db.profile.showExpertiseFromSpi)
+		self:ProcessStat(StatLogic.Stats.ExpertiseRating, expertiseRating, breakdownStats, link, color, statModContext, true, false, db.profile.showExpertiseFromSpi)
 
 		local spellHitRating = value * statModContext("ADD_SPELL_HIT_RATING_MOD_SPI")
-		self:ProcessStat(StatLogic.Stats.SpellHitRating, spellHitRating, breakdownStats, link, color, statModContext, false, db.profile.showSpellHitFromSpi)
+		self:ProcessStat(StatLogic.Stats.SpellHitRating, spellHitRating, breakdownStats, link, color, statModContext, true, false, db.profile.showSpellHitFromSpi)
 
 		local spellCritRating = value * statModContext("ADD_SPELL_CRIT_RATING_MOD_SPI")
-		self:ProcessStat(StatLogic.Stats.SpellCritRating, spellCritRating, breakdownStats, link, color, statModContext, false, db.profile.showSpellCritFromSpi)
+		self:ProcessStat(StatLogic.Stats.SpellCritRating, spellCritRating, breakdownStats, link, color, statModContext, true, false, db.profile.showSpellCritFromSpi)
 	elseif stat == StatLogic.Stats.Health then
 		local mod = statModContext("MOD_HEALTH")
 		value = value * mod
@@ -2672,10 +2691,10 @@ function RatingBuster:ProcessStat(stat, value, breakdownStats, link, color, stat
 		end
 
 		local healthRegenOutOfCombat = value * statModContext("ADD_NORMAL_HEALTH_REG_MOD_HEALTH")
-		self:ProcessStat(StatLogic.Stats.HealthRegenOutOfCombat, healthRegenOutOfCombat, breakdownStats, link, color, statModContext, false, db.profile.showHP5NCFromHealth)
+		self:ProcessStat(StatLogic.Stats.HealthRegenOutOfCombat, healthRegenOutOfCombat, breakdownStats, link, color, statModContext, true, false, db.profile.showHP5NCFromHealth)
 
 		local healthRegen = value * statModContext("ADD_HEALTH_REG_MOD_HEALTH")
-		self:ProcessStat(StatLogic.Stats.HealthRegen, healthRegen, breakdownStats, link, color, statModContext, false, db.profile.showHP5FromHealth)
+		self:ProcessStat(StatLogic.Stats.HealthRegen, healthRegen, breakdownStats, link, color, statModContext, true, false, db.profile.showHP5FromHealth)
 	elseif stat == StatLogic.Stats.HealthRegenOutOfCombat then
 		local mod = statModContext("MOD_NORMAL_HEALTH_REG")
 		value = value * mod
@@ -2685,7 +2704,7 @@ function RatingBuster:ProcessStat(stat, value, breakdownStats, link, color, stat
 
 		-- TODO: Options key using wrong source stat
 		local healthRegen = value * statModContext("ADD_HEALTH_REG_MOD_NORMAL_HEALTH_REG")
-		self:ProcessStat(StatLogic.Stats.HealthRegen, healthRegen, breakdownStats, link, color, statModContext, false, db.profile.showHP5FromHealth or db.profile.showHP5FromSpi)
+		self:ProcessStat(StatLogic.Stats.HealthRegen, healthRegen, breakdownStats, link, color, statModContext, true, false, db.profile.showHP5FromHealth or db.profile.showHP5FromSpi)
 	elseif stat == StatLogic.Stats.HealthRegen then
 		if show then
 			breakdownStats[stat] = breakdownStats[stat] + value
@@ -2701,42 +2720,42 @@ function RatingBuster:ProcessStat(stat, value, breakdownStats, link, color, stat
 
 		local spellDamage = value * statModContext("ADD_SPELL_DMG_MOD_MANA")
 		-- TODO: Options key using wrong source stat
-		self:ProcessStat(StatLogic.Stats.SpellDamage, spellDamage, breakdownStats, link, color, statModContext, false, db.profile.showSpellDmgFromInt)
+		self:ProcessStat(StatLogic.Stats.SpellDamage, spellDamage, breakdownStats, link, color, statModContext, true, false, db.profile.showSpellDmgFromInt)
 
 		local healingPower = value * statModContext("ADD_HEALING_MOD_MANA")
 		-- TODO: Options key using wrong source stat
-		self:ProcessStat(StatLogic.Stats.HealingPower, healingPower, breakdownStats, link, color, statModContext, false, db.profile.showHealingFromInt)
+		self:ProcessStat(StatLogic.Stats.HealingPower, healingPower, breakdownStats, link, color, statModContext, true, false, db.profile.showHealingFromInt)
 
 		local genericManaRegen = value * statModContext("ADD_GENERIC_MANA_REGEN_MOD_MANA")
 		-- TODO: Options key using wrong dest AND source stats
-		self:ProcessStat(StatLogic.Stats.GenericManaRegen, genericManaRegen, breakdownStats, link, color, statModContext, false, db.profile.showManaRegenFromInt)
+		self:ProcessStat(StatLogic.Stats.GenericManaRegen, genericManaRegen, breakdownStats, link, color, statModContext, true, false, db.profile.showManaRegenFromInt)
 	elseif stat == StatLogic.Stats.NormalManaRegen then
 		local mod = statModContext("MOD_NORMAL_MANA_REGEN")
 		value = value * mod
 
 		local manaRegen = value * math.min(statModContext("ADD_MANA_REGEN_MOD_NORMAL_MANA_REGEN"), 1)
 		-- TODO: Options key using wrong source stat
-		self:ProcessStat(StatLogic.Stats.ManaRegen, manaRegen, breakdownStats, link, color, statModContext, false, show and db.profile.showManaRegenFromManaRegen)
+		self:ProcessStat(StatLogic.Stats.ManaRegen, manaRegen, breakdownStats, link, color, statModContext, true, false, show and db.profile.showManaRegenFromManaRegen)
 
 		local manaRegenNotCasting = value * statModContext("ADD_MANA_REGEN_NOT_CASTING_MOD_NORMAL_MANA_REGEN")
 		-- TODO: Options key using wrong source stat
-		self:ProcessStat(StatLogic.Stats.ManaRegenNotCasting, manaRegenNotCasting, breakdownStats, link, color, statModContext, false, show and db.profile.showManaRegenNotCastingFromManaRegen)
+		self:ProcessStat(StatLogic.Stats.ManaRegenNotCasting, manaRegenNotCasting, breakdownStats, link, color, statModContext, true, false, show and db.profile.showManaRegenNotCastingFromManaRegen)
 
 		local manaRegenOutOfCombat = value * statModContext("ADD_MANA_REGEN_OUT_OF_COMBAT_MOD_NORMAL_MANA_REGEN")
 		-- TODO: Options key using wrong source stat
-		self:ProcessStat(StatLogic.Stats.ManaRegenOutOfCombat, manaRegenOutOfCombat, breakdownStats, link, color, statModContext, false, show and db.profile.showManaRegenOutOfCombatFromManaRegen)
+		self:ProcessStat(StatLogic.Stats.ManaRegenOutOfCombat, manaRegenOutOfCombat, breakdownStats, link, color, statModContext, true, false, show and db.profile.showManaRegenOutOfCombatFromManaRegen)
 	elseif stat == StatLogic.Stats.GenericManaRegen then
 		local manaRegen = value * statModContext("ADD_MANA_REGEN_MOD_GENERIC_MANA_REGEN")
 		-- TODO: Options key using wrong source stat
-		self:ProcessStat(StatLogic.Stats.ManaRegen, manaRegen, breakdownStats, link, color, statModContext, false, show and db.profile.showManaRegenFromManaRegen)
+		self:ProcessStat(StatLogic.Stats.ManaRegen, manaRegen, breakdownStats, link, color, statModContext, true, false, show and db.profile.showManaRegenFromManaRegen)
 
 		local manaRegenNotCasting = value * statModContext("ADD_MANA_REGEN_NOT_CASTING_MOD_GENERIC_MANA_REGEN")
 		-- TODO: Options key using wrong source stat
-		self:ProcessStat(StatLogic.Stats.ManaRegenNotCasting, manaRegenNotCasting, breakdownStats, link, color, statModContext, false, show and db.profile.showManaRegenNotCastingFromManaRegen)
+		self:ProcessStat(StatLogic.Stats.ManaRegenNotCasting, manaRegenNotCasting, breakdownStats, link, color, statModContext, true, false, show and db.profile.showManaRegenNotCastingFromManaRegen)
 
 		local manaRegenOutOfCombat = value * statModContext("ADD_MANA_REGEN_OUT_OF_COMBAT_MOD_GENERIC_MANA_REGEN")
 		-- TODO: Options key using wrong source stat
-		self:ProcessStat(StatLogic.Stats.ManaRegenOutOfCombat, manaRegenOutOfCombat, breakdownStats, link, color, statModContext, false, show and db.profile.showManaRegenOutOfCombatFromManaRegen)
+		self:ProcessStat(StatLogic.Stats.ManaRegenOutOfCombat, manaRegenOutOfCombat, breakdownStats, link, color, statModContext, true, false, show and db.profile.showManaRegenOutOfCombatFromManaRegen)
 	elseif stat == StatLogic.Stats.ManaRegen then
 		if show then
 			breakdownStats[stat] = breakdownStats[stat] + value
@@ -2756,28 +2775,28 @@ function RatingBuster:ProcessStat(stat, value, breakdownStats, link, color, stat
 			breakdownStats[stat] = value
 		end
 		local blockChance = value * statModContext("ADD_BLOCK_CHANCE_MOD_DEFENSE")
-		self:ProcessStat(StatLogic.Stats.BlockChance, blockChance, breakdownStats, link, color, statModContext, false, db.profile.showBlockChanceFromDefense)
+		self:ProcessStat(StatLogic.Stats.BlockChance, blockChance, breakdownStats, link, color, statModContext, true, false, db.profile.showBlockChanceFromDefense)
 
 		local critAvoidance = value * statModContext("ADD_CRIT_AVOIDANCE_MOD_DEFENSE")
-		self:ProcessStat(StatLogic.Stats.CritAvoidance, critAvoidance, breakdownStats, link, color, statModContext, false, db.profile.showCritAvoidanceFromDefense)
+		self:ProcessStat(StatLogic.Stats.CritAvoidance, critAvoidance, breakdownStats, link, color, statModContext, true, false, db.profile.showCritAvoidanceFromDefense)
 
 		local dodge = value * statModContext("ADD_DODGE_MOD_DEFENSE")
-		self:ProcessStat(StatLogic.Stats.Dodge, dodge, breakdownStats, link, color, statModContext, false, db.profile.showDodgeFromDefense)
+		self:ProcessStat(StatLogic.Stats.Dodge, dodge, breakdownStats, link, color, statModContext, true, false, db.profile.showDodgeFromDefense)
 
 		local miss = value * statModContext("ADD_MISS_MOD_DEFENSE")
-		self:ProcessStat(StatLogic.Stats.Miss, miss, breakdownStats, link, color, statModContext, false, db.profile.showMissFromDefense)
+		self:ProcessStat(StatLogic.Stats.Miss, miss, breakdownStats, link, color, statModContext, true, false, db.profile.showMissFromDefense)
 
 		local parry = value * statModContext("ADD_PARRY_MOD_DEFENSE")
-		self:ProcessStat(StatLogic.Stats.Parry, parry, breakdownStats, link, color, statModContext, false, db.profile.showParryFromDefense)
+		self:ProcessStat(StatLogic.Stats.Parry, parry, breakdownStats, link, color, statModContext, true, false, db.profile.showParryFromDefense)
 
 		local strength = value * statModContext("ADD_STR_MOD_DEFENSE")
-		self:ProcessStat(StatLogic.Stats.Strength, strength, breakdownStats, link, color, statModContext, false, db.profile.showStrFromDefense)
+		self:ProcessStat(StatLogic.Stats.Strength, strength, breakdownStats, link, color, statModContext, true, false, db.profile.showStrFromDefense)
 
 		local attackPower = value * statModContext("ADD_AP_MOD_DEFENSE")
-		self:ProcessStat(StatLogic.Stats.AttackPower, attackPower, breakdownStats, link, color, statModContext, false, db.profile.showAPFromDefense)
+		self:ProcessStat(StatLogic.Stats.AttackPower, attackPower, breakdownStats, link, color, statModContext, true, false, db.profile.showAPFromDefense)
 
 		local spellDamage = value * statModContext("ADD_SPELL_DMG_MOD_DEFENSE")
-		self:ProcessStat(StatLogic.Stats.SpellDamage, spellDamage, breakdownStats, link, color, statModContext, false, db.profile.showSpellDmgFromDefense)
+		self:ProcessStat(StatLogic.Stats.SpellDamage, spellDamage, breakdownStats, link, color, statModContext, true, false, db.profile.showSpellDmgFromDefense)
 	elseif stat == StatLogic.Stats.BlockChance then
 		if db.profile.enableAvoidanceDiminishingReturns then
 			processedBlock = processedBlock + value
@@ -2882,7 +2901,7 @@ function RatingBuster:ProcessStat(stat, value, breakdownStats, link, color, stat
 		end
 
 		local dodge = value * statModContext("ADD_DODGE_MOD_SPELL_CRIT")
-		self:ProcessStat(StatLogic.Stats.Dodge, dodge, breakdownStats, link, color, statModContext, false, db.profile.showDodgeFromSpellCrit)
+		self:ProcessStat(StatLogic.Stats.Dodge, dodge, breakdownStats, link, color, statModContext, true, false, db.profile.showDodgeFromSpellCrit)
 	elseif stat == StatLogic.Stats.MeleeHaste then
 		if show and isBaseStat then
 			breakdownStats["Percent"] = value
@@ -2910,13 +2929,13 @@ function RatingBuster:ProcessStat(stat, value, breakdownStats, link, color, stat
 		end
 
 		local dodgeReduction = value * -statModContext("ADD_DODGE_REDUCTION_MOD_EXPERTISE")
-		self:ProcessStat(StatLogic.Stats.DodgeReduction, dodgeReduction, breakdownStats, link, color, statModContext, false, db.profile.showDodgeReductionFromExpertise)
+		self:ProcessStat(StatLogic.Stats.DodgeReduction, dodgeReduction, breakdownStats, link, color, statModContext, true, false, db.profile.showDodgeReductionFromExpertise)
 
 		local parryReduction = value * -statModContext("ADD_PARRY_REDUCTION_MOD_EXPERTISE")
-		self:ProcessStat(StatLogic.Stats.ParryReduction, parryReduction, breakdownStats, link, color, statModContext, false, db.profile.showParryReductionFromExpertise)
+		self:ProcessStat(StatLogic.Stats.ParryReduction, parryReduction, breakdownStats, link, color, statModContext, true, false, db.profile.showParryReductionFromExpertise)
 
 		local spellHit = value * statModContext("ADD_SPELL_HIT_MOD_EXPERTISE")
-		self:ProcessStat(StatLogic.Stats.SpellHit, spellHit, breakdownStats, link, color, statModContext, false, db.profile.showSpellHitFromExpertise)
+		self:ProcessStat(StatLogic.Stats.SpellHit, spellHit, breakdownStats, link, color, statModContext, true, false, db.profile.showSpellHitFromExpertise)
 	elseif stat == StatLogic.Stats.ArmorPenetration then
 		if show and isBaseStat then
 			breakdownStats["Percent"] = value
@@ -2936,13 +2955,13 @@ function RatingBuster:ProcessStat(stat, value, breakdownStats, link, color, stat
 		end
 
 		local critAvoidance = value * statModContext("ADD_CRIT_AVOIDANCE_MOD_RESILIENCE")
-		self:ProcessStat(StatLogic.Stats.CritAvoidance, critAvoidance, breakdownStats, link, color, statModContext, false, db.profile.showCritAvoidanceFromResilience)
+		self:ProcessStat(StatLogic.Stats.CritAvoidance, critAvoidance, breakdownStats, link, color, statModContext, true, false, db.profile.showCritAvoidanceFromResilience)
 
 		local critDmgReduction = value * statModContext("ADD_CRIT_DAMAGE_REDUCTION_MOD_RESILIENCE")
-		self:ProcessStat(StatLogic.Stats.CritDamageReduction, critDmgReduction, breakdownStats, link, color, statModContext, false, db.profile.showCritDamageReductionFromResilience)
+		self:ProcessStat(StatLogic.Stats.CritDamageReduction, critDmgReduction, breakdownStats, link, color, statModContext, true, false, db.profile.showCritDamageReductionFromResilience)
 
 		local pvpDmgReduction = value * statModContext("ADD_PVP_DAMAGE_REDUCTION_MOD_RESILIENCE")
-		self:ProcessStat(StatLogic.Stats.PvPDamageReduction, pvpDmgReduction, breakdownStats, link, color, statModContext, false, db.profile.showPvpDamageReductionFromResilience)
+		self:ProcessStat(StatLogic.Stats.PvPDamageReduction, pvpDmgReduction, breakdownStats, link, color, statModContext, true, false, db.profile.showPvpDamageReductionFromResilience)
 	elseif stat == StatLogic.Stats.DodgeReduction then
 		if show then
 			breakdownStats[stat] = breakdownStats[stat] + value
@@ -2958,19 +2977,19 @@ function RatingBuster:ProcessStat(stat, value, breakdownStats, link, color, stat
 			breakdownStats[stat] = breakdownStats[stat] + value
 		end
 		local masteryEffect = value * statModContext("ADD_MASTERY_EFFECT_MOD_MASTERY")
-		self:ProcessStat(StatLogic.Stats.MasteryEffect, masteryEffect, breakdownStats, link, color, statModContext, false, db.profile.showMasteryEffectFromMastery)
+		self:ProcessStat(StatLogic.Stats.MasteryEffect, masteryEffect, breakdownStats, link, color, statModContext, true, false, db.profile.showMasteryEffectFromMastery)
 	elseif stat == StatLogic.Stats.MasteryEffect then
 		if show then
 			-- Always use Percent for now. Ideally we'd set up localizations to map MasteryEffect to invididual Mastery names
 			breakdownStats["Percent"] = breakdownStats[stat] + value
 		end
 		local blockChance = value * statModContext("ADD_BLOCK_CHANCE_MOD_MASTERY_EFFECT")
-		self:ProcessStat(StatLogic.Stats.BlockChance, blockChance, breakdownStats, link, color, statModContext, false, db.profile.showBlockChanceFromMasteryEffect)
+		self:ProcessStat(StatLogic.Stats.BlockChance, blockChance, breakdownStats, link, color, statModContext, true, false, db.profile.showBlockChanceFromMasteryEffect)
 	elseif stat == StatLogic.Stats.Armor then
 		local base, bonus = StatLogic:GetArmorDistribution(link, value, color)
 		local mod = statModContext("MOD_ARMOR")
 		value = base * mod + bonus
-		self:ProcessStat(StatLogic.Stats.BonusArmor, value, breakdownStats, link, color, statModContext, true, false)
+		self:ProcessStat(StatLogic.Stats.BonusArmor, value, breakdownStats, link, color, statModContext, true, true, false)
 	elseif stat == StatLogic.Stats.BonusArmor then
 		local mod = statModContext("MOD_ARMOR")
 		if isBaseStat and mod ~= 1 and db.profile.showModifiedArmor then
@@ -2981,13 +3000,13 @@ function RatingBuster:ProcessStat(stat, value, breakdownStats, link, color, stat
 
 		-- TODO: Options key using wrong source stat
 		local attackPower = value * statModContext("ADD_AP_MOD_ARMOR")
-		self:ProcessStat(StatLogic.Stats.AttackPower, attackPower, breakdownStats, link, color, statModContext, false, db.profile.showAPFromArmor)
+		self:ProcessStat(StatLogic.Stats.AttackPower, attackPower, breakdownStats, link, color, statModContext, true, false, db.profile.showAPFromArmor)
 	elseif stat == StatLogic.Stats.GenericAttackPower then
 		local attackPower = value * statModContext("ADD_AP_MOD_GENERIC_ATTACK_POWER")
-		self:ProcessStat(StatLogic.Stats.AttackPower, attackPower, breakdownStats, link, color, statModContext, true, false)
+		self:ProcessStat(StatLogic.Stats.AttackPower, attackPower, breakdownStats, link, color, statModContext, true, true, false)
 
 		local rangedAttackPower = value * statModContext("ADD_RANGED_AP_MOD_GENERIC_ATTACK_POWER")
-		self:ProcessStat(StatLogic.Stats.RangedAttackPower, rangedAttackPower, breakdownStats, link, color, statModContext, true, false)
+		self:ProcessStat(StatLogic.Stats.RangedAttackPower, rangedAttackPower, breakdownStats, link, color, statModContext, true, true, false)
 	elseif stat == StatLogic.Stats.AttackPower then
 		local mod = statModContext("MOD_AP")
 		value = value * mod
@@ -2998,13 +3017,13 @@ function RatingBuster:ProcessStat(stat, value, breakdownStats, link, color, stat
 		end
 
 		local spellPower = value * statModContext("ADD_SPELL_POWER_MOD_AP")
-		self:ProcessStat(StatLogic.Stats.SpellPower, spellPower, breakdownStats, link, color, statModContext, false, db.profile.showSpellPowerFromAP)
+		self:ProcessStat(StatLogic.Stats.SpellPower, spellPower, breakdownStats, link, color, statModContext, true, false, db.profile.showSpellPowerFromAP)
 
 		local spellDamage = value * statModContext("ADD_SPELL_DMG_MOD_AP")
-		self:ProcessStat(StatLogic.Stats.SpellDamage, spellDamage, breakdownStats, link, color, statModContext, false, db.profile.showSpellDmgFromAP)
+		self:ProcessStat(StatLogic.Stats.SpellDamage, spellDamage, breakdownStats, link, color, statModContext, true, false, db.profile.showSpellDmgFromAP)
 
 		local healingPower = value * statModContext("ADD_HEALING_MOD_AP")
-		self:ProcessStat(StatLogic.Stats.HealingPower, healingPower, breakdownStats, link, color, statModContext, false, db.profile.showHealingFromAP)
+		self:ProcessStat(StatLogic.Stats.HealingPower, healingPower, breakdownStats, link, color, statModContext, true, false, db.profile.showHealingFromAP)
 	elseif stat == StatLogic.Stats.RangedAttackPower then
 		local mod = statModContext("MOD_RANGED_AP")
 		value = value * mod
@@ -3023,16 +3042,16 @@ function RatingBuster:ProcessStat(stat, value, breakdownStats, link, color, stat
 		end
 
 		local spellDamage = value * statModContext("ADD_SPELL_DMG_MOD_SPELL_POWER")
-		self:ProcessStat(StatLogic.Stats.SpellDamage, spellDamage, breakdownStats, link, color, statModContext, false, db.profile.showSpellDmgFromSpellPower)
+		self:ProcessStat(StatLogic.Stats.SpellDamage, spellDamage, breakdownStats, link, color, statModContext, true, false, db.profile.showSpellDmgFromSpellPower)
 
 		local healingPower = value * statModContext("ADD_HEALING_MOD_SPELL_POWER")
-		self:ProcessStat(StatLogic.Stats.HealingPower, healingPower, breakdownStats, link, color, statModContext, false, db.profile.showHealingFromSpellPower)
+		self:ProcessStat(StatLogic.Stats.HealingPower, healingPower, breakdownStats, link, color, statModContext, true, false, db.profile.showHealingFromSpellPower)
 
 		local attackPower = value * statModContext("ADD_AP_MOD_SPELL_POWER")
-		self:ProcessStat(StatLogic.Stats.AttackPower, attackPower, breakdownStats, link, color, statModContext, false, db.profile.showAPFromSpellPower)
+		self:ProcessStat(StatLogic.Stats.AttackPower, attackPower, breakdownStats, link, color, statModContext, true, false, db.profile.showAPFromSpellPower)
 	elseif stat == StatLogic.Stats.SpellDamage then
 		local mod = statModContext("MOD_SPELL_DMG")
-		if isBaseStat then
+		if not isParentModified then
 			mod = mod * statModContext("MOD_SPELL_POWER")
 		end
 		value = value * mod
@@ -3043,10 +3062,10 @@ function RatingBuster:ProcessStat(stat, value, breakdownStats, link, color, stat
 		end
 
 		local blockValue = value * statModContext("ADD_BLOCK_VALUE_MOD_SPELL_DMG")
-		self:ProcessStat(StatLogic.Stats.BlockValue, blockValue, breakdownStats, link, color, statModContext, false, db.profile.showBlockValueFromSpellDmg)
+		self:ProcessStat(StatLogic.Stats.BlockValue, blockValue, breakdownStats, link, color, statModContext, true, false, db.profile.showBlockValueFromSpellDmg)
 	elseif stat == StatLogic.Stats.HealingPower then
 		local mod = statModContext("MOD_HEALING")
-		if isBaseStat then
+		if not isParentModified then
 			mod = mod * statModContext("MOD_SPELL_POWER")
 		end
 		value = value * mod
