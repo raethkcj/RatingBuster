@@ -88,7 +88,7 @@ W["entame un rituel qui invoque le membre du groupe ciblé. nécessite la prése
 W["permet d'équiper les armes à une main dans la main gauche"] = { [Stats.MeleeHit] = 20, [Stats.RangedHit] = 20, } -- s42459
 W["vitalité"] = { [Stats.GenericManaRegen] = 4, [Stats.HealthRegen] = 4, } -- e2656
 W["pied sûr"] = { [Stats.MeleeHitRating] = 10, [Stats.RangedHitRating] = 10, } -- e2658
-W["sauvagerie"] = { [Stats.AttackPower] = 70, } -- e2667
+W["sauvagerie"] = { [Stats.AttackPower] = 70, [Stats.RangedAttackPower] = 70, } -- e2667
 W["feu solaire"] = { [Stats.FireDamage] = 50, [Stats.ArcaneDamage] = 50, } -- e2671
 W["âme de givre"] = { [Stats.FrostDamage] = 54, [Stats.ShadowDamage] = 54, } -- e2672
 W["huile de sorcier excellente"] = { [Stats.SpellPower] = 42, } -- e2678
@@ -511,7 +511,7 @@ L["augmente l'armure de la cible alliée de %s, toutes les caractéristiques de 
 L["affaiblit la cible ennemie, réduit les dégâts qu'elle inflige de %s et l'efficacité de tous ses soins de %s%. dure %s sec"] = { { Stats.AverageWeaponDamage, }, false, false, reduction = true } -- s9035
 L["augmente de %s la puissance d'attaque en mêlée des membres de votre groupe qui se trouvent à proximité pendant %s sec"] = { { Stats.AttackPower, }, false, } -- s9128
 L["augmente de %s% vos chances d'infliger un coup critique avec une arme de trait"] = { { Stats.MeleeCrit, Stats.RangedCrit, }, } -- s9132
-L["%s à la puissance d'attaque"] = { { Stats.AttackPower, }, } -- s9136
+L["%s à la puissance d'attaque"] = { { Stats.AttackPower, Stats.RangedAttackPower, }, } -- e1563
 L["réduit l'armure de la cible de %s pendant %s sec"] = { { Stats.Armor, }, false, reduction = true } -- s9176
 L["augmente les dégâts et les soins produits par les sorts et effets magiques de %s au maximum"] = { { Stats.SpellPower, }, } -- s9342
 L["augmente les soins et dégâts produits par les sorts et effets magiques de %s au maximum"] = { { Stats.SpellPower, }, } -- s9392
@@ -1309,7 +1309,7 @@ L["dégâts de givre %s"] = { { Stats.FrostDamage, }, } -- e2615
 L["dégâts de feu %s"] = { { Stats.FireDamage, }, } -- e2616
 L["soins %s et %s mana toutes les %s sec"] = { { Stats.HealingPower, }, { Stats.GenericManaRegen, }, false, } -- e2715
 L["endurance %s et armure %s"] = { { Stats.Stamina, }, { Stats.Armor, }, } -- e2716
-L["puissance d'attaque %s et %s% coups critiques"] = { { Stats.AttackPower, }, { Stats.MeleeCrit, Stats.RangedCrit, }, } -- e2717
+L["puissance d'attaque %s et %s% coups critiques"] = { { Stats.AttackPower, Stats.RangedAttackPower, }, { Stats.MeleeCrit, Stats.RangedCrit, }, } -- e2717
 L["dégâts des sorts %s et %s% aux critiques des sorts"] = { { Stats.SpellPower, }, { Stats.SpellCrit, }, } -- e2721
 L["%s à la résistance à l’ombre"] = { { Stats.ShadowResistance, }, } -- e2821
 L["%s au score de critique"] = { { Stats.CritRating, }, } -- e2823
@@ -1351,7 +1351,7 @@ L["%s à la puissance des sorts"] = { { Stats.SpellPower, }, } -- e7662
 L["%s % aux chances de coup critique"] = { { Stats.MeleeCrit, Stats.RangedCrit, }, } -- e7664
 L["soins %s et %s points de mana toutes les %s s"] = { { Stats.HealingPower, }, { Stats.GenericManaRegen, }, false, } -- e7882
 L["dégâts des sorts %s et %s % de score de coup critique"] = { { Stats.SpellPower, }, { Stats.SpellCrit, Stats.MeleeCrit, Stats.RangedCrit, }, } -- e7883
-L["puissance d’attaque %s et %s % de score de coup critique"] = { { Stats.AttackPower, }, { Stats.MeleeCrit, Stats.RangedCrit, Stats.SpellCrit, }, } -- e7884
+L["puissance d’attaque %s et %s % de score de coup critique"] = { { Stats.AttackPower, Stats.RangedAttackPower, }, { Stats.MeleeCrit, Stats.RangedCrit, Stats.SpellCrit, }, } -- e7884
 L["endurance %s et défense %s"] = { { Stats.Stamina, }, { Stats.Defense, }, } -- e7885
 L["poultry precision scope (%s damage)"] = { { Stats.AverageWeaponDamage, }, } -- e7944
 L["augmente votre score de hâte en mêlée de %s pendant %s s"] = { { Stats.MeleeHasteRating, Stats.RangedHasteRating, Stats.SpellHasteRating, }, false, } -- s65
@@ -2168,7 +2168,7 @@ L["%s force et %s endurance"] = { { Stats.Strength, }, { Stats.Stamina, }, } -- 
 L["aiguisé (%s au score de critique et %s aux points de dégâts)"] = { { Stats.MeleeCritRating, }, { Stats.AverageWeaponDamage, }, } -- e2713
 L["%s aux soins, %s aux dégâts des sorts et %s points de mana toutes les %s sec"] = { { Stats.HealingPower, }, { Stats.SpellDamage, }, { Stats.GenericManaRegen, }, false, } -- e2715
 L["%s endurance et %s armure"] = { { Stats.Stamina, }, { Stats.Armor, }, } -- e2716
-L["%s à la puissance d'attaque/%s au score de coup critique"] = { { Stats.AttackPower, }, { Stats.MeleeCritRating, Stats.RangedCritRating, }, } -- e2717
+L["%s à la puissance d'attaque/%s au score de coup critique"] = { { Stats.AttackPower, Stats.RangedAttackPower, }, { Stats.MeleeCritRating, Stats.RangedCritRating, }, } -- e2717
 L["%s aux dégâts des sorts et %s au score de critique des sorts"] = { { Stats.SpellPower, }, { Stats.SpellCritRating, }, } -- e2721
 L["lunette (%s au score de coup critique)"] = { { Stats.RangedCritRating, }, } -- e2724
 L["%s aux soins, %s aux dégâts des sorts et %s points de mana toutes les %s secondes"] = { { Stats.HealingPower, }, { Stats.SpellDamage, }, { Stats.GenericManaRegen, }, false, } -- e2741
@@ -2241,10 +2241,10 @@ L["+ %s au score de critique et %s au score d'esquive"] = { { Stats.CritRating, 
 L["%s au score de parade et %s endurance"] = { { Stats.ParryRating, }, { Stats.Stamina, }, } -- e3063
 L["%s esprit, %s aux dégâts des sorts et %s aux soins"] = { { Stats.Spirit, }, { Stats.SpellDamage, }, { Stats.HealingPower, }, } -- e3064
 L["%s aux dégâts des sorts et %s à la pénétration des sorts"] = { { Stats.SpellPower, }, { Stats.SpellPenetration, }, } -- e3066
-L["%s à la puissance d'attaque et %s endurance"] = { { Stats.AttackPower, }, { Stats.Stamina, }, } -- e3067
+L["%s à la puissance d'attaque et %s endurance"] = { { Stats.AttackPower, Stats.RangedAttackPower, }, { Stats.Stamina, }, } -- e3156
 L["%s au score d'esquive et %s au score de toucher"] = { { Stats.DodgeRating, }, { Stats.HitRating, }, } -- e3068
 L["%s aux soins, %s aux dégâts des sorts et %s au score de résilience"] = { { Stats.HealingPower, }, { Stats.SpellDamage, }, { Stats.ResilienceRating, }, } -- e3069
-L["%s à la puissance d'attaque et %s au score de critique"] = { { Stats.AttackPower, }, { Stats.CritRating, }, } -- e3070
+L["%s à la puissance d'attaque et %s au score de critique"] = { { Stats.AttackPower, Stats.RangedAttackPower, }, { Stats.CritRating, }, } -- e3159
 L["%s intelligence et %s endurance"] = { { Stats.Intellect, }, { Stats.Stamina, }, } -- e3071
 L["%s force et %s score de critique"] = { { Stats.Strength, }, { Stats.CritRating, }, } -- e3072
 L["%s agilité et %s au score de défense"] = { { Stats.Agility, }, { Stats.DefenseRating, }, } -- e3073
@@ -2272,7 +2272,7 @@ L["%s à la puissance d'attaque & %s points de mana toutes les %s secondes"] = {
 L["%s agilité & dégâts critiques augmentés de %s%"] = { { Stats.Agility, }, false, } -- e3154
 L["%s aux soins, %s aux dégâts des sorts et %s esprit"] = { { Stats.HealingPower, }, { Stats.SpellDamage, }, { Stats.Spirit, }, } -- e3158
 L["%s endurance et %s au score de coup critique des sorts"] = { { Stats.Stamina, }, { Stats.SpellCritRating, }, } -- e3161
-L["%s à la puissance d'attaque et %s% à la résistance aux étourdissements"] = { { Stats.AttackPower, }, false, } -- e3162
+L["%s à la puissance d'attaque et %s% à la résistance aux étourdissements"] = { { Stats.AttackPower, Stats.RangedAttackPower, }, false, } -- e3162
 L["%s aux dégâts des sorts & %s% à la résistance aux étourdissements"] = { { Stats.SpellPower, }, false, } -- e3163
 L["%s esprit et %s aux soins"] = { { Stats.Spirit, }, { Stats.HealingPower, }, } -- e3200
 L["%s au score de résilience et %s endurance"] = { { Stats.ResilienceRating, }, { Stats.Stamina, }, } -- e3226
