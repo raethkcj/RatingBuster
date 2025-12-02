@@ -199,8 +199,68 @@ addon.SpellCritPerInt = {
 	},
 }
 
--- TODO Gather data if TBC comes back
-addon.DodgePerAgi = {}
+local DodgePerCrit = {
+	["WARRIOR"]     = 0.848,
+	["PALADIN"]     = 1.000,
+	["HUNTER"]      = 1.600,
+	["ROGUE"]       = 2.000,
+	["PRIEST"]      = 1.000,
+	["SHAMAN"]      = 1.000,
+	["MAGE"]        = 1.000,
+	["WARLOCK"]     = 0.988,
+	["DRUID"]       = 1.700,
+}
+
+-- These are likely all static conversions and can use DodgePerCrit
+-- without any hardcoded values.
+-- TODO Confirm DodgePerCrit remains accurate from 61-70; if so,
+-- delete the following class-specific tables, leaving the metatable.
+addon.DodgePerAgi = setmetatable({
+	["WARRIOR"] = {
+		[1]  = 0.2121,
+		[60] = 0.0424,
+	},
+	["PALADIN"] = {
+		[1]  = 0.2174,
+		[60] = 0.0512,
+	},
+	["HUNTER"] = {
+		[1]  = 0.4543,
+		[60] = 0.0482,
+	},
+	["ROGUE"] = {
+		[1]  = 0.8952,
+		[60] = 0.0710,
+	},
+	["PRIEST"] = {
+		[1]  = 0.0909,
+		[60] = 0.0454,
+	},
+	["SHAMAN"] = {
+		[1]  = 0.1663,
+		[60] = 0.0512,
+	},
+	["MAGE"] = {
+		[1]  = 0.0771,
+		[60] = 0.0441,
+	},
+	["WARLOCK"] = {
+		[1]  = 0.1483,
+		[60] = 0.0494,
+	},
+	["DRUID"] = {
+		[1]  = 0.3436,
+		[60] = 0.0838,
+	},
+}, {
+	__index = function (t, class)
+		t[class] = setmetatable({}, {__index = function(classTable, level)
+			classTable[level] = DodgePerCrit[class] * addon.CritPerAgi[class][level]
+			return classTable[level]
+		end })
+		return t[class]
+	end
+})
 
 StatLogic.StatModTable = {}
 if addon.class == "DRUID" then
