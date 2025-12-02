@@ -1,7 +1,9 @@
-## Interface: 11506, 11507
+## Interface: 11507, 11508
 ## Title: StatLogic
+## IconTexture: Interface\AddOns\RatingBuster\images\icon_64.png
 ## Author: Whitetooth, raethkcj
 ## X-License: GPL v2
+## Group: RatingBuster
 
 #@non-debug@
 # libs\LibStub\LibStub.lua

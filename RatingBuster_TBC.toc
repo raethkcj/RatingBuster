@@ -1,6 +1,7 @@
-## Interface: 20504
+## Interface: 20505
 ## Title: RatingBuster
-## Notes: Item stat breakdown, analysis and comparing
+## IconTexture: Interface\AddOns\RatingBuster\images\icon_64.png
+## Notes: Item stat breakdown, analysis and comparison
 ## Notes-zhTW: 裝備數值解析與比較
 ## Author: Whitetooth, raethkcj
 ## SavedVariables: RatingBusterDB
@@ -11,6 +12,18 @@
 ## X-WoWI-ID: 26235
 ## X-Wago-ID: RaN0eM6j
 ## X-Curse-Project-ID: 837687
+## Group: RatingBuster
+## Category: Equipment
+## Category-deDE: Ausrüstung
+## Category-esES: Equipo
+## Category-esMX: Equipo
+## Category-frFR: Équipement
+## Category-itIT: Equipaggiamento
+## Category-koKR: 장비
+## Category-ptBR: Equipamento
+## Category-ruRU: Экипировка
+## Category-zhCN: 装备
+## Category-zhTW: 裝備
 
 # Libraries
 embeds.xml
