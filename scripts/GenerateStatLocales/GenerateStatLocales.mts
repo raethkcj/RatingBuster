@@ -786,7 +786,7 @@ async function getSpellDurationFormats(expansion: Expansion, locale: string): Pr
 	const query = `
 		SELECT TagText_lang
 		FROM read_csv('${globalStrings.path}', auto_type_candidates = ['INTEGER', 'DOUBLE', 'VARCHAR'])
-		WHERE BaseTag IN '${spellDurationFormats}'
+		WHERE BaseTag IN [${spellDurationFormats.map(f => `'${f}'`)}]
 	`
 
 	const reader = await connection.runAndReadAll(query)
@@ -968,6 +968,37 @@ function overrideSpells(spellStatEffects: Map<number, StatValue[][]>, spellDescI
 		})
 		spellStatEffects.set(overrideSpellID, overrideStatValues)
 	}
+}
+
+async function getSpellDurations(expansion: Expansion, statSpellIDs: number[]): Promise<Map<number, number>> {
+	const spellMisc = await DatabaseTable.get("SpellMisc", expansion, "enUS")
+	const spellDuration = await DatabaseTable.get("SpellDuration", expansion, "enUS")
+
+	const query = `
+		SELECT SpellID, Duration
+		FROM read_csv('${spellMisc.path}', auto_type_candidates = ['INTEGER', 'DOUBLE', 'VARCHAR'])
+		LEFT JOIN read_csv('${spellDuration.path}', auto_type_candidates = ['INTEGER', 'DOUBLE', 'VARCHAR']) SpellDuration
+		ON DurationIndex = SpellDuration.ID
+		WHERE SpellID IN (${statSpellIDs})
+	`
+
+	const reader = await connection.runAndReadAll(query)
+	const results = reader.getRowObjects() as unknown as { SpellID: number, Duration: number}[]
+	return new Map<number, number>({
+		[Symbol.iterator]() {
+			let i = 0
+			return {
+				next(): IteratorResult<[number, number]> {
+					if (i < results.length) {
+						const result = results[i++]
+						return { value: [result.SpellID, result.Duration] }
+					} else {
+						return { value: undefined, done: true }
+					}
+				}
+			}
+		}
+	})
 }
 
 function getOverrideEnchants(expansion: Expansion): [number[], Map<number, StatValue[][]>] {
@@ -1171,6 +1202,8 @@ for (const [_, expansion] of Object.entries(Expansion)) {
 
 	overrideSpells(spellStatEffects, spellDescIDs, expansion)
 	console.log(`${spellDescIDs.size} spellDescIDs`)
+
+	const spellDurations = await getSpellDurations(expansion, statSpellIDs)
 
 	const [overrideEnchantIDs, overrideEnchantStatEffects] = getOverrideEnchants(expansion)
 
