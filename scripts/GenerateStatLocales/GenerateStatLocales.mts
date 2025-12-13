@@ -199,6 +199,14 @@ function mapTextToStatEntry(
 					break
 				case "d":
 					entries.push(false)
+					let duration: number | undefined
+					if (duration = spellDurations.get(id)) {
+						if (duration >= 60 * 60 * 1000) {
+							return spellDurationFormats[Time.Hour]
+						} else if (duration >= 60 * 1000) {
+							return spellDurationFormats[Time.Minute]
+						}
+					}
 					return spellDurationFormats[Time.Second]
 				case "a":
 				case "c":
