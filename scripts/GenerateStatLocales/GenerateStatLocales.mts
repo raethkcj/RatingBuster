@@ -114,7 +114,15 @@ class StatEntry {
 	}
 }
 
-function mapTextToStatEntry(text: string, statEffects: StatValue[][] | undefined, id: number, spellStatEffects: Map<number, StatValue[][]>, isEnchant: boolean, spellDurationFormats: Record<Time, string>): [string, StatEntry] {
+function mapTextToStatEntry(
+	text: string,
+	statEffects: StatValue[][] | undefined,
+	id: number,
+	spellStatEffects: Map<number, StatValue[][]>,
+	isEnchant: boolean,
+	spellDurations: Map<number, number>,
+	spellDurationFormats: Record<Time, string>
+): [string, StatEntry] {
 	text = text.replace(/[\s.]+$/, "").replaceAll(/[\r\n]+/gm, "\\n").replaceAll(/"/gm, "\\\"").toLowerCase()
 
 	const remainingEffects: StatValue[][] = statEffects ? [...statEffects] : []
@@ -1070,7 +1078,8 @@ async function getLocaleStatMap(
 	procSpells: Map<number, number>,
 	spellDescIDs: Set<number>,
 	overrideEnchantIDs: number[],
-	overrideEnchantStatEffects: Map<number, StatValue[][]>
+	overrideEnchantStatEffects: Map<number, StatValue[][]>,
+	spellDurations: Map<number, number>
 ) {
 	const statMap = new Map<string, StatEntry>()
 
@@ -1088,7 +1097,15 @@ async function getLocaleStatMap(
 
 			const branches = traverseDescriptionBranches(spellDescription.Description_lang)
 			for (const branch of branches) {
-				const [pattern, statEntry] = mapTextToStatEntry(branch, staticEffects, spellDescription.ID, spellStatEffects, false, spellDurationFormats)
+				const [pattern, statEntry] = mapTextToStatEntry(
+					branch,
+					staticEffects,
+					spellDescription.ID,
+					spellStatEffects,
+					false,
+					spellDurations,
+					spellDurationFormats
+				)
 				if (staticEffects || !statEntry.isWholeText) {
 					statEntry.ignoreSum = !staticEffects
 					insertEntry(statMap, pattern, statEntry, locale)
@@ -1104,7 +1121,15 @@ async function getLocaleStatMap(
 		if (!stats) {
 			stats = getEnchantStats(statEnchant, spellStatEffects)
 		}
-		const [pattern, statEntry] = mapTextToStatEntry(statEnchant.Name_lang, stats, statEnchant.ID, spellStatEffects, true, spellDurationFormats)
+		const [pattern, statEntry] = mapTextToStatEntry(
+			statEnchant.Name_lang,
+			stats,
+			statEnchant.ID,
+			spellStatEffects,
+			true,
+			spellDurations,
+			spellDurationFormats
+		)
 		insertEntry(statMap, pattern, statEntry, locale)
 	}
 
@@ -1208,7 +1233,17 @@ for (const [_, expansion] of Object.entries(Expansion)) {
 	const [overrideEnchantIDs, overrideEnchantStatEffects] = getOverrideEnchants(expansion)
 
 	for (const locale of locales) {
-		const localeStatMap = getLocaleStatMap(expansion, locale, spellStatEffects, statSpellIDs, procSpells, spellDescIDs, overrideEnchantIDs, overrideEnchantStatEffects)
+		const localeStatMap = getLocaleStatMap(
+			expansion,
+			locale,
+			spellStatEffects,
+			statSpellIDs,
+			procSpells,
+			spellDescIDs,
+			overrideEnchantIDs,
+			overrideEnchantStatEffects,
+			spellDurations,
+		)
 		const localeResult = localeResults.get(locale) || []
 		localeResult.push(localeStatMap)
 		localeResults.set(locale, localeResult)
