@@ -810,7 +810,7 @@ async function getSpellDurationFormats(expansion: Expansion, locale: string): Pr
 	let formats = {}
 	let time = Time.Second
 	for (const result of results) {
-		formats[time] = result.TagText_lang.replace("%d", "%s")
+		formats[time] = result.TagText_lang.replace("%d", "%s").toLowerCase()
 		time++
 	}
 	return formats as Record<Time, string>
