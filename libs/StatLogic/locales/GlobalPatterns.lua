@@ -2,11 +2,23 @@ local addonName, addon = ...
 local StatLogic = LibStub(addonName)
 local locale = GetLocale()
 
--- Metatable that forces keys to be UTF8-lowercase
-local lowerMT = {
+local proxies = {}
+local statPatternMeta = {
 	__newindex = function(t, k, v)
 		if k then
-			rawset(t, k:utf8lower(), v)
+			if not proxies[t] then
+				proxies[t] = {}
+			end
+			-- Prefer non-reductions over reductions for colliding string keys
+			if not proxies[t][k] or not v.reduction then
+				-- Force keys to be UTF8-lowercase
+				proxies[t][k:utf8lower()] = v
+			end
+		end
+	end,
+	__index = function(t, k)
+		if proxies[t] then
+			return proxies[t][k]
 		end
 	end
 }
@@ -17,7 +29,7 @@ local lowerMT = {
 -- Strings without numbers; mainly used for enchants or easy exclusions
 ---@alias WholeTextEntry { [Stat]: number } | false
 ---@type { [string]: WholeTextEntry }
-addon.WholeTextLookup = setmetatable({}, lowerMT)
+addon.WholeTextLookup = setmetatable({}, statPatternMeta)
 local W = addon.WholeTextLookup
 
 local exclusions = {
@@ -123,7 +135,7 @@ setPrefixPatterns(trimmedPrefixes, addon.TrimmedPrefixes)
 
 -- Patterns that should be matched for breakdowns, but ignord for summaries
 ---@type table<string, true>
-addon.IgnoreSum = setmetatable({}, lowerMT)
+addon.IgnoreSum = setmetatable({}, statPatternMeta)
 
 local ignoreSumPrefixes = {
 	ITEM_SPELL_TRIGGER_ONUSE, -- "Use:"
@@ -146,7 +158,7 @@ addon.ReforgeSuffix = "%s*" .. REFORGE_TOOLTIP_LINE:format(0, "", "", ".*"):utf8
 ---@field reduction boolean?
 ---@field [number] Stat[] | false
 ---@type { [string]: SubstitutionEntry }
-addon.StatIDLookup = setmetatable({}, lowerMT)
+addon.StatIDLookup = setmetatable({}, statPatternMeta)
 local L = addon.StatIDLookup
 
 local short = {
@@ -327,6 +339,6 @@ end
 ---------------------
 -- Iterates all patterns, matching the whole string. Expensive so try not to use.
 -- Used to reduce noise while debugging missing patterns
-addon.PreScanPatterns = setmetatable({}, lowerMT)
+addon.PreScanPatterns = setmetatable({}, statPatternMeta)
 local itemSetNamePattern = ITEM_SET_NAME:gsub("%%%d?%$?s", ".+"):gsub("%%%d?%$?d", "%%d+"):gsub("[()]", "%%%1")
 addon.PreScanPatterns[itemSetNamePattern] = false
