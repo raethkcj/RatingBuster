@@ -121,7 +121,8 @@ function mapTextToStatEntry(
 	spellStatEffects: Map<number, StatValue[][]>,
 	isEnchant: boolean,
 	spellDurations: Map<number, number>,
-	spellDurationFormats: Record<Time, string>
+	spellDurationFormats: Record<Time, string>,
+	locale: string,
 ): [string, StatEntry] {
 	text = text.replace(/[\s.]+$/, "").replaceAll(/[\r\n]+/gm, "\\n").replaceAll(/"/gm, "\\\"").toLowerCase()
 
@@ -199,15 +200,7 @@ function mapTextToStatEntry(
 					break
 				case "d":
 					entries.push(false)
-					let duration: number | undefined
-					if (duration = spellDurations.get(id)) {
-						if (duration >= 60 * 60 * 1000) {
-							return spellDurationFormats[Time.Hour]
-						} else if (duration >= 60 * 1000) {
-							return spellDurationFormats[Time.Minute]
-						}
-					}
-					return spellDurationFormats[Time.Second]
+					return buildDurationString(spellDurations.get(id), spellDurationFormats, locale)
 				case "a":
 				case "c":
 				case "h":
@@ -816,6 +809,40 @@ async function getSpellDurationFormats(expansion: Expansion, locale: string): Pr
 	return formats as Record<Time, string>
 }
 
+const singularZeroLocales = new Set([
+	"frFR",
+	"koKR",
+	"zhCN",
+	"zhTW",
+])
+
+function buildDurationString(duration: number | undefined, spellDurationFormatz: Record<Time, string>, locale: string): string {
+	if (duration) {
+		let format: string, units: number
+		if (duration >= 60 * 60 * 1000) {
+			format = spellDurationFormatz[Time.Hour]
+			units = duration / (60 * 60 * 1000)
+		} else if (duration >= 60 * 1000) {
+			format = spellDurationFormatz[Time.Minute]
+			units = duration / (60 * 1000)
+		} else {
+			format = spellDurationFormatz[Time.Second]
+			units = duration / 1000
+		}
+
+		// Parse Blizzard's custom plural escape sequences
+		return format.replace(/\|4(.*?):(.*?);/, function(_match, singular, plural, _offset, _string) {
+			if (units === 1 || singularZeroLocales.has(locale) && units === 0) {
+				return singular
+			} else {
+				return plural
+			}
+		})
+	} else {
+		return spellDurationFormatz[Time.Second]
+	}
+}
+
 type SpellDescription = {
 	ID: number,
 	Description_lang: string
@@ -1112,7 +1139,8 @@ async function getLocaleStatMap(
 					spellStatEffects,
 					false,
 					spellDurations,
-					spellDurationFormats
+					spellDurationFormats,
+					locale,
 				)
 				if (staticEffects || !statEntry.isWholeText) {
 					statEntry.ignoreSum = !staticEffects
@@ -1136,7 +1164,8 @@ async function getLocaleStatMap(
 			spellStatEffects,
 			true,
 			spellDurations,
-			spellDurationFormats
+			spellDurationFormats,
+			locale,
 		)
 		insertEntry(statMap, pattern, statEntry, locale)
 	}
