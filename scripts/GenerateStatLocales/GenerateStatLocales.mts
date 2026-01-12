@@ -200,7 +200,7 @@ function mapTextToStatEntry(
 					break
 				case "d":
 					entries.push(false)
-					return buildDurationString(spellDurations.get(id), spellDurationFormats, locale)
+					return buildDurationString(spellDurations.get(parseInt(alternateSpellID) || id), spellDurationFormats, locale)
 				case "a":
 				case "c":
 				case "h":

@@ -209,7 +209,7 @@ local L = addon.StatIDLookup
 L["%s초 동안 공격 속도가 %s%만큼 증가합니다"] = { false, { Stats.MeleeHaste, Stats.RangedHaste, }, } -- s28701
 L["적의 신체를 손상시켜 이동 속도를 %s%만큼, 근접 공격 속도를 %s%만큼, 원거리 공격 속도를 %s%만큼 감소시킵니다. %s초 동안 지속됩니다"] = { false, { Stats.MeleeHaste, }, { Stats.RangedHaste, }, false, reduction = true } -- s89
 L["주위 적의 근접 전투력을 %s만큼 감소시킵니다. %s초 동안 지속됩니다"] = { { Stats.AttackPower, }, false, reduction = true } -- s99
-L["방어도가 %s만큼 증가하고 시전자를 공격한 적은 일정 확률로 %s분 동안 이동 속도가 %s%만큼 감소하며 공격 간격이 %s%만큼 늘어날 수 있습니다. 마법사의 갑옷 주문은 동시에 한 종류만 사용할 수 있습니다. %s분 동안 지속됩니다"] = { { Stats.Armor, }, false, false, { Stats.MeleeHaste, }, false, } -- s168
+L["방어도가 %s만큼 증가하고 시전자를 공격한 적은 일정 확률로 %s초 동안 이동 속도가 %s%만큼 감소하며 공격 간격이 %s%만큼 늘어날 수 있습니다. 마법사의 갑옷 주문은 동시에 한 종류만 사용할 수 있습니다. %s분 동안 지속됩니다"] = { { Stats.Armor, }, false, false, { Stats.MeleeHaste, }, false, } -- s168
 L["%s초 동안 대상의 공격 속도를 %s%만큼, 이동 속도를 %s%만큼 감소시킵니다"] = { false, { Stats.MeleeHaste, }, false, reduction = true } -- s246
 L["%s초에 걸쳐 총 %s의 마나가 회복됩니다. 음료를 마시려면 앉아 있어야 합니다"] = { false, { Stats.GenericManaRegen, }, } -- s430
 L["주위 %s미터 반경에 있는 파티원의 방어도가 %s만큼 상승합니다. 오라는 성기사마다 동시에 하나만 유지할 수 있습니다"] = { false, { Stats.Armor, }, } -- s465
@@ -345,7 +345,7 @@ L["%s분 동안 방어도가 %s만큼 증가합니다"] = { false, { Stats.Armor
 L["%s초 동안 매 공격 시 %s의 추가 피해를 입힙니다. 하지만 이동 속도는 %s%만큼 감소되며 공격 속도가 %s%만큼 감소합니다"] = { false, { Stats.AverageWeaponDamage, }, false, { Stats.MeleeHaste, }, } -- s4955
 L["적을 %s초 동안 이동 불가 상태로 만들고 공격 속도를 %s%만큼 감소시킵니다"] = { false, { Stats.MeleeHaste, }, reduction = true } -- s4962
 L["%s분 동안 적의 체력을 %s만큼 정신력을 %s만큼 감소시킵니다"] = { false, { Stats.Stamina, }, { Stats.Spirit, }, reduction = true } -- s4974
-L["%s초에 걸쳐 총 %s의 생명력이 회복됩니다. 음식을 먹으려면 앉아 있어야 합니다. 음식을 꾸준히 %s초 이상 먹게 되면 포만감을 느끼게 되고 %s초 동안 체력과 정신력이 %s만큼 증가합니다"] = { false, false, false, false, { Stats.Stamina, }, ignoreSum = true } -- s5004
+L["%s초에 걸쳐 총 %s의 생명력이 회복됩니다. 음식을 먹으려면 앉아 있어야 합니다. 음식을 꾸준히 %s초 이상 먹게 되면 포만감을 느끼게 되고 %s분 동안 체력과 정신력이 %s만큼 증가합니다"] = { false, false, false, false, { Stats.Stamina, }, ignoreSum = true } -- s5004
 L["이 독한 술을 마시면 %s분 동안 힘이 %s만큼 증가하지만 지능은 %s만큼 감소됩니다"] = { false, { Stats.Strength, }, { Stats.Intellect, }, } -- s5020
 L["%s분 동안 생명력이 %s만큼 증가되지만 정신력은 %s만큼 감소됩니다"] = { false, false, { Stats.Spirit, }, reduction = true } -- s5021
 L["마무리 일격을 시도하여 도적의 근접 공격 속도가 %s%만큼 증가합니다. 연계 포인트 당 다음 시간 동안 지속됩니다.\n   %s 포인트: %s초\n   %s 포인트: %s초\n   %s 포인트: %s초\n   %s 포인트: %s초\n   %s 포인트: %s초"] = { { Stats.MeleeHaste, }, false, false, false, false, false, false, false, false, false, false, } -- s5171
@@ -417,7 +417,7 @@ L["적에게 매 %s초마다 %s의 자연 피해를 입히고 %s초 동안 공�
 L["%s초 동안 주위 적의 지능을 %s만큼 감소시킵니다"] = { false, { Stats.Intellect, }, reduction = true } -- s6818
 L["물리 공격력을 %s만큼 증가시키지만 이동 속도를 %s%만큼 감소시킵니다. %s초 동안 지속됩니다"] = { { Stats.AverageWeaponDamage, }, false, false, } -- s6864
 L["%s분 동안 적의 공격 속도를 %s%만큼, 이동 속도를 %s%만큼 감소시킵니다"] = { false, { Stats.MeleeHaste, }, false, reduction = true } -- s6907
-L["%s초 동안 물리 공격력이 %s만큼, 이동 속도가 %s%만큼 증가합니다. 또한, 첫 공격 시 적에게 저주를 걸어 %s초 동안 물리 공격력을 %s만큼, 마법 공격력을 %s만큼 감소시키고 받는 물리 피해를 %s만큼 증가시킵니다"] = { false, { Stats.AverageWeaponDamage, }, false, false, { Stats.AverageWeaponDamage, }, { Stats.SpellDamage, }, false, } -- s6921
+L["%s초 동안 물리 공격력이 %s만큼, 이동 속도가 %s%만큼 증가합니다. 또한, 첫 공격 시 적에게 저주를 걸어 %s분 동안 물리 공격력을 %s만큼, 마법 공격력을 %s만큼 감소시키고 받는 물리 피해를 %s만큼 증가시킵니다"] = { false, { Stats.AverageWeaponDamage, }, false, false, { Stats.AverageWeaponDamage, }, { Stats.SpellDamage, }, false, } -- s6921
 L["%s분 동안 적의 방어도를 %s만큼 감소시킵니다. 이 주문이 걸린 대상은 숨거나 투명해질 수 없습니다"] = { false, { Stats.Armor, }, reduction = true } -- s6950
 L["%s분 동안 적의 힘을 %s만큼 감소시킵니다"] = { false, { Stats.Strength, }, reduction = true } -- s6951
 L["%s분 동안 대상의 힘을 %s만큼 증가시킵니다"] = { false, { Stats.Strength, }, } -- s6957
@@ -429,7 +429,7 @@ L["적에게 돌격합니다. 이동 속도가 증가하며 첫 공격 시 %s의
 L["%s초 동안 주위 적의 적중률을 %s%만큼 감소시킵니다"] = { false, { Stats.MeleeHit, Stats.RangedHit, }, reduction = true } -- s7272
 L["%s분 동안 주위 적의 공격 속도를 %s%만큼 감소시키고 이동 속도를 %s%만큼 감소시킵니다"] = { false, { Stats.MeleeHaste, }, false, reduction = true } -- s7279
 L["%s분 동안 적의 힘을 %s만큼, 체력을 %s만큼 감소시킵니다"] = { false, { Stats.Strength, }, { Stats.Stamina, }, reduction = true } -- s7289
-L["방어도를 %s만큼, 냉기 저항력을 %s만큼 증가시킵니다. 시전자를 공격한 적은 일정 확률로 %s분 동안 이동 속도가 %s%만큼 감소하고 공격 간격이 %s%만큼 늘어납니다. 마법사의 갑옷 주문은 동시에 한 종류만 사용할 수 있습니다. %s분 동안 지속됩니다"] = { { Stats.Armor, }, { Stats.FrostResistance, }, false, false, { Stats.MeleeHaste, }, false, } -- s7302
+L["방어도를 %s만큼, 냉기 저항력을 %s만큼 증가시킵니다. 시전자를 공격한 적은 일정 확률로 %s초 동안 이동 속도가 %s%만큼 감소하고 공격 간격이 %s%만큼 늘어납니다. 마법사의 갑옷 주문은 동시에 한 종류만 사용할 수 있습니다. %s분 동안 지속됩니다"] = { { Stats.Armor, }, { Stats.FrostResistance, }, false, false, { Stats.MeleeHaste, }, false, } -- s7302
 L["적에게 매 %s초마다 %s의 자연 피해를 입히고 공격 속도를 %s%만큼, 이동 속도를 %s%만큼 감소시킵니다. %s초 동안 지속됩니다"] = { false, false, { Stats.MeleeHaste, }, false, false, reduction = true } -- s7357
 L["주위 파티원의 정신력을 %s만큼 증가시킵니다"] = { { Stats.Spirit, }, } -- s7363
 L["적에게 돌진하여 %s초 동안 이동 불가 상태로 만들고 멧돼지의 다음 공격 근접 전투력이 %s만큼 증가합니다"] = { false, { Stats.AttackPower, }, } -- s7371
@@ -501,7 +501,7 @@ L["정신력을 %s만큼 증가시킵니다"] = { { Stats.Spirit, }, } -- s10767
 L["%s초 동안 적의 공격 속도를 %s%만큼 감소시키고 이동 속도를 %s%만큼 감소시킵니다. 또한 연결 끊김을 유발하여 적을 %s초 동안 기절시킵니다"] = { false, { Stats.MeleeHaste, }, false, false, reduction = true } -- s10855
 L["%s초 동안 주위 적의 근접 전투력을 %s만큼 감소시킵니다"] = { false, { Stats.AttackPower, }, reduction = true } -- s10968
 L["자신의 모든 주문에 대한 대상의 마법 저항력이 %s만큼 감소하고 비전 주문으로 발생되는 위협 수준이 %s%만큼 감소합니다"] = { { Stats.SpellPenetration, }, false, } -- s11210
-L["암흑에 대한 저항력을 %s만큼 증가시킵니다. 적이 복용자를 공격하게 되면 공격자는 %s%의 확률로 질병에 걸리며 %s분 동안 입는 피해가 %s만큼 증가합니다. %s분 동안 지속됩니다"] = { { Stats.ShadowResistance, }, false, false, false, false, } -- s11371
+L["암흑에 대한 저항력을 %s만큼 증가시킵니다. 적이 복용자를 공격하게 되면 공격자는 %s%의 확률로 질병에 걸리며 %s초 동안 입는 피해가 %s만큼 증가합니다. %s분 동안 지속됩니다"] = { { Stats.ShadowResistance, }, false, false, false, false, } -- s11371
 L["%s분 동안 마법의 공격력이 최대 %s까지 증가합니다"] = { false, { Stats.SpellDamage, }, } -- s11390
 L["일반 공격력에 %s의 추가 피해를 입히고 %s분 동안 힘을 %s만큼 민첩성을 %s만큼 감소시킵니다"] = { false, false, { Stats.Strength, }, { Stats.Agility, }, reduction = true } -- s11397
 L["적의 공격 속도를 %s%만큼, 이동 속도를 %s%만큼 감소시키고 힘을 %s%만큼 감소시킵니다. %s초 동안 지속됩니다"] = { { Stats.MeleeHaste, }, false, false, false, reduction = true } -- s11443
@@ -639,8 +639,8 @@ L["저주를 걸어 %s분 동안 대상의 암흑과 비전 마법에 대한 저
 L["적과 그 주위의 적의 방어구를 절단하여 매 가르기마다 방어도를 %s만큼 감소시킵니다. 최대 %s번까지 중복될 수 있습니다. %s초 동안 지속됩니다. 최대 %s명만큼 영향을 미칩니다"] = { { Stats.Armor, }, false, false, false, reduction = true } -- s17963
 L["가격 당했을 때 %s%의 확률로 가시가 돋아나 공격자에게 %s의 자연 피해를 입히고 %s초 동안 자연 저항력이 %s만큼 증가합니다"] = { false, false, false, { Stats.NatureResistance, }, ignoreSum = true } -- s18097
 L["%s분 동안 힘이 %s만큼 증가합니다"] = { false, { Stats.Strength, }, } -- s18125
-L["%s초에 걸쳐 총 %s의 마나가 회복됩니다. 음료를 마시려면 앉아 있어야 합니다. 추가로 %s초 동안 정신력이 %s만큼 증가합니다"] = { false, { Stats.GenericManaRegen, }, false, { Stats.Spirit, }, } -- s18140
-L["%s초에 걸쳐 총 %s의 생명력이 회복됩니다. 음식을 먹으려면 앉아 있어야 합니다. 만약 음식을 꾸준히 %s초 이상 먹게 되면 %s초 동안 민첩성이 %s만큼 증가합니다"] = { false, false, false, false, { Stats.Agility, }, ignoreSum = true } -- s18230
+L["%s초에 걸쳐 총 %s의 마나가 회복됩니다. 음료를 마시려면 앉아 있어야 합니다. 추가로 %s분 동안 정신력이 %s만큼 증가합니다"] = { false, { Stats.GenericManaRegen, }, false, { Stats.Spirit, }, } -- s18140
+L["%s초에 걸쳐 총 %s의 생명력이 회복됩니다. 음식을 먹으려면 앉아 있어야 합니다. 만약 음식을 꾸준히 %s초 이상 먹게 되면 %s분 동안 민첩성이 %s만큼 증가합니다"] = { false, false, false, false, { Stats.Agility, }, ignoreSum = true } -- s18230
 L["%s미터 반경 내의 파티원의 지능을 %s만큼 증가시킵니다"] = { false, { Stats.Intellect, }, } -- s18264
 L["매 %s초마다 %s의 마나가 회복됩니다"] = { false, { Stats.GenericManaRegen, }, } -- s18378
 L["%s초 동안 적의 전투력을 %s만큼 감소시킵니다"] = { false, { Stats.GenericAttackPower, }, reduction = true } -- s18381
@@ -754,7 +754,7 @@ L["%s초 동안 신성 주문이 극대화 효과를 발휘할 확률이 %s%만�
 L["적을 강타하여 %s의 피해를 입히고 근접 사정거리에 있는 모든 적의 전투력을 %s만큼 감소시킵니다. %s초 동안 지속됩니다"] = { false, { Stats.AttackPower, }, false, reduction = true } -- s24577
 L["%s초 동안 주문 적중률이 %s%만큼 증가합니다"] = { false, { Stats.SpellHit, }, } -- s24610
 L["표범, 광포한 곰, 곰 변신 상태일 때 전투력이 %s만큼 증가합니다"] = { { Stats.FeralAttackPower, }, } -- s24694
-L["%s초에 걸쳐 총 %s의 생명력이 회복됩니다. 음식을 먹으려면 앉아 있어야 합니다. 음식을 꾸준히 %s초 이상 먹게 되면 포만감을 느끼게 되고 %s초 동안 힘이 %s만큼 증가합니다"] = { false, false, false, false, { Stats.Strength, }, ignoreSum = true } -- s24800
+L["%s초에 걸쳐 총 %s의 생명력이 회복됩니다. 음식을 먹으려면 앉아 있어야 합니다. 음식을 꾸준히 %s초 이상 먹게 되면 포만감을 느끼게 되고 %s분 동안 힘이 %s만큼 증가합니다"] = { false, false, false, false, { Stats.Strength, }, ignoreSum = true } -- s24800
 L["%s초 동안 드루이드의 회피율이 %s%만큼 증가합니다"] = { false, { Stats.Dodge, }, } -- s24864
 L["주문 및 근접 치명타 적중률이 %s%만큼 증가합니다. %s초 동안 지속됩니다"] = { { Stats.MeleeCrit, Stats.RangedCrit, Stats.SpellCrit, }, false, } -- s24865
 L["모든 주문 및 효과에 의한 피해와 치유량이 최대 %s만큼 증가합니다. 또한 주문이 극대화 효과를 발휘할 확률이 %s%만큼 증가합니다"] = { { Stats.SpellPower, }, { Stats.SpellCrit, }, } -- s25113
@@ -907,7 +907,7 @@ L["마력 깃든 살아있는 꿈의 인장이 부여되어 %s분 동안 주문�
 L["주문력이 %s만큼 증가합니다. 주문 적중 시 일정 확률로 대상에게 어둠의 화살을 방출합니다. 아탈라이 물약은 한 번에 하나만 활성화할 수 있습니다. 가라앉은 사원 바깥에서는 효과를 발휘하지 않습니다"] = { { Stats.SpellDamage, }, } -- s446256
 L["%s초 동안 공격력이 %s만큼, 공격 속도가 %s%만큼 증가합니다"] = { false, { Stats.AverageWeaponDamage, }, { Stats.MeleeHaste, }, } -- s446327
 L["전쟁의 모조에 감화되었습니다. 몸의 크기가 증가하고 힘이 %s만큼 증가합니다. %s초 동안 지속됩니다"] = { { Stats.Strength, }, false, } -- s446335
-L["근접 및 원거리 전투력이 %s만큼 증가합니다. 근접 및 원거리 공격 시 일정 확률로 %s시간 동안 크기가 커지고 힘 또는 민첩성(둘 중 더 높은 능력치)이 %s만큼 증가합니다. 아탈라이 물약은 한 번에 하나만 활성화할 수 있습니다. 가라앉은 사원 바깥에서는 효과를 발휘하지 않습니다"] = { { Stats.GenericAttackPower, }, false, { Stats.Strength, }, } -- s446336
+L["근접 및 원거리 전투력이 %s만큼 증가합니다. 근접 및 원거리 공격 시 일정 확률로 %s초 동안 크기가 커지고 힘 또는 민첩성(둘 중 더 높은 능력치)이 %s만큼 증가합니다. 아탈라이 물약은 한 번에 하나만 활성화할 수 있습니다. 가라앉은 사원 바깥에서는 효과를 발휘하지 않습니다"] = { { Stats.GenericAttackPower, }, false, { Stats.Strength, }, } -- s446336
 L["%s초 동안 시전자의 방패 방어 확률이 %s%만큼 증가합니다"] = { false, { Stats.BlockChance, }, } -- s446356
 L["매 %s초마다 치유량이 %s만큼, 마나 회복 속도가 %s만큼 증가합니다. 또한 치유 시 일정 확률로 %s의 기력, %s%의 마나, 또는 %s의 분노를 회복합니다. 아탈라이의 물약은 동시에 하나만 활성화할 수 있습니다. 가라앉은 사원 바깥에서는 효과를 발휘하지 않습니다"] = { false, { Stats.HealingPower, }, { Stats.GenericManaRegen, }, false, false, false, } -- s446396
 L["공허의 메아리로 인해 광기에 빠집니다. 주문 시전 속도가 %s%만큼 증가합니다. 악몽의 영향을 받는 지역 바깥에서는 효과를 발휘하지 않습니다"] = { { Stats.SpellHaste, }, } -- s446528
@@ -984,9 +984,9 @@ L["치명타 및 극대화율이 %s%만큼 증가합니다"] = { { Stats.MeleeCr
 L["주문 공격력이 최대 %s만큼 증가합니다"] = { { Stats.SpellDamage, }, } -- s469209
 L["치유량이 최대 %s만큼 증가합니다"] = { { Stats.HealingPower, }, } -- s469210
 L["%s분 동안 주문 공격력이 %s만큼 증가합니다"] = { false, { Stats.SpellDamage, }, } -- s470361
-L["%s초에 걸쳐 총 %s의 생명력이 회복됩니다. 음식을 먹으려면 앉아 있어야 합니다. 음식을 꾸준히 %s초 이상 먹으면 %s초 동안 주문 공격력이 %s만큼 증가합니다"] = { false, false, false, false, { Stats.SpellDamage, }, ignoreSum = true } -- s470362
+L["%s초에 걸쳐 총 %s의 생명력이 회복됩니다. 음식을 먹으려면 앉아 있어야 합니다. 음식을 꾸준히 %s초 이상 먹으면 %s분 동안 주문 공격력이 %s만큼 증가합니다"] = { false, false, false, false, { Stats.SpellDamage, }, ignoreSum = true } -- s470362
 L["%s분 동안 치유량이 %s만큼 증가합니다"] = { false, { Stats.HealingPower, }, } -- s470367
-L["%s초에 걸쳐 총 %s의 생명력이 회복됩니다. 음식을 먹으려면 앉아 있어야 합니다. 음식을 꾸준히 %s초 이상 먹으면 %s초 동안 치유량이 %s만큼 증가합니다"] = { false, false, false, false, { Stats.HealingPower, }, ignoreSum = true } -- s470369
+L["%s초에 걸쳐 총 %s의 생명력이 회복됩니다. 음식을 먹으려면 앉아 있어야 합니다. 음식을 꾸준히 %s초 이상 먹으면 %s분 동안 치유량이 %s만큼 증가합니다"] = { false, false, false, false, { Stats.HealingPower, }, ignoreSum = true } -- s470369
 L["모든 주문 및 효과의 공격력과 치유량이 최대 %s만큼 증가합니다. 또한 주문 및 효과의 치명타 및 극대화율이 %s%만큼 증가합니다"] = { { Stats.SpellPower, }, { Stats.SpellCrit, }, } -- s471402
 L["주위의 파티원 또는 공격대원을 결집시켜 주문 극대화율을 %s%만큼, 근접 및 원거리 공격 치명타율을 %s%만큼, 전투력을 %s만큼 증가시킵니다. %s시간 동안 지속됩니다. 비슷한 전역 효과와 겸용해서 사용할 수 없으며 시간축복에 영향을 받지 않습니다"] = { { Stats.SpellCrit, }, { Stats.MeleeCrit, Stats.RangedCrit, }, { Stats.GenericAttackPower, }, false, } -- s473387
 L["노래꽃을 소환해 모든 파티원 또는 공격대원의 근접 공격과 원거리 공격, 주문의 치명타 및 극대화율을 %s%만큼, 능력치를 %s만큼 증가시킵니다. %s시간 동안 지속됩니다. 비슷한 전역 효과와 겸용해서 사용할 수 없습니다. 시간축복에 영향을 받지 않습니다"] = { { Stats.MeleeCrit, Stats.RangedCrit, Stats.SpellCrit, }, { Stats.AllStats, }, false, } -- s473399
@@ -1149,7 +1149,7 @@ L["체력 %s / 방어 숙련도 %s"] = { { Stats.Stamina, }, { Stats.Defense, },
 L["poultry precision scope (%s damage)"] = { { Stats.AverageWeaponDamage, }, } -- e7944
 L["%s초 동안 근접 공격 가속도가 %s만큼 증가합니다"] = { false, { Stats.MeleeHasteRating, }, } -- s65
 L["적의 신체를 손상시켜 이동 속도를 %s%만큼, 근접 및 원거리 공격 속도를 %s%만큼 감소시킵니다. %s초 동안 지속됩니다"] = { false, { Stats.MeleeHaste, Stats.RangedHaste, }, false, reduction = true } -- s89
-L["방어도가 %s만큼 증가하고 시전자를 공격한 적은 일정 확률로 %s분 동안 이동 속도가 %s%만큼, 공격 속도가 %s%만큼 감소될 수 있습니다. 마법사의 갑옷 주문은 동시에 한 종류만 사용할 수 있습니다. %s분 동안 지속됩니다"] = { { Stats.Armor, }, false, false, { Stats.MeleeHaste, }, false, } -- s168
+L["방어도가 %s만큼 증가하고 시전자를 공격한 적은 일정 확률로 %s초 동안 이동 속도가 %s%만큼, 공격 속도가 %s%만큼 감소될 수 있습니다. 마법사의 갑옷 주문은 동시에 한 종류만 사용할 수 있습니다. %s분 동안 지속됩니다"] = { { Stats.Armor, }, false, false, { Stats.MeleeHaste, }, false, } -- s168
 L["%s초 동안 성기사를 모든 공격과 주문으로부터 보호합니다. 하지만 이 동안은 공격 속도가 %s%만큼 감소합니다. 한번 보호를 받은 뒤엔 %s초 동안은 천상의 보호막, 신의 가호, 보호의 축복, 응징의 격노로 인한 무적 효과를 받지 못합니다"] = { false, { Stats.MeleeHaste, }, false, reduction = true } -- s642
 L["%s시간 동안 방어도를 %s만큼 증가시킵니다. 강화 비약으로 간주됩니다"] = { false, { Stats.Armor, }, } -- s673
 L["%s분 동안 대상의 근접 전투력을 %s만큼 감소시킵니다. 흑마법사마다 한 대상에 동시에 하나의 저주만 걸 수 있습니다"] = { false, { Stats.AttackPower, }, reduction = true } -- s702
@@ -1166,7 +1166,7 @@ L["쐐기를 대상에게 발사하여 %s초 동안 근접 및 원거리 적중�
 L["%s시간 동안 매 %s초마다 %s의 생명력을 재생시킵니다. 강화 비약으로 간주됩니다"] = { false, false, { Stats.HealthRegen, }, } -- s3219
 L["%s초 동안 적의 주문 시전 시간을 %s%만큼 지연시킵니다"] = { false, { Stats.SpellHaste, }, reduction = true } -- s3603
 L["%s시간 동안 대상의 힘을 %s만큼 민첩성을 %s만큼 감소시킵니다"] = { false, { Stats.Strength, }, { Stats.Agility, }, reduction = true } -- s4316
-L["%s초에 걸쳐 총 %s의 생명력이 회복됩니다. 음식을 먹으려면 앉아 있어야 합니다. 음식을 꾸준히 %s초 이상 먹으면 포만감을 느끼게 되고 %s초 동안 체력과 정신력이 %s만큼 증가합니다"] = { false, false, false, false, { Stats.Stamina, }, ignoreSum = true } -- s5004
+L["%s초에 걸쳐 총 %s의 생명력이 회복됩니다. 음식을 먹으려면 앉아 있어야 합니다. 음식을 꾸준히 %s초 이상 먹으면 포만감을 느끼게 되고 %s분 동안 체력과 정신력이 %s만큼 증가합니다"] = { false, false, false, false, { Stats.Stamina, }, ignoreSum = true } -- s5004
 L["마무리 일격을 시도하여 도적의 근접 공격 속도가 %s%만큼 증가합니다. 연계 점수 당 다음 시간 동안 지속됩니다.\n   연계 점수 %s점: %s초\n   연계 점수 %s점: %s초\n   연계 점수 %s점: %s초\n   연계 점수 %s점: %s초\n   연계 점수 %s점: %s초"] = { { Stats.MeleeHaste, }, false, false, false, false, false, false, false, false, false, false, } -- s5171
 L["%s초 동안 적의 힘을 %s만큼 감소시키고 민첩성을 %s만큼 감소시킵니다"] = { false, { Stats.Strength, }, { Stats.Agility, }, reduction = true } -- s5781
 L["모든 계열 저항력이 %s만큼 증가하고 시전 중 %s%의 속도로 마나가 회복됩니다. 마법사의 갑옷 주문은 동시에 한 종류만 사용할 수 있습니다. %s분 동안 지속됩니다"] = { { Stats.FireResistance, Stats.NatureResistance, Stats.FrostResistance, Stats.ShadowResistance, Stats.ArcaneResistance, }, false, false, } -- s6117
@@ -1174,7 +1174,7 @@ L["주위 적을 강타하여 %s의 피해를 입히고 %s초 동안 공격 속�
 L["자신과 주위 %s미터 반경 내에 있는 모든 파티원의 적중률이 %s%만큼 증가합니다"] = { false, { Stats.MeleeHit, Stats.RangedHit, }, } -- s6562
 L["치명타 적중도가 %s만큼 증가합니다"] = { { Stats.MeleeCritRating, Stats.RangedCritRating, Stats.SpellCritRating, }, } -- s54697
 L["%s초 동안 주위 적의 공격 속도를 %s%만큼 감소시키고 이동 속도를 %s%만큼 감소시킵니다"] = { false, { Stats.MeleeHaste, }, false, reduction = true } -- s7279
-L["방어도를 %s만큼, 냉기 저항력을 %s만큼 증가시킵니다. 시전자를 공격한 적은 일정 확률로 %s분 동안 이동 속도가 %s%만큼, 공격 속도가 %s%만큼 감소됩니다. 마법사의 갑옷 주문은 동시에 한 종류만 사용할 수 있습니다. %s분 동안 지속됩니다"] = { { Stats.Armor, }, { Stats.FrostResistance, }, false, false, { Stats.MeleeHaste, }, false, } -- s7302
+L["방어도를 %s만큼, 냉기 저항력을 %s만큼 증가시킵니다. 시전자를 공격한 적은 일정 확률로 %s초 동안 이동 속도가 %s%만큼, 공격 속도가 %s%만큼 감소됩니다. 마법사의 갑옷 주문은 동시에 한 종류만 사용할 수 있습니다. %s분 동안 지속됩니다"] = { { Stats.Armor, }, { Stats.FrostResistance, }, false, false, { Stats.MeleeHaste, }, false, } -- s7302
 L["%s분 동안 화염 마법의 공격력이 최대 %s만큼 증가합니다. 전투 비약으로 간주됩니다"] = { false, { Stats.FireDamage, }, } -- s7844
 L["몸의 크기가 증가하고 힘이 %s만큼 증가합니다. %s분 동안 지속됩니다. 전투 비약으로 간주됩니다"] = { { Stats.Strength, }, false, } -- s8212
 L["%s초 동안 대상의 물리 공격력을 %s만큼 증가시킵니다"] = { false, { Stats.AverageWeaponDamage, }, } -- s8365
@@ -1192,7 +1192,7 @@ L["지능이 %s만큼 증가합니다. 강화 비약으로 간주됩니다"] = {
 L["정신력이 %s만큼 증가합니다. 강화 비약으로 간주됩니다"] = { { Stats.Spirit, }, } -- s10691
 L["지능이 %s만큼 증가합니다. %s분 동안 지속됩니다. 강화 비약으로 간주됩니다"] = { { Stats.Intellect, }, false, } -- s10692
 L["정신력이 %s만큼 증가합니다. %s분 동안 지속됩니다. 강화 비약으로 간주됩니다"] = { { Stats.Spirit, }, false, } -- s10693
-L["암흑에 대한 저항력을 %s만큼 증가시킵니다. 적이 복용자를 공격하게 되면 공격자는 %s%의 확률로 질병에 걸리며 %s분 동안 입는 피해가 %s만큼 증가합니다. %s분 동안 지속됩니다. 강화 비약으로 간주됩니다"] = { { Stats.ShadowResistance, }, false, false, false, false, } -- s11371
+L["암흑에 대한 저항력을 %s만큼 증가시킵니다. 적이 복용자를 공격하게 되면 공격자는 %s%의 확률로 질병에 걸리며 %s초 동안 입는 피해가 %s만큼 증가합니다. %s분 동안 지속됩니다. 강화 비약으로 간주됩니다"] = { { Stats.ShadowResistance, }, false, false, false, false, } -- s11371
 L["%s분 동안 마법의 공격력이 최대 %s만큼 증가합니다. 전투 비약으로 간주됩니다"] = { false, { Stats.SpellDamage, }, } -- s11390
 L["%s분 동안 암흑 마법의 공격력이 최대 %s만큼 증가합니다. 전투 비약으로 간주됩니다"] = { false, { Stats.ShadowDamage, }, } -- s11474
 L["주문 시전을 빠르게 하여, 주문 시전 가속도를 %s%만큼 증가시키고 시전 중 피해를 입어도 %s%의 확률로 마법 시전 방해를 받지 않습니다. %s초 동안 지속됩니다"] = { { Stats.SpellHaste, }, false, false, } -- s12472
@@ -1224,7 +1224,7 @@ L["%s시간 동안 지능이 %s만큼 증가합니다. 동시에 전투 비약 �
 L["%s시간 동안 모든 주문 및 효과의 공격력이 %s만큼 증가합니다. 동시에 전투 비약 및 강화 비약으로 간주됩니다. 이 효과는 죽어도 지속됩니다"] = { false, { Stats.SpellDamage, }, } -- s17628
 L["%s시간 동안 모든 계열의 마법 저항력이 %s만큼 증가합니다. 동시에 전투 비약 및 강화 비약으로 간주됩니다. 이 효과는 죽어도 지속되며 다른 모든 저항력 관련 주문이나 아이템과 중복 적용됩니다"] = { false, { Stats.FireResistance, Stats.NatureResistance, Stats.FrostResistance, Stats.ShadowResistance, Stats.ArcaneResistance, }, } -- s17629
 L["%s초 동안 적의 적중률을 %s%만큼 감소시킵니다. 대상이 %s 레벨 이상이라면 실패할 확률이 있습니다"] = { false, { Stats.MeleeHit, Stats.RangedHit, }, false, reduction = true } -- s17639
-L["%s초에 걸쳐 총 %s의 생명력이 회복됩니다. 음식을 먹으려면 앉아 있어야 합니다. 음식을 꾸준히 %s초 이상 먹으면 %s초 동안 민첩성이 %s만큼 증가합니다"] = { false, false, false, false, { Stats.Agility, }, ignoreSum = true } -- s18230
+L["%s초에 걸쳐 총 %s의 생명력이 회복됩니다. 음식을 먹으려면 앉아 있어야 합니다. 음식을 꾸준히 %s초 이상 먹으면 %s분 동안 민첩성이 %s만큼 증가합니다"] = { false, false, false, false, { Stats.Agility, }, ignoreSum = true } -- s18230
 L["주문의 극대화 적중도가 %s만큼 증가합니다"] = { { Stats.MeleeCritRating, Stats.RangedCritRating, Stats.SpellCritRating, }, } -- s32789
 L["주문 시전 가속도가 %s만큼 증가합니다"] = { { Stats.MeleeHasteRating, Stats.RangedHasteRating, Stats.SpellHasteRating, }, } -- s40483
 L["적중률이 %s%만큼 증가하며 이동 방해 효과에 저항할 확률이 추가로 %s%만큼 증가합니다"] = { { Stats.MeleeHit, Stats.RangedHit, }, false, } -- s19290
@@ -1264,7 +1264,7 @@ L["%s초 동안 비전 주문 공격력이 %s만큼 증가합니다"] = { false,
 L["%s초 동안 주문 시전 가속도가 %s만큼 증가하고 치유 주문에 소비되는 마나가 %s%만큼 감소합니다"] = { false, { Stats.SpellHasteRating, }, false, } -- s24546
 L["%s초 동안 주문 적중도가 %s만큼 증가합니다"] = { false, { Stats.MeleeHitRating, Stats.RangedHitRating, Stats.SpellHitRating, }, } -- s24610
 L["표범, 광포한 곰, 곰, 달빛야수 변신 상태일 때 전투력이 %s만큼 증가합니다"] = { { Stats.FeralAttackPower, }, } -- s24694
-L["%s초에 걸쳐 총 %s의 생명력이 회복됩니다. 음식을 먹으려면 앉아 있어야 합니다. 음식을 꾸준히 %s초 이상 먹으면 포만감을 느끼게 되고 %s초 동안 힘이 %s만큼 증가합니다"] = { false, false, false, false, { Stats.Strength, }, ignoreSum = true } -- s24800
+L["%s초에 걸쳐 총 %s의 생명력이 회복됩니다. 음식을 먹으려면 앉아 있어야 합니다. 음식을 꾸준히 %s초 이상 먹으면 포만감을 느끼게 되고 %s분 동안 힘이 %s만큼 증가합니다"] = { false, false, false, false, { Stats.Strength, }, ignoreSum = true } -- s24800
 L["%s분 동안 체력과 정신력이 %s만큼 증가합니다"] = { false, { Stats.Stamina, Stats.Spirit, }, } -- s24829
 L["주문 및 근접 치명타 적중도가 %s만큼 증가합니다. %s초 동안 지속됩니다"] = { { Stats.MeleeCritRating, Stats.RangedCritRating, Stats.SpellCritRating, }, false, } -- s24865
 L["모든 주문 및 효과의 공격력과 치유량이 최대 %s만큼 증가합니다. 또한 주문의 극대화 적중도가 %s만큼 증가합니다"] = { { Stats.SpellPower, }, { Stats.SpellCritRating, }, } -- s25113
@@ -1366,7 +1366,7 @@ L["%s초 동안 방어 확률이 %s%만큼 증가합니다. 이 동안 방어하
 L["대상을 이끼로 얽어매 공격 속도와 시전 속도를 %s%만큼 저하시킵니다"] = { { Stats.MeleeHaste, Stats.SpellHaste, }, reduction = true } -- s31948
 L["%s초 동안 적이 사용하는 주문 및 능력의 적중률을 %s%만큼 감소시킵니다"] = { false, { Stats.MeleeHit, Stats.RangedHit, Stats.SpellHit, }, reduction = true } -- s32017
 L["모든 주문과 근접 공격이 치명타로 적중될 확률이 %s%만큼 증가하고 문장이 무효화될 확률이 %s%만큼 감소합니다"] = { { Stats.SpellCrit, Stats.MeleeCrit, Stats.RangedCrit, }, false, } -- s32043
-L["%s초에 걸쳐 총 %s의 생명력이 회복됩니다. 음식을 먹으려면 앉아 있어야 합니다. 음식을 꾸준히 %s초 이상 먹으면 포만감을 느끼게 되고 %s초 동안 정신력이 %s만큼 증가합니다"] = { false, false, false, false, { Stats.Spirit, }, ignoreSum = true } -- s32112
+L["%s초에 걸쳐 총 %s의 생명력이 회복됩니다. 음식을 먹으려면 앉아 있어야 합니다. 음식을 꾸준히 %s초 이상 먹으면 포만감을 느끼게 되고 %s분 동안 정신력이 %s만큼 증가합니다"] = { false, false, false, false, { Stats.Spirit, }, ignoreSum = true } -- s32112
 L["체력 %s만큼 증가"] = { { Stats.Stamina, }, } -- s32143
 L["탄력도 %s"] = { { Stats.ResilienceRating, }, } -- s32145
 L["%s개의 독 효과를 제거하고 %s분 동안 자연 저항력을 %s만큼 감소시킵니다"] = { false, false, { Stats.NatureResistance, }, reduction = true } -- s32305
@@ -1384,13 +1384,13 @@ L["주문을 성공적으로 시전했을 시 %s%의 확률로 %s초 동안 주�
 L["%s시간 동안 최대 생명력을 %s만큼 증가시킵니다. 이 효과는 죽어도 지속되며 영약으로 간주됩니다"] = { false, { Stats.Health, }, } -- s33053
 L["악마의 마력을 대상에게 집중하여 크기를 %s%만큼 증가시키고 물리 공격력을 %s만큼 증가시킵니다"] = { { Stats.AverageWeaponDamage, }, { Stats.AverageWeaponDamage, }, } -- s33111
 L["%s초 동안 시전자의 물리 공격력이 %s만큼 증가합니다. 근접 공격 속도가 %s%만큼 증가합니다"] = { false, { Stats.MeleeHaste, }, { Stats.MeleeHaste, }, } -- s33232
-L["%s초에 걸쳐 총 %s의 생명력이 회복됩니다. 음식을 먹으려면 앉아 있어야 합니다. 음식을 꾸준히 %s초 이상 먹으면 포만감을 느끼게 되고 %s초 동안 힘과 정신력이 %s만큼 증가합니다"] = { false, false, false, false, { Stats.Strength, }, ignoreSum = true } -- s33255
-L["%s초에 걸쳐 총 %s의 생명력이 회복됩니다. 음식을 먹으려면 앉아 있어야 합니다. 음식을 꾸준히 %s초 이상 먹으면 포만감을 느끼게 되고 %s초 동안 체력이 %s만큼, 정신력이 %s만큼 증가합니다"] = { false, false, false, false, { Stats.Stamina, }, { Stats.Spirit, }, ignoreSum = true } -- s33258
-L["%s초에 걸쳐 총 %s의 생명력이 회복됩니다. 음식을 먹으려면 앉아 있어야 합니다. 음식을 꾸준히 %s초 이상 먹으면 포만감을 느끼게 되고 %s초 동안 전투력이 %s만큼, 정신력이 %s만큼 증가합니다"] = { false, false, false, false, { Stats.GenericAttackPower, }, { Stats.Spirit, }, ignoreSum = true } -- s33260
-L["%s초에 걸쳐 총 %s의 생명력이 회복됩니다. 음식을 먹으려면 앉아 있어야 합니다. 음식을 꾸준히 %s초 이상 먹으면 포만감을 느끼게 되고 %s초 동안 민첩성과 정신력이 %s만큼 증가합니다"] = { false, false, false, false, { Stats.Agility, }, ignoreSum = true } -- s33262
-L["%s초에 걸쳐 총 %s의 생명력이 회복됩니다. 음식을 먹으려면 앉아 있어야 합니다. 음식을 꾸준히 %s초 이상 먹으면 포만감을 느끼게 되고 %s초 동안 주문 공격력이 %s만큼, 정신력이 %s만큼 증가합니다"] = { false, false, false, false, { Stats.SpellDamage, }, { Stats.Spirit, }, ignoreSum = true } -- s33264
-L["%s초에 걸쳐 총 %s의 생명력이 회복됩니다. 음식을 먹으려면 앉아 있어야 합니다. 음식을 꾸준히 %s초 이상 먹으면 포만감을 느끼게 되고 %s초 동안 체력이 %s만큼, %s초당 마나 회복량이 %s만큼 증가합니다"] = { false, false, false, false, { Stats.Stamina, }, false, { Stats.GenericManaRegen, }, ignoreSum = true } -- s33266
-L["%s초에 걸쳐 총 %s의 생명력이 회복됩니다. 음식을 먹으려면 앉아 있어야 합니다. 음식을 꾸준히 %s초 이상 먹으면 포만감을 느끼게 되고 %s초 동안 주문 치유량이 %s만큼, 정신력이 %s만큼 증가합니다"] = { false, false, false, false, { Stats.HealingPower, }, { Stats.Spirit, }, ignoreSum = true } -- s33269
+L["%s초에 걸쳐 총 %s의 생명력이 회복됩니다. 음식을 먹으려면 앉아 있어야 합니다. 음식을 꾸준히 %s초 이상 먹으면 포만감을 느끼게 되고 %s분 동안 힘과 정신력이 %s만큼 증가합니다"] = { false, false, false, false, { Stats.Strength, }, ignoreSum = true } -- s33255
+L["%s초에 걸쳐 총 %s의 생명력이 회복됩니다. 음식을 먹으려면 앉아 있어야 합니다. 음식을 꾸준히 %s초 이상 먹으면 포만감을 느끼게 되고 %s분 동안 체력이 %s만큼, 정신력이 %s만큼 증가합니다"] = { false, false, false, false, { Stats.Stamina, }, { Stats.Spirit, }, ignoreSum = true } -- s33258
+L["%s초에 걸쳐 총 %s의 생명력이 회복됩니다. 음식을 먹으려면 앉아 있어야 합니다. 음식을 꾸준히 %s초 이상 먹으면 포만감을 느끼게 되고 %s분 동안 전투력이 %s만큼, 정신력이 %s만큼 증가합니다"] = { false, false, false, false, { Stats.GenericAttackPower, }, { Stats.Spirit, }, ignoreSum = true } -- s33260
+L["%s초에 걸쳐 총 %s의 생명력이 회복됩니다. 음식을 먹으려면 앉아 있어야 합니다. 음식을 꾸준히 %s초 이상 먹으면 포만감을 느끼게 되고 %s분 동안 민첩성과 정신력이 %s만큼 증가합니다"] = { false, false, false, false, { Stats.Agility, }, ignoreSum = true } -- s33262
+L["%s초에 걸쳐 총 %s의 생명력이 회복됩니다. 음식을 먹으려면 앉아 있어야 합니다. 음식을 꾸준히 %s초 이상 먹으면 포만감을 느끼게 되고 %s분 동안 주문 공격력이 %s만큼, 정신력이 %s만큼 증가합니다"] = { false, false, false, false, { Stats.SpellDamage, }, { Stats.Spirit, }, ignoreSum = true } -- s33264
+L["%s초에 걸쳐 총 %s의 생명력이 회복됩니다. 음식을 먹으려면 앉아 있어야 합니다. 음식을 꾸준히 %s초 이상 먹으면 포만감을 느끼게 되고 %s분 동안 체력이 %s만큼, %s초당 마나 회복량이 %s만큼 증가합니다"] = { false, false, false, false, { Stats.Stamina, }, false, { Stats.GenericManaRegen, }, ignoreSum = true } -- s33266
+L["%s초에 걸쳐 총 %s의 생명력이 회복됩니다. 음식을 먹으려면 앉아 있어야 합니다. 음식을 꾸준히 %s초 이상 먹으면 포만감을 느끼게 되고 %s분 동안 주문 치유량이 %s만큼, 정신력이 %s만큼 증가합니다"] = { false, false, false, false, { Stats.HealingPower, }, { Stats.Spirit, }, ignoreSum = true } -- s33269
 L["소환수의 체력과 정신력이 %s만큼 증가합니다. %s분 동안 지속됩니다"] = { { Stats.Stamina, Stats.Spirit, }, false, } -- s33272
 L["%s초 동안 주문 시전 가속도가 %s만큼 증가합니다"] = { false, { Stats.MeleeHasteRating, Stats.RangedHasteRating, Stats.SpellHasteRating, }, } -- s33370
 L["%s초 동안 모든 주문 및 효과에 의한 치유량이 최대 %s만큼, 주문 공격력이 %s만큼 증가합니다"] = { false, { Stats.HealingPower, }, { Stats.SpellDamage, }, } -- s33400
@@ -1453,7 +1453,7 @@ L["%s초 동안 이동 속도가 %s%만큼 증가하고 근접 공격 속도가 
 L["%s시간 동안 모든 주문 및 효과의 공격력과 치유량이 최대 %s만큼 증가합니다"] = { false, { Stats.SpellDamage, }, } -- s36749
 L["적에게 자연 피해를 입히고 %s초 동안 방어도를 %s만큼 감소시킵니다. 효과는 %s번까지 중복됩니다"] = { false, { Stats.Armor, }, false, reduction = true } -- s36796
 L["저주를 걸어 %s분 동안 대상의 화염과 냉기 마법에 대한 저항력을 %s만큼 감소시키고 받는 화염과 냉기 피해를 %s%만큼 증가시킵니다"] = { false, { Stats.FireResistance, Stats.FrostResistance, }, false, reduction = true } -- s36831
-L["방어도를 %s만큼, 냉기 저항력을 %s만큼 증가시킵니다. 시전자를 공격한 적은 일정 확률로 %s분 동안 이동 속도가 %s%로 감소하여 공격 속도가 %s%만큼 감소됩니다. 마법사의 갑옷 주문은 동시에 한 종류만 사용할 수 있습니다. %s분 동안 지속됩니다"] = { { Stats.Armor, }, { Stats.FrostResistance, }, false, { Stats.MeleeHaste, }, false, false, } -- s36881
+L["방어도를 %s만큼, 냉기 저항력을 %s만큼 증가시킵니다. 시전자를 공격한 적은 일정 확률로 %s초 동안 이동 속도가 %s%로 감소하여 공격 속도가 %s%만큼 감소됩니다. 마법사의 갑옷 주문은 동시에 한 종류만 사용할 수 있습니다. %s분 동안 지속됩니다"] = { { Stats.Armor, }, { Stats.FrostResistance, }, false, { Stats.MeleeHaste, }, false, false, } -- s36881
 L["%s초 동안 이동 속도가 %s%만큼 증가하고 공격 속도가 %s%만큼 증가합니다"] = { false, false, { Stats.MeleeHaste, }, } -- s36910
 L["%s분 동안 체력이 %s만큼 증가하고 복용자의 대화하려는 욕망을 증가시킵니다"] = { false, { Stats.Stamina, }, } -- s37058
 L["비열한 습격 및 급소 가격 사용 시 %s초 동안 가속도가 %s만큼 증가합니다"] = { false, { Stats.MeleeHasteRating, Stats.RangedHasteRating, }, ignoreSum = true } -- s37165
@@ -1518,37 +1518,37 @@ L["대상을 광기에 휩싸이도록 하여 공격 속도를 %s%만큼 증가�
 L["성스러운 빛 사용 시 %s초 동안 %s초당 마나 회복량이 %s만큼 증가합니다"] = { false, false, { Stats.GenericManaRegen, }, ignoreSum = true } -- s43741
 L["적에게 무기 공격력의 %s%에 해당하는 피해를 입히고 %s초 동안 방어도를 %s만큼 감소시킵니다"] = { false, false, { Stats.Armor, }, reduction = true } -- s43529
 L["주위의 모든 적에게 %s의 자연 피해를 입히고 공격 속도를 %s%만큼 감소시킵니다"] = { false, { Stats.MeleeHaste, }, reduction = true } -- s43583
-L["%s초에 걸쳐 총 %s의 마나가 회복됩니다. 음료를 마시려면 앉아 있어야 합니다. 음료를 꾸준히 %s초 이상 마시면 깨달음을 얻게 되고 %s초 동안 주문 극대화 적중도와 정신력이 %s만큼 증가합니다"] = { false, { Stats.GenericManaRegen, }, false, false, { Stats.SpellCritRating, }, } -- s43706
+L["%s초에 걸쳐 총 %s의 마나가 회복됩니다. 음료를 마시려면 앉아 있어야 합니다. 음료를 꾸준히 %s초 이상 마시면 깨달음을 얻게 되고 %s분 동안 주문 극대화 적중도와 정신력이 %s만큼 증가합니다"] = { false, { Stats.GenericManaRegen, }, false, false, { Stats.SpellCritRating, }, } -- s43706
 L["%s초동안 탄력도가 %s만큼 증가합니다"] = { false, { Stats.ResilienceRating, }, } -- s43717
 L["짓이기기 기술 사용 시 일정 확률로 %s초 동안 민첩성이 %s만큼 증가합니다"] = { false, { Stats.Agility, }, ignoreSum = true } -- s43737
 L["지휘의 심판 시전 시 일정 확률로 %s초 동안 전투력이 %s만큼 증가합니다"] = { false, { Stats.AttackPower, }, ignoreSum = true } -- s43745
 L["충격류 주문 사용 시 일정 확률로 %s초 동안 전투력이 %s만큼 증가합니다"] = { false, { Stats.AttackPower, }, ignoreSum = true } -- s43748
 L["번개 화살 주문 시전 시 일정 확률로 %s초 동안 주문 시전 가속도가 %s만큼 증가합니다"] = { false, { Stats.MeleeHasteRating, Stats.RangedHasteRating, Stats.SpellHasteRating, }, ignoreSum = true } -- s60770
-L["%s초에 걸쳐 총 %s의 생명력이 회복됩니다. 음식을 먹으려면 앉아 있어야 합니다. 음식을 꾸준히 %s초 이상 먹으면 포만감을 느끼게 되고 %s초 동안 정신력과 적중도가 %s만큼 증가합니다"] = { false, false, false, false, { Stats.MeleeHitRating, Stats.RangedHitRating, Stats.SpellHitRating, }, ignoreSum = true } -- s43763
+L["%s초에 걸쳐 총 %s의 생명력이 회복됩니다. 음식을 먹으려면 앉아 있어야 합니다. 음식을 꾸준히 %s초 이상 먹으면 포만감을 느끼게 되고 %s분 동안 정신력과 적중도가 %s만큼 증가합니다"] = { false, false, false, false, { Stats.MeleeHitRating, Stats.RangedHitRating, Stats.SpellHitRating, }, ignoreSum = true } -- s43763
 L["소환수의 힘과 정신력이 %s만큼 증가합니다. %s분 동안 지속됩니다"] = { { Stats.Strength, Stats.Spirit, }, false, } -- s43771
 L["근접 공격 시 %s%의 확률로 자신의 다음 공격에 대한 적의 물리 방어도를 %s만큼 감소시키고 자신에 대한 위협 수준을 감소시킵니다"] = { false, { Stats.ArmorPenetration, }, ignoreSum = true } -- s43816
 L["짓이기기 사용 시 %s초 동안 탄력도가 %s만큼 증가합니다"] = { false, { Stats.ResilienceRating, }, ignoreSum = true } -- s43840
 L["주문 및 효과의 공격력이 최대 %s만큼 증가합니다"] = { { Stats.SpellDamage, }, } -- s43921
 L["모든 주문 및 효과에 의한 치유량이 최대 %s만큼, 주문 공격력이 최대 %s만큼 증가합니다"] = { { Stats.HealingPower, }, { Stats.SpellDamage, }, } -- s44071
-L["%s초에 걸쳐 총 %s의 마나가 회복됩니다. 음료를 마시려면 앉아 있어야 합니다. 음료를 꾸준히 %s초 이상 마시면 \"포만감\"을 느끼게 되고 %s초 동안 체력과 정신력이 %s만큼 증가합니다. 평범한 술입니다"] = { false, { Stats.GenericManaRegen, }, false, false, { Stats.Stamina, }, } -- s44115
-L["%s초에 걸쳐 총 %s의 마나가 회복됩니다. 음료를 마시려면 앉아 있어야 합니다. 음료를 꾸준히 %s초 이상 마시면 \"포만감\"을 느끼게 되고 %s초 동안 힘과 정신력이 %s만큼 증가합니다. 독한 술입니다"] = { false, { Stats.GenericManaRegen, }, false, false, { Stats.Strength, }, } -- s44116
+L["%s초에 걸쳐 총 %s의 마나가 회복됩니다. 음료를 마시려면 앉아 있어야 합니다. 음료를 꾸준히 %s초 이상 마시면 \"포만감\"을 느끼게 되고 %s분 동안 체력과 정신력이 %s만큼 증가합니다. 평범한 술입니다"] = { false, { Stats.GenericManaRegen, }, false, false, { Stats.Stamina, }, } -- s44115
+L["%s초에 걸쳐 총 %s의 마나가 회복됩니다. 음료를 마시려면 앉아 있어야 합니다. 음료를 꾸준히 %s초 이상 마시면 \"포만감\"을 느끼게 되고 %s분 동안 힘과 정신력이 %s만큼 증가합니다. 독한 술입니다"] = { false, { Stats.GenericManaRegen, }, false, false, { Stats.Strength, }, } -- s44116
 L["다음 %s회의 근접 혹은 원거리 공격 동안 전투력이 각각 %s만큼 증가합니다. %s회까지 중복됩니다. %s초 동안 지속됩니다"] = { false, { Stats.GenericAttackPower, }, false, false, ignoreSum = true } -- s45040
 L["대상에 힘을 주입시켜 %s초 동안 시전 속도를 %s%만큼 증가시킵니다"] = { false, { Stats.SpellHaste, }, } -- s44605
 L["시전자 전방에 냉기의 돌풍을 내뿜어 냉기 피해를 입히고 %s초 동안 이동 속도를 %s%만큼 감소시킵니다"] = { false, { Stats.MeleeHaste, }, reduction = true } -- s44799
 L["원거리 공격 속도가 %s%만큼 증가합니다. 화살통과 탄약주머니의 효과와 중복 적용되지 않습니다"] = { { Stats.RangedHaste, }, } -- s44972
-L["%s초에 걸쳐 총 %s의 마나가 회복됩니다. 음료를 마시려면 앉아 있어야 합니다. 음료를 꾸준히 %s초 이상 마시면 포만감을 느끼게 되고 %s초동안 체력과 정신력이 %s만큼 증가합니다"] = { false, { Stats.GenericManaRegen, }, false, false, { Stats.Stamina, }, } -- s45019
-L["%s초에 걸쳐 총 %s의 마나가 회복됩니다. 음료를 마시려면 앉아 있어야 합니다. 음료를 꾸준히 %s초 이상 마시면 포만감을 느끼게 되고 %s초동안 체력과 정신력이 %s만큼 증가합니다. 평범한 술입니다"] = { false, { Stats.GenericManaRegen, }, false, false, { Stats.Stamina, }, } -- s45020
+L["%s초에 걸쳐 총 %s의 마나가 회복됩니다. 음료를 마시려면 앉아 있어야 합니다. 음료를 꾸준히 %s초 이상 마시면 포만감을 느끼게 되고 %s분동안 체력과 정신력이 %s만큼 증가합니다"] = { false, { Stats.GenericManaRegen, }, false, false, { Stats.Stamina, }, } -- s45019
+L["%s초에 걸쳐 총 %s의 마나가 회복됩니다. 음료를 마시려면 앉아 있어야 합니다. 음료를 꾸준히 %s초 이상 마시면 포만감을 느끼게 되고 %s분동안 체력과 정신력이 %s만큼 증가합니다. 평범한 술입니다"] = { false, { Stats.GenericManaRegen, }, false, false, { Stats.Stamina, }, } -- s45020
 L["근접 공격으로 생명력이 %s% 아래로 내려가면 %s초 동안 회피 숙련도가 %s만큼 증가합니다. 이 효과는 %s초에 %s번씩만 발동됩니다"] = { false, false, { Stats.DodgeRating, }, false, false, ignoreSum = true } -- s45057
 L["%s초 동안 숙련도가 %s만큼 증가합니다"] = { false, { Stats.ExpertiseRating, }, } -- s45431
 L["%s초 동안 주문 치유량이 %s만큼, 주문 공격력이 최대 %s만큼 증가합니다"] = { false, { Stats.HealingPower, }, { Stats.SpellDamage, }, } -- s45478
 L["%s초 동안 모든 주문 공격력 및 치유량이 최대 %s만큼 증가합니다"] = { false, { Stats.SpellPower, }, } -- s45479
-L["%s초에 걸쳐 총 %s의 생명력이 회복됩니다. 음식을 먹으려면 앉아 있어야 합니다. 음식을 꾸준히 %s초 이상 먹으면 포만감을 느끼게 되고 %s초 동안 모든 계열의 저항력이 %s만큼 증가합니다"] = { false, false, false, false, { Stats.FireResistance, Stats.NatureResistance, Stats.FrostResistance, Stats.ShadowResistance, Stats.ArcaneResistance, }, ignoreSum = true } -- s45618
+L["%s초에 걸쳐 총 %s의 생명력이 회복됩니다. 음식을 먹으려면 앉아 있어야 합니다. 음식을 꾸준히 %s초 이상 먹으면 포만감을 느끼게 되고 %s분 동안 모든 계열의 저항력이 %s만큼 증가합니다"] = { false, false, false, false, { Stats.FireResistance, Stats.NatureResistance, Stats.FrostResistance, Stats.ShadowResistance, Stats.ArcaneResistance, }, ignoreSum = true } -- s45618
 L["grants %s mana every %s seconds"] = { { Stats.GenericManaRegen, }, false, } -- s45659
 L["태양샘의 따사로운 빛을 주입받은 대상은 적중률이 %s%만큼 증가하고 공격이 회피당할 확률이 %s%만큼 감소합니다"] = { { Stats.MeleeHit, Stats.RangedHit, }, false, } -- s45769
 L["무기 공격력에 %s의 추가 피해를 입힙니다"] = { { Stats.AverageWeaponDamage, }, } -- s45793
 L["키루의 현신으로 체력이 %s만큼 증가하고 지능이 %s만큼 증가합니다"] = { { Stats.Stamina, }, { Stats.Intellect, }, } -- s46302
-L["%s초에 걸쳐 총 %s의 생명력이 회복됩니다. 음식을 먹으려면 앉아 있어야 합니다. 음식을 꾸준히 %s초 이상 먹으면 %s초 동안 모든 주문 및 효과의 공격력과 치유량이 %s만큼 증가합니다"] = { false, false, false, false, { Stats.SpellDamage, }, ignoreSum = true } -- s46683
-L["%s초에 걸쳐 총 %s의 생명력이 회복됩니다. 음식을 먹으려면 앉아 있어야 합니다. 음식을 꾸준히 %s초 이상 먹으면 포만감을 느끼게 되고 %s초 동안 전투력이 %s만큼 증가합니다"] = { false, false, false, false, { Stats.GenericAttackPower, }, ignoreSum = true } -- s46898
+L["%s초에 걸쳐 총 %s의 생명력이 회복됩니다. 음식을 먹으려면 앉아 있어야 합니다. 음식을 꾸준히 %s초 이상 먹으면 %s분 동안 모든 주문 및 효과의 공격력과 치유량이 %s만큼 증가합니다"] = { false, false, false, false, { Stats.SpellDamage, }, ignoreSum = true } -- s46683
+L["%s초에 걸쳐 총 %s의 생명력이 회복됩니다. 음식을 먹으려면 앉아 있어야 합니다. 음식을 꾸준히 %s초 이상 먹으면 포만감을 느끼게 되고 %s분 동안 전투력이 %s만큼 증가합니다"] = { false, false, false, false, { Stats.GenericAttackPower, }, ignoreSum = true } -- s46898
 L["%s분 동안 주문으로 입히는 피해가 최대 %s만큼 증가합니다"] = { false, { Stats.SpellDamage, }, } -- s48889
 L["%s분 동안 주문 치유량이 최대 %s만큼 증가합니다"] = { false, { Stats.HealingPower, }, } -- s48891
 L["%s초에 걸쳐 %s의 마나를 회복하고 취한 상태에서 깨어납니다. 음료를 마시려면 앉아 있어야 합니다"] = { false, { Stats.GenericManaRegen, }, } -- s49472
@@ -1715,7 +1715,7 @@ L["%s초 동안 적의 공격 간격을 %s%만큼 늘입니다"] = { false, { St
 L["방어도가 증가하고 시전자를 공격한 적은 일정 확률로 %s초 동안 이동 속도가 %s%만큼 감소하며 공격 간격이 %s%만큼 늘어날 수 있습니다. 마법사의 갑옷 주문은 동시에 한 종류만 사용할 수 있습니다"] = { false, false, { Stats.MeleeHaste, }, reduction = true } -- s6136
 L["주위 적을 강타하여 %s의 피해를 입히고 %s초 동안 적의 공격 간격을 %s%만큼 늘입니다. 전투력에 따라 입히는 피해가 증가합니다. 추가 위협 수준을 생성합니다"] = { false, false, { Stats.MeleeHaste, }, reduction = true } -- s6343
 L["자신과 주위 %s미터 반경 내에 있는 모든 파티원의 공격과 주문 적중률이 %s%만큼 증가합니다"] = { false, { Stats.MeleeHit, Stats.RangedHit, Stats.SpellHit, }, } -- s6562
-L["%s분 동안 적에게 저주를 걸어 주기적으로 무기 숙련도를 %s만큼 감소시킵니다"] = { false, { Stats.WeaponSkill, Stats.Defense, }, reduction = true } -- s7048
+L["%s초 동안 적에게 저주를 걸어 주기적으로 무기 숙련도를 %s만큼 감소시킵니다"] = { false, { Stats.WeaponSkill, Stats.Defense, }, reduction = true } -- s7048
 L["적에게 매 %s초마다 %s의 자연 피해를 입히고 %s초 동안 공격 간격을 %s%만큼 늘이며 이동 속도를 %s%만큼 저하시킵니다"] = { false, false, false, { Stats.MeleeHaste, }, false, reduction = true } -- s6814
 L["%s분 동안 적의 공격 간격을 %s%만큼 늘이고 이동 속도를 %s%만큼 감소시킵니다"] = { false, { Stats.MeleeHaste, }, false, reduction = true } -- s6907
 L["%s분 동안 공격 간격을 %s%만큼 늘이고 시전 시간을 %s%만큼 증가시킵니다. 공격을 받을 때 %s%의 확률로 같은 질병을 아군에게 퍼뜨립니다"] = { false, { Stats.MeleeHaste, }, { Stats.SpellHaste, }, false, reduction = true } -- s7102
@@ -1753,7 +1753,7 @@ L["%s초 동안 적의 공격 간격을 %s만큼 늘입니다"] = { false, { Sta
 L["시전 즉시 대상을 진동하는 힘으로 감싸 %s의 자연 피해를 입히고 %s초 동안 근접 공격 속도를 %s%만큼 감소시킵니다"] = { false, false, { Stats.MeleeHaste, }, reduction = true } -- s10413
 L["%s초 동안 적의 공격 간격을 %s%만큼 늘이고 이동 속도를 %s%만큼 감소시킵니다. 또한 연결 끊김을 유발하여 적을 %s초 동안 기절시킵니다"] = { false, { Stats.MeleeHaste, }, false, false, reduction = true } -- s10855
 L["화염 주문이 극대화 효과를 발휘할 확률이 %s%만큼 증가합니다"] = { { Stats.SpellCrit, }, } -- s11115
-L["암흑에 대한 저항력을 %s만큼 증가시킵니다. 적이 복용자를 공격하면 공격자는 %s%의 확률로 저주에 걸리며 %s분 동안 입는 피해가 %s만큼 증가합니다. %s분 동안 지속됩니다. 강화 비약으로 간주됩니다"] = { { Stats.ShadowResistance, }, false, false, false, false, } -- s11371
+L["암흑에 대한 저항력을 %s만큼 증가시킵니다. 적이 복용자를 공격하면 공격자는 %s%의 확률로 저주에 걸리며 %s초 동안 입는 피해가 %s만큼 증가합니다. %s분 동안 지속됩니다. 강화 비약으로 간주됩니다"] = { { Stats.ShadowResistance, }, false, false, false, false, } -- s11371
 L["%s시간 동안 주문력이 %s만큼 증가합니다. 전투 비약으로 간주됩니다"] = { false, { Stats.SpellPower, }, } -- s11390
 L["적의 공격 간격을 %s%만큼 늘이고 이동 속도를 %s%만큼, 힘을 %s%만큼 감소시킵니다. %s초 동안 지속됩니다"] = { { Stats.MeleeHaste, }, false, false, false, reduction = true } -- s11443
 L["%s시간 동안 암흑 주문력이 %s만큼 증가합니다. 전투 비약으로 간주됩니다"] = { false, { Stats.ShadowDamage, }, } -- s11474
@@ -1931,7 +1931,7 @@ L["%s분 동안 체력이 %s만큼 증가하고 정신력이 %s만큼 증가합�
 L["%s분 동안 전투력이 %s만큼 증가하고 정신력이 %s만큼 증가합니다"] = { false, { Stats.GenericAttackPower, }, { Stats.Spirit, }, } -- s33259
 L["%s분 동안 민첩성과 정신력이 %s만큼 증가합니다"] = { false, { Stats.Agility, Stats.Spirit, }, } -- s33261
 L["%s분 동안 주문력이 %s만큼 증가하고 정신력이 %s만큼 증가합니다"] = { false, { Stats.SpellPower, }, { Stats.Spirit, }, } -- s33263
-L["%s초에 걸쳐 총 %s의 생명력이 회복됩니다. 음식을 먹으려면 앉아 있어야 합니다. 음식을 꾸준히 %s초 이상 먹으면 포만감을 느끼게 되고 %s초 동안 주문력이 %s만큼, 정신력이 %s만큼 증가합니다"] = { false, false, false, false, { Stats.SpellDamage, }, { Stats.Spirit, }, ignoreSum = true } -- s33264
+L["%s초에 걸쳐 총 %s의 생명력이 회복됩니다. 음식을 먹으려면 앉아 있어야 합니다. 음식을 꾸준히 %s초 이상 먹으면 포만감을 느끼게 되고 %s분 동안 주문력이 %s만큼, 정신력이 %s만큼 증가합니다"] = { false, false, false, false, { Stats.SpellDamage, }, { Stats.Spirit, }, ignoreSum = true } -- s33264
 L["%s분 동안 %s초당 마나 회복력이 %s만큼 증가하고 체력이 %s만큼 증가합니다"] = { false, false, { Stats.GenericManaRegen, }, { Stats.Stamina, }, } -- s33265
 L["%s분 동안 소환수의 체력과 정신력이 %s만큼 증가합니다"] = { false, { Stats.Stamina, Stats.Spirit, }, } -- s33272
 L["시전자 전방의 적에게 부식성 산을 내뿜어 매 %s초마다 %s의 자연 피해를 입히고 %s초 동안 방어도를 %s만큼 감소시킵니다"] = { false, false, false, { Stats.Armor, }, reduction = true } -- s33551
@@ -1999,7 +1999,7 @@ L["시전자의 공격 속도가 %s%만큼 증가하고 크기가 %s%만큼 증�
 L["모든 계열 저항력이 %s만큼 증가하고 시전 중 %s%의 속도로 마나가 회복됩니다. 또한 자신에게 걸려 있는 해로운 효과의 지속시간이 %s%만큼 감소합니다. 마법사의 갑옷 주문은 동시에 한 종류만 사용할 수 있습니다. %s분 동안 지속됩니다"] = { { Stats.FireResistance, Stats.NatureResistance, Stats.FrostResistance, Stats.ShadowResistance, Stats.ArcaneResistance, }, false, false, false, } -- s43023
 L["마법 공격을 받으면 일정 확률로 공격자의 마법을 부식시켜 %s초 동안 주문 시전 속도를 %s만큼 감소시킵니다"] = { false, { Stats.SpellHaste, }, ignoreSum = true, reduction = true } -- s43508
 L["대상에게 %s분 동안 저주를 내려 마법 저항력을 %s만큼 감소시키고 받는 마법 피해를 %s%만큼 증가시킵니다"] = { false, { Stats.FireResistance, Stats.NatureResistance, Stats.FrostResistance, Stats.ShadowResistance, Stats.ArcaneResistance, }, false, reduction = true } -- s43556
-L["%s초에 걸쳐 총 %s의 마나가 회복됩니다. 음료를 마시려면 앉아 있어야 합니다. 음료를 꾸준히 %s초 이상 마시면 깨달음을 얻게 되고 %s초 동안 주문 극대화 적중도와 치명타 적중도, 정신력이 %s만큼 증가합니다"] = { false, false, false, false, { Stats.MeleeCritRating, Stats.RangedCritRating, Stats.SpellCritRating, }, ignoreSum = true } -- s43706
+L["%s초에 걸쳐 총 %s의 마나가 회복됩니다. 음료를 마시려면 앉아 있어야 합니다. 음료를 꾸준히 %s초 이상 마시면 깨달음을 얻게 되고 %s분 동안 주문 극대화 적중도와 치명타 적중도, 정신력이 %s만큼 증가합니다"] = { false, false, false, false, { Stats.MeleeCritRating, Stats.RangedCritRating, Stats.SpellCritRating, }, ignoreSum = true } -- s43706
 L["%s초 동안 탄력도가 %s만큼 증가합니다"] = { false, { Stats.ResilienceRating, }, } -- s43717
 L["죽음의 기사가 크게 외쳐 근접 전투력을 %s만큼 증가시킵니다"] = { { Stats.AttackPower, }, } -- s43735
 L["달빛 섬광 사용 시 일정 확률로 %s초 동안 주문력이 %s만큼 증가합니다"] = { false, { Stats.SpellDamage, }, ignoreSum = true } -- s43739
@@ -2015,15 +2015,15 @@ L["시전자를 마의 에너지로 감싸 주문이나 효과로부터 회복�
 L["주문 시전 속도가 %s%만큼 증가합니다"] = { { Stats.SpellHaste, }, ignoreSum = true } -- s44604
 L["시전자 전방에 냉기의 돌풍을 내뿜어 냉기 피해를 입히고 %s초 동안 공격 속도를 %s%만큼 감소시킵니다"] = { false, { Stats.MeleeHaste, }, reduction = true } -- s44799
 L["%s초 동안 근접 및 원거리 적중률이 %s%만큼 감소합니다"] = { false, { Stats.MeleeHit, Stats.RangedHit, }, reduction = true } -- s45002
-L["%s초에 걸쳐 총 %s의 마나가 회복됩니다. 음료를 마시려면 앉아 있어야 합니다. 음료를 꾸준히 %s초 이상 마시면 포만감을 느끼게 되고 %s초 동안 체력과 정신력이 %s만큼 증가합니다"] = { false, { Stats.GenericManaRegen, }, false, false, { Stats.Stamina, }, } -- s45019
-L["%s초에 걸쳐 총 %s의 마나가 회복됩니다. 음료를 마시려면 앉아 있어야 합니다. 음료를 꾸준히 %s초 이상 마시면 포만감을 느끼게 되고 %s초 동안 체력과 정신력이 %s만큼 증가합니다. 평범한 술입니다"] = { false, { Stats.GenericManaRegen, }, false, false, { Stats.Stamina, }, } -- s45020
+L["%s초에 걸쳐 총 %s의 마나가 회복됩니다. 음료를 마시려면 앉아 있어야 합니다. 음료를 꾸준히 %s초 이상 마시면 포만감을 느끼게 되고 %s분 동안 체력과 정신력이 %s만큼 증가합니다"] = { false, { Stats.GenericManaRegen, }, false, false, { Stats.Stamina, }, } -- s45019
+L["%s초에 걸쳐 총 %s의 마나가 회복됩니다. 음료를 마시려면 앉아 있어야 합니다. 음료를 꾸준히 %s초 이상 마시면 포만감을 느끼게 되고 %s분 동안 체력과 정신력이 %s만큼 증가합니다. 평범한 술입니다"] = { false, { Stats.GenericManaRegen, }, false, false, { Stats.Stamina, }, } -- s45020
 L["주문이 극대화 효과를 발휘할 확률이 %s%만큼 증가하며, 치명타 공격을 받은 후 받는 모든 피해를 %s%만큼 감소시키고 치유 효과를 %s%만큼 증가시켜주는 의지 집중 효과를 얻습니다. %s번까지 중복됩니다. %s초 동안 지속됩니다"] = { { Stats.SpellCrit, }, false, false, false, false, } -- s45234
 L["%s분 동안 아군 대상의 방어도를 %s만큼, 모든 능력치를 %s만큼, 모든 저항력을 %s만큼 증가시킵니다. 북풍의 땅에서만 효과가 있습니다"] = { false, { Stats.Armor, }, { Stats.AllStats, }, false, } -- s46119
 L["공격 속도가 %s%만큼 증가합니다.\n이동 속도가 %s%만큼 증가합니다.\n%s초 동안 지속됩니다"] = { { Stats.MeleeHaste, }, false, false, } -- s46160
 L["대상에게 %s의 암흑 피해를 입히고 %s초 동안 공격 속도를 %s%만큼 감소시킵니다"] = { false, false, { Stats.MeleeHaste, }, reduction = true } -- s46161
 L["받는 물리 피해가 %s만큼 증가합니다"] = { { Stats.AverageWeaponDamage, }, } -- s46278
 L["치명타 적중률이 %s만큼 증가하고 공격자에게 화염 피해를 입힙니다"] = { { Stats.MeleeCrit, Stats.RangedCrit, Stats.SpellCrit, }, } -- s46352
-L["%s초에 걸쳐 총 %s의 생명력이 회복됩니다. 음식을 먹으려면 앉아 있어야 합니다. 음식을 꾸준히 %s초 이상 먹으면 %s초 동안 주문력이 %s만큼 증가합니다"] = { false, false, false, false, { Stats.SpellDamage, }, ignoreSum = true } -- s46683
+L["%s초에 걸쳐 총 %s의 생명력이 회복됩니다. 음식을 먹으려면 앉아 있어야 합니다. 음식을 꾸준히 %s초 이상 먹으면 %s분 동안 주문력이 %s만큼 증가합니다"] = { false, false, false, false, { Stats.SpellDamage, }, ignoreSum = true } -- s46683
 L["공격 간격을 %s%만큼 늘입니다.\n이동 속도를 %s%만큼 감소시킵니다.\n%s초 동안 지속됩니다"] = { { Stats.MeleeHaste, }, false, false, ignoreSum = true, reduction = true } -- s46744
 L["%s시간 동안 암흑, 화염 및 냉기 주문력이 %s만큼 증가합니다. 동시에 전투 비약 및 강화 비약으로 간주됩니다. 이 효과는 죽어도 지속됩니다"] = { false, { Stats.FireDamage, Stats.FrostDamage, Stats.ShadowDamage, }, } -- s46838
 L["%s시간 동안 비전, 신성 및 자연 주문력이 %s만큼 증가합니다. 동시에 전투 비약 및 강화 비약으로 간주됩니다. 이 효과는 죽어도 지속됩니다"] = { false, { Stats.HolyDamage, Stats.NatureDamage, Stats.ArcaneDamage, }, } -- s46840
@@ -2133,7 +2133,7 @@ L["%s시간 동안 민첩성이 %s만큼 증가하고 치명타 및 주문 극�
 L["%s초 동안 시전자의 공격 속도가 %s%만큼, 공격력이 %s%만큼 증가합니다"] = { false, { Stats.MeleeHaste, }, false, } -- s54529
 L["혈액이 응고하여 물리 공격력이 %s만큼 증가합니다"] = { { Stats.AverageWeaponDamage, }, } -- s54580
 L["독사의 형상을 취해 %s초 동안 공격력이 %s만큼, 공격 속도와 시전 속도가 %s%만큼 증가합니다"] = { false, { Stats.AverageWeaponDamage, }, false, } -- s54601
-L["대상의 주문 극대화 적중률이 %s%만큼 증가합니다. 대상의 주문이 극대화 효과를 발휘하면 마법 집중을 시전한 마법사의 주문 극대화 확률이 %s분 동안 %s%만큼 증가합니다. 자신에게 시전할 수 없습니다"] = { { Stats.SpellCrit, }, false, { Stats.SpellCrit, }, } -- s54646
+L["대상의 주문 극대화 적중률이 %s%만큼 증가합니다. 대상의 주문이 극대화 효과를 발휘하면 마법 집중을 시전한 마법사의 주문 극대화 확률이 %s초 동안 %s%만큼 증가합니다. 자신에게 시전할 수 없습니다"] = { { Stats.SpellCrit, }, false, { Stats.SpellCrit, }, } -- s54646
 L["대상의 주문 극대화 적중률이 %s%만큼 증가합니다. 대상의 주문이 극대화 효과를 발휘하면 마법 집중을 시전한 마법사의 주문 극대화 확률이 증가합니다"] = { { Stats.SpellCrit, }, } -- s54648
 L["무형의 존재가 되어 %s초 동안 회피 확률이 %s만큼 증가합니다"] = { false, { Stats.Dodge, }, } -- s54657
 L["대상에게 신성한 힘을 주입시켜 %s분 동안 주문 극대화 확률을 %s만큼 증가시킵니다"] = { false, { Stats.SpellCrit, }, } -- s54675
@@ -2159,36 +2159,36 @@ L["%s분 동안 치명타 적중률이 %s%만큼 증가합니다"] = { false, { 
 L["%s분 동안 얼음의 바람이 시전자 주위를 감쌉니다. 시전 속도가 %s%만큼 저하하지만 냉기 주문의 공격력이 %s%만큼 증가합니다"] = { false, { Stats.SpellHaste, }, false, reduction = true } -- s56716
 L["적의 공격력을 %s%만큼 감소시키고 방어 숙련도를 %s만큼 감소시킵니다"] = { false, { Stats.Defense, }, reduction = true } -- s57055
 L["%s시간 동안 전투력이 %s만큼 증가하고 체력이 %s만큼 증가합니다"] = { false, { Stats.GenericAttackPower, Stats.RangedAttackPower, }, { Stats.Stamina, }, } -- s57325
-L["%s초에 걸쳐 %s의 생명력과 %s의 마나가 회복됩니다. 음식을 꾸준히 %s초 이상 먹으면 포만감을 느끼게 되고 %s초 동안 전투력이 %s만큼, 체력이 %s만큼 증가합니다"] = { false, false, false, false, false, { Stats.GenericAttackPower, }, { Stats.Stamina, }, ignoreSum = true } -- s57085
-L["%s초에 걸쳐 %s의 생명력과 %s의 마나가 회복됩니다. 음식을 꾸준히 %s초 이상 먹으면 포만감을 느끼게 되고 %s초 동안 주문력이 %s만큼, 체력이 %s만큼 증가합니다"] = { false, false, false, false, false, { Stats.SpellDamage, }, { Stats.Stamina, }, ignoreSum = true } -- s57096
+L["%s초에 걸쳐 %s의 생명력과 %s의 마나가 회복됩니다. 음식을 꾸준히 %s초 이상 먹으면 포만감을 느끼게 되고 %s시간 동안 전투력이 %s만큼, 체력이 %s만큼 증가합니다"] = { false, false, false, false, false, { Stats.GenericAttackPower, }, { Stats.Stamina, }, ignoreSum = true } -- s57085
+L["%s초에 걸쳐 %s의 생명력과 %s의 마나가 회복됩니다. 음식을 꾸준히 %s초 이상 먹으면 포만감을 느끼게 되고 %s시간 동안 주문력이 %s만큼, 체력이 %s만큼 증가합니다"] = { false, false, false, false, false, { Stats.SpellDamage, }, { Stats.Stamina, }, ignoreSum = true } -- s57096
 L["%s시간 동안 주문력이 %s만큼 증가하고 체력이 %s만큼 증가합니다"] = { false, { Stats.SpellPower, }, { Stats.Stamina, }, } -- s57097
-L["%s초에 걸쳐 %s의 생명력과 %s의 마나가 회복됩니다. 음식을 꾸준히 %s초 이상 먹으면 포만감을 느끼게 되고 %s초 동안 치명타 및 주문 극대화 적중도가 %s만큼, 체력이 %s만큼 증가합니다"] = { false, false, false, false, false, { Stats.MeleeCritRating, Stats.RangedCritRating, Stats.SpellCritRating, }, { Stats.Stamina, }, ignoreSum = true } -- s57098
+L["%s초에 걸쳐 %s의 생명력과 %s의 마나가 회복됩니다. 음식을 꾸준히 %s초 이상 먹으면 포만감을 느끼게 되고 %s시간 동안 치명타 및 주문 극대화 적중도가 %s만큼, 체력이 %s만큼 증가합니다"] = { false, false, false, false, false, { Stats.MeleeCritRating, Stats.RangedCritRating, Stats.SpellCritRating, }, { Stats.Stamina, }, ignoreSum = true } -- s57098
 L["%s시간 동안 치명타 및 주문 극대화 적중도가 %s만큼 증가하고 체력이 %s만큼 증가합니다"] = { false, { Stats.MeleeCritRating, Stats.RangedCritRating, Stats.SpellCritRating, }, { Stats.Stamina, }, } -- s57100
-L["%s초에 걸쳐 %s의 생명력과 %s의 마나가 회복됩니다. 음식을 꾸준히 %s초 이상 먹으면 포만감을 느끼게 되고 %s초 동안 가속도가 %s만큼, 체력이 %s만큼 증가합니다"] = { false, false, false, false, false, { Stats.MeleeHasteRating, Stats.RangedHasteRating, Stats.SpellHasteRating, }, { Stats.Stamina, }, ignoreSum = true } -- s57101
+L["%s초에 걸쳐 %s의 생명력과 %s의 마나가 회복됩니다. 음식을 꾸준히 %s초 이상 먹으면 포만감을 느끼게 되고 %s시간 동안 가속도가 %s만큼, 체력이 %s만큼 증가합니다"] = { false, false, false, false, false, { Stats.MeleeHasteRating, Stats.RangedHasteRating, Stats.SpellHasteRating, }, { Stats.Stamina, }, ignoreSum = true } -- s57101
 L["%s시간 동안 가속도가 %s만큼 증가하고 체력이 %s만큼 증가합니다"] = { false, { Stats.MeleeHasteRating, Stats.RangedHasteRating, Stats.SpellHasteRating, }, { Stats.Stamina, }, } -- s57102
-L["%s초에 걸쳐 %s의 생명력과 %s의 마나가 회복됩니다. 음식을 꾸준히 %s초 이상 먹으면 포만감을 느끼게 되고 %s초 동안 %s초당 마나 회복량이 %s만큼, 체력이 %s만큼 증가합니다"] = { false, false, false, false, false, false, { Stats.GenericManaRegen, }, { Stats.Stamina, }, ignoreSum = true } -- s57106
+L["%s초에 걸쳐 %s의 생명력과 %s의 마나가 회복됩니다. 음식을 꾸준히 %s초 이상 먹으면 포만감을 느끼게 되고 %s시간 동안 %s초당 마나 회복량이 %s만큼, 체력이 %s만큼 증가합니다"] = { false, false, false, false, false, false, { Stats.GenericManaRegen, }, { Stats.Stamina, }, ignoreSum = true } -- s57106
 L["%s시간 동안 %s초당 마나 회복 속도가 %s만큼 증가하고 체력이 %s만큼 증가합니다"] = { false, false, { Stats.GenericManaRegen, }, { Stats.Stamina, }, } -- s57107
-L["%s초에 걸쳐 %s의 생명력이 회복됩니다. 음식을 먹으려면 앉아 있어야 합니다. 음식을 꾸준히 %s초 이상 먹으면 포만감을 느끼게 되고 %s초 동안 전투력이 %s만큼, 체력이 %s만큼 증가합니다"] = { false, false, false, false, { Stats.GenericAttackPower, }, { Stats.Stamina, }, ignoreSum = true } -- s57110
+L["%s초에 걸쳐 %s의 생명력이 회복됩니다. 음식을 먹으려면 앉아 있어야 합니다. 음식을 꾸준히 %s초 이상 먹으면 포만감을 느끼게 되고 %s시간 동안 전투력이 %s만큼, 체력이 %s만큼 증가합니다"] = { false, false, false, false, { Stats.GenericAttackPower, }, { Stats.Stamina, }, ignoreSum = true } -- s57110
 L["%s시간 동안 전투력이 %s만큼 증가하고 체력 %s만큼 증가합니다"] = { false, { Stats.GenericAttackPower, Stats.RangedAttackPower, }, { Stats.Stamina, }, } -- s57111
-L["%s초에 걸쳐 %s의 생명력이 회복됩니다. 음식을 먹으려면 앉아 있어야 합니다. 음식을 꾸준히 %s초 이상 먹으면 포만감을 느끼게 되고 %s초 동안 주문력이 %s만큼, 체력이 %s만큼 증가합니다"] = { false, false, false, false, { Stats.SpellDamage, }, { Stats.Stamina, }, ignoreSum = true } -- s57138
-L["%s초에 걸쳐 %s의 생명력이 회복됩니다. 음식을 꾸준히 %s초 이상 먹으면 포만감을 느끼게 되고 %s초 동안 치명타 및 주문 극대화 적중도가 %s만큼, 체력이 %s만큼 증가합니다"] = { false, false, false, false, { Stats.MeleeCritRating, Stats.RangedCritRating, Stats.SpellCritRating, }, { Stats.Stamina, }, ignoreSum = true } -- s57285
-L["%s초에 걸쳐 %s의 생명력이 회복됩니다. 음식을 꾸준히 %s초 이상 먹으면 포만감을 느끼게 되고 %s초 동안 가속도가 %s만큼, 체력이 %s만큼 증가합니다"] = { false, false, false, false, { Stats.MeleeHasteRating, Stats.RangedHasteRating, Stats.SpellHasteRating, }, { Stats.Stamina, }, ignoreSum = true } -- s57287
-L["%s초에 걸쳐 %s의 생명력이 회복됩니다. 음식을 꾸준히 %s초 이상 먹으면 포만감을 느끼게 되고 %s초 동안 %s초당 마나 회복량이 %s만큼, 체력이 %s만큼 증가합니다"] = { false, false, false, false, false, { Stats.GenericManaRegen, }, { Stats.Stamina, }, ignoreSum = true } -- s57289
+L["%s초에 걸쳐 %s의 생명력이 회복됩니다. 음식을 먹으려면 앉아 있어야 합니다. 음식을 꾸준히 %s초 이상 먹으면 포만감을 느끼게 되고 %s시간 동안 주문력이 %s만큼, 체력이 %s만큼 증가합니다"] = { false, false, false, false, { Stats.SpellDamage, }, { Stats.Stamina, }, ignoreSum = true } -- s57138
+L["%s초에 걸쳐 %s의 생명력이 회복됩니다. 음식을 꾸준히 %s초 이상 먹으면 포만감을 느끼게 되고 %s시간 동안 치명타 및 주문 극대화 적중도가 %s만큼, 체력이 %s만큼 증가합니다"] = { false, false, false, false, { Stats.MeleeCritRating, Stats.RangedCritRating, Stats.SpellCritRating, }, { Stats.Stamina, }, ignoreSum = true } -- s57285
+L["%s초에 걸쳐 %s의 생명력이 회복됩니다. 음식을 꾸준히 %s초 이상 먹으면 포만감을 느끼게 되고 %s시간 동안 가속도가 %s만큼, 체력이 %s만큼 증가합니다"] = { false, false, false, false, { Stats.MeleeHasteRating, Stats.RangedHasteRating, Stats.SpellHasteRating, }, { Stats.Stamina, }, ignoreSum = true } -- s57287
+L["%s초에 걸쳐 %s의 생명력이 회복됩니다. 음식을 꾸준히 %s초 이상 먹으면 포만감을 느끼게 되고 %s시간 동안 %s초당 마나 회복량이 %s만큼, 체력이 %s만큼 증가합니다"] = { false, false, false, false, false, { Stats.GenericManaRegen, }, { Stats.Stamina, }, ignoreSum = true } -- s57289
 L["%s시간 동안 전투력이 %s만큼, 주문력 %s만큼, 체력이 %s만큼 증가합니다"] = { false, { Stats.GenericAttackPower, Stats.RangedAttackPower, }, { Stats.SpellPower, }, { Stats.Stamina, }, } -- s57294
-L["%s초에 걸쳐 %s의 생명력이 회복됩니다. 음식을 꾸준히 %s초 이상 먹으면 포만감을 느끼게 되고 %s초 동안 주문력이 %s만큼, 체력이 %s만큼 증가합니다"] = { false, false, false, false, { Stats.SpellDamage, }, { Stats.Stamina, }, ignoreSum = true } -- s57326
+L["%s초에 걸쳐 %s의 생명력이 회복됩니다. 음식을 꾸준히 %s초 이상 먹으면 포만감을 느끼게 되고 %s시간 동안 주문력이 %s만큼, 체력이 %s만큼 증가합니다"] = { false, false, false, false, { Stats.SpellDamage, }, { Stats.Stamina, }, ignoreSum = true } -- s57326
 L["죽음의 기사가 겨울의 뿔피리를 불어 %s의 룬 마력을 얻고 %s분 동안 %s미터 반경 내에 있는 모든 파티원 혹은 공격대원의 전체 힘과 민첩성을 %s만큼 증가시킵니다"] = { false, false, false, { Stats.Strength, Stats.Agility, }, } -- s57330
-L["%s초에 걸쳐 %s의 생명력이 회복됩니다. 음식을 먹으려면 앉아 있어야 합니다. 음식을 꾸준히 %s초 이상 먹으면 포만감을 느끼게 되고 %s초 동안 %s초당 마나 회복량이 %s만큼, 체력이 %s만큼 증가합니다"] = { false, false, false, false, false, { Stats.GenericManaRegen, }, { Stats.Stamina, }, ignoreSum = true } -- s57333
-L["%s초에 걸쳐 %s의 생명력이 회복됩니다. 음식을 먹으려면 앉아 있어야 합니다. 음식을 꾸준히 %s초 이상 먹으면 포만감을 느끼게 되고 %s초 동안 숙련도가 %s만큼, 체력이 %s만큼 증가합니다"] = { false, false, false, false, { Stats.ExpertiseRating, }, { Stats.Stamina, }, ignoreSum = true } -- s57355
+L["%s초에 걸쳐 %s의 생명력이 회복됩니다. 음식을 먹으려면 앉아 있어야 합니다. 음식을 꾸준히 %s초 이상 먹으면 포만감을 느끼게 되고 %s시간 동안 %s초당 마나 회복량이 %s만큼, 체력이 %s만큼 증가합니다"] = { false, false, false, false, false, { Stats.GenericManaRegen, }, { Stats.Stamina, }, ignoreSum = true } -- s57333
+L["%s초에 걸쳐 %s의 생명력이 회복됩니다. 음식을 먹으려면 앉아 있어야 합니다. 음식을 꾸준히 %s초 이상 먹으면 포만감을 느끼게 되고 %s시간 동안 숙련도가 %s만큼, 체력이 %s만큼 증가합니다"] = { false, false, false, false, { Stats.ExpertiseRating, }, { Stats.Stamina, }, ignoreSum = true } -- s57355
 L["%s시간 동안 숙련이 %s만큼 증가하고 체력이 %s만큼 증가합니다"] = { false, { Stats.ExpertiseRating, }, { Stats.Stamina, }, } -- s57356
-L["%s초에 걸쳐 총 %s의 생명력이 회복됩니다. 음식을 꾸준히 %s초 이상 먹으면 포만감을 느끼게 되고 %s초 동안 방어구 관통력이 %s만큼, 체력이 %s만큼 증가합니다"] = { false, false, false, false, { Stats.ArmorPenetrationRating, }, { Stats.Stamina, }, ignoreSum = true } -- s57357
+L["%s초에 걸쳐 총 %s의 생명력이 회복됩니다. 음식을 꾸준히 %s초 이상 먹으면 포만감을 느끼게 되고 %s시간 동안 방어구 관통력이 %s만큼, 체력이 %s만큼 증가합니다"] = { false, false, false, false, { Stats.ArmorPenetrationRating, }, { Stats.Stamina, }, ignoreSum = true } -- s57357
 L["%s시간 동안 방어구 관통력이 %s만큼 증가하고 체력이 %s만큼 증가합니다"] = { false, { Stats.ArmorPenetrationRating, }, { Stats.Stamina, }, } -- s57358
-L["%s초에 걸쳐 %s의 생명력과 %s의 마나가 회복됩니다. 음식을 꾸준히 %s초 이상 먹으면 포만감을 느끼게 되고 %s초 동안 적중도가 %s만큼, 체력이 %s만큼 증가합니다"] = { false, false, false, false, false, { Stats.MeleeHitRating, Stats.RangedHitRating, Stats.SpellHitRating, }, { Stats.Stamina, }, ignoreSum = true } -- s57359
+L["%s초에 걸쳐 %s의 생명력과 %s의 마나가 회복됩니다. 음식을 꾸준히 %s초 이상 먹으면 포만감을 느끼게 되고 %s시간 동안 적중도가 %s만큼, 체력이 %s만큼 증가합니다"] = { false, false, false, false, false, { Stats.MeleeHitRating, Stats.RangedHitRating, Stats.SpellHitRating, }, { Stats.Stamina, }, ignoreSum = true } -- s57359
 L["%s시간 동안 적중도가 %s만큼 증가하고 체력이 %s만큼 증가합니다"] = { false, { Stats.MeleeHitRating, Stats.RangedHitRating, Stats.SpellHitRating, }, { Stats.Stamina, }, } -- s57360
-L["%s초에 걸쳐 %s의 생명력과 %s의 마나가 회복됩니다. 음식을 꾸준히 %s초 이상 먹으면 포만감을 느끼게 되고 %s초 동안 정신력이 %s만큼, 체력이 %s만큼 증가합니다"] = { false, false, false, false, false, { Stats.Spirit, }, { Stats.Stamina, }, ignoreSum = true } -- s57364
+L["%s초에 걸쳐 %s의 생명력과 %s의 마나가 회복됩니다. 음식을 꾸준히 %s초 이상 먹으면 포만감을 느끼게 되고 %s시간 동안 정신력이 %s만큼, 체력이 %s만큼 증가합니다"] = { false, false, false, false, false, { Stats.Spirit, }, { Stats.Stamina, }, ignoreSum = true } -- s57364
 L["%s시간 동안 정신력이 %s만큼 증가하고 체력이 %s만큼 증가합니다"] = { false, { Stats.Spirit, }, { Stats.Stamina, }, } -- s57365
-L["%s초에 걸쳐 %s의 생명력과 %s의 마나가 회복됩니다. 음식을 꾸준히 %s초 이상 먹으면 포만감을 느끼게 되고 %s초 동안 민첩성이 %s만큼, 체력이 %s만큼 증가합니다"] = { false, false, false, false, false, { Stats.Agility, }, { Stats.Stamina, }, ignoreSum = true } -- s57366
+L["%s초에 걸쳐 %s의 생명력과 %s의 마나가 회복됩니다. 음식을 꾸준히 %s초 이상 먹으면 포만감을 느끼게 되고 %s시간 동안 민첩성이 %s만큼, 체력이 %s만큼 증가합니다"] = { false, false, false, false, false, { Stats.Agility, }, { Stats.Stamina, }, ignoreSum = true } -- s57366
 L["%s시간 동안 민첩성이 %s만큼 증가하고 체력이 %s만큼 증가합니다"] = { false, { Stats.Agility, }, { Stats.Stamina, }, } -- s57367
-L["%s초에 걸쳐 %s의 생명력과 %s의 마나가 회복됩니다. 음식을 꾸준히 %s초 이상 먹으면 포만감을 느끼게 되고 %s초 동안 힘이 %s만큼, 체력이 %s만큼 증가합니다"] = { false, false, false, false, false, { Stats.Strength, }, { Stats.Stamina, }, ignoreSum = true } -- s57370
+L["%s초에 걸쳐 %s의 생명력과 %s의 마나가 회복됩니다. 음식을 꾸준히 %s초 이상 먹으면 포만감을 느끼게 되고 %s시간 동안 힘이 %s만큼, 체력이 %s만큼 증가합니다"] = { false, false, false, false, false, { Stats.Strength, }, { Stats.Stamina, }, ignoreSum = true } -- s57370
 L["%s시간 동안 힘이 %s만큼 증가하고 체력이 %s만큼 증가합니다"] = { false, { Stats.Strength, }, { Stats.Stamina, }, } -- s57371
 L["%s시간 동안 전투력이 %s만큼, 주문력이 %s만큼, 체력이 %s만큼 증가합니다"] = { false, { Stats.GenericAttackPower, Stats.RangedAttackPower, }, { Stats.SpellDamage, }, { Stats.Stamina, }, } -- s57399
 L["%s분 동안 치명타로 받는 피해와 입히는 치명타 피해가 %s%만큼 증가하고 치명타 적중률이 %s%만큼 증가합니다"] = { false, false, { Stats.MeleeCrit, Stats.RangedCrit, }, } -- s57524
@@ -2200,7 +2200,7 @@ L["달빛 섬광 시전 시 일정 확률로 정신력이 %s만큼 증가합니�
 L["땅을 강하게 내려쳐 숨막히는 먼지 구름을 불러내어 일정 범위 내에 있는 모든 적에게 매초마다 %s의 자연 피해를 입히고 이동 속도를 %s%만큼 감소시킵니다"] = { false, { Stats.MeleeHit, Stats.RangedHit, }, reduction = true } -- s58965
 L["%s초 동안 방어구 관통력이 추가로 %s만큼 증가합니다. 최대 %s번까지 중복됩니다"] = { false, { Stats.ArmorPenetrationRating, }, false, } -- s59043
 L["%s분 동안 모든 능력치가 %s만큼 증가합니다"] = { false, { Stats.AllStats, }, } -- s59191
-L["%s초 동안 %s의 생명력을 회복합니다. 음식을 먹으려면 앉아 있어야 합니다. 음식을 꾸준히 %s초 이상 먹으면 포만감을 느끼게 되고 %s초 동안 회피 숙련도가 %s만큼 증가합니다"] = { false, false, false, false, { Stats.DodgeRating, }, ignoreSum = true } -- s59227
+L["%s초 동안 %s의 생명력을 회복합니다. 음식을 먹으려면 앉아 있어야 합니다. 음식을 꾸준히 %s초 이상 먹으면 포만감을 느끼게 되고 %s시간 동안 회피 숙련도가 %s만큼 증가합니다"] = { false, false, false, false, { Stats.DodgeRating, }, ignoreSum = true } -- s59227
 L["온통 뱀장어 기름투성이입니다. %s시간 동안 회피 숙련도가 %s만큼 증가합니다"] = { false, { Stats.DodgeRating, }, } -- s59230
 L["바리마트라스의 힘을 불출시켜 공격 속도를 %s%만큼 증가시키고 모든 공격력을 %s%만큼 증가시킵니다"] = { { Stats.MeleeHaste, }, false, } -- s59424
 L["%s초 동안 전투력이 %s만큼 증가하지만 방어도가 %s%만큼 감소합니다"] = { false, { Stats.AttackPower, }, false, } -- s59620
@@ -2240,7 +2240,7 @@ L["표범 변신, 곰 변신, 광포한 곰 변신 시 치명타 적중도가 %s
 L["달빛야수 변신 시 주문 극대화 적중도가 %s만큼 증가합니다"] = { { Stats.SpellCritRating, }, } -- s62107
 L["생명의 나무 변신 시 치유량이 %s만큼 증가합니다"] = { { Stats.HealingPower, }, } -- s62111
 L["얼음 손길 사용 시 추가로 방어 숙련도가 %s만큼 증가합니다"] = { { Stats.DefenseRating, }, ignoreSum = true } -- s62147
-L["%s초에 걸쳐 총 %s의 생명력이 회복됩니다. 음식을 먹으려면 앉아 있어야 합니다. 음식을 꾸준히 %s초 이상 먹으면 포만감을 느끼게 되고 %s초 동안 적중도가 %s만큼, 체력이 %s만큼 증가합니다"] = { false, false, false, false, { Stats.MeleeHitRating, Stats.RangedHitRating, Stats.SpellHitRating, }, { Stats.Stamina, }, ignoreSum = true } -- s62351
+L["%s초에 걸쳐 총 %s의 생명력이 회복됩니다. 음식을 먹으려면 앉아 있어야 합니다. 음식을 꾸준히 %s초 이상 먹으면 포만감을 느끼게 되고 %s시간 동안 적중도가 %s만큼, 체력이 %s만큼 증가합니다"] = { false, false, false, false, { Stats.MeleeHitRating, Stats.RangedHitRating, Stats.SpellHitRating, }, { Stats.Stamina, }, ignoreSum = true } -- s62351
 L["시전자가 용암이 되어 가속이 %s%만큼 증가합니다. 추가로 매초마다 시전자에게서 불길이 분출하여 %s미터 반경 내에 있는 적들에게 %s의 화염 피해를 입힙니다"] = { { Stats.MeleeHaste, }, false, false, } -- s62373
 L["%s시간 동안 모든 마법에 대한 저항력이 %s만큼 증가합니다. 동시에 전투 비약 및 강화 비약으로 간주됩니다. 이 효과는 죽어도 지속됩니다"] = { false, { Stats.FireResistance, Stats.NatureResistance, Stats.FrostResistance, Stats.ShadowResistance, Stats.ArcaneResistance, }, } -- s62380
 L["공격력이 %s%만큼 증가하고 전투력이 %s%만큼 증가합니다"] = { false, { Stats.MeleeHaste, }, } -- s62555
@@ -2252,7 +2252,7 @@ L["일정 확률로 %s초 동안 치명타 및 주문 극대화 적중도가 %s�
 L["격노의 토템으로 향상되는 주문력이 %s%만큼 증가합니다"] = { { Stats.SpellDamage, }, } -- s63283
 L["%s초 동안 소환수의 가속이 %s%만큼 증가하고 전체 생명력의 %s%에 해당하는 생명력이 회복됩니다"] = { false, { Stats.MeleeHaste, }, false, } -- s63560
 L["동료의 죽음이 잠자는 에너지를 일깨웁니다. 공격력이 %s%만큼 증가하고 공격 속도가 %s%만큼 증가합니다"] = { false, { Stats.MeleeHaste, }, } -- s63630
-L["%s초에 걸쳐 총 %s의 생명력과 %s의 마나가 회복됩니다. 음식을 먹으려면 앉아 있어야 합니다. 음식을 꾸준히 %s초 이상 먹으면 포만감을 느끼게 되고 %s초 동안 전투력이 %s만큼, 주문력이 %s만큼 증가합니다"] = { false, false, false, false, false, { Stats.AttackPower, }, { Stats.SpellDamage, }, ignoreSum = true } -- s64056
+L["%s초에 걸쳐 총 %s의 생명력과 %s의 마나가 회복됩니다. 음식을 먹으려면 앉아 있어야 합니다. 음식을 꾸준히 %s초 이상 먹으면 포만감을 느끼게 되고 %s시간 동안 전투력이 %s만큼, 주문력이 %s만큼 증가합니다"] = { false, false, false, false, false, { Stats.AttackPower, }, { Stats.SpellDamage, }, ignoreSum = true } -- s64056
 L["%s분에 걸쳐 총 %s의 생명력이 회복됩니다. 음식을 먹으려면 앉아 있어야 합니다"] = { false, { Stats.GenericManaRegen, }, } -- s64356
 L["무기 막기 숙련도가 %s만큼 증가하고 다음 무기 막기 성공 시 %s의 피해를 입힙니다. 최대 %s번까지 중복되며 무기 막기 성공 시 중복된 효과는 사라집니다"] = { { Stats.ParryRating, }, false, false, } -- s64440
 L["화염 억제제를 공중에 분사하여 실내를 덮고 모든 불길을 끕니다. 추가로 적들은 %s초 동안 시전 속도가 %s%만큼 감소합니다"] = { false, { Stats.SpellHaste, }, reduction = true } -- s64570
@@ -2276,7 +2276,7 @@ L["근접 및 원거리 공격으로 치명타를 적중시키면 일정 확률�
 L["근접 혹은 원거리 공격 시 일정 확률로 %s초 동안 치명타 및 주문 극대화 적중도가 %s만큼 증가합니다"] = { false, { Stats.MeleeCritRating, Stats.RangedCritRating, Stats.SpellCritRating, }, ignoreSum = true } -- s65025
 L["화염 억제제를 공중에 분사하여 %s미터 내의 모든 불길을 끕니다. 추가로 적들은 %s초 동안 시전 속도가 %s%만큼 감소합니다"] = { false, false, { Stats.SpellHaste, }, reduction = true } -- s65192
 L["사로나이트 기반 생명체의 안정된 분자 구조를 해체하는 티탄 에너지의 광선을 집중시킵니다. %s초 동안 공격 속도를 %s%만큼 감소시키고 시전 속도를 %s%만큼 감소시킵니다"] = { false, false, { Stats.SpellHaste, }, reduction = true } -- s65210
-L["%s초에 걸쳐 총 %s의 마나가 회복됩니다. 음료를 마시려면 앉아 있어야 합니다. 음료를 꾸준히 %s초 이상 마시면 \"포만감\"을 느끼게 되고 %s초 동안 치명타 및 주문 극대화 적중도가 %s만큼 증가합니다. 평범한 술입니다"] = { false, { Stats.GenericManaRegen, }, false, false, { Stats.MeleeCritRating, Stats.RangedCritRating, Stats.SpellCritRating, }, } -- s65363
+L["%s초에 걸쳐 총 %s의 마나가 회복됩니다. 음료를 마시려면 앉아 있어야 합니다. 음료를 꾸준히 %s초 이상 마시면 \"포만감\"을 느끼게 되고 %s시간 동안 치명타 및 주문 극대화 적중도가 %s만큼 증가합니다. 평범한 술입니다"] = { false, { Stats.GenericManaRegen, }, false, false, { Stats.MeleeCritRating, Stats.RangedCritRating, Stats.SpellCritRating, }, } -- s65363
 L["치명타 및 주문 극대화 적중도 %s만큼 증가. 가을 축제 맥주: 상쾌하고 풍부한 맛입니다! %s시간 동안 지속됩니다"] = { { Stats.MeleeCritRating, Stats.RangedCritRating, Stats.SpellCritRating, }, false, } -- s65365
 L["주위 모든 무쇠 피조물을 뜨거운 열기로 강타하여 이동 속도를 %s만큼, 가속을 %s만큼 증가시킵니다. 최대 %s번까지 중복됩니다. 효과가 %s번까지 중복되면 무쇠 피조물이 녹아 용암이 됩니다"] = { false, { Stats.MeleeHaste, }, false, false, } -- s65667
 L["활성화되면 무기 막기 확률이 %s%만큼 증가하고 %s%의 확률로 전방에서 시전되는 주문을 튕겨냅니다. %s초 동안 지속됩니다"] = { { Stats.Parry, }, false, false, } -- s65871
@@ -2310,7 +2310,7 @@ L["공격 속도가 %s%만큼 증가하고 공격력이 %s%만큼 증가합니�
 L["얼어붙은 왕좌의 한기가 주위 모든 적의 물리 공격에 대한 회피율을 %s%만큼 감소시킵니다"] = { { Stats.Dodge, }, reduction = true } -- s69127
 L["%s초 동안 최대 %s회의 공격 시 시전자의 공격 속도가 %s%만큼 증가합니다"] = { false, false, { Stats.MeleeHaste, }, } -- s69264
 L["탄력도 및 체력 %s만큼 증가\n가을 축제 맥주: 상쾌하고 풍부한 맛입니다! %s시간 동안 지속됩니다"] = { { Stats.ResilienceRating, Stats.Stamina, }, false, } -- s69559
-L["%s초에 걸쳐 총 %s의 마나가 회복됩니다. 음료를 마시려면 앉아 있어야 합니다. 음료를 꾸준히 %s초 이상 마시면 \"포만감\"을 느끼게 되고 %s초 동안 체력과 탄력도가 %s만큼 증가합니다. 평범한 술입니다"] = { false, { Stats.GenericManaRegen, }, false, false, { Stats.ResilienceRating, }, } -- s69560
+L["%s초에 걸쳐 총 %s의 마나가 회복됩니다. 음료를 마시려면 앉아 있어야 합니다. 음료를 꾸준히 %s초 이상 마시면 \"포만감\"을 느끼게 되고 %s시간 동안 체력과 탄력도가 %s만큼 증가합니다. 평범한 술입니다"] = { false, { Stats.GenericManaRegen, }, false, false, { Stats.ResilienceRating, }, } -- s69560
 L["방어도가 %s%만큼, 공격 속도가 %s%만큼 증가합니다"] = { false, { Stats.MeleeHaste, }, } -- s69647
 L["시전자 전방 %s미터 내에 있는 적에게 %s의 냉기 피해를 입히고 %s분 동안 공격 속도를 %s%만큼, 이동 속도를 %s%만큼 감소시킵니다"] = { false, false, false, { Stats.MeleeHaste, }, false, reduction = true } -- s69649
 L["주문력이 %s만큼 증가하고 매혹적인 향수를 뿌린 이들을 유혹합니다. %s시간 동안 지속됩니다"] = { { Stats.SpellPower, }, false, } -- s70244
@@ -2682,7 +2682,7 @@ L["아군 대상의 지능을 %s만큼 증가시키고 %s초마다 %s의 마나�
 L["가격 당했을 때 공격자에게 %s의 화염 피해를 입히고, 주문 극대화율이 %s%만큼 증가하며, 치명타 공격에 적중 당할 확률이 %s%만큼 감소합니다. 마법사의 갑옷 주문은 동시에 한 종류만 사용할 수 있습니다. %s분 동안 지속됩니다"] = { false, { Stats.SpellCrit, }, false, false, } -- s35915
 L["다음 %s초 내에 가해지는 공격의 치명타 및 극대화도가 %s만큼 증가합니다"] = { false, { Stats.MeleeCritRating, Stats.RangedCritRating, Stats.SpellCritRating, }, } -- s36111
 L["%s분 동안 적의 지능을 %s만큼, 힘을 %s만큼 감소시킵니다"] = { false, { Stats.Intellect, }, { Stats.Strength, }, reduction = true } -- s36695
-L["방어도를 %s만큼, 냉기 저항력을 %s만큼 증가시킵니다. 시전자를 공격한 적은 일정 확률로 %s분 동안 이동 속도가 %s%로 감소하여 공격 속도가 %s%만큼 감소합니다. 마법사의 갑옷 주문은 동시에 한 종류만 사용할 수 있습니다. %s분 동안 지속됩니다"] = { { Stats.Armor, }, { Stats.FrostResistance, }, false, false, false, false, } -- s36881
+L["방어도를 %s만큼, 냉기 저항력을 %s만큼 증가시킵니다. 시전자를 공격한 적은 일정 확률로 %s초 동안 이동 속도가 %s%로 감소하여 공격 속도가 %s%만큼 감소합니다. 마법사의 갑옷 주문은 동시에 한 종류만 사용할 수 있습니다. %s분 동안 지속됩니다"] = { { Stats.Armor, }, { Stats.FrostResistance, }, false, false, false, false, } -- s36881
 L["특수 공격을 할 경우 일정 확률로 %s초 동안 치명타도가 %s만큼 증가합니다"] = { false, { Stats.MeleeCritRating, Stats.RangedCritRating, Stats.SpellCritRating, }, ignoreSum = true } -- s37173
 L["신성한 방패를 사용할 때마다 다음 %s초 내에 받는 %s회의 공격에 대해 회피 숙련도가 %s만큼 증가합니다"] = { false, false, { Stats.DodgeRating, }, ignoreSum = true } -- s37191
 L["신성한 방패 기술을 사용할 때마다 다음 %s초 내에 받는 %s회의 공격에 대해 회피 숙련도가 %s만큼 증가합니다"] = { false, false, { Stats.DodgeRating, }, } -- s37193
@@ -2714,13 +2714,13 @@ L["대상을 중독시켜 대상의 공격 간격을 %s%만큼 늘이고 주문 
 L["%s초 동안 치명타 및 극대화도가 추가로 %s만큼 증가합니다"] = { false, { Stats.MeleeCritRating, Stats.RangedCritRating, Stats.SpellCritRating, }, } -- s42976
 L["대상을 광기에 휩싸이도록 하여 공격 속도를 %s%만큼 증가시킵니다. 추가로 대상은 기절, 이동 방해, 군중 제어 효과에 면역이 됩니다"] = { { Stats.MeleeHaste, }, } -- s43292
 L["%s초 동안 대상의 공격 속도를 %s%만큼 향상시키지만 %s초마다 아군에게 %s의 암흑 피해를 입힙니다"] = { false, { Stats.MeleeHaste, }, false, false, } -- s43664
-L["%s초에 걸쳐 총 %s의 마나가 회복됩니다. 음료를 마시려면 앉아 있어야 합니다. 음료를 꾸준히 %s초 이상 마시면 깨달음을 얻게 되고 %s초 동안 치명타 및 극대화도, 정신력이 %s만큼 증가합니다"] = { false, false, false, false, { Stats.MeleeCritRating, Stats.RangedCritRating, Stats.SpellCritRating, }, ignoreSum = true } -- s43706
+L["%s초에 걸쳐 총 %s의 마나가 회복됩니다. 음료를 마시려면 앉아 있어야 합니다. 음료를 꾸준히 %s초 이상 마시면 깨달음을 얻게 되고 %s분 동안 치명타 및 극대화도, 정신력이 %s만큼 증가합니다"] = { false, false, false, false, { Stats.MeleeCritRating, Stats.RangedCritRating, Stats.SpellCritRating, }, ignoreSum = true } -- s43706
 L["근접 및 원거리 공격 시 %s%의 확률로 %s초 동안 근접 및 원거리 치명타도가 %s만큼 증가합니다"] = { false, false, { Stats.MeleeCritRating, Stats.RangedCritRating, }, ignoreSum = true } -- s43816
 L["근접 및 원거리 치명타도가 %s만큼 증가합니다"] = { { Stats.MeleeCritRating, Stats.RangedCritRating, }, } -- s43817
 L["원거리 공격 속도가 %s%만큼 증가합니다. 화살통과 탄약주머니의 가속 효과와 중복 적용되지 않습니다"] = { { Stats.RangedHaste, }, } -- s44972
 L["가격 당했을 때 공격자에게 %s의 화염 피해를 입히고, 주문의 극대화율이 %s%만큼 증가하며, 치명타 공격에 적중 당할 확률이 %s%만큼 감소합니다. 마법사의 갑옷 주문은 동시에 한 종류만 사용할 수 있습니다. %s분 동안 지속됩니다"] = { false, { Stats.SpellCrit, }, false, false, } -- s45985
 L["치명타 및 극대화율이 %s%만큼 증가하고 공격자에게 화염 피해를 입힙니다"] = { { Stats.MeleeCrit, Stats.RangedCrit, Stats.SpellCrit, }, } -- s46352
-L["%s초에 걸쳐 총 %s의 생명력이 회복됩니다. 음식을 먹으려면 앉아 있어야 합니다. 음식을 꾸준히 %s초 이상 먹으면 %s초 동안 지능이 %s만큼 증가합니다"] = { false, false, false, false, { Stats.Intellect, }, ignoreSum = true } -- s46683
+L["%s초에 걸쳐 총 %s의 생명력이 회복됩니다. 음식을 먹으려면 앉아 있어야 합니다. 음식을 꾸준히 %s초 이상 먹으면 %s분 동안 지능이 %s만큼 증가합니다"] = { false, false, false, false, { Stats.Intellect, }, ignoreSum = true } -- s46683
 L["부정의 형상을 취하여 공격 속도 및 룬 재생 속도가 %s%만큼 증가하고, 이동 속도가 %s%만큼 증가합니다. 주문의 전역 재사용 대기시간이 %s%s초만큼 감소합니다. 한 번에 하나의 형상만 취할 수 있습니다. 새로운 형상을 취하면 저장된 룬 마력이 사라집니다"] = { { Stats.MeleeHaste, }, false, false, false, } -- s48265
 L["룬의 마력으로 거대화되어 전투력이 %s만큼 증가합니다"] = { { Stats.AttackPower, }, } -- s49643
 L["%s초 동안 아군의 공격 속도를 %s%만큼 증가시키지만 %s초마다 그 대상에게 %s의 암흑 피해를 입힙니다"] = { false, { Stats.MeleeHaste, }, false, false, } -- s49805
@@ -2741,7 +2741,7 @@ L["%s초 동안 치명타 및 극대화도가 %s만큼, 주문력이 %s만큼 �
 L["대상의 주문 극대화율을 %s%만큼 증가시킵니다"] = { { Stats.SpellCrit, }, } -- s54283
 L["파티원과 공격대원의 최대 마나가 %s만큼 증가하고 %s초마다 %s의 마나를 회복합니다"] = { { Stats.Mana, }, false, { Stats.GenericManaRegen, }, } -- s54424
 L["%s시간 동안 민첩성이 %s만큼 증가하고 치명타 및 극대화도가 %s만큼 증가합니다. 전투 비약으로 간주됩니다"] = { false, { Stats.Agility, }, { Stats.MeleeCritRating, Stats.RangedCritRating, Stats.SpellCritRating, }, } -- s54494
-L["%s분 동안 대상의 주문 극대화율이 %s%만큼 증가합니다. 대상의 주문이 극대화 효과를 발휘하면 마법 집중을 시전한 마법사의 주문이 극대화될 확률이 %s분 동안 %s%만큼 증가합니다. 자신에게 시전할 수 없으며 하나의 대상에만 적용됩니다"] = { false, { Stats.SpellCrit, }, false, { Stats.SpellCrit, }, } -- s54646
+L["%s분 동안 대상의 주문 극대화율이 %s%만큼 증가합니다. 대상의 주문이 극대화 효과를 발휘하면 마법 집중을 시전한 마법사의 주문이 극대화될 확률이 %s초 동안 %s%만큼 증가합니다. 자신에게 시전할 수 없으며 하나의 대상에만 적용됩니다"] = { false, { Stats.SpellCrit, }, false, { Stats.SpellCrit, }, } -- s54646
 L["대상의 주문 극대화율이 %s%만큼 증가합니다. 대상의 주문이 극대화 효과를 발휘하면 마법 집중을 시전한 마법사의 주문이 극대화될 확률이 증가합니다"] = { { Stats.SpellCrit, }, } -- s54648
 L["다음 %s회의 근접 혹은 원거리 공격 시 치명타 및 극대화도가 %s만큼 증가합니다. 최대 %s번까지 중첩됩니다. %s초 후 사라집니다"] = { false, { Stats.MeleeCritRating, Stats.RangedCritRating, Stats.SpellCritRating, }, false, false, ignoreSum = true } -- s54696
 L["일시적으로 최대 생명력이 %s%만큼 증가하고 치유 주문과 효과로 회복되는 생명력이 %s%만큼 증가합니다. %s초 동안 지속됩니다. 효과가 사라지면 임시 생명력은 사라집니다"] = { { Stats.Health, }, false, false, } -- s55233
@@ -2749,14 +2749,14 @@ L["약초채집으로 익힌 기술로 땅에서 에너지와 영양분을 흡�
 L["대상 지역에 맹렬한 폭풍을 생성하여 %s초마다 적에게 자연 피해를 입히고 적의 공격 간격을 %s%만큼 늘입니다. %s초 동안 지속됩니다"] = { false, { Stats.MeleeHaste, }, false, reduction = true } -- s55881
 L["%s분 동안 치명타율이 %s%만큼 증가합니다"] = { false, { Stats.MeleeCrit, Stats.RangedCrit, }, } -- s56410
 L["아군 대상에게 지혜의 축복을 걸어 %s분 동안 %s초마다 %s의 마나를 회복시킵니다. 성기사마다 하나의 대상에게 하나의 축복만 효력을 발휘합니다"] = { false, false, { Stats.GenericManaRegen, }, } -- s56521
-L["%s초에 걸쳐 %s의 생명력과 %s의 마나가 회복됩니다. 음식을 꾸준히 %s초 이상 먹으면 포만감을 느끼게 되고 %s초 동안 치명타 및 극대화도가 %s만큼, 체력이 %s만큼 증가합니다"] = { false, false, false, false, false, { Stats.MeleeCritRating, Stats.RangedCritRating, Stats.SpellCritRating, }, { Stats.Stamina, }, ignoreSum = true } -- s57098
+L["%s초에 걸쳐 %s의 생명력과 %s의 마나가 회복됩니다. 음식을 꾸준히 %s초 이상 먹으면 포만감을 느끼게 되고 %s시간 동안 치명타 및 극대화도가 %s만큼, 체력이 %s만큼 증가합니다"] = { false, false, false, false, false, { Stats.MeleeCritRating, Stats.RangedCritRating, Stats.SpellCritRating, }, { Stats.Stamina, }, ignoreSum = true } -- s57098
 L["%s시간 동안 치명타 및 극대화도가 %s만큼 증가하고 체력이 %s만큼 증가합니다"] = { false, { Stats.MeleeCritRating, Stats.RangedCritRating, Stats.SpellCritRating, }, { Stats.Stamina, }, } -- s57100
-L["%s초에 걸쳐 %s의 생명력이 회복됩니다. 음식을 꾸준히 %s초 이상 먹으면 포만감을 느끼게 되고 %s초 동안 치명타 및 극대화도가 %s만큼, 체력이 %s만큼 증가합니다"] = { false, false, false, false, { Stats.MeleeCritRating, Stats.RangedCritRating, Stats.SpellCritRating, }, { Stats.Stamina, }, ignoreSum = true } -- s57285
-L["%s초에 걸쳐 %s의 생명력이 회복됩니다. 음식을 꾸준히 %s초 이상 먹으면 포만감을 느끼게 되고 %s초 동안 정신력이 %s만큼, 체력이 %s만큼 증가합니다"] = { false, false, false, false, { Stats.Spirit, }, { Stats.Stamina, }, ignoreSum = true } -- s57289
+L["%s초에 걸쳐 %s의 생명력이 회복됩니다. 음식을 꾸준히 %s초 이상 먹으면 포만감을 느끼게 되고 %s시간 동안 치명타 및 극대화도가 %s만큼, 체력이 %s만큼 증가합니다"] = { false, false, false, false, { Stats.MeleeCritRating, Stats.RangedCritRating, Stats.SpellCritRating, }, { Stats.Stamina, }, ignoreSum = true } -- s57285
+L["%s초에 걸쳐 %s의 생명력이 회복됩니다. 음식을 꾸준히 %s초 이상 먹으면 포만감을 느끼게 되고 %s시간 동안 정신력이 %s만큼, 체력이 %s만큼 증가합니다"] = { false, false, false, false, { Stats.Spirit, }, { Stats.Stamina, }, ignoreSum = true } -- s57289
 L["%s시간 동안 정신력과 체력이 %s만큼 증가합니다"] = { false, { Stats.Spirit, Stats.Stamina, }, } -- s57291
-L["%s초에 걸쳐 %s의 생명력이 회복됩니다. 음식을 먹으려면 앉아 있어야 합니다. 음식을 꾸준히 %s초 이상 먹으면 포만감을 느끼게 되고 %s초 동안 정신력이 %s만큼, 체력이 %s만큼 증가합니다"] = { false, false, false, false, { Stats.Spirit, }, { Stats.Stamina, }, ignoreSum = true } -- s57333
+L["%s초에 걸쳐 %s의 생명력이 회복됩니다. 음식을 먹으려면 앉아 있어야 합니다. 음식을 꾸준히 %s초 이상 먹으면 포만감을 느끼게 되고 %s시간 동안 정신력이 %s만큼, 체력이 %s만큼 증가합니다"] = { false, false, false, false, { Stats.Spirit, }, { Stats.Stamina, }, ignoreSum = true } -- s57333
 L["%s시간 동안 숙련도가 %s만큼 증가하고 체력이 %s만큼 증가합니다"] = { false, { Stats.ExpertiseRating, }, { Stats.Stamina, }, } -- s57356
-L["%s초에 걸쳐 총 %s의 생명력이 회복됩니다. 음식을 꾸준히 %s초 이상 먹으면 포만감을 느끼게 되고 %s초 동안 치명타 및 극대화도가 %s만큼, 체력이 %s만큼 증가합니다"] = { false, false, false, false, { Stats.MeleeCritRating, Stats.RangedCritRating, Stats.SpellCritRating, }, { Stats.Stamina, }, ignoreSum = true } -- s57357
+L["%s초에 걸쳐 총 %s의 생명력이 회복됩니다. 음식을 꾸준히 %s초 이상 먹으면 포만감을 느끼게 되고 %s시간 동안 치명타 및 극대화도가 %s만큼, 체력이 %s만큼 증가합니다"] = { false, false, false, false, { Stats.MeleeCritRating, Stats.RangedCritRating, Stats.SpellCritRating, }, { Stats.Stamina, }, ignoreSum = true } -- s57357
 L["%s분 동안 치명타로 받는 피해와 치명타로 입히는 피해가 %s%만큼 증가하고 치명타율이 %s%만큼 증가합니다"] = { false, false, { Stats.MeleeCrit, Stats.RangedCrit, }, } -- s57524
 L["주위 적을 강타하여 %s의 피해를 입히고 %s초 동안 적의 공격 간격을 %s%만큼 늘입니다. 전투력에 따라 입히는 피해가 증가합니다. 추가 위협 수준을 생성하며 최대 %s명의 대상에게 영향을 미칩니다"] = { false, false, { Stats.MeleeHaste, }, false, reduction = true } -- s57832
 L["곰 변신 상태에서 받는 피해가 %s%만큼 감소하고 회피율이 %s%만큼 증가하며, 회피할 때마다 %s의 분노를 생성합니다"] = { false, { Stats.Dodge, }, false, } -- s57878
@@ -2782,13 +2782,13 @@ L["%s초마다 %s의 암흑 피해를 입히지만 %s초 동안 물리 공격력
 L["%s초 동안 모든 공격과 주문으로부터 자신을 보호합니다. 하지만 이 동안은 공격 간격이 %s%만큼 늘어납니다. 한 번 보호한 후 %s초 동안은 천상의 보호막, 신의 가호, 보호의 손길로 인한 무적 효과를 받지 못합니다"] = { false, { Stats.MeleeHaste, }, false, reduction = true } -- s63148
 L["%s초 동안 공격 속도가 %s%만큼 증가하고 공격력이 %s%만큼 증가합니다"] = { false, { Stats.MeleeHaste, }, false, } -- s63227
 L["일정 확률로 %s초 동안 치명타 및 극대화도가 %s만큼 증가합니다"] = { false, { Stats.MeleeCritRating, Stats.RangedCritRating, Stats.SpellCritRating, }, ignoreSum = true } -- s63251
-L["%s초에 걸쳐 총 %s의 생명력과 %s의 마나가 회복됩니다. 음식을 먹으려면 앉아 있어야 합니다. 음식을 꾸준히 %s초 이상 먹으면 포만감을 느끼게 되고 %s초 동안 전투력이 %s만큼, 지능이 %s만큼 증가합니다"] = { false, false, false, false, false, { Stats.AttackPower, }, { Stats.Intellect, }, ignoreSum = true } -- s64056
+L["%s초에 걸쳐 총 %s의 생명력과 %s의 마나가 회복됩니다. 음식을 먹으려면 앉아 있어야 합니다. 음식을 꾸준히 %s초 이상 먹으면 포만감을 느끼게 되고 %s시간 동안 전투력이 %s만큼, 지능이 %s만큼 증가합니다"] = { false, false, false, false, false, { Stats.AttackPower, }, { Stats.Intellect, }, ignoreSum = true } -- s64056
 L["활성화되면 다음 번개 화살, 연쇄 번개, 용암 폭발 주문은 즉시 시전됩니다. 추가로 화염, 냉기, 자연 계열 주문의 공격력이 %s%만큼 증가하고 %s초 동안 주문 가속이 %s%만큼 증가합니다"] = { false, false, { Stats.SpellHaste, }, } -- s64701
 L["주문을 시전할 때마다 일정 확률로 %s초 동안 정신력이 %s만큼 증가합니다"] = { false, { Stats.Spirit, }, ignoreSum = true } -- s64738
 L["고정 사격 시 일정 확률로 %s초 동안 민첩성이 %s만큼 증가합니다"] = { false, { Stats.Agility, }, ignoreSum = true } -- s64860
 L["%s초 동안 %s초마다 마나가 낮은 주위 파티원 혹은 공격대원 %s명의 마나를 %s%만큼 회복시키고 %s초 동안 최대 마나를 %s%만큼 증가시킵니다. 최대 %s의 마나를 회복시킵니다. 주문을 유지하려면 사제는 정신을 집중해야 합니다"] = { false, false, false, false, false, { Stats.Mana, }, { Stats.Mana, }, } -- s64904
 L["%s초 동안 주문을 시전할 때마다 정신력이 %s만큼 중복되어 증가합니다. %s초 후에 효과가 사라집니다. 마나를 소모하지 않는 능력 사용 시 효과가 발동하지 않습니다"] = { false, { Stats.Spirit, }, false, ignoreSum = true } -- s64999
-L["%s초에 걸쳐 총 %s의 마나가 회복됩니다. 음료를 마시려면 앉아 있어야 합니다. 음료를 꾸준히 %s초 이상 마시면 \"포만감\"을 느끼게 되고 %s초 동안 치명타 및 극대화도가 %s만큼 증가합니다. 평범한 술입니다"] = { false, { Stats.GenericManaRegen, }, false, false, { Stats.MeleeCritRating, Stats.RangedCritRating, Stats.SpellCritRating, }, } -- s65363
+L["%s초에 걸쳐 총 %s의 마나가 회복됩니다. 음료를 마시려면 앉아 있어야 합니다. 음료를 꾸준히 %s초 이상 마시면 \"포만감\"을 느끼게 되고 %s시간 동안 치명타 및 극대화도가 %s만큼 증가합니다. 평범한 술입니다"] = { false, { Stats.GenericManaRegen, }, false, false, { Stats.MeleeCritRating, Stats.RangedCritRating, Stats.SpellCritRating, }, } -- s65363
 L["치명타 및 극대화도 %s만큼 증가. 가을 축제 맥주: 상쾌하고 풍부한 맛입니다! %s시간 동안 지속됩니다"] = { { Stats.MeleeCritRating, Stats.RangedCritRating, Stats.SpellCritRating, }, false, } -- s65365
 L["활성화되면 %s초 동안 무기 막기 확률이 %s%만큼 증가하고 %s%의 확률로 전방에서 시전되는 주문을 튕겨냅니다"] = { false, { Stats.Parry, }, false, } -- s65871
 L["공격 속도가 %s%만큼 증가합니다. 공격 시 주위의 적 하나를 추가로 공격합니다. %s초 동안 지속됩니다"] = { { Stats.MeleeHaste, }, false, } -- s65956
@@ -2884,7 +2884,7 @@ L["그물을 던져 적의 눈을 멀게 하고 적중률을 %s%만큼 감소시
 L["두 가지의 한손 무기를 동시에 착용하고, 정면의 근접 공격을 무기로 막을 수 있습니다. 근접 공격 적중률이 %s%만큼 증가합니다"] = { { Stats.MeleeHit, Stats.RangedHit, }, } -- s86629
 L["거칠게 기습하여 공격 속도가 매우 빨라지지만 적중률은 %s%만큼 감소합니다"] = { { Stats.MeleeHit, Stats.RangedHit, }, reduction = true } -- s86726
 L["로데론의 힘을 불러냅니다.\n근접 공격 간 간격이 %s%만큼 감소합니다.\n공격력이 %s%만큼 증가합니다"] = { { Stats.MeleeHaste, }, false, } -- s87104
-L["%s초에 걸쳐 총 %s의 생명력과 %s의 마나가 회복됩니다. 음식을 먹으려면 앉아 있어야 합니다. 음식을 꾸준히 %s초 이상 먹으면 포만감을 느끼게 되고 %s초 동안 힘이 %s만큼, 체력이 %s만큼 증가합니다"] = { false, false, false, false, false, { Stats.Strength, }, { Stats.Stamina, }, ignoreSum = true } -- s87544
+L["%s초에 걸쳐 총 %s의 생명력과 %s의 마나가 회복됩니다. 음식을 먹으려면 앉아 있어야 합니다. 음식을 꾸준히 %s초 이상 먹으면 포만감을 느끼게 되고 %s시간 동안 힘이 %s만큼, 체력이 %s만큼 증가합니다"] = { false, false, false, false, false, { Stats.Strength, }, { Stats.Stamina, }, ignoreSum = true } -- s87544
 L["%s시간 동안 민첩성과 체력이 %s만큼 증가합니다"] = { false, { Stats.Agility, Stats.Stamina, }, } -- s87546
 L["%s시간 동안 지능과 체력이 %s만큼 증가합니다"] = { false, { Stats.Intellect, Stats.Stamina, }, } -- s87547
 L["%s시간 동안 특화도와 체력이 %s만큼 증가합니다"] = { false, { Stats.MasteryRating, Stats.Stamina, }, } -- s87549
@@ -2893,18 +2893,18 @@ L["%s시간 동안 치명타 및 극대화도와 체력이 %s만큼 증가합니
 L["%s시간 동안 가속도와 체력이 %s만큼 증가합니다"] = { false, { Stats.MeleeHasteRating, Stats.RangedHasteRating, Stats.SpellHasteRating, Stats.Stamina, }, } -- s87552
 L["%s시간 동안 회피 숙련도와 체력이 %s만큼 증가합니다"] = { false, { Stats.DodgeRating, Stats.Stamina, }, } -- s87554
 L["%s시간 동안 무기 막기 숙련도와 체력이 %s만큼 증가합니다"] = { false, { Stats.ParryRating, Stats.Stamina, }, } -- s87555
-L["%s초에 걸쳐 총 %s의 생명력과 %s의 마나가 회복됩니다. 음식을 먹으려면 앉아 있어야 합니다. 음식을 꾸준히 %s초 이상 먹으면 포만감을 느끼게 되고 %s초 동안 민첩성이 %s만큼, 체력이 %s만큼 증가합니다"] = { false, false, false, false, false, { Stats.Agility, }, { Stats.Stamina, }, ignoreSum = true } -- s87566
-L["%s초에 걸쳐 총 %s의 생명력과 %s의 마나가 회복됩니다. 음식을 먹으려면 앉아 있어야 합니다. 음식을 꾸준히 %s초 이상 먹으면 포만감을 느끼게 되고 %s초 동안 지능이 %s만큼, 체력이 %s만큼 증가합니다"] = { false, false, false, false, false, { Stats.Intellect, }, { Stats.Stamina, }, ignoreSum = true } -- s87567
-L["%s초에 걸쳐 총 %s의 생명력과 %s의 마나가 회복됩니다. 음식을 먹으려면 앉아 있어야 합니다. 음식을 꾸준히 %s초 이상 먹으면 포만감을 느끼게 되고 %s초 동안 정신력이 %s만큼, 체력이 %s만큼 증가합니다"] = { false, false, false, false, false, { Stats.Spirit, }, { Stats.Stamina, }, ignoreSum = true } -- s87568
-L["%s초에 걸쳐 총 %s의 생명력과 %s의 마나가 회복됩니다. 음식을 먹으려면 앉아 있어야 합니다. 음식을 꾸준히 %s초 이상 먹으면 포만감을 느끼게 되고 %s초 동안 특화도가 %s만큼, 체력이 %s만큼 증가합니다"] = { false, false, false, false, false, { Stats.MasteryRating, }, { Stats.Stamina, }, ignoreSum = true } -- s87570
-L["%s초에 걸쳐 총 %s의 생명력과 %s의 마나가 회복됩니다. 음식을 먹으려면 앉아 있어야 합니다. 음식을 꾸준히 %s초 이상 먹으면 포만감을 느끼게 되고 %s초 동안 적중도가 %s만큼, 체력이 %s만큼 증가합니다"] = { false, false, false, false, false, { Stats.MeleeHitRating, Stats.RangedHitRating, Stats.SpellHitRating, }, { Stats.Stamina, }, ignoreSum = true } -- s87571
-L["%s초에 걸쳐 총 %s의 생명력과 %s의 마나가 회복됩니다. 음식을 먹으려면 앉아 있어야 합니다. 음식을 꾸준히 %s초 이상 먹으면 포만감을 느끼게 되고 %s초 동안 치명타 및 극대화도가 %s만큼, 체력이 %s만큼 증가합니다"] = { false, false, false, false, false, { Stats.MeleeCritRating, Stats.RangedCritRating, Stats.SpellCritRating, }, { Stats.Stamina, }, ignoreSum = true } -- s87572
-L["%s초에 걸쳐 총 %s의 생명력과 %s의 마나가 회복됩니다. 음식을 먹으려면 앉아 있어야 합니다. 음식을 꾸준히 %s초 이상 먹으면 포만감을 느끼게 되고 %s초 동안 가속도가 %s만큼, 체력이 %s만큼 증가합니다"] = { false, false, false, false, false, { Stats.MeleeHasteRating, Stats.RangedHasteRating, Stats.SpellHasteRating, }, { Stats.Stamina, }, ignoreSum = true } -- s87573
-L["%s초에 걸쳐 총 %s의 생명력과 %s의 마나가 회복됩니다. 음식을 먹으려면 앉아 있어야 합니다. 음식을 꾸준히 %s초 이상 먹으면 포만감을 느끼게 되고 %s초 동안 회피 숙련도가 %s만큼, 체력이 %s만큼 증가합니다"] = { false, false, false, false, false, { Stats.DodgeRating, }, { Stats.Stamina, }, ignoreSum = true } -- s87577
-L["%s초에 걸쳐 총 %s의 생명력과 %s의 마나가 회복됩니다. 음식을 먹으려면 앉아 있어야 합니다. 음식을 꾸준히 %s초 이상 먹으면 포만감을 느끼게 되고 %s초 동안 무기 막기 숙련도가 %s만큼, 체력이 %s만큼 증가합니다"] = { false, false, false, false, false, { Stats.ParryRating, }, { Stats.Stamina, }, ignoreSum = true } -- s87580
+L["%s초에 걸쳐 총 %s의 생명력과 %s의 마나가 회복됩니다. 음식을 먹으려면 앉아 있어야 합니다. 음식을 꾸준히 %s초 이상 먹으면 포만감을 느끼게 되고 %s시간 동안 민첩성이 %s만큼, 체력이 %s만큼 증가합니다"] = { false, false, false, false, false, { Stats.Agility, }, { Stats.Stamina, }, ignoreSum = true } -- s87566
+L["%s초에 걸쳐 총 %s의 생명력과 %s의 마나가 회복됩니다. 음식을 먹으려면 앉아 있어야 합니다. 음식을 꾸준히 %s초 이상 먹으면 포만감을 느끼게 되고 %s시간 동안 지능이 %s만큼, 체력이 %s만큼 증가합니다"] = { false, false, false, false, false, { Stats.Intellect, }, { Stats.Stamina, }, ignoreSum = true } -- s87567
+L["%s초에 걸쳐 총 %s의 생명력과 %s의 마나가 회복됩니다. 음식을 먹으려면 앉아 있어야 합니다. 음식을 꾸준히 %s초 이상 먹으면 포만감을 느끼게 되고 %s시간 동안 정신력이 %s만큼, 체력이 %s만큼 증가합니다"] = { false, false, false, false, false, { Stats.Spirit, }, { Stats.Stamina, }, ignoreSum = true } -- s87568
+L["%s초에 걸쳐 총 %s의 생명력과 %s의 마나가 회복됩니다. 음식을 먹으려면 앉아 있어야 합니다. 음식을 꾸준히 %s초 이상 먹으면 포만감을 느끼게 되고 %s시간 동안 특화도가 %s만큼, 체력이 %s만큼 증가합니다"] = { false, false, false, false, false, { Stats.MasteryRating, }, { Stats.Stamina, }, ignoreSum = true } -- s87570
+L["%s초에 걸쳐 총 %s의 생명력과 %s의 마나가 회복됩니다. 음식을 먹으려면 앉아 있어야 합니다. 음식을 꾸준히 %s초 이상 먹으면 포만감을 느끼게 되고 %s시간 동안 적중도가 %s만큼, 체력이 %s만큼 증가합니다"] = { false, false, false, false, false, { Stats.MeleeHitRating, Stats.RangedHitRating, Stats.SpellHitRating, }, { Stats.Stamina, }, ignoreSum = true } -- s87571
+L["%s초에 걸쳐 총 %s의 생명력과 %s의 마나가 회복됩니다. 음식을 먹으려면 앉아 있어야 합니다. 음식을 꾸준히 %s초 이상 먹으면 포만감을 느끼게 되고 %s시간 동안 치명타 및 극대화도가 %s만큼, 체력이 %s만큼 증가합니다"] = { false, false, false, false, false, { Stats.MeleeCritRating, Stats.RangedCritRating, Stats.SpellCritRating, }, { Stats.Stamina, }, ignoreSum = true } -- s87572
+L["%s초에 걸쳐 총 %s의 생명력과 %s의 마나가 회복됩니다. 음식을 먹으려면 앉아 있어야 합니다. 음식을 꾸준히 %s초 이상 먹으면 포만감을 느끼게 되고 %s시간 동안 가속도가 %s만큼, 체력이 %s만큼 증가합니다"] = { false, false, false, false, false, { Stats.MeleeHasteRating, Stats.RangedHasteRating, Stats.SpellHasteRating, }, { Stats.Stamina, }, ignoreSum = true } -- s87573
+L["%s초에 걸쳐 총 %s의 생명력과 %s의 마나가 회복됩니다. 음식을 먹으려면 앉아 있어야 합니다. 음식을 꾸준히 %s초 이상 먹으면 포만감을 느끼게 되고 %s시간 동안 회피 숙련도가 %s만큼, 체력이 %s만큼 증가합니다"] = { false, false, false, false, false, { Stats.DodgeRating, }, { Stats.Stamina, }, ignoreSum = true } -- s87577
+L["%s초에 걸쳐 총 %s의 생명력과 %s의 마나가 회복됩니다. 음식을 먹으려면 앉아 있어야 합니다. 음식을 꾸준히 %s초 이상 먹으면 포만감을 느끼게 되고 %s시간 동안 무기 막기 숙련도가 %s만큼, 체력이 %s만큼 증가합니다"] = { false, false, false, false, false, { Stats.ParryRating, }, { Stats.Stamina, }, ignoreSum = true } -- s87580
 L["%s시간 동안 숙련도 및 체력이 %s만큼 증가합니다"] = { false, { Stats.ExpertiseRating, Stats.Stamina, }, } -- s87634
 L["%s시간 동안 숙련도와 체력이 %s만큼 증가합니다"] = { false, { Stats.ExpertiseRating, Stats.Stamina, }, } -- s87635
-L["%s초에 걸쳐 총 %s의 생명력과 %s의 마나가 회복됩니다. 음식을 먹으려면 앉아 있어야 합니다. 음식을 꾸준히 %s초 이상 먹으면 포만감을 느끼게 되고 %s초 동안 숙련도가 %s만큼, 체력이 %s만큼 증가합니다"] = { false, false, false, false, false, { Stats.ExpertiseRating, }, { Stats.Stamina, }, ignoreSum = true } -- s87636
+L["%s초에 걸쳐 총 %s의 생명력과 %s의 마나가 회복됩니다. 음식을 먹으려면 앉아 있어야 합니다. 음식을 꾸준히 %s초 이상 먹으면 포만감을 느끼게 되고 %s시간 동안 숙련도가 %s만큼, 체력이 %s만큼 증가합니다"] = { false, false, false, false, false, { Stats.ExpertiseRating, }, { Stats.Stamina, }, ignoreSum = true } -- s87636
 L["%s시간 동안 야수의 힘을 %s만큼 증가시킵니다"] = { false, { Stats.Strength, }, } -- s87697
 L["%s시간 동안 야수의 체력이 %s만큼 증가합니다"] = { false, { Stats.Stamina, }, } -- s87699
 L["%s초 동안 시전 속도를 %s%만큼 증가시킵니다"] = { false, { Stats.SpellHaste, }, } -- s87780
@@ -3149,7 +3149,7 @@ L["%s초 동안 근접 가속이 %s만큼 증가합니다"] = { false, { Stats.M
 L["%s초 동안 원거리 가속이 %s%만큼 증가합니다"] = { false, { Stats.RangedHaste, }, } -- s3045
 L["%s초 동안 시전자의 방패 막기 확률이 %s%만큼 증가합니다"] = { false, { Stats.BlockChance, }, } -- s3419
 L["시전자의 회피율이 %s%만큼 증가합니다. 취소할 때까지 지속됩니다"] = { { Stats.Dodge, }, } -- s4086
-L["%s초에 걸쳐 총 %s의 생명력이 회복됩니다. 음식을 먹으려면 앉아 있어야 합니다. 음식을 꾸준히 %s초 이상 먹으면 포만감을 느끼게 되고 %s초 동안 체력이 %s만큼 증가합니다"] = { false, false, false, false, { Stats.Stamina, }, ignoreSum = true } -- s5004
+L["%s초에 걸쳐 총 %s의 생명력이 회복됩니다. 음식을 먹으려면 앉아 있어야 합니다. 음식을 꾸준히 %s초 이상 먹으면 포만감을 느끼게 되고 %s분 동안 체력이 %s만큼 증가합니다"] = { false, false, false, false, { Stats.Stamina, }, ignoreSum = true } -- s5004
 L["이 독한 음료를 마시면 %s분 동안 힘이 %s만큼 증가하지만 지능은 %s만큼 감소합니다"] = { false, { Stats.Strength, }, { Stats.Intellect, }, } -- s5020
 L["%s초 동안 시전자의 회피율이 %s%만큼 증가합니다"] = { false, { Stats.Dodge, }, } -- s5426
 L["물리 공격력이 %s만큼 감소하고 마법 공격력이 %s만큼 감소합니다"] = { { Stats.AverageWeaponDamage, }, { Stats.SpellDamage, }, reduction = true } -- s7656
@@ -3191,7 +3191,7 @@ L["%s초 동안 치명타 및 극대화가 %s만큼 증가합니다"] = { false,
 L["%s초 동안 가속이 %s만큼 증가하고 치유 주문에 소비되는 마나가 %s%만큼 감소합니다"] = { false, { Stats.MeleeHasteRating, Stats.RangedHasteRating, Stats.SpellHasteRating, }, false, } -- s24546
 L["%s초 동안 주문 적중이 %s만큼 증가합니다"] = { false, { Stats.MeleeHitRating, Stats.RangedHitRating, Stats.SpellHitRating, }, } -- s24610
 L["치명타 및 극대화가 %s만큼 증가합니다. %s초 동안 지속됩니다"] = { { Stats.MeleeCritRating, Stats.RangedCritRating, Stats.SpellCritRating, }, false, } -- s24865
-L["%s초 동안 %s의 생명력과 마나를 회복합니다. 음식을 먹으려면 앉아 있어야 합니다. 음식을 꾸준히 %s초 이상 먹으면 포만감을 느끼게 되고 %s초 동안 모든 능력치가 %s만큼 증가합니다"] = { false, false, false, false, { Stats.AllStats, }, ignoreSum = true } -- s24869
+L["%s초 동안 %s의 생명력과 마나를 회복합니다. 음식을 먹으려면 앉아 있어야 합니다. 음식을 꾸준히 %s초 이상 먹으면 포만감을 느끼게 되고 %s시간 동안 모든 능력치가 %s만큼 증가합니다"] = { false, false, false, false, { Stats.AllStats, }, ignoreSum = true } -- s24869
 L["달빛야수로 변신한 동안에는 반경 %s미터 안의 모든 파티원과 공격대원의 주문 가속이 %s%만큼 증가합니다"] = { false, { Stats.SpellHaste, }, } -- s24907
 L["%s초 동안 주문 적중이 %s만큼 증가합니다. 최대 %s번까지 중복됩니다"] = { false, { Stats.SpellHitRating, }, false, } -- s26129
 L["근접 또는 원거리 공격 시 일정 확률로 효과가 발동하여 %s초 동안 치명타가 %s만큼 증가합니다. 치명타 효과는 최대 %s번까지 중첩될 수 있습니다"] = { false, { Stats.MeleeCritRating, Stats.RangedCritRating, Stats.SpellCritRating, }, false, ignoreSum = true } -- s26480
@@ -3249,9 +3249,9 @@ L["숙련이 %s만큼 증가합니다"] = { { Stats.ExpertiseRating, }, } -- s41
 L["pvp 탄력이 %s만큼 증가합니다"] = { { Stats.ResilienceRating, }, } -- s41876
 L["치명타 적중 시 일정 확률로 %s초 동안 전투력이 %s만큼 증가합니다"] = { false, { Stats.GenericAttackPower, }, ignoreSum = true } -- s42083
 L["%s초 동안 치명타 및 극대화가 추가로 %s만큼 증가합니다"] = { false, { Stats.MeleeCritRating, Stats.RangedCritRating, Stats.SpellCritRating, }, } -- s42976
-L["%s초에 걸쳐 총 %s의 마나가 회복됩니다. 음료를 마시려면 앉아 있어야 합니다. 음료를 꾸준히 %s초 이상 마시면 깨달음을 얻게 되고 %s초 동안 치명타 및 극대화, 정신력이 %s만큼 증가합니다"] = { false, false, false, false, { Stats.MeleeCritRating, Stats.RangedCritRating, Stats.SpellCritRating, }, ignoreSum = true } -- s43706
+L["%s초에 걸쳐 총 %s의 마나가 회복됩니다. 음료를 마시려면 앉아 있어야 합니다. 음료를 꾸준히 %s초 이상 마시면 깨달음을 얻게 되고 %s분 동안 치명타 및 극대화, 정신력이 %s만큼 증가합니다"] = { false, false, false, false, { Stats.MeleeCritRating, Stats.RangedCritRating, Stats.SpellCritRating, }, ignoreSum = true } -- s43706
 L["%s초 동안 pvp 탄력이 %s만큼 증가합니다"] = { false, { Stats.ResilienceRating, }, } -- s43717
-L["%s초에 걸쳐 총 %s의 생명력이 회복됩니다. 음식을 먹으려면 앉아 있어야 합니다. 음식을 꾸준히 %s초 이상 먹으면 포만감을 느끼게 되고 %s초 동안 정신력과 적중이 %s만큼 증가합니다"] = { false, false, false, false, { Stats.MeleeHitRating, Stats.RangedHitRating, Stats.SpellHitRating, }, ignoreSum = true } -- s43763
+L["%s초에 걸쳐 총 %s의 생명력이 회복됩니다. 음식을 먹으려면 앉아 있어야 합니다. 음식을 꾸준히 %s초 이상 먹으면 포만감을 느끼게 되고 %s분 동안 정신력과 적중이 %s만큼 증가합니다"] = { false, false, false, false, { Stats.MeleeHitRating, Stats.RangedHitRating, Stats.SpellHitRating, }, ignoreSum = true } -- s43763
 L["%s분 동안 적중과 정신력이 %s만큼 증가합니다"] = { false, { Stats.MeleeHitRating, Stats.RangedHitRating, Stats.SpellHitRating, Stats.Spirit, }, } -- s43764
 L["근접 공격으로 생명력이 %s% 아래로 내려가면 %s초 동안 회피가 %s만큼 증가합니다. 이 효과는 %s초에 %s번씩만 발동됩니다"] = { false, false, { Stats.DodgeRating, }, false, false, ignoreSum = true } -- s45057
 L["%s초 동안 숙련이 %s만큼 증가합니다"] = { false, { Stats.ExpertiseRating, }, } -- s45431
@@ -3271,20 +3271,20 @@ L["무형의 존재가 되어 %s초 동안 회피율이 %s만큼 증가합니다
 L["다음 %s회의 근접 혹은 원거리 공격 시 치명타 및 극대화가 %s만큼 증가합니다. 최대 %s번까지 중첩됩니다. %s초 후 사라집니다"] = { false, { Stats.MeleeCritRating, Stats.RangedCritRating, Stats.SpellCritRating, }, false, false, ignoreSum = true } -- s54696
 L["주문이 극대화 효과를 발휘하면 일정 확률로 %s초 동안 치명타 및 극대화가 %s만큼 증가합니다"] = { false, { Stats.MeleeCritRating, Stats.RangedCritRating, Stats.SpellCritRating, }, ignoreSum = true } -- s54738
 L["약초채집으로 익힌 기술로 땅에서 에너지와 영양분을 흡수하여 즉시 작은 상처를 치료하고 %s초에 걸쳐 %s의 가속 증가 효과를 받습니다. 은신이나 투명 상태에서 사용할 수 있습니다"] = { false, { Stats.MeleeHasteRating, Stats.RangedHasteRating, Stats.SpellHasteRating, }, } -- s55428
-L["%s초에 걸쳐 %s의 생명력과 %s의 마나가 회복됩니다. 음식을 꾸준히 %s초 이상 먹으면 포만감을 느끼게 되고 %s초 동안 치명타 및 극대화가 %s만큼, 체력이 %s만큼 증가합니다"] = { false, false, false, false, false, { Stats.MeleeCritRating, Stats.RangedCritRating, Stats.SpellCritRating, }, { Stats.Stamina, }, ignoreSum = true } -- s57098
+L["%s초에 걸쳐 %s의 생명력과 %s의 마나가 회복됩니다. 음식을 꾸준히 %s초 이상 먹으면 포만감을 느끼게 되고 %s시간 동안 치명타 및 극대화가 %s만큼, 체력이 %s만큼 증가합니다"] = { false, false, false, false, false, { Stats.MeleeCritRating, Stats.RangedCritRating, Stats.SpellCritRating, }, { Stats.Stamina, }, ignoreSum = true } -- s57098
 L["%s시간 동안 치명타 및 극대화가 %s만큼 증가하고 체력이 %s만큼 증가합니다"] = { false, { Stats.MeleeCritRating, Stats.RangedCritRating, Stats.SpellCritRating, }, { Stats.Stamina, }, } -- s57100
-L["%s초에 걸쳐 %s의 생명력과 %s의 마나가 회복됩니다. 음식을 꾸준히 %s초 이상 먹으면 포만감을 느끼게 되고 %s초 동안 가속이 %s만큼, 체력이 %s만큼 증가합니다"] = { false, false, false, false, false, { Stats.MeleeHasteRating, Stats.RangedHasteRating, Stats.SpellHasteRating, }, { Stats.Stamina, }, ignoreSum = true } -- s57101
+L["%s초에 걸쳐 %s의 생명력과 %s의 마나가 회복됩니다. 음식을 꾸준히 %s초 이상 먹으면 포만감을 느끼게 되고 %s시간 동안 가속이 %s만큼, 체력이 %s만큼 증가합니다"] = { false, false, false, false, false, { Stats.MeleeHasteRating, Stats.RangedHasteRating, Stats.SpellHasteRating, }, { Stats.Stamina, }, ignoreSum = true } -- s57101
 L["%s시간 동안 가속이 %s만큼 증가하고 체력이 %s만큼 증가합니다"] = { false, { Stats.MeleeHasteRating, Stats.RangedHasteRating, Stats.SpellHasteRating, }, { Stats.Stamina, }, } -- s57102
-L["%s초에 걸쳐 %s의 생명력이 회복됩니다. 음식을 꾸준히 %s초 이상 먹으면 포만감을 느끼게 되고 %s초 동안 치명타 및 극대화가 %s만큼, 체력이 %s만큼 증가합니다"] = { false, false, false, false, { Stats.MeleeCritRating, Stats.RangedCritRating, Stats.SpellCritRating, }, { Stats.Stamina, }, ignoreSum = true } -- s57285
-L["%s초에 걸쳐 %s의 생명력이 회복됩니다. 음식을 꾸준히 %s초 이상 먹으면 포만감을 느끼게 되고 %s초 동안 가속이 %s만큼, 체력이 %s만큼 증가합니다"] = { false, false, false, false, { Stats.MeleeHasteRating, Stats.RangedHasteRating, Stats.SpellHasteRating, }, { Stats.Stamina, }, ignoreSum = true } -- s57287
+L["%s초에 걸쳐 %s의 생명력이 회복됩니다. 음식을 꾸준히 %s초 이상 먹으면 포만감을 느끼게 되고 %s시간 동안 치명타 및 극대화가 %s만큼, 체력이 %s만큼 증가합니다"] = { false, false, false, false, { Stats.MeleeCritRating, Stats.RangedCritRating, Stats.SpellCritRating, }, { Stats.Stamina, }, ignoreSum = true } -- s57285
+L["%s초에 걸쳐 %s의 생명력이 회복됩니다. 음식을 꾸준히 %s초 이상 먹으면 포만감을 느끼게 되고 %s시간 동안 가속이 %s만큼, 체력이 %s만큼 증가합니다"] = { false, false, false, false, { Stats.MeleeHasteRating, Stats.RangedHasteRating, Stats.SpellHasteRating, }, { Stats.Stamina, }, ignoreSum = true } -- s57287
 L["전투 시 공격을 받거나 공격을 적중시키면 일정 확률로 %s초 동안 치명타 및 극대화가 %s만큼 증가하는 광전사 효과를 얻습니다. 최대 %s번까지 중첩됩니다"] = { false, { Stats.MeleeCritRating, Stats.RangedCritRating, Stats.SpellCritRating, }, false, ignoreSum = true } -- s57351
-L["%s초에 걸쳐 %s의 생명력이 회복됩니다. 음식을 먹으려면 앉아 있어야 합니다. 음식을 꾸준히 %s초 이상 먹으면 포만감을 느끼게 되고 %s초 동안 숙련이 %s만큼, 체력이 %s만큼 증가합니다"] = { false, false, false, false, { Stats.ExpertiseRating, }, { Stats.Stamina, }, ignoreSum = true } -- s57355
-L["%s초에 걸쳐 총 %s의 생명력이 회복됩니다. 음식을 꾸준히 %s초 이상 먹으면 포만감을 느끼게 되고 %s초 동안 치명타 및 극대화가 %s만큼, 체력이 %s만큼 증가합니다"] = { false, false, false, false, { Stats.MeleeCritRating, Stats.RangedCritRating, Stats.SpellCritRating, }, { Stats.Stamina, }, ignoreSum = true } -- s57357
-L["%s초에 걸쳐 %s의 생명력과 %s의 마나가 회복됩니다. 음식을 꾸준히 %s초 이상 먹으면 포만감을 느끼게 되고 %s초 동안 적중이 %s만큼, 체력이 %s만큼 증가합니다"] = { false, false, false, false, false, { Stats.MeleeHitRating, Stats.RangedHitRating, Stats.SpellHitRating, }, { Stats.Stamina, }, ignoreSum = true } -- s57359
+L["%s초에 걸쳐 %s의 생명력이 회복됩니다. 음식을 먹으려면 앉아 있어야 합니다. 음식을 꾸준히 %s초 이상 먹으면 포만감을 느끼게 되고 %s시간 동안 숙련이 %s만큼, 체력이 %s만큼 증가합니다"] = { false, false, false, false, { Stats.ExpertiseRating, }, { Stats.Stamina, }, ignoreSum = true } -- s57355
+L["%s초에 걸쳐 총 %s의 생명력이 회복됩니다. 음식을 꾸준히 %s초 이상 먹으면 포만감을 느끼게 되고 %s시간 동안 치명타 및 극대화가 %s만큼, 체력이 %s만큼 증가합니다"] = { false, false, false, false, { Stats.MeleeCritRating, Stats.RangedCritRating, Stats.SpellCritRating, }, { Stats.Stamina, }, ignoreSum = true } -- s57357
+L["%s초에 걸쳐 %s의 생명력과 %s의 마나가 회복됩니다. 음식을 꾸준히 %s초 이상 먹으면 포만감을 느끼게 되고 %s시간 동안 적중이 %s만큼, 체력이 %s만큼 증가합니다"] = { false, false, false, false, false, { Stats.MeleeHitRating, Stats.RangedHitRating, Stats.SpellHitRating, }, { Stats.Stamina, }, ignoreSum = true } -- s57359
 L["%s시간 동안 적중이 %s만큼 증가하고 체력이 %s만큼 증가합니다"] = { false, { Stats.MeleeHitRating, Stats.RangedHitRating, Stats.SpellHitRating, }, { Stats.Stamina, }, } -- s57360
 L["근접 혹은 원거리 치명타를 적중시키면 일정 확률로 %s초 동안 가속이 %s만큼 증가합니다"] = { false, { Stats.MeleeHasteRating, Stats.RangedHasteRating, Stats.SpellHasteRating, }, ignoreSum = true } -- s58901
 L["%s초 동안 치명타 및 극대화가 추가로 %s만큼 증가합니다. 최대 %s번까지 중복됩니다"] = { false, { Stats.MeleeCritRating, Stats.RangedCritRating, Stats.SpellCritRating, }, false, } -- s59043
-L["%s초 동안 %s의 생명력을 회복합니다. 음식을 먹으려면 앉아 있어야 합니다. 음식을 꾸준히 %s초 이상 먹으면 포만감을 느끼게 되고 %s초 동안 회피가 %s만큼 증가합니다"] = { false, false, false, false, { Stats.DodgeRating, }, ignoreSum = true } -- s59227
+L["%s초 동안 %s의 생명력을 회복합니다. 음식을 먹으려면 앉아 있어야 합니다. 음식을 꾸준히 %s초 이상 먹으면 포만감을 느끼게 되고 %s시간 동안 회피가 %s만큼 증가합니다"] = { false, false, false, false, { Stats.DodgeRating, }, ignoreSum = true } -- s59227
 L["온통 뱀장어 기름투성이입니다. %s시간 동안 회피가 %s만큼 증가합니다"] = { false, { Stats.DodgeRating, }, } -- s59230
 L["근접 혹은 원거리 공격 시 일정 확률로 %s초 동안 숙련이 %s만큼 증가합니다"] = { false, { Stats.ExpertiseRating, }, ignoreSum = true } -- s59345
 L["치명타를 적중시키면 일정 확률로 %s초 동안 전투력이 %s만큼 증가합니다"] = { false, { Stats.GenericAttackPower, }, ignoreSum = true } -- s60066
@@ -3299,7 +3299,7 @@ L["근접 혹은 원거리 공격 시 일정 확률로 %s초 동안 치명타 �
 L["바람의 토템, 대지의 토템, 불의 토템, 물의 토템이 동시에 활성화되면 %s초마다 %s의 마나를 회복하고, 주문 극대화가 %s만큼, 주문력이 %s만큼 증가합니다"] = { false, { Stats.Spirit, }, { Stats.MeleeCritRating, Stats.RangedCritRating, Stats.SpellCritRating, }, { Stats.Intellect, Stats.HealingPower, }, } -- s61692
 L["근접 혹은 원거리 공격 시 일정 확률로 %s초 동안 전투력이 %s만큼 증가합니다"] = { false, { Stats.GenericAttackPower, }, ignoreSum = true } -- s62115
 L["얼음 손길 사용 시 추가로 회피가 %s만큼 증가합니다"] = { { Stats.DodgeRating, }, ignoreSum = true } -- s62147
-L["%s초에 걸쳐 총 %s의 생명력이 회복됩니다. 음식을 먹으려면 앉아 있어야 합니다. 음식을 꾸준히 %s초 이상 먹으면 포만감을 느끼게 되고 %s초 동안 적중이 %s만큼, 체력이 %s만큼 증가합니다"] = { false, false, false, false, { Stats.MeleeHitRating, Stats.RangedHitRating, Stats.SpellHitRating, }, { Stats.Stamina, }, ignoreSum = true } -- s62351
+L["%s초에 걸쳐 총 %s의 생명력이 회복됩니다. 음식을 먹으려면 앉아 있어야 합니다. 음식을 꾸준히 %s초 이상 먹으면 포만감을 느끼게 되고 %s시간 동안 적중이 %s만큼, 체력이 %s만큼 증가합니다"] = { false, false, false, false, { Stats.MeleeHitRating, Stats.RangedHitRating, Stats.SpellHitRating, }, { Stats.Stamina, }, ignoreSum = true } -- s62351
 L["일정 확률로 %s초 동안 치명타 및 극대화가 %s만큼 증가합니다"] = { false, { Stats.MeleeCritRating, Stats.RangedCritRating, Stats.SpellCritRating, }, ignoreSum = true } -- s63251
 L["무기 막기가 %s만큼 증가하고 다음 무기 막기 성공 시 %s의 피해를 입힙니다. 최대 %s번까지 중복되며 무기 막기 성공 시 중복된 효과는 사라집니다"] = { { Stats.ParryRating, }, false, false, } -- s64440
 L["%s초 동안 %s초마다 마나가 낮은 주위 파티원 혹은 공격대원 %s명의 마나를 %s%만큼 회복시키고 %s초 동안 최대 마나를 %s%만큼 증가시킵니다. 최대 %s번 마나를 회복시킵니다. 주문을 유지하려면 사제는 정신을 집중해야 합니다"] = { false, false, false, false, false, { Stats.Mana, }, false, ignoreSum = true } -- s64901
@@ -3307,14 +3307,14 @@ L["%s초 동안 %s초마다 마나가 낮은 주위 파티원 혹은 공격대�
 L["정신 분열 주문 시전 시 %s초 동안 가속이 %s만큼 증가합니다"] = { false, { Stats.MeleeHasteRating, Stats.RangedHasteRating, Stats.SpellHasteRating, }, ignoreSum = true } -- s64908
 L["영웅의 일격과 격돌이 치명타로 적중하면 일정 확률로 %s초 동안 가속이 %s만큼 증가합니다"] = { false, { Stats.MeleeHasteRating, Stats.RangedHasteRating, Stats.SpellHasteRating, }, ignoreSum = true } -- s64938
 L["해로운 주문 사용 시 일정 확률로 %s초 동안 가속이 %s만큼 증가합니다"] = { false, { Stats.MeleeHasteRating, Stats.RangedHasteRating, Stats.SpellHasteRating, }, ignoreSum = true } -- s65005
-L["%s초에 걸쳐 총 %s의 마나가 회복됩니다. 음료를 마시려면 앉아 있어야 합니다. 음료를 꾸준히 %s초 이상 마시면 \"포만감\"을 느끼게 되고 %s초 동안 치명타 및 극대화가 %s만큼 증가합니다. 평범한 술입니다"] = { false, { Stats.GenericManaRegen, }, false, false, { Stats.MeleeCritRating, Stats.RangedCritRating, Stats.SpellCritRating, }, } -- s65363
+L["%s초에 걸쳐 총 %s의 마나가 회복됩니다. 음료를 마시려면 앉아 있어야 합니다. 음료를 꾸준히 %s초 이상 마시면 \"포만감\"을 느끼게 되고 %s시간 동안 치명타 및 극대화가 %s만큼 증가합니다. 평범한 술입니다"] = { false, { Stats.GenericManaRegen, }, false, false, { Stats.MeleeCritRating, Stats.RangedCritRating, Stats.SpellCritRating, }, } -- s65363
 L["치명타 및 극대화 %s만큼 증가. 가을 축제 맥주: 상쾌하고 풍부한 맛입니다! %s시간 동안 지속됩니다"] = { { Stats.MeleeCritRating, Stats.RangedCritRating, Stats.SpellCritRating, }, false, } -- s65365
 L["%s초 동안 %s초마다 %s의 마나를 회복합니다"] = { false, false, { Stats.GenericManaRegen, }, } -- s66041
 L["해로운 주문을 시전할 때마다 가속이 %s만큼 증가합니다. 최대 %s번까지 중복됩니다. 전체 효과는 %s초 동안 지속됩니다"] = { { Stats.MeleeHasteRating, Stats.RangedHasteRating, Stats.SpellHasteRating, }, false, false, ignoreSum = true } -- s67736
 L["공격력과 받는 피해가 %s%만큼 증가합니다"] = { { Stats.SpellDamage, }, } -- s67887
 L["얼어붙은 왕좌의 한기가 주위 모든 적의 근접 공격에 대한 회피율을 %s%만큼 감소시킵니다"] = { { Stats.Dodge, }, reduction = true } -- s69127
 L["pvp 탄력 및 체력 %s만큼 증가\n가을 축제 맥주: 상쾌하고 풍부한 맛입니다! %s시간 동안 지속됩니다"] = { { Stats.ResilienceRating, Stats.Stamina, }, false, } -- s69559
-L["%s초에 걸쳐 총 %s의 마나가 회복됩니다. 음료를 마시려면 앉아 있어야 합니다. 음료를 꾸준히 %s초 이상 마시면 \"포만감\"을 느끼게 되고 %s초 동안 체력과 pvp 탄력이 %s만큼 증가합니다. 평범한 술입니다"] = { false, { Stats.GenericManaRegen, }, false, false, { Stats.ResilienceRating, }, } -- s69560
+L["%s초에 걸쳐 총 %s의 마나가 회복됩니다. 음료를 마시려면 앉아 있어야 합니다. 음료를 꾸준히 %s초 이상 마시면 \"포만감\"을 느끼게 되고 %s시간 동안 체력과 pvp 탄력이 %s만큼 증가합니다. 평범한 술입니다"] = { false, { Stats.GenericManaRegen, }, false, false, { Stats.ResilienceRating, }, } -- s69560
 L["회피가 %s만큼 증가하고 은은한 향수를 뿌린 이들을 유혹합니다. %s시간 동안 지속됩니다"] = { { Stats.DodgeRating, }, false, } -- s70235
 L["회피가 %s만큼 증가하고 매혹적인 향수를 뿌린 이들을 유혹합니다. %s시간 동안 지속됩니다"] = { { Stats.DodgeRating, }, false, } -- s70243
 L["근접 혹은 원거리 공격이 치명타로 적중하면 일정 확률로 %s초 동안 가속이 %s만큼 증가합니다"] = { false, { Stats.MeleeHasteRating, Stats.RangedHasteRating, Stats.SpellHasteRating, }, ignoreSum = true } -- s71404
@@ -3329,6 +3329,7 @@ L["주술사의 무기에 불의 기운을 불어넣어 전체 주문 공격력�
 L["회피율이 %s%만큼 증가합니다. %s초 동안 지속됩니다"] = { { Stats.Dodge, }, false, } -- s78826
 L["%s분 동안 적의 회피율을 %s%만큼, 민첩성을 %s%만큼 감소시킵니다. 이 주문이 걸린 대상은 숨거나 투명해질 수 없습니다"] = { false, { Stats.Dodge, }, false, reduction = true } -- s79559
 L["%s시간 동안 특화가 %s만큼 증가합니다. 전투 비약으로 간주됩니다"] = { false, { Stats.MasteryRating, }, } -- s79635
+L["%s개의 물방울이 시전자의 주위에 머무르며 %s초당 마나 회복량을 %s만큼 증가시킵니다. 만약 시전자가 주문이나 근접 또는 원거리 공격에 적중 당하면 시전자는 물방울로부터 %s의 마나를 흡수합니다. 마나를 흡수할 때마다 물방울이 하나씩 사라집니다. 물방울이 하나 사라지면 다른 물방울이 효력을 발휘하기까지 일정 시간이 필요합니다. %s시간 동안 지속됩니다. 주술사의 보호막은 동시에 하나만 유지할 수 있습니다"] = { false, false, { Stats.GenericManaRegen, }, false, false, } -- s79949
 L["%s초 동안 방패 막기 확률이 %s%만큼 증가합니다. 이 동안 막는 모든 공격은 공격자에게 신성 피해를 입힙니다. 매 방어 시 효과 하나를 사용합니다. %s회 발동됩니다"] = { false, { Stats.BlockChance, }, false, } -- s79967
 L["머리를 때려 일반 공격력의 %s%에 해당하는 피해를 입히고 혼란에 빠뜨립니다. 대상은 %s초 동안 회피율 혹은 무기 막기 확률이 %s%만큼 감소합니다"] = { false, false, { Stats.Dodge, Stats.Parry, }, reduction = true } -- s80146
 L["%s시간 동안 민첩성과 치명타 및 극대화가 %s만큼 증가합니다. 전투 비약으로 간주됩니다"] = { false, { Stats.MeleeCritRating, Stats.RangedCritRating, Stats.SpellCritRating, Stats.Agility, }, } -- s80532
@@ -3341,14 +3342,14 @@ L["%s시간 동안 치명타 및 극대화와 체력이 %s만큼 증가합니다
 L["%s시간 동안 가속과 체력이 %s만큼 증가합니다"] = { false, { Stats.MeleeHasteRating, Stats.RangedHasteRating, Stats.SpellHasteRating, Stats.Stamina, }, } -- s87552
 L["%s시간 동안 회피와 체력이 %s만큼 증가합니다"] = { false, { Stats.DodgeRating, Stats.Stamina, }, } -- s87554
 L["%s시간 동안 무기 막기와 체력이 %s만큼 증가합니다"] = { false, { Stats.ParryRating, Stats.Stamina, }, } -- s87555
-L["%s초에 걸쳐 총 %s의 생명력과 %s의 마나가 회복됩니다. 음식을 먹으려면 앉아 있어야 합니다. 음식을 꾸준히 %s초 이상 먹으면 포만감을 느끼게 되고 %s초 동안 특화가 %s만큼, 체력이 %s만큼 증가합니다"] = { false, false, false, false, false, { Stats.MasteryRating, }, { Stats.Stamina, }, ignoreSum = true } -- s87570
-L["%s초에 걸쳐 총 %s의 생명력과 %s의 마나가 회복됩니다. 음식을 먹으려면 앉아 있어야 합니다. 음식을 꾸준히 %s초 이상 먹으면 포만감을 느끼게 되고 %s초 동안 적중이 %s만큼, 체력이 %s만큼 증가합니다"] = { false, false, false, false, false, { Stats.MeleeHitRating, Stats.RangedHitRating, Stats.SpellHitRating, }, { Stats.Stamina, }, ignoreSum = true } -- s87571
-L["%s초에 걸쳐 총 %s의 생명력과 %s의 마나가 회복됩니다. 음식을 먹으려면 앉아 있어야 합니다. 음식을 꾸준히 %s초 이상 먹으면 포만감을 느끼게 되고 %s초 동안 치명타 및 극대화가 %s만큼, 체력이 %s만큼 증가합니다"] = { false, false, false, false, false, { Stats.MeleeCritRating, Stats.RangedCritRating, Stats.SpellCritRating, }, { Stats.Stamina, }, ignoreSum = true } -- s87572
-L["%s초에 걸쳐 총 %s의 생명력과 %s의 마나가 회복됩니다. 음식을 먹으려면 앉아 있어야 합니다. 음식을 꾸준히 %s초 이상 먹으면 포만감을 느끼게 되고 %s초 동안 가속이 %s만큼, 체력이 %s만큼 증가합니다"] = { false, false, false, false, false, { Stats.MeleeHasteRating, Stats.RangedHasteRating, Stats.SpellHasteRating, }, { Stats.Stamina, }, ignoreSum = true } -- s87573
-L["%s초에 걸쳐 총 %s의 생명력과 %s의 마나가 회복됩니다. 음식을 먹으려면 앉아 있어야 합니다. 음식을 꾸준히 %s초 이상 먹으면 포만감을 느끼게 되고 %s초 동안 회피가 %s만큼, 체력이 %s만큼 증가합니다"] = { false, false, false, false, false, { Stats.DodgeRating, }, { Stats.Stamina, }, ignoreSum = true } -- s87577
-L["%s초에 걸쳐 총 %s의 생명력과 %s의 마나가 회복됩니다. 음식을 먹으려면 앉아 있어야 합니다. 음식을 꾸준히 %s초 이상 먹으면 포만감을 느끼게 되고 %s초 동안 무기 막기가 %s만큼, 체력이 %s만큼 증가합니다"] = { false, false, false, false, false, { Stats.ParryRating, }, { Stats.Stamina, }, ignoreSum = true } -- s87580
+L["%s초에 걸쳐 총 %s의 생명력과 %s의 마나가 회복됩니다. 음식을 먹으려면 앉아 있어야 합니다. 음식을 꾸준히 %s초 이상 먹으면 포만감을 느끼게 되고 %s시간 동안 특화가 %s만큼, 체력이 %s만큼 증가합니다"] = { false, false, false, false, false, { Stats.MasteryRating, }, { Stats.Stamina, }, ignoreSum = true } -- s87570
+L["%s초에 걸쳐 총 %s의 생명력과 %s의 마나가 회복됩니다. 음식을 먹으려면 앉아 있어야 합니다. 음식을 꾸준히 %s초 이상 먹으면 포만감을 느끼게 되고 %s시간 동안 적중이 %s만큼, 체력이 %s만큼 증가합니다"] = { false, false, false, false, false, { Stats.MeleeHitRating, Stats.RangedHitRating, Stats.SpellHitRating, }, { Stats.Stamina, }, ignoreSum = true } -- s87571
+L["%s초에 걸쳐 총 %s의 생명력과 %s의 마나가 회복됩니다. 음식을 먹으려면 앉아 있어야 합니다. 음식을 꾸준히 %s초 이상 먹으면 포만감을 느끼게 되고 %s시간 동안 치명타 및 극대화가 %s만큼, 체력이 %s만큼 증가합니다"] = { false, false, false, false, false, { Stats.MeleeCritRating, Stats.RangedCritRating, Stats.SpellCritRating, }, { Stats.Stamina, }, ignoreSum = true } -- s87572
+L["%s초에 걸쳐 총 %s의 생명력과 %s의 마나가 회복됩니다. 음식을 먹으려면 앉아 있어야 합니다. 음식을 꾸준히 %s초 이상 먹으면 포만감을 느끼게 되고 %s시간 동안 가속이 %s만큼, 체력이 %s만큼 증가합니다"] = { false, false, false, false, false, { Stats.MeleeHasteRating, Stats.RangedHasteRating, Stats.SpellHasteRating, }, { Stats.Stamina, }, ignoreSum = true } -- s87573
+L["%s초에 걸쳐 총 %s의 생명력과 %s의 마나가 회복됩니다. 음식을 먹으려면 앉아 있어야 합니다. 음식을 꾸준히 %s초 이상 먹으면 포만감을 느끼게 되고 %s시간 동안 회피가 %s만큼, 체력이 %s만큼 증가합니다"] = { false, false, false, false, false, { Stats.DodgeRating, }, { Stats.Stamina, }, ignoreSum = true } -- s87577
+L["%s초에 걸쳐 총 %s의 생명력과 %s의 마나가 회복됩니다. 음식을 먹으려면 앉아 있어야 합니다. 음식을 꾸준히 %s초 이상 먹으면 포만감을 느끼게 되고 %s시간 동안 무기 막기가 %s만큼, 체력이 %s만큼 증가합니다"] = { false, false, false, false, false, { Stats.ParryRating, }, { Stats.Stamina, }, ignoreSum = true } -- s87580
 L["%s시간 동안 숙련 및 체력이 %s만큼 증가합니다"] = { false, { Stats.ExpertiseRating, Stats.Stamina, }, } -- s87634
-L["%s초에 걸쳐 총 %s의 생명력과 %s의 마나가 회복됩니다. 음식을 먹으려면 앉아 있어야 합니다. 음식을 꾸준히 %s초 이상 먹으면 포만감을 느끼게 되고 %s초 동안 숙련이 %s만큼, 체력이 %s만큼 증가합니다"] = { false, false, false, false, false, { Stats.ExpertiseRating, }, { Stats.Stamina, }, ignoreSum = true } -- s87636
+L["%s초에 걸쳐 총 %s의 생명력과 %s의 마나가 회복됩니다. 음식을 먹으려면 앉아 있어야 합니다. 음식을 꾸준히 %s초 이상 먹으면 포만감을 느끼게 되고 %s시간 동안 숙련이 %s만큼, 체력이 %s만큼 증가합니다"] = { false, false, false, false, false, { Stats.ExpertiseRating, }, { Stats.Stamina, }, ignoreSum = true } -- s87636
 L["주기적인 치유 효과에 대한 화합 특화가 활성화되어 있으면 정신력이 %s만큼 증가합니다"] = { { Stats.Spirit, }, ignoreSum = true } -- s90158
 L["주기적인 치유 주문에 대한 화합 특화가 활성화되면 정신력이 %s만큼 증가합니다"] = { { Stats.Spirit, }, } -- s90159
 L["주문 시전 시 일정 확률로 %s초 동안 극대화가 %s만큼 증가합니다"] = { false, { Stats.MeleeCritRating, Stats.RangedCritRating, Stats.SpellCritRating, }, ignoreSum = true } -- s90892
@@ -3384,12 +3385,12 @@ L["공격 시 일정 확률로 %s초 동안 가속이 %s만큼 증가합니다"]
 L["공격 시 일정 확률로 %s초 동안 특화가 %s만큼 증가합니다"] = { false, { Stats.MasteryRating, }, ignoreSum = true } -- s102776
 L["공격 시 일정 확률로 %s초 동안 회피가 %s만큼 증가합니다"] = { false, { Stats.DodgeRating, }, ignoreSum = true } -- s102778
 L["대상 악마를 예속해 시전자의 명령을 따르게 합니다. 예속된 상태에서는 대상 악마의 공격 간격이 %s%만큼 늘어나고 주문 시전 속도가 %s%만큼 감소합니다. 최대 %s분 동안 지속됩니다"] = { { Stats.MeleeHaste, }, { Stats.SpellHaste, }, false, reduction = true } -- s104043
-L["%s초에 걸쳐 총 %s의 생명력과 %s의 마나가 회복됩니다. 음식을 먹으려면 앉아 있어야 합니다. 음식을 꾸준히 %s초 이상 먹으면 포만감을 느끼게 되고 %s초 동안 힘이 %s만큼 증가합니다"] = { false, false, false, false, false, { Stats.Strength, }, ignoreSum = true } -- s104263
-L["%s초에 걸쳐 총 %s의 생명력과 %s의 마나가 회복됩니다. 음식을 먹으려면 앉아 있어야 합니다. 음식을 꾸준히 %s초 이상 먹으면 포만감을 느끼게 되고 %s초 동안 지능이 %s만큼 증가합니다"] = { false, false, false, false, false, { Stats.Intellect, }, ignoreSum = true } -- s104266
+L["%s초에 걸쳐 총 %s의 생명력과 %s의 마나가 회복됩니다. 음식을 먹으려면 앉아 있어야 합니다. 음식을 꾸준히 %s초 이상 먹으면 포만감을 느끼게 되고 %s시간 동안 힘이 %s만큼 증가합니다"] = { false, false, false, false, false, { Stats.Strength, }, ignoreSum = true } -- s104263
+L["%s초에 걸쳐 총 %s의 생명력과 %s의 마나가 회복됩니다. 음식을 먹으려면 앉아 있어야 합니다. 음식을 꾸준히 %s초 이상 먹으면 포만감을 느끼게 되고 %s시간 동안 지능이 %s만큼 증가합니다"] = { false, false, false, false, false, { Stats.Intellect, }, ignoreSum = true } -- s104266
 L["%s시간 동안 정신력이 %s만큼 증가합니다"] = { false, { Stats.Spirit, }, } -- s104278
-L["%s초에 걸쳐 총 %s의 생명력과 %s의 마나가 회복됩니다. 음식을 먹으려면 앉아 있어야 합니다. 음식을 꾸준히 %s초 이상 먹으면 포만감을 느끼게 되고 %s초 동안 민첩성이 %s만큼 증가합니다"] = { false, false, false, false, false, { Stats.Agility, }, ignoreSum = true } -- s104286
-L["%s초에 걸쳐 총 %s의 생명력과 %s의 마나가 회복됩니다. 음식을 먹으려면 앉아 있어야 합니다. 음식을 꾸준히 %s초 이상 먹으면 포만감을 느끼게 되고 %s초 동안 정신력이 %s만큼 증가합니다"] = { false, false, false, false, false, { Stats.Spirit, }, ignoreSum = true } -- s104291
-L["%s초에 걸쳐 총 %s의 생명력과 %s의 마나가 회복됩니다. 음식을 먹으려면 앉아 있어야 합니다. 음식을 꾸준히 %s초 이상 먹으면 포만감을 느끼게 되고 %s초 동안 체력이 %s만큼 증가합니다"] = { false, false, false, false, false, { Stats.Stamina, }, ignoreSum = true } -- s104294
+L["%s초에 걸쳐 총 %s의 생명력과 %s의 마나가 회복됩니다. 음식을 먹으려면 앉아 있어야 합니다. 음식을 꾸준히 %s초 이상 먹으면 포만감을 느끼게 되고 %s시간 동안 민첩성이 %s만큼 증가합니다"] = { false, false, false, false, false, { Stats.Agility, }, ignoreSum = true } -- s104286
+L["%s초에 걸쳐 총 %s의 생명력과 %s의 마나가 회복됩니다. 음식을 먹으려면 앉아 있어야 합니다. 음식을 꾸준히 %s초 이상 먹으면 포만감을 느끼게 되고 %s시간 동안 정신력이 %s만큼 증가합니다"] = { false, false, false, false, false, { Stats.Spirit, }, ignoreSum = true } -- s104291
+L["%s초에 걸쳐 총 %s의 생명력과 %s의 마나가 회복됩니다. 음식을 먹으려면 앉아 있어야 합니다. 음식을 꾸준히 %s초 이상 먹으면 포만감을 느끼게 되고 %s시간 동안 체력이 %s만큼 증가합니다"] = { false, false, false, false, false, { Stats.Stamina, }, ignoreSum = true } -- s104294
 L["공격 시 일정 확률로 지능이 %s초 동안 %s만큼 증가합니다"] = { false, { Stats.Intellect, }, ignoreSum = true } -- s105620
 L["공격 시 일정 확률로 무기 막기가 %s초 동안 %s만큼 증가합니다"] = { false, { Stats.ParryRating, }, ignoreSum = true } -- s105624
 L["주문 시전 시 일정 확률로 지능이 %s초 동안 %s만큼 증가합니다"] = { false, { Stats.Intellect, }, ignoreSum = true } -- s105638
@@ -3415,8 +3416,8 @@ L["공격 시 다음 %s초 동안 회피가 %s만큼 증가합니다. 최대 %s�
 L["피해를 입히면 일정 확률로 %s초 동안 가속이 %s만큼 증가합니다"] = { false, { Stats.MeleeHasteRating, Stats.RangedHasteRating, Stats.SpellHasteRating, }, ignoreSum = true } -- s107983
 L["피해를 입히면 일정 확률로 %s초 동안 특화가 %s만큼 증가합니다"] = { false, { Stats.MasteryRating, }, ignoreSum = true } -- s107987
 L["피해를 입히면 일정 확률로 %s초 동안 치명타 및 극대화가 %s만큼 증가합니다"] = { false, { Stats.MeleeCritRating, Stats.RangedCritRating, Stats.SpellCritRating, }, ignoreSum = true } -- s107989
-L["%s초에 걸쳐 총 %s의 생명력이 회복됩니다. 음식을 먹으려면 앉아 있어야 합니다. 음식을 꾸준히 %s초 이상 먹으면 포만감을 느끼게 되고 %s초 동안 지능이 %s만큼 증가합니다"] = { false, false, false, false, { Stats.Intellect, }, ignoreSum = true } -- s108029
-L["%s초에 걸쳐 총 %s의 생명력이 회복됩니다. 음식을 먹으려면 앉아 있어야 합니다. 음식을 꾸준히 %s초 이상 먹으면 포만감을 느끼게 되고 %s초 동안 민첩성이 %s만큼 증가합니다"] = { false, false, false, false, { Stats.Agility, }, ignoreSum = true } -- s108034
+L["%s초에 걸쳐 총 %s의 생명력이 회복됩니다. 음식을 먹으려면 앉아 있어야 합니다. 음식을 꾸준히 %s초 이상 먹으면 포만감을 느끼게 되고 %s분 동안 지능이 %s만큼 증가합니다"] = { false, false, false, false, { Stats.Intellect, }, ignoreSum = true } -- s108029
+L["%s초에 걸쳐 총 %s의 생명력이 회복됩니다. 음식을 먹으려면 앉아 있어야 합니다. 음식을 꾸준히 %s초 이상 먹으면 포만감을 느끼게 되고 %s분 동안 민첩성이 %s만큼 증가합니다"] = { false, false, false, false, { Stats.Agility, }, ignoreSum = true } -- s108034
 L["곰 변신 또는 표범 변신 시 지능의 %s%만큼 민첩성이 증가합니다"] = { { Stats.Agility, }, } -- s108300
 L["공격 속도가 %s%만큼 증가하지만 적중률이 %s%만큼 감소합니다"] = { { Stats.MeleeHaste, }, { Stats.MeleeHit, Stats.RangedHit, }, } -- s109084
 L["치유 시 일정 확률로 %s초 동안 가속이 %s만큼 증가합니다"] = { false, { Stats.MeleeHasteRating, Stats.RangedHasteRating, Stats.SpellHasteRating, }, ignoreSum = true } -- s109803
@@ -3425,7 +3426,7 @@ L["민첩성이 %s만큼 증가합니다. 최대 %s번까지 중첩됩니다. �
 L["모든 능력치가 %s만큼 증가합니다"] = { { Stats.AllStats, }, } -- s110645
 L["%s분 동안 대상의 시전 속도가 %s만큼 증가합니다"] = { false, { Stats.SpellHaste, }, } -- s111376
 L["대상 언데드를 노예로 만들어 시전자의 명령을 따르게 합니다. 지배 상태에서는 대상 언데드의 공격 간격이 %s%만큼 늘어나고 주문 시전 속도가 %s%만큼 감소합니다. 최대 %s분 동안 지속됩니다"] = { { Stats.MeleeHaste, }, { Stats.SpellHaste, }, false, reduction = true } -- s111673
-L["%s초에 걸쳐 총 %s의 생명력과 %s의 마나가 회복됩니다. 음식을 먹으려면 앉아 있어야 합니다. 음식을 꾸준히 %s초 이상 먹으면 포만감을 느끼게 되고 %s초 동안 체력이 %s만큼 증가해 매우 건강해진 기분이 듭니다"] = { false, false, false, false, false, { Stats.Stamina, }, ignoreSum = true } -- s111842
+L["%s초에 걸쳐 총 %s의 생명력과 %s의 마나가 회복됩니다. 음식을 먹으려면 앉아 있어야 합니다. 음식을 꾸준히 %s초 이상 먹으면 포만감을 느끼게 되고 %s시간 동안 체력이 %s만큼 증가해 매우 건강해진 기분이 듭니다"] = { false, false, false, false, false, { Stats.Stamina, }, ignoreSum = true } -- s111842
 L["마나가 %s%만큼 증가하고 번개 화살, 용암 폭발, 정기 작렬, 사술, 화염 충격의 적중률이 %s%만큼 증가합니다"] = { false, { Stats.SpellHit, }, } -- s112858
 L["마나가 %s%만큼 증가하고 번개 화살, 용암 폭발, 사술, 화염 충격의 적중률이 %s%만큼 증가합니다"] = { false, { Stats.SpellHit, }, } -- s112858
 L["빠른 주먹 공격으로 전방의 모든 대상을 난타하여 기절시키고 %s초 동안 %s%s초마다 %s에서 %s의 피해를 입힙니다. 모든 대상에게 피해를 나누어 입힙니다.\n정신을 집중하는 동안 무기 막기 확률이 %s%만큼 증가합니다"] = { false, { Stats.Parry, }, false, false, false, false, } -- s113656
@@ -3437,7 +3438,7 @@ L["엄청난, 그리고 엄청나게 맛있는 맥주가 적중률을 %s초 동�
 L["%s초 동안 공격 속도가 %s%만큼 증가하고 이동 속도가 %s%만큼 감소합니다"] = { false, { Stats.MeleeHaste, }, false, } -- s114456
 L["강렬한 약초가 %r미터 내의 모든 삼베길 그루멀의 가속을 %s초 동안 %s%만큼 증가시킵니다"] = { false, { Stats.MeleeHaste, }, } -- s114618
 L["강렬한 약초가 %s미터 내의 모든 삼베길 그루멀의 가속을 %s초 동안 %s%만큼 증가시킵니다"] = { false, false, { Stats.MeleeHaste, }, } -- s114619
-L["%s초에 걸쳐 총 %s의 생명력과 %s의 마나가 회복됩니다. 음식을 먹으려면 앉아 있어야 합니다. 음식을 꾸준히 %s초 이상 먹으면 포만감을 느끼게 되고 %s초 동안 유용한 능력치 하나가 %s만큼 증가합니다"] = { false, false, false, false, false, { Stats.Intellect, }, ignoreSum = true } -- s114726
+L["%s초에 걸쳐 총 %s의 생명력과 %s의 마나가 회복됩니다. 음식을 먹으려면 앉아 있어야 합니다. 음식을 꾸준히 %s초 이상 먹으면 포만감을 느끼게 되고 %s시간 동안 유용한 능력치 하나가 %s만큼 증가합니다"] = { false, false, false, false, false, { Stats.Intellect, }, ignoreSum = true } -- s114726
 L["주문 시전 속도가 %s%만큼 감소합니다"] = { { Stats.SpellHaste, }, reduction = true } -- s114732
 L["쓰러진 적의 영혼을 거둡니다. %s초 동안 가속이 %s%만큼 이동 속도가 %s%만큼 증가합니다"] = { false, { Stats.MeleeHaste, }, false, } -- s114868
 L["쓰러진 적의 영혼을 거둡니다. %s초 동안 가속이 %s%만큼 증가합니다"] = { false, { Stats.MeleeHaste, }, } -- s114868
@@ -3485,17 +3486,17 @@ L["|c%sfff%s공생:|r %s초 동안 회피율을 %s%만큼 증가시킵니다"] =
 L["집중된 호박석 에너지로 공격력이 %s%만큼 증가하고 공격 속도가 %s%만큼 증가합니다. 이 효과는 영구적입니다"] = { false, { Stats.MeleeHaste, }, } -- s122556
 L["졸그럼이 무척 화가 났습니다! \n%s초 동안 공격 속도가 %s%만큼, 이동 속도가 %s%만큼 증가합니다"] = { false, { Stats.MeleeHaste, }, false, } -- s123936
 L["%s시간 동안 숙련이 %s만큼 증가합니다"] = { false, { Stats.ExpertiseRating, }, } -- s124210
-L["%s초에 걸쳐 총 %s의 생명력이 회복됩니다. 음식을 먹으려면 앉아 있어야 합니다. 음식을 꾸준히 %s초 이상 먹으면 포만감을 느끼게 되고 %s초 동안 숙련이 %s만큼 증가합니다"] = { false, false, false, false, { Stats.ExpertiseRating, }, ignoreSum = true } -- s124239
-L["%s초에 걸쳐 총 %s의 생명력이 회복됩니다. 음식을 먹으려면 앉아 있어야 합니다. 음식을 꾸준히 %s초 이상 먹으면 포만감을 느끼게 되고 %s초 동안 가속이 %s만큼 증가합니다"] = { false, false, false, false, { Stats.MeleeHasteRating, Stats.RangedHasteRating, Stats.SpellHasteRating, }, ignoreSum = true } -- s124240
-L["%s초에 걸쳐 총 %s의 생명력이 회복됩니다. 음식을 먹으려면 앉아 있어야 합니다. 음식을 꾸준히 %s초 이상 먹으면 포만감을 느끼게 되고 %s초 동안 치명타 및 극대화가 %s만큼 증가합니다"] = { false, false, false, false, { Stats.MeleeCritRating, Stats.RangedCritRating, Stats.SpellCritRating, }, ignoreSum = true } -- s124241
-L["%s초에 걸쳐 총 %s의 생명력과 %s의 마나가 회복됩니다. 음식을 먹으려면 앉아 있어야 합니다. 음식을 꾸준히 %s초 이상 먹으면 포만감을 느끼게 되고 %s초 동안 특화가 %s만큼 증가합니다"] = { false, false, false, false, false, { Stats.MasteryRating, }, ignoreSum = true } -- s124242
-L["%s초에 걸쳐 총 %s의 생명력이 회복됩니다. 음식을 먹으려면 앉아 있어야 합니다. 음식을 꾸준히 %s초 이상 먹으면 포만감을 느끼게 되고 %s초 동안 회피가 %s만큼 증가합니다"] = { false, false, false, false, { Stats.DodgeRating, }, ignoreSum = true } -- s124243
-L["%s초에 걸쳐 총 %s의 생명력이 회복됩니다. 음식을 먹으려면 앉아 있어야 합니다. 음식을 꾸준히 %s초 이상 먹으면 포만감을 느끼게 되고 %s초 동안 적중이 %s만큼 증가합니다"] = { false, false, false, false, { Stats.MeleeHitRating, Stats.RangedHitRating, Stats.SpellHitRating, }, ignoreSum = true } -- s124244
+L["%s초에 걸쳐 총 %s의 생명력이 회복됩니다. 음식을 먹으려면 앉아 있어야 합니다. 음식을 꾸준히 %s초 이상 먹으면 포만감을 느끼게 되고 %s시간 동안 숙련이 %s만큼 증가합니다"] = { false, false, false, false, { Stats.ExpertiseRating, }, ignoreSum = true } -- s124239
+L["%s초에 걸쳐 총 %s의 생명력이 회복됩니다. 음식을 먹으려면 앉아 있어야 합니다. 음식을 꾸준히 %s초 이상 먹으면 포만감을 느끼게 되고 %s시간 동안 가속이 %s만큼 증가합니다"] = { false, false, false, false, { Stats.MeleeHasteRating, Stats.RangedHasteRating, Stats.SpellHasteRating, }, ignoreSum = true } -- s124240
+L["%s초에 걸쳐 총 %s의 생명력이 회복됩니다. 음식을 먹으려면 앉아 있어야 합니다. 음식을 꾸준히 %s초 이상 먹으면 포만감을 느끼게 되고 %s시간 동안 치명타 및 극대화가 %s만큼 증가합니다"] = { false, false, false, false, { Stats.MeleeCritRating, Stats.RangedCritRating, Stats.SpellCritRating, }, ignoreSum = true } -- s124241
+L["%s초에 걸쳐 총 %s의 생명력과 %s의 마나가 회복됩니다. 음식을 먹으려면 앉아 있어야 합니다. 음식을 꾸준히 %s초 이상 먹으면 포만감을 느끼게 되고 %s시간 동안 특화가 %s만큼 증가합니다"] = { false, false, false, false, false, { Stats.MasteryRating, }, ignoreSum = true } -- s124242
+L["%s초에 걸쳐 총 %s의 생명력이 회복됩니다. 음식을 먹으려면 앉아 있어야 합니다. 음식을 꾸준히 %s초 이상 먹으면 포만감을 느끼게 되고 %s시간 동안 회피가 %s만큼 증가합니다"] = { false, false, false, false, { Stats.DodgeRating, }, ignoreSum = true } -- s124243
+L["%s초에 걸쳐 총 %s의 생명력이 회복됩니다. 음식을 먹으려면 앉아 있어야 합니다. 음식을 꾸준히 %s초 이상 먹으면 포만감을 느끼게 되고 %s시간 동안 적중이 %s만큼 증가합니다"] = { false, false, false, false, { Stats.MeleeHitRating, Stats.RangedHitRating, Stats.SpellHitRating, }, ignoreSum = true } -- s124244
 L["무기 막기 확률이 %s%만큼 증가합니다.\n공격을 무기로 막을 때마다 반사적으로 적을 공격하여 %s에서 %s의 피해를 입힙니다. 이 효과는 %s초에 한 번만 발동합니다"] = { { Stats.Parry, }, false, false, false, } -- s124334
 L["%s시간 동안 무기 막기가 %s만큼 증가합니다"] = { false, { Stats.ParryRating, }, } -- s125070
-L["%s초에 걸쳐 총 %s의 생명력이 회복됩니다. 음식을 먹으려면 앉아 있어야 합니다. 음식을 꾸준히 %s초 이상 먹으면 포만감을 느끼게 되고 %s초 동안 무기 막기가 %s만큼 증가합니다"] = { false, false, false, false, { Stats.ParryRating, }, ignoreSum = true } -- s125073
-L["%s초에 걸쳐 총 %s의 생명력과 %s의 마나가 회복됩니다. 음식을 먹으려면 앉아 있어야 합니다. 음식을 꾸준히 %s초 이상 먹으면 포만감을 느끼게 되고 %s초 동안 적중이 %s만큼 증가합니다"] = { false, false, false, false, false, { Stats.MeleeHitRating, Stats.RangedHitRating, Stats.SpellHitRating, }, ignoreSum = true } -- s125103
-L["%s초에 걸쳐 총 %s의 생명력과 %s의 마나가 회복됩니다. 음식을 먹으려면 앉아 있어야 합니다. 음식을 꾸준히 %s초 이상 먹으면 포만감을 느끼게 되고 %s초 동안 숙련이 %s만큼 증가합니다"] = { false, false, false, false, false, { Stats.MeleeHitRating, Stats.RangedHitRating, Stats.SpellHitRating, }, ignoreSum = true } -- s125105
+L["%s초에 걸쳐 총 %s의 생명력이 회복됩니다. 음식을 먹으려면 앉아 있어야 합니다. 음식을 꾸준히 %s초 이상 먹으면 포만감을 느끼게 되고 %s시간 동안 무기 막기가 %s만큼 증가합니다"] = { false, false, false, false, { Stats.ParryRating, }, ignoreSum = true } -- s125073
+L["%s초에 걸쳐 총 %s의 생명력과 %s의 마나가 회복됩니다. 음식을 먹으려면 앉아 있어야 합니다. 음식을 꾸준히 %s초 이상 먹으면 포만감을 느끼게 되고 %s시간 동안 적중이 %s만큼 증가합니다"] = { false, false, false, false, false, { Stats.MeleeHitRating, Stats.RangedHitRating, Stats.SpellHitRating, }, ignoreSum = true } -- s125103
+L["%s초에 걸쳐 총 %s의 생명력과 %s의 마나가 회복됩니다. 음식을 먹으려면 앉아 있어야 합니다. 음식을 꾸준히 %s초 이상 먹으면 포만감을 느끼게 되고 %s시간 동안 숙련이 %s만큼 증가합니다"] = { false, false, false, false, false, { Stats.MeleeHitRating, Stats.RangedHitRating, Stats.SpellHitRating, }, ignoreSum = true } -- s125105
 L["%s초 동안 가속이 %s만큼 증가하고, 취한 상태에서 깨어납니다"] = { false, { Stats.MeleeHasteRating, Stats.RangedHasteRating, Stats.SpellHasteRating, }, } -- s125282
 L["이동 불가 및 감속 효과에 면역이 되며 공격 속도가 %s%만큼 증가하고 이동 속도가 %s%만큼 증가합니다"] = { { Stats.MeleeHaste, }, false, } -- s125373
 L["무장 해제되면 %s초 동안 회피율이 %s%만큼 증가합니다"] = { false, { Stats.Dodge, }, ignoreSum = true } -- s126046
@@ -3546,9 +3547,9 @@ L["주문 공격으로 적에게 피해를 입히면 일정 확률로 천신의 
 L["치유 주문을 시전할 때 일정 확률로 천신의 축복 효과를 받습니다. %s초 동안 정신력이 %s만큼 증가합니다. (%s% 확률, 재사용 대기시간 %s초)"] = { false, { Stats.Spirit, }, false, false, ignoreSum = true } -- s128991
 L["적의 해골에 강력한 일격을 가해 물리 피해를 입히고 %s초 동안 적중률을 %s%만큼 감소시킵니다"] = { false, { Stats.MeleeHit, Stats.RangedHit, }, reduction = true } -- s129111
 L["애벌레가 광분에 빠져들어 %s초 동안 공격 속도가 %s%만큼 증가합니다"] = { false, { Stats.MeleeHaste, }, } -- s129936
-L["%s초에 걸쳐 %s의 생명력과 %s의 마나가 회복됩니다. 음식을 먹으려면 앉아 있어야 합니다. 음식을 꾸준히 %s초 이상 먹으면 포만감을 느끼게 되고 %s초 동안 지능이 %s만큼 증가합니다"] = { false, false, false, false, false, { Stats.Intellect, }, ignoreSum = true } -- s130359
+L["%s초에 걸쳐 %s의 생명력과 %s의 마나가 회복됩니다. 음식을 먹으려면 앉아 있어야 합니다. 음식을 꾸준히 %s초 이상 먹으면 포만감을 느끼게 되고 %s시간 동안 지능이 %s만큼 증가합니다"] = { false, false, false, false, false, { Stats.Intellect, }, ignoreSum = true } -- s130359
 L["%s초 동안 회피율이 %s%만큼, 이동 속도가 %s%만큼 증가합니다"] = { false, { Stats.Dodge, }, false, } -- s130182
-L["%s초에 걸쳐 %s의 생명력과 %s의 마나가 회복됩니다. 음식을 먹으려면 앉아 있어야 합니다. 음식을 꾸준히 %s초 이상 먹으면 포만감을 느끼게 되고 %s초 동안 민첩성이 %s만큼 증가합니다"] = { false, false, false, false, false, { Stats.Agility, }, ignoreSum = true } -- s130367
+L["%s초에 걸쳐 %s의 생명력과 %s의 마나가 회복됩니다. 음식을 먹으려면 앉아 있어야 합니다. 음식을 꾸준히 %s초 이상 먹으면 포만감을 느끼게 되고 %s시간 동안 민첩성이 %s만큼 증가합니다"] = { false, false, false, false, false, { Stats.Agility, }, ignoreSum = true } -- s130367
 L["라키라가 고통스럽게 울부짖으며 새끼들에게 도움을 요청합니다. 새끼들이 이미 있으면 그들의 공격 속도가 %s초 동안 %s%만큼 증가합니다"] = { false, { Stats.MeleeHaste, }, } -- s131199
 L["대상에게 더 빨리 행동해야 할 것 같은 기분이 들게 합니다. 공격 속도를 %s%만큼, 이동 속도를 %s%만큼 증가시킵니다"] = { { Stats.MeleeHaste, }, false, } -- s131764
 L["%s시간 동안 특화가 %s만큼 증가합니다"] = { false, { Stats.MasteryRating, }, } -- s131828
