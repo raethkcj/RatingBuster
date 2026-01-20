@@ -19,7 +19,17 @@ libs\UTF8\utf8.lua
 Init.lua
 Stats.lua
 
-locales\locales.xml
+locales\enUS\Vanilla.lua
+locales\deDE\Vanilla.lua
+locales\esES\Vanilla.lua
+locales\esMX\Vanilla.lua
+locales\frFR\Vanilla.lua
+locales\itIT\Vanilla.lua
+locales\koKR\Vanilla.lua
+locales\ptBR\Vanilla.lua
+locales\zhCN\Vanilla.lua
+locales\zhTW\Vanilla.lua
+locales\ruRU\Vanilla.lua
 
 StatLogic.lua
 Vanilla_Logic.lua

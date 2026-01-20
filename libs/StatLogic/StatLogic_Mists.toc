@@ -19,7 +19,17 @@ libs\UTF8\utf8.lua
 Init.lua
 Stats.lua
 
-locales\locales.xml
+locales\enUS\Mists.lua
+locales\deDE\Mists.lua
+locales\esES\Mists.lua
+locales\esMX\Mists.lua
+locales\frFR\Mists.lua
+locales\itIT\Mists.lua
+locales\koKR\Mists.lua
+locales\ptBR\Mists.lua
+locales\zhCN\Mists.lua
+locales\zhTW\Mists.lua
+locales\ruRU\Mists.lua
 
 StatLogic.lua
 DiminishingReturns.lua

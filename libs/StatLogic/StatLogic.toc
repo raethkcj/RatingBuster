@@ -19,7 +19,17 @@ libs\UTF8\utf8.lua
 Init.lua
 Stats.lua
 
-locales\locales.xml
+locales\enUS\Cata.lua
+locales\deDE\Cata.lua
+locales\esES\Cata.lua
+locales\esMX\Cata.lua
+locales\frFR\Cata.lua
+locales\itIT\Cata.lua
+locales\koKR\Cata.lua
+locales\ptBR\Cata.lua
+locales\zhCN\Cata.lua
+locales\zhTW\Cata.lua
+locales\ruRU\Cata.lua
 
 StatLogic.lua
 DiminishingReturns.lua
