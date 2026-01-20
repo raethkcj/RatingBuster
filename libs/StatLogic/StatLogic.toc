@@ -1,4 +1,4 @@
-## Interface: 40401, 40402
+## Interface: 11507, 11508, 20505, 30403, 30404, 40401, 40402, 50502, 50503
 ## Title: StatLogic
 ## IconTexture: Interface\AddOns\RatingBuster\images\icon_64.png
 ## Author: Whitetooth, raethkcj
@@ -19,19 +19,10 @@ libs\UTF8\utf8.lua
 Init.lua
 Stats.lua
 
-locales\enUS\Cata.lua
-locales\deDE\Cata.lua
-locales\esES\Cata.lua
-locales\esMX\Cata.lua
-locales\frFR\Cata.lua
-locales\itIT\Cata.lua
-locales\koKR\Cata.lua
-locales\ptBR\Cata.lua
-locales\zhCN\Cata.lua
-locales\zhTW\Cata.lua
-locales\ruRU\Cata.lua
+locales\GlobalPatterns.lua
+locales\[TextLocale]\[Game].lua
 
 StatLogic.lua
-DiminishingReturns.lua
-Cata_Logic.lua
-Global_Logic.lua
+DiminishingReturns.lua [AllowLoadGameType wrath, cata, mists]
+[Game]Logic.lua
+GlobalLogic.lua
