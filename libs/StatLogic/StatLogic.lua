@@ -72,7 +72,6 @@ local GetShapeshiftFormInfo = GetShapeshiftFormInfo
 local GetActiveTalentGroup = GetActiveTalentGroup or C_SpecializationInfo.GetActiveSpecGroup
 local GetPrimaryTalentTree = GetPrimaryTalentTree or C_SpecializationInfo.GetSpecialization
 local GetSpecializationInfo = GetSpecializationInfo or C_SpecializationInfo.GetSpecializationInfo
-addon.tocversion = select(4, GetBuildInfo())
 
 ---------------
 -- Lua Tools --

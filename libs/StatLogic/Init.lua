@@ -1,4 +1,4 @@
-local addonName = ...
+local addonName, addon = ...
 
 --[[
 Name: StatLogic-1.0
@@ -35,3 +35,5 @@ local MINOR_VERSION = 2 ^ 32 -- LibStub doesn't accept math.huge as a number
 
 ---@class StatLogic
 local StatLogic = LibStub:NewLibrary(addonName, MINOR_VERSION)
+
+addon.tocversion = select(4, GetBuildInfo())

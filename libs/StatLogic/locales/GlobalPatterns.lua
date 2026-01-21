@@ -167,7 +167,7 @@ local short = {
 	[ITEM_MOD_AGILITY_SHORT] = { {StatLogic.Stats.Agility} },
 	[ITEM_MOD_ARMOR_PENETRATION_RATING_SHORT] = { {StatLogic.Stats.ArmorPenetrationRating} },
 	[ITEM_MOD_ATTACK_POWER_SHORT] = { {StatLogic.Stats.GenericAttackPower} },
-	[ITEM_MOD_BLOCK_RATING_SHORT] = { {StatLogic.Stats.BlockRating} },
+	[ITEM_MOD_BLOCK_RATING_SHORT] = addon.tocversion >= 40000 and { {StatLogic.Stats.BlockRating} } or nil,
 	[ITEM_MOD_BLOCK_VALUE_SHORT] = { {StatLogic.Stats.BlockValue} },
 	[ITEM_MOD_CRIT_MELEE_RATING_SHORT] = { {StatLogic.Stats.MeleeCritRating} },
 	[ITEM_MOD_CRIT_RANGED_RATING_SHORT] = { {StatLogic.Stats.RangedCritRating} },
