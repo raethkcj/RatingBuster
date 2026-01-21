@@ -1129,7 +1129,6 @@ L["%s resistencia a la escarcha"] = { { Stats.FrostResistance, }, } -- e2819
 L["%s resistencia a la naturaleza"] = { { Stats.NatureResistance, }, } -- e2820
 L["%s resistencia a las sombras"] = { { Stats.ShadowResistance, }, } -- e2821
 L["%s golpe crítico"] = { { Stats.CritRating, }, } -- e2823
-L["%s bloqueo"] = { { Stats.BlockRating, }, } -- e2826
 L["%s celeridad"] = { { Stats.HasteRating, }, } -- e3726
 L["%s p. a todos los atributos"] = { { Stats.Stamina, }, } -- e7007
 L["golpe %s%"] = { { Stats.MeleeHit, Stats.RangedHit, }, } -- e7098

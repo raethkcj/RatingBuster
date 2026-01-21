@@ -1111,7 +1111,6 @@ L["%s к силе атаки и %s% к рейтингу критического
 L["%s к урону от заклинаний и %s% к рейтингу критического удара"] = { { Stats.SpellPower, }, { Stats.SpellCrit, }, } -- e2721
 L["%s к рейтингу уклонения"] = { { Stats.DodgeRating, }, } -- e2815
 L["%s к рейтингу критического удара"] = { { Stats.CritRating, }, } -- e2823
-L["%s к рейтингу блока"] = { { Stats.BlockRating, }, } -- e2826
 L["%s к рейтингу скорости"] = { { Stats.HasteRating, }, } -- e3726
 L["%s% к вероятности попадания"] = { { Stats.MeleeHit, Stats.RangedHit, }, } -- e7098
 L["%s к силе заклинаний и исцеления"] = { { Stats.SpellPower, }, } -- e7325

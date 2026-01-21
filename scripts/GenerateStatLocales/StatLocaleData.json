@@ -3,6 +3,7 @@
 		"1": {
 			"2412": [ ["HealthRegen"] ],
 			"2591": [ ["Intellect"], ["Stamina"], ["HealingPower"] ],
+			"2826": [],
 			"7615": [ ["Stamina"], ["Strength"], ["Agility"] ],
 			"7635": [ ["Stamina"], ["Agility"], ["Strength"] ]
 		},

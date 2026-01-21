@@ -1055,7 +1055,6 @@ L["攻击强度%s点，爆击率%s%"] = { { Stats.AttackPower, }, { Stats.MeleeC
 L["法术伤害%s点，法术爆击率%s%"] = { { Stats.SpellPower, }, { Stats.SpellCrit, }, } -- e2721
 L["%s 躲闪"] = { { Stats.DodgeRating, }, } -- e2815
 L["%s 爆击"] = { { Stats.CritRating, }, } -- e2823
-L["%s 格挡"] = { { Stats.BlockRating, }, } -- e2826
 L["%s 急速"] = { { Stats.HasteRating, }, } -- e3726
 L["%s 所有属性"] = { { Stats.Stamina, }, } -- e7007
 L["命中%s%"] = { { Stats.MeleeHit, Stats.RangedHit, }, } -- e7098

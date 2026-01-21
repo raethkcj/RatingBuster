@@ -1111,7 +1111,6 @@ L["angriffskraft %s und %s% kritische treffer"] = { { Stats.AttackPower, }, { St
 L["zauberschaden %s und %s% kritische zaubertreffer"] = { { Stats.SpellPower, }, { Stats.SpellCrit, }, } -- e2721
 L["%s ausweichen"] = { { Stats.DodgeRating, }, } -- e2815
 L["%s kritischer trefferwert"] = { { Stats.CritRating, }, } -- e2823
-L["%s blocken"] = { { Stats.BlockRating, }, } -- e2826
 L["%s tempo"] = { { Stats.HasteRating, }, } -- e3726
 L["%s auf alle attribute"] = { { Stats.Stamina, }, } -- e7007
 L["trefferwert %s%"] = { { Stats.MeleeHit, Stats.RangedHit, }, } -- e7098

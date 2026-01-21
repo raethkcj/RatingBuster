@@ -1155,7 +1155,6 @@ L["poder de ataque %s y %s% de golpe crítico"] = { { Stats.AttackPower, }, { St
 L["daño con hechizos %s y %s% de golpe crítico con hechizos"] = { { Stats.SpellPower, }, { Stats.SpellCrit, }, } -- e2721
 L["%s de esquivar"] = { { Stats.DodgeRating, }, } -- e2815
 L["%s de golpe crítico"] = { { Stats.CritRating, }, } -- e2823
-L["%s de bloqueo"] = { { Stats.BlockRating, }, } -- e2826
 L["%s de celeridad"] = { { Stats.HasteRating, }, } -- e3726
 L["%s a todos los atributos"] = { { Stats.Stamina, }, } -- e7007
 L["golpe %s%"] = { { Stats.MeleeHit, Stats.RangedHit, }, } -- e7098

@@ -973,7 +973,6 @@ L["주문 공격력 %s / 주문 극대화 확률 %s%"] = { { Stats.SpellPower, }
 L["영혼 %s"] = { { Stats.Spirit, }, } -- e2806
 L["회피 %s"] = { { Stats.DodgeRating, }, } -- e2815
 L["치명타 및 극대화 %s"] = { { Stats.CritRating, }, } -- e2823
-L["막기 %s"] = { { Stats.BlockRating, }, } -- e2826
 L["가속 %s"] = { { Stats.HasteRating, }, } -- e3726
 L["주문 공격력 및 치유량 %s"] = { { Stats.SpellPower, }, } -- e7325
 L["치유 주문 %s"] = { { Stats.HealingPower, }, } -- e7326

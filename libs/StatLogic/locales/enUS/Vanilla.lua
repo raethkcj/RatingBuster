@@ -1012,7 +1012,6 @@ L["attack power %s and %s% critical strike"] = { { Stats.AttackPower, }, { Stats
 L["spell damage %s and %s% spell critical strike"] = { { Stats.SpellPower, }, { Stats.SpellCrit, }, } -- e2721
 L["%s dodge"] = { { Stats.DodgeRating, }, } -- e2815
 L["%s critical strike"] = { { Stats.CritRating, }, } -- e2823
-L["%s block"] = { { Stats.BlockRating, }, } -- e2826
 L["%s haste"] = { { Stats.HasteRating, }, } -- e3726
 L["%s to all attributes"] = { { Stats.Stamina, }, } -- e7007
 L["hit %s%"] = { { Stats.MeleeHit, Stats.RangedHit, }, } -- e7098

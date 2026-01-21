@@ -1178,7 +1178,6 @@ L["puissance d'attaque %s et %s% coups critiques"] = { { Stats.AttackPower, }, {
 L["dégâts des sorts %s et %s% aux critiques des sorts"] = { { Stats.SpellPower, }, { Stats.SpellCrit, }, } -- e2721
 L["%s à la résistance à l’ombre"] = { { Stats.ShadowResistance, }, } -- e2821
 L["%s au score de critique"] = { { Stats.CritRating, }, } -- e2823
-L["%s au blocage"] = { { Stats.BlockRating, }, } -- e2826
 L["%s à la hâte"] = { { Stats.HasteRating, }, } -- e3726
 L["%s à toutes les caractéristiques"] = { { Stats.Stamina, }, } -- e7007
 L["toucher %s %"] = { { Stats.MeleeHit, Stats.RangedHit, }, } -- e7098
