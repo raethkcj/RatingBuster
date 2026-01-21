@@ -3489,7 +3489,6 @@ local summaryCalcData = {
 		stat = StatLogic.Stats.MeleeCrit,
 		func = function(sum, statModContext)
 			return sum[StatLogic.Stats.MeleeCrit]
-				+ sum[StatLogic.Stats.MeleeCritRating] * statModContext("ADD_MELEE_CRIT_MOD_MELEE_CRIT_RATING")
 				+ summaryFunc[StatLogic.Stats.MeleeCritRating](sum, statModContext) * statModContext("ADD_MELEE_CRIT_MOD_MELEE_CRIT_RATING")
 				+ summaryFunc[StatLogic.Stats.Agility](sum, statModContext) * statModContext("ADD_MELEE_CRIT_MOD_AGI")
 		end,
