@@ -1,4 +1,4 @@
-## Interface: 40401, 40402
+## Interface: 11507, 11508, 20505, 30403, 30404, 40401, 40402, 50502, 50503
 ## Title: RatingBuster
 ## IconTexture: Interface\AddOns\RatingBuster\images\icon_64.png
 ## Notes: Item stat breakdown, analysis and comparison
@@ -29,7 +29,7 @@
 embeds.xml
 
 # Localization
-locales\locales.xml
+locales\[TextLocale].lua
 
 # Core
 TipHooker.lua
