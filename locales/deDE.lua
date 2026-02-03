@@ -22,6 +22,9 @@ L["RatingBuster Options"] = "RatingBuster Optionen"
 ---------------------------
 -- Slash Command Options --
 ---------------------------
+-- /rb help
+L["Help"] = "Help"
+L["Show this help message"] = "Show this help message"
 -- /rb optionswin
 L["Options Window"] = "Optionsfenster"
 L["Shows the Options Window"] = "Zeigt das Optionsfenster"
@@ -75,7 +78,7 @@ L["Expertise breakdown"] = "Waffenkundeanalyse"
 L["Convert Expertise into Dodge Reduction and Parry Reduction"] = "Wandle Waffenkunde in Ausweich- und Pariermissachtung um"
 
 -- /rb stat
---["Stat Breakdown"] = "Werte",
+L["Stat Breakdown"] = "Werte"
 L["Changes the display of base stats"] = "Zeigt die Basiswerte an"
 -- /rb stat show
 L["Show base stat conversions"] = "Zeige Basiswertumwandlung"
