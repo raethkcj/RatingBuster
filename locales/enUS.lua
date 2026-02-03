@@ -5,24 +5,13 @@ Translated by:
 ]]
 
 local _, addon = ...
-addon.tocversion = select(4, GetBuildInfo())
-
----@class RatingBusterLocale
----@field numberPatterns table
----@field exclusions table
----@field separators table
----@field statPatterns { [Stat]: string[] }
----@field [string] string
-
----@class RatingBusterDefaultLocale : RatingBusterLocale
----@field [string] string|true
 
 ---@type RatingBusterDefaultLocale
 local L = LibStub("AceLocale-3.0"):NewLocale("RatingBuster", "enUS", true)
 addon.S = {}
 local S = addon.S
-L["RatingBuster Options"] = true
 local StatLogic = LibStub("StatLogic")
+L["RatingBuster Options"] = true
 ---------------------------
 -- Slash Command Options --
 ---------------------------

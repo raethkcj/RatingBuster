@@ -28,6 +28,8 @@
 # Libraries
 embeds.xml
 
+Init.lua
+
 # Localization
 locales\[TextLocale].lua
 
