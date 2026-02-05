@@ -15,223 +15,142 @@ L["RatingBuster Options"] = true
 ---------------------------
 -- Slash Command Options --
 ---------------------------
--- /rb help
 L["Help"] = true
 L["Show this help message"] = true
--- /rb win
 L["Options Window"] = true
 L["Shows the Options Window"] = true
--- /rb statmod
 L["Enable Stat Mods"] = true
 L["Enable support for Stat Mods"] = true
 L["Enable Avoidance Diminishing Returns"] = true
 L["Dodge, Parry, Miss Avoidance values will be calculated using the avoidance deminishing return formula with your current stats"] = true
-
--- /rb itemid
 L["Show ItemID"] = true
 L["Show the ItemID in tooltips"] = true
--- /rb itemlevel
 L["Show ItemLevel"] = true
 L["Show the ItemLevel in tooltips"] = true
--- /rb usereqlv
 L["Use required level"] = true
 L["Calculate using the required level if you are below the required level"] = true
--- /rb setlevel
 L["Set level"] = true
 L["Set the level used in calculations (0 = your level)"] = true
--- /rb color
 L["Change text color"] = true
 L["Changes the color of added text"] = true
 L["Change number color"] = true
--- /rb rating
 L["Rating"] = true
 L["Options for Rating display"] = true
--- /rb rating show
 L["Show Rating conversions"] = true
 L["Show Rating conversions in tooltips"] = true
 L["Enable integration with Blizzard Reforging UI"] = true
--- /rb rating spell
 L["Show Spell Hit/Haste"] = true
 L["Show Spell Hit/Haste from Hit/Haste Rating"] = true
--- /rb rating physical
 L["Show Physical Hit/Haste"] = true
 L["Show Physical Hit/Haste from Hit/Haste Rating"] = true
--- /rb rating detail
 L["Show detailed conversions text"] = true
 L["Show detailed text for Resilience and Expertise conversions"] = true
--- /rb rating def
 L["Defense breakdown"] = true
 L["Convert Defense into Crit Avoidance, Hit Avoidance, Dodge, Parry and Block"] = true
--- /rb rating wpn
 L["Weapon Skill breakdown"] = true
 L["Convert Weapon Skill into Crit, Hit, Dodge Reduction, Parry Reduction and Block Reduction"] = true
--- /rb rating exp -- 2.3.0
 L["Expertise breakdown"] = true
 L["Convert Expertise into Dodge Reduction and Parry Reduction"] = true
 
--- /rb stat
 L["Stat Breakdown"] = true
 L["Changes the display of base stats"] = true
--- /rb stat show
 L["Show base stat conversions"] = true
 L["Show base stat conversions in tooltips"] = true
 L["Changes the display of %s"] = true
 ---------------------------------------------------------------------------
--- /rb sum
 L["Stat Summary"] = true
 L["Options for stat summary"] = true
 L["Sum %s"] = true
--- /rb sum show
 L["Show stat summary"] = true
 L["Show stat summary in tooltips"] = true
--- /rb sum ignore
 L["Ignore settings"] = true
 L["Ignore stuff when calculating the stat summary"] = true
--- /rb sum ignore unused
 L["Ignore unused item types"] = true
 L["Show stat summary only for highest level armor type and items you can use with uncommon quality and up"] = true
 L["Ignore non-primary stat"] = true
 L["Show stat summary only for items with your specialization's primary stat"] = true
--- /rb sum ignore equipped
 L["Ignore equipped items"] = true
 L["Hide stat summary for equipped items"] = true
--- /rb sum ignore enchant
 L["Ignore enchants"] = true
 L["Ignore enchants on items when calculating the stat summary"] = true
--- /rb sum ignore gem
 L["Ignore gems"] = true
 L["Ignore gems on items when calculating the stat summary"] = true
 L["Ignore extra sockets"] = true
 L["Ignore sockets from professions or consumable items when calculating the stat summary"] = true
--- /rb sum diffstyle
 L["Display style for diff value"] = true
 L["Display diff values in the main tooltip or only in compare tooltips"] = true
 L["Hide Blizzard Item Comparisons"] = true
 L["Disable Blizzard stat change summary when using the built-in comparison tooltip"] = true
--- /rb sum space
 L["Add empty line"] = true
 L["Add a empty line before or after stat summary"] = true
--- /rb sum space before
 L["Add before summary"] = true
 L["Add a empty line before stat summary"] = true
--- /rb sum space after
 L["Add after summary"] = true
 L["Add a empty line after stat summary"] = true
--- /rb sum icon
 L["Show icon"] = true
 L["Show the sigma icon before stat summary"] = true
--- /rb sum title
 L["Show title text"] = true
 L["Show the title text before stat summary"] = true
 L["Show profile name"] = true
 L["Show profile name before stat summary"] = true
--- /rb sum showzerostat
 L["Show zero value stats"] = true
 L["Show zero value stats in summary for consistancy"] = true
--- /rb sum calcsum
 L["Calculate stat sum"] = true
 L["Calculate the total stats for the item"] = true
--- /rb sum calcdiff
 L["Calculate stat diff"] = true
 L["Calculate the stat difference for the item and equipped items"] = true
--- /rb sum sort
 L["Sort StatSummary alphabetically"] = true
 L["Enable to sort StatSummary alphabetically, disable to sort according to stat type(basic, physical, spell, tank)"] = true
--- /rb sum avoidhasblock
 L["Include block chance in Avoidance summary"] = true
 L["Enable to include block chance in Avoidance summary, Disable for only dodge, parry, miss"] = true
--- /rb sum basic
 L["Stat - Basic"] = true
 L["Choose basic stats for summary"] = true
--- /rb sum physical
 L["Stat - Physical"] = true
 L["Choose physical damage stats for summary"] = true
 L["Ranged"] = true
 L["Weapon"] = true
--- /rb sum spell
 L["Stat - Spell"] = true
 L["Choose spell damage and healing stats for summary"] = true
--- /rb sum tank
 L["Stat - Tank"] = true
 L["Choose tank stats for summary"] = true
--- /rb sum stat hp
 L["Health <- Health, Stamina"] = true
--- /rb sum stat mp
 L["Mana <- Mana, Intellect"] = true
--- /rb sum stat ap
 L["Attack Power <- Attack Power, Strength, Agility"] = true
--- /rb sum stat rap
 L["Ranged Attack Power <- Ranged Attack Power, Intellect, Attack Power, Strength, Agility"] = true
--- /rb sum stat dmg
 L["Spell Damage <- Spell Damage, Intellect, Spirit, Stamina"] = true
--- /rb sum stat dmgholy
 L["Holy Spell Damage <- Holy Spell Damage, Spell Damage, Intellect, Spirit"] = true
--- /rb sum stat dmgarcane
 L["Arcane Spell Damage <- Arcane Spell Damage, Spell Damage, Intellect"] = true
--- /rb sum stat dmgfire
 L["Fire Spell Damage <- Fire Spell Damage, Spell Damage, Intellect, Stamina"] = true
--- /rb sum stat dmgnature
 L["Nature Spell Damage <- Nature Spell Damage, Spell Damage, Intellect"] = true
--- /rb sum stat dmgfrost
 L["Frost Spell Damage <- Frost Spell Damage, Spell Damage, Intellect"] = true
--- /rb sum stat dmgshadow
 L["Shadow Spell Damage <- Shadow Spell Damage, Spell Damage, Intellect, Spirit, Stamina"] = true
--- /rb sum stat heal
 L["Healing <- Healing, Intellect, Spirit, Agility, Strength"] = true
--- /rb sum stat hit
 L["Hit Chance <- Hit Rating, Weapon Skill Rating"] = true
--- /rb sum stat crit
 L["Crit Chance <- Crit Rating, Agility, Weapon Skill Rating"] = true
--- /rb sum stat haste
 L["Haste <- Haste Rating"] = true
 L["Ranged Hit Chance <- Hit Rating, Weapon Skill Rating, Ranged Hit Rating"] = true
--- /rb sum physical rangedcrit
 L["Ranged Crit Chance <- Crit Rating, Agility, Weapon Skill Rating, Ranged Crit Rating"] = true
--- /rb sum physical rangedhaste
 L["Ranged Haste <- Haste Rating, Ranged Haste Rating"] = true
-
--- /rb sum stat critspell
-L["Spell Crit Chance <- Spell Crit Rating, Intellect"] = true
--- /rb sum stat hitspell
 L["Spell Hit Chance <- Spell Hit Rating"] = true
--- /rb sum stat hastespell
+L["Spell Crit Chance <- Spell Crit Rating, Intellect"] = true
 L["Spell Haste <- Spell Haste Rating"] = true
--- /rb sum stat mp5
 L["Mana Regen <- Mana Regen, Spirit"] = true
--- /rb sum stat mp5nc
 L["Mana Regen while not casting <- Spirit"] = true
--- /rb sum stat hp5
 L["Health Regen <- Health Regen"] = true
--- /rb sum stat hp5oc
 L["Health Regen when out of combat <- Spirit"] = true
--- /rb sum stat armor
 L["Armor <- Armor from items, Armor from bonuses, Agility, Intellect"] = true
--- /rb sum stat blockvalue
 L["Block Value <- Block Value, Strength"] = true
--- /rb sum stat dodge
 L["Dodge Chance <- Dodge Rating, Agility, Defense Rating"] = true
--- /rb sum stat parry
 L["Parry Chance <- Parry Rating, Defense Rating"] = true
--- /rb sum stat block
 L["Block Chance <- Block Rating, Defense Rating"] = true
--- /rb sum stat avoidhit
 L["Hit Avoidance <- Defense Rating"] = true
--- /rb sum stat avoidcrit
 L["Crit Avoidance <- Defense Rating, Resilience"] = true
--- /rb sum stat Reductiondodge
 L["Dodge Reduction <- Expertise, Weapon Skill Rating"] = true -- 2.3.0
--- /rb sum stat Reductionparry
 L["Parry Reduction <- Expertise, Weapon Skill Rating"] = true -- 2.3.0
-
--- /rb sum statcomp def
 L["Defense <- Defense Rating"] = true
--- /rb sum statcomp wpn
 L["Weapon Skill <- Weapon Skill Rating"] = true
--- /rb sum statcomp exp -- 2.3.0
 L["Expertise <- Expertise Rating"] = true
--- /rb sum statcomp avoid
 L["Avoidance <- Dodge, Parry, MobMiss, Block(Optional)"] = true
--- /rb sum gem
 L["Gems"] = true
 L["Auto fill empty gem slots"] = true
 L["ItemID or Link of the gem you would like to auto fill"] = true

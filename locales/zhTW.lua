@@ -25,221 +25,144 @@ L["RatingBuster Options"] = "屬性轉換選項"
 ---------------------------
 -- Slash Command Options --
 ---------------------------
--- /rb optionswin
+L["Help"] = "Help"
+L["Show this help message"] = "Show this help message"
 L["Options Window"] = "選項視窗"
 L["Shows the Options Window"] = "顯示選項視窗"
--- /rb statmod
 L["Enable Stat Mods"] = "屬性加成"
 L["Enable support for Stat Mods"] = "啟用屬性加成計算"
--- /rb avoidancedr
 L["Enable Avoidance Diminishing Returns"] = "啟用迴避遞減效應"
 L["Dodge, Parry, Miss Avoidance values will be calculated using the avoidance deminishing return formula with your current stats"] = "你的閃避、招架、避免命中值會被計算在迴避遞減效應中"
--- /rb itemid
 L["Show ItemID"] = "顯示物品編號"
 L["Show the ItemID in tooltips"] = "顯示物品編號"
--- /rb itemlevel
 L["Show ItemLevel"] = "顯示物品等級"
 L["Show the ItemLevel in tooltips"] = "顯示物品等級"
--- /rb usereqlv
 L["Use required level"] = "使用需要等級"
 L["Calculate using the required level if you are below the required level"] = "如果你的等級低於需要等級則用需要等級來換算"
--- /rb setlevel
 L["Set level"] = "設定換算等級"
 L["Set the level used in calculations (0 = your level)"] = "設定換算等級 (0 = 你的目前的等級)"
--- /rb color
 L["Change text color"] = "設定文字顏色"
 L["Changes the color of added text"] = "設定 RB 所增加的文字的顏色"
 L["Change number color"] = "Change number color"
--- /rb rating
 L["Rating"] = "屬性等級"
 L["Options for Rating display"] = "設定屬性等級顯示"
--- /rb rating show
 L["Show Rating conversions"] = "顯示屬性等級轉換"
 L["Show Rating conversions in tooltips"] = "在提示框架中顯示屬性等級轉換結果"
 L["Enable integration with Blizzard Reforging UI"] = "Enable integration with Blizzard Reforging UI"
--- /rb rating spell
 L["Show Spell Hit/Haste"] = "顯示法術命中/加速"
 L["Show Spell Hit/Haste from Hit/Haste Rating"] = "顯示命中/加速給的法術命中/加速"
--- /rb rating physical
 L["Show Physical Hit/Haste"] = "顯示物理命中/加速"
 L["Show Physical Hit/Haste from Hit/Haste Rating"] = "顯示命中/加速給的物理命中/加速"
--- /rb rating detail
 L["Show detailed conversions text"] = "顯示詳細轉換文字"
 L["Show detailed text for Resilience and Expertise conversions"] = "顯示韌性和熟練技能的詳細轉換文字"
--- /rb rating def
 L["Defense breakdown"] = "分析防禦"
 L["Convert Defense into Crit Avoidance Hit Avoidance, Dodge, Parry and Block"] = "將防禦分為避免致命、避免命中、閃躲、招架和格擋"
--- /rb rating wpn
 L["Weapon Skill breakdown"] = "分析武器技能"
-L["Convert Weapon Skill into Crit Hit, Dodge Reduction, Parry Reduction and Block Reduction"] = "將武器技能分為致命、擊中、防止被閃躲、防止被招架和防止被格擋"
--- /rb rating exp -- 2.3.0
+L["Convert Weapon Skill into Crit, Hit, Dodge Reduction, Parry Reduction and Block Reduction"] = "將武器技能分為致命、擊中、防止被閃躲、防止被招架和防止被格擋"
 L["Expertise breakdown"] = "分析熟練技能"
 L["Convert Expertise into Dodge Reduction and Parry Reduction"] = "將熟練技能分為防止被閃躲、防止被招架"
 
--- /rb stat
 L["Stat Breakdown"] = "基本屬性解析"
 L["Changes the display of base stats"] = "設定基本屬性的解析顯示"
--- /rb stat show
 L["Show base stat conversions"] = "顯示基本屬性解析"
 L["Show base stat conversions in tooltips"] = "在物品提示中顯示基本屬性解析"
 L["Changes the display of %s"] = "自訂%s解析項目"
 
--- /rb sum
 L["Stat Summary"] = "屬性統計"
 L["Options for stat summary"] = "自訂屬性選項"
 L["Sum %s"] = "統計%s"
--- /rb sum show
 L["Show stat summary"] = "顯示屬性統計"
 L["Show stat summary in tooltips"] = "在物品提示中顯示屬性統計"
--- /rb sum ignore
 L["Ignore settings"] = "忽略設定"
 L["Ignore stuff when calculating the stat summary"] = "設定在統計總合時所要忽略的項目"
--- /rb sum ignore unused
 L["Ignore unused item types"] = "忽略不可能使用的物品"
 L["Show stat summary only for highest level armor type and items you can use with uncommon quality and up"] = "只顯示在你會使用的物品上"
 L["Ignore non-primary stat"] = "Ignore non-primary stat"
 L["Show stat summary only for items with your specialization's primary stat"] = "Show stat summary only for items with your specialization's primary stat"
--- /rb sum ignore equipped
 L["Ignore equipped items"] = "忽略已裝備的物品"
 L["Hide stat summary for equipped items"] = "隱藏已裝備的物品的統計總合"
--- /rb sum ignore enchant
 L["Ignore enchants"] = "忽略附魔"
 L["Ignore enchants on items when calculating the stat summary"] = "計算時忽略物品上的附魔效果"
--- /rb sum ignore gem
 L["Ignore gems"] = "忽略寶石"
 L["Ignore gems on items when calculating the stat summary"] = "計算時忽略物品上的寶石效果"
 L["Ignore extra sockets"] = "Ignore extra sockets"
 L["Ignore sockets from professions or consumable items when calculating the stat summary"] = "Ignore sockets from professions or consumable items when calculating the stat summary"
--- /rb sum diffstyle
 L["Display style for diff value"] = "差異值顯示方式"
 L["Display diff values in the main tooltip or only in compare tooltips"] = "設定在主提示框架或只在比較框架中顯示差異值"
 L["Hide Blizzard Item Comparisons"] = "隱藏內建的物品比較"
 L["Disable Blizzard stat change summary when using the built-in comparison tooltip"] = "觀看內建的已裝備物品提示時不顯示內建的物品比較功能"
--- /rb sum space
 L["Add empty line"] = "加入空白列"
 L["Add a empty line before or after stat summary"] = "在物品提示中的屬性統計前或後加入空白列"
--- /rb sum space before
 L["Add before summary"] = "加在統計前"
 L["Add a empty line before stat summary"] = "在物品提示中的屬性統計前加入空白列"
--- /rb sum space after
 L["Add after summary"] = "加在統計後"
 L["Add a empty line after stat summary"] = "在物品提示中的屬性統計後加入空白列"
--- /rb sum icon
 L["Show icon"] = "顯示圖示"
 L["Show the sigma icon before stat summary"] = "在屬性統計前顯示圖示"
--- /rb sum title
 L["Show title text"] = "顯示標題"
 L["Show the title text before stat summary"] = "在屬性統計前顯示標題文字"
 L["Show profile name"] = "Show profile name"
 L["Show profile name before stat summary"] = "Show profile name before stat summary"
--- /rb sum showzerostat
 L["Show zero value stats"] = "顯示數值為 0 的屬性"
 L["Show zero value stats in summary for consistancy"] = "為了一致性，在統計中顯示數值為 0 的屬性"
--- /rb sum calcsum
 L["Calculate stat sum"] = "計算統計總合"
 L["Calculate the total stats for the item"] = "計算物品的統計總合"
--- /rb sum calcdiff
 L["Calculate stat diff"] = "計算統計差異"
 L["Calculate the stat difference for the item and equipped items"] = "計算物品和已裝備物品的統計差異"
--- /rb sum sort
 L["Sort StatSummary alphabetically"] = "依字幕順序排列屬性統計"
 L["Enable to sort StatSummary alphabetically disable to sort according to stat type(basic, physical, spell, tank)"] = "開啟時依字幕順序排列，關閉時依屬性種類排列(基本、物理、魔法、坦克)"
--- /rb sum avoidhasblock
 L["Include block chance in Avoidance summary"] = "傷害迴避包含格檔率"
 L["Enable to include block chance in Avoidance summary Disable for only dodge, parry, miss"] = "開啟時傷害迴避包含格檔率，關閉時有閃躲、招架、未擊中"
--- /rb sum basic
 L["Stat - Basic"] = "統計基本屬性"
 L["Choose basic stats for summary"] = "自訂基本屬性統計項目"
--- /rb sum physical
 L["Stat - Physical"] = "統計物理屬性"
 L["Choose physical damage stats for summary"] = "自訂物理傷害屬性統計項目"
--- /rb sum spell
+L["Ranged"] = "Ranged"
+L["Weapon"] = "Weapon"
 L["Stat - Spell"] = "統計魔法屬性"
 L["Choose spell damage and healing stats for summary"] = "自訂魔法傷害及治療屬性統計項目"
--- /rb sum tank
 L["Stat - Tank"] = "統計坦克屬性"
 L["Choose tank stats for summary"] = "自訂坦克屬性統計項目"
--- /rb sum stat hp
 L["Health <- Health Stamina"] = "生命力 ← 生命力、耐力"
--- /rb sum stat mp
 L["Mana <- Mana Intellect"] = "法力 ← 法力、智力"
--- /rb sum stat ap
 L["Attack Power <- Attack Power Strength, Agility"] = "攻擊強度 ← 攻擊強度、力量、敏捷"
--- /rb sum stat rap
 L["Ranged Attack Power <- Ranged Attack Power Intellect, Attack Power, Strength, Agility"] = "遠程攻擊強度 ← 遠程攻擊強度、智力、攻擊強度、力量、敏捷"
--- /rb sum stat dmg
 L["Spell Damage <- Spell Damage Intellect, Spirit, Stamina"] = "法術傷害 ← 法術傷害、智力、精神、耐力"
--- /rb sum stat dmgholy
 L["Holy Spell Damage <- Holy Spell Damage Spell Damage, Intellect, Spirit"] = "神聖法術傷害 ← 神聖法術傷害、法術傷害、智力、精神"
--- /rb sum stat dmgarcane
 L["Arcane Spell Damage <- Arcane Spell Damage Spell Damage, Intellect"] = "秘法法術傷害 ← 秘法法術傷害、法術傷害、智力"
--- /rb sum stat dmgfire
 L["Fire Spell Damage <- Fire Spell Damage Spell Damage, Intellect, Stamina"] = "火焰法術傷害 ← 火焰法術傷害、法術傷害、智力、耐力"
--- /rb sum stat dmgnature
 L["Nature Spell Damage <- Nature Spell Damage Spell Damage, Intellect"] = "自然法術傷害 ← 自然法術傷害、法術傷害、智力"
--- /rb sum stat dmgfrost
 L["Frost Spell Damage <- Frost Spell Damage Spell Damage, Intellect"] = "冰霜法術傷害 ← 冰霜法術傷害、法術傷害、智力"
--- /rb sum stat dmgshadow
 L["Shadow Spell Damage <- Shadow Spell Damage Spell Damage, Intellect, Spirit, Stamina"] = "暗影法術傷害 ← 暗影法術傷害、法術傷害、智力、精神、耐力"
--- /rb sum stat heal
 L["Healing <- Healing Intellect, Spirit, Agility, Strength"] = "治療 ← 治療、智力、精神、敏捷、力量"
--- /rb sum stat hit
 L["Hit Chance <- Hit Rating Weapon Skill Rating"] = "命中機率 ← 命中等級、武器技能等級"
--- /rb sum stat crit
-L["Crit Chance <- Crit Rating Agility, Weapon Skill Rating"] = "致命一擊機率 ← 致命一擊等級、敏捷、武器技能等級"
--- /rb sum stat haste
+L["Crit Chance <- Crit Rating, Agility, Weapon Skill Rating"] = "致命一擊機率 ← 致命一擊等級、敏捷、武器技能等級"
 L["Haste <- Haste Rating"] = "加速 ← 加速等級"
 L["Ranged Hit Chance <- Hit Rating, Weapon Skill Rating, Ranged Hit Rating"] = "遠程命中機率 ← 命中等級、武器技能等級、遠程命中等級"
--- /rb sum physical rangedcrit
 L["Ranged Crit Chance <- Crit Rating, Agility, Weapon Skill Rating, Ranged Crit Rating"] = "遠程致命一擊機率 ← 致命一擊等級、敏捷、武器技能等級、遠程致命一級等級"
--- /rb sum physical rangedhaste
 L["Ranged Haste <- Haste Rating, Ranged Haste Rating"] = "遠程加速 ← 加速等級、遠程加速等級"
-
--- /rb sum stat critspell
-L["Spell Crit Chance <- Spell Crit Rating Intellect"] = "法術致命一擊機率 ← 法術致命一擊等級、智力"
--- /rb sum stat hitspell
 L["Spell Hit Chance <- Spell Hit Rating"] = "法術命中機率 ← 法術命中機率"
--- /rb sum stat hastespell
+L["Spell Crit Chance <- Spell Crit Rating Intellect"] = "法術致命一擊機率 ← 法術致命一擊等級、智力"
 L["Spell Haste <- Spell Haste Rating"] = "法術加速 ← 法術加速等級"
--- /rb sum stat mp5
 L["Mana Regen <- Mana Regen Spirit"] = "法力恢復 ← 法力恢復、精神"
--- /rb sum stat mp5nc
 L["Mana Regen while not casting <- Spirit"] = "法力恢復 (未施法時) ← 精神"
--- /rb sum stat hp5
 L["Health Regen <- Health Regen"] = "生命恢復 ← 生命恢復"
--- /rb sum stat hp5oc
 L["Health Regen when out of combat <- Spirit"] = "生命恢復 (未戰鬥時) ← 精神"
--- /rb sum stat armor
 L["Armor <- Armor from items Armor from bonuses, Agility, Intellect"] = "裝甲值 ← 物品裝甲、裝甲加成、敏捷、智力"
--- /rb sum stat blockvalue
 L["Block Value <- Block Value Strength"] = "格擋值 ← 格擋值、力量"
--- /rb sum stat dodge
 L["Dodge Chance <- Dodge Rating Agility, Defense Rating"] = "閃躲機率 ← 閃躲等級、敏捷、防禦等級"
--- /rb sum stat parry
 L["Parry Chance <- Parry Rating Defense Rating"] = "招架機率 ← 招架等級、防禦等級"
--- /rb sum stat block
 L["Block Chance <- Block Rating Defense Rating"] = "格擋機率 ← 格擋等級、防禦等級"
--- /rb sum stat avoidhit
 L["Hit Avoidance <- Defense Rating"] = "迴避命中 ← 防禦等級"
--- /rb sum stat avoidcrit
 L["Crit Avoidance <- Defense Rating Resilience"] = "迴避致命一擊 ← 防禦等級、韌性"
--- /rb sum stat Reductiondodge
 L["Dodge Reduction <- Expertise Weapon Skill Rating"] = "防止被閃躲 ← 熟練技能、武器技能等級" -- 2.3.0
--- /rb sum stat Reductionparry
 L["Parry Reduction <- Expertise Weapon Skill Rating"] = "防止被招架 ← 熟練技能、武器技能等級" -- 2.3.0
-
--- /rb sum statcomp def
 L["Defense <- Defense Rating"] = "防禦 ← 防禦等級"
--- /rb sum statcomp wpn
 L["Weapon Skill <- Weapon Skill Rating"] = "武器技能 ← 武器技能等級"
--- /rb sum statcomp exp -- 2.3.0
 L["Expertise <- Expertise Rating"] = "熟練技能 ← 熟練等級"
--- /rb sum statcomp avoid
 L["Avoidance <- Dodge Parry, MobMiss, Block(Optional)"] = "傷害迴避 ← 閃躲、招架、怪物未擊中、格擋(選項)"
--- /rb sum gem
 L["Gems"] = "預設寶石"
 L["Auto fill empty gem slots"] = "空寶石插槽的預設寶石"
--- /rb sum gem red
 L["ItemID or Link of the gem you would like to auto fill"] = "預設寶石的物品編號或連結"
 L["<ItemID|Link>"] = "<物品編號|連結>"
 L["%s is now set to %s"] = "%s 現在被設定為 %s"
