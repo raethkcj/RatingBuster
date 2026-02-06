@@ -961,7 +961,7 @@ local options = {
 						sumAvoidance = {
 							type = 'toggle',
 							name = L["Sum %s"]:format(L[StatLogic.Stats.Avoidance]),
-							desc = L["Avoidance <- Dodge, Parry, MobMiss, Block(Optional)"],
+							desc = L["Avoidance <- Dodge, Parry, Miss, Block (Optional)"],
 							order = 1,
 						},
 						sumAvoidWithBlock = {
