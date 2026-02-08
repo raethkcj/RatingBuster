@@ -355,7 +355,7 @@ L["aumenta em %s% a velocidade de ataque por %s s, mas também causa %s de dano 
 L["enfraquece o inimigo alvo, reduzindo em %s o dano causado e reduzindo em %s% a eficácia de qualquer efeito de cura. dura %s min"] = { { Stats.AverageWeaponDamage, }, false, false, reduction = true } -- s9035
 L["aumenta em %s o poder de ataque corpo a corpo dos integrantes do grupo próximos por %s min"] = { { Stats.AttackPower, }, false, } -- s9128
 L["aumenta em %s% a chance de realizar acertos críticos com armas de longo alcance"] = { { Stats.MeleeCrit, Stats.RangedCrit, }, } -- s9132
-L["%s de poder de ataque"] = { { Stats.AttackPower, }, } -- s9136
+L["%s de poder de ataque"] = { { Stats.AttackPower, Stats.RangedAttackPower, }, } -- e7328
 L["reduz em %s a armadura do alvo por %s min"] = { { Stats.Armor, }, false, reduction = true } -- s9176
 L["aumenta em até %s o dano causado e a cura realizada por feitiços e efeitos mágicos"] = { { Stats.SpellPower, }, } -- s9342
 L["imobiliza o lançador e aumenta em %s o dano físico por ele causado por %s s"] = { { Stats.AverageWeaponDamage, }, false, } -- s9576
@@ -581,7 +581,7 @@ L["resistência ao gelo aumentada em %s"] = { { Stats.FrostResistance, }, } -- s
 L["aumenta em %s a perícia em cajados"] = { { Stats.WeaponSkill, }, } -- s20607
 L["cura %s de vida de um aliado a cada %s s e aumenta em %s sua armadura por %s min"] = { false, false, { Stats.Armor, }, false, } -- s20655
 L["assume o controle de um inimigo humanoide até o nível %s por %s s. aumenta em %s o dano mágico e em %s o dano físico causado por ele"] = { false, false, { Stats.SpellDamage, }, { Stats.AverageWeaponDamage, }, } -- s20668
-L["%s poder de ataque"] = { { Stats.GenericAttackPower, }, } -- s20732
+L["%s poder de ataque"] = { { Stats.AttackPower, Stats.RangedAttackPower, }, } -- e1563
 L["aumenta em %s a amadura do lançador e acelera a taxa de regeneração de vida dele por %s min"] = { { Stats.Armor, }, false, } -- s20798
 L["aumentou em %s% o intervalo entre os ataques de um inimigo e em %s% a velocidade de movimento dele, além de reduzir em %s% a força do alvo. dura %s s"] = { { Stats.MeleeHaste, }, false, false, false, reduction = true } -- s20812
 L["ao ser atingido por um ataque, você tem %s% chance de aumentar em %s a armadura de todos os integrantes do grupo por %s s"] = { false, { Stats.Armor, }, false, ignoreSum = true } -- s20847
@@ -1039,7 +1039,7 @@ L["dano de sombra %s"] = { { Stats.ShadowDamage, }, } -- e2614
 L["dano de gelo %s"] = { { Stats.FrostDamage, }, } -- e2615
 L["cura %s/%s de mana a cada %s s"] = { { Stats.HealingPower, }, { Stats.GenericManaRegen, }, false, } -- e2715
 L["vigor %s e armadura %s"] = { { Stats.Stamina, }, { Stats.Armor, }, } -- e2716
-L["poder de ataque %s e %s% acerto crítico"] = { { Stats.AttackPower, }, { Stats.MeleeCrit, Stats.RangedCrit, }, } -- e2717
+L["poder de ataque %s e %s% acerto crítico"] = { { Stats.AttackPower, Stats.RangedAttackPower, }, { Stats.MeleeCrit, Stats.RangedCrit, }, } -- e2717
 L["dano mágico %s/acerto crítico com feitiços %s%"] = { { Stats.SpellPower, }, { Stats.SpellCrit, }, } -- e2721
 L["%s esquiva"] = { { Stats.DodgeRating, }, } -- e2815
 L["%s acerto crítico"] = { { Stats.CritRating, }, } -- e2823
@@ -1077,6 +1077,6 @@ L["%s de poder mágico"] = { { Stats.SpellPower, }, } -- e7662
 L["%s% de chance de acerto crítico"] = { { Stats.MeleeCrit, Stats.RangedCrit, }, } -- e7664
 L["%s de cura e %s de mana a cada %s s"] = { { Stats.HealingPower, }, { Stats.GenericManaRegen, }, false, } -- e7882
 L["%s de dano mágico e %s% de acerto crítico"] = { { Stats.SpellPower, }, { Stats.SpellCrit, Stats.MeleeCrit, Stats.RangedCrit, }, } -- e7883
-L["%s de poder de ataque e %s% de acerto crítico"] = { { Stats.AttackPower, }, { Stats.MeleeCrit, Stats.RangedCrit, Stats.SpellCrit, }, } -- e7884
+L["%s de poder de ataque e %s% de acerto crítico"] = { { Stats.AttackPower, Stats.RangedAttackPower, }, { Stats.MeleeCrit, Stats.RangedCrit, Stats.SpellCrit, }, } -- e7884
 L["%s de vigor e %s de defesa"] = { { Stats.Stamina, }, { Stats.Defense, }, } -- e7885
 L["poultry precision scope (%s damage)"] = { { Stats.AverageWeaponDamage, }, } -- e7944

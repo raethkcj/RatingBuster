@@ -349,7 +349,7 @@ L["increases an ally's attack speed by %s% for %s sec., but also inflicts %s nat
 L["weakens the target enemy, reducing damage caused by %s and reducing the effectiveness of any healing by %s%.  lasts %s min"] = { { Stats.AverageWeaponDamage, }, false, false, reduction = true } -- s9035
 L["increases the melee attack power of nearby party members by %s for %s min"] = { { Stats.AttackPower, }, false, } -- s9128
 L["improves your chance to get a critical strike with missile weapons by %s%"] = { { Stats.MeleeCrit, Stats.RangedCrit, }, } -- s9132
-L["%s attack power"] = { { Stats.AttackPower, }, } -- s9136
+L["%s attack power"] = { { Stats.AttackPower, Stats.RangedAttackPower, }, } -- e1563
 L["decrease the armor of target by %s for %s min"] = { { Stats.Armor, }, false, reduction = true } -- s9176
 L["increases damage and healing done by magical spells and effects by up to %s"] = { { Stats.SpellPower, }, } -- s9342
 L["immobilizes the caster and increases the physical damage it deals by %s for %s sec"] = { { Stats.AverageWeaponDamage, }, false, } -- s9576
@@ -1008,7 +1008,7 @@ L["frost damage %s"] = { { Stats.FrostDamage, }, } -- e2615
 L["fire damage %s"] = { { Stats.FireDamage, }, } -- e2616
 L["healing %s and %s mana per %s sec"] = { { Stats.HealingPower, }, { Stats.GenericManaRegen, }, false, } -- e2715
 L["stamina %s and armor %s"] = { { Stats.Stamina, }, { Stats.Armor, }, } -- e2716
-L["attack power %s and %s% critical strike"] = { { Stats.AttackPower, }, { Stats.MeleeCrit, Stats.RangedCrit, Stats.SpellCrit, }, } -- e7884
+L["attack power %s and %s% critical strike"] = { { Stats.AttackPower, Stats.RangedAttackPower, }, { Stats.MeleeCrit, Stats.RangedCrit, Stats.SpellCrit, }, } -- e7884
 L["spell damage %s and %s% spell critical strike"] = { { Stats.SpellPower, }, { Stats.SpellCrit, }, } -- e2721
 L["%s dodge"] = { { Stats.DodgeRating, }, } -- e2815
 L["%s critical strike"] = { { Stats.CritRating, }, } -- e2823

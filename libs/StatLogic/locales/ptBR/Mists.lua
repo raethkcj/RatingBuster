@@ -70,7 +70,7 @@ W["o mestre forjador passa a empunhar duas armas, aumentando a chance de acerto 
 W["criaturas aliadas próximas de corla são aceleradas, aumentando suas velocidades de movimento e ataque"] = { [Stats.MeleeHaste] = 35, [Stats.MeleeHaste] = 15, } -- s75817
 W["pesadelos dão medo!"] = { [Stats.MeleeCrit] = -100, [Stats.RangedCrit] = -100, } -- s75822
 W["tomado pela raiva. aumenta o tamanho e o dano causado, mas reduz a velocidade"] = { [Stats.SpellDamage] = 30, } -- s76423
-W["causa dano de fogo e reduz a armadura de um alvo inimigo. canalizado"] = { [Stats.Armor] = -20000, } -- s76688
+W["causa dano de fogo e reduz a armadura de um alvo inimigo. canalizado"] = { [Stats.Armor] = -10000, } -- s76688
 W["inimigos recuperam pontos de vida e de mana a uma taxa acelerada"] = { [Stats.GenericManaRegen] = 50, [Stats.HealthRegen] = 50, } -- s77593
 W["arremessa uma bomba de gás asfixiante no local escolhido"] = { [Stats.MeleeHit] = -75, [Stats.RangedHit] = -75, } -- s78349
 W["cobre criaturas orgânicas com uma camada que faz com que elas brotem como se fossem plantas ao longo do tempo"] = { [Stats.SpellDamage] = 50, } -- s81096

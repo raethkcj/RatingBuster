@@ -43,7 +43,7 @@ W["卓越巫師之油"] = { [Stats.SpellPower] = 36, [Stats.SpellCritRating] = 1
 W["卓越法力之油"] = { [Stats.GenericManaRegen] = 12, [Stats.HealingPower] = 25, } -- e2629
 W["活力"] = { [Stats.GenericManaRegen] = 4, [Stats.HealthRegen] = 4, } -- e2656
 W["穩固"] = { [Stats.MeleeHitRating] = 10, [Stats.RangedHitRating] = 10, } -- e2658
-W["兇蠻"] = { [Stats.AttackPower] = 70, } -- e2667
+W["兇蠻"] = { [Stats.AttackPower] = 70, [Stats.RangedAttackPower] = 70, } -- e2667
 W["烈日火焰"] = { [Stats.FireDamage] = 50, [Stats.ArcaneDamage] = 50, } -- e2671
 W["靈魂冰霜"] = { [Stats.FrostDamage] = 54, [Stats.ShadowDamage] = 54, } -- e2672
 W["超強法力之油"] = { [Stats.GenericManaRegen] = 14, } -- e2677
@@ -1016,7 +1016,7 @@ L["%s精神/%s火焰抗性"] = { { Stats.Spirit, }, { Stats.FireResistance, }, }
 L["%s力量/%s耐力"] = { { Stats.Strength, Stats.Stamina, }, false, } -- e1531
 L["%s力量/%s耐力/%s護甲/%s火焰抗性"] = { { Stats.Strength, Stats.Stamina, }, false, { Stats.Armor, }, { Stats.FireResistance, }, } -- e1532
 L["%s智力/%s精神/%s法力/%s火焰抗性"] = { { Stats.Intellect, Stats.Spirit, }, false, { Stats.Mana, }, { Stats.FireResistance, }, } -- e1543
-L["%s攻擊強度"] = { { Stats.AttackPower, }, } -- e1563
+L["%s攻擊強度"] = { { Stats.AttackPower, Stats.RangedAttackPower, }, } -- e1563
 L["%s格擋等級"] = { { Stats.BlockRating, }, } -- e1983
 L["%s遠程攻擊強度"] = { { Stats.RangedAttackPower, }, } -- e2040
 L["%s閃躲等級"] = { { Stats.DodgeRating, }, } -- e2078
@@ -1050,7 +1050,7 @@ L["%s力量和%s耐力"] = { { Stats.Strength, }, { Stats.Stamina, }, } -- e2711
 L["磨快(%s致命一擊等級和%s傷害)"] = { { Stats.MeleeCritRating, }, { Stats.AverageWeaponDamage, }, } -- e2713
 L["%s治療和%s法術傷害及每%s秒恢復%s點法力。"] = { { Stats.HealingPower, }, { Stats.SpellDamage, }, { Stats.GenericManaRegen, }, false, } -- e2715
 L["%s耐力和%s護甲"] = { { Stats.Stamina, }, { Stats.Armor, }, } -- e2716
-L["%s攻擊強度和%s致命一擊等級"] = { { Stats.AttackPower, }, { Stats.MeleeCritRating, Stats.RangedCritRating, }, } -- e2717
+L["%s攻擊強度和%s致命一擊等級"] = { { Stats.AttackPower, Stats.RangedAttackPower, }, { Stats.MeleeCritRating, Stats.RangedCritRating, }, } -- e2717
 L["%s法術傷害和%s法術致命一擊等級"] = { { Stats.SpellPower, }, { Stats.SpellCritRating, }, } -- e2721
 L["瞄準鏡(%s致命一擊等級)"] = { { Stats.RangedCritRating, }, } -- e2724
 L["%s治療和%s法術傷害及%s耐力"] = { { Stats.HealingPower, }, { Stats.SpellDamage, }, { Stats.Stamina, }, } -- e2745
@@ -1072,7 +1072,7 @@ L["%s自然傷害"] = { { Stats.NatureDamage, }, } -- e2809
 L["%s冰霜傷害"] = { { Stats.FrostDamage, }, } -- e2810
 L["%s暗影傷害"] = { { Stats.ShadowDamage, }, } -- e2811
 L["%s法術致命一擊等級和%s%法術反射"] = { { Stats.SpellCritRating, }, false, } -- e2827
-L["%s攻擊強度和略微提高奔跑速度"] = { { Stats.AttackPower, }, } -- e2829
+L["%s攻擊強度和略微提高奔跑速度"] = { { Stats.AttackPower, Stats.RangedAttackPower, }, } -- e2829
 L["%s致命一擊等級和%s%緩速及定身抗性"] = { { Stats.CritRating, }, false, } -- e2830
 L["%s耐力和%s%昏迷抗性"] = { { Stats.Stamina, }, false, } -- e2831
 L["%s治療和%s法術傷害及降低%s%威脅值"] = { { Stats.HealingPower, }, { Stats.SpellDamage, }, false, } -- e2832
@@ -1095,10 +1095,10 @@ L["%s防禦等級和%s閃躲等級"] = { { Stats.DefenseRating, }, { Stats.Dodge
 L["%s法力恢復"] = { { Stats.GenericManaRegen, }, } -- e2992
 L["%s法力恢復和%s治療"] = { { Stats.GenericManaRegen, }, { Stats.HealingPower, }, } -- e2993
 L["%s法術致命一擊等級和%s法術傷害和治療"] = { { Stats.SpellCritRating, }, { Stats.SpellPower, }, } -- e2995
-L["%s致命一擊等級和%s攻擊強度"] = { { Stats.MeleeCritRating, Stats.RangedCritRating, }, { Stats.AttackPower, }, } -- e3112
+L["%s致命一擊等級和%s攻擊強度"] = { { Stats.MeleeCritRating, Stats.RangedCritRating, }, { Stats.AttackPower, Stats.RangedAttackPower, }, } -- e3112
 L["%s耐力/%s閃躲等級/%s韌性等級"] = { { Stats.Stamina, }, { Stats.DodgeRating, }, { Stats.ResilienceRating, }, } -- e3000
 L["%s法術能量和%s法術命中等級"] = { { Stats.SpellPower, }, { Stats.SpellHitRating, }, } -- e3002
-L["%s攻擊強度和%s命中等級"] = { { Stats.AttackPower, }, { Stats.HitRating, }, } -- e3003
+L["%s攻擊強度和%s命中等級"] = { { Stats.AttackPower, Stats.RangedAttackPower, }, { Stats.HitRating, }, } -- e3003
 L["%s耐力和%s韌性等級"] = { { Stats.Stamina, }, { Stats.ResilienceRating, }, } -- e3004
 L["%s耐力和%s敏捷"] = { { Stats.Stamina, }, { Stats.Agility, }, } -- e3011
 L["%s致命一擊等級和每%s秒恢復%s點法力。"] = { { Stats.CritRating, }, false, { Stats.GenericManaRegen, }, } -- e3049
@@ -1113,7 +1113,7 @@ L["%s致命一擊等級和%s閃躲等級"] = { { Stats.CritRating, }, { Stats.Do
 L["%s招架等級和%s耐力"] = { { Stats.ParryRating, }, { Stats.Stamina, }, } -- e3063
 L["%s精神和%s治療及%s法術傷害"] = { { Stats.Spirit, }, { Stats.HealingPower, }, { Stats.SpellDamage, }, } -- e3064
 L["%s法術傷害和%s法術穿透力"] = { { Stats.SpellPower, }, { Stats.SpellPenetration, }, } -- e3066
-L["%s攻擊強度和%s耐力"] = { { Stats.AttackPower, }, { Stats.Stamina, }, } -- e3067
+L["%s攻擊強度和%s耐力"] = { { Stats.AttackPower, Stats.RangedAttackPower, }, { Stats.Stamina, }, } -- e3067
 L["%s閃躲等級和%s命中等級"] = { { Stats.DodgeRating, }, { Stats.HitRating, }, } -- e3068
 L["%s治療和%s法術傷害及%s韌性等級"] = { { Stats.HealingPower, }, { Stats.SpellDamage, }, { Stats.ResilienceRating, }, } -- e3069
 L["%s智力和%s耐力"] = { { Stats.Intellect, }, { Stats.Stamina, }, } -- e3071
@@ -1122,7 +1122,7 @@ L["%s智力和%s精神"] = { { Stats.Intellect, }, { Stats.Spirit, }, } -- e3074
 L["%s力量和%s防禦等級"] = { { Stats.Strength, }, { Stats.DefenseRating, }, } -- e3075
 L["%s智力和每%s秒恢復%s點法力。"] = { { Stats.Intellect, }, false, { Stats.GenericManaRegen, }, } -- e3077
 L["%s耐力和%s防禦等級"] = { { Stats.Stamina, }, { Stats.DefenseRating, }, } -- e3078
-L["%s攻擊強度和%s韌性等級"] = { { Stats.AttackPower, }, { Stats.ResilienceRating, }, } -- e3079
+L["%s攻擊強度和%s韌性等級"] = { { Stats.AttackPower, Stats.RangedAttackPower, }, { Stats.ResilienceRating, }, } -- e3079
 L["%s治療和%s法術傷害及%s法術致命一擊等級"] = { { Stats.HealingPower, }, { Stats.SpellDamage, }, { Stats.SpellCritRating, }, } -- e3081
 L["%s防禦等級和每%s秒恢復%s點法力。"] = { { Stats.DefenseRating, }, false, { Stats.GenericManaRegen, }, } -- e3082
 L["%s法術傷害和%s精神"] = { { Stats.SpellPower, }, { Stats.Spirit, }, } -- e3083
@@ -1133,11 +1133,11 @@ L["%s法術命中等級和每%s秒恢復%s點法力。"] = { { Stats.SpellHitRat
 L["%s招架等級和%s韌性等級"] = { { Stats.ParryRating, }, { Stats.ResilienceRating, }, } -- e3090
 L["%s熟練等級"] = { { Stats.ExpertiseRating, }, } -- e3094
 L["%s力量和%s智力"] = { { Stats.Strength, }, { Stats.Intellect, }, } -- e3096
-L["%s攻擊強度和每%s秒恢復%s點法力"] = { { Stats.AttackPower, }, false, { Stats.GenericManaRegen, }, } -- e3108
+L["%s攻擊強度和每%s秒恢復%s點法力"] = { { Stats.AttackPower, Stats.RangedAttackPower, }, false, { Stats.GenericManaRegen, }, } -- e3108
 L["%s法術命中等級和%s法術傷害"] = { { Stats.SpellHitRating, }, { Stats.SpellPower, }, } -- e3110
 L["%s敏捷和提高%s%致命一擊傷害"] = { { Stats.Agility, }, false, } -- e3154
 L["%s治療和%s法術傷害及%s精神"] = { { Stats.HealingPower, }, { Stats.SpellDamage, }, { Stats.Spirit, }, } -- e3158
-L["%s攻擊強度和%s%昏迷抗性"] = { { Stats.AttackPower, }, false, } -- e3162
+L["%s攻擊強度和%s%昏迷抗性"] = { { Stats.AttackPower, Stats.RangedAttackPower, }, false, } -- e3162
 L["%s法術傷害和%s%昏迷抗性"] = { { Stats.SpellPower, }, false, } -- e3163
 L["%s精神和%s治療"] = { { Stats.Spirit, }, { Stats.HealingPower, }, } -- e3200
 L["%s韌性等級和%s耐力"] = { { Stats.ResilienceRating, }, { Stats.Stamina, }, } -- e3226

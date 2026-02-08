@@ -49,7 +49,7 @@ W["반짝이는 마술사 오일"] = { [Stats.SpellPower] = 36, [Stats.SpellCrit
 W["반짝이는 마나 오일"] = { [Stats.GenericManaRegen] = 12, [Stats.HealingPower] = 25, } -- e2629
 W["활력"] = { [Stats.GenericManaRegen] = 4, [Stats.HealthRegen] = 4, } -- e2656
 W["침착함"] = { [Stats.MeleeHitRating] = 10, [Stats.RangedHitRating] = 10, } -- e2658
-W["전투력"] = { [Stats.AttackPower] = 70, } -- e2667
+W["전투력"] = { [Stats.AttackPower] = 70, [Stats.RangedAttackPower] = 70, } -- e2667
 W["태양의 불꽃"] = { [Stats.FireDamage] = 50, [Stats.ArcaneDamage] = 50, } -- e2671
 W["냉기의 영혼"] = { [Stats.FrostDamage] = 54, [Stats.ShadowDamage] = 54, } -- e2672
 W["최고급 마나 오일"] = { [Stats.GenericManaRegen] = 14, } -- e2677
@@ -975,7 +975,7 @@ L["정신력 %s / 화염 저항력 %s"] = { { Stats.Spirit, }, { Stats.FireResis
 L["힘 %s / 체력%s"] = { { Stats.Strength, Stats.Stamina, }, false, } -- e1531
 L["힘 %s / 체력 %s / 방어도 %s / 화염 저항력 %s"] = { { Stats.Strength, Stats.Stamina, }, false, { Stats.Armor, }, { Stats.FireResistance, }, } -- e1532
 L["지능 %s / 정신력 %s / 마나 %s / 화염 저항력 %s"] = { { Stats.Intellect, Stats.Spirit, }, false, { Stats.Mana, }, { Stats.FireResistance, }, } -- e1543
-L["전투력 %s"] = { { Stats.AttackPower, }, } -- e1563
+L["전투력 %s"] = { { Stats.AttackPower, Stats.RangedAttackPower, }, } -- e1563
 L["원거리 전투력 %s"] = { { Stats.RangedAttackPower, }, } -- e2040
 L["회피 숙련도 %s"] = { { Stats.DodgeRating, }, } -- e2078
 L["비전 주문 공격력 %s"] = { { Stats.ArcaneDamage, }, } -- e2079
@@ -1006,7 +1006,7 @@ L["주문 치유량 %s / 주문 공격력 %s / %s초당 마나 회복량 %s"] = 
 L["힘 %s / 체력 %s"] = { { Stats.Strength, }, { Stats.Stamina, }, } -- e2711
 L["무기 연마 (치명타 적중도 %s / 공격력 %s)"] = { { Stats.MeleeCritRating, }, { Stats.AverageWeaponDamage, }, } -- e2713
 L["체력 %s / 방어도 %s"] = { { Stats.Stamina, }, { Stats.Armor, }, } -- e2716
-L["전투력 %s / 치명타 적중도 %s"] = { { Stats.AttackPower, }, { Stats.MeleeCritRating, Stats.RangedCritRating, }, } -- e2717
+L["전투력 %s / 치명타 적중도 %s"] = { { Stats.AttackPower, Stats.RangedAttackPower, }, { Stats.MeleeCritRating, Stats.RangedCritRating, }, } -- e2717
 L["주문 공격력 %s / 주문 극대화 적중도 %s"] = { { Stats.SpellPower, }, { Stats.SpellCritRating, }, } -- e2721
 L["조준경 (치명타 적중도 %s)"] = { { Stats.RangedCritRating, }, } -- e2724
 L["주문 치유량 %s / 주문 공격력 %s / 체력 %s"] = { { Stats.HealingPower, }, { Stats.SpellDamage, }, { Stats.Stamina, }, } -- e2745
@@ -1022,7 +1022,7 @@ L["체력 %s (%s/+$f)"] = { { Stats.Stamina, }, false, } -- e2799
 L["방어도 %s (%s/+$f)"] = { { Stats.Armor, }, false, } -- e2800
 L["%s초당 생명력 회복량 %s"] = { false, { Stats.HealthRegen, }, } -- e2814
 L["주문 극대화 적중도 %s / %s% 확률로 주문 반사"] = { { Stats.SpellCritRating, }, false, } -- e2827
-L["전투력 %s / 최하급 달리기 속도 증가"] = { { Stats.AttackPower, }, } -- e2829
+L["전투력 %s / 최하급 달리기 속도 증가"] = { { Stats.AttackPower, Stats.RangedAttackPower, }, } -- e2829
 L["치명타 적중도 %s / 덫, 이동 불가에 대한 저항력 %s%"] = { { Stats.CritRating, }, false, } -- e2830
 L["체력 %s / 기절에 대한 저항력 %s%"] = { { Stats.Stamina, }, false, } -- e2831
 L["주문 치유량 %s / 주문 공격력 %s / 위협 수준 %s%만큼 감소"] = { { Stats.HealingPower, }, { Stats.SpellDamage, }, false, } -- e2832
@@ -1044,9 +1044,9 @@ L["방어 숙련도 %s / 회피 숙련도 %s"] = { { Stats.DefenseRating, }, { S
 L["마나 회복량 %s"] = { { Stats.GenericManaRegen, }, } -- e2992
 L["마나 회복량 %s / 주문 치유량 %s"] = { { Stats.GenericManaRegen, }, { Stats.HealingPower, }, } -- e2993
 L["주문 극대화 적중도 %s / 주문 공격력 및 치유량 %s"] = { { Stats.SpellCritRating, }, { Stats.SpellPower, }, } -- e2995
-L["치명타 적중도 %s / 전투력 %s"] = { { Stats.MeleeCritRating, Stats.RangedCritRating, }, { Stats.AttackPower, }, } -- e3112
+L["치명타 적중도 %s / 전투력 %s"] = { { Stats.MeleeCritRating, Stats.RangedCritRating, }, { Stats.AttackPower, Stats.RangedAttackPower, }, } -- e3112
 L["체력 %s / 회피 숙련도 %s / 탄력도 %s"] = { { Stats.Stamina, }, { Stats.DodgeRating, }, { Stats.ResilienceRating, }, } -- e3000
-L["전투력 %s / 적중도 %s"] = { { Stats.AttackPower, }, { Stats.HitRating, }, } -- e3003
+L["전투력 %s / 적중도 %s"] = { { Stats.AttackPower, Stats.RangedAttackPower, }, { Stats.HitRating, }, } -- e3003
 L["체력 %s / 탄력도 %s"] = { { Stats.Stamina, }, { Stats.ResilienceRating, }, } -- e3004
 L["체력 %s / 민첩성 %s"] = { { Stats.Stamina, }, { Stats.Agility, }, } -- e3011
 L["치명타 적중도 %s / %s초당 마나 회복량 %s"] = { { Stats.CritRating, }, false, { Stats.GenericManaRegen, }, } -- e3049
@@ -1060,12 +1060,12 @@ L["치명타 적중도 %s / 회피 숙련도 %s"] = { { Stats.CritRating, }, { S
 L["무기 막기 숙련도 %s / 체력 %s"] = { { Stats.ParryRating, }, { Stats.Stamina, }, } -- e3063
 L["정신력 %s / 주문 치유량 %s / 주문 공격력 %s"] = { { Stats.Spirit, }, { Stats.HealingPower, }, { Stats.SpellDamage, }, } -- e3064
 L["주문 공격력 %s / 주문 관통력 %s"] = { { Stats.SpellPower, }, { Stats.SpellPenetration, }, } -- e3066
-L["전투력 %s / 체력 %s"] = { { Stats.AttackPower, }, { Stats.Stamina, }, } -- e3067
+L["전투력 %s / 체력 %s"] = { { Stats.AttackPower, Stats.RangedAttackPower, }, { Stats.Stamina, }, } -- e3067
 L["회피 숙련도 %s / 적중도 %s"] = { { Stats.DodgeRating, }, { Stats.HitRating, }, } -- e3068
 L["주문 치유량 %s / 주문 공격력 %s / 탄력도 %s"] = { { Stats.HealingPower, }, { Stats.SpellDamage, }, { Stats.ResilienceRating, }, } -- e3069
 L["민첩성 %s / 방어 숙련도 %s"] = { { Stats.Agility, }, { Stats.DefenseRating, }, } -- e3073
 L["힘 %s / 방어 숙련도 %s"] = { { Stats.Strength, }, { Stats.DefenseRating, }, } -- e3075
-L["전투력 %s / 탄력도 %s"] = { { Stats.AttackPower, }, { Stats.ResilienceRating, }, } -- e3079
+L["전투력 %s / 탄력도 %s"] = { { Stats.AttackPower, Stats.RangedAttackPower, }, { Stats.ResilienceRating, }, } -- e3079
 L["주문 치유량 %s / 주문 공격력 %s / 주문 극대화 적중도 %s"] = { { Stats.HealingPower, }, { Stats.SpellDamage, }, { Stats.SpellCritRating, }, } -- e3081
 L["방어 숙련도 %s / %s초당 마나 회복량 %s"] = { { Stats.DefenseRating, }, false, { Stats.GenericManaRegen, }, } -- e3082
 L["주문 공격력 %s / 정신력 %s"] = { { Stats.SpellPower, }, { Stats.Spirit, }, } -- e3083
@@ -1076,11 +1076,11 @@ L["주문 적중도 %s / %s초당 마나 회복량 %s"] = { { Stats.SpellHitRati
 L["무기 막기 숙련도 %s / 탄력도 %s"] = { { Stats.ParryRating, }, { Stats.ResilienceRating, }, } -- e3090
 L["숙련 %s"] = { { Stats.ExpertiseRating, }, } -- e3094
 L["%s 힘 / %s 지능"] = { { Stats.Strength, }, { Stats.Intellect, }, } -- e3096
-L["전투력 %s / %s초당 마나 회복량 %s"] = { { Stats.AttackPower, }, false, { Stats.GenericManaRegen, }, } -- e3108
+L["전투력 %s / %s초당 마나 회복량 %s"] = { { Stats.AttackPower, Stats.RangedAttackPower, }, false, { Stats.GenericManaRegen, }, } -- e3108
 L["주문 적중도 %s / 주문 공격력 %s"] = { { Stats.SpellHitRating, }, { Stats.SpellPower, }, } -- e3110
 L["민첩성 %s / 치명타 피해 %s%만큼 증가"] = { { Stats.Agility, }, false, } -- e3154
 L["주문 치유량 %s / 주문 공격력 %s / 정신력 %s"] = { { Stats.HealingPower, }, { Stats.SpellDamage, }, { Stats.Spirit, }, } -- e3158
-L["전투력 %s / 기절에 대한 저항력 %s%"] = { { Stats.AttackPower, }, false, } -- e3162
+L["전투력 %s / 기절에 대한 저항력 %s%"] = { { Stats.AttackPower, Stats.RangedAttackPower, }, false, } -- e3162
 L["주문 공격력 %s / 기절에 대한 저항력 %s%"] = { { Stats.SpellPower, }, false, } -- e3163
 L["정신력 %s / 주문 치유량 %s"] = { { Stats.Spirit, }, { Stats.HealingPower, }, } -- e3200
 L["탄력도 %s / 체력 %s"] = { { Stats.ResilienceRating, }, { Stats.Stamina, }, } -- e3226

@@ -69,7 +69,7 @@ W["el maestro de forja comienza a blandir dos armas, lo que aumenta su probabili
 W["las criaturas amistosas que estén cerca de corla se aceleran, lo que aumenta sus velocidades de movimiento y de ataque"] = { [Stats.MeleeHaste] = 35, [Stats.MeleeHaste] = 15, } -- s75817
 W["¡las pesadillas dan miedo!"] = { [Stats.MeleeCrit] = -100, [Stats.RangedCrit] = -100, } -- s75822
 W["entra en frenesí, lo que aumenta el daño y el tamaño pero reduce la velocidad"] = { [Stats.SpellDamage] = 30, } -- s76423
-W["inflige daño de fuego y reduce la armadura de un objetivo enemigo. se canaliza"] = { [Stats.Armor] = -20000, } -- s76688
+W["inflige daño de fuego y reduce la armadura de un objetivo enemigo. se canaliza"] = { [Stats.Armor] = -10000, } -- s76688
 W["el enemigo regenera salud y maná a un ritmo acelerado"] = { [Stats.GenericManaRegen] = 50, [Stats.HealthRegen] = 50, } -- s77593
 W["lanza una bomba de gas asfixiante a una ubicación seleccionada"] = { [Stats.MeleeHit] = -75, [Stats.RangedHit] = -75, } -- s78349
 W["cubre a criaturas orgánicas con una película que hace que broten como criaturas semejantes a plantas con el tiempo"] = { [Stats.SpellDamage] = 50, } -- s81096

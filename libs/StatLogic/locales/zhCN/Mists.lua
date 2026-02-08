@@ -69,7 +69,7 @@ W["熔炉之主开始挥舞两把武器，使其命中几率提高，并且偶�
 W["使柯尔拉周围的友方生物获得加速效果，移动和攻击速度提高。"] = { [Stats.MeleeHaste] = 35, [Stats.MeleeHaste] = 15, } -- s75817
 W["噩梦真可怕！"] = { [Stats.MeleeCrit] = -100, [Stats.RangedCrit] = -100, } -- s75822
 W["立即进入狂怒状态，体型增大，伤害提高，但是速度降低。"] = { [Stats.SpellDamage] = 30, } -- s76423
-W["对一名敌方目标造成火焰伤害并使其护甲值降低。需要引导。"] = { [Stats.Armor] = -20000, } -- s76688
+W["对一名敌方目标造成火焰伤害并使其护甲值降低。需要引导。"] = { [Stats.Armor] = -10000, } -- s76688
 W["敌人以更快速率回复生命值和法力值。"] = { [Stats.GenericManaRegen] = 50, [Stats.HealthRegen] = 50, } -- s77593
 W["向选定的区域掷出一枚窒息毒气炸弹。"] = { [Stats.MeleeHit] = -75, [Stats.RangedHit] = -75, } -- s78349
 W["对有机生命体覆盖一层粘液，使其逐渐变成类似植物的生命体。"] = { [Stats.SpellDamage] = 50, } -- s81096

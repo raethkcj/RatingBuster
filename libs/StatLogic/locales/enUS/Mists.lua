@@ -69,7 +69,7 @@ W["the forgemaster begins to wield two weapons, increasing his chance to hit and
 W["friendly creatures near corla are accelerated, increasing their movement and attack speeds"] = { [Stats.MeleeHaste] = 35, [Stats.MeleeHaste] = 15, } -- s75817
 W["nightmares are scary!"] = { [Stats.MeleeCrit] = -100, [Stats.RangedCrit] = -100, } -- s75822
 W["fly into a rage, increasing damage and size, but decreasing speed"] = { [Stats.SpellDamage] = 30, } -- s76423
-W["inflicts fire damage and reduces the armor of an enemy target. channeled"] = { [Stats.Armor] = -20000, } -- s76688
+W["inflicts fire damage and reduces the armor of an enemy target. channeled"] = { [Stats.Armor] = -10000, } -- s76688
 W["enemy regenerates health and mana at an accelerated rate"] = { [Stats.GenericManaRegen] = 50, [Stats.HealthRegen] = 50, } -- s77593
 W["hurls a choking gas bomb at selected location"] = { [Stats.MeleeHit] = -75, [Stats.RangedHit] = -75, } -- s78349
 W["coats organic creatures in a film that makes them sprout into plant-like creatures over time"] = { [Stats.SpellDamage] = 50, } -- s81096

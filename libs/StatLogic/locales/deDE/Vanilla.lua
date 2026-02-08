@@ -352,7 +352,7 @@ L["erhöht das angriffstempo eines verbündeten %s sek. lang um %s%, fügt diese
 L["schwächt das feindliche ziel und verringert den verursachten schaden um %s sowie die wirksamkeit jeglicher heilung um %s%. hält %s min. lang an"] = { { Stats.AverageWeaponDamage, }, false, false, reduction = true } -- s9035
 L["erhöht die nahkampfangriffskraft der in der nähe befindlichen gruppenmitglieder %s min. lang um %s"] = { false, { Stats.AttackPower, }, } -- s9128
 L["erhöht eure chance, mit geschosswaffen einen kritischen treffer zu erzielen, um %s%"] = { { Stats.MeleeCrit, Stats.RangedCrit, }, } -- s9132
-L["%s angriffskraft"] = { { Stats.AttackPower, }, } -- s9136
+L["%s angriffskraft"] = { { Stats.AttackPower, Stats.RangedAttackPower, }, } -- s9136
 L["verringert die rüstung des ziels %s min. lang um %s"] = { false, { Stats.Armor, }, reduction = true } -- s9176
 L["erhöht durch zauber und magische effekte zugefügten schaden und heilung um bis zu %s"] = { { Stats.SpellPower, }, } -- s9342
 L["macht den zaubernden bewegungsunfähig und erhöht den ihm zugefügten körperlichen schaden %s sek. lang um %s punkt(e)"] = { false, { Stats.AverageWeaponDamage, }, } -- s9576
@@ -1107,7 +1107,7 @@ L["frostschaden %s"] = { { Stats.FrostDamage, }, } -- e2615
 L["feuerschaden %s"] = { { Stats.FireDamage, }, } -- e2616
 L["heilung %s und %s mana alle %s sek"] = { { Stats.HealingPower, }, { Stats.GenericManaRegen, }, false, } -- e2715
 L["ausdauer %s und rüstung %s"] = { { Stats.Stamina, }, { Stats.Armor, }, } -- e2716
-L["angriffskraft %s und %s% kritische treffer"] = { { Stats.AttackPower, }, { Stats.MeleeCrit, Stats.RangedCrit, }, } -- e2717
+L["angriffskraft %s und %s% kritische treffer"] = { { Stats.AttackPower, Stats.RangedAttackPower, }, { Stats.MeleeCrit, Stats.RangedCrit, }, } -- e2717
 L["zauberschaden %s und %s% kritische zaubertreffer"] = { { Stats.SpellPower, }, { Stats.SpellCrit, }, } -- e2721
 L["%s ausweichen"] = { { Stats.DodgeRating, }, } -- e2815
 L["%s kritischer trefferwert"] = { { Stats.CritRating, }, } -- e2823
@@ -1139,6 +1139,6 @@ L["%s zaubermacht"] = { { Stats.SpellPower, }, } -- e7662
 L["%s% kritische trefferchance"] = { { Stats.MeleeCrit, Stats.RangedCrit, }, } -- e7664
 L["heilung %s und %s mana pro %s sek"] = { { Stats.HealingPower, }, { Stats.GenericManaRegen, }, false, } -- e7882
 L["zauberschaden %s und %s% kritischer trefferwert"] = { { Stats.SpellPower, }, { Stats.SpellCrit, Stats.MeleeCrit, Stats.RangedCrit, }, } -- e7883
-L["angriffskraft %s und %s% kritischer trefferwert"] = { { Stats.AttackPower, }, { Stats.MeleeCrit, Stats.RangedCrit, Stats.SpellCrit, }, } -- e7884
+L["angriffskraft %s und %s% kritischer trefferwert"] = { { Stats.AttackPower, Stats.RangedAttackPower, }, { Stats.MeleeCrit, Stats.RangedCrit, Stats.SpellCrit, }, } -- e7884
 L["ausdauer %s und verteidigung %s"] = { { Stats.Stamina, }, { Stats.Defense, }, } -- e7885
 L["poultry precision scope (%s damage)"] = { { Stats.AverageWeaponDamage, }, } -- e7944

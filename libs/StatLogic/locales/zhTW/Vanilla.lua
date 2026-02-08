@@ -26,7 +26,7 @@ W["受到激勵時，大幅提高傷害。"] = { [Stats.MeleeHaste] = 20, [Stats
 W["使你的寵物在下一次攻擊時必定造成致命一擊，此效果只作用於可造成致命一擊的攻擊。"] = { [Stats.MeleeCrit] = 100, [Stats.RangedCrit] = 100, } -- s462214
 W["破甲"] = { [Stats.AverageWeaponDamage] = -10, } -- e27
 W["贊達拉魔精徽記"] = { [Stats.SpellPower] = 18, } -- e2605
-W["贊達拉力量徽記"] = { [Stats.AttackPower] = 30, } -- e2606
+W["贊達拉力量徽記"] = { [Stats.AttackPower] = 30, [Stats.RangedAttackPower] = 30, } -- e2606
 W["初級巫師之油"] = { [Stats.SpellPower] = 8, } -- e2623
 W["初級法力之油"] = { [Stats.GenericManaRegen] = 4, } -- e2624
 W["次級法力之油"] = { [Stats.GenericManaRegen] = 8, } -- e2625

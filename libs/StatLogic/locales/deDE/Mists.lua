@@ -71,7 +71,7 @@ W["der schmiedemeister beginnt, zwei waffen zu führen, was seine trefferchance 
 W["befreundete kreaturen, die sich in der nähe von corla aufhalten, werden beschleunigt, was ihr bewegungs- und angriffstempo erhöht"] = { [Stats.MeleeHaste] = 35, [Stats.MeleeHaste] = 15, } -- s75817
 W["alpträume sind furchterregend!"] = { [Stats.MeleeCrit] = -100, [Stats.RangedCrit] = -100, } -- s75822
 W["gerät in rage, erhöht schaden und größe aber verringert das tempo"] = { [Stats.SpellDamage] = 30, } -- s76423
-W["verursacht feuerschaden und verringert die rüstung des feindlichen ziels. kanalisiert"] = { [Stats.Armor] = -20000, } -- s76688
+W["verursacht feuerschaden und verringert die rüstung des feindlichen ziels. kanalisiert"] = { [Stats.Armor] = -10000, } -- s76688
 W["der gegner regeneriert in einem erhablichen maße mana und gesundheit"] = { [Stats.GenericManaRegen] = 50, [Stats.HealthRegen] = 50, } -- s77593
 W["schleudert eine erstickende gasbombe auf das ausgewählte ziel"] = { [Stats.MeleeHit] = -75, [Stats.RangedHit] = -75, } -- s78349
 W["überzieht organische kreaturen mit einem film, der sie mit der zeit zu pflanzenartigen kreaturen werden lässt"] = { [Stats.SpellDamage] = 50, } -- s81096

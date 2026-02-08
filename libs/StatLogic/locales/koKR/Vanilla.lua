@@ -334,7 +334,7 @@ L["%s초 동안 대상의 공격 속도를 %s%만큼 향상시키지만 매 %s�
 L["적을 약화시켜 %s분 동안 공격력을 %s만큼 감소시키고 해당 대상이 받는 치유 효과를 %s%만큼 감소시킵니다"] = { false, { Stats.AverageWeaponDamage, }, false, reduction = true } -- s9035
 L["주위 파티원의 근접 전투력이 %s만큼 증가됩니다. %s분 동안 지속됩니다"] = { { Stats.AttackPower, }, false, } -- s9128
 L["원거리 무기로 치명타를 적중시킬 확률이 %s%만큼 증가합니다"] = { { Stats.MeleeCrit, Stats.RangedCrit, }, } -- s9132
-L["전투력 %s"] = { { Stats.AttackPower, Stats.RangedAttackPower, }, } -- e1563
+L["전투력 %s"] = { { Stats.AttackPower, Stats.RangedAttackPower, }, } -- s9136
 L["%s분 동안 대상의 방어도를 %s만큼 감소시킵니다"] = { false, { Stats.Armor, }, reduction = true } -- s9176
 L["모든 주문 및 효과에 의한 피해와 치유량이 최대 %s만큼 증가합니다"] = { { Stats.SpellPower, }, } -- s9342
 L["%s초 동안 시전자를 이동 불가 상태로 만들고 물리 공격력을 %s만큼 증가시킵니다"] = { false, { Stats.AverageWeaponDamage, }, } -- s9576
@@ -566,7 +566,7 @@ L["%s분 동안 냉기 마법의 공격력이 최대 %s만큼 증가합니다"] 
 L["소환수의 체력이 %s만큼, 모든 계열의 마법 저항력이 %s만큼 증가합니다"] = { { Stats.Stamina, }, false, ignoreSum = true } -- s21926
 L["소환수의 전투력이 %s만큼 증가합니다"] = { { Stats.GenericAttackPower, }, ignoreSum = true } -- s21938
 L["대상에게 %s의 피해를 입히고 방어도를 %s만큼 감소시킵니다"] = { false, { Stats.Armor, }, reduction = true } -- s21961
-L["전투력이 %s만큼 증가합니다"] = { { Stats.GenericAttackPower, }, } -- s21967
+L["전투력이 %s만큼 증가합니다"] = { { Stats.AttackPower, Stats.RangedAttackPower, }, } -- s446450
 L["적을 번개로 강타하여 %s의 자연 피해를 입히고 주위의 적 %s명의 자연 저항력을 %s만큼 감소시킵니다. 또한 선택된 대상은 회오리 바람에 휩싸여 %s초 동안 공격 속도가 %s%만큼 감소됩니다"] = { false, false, { Stats.NatureResistance, }, false, { Stats.MeleeHaste, }, reduction = true } -- s21992
 L["석궁류 숙련도 %s"] = { { Stats.WeaponSkill, }, } -- s22188
 L["%s분 동안 대상이 입히는 마법 피해를 %s만큼 감소시킵니다"] = { false, { Stats.SpellDamage, }, reduction = true } -- s22371

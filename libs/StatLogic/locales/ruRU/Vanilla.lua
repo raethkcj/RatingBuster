@@ -843,7 +843,7 @@ L["повышает силу атаки в ближнем и дальнем бо
 L["повышает вероятность блокирования на %s% на %s сек"] = { { Stats.BlockChance, }, false, } -- s446356
 L["снижает все характеристики находящихся поблизости противников на %s на %s мин"] = { { Stats.AllStats, }, false, reduction = true } -- s446364
 L["повышает силу исцеления на %s ед., а скорость восполнения маны на %s ед. за %s сек. ваши исцеляющие заклинания с некоторой вероятностью восполняют %s ед. энергии, %s% маны или %s ед. ярости. одновременно может действовать только одно зелье атал'ай. действует только в затонувшем храме"] = { { Stats.HealingPower, }, { Stats.GenericManaRegen, }, false, false, false, false, } -- s446396
-L["%s к силе атаки"] = { { Stats.AttackPower, }, } -- s446450
+L["%s к силе атаки"] = { { Stats.AttackPower, Stats.RangedAttackPower, }, } -- e1563
 L["увеличивает урон и силу исцеления от магических заклинаний и эффектов максимум на %s ед"] = { { Stats.SpellPower, }, } -- s446458
 L["отголоски из бездны доводят вас до помешательства, повышая скорость произнесения заклинаний на %s%. эффект срабатывает только в областях под воздействием кошмара"] = { { Stats.SpellHaste, }, } -- s446528
 L["отголоски из бездны сводят вас с ума, повышая силу исцеления максимум на %s ед. эффект срабатывает только в областях под воздействием кошмара"] = { { Stats.HealingPower, }, } -- s446541
@@ -1107,7 +1107,7 @@ L["%s к урону от темной магии"] = { { Stats.ShadowDamage, }, 
 L["%s к урону от магии льда"] = { { Stats.FrostDamage, }, } -- e2615
 L["%s к исцелению и %s ед. маны каждые %s сек"] = { { Stats.HealingPower, }, { Stats.GenericManaRegen, }, false, } -- e2715
 L["%s к выносливости и %s к броне"] = { { Stats.Stamina, }, { Stats.Armor, }, } -- e2716
-L["%s к силе атаки и %s% к рейтингу критического удара"] = { { Stats.AttackPower, }, { Stats.MeleeCrit, Stats.RangedCrit, }, } -- e2717
+L["%s к силе атаки и %s% к рейтингу критического удара"] = { { Stats.AttackPower, Stats.RangedAttackPower, }, { Stats.MeleeCrit, Stats.RangedCrit, }, } -- e2717
 L["%s к урону от заклинаний и %s% к рейтингу критического удара"] = { { Stats.SpellPower, }, { Stats.SpellCrit, }, } -- e2721
 L["%s к рейтингу уклонения"] = { { Stats.DodgeRating, }, } -- e2815
 L["%s к рейтингу критического удара"] = { { Stats.CritRating, }, } -- e2823
@@ -1136,6 +1136,6 @@ L["%s к силе заклинаний"] = { { Stats.SpellPower, }, } -- e7662
 L["%s% к вероятности критического удара"] = { { Stats.MeleeCrit, Stats.RangedCrit, }, } -- e7664
 L["%s к силе исцеления и %s ед. маны каждые %s сек"] = { { Stats.HealingPower, }, { Stats.GenericManaRegen, }, false, } -- e7882
 L["%s к урону от заклинаний и %s% к вероятности критического удара"] = { { Stats.SpellPower, }, { Stats.SpellCrit, Stats.MeleeCrit, Stats.RangedCrit, }, } -- e7883
-L["%s к силе атаки и %s% к вероятности критического удара"] = { { Stats.AttackPower, }, { Stats.MeleeCrit, Stats.RangedCrit, Stats.SpellCrit, }, } -- e7884
+L["%s к силе атаки и %s% к вероятности критического удара"] = { { Stats.AttackPower, Stats.RangedAttackPower, }, { Stats.MeleeCrit, Stats.RangedCrit, Stats.SpellCrit, }, } -- e7884
 L["%s к выносливости и %s к защите"] = { { Stats.Stamina, }, { Stats.Defense, }, } -- e7885
 L["poultry precision scope (%s damage)"] = { { Stats.AverageWeaponDamage, }, } -- e7944

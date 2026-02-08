@@ -46,7 +46,7 @@ W["aceite de zahorí luminoso"] = { [Stats.SpellPower] = 36, [Stats.SpellCritRat
 W["aceite de maná luminoso"] = { [Stats.GenericManaRegen] = 12, [Stats.HealingPower] = 25, } -- e2629
 W["vitalidad"] = { [Stats.GenericManaRegen] = 4, [Stats.HealthRegen] = 4, } -- e2656
 W["pies de plomo"] = { [Stats.MeleeHitRating] = 10, [Stats.RangedHitRating] = 10, } -- e2658
-W["salvajismo"] = { [Stats.AttackPower] = 70, } -- e2667
+W["salvajismo"] = { [Stats.AttackPower] = 70, [Stats.RangedAttackPower] = 70, } -- e2667
 W["fuego solar"] = { [Stats.FireDamage] = 50, [Stats.ArcaneDamage] = 50, } -- e2671
 W["escarcha de alma"] = { [Stats.FrostDamage] = 54, [Stats.ShadowDamage] = 54, } -- e2672
 W["aceite de maná excelente"] = { [Stats.GenericManaRegen] = 14, } -- e2677
@@ -279,7 +279,7 @@ L["aumenta la velocidad de ataque de un aliado un %s% durante %s s, pero tambié
 L["debilita al objetivo reduciendo el daño que causa en %s p. y reduce la eficacia de cualquier sanación en un %s%. dura %s min"] = { { Stats.AverageWeaponDamage, }, false, false, reduction = true } -- s9035
 L["aumenta %s p. el poder de ataque cuerpo a cuerpo de los miembros del grupo cercanos durante %s min"] = { { Stats.AttackPower, }, false, } -- s9128
 L["aumenta tu índice de golpe crítico a distancia %s p"] = { { Stats.RangedCritRating, }, } -- s9132
-L["aumenta %s p. el poder de ataque"] = { { Stats.AttackPower, }, } -- s9136
+L["aumenta %s p. el poder de ataque"] = { { Stats.AttackPower, Stats.RangedAttackPower, }, } -- s9136
 L["reduce la armadura del objetivo %s p. durante %s min"] = { { Stats.Armor, }, false, reduction = true } -- s9176
 L["aumenta hasta %s p. el daño y la sanación de los hechizos y efectos mágicos"] = { { Stats.SpellPower, }, } -- s9342
 L["inmoviliza al taumaturgo y aumenta el daño físico que inflige %s p. durante %s s"] = { { Stats.AverageWeaponDamage, }, false, } -- s9576
@@ -1067,7 +1067,7 @@ L["reduce la fuerza de un enemigo en %s p. y su agilidad en %s p. durante %s s"]
 L["aumenta la sanación por hechizos hasta en %s p. y el daño por hechizos hasta en %s p. durante  %s s"] = { { Stats.HealingPower, }, { Stats.SpellDamage, }, false, } -- s51954
 L["aumenta %s p. el índice de celeridad cuerpo a cuerpo, a distancia y con hechizos a los miembros del grupo en un radio de %s m. dura %s s. puedes usar los tambores durante cambio de forma"] = { { Stats.MeleeHasteRating, Stats.RangedHasteRating, Stats.SpellHasteRating, }, false, false, } -- s351355
 L["aumenta %s p. el poder de ataque y %s p. el daño con hechizos de todos los miembros del grupo en un radio de %s m. dura %s s. puedes usar los tambores durante cambio de forma"] = { { Stats.GenericAttackPower, }, { Stats.SpellDamage, }, false, false, } -- s351360
-L["aumenta el poder de ataque %s p"] = { { Stats.GenericAttackPower, }, } -- s352334
+L["aumenta el poder de ataque %s p"] = { { Stats.AttackPower, Stats.RangedAttackPower, }, } -- s356298
 L["aumenta %s p. la defensa"] = { { Stats.DefenseRating, }, } -- s352511
 L["aumenta la velocidad de ataque de los aliados cercanos un %s% durante %s min"] = { { Stats.MeleeHaste, }, false, } -- s3631
 L["aumenta la velocidad de ataque del taumaturgo un %s% durante %s min"] = { { Stats.MeleeHaste, }, false, } -- s5915
@@ -1150,8 +1150,8 @@ L["%s/%s esp/fz"] = { { Stats.Spirit, }, { Stats.FireResistance, }, } -- e1530
 L["%s/%s frz/agt"] = { { Stats.Strength, Stats.Stamina, }, false, } -- e1531
 L["%s/%s/%s/%s frz/agt/ca/fz"] = { { Stats.Strength, Stats.Stamina, }, false, { Stats.Armor, }, { Stats.FireResistance, }, } -- e1532
 L["%s/%s/%s/%s int/esp/maná/fz"] = { { Stats.Intellect, Stats.Spirit, }, false, { Stats.Mana, }, { Stats.FireResistance, }, } -- e1543
-L["%s poder de ataque"] = { { Stats.AttackPower, }, } -- e1563
-L["%s de poder de ataque"] = { { Stats.AttackPower, }, } -- e1601
+L["%s poder de ataque"] = { { Stats.AttackPower, Stats.RangedAttackPower, }, } -- e1563
+L["%s de poder de ataque"] = { { Stats.AttackPower, Stats.RangedAttackPower, }, } -- e1601
 L["espíritu %s"] = { { Stats.Spirit, }, } -- e1890
 L["%s índice de bloqueo"] = { { Stats.BlockRating, }, } -- e1983
 L["%s poder de ataque a distancia"] = { { Stats.RangedAttackPower, }, } -- e2040
@@ -1198,7 +1198,7 @@ L["%s fuerza y %s aguante"] = { { Stats.Strength, }, { Stats.Stamina, }, } -- e2
 L["afilado (%s índice de golpe crítico y %s daño)"] = { { Stats.MeleeCritRating, }, { Stats.AverageWeaponDamage, }, } -- e2713
 L["sanación %s y %s de maná cada %s s"] = { { Stats.HealingPower, }, { Stats.GenericManaRegen, }, false, } -- e2715
 L["%s aguante y %s armadura"] = { { Stats.Stamina, }, { Stats.Armor, }, } -- e2716
-L["%s poder de ataque y %s índice de golpe crítico"] = { { Stats.AttackPower, }, { Stats.MeleeCritRating, Stats.RangedCritRating, }, } -- e2717
+L["%s poder de ataque y %s índice de golpe crítico"] = { { Stats.AttackPower, Stats.RangedAttackPower, }, { Stats.MeleeCritRating, Stats.RangedCritRating, }, } -- e2717
 L["daño con hechizos %s y %s% de golpe crítico con hechizos"] = { { Stats.SpellPower, }, false, } -- e2721
 L["alcance (%s índice de golpe crítico)"] = { { Stats.RangedCritRating, }, } -- e2724
 L["%s intelecto y %s maná cada %s s"] = { { Stats.Intellect, }, { Stats.GenericManaRegen, }, false, } -- e2744
@@ -1225,7 +1225,7 @@ L["%s daño de escarcha"] = { { Stats.FrostDamage, }, } -- e2810
 L["%s daño de las sombras"] = { { Stats.ShadowDamage, }, } -- e2811
 L["%s sanación"] = { { Stats.HealingPower, }, } -- e2812
 L["%s índice de golpe crítico con hechizos y %s% refracción de hechizos"] = { { Stats.SpellCritRating, }, false, } -- e2827
-L["%s poder de ataque y aumento mín. de velocidad de carrera"] = { { Stats.AttackPower, }, } -- e2829
+L["%s poder de ataque y aumento mín. de velocidad de carrera"] = { { Stats.AttackPower, Stats.RangedAttackPower, }, } -- e2829
 L["%s índice de golpe crítico y %s% resistencia a trampas y raíces"] = { { Stats.CritRating, }, false, } -- e2830
 L["%s aguante y %s% resist. al aturdimiento"] = { { Stats.Stamina, }, false, } -- e2831
 L["%s sanación %s daño con hechizos y %s% amenaza reducida"] = { { Stats.HealingPower, }, { Stats.SpellDamage, }, false, } -- e2832
@@ -1241,7 +1241,7 @@ L["%s fuerza y %s índice de golpe crítico"] = { { Stats.Strength, }, { Stats.C
 L["%s daño con hechizos, %s índice de golpe crítico con hechizos"] = { { Stats.SpellPower, }, { Stats.SpellCritRating, }, } -- e2916
 L["velocidad mín. y %s agilidad"] = { { Stats.Agility, }, } -- e2939
 L["velocidad mín. y %s aguante"] = { { Stats.Stamina, }, } -- e2940
-L["%s poder de ataque, %s índice de golpe crítico"] = { { Stats.AttackPower, }, { Stats.CritRating, }, } -- e2946
+L["%s poder de ataque, %s índice de golpe crítico"] = { { Stats.AttackPower, Stats.RangedAttackPower, }, { Stats.CritRating, }, } -- e2946
 L["pesado (%s índice de golpe crítico y %s daño)"] = { { Stats.MeleeCritRating, Stats.RangedCritRating, }, { Stats.AverageWeaponDamage, }, } -- e2955
 L["%s daño con hechizos y aumento mín. de velocidad de carrera"] = { { Stats.SpellPower, }, } -- e2970
 L["%s sanación %s daño con hechizos"] = { { Stats.HealingPower, }, { Stats.SpellDamage, }, } -- e2974
@@ -1258,18 +1258,18 @@ L["%s índice de defensa y %s índice de esquivar"] = { { Stats.DefenseRating, }
 L["%s regen. de maná"] = { { Stats.GenericManaRegen, }, } -- e2992
 L["%s regen. de maná y %s sanación"] = { { Stats.GenericManaRegen, }, { Stats.HealingPower, }, } -- e2993
 L["%s índice de golpe crítico con hechizos y %s daño y sanación con hechizos"] = { { Stats.SpellCritRating, }, { Stats.SpellPower, }, } -- e2995
-L["%s índice de golpe crítico y %s poder de ataque"] = { { Stats.MeleeCritRating, Stats.RangedCritRating, }, { Stats.AttackPower, }, } -- e3112
+L["%s índice de golpe crítico y %s poder de ataque"] = { { Stats.MeleeCritRating, Stats.RangedCritRating, }, { Stats.AttackPower, Stats.RangedAttackPower, }, } -- e3112
 L["%s aguante, %s índice de esquivar y %s índice de temple"] = { { Stats.Stamina, }, { Stats.DodgeRating, }, { Stats.ResilienceRating, }, } -- e3000
 L["%s sanación %s daño de hechizos y %s maná cada %s s"] = { { Stats.HealingPower, }, { Stats.SpellDamage, }, { Stats.GenericManaRegen, }, false, } -- e3001
 L["%s poder del hechizo y %s índice de golpe con hechizos"] = { { Stats.SpellPower, }, { Stats.SpellHitRating, }, } -- e3002
-L["%s poder de ataque y %s índice de golpe"] = { { Stats.AttackPower, }, { Stats.HitRating, }, } -- e3003
+L["%s poder de ataque y %s índice de golpe"] = { { Stats.AttackPower, Stats.RangedAttackPower, }, { Stats.HitRating, }, } -- e3003
 L["%s aguante y %s índice de temple"] = { { Stats.Stamina, }, { Stats.ResilienceRating, }, } -- e3004
 L["%s aguante y %s agilidad"] = { { Stats.Stamina, }, { Stats.Agility, }, } -- e3011
 L["%s aguante y %s índice de golpe crítico con hechizos"] = { { Stats.Stamina, }, { Stats.SpellCritRating, }, } -- e3047
 L["%s índice de golpe crítico y %s maná cada %s s"] = { { Stats.CritRating, }, { Stats.GenericManaRegen, }, false, } -- e3049
 L["%s daño con hechizos, %s intelecto"] = { { Stats.SpellPower, }, { Stats.Intellect, }, } -- e3050
 L["%s sanación %s daño con hechizos y %s aguante"] = { { Stats.HealingPower, }, { Stats.SpellDamage, }, { Stats.Stamina, }, } -- e3051
-L["%s poder de ataque %s índice de golpes"] = { { Stats.AttackPower, }, { Stats.HitRating, }, } -- e3052
+L["%s poder de ataque %s índice de golpes"] = { { Stats.AttackPower, Stats.RangedAttackPower, }, { Stats.HitRating, }, } -- e3052
 L["%s agilidad y %s índice de golpe"] = { { Stats.Agility, }, { Stats.HitRating, }, } -- e3055
 L["%s índice de parar y %s índice de defensa"] = { { Stats.ParryRating, }, { Stats.DefenseRating, }, } -- e3056
 L["%s fuerza y %s índice de golpe"] = { { Stats.Strength, }, { Stats.HitRating, }, } -- e3057
@@ -1281,7 +1281,7 @@ L["%s índice de golpe crítico y %s índice de esquivar"] = { { Stats.CritRatin
 L["%s índice de parada y %s aguante"] = { { Stats.ParryRating, }, { Stats.Stamina, }, } -- e3063
 L["%s espíritu y %s sanación %s daño con hechizos"] = { { Stats.Spirit, }, { Stats.HealingPower, }, { Stats.SpellDamage, }, } -- e3064
 L["%s daño con hechizos y %s penetración del hechizo"] = { { Stats.SpellPower, }, { Stats.SpellPenetration, }, } -- e3066
-L["%s poder de ataque %s aguante"] = { { Stats.AttackPower, }, { Stats.Stamina, }, } -- e3067
+L["%s poder de ataque %s aguante"] = { { Stats.AttackPower, Stats.RangedAttackPower, }, { Stats.Stamina, }, } -- e3067
 L["%s índice de esquivar y %s índice de golpe"] = { { Stats.DodgeRating, }, { Stats.HitRating, }, } -- e3068
 L["%s sanación %s daño con hechizos y %s índice de temple"] = { { Stats.HealingPower, }, { Stats.SpellDamage, }, { Stats.ResilienceRating, }, } -- e3069
 L["%s intelecto y %s aguante"] = { { Stats.Intellect, }, { Stats.Stamina, }, } -- e3071
@@ -1289,7 +1289,7 @@ L["%s agilidad y %s índice de defensa"] = { { Stats.Agility, }, { Stats.Defense
 L["%s intelecto y %s espíritu"] = { { Stats.Intellect, }, { Stats.Spirit, }, } -- e3074
 L["%s fuerza y %s índice de defensa"] = { { Stats.Strength, }, { Stats.DefenseRating, }, } -- e3075
 L["%s aguante y %s índice de defensa"] = { { Stats.Stamina, }, { Stats.DefenseRating, }, } -- e3078
-L["%s poder de ataque y %s índice de temple"] = { { Stats.AttackPower, }, { Stats.ResilienceRating, }, } -- e3079
+L["%s poder de ataque y %s índice de temple"] = { { Stats.AttackPower, Stats.RangedAttackPower, }, { Stats.ResilienceRating, }, } -- e3079
 L["%s sanación %s daño con hechizos y %s índice de golpe crítico con hechizos"] = { { Stats.HealingPower, }, { Stats.SpellDamage, }, { Stats.SpellCritRating, }, } -- e3081
 L["%s índice de defensa y %s maná cada %s s"] = { { Stats.DefenseRating, }, { Stats.GenericManaRegen, }, false, } -- e3082
 L["%s daño con hechizos y %s espíritu"] = { { Stats.SpellPower, }, { Stats.Spirit, }, } -- e3083
@@ -1302,8 +1302,8 @@ L["%s índice de parada y %s índice de temple"] = { { Stats.ParryRating, }, { S
 L["%s índice de pericia"] = { { Stats.ExpertiseRating, }, } -- e3094
 L["%s fuerza y %s intelecto"] = { { Stats.Strength, }, { Stats.Intellect, }, } -- e3096
 L["%s sanación + %s daño con hechizos"] = { { Stats.HealingPower, }, { Stats.SpellDamage, }, } -- e3098
-L["%s poder de ataque y %s aguante"] = { { Stats.AttackPower, }, { Stats.Stamina, }, } -- e3106
-L["%s poder de ataque y %s maná cada %s s"] = { { Stats.AttackPower, }, { Stats.GenericManaRegen, }, false, } -- e3108
+L["%s poder de ataque y %s aguante"] = { { Stats.AttackPower, Stats.RangedAttackPower, }, { Stats.Stamina, }, } -- e3106
+L["%s poder de ataque y %s maná cada %s s"] = { { Stats.AttackPower, Stats.RangedAttackPower, }, { Stats.GenericManaRegen, }, false, } -- e3108
 L["%s índice de golpe con hechizos y %s daño con hechizos"] = { { Stats.SpellHitRating, }, { Stats.SpellPower, }, } -- e3110
 L["%s índice esquivar"] = { { Stats.DodgeRating, }, } -- e3120
 L["%s índice de golpe crítico con hechizos y %s  daño con hechizos"] = { { Stats.SpellCritRating, }, { Stats.SpellPower, }, } -- e3140
@@ -1311,7 +1311,7 @@ L["%s índice de golpe crítico con hechizos y %s penetración de hechizos"] = {
 L["%s agilidad y %s% de daño crítico aumentado"] = { { Stats.Agility, }, false, } -- e3154
 L["%s sanación %s daño con hechizos y %s espíritu"] = { { Stats.HealingPower, }, { Stats.SpellDamage, }, { Stats.Spirit, }, } -- e3158
 L["%s daño con hechizos y %s intelecto"] = { { Stats.SpellPower, }, { Stats.Intellect, }, } -- e3160
-L["%s poder de ataque y %s% resistencia al aturdimiento"] = { { Stats.AttackPower, }, false, } -- e3162
+L["%s poder de ataque y %s% resistencia al aturdimiento"] = { { Stats.AttackPower, Stats.RangedAttackPower, }, false, } -- e3162
 L["%s daño con hechizos y %s% resistencia a aturdir"] = { { Stats.SpellPower, }, false, } -- e3163
 L["%s espíritu y %s sanación"] = { { Stats.Spirit, }, { Stats.HealingPower, }, } -- e3200
 L["%s sanación y %s de daño con hechizos"] = { { Stats.HealingPower, }, { Stats.SpellDamage, }, } -- e3211

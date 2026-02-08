@@ -72,7 +72,7 @@ W["le maître-forge commence à utiliser deux armes, ce qui augmente ses chances
 W["les créatures alliées proches de corla sont accélérées, ce qui augmente leurs vitesses d'attaque et de déplacement"] = { [Stats.MeleeHaste] = 35, [Stats.MeleeHaste] = 15, } -- s75817
 W["les cauchemars, ça fait peur !"] = { [Stats.MeleeCrit] = -100, [Stats.RangedCrit] = -100, } -- s75822
 W["enrage et gagne en dégâts et en taille, mais perd de la vitesse"] = { [Stats.SpellDamage] = 30, } -- s76423
-W["inflige des dégâts de feu à une cible ennemie et réduit son armure. canalisé"] = { [Stats.Armor] = -20000, } -- s76688
+W["inflige des dégâts de feu à une cible ennemie et réduit son armure. canalisé"] = { [Stats.Armor] = -10000, } -- s76688
 W["l’ennemi régénère ses points de vie et de mana plus rapidement"] = { [Stats.GenericManaRegen] = 50, [Stats.HealthRegen] = 50, } -- s77593
 W["lance une bombe de gaz asphyxiant sur l'endroit ciblé"] = { [Stats.MeleeHit] = -75, [Stats.RangedHit] = -75, } -- s78349
 W["recouvre les créatures organiques d'un film qui les fait germer et se transformer avec le temps en créatures à moitié végétales"] = { [Stats.SpellDamage] = 50, } -- s81096

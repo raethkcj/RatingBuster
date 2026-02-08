@@ -66,7 +66,7 @@ W["鍛造大師開始揮舞兩把武器，提高他的攻擊命中率，而且�
 W["柯爾菈附近的友方生物獲得加速效果，提升其攻擊與移動速度。"] = { [Stats.MeleeHaste] = 35, [Stats.MeleeHaste] = 15, } -- s75817
 W["夢魘真可怕!"] = { [Stats.MeleeCrit] = -100, [Stats.RangedCrit] = -100, } -- s75822
 W["怒火中燒，傷害和體型同時增大，但速度降低。"] = { [Stats.SpellDamage] = 30, } -- s76423
-W["造成火焰傷害，並且降低一名敵方目標的護甲值。需引導。"] = { [Stats.Armor] = -20000, } -- s76688
+W["造成火焰傷害，並且降低一名敵方目標的護甲值。需引導。"] = { [Stats.Armor] = -10000, } -- s76688
 W["敵人可加速恢復生命力和法力。"] = { [Stats.GenericManaRegen] = 50, [Stats.HealthRegen] = 50, } -- s77593
 W["將窒息性毒氣彈投擲到選取的地點。"] = { [Stats.MeleeHit] = -75, [Stats.RangedHit] = -75, } -- s78349
 W["每次堆疊可降低一次所有屬性。"] = { [Stats.AllStats] = -1, } -- s79774
