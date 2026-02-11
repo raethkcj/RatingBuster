@@ -211,7 +211,7 @@ local short = {
 }
 
 for pattern, stat in pairs(short) do
-	L["%s " .. pattern] = stat
+	L["%s " .. pattern:trim():gsub("%.$", "")] = stat
 	L[pattern .. " %s"] = stat
 end
 
