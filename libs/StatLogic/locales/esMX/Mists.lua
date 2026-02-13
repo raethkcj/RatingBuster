@@ -69,7 +69,7 @@ W["el maestro de forja comienza a blandir dos armas, lo que aumenta su probabili
 W["las criaturas amistosas que estén cerca de corla se aceleran, lo que aumenta sus velocidades de movimiento y de ataque"] = { [Stats.MeleeHaste] = 35, [Stats.MeleeHaste] = 15, } -- s75817
 W["¡las pesadillas dan miedo!"] = { [Stats.MeleeCrit] = -100, [Stats.RangedCrit] = -100, } -- s75822
 W["entra en frenesí, lo que aumenta el daño y el tamaño pero reduce la velocidad"] = { [Stats.SpellDamage] = 30, } -- s76423
-W["inflige daño de fuego y reduce la armadura de un objetivo enemigo. se canaliza"] = { [Stats.Armor] = -10000, } -- s76688
+W["inflige daño de fuego y reduce la armadura de un objetivo enemigo. se canaliza"] = { [Stats.Armor] = -20000, } -- s76688
 W["el enemigo regenera salud y maná a un ritmo acelerado"] = { [Stats.GenericManaRegen] = 50, [Stats.HealthRegen] = 50, } -- s77593
 W["lanza una bomba de gas asfixiante a una ubicación seleccionada"] = { [Stats.MeleeHit] = -75, [Stats.RangedHit] = -75, } -- s78349
 W["cubre a criaturas orgánicas con una película que hace que broten como criaturas semejantes a plantas con el tiempo"] = { [Stats.SpellDamage] = 50, } -- s81096
@@ -1876,7 +1876,7 @@ L["%s espíritu y %s resistencia al fuego"] = { { Stats.Spirit, }, { Stats.FireR
 L["%s fuerza y %s aguante"] = { { Stats.Strength, }, { Stats.Stamina, }, } -- e1531
 L["%s fuerza, %s armadura y %s resistencia al fuego"] = { { Stats.Strength, }, { Stats.Armor, }, { Stats.FireResistance, }, } -- e1532
 L["%s intelecto, %s maná y %s resistencia al fuego"] = { { Stats.Intellect, }, { Stats.Mana, }, { Stats.FireResistance, }, } -- e1543
-L["%s poder de ataque"] = { { Stats.GenericAttackPower, }, } -- e1563
+L["%s poder de ataque"] = { { Stats.AttackPower, Stats.RangedAttackPower, }, } -- e1563
 L["%s espíritu y %s aguante"] = { { Stats.Spirit, }, { Stats.Stamina, }, } -- e1890
 L["%s bloqueo"] = { { Stats.BlockRating, }, } -- e1983
 L["%s poder de ataque a distancia"] = { { Stats.RangedAttackPower, }, } -- e2040
@@ -1888,7 +1888,7 @@ L["%s golpe crítico cuerpo a cuerpo"] = { { Stats.MeleeCritRating, }, } -- e250
 L["%s golpe a distancia"] = { { Stats.RangedHitRating, }, } -- e2523
 L["%s esquivar %s aguante %s parada"] = { { Stats.DodgeRating, }, { Stats.Stamina, }, { Stats.ParryRating, }, } -- e2583
 L["%s esquivar %s aguante y %s intelecto"] = { { Stats.DodgeRating, }, { Stats.Stamina, }, { Stats.Intellect, }, } -- e2584
-L["%s poder de ataque y %s esquivar"] = { { Stats.GenericAttackPower, }, { Stats.DodgeRating, }, } -- e2585
+L["%s poder de ataque y %s esquivar"] = { { Stats.AttackPower, Stats.RangedAttackPower, }, { Stats.DodgeRating, }, } -- e2585
 L["%s poder de ataque a distancia/%s aguante/%s golpe"] = { { Stats.RangedAttackPower, }, { Stats.Stamina, }, { Stats.HitRating, }, } -- e2586
 L["%s poder con hechizos %s intelecto"] = { { Stats.SpellPower, }, { Stats.Intellect, }, } -- e2587
 L["%s poder con hechizos y %s golpe"] = { { Stats.SpellPower, }, { Stats.HitRating, }, } -- e2588
@@ -1913,7 +1913,7 @@ L["%s agilidad y %s aguante"] = { { Stats.Agility, }, { Stats.Stamina, }, } -- e
 L["afilado (%s golpe crítico y %s daño)"] = { { Stats.CritRating, }, { Stats.AverageWeaponDamage, }, } -- e2713
 L["%s poder con hechizos y %s maná cada %s s"] = { { Stats.SpellPower, }, { Stats.GenericManaRegen, }, false, } -- e2715
 L["%s aguante y %s armadura"] = { { Stats.Stamina, }, { Stats.Armor, }, } -- e2716
-L["%s poder de ataque y %s golpe crítico"] = { { Stats.GenericAttackPower, }, { Stats.CritRating, }, } -- e2717
+L["%s poder de ataque y %s golpe crítico"] = { { Stats.AttackPower, Stats.RangedAttackPower, }, { Stats.CritRating, }, } -- e2717
 L["%s poder con hechizos y %s golpe crítico"] = { { Stats.SpellPower, }, { Stats.CritRating, }, } -- e2721
 L["mira (%s golpe crítico)"] = { { Stats.RangedCritRating, }, } -- e2724
 L["%s intelecto y %s celeridad"] = { { Stats.Intellect, }, { Stats.HasteRating, }, } -- e2742
@@ -1954,9 +1954,9 @@ L["pesado (%s golpe crítico y %s daño)"] = { { Stats.CritRating, }, { Stats.Av
 L["%s intelecto y aumento mín. de velocidad de carrera"] = { { Stats.Intellect, }, } -- e2970
 L["%s parada y %s esquivar"] = { { Stats.ParryRating, }, { Stats.DodgeRating, }, } -- e2991
 L["%s golpe crítico y %s poder con hechizos"] = { { Stats.CritRating, }, { Stats.SpellPower, }, } -- e2995
-L["%s golpe crítico y %s poder de ataque"] = { { Stats.CritRating, }, { Stats.GenericAttackPower, }, } -- e2997
+L["%s golpe crítico y %s poder de ataque"] = { { Stats.CritRating, }, { Stats.AttackPower, Stats.RangedAttackPower, }, } -- e2997
 L["%s aguante, %s esquivar y %s temple jcj"] = { { Stats.ResilienceRating, }, { Stats.Stamina, }, { Stats.DodgeRating, }, } -- e3000
-L["%s poder de ataque y %s golpe"] = { { Stats.GenericAttackPower, }, { Stats.HitRating, }, } -- e3003
+L["%s poder de ataque y %s golpe"] = { { Stats.AttackPower, Stats.RangedAttackPower, }, { Stats.HitRating, }, } -- e3003
 L["%s aguante y %s temple jcj"] = { { Stats.Stamina, }, { Stats.ResilienceRating, }, } -- e3004
 L["%s aguante y %s agilidad"] = { { Stats.Stamina, }, { Stats.Agility, }, } -- e3011
 L["%s golpe crítico y %s espíritu"] = { { Stats.CritRating, }, { Stats.Spirit, }, } -- e3049
@@ -2015,9 +2015,9 @@ L["%s celeridad y a veces sana con tus golpes críticos"] = { { Stats.HasteRatin
 L["%s golpe crítico y %s% maná"] = { { Stats.CritRating, }, false, } -- e3641
 L["%s poder con hechizos y %s espíritu"] = { { Stats.SpellPower, }, { Stats.Spirit, }, } -- e3718
 L["%s de celeridad"] = { { Stats.HasteRating, }, } -- e3726
-L["%s poder de ataque %s aguante %s golpe"] = { { Stats.GenericAttackPower, }, { Stats.Stamina, }, { Stats.HitRating, }, } -- e3754
-L["%s poder de ataque %s esquivar"] = { { Stats.GenericAttackPower, }, { Stats.DodgeRating, }, } -- e3755
-L["%s poder de ataque y %s temple jcj"] = { { Stats.GenericAttackPower, }, { Stats.ResilienceRating, }, } -- e3793
+L["%s poder de ataque %s aguante %s golpe"] = { { Stats.AttackPower, Stats.RangedAttackPower, }, { Stats.Stamina, }, { Stats.HitRating, }, } -- e3754
+L["%s poder de ataque %s esquivar"] = { { Stats.AttackPower, Stats.RangedAttackPower, }, { Stats.DodgeRating, }, } -- e3755
+L["%s poder de ataque y %s temple jcj"] = { { Stats.AttackPower, Stats.RangedAttackPower, }, { Stats.ResilienceRating, }, } -- e3793
 L["%s poder con hechizos y %s temple jcj"] = { { Stats.SpellPower, }, { Stats.ResilienceRating, }, } -- e3794
 L["%s resistencia a la escarcha y %s aguante"] = { { Stats.FrostResistance, }, { Stats.Stamina, }, } -- e3812
 L["%s resistencia a la naturaleza y %s aguante"] = { { Stats.NatureResistance, }, { Stats.Stamina, }, } -- e3813

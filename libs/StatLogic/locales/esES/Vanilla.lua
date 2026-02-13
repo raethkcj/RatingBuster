@@ -356,7 +356,7 @@ L["aumenta la velocidad de ataque de un aliado en un %s% durante %s s pero tambi
 L["debilita al objetivo reduciendo el daño que causa en %s p. y reduce la eficacia de cualquier curación en un %s%. dura %s min"] = { { Stats.AverageWeaponDamage, }, false, false, reduction = true } -- s9035
 L["aumenta en %s p. el poder de ataque cuerpo a cuerpo de los miembros del grupo cercanos durante %s min"] = { { Stats.AttackPower, }, false, } -- s9128
 L["mejora tu probabilidad de conseguir un golpe crítico en %s% con los misiles"] = { { Stats.MeleeCrit, Stats.RangedCrit, }, } -- s9132
-L["%s p. de poder de ataque"] = { { Stats.AttackPower, }, } -- s9136
+L["%s p. de poder de ataque"] = { { Stats.GenericAttackPower, }, } -- s9136
 L["reduce la armadura del objetivo en %s p. durante %s min"] = { { Stats.Armor, }, false, reduction = true } -- s9176
 L["aumenta el daño y la curación de los hechizos mágicos y los efectos hasta en %s p"] = { { Stats.SpellPower, }, } -- s9342
 L["inmoviliza al taumaturgo y aumenta el daño físico que inflige en %s p. durante %s s"] = { { Stats.AverageWeaponDamage, }, false, } -- s9576
@@ -827,7 +827,7 @@ L["aumenta %s p. el poder de ataque cuerpo a cuerpo y a distancia. existe la pos
 L["aumenta la probabilidad de bloquear del taumaturgo un %s% durante %s s"] = { { Stats.BlockChance, }, false, } -- s446356
 L["reduce todos los atributos de los enemigos cercanos %s p. durante %s min"] = { { Stats.AllStats, }, false, reduction = true } -- s446364
 L["aumenta %s p. la sanación realizada y la regeneración de maná a un ritmo de %s p. de maná cada %s s. además, existe la posibilidad de que tus sanaciones restauren %s p. de energía, un %s% de maná o %s p. de ira. solo puede haber un tipo de poción atal'ai activo al mismo tiempo. no surte efecto fuera del templo sumergido"] = { { Stats.HealingPower, }, { Stats.GenericManaRegen, }, false, false, false, false, } -- s446396
-L["%s poder de ataque"] = { { Stats.AttackPower, Stats.RangedAttackPower, }, } -- e7328
+L["%s poder de ataque"] = { { Stats.AttackPower, Stats.RangedAttackPower, }, } -- e2825
 L["aumenta la sanación por hechizos y efectos hasta %s p"] = { { Stats.HealingPower, }, } -- s446470
 L["unos ecos del vacío te llevan a la locura, lo que aumenta un %s% tu velocidad de lanzamiento con hechizos. no surte efecto en las áreas que no estén bajo la influencia de la pesadilla"] = { { Stats.SpellHaste, }, } -- s446528
 L["unos ecos del vacío te llevan a la demencia, lo que aumenta hasta %s p. tu sanación. no surte efecto en las áreas que no estén bajo la influencia de la pesadilla"] = { { Stats.HealingPower, }, } -- s446541
@@ -1160,6 +1160,6 @@ L["%s p. de poder con hechizos"] = { { Stats.SpellPower, }, } -- e7662
 L["%s% de probabilidad de golpe crítico"] = { { Stats.MeleeCrit, Stats.RangedCrit, }, } -- e7664
 L["%s p. de sanación y %s p. de maná cada %s s"] = { { Stats.HealingPower, }, { Stats.GenericManaRegen, }, false, } -- e7882
 L["%s p. de daño con hechizos y %s% de golpe crítico"] = { { Stats.SpellPower, }, { Stats.SpellCrit, Stats.MeleeCrit, Stats.RangedCrit, }, } -- e7883
-L["%s p. de poder de ataque y %s% de golpe crítico"] = { { Stats.AttackPower, Stats.RangedAttackPower, }, { Stats.MeleeCrit, Stats.RangedCrit, Stats.SpellCrit, }, } -- e7884
+L["%s p. de poder de ataque y %s% de golpe crítico"] = { { Stats.AttackPower, Stats.AttackPower, Stats.RangedAttackPower, Stats.RangedAttackPower, }, { Stats.MeleeCrit, Stats.RangedCrit, Stats.SpellCrit, }, } -- e7884
 L["%s p. de aguante y %s p. de defensa"] = { { Stats.Stamina, }, { Stats.Defense, }, } -- e7885
 L["poultry precision scope (%s damage)"] = { { Stats.AverageWeaponDamage, }, } -- e7944

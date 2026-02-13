@@ -336,7 +336,7 @@ L["使一個盟友對敵人造成的物理傷害提高%s點，持續%s分鐘。"
 L["使一個盟友的攻擊速度提高%s%，持續%s秒。同時該盟友每%s秒受到%s點自然傷害。"] = { { Stats.MeleeHaste, }, false, false, false, } -- s8699
 L["削弱目標，使其所能造成的傷害減少%s點並使任何形式的治療對其產生的效果降低%s%，持續%s分鐘。"] = { { Stats.AverageWeaponDamage, }, false, false, reduction = true } -- s9035
 L["使你的遠程武器造成致命一擊的機率提高%s%。"] = { { Stats.MeleeCrit, Stats.RangedCrit, }, } -- s9132
-L["%s攻擊強度。"] = { { Stats.AttackPower, }, } -- s9136
+L["%s攻擊強度。"] = { { Stats.GenericAttackPower, }, } -- s9136
 L["使目標的護甲降低%s點，持續%s分鐘。"] = { { Stats.Armor, }, false, reduction = true } -- s9176
 L["提高魔法法術和效果所造成的傷害和治療效果，最多%s點。"] = { { Stats.SpellPower, }, } -- s9342
 L["使魔法法術和效果所造成的傷害和治療效果提高最多%s點。"] = { { Stats.SpellPower, }, } -- s9397
@@ -1113,7 +1113,7 @@ L["%s火焰抗性"] = { { Stats.FireResistance, }, } -- e2818
 L["%s冰霜抗性"] = { { Stats.FrostResistance, }, } -- e2819
 L["%s暗影抗性"] = { { Stats.ShadowResistance, }, } -- e2821
 L["%s致命一擊"] = { { Stats.CritRating, }, } -- e2823
-L["%s攻擊強度"] = { { Stats.GenericAttackPower, }, } -- e2825
+L["%s攻擊強度"] = { { Stats.AttackPower, Stats.RangedAttackPower, }, } -- e2825
 L["%s加速"] = { { Stats.HasteRating, }, } -- e3726
 L["所有屬性%s"] = { { Stats.Stamina, }, } -- e7007
 L["命中%s%"] = { { Stats.MeleeHit, Stats.RangedHit, }, } -- e7098
@@ -1149,6 +1149,6 @@ L["%s點力量"] = { { Stats.Strength, }, } -- e7666
 L["%s點敏捷"] = { { Stats.Agility, }, } -- e7667
 L["治療效果%s點，每%s秒%s點法力。"] = { { Stats.HealingPower, }, false, { Stats.GenericManaRegen, }, } -- e7882
 L["法術傷害%s點，致命一擊%s%"] = { { Stats.SpellPower, }, { Stats.SpellCrit, Stats.MeleeCrit, Stats.RangedCrit, }, } -- e7883
-L["攻擊強度%s點，致命一擊%s%"] = { { Stats.AttackPower, Stats.RangedAttackPower, }, { Stats.MeleeCrit, Stats.RangedCrit, Stats.SpellCrit, }, } -- e7884
+L["攻擊強度%s點，致命一擊%s%"] = { { Stats.AttackPower, Stats.AttackPower, Stats.RangedAttackPower, Stats.RangedAttackPower, }, { Stats.MeleeCrit, Stats.RangedCrit, Stats.SpellCrit, }, } -- e7884
 L["耐力%s點，防禦%s點"] = { { Stats.Stamina, }, { Stats.Defense, }, } -- e7885
 L["poultry precision scope (%s damage)"] = { { Stats.AverageWeaponDamage, }, } -- e7944

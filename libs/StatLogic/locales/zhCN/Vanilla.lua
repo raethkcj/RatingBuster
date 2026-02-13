@@ -337,7 +337,7 @@ L["使一个盟友对敌人造成的物理伤害提高%s点，持续%s分钟。"
 L["使一个盟友的攻击速度提高%s%，持续%s秒。同时该盟友每%s秒受到%s点自然伤害。"] = { { Stats.MeleeHaste, }, false, false, false, } -- s8699
 L["削弱目标，使其所能造成的伤害减少%s点，任何治疗效果降低%s%，持续%s分钟。"] = { { Stats.AverageWeaponDamage, }, false, false, reduction = true } -- s9035
 L["使你的远程武器造成爆击的几率提高%s%。"] = { { Stats.MeleeCrit, Stats.RangedCrit, }, } -- s9132
-L["%s 攻击强度。"] = { { Stats.AttackPower, }, } -- s9136
+L["%s 攻击强度。"] = { { Stats.GenericAttackPower, }, } -- s9136
 L["使目标的护甲降低%s点，持续%s分钟。"] = { { Stats.Armor, }, false, reduction = true } -- s9176
 L["提高所有法术和魔法效果所造成的伤害和治疗效果，最多%s点。"] = { { Stats.SpellPower, }, } -- s9342
 L["使施法者不能移动，并使其物理攻击所能造成的伤害提高%s点，持续%s秒。"] = { { Stats.AverageWeaponDamage, }, false, } -- s9576
@@ -1080,6 +1080,6 @@ L["%s 法术强度"] = { { Stats.SpellPower, }, } -- e7662
 L["%s% 爆击几率"] = { { Stats.MeleeCrit, Stats.RangedCrit, }, } -- e7664
 L["%s 治疗，每%s秒%s 法力值。"] = { { Stats.HealingPower, }, false, { Stats.GenericManaRegen, }, } -- e7882
 L["%s 法术伤害，%s% 爆击几率"] = { { Stats.SpellPower, }, { Stats.SpellCrit, Stats.MeleeCrit, Stats.RangedCrit, }, } -- e7883
-L["%s 攻击强度，%s% 爆击几率"] = { { Stats.AttackPower, Stats.RangedAttackPower, }, { Stats.MeleeCrit, Stats.RangedCrit, Stats.SpellCrit, }, } -- e7884
+L["%s 攻击强度，%s% 爆击几率"] = { { Stats.AttackPower, Stats.AttackPower, Stats.RangedAttackPower, Stats.RangedAttackPower, }, { Stats.MeleeCrit, Stats.RangedCrit, Stats.SpellCrit, }, } -- e7884
 L["%s 耐力，%s 防御"] = { { Stats.Stamina, }, { Stats.Defense, }, } -- e7885
 L["poultry precision scope (%s damage)"] = { { Stats.AverageWeaponDamage, }, } -- e7944

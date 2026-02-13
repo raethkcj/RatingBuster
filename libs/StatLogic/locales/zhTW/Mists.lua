@@ -66,7 +66,7 @@ W["鍛造大師開始揮舞兩把武器，提高他的攻擊命中率，而且�
 W["柯爾菈附近的友方生物獲得加速效果，提升其攻擊與移動速度。"] = { [Stats.MeleeHaste] = 35, [Stats.MeleeHaste] = 15, } -- s75817
 W["夢魘真可怕!"] = { [Stats.MeleeCrit] = -100, [Stats.RangedCrit] = -100, } -- s75822
 W["怒火中燒，傷害和體型同時增大，但速度降低。"] = { [Stats.SpellDamage] = 30, } -- s76423
-W["造成火焰傷害，並且降低一名敵方目標的護甲值。需引導。"] = { [Stats.Armor] = -10000, } -- s76688
+W["造成火焰傷害，並且降低一名敵方目標的護甲值。需引導。"] = { [Stats.Armor] = -20000, } -- s76688
 W["敵人可加速恢復生命力和法力。"] = { [Stats.GenericManaRegen] = 50, [Stats.HealthRegen] = 50, } -- s77593
 W["將窒息性毒氣彈投擲到選取的地點。"] = { [Stats.MeleeHit] = -75, [Stats.RangedHit] = -75, } -- s78349
 W["每次堆疊可降低一次所有屬性。"] = { [Stats.AllStats] = -1, } -- s79774
@@ -1913,7 +1913,7 @@ L["%s精神和%s火焰抗性"] = { { Stats.Spirit, }, { Stats.FireResistance, },
 L["%s力量和%s耐力"] = { { Stats.Strength, }, { Stats.Stamina, }, } -- e1531
 L["%s力量，%s護甲和%s火焰抗性"] = { { Stats.Strength, }, { Stats.Armor, }, { Stats.FireResistance, }, } -- e1532
 L["%s智力，%s法力，和%s火焰抗性"] = { { Stats.Intellect, }, { Stats.Mana, }, { Stats.FireResistance, }, } -- e1543
-L["%s攻擊強度"] = { { Stats.GenericAttackPower, }, } -- e1563
+L["%s攻擊強度"] = { { Stats.AttackPower, Stats.RangedAttackPower, }, } -- e1563
 L["%s精神和%s耐力"] = { { Stats.Spirit, }, { Stats.Stamina, }, } -- e1890
 L["%s格擋"] = { { Stats.BlockRating, }, } -- e1983
 L["%s遠程攻擊強度"] = { { Stats.RangedAttackPower, }, } -- e2040
@@ -1925,7 +1925,7 @@ L["%s近戰致命一擊"] = { { Stats.MeleeCritRating, }, } -- e2506
 L["%s遠程命中"] = { { Stats.RangedHitRating, }, } -- e2523
 L["%s閃躲%s耐力及%s招架"] = { { Stats.DodgeRating, }, { Stats.Stamina, }, { Stats.ParryRating, }, } -- e2583
 L["%s閃躲和%s耐力及%s智力"] = { { Stats.DodgeRating, }, { Stats.Stamina, }, { Stats.Intellect, }, } -- e2584
-L["%s攻擊強度/%s閃躲"] = { { Stats.GenericAttackPower, }, { Stats.DodgeRating, }, } -- e2585
+L["%s攻擊強度/%s閃躲"] = { { Stats.AttackPower, Stats.RangedAttackPower, }, { Stats.DodgeRating, }, } -- e2585
 L["%s遠程攻擊強度/%s耐力/%s命中"] = { { Stats.RangedAttackPower, }, { Stats.Stamina, }, { Stats.HitRating, }, } -- e2586
 L["%s法術能量和%s智力"] = { { Stats.SpellPower, }, { Stats.Intellect, }, } -- e2587
 L["%s法術能量和%s命中"] = { { Stats.SpellPower, }, { Stats.HitRating, }, } -- e2588
@@ -1949,7 +1949,7 @@ L["%s敏捷和%s耐力"] = { { Stats.Agility, }, { Stats.Stamina, }, } -- e2710
 L["磨利(%s致命一擊和%s傷害)"] = { { Stats.CritRating, }, { Stats.AverageWeaponDamage, }, } -- e2713
 L["%s法術能量和每%s秒恢復%s法力"] = { { Stats.SpellPower, }, false, { Stats.GenericManaRegen, }, } -- e2715
 L["%s耐力和%s護甲"] = { { Stats.Stamina, }, { Stats.Armor, }, } -- e2716
-L["%s攻擊強度和%s致命一擊"] = { { Stats.GenericAttackPower, }, { Stats.CritRating, }, } -- e2717
+L["%s攻擊強度和%s致命一擊"] = { { Stats.AttackPower, Stats.RangedAttackPower, }, { Stats.CritRating, }, } -- e2717
 L["%s法術能量和%s致命一擊"] = { { Stats.SpellPower, }, { Stats.CritRating, }, } -- e2721
 L["瞄準鏡(%s致命一擊)"] = { { Stats.RangedCritRating, }, } -- e2724
 L["%s智力和%s加速"] = { { Stats.Intellect, }, { Stats.HasteRating, }, } -- e2742
@@ -1990,9 +1990,9 @@ L["增重(%s致命一擊和%s傷害)"] = { { Stats.CritRating, }, { Stats.Averag
 L["%s智力和略微提高奔跑速度"] = { { Stats.Intellect, }, } -- e2970
 L["%s招架和%s閃躲"] = { { Stats.ParryRating, }, { Stats.DodgeRating, }, } -- e2991
 L["%s致命一擊和%s法術能量"] = { { Stats.CritRating, }, { Stats.SpellPower, }, } -- e2995
-L["%s致命一擊和%s攻擊強度"] = { { Stats.CritRating, }, { Stats.GenericAttackPower, }, } -- e2997
+L["%s致命一擊和%s攻擊強度"] = { { Stats.CritRating, }, { Stats.AttackPower, Stats.RangedAttackPower, }, } -- e2997
 L["%s耐力和%s閃躲及%spvp韌性"] = { { Stats.ResilienceRating, }, { Stats.Stamina, }, { Stats.DodgeRating, }, } -- e3000
-L["%s攻擊強度和%s命中"] = { { Stats.GenericAttackPower, }, { Stats.HitRating, }, } -- e3003
+L["%s攻擊強度和%s命中"] = { { Stats.AttackPower, Stats.RangedAttackPower, }, { Stats.HitRating, }, } -- e3003
 L["%s耐力和%spvp韌性"] = { { Stats.Stamina, }, { Stats.ResilienceRating, }, } -- e3004
 L["%s耐力和%s敏捷"] = { { Stats.Stamina, }, { Stats.Agility, }, } -- e3011
 L["%s致命一擊和%s精神"] = { { Stats.CritRating, }, { Stats.Spirit, }, } -- e3049
@@ -2050,11 +2050,11 @@ L["%s致命一擊和縮短%s%昏迷持續時間"] = { { Stats.CritRating, }, fal
 L["%s智力和縮短%s%昏迷持續時間"] = { { Stats.Intellect, }, false, } -- e3639
 L["%s加速和致命一擊時偶爾恢復生命力"] = { { Stats.HasteRating, }, } -- e3640
 L["%s致命一擊和%s%法力"] = { { Stats.CritRating, }, false, } -- e3641
-L["%s攻擊強度和%s致命一擊 (old)"] = { { Stats.GenericAttackPower, }, { Stats.CritRating, }, } -- e3676
+L["%s攻擊強度和%s致命一擊 (old)"] = { { Stats.AttackPower, Stats.RangedAttackPower, }, { Stats.CritRating, }, } -- e3676
 L["%s法術能量和%s精神"] = { { Stats.SpellPower, }, { Stats.Spirit, }, } -- e3718
-L["%s攻擊強度和%s耐力及%s命中"] = { { Stats.GenericAttackPower, }, { Stats.Stamina, }, { Stats.HitRating, }, } -- e3754
-L["%s攻擊強度和%s閃躲"] = { { Stats.GenericAttackPower, }, { Stats.DodgeRating, }, } -- e3755
-L["%s攻擊強度和%spvp韌性"] = { { Stats.GenericAttackPower, }, { Stats.ResilienceRating, }, } -- e3793
+L["%s攻擊強度和%s耐力及%s命中"] = { { Stats.AttackPower, Stats.RangedAttackPower, }, { Stats.Stamina, }, { Stats.HitRating, }, } -- e3754
+L["%s攻擊強度和%s閃躲"] = { { Stats.AttackPower, Stats.RangedAttackPower, }, { Stats.DodgeRating, }, } -- e3755
+L["%s攻擊強度和%spvp韌性"] = { { Stats.AttackPower, Stats.RangedAttackPower, }, { Stats.ResilienceRating, }, } -- e3793
 L["%s法術能量和%spvp韌性"] = { { Stats.SpellPower, }, { Stats.ResilienceRating, }, } -- e3794
 L["%s致命一擊和縮短%s%陷阱/定身效果的持續時間"] = { { Stats.CritRating, }, false, } -- e3803
 L["%s冰霜抗性和%s耐力"] = { { Stats.FrostResistance, }, { Stats.Stamina, }, } -- e3812

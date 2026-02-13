@@ -72,7 +72,7 @@ W["le maître-forge commence à utiliser deux armes, ce qui augmente ses chances
 W["les créatures alliées proches de corla sont accélérées, ce qui augmente leurs vitesses d'attaque et de déplacement"] = { [Stats.MeleeHaste] = 35, [Stats.MeleeHaste] = 15, } -- s75817
 W["les cauchemars, ça fait peur !"] = { [Stats.MeleeCrit] = -100, [Stats.RangedCrit] = -100, } -- s75822
 W["enrage et gagne en dégâts et en taille, mais perd de la vitesse"] = { [Stats.SpellDamage] = 30, } -- s76423
-W["inflige des dégâts de feu à une cible ennemie et réduit son armure. canalisé"] = { [Stats.Armor] = -10000, } -- s76688
+W["inflige des dégâts de feu à une cible ennemie et réduit son armure. canalisé"] = { [Stats.Armor] = -20000, } -- s76688
 W["l’ennemi régénère ses points de vie et de mana plus rapidement"] = { [Stats.GenericManaRegen] = 50, [Stats.HealthRegen] = 50, } -- s77593
 W["lance une bombe de gaz asphyxiant sur l'endroit ciblé"] = { [Stats.MeleeHit] = -75, [Stats.RangedHit] = -75, } -- s78349
 W["recouvre les créatures organiques d'un film qui les fait germer et se transformer avec le temps en créatures à moitié végétales"] = { [Stats.SpellDamage] = 50, } -- s81096
@@ -1863,7 +1863,7 @@ L["%s esprit et %s à la résistance au feu"] = { { Stats.Spirit, }, { Stats.Fir
 L["%s force et %s endurance"] = { { Stats.Strength, }, { Stats.Stamina, }, } -- e1531
 L["%s force, %s armure et %s à la résistance au feu"] = { { Stats.Strength, }, { Stats.Armor, }, { Stats.FireResistance, }, } -- e1532
 L["%s intelligence, %s mana et %s à la résistance au feu"] = { { Stats.Intellect, }, { Stats.Mana, }, { Stats.FireResistance, }, } -- e1543
-L["%s à la puissance d’attaque"] = { { Stats.GenericAttackPower, }, } -- e1563
+L["%s à la puissance d’attaque"] = { { Stats.AttackPower, Stats.RangedAttackPower, }, } -- e1563
 L["%s esprit et %s endurance"] = { { Stats.Spirit, }, { Stats.Stamina, }, } -- e1890
 L["%s points de vie"] = { { Stats.Health, }, } -- e1892
 L["%s aux dégâts"] = { { Stats.AverageWeaponDamage, }, } -- e1895
@@ -1878,7 +1878,7 @@ L["%s au score de critique en mêlée"] = { { Stats.MeleeCritRating, }, } -- e25
 L["%s au toucher à distance"] = { { Stats.RangedHitRating, }, } -- e2523
 L["%s à l’esquive, %s endurance et %s à la parade"] = { { Stats.DodgeRating, }, { Stats.Stamina, }, { Stats.ParryRating, }, } -- e2583
 L["%s à l’esquive, %s endurance et %s intelligence"] = { { Stats.DodgeRating, }, { Stats.Stamina, }, { Stats.Intellect, }, } -- e2584
-L["%s à la puissance d’attaque et %s à l’esquive"] = { { Stats.GenericAttackPower, }, { Stats.DodgeRating, }, } -- e2585
+L["%s à la puissance d’attaque et %s à l’esquive"] = { { Stats.AttackPower, Stats.RangedAttackPower, }, { Stats.DodgeRating, }, } -- e2585
 L["%s à la puissance d’attaque à distance/%s endurance/%s au toucher"] = { { Stats.RangedAttackPower, }, { Stats.Stamina, }, { Stats.HitRating, }, } -- e2586
 L["%s à la puissance des sorts et %s intelligence"] = { { Stats.SpellPower, }, { Stats.Intellect, }, } -- e2587
 L["%s à la puissance des sorts et %s au toucher"] = { { Stats.SpellPower, }, { Stats.HitRating, }, } -- e2588
@@ -1902,7 +1902,7 @@ L["%s agilité et %s endurance"] = { { Stats.Agility, }, { Stats.Stamina, }, } -
 L["aiguisé (%s au score de critique et %s aux pts de dégâts)"] = { { Stats.CritRating, }, { Stats.AverageWeaponDamage, }, } -- e2713
 L["%s à la puissance des sorts et %s points de mana toutes les %s s"] = { { Stats.SpellPower, }, { Stats.GenericManaRegen, }, false, } -- e2715
 L["%s endurance et %s armure"] = { { Stats.Stamina, }, { Stats.Armor, }, } -- e2716
-L["%s à la puissance d’attaque et %s au score de critique"] = { { Stats.GenericAttackPower, }, { Stats.CritRating, }, } -- e2717
+L["%s à la puissance d’attaque et %s au score de critique"] = { { Stats.AttackPower, Stats.RangedAttackPower, }, { Stats.CritRating, }, } -- e2717
 L["%s à la puissance des sorts et %s au score de critique"] = { { Stats.SpellPower, }, { Stats.CritRating, }, } -- e2721
 L["lunette (%s au score de critique)"] = { { Stats.RangedCritRating, }, } -- e2724
 L["%s intelligence et %s à la hâte"] = { { Stats.Intellect, }, { Stats.HasteRating, }, } -- e2742
@@ -1942,9 +1942,9 @@ L["équilibré (%s au score de crit. et %s aux pts de dégâts)"] = { { Stats.Cr
 L["%s intelligence et légère augmentation de la vitesse de course"] = { { Stats.Intellect, }, } -- e2970
 L["%s à la parade et %s à l’esquive"] = { { Stats.ParryRating, }, { Stats.DodgeRating, }, } -- e2991
 L["%s au score de critique et %s à la puissance des sorts"] = { { Stats.CritRating, }, { Stats.SpellPower, }, } -- e2995
-L["%s au score de critique et %s à la puissance d’attaque"] = { { Stats.CritRating, }, { Stats.GenericAttackPower, }, } -- e2997
+L["%s au score de critique et %s à la puissance d’attaque"] = { { Stats.CritRating, }, { Stats.AttackPower, Stats.RangedAttackPower, }, } -- e2997
 L["%s endurance, %s à l’esquive et %s à la résilience (jcj)"] = { { Stats.ResilienceRating, }, { Stats.Stamina, }, { Stats.DodgeRating, }, } -- e3000
-L["%s à la puissance d’attaque et %s au toucher"] = { { Stats.GenericAttackPower, }, { Stats.HitRating, }, } -- e3003
+L["%s à la puissance d’attaque et %s au toucher"] = { { Stats.AttackPower, Stats.RangedAttackPower, }, { Stats.HitRating, }, } -- e3003
 L["%s endurance et %s à la résilience (jcj)"] = { { Stats.Stamina, }, { Stats.ResilienceRating, }, } -- e3004
 L["%s endurance et %s agilité"] = { { Stats.Stamina, }, { Stats.Agility, }, } -- e3011
 L["%s au score de critique et %s esprit"] = { { Stats.CritRating, }, { Stats.Spirit, }, } -- e3049
@@ -2005,9 +2005,9 @@ L["%s intelligence et durée d’etourdissement réduite de %s%"] = { { Stats.In
 L["%s à la hâte et vous soigne parfois quand critique"] = { { Stats.HasteRating, }, } -- e3640
 L["%s au score de critique et %s% aux points de mana"] = { { Stats.CritRating, }, false, } -- e3641
 L["%s à la puissance des sorts et %s esprit"] = { { Stats.SpellPower, }, { Stats.Spirit, }, } -- e3718
-L["%s à la puissance d’attaque %s endurance %s au toucher"] = { { Stats.GenericAttackPower, }, { Stats.Stamina, }, { Stats.HitRating, }, } -- e3754
-L["%s à la puissance d’attaque %s à l’esquive"] = { { Stats.GenericAttackPower, }, { Stats.DodgeRating, }, } -- e3755
-L["%s à la puissance d’attaque et %s à la résilience (jcj)"] = { { Stats.GenericAttackPower, }, { Stats.ResilienceRating, }, } -- e3793
+L["%s à la puissance d’attaque %s endurance %s au toucher"] = { { Stats.AttackPower, Stats.RangedAttackPower, }, { Stats.Stamina, }, { Stats.HitRating, }, } -- e3754
+L["%s à la puissance d’attaque %s à l’esquive"] = { { Stats.AttackPower, Stats.RangedAttackPower, }, { Stats.DodgeRating, }, } -- e3755
+L["%s à la puissance d’attaque et %s à la résilience (jcj)"] = { { Stats.AttackPower, Stats.RangedAttackPower, }, { Stats.ResilienceRating, }, } -- e3793
 L["%s à la puissance des sorts et %s à la résilience (jcj)"] = { { Stats.SpellPower, }, { Stats.ResilienceRating, }, } -- e3794
 L["%s à la résistance au givre et %s endurance"] = { { Stats.FrostResistance, }, { Stats.Stamina, }, } -- e3812
 L["%s à la résistance à la nature et %s endurance"] = { { Stats.NatureResistance, }, { Stats.Stamina, }, } -- e3813

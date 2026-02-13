@@ -262,7 +262,7 @@ L["aumenta la velocidad de ataque de un aliado en un %s% durante %s s pero tambi
 L["debilita al objetivo reduciendo el daño que causa en %s p. y reduce la eficacia de cualquier sanación en un %s%. dura %s min"] = { { Stats.AverageWeaponDamage, }, false, false, reduction = true } -- s9035
 L["aumenta en %s p. el poder de ataque cuerpo a cuerpo de los miembros del grupo cercanos durante %s min"] = { { Stats.AttackPower, }, false, } -- s9128
 L["aumenta tu índice de golpe crítico a distancia en %s p"] = { { Stats.RangedCritRating, }, } -- s9132
-L["aumenta el poder de ataque en %s p"] = { { Stats.AttackPower, }, } -- s9136
+L["aumenta el poder de ataque en %s p"] = { { Stats.GenericAttackPower, }, } -- s9136
 L["reduce la armadura del objetivo en %s p. durante %s min"] = { { Stats.Armor, }, false, reduction = true } -- s9176
 L["aumenta el daño y la sanación de los hechizos mágicos y los efectos hasta en %s p"] = { { Stats.SpellPower, }, } -- s9342
 L["inmoviliza al taumaturgo y aumenta el daño físico que inflige en %s p. durante %s s"] = { { Stats.AverageWeaponDamage, }, false, } -- s9576
@@ -377,7 +377,7 @@ L["inmoviliza un enemigo, aumenta el tiempo entre sus ataques en un %s% y evita 
 L["corta la armadura de enemigos cercanos y la reduce en %s p. por cada uso de hender armadura. se puede acumular hasta %s veces. dura %s s"] = { { Stats.Armor, }, false, false, } -- s15572
 L["aumenta el poder de ataque en %s p. durante %s s"] = { { Stats.GenericAttackPower, }, false, } -- s15602
 L["reviste a un aliado con una capa de escarcha que dura %s min. el hielo aumenta la armadura en %s p., reduce el movimiento de los atacantes cuerpo a cuerpo al %s% y aumenta el tiempo entre los ataques en un %s%"] = { false, { Stats.Armor, }, { Stats.MeleeHaste, }, false, } -- s15784
-L["aumenta en %s p. el poder de ataque"] = { { Stats.AttackPower, }, } -- s15831
+L["aumenta en %s p. el poder de ataque"] = { { Stats.GenericAttackPower, }, } -- s15831
 L["aumenta la resistencia a todos los tipos de magia en %s p"] = { { Stats.FireResistance, Stats.NatureResistance, Stats.FrostResistance, Stats.ShadowResistance, Stats.ArcaneResistance, }, } -- s15967
 L["aumenta tu probabilidad de golpear con hechizos y ataques cuerpo a cuerpo en un %s%"] = { { Stats.MeleeHit, Stats.RangedHit, Stats.SpellHit, }, } -- s16180
 L["aumenta en %s p. el poder de ataque de un enemigo pero reduce su armadura en %s durante %s min. los enemigos malditos no conocerán los efectos del miedo y no saldrán huyendo despavoridos en combate. cada brujo solo puede tener una maldición activa sobre cada objetivo"] = { { Stats.AttackPower, }, { Stats.Armor, }, false, } -- s16231

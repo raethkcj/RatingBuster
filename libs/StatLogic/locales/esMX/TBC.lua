@@ -279,7 +279,7 @@ L["aumenta la velocidad de ataque de un aliado un %s% durante %s s, pero tambié
 L["debilita al objetivo reduciendo el daño que causa en %s p. y reduce la eficacia de cualquier sanación en un %s%. dura %s min"] = { { Stats.AverageWeaponDamage, }, false, false, reduction = true } -- s9035
 L["aumenta %s p. el poder de ataque cuerpo a cuerpo de los miembros del grupo cercanos durante %s min"] = { { Stats.AttackPower, }, false, } -- s9128
 L["aumenta tu índice de golpe crítico a distancia %s p"] = { { Stats.RangedCritRating, }, } -- s9132
-L["aumenta %s p. el poder de ataque"] = { { Stats.AttackPower, Stats.RangedAttackPower, }, } -- s9136
+L["aumenta %s p. el poder de ataque"] = { { Stats.GenericAttackPower, }, } -- s9136
 L["reduce la armadura del objetivo %s p. durante %s min"] = { { Stats.Armor, }, false, reduction = true } -- s9176
 L["aumenta hasta %s p. el daño y la sanación de los hechizos y efectos mágicos"] = { { Stats.SpellPower, }, } -- s9342
 L["inmoviliza al taumaturgo y aumenta el daño físico que inflige %s p. durante %s s"] = { { Stats.AverageWeaponDamage, }, false, } -- s9576
@@ -1067,7 +1067,7 @@ L["reduce la fuerza de un enemigo en %s p. y su agilidad en %s p. durante %s s"]
 L["aumenta la sanación por hechizos hasta en %s p. y el daño por hechizos hasta en %s p. durante  %s s"] = { { Stats.HealingPower, }, { Stats.SpellDamage, }, false, } -- s51954
 L["aumenta %s p. el índice de celeridad cuerpo a cuerpo, a distancia y con hechizos a los miembros del grupo en un radio de %s m. dura %s s. puedes usar los tambores durante cambio de forma"] = { { Stats.MeleeHasteRating, Stats.RangedHasteRating, Stats.SpellHasteRating, }, false, false, } -- s351355
 L["aumenta %s p. el poder de ataque y %s p. el daño con hechizos de todos los miembros del grupo en un radio de %s m. dura %s s. puedes usar los tambores durante cambio de forma"] = { { Stats.GenericAttackPower, }, { Stats.SpellDamage, }, false, false, } -- s351360
-L["aumenta el poder de ataque %s p"] = { { Stats.AttackPower, Stats.RangedAttackPower, }, } -- s356298
+L["aumenta el poder de ataque %s p"] = { { Stats.GenericAttackPower, }, } -- s352334
 L["aumenta %s p. la defensa"] = { { Stats.DefenseRating, }, } -- s352511
 L["aumenta la velocidad de ataque de los aliados cercanos un %s% durante %s min"] = { { Stats.MeleeHaste, }, false, } -- s3631
 L["aumenta la velocidad de ataque del taumaturgo un %s% durante %s min"] = { { Stats.MeleeHaste, }, false, } -- s5915

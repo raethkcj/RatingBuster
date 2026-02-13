@@ -261,7 +261,7 @@ L["aumenta em %s% a velocidade de ataque por %s s, mas também causa %s de dano 
 L["enfraquece o inimigo alvo, reduzindo em %s o dano causado e reduzindo em %s% a eficácia de qualquer efeito de cura. dura %s min"] = { { Stats.AverageWeaponDamage, }, false, false, reduction = true } -- s9035
 L["aumenta em %s o poder de ataque corpo a corpo dos integrantes do grupo próximos por %s min"] = { { Stats.AttackPower, }, false, } -- s9128
 L["aumenta em %s a taxa de acerto crítico de longo alcance"] = { { Stats.RangedCritRating, }, } -- s9132
-L["aumenta em %s o poder de ataque"] = { { Stats.AttackPower, }, } -- s9136
+L["aumenta em %s o poder de ataque"] = { { Stats.GenericAttackPower, }, } -- s9136
 L["reduz em %s a armadura do alvo por %s min"] = { { Stats.Armor, }, false, reduction = true } -- s9176
 L["aumenta em até %s o dano causado e a cura realizada por feitiços e efeitos mágicos"] = { { Stats.SpellPower, }, } -- s9342
 L["imobiliza o lançador e aumenta em %s o dano físico por ele causado por %s s"] = { { Stats.AverageWeaponDamage, }, false, } -- s9576

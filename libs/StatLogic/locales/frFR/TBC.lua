@@ -263,7 +263,7 @@ L["augmente l'armure de la cible alliée de %s, toutes les caractéristiques de 
 L["affaiblit la cible ennemie, réduit les dégâts qu'elle inflige de %s et l'efficacité de tous ses soins de %s%. dure %s min"] = { { Stats.AverageWeaponDamage, }, false, false, reduction = true } -- s9035
 L["augmente de %s la puissance d'attaque en mêlée des membres de votre groupe qui se trouvent à proximité pendant %s min"] = { { Stats.AttackPower, }, false, } -- s9128
 L["augmente votre score de coup critique à distance de %s"] = { { Stats.RangedCritRating, }, } -- s9132
-L["augmente de %s la puissance d'attaque"] = { { Stats.AttackPower, Stats.RangedAttackPower, }, } -- s9136
+L["augmente de %s la puissance d'attaque"] = { { Stats.GenericAttackPower, }, } -- s9136
 L["réduit l'armure de la cible de %s pendant %s min"] = { { Stats.Armor, }, false, reduction = true } -- s9176
 L["immobilise le lanceur de sorts et augmente les points de dégâts physiques qu'il inflige de %s pendant %s s"] = { { Stats.AverageWeaponDamage, }, false, } -- s9576
 L["%s à l'armure"] = { { Stats.Armor, }, } -- s9760
@@ -952,7 +952,7 @@ L["augmente le score de hâte en mêlée, à distance et avec les sorts des memb
 L["augmente la puissance d'attaque de %s et les dégâts des sorts de %s pour les membres du groupe à moins de %s mètres. dure %s s. vous pouvez utiliser les tambours quand vous avez changé de forme"] = { { Stats.GenericAttackPower, }, { Stats.SpellDamage, }, false, false, } -- s351360
 L["augmente la puissance d'attaque de %s"] = { { Stats.GenericAttackPower, }, } -- s352334
 L["augmente le score de défense de %s"] = { { Stats.DefenseRating, }, } -- s352336
-L["augmente la puissance d’attaque de %s"] = { { Stats.AttackPower, Stats.RangedAttackPower, }, } -- s356298
+L["augmente la puissance d’attaque de %s"] = { { Stats.GenericAttackPower, }, } -- s356298
 L["augmente les soins prodigués d’un maximum de %s et les dégâts d’un maximum de %s pour tous les sorts et effets magiques"] = { { Stats.HealingPower, }, { Stats.SpellDamage, }, } -- s356300
 L["augmente la vitesse d'attaque des alliés qui se trouvent à proximité de %s% pendant %s min"] = { { Stats.MeleeHaste, }, false, } -- s3631
 L["augmente la vitesse d'attaque du lanceur de sorts de %s% pendant %s min"] = { { Stats.MeleeHaste, }, false, } -- s5915

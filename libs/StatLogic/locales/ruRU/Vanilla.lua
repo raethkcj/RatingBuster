@@ -356,7 +356,7 @@ L["увеличение скорости атаки союзника на %s% в
 L["ослабление, уменьшение наносимого противником урона на %s ед., замедление любого исцеления на %s%. время действия – %s мин"] = { { Stats.AverageWeaponDamage, }, false, false, reduction = true } -- s9035
 L["увеличение силы атаки ближнего боя находящихся рядом членов группы на %s ед. на %s мин"] = { { Stats.AttackPower, }, false, } -- s9128
 L["увеличение рейтинга критического урона оружия дальнего боя на %s%"] = { { Stats.MeleeCrit, Stats.RangedCrit, }, } -- s9132
-L["увеличивает силу атаки на %s"] = { { Stats.AttackPower, }, } -- s9136
+L["увеличивает силу атаки на %s"] = { { Stats.GenericAttackPower, }, } -- s9136
 L["ослабление брони на %s ед. на %s мин"] = { { Stats.Armor, }, false, reduction = true } -- s9176
 L["увеличение урона и целительного действия магических заклинаний и эффектов не более чем на %s ед"] = { { Stats.SpellPower, }, } -- s9342
 L["обездвиживание заклинателя, но увеличение наносимого им физического урона на %s ед. на %s сек"] = { { Stats.AverageWeaponDamage, }, false, } -- s9576
@@ -1136,6 +1136,6 @@ L["%s к силе заклинаний"] = { { Stats.SpellPower, }, } -- e7662
 L["%s% к вероятности критического удара"] = { { Stats.MeleeCrit, Stats.RangedCrit, }, } -- e7664
 L["%s к силе исцеления и %s ед. маны каждые %s сек"] = { { Stats.HealingPower, }, { Stats.GenericManaRegen, }, false, } -- e7882
 L["%s к урону от заклинаний и %s% к вероятности критического удара"] = { { Stats.SpellPower, }, { Stats.SpellCrit, Stats.MeleeCrit, Stats.RangedCrit, }, } -- e7883
-L["%s к силе атаки и %s% к вероятности критического удара"] = { { Stats.AttackPower, Stats.RangedAttackPower, }, { Stats.MeleeCrit, Stats.RangedCrit, Stats.SpellCrit, }, } -- e7884
+L["%s к силе атаки и %s% к вероятности критического удара"] = { { Stats.AttackPower, Stats.AttackPower, Stats.RangedAttackPower, Stats.RangedAttackPower, }, { Stats.MeleeCrit, Stats.RangedCrit, Stats.SpellCrit, }, } -- e7884
 L["%s к выносливости и %s к защите"] = { { Stats.Stamina, }, { Stats.Defense, }, } -- e7885
 L["poultry precision scope (%s damage)"] = { { Stats.AverageWeaponDamage, }, } -- e7944

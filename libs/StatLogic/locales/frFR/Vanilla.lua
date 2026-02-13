@@ -356,7 +356,7 @@ L["augmente l'armure de la cible alliée de %s, toutes les caractéristiques de 
 L["affaiblit la cible ennemie, réduit les dégâts qu'elle inflige de %s et l'efficacité de tous ses soins de %s%. dure %s min"] = { { Stats.AverageWeaponDamage, }, false, false, reduction = true } -- s9035
 L["augmente de %s la puissance d'attaque en mêlée des membres de votre groupe qui se trouvent à proximité pendant %s min"] = { { Stats.AttackPower, }, false, } -- s9128
 L["augmente de %s% vos chances d'infliger un coup critique avec une arme de trait"] = { { Stats.MeleeCrit, Stats.RangedCrit, }, } -- s9132
-L["%s à la puissance d'attaque"] = { { Stats.AttackPower, Stats.RangedAttackPower, }, } -- s9136
+L["%s à la puissance d'attaque"] = { { Stats.AttackPower, Stats.RangedAttackPower, }, } -- e1563
 L["réduit l'armure de la cible de %s pendant %s min"] = { { Stats.Armor, }, false, reduction = true } -- s9176
 L["augmente les dégâts et les soins produits par les sorts et effets magiques de %s au maximum"] = { { Stats.SpellPower, }, } -- s9342
 L["augmente les soins et dégâts produits par les sorts et effets magiques de %s au maximum"] = { { Stats.SpellPower, }, } -- s9392
@@ -872,7 +872,7 @@ L["augmente les soins prodigués de %s et la régénération de mana de %s poin
 L["augmente les soins prodigués de %s et la régénération de mana de %s points de mana toutes les %s s et vos soins ont une chance de rendre %s point d’énergie, %s % de mana ou %s points de rage. une seule potion atal’ai peut être active à la fois. cette potion n’a aucun effet en dehors du temple englouti"] = { { Stats.HealingPower, }, { Stats.GenericManaRegen, }, false, false, false, false, } -- s446396
 L["augmente les soins prodigués de %s et la régénération de mana de %s point de mana toutes les %s s et vos soins ont une chance de rendre %s points d’énergie, %s % de mana ou %s points de rage. une seule potion atal’ai peut être active à la fois. cette potion n’a aucun effet en dehors du temple englouti"] = { { Stats.HealingPower, }, { Stats.GenericManaRegen, }, false, false, false, false, } -- s446396
 L["augmente les soins prodigués de %s et la régénération de mana de %s points de mana toutes les %s s et vos soins ont une chance de rendre %s points d’énergie, %s % de mana ou %s points de rage. une seule potion atal’ai peut être active à la fois. cette potion n’a aucun effet en dehors du temple englouti"] = { { Stats.HealingPower, }, { Stats.GenericManaRegen, }, false, false, false, false, } -- s446396
-L["%s à la puissance d’attaque"] = { { Stats.AttackPower, Stats.RangedAttackPower, }, } -- s446450
+L["%s à la puissance d’attaque"] = { { Stats.AttackPower, Stats.RangedAttackPower, }, } -- e2825
 L["les échos du vide vous poussent à la folie. augmente la vitesse d’incantation des sorts de %s %. cela n’a aucun effet en dehors des zones sous l’influence du cauchemar"] = { { Stats.SpellHaste, }, } -- s446528
 L["les échos du vide vous poussent à la démence. augmente les soins de %s au maximum. cela n’a aucun effet en dehors des zones sous l’influence du cauchemar"] = { { Stats.HealingPower, }, } -- s446541
 L["les sorts de dégâts ont une chance d’augmenter votre puissance des sorts de %s et vos chances d’esquive de %s % pendant %s sec. cela n’a aucun effet en dehors des zones sous l’influence du cauchemar"] = { { Stats.SpellDamage, }, { Stats.Dodge, }, false, ignoreSum = true } -- s446570
@@ -1215,6 +1215,6 @@ L["%s à la puissance des sorts"] = { { Stats.SpellPower, }, } -- e7662
 L["%s % aux chances de coup critique"] = { { Stats.MeleeCrit, Stats.RangedCrit, }, } -- e7664
 L["soins %s et %s points de mana toutes les %s s"] = { { Stats.HealingPower, }, { Stats.GenericManaRegen, }, false, } -- e7882
 L["dégâts des sorts %s et %s % de score de coup critique"] = { { Stats.SpellPower, }, { Stats.SpellCrit, Stats.MeleeCrit, Stats.RangedCrit, }, } -- e7883
-L["puissance d’attaque %s et %s % de score de coup critique"] = { { Stats.AttackPower, Stats.RangedAttackPower, }, { Stats.MeleeCrit, Stats.RangedCrit, Stats.SpellCrit, }, } -- e7884
+L["puissance d’attaque %s et %s % de score de coup critique"] = { { Stats.AttackPower, Stats.AttackPower, Stats.RangedAttackPower, Stats.RangedAttackPower, }, { Stats.MeleeCrit, Stats.RangedCrit, Stats.SpellCrit, }, } -- e7884
 L["endurance %s et défense %s"] = { { Stats.Stamina, }, { Stats.Defense, }, } -- e7885
 L["poultry precision scope (%s damage)"] = { { Stats.AverageWeaponDamage, }, } -- e7944

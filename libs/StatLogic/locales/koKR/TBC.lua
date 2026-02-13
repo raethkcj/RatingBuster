@@ -254,7 +254,7 @@ L["%s초 동안 적의 공격 속도를 %s만큼 감소시킵니다"] = { false,
 L["적을 약화시켜 %s분 동안 공격력을 %s만큼 감소시키고 해당 대상이 받는 치유 효과를 %s%만큼 감소시킵니다"] = { false, { Stats.AverageWeaponDamage, }, false, reduction = true } -- s9035
 L["주위 파티원의 근접 전투력이 %s만큼 증가됩니다. %s분 동안 지속됩니다"] = { { Stats.AttackPower, }, false, } -- s9128
 L["원거리 치명타 적중도가 %s만큼 증가합니다"] = { { Stats.RangedCritRating, }, } -- s9132
-L["전투력이 %s만큼 증가합니다"] = { { Stats.AttackPower, }, } -- s9136
+L["전투력이 %s만큼 증가합니다"] = { { Stats.GenericAttackPower, }, } -- s9136
 L["%s분 동안 대상의 방어도를 %s만큼 감소시킵니다"] = { false, { Stats.Armor, }, reduction = true } -- s9176
 L["모든 주문 및 효과의 공격력과 치유량이 최대 %s만큼 증가합니다"] = { { Stats.SpellPower, }, } -- s9342
 L["%s초 동안 시전자를 이동 불가 상태로 만들고 물리 공격력을 %s만큼 증가시킵니다"] = { false, { Stats.AverageWeaponDamage, }, } -- s9576

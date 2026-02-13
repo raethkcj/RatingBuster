@@ -1077,6 +1077,6 @@ L["%s de poder mágico"] = { { Stats.SpellPower, }, } -- e7662
 L["%s% de chance de acerto crítico"] = { { Stats.MeleeCrit, Stats.RangedCrit, }, } -- e7664
 L["%s de cura e %s de mana a cada %s s"] = { { Stats.HealingPower, }, { Stats.GenericManaRegen, }, false, } -- e7882
 L["%s de dano mágico e %s% de acerto crítico"] = { { Stats.SpellPower, }, { Stats.SpellCrit, Stats.MeleeCrit, Stats.RangedCrit, }, } -- e7883
-L["%s de poder de ataque e %s% de acerto crítico"] = { { Stats.AttackPower, Stats.RangedAttackPower, }, { Stats.MeleeCrit, Stats.RangedCrit, Stats.SpellCrit, }, } -- e7884
+L["%s de poder de ataque e %s% de acerto crítico"] = { { Stats.AttackPower, Stats.AttackPower, Stats.RangedAttackPower, Stats.RangedAttackPower, }, { Stats.MeleeCrit, Stats.RangedCrit, Stats.SpellCrit, }, } -- e7884
 L["%s de vigor e %s de defesa"] = { { Stats.Stamina, }, { Stats.Defense, }, } -- e7885
 L["poultry precision scope (%s damage)"] = { { Stats.AverageWeaponDamage, }, } -- e7944

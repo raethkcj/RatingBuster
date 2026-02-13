@@ -385,7 +385,7 @@ L["aumenta la velocidad de ataque de un aliado un %s% durante %s s, pero tambié
 L["debilita al objetivo reduciendo el daño que causa en %s p. y reduce la eficacia de cualquier sanación en un %s%. dura %s min"] = { { Stats.AverageWeaponDamage, }, false, false, reduction = true } -- s9035
 L["aumenta %s p. el poder de ataque cuerpo a cuerpo de los miembros del grupo cercanos durante %s min"] = { { Stats.AttackPower, }, false, } -- s9128
 L["mejora un %s% tu probabilidad de conseguir un golpe crítico con armas misiles"] = { { Stats.MeleeCrit, Stats.RangedCrit, }, } -- s9132
-L["aumenta %s p. el poder de ataque"] = { { Stats.AttackPower, }, } -- s9136
+L["aumenta %s p. el poder de ataque"] = { { Stats.GenericAttackPower, }, } -- s9136
 L["reduce la armadura del objetivo %s p. durante %s min"] = { { Stats.Armor, }, false, reduction = true } -- s9176
 L["aumenta hasta %s p. el daño y la sanación de los hechizos y efectos mágicos"] = { { Stats.SpellPower, }, } -- s9342
 L["inmoviliza al taumaturgo y aumenta el daño físico que inflige %s p. durante %s s"] = { { Stats.AverageWeaponDamage, }, false, } -- s9576
@@ -898,7 +898,7 @@ L["inspirado por el mojo de guerra, tu tamaño aumenta y tu fuerza sube %s p. pa
 L["aumenta el poder de ataque cuerpo a cuerpo y a distancia %s p. con cada ataque cuerpo a cuerpo o a distancia, hay una probabilidad de aumentar de tamaño, lo que aumenta la fuerza o la agilidad (el mayor de los dos) %s p. durante %s s. solo puede haber un tipo de poción atal'ai activa a la vez en cualquier momento. esto no tiene efecto fuera del templo sumergido"] = { { Stats.GenericAttackPower, }, { Stats.Strength, }, false, } -- s446336
 L["reduce %s p. todos los atributos de los enemigos cercanos durante %s min"] = { { Stats.AllStats, }, false, reduction = true } -- s446364
 L["aumenta %s p. toda la sanación realizada y %s p. la regeneración de maná durante %s s. tus sanaciones tienen una probabilidad de restaurar %s p. de energía, un %s% de maná o %s p. de ira. solo puede haber una poción atal'ai activa a la vez. esto no tiene efecto fuera del templo sumergido"] = { { Stats.HealingPower, }, { Stats.GenericManaRegen, }, false, false, false, false, } -- s446396
-L["%s p. de poder de ataque"] = { { Stats.AttackPower, }, } -- s446450
+L["%s p. de poder de ataque"] = { { Stats.GenericAttackPower, }, } -- s446450
 L["los ecos del vacío hacen que te sumerjas en la locura, lo que aumenta tu velocidad de lanzamiento de hechizos un %s%. no tiene efecto fuera de las áreas bajo la influencia de la pesadilla"] = { { Stats.SpellHaste, }, } -- s446528
 L["los ecos del vacío hacen que te vuelvas demente, lo que aumenta tu sanación hasta un máximo de %s p. no tiene efecto fuera de las áreas bajo la influencia de la pesadilla"] = { { Stats.HealingPower, }, } -- s446541
 L["los hechizos que infligen daño tienen una probabilidad de aumentar %s p. tu daño con hechizos y un %s% la probabilidad de esquivar durante %s s. no tiene efecto fuera de las áreas bajo la influencia de la pesadilla"] = { { Stats.SpellDamage, }, { Stats.Dodge, }, false, ignoreSum = true } -- s446570
@@ -1151,7 +1151,7 @@ L["daño de escarcha %s"] = { { Stats.FrostDamage, }, } -- e2615
 L["daño de fuego %s"] = { { Stats.FireDamage, }, } -- e2616
 L["sanación %s y %s de maná cada %s s"] = { { Stats.HealingPower, }, { Stats.GenericManaRegen, }, false, } -- e2715
 L["aguante %s y armadura %s"] = { { Stats.Stamina, }, { Stats.Armor, }, } -- e2716
-L["poder de ataque %s y %s% de golpe crítico"] = { { Stats.AttackPower, Stats.RangedAttackPower, }, { Stats.MeleeCrit, Stats.RangedCrit, Stats.SpellCrit, }, } -- e7884
+L["poder de ataque %s y %s% de golpe crítico"] = { { Stats.AttackPower, Stats.AttackPower, Stats.RangedAttackPower, Stats.RangedAttackPower, }, { Stats.MeleeCrit, Stats.RangedCrit, Stats.SpellCrit, }, } -- e7884
 L["daño con hechizos %s y %s% de golpe crítico con hechizos"] = { { Stats.SpellPower, }, { Stats.SpellCrit, }, } -- e2721
 L["%s de esquivar"] = { { Stats.DodgeRating, }, } -- e2815
 L["%s de golpe crítico"] = { { Stats.CritRating, }, } -- e2823

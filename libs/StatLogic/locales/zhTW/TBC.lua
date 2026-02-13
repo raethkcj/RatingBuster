@@ -254,7 +254,7 @@ L["使一個盟友的攻擊速度提高%s%，持續%s秒。同時該盟友每%s�
 L["削弱目標，使其所能造成的傷害減少%s點並使任何形式的治療對其產生的效果降低%s%，持續%s分鐘。"] = { { Stats.AverageWeaponDamage, }, false, false, reduction = true } -- s9035
 L["使附近所有隊友的近戰攻擊強度提高%s點，持續%s分鐘。"] = { { Stats.AttackPower, }, false, } -- s9128
 L["使你的遠程攻擊致命一擊等級提高%s點。"] = { { Stats.RangedCritRating, }, } -- s9132
-L["提高攻擊強度%s點。"] = { { Stats.AttackPower, }, } -- s9136
+L["提高攻擊強度%s點。"] = { { Stats.GenericAttackPower, }, } -- s9136
 L["使目標的護甲值降低%s點，持續%s分鐘。"] = { { Stats.Armor, }, false, reduction = true } -- s9176
 L["使所有法術和魔法效果所造成的傷害和治療效果提高最多%s點。"] = { { Stats.SpellPower, }, } -- s9342
 L["使施法者無法移動，並使其物理攻擊所能造成的傷害提高%s點，持續%s秒。"] = { { Stats.AverageWeaponDamage, }, false, } -- s9576

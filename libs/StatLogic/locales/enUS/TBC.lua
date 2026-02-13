@@ -260,7 +260,7 @@ L["increases an ally's attack speed by %s% for %s sec., but also inflicts %s nat
 L["weakens the target enemy, reducing damage caused by %s and reducing the effectiveness of any healing by %s%.  lasts %s min"] = { { Stats.AverageWeaponDamage, }, false, false, reduction = true } -- s9035
 L["increases the melee attack power of nearby party members by %s for %s min"] = { { Stats.AttackPower, }, false, } -- s9128
 L["increases your ranged critical strike rating by %s"] = { { Stats.RangedCritRating, }, } -- s9132
-L["increases attack power by %s"] = { { Stats.AttackPower, }, } -- s9136
+L["increases attack power by %s"] = { { Stats.GenericAttackPower, }, } -- s9136
 L["decrease the armor of target by %s for %s min"] = { { Stats.Armor, }, false, reduction = true } -- s9176
 L["increases damage and healing done by magical spells and effects by up to %s"] = { { Stats.SpellPower, }, } -- s9342
 L["immobilizes the caster and increases the physical damage it deals by %s for %s sec"] = { { Stats.AverageWeaponDamage, }, false, } -- s9576

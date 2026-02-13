@@ -260,7 +260,7 @@ L["erhöht das angriffstempo eines verbündeten %s sek. lang um %s%, fügt diese
 L["schwächt das feindliche ziel und verringert den verursachten schaden um %s sowie die wirksamkeit jeglicher heilung um %s%. hält %s min. lang an"] = { { Stats.AverageWeaponDamage, }, false, false, reduction = true } -- s9035
 L["erhöht die nahkampfangriffskraft der in der nähe befindlichen gruppenmitglieder %s min. lang um %s"] = { false, { Stats.AttackPower, }, } -- s9128
 L["erhöht eure kritische distanztrefferwertung um %s"] = { { Stats.RangedCritRating, }, } -- s9132
-L["erhöht die angriffskraft um %s"] = { { Stats.AttackPower, }, } -- s9136
+L["erhöht die angriffskraft um %s"] = { { Stats.GenericAttackPower, }, } -- s9136
 L["verringert die rüstung des ziels %s min. lang um %s"] = { false, { Stats.Armor, }, reduction = true } -- s9176
 L["erhöht durch zauber und magische effekte verursachten schaden und heilung um bis zu %s"] = { { Stats.SpellPower, }, } -- s9342
 L["macht den zaubernden bewegungsunfähig und erhöht den ihm zugefügten körperlichen schaden %s sek. lang um %s"] = { false, { Stats.AverageWeaponDamage, }, } -- s9576

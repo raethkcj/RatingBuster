@@ -310,6 +310,11 @@ function mapTextToStatEntry(
 					}
 					break
 				}
+
+				if (sv.stat === "GenericAttackPower" && isEnchant) {
+					entry[j] = new StatValue("AttackPower", sv.value)
+					entry.push(new StatValue("RangedAttackPower", sv.value))
+				}
 			}
 
 		}
@@ -706,16 +711,17 @@ function getEnchantStats(enchant: StatEnchant, spellStatEffects: Map<number, Sta
 				stats[index] = [new StatValue("AverageWeaponDamage", pointsMin)]
 				break
 			case EnchantEffect.Buff:
-				const buffStats = spellStatEffects.get(effectArg)
+				const buffStats = spellStatEffects.get(effectArg)?.flat()
 				if (buffStats) {
 					// Attack Power from enchants shouldn't be multiplied by WOTLK Druid's Predatory Instincts,
 					// so can't be GenericAttackPower
-					const apOverride = buffStats.find(se => se?.find(sv => sv.stat === "GenericAttackPower"))
-					if (apOverride) {
-						apOverride[0].stat = "AttackPower"
-						apOverride.push(new StatValue("RangedAttackPower", apOverride[0].value))
+					const apOverride = buffStats.findIndex(sv => sv.stat === "GenericAttackPower")
+					if (apOverride >= 0) {
+						const value = buffStats[apOverride].value
+						buffStats[apOverride] = new StatValue("AttackPower", value)
+						buffStats.push(new StatValue("RangedAttackPower", value))
 					}
-					stats[index] = buffStats.flat()
+					stats[index] = buffStats
 				}
 				break
 			case EnchantEffect.Resistance:

@@ -69,7 +69,7 @@ W["熔炉之主开始挥舞两把武器，使其命中几率提高，并且偶�
 W["使柯尔拉周围的友方生物获得加速效果，移动和攻击速度提高。"] = { [Stats.MeleeHaste] = 35, [Stats.MeleeHaste] = 15, } -- s75817
 W["噩梦真可怕！"] = { [Stats.MeleeCrit] = -100, [Stats.RangedCrit] = -100, } -- s75822
 W["立即进入狂怒状态，体型增大，伤害提高，但是速度降低。"] = { [Stats.SpellDamage] = 30, } -- s76423
-W["对一名敌方目标造成火焰伤害并使其护甲值降低。需要引导。"] = { [Stats.Armor] = -10000, } -- s76688
+W["对一名敌方目标造成火焰伤害并使其护甲值降低。需要引导。"] = { [Stats.Armor] = -20000, } -- s76688
 W["敌人以更快速率回复生命值和法力值。"] = { [Stats.GenericManaRegen] = 50, [Stats.HealthRegen] = 50, } -- s77593
 W["向选定的区域掷出一枚窒息毒气炸弹。"] = { [Stats.MeleeHit] = -75, [Stats.RangedHit] = -75, } -- s78349
 W["对有机生命体覆盖一层粘液，使其逐渐变成类似植物的生命体。"] = { [Stats.SpellDamage] = 50, } -- s81096
@@ -1955,7 +1955,7 @@ L["%s 精神，%s 火焰抗性"] = { { Stats.Spirit, }, { Stats.FireResistance, 
 L["%s 力量，%s 耐力"] = { { Stats.Strength, }, { Stats.Stamina, }, } -- e1531
 L["%s 力量，%s 护甲值，%s 火焰抗性"] = { { Stats.Strength, }, { Stats.Armor, }, { Stats.FireResistance, }, } -- e1532
 L["%s 智力，%s 法力值，%s 火焰抗性"] = { { Stats.Intellect, }, { Stats.Mana, }, { Stats.FireResistance, }, } -- e1543
-L["%s 攻击强度"] = { { Stats.GenericAttackPower, }, } -- e1563
+L["%s 攻击强度"] = { { Stats.AttackPower, Stats.RangedAttackPower, }, } -- e1563
 L["%s 精神，%s 耐力"] = { { Stats.Spirit, }, { Stats.Stamina, }, } -- e1890
 L["%s 格挡"] = { { Stats.BlockRating, }, } -- e1983
 L["%s 远程攻击强度"] = { { Stats.RangedAttackPower, }, } -- e2040
@@ -1968,7 +1968,7 @@ L["%s 近战爆击"] = { { Stats.MeleeCritRating, }, } -- e2506
 L["%s 远程命中"] = { { Stats.RangedHitRating, }, } -- e2523
 L["%s 躲闪，%s 耐力，%s 招架"] = { { Stats.DodgeRating, }, { Stats.Stamina, }, { Stats.ParryRating, }, } -- e2583
 L["%s 躲闪，%s 耐力，%s 智力"] = { { Stats.DodgeRating, }, { Stats.Stamina, }, { Stats.Intellect, }, } -- e2584
-L["%s 攻击强度，%s 躲闪"] = { { Stats.GenericAttackPower, }, { Stats.DodgeRating, }, } -- e2585
+L["%s 攻击强度，%s 躲闪"] = { { Stats.AttackPower, Stats.RangedAttackPower, }, { Stats.DodgeRating, }, } -- e2585
 L["%s 远程攻击强度，%s 耐力，%s 命中"] = { { Stats.RangedAttackPower, }, { Stats.Stamina, }, { Stats.HitRating, }, } -- e2586
 L["%s 法术强度，%s 智力"] = { { Stats.SpellPower, }, { Stats.Intellect, }, } -- e2587
 L["%s 法术强度，%s 命中"] = { { Stats.SpellPower, }, { Stats.HitRating, }, } -- e2588
@@ -1992,7 +1992,7 @@ L["%s 敏捷，%s 耐力"] = { { Stats.Agility, }, { Stats.Stamina, }, } -- e271
 L["磨快（%s 爆击，%s 伤害）"] = { { Stats.CritRating, }, { Stats.AverageWeaponDamage, }, } -- e2713
 L["%s 法术强度，每%s秒恢复%s点法力值"] = { { Stats.SpellPower, }, false, { Stats.GenericManaRegen, }, } -- e2715
 L["%s 耐力，%s 护甲"] = { { Stats.Stamina, }, { Stats.Armor, }, } -- e2716
-L["%s 攻击强度，%s 爆击"] = { { Stats.GenericAttackPower, }, { Stats.CritRating, }, } -- e2717
+L["%s 攻击强度，%s 爆击"] = { { Stats.AttackPower, Stats.RangedAttackPower, }, { Stats.CritRating, }, } -- e2717
 L["%s 法术强度，%s 爆击"] = { { Stats.SpellPower, }, { Stats.CritRating, }, } -- e2721
 L["瞄准镜 （%s 爆击）"] = { { Stats.RangedCritRating, }, } -- e2724
 L["%s 智力，%s 急速"] = { { Stats.Intellect, }, { Stats.HasteRating, }, } -- e2742
@@ -2034,9 +2034,9 @@ L["增重（%s 爆击，%s 伤害）"] = { { Stats.CritRating, }, { Stats.Averag
 L["%s 智力，奔跑速度略微提升"] = { { Stats.Intellect, }, } -- e2970
 L["%s 招架，%s 躲闪"] = { { Stats.ParryRating, }, { Stats.DodgeRating, }, } -- e2991
 L["%s 爆击，%s 法术强度"] = { { Stats.CritRating, }, { Stats.SpellPower, }, } -- e2995
-L["%s 爆击，%s 攻击强度"] = { { Stats.CritRating, }, { Stats.GenericAttackPower, }, } -- e2997
+L["%s 爆击，%s 攻击强度"] = { { Stats.CritRating, }, { Stats.AttackPower, Stats.RangedAttackPower, }, } -- e2997
 L["%s 耐力，%s 躲闪，%s pvp韧性"] = { { Stats.ResilienceRating, }, { Stats.Stamina, }, { Stats.DodgeRating, }, } -- e3000
-L["%s 攻击强度，%s 命中"] = { { Stats.GenericAttackPower, }, { Stats.HitRating, }, } -- e3003
+L["%s 攻击强度，%s 命中"] = { { Stats.AttackPower, Stats.RangedAttackPower, }, { Stats.HitRating, }, } -- e3003
 L["%s 耐力，%s pvp韧性"] = { { Stats.Stamina, }, { Stats.ResilienceRating, }, } -- e3004
 L["%s 耐力，%s 敏捷"] = { { Stats.Stamina, }, { Stats.Agility, }, } -- e3011
 L["%s 爆击，%s 精神"] = { { Stats.CritRating, }, { Stats.Spirit, }, } -- e3049
@@ -2095,8 +2095,8 @@ L["%s 急速，爆击后可能恢复生命值"] = { { Stats.HasteRating, }, } --
 L["%s 爆击，%s% 法力值"] = { { Stats.CritRating, }, false, } -- e3641
 L["%s 法术强度，%s 精神"] = { { Stats.SpellPower, }, { Stats.Spirit, }, } -- e3718
 L["%s力量"] = { { Stats.Strength, }, } -- e3732
-L["%s 攻击强度，%s 耐力，%s 命中"] = { { Stats.GenericAttackPower, }, { Stats.Stamina, }, { Stats.HitRating, }, } -- e3754
-L["%s 攻击强度，%s pvp韧性"] = { { Stats.GenericAttackPower, }, { Stats.ResilienceRating, }, } -- e3793
+L["%s 攻击强度，%s 耐力，%s 命中"] = { { Stats.AttackPower, Stats.RangedAttackPower, }, { Stats.Stamina, }, { Stats.HitRating, }, } -- e3754
+L["%s 攻击强度，%s pvp韧性"] = { { Stats.AttackPower, Stats.RangedAttackPower, }, { Stats.ResilienceRating, }, } -- e3793
 L["%s 法术强度，%s pvp韧性"] = { { Stats.SpellPower, }, { Stats.ResilienceRating, }, } -- e3794
 L["%s 冰霜抗性，%s 耐力"] = { { Stats.FrostResistance, }, { Stats.Stamina, }, } -- e3812
 L["%s 自然抗性，%s 耐力"] = { { Stats.NatureResistance, }, { Stats.Stamina, }, } -- e3813
