@@ -108,12 +108,17 @@ L["erhöht %s sek. lang die chance zu blocken um %s%, blockt jedoch nur %s angri
 L["stellt %s sek. lang %s punkt(e) gesundheit und %s punkt(e) mana wieder her. ihr müsst beim essen sitzen bleiben"] = { false, false, { Stats.GenericManaRegen, }, } -- s2639
 L["verringert den erlittenen distanzschaden um %s und erhöht die ausweichchance um %s%. hält %s sek. lang an"] = { false, { Stats.Dodge, }, false, } -- s2651
 L["stärke um %s erhöht"] = { { Stats.Strength, }, } -- s2692
+L["den schaden scharfer waffen %s minuten lang um %s erhöhen"] = { false, { Stats.AverageWeaponDamage, }, } -- s2828
+L["den rüstungswert eines gegenstands, der auf der brust, an den beinen, händen oder füßen getragen wird, dauerhaft um %s erhöhen"] = { { Stats.Armor, }, } -- s2831
+L["den rüstungswert eines gegenstands, der auf der brust, an den beinen, händen oder füßen getragen wird, dauerhaft um %s erhöhen. kann nur auf gegenstände der stufe %s oder höher angewendet werden"] = { { Stats.Armor, }, false, } -- s2833
 L["erhöht eure chance, mit einem zauber einen kritischen treffer zu erzielen, um %s%"] = { { Stats.SpellCrit, }, } -- s2916
+L["verbindet ein zielfernrohr dauerhaft mit dem bogen oder der schusswaffe und erhöht den damit zugefügten schaden um %s"] = { { Stats.AverageWeaponDamage, }, } -- s3975
 L["erhöht den vom zaubernden zugefügten körperlichen schaden %s sek. lang um %s punkt(e)"] = { false, { Stats.AverageWeaponDamage, }, } -- s3019
 L["sticht das ziel und verringert %s sek. lang stärke und beweglichkeit des ziels um %s. es kann immer nur jeweils ein biss oder stich pro jäger auf einem beliebigen ziel aktiv sein"] = { false, { Stats.Strength, Stats.Agility, }, reduction = true } -- s3043
 L["erhöht %s sek. lang euer distanzangriffstempo um %s% und euer nahkampfangriffstempo um %s%"] = { false, { Stats.RangedHaste, }, { Stats.MeleeHaste, }, } -- s3045
 L["erhöht %s sek. lang euer distanzangriffstempo um %s%"] = { false, { Stats.RangedHaste, }, } -- s3045
 L["verringert alle attribute eines feindes %s min. lang um %s"] = { false, { Stats.AllStats, }, reduction = true } -- s3105
+L["den schaden einer stumpfen waffe %s minuten lang um %s erhöhen"] = { false, { Stats.AverageWeaponDamage, }, } -- s3112
 L["verursacht normalen schaden plus %s bei einem feind und erhöht die zeit zwischen sein angriffen %s sek. lang um %s%"] = { false, false, { Stats.MeleeHaste, }, reduction = true } -- s3130
 L["erhöht das angriffstempo von in der nähe befindlichen verbündeten %s sek. lang um %s%"] = { false, { Stats.MeleeHaste, }, } -- s3136
 L["verringert %s sek. lang die stärke von in der nähe befindlichen feinden um %s punkt(e) und die beweglichkeit um %s punkt(e)"] = { false, { Stats.Strength, }, { Stats.Agility, }, reduction = true } -- s3146
@@ -123,6 +128,7 @@ L["verringert die gesundheitsregenerationsrate eines feindes um %s% zusätzlich 
 L["erhöht %s sek. lang das angriffstempo des zaubernden um %s%"] = { false, { Stats.MeleeHaste, }, } -- s3151
 L["%s stunde lang alle %s sekunden %s punkt(e) gesundheit regenerieren"] = { false, false, { Stats.HealthRegen, }, } -- s3219
 L["erhöht %s sek. lang das angriffstempo eines verbündeten um %s%"] = { false, { Stats.MeleeHaste, }, } -- s3229
+L["einen umhang dauerhaft verzaubern, sodass die beweglichkeit um %s erhöht wird"] = { { Stats.Agility, }, } -- s3231
 L["verringert %s min. lang die willenskraft eines feindes um %s"] = { false, { Stats.Spirit, }, reduction = true } -- s3237
 L["erhöht %s sek. lang die chance des ziels zu parieren um %s%"] = { false, { Stats.Parry, }, } -- s3238
 L["erhöht %s sek. lang die chance des zaubernden zu blocken um %s%"] = { false, { Stats.BlockChance, }, } -- s3248
@@ -276,6 +282,7 @@ L["erhöht den vom tier verursachten schaden um %s"] = { { Stats.AverageWeaponDa
 L["erhöht die willenskraft des tiers um %s. muss mit 'wildtierausbildung' ausgebildet werden"] = { { Stats.Spirit, }, } -- s6328
 L["dröhnt in der nähe befindliche feinde mit donner zu, erhöht die zeit zwischen ihren angriffen %s sek. lang um %s% und fügt ihnen %s schaden zu. wirkt auf maximal %s ziele"] = { false, { Stats.MeleeHaste, }, false, false, reduction = true } -- s6343
 L["erhöht den widerstand des tiers gegen alle arten von magie um %s"] = { { Stats.FireResistance, Stats.NatureResistance, Stats.FrostResistance, Stats.ShadowResistance, Stats.ArcaneResistance, }, } -- s6443
+L["einen umhang dauerhaft verzaubern, sodass der schattenwiderstand um %s erhöht wird"] = { { Stats.ShadowResistance, }, } -- s6476
 L["erhöht den von in der nähe befindlichen gruppenmitgliedern zugefügten körperlichen schaden %s min. lang um %s punkt(e)"] = { false, { Stats.AverageWeaponDamage, }, } -- s6507
 L["eine schneidenkante erhöht eure schadenswirkung mit dieser waffe um %s"] = { { Stats.AverageWeaponDamage, }, } -- s6514
 L["wirft erde in die augen eines feindes, sodass dessen chance zu treffen %s sek. lang um %s% verringert wird"] = { false, { Stats.MeleeHit, Stats.RangedHit, }, reduction = true } -- s6530
@@ -293,6 +300,7 @@ L["erhöht den von in der nähe befindlichen gruppenmitgliedern zugefügten kör
 L["erhöht die zeit zwischen angriffen eines feindes um %s% und verlangsamt sein zauberwirken um %s%, fügt außerdem eine chance von %s% hinzu, die verpestung bei einem treffer auf einen verbündeten zu verbreiten. hält %s min. lang an"] = { { Stats.MeleeHaste, }, { Stats.SpellHaste, }, false, false, reduction = true } -- s7102
 L["erhöht die zeit zwischen den angriffen eines feindes um %s%, verlangsamt sein zaubertempo um %s% und sein bewegungstempo um %s%. hält %s min. lang an"] = { { Stats.MeleeHaste, }, { Stats.SpellHaste, }, false, false, reduction = true } -- s7127
 L["einen feind attackieren, dabei das tempo erhöhen und beim ersten angriff einen zusätzlichen schaden von %s verursachen"] = { { Stats.AverageWeaponDamage, }, } -- s7137
+L["bringt ein gegengewicht an einem zweihandschwert, einem zweihandstreitkolben, einer zweihandaxt oder an einer zweihand-stangenwaffe an und macht die waffe um %s% schneller"] = { { Stats.MeleeHaste, }, } -- s7218
 L["verringert die trefferchance von in der nähe befindlichen feinden %s sek. lang um %s%"] = { false, { Stats.MeleeHit, Stats.RangedHit, }, reduction = true } -- s7272
 L["erhöht die zeit zwischen angriffen in der nähe befindlicher feinde um %s% und verlangsamt ihr bewegungstempo um %s%. hält %s min. lang an"] = { { Stats.MeleeHaste, }, false, false, reduction = true } -- s7279
 L["verringert die stärke eines feindes um %s und seine ausdauer %s min. lang um %s"] = { { Stats.Strength, }, false, { Stats.Stamina, }, reduction = true } -- s7289
@@ -303,6 +311,13 @@ L["erhöht die willenskraft der in der nähe befindlichen gruppenmitglieder um %
 L["auf einen feind zustürmen, wobei er %s sek. lang bewegungsunfähig wird und außerdem die nahkampfangriffskraft des ebers beim nächsten angriff um %s erhöht wird"] = { false, { Stats.AttackPower, }, } -- s7371
 L["erhöht chance auf kritischen treffer um %s%.\nerhöht jeglichen erlittenen schaden um %s%.\nverringert erzeugte bedrohung um %s%"] = { { Stats.MeleeCrit, Stats.RangedCrit, }, false, false, } -- s7381
 L["zerreißt die rüstung des ziels und verringert sie um %s punkt(e) pro einsatz von 'rüstung zerreißen' und verursacht ein hohes maß an bedrohung. kann bis zu %s-mal angewendet werden. hält %s sek. lang an"] = { { Stats.Armor, }, false, false, reduction = true } -- s7386
+L["armschienen dauerhaft verzaubern, sodass die gesundheit des trägers um %s erhöht wird"] = { { Stats.Health, }, } -- s7418
+L["ein teil der brustrüstung dauerhaft verzaubern, sodass die gesundheit des trägers um %s erhöht wird"] = { { Stats.Health, }, } -- s7420
+L["armschienen dauerhaft verzaubern, sodass die verteidigungsfertigkeit des trägers um %s erhöht wird"] = { { Stats.Defense, }, } -- s7428
+L["ein teil der brustrüstung dauerhaft verzaubern, sodass das mana des trägers um %s erhöht wird"] = { { Stats.Mana, }, } -- s7443
+L["einen teil der brustrüstung mit regenerationseigenschaften erfüllen, die die willenskraft des trägers %s minuten lang um %s erhöhen"] = { false, { Stats.Spirit, }, } -- s7451
+L["einen umhang dauerhaft verzaubern, sodass sich der widerstand gegen alle arten von magie um %s erhöht"] = { { Stats.FireResistance, Stats.NatureResistance, Stats.FrostResistance, Stats.ShadowResistance, Stats.ArcaneResistance, }, } -- s7454
+L["armschienen dauerhaft verzaubern, sodass sich die ausdauer des trägers um %s erhöht"] = { { Stats.Stamina, }, } -- s7457
 L["%s stärke"] = { { Stats.Strength, }, } -- s7464
 L["%s intelligenz"] = { { Stats.Intellect, }, } -- s7468
 L["%s beweglichkeit"] = { { Stats.Agility, }, } -- s7471
@@ -325,13 +340,28 @@ L["erhöht durch feuerzauber und feuereffekte zugefügten schaden um bis zu %s"]
 L["erhöht durch naturzauber und natureffekte zugefügten schaden um bis zu %s"] = { { Stats.NatureDamage, }, } -- s7690
 L["erhöht durch frostzauber und frosteffekte zugefügten schaden um bis zu %s"] = { { Stats.FrostDamage, }, } -- s7697
 L["erhöht durch schattenzauber und schatteneffekte zugefügten schaden um bis zu %s"] = { { Stats.ShadowDamage, }, } -- s7704
+L["eine zweihand-nahkampfwaffe dauerhaft verzaubern, sodass damit %s zusätzliche schadenspunkte verursacht werden"] = { { Stats.AverageWeaponDamage, }, } -- s7745
 L["erhöht intelligenz um %s"] = { { Stats.Intellect, }, } -- s7764
+L["armschienen dauerhaft verzaubern, sodass sich die willenskraft des trägers um %s erhöht"] = { { Stats.Spirit, }, } -- s7766
+L["armschienen mit weisheit erfüllen, die, die intelligenz des trägers %s minuten lang um %s erhöht"] = { false, { Stats.Intellect, }, } -- s7769
+L["einen umhang verzaubern, sodass %s zusätzliche rüstungspunkte gewährt werden"] = { { Stats.Armor, }, } -- s7771
+L["einen teil der brustrüstung dauerhaft verzaubern, sodass das mana des trägers um %s erhöht wird"] = { { Stats.Mana, }, } -- s7776
+L["armschienen dauerhaft verzaubern, sodass sich die beweglichkeit des trägers um %s erhöht"] = { { Stats.Agility, }, } -- s7779
+L["armschienen dauerhaft verzaubern, sodass sich die stärke des trägers um %s erhöht"] = { { Stats.Strength, }, } -- s7782
+L["eine nahkampfwaffe dauerhaft verzaubern, sodass damit %s zusätzlicher schadenspunkt zugefügt wird"] = { { Stats.AverageWeaponDamage, }, } -- s7788
+L["eine zweihand-nahkampfwaffe dauerhaft verzaubern, sodass sie die intelligenz um %s erhöht"] = { { Stats.Intellect, }, } -- s7793
 L["erhöht die schadenswirkung von feuerzaubern %s sek. lang um %s"] = { false, { Stats.FireDamage, }, } -- s7843
 L["erhöht die schadenswirkung von feuerzaubern %s min. lang um bis zu %s"] = { false, { Stats.FireDamage, }, } -- s7844
+L["eine armschiene dauerhaft verzaubern, sodass sich die willenskraft des trägers um %s erhöht"] = { { Stats.Spirit, }, } -- s7859
+L["einen umhang dauerhaft verzaubern, sodass sich der feuerwiderstand um %s erhöht"] = { { Stats.FireResistance, }, } -- s7861
+L["ein paar stiefel dauerhaft verzaubern, sodass sich die ausdauer des trägers um %s erhöht"] = { { Stats.Stamina, }, } -- s7863
+L["einen umhang erfüllen, sodass %s minuten lang %s zusätzliche rüstungspunkte gewährt werden"] = { false, { Stats.Armor, }, } -- s7865
+L["ein paar stiefel dauerhaft verzaubern, sodass sich die beweglichkeit des trägers um %s erhöht"] = { { Stats.Agility, }, } -- s7867
 L["verringert die beweglichkeit eines feindes %s min. lang um %s"] = { false, { Stats.Agility, }, reduction = true } -- s7901
 L["ermöglicht %s min. lang gestaltwandlung in eine schlange, erhöht angriffsschaden um %s die zeit zwischen angriffen um %s%"] = { false, { Stats.AverageWeaponDamage, }, { Stats.MeleeHaste, }, } -- s7965
 L["verringert die stärke eines feindes um %s, seine beweglichkeit um %s und seine ausdauer %s min. lang um %s"] = { { Stats.Strength, }, { Stats.Agility, }, false, { Stats.Stamina, }, reduction = true } -- s7997
 L["verringert die willenskraft eines feindes %s min. lang um %s"] = { false, { Stats.Spirit, }, reduction = true } -- s8016
+L["die waffe des schamanen magieerfüllen und so die nahkampfangriffskraft um %s erhöhen, was bei nahkampfangriffen zusätzliche bedrohung ermöglicht, wenn diese waffe benutzt wird. hält %s minuten lang an"] = { { Stats.AttackPower, }, false, } -- s8017
 L["ermöglicht %s sek. lang gestaltwandlung in eine schlange, erhöht körperlichen schaden um %s, zauber wirken ist allerdings nicht mehr möglich"] = { false, { Stats.AverageWeaponDamage, }, } -- s8041
 L["verursacht %s naturschaden bei in der nähe befindlichen feinden, erhöht die zeit zwischen ihren angriffen um %s% und verlangsamt ihr bewegungstempo um %s%. hält %s sek. lang an"] = { false, { Stats.MeleeHaste, }, false, false, reduction = true } -- s8078
 L["erhöht %s min. lang die rüstung des ziels um %s"] = { false, { Stats.Armor, }, } -- s8091
@@ -418,26 +448,59 @@ L["der jäger nimmt die aspekte eines falken an: die distanzangriffskraft wird u
 L["erhöht den vom huhn zugefügten körperlichen schaden um %s% und lässt die angriffe des huhns %s sek. lang um %s% schneller werden"] = { { Stats.AverageWeaponDamage, }, false, { Stats.MeleeHaste, }, } -- s13168
 L["erhöht %s min. lang die intelligenz eines verbündeten um %s"] = { false, { Stats.Intellect, }, } -- s13326
 L["zwingt einen feind, dämonisch zu sprechen, was sein zaubertempo %s sek. lang um %s% verringert. es kann immer nur jeweils ein fluch pro hexenmeister auf einem beliebigen ziel aktiv sein"] = { false, { Stats.SpellHaste, }, reduction = true } -- s13338
+L["einen schild dauerhaft verzaubern, sodass sich die ausdauer des trägers um %s erhöht"] = { { Stats.Stamina, }, } -- s13378
+L["eine zweihand-nahkampfwaffe dauerhaft verzaubern, sodass sie die willenskraft um %s erhöht"] = { { Stats.Spirit, }, } -- s13380
+L["einen umhang dauerhaft verzaubern, sodass die rüstung um %s erhöht wird"] = { { Stats.Armor, }, } -- s13421
 L["verringert die chance des ziels zu blocken %s sek. lang um %s%"] = { false, { Stats.BlockChance, }, reduction = true } -- s13459
+L["einen schild dauerhaft verzaubern, um seine rüstung um %s zu erhöhen"] = { { Stats.Armor, }, } -- s13464
+L["einen schild dauerhaft verzaubern, sodass die willenskraft um %s erhöht wird"] = { { Stats.Spirit, }, } -- s13485
 L["verringert %s sek. lang die angriffskraft des ziels um %s"] = { false, { Stats.GenericAttackPower, }, reduction = true } -- s13490
 L["erhöht euer angriffstempo %s sek. lang um %s%"] = { false, { Stats.MeleeHaste, Stats.RangedHaste, }, } -- s28866
 L["erhöht die stärke %s sek. lang um %s"] = { false, { Stats.Strength, }, } -- s17499
+L["eine armschiene dauerhaft verzaubern, sodass sich die ausdauer des trägers um %s erhöht"] = { { Stats.Stamina, }, } -- s13501
+L["eine nahkampfwaffe dauerhaft verzaubern, sodass damit %s zusätzliche punkte schaden zugefügt werden"] = { { Stats.AverageWeaponDamage, }, } -- s13503
+L["einen umhang dauerhaft verzaubern, sodass sich der schattenwiderstand um %s erhöht"] = { { Stats.ShadowResistance, }, } -- s13522
 L["ätzende säure, die alle %s sekunden %s punkt(e) naturschaden zufügt und %s sek. lang die rüstung des ziels um %s verringert"] = { false, false, false, { Stats.Armor, }, reduction = true } -- s13526
 L["verringert die stärke des ziels %s sek. lang um %s"] = { false, { Stats.Strength, }, reduction = true } -- s13528
+L["eine zweihand-nahkampfwaffe dauerhaft verzaubern, sodass damit %s zusätzliche punkte schaden zugefügt werden"] = { { Stats.AverageWeaponDamage, }, } -- s13529
+L["eine armschiene dauerhaft verzaubern, sodass sich die stärke des trägers um %s erhöht"] = { { Stats.Strength, }, } -- s13536
 L["erhöht das angriffstempo aller in der nähe befindlichen gruppenmitglieder um %s%. spieler können pro paladin immer nur jeweils eine aura besitzen. die aura hält an, bis die aktion abgebrochen wird"] = { { Stats.MeleeHaste, }, } -- s13589
 L["erhöht durch arkanzauber und arkaneffekte zugefügten schaden um bis zu %s"] = { { Stats.ArcaneDamage, }, } -- s13590
+L["eine armschiene dauerhaft verzaubern, sodass sich die intelligenz des trägers um %s erhöht"] = { { Stats.Intellect, }, } -- s13622
+L["ein teil der brustrüstung dauerhaft verzaubern, sodass alle werte um %s erhöht werden"] = { { Stats.AllStats, }, } -- s13626
+L["einen schild dauerhaft verzaubern, sodass die ausdauer um %s erhöht wird"] = { { Stats.Stamina, }, } -- s13631
+L["einen umhang dauerhaft verzaubern, sodass die rüstung zusätzlich um %s erhöht wird"] = { { Stats.Armor, }, } -- s13635
+L["stiefel dauerhaft verzaubern, sodass die beweglichkeit um %s erhöht wird"] = { { Stats.Agility, }, } -- s13637
+L["ein teil der brustrüstung dauerhaft verzaubern, sodass die gesundheit um %s erhöht wird"] = { { Stats.Health, }, } -- s13640
+L["verzaubert armschienen dauerhaft, sodass die willenskraft um %s erhöht wird"] = { { Stats.Spirit, }, } -- s13642
+L["stiefel dauerhaft verzaubern, sodass die ausdauer um %s erhöht wird"] = { { Stats.Stamina, }, } -- s13644
+L["verzaubert armschienen dauerhaft, sodass die verteidigung um %s erhöht wird"] = { { Stats.Defense, }, } -- s13646
+L["verzaubert armschienen dauerhaft, sodass die ausdauer um %s erhöht wird"] = { { Stats.Stamina, }, } -- s13648
+L["einen umhang dauerhaft verzaubern, sodass der feuerwiderstand um %s erhöht wird"] = { { Stats.FireResistance, }, } -- s13657
+L["verzaubert armschienen dauerhaft, sodass die stärke um %s erhöht wird"] = { { Stats.Strength, }, } -- s13661
+L["ein teil der brustrüstung dauerhaft verzaubern, sodass das mana um %s erhöht wird"] = { { Stats.Mana, }, } -- s13663
 L["erhöht eure chance, einen angriff zu parieren, um %s%"] = { { Stats.Parry, }, } -- s13665
 L["erhöht eure chance, einem angriff auszuweichen, um %s%"] = { { Stats.Dodge, }, } -- s13669
 L["erhöht eure chance, angriffe mit einem schild zu blocken, um %s%"] = { { Stats.BlockChance, }, } -- s13674
+L["stiefel dauerhaft verzaubern, sodass die willenskraft um %s erhöht wird"] = { { Stats.Spirit, }, } -- s13687
+L["einen schild dauerhaft verzaubern, um eine chance von %s% zum blocken zu erhalten"] = { { Stats.BlockChance, }, } -- s13689
 L["erhöht eure chance, mit nahkampfwaffen zu treffen, um %s%"] = { { Stats.MeleeHit, Stats.RangedHit, }, } -- s13705
 L["erhöht eure chance, mit faustwaffen einen kritischen treffer zu erzielen, um %s%"] = { { Stats.MeleeCrit, Stats.RangedCrit, }, } -- s13707
 L["erhöht eure ausweichchance um %s%"] = { { Stats.Dodge, }, } -- s13712
 L["erhöht eure parierchance um %s%"] = { { Stats.Parry, }, } -- s13713
 L["erhöht feuerwiderstand um %s und verringert jeglichen feuerschaden %s sek. lang um bis zu %s punkte"] = { { Stats.FireResistance, }, false, false, } -- s13744
 L["schützt den zaubernden, verbessert die rüstung um %s, den schattenwiderstand um %s und %s min. lang die gesundheitsregeneration"] = { { Stats.Armor, }, { Stats.ShadowResistance, }, false, } -- s13787
+L["einen umhang dauerhaft verzaubern, sodass alle widerstände um %s erhöht werden"] = { { Stats.FireResistance, Stats.NatureResistance, Stats.FrostResistance, Stats.ShadowResistance, Stats.ArcaneResistance, }, } -- s13794
+L["handschuhe dauerhaft verzaubern, sodass die beweglichkeit um %s erhöht wird"] = { { Stats.Agility, }, } -- s13815
+L["verzaubert armschienen dauerhaft, sodass die intelligenz um %s erhöht wird"] = { { Stats.Intellect, }, } -- s13822
 L["erhöht %s min. lang die ausdauer eines verbündeten um %s"] = { false, { Stats.Stamina, }, } -- s13864
 L["schützt den zaubernden %s sek. lang vor allen schäden und zaubern, erhöht jedoch währenddessen die zeit zwischen seinen angriffen um %s%"] = { false, { Stats.MeleeHaste, }, reduction = true } -- s13874
 L["erhöht euer angriffstempo um %s%. zusätzlich treffen angriffe einen weiteren in der nähe befindlichen gegner. hält %s sek. lang an"] = { { Stats.MeleeHaste, }, false, } -- s13877
+L["handschuhe dauerhaft verzaubern, sodass die stärke um %s erhöht wird"] = { { Stats.Strength, }, } -- s13887
+L["einen schild dauerhaft verzaubern, um %s frostwiderstand zu erhalten"] = { { Stats.FrostResistance, }, } -- s13933
+L["eine zweihand-nahkampfwaffe dauerhaft verzaubern, sodass damit %s schaden zugefügt wird"] = { { Stats.AverageWeaponDamage, }, } -- s13937
+L["verzaubert armschienen dauerhaft, um %s stärke zu erhalten"] = { { Stats.Strength, }, } -- s13939
+L["handschuhe dauerhaft verzaubern, sodass das angriffstempo um %s% erhöht wird"] = { { Stats.MeleeHaste, Stats.RangedHaste, }, } -- s13948
 L["zerfrisst die rüstung eines feindes und verringert sie um %s pro anwendung. kann bis zu %s-mal angewendet werden. hält %s sek. lang an"] = { { Stats.Armor, }, false, false, } -- s14120
 L["erhöht eure chance auf einen kritischen treffer um %s%"] = { { Stats.MeleeCrit, Stats.RangedCrit, }, } -- s14138
 L["eure angriffe ignorieren %s rüstung eures ziels. außerdem wird der schaden eurer fähigkeit 'blutung' um %s% erhöht. die rüstungsverringerung steigt mit eurer stufe"] = { { Stats.ArmorPenetration, }, false, } -- s14171
@@ -460,7 +523,16 @@ L["erhöht %s min. lang die rüstung des ziels um %s punkt(e)"] = { false, { Sta
 L["verringert die rüstung eines feindlichen ziels für %s min. um %s punkt(e)"] = { false, { Stats.Armor, }, reduction = true } -- s15235
 L["reduziert die rüstung des ziels %s sek. lang um %s punkt(e)"] = { false, { Stats.Armor, }, reduction = true } -- s15280
 L["erhöht den von einem verbündeten zugefügten magieschaden %s min. lang um %s punkt(e)"] = { false, { Stats.SpellDamage, }, } -- s15288
+L["fügt einem gegenstand, der sich an einem bein- oder kopfplatz befindet, dauerhaft %s manapunkte hinzu. ergänzt sich nicht mit anderen verzauberungen für den ausgewählten ausrüstungsplatz"] = { { Stats.Mana, }, } -- s15340
 L["erhöht %s stunde lang die chance auf einen kritischen treffer mit nahkampf-, fernkampfangriffen und zaubern um %s% und alle attribute um %s"] = { false, { Stats.MeleeCrit, Stats.RangedCrit, Stats.SpellCrit, }, { Stats.AllStats, }, } -- s15366
+L["fügt einem gegenstand, der sich an einem bein- oder kopfplatz befindet, dauerhaft %s trefferpunkte hinzu. ergänzt sich nicht mit anderen verzauberungen für den ausgewählten ausrüstungsplatz"] = { { Stats.Health, }, } -- s15389
+L["fügt einem gegenstand, der sich an einem bein- oder kopfplatz befindet, dauerhaft %s rüstungspunkte hinzu. ergänzt sich nicht mit anderen verzauberungen für den ausgewählten ausrüstungsplatz"] = { { Stats.Armor, }, } -- s15391
+L["fügt einem gegenstand, der sich an einem bein- oder kopfplatz befindet, dauerhaft %s feuerwiderstandspunkte hinzu. ergänzt sich nicht mit anderen verzauberungen für den ausgewählten ausrüstungsplatz"] = { { Stats.FireResistance, }, } -- s15394
+L["fügt einem gegenstand, der sich an einem bein- oder kopfplatz befindet, dauerhaft %s stärkepunkte hinzu. ergänzt sich nicht mit anderen verzauberungen für den ausgewählten ausrüstungsplatz"] = { { Stats.Strength, }, } -- s15397
+L["fügt einem gegenstand, der sich an einem bein- oder kopfplatz befindet, dauerhaft %s ausdauerpunkte hinzu. ergänzt sich nicht mit anderen verzauberungen für den ausgewählten ausrüstungsplatz"] = { { Stats.Stamina, }, } -- s15400
+L["fügt einem gegenstand, der sich an einem bein- oder kopfplatz befindet, dauerhaft %s beweglichkeitspunkte hinzu. ergänzt sich nicht mit anderen verzauberungen für den ausgewählten ausrüstungsplatz"] = { { Stats.Agility, }, } -- s15402
+L["fügt einem gegenstand, der sich an einem bein- oder kopfplatz befindet, dauerhaft %s intelligenzpunkte hinzu. ergänzt sich nicht mit anderen verzauberungen für den ausgewählten ausrüstungsplatz"] = { { Stats.Intellect, }, } -- s15404
+L["fügt einem gegenstand, der sich an einem bein- oder kopfplatz befindet, dauerhaft %s willenskraftpunkte hinzu. ergänzt sich nicht mit anderen verzauberungen für den ausgewählten ausrüstungsplatz"] = { { Stats.Spirit, }, } -- s15406
 L["verbessert eure trefferchance um %s%"] = { { Stats.MeleeHit, Stats.RangedHit, }, } -- s15464
 L["macht einen feind bewegungsunfähig, erhöht die zeit zwischen seinen angriffen um %s% und hindert ihn %s sek. lang, zauber zu wirken"] = { { Stats.MeleeHaste, }, false, reduction = true } -- s15471
 L["hackt nach in der nähe befindlichen feinden und verringert ihre rüstung um %s punkt(e) pro einsatz von 'rüstung zerreißen'. kann bis zu %s-mal angewendet werden. hält %s sek. lang an"] = { { Stats.Armor, }, false, false, } -- s15502
@@ -560,6 +632,7 @@ L["belegt ein befreundetes ziel mit einem segen und erhöht %s min. lang die nah
 L["verringert nahkampf- und distanzangriffskraft von in der nähe befindlichen feinden %s sek. lang um %s"] = { false, { Stats.GenericAttackPower, }, reduction = true } -- s19778
 L["erhöht den von einem verbündeten zugefügten körperlichen schaden um %s% und sein angriffstempo %s sek. lang um %s%"] = { false, false, { Stats.MeleeHaste, }, } -- s19779
 L["arkanwiderstand um %s erhöht"] = { { Stats.ArcaneResistance, }, } -- s20592
+L["einen teil der brustrüstung dauerhaft verzaubern, sodass das mana um %s erhöht wird"] = { { Stats.Mana, }, } -- s20028
 L["erhöht eure chance, angriffe mit eurem schild zu blocken, um %s%, nachdem ihr einem kritischen treffer zum opfer gefallen seid. hält %s sek. lang an oder überdauert %s mal blocken"] = { { Stats.BlockChance, }, false, false, ignoreSum = true } -- s20127
 L["erfüllt den paladin %s sek. lang mit dem geist eines kreuzfahrers und verleiht %s nahkampfangriffskraft. außerdem greift der paladin um %s% schneller an, verursacht jedoch bei jedem angriff weniger schaden. es kann immer nur jeweils ein siegel auf dem paladin aktiv sein.\ndie entfesselung der energie dieses siegels richtet einen feind %s sek. lang und erhöht den erlittenen heiligschaden bis zu %s. eure nahkampfangriffe frischen die dauer dieses siegels auf. es kann immer nur jeweils ein richturteil pro paladin aktiv sein"] = { false, { Stats.AttackPower, }, false, false, false, } -- s20162
 L["naturwiderstand um %s erhöht"] = { { Stats.NatureResistance, }, } -- s20551
@@ -603,25 +676,43 @@ L["erhöht %s stunde lang die rüstung der gruppenmitglieder um %s, alle attribu
 L["erhöht eure chance, einen kritischen treffer durch naturzauber zu erzielen, um %s%"] = { { Stats.SpellCrit, }, } -- s21870
 L["erhöht die schadenswirkung von frostzaubern %s min. lang um bis zu %s"] = { false, { Stats.FrostDamage, }, } -- s21920
 L["euer tier erhält %s ausdauer und %s zauberwiderstand gegen alle arten von magie"] = { { Stats.Stamina, }, false, ignoreSum = true } -- s21926
+L["eine waffe dauerhaft verzaubern, sodass sie beim wirken von frostzaubern bis zu %s punkte zusätzlichen frostschaden verursacht"] = { { Stats.FrostDamage, }, } -- s21931
 L["verwundet das ziel, fügt ihm %s punkt(e) schaden zu und verringert seine rüstung um %s"] = { false, { Stats.Armor, }, reduction = true } -- s21961
 L["angriffskraft um %s erhöht"] = { { Stats.GenericAttackPower, }, } -- s21967
 L["deckt euren gegner mit blitzschlägen ein, die %s naturschaden verursachen und zu in der nähe befindlichen feinden weiterspringen. jeder sprung verringert den naturwiderstand des ziels um %s. wirkt auf insgesamt %s ziele. euer hauptziel wird außerdem von einem wirbelsturm umgeben, welcher dessen angriffstempo für %s sek. um %s% verringert"] = { false, { Stats.NatureResistance, }, false, false, { Stats.MeleeHaste, }, reduction = true } -- s21992
+L["handschuhe dauerhaft verzaubern, sodass sie einen bonus von %s auf das angriffstempo gewähren"] = { { Stats.MeleeHaste, Stats.RangedHaste, }, } -- s22106
 L["armbrüste %s"] = { { Stats.WeaponSkill, }, } -- s22188
 L["verringert den magischen schaden den das ziel verursacht %s min. lang um %s"] = { false, { Stats.SpellDamage, }, reduction = true } -- s22371
 L["verringert die ausdauer von in der nähe befindlichen gegnern %s min. lang um %s"] = { false, { Stats.Stamina, }, reduction = true } -- s22420
+L["fügt einem gegenstand, der sich an einem schulterplatz befindet, dauerhaft %s punkte feuerwiderstand hinzu"] = { { Stats.FireResistance, }, } -- s22593
+L["fügt einem gegenstand, der sich an einem schulterplatz befindet, dauerhaft %s punkte frostwiderstand hinzu"] = { { Stats.FrostResistance, }, } -- s22594
+L["fügt einem gegenstand, der sich an einem schulterplatz befindet, dauerhaft %s punkte schattenwiderstand hinzu"] = { { Stats.ShadowResistance, }, } -- s22596
+L["fügt einem gegenstand, der sich an einem schulterplatz befindet, dauerhaft %s punkte naturwiderstand hinzu"] = { { Stats.NatureResistance, }, } -- s22597
+L["fügt einem gegenstand, der sich an einem schulterplatz befindet, dauerhaft %s punkte arkanwiderstand hinzu"] = { { Stats.ArcaneResistance, }, } -- s22598
+L["fügt einem gegenstand, der sich an einem schulterplatz befindet, dauerhaft %s punkte widerstand gegen alle magiearten hinzu"] = { { Stats.FireResistance, Stats.NatureResistance, Stats.FrostResistance, Stats.ShadowResistance, Stats.ArcaneResistance, }, } -- s22599
 L["erhöht eure verteidigungsfertigkeit um %s für %s min."] = { { Stats.Defense, }, false, } -- s22685
+L["erhöht den verteidigungswert eines gegenstands, der auf der brust, an den beinen, händen oder füßen getragen wird, dauerhaft um %s. kann nur auf gegenstände der stufe %s oder höher angewendet werden"] = { { Stats.Defense, }, false, } -- s22725
 L["erhöht intelligenz für %s min. um %s"] = { false, { Stats.Intellect, }, } -- s22730
+L["eine nahkampfwaffe dauerhaft so verzaubern, dass sie den schaden von zaubersprüchen um bis zu %s punkte erhöht"] = { { Stats.SpellPower, }, } -- s22749
+L["eine nahkampfwaffe dauerhaft so verzaubern, dass sie die heilwirkung von heilzaubern um bis zu %s punkte erhöht"] = { { Stats.HealingPower, }, } -- s22750
 L["eine scharfe klinge erhöht eure chance auf einen kritischen treffer um %s%"] = { { Stats.MeleeCrit, Stats.RangedCrit, }, } -- s22755
+L["erhöht die chance auf einen kritischen treffer im nahkampf für %s minuten um %s%"] = { false, { Stats.MeleeCrit, Stats.RangedCrit, }, } -- s22756
+L["verbindet ein zielfernrohr dauerhaft mit dem bogen oder der schusswaffe und erhöht dadurch die trefferchance um %s%"] = { { Stats.MeleeHit, Stats.RangedHit, }, } -- s22779
 L["erhöht eure trefferchance mit einer projektilwaffe um %s%"] = { { Stats.MeleeHit, Stats.RangedHit, }, } -- s22780
 L["erhöht eure ausdauer für %s min. um %s und füllt euch bis oben hin ab! grün ist gut für euch!"] = { false, { Stats.Stamina, }, } -- s22789
 L["erhöht willenskraft um %s, aber verringert intelligenz um %s für %s min..  miiiiiild"] = { { Stats.Spirit, }, { Stats.Intellect, }, false, } -- s22790
 L["angriffskraft erhöht um %s"] = { { Stats.GenericAttackPower, }, } -- s22817
 L["chance für einen kritischen zauberteffer erhöht um %s%"] = { { Stats.SpellCrit, }, } -- s22820
+L["fügt dauerhaft %s% beschleunigung hinzu zu einem gegenstand der an kopf oder beinen getragen wird. addiert sich nicht mit einer anderen verzauberung auf einem gegenstand an dieser stelle"] = { { Stats.MeleeHaste, Stats.RangedHaste, }, } -- s22840
+L["fügt einem gegenstand, der sich an einem bein- oder kopfplatz befindet, dauerhaft %s auf heilungs- und schadenszauber hinzu. ergänzt sich nicht mit anderen verzauberungen für den ausgewählten ausrüstungsplatz"] = { { Stats.SpellPower, }, } -- s22844
+L["fügt einem gegenstand, der sich an einem bein- oder kopfplatz befindet, dauerhaft %s% auf ausweichen hinzu. ergänzt sich nicht mit anderen verzauberungen für den ausgewählten ausrüstungsplatz"] = { { Stats.Dodge, }, } -- s22846
 L["gibt dem träger bei aktivierung %s sek. lang %s verteidigung und %s rüstung"] = { false, { Stats.Defense, }, { Stats.Armor, }, } -- s22850
 L["erhöht den blockwert eures schildes um %s"] = { { Stats.BlockValue, }, } -- s22852
 L["erhöht die kritische trefferchance von zaubern um %s%, nahkampfangriffen und distanzangriffen um %s%. verleiht %s angriffskraft. dauer: %s minuten"] = { { Stats.SpellCrit, }, { Stats.MeleeCrit, Stats.RangedCrit, }, { Stats.GenericAttackPower, }, false, } -- s22888
 L["aufgezehrt von illidans zorn: %s angriffskraftbonus gegen dämonen. %s% bonuschance auf treffer. %s% nahkampfgeschwindigkeit"] = { false, { Stats.MeleeHit, Stats.RangedHit, }, { Stats.MeleeHaste, }, } -- s22988
 L["erfüllt die gruppe des ziels mit brillanz und erhöht ihre intelligenz %s stunde lang um %s"] = { false, { Stats.Intellect, }, } -- s23028
+L["eine nahkampfwaffe dauerhaft so verzaubern, dass sie den schaden von zaubersprüchen um bis zu %s erhöht"] = { { Stats.SpellPower, }, } -- s23143
+L["eine nahkampfwaffe dauerhaft so verzaubern, dass sie die heilwirkung von heilzaubern um bis zu %s erhöht"] = { { Stats.HealingPower, }, } -- s23144
 L["verringert die verteidigung um  %s für %s sek.. diese verringerung erhöht die chance eines treffers, sowie die chance einen kritischen treffer zu landen, darüber hinaus reduziert es die chance des gegners den angriff zu blocken, auszuweichen oder zu parieren"] = { { Stats.Defense, }, false, reduction = true } -- s23162
 L["verringert die verteidigung um %s für %s sek.. diese verringerung erhöht die chance eines treffers, sowie die chance einen kritischen treffer zu landen, darüber hinaus reduziert es die chance des gegners den angriff zu blocken, auszuweichen oder zu parieren"] = { { Stats.Defense, }, false, reduction = true } -- s23165
 L["verringert die nahkampfangriffskraft eines gegners um %s verringert. hält %s sek. lang an"] = { { Stats.AttackPower, }, false, reduction = true } -- s23262
@@ -636,10 +727,25 @@ L["beschleunigt die gedanken und erhöht somit die zaubergeschwindigkeit des mag
 L["erhöht eure chance mit zaubern zu treffen um %s%"] = { { Stats.SpellHit, }, } -- s23727
 L["erfüllt einen paladin mit licht und erhöht %s sek. lang das nahkampfangriffstempo um %s% und die zaubergeschwindigkeit um %s%"] = { false, { Stats.MeleeHaste, }, { Stats.SpellHaste, }, } -- s23733
 L["erhöht %s sek. lang die rüstung um %s und heilt jedesmal bei erlittenem distanz- oder nahkampfschaden %s schaden"] = { false, { Stats.Armor, }, false, } -- s23780
+L["eine nahkampfwaffe dauerhaft verzaubern, sodass sie die stärke um %s erhöht"] = { { Stats.Strength, }, } -- s23799
+L["eine nahkampfwaffe dauerhaft verzaubern, sodass sie die beweglichkeit um %s erhöht"] = { { Stats.Agility, }, } -- s23800
+L["armschienen dauerhaft verzaubern, sodass sie alle %s sek. %s punkt(e) mana wiederherstellen"] = { false, { Stats.GenericManaRegen, }, } -- s23801
+L["armschienen dauerhaft verzaubern, sodass sie den effekt eurer heilzauber um %s erhöhen"] = { { Stats.HealingPower, }, } -- s23802
+L["eine nahkampfwaffe dauerhaft verzaubern, sodass sie die willenskraft um %s erhöht"] = { { Stats.Spirit, }, } -- s23803
+L["eine nahkampfwaffe dauerhaft verzaubern, sodass sie die intelligenz um %s erhöht"] = { { Stats.Intellect, }, } -- s23804
+L["fügt einem gegenstand, der sich an einem bein- oder kopfplatz befindet, dauerhaft %s ausdauerpunkte, %s verteidigungspunkte und bis zu %s zu allen heilzaubern hinzu. ergänzt sich nicht mit anderen verzauberungen für den ausgewählten ausrüstungsplatz"] = { { Stats.Stamina, }, { Stats.Defense, }, { Stats.HealingPower, }, } -- s24160
 L["verursacht bei in der nähe befindlichen feinden %s naturschaden, erhöht die zeit zwischen ihren angriffen um %s% und verlangsamt ihr bewegungstempo um %s%. hält %s sek. lang an"] = { false, { Stats.MeleeHaste, }, false, false, reduction = true } -- s23931
 L["macht erfüllt das ziel und erhöht %s stunde lang seine ausdauer um %s"] = { false, { Stats.Stamina, }, } -- s23947
 L["bei aktivierung wird beim ziel die chance auf einen kritischen treffer durch zauber und angriffe um %s% erhöht"] = { { Stats.MeleeCrit, Stats.RangedCrit, Stats.SpellCrit, }, } -- s23964
 L["erhöht den feuerwiderstand um %s"] = { { Stats.FireResistance, }, } -- s23992
+L["fügt einem gegenstand, der sich an einem bein- oder kopfplatz befindet, dauerhaft %s ausdauerpunkte, %s verteidigungspunkte und dem schildblockwert %s punkte hinzu. ergänzt sich nicht mit anderen verzauberungen für den ausgewählten ausrüstungsplatz"] = { { Stats.Stamina, }, { Stats.Defense, }, { Stats.BlockValue, }, } -- s24149
+L["fügt einem gegenstand, der sich an einem bein- oder kopfplatz befindet, dauerhaft %s angriffskraft und eine ausweichchance von %s% hinzu. ergänzt sich nicht mit anderen verzauberungen für den ausgewählten ausrüstungsplatz"] = { { Stats.AttackPower, }, { Stats.Dodge, }, } -- s24161
+L["fügt einem gegenstand, der sich an einem bein- oder kopfplatz befindet, dauerhaft %s distanzangriffskraft, %s ausdauerpunkte und eine trefferchance von %s% hinzu. ergänzt sich nicht mit anderen verzauberungen für den ausgewählten ausrüstungsplatz"] = { { Stats.RangedAttackPower, }, { Stats.Stamina, }, { Stats.MeleeHit, Stats.RangedHit, }, } -- s24162
+L["fügt einem gegenstand, der sich an einem bein- oder kopfplatz befindet, dauerhaft bis zu %s punkte zu allen heilzaubern und schadenszaubern und %s intelligenzpunkte hinzu. ergänzt sich nicht mit anderen verzauberungen für den ausgewählten ausrüstungsplatz"] = { { Stats.SpellPower, }, { Stats.Intellect, }, } -- s24163
+L["fügt einem gegenstand, der sich an einem bein- oder kopfplatz befindet, dauerhaft %s zu allen heilzaubern und schadenszaubern und eine trefferchance von %s% hinzu. ergänzt sich nicht mit anderen verzauberungen für den ausgewählten ausrüstungsplatz"] = { { Stats.SpellPower, }, { Stats.SpellHit, }, } -- s24164
+L["fügt einem gegenstand, der sich an einem bein- oder kopfplatz befindet, dauerhaft %s ausdauerpunkte und bis zu %s punkte zu allen heilzaubern und schadenszaubern hinzu. ergänzt sich nicht mit anderen verzauberungen für den ausgewählten ausrüstungsplatz"] = { { Stats.Stamina, }, { Stats.SpellPower, }, } -- s24165
+L["fügt einem gegenstand, der sich an einem bein- oder kopfplatz befindet, dauerhaft %s ausdauerpunkte, alle %s sek. %s mana und bis zu %s punkte zu allen heilzaubern hinzu. ergänzt sich nicht mit anderen verzauberungen für den ausgewählten ausrüstungsplatz"] = { { Stats.Stamina, }, false, { Stats.GenericManaRegen, }, { Stats.HealingPower, }, } -- s24167
+L["fügt einem gegenstand, der sich an einem bein- oder kopfplatz befindet, dauerhaft %s ausdauerpunkte, %s intelligenzpunkte und bis zu %s punkte zu allen heilzaubern hinzu. ergänzt sich nicht mit anderen verzauberungen für den ausgewählten ausrüstungsplatz"] = { { Stats.Intellect, }, { Stats.Stamina, }, { Stats.HealingPower, }, } -- s24168
 L["%s attack power"] = { { Stats.GenericAttackPower, }, } -- s24218
 L["improves your chance to get a critical strike by %s%"] = { { Stats.MeleeCrit, Stats.RangedCrit, }, } -- s24219
 L["erfüllt den zaubernden mit einem segen der wilden götter. distanz- und nahkampfangriffskraft %s sek. lang um %s erhöht"] = { false, { Stats.GenericAttackPower, }, } -- s24255
@@ -652,6 +758,9 @@ L["erhöht  %s stunden lang die willenskraft des spielers um %s und die ausdauer
 L["verwundet das ziel für %s schaden und verringert %s sek. lang dessen intelligenz um %s"] = { false, false, { Stats.Intellect, }, reduction = true } -- s24388
 L["erhöht den schaden eures nächsten feuerzaubers um bis zu %s und stellt %s mana wieder her. effekt hält %s min. lang an"] = { { Stats.FireDamage, }, false, false, } -- s24389
 L["erhöht die zeit zwischen angriffen in der nähe befindlicher feinde um %s%, verlangsamt ihr bewegungstempo um %s% und verringert zusätzlich ihr zaubertempo um %s%. hält %s sek. lang an"] = { { Stats.MeleeHaste, }, false, { Stats.SpellHaste, }, false, reduction = true } -- s24415
+L["fügt einem gegenstand, der sich an einem schulterplatz befindet, dauerhaft eine um bis zu %s erhöhte heilwirkung durch zauber und magische effekte hinzu"] = { { Stats.HealingPower, }, } -- s24420
+L["fügt einem gegenstand, der sich an einem schulterplatz befindet, dauerhaft eine um bis zu %s erhöhte schadens- und heilwirkung durch zauber und magische effekte hinzu"] = { { Stats.SpellPower, }, } -- s24421
+L["fügt einem gegenstand, der sich an einem schulterplatz befindet, dauerhaft %s angriffskraft hinzu"] = { { Stats.AttackPower, Stats.RangedAttackPower, }, } -- s24422
 L["ein ziel erleidet %s schaden, zusätzlich erfahren alle feindlichen ziele in nahkampfreichweite eine reduzierung ihrer nahkampfangriffskraft um %s. dieser effekt hält %s sek. lang an"] = { false, { Stats.AttackPower, }, false, reduction = true } -- s24423
 L["stellt alle %s sekunden %s gesundheit wieder her und erhöht eure stärke um %s. hält %s min. lang an"] = { false, { Stats.HealthRegen, }, { Stats.Strength, }, false, } -- s24427
 L["erhöht die nahkampfangriffskraft der in der nähe befindlichen gruppenmitglieder %s sek. lang um %s"] = { false, { Stats.AverageWeaponDamage, }, } -- s24438
@@ -675,8 +784,19 @@ L["erhöht eure chance mit zaubern und nahkampfangriffen einen kritischen treffe
 L["erhöht %s sek. lang die durch zauber und effekte verursachte heilung um bis zu %s"] = { false, { Stats.HealingPower, }, } -- s24998
 L["hackt auf die rüstung des feindes ein und verringert sie um %s pro einsatz von 'rüstung zerreißen'. kann bis zu %s-mal angewendet werden. hält %s sek. lang an"] = { { Stats.Armor, }, false, false, reduction = true } -- s25051
 L["erhöht durch frostzauber und feuereffekte zugefügten schaden um bis zu %s"] = { { Stats.FrostDamage, }, } -- s25066
+L["handschuhe dauerhaft verzaubern, sodass der schattenschaden um %s erhöht wird"] = { { Stats.ShadowDamage, }, } -- s25073
+L["handschuhe dauerhaft verzaubern, sodass der frostschaden um %s erhöht wird"] = { { Stats.FrostDamage, }, } -- s25074
+L["handschuhe dauerhaft verzaubern, sodass der feuerschaden um %s erhöht wird"] = { { Stats.FireDamage, }, } -- s25078
+L["handschuhe dauerhaft verzaubern, sodass die heilsprüche des trägers um %s erhöht werden"] = { { Stats.HealingPower, }, } -- s25079
+L["umhang dauerhaft verzaubern, sodass der feuerwiderstand um %s erhöht wird"] = { { Stats.FireResistance, }, } -- s25081
+L["umhang dauerhaft verzaubern, sodass der naturwiderstand um %s erhöht wird"] = { { Stats.NatureResistance, }, } -- s25082
+L["umhang dauerhaft verzaubern, sodass die ausweichchance um %s% erhöht wird"] = { { Stats.Dodge, }, } -- s25086
 L["erhöht durch zauber und magische effekte zugefügten schaden und heilung um bis zu %s. erhöht außerdem die chance auf einen kritischen treffer mit zaubern um %s%"] = { { Stats.SpellPower, }, { Stats.SpellCrit, }, } -- s25113
 L["stellt alle %s sek. %s punkt(e) mana wieder her und erhöht heilung um %s"] = { false, { Stats.GenericManaRegen, }, { Stats.HealingPower, }, } -- s25116
+L["wird es auf eine waffe angewendet, erhöht es den zauberschaden um bis zu %s. hält %s minuten"] = { { Stats.SpellPower, }, false, } -- s25117
+L["wird es auf eine waffe angewendet, stellt es alle %s sekunden %s mana wieder her. hält %s minuten"] = { false, { Stats.GenericManaRegen, }, false, } -- s25118
+L["wird es auf eine waffe angewendet, erhöht es den zauberschaden um bis zu %s und erhöht die chance auf einen kritischen treffer mit zaubern um %s%. hält %s minuten"] = { { Stats.SpellPower, }, { Stats.SpellCrit, }, false, } -- s25122
+L["wird es auf eine waffe angewendet, stellt es alle %s sekunden %s mana wieder her und erhöht den effekt von heilsprüchen um %s. hält %s minuten"] = { false, { Stats.GenericManaRegen, }, { Stats.HealingPower, }, false, } -- s25123
 L["fügt einem gegner und seinen nächsten verbündeten zusätzlich zum normalen schaden noch %s zusatzschaden zu. wirkt auf maximal %s ziele.treffer reduzieren außerdem die rüstung um %s"] = { false, false, { Stats.Armor, }, reduction = true } -- s25174
 L["zwingt nahe gegner dazu in dämonisch zu sprechen, was ihre zaubergeschwindigkeit %s sek. lang um %s% verringert. es kann immer nur jeweils ein fluch pro hexenmeister auf einem beliebigen ziel aktiv sein"] = { false, { Stats.SpellHaste, }, reduction = true } -- s25195
 L["stellt im verlauf von %s sek. %s punkt(e) mana wieder her. ihr müsst beim essen sitzen bleiben"] = { false, { Stats.GenericManaRegen, }, } -- s25701
@@ -699,10 +819,20 @@ L["erhöht durch naturzauber und natureffekte zugefügten schaden %s sek. sekund
 L["gewährt %s sek. lang eine erhöhte zaubertrefferchance von %s%, wenn einem eurer zauber widerstanden wird"] = { false, { Stats.SpellHit, }, ignoreSum = true } -- s26128
 L["erhöht die zaubertrefferchance %s sek. lang um %s%. kann bis zu viermal auf ein ziel wirken"] = { false, { Stats.SpellHit, }, } -- s26129
 L["erhöht den schaden von zaubern und magischen effekten um bis zu %s und reduziert die zauberwiderstände der ziele des zaubernden %s sek. lang um %s"] = { { Stats.SpellDamage, }, false, { Stats.SpellPenetration, }, } -- s26166
+L["handschuhe dauerhaft verzaubern, sodass die heilzauber des trägers um bis zu %s erhöht werden"] = { { Stats.HealingPower, }, } -- s27111
 L["gewährt nahkampf- und distanzangriffen eine chance, %s sek. lang einen rüstungsdurchschlagseffekt zu erhalten, der die physische rüstung des gegners um %s im verhältnis zu den eigenen attacken reduziert. dieser rüstungsdurchschlagseffekt kann bis zu %s-mal angewendet werden"] = { false, { Stats.ArmorPenetration, }, false, ignoreSum = true } -- s26480
 L["erhöht %s min. lang das angriffstempo des zaubernden um %s% und den von ihm zugefügten körperlichen schaden um %s"] = { false, { Stats.MeleeHaste, }, { Stats.AverageWeaponDamage, }, } -- s26527
 L["verursacht %s% waffenschaden und bringt das ziel aus dem gleichgewicht. reduziert die verteidigungsfertigkeit des ziels %s sek. lang um %s"] = { false, false, { Stats.Defense, }, reduction = true } -- s26613
 L["stellt jede sekunde %s punkt(e) mana wieder her"] = { { Stats.GenericManaRegen, }, } -- s26647
+L["eine nahkampfwaffe dauerhaft so verzaubern, dass sie eure willenskraft um bis zu %s erhöht"] = { { Stats.Spirit, }, } -- s26743
+L["eine nahkampfwaffe dauerhaft so verzaubern, dass sie eure beweglichkeit um %s erhöht"] = { { Stats.Agility, }, } -- s26792
+L["eine nahkampfwaffe dauerhaft so verzaubern, dass sie eure intelligenz um %s erhöht"] = { { Stats.Intellect, }, } -- s26793
+L["eine nahkampfwaffe dauerhaft so verzaubern, dass sie eure stärke um %s erhöht"] = { { Stats.Strength, }, } -- s27093
+L["handschuhe dauerhaft verzaubern, sodass der frostschaden um bis zu %s erhöht wird"] = { { Stats.FrostDamage, }, } -- s27108
+L["handschuhe dauerhaft verzaubern, sodass der feuerschaden um bis zu %s erhöht wird"] = { { Stats.FireDamage, }, } -- s27109
+L["handschuhe dauerhaft verzaubern, sodass der schattenschaden um bis zu %s erhöht wird"] = { { Stats.ShadowDamage, }, } -- s27110
+L["einen umhang dauerhaft verzaubern, sodass der naturwiderstand um %s erhöht wird"] = { { Stats.NatureResistance, }, } -- s27119
+L["einen umhang dauerhaft verzaubern, sodass die ausweichchance um %s% erhöht wird"] = { { Stats.Dodge, }, } -- s27122
 L["bei einem nahkampfangriff besteht eine chance, dass %s sek. lang euer zauberschaden und eure heilung um %s erhöht werden"] = { false, { Stats.SpellDamage, }, ignoreSum = true } -- s27498
 L["erzeugt einen wütenden sturm im zielgebiet, der allen in der nähe befindlichen feinden alle %s sek. %s naturschaden zufügt und die zeit zwischen angriffen der betroffenen feinde um %s% erhöht. hält %s sek. lang an. ein druide muss seine kräfte kanalisieren, um den zauber aufrechtzuerhalten"] = { false, false, { Stats.MeleeHaste, }, false, reduction = true } -- s27530
 L["der krieger schreit, wodurch sich die angriffskraft der gruppe innerhalb eines radius von %s metern um %s erhöht. hält %s min. lang an"] = { false, { Stats.AttackPower, }, false, } -- s27578
@@ -716,11 +846,15 @@ L["erhöht zauberschaden %s stunde lang um bis zu %s"] = { false, { Stats.SpellD
 L["erhöht durch zauber verursachte heilung %s stunde lang um bis zu %s"] = { false, { Stats.HealingPower, }, } -- s27722
 L["erhöht die trefferchance %s stunde lang um %s%"] = { false, { Stats.MeleeHit, Stats.RangedHit, }, } -- s27723
 L["beim erfolgreichen wirken eines zaubers besteht eine chance, dass %s sek. lang euer schaden und eure heilung um %s erhöht werden"] = { false, { Stats.SpellDamage, }, ignoreSum = true } -- s27774
+L["eine zweihandnahkampfwaffe dauerhaft verzaubern, sodass sie die beweglichkeit um %s erhöht"] = { { Stats.Agility, }, } -- s27837
 L["erhöht die chance aller gruppenmitglieder, die sich im umkreis von %s befinden, auf einen kritischen treffer mit zaubern um %s%"] = { false, { Stats.SpellCrit, }, } -- s28142
 L["erhöht durch zauber und magische effekte zugefügten schaden und heilung aller gruppenmitglieder, die sich im umkreis von %s befinden, um bis zu %s"] = { false, { Stats.SpellPower, }, } -- s28143
 L["erhöht durch zauber und magische effekte verursachte heilung aller gruppenmitglieder, die sich im umkreis von %s befinden, um bis zu %s"] = { false, { Stats.HealingPower, }, } -- s28144
 L["stellt alle %s sek. %s punkt(e) mana bei allen gruppenmitgliedern, die sich im umkreis von %s befinden, wieder her"] = { false, { Stats.GenericManaRegen, }, false, } -- s28145
 L["erhöht euren zauberschaden um bis zu %s und eure heilung um bis zu %s"] = { { Stats.SpellDamage, }, { Stats.HealingPower, }, } -- s28155
+L["fügt einem gegenstand, der sich an einem bein- oder kopfplatz befindet, dauerhaft %s naturwiderstandspunkte hinzu. ergänzt sich nicht mit anderen verzauberungen für den ausgewählten ausrüstungsplatz"] = { { Stats.NatureResistance, }, } -- s28161
+L["fügt einem gegenstand, der sich an einem bein- oder kopfplatz befindet, dauerhaft %s frostwiderstandspunkte hinzu. ergänzt sich nicht mit anderen verzauberungen für den ausgewählten ausrüstungsplatz"] = { { Stats.FrostResistance, }, } -- s28163
+L["fügt einem gegenstand, der sich an einem bein- oder kopfplatz befindet, dauerhaft %s schattenwiderstandspunkte hinzu. ergänzt sich nicht mit anderen verzauberungen für den ausgewählten ausrüstungsplatz"] = { { Stats.ShadowResistance, }, } -- s28165
 L["verringert %s min. lang die nahkampf- und distanzangriffskraft von in der nähe befindlichen feinden um %s"] = { false, { Stats.GenericAttackPower, }, reduction = true } -- s28342
 L["erhöht die nahkampf- und distanzangriffskraft um %s"] = { { Stats.GenericAttackPower, }, } -- s28347
 L["opfert euch selbst, verhindert und entfernt 'wutanfall', bringt %s sek. lang naturzauber zum schweigen und verringert das zaubertempo um %s%"] = { false, { Stats.SpellHaste, }, reduction = true } -- s28732
@@ -754,6 +888,10 @@ L["erhöht %s stunde lang den durch zauber verursachten schaden um bis zu %s"] =
 L["erhöht %s stunde lang die durch zauber verursachte heilung um bis zu %s"] = { false, { Stats.HealingPower, }, } -- s29334
 L["verbessert %s stunde lang die verteidigung um %s"] = { false, { Stats.Defense, }, } -- s29335
 L["erhöht alle widerstandsarten um %s. durch jeden zauber, dem ihr vollständig widersteht, werden %s% eures gesamten manas wiederhergestellt. %s sek. abklingzeit"] = { { Stats.FireResistance, Stats.NatureResistance, Stats.FrostResistance, Stats.ShadowResistance, Stats.ArcaneResistance, }, false, false, } -- s29441
+L["fügt einem gegenstand, der sich an einem schulterplatz befindet, dauerhaft eine um bis zu %s erhöhte schadens- und heilwirkung durch zauber und magische effekte hinzu und erhöht die chance auf einen kritischen zaubertreffer um %s%"] = { { Stats.SpellPower, }, { Stats.SpellCrit, }, } -- s29467
+L["fügt einem gegenstand, der sich an einem schulterplatz befindet, dauerhaft eine um bis zu %s erhöhte heilwirkung durch zauber und magische effekte hinzu und erhöht die manaregeneration um %s alle %s sek"] = { { Stats.HealingPower, }, { Stats.GenericManaRegen, }, false, } -- s29475
+L["fügt einem gegenstand, der sich an einem schulterplatz befindet, dauerhaft eine um %s erhöhte ausdauer zu und gewährt %s rüstung"] = { { Stats.Stamina, }, { Stats.Armor, }, } -- s29480
+L["fügt einem gegenstand, der sich an einem schulterplatz befindet, dauerhaft eine um %s erhöhte angriffskraft zu und erhöht die chance auf einen kritischen treffer um %s%"] = { { Stats.AttackPower, Stats.RangedAttackPower, }, { Stats.MeleeCrit, Stats.RangedCrit, }, } -- s29483
 L["erhöht die angriffskraft um %s und alle %s sek. um zusätzliche %s. hält %s sek. lang an"] = { { Stats.GenericAttackPower, }, false, { Stats.GenericAttackPower, }, false, ignoreSum = true } -- s29602
 L["lässt einen feind %s min. lang erkranken, erhöht dabei den körperlichen schaden, den er erleidet, um %s und verringert seine ausdauer um %s. das erkrankte ziel hat eine chance von %s%, seine krankheit auf einen seiner in der nähe befindlichen verbündeten zu übertragen, wenn er im gefecht getroffen wird"] = { false, false, { Stats.Stamina, }, false, reduction = true } -- s30081
 L["erhöht %s stunde lang die ausdauer"] = { { Stats.Stamina, }, } -- s30088
@@ -762,12 +900,14 @@ L["erhöht bei verzehr die beweglichkeit um %s"] = { { Stats.Agility, }, } -- s3
 L["erhöht bei verzehr die intelligenz um %s"] = { { Stats.Intellect, }, } -- s30175
 L["erhöht bei verzehr die willenskraft um %s"] = { { Stats.Spirit, }, } -- s30177
 L["erhöht bei verzehr die stärke um %s"] = { { Stats.Strength, }, } -- s30178
+L["eine zweihandwaffe dauerhaft so verzaubern, dass sie die beweglichkeit um %s erhöht"] = { { Stats.Agility, }, } -- s30229
 L["verringert eure chance, einen kritischen treffer zu erleiden, um %s%"] = { { Stats.MeleeCrit, Stats.RangedCrit, }, reduction = true } -- s30297
 L["ihr regeneriert alle %s sek. gesundheit entsprechend %s% eurer ausdauer, selbst wenn ihr im kampf seid"] = { false, { Stats.HealthRegen, }, } -- s30799
 L["erhöht eure trefferchance beim beidhändigen führen von waffen um zusätzliche %s%"] = { { Stats.MeleeHit, Stats.RangedHit, }, } -- s30816
 L["erhöht eure fertigkeit mit schwertern, faustwaffen und dolchen um %s"] = { { Stats.WeaponSkill, }, } -- s30919
 L["erhöht durch zauber und magische effekte verursachten schaden und heilung um bis zu %s"] = { { Stats.SpellPower, }, } -- s31750
 L["erhöht trefferpunkte um %s. %s% tempo für nahkampfattacken. %s mana alle %s sek"] = { { Stats.Health, }, { Stats.MeleeHaste, }, { Stats.GenericManaRegen, }, false, } -- s355366
+L["erhöht die chance auf einen kritischen treffer am helm für %s minuten um %s%"] = { false, { Stats.MeleeCrit, Stats.RangedCrit, }, } -- s399699
 L["verursacht alle %s sek. %s schattenschaden.\nverringert die trefferchance mit zaubern und nahkampfattacken um %s%"] = { false, false, { Stats.MeleeHit, Stats.RangedHit, Stats.SpellHit, }, reduction = true } -- s367873
 L["erhöht %s sek. lang das angriffstempo des zaubernden um %s% und jeglichen von ihm zugefügten schaden um %s"] = { false, { Stats.MeleeHaste, }, false, } -- s368388
 L["verursacht alle %s sek. %s naturschaden und erhöht die chance auf einen kritischen treffer mit nahkampf-, distanzangriffen und zaubern %s sek. lang um %s%"] = { false, false, false, { Stats.MeleeCrit, Stats.RangedCrit, Stats.SpellCrit, }, } -- s370337
@@ -808,7 +948,9 @@ L["erhöht eure trefferchance um %s%"] = { { Stats.MeleeHit, Stats.RangedHit, },
 L["erhöht eure stärke um %s"] = { { Stats.Strength, }, } -- s429864
 L["verfallt in wahnsinn und erhöht so %s sek. lang euer angriffstempo um %s% sowie eure erzeugte bedrohung"] = { false, { Stats.MeleeHaste, Stats.RangedHaste, }, } -- s429867
 L["eine verzauberte klinge erhöht eure trefferchance um %s%. dies hat außerhalb der blackfathom-tiefe keinen effekt"] = { { Stats.MeleeHit, Stats.RangedHit, }, } -- s430391
+L["erhöht die trefferchance %s min. lang um %s%, wenn es auf eine waffe angewendet wird. dies hat außerhalb der blackfathom-tiefe keinen effekt"] = { false, { Stats.MeleeHit, Stats.RangedHit, }, } -- s430392
 L["stellt alle %s sek. %s mana wieder her und erhöht den zaubertrefferwert um %s%. dieser effekt funktioniert nur in der blackfathom-tiefe"] = { false, { Stats.SpellHit, }, false, } -- s430406
+L["stellt %s min. lang alle %s sek. %s mana wieder her und erhöht dabei den zaubertrefferwert um %s%, wenn es auf eine waffe angewendet wird. dieser effekt funktioniert nur in der blackfathom-tiefe"] = { false, false, { Stats.GenericManaRegen, }, { Stats.SpellHit, }, } -- s430585
 L["erhöht die trefferchance von zaubern um %s% und die kritische trefferchance von nahkampfangriffen und distanzangriffen um %s%. gewährt %s angriffskraft, %s zauberschaden und erhöht die bewegungsgeschwindigkeit um %s%. dauer: %s min"] = { { Stats.SpellHit, }, { Stats.MeleeCrit, Stats.RangedCrit, }, { Stats.GenericAttackPower, }, { Stats.SpellDamage, }, false, false, } -- s430947
 L["stellt alle %s sek. %s mana wieder her"] = { false, { Stats.GenericManaRegen, }, } -- s430948
 L["erhöht eure chance auf treffer mit zaubern um %s%"] = { { Stats.SpellHit, }, } -- s430949
@@ -853,7 +995,10 @@ L["erhöht die nahkampf- und distanzangriffskraft um %s. bei nahkampf- und dista
 L["erhöht %s sek. lang die blockchance des zaubernden um %s%"] = { false, { Stats.BlockChance, }, } -- s446356
 L["verringert alle attribute von gegnern in der nähe %s min. lang um %s"] = { false, { Stats.AllStats, }, reduction = true } -- s446364
 L["erhöht die verursachte heilung um %s, die manaregeneration alle %s sek. um %s und eure heilungen haben eine chance, %s energie, %s% mana oder %s wut wiederherzustellen. es kann immer nur ein trank der atal'ai zur selben zeit aktiv sein. dies hat außerhalb des versunkenen tempels keinen effekt"] = { { Stats.HealingPower, }, false, { Stats.GenericManaRegen, }, false, false, false, } -- s446396
+L["fügt einem gegenstand für den schulterplatz dauerhaft %s angriffskraft hinzu"] = { { Stats.AttackPower, Stats.RangedAttackPower, }, } -- s446451
 L["erhöht den durch zauber und magische effekte verursachten schaden und hervorgerufene heilung um bis zu %s"] = { { Stats.SpellPower, }, } -- s446458
+L["fügt einem gegenstand für den schulterplatz dauerhaft eine um bis zu %s erhöhte schadens- und heilwirkung durch zauber und magische effekte hinzu"] = { { Stats.SpellPower, }, } -- s446459
+L["fügt einem gegenstand für den schulterplatz dauerhaft eine um bis zu %s erhöhte heilwirkung durch zauber und magische effekte hinzu"] = { { Stats.HealingPower, }, } -- s446472
 L["echos aus der leere treiben euch in den wahnsinn. euer zaubertempo wird um %s% erhöht. dies hat außerhalb von gebieten, die unter dem einfluss des alptraums stehen, keinen effekt"] = { { Stats.SpellHaste, }, } -- s446528
 L["echos aus der leere treiben euch in den irrsinn. eure heilung wird um bis zu %s gesundheit erhöht. dies hat außerhalb von gebieten, die unter dem einfluss des alptraums stehen, keinen effekt"] = { { Stats.HealingPower, }, } -- s446541
 L["schadenszauber haben eine chance, %s sek. lang euren zauberschaden um %s und eure ausweichchance um %s% zu erhöhen. dies hat außerhalb von gebieten, die unter dem einfluss des alptraums stehen, keinen effekt"] = { false, { Stats.SpellDamage, }, { Stats.Dodge, }, ignoreSum = true } -- s446570
@@ -892,6 +1037,7 @@ L["erhöht die kritische trefferchance eurer zauber und angriffe um %s%"] = { { 
 L["verringert nahkampf- und distanzangriffskraft von in der nähe befindlichen gegnern %s sek. lang um %s"] = { false, { Stats.GenericAttackPower, }, reduction = true } -- s459165
 L["verbessert eure chance auf treffer mit allen zaubern und angriffen um %s%"] = { { Stats.MeleeHit, Stats.RangedHit, Stats.SpellHit, }, } -- s460230
 L["erhöht euer angriffstempo %s sek. lang um %s%. keine wirkung auf charaktere über stufe %s"] = { false, { Stats.MeleeHaste, }, false, } -- s460455
+L["einen gegenstand für den schulterplatz dauerhaft verzaubern, sodass euer feuerwiderstand um %s erhöht wird"] = { { Stats.FireResistance, }, } -- s460963
 L["erhöht eure stärke %s sek. lang um %s"] = { false, { Stats.Strength, }, } -- s461224
 L["erhöht euren naturschaden %s sek. lang um bis zu %s"] = { false, { Stats.NatureDamage, }, } -- s461227
 L["beim aktivieren von 'klingenwirbel' werdet ihr in schattenflamme gehüllt, sodass eure angriffe %s der rüstung des gegners ignorieren"] = { { Stats.ArmorPenetration, }, ignoreSum = true } -- s461253
@@ -900,6 +1046,7 @@ L["euer zauber 'sturmschlag' gewährt euch für %s sek. %s angriffskraft (effekt
 L["erhöht durch zauber und effekte verursachte heilung %s sek. lang um bis zu %s"] = { false, { Stats.HealingPower, }, } -- s461317
 L["ermutigt alle mitglieder eurer gruppe oder eures schlachtzugs, für die ehre von azeroth zu kämpfen, wodurch sich die kritische trefferchance aller zauber und angriffe um %s% und die angriffskraft um %s erhöht. hält %s stunden lang an.\nkann nicht mit ähnlichen langanhaltenden effekten kombiniert werden"] = { { Stats.SpellCrit, Stats.MeleeCrit, Stats.RangedCrit, }, false, false, } -- s461475
 L["stellt im verlauf von %s sek. insgesamt %s mana wieder her. ihr müsst beim trinken sitzen bleiben"] = { false, { Stats.GenericManaRegen, }, } -- s461632
+L["erfüllt die waffe des schamanen, erhöht die nahkampfangriffskraft um %s und ermöglicht es nahkampfangriffen, bei verwendung dieser waffe zusätzliche bedrohung zu erzeugen. hält eine stunde lang an"] = { { Stats.AttackPower, }, } -- s461635
 L["erhöht den durch zauber und magische effekte verursachten schaden und hervorgerufene heilung %s sek. lang um bis zu %s"] = { false, { Stats.SpellPower, }, } -- s461680
 L["schleudert einen schattenblitz auf den gegner, verursacht %s schattenschaden und verringert %s sek. lang alle werte um %s"] = { false, false, { Stats.AllStats, }, reduction = true } -- s461682
 L["stellt %s gesundheit alle %s sek. wieder her"] = { { Stats.HealthRegen, }, false, } -- s461696
@@ -911,6 +1058,8 @@ L["verringert die stärke eines gegners um %s und seine ausdauer um %s. hält %s
 L["erhöht %s sek. lang euren zauberschaden um bis zu %s und eure heilung um bis zu %s gesundheit"] = { false, { Stats.SpellDamage, }, { Stats.HealingPower, }, } -- s462636
 L["verleiht dem träger bei aktivierung %s sek. lang %s verteidigung und %s rüstung"] = { false, { Stats.Defense, }, { Stats.Armor, }, } -- s463105
 L["erhaltet ein verzaubertes siegel des fließenden wassers, das euren schlachtzug ermächtigt, wodurch %s stunde lang der verursachte schaden und die hervorgerufene heilung mit zaubern um bis zu %s und die angriffskraft um %s erhöht wird"] = { false, { Stats.SpellPower, }, { Stats.GenericAttackPower, }, } -- s463864
+L["während die beschichtung auf eurem schild aufgetragen ist, sind zauberschaden und heilung um bis zu %s erhöht. hält %s min. lang an"] = { { Stats.SpellPower, }, false, } -- s463868
+L["einen schild dauerhaft verzaubern, sodass schadenszauber bis zu %s mehr schaden verursachen und heilzauber bis zu %s mehr gesundheit heilen"] = { { Stats.SpellDamage, }, { Stats.HealingPower, }, } -- s463871
 L["erhöht den von magischen zaubern und effekten verursachten schaden um bis zu %s und die heilwirkung von magischen zaubern und effekten um bis zu $%s"] = { { Stats.SpellDamage, }, false, } -- s463873
 L["verringert die nahkampf- und distanzangriffskraft von gegnern in der nähe %s sek. lang um %s"] = { false, { Stats.GenericAttackPower, }, reduction = true } -- s464743
 L["erhöht durch sämtliche zauber und magische effekte verursachte heilung um bis zu %s und den verursachten schaden um bis zu %s"] = { { Stats.HealingPower, }, { Stats.SpellDamage, }, } -- s467142
@@ -928,6 +1077,22 @@ L["euer 'flammenschock' gewährt auch eine %s% höhere chance, zu blocken. hält
 L["deckt euren gegner mit blitzschlägen ein, die %s naturschaden verursachen und auf gegner in der nähe überspringen. jeder sprung verringert den naturwiderstand des ziels um %s. wirkt auf insgesamt %s ziele. euer hauptziel wird außerdem von einem wirbelsturm umgeben, welcher dessen angriffstempo %s sek. lang um %s% verringert"] = { false, { Stats.NatureResistance, }, false, false, { Stats.MeleeHaste, }, reduction = true } -- s468156
 L["erhöht eure trefferchance bei allen zaubern und angriffen %s sek. lang um %s%"] = { false, { Stats.SpellHit, Stats.MeleeHit, Stats.RangedHit, }, } -- s468164
 L["verleiht eurem begleiter eine chance, dass sein angriffstempo nach einem erzielten kritischen treffer %s sek. lang um %s% erhöht wird"] = { false, { Stats.MeleeHaste, }, } -- s468183
+L["fügt einem gegenstand, der sich an einem bein- oder kopfplatz befindet, dauerhaft %s ausdauer sowie %s intelligenz hinzu und erhöht heilung um bis zu %s. ergänzt sich nicht mit anderen verzauberungen für den ausgewählten ausrüstungsplatz"] = { { Stats.Stamina, }, { Stats.Intellect, }, { Stats.HealingPower, }, } -- s468314
+L["fügt einem gegenstand, der sich an einem bein- oder kopfplatz befindet, dauerhaft %s ausdauer sowie %s% trefferchance hinzu und erhöht zauberschaden und heilung um bis zu %s. ergänzt sich nicht mit anderen verzauberungen für den ausgewählten ausrüstungsplatz"] = { { Stats.Stamina, }, { Stats.SpellHit, Stats.MeleeHit, Stats.RangedHit, }, { Stats.SpellPower, }, } -- s468318
+L["fügt einem gegenstand, der sich an einem bein- oder kopfplatz befindet, dauerhaft %s ausdauer, %s stärke und %s beweglichkeit hinzu. ergänzt sich nicht mit anderen verzauberungen für den ausgewählten ausrüstungsplatz"] = { { Stats.Stamina, }, { Stats.Strength, Stats.Agility, }, { Stats.Agility, Stats.Strength, }, } -- s468373
+L["fügt einem gegenstand, der sich an einem bein- oder kopfplatz befindet, dauerhaft %s ausdauer, %s stärke und %s verteidigung hinzu. ergänzt sich nicht mit anderen verzauberungen für den ausgewählten ausrüstungsplatz"] = { { Stats.Stamina, }, { Stats.Strength, }, { Stats.Defense, }, } -- s468323
+L["fügt einem gegenstand, der sich an einem bein- oder kopfplatz befindet, dauerhaft %s ausdauer, %s beweglichkeit und %s% trefferchance hinzu. ergänzt sich nicht mit anderen verzauberungen für den ausgewählten ausrüstungsplatz"] = { { Stats.Stamina, }, { Stats.Agility, }, { Stats.MeleeHit, Stats.RangedHit, Stats.SpellHit, }, } -- s468325
+L["fügt einem gegenstand, der sich an einem bein- oder kopfplatz befindet, dauerhaft %s ausdauer sowie %s verteidigung hinzu und erhöht zauberschaden und heilung um bis zu %s. ergänzt sich nicht mit anderen verzauberungen für den ausgewählten ausrüstungsplatz"] = { { Stats.Stamina, }, { Stats.Defense, }, { Stats.SpellPower, }, } -- s468328
+L["fügt einem gegenstand, der sich an einem bein- oder kopfplatz befindet, dauerhaft %s ausdauer sowie %s stärke hinzu und erhöht zauberschaden und heilung um bis zu %s. ergänzt sich nicht mit anderen verzauberungen für den ausgewählten ausrüstungsplatz"] = { { Stats.Stamina, }, { Stats.Strength, }, { Stats.SpellPower, }, } -- s468330
+L["fügt einem gegenstand, der sich an einem bein- oder kopfplatz befindet, dauerhaft %s ausdauer sowie %s intelligenz hinzu und erhöht zauberschaden und heilung um bis zu %s. ergänzt sich nicht mit anderen verzauberungen für den ausgewählten ausrüstungsplatz"] = { { Stats.Stamina, }, { Stats.Intellect, }, { Stats.SpellPower, }, } -- s468339
+L["fügt einem gegenstand, der sich an einem bein- oder kopfplatz befindet, dauerhaft %s ausdauer sowie %s intelligenz hinzu und erhöht heilung und zauberschaden um bis zu %s. ergänzt sich nicht mit anderen verzauberungen für den ausgewählten ausrüstungsplatz"] = { { Stats.Stamina, }, { Stats.Intellect, }, { Stats.SpellPower, }, } -- s468344
+L["fügt einem gegenstand, der sich an einem bein- oder kopfplatz befindet, dauerhaft %s ausdauer, %s beweglichkeit und %s verteidigung hinzu. ergänzt sich nicht mit anderen verzauberungen für den ausgewählten ausrüstungsplatz"] = { { Stats.Stamina, }, { Stats.Agility, }, { Stats.Defense, }, } -- s468347
+L["fügt einem gegenstand, der sich an einem bein- oder kopfplatz befindet, dauerhaft %s ausdauer sowie %s stärke hinzu und erhöht sämtliche heilung sowie sämtlichen zauberschaden um bis zu %s. ergänzt sich nicht mit anderen verzauberungen für den ausgewählten ausrüstungsplatz"] = { { Stats.Stamina, }, { Stats.Strength, }, { Stats.SpellPower, }, } -- s468351
+L["fügt einem gegenstand, der sich an einem bein- oder kopfplatz befindet, dauerhaft %s ausdauer sowie %s% trefferchance hinzu und erhöht sämtliche heilung sowie sämtlichen zauberschaden um bis zu %s. ergänzt sich nicht mit anderen verzauberungen für den ausgewählten ausrüstungsplatz"] = { { Stats.Stamina, }, { Stats.MeleeHit, Stats.RangedHit, Stats.SpellHit, }, { Stats.SpellPower, }, } -- s468354
+L["fügt einem gegenstand, der sich an einem bein- oder kopfplatz befindet, dauerhaft %s ausdauer, %s verteidigung und %s% blockchance hinzu. ergänzt sich nicht mit anderen verzauberungen für den ausgewählten ausrüstungsplatz"] = { { Stats.Stamina, }, { Stats.Defense, }, { Stats.BlockChance, }, } -- s468362
+L["fügt einem gegenstand, der sich an einem bein- oder kopfplatz befindet, dauerhaft %s ausdauer, %s% trefferchance und %s verteidigung hinzu. ergänzt sich nicht mit anderen verzauberungen für den ausgewählten ausrüstungsplatz"] = { { Stats.Stamina, }, { Stats.MeleeHit, Stats.RangedHit, Stats.SpellHit, }, { Stats.Defense, }, } -- s468368
+L["fügt einem gegenstand, der sich an einem bein- oder kopfplatz befindet, dauerhaft %s ausdauer, %s verteidigung und %s schildblock hinzu. ergänzt sich nicht mit anderen verzauberungen für den ausgewählten ausrüstungsplatz"] = { { Stats.Stamina, }, { Stats.Defense, }, { Stats.BlockValue, }, } -- s468376
+L["fügt einem gegenstand, der sich an einem bein- oder kopfplatz befindet, dauerhaft %s ausdauer, %s beweglichkeit und %s stärke hinzu. ergänzt sich nicht mit anderen verzauberungen für den ausgewählten ausrüstungsplatz"] = { { Stats.Stamina, }, { Stats.Agility, }, { Stats.Strength, }, } -- s468383
 L["bringt den druiden in einklang mit der natur. erhöht %s sek. lang den verursachten schaden durch zauber um %s%, verbessert heileffekte um %s% und erhöht die kritische trefferchance von zaubern um %s%"] = { false, false, false, { Stats.SpellCrit, }, } -- s468387
 L["erhöht den von heiligzaubern und -effekten verursachten schaden um bis zu %s"] = { { Stats.HolyDamage, }, } -- s468401
 L["erhöht das angriffstempo %s sek. lang um %s%"] = { false, { Stats.MeleeHaste, }, } -- s468408
@@ -942,10 +1107,12 @@ L["erhöht den von schatten- und arkanzaubern und -effekten verursachten schaden
 L["erhöht die kritische effektchance um %s%"] = { { Stats.MeleeCrit, Stats.RangedCrit, Stats.SpellCrit, }, } -- s469208
 L["erhöht den zauberschaden um bis zu %s"] = { { Stats.SpellDamage, }, } -- s469209
 L["erhöht die hervorgerufene heilung um bis zu %s gesundheit"] = { { Stats.HealingPower, }, } -- s469210
+L["permanently enchant a shield to give %s% chance to block"] = { { Stats.BlockChance, }, } -- s469753
 L["erhöht zauberschaden %s min. lang um %s"] = { false, { Stats.SpellDamage, }, } -- s470361
 L["stellt im verlauf von %s sek. insgesamt %s gesundheit wieder her. ihr müsst beim essen sitzen bleiben. wenn ihr mindestens %s sekunden mit essen verbringt, wird euer zauberschaden %s min. lang um %s erhöht"] = { false, false, false, false, { Stats.SpellDamage, }, ignoreSum = true } -- s470362
 L["verursachte heilung %s min. lang um %s erhöht"] = { false, { Stats.HealingPower, }, } -- s470367
 L["stellt im verlauf von %s sek.%s gesundheit wieder her. ihr müsst beim essen sitzen bleiben. wenn ihr %s sekunden lang esst, wird außerdem die von euch verursachte heilung %s min. lang um %s erhöht"] = { false, false, false, false, { Stats.HealingPower, }, ignoreSum = true } -- s470369
+L["während die beschichtung auf eurem schild aufgetragen ist, sind zauberschaden und heilung um bis zu %s und eure kritische zaubertrefferchance um %s% erhöht. hält %s min. lang an"] = { { Stats.SpellPower, }, { Stats.SpellCrit, }, false, } -- s471401
 L["erhöht schaden und heilung, die durch zauber und magische effekte verursacht werden, um bis zu %s. erhöht zudem eure kritische zaubertrefferchance um %s%"] = { { Stats.SpellPower, }, { Stats.SpellCrit, }, } -- s471402
 L["spornt eure gruppen- oder schlachtzugsmitglieder in der nähe an und gewährt ihnen eine um %s% erhöhte chance auf kritische zaubertreffer, eine um %s% erhöhte chance auf kritische treffer im nah- und distanzkampf und eine um %s erhöhte angriffskraft. hält %s stunden lang an. schließt ähnliche welteffekte aus. bleibt von chronostärkungen unbeeinflusst"] = { { Stats.SpellCrit, }, { Stats.MeleeCrit, Stats.RangedCrit, }, { Stats.GenericAttackPower, }, false, } -- s473387
 L["beschwört %s stunde lang eine liedblume, die allen mitgliedern eurer gruppe oder eures schlachtzugs eine um %s% erhöhte chance auf einen kritischen nahkampf-, distanzkampf- oder zaubertreffer gewährt und attribute um %s erhöht. schließt ähnliche welteffekte aus. bleibt von chronostärkungen unbeeinflusst"] = { false, { Stats.MeleeCrit, Stats.RangedCrit, Stats.SpellCrit, }, { Stats.AllStats, }, } -- s473399
@@ -959,6 +1126,10 @@ L["verringert die chance, dass eure angriffe pariert werden oder ihnen ausgewich
 L["kontrolliert %s sek. lang die gedanken eines humanoiden gegners bis stufe %s, erhöht jedoch die zeit zwischen seinen angriffen um %s%"] = { false, false, { Stats.MeleeHaste, }, reduction = true } -- s1213356
 L["erhöht die angriffskraft um %s und alle %s sek. um zusätzlich %s. hält %s sek. lang an"] = { { Stats.GenericAttackPower, }, false, { Stats.GenericAttackPower, }, false, ignoreSum = true } -- s1213366
 L["fügt gegnern in der nähe %s naturschaden zu, erhöht die zeit zwischen ihren angriffen um %s% und verringert ihre bewegungsgeschwindigkeit um %s%. hält %s sek. lang an"] = { false, { Stats.MeleeHaste, }, false, false, reduction = true } -- s1213464
+L["eine brustrüstung dauerhaft verzaubern, sodass alle werte um %s sowie der naturwiderstand um %s erhöht werden"] = { { Stats.AllStats, }, { Stats.NatureResistance, }, } -- s1213616
+L["handschuhe dauerhaft verzaubern, sodass der heiligschaden um %s erhöht wird"] = { { Stats.HolyDamage, }, } -- s1213622
+L["handschuhe dauerhaft verzaubern, sodass der arkanschaden um %s erhöht wird"] = { { Stats.ArcaneDamage, }, } -- s1213626
+L["zauberschaden und heilung eines gegenstands für den brust-, bein-, hand- oder fußplatz dauerhaft um bis zu %s erhöhen. kann nur auf gegenstände der stufe %s oder höher angewendet werden"] = { { Stats.SpellPower, }, false, } -- s1213829
 L["erhöht durch zauber und magische effekte verursachten schaden und hervorgerufene heilung um bis zu %s"] = { { Stats.SpellPower, }, } -- s1213830
 L["erhöht %s stunden lang die hervorgerufene heilung von zaubern und magischen effekten um bis zu %s gesundheit, den schaden von zaubern und magischen effekten um bis zu %s und die manaregeneration um %s mana pro %s sek. es kann immer nur der effekt von jeweils einem fläschchen aktiv sein. dieser effekt hält über den tod hinaus an"] = { false, { Stats.HealingPower, }, { Stats.SpellDamage, }, { Stats.GenericManaRegen, }, false, } -- s1213886
 L["erhöht %s stunden lang die angriffskraft um %s. es kann immer nur der effekt von jeweils einem fläschchen aktiv sein. dieser effekt hält über den tod hinaus an"] = { false, { Stats.GenericAttackPower, }, } -- s1213897
@@ -968,11 +1139,15 @@ L["erhöht den zauberschaden um bis zu %s und den naturwiderstand um %s. hält %
 L["erhöht die rüstung um %s, die verteidigung um %s und den naturwiderstand um %s. hält %s stunde lang an"] = { { Stats.Armor, }, { Stats.Defense, }, { Stats.NatureResistance, }, false, } -- s1213917
 L["erhöht eurer angriffstempo um %s%"] = { { Stats.MeleeHaste, Stats.RangedHaste, }, } -- s1213971
 L["lest die schriftrolle und ruft so den zorn des schwarms herbei, der euren schlachtzug ermächtigt, wodurch %s stunde lang der verursachte schaden und die hervorgerufene heilung mit zaubern um bis zu %s und die angriffskraft um %s erhöht wird"] = { false, { Stats.SpellPower, }, { Stats.GenericAttackPower, }, } -- s1214001
+L["wird es auf eine waffe oder einen schild angewendet, erhöht es den zauberschaden um bis zu %s und erhöht die chance auf einen kritischen treffer mit zaubern um %s%. hält %s minuten"] = { { Stats.SpellPower, }, { Stats.SpellCrit, }, false, } -- s1214004
 L["erhöht durch zauber und magische effekte verursachten schaden und hervorgerufene heilung um bis zu %s. erhöht außerdem die chance auf einen kritischen treffer mit zaubern um %s%"] = { { Stats.SpellPower, }, { Stats.SpellCrit, }, } -- s1214006
 L["erhöht durch sämtliche zauber und magische effekte hervorgerufene heilung um bis zu %s und den verursachten schaden um bis zu %s"] = { { Stats.HealingPower, }, { Stats.SpellDamage, }, } -- s1214204
 L["erhöht den schaden von zaubern und magischen effekten um bis zu %s und verringert die zauberwiderstände der ziele eurer zauber %s sek. lang um %s"] = { { Stats.SpellDamage, }, false, { Stats.SpellPenetration, }, } -- s1214233
 L["gewährt euren schadenszaubern eine chance, den schaden eurer zauber und effekte %s sek. lang um %s zu erhöhen"] = { false, { Stats.SpellDamage, }, ignoreSum = true } -- s1214280
 L["erhöht durch sämtliche zauber und magische effekte hervorgerufene heilung um bis zu %s gesundheit und den verursachten schaden um bis zu %s"] = { { Stats.HealingPower, }, { Stats.SpellDamage, }, } -- s1214389
+L["armschienen dauerhaft so verzaubern, dass sie den schaden von zaubern um bis zu %s erhöhen"] = { { Stats.SpellPower, }, } -- s1217189
+L["armschienen dauerhaft so verzaubern, dass sie die beweglichkeit um %s erhöhen"] = { { Stats.Agility, }, } -- s1217203
+L["verbindet ein zielfernrohr dauerhaft mit dem bogen oder der schusswaffe und erhöht den damit verursachten schaden um %s"] = { { Stats.AverageWeaponDamage, }, } -- s1217206
 L["versetzt das ziel für %s min. in tollwütige raserei, wodurch sich die nahkampfangriffskraft um %s erhöht, jedoch die rüstung um %s verringert. gegner in raserei fliehen nicht und ignorieren furcht- und entsetzenseffekte"] = { false, { Stats.AttackPower, }, { Stats.Armor, }, } -- s1218358
 L["eure fähigkeit 'knurren' verfehlt nie ihr ziel und die chance, dass man euren angriffen ausweicht oder sie pariert werden, wird um %s% verringert"] = { { Stats.DodgeReduction, Stats.ParryReduction, }, } -- s1218482
 L["eure fähigkeit 'hand der abrechnung' verfehlt nie ihr ziel, und die chance, dass man euren angriffen ausweicht oder sie pariert werden, wird um %s% verringert"] = { { Stats.DodgeReduction, Stats.ParryReduction, }, } -- s1219205
@@ -980,17 +1155,27 @@ L["eure fähigkeit 'reizen' verfehlt nie ihr ziel und die chance, dass man euren
 L["eure fähigkeit 'erdschock' verfehlt nie ihr ziel, wenn sie als verspottung eingesetzt wird, und die chance, dass man euren angriffen ausweicht oder sie pariert werden, wird um %s% verringert"] = { { Stats.DodgeReduction, Stats.ParryReduction, }, } -- s1219382
 L["eure fähigkeit 'plagegeist' verfehlt nie ihr ziel und die chance, dass eure zauber verfehlen oder man euren angriffen ausweicht oder sie pariert werden, wird um %s% verringert"] = { { Stats.DodgeReduction, Stats.ParryReduction, Stats.SpellHit, }, } -- s1219474
 L["reflektiert den nächsten offensivzauber gegen den anwender und erhöht %s sek. lang den widerstand gegen alle arten von magie um %s"] = { false, { Stats.FireResistance, Stats.NatureResistance, Stats.FrostResistance, Stats.ShadowResistance, Stats.ArcaneResistance, }, } -- s1219501
+L["fügt einem gegenstand, der sich an einem schulterplatz befindet, dauerhaft eine erhöhung der heilwirkung durch zauber und magische effekte um bis zu %s hinzu und erhöht die manaregeneration um %s pro %s sek"] = { { Stats.GenericManaRegen, }, false, false, } -- s1219507
+L["fügt einem gegenstand, der sich an einem schulterplatz befindet, dauerhaft eine erhöhung der schadens- und heilwirkung durch zauber und magische effekte um bis zu %s hinzu und erhöht die kritische trefferchance um %s%"] = { { Stats.SpellPower, }, { Stats.SpellCrit, Stats.MeleeCrit, Stats.RangedCrit, }, } -- s1219510
+L["fügt einem gegenstand, der sich an einem schulterplatz befindet, dauerhaft eine erhöhung der ausdauer um %s und der verteidigung um %s hinzu"] = { { Stats.Stamina, }, { Stats.Defense, }, } -- s1219511
+L["fügt einem gegenstand, der sich an einem schulterplatz befindet, dauerhaft eine erhöhung der angriffskraft um %s hinzu und erhöht die chance auf einen kritischen treffer um %s%"] = { { Stats.GenericAttackPower, Stats.AttackPower, Stats.RangedAttackPower, }, { Stats.MeleeCrit, Stats.RangedCrit, Stats.SpellCrit, }, } -- s1219512
 L["erhöht die durch die nächsten %s zauber verursachte heilung um bis zu %s gesundheit. hält %s sek. lang an"] = { false, { Stats.HealingPower, }, false, } -- s1219513
 L["eure fähigkeit 'spott' verfehlt nie ihr ziel und die chance, dass man euren angriffen ausweicht oder sie pariert werden, wird um %s% verringert"] = { { Stats.DodgeReduction, Stats.ParryReduction, }, } -- s1219540
 L["erhöht durch zauber und magische effekte verursachten schaden und hervorgerufene heilung aller gruppenmitglieder innerhalb von %s metern um bis zu %s. dieser spezifische effekt ist nicht über mehrere quellen stapelbar"] = { false, { Stats.SpellPower, }, } -- s1219552
 L["erhöht für alle gruppenmitglieder innerhalb von %s metern durch sämtliche zauber und magische effekte hervorgerufene heilung um bis zu %s gesundheit und den verursachten schaden um bis zu %s. dieser spezifische effekt ist nicht über mehrere quellen stapelbar"] = { false, { Stats.HealingPower, }, { Stats.SpellDamage, }, } -- s1219553
 L["erhöht das zaubertempo aller gruppenmitglieder innerhalb von %s metern um %s%. dieser spezifische effekt ist nicht über mehrere quellen stapelbar"] = { false, { Stats.SpellHaste, }, } -- s1219557
 L["erhöht die kritische zaubertrefferchance aller gruppenmitglieder innerhalb von %s metern um %s%. dieser spezifische effekt ist nicht über mehrere quellen stapelbar"] = { false, { Stats.SpellCrit, }, } -- s1219558
+L["schildhand dauerhaft verzaubern, sodass die intelligenz um %s erhöht wird"] = { { Stats.Intellect, }, } -- s1219577
+L["schildhand dauerhaft verzaubern, sodass die willenskraft um %s erhöht wird"] = { { Stats.Spirit, }, } -- s1219578
+L["schildhand dauerhaft verzaubern, sodass die intelligenz um %s und die willenskraft um %s erhöht wird"] = { { Stats.Intellect, }, { Stats.Spirit, }, } -- s1219579
+L["eine zweihandwaffe dauerhaft verzaubern, sodass die zaubermacht um %s erhöht wird"] = { { Stats.SpellPower, }, } -- s1219580
 L["erhöht die manaregeneration des verbündeten ziels %s sek. lang um %s pro %s sek"] = { false, { Stats.GenericManaRegen, }, false, } -- s1220542
 L["erhöht bei einem verbündeten ziel durch zauber und magische effekte verursachten schaden und verursachte heilung %s sek. lang um bis zu %s"] = { false, { Stats.SpellDamage, }, } -- s1220543
 L["erhöht die angriffskraft des verbündeten ziels %s sek. lang um %s"] = { false, { Stats.GenericAttackPower, }, } -- s1220545
 L["erhöht %s sek. lang die rüstung des verbündeten ziels um %s"] = { false, { Stats.Armor, }, } -- s1220546
 L["erhöht eure kritische trefferchance um %s%"] = { { Stats.MeleeCrit, Stats.RangedCrit, }, } -- s1220596
+L["einen schild dauerhaft verzaubern, sodass die kritische trefferchance um %s% erhöht wird"] = { { Stats.MeleeCrit, Stats.RangedCrit, }, } -- s1220623
+L["armschienen dauerhaft verzaubern, sodass die zaubermacht um %s erhöht wird"] = { { Stats.SpellPower, }, } -- s1220624
 L["erhöht euer zaubertempo um %s%"] = { { Stats.SpellHaste, }, } -- s1220654
 L["erhöht die stärke des trägers um %s, aber der schaden aus allen quellen wird %s sek. lang um %s% erhöht"] = { { Stats.Strength, }, false, false, } -- s1220668
 L["verringert die ausdauer eines feindes %s min. lang um %s"] = { false, { Stats.Stamina, }, reduction = true } -- s8014
@@ -1000,9 +1185,6 @@ L["erhöht die schadenswirkung von zaubern %s stunde lang um %s"] = { false, { S
 L["erhöht die beweglichkeit %s min. lang um %s"] = { false, { Stats.Agility, }, } -- s18192
 L["verringert den von einem feind zugefügten körperlichen schaden %s sek. lang um %s punkt(e). es kann immer nur jeweils ein fluch pro hexenmeister auf einem beliebigen ziel aktiv sein"] = { false, { Stats.AverageWeaponDamage, }, reduction = true } -- s18267
 L["verringert den vom ziel verursachten schaden %s sek. lang um %s"] = { false, { Stats.AverageWeaponDamage, }, reduction = true } -- s20006
-L["fügt einem gegenstand, der sich an einem bein- oder kopfplatz befindet, dauerhaft %s naturwiderstandspunkte hinzu. ergänzt sich nicht mit anderen verzauberungen für den ausgewählten ausrüstungsplatz"] = { { Stats.NatureResistance, }, } -- s28162
-L["fügt einem gegenstand, der sich an einem bein- oder kopfplatz befindet, dauerhaft %s frostwiderstandspunkte hinzu. ergänzt sich nicht mit anderen verzauberungen für den ausgewählten ausrüstungsplatz"] = { { Stats.FrostResistance, }, } -- s28164
-L["fügt einem gegenstand, der sich an einem bein- oder kopfplatz befindet, dauerhaft %s schattenwiderstandspunkte hinzu. ergänzt sich nicht mit anderen verzauberungen für den ausgewählten ausrüstungsplatz"] = { { Stats.ShadowResistance, }, } -- s28166
 L["erhöht %s stunde lang eure nahkampfangriffskraft um %s sowie auch eure größe"] = { false, { Stats.AttackPower, }, } -- s473469
 L["erhöht das angriffstempo von in der nähe befindlichen verbündeten %s min. lang um %s%"] = { false, { Stats.MeleeHaste, }, } -- s3631
 L["erhöht %s min. lang das angriffstempo des zaubernden um %s%"] = { false, { Stats.MeleeHaste, }, } -- s5915

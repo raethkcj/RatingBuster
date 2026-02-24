@@ -457,6 +457,13 @@ for (const set of statSets) {
 	}
 }
 
+enum EffectType {
+	ENCHANT_ITEM = 53,
+	ENCHANT_ITEM_TEMPORARY = 54,
+	ENCHANT_HELD_ITEM = 92,
+}
+const effectTypeValues = Object.values(EffectType).slice(Object.values(EffectType).length / 2)
+
 enum EffectAura {
 	PERIODIC_HEAL = 8,
 	MOD_DAMAGE_DONE = 13, // School
@@ -702,8 +709,13 @@ enum Resistance {
 	ArcaneResistance,
 }
 
-function getEnchantStats(enchant: StatEnchant, spellStatEffects: Map<number, StatValue[][]>): StatValue[][] {
-	const stats: StatValue[][] = []
+function getEnchantStats(enchant: StatEnchant, spellStatEffects: Map<number, StatValue[][]>, overrideEnchantStatEffects: Map<number, StatValue[][]>): StatValue[][] {
+	let stats = overrideEnchantStatEffects.get(enchant.ID)
+	if (stats) {
+		return stats
+	} else {
+		stats = []
+	}
 	for(const [index, effectvalues] of enchant.Effects.items.entries()) {
 		const [effect, effectArg, pointsMin] = effectvalues.items
 		switch(effect) {
@@ -813,6 +825,42 @@ async function getSpellDurationFormats(expansion: Expansion, locale: string): Pr
 		time++
 	}
 	return formats as Record<Time, string>
+}
+
+type EnchantSpell = {
+	EnchantID: number,
+	SpellID: number,
+}
+
+async function queryEnchantSpells(expansion: Expansion, statEnchantIDs: number[]): Promise<EnchantSpell[]> {
+	const spellEffect = await DatabaseTable.get("SpellEffect", expansion, "enUS")
+
+	const query = `
+		SELECT EffectMiscValue_0 as EnchantID, SpellID
+		FROM read_csv('${spellEffect.path}', auto_type_candidates = ['INTEGER', 'DOUBLE', 'VARCHAR'])
+		WHERE Effect in (${effectTypeValues})
+		AND EffectMiscValue_0 in (${statEnchantIDs})
+	`
+
+	const reader = await connection.runAndReadAll(query)
+	return reader.getRowObjects() as EnchantSpell[]
+}
+
+const expansionsEnchantSpells = new Map<Expansion, Promise<Map<number, number>>>()
+
+async function getEnchantSpells(expansion: Expansion, statEnchants: StatEnchant[], spellDescIDs: Set<number>): Promise<Map<number, number>> {
+	if (!expansionsEnchantSpells.get(expansion)) {
+		expansionsEnchantSpells.set(expansion, new Promise<Map<number, number>>(async resolve => {
+			const enchantSpells = await queryEnchantSpells(expansion, statEnchants.map(se => se.ID))
+			const spellEnchants = new Map<number, number>()
+			enchantSpells.forEach(es => {
+				spellDescIDs.add(es.SpellID)
+				spellEnchants.set(es.SpellID, es.EnchantID)
+			})
+			resolve(spellEnchants)
+		}))
+	}
+	return expansionsEnchantSpells.get(expansion)!
 }
 
 const singularZeroLocales = new Set([
@@ -929,8 +977,6 @@ type StatEnchant = {
 			items: [effect: EnchantEffect, effectArg: number, pointsMin: number]
 		}[]
 	}
-
-	stats: string[][]
 }
 
 async function queryStatEnchants(expansion: Expansion, locale: string, spellIDs: number[], overrideEnchantIDs: number[]): Promise<StatEnchant[]> {
@@ -1124,12 +1170,24 @@ async function getLocaleStatMap(
 ) {
 	const statMap = new Map<string, StatEntry>()
 
+	const statEnchants = await queryStatEnchants(expansion, locale, statSpellIDs, overrideEnchantIDs)
+	console.log(`${statEnchants.length} statEnchants`)
+
+	const spellEnchants = await getEnchantSpells(expansion, statEnchants, spellDescIDs)
+
 	const spellDurationFormats = await getSpellDurationFormats(expansion, locale)
 	const spellDescriptions = await queryStatSpellDescriptions(expansion, locale, Array.from(spellDescIDs))
 	for (const spellDescription of spellDescriptions) {
-		let staticEffects = spellStatEffects.get(spellDescription.ID)
-		let procEffects = spellStatEffects.get(procSpells.get(spellDescription.ID)!)
-		if (staticEffects || procEffects) {
+		const staticEffects = spellStatEffects.get(spellDescription.ID)
+		const procEffects = spellStatEffects.get(procSpells.get(spellDescription.ID)!)
+
+		let enchantEffects: StatValue[][] | undefined
+		const enchantID = spellEnchants.get(spellDescription.ID)
+		if (enchantID) {
+			const enchant = statEnchants.find(e => e.ID == enchantID)!
+			enchantEffects = getEnchantStats(enchant, spellStatEffects, overrideEnchantStatEffects)
+		}
+		if (staticEffects || procEffects || enchantEffects) {
 			if (spellDescription.Description_lang.search("@spell") >= 0) {
 				// In theory we could support these by loading SpellName and requerying individual descriptions,
 				// but since currently they're only used in Mage Armor spells, it's just not worth it
@@ -1140,7 +1198,7 @@ async function getLocaleStatMap(
 			for (const branch of branches) {
 				const [pattern, statEntry] = mapTextToStatEntry(
 					branch,
-					staticEffects,
+					staticEffects || enchantEffects,
 					spellDescription.ID,
 					spellStatEffects,
 					false,
@@ -1148,21 +1206,16 @@ async function getLocaleStatMap(
 					spellDurationFormats,
 					locale,
 				)
-				if (staticEffects || !statEntry.isWholeText) {
-					statEntry.ignoreSum = !staticEffects
+				if (staticEffects || enchantEffects || !statEntry.isWholeText) {
+					statEntry.ignoreSum = !staticEffects && !enchantEffects
 					insertEntry(statMap, pattern, statEntry, locale)
 				}
 			}
 		}
 	}
 
-	const statEnchants = await queryStatEnchants(expansion, locale, statSpellIDs, overrideEnchantIDs)
-	console.log(`${statEnchants.length} statEnchants`)
 	for (const statEnchant of statEnchants) {
-		let stats = overrideEnchantStatEffects.get(statEnchant.ID)
-		if (!stats) {
-			stats = getEnchantStats(statEnchant, spellStatEffects)
-		}
+		const stats = getEnchantStats(statEnchant, spellStatEffects, overrideEnchantStatEffects)
 		const [pattern, statEntry] = mapTextToStatEntry(
 			statEnchant.Name_lang,
 			stats,
@@ -1236,8 +1289,6 @@ function entryToString([text, entry]: [string, StatEntry]) {
 
 mkdirSync(new URL(databaseDirName, base), { recursive: true })
 mkdirSync(new URL(baseLocaleDir, base), { recursive: true })
-
-const localeResults = new Map<Locale, Promise<Map<string, StatEntry>>[]>()
 
 for (const [_, expansion] of Object.entries(Expansion)) {
 	if (typeof(expansion) != "number") { continue }
