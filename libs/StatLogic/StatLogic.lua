@@ -2069,8 +2069,7 @@ do
 		-----------------------
 		-- Strings without numbers; mainly used for enchants or easy exclusions
 		if not found then
-			-- Limit to one line
-			text = text:gsub("\n.*", "")
+			text = text:gsub("[\r\n]+", "\n")
 			-- Strip leading "Equip: ", "Socket Bonus: ", trailing ".", and lowercase
 			text, length = trimPrefixes(text, addon.TrimmedPrefixes)
 			offset = offset + length
