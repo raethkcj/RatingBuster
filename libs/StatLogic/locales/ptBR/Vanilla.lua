@@ -1120,6 +1120,9 @@ L["reduz em %s o dano físico causado por um inimigo por %s s. os inimigos só p
 L["dano causado pelo alvo reduzido em %s por %s s"] = { { Stats.AverageWeaponDamage, }, false, reduction = true } -- s20006
 L["aumenta em %s o intelecto por %s min"] = { { Stats.Intellect, }, false, } -- s22730
 L["aumenta em $%s% a chance de acerto crítico do seu ajudante"] = { { Stats.MeleeCrit, Stats.RangedCrit, }, } -- s436689
+L["ensina a encantar braçadeiras permanentemente para aumentar em %s o dano de feitiços"] = { { Stats.SpellPower, }, } -- s1217189
+L["ensina a encantar braçadeiras permanentemente para aumentar em %s a agilidade"] = { { Stats.Agility, }, } -- s1217203
+L["aprenda uma nova habilidade após derrotar %s inimigos com raio"] = { { Stats.BlockChance, }, } -- s410098
 L["afiado %s"] = { { Stats.AverageWeaponDamage, }, } -- e13
 L["armadura reforçada %s"] = { { Stats.Armor, }, } -- e15
 L["balanceado %s"] = { { Stats.AverageWeaponDamage, }, } -- e19

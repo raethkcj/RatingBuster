@@ -24,6 +24,7 @@ W["力竭。"] = { [Stats.MeleeHaste] = -100, } -- s424574
 W["讓飲用者可以和對凡間尚有牽掛的屍體對話。另外還能治療消化不良。"] = { [Stats.AllStats] = 1, } -- s426606
 W["受到激勵時，大幅提高傷害。"] = { [Stats.MeleeHaste] = 20, [Stats.AverageWeaponDamage] = 25, } -- s436430
 W["使你的寵物在下一次攻擊時必定造成致命一擊，此效果只作用於可造成致命一擊的攻擊。"] = { [Stats.MeleeCrit] = 100, [Stats.RangedCrit] = 100, } -- s462214
+W["教你學會一個新紋刻技能。"] = { [Stats.MeleeCrit] = 5, [Stats.RangedCrit] = 5, } -- s410113
 W["破甲"] = { [Stats.AverageWeaponDamage] = -10, } -- e27
 W["贊達拉魔精徽記"] = { [Stats.SpellPower] = 18, } -- e2605
 W["贊達拉力量徽記"] = { [Stats.AttackPower] = 30, [Stats.RangedAttackPower] = 30, } -- e2606
@@ -1168,6 +1169,9 @@ L["使智力提高%s點，持續%s分鐘。"] = { { Stats.Intellect, }, false, }
 L["戰士發出怒吼，使附近所有小隊成員的近身和遠程傷害提高%s，持續%s秒。"] = { { Stats.AverageWeaponDamage, }, false, } -- s26043
 L["使附近所有友方玩家的攻擊速度提高%s%，持續%s分鐘。"] = { { Stats.MeleeHaste, }, false, } -- s3631
 L["使施法者的攻擊速度提高%s%，持續%s分鐘。"] = { { Stats.MeleeHaste, }, false, } -- s5915
+L["使用閃電箭擊敗敵人%s次即可學會一個新技能。"] = { { Stats.BlockChance, }, } -- s410098
+L["教你學會給一雙護腕永久性地附魔，使你的法術所造成的傷害提高最多%s點。"] = { { Stats.SpellPower, }, } -- s1217189
+L["教你學會給一雙護腕永久性地附魔，使裝備它的人物獲得敏捷提高%s點的效果。"] = { { Stats.Agility, }, } -- s1217203
 L["磨快 %s"] = { { Stats.AverageWeaponDamage, }, } -- e13
 L["強化護甲 %s"] = { { Stats.Armor, }, } -- e15
 L["增重 %s"] = { { Stats.AverageWeaponDamage, }, } -- e19

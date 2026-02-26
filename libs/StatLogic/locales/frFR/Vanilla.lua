@@ -1275,6 +1275,9 @@ L["réduit les points de dégâts physiques infligés par un ennemi de %s pendan
 L["augmente l'intelligence de %s pendant %s min"] = { { Stats.Intellect, }, false, } -- s22730
 L["augmente de %s la puissance d'attaque en mêlée des membres de votre groupe qui se trouvent à proximité pendant %s sec"] = { { Stats.AverageWeaponDamage, }, false, } -- s24438
 L["augmente la vitesse d'attaque des alliés qui se trouvent à proximité de %s% pendant %s min"] = { { Stats.MeleeHaste, }, false, } -- s3631
+L["vous apprend à enchanter définitivement des brassards. ces derniers ajoutent un maximum de %s aux dégâts des sorts"] = { { Stats.SpellPower, }, } -- s1217189
+L["vous apprend à enchanter définitivement des brassards. ces derniers augmentent l’agilité de %s"] = { { Stats.Agility, }, } -- s1217203
+L["permet d’acquérir une nouvelle capacité après avoir vaincu %s ennemis à l’aide du sort éclair"] = { { Stats.BlockChance, }, } -- s410098
 L["arme aiguisée %s"] = { { Stats.AverageWeaponDamage, }, } -- e13
 L["armure renforcée %s"] = { { Stats.Armor, }, } -- e15
 L["arme équilibrée %s"] = { { Stats.AverageWeaponDamage, }, } -- e19

@@ -29,6 +29,7 @@ W["provide a small benefit to the damage and healing powers of your party"] = { 
 W["exhausted"] = { [Stats.MeleeHaste] = -100, } -- s424574
 W["allows the imbiber to speak with the corpse of an individual with unfinished business in the mortal world. also may cure indigestion"] = { [Stats.AllStats] = 1, } -- s426606
 W["greatly increases damage while inspired"] = { [Stats.MeleeHaste] = 20, [Stats.AverageWeaponDamage] = 25, } -- s436430
+W["teaches you a new engraving ability"] = { [Stats.MeleeCrit] = 5, [Stats.RangedCrit] = 5, } -- s410113
 W["sundered"] = { [Stats.AverageWeaponDamage] = -10, } -- e27
 W["minor wizard oil"] = { [Stats.SpellPower] = 8, } -- e2623
 W["minor mana oil"] = { [Stats.GenericManaRegen] = 4, } -- e2624
@@ -1077,6 +1078,9 @@ L["increases the melee attack power of nearby party members by %s for %s sec"] =
 L["increases your pet's critical strike chance by $%s%"] = { { Stats.MeleeCrit, Stats.RangedCrit, }, } -- s436689
 L["heals yourself for %s%, and increases your maximum health by %s% for %s sec"] = { { Stats.Health, }, false, false, } -- s467498
 L["increases your melee attack power by %s and size for %s hour"] = { { Stats.AttackPower, }, false, } -- s473469
+L["learn a new ability after defeating enemies %s times with lightning bolt"] = { { Stats.BlockChance, }, } -- s410098
+L["teaches you how to permanently enchant bracers to add up to %s damage to spells"] = { { Stats.SpellPower, }, } -- s1217189
+L["teaches you how to permanently enchant bracers to increase agility by %s"] = { { Stats.Agility, }, } -- s1217203
 L["sharpened %s"] = { { Stats.AverageWeaponDamage, }, } -- e13
 L["reinforced armor %s"] = { { Stats.Armor, }, } -- e15
 L["weighted %s"] = { { Stats.AverageWeaponDamage, }, } -- e19

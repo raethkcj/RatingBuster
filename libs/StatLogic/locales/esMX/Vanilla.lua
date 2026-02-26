@@ -1249,6 +1249,9 @@ L["reduce el poder de ataque cuerpo a cuerpo y a distancia de los enemigos cerca
 L["aumenta %s p. tu poder de ataque cuerpo a cuerpo y tu tamaño durante %s h"] = { { Stats.AttackPower, }, false, } -- s473469
 L["aumenta la velocidad de ataque de los aliados cercanos un %s% durante %s min"] = { { Stats.MeleeHaste, }, false, } -- s3631
 L["aumenta la velocidad de ataque del taumaturgo un %s% durante %s min"] = { { Stats.MeleeHaste, }, false, } -- s5915
+L["te enseña a encantar de forma permanente unos brazales para que añadan hasta %s p. de daño a los hechizos"] = { { Stats.SpellPower, }, } -- s1217189
+L["te enseña a encantar de forma permanente unos brazales para que aumenten tu agilidad en %s p"] = { { Stats.Agility, }, } -- s1217203
+L["aprendes una nueva habilidad después de derrotar enemigos %s veces con descarga de relámpagos"] = { { Stats.BlockChance, }, } -- s410098
 L["afilado %s"] = { { Stats.AverageWeaponDamage, }, } -- e13
 L["armadura reforzada %s"] = { { Stats.Armor, }, } -- e15
 L["pesado %s"] = { { Stats.AverageWeaponDamage, }, } -- e19

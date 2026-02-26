@@ -28,6 +28,7 @@ W["为小队提供少量伤害和治疗强度加成。"] = { [Stats.AverageWeapo
 W["筋疲力尽。"] = { [Stats.MeleeHaste] = -100, } -- s424574
 W["使饮用者能够与尘缘未了之人的遗骸沟通。也能治疗消化不良。"] = { [Stats.AllStats] = 1, } -- s426606
 W["受到启迪时大幅提高伤害。"] = { [Stats.MeleeHaste] = 20, [Stats.AverageWeaponDamage] = 25, } -- s436430
+W["使你学会一种新的铭刻技能。"] = { [Stats.MeleeCrit] = 5, [Stats.RangedCrit] = 5, } -- s410113
 W["破甲"] = { [Stats.AverageWeaponDamage] = -10, } -- e27
 W["初级巫师之油"] = { [Stats.SpellPower] = 8, } -- e2623
 W["初级法力之油"] = { [Stats.GenericManaRegen] = 4, } -- e2624
@@ -1138,6 +1139,9 @@ L["使智力提高%s点，持续%s分钟。"] = { { Stats.Intellect, }, false, }
 L["战士发出怒吼，使附近所有小队成员的近身和远程伤害提高%s，持续%s秒。"] = { { Stats.AverageWeaponDamage, }, false, } -- s26043
 L["使你的宠物的爆击几率提高$%s%。"] = { { Stats.MeleeCrit, Stats.RangedCrit, }, } -- s436689
 L["使你的近战攻击强度提高%s点，体型增大，持续%s小时。"] = { { Stats.AttackPower, }, false, } -- s473469
+L["用闪电箭击败敌人%s次后习得一种新技能。"] = { { Stats.BlockChance, }, } -- s410098
+L["教你学会给一件护腕永久性地附魔，使你的法术所造成的伤害提高最多%s点。"] = { { Stats.SpellPower, }, } -- s1217189
+L["教你学会给一件护腕永久性地附魔，使装备它的人物获得敏捷提高%s点的效果。"] = { { Stats.Agility, }, } -- s1217203
 L["磨快 %s"] = { { Stats.AverageWeaponDamage, }, } -- e13
 L["强化护甲 %s"] = { { Stats.Armor, }, } -- e15
 L["增重 %s"] = { { Stats.AverageWeaponDamage, }, } -- e19

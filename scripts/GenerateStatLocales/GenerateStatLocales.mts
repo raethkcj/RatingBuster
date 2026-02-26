@@ -345,7 +345,7 @@ class DatabaseTable {
 	static async get(name: string, expansion: Expansion, locale: string): Promise<DatabaseTable> {
 		const fileName = `${name}_${expansion}_${locale}.csv`
 		if (!this.cache.get(fileName)) {
-			this.cache.set(fileName, new Promise<DatabaseTable>(async resolve => {
+			this.cache.set(fileName, new Promise<DatabaseTable>(async (resolve, reject) => {
 				const table = new DatabaseTable(name, expansion, locale, fileName)
 				if (existsSync(table.path)) {
 					console.log(`Found ${fileName}, skipping fetch.`)
@@ -359,7 +359,7 @@ class DatabaseTable {
 						writeFileSync(table.path, text)
 						console.log(`Fetched ${fileName}.`)
 					} else {
-						throw new Error(`Failed to fetch ${table.path}: ${response.status} ${response.statusText}`)
+						reject(`Failed to fetch ${table.path}: ${response.status} ${response.statusText}`)
 					}
 				}
 				resolve(table)
@@ -863,6 +863,50 @@ async function getEnchantSpells(expansion: Expansion, statEnchants: StatEnchant[
 	return expansionsEnchantSpells.get(expansion)!
 }
 
+const TriggerTypeOnLearn = 6
+
+type EnchantRecipe = {
+	SpellID: number
+	EnchantID: number
+	Description_lang: string
+}
+
+async function queryEnchantRecipes(expansion: Expansion, locale: string, spellEnchants: Map<number, number>) {
+	let itemSparse
+	let itemEffect
+	try {
+		itemSparse = await DatabaseTable.get("ItemSparse", expansion, locale)
+		itemEffect = await DatabaseTable.get("ItemEffect", expansion, locale)
+	} catch (error) {
+		console.error(error)
+		return []
+	}
+
+	const spellEnchantsSQL = spellEnchants.entries().map(([k, v]) => k + ": " + v).toArray().join(",")
+	const query = `
+		SELECT SpellID, Description_lang, MAP {${spellEnchantsSQL}}[SpellID] as EnchantID
+		FROM read_csv('${itemSparse.path}', auto_type_candidates = ['INTEGER', 'DOUBLE', 'VARCHAR']) ItemSparse
+		LEFT JOIN read_csv('${itemEffect.path}', auto_type_candidates = ['INTEGER', 'DOUBLE', 'VARCHAR']) ItemEffect
+		ON ItemSparse.ID = ItemEffect.ParentItemID
+		AND ItemEffect.TriggerType = ${TriggerTypeOnLearn}
+		WHERE SpellID IN (${spellEnchants.keys().toArray()})
+	`
+
+	const reader = await connection.runAndReadAll(query)
+	return reader.getRowObjects() as EnchantRecipe[]
+}
+
+async function getEnchantRecipes(expansion: Expansion, locale: string, spellEnchants: Map<number, number>, spellDescriptions: SpellDescription[]) {
+	const enchantRecipes = await queryEnchantRecipes(expansion, locale, spellEnchants)
+	for (const enchantRecipe of enchantRecipes) {
+		spellEnchants.set(enchantRecipe.SpellID, enchantRecipe.EnchantID)
+		spellDescriptions.push({
+			ID: enchantRecipe.SpellID,
+			Description_lang: enchantRecipe.Description_lang
+		})
+	}
+}
+
 const singularZeroLocales = new Set([
 	"frFR",
 	"koKR",
@@ -1177,6 +1221,9 @@ async function getLocaleStatMap(
 
 	const spellDurationFormats = await getSpellDurationFormats(expansion, locale)
 	const spellDescriptions = await queryStatSpellDescriptions(expansion, locale, Array.from(spellDescIDs))
+
+	await getEnchantRecipes(expansion, locale, spellEnchants, spellDescriptions)
+
 	for (const spellDescription of spellDescriptions) {
 		const staticEffects = spellStatEffects.get(spellDescription.ID)
 		const procEffects = spellStatEffects.get(procSpells.get(spellDescription.ID)!)
