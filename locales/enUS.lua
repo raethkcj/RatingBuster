@@ -210,10 +210,10 @@ L["statPatterns"] = {
 	[StatLogic.Stats.SpellPower] = { "spell power" },
 	[StatLogic.Stats.GenericAttackPower] = { "attack power" },
 
-	[StatLogic.Stats.MeleeCritRating] = { "critical strike", "critical hit rating", "critical rating", "crit rating", "crit" },
+	[StatLogic.Stats.MeleeCritRating] = { "critical strike rating", "critical strike", "critical hit rating", "critical rating", "crit rating", "crit" },
 	[StatLogic.Stats.RangedCritRating] = { "ranged critical strike", "ranged critical hit rating", "ranged critical rating", "ranged crit rating" },
 	[StatLogic.Stats.SpellCritRating] = { "spell critical strike rating", "spell critical hit rating", "spell critical rating", "spell crit rating", "spell critical" },
-	[StatLogic.Stats.CritRating] = { "critical strike", "critical hit rating", "critical rating", "crit rating", "crit" },
+	[StatLogic.Stats.CritRating] = { "critical strike rating", "critical strike", "critical hit rating", "critical rating", "crit rating", "crit" },
 
 	[StatLogic.Stats.MeleeHitRating] = { "hit rating", "hit" },
 	[StatLogic.Stats.RangedHitRating] = { "ranged hit rating" },
@@ -225,14 +225,14 @@ L["statPatterns"] = {
 
 	[StatLogic.Stats.MeleeHasteRating] = { "haste rating", "haste" },
 	[StatLogic.Stats.RangedHasteRating] = { "ranged haste rating" },
-	[StatLogic.Stats.SpellHasteRating] = { "spell haste rating" },
+	[StatLogic.Stats.SpellHasteRating] = { "spell haste rating", "spell haste" },
 	[StatLogic.Stats.HasteRating] = { "haste rating", "haste" },
 
-	[StatLogic.Stats.ExpertiseRating] = { "expertise" },
+	[StatLogic.Stats.ExpertiseRating] = { "expertise rating", "expertise" },
 
 	[StatLogic.Stats.AllStats] = { SPELL_STATALL:lower() },
 
-	[StatLogic.Stats.ArmorPenetrationRating] = { "armor penetration" },
+	[StatLogic.Stats.ArmorPenetrationRating] = { "armor penetration rating", "armor penetration" },
 	[StatLogic.Stats.MasteryRating] = { "mastery rating", "mastery" },
 	[StatLogic.Stats.Armor] = { ARMOR:lower() },
 }
