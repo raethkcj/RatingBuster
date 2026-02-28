@@ -13,62 +13,75 @@ enum Expansion {
 	Mists,
 }
 
-{
-	type ProductBuilds = { [product: string]: { version: string }[] }
-	let productBuilds: Promise<ProductBuilds>
-	async function fetchProductBuilds() {
-		if (!productBuilds) {
-			productBuilds = fetch("https://wago.tools/api/builds").then(response => response.json()) as Promise<ProductBuilds>
-		}
-
-		return productBuilds
+type ProductBuilds = { [product: string]: { version: string }[] }
+let productBuilds: Promise<ProductBuilds>
+async function fetchProductBuilds() {
+	if (!productBuilds) {
+		productBuilds = fetch("https://wago.tools/api/builds").then(response => response.json()) as Promise<ProductBuilds>
 	}
 
-	const publicProducts = new Set<string> ([
-		"wow_classic",
-		"wow_classic_ptr",
-		"wow_classic_era",
-		"wow_classic_era_ptr",
-		"wow_classic_beta",
-	])
+	return productBuilds
+}
 
-	class Version {
-		constructor(
-			public version = "",
-			public expansion = "",
-			public major = "",
-			public minor = "",
-			public buildNumber = "",
-		) {}
+const publicProducts = new Set<string> ([
+	"wow_classic",
+	"wow_classic_ptr",
+	"wow_classic_era",
+	"wow_classic_era_ptr",
+	"wow_classic_beta",
+])
 
-		gte(other: Version): boolean {
-			return this.expansion >= other.expansion
-				&& this.major >= other.major
-				&& this.minor >= other.minor
-				&& this.buildNumber >= other.buildNumber
-		}
+class Build {
+	previous?: Build
+
+	constructor(
+		public version = "",
+		public expansion = "",
+		public major = "",
+		public minor = "",
+		public buildNumber = "",
+	) {}
+
+	toString() {
+		return this.version
 	}
 
-	var getLatestVersion = async function(expansion: Expansion) {
-		const productBuilds = await fetchProductBuilds()
-		let max = new Version()
-		for (const product of publicProducts) {
-			const builds = productBuilds[product]
-			const build = builds.find(b => b.version.startsWith(`${expansion}.`))
+	gte(other: Build): boolean {
+		return this.expansion >= other.expansion
+		&& this.major >= other.major
+		&& this.minor >= other.minor
+		&& this.buildNumber >= other.buildNumber
+	}
+}
+
+var getLatestVersion = async function(expansion: Expansion) {
+	const productBuilds = await fetchProductBuilds()
+	const latestMinorBuilds = new Map<string, Build>()
+	for (const product of publicProducts) {
+		const builds = productBuilds[product]
+		// const build = builds.find(b => b.version.startsWith(`${expansion}.`))
+		for (const build of builds) {
 			const version = build?.version
-			if (version) {
-				const current = new Version(version, ...version.split("."))
-				if (current.gte(max)) {
-					max = current
+			if (version && version.startsWith(`${expansion}.`)) {
+				const current = new Build(version, ...version.split("."))
+				const latestMinorBuild = latestMinorBuilds.get(current.minor)
+				if (!latestMinorBuild || current.gte(latestMinorBuild)) {
+					latestMinorBuilds.set(current.minor, current)
 				}
 			}
 		}
-		if (max.version != "") {
-			console.log(`Found version ${max.version} for expansion ${Expansion[expansion]}`)
-			return max.version
-		} else {
-			throw new Error(`Couldn't find any public build for expansion ${Expansion[expansion]}`)
-		}
+	}
+	const latestBuilds = latestMinorBuilds.values().toArray().sort((a, b) => a.gte(b) ? -1 : 1)
+	for(let i = 0; i < latestBuilds.length - 1; i++) {
+		latestBuilds[i].previous = latestBuilds[i + 1]
+	}
+	const latestMinorBuild = latestMinorBuilds.keys().reduce((acc, curr) => acc > curr? acc : curr)
+	const max = latestMinorBuilds.get(latestMinorBuild)
+	if (max) {
+		console.log(`Found version ${max} for expansion ${Expansion[expansion]}`)
+		return max
+	} else {
+		throw new Error(`Couldn't find any public build for expansion ${Expansion[expansion]}`)
 	}
 }
 
@@ -350,17 +363,23 @@ class DatabaseTable {
 				if (existsSync(table.path)) {
 					console.log(`Found ${fileName}, skipping fetch.`)
 				} else {
-					console.log(`Fetching ${fileName}.`)
-					const build = await getLatestVersion(expansion)
-					const fetchUrl = `https://wago.tools/db2/${name}/csv?build=${build}&locale=${locale}`
-					const response = await fetch(fetchUrl)
-					if (response.ok) {
-						const text = await response.text()
-						writeFileSync(table.path, text)
-						console.log(`Fetched ${fileName}.`)
-					} else {
-						reject(`Failed to fetch ${table.path}: ${response.status} ${response.statusText}`)
-					}
+					let build: Build | undefined = await getLatestVersion(expansion)
+					do {
+						console.log(`Fetching ${fileName}.`)
+						const fetchUrl = `https://wago.tools/db2/${name}/csv?build=${build}&locale=${locale}`
+						const response = await fetch(fetchUrl)
+						if (response.ok) {
+							const text = await response.text()
+							writeFileSync(table.path, text)
+							console.log(`Fetched ${fileName}.`)
+							resolve(table)
+							return
+						} else {
+							console.warn(`Failed to fetch ${fetchUrl}: ${response.status} ${response.statusText}`)
+							build = build.previous
+						}
+					} while (build)
+					reject(`Failed to fetch ${table.path}`)
 				}
 				resolve(table)
 			}))
