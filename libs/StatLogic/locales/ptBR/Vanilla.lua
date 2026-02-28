@@ -1149,9 +1149,9 @@ L["libera todo o seu potencial dentro de naxxramas, aumentando em %s%s% seu dano
 L["aumenta em %s a agilidade por %s s"] = { { Stats.Agility, }, false, } -- s1231406
 L["aumenta em %s% a velocidade de ataque dos aliados próximos por %s min"] = { { Stats.MeleeHaste, }, false, } -- s3631
 L["aumenta em %s% a velocidade de ataque do lançador por %s min"] = { { Stats.MeleeHaste, }, false, } -- s5915
-L["ensina a encantar braçadeiras permanentemente para aumentar em %s o dano de feitiços"] = { { Stats.SpellPower, }, } -- s1217189
-L["ensina a encantar braçadeiras permanentemente para aumentar em %s a agilidade"] = { { Stats.Agility, }, } -- s1217203
-L["aprenda uma nova habilidade após derrotar %s inimigos com raio"] = { { Stats.BlockChance, }, } -- s410098
+L["ensina a encantar braçadeiras permanentemente para aumentar em %s o dano de feitiços"] = { { Stats.SpellPower, }, } -- i235526
+L["ensina a encantar braçadeiras permanentemente para aumentar em %s a agilidade"] = { { Stats.Agility, }, } -- i235528
+L["aprenda uma nova habilidade após derrotar %s inimigos com raio"] = { { Stats.BlockChance, }, } -- i206386
 L["afiado %s"] = { { Stats.AverageWeaponDamage, }, } -- e13
 L["armadura reforçada %s"] = { { Stats.Armor, }, } -- e15
 L["balanceado %s"] = { { Stats.AverageWeaponDamage, }, } -- e19

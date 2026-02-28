@@ -1235,9 +1235,9 @@ L["reduce el poder de ataque cuerpo a cuerpo y a distancia de los enemigos cerca
 L["aumenta el poder de ataque cuerpo a cuerpo del taumaturgo en %s p. durante %s h"] = { { Stats.AttackPower, }, false, } -- s473469
 L["reduce todos los atributos de los enemigos cercanos %s p. durante %s s"] = { { Stats.AllStats, }, false, reduction = true } -- s1223265
 L["desbloquea tu potencial dentro de naxxramas. aumenta un %s%s% el daño y un %s%s% la salud por cada pieza de armadura santificada que llevas"] = { { Stats.Health, }, false, false, false, } -- s1230224
-L["te enseña a encantar de forma permanente unos brazales para añadir hasta %s p. de daño con hechizos"] = { { Stats.SpellPower, }, } -- s1217189
-L["te enseña a encantar de forma permanente unos brazales para aumentar %s p. la agilidad"] = { { Stats.Agility, }, } -- s1217203
-L["aprendes una nueva facultad tras derrotar %s veces a tus enemigos con descarga de relámpagos"] = { { Stats.BlockChance, }, } -- s410098
+L["te enseña a encantar de forma permanente unos brazales para añadir hasta %s p. de daño con hechizos"] = { { Stats.SpellPower, }, } -- i235526
+L["te enseña a encantar de forma permanente unos brazales para aumentar %s p. la agilidad"] = { { Stats.Agility, }, } -- i235528
+L["aprendes una nueva facultad tras derrotar %s veces a tus enemigos con descarga de relámpagos"] = { { Stats.BlockChance, }, } -- i206386
 L["afilado %s"] = { { Stats.AverageWeaponDamage, }, } -- e13
 L["armadura reforzada %s"] = { { Stats.Armor, }, } -- e15
 L["pesado %s"] = { { Stats.AverageWeaponDamage, }, } -- e19

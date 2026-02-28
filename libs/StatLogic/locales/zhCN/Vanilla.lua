@@ -29,7 +29,7 @@ W["筋疲力尽。"] = { [Stats.MeleeHaste] = -100, } -- s424574
 W["使饮用者能够与尘缘未了之人的遗骸沟通。也能治疗消化不良。"] = { [Stats.AllStats] = 1, } -- s426606
 W["受到启迪时大幅提高伤害。"] = { [Stats.MeleeHaste] = 20, [Stats.AverageWeaponDamage] = 25, } -- s436430
 W["被灰烬使者的力量所审判。昏迷，护甲和躲闪几率降低。"] = { [Stats.Dodge] = -50, } -- s1229508
-W["使你学会一种新的铭刻技能。"] = { [Stats.MeleeCrit] = 5, [Stats.RangedCrit] = 5, } -- s410113
+W["使你学会一种新的铭刻技能。"] = { [Stats.MeleeCrit] = 5, [Stats.RangedCrit] = 5, } -- i206155
 W["破甲"] = { [Stats.AverageWeaponDamage] = -10, } -- e27
 W["初级巫师之油"] = { [Stats.SpellPower] = 8, } -- e2623
 W["初级法力之油"] = { [Stats.GenericManaRegen] = 4, } -- e2624
@@ -1166,9 +1166,9 @@ L["使附近敌人的所有属性降低%s点，持续%s秒。"] = { { Stats.AllS
 L["在纳克萨玛斯中解锁你的潜力。每装备一件圣化护甲，使你的伤害提高%s%s%，生命值提高%s%s%。"] = { { Stats.Health, }, false, false, false, } -- s1230224
 L["使附近所有友方玩家的攻击速度提高%s%，持续%s分钟。"] = { { Stats.MeleeHaste, }, false, } -- s3631
 L["使施法者的攻击速度提高%s%，持续%s分钟。"] = { { Stats.MeleeHaste, }, false, } -- s5915
-L["用闪电箭击败敌人%s次后习得一种新技能。"] = { { Stats.BlockChance, }, } -- s410098
-L["教你学会给一件护腕永久性地附魔，使你的法术所造成的伤害提高最多%s点。"] = { { Stats.SpellPower, }, } -- s1217189
-L["教你学会给一件护腕永久性地附魔，使装备它的人物获得敏捷提高%s点的效果。"] = { { Stats.Agility, }, } -- s1217203
+L["用闪电箭击败敌人%s次后习得一种新技能。"] = { { Stats.BlockChance, }, } -- i206386
+L["教你学会给一件护腕永久性地附魔，使你的法术所造成的伤害提高最多%s点。"] = { { Stats.SpellPower, }, } -- i235526
+L["教你学会给一件护腕永久性地附魔，使装备它的人物获得敏捷提高%s点的效果。"] = { { Stats.Agility, }, } -- i235528
 L["磨快 %s"] = { { Stats.AverageWeaponDamage, }, } -- e13
 L["强化护甲 %s"] = { { Stats.Armor, }, } -- e15
 L["增重 %s"] = { { Stats.AverageWeaponDamage, }, } -- e19

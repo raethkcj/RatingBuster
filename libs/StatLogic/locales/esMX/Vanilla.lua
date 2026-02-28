@@ -1279,9 +1279,9 @@ L["añade una mira permanente a un arco o arma de fuego que aumenta %s p. el da�
 L["aumenta un %s% la probabilidad de golpe crítico de los hechizos y un %s% la de ataques cuerpo a cuerpo y a distancia, y otorga %s p. de poder de ataque"] = { { Stats.SpellCrit, }, { Stats.MeleeCrit, Stats.RangedCrit, }, { Stats.GenericAttackPower, }, } -- s1278762
 L["aumenta la velocidad de ataque de los aliados cercanos un %s% durante %s min"] = { { Stats.MeleeHaste, }, false, } -- s3631
 L["aumenta la velocidad de ataque del taumaturgo un %s% durante %s min"] = { { Stats.MeleeHaste, }, false, } -- s5915
-L["te enseña a encantar de forma permanente unos brazales para que añadan hasta %s p. de daño a los hechizos"] = { { Stats.SpellPower, }, } -- s1217189
-L["te enseña a encantar de forma permanente unos brazales para que aumenten tu agilidad en %s p"] = { { Stats.Agility, }, } -- s1217203
-L["aprendes una nueva habilidad después de derrotar enemigos %s veces con descarga de relámpagos"] = { { Stats.BlockChance, }, } -- s410098
+L["te enseña a encantar de forma permanente unos brazales para que añadan hasta %s p. de daño a los hechizos"] = { { Stats.SpellPower, }, } -- i235526
+L["te enseña a encantar de forma permanente unos brazales para que aumenten tu agilidad en %s p"] = { { Stats.Agility, }, } -- i235528
+L["aprendes una nueva habilidad después de derrotar enemigos %s veces con descarga de relámpagos"] = { { Stats.BlockChance, }, } -- i206386
 L["afilado %s"] = { { Stats.AverageWeaponDamage, }, } -- e13
 L["armadura reforzada %s"] = { { Stats.Armor, }, } -- e15
 L["pesado %s"] = { { Stats.AverageWeaponDamage, }, } -- e19

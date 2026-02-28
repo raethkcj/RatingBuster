@@ -1218,9 +1218,9 @@ L["erhöht %s stunde lang eure nahkampfangriffskraft um %s sowie auch eure grö�
 L["verringert alle attribute von gegnern in der nähe %s sek. lang um %s"] = { false, { Stats.AllStats, }, reduction = true } -- s1223265
 L["entfaltet euer potenzial, während ihr in naxxramas seid. erhöht pro ausgerüstetem teil geweihter rüstung euren schaden um %s%s% und eure gesundheit um %s%s%"] = { { Stats.Health, }, false, false, false, } -- s1230224
 L["erhöht die beweglichkeit %s sek. lang um %s"] = { false, { Stats.Agility, }, } -- s1231406
-L["lehrt euch, wie man armschienen dauerhaft so verzaubert, dass sie den schaden von zaubern um bis zu %s erhöhen"] = { { Stats.SpellPower, }, } -- s1217189
-L["lehrt euch, wie man armschienen dauerhaft so verzaubert, dass die beweglichkeit um %s erhöht wird"] = { { Stats.Agility, }, } -- s1217203
-L["erlernt eine neue fähigkeit, nachdem ihr gegner %s-mal mit 'blitzschlag' besiegt habt"] = { { Stats.BlockChance, }, } -- s410098
+L["lehrt euch, wie man armschienen dauerhaft so verzaubert, dass sie den schaden von zaubern um bis zu %s erhöhen"] = { { Stats.SpellPower, }, } -- i235526
+L["lehrt euch, wie man armschienen dauerhaft so verzaubert, dass die beweglichkeit um %s erhöht wird"] = { { Stats.Agility, }, } -- i235528
+L["erlernt eine neue fähigkeit, nachdem ihr gegner %s-mal mit 'blitzschlag' besiegt habt"] = { { Stats.BlockChance, }, } -- i206386
 L["geschärft %s"] = { { Stats.AverageWeaponDamage, }, } -- e13
 L["verstärkte rüstung %s"] = { { Stats.Armor, }, } -- e15
 L["beschwert %s"] = { { Stats.AverageWeaponDamage, }, } -- e19

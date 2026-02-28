@@ -1314,9 +1314,9 @@ L["augmente l'intelligence de %s pendant %s min"] = { { Stats.Intellect, }, fals
 L["augmente de %s la puissance d'attaque en mêlée des membres de votre groupe qui se trouvent à proximité pendant %s sec"] = { { Stats.AverageWeaponDamage, }, false, } -- s24438
 L["réduit toutes les caractéristiques des ennemis proches de %s pendant %s sec"] = { { Stats.AllStats, }, false, reduction = true } -- s1223265
 L["vous permet de libérer votre plein potentiel lorsque vous êtes dans naxxramas. augmente vos dégâts de %s%s % et vos points de vie de %s%s % pour chaque pièce d’armure sanctifiée équipée"] = { { Stats.Health, }, false, false, false, } -- s1230224
-L["vous apprend à enchanter définitivement des brassards. ces derniers ajoutent un maximum de %s aux dégâts des sorts"] = { { Stats.SpellPower, }, } -- s1217189
-L["vous apprend à enchanter définitivement des brassards. ces derniers augmentent l’agilité de %s"] = { { Stats.Agility, }, } -- s1217203
-L["permet d’acquérir une nouvelle capacité après avoir vaincu %s ennemis à l’aide du sort éclair"] = { { Stats.BlockChance, }, } -- s410098
+L["vous apprend à enchanter définitivement des brassards. ces derniers ajoutent un maximum de %s aux dégâts des sorts"] = { { Stats.SpellPower, }, } -- i235526
+L["vous apprend à enchanter définitivement des brassards. ces derniers augmentent l’agilité de %s"] = { { Stats.Agility, }, } -- i235528
+L["permet d’acquérir une nouvelle capacité après avoir vaincu %s ennemis à l’aide du sort éclair"] = { { Stats.BlockChance, }, } -- i206386
 L["arme aiguisée %s"] = { { Stats.AverageWeaponDamage, }, } -- e13
 L["armure renforcée %s"] = { { Stats.Armor, }, } -- e15
 L["arme équilibrée %s"] = { { Stats.AverageWeaponDamage, }, } -- e19
