@@ -57,6 +57,12 @@ W["enquanto a \"doutora\" estiver dando duro, a sua vida não diminuirá"] = { [
 W["isso é tudo fingimento. \nvocê se imagina mais forte e mais resiliente. \nvocê tem certeza de que consegue lidar com a peste"] = { [Stats.FrostResistance] = 200, } -- s346285
 W["aumenta a vida, a taxa de aceleração nos ataques de corpo a corpo e a regeneração de mana"] = { [Stats.Health] = 300, [Stats.MeleeHasteRating] = 150, [Stats.GenericManaRegen] = 10, } -- s355366
 W["permite que armas de uma mão e de mão secundária possam ser empunhadas na mão secundária"] = { [Stats.MeleeHit] = 20, [Stats.RangedHit] = 20, } -- s42459
+W["ensina a"] = { [Stats.Agility] = 1, } -- s7867
+W["ensina a fazer forro de pele – resistência ao fogo"] = { [Stats.FireResistance] = 70, } -- s57692
+W["ensina a fazer forro de pele – resistência ao gelo"] = { [Stats.FrostResistance] = 70, } -- s57694
+W["ensina a fazer forro de pele – resistência à sombra"] = { [Stats.ShadowResistance] = 70, } -- s57696
+W["ensina a fazer forro de pele – resistência à natureza"] = { [Stats.NatureResistance] = 70, } -- s57699
+W["ensina a fazer forro de pele – resistência ao arcano"] = { [Stats.ArcaneResistance] = 70, } -- s57701
 W["partido"] = { [Stats.AverageWeaponDamage] = -10, } -- e27
 W["óleo menor de teurgo"] = { [Stats.SpellPower] = 8, } -- e2623
 W["óleo menor de mana"] = { [Stats.GenericManaRegen] = 4, } -- e2624
@@ -384,9 +390,10 @@ L["acelera seu lançamento de feitiços, aumentando em %s% a velocidade de lanç
 L["reduz em %s todos os atributos dos inimigos próximos por %s min"] = { { Stats.AllStats, }, false, reduction = true } -- s12530
 L["chance de acerto reduzida em %s%"] = { { Stats.MeleeHit, Stats.RangedHit, }, reduction = true } -- s12541
 L["aumenta em %s o dano causado e em %s a taxa de aceleração por %s s"] = { { Stats.AverageWeaponDamage, }, { Stats.MeleeHasteRating, Stats.RangedHasteRating, Stats.SpellHasteRating, }, false, } -- s12686
-L["increases your chance to get a critical strike and the critical damage caused with axes and polearms by %s%"] = { { Stats.MeleeCrit, Stats.RangedCrit, }, } -- s12700
+L["aumenta em %s% a chance de acerto crítico e o dano crítico causado com machados e armas de haste"] = { { Stats.MeleeCrit, Stats.RangedCrit, }, } -- s12700
 L["aumenta em %s o dano por %s s"] = { { Stats.AverageWeaponDamage, }, false, } -- s12731
 L["aumenta em %s a armadura, em %s todas as resistências e concede imunidade a efeitos de medo por %s s. este dispositivo tem chance de ser resistido por jogadores acima do nível %s"] = { { Stats.Armor, }, { Stats.FireResistance, Stats.NatureResistance, Stats.FrostResistance, Stats.ShadowResistance, Stats.ArcaneResistance, }, false, false, } -- s12733
+L["increases your chance to get a critical strike and the critical damage caused with axes and polearms by %s%"] = { { Stats.MeleeCrit, Stats.RangedCrit, }, } -- s12781
 L["enlouquece temporariamente um inimigo, acelerando em %s% os ataques dele e em %s% a velocidade de movimento, e fazendo-o atacar os próprios aliados por %s s"] = { { Stats.MeleeHaste, }, false, false, } -- s12888
 L["obriga os inimigos próximos a falarem em demonês, reduzindo em %s% a velocidade de lançamento deles por %s s. cada alvo sofre o efeito de apenas uma maldição por bruxo"] = { { Stats.SpellHaste, }, false, reduction = true } -- s12889
 L["reduz em %s a força e em %s a agilidade dos inimigos próximos por %s s. também os impede de lançar feitiços"] = { { Stats.Strength, }, { Stats.Agility, }, false, reduction = true } -- s12946
@@ -651,6 +658,7 @@ L["aumenta em %s o vigor do seu ajudante e em %s todas as resistências a feiti�
 L["aumenta em %s o vigor e em %s todas as resistências a feitiços do seu ajudante"] = { { Stats.Stamina, }, false, ignoreSum = true } -- s21928
 L["encanta uma arma de combate corpo a corpo permanentemente, aumentando em %s o poder mágico de gelo"] = { { Stats.FrostDamage, }, } -- s21931
 L["fere o alvo, causando %s de dano e reduzindo em %s a armadura dele"] = { false, { Stats.Armor, }, reduction = true } -- s21961
+L["aumenta em %s todos os atributos por %s min"] = { { Stats.AllStats, }, false, } -- s21970
 L["lança raios contra o seu inimigo, causando %s de dano de natureza e se propagando para outros inimigos próximos. a propagação para o inimigo seguinte reduz em %s a resistência à natureza dele. afeta %s alvos. seu alvo primário também é afetado por um ciclone que reduzirá em %s% a velocidade de ataque por %s s"] = { false, { Stats.NatureResistance, }, false, { Stats.MeleeHaste, }, false, reduction = true } -- s21992
 L["encanta permanentemente um par de braçadeiras para aumentar em %s a força"] = { { Stats.Strength, }, } -- s22051
 L["encanta permanentemente um par de braçadeiras para aumentar em %s o vigor"] = { { Stats.Stamina, }, } -- s22052
@@ -1910,6 +1918,14 @@ L["aumenta em %s o poder de ataque e em %s o dano mágico de integrantes do grup
 L["aumenta em até %s o dano causado e a cura realizada por feitiços e efeitos mágicos"] = { { Stats.SpellDamage, }, } -- s352338
 L["aumenta em %s a cura realizada e em até %s o dano causado por todos os feitiços e efeitos mágicos"] = { { Stats.HealingPower, }, { Stats.SpellDamage, }, } -- s356300
 L["desestabiliza a estrutura molecular de certas criaturas baseadas em saronita, reduzindo em %s% a velocidade de ataque e em %s% a velocidade de lançamento. dura %s s"] = { false, { Stats.SpellHaste, }, false, reduction = true } -- s413118
+L["seus feitiços de cura direcionada e periódica podem aumentar em %s a taxa de aceleração por %s ss"] = { { Stats.MeleeHasteRating, Stats.RangedHasteRating, Stats.SpellHasteRating, }, false, ignoreSum = true } -- s467351
+L["chance on melee and ranged critical strike to increase your attack power by %s for %s ss"] = { { Stats.GenericAttackPower, }, false, ignoreSum = true } -- s467355
+L["each spell cast within %s seconds will grant a stacking bonus of %s mana regen per %s sec. expires after %s seconds.  abilities with no mana cost will not trigger this trinket"] = { false, { Stats.GenericManaRegen, }, false, false, ignoreSum = true } -- s1247618
+L["each time a melee attack strikes you, you have a chance to gain %s armor for %s s"] = { { Stats.Armor, }, false, ignoreSum = true } -- s1249837
+L["each time you hit with a melee or ranged attack, you have a chance to gain %s attack power for %s s"] = { { Stats.GenericAttackPower, }, false, ignoreSum = true } -- s1249839
+L["each time you cast a harmful spell, you have a chance to gain %s spell power for %s s"] = { { Stats.SpellDamage, }, false, ignoreSum = true } -- s1249841
+L["your direct healing and heal over time spells have a chance to increase your haste rating by %s for %s ss"] = { { Stats.MeleeHasteRating, Stats.RangedHasteRating, Stats.SpellHasteRating, }, false, ignoreSum = true } -- s1259860
+L["your harmful spells have a chance to increase your spell power by %s for %s s"] = { { Stats.SpellDamage, }, false, ignoreSum = true } -- s1259909
 L["aumenta em %s% a velocidade de ataque dos aliados próximos por %s min"] = { { Stats.MeleeHaste, }, false, } -- s3631
 L["aumenta em %s% a velocidade de ataque do lançador por %s min"] = { { Stats.MeleeHaste, }, false, } -- s5915
 L["aumenta em %s a agilidade por %s min"] = { { Stats.Agility, }, false, } -- s18192
@@ -1935,6 +1951,114 @@ L["recupera %s pontos de mana ao longo de %s min. é preciso ficar sentado enqua
 L["atinge todos os constructos de ferro com um intenso calor, aumentando em %s a velocidade de movimento deles e em %s a aceleração. este efeito pode acumular até %s vezes. ao acumular %s vezes, o constructo de ferro afetado ficará derretido"] = { false, { Stats.MeleeHaste, }, false, false, } -- s65667
 L["aumenta em %s sua força por %s s"] = { { Stats.Strength, }, false, } -- s67708
 L["dano causado aumentado em %s%.\npontos de vida aumentados em %s%.\nfeitiços não têm custo e são instantâneos.\nvelocidades de ataque corpo a corpo e de longo alcance aumentadas em %s%"] = { false, { Stats.SpellHaste, }, false, } -- s70320
+L["ensina a encantar manto permanentemente para aumentar em %s a taxa de esquiva. requer item de nível %s ou superior"] = { { Stats.DodgeRating, }, false, } -- s25086
+L["ensina a encantar luvas permanentemente para aumentar em %s a agilidade"] = { { Stats.Agility, }, } -- s25080
+L["ensina a encantar permanentemente armas corpo a corpo para aumentar em %s a agilidade. requer item de nível %s ou maior"] = { { Stats.Agility, }, false, } -- s42620
+L["ensina a encantar botas permanentemente para aumentar ligeiramente a velocidade de movimento e aumentar em %s o vigor. requer item de nível %s ou maior"] = { { Stats.Stamina, }, false, } -- s34008
+L["ensina a encantar um par de botas permanentemente para restaurar %s pontos de vida e de mana a cada %s s. requer item de nível %s ou superior"] = { { Stats.HealthRegen, Stats.GenericManaRegen, }, false, false, } -- s27948
+L["ensina a encantar botas permanentemente para aumentar ligeiramente a velocidade de movimento e aumentar em %s a agilidade. requer item de nível %s ou maior"] = { { Stats.Agility, }, false, } -- s34007
+L["ensina a encantar permanentemente armaduras de torso para aumentar em %s a defesa. requer item de nível %s ou superior"] = { { Stats.DefenseRating, }, false, } -- s46594
+L["ensina a encantar permanentemente um manto para aumentar em %s a defesa. requer item de nível %s ou superior"] = { { Stats.DefenseRating, }, false, } -- s47051
+L["ensina a encantar braçadeiras permanentemente para aumentar o espírito em %s. requer item de nível %s ou superior"] = { { Stats.Spirit, }, false, } -- s44593
+L["ensina a encantar armas corpo a corpo permanentemente para aumentar em %s o espírito. requer item de nível %s ou superior"] = { { Stats.Spirit, }, false, } -- s44510
+L["ensina a encantar mantos permanentemente para aumentar em %s a resistência ao arcano. requer item de nível %s ou superior"] = { { Stats.ArcaneResistance, }, false, } -- s44596
+L["ensina a encantar mantos permanentemente para aumentar em %s a resistência ao fogo. requer item de nível %s ou superior"] = { { Stats.FireResistance, }, false, } -- s44556
+L["ensina a encantar mantos permanentemente para aumentar em %s a resistência ao gelo. requer item de nível %s ou superior"] = { { Stats.FrostResistance, }, false, } -- s44483
+L["ensina a encantar mantos permanentemente para aumentar em %s a resistência à natureza. requer item de nível %s ou superior"] = { { Stats.NatureResistance, }, false, } -- s44494
+L["ensina a encantar mantos permanentemente para aumentar em %s a resistência à sombra. requer item de nível %s ou superior"] = { { Stats.ShadowResistance, }, false, } -- s44590
+L["ensina a encantar mantos permanentemente para aumentar em %s a agilidade. requer item de nível %s ou superior"] = { { Stats.Agility, }, false, } -- s44500
+L["ensina a encantar armaduras de torso permanentemente para aumentar em %s todos os atributos. requer item de nível %s ou superior"] = { { Stats.AllStats, }, false, } -- s44616
+L["ensina a encantar armaduras de torso permanentemente para aumentar em %s a taxa de resiliência. requer item de nível %s ou superior"] = { { Stats.ResilienceRating, }, false, } -- s44588
+L["ensina a encantar botas permanentemente para aumentar em %s a agilidade. requer item de nível %s ou superior"] = { { Stats.Agility, }, false, } -- s44589
+L["ensina a encantar luvas permanentemente para aumentar em %s a taxa de acerto crítico. requer item de nível %s ou superior"] = { { Stats.CritRating, }, false, } -- s44612
+L["ensina a encantar armas corpo a corpo permanentemente para aumentar em %s a agilidade. requer item de nível %s ou superior"] = { { Stats.Agility, }, false, } -- s44633
+L["ensina a encantar braçadeiras permanentemente para aumentar em %s a taxa de aptidão. requer item de nível %s ou superior"] = { { Stats.ExpertiseRating, }, false, } -- s44598
+L["ensina a encantar permanentemente um manto para aumentar um pouco a furtividade e a agilidade em %s. requer item de nível %s ou superior"] = { { Stats.Agility, }, false, } -- s44631
+L["ensina a encantar permanentemente um manto para aumentar em %s a armadura. requer um item de nível %s ou superior"] = { { Stats.Armor, }, false, } -- s47672
+L["ensina a encantar permanentemente um manto para aumentar em %s a taxa de aceleração. requer um item de nível %s ou superior"] = { { Stats.HasteRating, }, false, } -- s47898
+L["ensina a encantar permanentemente uma arma de duas mãos de corpo a corpo para aumentar em %s o poder de ataque. requer um item de nível %s ou superior"] = { { Stats.GenericAttackPower, }, false, } -- s60691
+L["ensina a encantar braçadeiras permanentemente para aumentar em %s o poder de ataque. requer um item de nível %s ou superior"] = { { Stats.GenericAttackPower, }, false, } -- s44575
+L["ensina a encantar luvas permanentemente para aumentar em %s% a ameaça causada e em %s a taxa de aparo. requer um item de nível %s ou superior"] = { false, { Stats.ParryRating, }, false, } -- s44625
+L["ensina a encantar permanentemente uma arma corpo a corpo para aumentar em %s o poder de ataque. requer um item de nível %s ou superior"] = { { Stats.GenericAttackPower, }, false, } -- s60707
+L["ensina a encantar permanentemente uma arma corpo a corpo para aumentar em %s o poder mágico. requer um item de nível %s ou superior"] = { { Stats.SpellPower, }, false, } -- s60714
+L["ensina a encantar permanentemente um manto para reduzir ligeiramente a ameaça e aumentar em %s o espírito. requer um item de nível %s ou superior"] = { { Stats.Spirit, }, false, } -- s47899
+L["ensina a encantar permanentemente uma armadura de torso para aumentar em %s todos os atributos. requer um item de nível %s ou superior"] = { { Stats.AllStats, }, false, } -- s60692
+L["ensina a encantar botas permanentemente para aumentar em %s o poder de ataque. requer um item de nível %s ou superior"] = { { Stats.GenericAttackPower, }, false, } -- s60763
+L["ensina a encantar botas permanentemente para aumentar ligeiramente a velocidade de movimento e em %s o vigor. requer um item de nível %s ou superior"] = { { Stats.Stamina, }, false, } -- s47901
+L["ensina a encantar permanentemente uma arma corpo a corpo para aumentar em %s a taxa de acerto e o acerto crítico. requer um item de nível %s ou superior"] = { { Stats.HitRating, Stats.CritRating, }, false, } -- s59619
+L["ensina a encantar braçadeiras permanentemente para aumentar em %s o poder mágico. requer um item de nível %s ou superior"] = { { Stats.SpellPower, }, false, } -- s60767
+L["ensina a encantar braçadeiras permanentemente para aumentar em %s o vigor. requer um item de nível %s ou superior"] = { { Stats.Stamina, }, false, } -- s62256
+L["ensina a encantar permanentemente uma arma corpo a corpo para aumentar em %s o vigor. requer um item de nível %s ou superior"] = { { Stats.Stamina, }, false, } -- s62257
+L["ensina a encantar permanentemente um cajado para aumentar em %s o poder mágico. requer um item de nível %s ou superior"] = { { Stats.SpellPower, }, false, } -- s62948
+L["ensina a encantar permanentemente um anel para aumentar em %s todos os atributos"] = { { Stats.AllStats, }, } -- s27927
+L["ensina a encantar armaduras de torso permanentemente para aumentar em %s o total de pontos de mana"] = { { Stats.Mana, }, } -- s7443
+L["ensina a encantar braçadeiras permanentemente para aumentar em %s o espírito"] = { { Stats.Spirit, }, } -- s7766
+L["ensina a encantar mantos permanentemente para aumentar em %s a armadura"] = { { Stats.Armor, }, } -- s7771
+L["ensina a encantar braçadeiras permanentemente para aumentar em %s a força"] = { { Stats.Strength, }, } -- s7782
+L["ensina a encantar armas de duas mãos corpo a corpo permanentemente para aumentar em %s o intelecto"] = { { Stats.Intellect, }, } -- s7793
+L["teaches you how to permanently enchant boots to increase stamina by %s"] = { { Stats.Stamina, }, } -- s7863
+L["ensina a encantar botas permanentemente para aumentar em %s a agilidade"] = { { Stats.Agility, }, } -- s7867
+L["ensina a encantar armas de duas mãos corpo a corpo permanentemente para aumentar em %s o espírito"] = { { Stats.Spirit, }, } -- s13380
+L["ensina a encantar mantos permanentemente para aumentar em %s a agilidade"] = { { Stats.Agility, }, } -- s13419
+L["ensina a encantar mantos permanentemente para aumentar em %s a resistência à sombra"] = { { Stats.ShadowResistance, }, } -- s13522
+L["ensina a encantar braçadeiras permanentemente para aumentar em %s a defesa"] = { { Stats.DefenseRating, }, } -- s13646
+L["ensina a encantar botas permanentemente para aumentar em %s o espírito"] = { { Stats.Spirit, }, } -- s13687
+L["ensina a encantar um escudo permanentemente para aumentar em %s a taxa de bloqueio"] = { { Stats.BlockRating, }, } -- s13689
+L["ensina a encantar escudos permanentemente para aumentar em %s o vigor"] = { { Stats.Stamina, }, } -- s13817
+L["ensina a encantar escudos permanentemente para aumentar em %s a resistência ao gelo"] = { { Stats.FrostResistance, }, } -- s13933
+L["ensina a encantar braçadeiras permanentemente para aumentar em %s o vigor"] = { { Stats.Stamina, }, } -- s13945
+L["ensina a encantar braçadeiras permanentemente para aumentar em %s o intelecto"] = { { Stats.Intellect, }, } -- s20008
+L["ensina a encantar botas permanentemente para aumentar em %s o vigor"] = { { Stats.Stamina, }, } -- s20020
+L["ensina a encantar mantos permanentemente para aumentar em %s todas as resistências"] = { { Stats.FireResistance, Stats.NatureResistance, Stats.FrostResistance, Stats.ShadowResistance, Stats.ArcaneResistance, }, } -- s20014
+L["ensina a encantar armaduras de torso permanentemente para aumentar em %s os pontos de vida"] = { { Stats.Health, }, } -- s20026
+L["ensina a encantar armaduras de torso permanentemente para aumentar em %s os pontos de mana"] = { { Stats.Mana, }, } -- s20028
+L["ensina a encantar luvas permanentemente para aumentar em %s a força"] = { { Stats.Strength, }, } -- s20013
+L["ensina a encantar permanentemente armas de duas mãos corpo a corpo para aumentar em %s o dano"] = { { Stats.AverageWeaponDamage, }, } -- s20030
+L["ensina a encantar permanentemente armas de duas mãos corpo a corpo para aumentar em %s intelecto"] = { { Stats.Intellect, }, } -- s20036
+L["ensina a encantar permanentemente armas corpo a corpo para aumentar em %s o dano"] = { { Stats.AverageWeaponDamage, }, } -- s20031
+L["ensina a encantar armaduras de torso permanentemente para aumentar em %s todos os atributos"] = { { Stats.AllStats, }, } -- s20025
+L["ensina a encantar permanentemente armas de duas mãos corpo a corpo para aumentar em %s o espírito"] = { { Stats.Spirit, }, } -- s20035
+L["ensina a encantar permanentemente armas corpo a corpo para aumentar em %s o poder mágico de gelo"] = { { Stats.FrostDamage, }, } -- s21931
+L["ensina a encantar armas corpo a corpo permanentemente para aumentar em %s o poder mágico"] = { { Stats.SpellPower, }, } -- s22749
+L["ensina a encantar armas de corpo-a-corpo permanentemente para aumentar a força em %s"] = { { Stats.Strength, }, } -- s23799
+L["ensina a encantar permanentemente armas corpo a corpo para aumentar em %s a agilidade"] = { { Stats.Agility, }, } -- s23800
+L["ensina a encantar braçadeiras permanentemente para restaurar %s pontos de mana a cada %s s"] = { { Stats.GenericManaRegen, }, false, } -- s23801
+L["ensina a encantar braçadeiras permanentemente para aumentar em %s o poder mágico"] = { { Stats.SpellPower, }, } -- s23802
+L["ensina a encantar armas de corpo-a-corpo permanentemente para aumentar o espírito em %s"] = { { Stats.Spirit, }, } -- s23803
+L["ensina a encantar armas de corpo-a-corpo permanentemente para aumentar o intelecto em %s"] = { { Stats.Intellect, }, } -- s23804
+L["ensina a encantar luvas permanentemente para aumentar em %s o poder mágico de sombra"] = { { Stats.ShadowDamage, }, } -- s25073
+L["ensina a encantar luvas permanentemente para aumentar em %s o poder mágico de gelo"] = { { Stats.FrostDamage, }, } -- s25074
+L["ensina a encantar luvas permanentemente para aumentar em %s o poder mágico de fogo"] = { { Stats.FireDamage, }, } -- s25078
+L["ensina a encantar luvas permanentemente para aumentar em %s o poder mágico"] = { { Stats.SpellPower, }, } -- s25079
+L["ensina a encantar um manto permanentemente para aumentar a resistência ao fogo em %s"] = { { Stats.FireResistance, }, } -- s25081
+L["ensina a encantar um manto permanentemente para aumentar a resistência à natureza em %s"] = { { Stats.NatureResistance, }, } -- s25082
+L["ensina a encantar um manto permanentemente para aumentar em %s a taxa de esquiva"] = { { Stats.DodgeRating, }, } -- s25086
+L["ensina a encantar permanentemente armas corpo a corpo de duas mãos para aumentar em %s a agilidade"] = { { Stats.Agility, }, } -- s27837
+L["ensina a encantar braçadeiras permanentemente para aumentar em %s a defesa. requer item de nível %s ou superior"] = { { Stats.DefenseRating, }, false, } -- s27906
+L["ensina a encantar braçadeiras permanentemente para aumentar em %s o poder mágico. requer item de nível %s ou superior"] = { { Stats.SpellPower, }, false, } -- s27911
+L["ensina a encantar braçadeiras permanentemente para restaurar %s pontos de mana a cada %s s. requer item de nível %s ou superior"] = { { Stats.GenericManaRegen, }, false, false, } -- s27913
+L["ensina a encantar braçadeiras permanentemente para aumentar em %s o vigor. requer item de nível %s ou superior"] = { { Stats.Stamina, }, false, } -- s27914
+L["ensina a encantar anel permanentemente para aumentar em %s o dano físico. apenas os anéis do encantador podem ser encantados e, ao fazê-lo, o anel se torna vinculado. requer item de nível %s ou superior"] = { { Stats.AverageWeaponDamage, }, false, } -- s27920
+L["ensina a encantar anel permanentemente para aumentar o poder mágico em %s. apenas os anéis do encantador podem ser encantados e, ao fazê-lo, o anel se torna vinculado. requer item de nível %s ou superior"] = { { Stats.SpellPower, }, false, } -- s27924
+L["ensina a encantar anel permanentemente para aumentar em %s todos os atributos. apenas os anéis do encantador podem ser encantados e, ao fazê-lo, o anel se torna vinculado. requer item de nível %s ou superior"] = { { Stats.AllStats, }, false, } -- s27927
+L["ensina a encantar escudos permanentemente para aumentar em %s o intelecto. requer item de nível %s ou superior"] = { { Stats.Intellect, }, false, } -- s27945
+L["ensina a encantar um escudo permanentemente para aumentar em %s a taxa de bloqueio. requer item de nível %s ou superior"] = { { Stats.BlockRating, }, false, } -- s27946
+L["ensina a encantar escudos permanentemente para aumentar em %s todas as resistências. requer item de nível %s ou superior"] = { { Stats.FireResistance, Stats.NatureResistance, Stats.FrostResistance, Stats.ShadowResistance, Stats.ArcaneResistance, }, false, } -- s27947
+L["ensina a encantar botas permanentemente para aumentar em %s o vigor. requer item de nível %s ou superior"] = { { Stats.Stamina, }, false, } -- s27950
+L["ensina a encantar botas permanentemente para aumentar em %s as taxas de acerto e de acerto crítico. requer item de nível %s ou superior"] = { { Stats.HitRating, Stats.CritRating, }, false, } -- s27954
+L["ensina a encantar mantos permanentemente para aumentar em %s todas as resistências. requer item de nível %s ou superior"] = { { Stats.FireResistance, Stats.NatureResistance, Stats.FrostResistance, Stats.ShadowResistance, Stats.ArcaneResistance, }, false, } -- s27962
+L["ensina a encantar permanentemente armas corpo a corpo para aumentar em %s o intelecto. requer item de nível %s ou superior"] = { { Stats.Intellect, }, false, } -- s27968
+L["ensina a encantar permanentemente armas corpo a corpo para aumentar em %s o dano. requer item de nível %s ou superior"] = { { Stats.AverageWeaponDamage, }, false, } -- s27967
+L["ensina a encantar permanentemente armas corpo a corpo para aumentar em %s a força. requer item de nível %s ou superior"] = { { Stats.Strength, }, false, } -- s27972
+L["ensina a encantar permanentemente armas de duas mãos corpo a corpo para aumentar em %s o poder de ataque. requer item de nível %s ou superior"] = { { Stats.GenericAttackPower, }, false, } -- s27971
+L["ensina a encantar permanentemente armas corpo a corpo para aumentar em %s o poder mágico. requer item de nível %s ou superior"] = { { Stats.SpellPower, }, false, } -- s27975
+L["ensina a encantar permanentemente armas de duas mãos corpo a corpo para aumentar em %s a agilidade. requer item de nível %s ou superior"] = { { Stats.Agility, }, false, } -- s27977
+L["ensina a encantar permanentemente armas corpo a corpo para aumentar em %s o poder de magias de fogo e arcanas. requer item de nível %s ou superior"] = { { Stats.FireDamage, Stats.ArcaneDamage, }, false, } -- s27981
+L["ensina a encantar permanentemente armas corpo a corpo para aumentar o poder de magias de gelo e sombra em %s. requer item de nível %s ou superior"] = { { Stats.FrostDamage, Stats.ShadowDamage, }, false, } -- s27982
+L["ensina a encantar luvas permanentemente para aumentar em %s a taxa de acerto. requer item de nível %s ou superior"] = { { Stats.HitRating, }, false, } -- s33994
+L["ensina a encantar luvas permanentemente para aumentar em %s o poder mágico. requer item de nível %s ou superior"] = { { Stats.SpellPower, }, false, } -- s33997
+L["ensina a encantar mantos permanentemente para aumentar em %s a penetração de feitiço. requer item de nível %s ou superior"] = { { Stats.SpellPenetration, }, false, } -- s34003
+L["ensina a encantar escudos permanentemente para aumentar em %s o vigor. requer item de nível %s ou superior"] = { { Stats.Stamina, }, false, } -- s34009
 L["afiada (%s dano)"] = { { Stats.AverageWeaponDamage, }, } -- e13
 L["reforçada (%s armadura)"] = { { Stats.Armor, }, } -- e15
 L["balanceada (%s dano)"] = { { Stats.AverageWeaponDamage, }, } -- e19
@@ -2043,10 +2167,10 @@ L["%s poder de ataque e pequeno aumento na velocidade de movimento"] = { { Stats
 L["%s taxa de acerto crítico e reduz em %s% a duração de lerdeza/enraizamento"] = { { Stats.CritRating, }, false, } -- e2830
 L["%s vigor e duração de atordoamento reduzida em %s%"] = { { Stats.Stamina, }, false, } -- e2831
 L["%s poder mágico e ameaça reduzida em %s%"] = { { Stats.SpellPower, }, false, } -- e2832
-L["%s vigor e %s taxa de acerto crítico"] = { { Stats.Stamina, }, { Stats.CritRating, }, } -- e2897
 L["%s taxa de defesa e chance de restaurar vida ao acertar"] = { { Stats.DefenseRating, }, } -- e2833
 L["%s dano corpo a corpo e chance de atordoar o alvo"] = { { Stats.AverageWeaponDamage, }, } -- e2834
 L["%s intelecto e chance de restaurar mana ao lançar um feitiço"] = { { Stats.Intellect, }, } -- e2835
+L["%s vigor e %s taxa de acerto crítico"] = { { Stats.Stamina, }, { Stats.CritRating, }, } -- e2897
 L["%s vigor e %s intelecto"] = { { Stats.Stamina, }, { Stats.Intellect, }, } -- e2906
 L["%s força, %s taxa de acerto crítico"] = { { Stats.Strength, }, { Stats.CritRating, }, } -- e2915
 L["menor de velocidade e %s agilidade"] = { { Stats.Agility, }, } -- e2939

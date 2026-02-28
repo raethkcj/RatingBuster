@@ -652,6 +652,7 @@ L["increases frost spell power by %s for %s hour.  battle elixir"] = { { Stats.F
 L["increases your pet's stamina by %s and all spell resistances by %s"] = { { Stats.Stamina, }, false, ignoreSum = true } -- s21926
 L["permanently enchant a melee weapon to increase frost spell power by %s"] = { { Stats.FrostDamage, }, } -- s21931
 L["wounds the target for %s damage and lowers their armor by %s"] = { false, { Stats.Armor, }, reduction = true } -- s21961
+L["increases all stats by %s for %s min"] = { { Stats.AllStats, }, false, } -- s21970
 L["blasts your enemy with lightning, dealing %s nature damage and then jumping to additional nearby enemies.  each jump reduces that victim's nature resistance by %s. affects %s targets. your primary target is also consumed by a cyclone, slowing its attack speed by %s% for %s sec"] = { false, { Stats.NatureResistance, }, false, { Stats.MeleeHaste, }, false, reduction = true } -- s21992
 L["permanently enchant a two-handed melee weapon to do %s damage"] = { { Stats.AverageWeaponDamage, }, } -- s22094
 L["permanently enchant a shield to give %s frost resistance"] = { { Stats.FrostResistance, }, } -- s22099
@@ -1825,6 +1826,7 @@ L["increases damage and healing done by magical spells and effects by up to %s"]
 L["increases healing done by up to %s and damage done by up to %s for all magical spells and effects"] = { { Stats.HealingPower, }, { Stats.SpellDamage, }, } -- s356300
 L["permanently enchant a melee weapon to grant %s spirit"] = { { Stats.Spirit, }, } -- s359642
 L["destabilizes the molecular structure of certain saronite based creatures, reducing attack speed by %s% and casting speed by %s%. lasts %s sec"] = { false, { Stats.SpellHaste, }, false, reduction = true } -- s413118
+L["your direct healing and heal over time spells have a chance to increase your haste rating by %s for %s secs"] = { { Stats.MeleeHasteRating, Stats.RangedHasteRating, Stats.SpellHasteRating, }, false, ignoreSum = true } -- s467351
 L["increases the attack speed of nearby allies by %s% for %s min"] = { { Stats.MeleeHaste, }, false, } -- s3631
 L["increases the caster's attack speed by %s% for %s min"] = { { Stats.MeleeHaste, }, false, } -- s5915
 L["reduces an enemy's casting speed by %s% for %s min"] = { { Stats.SpellHaste, }, false, reduction = true } -- s8272

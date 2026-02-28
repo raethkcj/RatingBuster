@@ -1697,7 +1697,6 @@ L["poder de ataque aumentado %s p. se acumula hasta %s veces"] = { { Stats.Attac
 L["tu hechizo mareas vivas otorga %s p. de poder con hechizos durante %s s. se acumula hasta %s veces"] = { { Stats.SpellDamage, }, false, false, ignoreSum = true } -- s71217
 L["tus facultades asolar, golpe de la plaga y golpe letal otorgan %s p. de fuerza durante %s s. se acumula hasta %s veces"] = { { Stats.Strength, }, false, false, ignoreSum = true } -- s71226
 L["tu facultad golpe con runa otorga %s p. de índice de esquivar durante %s s. se acumula hasta %s veces"] = { { Stats.DodgeRating, }, false, false, ignoreSum = true } -- s71228
-L["aumenta tu poder con hechizos %s p. el efecto dura %s s. se acumula hasta %s veces"] = { { Stats.SpellPower, }, false, false, } -- s71570
 L["el gas asfixiante inflige %s p. de daño y provoca que te asfixies, reduciendo tu probabilidad de golpear un %s% durante %s s"] = { false, { Stats.MeleeHit, Stats.RangedHit, }, false, reduction = true } -- s71278
 L["la explosión inflige %s p. de daño a los enemigos que se encuentren en un radio de %s m, los derriba y reduce su probabilidad de golpear un %s% durante %s s"] = { false, false, { Stats.MeleeHit, Stats.RangedHit, }, false, reduction = true } -- s71279
 L["aumenta tu poder de ataque a distancia y cuerpo a cuerpo %s p. el efecto dura %s s. se acumula hasta %s veces"] = { { Stats.GenericAttackPower, }, false, false, } -- s71396
@@ -1706,6 +1705,7 @@ L["cuando infliges daño tienes una probabilidad de obtener %s p. de poder de at
 L["probabilidad de que tus golpes críticos cuerpo a cuerpo o a distancia aumenten tu índice de celeridad %s p. durante %s s"] = { { Stats.MeleeHasteRating, Stats.RangedHasteRating, Stats.SpellHasteRating, }, false, ignoreSum = true } -- s71404
 L["otorga %s p. de índice de golpe crítico durante %s s y reduce %s p. el índice de golpe crítico cada vez que se asesta un golpe crítico"] = { false, false, { Stats.MeleeCritRating, Stats.RangedCritRating, Stats.SpellCritRating, }, } -- s71564
 L["otorga %s p. de índice de celeridad durante %s s"] = { { Stats.MeleeHasteRating, Stats.RangedHasteRating, Stats.SpellHasteRating, }, false, } -- s71568
+L["aumenta tu poder con hechizos %s p. el efecto dura %s s. se acumula hasta %s veces"] = { { Stats.SpellPower, }, false, false, } -- s71570
 L["cada vez que infliges daño con hechizos a un oponente, ganas %s p. de poder con hechizos durante los siguientes %s s. se puede acumular hasta %s veces"] = { { Stats.SpellDamage, }, false, false, ignoreSum = true } -- s71571
 L["aumenta tu aguante %s p. el efecto dura %s s. se acumula hasta %s veces"] = { { Stats.Stamina, }, false, false, } -- s71575
 L["cada vez que te golpea un ataque cuerpo a cuerpo, tienes un %s% de probabilidad de ganar %s p. de aguante durante los siguientes %s s. se puede acumular hasta %s veces"] = { false, { Stats.Stamina, }, false, false, ignoreSum = true } -- s71576
@@ -1725,7 +1725,6 @@ L["un temible golpe alcanza al enemigo e inflige un %s% del daño de un golpe no
 L["aumenta %s p. el aguante de todos los miembros del grupo o banda durante %s h"] = { { Stats.Stamina, }, false, } -- s72590
 L["colmillosauro entra en frenesí, lo que aumenta su velocidad de ataque un %s%"] = { { Stats.MeleeHaste, }, } -- s72737
 L["desata pesadilla de caos y otorga %s p. de fuerza durante %s s"] = { { Stats.Strength, }, false, } -- s73422
-L["encanta de forma permanente unos guantes para que aumenten la fuerza %s p. requiere un objeto de nivel %s o superior"] = { { Stats.Strength, }, false, } -- s74212
 L["encanta de forma permanente unos guantes para que aumenten el índice de maestría %s p. requiere un objeto de nivel %s o superior"] = { { Stats.MasteryRating, }, false, } -- s74132
 L["encanta de forma permanente unas botas para que aumenten la velocidad de movimiento ligeramente y el aguante %s p. requiere un objeto de nivel %s o superior"] = { { Stats.Stamina, }, false, } -- s74189
 L["encanta de forma permanente una pieza de armadura de torso para que aumente todas las estadísticas %s p. requiere un objeto de nivel %s o superior"] = { { Stats.AllStats, }, false, } -- s74191
@@ -1737,6 +1736,7 @@ L["encanta de forma permanente una pieza de armadura de torso para que aumente e
 L["encanta de forma permanente unos brazales para que aumenten el índice de golpe crítico %s p. requiere un objeto de nivel %s o superior"] = { { Stats.CritRating, }, false, } -- s74201
 L["encanta de forma permanente una capa para aumentar el intelecto %s p. requiere un objeto de nivel %s o superior"] = { { Stats.Intellect, }, false, } -- s74202
 L["encanta de forma permanente un escudo para aumentar la armadura %s p. requiere un objeto de nivel %s o superior"] = { { Stats.Armor, }, false, } -- s74207
+L["encanta de forma permanente unos guantes para que aumenten la fuerza %s p. requiere un objeto de nivel %s o superior"] = { { Stats.Strength, }, false, } -- s74212
 L["encanta de forma permanente tu propio anillo para que aumente la fuerza %s p. si se encanta tu anillo, este se ligará. requiere %s p. en habilidad de encantamiento para que se mantenga activo"] = { { Stats.Strength, }, false, } -- s74215
 L["encanta de forma permanente tu propio anillo para que aumente la agilidad %s p. si se encanta tu anillo, este se ligará. requiere %s p. en habilidad de encantamiento para que se mantenga activo"] = { { Stats.Agility, }, false, } -- s74216
 L["encanta de forma permanente tu propio anillo para que aumente el intelecto %s p. si se encanta tu anillo, este se ligará. requiere %s p. en habilidad de encantamiento para que se mantenga activo"] = { { Stats.Intellect, }, false, } -- s74217
@@ -1883,6 +1883,7 @@ L["índice de esquivar y aguante aumentados %s p. dura %s h"] = { { Stats.DodgeR
 L["índice de parada y aguante aumentados %s p. dura %s h"] = { { Stats.ParryRating, Stats.Stamina, }, false, } -- s87555
 L["restaura %s p. de salud y %s p. de maná durante %s s. debes permanecer sentado mientras comes. si pasas al menos %s s comiendo, te alimentarás bien y obtendrás %s p. de agilidad y %s p. de aguante durante %s h"] = { false, false, false, false, { Stats.Agility, }, { Stats.Stamina, }, false, ignoreSum = true } -- s87566
 L["restaura %s p. de salud y %s p. de maná durante %s s. debes permanecer sentado mientras comes. si pasas al menos %s s comiendo, te alimentarás bien y obtendrás %s p. de intelecto y %s p. de aguante durante %s h"] = { false, false, false, false, { Stats.Intellect, }, { Stats.Stamina, }, false, ignoreSum = true } -- s87567
+L["índice de pericia y aguante aumentados %s p. dura %s h"] = { { Stats.ExpertiseRating, Stats.Stamina, }, false, } -- s87634
 L["restaura %s p. de salud y %s p. de maná durante %s s. debes permanecer sentado mientras comes. si pasas al menos %s s comiendo, te alimentarás bien y obtendrás %s p. de espíritu y %s p. de aguante durante %s h"] = { false, false, false, false, { Stats.Spirit, }, { Stats.Stamina, }, false, ignoreSum = true } -- s87568
 L["restaura %s p. de salud y %s p. de maná durante %s s. debes permanecer sentado mientras comes. si pasas al menos %s s comiendo, te alimentarás bien y obtendrás %s p. de índice de maestría y %s p. de aguante durante %s h"] = { false, false, false, false, { Stats.MasteryRating, }, { Stats.Stamina, }, false, ignoreSum = true } -- s87570
 L["restaura %s p. de salud y %s p. de maná durante %s s. debes permanecer sentado mientras comes. si pasas al menos %s s comiendo, te alimentarás bien y obtendrás %s p. de índice de golpe y %s p. de aguante durante %s h"] = { false, false, false, false, { Stats.MeleeHitRating, Stats.RangedHitRating, Stats.SpellHitRating, }, { Stats.Stamina, }, false, ignoreSum = true } -- s87571
@@ -1890,7 +1891,6 @@ L["restaura %s p. de salud y %s p. de maná durante %s s. debes permanecer senta
 L["restaura %s p. de salud y %s p. de maná durante %s s. debes permanecer sentado mientras comes. si pasas al menos %s s comiendo, te alimentarás bien y obtendrás %s p. de índice de celeridad y %s p. de aguante durante %s h"] = { false, false, false, false, { Stats.MeleeHasteRating, Stats.RangedHasteRating, Stats.SpellHasteRating, }, { Stats.Stamina, }, false, ignoreSum = true } -- s87573
 L["restaura %s p. de salud y %s p. de maná durante %s s. debes permanecer sentado mientras comes. si pasas al menos %s s comiendo, te alimentarás bien y obtendrás %s p. de índice de esquivar y %s p. de aguante durante %s h"] = { false, false, false, false, { Stats.DodgeRating, }, { Stats.Stamina, }, false, ignoreSum = true } -- s87577
 L["restaura %s p. de salud y %s p. de maná durante %s s. debes permanecer sentado mientras comes. si pasas al menos %s s comiendo, te alimentarás bien y obtendrás %s p. de índice de parada y %s p. de aguante durante %s h"] = { false, false, false, false, { Stats.ParryRating, }, { Stats.Stamina, }, false, ignoreSum = true } -- s87580
-L["índice de pericia y aguante aumentados %s p. dura %s h"] = { { Stats.ExpertiseRating, Stats.Stamina, }, false, } -- s87634
 L["restaura %s p. de salud y %s p. de maná durante %s s. debes permanecer sentado mientras comes. si pasas al menos %s s comiendo, te alimentarás bien y obtendrás %s p. de índice de pericia y %s p. de aguante durante %s h"] = { false, false, false, false, { Stats.ExpertiseRating, }, { Stats.Stamina, }, false, ignoreSum = true } -- s87636
 L["aumenta la fuerza de tu mascota %s p. dura %s h"] = { { Stats.Strength, }, false, } -- s87697
 L["aumenta el aguante de tu mascota %s p. dura %s h"] = { { Stats.Stamina, }, false, } -- s87699
@@ -1909,7 +1909,6 @@ L["otorga %s p. de espíritu mientras tu bonus de maestría de armonía a la san
 L["aumenta un %s% tu probabilidad de golpe crítico con hechizos. cada golpe crítico que obtienes reduce ese bonus un %s%"] = { false, { Stats.SpellCrit, }, } -- s90164
 L["otorga %s p. de espíritu durante %s s tras lanzar choque sagrado"] = { { Stats.Spirit, }, false, } -- s90311
 L["otorga %s p. de espíritu durante %s s después de lanzar mareas vivas"] = { { Stats.Spirit, }, false, ignoreSum = true } -- s90499
-L["tus hechizos periódicos dañinos y de sanación otorgan %s p. de poder con hechizos cada vez que sanan o infligen daño. dura %s s y se acumula hasta %s veces"] = { { Stats.SpellDamage, }, false, false, ignoreSum = true } -- s90943
 L["tus hechizos tienen una probabilidad de otorgar %s p. de poder con hechizos durante %s s"] = { { Stats.SpellDamage, }, false, ignoreSum = true } -- s90848
 L["poder con hechizos aumentado %s p. durante %s s. se acumula hasta %s veces"] = { { Stats.SpellPower, }, false, false, } -- s90854
 L["tus hechizos otorgan %s p. de poder con hechizos durante %s s, lo que se acumula hasta %s veces"] = { { Stats.SpellDamage, }, false, false, ignoreSum = true } -- s90855
@@ -1918,6 +1917,7 @@ L["tus hechizos tienen una probabilidad de otorgar %s p. de índice de celeridad
 L["tus hechizos tienen una probabilidad de otorgar %s p. de índice de golpe crítico durante %s s"] = { { Stats.MeleeCritRating, Stats.RangedCritRating, Stats.SpellCritRating, }, false, ignoreSum = true } -- s90892
 L["índice de golpe crítico aumentado %s p. durante %s s"] = { { Stats.MeleeCritRating, Stats.RangedCritRating, Stats.SpellCritRating, }, false, } -- s90895
 L["tus siguientes %s lanzamientos de hechizos durante %s s te otorgarán un bonus de %s p. de poder con hechizos, lo que se acumula hasta %s veces. dura %s s"] = { false, false, { Stats.SpellDamage, }, false, false, ignoreSum = true } -- s90900
+L["tus hechizos periódicos dañinos y de sanación otorgan %s p. de poder con hechizos cada vez que sanan o infligen daño. dura %s s y se acumula hasta %s veces"] = { { Stats.SpellDamage, }, false, false, ignoreSum = true } -- s90943
 L["tus hechizos que infligen daño a un objetivo con menos de un %s% de salud otorgan %s p. de poder con hechizos durante %s s. no se puede volver a activar hasta %s s después de que expire el bonus"] = { false, { Stats.SpellDamage, }, false, false, ignoreSum = true } -- s90998
 L["tus hechizos dañinos tienen una probabilidad de otorgarte %s p. de poder con hechizos durante %s s"] = { { Stats.SpellDamage, }, false, ignoreSum = true } -- s91011
 L["índice de maestría aumentado %s p. durante %s s"] = { { Stats.MasteryRating, }, false, } -- s91024
@@ -1942,6 +1942,7 @@ L["tus ataques cuerpo a cuerpo tienen una probabilidad de otorgar %s p. de fuerz
 L["tus golpes críticos cuerpo a cuerpo tienen una probabilidad de otorgar %s p. de fuerza durante %s s"] = { { Stats.Strength, }, false, ignoreSum = true } -- s91366
 L["aumenta tu índice de maestría %s p. durante %s s"] = { { Stats.MasteryRating, }, false, } -- s91374
 L["velocidad de ataque aumentada un %s%.\ndaño aumentado un %s%"] = { { Stats.MeleeHaste, }, false, } -- s91415
+L["tus ataques cuerpo a cuerpo tienen una probabilidad de otorgar %s p. de índice de maestría durante %s s"] = { { Stats.MasteryRating, }, false, ignoreSum = true } -- s92164
 L["tus ataques cuerpo a cuerpo tienen una probabilidad de otorgar %s p. de índice de celeridad durante %s s"] = { { Stats.MeleeHasteRating, Stats.RangedHasteRating, Stats.SpellHasteRating, }, false, ignoreSum = true } -- s91822
 L["consume %s cargas de furia salvaje para conseguir la forma de un dragonante alanegra, lo que otorga %s p. de fuerza durante %s s"] = { false, { Stats.Strength, }, false, } -- s91836
 L["tus ataques cuerpo a cuerpo y a distancia tienen una probabilidad de otorgar %s p. de índice de celeridad durante %s s"] = { { Stats.MeleeHasteRating, Stats.RangedHasteRating, Stats.SpellHasteRating, }, false, ignoreSum = true } -- s92044
@@ -1953,7 +1954,6 @@ L["tus ataques cuerpo a cuerpo y a distancia tienen una probabilidad de otorgar 
 L["tus ataques cuerpo a cuerpo y a distancia otorgan %s p. de agilidad. dura %s s y se acumula hasta %s veces"] = { { Stats.Agility, }, false, false, ignoreSum = true } -- s92086
 L["tus golpes críticos cuerpo a cuerpo y a distancia tienen una probabilidad de otorgar %s p. de agilidad durante %s s"] = { { Stats.Agility, }, false, ignoreSum = true } -- s92095
 L["tus ataques cuerpo a cuerpo tienen una probabilidad de aumentar %s p. tu poder de ataque durante %s s"] = { { Stats.GenericAttackPower, }, false, ignoreSum = true } -- s92114
-L["tus ataques cuerpo a cuerpo tienen una probabilidad de otorgar %s p. de índice de maestría durante %s s"] = { { Stats.MasteryRating, }, false, ignoreSum = true } -- s92164
 L["armadura aumentada %s p. durante %s s"] = { { Stats.Armor, }, false, } -- s92179
 L["los ataques cuerpo a cuerpo que reducen tu salud por debajo del %s% provocan que ganes %s p. de bonus de armadura durante %s s. no puede tener lugar más de una vez cada %s s"] = { false, { Stats.Armor, }, false, false, ignoreSum = true } -- s92180
 L["aumenta tu índice de parada %s p. durante %s s"] = { { Stats.ParryRating, }, false, } -- s92199
@@ -2064,6 +2064,18 @@ L["aumenta %s p. tu agilidad. se acumula hasta %s veces. una vez que hayas adqui
 L["aumenta %s p. tu agilidad. se acumula hasta %s veces"] = { { Stats.Agility, }, false, } -- s109955
 L["tus ataques cuerpo a cuerpo tienen una probabilidad de otorgar pesadilla, lo que aumenta %s p. tu agilidad. se acumula hasta %s veces"] = { { Stats.Agility, }, false, ignoreSum = true } -- s109956
 L["tus ataques cuerpo a cuerpo tienen una probabilidad de otorgar sufrimiento, lo que aumenta %s p. tu agilidad. se acumula hasta %s veces"] = { { Stats.Agility, }, false, ignoreSum = true } -- s109960
+L["la probabilidad de esquivar aumenta %s p. durante %s s"] = { { Stats.DodgeRating, }, false, } -- s126236
+L["tus ataques tienen una probabilidad de otorgarte %s p. de esquivar durante %s s.  (%s% de probabilidad, %s s de tiempo de reutilización)"] = { { Stats.DodgeRating, }, false, false, false, ignoreSum = true } -- s126237
+L["el intelecto aumenta %s p. durante %s s"] = { { Stats.Intellect, }, false, } -- s126266
+L["tus hechizos de sanación tienen una probabilidad de otorgarte %s p. de intelecto durante %s s"] = { { Stats.Intellect, }, false, ignoreSum = true } -- s126268
+L["tus ataques tienen la probabilidad de otorgarte %s p. de agilidad durante %s s.  (%s% de probabilidad, %s s de tiempo de reutilización)"] = { { Stats.Agility, }, false, false, false, ignoreSum = true } -- s126552
+L["la agilidad aumenta %s p. durante %s s"] = { { Stats.Agility, }, false, } -- s126554
+L["la fuerza aumenta %s p. durante %s s"] = { { Stats.Strength, }, false, } -- s126582
+L["tus ataques tienen la probabilidad de otorgarte %s p. de fuerza durante %s s.  (%s% de probabilidad, %s s de tiempo de reutilización)"] = { { Stats.Strength, }, false, false, false, ignoreSum = true } -- s126583
+L["la celeridad aumenta %s p. durante %s s"] = { { Stats.MeleeHasteRating, Stats.RangedHasteRating, Stats.SpellHasteRating, }, false, } -- s126659
+L["cada vez que asestas tus hechizos dañinos, tienes la probabilidad de ganar %s p. celeridad durante %s s. (%s% de probabilidad, %s s de tiempo de reutilización)"] = { { Stats.MeleeHasteRating, Stats.RangedHasteRating, Stats.SpellHasteRating, }, false, false, false, ignoreSum = true } -- s126660
+L["aumenta el índice de maestría %s p. durante %s s"] = { { Stats.MasteryRating, }, false, } -- s133630
+L["cuando tus ataques asestan un golpe, tienes la posibilidad de obtener %s p. de maestría durante %s s"] = { { Stats.MasteryRating, }, false, ignoreSum = true } -- s133631
 L["aumenta %s p. el índice de celeridad de los miembros del grupo en un radio de %s m. dura %s s. puedes usar los tambores durante el cambio de forma. no afecta a objetivos de nivel %s o superior"] = { { Stats.MeleeHasteRating, Stats.RangedHasteRating, Stats.SpellHasteRating, }, false, false, false, } -- s351355
 L["aumenta %s p. el poder de ataque y %s p. el daño con hechizos de todos los miembros del grupo en un radio de %s m. dura %s s. puedes usar los tambores durante el cambio de forma"] = { { Stats.GenericAttackPower, }, { Stats.SpellDamage, }, false, false, } -- s351360
 L["aumenta el poder de ataque %s p"] = { { Stats.GenericAttackPower, }, } -- s352334
@@ -2079,6 +2091,10 @@ L["encanta una capa de forma permanente que otorga %s p. de resistencia a la nat
 L["encanta una capa de forma permanente para que proporcione %s p. de resistencia al fuego"] = { { Stats.FireResistance, }, } -- s359950
 L["aumenta %s p. el valor de bloqueo de tu escudo"] = { { Stats.BlockValue, }, } -- s398484
 L["desestabiliza la estructura molecular de algunas criaturas basadas en saronita, lo que reduce la velocidad de ataque un %s% y la velocidad de lanzamiento un %s%. dura %s s"] = { false, { Stats.SpellHaste, }, false, reduction = true } -- s413118
+L["tu habilidad arma lengua de fuego otorga %s p. más de poder con hechizos"] = { { Stats.SpellDamage, }, } -- s461993
+L["tus hechizos dañinos tienen una probabilidad de aumentar %s p. tu poder con hechizos durante %s s"] = { { Stats.SpellDamage, }, false, ignoreSum = true } -- s469351
+L["tus hechizos de sanación directa y sanación con el tiempo tienen una probabilidad de aumentar %s p. tu índice de celeridad durante %s s"] = { { Stats.MeleeHasteRating, Stats.RangedHasteRating, Stats.SpellHasteRating, }, false, ignoreSum = true } -- s469353
+L["imbuido de la sangre resplandeciente de los dioses antiguos.\nla velocidad de ataque aumenta un %s%"] = { { Stats.MeleeHaste, }, } -- s1224934
 L["aumenta la velocidad de ataque de los aliados cercanos un %s% durante %s min"] = { { Stats.MeleeHaste, }, false, } -- s3631
 L["aumenta la velocidad de ataque del taumaturgo un %s% durante %s min"] = { { Stats.MeleeHaste, }, false, } -- s5915
 L["reduce la fuerza de un enemigo %s p. y su aguante %s p. durante %s s"] = { { Stats.Strength, }, { Stats.Stamina, }, false, reduction = true } -- s16333
