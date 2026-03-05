@@ -1360,6 +1360,7 @@ L["%s초에 걸쳐 %s의 생명력이 회복됩니다. 음식을 꾸준히 %s초
 L["%s초에 걸쳐 %s의 생명력이 회복됩니다. 음식을 꾸준히 %s초 이상 먹으면 포만감을 느끼게 되고 %s시간 동안 정신력이 %s만큼, 체력이 %s만큼 증가합니다"] = { false, false, false, false, { Stats.Spirit, }, { Stats.Stamina, }, ignoreSum = true } -- s57289
 L["%s시간 동안 정신력과 체력이 %s만큼 증가합니다"] = { false, { Stats.Spirit, Stats.Stamina, }, } -- s57291
 L["%s시간 동안 전투력이 %s만큼, 주문력 %s만큼, 체력이 %s만큼 증가합니다"] = { false, { Stats.GenericAttackPower, Stats.RangedAttackPower, }, { Stats.SpellPower, }, { Stats.Stamina, }, } -- s57294
+L["파티원이 먹을 수 있는 연회용 통구이를 만듭니다! %s초에 걸쳐 %s의 생명력과 %s의 마나를 회복합니다. 음식을 꾸준히 %s초 이상 먹으면 포만감을 느끼게 되고 %s시간 동안 전투력이 %s만큼, 주문력이 %s만큼, 체력이 %s만큼 증가합니다"] = { false, false, false, false, { Stats.GenericAttackPower, }, { Stats.SpellPower, }, { Stats.Stamina, }, false, } -- s57301
 L["%s초에 걸쳐 %s의 생명력이 회복됩니다. 음식을 꾸준히 %s초 이상 먹으면 포만감을 느끼게 되고 %s시간 동안 주문력이 %s만큼, 체력이 %s만큼 증가합니다"] = { false, false, false, false, { Stats.SpellDamage, }, { Stats.Stamina, }, ignoreSum = true } -- s57326
 L["죽음의 기사가 겨울의 뿔피리를 불어 %s의 룬 마력을 얻고 %s분 동안 %s미터 반경 내에 있는 모든 파티원 혹은 공격대원의 전체 힘과 민첩성을 %s만큼 증가시킵니다"] = { false, false, false, { Stats.Strength, Stats.Agility, }, } -- s57330
 L["%s초에 걸쳐 %s의 생명력이 회복됩니다. 음식을 먹으려면 앉아 있어야 합니다. 음식을 꾸준히 %s초 이상 먹으면 포만감을 느끼게 되고 %s시간 동안 정신력이 %s만큼, 체력이 %s만큼 증가합니다"] = { false, false, false, false, { Stats.Spirit, }, { Stats.Stamina, }, ignoreSum = true } -- s57333
@@ -1508,6 +1509,7 @@ L["주위 모든 무쇠 피조물을 뜨거운 열기로 강타하여 이동 속
 L["적이 곤충 떼에게 둘러싸여 근접 및 원거리 적중률이 %s%만큼 감소되고 %s초에 걸쳐 총 %s의 자연 피해를 입습니다"] = { { Stats.MeleeHit, Stats.RangedHit, }, false, false, reduction = true } -- s65855
 L["활성화되면 %s초 동안 무기 막기 확률이 %s%만큼 증가하고 %s%의 확률로 전방에서 시전되는 주문을 튕겨냅니다"] = { false, { Stats.Parry, }, false, } -- s65871
 L["공격 속도가 %s%만큼 증가합니다. 공격 시 주위의 적 하나를 추가로 공격합니다. %s초 동안 지속됩니다"] = { { Stats.MeleeHaste, }, false, } -- s65956
+L["허기진 파티원이 먹을 수 있는 푸짐한 잔치 음식을 만듭니다. %s초 동안 %s초마다 전체 생명력과 마나의 %s%를 회복합니다. 음식을 꾸준히 %s초 이상 먹으면 포만감을 느끼게 되고 %s시간 동안 전투력이 %s만큼, 주문력이 %s만큼, 체력이 %s만큼 증가합니다"] = { false, false, false, { Stats.GenericAttackPower, }, { Stats.SpellPower, }, { Stats.Stamina, }, false, } -- s66476
 L["다음 근접 공격의 치명타율이 %s%만큼 증가합니다"] = { { Stats.MeleeCrit, Stats.RangedCrit, }, } -- s66889
 L["지능이 %s만큼 증가합니다. 동시에 전투 비약 및 강화 비약으로 간주됩니다. 이 효과는 죽어도 지속됩니다"] = { { Stats.Intellect, }, } -- s67016
 L["민첩성이 %s만큼 증가합니다. 동시에 전투 비약 및 강화 비약으로 간주됩니다. 이 효과는 죽어도 지속됩니다"] = { { Stats.Agility, }, } -- s67017

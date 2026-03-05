@@ -1575,6 +1575,7 @@ L["restores %s health over %s sec.  if you spend at least %s seconds eating you 
 L["restores %s health over %s sec.  if you spend at least %s seconds eating you will become well fed and gain %s mana per %s seconds and %s stamina for %s hour"] = { false, false, false, { Stats.GenericManaRegen, }, false, { Stats.Stamina, }, false, ignoreSum = true } -- s57289
 L["spirit increased by %s and stamina increased by %s. lasts %s hour"] = { { Stats.Spirit, }, { Stats.Stamina, }, false, } -- s57365
 L["attack power increased by %s, spell power increased by %s and stamina increased by %s. lasts %s hour"] = { { Stats.GenericAttackPower, Stats.RangedAttackPower, }, { Stats.SpellPower, }, { Stats.Stamina, }, false, } -- s57294
+L["set out a great feast that will feed your party!   restores %s health and %s mana over %s sec.  if you spend at least %s seconds eating you will become well fed and gain %s attack power, %s spell power and %s stamina for %s hour"] = { false, false, false, false, { Stats.GenericAttackPower, }, { Stats.SpellPower, }, { Stats.Stamina, }, false, } -- s57301
 L["the death knight blows the horn of winter, which generates %s runic power and increases total strength and agility of all party or raid members within %s yards by %s.  lasts %s min"] = { false, false, { Stats.Strength, Stats.Agility, }, false, } -- s57330
 L["restores %s health over %s sec.  if you spend at least %s seconds eating you will become well fed and gain %s expertise rating and %s stamina for %s hour"] = { false, false, false, { Stats.ExpertiseRating, }, { Stats.Stamina, }, false, ignoreSum = true } -- s57355
 L["expertise rating increased by %s and stamina increased by %s. lasts %s hour"] = { { Stats.ExpertiseRating, }, { Stats.Stamina, }, false, } -- s57356
@@ -1723,6 +1724,7 @@ L["inflicts %s frost damage to enemies in a %s yard cone in front of the caster.
 L["restores %s mana over %s sec.  must remain seated while drinking.  if you spend at least %s seconds drinking you will become \"well fed\" and gain %s critical strike rating for %s hour. standard alcohol"] = { { Stats.GenericManaRegen, }, false, false, { Stats.MeleeCritRating, Stats.RangedCritRating, Stats.SpellCritRating, }, false, } -- s65363
 L["critical strike rating increased by %s. brewfest beers: great taste, extra-filling! lasts %s hour"] = { { Stats.MeleeCritRating, Stats.RangedCritRating, Stats.SpellCritRating, }, false, } -- s65365
 L["when activated, increases parry chance by %s% and grants a %s% chance to deflect spells cast by targets in front of you.  lasts %s sec"] = { { Stats.Parry, }, false, false, } -- s65871
+L["set out a bountiful feast to feed a very hungry party. restores %s% health and mana every sec for %s sec.  if you spend at least %s sec eating you will become well fed and gain %s attack power, %s spell power, and %s stamina for %s hour"] = { false, false, false, { Stats.GenericAttackPower, }, { Stats.SpellPower, }, { Stats.Stamina, }, false, } -- s66476
 L["critical strike chance increased by %s% on next melee attack"] = { { Stats.MeleeCrit, Stats.RangedCrit, }, } -- s66889
 L["increases spell power by %s.  counts as both a battle and guardian elixir.  this effect persists through death"] = { { Stats.SpellPower, }, } -- s67016
 L["increases attack power by %s.  counts as both a battle and guardian elixir.  this effect persists through death"] = { { Stats.GenericAttackPower, }, } -- s67017
@@ -2172,7 +2174,7 @@ L["%s critical strike rating and %s% mana"] = { { Stats.CritRating, }, false, } 
 L["%s attack power and %s critical strike rating (old)"] = { { Stats.AttackPower, Stats.RangedAttackPower, }, { Stats.CritRating, }, } -- e3676
 L["%s haste"] = { { Stats.HasteRating, }, } -- e3726
 L["%s to all stats"] = { { Stats.AllStats, }, } -- e3749
-L["%s attack power %s stamina %s hit rating"] = { { Stats.AttackPower, Stats.RangedAttackPower, }, { Stats.Stamina, }, { Stats.HitRating, }, } -- e3754
+L["%s attack power %s stamina %s hit rating"] = { { Stats.GenericAttackPower, }, { Stats.Stamina, }, { Stats.HitRating, }, } -- e3754
 L["%s attack power %s dodge rating"] = { { Stats.AttackPower, Stats.RangedAttackPower, }, { Stats.DodgeRating, }, } -- e3755
 L["%s defense and %s dodge rating"] = { { Stats.DefenseRating, }, { Stats.DodgeRating, }, } -- e3777
 L["%s attack power and %s crit rating"] = { { Stats.AttackPower, Stats.RangedAttackPower, }, { Stats.CritRating, }, } -- e3808

@@ -54,8 +54,14 @@
 		"2": {
 			"24694": [ ["FeralAttackPower"] ]
 		},
-		"3": {},
-		"4": {},
+		"3": {
+			"57301": [ false, false, false, false, ["GenericAttackPower"], ["SpellPower"], ["Stamina"], false ],
+			"66476": [ false, false, false, ["GenericAttackPower"], ["SpellPower"], ["Stamina"], false ]
+		},
+		"4": {
+			"57301": [ false, false, false, false, ["GenericAttackPower"], ["SpellPower"], ["Stamina"], false ],
+			"66476": [ false, false, false, ["GenericAttackPower"], ["SpellPower"], ["Stamina"], false ]
+		},
 		"5": {}
 	}
 }

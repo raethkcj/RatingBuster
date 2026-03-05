@@ -1591,6 +1591,7 @@ L["índice de golpe crítico aumentado %s p. y aguante aumentada %s p. dura %s h
 L["restaura %s p. de salud durante %s s. si pasas %s segundos comiendo estarás bien alimentado y ganarás %s p. de índice de celeridad y %s p. de aguante durante %s h"] = { false, false, false, { Stats.MeleeHasteRating, Stats.RangedHasteRating, Stats.SpellHasteRating, }, { Stats.Stamina, }, false, ignoreSum = true } -- s57287
 L["restaura %s p. de salud durante %s s. si pasas %s segundos comiendo estarás bien alimentado y ganarás %s p. de maná cada %s s y %s p. de aguante durante %s h"] = { false, false, false, { Stats.GenericManaRegen, }, false, { Stats.Stamina, }, false, ignoreSum = true } -- s57289
 L["poder de ataque aumentado %s p., poder con hechizos aumentado %s p. y aguante aumentado %s p. dura %s h"] = { { Stats.GenericAttackPower, Stats.RangedAttackPower, }, { Stats.SpellPower, }, { Stats.Stamina, }, false, } -- s57294
+L["¡saca un gran festín que alimentará a tu grupo! restaura %s p. de salud y %s p. de maná durante %s s. si comes durante al menos %s s estarás bien alimentado y ganarás %s p. de poder de ataque, %s p. de poder con hechizos y %s p. de aguante durante %s h"] = { false, false, false, false, { Stats.GenericAttackPower, }, { Stats.SpellPower, }, { Stats.Stamina, }, false, } -- s57301
 L["el caballero de la muerte sopla el cuerno de invierno, genera %s p. de poder rúnico y aumenta la fuerza y la agilidad totales de todos los miembros de la banda o grupo en un radio de %s m %s p. dura %s min"] = { false, false, { Stats.Strength, Stats.Agility, }, false, } -- s57330
 L["restaura %s p. de salud durante %s s. si pasas %s segundos comiendo estarás bien alimentado y ganarás %s p. de índice de pericia y %s p. de aguante durante %s h"] = { false, false, false, { Stats.ExpertiseRating, }, { Stats.Stamina, }, false, ignoreSum = true } -- s57355
 L["índice de tu pericia aumentado %s p. y aguante aumentado %s p. dura %s h"] = { { Stats.ExpertiseRating, }, { Stats.Stamina, }, false, } -- s57356
@@ -1747,6 +1748,7 @@ L["canaliza un rayo de energía titánica que desestabiliza la estructura molecu
 L["restaura %s p. de maná durante %s s. debes permanecer sentado mientras bebes. si bebes durante al menos %s s, estarás \"bien alimentado\" y ganarás %s p. de índice de golpe crítico durante %s h. alcohol fuerte"] = { { Stats.GenericManaRegen, }, false, false, { Stats.MeleeCritRating, Stats.RangedCritRating, Stats.SpellCritRating, }, false, } -- s65363
 L["índice de golpe crítico aumentado %s p. cervezas de la fiesta de la cerveza: ¡gran sabor y cuerpo! dura %s h"] = { { Stats.MeleeCritRating, Stats.RangedCritRating, Stats.SpellCritRating, }, false, } -- s65365
 L["cuando se activa, aumenta la probabilidad de parar un %s% y otorga una probabilidad de un %s% de desviar los hechizos lanzados por objetivos que estén frente a ti. dura %s s"] = { { Stats.Parry, }, false, false, } -- s65871
+L["saca un festín generoso para alimentar a un grupo muy hambriento. restaura un %s% de la salud y del maná cada segundo durante %s s. si comes durante al menos %s s estarás bien alimentado y ganarás %s p. de poder de ataque, %s p. de poder con hechizos y %s p. de aguante durante %s hora"] = { false, false, false, { Stats.GenericAttackPower, }, { Stats.SpellPower, }, { Stats.Stamina, }, false, } -- s66476
 L["probabilidad de golpe crítico aumentada un %s% en el próximo ataque cuerpo a cuerpo"] = { { Stats.MeleeCrit, Stats.RangedCrit, }, } -- s66889
 L["aumenta el poder con hechizos %s p. cuenta como elixir de batalla y elixir guardián. el efecto persiste más allá de la muerte"] = { { Stats.SpellPower, }, } -- s67016
 L["aumenta %s p. el poder de ataque. cuenta como elixir de batalla y guardián. el efecto persiste más allá de la muerte"] = { { Stats.GenericAttackPower, }, } -- s67017
@@ -2244,7 +2246,7 @@ L["%s poder con hechizos y reducción de duración de aturdir un %s%"] = { { Sta
 L["%s poder de ataque y a veces sana con tus golpes críticos"] = { { Stats.AttackPower, Stats.RangedAttackPower, }, } -- e3640
 L["%s índice de golpe crítico y %s% maná"] = { { Stats.CritRating, }, false, } -- e3641
 L["%s celeridad"] = { { Stats.HasteRating, }, } -- e3726
-L["%s poder de ataque %s aguante %s índice de golpe"] = { { Stats.AttackPower, Stats.RangedAttackPower, }, { Stats.Stamina, }, { Stats.HitRating, }, } -- e3754
+L["%s poder de ataque %s aguante %s índice de golpe"] = { { Stats.GenericAttackPower, }, { Stats.Stamina, }, { Stats.HitRating, }, } -- e3754
 L["%s poder de ataque %s índice de esquivar"] = { { Stats.AttackPower, Stats.RangedAttackPower, }, { Stats.DodgeRating, }, } -- e3755
 L["%s defensa y %s índice de esquivar"] = { { Stats.DefenseRating, }, { Stats.DodgeRating, }, } -- e3777
 L["%s índice de golpe crítico y reducción de duración de efectos de frenado y raíces un %s%"] = { { Stats.CritRating, }, false, } -- e3801
