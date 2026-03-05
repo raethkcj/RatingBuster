@@ -147,9 +147,9 @@ class StatEntry {
 
 function mapTextToStatEntry(
 	text: string,
-	statEffects: StatValue[][] | undefined,
+	statEffects: (StatValue[] | false)[] | undefined,
 	id: number,
-	spellStatEffects: Map<number, StatValue[][]>,
+	spellStatEffects: Map<number, (StatValue[] | false)[]>,
 	identifierType: IdentifierType,
 	spellDurations: Map<number, number>,
 	spellDurationFormats: Record<Time, string>,
@@ -157,11 +157,12 @@ function mapTextToStatEntry(
 ): [string, StatEntry] {
 	text = text.replace(/[\s.]+$/, "").replaceAll(/[\r\n]+/gm, "\\n").replaceAll(/"/gm, "\\\"").toLowerCase()
 
-	const remainingEffects: StatValue[][] = statEffects ? [...statEffects] : []
+	const remainingEffects: (StatValue[] | false)[] = statEffects ? [...statEffects] : []
 
 	const isEnchant = identifierType == IdentifierType.Enchant
 	const statEntry = new StatEntry(id, identifierType)
 	const entries = statEntry.entries
+
 	let matches = 0
 	// Only used for auto-incrementing enchant indentifier $i
 	let i = 0
@@ -192,7 +193,7 @@ function mapTextToStatEntry(
 				case "w":
 					// Since we only parse effects with a range of 0 or 1,
 					// we can treat min, max and spread identically
-					let newStatEffects: StatValue[][] | undefined = undefined
+					let newStatEffects: (StatValue[] | false)[] | undefined = undefined
 					if (alternateSpellID) {
 						const alternateStatEffects = spellStatEffects.get(parseInt(alternateSpellID))
 						if (alternateStatEffects) {
@@ -262,6 +263,12 @@ function mapTextToStatEntry(
 		return "%s"
 	})
 
+	if (statEffects && statEffects.some(se => se && se.some(sv => sv.isOverride))) {
+		statEntry.reduction = false
+		statEntry.entries = statEffects
+		return [pattern, statEntry]
+	}
+
 	// If the spell had more effects than could be matched by identifiers,
 	// attempt to map the remaining effects to already-assigned
 	// StatEntries with the same value, including Placeholders
@@ -312,7 +319,8 @@ function mapTextToStatEntry(
 	// We didn't match any numbers, so mark it as whole text and assign *all* the stats
 	if (pattern === text && matches === 0) {
 		statEntry.isWholeText = true
-		statEntry.entries = statEffects ? [statEffects.flat().filter(sv => sv.value !== 0)] : []
+		const nonzeroStatEffects = statEffects?.flat().filter((sv): sv is StatValue => sv && sv.value !== 0)
+		statEntry.entries = nonzeroStatEffects ? [nonzeroStatEffects] : []
 	}
 
 	for (const [i, entry] of Object.entries(statEntry.entries)) {
@@ -747,7 +755,7 @@ enum Resistance {
 	ArcaneResistance,
 }
 
-function getEnchantStats(enchant: StatEnchant, spellStatEffects: Map<number, StatValue[][]>, overrideEnchantStatEffects: Map<number, StatValue[][]>): StatValue[][] {
+function getEnchantStats(enchant: StatEnchant, spellStatEffects: Map<number, (StatValue[] | false)[]>, overrideEnchantStatEffects: Map<number, (StatValue[] | false)[]>): (StatValue[] | false)[] {
 	let stats = overrideEnchantStatEffects.get(enchant.ID)
 	if (stats) {
 		return stats
@@ -761,7 +769,7 @@ function getEnchantStats(enchant: StatEnchant, spellStatEffects: Map<number, Sta
 				stats[index] = [new StatValue("AverageWeaponDamage", pointsMin)]
 				break
 			case EnchantEffect.Buff:
-				const buffStats = spellStatEffects.get(effectArg)?.flat()
+				const buffStats = spellStatEffects.get(effectArg)?.filter((e): e is StatValue[] => !!e).flat()
 				if (buffStats) {
 					// Attack Power from enchants shouldn't be multiplied by WOTLK Druid's Predatory Instincts,
 					// so can't be GenericAttackPower
@@ -1096,7 +1104,7 @@ class StatValue {
 	constructor(public stat: string, public value: number, public isOverride: boolean = false) {}
 }
 
-function enumerateStatAndProcSpells(spellEffects: SpellEffect[]): [Map<number, StatValue[][]>, Map<number, number>] {
+function enumerateStatAndProcSpells(spellEffects: SpellEffect[]): [Map<number, (StatValue[] | false)[]>, Map<number, number>] {
 	const spellStatEffects = new Map<number, StatValue[][]>()
 	const procSpells = new Map<number, number>()
 	for (const effect of spellEffects) {
@@ -1142,12 +1150,12 @@ function enumerateStatAndProcSpells(spellEffects: SpellEffect[]): [Map<number, S
 	return [spellStatEffects, procSpells]
 }
 
-function overrideSpells(spellStatEffects: Map<number, StatValue[][]>, spellDescIDs: Set<number>, expansion: Expansion) {
+function overrideSpells(spellStatEffects: Map<number, (StatValue[] | false)[]>, spellDescIDs: Set<number>, expansion: Expansion) {
 	for (const [sOverrideSpellID, overrideStatEffects] of Object.entries(statLocaleData["Spell"][expansion])) {
 		const overrideSpellID = parseInt(sOverrideSpellID)
 		spellDescIDs.add(overrideSpellID)
-		const overrideStatValues = overrideStatEffects.map((effect) => {
-			return effect.map(stat => new StatValue(stat, 0, true))
+		const overrideStatValues = (overrideStatEffects as (string[] | false)[]).map((effect) => {
+			return effect ? effect.map(stat => new StatValue(stat, 0, true)) : false
 		})
 		spellStatEffects.set(overrideSpellID, overrideStatValues)
 	}
@@ -1248,7 +1256,7 @@ function insertEntry(statMap: Map<string, StatEntry>, text: string, statEntry: S
 async function getLocaleStatMap(
 	expansion: Expansion,
 	locale: Locale,
-	spellStatEffects: Map<number, StatValue[][]>,
+	spellStatEffects: Map<number, (StatValue[] | false)[]>,
 	statSpellIDs: number[],
 	procSpells: Map<number, number>,
 	spellDescIDs: Set<number>,
@@ -1272,7 +1280,7 @@ async function getLocaleStatMap(
 		const staticEffects = spellStatEffects.get(description.ID)
 		const procEffects = spellStatEffects.get(procSpells.get(description.ID)!)
 
-		let enchantEffects: StatValue[][] | undefined
+		let enchantEffects: (StatValue[] | false)[] | undefined
 		const enchantID = description.identifierType == IdentifierType.Item ? itemEnchants.get(description.ID) : spellEnchants.get(description.ID)
 		if (enchantID) {
 			const enchant = statEnchants.find(e => e.ID == enchantID)!
