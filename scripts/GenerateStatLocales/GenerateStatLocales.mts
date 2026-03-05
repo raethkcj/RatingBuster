@@ -5,12 +5,14 @@ import path from 'node:path'
 
 import { DuckDBInstance } from '@duckdb/node-api'
 
+// While enums do auto-increment, it's nice to be able to
+// comment them for debugging and preserve the correct values.
 enum Expansion {
 	Vanilla = 1,
-	TBC,
-	Wrath,
-	Cata,
-	Mists,
+	TBC     = 2,
+	Wrath   = 3,
+	Cata    = 4,
+	Mists   = 5,
 }
 
 type ProductBuilds = { [product: string]: { version: string }[] }
