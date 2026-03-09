@@ -1765,9 +1765,62 @@ function StatLogic:RemoveEnchant(link)
 	return link:gsub("(item:%d+):%d+","%1:0")
 end
 
-function StatLogic:RemoveGem(link)
-	return link:gsub("(item:%d+:%d*):%d*:%d*:%d*:%d*","%1:0:0:0:0")
+---@param link string itemLink
+---@return string strippedLink
+---@return number[] gems
+function StatLogic:RemoveGems(link)
+	---@type number[]
+	local realGems = {}
+	local strippedLink = link:gsub("(item:%d+:%d*):(%d*):(%d*):(%d*):(%d*)", function(item, ...)
+		for i, gem in ipairs(...) do
+			realGems[i] = tonumber(gem) or 0
+		end
+		return item .. ":0:0:0:0"
+	end, 1)
+	return strippedLink, realGems
 end
+
+---@enum SocketColor
+StatLogic.SocketColor = {
+	Meta      = 0x01,
+	Red       = 0x02,
+	Yellow    = 0x04,
+	Blue      = 0x08,
+	Cogwheel  = 0x20,
+	Prismatic = 0x0E,
+}
+
+local ItemGemSubclassCogwheel = 10
+---@diagnostic disable: undefined-field
+local GemSubclassColors = {
+	[Enum.ItemGemSubclass.Red]    = StatLogic.SocketColor.Red,
+	[Enum.ItemGemSubclass.Blue]   = StatLogic.SocketColor.Blue,
+	[Enum.ItemGemSubclass.Yellow] = StatLogic.SocketColor.Yellow,
+	[Enum.ItemGemSubclass.Purple] = bit.band(StatLogic.SocketColor.Red, StatLogic.SocketColor.Blue),
+	[Enum.ItemGemSubclass.Green]  = bit.band(StatLogic.SocketColor.Yellow, StatLogic.SocketColor.Blue),
+	[Enum.ItemGemSubclass.Orange] = bit.band(StatLogic.SocketColor.Red, StatLogic.SocketColor.Yellow),
+	[Enum.ItemGemSubclass.Meta]   = StatLogic.SocketColor.Meta,
+	[ItemGemSubclassCogwheel]     = StatLogic.SocketColor.Cogwheel,
+}
+---@diagnostic enable: undefined-field
+
+---@param gemID number
+local function GetGemColor(gemID)
+	if gemID then
+		local subclassID = select(7, C_Item.GetItemInfoInstant(gemID))
+		return GemSubclassColors[subclassID] or 0
+	end
+	return 0
+end
+
+local EmptySocketColors = {
+	[EMPTY_SOCKET_META]      = StatLogic.SocketColor.Meta,
+	[EMPTY_SOCKET_RED]       = StatLogic.SocketColor.Red,
+	[EMPTY_SOCKET_YELLOW]    = StatLogic.SocketColor.Yellow,
+	[EMPTY_SOCKET_BLUE]      = StatLogic.SocketColor.Blue,
+	[EMPTY_SOCKET_COGWHEEL]  = StatLogic.SocketColor.Cogwheel,
+	[EMPTY_SOCKET_PRISMATIC] = StatLogic.SocketColor.Prismatic,
+}
 
 do
 	local extraSocketInvTypes = {
@@ -1876,6 +1929,9 @@ do
 	end
 end
 
+local gemTooltip = CreateFrame("GameTooltip", "StatLogicGemTooltip", nil, "GameTooltipTemplate") --[[@as GameTooltip]]
+gemTooltip:SetOwner(WorldFrame, "ANCHOR_NONE")
+
 ---@param item string|number itemLink or itemID of a gem
 ---@return number? gemID
 ---@return string? gemText
@@ -1898,15 +1954,15 @@ function StatLogic:GetGemID(item)
 	if not name then
 		if tonumber(itemID) then
 			-- Query server for item
-			tip:SetHyperlink("item:"..itemID);
+			gemTooltip:SetHyperlink("item:"..itemID);
 		end
 		return
 	end
 	itemID = link:match("item:(%d+)")
 
-	if not C_Item.GetItemInfo(6948) then -- Hearthstone
+	if not C_Item.GetItemInfo(6948) then
 		-- Query server for Hearthstone
-		tip:SetHyperlink("item:"..itemID);
+		gemTooltip:SetHyperlink("item:"..itemID);
 		return
 	end
 
@@ -1915,9 +1971,9 @@ function StatLogic:GetGemID(item)
 	local itemLink = gemScanLink:format(itemID)
 	local _, gem1Link = C_Item.GetItemGem(itemLink, 1)
 	if gem1Link then
-		tip:ClearLines() -- this is required or SetX won't work the second time its called
-		tip:SetHyperlink(itemLink);
-		return itemID, StatLogicTooltipTextLeft4:GetText()
+		gemTooltip:ClearLines()
+		gemTooltip:SetHyperlink(itemLink);
+		return itemID, StatLogicGemTooltipTextLeft4:GetText()
 	end
 end
 
@@ -1975,6 +2031,8 @@ do
 
 	---@class StatGroupValues
 	---@field ignoreSum boolean
+	---@field isSocketBonus boolean?
+	---@field socketColor SocketColor?
 	---@field [number] { statGroup: StatGroup, value: number, position: number? }
 
 	---@param statGroups StatGroupValues
@@ -2063,6 +2121,7 @@ do
 			text = text:gsub("|r", "")
 		end
 		local rawText = text
+		statGroups.socketColor = EmptySocketColors[text]
 
 		-----------------------
 		-- Whole Text Lookup --
@@ -2070,9 +2129,15 @@ do
 		-- Strings without numbers; mainly used for enchants or easy exclusions
 		if not found then
 			text = text:gsub("[\r\n]+", "\n")
-			-- Strip leading "Equip: ", "Socket Bonus: ", trailing ".", and lowercase
+			-- Strip leading "Equip: ", trailing ".", and lowercase
 			text, length = trimPrefixes(text, addon.TrimmedPrefixes)
 			offset = offset + length
+			-- Strip leading "Socket Bonus: "
+			text, length = trimPrefixes(text, addon.SocketBonusPrefixes)
+			offset = offset + length
+			if length > 0 then
+				statGroups.isSocketBonus = true
+			end
 			text = text:trim()
 			text = text:gsub("%.$", "")
 			text = text:utf8lower()
@@ -2195,8 +2260,9 @@ do
 	---@param item? string itemLink of target item
 	---@param oldStatTable? StatTable The sum of stat values are writen to this table if provided
 	---@param statModContext? StatModContext
+	---@param gems? { autoGems: { [SocketColor]: AutoGem }, realGems: number[], ignoreGems: boolean }
 	---@return StatTable? sum
-	function StatLogic:GetSum(item, oldStatTable, statModContext)
+	function StatLogic:GetSum(item, oldStatTable, statModContext, gems)
 		-- Check item
 		if type(item) ~= "string" then
 			return
@@ -2211,8 +2277,15 @@ do
 		statTable = oldStatTable or newPooledTable()
 		setmetatable(statTable, statTableMetatable)
 
-		tip:ClearLines() -- this is required or SetX won't work the second time its called
-		tip:SetHyperlink(link)
+		gems = gems or {}
+		gems.ignoreGems = gems.ignoreGems or false
+		gems.autoGems = gems.autoGems or {}
+
+		local strippedLink, realGems = StatLogic:RemoveGems(link)
+		gems.realGems = realGems
+
+		tip:ClearLines()
+		tip:SetHyperlink(strippedLink)
 
 		local numLines = tip:NumLines()
 
@@ -2244,13 +2317,52 @@ do
 		end
 
 		log(link)
+
+		local numSockets = 0
+		local socketColors = {}
 		for i = 2, tip:NumLines() do
 			for _, side in pairs(tip.sides) do
 				local fontString = side[i]
 				local text = fontString:GetText()
 				local color = CreateColor(fontString:GetTextColor())
 				local statGroupValues = StatLogic:GetStatGroupValues(text, link, color)
-				if not statGroupValues.ignoreSum then
+
+				if statGroupValues.socketColor then
+					numSockets = numSockets + 1
+					socketColors[numSockets] = statGroupValues.socketColor
+
+					if gems.ignoreGems then
+						statGroupValues.ignoreSum = true
+					end
+
+					local gemID = gems.realGems[numSockets]
+					if gemID and gemID > 0 then
+						_, text = StatLogic:GetGemID(gemID)
+					else
+						local autoGem = gems.autoGems[statGroupValues.socketColor]
+						text = autoGem and autoGem.gemText or nil
+					end
+					if text then
+						statGroupValues = StatLogic:GetStatGroupValues(text, link, color)
+					end
+				elseif statGroupValues.isSocketBonus then
+					for j, socketColor in ipairs(socketColors) do
+						local gemID = gems.realGems[j]
+						if (not gemID or gemID == 0) then
+							local autoGem = gems.autoGems[socketColor]
+							gemID = autoGem and autoGem.gemID or nil
+						end
+
+						if gemID then
+							local gemColor = GetGemColor(gemID)
+							if bit.band(gemColor, socketColor) == 0 then
+								statGroupValues.ignoreSum = true
+							end
+						end
+					end
+				end
+
+				if not statGroupValues.ignoreSum  then
 					for _, statGroupValue in ipairs(statGroupValues) do
 						local statGroup = statGroupValue.statGroup
 						if type(statGroup) == "table" then
@@ -2440,10 +2552,10 @@ function StatLogic:GetDiffID(item, ignoreEnchant, ignoreGems, ignoreExtraSockets
 
 	-- Ignore Gems
 	if ignoreGems then
-		link = self:RemoveGem(link)
-		linkDiff1 = self:RemoveGem(linkDiff1)
+		link = self:RemoveGems(link)
+		linkDiff1 = self:RemoveGems(linkDiff1)
 		if linkDiff2 then
-			linkDiff2 = self:RemoveGem(linkDiff2)
+			linkDiff2 = self:RemoveGems(linkDiff2)
 		end
 	else
 		link = self:BuildGemmedTooltip(link, red, yellow, blue, meta)

@@ -134,10 +134,18 @@ addon.TrimmedPrefixes = {}
 
 local trimmedPrefixes = {
 	ITEM_SPELL_TRIGGER_ONEQUIP,
-	ITEM_SOCKET_BONUS:format("")
 }
 
 setPrefixPatterns(trimmedPrefixes, addon.TrimmedPrefixes)
+
+---@type table<string, true>
+addon.SocketBonusPrefixes = {}
+
+local socketBonusPrefixes = {
+	ITEM_SOCKET_BONUS:format("")
+}
+
+setPrefixPatterns(socketBonusPrefixes, addon.SocketBonusPrefixes)
 
 -- Patterns that should be matched for breakdowns, but ignord for summaries
 ---@type table<string, true>

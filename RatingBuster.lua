@@ -76,6 +76,11 @@ local function getGem(info)
 	return db.profile[info[#info]].gemLink
 end
 
+---@class AutoGem
+---@field gemID number
+---@field gemText string
+---@field gemLink string
+
 local function setGem(info, value)
 	if value == "" then
 		wipe(db.profile[info[#info]])
@@ -92,13 +97,10 @@ local function setGem(info, value)
 		if gemText:sub(1, 10):find("|c%x%x%x%x%x%x%x%x") then
 			gemText = gemText:sub(11)
 		end
-		local name, link = C_Item.GetItemInfo(value)
-		local itemID = link:match("item:(%d+)")
+		local _, link = C_Item.GetItemInfo(value)
 		db.profile[info[#info]] = {
 			gemText = gemText,
-			itemID = itemID,
 			gemID = gemID,
-			gemName = name,
 			gemLink = link,
 		}
 		RatingBuster:ClearCache()
@@ -1368,30 +1370,35 @@ local defaults = {
 		sumAvoidance = false,
 		sumMasteryEffect = true,
 		-- Gems
+		---@type AutoGem
 		sumGemRed = {
-			itemID = nil,
 			gemID = nil,
 			gemText = nil,
+			gemLink = nil,
 		};
+		---@type AutoGem
 		sumGemYellow = {
-			itemID = nil,
 			gemID = nil,
 			gemText = nil,
+			gemLink = nil,
 		};
+		---@type AutoGem
 		sumGemBlue = {
-			itemID = nil,
 			gemID = nil,
 			gemText = nil,
+			gemLink = nil,
 		};
+		---@type AutoGem
 		sumGemMeta = {
-			itemID = nil,
 			gemID = nil,
 			gemText = nil,
+			gemLink = nil,
 		};
+		---@type AutoGem
 		sumGemPrismatic = {
-			itemID = nil,
 			gemID = nil,
 			gemText = nil,
+			gemLink = nil,
 		};
 	},
 }
@@ -4299,23 +4306,29 @@ function RatingBuster:StatSummary(tooltip, link, statModContext)
 		end
 	end
 
-	-- Ignore enchants and gems on items when calculating the stat summary
-	local red = db.profile.sumGemRed.gemID
-	local yellow = db.profile.sumGemYellow.gemID
-	local blue = db.profile.sumGemBlue.gemID
-	local meta = db.profile.sumGemMeta.gemID
-	local prismatic = db.profile.sumGemPrismatic.gemID
+	local red = db.profile.sumGemRed
+	local yellow = db.profile.sumGemYellow
+	local blue = db.profile.sumGemBlue
+	local meta = db.profile.sumGemMeta
+	local prismatic = db.profile.sumGemPrismatic
 
+	local gems = {
+		ignoreGems = db.global.sumIgnoreGems,
+		autoGems = {
+			[StatLogic.SocketColor.Red] = red,
+			[StatLogic.SocketColor.Yellow] = yellow,
+			[StatLogic.SocketColor.Blue] = blue,
+			[StatLogic.SocketColor.Meta] = meta,
+			[StatLogic.SocketColor.Prismatic] = prismatic,
+		},
+	}
+
+	-- Ignore enchants and gems on items when calculating the stat summary
 	if db.global.sumIgnoreEnchant then
 		link = StatLogic:RemoveEnchant(link)
 	end
 	if db.global.sumIgnoreExtraSockets then
 		link = StatLogic:RemoveExtraSockets(link)
-	end
-	if db.global.sumIgnoreGems then
-		link = StatLogic:RemoveGem(link)
-	else
-		link = StatLogic:BuildGemmedTooltip(link, red, yellow, blue, meta, prismatic)
 	end
 
 	-- Diff Display Style
@@ -4366,7 +4379,7 @@ function RatingBuster:StatSummary(tooltip, link, statModContext)
 	-------------------------
 	-- Build Summary Table --
 	local statData = {}
-	statData.sum = StatLogic:GetSum(link, nil, statModContext)
+	statData.sum = StatLogic:GetSum(link, nil, statModContext, gems)
 	if not statData.sum then return end
 	if not db.global.calcSum then
 		statData.sum = nil
