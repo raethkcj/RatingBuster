@@ -2198,6 +2198,17 @@ local scanningTooltipOwners = {
 	["UIParent"] = true,
 }
 
+local function GetTooltipLinesAsFontString(tooltip)
+	local textLines = {}
+	local regions = {tooltip:GetRegions()}
+	for _, r in ipairs(regions) do
+		if r:IsObjectType("FontString") then
+			table.insert(textLines, r)
+		end
+	end
+	return textLines
+end
+
 ---@param tooltip ClassicGameTooltip
 function RatingBuster.ProcessTooltip(tooltip)
 	-- Do nothing if the tooltip is being used as a hidden scanning tooltip
@@ -2265,12 +2276,9 @@ function RatingBuster.ProcessTooltip(tooltip)
 		processedResilience = 0
 	end
 
-	-- Process breakdowns from line 2 through 5 lines past the end of the
-	-- "clean" tooltip, to avoid interfering with text from other tooltip addons
-	local numLines = StatLogic:GetItemTooltipNumLines(link)
-	local tipTextLeft = tooltip:GetName().."TextLeft"
-	for i = 2, numLines + 5 do
-		local fontString = _G[tipTextLeft..i]
+	local tooltipLines = GetTooltipLinesAsFontString(tooltip)
+	for i = 1, #tooltipLines do
+		local fontString = tooltipLines[i]
 		local text = fontString:GetText()
 		if text then
 			local color = CreateColor(fontString:GetTextColor())
