@@ -2264,9 +2264,12 @@ function RatingBuster.ProcessTooltip(tooltip)
 		processedMiss = 0
 		processedResilience = 0
 	end
-	-- Loop through tooltip lines starting at line 2
+
+	-- Process breakdowns from line 2 through 5 lines past the end of the
+	-- "clean" tooltip, to avoid interfering with text from other tooltip addons
+	local numLines = StatLogic:GetItemTooltipNumLines(link)
 	local tipTextLeft = tooltip:GetName().."TextLeft"
-	for i = 2, tooltip:NumLines() do
+	for i = 2, numLines + 5 do
 		local fontString = _G[tipTextLeft..i]
 		local text = fontString:GetText()
 		if text then
