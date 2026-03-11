@@ -1772,7 +1772,7 @@ function StatLogic:RemoveGems(link)
 	---@type number[]
 	local realGems = {}
 	local strippedLink = link:gsub("(item:%d+:%d*):(%d*):(%d*):(%d*):(%d*)", function(item, ...)
-		for i, gem in ipairs(...) do
+		for i, gem in ipairs({...}) do
 			realGems[i] = tonumber(gem) or 0
 		end
 		return item .. ":0:0:0:0"
@@ -2260,7 +2260,7 @@ do
 	---@param item? string itemLink of target item
 	---@param oldStatTable? StatTable The sum of stat values are writen to this table if provided
 	---@param statModContext? StatModContext
-	---@param gems? { autoGems: { [SocketColor]: AutoGem }, realGems: number[], ignoreGems: boolean }
+	---@param gems? GemInfo
 	---@return StatTable? sum
 	function StatLogic:GetSum(item, oldStatTable, statModContext, gems)
 		-- Check item
@@ -2278,11 +2278,11 @@ do
 		setmetatable(statTable, statTableMetatable)
 
 		gems = gems or {}
-		gems.ignoreGems = gems.ignoreGems or false
-		gems.autoGems = gems.autoGems or {}
+		gems.sumIgnoreGems = gems.sumIgnoreGems or false
+		gems.auto = gems.auto or {}
 
 		local strippedLink, realGems = StatLogic:RemoveGems(link)
-		gems.realGems = realGems
+		gems.real = realGems
 
 		tip:ClearLines()
 		tip:SetHyperlink(strippedLink)
@@ -2331,25 +2331,22 @@ do
 					numSockets = numSockets + 1
 					socketColors[numSockets] = statGroupValues.socketColor
 
-					if gems.ignoreGems then
-						statGroupValues.ignoreSum = true
-					end
-
-					local gemID = gems.realGems[numSockets]
+					local gemID = gems.real[numSockets]
 					if gemID and gemID > 0 then
 						_, text = StatLogic:GetGemID(gemID)
 					else
-						local autoGem = gems.autoGems[statGroupValues.socketColor]
+						local autoGem = gems.auto[statGroupValues.socketColor]
 						text = autoGem and autoGem.gemText or nil
 					end
 					if text then
 						statGroupValues = StatLogic:GetStatGroupValues(text, link, color)
+						statGroupValues.ignoreSum = gems.sumIgnoreGems
 					end
 				elseif statGroupValues.isSocketBonus then
 					for j, socketColor in ipairs(socketColors) do
-						local gemID = gems.realGems[j]
+						local gemID = gems.real[j]
 						if (not gemID or gemID == 0) then
-							local autoGem = gems.autoGems[socketColor]
+							local autoGem = gems.auto[socketColor]
 							gemID = autoGem and autoGem.gemID or nil
 						end
 
@@ -2468,17 +2465,13 @@ end
 -- the identification string is made up of links concatenated together, can be used for cache indexing
 ---@param item string|GameTooltip itemLink or tooltip of target item
 ---@param ignoreEnchant? boolean
----@param ignoreGems? boolean
 ---@param ignoreExtraSockets? boolean
----@param red? string|number gemID to replace a red socket
----@param yellow? string|number gemID to replace a yellow socket
----@param blue? string|number gemID to replace a blue socket
----@param meta? string|number gemID to replace a meta socket
+---@param gems GemInfo
 ---@return string? id A unique identification string of the diff calculation
 ---@return string? link Link of main item
 ---@return string? linkDiff1 Link of compare item 1
 ---@return string? linkDiff2 Link of compare item 2
-function StatLogic:GetDiffID(item, ignoreEnchant, ignoreGems, ignoreExtraSockets, red, yellow, blue, meta)
+function StatLogic:GetDiffID(item, ignoreEnchant, ignoreExtraSockets, gems)
 	local name, inventoryType, link, linkDiff1, linkDiff2, _
 	-- Check item
 	if (type(item) == "string") or (type(item) == "number") then
@@ -2542,26 +2535,11 @@ function StatLogic:GetDiffID(item, ignoreEnchant, ignoreGems, ignoreExtraSockets
 	end
 
 	-- Ignore Extra Sockets (unneccessary work if we're removing all gems afterwards)
-	if ignoreExtraSockets and not ignoreGems then
+	if ignoreExtraSockets then
 		link = self:RemoveExtraSockets(link)
 		linkDiff1 = self:RemoveExtraSockets(linkDiff1)
 		if linkDiff2 then
 			linkDiff2 = self:RemoveExtraSockets(linkDiff2)
-		end
-	end
-
-	-- Ignore Gems
-	if ignoreGems then
-		link = self:RemoveGems(link)
-		linkDiff1 = self:RemoveGems(linkDiff1)
-		if linkDiff2 then
-			linkDiff2 = self:RemoveGems(linkDiff2)
-		end
-	else
-		link = self:BuildGemmedTooltip(link, red, yellow, blue, meta)
-		linkDiff1 = self:BuildGemmedTooltip(linkDiff1, red, yellow, blue, meta)
-		if linkDiff2 then
-			linkDiff2 = self:BuildGemmedTooltip(linkDiff2, red, yellow, blue, meta)
 		end
 	end
 
@@ -2574,27 +2552,19 @@ function StatLogic:GetDiffID(item, ignoreEnchant, ignoreGems, ignoreExtraSockets
 	return id, link, linkDiff1, linkDiff2
 end
 
--- Calculates the stat diffrence from the specified item and your currently equipped items.
+-- Calculates the stat difference from the specified item and your currently equipped items.
 ---@param item string|GameTooltip itemLink or tooltip of target item
----@param diff1? StatTable Stat difference of item and equipped item 1 are writen to this table if provided
----@param diff2? StatTable Stat difference of item and equipped item 2 are writen to this table if provided
 ---@param ignoreEnchant? boolean
----@param ignoreGems? boolean
 ---@param ignoreExtraSockets? boolean
----@param red? string|number gemID to replace a red socket
----@param yellow? string|number gemID to replace a yellow socket
----@param blue? string|number gemID to replace a blue socket
----@param meta? string|number gemID to replace a meta socket
+---@param gems GemInfo
 ---@return StatTable? diff1
 ---@return StatTable? diff2
-function StatLogic:GetDiff(item, diff1, diff2, ignoreEnchant, ignoreGems, ignoreExtraSockets, red, yellow, blue, meta)
+function StatLogic:GetDiff(item, ignoreEnchant, ignoreExtraSockets, gems)
 	-- Get DiffID
-	local id, link, linkDiff1, linkDiff2 = self:GetDiffID(item, ignoreEnchant, ignoreGems, ignoreExtraSockets, red, yellow, blue, meta)
+	local id, link, linkDiff1, linkDiff2 = self:GetDiffID(item, ignoreEnchant, ignoreExtraSockets, gems)
 	if not id then return end
 
-	-- Clear Tables
-	clearTable(diff1)
-	clearTable(diff2)
+	local diff1, diff2
 
 	-- Get diff data from cache if available
 	if cache[id..1] then
@@ -2606,7 +2576,7 @@ function StatLogic:GetDiff(item, diff1, diff2, ignoreEnchant, ignoreGems, ignore
 	end
 
 	-- Get item sum, results are written into diff1 table
-	local itemSum = self:GetSum(link)
+	local itemSum = self:GetSum(link, nil, nil, gems)
 	if not itemSum then return end
 	local inventoryType = itemSum.inventoryType
 
@@ -2616,13 +2586,13 @@ function StatLogic:GetDiff(item, diff1, diff2, ignoreEnchant, ignoreGems, ignore
 		if linkDiff1 == "NOITEM" then
 			equippedSum1 = newStatTable()
 		else
-			equippedSum1 = self:GetSum(linkDiff1)
+			equippedSum1 = self:GetSum(linkDiff1, nil, nil, gems)
 		end
 		-- Get off hand item sum
 		if linkDiff2 == "NOITEM" then
 			equippedSum2 = newStatTable()
 		else
-			equippedSum2 = self:GetSum(linkDiff2)
+			equippedSum2 = self:GetSum(linkDiff2, nil, nil, gems)
 		end
 		-- Calculate diff
 		diff1 = copyTable(diff1, itemSum) - equippedSum1 - equippedSum2
@@ -2635,7 +2605,7 @@ function StatLogic:GetDiff(item, diff1, diff2, ignoreEnchant, ignoreGems, ignore
 		if linkDiff1 == "NOITEM" then
 			equippedSum = newStatTable()
 		else
-			equippedSum = self:GetSum(linkDiff1)
+			equippedSum = self:GetSum(linkDiff1, nil, nil, gems)
 		end
 		-- Calculate item 1 diff
 		diff1 = copyTable(diff1, itemSum) - equippedSum
@@ -2648,7 +2618,7 @@ function StatLogic:GetDiff(item, diff1, diff2, ignoreEnchant, ignoreGems, ignore
 			if linkDiff2 == "NOITEM" then
 				equippedSum = newStatTable()
 			else
-				equippedSum = self:GetSum(linkDiff2)
+				equippedSum = self:GetSum(linkDiff2, nil, nil, gems)
 			end
 			-- Calculate item 2 diff
 			diff2 = copyTable(diff2, itemSum) - equippedSum
