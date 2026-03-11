@@ -561,28 +561,17 @@ local options = {
 					get = getGlobalOption,
 					set = setGlobalOption,
 					args = {
-						sumIgnoreUnused = {
-							type = 'toggle',
-							name = L["Ignore unused item types"],
-							desc = L["Show stat summary only for highest level armor type and items you can use with uncommon quality and up"],
-						},
-						sumIgnoreNonPrimaryStat = {
-							type = 'toggle',
-							name = L["Ignore non-primary stat"],
-							desc = L["Show stat summary only for items with your specialization's primary stat"],
-							hidden = function()
-								return addon.tocversion < 40000
-							end,
-						},
 						sumIgnoreEquipped = {
 							type = 'toggle',
 							name = L["Ignore equipped items"],
 							desc = L["Hide stat summary for equipped items"],
+							order = 1,
 						},
 						sumIgnoreEnchant = {
 							type = 'toggle',
 							name = L["Ignore enchants"],
 							desc = L["Ignore enchants on items when calculating the stat summary"],
+							order = 2,
 						},
 						sumIgnoreGems = {
 							type = 'toggle',
@@ -591,15 +580,35 @@ local options = {
 							hidden = function()
 								return addon.tocversion < 20000
 							end,
+							order = 3,
 						},
 						sumIgnoreExtraSockets = {
 							type = 'toggle',
 							name = L["Ignore extra sockets"],
 							desc = L["Ignore sockets from professions or consumable items when calculating the stat summary"],
 							hidden = function()
-								return addon.tocversion < 20000
+								return addon.tocversion < 30000
 							end,
-						}
+							disabled = function()
+								return db.global.sumIgnoreGems
+							end,
+							order = 4,
+						},
+						sumIgnoreUnused = {
+							type = 'toggle',
+							name = L["Ignore unused item types"],
+							desc = L["Show stat summary only for highest level armor type and items you can use with uncommon quality and up"],
+							order = 5,
+						},
+						sumIgnoreNonPrimaryStat = {
+							type = 'toggle',
+							name = L["Ignore non-primary stat"],
+							desc = L["Show stat summary only for items with your specialization's primary stat"],
+							hidden = function()
+								return addon.tocversion < 40000
+							end,
+							order = 6,
+						},
 					},
 				},
 				basic = {
