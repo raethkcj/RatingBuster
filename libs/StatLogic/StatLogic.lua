@@ -229,8 +229,11 @@ setmetatable(cache, {__mode = "kv"}) -- weak table to enable garbage collection
 -- Set Debugging --
 -------------------
 local DEBUG = false
-function StatLogic:ClearCache()
+function StatLogic:ToggleDebugging()
 	DEBUG = not DEBUG
+end
+
+function StatLogic:ClearCache()
 	wipe(cache)
 end
 

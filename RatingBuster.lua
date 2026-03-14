@@ -163,7 +163,7 @@ local options = {
 			desc = "Toggle debugging",
 			func = function()
 				RatingBuster:ClearCache()
-				StatLogic:ClearCache()
+				StatLogic:ToggleDebugging()
 			end,
 			dialogHidden = true,
 		},
@@ -2019,6 +2019,7 @@ PLAYER_LOGIN - Most information about the game world should now be available to 
 -- OnInitialize(name) called at ADDON_LOADED
 function RatingBuster:ClearCache()
 	wipe(cache)
+	StatLogic:ClearCache()
 end
 
 function RatingBuster:OnInitialize()
