@@ -85,6 +85,7 @@ end
 ---@field auto { [SocketColor]: AutoGem }
 ---@field real? number[]
 ---@field sumIgnoreGems boolean
+---@field sumIgnoreExtraSockets boolean
 
 local function setGem(info, value)
 	if value == "" then
@@ -2227,18 +2228,7 @@ function RatingBuster.ProcessTooltip(tooltip)
 	---------------------
 	-- Get equipped item avoidances
 	if db.profile.enableAvoidanceDiminishingReturns then
-		---@type GemInfo
-		local gems = {
-			sumIgnoreGems = db.global.sumIgnoreGems,
-			auto = {
-				[StatLogic.SocketColor.Red] = db.profile.sumGemRed,
-				[StatLogic.SocketColor.Yellow] = db.profile.sumGemYellow,
-				[StatLogic.SocketColor.Blue] = db.profile.sumGemBlue,
-				[StatLogic.SocketColor.Meta] = db.profile.sumGemMeta,
-				[StatLogic.SocketColor.Prismatic] = db.profile.sumGemPrismatic,
-			},
-		}
-		local _, _, difflink1 = StatLogic:GetDiffID(tooltip, db.global.sumIgnoreGems, db.global.sumIgnoreExtraSockets, gems)
+		local _, _, difflink1 = StatLogic:GetDiffID(tooltip, db.global.sumIgnoreEnchant)
 		StatLogic:GetSum(difflink1, equippedSum, statModContext)
 		equippedSum[StatLogic.Stats.Strength] = equippedSum[StatLogic.Stats.Strength] * statModContext("MOD_STR")
 		equippedSum[StatLogic.Stats.Agility] = equippedSum[StatLogic.Stats.Agility] * statModContext("MOD_AGI")
@@ -4333,6 +4323,7 @@ function RatingBuster:StatSummary(tooltip, link, statModContext)
 	---@type GemInfo
 	local gems = {
 		sumIgnoreGems = db.global.sumIgnoreGems,
+		sumIgnoreExtraSockets = db.global.sumIgnoreExtraSockets,
 		auto = {
 			[StatLogic.SocketColor.Red] = db.profile.sumGemRed,
 			[StatLogic.SocketColor.Yellow] = db.profile.sumGemYellow,
@@ -4345,9 +4336,6 @@ function RatingBuster:StatSummary(tooltip, link, statModContext)
 	-- Ignore enchants and gems on items when calculating the stat summary
 	if db.global.sumIgnoreEnchant then
 		link = StatLogic:RemoveEnchant(link)
-	end
-	if db.global.sumIgnoreExtraSockets then
-		link = StatLogic:RemoveExtraSockets(link)
 	end
 
 	-- Diff Display Style
@@ -4365,7 +4353,7 @@ function RatingBuster:StatSummary(tooltip, link, statModContext)
 			mainTooltip = owner
 		end
 		-- Detemine tooltip level
-		local _, mainlink, difflink1, difflink2 = StatLogic:GetDiffID(mainTooltip, db.global.sumIgnoreEnchant, db.global.sumIgnoreExtraSockets, gems)
+		local _, mainlink, difflink1, difflink2 = StatLogic:GetDiffID(mainTooltip, db.global.sumIgnoreEnchant)
 		if link == mainlink then
 			tooltipLevel = 0
 		elseif link == difflink1 then
@@ -4380,7 +4368,7 @@ function RatingBuster:StatSummary(tooltip, link, statModContext)
 			id = "sum"..link
 		end
 	else
-		id = StatLogic:GetDiffID(link, db.global.sumIgnoreEnchant, db.global.sumIgnoreExtraSockets, gems)
+		id = StatLogic:GetDiffID(link, db.global.sumIgnoreEnchant)
 	end
 	if not id then return end
 
@@ -4418,10 +4406,10 @@ function RatingBuster:StatSummary(tooltip, link, statModContext)
 	if db.global.calcDiff then
 		if db.global.sumDiffStyle == "comp" then
 			if tooltipLevel > 0 then
-				statData.diff1 = select(tooltipLevel, StatLogic:GetDiff(mainTooltip, db.global.sumIgnoreEnchant, db.global.sumIgnoreExtraSockets, gems))
+				statData.diff1 = select(tooltipLevel, StatLogic:GetDiff(mainTooltip, db.global.sumIgnoreEnchant, gems))
 			end
 		else
-			statData.diff1, statData.diff2 = StatLogic:GetDiff(link, db.global.sumIgnoreEnchant, db.global.sumIgnoreExtraSockets, gems)
+			statData.diff1, statData.diff2 = StatLogic:GetDiff(link, db.global.sumIgnoreEnchant, gems)
 		end
 	end
 
