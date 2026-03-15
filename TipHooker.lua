@@ -83,6 +83,19 @@ local function InitializeHook()
 					tooltipNeedsRepaint[self] = nil
 				end)
 			end
+
+			for i = 1, 30 do
+				local fontString = _G[tooltipName .. "TextLeft" .. i]
+				if not fontString then
+					local left = tooltip:CreateFontString()
+					local right = tooltip:CreateFontString()
+					tooltip:AddFontStrings(left, right)
+					local leftName = tooltipName .. "TextLeft" .. i
+					local rightName = tooltipName .. "TextRight" .. i
+					_G[leftName] = left
+					_G[rightName] = right
+				end
+			end
 		end
 	end
 	initialized = true
