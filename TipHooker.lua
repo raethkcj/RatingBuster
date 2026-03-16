@@ -87,13 +87,11 @@ local function InitializeHook()
 			for i = 1, 30 do
 				local fontString = _G[tooltipName .. "TextLeft" .. i]
 				if not fontString then
-					local left = tooltip:CreateFontString()
-					local right = tooltip:CreateFontString()
-					tooltip:AddFontStrings(left, right)
 					local leftName = tooltipName .. "TextLeft" .. i
 					local rightName = tooltipName .. "TextRight" .. i
-					_G[leftName] = left
-					_G[rightName] = right
+					local left = tooltip:CreateFontString(leftName, "ARTWORK", "GameTooltipText")
+					local right = tooltip:CreateFontString(rightName, "ARTWORK", "GameTooltipText")
+					tooltip:AddFontStrings(left, right)
 				end
 			end
 		end
