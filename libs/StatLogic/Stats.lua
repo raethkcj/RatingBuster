@@ -10,9 +10,13 @@ local StatLogic = LibStub(addonName)
 ---@field value? number The total flat amount of this stat
 ---@field show boolean -- Should the stat be shown in summaries, or when broken down from a parent Stat
 ---@field isPercent boolean -- Whether values of the stat represent a percentage
+---@field Get fun(): number
 local Stat = {
 	show = true,
 	isPercent = false,
+	Get = function()
+		return 0
+	end,
 }
 
 ---@param stat table?
@@ -63,15 +67,30 @@ StatLogic.Stats = setmetatable({}, {
 	end
 })
 
+---@param statIndex integer
+---@return function
+local function PrimaryStatGetter(statIndex)
+	return function()
+		return UnitStat("player", statIndex)
+	end
+end
+
 -- Basic Attributes
-StatLogic.Stats.Strength = Stat:new()
-StatLogic.Stats.Agility = Stat:new()
-StatLogic.Stats.Stamina = Stat:new()
-StatLogic.Stats.Intellect = Stat:new()
-StatLogic.Stats.Spirit = Stat:new()
-StatLogic.Stats.Mastery = Stat:new()
-StatLogic.Stats.MasteryEffect = Stat:new({ isPercent = true })
-StatLogic.Stats.MasteryRating = Stat:new()
+StatLogic.Stats.Strength = Stat:new({
+	Get = PrimaryStatGetter(LE_UNIT_STAT_STRENGTH),
+})
+StatLogic.Stats.Agility = Stat:new({
+	Get = PrimaryStatGetter(LE_UNIT_STAT_AGILITY),
+})
+StatLogic.Stats.Stamina = Stat:new({
+	Get = PrimaryStatGetter(LE_UNIT_STAT_STAMINA),
+})
+StatLogic.Stats.Intellect = Stat:new({
+	Get = PrimaryStatGetter(LE_UNIT_STAT_INTELLECT),
+})
+StatLogic.Stats.Spirit = Stat:new({
+	Get = PrimaryStatGetter(LE_UNIT_STAT_SPIRIT),
+})
 
 -- Resources
 StatLogic.Stats.Health = Stat:new()
@@ -84,14 +103,38 @@ StatLogic.Stats.ManaRegenNotCasting = Stat:new()
 StatLogic.Stats.ManaRegenOutOfCombat = Stat:new()
 StatLogic.Stats.HealthRegenOutOfCombat = Stat:new()
 
+---@param ratingIndex integer
+---@return function
+local function RatingGetter(ratingIndex)
+	return function()
+		return GetCombatRating(ratingIndex)
+	end
+end
+
 -- Generic Stats
 StatLogic.Stats.AllStats = Stat:new({ show = false })
 StatLogic.Stats.Hit = Stat:new({ show = false })
-StatLogic.Stats.HitRating = Stat:new({ show = false })
+StatLogic.Stats.HitRating = Stat:new({
+	show = false,
+	Get = RatingGetter(CR_HIT_MELEE)
+})
 StatLogic.Stats.Crit = Stat:new({ show = false })
-StatLogic.Stats.CritRating = Stat:new({ show = false })
+StatLogic.Stats.CritRating = Stat:new({
+	show = false,
+	Get = RatingGetter(CR_CRIT_MELEE)
+})
 StatLogic.Stats.Haste = Stat:new({ show = false })
-StatLogic.Stats.HasteRating = Stat:new({ show = false })
+StatLogic.Stats.HasteRating = Stat:new({
+	show = false,
+	Get = RatingGetter(CR_HASTE_MELEE)
+})
+StatLogic.Stats.MasteryRating = Stat:new({
+	show = false,
+	Get = RatingGetter(CR_MASTERY)
+})
+StatLogic.Stats.Mastery = Stat:new()
+StatLogic.Stats.MasteryEffect = Stat:new({ isPercent = true })
+
 StatLogic.Stats.GenericAttackPower = Stat:new({ show = false })
 StatLogic.Stats.FeralAttackPower = Stat:new({ show = false })
 

@@ -124,7 +124,7 @@ StatLogic.StatModTable["GLOBAL"] = {
 	},
 }
 
-addon.GenerateWeaponSubclassStats()
+addon.SetupStatModData()
 
 for stat in pairs(StatLogic.RatingBase) do
 	local rating_name = stat.name:gsub("(%l)(%u)", "%1_%2"):upper()
