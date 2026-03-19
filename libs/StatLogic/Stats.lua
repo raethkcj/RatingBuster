@@ -92,6 +92,12 @@ StatLogic.Stats.Spirit = Stat:new({
 	Get = PrimaryStatGetter(LE_UNIT_STAT_SPIRIT),
 })
 
+StatLogic.Stats.HighestPrimary = Stat:new()
+StatLogic.Stats.HighestStrengthAgility = Stat:new()
+StatLogic.Stats.HighestStrengthAgilityIntellect = Stat:new()
+
+StatLogic.Stats.HighestSecondary = Stat:new()
+
 -- Resources
 StatLogic.Stats.Health = Stat:new()
 StatLogic.Stats.Mana = Stat:new()
