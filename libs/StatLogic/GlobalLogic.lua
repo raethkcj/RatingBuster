@@ -143,6 +143,20 @@ StatLogic.StatModTable["GLOBAL"] = {
 			["pool"] = StatLogic.Stats.HighestPrimary,
 		},
 	},
+	["ADD_STR_MOD_HIGHEST_STR_AGI"] = {
+		{
+			["value"] = 1,
+			["highest"] = StatLogic.Stats.Strength,
+			["pool"] = StatLogic.Stats.HighestStrengthAgility,
+		},
+	},
+	["ADD_AGI_MOD_HIGHEST_STR_AGI"] = {
+		{
+			["value"] = 1,
+			["highest"] = StatLogic.Stats.Agility,
+			["pool"] = StatLogic.Stats.HighestStrengthAgility,
+		},
+	},
 }
 
 addon.SetupStatModData()

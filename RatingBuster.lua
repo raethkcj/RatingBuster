@@ -2579,6 +2579,12 @@ function RatingBuster:ProcessStat(stat, value, breakdownStats, link, color, stat
 
 		local spirit = value * statModContext("ADD_SPI_MOD_HIGHEST_PRIMARY")
 		self:ProcessStat(StatLogic.Stats.Spirit, spirit, breakdownStats, link, color, statModContext, false, false, true)
+	elseif stat == StatLogic.Stats.HighestStrengthAgility then
+		local strength = value * statModContext("ADD_STR_MOD_HIGHEST_STR_AGI")
+		self:ProcessStat(StatLogic.Stats.Strength, strength, breakdownStats, link, color, statModContext, false, false, true)
+
+		local agility = value * statModContext("ADD_AGI_MOD_HIGHEST_STR_AGI")
+		self:ProcessStat(StatLogic.Stats.Agility, agility, breakdownStats, link, color, statModContext, false, false, true)
 	elseif stat == StatLogic.Stats.Strength and db.profile.showStats then
 		local mod = statModContext("MOD_STR")
 		value = value * mod
@@ -3301,6 +3307,7 @@ local summaryCalcData = {
 				sum[StatLogic.Stats.Strength]
 				+ sum[StatLogic.Stats.AllStats] * statModContext("ADD_STR_MOD_ALL_STATS")
 				+ sum[StatLogic.Stats.HighestPrimary] * statModContext("ADD_STR_MOD_HIGHEST_PRIMARY")
+				+ sum[StatLogic.Stats.HighestStrengthAgility] * statModContext("ADD_STR_MOD_HIGHEST_STR_AGI")
 				+ summaryFunc[StatLogic.Stats.Defense](sum, statModContext) * statModContext("ADD_STR_MOD_DEFENSE")
 			)
 		end,
@@ -3314,6 +3321,7 @@ local summaryCalcData = {
 				sum[StatLogic.Stats.Agility]
 				+ sum[StatLogic.Stats.AllStats] * statModContext("ADD_AGI_MOD_ALL_STATS")
 				+ sum[StatLogic.Stats.HighestPrimary] * statModContext("ADD_AGI_MOD_HIGHEST_PRIMARY")
+				+ sum[StatLogic.Stats.HighestStrengthAgility] * statModContext("ADD_AGI_MOD_HIGHEST_STR_AGI")
 				+ summaryFunc[StatLogic.Stats.Intellect](sum, statModContext) * statModContext("ADD_AGI_MOD_INT")
 			)
 		end,
