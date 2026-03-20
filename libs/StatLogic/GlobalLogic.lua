@@ -157,6 +157,27 @@ StatLogic.StatModTable["GLOBAL"] = {
 			["pool"] = StatLogic.Stats.HighestStrengthAgility,
 		},
 	},
+	["ADD_CRIT_RATING_MOD_HIGHEST_SECONDARY"] = {
+		{
+			["value"] = 1,
+			["highest"] = StatLogic.Stats.CritRating,
+			["pool"] = StatLogic.Stats.HighestSecondary,
+		},
+	},
+	["ADD_HASTE_RATING_MOD_HIGHEST_SECONDARY"] = {
+		{
+			["value"] = 1,
+			["highest"] = StatLogic.Stats.HasteRating,
+			["pool"] = StatLogic.Stats.HighestSecondary,
+		},
+	},
+	["ADD_MASTERY_RATING_MOD_HIGHEST_SECONDARY"] = {
+		{
+			["value"] = 1,
+			["highest"] = StatLogic.Stats.MasteryRating,
+			["pool"] = StatLogic.Stats.HighestSecondary,
+		},
+	},
 }
 
 addon.SetupStatModData()

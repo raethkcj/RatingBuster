@@ -2480,6 +2480,15 @@ function RatingBuster:ProcessStat(stat, value, breakdownStats, link, color, stat
 
 		local spellHasteRating = value * statModContext("ADD_SPELL_HASTE_RATING_MOD_HASTE_RATING")
 		self:ProcessStat(StatLogic.Stats.SpellHasteRating, spellHasteRating, breakdownStats, link, color, statModContext, true, isBaseStat, db.profile.showSpellHasteFromHasteRating)
+	elseif stat == StatLogic.Stats.HighestSecondary then
+		local critRating = value * statModContext("ADD_CRIT_RATING_MOD_HIGHEST_SECONDARY")
+		self:ProcessStat(StatLogic.Stats.CritRating, critRating, breakdownStats, link, color, statModContext, false, false, true)
+
+		local hasteRating = value * statModContext("ADD_HASTE_RATING_MOD_HIGHEST_SECONDARY")
+		self:ProcessStat(StatLogic.Stats.HasteRating, hasteRating, breakdownStats, link, color, statModContext, false, false, true)
+
+		local masteryRating = value * statModContext("ADD_MASTERY_RATING_MOD_HIGHEST_SECONDARY")
+		self:ProcessStat(StatLogic.Stats.MasteryRating, masteryRating, breakdownStats, link, color, statModContext, false, false, true)
 	elseif StatLogic.RatingBase[stat] and db.profile.showRatings then
 		--------------------
 		-- Combat Ratings --
@@ -3364,7 +3373,10 @@ local summaryCalcData = {
 	{
 		stat = StatLogic.Stats.MasteryRating,
 		func = function(sum, statModContext)
-			return statModContext("MOD_MASTERY_RATING") * sum[StatLogic.Stats.MasteryRating]
+			return statModContext("MOD_MASTERY_RATING") * (
+				sum[StatLogic.Stats.MasteryRating]
+				+ sum[StatLogic.Stats.HighestSecondary] * statModContext("ADD_MASTERY_RATING_MOD_HIGHEST_SECONDARY")
+			)
 		end,
 	},
 	{
@@ -3550,6 +3562,7 @@ local summaryCalcData = {
 				sum[StatLogic.Stats.CritRating]
 				+ summaryFunc[StatLogic.Stats.DodgeRating](sum, statModContext) * statModContext("ADD_CRIT_RATING_MOD_DODGE_RATING")
 				+ summaryFunc[StatLogic.Stats.ParryRating](sum, statModContext) * statModContext("ADD_CRIT_RATING_MOD_PARRY_RATING")
+				+ sum[StatLogic.Stats.HighestSecondary] * statModContext("ADD_CRIT_RATING_MOD_HIGHEST_SECONDARY")
 			)
 		end,
 	},
@@ -3594,7 +3607,10 @@ local summaryCalcData = {
 	{
 		stat = StatLogic.Stats.HasteRating,
 		func = function (sum, statModContext)
-			return statModContext("MOD_HASTE_RATING") * sum[StatLogic.Stats.HasteRating]
+			return statModContext("MOD_HASTE_RATING") * (
+				sum[StatLogic.Stats.HasteRating]
+				+ sum[StatLogic.Stats.HighestSecondary] * statModContext("ADD_HASTE_RATING_MOD_HIGHEST_SECONDARY")
+			)
 		end,
 	},
 	-- Haste - MELEE_HASTE_RATING

@@ -332,7 +332,19 @@ StatLogic.StatModInfo = {
 		initialValue = 0,
 		finalAdjust = 0,
 	},
+	["ADD_CRIT_RATING_MOD_HIGHEST_SECONDARY"] = {
+		initialValue = 0,
+		finalAdjust = 0,
+	},
+	["ADD_HASTE_RATING_MOD_HIGHEST_SECONDARY"] = {
+		initialValue = 0,
+		finalAdjust = 0,
+	},
 	["ADD_INT_MOD_HIGHEST_PRIMARY"] = {
+		initialValue = 0,
+		finalAdjust = 0,
+	},
+	["ADD_MASTERY_RATING_MOD_HIGHEST_SECONDARY"] = {
 		initialValue = 0,
 		finalAdjust = 0,
 	},
