@@ -3427,6 +3427,13 @@ StatLogic.StatModTable["ALL"] = {
 			["value"] = -RESILIENCE_CRIT_CHANCE_TO_CONSTANT_DAMAGE_REDUCTION_MULTIPLIER,
 		},
 	},
+	["ADD_SPI_MOD_HIGHEST_PRIMARY"] = {
+		{
+			["value"] = 1,
+			["highest"] = StatLogic.Stats.Spirit,
+			["pool"] = StatLogic.Stats.HighestPrimary,
+		},
+	},
 }
 
 -----------------------------------

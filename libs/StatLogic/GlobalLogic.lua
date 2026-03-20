@@ -122,6 +122,27 @@ StatLogic.StatModTable["GLOBAL"] = {
 			["value"] = 1,
 		},
 	},
+	["ADD_STR_MOD_HIGHEST_PRIMARY"] = {
+		{
+			["value"] = 1,
+			["highest"] = StatLogic.Stats.Strength,
+			["pool"] = StatLogic.Stats.HighestPrimary,
+		},
+	},
+	["ADD_AGI_MOD_HIGHEST_PRIMARY"] = {
+		{
+			["value"] = 1,
+			["highest"] = StatLogic.Stats.Agility,
+			["pool"] = StatLogic.Stats.HighestPrimary,
+		},
+	},
+	["ADD_INT_MOD_HIGHEST_PRIMARY"] = {
+		{
+			["value"] = 1,
+			["highest"] = StatLogic.Stats.Intellect,
+			["pool"] = StatLogic.Stats.HighestPrimary,
+		},
+	},
 }
 
 addon.SetupStatModData()

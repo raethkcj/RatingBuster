@@ -316,11 +316,19 @@ StatLogic.StatModInfo = {
 		initialValue = 0,
 		finalAdjust = 0,
 	},
+	["ADD_AGI_MOD_HIGHEST_PRIMARY"] = {
+		initialValue = 0,
+		finalAdjust = 0,
+	},
 	["ADD_AP_MOD_FERAL_ATTACK_POWER"] = {
 		initialValue = 0,
 		finalAdjust = 0,
 	},
 	["ADD_AP_MOD_GENERIC_ATTACK_POWER"] = {
+		initialValue = 0,
+		finalAdjust = 0,
+	},
+	["ADD_INT_MOD_HIGHEST_PRIMARY"] = {
 		initialValue = 0,
 		finalAdjust = 0,
 	},
@@ -345,6 +353,14 @@ StatLogic.StatModInfo = {
 		finalAdjust = 0,
 	},
 	["ADD_RANGED_HASTE_RATING_MOD_HASTE_RATING"] = {
+		initialValue = 0,
+		finalAdjust = 0,
+	},
+	["ADD_SPI_MOD_HIGHEST_PRIMARY"] = {
+		initialValue = 0,
+		finalAdjust = 0,
+	},
+	["ADD_STR_MOD_HIGHEST_PRIMARY"] = {
 		initialValue = 0,
 		finalAdjust = 0,
 	},
@@ -974,7 +990,7 @@ local StatPools = {}
 local function SetupStatPools(case)
 	if case.highest then
 		StatPools[case.pool] = StatPools[case.pool] or {}
-		StatPools[case.pool][#StatPools + 1] = case.highest
+		StatPools[case.pool][#StatPools[case.pool] + 1] = case.highest
 	end
 end
 
