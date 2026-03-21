@@ -219,6 +219,9 @@ L["statPatterns"] = {
 
 	[StatLogic.Stats.SpellPower] = { "주문력" },
 	[StatLogic.Stats.GenericAttackPower] = { "전투력이" },
+	[StatLogic.Stats.AttackPower] = { "전투력이" },
+	[StatLogic.Stats.RangedAttackPower] = { "전투력이" },
+	[StatLogic.Stats.FeralAttackPower] = { "전투력이" },
 
 	[StatLogic.Stats.MeleeCritRating] = { "근접 치명타 적중도", "치명타 적중도", "치명타 및 극대화" },
 	[StatLogic.Stats.RangedCritRating] = { "원거리 치명타 적중도" },

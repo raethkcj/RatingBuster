@@ -218,6 +218,9 @@ L["statPatterns"] = {
 
 	[StatLogic.Stats.SpellPower] = { "法术强度" },
 	[StatLogic.Stats.GenericAttackPower] = { "攻击强度" },
+	[StatLogic.Stats.AttackPower] = { "攻击强度" },
+	[StatLogic.Stats.RangedAttackPower] = { "攻击强度" },
+	[StatLogic.Stats.FeralAttackPower] = { "攻击强度" },
 
 	[StatLogic.Stats.MeleeCritRating] = { "近战爆击等级", "爆击等级", "爆击" },
 	[StatLogic.Stats.RangedCritRating] = { "远程爆击等级", "远程爆击命中等级", "远程爆击等级" },

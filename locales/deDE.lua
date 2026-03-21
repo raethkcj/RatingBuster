@@ -218,6 +218,9 @@ L["statPatterns"] = {
 
 	[StatLogic.Stats.SpellPower] = { "zaubermacht" },
 	[StatLogic.Stats.GenericAttackPower] = { "angriffskraft" },
+	[StatLogic.Stats.AttackPower] = { "angriffskraft" },
+	[StatLogic.Stats.RangedAttackPower] = { "angriffskraft" },
+	[StatLogic.Stats.FeralAttackPower] = { "angriffskraft" },
 
 	[StatLogic.Stats.MeleeCritRating] = { "kritische trefferwertung", "kritischer trefferwert" },
 	[StatLogic.Stats.RangedCritRating] = { "kritische distanztrefferwertung" },

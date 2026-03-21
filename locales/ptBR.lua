@@ -207,6 +207,9 @@ L["statPatterns"] = {
 
 	[StatLogic.Stats.SpellPower] = { "spell power" },
 	[StatLogic.Stats.GenericAttackPower] = { "attack power" },
+	[StatLogic.Stats.AttackPower] = { "attack power" },
+	[StatLogic.Stats.RangedAttackPower] = { "attack power" },
+	[StatLogic.Stats.FeralAttackPower] = { "attack power" },
 
 	[StatLogic.Stats.MeleeCritRating] = { "critical strike", "critical hit rating", "critical rating", "crit rating", "crit" },
 	[StatLogic.Stats.RangedCritRating] = { "ranged critical strike", "ranged critical hit rating", "ranged critical rating", "ranged crit rating" },

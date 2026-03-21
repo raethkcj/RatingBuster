@@ -235,6 +235,9 @@ L["statPatterns"] = {
 
 	[StatLogic.Stats.SpellPower] = { "puissance des sorts" },
 	[StatLogic.Stats.GenericAttackPower] = { "puissance d'attaque" },
+	[StatLogic.Stats.AttackPower] = { "puissance d'attaque" },
+	[StatLogic.Stats.RangedAttackPower] = { "puissance d'attaque" },
+	[StatLogic.Stats.FeralAttackPower] = { "puissance d'attaque" },
 
 	[StatLogic.Stats.MeleeCritRating] = { "score de critique", "score de crit.", "score de coup critique", "score de toucher critique" },
 	[StatLogic.Stats.RangedCritRating] = { "score de critique à distance", "score de coup critique à distance", "score de toucher critique à distance" },
