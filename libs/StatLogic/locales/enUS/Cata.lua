@@ -1810,6 +1810,7 @@ L["infuses all  party and raid members with brilliance, increasing their maximum
 L["increases resistance to magic by %s for %s hour.  guardian elixir"] = { { Stats.FireResistance, Stats.NatureResistance, Stats.FrostResistance, Stats.ShadowResistance, Stats.ArcaneResistance, }, false, } -- s79631
 L["increases haste rating by %s for %s hour.  battle elixir"] = { { Stats.MeleeHasteRating, Stats.RangedHasteRating, Stats.SpellHasteRating, }, false, } -- s79632
 L["increases your mastery rating by %s for %s hour.  battle elixir"] = { { Stats.MasteryRating, }, false, } -- s79635
+L["increases your agility, strength, or intellect by %s for %s hrs.  your highest stat is always chosen.\ncounts as both a battle and guardian elixir.  effect persists through death"] = { { Stats.HighestPrimary, }, false, } -- s79637
 L["the converted power increases magic damage done by %s% and increases cast speed by %s% for %s sec. stacks"] = { false, { Stats.SpellHaste, }, false, } -- s79735
 L["causes fire damage when hit, increases your chance to critically hit with spells by %s%, and reduces the chance you are critically hit by %s%.  only one type of armor spell can be active at any time.  lasts %s min"] = { { Stats.SpellCrit, }, false, false, } -- s79849
 L["the death knight blows the horn of winter, which generates %s runic power and increases total strength and agility by %s.  lasts %s min"] = { false, { Stats.Strength, Stats.Agility, }, false, } -- s79891
@@ -1827,6 +1828,7 @@ L["increases your parry chance by %s% for %s sec whenever you are brought to %s%
 L["attaches a permanent scope to a bow or gun that increases ranged hit rating by %s.\nattaching this scope to a ranged weapon causes it to become soulbound"] = { { Stats.RangedHitRating, }, } -- s81933
 L["removes the safety mechanism from a bow or gun, increasing its ranged haste rating by %s.\nusing this kit causes the bow or gun to become soulbound"] = { { Stats.RangedHasteRating, }, } -- s81934
 L["attack speed increased by %s%"] = { { Stats.MeleeHaste, }, } -- s82032
+L["increases your intellect, agility, or strength by %s for %s sec.  your highest stat is always chosen"] = { { Stats.HighestPrimary, }, false, } -- s82174
 L["increases your armor by %s for %s sec"] = { { Stats.Armor, }, false, } -- s82176
 L["consumes your pet's frenzy effect stack, restoring %s focus to your pet and increasing your ranged haste by %s% for each frenzy effect stack consumed. lasts for %s sec"] = { false, { Stats.RangedHaste, }, false, } -- s82692
 L["kicks up dust into the eyes of an attacker, decreasing their chance to hit you by %s% for %s sec"] = { { Stats.MeleeHit, Stats.RangedHit, }, false, reduction = true } -- s82829
@@ -1890,11 +1892,15 @@ L["restores %s health and %s mana over %s sec.  must remain seated while eating.
 L["restores %s health and %s mana over %s sec.  must remain seated while eating.  if you spend at least %s seconds eating you will become well fed and gain %s haste rating and %s stamina for %s hour"] = { false, false, false, false, { Stats.MeleeHasteRating, Stats.RangedHasteRating, Stats.SpellHasteRating, }, { Stats.Stamina, }, false, ignoreSum = true } -- s87573
 L["restores %s health and %s mana over %s sec.  must remain seated while eating.  if you spend at least %s seconds eating you will become well fed and gain %s dodge rating and %s stamina for %s hour"] = { false, false, false, false, { Stats.DodgeRating, }, { Stats.Stamina, }, false, ignoreSum = true } -- s87577
 L["restores %s health and %s mana over %s sec.  must remain seated while eating.  if you spend at least %s seconds eating you will become well fed and gain %s parry rating and %s stamina for %s hour"] = { false, false, false, false, { Stats.ParryRating, }, { Stats.Stamina, }, false, ignoreSum = true } -- s87580
+L["restores %s health and %s mana over %s sec.  must remain seated while eating.  if you spend at least %s seconds eating you will become well fed and gain %s stamina and %s in another useful stat for %s hour"] = { false, false, false, false, { Stats.Stamina, }, { Stats.Primary, }, false, } -- s87604
 L["expertise rating and stamina increased by %s. lasts %s hour"] = { { Stats.ExpertiseRating, Stats.Stamina, }, false, } -- s87634
 L["restores %s health and %s mana over %s sec.  must remain seated while eating.  if you spend at least %s seconds eating you will become well fed and gain %s expertise rating and %s stamina for %s hour"] = { false, false, false, false, { Stats.ExpertiseRating, }, { Stats.Stamina, }, false, ignoreSum = true } -- s87636
+L["set out a dragon feast to feed your entire raid or party!\nrestores %s health and %s mana over %s sec.  if you spend at least %s seconds eating you will become well fed and gain %s stamina and %s in another useful stat for %s hour"] = { false, false, false, false, { Stats.Stamina, }, { Stats.Primary, }, false, } -- s87643
+L["set out a seafood feast to feed your entire raid or party!\nrestores %s health and %s mana over %s sec.  if you spend at least %s seconds eating you will become well fed and gain %s stamina and %s in another useful stat for %s hour"] = { false, false, false, false, { Stats.Stamina, }, { Stats.Primary, }, false, } -- s87644
 L["increases the strength of your pet by %s.  lasts %s hour"] = { { Stats.Strength, }, false, } -- s87697
 L["increases the stamina of your pet by %s.  lasts %s hour"] = { { Stats.Stamina, }, false, } -- s87699
 L["increases casting speed by %s% for %s sec"] = { { Stats.SpellHaste, }, false, } -- s87780
+L["set out the barbecue to feed your entire raid or party!\nrestores %s health and %s mana over %s sec.  if you spend at least %s seconds eating you will become well fed and gain %s stamina and %s in another useful stat for %s hour"] = { false, false, false, false, { Stats.Stamina, }, { Stats.Primary, }, false, } -- s87915
 L["creates a violent storm in the target area causing %s nature damage to enemies every %s sec, and increasing the time between the attacks of enemies by %s%. lasts %s sec"] = { false, false, { Stats.MeleeHaste, }, false, reduction = true } -- s88171
 L["spell power increased by %s%.\nspell haste increased by %s%"] = { false, { Stats.SpellHaste, }, } -- s88324
 L["attack speed increased by %s%.\nranged attack power increased by %s%.\narmor increased by %s"] = { false, false, { Stats.Armor, }, } -- s88325
@@ -1970,6 +1976,7 @@ L["the beast lets out a roar of courage, increasing the strength and agility of 
 L["places a blessing on members of your raid, increasing melee attack power by %s%, ranged attack power by %s%, and restoring %s mana every %s seconds for %s hour.  players may only have one blessing on them per player at any one time"] = { false, false, { Stats.GenericManaRegen, }, false, false, } -- s93744
 L["increases your attack power by %s and shrinks the world for %s min"] = { { Stats.GenericAttackPower, }, false, } -- s93765
 L["increases spirit by %s for %s hour. counts as both a battle and guardian elixir.  this effect persists through death"] = { { Stats.Spirit, }, false, } -- s94160
+L["increases your agility, strength, or intellect by %s for %s sec.  your highest stat is always chosen.  can only be used in battlegrounds"] = { { Stats.HighestPrimary, }, false, } -- s94826
 L["permanently enchant a helm to increase strength by %s.  do not localize!"] = { { Stats.Strength, }, } -- s94953
 L["increases your critical rating by %s and size for %s sec"] = { { Stats.MeleeCritRating, Stats.RangedCritRating, Stats.SpellCritRating, }, false, } -- s95227
 L["increases the physical damage dealt by the caster by %s% and speeds its attack by %s% for %s sec"] = { false, { Stats.MeleeHaste, }, false, } -- s95459
@@ -1990,8 +1997,10 @@ L["permanently enchant bracers to increase intellect by %s.  requires a level %s
 L["permanently enchant bracers to increase agility by %s.  requires a level %s or higher item"] = { { Stats.Agility, }, false, } -- s96264
 L["bloodlord mandokir goes into a frenzy, increasing his attack speed by %s% and decreases the cooldown of decapitate"] = { { Stats.MeleeHaste, }, } -- s96800
 L["your melee and ranged attacks have a chance to grant you %s haste rating for %s sec"] = { { Stats.MeleeHasteRating, Stats.RangedHasteRating, Stats.SpellHasteRating, }, false, ignoreSum = true } -- s96910
+L["consume all titanic power to increase your critical strike rating, haste rating, or mastery rating by %s per titanic power accumulated, lasting %s sec.  the apparatus will always choose the highest of those three ratings"] = { { Stats.HighestSecondary, }, false, } -- s96934
 L["grants %s mastery rating for %s sec"] = { { Stats.MasteryRating, }, false, } -- s96962
 L["grants %s mastery rating for %s sec each time you deal periodic spell damage, stacking up to %s times"] = { { Stats.MasteryRating, }, false, false, ignoreSum = true } -- s96963
+L["your melee and ranged attacks have a chance to grant %s critical strike rating, haste rating, or mastery rating for %s sec, whichever is currently highest"] = { { Stats.HighestSecondary, }, false, } -- s96976
 L["grants %s critical strike rating for %s sec"] = { { Stats.MeleeCritRating, Stats.RangedCritRating, Stats.SpellCritRating, }, false, } -- s96980
 L["grants %s critical strike rating for %s sec each time you deal a melee critical strike, stacking up to %s times"] = { { Stats.MeleeCritRating, Stats.RangedCritRating, Stats.SpellCritRating, }, false, false, ignoreSum = true } -- s96981
 L["creates a field of deadened magic. units in this field take %s% less magic damage, but have their casting speed reduced by %s%"] = { false, { Stats.SpellHaste, }, reduction = true } -- s97600
@@ -2107,6 +2116,56 @@ L["damage done increased by %s%.\nhealth increased by %s%. \nspells have no cost
 L["increases the caster's attack speed by %s% and physical damage dealt for %s sec"] = { { Stats.MeleeHaste, }, false, } -- s77238
 L["decreases the time between your attacks by %s% for %s min"] = { { Stats.MeleeHaste, }, false, } -- s78943
 L["increases maximum health of all party members within %s yards by %s.  lasts %s min"] = { false, { Stats.Health, }, false, } -- s82061
+L["teaches you how to permanently enchant chest armor to increase resilience rating by %s.  requires a level %s or higher item"] = { { Stats.ResilienceRating, }, false, } -- i28270
+L["teaches you how to permanently enchant gloves to increase hit rating by %s.   requires a level %s or higher item"] = { { Stats.HitRating, }, false, } -- i28271
+L["teaches you how to permanently enchant gloves to increase spell power by %s.  requires a level %s or higher item"] = { { Stats.SpellPower, }, false, } -- i28272
+L["teaches you how to permanently enchant a cloak to increase arcane resistance by %s.  requires a level %s or higher item"] = { { Stats.ArcaneResistance, }, false, } -- i28276
+L["teaches you how to permanently enchant a cloak to increase shadow resistance by %s.  requires a level %s or higher item"] = { { Stats.ShadowResistance, }, false, } -- i28277
+L["teaches you how to permanently enchant boots to give a minor movement speed increase and increase agility by %s.  requires a level %s or higher item"] = { { Stats.Agility, }, false, } -- i28279
+L["teaches you how to permanently enchant boots to give a minor movement speed increase and increase stamina by %s.  requires a level %s or higher item"] = { { Stats.Stamina, }, false, } -- i28280
+L["teaches you how to permanently enchant a melee weapon to increase spell power by %s.  requires a level %s or higher item"] = { { Stats.SpellPower, }, false, } -- i28281
+L["teaches you how to permanently enchant a shield to increase stamina by %s.  requires a level %s or higher item"] = { { Stats.Stamina, }, false, } -- i28282
+L["teaches you how to permanently enchant gloves to increase agility by %s"] = { { Stats.Agility, }, } -- i33152
+L["teaches you how to permanently enchant boots to increase spirit and stamina by %s.  requires a level %s or higher item"] = { { Stats.Stamina, Stats.Spirit, }, false, } -- i35298
+L["teaches you how to permanently enchant chest armor to increase dodge rating by %s.  requires a level %s or higher item"] = { { Stats.DodgeRating, }, false, } -- i35500
+L["teaches you how to permanently enchant a cloak to increase dodge rating by %s.  requires a level %s or higher item"] = { { Stats.DodgeRating, }, false, } -- i35756
+L["teaches you how to permanently enchant bracers to increase spirit by %s.  requires a level %s or higher item"] = { { Stats.Spirit, }, false, } -- i37326
+L["teaches you how to permanently enchant a melee weapon to increase spirit by %s.  requires a level %s or higher item"] = { { Stats.Spirit, }, false, } -- i37329
+L["teaches you how to permanently enchant a cloak to increase fire resistance by %s.  requires a level %s or higher item"] = { { Stats.FireResistance, }, false, } -- i37331
+L["teaches you how to permanently enchant a cloak to increase frost resistance by %s.  requires a level %s or higher item"] = { { Stats.FrostResistance, }, false, } -- i37332
+L["teaches you how to permanently enchant a cloak to increase nature resistance by %s.  requires a level %s or higher item"] = { { Stats.NatureResistance, }, false, } -- i37333
+L["teaches you how to permanently enchant a cloak to increase agility by %s. requires a level %s or higher item"] = { { Stats.Agility, }, false, } -- i37335
+L["teaches you how to permanently enchant chest armor to increase dodge rating by %s.   requires a level %s or higher item"] = { { Stats.DodgeRating, }, false, } -- i37336
+L["teaches you how to permanently enchant bracers to increase all stats by %s.  requires a level %s or higher item"] = { { Stats.AllStats, }, false, } -- i37337
+L["teaches you how to permanently enchant bracers to increase expertise rating by %s.  requires a level %s or higher item"] = { { Stats.ExpertiseRating, }, false, } -- i37346
+L["teaches you how to permanently enchant a cloak to increase agility by %s and armor by %s.  requires a level %s or higher item"] = { { Stats.Agility, }, { Stats.Armor, }, false, } -- i37349
+L["teaches you how to permanently enchant a cloak to give %s additional armor.  requires a level %s or higher item"] = { { Stats.Armor, }, false, } -- i44471
+L["teaches you how to permanently enchant a cloak to increase haste rating by %s.  requires a level %s or higher item"] = { { Stats.HasteRating, }, false, } -- i44472
+L["teaches you how to permanently enchant a two-handed melee weapon to increase attack power by %s.  requires a level %s or higher item"] = { { Stats.GenericAttackPower, }, false, } -- i44483
+L["teaches you how to permanently enchant bracers to increase attack power by %s.  requires a level %s or higher item"] = { { Stats.GenericAttackPower, }, false, } -- i44484
+L["teaches you how to permanently enchant gloves to increase threat caused by %s% and increase parry rating by %s.  requires a level %s or higher item"] = { false, { Stats.ParryRating, }, false, } -- i44485
+L["teaches you how to permanently enchant a melee weapon to increase attack power by %s.  requires a level %s or higher item"] = { { Stats.GenericAttackPower, }, false, } -- i44486
+L["teaches you how to permanently enchant a cloak to reduce threat slightly and increase spirit by %s.  requires a level %s or higher item"] = { { Stats.Spirit, }, false, } -- i44488
+L["teaches you how to permanently enchant chest armor to increase all stats by %s.  requires a level %s or higher item"] = { { Stats.AllStats, }, false, } -- i44489
+L["teaches you how to permanently enchant boots to increase attack power by %s.  requires a level %s or higher item"] = { { Stats.GenericAttackPower, }, false, } -- i44490
+L["teaches you how to permanently enchant a melee weapon to increase critical strike and hit rating by %s.  requires a level %s or higher item"] = { { Stats.HitRating, Stats.CritRating, }, false, } -- i44496
+L["teaches you how to permanently enchant bracers to increase spell power by %s.  requires a level %s or higher item"] = { { Stats.SpellPower, }, false, } -- i44498
+L["teaches you how to permanently enchant bracers to increase stamina by %s.  requires a level %s or higher item"] = { { Stats.Stamina, }, false, } -- i44944
+L["teaches you how to permanently enchant a melee weapon to increase stamina by %s.  requires a level %s or higher item"] = { { Stats.Stamina, }, false, } -- i44945
+L["teaches you how to permanently enchant a staff to increase spell power by %s.  requires a level %s or higher item"] = { { Stats.SpellPower, }, false, } -- i45059
+L["teaches you how to permanently enchant a cloak to increase critical strike rating by %s.  requires a level %s or higher item"] = { { Stats.CritRating, }, false, } -- i52737
+L["teaches you how to permanently enchant bracers to increase critical strike rating by %s.  requires a level %s or higher item"] = { { Stats.CritRating, }, false, } -- i52738
+L["teaches you how to permanently enchant a chest to increase stamina by %s.  requires a level %s or higher item"] = { { Stats.Stamina, }, false, } -- i52740
+L["teaches you how to permanently enchant boots to increase movement speed slightly and agility by %s.  requires a level %s or higher item"] = { { Stats.Agility, }, false, } -- i64411
+L["teaches you how to permanently enchant boots to increase movement speed slightly and mastery rating by %s.  requires a level %s or higher item"] = { { Stats.MasteryRating, }, false, } -- i64412
+L["teaches you how to permanently enchant bracers to increase haste rating by %s.  requires a level %s or higher item"] = { { Stats.HasteRating, }, false, } -- i64413
+L["teaches you how to permanently enchant gloves to increase mastery rating by %s.  requires a level %s or higher item"] = { { Stats.MasteryRating, }, false, } -- i64414
+L["teaches you how to permanently enchant gloves to increase strength by %s.  requires a level %s or higher item"] = { { Stats.Strength, }, false, } -- i64415
+L["teaches you how to permanently enchant bracers to increase agility by %s.  requires a level %s or higher item"] = { { Stats.Agility, }, false, } -- i68787
+L["teaches you how to permanently enchant bracers to increase strength by %s.  requires a level %s or higher item"] = { { Stats.Strength, }, false, } -- i68788
+L["teaches you how to permanently enchant bracers to increase intellect by %s.  requires a level %s or higher item"] = { { Stats.Intellect, }, false, } -- i68789
+L["teaches you how to permanently enchant a cloak to increase agility by %s"] = { { Stats.Agility, }, } -- i71714
+L["teaches you how to permanently enchant a ring to increase all stats by %s"] = { { Stats.AllStats, }, } -- i186683
 L["teaches you how to permanently enchant chest armor to increase mana by %s"] = { { Stats.Mana, }, } -- i6342
 L["teaches you how to permanently enchant bracers to increase spirit by %s"] = { { Stats.Spirit, }, } -- i6344
 L["teaches you how to permanently enchant a cloak to give %s additional armor"] = { { Stats.Armor, }, } -- i6345
@@ -2115,7 +2174,6 @@ L["teaches you how to permanently enchant a two-handed melee weapon to increase 
 L["teaches you how to permanently enchant boots to increase stamina by %s"] = { { Stats.Stamina, }, } -- i6376
 L["teaches you how to permanently enchant boots to increase agility by %s"] = { { Stats.Agility, }, } -- i6377
 L["teaches you how to permanently enchant a two-handed melee weapon to increase spirit by %s"] = { { Stats.Spirit, }, } -- i11038
-L["teaches you how to permanently enchant a cloak to increase agility by %s"] = { { Stats.Agility, }, } -- i11039
 L["teaches you how to permanently enchant a shield to increase armor by %s"] = { { Stats.Armor, }, } -- i11081
 L["teaches you how to permanently enchant a cloak to increase shadow resistance by %s"] = { { Stats.ShadowResistance, }, } -- i11098
 L["teaches you how to permanently enchant bracers to increase dodge rating by %s"] = { { Stats.DodgeRating, }, } -- i11163
@@ -2126,7 +2184,6 @@ L["teaches you how to permanently enchant a shield to increase frost resistance 
 L["teaches you how to permanently enchant bracers to increase stamina by %s"] = { { Stats.Stamina, }, } -- i11225
 L["teaches you how to permanently enchant bracers to increase intellect by %s"] = { { Stats.Intellect, }, } -- i16214
 L["teaches you how to permanently enchant a cloak to increase all resistances by %s"] = { { Stats.FireResistance, Stats.NatureResistance, Stats.FrostResistance, Stats.ShadowResistance, Stats.ArcaneResistance, }, } -- i16216
-L["teaches you how to permanently enchant gloves to increase agility by %s"] = { { Stats.Agility, }, } -- i16219
 L["teaches you how to permanently enchant chest armor to increase health by %s"] = { { Stats.Health, }, } -- i16221
 L["teaches you how to permanently enchant a cloak to increase armor by %s"] = { { Stats.Armor, }, } -- i16224
 L["teaches you how to permanently enchant a two-handed melee weapon to increase its damage by %s"] = { { Stats.AverageWeaponDamage, }, } -- i16247
@@ -2148,70 +2205,22 @@ L["teaches you how to permanently enchant a cloak to increase nature resistance 
 L["teaches you how to permanently enchant a cloak to increase agility and dodge rating by %s"] = { { Stats.Agility, Stats.DodgeRating, }, } -- i20734
 L["teaches you how to permanently enchant a cloak to increase dodge rating by %s"] = { { Stats.DodgeRating, }, } -- i20736
 L["teaches you how to permanently enchant a two-handed melee weapon to increase agility by %s"] = { { Stats.Agility, }, } -- i22392
-L["teaches you how to permanently enchant bracers to increase spell power by %s.  requires a level %s or higher item"] = { { Stats.SpellPower, }, false, } -- i22531
-L["teaches you how to permanently enchant bracers to increase spirit by %s.  requires a level %s or higher item"] = { { Stats.Spirit, }, false, } -- i22532
-L["teaches you how to permanently enchant bracers to increase stamina by %s.  requires a level %s or higher item"] = { { Stats.Stamina, }, false, } -- i22533
 L["teaches you how to permanently enchant a ring to increase physical damage by %s.  only the enchanter's rings can be enchanted and enchanting a ring will cause it to become soulbound.  requires a level %s or higher item"] = { { Stats.AverageWeaponDamage, }, false, } -- i22535
 L["teaches you how to permanently enchant a ring to increase spell power by %s.  only the enchanter's rings can be enchanted and enchanting a ring will cause it to become soulbound.  requires a level %s or higher item"] = { { Stats.SpellPower, }, false, } -- i22536
 L["teaches you how to permanently enchant a ring to increase all stats by %s.  only the enchanter's rings can be enchanted, and enchanting a ring will cause it to become soulbound.  requires a level %s or higher item"] = { { Stats.AllStats, }, false, } -- i22538
 L["teaches you how to permanently enchant a shield to increase intellect by %s.  requires a level %s or higher item"] = { { Stats.Intellect, }, false, } -- i22539
 L["teaches you how to permanently enchant a shield to increase parry rating by %s.  requires a level %s or higher item"] = { { Stats.ParryRating, }, false, } -- i22540
 L["teaches you how to permanently enchant a shield to increase all resistances by %s.  requires a level %s or higher item"] = { { Stats.FireResistance, Stats.NatureResistance, Stats.FrostResistance, Stats.ShadowResistance, Stats.ArcaneResistance, }, false, } -- i22541
-L["teaches you how to permanently enchant boots to increase spirit and stamina by %s.  requires a level %s or higher item"] = { { Stats.Stamina, Stats.Spirit, }, false, } -- i22542
 L["teaches you how to permanently enchant boots to increase stamina by %s.  requires a level %s or higher item"] = { { Stats.Stamina, }, false, } -- i22543
 L["teaches you how to permanently enchant boots to increase agility by %s.  requires a level %s or higher item"] = { { Stats.Agility, }, false, } -- i22544
 L["teaches you how to permanently enchant boots to increase both hit rating and critical strike rating by %s.  requires a level %s or higher item"] = { { Stats.HitRating, Stats.CritRating, }, false, } -- i22545
-L["teaches you how to permanently enchant chest armor to increase all stats by %s.  requires a level %s or higher item"] = { { Stats.AllStats, }, false, } -- i22547
 L["teaches you how to permanently enchant a cloak to increase all resistances by %s.  requires a level %s or higher item"] = { { Stats.FireResistance, Stats.NatureResistance, Stats.FrostResistance, Stats.ShadowResistance, Stats.ArcaneResistance, }, false, } -- i22548
 L["teaches you how to permanently enchant a melee weapon to increase intellect by %s.  requires a level %s or higher item"] = { { Stats.Intellect, }, false, } -- i22551
 L["teaches you how to permanently enchant a melee weapon to increase its damage by %s.  requires a level %s or higher item"] = { { Stats.AverageWeaponDamage, }, false, } -- i22552
 L["teaches you how to permanently enchant a melee weapon to increase strength by %s.  requires a level %s or higher item"] = { { Stats.Strength, }, false, } -- i22553
-L["teaches you how to permanently enchant a two-handed melee weapon to increase attack power by %s.  requires a level %s or higher item"] = { { Stats.GenericAttackPower, }, false, } -- i22554
-L["teaches you how to permanently enchant a melee weapon to increase spell power by %s.  requires a level %s or higher item"] = { { Stats.SpellPower, }, false, } -- i22555
 L["teaches you how to permanently enchant a two-handed melee weapon to increase agility by %s.  requires a level %s or higher item"] = { { Stats.Agility, }, false, } -- i22556
 L["teaches you how to permanently enchant a melee weapon to increase fire and arcane spell power by %s.  requires a level %s or higher item"] = { { Stats.FireDamage, Stats.ArcaneDamage, }, false, } -- i22560
 L["teaches you how to permanently enchant a melee weapon to increase frost and shadow spell power by %s.  requires a level %s or higher item"] = { { Stats.FrostDamage, Stats.ShadowDamage, }, false, } -- i22561
-L["teaches you how to permanently enchant a cloak to increase critical strike rating by %s.  requires a level %s or higher item"] = { { Stats.CritRating, }, false, } -- i52737
-L["teaches you how to permanently enchant bracers to increase critical strike rating by %s.  requires a level %s or higher item"] = { { Stats.CritRating, }, false, } -- i52738
-L["teaches you how to permanently enchant a chest to increase stamina by %s.  requires a level %s or higher item"] = { { Stats.Stamina, }, false, } -- i52740
-L["teaches you how to permanently enchant boots to increase movement speed slightly and agility by %s.  requires a level %s or higher item"] = { { Stats.Agility, }, false, } -- i64411
-L["teaches you how to permanently enchant boots to increase movement speed slightly and mastery rating by %s.  requires a level %s or higher item"] = { { Stats.MasteryRating, }, false, } -- i64412
-L["teaches you how to permanently enchant bracers to increase haste rating by %s.  requires a level %s or higher item"] = { { Stats.HasteRating, }, false, } -- i64413
-L["teaches you how to permanently enchant gloves to increase mastery rating by %s.  requires a level %s or higher item"] = { { Stats.MasteryRating, }, false, } -- i64414
-L["teaches you how to permanently enchant gloves to increase strength by %s.  requires a level %s or higher item"] = { { Stats.Strength, }, false, } -- i64415
-L["teaches you how to permanently enchant bracers to increase agility by %s.  requires a level %s or higher item"] = { { Stats.Agility, }, false, } -- i68787
-L["teaches you how to permanently enchant bracers to increase strength by %s.  requires a level %s or higher item"] = { { Stats.Strength, }, false, } -- i68788
-L["teaches you how to permanently enchant bracers to increase intellect by %s.  requires a level %s or higher item"] = { { Stats.Intellect, }, false, } -- i68789
-L["teaches you how to permanently enchant a ring to increase all stats by %s"] = { { Stats.AllStats, }, } -- i186683
-L["teaches you how to permanently enchant chest armor to increase resilience rating by %s.  requires a level %s or higher item"] = { { Stats.ResilienceRating, }, false, } -- i28270
-L["teaches you how to permanently enchant gloves to increase hit rating by %s.   requires a level %s or higher item"] = { { Stats.HitRating, }, false, } -- i28271
-L["teaches you how to permanently enchant gloves to increase spell power by %s.  requires a level %s or higher item"] = { { Stats.SpellPower, }, false, } -- i28272
-L["teaches you how to permanently enchant a cloak to increase arcane resistance by %s.  requires a level %s or higher item"] = { { Stats.ArcaneResistance, }, false, } -- i28276
-L["teaches you how to permanently enchant a cloak to increase shadow resistance by %s.  requires a level %s or higher item"] = { { Stats.ShadowResistance, }, false, } -- i28277
-L["teaches you how to permanently enchant boots to give a minor movement speed increase and increase agility by %s.  requires a level %s or higher item"] = { { Stats.Agility, }, false, } -- i28279
-L["teaches you how to permanently enchant boots to give a minor movement speed increase and increase stamina by %s.  requires a level %s or higher item"] = { { Stats.Stamina, }, false, } -- i28280
-L["teaches you how to permanently enchant a shield to increase stamina by %s.  requires a level %s or higher item"] = { { Stats.Stamina, }, false, } -- i28282
-L["teaches you how to permanently enchant chest armor to increase dodge rating by %s.  requires a level %s or higher item"] = { { Stats.DodgeRating, }, false, } -- i35500
-L["teaches you how to permanently enchant a cloak to increase dodge rating by %s.  requires a level %s or higher item"] = { { Stats.DodgeRating, }, false, } -- i35756
-L["teaches you how to permanently enchant a melee weapon to increase spirit by %s.  requires a level %s or higher item"] = { { Stats.Spirit, }, false, } -- i37329
-L["teaches you how to permanently enchant a cloak to increase fire resistance by %s.  requires a level %s or higher item"] = { { Stats.FireResistance, }, false, } -- i37331
-L["teaches you how to permanently enchant a cloak to increase frost resistance by %s.  requires a level %s or higher item"] = { { Stats.FrostResistance, }, false, } -- i37332
-L["teaches you how to permanently enchant a cloak to increase nature resistance by %s.  requires a level %s or higher item"] = { { Stats.NatureResistance, }, false, } -- i37333
-L["teaches you how to permanently enchant a cloak to increase agility by %s. requires a level %s or higher item"] = { { Stats.Agility, }, false, } -- i37335
-L["teaches you how to permanently enchant chest armor to increase dodge rating by %s.   requires a level %s or higher item"] = { { Stats.DodgeRating, }, false, } -- i37336
-L["teaches you how to permanently enchant bracers to increase all stats by %s.  requires a level %s or higher item"] = { { Stats.AllStats, }, false, } -- i37337
-L["teaches you how to permanently enchant bracers to increase expertise rating by %s.  requires a level %s or higher item"] = { { Stats.ExpertiseRating, }, false, } -- i37346
-L["teaches you how to permanently enchant a cloak to increase agility by %s and armor by %s.  requires a level %s or higher item"] = { { Stats.Agility, }, { Stats.Armor, }, false, } -- i37349
-L["teaches you how to permanently enchant a cloak to give %s additional armor.  requires a level %s or higher item"] = { { Stats.Armor, }, false, } -- i44471
-L["teaches you how to permanently enchant a cloak to increase haste rating by %s.  requires a level %s or higher item"] = { { Stats.HasteRating, }, false, } -- i44472
-L["teaches you how to permanently enchant bracers to increase attack power by %s.  requires a level %s or higher item"] = { { Stats.GenericAttackPower, }, false, } -- i44484
-L["teaches you how to permanently enchant gloves to increase threat caused by %s% and increase parry rating by %s.  requires a level %s or higher item"] = { false, { Stats.ParryRating, }, false, } -- i44485
-L["teaches you how to permanently enchant a melee weapon to increase attack power by %s.  requires a level %s or higher item"] = { { Stats.GenericAttackPower, }, false, } -- i44486
-L["teaches you how to permanently enchant a cloak to reduce threat slightly and increase spirit by %s.  requires a level %s or higher item"] = { { Stats.Spirit, }, false, } -- i44488
-L["teaches you how to permanently enchant boots to increase attack power by %s.  requires a level %s or higher item"] = { { Stats.GenericAttackPower, }, false, } -- i44490
-L["teaches you how to permanently enchant a melee weapon to increase critical strike and hit rating by %s.  requires a level %s or higher item"] = { { Stats.HitRating, Stats.CritRating, }, false, } -- i44496
-L["teaches you how to permanently enchant a melee weapon to increase stamina by %s.  requires a level %s or higher item"] = { { Stats.Stamina, }, false, } -- i44945
-L["teaches you how to permanently enchant a staff to increase spell power by %s.  requires a level %s or higher item"] = { { Stats.SpellPower, }, false, } -- i45059
 L["sharpened (%s damage)"] = { { Stats.AverageWeaponDamage, }, } -- e13
 L["reinforced (%s armor)"] = { { Stats.Armor, }, } -- e15
 L["weighted (%s damage)"] = { { Stats.AverageWeaponDamage, }, } -- e19

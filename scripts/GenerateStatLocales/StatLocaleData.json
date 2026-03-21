@@ -56,12 +56,37 @@
 		},
 		"3": {
 			"57301": [ false, false, false, false, ["GenericAttackPower"], ["SpellPower"], ["Stamina"], false ],
-			"66476": [ false, false, false, ["GenericAttackPower"], ["SpellPower"], ["Stamina"], false ]
+			"57345": [ ["HighestPrimary"], false ],
+			"66476": [ false, false, false, ["GenericAttackPower"], ["SpellPower"], ["Stamina"], false ],
+			"67771": [ ["HighestStrengthAgility"], false ]
 		},
 		"4": {
 			"57301": [ false, false, false, false, ["GenericAttackPower"], ["SpellPower"], ["Stamina"], false ],
-			"66476": [ false, false, false, ["GenericAttackPower"], ["SpellPower"], ["Stamina"], false ]
+			"66476": [ false, false, false, ["GenericAttackPower"], ["SpellPower"], ["Stamina"], false ],
+			"79637": [ ["HighestPrimary"], false ],
+			"82174": [ ["HighestPrimary"], false ],
+			"87604": [ false, false, false, false, ["Stamina"], ["Primary"], false ],
+			"87643": [ false, false, false, false, ["Stamina"], ["Primary"], false ],
+			"87644": [ false, false, false, false, ["Stamina"], ["Primary"], false ],
+			"87915": [ false, false, false, false, ["Stamina"], ["Primary"], false ],
+			"94826": [ ["HighestPrimary"], false ],
+			"96934": [ ["HighestSecondary"], false ],
+			"96976": [ ["HighestSecondary"], false ]
 		},
-		"5": {}
+		"5": {
+			"104434": [ ["HighestStrengthAgility"] ],
+			"104958": [ false, false, false, false, false, ["Primary"], false ],
+			"105193": [ false, false, false, false, false, ["Primary"], false ],
+			"105574": [ ["HighestPrimary"], false ],
+			"105617": [ ["HighestPrimary"], false ],
+			"105618": [ ["HighestPrimary"], false ],
+			"114726": [ false, false, false, false, ["Primary"], false ],
+			"126731": [ ["HighestPrimary"], false, false ],
+			"126734": [ ["HighestPrimary"], false ],
+			"127882": [ false, false, false, false, ["Primary"], false ],
+			"145166": [ false, false, false, false, ["Primary"], false ],
+			"145169": [ false, false, false, false, ["Primary"], false ],
+			"145196": [ false, false, false, false, ["Primary"], false ]
+		}
 	}
 }

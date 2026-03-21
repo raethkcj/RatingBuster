@@ -1802,14 +1802,19 @@ L["armschienen dauerhaft verzaubern, sodass die meisterschaft um %s erhöht wird
 L["einen umhang dauerhaft verzaubern, sodass der trefferwert um %s erhöht wird"] = { { Stats.HitRating, }, } -- s104398
 L["stiefel dauerhaft verzaubern, sodass die beweglichkeit um %s und das bewegungstempo leicht erhöht werden"] = { { Stats.Agility, }, } -- s104409
 L["stiefel dauerhaft verzaubern, sodass die meisterschaft um %s und das bewegungstempo leicht erhöht wird"] = { { Stats.MasteryRating, }, } -- s104414
+L["eine nahkampfwaffe dauerhaft verzaubern, sodass eure schaden verursachenden nahkampfangriffe manchmal eure stärke oder beweglichkeit um %s erhöhen. der höhere der beiden werte wird gewählt"] = { { Stats.HighestStrengthAgility, }, } -- s104434
 L["einen gegenstand für die schildhand dauerhaft verzaubern, sodass die intelligenz um %s erhöht wird"] = { { Stats.Intellect, }, } -- s104445
 L["die gabe von sargeras hat illidan übernatürliche sicht gewährt, wodurch er %s% gegnerischer angriffe ausweichen kann"] = { { Stats.Dodge, }, } -- s104746
 L["mit dem glühenden blut der alten götter erfüllt.\nder zauber 'leerenblitz' ist nun ein flächeneffekt.\ndie abklingzeit aller fähigkeiten ist um die hälfte verringert.\nangriffstempo um %s% erhöht"] = { { Stats.MeleeHaste, }, } -- s104901
 L["erhöht die stärke um %s. hält %s min. lang an"] = { { Stats.Strength, }, false, } -- s108031
+L["richtet ein pandarenfestmahl her, das bis zu %s leute in eurem schlachtzug oder eurer gruppe sättigen kann!\nstellt im verlauf von %s sek. %s gesundheit und %s mana wieder her. ihr müsst beim essen sitzen bleiben. wenn ihr mindestens %s sek. mit essen verbringt, werdet ihr satt und ein für euch nützlicher wert wird %s stunde lang um %s erhöht"] = { false, false, false, false, false, { Stats.Primary, }, false, } -- s104958
+L["richtet ein großes pandarenfestmahl her, das bis zu %s leute in eurem schlachtzug oder eurer gruppe sättigen kann!\nstellt im verlauf von %s sek. %s gesundheit und %s mana wieder her. ihr müsst beim essen sitzen bleiben. wenn ihr mindestens %s sek. mit essen verbringt, werdet ihr satt und ein für euch nützlicher wert wird %s stunde lang um %s erhöht"] = { false, false, false, false, false, { Stats.Primary, }, false, } -- s105193
 L["erhöht stärke um %s. hält %s stunde lang an"] = { { Stats.Strength, }, false, } -- s105226
 L["absorbiert die in der nähe befindlichen überreste verderbten blutes. die verschmelzung wird mit jedem überrest instabiler und erhöht den schaden um %s% und das angriffstempo um %s%. bei %s stapeln überhitzt sie"] = { false, { Stats.MeleeHaste, }, false, } -- s105248
 L["wenn ihr schaden verursacht, besteht eine chance, dass ihr %s sek. lang %s intelligenz erhaltet"] = { false, { Stats.Intellect, }, ignoreSum = true } -- s105620
 L["erhöht die angriffskraft um %s%"] = { { Stats.MeleeHaste, }, } -- s105526
+L["ihr habt eine chance, bei hervorgerufener heilung oder verursachtem schaden eure stärke, beweglichkeit oder intelligenz %s sek. lang um %s zu erhöhen. es wird stets euer höchster wert gewählt"] = { { Stats.HighestPrimary, }, false, } -- s105574
+L["erhöht eure beweglichkeit, stärke oder intelligenz %s stunden lang um %s. es wird stets euer höchster wert gewählt.\ngilt sowohl als kampfelixier als auch als wächterelixier. dieser effekt hält über den tod hinaus an"] = { { Stats.HighestPrimary, }, false, } -- s105617
 L["gewährt %s sek. lang %s intelligenz"] = { false, { Stats.Intellect, }, } -- s105619
 L["gewährt %s sek. lang %s parieren"] = { false, { Stats.ParryRating, }, } -- s105623
 L["wenn ihr schaden verursacht, besteht eine chance, dass ihr %s sek. lang %s parieren erhaltet"] = { false, { Stats.ParryRating, }, ignoreSum = true } -- s105624
@@ -1886,7 +1891,7 @@ L["ein kaum zähmbarer durst nach blut erhöht das angriffstempo um %s%, erhöht
 L["ein kräftiges und geschmacksintensives bier, dass eure trefferchance %s sek. lang um %s% verringert. macht euch außerdem betrunken!"] = { false, { Stats.MeleeHit, Stats.RangedHit, }, reduction = true } -- s114381
 L["erhöht das angriffstempo um %s% und verringert das bewegungstempo um %s%. hält %s sek. lang an"] = { { Stats.MeleeHaste, }, false, false, } -- s114456
 L["intensive heilkräuter erhöhen das tempo aller jutepfadsherpas in einem umkreis von %s metern %s sek. lang um %s%"] = { false, false, { Stats.MeleeHaste, }, } -- s114618
-L["stellt im verlauf von %s sek. %s gesundheit und %s mana wieder her. ihr müsst beim essen sitzen bleiben. wenn ihr mindestens %s sekunden mit essen verbringt, werdet ihr satt und ein für euch nützlicher wert wird %s stunde lang um %s erhöht"] = { false, false, false, false, false, { Stats.Intellect, }, ignoreSum = true } -- s114726
+L["stellt im verlauf von %s sek. %s gesundheit und %s mana wieder her. ihr müsst beim essen sitzen bleiben. wenn ihr mindestens %s sekunden mit essen verbringt, werdet ihr satt und ein für euch nützlicher wert wird %s stunde lang um %s erhöht"] = { false, false, false, false, { Stats.Primary, }, false, } -- s114726
 L["verringert das zaubertempo um %s%"] = { { Stats.SpellHaste, }, reduction = true } -- s114732
 L["rafft die seele eines gefallenen gegners dahin, wodurch sich %s sek. lang euer tempo um %s% und euer bewegungstempo um %s% erhöht"] = { false, { Stats.MeleeHaste, }, false, } -- s114868
 L["rafft die seele eines gefallenen gegners dahin, wodurch sich %s sek. lang euer tempo um %s% erhöht"] = { false, { Stats.MeleeHaste, }, } -- s114868
@@ -1997,6 +2002,8 @@ L["jedes mal, wenn eure angriffe treffen, besteht eine chance, dass ihr %s sek. 
 L["jedes mal, wenn eure angriffe treffen, besteht eine chance, dass ihr %s sek. lang %s tempo erhaltet. (%s% chance, %s sek. abklingzeit)"] = { false, { Stats.MeleeHasteRating, Stats.RangedHasteRating, Stats.SpellHasteRating, }, false, false, ignoreSum = true } -- s126658
 L["jedes mal, wenn eure schadenszauber treffen, besteht eine chance, dass ihr %s sek. lang %s tempo erhaltet. (%s% chance, %s sek. abklingzeit)"] = { false, { Stats.MeleeHasteRating, Stats.RangedHasteRating, Stats.SpellHasteRating, }, false, false, ignoreSum = true } -- s126660
 L["wenn ihr schaden verursacht oder ein ziel heilt, besteht eine chance, dass eure intelligenz %s sek. lang um %s erhöht wird"] = { false, { Stats.Intellect, }, ignoreSum = true } -- s126706
+L["bringt an einem paar handschuhe dauerhaft synapsenfedern an, die es euch gestatten, euren höchsten primärwert %s sek. lang um %s zu erhöhen. die handschuhe können nur einmal pro minute aktiviert werden.\nzur benutzung wird eine ingenieursfertigkeit von mindestens %s benötigt"] = { { Stats.HighestPrimary, }, false, false, } -- s126731
+L["erhöht eure intelligenz, beweglichkeit oder stärke %s sek. lang um %s. es wird jeweils euer höchster wert gewählt"] = { { Stats.HighestPrimary, }, false, } -- s126734
 L["zeuge des todes seines wächtergefährten zu werden erzürnt ihn so sehr, dass sich sein angriffstempo um %s% erhöht"] = { { Stats.MeleeHaste, }, } -- s126970
 L["erhöht %s stunde lang alle werte um %s. zählt sowohl als kampf- als auch als wächterelixier"] = { false, { Stats.AllStats, }, } -- s127230
 L["gewährt dem zaubernden die chance, mit jedem treffer bei seinen opfern schmerz auszulösen. der schmerz verringert %s sek. lang die chance des opfers zu blockieren, auszuweichen oder zu parieren um %s%"] = { false, { Stats.BlockChance, }, ignoreSum = true, reduction = true } -- s127262
@@ -2006,6 +2013,7 @@ L["eure heilzauber haben eine chance, eure zaubermacht %s sek. lang um %s zu erh
 L["die ausweichchance wird um %s% erhöht"] = { { Stats.Dodge, }, } -- s127669
 L["erhöht euer tempo %s sek. lang um %s und schärft eure sinne. funktioniert nur am kun-lai-gipfel"] = { false, { Stats.MeleeHasteRating, Stats.RangedHasteRating, Stats.SpellHasteRating, }, } -- s127770
 L["die geisterbestie belegt eure gruppen- und schlachtzugsmitglieder im umkreis von %s metern mit einem segen, der die meisterschaft um %s erhöht. hält %s min. lang an"] = { false, { Stats.MasteryRating, }, false, } -- s127830
+L["stellt im verlauf von %s sek. %s gesundheit und %s mana wieder her. ihr müsst beim essen sitzen bleiben. wenn ihr mindestens %s sekunden mit essen verbringt, werdet ihr satt und ein für euch nützlicher wert wird %s stunde lang um %s erhöht.\nirgendetwas scheint allerdings nicht zu stimmen"] = { false, false, false, false, { Stats.Primary, }, false, } -- s127882
 L["eure direkten und regelmäßigen heilzauber haben eine chance, euer tempo %s sek. lang um %s zu erhöhen. (%s% chance, %s sek. abklingzeit)"] = { false, { Stats.MeleeHasteRating, Stats.RangedHasteRating, Stats.SpellHasteRating, }, false, false, ignoreSum = true } -- s127914
 L["eure schadenszauber haben eine chance, eure zaubermacht %s sek. lang um %s zu erhöhen. (%s% chance, %s sek. abklingzeit)"] = { false, { Stats.SpellDamage, }, false, false, ignoreSum = true } -- s127924
 L["nachdem es blut geleckt hat, verfällt das tier in rage, wodurch sich sein angriffstempo um %s% erhöht. stapelbar"] = { { Stats.MeleeHaste, }, } -- s128006
@@ -2091,6 +2099,9 @@ L["erhöht das zaubertempo um %s%. stapelbar"] = { { Stats.SpellHaste, }, } -- s
 L["verringert die abklingzeit eures zaubers 'göttliche gunst' um %s sek. während 'göttliche gunst' aktiv ist, wird die meisterschaft um %s erhöht"] = { false, { Stats.MasteryRating, }, ignoreSum = true } -- s144613
 L["während 'göttliche gunst' aktiv ist, wird eure meisterschaft um %s erhöht"] = { { Stats.MasteryRating, }, } -- s144622
 L["eure fähigkeiten 'tötungsmaschine' und 'hereinbrechende verdammnis' gewähren %s sek. lang %s tempo oder meisterschaft, abhängig vom höchsten wert. bis zu %s-mal stapelbar"] = { false, { Stats.MeleeHasteRating, }, false, ignoreSum = true } -- s144899
+L["baut einen nudelwagen auf, um nudelsuppe zu verkaufen!\njede suppe stellt im verlauf von %s sek. %s gesundheit und %s mana wieder her. ihr müsst beim essen sitzen bleiben. wenn ihr mindestens %s sek. mit essen verbringt, werdet ihr satt und ein für euch nützlicher wert wird %s stunde lang um %s erhöht"] = { false, false, false, false, { Stats.Primary, }, false, } -- s145166
+L["baut einen nudelwagen deluxe auf, um nudelsuppe deluxe zu verkaufen!\njede nudelsuppe deluxe stellt im verlauf von %s sek. %s gesundheit und %s mana wieder her. ihr müsst beim essen sitzen bleiben. wenn ihr mindestens %s sek. mit essen verbringt, werdet ihr satt und ein für euch nützlicher wert wird %s stunde lang um %s erhöht"] = { false, false, false, false, { Stats.Primary, }, false, } -- s145169
+L["baut einen nudelwagen \"pandarenschatz\" auf, um nudelsuppe \"pandarenschatz\" zu verkaufen!\njede suppe stellt im verlauf von %s sek. %s gesundheit und %s mana wieder her. ihr müsst beim essen sitzen bleiben. wenn ihr mindestens %s sek. mit essen verbringt, werdet ihr satt und ein für euch nützlicher wert wird %s stunde lang um %s erhöht"] = { false, false, false, false, { Stats.Primary, }, false, } -- s145196
 L["erhöht %s sek. lang das angriffstempo und den verursachten schaden des zaubernden um %s%"] = { false, { Stats.MeleeHaste, }, } -- s145974
 L["eure angriffe haben eine chance, %s sek. lang %s intelligenz zu gewähren. (%s% chance, %s sek. abklingzeit)"] = { false, { Stats.Intellect, }, false, false, ignoreSum = true } -- s146047
 L["wenn eure zauber schaden verursachen, besteht eine chance, %s sek. lang zusätzlich %s kritischen trefferwert zu erhalten. (%s% chance, %s sek. abklingzeit)"] = { false, { Stats.MeleeCritRating, Stats.RangedCritRating, Stats.SpellCritRating, }, false, false, ignoreSum = true } -- s146219
@@ -2168,19 +2179,31 @@ L["erhöht %s sek. lang das angriffstempo des ziels um %s% und den verursachten 
 L["erhöht %s sek. lang die stärke um %s"] = { false, { Stats.Strength, }, } -- s144232
 L["erhöht stärke um %s. hält %s sek. lang an"] = { { Stats.Strength, }, false, } -- s147359
 L["eure waffe der flammenzunge gewährt zusätzliche %s zaubermacht"] = { { Stats.SpellDamage, }, } -- s461993
-L["lehrt euch, umhänge dauerhaft zu verzaubern, sodass der kritische trefferwert um %s erhöht wird. erfordert einen gegenstand der stufe %s oder höher"] = { { Stats.CritRating, }, false, } -- i52737
-L["lehrt euch, armschienen dauerhaft zu verzaubern, sodass der kritische trefferwert um %s erhöht wird. erfordert einen gegenstand der stufe %s oder höher"] = { { Stats.CritRating, }, false, } -- i52738
-L["lehrt euch, brustrüstungen dauerhaft zu verzaubern, sodass sie alle werte um %s erhöht werden. erfordert einen gegenstand der stufe %s oder höher"] = { { Stats.AllStats, }, false, } -- i52739
-L["lehrt euch, brustrüstungen dauerhaft zu verzaubern, sodass die ausdauer um %s erhöht wird. erfordert einen gegenstand der stufe %s oder höher"] = { { Stats.Stamina, }, false, } -- i52740
-L["lehrt euch, stiefel dauerhaft zu verzaubern, sodass sie beweglichkeit um %s und das bewegungstempo geringfügig erhöht wird. erfordert einen gegenstand der stufe %s oder höher"] = { { Stats.Agility, }, false, } -- i64411
-L["lehrt euch, stiefel dauerhaft zu verzaubern, sodass die meisterschaft um %s und das bewegungstempo geringfügig erhöht wird. erfordert einen gegenstand der stufe %s oder höher"] = { { Stats.MasteryRating, }, false, } -- i64412
-L["lehrt euch, armschienen dauerhaft zu verzaubern, sodass das tempo um %s erhöht wird. erfordert einen gegenstand der stufe %s oder höher"] = { { Stats.HasteRating, }, false, } -- i64413
-L["lehrt euch, handschuhe dauerhaft zu verzaubern, sodass die meisterschaft um %s erhöht wird. erfordert einen gegenstand der stufe %s oder höher"] = { { Stats.MasteryRating, }, false, } -- i64414
-L["lehrt euch, handschuhe dauerhaft zu verzaubern, sodass die stärke um %s erhöht wird. erfordert einen gegenstand der stufe %s oder höher"] = { { Stats.Strength, }, false, } -- i64415
-L["lehrt euch, armschienen dauerhaft zu verzaubern, sodass die beweglichkeit um %s erhöht wird. erfordert einen gegenstand der stufe %s oder höher"] = { { Stats.Agility, }, false, } -- i68787
-L["lehrt euch, armschienen dauerhaft zu verzaubern, sodass die stärke um %s erhöht wird. erfordert einen gegenstand der stufe %s oder höher"] = { { Stats.Strength, }, false, } -- i68788
-L["lehrt euch, armschienen dauerhaft zu verzaubern, sodass die intelligenz um %s erhöht wird. erfordert einen gegenstand der stufe %s oder höher"] = { { Stats.Intellect, }, false, } -- i68789
-L["lehrt euch, umhänge dauerhaft zu verzaubern, sodass die beweglichkeit um %s erhöht wird"] = { { Stats.Agility, }, } -- i71714
+L["lehrt euch, stiefel dauerhaft zu verzaubern, sodass das bewegungstempo leicht und die beweglichkeit um %s erhöht wird. erfordert einen gegenstand der stufe %s oder höher"] = { { Stats.Agility, }, false, } -- i84553
+L["lehrt euch, stiefel dauerhaft zu verzaubern, sodass das tempo um %s erhöht wird. erfordert einen gegenstand der stufe %s oder höher"] = { { Stats.HasteRating, }, false, } -- i84554
+L["lehrt euch, stiefel dauerhaft zu verzaubern, sodass der trefferwert um %s erhöht wird. erfordert einen gegenstand der stufe %s oder höher"] = { { Stats.HitRating, }, false, } -- i84555
+L["lehrt euch, stiefel dauerhaft zu verzaubern, sodass das bewegungstempo leicht und die meisterschaft um %s erhöht wird. erfordert einen gegenstand der stufe %s oder höher"] = { { Stats.MasteryRating, }, false, } -- i84556
+L["lehrt euch, armschienen dauerhaft zu verzaubern, sodass die beweglichkeit um %s erhöht wird. erfordert einen gegenstand der stufe %s oder höher"] = { { Stats.Agility, }, false, } -- i84557
+L["lehrt euch, armschienen dauerhaft zu verzaubern, sodass die ausweichchance um %s erhöht wird. erfordert einen gegenstand der stufe %s oder höher"] = { { Stats.DodgeRating, }, false, } -- i84558
+L["lehrt euch, armschienen dauerhaft zu verzaubern, sodass die intelligenz um %s erhöht wird. erfordert einen gegenstand der stufe %s oder höher"] = { { Stats.Intellect, }, false, } -- i84559
+L["lehrt euch, armschienen dauerhaft zu verzaubern, sodass die meisterschaft um %s erhöht wird. erfordert einen gegenstand der stufe %s oder höher"] = { { Stats.MasteryRating, }, false, } -- i84560
+L["lehrt euch, armschienen dauerhaft zu verzaubern, sodass die stärke um %s erhöht wird. erfordert einen gegenstand der stufe %s oder höher"] = { { Stats.Strength, }, false, } -- i84561
+L["lehrt euch, eine brustrüstung dauerhaft zu verzaubern, sodass alle werte um %s erhöht werden. erfordert einen gegenstand der stufe %s oder höher"] = { { Stats.AllStats, }, false, } -- i84562
+L["lehrt euch, brustrüstungen dauerhaft zu verzaubern, sodass die pvp-abhärtung um %s erhöht wird. erfordert einen gegenstand der stufe %s oder höher"] = { { Stats.ResilienceRating, }, false, } -- i84563
+L["lehrt euch, brustrüstungen dauerhaft zu verzaubern, sodass die willenskraft um %s erhöht wird. erfordert einen gegenstand der stufe %s oder höher"] = { { Stats.Spirit, }, false, } -- i84564
+L["lehrt euch, brustrüstungen dauerhaft zu verzaubern, sodass die ausdauer um %s erhöht wird. erfordert einen gegenstand der stufe %s oder höher"] = { { Stats.Stamina, }, false, } -- i84565
+L["lehrt euch, einen umhang dauerhaft zu verzaubern, sodass die ausdauer um %s erhöht wird. erfordert einen gegenstand der stufe %s oder höher"] = { { Stats.Stamina, }, false, } -- i84566
+L["lehrt euch, einen umhang dauerhaft zu verzaubern, sodass der kritische trefferwert um %s erhöht wird. erfordert einen gegenstand der stufe %s oder höher"] = { { Stats.CritRating, }, false, } -- i84567
+L["lehrt euch, einen umhang dauerhaft zu verzaubern, sodass der trefferwert um %s erhöht wird. erfordert einen gegenstand der stufe %s oder höher"] = { { Stats.HitRating, }, false, } -- i84568
+L["lehrt euch, einen umhang dauerhaft zu verzaubern, sodass die intelligenz um %s erhöht wird. erfordert einen gegenstand der stufe %s oder höher"] = { { Stats.Intellect, }, false, } -- i84569
+L["lehrt euch, handschuhe dauerhaft zu verzaubern, sodass die waffenkunde um %s erhöht wird. erfordert einen gegenstand der stufe %s oder höher"] = { { Stats.ExpertiseRating, }, false, } -- i84570
+L["lehrt euch, handschuhe dauerhaft zu verzaubern, sodass das tempo um %s erhöht wird. erfordert einen gegenstand der stufe %s oder höher"] = { { Stats.HasteRating, }, false, } -- i84571
+L["lehrt euch, handschuhe dauerhaft zu verzaubern, sodass die meisterschaft um %s erhöht wird. erfordert einen gegenstand der stufe %s oder höher"] = { { Stats.MasteryRating, }, false, } -- i84572
+L["lehrt euch, handschuhe dauerhaft zu verzaubern, sodass die stärke um %s erhöht wird. erfordert einen gegenstand der stufe %s oder höher"] = { { Stats.Strength, }, false, } -- i84573
+L["lehrt euch, einen schild oder gegenstand für die schildhand dauerhaft zu verzaubern, sodass die intelligenz um %s erhöht wird. erfordert einen gegenstand der stufe %s oder höher"] = { { Stats.Intellect, }, false, } -- i84574
+L["lehrt euch, euren eigenen ring dauerhaft zu verzaubern, sodass die beweglichkeit um %s erhöht wird. erfordert einen gegenstand der stufe %s oder höher"] = { { Stats.Agility, }, false, } -- i84575
+L["lehrt euch, euren eigenen ring dauerhaft zu verzaubern, sodass die intelligenz um %s erhöht wird. erfordert einen gegenstand der stufe %s oder höher"] = { { Stats.Intellect, }, false, } -- i84576
+L["lehrt euch, euren eigenen ring dauerhaft zu verzaubern, sodass die stärke um %s erhöht wird. erfordert einen gegenstand der stufe %s oder höher"] = { { Stats.Strength, }, false, } -- i84578
 L["lehrt euch, brustrüstungen dauerhaft zu verzaubern, sodass die abhärtung um %s erhöht wird. erfordert einen gegenstand der stufe %s oder höher"] = { { Stats.ResilienceRating, }, false, } -- i28270
 L["lehrt euch, handschuhe dauerhaft zu verzaubern, sodass der trefferwert um %s erhöht wird. erfordert einen gegenstand der stufe %s oder höher"] = { { Stats.HitRating, }, false, } -- i28271
 L["lehrt euch, handschuhe dauerhaft zu verzaubern, sodass die zaubermacht um %s erhöht wird. erfordert einen gegenstand der stufe %s oder höher"] = { { Stats.SpellPower, }, false, } -- i28272
@@ -2205,13 +2228,21 @@ L["lehrt euch, armschienen dauerhaft zu verzaubern, sodass die angriffskraft um 
 L["lehrt euch, handschuhe dauerhaft zu verzaubern, sodass die verursachte bedrohung um %s% und das parieren um %s erhöht wird. erfordert einen gegenstand der stufe %s oder höher"] = { false, { Stats.ParryRating, }, false, } -- i44485
 L["lehrt euch, eine nahkampfwaffe dauerhaft zu verzaubern, sodass die zaubermacht um %s erhöht. erfordert einen gegenstand der stufe %s oder höher"] = { { Stats.SpellPower, }, false, } -- i44487
 L["lehrt euch, umhänge dauerhaft zu verzaubern, sodass die bedrohung leicht verringert und die willenskraft um %s erhöht wird. erfordert einen gegenstand der stufe %s oder höher"] = { { Stats.Spirit, }, false, } -- i44488
-L["lehrt euch, eine brustrüstung dauerhaft zu verzaubern, sodass alle werte um %s erhöht werden. erfordert einen gegenstand der stufe %s oder höher"] = { { Stats.AllStats, }, false, } -- i44489
 L["lehrt euch, stiefel dauerhaft zu verzaubern, sodass die angriffskraft um %s erhöht wird. erfordert einen gegenstand der stufe %s oder höher"] = { { Stats.GenericAttackPower, }, false, } -- i44490
 L["lehrt euch, nahkampfwaffen dauerhaft verzaubern, sodass der kritische trefferwert und trefferwert um %s erhöht wird. erfordert einen gegenstand der stufe %s oder höher"] = { { Stats.HitRating, Stats.CritRating, }, false, } -- i44496
 L["lehrt euch, armschienen dauerhaft zu verzaubern, sodass die zaubermacht um %s erhöht wird. erfordert einen gegenstand der stufe %s oder höher"] = { { Stats.SpellPower, }, false, } -- i44498
 L["lehrt euch, armschienen dauerhaft zu verzaubern, sodass die ausdauer um %s erhöht wird. erfordert einen gegenstand der stufe %s oder höher"] = { { Stats.Stamina, }, false, } -- i44944
 L["lehrt euch, nahkampfwaffen dauerhaft zu verzaubern, sodass die ausdauer um %s erhöht wird. erfordert einen gegenstand der stufe %s oder höher"] = { { Stats.Stamina, }, false, } -- i44945
 L["lehrt euch, stäbe dauerhaft zu verzaubern, sodass die zaubermacht um %s erhöht wird. erfordert einen gegenstand der stufe %s oder höher"] = { { Stats.SpellPower, }, false, } -- i45059
+L["lehrt euch, einen ring dauerhaft so zu verzaubern, dass er alle werte um %s erhöht"] = { { Stats.AllStats, }, } -- i186683
+L["lehrt euch die dauerhafte verzauberung einer waffe. ihre pvp-macht wird um %s erhöht und ihre entwaffnungseffekte um %s% verringert. die verringerung von entwaffnungseffekten kann nicht mit ähnlichen effekten gestapelt werden. erfordert einen gegenstand der stufe %s oder höher"] = { { Stats.PvpPowerRating, }, false, false, } -- i254315
+L["lehrt euch, umhänge dauerhaft zu verzaubern, sodass der kritische trefferwert um %s erhöht wird. erfordert einen gegenstand der stufe %s oder höher"] = { { Stats.CritRating, }, false, } -- i52737
+L["lehrt euch, armschienen dauerhaft zu verzaubern, sodass der kritische trefferwert um %s erhöht wird. erfordert einen gegenstand der stufe %s oder höher"] = { { Stats.CritRating, }, false, } -- i52738
+L["lehrt euch, brustrüstungen dauerhaft zu verzaubern, sodass sie alle werte um %s erhöht werden. erfordert einen gegenstand der stufe %s oder höher"] = { { Stats.AllStats, }, false, } -- i52739
+L["lehrt euch, stiefel dauerhaft zu verzaubern, sodass sie beweglichkeit um %s und das bewegungstempo geringfügig erhöht wird. erfordert einen gegenstand der stufe %s oder höher"] = { { Stats.Agility, }, false, } -- i64411
+L["lehrt euch, stiefel dauerhaft zu verzaubern, sodass die meisterschaft um %s und das bewegungstempo geringfügig erhöht wird. erfordert einen gegenstand der stufe %s oder höher"] = { { Stats.MasteryRating, }, false, } -- i64412
+L["lehrt euch, armschienen dauerhaft zu verzaubern, sodass das tempo um %s erhöht wird. erfordert einen gegenstand der stufe %s oder höher"] = { { Stats.HasteRating, }, false, } -- i64413
+L["lehrt euch, umhänge dauerhaft zu verzaubern, sodass die beweglichkeit um %s erhöht wird"] = { { Stats.Agility, }, } -- i71714
 L["lehrt euch, brustrüstungen dauerhaft zu verzaubern, sodass das mana um %s erhöht wird"] = { { Stats.Mana, }, } -- i6342
 L["lehrt euch, armschienen dauerhaft zu verzaubern, sodass die willenskraft um %s erhöht wird"] = { { Stats.Spirit, }, } -- i6344
 L["lehrt euch, umhänge dauerhaft zu verzaubern, sodass die rüstung um %s erhöht wird"] = { { Stats.Armor, }, } -- i6345
@@ -2262,26 +2293,6 @@ L["lehrt euch, zweihandwaffen dauerhaft zu verzaubern, sodass die angriffskraft 
 L["lehrt euch, zweihandwaffen dauerhaft zu verzaubern, sodass die beweglichkeit um %s erhöht wird. erfordert einen gegenstand der stufe %s oder höher"] = { { Stats.Agility, }, false, } -- i22556
 L["lehrt euch, nahkampfwaffen dauerhaft zu verzaubern, sodass die feuer- und arkanzaubermacht um %s erhöht wird. erfordert einen gegenstand der stufe %s oder höher"] = { { Stats.FireDamage, Stats.ArcaneDamage, }, false, } -- i22560
 L["lehrt euch, nahkampfwaffen dauerhaft zu verzaubern, sodass die frost- und schattenzaubermacht um %s erhöht wird. erfordert einen gegenstand der stufe %s oder höher"] = { { Stats.FrostDamage, Stats.ShadowDamage, }, false, } -- i22561
-L["lehrt euch, stiefel dauerhaft zu verzaubern, sodass das bewegungstempo leicht und die beweglichkeit um %s erhöht wird. erfordert einen gegenstand der stufe %s oder höher"] = { { Stats.Agility, }, false, } -- i84553
-L["lehrt euch, stiefel dauerhaft zu verzaubern, sodass das tempo um %s erhöht wird. erfordert einen gegenstand der stufe %s oder höher"] = { { Stats.HasteRating, }, false, } -- i84554
-L["lehrt euch, stiefel dauerhaft zu verzaubern, sodass der trefferwert um %s erhöht wird. erfordert einen gegenstand der stufe %s oder höher"] = { { Stats.HitRating, }, false, } -- i84555
-L["lehrt euch, stiefel dauerhaft zu verzaubern, sodass das bewegungstempo leicht und die meisterschaft um %s erhöht wird. erfordert einen gegenstand der stufe %s oder höher"] = { { Stats.MasteryRating, }, false, } -- i84556
-L["lehrt euch, armschienen dauerhaft zu verzaubern, sodass die ausweichchance um %s erhöht wird. erfordert einen gegenstand der stufe %s oder höher"] = { { Stats.DodgeRating, }, false, } -- i84558
-L["lehrt euch, armschienen dauerhaft zu verzaubern, sodass die meisterschaft um %s erhöht wird. erfordert einen gegenstand der stufe %s oder höher"] = { { Stats.MasteryRating, }, false, } -- i84560
-L["lehrt euch, brustrüstungen dauerhaft zu verzaubern, sodass die pvp-abhärtung um %s erhöht wird. erfordert einen gegenstand der stufe %s oder höher"] = { { Stats.ResilienceRating, }, false, } -- i84563
-L["lehrt euch, brustrüstungen dauerhaft zu verzaubern, sodass die willenskraft um %s erhöht wird. erfordert einen gegenstand der stufe %s oder höher"] = { { Stats.Spirit, }, false, } -- i84564
-L["lehrt euch, einen umhang dauerhaft zu verzaubern, sodass die ausdauer um %s erhöht wird. erfordert einen gegenstand der stufe %s oder höher"] = { { Stats.Stamina, }, false, } -- i84566
-L["lehrt euch, einen umhang dauerhaft zu verzaubern, sodass der kritische trefferwert um %s erhöht wird. erfordert einen gegenstand der stufe %s oder höher"] = { { Stats.CritRating, }, false, } -- i84567
-L["lehrt euch, einen umhang dauerhaft zu verzaubern, sodass der trefferwert um %s erhöht wird. erfordert einen gegenstand der stufe %s oder höher"] = { { Stats.HitRating, }, false, } -- i84568
-L["lehrt euch, einen umhang dauerhaft zu verzaubern, sodass die intelligenz um %s erhöht wird. erfordert einen gegenstand der stufe %s oder höher"] = { { Stats.Intellect, }, false, } -- i84569
-L["lehrt euch, handschuhe dauerhaft zu verzaubern, sodass die waffenkunde um %s erhöht wird. erfordert einen gegenstand der stufe %s oder höher"] = { { Stats.ExpertiseRating, }, false, } -- i84570
-L["lehrt euch, handschuhe dauerhaft zu verzaubern, sodass das tempo um %s erhöht wird. erfordert einen gegenstand der stufe %s oder höher"] = { { Stats.HasteRating, }, false, } -- i84571
-L["lehrt euch, einen schild oder gegenstand für die schildhand dauerhaft zu verzaubern, sodass die intelligenz um %s erhöht wird. erfordert einen gegenstand der stufe %s oder höher"] = { { Stats.Intellect, }, false, } -- i84574
-L["lehrt euch, euren eigenen ring dauerhaft zu verzaubern, sodass die beweglichkeit um %s erhöht wird. erfordert einen gegenstand der stufe %s oder höher"] = { { Stats.Agility, }, false, } -- i84575
-L["lehrt euch, euren eigenen ring dauerhaft zu verzaubern, sodass die intelligenz um %s erhöht wird. erfordert einen gegenstand der stufe %s oder höher"] = { { Stats.Intellect, }, false, } -- i84576
-L["lehrt euch, euren eigenen ring dauerhaft zu verzaubern, sodass die stärke um %s erhöht wird. erfordert einen gegenstand der stufe %s oder höher"] = { { Stats.Strength, }, false, } -- i84578
-L["lehrt euch, einen ring dauerhaft so zu verzaubern, dass er alle werte um %s erhöht"] = { { Stats.AllStats, }, } -- i186683
-L["lehrt euch die dauerhafte verzauberung einer waffe. ihre pvp-macht wird um %s erhöht und ihre entwaffnungseffekte um %s% verringert. die verringerung von entwaffnungseffekten kann nicht mit ähnlichen effekten gestapelt werden. erfordert einen gegenstand der stufe %s oder höher"] = { { Stats.PvpPowerRating, }, false, false, } -- i254315
 L["geschärft (%s schaden)"] = { { Stats.AverageWeaponDamage, }, } -- e13
 L["verstärkt (%s rüstung)"] = { { Stats.Armor, }, } -- e15
 L["beschwert (%s schaden)"] = { { Stats.AverageWeaponDamage, }, } -- e19

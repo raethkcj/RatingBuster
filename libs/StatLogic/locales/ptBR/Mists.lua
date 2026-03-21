@@ -1817,12 +1817,17 @@ L["encanta permanentemente um manto para aumentar em %s o acerto"] = { { Stats.H
 L["encanta permanentemente um par de botas para aumentar um pouco a velocidade de movimento e a agilidade em %s"] = { { Stats.Agility, }, } -- s104409
 L["encanta permanentemente um par de botas para aumentar um pouco a velocidade de movimento e a maestria em %s"] = { { Stats.MasteryRating, }, } -- s104414
 L["aceleração aumentada em %s"] = { { Stats.MeleeHasteRating, Stats.RangedHasteRating, Stats.SpellHasteRating, }, } -- s104423
+L["encanta permanentemente uma arma corpo a corpo para aumentar de forma esporádica sua força ou agilidade em %s ao causar dano corpo a corpo. seu maior atributo é sempre escolhido"] = { { Stats.HighestStrengthAgility, }, } -- s104434
 L["maestria aumentada em %s"] = { { Stats.MasteryRating, }, } -- s104510
 L["a dádiva de sargeras dotou illidan de visão além do alcance, permitindo que ele se esquive de %s% dos ataques inimigos"] = { { Stats.Dodge, }, } -- s104746
 L["imbuído do sangue chamejante dos deuses antigos.\nseta caótica agora é um efeito de área.\nrecarga das habilidades reduzida pela metade.\nvelocidade de ataque aumentada em %s%"] = { { Stats.MeleeHaste, }, } -- s104901
+L["prepare o banquete pandarênico para alimentar até %s pessoas no seu raide ou grupo!\nrecupera %s pontos de vida e %s pontos de mana por %s s. se você passar ao menos %s s comendo, ficará bem alimentado e ganhará %s num atributo útil por %s hora"] = { false, false, false, false, false, { Stats.Primary, }, false, } -- s104958
 L["intelecto aumentado em %s"] = { { Stats.Intellect, }, } -- s104993
+L["prepare um grande banquete pandarênico para alimentar até %s pessoas no seu raide ou grupo!\nrecupera %s pontos de vida e %s pontos de mana por %s s. se você passar ao menos %s s comendo, ficará bem alimentado e ganhará %s num atributo útil por %s hora"] = { false, false, false, false, false, { Stats.Primary, }, false, } -- s105193
 L["força aumentada em %s. dura %s hora"] = { { Stats.Strength, }, false, } -- s105226
 L["absorve resíduos próximos de sangue corrompido. o amálgama fica mais instável a cada vez que um resíduo é absorvido, aumentando em %s% o dano de ataque e em %s% a velocidade de ataque dele. ao acumular %s vezes, fica superaquecido"] = { false, { Stats.MeleeHaste, }, false, } -- s105248
+L["quando curar ou causar dano, você tem chance de aumentar a força, a agilidade, o intelecto ou o espírito em %s por %s s. seu maior atributo é sempre escolhido"] = { { Stats.HighestPrimary, }, false, } -- s105574
+L["aumenta em %s o intelecto, a agilidade ou a força por %s horas. seu atributo mais alto será sempre o escolhido.\nconta como elixir de batalha e guardião. este efeito continua após a morte"] = { { Stats.HighestPrimary, }, false, } -- s105617
 L["sempre que causar dano, você tem chance de ganhar %s de intelecto por %s s"] = { { Stats.Intellect, }, false, ignoreSum = true } -- s105620
 L["sempre que causar dano, você tem chance de ganhar %s de aparo por %s s"] = { { Stats.ParryRating, }, false, ignoreSum = true } -- s105624
 L["sempre que lançar feitiços, você tem chance de ganhar %s de intelecto por %s s"] = { { Stats.Intellect, }, false, ignoreSum = true } -- s105638
@@ -1901,7 +1906,7 @@ L["aumenta em %s% a velocidade de ataque e reduz em %s% s velocidade de moviment
 L["ervas fortes aumentam em %s% a aceleração de todos os carregadores da trilha da juta em um raio de %r metros por %s s segundos"] = { { Stats.MeleeHaste, }, false, } -- s114618
 L["ervas fortes aumentam em %s% a aceleração de todos os carregadores da trilha da juta em um raio de %s metros por %s s segundos"] = { { Stats.MeleeHaste, }, false, false, } -- s114619
 L["aumenta em %s a maestria"] = { { Stats.MasteryRating, }, } -- s114722
-L["recupera %s pontos de vida e %s de mana ao longo de %s s. é preciso ficar sentado enquanto come. se você gastar pelo menos %s segundos comendo, ficará bem alimentado e ganhará %s em um atributo útil por %s hora"] = { false, false, false, false, { Stats.Intellect, }, false, ignoreSum = true } -- s114726
+L["recupera %s pontos de vida e %s de mana ao longo de %s s. é preciso ficar sentado enquanto come. se você gastar pelo menos %s segundos comendo, ficará bem alimentado e ganhará %s em um atributo útil por %s hora"] = { false, false, false, false, { Stats.Primary, }, false, } -- s114726
 L["reduz em %s% a velocidade de lançamento de feitiços"] = { { Stats.SpellHaste, }, reduction = true } -- s114732
 L["coleta a alma de um inimigo morto para aumentar a aceleração em %s% e aumentar a velocidade de movimento em %s% por %s s"] = { { Stats.MeleeHaste, }, false, false, } -- s114868
 L["coleta a alma de um inimigo morto para aumentar a aceleração em %s% por %s s"] = { { Stats.MeleeHaste, }, false, } -- s114868
@@ -2031,6 +2036,8 @@ L["toda vez que seus feitiços de dano acertam, você tem chance de ganhar %s de
 L["sempre que causar dano, você terá chance de ganhar %s de força por %s s"] = { { Stats.Strength, }, false, ignoreSum = true } -- s126702
 L["quando causar dano ou curar um alvo, você terá chance de ganhar %s de intelecto por %s s"] = { { Stats.Intellect, }, false, ignoreSum = true } -- s126706
 L["sempre que causar dano, você terá chance de ganhar %s de agilidade por %s s"] = { { Stats.Agility, }, false, ignoreSum = true } -- s126708
+L["instala permanentemente molas sinápticas em um par de luvas, permitindo aumentar em %s seu atributo primário mais alto por %s s. as livas podem ser ativadas a cada minuto.\nrequer pelo menos %s de perícia em engenharia para ser usada"] = { { Stats.HighestPrimary, }, false, false, } -- s126731
+L["aumenta em %s o intelecto, a agilidade ou a força por %s s. o seu atributo mais alto é sempre escolhido"] = { { Stats.HighestPrimary, }, false, } -- s126734
 L["enfurecido por ver seu companheiro guardião morrer, velocidade de ataque aumentada em %s%"] = { { Stats.MeleeHaste, }, } -- s126970
 L["aumenta todos os atributos em %s por %s hora. conta como elixir de batalha e guardião"] = { { Stats.AllStats, }, false, } -- s127230
 L["concede ao lançador chance de ativar dor na vítima quando acertar um ataque. dor reduz em %s% a chance de bloquear, esquivar e aparar da vítima por %s s"] = { { Stats.BlockChance, }, false, ignoreSum = true, reduction = true } -- s127262
@@ -2040,6 +2047,7 @@ L["seus feitiços de cura têm chance de conceder %s de poder mágico por %s s. 
 L["chance de esquiva aumentada em %s%"] = { { Stats.Dodge, }, } -- s127669
 L["aumenta em %s a sua aceleração por %s s e deixa você sóbrio. só funciona no monte kun-lai"] = { { Stats.MeleeHasteRating, Stats.RangedHasteRating, Stats.SpellHasteRating, }, false, } -- s127770
 L["a fera espiritual abençoa seus aliados, aumentando em %s a maestria de todos os membros do raide em um raio de %s metros. dura %s min"] = { { Stats.MasteryRating, }, false, false, } -- s127830
+L["recupera %s pontos de vida e %s pontos de mana por %s s. se você passar ao menos %s s comendo, ficará bem alimentado e ganhará %s num atributo útil por %s hora.\nmas alguma coisa parece estranha"] = { false, false, false, false, { Stats.Primary, }, false, } -- s127882
 L["seus feitiços de cura direta e periódica podem aumentar em %s a sua aceleração por %s s. (%s% de chance, recarga de %s s)"] = { { Stats.MeleeHasteRating, Stats.RangedHasteRating, Stats.SpellHasteRating, }, false, false, false, ignoreSum = true } -- s127914
 L["seus feitiços nocivos podem aumentar em %s o seu poder mágico por %s s. (%s% de chance, recarga de %s s)"] = { { Stats.SpellDamage, }, false, false, false, ignoreSum = true } -- s127924
 L["ao provar sangue, o animal fica enfurecido, aumentando a velocidade de ataque em %s%. este efeito acumula"] = { { Stats.MeleeHaste, }, } -- s128006
@@ -2122,6 +2130,9 @@ L["aumenta a velocidade de lançamento em %s%. acumula"] = { { Stats.SpellHaste,
 L["reduz a recarga de favorecimento divino em %s s. enquanto o favorecimento divino estiver ativo, a maestria aumenta em %s"] = { false, { Stats.MasteryRating, }, ignoreSum = true } -- s144613
 L["enquanto o favorecimento divino estiver ativo, sua maestria aumenta em %s"] = { { Stats.MasteryRating, }, } -- s144622
 L["máquina assassina e ruína súbita concedem %s de aceleração ou maestria, o que for maior, por %s segundos, acumulando até %s vezes"] = { { Stats.MeleeHasteRating, }, false, false, ignoreSum = true } -- s144899
+L["monta um carrinho de macarrão para vender sopa de macarrão!\ncada sopa de macarrão restaura %s pontos de vida e %s pontos de mana ao longo de %s s. é preciso permanecer sentado enquanto come. se você gastar pelo menos %s segundos comendo, ficará bem alimentado e ganhará %s num atributo útil por %s hora"] = { false, false, false, false, { Stats.Primary, }, false, } -- s145166
+L["monta um carrinho de macarrão luxo para vender sopa de macarrão luxo!\ncada sopa de macarrão luxo recupera %s pontos de vida e %s pontos de mana ao longo de %s s. é preciso permanecer sentado enquanto come. se você gastar pelo menos %s segundos comendo, ficará bem alimentado e ganhará %s num atributo útil por %s hora"] = { false, false, false, false, { Stats.Primary, }, false, } -- s145169
+L["monta um carrinho de macarrão tesouro pandarênico para vender carrinho de macarrão tesouro pandarênico!\ncada sopa de macarrão tesouro pandarênico restaura %s pontos de vida e %s pontos de mana ao longo de %s s. é preciso permanecer sentado enquanto come. se você gastar pelo menos %s segundos comendo, ficará bem alimentado e ganhará %s num atributo útil por %s hora"] = { false, false, false, false, { Stats.Primary, }, false, } -- s145196
 L["aumenta em %s% o dano e a velocidade de ataque do lançador por %s s"] = { { Stats.MeleeHaste, }, false, } -- s145974
 L["seus ataques têm chance de aumentar em %s o seu intelecto por %s s. (%s% de chance, recarga de %s s)"] = { { Stats.Intellect, }, false, false, false, ignoreSum = true } -- s146047
 L["toda vez que seus ataques corpo a corpo acertam, você tem chance de ganhar %s de aceleração por %s s. (%s% de chance, recarga de %s s)"] = { { Stats.MeleeHasteRating, Stats.RangedHasteRating, Stats.SpellHasteRating, }, false, false, false, ignoreSum = true } -- s146295
@@ -2203,19 +2214,31 @@ L["aumenta em %s% a velocidade de ataque do alvo e em %s% o dano físico que ele
 L["aumenta em %s% a velocidade de ataque do lançador e em %s% todo dano por ele causado por %s s"] = { { Stats.MeleeHaste, }, false, false, } -- s144369
 L["vigor aumentado em %s. dura %s s"] = { { Stats.Stamina, }, false, } -- s147361
 L["sua habilidade arma de labaredas aumenta em mais %s o seu poder mágico"] = { { Stats.SpellDamage, }, } -- s461993
-L["ensina a encantar um manto permanentemente para aumentar em %s o acerto crítico. requer item de nível %s ou superior"] = { { Stats.CritRating, }, false, } -- i52737
-L["ensina a encantar braçadeiras permanentemente para aumentar em %s o acerto crítico. requer um item de nível %s ou superior"] = { { Stats.CritRating, }, false, } -- i52738
-L["ensina a encantar permanentemente uma armadura de torso para aumentar em %s todos os atributos. requer um item de nível %s ou superior"] = { { Stats.AllStats, }, false, } -- i52739
-L["ensina a encantar permanentemente um escudo para aumentar em %s o vigor. requer um item de nível %s ou maior"] = { { Stats.Stamina, }, false, } -- i52740
-L["ensina a encantar botas permanentemente para aumentar ligeiramente a velocidade de movimento e em %s a agilidade. requer item de nível %s ou maior"] = { { Stats.Agility, }, false, } -- i64411
-L["ensina a encantar um par de botas permanentemente, aumentando um pouco a velocidade de movimento e em %s a maestria. só pode ser usado em itens de nível %s ou superior"] = { { Stats.MasteryRating, }, false, } -- i64412
-L["ensina a encantar braçadeiras permanentemente para aumentar em %s a aceleração. requer item de nível %s ou superior"] = { { Stats.HasteRating, }, false, } -- i64413
-L["ensina a encantar luvas permanentemente para aumentar em %s a maestria. requer item de nível %s ou superior"] = { { Stats.MasteryRating, }, false, } -- i64414
-L["ensina a encantar luvas permanentemente para aumentar em %s a força. requer um item de nível %s ou superior"] = { { Stats.Strength, }, false, } -- i64415
-L["ensina a encantar braçadeiras permanentemente para aumentar em %s a agilidade. requer um item de nível %s ou superior"] = { { Stats.Agility, }, false, } -- i68787
-L["ensina a encantar braçadeiras permanentemente para aumentar em %s a força. requer um item de nível %s ou superior"] = { { Stats.Strength, }, false, } -- i68788
-L["ensina a encantar braçadeiras permanentemente para aumentar em %s o intelecto. requer um item de nível %s ou superior"] = { { Stats.Intellect, }, false, } -- i68789
-L["ensina a encantar mantos permanentemente para aumentar em %s a agilidade"] = { { Stats.Agility, }, } -- i71714
+L["encanta permanentemente um par de botas para aumentar um pouco a velocidade de movimento e a agilidade em %s. requer item de nível %s ou superior"] = { { Stats.Agility, }, false, } -- i84553
+L["encanta permanentemente um par de botas para aumentar em %s a aceleração. requer item de nível %s ou superior"] = { { Stats.HasteRating, }, false, } -- i84554
+L["encanta permanentemente um par de botas para aumentar em %s o acerto. requer item de nível %s ou superior"] = { { Stats.HitRating, }, false, } -- i84555
+L["encanta permanentemente um par de botas para aumentar um pouco a velocidade de movimento e em %s a de maestria. requer item de nível %s ou superior"] = { { Stats.MasteryRating, }, false, } -- i84556
+L["ensina a encantar braçadeiras permanentemente para aumentar em %s a agilidade. requer um item de nível %s ou superior"] = { { Stats.Agility, }, false, } -- i84557
+L["encanta permanentemente braçadeiras para aumentar em %s a esquiva. requer item de nível %s ou superior"] = { { Stats.DodgeRating, }, false, } -- i84558
+L["ensina a encantar braçadeiras permanentemente para aumentar em %s o intelecto. requer um item de nível %s ou superior"] = { { Stats.Intellect, }, false, } -- i84559
+L["encanta permanentemente braçadeiras para aumentar em %s a maestria. requer item de nível %s ou superior"] = { { Stats.MasteryRating, }, false, } -- i84560
+L["ensina a encantar braçadeiras permanentemente para aumentar em %s a força. requer um item de nível %s ou superior"] = { { Stats.Strength, }, false, } -- i84561
+L["encanta permanentemente uma armadura de torso para aumentar em %s a resiliência jxj. requer um item de nível %s ou superior"] = { { Stats.ResilienceRating, }, false, } -- i84563
+L["encanta permanentemente a armadura de torso para aumentar em %s o espírito. requer item de nível %s ou superior"] = { { Stats.Spirit, }, false, } -- i84564
+L["encanta permanentemente armadura de torso para aumentar em %s o vigor. requer item de nível %s ou superior"] = { { Stats.Stamina, }, false, } -- i84565
+L["encanta permanentemente um manto para aumentar em %s o vigor. requer item de nível %s ou superior"] = { { Stats.Stamina, }, false, } -- i84566
+L["encanta permanentemente um manto para aumentar em %s o acerto crítico. requer item de nível %s ou superior"] = { { Stats.CritRating, }, false, } -- i84567
+L["encanta permanentemente um manto para aumentar em %s o acerto. requer item de nível %s ou superior"] = { { Stats.HitRating, }, false, } -- i84568
+L["encanta permanentemente um manto para aumentar em %s o intelecto. requer item de nível %s ou superior"] = { { Stats.Intellect, }, false, } -- i84569
+L["encanta permanentemente luvas para aumentar em %s a aptidão. requer item de nível %s ou superior"] = { { Stats.ExpertiseRating, }, false, } -- i84570
+L["encanta permanentemente luvas para aumentar em %s a aceleração. requer item de nível %s ou superior"] = { { Stats.HasteRating, }, false, } -- i84571
+L["encanta permanentemente luvas para aumentar em %s a maestria. requer item de nível %s ou superior"] = { { Stats.MasteryRating, }, false, } -- i84572
+L["encanta permanentemente um escudo ou item de mão secundária para aumentar em %s o intelecto. requer item de nível %s ou superior"] = { { Stats.Intellect, }, false, } -- i84574
+L["encanta permanentemente um anel para aumentar em %s a agilidade. requer item de nível %s ou superior"] = { { Stats.Agility, }, false, } -- i84575
+L["encanta permanentemente um anel para aumentar em %s o intelecto. requer item de nível %s ou superior"] = { { Stats.Intellect, }, false, } -- i84576
+L["encanta permanentemente um anel para aumentar em %s a força. requer item de nível %s ou superior"] = { { Stats.Strength, }, false, } -- i84578
+L["ensina a encantar permanentemente um anel para aumentar em %s todos os atributos"] = { { Stats.AllStats, }, } -- i186683
+L["ensina a encantar permanentemente uma arma para aumentar em %s o poder jxj e reduzir em %s% a duração dos efeitos de desarmar. a redução da duração não acumula com outros efeitos semelhantes. requer nível de item %s ou superior"] = { { Stats.PvpPowerRating, }, false, false, } -- i254315
 L["ensina a encantar armaduras de torso permanentemente para aumentar em %s o total de pontos de mana"] = { { Stats.Mana, }, } -- i6342
 L["ensina a encantar braçadeiras permanentemente para aumentar em %s o espírito"] = { { Stats.Spirit, }, } -- i6344
 L["ensina a encantar mantos permanentemente para aumentar em %s a armadura"] = { { Stats.Armor, }, } -- i6345
@@ -2224,6 +2247,7 @@ L["ensina a encantar armas de duas mãos corpo a corpo permanentemente para aume
 L["teaches you how to permanently enchant boots to increase stamina by %s"] = { { Stats.Stamina, }, } -- i6376
 L["ensina a encantar botas permanentemente para aumentar em %s a agilidade"] = { { Stats.Agility, }, } -- i6377
 L["ensina a encantar armas de duas mãos corpo a corpo permanentemente para aumentar em %s o espírito"] = { { Stats.Spirit, }, } -- i11038
+L["ensina a encantar mantos permanentemente para aumentar em %s a agilidade"] = { { Stats.Agility, }, } -- i11039
 L["ensina a encantar braçadeiras permanentemente para aumentar em %s a esquiva"] = { { Stats.DodgeRating, }, } -- i11163
 L["ensina a encantar botas permanentemente para aumentar em %s o espírito"] = { { Stats.Spirit, }, } -- i11167
 L["ensina a encantar escudos permanentemente para aumentar em %s a esquiva"] = { { Stats.ParryRating, }, } -- i11168
@@ -2274,6 +2298,15 @@ L["ensina a encantar permanentemente armas corpo a corpo para aumentar em %s o p
 L["ensina a encantar permanentemente armas de duas mãos corpo a corpo para aumentar em %s a agilidade. requer item de nível %s ou superior"] = { { Stats.Agility, }, false, } -- i22556
 L["ensina a encantar permanentemente armas corpo a corpo para aumentar em %s o poder de magias de fogo e arcanas. requer item de nível %s ou superior"] = { { Stats.FireDamage, Stats.ArcaneDamage, }, false, } -- i22560
 L["ensina a encantar permanentemente armas corpo a corpo para aumentar o poder de magias de gelo e sombra em %s. requer item de nível %s ou superior"] = { { Stats.FrostDamage, Stats.ShadowDamage, }, false, } -- i22561
+L["ensina a encantar um manto permanentemente para aumentar em %s o acerto crítico. requer item de nível %s ou superior"] = { { Stats.CritRating, }, false, } -- i52737
+L["ensina a encantar braçadeiras permanentemente para aumentar em %s o acerto crítico. requer um item de nível %s ou superior"] = { { Stats.CritRating, }, false, } -- i52738
+L["ensina a encantar permanentemente uma armadura de torso para aumentar em %s todos os atributos. requer um item de nível %s ou superior"] = { { Stats.AllStats, }, false, } -- i52739
+L["ensina a encantar permanentemente um escudo para aumentar em %s o vigor. requer um item de nível %s ou maior"] = { { Stats.Stamina, }, false, } -- i52740
+L["ensina a encantar botas permanentemente para aumentar ligeiramente a velocidade de movimento e em %s a agilidade. requer item de nível %s ou maior"] = { { Stats.Agility, }, false, } -- i64411
+L["ensina a encantar um par de botas permanentemente, aumentando um pouco a velocidade de movimento e em %s a maestria. só pode ser usado em itens de nível %s ou superior"] = { { Stats.MasteryRating, }, false, } -- i64412
+L["ensina a encantar braçadeiras permanentemente para aumentar em %s a aceleração. requer item de nível %s ou superior"] = { { Stats.HasteRating, }, false, } -- i64413
+L["ensina a encantar luvas permanentemente para aumentar em %s a maestria. requer item de nível %s ou superior"] = { { Stats.MasteryRating, }, false, } -- i64414
+L["ensina a encantar luvas permanentemente para aumentar em %s a força. requer um item de nível %s ou superior"] = { { Stats.Strength, }, false, } -- i64415
 L["ensina a encantar uma armadura de torso permanentemente para aumentar em %s a resiliência. requer item de nível %s ou superior"] = { { Stats.ResilienceRating, }, false, } -- i28270
 L["ensina a encantar luvas permanentemente para aumentar o acerto em %s. requer item de nível %s ou superior"] = { { Stats.HitRating, }, false, } -- i28271
 L["ensina a encantar luvas permanentemente para aumentar em %s o poder mágico. requer item de nível %s ou superior"] = { { Stats.SpellPower, }, false, } -- i28272
@@ -2300,28 +2333,6 @@ L["ensina a encantar braçadeiras permanentemente para aumentar em %s o poder m�
 L["ensina a encantar braçadeiras permanentemente para aumentar em %s o vigor. requer um item de nível %s ou superior"] = { { Stats.Stamina, }, false, } -- i44944
 L["ensina a encantar permanentemente uma arma corpo a corpo para aumentar em %s o vigor. requer um item de nível %s ou superior"] = { { Stats.Stamina, }, false, } -- i44945
 L["ensina a encantar permanentemente um cajado para aumentar em %s o poder mágico. requer um item de nível %s ou superior"] = { { Stats.SpellPower, }, false, } -- i45059
-L["encanta permanentemente um par de botas para aumentar um pouco a velocidade de movimento e a agilidade em %s. requer item de nível %s ou superior"] = { { Stats.Agility, }, false, } -- i84553
-L["encanta permanentemente um par de botas para aumentar em %s a aceleração. requer item de nível %s ou superior"] = { { Stats.HasteRating, }, false, } -- i84554
-L["encanta permanentemente um par de botas para aumentar em %s o acerto. requer item de nível %s ou superior"] = { { Stats.HitRating, }, false, } -- i84555
-L["encanta permanentemente um par de botas para aumentar um pouco a velocidade de movimento e em %s a de maestria. requer item de nível %s ou superior"] = { { Stats.MasteryRating, }, false, } -- i84556
-L["encanta permanentemente braçadeiras para aumentar em %s a esquiva. requer item de nível %s ou superior"] = { { Stats.DodgeRating, }, false, } -- i84558
-L["encanta permanentemente braçadeiras para aumentar em %s a maestria. requer item de nível %s ou superior"] = { { Stats.MasteryRating, }, false, } -- i84560
-L["encanta permanentemente uma armadura de torso para aumentar em %s a resiliência jxj. requer um item de nível %s ou superior"] = { { Stats.ResilienceRating, }, false, } -- i84563
-L["encanta permanentemente a armadura de torso para aumentar em %s o espírito. requer item de nível %s ou superior"] = { { Stats.Spirit, }, false, } -- i84564
-L["encanta permanentemente armadura de torso para aumentar em %s o vigor. requer item de nível %s ou superior"] = { { Stats.Stamina, }, false, } -- i84565
-L["encanta permanentemente um manto para aumentar em %s o vigor. requer item de nível %s ou superior"] = { { Stats.Stamina, }, false, } -- i84566
-L["encanta permanentemente um manto para aumentar em %s o acerto crítico. requer item de nível %s ou superior"] = { { Stats.CritRating, }, false, } -- i84567
-L["encanta permanentemente um manto para aumentar em %s o acerto. requer item de nível %s ou superior"] = { { Stats.HitRating, }, false, } -- i84568
-L["encanta permanentemente um manto para aumentar em %s o intelecto. requer item de nível %s ou superior"] = { { Stats.Intellect, }, false, } -- i84569
-L["encanta permanentemente luvas para aumentar em %s a aptidão. requer item de nível %s ou superior"] = { { Stats.ExpertiseRating, }, false, } -- i84570
-L["encanta permanentemente luvas para aumentar em %s a aceleração. requer item de nível %s ou superior"] = { { Stats.HasteRating, }, false, } -- i84571
-L["encanta permanentemente luvas para aumentar em %s a maestria. requer item de nível %s ou superior"] = { { Stats.MasteryRating, }, false, } -- i84572
-L["encanta permanentemente um escudo ou item de mão secundária para aumentar em %s o intelecto. requer item de nível %s ou superior"] = { { Stats.Intellect, }, false, } -- i84574
-L["encanta permanentemente um anel para aumentar em %s a agilidade. requer item de nível %s ou superior"] = { { Stats.Agility, }, false, } -- i84575
-L["encanta permanentemente um anel para aumentar em %s o intelecto. requer item de nível %s ou superior"] = { { Stats.Intellect, }, false, } -- i84576
-L["encanta permanentemente um anel para aumentar em %s a força. requer item de nível %s ou superior"] = { { Stats.Strength, }, false, } -- i84578
-L["ensina a encantar permanentemente um anel para aumentar em %s todos os atributos"] = { { Stats.AllStats, }, } -- i186683
-L["ensina a encantar permanentemente uma arma para aumentar em %s o poder jxj e reduzir em %s% a duração dos efeitos de desarmar. a redução da duração não acumula com outros efeitos semelhantes. requer nível de item %s ou superior"] = { { Stats.PvpPowerRating, }, false, false, } -- i254315
 L["afiado (%s dano)"] = { { Stats.AverageWeaponDamage, }, } -- e13
 L["reforçado (%s de armadura)"] = { { Stats.Armor, }, } -- e15
 L["pesado (%s dano)"] = { { Stats.AverageWeaponDamage, }, } -- e19
