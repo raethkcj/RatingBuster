@@ -239,6 +239,7 @@ L["statPatterns"] = {
 	[StatLogic.Stats.ExpertiseRating] = { "pericia" },
 
 	[StatLogic.Stats.AllStats] = { SPELL_STATALL:lower() },
+	[StatLogic.Stats.Primary] = { "estadística útil" },
 
 	[StatLogic.Stats.ArmorPenetrationRating] = { "penetración de armadura" },
 	[StatLogic.Stats.MasteryRating] = { "maestría" },

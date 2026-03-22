@@ -239,6 +239,7 @@ L["statPatterns"] = {
 	[StatLogic.Stats.ExpertiseRating] = { "숙련도", "숙련" },
 
 	[StatLogic.Stats.AllStats] = { SPELL_STATALL:lower() },
+	[StatLogic.Stats.Primary] = { "유용한 능력치" },
 
 	[StatLogic.Stats.ArmorPenetrationRating] = { "방어구 관통력" },	--armor penetration rating
 	[StatLogic.Stats.MasteryRating] = { "특화" },

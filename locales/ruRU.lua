@@ -239,6 +239,7 @@ L["statPatterns"] = {
 	[StatLogic.Stats.ExpertiseRating] = { "мастерства", "мастерству" },
 
 	[StatLogic.Stats.AllStats] = { SPELL_STATALL:lower() },
+	[StatLogic.Stats.Primary] = { "важная характеристика" },
 
 	[StatLogic.Stats.ArmorPenetrationRating] = { "рейтинг пробивания брони", "рейтингу пробивания брони", "рейтинга пробивания брони", "эффективность брони противника" },
 	[StatLogic.Stats.MasteryRating] = { "искусности", "искусность", "искусност" },

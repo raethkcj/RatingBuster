@@ -241,6 +241,7 @@ L["statPatterns"] = {
 	[StatLogic.Stats.ExpertiseRating] = { "熟練等級", "熟練" },
 
 	[StatLogic.Stats.AllStats] = { SPELL_STATALL:lower() },
+	[StatLogic.Stats.Primary] = { "數值" },
 
 	[StatLogic.Stats.ArmorPenetrationRating] = { "護甲穿透等級" },
 	[StatLogic.Stats.MasteryRating] = { "精通" },

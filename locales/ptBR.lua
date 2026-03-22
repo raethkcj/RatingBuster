@@ -227,6 +227,7 @@ L["statPatterns"] = {
 	[StatLogic.Stats.ExpertiseRating] = { "expertise" },
 
 	[StatLogic.Stats.AllStats] = { SPELL_STATALL:lower() },
+	[StatLogic.Stats.Primary] = { "atributo útil" },
 
 	[StatLogic.Stats.ArmorPenetrationRating] = { "armor penetration" },
 	[StatLogic.Stats.MasteryRating] = { "mastery rating", "mastery" },

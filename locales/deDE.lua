@@ -238,6 +238,7 @@ L["statPatterns"] = {
 	[StatLogic.Stats.ExpertiseRating] = { "waffenkundewertung", "waffenkunde" },
 
 	[StatLogic.Stats.AllStats] = { SPELL_STATALL:lower() },
+	[StatLogic.Stats.Primary] = { "nützlicher wert" },
 
 	[StatLogic.Stats.ArmorPenetrationRating] = { "rüstungsdurchschlagwertung", "rüstungsdurchschlag" },
 	[StatLogic.Stats.MasteryRating] = { "meisterschaft" },
