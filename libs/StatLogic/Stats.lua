@@ -94,6 +94,7 @@ StatLogic.Stats.Spirit = Stat:new({
 
 StatLogic.Stats.HighestPrimary = Stat:new()
 StatLogic.Stats.HighestStrengthAgility = Stat:new()
+StatLogic.Stats.Primary = Stat:new()
 
 StatLogic.Stats.HighestSecondary = Stat:new()
 

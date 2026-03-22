@@ -324,6 +324,10 @@ StatLogic.StatModInfo = {
 		initialValue = 0,
 		finalAdjust = 0,
 	},
+	["ADD_AGI_MOD_PRIMARY"] = {
+		initialValue = 0,
+		finalAdjust = 0,
+	},
 	["ADD_AP_MOD_FERAL_ATTACK_POWER"] = {
 		initialValue = 0,
 		finalAdjust = 0,
@@ -341,6 +345,10 @@ StatLogic.StatModInfo = {
 		finalAdjust = 0,
 	},
 	["ADD_INT_MOD_HIGHEST_PRIMARY"] = {
+		initialValue = 0,
+		finalAdjust = 0,
+	},
+	["ADD_INT_MOD_PRIMARY"] = {
 		initialValue = 0,
 		finalAdjust = 0,
 	},
@@ -377,6 +385,10 @@ StatLogic.StatModInfo = {
 		finalAdjust = 0,
 	},
 	["ADD_STR_MOD_HIGHEST_PRIMARY"] = {
+		initialValue = 0,
+		finalAdjust = 0,
+	},
+	["ADD_STR_MOD_PRIMARY"] = {
 		initialValue = 0,
 		finalAdjust = 0,
 	},
