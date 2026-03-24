@@ -3,13 +3,9 @@
 local handler
 local enabled = false
 
-local runningHandler = {}
-
 local RunHandler = function(tooltip)
-	if enabled and not runningHandler[tooltip] then
-		runningHandler[tooltip] = true
+	if enabled then
 		handler(tooltip)
-		runningHandler[tooltip] = nil
 	end
 end
 
@@ -29,7 +25,6 @@ end
 local directUpdateTypes = {
 	["GameTooltip"] = true,
 	["CheckButton"] = true,
-	["Button"] = true,
 }
 
 local function HandleTooltipSetItem(tooltip)
