@@ -316,11 +316,43 @@ StatLogic.StatModInfo = {
 		initialValue = 0,
 		finalAdjust = 0,
 	},
+	["ADD_AGI_MOD_HIGHEST_PRIMARY"] = {
+		initialValue = 0,
+		finalAdjust = 0,
+	},
+	["ADD_AGI_MOD_HIGHEST_STR_AGI"] = {
+		initialValue = 0,
+		finalAdjust = 0,
+	},
+	["ADD_AGI_MOD_PRIMARY"] = {
+		initialValue = 0,
+		finalAdjust = 0,
+	},
 	["ADD_AP_MOD_FERAL_ATTACK_POWER"] = {
 		initialValue = 0,
 		finalAdjust = 0,
 	},
 	["ADD_AP_MOD_GENERIC_ATTACK_POWER"] = {
+		initialValue = 0,
+		finalAdjust = 0,
+	},
+	["ADD_CRIT_RATING_MOD_HIGHEST_SECONDARY"] = {
+		initialValue = 0,
+		finalAdjust = 0,
+	},
+	["ADD_HASTE_RATING_MOD_HIGHEST_SECONDARY"] = {
+		initialValue = 0,
+		finalAdjust = 0,
+	},
+	["ADD_INT_MOD_HIGHEST_PRIMARY"] = {
+		initialValue = 0,
+		finalAdjust = 0,
+	},
+	["ADD_INT_MOD_PRIMARY"] = {
+		initialValue = 0,
+		finalAdjust = 0,
+	},
+	["ADD_MASTERY_RATING_MOD_HIGHEST_SECONDARY"] = {
 		initialValue = 0,
 		finalAdjust = 0,
 	},
@@ -345,6 +377,22 @@ StatLogic.StatModInfo = {
 		finalAdjust = 0,
 	},
 	["ADD_RANGED_HASTE_RATING_MOD_HASTE_RATING"] = {
+		initialValue = 0,
+		finalAdjust = 0,
+	},
+	["ADD_SPI_MOD_HIGHEST_PRIMARY"] = {
+		initialValue = 0,
+		finalAdjust = 0,
+	},
+	["ADD_STR_MOD_HIGHEST_PRIMARY"] = {
+		initialValue = 0,
+		finalAdjust = 0,
+	},
+	["ADD_STR_MOD_PRIMARY"] = {
+		initialValue = 0,
+		finalAdjust = 0,
+	},
+	["ADD_STR_MOD_HIGHEST_STR_AGI"] = {
 		initialValue = 0,
 		finalAdjust = 0,
 	},
@@ -957,18 +1005,33 @@ end
 ---@type { [Enum.ItemWeaponSubclass]: { [Stat]: true} }
 addon.WeaponSubclassStats = {}
 
-function addon.GenerateWeaponSubclassStats()
+local function SetupWeaponSubclassStats(statMod, case)
+	if case.weaponSubclass then
+		for weaponSubclass in pairs(case.weaponSubclass) do
+			if not addon.WeaponSubclassStats[weaponSubclass] then
+				addon.WeaponSubclassStats[weaponSubclass] = {}
+			end
+			addon.WeaponSubclassStats[weaponSubclass][statMod] = true
+		end
+	end
+end
+
+---@type { [Stat]: { [number]: Stat, highest?: Stat } }
+local StatPools = {}
+
+local function SetupStatPools(case)
+	if case.highest then
+		StatPools[case.pool] = StatPools[case.pool] or {}
+		StatPools[case.pool][#StatPools[case.pool] + 1] = case.highest
+	end
+end
+
+function addon.SetupStatModData()
 	for _, modList in pairs(StatLogic.StatModTable) do
-		for stat, cases in pairs(modList) do
+		for statMod, cases in pairs(modList) do
 			for _, case in ipairs(cases) do
-				if case.weaponSubclass then
-					for weaponSubclass in pairs(case.weaponSubclass) do
-						if not addon.WeaponSubclassStats[weaponSubclass] then
-							addon.WeaponSubclassStats[weaponSubclass] = {}
-						end
-						addon.WeaponSubclassStats[weaponSubclass][stat] = true
-					end
-				end
+				SetupWeaponSubclassStats(statMod, case)
+				SetupStatPools(case)
 			end
 		end
 	end
@@ -1140,6 +1203,27 @@ addon.StatModValidators = {
 			["GLYPH_REMOVED"] = true,
 		}
 	},
+	highest = {
+		validate = function (case)
+			local statPool = StatPools[case.pool]
+			if not statPool.highest then
+				local highestStat
+				local highestValue = 0
+				for _, stat in ipairs(statPool) do
+					local statValue = stat:Get()
+					if statValue > highestValue then
+						highestStat = stat
+						highestValue = statValue
+					end
+				end
+				statPool.highest = highestStat
+			end
+			return case.highest == statPool.highest
+		end,
+		events = {
+			["UNIT_STATS"] = "player",
+		},
+	},
 	itemClass = {
 		validate = function(case, _, statModContext)
 			local itemClass = statModContext and statModContext.itemClass
@@ -1280,6 +1364,7 @@ local StatModCache = setmetatable({}, {
 })
 addon.StatModCacheInvalidators = {}
 local WeaponSubclassInvalidators = {}
+local StatPoolInvalidators = {}
 
 function StatLogic:InvalidateEvent(event, unit)
 	local key = event
@@ -1298,6 +1383,11 @@ function StatLogic:InvalidateEvent(event, unit)
 		wipe(cache)
 		if RatingBuster then
 			RatingBuster:ClearCache()
+		end
+	end
+	if StatPoolInvalidators[key] then
+		for _, statPool in pairs(StatPools) do
+			statPool.highest = nil
 		end
 	end
 end
@@ -1340,6 +1430,9 @@ local function ValidateStatMod(statModName, case, statModContext)
 					table.insert(addon.StatModCacheInvalidators[key], statModName)
 					if case.weaponSubclass then
 						WeaponSubclassInvalidators[key] = true
+					end
+					if case.highest then
+						StatPoolInvalidators[key] = true
 					end
 				end
 			end
@@ -2054,7 +2147,6 @@ do
 		-----------------------
 		-- Strings without numbers; mainly used for enchants or easy exclusions
 		if not found then
-			text = text:gsub("[\r\n]+", "\n")
 			-- Strip leading "Equip: ", trailing ".", and lowercase
 			text, length = trimPrefixes(text, addon.TrimmedPrefixes)
 			offset = offset + length

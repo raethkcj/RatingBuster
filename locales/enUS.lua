@@ -201,6 +201,8 @@ L["statPatterns"] = {
 	[StatLogic.Stats.Stamina] = { SPELL_STAT3_NAME:lower() },
 	[StatLogic.Stats.Intellect] = { SPELL_STAT4_NAME:lower() },
 	[StatLogic.Stats.Spirit] = { SPELL_STAT5_NAME:lower() },
+	[StatLogic.Stats.HighestPrimary] = { SPELL_STAT1_NAME:lower(), SPELL_STAT2_NAME:lower(), SPELL_STAT4_NAME:lower(), SPELL_STAT5_NAME:lower() },
+
 	[StatLogic.Stats.DefenseRating] = { "defense rating" },
 	[StatLogic.Stats.Defense] = { DEFENSE:lower() },
 	[StatLogic.Stats.DodgeRating] = { "dodge rating", "dodge" },
@@ -231,9 +233,11 @@ L["statPatterns"] = {
 	[StatLogic.Stats.ExpertiseRating] = { "expertise rating", "expertise" },
 
 	[StatLogic.Stats.AllStats] = { SPELL_STATALL:lower() },
+	[StatLogic.Stats.Primary] = { "useful stat" },
 
 	[StatLogic.Stats.ArmorPenetrationRating] = { "armor penetration rating", "armor penetration" },
 	[StatLogic.Stats.MasteryRating] = { "mastery rating", "mastery" },
+	[StatLogic.Stats.HighestSecondary] = { "mastery rating", "mastery", "haste rating", "haste", "critical strike rating", "critical strike", "critical hit rating", "critical rating", "crit rating", "crit", },
 	[StatLogic.Stats.Armor] = { ARMOR:lower() },
 }
 -------------------------

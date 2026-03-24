@@ -70,7 +70,7 @@ W["o mestre forjador passa a empunhar duas armas, aumentando a chance de acerto 
 W["criaturas aliadas próximas de corla são aceleradas, aumentando suas velocidades de movimento e ataque"] = { [Stats.MeleeHaste] = 35, [Stats.MeleeHaste] = 15, } -- s75817
 W["pesadelos dão medo!"] = { [Stats.MeleeCrit] = -100, [Stats.RangedCrit] = -100, } -- s75822
 W["tomado pela raiva. aumenta o tamanho e o dano causado, mas reduz a velocidade"] = { [Stats.SpellDamage] = 30, } -- s76423
-W["causa dano de fogo e reduz a armadura de um alvo inimigo. canalizado"] = { [Stats.Armor] = -20000, } -- s76688
+W["causa dano de fogo e reduz a armadura de um alvo inimigo. canalizado"] = { [Stats.Armor] = -10000, } -- s76688
 W["inimigos recuperam pontos de vida e de mana a uma taxa acelerada"] = { [Stats.GenericManaRegen] = 50, [Stats.HealthRegen] = 50, } -- s77593
 W["arremessa uma bomba de gás asfixiante no local escolhido"] = { [Stats.MeleeHit] = -75, [Stats.RangedHit] = -75, } -- s78349
 W["cobre criaturas orgânicas com uma camada que faz com que elas brotem como se fossem plantas ao longo do tempo"] = { [Stats.SpellDamage] = 50, } -- s81096
@@ -106,7 +106,7 @@ W["o lançador levanta o escudo, defletindo todos os ataques vindos da frente"] 
 W["esta criatura está imbuída e vinculada à presença de um loa zandalari, que lhe concede força e ferocidade extras"] = { [Stats.MeleeHaste] = 25, } -- s136638
 W["fixa-se em um jogador aleatório, atacando-o até ser provocado"] = { [Stats.MeleeCrit] = -100, [Stats.RangedCrit] = -100, } -- s143292
 W["levanta um escudo, desviando todos os feitiços e bloqueando todos os ataques corpo a corpo desferidos de uma posição à frente"] = { [Stats.BlockChance] = 100, } -- s147689
-W["isso é tudo fingimento. \nvocê se imagina mais forte e mais resiliente. \nvocê tem certeza de que consegue lidar com a peste"] = { [Stats.FrostResistance] = 200, } -- s346285
+W["isso é tudo fingimento. \r\nvocê se imagina mais forte e mais resiliente. \r\nvocê tem certeza de que consegue lidar com a peste"] = { [Stats.FrostResistance] = 200, } -- s346285
 W["aumenta a vida, a taxa de aceleração nos ataques de corpo a corpo e a regeneração de mana"] = { [Stats.Health] = 300, [Stats.MeleeHasteRating] = 150, [Stats.GenericManaRegen] = 10, } -- s355366
 W["encanta permanentemente um manto para aumentar a furtividade"] = { [Stats.Agility] = 8, [Stats.DodgeRating] = 8, } -- s359640
 W["permite que armas de uma mão e de mão secundária possam ser empunhadas na mão secundária"] = { [Stats.MeleeHit] = 20, [Stats.RangedHit] = 20, } -- s42459
@@ -179,7 +179,7 @@ L["reduz em %s% a velocidade de lançamento de um inimigo por %s s"] = { { Stats
 L["joga lama nos olhos do inimigo, reduzindo em %s% a chance de acerto dele por %s s"] = { { Stats.MeleeHit, Stats.RangedHit, }, false, reduction = true } -- s3650
 L["intervalo entre ataques aumentado em %s%"] = { { Stats.MeleeHaste, }, reduction = true } -- s3826
 L["instala permanentemente uma mira em um arco ou em uma arma de fogo para aumentar em %s o dano"] = { { Stats.AverageWeaponDamage, }, } -- s3974
-L["instala permanentemente uma mira em um arco ou em uma arma de fogo para aumentar em %s o dano.\nao instalar esta mira em uma arma de longo alcance, ela se tornará vinculada"] = { { Stats.AverageWeaponDamage, }, } -- s3976
+L["instala permanentemente uma mira em um arco ou em uma arma de fogo para aumentar em %s o dano.\r\n\r\nao instalar esta mira em uma arma de longo alcance, ela se tornará vinculada"] = { { Stats.AverageWeaponDamage, }, } -- s3976
 L["transforma o alvo em gnomo leproso, reduzindo em %s o dano de combate corpo a corpo e o poder mágico. reduz em %s% a taxa de movimento por %s s"] = { { Stats.SpellDamage, }, false, false, reduction = true } -- s4060
 L["%s% de chance de aumentar em %s a armadura por %s s quando atingido em combate"] = { false, { Stats.Armor, }, false, ignoreSum = true } -- s4070
 L["aumenta em %s% a chance de esquiva do lançador. dura até ser cancelado"] = { { Stats.Dodge, }, } -- s4086
@@ -243,7 +243,7 @@ L["aumenta em %s a força de um aliado por %s min"] = { { Stats.Strength, }, fal
 L["aumenta em %s o dano físico causado por integrantes do grupo próximos. cada jogador pode ter apenas uma aura ativa por paladino por vez. a aura dura até ser cancelada"] = { { Stats.AverageWeaponDamage, }, } -- s7069
 L["aumenta em %s o dano físico causado"] = { { Stats.AverageWeaponDamage, }, } -- s7072
 L["aumenta em %s% o intervalo entre os ataques de um inimigo e em %s% o tempo de lançamento dele, e acrescenta %s% de chance de que o contágio se espalhe para um aliado quando atingido. dura %s s"] = { { Stats.MeleeHaste, }, { Stats.SpellHaste, }, false, false, reduction = true } -- s7102
-L["intervalo entre ataques aumentado em %s%.\nvelocidade de lançamento reduzida em %s%.\n%s% de chance de espalhar o contágio a aliados quando atingido"] = { { Stats.MeleeHaste, }, { Stats.SpellHaste, }, false, reduction = true } -- s7103
+L["intervalo entre ataques aumentado em %s%.\r\nvelocidade de lançamento reduzida em %s%.\r\n%s% de chance de espalhar o contágio a aliados quando atingido"] = { { Stats.MeleeHaste, }, { Stats.SpellHaste, }, false, reduction = true } -- s7103
 L["aumenta em %s% o intervalo entre os ataques de um inimigo, reduz em %s% a velocidade de lançamento de feitiços e desacelera em %s% a velocidade de movimento. dura %s s"] = { { Stats.MeleeHaste, }, { Stats.SpellHaste, }, false, false, reduction = true } -- s7127
 L["prende um contrapeso a uma espada de duas mãos, uma maça, um machado ou uma arma de haste, aumentando em %s de aceleração do usuário"] = { { Stats.HasteRating, }, } -- s7218
 L["uma imensa nuvem de poeira voa nos olhos dos inimigos próximos, reduzindo em %s% a chance de acerto deles por %s s"] = { { Stats.MeleeHit, Stats.RangedHit, }, false, reduction = true } -- s7272
@@ -261,8 +261,8 @@ L["%s intelecto"] = { { Stats.Intellect, }, } -- s7468
 L["%s agilidade"] = { { Stats.Agility, }, } -- s7471
 L["%s espírito"] = { { Stats.Spirit, }, } -- s7474
 L["%s vigor"] = { { Stats.Stamina, }, } -- s7477
-L["dano físico causado reduzido em %s.\ndano mágico causado reduzido em %s"] = { { Stats.AverageWeaponDamage, }, { Stats.SpellDamage, }, reduction = true } -- s7656
-L["dano físico causado aumentado em %s.\ndano mágico causado aumentado em %s"] = { { Stats.AverageWeaponDamage, }, { Stats.SpellDamage, }, } -- s7657
+L["dano físico causado reduzido em %s.\r\ndano mágico causado reduzido em %s"] = { { Stats.AverageWeaponDamage, }, { Stats.SpellDamage, }, reduction = true } -- s7656
+L["dano físico causado aumentado em %s.\r\ndano mágico causado aumentado em %s"] = { { Stats.AverageWeaponDamage, }, { Stats.SpellDamage, }, } -- s7657
 L["aumenta em %s o poder mágico"] = { { Stats.SpellPower, }, } -- s7675
 L["aumenta em %s o poder mágico de fogo"] = { { Stats.FireDamage, }, } -- s7683
 L["aumenta em %s o poder mágico de natureza"] = { { Stats.NatureDamage, }, } -- s7690
@@ -310,7 +310,7 @@ L["imbui o sacerdote em poder, aumentando em %s% a aceleração de feitiços, em
 L["reduz o dano físico causado em %s"] = { { Stats.AverageWeaponDamage, }, reduction = true } -- s10072
 L["sacrifica a vida do lançador de maneira a reduzir em %s o vigor dos inimigos próximos por %s min"] = { { Stats.Stamina, }, false, reduction = true } -- s10251
 L["reduz em %s o poder de ataque de todos os integrantes do grupo em um raio de %s m. cada jogador pode ter apenas uma aura ativa por paladino"] = { { Stats.AttackPower, }, false, reduction = true } -- s10270
-L["velocidade de ataque aumentada em %s%.\nvelocidade de lançamento de feitiços aumentada em %s%.\velocidade de movimento aumentada em %s%"] = { { Stats.MeleeHaste, }, { Stats.SpellHaste, }, false, } -- s10348
+L["velocidade de ataque aumentada em %s%.\r\nvelocidade de lançamento de feitiços aumentada em %s%.\velocidade de movimento aumentada em %s%"] = { { Stats.MeleeHaste, }, { Stats.SpellHaste, }, false, } -- s10348
 L["aumenta em %s a esquiva por %s s"] = { { Stats.DodgeRating, }, false, } -- s10351
 L["aumenta em %s o dano causado ao alvo por ataques físicos por %s min. acumula até %s vezes"] = { { Stats.AverageWeaponDamage, }, false, false, } -- s10370
 L["aumenta em %s o intervalo entre os ataques do alvo por %s s"] = { { Stats.MeleeHaste, }, false, reduction = true } -- s10371
@@ -337,7 +337,7 @@ L["punciona a armadura do alvo, reduzindo-a em %s"] = { { Stats.Armor, }, reduct
 L["reduz em %s a força e em %s o vigor dos inimigos próximos por %s s"] = { { Stats.Strength, }, { Stats.Stamina, }, false, reduction = true } -- s11892
 L["reduz em %s a força e em %s o vigor de um inimigo por %s min"] = { { Stats.Strength, }, { Stats.Stamina, }, false, reduction = true } -- s11963
 L["causa dano de natureza a inimigos próximos, reduzindo em %s% a chance de acerto deles por %s s"] = { { Stats.SpellHit, Stats.MeleeHit, Stats.RangedHit, }, false, reduction = true } -- s11983
-L["força reduzida em %s.\nagilidade reduzida em %s.\nintelecto reduzido em %s"] = { { Stats.Strength, }, { Stats.Agility, }, { Stats.Intellect, }, reduction = true } -- s12001
+L["força reduzida em %s.\r\nagilidade reduzida em %s.\r\nintelecto reduzido em %s"] = { { Stats.Strength, }, { Stats.Agility, }, { Stats.Intellect, }, reduction = true } -- s12001
 L["faz com que um inimigo fixe a atenção no lançador e aumenta em %s% a velocidade de ataque do lançador por %s s. enquanto o lançador estiver concentrado no alvo, ele relutará em atacar qualquer outra coisa"] = { { Stats.MeleeHaste, }, false, } -- s12021
 L["aumenta em %s o vigor dos membros do grupo dentro de um raio de %s metros"] = { { Stats.Stamina, }, false, } -- s12022
 L["aumenta em %s% a chance de bloqueio do lançador por %s s, mas bloqueia somente %s ataque"] = { { Stats.BlockChance, }, false, false, } -- s12169
@@ -396,16 +396,16 @@ L["aumenta em %s a armadura por %s min. elixir guardião"] = { { Stats.Armor, },
 L["reduz em %s a armadura do alvo inimigo por %s min"] = { { Stats.Armor, }, false, reduction = true } -- s15235
 L["reduz em %s a armadura do alvo por %s s"] = { { Stats.Armor, }, false, reduction = true } -- s15280
 L["aumenta em %s o dano mágico causado por um aliado por %s min"] = { { Stats.SpellDamage, }, false, } -- s15288
-L["adiciona permanentemente %s de mana a um item usado na perna.\nencantar o item o tornará vinculado"] = { { Stats.Mana, }, } -- s15340
+L["adiciona permanentemente %s de mana a um item usado na perna.\r\n\r\nencantar o item o tornará vinculado"] = { { Stats.Mana, }, } -- s15340
 L["aumenta em %s o acerto crítico e em %s todos os atributos por %s hora"] = { { Stats.MeleeCritRating, Stats.RangedCritRating, Stats.SpellCritRating, }, { Stats.AllStats, }, false, } -- s15366
-L["adiciona permanentemente %s de vida a um item usado na perna.\nencantar o item o tornará vinculado"] = { { Stats.Health, }, } -- s15389
-L["adiciona permanentemente %s de armadura a um item usado na perna.\nencantar o item o tornará vinculado"] = { { Stats.Armor, }, } -- s15391
-L["adiciona permanentemente %s de resistência ao fogo a um item usado na perna ou na cabeça.\nencantar o item o tornará vinculado"] = { { Stats.FireResistance, }, } -- s15394
-L["adiciona permanentemente %s de força a um item usado na perna.\nencantar o item o tornará vinculado"] = { { Stats.Strength, }, } -- s15397
-L["adiciona permanentemente %s de vigor a um item usado na perna.\nencantar o item o tornará vinculado"] = { { Stats.Stamina, }, } -- s15400
-L["adiciona permanentemente %s de agilidade a um item usado na perna.\nencantar o item o tornará vinculado"] = { { Stats.Agility, }, } -- s15402
-L["adiciona permanentemente %s de intelecto a um item usado na perna.\nencantar o item o tornará vinculado"] = { { Stats.Intellect, }, } -- s15404
-L["adiciona permanentemente %s de espírito a um item usado na perna.\nencantar o item o tornará vinculado"] = { { Stats.Spirit, }, } -- s15406
+L["adiciona permanentemente %s de vida a um item usado na perna.\r\n\r\nencantar o item o tornará vinculado"] = { { Stats.Health, }, } -- s15389
+L["adiciona permanentemente %s de armadura a um item usado na perna.\r\n\r\nencantar o item o tornará vinculado"] = { { Stats.Armor, }, } -- s15391
+L["adiciona permanentemente %s de resistência ao fogo a um item usado na perna ou na cabeça.\r\n\r\nencantar o item o tornará vinculado"] = { { Stats.FireResistance, }, } -- s15394
+L["adiciona permanentemente %s de força a um item usado na perna.\r\n\r\nencantar o item o tornará vinculado"] = { { Stats.Strength, }, } -- s15397
+L["adiciona permanentemente %s de vigor a um item usado na perna.\r\n\r\nencantar o item o tornará vinculado"] = { { Stats.Stamina, }, } -- s15400
+L["adiciona permanentemente %s de agilidade a um item usado na perna.\r\n\r\nencantar o item o tornará vinculado"] = { { Stats.Agility, }, } -- s15402
+L["adiciona permanentemente %s de intelecto a um item usado na perna.\r\n\r\nencantar o item o tornará vinculado"] = { { Stats.Intellect, }, } -- s15404
+L["adiciona permanentemente %s de espírito a um item usado na perna.\r\n\r\nencantar o item o tornará vinculado"] = { { Stats.Spirit, }, } -- s15406
 L["aumenta em %s o acerto"] = { { Stats.MeleeHitRating, Stats.RangedHitRating, Stats.SpellHitRating, }, } -- s15464
 L["obriga os inimigos próximos a falarem em demonês, reduzindo em %s% a velocidade de lançamento deles por %s s"] = { { Stats.SpellHaste, }, false, reduction = true } -- s15470
 L["imobiliza um inimigo, aumentando em %s% o intervalo entre ataques e impedindo o lançamento de feitiços por %s s"] = { { Stats.MeleeHaste, }, false, reduction = true } -- s15471
@@ -435,7 +435,7 @@ L["aumenta em %s o dano de sombra causado por um aliado por %s min"] = { { Stats
 L["aumenta em %s a força"] = { { Stats.Strength, }, } -- s16612
 L["aumenta em %s o vigor. dura %s min"] = { { Stats.Stamina, }, false, } -- s16617
 L["aumenta em %s o dano físico causado pelo lançador e em %s% a velocidade de ataque dele por %s s"] = { { Stats.AverageWeaponDamage, }, { Stats.MeleeHaste, }, false, } -- s16789
-L["dano físico causado aumentado em %s.\nvelocidade de ataque aumentada em %s%.\ndura %s min"] = { { Stats.AverageWeaponDamage, }, { Stats.MeleeHaste, }, false, } -- s16791
+L["dano físico causado aumentado em %s.\r\nvelocidade de ataque aumentada em %s%.\r\ndura %s min"] = { { Stats.AverageWeaponDamage, }, { Stats.MeleeHaste, }, false, } -- s16791
 L["reduz em %s% a chance de acerto dos inimigos próximos por %s s"] = { { Stats.MeleeHit, Stats.RangedHit, }, false, reduction = true } -- s16867
 L["o inimigo é afligido pela maldição da lenhavil, que reduz em %s as resistências mágicas dele. pode ser aplicada até %s vezes"] = { { Stats.FireResistance, Stats.NatureResistance, Stats.FrostResistance, Stats.ShadowResistance, Stats.ArcaneResistance, }, false, reduction = true } -- s16871
 L["imbui o alvo em poder sagrado, aumentando em %s o espírito por %s min"] = { { Stats.Spirit, }, false, } -- s16875
@@ -509,7 +509,7 @@ L["reduz em %s% o intervalo entre seus ataques por %s s"] = { { Stats.MeleeHaste
 L["aumenta em %s todas as resistências por %s s"] = { { Stats.FireResistance, Stats.NatureResistance, Stats.FrostResistance, Stats.ShadowResistance, Stats.ArcaneResistance, }, false, } -- s19638
 L["vigor aumentado em %s. dura %s min"] = { { Stats.Stamina, }, false, } -- s19705
 L["vigor e espírito aumentados em %s. dura %s min"] = { { Stats.Stamina, Stats.Spirit, }, false, } -- s19706
-L["abençoa um alvo aliado, aumentando em %s a maestria. \nse o alvo estiver em seu grupo ou raide, todos os integrantes serão afetados. os jogadores só podem ter uma bênção por paladino"] = { { Stats.MasteryRating, }, } -- s19740
+L["abençoa um alvo aliado, aumentando em %s a maestria. \r\n\r\nse o alvo estiver em seu grupo ou raide, todos os integrantes serão afetados. os jogadores só podem ter uma bênção por paladino"] = { { Stats.MasteryRating, }, } -- s19740
 L["reduz em %s todos os atributos do alvo por %s min"] = { { Stats.AllStats, }, false, reduction = true } -- s19755
 L["reduz em %s o poder de ataque corpo a corpo e de longo alcance de inimigos próximos por %s s"] = { { Stats.GenericAttackPower, }, false, reduction = true } -- s19778
 L["aumenta em %s% o dano físico causado por um aliado e acelera em %s% os ataques dele por %s s"] = { false, { Stats.MeleeHaste, }, false, } -- s19779
@@ -560,40 +560,40 @@ L["fere o alvo, causando %s de dano e reduzindo em %s a armadura dele"] = { fals
 L["aumenta em %s todos os atributos por %s min"] = { { Stats.AllStats, }, false, } -- s21970
 L["lança raios contra o seu inimigo, causando %s de dano de natureza e se propagando para outros inimigos próximos. a propagação para o inimigo seguinte reduz em %s a resistência à natureza dele. afeta %s alvos. seu alvo primário também é afetado por um ciclone que reduzirá em %s% a velocidade de ataque por %s s"] = { false, { Stats.NatureResistance, }, false, false, false, reduction = true } -- s21992
 L["increases spell power by %s"] = { { Stats.SpellPower, }, } -- s22093
-L["velocidade de movimento reduzida em %s%.\nintervalo entre ataques aumentado em %s%.\nvelocidade de lançamento reduzida em %s%"] = { false, { Stats.MeleeHaste, }, { Stats.SpellHaste, }, reduction = true } -- s22247
+L["velocidade de movimento reduzida em %s%.\r\nintervalo entre ataques aumentado em %s%.\r\nvelocidade de lançamento reduzida em %s%"] = { false, { Stats.MeleeHaste, }, { Stats.SpellHaste, }, reduction = true } -- s22247
 L["causa %s de dano de gelo, queimando mana e aumentando em %s% o intervalo entre ataques por %s s"] = { false, { Stats.MeleeHaste, }, false, reduction = true } -- s22290
 L["reduz em %s o vigor de inimigos próximos por %s min"] = { { Stats.Stamina, }, false, reduction = true } -- s22420
 L["o lançador entra em frenesi, aumentando em %s% a velocidade de ataque por %s s"] = { { Stats.MeleeHaste, }, false, } -- s22428
 L["causa %s de dano de gelo a inimigos à frente do lançador, destruindo %s de mana e aumentando em %s% o intervalo entre ataques"] = { { Stats.MeleeHaste, }, false, { Stats.MeleeHaste, }, reduction = true } -- s22559
-L["adiciona permanentemente %s de resistência ao fogo a um item usado nos ombros.\nencantar o item o tornará vinculado"] = { { Stats.FireResistance, }, } -- s22593
-L["adiciona permanentemente %s de resistência ao gelo a um item usado nos ombros.\nencantar o item o tornará vinculado"] = { { Stats.FrostResistance, }, } -- s22594
-L["adiciona permanentemente %s de resistência à sombra a um item usado nos ombros.\nencantar o item o tornará vinculado"] = { { Stats.ShadowResistance, }, } -- s22596
-L["adiciona permanentemente %s de resistência à natureza a um item usado nos ombros.\nencantar o item o tornará vinculado"] = { { Stats.NatureResistance, }, } -- s22597
-L["adiciona permanentemente %s de resistência ao arcano a um item usado nos ombros.\nencantar o item o tornará vinculado"] = { { Stats.ArcaneResistance, }, } -- s22598
-L["adiciona permanentemente %s de resistência a todas as escola de magia a um item usado nos ombros.\nencantar o item o tornará vinculado"] = { { Stats.FireResistance, Stats.NatureResistance, Stats.FrostResistance, Stats.ShadowResistance, Stats.ArcaneResistance, }, } -- s22599
+L["adiciona permanentemente %s de resistência ao fogo a um item usado nos ombros.\r\n\r\nencantar o item o tornará vinculado"] = { { Stats.FireResistance, }, } -- s22593
+L["adiciona permanentemente %s de resistência ao gelo a um item usado nos ombros.\r\n\r\nencantar o item o tornará vinculado"] = { { Stats.FrostResistance, }, } -- s22594
+L["adiciona permanentemente %s de resistência à sombra a um item usado nos ombros.\r\n\r\nencantar o item o tornará vinculado"] = { { Stats.ShadowResistance, }, } -- s22596
+L["adiciona permanentemente %s de resistência à natureza a um item usado nos ombros.\r\n\r\nencantar o item o tornará vinculado"] = { { Stats.NatureResistance, }, } -- s22597
+L["adiciona permanentemente %s de resistência ao arcano a um item usado nos ombros.\r\n\r\nencantar o item o tornará vinculado"] = { { Stats.ArcaneResistance, }, } -- s22598
+L["adiciona permanentemente %s de resistência a todas as escola de magia a um item usado nos ombros.\r\n\r\nencantar o item o tornará vinculado"] = { { Stats.FireResistance, Stats.NatureResistance, Stats.FrostResistance, Stats.ShadowResistance, Stats.ArcaneResistance, }, } -- s22599
 L["causa %s de dano arcano a inimigos à frente do lançador, reduzindo em %s% a velocidade de lançamento deles e aumentando em %s% o intervalo entre ataques por %s s"] = { false, { Stats.SpellHaste, }, { Stats.MeleeHaste, }, false, reduction = true } -- s22642
 L["o alvo inimigo começa a definhar, recebendo imediatamente %s de dano de natureza e mais %s de dano de natureza a cada %s s por %s s. a força do alvo também é reduzida em %s"] = { false, false, false, false, { Stats.Strength, }, reduction = true } -- s22662
 L["aumenta em %s a defesa por %s min"] = { { Stats.Defense, }, false, } -- s22685
 L["transforma a pele do lançador em pedra, aumentando em %s a armadura dele por %s s"] = { { Stats.Armor, }, false, } -- s22693
-L["adiciona permanentemente %s de esquiva a um item usado no peito, nas pernas, nas mãos ou nos pés.\ninstalar um kit de armadura em um item o tornará vinculado"] = { { Stats.DodgeRating, }, } -- s22725
+L["adiciona permanentemente %s de esquiva a um item usado no peito, nas pernas, nas mãos ou nos pés.\r\n\r\ninstalar um kit de armadura em um item o tornará vinculado"] = { { Stats.DodgeRating, }, } -- s22725
 L["aumenta em %s o intelecto por %s min"] = { { Stats.Intellect, }, false, } -- s22730
 L["encanta permanentemente uma arma corpo a corpo para aumentar em %s o poder mágico"] = { { Stats.SpellPower, }, } -- s22749
 L["afia a sua arma cortante, aumentando em %s o acerto crítico com arma corpo a corpo por %s hora. não pode ser usado em itens de nível maior do que %s"] = { { Stats.MeleeCritRating, }, false, false, } -- s22756
-L["instala permanentemente uma mira em um arco ou em uma arma de fogo para aumentar em %s o acerto.\nao instalar esta mira em uma arma de longo alcance, ela se tornará vinculada"] = { { Stats.RangedHitRating, }, } -- s22779
+L["instala permanentemente uma mira em um arco ou em uma arma de fogo para aumentar em %s o acerto.\r\n\r\nao instalar esta mira em uma arma de longo alcance, ela se tornará vinculada"] = { { Stats.RangedHitRating, }, } -- s22779
 L["aumenta em %s o vigor por %s min e ainda embebeda você. a cor verde é bom sinal!"] = { { Stats.Stamina, }, false, } -- s22789
 L["aumenta em %s o espírito, mas reduz em %s o intelecto por %s min. boooooa"] = { { Stats.Spirit, }, { Stats.Intellect, }, false, } -- s22790
 L["poder de ataque aumentado em %s"] = { { Stats.GenericAttackPower, Stats.RangedAttackPower, }, } -- s125489
 L["álcool é cuspido contra um inimigo, reduzindo em %s% a chance de ele acertar ataques em combate corpo a corpo e inebriando o alvo por %s s"] = { { Stats.MeleeHit, Stats.RangedHit, }, false, reduction = true } -- s22833
-L["adiciona permanentemente %s de aceleração a um item usado na perna.\nencantar o item o tornará vinculado"] = { { Stats.HasteRating, }, } -- s22840
-L["adiciona um bônus permanente de %s de poder mágico a um item usado na perna.\nencantar o item o tornará vinculado"] = { { Stats.SpellPower, }, } -- s22844
-L["adiciona permanentemente %s de esquiva a um item usado na perna.\nencantar o item o tornará vinculado"] = { { Stats.DodgeRating, }, } -- s22846
+L["adiciona permanentemente %s de aceleração a um item usado na perna.\r\n\r\nencantar o item o tornará vinculado"] = { { Stats.HasteRating, }, } -- s22840
+L["adiciona um bônus permanente de %s de poder mágico a um item usado na perna.\r\n\r\nencantar o item o tornará vinculado"] = { { Stats.SpellPower, }, } -- s22844
+L["adiciona permanentemente %s de esquiva a um item usado na perna.\r\n\r\nencantar o item o tornará vinculado"] = { { Stats.DodgeRating, }, } -- s22846
 L["concede ao portador %s de esquiva e %s de armadura por %s s"] = { { Stats.DodgeRating, }, { Stats.Armor, }, false, } -- s22850
 L["o olho de immol'thar encara um alvo inimigo, reduzindo em %s% a velocidade de movimento e em %s% a velocidade de lançamento. aumenta em %s% o intervalo entre ataques corpo a corpo"] = { false, { Stats.SpellHaste, }, { Stats.MeleeHaste, }, reduction = true } -- s22909
 L["consumido pela fúria de illidan: mais %s de poder de ataque contra demônios. mais %s% de chance de acerto. mais %s% de aceleração corpo a corpo"] = { false, { Stats.MeleeHit, Stats.RangedHit, }, { Stats.MeleeHaste, }, } -- s22988
-L["queima %s de mana a cada %s s.\nvelocidade de lançamento reduzida em %s%.\nvelocidade de movimento reduzida em %s%"] = { false, false, { Stats.SpellHaste, }, false, reduction = true } -- s23153
+L["queima %s de mana a cada %s s.\r\nvelocidade de lançamento reduzida em %s%.\r\nvelocidade de movimento reduzida em %s%"] = { false, false, { Stats.SpellHaste, }, false, reduction = true } -- s23153
 L["causa %s de dano de gelo a todos os inimigos, drena %s de mana e aumenta em %s% o intervalo entre ataques por %s s"] = { false, false, { Stats.MeleeHaste, }, false, reduction = true } -- s23187
 L["aumenta em %s o poder mágico por %s s"] = { { Stats.SpellPower, }, false, } -- s23271
-L["causa %s de dano a cada %s s.\narmadura reduzida em %s.\ndura %s s"] = { false, false, { Stats.Armor, }, false, reduction = true } -- s23313
+L["causa %s de dano a cada %s s.\r\narmadura reduzida em %s.\r\ndura %s s"] = { false, false, { Stats.Armor, }, false, reduction = true } -- s23313
 L["aumenta em %s% a chance de realizar acertos críticos com feitiços"] = { { Stats.SpellCrit, }, } -- s23433
 L["aumenta em %s% a chance de realizar acertos críticos com feitiços de sombra"] = { { Stats.SpellCrit, }, } -- s23440
 L["aumenta em %s% a velocidade de ataque do lançador e em %s o dano físico que ele causa por %s min"] = { { Stats.MeleeHaste, }, { Stats.AverageWeaponDamage, }, false, } -- s52400
@@ -616,15 +616,15 @@ L["enquanto estiver ativo, aumenta em %s% a chance do alvo de obter um acerto cr
 L["envenena o alvo, aumentando-lhe em %s% o intervalo entre os ataques, reduzindo-lhe em %s% a velocidade de movimento e fazendo-o dormir depois de %s s"] = { { Stats.MeleeHaste, }, false, false, reduction = true } -- s24002
 L["aumenta em %s o dano causado por %s s"] = { { Stats.AverageWeaponDamage, }, false, } -- s24043
 L["reduz em %s a armadura de um inimigo e causa %s de dano de natureza a cada %s s por %s s"] = { { Stats.Armor, }, false, false, false, reduction = true } -- s24111
-L["adiciona permanentemente %s de vigor, %s de esquiva e %s de aparo a um item usado na perna.\nencantar o item o tornará vinculado"] = { { Stats.DodgeRating, Stats.Stamina, Stats.ParryRating, }, { Stats.DodgeRating, }, { Stats.DodgeRating, }, } -- s24149
-L["adiciona permanentemente %s de vigor, %s de esquiva e %s de intelecto a um item usado na perna.\nencantar o item o tornará vinculado"] = { { Stats.DodgeRating, }, { Stats.Stamina, }, { Stats.Intellect, }, } -- s24160
-L["adiciona permanentemente %s de poder de ataque e %s de esquiva a um item usado na perna.\nencantar o item o tornará vinculado"] = { { Stats.GenericAttackPower, }, { Stats.DodgeRating, }, } -- s24161
-L["adiciona permanentemente %s de poder de ataque, %s de vigor e %s de acerto a um item usado na perna.\nencantar o item o tornará vinculado"] = { { Stats.GenericAttackPower, }, { Stats.Stamina, }, { Stats.HitRating, }, } -- s24162
-L["adiciona um bônus permanente de %s de intelecto e %s de poder mágico a um item usado na perna.\nencantar o item o tornará vinculado"] = { { Stats.SpellPower, }, { Stats.Intellect, }, } -- s24163
-L["adiciona permanentemente %s de poder mágico e %s de acerto a um item usado na perna.\nencantar o item o tornará vinculado"] = { { Stats.SpellPower, }, { Stats.HitRating, }, } -- s24164
-L["adiciona permanentemente %s de vigor e %s de poder mágico a um item usado na perna.\nencantar o item o tornará vinculado"] = { { Stats.SpellPower, }, { Stats.Stamina, }, } -- s24165
-L["adiciona um bônus permanente de %s de vigor, %s de poder mágico e %s de espírito a um item usado na perna.\nencantar o item o tornará vinculado"] = { { Stats.Intellect, }, { Stats.Stamina, }, { Stats.Spirit, }, } -- s24167
-L["adiciona um bônus permanente de %s de vigor, %s de intelecto e %s de poder mágico a um item usado na perna.\nencantar o item o tornará vinculado"] = { { Stats.SpellPower, }, { Stats.SpellPower, }, { Stats.Stamina, Stats.Intellect, }, } -- s24168
+L["adiciona permanentemente %s de vigor, %s de esquiva e %s de aparo a um item usado na perna.\r\n\r\nencantar o item o tornará vinculado"] = { { Stats.DodgeRating, Stats.Stamina, Stats.ParryRating, }, { Stats.DodgeRating, }, { Stats.DodgeRating, }, } -- s24149
+L["adiciona permanentemente %s de vigor, %s de esquiva e %s de intelecto a um item usado na perna.\r\n\r\nencantar o item o tornará vinculado"] = { { Stats.DodgeRating, }, { Stats.Stamina, }, { Stats.Intellect, }, } -- s24160
+L["adiciona permanentemente %s de poder de ataque e %s de esquiva a um item usado na perna.\r\n\r\nencantar o item o tornará vinculado"] = { { Stats.GenericAttackPower, }, { Stats.DodgeRating, }, } -- s24161
+L["adiciona permanentemente %s de poder de ataque, %s de vigor e %s de acerto a um item usado na perna.\r\n\r\nencantar o item o tornará vinculado"] = { { Stats.GenericAttackPower, }, { Stats.Stamina, }, { Stats.HitRating, }, } -- s24162
+L["adiciona um bônus permanente de %s de intelecto e %s de poder mágico a um item usado na perna.\r\n\r\nencantar o item o tornará vinculado"] = { { Stats.SpellPower, }, { Stats.Intellect, }, } -- s24163
+L["adiciona permanentemente %s de poder mágico e %s de acerto a um item usado na perna.\r\n\r\nencantar o item o tornará vinculado"] = { { Stats.SpellPower, }, { Stats.HitRating, }, } -- s24164
+L["adiciona permanentemente %s de vigor e %s de poder mágico a um item usado na perna.\r\n\r\nencantar o item o tornará vinculado"] = { { Stats.SpellPower, }, { Stats.Stamina, }, } -- s24165
+L["adiciona um bônus permanente de %s de vigor, %s de poder mágico e %s de espírito a um item usado na perna.\r\n\r\nencantar o item o tornará vinculado"] = { { Stats.Intellect, }, { Stats.Stamina, }, { Stats.Spirit, }, } -- s24167
+L["adiciona um bônus permanente de %s de vigor, %s de intelecto e %s de poder mágico a um item usado na perna.\r\n\r\nencantar o item o tornará vinculado"] = { { Stats.SpellPower, }, { Stats.SpellPower, }, { Stats.Stamina, Stats.Intellect, }, } -- s24168
 L["concede ao lançador a bênção dos deuses primevos. aumenta em %s os poderes de ataque corpo a corpo e de longo alcance por %s s"] = { { Stats.GenericAttackPower, }, false, } -- s24255
 L["corta a armadura de um inimigo, enfraquecendo-a em %s a cada aplicação de fender armadura. pode ser aplicado até %s vezes. dura %s s"] = { { Stats.Armor, }, false, false, reduction = true } -- s24317
 L["aumenta em %s o seu poder de ataque e em %s o seu acerto. o efeito dura %s s"] = { { Stats.GenericAttackPower, }, { Stats.MeleeHitRating, Stats.RangedHitRating, Stats.SpellHitRating, }, false, } -- s24352
@@ -678,7 +678,7 @@ L["recupera %s pontos de mana ao longo de %s s. é preciso ficar sentado enquant
 L["aumenta em %s sua penetração de feitiços de fogo"] = { { Stats.FirePenetration, }, } -- s25717
 L["decreases the frost resistance of your spell targets by %s"] = { { Stats.FrostPenetration, }, } -- s25718
 L["concede uma chance de reduzir em %s as resistências mágicas dos alvos dos seus feitiços por %s s ao acertar um feitiço nocivo"] = { { Stats.SpellPenetration, }, false, ignoreSum = true } -- s25767
-L["velocidade de ataque aumentada em %s%.\ndano físico aumentado em %s%"] = { { Stats.MeleeHaste, }, false, } -- s25790
+L["velocidade de ataque aumentada em %s%.\r\ndano físico aumentado em %s%"] = { { Stats.MeleeHaste, }, false, } -- s25790
 L["aumenta em %s% a velocidade de ataque de todos os integrantes do grupo que estejam próximos e em %s% o dano causado por eles"] = { { Stats.MeleeHaste, }, false, } -- s25801
 L["o alvo recebe %s% de crítico corpo a corpo"] = { { Stats.MeleeCrit, Stats.RangedCrit, }, } -- s25848
 L["aumenta em %s o seu poder de ataque corpo a corpo e de longo alcance. o efeito dura %s s"] = { { Stats.GenericAttackPower, Stats.RangedAttackPower, }, false, } -- s39439
@@ -772,7 +772,7 @@ L["cada feitiço que você lança pode gerar uma epifania, aumentando em %s o se
 L["aumenta em %s o espírito do alvo aliado por %s s"] = { { Stats.Spirit, }, false, } -- s28804
 L["seu escudo de raios também concede a você %s de espírito enquanto ativo"] = { { Stats.Spirit, }, ignoreSum = true } -- s28821
 L["aumenta o seu acerto crítico com feitiços contra mortos-vivos em %s"] = { { Stats.SpellCritRating, }, } -- s29069
-L["aumenta em até %s todo o dano mágico causado por um inimigo por %s min.\naumenta em até %s todo o dano mágico recebido por um inimigo por %s min"] = { { Stats.SpellDamage, }, false, false, false, } -- s29109
+L["aumenta em até %s todo o dano mágico causado por um inimigo por %s min.\r\naumenta em até %s todo o dano mágico recebido por um inimigo por %s min"] = { { Stats.SpellDamage, }, false, false, false, } -- s29109
 L["chance de acerto reduzida em %s% por %s s"] = { { Stats.MeleeHit, Stats.RangedHit, }, false, reduction = true } -- s29117
 L["aumenta em %s o seu acerto crítico com feitiços contra mortos-vivos"] = { { Stats.SpellCritRating, }, } -- s29159
 L["aumenta em %s% o intervalo entre os ataques de um inimigo e em %s% a velocidade de movimento dele, além de reduzir em %s% a força do alvo. dura %s s"] = { { Stats.MeleeHaste, }, false, false, false, reduction = true } -- s29212
@@ -787,10 +787,10 @@ L["aumenta em %s o total de pontos de vida do jogador por %s min. elixir guardi�
 L["abençoa todos os alvos aliados próximos, aumentando em %s o poder de ataque deles por %s min"] = { { Stats.AttackPower, }, false, } -- s29381
 L["protege o lançador de todos os ataques e feitiços por %s s. reduz em %s% a velocidade de ataque durante esse tempo"] = { false, { Stats.MeleeHaste, }, reduction = true } -- s29382
 L["afia a sua arma cortante, aumentando em %s o dano da arma e em %s seu acerto crítico por %s hora. não pode ser usado em itens de nível acima de %s"] = { { Stats.CritRating, }, { Stats.AverageWeaponDamage, }, false, false, } -- s29453
-L["adiciona permanentemente %s de poder mágico e %s de acerto crítico a um item usado nos ombros.\nencantar o item o tornará vinculado"] = { { Stats.SpellPower, }, { Stats.CritRating, }, } -- s29467
-L["encanta permanentemente um item usado nos ombros para aumentar em %s o poder mágico e recuperar %s de mana a cada %s s.\nencantar o item o tornará vinculado"] = { { Stats.SpellPower, }, { Stats.GenericManaRegen, }, false, } -- s29475
-L["encanta permanentemente um item usado nos ombros para aumentar em %s o vigor e em %s a armadura.\nencantar o item o tornará vinculado"] = { { Stats.Stamina, }, { Stats.Armor, }, } -- s29480
-L["encanta permanentemente um item usado nos ombros para aumentar em %s o poder do atacante e em %s o acerto crítico.\nencantar o item o tornará vinculado"] = { { Stats.GenericAttackPower, }, { Stats.CritRating, }, } -- s29483
+L["adiciona permanentemente %s de poder mágico e %s de acerto crítico a um item usado nos ombros.\r\n\r\nencantar o item o tornará vinculado"] = { { Stats.SpellPower, }, { Stats.CritRating, }, } -- s29467
+L["encanta permanentemente um item usado nos ombros para aumentar em %s o poder mágico e recuperar %s de mana a cada %s s.\r\n\r\nencantar o item o tornará vinculado"] = { { Stats.SpellPower, }, { Stats.GenericManaRegen, }, false, } -- s29475
+L["encanta permanentemente um item usado nos ombros para aumentar em %s o vigor e em %s a armadura.\r\n\r\nencantar o item o tornará vinculado"] = { { Stats.Stamina, }, { Stats.Armor, }, } -- s29480
+L["encanta permanentemente um item usado nos ombros para aumentar em %s o poder do atacante e em %s o acerto crítico.\r\n\r\nencantar o item o tornará vinculado"] = { { Stats.GenericAttackPower, }, { Stats.CritRating, }, } -- s29483
 L["aumenta em %s% as velocidades de dança e de ataque de todos os integrantes do grupo próximos. dura até ser cancelada"] = { { Stats.MeleeHaste, }, } -- s29521
 L["um golpe forte que causa dano da arma mais %s e desequilibra o inimigo, reduzindo em %s a chance dele de acertar ataques físicos por %s s"] = { false, { Stats.MeleeHit, Stats.RangedHit, }, false, reduction = true } -- s29555
 L["todo feitiço lançado dentro de %s segundos concederá um bônus acumulável de %s de espírito. expira em %s s. habilidades sem custo de mana não acionam este berloque"] = { false, { Stats.Spirit, }, false, ignoreSum = true } -- s29601
@@ -799,9 +799,9 @@ L["aumenta em %s% a velocidade de ataque de um cliente espectral por %s s, mas d
 L["reduz em %s% a velocidade de ataque e em %s% a velocidade de movimento de um inimigo por %s s. também causa %s de dano"] = { { Stats.MeleeHaste, }, false, false, false, reduction = true } -- s29673
 L["reduz em %s% a chance do alvo de acertar ataques físicos. acumula"] = { { Stats.MeleeHit, Stats.RangedHit, }, reduction = true } -- s29716
 L["aumenta em %s a resistência a todas as escolas de magia por %s min"] = { { Stats.FireResistance, Stats.NatureResistance, Stats.FrostResistance, Stats.ShadowResistance, Stats.ArcaneResistance, }, false, } -- s29718
-L["reduz em %s% a chance de acerto de um inimigo. \nreduz em %s% a chance de um inimigo acertar feitiços"] = { { Stats.MeleeHit, Stats.RangedHit, }, { Stats.SpellHit, }, reduction = true } -- s29833
+L["reduz em %s% a chance de acerto de um inimigo. \r\nreduz em %s% a chance de um inimigo acertar feitiços"] = { { Stats.MeleeHit, Stats.RangedHit, }, { Stats.SpellHit, }, reduction = true } -- s29833
 L["aumenta em %s% o dano físico do lançador, mas reduz em %s% sua velocidade de movimento e diminui em %s% a velocidade de seus ataques"] = { false, false, { Stats.MeleeHaste, }, reduction = true } -- s29837
-L["aumenta em até %s todo dano causado por inimigos próximos.\naumenta em até %s todo dano mágico recebido por um inimigo. dura %s min"] = { { Stats.SpellDamage, }, false, false, } -- s29900
+L["aumenta em até %s todo dano causado por inimigos próximos.\r\naumenta em até %s todo dano mágico recebido por um inimigo. dura %s min"] = { { Stats.SpellDamage, }, false, false, } -- s29900
 L["reduz em %s% a velocidade de ataque e em %s% a velocidade de movimento de um inimigo por %s s"] = { { Stats.MeleeHaste, }, false, false, reduction = true } -- s29990
 L["aflige um inimigo com doença por %s min, aumentando em %s o dano físico que ele recebe e reduzindo em %s o vigor dele. o alvo doente tem %s% de chance de transmitir a doença para um de seus aliados próximos ao ser atingido em combate"] = { false, false, { Stats.Stamina, }, false, reduction = true } -- s30080
 L["aumenta o vigor por %s hora"] = { { Stats.Stamina, }, } -- s30088
@@ -811,11 +811,11 @@ L["quando consumido, aumenta em %s a agilidade"] = { { Stats.Agility, }, } -- s3
 L["quando consumido, aumenta em %s o intelecto"] = { { Stats.Intellect, }, } -- s30175
 L["quando consumido, aumenta em %s o espírito"] = { { Stats.Spirit, }, } -- s30177
 L["quando consumido, aumenta em %s a força"] = { { Stats.Strength, }, } -- s30178
-L["instala permanentemente uma mira em um arco ou arma de fogo para aumentar em %s o acerto crítico.\nao instalar esta mira em uma arma de longo alcance, ela se tornará vinculada"] = { { Stats.RangedCritRating, }, } -- s30260
+L["instala permanentemente uma mira em um arco ou arma de fogo para aumentar em %s o acerto crítico.\r\n\r\nao instalar esta mira em uma arma de longo alcance, ela se tornará vinculada"] = { { Stats.RangedCritRating, }, } -- s30260
 L["reduz em %s% a sua chance de ser acertado criticamente"] = { { Stats.MeleeCrit, Stats.RangedCrit, }, reduction = true } -- s30297
 L["aumenta em %s o espírito do jogador e em %s o vigor por %s horas. somente um tipo de poção zanza pode estar ativa por vez"] = { { Stats.Spirit, }, { Stats.Stamina, }, false, } -- s30336
 L["aumenta em %s a resistência à sombra de um aliado por %s hora"] = { { Stats.ShadowResistance, }, false, } -- s30479
-L["aumenta em %s a sua armadura.\naumenta em %s a sua resistência à magia"] = { { Stats.Armor, }, { Stats.FireResistance, Stats.NatureResistance, Stats.FrostResistance, Stats.ShadowResistance, Stats.ArcaneResistance, }, } -- s30559
+L["aumenta em %s a sua armadura.\r\naumenta em %s a sua resistência à magia"] = { { Stats.Armor, }, { Stats.FireResistance, Stats.NatureResistance, Stats.FrostResistance, Stats.ShadowResistance, Stats.ArcaneResistance, }, } -- s30559
 L["causa %s de dano de natureza a inimigos próximos, reduzindo-lhes em %s% a velocidade de ataque e em %s% a velocidade de movimento por %s s"] = { false, { Stats.MeleeHaste, }, false, false, reduction = true } -- s30633
 L["reduz em %s a sua força"] = { { Stats.Strength, }, reduction = true } -- s30762
 L["reduz em %s a sua agilidade"] = { { Stats.Agility, }, reduction = true } -- s30763
@@ -837,8 +837,8 @@ L["despedaça a armadura de um inimigo, reduzindo-a em %s por %s s"] = { { Stats
 L["envolve o lançador em uma camada de gelo que dura %s s. o gelo espesso aumenta em %s a armadura, reduz para %s% a velocidade de movimento dos inimigos em combate corpo a corpo e aumenta em %s% o intervalo entre os ataques deles"] = { false, { Stats.Armor, }, false, { Stats.MeleeHaste, }, } -- s31256
 L["resfria os atacantes, reduzindo em %s% a velocidade de movimento e aumentando em %s% a velocidade de ataque deles"] = { false, { Stats.MeleeHaste, }, reduction = true } -- s31257
 L["aumenta em %s% o intervalo entre os ataques de um inimigo e em %s% a velocidade de movimento dele. dura %s s"] = { { Stats.MeleeHaste, }, false, false, reduction = true } -- s31295
-L["borda permanentemente uma calça usando magilinha, aumentando em %s o poder mágico e em %s o vigor.\nencantar o item o tornará vinculado"] = { { Stats.SpellPower, }, { Stats.Stamina, }, } -- s31369
-L["você se sente um pouco aturdido...\nvigor reduzido em %s.\nespírito aumentado em %s"] = { { Stats.Stamina, }, { Stats.Spirit, }, } -- s31376
+L["borda permanentemente uma calça usando magilinha, aumentando em %s o poder mágico e em %s o vigor.\r\n\r\nencantar o item o tornará vinculado"] = { { Stats.SpellPower, }, { Stats.Stamina, }, } -- s31369
+L["você se sente um pouco aturdido...\r\nvigor reduzido em %s.\r\nespírito aumentado em %s"] = { { Stats.Stamina, }, { Stats.Spirit, }, } -- s31376
 L["aumenta em %s% a chance de esquiva do lançador"] = { { Stats.Dodge, }, } -- s31379
 L["investe contra um inimigo, imobiliza-o por %s s e adiciona %s de poder de ataque corpo a corpo à próxima investida do javali"] = { false, { Stats.AttackPower, }, } -- s31426
 L["velocidades de movimento e de ataque corpo a corpo aumentadas em %s% por %s s"] = { { Stats.MeleeHaste, }, false, } -- s31458
@@ -851,17 +851,17 @@ L["aumenta em %s% sua aceleração de feitiço e em %s% a chance de acerto crít
 L["aumenta em %s% a chance de bloqueio por %s s e causa %s de dano sagrado para cada ataque bloqueado enquanto estiver ativo"] = { { Stats.BlockChance, }, false, false, } -- s31904
 L["aumenta em %s% a chance de bloqueio do lançador por %s s"] = { { Stats.BlockChance, }, false, } -- s31905
 L["sobrecarrega o alvo com musgo, reduzindo em %s% as velocidades de ataque e de lançamento"] = { { Stats.MeleeHaste, Stats.SpellHaste, }, reduction = true } -- s31948
-L["intervalo entre ataques aumentado em %s%.\ntempo de lançamento de feitiços aumentado em %s%. \n%s de dano de natureza a cada %s s"] = { false, { Stats.SpellHaste, }, false, false, reduction = true } -- s32013
+L["intervalo entre ataques aumentado em %s%.\r\ntempo de lançamento de feitiços aumentado em %s%. \r\n%s de dano de natureza a cada %s s"] = { false, { Stats.SpellHaste, }, false, false, reduction = true } -- s32013
 L["reduz em %s% a chance de um inimigo acertar feitiços e habilidades por %s s"] = { { Stats.MeleeHit, Stats.RangedHit, Stats.SpellHit, }, false, reduction = true } -- s32017
 L["concede uma chance de aumentar em %s o dano dos seus feitiços e efeitos por %s s quando seus feitiços nocivos atingem o alvo"] = { { Stats.SpellDamage, }, false, ignoreSum = true } -- s32106
 L["recupera %s pontos de vida ao longo de %s s. é preciso ficar sentado enquanto come. se você gastar pelo menos %s s comendo, ficará bem alimentado e ganhará %s de espírito por %s min"] = { false, false, false, { Stats.Spirit, }, false, ignoreSum = true } -- s32112
-L["força aumentada em %s.\nagilidade aumentada em %s.\npoder de ataque aumentado em %s%"] = { { Stats.Strength, }, { Stats.Agility, }, false, } -- s32120
+L["força aumentada em %s.\r\nagilidade aumentada em %s.\r\npoder de ataque aumentado em %s%"] = { { Stats.Strength, }, { Stats.Agility, }, false, } -- s32120
 L["%s resiliência jxj"] = { { Stats.ResilienceRating, }, } -- s32145
 L["remove %s efeito de veneno. reduz em %s a resistência à natureza por %s min"] = { false, { Stats.NatureResistance, }, false, reduction = true } -- s32305
 L["remove %s efeitos de veneno. reduz em %s a resistência à natureza por %s min"] = { false, { Stats.NatureResistance, }, false, reduction = true } -- s32305
 L["aumenta permanentemente em %s o vigor de um item usado no peito, nas pernas, nas mãos ou nos pés"] = { { Stats.Stamina, }, } -- s32397
-L["aumenta permanentemente em %s a esquiva de um item usado no peito, nas pernas, nas mãos ou nos pés.\ninstalar um kit de armadura em um item o tornará vinculado"] = { { Stats.DodgeRating, }, } -- s32398
-L["aumenta permanentemente em %s o espírito de um item usado no peito, nas pernas, nas mãos ou nos pés.\ninstalar um kit de armadura em um item o tornará vinculado"] = { { Stats.Spirit, }, } -- s32399
+L["aumenta permanentemente em %s a esquiva de um item usado no peito, nas pernas, nas mãos ou nos pés.\r\n\r\ninstalar um kit de armadura em um item o tornará vinculado"] = { { Stats.DodgeRating, }, } -- s32398
+L["aumenta permanentemente em %s o espírito de um item usado no peito, nas pernas, nas mãos ou nos pés.\r\n\r\ninstalar um kit de armadura em um item o tornará vinculado"] = { { Stats.Spirit, }, } -- s32399
 L["aumenta em %s o intelecto do alvo"] = { { Stats.Intellect, }, } -- s32557
 L["amaldiçoa um inimigo por %s s, aumentando em %s o dano físico recebido e reduzindo em %s o vigor. o alvo amaldiçoado tem %s% de chance de causar dano de sangramento ao alvo atual"] = { false, false, { Stats.Stamina, }, false, reduction = true } -- s32682
 L["aumenta em %s o poder mágico de um aliado por %s min"] = { { Stats.SpellDamage, }, false, } -- s32689
@@ -941,37 +941,37 @@ L["reduz em %s o vigor de um inimigo por %s s"] = { { Stats.Stamina, }, false, r
 L["aumenta em %s% a velocidade de ataque do alvo e em %s o dano físico que ele causa por %s min"] = { { Stats.MeleeHaste, }, { Stats.AverageWeaponDamage, }, false, } -- s35289
 L["reduz em %s a armadura de um inimigo por %s min. enquanto estiver afetado por esse efeito, o alvo não poderá usar furtividade ou invisibilidade"] = { { Stats.Armor, }, false, } -- s35325
 L["aumenta em %s os atributos do inimigo"] = { { Stats.AllStats, }, } -- s35336
-L["adiciona permanentemente %s de esquiva a um item usado nos ombros.\nencantar o item o tornará vinculado"] = { { Stats.DodgeRating, }, } -- s35355
-L["adiciona permanentemente %s de esquiva e %s de vigor a um item usado nos ombros.\nencantar o item o tornará vinculado"] = { { Stats.DodgeRating, }, { Stats.Stamina, }, } -- s35402
-L["adiciona um bônus permanente de %s de poder mágico a um item usado nos ombros.\nencantar o item o tornará vinculado"] = { { Stats.SpellPower, }, } -- s35403
-L["adiciona permanentemente em %s de intelecto e em %s de espírito a um item usado no ombro.\nencantar o item o tornará vinculado"] = { { Stats.Intellect, }, { Stats.Spirit, }, } -- s35404
-L["adiciona permanentemente %s de poder de ataque a um item usado nos ombros.\nencantar o item o tornará vinculado"] = { { Stats.GenericAttackPower, }, } -- s35407
-L["aumenta permanentemente em %s o vigor de um item usado no peito, nas pernas, nas mãos ou nos pés.\ninstalar um kit de armadura em um item o tornará vinculado"] = { { Stats.Stamina, }, } -- s35415
-L["adiciona permanentemente %s de poder de ataque e %s de acerto crítico a um item usado nos ombros.\nencantar o item o tornará vinculado"] = { { Stats.GenericAttackPower, }, { Stats.CritRating, }, } -- s35417
-L["adiciona permanentemente %s de aparo e %s de esquiva a um item usado nos ombros.\nencantar o item o tornará vinculado"] = { { Stats.DodgeRating, }, { Stats.ParryRating, }, } -- s35433
-L["adiciona permanentemente em %s de espírito a um item usado nos ombros.\nencantar o item o tornará vinculado"] = { { Stats.Spirit, }, } -- s35434
-L["adiciona permanentemente em %s de espírito e em %s de intelecto a um item usado no ombro.\nencantar o item o tornará vinculado"] = { { Stats.Intellect, }, { Stats.Spirit, }, } -- s35435
-L["adiciona permanentemente %s de acerto crítico a um item usado nos ombros.\nencantar o item o tornará vinculado"] = { { Stats.CritRating, }, } -- s35436
-L["adiciona permanentemente %s de acerto crítico e %s de poder mágico a um item usado nos ombros.\nencantar o item o tornará vinculado"] = { { Stats.SpellPower, }, { Stats.CritRating, }, } -- s35437
-L["adiciona permanentemente %s de acerto crítico e %s de poder de ataque a um item usado nos ombros.\nencantar o item o tornará vinculado"] = { { Stats.GenericAttackPower, }, { Stats.CritRating, }, } -- s35439
+L["adiciona permanentemente %s de esquiva a um item usado nos ombros.\r\n\r\nencantar o item o tornará vinculado"] = { { Stats.DodgeRating, }, } -- s35355
+L["adiciona permanentemente %s de esquiva e %s de vigor a um item usado nos ombros.\r\n\r\nencantar o item o tornará vinculado"] = { { Stats.DodgeRating, }, { Stats.Stamina, }, } -- s35402
+L["adiciona um bônus permanente de %s de poder mágico a um item usado nos ombros.\r\n\r\nencantar o item o tornará vinculado"] = { { Stats.SpellPower, }, } -- s35403
+L["adiciona permanentemente em %s de intelecto e em %s de espírito a um item usado no ombro.\r\n\r\nencantar o item o tornará vinculado"] = { { Stats.Intellect, }, { Stats.Spirit, }, } -- s35404
+L["adiciona permanentemente %s de poder de ataque a um item usado nos ombros.\r\n\r\nencantar o item o tornará vinculado"] = { { Stats.GenericAttackPower, }, } -- s35407
+L["aumenta permanentemente em %s o vigor de um item usado no peito, nas pernas, nas mãos ou nos pés.\r\n\r\ninstalar um kit de armadura em um item o tornará vinculado"] = { { Stats.Stamina, }, } -- s35415
+L["adiciona permanentemente %s de poder de ataque e %s de acerto crítico a um item usado nos ombros.\r\n\r\nencantar o item o tornará vinculado"] = { { Stats.GenericAttackPower, }, { Stats.CritRating, }, } -- s35417
+L["adiciona permanentemente %s de aparo e %s de esquiva a um item usado nos ombros.\r\n\r\nencantar o item o tornará vinculado"] = { { Stats.DodgeRating, }, { Stats.ParryRating, }, } -- s35433
+L["adiciona permanentemente em %s de espírito a um item usado nos ombros.\r\n\r\nencantar o item o tornará vinculado"] = { { Stats.Spirit, }, } -- s35434
+L["adiciona permanentemente em %s de espírito e em %s de intelecto a um item usado no ombro.\r\n\r\nencantar o item o tornará vinculado"] = { { Stats.Intellect, }, { Stats.Spirit, }, } -- s35435
+L["adiciona permanentemente %s de acerto crítico a um item usado nos ombros.\r\n\r\nencantar o item o tornará vinculado"] = { { Stats.CritRating, }, } -- s35436
+L["adiciona permanentemente %s de acerto crítico e %s de poder mágico a um item usado nos ombros.\r\n\r\nencantar o item o tornará vinculado"] = { { Stats.SpellPower, }, { Stats.CritRating, }, } -- s35437
+L["adiciona permanentemente %s de acerto crítico e %s de poder de ataque a um item usado nos ombros.\r\n\r\nencantar o item o tornará vinculado"] = { { Stats.GenericAttackPower, }, { Stats.CritRating, }, } -- s35439
 L["%s todas as resistências"] = { { Stats.FireResistance, Stats.NatureResistance, Stats.FrostResistance, Stats.ShadowResistance, Stats.ArcaneResistance, }, } -- s35442
-L["adiciona permanentemente %s de aparo e %s de esquiva a um item usado na cabeça.\nencantar o item o tornará vinculado"] = { { Stats.DodgeRating, }, { Stats.ParryRating, }, } -- s35443
-L["adiciona permanentemente em %s de intelecto e em %s de espírito a um item usado na cabeça.\nencantar o item o tornará vinculado"] = { { Stats.Intellect, }, { Stats.Spirit, }, } -- s35445
-L["adiciona permanentemente %s de poder mágico e %s de acerto a um item usado na cabeça.\nencantar o item o tornará vinculado"] = { { Stats.SpellPower, }, { Stats.HitRating, }, } -- s35447
-L["adiciona permanentemente %s de poder de ataque e %s de acerto a um item usado na cabeça.\nencantar o item o tornará vinculado"] = { { Stats.GenericAttackPower, }, { Stats.HitRating, }, } -- s35452
-L["adiciona permanentemente %s de vigor e %s de resiliência jxj a um item usado na cabeça.\nencantar o item o tornará vinculado"] = { { Stats.ResilienceRating, }, { Stats.Stamina, }, } -- s35453
-L["adiciona permanentemente %s de resistência à natureza a um item usado na cabeça.\nencantar o item o tornará vinculado"] = { { Stats.NatureResistance, }, } -- s35454
-L["adiciona permanentemente %s de resistência ao arcano a um item usado na cabeça.\nencantar o item o tornará vinculado"] = { { Stats.ArcaneResistance, }, } -- s35455
-L["adiciona permanentemente %s de resistência ao fogo a um item usado na cabeça.\nencantar o item o tornará vinculado"] = { { Stats.FireResistance, }, } -- s35456
-L["adiciona permanentemente %s de resistência ao gelo a um item usado na cabeça.\nencantar o item o tornará vinculado"] = { { Stats.FrostResistance, }, } -- s35457
-L["adiciona permanentemente %s de resistência à sombra a um item usado na cabeça.\nencantar o item o tornará vinculado"] = { { Stats.ShadowResistance, }, } -- s35458
+L["adiciona permanentemente %s de aparo e %s de esquiva a um item usado na cabeça.\r\n\r\nencantar o item o tornará vinculado"] = { { Stats.DodgeRating, }, { Stats.ParryRating, }, } -- s35443
+L["adiciona permanentemente em %s de intelecto e em %s de espírito a um item usado na cabeça.\r\n\r\nencantar o item o tornará vinculado"] = { { Stats.Intellect, }, { Stats.Spirit, }, } -- s35445
+L["adiciona permanentemente %s de poder mágico e %s de acerto a um item usado na cabeça.\r\n\r\nencantar o item o tornará vinculado"] = { { Stats.SpellPower, }, { Stats.HitRating, }, } -- s35447
+L["adiciona permanentemente %s de poder de ataque e %s de acerto a um item usado na cabeça.\r\n\r\nencantar o item o tornará vinculado"] = { { Stats.GenericAttackPower, }, { Stats.HitRating, }, } -- s35452
+L["adiciona permanentemente %s de vigor e %s de resiliência jxj a um item usado na cabeça.\r\n\r\nencantar o item o tornará vinculado"] = { { Stats.ResilienceRating, }, { Stats.Stamina, }, } -- s35453
+L["adiciona permanentemente %s de resistência à natureza a um item usado na cabeça.\r\n\r\nencantar o item o tornará vinculado"] = { { Stats.NatureResistance, }, } -- s35454
+L["adiciona permanentemente %s de resistência ao arcano a um item usado na cabeça.\r\n\r\nencantar o item o tornará vinculado"] = { { Stats.ArcaneResistance, }, } -- s35455
+L["adiciona permanentemente %s de resistência ao fogo a um item usado na cabeça.\r\n\r\nencantar o item o tornará vinculado"] = { { Stats.FireResistance, }, } -- s35456
+L["adiciona permanentemente %s de resistência ao gelo a um item usado na cabeça.\r\n\r\nencantar o item o tornará vinculado"] = { { Stats.FrostResistance, }, } -- s35457
+L["adiciona permanentemente %s de resistência à sombra a um item usado na cabeça.\r\n\r\nencantar o item o tornará vinculado"] = { { Stats.ShadowResistance, }, } -- s35458
 L["aumenta em %s o poder de ataque e em %s o intelecto de membros do grupo próximos. dura %s s. não pode afetar alvos de nível %s ou maior"] = { { Stats.GenericAttackPower, }, { Stats.Intellect, }, false, false, } -- s35475
 L["aumenta em %s a aceleração de membros do grupo próximos. dura %s s. não afeta alvos a partir do nível %s"] = { { Stats.MeleeHasteRating, Stats.RangedHasteRating, Stats.SpellHasteRating, }, false, false, } -- s35476
-L["prende permanentemente uma armadura de pele de naja à calça para aumentar em %s o poder de ataque e em %s o acerto crítico.\nencantar o item faz com que ele se torne vinculado"] = { { Stats.CritRating, }, { Stats.GenericAttackPower, }, } -- s35488
-L["prende permanentemente pelego de fenoceronte à calça para aumentar em %s o vigor e em %s a agilidade.\nencantar o item faz com que ele se torne vinculado"] = { { Stats.Stamina, }, { Stats.Agility, }, } -- s35489
-L["prende permanentemente uma armadura de eternaja à calça para aumentar em %s o poder de ataque e em %s o acerto crítico.\nencantar o item faz com que ele se torne vinculado"] = { { Stats.CritRating, }, { Stats.GenericAttackPower, }, } -- s35490
-L["dano físico causado reduzido em %s%.\nvelocidade de ataque aumentada em %s%.\ndura %s s"] = { false, { Stats.MeleeHaste, }, false, } -- s35491
-L["prende permanentemente armadura de perna de fenoceréter à calça para aumentar em %s o vigor e em %s a agilidade.\nencantar o item faz com que ele se torne vinculado"] = { { Stats.Stamina, }, { Stats.Agility, }, } -- s35495
+L["prende permanentemente uma armadura de pele de naja à calça para aumentar em %s o poder de ataque e em %s o acerto crítico.\r\n\r\nencantar o item faz com que ele se torne vinculado"] = { { Stats.CritRating, }, { Stats.GenericAttackPower, }, } -- s35488
+L["prende permanentemente pelego de fenoceronte à calça para aumentar em %s o vigor e em %s a agilidade.\r\n\r\nencantar o item faz com que ele se torne vinculado"] = { { Stats.Stamina, }, { Stats.Agility, }, } -- s35489
+L["prende permanentemente uma armadura de eternaja à calça para aumentar em %s o poder de ataque e em %s o acerto crítico.\r\n\r\nencantar o item faz com que ele se torne vinculado"] = { { Stats.CritRating, }, { Stats.GenericAttackPower, }, } -- s35490
+L["dano físico causado reduzido em %s%.\r\nvelocidade de ataque aumentada em %s%.\r\ndura %s s"] = { false, { Stats.MeleeHaste, }, false, } -- s35491
+L["prende permanentemente armadura de perna de fenoceréter à calça para aumentar em %s o vigor e em %s a agilidade.\r\n\r\nencantar o item faz com que ele se torne vinculado"] = { { Stats.Stamina, }, { Stats.Agility, }, } -- s35495
 L["aumenta em %s o dano causado por feitiços mágicos e efeitos"] = { { Stats.SpellDamage, }, } -- s35778
 L["penaliza o alvo, aumentando em %s% o dano mágico recebido, reduzindo em %s as resistências ao fogo, ao gelo, à sombra, à natureza e ao arcano e reduz em %s a armadura"] = { false, { Stats.FireResistance, Stats.NatureResistance, Stats.FrostResistance, Stats.ShadowResistance, Stats.ArcaneResistance, }, { Stats.Armor, }, reduction = true } -- s55504
 L["aumenta em %s o seu poder de ataque, em %s todos os atributos e em %s% os atributos totais"] = { { Stats.AttackPower, }, { Stats.AllStats, }, false, } -- s35874
@@ -1021,8 +1021,8 @@ L["sempre que você lançar um feitiço, tem chance de ganhar até %s de espíri
 L["espírito aumentado em %s por %s s"] = { { Stats.Spirit, }, false, } -- s37656
 L["aumenta em %s a sua aceleração"] = { { Stats.MeleeHasteRating, Stats.RangedHasteRating, }, } -- s37728
 L["uma crista de água congelada cai sobre alvos em frente ao lançador, causando %s de dano de gelo e aumentando em %s% o intervalo entre ataques"] = { false, { Stats.MeleeHaste, }, reduction = true } -- s37730
-L["adiciona permanentemente %s de resistência a todas as %s escolas de magia a um item usado na cabeça.\nencantar o item o tornará vinculado"] = { { Stats.FireResistance, Stats.NatureResistance, Stats.FrostResistance, Stats.ShadowResistance, Stats.ArcaneResistance, }, false, } -- s37889
-L["adiciona permanentemente %s de força e %s de intelecto a um item usado na cabeça.\nencantar o item o tornará vinculado"] = { { Stats.Strength, }, { Stats.Intellect, }, } -- s37891
+L["adiciona permanentemente %s de resistência a todas as %s escolas de magia a um item usado na cabeça.\r\n\r\nencantar o item o tornará vinculado"] = { { Stats.FireResistance, Stats.NatureResistance, Stats.FrostResistance, Stats.ShadowResistance, Stats.ArcaneResistance, }, false, } -- s37889
+L["adiciona permanentemente %s de força e %s de intelecto a um item usado na cabeça.\r\n\r\nencantar o item o tornará vinculado"] = { { Stats.Strength, }, { Stats.Intellect, }, } -- s37891
 L["aumenta em %s o vigor"] = { { Stats.Stamina, }, } -- s38408
 L["seus ataques de longo alcance podem aumentar em %s seu poder de ataque por %s s"] = { { Stats.GenericAttackPower, }, false, ignoreSum = true } -- s38290
 L["seus ataques podem aumentar em %s o acerto crítico por %s s. este efeito pode acumular até %s vezes"] = { { Stats.MeleeCritRating, Stats.RangedCritRating, Stats.SpellCritRating, }, false, false, } -- s38307
@@ -1069,7 +1069,7 @@ L["seus acertos críticos com feitiços têm %s% de chance de conceder a você %
 L["aumenta em %s a aceleração de feitiços"] = { { Stats.MeleeHasteRating, Stats.RangedHasteRating, Stats.SpellHasteRating, }, } -- s40483
 L["seu tiro firme tem %s% de chance de conceder a você %s de poder de ataque por %s s"] = { false, { Stats.GenericAttackPower, }, false, ignoreSum = true } -- s40485
 L["seu tiro firme pode conceder a você %s de poder de ataque por %s s"] = { { Stats.GenericAttackPower, }, false, } -- s40487
-L["dano físico causado aumentado em %s%.\nvelocidade de ataque aumentada em %s%"] = { false, { Stats.MeleeHaste, }, } -- s41305
+L["dano físico causado aumentado em %s%.\r\nvelocidade de ataque aumentada em %s%"] = { false, { Stats.MeleeHaste, }, } -- s41305
 L["aumenta em %s% a velocidade de ataque"] = { { Stats.MeleeHaste, }, } -- s41106
 L["um veneno perigoso adormece a mente do alvo, reduzindo em %s% a velocidade de lançamento de feitiços dele por %s s"] = { { Stats.SpellHaste, }, false, reduction = true } -- s41190
 L["ao matar um alvo que conceda experiência ou honra, você tem %s% de chance de ganhar %s de poder de ataque por %s s. esse efeito não pode ocorrer mais do que uma vez a cada %s segundos"] = { false, { Stats.GenericAttackPower, }, false, false, ignoreSum = true } -- s41260
@@ -1083,7 +1083,7 @@ L["aumenta em %s o aparo"] = { { Stats.ParryRating, }, } -- s41674
 L["aumenta em %s sua aptidão"] = { { Stats.ExpertiseRating, }, } -- s41730
 L["aumenta em %s a resiliência jxj"] = { { Stats.ResilienceRating, }, } -- s41876
 L["envenena o alvo, aumentando em %s% o intervalo entre ataques e em %s% o tempo de lançamento de feitiços. causa %s de dano de natureza a cada %s s"] = { false, { Stats.SpellHaste, }, false, false, reduction = true } -- s41978
-L["efeitos de cura reduzidos em %s%.\nefeitos de regeneração reduzidos em %s%.\narmadura reduzida em %s%.\ndefesa reduzida em %s"] = { false, { Stats.Defense, }, false, false, reduction = true } -- s42017
+L["efeitos de cura reduzidos em %s%.\r\nefeitos de regeneração reduzidos em %s%.\r\narmadura reduzida em %s%.\r\ndefesa reduzida em %s"] = { false, { Stats.Defense, }, false, false, reduction = true } -- s42017
 L["chance de seus acertos críticos aumentarem em %s seu poder de ataque por %s s"] = { { Stats.GenericAttackPower, }, false, ignoreSum = true } -- s42083
 L["decrepita o alvo, reduzindo em %s a força e em %s% a velocidade de movimento"] = { { Stats.Strength, }, false, reduction = true } -- s42702
 L["aumenta em %s% a velocidade de ataque e em %s% o tamanho a cada lançamento. acumula até %s vezes"] = { { Stats.MeleeHaste, }, false, false, } -- s42705
@@ -1136,7 +1136,7 @@ L["concede %s de mana a cada %s s"] = { { Stats.GenericManaRegen, }, false, } --
 L["a radiação quente da nascente do sol fortalece o alvo, aumentando-lhe em %s% a chance de acerto e reduzindo em %s% a chance de esquiva dos inimigos"] = { { Stats.MeleeHit, Stats.RangedHit, }, false, } -- s45769
 L["causa %s de dano de fogo aos atacantes quando você é acertado, aumenta em %s% a sua chance de causar acerto crítico com feitiços e reduz em %s% a chance de você receber acertos críticos. apenas um tipo de feitiço de armadura pode estar ativo no mago por vez. dura %s min"] = { false, { Stats.SpellCrit, }, false, false, } -- s45985
 L["aumenta em %s a armadura do alvo aliado, em %s todos os atributos e em %s todas as resistências por %s min. este bônus funciona apenas na tundra boreana"] = { { Stats.Armor, }, { Stats.AllStats, }, false, false, } -- s46119
-L["velocidade de ataque aumentada em %s%.\nvelocidade de movimento aumentada em %s%.\ndura %s s"] = { { Stats.MeleeHaste, }, false, false, } -- s46160
+L["velocidade de ataque aumentada em %s%.\r\nvelocidade de movimento aumentada em %s%.\r\ndura %s s"] = { { Stats.MeleeHaste, }, false, false, } -- s46160
 L["causa %s de dano de sombra ao alvo, reduzindo-lhe em %s% a velocidade de ataque por %s s"] = { false, { Stats.MeleeHaste, }, false, reduction = true } -- s46161
 L["dano físico aumentado em %s"] = { { Stats.AverageWeaponDamage, }, } -- s46278
 L["a presença de k'iru aumenta em %s o seu vigor e em %s o seu intelecto"] = { { Stats.Stamina, }, { Stats.Intellect, }, } -- s46302
@@ -1147,7 +1147,7 @@ L["poder de ataque aumentado em %s. dura %s min"] = { { Stats.AttackPower, }, fa
 L["recupera %s pontos de vida ao longo de %s s. é preciso ficar sentado enquanto come. se você gastar pelo menos %s segundos comendo, ganhará %s de intelecto por %s min"] = { false, false, false, { Stats.Intellect, }, false, ignoreSum = true } -- s46683
 L["intelecto aumentado em %s. dura %s min"] = { { Stats.Intellect, }, false, } -- s46687
 L["aumenta em %s o poder de ataque quando sob forma de felino, urso, urso hediondo e luniscante"] = { { Stats.AttackPower, }, } -- s46698
-L["intervalo entre ataques aumentado em %s%.\nvelocidade de movimento reduzida em %s%.\ndura %s s"] = { { Stats.MeleeHaste, }, false, false, ignoreSum = true, reduction = true } -- s46744
+L["intervalo entre ataques aumentado em %s%.\r\nvelocidade de movimento reduzida em %s%.\r\ndura %s s"] = { { Stats.MeleeHaste, }, false, false, ignoreSum = true, reduction = true } -- s46744
 L["aumenta em %s o poder mágico de sombra, fogo e gelo por %s hora. conta como elixir de batalha e guardião. este efeito continua após a morte"] = { { Stats.FireDamage, Stats.FrostDamage, Stats.ShadowDamage, }, false, } -- s46838
 L["recupera %s pontos de vida ao longo de %s s. é preciso ficar sentado enquanto come. se você gastar pelo menos %s s comendo, ficará bem alimentado e ganhará %s de poder de ataque por %s min"] = { false, false, false, { Stats.GenericAttackPower, }, false, ignoreSum = true } -- s46898
 L["seus ataques ignoram %s da armadura do seu adversário por %s s"] = { { Stats.ArmorPenetration, }, false, } -- s47216
@@ -1170,7 +1170,7 @@ L["aumenta em %s% o dano causado por você e permite que você veja quem realmen
 L["poder rúnico que aumenta o tamanho e o poder de ataque em %s"] = { { Stats.AttackPower, }, } -- s49643
 L["reduz em %s% a chance de acerto por %s s"] = { { Stats.MeleeHit, Stats.RangedHit, Stats.SpellHit, }, false, reduction = true } -- s49865
 L["assume uma forma de sombra, aumentando em %s% o dano de sombra, em %s% a aceleração de feitiço de todos os membros do grupo ou raide e reduzindo em %s% todo o dano causado a você. no entanto, você não poderá lançar feitiços sagrados enquanto estiver nesta forma"] = { false, { Stats.SpellHaste, }, false, } -- s49868
-L["dispara uma metralhadora, causando %s de dano a cada %s segundos por %s s.\nreduz em %s% a chance de acerto enquanto atira"] = { false, false, false, { Stats.MeleeHit, Stats.RangedHit, }, reduction = true } -- s49981
+L["dispara uma metralhadora, causando %s de dano a cada %s segundos por %s s.\r\nreduz em %s% a chance de acerto enquanto atira"] = { false, false, false, { Stats.MeleeHit, Stats.RangedHit, }, reduction = true } -- s49981
 L["aumenta em %s% o seu vigor total e em %s% a chance de esquiva"] = { false, { Stats.Dodge, }, } -- s50029
 L["cada ataque bem-sucedido aumenta em %s o dano físico causado. acumula até %s vezes"] = { { Stats.AverageWeaponDamage, }, false, } -- s50045
 L["reduz em %s% a chance de acertar por %s s"] = { { Stats.MeleeHit, Stats.RangedHit, Stats.SpellHit, }, false, reduction = true } -- s50047
@@ -1181,11 +1181,11 @@ L["aumenta em %s% a velocidade de lançamento do lançador. aumenta em %s o dano
 L["agitando-se selvagemente. chance de acerto reduzida em %s%"] = { { Stats.MeleeHit, Stats.RangedHit, }, reduction = true } -- s50188
 L["aumenta em %s% a armadura por %s s"] = { { Stats.Armor, }, false, } -- s50204
 L["aumenta em %s% a velocidade de movimento do lançador por %s s e faz com que ele cause mais %s de dano nos primeiros três ataques"] = { false, false, { Stats.AverageWeaponDamage, }, } -- s50262
-L["reduz em %s o poder de ataque corpo a corpo dos inimigos próximos por %s s.\ndano mágico causado reduzido em %s por %s s"] = { { Stats.AttackPower, }, false, { Stats.SpellDamage, }, false, reduction = true } -- s50267
+L["reduz em %s o poder de ataque corpo a corpo dos inimigos próximos por %s s.\r\ndano mágico causado reduzido em %s por %s s"] = { { Stats.AttackPower, }, false, { Stats.SpellDamage, }, false, reduction = true } -- s50267
 L["aumenta em %s% a chance de erro do seu alvo e reduz em %s% a velocidade de movimento"] = { { Stats.MeleeHit, Stats.RangedHit, }, { Stats.SpellHit, }, reduction = true } -- s50269
-L["aumenta em até %s todo dano mágico causado por inimigos próximos.\naumenta em até %s todo dano mágico recebido por um inimigo. dura %s min"] = { { Stats.SpellDamage, }, false, false, } -- s50272
+L["aumenta em até %s todo dano mágico causado por inimigos próximos.\r\naumenta em até %s todo dano mágico recebido por um inimigo. dura %s min"] = { { Stats.SpellDamage, }, false, false, } -- s50272
 L["aumenta em até %s todo o dano mágico causado por inimigos próximos"] = { { Stats.SpellDamage, }, } -- s50275
-L["um enxame de insetos que causa %s de dano de natureza aos alvos em meio ao enxame.\nchance de acerto reduzida em %s% enquanto em meio ao enxame"] = { false, { Stats.MeleeHit, Stats.RangedHit, Stats.SpellHit, }, reduction = true } -- s50283
+L["um enxame de insetos que causa %s de dano de natureza aos alvos em meio ao enxame.\r\nchance de acerto reduzida em %s% enquanto em meio ao enxame"] = { false, { Stats.MeleeHit, Stats.RangedHit, Stats.SpellHit, }, reduction = true } -- s50283
 L["ruinoso fica com raiva, aumentando em %s o dano físico causado e reduzindo em %s% o dano recebido por %s s"] = { { Stats.AverageWeaponDamage, }, false, false, } -- s50332
 L["aumenta em %s o dano físico causado pelo lançador e sua velocidade de movimento em %s% por %s s"] = { { Stats.AverageWeaponDamage, }, false, false, } -- s50346
 L["aumenta em %s% a velocidade de movimento do lançador por %s s e o faz causar mais %s de dano nos três primeiros ataques dele"] = { false, false, { Stats.AverageWeaponDamage, }, } -- s50413
@@ -1196,10 +1196,10 @@ L["aumenta em %s% a velocidade de ataque do lançador e em %s% o dano físico qu
 L["joga argamassa nos olhos do inimigo, reduzindo em %s% a chance de acerto dele por %s s"] = { { Stats.MeleeHit, Stats.RangedHit, }, false, reduction = true } -- s50701
 L["aumenta em %s o poder de ataque do seu ajudante por %s s"] = { { Stats.AttackPower, }, false, } -- s50708
 L["cada ataque abastece a ofensiva, aumentando em %s o dano físico causado pelo lançador por %s s"] = { { Stats.AverageWeaponDamage, }, false, } -- s50713
-L["prende permanentemente uma camada de armadura yormungar à calça para aumentar em %s o vigor e em %s a agilidade.\nsó pode ser fixada em uma armadura de perna do seu inventário"] = { { Stats.Stamina, }, { Stats.Agility, }, } -- s50901
-L["prende permanentemente uma armadura nerubiana à calça para aumentar em %s o poder de ataque e em %s o acerto crítico.\nencantar o item faz com que ele se torne vinculado"] = { { Stats.CritRating, }, { Stats.GenericAttackPower, }, } -- s50902
-L["aumenta permanentemente em %s o vigor de um item usado no peito, nos ombros, nas pernas, nas mãos ou nos pés.\nsó pode ser vinculado a armaduras no seu inventário"] = { { Stats.Stamina, }, } -- s50906
-L["prende permanentemente uma armadura de serpescama na calça para aumentar em %s o poder de ataque e em %s o acerto crítico.\nencantar o item faz com que ele se torne vinculado"] = { { Stats.CritRating, }, { Stats.GenericAttackPower, }, } -- s50913
+L["prende permanentemente uma camada de armadura yormungar à calça para aumentar em %s o vigor e em %s a agilidade.\r\n\r\nsó pode ser fixada em uma armadura de perna do seu inventário"] = { { Stats.Stamina, }, { Stats.Agility, }, } -- s50901
+L["prende permanentemente uma armadura nerubiana à calça para aumentar em %s o poder de ataque e em %s o acerto crítico.\r\n\r\nencantar o item faz com que ele se torne vinculado"] = { { Stats.CritRating, }, { Stats.GenericAttackPower, }, } -- s50902
+L["aumenta permanentemente em %s o vigor de um item usado no peito, nos ombros, nas pernas, nas mãos ou nos pés.\r\n\r\nsó pode ser vinculado a armaduras no seu inventário"] = { { Stats.Stamina, }, } -- s50906
+L["prende permanentemente uma armadura de serpescama na calça para aumentar em %s o poder de ataque e em %s o acerto crítico.\r\n\r\nencantar o item faz com que ele se torne vinculado"] = { { Stats.CritRating, }, { Stats.GenericAttackPower, }, } -- s50913
 L["aumenta em %s a armadura e em %s a resistência à magia por %s s"] = { { Stats.Armor, }, { Stats.FireResistance, Stats.NatureResistance, Stats.FrostResistance, Stats.ShadowResistance, Stats.ArcaneResistance, }, false, } -- s50994
 L["aumenta em %s% o dano causado e em %s% a velocidade de lançamento por %s s"] = { false, { Stats.SpellHaste, }, false, } -- s51170
 L["abençoa um alvo aliado, aumentando em %s o poder de ataque dele por %s hora. só tem efeito em zul'drak"] = { { Stats.GenericAttackPower, }, false, } -- s51265
@@ -1208,9 +1208,9 @@ L["concede %s% de aceleração de feitiço a todos os membros do raide e do grup
 L["aumenta em %s% a velocidade de ataque do alvo e em %s% o dano físico que ele causa por %s min"] = { { Stats.MeleeHaste, }, false, false, } -- s51499
 L["desfere um paulada na cabeça do inimigo, causando %s% do dano da arma e reduzindo em %s% a chance dele de esquivar ou aparar um ataque por %s s"] = { false, { Stats.Dodge, Stats.Parry, }, false, reduction = true } -- s51601
 L["imbui o alvo em poder, aumentando a velocidade de lançamento de feitiços em %s%"] = { { Stats.SpellHaste, }, } -- s51605
-L["imbui a arma do xamã em vida terrena. aumenta em %s a cura realizada por feitiços e concede a cada cura até %s% de chance de ativar o efeito terraviva no alvo, curando mais $%so pontos de vida ao longo de %s s. curas em alvos específicos com menos de %s% do máximo de pontos de vida sempre ativarão este efeito. dura %s minutos. \nliberar esse encantamento cura %s pontos de vida de um alvo aliado e aumenta em %s% o efeito da próxima cura direta ou chuva curativa do xamã"] = { { Stats.HealingPower, }, false, false, false, false, false, false, false, } -- s51730
+L["imbui a arma do xamã em vida terrena. aumenta em %s a cura realizada por feitiços e concede a cada cura até %s% de chance de ativar o efeito terraviva no alvo, curando mais $%so pontos de vida ao longo de %s s. curas em alvos específicos com menos de %s% do máximo de pontos de vida sempre ativarão este efeito. dura %s minutos. \r\n\r\nliberar esse encantamento cura %s pontos de vida de um alvo aliado e aumenta em %s% o efeito da próxima cura direta ou chuva curativa do xamã"] = { { Stats.HealingPower, }, false, false, false, false, false, false, false, } -- s51730
 L["imbui a arma do xamã em vida terrena. aumenta em %s a cura realizada por feitiços e concede a cada cura até %s% de chance de ativar o efeito terraviva no alvo, curando mais $%so pontos de vida ao longo de %s s. curas em alvos específicos com menos de %s% do máximo de pontos de vida sempre ativarão este efeito. dura %s minutos"] = { { Stats.HealingPower, }, false, false, false, false, false, } -- s51730
-L["lança uma seta mística que rompe a conexão de um inimigo com o reino material, causando %s de dano arcano, mas aumentando em %s% a chance de acerto crítico do alvo por %s min.\nacumula até %s vezes"] = { false, { Stats.MeleeCrit, Stats.RangedCrit, }, false, false, } -- s51787
+L["lança uma seta mística que rompe a conexão de um inimigo com o reino material, causando %s de dano arcano, mas aumentando em %s% a chance de acerto crítico do alvo por %s min.\r\nacumula até %s vezes"] = { false, { Stats.MeleeCrit, Stats.RangedCrit, }, false, false, } -- s51787
 L["aumenta em %s o intelecto do alvo e em %s o acerto de feitiço por %s min"] = { { Stats.Intellect, }, { Stats.SpellHitRating, }, false, } -- s51799
 L["aumenta em %s% a velocidade de ataque do lançador e em %s% o dano físico que ele causa"] = { { Stats.MeleeHaste, }, false, } -- s51819
 L["aumenta em %s% a chance de esquiva de um lançador por %s s"] = { { Stats.Dodge, }, false, } -- s51946
@@ -1218,7 +1218,7 @@ L["causa %s de dano de natureza a cada %s s por %s s. aumenta em %s% a chance de
 L["aumenta em %s sua esquiva por %s s"] = { { Stats.DodgeRating, }, false, } -- s51952
 L["força aumentada em %s"] = { { Stats.Strength, }, } -- s52021
 L["abençoa o alvo aliado, restaurando %s de mana a cada %s s por %s hora. limitado a  zul'drak"] = { { Stats.GenericManaRegen, }, false, false, } -- s52051
-L["o lançador é cercado por uma barreira de globos de água, que concedem %s de mana a cada %s s. quando um feitiço, ataque corpo a corpo ou de longo alcance atingir o lançador, a barreira gera %s de mana. este dano só será causado uma vez a cada %s segundos. dura %s hora. \napenas um escudo elemental pode estar ativo por vez"] = { { Stats.GenericManaRegen, }, false, false, false, false, } -- s52127
+L["o lançador é cercado por uma barreira de globos de água, que concedem %s de mana a cada %s s. quando um feitiço, ataque corpo a corpo ou de longo alcance atingir o lançador, a barreira gera %s de mana. este dano só será causado uma vez a cada %s segundos. dura %s hora. \r\n\r\napenas um escudo elemental pode estar ativo por vez"] = { { Stats.GenericManaRegen, }, false, false, false, false, } -- s52127
 L["convoca o poder do vidente para aumentar em %s o dano mágico do lançador por %s min"] = { { Stats.SpellDamage, }, false, } -- s52281
 L["aumenta em %s a armadura e em %s% o dano causado por %s min"] = { { Stats.Armor, }, false, false, } -- s52309
 L["aumenta em %s o aparo por %s s"] = { { Stats.ParryRating, }, false, } -- s52419
@@ -1244,7 +1244,7 @@ L["ter esfolado todos aqueles animais mortos ampliou o seu conhecimento sobre an
 L["cria uma tempestade violenta na área selecionada, causando %s de dano de natureza aos inimigos a cada %s s. aumenta em %s% o intervalo entre os ataques do inimigos. dura %s s"] = { false, false, { Stats.MeleeHaste, }, false, reduction = true } -- s53229
 L["grava uma runa em sua arma rúnica de duas mãos, aumentando em %s% a chance de aparar ataques e reduzindo em %s% a duração de efeitos de desarmar. para modificar a sua arma rúnica, você precisa usar uma forja rúnica na fortaleza de ébano"] = { { Stats.Parry, }, false, } -- s53323
 L["recupera %s pontos de mana ao longo de %s s. é preciso permanecer sentado enquanto bebe"] = { { Stats.GenericManaRegen, }, false, } -- s53373
-L["aumenta em %s% seu vigor total e em %s% sua chance de bloqueio.\nreduz em %s% a chance de você ser atingido criticamente por ataques corpo a corpo.\npalavra de glória não faz mais parte da recarga global.\nseu poder mágico agora equivale a %s% do seu poder de ataque e você não se beneficia mais de outras fontes de poder mágico.\nconcede %s% do seu total de mana a cada %s s"] = { false, { Stats.BlockChance, }, false, false, false, false, } -- s53592
+L["aumenta em %s% seu vigor total e em %s% sua chance de bloqueio.\r\n\r\nreduz em %s% a chance de você ser atingido criticamente por ataques corpo a corpo.\r\n\r\npalavra de glória não faz mais parte da recarga global.\r\n\r\nseu poder mágico agora equivale a %s% do seu poder de ataque e você não se beneficia mais de outras fontes de poder mágico.\r\n\r\nconcede %s% do seu total de mana a cada %s s"] = { false, { Stats.BlockChance, }, false, false, false, false, } -- s53592
 L["reduz em %s% a sua armadura, mas aumenta em %s o seu poder de ataque por %s s"] = { false, { Stats.GenericAttackPower, }, false, } -- s53650
 L["aumenta em %s o poder mágico e %s o poder de ataque de todos os integrantes do grupo próximos por %s s"] = { false, { Stats.AttackPower, }, false, } -- s53681
 L["aumenta em %s a resiliência jxj por %s hora. conta como elixir de batalha e guardião. este efeito continua após a morte"] = { { Stats.ResilienceRating, }, false, } -- s53752
@@ -1268,25 +1268,25 @@ L["acerto crítico aumentado em %s"] = { { Stats.MeleeCritRating, Stats.RangedCr
 L["o barulho feito no combate corpo-a-corpo às vezes provoca percepção sônica, aumentando seu poder de ataque em %s por %s s. o efeito só pode ocorrer uma vez por minuto"] = { { Stats.GenericAttackPower, }, false, ignoreSum = true } -- s54707
 L["chance de seus acertos críticos de feitiços aumentarem em %s o acerto crítico por %s s"] = { { Stats.MeleeCritRating, Stats.RangedCritRating, Stats.SpellCritRating, }, false, ignoreSum = true } -- s54738
 L["aumenta em %s o acerto crítico por %s s"] = { { Stats.MeleeCritRating, Stats.RangedCritRating, Stats.SpellCritRating, }, false, } -- s54739
-L["atira uma rajada de ossos.\nchance de acerto reduzida em %s%"] = { { Stats.MeleeHit, Stats.RangedHit, }, reduction = true } -- s54770
+L["atira uma rajada de ossos.\r\nchance de acerto reduzida em %s%"] = { { Stats.MeleeHit, Stats.RangedHit, }, reduction = true } -- s54770
 L["o lançador salta em direção ao alvo, aumentando em %s% a velocidade de ataque do lançador"] = { { Stats.MeleeHaste, }, } -- s54781
 L["acelera o seu lançamento de feitiços, aumentando em %s% a velocidade de lançamento de feitiços. dura %s s"] = { { Stats.SpellHaste, }, false, } -- s54792
 L["chance de um acerto mágico aumentar em %s o seu espírito por %s s"] = { { Stats.Spirit, }, false, ignoreSum = true } -- s54838
-L["instala permanentemente uma mira em um arco ou em uma arma de fogo para aumentar em %s a aceleração de longo alcance.\nao instalar esta mira em uma arma de longo alcance, ela se tornará vinculada"] = { { Stats.RangedHasteRating, }, } -- s55076
+L["instala permanentemente uma mira em um arco ou em uma arma de fogo para aumentar em %s a aceleração de longo alcance.\r\n\r\nao instalar esta mira em uma arma de longo alcance, ela se tornará vinculada"] = { { Stats.RangedHasteRating, }, } -- s55076
 L["um rugido alto que entorpece a mente de inimigos que o ouvem, reduzindo em %s% a velocidade de lançamento de feitiços por %s s"] = { { Stats.SpellHaste, }, false, reduction = true } -- s55100
-L["instala permanentemente uma mira em um arco ou em uma arma de fogo para aumentar em %s o acerto crítico de longo alcance.\nao instalar esta mira em uma arma de longo alcance, ela se tornará vinculada"] = { { Stats.RangedCritRating, }, } -- s55135
+L["instala permanentemente uma mira em um arco ou em uma arma de fogo para aumentar em %s o acerto crítico de longo alcance.\r\n\r\nao instalar esta mira em uma arma de longo alcance, ela se tornará vinculada"] = { { Stats.RangedCritRating, }, } -- s55135
 L["aumenta em %s% a velocidade de movimento do lançador e faz com que cause mais %s de dano ao lançar o primeiro ataque"] = { false, { Stats.AverageWeaponDamage, }, } -- s55193
 L["concede temporariamente ao cavaleiro da morte %s% do total de pontos de vida e aumenta em %s% os pontos de vida recebidos de feitiços e efeitos de cura por %s s. depois que o efeito expira, os pontos de vida concedidos são perdidos"] = { { Stats.Health, }, false, false, } -- s55233
 L["concede %s de vigor adicional aos membros do grupo dentro de um raio de %s metros"] = { { Stats.Stamina, }, false, } -- s55245
 L["usa a sua perícia em herborismo para absorver energia e nutrientes da terra, curando instantaneamente feridas menores e concedendo %s de aceleração por %s s. pode ser usado enquanto está furtivo ou invisível"] = { { Stats.MeleeHasteRating, Stats.RangedHasteRating, Stats.SpellHasteRating, }, false, } -- s55428
 L["aumenta em %s o seu intelecto"] = { { Stats.Intellect, }, } -- s55595
-L["borda permanentemente uma calça usando magilinha, aumentando em %s o poder mágico e em %s o espírito.\nencantar o item o tornará vinculado"] = { { Stats.SpellPower, }, { Stats.Spirit, }, } -- s55630
+L["borda permanentemente uma calça usando magilinha, aumentando em %s o poder mágico e em %s o espírito.\r\n\r\nencantar o item o tornará vinculado"] = { { Stats.SpellPower, }, { Stats.Spirit, }, } -- s55630
 L["concede ao lançador mais %s% de dano por acerto por %s s., mas o deixa enraizado e aumenta em %s% o intervalo entre seus ataques"] = { false, false, { Stats.MeleeHaste, }, reduction = true } -- s55633
 L["causa dano de natureza a inimigos próximos, aumentando em %s% o intervalo entre os ataques deles e reduzindo a velocidade de movimento deles por %s s"] = { { Stats.MeleeHaste, }, false, reduction = true } -- s55635
 L["eck fica furioso, aumentando em %s% sua velocidade de ataque e em %s% todo o dano que ele causa"] = { { Stats.MeleeHaste, }, false, } -- s55816
 L["cria uma tempestade violenta na área selecionada, causando dano de natureza aos inimigos a cada %s s. aumenta em %s% o intervalo entre os ataques do inimigos. dura %s s"] = { false, { Stats.MeleeHaste, }, false, reduction = true } -- s55881
-L["|cff%sf%sffesta receita melhora automaticamente quando você atinge %s de perícia em alfaiataria.|r\nborda permanentemente suas calças com magilinha do mestre, aumentando em %s seu poder mágico e em %s seu vigor.\nsomente as calças do próprio alfaiate podem ser bordadas, e, com isso, o item se torna vinculado"] = { false, false, false, { Stats.SpellPower, }, { Stats.Stamina, }, } -- s56034
-L["|cff%sf%sffesta receita melhora automaticamente quando você atinge %s de perícia em alfaiataria.|r\nborda permanentemente suas calças com magilinha santificada, aumentando em %s seu poder mágico e em %s seu espírito.\nsomente as calças do próprio alfaiate podem ser bordadas, e, com isso, o item se torna vinculado"] = { false, false, false, { Stats.SpellPower, }, { Stats.Spirit, }, } -- s56039
+L["|cff%sf%sffesta receita melhora automaticamente quando você atinge %s de perícia em alfaiataria.|r\r\n\r\nborda permanentemente suas calças com magilinha do mestre, aumentando em %s seu poder mágico e em %s seu vigor.\r\n\r\nsomente as calças do próprio alfaiate podem ser bordadas, e, com isso, o item se torna vinculado"] = { false, false, false, { Stats.SpellPower, }, { Stats.Stamina, }, } -- s56034
+L["|cff%sf%sffesta receita melhora automaticamente quando você atinge %s de perícia em alfaiataria.|r\r\n\r\nborda permanentemente suas calças com magilinha santificada, aumentando em %s seu poder mágico e em %s seu espírito.\r\n\r\nsomente as calças do próprio alfaiate podem ser bordadas, e, com isso, o item se torna vinculado"] = { false, false, false, { Stats.SpellPower, }, { Stats.Spirit, }, } -- s56039
 L["aumenta em %s% a chance de dano crítico por %s min"] = { { Stats.MeleeCrit, Stats.RangedCrit, }, false, } -- s56410
 L["abençoa o alvo aliado, aumentando em %s o poder de ataque por %s min. jogadores só podem ter uma bênção sobre si por paladino a cada vez"] = { { Stats.GenericAttackPower, }, false, } -- s56520
 L["abençoa o alvo aliado, restaurando %s de mana a cada %s s por %s min. jogadores só podem ter uma bênção sobre si por paladino a cada vez"] = { { Stats.GenericManaRegen, }, false, false, } -- s56521
@@ -1323,9 +1323,9 @@ L["restaura %s pontos de vida e %s de mana ao longo de %s s. se você passar ao 
 L["agilidade aumentada em %s e vigor aumentado em %s. dura %s hora"] = { { Stats.Agility, }, { Stats.Stamina, }, false, } -- s57367
 L["restaura %s pontos de vida e %s de mana ao longo de %s s. se você passar ao menos %s segundos comendo, ficará bem alimentado e obterá %s de força e %s de vigor por %s hora"] = { false, false, false, false, { Stats.Strength, }, { Stats.Stamina, }, false, ignoreSum = true } -- s57370
 L["força aumentada em %s e vigor aumentado em %s. dura %s hora"] = { { Stats.Strength, }, { Stats.Stamina, }, false, } -- s57371
-L["|cff%sf%sffesta receita se aprimora automaticamente quando você atinge %s de perícia de couraria.|r\nencanta permanentemente suas braçadeiras para aumentar em %s a sua agilidade.\nforro de pele requer %s de perícia de couraria para permanecer ativo e torna as braçadeiras vinculadas"] = { false, false, false, { Stats.Agility, }, false, } -- s57683
-L["|cff%sf%sffesta receita se aprimora automaticamente quando você atinge %s de perícia de couraria.|r\nencanta permanentemente suas braçadeiras para aumentar em %s o seu vigor.\nforro de pele requer %s de perícia de couraria para permanecer ativo e torna as braçadeiras vinculadas"] = { false, false, false, { Stats.Stamina, }, false, } -- s57690
-L["|cff%sf%sffesta receita se aprimora automaticamente quando você atinge %s de perícia de couraria.|r\nencanta permanentemente suas braçadeiras para aumentar em %s o seu intelecto.\nforro de pele requer %s de perícia de couraria para permanecer ativo e torna as braçadeiras vinculadas"] = { false, false, false, { Stats.Intellect, }, false, } -- s57691
+L["|cff%sf%sffesta receita se aprimora automaticamente quando você atinge %s de perícia de couraria.|r\r\n\r\nencanta permanentemente suas braçadeiras para aumentar em %s a sua agilidade.\r\n\r\nforro de pele requer %s de perícia de couraria para permanecer ativo e torna as braçadeiras vinculadas"] = { false, false, false, { Stats.Agility, }, false, } -- s57683
+L["|cff%sf%sffesta receita se aprimora automaticamente quando você atinge %s de perícia de couraria.|r\r\n\r\nencanta permanentemente suas braçadeiras para aumentar em %s o seu vigor.\r\n\r\nforro de pele requer %s de perícia de couraria para permanecer ativo e torna as braçadeiras vinculadas"] = { false, false, false, { Stats.Stamina, }, false, } -- s57690
+L["|cff%sf%sffesta receita se aprimora automaticamente quando você atinge %s de perícia de couraria.|r\r\n\r\nencanta permanentemente suas braçadeiras para aumentar em %s o seu intelecto.\r\n\r\nforro de pele requer %s de perícia de couraria para permanecer ativo e torna as braçadeiras vinculadas"] = { false, false, false, { Stats.Intellect, }, false, } -- s57691
 L["atinge inimigos próximos, aumentando em %s% o intervalo entre os ataques deles por %s s e causando-lhes %s de dano. dano aumentado por poder de ataque. esta habilidade gera mais ameaça e afetará até %s alvos"] = { { Stats.MeleeHaste, }, false, false, false, reduction = true } -- s57832
 L["o brado de batalha concede até mais %s de poder de ataque a você"] = { { Stats.AttackPower, }, } -- s58157
 L["chance de acertos críticos corpo a corpo e de longo alcance aumentarem em %s a sua aceleração por %s s"] = { { Stats.MeleeHasteRating, Stats.RangedHasteRating, Stats.SpellHasteRating, }, false, ignoreSum = true } -- s58901
@@ -1340,26 +1340,26 @@ L["encanta permanentemente uma arma corpo a corpo, aumentando em %s o acerto e o
 L["aumenta em %s o seu poder de ataque, mas reduz em %s% sua armadura. dura %s s"] = { { Stats.AttackPower, }, false, false, } -- s59620
 L["encanta permanentemente um anel para aumentar em %s o vigor. apenas os anéis do encantador podem ser encantados, tornando-se vinculados"] = { { Stats.Stamina, }, } -- s59636
 L["aumenta em %s o acerto crítico"] = { { Stats.MeleeCritRating, Stats.RangedCritRating, Stats.SpellCritRating, }, } -- s59676
-L["adiciona permanentemente %s de poder de ataque e %s de resiliência jxj a um item usado nos ombros.\nencantar o item o tornará vinculado"] = { { Stats.GenericAttackPower, }, { Stats.ResilienceRating, }, } -- s59771
-L["adiciona permanentemente %s de poder mágico e %s de resiliência jxj a um item usado nos ombros.\nencantar o item o tornará vinculado"] = { { Stats.SpellPower, }, { Stats.ResilienceRating, }, } -- s59773
+L["adiciona permanentemente %s de poder de ataque e %s de resiliência jxj a um item usado nos ombros.\r\n\r\nencantar o item o tornará vinculado"] = { { Stats.GenericAttackPower, }, { Stats.ResilienceRating, }, } -- s59771
+L["adiciona permanentemente %s de poder mágico e %s de resiliência jxj a um item usado nos ombros.\r\n\r\nencantar o item o tornará vinculado"] = { { Stats.SpellPower, }, { Stats.ResilienceRating, }, } -- s59773
 L["aumenta em %s o poder de ataque. dura %s minutos"] = { { Stats.AttackPower, }, false, } -- s59774
-L["adiciona permanentemente %s de poder de ataque e %s de resiliência jxj a um item usado na cabeça.\nencantar o item o tornará vinculado"] = { { Stats.GenericAttackPower, }, { Stats.ResilienceRating, }, } -- s59777
+L["adiciona permanentemente %s de poder de ataque e %s de resiliência jxj a um item usado na cabeça.\r\n\r\nencantar o item o tornará vinculado"] = { { Stats.GenericAttackPower, }, { Stats.ResilienceRating, }, } -- s59777
 L["adiciona permanentemente %s de poder mágico e %s de resiliência jxj a um item usado na cabeça. não acumula com outros encantamentos para equipamentos usados na cabeça"] = { { Stats.SpellPower, }, { Stats.ResilienceRating, }, } -- s59778
-L["adiciona permanentemente %s de poder mágico e %s de resiliência jxj a um item usado na cabeça.\nencantar o item o tornará vinculado"] = { { Stats.SpellPower, }, { Stats.ResilienceRating, }, } -- s59784
+L["adiciona permanentemente %s de poder mágico e %s de resiliência jxj a um item usado na cabeça.\r\n\r\nencantar o item o tornará vinculado"] = { { Stats.SpellPower, }, { Stats.ResilienceRating, }, } -- s59784
 L["seu acerto crítico é aumentado em %s"] = { { Stats.MeleeCritRating, Stats.RangedCritRating, Stats.SpellCritRating, }, } -- s59821
-L["adiciona permanentemente %s de intelecto e %s de espírito a um item usado nos ombros.\nencantar o item o tornará vinculado"] = { { Stats.Intellect, }, { Stats.Spirit, }, } -- s59928
-L["adiciona permanentemente %s de esquiva e %s de aparo a um item usado nos ombros.\nencantar o item o tornará vinculado"] = { { Stats.DodgeRating, }, { Stats.ParryRating, }, } -- s59932
-L["adiciona permanentemente %s de poder de ataque e %s de acerto crítico a uma armadura usada nos ombros.\nencantar o item o tornará vinculado"] = { { Stats.GenericAttackPower, }, { Stats.CritRating, }, } -- s59934
-L["adiciona permanentemente %s de esquiva e %s de vigor à sua armadura de ombro.\nencantar o item o tornará vinculado"] = { { Stats.DodgeRating, }, { Stats.Stamina, }, } -- s59941
-L["adiciona permanentemente %s de resistência ao gelo e %s de vigor a um item usado na cabeça.\nencantar o item o tornará vinculado"] = { { Stats.FrostResistance, }, { Stats.Stamina, }, } -- s59944
-L["adiciona permanentemente %s de resistência à natureza e %s de vigor a um item usado na cabeça.\nencantar o item o tornará vinculado"] = { { Stats.NatureResistance, }, { Stats.Stamina, }, } -- s59945
-L["adiciona permanentemente %s de resistência à sombra e %s de vigor a um item usado na cabeça.\nencantar o item o tornará vinculado"] = { { Stats.ShadowResistance, }, { Stats.Stamina, }, } -- s59946
-L["adiciona permanentemente %s de resistência ao arcano e %s de vigor a um item usado na cabeça.\nencantar o item o tornará vinculado"] = { { Stats.ArcaneResistance, }, { Stats.Stamina, }, } -- s59947
-L["adiciona permanentemente %s de resistência ao fogo e %s de vigor a um item usado na cabeça.\nencantar o item o tornará vinculado"] = { { Stats.FireResistance, }, { Stats.Stamina, }, } -- s59948
-L["adiciona permanentemente %s de poder de ataque e %s de acerto crítico a um item usado na cabeça.\nencantar o item o tornará vinculado"] = { { Stats.GenericAttackPower, }, { Stats.CritRating, }, } -- s59954
-L["adiciona permanentemente %s de vigor e %s de esquiva a um item usado na cabeça.\nencantar o item o tornará vinculado"] = { { Stats.Stamina, }, { Stats.DodgeRating, }, } -- s59955
-L["adiciona permanentemente %s de intelecto e %s de espírito a um item usado na cabeça.\nencantar o item o tornará vinculado"] = { { Stats.Intellect, }, { Stats.Spirit, }, } -- s59960
-L["adiciona permanentemente %s de intelecto e %s de acerto crítico a um item usado na cabeça.\nencantar o item o tornará vinculado"] = { { Stats.Intellect, }, { Stats.CritRating, }, } -- s59970
+L["adiciona permanentemente %s de intelecto e %s de espírito a um item usado nos ombros.\r\n\r\nencantar o item o tornará vinculado"] = { { Stats.Intellect, }, { Stats.Spirit, }, } -- s59928
+L["adiciona permanentemente %s de esquiva e %s de aparo a um item usado nos ombros.\r\n\r\nencantar o item o tornará vinculado"] = { { Stats.DodgeRating, }, { Stats.ParryRating, }, } -- s59932
+L["adiciona permanentemente %s de poder de ataque e %s de acerto crítico a uma armadura usada nos ombros.\r\n\r\nencantar o item o tornará vinculado"] = { { Stats.GenericAttackPower, }, { Stats.CritRating, }, } -- s59934
+L["adiciona permanentemente %s de esquiva e %s de vigor à sua armadura de ombro.\r\n\r\nencantar o item o tornará vinculado"] = { { Stats.DodgeRating, }, { Stats.Stamina, }, } -- s59941
+L["adiciona permanentemente %s de resistência ao gelo e %s de vigor a um item usado na cabeça.\r\n\r\nencantar o item o tornará vinculado"] = { { Stats.FrostResistance, }, { Stats.Stamina, }, } -- s59944
+L["adiciona permanentemente %s de resistência à natureza e %s de vigor a um item usado na cabeça.\r\n\r\nencantar o item o tornará vinculado"] = { { Stats.NatureResistance, }, { Stats.Stamina, }, } -- s59945
+L["adiciona permanentemente %s de resistência à sombra e %s de vigor a um item usado na cabeça.\r\n\r\nencantar o item o tornará vinculado"] = { { Stats.ShadowResistance, }, { Stats.Stamina, }, } -- s59946
+L["adiciona permanentemente %s de resistência ao arcano e %s de vigor a um item usado na cabeça.\r\n\r\nencantar o item o tornará vinculado"] = { { Stats.ArcaneResistance, }, { Stats.Stamina, }, } -- s59947
+L["adiciona permanentemente %s de resistência ao fogo e %s de vigor a um item usado na cabeça.\r\n\r\nencantar o item o tornará vinculado"] = { { Stats.FireResistance, }, { Stats.Stamina, }, } -- s59948
+L["adiciona permanentemente %s de poder de ataque e %s de acerto crítico a um item usado na cabeça.\r\n\r\nencantar o item o tornará vinculado"] = { { Stats.GenericAttackPower, }, { Stats.CritRating, }, } -- s59954
+L["adiciona permanentemente %s de vigor e %s de esquiva a um item usado na cabeça.\r\n\r\nencantar o item o tornará vinculado"] = { { Stats.Stamina, }, { Stats.DodgeRating, }, } -- s59955
+L["adiciona permanentemente %s de intelecto e %s de espírito a um item usado na cabeça.\r\n\r\nencantar o item o tornará vinculado"] = { { Stats.Intellect, }, { Stats.Spirit, }, } -- s59960
+L["adiciona permanentemente %s de intelecto e %s de acerto crítico a um item usado na cabeça.\r\n\r\nencantar o item o tornará vinculado"] = { { Stats.Intellect, }, { Stats.CritRating, }, } -- s59970
 L["aumenta em %s o seu espírito por %s min"] = { { Stats.Spirit, }, false, } -- s60060
 L["seus feitiços nocivos podem aumentar em %s o seu poder mágico por %s s"] = { { Stats.SpellDamage, }, false, ignoreSum = true } -- s60063
 L["reduz em %s% o intervalo entre os seus ataques por %s s"] = { { Stats.MeleeHaste, }, false, } -- s60075
@@ -1380,30 +1380,30 @@ L["increases the target's stamina by %s for %s horas"] = { { Stats.Stamina, }, f
 L["sempre que lançar um feitiço de dano ou de cura, você poderá ganhar %s de espírito por %s s"] = { { Stats.Spirit, }, false, ignoreSum = true } -- s60519
 L["cada vez que lançar um feitiço, você ganhará %s de espírito pelos %s s seguintes, acumulando até %s vezes"] = { { Stats.Spirit, }, false, false, ignoreSum = true } -- s60524
 L["aumenta em %s o seu espírito. o efeito dura %s s"] = { { Stats.Spirit, }, false, } -- s60525
-L["prende permanentemente armadura de couro álgido à calça para aumentar em %s o vigor e em %s a agilidade.\nencantar o item faz com que ele se torne vinculado"] = { { Stats.Stamina, }, { Stats.Agility, }, } -- s60581
-L["prende permanentemente uma armadura de escama de gelo à calça para aumentar em %s o poder de ataque e em %s o acerto crítico.\nencantar o item faz com que ele se torne vinculado"] = { { Stats.CritRating, }, { Stats.GenericAttackPower, }, } -- s60582
+L["prende permanentemente armadura de couro álgido à calça para aumentar em %s o vigor e em %s a agilidade.\r\n\r\nencantar o item faz com que ele se torne vinculado"] = { { Stats.Stamina, }, { Stats.Agility, }, } -- s60581
+L["prende permanentemente uma armadura de escama de gelo à calça para aumentar em %s o poder de ataque e em %s o acerto crítico.\r\n\r\nencantar o item faz com que ele se torne vinculado"] = { { Stats.CritRating, }, { Stats.GenericAttackPower, }, } -- s60582
 L["encanta permanentemente um par de botas, aumentando em %s o poder de ataque"] = { { Stats.GenericAttackPower, }, } -- s60606
 L["encanta permanentemente armas corpo a corpo para aumentar em %s o poder de ataque"] = { { Stats.GenericAttackPower, }, } -- s60621
-L["adiciona permanentemente %s de poder de ataque e %s de acerto crítico à sua armadura de ombro.\nsó pode ser aplicada à sua própria armadura e torna o item vinculado"] = { { Stats.GenericAttackPower, }, { Stats.CritRating, }, } -- s61117
-L["adiciona permanentemente %s de intelecto e %s de espírito à sua armadura de ombro.\nsó pode ser aplicada à sua própria armadura e torna o item vinculado"] = { { Stats.Intellect, }, { Stats.Spirit, }, } -- s61118
-L["adiciona permanentemente %s de esquiva e %s de aparo à sua armadura de ombro.\nsó pode ser aplicada à sua própria armadura e torna o item vinculado"] = { { Stats.DodgeRating, }, { Stats.ParryRating, }, } -- s61119
-L["adiciona permanentemente %s de poder mágico e %s de acerto crítico à sua armadura de ombro.\nsó pode ser aplicada à sua própria armadura e torna o item vinculado"] = { { Stats.SpellPower, }, { Stats.CritRating, }, } -- s61120
+L["adiciona permanentemente %s de poder de ataque e %s de acerto crítico à sua armadura de ombro.\r\n\r\nsó pode ser aplicada à sua própria armadura e torna o item vinculado"] = { { Stats.GenericAttackPower, }, { Stats.CritRating, }, } -- s61117
+L["adiciona permanentemente %s de intelecto e %s de espírito à sua armadura de ombro.\r\n\r\nsó pode ser aplicada à sua própria armadura e torna o item vinculado"] = { { Stats.Intellect, }, { Stats.Spirit, }, } -- s61118
+L["adiciona permanentemente %s de esquiva e %s de aparo à sua armadura de ombro.\r\n\r\nsó pode ser aplicada à sua própria armadura e torna o item vinculado"] = { { Stats.DodgeRating, }, { Stats.ParryRating, }, } -- s61119
+L["adiciona permanentemente %s de poder mágico e %s de acerto crítico à sua armadura de ombro.\r\n\r\nsó pode ser aplicada à sua própria armadura e torna o item vinculado"] = { { Stats.SpellPower, }, { Stats.CritRating, }, } -- s61120
 L["recupera %s pontos de mana por segundo. será cancelado caso você se mova"] = { { Stats.GenericManaRegen, }, } -- s61268
 L["diferentemente dos demais lançadores de feitiços, os feitiços do cavaleiro da morte causam o dobro de dano em acertos críticos e têm mais %s% de chance de acerto. todas as habilidades de cavaleiros da morte são feitiços, exceto por ataques diretos com arma"] = { { Stats.SpellHit, }, } -- s61455
 L["protegido contra o frio. resistência ao gelo aumentada em %s"] = { { Stats.FrostResistance, }, } -- s61477
 L["seus golpes corpo a corpo e de longo alcance podem aumentar em %s o acerto crítico por %s s"] = { { Stats.MeleeCritRating, Stats.RangedCritRating, Stats.SpellCritRating, }, false, ignoreSum = true } -- s61618
 L["sempre que você tiver um totem do ar, um totem da terra, um totem do fogo e um totem da água ativos ao mesmo tempo, você ganha %s pontos de mana a cada %s s, %s de acerto crítico mágico e %s de poder mágico"] = { { Stats.Spirit, }, false, { Stats.MeleeCritRating, Stats.RangedCritRating, Stats.SpellCritRating, }, { Stats.Intellect, Stats.HealingPower, }, } -- s61692
-L["reabastece %s,%s% do total de pontos de mana a cada segundo.\nmais %s% de mp%s"] = { false, false, { Stats.GenericManaRegen, }, false, } -- s61782
+L["reabastece %s,%s% do total de pontos de mana a cada segundo.\r\nmais %s% de mp%s"] = { false, false, { Stats.GenericManaRegen, }, false, } -- s61782
 L["chance de acertos corpo a corpo ou de longo alcance aumentarem em %s seu poder de ataque por %s s"] = { { Stats.GenericAttackPower, }, false, ignoreSum = true } -- s62115
 L["esquiva aumentada em %s"] = { { Stats.DodgeRating, }, } -- s62146
 L["o seu toque gélido também aumentará em %s a sua esquiva"] = { { Stats.DodgeRating, }, ignoreSum = true } -- s62147
-L["acopla permanentemente uma blindagem de titânico a um escudo, aumentando em %s o aparo e reduzindo em %s% a duração dos efeitos de desarmamento. não acumula com outros efeitos semelhantes.\nacoplar uma blindagem de titânico a um escudo faz com que este se torne vinculado"] = { { Stats.ParryRating, }, false, } -- s62201
+L["acopla permanentemente uma blindagem de titânico a um escudo, aumentando em %s o aparo e reduzindo em %s% a duração dos efeitos de desarmamento. não acumula com outros efeitos semelhantes.\r\n\r\nacoplar uma blindagem de titânico a um escudo faz com que este se torne vinculado"] = { { Stats.ParryRating, }, false, } -- s62201
 L["encanta permanentemente armas corpo a corpo para aumentar em %s o vigor"] = { { Stats.Stamina, }, } -- s62257
 L["restaura %s pontos de vida ao longo de %s s. se você passar ao menos %s segundos comendo, ficará bem alimentado e obterá %s de acerto e %s de vigor por %s hora"] = { false, false, false, { Stats.MeleeHitRating, Stats.RangedHitRating, Stats.SpellHitRating, }, { Stats.Stamina, }, false, ignoreSum = true } -- s62351
 L["o lançador fica derretido, aumentando em %s% a aceleração. além disso, chamas irrompem do lançador a cada segundo, causando %s de dano de fogo aos inimigos dentro de um raio de %s m"] = { { Stats.MeleeHaste, }, false, false, } -- s62373
 L["aumenta em %s a sua resistência a todas as escolas de magia por %s hora. conta como elixir de batalha e guardião. este efeito continua após a morte"] = { { Stats.FireResistance, Stats.NatureResistance, Stats.FrostResistance, Stats.ShadowResistance, Stats.ArcaneResistance, }, false, } -- s62380
-L["adiciona permanentemente %s de vigor e %s de resiliência jxj a um item usado nos ombros.\nencantar o item o tornará vinculado"] = { { Stats.Stamina, }, { Stats.ResilienceRating, }, } -- s62384
-L["prende permanentemente armadura terrena à calça para aumentar em %s a resiliência jxj e em %s o vigor.\nencantar o item faz com que ele se torne vinculado"] = { { Stats.ResilienceRating, }, { Stats.Stamina, }, } -- s62447
+L["adiciona permanentemente %s de vigor e %s de resiliência jxj a um item usado nos ombros.\r\n\r\nencantar o item o tornará vinculado"] = { { Stats.Stamina, }, { Stats.ResilienceRating, }, } -- s62384
+L["prende permanentemente armadura terrena à calça para aumentar em %s a resiliência jxj e em %s o vigor.\r\n\r\nencantar o item faz com que ele se torne vinculado"] = { { Stats.ResilienceRating, }, { Stats.Stamina, }, } -- s62447
 L["aumenta o dano em %s% e a velocidade de ataque em %s%"] = { false, { Stats.MeleeHaste, }, } -- s62555
 L["impede a regeneração de mana de quase todos os meios naturais. aspecto da víbora, julgamentos do sábio, fúria xamanística e harmonização espiritual permanecem pelo menos parcialmente efetivos. também reduz a velocidade de ataque corpo a corpo em %s%"] = { { Stats.MeleeHaste, }, reduction = true } -- s62692
 L["aquece criaturas amigáveis próximas, evitando os efeitos de congelamento e frio penetrante, e aumentando em %s o espírito. além disso, seus feitiços e ataques de longo alcance têm chance de chamuscar inimigos. fogo tórrido pode ser extinguido por gelo cadente ou frio penetrante"] = { { Stats.Spirit, }, } -- s62821
@@ -1479,7 +1479,7 @@ L["aumenta em %s a esquiva e atrai quem estiver usando colônia. dura %s hora"] 
 L["aumenta em %s o poder de ataque e atrai quem estiver usando perfume. dura %s hora"] = { { Stats.GenericAttackPower, }, false, } -- s70242
 L["aumenta em %s a esquiva e atrai quem estiver usando perfume. dura %s hora"] = { { Stats.DodgeRating, }, false, } -- s70243
 L["aumenta em %s o poder mágico e atrai quem estiver usando perfume. dura %s hora"] = { { Stats.SpellPower, }, false, } -- s70244
-L["dano causado aumentado em %s%.\nfeitiços não têm custo e são instantâneos.\nvelocidade de ataque corpo a corpo e de longo alcance aumentada em %s%"] = { false, { Stats.MeleeHaste, }, } -- s70304
+L["dano causado aumentado em %s%.\r\nfeitiços não têm custo e são instantâneos.\r\nvelocidade de ataque corpo a corpo e de longo alcance aumentada em %s%"] = { false, { Stats.MeleeHaste, }, } -- s70304
 L["aumenta em %s% o dano de membros do grupo próximos e em %s% a velocidade de ataque por %s s"] = { false, { Stats.MeleeHaste, }, false, } -- s70750
 L["aceleração de feitiço aumentada em %s%"] = { { Stats.SpellHaste, }, } -- s70753
 L["chance de esquiva aumentada em mais %s%"] = { { Stats.Dodge, }, } -- s70760
@@ -1541,10 +1541,10 @@ L["reduz em %s% a velocidade de ataque de um inimigo por %s s"] = { { Stats.Mele
 L["o general umbriss entra em frenesi, aumentando em %s% a velocidade de ataque e em %s% o dano físico causado"] = { { Stats.MeleeHaste, }, false, } -- s74853
 L["amaldiçoa o alvo por %s s, reduzindo em %s as resistências ao arcano e à sombra e aumentando em %s% o dano arcano e de sombra recebido"] = { false, { Stats.ShadowResistance, Stats.ArcaneResistance, }, false, reduction = true } -- s75015
 L["amaldiçoa o alvo por %s s, reduzindo em %s as resistências de fogo, gelo e natureza. aumenta em %s% o dano recebido de fogo, gelo e natureza. cada alvo sofre o efeito de apenas uma maldição por bruxo"] = { false, { Stats.FireResistance, Stats.NatureResistance, Stats.FrostResistance, }, false, reduction = true } -- s75021
-L["borda permanentemente uma calça usando magilinha, aumentando em %s o intelecto e em %s o espírito.\nencantar o item o tornará vinculado"] = { { Stats.Intellect, }, { Stats.Spirit, }, } -- s75149
-L["borda permanentemente uma calça usando magilinha, aumentando em %s o intelecto e em %s o vigor.\nencantar o item o tornará vinculado"] = { { Stats.Intellect, }, { Stats.Stamina, }, } -- s75151
-L["|cff%sf%sffesta receita melhora automaticamente quando você atinge %s de perícia em alfaiataria.|r\nborda permanentemente suas calças com magilinha do mestre, aumentando em %s seu intelecto e em %s seu vigor.\nsomente as calças do próprio alfaiate podem ser bordadas, e, com isso, o item se torna vinculado"] = { false, false, false, { Stats.Intellect, }, { Stats.Stamina, }, } -- s75154
-L["|cff%sf%sffesta receita melhora automaticamente quando você atinge %s de perícia em alfaiataria.|r\nborda permanentemente suas calças com magilinha santificada, aumentando em %s seu intelecto e em %s seu espírito.\nsomente as calças do próprio alfaiate podem ser bordadas, e, com isso, o item se torna vinculado"] = { false, false, false, { Stats.Intellect, }, { Stats.Spirit, }, } -- s75155
+L["borda permanentemente uma calça usando magilinha, aumentando em %s o intelecto e em %s o espírito.\r\n\r\nencantar o item o tornará vinculado"] = { { Stats.Intellect, }, { Stats.Spirit, }, } -- s75149
+L["borda permanentemente uma calça usando magilinha, aumentando em %s o intelecto e em %s o vigor.\r\n\r\nencantar o item o tornará vinculado"] = { { Stats.Intellect, }, { Stats.Stamina, }, } -- s75151
+L["|cff%sf%sffesta receita melhora automaticamente quando você atinge %s de perícia em alfaiataria.|r\r\n\r\nborda permanentemente suas calças com magilinha do mestre, aumentando em %s seu intelecto e em %s seu vigor.\r\n\r\nsomente as calças do próprio alfaiate podem ser bordadas, e, com isso, o item se torna vinculado"] = { false, false, false, { Stats.Intellect, }, { Stats.Stamina, }, } -- s75154
+L["|cff%sf%sffesta receita melhora automaticamente quando você atinge %s de perícia em alfaiataria.|r\r\n\r\nborda permanentemente suas calças com magilinha santificada, aumentando em %s seu intelecto e em %s seu espírito.\r\n\r\nsomente as calças do próprio alfaiate podem ser bordadas, e, com isso, o item se torna vinculado"] = { false, false, false, { Stats.Intellect, }, { Stats.Spirit, }, } -- s75155
 L["quando você causa dano, pode receber %s de poder de ataque por %s s"] = { { Stats.GenericAttackPower, }, false, ignoreSum = true } -- s75455
 L["seus feitiços de dano podem conceder %s de poder mágico por %s s"] = { { Stats.SpellDamage, }, false, ignoreSum = true } -- s75465
 L["poder mágico aumentado em %s por %s s"] = { { Stats.SpellPower, }, false, } -- s75466
@@ -1562,10 +1562,10 @@ L["envenena o alvo, reduzindo em %s% a chance de esquiva ou de aparo. aumenta em
 L["um ataque instantâneo que causa %s% do dano da arma. aumenta em %s% o dano de ataque, mas reduz em %s% a chance de acertar. dura %s s"] = { false, false, { Stats.MeleeHit, Stats.RangedHit, }, false, reduction = true } -- s77558
 L["aumenta em %s a sua aptidão por %s hora. elixir de batalha"] = { { Stats.ExpertiseRating, }, false, } -- s79474
 L["morde um inimigo, causando dano físico e cobrindo-o de âmbar-gris precioso, reduzindo a chance de acerto em %s%"] = { { Stats.MeleeHit, Stats.RangedHit, }, reduction = true } -- s77962
-L["prende permanentemente uma camada de armadura calcinada na calça para aumentar em %s o poder de ataque e em %s o acerto crítico.\nsó pode ser fixada em uma armadura de perna do seu inventário"] = { { Stats.CritRating, }, { Stats.GenericAttackPower, }, } -- s78169
-L["prende permanentemente uma camada de armadura crepuscular na calça para aumentar em %s o vigor e em %s a agilidade.\nsó pode ser fixada em uma armadura de perna do seu inventário"] = { { Stats.Stamina, }, { Stats.Agility, }, } -- s78170
-L["prende permanentemente uma camada de armadura de escama de dragão à calça para aumentar em %s o poder de ataque e em %s o acerto crítico.\nsó pode ser fixada em uma armadura de perna do seu inventário"] = { { Stats.CritRating, }, { Stats.GenericAttackPower, }, } -- s78171
-L["prende permanentemente uma camada de armadura chamuscama à calça para aumentar em %s o vigor e em %s a agilidade.\nsó pode ser fixada em uma armadura de perna do seu inventário"] = { { Stats.Stamina, }, { Stats.Agility, }, } -- s78172
+L["prende permanentemente uma camada de armadura calcinada na calça para aumentar em %s o poder de ataque e em %s o acerto crítico.\r\n\r\nsó pode ser fixada em uma armadura de perna do seu inventário"] = { { Stats.CritRating, }, { Stats.GenericAttackPower, }, } -- s78169
+L["prende permanentemente uma camada de armadura crepuscular na calça para aumentar em %s o vigor e em %s a agilidade.\r\n\r\nsó pode ser fixada em uma armadura de perna do seu inventário"] = { { Stats.Stamina, }, { Stats.Agility, }, } -- s78170
+L["prende permanentemente uma camada de armadura de escama de dragão à calça para aumentar em %s o poder de ataque e em %s o acerto crítico.\r\n\r\nsó pode ser fixada em uma armadura de perna do seu inventário"] = { { Stats.CritRating, }, { Stats.GenericAttackPower, }, } -- s78171
+L["prende permanentemente uma camada de armadura chamuscama à calça para aumentar em %s o vigor e em %s a agilidade.\r\n\r\nsó pode ser fixada em uma armadura de perna do seu inventário"] = { { Stats.Stamina, }, { Stats.Agility, }, } -- s78172
 L["o conhecimento de halion sobre a movimentação entre fases permite a ele desferir golpes inesperados, aumentando em %s% a chance de acerto dele e reduzindo em %s% a chance de esquiva do inimigo contra seus ataques"] = { { Stats.MeleeHit, Stats.RangedHit, }, false, } -- s78243
 L["imbui em fogo a arma do xamã, aumentando em %s o dano mágico total. cada acerto causa de %s a %s de dano de fogo a mais. dura %s min"] = { { Stats.SpellDamage, }, false, false, false, } -- s78273
 L["nefarian e onyxia atacam %s% mais rapidamente quando estão juntos"] = { { Stats.MeleeHaste, }, } -- s78619
@@ -1598,7 +1598,7 @@ L["aumenta em %s a agilidade e o acerto crítico por %s hora. elixir de batalha"
 L["causa dano de sombra e reduz em %s a armadura por %s s"] = { { Stats.Armor, }, false, reduction = true } -- s80966
 L["um poderoso açoite da cauda joga poeira e pedras no ar, causando dano de natureza progressivamente maior e reduzindo em %s% a chance de acerto do alvo"] = { { Stats.MeleeHit, Stats.RangedHit, }, reduction = true } -- s81673
 L["a solução de curtimento causa dano de natureza e faz com que você sufoque, reduzindo em %s% a sua chance de acerto por %s s"] = { { Stats.MeleeHit, Stats.RangedHit, }, false, reduction = true } -- s81702
-L["remove o mecanismo de segurança de um arco ou arma de fogo, aumentando em %s a aceleração de longa distância.\nusar este kit torna o arco ou arma de fogo vinculado"] = { { Stats.RangedHasteRating, }, } -- s81934
+L["remove o mecanismo de segurança de um arco ou arma de fogo, aumentando em %s a aceleração de longa distância.\r\n\r\nusar este kit torna o arco ou arma de fogo vinculado"] = { { Stats.RangedHasteRating, }, } -- s81934
 L["velocidade de ataque aumentada em %s%"] = { { Stats.MeleeHaste, }, } -- s82032
 L["aumenta em %s o total de pontos de vida de todos os integrantes do grupo em um raio de %s m. dura %s min"] = { { Stats.Health, }, false, false, } -- s82061
 L["aumenta em %s a sua armadura por %s s"] = { { Stats.Armor, }, false, } -- s82176
@@ -1615,27 +1615,27 @@ L["causa dano de natureza a um inimigo a cada %s s e reduz em %s% a chance de ac
 L["envolve o alvo com um ciclone, reduzindo em %s% a velocidade de lançamento dele"] = { { Stats.SpellHaste, }, reduction = true } -- s84092
 L["aumenta em %s a força, a agilidade, o intelecto e o vigor por %s hora"] = { { Stats.AllStats, }, false, } -- s84354
 L["aumenta em %s o acerto crítico por %s min"] = { { Stats.MeleeCritRating, Stats.RangedCritRating, Stats.SpellCritRating, }, false, } -- s84378
-L["aumenta em %s% sua chance de bloqueio e em %s% a sua chance de esquiva.\nreduz em %s min a recarga da sua muralha de escudos"] = { { Stats.BlockChance, }, { Stats.Dodge, }, false, } -- s84608
-L["aumenta em %s% sua chance de acerto com fogo lunar e ira.\nreduz em %s% o retardo proveniente de ataques que causem dano enquanto estiver lançando toque de cura, recrescimento, tranquilidade, renascimento, ciclone, raízes enredantes e nutrir"] = { { Stats.SpellHit, }, false, } -- s84736
-L["|cff%sf%sffesta receita se aprimora automaticamente quando você atinge %s de perícia de couraria.|r\nencanta permanentemente suas braçadeiras para aumentar em %s a sua força.\nforro de pele requer %s de perícia de couraria para permanecer ativo e torna as braçadeiras vinculadas"] = { false, false, false, { Stats.Strength, }, false, } -- s85009
+L["aumenta em %s% sua chance de bloqueio e em %s% a sua chance de esquiva.\r\n\r\nreduz em %s min a recarga da sua muralha de escudos"] = { { Stats.BlockChance, }, { Stats.Dodge, }, false, } -- s84608
+L["aumenta em %s% sua chance de acerto com fogo lunar e ira.\r\n\r\nreduz em %s% o retardo proveniente de ataques que causem dano enquanto estiver lançando toque de cura, recrescimento, tranquilidade, renascimento, ciclone, raízes enredantes e nutrir"] = { { Stats.SpellHit, }, false, } -- s84736
+L["|cff%sf%sffesta receita se aprimora automaticamente quando você atinge %s de perícia de couraria.|r\r\n\r\nencanta permanentemente suas braçadeiras para aumentar em %s a sua força.\r\n\r\nforro de pele requer %s de perícia de couraria para permanecer ativo e torna as braçadeiras vinculadas"] = { false, false, false, { Stats.Strength, }, false, } -- s85009
 L["sempre que você causar dano, tem chance de ganhar %s de agilidade por %s s"] = { { Stats.Agility, }, false, ignoreSum = true } -- s85011
 L["quando você causar dano, tem chance de ganhar %s de poder de ataque por %s s"] = { { Stats.GenericAttackPower, }, false, ignoreSum = true } -- s85013
 L["quando você causa dano ou cura um alvo, você pode ganhar %s de poder mágico por %s s"] = { { Stats.SpellDamage, }, false, ignoreSum = true } -- s85024
 L["sempre que você causar dano, tem chance de ganhar %s de força por %s s"] = { { Stats.Strength, }, false, ignoreSum = true } -- s85034
-L["consegue a bênção da terra.\ndano causado aumentado em %s%.\nintervalo entre ataques reduzido em %s%"] = { false, { Stats.MeleeHaste, }, } -- s85712
+L["consegue a bênção da terra.\r\ndano causado aumentado em %s%.\r\nintervalo entre ataques reduzido em %s%"] = { false, { Stats.MeleeHaste, }, } -- s85712
 L["dispara teia nos olhos de um inimigo, reduzindo em %s% as chances de acerto dele"] = { { Stats.MeleeHit, Stats.RangedHit, }, reduction = true } -- s85826
-L["adiciona permanentemente %s de agilidade e %s de maestria à sua armadura de ombro.\nsó pode ser aplicada à sua própria armadura e torna o item vinculado"] = { { Stats.Agility, }, { Stats.MasteryRating, }, } -- s86375
-L["adiciona permanentemente %s de força e %s de acerto crítico à sua armadura de ombro.\nsó pode ser aplicada à sua própria armadura e torna o item vinculado"] = { { Stats.Strength, }, { Stats.CritRating, }, } -- s86401
-L["adiciona permanentemente %s de vigor e %s de esquiva à sua armadura de ombro.\nsó pode ser aplicada à sua própria armadura e torna o item vinculado"] = { { Stats.Stamina, }, { Stats.DodgeRating, }, } -- s86402
-L["adiciona permanentemente %s de intelecto e %s de aceleração à sua armadura de ombro.\nsó pode ser aplicada à sua própria armadura e torna o item vinculado"] = { { Stats.Intellect, }, { Stats.HasteRating, }, } -- s86403
-L["adiciona permanentemente %s de vigor e %s de esquiva a um item usado no ombro.\nencantar o item o tornará vinculado"] = { { Stats.Stamina, }, { Stats.DodgeRating, }, } -- s86847
+L["adiciona permanentemente %s de agilidade e %s de maestria à sua armadura de ombro.\r\n\r\nsó pode ser aplicada à sua própria armadura e torna o item vinculado"] = { { Stats.Agility, }, { Stats.MasteryRating, }, } -- s86375
+L["adiciona permanentemente %s de força e %s de acerto crítico à sua armadura de ombro.\r\n\r\nsó pode ser aplicada à sua própria armadura e torna o item vinculado"] = { { Stats.Strength, }, { Stats.CritRating, }, } -- s86401
+L["adiciona permanentemente %s de vigor e %s de esquiva à sua armadura de ombro.\r\n\r\nsó pode ser aplicada à sua própria armadura e torna o item vinculado"] = { { Stats.Stamina, }, { Stats.DodgeRating, }, } -- s86402
+L["adiciona permanentemente %s de intelecto e %s de aceleração à sua armadura de ombro.\r\n\r\nsó pode ser aplicada à sua própria armadura e torna o item vinculado"] = { { Stats.Intellect, }, { Stats.HasteRating, }, } -- s86403
+L["adiciona permanentemente %s de vigor e %s de esquiva a um item usado no ombro.\r\n\r\nencantar o item o tornará vinculado"] = { { Stats.Stamina, }, { Stats.DodgeRating, }, } -- s86847
 L["esfaqueando selvagemente. chance de acerto reduzida em %s%"] = { { Stats.MeleeHit, Stats.RangedHit, }, reduction = true } -- s86726
-L["adiciona permanentemente %s de intelecto e %s de aceleração a um item usado nos ombros.\nencantar o item o tornará vinculado"] = { { Stats.Intellect, }, { Stats.HasteRating, }, } -- s86898
-L["adiciona permanentemente %s de força e %s de acerto crítico a um item usado nos ombros.\nencantar o item o tornará vinculado"] = { { Stats.Strength, }, { Stats.CritRating, }, } -- s86900
-L["adiciona permanentemente %s de agilidade e %s de maestria a um item usado nos ombros.\nencantar o item o tornará vinculado"] = { { Stats.Agility, }, { Stats.MasteryRating, }, } -- s86906
-L["adiciona permanentemente %s de força e %s de maestria a um item usado na cabeça.\nencantar o item o tornará vinculado"] = { { Stats.Strength, }, { Stats.MasteryRating, }, } -- s86933
-L["adiciona permanentemente %s de agilidade e %s de aceleração a um item usado na cabeça.\nencantar o item o tornará vinculado"] = { { Stats.Agility, }, { Stats.HasteRating, }, } -- s86934
-L["chama o poder de lordaeron.\nreduz em %s% o intervalo entre ataques corpo a corpo.\naumenta em %s% o dano"] = { { Stats.MeleeHaste, }, false, } -- s87104
+L["adiciona permanentemente %s de intelecto e %s de aceleração a um item usado nos ombros.\r\n\r\nencantar o item o tornará vinculado"] = { { Stats.Intellect, }, { Stats.HasteRating, }, } -- s86898
+L["adiciona permanentemente %s de força e %s de acerto crítico a um item usado nos ombros.\r\n\r\nencantar o item o tornará vinculado"] = { { Stats.Strength, }, { Stats.CritRating, }, } -- s86900
+L["adiciona permanentemente %s de agilidade e %s de maestria a um item usado nos ombros.\r\n\r\nencantar o item o tornará vinculado"] = { { Stats.Agility, }, { Stats.MasteryRating, }, } -- s86906
+L["adiciona permanentemente %s de força e %s de maestria a um item usado na cabeça.\r\n\r\nencantar o item o tornará vinculado"] = { { Stats.Strength, }, { Stats.MasteryRating, }, } -- s86933
+L["adiciona permanentemente %s de agilidade e %s de aceleração a um item usado na cabeça.\r\n\r\nencantar o item o tornará vinculado"] = { { Stats.Agility, }, { Stats.HasteRating, }, } -- s86934
+L["chama o poder de lordaeron.\r\nreduz em %s% o intervalo entre ataques corpo a corpo.\r\naumenta em %s% o dano"] = { { Stats.MeleeHaste, }, false, } -- s87104
 L["recupera %s pontos de vida e %s pontos de mana ao longo de %s s. é preciso ficar sentado enquanto come. se você gastar pelo menos %s segundos comendo, ficará bem alimentado e ganhará %s de força e %s de vigor por %s hora"] = { false, false, false, false, { Stats.Strength, }, { Stats.Stamina, }, false, ignoreSum = true } -- s87544
 L["força e vigor aumentados em %s. dura %s hora"] = { { Stats.Strength, Stats.Stamina, }, false, } -- s87545
 L["agilidade e vigor aumentados em %s. dura %s hora"] = { { Stats.Agility, Stats.Stamina, }, false, } -- s87546
@@ -1661,12 +1661,12 @@ L["recupera %s pontos de vida e %s pontos de mana ao longo de %s s. é preciso f
 L["aumenta em %s a força do seu ajudante. dura %s hora"] = { { Stats.Strength, }, false, } -- s87697
 L["aumenta em %s o vigor do seu ajudante. dura %s hora"] = { { Stats.Stamina, }, false, } -- s87699
 L["aumenta em %s% a velocidade de lançamento por %s s"] = { { Stats.SpellHaste, }, false, } -- s87780
-L["spell power increased by %s%.\nspell haste increased by %s%"] = { false, { Stats.SpellHaste, }, } -- s88324
-L["attack speed increased by %s%.\nranged attack power increased by %s%.\narmor increased by %s"] = { false, false, { Stats.Armor, }, } -- s88325
+L["spell power increased by %s%.\r\nspell haste increased by %s%"] = { false, { Stats.SpellHaste, }, } -- s88324
+L["attack speed increased by %s%.\r\nranged attack power increased by %s%.\r\narmor increased by %s"] = { false, false, { Stats.Armor, }, } -- s88325
 L["ao causar dano com feitiços, você tem chance de causar mais %s de dano de fogo ao alvo e ganhar %s de intelecto por %s s"] = { false, { Stats.Intellect, }, false, ignoreSum = true } -- s89088
 L["causa %s de dano de fogo a um inimigo e aumenta em %s seu intelecto por %s s"] = { false, { Stats.Intellect, }, false, } -- s89091
 L["seus feitiços de cura têm chance de aumentar em %s o seu espírito por %s s. este efeito acumula até %s vezes"] = { { Stats.Spirit, }, false, false, ignoreSum = true } -- s89183
-L["aceleração de feitiço aumentada em %s%.\nperiodicamente, o lançador disparará bolas de fogo contra alvos em um raio de %s m"] = { { Stats.SpellHaste, }, false, } -- s89542
+L["aceleração de feitiço aumentada em %s%.\r\nperiodicamente, o lançador disparará bolas de fogo contra alvos em um raio de %s m"] = { { Stats.SpellHaste, }, false, } -- s89542
 L["as técnicas motivacionais ogras diminuem em %s% o intervalo entre os ataques corpo a corpo. dura até o capanga ogro parar de gritar"] = { { Stats.MeleeHaste, }, } -- s89652
 L["aumenta em %s o espírito enquanto estiver sob um efeito de chacra"] = { { Stats.Spirit, }, } -- s89912
 L["aumenta em %s o espírito após lançar penitência. dura %s s"] = { { Stats.Spirit, }, false, } -- s89913
@@ -1705,7 +1705,7 @@ L["seus ataques críticos de corpo a corpo têm chance de aumentar em %s a sua a
 L["seus ataques corpo a corpo têm chance de conceder %s de força por %s s"] = { { Stats.Strength, }, false, ignoreSum = true } -- s91361
 L["seus ataques críticos em combate corpo a corpo têm chance de conceder %s de força por %s s"] = { { Stats.Strength, }, false, ignoreSum = true } -- s91366
 L["aumenta em %s a maestria por %s s"] = { { Stats.MasteryRating, }, false, } -- s91374
-L["velocidade de ataque aumentada em %s%.\ndano aumentado em %s%"] = { { Stats.MeleeHaste, }, false, } -- s91415
+L["velocidade de ataque aumentada em %s%.\r\ndano aumentado em %s%"] = { { Stats.MeleeHaste, }, false, } -- s91415
 L["seus ataques corpo a corpo têm chance de conceder %s de aceleração por %s s"] = { { Stats.MeleeHasteRating, Stats.RangedHasteRating, Stats.SpellHasteRating, }, false, ignoreSum = true } -- s91822
 L["consome %s pilhas de fúria bruta para forjar-se à semelhança de um draconiano asa negra, concedendo %s de força por %s s"] = { false, { Stats.Strength, }, false, } -- s91836
 L["seus ataques corpo a corpo e de longo alcance têm chance de aumentar em %s sua aceleração por %s s"] = { { Stats.MeleeHasteRating, Stats.RangedHasteRating, Stats.SpellHasteRating, }, false, ignoreSum = true } -- s92044
@@ -1747,12 +1747,12 @@ L["aumenta em %s a maestria e em %s o vigor por %s hora. conta como um elixir da
 L["aumenta em %s sua agilidade por %s s"] = { { Stats.Agility, }, false, } -- s96228
 L["aumenta em %s sua força por %s s"] = { { Stats.Strength, }, false, } -- s96229
 L["aumenta em %s seu intelecto por %s s"] = { { Stats.Intellect, }, false, } -- s96230
-L["adiciona permanentemente %s de intelecto e %s de resiliência jxj a um item usado na cabeça.\nencantar o item o tornará vinculado"] = { { Stats.Intellect, }, { Stats.ResilienceRating, }, } -- s96245
-L["adiciona permanentemente %s de agilidade e %s de resiliência jxj a um item usado na cabeça.\nencantar o item o tornará vinculado"] = { { Stats.Agility, }, { Stats.ResilienceRating, }, } -- s96246
-L["adiciona permanentemente %s de força e %s de resiliência jxj a um item usado na cabeça.\nencantar o item o tornará vinculado"] = { { Stats.Strength, }, { Stats.ResilienceRating, }, } -- s96247
-L["adiciona permanentemente %s de intelecto e %s de resiliência jxj a um item usado nos ombros.\nencantar o item o tornará vinculado"] = { { Stats.Intellect, }, { Stats.ResilienceRating, }, } -- s96249
-L["adiciona permanentemente %s de força e %s de resiliência jxj a um item usado nos ombros.\nencantar o item o tornará vinculado"] = { { Stats.Strength, }, { Stats.ResilienceRating, }, } -- s96250
-L["adiciona permanentemente %s de agilidade e %s de resiliência jxj a um item usado nos ombros.\nencantar o item o tornará vinculado"] = { { Stats.Agility, }, { Stats.ResilienceRating, }, } -- s96251
+L["adiciona permanentemente %s de intelecto e %s de resiliência jxj a um item usado na cabeça.\r\n\r\nencantar o item o tornará vinculado"] = { { Stats.Intellect, }, { Stats.ResilienceRating, }, } -- s96245
+L["adiciona permanentemente %s de agilidade e %s de resiliência jxj a um item usado na cabeça.\r\n\r\nencantar o item o tornará vinculado"] = { { Stats.Agility, }, { Stats.ResilienceRating, }, } -- s96246
+L["adiciona permanentemente %s de força e %s de resiliência jxj a um item usado na cabeça.\r\n\r\nencantar o item o tornará vinculado"] = { { Stats.Strength, }, { Stats.ResilienceRating, }, } -- s96247
+L["adiciona permanentemente %s de intelecto e %s de resiliência jxj a um item usado nos ombros.\r\n\r\nencantar o item o tornará vinculado"] = { { Stats.Intellect, }, { Stats.ResilienceRating, }, } -- s96249
+L["adiciona permanentemente %s de força e %s de resiliência jxj a um item usado nos ombros.\r\n\r\nencantar o item o tornará vinculado"] = { { Stats.Strength, }, { Stats.ResilienceRating, }, } -- s96250
+L["adiciona permanentemente %s de agilidade e %s de resiliência jxj a um item usado nos ombros.\r\n\r\nencantar o item o tornará vinculado"] = { { Stats.Agility, }, { Stats.ResilienceRating, }, } -- s96251
 L["o sangrelorde mandokir entra em frenesi, aumentando em %s% a própria velocidade de ataque e reduzindo a recarga de decapitar"] = { { Stats.MeleeHaste, }, } -- s96800
 L["concede %s de maestria por %s s"] = { { Stats.MasteryRating, }, false, } -- s96962
 L["concede %s de maestria por %s s toda vez que você causar dano mágico periódico, acumulando até %s vezes"] = { { Stats.MasteryRating, }, false, false, ignoreSum = true } -- s96963
@@ -1762,8 +1762,8 @@ L["concede %s de acerto crítico por %s s cada vez que você causar um acerto cr
 L["aumenta em %s% a aceleração de ataques corpo a corpo e em %s% o dano físico causado"] = { { Stats.MeleeHaste, }, false, } -- s97303
 L["cria um campo de magia morta. unidades dentro desse campo recebem %s% menos de dano mágico, mas têm a velocidade de lançamento de feitiços reduzida em %s%"] = { false, { Stats.SpellHaste, }, reduction = true } -- s97600
 L["joga uma bomba de fumaça no chão, causando %s de dano e reduzindo em %s% a chance de acerto dos jogadores dentro da área afetada"] = { false, { Stats.MeleeHit, Stats.RangedHit, Stats.SpellHit, }, reduction = true } -- s97644
-L["aumenta em %s% a velocidade de ataque.\n|cffffffffcombos:|r\n|cff%sff%scombos de fogo causam dano mágico e reduzem o poder de ataque.|r"] = { { Stats.MeleeHaste, }, false, false, } -- s97874
-L["velocidade de ataque aumentada em %s%.\ndano causado aumentado em %s%"] = { { Stats.MeleeHaste, }, false, } -- s98239
+L["aumenta em %s% a velocidade de ataque.\r\n\r\n|cffffffffcombos:|r\r\n|cff%sff%scombos de fogo causam dano mágico e reduzem o poder de ataque.|r"] = { { Stats.MeleeHaste, }, false, false, } -- s97874
+L["velocidade de ataque aumentada em %s%.\r\ndano causado aumentado em %s%"] = { { Stats.MeleeHaste, }, false, } -- s98239
 L["aumenta em %s% a chance de esquiva por %s s após o final do efeito pele de árvore"] = { { Stats.Dodge, }, false, } -- s99011
 L["aumenta em %s% a sua chance de aparar por %s s após o fim da sua proteção divina"] = { { Stats.Parry, }, false, } -- s99090
 L["aceleração aumentada em %s% por %s s"] = { { Stats.MeleeHasteRating, Stats.RangedHasteRating, Stats.SpellHasteRating, }, false, } -- s99186
@@ -1778,7 +1778,7 @@ L["aumenta em %s% a velocidade de ataque e em %s% o dano físico causado"] = { {
 L["um pequeno poço lunar aparece, abençoando você com %s de maestria por %s s"] = { { Stats.MasteryRating, }, false, } -- s100612
 L["aumenta em %s% a chance de aparar após o fim da arma rúnica dançante por %s s"] = { { Stats.Parry, }, false, } -- s101162
 L["seus feitiços de cura direta e periódica podem aumentar em %s a sua aceleração por %s segundos"] = { { Stats.MeleeHasteRating, Stats.RangedHasteRating, Stats.SpellHasteRating, }, false, ignoreSum = true } -- s101290
-L["prende permanentemente uma camada de armadura de couro dracônico à calça para aumentar em %s o vigor e em %s a esquiva.\nsó pode ser fixada em uma armadura de perna do seu inventário"] = { { Stats.Stamina, }, { Stats.DodgeRating, }, } -- s101598
+L["prende permanentemente uma camada de armadura de couro dracônico à calça para aumentar em %s o vigor e em %s a esquiva.\r\n\r\nsó pode ser fixada em uma armadura de perna do seu inventário"] = { { Stats.Stamina, }, { Stats.DodgeRating, }, } -- s101598
 L["a luz negra da lua reduz em %s% a velocidade de lançamento de feitiços"] = { { Stats.SpellHaste, }, reduction = true } -- s102414
 L["quando causa dano ou cura um alvo, você tem chance de ganhar %s de poder mágico por %s s"] = { { Stats.SpellDamage, }, false, ignoreSum = true } -- s102436
 L["toda vez que você lançar impacto arcano, o dano dos feitiços arcanos é aumentando em %s% e o tempo de lançamento é reduzido em %s%. o efeito acumula até %s vezes. dura %s s"] = { false, { Stats.SpellHaste, }, false, false, } -- s102442
@@ -1817,12 +1817,17 @@ L["encanta permanentemente um manto para aumentar em %s o acerto"] = { { Stats.H
 L["encanta permanentemente um par de botas para aumentar um pouco a velocidade de movimento e a agilidade em %s"] = { { Stats.Agility, }, } -- s104409
 L["encanta permanentemente um par de botas para aumentar um pouco a velocidade de movimento e a maestria em %s"] = { { Stats.MasteryRating, }, } -- s104414
 L["aceleração aumentada em %s"] = { { Stats.MeleeHasteRating, Stats.RangedHasteRating, Stats.SpellHasteRating, }, } -- s104423
+L["encanta permanentemente uma arma corpo a corpo para aumentar de forma esporádica sua força ou agilidade em %s ao causar dano corpo a corpo. seu maior atributo é sempre escolhido"] = { { Stats.HighestStrengthAgility, }, } -- s104434
 L["maestria aumentada em %s"] = { { Stats.MasteryRating, }, } -- s104510
 L["a dádiva de sargeras dotou illidan de visão além do alcance, permitindo que ele se esquive de %s% dos ataques inimigos"] = { { Stats.Dodge, }, } -- s104746
-L["imbuído do sangue chamejante dos deuses antigos.\nseta caótica agora é um efeito de área.\nrecarga das habilidades reduzida pela metade.\nvelocidade de ataque aumentada em %s%"] = { { Stats.MeleeHaste, }, } -- s104901
+L["imbuído do sangue chamejante dos deuses antigos.\r\nseta caótica agora é um efeito de área.\r\nrecarga das habilidades reduzida pela metade.\r\nvelocidade de ataque aumentada em %s%"] = { { Stats.MeleeHaste, }, } -- s104901
+L["prepare o banquete pandarênico para alimentar até %s pessoas no seu raide ou grupo!\r\n\r\nrecupera %s pontos de vida e %s pontos de mana por %s s. se você passar ao menos %s s comendo, ficará bem alimentado e ganhará %s num atributo útil por %s hora"] = { false, false, false, false, false, { Stats.Primary, }, false, } -- s104958
 L["intelecto aumentado em %s"] = { { Stats.Intellect, }, } -- s104993
+L["prepare um grande banquete pandarênico para alimentar até %s pessoas no seu raide ou grupo!\r\n\r\nrecupera %s pontos de vida e %s pontos de mana por %s s. se você passar ao menos %s s comendo, ficará bem alimentado e ganhará %s num atributo útil por %s hora"] = { false, false, false, false, false, { Stats.Primary, }, false, } -- s105193
 L["força aumentada em %s. dura %s hora"] = { { Stats.Strength, }, false, } -- s105226
 L["absorve resíduos próximos de sangue corrompido. o amálgama fica mais instável a cada vez que um resíduo é absorvido, aumentando em %s% o dano de ataque e em %s% a velocidade de ataque dele. ao acumular %s vezes, fica superaquecido"] = { false, { Stats.MeleeHaste, }, false, } -- s105248
+L["quando curar ou causar dano, você tem chance de aumentar a força, a agilidade, o intelecto ou o espírito em %s por %s s. seu maior atributo é sempre escolhido"] = { { Stats.HighestPrimary, }, false, } -- s105574
+L["aumenta em %s o intelecto, a agilidade ou a força por %s horas. seu atributo mais alto será sempre o escolhido.\r\n\r\nconta como elixir de batalha e guardião. este efeito continua após a morte"] = { { Stats.HighestPrimary, }, false, } -- s105617
 L["sempre que causar dano, você tem chance de ganhar %s de intelecto por %s s"] = { { Stats.Intellect, }, false, ignoreSum = true } -- s105620
 L["sempre que causar dano, você tem chance de ganhar %s de aparo por %s s"] = { { Stats.ParryRating, }, false, ignoreSum = true } -- s105624
 L["sempre que lançar feitiços, você tem chance de ganhar %s de intelecto por %s s"] = { { Stats.Intellect, }, false, ignoreSum = true } -- s105638
@@ -1865,7 +1870,7 @@ L["força aumentado em %s. dura %s min"] = { { Stats.Strength, }, false, } -- s1
 L["agilidade aumentada em %s. dura %s min"] = { { Stats.Agility, }, false, } -- s108032
 L["recupera %s pontos de vida ao longo de %s s. é preciso permanecer sentado enquanto come. se você gastar pelo menos %s segundos comendo, ficará bem alimentado e ganhará %s de força por %s min"] = { false, false, false, { Stats.Strength, }, false, ignoreSum = true } -- s108033
 L["recupera %s pontos de vida ao longo de %s s. é preciso permanecer sentado enquanto come. se você gastar pelo menos %s segundos comendo, ficará bem alimentado e ganhará %s de agilidade por %s min"] = { false, false, false, { Stats.Agility, }, false, ignoreSum = true } -- s108034
-L["grants nearby allies glowing blood:\nabilities have half the typical cooldown.\nattack speed increased %s%"] = { { Stats.MeleeHaste, }, } -- s108221
+L["grants nearby allies glowing blood:\r\nabilities have half the typical cooldown.\r\nattack speed increased %s%"] = { { Stats.MeleeHaste, }, } -- s108221
 L["concede %s% do seu intelecto como agilidade ao assumir a forma de urso ou a forma de felino"] = { { Stats.Agility, }, } -- s108300
 L["aumenta em %s% a velocidade de ataque mas reduz em %s% a chance de acerto"] = { { Stats.MeleeHaste, }, { Stats.MeleeHit, Stats.RangedHit, }, } -- s109084
 L["aumenta em %s seu poder mágico por %s s"] = { { Stats.SpellPower, }, false, } -- s109791
@@ -1888,10 +1893,10 @@ L["recupera %s de vida e %s de mana ao longo de %s s. é preciso ficar sentado e
 L["encanta permanentemente uma armadura de torso para aumentar em %s todos a resiliência jxj. requer um item de nível %s ou superior"] = { { Stats.ResilienceRating, }, false, } -- s112059
 L["aumenta em %s% seus pontos de mana e aumenta em %s% a sua chance de acerto com raio, estouro de lava, impacto elemental, bagata e choque flamejante"] = { false, { Stats.SpellHit, }, } -- s112858
 L["aumenta em %s% seus pontos de mana e aumenta em %s% a sua chance de acerto com raio, estouro de lava, bagata e choque flamejante"] = { false, { Stats.SpellHit, }, } -- s112858
-L["adiciona permanentemente %s de espírito e %s de acerto crítico a um item usado nos ombros.\nencantar o item o tornará vinculado"] = { { Stats.Spirit, }, { Stats.CritRating, }, } -- s113044
-L["adiciona permanentemente %s de intelecto e %s de acerto crítico a um item usado nos ombros.\nencantar o item o tornará vinculado"] = { { Stats.Intellect, }, { Stats.CritRating, }, } -- s113045
-L["adiciona permanentemente %s de agilidade e %s de acerto crítico a um item usado nos ombros.\nencantar o item o tornará vinculado"] = { { Stats.Agility, }, { Stats.CritRating, }, } -- s113046
-L["golpeia todos os alvos à frente com ataques rápidos com as mãos, atordoando-os e causando de %s a %s de dano imediatamente e a cada %s%s s por %s s. o dano é dividido igualmente entre todos os alvos.\nsua chance de aparo aumenta em %s% durante a canalização"] = { { Stats.Parry, }, false, false, false, false, false, } -- s113656
+L["adiciona permanentemente %s de espírito e %s de acerto crítico a um item usado nos ombros.\r\n\r\nencantar o item o tornará vinculado"] = { { Stats.Spirit, }, { Stats.CritRating, }, } -- s113044
+L["adiciona permanentemente %s de intelecto e %s de acerto crítico a um item usado nos ombros.\r\n\r\nencantar o item o tornará vinculado"] = { { Stats.Intellect, }, { Stats.CritRating, }, } -- s113045
+L["adiciona permanentemente %s de agilidade e %s de acerto crítico a um item usado nos ombros.\r\n\r\nencantar o item o tornará vinculado"] = { { Stats.Agility, }, { Stats.CritRating, }, } -- s113046
+L["golpeia todos os alvos à frente com ataques rápidos com as mãos, atordoando-os e causando de %s a %s de dano imediatamente e a cada %s%s s por %s s. o dano é dividido igualmente entre todos os alvos.\r\n\r\nsua chance de aparo aumenta em %s% durante a canalização"] = { { Stats.Parry, }, false, false, false, false, false, } -- s113656
 L["golpeia todos os alvos à frente com ataques rápidos com as mãos, atordoando-os e causando de %s a %s de dano imediatamente e a cada %s%s s por %s s. o dano é dividido igualmente entre todos os alvos"] = { { Stats.Parry, }, false, false, false, false, } -- s113656
 L["as lâminas cegas de ossorrange enferrujam a cada ataque corpo a corpo bem sucedido, aumentando em %s% o dano mas retardando em %s% a velocidade de ataque e em %s% a velocidade de movimento. acumula até %s vezes"] = { false, { Stats.MeleeHaste, }, false, false, reduction = true } -- s113765
 L["você ganha %s% na aceleração do próximo feitiço ao lançar recomposição rápida. dura %s s"] = { { Stats.SpellHaste, }, false, } -- s114108
@@ -1901,7 +1906,7 @@ L["aumenta em %s% a velocidade de ataque e reduz em %s% s velocidade de moviment
 L["ervas fortes aumentam em %s% a aceleração de todos os carregadores da trilha da juta em um raio de %r metros por %s s segundos"] = { { Stats.MeleeHaste, }, false, } -- s114618
 L["ervas fortes aumentam em %s% a aceleração de todos os carregadores da trilha da juta em um raio de %s metros por %s s segundos"] = { { Stats.MeleeHaste, }, false, false, } -- s114619
 L["aumenta em %s a maestria"] = { { Stats.MasteryRating, }, } -- s114722
-L["recupera %s pontos de vida e %s de mana ao longo de %s s. é preciso ficar sentado enquanto come. se você gastar pelo menos %s segundos comendo, ficará bem alimentado e ganhará %s em um atributo útil por %s hora"] = { false, false, false, false, { Stats.Intellect, }, false, ignoreSum = true } -- s114726
+L["recupera %s pontos de vida e %s de mana ao longo de %s s. é preciso ficar sentado enquanto come. se você gastar pelo menos %s segundos comendo, ficará bem alimentado e ganhará %s em um atributo útil por %s hora"] = { false, false, false, false, { Stats.Primary, }, false, } -- s114726
 L["reduz em %s% a velocidade de lançamento de feitiços"] = { { Stats.SpellHaste, }, reduction = true } -- s114732
 L["coleta a alma de um inimigo morto para aumentar a aceleração em %s% e aumentar a velocidade de movimento em %s% por %s s"] = { { Stats.MeleeHaste, }, false, false, } -- s114868
 L["coleta a alma de um inimigo morto para aumentar a aceleração em %s% por %s s"] = { { Stats.MeleeHaste, }, false, } -- s114868
@@ -1928,8 +1933,8 @@ L["concede %s de agilidade por %s s"] = { { Stats.Agility, }, false, } -- s11671
 L["concede %s de aparo por %s s"] = { { Stats.ParryRating, }, false, } -- s116723
 L["seus ataques corpo a corpo têm chance de conceder %s de aparo por %s s"] = { { Stats.ParryRating, }, false, ignoreSum = true } -- s116766
 L["a energia titânica é expelida, causando %s de dano de natureza aos jogadores em um raio de %s m e energizando os construtos, aumentando a velocidade de ataque em %s% por %s min. acumula até %s vezes"] = { false, false, { Stats.MeleeHaste, }, false, false, } -- s116805
-L["velocidade de ataque reduzida em %s%.\nvelocidade de movimento reduzida em %s%"] = { { Stats.MeleeHaste, }, false, reduction = true } -- s116864
-L["velocidade de ataque reduzida em %s%.\ntodo dano causado aumentado em %s%"] = { { Stats.MeleeHaste, }, false, reduction = true } -- s116952
+L["velocidade de ataque reduzida em %s%.\r\nvelocidade de movimento reduzida em %s%"] = { { Stats.MeleeHaste, }, false, reduction = true } -- s116864
+L["velocidade de ataque reduzida em %s%.\r\ntodo dano causado aumentado em %s%"] = { { Stats.MeleeHaste, }, false, reduction = true } -- s116952
 L["ventos fortalecedores rodopiam em volta do xamã, concedendo %s de maestria a todos os membros do grupo ou raide próximos"] = { { Stats.MasteryRating, }, } -- s116956
 L["a vida na espiral etérea tornou este demônio particularmente ágil, aumentando em %s% as chances de esquiva e de aparo dele"] = { { Stats.Dodge, Stats.Parry, }, } -- s117225
 L["aumenta em %s% a velocidade de movimento por %s s e aumenta em %s% o dano do próximo ataque realizado"] = { false, false, { Stats.SpellDamage, }, } -- s117516
@@ -1967,14 +1972,14 @@ L["seus ataques corpo a corpo e de longo alcance têm chance de aumentar em %s s
 L["seus ataques corpo a corpo e de longo alcance têm chance de aumentar em %s o seu ataque crítico por %s s"] = { { Stats.MeleeCritRating, Stats.RangedCritRating, Stats.SpellCritRating, }, false, ignoreSum = true } -- s122277
 L["|c%sfff%ssimbiose:|r aumenta em %s% a chance de esquiva por %s s"] = { false, false, { Stats.Dodge, }, false, } -- s122286
 L["seus ataques corpo a corpo e de longo alcance têm chance de aumentar em %s a sua maestria por %s s"] = { { Stats.MasteryRating, }, false, ignoreSum = true } -- s122321
-L["prende permanentemente uma camada de armadura à calça para aumentar em %s o vigor e em %s a esquiva.\nsó pode ser fixada em uma armadura de perna do seu inventário"] = { { Stats.Stamina, }, { Stats.DodgeRating, }, } -- s122386
-L["prende permanentemente uma camada de armadura à calça para aumentar em %s a agilidade e em %s o acerto crítico.\nsó pode ser fixada em uma armadura de perna do seu inventário"] = { { Stats.Agility, }, { Stats.CritRating, }, } -- s122387
-L["prende permanentemente uma camada de armadura à calça para aumentar em %s a força e em %s o acerto crítico.\nsó pode ser fixada em uma armadura de perna do seu inventário"] = { { Stats.Strength, }, { Stats.CritRating, }, } -- s122388
-L["borda permanentemente uma calça usando magilinha, aumentando em %s o intelecto e em %s o acerto crítico.\nencantar o item o tornará vinculado"] = { { Stats.Intellect, }, { Stats.CritRating, }, } -- s122392
+L["prende permanentemente uma camada de armadura à calça para aumentar em %s o vigor e em %s a esquiva.\r\n\r\nsó pode ser fixada em uma armadura de perna do seu inventário"] = { { Stats.Stamina, }, { Stats.DodgeRating, }, } -- s122386
+L["prende permanentemente uma camada de armadura à calça para aumentar em %s a agilidade e em %s o acerto crítico.\r\n\r\nsó pode ser fixada em uma armadura de perna do seu inventário"] = { { Stats.Agility, }, { Stats.CritRating, }, } -- s122387
+L["prende permanentemente uma camada de armadura à calça para aumentar em %s a força e em %s o acerto crítico.\r\n\r\nsó pode ser fixada em uma armadura de perna do seu inventário"] = { { Stats.Strength, }, { Stats.CritRating, }, } -- s122388
+L["borda permanentemente uma calça usando magilinha, aumentando em %s o intelecto e em %s o acerto crítico.\r\n\r\nencantar o item o tornará vinculado"] = { { Stats.Intellect, }, { Stats.CritRating, }, } -- s122392
 L["pontos de vida aumentados em %s"] = { { Stats.Health, }, } -- s122516
 L["a energia do âmbar concentrada aumenta em %s% o dano causado e em %s% a velocidade de ataque. este efeito é permanente"] = { false, { Stats.MeleeHaste, }, } -- s122556
 L["seus ataques corpo a corpo têm chance de aumentar em %s o seu aparo por %s s"] = { { Stats.ParryRating, }, false, ignoreSum = true } -- s122904
-L["jol'grum está enfurecido! \nele ataca %s% mais rápido e se move %s% mais rápido por %s s"] = { { Stats.MeleeHaste, }, false, false, } -- s123936
+L["jol'grum está enfurecido! \r\nele ataca %s% mais rápido e se move %s% mais rápido por %s s"] = { { Stats.MeleeHaste, }, false, false, } -- s123936
 L["aceleração aumentada em %s. dura %s hora"] = { { Stats.MeleeHasteRating, Stats.RangedHasteRating, Stats.SpellHasteRating, }, false, } -- s124151
 L["aptidão aumentada em %s. dura %s hora"] = { { Stats.ExpertiseRating, }, false, } -- s124210
 L["acerto crítico aumentado em %s. dura %s hora"] = { { Stats.MeleeCritRating, Stats.RangedCritRating, Stats.SpellCritRating, }, false, } -- s124212
@@ -1987,17 +1992,17 @@ L["recupera %s pontos de vida ao longo de %s s. é preciso permanecer sentado en
 L["recupera %s pontos de vida e %s pontos de mana ao longo de %s s. é preciso permanecer sentado enquanto come. se você gastar pelo menos %s segundos comendo, ficará bem alimentado e ganhará %s de maestria por %s hora"] = { false, false, false, false, { Stats.MasteryRating, }, false, ignoreSum = true } -- s124242
 L["recupera %s pontos de vida ao longo de %s s. é preciso permanecer sentado enquanto come. se você gastar pelo menos %s segundos comendo, ficará bem alimentado e ganhará %s de esquiva por %s hora"] = { false, false, false, { Stats.DodgeRating, }, false, ignoreSum = true } -- s124243
 L["recupera %s pontos de vida ao longo de %s s. é preciso permanecer sentado enquanto come. se você gastar pelo menos %s segundos comendo, ficará bem alimentado e ganhará %s de acerto por %s hora"] = { false, false, false, { Stats.MeleeHitRating, Stats.RangedHitRating, Stats.SpellHitRating, }, false, ignoreSum = true } -- s124244
-L["aumenta em %s% sua chance de aparar.\nsempre que você aparar um ataque, você instintivamente contra-ataca o inimigo, causando de %s a %s de dano. este efeito tem uma recarga de %s s"] = { { Stats.Parry, }, false, false, false, } -- s124334
-L["encanta permanentemente suas braçadeiras para aumentar em %s a sua agilidade.\nforro de pele requer %s de perícia de couraria para permanecer ativo e torna as braçadeiras vinculadas"] = { { Stats.Agility, }, false, } -- s124551
-L["encanta permanentemente suas braçadeiras para aumentar em %s o seu intelecto.\nforro de pele requer %s de perícia de couraria para permanecer ativo e torna as braçadeiras vinculadas"] = { { Stats.Intellect, }, false, } -- s124552
-L["encanta permanentemente suas braçadeiras para aumentar em %s o seu vigor.\nforro de pele requer %s de perícia de couraria para permanecer ativo e torna as braçadeiras vinculadas"] = { { Stats.Stamina, }, false, } -- s124553
-L["encanta permanentemente suas braçadeiras para aumentar em %s a sua força.\nforro de pele requer %s de perícia de couraria para permanecer ativo e torna as braçadeiras vinculadas"] = { { Stats.Strength, }, false, } -- s124554
-L["prende permanentemente reforços de perna primevos em suas calças, para aumentar em %s a sua agilidade e em %s seu acerto crítico.\nreforços de perna primevos tornam o item vinculado"] = { { Stats.Agility, }, { Stats.CritRating, }, } -- s124559
-L["prende permanentemente reforços de perna dracônicos à calça, para aumentar em %s a sua força e em %s seu acerto crítico.\nreforços de perna dracônicos tornam o item vinculado"] = { { Stats.Strength, }, { Stats.CritRating, }, } -- s124561
-L["prende permanentemente reforços de perna pesados à calça, para aumentar em %s o seu vigor e em %s a sua esquiva.\nreforços de perna pesados tornam o item vinculado"] = { { Stats.Stamina, }, { Stats.DodgeRating, }, } -- s124563
-L["|cff%sf%sffesta receita se aprimora automaticamente quando você atinge %s de perícia de couraria.|r\nprende permanentemente reforços de perna primevos em suas calças, para aumentar em %s a sua agilidade e em %s seu acerto crítico.\nreforços de perna primevos tornam o item vinculado"] = { false, false, false, { Stats.Agility, }, { Stats.CritRating, }, } -- s124564
-L["|cff%sf%sffesta receita se aprimora automaticamente quando você atinge %s de perícia de couraria.|r\nprende permanentemente reforços de perna pesados em suas calças, para aumentar em %s o seu vigor e em %s a sua esquiva.\nreforços de perna pesados tornam o item vinculado"] = { false, false, false, { Stats.Stamina, }, { Stats.DodgeRating, }, } -- s124565
-L["|cff%sf%sffesta receita se aprimora automaticamente quando você atinge %s de perícia de couraria.|r\nprende permanentemente reforços de perna dracônicos em suas calças, para aumentar em %s a sua força e em %s seu acerto crítico.\nreforços de perna dracônicos tornam o item vinculado"] = { false, false, false, { Stats.Strength, }, { Stats.CritRating, }, } -- s124566
+L["aumenta em %s% sua chance de aparar.\r\n\r\nsempre que você aparar um ataque, você instintivamente contra-ataca o inimigo, causando de %s a %s de dano. este efeito tem uma recarga de %s s"] = { { Stats.Parry, }, false, false, false, } -- s124334
+L["encanta permanentemente suas braçadeiras para aumentar em %s a sua agilidade.\r\n\r\nforro de pele requer %s de perícia de couraria para permanecer ativo e torna as braçadeiras vinculadas"] = { { Stats.Agility, }, false, } -- s124551
+L["encanta permanentemente suas braçadeiras para aumentar em %s o seu intelecto.\r\n\r\nforro de pele requer %s de perícia de couraria para permanecer ativo e torna as braçadeiras vinculadas"] = { { Stats.Intellect, }, false, } -- s124552
+L["encanta permanentemente suas braçadeiras para aumentar em %s o seu vigor.\r\n\r\nforro de pele requer %s de perícia de couraria para permanecer ativo e torna as braçadeiras vinculadas"] = { { Stats.Stamina, }, false, } -- s124553
+L["encanta permanentemente suas braçadeiras para aumentar em %s a sua força.\r\n\r\nforro de pele requer %s de perícia de couraria para permanecer ativo e torna as braçadeiras vinculadas"] = { { Stats.Strength, }, false, } -- s124554
+L["prende permanentemente reforços de perna primevos em suas calças, para aumentar em %s a sua agilidade e em %s seu acerto crítico.\r\n\r\nreforços de perna primevos tornam o item vinculado"] = { { Stats.Agility, }, { Stats.CritRating, }, } -- s124559
+L["prende permanentemente reforços de perna dracônicos à calça, para aumentar em %s a sua força e em %s seu acerto crítico.\r\n\r\nreforços de perna dracônicos tornam o item vinculado"] = { { Stats.Strength, }, { Stats.CritRating, }, } -- s124561
+L["prende permanentemente reforços de perna pesados à calça, para aumentar em %s o seu vigor e em %s a sua esquiva.\r\n\r\nreforços de perna pesados tornam o item vinculado"] = { { Stats.Stamina, }, { Stats.DodgeRating, }, } -- s124563
+L["|cff%sf%sffesta receita se aprimora automaticamente quando você atinge %s de perícia de couraria.|r\r\n\r\nprende permanentemente reforços de perna primevos em suas calças, para aumentar em %s a sua agilidade e em %s seu acerto crítico.\r\n\r\nreforços de perna primevos tornam o item vinculado"] = { false, false, false, { Stats.Agility, }, { Stats.CritRating, }, } -- s124564
+L["|cff%sf%sffesta receita se aprimora automaticamente quando você atinge %s de perícia de couraria.|r\r\n\r\nprende permanentemente reforços de perna pesados em suas calças, para aumentar em %s o seu vigor e em %s a sua esquiva.\r\n\r\nreforços de perna pesados tornam o item vinculado"] = { false, false, false, { Stats.Stamina, }, { Stats.DodgeRating, }, } -- s124565
+L["|cff%sf%sffesta receita se aprimora automaticamente quando você atinge %s de perícia de couraria.|r\r\n\r\nprende permanentemente reforços de perna dracônicos em suas calças, para aumentar em %s a sua força e em %s seu acerto crítico.\r\n\r\nreforços de perna dracônicos tornam o item vinculado"] = { false, false, false, { Stats.Strength, }, { Stats.CritRating, }, } -- s124566
 L["aparo aumentado em %s. dura %s hora"] = { { Stats.ParryRating, }, false, } -- s125070
 L["recupera %s pontos de vida ao longo de %s s. é preciso permanecer sentado enquanto come. se você gastar pelo menos %s segundos comendo, ficará bem alimentado e ganhará %s de aparo por %s hora"] = { false, false, false, { Stats.ParryRating, }, false, ignoreSum = true } -- s125073
 L["recupera %s pontos de vida e %s pontos de mana ao longo de %s s. é preciso permanecer sentado enquanto come. se você gastar pelo menos %s segundos comendo, ficará bem alimentado e ganhará %s de aptidão por %s hora"] = { false, false, false, false, { Stats.MeleeHitRating, Stats.RangedHitRating, Stats.SpellHitRating, }, false, ignoreSum = true } -- s125103
@@ -2005,8 +2010,8 @@ L["recupera %s pontos de vida e %s pontos de mana ao longo de %s s. é preciso p
 L["aumenta em %s a sua aceleração por %s s e deixa você sóbrio"] = { { Stats.MeleeHasteRating, Stats.RangedHasteRating, Stats.SpellHasteRating, }, false, } -- s125282
 L["imuniza o lançador contra efeitos de enraizamento e lerdeza, e aumenta em %s% sua velocidade de ataque e em %s% sua velocidade de movimento"] = { { Stats.MeleeHaste, }, false, } -- s125373
 L["aumenta em %s seu espírito por %s s"] = { { Stats.Spirit, }, false, } -- s125488
-L["borda permanentemente suas calças com magilinha do mestre, aumentando em %s seu intelecto e em %s seu acerto crítico.\nsomente as calças do próprio alfaiate podem ser bordadas, e, com isso, o item se torna vinculado"] = { { Stats.Intellect, }, { Stats.CritRating, }, } -- s125496
-L["borda permanentemente suas calças com magilinha santificada, aumentando em %s seu intelecto e em %s seu espírito.\nsomente as calças do próprio alfaiate podem ser bordadas, e, com isso, o item se torna vinculado"] = { { Stats.Intellect, }, { Stats.Spirit, }, } -- s125497
+L["borda permanentemente suas calças com magilinha do mestre, aumentando em %s seu intelecto e em %s seu acerto crítico.\r\n\r\nsomente as calças do próprio alfaiate podem ser bordadas, e, com isso, o item se torna vinculado"] = { { Stats.Intellect, }, { Stats.CritRating, }, } -- s125496
+L["borda permanentemente suas calças com magilinha santificada, aumentando em %s seu intelecto e em %s seu espírito.\r\n\r\nsomente as calças do próprio alfaiate podem ser bordadas, e, com isso, o item se torna vinculado"] = { { Stats.Intellect, }, { Stats.Spirit, }, } -- s125497
 L["quando você é desarmado, sua chance de esquiva é aumentada em %s% por %s s"] = { { Stats.Dodge, }, false, ignoreSum = true } -- s126046
 L["suas lâminas são guiadas por uma força invisível, aumentando a chance de acerto em %s%. dura %s min ou até que você saia do monastério shado-pan"] = { { Stats.MeleeHit, Stats.RangedHit, Stats.SpellHit, }, false, } -- s126156
 L["seus ataques têm chance de aumentar em %s a sua esquiva por %s s. (%s% de chance, recarga de %s s)"] = { { Stats.DodgeRating, }, false, false, false, ignoreSum = true } -- s126237
@@ -2031,6 +2036,8 @@ L["toda vez que seus feitiços de dano acertam, você tem chance de ganhar %s de
 L["sempre que causar dano, você terá chance de ganhar %s de força por %s s"] = { { Stats.Strength, }, false, ignoreSum = true } -- s126702
 L["quando causar dano ou curar um alvo, você terá chance de ganhar %s de intelecto por %s s"] = { { Stats.Intellect, }, false, ignoreSum = true } -- s126706
 L["sempre que causar dano, você terá chance de ganhar %s de agilidade por %s s"] = { { Stats.Agility, }, false, ignoreSum = true } -- s126708
+L["instala permanentemente molas sinápticas em um par de luvas, permitindo aumentar em %s seu atributo primário mais alto por %s s. as livas podem ser ativadas a cada minuto.\r\n\r\nrequer pelo menos %s de perícia em engenharia para ser usada"] = { { Stats.HighestPrimary, }, false, false, } -- s126731
+L["aumenta em %s o intelecto, a agilidade ou a força por %s s. o seu atributo mais alto é sempre escolhido"] = { { Stats.HighestPrimary, }, false, } -- s126734
 L["enfurecido por ver seu companheiro guardião morrer, velocidade de ataque aumentada em %s%"] = { { Stats.MeleeHaste, }, } -- s126970
 L["aumenta todos os atributos em %s por %s hora. conta como elixir de batalha e guardião"] = { { Stats.AllStats, }, false, } -- s127230
 L["concede ao lançador chance de ativar dor na vítima quando acertar um ataque. dor reduz em %s% a chance de bloquear, esquivar e aparar da vítima por %s s"] = { { Stats.BlockChance, }, false, ignoreSum = true, reduction = true } -- s127262
@@ -2040,6 +2047,7 @@ L["seus feitiços de cura têm chance de conceder %s de poder mágico por %s s. 
 L["chance de esquiva aumentada em %s%"] = { { Stats.Dodge, }, } -- s127669
 L["aumenta em %s a sua aceleração por %s s e deixa você sóbrio. só funciona no monte kun-lai"] = { { Stats.MeleeHasteRating, Stats.RangedHasteRating, Stats.SpellHasteRating, }, false, } -- s127770
 L["a fera espiritual abençoa seus aliados, aumentando em %s a maestria de todos os membros do raide em um raio de %s metros. dura %s min"] = { { Stats.MasteryRating, }, false, false, } -- s127830
+L["recupera %s pontos de vida e %s pontos de mana por %s s. se você passar ao menos %s s comendo, ficará bem alimentado e ganhará %s num atributo útil por %s hora.\r\n\r\nmas alguma coisa parece estranha"] = { false, false, false, false, { Stats.Primary, }, false, } -- s127882
 L["seus feitiços de cura direta e periódica podem aumentar em %s a sua aceleração por %s s. (%s% de chance, recarga de %s s)"] = { { Stats.MeleeHasteRating, Stats.RangedHasteRating, Stats.SpellHasteRating, }, false, false, false, ignoreSum = true } -- s127914
 L["seus feitiços nocivos podem aumentar em %s o seu poder mágico por %s s. (%s% de chance, recarga de %s s)"] = { { Stats.SpellDamage, }, false, false, false, ignoreSum = true } -- s127924
 L["ao provar sangue, o animal fica enfurecido, aumentando a velocidade de ataque em %s%. este efeito acumula"] = { { Stats.MeleeHaste, }, } -- s128006
@@ -2061,7 +2069,7 @@ L["aumenta em %s% a chance de esquiva e em %s% a velocidade de movimento por %s 
 L["aumenta em %s sua taxa de maestria. dura %s hora"] = { { Stats.MasteryRating, }, false, } -- s130283
 L["rakira grita de dor para que seus filhotes a ajudem. se os filhotes já estiverem ali, aumenta em %s% a velocidade de ataque deles por %s s"] = { { Stats.MeleeHaste, }, false, } -- s131199
 L["faz o alvo agir mais rapidamente, aumentando em %s% a velocidade de ataque e em %s% a velocidade de movimento"] = { { Stats.MeleeHaste, }, false, } -- s131764
-L["todo o dano aumentado em %s%.\nvelocidade de lançamento aumentada em %s%"] = { false, { Stats.SpellHaste, }, } -- s133532
+L["todo o dano aumentado em %s%.\r\nvelocidade de lançamento aumentada em %s%"] = { false, { Stats.SpellHaste, }, } -- s133532
 L["abençoa um alvo aliado, aumentando em %s a maestria. só funciona na selva de krasarang"] = { { Stats.MasteryRating, }, } -- s133535
 L["concede %s% de aceleração de feitiço ao alvo. só funciona na selva de krasarang"] = { { Stats.SpellHaste, }, } -- s133545
 L["agilidade aumentada em %s. dura %s hora. só funciona na selva de krasarang"] = { { Stats.Agility, }, false, } -- s133593
@@ -2075,7 +2083,7 @@ L["aumenta em %s sua força por %s s. usável somente na arena de briga"] = { { 
 L["aumenta em %s seu intelecto por %s s. usável somente na arena de briga"] = { { Stats.Intellect, }, false, } -- s134987
 L["aumenta em %s sua agilidade por %s s. usável somente na arena de briga"] = { { Stats.Agility, }, false, } -- s134989
 L["aumenta em %s% a chance de esquiva por %s min. funciona somente na arena de briga"] = { { Stats.Dodge, }, false, } -- s135088
-L["você está na zona morta. \nchance de acertar e ser acertado reduzida em %s%"] = { { Stats.SpellHit, Stats.MeleeHit, Stats.RangedHit, }, reduction = true } -- s135147
+L["você está na zona morta. \r\nchance de acertar e ser acertado reduzida em %s%"] = { { Stats.SpellHit, Stats.MeleeHit, Stats.RangedHit, }, reduction = true } -- s135147
 L["ataca um inimigo com magia arcana e aumenta a aceleração do lançador em %s%"] = { { Stats.SpellHaste, }, } -- s135538
 L["um ataque poderoso que causa %s% do dano da arma a todos os inimigos em um raio de %s m e aumenta em %s% a chance de eles errarem"] = { false, false, { Stats.MeleeHit, Stats.RangedHit, Stats.SpellHit, }, reduction = true } -- s135619
 L["cerca todos os membros do grupo ou raide com esporos energizados, aumentando em %s% a aceleração de feitiços"] = { { Stats.SpellHaste, }, } -- s135678
@@ -2085,7 +2093,7 @@ L["%s de força"] = { { Stats.Strength, }, } -- s136004
 L["um metabolismo hiperativo permite ao lançador usar habilidades com mais frequência e aumenta em %s% a velocidade de ataque"] = { { Stats.MeleeHaste, }, } -- s136245
 L["horridon fica alvoroçado ao ver seu mestre morrer, aumentando em %s% o dano causado e em %s% a velocidade de ataque"] = { false, { Stats.MeleeHaste, }, } -- s136821
 L["horridon emite um rugido poderoso, causando %s de dano físico a todos os inimigos e fortalecendo aliados, aumentando em %s% a velocidade de ataque corpo a corpo"] = { false, { Stats.MeleeHaste, }, } -- s137458
-L["o lançador canaliza um inferno nuclear, causando %s de dano ao raide a cada %s s.\nenquanto ela estiver canalizando este efeito, a deflexão de feitiço dela é aumentada em %s%. a chance de esquiva também é aumentada em %s%"] = { false, false, false, { Stats.Dodge, }, } -- s137491
+L["o lançador canaliza um inferno nuclear, causando %s de dano ao raide a cada %s s.\r\n\r\nenquanto ela estiver canalizando este efeito, a deflexão de feitiço dela é aumentada em %s%. a chance de esquiva também é aumentada em %s%"] = { false, false, false, { Stats.Dodge, }, } -- s137491
 L["águas geladas protetoras envolvem lu'lin e explodem para fora, causando %s de dano de gelo no impacto. enquanto ela estiver canalizando este efeito, a deflexão mágica e de longo alcance será aumentada em %s%. a chance de esquiva é aumentada em %s% também"] = { false, false, { Stats.Dodge, }, } -- s137531
 L["ao chegar a %s% dos pontos de vida, o mogu recupera o poder e começa a causar %s% a mais de dano e lançar feitiços %s% mais rápido"] = { false, false, { Stats.SpellHaste, }, } -- s137550
 L["aumenta em %s% a sua aceleração por %s s"] = { { Stats.SpellHaste, }, false, } -- s137590
@@ -2106,7 +2114,7 @@ L["quando seus ataques acertam, você tem chance de ganhar %s de agilidade e evo
 L["quando seus feitiços causam dano crítico, você tem chance de ganhar %s de inteligência por %s s. (aproximadamente %s%s procs por min)"] = { { Stats.Intellect, }, false, false, false, ignoreSum = true } -- s139134
 L["acerto crítico aumentado em %s por %s s. acumula até %s vezes"] = { { Stats.MeleeCritRating, Stats.RangedCritRating, Stats.SpellCritRating, }, false, false, } -- s139170
 L["seus ataques críticos têm chance de conceder %s de acerto crítico por %s s. este efeito acumula até %s vezes. (aproximadamente %s%s procs por min)"] = { { Stats.MeleeCritRating, Stats.RangedCritRating, Stats.SpellCritRating, }, false, false, false, false, ignoreSum = true } -- s139171
-L["o lançador incrementa a própria arma, dando aos ataques corpo a corpo bem-sucedidos a chance de causar dano de natureza.\nvelocidade de ataque aumentada em %s%"] = { { Stats.MeleeHaste, }, } -- s139218
+L["o lançador incrementa a própria arma, dando aos ataques corpo a corpo bem-sucedidos a chance de causar dano de natureza.\r\nvelocidade de ataque aumentada em %s%"] = { { Stats.MeleeHaste, }, } -- s139218
 L["esmaga a coluna do alvo, prendendo-o no lugar e reduzindo em %s% a chance de esquive e aparo por %s s"] = { { Stats.Parry, Stats.Dodge, }, false, reduction = true } -- s139260
 L["faz com que todos os ladrilhos benéficos do palácio do rei trovão durem %s% a mais"] = { { Stats.Agility, }, } -- s139497
 L["encanta permanentemente uma arma para aumentar em %s o poder jxj e reduzir em %s% a duração dos efeitos de desarmar. a redução de duração não acumula com outros efeitos semelhantes"] = { { Stats.PvpPowerRating, }, false, } -- s139631
@@ -2122,6 +2130,9 @@ L["aumenta a velocidade de lançamento em %s%. acumula"] = { { Stats.SpellHaste,
 L["reduz a recarga de favorecimento divino em %s s. enquanto o favorecimento divino estiver ativo, a maestria aumenta em %s"] = { false, { Stats.MasteryRating, }, ignoreSum = true } -- s144613
 L["enquanto o favorecimento divino estiver ativo, sua maestria aumenta em %s"] = { { Stats.MasteryRating, }, } -- s144622
 L["máquina assassina e ruína súbita concedem %s de aceleração ou maestria, o que for maior, por %s segundos, acumulando até %s vezes"] = { { Stats.MeleeHasteRating, }, false, false, ignoreSum = true } -- s144899
+L["monta um carrinho de macarrão para vender sopa de macarrão!\r\n\r\ncada sopa de macarrão restaura %s pontos de vida e %s pontos de mana ao longo de %s s. é preciso permanecer sentado enquanto come. se você gastar pelo menos %s segundos comendo, ficará bem alimentado e ganhará %s num atributo útil por %s hora"] = { false, false, false, false, { Stats.Primary, }, false, } -- s145166
+L["monta um carrinho de macarrão luxo para vender sopa de macarrão luxo!\r\n\r\ncada sopa de macarrão luxo recupera %s pontos de vida e %s pontos de mana ao longo de %s s. é preciso permanecer sentado enquanto come. se você gastar pelo menos %s segundos comendo, ficará bem alimentado e ganhará %s num atributo útil por %s hora"] = { false, false, false, false, { Stats.Primary, }, false, } -- s145169
+L["monta um carrinho de macarrão tesouro pandarênico para vender carrinho de macarrão tesouro pandarênico!\r\n\r\ncada sopa de macarrão tesouro pandarênico restaura %s pontos de vida e %s pontos de mana ao longo de %s s. é preciso permanecer sentado enquanto come. se você gastar pelo menos %s segundos comendo, ficará bem alimentado e ganhará %s num atributo útil por %s hora"] = { false, false, false, false, { Stats.Primary, }, false, } -- s145196
 L["aumenta em %s% o dano e a velocidade de ataque do lançador por %s s"] = { { Stats.MeleeHaste, }, false, } -- s145974
 L["seus ataques têm chance de aumentar em %s o seu intelecto por %s s. (%s% de chance, recarga de %s s)"] = { { Stats.Intellect, }, false, false, false, ignoreSum = true } -- s146047
 L["toda vez que seus ataques corpo a corpo acertam, você tem chance de ganhar %s de aceleração por %s s. (%s% de chance, recarga de %s s)"] = { { Stats.MeleeHasteRating, Stats.RangedHasteRating, Stats.SpellHasteRating, }, false, false, false, ignoreSum = true } -- s146295
@@ -2192,7 +2203,7 @@ L["recupera %s pontos de mana ao longo de %s min. é preciso ficar sentado enqua
 L["intelecto aumentado em %s. dura %s hora"] = { { Stats.Intellect, }, false, } -- s104264
 L["atinge todos os constructos de ferro com um intenso calor, aumentando em %s a velocidade de movimento deles e em %s a aceleração. este efeito pode acumular até %s vezes. ao acumular %s vezes, o constructo de ferro afetado ficará derretido"] = { false, { Stats.MeleeHaste, }, false, false, } -- s65667
 L["causa %s de dano de gelo aos inimigos em uma área cônica de %s m à frente do lançador. além disso, reduz em %s% a velocidade de ataque dos alvos atingidos por %s s"] = { false, false, { Stats.MeleeHaste, }, false, reduction = true } -- s70116
-L["dano causado aumentado em %s%.\npontos de vida aumentados em %s%.\nfeitiços não têm custo e são instantâneos.\nvelocidades de ataque corpo a corpo e de longo alcance aumentadas em %s%"] = { false, { Stats.SpellHaste, }, false, } -- s70320
+L["dano causado aumentado em %s%.\r\npontos de vida aumentados em %s%.\r\nfeitiços não têm custo e são instantâneos.\r\nvelocidades de ataque corpo a corpo e de longo alcance aumentadas em %s%"] = { false, { Stats.SpellHaste, }, false, } -- s70320
 L["encanta permanentemente um par de botas, aumentando em %s% a velocidade de movimento e em %s o vigor"] = { false, { Stats.Stamina, }, } -- s74189
 L["encanta permanentemente um par de botas, aumentando em %s% a velocidade de movimento e em %s a agilidade"] = { false, { Stats.Agility, }, } -- s74252
 L["aumenta em %s% a velocidade de ataque do lançador e o dano físico causado por %s s"] = { { Stats.MeleeHaste, }, false, } -- s77238
@@ -2203,19 +2214,6 @@ L["aumenta em %s% a velocidade de ataque do alvo e em %s% o dano físico que ele
 L["aumenta em %s% a velocidade de ataque do lançador e em %s% todo dano por ele causado por %s s"] = { { Stats.MeleeHaste, }, false, false, } -- s144369
 L["vigor aumentado em %s. dura %s s"] = { { Stats.Stamina, }, false, } -- s147361
 L["sua habilidade arma de labaredas aumenta em mais %s o seu poder mágico"] = { { Stats.SpellDamage, }, } -- s461993
-L["ensina a encantar um manto permanentemente para aumentar em %s o acerto crítico. requer item de nível %s ou superior"] = { { Stats.CritRating, }, false, } -- i52737
-L["ensina a encantar braçadeiras permanentemente para aumentar em %s o acerto crítico. requer um item de nível %s ou superior"] = { { Stats.CritRating, }, false, } -- i52738
-L["ensina a encantar permanentemente uma armadura de torso para aumentar em %s todos os atributos. requer um item de nível %s ou superior"] = { { Stats.AllStats, }, false, } -- i52739
-L["ensina a encantar permanentemente um escudo para aumentar em %s o vigor. requer um item de nível %s ou maior"] = { { Stats.Stamina, }, false, } -- i52740
-L["ensina a encantar botas permanentemente para aumentar ligeiramente a velocidade de movimento e em %s a agilidade. requer item de nível %s ou maior"] = { { Stats.Agility, }, false, } -- i64411
-L["ensina a encantar um par de botas permanentemente, aumentando um pouco a velocidade de movimento e em %s a maestria. só pode ser usado em itens de nível %s ou superior"] = { { Stats.MasteryRating, }, false, } -- i64412
-L["ensina a encantar braçadeiras permanentemente para aumentar em %s a aceleração. requer item de nível %s ou superior"] = { { Stats.HasteRating, }, false, } -- i64413
-L["ensina a encantar luvas permanentemente para aumentar em %s a maestria. requer item de nível %s ou superior"] = { { Stats.MasteryRating, }, false, } -- i64414
-L["ensina a encantar luvas permanentemente para aumentar em %s a força. requer um item de nível %s ou superior"] = { { Stats.Strength, }, false, } -- i64415
-L["ensina a encantar braçadeiras permanentemente para aumentar em %s a agilidade. requer um item de nível %s ou superior"] = { { Stats.Agility, }, false, } -- i68787
-L["ensina a encantar braçadeiras permanentemente para aumentar em %s a força. requer um item de nível %s ou superior"] = { { Stats.Strength, }, false, } -- i68788
-L["ensina a encantar braçadeiras permanentemente para aumentar em %s o intelecto. requer um item de nível %s ou superior"] = { { Stats.Intellect, }, false, } -- i68789
-L["ensina a encantar mantos permanentemente para aumentar em %s a agilidade"] = { { Stats.Agility, }, } -- i71714
 L["ensina a encantar armaduras de torso permanentemente para aumentar em %s o total de pontos de mana"] = { { Stats.Mana, }, } -- i6342
 L["ensina a encantar braçadeiras permanentemente para aumentar em %s o espírito"] = { { Stats.Spirit, }, } -- i6344
 L["ensina a encantar mantos permanentemente para aumentar em %s a armadura"] = { { Stats.Armor, }, } -- i6345
@@ -2224,6 +2222,7 @@ L["ensina a encantar armas de duas mãos corpo a corpo permanentemente para aume
 L["teaches you how to permanently enchant boots to increase stamina by %s"] = { { Stats.Stamina, }, } -- i6376
 L["ensina a encantar botas permanentemente para aumentar em %s a agilidade"] = { { Stats.Agility, }, } -- i6377
 L["ensina a encantar armas de duas mãos corpo a corpo permanentemente para aumentar em %s o espírito"] = { { Stats.Spirit, }, } -- i11038
+L["ensina a encantar mantos permanentemente para aumentar em %s a agilidade"] = { { Stats.Agility, }, } -- i11039
 L["ensina a encantar braçadeiras permanentemente para aumentar em %s a esquiva"] = { { Stats.DodgeRating, }, } -- i11163
 L["ensina a encantar botas permanentemente para aumentar em %s o espírito"] = { { Stats.Spirit, }, } -- i11167
 L["ensina a encantar escudos permanentemente para aumentar em %s a esquiva"] = { { Stats.ParryRating, }, } -- i11168
@@ -2274,6 +2273,40 @@ L["ensina a encantar permanentemente armas corpo a corpo para aumentar em %s o p
 L["ensina a encantar permanentemente armas de duas mãos corpo a corpo para aumentar em %s a agilidade. requer item de nível %s ou superior"] = { { Stats.Agility, }, false, } -- i22556
 L["ensina a encantar permanentemente armas corpo a corpo para aumentar em %s o poder de magias de fogo e arcanas. requer item de nível %s ou superior"] = { { Stats.FireDamage, Stats.ArcaneDamage, }, false, } -- i22560
 L["ensina a encantar permanentemente armas corpo a corpo para aumentar o poder de magias de gelo e sombra em %s. requer item de nível %s ou superior"] = { { Stats.FrostDamage, Stats.ShadowDamage, }, false, } -- i22561
+L["ensina a encantar permanentemente um anel para aumentar em %s todos os atributos"] = { { Stats.AllStats, }, } -- i186683
+L["ensina a encantar permanentemente uma arma para aumentar em %s o poder jxj e reduzir em %s% a duração dos efeitos de desarmar. a redução da duração não acumula com outros efeitos semelhantes. requer nível de item %s ou superior"] = { { Stats.PvpPowerRating, }, false, false, } -- i254315
+L["encanta permanentemente um par de botas para aumentar um pouco a velocidade de movimento e a agilidade em %s. requer item de nível %s ou superior"] = { { Stats.Agility, }, false, } -- i84553
+L["encanta permanentemente um par de botas para aumentar em %s a aceleração. requer item de nível %s ou superior"] = { { Stats.HasteRating, }, false, } -- i84554
+L["encanta permanentemente um par de botas para aumentar em %s o acerto. requer item de nível %s ou superior"] = { { Stats.HitRating, }, false, } -- i84555
+L["encanta permanentemente um par de botas para aumentar um pouco a velocidade de movimento e em %s a de maestria. requer item de nível %s ou superior"] = { { Stats.MasteryRating, }, false, } -- i84556
+L["ensina a encantar braçadeiras permanentemente para aumentar em %s a agilidade. requer um item de nível %s ou superior"] = { { Stats.Agility, }, false, } -- i84557
+L["encanta permanentemente braçadeiras para aumentar em %s a esquiva. requer item de nível %s ou superior"] = { { Stats.DodgeRating, }, false, } -- i84558
+L["ensina a encantar braçadeiras permanentemente para aumentar em %s o intelecto. requer um item de nível %s ou superior"] = { { Stats.Intellect, }, false, } -- i84559
+L["encanta permanentemente braçadeiras para aumentar em %s a maestria. requer item de nível %s ou superior"] = { { Stats.MasteryRating, }, false, } -- i84560
+L["ensina a encantar braçadeiras permanentemente para aumentar em %s a força. requer um item de nível %s ou superior"] = { { Stats.Strength, }, false, } -- i84561
+L["encanta permanentemente uma armadura de torso para aumentar em %s a resiliência jxj. requer um item de nível %s ou superior"] = { { Stats.ResilienceRating, }, false, } -- i84563
+L["encanta permanentemente a armadura de torso para aumentar em %s o espírito. requer item de nível %s ou superior"] = { { Stats.Spirit, }, false, } -- i84564
+L["encanta permanentemente armadura de torso para aumentar em %s o vigor. requer item de nível %s ou superior"] = { { Stats.Stamina, }, false, } -- i84565
+L["encanta permanentemente um manto para aumentar em %s o vigor. requer item de nível %s ou superior"] = { { Stats.Stamina, }, false, } -- i84566
+L["encanta permanentemente um manto para aumentar em %s o acerto crítico. requer item de nível %s ou superior"] = { { Stats.CritRating, }, false, } -- i84567
+L["encanta permanentemente um manto para aumentar em %s o acerto. requer item de nível %s ou superior"] = { { Stats.HitRating, }, false, } -- i84568
+L["encanta permanentemente um manto para aumentar em %s o intelecto. requer item de nível %s ou superior"] = { { Stats.Intellect, }, false, } -- i84569
+L["encanta permanentemente luvas para aumentar em %s a aptidão. requer item de nível %s ou superior"] = { { Stats.ExpertiseRating, }, false, } -- i84570
+L["encanta permanentemente luvas para aumentar em %s a aceleração. requer item de nível %s ou superior"] = { { Stats.HasteRating, }, false, } -- i84571
+L["encanta permanentemente luvas para aumentar em %s a maestria. requer item de nível %s ou superior"] = { { Stats.MasteryRating, }, false, } -- i84572
+L["encanta permanentemente um escudo ou item de mão secundária para aumentar em %s o intelecto. requer item de nível %s ou superior"] = { { Stats.Intellect, }, false, } -- i84574
+L["encanta permanentemente um anel para aumentar em %s a agilidade. requer item de nível %s ou superior"] = { { Stats.Agility, }, false, } -- i84575
+L["encanta permanentemente um anel para aumentar em %s o intelecto. requer item de nível %s ou superior"] = { { Stats.Intellect, }, false, } -- i84576
+L["encanta permanentemente um anel para aumentar em %s a força. requer item de nível %s ou superior"] = { { Stats.Strength, }, false, } -- i84578
+L["ensina a encantar um manto permanentemente para aumentar em %s o acerto crítico. requer item de nível %s ou superior"] = { { Stats.CritRating, }, false, } -- i52737
+L["ensina a encantar braçadeiras permanentemente para aumentar em %s o acerto crítico. requer um item de nível %s ou superior"] = { { Stats.CritRating, }, false, } -- i52738
+L["ensina a encantar permanentemente uma armadura de torso para aumentar em %s todos os atributos. requer um item de nível %s ou superior"] = { { Stats.AllStats, }, false, } -- i52739
+L["ensina a encantar permanentemente um escudo para aumentar em %s o vigor. requer um item de nível %s ou maior"] = { { Stats.Stamina, }, false, } -- i52740
+L["ensina a encantar botas permanentemente para aumentar ligeiramente a velocidade de movimento e em %s a agilidade. requer item de nível %s ou maior"] = { { Stats.Agility, }, false, } -- i64411
+L["ensina a encantar um par de botas permanentemente, aumentando um pouco a velocidade de movimento e em %s a maestria. só pode ser usado em itens de nível %s ou superior"] = { { Stats.MasteryRating, }, false, } -- i64412
+L["ensina a encantar braçadeiras permanentemente para aumentar em %s a aceleração. requer item de nível %s ou superior"] = { { Stats.HasteRating, }, false, } -- i64413
+L["ensina a encantar luvas permanentemente para aumentar em %s a maestria. requer item de nível %s ou superior"] = { { Stats.MasteryRating, }, false, } -- i64414
+L["ensina a encantar luvas permanentemente para aumentar em %s a força. requer um item de nível %s ou superior"] = { { Stats.Strength, }, false, } -- i64415
 L["ensina a encantar uma armadura de torso permanentemente para aumentar em %s a resiliência. requer item de nível %s ou superior"] = { { Stats.ResilienceRating, }, false, } -- i28270
 L["ensina a encantar luvas permanentemente para aumentar o acerto em %s. requer item de nível %s ou superior"] = { { Stats.HitRating, }, false, } -- i28271
 L["ensina a encantar luvas permanentemente para aumentar em %s o poder mágico. requer item de nível %s ou superior"] = { { Stats.SpellPower, }, false, } -- i28272
@@ -2300,28 +2333,6 @@ L["ensina a encantar braçadeiras permanentemente para aumentar em %s o poder m�
 L["ensina a encantar braçadeiras permanentemente para aumentar em %s o vigor. requer um item de nível %s ou superior"] = { { Stats.Stamina, }, false, } -- i44944
 L["ensina a encantar permanentemente uma arma corpo a corpo para aumentar em %s o vigor. requer um item de nível %s ou superior"] = { { Stats.Stamina, }, false, } -- i44945
 L["ensina a encantar permanentemente um cajado para aumentar em %s o poder mágico. requer um item de nível %s ou superior"] = { { Stats.SpellPower, }, false, } -- i45059
-L["encanta permanentemente um par de botas para aumentar um pouco a velocidade de movimento e a agilidade em %s. requer item de nível %s ou superior"] = { { Stats.Agility, }, false, } -- i84553
-L["encanta permanentemente um par de botas para aumentar em %s a aceleração. requer item de nível %s ou superior"] = { { Stats.HasteRating, }, false, } -- i84554
-L["encanta permanentemente um par de botas para aumentar em %s o acerto. requer item de nível %s ou superior"] = { { Stats.HitRating, }, false, } -- i84555
-L["encanta permanentemente um par de botas para aumentar um pouco a velocidade de movimento e em %s a de maestria. requer item de nível %s ou superior"] = { { Stats.MasteryRating, }, false, } -- i84556
-L["encanta permanentemente braçadeiras para aumentar em %s a esquiva. requer item de nível %s ou superior"] = { { Stats.DodgeRating, }, false, } -- i84558
-L["encanta permanentemente braçadeiras para aumentar em %s a maestria. requer item de nível %s ou superior"] = { { Stats.MasteryRating, }, false, } -- i84560
-L["encanta permanentemente uma armadura de torso para aumentar em %s a resiliência jxj. requer um item de nível %s ou superior"] = { { Stats.ResilienceRating, }, false, } -- i84563
-L["encanta permanentemente a armadura de torso para aumentar em %s o espírito. requer item de nível %s ou superior"] = { { Stats.Spirit, }, false, } -- i84564
-L["encanta permanentemente armadura de torso para aumentar em %s o vigor. requer item de nível %s ou superior"] = { { Stats.Stamina, }, false, } -- i84565
-L["encanta permanentemente um manto para aumentar em %s o vigor. requer item de nível %s ou superior"] = { { Stats.Stamina, }, false, } -- i84566
-L["encanta permanentemente um manto para aumentar em %s o acerto crítico. requer item de nível %s ou superior"] = { { Stats.CritRating, }, false, } -- i84567
-L["encanta permanentemente um manto para aumentar em %s o acerto. requer item de nível %s ou superior"] = { { Stats.HitRating, }, false, } -- i84568
-L["encanta permanentemente um manto para aumentar em %s o intelecto. requer item de nível %s ou superior"] = { { Stats.Intellect, }, false, } -- i84569
-L["encanta permanentemente luvas para aumentar em %s a aptidão. requer item de nível %s ou superior"] = { { Stats.ExpertiseRating, }, false, } -- i84570
-L["encanta permanentemente luvas para aumentar em %s a aceleração. requer item de nível %s ou superior"] = { { Stats.HasteRating, }, false, } -- i84571
-L["encanta permanentemente luvas para aumentar em %s a maestria. requer item de nível %s ou superior"] = { { Stats.MasteryRating, }, false, } -- i84572
-L["encanta permanentemente um escudo ou item de mão secundária para aumentar em %s o intelecto. requer item de nível %s ou superior"] = { { Stats.Intellect, }, false, } -- i84574
-L["encanta permanentemente um anel para aumentar em %s a agilidade. requer item de nível %s ou superior"] = { { Stats.Agility, }, false, } -- i84575
-L["encanta permanentemente um anel para aumentar em %s o intelecto. requer item de nível %s ou superior"] = { { Stats.Intellect, }, false, } -- i84576
-L["encanta permanentemente um anel para aumentar em %s a força. requer item de nível %s ou superior"] = { { Stats.Strength, }, false, } -- i84578
-L["ensina a encantar permanentemente um anel para aumentar em %s todos os atributos"] = { { Stats.AllStats, }, } -- i186683
-L["ensina a encantar permanentemente uma arma para aumentar em %s o poder jxj e reduzir em %s% a duração dos efeitos de desarmar. a redução da duração não acumula com outros efeitos semelhantes. requer nível de item %s ou superior"] = { { Stats.PvpPowerRating, }, false, false, } -- i254315
 L["afiado (%s dano)"] = { { Stats.AverageWeaponDamage, }, } -- e13
 L["reforçado (%s de armadura)"] = { { Stats.Armor, }, } -- e15
 L["pesado (%s dano)"] = { { Stats.AverageWeaponDamage, }, } -- e19

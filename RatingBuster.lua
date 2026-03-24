@@ -2480,6 +2480,15 @@ function RatingBuster:ProcessStat(stat, value, breakdownStats, link, color, stat
 
 		local spellHasteRating = value * statModContext("ADD_SPELL_HASTE_RATING_MOD_HASTE_RATING")
 		self:ProcessStat(StatLogic.Stats.SpellHasteRating, spellHasteRating, breakdownStats, link, color, statModContext, true, isBaseStat, db.profile.showSpellHasteFromHasteRating)
+	elseif stat == StatLogic.Stats.HighestSecondary then
+		local critRating = value * statModContext("ADD_CRIT_RATING_MOD_HIGHEST_SECONDARY")
+		self:ProcessStat(StatLogic.Stats.CritRating, critRating, breakdownStats, link, color, statModContext, false, false, true)
+
+		local hasteRating = value * statModContext("ADD_HASTE_RATING_MOD_HIGHEST_SECONDARY")
+		self:ProcessStat(StatLogic.Stats.HasteRating, hasteRating, breakdownStats, link, color, statModContext, false, false, true)
+
+		local masteryRating = value * statModContext("ADD_MASTERY_RATING_MOD_HIGHEST_SECONDARY")
+		self:ProcessStat(StatLogic.Stats.MasteryRating, masteryRating, breakdownStats, link, color, statModContext, false, false, true)
 	elseif StatLogic.RatingBase[stat] and db.profile.showRatings then
 		--------------------
 		-- Combat Ratings --
@@ -2567,6 +2576,33 @@ function RatingBuster:ProcessStat(stat, value, breakdownStats, link, color, stat
 
 		local spirit = value * statModContext("ADD_SPI_MOD_ALL_STATS")
 		self:ProcessStat(StatLogic.Stats.Spirit, spirit, breakdownStats, link, color, statModContext, true, false, db.profile.showSpiFromAllStats)
+	elseif stat == StatLogic.Stats.Primary then
+		local strength = value * statModContext("ADD_STR_MOD_PRIMARY")
+		self:ProcessStat(StatLogic.Stats.Strength, strength, breakdownStats, link, color, statModContext, false, false, true)
+
+		local agility = value * statModContext("ADD_AGI_MOD_PRIMARY")
+		self:ProcessStat(StatLogic.Stats.Agility, agility, breakdownStats, link, color, statModContext, false, false, true)
+
+		local intellect = value * statModContext("ADD_INT_MOD_PRIMARY")
+		self:ProcessStat(StatLogic.Stats.Intellect, intellect, breakdownStats, link, color, statModContext, false, false, true)
+	elseif stat == StatLogic.Stats.HighestPrimary then
+		local strength = value * statModContext("ADD_STR_MOD_HIGHEST_PRIMARY")
+		self:ProcessStat(StatLogic.Stats.Strength, strength, breakdownStats, link, color, statModContext, false, false, true)
+
+		local agility = value * statModContext("ADD_AGI_MOD_HIGHEST_PRIMARY")
+		self:ProcessStat(StatLogic.Stats.Agility, agility, breakdownStats, link, color, statModContext, false, false, true)
+
+		local intellect = value * statModContext("ADD_INT_MOD_HIGHEST_PRIMARY")
+		self:ProcessStat(StatLogic.Stats.Intellect, intellect, breakdownStats, link, color, statModContext, false, false, true)
+
+		local spirit = value * statModContext("ADD_SPI_MOD_HIGHEST_PRIMARY")
+		self:ProcessStat(StatLogic.Stats.Spirit, spirit, breakdownStats, link, color, statModContext, false, false, true)
+	elseif stat == StatLogic.Stats.HighestStrengthAgility then
+		local strength = value * statModContext("ADD_STR_MOD_HIGHEST_STR_AGI")
+		self:ProcessStat(StatLogic.Stats.Strength, strength, breakdownStats, link, color, statModContext, false, false, true)
+
+		local agility = value * statModContext("ADD_AGI_MOD_HIGHEST_STR_AGI")
+		self:ProcessStat(StatLogic.Stats.Agility, agility, breakdownStats, link, color, statModContext, false, false, true)
 	elseif stat == StatLogic.Stats.Strength and db.profile.showStats then
 		local mod = statModContext("MOD_STR")
 		value = value * mod
@@ -3288,6 +3324,9 @@ local summaryCalcData = {
 			return statModContext("MOD_STR") * (
 				sum[StatLogic.Stats.Strength]
 				+ sum[StatLogic.Stats.AllStats] * statModContext("ADD_STR_MOD_ALL_STATS")
+				+ sum[StatLogic.Stats.Primary] * statModContext("ADD_STR_MOD_PRIMARY")
+				+ sum[StatLogic.Stats.HighestPrimary] * statModContext("ADD_STR_MOD_HIGHEST_PRIMARY")
+				+ sum[StatLogic.Stats.HighestStrengthAgility] * statModContext("ADD_STR_MOD_HIGHEST_STR_AGI")
 				+ summaryFunc[StatLogic.Stats.Defense](sum, statModContext) * statModContext("ADD_STR_MOD_DEFENSE")
 			)
 		end,
@@ -3300,6 +3339,9 @@ local summaryCalcData = {
 			return statModContext("MOD_AGI") * (
 				sum[StatLogic.Stats.Agility]
 				+ sum[StatLogic.Stats.AllStats] * statModContext("ADD_AGI_MOD_ALL_STATS")
+				+ sum[StatLogic.Stats.Primary] * statModContext("ADD_AGI_MOD_PRIMARY")
+				+ sum[StatLogic.Stats.HighestPrimary] * statModContext("ADD_AGI_MOD_HIGHEST_PRIMARY")
+				+ sum[StatLogic.Stats.HighestStrengthAgility] * statModContext("ADD_AGI_MOD_HIGHEST_STR_AGI")
 				+ summaryFunc[StatLogic.Stats.Intellect](sum, statModContext) * statModContext("ADD_AGI_MOD_INT")
 			)
 		end,
@@ -3323,6 +3365,8 @@ local summaryCalcData = {
 			return statModContext("MOD_INT") * (
 				sum[StatLogic.Stats.Intellect]
 				+ sum[StatLogic.Stats.AllStats] * statModContext("ADD_INT_MOD_ALL_STATS")
+				+ sum[StatLogic.Stats.Primary] * statModContext("ADD_INT_MOD_PRIMARY")
+				+ sum[StatLogic.Stats.HighestPrimary] * statModContext("ADD_INT_MOD_HIGHEST_PRIMARY")
 			)
 		end,
 	},
@@ -3334,13 +3378,17 @@ local summaryCalcData = {
 			return statModContext("MOD_SPI") * (
 				sum[StatLogic.Stats.Spirit]
 				+ sum[StatLogic.Stats.AllStats] * statModContext("ADD_SPI_MOD_ALL_STATS")
+				+ sum[StatLogic.Stats.HighestPrimary] * statModContext("ADD_SPI_MOD_HIGHEST_PRIMARY")
 			)
 		end,
 	},
 	{
 		stat = StatLogic.Stats.MasteryRating,
 		func = function(sum, statModContext)
-			return statModContext("MOD_MASTERY_RATING") * sum[StatLogic.Stats.MasteryRating]
+			return statModContext("MOD_MASTERY_RATING") * (
+				sum[StatLogic.Stats.MasteryRating]
+				+ sum[StatLogic.Stats.HighestSecondary] * statModContext("ADD_MASTERY_RATING_MOD_HIGHEST_SECONDARY")
+			)
 		end,
 	},
 	{
@@ -3526,6 +3574,7 @@ local summaryCalcData = {
 				sum[StatLogic.Stats.CritRating]
 				+ summaryFunc[StatLogic.Stats.DodgeRating](sum, statModContext) * statModContext("ADD_CRIT_RATING_MOD_DODGE_RATING")
 				+ summaryFunc[StatLogic.Stats.ParryRating](sum, statModContext) * statModContext("ADD_CRIT_RATING_MOD_PARRY_RATING")
+				+ sum[StatLogic.Stats.HighestSecondary] * statModContext("ADD_CRIT_RATING_MOD_HIGHEST_SECONDARY")
 			)
 		end,
 	},
@@ -3570,7 +3619,10 @@ local summaryCalcData = {
 	{
 		stat = StatLogic.Stats.HasteRating,
 		func = function (sum, statModContext)
-			return statModContext("MOD_HASTE_RATING") * sum[StatLogic.Stats.HasteRating]
+			return statModContext("MOD_HASTE_RATING") * (
+				sum[StatLogic.Stats.HasteRating]
+				+ sum[StatLogic.Stats.HighestSecondary] * statModContext("ADD_HASTE_RATING_MOD_HIGHEST_SECONDARY")
+			)
 		end,
 	},
 	-- Haste - MELEE_HASTE_RATING

@@ -311,6 +311,12 @@
         "INVSLOT_BACK",
         "INVSLOT_OFFHAND",
         "INVSLOT_RANGED",
-        "INVSLOT_TABARD"
+        "INVSLOT_TABARD",
+        "LE_UNIT_STAT_STRENGTH",
+        "LE_UNIT_STAT_STAMINA",
+        "CR_HASTE_MELEE",
+        "CR_CRIT_MELEE",
+        "CR_HIT_MELEE",
+        "CR_MASTERY"
     ]
 }

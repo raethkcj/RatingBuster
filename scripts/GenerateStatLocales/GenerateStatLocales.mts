@@ -155,7 +155,7 @@ function mapTextToStatEntry(
 	spellDurationFormats: Record<Time, string>,
 	locale: string,
 ): [string, StatEntry] {
-	text = text.replace(/[\s.]+$/, "").replaceAll(/[\r\n]+/gm, "\\n").replaceAll(/"/gm, "\\\"").toLowerCase()
+	text = text.replace(/[\s.]+$/, "").replaceAll(/[\r\n]/gm, m => m === "\r" ? "\\r" : "\\n").replaceAll(/"/gm, "\\\"").toLowerCase()
 
 	const remainingEffects: (StatValue[] | false)[] = statEffects ? [...statEffects] : []
 

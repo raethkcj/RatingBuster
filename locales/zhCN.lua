@@ -208,6 +208,8 @@ L["statPatterns"] = {
 	[StatLogic.Stats.Stamina] = { SPELL_STAT3_NAME:lower() },
 	[StatLogic.Stats.Intellect] = { SPELL_STAT4_NAME:lower() },
 	[StatLogic.Stats.Spirit] = { SPELL_STAT5_NAME:lower() },
+	[StatLogic.Stats.HighestPrimary] = { SPELL_STAT1_NAME:lower(), SPELL_STAT2_NAME:lower(), SPELL_STAT4_NAME:lower(), SPELL_STAT5_NAME:lower() },
+
 	[StatLogic.Stats.DefenseRating] = { "防御等级" },
 	[StatLogic.Stats.Defense] = { DEFENSE:lower() },
 	[StatLogic.Stats.DodgeRating] = { "躲闪等级", "躲闪" },
@@ -238,9 +240,11 @@ L["statPatterns"] = {
 	[StatLogic.Stats.ExpertiseRating] = { "精准等级", "精准" },
 
 	[StatLogic.Stats.AllStats] = { SPELL_STATALL:lower() },
+	[StatLogic.Stats.Primary] = { "有用属性" },
 
 	[StatLogic.Stats.ArmorPenetrationRating] = { "护甲穿透等级" },
 	[StatLogic.Stats.MasteryRating] = { "精通" },
+	[StatLogic.Stats.HighestSecondary] = { "精通", "急速等级", "急速", "加速等级", "爆击等级", "爆击", },
 	[StatLogic.Stats.Armor] = { ARMOR:lower() },
 }
 -------------------------

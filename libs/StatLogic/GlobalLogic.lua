@@ -122,9 +122,181 @@ StatLogic.StatModTable["GLOBAL"] = {
 			["value"] = 1,
 		},
 	},
+	["ADD_STR_MOD_HIGHEST_PRIMARY"] = {
+		{
+			["value"] = 1,
+			["highest"] = StatLogic.Stats.Strength,
+			["pool"] = StatLogic.Stats.HighestPrimary,
+		},
+	},
+	["ADD_AGI_MOD_HIGHEST_PRIMARY"] = {
+		{
+			["value"] = 1,
+			["highest"] = StatLogic.Stats.Agility,
+			["pool"] = StatLogic.Stats.HighestPrimary,
+		},
+	},
+	["ADD_INT_MOD_HIGHEST_PRIMARY"] = {
+		{
+			["value"] = 1,
+			["highest"] = StatLogic.Stats.Intellect,
+			["pool"] = StatLogic.Stats.HighestPrimary,
+		},
+	},
+	["ADD_STR_MOD_HIGHEST_STR_AGI"] = {
+		{
+			["value"] = 1,
+			["highest"] = StatLogic.Stats.Strength,
+			["pool"] = StatLogic.Stats.HighestStrengthAgility,
+		},
+	},
+	["ADD_AGI_MOD_HIGHEST_STR_AGI"] = {
+		{
+			["value"] = 1,
+			["highest"] = StatLogic.Stats.Agility,
+			["pool"] = StatLogic.Stats.HighestStrengthAgility,
+		},
+	},
+	["ADD_CRIT_RATING_MOD_HIGHEST_SECONDARY"] = {
+		{
+			["value"] = 1,
+			["highest"] = StatLogic.Stats.CritRating,
+			["pool"] = StatLogic.Stats.HighestSecondary,
+		},
+	},
+	["ADD_HASTE_RATING_MOD_HIGHEST_SECONDARY"] = {
+		{
+			["value"] = 1,
+			["highest"] = StatLogic.Stats.HasteRating,
+			["pool"] = StatLogic.Stats.HighestSecondary,
+		},
+	},
+	["ADD_MASTERY_RATING_MOD_HIGHEST_SECONDARY"] = {
+		{
+			["value"] = 1,
+			["highest"] = StatLogic.Stats.MasteryRating,
+			["pool"] = StatLogic.Stats.HighestSecondary,
+		},
+	},
 }
 
-addon.GenerateWeaponSubclassStats()
+if addon.class == "DRUID" then
+	StatLogic.StatModTable["DRUID"]["ADD_INT_MOD_PRIMARY"] = {
+		{
+			["value"] = 1,
+			["spec"] = 1,
+		},
+		{
+			["value"] = 1,
+			["spec"] = addon.tocversion >= 50000 and 4 or 3,
+		},
+	}
+	StatLogic.StatModTable["DRUID"]["ADD_AGI_MOD_PRIMARY"] = {
+		{
+			["value"] = 1,
+			["spec"] = 2,
+		},
+		addon.tocversion >= 50000 and {
+			["value"] = 1,
+			["spec"] =  3,
+		} or nil,
+	}
+elseif addon.class == "DEATHKNIGHT" then
+	StatLogic.StatModTable["DEATHKNIGHT"]["ADD_STR_MOD_PRIMARY"] = {
+		{
+			["value"] = 1,
+		},
+	}
+elseif addon.class == "HUNTER" then
+	StatLogic.StatModTable["HUNTER"]["ADD_AGI_MOD_PRIMARY"] = {
+		{
+			["value"] = 1,
+		},
+	}
+elseif addon.class == "MAGE" then
+	StatLogic.StatModTable["MAGE"]["ADD_INT_MOD_PRIMARY"] = {
+		{
+			["value"] = 1,
+		},
+	}
+elseif addon.class == "MONK" then
+	StatLogic.StatModTable["MONK"]["ADD_AGI_MOD_PRIMARY"] = {
+		{
+			["value"] = 1,
+			["spec"] = 1,
+		},
+		{
+			["value"] = 1,
+			["spec"] = 3,
+		},
+	}
+	StatLogic.StatModTable["MONK"]["ADD_INT_MOD_PRIMARY"] = {
+		{
+			["value"] = 1,
+			["spec"] = 2,
+		},
+	}
+elseif addon.class == "PALADIN" then
+	StatLogic.StatModTable["PALADIN"]["ADD_INT_MOD_PRIMARY"] = {
+		{
+			["value"] = 1,
+			["spec"] = 1,
+		},
+	}
+	StatLogic.StatModTable["PALADIN"]["ADD_STR_MOD_PRIMARY"] = {
+		{
+			["value"] = 1,
+			["spec"] = 2,
+		},
+		{
+			["value"] = 1,
+			["spec"] = 3,
+		},
+	}
+elseif addon.class == "PRIEST" then
+	StatLogic.StatModTable["PRIEST"]["ADD_INT_MOD_PRIMARY"] = {
+		{
+			["value"] = 1,
+		},
+	}
+elseif addon.class == "ROGUE" then
+	StatLogic.StatModTable["ROGUE"]["ADD_AGI_MOD_PRIMARY"] = {
+		{
+			["value"] = 1,
+		},
+	}
+elseif addon.class == "SHAMAN" then
+	StatLogic.StatModTable["SHAMAN"]["ADD_INT_MOD_PRIMARY"] = {
+		{
+			["value"] = 1,
+			["spec"] = 1,
+		},
+		{
+			["value"] = 1,
+			["spec"] = 3,
+		},
+	}
+	StatLogic.StatModTable["SHAMAN"]["ADD_AGI_MOD_PRIMARY"] = {
+		{
+			["value"] = 1,
+			["spec"] = 2,
+		},
+	}
+elseif addon.class == "WARLOCK" then
+	StatLogic.StatModTable["WARLOCK"]["ADD_INT_MOD_PRIMARY"] = {
+		{
+			["value"] = 1,
+		},
+	}
+elseif addon.class == "WARRIOR" then
+	StatLogic.StatModTable["WARRIOR"]["ADD_STR_MOD_PRIMARY"] = {
+		{
+			["value"] = 1,
+		},
+	}
+end
+
+addon.SetupStatModData()
 
 for stat in pairs(StatLogic.RatingBase) do
 	local rating_name = stat.name:gsub("(%l)(%u)", "%1_%2"):upper()
