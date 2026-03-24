@@ -209,6 +209,7 @@ L["statPatterns"] = {
 	[StatLogic.Stats.Stamina] = { SPELL_STAT3_NAME:lower() },
 	[StatLogic.Stats.Intellect] = { SPELL_STAT4_NAME:lower() },
 	[StatLogic.Stats.Spirit] = { SPELL_STAT5_NAME:lower() },
+	[StatLogic.Stats.HighestPrimary] = { SPELL_STAT1_NAME:lower(), SPELL_STAT2_NAME:lower(), SPELL_STAT4_NAME:lower(), SPELL_STAT5_NAME:lower() },
 	[StatLogic.Stats.DefenseRating] = { "방어 숙련도" },
 	[StatLogic.Stats.Defense] = { DEFENSE:lower() },
 	[StatLogic.Stats.DodgeRating] = { "회피 숙련도", "회피" },

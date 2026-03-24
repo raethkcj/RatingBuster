@@ -209,6 +209,7 @@ L["statPatterns"] = {
 	[StatLogic.Stats.Stamina] = { "выносливость", "выносливости" },
 	[StatLogic.Stats.Intellect] = { "интеллекту", "интеллект" },
 	[StatLogic.Stats.Spirit] = { "духу", "дух" },
+	[StatLogic.Stats.HighestPrimary] = { "сила", "силу", "силе", "силы", "ловкость", "ловкости", "интеллекту", "интеллект", "духу", "дух" },
 	[StatLogic.Stats.DefenseRating] = { "рейтинг защиты", "рейтингу защиты", "рейтинга защиты", "к защите" },
 	[StatLogic.Stats.Defense] = { DEFENSE:lower() },
 	[StatLogic.Stats.DodgeRating] = { "рейтинг уклонения", "рейтингу уклонения", "рейтинга уклонения", "эффективность уклонения", "уклонению" },

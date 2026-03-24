@@ -208,6 +208,7 @@ L["statPatterns"] = {
 	[StatLogic.Stats.Stamina] = { SPELL_STAT3_NAME:lower() },
 	[StatLogic.Stats.Intellect] = { SPELL_STAT4_NAME:lower() },
 	[StatLogic.Stats.Spirit] = { SPELL_STAT5_NAME:lower() },
+	[StatLogic.Stats.HighestPrimary] = { SPELL_STAT1_NAME:lower(), SPELL_STAT2_NAME:lower(), SPELL_STAT4_NAME:lower(), SPELL_STAT5_NAME:lower() },
 	[StatLogic.Stats.DefenseRating] = { "防御等级" },
 	[StatLogic.Stats.Defense] = { DEFENSE:lower() },
 	[StatLogic.Stats.DodgeRating] = { "躲闪等级", "躲闪" },
