@@ -113,7 +113,7 @@ StatLogic.Stats.HealthRegenOutOfCombat = Stat:new()
 ---@return function
 local function RatingGetter(ratingIndex)
 	return function()
-		return GetCombatRating(ratingIndex)
+		return ratingIndex and GetCombatRating(ratingIndex) or 0
 	end
 end
 
