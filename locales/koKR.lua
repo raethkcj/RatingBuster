@@ -210,6 +210,7 @@ L["statPatterns"] = {
 	[StatLogic.Stats.Intellect] = { SPELL_STAT4_NAME:lower() },
 	[StatLogic.Stats.Spirit] = { SPELL_STAT5_NAME:lower() },
 	[StatLogic.Stats.HighestPrimary] = { SPELL_STAT1_NAME:lower(), SPELL_STAT2_NAME:lower(), SPELL_STAT4_NAME:lower(), SPELL_STAT5_NAME:lower() },
+
 	[StatLogic.Stats.DefenseRating] = { "방어 숙련도" },
 	[StatLogic.Stats.Defense] = { DEFENSE:lower() },
 	[StatLogic.Stats.DodgeRating] = { "회피 숙련도", "회피" },
@@ -244,6 +245,7 @@ L["statPatterns"] = {
 
 	[StatLogic.Stats.ArmorPenetrationRating] = { "방어구 관통력" },	--armor penetration rating
 	[StatLogic.Stats.MasteryRating] = { "특화" },
+	[StatLogic.Stats.HighestSecondary] = { "특화", "공격 가속도", "가속", "가속도", "치명타 적중도", "치명타 및 극대화", },
 	[StatLogic.Stats.Armor] = { ARMOR:lower() },
 }
 -------------------------

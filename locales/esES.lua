@@ -210,6 +210,7 @@ L["statPatterns"] = {
 	[StatLogic.Stats.Intellect] = { SPELL_STAT4_NAME:lower() },
 	[StatLogic.Stats.Spirit] = { SPELL_STAT5_NAME:lower() },
 	[StatLogic.Stats.HighestPrimary] = { SPELL_STAT1_NAME:lower(), SPELL_STAT2_NAME:lower(), SPELL_STAT4_NAME:lower(), SPELL_STAT5_NAME:lower() },
+
 	[StatLogic.Stats.DefenseRating] = { "índice de defensa" },
 	[StatLogic.Stats.Defense] = { DEFENSE:lower() },
 	[StatLogic.Stats.DodgeRating] = { "índice de esquivar", "esquivar" },
@@ -244,6 +245,7 @@ L["statPatterns"] = {
 
 	[StatLogic.Stats.ArmorPenetrationRating] = { "índice de penetración de armadura" },
 	[StatLogic.Stats.MasteryRating] = { "maestría" },
+	[StatLogic.Stats.HighestSecondary] = { "maestría", "índice de velocidad de lanzamiento de ataques", "celeridad", "índice de golpe crítico", "golpe crítico", },
 	[StatLogic.Stats.Armor] = { ARMOR:lower() },
 }
 -------------------------

@@ -237,6 +237,7 @@ L["statPatterns"] = {
 
 	[StatLogic.Stats.ArmorPenetrationRating] = { "armor penetration rating", "armor penetration" },
 	[StatLogic.Stats.MasteryRating] = { "mastery rating", "mastery" },
+	[StatLogic.Stats.HighestSecondary] = { "mastery rating", "mastery", "haste rating", "haste", "critical strike rating", "critical strike", "critical hit rating", "critical rating", "crit rating", "crit", },
 	[StatLogic.Stats.Armor] = { ARMOR:lower() },
 }
 -------------------------

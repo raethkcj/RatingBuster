@@ -209,6 +209,7 @@ L["statPatterns"] = {
 	[StatLogic.Stats.Intellect] = { SPELL_STAT4_NAME:lower() },
 	[StatLogic.Stats.Spirit] = { SPELL_STAT5_NAME:lower() },
 	[StatLogic.Stats.HighestPrimary] = { SPELL_STAT1_NAME:lower(), SPELL_STAT2_NAME:lower(), SPELL_STAT4_NAME:lower(), SPELL_STAT5_NAME:lower() },
+
 	[StatLogic.Stats.DefenseRating] = { "verteidigungswertung" },
 	[StatLogic.Stats.Defense] = { DEFENSE:lower() },
 	[StatLogic.Stats.DodgeRating] = { "ausweichwertung", "ausweichen" },
@@ -243,6 +244,7 @@ L["statPatterns"] = {
 
 	[StatLogic.Stats.ArmorPenetrationRating] = { "rüstungsdurchschlagwertung", "rüstungsdurchschlag" },
 	[StatLogic.Stats.MasteryRating] = { "meisterschaft" },
+	[StatLogic.Stats.HighestSecondary] = { "meisterschaft", "tempowertung", "tempo", "kritische trefferwertung", "kritischer trefferwert", "angriffstempowertung", },
 	[StatLogic.Stats.Armor] = { ARMOR:lower() },
 }
 -------------------------
