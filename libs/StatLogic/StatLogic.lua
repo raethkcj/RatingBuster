@@ -2147,11 +2147,6 @@ do
 		-----------------------
 		-- Strings without numbers; mainly used for enchants or easy exclusions
 		if not found then
-			text = text:gsub("[\r\n]+", function(match)
-				length = #match - 1
-				return "\n"
-			end)
-			offset = offset + length
 			-- Strip leading "Equip: ", trailing ".", and lowercase
 			text, length = trimPrefixes(text, addon.TrimmedPrefixes)
 			offset = offset + length

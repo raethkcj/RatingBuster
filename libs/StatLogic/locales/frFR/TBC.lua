@@ -35,7 +35,7 @@ W["excite un léviathan proche et augmente son taux d'attaque"] = { [Stats.Melee
 W["charge une cible et la fait tomber à la renverse"] = { [Stats.MeleeHaste] = -6000, } -- s41581
 W["charge une cible, l'étourdit et lui inflige une rafale d'attaques rapides"] = { [Stats.MeleeHaste] = -6000, } -- s42583
 W["lorsque cette technique est activée, tous vos sorts sont instantanés"] = { [Stats.SpellHaste] = 100000, } -- s45813
-W["on s’amuse à faire semblant.\nvous imaginez que vous êtes plus fort et plus résilient. c’est pas une petite peste qui va vous abattre…"] = { [Stats.FrostResistance] = 200, } -- s346285
+W["on s’amuse à faire semblant.\r\nvous imaginez que vous êtes plus fort et plus résilient. c’est pas une petite peste qui va vous abattre…"] = { [Stats.FrostResistance] = 200, } -- s346285
 W["entame un rituel qui invoque le membre du groupe ciblé. nécessite la présence du lanceur de sorts et de deux autres membres du groupe pour mener le rituel à son terme. pour y prendre part, les joueurs doivent être hors combat, cliquer avec le bouton droit de la souris sur le portail et ne pas bouger tant que le rituel n'est pas terminé"] = { [Stats.FireResistance] = 10, [Stats.FireResistance] = 10, } -- s29134
 W["permet d'équiper les armes à une main dans la main gauche"] = { [Stats.MeleeHit] = 20, [Stats.RangedHit] = 20, } -- s42459
 W["fractionnement"] = { [Stats.AverageWeaponDamage] = -10, } -- e27
@@ -165,7 +165,7 @@ L["réduit l'endurance d'un ennemi de %s et l'esprit de %s pendant %s min"] = { 
 L["rend %s points de vie en %s s. si vous passez au moins %s secondes à manger, vous serez \"bien nourri\" et vous bénéficierez d'un bonus de %s à l'endurance et à l'esprit pendant %s min. vous devez rester assis pendant que vous mangez"] = { false, false, false, { Stats.Stamina, }, false, ignoreSum = true } -- s5004
 L["un breuvage corsé qui augmente votre force de %s et diminue votre intelligence de %s pendant %s min"] = { { Stats.Strength, }, { Stats.Intellect, }, false, } -- s5020
 L["augmente de %s vos points de vie, mais réduit votre esprit de %s pendant %s min"] = { false, { Stats.Spirit, }, false, reduction = true } -- s5021
-L["coup de grâce qui augmente la vitesse d'attaque en mêlée de %s%. l'effet dure en fonction des points de combo :\n   %s point : %s secondes\n   %s points : %s secondes\n   %s points : %s secondes\n   %s points : %s secondes\n   %s points : %s secondes"] = { { Stats.MeleeHaste, }, false, false, false, false, false, false, false, false, false, false, } -- s5171
+L["coup de grâce qui augmente la vitesse d'attaque en mêlée de %s%. l'effet dure en fonction des points de combo :\r\n   %s point : %s secondes\r\n   %s points : %s secondes\r\n   %s points : %s secondes\r\n   %s points : %s secondes\r\n   %s points : %s secondes"] = { { Stats.MeleeHaste, }, false, false, false, false, false, false, false, false, false, false, } -- s5171
 L["inflige %s points de dégâts de feu toutes les %s sec. à un ennemi. augmente le temps entre ses attaques de %s% et réduit sa vitesse de déplacement de %s% pendant %s s"] = { false, false, { Stats.MeleeHaste, }, false, false, reduction = true } -- s5213
 L["augmente de %s les points de dégâts que vous infligez pendant %s s"] = { { Stats.AverageWeaponDamage, }, false, } -- s5217
 L["augmente de %s l'armure et de %s toutes les caractéristiques de la cible alliée pendant %s min"] = { { Stats.Armor, }, { Stats.AllStats, }, false, } -- s5232
@@ -227,7 +227,7 @@ L["augmente de %s votre esprit"] = { { Stats.Spirit, }, } -- s7353
 L["inflige %s points de dégâts de nature à un ennemi toutes les %s sec., augmente le temps entre ses attaques de %s% et réduit sa vitesse de déplacement de %s% pendant %s s"] = { false, false, { Stats.MeleeHaste, }, false, false, reduction = true } -- s7357
 L["augmente de %s l'esprit des membres du groupe à proximité"] = { { Stats.Spirit, }, } -- s7363
 L["charge un ennemi, l'immobilise pendant %s s et ajoute %s à la puissance d'attaque en mêlée de la prochaine attaque du sanglier"] = { false, { Stats.AttackPower, }, } -- s7371
-L["augmente les chances de coup critique de %s%.\naugmente tous les points de dégâts subis de %s%.\ndiminue le niveau de menace généré de %s%"] = { { Stats.MeleeCrit, Stats.RangedCrit, }, false, false, } -- s7381
+L["augmente les chances de coup critique de %s%.\r\naugmente tous les points de dégâts subis de %s%.\r\ndiminue le niveau de menace généré de %s%"] = { { Stats.MeleeCrit, Stats.RangedCrit, }, false, false, } -- s7381
 L["fracasse l'armure de la cible et réduit son score de %s par attaque fracasser armure portée. génère un niveau élevé de menace. peut être utilisé jusqu'à %s fois. dure %s s"] = { { Stats.Armor, }, false, false, reduction = true } -- s7386
 L["enchante de manière permanente des brassards. ces derniers confèrent un bonus de %s aux points de vie"] = { { Stats.Health, }, } -- s7418
 L["enchante de manière permanente une pièce d'armure de torse. cette dernière confère un bonus de %s aux points de vie"] = { { Stats.Health, }, } -- s7420
@@ -284,7 +284,7 @@ L["augmente la vitesse d'attaque du lanceur de sorts de %s% et les points de dé
 L["les dégâts physiques infligés par la cible sont réduits de %s pendant %s min"] = { { Stats.AverageWeaponDamage, }, false, reduction = true } -- s8277
 L["augmente les points de dégâts physiques infligés par un allié de %s pendant %s s"] = { { Stats.AverageWeaponDamage, }, false, } -- s8365
 L["les dégâts infligés par la cible sont réduits de %s pendant %s min"] = { { Stats.AverageWeaponDamage, }, false, reduction = true } -- s8552
-L["coup de grâce qui déstabilise la cible pendant %s s et réduit le score d'armure en fonction des points de combo :\n %s point : %s points d'armure\n %s points : %s points d'armure\n %s points : %s points d'armure\n %s points : %s points d'armure\n %s points : %s points d'armure"] = { false, false, { Stats.Armor, }, false, false, false, false, false, false, false, false, } -- s8647
+L["coup de grâce qui déstabilise la cible pendant %s s et réduit le score d'armure en fonction des points de combo :\r\n %s point : %s points d'armure\r\n %s points : %s points d'armure\r\n %s points : %s points d'armure\r\n %s points : %s points d'armure\r\n %s points : %s points d'armure"] = { false, false, { Stats.Armor, }, false, false, false, false, false, false, false, false, } -- s8647
 L["augmente la vitesse des attaques d'un allié de %s% pendant %s s, mais lui inflige aussi %s points de dégâts de nature toutes les %s sec"] = { { Stats.MeleeHaste, }, false, false, false, } -- s8699
 L["augmente l'armure de la cible alliée de %s, toutes les caractéristiques de %s et toutes les résistances de %s pendant %s min"] = { { Stats.Armor, }, { Stats.AllStats, }, false, false, } -- s8907
 L["affaiblit la cible ennemie, réduit les dégâts qu'elle inflige de %s et l'efficacité de tous ses soins de %s%. dure %s min"] = { { Stats.AverageWeaponDamage, }, false, false, reduction = true } -- s9035
@@ -561,7 +561,7 @@ L["enchante de manière permanente des bottes. ces dernières confèrent un bonu
 L["enchante de manière permanente une arme à deux mains. cette dernière confère un bonus de %s à l'esprit"] = { { Stats.Spirit, }, } -- s20035
 L["enchante de manière permanente une arme à deux mains. cette dernière confère un bonus de %s à l'intelligence"] = { { Stats.Intellect, }, } -- s20036
 L["les attaques de mêlée et à distance qui vous infligent des dégâts ont %s% de chances d'augmenter vos chances de blocage de %s%. dure %s s ou bloque %s attaques"] = { false, { Stats.BlockChance, }, false, false, ignoreSum = true } -- s20127
-L["investit le paladin de l'esprit d'un croisé pendant %s s. augmente la puissance d'attaque en mêlée de %s. la vitesse d'attaque est augmentée de %s% mais il inflige moins de dégâts. un seul sceau peut être actif sur le paladin à la fois.\nlibérez l'énergie de ce sceau pour juger un ennemi pendant %s s et augmenter les points de dégâts du sacré qu'il subit de %s au maximum. vos coups en mêlée réinitialisent la durée du sort. un seul jugement par paladin peut être actif à la fois"] = { false, { Stats.AttackPower, }, false, false, false, } -- s20162
+L["investit le paladin de l'esprit d'un croisé pendant %s s. augmente la puissance d'attaque en mêlée de %s. la vitesse d'attaque est augmentée de %s% mais il inflige moins de dégâts. un seul sceau peut être actif sur le paladin à la fois.\r\n\r\nlibérez l'énergie de ce sceau pour juger un ennemi pendant %s s et augmenter les points de dégâts du sacré qu'il subit de %s au maximum. vos coups en mêlée réinitialisent la durée du sort. un seul jugement par paladin peut être actif à la fois"] = { false, { Stats.AttackPower, }, false, false, false, } -- s20162
 L["augmente vos chances de toucher avec les armes de mêlée et les sorts de %s%"] = { { Stats.MeleeHit, Stats.RangedHit, Stats.SpellHit, }, } -- s20189
 L["lorsque vous êtes touché en combat, vous avez %s% de chances d'augmenter l'armure de tous les membres du groupe de %s pendant %s s"] = { false, { Stats.Armor, }, false, ignoreSum = true } -- s20847
 L["réduit la probabilité que vos attaques soient esquivées de %s% et réduit la durée de tous les effets de désarmement utilisés contre vous de %s%. non cumulable avec les autres effets qui réduisent la durée du désarmement"] = { { Stats.DodgeReduction, }, false, } -- s20504
@@ -734,7 +734,7 @@ L["diminue la résistance au givre des cibles de vos sorts de %s"] = { { Stats.F
 L["quand vos sorts offensifs atteignent une cible, donne une chance de diminuer les résistances magiques des cibles de vos sorts de %s pendant %s s"] = { { Stats.SpellPenetration, }, false, ignoreSum = true } -- s25767
 L["accorde la bénédiction de puissance supérieure à tous les membres du raid ou du groupe qui appartiennent à la même classe que la cible, augmentant la puissance d'attaque de %s pendant %s min. les joueurs ne peuvent bénéficier que des effets d'une seule bénédiction par paladin à la fois"] = { { Stats.GenericAttackPower, }, false, } -- s25782
 L["augmente la vitesse d'attaque de tous les membres du groupe proches de %s% et les dégâts des attaques de %s%"] = { { Stats.MeleeHaste, }, false, } -- s25801
-L["toutes les caractéristiques sont réduites de %s.\n%s points de dégâts d'ombre infligés toutes les %s sec"] = { false, { Stats.AllStats, }, false, reduction = true } -- s25805
+L["toutes les caractéristiques sont réduites de %s.\r\n%s points de dégâts d'ombre infligés toutes les %s sec"] = { false, { Stats.AllStats, }, false, reduction = true } -- s25805
 L["affaiblit la cible ennemie et réduit les dégâts qu'elle inflige de %s pendant %s min"] = { { Stats.AverageWeaponDamage, }, false, reduction = true } -- s25816
 L["la cible bénéficie de %s% de coups critiques en mêlée"] = { { Stats.MeleeCrit, Stats.RangedCrit, }, } -- s25848
 L["augmente votre puissance d'attaque en mêlée et à distance de %s. l'effet dure %s s"] = { { Stats.GenericAttackPower, }, false, } -- s25891
@@ -872,7 +872,7 @@ L["augmente la puissance d'attaque de la cible amicale de %s pendant %s s"] = { 
 L["augmente l'armure de la cible amicale de %s pendant %s s"] = { { Stats.Armor, }, false, } -- s28827
 L["augmente de %s% vos chances de toucher avec les sorts ainsi que celles de tous les membres du groupe se trouvant dans un rayon de %s mètres"] = { { Stats.SpellHit, }, false, } -- s28878
 L["augmente le score de coup critique des sorts contre les morts-vivants de %s"] = { { Stats.SpellCritRating, }, } -- s29069
-L["augmente de %s au maximum tous les dégâts des sorts infligés par un ennemi pendant %s min.\naugmente de %s au maximum tous les dégâts des sorts subis par un ennemi pendant %s min"] = { { Stats.SpellDamage, }, false, false, false, } -- s29109
+L["augmente de %s au maximum tous les dégâts des sorts infligés par un ennemi pendant %s min.\r\naugmente de %s au maximum tous les dégâts des sorts subis par un ennemi pendant %s min"] = { { Stats.SpellDamage, }, false, false, false, } -- s29109
 L["vos coups critiques obtenus avec des sorts offensifs augmentent de %s% vos chances d'obtenir un coup critique avec les attaques de mêlée pendant %s s"] = { { Stats.MeleeCrit, Stats.RangedCrit, }, false, ignoreSum = true } -- s29179
 L["augmente l'endurance de %s pendant %s heure"] = { { Stats.Stamina, }, false, } -- s29235
 L["libère l'énergie emmagasinée dans la batterie, ce qui augmente les dégâts des sorts et effets magiques de %s au maximum pendant %s sec"] = { { Stats.SpellDamage, }, false, } -- s29271
@@ -894,9 +894,9 @@ L["augmente de %s% la vitesse d'attaque d'un client spectral proche pendant %s s
 L["réduit de %s% la vitesse d'attaque d'un ennemi et de %s% sa vitesse de déplacement pendant %s s. inflige aussi %s points de dégâts"] = { { Stats.MeleeHaste, }, false, false, false, reduction = true } -- s29673
 L["réduit de %s% les chances de la cible de toucher avec ses attaques physiques. cumulable"] = { { Stats.MeleeHit, Stats.RangedHit, }, reduction = true } -- s29716
 L["augmente la résistance à toutes les écoles de magie de %s pendant %s min"] = { { Stats.FireResistance, Stats.NatureResistance, Stats.FrostResistance, Stats.ShadowResistance, Stats.ArcaneResistance, }, false, } -- s29718
-L["réduit les chances de toucher d'un ennemi de %s%. \nréduit les chances de toucher avec les sorts d'un ennemi de %s%"] = { { Stats.MeleeHit, Stats.RangedHit, }, { Stats.SpellHit, }, reduction = true } -- s29833
+L["réduit les chances de toucher d'un ennemi de %s%. \r\nréduit les chances de toucher avec les sorts d'un ennemi de %s%"] = { { Stats.MeleeHit, Stats.RangedHit, }, { Stats.SpellHit, }, reduction = true } -- s29833
 L["augmente les dégâts physiques infligés par le lanceur de sorts de %s% mais réduit sa vitesse de déplacement de %s% et ralentit ses attaques de %s%"] = { false, false, { Stats.MeleeHaste, }, reduction = true } -- s29837
-L["augmente tous les dégâts des sorts infligés par les ennemis proches de %s au maximum.\niaugmente tous les dégâts des sorts subis par un ennemi de %s au maximum. dure %s min"] = { { Stats.SpellDamage, }, false, false, } -- s29900
+L["augmente tous les dégâts des sorts infligés par les ennemis proches de %s au maximum.\r\niaugmente tous les dégâts des sorts subis par un ennemi de %s au maximum. dure %s min"] = { { Stats.SpellDamage, }, false, false, } -- s29900
 L["inflige les dégâts normaux plus %s à un ennemi, puis %s points de dégâts de nature supplémentaires toutes les %s sec. pendant %s s. réduit l'armure de %s. cumulable jusqu'à %s fois"] = { false, false, false, false, { Stats.Armor, }, false, reduction = true } -- s29901
 L["réduit la vitesse d'attaque d'un ennemi de %s% et sa vitesse de déplacement de %s% pendant %s s"] = { { Stats.MeleeHaste, }, false, false, reduction = true } -- s29990
 L["augmente l'endurance pendant %s heure"] = { { Stats.Stamina, }, } -- s30088
@@ -912,7 +912,7 @@ L["réduit de %s% la probabilité que vous subissiez un coup critique"] = { { St
 L["augmente l'esprit du personnage de %s et son endurance de %s pendant %s heures. une seule potion de zanza peut être active à un moment donné"] = { { Stats.Spirit, }, { Stats.Stamina, }, false, } -- s30336
 L["augmente la résistance à l'ombre d'un allié de %s pendant %s heure"] = { { Stats.ShadowResistance, }, false, } -- s30479
 L["inflige %s points de dégâts de feu lorsque vous êtes touché, augmente vos chances de réussir un coup critique avec un sort de %s% et réduit de %s% la probabilité que vous soyez touché par un coup critique. vous ne pouvez bénéficier que d'un seul type de sort d'armure à la fois. dure %s min"] = { false, { Stats.SpellCrit, }, false, false, } -- s30482
-L["augmente votre armure de %s. \naugmente votre résistance aux sorts de %s"] = { { Stats.Armor, }, { Stats.FireResistance, Stats.NatureResistance, Stats.FrostResistance, Stats.ShadowResistance, Stats.ArcaneResistance, }, } -- s30559
+L["augmente votre armure de %s. \r\naugmente votre résistance aux sorts de %s"] = { { Stats.Armor, }, { Stats.FireResistance, Stats.NatureResistance, Stats.FrostResistance, Stats.ShadowResistance, Stats.ArcaneResistance, }, } -- s30559
 L["inflige %s points de dégâts de nature aux ennemis proches, réduit leur vitesse d'attaque de %s% et leur vitesse de déplacement de %s% pendant %s s"] = { false, { Stats.MeleeHaste, }, false, false, reduction = true } -- s30633
 L["réduit votre force de %s"] = { { Stats.Strength, }, reduction = true } -- s30762
 L["réduit votre agilité de %s"] = { { Stats.Agility, }, reduction = true } -- s30763
@@ -1089,7 +1089,7 @@ L["enchante de manière permanente des gants. ces derniers augmentent les dégâ
 L["augmente votre puissance d'attaque de %s, toutes les caractéristiques de %s et les totaux des caractéristiques de %s%"] = { { Stats.AttackPower, }, { Stats.AllStats, }, false, } -- s35874
 L["augmente l'intelligence d'une cible alliée de %s, rend %s points de mana toutes les %s et augmente les totaux des caractéristiques de %s%"] = { { Stats.Intellect, }, false, false, false, } -- s35912
 L["vole %s points d'armure à un ennemi. dure %s s"] = { { Stats.Armor, }, false, } -- s36250
-L["intelligence augmentée de %s.\ndégâts infligés par les sorts et effets de feu augmentés de %s"] = { { Stats.Intellect, }, { Stats.FireDamage, }, } -- s35917
+L["intelligence augmentée de %s.\r\ndégâts infligés par les sorts et effets de feu augmentés de %s"] = { { Stats.Intellect, }, { Stats.FireDamage, }, } -- s35917
 L["entaille l'armure d'un ennemi et réduit son score de %s"] = { { Stats.Armor, }, } -- s35918
 L["augmente les dégâts infligés par les sorts et effets de %s"] = { { Stats.SpellDamage, }, } -- s36001
 L["augmente le score de coup critique de votre prochaine attaque effectuée dans les %s secondes de %s"] = { false, { Stats.MeleeCritRating, }, } -- s36111
