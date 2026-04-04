@@ -225,7 +225,7 @@ L["statPatterns"] = {
 	[StatLogic.Stats.SpellHitRating] = { "spell hit rating" },
 	[StatLogic.Stats.HitRating] = { "hit rating", "hit" },
 
-	[StatLogic.Stats.ResilienceRating] = { "resilience" },
+	[StatLogic.Stats.ResilienceRating] = { "resilience rating", "resilience" },
 	[StatLogic.Stats.PvpPowerRating] = { ITEM_MOD_PVP_POWER_SHORT:lower() },
 
 	[StatLogic.Stats.MeleeHasteRating] = { "haste rating", "haste" },
