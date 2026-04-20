@@ -6,7 +6,7 @@
 ## Author: Whitetooth, raethkcj
 ## SavedVariables: RatingBusterDB
 ## Dependencies: StatLogic
-## OptionalDeps: Ace3, LibDualSpec-1.0
+## OptionalDeps: Ace3, LibDualSpec-1.0, ZeraTooltip
 ## X-Category: Interface Enhancements
 ## X-License: GPL v2
 ## X-WoWI-ID: 26235
