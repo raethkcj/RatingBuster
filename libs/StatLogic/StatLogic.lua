@@ -2164,8 +2164,15 @@ do
 			-- Strip color codes
 			text = text:gsub("()|c%x%x%x%x%x%x%x%x", function(position)
 				addOffset(positions, offsets, position, 10)
+				return ""
 			end)
 			text = text:gsub("|r", "")
+
+			-- Strip textures
+			text = text:gsub("()(|T.-|t)", function(position, texture)
+				addOffset(positions, offsets, position, #texture)
+				return ""
+			end)
 		end
 		local rawText = text
 		statGroups.socketColor = EmptySocketColors[text]
