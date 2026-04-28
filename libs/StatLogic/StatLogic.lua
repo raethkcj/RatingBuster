@@ -2054,6 +2054,29 @@ do
 	---@field socketColor SocketColor?
 	---@field [number] { statGroup: StatGroup, value: number, position: number? }
 
+	local function addOffset(positions, offsets, position, offset)
+		if offsets[position] then
+			offsets[position] = offsets[position] + offset
+		else
+			local length = #positions
+			local cumulative = length > 0 and positions[length] or 0
+			table.insert(positions, position)
+			offsets[position] = cumulative + offset
+		end
+	end
+
+	local function getOffset(positions, offsets, position)
+		local offset = 0
+		for _, pos in ipairs(positions) do
+			if position >= pos then
+				offset = offsets[pos]
+			else
+				break
+			end
+		end
+		return offset
+	end
+
 	---@param statGroups StatGroupValues
 	---@param statGroup StatGroup
 	---@param value integer
@@ -2130,13 +2153,18 @@ do
 		---@type StatGroupValues
 		local statGroups = { ignoreSum = false }
 		local found = not text or text == ""
-		local length, offset = 0, 0
+		local length = 0
+
+		---@type { [integer]: integer }
+		local positions = {}
+		---@type { [integer]: integer }
+		local offsets = {}
 
 		if not found then
 			-- Strip color codes
-			local count
-			text, count = text:gsub("|c%x%x%x%x%x%x%x%x", "")
-			offset = offset + count * 10
+			text = text:gsub("()|c%x%x%x%x%x%x%x%x", function(position)
+				addOffset(positions, offsets, position, 10)
+			end)
 			text = text:gsub("|r", "")
 		end
 		local rawText = text
@@ -2149,10 +2177,10 @@ do
 		if not found then
 			-- Strip leading "Equip: ", trailing ".", and lowercase
 			text, length = trimPrefixes(text, addon.TrimmedPrefixes)
-			offset = offset + length
+			addOffset(positions, offsets, 1, length)
 			-- Strip leading "Socket Bonus: "
 			text, length = trimPrefixes(text, addon.SocketBonusPrefixes)
-			offset = offset + length
+			addOffset(positions, offsets, 1, length)
 			if length > 0 then
 				statGroups.isSocketBonus = true
 			end
@@ -2182,7 +2210,7 @@ do
 		local statText = ""
 		if not found then
 			text, length = trimPrefixes(text, addon.IgnoreSum)
-			offset = offset + length
+			addOffset(positions, offsets, 1, length)
 			if length > 0 then
 				text = text:gsub(addon.OnUseCooldown, ""):trim():gsub("%.$", "")
 				statGroups.ignoreSum = true
@@ -2197,6 +2225,7 @@ do
 				match = match:gsub(large_sep, ""):gsub(dec_sep, ".")
 				local value = tonumber(match)
 				if value then
+					local offset = getOffset(positions, offsets, position)
 					valuePositions[#valuePositions + 1] = { value, position - 1 + offset }
 					return "%s"
 				end
