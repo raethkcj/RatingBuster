@@ -1280,6 +1280,7 @@ local defaults = {
 		showBlockValueFromStr = false,
 
 		showRAPFromAgi = false,
+		showRangedCritFromAgi = false,
 		showArmorFromAgi = false,
 
 		showHealthFromSta = false,
@@ -1472,7 +1473,9 @@ elseif class == "HUNTER" then
 	defaults.profile.showModifiedRangedAttackPower = true
 	defaults.profile.showDodgeFromAgi = false
 	defaults.profile.showAPFromAgi = false
+	defaults.profile.showMeleeCritFromAgi = false
 	defaults.profile.showRAPFromAgi = true
+	defaults.profile.showRangedCritFromAgi = true
 	defaults.profile.showSpellCritFromInt = false
 	defaults.profile.showMeleeHitFromHitRating = true
 	defaults.profile.showMeleeCritFromCritRating = true
@@ -1492,7 +1495,7 @@ elseif class == "MAGE" then
 	defaults.profile.sumSpellHit = true
 	defaults.profile.sumSpellCrit = true
 	defaults.profile.sumSpellHaste = true
-	defaults.profile.showCritFromAgi = false
+	defaults.profile.showMeleeCritFromAgi = false
 	defaults.profile.showDodgeFromAgi = false
 	defaults.profile.showSpellHitFromHitRating = true
 	defaults.profile.showSpellCritFromCritRating = true
@@ -1563,7 +1566,7 @@ elseif class == "PRIEST" then
 		defaults.profile.sumShadowDmg = true
 		defaults.profile.sumHealing = true
 	end
-	defaults.profile.showCritFromAgi = false
+	defaults.profile.showMeleeCritFromAgi = false
 	defaults.profile.showDodgeFromAgi = false
 	defaults.profile.showSpellHitFromHitRating = true
 	defaults.profile.showSpellCritFromCritRating = true
@@ -1624,7 +1627,7 @@ elseif class == "WARLOCK" then
 	defaults.profile.sumSpellHit = true
 	defaults.profile.sumSpellCrit = true
 	defaults.profile.sumSpellHaste = true
-	defaults.profile.showCritFromAgi = false
+	defaults.profile.showMeleeCritFromAgi = false
 	defaults.profile.showDodgeFromAgi = false
 	defaults.profile.showSpellHitFromHitRating = true
 	defaults.profile.showSpellCritFromCritRating = true
@@ -2646,6 +2649,9 @@ function RatingBuster:ProcessStat(stat, value, breakdownStats, link, color, stat
 		local meleeCrit = value * statModContext("ADD_MELEE_CRIT_MOD_AGI")
 		self:ProcessStat(StatLogic.Stats.MeleeCrit, meleeCrit, breakdownStats, link, color, statModContext, true, false, db.profile.showMeleeCritFromAgi)
 
+		local rangedCrit = value * statModContext("ADD_RANGED_CRIT_MOD_AGI")
+		self:ProcessStat(StatLogic.Stats.RangedCrit, rangedCrit, breakdownStats, link, color, statModContext, true, false, db.profile.showRangedCritFromAgi)
+
 		local dodge = value * statModContext("ADD_DODGE_MOD_AGI")
 		self:ProcessStat(StatLogic.Stats.Dodge, dodge, breakdownStats, link, color, statModContext, true, false, db.profile.showDodgeFromAgi)
 
@@ -2951,6 +2957,12 @@ function RatingBuster:ProcessStat(stat, value, breakdownStats, link, color, stat
 			breakdownStats[stat] = breakdownStats[stat] + value
 		end
 	elseif stat == StatLogic.Stats.MeleeCrit then
+		if show and isBaseStat then
+			breakdownStats["Percent"] = value
+		elseif show then
+			breakdownStats[stat] = breakdownStats[stat] + value
+		end
+	elseif stat == StatLogic.Stats.RangedCrit then
 		if show and isBaseStat then
 			breakdownStats["Percent"] = value
 		elseif show then
