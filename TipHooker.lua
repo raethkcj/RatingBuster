@@ -89,7 +89,7 @@ local function InitializeHook()
 				end)
 			end
 
-			for i = 1, 30 do
+			for i = 1, 60 do
 				local fontString = _G[tooltipName .. "TextLeft" .. i]
 				if not fontString then
 					local leftName = tooltipName .. "TextLeft" .. i
