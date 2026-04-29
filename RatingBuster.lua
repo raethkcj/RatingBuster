@@ -3124,10 +3124,10 @@ function RatingBuster:ProcessStat(stat, value, breakdownStats, link, color, stat
 		end
 
 		local spellDamage = value * statModContext("ADD_SPELL_DMG_MOD_SPELL_POWER")
-		self:ProcessStat(StatLogic.Stats.SpellDamage, spellDamage, breakdownStats, link, color, statModContext, true, false, db.profile.showSpellDmgFromSpellPower)
+		self:ProcessStat(StatLogic.Stats.SpellDamage, spellDamage, breakdownStats, link, color, statModContext, true, false, db.profile.showSpellDmgFromSpellPower and not (isBaseStat and mod == 1))
 
 		local healingPower = value * statModContext("ADD_HEALING_MOD_SPELL_POWER")
-		self:ProcessStat(StatLogic.Stats.HealingPower, healingPower, breakdownStats, link, color, statModContext, true, false, db.profile.showHealingFromSpellPower)
+		self:ProcessStat(StatLogic.Stats.HealingPower, healingPower, breakdownStats, link, color, statModContext, true, false, db.profile.showHealingFromSpellPower and not (isBaseStat and mod == 1))
 
 		local attackPower = value * statModContext("ADD_AP_MOD_SPELL_POWER")
 		self:ProcessStat(StatLogic.Stats.AttackPower, attackPower, breakdownStats, link, color, statModContext, true, false, db.profile.showAPFromSpellPower)
