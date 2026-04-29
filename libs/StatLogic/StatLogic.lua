@@ -1156,7 +1156,7 @@ addon.StatModValidators = {
 			end
 		end,
 		events = {
-			["UNIT_INVENTORY_CHANGED"] = "player",
+			["PLAYER_EQUIPMENT_CHANGED"] = true,
 			["PLAYER_TALENT_UPDATE"] = true,
 		},
 	},
@@ -1230,7 +1230,7 @@ addon.StatModValidators = {
 			return itemClass and case.itemClass[itemClass] or false
 		end,
 		events = {
-			["UNIT_INVENTORY_CHANGED"] = "player",
+			["PLAYER_EQUIPMENT_CHANGED"] = true,
 		}
 	},
 	known = {
@@ -1305,7 +1305,7 @@ addon.StatModValidators = {
 			return equipped_sets[case.set] and equipped_sets[case.set] >= case.pieces
 		end,
 		events = {
-			["UNIT_INVENTORY_CHANGED"] = "player",
+			["PLAYER_EQUIPMENT_CHANGED"] = true,
 		},
 	},
 	spec = {
@@ -1349,7 +1349,7 @@ addon.StatModValidators = {
 			return weaponSubclass and case.weaponSubclass[weaponSubclass] or false
 		end,
 		events = {
-			["UNIT_INVENTORY_CHANGED"] = "player",
+			["PLAYER_EQUIPMENT_CHANGED"] = true,
 		}
 	},
 }
