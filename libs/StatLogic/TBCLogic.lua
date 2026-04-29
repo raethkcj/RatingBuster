@@ -266,25 +266,25 @@ StatLogic.StatModTable = {}
 if addon.class == "DRUID" then
 	StatLogic.StatModTable["DRUID"] = {
 		["ADD_AP_MOD_FERAL_ATTACK_POWER"] = {
-			-- Cat Form
+			-- Buff: Cat Form
 			{
 				["value"] = 1,
 				["aura"] = 768,
 				["group"] = addon.ExclusiveGroup.Feral,
 			},
-			-- Bear Form
+			-- Buff: Bear Form
 			{
 				["value"] = 1,
 				["aura"] = 5487,
 				["group"] = addon.ExclusiveGroup.Feral,
 			},
-			-- Dire Bear Form
+			-- Buff: Dire Bear Form
 			{
 				["value"] = 1,
 				["aura"] = 9634,
 				["group"] = addon.ExclusiveGroup.Feral,
 			},
-			-- Moonkin Form
+			-- Buff: Moonkin Form
 			{
 				["value"] = 1,
 				["aura"] = 24858,
@@ -298,7 +298,7 @@ if addon.class == "DRUID" then
 			},
 		},
 		["ADD_AP_MOD_AGI"] = {
-			-- Druid: Cat Form - Buff
+			-- Buff: Cat Form
 			{
 				["value"] = 1,
 				["aura"] = 768,
@@ -320,9 +320,8 @@ if addon.class == "DRUID" then
 				["value"] = 0.0625 * 5,
 			},
 		},
-		-- Druid: Lunar Guidance (Rank 3) - 1,12
-		--        Increases your spell damage and healing by 8%/16%/25% of your total Intellect.
 		["ADD_SPELL_DMG_MOD_INT"] = {
+			-- Talent: Lunar Guidance
 			{
 				["tab"] = 1,
 				["num"] = 12,
@@ -331,9 +330,8 @@ if addon.class == "DRUID" then
 				},
 			},
 		},
-		-- Druid: Lunar Guidance (Rank 3) - 1,12
-		--        Increases your spell damage and healing by 8%/16%/25% of your total Intellect.
 		["ADD_HEALING_MOD_INT"] = {
+			-- Talent: Lunar Guidance
 			{
 				["tab"] = 1,
 				["num"] = 12,
@@ -342,10 +340,8 @@ if addon.class == "DRUID" then
 				},
 			},
 		},
-		-- Druid: Nurturing Instinct (Rank 2) - 2,14
-		--        Increases your healing spells by up to 25%/50% of your Strength.
-		-- 2.4.0 Increases your healing spells by up to 50%/100% of your Agility, and increases healing done to you by 10%/20% while in Cat form.
 		["ADD_HEALING_MOD_AGI"] = {
+			-- Talent: Nurturing Instinct
 			{
 				["tab"] = 2,
 				["num"] = 14,
@@ -354,9 +350,8 @@ if addon.class == "DRUID" then
 				},
 			},
 		},
-		-- Druid: Intensity (Rank 3) - 3,6
-		--        Allows 10/20/30% of your Mana regeneration to continue while casting and causes your Enrage ability to instantly generate 10 rage.
 		["ADD_MANA_REGEN_MOD_NORMAL_MANA_REGEN"] = {
+			-- Talent: Intensity
 			{
 				["tab"] = 3,
 				["num"] = 6,
@@ -365,9 +360,8 @@ if addon.class == "DRUID" then
 				},
 			},
 		},
-		-- Druid: Dreamstate (Rank 3) - 1,17
-		--        Regenerate mana equal to 4%/7%/10% of your Intellect every 5 sec, even while casting.
 		["ADD_GENERIC_MANA_REGEN_MOD_INT"] = {
+			-- Talent: Dreamstate
 			{
 				["tab"] = 1,
 				["num"] = 17,
@@ -409,15 +403,8 @@ if addon.class == "DRUID" then
 				["aura"] = 9634,
 			},
 		},
-		-- Druid: Thick Hide (Rank 3) - 2,5
-		--        Increases your Armor contribution from items by 4%/7%/10%.
-		-- Druid: Bear Form - buff (didn't use stance because Bear Form and Dire Bear Form has the same icon)
-		--        Shapeshift into a bear, increasing melee attack power by 30, armor contribution from items by 180%, and stamina by 25%.
-		-- Druid: Dire Bear Form - Buff
-		--        Shapeshift into a dire bear, increasing melee attack power by 120, armor contribution from items by 400%, and stamina by 25%.
-		-- Druid: Moonkin Form - Buff
-		--        While in this form the armor contribution from items is increased by 400%, attack power is increased by 150% of your level and all party members within 30 yards have their spell critical chance increased by 5%.
 		["MOD_ARMOR"] = {
+			-- Talent: Thick Hide
 			{
 				["tab"] = 2,
 				["num"] = 5,
@@ -425,46 +412,42 @@ if addon.class == "DRUID" then
 					0.04, 0.07, 0.1,
 				},
 			},
+			-- Buff: Bear Form
 			{
 				["value"] = 1.8,
-				["aura"] = 32357,		-- ["Bear Form"],
+				["aura"] = 32357,
 			},
+			-- Buff: Dire Bear Form
 			{
 				["value"] = 4,
-				["aura"] = 9634,		-- ["Dire Bear Form"],
+				["aura"] = 9634,
 			},
+			-- Buff: Moonkin Form
 			{
 				["value"] = 4,
-				["aura"] = 24858,		-- ["Moonkin Form"],
+				["aura"] = 24858,
 			},
 		},
-		-- Druid: Heart of the Wild (Rank 5) - 2,15
-		--        Increases your Intellect by 4%/8%/12%/16%/20%. In addition, while in Bear or Dire Bear Form your Stamina is increased by 4%/8%/12%/16%/20% and while in Cat Form your Strength is increased by 4%/8%/12%/16%/20%.
-		-- Druid: Bear Form - Stance (use stance because bear and dire bear increases are the same)
-		--        Shapeshift into a bear, increasing melee attack power by 30, armor contribution from items by 180%, and stamina by 25%.
-		-- Druid: Dire Bear Form - Stance (use stance because bear and dire bear increases are the same)
-		--        Shapeshift into a dire bear, increasing melee attack power by 120, armor contribution from items by 400%, and stamina by 25%.
-		-- Druid: Survival of the Fittest (Rank 3) - 2,16
-		--        Increases all attributes by 1%/2%/3% and reduces the chance you'll be critically hit by melee attacks by 1%/2%/3%.
-		-- Heart of the Wild: +4%/8%/12%/16%/20% stamina in bear / dire bear
 		["MOD_STA"] = {
+			-- Talent: Heart of the Wild (Bear Form)
 			{
 				["tab"] = 2,
 				["num"] = 15,
 				["rank"] = {
 					0.04, 0.08, 0.12, 0.16, 0.2,
 				},
-				["aura"] = 32357,		-- ["Bear Form"],
+				["aura"] = 32357,
 			},
+			-- Talent: Heart of the Wild (Dire Bear Form)
 			{
 				["tab"] = 2,
 				["num"] = 15,
 				["rank"] = {
 					0.04, 0.08, 0.12, 0.16, 0.2,
 				},
-				["aura"] = 9634,		-- ["Dire Bear Form"],
+				["aura"] = 9634,
 			},
-			-- Survival of the Fittest: +1%/2%/3% all stats
+			-- Talent: Survival of the Fittest
 			{
 				["tab"] = 2,
 				["num"] = 16,
@@ -472,20 +455,19 @@ if addon.class == "DRUID" then
 					0.01, 0.02, 0.03,
 				},
 			},
-			-- Bear Form / Dire Bear Form: +25% stamina
+			-- Buff: Bear Form
 			{
 				["value"] = 0.25,
-				["aura"] = 32357,		-- ["Bear Form"],
+				["aura"] = 32357,
 			},
-			-- Bear Form / Dire Bear Form: +25% stamina
+			-- Buff: Dire Bear Form
 			{
 				["value"] = 0.25,
-				["aura"] = 9634,		-- ["Dire Bear Form"],
+				["aura"] = 9634,
 			},
 		},
-		-- Druid: Survival of the Fittest (Rank 3) - 2,16
-		--        Increases all attributes by 1%/2%/3% and reduces the chance you'll be critically hit by melee attacks by 1%/2%/3%.
 		["MOD_STR"] = {
+			-- Talent: Survival of the Fittest
 			{
 				["tab"] = 2,
 				["num"] = 16,
@@ -505,9 +487,8 @@ if addon.class == "DRUID" then
 				["aura"] = 32356,
 			},
 		},
-		-- Druid: Survival of the Fittest (Rank 3) - 2,16
-		--        Increases all attributes by 1%/2%/3% and reduces the chance you'll be critically hit by melee attacks by 1%/2%/3%.
 		["MOD_AGI"] = {
+			-- Talent: Survival of the Fittest
 			{
 				["tab"] = 2,
 				["num"] = 16,
@@ -516,11 +497,8 @@ if addon.class == "DRUID" then
 				},
 			},
 		},
-		-- Druid: Heart of the Wild (Rank 5) - 2,15
-		--        Increases your Intellect by 4%/8%/12%/16%/20%. In addition, while in Bear or Dire Bear Form your Stamina is increased by 4%/8%/12%/16%/20% and while in Cat Form your Strength is increased by 4%/8%/12%/16%/20%.
-		-- Druid: Survival of the Fittest (Rank 3) - 2,16
-		--        Increases all attributes by 1%/2%/3% and reduces the chance you'll be critically hit by melee attacks by 1%/2%/3%.
 		["MOD_INT"] = {
+			-- Talent: Heart of the Wild
 			{
 				["tab"] = 2,
 				["num"] = 15,
@@ -528,6 +506,7 @@ if addon.class == "DRUID" then
 					0.04, 0.08, 0.12, 0.16, 0.2,
 				},
 			},
+			-- Talent: Survival of the Fittest
 			{
 				["tab"] = 2,
 				["num"] = 16,
@@ -536,11 +515,8 @@ if addon.class == "DRUID" then
 				},
 			},
 		},
-		-- Druid: Living Spirit (Rank 3) - 3,16
-		--        Increases your total Spirit by 5%/10%/15%.
-		-- Druid: Survival of the Fittest (Rank 3) - 2,16
-		--        Increases all attributes by 1%/2%/3% and reduces the chance you'll be critically hit by melee attacks by 1%/2%/3%.
 		["MOD_SPI"] = {
+			-- Talent: Living Spirit
 			{
 				["tab"] = 3,
 				["num"] = 16,
@@ -548,6 +524,7 @@ if addon.class == "DRUID" then
 					0.05, 0.1, 0.15,
 				},
 			},
+			-- Talent: Survival of the Fittest
 			{
 				["tab"] = 2,
 				["num"] = 16,
@@ -593,8 +570,7 @@ elseif addon.class == "HUNTER" then
 				["value"] = 0.125 * 5,
 			},
 		},
-		-- Hunter: Aspect of the Viper - Buff
-		--         The hunter takes on the aspects of a viper, regenerating mana equal to 25% of his Intellect every 5 sec.
+		-- Buff: Aspect of the Viper
 		-- TODO: Gronnstalker's Armor, (2) Set: Increases the mana you gain from your Aspect of the Viper by an additional 5% of your Intellect.
 		-- 2.2.0: Aspect of the Viper: This ability has received a slight redesign. The
 		-- amount of mana regained will increase as the Hunters percentage of
@@ -610,9 +586,8 @@ elseif addon.class == "HUNTER" then
 				["aura"] = 34074,			-- ["Aspect of the Viper"],
 			},
 		},
-		-- Hunter: Careful Aim (Rank 3) - 2,16
-		--         Increases your ranged attack power by an amount equal to 15%/30%/45% of your total Intellect.
 		["ADD_RANGED_AP_MOD_INT"] = {
+			-- Talent: Careful Aim
 			{
 				["tab"] = 2,
 				["num"] = 16,
@@ -682,9 +657,8 @@ elseif addon.class == "HUNTER" then
 				["aura"] = 31567,
 			},
 		},
-		-- Hunter: Thick Hide (Rank 3) - 1,5
-		--         Increases the armor rating of your pets by 20% and your armor contribution from items by 4%/7%/10%.
 		["MOD_ARMOR"] = {
+			-- Talent: Thick Hide
 			{
 				["tab"] = 1,
 				["num"] = 5,
@@ -693,11 +667,8 @@ elseif addon.class == "HUNTER" then
 				},
 			},
 		},
-		-- Hunter: Survivalist (Rank 5) - 3,9
-		--         Increases total health by 2%/4%/6%/8%/10%.
-		-- Hunter: Endurance Training (Rank 5) - 1,2
-		--         Increases the Health of your pet by 2%/4%/6%/8%/10% and your total health by 1%/2%/3%/4%/5%.
 		["MOD_HEALTH"] = {
+			-- Talent: Survivalist
 			{
 				["tab"] = 3,
 				["num"] = 9,
@@ -705,6 +676,7 @@ elseif addon.class == "HUNTER" then
 					0.02, 0.04, 0.06, 0.08, 0.1,
 				},
 			},
+			-- Talent: Endurance Training
 			{
 				["tab"] = 1,
 				["num"] = 2,
@@ -713,11 +685,8 @@ elseif addon.class == "HUNTER" then
 				},
 			},
 		},
-		-- Hunter: Combat Experience (Rank 2) - 2,14
-		--         Increases your total Agility by 1%/2% and your total Intellect by 3%/6%.
-		-- Hunter: Lightning Reflexes (Rank 5) - 3,18
-		--         Increases your Agility by 3%/6%/9%/12%/15%.
 		["MOD_AGI"] = {
+			-- Talent: Combat Experience
 			{
 				["tab"] = 2,
 				["num"] = 14,
@@ -725,6 +694,7 @@ elseif addon.class == "HUNTER" then
 					0.01, 0.02,
 				},
 			},
+			-- Talent: Lightning Reflexes
 			{
 				["tab"] = 3,
 				["num"] = 18,
@@ -733,9 +703,8 @@ elseif addon.class == "HUNTER" then
 				},
 			},
 		},
-		-- Hunter: Combat Experience (Rank 2) - 2,14
-		--         Increases your total Agility by 1%/2% and your total Intellect by 3%/6%.
 		["MOD_INT"] = {
+			-- Talent: Combat Experience
 			{
 				["tab"] = 2,
 				["num"] = 14,
@@ -787,9 +756,8 @@ elseif addon.class == "MAGE" then
 				},
 			},
 		},
-		-- Mage: Arcane Meditation (Rank 3) - 1,12
-		--       Allows 10/20/30% of your Mana regeneration to continue while casting.
 		["ADD_MANA_REGEN_MOD_NORMAL_MANA_REGEN"] = {
+			-- Talent: Arcane Meditation
 			{
 				["tab"] = 1,
 				["num"] = 12,
@@ -797,14 +765,14 @@ elseif addon.class == "MAGE" then
 					0.1, 0.2, 0.3,
 				},
 			},
+			-- Buff: Mage Armor
 			{
 				["value"] = 0.3,
-				["aura"] = 6117,		-- ["Mage Armor"],
+				["aura"] = 6117,
 			},
 		},
-		-- Mage: Mind Mastery (Rank 5) - 1,22
-		--       Increases spell damage by up to 5%/10%/15%/20%/25% of your total Intellect.
 		["ADD_SPELL_DMG_MOD_INT"] = {
+			-- Talent: Mind Mastery
 			{
 				["tab"] = 1,
 				["num"] = 22,
@@ -813,7 +781,7 @@ elseif addon.class == "MAGE" then
 				},
 			},
 		},
-		-- Mage: Arcane Mind (Rank 5) - 1,15
+		-- Talent: Arcane Mind
 		--       Increases your total Intellect by 3%/6%/9%/12%/15%.
 		["MOD_INT"] = {
 			{
@@ -861,9 +829,8 @@ elseif addon.class == "PALADIN" then
 				["value"] = BLOCK_PER_STRENGTH,
 			},
 		},
-		-- Paladin: Holy Guidance (Rank 5) - 1,19
-		--          Increases your spell damage and healing by 7%/14%/21%/28%/35% of your total Intellect.
 		["ADD_SPELL_DMG_MOD_INT"] = {
+			-- Talent: Holy Guidance
 			{
 				["tab"] = 1,
 				["num"] = 19,
@@ -872,9 +839,8 @@ elseif addon.class == "PALADIN" then
 				},
 			},
 		},
-		-- Paladin: Holy Guidance (Rank 5) - 1,19
-		--          Increases your spell damage and healing by 7%/14%/21%/28%/35% of your total Intellect.
 		["ADD_HEALING_MOD_INT"] = {
+			-- Talent: Holy Guidance
 			{
 				["tab"] = 1,
 				["num"] = 19,
@@ -883,9 +849,8 @@ elseif addon.class == "PALADIN" then
 				},
 			},
 		},
-		-- Paladin: Toughness (Rank 5) - 2,5
-		--          Increases your armor value from items by 2%/4%/6%/8%/10%.
 		["MOD_ARMOR"] = {
+			-- Talent: Toughness
 			{
 				["tab"] = 2,
 				["num"] = 5,
@@ -894,9 +859,8 @@ elseif addon.class == "PALADIN" then
 				},
 			},
 		},
-		-- Paladin: Divine Strength (Rank 5) - 1,1
-		--          Increases your total Strength by 2%/4%/6%/8%/10%.
 		["MOD_STR"] = {
+			-- Talent: Divine Strength
 			{
 				["tab"] = 1,
 				["num"] = 1,
@@ -905,11 +869,8 @@ elseif addon.class == "PALADIN" then
 				},
 			},
 		},
-		-- Paladin: Sacred Duty (Rank 2) - 2,16
-		--          Increases your total Stamina by 3%/6%, reduces the cooldown of your Divine Shield spell by 60 sec and reduces the attack speed penalty by 100%.
-		-- Paladin: Combat Expertise (Rank 5) - 2,21
-		--          Increases your expertise by 1/2/3/4/5 and total Stamina by 2%/4%/6%/8%/10%. -- 2.3.0
 		["MOD_STA"] = {
+			-- Talent: Sacred Duty
 			{
 				["tab"] = 2,
 				["num"] = 16,
@@ -917,6 +878,7 @@ elseif addon.class == "PALADIN" then
 					0.03, 0.06
 				},
 			},
+			-- Talent: Combat Expertise
 			{
 				["tab"] = 2,
 				["num"] = 21,
@@ -925,9 +887,8 @@ elseif addon.class == "PALADIN" then
 				},
 			},
 		},
-		-- Paladin: Divine Intellect (Rank 5) - 1,2
-		--          Increases your total Intellect by 2%/4%/6%/8%/10%.
 		["MOD_INT"] = {
+			-- Talent: Divine Intellect
 			{
 				["tab"] = 1,
 				["num"] = 2,
@@ -936,9 +897,8 @@ elseif addon.class == "PALADIN" then
 				},
 			},
 		},
-		-- Paladin: Shield Specialization (Rank 3) - 2,8
-		--          Increases the amount of damage absorbed by your shield by 10%/20%/30%.
 		["MOD_BLOCK_VALUE"] = {
+			-- Talent: Shield Specialization
 			{
 				["tab"] = 2,
 				["num"] = 8,
@@ -978,9 +938,8 @@ elseif addon.class == "PRIEST" then
 				["value"] = 0.041667 * 5,
 			},
 		},
-		-- Priest: Meditation (Rank 3) - 1,9
-		--         Allows 10/20/30% of your Mana regeneration to continue while casting.
 		["ADD_MANA_REGEN_MOD_NORMAL_MANA_REGEN"] = {
+			-- Talent: Meditation
 			{
 				["tab"] = 1,
 				["num"] = 9,
@@ -989,11 +948,8 @@ elseif addon.class == "PRIEST" then
 				},
 			},
 		},
-		-- Priest: Spiritual Guidance (Rank 5) - 2,14
-		--         Increases spell damage and healing by up to 5%/10%/15%/20%/25% of your total Spirit.
-		-- Priest: Improved Divine Spirit (Rank 2) - 1,15 - Buff
-		--         Your Divine Spirit and Prayer of Spirit spells also increase the target's spell damage and healing by an amount equal to 5%/10% of their total Spirit.
 		["ADD_SPELL_DMG_MOD_SPI"] = {
+			-- Talent: Spiritual Guidance
 			{
 				["tab"] = 2,
 				["num"] = 14,
@@ -1001,6 +957,7 @@ elseif addon.class == "PRIEST" then
 					0.05, 0.1, 0.15, 0.2, 0.25,
 				},
 			},
+			-- Talent: Improved Divine Spirit
 			{
 				["tab"] = 1,
 				["num"] = 15,
@@ -1018,11 +975,8 @@ elseif addon.class == "PRIEST" then
 				["aura"] = 32999,		-- ["Prayer of Spirit"],
 			},
 		},
-		-- Priest: Spiritual Guidance (Rank 5) - 2,14
-		--         Increases spell damage and healing by up to 5%/10%/15%/20%/25% of your total Spirit.
-		-- Priest: Improved Divine Spirit (Rank 2) - 1,15 - Buff
-		--         Your Divine Spirit and Prayer of Spirit spells also increase the target's spell damage and healing by an amount equal to 5%/10% of their total Spirit.
 		["ADD_HEALING_MOD_SPI"] = {
+			-- Talent: Spiritual Guidance
 			{
 				["tab"] = 2,
 				["num"] = 14,
@@ -1030,26 +984,27 @@ elseif addon.class == "PRIEST" then
 					0.05, 0.1, 0.15, 0.2, 0.25,
 				},
 			},
+			-- Talent: Improved Divine Spirit (Divine Spirit)
 			{
 				["tab"] = 1,
 				["num"] = 15,
 				["rank"] = {
 					0.05, 0.1,
 				},
-				["aura"] = 39234,		-- ["Divine Spirit"],
+				["aura"] = 39234,
 			},
+			-- Talent: Improved Divine Spirit (Prayer of Spirit)
 			{
 				["tab"] = 1,
 				["num"] = 15,
 				["rank"] = {
 					0.05, 0.1,
 				},
-				["aura"] = 32999,		-- ["Prayer of Spirit"],
+				["aura"] = 32999,
 			},
 		},
-		-- Priest: Mental Strength (Rank 5) - 1,13
-		--         IIncreases your maximum Mana by 2%/4%/6%/8%/10%.
 		["MOD_MANA"] = {
+			-- Talent: Mental Strength
 			{
 				["tab"] = 1,
 				["num"] = 13,
@@ -1058,9 +1013,8 @@ elseif addon.class == "PRIEST" then
 				},
 			},
 		},
-		-- Priest: Enlightenment (Rank 5) - 1,20
-		--         Increases your total Stamina, Intellect and Spirit by 1%/2%/3%/4%/5%.
 		["MOD_STA"] = {
+			-- Talent: Enlightenment
 			{
 				["tab"] = 1,
 				["num"] = 20,
@@ -1069,9 +1023,8 @@ elseif addon.class == "PRIEST" then
 				},
 			},
 		},
-		-- Priest: Enlightenment (Rank 5) - 1,20
-		--         Increases your total Stamina, Intellect and Spirit by 1%/2%/3%/4%/5%.
 		["MOD_INT"] = {
+			-- Talent: Enlightenment
 			{
 				["tab"] = 1,
 				["num"] = 20,
@@ -1080,11 +1033,8 @@ elseif addon.class == "PRIEST" then
 				},
 			},
 		},
-		-- Priest: Enlightenment (Rank 5) - 1,20
-		--         Increases your total Stamina, Intellect and Spirit by 1%/2%/3%/4%/5%.
-		-- Priest: Spirit of Redemption - 2,13
-		--         Increases total Spirit by 5% and upon death, the priest becomes the Spirit of Redemption for 15 sec.
 		["MOD_SPI"] = {
+			-- Talent: Enlightenment
 			{
 				["tab"] = 1,
 				["num"] = 20,
@@ -1092,6 +1042,7 @@ elseif addon.class == "PRIEST" then
 					0.01, 0.02, 0.03, 0.04, 0.05,
 				},
 			},
+			-- Talent: Spirit of Redemption
 			{
 				["tab"] = 2,
 				["num"] = 13,
@@ -1161,11 +1112,8 @@ elseif addon.class == "ROGUE" then
 				["aura"] = 14278,
 			},
 		},
-		-- Rogue: Vitality (Rank 2) - 2,20
-		--        Increases your total Stamina by 2%/4% and your total Agility by 1%/2%.
-		-- Rogue: Sinister Calling (Rank 5) - 3,21
-		--        Increases your total Agility by 3%/6%/9%/12%/15%.
 		["MOD_AGI"] = {
+			-- Talent: Vitality
 			{
 				["tab"] = 2,
 				["num"] = 20,
@@ -1173,6 +1121,7 @@ elseif addon.class == "ROGUE" then
 					0.01, 0.02,
 				},
 			},
+			-- Talent: Sinister Calling
 			{
 				["tab"] = 3,
 				["num"] = 21,
@@ -1181,9 +1130,8 @@ elseif addon.class == "ROGUE" then
 				},
 			},
 		},
-		-- Rogue: Vitality (Rank 2) - 2,20
-		--        Increases your total Stamina by 2%/4% and your total Agility by 1%/2%.
 		["MOD_STA"] = {
+			-- Talent: Vitality
 			{
 				["tab"] = 2,
 				["num"] = 20,
@@ -1247,9 +1195,8 @@ elseif addon.class == "SHAMAN" then
 				["value"] = BLOCK_PER_STRENGTH,
 			},
 		},
-		-- Shaman: Mental Quickness (Rank 3) - 2,15
-		--         Reduces the mana cost of your instant cast spells by 2%/4%/6% and increases your spell damage and healing equal to 10%/20%/30% of your attack power.
 		["ADD_SPELL_DMG_MOD_AP"] = {
+			-- Talent: Mental Quickness
 			{
 				["tab"] = 2,
 				["num"] = 15,
@@ -1258,9 +1205,8 @@ elseif addon.class == "SHAMAN" then
 				},
 			},
 		},
-		-- Shaman: Mental Quickness (Rank 3) - 2,15
-		--         Reduces the mana cost of your instant cast spells by 2%/4%/6% and increases your spell damage and healing equal to 10%/20%/30% of your attack power.
 		["ADD_HEALING_MOD_AP"] = {
+			-- Talent: Mental Quickness
 			{
 				["tab"] = 2,
 				["num"] = 15,
@@ -1269,9 +1215,8 @@ elseif addon.class == "SHAMAN" then
 				},
 			},
 		},
-		-- Shaman: Unrelenting Storm (Rank 5) - 1,14
-		--         Regenerate mana equal to 2%/4%/6%/8%/10% of your Intellect every 5 sec, even while casting.
 		["ADD_GENERIC_MANA_REGEN_MOD_INT"] = {
+			-- Talent: Unrelenting Storm
 			{
 				["tab"] = 1,
 				["num"] = 14,
@@ -1280,9 +1225,8 @@ elseif addon.class == "SHAMAN" then
 				},
 			},
 		},
-		-- Shaman: Nature's Blessing (Rank 3) - 3,18
-		--         Increases your spell damage and healing by an amount equal to 10%/20%/30% of your Intellect.
 		["ADD_SPELL_DMG_MOD_INT"] = {
+			-- Talent: Nature's Blessing
 			{
 				["tab"] = 3,
 				["num"] = 18,
@@ -1291,9 +1235,8 @@ elseif addon.class == "SHAMAN" then
 				},
 			},
 		},
-		-- Shaman: Nature's Blessing (Rank 3) - 3,18
-		--         Increases your spell damage and healing by an amount equal to 10%/20%/30% of your Intellect.
 		["ADD_HEALING_MOD_INT"] = {
+			-- Talent: Nature's Blessing
 			{
 				["tab"] = 3,
 				["num"] = 18,
@@ -1316,9 +1259,8 @@ elseif addon.class == "SHAMAN" then
 				},
 			},
 		},
-		-- Shaman: Toughness (Rank 5) - 2,11
-		--         Increases your armor value from items by 2%/4%/6%/8%/10%.
 		["MOD_ARMOR"] = {
+			-- Talent: Toughness
 			{
 				["tab"] = 2,
 				["num"] = 11,
@@ -1327,9 +1269,8 @@ elseif addon.class == "SHAMAN" then
 				},
 			},
 		},
-		-- Shaman: Ancestral Knowledge (Rank 5) - 2,1
-		--         Increases your maximum Mana by 1%/2%/3%/4%/5%.
 		["MOD_MANA"] = {
+			-- Talent: Ancestral Knowledge
 			{
 				["tab"] = 2,
 				["num"] = 1,
@@ -1388,8 +1329,7 @@ elseif addon.class == "WARLOCK" then
 			},
 		},
 		["MOD_PET_STA"] = {
-			-- Warlock: Fel Stamina (Rank 3) - 2,9
-			--          Increases the Stamina of your Imp, Voidwalker, Succubus, and Felhunter and Felguard by 5%/10%/15% and increases your maximum health and mana by 1%/2%/3%.
+			-- Talent: Fel Stamina
 			{
 				["tab"] = 2,
 				["num"] = 9,
@@ -1399,9 +1339,8 @@ elseif addon.class == "WARLOCK" then
 				["pet"] = true,
 			},
 		},
-		-- Warlock: Demonic Knowledge (Rank 3) - 2,20
-		--          Increases your spell damage by an amount equal to 4/8/12% of the total of your active demon's Stamina plus Intellect.
 		["ADD_SPELL_DMG_MOD_PET_STA"] = {
+			-- Talent: Demonic Knowledge
 			{
 				["tab"] = 2,
 				["num"] = 20,
@@ -1419,8 +1358,7 @@ elseif addon.class == "WARLOCK" then
 			},
 		},
 		["MOD_PET_INT"] = {
-			-- Warlock: Fel Intellect (Rank 3) - 2,6
-			--          Increases the Stamina and Intellect of your Imp, Voidwalker, Succubus, Felhunter and Felguard by 15% and increases your maximum health and mana by 1%/2%/3%.
+			-- Talent: Fel Intellect
 			{
 				["tab"] = 2,
 				["num"] = 6,
@@ -1430,9 +1368,8 @@ elseif addon.class == "WARLOCK" then
 				["pet"] = true,
 			},
 		},
-		-- Warlock: Demonic Knowledge (Rank 3) - 2,20
-		--          Increases your spell damage by an amount equal to 4/8/12% of the total of your active demon's Stamina plus Intellect.
 		["ADD_SPELL_DMG_MOD_PET_INT"] = {
+			-- Talent: Demonic Knowledge
 			{
 				["tab"] = 2,
 				["num"] = 20,
@@ -1442,9 +1379,8 @@ elseif addon.class == "WARLOCK" then
 				["pet"] = true,
 			},
 		},
-		-- Warlock: Fel Stamina (Rank 3) - 2,9
-		--          Increases the Stamina of your Imp, Voidwalker, Succubus, Felhunter and Felguard by 5%/10%/15% and increases your maximum health by 1%/2%/3%.
 		["MOD_HEALTH"] = {
+			-- Talent: Fel Stamina
 			{
 				["tab"] = 2,
 				["num"] = 9,
@@ -1453,9 +1389,8 @@ elseif addon.class == "WARLOCK" then
 				},
 			},
 		},
-		-- Warlock: Fel Intellect (Rank 3) - 2,6
-		--          Increases the Intellect of your Imp, Voidwalker, Succubus, Felhunter and Felguard by 5%/10%/15% and increases your maximum mana by 1%/2%/3%.
 		["MOD_MANA"] = {
+			-- Talent: Fel Intellect
 			{
 				["tab"] = 2,
 				["num"] = 6,
@@ -1464,9 +1399,8 @@ elseif addon.class == "WARLOCK" then
 				},
 			},
 		},
-		-- Warlock: Demonic Embrace (Rank 5) - 2,3
-		--          Increases your total Stamina by 3%/6%/9%/12%/15% but reduces your total Spirit by 1%/2%/3%/4%/5%.
 		["MOD_STA"] = {
+			-- Talent: Demonic Embrace
 			{
 				["tab"] = 2,
 				["num"] = 3,
@@ -1475,9 +1409,8 @@ elseif addon.class == "WARLOCK" then
 				},
 			},
 		},
-		-- Warlock: Demonic Embrace (Rank 5) - 2,3
-		--          Increases your total Stamina by 3%/6%/9%/12%/15% but reduces your total Spirit by 1%/2%/3%/4%/5%.
 		["MOD_SPI"] = {
+			-- Talent: Demonic Embrace
 			{
 				["tab"] = 2,
 				["num"] = 3,
@@ -1530,9 +1463,8 @@ elseif addon.class == "WARRIOR" then
 				["stance"] = "Interface\\Icons\\Ability_Racial_Avatar",
 			},
 		},
-		-- Warrior: Toughness (Rank 5) - 3,5
-		--          Increases your armor value from items by 2%/4%/6%/8%/10%.
 		["MOD_ARMOR"] = {
+			-- Talent: Toughness
 			{
 				["tab"] = 3,
 				["num"] = 5,
@@ -1541,9 +1473,8 @@ elseif addon.class == "WARRIOR" then
 				},
 			},
 		},
-		-- Warrior: Vitality (Rank 5) - 3,21
-		--          Increases your total Stamina by 1%/2%/3%/4%/5% and your total Strength by 2%/4%/6%/8%/10%.
 		["MOD_STA"] = {
+			-- Talent: Vitality
 			{
 				["tab"] = 3,
 				["num"] = 21,
@@ -1552,9 +1483,8 @@ elseif addon.class == "WARRIOR" then
 				},
 			},
 		},
-		-- Warrior: Vitality (Rank 5) - 3,21
-		--          Increases your total Stamina by 1%/2%/3%/4%/5% and your total Strength by 2%/4%/6%/8%/10%.
 		["MOD_STR"] = {
+			-- Talent: Vitality
 			{
 				["tab"] = 3,
 				["num"] = 21,
@@ -1563,9 +1493,8 @@ elseif addon.class == "WARRIOR" then
 				},
 			},
 		},
-		-- Warrior: Shield Mastery (Rank 3) - 3,16
-		--          Increases the amount of damage absorbed by your shield by 10%/20%/30%.
 		["MOD_BLOCK_VALUE"] = {
+			-- Talent: Shield Mastery
 			{
 				["tab"] = 3,
 				["num"] = 16,
@@ -1604,6 +1533,7 @@ end
 if addon.playerRace == "Dwarf" then
 	StatLogic.StatModTable["Dwarf"] = {
 		[StatLogic.Stats.RangedCrit] = {
+			-- Passive: Gun Specialization
 			{
 				["value"] = 1,
 				["weaponSubclass"] = {
@@ -1614,9 +1544,8 @@ if addon.playerRace == "Dwarf" then
 	}
 elseif addon.playerRace == "NightElf" then
 	StatLogic.StatModTable["NightElf"] = {
-		-- Night Elf : Quickness - Racial
-		--             Dodge chance increased by 1%.
 		["ADD_DODGE"] = {
+			-- Passive: Quickness
 			{
 				["value"] = 1,
 			},
@@ -1624,9 +1553,8 @@ elseif addon.playerRace == "NightElf" then
 	}
 elseif addon.playerRace == "Tauren" then
 	StatLogic.StatModTable["Tauren"] = {
-		-- Tauren: Endurance - Racial
-		--         Total Health increased by 5%.
 		["MOD_HEALTH"] = {
+			-- Passive: Endurance
 			{
 				["value"] = 0.05,
 			},
@@ -1634,9 +1562,8 @@ elseif addon.playerRace == "Tauren" then
 	}
 elseif addon.playerRace == "Gnome" then
 	StatLogic.StatModTable["Gnome"] = {
-		-- Gnome: Expansive Mind - Racial
-		--        Increase Intelligence by 5%.
 		["MOD_INT"] = {
+			-- Passive: Expansive Mind
 			{
 				["value"] = 0.05,
 			},
@@ -1644,14 +1571,15 @@ elseif addon.playerRace == "Gnome" then
 	}
 elseif addon.playerRace == "Human" then
 	StatLogic.StatModTable["Human"] = {
-		-- Human: The Human Spirit - Racial
-		--        Increase Spirit by 10%.
 		["MOD_SPI"] = {
+			-- Passive: The Human Spirit
 			{
 				["value"] = 0.1,
 			},
 		},
 		[StatLogic.Stats.Expertise] = {
+			-- Passive: Mace Specialization
+			-- Passive: Sword Specialization
 			{
 				["value"] = 5,
 				["weaponSubclass"] = {
@@ -1666,6 +1594,7 @@ elseif addon.playerRace == "Human" then
 elseif addon.playerRace == "Orc" then
 	StatLogic.StatModTable["Orc"] = {
 		[StatLogic.Stats.Expertise] = {
+			-- Passive: Axe Specialization
 			{
 				["value"] = 5,
 				["weaponSubclass"] = {
@@ -1678,21 +1607,21 @@ elseif addon.playerRace == "Orc" then
 elseif addon.playerRace == "Troll" then
 	StatLogic.StatModTable["Troll"] = {
 		["MOD_NORMAL_HEALTH_REG"] = {
-			-- Troll: Regeneration - Racial
-			--   Health regeneration rate increased by 10%.
+			-- Passive: Regeneration
 			{
 				["value"] = 0.1,
 			},
 		},
 		["ADD_HEALTH_REG_MOD_NORMAL_HEALTH_REG"] = {
-			-- Troll: Regeneration - Racial
-			--   10% of total Health regeneration may continue during combat.
+			-- Passive: Regeneration
 			{
 				["value"] = 0.1,
 				["spellid"] = 20555,
 			},
 		},
 		[StatLogic.Stats.RangedCrit] = {
+			-- Passive: Bow Specialization
+			-- Passive: Throwing Specialization
 			{
 				["value"] = 1,
 				["weaponSubclass"] = {
@@ -1756,16 +1685,14 @@ StatLogic.StatModTable["ALL"] = {
 		},
 	},
 	["MOD_ARMOR"] = {
-		-- Paladin: Lay on Hands (Rank 1/2) - Buff
-		--          Armor increased by 15%/30%.
+		-- Buff: Lay on Hands
 		{
 			["rank"] = {
 				0.15, 0.30,
 			},
 			["aura"] = 27154,
 		},
-		-- Priest: Inspiration (Rank 1/2/3) - Buff
-		--         Increases armor by 8%/16%/25%.
+		-- Buff: Inspiration
 		{
 			["rank"] = {
 				0.08, 0.16, 0.25,
@@ -1773,8 +1700,7 @@ StatLogic.StatModTable["ALL"] = {
 			["aura"] = 15363,
 			["group"] = addon.ExclusiveGroup.Armor,
 		},
-		-- Shaman: Ancestral Fortitude (Rank 1/2/3) - Buff
-		--         Increases your armor value by 8%/16%/25%.
+		-- Buff: Ancestral Fortitude
 		{
 			["rank"] = {
 				0.08, 0.16, 0.25,
@@ -1784,15 +1710,13 @@ StatLogic.StatModTable["ALL"] = {
 		},
 	},
 	["MOD_STR"] = {
-		-- Blessing of Kings - Buff
-		-- Increases stats by 10%.
+		-- Buff: Blessing of Kings
 		{
 			["value"] = 0.1,
 			["aura"] = 20217,
 			["group"] = addon.ExclusiveGroup.AllStats,
 		},
-		-- Greater Blessing of Kings - Buff
-		-- Increases stats by 10%.
+		-- Buff: Greater Blessing of Kings
 		{
 			["value"] = 0.1,
 			["aura"] = 25898,
@@ -1800,79 +1724,76 @@ StatLogic.StatModTable["ALL"] = {
 		},
 	},
 	["MOD_AGI"] = {
-		-- Blessing of Kings - Buff
-		-- Increases stats by 10%.
+		-- Buff: Blessing of Kings
 		{
 			["value"] = 0.1,
 			["aura"] = 20217,
+			["group"] = addon.ExclusiveGroup.AllStats,
 		},
-		-- Greater Blessing of Kings - Buff
-		-- Increases stats by 10%.
+		-- Buff: Greater Blessing of Kings
 		{
 			["value"] = 0.1,
 			["aura"] = 25898,
+			["group"] = addon.ExclusiveGroup.AllStats,
 		},
 	},
 	["MOD_STA"] = {
-		-- Blessing of Kings - Buff
-		-- Increases stats by 10%.
+		-- Buff: Blessing of Kings
 		{
 			["value"] = 0.1,
 			["aura"] = 20217,
+			["group"] = addon.ExclusiveGroup.AllStats,
 		},
-		-- Greater Blessing of Kings - Buff
-		-- Increases stats by 10%.
+		-- Buff: Greater Blessing of Kings
 		{
 			["value"] = 0.1,
 			["aura"] = 25898,
+			["group"] = addon.ExclusiveGroup.AllStats,
 		},
 	},
 	["MOD_INT"] = {
-		-- Blessing of Kings - Buff
-		-- Increases stats by 10%.
+		-- Buff: Blessing of Kings
 		{
 			["value"] = 0.1,
 			["aura"] = 20217,
+			["group"] = addon.ExclusiveGroup.AllStats,
 		},
-		-- Greater Blessing of Kings - Buff
-		-- Increases stats by 10%.
+		-- Buff: Greater Blessing of Kings
 		{
 			["value"] = 0.1,
 			["aura"] = 25898,
+			["group"] = addon.ExclusiveGroup.AllStats,
 		},
-		-- Ember Skyfire Diamond
-		-- 2% Intellect
+		-- Meta: Ember Skyfire Diamond
 		{
 			["meta"] = 35503,
 			["value"] = 0.02,
 		},
 	},
 	["MOD_SPI"] = {
-		-- Blessing of Kings - Buff
-		-- Increases stats by 10%.
+		-- Buff: Blessing of Kings
 		{
 			["value"] = 0.1,
 			["aura"] = 20217,
+			["group"] = addon.ExclusiveGroup.AllStats,
 		},
-		-- Greater Blessing of Kings - Buff
-		-- Increases stats by 10%.
+		-- Buff: Greater Blessing of Kings
 		{
 			["value"] = 0.1,
 			["aura"] = 25898,
+			["group"] = addon.ExclusiveGroup.AllStats,
 		},
 	},
-	-- Whitemend Wisdom
-	-- Increases healing by up to 10% of your total Intellect.
 	["ADD_HEALING_MOD_INT"] = {
+		-- Set: Whitemend Wisdom
 		{
 			["set"] = 571,
 			["pieces"] = 2,
 			["value"] = 0.1,
 		}
 	},
-	-- Wrath of Spellfire
-	-- Increases spell damage by up to 7% of your total Intellect.
 	["ADD_SPELL_DMG_MOD_INT"] = {
+		-- Set: Wrath of Spellfire
 		{
 			["set"] = 552,
 			["pieces"] = 3,
@@ -1898,7 +1819,7 @@ StatLogic.StatModTable["ALL"] = {
 			["pieces"] = 3,
 			["value"] = 0.05,
 		},
-		-- Aura of the Blue Dragon
+		-- Buff: Aura of the Blue Dragon
 		{
 			["aura"] = 23684,
 			["value"] = 1.00,
