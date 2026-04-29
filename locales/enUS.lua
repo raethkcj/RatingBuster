@@ -209,7 +209,7 @@ L["statPatterns"] = {
 	[StatLogic.Stats.BlockRating] = { "block rating", "block" },
 	[StatLogic.Stats.ParryRating] = { "parry rating", "parry" },
 
-	[StatLogic.Stats.SpellPower] = { "spell power" },
+	[StatLogic.Stats.SpellPower] = { "spell power", "spell damage and healing", "spell damage" },
 	[StatLogic.Stats.GenericAttackPower] = { "attack power" },
 	[StatLogic.Stats.AttackPower] = { "attack power" },
 	[StatLogic.Stats.RangedAttackPower] = { "attack power" },
