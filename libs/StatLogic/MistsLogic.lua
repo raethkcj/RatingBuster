@@ -2320,6 +2320,17 @@ elseif addon.playerRace == "Troll" then
 	}
 end
 
+local function GetAmplificationUpgrade(itemID)
+	for _, slot in ipairs(addon.inventoryTypeSlots["INVTYPE_TRINKET"]) do
+		if GetInventoryItemID("player", slot) == itemID then
+			local location = ItemLocation:CreateFromEquipmentSlot(slot)
+			local itemLevel = C_Item.GetCurrentItemLevel(location)
+			print(itemLevel)
+			return 1.15 ^ ((itemLevel - 553) / 15) * 0.07
+		end
+	end
+end
+
 StatLogic.StatModTable["ALL"] = {
 	["ADD_MELEE_HIT_RATING_MOD_HIT_RATING"] = {
 		{
@@ -2662,6 +2673,53 @@ StatLogic.StatModTable["ALL"] = {
 			["group"] = addon.ExclusiveGroup.Zandalar
 		},
 	},
+	["MOD_SPI"] = {
+		-- Item: Purified Bindings of Immerseus (Celestial)
+		{
+			["item"] = 104924,
+			["upgrade"] = GetAmplificationUpgrade,
+		},
+		-- Item: Purified Bindings of Immerseus (Normal)
+		{
+			["item"] = 102293,
+			["upgrade"] = GetAmplificationUpgrade,
+		},
+		-- Item: Purified Bindings of Immerseus (Heroic)
+		{
+			["item"] = 104426,
+			["upgrade"] = GetAmplificationUpgrade,
+		},
+		-- Item: Prismatic Prison of Pride (Celestial)
+		{
+			["item"] = 104976,
+			["upgrade"] = GetAmplificationUpgrade,
+		},
+		-- Item: Prismatic Prison of Pride (Normal)
+		{
+			["item"] = 102299,
+			["upgrade"] = GetAmplificationUpgrade,
+		},
+		-- Item: Prismatic Prison of Pride (Heroic)
+		{
+			["item"] = 104478,
+			["upgrade"] = GetAmplificationUpgrade,
+		},
+		-- Item: Thok's Tail Tip (Celestial)
+		{
+			["item"] = 105111,
+			["upgrade"] = GetAmplificationUpgrade,
+		},
+		-- Item: Thok's Tail Tip (Normal)
+		{
+			["item"] = 102305,
+			["upgrade"] = GetAmplificationUpgrade,
+		},
+		-- Item: Thok's Tail Tip (Heroic)
+		{
+			["item"] = 104613,
+			["upgrade"] = GetAmplificationUpgrade,
+		},
+	},
 	["MOD_AP"] = {
 		-- Buff: Horn of Winter
 		{
@@ -2732,6 +2790,100 @@ StatLogic.StatModTable["ALL"] = {
 		{
 			["aura"] = 97463,
 			["value"] = 0.2,
+		},
+	},
+	["MOD_HASTE_RATING"] = {
+		-- Item: Purified Bindings of Immerseus (Celestial)
+		{
+			["item"] = 104924,
+			["upgrade"] = GetAmplificationUpgrade,
+		},
+		-- Item: Purified Bindings of Immerseus (Normal)
+		{
+			["item"] = 102293,
+			["upgrade"] = GetAmplificationUpgrade,
+		},
+		-- Item: Purified Bindings of Immerseus (Heroic)
+		{
+			["item"] = 104426,
+			["upgrade"] = GetAmplificationUpgrade,
+		},
+		-- Item: Prismatic Prison of Pride (Celestial)
+		{
+			["item"] = 104976,
+			["upgrade"] = GetAmplificationUpgrade,
+		},
+		-- Item: Prismatic Prison of Pride (Normal)
+		{
+			["item"] = 102299,
+			["upgrade"] = GetAmplificationUpgrade,
+		},
+		-- Item: Prismatic Prison of Pride (Heroic)
+		{
+			["item"] = 104478,
+			["upgrade"] = GetAmplificationUpgrade,
+		},
+		-- Item: Thok's Tail Tip (Celestial)
+		{
+			["item"] = 105111,
+			["upgrade"] = GetAmplificationUpgrade,
+		},
+		-- Item: Thok's Tail Tip (Normal)
+		{
+			["item"] = 102305,
+			["upgrade"] = GetAmplificationUpgrade,
+		},
+		-- Item: Thok's Tail Tip (Heroic)
+		{
+			["item"] = 104613,
+			["upgrade"] = GetAmplificationUpgrade,
+		},
+	},
+	["MOD_MASTERY_RATING"] = {
+		-- Item: Purified Bindings of Immerseus (Celestial)
+		{
+			["item"] = 104924,
+			["upgrade"] = GetAmplificationUpgrade,
+		},
+		-- Item: Purified Bindings of Immerseus (Normal)
+		{
+			["item"] = 102293,
+			["upgrade"] = GetAmplificationUpgrade,
+		},
+		-- Item: Purified Bindings of Immerseus (Heroic)
+		{
+			["item"] = 104426,
+			["upgrade"] = GetAmplificationUpgrade,
+		},
+		-- Item: Prismatic Prison of Pride (Celestial)
+		{
+			["item"] = 104976,
+			["upgrade"] = GetAmplificationUpgrade,
+		},
+		-- Item: Prismatic Prison of Pride (Normal)
+		{
+			["item"] = 102299,
+			["upgrade"] = GetAmplificationUpgrade,
+		},
+		-- Item: Prismatic Prison of Pride (Heroic)
+		{
+			["item"] = 104478,
+			["upgrade"] = GetAmplificationUpgrade,
+		},
+		-- Item: Thok's Tail Tip (Celestial)
+		{
+			["item"] = 105111,
+			["upgrade"] = GetAmplificationUpgrade,
+		},
+		-- Item: Thok's Tail Tip (Normal)
+		{
+			["item"] = 102305,
+			["upgrade"] = GetAmplificationUpgrade,
+		},
+		-- Item: Thok's Tail Tip (Heroic)
+		{
+			["item"] = 104613,
+			["upgrade"] = GetAmplificationUpgrade,
 		},
 	},
 	["ADD_DODGE"] = {

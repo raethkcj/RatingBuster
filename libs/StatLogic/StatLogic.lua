@@ -1224,6 +1224,14 @@ addon.StatModValidators = {
 			["UNIT_STATS"] = "player",
 		},
 	},
+	item = {
+		validate = function(case)
+			return C_Item.IsEquippedItem(case.item)
+		end,
+		events = {
+			["PLAYER_EQUIPMENT_CHANGED"] = true,
+		}
+	},
 	itemClass = {
 		validate = function(case, _, statModContext)
 			local itemClass = statModContext and statModContext.itemClass
@@ -1592,6 +1600,8 @@ do
 			newValue = aura.tooltip
 		elseif case.mastery then
 			newValue = GetMasteryEffect() / 100
+		elseif case.upgrade then
+			newValue = case.upgrade(case.item)
 		end
 
 		if newValue then
@@ -2475,7 +2485,7 @@ function StatLogic:GetArmorDistribution(item, value, color, ignoreSum)
 	return armor, bonusArmor
 end
 
-local getSlotID = {
+addon.inventoryTypeSlots = {
 	INVTYPE_AMMO           = INVSLOT_AMMO,
 	INVTYPE_GUNPROJECTILE  = INVSLOT_AMMO,
 	INVTYPE_BOWPROJECTILE  = INVSLOT_AMMO,
@@ -2537,7 +2547,7 @@ function StatLogic:GetDiffID(item, ignoreEnchant)
 	name, link, _, _, _, _, _, _, inventoryType = C_Item.GetItemInfo(item)
 	if not name then return end
 	-- Get equip location slot id for use in GetInventoryItemLink
-	local slotID = getSlotID[inventoryType]
+	local slotID = addon.inventoryTypeSlots[inventoryType]
 	-- Don't do bags
 	if not slotID then return end
 
