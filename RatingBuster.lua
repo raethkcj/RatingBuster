@@ -2102,7 +2102,8 @@ function RatingBuster:OnEnable()
 	self:RegisterEvent("PLAYER_LEVEL_UP")
 	-- Events that require cache clearing
 	self:RegisterEvent("CHARACTER_POINTS_CHANGED", RatingBuster.ClearCache) -- talent point changed
-	self:RegisterBucketEvent("UNIT_AURA", 1) -- fire at most once every 1 second
+	self:RegisterBucketEvent("UNIT_AURA", 1)
+	self:RegisterBucketEvent("UPDATE_SHAPESHIFT_FORM", 1, RatingBuster.ClearCache)
 end
 
 function RatingBuster:OnDisable()
@@ -2162,14 +2163,12 @@ do
 	end)
 end
 
--- event = PLAYER_LEVEL_UP
 -- arg1 = New player level
-function RatingBuster:PLAYER_LEVEL_UP(_, newlevel)
-	playerLevel = newlevel
+function RatingBuster:PLAYER_LEVEL_UP(_, newLevel)
+	playerLevel = newLevel
 	RatingBuster:ClearCache()
 end
 
--- event = UNIT_AURA
 -- arg1 = List of UnitIDs in the AceBucket interval
 function RatingBuster:UNIT_AURA(units)
 	if units.player then
