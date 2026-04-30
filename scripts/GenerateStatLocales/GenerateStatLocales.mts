@@ -146,18 +146,19 @@ class StatEntry {
 }
 
 function mapTextToStatEntry(
+	id: number,
+	identifierType: IdentifierType,
 	text: string,
 	statEffects: (StatValue[] | false)[] | undefined,
-	id: number,
+	procEffects: (StatValue[] | false)[] | undefined,
 	spellStatEffects: Map<number, (StatValue[] | false)[]>,
-	identifierType: IdentifierType,
 	spellDurations: Map<number, number>,
 	spellDurationFormats: Record<Time, string>,
 	locale: string,
 ): [string, StatEntry] {
 	text = text.replace(/[\s.]+$/, "").replaceAll(/[\r\n]/gm, m => m === "\r" ? "\\r" : "\\n").replaceAll(/"/gm, "\\\"").toLowerCase()
 
-	const remainingEffects: (StatValue[] | false)[] = statEffects ? [...statEffects] : []
+	let remainingEffects: (StatValue[] | false)[] = statEffects ? [...statEffects] : []
 
 	const isEnchant = identifierType == IdentifierType.Enchant
 	const statEntry = new StatEntry(id, identifierType)
@@ -267,6 +268,10 @@ function mapTextToStatEntry(
 		statEntry.reduction = false
 		statEntry.entries = statEffects
 		return [pattern, statEntry]
+	}
+
+	if (procEffects && entries.every((e, j) => e && e[0].stat === "Placeholder")) {
+		remainingEffects = [...procEffects]
 	}
 
 	// If the spell had more effects than could be matched by identifiers,
@@ -1296,11 +1301,12 @@ async function getLocaleStatMap(
 			const branches = traverseDescriptionBranches(description.Description_lang)
 			for (const branch of branches) {
 				const [pattern, statEntry] = mapTextToStatEntry(
+					description.ID,
+					description.identifierType,
 					branch,
 					staticEffects || enchantEffects,
-					description.ID,
+					procEffects,
 					spellStatEffects,
-					description.identifierType,
 					spellDurations,
 					spellDurationFormats,
 					locale,
@@ -1316,11 +1322,12 @@ async function getLocaleStatMap(
 	for (const statEnchant of statEnchants) {
 		const stats = getEnchantStats(statEnchant, spellStatEffects, overrideEnchantStatEffects)
 		const [pattern, statEntry] = mapTextToStatEntry(
+			statEnchant.ID,
+			IdentifierType.Enchant,
 			statEnchant.Name_lang,
 			stats,
-			statEnchant.ID,
+			undefined,
 			spellStatEffects,
-			IdentifierType.Enchant,
 			spellDurations,
 			spellDurationFormats,
 			locale,
