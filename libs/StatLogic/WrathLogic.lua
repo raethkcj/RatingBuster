@@ -3037,6 +3037,8 @@ elseif addon.playerRace == "Troll" then
 			},
 		},
 		[StatLogic.Stats.RangedCrit] = {
+			-- Passive: Bow Specialization
+			-- Passive: Throwing Specialization
 			{
 				["value"] = 1,
 				["weaponSubclass"] = {
