@@ -2325,7 +2325,6 @@ local function GetAmplificationUpgrade(itemID)
 		if GetInventoryItemID("player", slot) == itemID then
 			local location = ItemLocation:CreateFromEquipmentSlot(slot)
 			local itemLevel = C_Item.GetCurrentItemLevel(location)
-			print(itemLevel)
 			return 1.15 ^ ((itemLevel - 553) / 15) * 0.07
 		end
 	end
