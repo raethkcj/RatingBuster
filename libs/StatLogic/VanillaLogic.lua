@@ -23,6 +23,38 @@ local NormalManaRegenPerSpi = function()
 	return 5 * (spi > 50 and RegenMPPerSpt[addon.class] or OCTRegenMP)
 end
 
+-- Below level 20 (Gathered by Alessandro Barbieri)
+local OCTRegenHP = {
+	["WARRIOR"] = 1.125,    -- No data
+	["PALADIN"] = 0.194,
+	["HUNTER"]  = 0.2805,   -- No data
+	["ROGUE"]   = 1.0000,   -- No data
+	["PRIEST"]  = 0.0951,   -- No data
+	["SHAMAN"]  = 0.214287, -- No data
+	["MAGE"]    = 0.0935,
+	["WARLOCK"] = 0.1055,
+	["DRUID"]   = 0.112,
+}
+
+-- Above level 20 (Gathered by Alessandro Barbieri)
+local RegenHPPerSpt = {
+	["WARRIOR"] = 0.375,
+	["PALADIN"] = 0.094,
+	["HUNTER"]  = 0.0935,
+	["ROGUE"]   = 0.333333, -- No data
+	["PRIEST"]  = 0.0317,
+	["SHAMAN"]  = 0.071429, -- No data
+	["MAGE"]    = 0.0315,
+	["WARLOCK"] = 0.036,
+	["DRUID"]   = 0.0476,
+}
+
+local NormalHealthRegenPerSpi = function()
+	local _, spi = UnitStat("player", LE_UNIT_STAT_SPIRIT)
+	local classRegen = spi > 50 and RegenHPPerSpt or OCTRegenHP
+	return 5 * classRegen[addon.class]
+end
+
 -- CritPerAgi, SpellCritPerInt, and DodgePerAgi collected via addon comms from users like you <3
 addon.CritPerAgi = {
 	["WARRIOR"] = {
@@ -221,7 +253,7 @@ if addon.class == "DRUID" then
 		["ADD_NORMAL_HEALTH_REG_MOD_SPI"] = {
 			-- Base
 			{
-				["value"] = 0.0625 * 5,
+				["value"] = NormalHealthRegenPerSpi,
 			},
 		},
 		["ADD_MANA_REGEN_MOD_NORMAL_MANA_REGEN"] = {
@@ -381,7 +413,7 @@ elseif addon.class == "HUNTER" then
 		["ADD_NORMAL_HEALTH_REG_MOD_SPI"] = {
 			-- Base
 			{
-				["value"] = 0.125 * 5,
+				["value"] = NormalHealthRegenPerSpi,
 			},
 		},
 		["ADD_GENERIC_MANA_REGEN_MOD_MANA"] = {
@@ -499,7 +531,7 @@ elseif addon.class == "MAGE" then
 		["ADD_NORMAL_HEALTH_REG_MOD_SPI"] = {
 			-- Base
 			{
-				["value"] = 0.041667 * 5,
+				["value"] = NormalHealthRegenPerSpi,
 			},
 		},
 		-- Mage: Arcane Fortitude - 1,9
@@ -606,7 +638,7 @@ elseif addon.class == "PALADIN" then
 		["ADD_NORMAL_HEALTH_REG_MOD_SPI"] = {
 			-- Base
 			{
-				["value"] = 0.125 * 5,
+				["value"] = NormalHealthRegenPerSpi,
 			},
 		},
 		["ADD_GENERIC_MANA_REGEN_MOD_MANA"] = {
@@ -882,7 +914,7 @@ elseif addon.class == "PRIEST" then
 		["ADD_NORMAL_HEALTH_REG_MOD_SPI"] = {
 			-- Base
 			{
-				["value"] = 0.041667 * 5,
+				["value"] = NormalHealthRegenPerSpi,
 			},
 		},
 		["ADD_GENERIC_MANA_REGEN_MOD_MANA"] = {
@@ -982,7 +1014,7 @@ elseif addon.class == "ROGUE" then
 		["ADD_NORMAL_HEALTH_REG_MOD_SPI"] = {
 			-- Base
 			{
-				["value"] = 0.333333 * 5,
+				["value"] = NormalHealthRegenPerSpi,
 			},
 		},
 		["MOD_AP"] = {
@@ -1144,7 +1176,7 @@ elseif addon.class == "SHAMAN" then
 		["ADD_NORMAL_HEALTH_REG_MOD_SPI"] = {
 			-- Base
 			{
-				["value"] = 0.071429 * 5,
+				["value"] = NormalHealthRegenPerSpi,
 			},
 		},
 		["ADD_SPELL_DMG_MOD_INT"] = {
@@ -1325,7 +1357,7 @@ elseif addon.class == "WARLOCK" then
 		["ADD_NORMAL_HEALTH_REG_MOD_SPI"] = {
 			-- Base
 			{
-				["value"] = 0.045455 * 5,
+				["value"] = NormalHealthRegenPerSpi,
 			},
 		},
 		-- Warlock: Demonic Embrace (Rank 5) - 2,3
@@ -1479,7 +1511,7 @@ elseif addon.class == "WARRIOR" then
 		["ADD_NORMAL_HEALTH_REG_MOD_SPI"] = {
 			-- Base
 			{
-				["value"] = 0.5 * 5,
+				["value"] = NormalHealthRegenPerSpi,
 			},
 		},
 		["ADD_BLOCK_VALUE_MOD_STR"] = {
