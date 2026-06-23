@@ -2176,7 +2176,10 @@ do
 				addOffset(positions, offsets, position, 10)
 				return ""
 			end)
-			text = text:gsub("|r", "")
+			text = text:gsub("()|r", function(position)
+				addOffset(positions, offsets, position, 2)
+				return ""
+			end)
 
 			-- Strip textures
 			text = text:gsub("()(|T.-|t)", function(position, texture)
