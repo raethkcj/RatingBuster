@@ -134,6 +134,7 @@ addon.TrimmedPrefixes = {}
 
 local trimmedPrefixes = {
 	ITEM_SPELL_TRIGGER_ONEQUIP,
+	" +",
 }
 
 setPrefixPatterns(trimmedPrefixes, addon.TrimmedPrefixes)
