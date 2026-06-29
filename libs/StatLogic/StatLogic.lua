@@ -1887,9 +1887,9 @@ local GemSubclassColors = {
 	[Enum.ItemGemSubclass.Red]    = StatLogic.SocketColor.Red,
 	[Enum.ItemGemSubclass.Blue]   = StatLogic.SocketColor.Blue,
 	[Enum.ItemGemSubclass.Yellow] = StatLogic.SocketColor.Yellow,
-	[Enum.ItemGemSubclass.Purple] = bit.band(StatLogic.SocketColor.Red, StatLogic.SocketColor.Blue),
-	[Enum.ItemGemSubclass.Green]  = bit.band(StatLogic.SocketColor.Yellow, StatLogic.SocketColor.Blue),
-	[Enum.ItemGemSubclass.Orange] = bit.band(StatLogic.SocketColor.Red, StatLogic.SocketColor.Yellow),
+	[Enum.ItemGemSubclass.Purple] = bit.bor(StatLogic.SocketColor.Red, StatLogic.SocketColor.Blue),
+	[Enum.ItemGemSubclass.Green]  = bit.bor(StatLogic.SocketColor.Yellow, StatLogic.SocketColor.Blue),
+	[Enum.ItemGemSubclass.Orange] = bit.bor(StatLogic.SocketColor.Red, StatLogic.SocketColor.Yellow),
 	[Enum.ItemGemSubclass.Meta]   = StatLogic.SocketColor.Meta,
 	[ItemGemSubclassCogwheel]     = StatLogic.SocketColor.Cogwheel,
 }
