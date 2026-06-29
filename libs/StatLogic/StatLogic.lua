@@ -2065,14 +2065,29 @@ do
 	---@field [number] { statGroup: StatGroup, value: number, position: number? }
 
 	local function addOffset(positions, offsets, position, offset)
-		if offsets[position] then
-			offsets[position] = offsets[position] + offset
-		else
-			local length = #positions
-			local cumulative = length > 0 and positions[length] or 0
+		if not offsets[position] then
 			table.insert(positions, position)
-			offsets[position] = cumulative + offset
+			table.sort(positions)
 		end
+
+		local previousOffset = 0
+		for i, pos in ipairs(positions) do
+			if pos <= position then
+				previousOffset = offsets[pos] or previousOffset
+				if pos == position then
+					offsets[pos] = previousOffset + offset
+				end
+			else
+				local newPosition = pos - offset
+				local newOffset = offsets[pos] + offset
+				positions[i] = newPosition
+
+				offsets[pos] = nil
+				offsets[newPosition] = newOffset
+			end
+		end
+
+		table.sort(positions)
 	end
 
 	local function getOffset(positions, offsets, position)
