@@ -2080,7 +2080,11 @@ do
 			else
 				local newPosition = pos - offset
 				local newOffset = offsets[pos] + offset
-				positions[i] = newPosition
+				if offsets[newPosition] then
+					table.remove(positions, i)
+				else
+					positions[i] = newPosition
+				end
 
 				offsets[pos] = nil
 				offsets[newPosition] = newOffset
