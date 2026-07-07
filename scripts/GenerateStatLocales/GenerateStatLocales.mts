@@ -1311,6 +1311,7 @@ const enchantConditionTags = [
 	"RED_GEM",
 	"YELLOW_GEM",
 	"BLUE_GEM",
+	"ENCHANT_CONDITION_REQUIRES",
 	"ENCHANT_CONDITION_MORE_COMPARE",
 	"ENCHANT_CONDITION_MORE_EQUAL_COMPARE",
 	"ENCHANT_CONDITION_MORE_VALUE",
@@ -1356,12 +1357,8 @@ enum ConditionOperator {
 	GreaterThanOrEqual = 5,
 }
 
-// operandType is gemColor, each index can have a left Lt and right Rt
-// each side can have operandType OR operand; operand is a static value, while operandType counts equipped gems
-
-// ENCHANT_CONDITION_MORE_EQUAL_COMPARE|ENCHANT_CONDITION_MORE_VALUE|ENCHANT_CONDITION_MORE_COMPARE
 async function getEnchantConditionText(conditions: EnchantmentCondition[], conditionStrings: Map<string, string>) {
-	let texts: string[] = []
+	let texts = [conditionStrings.get("ENCHANT_CONDITION_REQUIRES")]
 	for (const condition of conditions) {
 		if (condition.Rt_operand != 0) {
 			// Comparing 1 color to 1 value, and need to handle plural
