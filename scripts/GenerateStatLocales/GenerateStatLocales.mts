@@ -1449,20 +1449,23 @@ async function getLocaleStatMap(
 	const conditionStrings = await getMetaGemConditionStrings(expansion, locale)
 
 	for (const statEnchant of statEnchants) {
-		const description = await getEnchantDescription(statEnchant, metaGemConditions, conditionStrings)
+		const descriptions = new Set([statEnchant.Name_lang])
+		descriptions.add(await getEnchantDescription(statEnchant, metaGemConditions, conditionStrings))
 		const stats = getEnchantStats(statEnchant, spellStatEffects, overrideEnchantStatEffects)
-		const [pattern, statEntry] = mapTextToStatEntry(
-			statEnchant.ID,
-			IdentifierType.Enchant,
-			description,
-			stats,
-			undefined,
-			spellStatEffects,
-			spellDurations,
-			spellDurationFormats,
-			locale,
-		)
-		insertEntry(statMap, pattern, statEntry, locale)
+		for (const description of descriptions) {
+			const [pattern, statEntry] = mapTextToStatEntry(
+				statEnchant.ID,
+				IdentifierType.Enchant,
+				description,
+				stats,
+				undefined,
+				spellStatEffects,
+				spellDurations,
+				spellDurationFormats,
+				locale,
+			)
+			insertEntry(statMap, pattern, statEntry, locale)
+		}
 	}
 
 	return statMap
