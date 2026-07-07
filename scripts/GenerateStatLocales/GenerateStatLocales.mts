@@ -370,6 +370,7 @@ function mapTextToStatEntry(
 
 const base = import.meta.url
 import statLocaleData from './StatLocaleData.json' with { type: "json" }
+import exp from 'node:constants'
 const databaseDirName = "DB2"
 
 class DatabaseTable {
@@ -1073,6 +1074,7 @@ function traverseDescriptionBranches(description: string): string[] {
 type StatEnchant = {
 	ID: number
 	Name_lang: string
+	Condition_ID: number
 	Effects: {
 		items: {
 			items: [effect: EnchantEffect, effectArg: number, pointsMin: number]
@@ -1084,7 +1086,7 @@ async function queryStatEnchants(expansion: Expansion, locale: string, spellIDs:
 	const spellItemEnchantment = await DatabaseTable.get("SpellItemEnchantment", expansion, locale)
 
 	const query = `
-		SELECT ID, Name_lang, [
+		SELECT ID, Name_lang, Field_1_15_3_55112_013 as Condition_ID, [
 			array_value(Effect_0, EffectArg_0, EffectPointsMin_0),
 			array_value(Effect_1, EffectArg_1, EffectPointsMin_1),
 			array_value(Effect_2, EffectArg_2, EffectPointsMin_2),
@@ -1103,6 +1105,53 @@ async function queryStatEnchants(expansion: Expansion, locale: string, spellIDs:
 
 	const reader = await connection.runAndReadAll(query)
 	return reader.getRowObjects() as unknown as StatEnchant[]
+}
+
+class EnchantmentCondition {
+	constructor(
+		public Lt_operandType: GemColor,
+		public Lt_operand: number,
+		public Operator: number,
+		public Rt_operandType: GemColor,
+		public Rt_operand: number,
+	) {}
+}
+
+type EnchantmentConditionRow = [
+	ID: number,
+	Conditions: {
+		items: {
+			items: [
+				Lt_operandType: GemColor,
+				Lt_operand: number,
+				Operator: number,
+				Rt_operandType: GemColor,
+				Rt_operand: number,
+			]
+		}[]
+	}
+]
+
+async function queryMetaGemConditions(expansion: Expansion) {
+	if (expansion === Expansion.Vanilla) {
+		return new Map()
+	}
+	const spellItemEnchantmentConditions = await DatabaseTable.get("SpellItemEnchantmentCondition", expansion, "enUS")
+
+	const query = `
+		SELECT ID, [
+			array_value(Lt_operandType_0, Lt_operand_0, Operator_0, Rt_operandType_0, Rt_operand_0),
+			array_value(Lt_operandType_1, Lt_operand_1, Operator_1, Rt_operandType_1, Rt_operand_1),
+			array_value(Lt_operandType_2, Lt_operand_2, Operator_2, Rt_operandType_2, Rt_operand_2),
+			array_value(Lt_operandType_3, Lt_operand_3, Operator_3, Rt_operandType_3, Rt_operand_3),
+			array_value(Lt_operandType_4, Lt_operand_4, Operator_4, Rt_operandType_4, Rt_operand_4),
+		] As Conditions
+		FROM read_csv('${spellItemEnchantmentConditions.path}', auto_type_candidates = ['INTEGER', 'DOUBLE', 'VARCHAR'])
+	`
+
+	const reader = await connection.runAndReadAll(query)
+	const rows = reader.getRows() as unknown as EnchantmentConditionRow[]
+	return new Map<number, EnchantmentCondition[]>(rows.map(([ID, conditions]) => [ID, conditions.items.map(c => new EnchantmentCondition(...c.items))]))
 }
 
 class StatValue {
@@ -1258,6 +1307,85 @@ function insertEntry(statMap: Map<string, StatEntry>, text: string, statEntry: S
 	}
 }
 
+const enchantConditionTags = [
+	"RED_GEM",
+	"YELLOW_GEM",
+	"BLUE_GEM",
+	"ENCHANT_CONDITION_MORE_COMPARE",
+	"ENCHANT_CONDITION_MORE_EQUAL_COMPARE",
+	"ENCHANT_CONDITION_MORE_VALUE",
+]
+
+async function getMetaGemConditionStrings(expansion: Expansion, locale: string) {
+	const globalStrings = await DatabaseTable.get("GlobalStrings", expansion, locale)
+
+	const query = `
+		SELECT BaseTag, TagText_lang
+		FROM read_csv('${globalStrings.path}', auto_type_candidates = ['INTEGER', 'DOUBLE', 'VARCHAR'])
+		WHERE BaseTag IN [${enchantConditionTags.map(f => `'${f}'`)}]
+	`
+
+	const reader = await connection.runAndReadAll(query)
+	const results = reader.getRows()
+	return new Map<string, string>(results as [string, string][])
+}
+
+async function getEnchantDescription(statEnchant: StatEnchant, metaGemConditions: Map<number, EnchantmentCondition[]>, conditionStrings: Map<string, string>) {
+	let description = statEnchant.Name_lang
+	const conditions = metaGemConditions.get(statEnchant.Condition_ID)
+	if(conditions) {
+		description += await getEnchantConditionText(conditions, conditionStrings)
+	}
+	return description
+}
+
+enum GemColor {
+	Red = 2,
+	Yellow = 3,
+	Blue = 4,
+}
+
+const GemColorTags: Record<GemColor, string> = {
+	[GemColor.Red]: "RED_GEM",
+	[GemColor.Yellow]: "YELLOW_GEM",
+	[GemColor.Blue]: "BLUE_GEM",
+}
+
+enum ConditionOperator {
+	GreaterThan = 3,
+	GreaterThanOrEqual = 5,
+}
+
+// operandType is gemColor, each index can have a left Lt and right Rt
+// each side can have operandType OR operand; operand is a static value, while operandType counts equipped gems
+
+// ENCHANT_CONDITION_MORE_EQUAL_COMPARE|ENCHANT_CONDITION_MORE_VALUE|ENCHANT_CONDITION_MORE_COMPARE
+async function getEnchantConditionText(conditions: EnchantmentCondition[], conditionStrings: Map<string, string>) {
+	let texts: string[] = []
+	for (const condition of conditions) {
+		if (condition.Rt_operand != 0) {
+			// Comparing 1 color to 1 value, and need to handle plural
+			const left = conditionStrings.get(GemColorTags[condition.Lt_operandType])!
+			const right = conditionStrings.get(GemColorTags[condition.Rt_operand])!
+			let conditionString = conditionStrings.get("ENCHANT_CONDITION_MORE_VALUE")?.replace("%s", left)
+		} else {
+			// Comparing two colors
+			const left = conditionStrings.get(GemColorTags[condition.Lt_operandType])!
+			const right = conditionStrings.get(GemColorTags[condition.Rt_operandType])!
+			let conditionString: string | undefined
+			if (condition.Operator == ConditionOperator.GreaterThan) {
+				conditionString = conditionStrings.get("ENCHANT_CONDITION_MORE_COMPARE")
+			} else if (condition.Operator == ConditionOperator.GreaterThanOrEqual) {
+				conditionString = conditionStrings.get("ENCHANT_CONDITION_MORE_EQUAL_COMPARE")
+			}
+			if (conditionString) {
+				texts.push(conditionString.replace("%s", left).replace("%s", right))
+			}
+		}
+	}
+	return texts.join("\n")
+}
+
 async function getLocaleStatMap(
 	expansion: Expansion,
 	locale: Locale,
@@ -1265,9 +1393,10 @@ async function getLocaleStatMap(
 	statSpellIDs: number[],
 	procSpells: Map<number, number>,
 	spellDescIDs: Set<number>,
+	spellDurations: Map<number, number>,
 	overrideEnchantIDs: number[],
 	overrideEnchantStatEffects: Map<number, StatValue[][]>,
-	spellDurations: Map<number, number>
+	metaGemConditions: Map<number, EnchantmentCondition[]>,
 ) {
 	const statMap = new Map<string, StatEntry>()
 
@@ -1319,12 +1448,15 @@ async function getLocaleStatMap(
 		}
 	}
 
+	const conditionStrings = await getMetaGemConditionStrings(expansion, locale)
+
 	for (const statEnchant of statEnchants) {
+		const description = await getEnchantDescription(statEnchant, metaGemConditions, conditionStrings)
 		const stats = getEnchantStats(statEnchant, spellStatEffects, overrideEnchantStatEffects)
 		const [pattern, statEntry] = mapTextToStatEntry(
 			statEnchant.ID,
 			IdentifierType.Enchant,
-			statEnchant.Name_lang,
+			description,
 			stats,
 			undefined,
 			spellStatEffects,
@@ -1428,6 +1560,8 @@ for (const [_, expansion] of Object.entries(Expansion)) {
 
 	const [overrideEnchantIDs, overrideEnchantStatEffects] = getOverrideEnchants(expansion)
 
+	const metaGemConditions = await queryMetaGemConditions(expansion)
+
 	for (const locale of locales) {
 		const localeStatMap = getLocaleStatMap(
 			expansion,
@@ -1436,9 +1570,10 @@ for (const [_, expansion] of Object.entries(Expansion)) {
 			statSpellIDs,
 			procSpells,
 			spellDescIDs,
+			spellDurations,
 			overrideEnchantIDs,
 			overrideEnchantStatEffects,
-			spellDurations,
+			metaGemConditions,
 		)
 		writeLocale(expansion, locale, localeStatMap)
 	}
