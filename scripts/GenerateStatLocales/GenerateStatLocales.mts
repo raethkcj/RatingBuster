@@ -1367,7 +1367,8 @@ async function getEnchantConditionText(conditions: EnchantmentCondition[], condi
 			// Comparing 1 color to 1 value, and need to handle plural
 			const left = conditionStrings.get(GemColorTags[condition.Lt_operandType])!
 			const right = conditionStrings.get(GemColorTags[condition.Rt_operand])!
-			let conditionString = conditionStrings.get("ENCHANT_CONDITION_MORE_VALUE")?.replace("%s", left)
+			let conditionString = conditionStrings.get("ENCHANT_CONDITION_MORE_VALUE")!.replace("%s", left)
+			texts.push(conditionString)
 		} else {
 			// Comparing two colors
 			const left = conditionStrings.get(GemColorTags[condition.Lt_operandType])!
