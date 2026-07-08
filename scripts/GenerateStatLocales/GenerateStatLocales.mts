@@ -154,7 +154,7 @@ function mapTextToStatEntry(
 	spellStatEffects: Map<number, (StatValue[] | false)[]>,
 	spellDurations: Map<number, number>,
 	spellDurationFormats: Record<Time, string>,
-	locale: string,
+	locale: Locale,
 ): [string, StatEntry] {
 	text = text.replace(/[\s.]+$/, "").replaceAll(/[\r\n]/gm, m => m === "\r" ? "\\r" : "\\n").replaceAll(/"/gm, "\\\"").toLowerCase()
 
@@ -847,7 +847,7 @@ async function queryStatSpellEffects(expansion: Expansion) {
 	return reader.getRowObjects() as SpellEffect[]
 }
 
-const spellDurationFormats = [
+const spellDurationFormatTags = [
 	"INT_SPELL_DURATION_SEC",
 	"INT_SPELL_DURATION_MIN",
 	"INT_SPELL_DURATION_HOURS",
@@ -865,7 +865,7 @@ async function getSpellDurationFormats(expansion: Expansion, locale: string): Pr
 	const query = `
 		SELECT TagText_lang
 		FROM read_csv('${globalStrings.path}', auto_type_candidates = ['INTEGER', 'DOUBLE', 'VARCHAR'])
-		WHERE BaseTag IN [${spellDurationFormats.map(f => `'${f}'`)}]
+		WHERE BaseTag IN [${spellDurationFormatTags.map(f => `'${f}'`)}]
 	`
 
 	const reader = await connection.runAndReadAll(query)
@@ -971,30 +971,34 @@ const singularZeroLocales = new Set([
 	"zhTW",
 ])
 
-function buildDurationString(duration: number | undefined, spellDurationFormatz: Record<Time, string>, locale: string): string {
+function parsePlural(text: string, value: number, locale: Locale) {
+	// Parse Blizzard's custom plural escape sequences
+	return text.replace(/\|4(.*?):(.*?);/, function(_match, singular, plural, _offset, _string) {
+		if (value === 1 || singularZeroLocales.has(locale) && value === 0) {
+			return singular
+		} else {
+			return plural
+		}
+	})
+}
+
+function buildDurationString(duration: number | undefined, spellDurationFormats: Record<Time, string>, locale: Locale): string {
 	if (duration) {
 		let format: string, units: number
 		if (duration >= 60 * 60 * 1000) {
-			format = spellDurationFormatz[Time.Hour]
+			format = spellDurationFormats[Time.Hour]
 			units = duration / (60 * 60 * 1000)
 		} else if (duration >= 60 * 1000) {
-			format = spellDurationFormatz[Time.Minute]
+			format = spellDurationFormats[Time.Minute]
 			units = duration / (60 * 1000)
 		} else {
-			format = spellDurationFormatz[Time.Second]
+			format = spellDurationFormats[Time.Second]
 			units = duration / 1000
 		}
 
-		// Parse Blizzard's custom plural escape sequences
-		return format.replace(/\|4(.*?):(.*?);/, function(_match, singular, plural, _offset, _string) {
-			if (units === 1 || singularZeroLocales.has(locale) && units === 0) {
-				return singular
-			} else {
-				return plural
-			}
-		})
+		return parsePlural(format, units, locale)
 	} else {
-		return spellDurationFormatz[Time.Second]
+		return spellDurationFormats[Time.Second]
 	}
 }
 
@@ -1331,11 +1335,11 @@ async function getMetaGemConditionStrings(expansion: Expansion, locale: string) 
 	return new Map<string, string>(results as [string, string][])
 }
 
-async function getEnchantDescription(statEnchant: StatEnchant, metaGemConditions: Map<number, EnchantmentCondition[]>, conditionStrings: Map<string, string>) {
+async function getEnchantDescription(statEnchant: StatEnchant, metaGemConditions: Map<number, EnchantmentCondition[]>, conditionStrings: Map<string, string>, locale: Locale) {
 	let description = statEnchant.Name_lang
 	const conditions = metaGemConditions.get(statEnchant.Condition_ID)
 	if(conditions) {
-		description += await getEnchantConditionText(conditions, conditionStrings)
+		description += await getEnchantConditionText(conditions, conditionStrings, locale)
 	}
 	return description
 }
@@ -1357,15 +1361,16 @@ enum ConditionOperator {
 	GreaterThanOrEqual = 5,
 }
 
-async function getEnchantConditionText(conditions: EnchantmentCondition[], conditionStrings: Map<string, string>) {
+async function getEnchantConditionText(conditions: EnchantmentCondition[], conditionStrings: Map<string, string>, locale: Locale) {
 	let texts = [""]
 	for (const condition of conditions.filter(c => ConditionOperator[c.Operator])) {
 		let conditionString = conditionStrings.get("ENCHANT_CONDITION_REQUIRES")!
 		if (condition.Rt_operand != 0) {
 			// Comparing 1 color to 1 value, and need to handle plural
 			const left = conditionStrings.get(GemColorTags[condition.Lt_operandType])!
-			const right = conditionStrings.get(GemColorTags[condition.Rt_operand])!
+			const right = condition.Rt_operand
 			conditionString += conditionStrings.get("ENCHANT_CONDITION_MORE_VALUE")!.replace("%s", left)
+			conditionString = parsePlural(conditionString, right, locale)
 			texts.push(conditionString)
 		} else {
 			// Comparing two colors
@@ -1448,7 +1453,7 @@ async function getLocaleStatMap(
 
 	for (const statEnchant of statEnchants) {
 		const descriptions = new Set([statEnchant.Name_lang])
-		descriptions.add(await getEnchantDescription(statEnchant, metaGemConditions, conditionStrings))
+		descriptions.add(await getEnchantDescription(statEnchant, metaGemConditions, conditionStrings, locale))
 		const stats = getEnchantStats(statEnchant, spellStatEffects, overrideEnchantStatEffects)
 		for (const description of descriptions) {
 			const [pattern, statEntry] = mapTextToStatEntry(
