@@ -177,7 +177,7 @@ function mapTextToStatEntry(
 	//     Optional integer indicating SpellEffect Index
 	//   Literal number:
 	//     Digits 0-9 or decimal point ".", ends in digit
-	const pattern = text.replace(/[+-]?(?:\$(?:(\{.*?\}|<.*?>)|(?:[/*]\d+;)?(\d*)([befkopqtwx](?=\d)|[acdg-jlmnrsuvyz])(\d?))|([\d\.]+(?<=\d)))/g, function(_match, expression: string, alternateSpellID: string, identifier: string, identifierIndex: string, plainNumber: string, _offset: number, input: string) {
+	const pattern = text.replace(/(?<![\\\d])[+-]?(?:\$(?:(\{.*?\}|<.*?>)|(?:[/*]\d+;)?(\d*)([befkopqtwx](?=\d)|[acdg-jlmnrsuvyz])(\d?))|([\d\.]+(?<=\d)))/g, function(_match, expression: string, alternateSpellID: string, identifier: string, identifierIndex: string, plainNumber: string, _offset: number, input: string) {
 		if (expression || plainNumber) {
 			// We can't directly identify which effectIndex this number is, so save it for later
 			entries.push([new StatValue('Placeholder', parseInt(plainNumber) || 0)])
@@ -1358,27 +1358,25 @@ enum ConditionOperator {
 }
 
 async function getEnchantConditionText(conditions: EnchantmentCondition[], conditionStrings: Map<string, string>) {
-	let texts = [conditionStrings.get("ENCHANT_CONDITION_REQUIRES")]
-	for (const condition of conditions) {
+	let texts = [""]
+	for (const condition of conditions.filter(c => ConditionOperator[c.Operator])) {
+		let conditionString = conditionStrings.get("ENCHANT_CONDITION_REQUIRES")!
 		if (condition.Rt_operand != 0) {
 			// Comparing 1 color to 1 value, and need to handle plural
 			const left = conditionStrings.get(GemColorTags[condition.Lt_operandType])!
 			const right = conditionStrings.get(GemColorTags[condition.Rt_operand])!
-			let conditionString = conditionStrings.get("ENCHANT_CONDITION_MORE_VALUE")!.replace("%s", left)
+			conditionString += conditionStrings.get("ENCHANT_CONDITION_MORE_VALUE")!.replace("%s", left)
 			texts.push(conditionString)
 		} else {
 			// Comparing two colors
 			const left = conditionStrings.get(GemColorTags[condition.Lt_operandType])!
 			const right = conditionStrings.get(GemColorTags[condition.Rt_operandType])!
-			let conditionString: string | undefined
 			if (condition.Operator == ConditionOperator.GreaterThan) {
-				conditionString = conditionStrings.get("ENCHANT_CONDITION_MORE_COMPARE")
+				conditionString += conditionStrings.get("ENCHANT_CONDITION_MORE_COMPARE")!
 			} else if (condition.Operator == ConditionOperator.GreaterThanOrEqual) {
-				conditionString = conditionStrings.get("ENCHANT_CONDITION_MORE_EQUAL_COMPARE")
+				conditionString += conditionStrings.get("ENCHANT_CONDITION_MORE_EQUAL_COMPARE")!
 			}
-			if (conditionString) {
-				texts.push(conditionString.replace("%s", left).replace("%s", right))
-			}
+			texts.push(conditionString.replace("%s", left).replace("%s", right))
 		}
 	}
 	return texts.join("\n")
