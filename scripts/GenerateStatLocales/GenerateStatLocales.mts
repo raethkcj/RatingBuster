@@ -154,7 +154,7 @@ function mapTextToStatEntry(
 	spellStatEffects: Map<number, (StatValue[] | false)[]>,
 	spellDurations: Map<number, number>,
 	spellDurationFormats: Record<Time, string>,
-	locale: string,
+	locale: Locale,
 ): [string, StatEntry] {
 	text = text.replace(/[\s.]+$/, "").replaceAll(/[\r\n]/gm, m => m === "\r" ? "\\r" : "\\n").replaceAll(/"/gm, "\\\"").toLowerCase()
 
@@ -177,7 +177,7 @@ function mapTextToStatEntry(
 	//     Optional integer indicating SpellEffect Index
 	//   Literal number:
 	//     Digits 0-9 or decimal point ".", ends in digit
-	const pattern = text.replace(/[+-]?(?:\$(?:(\{.*?\}|<.*?>)|(?:[/*]\d+;)?(\d*)([befkopqtwx](?=\d)|[acdg-jlmnrsuvyz])(\d?))|([\d\.]+(?<=\d)))/g, function(_match, expression: string, alternateSpellID: string, identifier: string, identifierIndex: string, plainNumber: string, _offset: number, input: string) {
+	const pattern = text.replace(/(?<![\\\d])[+-]?(?:\$(?:(\{.*?\}|<.*?>)|(?:[/*]\d+;)?(\d*)([befkopqtwx](?=\d)|[acdg-jlmnrsuvyz])(\d?))|([\d\.]+(?<=\d)))/g, function(_match, expression: string, alternateSpellID: string, identifier: string, identifierIndex: string, plainNumber: string, _offset: number, input: string) {
 		if (expression || plainNumber) {
 			// We can't directly identify which effectIndex this number is, so save it for later
 			entries.push([new StatValue('Placeholder', parseInt(plainNumber) || 0)])
@@ -370,6 +370,7 @@ function mapTextToStatEntry(
 
 const base = import.meta.url
 import statLocaleData from './StatLocaleData.json' with { type: "json" }
+import exp from 'node:constants'
 const databaseDirName = "DB2"
 
 class DatabaseTable {
@@ -846,7 +847,7 @@ async function queryStatSpellEffects(expansion: Expansion) {
 	return reader.getRowObjects() as SpellEffect[]
 }
 
-const spellDurationFormats = [
+const spellDurationFormatTags = [
 	"INT_SPELL_DURATION_SEC",
 	"INT_SPELL_DURATION_MIN",
 	"INT_SPELL_DURATION_HOURS",
@@ -864,7 +865,7 @@ async function getSpellDurationFormats(expansion: Expansion, locale: string): Pr
 	const query = `
 		SELECT TagText_lang
 		FROM read_csv('${globalStrings.path}', auto_type_candidates = ['INTEGER', 'DOUBLE', 'VARCHAR'])
-		WHERE BaseTag IN [${spellDurationFormats.map(f => `'${f}'`)}]
+		WHERE BaseTag IN [${spellDurationFormatTags.map(f => `'${f}'`)}]
 	`
 
 	const reader = await connection.runAndReadAll(query)
@@ -970,30 +971,34 @@ const singularZeroLocales = new Set([
 	"zhTW",
 ])
 
-function buildDurationString(duration: number | undefined, spellDurationFormatz: Record<Time, string>, locale: string): string {
+function parsePlural(text: string, value: number, locale: Locale) {
+	// Parse Blizzard's custom plural escape sequences
+	return text.replace(/\|4(.*?):(.*?);/, function(_match, singular, plural, _offset, _string) {
+		if (value === 1 || singularZeroLocales.has(locale) && value === 0) {
+			return singular
+		} else {
+			return plural
+		}
+	})
+}
+
+function buildDurationString(duration: number | undefined, spellDurationFormats: Record<Time, string>, locale: Locale): string {
 	if (duration) {
 		let format: string, units: number
 		if (duration >= 60 * 60 * 1000) {
-			format = spellDurationFormatz[Time.Hour]
+			format = spellDurationFormats[Time.Hour]
 			units = duration / (60 * 60 * 1000)
 		} else if (duration >= 60 * 1000) {
-			format = spellDurationFormatz[Time.Minute]
+			format = spellDurationFormats[Time.Minute]
 			units = duration / (60 * 1000)
 		} else {
-			format = spellDurationFormatz[Time.Second]
+			format = spellDurationFormats[Time.Second]
 			units = duration / 1000
 		}
 
-		// Parse Blizzard's custom plural escape sequences
-		return format.replace(/\|4(.*?):(.*?);/, function(_match, singular, plural, _offset, _string) {
-			if (units === 1 || singularZeroLocales.has(locale) && units === 0) {
-				return singular
-			} else {
-				return plural
-			}
-		})
+		return parsePlural(format, units, locale)
 	} else {
-		return spellDurationFormatz[Time.Second]
+		return spellDurationFormats[Time.Second]
 	}
 }
 
@@ -1073,6 +1078,7 @@ function traverseDescriptionBranches(description: string): string[] {
 type StatEnchant = {
 	ID: number
 	Name_lang: string
+	Condition_ID: number
 	Effects: {
 		items: {
 			items: [effect: EnchantEffect, effectArg: number, pointsMin: number]
@@ -1084,7 +1090,7 @@ async function queryStatEnchants(expansion: Expansion, locale: string, spellIDs:
 	const spellItemEnchantment = await DatabaseTable.get("SpellItemEnchantment", expansion, locale)
 
 	const query = `
-		SELECT ID, Name_lang, [
+		SELECT ID, Name_lang, Field_1_15_3_55112_013 as Condition_ID, [
 			array_value(Effect_0, EffectArg_0, EffectPointsMin_0),
 			array_value(Effect_1, EffectArg_1, EffectPointsMin_1),
 			array_value(Effect_2, EffectArg_2, EffectPointsMin_2),
@@ -1103,6 +1109,53 @@ async function queryStatEnchants(expansion: Expansion, locale: string, spellIDs:
 
 	const reader = await connection.runAndReadAll(query)
 	return reader.getRowObjects() as unknown as StatEnchant[]
+}
+
+class EnchantmentCondition {
+	constructor(
+		public Lt_operandType: GemColor,
+		public Lt_operand: number,
+		public Operator: number,
+		public Rt_operandType: GemColor,
+		public Rt_operand: number,
+	) {}
+}
+
+type EnchantmentConditionRow = [
+	ID: number,
+	Conditions: {
+		items: {
+			items: [
+				Lt_operandType: GemColor,
+				Lt_operand: number,
+				Operator: number,
+				Rt_operandType: GemColor,
+				Rt_operand: number,
+			]
+		}[]
+	}
+]
+
+async function queryMetaGemConditions(expansion: Expansion) {
+	if (expansion === Expansion.Vanilla) {
+		return new Map()
+	}
+	const spellItemEnchantmentConditions = await DatabaseTable.get("SpellItemEnchantmentCondition", expansion, "enUS")
+
+	const query = `
+		SELECT ID, [
+			array_value(Lt_operandType_0, Lt_operand_0, Operator_0, Rt_operandType_0, Rt_operand_0),
+			array_value(Lt_operandType_1, Lt_operand_1, Operator_1, Rt_operandType_1, Rt_operand_1),
+			array_value(Lt_operandType_2, Lt_operand_2, Operator_2, Rt_operandType_2, Rt_operand_2),
+			array_value(Lt_operandType_3, Lt_operand_3, Operator_3, Rt_operandType_3, Rt_operand_3),
+			array_value(Lt_operandType_4, Lt_operand_4, Operator_4, Rt_operandType_4, Rt_operand_4),
+		] As Conditions
+		FROM read_csv('${spellItemEnchantmentConditions.path}', auto_type_candidates = ['INTEGER', 'DOUBLE', 'VARCHAR'])
+	`
+
+	const reader = await connection.runAndReadAll(query)
+	const rows = reader.getRows() as unknown as EnchantmentConditionRow[]
+	return new Map<number, EnchantmentCondition[]>(rows.map(([ID, conditions]) => [ID, conditions.items.map(c => new EnchantmentCondition(...c.items))]))
 }
 
 class StatValue {
@@ -1258,6 +1311,84 @@ function insertEntry(statMap: Map<string, StatEntry>, text: string, statEntry: S
 	}
 }
 
+const enchantConditionTags = [
+	"RED_GEM",
+	"YELLOW_GEM",
+	"BLUE_GEM",
+	"ENCHANT_CONDITION_REQUIRES",
+	"ENCHANT_CONDITION_MORE_COMPARE",
+	"ENCHANT_CONDITION_MORE_EQUAL_COMPARE",
+	"ENCHANT_CONDITION_MORE_VALUE",
+]
+
+async function getMetaGemConditionStrings(expansion: Expansion, locale: string) {
+	const globalStrings = await DatabaseTable.get("GlobalStrings", expansion, locale)
+
+	const query = `
+		SELECT BaseTag, TagText_lang
+		FROM read_csv('${globalStrings.path}', auto_type_candidates = ['INTEGER', 'DOUBLE', 'VARCHAR'])
+		WHERE BaseTag IN [${enchantConditionTags.map(f => `'${f}'`)}]
+	`
+
+	const reader = await connection.runAndReadAll(query)
+	const results = reader.getRows() as [string, string][]
+	// Replace %d with empty value expression, so they get mapped to false stat entries
+	const modified = results.map(([tag, text]) => [tag, text.replaceAll("%d", "${}")]) as [string, string][]
+	return new Map<string, string>(modified)
+}
+
+async function getEnchantDescription(statEnchant: StatEnchant, metaGemConditions: Map<number, EnchantmentCondition[]>, conditionStrings: Map<string, string>, locale: Locale) {
+	let description = statEnchant.Name_lang
+	const conditions = metaGemConditions.get(statEnchant.Condition_ID)
+	if(conditions) {
+		description += await getEnchantConditionText(conditions, conditionStrings, locale)
+	}
+	return description
+}
+
+enum GemColor {
+	Red = 2,
+	Yellow = 3,
+	Blue = 4,
+}
+
+const GemColorTags: Record<GemColor, string> = {
+	[GemColor.Red]: "RED_GEM",
+	[GemColor.Yellow]: "YELLOW_GEM",
+	[GemColor.Blue]: "BLUE_GEM",
+}
+
+enum ConditionOperator {
+	GreaterThan = 3,
+	GreaterThanOrEqual = 5,
+}
+
+async function getEnchantConditionText(conditions: EnchantmentCondition[], conditionStrings: Map<string, string>, locale: Locale) {
+	let texts = [""]
+	for (const condition of conditions.filter(c => ConditionOperator[c.Operator])) {
+		let conditionString = conditionStrings.get("ENCHANT_CONDITION_REQUIRES")!
+		if (condition.Rt_operand != 0) {
+			// Comparing 1 color to 1 value, and need to handle plural
+			const left = conditionStrings.get(GemColorTags[condition.Lt_operandType])!
+			const right = condition.Rt_operand
+			conditionString += conditionStrings.get("ENCHANT_CONDITION_MORE_VALUE")!.replace("%s", left)
+			conditionString = parsePlural(conditionString, right, locale)
+			texts.push(conditionString)
+		} else {
+			// Comparing two colors
+			const left = conditionStrings.get(GemColorTags[condition.Lt_operandType])!
+			const right = conditionStrings.get(GemColorTags[condition.Rt_operandType])!
+			if (condition.Operator == ConditionOperator.GreaterThan) {
+				conditionString += conditionStrings.get("ENCHANT_CONDITION_MORE_COMPARE")!
+			} else if (condition.Operator == ConditionOperator.GreaterThanOrEqual) {
+				conditionString += conditionStrings.get("ENCHANT_CONDITION_MORE_EQUAL_COMPARE")!
+			}
+			texts.push(conditionString.replace("%s", left).replace("%s", right))
+		}
+	}
+	return texts.join("\n")
+}
+
 async function getLocaleStatMap(
 	expansion: Expansion,
 	locale: Locale,
@@ -1265,9 +1396,10 @@ async function getLocaleStatMap(
 	statSpellIDs: number[],
 	procSpells: Map<number, number>,
 	spellDescIDs: Set<number>,
+	spellDurations: Map<number, number>,
 	overrideEnchantIDs: number[],
 	overrideEnchantStatEffects: Map<number, StatValue[][]>,
-	spellDurations: Map<number, number>
+	metaGemConditions: Map<number, EnchantmentCondition[]>,
 ) {
 	const statMap = new Map<string, StatEntry>()
 
@@ -1319,20 +1451,26 @@ async function getLocaleStatMap(
 		}
 	}
 
+	const conditionStrings = await getMetaGemConditionStrings(expansion, locale)
+
 	for (const statEnchant of statEnchants) {
+		const descriptions = new Set([statEnchant.Name_lang])
+		descriptions.add(await getEnchantDescription(statEnchant, metaGemConditions, conditionStrings, locale))
 		const stats = getEnchantStats(statEnchant, spellStatEffects, overrideEnchantStatEffects)
-		const [pattern, statEntry] = mapTextToStatEntry(
-			statEnchant.ID,
-			IdentifierType.Enchant,
-			statEnchant.Name_lang,
-			stats,
-			undefined,
-			spellStatEffects,
-			spellDurations,
-			spellDurationFormats,
-			locale,
-		)
-		insertEntry(statMap, pattern, statEntry, locale)
+		for (const description of descriptions) {
+			const [pattern, statEntry] = mapTextToStatEntry(
+				statEnchant.ID,
+				IdentifierType.Enchant,
+				description,
+				stats,
+				undefined,
+				spellStatEffects,
+				spellDurations,
+				spellDurationFormats,
+				locale,
+			)
+			insertEntry(statMap, pattern, statEntry, locale)
+		}
 	}
 
 	return statMap
@@ -1428,6 +1566,8 @@ for (const [_, expansion] of Object.entries(Expansion)) {
 
 	const [overrideEnchantIDs, overrideEnchantStatEffects] = getOverrideEnchants(expansion)
 
+	const metaGemConditions = await queryMetaGemConditions(expansion)
+
 	for (const locale of locales) {
 		const localeStatMap = getLocaleStatMap(
 			expansion,
@@ -1436,9 +1576,10 @@ for (const [_, expansion] of Object.entries(Expansion)) {
 			statSpellIDs,
 			procSpells,
 			spellDescIDs,
+			spellDurations,
 			overrideEnchantIDs,
 			overrideEnchantStatEffects,
-			spellDurations,
+			metaGemConditions,
 		)
 		writeLocale(expansion, locale, localeStatMap)
 	}
