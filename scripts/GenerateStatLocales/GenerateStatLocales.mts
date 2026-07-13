@@ -1274,7 +1274,7 @@ for (const locale of locales) {
 	localeBlacklist.set(locale, new Set())
 }
 
-function insertEntry(statMap: Map<string, StatEntry>, text: string, statEntry: StatEntry, locale: Locale, allowWholeTextMismatch?: boolean) {
+function insertEntry(statMap: Map<string, StatEntry>, text: string, statEntry: StatEntry, locale: Locale) {
 	if (!statEntry.entries.find(e => e && e.length > 0)) return
 	const blacklist = localeBlacklist.get(locale)!
 	const existingEntry = statMap.get(text)
@@ -1297,10 +1297,8 @@ function insertEntry(statMap: Map<string, StatEntry>, text: string, statEntry: S
 		if (newMatchCount > existingMatchCount) {
 			statMap.set(text, statEntry)
 		} else if (newMatchCount === existingMatchCount && !existingEntry.equals(statEntry)) {
-			if (existingEntry.isWholeText && statEntry.isWholeText && !allowWholeTextMismatch) {
-				// We can never accurately match this text, blacklist it
-				// We don't blacklist when allowWholeTextMismatch is true,
-				// in order to allow earlier expansions to take precedent on mismatched WholeTexts
+			if (existingEntry.isWholeText && statEntry.isWholeText) {
+				// We can never uniquely match this text, blacklist it
 				blacklist.add(text)
 				statMap.delete(text)
 			}
