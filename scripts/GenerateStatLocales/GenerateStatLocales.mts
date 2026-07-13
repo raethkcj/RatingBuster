@@ -1331,8 +1331,10 @@ async function getMetaGemConditionStrings(expansion: Expansion, locale: string) 
 	`
 
 	const reader = await connection.runAndReadAll(query)
-	const results = reader.getRows()
-	return new Map<string, string>(results as [string, string][])
+	const results = reader.getRows() as [string, string][]
+	// Replace %d with empty value expression, so they get mapped to false stat entries
+	const modified = results.map(([tag, text]) => [tag, text.replaceAll("%d", "${}")]) as [string, string][]
+	return new Map<string, string>(modified)
 }
 
 async function getEnchantDescription(statEnchant: StatEnchant, metaGemConditions: Map<number, EnchantmentCondition[]>, conditionStrings: Map<string, string>, locale: Locale) {
