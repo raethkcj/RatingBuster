@@ -253,7 +253,7 @@ if addon.class == "DRUID" then
 		["ADD_NORMAL_HEALTH_REG_MOD_SPI"] = {
 			-- Base
 			{
-				["value"] = NormalHealthRegenPerSpi,
+				["regen"] = NormalHealthRegenPerSpi,
 			},
 		},
 		["ADD_MANA_REGEN_MOD_NORMAL_MANA_REGEN"] = {
@@ -413,7 +413,7 @@ elseif addon.class == "HUNTER" then
 		["ADD_NORMAL_HEALTH_REG_MOD_SPI"] = {
 			-- Base
 			{
-				["value"] = NormalHealthRegenPerSpi,
+				["regen"] = NormalHealthRegenPerSpi,
 			},
 		},
 		["ADD_GENERIC_MANA_REGEN_MOD_MANA"] = {
@@ -531,7 +531,7 @@ elseif addon.class == "MAGE" then
 		["ADD_NORMAL_HEALTH_REG_MOD_SPI"] = {
 			-- Base
 			{
-				["value"] = NormalHealthRegenPerSpi,
+				["regen"] = NormalHealthRegenPerSpi,
 			},
 		},
 		-- Mage: Arcane Fortitude - 1,9
@@ -638,7 +638,7 @@ elseif addon.class == "PALADIN" then
 		["ADD_NORMAL_HEALTH_REG_MOD_SPI"] = {
 			-- Base
 			{
-				["value"] = NormalHealthRegenPerSpi,
+				["regen"] = NormalHealthRegenPerSpi,
 			},
 		},
 		["ADD_GENERIC_MANA_REGEN_MOD_MANA"] = {
@@ -914,7 +914,7 @@ elseif addon.class == "PRIEST" then
 		["ADD_NORMAL_HEALTH_REG_MOD_SPI"] = {
 			-- Base
 			{
-				["value"] = NormalHealthRegenPerSpi,
+				["regen"] = NormalHealthRegenPerSpi,
 			},
 		},
 		["ADD_GENERIC_MANA_REGEN_MOD_MANA"] = {
@@ -1014,7 +1014,7 @@ elseif addon.class == "ROGUE" then
 		["ADD_NORMAL_HEALTH_REG_MOD_SPI"] = {
 			-- Base
 			{
-				["value"] = NormalHealthRegenPerSpi,
+				["regen"] = NormalHealthRegenPerSpi,
 			},
 		},
 		["MOD_AP"] = {
@@ -1176,7 +1176,7 @@ elseif addon.class == "SHAMAN" then
 		["ADD_NORMAL_HEALTH_REG_MOD_SPI"] = {
 			-- Base
 			{
-				["value"] = NormalHealthRegenPerSpi,
+				["regen"] = NormalHealthRegenPerSpi,
 			},
 		},
 		["ADD_SPELL_DMG_MOD_INT"] = {
@@ -1357,7 +1357,7 @@ elseif addon.class == "WARLOCK" then
 		["ADD_NORMAL_HEALTH_REG_MOD_SPI"] = {
 			-- Base
 			{
-				["value"] = NormalHealthRegenPerSpi,
+				["regen"] = NormalHealthRegenPerSpi,
 			},
 		},
 		-- Warlock: Demonic Embrace (Rank 5) - 2,3
@@ -1511,7 +1511,7 @@ elseif addon.class == "WARRIOR" then
 		["ADD_NORMAL_HEALTH_REG_MOD_SPI"] = {
 			-- Base
 			{
-				["value"] = NormalHealthRegenPerSpi,
+				["regen"] = NormalHealthRegenPerSpi,
 			},
 		},
 		["ADD_BLOCK_VALUE_MOD_STR"] = {
