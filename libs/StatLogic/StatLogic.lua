@@ -501,6 +501,22 @@ local addedInfoMods = {
 		mod = "STR",
 	},
 	{
+		add = "AVOIDANCE",
+		mod = "BLOCK_CHANCE",
+	},
+	{
+		add = "AVOIDANCE",
+		mod = "DODGE",
+	},
+	{
+		add = "AVOIDANCE",
+		mod = "MISS",
+	},
+	{
+		add = "AVOIDANCE",
+		mod = "PARRY",
+	},
+	{
 		add = "BLOCK_CHANCE",
 		mod = "MASTERY_EFFECT",
 	},

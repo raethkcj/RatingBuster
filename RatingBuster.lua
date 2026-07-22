@@ -176,33 +176,34 @@ local options = {
 			end,
 			dialogHidden = true,
 		},
-		rating = {
-			type = 'group',
-			name = L["Rating"],
-			desc = L["Options for Rating display"],
-			order = 2,
+		showRatings = {
+			type = 'toggle',
+			name = L["Show Rating conversions"],
+			desc = L["Show Rating conversions in tooltips"],
+			order = 1,
+			width = "full",
 			hidden = function()
 				return addon.tocversion < 20000
 			end,
-			args = {
-				showRatings = {
-					type = 'toggle',
-					name = L["Show Rating conversions"],
-					desc = L["Show Rating conversions in tooltips"],
-					order = 1,
-					width = "full",
-				},
-				enableAvoidanceDiminishingReturns = {
-					type = 'toggle',
-					name = L["Enable Avoidance Diminishing Returns"],
-					desc = L["Dodge, Parry, Miss Avoidance values will be calculated using the avoidance deminishing return formula with your current stats"],
-					order = 5,
-					width = "full",
-					hidden = function()
-						return not StatLogic.GetAvoidanceAfterDR
-					end,
-				},
-			},
+		},
+		sumAvoidWithBlock = {
+			type = 'toggle',
+			name = L["Include block chance in Avoidance"],
+			desc = L["Enable to include block chance in Avoidance, Disable for only dodge, parry, miss"],
+			order = 2,
+			hidden = function()
+				return addon.tocversion >= 40000
+			end,
+		},
+		enableAvoidanceDiminishingReturns = {
+			type = 'toggle',
+			name = L["Enable Avoidance Diminishing Returns"],
+			desc = L["Dodge, Parry, Miss Avoidance values will be calculated using the avoidance deminishing return formula with your current stats"],
+			order = 3,
+			width = "full",
+			hidden = function()
+				return not StatLogic.GetAvoidanceAfterDR
+			end,
 		},
 		stat = {
 			type = 'group',
@@ -406,6 +407,38 @@ local options = {
 					name = L[StatLogic.Stats.Defense],
 					desc = L["Changes the display of %s"]:format(L[StatLogic.Stats.Defense]),
 					order = 22,
+					hidden = true,
+					args = {},
+				},
+				block_chance = {
+					type = 'group',
+					name = L[StatLogic.Stats.BlockChance],
+					desc = L["Changes the display of %s"]:format(L[StatLogic.Stats.BlockChance]),
+					order = 23,
+					hidden = true,
+					args = {},
+				},
+				dodge = {
+					type = 'group',
+					name = L[StatLogic.Stats.Dodge],
+					desc = L["Changes the display of %s"]:format(L[StatLogic.Stats.Dodge]),
+					order = 24,
+					hidden = true,
+					args = {},
+				},
+				miss = {
+					type = 'group',
+					name = L[StatLogic.Stats.Miss],
+					desc = L["Changes the display of %s"]:format(L[StatLogic.Stats.Miss]),
+					order = 25,
+					hidden = true,
+					args = {},
+				},
+				parry = {
+					type = 'group',
+					name = L[StatLogic.Stats.Parry],
+					desc = L["Changes the display of %s"]:format(L[StatLogic.Stats.Parry]),
+					order = 26,
 					hidden = true,
 					args = {},
 				},
@@ -990,12 +1023,6 @@ local options = {
 							desc = L["Avoidance <- Dodge, Parry, Miss, Block (Optional)"],
 							order = 1,
 						},
-						sumAvoidWithBlock = {
-							type = 'toggle',
-							name = L["Include block chance in Avoidance summary"],
-							desc = L["Enable to include block chance in Avoidance summary, Disable for only dodge, parry, miss"],
-							order = 2,
-						},
 						sumDodge = {
 							type = 'toggle',
 							name = L["Sum %s"]:format(L[StatLogic.Stats.Dodge]),
@@ -1302,6 +1329,10 @@ local defaults = {
 		showSpellHasteFromHasteRating = false,
 
 		showDefenseFromDefenseRating = false,
+		showDodgeFromDefense = false,
+		showMissFromDefense = false,
+		showParryFromDefense = false,
+
 		showExpertiseFromExpertiseRating = false,
 		showCritAvoidanceFromResilience = false,
 		showCritDamageReductionFromResilience = false,
@@ -2878,11 +2909,15 @@ function RatingBuster:ProcessStat(stat, value, breakdownStats, link, color, stat
 			processedBlock = processedBlock + value
 			value = StatLogic:GetAvoidanceGainAfterDR(StatLogic.Stats.BlockChance, processedBlock) - StatLogic:GetAvoidanceGainAfterDR(StatLogic.Stats.BlockChance, processedBlock - value)
 		end
+
 		if show and isBaseStat then
 			breakdownStats["Percent"] = value
 		elseif show then
 			breakdownStats[stat] = breakdownStats[stat] + value
 		end
+
+		local avoidance = value * statModContext("ADD_AVOIDANCE_MOD_BLOCK_CHANCE")
+		self:ProcessStat(StatLogic.Stats.Avoidance, avoidance, breakdownStats, link, color, statModContext, true, false, db.profile.showAvoidanceFromBlockChance)
 	elseif stat == StatLogic.Stats.CritAvoidance then
 		if show and isBaseStat then
 			breakdownStats["Percent"] = value
@@ -2894,11 +2929,15 @@ function RatingBuster:ProcessStat(stat, value, breakdownStats, link, color, stat
 			processedMiss = processedMiss + value
 			value = StatLogic:GetAvoidanceGainAfterDR(StatLogic.Stats.Miss, processedMiss) - StatLogic:GetAvoidanceGainAfterDR(StatLogic.Stats.Miss, processedMiss - value)
 		end
+
 		if show and isBaseStat then
 			breakdownStats["Percent"] = value
 		elseif show then
 			breakdownStats[stat] = breakdownStats[stat] + value
 		end
+
+		local avoidance = value * statModContext("ADD_AVOIDANCE_MOD_MISS")
+		self:ProcessStat(StatLogic.Stats.Avoidance, avoidance, breakdownStats, link, color, statModContext, true, false, db.profile.showAvoidanceFromMiss)
 	elseif stat == StatLogic.Stats.CritDamageReduction then
 		if show and isBaseStat then
 			breakdownStats["Percent"] = value
@@ -2922,16 +2961,30 @@ function RatingBuster:ProcessStat(stat, value, breakdownStats, link, color, stat
 			processedDodge = processedDodge + value
 			value = StatLogic:GetAvoidanceGainAfterDR(StatLogic.Stats.Dodge, processedDodge) - StatLogic:GetAvoidanceGainAfterDR(StatLogic.Stats.Dodge, processedDodge - value)
 		end
+
 		if show and isBaseStat then
 			breakdownStats["Percent"] = value
 		elseif show then
 			breakdownStats[stat] = breakdownStats[stat] + value
 		end
+
+		local avoidance = value * statModContext("ADD_AVOIDANCE_MOD_DODGE")
+		self:ProcessStat(StatLogic.Stats.Avoidance, avoidance, breakdownStats, link, color, statModContext, true, false, db.profile.showAvoidanceFromDodge)
 	elseif stat == StatLogic.Stats.Parry then
 		if db.profile.enableAvoidanceDiminishingReturns then
 			processedParry = processedParry + value
 			value = StatLogic:GetAvoidanceGainAfterDR(StatLogic.Stats.Parry, processedParry) - StatLogic:GetAvoidanceGainAfterDR(StatLogic.Stats.Parry, processedParry - value)
 		end
+
+		if show and isBaseStat then
+			breakdownStats["Percent"] = value
+		elseif show then
+			breakdownStats[stat] = breakdownStats[stat] + value
+		end
+
+		local avoidance = value * statModContext("ADD_AVOIDANCE_MOD_PARRY")
+		self:ProcessStat(StatLogic.Stats.Avoidance, avoidance, breakdownStats, link, color, statModContext, true, false, db.profile.showAvoidanceFromParry)
+	elseif stat == StatLogic.Stats.Avoidance then
 		if show and isBaseStat then
 			breakdownStats["Percent"] = value
 		elseif show then
@@ -4117,14 +4170,10 @@ local summaryCalcData = {
 		option = "sumAvoidance",
 		stat = StatLogic.Stats.Avoidance,
 		func = function(sum, statModContext, sumType, link)
-			local dodge = summaryFunc[StatLogic.Stats.Dodge](sum, statModContext, sumType, link)
-			local parry = summaryFunc[StatLogic.Stats.Parry](sum, statModContext, sumType, link)
-			local miss = summaryFunc[StatLogic.Stats.Miss](sum, statModContext, sumType, link)
-			local block = 0
-			if db.profile.sumAvoidWithBlock then
-				block = summaryFunc[StatLogic.Stats.BlockChance](sum, statModContext, sumType, link)
-			end
-			return parry + dodge + miss + block
+			return summaryFunc[StatLogic.Stats.Dodge](sum, statModContext, sumType, link) * statModContext("ADD_AVOIDANCE_MOD_DODGE")
+			+ summaryFunc[StatLogic.Stats.Parry](sum, statModContext, sumType, link) * statModContext("ADD_AVOIDANCE_MOD_PARRY")
+			+ summaryFunc[StatLogic.Stats.Miss](sum, statModContext, sumType, link) * statModContext("ADD_AVOIDANCE_MOD_MISS")
+			+ summaryFunc[StatLogic.Stats.BlockChance](sum, statModContext, sumType, link) * statModContext("ADD_AVOIDANCE_MOD_BLOCK_CHANCE")
 		end,
 	},
 	-- Crit Avoidance - RESILIENCE_RATING, DEFENSE

@@ -87,6 +87,27 @@ StatLogic.StatModTable["GLOBAL"] = {
 			["level"] = addon.conversionFallback(addon.DodgePerAgi[addon.class], StatLogic.GetDodgePerAgi)
 		}
 	},
+	["ADD_AVOIDANCE_MOD_BLOCK_CHANCE"] = {
+		-- TODO: Should use db.profile.sumAvoidWithBlock
+		{
+			["value"] = 1,
+		},
+	},
+	["ADD_AVOIDANCE_MOD_DODGE"] = {
+		{
+			["value"] = 1,
+		},
+	},
+	["ADD_AVOIDANCE_MOD_MISS"] = {
+		{
+			["value"] = 1,
+		},
+	},
+	["ADD_AVOIDANCE_MOD_PARRY"] = {
+		{
+			["value"] = 1,
+		},
+	},
 	["ADD_SPELL_DMG_MOD_SPELL_POWER"] = {
 		{
 			["value"] = 1,
