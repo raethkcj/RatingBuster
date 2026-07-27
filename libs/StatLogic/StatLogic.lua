@@ -235,6 +235,7 @@ end
 
 function StatLogic:ClearCache()
 	wipe(cache)
+	wipe(addon.StatModCache)
 end
 
 ---@enum (key) log_level
@@ -1300,6 +1301,12 @@ addon.StatModValidators = {
 			["UNIT_INVENTORY_CHANGED"] = "player",
 		},
 	},
+	option = {
+		validate = function(case)
+			return RatingBuster.db.profile[case.option]
+		end,
+		events = {},
+	},
 	pet = {
 		validate = function()
 			return UnitExists("pet")
@@ -1380,7 +1387,7 @@ addon.StatModValidators = {
 
 -- Cache the results of GetStatMod, and build a table that
 -- maps events defined on Validators to the StatMods that depend on them.
-local StatModCache = setmetatable({}, {
+addon.StatModCache = setmetatable({}, {
 	__index = function(t, k)
 		t[k] = {}
 		return t[k]
@@ -1398,7 +1405,7 @@ function StatLogic:InvalidateEvent(event, unit)
 	local stats = addon.StatModCacheInvalidators[key]
 	if stats then
 		for _, stat in pairs(stats) do
-			wipe(StatModCache[stat])
+			wipe(addon.StatModCache[stat])
 		end
 	end
 	if WeaponSubclassInvalidators[key] then
@@ -1700,14 +1707,14 @@ do
 		local cacheKey = context:CacheKey()
 
 		if context.level == UnitLevel("player") and not next(context.overrideStats) then
-			value = StatModCache[statMod][cacheKey]
+			value = addon.StatModCache[statMod][cacheKey]
 		end
 
 		if not value then
 			wipe(ExclusiveGroupCache)
 			local statModInfo = StatLogic.StatModInfo[statMod]
 			if not statModInfo then
-				StatModCache[statMod][cacheKey] = 0
+				addon.StatModCache[statMod][cacheKey] = 0
 				return 0
 			end
 			value = statModInfo.initialValue
@@ -1721,7 +1728,7 @@ do
 
 			value = value + statModInfo.finalAdjust
 			if context.level == UnitLevel("player") then
-				StatModCache[statMod][cacheKey] = value
+				addon.StatModCache[statMod][cacheKey] = value
 			end
 		end
 

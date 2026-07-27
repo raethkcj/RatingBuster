@@ -88,8 +88,8 @@ StatLogic.StatModTable["GLOBAL"] = {
 		}
 	},
 	["ADD_AVOIDANCE_MOD_BLOCK_CHANCE"] = {
-		-- TODO: Should use db.profile.sumAvoidWithBlock
 		{
+			["option"] = "sumAvoidWithBlock",
 			["value"] = 1,
 		},
 	},
