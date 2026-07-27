@@ -1329,6 +1329,7 @@ local defaults = {
 		showSpellHasteFromHasteRating = false,
 
 		showDefenseFromDefenseRating = false,
+		showAvoidanceFromBlockChance = false,
 		showDodgeFromDefense = false,
 		showMissFromDefense = false,
 		showParryFromDefense = false,
@@ -2917,7 +2918,7 @@ function RatingBuster:ProcessStat(stat, value, breakdownStats, link, color, stat
 		end
 
 		local avoidance = value * statModContext("ADD_AVOIDANCE_MOD_BLOCK_CHANCE")
-		self:ProcessStat(StatLogic.Stats.Avoidance, avoidance, breakdownStats, link, color, statModContext, true, false, db.profile.showAvoidanceFromBlockChance)
+		self:ProcessStat(StatLogic.Stats.Avoidance, avoidance, breakdownStats, link, color, statModContext, true, false, not show and db.profile.showAvoidanceFromBlockChance)
 	elseif stat == StatLogic.Stats.CritAvoidance then
 		if show and isBaseStat then
 			breakdownStats["Percent"] = value
@@ -2937,7 +2938,7 @@ function RatingBuster:ProcessStat(stat, value, breakdownStats, link, color, stat
 		end
 
 		local avoidance = value * statModContext("ADD_AVOIDANCE_MOD_MISS")
-		self:ProcessStat(StatLogic.Stats.Avoidance, avoidance, breakdownStats, link, color, statModContext, true, false, db.profile.showAvoidanceFromMiss)
+		self:ProcessStat(StatLogic.Stats.Avoidance, avoidance, breakdownStats, link, color, statModContext, true, false, not show and db.profile.showAvoidanceFromMiss)
 	elseif stat == StatLogic.Stats.CritDamageReduction then
 		if show and isBaseStat then
 			breakdownStats["Percent"] = value
@@ -2969,7 +2970,7 @@ function RatingBuster:ProcessStat(stat, value, breakdownStats, link, color, stat
 		end
 
 		local avoidance = value * statModContext("ADD_AVOIDANCE_MOD_DODGE")
-		self:ProcessStat(StatLogic.Stats.Avoidance, avoidance, breakdownStats, link, color, statModContext, true, false, db.profile.showAvoidanceFromDodge)
+		self:ProcessStat(StatLogic.Stats.Avoidance, avoidance, breakdownStats, link, color, statModContext, true, false, not show and db.profile.showAvoidanceFromDodge)
 	elseif stat == StatLogic.Stats.Parry then
 		if db.profile.enableAvoidanceDiminishingReturns then
 			processedParry = processedParry + value
@@ -2983,7 +2984,7 @@ function RatingBuster:ProcessStat(stat, value, breakdownStats, link, color, stat
 		end
 
 		local avoidance = value * statModContext("ADD_AVOIDANCE_MOD_PARRY")
-		self:ProcessStat(StatLogic.Stats.Avoidance, avoidance, breakdownStats, link, color, statModContext, true, false, db.profile.showAvoidanceFromParry)
+		self:ProcessStat(StatLogic.Stats.Avoidance, avoidance, breakdownStats, link, color, statModContext, true, false, not show and db.profile.showAvoidanceFromParry)
 	elseif stat == StatLogic.Stats.Avoidance then
 		if show and isBaseStat then
 			breakdownStats["Percent"] = value
