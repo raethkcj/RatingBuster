@@ -1263,6 +1263,13 @@ local options = {
 ---------------------
 -- Saved Variables --
 ---------------------
+-- This is localized, since it's visible to the player
+function addon.GetProfileName(specGroup)
+	local className = UnitClass("player")
+	local _, specName = GetSpecializationInfo(GetSpecialization(false, false, specGroup))
+	return PLAYER_CLASS:format("", specName, className)
+end
+
 ---@enum
 local Role = {
 	Tank = 1,
@@ -1423,7 +1430,7 @@ local classDefaults = {
 	WARRIOR = {},
 }
 
-function addon.GetDefaults()
+function addon.GetDefaults(specGroup)
 	local defaults = {
 		global = {
 			textColor = CreateColor(1.0, 0.996, 0.545),
@@ -1616,7 +1623,7 @@ function addon.GetDefaults()
 		},
 	}
 
-	local specIndex = GetSpecialization()
+	local specIndex = GetSpecialization(specGroup)
 	local role = specializationRoles[addon.class][specIndex]
 	for key, value in pairs(roleDefaults[role]) do
 		defaults.profile[key] = value
@@ -1997,12 +2004,9 @@ function RatingBuster:OnInitialize()
 end
 
 function RatingBuster:InitializeDatabase()
-	local className = UnitClass("player")
-	local _, specName = GetSpecializationInfo(GetSpecialization())
-	-- This is localized, since it's visible to the player
-	local profileName = PLAYER_CLASS:format("", specName, className)
-
-	local defaults = addon.GetDefaults()
+	local specGroup = GetActiveSpecGroup()
+	local profileName = addon.GetProfileName(specGroup)
+	local defaults = addon.GetDefaults(specGroup)
 	RatingBuster.db = LibStub("AceDB-3.0"):New("RatingBusterDB", defaults, profileName)
 
 	RatingBuster.db.RegisterCallback(RatingBuster, "OnProfileChanged", function()
@@ -2056,6 +2060,11 @@ function RatingBuster:InitializeDatabase()
 		}
 	})
 	RatingBuster.conversion_data = conversion_data
+end
+
+function RatingBuster:ACTIVE_TALENT_GROUP_CHANGED(_, specGroup)
+	local defaults = addon.GetDefaults(specGroup)
+	self.db:RegisterDefaults(defaults)
 end
 
 SLASH_RATINGBUSTER1, SLASH_RATINGBUSTER2 = "/ratingbuster", "/rb"
