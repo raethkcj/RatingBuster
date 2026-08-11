@@ -364,6 +364,7 @@ L[StatLogic.Stats.Armor] = ARMOR
 L[StatLogic.Stats.BonusArmor] = ARMOR
 
 L[StatLogic.Stats.Avoidance] = STAT_AVOIDANCE
+S[StatLogic.Stats.Avoidance] = "Avoid"
 L[StatLogic.Stats.Dodge] = DODGE
 S[StatLogic.Stats.Dodge] = "Dodge"
 L[StatLogic.Stats.DodgeRating] = COMBAT_RATING_NAME3 -- COMBAT_RATING_NAME3 = "Dodge Rating"
