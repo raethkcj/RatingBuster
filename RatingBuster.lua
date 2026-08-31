@@ -45,10 +45,19 @@ local tsort = table.sort
 local GetParryChance = GetParryChance
 local GetBlockChance = GetBlockChance
 
-local GetActiveTalentGroup = GetActiveTalentGroup or C_SpecializationInfo.GetActiveSpecGroup
-local GetSpecialization = GetSpecialization or C_SpecializationInfo.GetSpecialization
-local GetSpecializationInfo = GetSpecializationInfo or C_SpecializationInfo.GetSpecializationInfo
+local GetActiveSpecGroup = C_SpecializationInfo.GetActiveSpecGroup
+local GetSpecializationInfo = C_SpecializationInfo.GetSpecializationInfo
 
+-- Blizzard labels GetSpecialization as a deprecation fallback
+-- for the removed GetPrimaryTalentTree, but in pre-Cata builds,
+-- it always returns 1, so we need our own implementation.
+local function GetPrimaryTalentTree(_, _, specGroup)
+    local specGroupInfo = {}
+    TalentFrame_UpdateSpecInfoCache(specGroupInfo, false, false, specGroup)
+    return specGroupInfo.primaryTabIndex
+end
+
+local GetSpecialization = addon.tocversion >= 40000 and C_SpecializationInfo.GetSpecialization or GetPrimaryTalentTree
 ---------------------------
 -- Slash Command Options --
 ---------------------------
