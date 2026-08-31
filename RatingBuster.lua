@@ -1946,9 +1946,7 @@ do
 		end
 	end
 
-	local f = CreateFrame("Frame")
-	f:RegisterEvent("SPELLS_CHANGED")
-	f:SetScript("OnEvent", function()
+	function RatingBuster:SPELLS_CHANGED()
 		if StatLogic:TalentCacheExists() then
 			GenerateStatModOptions()
 			GenerateAuraOptions()
@@ -1957,18 +1955,12 @@ do
 			-- Talents are not guaranteed to exist on SPELLS_CHANGED,
 			-- and there is no definite event for when they will exist.
 			-- Recheck every 1 second after SPELLS_CHANGED until they exist.
-			local ticker
-			ticker = C_Timer.NewTicker(1, function()
-				if StatLogic:TalentCacheExists() then
-					GenerateStatModOptions()
-					GenerateAuraOptions()
-					RatingBuster:InitializeDatabase()
-					ticker:Cancel()
-				end
+			C_Timer.After(1, function()
+				self:SPELLS_CHANGED()
 			end)
 		end
-		f:UnregisterEvent("SPELLS_CHANGED")
-	end)
+		self:UnregisterEvent("SPELLS_CHANGED")
+	end
 end
 
 local function AddProfileSwapOptions(profileOptions, db)
@@ -2130,6 +2122,7 @@ function RatingBuster:OnEnable()
 	playerLevel = UnitLevel("player")
 	-- for setting a new level
 	self:RegisterEvent("PLAYER_LEVEL_UP")
+	self:RegisterEvent("SPELLS_CHANGED")
 	-- Events that require cache clearing
 	self:RegisterEvent("CHARACTER_POINTS_CHANGED", RatingBuster.ClearCache) -- talent point changed
 	self:RegisterBucketEvent("UNIT_AURA", 1)
