@@ -1556,6 +1556,10 @@ local roleDefaults = {
 		showMeleeHasteFromHasteRating = true,
 		sumArmorPenetration = true,
 		showSpellHitFromExpertise = false,
+		showDodgeFromAgi = false,
+		showAvoidanceFromDodge = false,
+		showParryFromStr = false,
+		showAvoidanceFromParry = false,
 	},
 	[Role.Caster] = {
 		sumSpellHit = true,
@@ -1566,13 +1570,14 @@ local roleDefaults = {
 		showHealingFromSpellPower = preWrath,
 		sumHealing = preWrath,
 		showMeleeCritFromAgi = false,
-		showDodgeFromAgi = false,
 		showSpellHitFromHitRating = true,
 		showSpellCritFromCritRating = true,
 		showSpellHasteFromHasteRating = true,
 		showDodgeReductionFromExpertise = false,
 		showAPFromStr = false,
 		showAPFromAgi = false,
+		showDodgeFromAgi = false,
+		showAvoidanceFromDodge = false,
 	}
 }
 
