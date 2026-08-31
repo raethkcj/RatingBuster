@@ -2448,16 +2448,6 @@ end
 ---@param position integer
 ---@return string
 function RatingBuster:InsertBreakdownText(text, breakdown, position)
-	-- Backwards Compatibility
-	if not db.global.textColor.GenerateHexColorMarkup then
-		local old = db.global.textColor
-		if type(old) == "table" and old.r and old.g and old.b then
-			db.global.textColor = CreateColor(old.r, old.g, old.b)
-		else
-			db.global.textColor = defaults.global.textColor
-		end
-	end
-
 	return table.concat({
 		text:sub(1, position),
 		" ",
