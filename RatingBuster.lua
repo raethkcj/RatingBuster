@@ -1329,6 +1329,197 @@ local specializationRoles = {
 	},
 }
 
+local globalDefaults = {
+	textColor = CreateColor(1.0, 0.996, 0.545),
+	enableReforgeUI = true,
+
+	showSum = true,
+	calcSum = true,
+	calcDiff = true,
+	sumDiffStyle = "main",
+	hideBlizzardComparisons = true,
+	showItemID = false,
+	showItemLevel = false,
+	sumShowIcon = true,
+	sumShowTitle = true,
+	sumShowProfile = true,
+	showZeroValueStat = false,
+	sumSortAlpha = false,
+	sumStatColor = CreateColor(NORMAL_FONT_COLOR:GetRGBA()),
+	sumValueColor = CreateColor(NORMAL_FONT_COLOR:GetRGBA()),
+	sumBlankLine = true,
+	sumBlankLineAfter = false,
+
+	sumIgnoreUnused = true,
+	sumIgnoreEquipped = false,
+	sumIgnoreEnchant = true,
+	sumIgnoreGems = false,
+	sumIgnoreExtraSockets = true,
+
+	swapProfileKeybinding = "",
+}
+
+local profileDefaults = {
+	enableAvoidanceDiminishingReturns = StatLogic.GetAvoidanceAfterDR and true or false,
+	showRatings = true,
+	wpnBreakDown = false,
+	showStats = true,
+	sumAvoidWithBlock = false,
+
+	-- Base stat conversions
+	showStrFromAllStats = false,
+	showAgiFromAllStats = false,
+	showStaFromAllStats = false,
+	showIntFromAllStats = false,
+	showSpiFromAllStats = false,
+
+	showBlockValueFromStr = false,
+
+	showRAPFromAgi = false,
+	showRangedCritFromAgi = false,
+	showArmorFromAgi = false,
+
+	showHealthFromSta = false,
+
+	showManaFromInt = false,
+	showManaRegenNotCastingFromManaRegen = false,
+	showManaRegenOutOfCombatFromManaRegen = false,
+	showSpellCritFromInt = true,
+
+	showModifiedRangedAttackPower = false,
+
+	showHP5NCFromHealth = false,
+
+	showMeleeHitFromHitRating = false,
+	showMeleeCritFromCritRating = false,
+	showMeleeHasteFromHasteRating = false,
+	showSpellHitFromHitRating = false,
+	showSpellCritFromCritRating = false,
+	showSpellHasteFromHasteRating = false,
+
+	showDefenseFromDefenseRating = false,
+	showAvoidanceFromBlockChance = false,
+	showDodgeFromDefense = false,
+	showMissFromDefense = false,
+	showParryFromDefense = false,
+
+	showExpertiseFromExpertiseRating = false,
+	showParryReductionFromExpertise = false,
+	showCritAvoidanceFromResilience = false,
+	showCritDamageReductionFromResilience = false,
+	showPvpDamageReductionFromResilience = false,
+	showMasteryFromMasteryRating = false,
+	------------------
+	-- Stat Summary --
+	------------------
+	-- Basic
+	sumHP = true,
+	sumMP = true,
+	sumManaRegen = true,
+	sumManaRegenNotCasting = false,
+	sumManaRegenOutOfCombat = false,
+	sumHP5 = false,
+	sumHP5OC = false,
+	sumStr = false,
+	sumAgi = false,
+	sumSta = false,
+	sumInt = false,
+	sumSpi = false,
+	-- Physical
+	sumAP = false,
+	sumHit = false,
+	sumHitRating = false,
+	sumCrit = false,
+	sumCritRating = false,
+	sumHaste = false,
+	sumHasteRating = false,
+	sumIgnoreArmor = false,
+	sumArmorPenetration = false,
+	-- Ranged
+	sumRAP = false,
+	sumRangedHit = false,
+	sumRangedHitRating = false,
+	sumRangedCrit = false,
+	sumRangedCritRating = false,
+	sumRangedHaste = false,
+	sumRangedHasteRating = false,
+	-- Weapon
+	sumWeaponAverageDamage = false,
+	sumWeaponDPS = false,
+	sumExpertise = false,
+	sumWeaponSkill = false,
+	sumDodgeNeglect = false,
+	sumParryNeglect = false,
+	-- Spell
+	sumSpellDmg = false,
+	sumArcaneDmg = false,
+	sumFrostDmg = false,
+	sumNatureDmg = false,
+	sumFireDmg = false,
+	sumShadowDmg = false,
+	sumHolyDmg = false,
+	sumHealing = false,
+	sumSpellHit = false,
+	sumSpellHitRating = false,
+	sumSpellCrit = false,
+	sumSpellCritRating = false,
+	sumSpellHaste = false,
+	sumSpellHasteRating = false,
+	sumPenetration = false,
+	-- Tank
+	sumArmor = false,
+	sumDodge = false,
+	sumDodgeRating = false,
+	sumParry = false,
+	sumParryRating = false,
+	sumBlock = false,
+	sumBlockRating = false,
+	sumBlockValue = false,
+	sumHitAvoid = false,
+	sumCritAvoid = false,
+	sumArcaneResist = false,
+	sumFrostResist = false,
+	sumNatureResist = false,
+	sumFireResist = false,
+	sumShadowResist = false,
+	sumResilience = true,
+	sumPvpPower = true,
+	sumDefense = false,
+	sumAvoidance = false,
+	sumMasteryEffect = true,
+	-- Gems
+	---@type AutoGem
+	sumGemRed = {
+		gemID = nil,
+		gemText = nil,
+		gemLink = nil,
+	};
+	---@type AutoGem
+	sumGemYellow = {
+		gemID = nil,
+		gemText = nil,
+		gemLink = nil,
+	};
+	---@type AutoGem
+	sumGemBlue = {
+		gemID = nil,
+		gemText = nil,
+		gemLink = nil,
+	};
+	---@type AutoGem
+	sumGemMeta = {
+		gemID = nil,
+		gemText = nil,
+		gemLink = nil,
+	};
+	---@type AutoGem
+	sumGemPrismatic = {
+		gemID = nil,
+		gemText = nil,
+		gemLink = nil,
+	};
+}
+
 local preWrath = addon.tocversion < 30000
 local roleDefaults = {
 	[Role.Tank] = {
@@ -1425,204 +1616,25 @@ local classDefaults = {
 
 function addon.GetDefaults(specGroup)
 	local defaults = {
-		global = {
-			textColor = CreateColor(1.0, 0.996, 0.545),
-			enableReforgeUI = true,
-
-			showSum = true,
-			calcSum = true,
-			calcDiff = true,
-			sumDiffStyle = "main",
-			hideBlizzardComparisons = true,
-			showItemID = false,
-			showItemLevel = false,
-			sumShowIcon = true,
-			sumShowTitle = true,
-			sumShowProfile = true,
-			showZeroValueStat = false,
-			sumSortAlpha = false,
-			sumStatColor = CreateColor(NORMAL_FONT_COLOR:GetRGBA()),
-			sumValueColor = CreateColor(NORMAL_FONT_COLOR:GetRGBA()),
-			sumBlankLine = true,
-			sumBlankLineAfter = false,
-
-			sumIgnoreUnused = true,
-			sumIgnoreEquipped = false,
-			sumIgnoreEnchant = true,
-			sumIgnoreGems = false,
-			sumIgnoreExtraSockets = true,
-
-			swapProfileKeybinding = "",
-		},
-		profile = {
-			enableAvoidanceDiminishingReturns = StatLogic.GetAvoidanceAfterDR and true or false,
-			showRatings = true,
-			wpnBreakDown = false,
-			showStats = true,
-			sumAvoidWithBlock = false,
-
-			-- Base stat conversions
-			showStrFromAllStats = false,
-			showAgiFromAllStats = false,
-			showStaFromAllStats = false,
-			showIntFromAllStats = false,
-			showSpiFromAllStats = false,
-
-			showBlockValueFromStr = false,
-
-			showRAPFromAgi = false,
-			showRangedCritFromAgi = false,
-			showArmorFromAgi = false,
-
-			showHealthFromSta = false,
-
-			showManaFromInt = false,
-			showManaRegenNotCastingFromManaRegen = false,
-			showManaRegenOutOfCombatFromManaRegen = false,
-			showSpellCritFromInt = true,
-
-			showModifiedRangedAttackPower = false,
-
-			showHP5NCFromHealth = false,
-
-			showMeleeHitFromHitRating = false,
-			showMeleeCritFromCritRating = false,
-			showMeleeHasteFromHasteRating = false,
-			showSpellHitFromHitRating = false,
-			showSpellCritFromCritRating = false,
-			showSpellHasteFromHasteRating = false,
-
-			showDefenseFromDefenseRating = false,
-			showAvoidanceFromBlockChance = false,
-			showDodgeFromDefense = false,
-			showMissFromDefense = false,
-			showParryFromDefense = false,
-
-			showExpertiseFromExpertiseRating = false,
-			showParryReductionFromExpertise = false,
-			showCritAvoidanceFromResilience = false,
-			showCritDamageReductionFromResilience = false,
-			showPvpDamageReductionFromResilience = false,
-			showMasteryFromMasteryRating = false,
-			------------------
-			-- Stat Summary --
-			------------------
-			-- Basic
-			sumHP = true,
-			sumMP = true,
-			sumManaRegen = true,
-			sumManaRegenNotCasting = false,
-			sumManaRegenOutOfCombat = false,
-			sumHP5 = false,
-			sumHP5OC = false,
-			sumStr = false,
-			sumAgi = false,
-			sumSta = false,
-			sumInt = false,
-			sumSpi = false,
-			-- Physical
-			sumAP = false,
-			sumHit = false,
-			sumHitRating = false,
-			sumCrit = false,
-			sumCritRating = false,
-			sumHaste = false,
-			sumHasteRating = false,
-			sumIgnoreArmor = false,
-			sumArmorPenetration = false,
-			-- Ranged
-			sumRAP = false,
-			sumRangedHit = false,
-			sumRangedHitRating = false,
-			sumRangedCrit = false,
-			sumRangedCritRating = false,
-			sumRangedHaste = false,
-			sumRangedHasteRating = false,
-			-- Weapon
-			sumWeaponAverageDamage = false,
-			sumWeaponDPS = false,
-			sumExpertise = false,
-			sumWeaponSkill = false,
-			sumDodgeNeglect = false,
-			sumParryNeglect = false,
-			-- Spell
-			sumSpellDmg = false,
-			sumArcaneDmg = false,
-			sumFrostDmg = false,
-			sumNatureDmg = false,
-			sumFireDmg = false,
-			sumShadowDmg = false,
-			sumHolyDmg = false,
-			sumHealing = false,
-			sumSpellHit = false,
-			sumSpellHitRating = false,
-			sumSpellCrit = false,
-			sumSpellCritRating = false,
-			sumSpellHaste = false,
-			sumSpellHasteRating = false,
-			sumPenetration = false,
-			-- Tank
-			sumArmor = false,
-			sumDodge = false,
-			sumDodgeRating = false,
-			sumParry = false,
-			sumParryRating = false,
-			sumBlock = false,
-			sumBlockRating = false,
-			sumBlockValue = false,
-			sumHitAvoid = false,
-			sumCritAvoid = false,
-			sumArcaneResist = false,
-			sumFrostResist = false,
-			sumNatureResist = false,
-			sumFireResist = false,
-			sumShadowResist = false,
-			sumResilience = true,
-			sumPvpPower = true,
-			sumDefense = false,
-			sumAvoidance = false,
-			sumMasteryEffect = true,
-			-- Gems
-			---@type AutoGem
-			sumGemRed = {
-				gemID = nil,
-				gemText = nil,
-				gemLink = nil,
-			};
-			---@type AutoGem
-			sumGemYellow = {
-				gemID = nil,
-				gemText = nil,
-				gemLink = nil,
-			};
-			---@type AutoGem
-			sumGemBlue = {
-				gemID = nil,
-				gemText = nil,
-				gemLink = nil,
-			};
-			---@type AutoGem
-			sumGemMeta = {
-				gemID = nil,
-				gemText = nil,
-				gemLink = nil,
-			};
-			---@type AutoGem
-			sumGemPrismatic = {
-				gemID = nil,
-				gemText = nil,
-				gemLink = nil,
-			};
-		},
+		global = {},
+		profile = {},
 	}
 
+	for key, value in pairs(globalDefaults) do
+		defaults.global[key] = value
+	end
+
+	for key, value in pairs(profileDefaults) do
+		defaults.profile[key] = value
+	end
+
 	local specIndex = GetSpecialization(specGroup)
-	local role = specializationRoles[addon.class][specIndex]
+	local role = specializationRoles[class][specIndex]
 	for key, value in pairs(roleDefaults[role]) do
 		defaults.profile[key] = value
 	end
 
-	for key, value in pairs(classDefaults[addon.class]) do
+	for key, value in pairs(classDefaults[class]) do
 		defaults.profile[key] = value
 	end
 
@@ -1738,8 +1750,8 @@ do
 			name = L["Show Modified %s"]:format(L[statStringToStat[mod]])
 		end
 
-		if defaults.profile[key] == nil then
-			defaults.profile[key] = true
+		if profileDefaults[key] == nil then
+			profileDefaults[key] = true
 		end
 
 		local option = group.args[key]
