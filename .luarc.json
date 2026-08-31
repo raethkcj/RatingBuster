@@ -317,6 +317,7 @@
         "CR_HASTE_MELEE",
         "CR_CRIT_MELEE",
         "CR_HIT_MELEE",
-        "CR_MASTERY"
+        "CR_MASTERY",
+        "PLAYER_CLASS"
     ]
 }
