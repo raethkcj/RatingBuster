@@ -190,7 +190,7 @@ local options = {
 			type = 'toggle',
 			name = L["Include block chance in Avoidance"],
 			desc = L["Enable to include block chance in Avoidance, Disable for only dodge, parry, miss"],
-			order = 2,
+			width = "full",
 			hidden = function()
 				return addon.tocversion >= 40000
 			end,
