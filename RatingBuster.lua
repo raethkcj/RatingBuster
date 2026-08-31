@@ -1263,13 +1263,6 @@ local options = {
 ---------------------
 -- Saved Variables --
 ---------------------
--- This is localized, since it's visible to the player
-function addon.GetProfileName(specGroup)
-	local className = UnitClass("player")
-	local _, specName = GetSpecializationInfo(GetSpecialization(false, false, specGroup))
-	return PLAYER_CLASS:format("", specName, className)
-end
-
 ---@enum
 local Role = {
 	Tank = 1,
@@ -2005,8 +1998,8 @@ end
 
 function RatingBuster:InitializeDatabase()
 	local specGroup = GetActiveSpecGroup()
-	local profileName = addon.GetProfileName(specGroup)
 	local defaults = addon.GetDefaults(specGroup)
+	local profileName = UnitClass("player")
 	RatingBuster.db = LibStub("AceDB-3.0"):New("RatingBusterDB", defaults, profileName)
 
 	RatingBuster.db.RegisterCallback(RatingBuster, "OnProfileChanged", function()
