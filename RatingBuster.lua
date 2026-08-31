@@ -2093,6 +2093,7 @@ function RatingBuster:OnEnable()
 	-- for setting a new level
 	self:RegisterEvent("PLAYER_LEVEL_UP")
 	self:RegisterEvent("SPELLS_CHANGED")
+	self:RegisterEvent("ACTIVE_TALENT_GROUP_CHANGED")
 	-- Events that require cache clearing
 	self:RegisterEvent("CHARACTER_POINTS_CHANGED", RatingBuster.ClearCache) -- talent point changed
 	self:RegisterBucketEvent("UNIT_AURA", 1)
