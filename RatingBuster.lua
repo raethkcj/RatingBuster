@@ -52,9 +52,16 @@ local GetSpecializationInfo = C_SpecializationInfo.GetSpecializationInfo
 -- for the removed GetPrimaryTalentTree, but in pre-Cata builds,
 -- it always returns 1, so we need our own implementation.
 local function GetPrimaryTalentTree(_, _, specGroup)
-    local specGroupInfo = {}
-    TalentFrame_UpdateSpecInfoCache(specGroupInfo, false, false, specGroup)
-    return specGroupInfo.primaryTabIndex
+	local max = 0
+	local maxTab = 1
+	for tab = 1, GetNumTalentTabs(false, false) do
+		local pointsSpent = select(7, C_SpecializationInfo.GetSpecializationInfo(tab, false, false, nil, nil, specGroup))
+		if pointsSpent > max then
+			max = pointsSpent
+			maxTab = tab
+		end
+	end
+	return maxTab
 end
 
 local GetSpecialization = addon.tocversion >= 40000 and C_SpecializationInfo.GetSpecialization or GetPrimaryTalentTree
