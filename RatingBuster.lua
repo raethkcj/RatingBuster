@@ -2509,7 +2509,7 @@ function RatingBuster:ProcessStat(stat, value, breakdownStats, link, color, stat
 		elseif stat == StatLogic.Stats.RangedHitRating then
 			self:ProcessStat(StatLogic.Stats.RangedHit, effect, breakdownStats, link, color, statModContext, true, isBaseStat, db.profile.showRangedHitFromHitRating)
 		elseif stat == StatLogic.Stats.SpellHitRating then
-			self:ProcessStat(StatLogic.Stats.SpellHit, effect, breakdownStats, link, color, statModContext, true, isBaseStat, db.profile.showSpellHitFromHitRating)
+			self:ProcessStat(StatLogic.Stats.SpellHit, effect, breakdownStats, link, color, statModContext, true, isBaseStat, show or isBaseStat)
 		elseif stat == StatLogic.Stats.MeleeCritRating then
 			if not isParentModified then
 				effect = effect * statModContext("MOD_CRIT_RATING")
@@ -2524,7 +2524,7 @@ function RatingBuster:ProcessStat(stat, value, breakdownStats, link, color, stat
 			if not isParentModified then
 				effect = effect * statModContext("MOD_CRIT_RATING")
 			end
-			self:ProcessStat(StatLogic.Stats.SpellCrit, effect, breakdownStats, link, color, statModContext, true, isBaseStat, db.profile.showSpellCritFromCritRating)
+			self:ProcessStat(StatLogic.Stats.SpellCrit, effect, breakdownStats, link, color, statModContext, true, isBaseStat, show or isBaseStat)
 		elseif stat == StatLogic.Stats.MeleeHasteRating then
 			if not isParentModified then
 				effect = effect * statModContext("MOD_HASTE_RATING")
@@ -2539,7 +2539,7 @@ function RatingBuster:ProcessStat(stat, value, breakdownStats, link, color, stat
 			if not isParentModified then
 				effect = effect * statModContext("MOD_HASTE_RATING")
 			end
-			self:ProcessStat(StatLogic.Stats.SpellHaste, effect, breakdownStats, link, color, statModContext, true, isBaseStat, db.profile.showSpellHasteFromHasteRating)
+			self:ProcessStat(StatLogic.Stats.SpellHaste, effect, breakdownStats, link, color, statModContext, true, isBaseStat, show or isBaseStat)
 		elseif stat == StatLogic.Stats.ExpertiseRating then
 			if addon.tocversion < 30000 then
 				-- Expertise is truncated in TBC but not in Wrath
