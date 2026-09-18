@@ -48,6 +48,15 @@ local GetBlockChance = GetBlockChance
 local GetActiveSpecGroup = C_SpecializationInfo.GetActiveSpecGroup
 local GetSpecializationInfo = C_SpecializationInfo.GetSpecializationInfo
 
+local function GetNumTalentTabs(...)
+	if C_SpecializationInfo.GetNumSpecializationsForClassID then
+		local classID = select(3, UnitClass("player"))
+		return C_SpecializationInfo.GetNumSpecializationsForClassID(classID)
+	else
+		return GetNumTalentTabs(...)
+	end
+end
+
 -- Blizzard labels GetSpecialization as a deprecation fallback
 -- for the removed GetPrimaryTalentTree, but in pre-Cata builds,
 -- it always returns 1, so we need our own implementation.
