@@ -1323,7 +1323,11 @@ addon.StatModValidators = {
 	},
 	rune = {
 		validate = function(case)
-			if type(case.rune) == "number" then
+			local season = C_Seasons and C_Seasons.HasActiveSeason() and C_Seasons.GetActiveSeason()
+			local showRunes = season and season == Enum.SeasonID.SeasonOfDiscovery
+			if not showRunes then
+				return false
+			elseif type(case.rune) == "number" then
 				return C_Engraving.IsRuneEquipped(case.rune)
 			else
 				return true
@@ -1480,9 +1484,10 @@ end
 -- to their positions in the tree. Building a talent cache ordered by
 -- tier then column allows us to replicate the previous behavior,
 -- and keep StatModTables human-readable.
+local reorderTalentCache = addon.tocversion < 16000 or (addon.tocversion >= 20000 and addon.tocversion < 50000)
 local orderedTalentCache = {}
 function StatLogic:GetOrderedTalentInfo(tab, num, ...)
-	if addon.tocversion < 50000 then
+	if reorderTalentCache then
 		local ordered_num = orderedTalentCache[tab][num]
 		return GetTalentInfo(tab, ordered_num, ...)
 	else
@@ -1495,7 +1500,7 @@ function StatLogic:TalentCacheExists()
 	return talentCacheExists
 end
 
-if addon.tocversion < 50000 then
+if reorderTalentCache then
 	local function GenerateOrderedTalents()
 		local temp = {}
 		local numTabs = GetNumTalentTabs()
@@ -1906,7 +1911,7 @@ StatLogic.SocketColor = {
 
 local ItemGemSubclassCogwheel = 10
 ---@diagnostic disable: undefined-field
-local GemSubclassColors = {
+local GemSubclassColors = addon.tocversion >= 20000 and {
 	[Enum.ItemGemSubclass.Red]    = StatLogic.SocketColor.Red,
 	[Enum.ItemGemSubclass.Blue]   = StatLogic.SocketColor.Blue,
 	[Enum.ItemGemSubclass.Yellow] = StatLogic.SocketColor.Yellow,
@@ -1915,7 +1920,7 @@ local GemSubclassColors = {
 	[Enum.ItemGemSubclass.Orange] = bit.bor(StatLogic.SocketColor.Red, StatLogic.SocketColor.Yellow),
 	[Enum.ItemGemSubclass.Meta]   = StatLogic.SocketColor.Meta,
 	[ItemGemSubclassCogwheel]     = StatLogic.SocketColor.Cogwheel,
-}
+} or {}
 ---@diagnostic enable: undefined-field
 
 ---@param gemID number
@@ -1955,14 +1960,18 @@ do
 	---@return string strippedLink
 	---@return number[] gems
 	function StatLogic:RemoveGems(link, gemInfo)
+		---@type number[]
+		local realGems = {}
+
+		if addon.tocversion < 20000 then
+			return link, realGems
+		end
+
 		-- Count item's actual sockets
 		wipe(statTable)
 		GetItemStats(link, statTable)
 		local numSockets = statTable["EMPTY_SOCKET_RED"] + statTable["EMPTY_SOCKET_YELLOW"] + statTable["EMPTY_SOCKET_BLUE"] + statTable["EMPTY_SOCKET_PRISMATIC"]
 		local inventoryType = select(4, C_Item.GetItemInfoInstant(link))
-
-		---@type number[]
-		local realGems = {}
 
 		local i = 0
 		local strippedLink = link:gsub(":([^:]*)", function(match)
