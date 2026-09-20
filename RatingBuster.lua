@@ -73,7 +73,36 @@ local function GetPrimaryTalentTree(_, _, specGroup)
 	return maxTab
 end
 
-local GetSpecialization = addon.tocversion >= 40000 and C_SpecializationInfo.GetSpecialization or GetPrimaryTalentTree
+local function GetPrimaryTraitGroup(specGroup)
+	local configID = C_Traits.GetConfigIDBySystemID(Enum.SpecializationSystem.TalentTab)
+	local configInfo = C_Traits.GetConfigInfo(configID)
+	local treeID = configInfo.treeIDs[1]
+	local displayInfos = C_Traits.GetGroupDisplayInfoByTreeID(treeID)
+	local groupIDs = {}
+	local groupIndices = {}
+	for _, displayInfo in ipairs(displayInfos) do
+		table.insert(groupIDs, displayInfo.groupID);
+		groupIndices[displayInfo.groupID] = displayInfo.orderIndex + 1
+	end
+	local groupCurrencyInfos = C_Traits.GetGroupCurrencyInfo(configID, groupIDs)
+	local maxSpent, maxIndex = 0, 1
+	for _, groupCurrencyInfo in ipairs(groupCurrencyInfos) do
+		local spent = groupCurrencyInfo.currencyInfos[1].spent
+		if spent > maxSpent then
+			maxSpent = spent
+			maxIndex = groupIndices[groupCurrencyInfo.traitNodeGroupID]
+		end
+	end
+	return maxIndex
+end
+
+local GetSpecialization = C_SpecializationInfo.GetSpecialization
+if addon.tocversion >= 16000 and addon.tocversion < 20000 then
+	-- Forever
+	GetSpecialization = GetPrimaryTraitGroup
+elseif addon.tocversion < 40000 then
+	GetSpecialization = GetPrimaryTalentTree
+end
 ---------------------------
 -- Slash Command Options --
 ---------------------------
