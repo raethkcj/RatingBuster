@@ -65,7 +65,6 @@ local ipairs = ipairs
 local type = type
 local GetInventoryItemLink = GetInventoryItemLink
 local GetSpellName = C_Spell.GetSpellName
-local IsUsableSpell = IsUsableSpell
 local UnitStat = UnitStat
 local GetShapeshiftForm = GetShapeshiftForm
 local GetShapeshiftFormInfo = GetShapeshiftFormInfo
@@ -2610,7 +2609,7 @@ function StatLogic:GetDiffID(item, ignoreEnchant)
 	if inventoryType == "INVTYPE_WEAPON" then
 		linkDiff1 = GetInventoryItemLink("player", INVSLOT_MAINHAND) or "NOITEM"
 		-- If player can Dual Wield, calculate offhand difference
-		if IsUsableSpell(GetSpellName(674)) then		-- ["Dual Wield"]
+		if FindSpellBookSlotBySpellID(674) then
 			local _, _, _, _, _, _, _, _, eqItemType = C_Item.GetItemInfo(linkDiff1)
 			-- If 2h is equipped, copy diff1 to diff2
 			if eqItemType == "INVTYPE_2HWEAPON" and not HasTitansGrip() then
