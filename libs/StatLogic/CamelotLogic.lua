@@ -262,14 +262,8 @@ if addon.class == "DRUID" then
 				["tab"] = 3,
 				["num"] = 6,
 				["rank"] = {
-					0.05, 0.10, 0.15,
+					0.17, 0.33, 0.50,
 				},
-			},
-			-- Rune: Dreamstate
-			{
-				["rune"] = true,
-				["value"] = 0.5,
-				["aura"] = 408261,
 			},
 			-- Set: Stormrage Raiment
 			{
@@ -308,13 +302,6 @@ if addon.class == "DRUID" then
 			},
 		},
 		["MOD_SPI"] = {
-			-- Rune: Tree of Life
-			{
-				["known"] = 439733,
-				["rune"] = true,
-				["value"] = 0.25,
-				["aura"] = 439733,
-			},
 		},
 		-- Druid: Heart of the Wild (Rank 5) - 2,15
 		--        Increases your Intellect by 4%/8%/12%/16%/20%. In addition, while in Bear or Dire Bear Form your Stamina is increased by 4%/8%/12%/16%/20% and while in Cat Form your Strength is increased by 4%/8%/12%/16%/20%.
@@ -337,13 +324,6 @@ if addon.class == "DRUID" then
 			},
 		},
 		["MOD_HEALTH"] = {
-			-- Rune: Survival Instincts
-			{
-				["known"] = 408024,
-				["rune"] = true,
-				["value"] = 0.3,
-				["aura"] = 408024,
-			},
 		},
 		-- Druid: Heart of the Wild (Rank 5) - 2,15
 		--        Increases your Intellect by 4%/8%/12%/16%/20%. In addition, while in Bear or Dire Bear Form your Stamina is increased by 4%/8%/12%/16%/20% and while in Cat Form your Strength is increased by 4%/8%/12%/16%/20%.
@@ -368,15 +348,6 @@ if addon.class == "DRUID" then
 				},
 			},
 		},
-		["ADD_AP_MOD_DEFENSE"] = {
-			-- Rune: Mangle (Defender's Resolve)
-			{
-				["known"] = 407995,
-				["rune"] = true,
-				["value"] = 4,
-				["aura"] = 460171,
-			}
-		}
 	}
 elseif addon.class == "HUNTER" then
 	StatLogic.StatModTable["HUNTER"] = {
@@ -397,13 +368,6 @@ elseif addon.class == "HUNTER" then
 			{
 				["value"] = 2,
 			},
-			-- Rune: Expose Weakness
-			{
-				["known"] = 409504,
-				["rune"] = true,
-				["value"] = 0.40,
-				["aura"] = 409507,
-			},
 		},
 		["ADD_NORMAL_MANA_REGEN_MOD_SPI"] = {
 			{
@@ -414,14 +378,6 @@ elseif addon.class == "HUNTER" then
 			-- Base
 			{
 				["regen"] = NormalHealthRegenPerSpi,
-			},
-		},
-		["ADD_GENERIC_MANA_REGEN_MOD_MANA"] = {
-			-- Buff: Aspect of the Viper
-			{
-				["value"] = 0.10 * 5/3,
-				["aura"] = 415423,
-				["rune"] = true,
 			},
 		},
 		-- Hunter: Survivalist (Rank 5) - 3,8
@@ -435,16 +391,6 @@ elseif addon.class == "HUNTER" then
 				},
 			},
 		},
-		["MOD_STR"] = {
-			-- Hunter: Heart of the Lion - Rune
-			--   increasing total stats for the Hunter by an additional 10%
-			{
-				["known"] = 409580,
-				["rune"] = true,
-				["aura"] = 409580,
-				["value"] = 0.1,
-			},
-		},
 		["MOD_AGI"] = {
 			-- Hunter: Lightning Reflexes (Rank 5) - 3,15
 			--         Increases your Agility by 3%/6%/9%/12%/15%.
@@ -455,64 +401,10 @@ elseif addon.class == "HUNTER" then
 					0.03, 0.06, 0.09, 0.12, 0.15,
 				},
 			},
-			-- Hunter: Heart of the Lion - Rune
-			--   increasing total stats for the Hunter by an additional 10%
-			{
-				["known"] = 409580,
-				["rune"] = true,
-				["aura"] = 409580,
-				["value"] = 0.1,
-			},
-		},
-		["MOD_STA"] = {
-			-- Hunter: Heart of the Lion - Rune
-			--   increasing total stats for the Hunter by an additional 10%
-			{
-				["known"] = 409580,
-				["rune"] = true,
-				["aura"] = 409580,
-				["value"] = 0.1,
-			},
-		},
-		["MOD_INT"] = {
-			-- Hunter: Heart of the Lion - Rune
-			--   increasing total stats for the Hunter by an additional 10%
-			{
-				["known"] = 409580,
-				["rune"] = true,
-				["aura"] = 409580,
-				["value"] = 0.1,
-			},
-		},
-		["MOD_SPI"] = {
-			-- Hunter: Heart of the Lion - Rune
-			--   increasing total stats for the Hunter by an additional 10%
-			{
-				["known"] = 409580,
-				["rune"] = true,
-				["aura"] = 409580,
-				["value"] = 0.1,
-			},
 		},
 		["MOD_AP"] = {
-			-- Set: Dawnstalker Armor (Wicked Shot)
-			{
-				["set"] = 1937,
-				["pieces"] = 4,
-				["value"] = 0.25,
-				["aura"] = 1226136,
-				["rune"] = true,
-			},
 		},
 		["MOD_RANGED_AP"] = {
-			-- Set: Dawnstalker Armor (Wicked Shot)
-			{
-				["set"] = 1937,
-				["pieces"] = 4,
-				["value"] = 0.25,
-				["aura"] = 1226136,
-				["rune"] = true,
-			},
 		},
 	}
 elseif addon.class == "MAGE" then
@@ -559,46 +451,8 @@ elseif addon.class == "MAGE" then
 				["value"] = 0.3,
 				["aura"] = 6117,
 			},
-			-- Set: Arcanist Insight (Mage Armor)
-			{
-				["set"] = 1704,
-				["pieces"] = 6,
-				["value"] = 0.15,
-				["aura"] = 6117,
-				["rune"] = true,
-				["group"] = addon.ExclusiveGroup.SetBonus,
-			},
-			-- Passive (Soul of the Magical Armorer)
-			{
-				["known"] = 1220166,
-				["value"] = 0.15,
-				["aura"] = 6117,
-				["rune"] = true,
-				["group"] = addon.ExclusiveGroup.SetBonus,
-			},
-			-- Rune: Enlightenment
-			{
-				["known"] = 412324,
-				["rune"] = true,
-				["value"] = 0.1,
-				["aura"] = 412325,
-			},
-			-- Rune: Arcane Surge
-			{
-				["known"] = 425124,
-				["rune"] = true,
-				["value"] = 1.0,
-				["aura"] = 425124,
-			},
 		},
 		["MOD_NORMAL_MANA_REGEN"] = {
-			-- Arcane Surge
-			{
-				["known"] = 425124,
-				["rune"] = true,
-				["value"] = 3.00,
-				["aura"] = 425124,
-			},
 		},
 		-- Mage: Arcane Mind (Rank 5) - 1,14
 		--       Increases your maximum mana by 2/4/6/8/10%
@@ -612,14 +466,6 @@ elseif addon.class == "MAGE" then
 			},
 		},
 		["MOD_SPI"] = {
-			-- Rune: Balefire Bolt
-			{
-				["known"] = 428878,
-				["rune"] = true,
-				["aura"] = 428878,
-				["stack"] = -0.20,
-				["max_stacks"] = 4,
-			}
 		}
 	}
 elseif addon.class == "PALADIN" then
@@ -641,15 +487,6 @@ elseif addon.class == "PALADIN" then
 				["regen"] = NormalHealthRegenPerSpi,
 			},
 		},
-		["ADD_GENERIC_MANA_REGEN_MOD_MANA"] = {
-			-- Rune: Guarded by the Light
-			{
-				["known"] = 415059,
-				["rune"] = true,
-				["value"] = 0.05 * 5/3,
-				["aura"] = 415058,
-			},
-		},
 		["ADD_BLOCK_VALUE_MOD_STR"] = {
 			-- Base
 			{
@@ -657,24 +494,14 @@ elseif addon.class == "PALADIN" then
 			},
 		},
 		["MOD_AP"] = {
-			-- Talent: Vindication (SoD-only)
+			-- Talent: Vindication
 			{
 				["tab"] = 3,
 				["num"] = 6,
 				["rank"] = {
-					0.05, 0.10, 0.15,
+					0.01, 0.02, 0.03,
 				},
 				["aura"] = 440668,
-				["rune"] = true,
-			},
-			-- Set: Inquisition Warplate
-			{
-				["set"] = 1940,
-				["pieces"] = 6,
-				["stack"] = 0.15,
-				["max_stacks"] = 3,
-				["aura"] = 1226464,
-				["rune"] = true,
 			},
 		},
 		-- Paladin: Toughness (Rank 5) - 2,5
@@ -697,77 +524,9 @@ elseif addon.class == "PALADIN" then
 					0.02, 0.04, 0.06, 0.08, 0.1,
 				},
 			},
-			-- Set: Avenger's Will (Blessing of Sanctuary)
-			{
-				["rune"] = true,
-				["set"] = 1844,
-				["pieces"] = 2,
-				["value"] = 0.10,
-				["tab"] = 2,
-				["num"] = 12,
-				["aura"] = 20911,
-				["group"] = addon.ExclusiveGroup.SetBonus,
-			},
-			-- Passive: Soul of the Ironclad (Blessing of Sanctuary)
-			{
-				["rune"] = true,
-				["known"] = 1220192,
-				["value"] = 0.10,
-				["tab"] = 2,
-				["num"] = 12,
-				["aura"] = 20911,
-				["group"] = addon.ExclusiveGroup.SetBonus,
-			},
 		},
-		["MOD_AGI"] = {
-			-- Set: Avenger's Will (Blessing of Sanctuary)
-			{
-				["rune"] = true,
-				["set"] = 1844,
-				["pieces"] = 2,
-				["value"] = 0.10,
-				["tab"] = 2,
-				["num"] = 12,
-				["aura"] = 20911,
-				["group"] = addon.ExclusiveGroup.SetBonus,
-			},
-			-- Passive: Soul of the Ironclad (Blessing of Sanctuary)
-			{
-				["rune"] = true,
-				["known"] = 1220192,
-				["value"] = 0.10,
-				["tab"] = 2,
-				["num"] = 12,
-				["aura"] = 20911,
-				["group"] = addon.ExclusiveGroup.SetBonus,
-			},
-		},
-		["MOD_STA"] = {
-			-- Set: Avenger's Will (Blessing of Sanctuary)
-			{
-				["rune"] = true,
-				["set"] = 1844,
-				["pieces"] = 2,
-				["value"] = 0.10,
-				["tab"] = 2,
-				["num"] = 12,
-				["aura"] = 20911,
-				["group"] = addon.ExclusiveGroup.SetBonus,
-			},
-			-- Passive: Soul of the Ironclad (Blessing of Sanctuary)
-			{
-				["rune"] = true,
-				["known"] = 1220192,
-				["value"] = 0.10,
-				["tab"] = 2,
-				["num"] = 12,
-				["aura"] = 20911,
-				["group"] = addon.ExclusiveGroup.SetBonus,
-			},
-		},
-		-- Paladin: Divine Intellect (Rank 5) - 1,2
-		--          Increases your total Intellect by 2%/4%/6%/8%/10%.
 		["MOD_INT"] = {
+			-- Talent: Divine Intellect
 			{
 				["tab"] = 1,
 				["num"] = 2,
@@ -775,67 +534,14 @@ elseif addon.class == "PALADIN" then
 					0.02, 0.04, 0.06, 0.08, 0.1,
 				},
 			},
-			-- Set: Avenger's Will (Blessing of Sanctuary)
-			{
-				["rune"] = true,
-				["set"] = 1844,
-				["pieces"] = 2,
-				["value"] = 0.10,
-				["tab"] = 2,
-				["num"] = 12,
-				["aura"] = 20911,
-				["group"] = addon.ExclusiveGroup.SetBonus,
-			},
-			-- Passive: Soul of the Ironclad (Blessing of Sanctuary)
-			{
-				["rune"] = true,
-				["known"] = 1220192,
-				["value"] = 0.10,
-				["tab"] = 2,
-				["num"] = 12,
-				["aura"] = 20911,
-				["group"] = addon.ExclusiveGroup.SetBonus,
-			},
-		},
-		["MOD_SPI"] = {
-			-- Set: Avenger's Will (Blessing of Sanctuary)
-			{
-				["rune"] = true,
-				["set"] = 1844,
-				["pieces"] = 2,
-				["value"] = 0.10,
-				["tab"] = 2,
-				["num"] = 12,
-				["aura"] = 20911,
-				["group"] = addon.ExclusiveGroup.SetBonus,
-			},
-			-- Passive: Soul of the Ironclad (Blessing of Sanctuary)
-			{
-				["rune"] = true,
-				["known"] = 1220192,
-				["value"] = 0.10,
-				["tab"] = 2,
-				["num"] = 12,
-				["aura"] = 20911,
-				["group"] = addon.ExclusiveGroup.SetBonus,
-			},
 		},
 		["ADD_SPELL_DMG_MOD_INT"] = {
-			-- Rune: Shock and Awe
+			-- Talent: Champion of the Light
 			{
 				["known"] = 462834,
-				["rune"] = true,
 				["value"] = 2.00,
 				["aura"] = 462832,
 			}
-		},
-		["ADD_SPELL_DMG_MOD_AP"] = {
-			-- Rune: Sheath of Light
-			{
-				["known"] = 426158,
-				["rune"] = true,
-				["value"] = 0.30,
-			},
 		},
 		["MOD_BLOCK_VALUE"] = {
 			-- Talent: Shield Specialization
@@ -845,56 +551,6 @@ elseif addon.class == "PALADIN" then
 				["rank"] = {
 					0.1, 0.2, 0.3,
 				},
-			},
-			-- Rune: Aegis
-			{
-				["known"] = 425589,
-				["rune"] = true,
-				["value"] = 0.3,
-			},
-			-- Set: Inquisition Bulwark (Righteous Shield)
-			{
-				["set"] = 1942,
-				["pieces"] = 2,
-				["value"] = 0.3,
-				["aura"] = 1226466,
-				["rune"] = true,
-			},
-			-- Set: Inquisition Bulwark (Avenging Shield)
-			{
-				["set"] = 1942,
-				["pieces"] = 6,
-				["value"] = 0.3,
-				["aura"] = 1233525,
-				["rune"] = true,
-			},
-		},
-		["ADD_SPELL_DMG_MOD_DEFENSE"] = {
-			-- Buff: Defender's Resolve
-			{
-				["rune"] = true,
-				["value"] = 2,
-				["aura"] = 460200,
-			},
-		},
-		["ADD_AP_MOD_DEFENSE"] = {
-			-- Rune: Malleable Protection (Defender's Resolve)
-			{
-				["known"] = 458371,
-				["rune"] = true,
-				["value"] = 4,
-				["aura"] = 460200,
-			},
-		},
-		["MOD_SPELL_DMG"] = {
-			-- Set: Inquisition Shockplate
-			{
-				["set"] = 1963,
-				["pieces"] = 6,
-				["stack"] = 0.15,
-				["max_stacks"] = 3,
-				["aura"] = 1240574,
-				["rune"] = true,
 			},
 		},
 	}
@@ -917,15 +573,6 @@ elseif addon.class == "PRIEST" then
 				["regen"] = NormalHealthRegenPerSpi,
 			},
 		},
-		["ADD_GENERIC_MANA_REGEN_MOD_MANA"] = {
-			-- Rune: Dispersion
-			{
-				["known"] = 425294,
-				["rune"] = true,
-				["value"] = 0.3,
-				["aura"] = 425294,
-			},
-		},
 		["ADD_MANA_REGEN_MOD_NORMAL_MANA_REGEN"] = {
 			-- Talent: Meditation
 			{
@@ -934,27 +581,6 @@ elseif addon.class == "PRIEST" then
 				["rank"] = {
 					0.05, 0.10, 0.15,
 				},
-			},
-			-- Set: Vestments of Transcendence
-			{
-				["set"] = 211,
-				["pieces"] = 3,
-				["value"] = 0.15,
-			},
-			-- Set: Dawn of Transcendence (SoD)
-			{
-				["set"] = 1812,
-				["pieces"] = 2,
-				["value"] = 0.15,
-				["rune"] = true,
-				["group"] = addon.ExclusiveGroup.SetBonus,
-			},
-			-- Passive: Soul of the Faithful
-			{
-				["known"] = 1220112,
-				["value"] = 0.15,
-				["rune"] = true,
-				["group"] = addon.ExclusiveGroup.SetBonus,
 			},
 		},
 		-- Priest: Spiritual Guidance (Rank 5) - 2,14
@@ -1027,50 +653,6 @@ elseif addon.class == "ROGUE" then
 				},
 			},
 		},
-		["MOD_HEALTH"] = {
-			-- Rune: Rolling with the Punches
-			{
-				["known"] = 400016,
-				["rune"] = true,
-				["stack"] = 0.05,
-				["max_stacks"] = 5,
-				["aura"] = 400015,
-				["group"] = addon.ExclusiveGroup.SetBonus,
-			},
-			-- Set: Duskwraith Leathers (Rolling with the Punches)
-			{
-				["set"] = 1935,
-				["pieces"] = 6,
-				["known"] = 400016,
-				["rune"] = true,
-				["stack"] = 0.07,
-				["max_stacks"] = 5,
-				["aura"] = 400015,
-				["group"] = addon.ExclusiveGroup.SetBonus,
-			},
-		},
-		["MOD_ARMOR"] = {
-			-- Set: Bloodfang Battlearmor (Rolling with the Punches)
-			{
-				["set"] = 1815,
-				["pieces"] = 4,
-				["known"] = 400016,
-				["rune"] = true,
-				["stack"] = 0.20,
-				["max_stacks"] = 5,
-				["aura"] = 400015,
-				["group"] = addon.ExclusiveGroup.SetBonus,
-			},
-			-- Passive: Soul of the Black Belt (Rolling with the Punches)
-			{
-				["known"] = 1220023,
-				["rune"] = true,
-				["stack"] = 0.20,
-				["max_stacks"] = 5,
-				["aura"] = 400015,
-				["group"] = addon.ExclusiveGroup.SetBonus,
-			},
-		},
 		[StatLogic.Stats.MeleeCrit] = {
 			-- Talent: Dagger Specialization
 			{
@@ -1093,27 +675,6 @@ elseif addon.class == "ROGUE" then
 				["weaponSubclass"] = {
 					[Enum.ItemWeaponSubclass.Unarmed] = true,
 				},
-			},
-			-- Set: Madcap's Outfit (SoD)
-			{
-				["set"] = 1829,
-				["pieces"] = 3,
-				["value"] = 5,
-				["weaponSubclass"] = {
-					[Enum.ItemWeaponSubclass.Dagger] = true,
-				},
-				["rune"] = true,
-				["group"] = addon.ExclusiveGroup.SetBonus,
-			},
-			-- Passive: Soul of the Shiv Savant
-			{
-				["known"] = 1220010,
-				["value"] = 5,
-				["weaponSubclass"] = {
-					[Enum.ItemWeaponSubclass.Dagger] = true,
-				},
-				["rune"] = true,
-				["group"] = addon.ExclusiveGroup.SetBonus,
 			},
 		},
 		[StatLogic.Stats.WeaponSkill] = {
@@ -1142,23 +703,6 @@ elseif addon.class == "ROGUE" then
 				},
 			},
 		},
-		["ADD_AP_MOD_DEFENSE"] = {
-			-- Rune: Blade Dance (Defender's Resolve)
-			{
-				["known"] = 400012,
-				["rune"] = true,
-				["value"] = 4,
-				["aura"] = 462230,
-			}
-		},
-		["MOD_DODGE"] = {
-			-- Rune: Just a Flesh Wound
-			{
-				["known"] = 400014,
-				["rune"] = true,
-				["value"] = -0.50,
-			},
-		},
 	}
 elseif addon.class == "SHAMAN" then
 	StatLogic.StatModTable["SHAMAN"] = {
@@ -1179,62 +723,14 @@ elseif addon.class == "SHAMAN" then
 				["regen"] = NormalHealthRegenPerSpi,
 			},
 		},
-		["ADD_SPELL_DMG_MOD_INT"] = {
-			-- Rune: Burn (Burn)
-			{
-				["known"] = 415231,
-				["rune"] = true,
-				["value"] = 1.5,
-				["aura"] = 454042,
-			},
-		},
-		["ADD_GENERIC_MANA_REGEN_MOD_INT"] = {
-			-- Rune: Power Surge
-			{
-				["known"] = 415100,
-				["rune"] = true,
-				["value"] = 0.15,
-			},
-		},
 		["ADD_BLOCK_VALUE_MOD_STR"] = {
 			-- Base
 			{
 				["value"] = 0.05,
 			},
 		},
-		["ADD_BLOCK_VALUE_MOD_SPELL_DMG"] = {
-			-- Set: Resolve of the Ten Storms (Elemental Shield) (SoD)
-			{
-				["set"] = 1819,
-				["pieces"] = 4,
-				["stack"] = 0.10,
-				["max_stacks"] = 3,
-				["aura"] = 467910,
-				["rune"] = true,
-				["group"] = addon.ExclusiveGroup.SetBonus,
-			},
-			-- Passive: Soul of the Spiritual Bulwark (Elemental Shield)
-			{
-				["known"] = 1220240,
-				["stack"] = 0.10,
-				["max_stacks"] = 3,
-				["aura"] = 467910,
-				["rune"] = true,
-				["group"] = addon.ExclusiveGroup.SetBonus,
-			},
-		},
-		["MOD_AP"] = {
-			-- Rune: Two-Handed Mastery
-			{
-				["known"] = 436364,
-				["rune"] = true,
-				["aura"] = 436365,
-				["value"] = 0.10,
-			},
-		},
-		-- Shaman: Toughness (Rank 5) - 2,11
-		--         Increases your armor value from items by 2%/4%/6%/8%/10%.
-		["MOD_ARMOR"] = {
+		["MOD_STA"] = {
+			-- Talent: Toughness
 			{
 				["tab"] = 2,
 				["num"] = 11,
@@ -1263,82 +759,22 @@ elseif addon.class == "SHAMAN" then
 					0.05, 0.1, 0.15, 0.2, 0.25,
 				},
 			},
-			-- Rune: Shield Mastery
-			{
-				["known"] = 408524,
-				["rune"] = true,
-				["value"] = 0.15,
-			},
-		},
-		["ADD_GENERIC_MANA_REGEN_MOD_MANA"] = {
-			-- Shaman: Water Shield - Rune
-			--   The caster is surrounded by 3 globes of water, granting 1% of your maximum mana per 5 sec.
-			{
-				["known"] = 408510,
-				["rune"] = true,
-				["value"] = 0.01,
-				["aura"] = 408510,
-			},
-			-- Rune: Shamanistic Rage
-			{
-				["known"] = 425336,
-				["rune"] = true,
-				["value"] = 0.25,
-				["aura"] = 425336,
-			},
-		},
-		["MOD_HEALTH"] = {
-			-- Rune: Way of Earth
-			{
-				["known"] = 408531,
-				["rune"] = true,
-				["value"] = 0.25,
-				["aura"] = 408680,
-			},
-			-- Set: Stormcaller's Resolve (Pack Leader)
-			{
-				["rune"] = true,
-				["set"] = 1852,
-				["pieces"] = 4,
-				["aura"] = 1213939,
-				["value"] = 0.5,
-				["group"] = addon.ExclusiveGroup.SetBonus,
-			},
-			-- Passive: Soul of the True Alpha (Pack Leader)
-			{
-				["rune"] = true,
-				["known"] = 1220246,
-				["aura"] = 1213939,
-				["value"] = 0.5,
-				["group"] = addon.ExclusiveGroup.SetBonus,
-			},
 		},
 		["ADD_AP_MOD_INT"] = {
-			-- Rune: Mental Dexterity
+			-- Talent: Mental Dexterity
 			{
 				["known"] = 415140,
-				["rune"] = true,
 				["value"] = 1.50,
 				["aura"] = 415144,
 			},
 		},
-		["ADD_SPELL_DMG_MOD_AP"] = {
-			-- Rune: Mental Dexterity
+		["ADD_SPELL_DMG_MOD_INT"] = {
+			-- Talent: Mental Dexterity
 			{
 				["known"] = 415140,
-				["rune"] = true,
 				["value"] = 0.35,
 				["aura"] = 415144,
 			},
-		},
-		["ADD_SPELL_DMG_MOD_DEFENSE"] = {
-			-- Rune: Shield Mastery (Defender's Resolve)
-			{
-				["known"] = 408524,
-				["rune"] = true,
-				["value"] = 4,
-				["aura"] = 460200,
-			}
 		},
 	}
 elseif addon.class == "WARLOCK" then
@@ -1382,58 +818,10 @@ elseif addon.class == "WARLOCK" then
 				},
 			},
 		},
-		["MOD_ARMOR"] = {
-			-- Warlock: Metamorphosis - Rune
-			--   Transform into a Demon, increasing Armor by 500%
-			{
-				["known"] = 403789,
-				["rune"] = true,
-				["value"] = 5.0,
-				["aura"] = 403789,
-			},
-		},
-		["ADD_DODGE_MOD_SPELL_CRIT"] = {
-			-- Rune: Dance of the Wicked
-			{
-				["known"] = 412798,
-				["rune"] = true,
-				["aura"] = 412800,
-				["value"] = 0.7,
-			}
-		},
-		-- Warlock: Demonic Pact - Rune
-		--   Demonic Pact increases spell damage and healing by 10% of your spell damage
-		["MOD_SPELL_DMG"] = {
-			{
-				["known"] = 425464,
-				["rune"] = true,
-				["value"] = 0.1,
-				["aura"] = 425467,
-			},
-		},
-		-- Warlock: Demonic Pact - Rune
-		--   Demonic Pact increases spell damage and healing by 10% of your spell damage
-		["MOD_HEALING"] = {
-			{
-				["known"] = 425464,
-				["rune"] = true,
-				["value"] = 0.1,
-				["aura"] = 425467,
-			},
-		},
 		["ADD_PET_STA_MOD_STA"] = {
 			-- Base
 			{
 				["value"] = 0.75,
-				["pet"] = true,
-			},
-		},
-		["ADD_SPELL_DMG_MOD_PET_STA"] = {
-			-- Rune: Demonic Knowledge
-			{
-				["known"] = 412732,
-				["rune"] = true,
-				["value"] = 0.03,
 				["pet"] = true,
 			},
 		},
@@ -1443,55 +831,6 @@ elseif addon.class == "WARLOCK" then
 				["value"] = 0.3,
 				["pet"] = true,
 			},
-		},
-		["ADD_SPELL_DMG_MOD_PET_INT"] = {
-			-- Rune: Demonic Knowledge
-			{
-				["known"] = 412732,
-				["rune"] = true,
-				["value"] = 0.03,
-				["pet"] = true,
-			},
-		},
-		["ADD_SPELL_DMG_MOD_SPI"] = {
-			-- Buff: Fel Armor (SoD-only)
-			{
-				["rune"] = true,
-				["value"] = 0.5,
-				["aura"] = 403619,
-			},
-		},
-		["ADD_HEALING_MOD_SPI"] = {
-			-- Buff: Fel Armor (SoD-only)
-			{
-				["rune"] = true,
-				["value"] = 0.5,
-				["aura"] = 403619,
-			},
-		},
-		["MOD_HEALTH"] = {
-			-- Rune: Vengeance
-			{
-				["known"] = 426195,
-				["rune"] = true,
-				["value"] = 0.30,
-				["aura"] = 426195,
-			},
-			-- Rune: Metamorphosis
-			{
-				["known"] = 403789,
-				["rune"] = true,
-				["value"] = 0.15,
-				["aura"] = 403789,
-			}
-		},
-		["ADD_SPELL_DMG_MOD_DEFENSE"] = {
-			-- Rune: Metamorphosis (Defender's Resolve)
-			{
-				["rune"] = true,
-				["value"] = 4,
-				["aura"] = 460200,
-			}
 		},
 	}
 elseif addon.class == "WARRIOR" then
@@ -1535,22 +874,6 @@ elseif addon.class == "WARRIOR" then
 				["value"] = -0.20,
 				["aura"] = 12328,
 			},
-			-- Rune: Gladiator Stance
-			{
-				["stance"] = "interface\\icons\\achievement_featsofstrength_gladiator_08",
-				["rune"] = true,
-				["value"] = -0.30,
-				["group"] = addon.ExclusiveGroup.SetBonus,
-			},
-			-- Set: Lightbreaker's Battlegear
-			{
-				["set"] = 1933,
-				["pieces"] = 6,
-				["stance"] = "interface\\icons\\achievement_featsofstrength_gladiator_08",
-				["rune"] = true,
-				["value"] = 0,
-				["group"] = addon.ExclusiveGroup.SetBonus,
-			},
 		},
 		[StatLogic.Stats.MeleeCrit] = {
 			-- Talent: Axe Specialization
@@ -1586,33 +909,6 @@ elseif addon.class == "WARRIOR" then
 				["aura"] = 12976,
 			},
 		},
-		["MOD_AP"] = {
-			-- Rune: Rampage
-			{
-				["known"] = 426940,
-				["rune"] = true,
-				["aura"] = 426940,
-				["value"] = 0.15,
-			},
-		},
-		["ADD_AP_MOD_DEFENSE"] = {
-			-- Buff: Defender's Resolve
-			{
-				["rune"] = true,
-				["value"] = 4,
-				["aura"] = 460171,
-			}
-		},
-		["ADD_STR_MOD_DEFENSE"] = {
-			-- Set: Lightbreaker's Battlegear (Recklessness)
-			{
-				["set"] = 1933,
-				["pieces"] = 4,
-				["value"] = 0.5,
-				["aura"] = 1234031,
-				["rune"] = true,
-			},
-		}
 	}
 end
 
@@ -1775,26 +1071,6 @@ StatLogic.StatModTable["ALL"] = {
 			["aura"] = 24425,
 			["group"] = addon.ExclusiveGroup.Zandalar,
 		},
-		-- Buff: Dreams of Zandalar
-		{
-			["value"] = 0.15,
-			["aura"] = 473476,
-			["rune"] = true,
-			["group"] = addon.ExclusiveGroup.Zandalar,
-		},
-		-- Buff: Heart of the Lion
-		{
-			["value"] = 0.1,
-			["aura"] = 409583,
-			["group"] = addon.ExclusiveGroup.AllStats,
-			["rune"] = true,
-		},
-		-- Buff: Fervor of the Temple Explorer
-		{
-			["aura"] = 446695,
-			["rune"] = true,
-			["value"] = 0.08,
-		},
 	},
 	["MOD_AGI"] = {
 		-- Buff: Blessing of Kings
@@ -1815,26 +1091,6 @@ StatLogic.StatModTable["ALL"] = {
 			["aura"] = 24425,
 			["group"] = addon.ExclusiveGroup.Zandalar,
 		},
-		-- Buff: Dreams of Zandalar
-		{
-			["value"] = 0.15,
-			["aura"] = 473476,
-			["rune"] = true,
-			["group"] = addon.ExclusiveGroup.Zandalar,
-		},
-		-- Buff: Heart of the Lion
-		{
-			["value"] = 0.1,
-			["aura"] = 409583,
-			["group"] = addon.ExclusiveGroup.AllStats,
-			["rune"] = true,
-		},
-		-- Buff: Fervor of the Temple Explorer
-		{
-			["aura"] = 446695,
-			["rune"] = true,
-			["value"] = 0.08,
-		},
 	},
 	["MOD_STA"] = {
 		-- Buff: Blessing of Kings
@@ -1849,24 +1105,10 @@ StatLogic.StatModTable["ALL"] = {
 			["aura"] = 25898,
 			["group"] = addon.ExclusiveGroup.AllStats,
 		},
-		-- Buff: Heart of the Lion
-		{
-			["value"] = 0.1,
-			["aura"] = 409583,
-			["group"] = addon.ExclusiveGroup.AllStats,
-			["rune"] = true,
-		},
 		-- Buff: Spirit of Zandalar
 		{
 			["value"] = 0.15,
 			["aura"] = 24425,
-			["group"] = addon.ExclusiveGroup.Zandalar,
-		},
-		-- Buff: Dreams of Zandalar
-		{
-			["value"] = 0.15,
-			["aura"] = 473476,
-			["rune"] = true,
 			["group"] = addon.ExclusiveGroup.Zandalar,
 		},
 		-- Buff: Mol'dar's Moxie
@@ -1874,19 +1116,6 @@ StatLogic.StatModTable["ALL"] = {
 			["value"] = 0.15,
 			["aura"] = 22818,
 			["group"] = addon.ExclusiveGroup.Moxie,
-		},
-		-- Buff: Blessing of Neptulon
-		{
-			["value"] = 0.15,
-			["aura"] = 473403,
-			["rune"] = true,
-			["group"] = addon.ExclusiveGroup.Moxie,
-		},
-		-- Buff: Fervor of the Temple Explorer
-		{
-			["aura"] = 446695,
-			["rune"] = true,
-			["value"] = 0.08,
 		},
 	},
 	["MOD_INT"] = {
@@ -1908,26 +1137,6 @@ StatLogic.StatModTable["ALL"] = {
 			["aura"] = 24425,
 			["group"] = addon.ExclusiveGroup.Zandalar,
 		},
-		-- Buff: Dreams of Zandalar
-		{
-			["value"] = 0.15,
-			["aura"] = 473476,
-			["rune"] = true,
-			["group"] = addon.ExclusiveGroup.Zandalar,
-		},
-		-- Buff: Heart of the Lion
-		{
-			["value"] = 0.1,
-			["aura"] = 409583,
-			["group"] = addon.ExclusiveGroup.AllStats,
-			["rune"] = true,
-		},
-		-- Buff: Fervor of the Temple Explorer
-		{
-			["aura"] = 446695,
-			["rune"] = true,
-			["value"] = 0.08,
-		},
 	},
 	["MOD_SPI"] = {
 		-- Buff: Blessing of Kings
@@ -1947,34 +1156,6 @@ StatLogic.StatModTable["ALL"] = {
 			["value"] = 0.15,
 			["aura"] = 24425,
 			["group"] = addon.ExclusiveGroup.Zandalar,
-		},
-		-- Buff: Dreams of Zandalar
-		{
-			["value"] = 0.15,
-			["aura"] = 473476,
-			["rune"] = true,
-			["group"] = addon.ExclusiveGroup.Zandalar,
-		},
-		-- Buff: Heart of the Lion
-		{
-			["value"] = 0.1,
-			["aura"] = 409583,
-			["group"] = addon.ExclusiveGroup.AllStats,
-			["rune"] = true,
-		},
-		-- Buff: Fervor of the Temple Explorer
-		{
-			["aura"] = 446695,
-			["rune"] = true,
-			["value"] = 0.08,
-		},
-	},
-	["MOD_HEALTH"] = {
-		-- Rune: Rallying Cry
-		{
-			["aura"] = 426490,
-			["value"] = 0.15,
-			["rune"] = true,
 		},
 	},
 	["ADD_MANA_REGEN_NOT_CASTING_MOD_NORMAL_MANA_REGEN"] = {
@@ -2006,78 +1187,6 @@ StatLogic.StatModTable["ALL"] = {
 		{
 			["aura"] = 23684,
 			["value"] = 1.00,
-		},
-	},
-	[StatLogic.Stats.WeaponSkill] = {
-		-- Rune: Sword Specialization
-		{
-			["rune"] = 51232,
-			["value"] = 5,
-			["weaponSubclass"] = {
-				[Enum.ItemWeaponSubclass.Sword1H] = true,
-				[Enum.ItemWeaponSubclass.Sword2H] = true,
-			},
-			["group"] = addon.ExclusiveGroup.WeaponRacial,
-		},
-		-- Rune: Axe Specialization
-		{
-			["rune"] = 51233,
-			["value"] = 5,
-			["weaponSubclass"] = {
-				[Enum.ItemWeaponSubclass.Axe1H] = true,
-				[Enum.ItemWeaponSubclass.Axe2H] = true,
-			},
-			["group"] = addon.ExclusiveGroup.WeaponRacial,
-		},
-		-- Rune: Mace Specialization
-		{
-			["rune"] = 51234,
-			["value"] = 5,
-			["weaponSubclass"] = {
-				[Enum.ItemWeaponSubclass.Mace1H] = true,
-				[Enum.ItemWeaponSubclass.Mace2H] = true,
-			},
-			["group"] = addon.ExclusiveGroup.WeaponRacial,
-		},
-		-- Rune: Dagger Specialization
-		{
-			["rune"] = 51235,
-			["value"] = 5,
-			["weaponSubclass"] = {
-				[Enum.ItemWeaponSubclass.Dagger] = true,
-			},
-			["group"] = addon.ExclusiveGroup.WeaponRacial,
-		},
-		-- Rune: Fist Weapon Specialization
-		{
-			["rune"] = 51236,
-			["value"] = 5,
-			["weaponSubclass"] = {
-				[Enum.ItemWeaponSubclass.Unarmed] = true,
-			},
-			["group"] = addon.ExclusiveGroup.WeaponRacial,
-		},
-		-- Rune: Ranged Weapon Specialization
-		{
-			["rune"] = 51237,
-			["value"] = 5,
-			["weaponSubclass"] = {
-				[Enum.ItemWeaponSubclass.Bows] = true,
-				[Enum.ItemWeaponSubclass.Guns] = true,
-				[Enum.ItemWeaponSubclass.Crossbow] = true,
-				[Enum.ItemWeaponSubclass.Thrown] = true,
-			},
-			["group"] = addon.ExclusiveGroup.WeaponRacial,
-		},
-		-- Rune: Pole Weapon Specialization
-		{
-			["rune"] = 51238,
-			["value"] = 5,
-			["weaponSubclass"] = {
-				[Enum.ItemWeaponSubclass.Staff] = true,
-				[Enum.ItemWeaponSubclass.Polearm] = true,
-			},
-			["group"] = addon.ExclusiveGroup.WeaponRacial,
 		},
 	},
 	["ADD_BLOCK_CHANCE_MOD_DEFENSE"] = {
