@@ -1370,6 +1370,11 @@ addon.StatModValidators = {
 			["PLAYER_TALENT_UPDATE"] = true,
 		},
 	},
+	trait = {
+		events = {
+			["TRAIT_NODE_CHANGED"] = true,
+		},
+	},
 	weaponSubclass = {
 		validate = function(case, _, statModContext)
 			local weaponSubclass
@@ -1486,12 +1491,16 @@ end
 -- and keep StatModTables human-readable.
 local reorderTalentCache = addon.tocversion < 16000 or (addon.tocversion >= 20000 and addon.tocversion < 50000)
 local orderedTalentCache = {}
-function StatLogic:GetOrderedTalentInfo(tab, num, ...)
+function StatLogic:GetOrderedTalentInfo(tab, num, specGroup)
 	if reorderTalentCache then
 		local ordered_num = orderedTalentCache[tab][num]
-		return GetTalentInfo(tab, ordered_num, ...)
+		return GetTalentInfo(tab, ordered_num, specGroup)
 	else
-		return C_SpecializationInfo.GetTalentInfo({ tier = tab, column = num })
+		return C_SpecializationInfo.GetTalentInfo({
+			tier = tab,
+			column = num,
+			groupIndex = specGroup,
+		})
 	end
 end
 
@@ -1596,18 +1605,27 @@ do
 		if case.tab and case.num then
 			if addon.tocversion < 50000 then
 				-- Vanilla-style talents with tabs and ranks
-				local r = select(5, StatLogic:GetOrderedTalentInfo(case.tab, case.num, false, false, context.spec))
+				local rank = select(5, StatLogic:GetOrderedTalentInfo(case.tab, case.num, false, false, context.specGroup))
 				if case.rank then
-					newValue = case.rank[r]
-				elseif r > 0 then
+					newValue = case.rank[rank]
+				elseif rank > 0 then
 					newValue = case.value
 				end
 			else
 				-- Mists-style talents with rows, columns and no ranks
-				local selected = select(4, StatLogic:GetOrderedTalentInfo(case.tab, case.num, context.spec))
+				local selected = select(4, StatLogic:GetOrderedTalentInfo(case.tab, case.num, context.specGroup))
 				if selected then
 					newValue = case.value
 				end
+			end
+		elseif case.trait then
+			local configID = C_SpecializationInfo.GetCombatConfigIDForSpecGroup(context.specGroup)
+			local nodeInfo = C_Traits.GetNodeInfo(configID, case.trait)
+			local rank = nodeInfo.activeRank
+			if case.rank then
+				newValue = case.rank[rank]
+			elseif rank > 0 then
+				newValue = case.value
 			end
 		elseif case.aura and case.rank then
 			local aura = StatLogic:GetAuraInfo(case.aura, false, case.exact)

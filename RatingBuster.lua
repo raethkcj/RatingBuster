@@ -74,7 +74,7 @@ local function GetPrimaryTalentTree(_, _, specGroup)
 end
 
 local function GetPrimaryTraitGroup(specGroup)
-	local configID = C_Traits.GetConfigIDBySystemID(Enum.SpecializationSystem.TalentTab)
+	local configID = C_SpecializationInfo.GetCombatConfigIDForSpecGroup(specGroup)
 	local configInfo = C_Traits.GetConfigInfo(configID)
 	local treeID = configInfo.treeIDs[1]
 	local displayInfos = C_Traits.GetGroupDisplayInfoByTreeID(treeID)
@@ -2145,7 +2145,8 @@ function RatingBuster:OnEnable()
 	self:RegisterEvent("SPELLS_CHANGED")
 	self:RegisterEvent("ACTIVE_TALENT_GROUP_CHANGED")
 	-- Events that require cache clearing
-	self:RegisterEvent("CHARACTER_POINTS_CHANGED", RatingBuster.ClearCache) -- talent point changed
+	self:RegisterEvent("CHARACTER_POINTS_CHANGED", RatingBuster.ClearCache)
+	self:RegisterEvent("TRAIT_NODE_CHANGED", RatingBuster.ClearCache)
 	self:RegisterBucketEvent("UNIT_AURA", 1)
 	self:RegisterBucketEvent("UPDATE_SHAPESHIFT_FORM", 1, RatingBuster.ClearCache)
 end
