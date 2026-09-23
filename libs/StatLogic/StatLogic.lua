@@ -1605,7 +1605,7 @@ do
 		if case.tab and case.num then
 			if addon.tocversion < 50000 then
 				-- Vanilla-style talents with tabs and ranks
-				local rank = select(5, StatLogic:GetOrderedTalentInfo(case.tab, case.num, false, false, context.specGroup))
+				local rank = select(5, StatLogic:GetOrderedTalentInfo(case.tab, case.num, context.specGroup))
 				if case.rank then
 					newValue = case.rank[rank]
 				elseif rank > 0 then
