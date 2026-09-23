@@ -239,7 +239,7 @@ if addon.class == "DRUID" then
 			},
 		},
 		["ADD_AP_MOD_AGI"] = {
-			-- Druid: Cat Form - Buff
+			-- Buff: Cat Form
 			{
 				["value"] = 1,
 				["aura"] = 768,
@@ -259,8 +259,7 @@ if addon.class == "DRUID" then
 		["ADD_MANA_REGEN_MOD_NORMAL_MANA_REGEN"] = {
 			-- Talent: Reflection
 			{
-				["tab"] = 3,
-				["num"] = 6,
+				["trait"] = 104917,
 				["rank"] = {
 					0.17, 0.33, 0.50,
 				},
@@ -272,79 +271,75 @@ if addon.class == "DRUID" then
 				["value"] = 0.15,
 			},
 		},
-		["MOD_ARMOR"] = {
-			-- Druid: Thick Hide (Rank 5) - 2,5
-			--        Increases your Armor contribution from items by 2/4/6/8/10%
+		["ADD_ARMOR_MOD_DEFENSE"] = {
+			-- Talent: Thick Hide
 			{
-				["tab"] = 2,
-				["num"] = 5,
+				["trait"] = 2,
 				["rank"] = {
-					0.02, 0.04, 0.06, 0.08, 0.10,
+					0.67, 1.33, 2.00,
 				},
 			},
-			-- Druid: Bear Form - buff (didn't use stance because Bear Form and Dire Bear Form has the same icon)
-			--        Shapeshift into a bear, increasing melee attack power by 120, armor contribution from items by 180%, and health by 560.
+		},
+		["MOD_ARMOR"] = {
+			-- Buff: Bear Form
 			{
 				["value"] = 1.8,
-				["aura"] = 5487,		-- ["Bear Form"],
+				["aura"] = 5487,
 			},
-			-- Druid: Dire Bear Form - Buff
-			--        Shapeshift into a dire bear, increasing melee attack power by 180, armor contribution from items by 360%, and health by 1240.
+			-- Buff: Dire Bear Form
 			{
 				["value"] = 3.6,
-				["aura"] = 9634,		-- ["Dire Bear Form"],
+				["aura"] = 9634,
 			},
-			-- Druid: Moonkin Form - Buff
-			--        While in this form the armor contribution from items is increased by 360%, and all party members within 30 yards have their spell critical chance increased by 3%.
+			-- Buff: Moonkin Form
 			{
 				["value"] = 3.6,
-				["aura"] = 24858,		-- ["Moonkin Form"],
+				["aura"] = 24858,
 			},
 		},
 		["MOD_SPI"] = {
+			-- Talent: Living Spirit
+			{
+				["trait"] = 104911,
+				["rank"] = {
+					0.05, 0.10, 0.15,
+				},
+			},
 		},
-		-- Druid: Heart of the Wild (Rank 5) - 2,15
-		--        Increases your Intellect by 4%/8%/12%/16%/20%. In addition, while in Bear or Dire Bear Form your Stamina is increased by 4%/8%/12%/16%/20% and while in Cat Form your Strength is increased by 4%/8%/12%/16%/20%.
 		["MOD_STA"] = {
+			-- Talent: Heart of the Wild (Bear Form)
 			{
-				["tab"] = 2,
-				["num"] = 15,
+				["trait"] = 104939,
 				["rank"] = {
 					0.04, 0.08, 0.12, 0.16, 0.20,
 				},
-				["aura"] = 5487,		-- ["Bear Form"],
+				["aura"] = 5487,
 			},
+			-- Talent: Heart of the Wild (Dire Bear Form)
 			{
-				["tab"] = 2,
-				["num"] = 15,
+				["trait"] = 104939,
 				["rank"] = {
 					0.04, 0.08, 0.12, 0.16, 0.20,
 				},
-				["aura"] = 9634,		-- ["Dire Bear Form"],
+				["aura"] = 9634,
 			},
 		},
-		["MOD_HEALTH"] = {
-		},
-		-- Druid: Heart of the Wild (Rank 5) - 2,15
-		--        Increases your Intellect by 4%/8%/12%/16%/20%. In addition, while in Bear or Dire Bear Form your Stamina is increased by 4%/8%/12%/16%/20% and while in Cat Form your Strength is increased by 4%/8%/12%/16%/20%.
 		["MOD_STR"] = {
+			-- Talent: Heart of the Wild (Cat Form)
 			{
-				["tab"] = 2,
-				["num"] = 15,
+				["trait"] = 104939,
 				["rank"] = {
-					0.04, 0.08, 0.12, 0.16, 0.20,
+					0.02, 0.04, 0.06, 0.08, 0.10,
 				},
-				["aura"] = 768,		-- ["Cat Form"],
+				["aura"] = 768,
 			},
 		},
-		-- Druid: Heart of the Wild (Rank 5) - 2,15
-		--        Increases your Intellect by 4%/8%/12%/16%/20%. In addition, while in Bear or Dire Bear Form your Stamina is increased by 4%/8%/12%/16%/20% and while in Cat Form your Strength is increased by 4%/8%/12%/16%/20%.
 		["MOD_INT"] = {
+			-- Talent: Heart of the Wild
 			{
-				["tab"] = 2,
-				["num"] = 15,
+				["trait"] = 104939,
 				["rank"] = {
-					0.04, 0.08, 0.12, 0.16, 0.20,
+					0.02, 0.04, 0.06, 0.08, 0.10,
 				},
 			},
 		},
