@@ -729,51 +729,73 @@ elseif addon.class == "SHAMAN" then
 				["value"] = 0.05,
 			},
 		},
+		["MOD_HEALTH"] = {
+			-- Talent: Improved Reincarnation
+			{
+				["trait"] = 104737,
+				["rank"] = {
+					0.02, 0.04,
+				},
+			},
+		},
 		["MOD_STA"] = {
 			-- Talent: Toughness
 			{
-				["tab"] = 2,
-				["num"] = 11,
+				["trait"] = 104746,
 				["rank"] = {
 					0.02, 0.04, 0.06, 0.08, 0.10,
 				},
 			},
 		},
-		-- Shaman: Ancestral Knowledge (Rank 5) - 2,1
-		--         Increases your maximum Mana by 1%/2%/3%/4%/5%.
-		["MOD_MANA"] = {
+		["MOD_INT"] = {
+			-- Talent: Ancestral Knowledge
 			{
-				["tab"] = 2,
-				["num"] = 1,
+				["trait"] = 104756,
 				["rank"] = {
-					0.01, 0.02, 0.03, 0.04, 0.05,
-				},
-			},
-		},
-		["MOD_BLOCK_VALUE"] = {
-			-- Talent: Shield Specialization
-			{
-				["tab"] = 2,
-				["num"] = 2,
-				["rank"] = {
-					0.05, 0.1, 0.15, 0.2, 0.25,
+					0.02, 0.04, 0.06, 0.08, 0.10,
 				},
 			},
 		},
 		["ADD_AP_MOD_INT"] = {
 			-- Talent: Mental Dexterity
 			{
-				["known"] = 415140,
-				["value"] = 1.50,
-				["aura"] = 415144,
+				["trait"] = 104755,
+				["rank"] = {
+					0.33, 0.67, 1.00,
+				},
 			},
 		},
 		["ADD_SPELL_DMG_MOD_INT"] = {
-			-- Talent: Mental Dexterity
+			-- Talent: Mental Quickness
 			{
-				["known"] = 415140,
-				["value"] = 0.35,
-				["aura"] = 415144,
+				["trait"] = 104744,
+				["rank"] = {
+					0.15, 0.30,
+				},
+			},
+		},
+		["ADD_HEALING_MOD_INT"] = {
+			-- Talent: Mental Quickness
+			{
+				["trait"] = 104744,
+				["rank"] = {
+					0.15, 0.30,
+				},
+			},
+		},
+		["ADD_MANA_REGEN_MOD_NORMAL_MANA_REGEN"] = {
+			-- Talent: Mindfulness
+			{
+				["trait"] = 104734,
+				["rank"] = {
+					0.17, 0.33, 0.50,
+				},
+			},
+			-- Talent: Improved Stormstrike
+			{
+				["trait"] = 104742,
+				["value"] = 0.50,
+				["aura"] = 1238931,
 			},
 		},
 	}
@@ -1047,9 +1069,9 @@ StatLogic.StatModTable["ALL"] = {
 			["rank"] = {
 				0.08, 0.16, 0.25,
 			},
-			["aura"] = 16237,
+			["aura"] = 16177,
 			["group"] = addon.ExclusiveGroup.Armor,
-			["spellid"] = 16240,
+			["spellid"] = 16176,
 		},
 	},
 	["MOD_STR"] = {
