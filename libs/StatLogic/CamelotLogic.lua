@@ -426,24 +426,21 @@ elseif addon.class == "MAGE" then
 				["regen"] = NormalHealthRegenPerSpi,
 			},
 		},
-		-- Mage: Arcane Fortitude - 1,9
-		--       Increases your armor by an amount equal to 50% of your Intellect.
 		["ADD_BONUS_ARMOR_MOD_INT"] = {
+			-- Talent: Arcane Resilience
 			{
-				["tab"] = 1,
-				["num"] = 9,
+				["trait"] = 105809,
 				["rank"] = {
-					0.5,
+					0.25, 0.50,
 				},
 			},
 		},
 		["ADD_MANA_REGEN_MOD_NORMAL_MANA_REGEN"] = {
 			-- Talent: Arcane Meditation
 			{
-				["tab"] = 1,
-				["num"] = 12,
+				["trait"] = 105803,
 				["rank"] = {
-					0.05, 0.10, 0.15,
+					0.17, 0.33, 0.50,
 				},
 			},
 			-- Buff: Mage Armor
@@ -454,12 +451,10 @@ elseif addon.class == "MAGE" then
 		},
 		["MOD_NORMAL_MANA_REGEN"] = {
 		},
-		-- Mage: Arcane Mind (Rank 5) - 1,14
-		--       Increases your maximum mana by 2/4/6/8/10%
-		["MOD_MANA"] = {
+		["MOD_INT"] = {
+			-- Talent: Arcane Mind
 			{
-				["tab"] = 1,
-				["num"] = 14,
+				["trait"] = 105800,
 				["rank"] = {
 					0.02, 0.04, 0.06, 0.08, 0.10,
 				},
