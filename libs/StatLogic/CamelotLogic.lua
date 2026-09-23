@@ -364,6 +364,24 @@ elseif addon.class == "HUNTER" then
 				["value"] = 2,
 			},
 		},
+		["ADD_AP_MOD_INT"] = {
+			-- Talent: Careful Aim
+			{
+				["trait"] = 105008,
+				["rank"] = {
+					0.2, 0.4, 0.6, 0.8, 1.0,
+				},
+			},
+		},
+		["ADD_RANGED_AP_MOD_INT"] = {
+			-- Talent: Careful Aim
+			{
+				["trait"] = 105008,
+				["rank"] = {
+					0.2, 0.4, 0.6, 0.8, 1.0,
+				},
+			},
+		},
 		["ADD_NORMAL_MANA_REGEN_MOD_SPI"] = {
 			{
 				["regen"] = NormalManaRegenPerSpi,
@@ -375,31 +393,47 @@ elseif addon.class == "HUNTER" then
 				["regen"] = NormalHealthRegenPerSpi,
 			},
 		},
-		-- Hunter: Survivalist (Rank 5) - 3,8
-		--         Increases total health by 2%/4%/6%/8%/10%.
-		["MOD_HEALTH"] = {
+		["ADD_MANA_REGEN_MOD_NORMAL_MANA_REGEN"] = {
+			-- Talent: Bestial Discipline
 			{
-				["tab"] = 3,
-				["num"] = 8,
+				["trait"] = 104963,
+				["rank"] = {
+					0.25, 0.50,
+				},
+			},
+			-- Talent: Rapid Recuperation
+			{
+				["trait"] = 104999,
+				["rank"] = {
+					0.25, 0.50,
+				},
+				["aura"] = 1242512,
+			},
+			-- Talent: Resourcefulness
+			{
+				["trait"] = 104983,
+				["value"] = 0.50,
+				["aura"] = 1242688,
+				["spellid"] = 440529,
+			},
+		},
+		["MOD_HEALTH"] = {
+			-- Talent: Survivalist
+			{
+				["trait"] = 104992,
 				["rank"] = {
 					0.02, 0.04, 0.06, 0.08, 0.10,
 				},
 			},
 		},
 		["MOD_AGI"] = {
-			-- Hunter: Lightning Reflexes (Rank 5) - 3,15
-			--         Increases your Agility by 3%/6%/9%/12%/15%.
+			-- Talent: Lightning Reflexes
 			{
-				["tab"] = 3,
-				["num"] = 15,
+				["trait"] = 110859,
 				["rank"] = {
-					0.03, 0.06, 0.09, 0.12, 0.15,
+					0.02, 0.04, 0.06, 0.08, 0.10,
 				},
 			},
-		},
-		["MOD_AP"] = {
-		},
-		["MOD_RANGED_AP"] = {
 		},
 	}
 elseif addon.class == "MAGE" then
