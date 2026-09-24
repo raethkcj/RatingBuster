@@ -897,11 +897,9 @@ elseif addon.class == "WARRIOR" then
 			},
 		},
 		["MOD_ARMOR"] = {
-			-- Warrior: Toughness (Rank 5) - 3,4
-			--          Increases your armor value from items by 2%/4%/6%/8%/10%.
+			-- Talent: Toughness
 			{
-				["tab"] = 3,
-				["num"] = 4,
+				["trait"] = 105973,
 				["rank"] = {
 					0.02, 0.04, 0.06, 0.08, 0.10,
 				},
@@ -913,26 +911,15 @@ elseif addon.class == "WARRIOR" then
 			},
 		},
 		[StatLogic.Stats.MeleeCrit] = {
-			-- Talent: Axe Specialization
+			-- Talent: Weaponmaster
 			{
-				["tab"] = 1,
-				["num"] = 12,
+				["trait"] = 105944,
 				["rank"] = {
 					1, 2, 3, 4, 5,
 				},
 				["weaponSubclass"] = {
 					[Enum.ItemWeaponSubclass.Axe1H] = true,
 					[Enum.ItemWeaponSubclass.Axe2H] = true,
-				},
-			},
-			-- Talent: Polearm Specialization
-			{
-				["tab"] = 1,
-				["num"] = 16,
-				["rank"] = {
-					1, 2, 3, 4, 5,
-				},
-				["weaponSubclass"] = {
 					[Enum.ItemWeaponSubclass.Polearm] = true,
 				},
 			},
@@ -940,10 +927,19 @@ elseif addon.class == "WARRIOR" then
 		["MOD_HEALTH"] = {
 			-- Buff: Last Stand
 			{
-				["tab"] = 3,
-				["num"] = 6,
+				["trait"] = 105970,
 				["value"] = 0.30,
 				["aura"] = 12976,
+			},
+		},
+		["ADD_HEALTH_REG_MOD_HEALTH"] = {
+			-- Talent: Blood Craze
+			{
+				["trait"] = 105934,
+				["rank"] = {
+					0.01 * 5/6, 0.02 * 5/6, 0.03 * 5/6,
+				},
+				["aura"] = 16488,
 			},
 		},
 	}
