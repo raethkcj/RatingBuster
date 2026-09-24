@@ -824,40 +824,49 @@ elseif addon.class == "WARLOCK" then
 				["regen"] = NormalHealthRegenPerSpi,
 			},
 		},
-		-- Warlock: Demonic Embrace (Rank 5) - 2,3
-		--          Increases your total Stamina by 3%/6%/9%/12%/15% but reduces your total Spirit by 1%/2%/3%/4%/5%.
-		["MOD_STA"] = {
+		["ADD_MANA_REGEN_MOD_NORMAL_MANA_REGEN"] = {
+			-- Talent: Soul Harvesting
 			{
-				["tab"] = 2,
-				["num"] = 3,
+				["trait"] = 105922,
+				["rank"] = {
+					0.50, 1.00,
+				},
+				["aura"] = 1242853,
+			},
+		},
+		["MOD_NORMAL_MANA_REGEN"] = {
+			-- Talent: Soul Harvesting
+			{
+				["trait"] = 105922,
+				["rank"] = {
+					0.50, 1.00,
+				},
+				["aura"] = 1242853,
+			},
+		},
+		["MOD_STA"] = {
+			-- Talent: Demonic Embrace
+			{
+				["trait"] = 1059072,
 				["rank"] = {
 					0.03, 0.06, 0.09, 0.12, 0.15,
 				},
 			},
 		},
-		-- Warlock: Demonic Embrace (Rank 5) - 2,3
-		--          Increases your total Stamina by 3%/6%/9%/12%/15% but reduces your total Spirit by 1%/2%/3%/4%/5%.
-		["MOD_SPI"] = {
+		["ADD_GENERIC_MANA_REGEN_MOD_MANA"] = {
+			-- Talent: Demonic Sacrifice (Fel Energy)
 			{
-				["tab"] = 2,
-				["num"] = 3,
-				["rank"] = {
-					-0.01, -0.02, -0.03, -0.04, -0.05,
-				},
+				["trait"] = 105900,
+				["value"] = 0.02 * 5/4,
+				["aura"] = 18792,
 			},
 		},
-		["ADD_PET_STA_MOD_STA"] = {
-			-- Base
+		["ADD_HEALTH_REG_MOD_HEALTH"] = {
+			-- Talent: Demonic Sacrifice (Fel Stamina)
 			{
-				["value"] = 0.75,
-				["pet"] = true,
-			},
-		},
-		["ADD_PET_INT_MOD_INT"] = {
-			-- Base
-			{
-				["value"] = 0.3,
-				["pet"] = true,
+				["trait"] = 105900,
+				["value"] = 0.03 * 5/4,
+				["aura"] = 18790,
 			},
 		},
 	}
