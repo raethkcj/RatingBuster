@@ -272,12 +272,29 @@ if addon.class == "DRUID" then
 			},
 		},
 		["ADD_ARMOR_MOD_DEFENSE"] = {
-			-- Talent: Thick Hide
+			-- Talent: Thick Hide (Bear Form)
 			{
-				["trait"] = 2,
+				["trait"] = 104942,
 				["rank"] = {
 					0.67, 1.33, 2.00,
 				},
+				["aura"] = 5487,
+			},
+			-- Talent: Thick Hide (Dire Bear Form)
+			{
+				["trait"] = 104942,
+				["rank"] = {
+					0.67, 1.33, 2.00,
+				},
+				["aura"] = 9634,
+			},
+			-- Talent: Thick Hide (Moonkin Form)
+			{
+				["trait"] = 104942,
+				["rank"] = {
+					0.67, 1.33, 2.00,
+				},
+				["aura"] = 24858,
 			},
 		},
 		["MOD_ARMOR"] = {
