@@ -696,61 +696,14 @@ elseif addon.class == "ROGUE" then
 				["regen"] = NormalHealthRegenPerSpi,
 			},
 		},
-		["MOD_AP"] = {
-			-- Talent: Deadliness
-			{
-				["tab"] = 3,
-				["num"] = 16,
-				["rank"] = {
-					0.02, 0.04, 0.06, 0.08, 0.1,
-				},
-			},
-		},
 		[StatLogic.Stats.MeleeCrit] = {
-			-- Talent: Dagger Specialization
+			-- Talent: Hack and Slash
 			{
-				["tab"] = 2,
-				["num"] = 11,
+				["trait"] = 105727,
 				["rank"] = {
 					1, 2, 3, 4, 5,
 				},
 				["weaponSubclass"] = {
-					[Enum.ItemWeaponSubclass.Dagger] = true,
-				},
-			},
-			-- Talent: Fist Weapon Specialization
-			{
-				["tab"] = 2,
-				["num"] = 16,
-				["rank"] = {
-					1, 2, 3, 4, 5,
-				},
-				["weaponSubclass"] = {
-					[Enum.ItemWeaponSubclass.Unarmed] = true,
-				},
-			},
-		},
-		[StatLogic.Stats.WeaponSkill] = {
-			-- Talent: Mace Specializaiton
-			{
-				["tab"] = 2,
-				["num"] = 13,
-				["rank"] = {
-					1, 2, 3, 4, 5,
-				},
-				["weaponSubclass"] = {
-					[Enum.ItemWeaponSubclass.Mace1H] = true,
-				},
-			},
-			-- Talent: Weapon Expertise
-			{
-				["tab"] = 2,
-				["num"] = 17,
-				["rank"] = {
-					3, 5,
-				},
-				["weaponSubclass"] = {
-					[Enum.ItemWeaponSubclass.Sword1H] = true,
 					[Enum.ItemWeaponSubclass.Dagger] = true,
 					[Enum.ItemWeaponSubclass.Unarmed] = true,
 				},
