@@ -511,6 +511,15 @@ elseif addon.class == "PALADIN" then
 				["regen"] = NormalHealthRegenPerSpi,
 			},
 		},
+		["ADD_MANA_REGEN_MOD_NORMAL_MANA_REGEN"] = {
+			-- Talent: Reverence
+			{
+				["trait"] = 110871,
+				["rank"] = {
+					0.10, 0.20, 0.30,
+				},
+			},
+		},
 		["ADD_BLOCK_VALUE_MOD_STR"] = {
 			-- Base
 			{
@@ -520,58 +529,71 @@ elseif addon.class == "PALADIN" then
 		["MOD_AP"] = {
 			-- Talent: Vindication
 			{
-				["tab"] = 3,
-				["num"] = 6,
+				["trait"] = 105702,
 				["rank"] = {
 					0.01, 0.02, 0.03,
 				},
 				["aura"] = 440668,
 			},
 		},
-		-- Paladin: Toughness (Rank 5) - 2,5
-		--          Increases your armor value from items by 2%/4%/6%/8%/10%.
 		["MOD_ARMOR"] = {
+			-- Talent: Toughness
 			{
-				["tab"] = 2,
-				["num"] = 5,
+				["trait"] = 105630,
 				["rank"] = {
-					0.02, 0.04, 0.06, 0.08, 0.1,
+					0.02, 0.04, 0.06, 0.08, 0.10,
 				},
 			},
 		},
 		["MOD_STR"] = {
 			-- Talent: Divine Strength
 			{
-				["tab"] = 1,
-				["num"] = 1,
+				["trait"] = 105328,
 				["rank"] = {
-					0.02, 0.04, 0.06, 0.08, 0.1,
+					0.02, 0.04, 0.06, 0.08, 0.10,
 				},
 			},
 		},
 		["MOD_INT"] = {
 			-- Talent: Divine Intellect
 			{
-				["tab"] = 1,
-				["num"] = 2,
+				["trait"] = 105332,
 				["rank"] = {
-					0.02, 0.04, 0.06, 0.08, 0.1,
+					0.02, 0.04, 0.06, 0.08, 0.10,
+				},
+			},
+		},
+		["MOD_STA"] = {
+			-- Talent: Sacred Duty
+			{
+				["trait"] = 105632,
+				["rank"] = {
+					0.02, 0.04,
 				},
 			},
 		},
 		["ADD_SPELL_DMG_MOD_INT"] = {
 			-- Talent: Champion of the Light
 			{
-				["known"] = 462834,
-				["value"] = 2.00,
-				["aura"] = 462832,
+				["trait"] = 110882,
+				["rank"] = {
+					0.33, 0.66, 1.00,
+				},
+			}
+		},
+		["ADD_HEALING_MOD_INT"] = {
+			-- Talent: Champion of the Light
+			{
+				["trait"] = 110882,
+				["rank"] = {
+					0.33, 0.66, 1.00,
+				},
 			}
 		},
 		["MOD_BLOCK_VALUE"] = {
 			-- Talent: Shield Specialization
 			{
-				["tab"] = 2,
-				["num"] = 8,
+				["trait"] = 110874,
 				["rank"] = {
 					0.1, 0.2, 0.3,
 				},
