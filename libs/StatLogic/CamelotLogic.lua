@@ -1076,21 +1076,14 @@ StatLogic.StatModTable["ALL"] = {
 		},
 	},
 	["MOD_ARMOR"] = {
-		-- Buff: Lay on Hands
-		{
-			["rank"] = {
-				0.15, 0.30,
-			},
-			["aura"] = 20236,
-			["spellid"] = 20235,
-		},
 		-- Buff: Inspiration
 		{
 			["rank"] = {
 				0.08, 0.16, 0.25,
 			},
-			["aura"] = 15363,
+			["aura"] = 14893,
 			["group"] = addon.ExclusiveGroup.Armor,
+			["spellid"] = 14892,
 		},
 		-- Buff: Ancestral Fortitude
 		{
