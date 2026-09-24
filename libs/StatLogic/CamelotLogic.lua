@@ -622,44 +622,51 @@ elseif addon.class == "PRIEST" then
 		["ADD_MANA_REGEN_MOD_NORMAL_MANA_REGEN"] = {
 			-- Talent: Meditation
 			{
-				["tab"] = 1,
-				["num"] = 8,
+				["trait"] = 105843,
 				["rank"] = {
-					0.05, 0.10, 0.15,
+					0.17, 0.33, 0.50,
 				},
 			},
+			-- Talent: Spirit Tap
+			{
+				["trait"] = 105833,
+				["value"] = 0.50,
+				["aura"] = 15271,
+			},
 		},
-		-- Priest: Spiritual Guidance (Rank 5) - 2,14
-		--         Increases spell damage and healing by up to 5%/10%/15%/20%/25% of your total Spirit.
 		["ADD_SPELL_DMG_MOD_SPI"] = {
+			-- Talent: Spiritual Guidance
 			{
-				["tab"] = 2,
-				["num"] = 14,
+				["trait"] = 105853,
 				["rank"] = {
-					0.05, 0.1, 0.15, 0.2, 0.25,
+					0.01, 0.1, 0.15, 0.2, 0.25,
 				},
 			},
 		},
-		-- Priest: Spiritual Guidance (Rank 5) - 2,14
-		--         Increases spell damage and healing by up to 5%/10%/15%/20%/25% of your total Spirit.
 		["ADD_HEALING_MOD_SPI"] = {
+			-- Talent: Spiritual Guidance (Rank 5) - 2,14
 			{
-				["tab"] = 2,
-				["num"] = 14,
+				["trait"] = 105853,
 				["rank"] = {
-					0.05, 0.1, 0.15, 0.2, 0.25,
+					0.05, 0.10, 0.15, 0.20, 0.25,
 				},
 			},
 		},
-		-- Priest: Mental Strength (Rank 5) - 1,12
-		--         Increases your maximum Mana by 2%/4%/6%/8%/10%.
-		["MOD_MANA"] = {
+		["MOD_INT"] = {
+			-- Talent: Mental Strength
 			{
-				["tab"] = 1,
-				["num"] = 12,
+				["trait"] = 105837,
 				["rank"] = {
-					0.02, 0.04, 0.06, 0.08, 0.10,
+					0.03, 0.06, 0.09, 0.12, 0.15,
 				},
+			},
+		},
+		["MOD_SPI"] = {
+			-- Talent: Spirit Tap
+			{
+				["trait"] = 105833,
+				["value"] = 1.00,
+				["aura"] = 15271,
 			},
 		},
 	}
