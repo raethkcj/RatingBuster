@@ -65,13 +65,13 @@ local ipairs = ipairs
 local type = type
 local GetInventoryItemLink = GetInventoryItemLink
 local GetSpellName = C_Spell.GetSpellName
-local IsUsableSpell = IsUsableSpell
 local UnitStat = UnitStat
 local GetShapeshiftForm = GetShapeshiftForm
 local GetShapeshiftFormInfo = GetShapeshiftFormInfo
 local GetActiveTalentGroup = GetActiveTalentGroup or C_SpecializationInfo.GetActiveSpecGroup
 local GetPrimaryTalentTree = GetPrimaryTalentTree or C_SpecializationInfo.GetSpecialization
 local GetSpecializationInfo = GetSpecializationInfo or C_SpecializationInfo.GetSpecializationInfo
+local UnitDefense = UnitDefenseSkill or UnitDefense
 
 ---------------
 -- Lua Tools --
@@ -289,6 +289,10 @@ StatLogic.StatModInfo = {
 	-- The crit conversions are also only necessary in Vanilla, while Dodge is necessary in every expansion.
 	-- Spell crit modifiers are only required if they mod school 1 (physical)
 	-- That means spells with EffectAura 57 or 290, and, separately, EffectAura 71 or 552 whose final digit of EffectMiscValue_0 is an odd number
+	[StatLogic.Stats.Crit] = {
+		initialValue = 0,
+		finalAdjust = 0,
+	},
 	[StatLogic.Stats.MeleeCrit] = {
 		initialValue = 0,
 		finalAdjust = 0,
@@ -964,38 +968,40 @@ do
 	}
 
 	local function UpdateAuras()
-		for GetAuraDataByIndex, SetTooltipAura in pairs(AuraGettersSetters) do
-			local i = 1
-			repeat
-				local auraData = GetAuraDataByIndex("player", i)
-				if auraData then
-					local auraName = auraData.name
-					local auraInfo = {
-						spellId = auraData.spellId,
-						stacks = auraData.applications,
-					}
-					auraCache[auraName] = auraInfo
+		if not C_Secrets.ShouldAurasBeSecret() then
+			for GetAuraDataByIndex, SetTooltipAura in pairs(AuraGettersSetters) do
+				local i = 1
+				repeat
+					local auraData = GetAuraDataByIndex("player", i)
+					if auraData then
+						local auraName = auraData.name
+						local auraInfo = {
+							spellId = auraData.spellId,
+							stacks = auraData.applications,
+						}
+						auraCache[auraName] = auraInfo
 
-					if tooltipAuras[auraName] then
-						tip[SetTooltipAura]("player", i)
-						local numString = tip.sides.left[2]:GetText():match("%d+")
-						local value = numString and tonumber(numString) or 0
-						auraInfo.tooltip = value
-					end
+						if tooltipAuras[auraName] then
+							tip[SetTooltipAura]("player", i)
+							local numString = tip.sides.left[2]:GetText():match("%d+")
+							local value = numString and tonumber(numString) or 0
+							auraInfo.tooltip = value
+						end
 
-					if rankAuras[auraName] then
-						local subtext = GetSpellSubtext(auraInfo.spellId)
-						if subtext then
-							auraInfo.rank = tonumber(subtext:match("%d+") or "") or 1
+						if rankAuras[auraName] then
+							local subtext = GetSpellSubtext(auraInfo.spellId)
+							if subtext then
+								auraInfo.rank = tonumber(subtext:match("%d+") or "") or 1
+							end
+						end
+
+						if exactAuras[auraData.spellId] then
+							auraCache[auraData.spellId] = auraInfo
 						end
 					end
-
-					if exactAuras[auraData.spellId] then
-						auraCache[auraData.spellId] = auraInfo
-					end
-				end
-				i = i + 1
-			until not auraData
+					i = i + 1
+				until not auraData
+			end
 		end
 		needsUpdate = false
 	end
@@ -1224,6 +1230,9 @@ addon.StatModValidators = {
 		validate = function (case)
 			local statPool = StatPools[case.pool]
 			if not statPool.highest then
+				if C_Secrets.ShouldUnitStatsBeSecret() then
+					return false
+				end
 				local highestStat
 				local highestValue = 0
 				for _, stat in ipairs(statPool) do
@@ -1323,7 +1332,11 @@ addon.StatModValidators = {
 	},
 	rune = {
 		validate = function(case)
-			if type(case.rune) == "number" then
+			local season = C_Seasons and C_Seasons.HasActiveSeason() and C_Seasons.GetActiveSeason()
+			local showRunes = season and season == Enum.SeasonID.SeasonOfDiscovery
+			if not showRunes then
+				return false
+			elseif type(case.rune) == "number" then
 				return C_Engraving.IsRuneEquipped(case.rune)
 			else
 				return true
@@ -1364,6 +1377,11 @@ addon.StatModValidators = {
 		events = {
 			["CHARACTER_POINTS_CHANGED"] = true,
 			["PLAYER_TALENT_UPDATE"] = true,
+		},
+	},
+	trait = {
+		events = {
+			["TRAIT_NODE_CHANGED"] = true,
 		},
 	},
 	weaponSubclass = {
@@ -1480,13 +1498,18 @@ end
 -- to their positions in the tree. Building a talent cache ordered by
 -- tier then column allows us to replicate the previous behavior,
 -- and keep StatModTables human-readable.
+local reorderTalentCache = addon.tocversion < 16000 or (addon.tocversion >= 20000 and addon.tocversion < 50000)
 local orderedTalentCache = {}
-function StatLogic:GetOrderedTalentInfo(tab, num, ...)
-	if addon.tocversion < 50000 then
+function StatLogic:GetOrderedTalentInfo(tab, num, specGroup)
+	if reorderTalentCache then
 		local ordered_num = orderedTalentCache[tab][num]
-		return GetTalentInfo(tab, ordered_num, ...)
+		return GetTalentInfo(tab, ordered_num, specGroup)
 	else
-		return C_SpecializationInfo.GetTalentInfo({ tier = tab, column = num })
+		return C_SpecializationInfo.GetTalentInfo({
+			tier = tab,
+			column = num,
+			groupIndex = specGroup,
+		})
 	end
 end
 
@@ -1495,7 +1518,7 @@ function StatLogic:TalentCacheExists()
 	return talentCacheExists
 end
 
-if addon.tocversion < 50000 then
+if reorderTalentCache then
 	local function GenerateOrderedTalents()
 		local temp = {}
 		local numTabs = GetNumTalentTabs()
@@ -1591,18 +1614,27 @@ do
 		if case.tab and case.num then
 			if addon.tocversion < 50000 then
 				-- Vanilla-style talents with tabs and ranks
-				local r = select(5, StatLogic:GetOrderedTalentInfo(case.tab, case.num, false, false, context.spec))
+				local rank = select(5, StatLogic:GetOrderedTalentInfo(case.tab, case.num, context.specGroup))
 				if case.rank then
-					newValue = case.rank[r]
-				elseif r > 0 then
+					newValue = case.rank[rank]
+				elseif rank > 0 then
 					newValue = case.value
 				end
 			else
 				-- Mists-style talents with rows, columns and no ranks
-				local selected = select(4, StatLogic:GetOrderedTalentInfo(case.tab, case.num, context.spec))
+				local selected = select(4, StatLogic:GetOrderedTalentInfo(case.tab, case.num, context.specGroup))
 				if selected then
 					newValue = case.value
 				end
+			end
+		elseif case.trait then
+			local configID = C_SpecializationInfo.GetCombatConfigIDForSpecGroup(context.specGroup)
+			local nodeInfo = C_Traits.GetNodeInfo(configID, case.trait)
+			local rank = nodeInfo.activeRank
+			if case.rank then
+				newValue = case.rank[rank]
+			elseif rank > 0 then
+				newValue = case.value
 			end
 		elseif case.aura and case.rank then
 			local aura = StatLogic:GetAuraInfo(case.aura, false, case.exact)
@@ -1906,7 +1938,7 @@ StatLogic.SocketColor = {
 
 local ItemGemSubclassCogwheel = 10
 ---@diagnostic disable: undefined-field
-local GemSubclassColors = {
+local GemSubclassColors = addon.tocversion >= 20000 and {
 	[Enum.ItemGemSubclass.Red]    = StatLogic.SocketColor.Red,
 	[Enum.ItemGemSubclass.Blue]   = StatLogic.SocketColor.Blue,
 	[Enum.ItemGemSubclass.Yellow] = StatLogic.SocketColor.Yellow,
@@ -1915,7 +1947,7 @@ local GemSubclassColors = {
 	[Enum.ItemGemSubclass.Orange] = bit.bor(StatLogic.SocketColor.Red, StatLogic.SocketColor.Yellow),
 	[Enum.ItemGemSubclass.Meta]   = StatLogic.SocketColor.Meta,
 	[ItemGemSubclassCogwheel]     = StatLogic.SocketColor.Cogwheel,
-}
+} or {}
 ---@diagnostic enable: undefined-field
 
 ---@param gemID number
@@ -1955,14 +1987,18 @@ do
 	---@return string strippedLink
 	---@return number[] gems
 	function StatLogic:RemoveGems(link, gemInfo)
+		---@type number[]
+		local realGems = {}
+
+		if addon.tocversion < 20000 then
+			return link, realGems
+		end
+
 		-- Count item's actual sockets
 		wipe(statTable)
 		GetItemStats(link, statTable)
 		local numSockets = statTable["EMPTY_SOCKET_RED"] + statTable["EMPTY_SOCKET_YELLOW"] + statTable["EMPTY_SOCKET_BLUE"] + statTable["EMPTY_SOCKET_PRISMATIC"]
 		local inventoryType = select(4, C_Item.GetItemInfoInstant(link))
-
-		---@type number[]
-		local realGems = {}
 
 		local i = 0
 		local strippedLink = link:gsub(":([^:]*)", function(match)
@@ -2600,7 +2636,7 @@ function StatLogic:GetDiffID(item, ignoreEnchant)
 	if inventoryType == "INVTYPE_WEAPON" then
 		linkDiff1 = GetInventoryItemLink("player", INVSLOT_MAINHAND) or "NOITEM"
 		-- If player can Dual Wield, calculate offhand difference
-		if IsUsableSpell(GetSpellName(674)) then		-- ["Dual Wield"]
+		if FindSpellBookSlotBySpellID(674) then
 			local _, _, _, _, _, _, _, _, eqItemType = C_Item.GetItemInfo(linkDiff1)
 			-- If 2h is equipped, copy diff1 to diff2
 			if eqItemType == "INVTYPE_2HWEAPON" and not HasTitansGrip() then

@@ -48,6 +48,15 @@ local GetBlockChance = GetBlockChance
 local GetActiveSpecGroup = C_SpecializationInfo.GetActiveSpecGroup
 local GetSpecializationInfo = C_SpecializationInfo.GetSpecializationInfo
 
+local function GetNumTalentTabs(...)
+	if C_SpecializationInfo.GetNumSpecializationsForClassID then
+		local classID = select(3, UnitClass("player"))
+		return C_SpecializationInfo.GetNumSpecializationsForClassID(classID)
+	else
+		return GetNumTalentTabs(...)
+	end
+end
+
 -- Blizzard labels GetSpecialization as a deprecation fallback
 -- for the removed GetPrimaryTalentTree, but in pre-Cata builds,
 -- it always returns 1, so we need our own implementation.
@@ -64,7 +73,36 @@ local function GetPrimaryTalentTree(_, _, specGroup)
 	return maxTab
 end
 
-local GetSpecialization = addon.tocversion >= 40000 and C_SpecializationInfo.GetSpecialization or GetPrimaryTalentTree
+local function GetPrimaryTraitGroup(specGroup)
+	local configID = C_SpecializationInfo.GetCombatConfigIDForSpecGroup(specGroup)
+	local configInfo = C_Traits.GetConfigInfo(configID)
+	local treeID = configInfo.treeIDs[1]
+	local displayInfos = C_Traits.GetGroupDisplayInfoByTreeID(treeID)
+	local groupIDs = {}
+	local groupIndices = {}
+	for _, displayInfo in ipairs(displayInfos) do
+		table.insert(groupIDs, displayInfo.groupID);
+		groupIndices[displayInfo.groupID] = displayInfo.orderIndex + 1
+	end
+	local groupCurrencyInfos = C_Traits.GetGroupCurrencyInfo(configID, groupIDs)
+	local maxSpent, maxIndex = 0, 1
+	for _, groupCurrencyInfo in ipairs(groupCurrencyInfos) do
+		local spent = groupCurrencyInfo.currencyInfos[1].spent
+		if spent > maxSpent then
+			maxSpent = spent
+			maxIndex = groupIndices[groupCurrencyInfo.traitNodeGroupID]
+		end
+	end
+	return maxIndex
+end
+
+local GetSpecialization = C_SpecializationInfo.GetSpecialization
+if addon.tocversion >= 16000 and addon.tocversion < 20000 then
+	-- Forever
+	GetSpecialization = GetPrimaryTraitGroup
+elseif addon.tocversion < 40000 then
+	GetSpecialization = GetPrimaryTalentTree
+end
 ---------------------------
 -- Slash Command Options --
 ---------------------------
@@ -2107,7 +2145,8 @@ function RatingBuster:OnEnable()
 	self:RegisterEvent("SPELLS_CHANGED")
 	self:RegisterEvent("ACTIVE_TALENT_GROUP_CHANGED")
 	-- Events that require cache clearing
-	self:RegisterEvent("CHARACTER_POINTS_CHANGED", RatingBuster.ClearCache) -- talent point changed
+	self:RegisterEvent("CHARACTER_POINTS_CHANGED", RatingBuster.ClearCache)
+	self:RegisterEvent("TRAIT_NODE_CHANGED", RatingBuster.ClearCache)
 	self:RegisterBucketEvent("UNIT_AURA", 1)
 	self:RegisterBucketEvent("UPDATE_SHAPESHIFT_FORM", 1, RatingBuster.ClearCache)
 end

@@ -70,23 +70,30 @@ local staticItemSetters = {
 local tooltipNeedsRepaint = {}
 
 local initialized = false
+local tooltipDataProcessor = TooltipDataProcessor and TooltipDataProcessor.AddTooltipPostCall
 local function InitializeHook()
+	if tooltipDataProcessor then
+		TooltipDataProcessor.AddTooltipPostCall(Enum.TooltipDataType.Item, HandleTooltipSetItem)
+	end
+
 	for tooltipName in pairs(tooltips) do
 		local tooltip = _G[tooltipName]
 		if tooltip then
-			tooltip:HookScript("OnTooltipSetItem", HandleTooltipSetItem)
-			tooltip:HookScript("OnUpdate", HandleUpdate)
+			if not tooltipDataProcessor then
+				tooltip:HookScript("OnTooltipSetItem", HandleTooltipSetItem)
+				tooltip:HookScript("OnUpdate", HandleUpdate)
 
-			-- Tooltips set by location (bag slot, inventory slot, etc.)
-			-- are usually automatically redrawn every TOOLTIP_UPDATE_TIME.
-			-- Tooltips set by link or ID are not, so we manually repaint them.
-			for functionName in pairs(staticItemSetters) do
-				hooksecurefunc(tooltip, functionName, function(self)
-					tooltipNeedsRepaint[self] = true
-				end)
-				tooltip:HookScript("OnHide", function(self)
-					tooltipNeedsRepaint[self] = nil
-				end)
+				-- Tooltips set by location (bag slot, inventory slot, etc.)
+				-- are usually automatically redrawn every TOOLTIP_UPDATE_TIME.
+				-- Tooltips set by link or ID are not, so we manually repaint them.
+				for functionName in pairs(staticItemSetters) do
+					hooksecurefunc(tooltip, functionName, function(self)
+						tooltipNeedsRepaint[self] = true
+					end)
+					tooltip:HookScript("OnHide", function(self)
+						tooltipNeedsRepaint[self] = nil
+					end)
+				end
 			end
 
 			for i = 1, 60 do
