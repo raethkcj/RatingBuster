@@ -964,11 +964,13 @@ end
 
 if addon.playerRace == "Dwarf" then
 	StatLogic.StatModTable["Dwarf"] = {
-		[StatLogic.Stats.WeaponSkill] = {
+		[StatLogic.Stats.Crit] = {
+			-- Passive: Mace Specialization
 			{
-				["value"] = 5,
+				["value"] = 2,
 				["weaponSubclass"] = {
-					[Enum.ItemWeaponSubclass.Guns] = true,
+					[Enum.ItemWeaponSubclass.Mace1H] = true,
+					[Enum.ItemWeaponSubclass.Mace2H] = true,
 				},
 				["group"] = addon.ExclusiveGroup.WeaponRacial,
 			}
@@ -976,9 +978,8 @@ if addon.playerRace == "Dwarf" then
 	}
 elseif addon.playerRace == "Tauren" then
 	StatLogic.StatModTable["Tauren"] = {
-		-- Tauren: Endurance - Racial
-		--         Total Health increased by 5%.
 		["MOD_HEALTH"] = {
+			-- Passive: Endurance
 			{
 				["value"] = 0.05,
 			}
@@ -986,9 +987,8 @@ elseif addon.playerRace == "Tauren" then
 	}
 elseif addon.playerRace == "Gnome" then
 	StatLogic.StatModTable["Gnome"] = {
-		-- Gnome: Expansive Mind - Racial
-		--        Increase Intelligence by 5%.
-		["MOD_INT"] = {
+		["MOD_MANA"] = {
+			-- Passive: Expansive Mind
 			{
 				["value"] = 0.05,
 			}
@@ -996,19 +996,17 @@ elseif addon.playerRace == "Gnome" then
 	}
 elseif addon.playerRace == "Human" then
 	StatLogic.StatModTable["Human"] = {
-		-- Human: The Human Spirit - Racial
-		--        Increase Spirit by 5%.
 		["MOD_SPI"] = {
+			-- Passive: The Human Spirit
 			{
 				["value"] = 0.05,
 			}
 		},
-		[StatLogic.Stats.WeaponSkill] = {
+		[StatLogic.Stats.Crit] = {
+			-- Passive: Sword Specialization
 			{
-				["value"] = 5,
+				["value"] = 2,
 				["weaponSubclass"] = {
-					[Enum.ItemWeaponSubclass.Mace1H] = true,
-					[Enum.ItemWeaponSubclass.Mace2H] = true,
 					[Enum.ItemWeaponSubclass.Sword1H] = true,
 					[Enum.ItemWeaponSubclass.Sword2H] = true,
 				},
@@ -1018,44 +1016,71 @@ elseif addon.playerRace == "Human" then
 	}
 elseif addon.playerRace == "Orc" then
 	StatLogic.StatModTable["Orc"] = {
-		[StatLogic.Stats.WeaponSkill] = {
+		[StatLogic.Stats.Crit] = {
+			-- Passive: Axe Specialization
 			{
-				["value"] = 5,
+				["value"] = 2,
 				["weaponSubclass"] = {
 					[Enum.ItemWeaponSubclass.Axe1H] = true,
 					[Enum.ItemWeaponSubclass.Axe2H] = true,
 				},
 				["group"] = addon.ExclusiveGroup.WeaponRacial,
 			}
-		}
+		},
+		["MOD_AP"] = {
+			-- Buff: Blood Fury
+			{
+				["value"] = 0.10,
+				["buff"] = 20572,
+			},
+		},
+		["MOD_SPELL_POWER"] = {
+			-- Buff: Blood Fury
+			{
+				["value"] = 0.10,
+				["buff"] = 20572,
+			},
+		},
+		["MOD_RANGED_AP"] = {
+			-- Buff: Blood Fury
+			{
+				["value"] = 0.10,
+				["buff"] = 20572,
+			},
+		},
+	}
+elseif addon.playerRace == "Skyborne" then
+	StatLogic.StatModTable["Skyborne"] = {
+		["MOD_NORMAL_HEALTH_REG"] = {
+			-- Buff: Energized
+			{
+				["value"] = 1.00,
+				["aura"] = 1270842,
+			},
+		},
+		["MOD_NORMAL_MANA_REGEN"] = {
+			-- Buff: Energized
+			{
+				["value"] = 1.00,
+				["aura"] = 1270842,
+			},
+		},
 	}
 elseif addon.playerRace == "Troll" then
 	StatLogic.StatModTable["Troll"] = {
 		["MOD_NORMAL_HEALTH_REG"] = {
-			-- Troll: Regeneration - Racial
-			--   Health regeneration rate increased by 10%.
+			-- Passive: Regeneration
 			{
 				["value"] = 0.1,
 			},
 		},
 		["ADD_HEALTH_REG_MOD_NORMAL_HEALTH_REG"] = {
-			-- Troll: Regeneration - Racial
-			--   10% of total Health regeneration may continue during combat.
+			-- Passive: Regeneration
 			{
 				["value"] = 0.1,
 				["spellid"] = 20555,
 			},
 		},
-		[StatLogic.Stats.WeaponSkill] = {
-			{
-				["value"] = 5,
-				["weaponSubclass"] = {
-					[Enum.ItemWeaponSubclass.Bows] = true,
-					[Enum.ItemWeaponSubclass.Thrown] = true,
-				},
-				["group"] = addon.ExclusiveGroup.WeaponRacial,
-			}
-		}
 	}
 end
 
