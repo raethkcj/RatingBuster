@@ -968,38 +968,40 @@ do
 	}
 
 	local function UpdateAuras()
-		for GetAuraDataByIndex, SetTooltipAura in pairs(AuraGettersSetters) do
-			local i = 1
-			repeat
-				local auraData = GetAuraDataByIndex("player", i)
-				if auraData then
-					local auraName = auraData.name
-					local auraInfo = {
-						spellId = auraData.spellId,
-						stacks = auraData.applications,
-					}
-					auraCache[auraName] = auraInfo
+		if not C_Secrets.ShouldAurasBeSecret() then
+			for GetAuraDataByIndex, SetTooltipAura in pairs(AuraGettersSetters) do
+				local i = 1
+				repeat
+					local auraData = GetAuraDataByIndex("player", i)
+					if auraData then
+						local auraName = auraData.name
+						local auraInfo = {
+							spellId = auraData.spellId,
+							stacks = auraData.applications,
+						}
+						auraCache[auraName] = auraInfo
 
-					if tooltipAuras[auraName] then
-						tip[SetTooltipAura]("player", i)
-						local numString = tip.sides.left[2]:GetText():match("%d+")
-						local value = numString and tonumber(numString) or 0
-						auraInfo.tooltip = value
-					end
+						if tooltipAuras[auraName] then
+							tip[SetTooltipAura]("player", i)
+							local numString = tip.sides.left[2]:GetText():match("%d+")
+							local value = numString and tonumber(numString) or 0
+							auraInfo.tooltip = value
+						end
 
-					if rankAuras[auraName] then
-						local subtext = GetSpellSubtext(auraInfo.spellId)
-						if subtext then
-							auraInfo.rank = tonumber(subtext:match("%d+") or "") or 1
+						if rankAuras[auraName] then
+							local subtext = GetSpellSubtext(auraInfo.spellId)
+							if subtext then
+								auraInfo.rank = tonumber(subtext:match("%d+") or "") or 1
+							end
+						end
+
+						if exactAuras[auraData.spellId] then
+							auraCache[auraData.spellId] = auraInfo
 						end
 					end
-
-					if exactAuras[auraData.spellId] then
-						auraCache[auraData.spellId] = auraInfo
-					end
-				end
-				i = i + 1
-			until not auraData
+					i = i + 1
+				until not auraData
+			end
 		end
 		needsUpdate = false
 	end
@@ -1228,6 +1230,9 @@ addon.StatModValidators = {
 		validate = function (case)
 			local statPool = StatPools[case.pool]
 			if not statPool.highest then
+				if C_Secrets.ShouldUnitStatsBeSecret() then
+					return false
+				end
 				local highestStat
 				local highestValue = 0
 				for _, stat in ipairs(statPool) do

@@ -20,6 +20,9 @@ local RegenMPPerSpt = {
 
 local NormalManaRegenPerSpi = function()
 	local _, spi = UnitStat("player", LE_UNIT_STAT_SPIRIT)
+	if issecretvalue(spi) or spi > 50 then
+		return 0
+	end
 	return 5 * (spi > 50 and RegenMPPerSpt[addon.class] or OCTRegenMP)
 end
 
@@ -51,7 +54,10 @@ local RegenHPPerSpt = {
 
 local NormalHealthRegenPerSpi = function()
 	local _, spi = UnitStat("player", LE_UNIT_STAT_SPIRIT)
-	local classRegen = spi > 50 and RegenHPPerSpt or OCTRegenHP
+	local classRegen = OCTRegenHP
+	if issecretvalue(spi) or spi > 50 then
+		classRegen = RegenHPPerSpt
+	end
 	return 5 * classRegen[addon.class]
 end
 
