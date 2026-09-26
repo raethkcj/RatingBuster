@@ -70,16 +70,16 @@ local staticItemSetters = {
 local tooltipNeedsRepaint = {}
 
 local initialized = false
-local tooltipDataProcessor = TooltipDataProcessor and TooltipDataProcessor.AddTooltipPostCall
+local newTooltipSystemExists = GameTooltip.IsTooltipType
 local function InitializeHook()
-	if tooltipDataProcessor then
+	if newTooltipSystemExists then
 		TooltipDataProcessor.AddTooltipPostCall(Enum.TooltipDataType.Item, HandleTooltipSetItem)
 	end
 
 	for tooltipName in pairs(tooltips) do
 		local tooltip = _G[tooltipName]
 		if tooltip then
-			if not tooltipDataProcessor then
+			if not newTooltipSystemExists then
 				tooltip:HookScript("OnTooltipSetItem", HandleTooltipSetItem)
 				tooltip:HookScript("OnUpdate", HandleUpdate)
 
