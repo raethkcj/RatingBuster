@@ -506,6 +506,10 @@ local addedInfoMods = {
 		mod = "STR",
 	},
 	{
+		add = "ARMOR",
+		mod = "DEFENSE",
+	},
+	{
 		add = "AVOIDANCE",
 		mod = "BLOCK_CHANCE",
 	},

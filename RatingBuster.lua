@@ -2905,6 +2905,9 @@ function RatingBuster:ProcessStat(stat, value, breakdownStats, link, color, stat
 
 		local spellDamage = value * statModContext("ADD_SPELL_DMG_MOD_DEFENSE")
 		self:ProcessStat(StatLogic.Stats.SpellDamage, spellDamage, breakdownStats, link, color, statModContext, true, false, db.profile.showSpellDmgFromDefense)
+
+		local armor = value * statModContext("ADD_ARMOR_MOD_DEFENSE")
+		self:ProcessStat(StatLogic.Stats.Armor, armor, breakdownStats, link, color, statModContext, true, false, db.profile.showArmorFromDefense)
 	elseif stat == StatLogic.Stats.BlockChance then
 		if db.profile.enableAvoidanceDiminishingReturns then
 			processedBlock = processedBlock + value
@@ -4001,8 +4004,10 @@ local summaryCalcData = {
 		option = "sumArmor",
 		stat = StatLogic.Stats.Armor,
 		func = function(sum, statModContext)
-			return statModContext("MOD_ARMOR") * sum[StatLogic.Stats.Armor]
-				+ sum[StatLogic.Stats.BonusArmor]
+			return statModContext("MOD_ARMOR") * (
+					sum[StatLogic.Stats.Armor]
+					+ summaryFunc[StatLogic.Stats.Defense](sum, statModContext) * statModContext("ADD_ARMOR_MOD_DEFENSE")
+				) + sum[StatLogic.Stats.BonusArmor]
 				+ summaryFunc[StatLogic.Stats.Agility](sum, statModContext) * statModContext("ADD_BONUS_ARMOR_MOD_AGI")
 				+ summaryFunc[StatLogic.Stats.Intellect](sum, statModContext) * statModContext("ADD_BONUS_ARMOR_MOD_INT")
 		 end,
