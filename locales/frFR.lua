@@ -190,7 +190,7 @@ L["ItemID: "] = "ID Objet : "
 -- Always Buffed --
 -------------------
 L["Enables RatingBuster to calculate selected buff effects even if you don't really have them"] = "Enables RatingBuster to calculate selected buff effects even if you don't really have them"
-L["$class Self Buffs"] = "$class Self Buffs" -- $class will be replaced with localized player class
+L["$class Buffs"] = "$class Buffs" -- $class will be replaced with localized player class
 L["Raid Buffs"] = "Raid Buffs"
 L["Stat Multiplier"] = "Stat Multiplier"
 L["Attack Power Multiplier"] = "Attack Power Multiplier"

@@ -14,6 +14,8 @@ RatingBuster.version = "(development)"
 --@end-debug@
 
 addon.tocversion = select(4, GetBuildInfo())
+addon.class = select(2, UnitClass("player"))
+addon.race = select(2, UnitRace("player"))
 
 ---@class RatingBusterLocale
 ---@field numberPatterns table

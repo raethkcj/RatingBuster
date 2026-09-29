@@ -173,7 +173,7 @@ L["ItemID: "] = "物品编号: "
 -- Always Buffed --
 -------------------
 L["Enables RatingBuster to calculate selected buff effects even if you don't really have them"] = "指定常驻buff，就算身上没有buff，RatingBuster也会当成有来计算"
-L["$class Self Buffs"] = "$class个人Buff"
+L["$class Buffs"] = "$class个人Buff"
 L["Raid Buffs"] = "团队Buff"
 L["Stat Multiplier"] = "Stat Multiplier"
 L["Attack Power Multiplier"] = "Attack Power Multiplier"

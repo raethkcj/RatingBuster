@@ -1037,21 +1037,21 @@ elseif addon.playerRace == "Orc" then
 			-- Buff: Blood Fury
 			{
 				["value"] = 0.10,
-				["buff"] = 20572,
+				["aura"] = 20572,
 			},
 		},
 		["MOD_SPELL_POWER"] = {
 			-- Buff: Blood Fury
 			{
 				["value"] = 0.10,
-				["buff"] = 20572,
+				["aura"] = 20572,
 			},
 		},
 		["MOD_RANGED_AP"] = {
 			-- Buff: Blood Fury
 			{
 				["value"] = 0.10,
-				["buff"] = 20572,
+				["aura"] = 20572,
 			},
 		},
 	}

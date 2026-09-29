@@ -30,7 +30,6 @@ local cache = setmetatable({}, {
 -- Local Variables --
 ---------------------
 local _
-local _, class = UnitClass("player")
 local playerLevel
 local db -- Initialized in :OnInitialize()
 
@@ -1285,11 +1284,19 @@ local options = {
 					name = " ",
 					order = 2,
 				},
-				[class] = {
+				[addon.class] = {
 					type = "group",
 					dialogInline = true,
-					name = L["$class Self Buffs"]:gsub("$class", (UnitClass("player"))),
+					name = L["$class Buffs"]:gsub("$class", (UnitClass("player"))),
 					order = 5,
+					hidden = true,
+					args = {},
+				},
+				[addon.race] = {
+					type = "group",
+					dialogInline = true,
+					name = L["$class Buffs"]:gsub("$class", (UnitRace("player"))),
+					order = 6,
 					hidden = true,
 					args = {},
 				},
@@ -1297,7 +1304,7 @@ local options = {
 					type = "group",
 					dialogInline = true,
 					name = L["Raid Buffs"],
-					order = 6,
+					order = 7,
 					args = {},
 				},
 			},
@@ -1679,12 +1686,12 @@ function addon.GetDefaults(specGroup)
 	end
 
 	local specIndex = GetSpecialization(specGroup)
-	local role = specializationRoles[class][specIndex]
+	local role = specializationRoles[addon.class][specIndex]
 	for key, value in pairs(roleDefaults[role]) do
 		defaults.profile[key] = value
 	end
 
-	for key, value in pairs(classDefaults[class]) do
+	for key, value in pairs(classDefaults[addon.class]) do
 		defaults.profile[key] = value
 	end
 
@@ -4419,7 +4426,7 @@ function RatingBuster:StatSummary(tooltip, link, statModContext)
 		end
 
 		-- Check armor type
-		if classID == Enum.ItemClass.Armor and armorTypes[subclassID] and (not classArmorTypes[class][subclassID]) and inventoryType ~= "INVTYPE_CLOAK" then
+		if classID == Enum.ItemClass.Armor and armorTypes[subclassID] and (not classArmorTypes[addon.class][subclassID]) and inventoryType ~= "INVTYPE_CLOAK" then
 			return
 		end
 

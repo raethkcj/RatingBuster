@@ -173,7 +173,7 @@ L["ItemID: "] = true
 -- Always Buffed --
 -------------------
 L["Enables RatingBuster to calculate selected buff effects even if you don't really have them"] = "Erlaubt RatingBuster gewählte Buffs zu berechnen, auch wenn du diese nicht wirklich hast"
-L["$class Self Buffs"] = "Eigenbuffs"
+L["$class Buffs"] = "Eigenbuffs"
 L["Raid Buffs"] = "Raidbuffs"
 L["Stat Multiplier"] = "Wertemultiplikatoren"
 L["Attack Power Multiplier"] = "Angriffskraft-Multiplikatoren"
