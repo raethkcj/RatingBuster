@@ -56,20 +56,22 @@ local function GetNumTalentTabs(...)
 	end
 end
 
+local InitialSpecialization = -1
+
 -- Blizzard labels GetSpecialization as a deprecation fallback
 -- for the removed GetPrimaryTalentTree, but in pre-Cata builds,
 -- it always returns 1, so we need our own implementation.
 local function GetPrimaryTalentTree(_, _, specGroup)
 	local max = 0
-	local maxTab = 1
+	local maxIndex = InitialSpecialization
 	for tab = 1, GetNumTalentTabs(false, false) do
 		local pointsSpent = select(7, C_SpecializationInfo.GetSpecializationInfo(tab, false, false, nil, nil, specGroup))
 		if pointsSpent > max then
 			max = pointsSpent
-			maxTab = tab
+			maxIndex = tab
 		end
 	end
-	return maxTab
+	return maxIndex
 end
 
 local function GetPrimaryTraitGroup(specGroup)
@@ -84,7 +86,7 @@ local function GetPrimaryTraitGroup(specGroup)
 		groupIndices[displayInfo.groupID] = displayInfo.orderIndex + 1
 	end
 	local groupCurrencyInfos = C_Traits.GetGroupCurrencyInfo(configID, groupIDs)
-	local maxSpent, maxIndex = 0, 1
+	local maxSpent, maxIndex = 0, InitialSpecialization
 	for _, groupCurrencyInfo in ipairs(groupCurrencyInfos) do
 		local spent = groupCurrencyInfo.currencyInfos[1].spent
 		if spent > maxSpent then
@@ -1320,6 +1322,7 @@ local Role = {
 	Tank = 1,
 	Physical = 2,
 	Caster = 3,
+	Initial = 4,
 }
 
 local specializationRoles = {
@@ -1440,6 +1443,7 @@ local profileDefaults = {
 
 	showModifiedRangedAttackPower = false,
 
+	showHP5NCFromSpi = false,
 	showHP5NCFromHealth = false,
 
 	showMeleeHitFromHitRating = false,
@@ -1630,7 +1634,32 @@ local roleDefaults = {
 		showAPFromAgi = false,
 		showDodgeFromAgi = false,
 		showAvoidanceFromDodge = false,
-	}
+	},
+	[Role.Initial] = {
+		sumIgnoreUnused = false,
+		sumWeaponDPS = true,
+		sumWeaponAverageDamage = true,
+		sumAvoidance = true,
+		sumArmor = true,
+		sumAP = true,
+		sumHit = true,
+		sumCrit = true,
+		sumHaste = true,
+		sumSpellHit = true,
+		sumSpellCrit = true,
+		sumSpellHaste = true,
+		sumSpellPower = not preWrath,
+		showSpellDmgFromSpellPower = preWrath,
+		showHealingFromSpellPower = preWrath,
+		sumHealing = preWrath,
+		showMeleeHitFromHitRating = true,
+		showMeleeCritFromCritRating = true,
+		showMeleeHasteFromHasteRating = true,
+		showSpellHitFromHitRating = true,
+		showSpellCritFromCritRating = true,
+		showSpellHasteFromHasteRating = true,
+		showAvoidanceFromDodge = false,
+	},
 }
 
 local classDefaults = {
@@ -1686,7 +1715,7 @@ function addon.GetDefaults(specGroup)
 	end
 
 	local specIndex = GetSpecialization(specGroup)
-	local role = specializationRoles[addon.class][specIndex]
+	local role = specializationRoles[addon.class][specIndex] or Role.Initial
 	for key, value in pairs(roleDefaults[role]) do
 		defaults.profile[key] = value
 	end
