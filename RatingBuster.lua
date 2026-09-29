@@ -4125,7 +4125,9 @@ local summaryCalcData = {
 					parry = StatLogic:GetAvoidanceGainAfterDR(StatLogic.Stats.Parry, equippedParry + parry) - StatLogic:GetAvoidanceGainAfterDR(StatLogic.Stats.Parry, equippedParry)
 				end
 			end
-			return GetParryChance() > 0 and (
+			local parryChance = GetParryChance()
+			local canParry = issecretvalue(parryChance) and false or true
+			return canParry and (
 				parry
 				+ sum[StatLogic.Stats.Parry]
 			) or 0
@@ -4162,7 +4164,9 @@ local summaryCalcData = {
 					blockChance = StatLogic:GetAvoidanceGainAfterDR(StatLogic.Stats.BlockChance, equippedBlock + blockChance) - StatLogic:GetAvoidanceGainAfterDR(StatLogic.Stats.BlockChance, equippedBlock)
 				end
 			end
-			return GetBlockChance() > 0 and (
+			local totalBlockChance = GetBlockChance()
+			local canBlock = issecretvalue(totalBlockChance) and false or true
+			return canBlock and (
 				blockChance
 				+ sum[StatLogic.Stats.BlockChance]
 			) or 0
