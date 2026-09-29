@@ -2153,9 +2153,25 @@ function RatingBuster:InitializeDatabase()
 	RatingBuster.conversion_data = conversion_data
 end
 
-function RatingBuster:ACTIVE_TALENT_GROUP_CHANGED(_, specGroup)
+function RatingBuster:RegisterNewDefaults(specGroup)
 	local defaults = addon.GetDefaults(specGroup)
 	self.db:RegisterDefaults(defaults)
+end
+
+function RatingBuster:ACTIVE_TALENT_GROUP_CHANGED(_, specGroup)
+	self:RegisterNewDefaults(specGroup)
+end
+
+function RatingBuster:CHARACTER_POINTS_CHANGED()
+	local specGroup = GetActiveSpecGroup()
+	self:RegisterNewDefaults(specGroup)
+	self:ClearCache()
+end
+
+function RatingBuster:TRAIT_NODE_CHANGED()
+	local specGroup = GetActiveSpecGroup()
+	self:RegisterNewDefaults(specGroup)
+	self:ClearCache()
 end
 
 SLASH_RATINGBUSTER1, SLASH_RATINGBUSTER2 = "/ratingbuster", "/rb"
@@ -2181,8 +2197,8 @@ function RatingBuster:OnEnable()
 	self:RegisterEvent("SPELLS_CHANGED")
 	self:RegisterEvent("ACTIVE_TALENT_GROUP_CHANGED")
 	-- Events that require cache clearing
-	self:RegisterEvent("CHARACTER_POINTS_CHANGED", RatingBuster.ClearCache)
-	self:RegisterEvent("TRAIT_NODE_CHANGED", RatingBuster.ClearCache)
+	self:RegisterEvent("CHARACTER_POINTS_CHANGED")
+	self:RegisterEvent("TRAIT_NODE_CHANGED")
 	self:RegisterBucketEvent("UNIT_AURA", 1)
 	self:RegisterBucketEvent("UPDATE_SHAPESHIFT_FORM", 1, RatingBuster.ClearCache)
 end
