@@ -825,6 +825,7 @@ elseif addon.class == "SHAMAN" then
 				["trait"] = 104742,
 				["value"] = 0.50,
 				["aura"] = 1238931,
+				["spellid"] = 1223031,
 			},
 		},
 	}
@@ -1062,6 +1063,7 @@ elseif addon.playerRace == "Skyborne" then
 			{
 				["value"] = 1.00,
 				["aura"] = 1270842,
+				["spellid"] = 1259705,
 			},
 		},
 		["MOD_NORMAL_MANA_REGEN"] = {
