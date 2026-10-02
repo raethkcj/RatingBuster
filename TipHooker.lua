@@ -1,5 +1,7 @@
 ﻿local addonName, addon = ...
 
+addon.NewTooltipSystem = GameTooltip.IsTooltipType
+
 local handler
 local enabled = false
 
@@ -70,16 +72,15 @@ local staticItemSetters = {
 local tooltipNeedsRepaint = {}
 
 local initialized = false
-local newTooltipSystemExists = GameTooltip.IsTooltipType
 local function InitializeHook()
-	if newTooltipSystemExists then
+	if addon.NewTooltipSystem then
 		TooltipDataProcessor.AddTooltipPostCall(Enum.TooltipDataType.Item, HandleTooltipSetItem)
 	end
 
 	for tooltipName in pairs(tooltips) do
 		local tooltip = _G[tooltipName]
 		if tooltip then
-			if not newTooltipSystemExists then
+			if not addon.NewTooltipSystem then
 				tooltip:HookScript("OnTooltipSetItem", HandleTooltipSetItem)
 				tooltip:HookScript("OnUpdate", HandleUpdate)
 
