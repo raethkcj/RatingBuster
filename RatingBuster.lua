@@ -2358,6 +2358,7 @@ function RatingBuster.ProcessTooltip(tooltip)
 	local tipTextLeft = tooltip:GetName().."TextLeft"
 	for i = 2, numLines + 5 do
 		local fontString = _G[tipTextLeft..i]
+		if not fontString then break end
 		local text = fontString:GetText()
 		if text then
 			local color = CreateColor(fontString:GetTextColor())
