@@ -4481,16 +4481,18 @@ function RatingBuster:StatSummary(tooltip, link, statModContext)
 
 		-- Check for Red item types
 		local tName = tooltip:GetName()
-		if _G[tName.."TextRight3"]:GetText() and select(2, _G[tName.."TextRight3"]:GetTextColor()) < 0.2 then
+		local right3, right4 = _G[tName.."TextRight3"], _G[tName.."TextRight4"]
+		local left3, left4 = _G[tName.."TextLeft3"], _G[tName.."TextLeft4"]
+		if right3 and right3:GetText() and select(2, right3:GetTextColor()) < 0.2 then
 			return
 		end
-		if _G[tName.."TextRight4"]:GetText() and select(2, _G[tName.."TextRight4"]:GetTextColor()) < 0.2 then
+		if right4 and right4:GetText() and select(2, right4:GetTextColor()) < 0.2 then
 			return
 		end
-		if select(2, _G[tName.."TextLeft3"]:GetTextColor()) < 0.2 then
+		if left3 and select(2, left3:GetTextColor()) < 0.2 then
 			return
 		end
-		if select(2, _G[tName.."TextLeft4"]:GetTextColor()) < 0.2 then
+		if left4 and select(2, left4:GetTextColor()) < 0.2 then
 			return
 		end
 	end
