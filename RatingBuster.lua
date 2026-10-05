@@ -2296,6 +2296,32 @@ local scanningTooltipOwners = {
 	["UIParent"] = true,
 }
 
+---@param tooltip GameTooltip
+---@param lines table
+---@param leftText string|number
+---@param leftColor colorRGBA?
+---@param rightText string|number?
+---@param rightColor colorRGBA?
+local function AddLine(tooltip, lines, leftText, leftColor, rightText, rightColor)
+	if addon.NewTooltipSystem then
+		table.insert(lines, {
+			leftText = leftText,
+			leftColor = leftColor,
+			rightText = rightText,
+			rightColor = rightColor,
+		})
+	else
+		local leftR, leftG, leftB, rightR, rightG, rightB
+		if leftColor then
+			leftR, leftG, leftB = leftColor:GetRGB()
+		end
+		if rightColor then
+			rightR, rightG, rightB = rightColor:GetRGB()
+		end
+		tooltip:AddDoubleLine(leftText, rightText, leftR, leftG, leftB, rightR, rightG, rightB)
+	end
+end
+
 ---@param tooltip ClassicGameTooltip
 function RatingBuster.ProcessTooltip(tooltip)
 	-- Do nothing if the tooltip is being used as a hidden scanning tooltip
@@ -2352,9 +2378,12 @@ function RatingBuster.ProcessTooltip(tooltip)
 		processedResilience = 0
 	end
 
+	local lines
 	if addon.NewTooltipSystem then
 		local info = tooltip:GetPrimaryTooltipInfo()
-		local lines = info.tooltipData.lines
+		lines = info.tooltipData.lines
+	end
+	if lines then
 		for _, line in ipairs(lines) do
 			local text = line.leftText
 			local color = line.leftColor
@@ -2363,7 +2392,6 @@ function RatingBuster.ProcessTooltip(tooltip)
 				line.leftText = text
 			end
 		end
-		tooltip:ProcessInfo(info)
 	else
 		-- Process breakdowns from line 2 through 5 lines past the end of the
 		-- "clean" tooltip, to avoid interfering with text from other tooltip addons
@@ -2383,22 +2411,36 @@ function RatingBuster.ProcessTooltip(tooltip)
 	end
 
 	-- Item Level and Item ID
-	local statR, statG, statB = db.global.sumStatColor:GetRGB()
-	local valueR, valueG, valueB = db.global.sumValueColor:GetRGB()
 	if db.global.showItemLevel then
-		tooltip:AddDoubleLine(L["ItemLevel: "], item:GetCurrentItemLevel(), statR, statG, statB, valueR, valueG, valueB)
+		AddLine(
+			tooltip,
+			lines,
+			L["ItemLevel: "],
+			db.global.sumStatColor,
+			item:GetCurrentItemLevel(),
+			db.global.sumValueColor
+		)
 	end
 	if db.global.showItemID then
-		tooltip:AddDoubleLine(L["ItemID: "], item:GetItemID(), statR, statG, statB, valueR, valueG, valueB)
+		AddLine(
+			tooltip,
+			lines,
+			L["ItemID: "],
+			db.global.sumStatColor,
+			item:GetItemID(),
+			db.global.sumValueColor
+		)
 	end
 
 	-- Stat Summary
 	if db.global.showSum then
-		RatingBuster:StatSummary(tooltip, link, statModContext)
+		RatingBuster:StatSummary(tooltip, lines, link, statModContext)
 	end
 
 	-- Repaint tooltip
-	tooltip:Show()
+	if not addon.NewTooltipSystem then
+		tooltip:Show()
+	end
 end
 
 ---@param text string
@@ -4354,9 +4396,9 @@ local function sumSortAlphaComp(a, b)
 	return a[1] < b[1]
 end
 
-local function WriteSummary(tooltip, output)
+local function WriteSummary(tooltip, lines, output)
 	if db.global.sumBlankLine then
-		tooltip:AddLine(" ")
+		AddLine(tooltip, lines, " ")
 	end
 
 	local headerIcon
@@ -4377,16 +4419,25 @@ local function WriteSummary(tooltip, output)
 		end
 	end
 	if headerIcon or headerText then
-		tooltip:AddLine((headerIcon or "") .. HIGHLIGHT_FONT_COLOR_CODE .. (headerText or "") .. FONT_COLOR_CODE_CLOSE)
+		AddLine(
+			tooltip,
+			lines,
+			(headerIcon or "") .. HIGHLIGHT_FONT_COLOR_CODE .. (headerText or "") .. FONT_COLOR_CODE_CLOSE
+		)
 	end
 
-	local statR, statG, statB = db.global.sumStatColor:GetRGB()
-	local valueR, valueG, valueB = db.global.sumValueColor:GetRGB()
 	for _, o in ipairs(output) do
-		tooltip:AddDoubleLine(o[1], o[2], statR, statG, statB, valueR, valueG, valueB)
+		AddLine(
+			tooltip,
+			lines,
+			o[1],
+			db.global.sumStatColor,
+			o[2],
+			db.global.sumValueColor
+		)
 	end
 	if db.global.sumBlankLineAfter then
-		tooltip:AddLine(" ")
+		AddLine(tooltip, lines, " ")
 	end
 end
 
@@ -4501,7 +4552,7 @@ local function IsValidSlotAndType(tooltip)
 	return true
 end
 
-function RatingBuster:StatSummary(tooltip, link, statModContext)
+function RatingBuster:StatSummary(tooltip, lines, link, statModContext)
 	-- Hide stat summary for equipped items
 	if db.global.sumIgnoreEquipped and C_Item.IsEquippedItem(link) then return end
 
@@ -4584,7 +4635,7 @@ function RatingBuster:StatSummary(tooltip, link, statModContext)
 	local cached = cache[cacheKey][id]
 	if cached and cached.numLines == numLines then
 		if table.maxn(cached) == 0 then return end
-		WriteSummary(tooltip, cached)
+		WriteSummary(tooltip, lines, cached)
 		return
 	end
 
@@ -4754,7 +4805,7 @@ function RatingBuster:StatSummary(tooltip, link, statModContext)
 	-- Write cache
 	cache[cacheKey][id] = output
 	if table.maxn(output) == 0 then return end
-	WriteSummary(tooltip, output)
+	WriteSummary(tooltip, lines, output)
 end
 
 function RatingBuster:PerformanceProfile()

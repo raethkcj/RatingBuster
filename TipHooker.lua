@@ -74,7 +74,7 @@ local tooltipNeedsRepaint = {}
 local initialized = false
 local function InitializeHook()
 	if addon.NewTooltipSystem then
-		TooltipDataProcessor.AddTooltipPostCall(Enum.TooltipDataType.Item, HandleTooltipSetItem)
+		TooltipDataProcessor.AddTooltipPreCall(Enum.TooltipDataType.Item, HandleTooltipSetItem)
 	end
 
 	for tooltipName in pairs(tooltips) do
