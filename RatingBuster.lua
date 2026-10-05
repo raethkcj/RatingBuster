@@ -2352,18 +2352,32 @@ function RatingBuster.ProcessTooltip(tooltip)
 		processedResilience = 0
 	end
 
-	-- Process breakdowns from line 2 through 5 lines past the end of the
-	-- "clean" tooltip, to avoid interfering with text from other tooltip addons
-	local numLines = StatLogic:GetItemTooltipNumLines(link)
-	local tipTextLeft = tooltip:GetName().."TextLeft"
-	for i = 2, numLines + 5 do
-		local fontString = _G[tipTextLeft..i]
-		local text = fontString:GetText()
-		if text then
-			local color = CreateColor(fontString:GetTextColor())
+	if addon.NewTooltipSystem then
+		local info = tooltip:GetPrimaryTooltipInfo()
+		local lines = info.tooltipData.lines
+		for _, line in ipairs(lines) do
+			local text = line.leftText
+			local color = line.leftColor
 			text = RatingBuster:ProcessLine(text, link, color, statModContext)
 			if text then
-				fontString:SetText(text)
+				line.leftText = text
+			end
+		end
+		tooltip:ProcessInfo(info)
+	else
+		-- Process breakdowns from line 2 through 5 lines past the end of the
+		-- "clean" tooltip, to avoid interfering with text from other tooltip addons
+		local numLines = StatLogic:GetItemTooltipNumLines(link)
+		local tipTextLeft = tooltip:GetName().."TextLeft"
+		for i = 2, numLines + 5 do
+			local fontString = _G[tipTextLeft..i]
+			local text = fontString:GetText()
+			if text then
+				local color = CreateColor(fontString:GetTextColor())
+				text = RatingBuster:ProcessLine(text, link, color, statModContext)
+				if text then
+					fontString:SetText(text)
+				end
 			end
 		end
 	end
