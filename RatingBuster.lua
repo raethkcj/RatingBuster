@@ -4475,6 +4475,32 @@ local function GetPrimaryStat()
 	return primaryStats[specPrimaryStat]
 end
 
+local function IsValidSlotAndType(tooltip)
+	if addon.NewTooltipSystem then
+		local data = tooltip:GetPrimaryTooltipData()
+		for _, line in ipairs(data.lines) do
+			if line.type == Enum.TooltipDataLineType.EquipSlot then
+				return line.isValidInvSlot and line.isValidItemType
+			end
+		end
+	else
+		local tName = tooltip:GetName()
+		if _G[tName.."TextRight3"]:GetText() and select(2, _G[tName.."TextRight3"]:GetTextColor()) < 0.2 then
+			return false
+		end
+		if _G[tName.."TextRight4"]:GetText() and select(2, _G[tName.."TextRight4"]:GetTextColor()) < 0.2 then
+			return false
+		end
+		if select(2, _G[tName.."TextLeft3"]:GetTextColor()) < 0.2 then
+			return false
+		end
+		if select(2, _G[tName.."TextLeft4"]:GetTextColor()) < 0.2 then
+			return false
+		end
+	end
+	return true
+end
+
 function RatingBuster:StatSummary(tooltip, link, statModContext)
 	-- Hide stat summary for equipped items
 	if db.global.sumIgnoreEquipped and C_Item.IsEquippedItem(link) then return end
@@ -4493,18 +4519,8 @@ function RatingBuster:StatSummary(tooltip, link, statModContext)
 			return
 		end
 
-		-- Check for Red item types
-		local tName = tooltip:GetName()
-		if _G[tName.."TextRight3"]:GetText() and select(2, _G[tName.."TextRight3"]:GetTextColor()) < 0.2 then
-			return
-		end
-		if _G[tName.."TextRight4"]:GetText() and select(2, _G[tName.."TextRight4"]:GetTextColor()) < 0.2 then
-			return
-		end
-		if select(2, _G[tName.."TextLeft3"]:GetTextColor()) < 0.2 then
-			return
-		end
-		if select(2, _G[tName.."TextLeft4"]:GetTextColor()) < 0.2 then
+		-- Check for unusable (red) item types
+		if not IsValidSlotAndType(tooltip) then
 			return
 		end
 	end
