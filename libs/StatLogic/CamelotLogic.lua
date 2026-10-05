@@ -4,26 +4,25 @@ local StatLogic = LibStub:GetLibrary(addonName)
 
 StatLogic.RatingBase = {}
 
--- Extracted from the client at GameTables/OCTRegenMP.txt via wow.tools.local
 local OCTRegenMP = 0.25
 
--- Extracted from the client at GameTables/RegenMPPerSpt.txt via wow.tools.local
 local RegenMPPerSpt = {
-	["PALADIN"] = 0.100,
-	["HUNTER"]  = 0.100,
+	["PALADIN"] = 0.125, -- Needs confirmation
+	["HUNTER"]  = 0.125, -- Needs confirmation
 	["PRIEST"]  = 0.125,
-	["SHAMAN"]  = 0.100,
-	["MAGE"]    = 0.125,
-	["WARLOCK"] = 0.100,
-	["DRUID"]   = 0.100,
+	["SHAMAN"]  = 0.125,
+	["MAGE"]    = 0.125, -- Needs confirmation
+	["WARLOCK"] = 0.125, -- Needs confirmation
+	["DRUID"]   = 0.125,
 }
 
 local NormalManaRegenPerSpi = function()
 	local _, spi = UnitStat("player", LE_UNIT_STAT_SPIRIT)
+	local regen = OCTRegenMP
 	if issecretvalue(spi) or spi > 50 then
-		return 0
+		regen = RegenMPPerSpt[addon.class]
 	end
-	return 5 * (spi > 50 and RegenMPPerSpt[addon.class] or OCTRegenMP)
+	return 5 * regen
 end
 
 -- Below level 20 (Gathered by Alessandro Barbieri)
