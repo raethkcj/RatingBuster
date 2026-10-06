@@ -2330,7 +2330,12 @@ function RatingBuster.ProcessTooltip(tooltip)
 	end
 
 	if not tooltip.GetItem and not addon.NewTooltipSystem then return end
-	local _, link = TooltipUtil.GetDisplayedItem(tooltip)
+	local _, link
+	if TooltipUtil then
+		_, link = TooltipUtil.GetDisplayedItem(tooltip)
+	else
+		_, link = tooltip:GetItem()
+	end
 	if not link then return end
 	local item = Item:CreateFromItemLink(link)
 	if item:IsItemEmpty() or not item:IsItemDataCached() then return end
