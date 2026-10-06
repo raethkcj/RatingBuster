@@ -1,13 +1,13 @@
 {
 	"SpellItemEnchantment": {
-		"1": {
+		"Vanilla": {
 			"2412": [ ["HealthRegen"] ],
 			"2591": [ ["Intellect"], ["Stamina"], ["HealingPower"] ],
 			"2826": [],
 			"7615": [ ["Stamina"], ["Strength"], ["Agility"] ],
 			"7635": [ ["Stamina"], ["Agility"], ["Strength"] ]
 		},
-		"2": {
+		"TBC": {
 			"2583": [ ["DefenseRating"], ["Stamina"], ["BlockValue"] ],
 			"2584": [ ["Defense"], ["Stamina"], ["HealingPower"] ],
 			"2586": [ ["RangedAttackPower"], ["Stamina"], ["HitRating"] ],
@@ -19,11 +19,11 @@
 			"3081": [ ["HealingPower"], ["SpellDamage"], ["SpellCritRating"] ],
 			"3161": [ ["Stamina"], ["SpellCritRating"] ]
 		},
-		"3": {
+		"Wrath": {
 			"2591": [ ["Intellect"], ["Stamina"], ["SpellPower"] ],
 			"3754": [ ["GenericAttackPower"], ["Stamina"], ["HitRating"] ]
 		},
-		"4": {
+		"Cata": {
 			"2584": [ ["DodgeRating"], ["Stamina"], ["Intellect"] ],
 			"2705": [ ["HasteRating"], ["Intellect"] ],
 			"3113": [ ["CritRating"], ["Agility"] ],
@@ -33,7 +33,7 @@
 			"4280": [ ["HitRating"], ["MasteryRating"] ],
 			"4282": [ ["Spirit"], ["MasteryRating"] ]
 		},
-		"5": {
+		"Mists": {
 			"2584": [ ["DodgeRating"], ["Stamina"], ["Intellect"] ],
 			"2760": [ ["CritRating"], ["Intellect"] ],
 			"3000": [ ["Stamina"], ["DodgeRating"], ["ResilienceRating"] ],
@@ -45,22 +45,23 @@
 			"4280": [ ["HitRating"], ["MasteryRating"] ],
 			"4282": [ ["Spirit"], ["MasteryRating"] ],
 			"4671": [ ["Strength"], ["ParryRating"], ["CritRating"] ]
-		}
+		},
+		"Camelot": {}
 	},
 	"Spell": {
-		"1": {
+		"Vanilla": {
 			"24694": [ ["FeralAttackPower"] ]
 		},
-		"2": {
+		"TBC": {
 			"24694": [ ["FeralAttackPower"] ]
 		},
-		"3": {
+		"Wrath": {
 			"57301": [ false, false, false, false, ["GenericAttackPower"], ["SpellPower"], ["Stamina"], false ],
 			"57345": [ ["HighestPrimary"], false ],
 			"66476": [ false, false, false, ["GenericAttackPower"], ["SpellPower"], ["Stamina"], false ],
 			"67771": [ ["HighestStrengthAgility"], false ]
 		},
-		"4": {
+		"Cata": {
 			"57301": [ false, false, false, false, ["GenericAttackPower"], ["SpellPower"], ["Stamina"], false ],
 			"66476": [ false, false, false, ["GenericAttackPower"], ["SpellPower"], ["Stamina"], false ],
 			"79637": [ ["HighestPrimary"], false ],
@@ -73,7 +74,7 @@
 			"96934": [ ["HighestSecondary"], false ],
 			"96976": [ ["HighestSecondary"], false ]
 		},
-		"5": {
+		"Mists": {
 			"104434": [ ["HighestStrengthAgility"] ],
 			"104958": [ false, false, false, false, false, ["Primary"], false ],
 			"105193": [ false, false, false, false, false, ["Primary"], false ],
@@ -87,6 +88,7 @@
 			"145166": [ false, false, false, false, ["Primary"], false ],
 			"145169": [ false, false, false, false, ["Primary"], false ],
 			"145196": [ false, false, false, false, ["Primary"], false ]
-		}
+		},
+		"Camelot": {}
 	}
 }

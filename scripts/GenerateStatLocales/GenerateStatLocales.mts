@@ -5,14 +5,22 @@ import path from 'node:path'
 
 import { DuckDBInstance } from '@duckdb/node-api'
 
-// While enums do auto-increment, it's nice to be able to
-// comment them for debugging and preserve the correct values.
-enum Expansion {
-	Vanilla = 1,
-	TBC     = 2,
-	Wrath   = 3,
-	Cata    = 4,
-	Mists   = 5,
+enum Project {
+	Vanilla,
+	TBC,
+	Wrath,
+	Cata,
+	Mists,
+	Camelot,
+}
+
+const ProjectPrefix: Record<Project, string> = {
+	[Project.Vanilla]: "1.1",
+	[Project.Camelot]: "1.6",
+	[Project.TBC]:     "2.",
+	[Project.Wrath]:   "3.",
+	[Project.Cata]:    "4.",
+	[Project.Mists]:   "5.",
 }
 
 type ProductBuilds = { [product: string]: { version: string }[] }
@@ -56,15 +64,16 @@ class Build {
 	}
 }
 
-var getLatestVersion = async function(expansion: Expansion) {
+var getLatestVersion = async function(project: Project) {
 	const productBuilds = await fetchProductBuilds()
 	const latestMinorBuilds = new Map<string, Build>()
+	const prefix = ProjectPrefix[project]
 	for (const product of publicProducts) {
 		const builds = productBuilds[product]
 		// const build = builds.find(b => b.version.startsWith(`${expansion}.`))
 		for (const build of builds) {
 			const version = build?.version
-			if (version && version.startsWith(`${expansion}.`)) {
+			if (version != undefined && version.startsWith(prefix)) {
 				const current = new Build(version, ...version.split("."))
 				const latestMinorBuild = latestMinorBuilds.get(current.minor)
 				if (!latestMinorBuild || current.gte(latestMinorBuild)) {
@@ -80,10 +89,10 @@ var getLatestVersion = async function(expansion: Expansion) {
 	const latestMinorBuild = latestMinorBuilds.keys().reduce((acc, curr) => acc > curr? acc : curr)
 	const max = latestMinorBuilds.get(latestMinorBuild)
 	if (max) {
-		console.log(`Found version ${max} for expansion ${Expansion[expansion]}`)
+		console.log(`Found version ${max} for expansion ${Project[project]}`)
 		return max
 	} else {
-		throw new Error(`Couldn't find any public build for expansion ${Expansion[expansion]}`)
+		throw new Error(`Couldn't find any public build for expansion ${Project[project]}`)
 	}
 }
 
@@ -370,7 +379,6 @@ function mapTextToStatEntry(
 
 const base = import.meta.url
 import statLocaleData from './StatLocaleData.json' with { type: "json" }
-import exp from 'node:constants'
 const databaseDirName = "DB2"
 
 class DatabaseTable {
@@ -378,7 +386,7 @@ class DatabaseTable {
 
 	private constructor(
 		public name: string,
-		public expansion: Expansion,
+		public project: Project,
 		public locale: string,
 		public fileName: string,
 	) {
@@ -388,15 +396,15 @@ class DatabaseTable {
 	static directory = "./DB2"
 	static cache = new Map<string, Promise<DatabaseTable>>()
 
-	static async get(name: string, expansion: Expansion, locale: string): Promise<DatabaseTable> {
-		const fileName = `${name}_${expansion}_${locale}.csv`
+	static async get(name: string, project: Project, locale: string): Promise<DatabaseTable> {
+		const fileName = `${name}_${Project[project]}_${locale}.csv`
 		if (!this.cache.get(fileName)) {
 			this.cache.set(fileName, new Promise<DatabaseTable>(async (resolve, reject) => {
-				const table = new DatabaseTable(name, expansion, locale, fileName)
+				const table = new DatabaseTable(name, project, locale, fileName)
 				if (existsSync(table.path)) {
 					console.log(`Found ${fileName}, skipping fetch.`)
 				} else {
-					let build: Build | undefined = await getLatestVersion(expansion)
+					let build: Build | undefined = await getLatestVersion(project)
 					do {
 						console.log(`Fetching ${fileName}.`)
 						const fetchUrl = `https://wago.tools/db2/${name}/csv?build=${build}&locale=${locale}`
@@ -828,15 +836,23 @@ type SpellEffect = {
 	ProcSpellID: number,
 }
 
-async function queryStatSpellEffects(expansion: Expansion) {
-	const spellEffect = await DatabaseTable.get("SpellEffect", expansion, "enUS")
+async function queryStatSpellEffects(project: Project) {
+	const spellEffect = await DatabaseTable.get("SpellEffect", project, "enUS")
 
 	const query = `
-		SELECT StatSpell.SpellID, StatSpell.EffectIndex, StatSpell.EffectAura, IF(StatSpell.Coefficient != 0 AND StatSpell.EffectBasePoints = 0, 1, StatSpell.EffectBasePoints) AS EffectBasePoints, StatSpell.EffectDieSides, StatSpell.EffectMiscValue_0, ProcSpell.SpellID AS ProcSpellID
+		SELECT StatSpell.SpellID,
+			StatSpell.EffectIndex,
+			StatSpell.EffectAura,
+			IF(StatSpell.Coefficient != 0 AND COLUMNS('(EffectBasePoints|EffectBasePointsF)') = 0, 1, COLUMNS('(EffectBasePoints|EffectBasePointsF)')) AS EffectBasePoints,
+			COLUMNS('(EffectDieSides)') AS EffectDieSides,
+			COLUMNS('(Variance)') AS Variance,
+			StatSpell.EffectMiscValue_0,
+			ProcSpell.SpellID AS ProcSpellID,
 		FROM read_csv('${spellEffect.path}', auto_type_candidates = ['INTEGER', 'DOUBLE', 'VARCHAR']) StatSpell
 		LEFT JOIN read_csv('${spellEffect.path}', auto_type_candidates = ['INTEGER', 'DOUBLE', 'VARCHAR']) ProcSpell
 		ON ProcSpell.EffectTriggerSpell = StatSpell.SpellID
 		AND ProcSpell.EffectAura in (${procAuraValues})
+		CROSS JOIN (SELECT NULL AS EffectDieSides, NULL AS Variance) Dummy
 		WHERE StatSpell.EffectAura in (${effectAuraValues})
 		AND (StatSpell.EffectAuraPeriod = 5000 OR StatSpell.EffectAura != '${EffectAura.PERIODIC_HEAL}')
 		AND (StatSpell.EffectMiscValue_0 = '${PowerType.Mana}' OR StatSpell.EffectAura != '${EffectAura.MOD_POWER_REGEN}')
@@ -859,8 +875,8 @@ enum Time {
 	Hour,
 }
 
-async function getSpellDurationFormats(expansion: Expansion, locale: string): Promise<Record<Time, string>> {
-	const globalStrings = await DatabaseTable.get("GlobalStrings", expansion, locale)
+async function getSpellDurationFormats(project: Project, locale: string): Promise<Record<Time, string>> {
+	const globalStrings = await DatabaseTable.get("GlobalStrings", project, locale)
 
 	const query = `
 		SELECT TagText_lang
@@ -884,8 +900,8 @@ type EnchantSpell = {
 	SpellID: number,
 }
 
-async function queryEnchantSpells(expansion: Expansion, statEnchantIDs: number[]): Promise<EnchantSpell[]> {
-	const spellEffect = await DatabaseTable.get("SpellEffect", expansion, "enUS")
+async function queryEnchantSpells(project: Project, statEnchantIDs: number[]): Promise<EnchantSpell[]> {
+	const spellEffect = await DatabaseTable.get("SpellEffect", project, "enUS")
 
 	const query = `
 		SELECT EffectMiscValue_0 as EnchantID, SpellID
@@ -898,12 +914,12 @@ async function queryEnchantSpells(expansion: Expansion, statEnchantIDs: number[]
 	return reader.getRowObjects() as EnchantSpell[]
 }
 
-const expansionsEnchantSpells = new Map<Expansion, Promise<Map<number, number>>>()
+const expansionsEnchantSpells = new Map<Project, Promise<Map<number, number>>>()
 
-async function getEnchantSpells(expansion: Expansion, statEnchants: StatEnchant[], spellDescIDs: Set<number>): Promise<Map<number, number>> {
-	if (!expansionsEnchantSpells.get(expansion)) {
-		expansionsEnchantSpells.set(expansion, new Promise<Map<number, number>>(async resolve => {
-			const enchantSpells = await queryEnchantSpells(expansion, statEnchants.map(se => se.ID))
+async function getEnchantSpells(project: Project, statEnchants: StatEnchant[], spellDescIDs: Set<number>): Promise<Map<number, number>> {
+	if (!expansionsEnchantSpells.get(project)) {
+		expansionsEnchantSpells.set(project, new Promise<Map<number, number>>(async resolve => {
+			const enchantSpells = await queryEnchantSpells(project, statEnchants.map(se => se.ID))
 			const spellEnchants = new Map<number, number>()
 			enchantSpells.forEach(es => {
 				spellDescIDs.add(es.SpellID)
@@ -912,7 +928,7 @@ async function getEnchantSpells(expansion: Expansion, statEnchants: StatEnchant[
 			resolve(spellEnchants)
 		}))
 	}
-	return expansionsEnchantSpells.get(expansion)!
+	return expansionsEnchantSpells.get(project)!
 }
 
 const TriggerTypeOnLearn = 6
@@ -924,33 +940,51 @@ type EnchantRecipe = {
 	Description_lang: string
 }
 
-async function queryEnchantRecipes(expansion: Expansion, locale: string, spellEnchants: Map<number, number>) {
+async function queryEnchantRecipes(project: Project, locale: string, spellEnchants: Map<number, number>) {
 	let itemSparse: DatabaseTable
 	let itemEffect: DatabaseTable
+	let itemXItemEffect: DatabaseTable
 	try {
-		itemSparse = await DatabaseTable.get("ItemSparse", expansion, locale)
-		itemEffect = await DatabaseTable.get("ItemEffect", expansion, locale)
+		itemSparse = await DatabaseTable.get("ItemSparse", project, locale)
+		itemEffect = await DatabaseTable.get("ItemEffect", project, locale)
+
+		const spellEnchantsSQL = spellEnchants.entries().map(([k, v]) => k + ": " + v).toArray().join(",")
+		let query = `
+		    SELECT ItemSparse.ID as ItemID, SpellID, Description_lang, MAP {${spellEnchantsSQL}}[SpellID] as EnchantID
+		    FROM read_csv('${itemSparse.path}', auto_type_candidates = ['INTEGER', 'DOUBLE', 'VARCHAR']) ItemSparse
+		    LEFT JOIN read_csv('${itemEffect.path}', auto_type_candidates = ['INTEGER', 'DOUBLE', 'VARCHAR']) ItemEffect
+		    ON ItemSparse.ID = ItemEffect.ParentItemID
+		    AND ItemEffect.TriggerType = ${TriggerTypeOnLearn}
+		    WHERE SpellID IN (${spellEnchants.keys().toArray()})
+			AND Description_lang NOT NULL
+		`
+
+		if (project == Project.Camelot) {
+			// Camelot uses a join table rather than a foreign key
+			itemXItemEffect = await DatabaseTable.get("ItemXItemEffect", project, locale)
+			query = `
+				SELECT ItemSparse.ID as ItemID, SpellID, Description_lang, MAP {${spellEnchantsSQL}}[SpellID] as EnchantID
+				FROM read_csv('${itemSparse.path}', auto_type_candidates = ['INTEGER', 'DOUBLE', 'VARCHAR']) ItemSparse
+				LEFT JOIN read_csv('${itemXItemEffect.path}', auto_type_candidates = ['INTEGER', 'DOUBLE', 'VARCHAR']) ItemXItemEffect
+				ON ItemXItemEffect.ItemID = ItemSparse.ID
+				LEFT JOIN read_csv('${itemEffect.path}', auto_type_candidates = ['INTEGER', 'DOUBLE', 'VARCHAR']) ItemEffect
+				ON ItemEffect.ID == ItemXItemEffect.ItemEffectID
+				AND ItemEffect.TriggerType = ${TriggerTypeOnLearn}
+				WHERE SpellID IN (${spellEnchants.keys().toArray()})
+				AND Description_lang NOT NULL
+			`
+		}
+
+		const reader = await connection.runAndReadAll(query)
+		return reader.getRowObjects() as EnchantRecipe[]
 	} catch (error) {
 		console.error(error)
 		return []
 	}
-
-	const spellEnchantsSQL = spellEnchants.entries().map(([k, v]) => k + ": " + v).toArray().join(",")
-	const query = `
-		SELECT ItemSparse.ID as ItemID, SpellID, Description_lang, MAP {${spellEnchantsSQL}}[SpellID] as EnchantID
-		FROM read_csv('${itemSparse.path}', auto_type_candidates = ['INTEGER', 'DOUBLE', 'VARCHAR']) ItemSparse
-		LEFT JOIN read_csv('${itemEffect.path}', auto_type_candidates = ['INTEGER', 'DOUBLE', 'VARCHAR']) ItemEffect
-		ON ItemSparse.ID = ItemEffect.ParentItemID
-		AND ItemEffect.TriggerType = ${TriggerTypeOnLearn}
-		WHERE SpellID IN (${spellEnchants.keys().toArray()})
-	`
-
-	const reader = await connection.runAndReadAll(query)
-	return reader.getRowObjects() as EnchantRecipe[]
 }
 
-async function getEnchantRecipes(expansion: Expansion, locale: string, spellEnchants: Map<number, number>, descriptions: Description[]) {
-	const enchantRecipes = await queryEnchantRecipes(expansion, locale, spellEnchants)
+async function getEnchantRecipes(project: Project, locale: string, spellEnchants: Map<number, number>, descriptions: Description[]) {
+	const enchantRecipes = await queryEnchantRecipes(project, locale, spellEnchants)
 	const itemEnchants = new Map<number, number>()
 	for (const enchantRecipe of enchantRecipes) {
 		spellEnchants.set(enchantRecipe.SpellID, enchantRecipe.EnchantID)
@@ -1008,8 +1042,8 @@ type Description = {
 	identifierType: IdentifierType
 }
 
-async function queryStatSpellDescriptions(expansion: Expansion, locale: string, spellIDs: number[]): Promise<Description[]> {
-	const spell = await DatabaseTable.get("Spell", expansion, locale)
+async function queryStatSpellDescriptions(project: Project, locale: string, spellIDs: number[]): Promise<Description[]> {
+	const spell = await DatabaseTable.get("Spell", project, locale)
 
 	const query = `
 		SELECT ID, Description_lang, ${IdentifierType.Spell} AS identifierType
@@ -1086,16 +1120,20 @@ type StatEnchant = {
 	}
 }
 
-async function queryStatEnchants(expansion: Expansion, locale: string, spellIDs: number[], overrideEnchantIDs: number[]): Promise<StatEnchant[]> {
-	const spellItemEnchantment = await DatabaseTable.get("SpellItemEnchantment", expansion, locale)
+async function queryStatEnchants(project: Project, locale: string, spellIDs: number[], overrideEnchantIDs: number[]): Promise<StatEnchant[]> {
+	const spellItemEnchantment = await DatabaseTable.get("SpellItemEnchantment", project, locale)
 
 	const query = `
-		SELECT ID, Name_lang, Field_1_15_3_55112_013 as Condition_ID, [
-			array_value(Effect_0, EffectArg_0, EffectPointsMin_0),
-			array_value(Effect_1, EffectArg_1, EffectPointsMin_1),
-			array_value(Effect_2, EffectArg_2, EffectPointsMin_2),
-		] As Effects
+		SELECT ID,
+			Name_lang,
+			COLUMNS('(Condition_ID|Field_1_15_3_55112_013)') as Condition_ID,
+			[
+				array_value(Effect_0, EffectArg_0, EffectPointsMin_0),
+				array_value(Effect_1, EffectArg_1, EffectPointsMin_1),
+				array_value(Effect_2, EffectArg_2, EffectPointsMin_2),
+			] AS Effects
 		FROM read_csv('${spellItemEnchantment.path}', auto_type_candidates = ['INTEGER', 'DOUBLE', 'VARCHAR'])
+		CROSS JOIN (SELECT NULL AS Condition_ID) Dummy
 		WHERE
 			ID IN (${overrideEnchantIDs.length > 0 ? overrideEnchantIDs : 'null'})
 			OR Effect_0 = '${EnchantEffect.Buff}' AND EffectArg_0 IN (${spellIDs})
@@ -1136,11 +1174,11 @@ type EnchantmentConditionRow = [
 	}
 ]
 
-async function queryMetaGemConditions(expansion: Expansion) {
-	if (expansion === Expansion.Vanilla) {
+async function queryMetaGemConditions(project: Project) {
+	if (project === Project.Vanilla || project === Project.Camelot) {
 		return new Map()
 	}
-	const spellItemEnchantmentConditions = await DatabaseTable.get("SpellItemEnchantmentCondition", expansion, "enUS")
+	const spellItemEnchantmentConditions = await DatabaseTable.get("SpellItemEnchantmentCondition", project, "enUS")
 
 	const query = `
 		SELECT ID, [
@@ -1208,8 +1246,8 @@ function enumerateStatAndProcSpells(spellEffects: SpellEffect[]): [Map<number, (
 	return [spellStatEffects, procSpells]
 }
 
-function overrideSpells(spellStatEffects: Map<number, (StatValue[] | false)[]>, spellDescIDs: Set<number>, expansion: Expansion) {
-	for (const [sOverrideSpellID, overrideStatEffects] of Object.entries(statLocaleData["Spell"][expansion])) {
+function overrideSpells(spellStatEffects: Map<number, (StatValue[] | false)[]>, spellDescIDs: Set<number>, project: Project) {
+	for (const [sOverrideSpellID, overrideStatEffects] of Object.entries(statLocaleData["Spell"][Project[project]])) {
 		const overrideSpellID = parseInt(sOverrideSpellID)
 		spellDescIDs.add(overrideSpellID)
 		const overrideStatValues = (overrideStatEffects as (string[] | false)[]).map((effect) => {
@@ -1219,9 +1257,9 @@ function overrideSpells(spellStatEffects: Map<number, (StatValue[] | false)[]>, 
 	}
 }
 
-async function getSpellDurations(expansion: Expansion, statSpellIDs: number[]): Promise<Map<number, number>> {
-	const spellMisc = await DatabaseTable.get("SpellMisc", expansion, "enUS")
-	const spellDuration = await DatabaseTable.get("SpellDuration", expansion, "enUS")
+async function getSpellDurations(project: Project, statSpellIDs: number[]): Promise<Map<number, number>> {
+	const spellMisc = await DatabaseTable.get("SpellMisc", project, "enUS")
+	const spellDuration = await DatabaseTable.get("SpellDuration", project, "enUS")
 
 	const query = `
 		SELECT SpellID, Duration
@@ -1250,11 +1288,11 @@ async function getSpellDurations(expansion: Expansion, statSpellIDs: number[]): 
 	})
 }
 
-function getOverrideEnchants(expansion: Expansion): [number[], Map<number, StatValue[][]>] {
+function getOverrideEnchants(project: Project): [number[], Map<number, StatValue[][]>] {
 	const overrideEnchantIDs: number[] = []
 	const overrideEnchantStatEffects = new Map<number, StatValue[][]>()
 
-	for (const [sOverrideEnchantID, overrideStatEffects] of Object.entries(statLocaleData["SpellItemEnchantment"][expansion])) {
+	for (const [sOverrideEnchantID, overrideStatEffects] of Object.entries(statLocaleData["SpellItemEnchantment"][Project[project]])) {
 		overrideEnchantIDs.push(parseInt(sOverrideEnchantID))
 		const overrideStatValues = overrideStatEffects.map((effect: string[]|{[stat: string]: number}) => {
 			if (Array.isArray(effect)) {
@@ -1319,8 +1357,8 @@ const enchantConditionTags = [
 	"ENCHANT_CONDITION_MORE_VALUE",
 ]
 
-async function getMetaGemConditionStrings(expansion: Expansion, locale: string) {
-	const globalStrings = await DatabaseTable.get("GlobalStrings", expansion, locale)
+async function getMetaGemConditionStrings(project: Project, locale: string) {
+	const globalStrings = await DatabaseTable.get("GlobalStrings", project, locale)
 
 	const query = `
 		SELECT BaseTag, TagText_lang
@@ -1388,7 +1426,7 @@ async function getEnchantConditionText(conditions: EnchantmentCondition[], condi
 }
 
 async function getLocaleStatMap(
-	expansion: Expansion,
+	project: Project,
 	locale: Locale,
 	spellStatEffects: Map<number, (StatValue[] | false)[]>,
 	statSpellIDs: number[],
@@ -1401,15 +1439,15 @@ async function getLocaleStatMap(
 ) {
 	const statMap = new Map<string, StatEntry>()
 
-	const statEnchants = await queryStatEnchants(expansion, locale, statSpellIDs, overrideEnchantIDs)
+	const statEnchants = await queryStatEnchants(project, locale, statSpellIDs, overrideEnchantIDs)
 	console.log(`${statEnchants.length} statEnchants`)
 
-	const spellEnchants = await getEnchantSpells(expansion, statEnchants, spellDescIDs)
+	const spellEnchants = await getEnchantSpells(project, statEnchants, spellDescIDs)
 
-	const spellDurationFormats = await getSpellDurationFormats(expansion, locale)
-	const descriptions = await queryStatSpellDescriptions(expansion, locale, Array.from(spellDescIDs))
+	const spellDurationFormats = await getSpellDurationFormats(project, locale)
+	const descriptions = await queryStatSpellDescriptions(project, locale, Array.from(spellDescIDs))
 
-	const itemEnchants = await getEnchantRecipes(expansion, locale, spellEnchants, descriptions)
+	const itemEnchants = await getEnchantRecipes(project, locale, spellEnchants, descriptions)
 
 	for (const description of descriptions) {
 		const staticEffects = spellStatEffects.get(description.ID)
@@ -1449,11 +1487,14 @@ async function getLocaleStatMap(
 		}
 	}
 
-	const conditionStrings = await getMetaGemConditionStrings(expansion, locale)
+	const conditionStrings = await getMetaGemConditionStrings(project, locale)
 
 	for (const statEnchant of statEnchants) {
-		const descriptions = new Set([statEnchant.Name_lang])
-		descriptions.add(await getEnchantDescription(statEnchant, metaGemConditions, conditionStrings, locale))
+		const descriptions = new Set(statEnchant.Name_lang ? [statEnchant.Name_lang] : [])
+		const conditionDescription = await getEnchantDescription(statEnchant, metaGemConditions, conditionStrings, locale)
+		if (conditionDescription) {
+			descriptions.add(conditionDescription)
+		}
 		const stats = getEnchantStats(statEnchant, spellStatEffects, overrideEnchantStatEffects)
 		for (const description of descriptions) {
 			const [pattern, statEntry] = mapTextToStatEntry(
@@ -1474,7 +1515,7 @@ async function getLocaleStatMap(
 	return statMap
 }
 
-async function writeLocale(expansion: Expansion, locale: Locale, statEntries: Promise<Map<string, StatEntry>>) {
+async function writeLocale(project: Project, locale: Locale, statEntries: Promise<Map<string, StatEntry>>) {
 	const results = await statEntries
 	let text = "-- THIS FILE IS AUTOGENERATED. Add new entries by editing & running GenerateStatLocales.mts or StatLocaleData.json instead.\n"
 	text += "local addonName, addon = ...\n"
@@ -1489,7 +1530,7 @@ async function writeLocale(expansion: Expansion, locale: Locale, statEntries: Pr
 	const localeDir = path.join(baseLocaleDir, locale)
 	mkdirSync(new URL(localeDir , base), { recursive: true })
 
-	const fileName = `${Expansion[expansion]}.lua`
+	const fileName = `${Project[project]}.lua`
 	const relativePath = path.join(locale, fileName)
 	const absolutePath = path.join(baseLocaleDir, relativePath)
 	writeFileSync(new URL(absolutePath, base), text)
@@ -1532,8 +1573,8 @@ function entryToString([text, entry]: [string, StatEntry]) {
 mkdirSync(new URL(databaseDirName, base), { recursive: true })
 mkdirSync(new URL(baseLocaleDir, base), { recursive: true })
 
-for (const [_, expansion] of Object.entries(Expansion)) {
-	if (typeof(expansion) != "number") { continue }
+for (const [_, project] of Object.entries(Project)) {
+	if (typeof(project) != "number") { continue }
 
 	// For spells with EffectAura+MiscValue0 combos that map to stats, fetch:
 	//   a) Spell description for that spell
@@ -1542,7 +1583,7 @@ for (const [_, expansion] of Object.entries(Expansion)) {
 	//   d) Enchant names for enchants with any of the proc trigger auras as an aura
 	let spellEffects: SpellEffect[]
 	try {
-		spellEffects = await queryStatSpellEffects(expansion)
+		spellEffects = await queryStatSpellEffects(project)
 	} catch(e: unknown) {
 		console.error((e as Error).message)
 		continue
@@ -1557,18 +1598,18 @@ for (const [_, expansion] of Object.entries(Expansion)) {
 	const spellDescIDs = new Set(statSpellIDs)
 	procSpells.forEach((_s, p) => spellDescIDs.add(p))
 
-	overrideSpells(spellStatEffects, spellDescIDs, expansion)
+	overrideSpells(spellStatEffects, spellDescIDs, project)
 	console.log(`${spellDescIDs.size} spellDescIDs`)
 
-	const spellDurations = await getSpellDurations(expansion, statSpellIDs)
+	const spellDurations = await getSpellDurations(project, statSpellIDs)
 
-	const [overrideEnchantIDs, overrideEnchantStatEffects] = getOverrideEnchants(expansion)
+	const [overrideEnchantIDs, overrideEnchantStatEffects] = getOverrideEnchants(project)
 
-	const metaGemConditions = await queryMetaGemConditions(expansion)
+	const metaGemConditions = await queryMetaGemConditions(project)
 
 	for (const locale of locales) {
 		const localeStatMap = getLocaleStatMap(
-			expansion,
+			project,
 			locale,
 			spellStatEffects,
 			statSpellIDs,
@@ -1579,6 +1620,6 @@ for (const [_, expansion] of Object.entries(Expansion)) {
 			overrideEnchantStatEffects,
 			metaGemConditions,
 		)
-		writeLocale(expansion, locale, localeStatMap)
+		writeLocale(project, locale, localeStatMap)
 	}
 }
