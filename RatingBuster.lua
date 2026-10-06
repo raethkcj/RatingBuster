@@ -1902,6 +1902,16 @@ do
 								end
 							elseif case.tab then
 								name, icon = StatLogic:GetOrderedTalentInfo(case.tab, case.num)
+							elseif case.trait then
+								local configID = C_SpecializationInfo.GetCombatConfigIDForSpecGroup(statModContext.specGroup)
+								local nodeInfo = C_Traits.GetNodeInfo(configID, case.trait)
+								local entryInfo = C_Traits.GetEntryInfo(configID, nodeInfo.activeEntry.entryID)
+								local definitionInfo = C_Traits.GetDefinitionInfo(entryInfo.definitionID)
+								local spellInfo = C_Spell.GetSpellInfo(definitionInfo.spellID)
+								if spellInfo then
+									name = spellInfo.name
+									icon = spellInfo.iconID
+								end
 							elseif case.set then
 								name = C_Item.GetItemSetInfo(case.set)
 								icon = [[Interface/PaperDollInfoFrame/UI-EquipmentManager-Toggle]]
