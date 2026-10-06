@@ -6,7 +6,7 @@ RatingBuster converts combat ratings in your tooltips into percentages, so that 
 
 The design aim of RatingBuster is to provide detailed, meaningful and customizable information about items so you can easily decide for yourself which item is better.
 
-![image](https://user-images.githubusercontent.com/7716908/118906904-3ff4e380-b8e4-11eb-8fb5-a0b090d9e9c2.png)
+<img width="286" height="292" alt="image" src="https://github.com/user-attachments/assets/a90a7cfc-21ec-4c1b-abae-4d75b7ab8f58" />
 
 Originally written by Whitetooth (https://github.com/hotdogee)
 
