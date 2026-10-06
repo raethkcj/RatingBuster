@@ -276,13 +276,13 @@ L["永久性地为一把双手近战武器附魔，使其获得智力%s的效果
 L["火焰法术强度提高%s点，持续%s小时。战斗药剂。"] = { { Stats.FireDamage, }, false, } -- s7844
 L["永久性地为一双靴子附魔，使其获得耐力%s的效果。"] = { { Stats.Stamina, }, } -- s7863
 L["永久性地为一双靴子附魔，使其获得敏捷%s的效果。"] = { { Stats.Agility, }, } -- s7867
-L["使附近所有敌人的护甲降低%s点，持续%s秒。"] = { { Stats.Armor, }, false, reduction = true } -- s8245
 L["变成一条毒蛇，持续%s分钟。攻击伤害提高%s点，但攻击间隔延长%s%。"] = { false, { Stats.AverageWeaponDamage, }, { Stats.MeleeHaste, }, } -- s7965
 L["使敌人的力量降低%s点，敏捷降低%s点，耐力降低%s点，持续%s分钟。"] = { { Stats.Strength, }, { Stats.Agility, }, { Stats.Stamina, }, false, reduction = true } -- s7997
 L["攻击间隔延长%s%，持续%s秒。"] = { { Stats.MeleeHaste, }, false, reduction = true } -- s7998
 L["变成一条毒蛇，持续%s秒。物理伤害提高%s点，但不能施法。"] = { false, { Stats.AverageWeaponDamage, }, } -- s8041
 L["精神提高%s点，持续%s分钟。"] = { { Stats.Spirit, }, false, } -- s8068
 L["使目标的护甲提高%s点，持续%s分钟。该效果等同于守护药剂。"] = { { Stats.Armor, }, false, } -- s8091
+L["使附近所有敌人的护甲降低%s点，持续%s秒。"] = { { Stats.Armor, }, false, reduction = true } -- s8245
 L["使目标的智力提高%s点，持续%s分钟。该效果等同于战斗药剂。"] = { { Stats.Intellect, }, false, } -- s8096
 L["使目标的耐力提高%s点，持续%s分钟。该效果等同于守护药剂。"] = { { Stats.Stamina, }, false, } -- s8099
 L["使目标的精神提高%s点，持续%s分钟。该效果等同于战斗药剂。"] = { { Stats.Spirit, }, false, } -- s8112
@@ -297,10 +297,10 @@ L["使施法者的移动速度提高%s%，持续%s秒，并使其在第一次攻
 L["使所有系的魔法抗性提高%s点。"] = { { Stats.FireResistance, Stats.NatureResistance, Stats.FrostResistance, Stats.ShadowResistance, Stats.ArcaneResistance, }, } -- s8263
 L["目标所能造成的伤害降低%s点，持续%s分钟。"] = { { Stats.AverageWeaponDamage, }, false, reduction = true } -- s8277
 L["使一个盟友对敌人造成的物理伤害提高%s点，持续%s秒。"] = { { Stats.AverageWeaponDamage, }, false, } -- s8365
-L["使施法者不能移动，并使其物理攻击所能造成的伤害提高%s点，持续%s秒。"] = { { Stats.AverageWeaponDamage, }, false, } -- s9576
 L["攻击强度提高%s点。"] = { { Stats.GenericAttackPower, Stats.RangedAttackPower, }, } -- s125489
 L["使目标的护甲降低%s点，持续%s分钟。"] = { { Stats.Armor, }, false, reduction = true } -- s9176
 L["智力提高%s点。"] = { { Stats.Intellect, }, } -- s9417
+L["使施法者不能移动，并使其物理攻击所能造成的伤害提高%s点，持续%s秒。"] = { { Stats.AverageWeaponDamage, }, false, } -- s9576
 L["%s 护甲。"] = { { Stats.Armor, }, } -- s9760
 L["使目标的护甲降低%s点，持续%s秒。在效果持续期间，目标无法潜行或隐形。"] = { { Stats.Armor, }, false, reduction = true } -- s9806
 L["能量灌注牧师全身，使其法术急速提高%s%，所有伤害提高%s%，并且所有法术的法力消耗降低%s%，持续%s秒。"] = { { Stats.SpellHaste, }, false, false, false, } -- s10060
@@ -337,6 +337,7 @@ L["对附近的敌人造成自然伤害，并使其命中几率降低%s%，持�
 L["力量降低%s点。\r\n敏捷降低%s点。\r\n智力降低%s点。"] = { { Stats.Strength, }, { Stats.Agility, }, { Stats.Intellect, }, reduction = true } -- s12001
 L["使一名敌人凝视着施法者，施法者的攻击速度提高%s%，持续%s秒。在施法者被目标凝视的期间内，施法者会很不愿意攻击其他的目标。"] = { { Stats.MeleeHaste, }, false, } -- s12021
 L["使半径%s码范围内的小队成员的耐力提高%s点。"] = { false, { Stats.Stamina, }, } -- s12022
+L["奥术法术强度提高%s点。"] = { { Stats.ArcaneDamage, }, } -- s13590
 L["使你的格档几率提高%s%，效果持续%s秒。最多只能格档%s次攻击。"] = { { Stats.BlockChance, }, false, false, } -- s12169
 L["使附近敌人的施法速度降低%s%，攻击间隔延长%s%，持续%s秒。"] = { { Stats.SpellHaste, }, { Stats.MeleeHaste, }, false, reduction = true } -- s12255
 L["加快你的施法速度，法术急速提高%s%，在施法时因受到伤害而承受的施法推迟时间缩短%s%。施放冰冷血脉可以移除所有降低移动和施法速度的效果。持续%s秒。"] = { { Stats.SpellHaste, }, false, false, } -- s12472
@@ -345,7 +346,6 @@ L["使附近敌人的所有属性降低%s点，持续%s分钟。"] = { { Stats.A
 L["你对目标造成的伤害提高%s点，急速提高%s点，持续%s秒。"] = { { Stats.AverageWeaponDamage, }, { Stats.MeleeHasteRating, Stats.RangedHasteRating, Stats.SpellHasteRating, }, false, } -- s12686
 L["使你对目标造成的伤害提高%s点，持续%s秒。"] = { { Stats.AverageWeaponDamage, }, false, } -- s12731
 L["护甲值提高%s点，所有抗性提高%s点，持续%s秒。对%s级以下玩家，还会有免疫恐惧的效果。"] = { { Stats.FireResistance, Stats.NatureResistance, Stats.FrostResistance, Stats.ShadowResistance, Stats.ArcaneResistance, }, false, false, false, } -- s12733
-L["%s 火焰抗性。"] = { { Stats.FireResistance, }, } -- s14540
 L["使敌人暂时发疯，攻击速度提高%s%，移动速度提高%s%，并会攻击自己的盟友，持续%s秒。"] = { { Stats.MeleeHaste, }, false, false, } -- s12888
 L["强迫目标使用恶魔语，使其所有法术的施放时间延长%s%，持续%s秒。每个术士只能对一个目标施加一种诅咒。"] = { { Stats.SpellHaste, }, false, reduction = true } -- s12889
 L["使小鸡造成的物理伤害提高%s%，攻击速度提高%s%，持续%s秒。"] = { { Stats.AverageWeaponDamage, }, { Stats.MeleeHaste, }, false, } -- s13168
@@ -366,7 +366,6 @@ L["腐蚀性的酸液，每%s秒对目标造成%s点自然伤害，并使其护�
 L["使目标的力量降低%s点，持续%s秒。"] = { { Stats.Strength, }, false, reduction = true } -- s13528
 L["以雷霆震击附近的敌人，使它们的攻击间隔延长%s%，持续%s秒，并对它们造成%s点自然伤害。最多可影响%s个目标。"] = { { Stats.MeleeHaste, }, false, false, false, reduction = true } -- s13532
 L["使附近小队成员的攻击速度提高%s%。"] = { { Stats.MeleeHaste, }, } -- s13589
-L["奥术法术强度提高%s点。"] = { { Stats.ArcaneDamage, }, } -- s13590
 L["永久性地为一副护腕附魔，使其获得智力%s的效果。"] = { { Stats.Intellect, }, } -- s13622
 L["永久性地为一件胸甲附魔，使其获得所有属性%s的效果。"] = { { Stats.AllStats, }, } -- s13626
 L["永久性地为一双靴子附魔，使其获得精神%s的效果。"] = { { Stats.Spirit, }, } -- s13687
@@ -375,10 +374,11 @@ L["火焰抗性提高%s点，受到的所有火焰伤害最多降低%s点，持�
 L["永久性地为一双手套附魔，使其获得敏捷%s的效果。"] = { { Stats.Agility, }, } -- s13815
 L["使施法者对所有的伤害和法术攻击免疫，持续%s秒，但是攻击间隔延长%s%。"] = { false, { Stats.MeleeHaste, }, reduction = true } -- s13874
 L["永久性地为一双手套附魔，使其获得力量%s的效果。"] = { { Stats.Strength, }, } -- s13887
-L["%s 冰霜抗性。"] = { { Stats.FrostResistance, }, } -- s14541
 L["永久性地为一双手套附魔，使其获得急速%s的效果。"] = { { Stats.HasteRating, }, } -- s13948
 L["腐蚀敌人的护甲，每次生效都使其护甲值降低%s点，可叠加%s次。持续%s秒。"] = { { Stats.Armor, }, false, false, } -- s14120
 L["使附近敌人的施法速度降低%s%，持续%s秒。"] = { { Stats.SpellHaste, }, false, reduction = true } -- s14538
+L["%s 火焰抗性。"] = { { Stats.FireResistance, }, } -- s14540
+L["%s 冰霜抗性。"] = { { Stats.FrostResistance, }, } -- s14541
 L["%s 自然抗性。"] = { { Stats.NatureResistance, }, } -- s14622
 L["%s 暗影抗性。"] = { { Stats.ShadowResistance, }, } -- s14663
 L["%s 奥术抗性。"] = { { Stats.ArcaneResistance, }, } -- s14664
@@ -494,7 +494,6 @@ L["%s 所有魔法抗性。"] = { { Stats.FireResistance, Stats.NatureResistance
 L["急速提高%s点。"] = { { Stats.MeleeHasteRating, Stats.RangedHasteRating, Stats.SpellHasteRating, }, } -- s18803
 L["在战斗中被敌人击中之后有%s%的几率以白骨保护施法者，使其护甲提高%s点，持续%s秒。"] = { false, { Stats.Armor, }, false, } -- s18828
 L["对目标造成%s点伤害，并使其火焰抗性降低%s点，持续%s秒。"] = { false, { Stats.FireResistance, }, false, reduction = true } -- s18958
-L["耐力和精神提高%s点。持续%s分钟。"] = { { Stats.Stamina, Stats.Spirit, }, false, } -- s19706
 L["使你的近战武器和法术命中几率提高%s%。"] = { { Stats.MeleeHit, Stats.RangedHit, }, } -- s19155
 L["使敌人的施法速度降低%s%，攻击间隔延长%s%，持续%s分钟。"] = { { Stats.SpellHaste, }, { Stats.MeleeHaste, Stats.RangedHaste, }, false, reduction = true } -- s19365
 L["使附近敌人的火焰抗性降低%s点，持续%s分钟。"] = { { Stats.FireResistance, }, false, reduction = true } -- s19366
@@ -502,6 +501,7 @@ L["使你的远程武器造成爆击的几率提高%s%。"] = { { Stats.MeleeCri
 L["使你的攻击间隔缩短%s%，持续%s秒。"] = { { Stats.MeleeHaste, }, false, } -- s19451
 L["所有魔法抗性提高%s点，持续%s秒。"] = { { Stats.FireResistance, Stats.NatureResistance, Stats.FrostResistance, Stats.ShadowResistance, Stats.ArcaneResistance, }, false, } -- s19638
 L["耐力提高%s点。持续%s分钟。"] = { { Stats.Stamina, }, false, } -- s19705
+L["耐力和精神提高%s点。持续%s分钟。"] = { { Stats.Stamina, Stats.Spirit, }, false, } -- s19706
 L["为友方目标施加祝福，使其精通提高%s点。\r\n\r\n如果目标在你的小队或团队中，则全体小队和团队成员都会获得此效果。每个圣骑士在同一时间只能为玩家施加一种祝福。"] = { { Stats.MasteryRating, }, } -- s19740
 L["使附近敌人的近战和远程攻击强度降低%s点，持续%s秒。"] = { { Stats.GenericAttackPower, }, false, reduction = true } -- s19778
 L["使一个盟友对敌人造成的物理伤害提高%s%，攻击速度提高%s%，持续%s秒。"] = { false, { Stats.MeleeHaste, }, false, } -- s19779
@@ -2241,6 +2241,7 @@ L["使目标充满力量，施法速度提高%s%，移动速度提高%s%。"] = 
 L["使目标的攻击速度提高%s%，造成的物理伤害提高%s%，持续%s秒。"] = { { Stats.MeleeHaste, }, false, false, } -- s135851
 L["使施法者的攻击速度提高%s%且造成的所有伤害提高%s%，持续%s秒。"] = { { Stats.MeleeHaste, }, false, false, } -- s144369
 L["耐力提高%s点，持续%s秒。"] = { { Stats.Stamina, }, false, } -- s147361
+L["教你学会永久性地为一把武器附魔，使pvp强度提高%s点，并且缴械效果的持续时间缩短%s%。缴械持续时间的缩短不会和其他类似效果叠加。该装备不得低于%s级。"] = { { Stats.PvpPowerRating, }, false, false, } -- i254315
 L["永久性地为一双靴子附魔，使其获得移动速度略微提高和敏捷%s的效果。该装备等级不得低于%s级。"] = { { Stats.Agility, }, false, } -- i84553
 L["永久性地为一双靴子附魔，使其获得急速%s的效果。该装备不得低于%s级。"] = { { Stats.HasteRating, }, false, } -- i84554
 L["永久性地为一双靴子附魔，使其获得命中%s的效果。该装备不得低于%s级。"] = { { Stats.HitRating, }, false, } -- i84555
@@ -2265,20 +2266,6 @@ L["永久性地为你的戒指附魔，使其获得敏捷%s的效果。该装备
 L["永久性地为你的戒指附魔，使其获得智力%s的效果。该装备等级不得低于%s级。"] = { { Stats.Intellect, }, false, } -- i84576
 L["永久性地为你的戒指附魔，使其获得力量%s的效果。该装备等级不得低于%s级。"] = { { Stats.Strength, }, false, } -- i84578
 L["教你学会永久性地为一只戒指附魔，使它获得所有属性%s的效果。"] = { { Stats.AllStats, }, } -- i186683
-L["教你学会永久性地为一把武器附魔，使pvp强度提高%s点，并且缴械效果的持续时间缩短%s%。缴械持续时间的缩短不会和其他类似效果叠加。该装备不得低于%s级。"] = { { Stats.PvpPowerRating, }, false, false, } -- i254315
-L["教你学会永久性地为一件披风附魔，使其获得爆击%s的效果。该装备不得低于%s级。"] = { { Stats.CritRating, }, false, } -- i52737
-L["教你学会永久性地为一副护腕附魔，使其获得爆击%s的效果。该装备不得低于%s级。"] = { { Stats.CritRating, }, false, } -- i52738
-L["教你学会永久性地为一件胸甲附魔，使其获得所有属性提高%s点的效果。该装备等级不得低于%s级。"] = { { Stats.AllStats, }, false, } -- i52739
-L["教你学会永久性地为一件胸甲附魔，使其获得耐力%s的效果。该装备等级不得低于%s级。"] = { { Stats.Stamina, }, false, } -- i52740
-L["教你学会永久性地为一双靴子附魔，使其获得移动速度略微提高，敏捷提高%s点的效果。该装备等级不得低于%s级。"] = { { Stats.Agility, }, false, } -- i64411
-L["教你学会永久性地为一双靴子附魔，使其获得移动速度略微提高，精通提高%s点的效果。该装备不得低于%s级。"] = { { Stats.MasteryRating, }, false, } -- i64412
-L["教你学会永久性地为一副护腕附魔，使其获得急速提高%s点的效果。该装备不得低于%s级。"] = { { Stats.HasteRating, }, false, } -- i64413
-L["教你学会永久性地为一副手套附魔，使其获得精通提高%s点的效果。该装备不得低于%s级。"] = { { Stats.MasteryRating, }, false, } -- i64414
-L["教你学会永久性地为一副手套附魔，使其获得力量提高%s点的效果。该装备等级不得低于%s级。"] = { { Stats.Strength, }, false, } -- i64415
-L["教你学会永久性地为一副护腕附魔，使其获得敏捷%s的效果。该装备等级不得低于%s级。"] = { { Stats.Agility, }, false, } -- i68787
-L["教你学会永久性地为一副护腕附魔，使其获得力量%s的效果。该装备等级不得低于%s级。"] = { { Stats.Strength, }, false, } -- i68788
-L["教你学会永久性地为一副护腕附魔，使其获得智力%s的效果。该装备等级不得低于%s级。"] = { { Stats.Intellect, }, false, } -- i68789
-L["教你学会永久性地给一件披风附魔，使它获得敏捷%s的效果。"] = { { Stats.Agility, }, } -- i71714
 L["教你学会永久性地为一件胸甲附魔，使其获得法力值%s的效果。"] = { { Stats.Mana, }, } -- i6342
 L["教你学会永久性地为一副护腕附魔，使其获得精神%s的效果。"] = { { Stats.Spirit, }, } -- i6344
 L["教你学会给一件披风永久性地附魔，使它获得%s护甲的效果。"] = { { Stats.Armor, }, } -- i6345
@@ -2329,6 +2316,7 @@ L["教你学会永久性地为一双靴子附魔，使其获得精神和耐力�
 L["教你学会永久性地为一双靴子附魔，使其获得耐力%s的效果。该装备等级不得低于%s级。"] = { { Stats.Stamina, }, false, } -- i22543
 L["教你学会永久性地为一双靴子附魔，使其获得敏捷%s的效果。该装备等级不得低于%s级。"] = { { Stats.Agility, }, false, } -- i22544
 L["教你学会永久性地为一双靴子附魔，使其获得命中和爆击%s的效果。该装备不得低于%s级。"] = { { Stats.HitRating, Stats.CritRating, }, false, } -- i22545
+L["教你学会永久性地为一件胸甲附魔，使其获得所有属性提高%s点的效果。该装备等级不得低于%s级。"] = { { Stats.AllStats, }, false, } -- i22547
 L["教你学会永久性地为一件近战武器附魔，使其获得智力%s的效果。该装备等级不得低于%s级。"] = { { Stats.Intellect, }, false, } -- i22551
 L["教你学会永久性地为一件近战武器附魔，使其获得伤害%s的效果。该装备等级不得低于%s级。"] = { { Stats.AverageWeaponDamage, }, false, } -- i22552
 L["教你学会永久性地为一件近战武器附魔，使其获得力量%s的效果。该装备等级不得低于%s级。"] = { { Stats.Strength, }, false, } -- i22553
@@ -2337,6 +2325,18 @@ L["教你学会永久性地为一件近战武器附魔，使其获得法术强�
 L["教你学会永久性地为一把双手近战武器附魔，使其获得敏捷%s的效果。该装备等级不得低于%s级。"] = { { Stats.Agility, }, false, } -- i22556
 L["教你学会永久性地为一件近战武器附魔，使其获得火焰和奥术法术强度提高%s点的效果。该装备等级不得低于%s级。"] = { { Stats.FireDamage, Stats.ArcaneDamage, }, false, } -- i22560
 L["教你学会永久性地为一件近战武器附魔，使其获得冰霜和暗影法术强度提高%s点的效果。该装备等级不得低于%s级。"] = { { Stats.FrostDamage, Stats.ShadowDamage, }, false, } -- i22561
+L["教你学会永久性地为一件披风附魔，使其获得爆击%s的效果。该装备不得低于%s级。"] = { { Stats.CritRating, }, false, } -- i52737
+L["教你学会永久性地为一副护腕附魔，使其获得爆击%s的效果。该装备不得低于%s级。"] = { { Stats.CritRating, }, false, } -- i52738
+L["教你学会永久性地为一件胸甲附魔，使其获得耐力%s的效果。该装备等级不得低于%s级。"] = { { Stats.Stamina, }, false, } -- i52740
+L["教你学会永久性地为一双靴子附魔，使其获得移动速度略微提高，敏捷提高%s点的效果。该装备等级不得低于%s级。"] = { { Stats.Agility, }, false, } -- i64411
+L["教你学会永久性地为一双靴子附魔，使其获得移动速度略微提高，精通提高%s点的效果。该装备不得低于%s级。"] = { { Stats.MasteryRating, }, false, } -- i64412
+L["教你学会永久性地为一副护腕附魔，使其获得急速提高%s点的效果。该装备不得低于%s级。"] = { { Stats.HasteRating, }, false, } -- i64413
+L["教你学会永久性地为一副手套附魔，使其获得精通提高%s点的效果。该装备不得低于%s级。"] = { { Stats.MasteryRating, }, false, } -- i64414
+L["教你学会永久性地为一副手套附魔，使其获得力量提高%s点的效果。该装备等级不得低于%s级。"] = { { Stats.Strength, }, false, } -- i64415
+L["教你学会永久性地为一副护腕附魔，使其获得敏捷%s的效果。该装备等级不得低于%s级。"] = { { Stats.Agility, }, false, } -- i68787
+L["教你学会永久性地为一副护腕附魔，使其获得力量%s的效果。该装备等级不得低于%s级。"] = { { Stats.Strength, }, false, } -- i68788
+L["教你学会永久性地为一副护腕附魔，使其获得智力%s的效果。该装备等级不得低于%s级。"] = { { Stats.Intellect, }, false, } -- i68789
+L["教你学会永久性地给一件披风附魔，使它获得敏捷%s的效果。"] = { { Stats.Agility, }, } -- i71714
 L["教你学会永久性地为一件胸甲附魔，使其获得韧性%s的效果。该装备不得低于%s级。"] = { { Stats.ResilienceRating, }, false, } -- i28270
 L["教你学会永久性地为一双手套附魔，使其获得命中%s的效果。该装备不得低于%s级。"] = { { Stats.HitRating, }, false, } -- i28271
 L["教你学会永久性地为一双手套附魔，使其获得获得法术强度提高%s点的效果。该装备等级不得低于%s级。"] = { { Stats.SpellPower, }, false, } -- i28272

@@ -568,6 +568,7 @@ L["你的寵物獲得%s點耐力，對所有系別的魔法抗性提高%s點。"
 L["使你寵物的耐力提高%s點，所有法術抗性提高%s點。"] = { { Stats.Stamina, }, false, ignoreSum = true } -- s21926
 L["永久性地為一把武器附魔，使其獲得當施放冰霜法術時冰霜傷害提高最多%s點的效果。"] = { { Stats.FrostDamage, }, } -- s21931
 L["對目標造成%s點傷害，並使它們的護甲值降低%s點。"] = { false, { Stats.Armor, }, reduction = true } -- s21961
+L["使所有屬性提高%s點，持續%s分鐘。"] = { { Stats.AllStats, }, false, } -- s21970
 L["以閃電的力量攻擊敵人，對其造成%s點自然傷害，然後攻擊附近的下一個敵人。閃電每次跳躍都使目標的自然抗性降低%s點。可攻擊%s個目標。你的目標也會因此被颶風吞噬，使其攻擊間隔時間延長%s%，持續%s秒。"] = { false, { Stats.NatureResistance, }, false, { Stats.MeleeHaste, }, false, reduction = true } -- s21992
 L["永久性地為一副護腕附魔，使它們獲得智力%s的效果。"] = { { Stats.Intellect, }, } -- s22054
 L["永久性地為一件披風附魔，使其獲得所有抗性提高%s點的效果。"] = { { Stats.FireResistance, Stats.NatureResistance, Stats.FrostResistance, Stats.ShadowResistance, Stats.ArcaneResistance, }, } -- s22091

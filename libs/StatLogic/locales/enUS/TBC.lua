@@ -593,6 +593,7 @@ L["increases spell frost damage by up to %s for %s min.  battle elixir"] = { { S
 L["increases your pet's stamina by %s and all spell resistances by %s"] = { { Stats.Stamina, }, false, ignoreSum = true } -- s21926
 L["permanently enchant a weapon to grant up to %s additional frost damage when casting frost spells"] = { { Stats.FrostDamage, }, } -- s21931
 L["wounds the target for %s damage and lowers their armor by %s"] = { false, { Stats.Armor, }, reduction = true } -- s21961
+L["increases all stats by %s for %s min"] = { { Stats.AllStats, }, false, } -- s21970
 L["blasts your enemy with lightning, dealing %s nature damage and then jumping to additional nearby enemies.  each jump reduces that victim's nature resistance by %s. affects %s targets. your primary target is also consumed by a cyclone, slowing its attack speed by %s% for %s sec"] = { false, { Stats.NatureResistance, }, false, { Stats.MeleeHaste, }, false, reduction = true } -- s21992
 L["permanently enchant gloves to grant a %s attack speed bonus"] = { { Stats.MeleeHasteRating, Stats.RangedHasteRating, }, } -- s22106
 L["decreases the magical damage dealt by the target by %s for %s min"] = { { Stats.SpellDamage, }, false, reduction = true } -- s22371

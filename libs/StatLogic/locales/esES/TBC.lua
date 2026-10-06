@@ -591,6 +591,7 @@ L["aumenta el daño de escarcha de los hechizos hasta en %s p. durante %s min. e
 L["aumenta el aguante de tu mascota en %s p. y todas las resistencias a los hechizos en %s p"] = { { Stats.Stamina, }, false, ignoreSum = true } -- s21926
 L["encanta de forma permanente un arma para que inflija %s p. extra de daño de escarcha cuando se lancen hechizos de escarcha"] = { { Stats.FrostDamage, }, } -- s21931
 L["inflige %s p. de daño y reduce su armadura en %s p"] = { false, { Stats.Armor, }, reduction = true } -- s21961
+L["aumenta todas las estadísticas en %s p. durante %s min"] = { { Stats.AllStats, }, false, } -- s21970
 L["golpea a tu enemigo con relámpagos, infligiendo %s p. de daño de naturaleza. a continuación pasa a otros enemigos cercanos, reduciendo su resistencia a la naturaleza en %s p. puede utilizarse sobre %s objetivos. además, el primero de los objetivos es golpeado por un ciclón que reduce su velocidad de ataque en un %s% durante %s s"] = { false, { Stats.NatureResistance, }, false, { Stats.MeleeHaste, }, false, reduction = true } -- s21992
 L["encanta de forma permanente unos brazales para proporcionar %s p. de fuerza"] = { { Stats.Strength, }, } -- s22051
 L["encanta de forma permanente unos brazales para proporcionar %s p. de aguante"] = { { Stats.Stamina, }, } -- s22052

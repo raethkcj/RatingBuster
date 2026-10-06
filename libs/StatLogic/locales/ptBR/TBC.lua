@@ -571,6 +571,7 @@ L["ao ser atingido por um ataque, você tem %s% chance de aumentar em %s a armad
 L["aumenta em %s o vigor por %s min, além de embebedar você"] = { { Stats.Stamina, }, false, } -- s20875
 L["subjuga o demônio selecionado, de nível %s ou inferior, forçando-o a obedecer suas vontades. enquanto estiver subjugado, o intervalo entre os ataques do demônio é aumentado em %s% e a velocidade de lançamento de feitiços é reduzida em %s%. dura até %s min"] = { false, { Stats.MeleeHaste, }, { Stats.SpellHaste, }, false, reduction = true } -- s20882
 L["recupera %s pontos de vida a cada %s s"] = { { Stats.HealthRegen, }, false, } -- s20885
+L["aumenta em %s todos os atributos por %s min"] = { { Stats.AllStats, }, false, } -- s21970
 L["aumenta em %s% a chance de bloqueio por %s s e causa %s de dano sagrado a cada ataque bloqueado enquanto ativo. o dano causado pelo escudo sagrado gera %s% a mais de ameaça. cada bloqueio consome uma carga. %s cargas"] = { { Stats.BlockChance, }, false, false, false, false, } -- s20925
 L["aumenta em %s o poder de ataque do seu ajudante"] = { { Stats.GenericAttackPower, }, } -- s20988
 L["aumenta o poder de ataque de longo alcance em %s"] = { { Stats.RangedAttackPower, }, } -- s21013

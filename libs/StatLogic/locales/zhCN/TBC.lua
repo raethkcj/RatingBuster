@@ -557,6 +557,7 @@ L["法术的冰霜伤害提高最多%s点，持续%s分钟。战斗药剂。"] =
 L["使你的宠物的耐力提高%s点，所有法术抗性提高%s点。"] = { { Stats.Stamina, }, false, ignoreSum = true } -- s21926
 L["永久性地为一把武器附魔，使它获得令冰霜法术造成的伤害%s的效果。"] = { { Stats.FrostDamage, }, } -- s21931
 L["对目标造成%s点伤害，并使它们的护甲值降低%s点。"] = { false, { Stats.Armor, }, reduction = true } -- s21961
+L["所有属性提高%s点，持续%s分钟。"] = { { Stats.AllStats, }, false, } -- s21970
 L["以闪电的力量攻击敌人，对其造成%s点自然伤害，然后攻击附近的下一个敌人。闪电每次跳跃都使目标的自然抗性降低%s点。可攻击%s个目标。你的目标也会因此被飓风吞噬，使其攻击速度降低%s%，持续%s秒。"] = { false, { Stats.NatureResistance, }, false, { Stats.MeleeHaste, }, false, reduction = true } -- s21992
 L["permanently enchants bracers to give %s strength"] = { { Stats.Strength, }, } -- s22051
 L["permanently enchants bracers to give %s stamina"] = { { Stats.Stamina, }, } -- s22052

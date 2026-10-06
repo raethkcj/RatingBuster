@@ -630,6 +630,7 @@ L["aumenta %s p. el daño de escarcha con hechizos durante %s min"] = { { Stats.
 L["aumenta el aguante de tu mascota %s p. y todas las resistencias a los hechizos %s p"] = { { Stats.Stamina, }, false, ignoreSum = true } -- s21926
 L["encanta de forma permanente un arma para que otorgue hasta %s p. de daño de escarcha extra cuando se lanzan hechizos de escarcha"] = { { Stats.FrostDamage, }, } -- s21931
 L["inflige %s p. de daño y reduce su armadura %s p"] = { false, { Stats.Armor, }, reduction = true } -- s21961
+L["aumenta todas las estadísticas %s p. durante %s min"] = { { Stats.AllStats, }, false, } -- s21970
 L["golpea a tu enemigo con relámpagos, inflige %s p. de daño de naturaleza. a continuación pasa a otros enemigos cercanos, reduciendo su resistencia a la naturaleza %s p. puede utilizarse sobre %s objetivos. además, el primero de los objetivos es golpeado por un ciclón que reduce su velocidad de ataque un %s% durante %s s"] = { false, { Stats.NatureResistance, }, false, { Stats.MeleeHaste, }, false, reduction = true } -- s21992
 L["encanta de forma permanente una capa que aumenta %s p. de todas las resistencias"] = { { Stats.FireResistance, Stats.NatureResistance, Stats.FrostResistance, Stats.ShadowResistance, Stats.ArcaneResistance, }, } -- s22091
 L["encanta de forma permanente un arma de combate cuerpo a cuerpo de dos manos para que cause %s p. de daño"] = { { Stats.AverageWeaponDamage, }, } -- s22094
@@ -1479,6 +1480,7 @@ L["te enseña a encantar de forma permanente un arma de combate cuerpo a cuerpo 
 L["te enseña a encantar de forma permanente un arma de dos manos para aumentar la agilidad en %s p"] = { { Stats.Agility, }, } -- i22556
 L["aprende a encantar de forma permanente un arma de combate cuerpo a cuerpo para aumentar el daño que causan tus hechizos arcanos y de fuego hasta en %s p"] = { { Stats.FireDamage, Stats.ArcaneDamage, }, } -- i22560
 L["aprende a encantar de forma permanente un arma de combate cuerpo a cuerpo para aumentar el daño que causan tus hechizos de escarcha y de las sombras hasta en %s p"] = { { Stats.FrostDamage, Stats.ShadowDamage, }, } -- i22561
+L["te enseña a encantar de forma permanente un escudo para otorgar %s p. de aguante"] = { { Stats.Stamina, }, } -- i28282
 L["te enseña a encantar de forma permanente un objeto del torso para darle %s p. de índice de temple"] = { { Stats.ResilienceRating, }, } -- i28270
 L["te enseña a encantar de forma permanente unos guantes para otorgar %s p. de índice de golpes con hechizos"] = { { Stats.SpellHitRating, }, } -- i28271
 L["te enseña a encantar de forma permanente unos guantes para aumentar el daño con hechizos y la sanación hasta %s p"] = { { Stats.SpellPower, }, } -- i28272
@@ -1487,7 +1489,6 @@ L["te enseña a encantar de forma permanente una capa para aumentar %s p. de res
 L["te enseña a encantar de forma permanente unas botas para aumentar la velocidad de movimiento ligeramente y la agilidad en %s p"] = { { Stats.Agility, }, } -- i28279
 L["te enseña a encantar de forma permanente unas botas para aumentar la velocidad de movimiento ligeramente y el aguante en %s p"] = { { Stats.Stamina, }, } -- i28280
 L["te enseña a encantar de forma permanente un arma de combate cuerpo a cuerpo para aumentar la sanación en %s p. y el daño con hechizos en %s p"] = { { Stats.HealingPower, }, { Stats.SpellDamage, }, } -- i28281
-L["te enseña a encantar de forma permanente un escudo para otorgar %s p. de aguante"] = { { Stats.Stamina, }, } -- i28282
 L["afilado (%s daño)"] = { { Stats.AverageWeaponDamage, }, } -- e13
 L["reforzado (%s armadura)"] = { { Stats.Armor, }, } -- e15
 L["pesado (%s daño)"] = { { Stats.AverageWeaponDamage, }, } -- e19

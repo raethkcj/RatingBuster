@@ -586,6 +586,7 @@ L["euer tier erhält %s ausdauer und %s zauberwiderstand gegen alle arten von ma
 L["eine waffe dauerhaft verzaubern, sodass sie beim wirken von frostzaubern bis zu %s punkte zusätzlichen frostschaden verursacht"] = { { Stats.FrostDamage, }, } -- s21931
 L["erhöht die angriffskraft eures begleiters um %s"] = { { Stats.GenericAttackPower, }, ignoreSum = true } -- s21938
 L["verwundet das ziel, fügt ihm %s schaden zu und verringert seine rüstung um %s"] = { false, { Stats.Armor, }, reduction = true } -- s21961
+L["erhöht alle widerstände %s min. lang um %s"] = { false, { Stats.AllStats, }, } -- s21970
 L["deckt euren gegner mit blitzschlägen ein, die %s naturschaden verursachen und zu in der nähe befindlichen feinden weiterspringen. jeder sprung verringert den naturwiderstand des ziels um %s. wirkt auf insgesamt %s ziele. euer hauptziel wird außerdem von einem wirbelsturm umgeben, welcher dessen angriffstempo für %s sek. um %s% verringert"] = { false, { Stats.NatureResistance, }, false, false, { Stats.MeleeHaste, }, reduction = true } -- s21992
 L["handschuhe dauerhaft verzaubern, sodass sie einen bonus von %s auf das angriffstempo gewähren"] = { { Stats.MeleeHasteRating, Stats.RangedHasteRating, }, } -- s22106
 L["verringert den magischen schaden den das ziel verursacht %s min. lang um %s"] = { false, { Stats.SpellDamage, }, reduction = true } -- s22371

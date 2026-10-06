@@ -605,6 +605,7 @@ L["augmente les dégâts des sorts de givre de %s au maximum pendant %s min. eli
 L["augmente l'endurance de votre familier de %s et toutes les résistances aux sorts de %s"] = { { Stats.Stamina, }, false, ignoreSum = true } -- s21926
 L["enchante de manière permanente une arme pour lui donner %s points de dégâts supplémentaires lors de l'incantation de sorts de givre"] = { { Stats.FrostDamage, }, } -- s21931
 L["blesse la cible. inflige %s points de dégâts et réduit son armure de %s"] = { false, { Stats.Armor, }, reduction = true } -- s21961
+L["augmente toutes les caractéristiques de %s pendant %s min"] = { { Stats.AllStats, }, false, } -- s21970
 L["votre ennemi est frappé par la foudre, qui lui inflige %s points de dégâts de nature avant de sauter vers d'autres ennemis proches. chaque saut réduit de %s la résistance à la nature de la victime touchée. affecte %s victimes. votre cible est également engloutie par un cyclone, qui ralentit sa vitesse d'attaque de %s% pendant %s s"] = { false, { Stats.NatureResistance, }, false, { Stats.MeleeHaste, }, false, reduction = true } -- s21992
 L["enchante de manière permanente des brassards pour donner un bonus de %s à la force"] = { { Stats.Strength, }, } -- s22051
 L["enchante de manière permanente des brassards pour donner un bonus de %s à l'endurance"] = { { Stats.Stamina, }, } -- s22052
@@ -1293,10 +1294,17 @@ L["augmente les dégâts infligés avec les sorts de %s au maximum pendant %s mi
 L["augmente le score de défense de %s pendant %s min"] = { { Stats.DefenseRating, }, false, } -- s48890
 L["augmente les soins prodigués par les sorts magiques de %s au maximum pendant %s min"] = { { Stats.HealingPower, }, false, } -- s48891
 L["augmente le score de toucher de %s pendant %s min"] = { { Stats.MeleeHitRating, Stats.RangedHitRating, }, false, } -- s48892
+L["vous apprend à enchanter de manière permanente un plastron. ce dernier ajoute %s au score de résilience"] = { { Stats.ResilienceRating, }, } -- i28270
+L["vous apprend à enchanter de manière permanente des gants. ces derniers augmentent le score de toucher des sorts de %s"] = { { Stats.SpellHitRating, }, } -- i28271
+L["vous apprend à enchanter de manière permanente des gants. ces derniers augmentent les dégâts et soins produits par les sorts de %s au maximum"] = { { Stats.SpellPower, }, } -- i28272
+L["vous apprend à enchanter de manière permanente une cape. cette dernière augmente la résistance aux arcanes de %s"] = { { Stats.ArcaneResistance, }, } -- i28276
+L["vous apprend à enchanter de manière permanente une cape. cette dernière augmente la résistance à l'ombre de %s"] = { { Stats.ShadowResistance, }, } -- i28277
+L["vous apprend à enchanter de manière permanente des bottes. ces dernières augmentent légèrement la vitesse de déplacement et confèrent un bonus de %s en agilité"] = { { Stats.Agility, }, } -- i28279
+L["vous apprend à enchanter de manière permanente des bottes. ces dernières augmentent légèrement la vitesse de déplacement et confèrent un bonus de %s en endurance"] = { { Stats.Stamina, }, } -- i28280
+L["vous apprend à enchanter de manière permanente une arme de mêlée. cette dernière augmente les soins de %s et les dégâts des sorts de %s"] = { { Stats.HealingPower, }, { Stats.SpellDamage, }, } -- i28281
+L["vous apprend à enchanter de manière permanente un bouclier. ce dernier augmente l'endurance de %s"] = { { Stats.Stamina, }, } -- i28282
 L["vous apprend à enchanter de manière permanente des gants. ces derniers augmentent l'agilité de %s"] = { { Stats.Agility, }, } -- i33152
-L["vous apprend à enchanter de manière permanente des bottes. ces dernières augmentent légèrement la vitesse de déplacement et confèrent un bonus de %s en endurance"] = { { Stats.Stamina, }, } -- i35297
 L["vous apprend à enchanter de manière permanente des bottes. ces dernières rendent %s points de mana et de vie toutes les %s secondes"] = { { Stats.GenericManaRegen, Stats.HealthRegen, }, false, } -- i35298
-L["vous apprend à enchanter de manière permanente des bottes. ces dernières augmentent légèrement la vitesse de déplacement et confèrent un bonus de %s en agilité"] = { { Stats.Agility, }, } -- i35299
 L["vous apprend à enchanter de manière permanente une pièce d'armure de torse. cette dernière donne %s au score de défense. nécessite un objet de niveau %s ou supérieur"] = { { Stats.DefenseRating, }, false, } -- i35500
 L["vous apprend à enchanter de manière permanente une cape. cette dernière ajoute %s au score de défense. nécessite un objet de niveau %s ou supérieur"] = { { Stats.DefenseRating, }, false, } -- i35756
 L["vous apprend à enchanter de manière permanente un anneau. ce dernier augmente toutes les caractéristiques de %s"] = { { Stats.AllStats, }, } -- i186683
@@ -1375,13 +1383,6 @@ L["vous apprend à enchanter de manière permanente une arme de mêlée. cette d
 L["vous apprend à enchanter de manière permanente une arme à deux mains. cette dernière augmente l'agilité de %s"] = { { Stats.Agility, }, } -- i22556
 L["vous apprend à enchanter de manière permanente une arme de mêlée pour augmenter les dégâts infligés par vos sorts des arcanes et de feu de %s au maximum"] = { { Stats.FireDamage, Stats.ArcaneDamage, }, } -- i22560
 L["vous apprend à enchanter de manière permanente une arme de mêlée pour augmenter les dégâts infligés par vos sorts de givre et d'ombre de %s au maximum"] = { { Stats.FrostDamage, Stats.ShadowDamage, }, } -- i22561
-L["vous apprend à enchanter de manière permanente un plastron. ce dernier ajoute %s au score de résilience"] = { { Stats.ResilienceRating, }, } -- i28270
-L["vous apprend à enchanter de manière permanente des gants. ces derniers augmentent le score de toucher des sorts de %s"] = { { Stats.SpellHitRating, }, } -- i28271
-L["vous apprend à enchanter de manière permanente des gants. ces derniers augmentent les dégâts et soins produits par les sorts de %s au maximum"] = { { Stats.SpellPower, }, } -- i28272
-L["vous apprend à enchanter de manière permanente une cape. cette dernière augmente la résistance aux arcanes de %s"] = { { Stats.ArcaneResistance, }, } -- i28276
-L["vous apprend à enchanter de manière permanente une cape. cette dernière augmente la résistance à l'ombre de %s"] = { { Stats.ShadowResistance, }, } -- i28277
-L["vous apprend à enchanter de manière permanente une arme de mêlée. cette dernière augmente les soins de %s et les dégâts des sorts de %s"] = { { Stats.HealingPower, }, { Stats.SpellDamage, }, } -- i28281
-L["vous apprend à enchanter de manière permanente un bouclier. ce dernier augmente l'endurance de %s"] = { { Stats.Stamina, }, } -- i28282
 L["aiguisé (%s points de dégâts)"] = { { Stats.AverageWeaponDamage, }, } -- e13
 L["renforcé (%s armure)"] = { { Stats.Armor, }, } -- e15
 L["équilibré (%s points de dégâts)"] = { { Stats.AverageWeaponDamage, }, } -- e19

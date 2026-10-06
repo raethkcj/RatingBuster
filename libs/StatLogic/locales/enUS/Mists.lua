@@ -2159,6 +2159,8 @@ L["increases the target's attack speed by %s% and the physical damage it deals b
 L["increases the caster's attack speed by %s% and all damage it deals by %s% for %s sec"] = { { Stats.MeleeHaste, }, false, false, } -- s144369
 L["stamina increased by %s.  lasts %s sec"] = { { Stats.Stamina, }, false, } -- s147361
 L["your flametongue weapon ability grants an additional %s spell power"] = { { Stats.SpellDamage, }, } -- s461993
+L["teaches you how to permanently enchant a ring to increase all stats by %s"] = { { Stats.AllStats, }, } -- i186683
+L["teaches you how to permanently enchant a weapon to increase pvp power by %s and reduce the duration of disarm effects by %s%. disarm duration reduction does not stack with other similar effects.  requires a level %s or higher item"] = { { Stats.PvpPowerRating, }, false, false, } -- i254315
 L["teaches you how to permanently enchant chest armor to increase mana by %s"] = { { Stats.Mana, }, } -- i6342
 L["teaches you how to permanently enchant bracers to increase spirit by %s"] = { { Stats.Spirit, }, } -- i6344
 L["teaches you how to permanently enchant a cloak to give %s additional armor"] = { { Stats.Armor, }, } -- i6345
@@ -2264,8 +2266,6 @@ L["teaches you how to permanently enchant boots to increase attack power by %s. 
 L["teaches you how to permanently enchant a melee weapon to increase critical strike and hit by %s.  requires a level %s or higher item"] = { { Stats.HitRating, Stats.CritRating, }, false, } -- i44496
 L["teaches you how to permanently enchant a melee weapon to increase stamina by %s.  requires a level %s or higher item"] = { { Stats.Stamina, }, false, } -- i44945
 L["teaches you how to permanently enchant a staff to increase spell power by %s.  requires a level %s or higher item"] = { { Stats.SpellPower, }, false, } -- i45059
-L["teaches you how to permanently enchant a ring to increase all stats by %s"] = { { Stats.AllStats, }, } -- i186683
-L["teaches you how to permanently enchant a weapon to increase pvp power by %s and reduce the duration of disarm effects by %s%. disarm duration reduction does not stack with other similar effects.  requires a level %s or higher item"] = { { Stats.PvpPowerRating, }, false, false, } -- i254315
 L["teaches you how to permanently enchant a cloak to increase critical strike by %s.  requires a level %s or higher item"] = { { Stats.CritRating, }, false, } -- i52737
 L["teaches you how to permanently enchant bracers to increase critical strike by %s.  requires a level %s or higher item"] = { { Stats.CritRating, }, false, } -- i52738
 L["teaches you how to permanently enchant a chest to increase stamina by %s.  requires a level %s or higher item"] = { { Stats.Stamina, }, false, } -- i52740
