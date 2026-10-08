@@ -7,12 +7,12 @@ StatLogic.RatingBase = {}
 local OCTRegenMP = 0.25
 
 local RegenMPPerSpt = {
-	["PALADIN"] = 0.125, -- Needs confirmation
-	["HUNTER"]  = 0.125, -- Needs confirmation
+	["PALADIN"] = 0.125,
+	["HUNTER"]  = 0.125,
 	["PRIEST"]  = 0.125,
 	["SHAMAN"]  = 0.125,
-	["MAGE"]    = 0.125, -- Needs confirmation
-	["WARLOCK"] = 0.125, -- Needs confirmation
+	["MAGE"]    = 0.125,
+	["WARLOCK"] = 0.125,
 	["DRUID"]   = 0.125,
 }
 
