@@ -599,16 +599,7 @@ elseif addon.class == "PALADIN" then
 			{
 				["trait"] = 110882,
 				["rank"] = {
-					0.33, 0.66, 1.00,
-				},
-			}
-		},
-		["ADD_HEALING_MOD_INT"] = {
-			-- Talent: Champion of the Light
-			{
-				["trait"] = 110882,
-				["rank"] = {
-					0.33, 0.66, 1.00,
+					0.20, 0.40, 0.60,
 				},
 			}
 		},
