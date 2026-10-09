@@ -302,6 +302,15 @@ if addon.class == "DRUID" then
 				["aura"] = 24858,
 			},
 		},
+		["ADD_HEALING_MOD_INT"] = {
+			-- Talent: Natural Instinct
+			{
+				["trait"] = 134411,
+				["rank"] = {
+					0.12, 0.25,
+				},
+			},
+		},
 		["MOD_ARMOR"] = {
 			-- Buff: Bear Form
 			{
