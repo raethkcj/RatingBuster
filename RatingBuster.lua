@@ -1905,12 +1905,15 @@ do
 							elseif case.trait then
 								local configID = C_SpecializationInfo.GetCombatConfigIDForSpecGroup(statModContext.specGroup)
 								local nodeInfo = C_Traits.GetNodeInfo(configID, case.trait)
-								local entryInfo = C_Traits.GetEntryInfo(configID, nodeInfo.activeEntry.entryID)
-								local definitionInfo = C_Traits.GetDefinitionInfo(entryInfo.definitionID)
-								local spellInfo = C_Spell.GetSpellInfo(definitionInfo.spellID)
-								if spellInfo then
-									name = spellInfo.name
-									icon = spellInfo.iconID
+								local entry = nodeInfo.activeEntry
+								if entry then
+									local entryInfo = C_Traits.GetEntryInfo(configID, entry.entryID)
+									local definitionInfo = C_Traits.GetDefinitionInfo(entryInfo.definitionID)
+									local spellInfo = C_Spell.GetSpellInfo(definitionInfo.spellID)
+									if spellInfo then
+										name = spellInfo.name
+										icon = spellInfo.iconID
+									end
 								end
 							elseif case.set then
 								name = C_Item.GetItemSetInfo(case.set)
