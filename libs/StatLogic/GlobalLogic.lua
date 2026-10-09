@@ -62,6 +62,51 @@ StatLogic.StatModTable["GLOBAL"] = {
 			value = 1,
 		},
 	},
+	["ADD_MELEE_HIT_MOD_HIT"] = {
+		{
+			["value"] = 1,
+		},
+	},
+	["ADD_MELEE_CRIT_MOD_CRIT"] = {
+		{
+			["value"] = 1,
+		},
+	},
+	["ADD_MELEE_HASTE_MOD_HASTE"] = {
+		{
+			["value"] = 1,
+		},
+	},
+	["ADD_RANGED_HIT_MOD_HIT"] = {
+		{
+			["value"] = 1,
+		},
+	},
+	["ADD_RANGED_CRIT_MOD_CRIT"] = {
+		{
+			["value"] = 1,
+		},
+	},
+	["ADD_RANGED_HASTE_MOD_HASTE"] = {
+		{
+			["value"] = 1,
+		},
+	},
+	["ADD_SPELL_HIT_MOD_HIT"] = {
+		{
+			["value"] = 1,
+		},
+	},
+	["ADD_SPELL_CRIT_MOD_CRIT"] = {
+		{
+			["value"] = 1,
+		},
+	},
+	["ADD_SPELL_HASTE_MOD_HASTE"] = {
+		{
+			["value"] = 1,
+		},
+	},
 	["ADD_MELEE_CRIT_MOD_AGI"] = {
 		{
 			["level"] = addon.conversionFallback(addon.CritPerAgi[addon.class], StatLogic.GetCritPerAgi),

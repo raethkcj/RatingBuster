@@ -678,6 +678,18 @@ local addedInfoMods = {
 		mod = "MASTERY",
 	},
 	{
+		add = "MELEE_HIT",
+		mod = "HIT",
+	},
+	{
+		add = "MELEE_CRIT",
+		mod = "CRIT",
+	},
+	{
+		add = "MELEE_HASTE",
+		mod = "HASTE",
+	},
+	{
 		add = "MELEE_HIT_RATING",
 		mod = "HIT_RATING",
 	},
@@ -758,8 +770,32 @@ local addedInfoMods = {
 		mod = "INT",
 	},
 	{
+		add = "RANGED_HIT",
+		mod = "HIT",
+	},
+	{
+		add = "RANGED_CRIT",
+		mod = "CRIT",
+	},
+	{
+		add = "RANGED_HASTE",
+		mod = "HASTE",
+	},
+	{
 		add = "RANGED_CRIT",
 		mod = "AGI",
+	},
+	{
+		add = "SPELL_HIT",
+		mod = "HIT",
+	},
+	{
+		add = "SPELL_CRIT",
+		mod = "CRIT",
+	},
+	{
+		add = "SPELL_HASTE",
+		mod = "HASTE",
 	},
 	{
 		add = "SPELL_CRIT",
