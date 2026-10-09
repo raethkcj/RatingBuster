@@ -920,13 +920,6 @@ elseif addon.class == "WARRIOR" then
 			},
 		},
 		["MOD_ARMOR"] = {
-			-- Talent: Toughness
-			{
-				["trait"] = 105973,
-				["rank"] = {
-					0.02, 0.04, 0.06, 0.08, 0.10,
-				},
-			},
 			-- Buff: Death Wish
 			{
 				["value"] = -0.20,
