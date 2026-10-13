@@ -1534,78 +1534,13 @@ local function ValidateStatMod(statModName, case, statModContext)
 	return true
 end
 
--- As of Classic Patch 3.4.0, GetTalentInfo indices no longer correlate
--- to their positions in the tree. Building a talent cache ordered by
--- tier then column allows us to replicate the previous behavior,
--- and keep StatModTables human-readable.
-local reorderTalentCache = addon.tocversion < 16000 or (addon.tocversion >= 20000 and addon.tocversion < 50000)
-local orderedTalentCache = {}
 function StatLogic:GetOrderedTalentInfo(tab, num, specGroup)
-	if reorderTalentCache then
-		local ordered_num = orderedTalentCache[tab][num]
-		return GetTalentInfo(tab, ordered_num, specGroup)
-	else
-		return C_SpecializationInfo.GetTalentInfo({
-			tier = tab,
-			column = num,
-			groupIndex = specGroup,
-		})
-	end
-end
-
-local talentCacheExists = false
-function StatLogic:TalentCacheExists()
-	return talentCacheExists
-end
-
-if reorderTalentCache then
-	local function GenerateOrderedTalents()
-		local temp = {}
-		local numTabs = GetNumTalentTabs()
-		for tab = 1, numTabs do
-			temp[tab] = {}
-			local products = {}
-			for i = 1, GetNumTalents(tab) do
-				local name, _, tier, column = GetTalentInfo(tab, i)
-				if name then
-					local product = (tier - 1) * 4 + column
-					temp[tab][product] = i
-					table.insert(products, product)
-				end
-			end
-
-			table.sort(products)
-
-			orderedTalentCache[tab] = {}
-			local j = 1
-			for _, product in ipairs(products) do
-				orderedTalentCache[tab][j] = temp[tab][product]
-				j = j + 1
-			end
-		end
-		talentCacheExists = orderedTalentCache[numTabs] and #orderedTalentCache[numTabs] > 0
-	end
-
-	local f = CreateFrame("Frame")
-	f:RegisterEvent("SPELLS_CHANGED")
-	f:SetScript("OnEvent", function(self)
-		GenerateOrderedTalents()
-		if not talentCacheExists then
-			-- Talents are not guaranteed to exist on SPELLS_CHANGED,
-			-- and there is no definite event for when they will exist.
-			-- Recheck every 1 second after SPELLS_CHANGED until they exist.
-			local ticker
-			ticker = C_Timer.NewTicker(1, function()
-				GenerateOrderedTalents()
-				if talentCacheExists then
-					ticker:Cancel()
-				end
-			end)
-		end
-		self:UnregisterEvent("SPELLS_CHANGED")
-	end)
-else
-	talentCacheExists = true
+	local talentInfo = C_SpecializationInfo.GetTalentInfo({
+		tier = tab,
+		column = num,
+		groupIndex = specGroup,
+	})
+	return talentInfo.name, talentInfo.icon, talentInfo.selected, talentInfo.rank
 end
 
 do
@@ -1654,7 +1589,7 @@ do
 		if case.tab and case.num then
 			if addon.tocversion < 50000 then
 				-- Vanilla-style talents with tabs and ranks
-				local rank = select(5, StatLogic:GetOrderedTalentInfo(case.tab, case.num, context.specGroup))
+				local rank = select(4, StatLogic:GetOrderedTalentInfo(case.tab, case.num, context.specGroup))
 				if case.rank then
 					newValue = case.rank[rank]
 				elseif rank > 0 then
@@ -1662,7 +1597,7 @@ do
 				end
 			else
 				-- Mists-style talents with rows, columns and no ranks
-				local selected = select(4, StatLogic:GetOrderedTalentInfo(case.tab, case.num, context.specGroup))
+				local selected = select(3, StatLogic:GetOrderedTalentInfo(case.tab, case.num, context.specGroup))
 				if selected then
 					newValue = case.value
 				end
@@ -2906,13 +2841,8 @@ if regions[GetCurrentRegion()] and GetLocale() == "enUS" then
 			end
 
 			store:SetScript("OnEvent", function()
-				if StatLogic:TalentCacheExists() and RatingBuster.conversion_data then
-					C_Timer.After(2, storeConversionValues)
-				else
-					C_Timer.After(2, function()
-						store:GetScript("OnEvent")("PLAYER_LEVEL_UP")
-					end)
-				end
+				-- Player stats are not updated yet when the level up event fires
+				C_Timer.After(2, storeConversionValues)
 			end)
 			store:GetScript("OnEvent")("PLAYER_LEVEL_UP")
 		end

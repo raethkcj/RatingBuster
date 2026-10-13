@@ -2005,18 +2005,13 @@ do
 	end
 
 	function RatingBuster:SPELLS_CHANGED()
-		if StatLogic:TalentCacheExists() then
+		-- Talents are not guaranteed to exist on SPELLS_CHANGED,
+		-- and there is no definite event for when they will exist.
+		C_Timer.After(1, function()
 			GenerateStatModOptions()
 			GenerateAuraOptions()
 			RatingBuster:InitializeDatabase()
-		else
-			-- Talents are not guaranteed to exist on SPELLS_CHANGED,
-			-- and there is no definite event for when they will exist.
-			-- Recheck every 1 second after SPELLS_CHANGED until they exist.
-			C_Timer.After(1, function()
-				self:SPELLS_CHANGED()
-			end)
-		end
+		end)
 		self:UnregisterEvent("SPELLS_CHANGED")
 	end
 end
