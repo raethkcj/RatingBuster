@@ -1535,9 +1535,12 @@ local function ValidateStatMod(statModName, case, statModContext)
 end
 
 function StatLogic:GetOrderedTalentInfo(tab, num, specGroup)
+	local mists = addon.tocversion >= 50000
+	local tabKey = mists and "tier" or "specializationIndex"
+	local numKey = mists and "column" or "talentIndex"
 	local talentInfo = C_SpecializationInfo.GetTalentInfo({
-		tier = tab,
-		column = num,
+		[tabKey] = tab,
+		[numKey] = num,
 		groupIndex = specGroup,
 	})
 	return talentInfo.name, talentInfo.icon, talentInfo.selected, talentInfo.rank
