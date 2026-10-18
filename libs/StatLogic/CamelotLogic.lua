@@ -961,21 +961,7 @@ elseif addon.class == "WARRIOR" then
 	}
 end
 
-if addon.playerRace == "Dwarf" then
-	StatLogic.StatModTable["Dwarf"] = {
-		[StatLogic.Stats.Crit] = {
-			-- Passive: Mace Specialization
-			{
-				["value"] = 2,
-				["weaponSubclass"] = {
-					[Enum.ItemWeaponSubclass.Mace1H] = true,
-					[Enum.ItemWeaponSubclass.Mace2H] = true,
-				},
-				["group"] = addon.ExclusiveGroup.WeaponRacial,
-			}
-		},
-	}
-elseif addon.playerRace == "Tauren" then
+if addon.playerRace == "Tauren" then
 	StatLogic.StatModTable["Tauren"] = {
 		["MOD_HEALTH"] = {
 			-- Passive: Endurance
@@ -1001,31 +987,9 @@ elseif addon.playerRace == "Human" then
 				["value"] = 0.05,
 			}
 		},
-		[StatLogic.Stats.Crit] = {
-			-- Passive: Sword Specialization
-			{
-				["value"] = 2,
-				["weaponSubclass"] = {
-					[Enum.ItemWeaponSubclass.Sword1H] = true,
-					[Enum.ItemWeaponSubclass.Sword2H] = true,
-				},
-				["group"] = addon.ExclusiveGroup.WeaponRacial,
-			}
-		}
 	}
 elseif addon.playerRace == "Orc" then
 	StatLogic.StatModTable["Orc"] = {
-		[StatLogic.Stats.Crit] = {
-			-- Passive: Axe Specialization
-			{
-				["value"] = 2,
-				["weaponSubclass"] = {
-					[Enum.ItemWeaponSubclass.Axe1H] = true,
-					[Enum.ItemWeaponSubclass.Axe2H] = true,
-				},
-				["group"] = addon.ExclusiveGroup.WeaponRacial,
-			}
-		},
 		["MOD_AP"] = {
 			-- Buff: Blood Fury
 			{
