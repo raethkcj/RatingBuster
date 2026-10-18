@@ -1035,13 +1035,13 @@ elseif addon.playerRace == "Troll" then
 		["MOD_NORMAL_HEALTH_REG"] = {
 			-- Passive: Regeneration
 			{
-				["value"] = 0.1,
+				["value"] = 0.20,
 			},
 		},
 		["ADD_HEALTH_REG_MOD_NORMAL_HEALTH_REG"] = {
 			-- Passive: Regeneration
 			{
-				["value"] = 0.1,
+				["value"] = 0.20,
 				["spellid"] = 20555,
 			},
 		},
