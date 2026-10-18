@@ -509,8 +509,6 @@ elseif addon.class == "MAGE" then
 				["aura"] = 6117,
 			},
 		},
-		["MOD_NORMAL_MANA_REGEN"] = {
-		},
 		["MOD_INT"] = {
 			-- Talent: Arcane Mind
 			{
@@ -520,8 +518,14 @@ elseif addon.class == "MAGE" then
 				},
 			},
 		},
-		["MOD_SPI"] = {
-		}
+		["ADD_SPELL_DMG_MOD_INT"] = {
+			-- Buff: Arcane Blast
+			{
+				["stack"] = 0.15,
+				["max_stacks"] = 4,
+				["aura"] = 400573,
+			},
+		},
 	}
 elseif addon.class == "PALADIN" then
 	StatLogic.StatModTable["PALADIN"] = {
