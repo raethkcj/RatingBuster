@@ -1193,6 +1193,11 @@ StatLogic.StatModTable["ALL"] = {
 			["aura"] = 24425,
 			["group"] = addon.ExclusiveGroup.Zandalar,
 		},
+		-- Buff: Dark Inspiration
+		{
+			["value"] = 0.15,
+			["aura"] = 1326168,
+		},
 	},
 	["ADD_MANA_REGEN_NOT_CASTING_MOD_NORMAL_MANA_REGEN"] = {
 		-- Base
