@@ -2332,6 +2332,7 @@ end
 
 ---@param tooltip ClassicGameTooltip
 function RatingBuster.ProcessTooltip(tooltip)
+	if not db then return end
 	-- Do nothing if the tooltip is being used as a hidden scanning tooltip
 	if tooltip:GetAnchorType() == "ANCHOR_NONE" and (not tooltip:GetOwner() or scanningTooltipOwners[tooltip:GetOwner():GetName()]) then
 		return
