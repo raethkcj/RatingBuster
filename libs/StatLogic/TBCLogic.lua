@@ -775,7 +775,7 @@ elseif addon.class == "MAGE" then
 			-- Talent: Mind Mastery
 			{
 				["tab"] = 1,
-				["num"] = 22,
+				["num"] = 21,
 				["rank"] = {
 					0.05, 0.1, 0.15, 0.2, 0.25,
 				},
