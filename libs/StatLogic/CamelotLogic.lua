@@ -462,7 +462,7 @@ elseif addon.class == "HUNTER" then
 			{
 				["trait"] = 110859,
 				["rank"] = {
-					0.02, 0.04, 0.06, 0.08, 0.10,
+					0.03, 0.06, 0.09, 0.12, 0.15,
 				},
 			},
 		},
@@ -491,7 +491,7 @@ elseif addon.class == "MAGE" then
 			{
 				["trait"] = 105809,
 				["rank"] = {
-					0.25, 0.50,
+					0.25, 0.50, 0.75,
 				},
 			},
 		},
@@ -561,16 +561,6 @@ elseif addon.class == "PALADIN" then
 				["value"] = 0.05,
 			},
 		},
-		["MOD_AP"] = {
-			-- Talent: Vindication
-			{
-				["trait"] = 105702,
-				["rank"] = {
-					0.01, 0.02, 0.03,
-				},
-				["aura"] = 440668,
-			},
-		},
 		["MOD_ARMOR"] = {
 			-- Talent: Toughness
 			{
@@ -598,21 +588,12 @@ elseif addon.class == "PALADIN" then
 				},
 			},
 		},
-		["MOD_STA"] = {
-			-- Talent: Sacred Duty
-			{
-				["trait"] = 105632,
-				["rank"] = {
-					0.02, 0.04,
-				},
-			},
-		},
 		["ADD_SPELL_DMG_MOD_INT"] = {
 			-- Talent: Champion of the Light
 			{
 				["trait"] = 110882,
 				["rank"] = {
-					0.20, 0.40, 0.60,
+					0.12, 0.24, 0.36, 0.48, 0.60,
 				},
 			}
 		},
@@ -621,7 +602,7 @@ elseif addon.class == "PALADIN" then
 			{
 				["trait"] = 110874,
 				["rank"] = {
-					0.1, 0.2, 0.3,
+					0.15, 0.30,
 				},
 			},
 		},
@@ -793,7 +774,7 @@ elseif addon.class == "SHAMAN" then
 			{
 				["trait"] = 104755,
 				["rank"] = {
-					0.33, 0.67, 1.00,
+					0.50, 1.00, 1.50,
 				},
 			},
 		},
@@ -988,7 +969,7 @@ elseif addon.playerRace == "Human" then
 		["MOD_SPI"] = {
 			-- Passive: The Human Spirit
 			{
-				["value"] = 0.05,
+				["value"] = 0.10,
 			}
 		},
 	}
@@ -1021,7 +1002,7 @@ elseif addon.playerRace == "Skyborne" then
 		["MOD_NORMAL_HEALTH_REG"] = {
 			-- Buff: Energized
 			{
-				["value"] = 1.00,
+				["value"] = 0.50,
 				["aura"] = 1270842,
 				["spellid"] = 1259705,
 			},
@@ -1029,8 +1010,9 @@ elseif addon.playerRace == "Skyborne" then
 		["MOD_NORMAL_MANA_REGEN"] = {
 			-- Buff: Energized
 			{
-				["value"] = 1.00,
+				["value"] = 0.50,
 				["aura"] = 1270842,
+				["spellid"] = 1259705,
 			},
 		},
 	}
