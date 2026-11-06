@@ -1636,7 +1636,6 @@ local roleDefaults = {
 		showAvoidanceFromDodge = false,
 	},
 	[Role.Initial] = {
-		sumIgnoreUnused = false,
 		sumWeaponDPS = true,
 		sumWeaponAverageDamage = true,
 		sumAvoidance = true,
@@ -1718,6 +1717,9 @@ function addon.GetDefaults(specGroup)
 	local role = specializationRoles[addon.class][specIndex] or Role.Initial
 	for key, value in pairs(roleDefaults[role]) do
 		defaults.profile[key] = value
+	end
+	if role == Role.Initial then
+		defaults.global.sumIgnoreUnused = false
 	end
 
 	for key, value in pairs(classDefaults[addon.class]) do
