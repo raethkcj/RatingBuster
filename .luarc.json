@@ -318,6 +318,10 @@
         "CR_CRIT_MELEE",
         "CR_HIT_MELEE",
         "CR_MASTERY",
-        "PLAYER_CLASS"
+        "PLAYER_CLASS",
+        "ITEM_MOD_HASTE_SPELL_RATING",
+        "ITEM_MOD_PVP_POWER",
+        "ITEM_MOD_HASTE_MELEE_RATING",
+        "ITEM_MOD_HASTE_RANGED_RATING"
     ]
 }
