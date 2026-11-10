@@ -135,7 +135,7 @@ addon.TrimmedPrefixes = {}
 local trimmedPrefixes = {
 	ITEM_SPELL_TRIGGER_ONEQUIP,
 	" +",
-	(ENCHANTED_TOOLTIP_LINE and ENCHANTED_TOOLTIP_LINE:gsub("%%s", ""):trim()) or "Enchanted:",
+	ENCHANTED_TOOLTIP_LINE:format(""):trim(),
 }
 
 setPrefixPatterns(trimmedPrefixes, addon.TrimmedPrefixes)
