@@ -323,6 +323,8 @@
         "ITEM_MOD_PVP_POWER",
         "ITEM_MOD_HASTE_MELEE_RATING",
         "ITEM_MOD_HASTE_RANGED_RATING",
-        "ENCHANTED_TOOLTIP_LINE"
+        "ENCHANTED_TOOLTIP_LINE",
+        "IF_EQUIPPED_TOGETHER",
+        "TooltipUtil"
     ]
 }

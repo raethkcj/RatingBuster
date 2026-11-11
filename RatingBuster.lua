@@ -2312,6 +2312,19 @@ local scanningTooltipOwners = {
 }
 
 ---@param tooltip GameTooltip
+---@return string
+local function GetTooltipItem(tooltip)
+	local _, link
+	if TooltipUtil then
+		_, link = TooltipUtil.GetDisplayedItem(tooltip)
+	else
+		_, link = tooltip:GetItem()
+	end
+	---@type string
+	return link
+end
+
+---@param tooltip GameTooltip
 ---@param lines table
 ---@param leftText string|number
 ---@param leftColor colorRGBA?
@@ -2346,12 +2359,7 @@ function RatingBuster.ProcessTooltip(tooltip)
 	end
 
 	if not tooltip.GetItem and not addon.NewTooltipSystem then return end
-	local _, link
-	if TooltipUtil then
-		_, link = TooltipUtil.GetDisplayedItem(tooltip)
-	else
-		_, link = tooltip:GetItem()
-	end
+	local link = GetTooltipItem(tooltip)
 	if not link then return end
 	local item = Item:CreateFromItemLink(link)
 	if item:IsItemEmpty() or not item:IsItemDataCached() then return end
@@ -2372,7 +2380,7 @@ function RatingBuster.ProcessTooltip(tooltip)
 	---------------------
 	-- Get equipped item avoidances
 	if db.profile.enableAvoidanceDiminishingReturns then
-		local _, _, difflink1 = StatLogic:GetDiffID(tooltip, db.global.sumIgnoreEnchant)
+		local _, _, difflink1 = StatLogic:GetDiffID(link, db.global.sumIgnoreEnchant)
 		StatLogic:GetSum(difflink1, equippedSum, statModContext)
 		equippedSum[StatLogic.Stats.Strength] = equippedSum[StatLogic.Stats.Strength] * statModContext("MOD_STR")
 		equippedSum[StatLogic.Stats.Agility] = equippedSum[StatLogic.Stats.Agility] * statModContext("MOD_AGI")
@@ -4624,12 +4632,25 @@ function RatingBuster:StatSummary(tooltip, lines, link, statModContext)
 		link = StatLogic:RemoveEnchant(link)
 	end
 
+	local equippedWith
+	if tooltip.CompareHeader and tooltip.CompareHeader.Label then
+		local label = tooltip.CompareHeader.Label
+		local text = label:GetText()
+		if text == IF_EQUIPPED_TOGETHER then
+			local owner = tooltip:GetOwner()
+			if owner.GetObjectType and owner:GetObjectType() == "GameTooltip" then
+				equippedWith = GetTooltipItem(owner)
+			end
+		end
+	end
+
 	-- Diff Display Style
 	-- Main Tooltip: tooltipLevel = 0
 	-- Compare Tooltip 1: tooltipLevel = 1
 	-- Compare Tooltip 2: tooltipLevel = 2
 	local id
 	local tooltipLevel = 0
+	---@type GameTooltip
 	local mainTooltip = tooltip
 	-- Determine tooltipLevel and id
 	if db.global.calcDiff and (db.global.sumDiffStyle == "comp") then
@@ -4638,8 +4659,9 @@ function RatingBuster:StatSummary(tooltip, lines, link, statModContext)
 	    if owner.GetObjectType and owner:GetObjectType() == "GameTooltip" then
 			mainTooltip = owner
 		end
-		-- Detemine tooltip level
-		local _, mainlink, difflink1, difflink2 = StatLogic:GetDiffID(mainTooltip, db.global.sumIgnoreEnchant)
+		-- Determine tooltip level
+		local item = GetTooltipItem(mainTooltip)
+		local _, mainlink, difflink1, difflink2 = StatLogic:GetDiffID(item, db.global.sumIgnoreEnchant, equippedWith)
 		if link == mainlink then
 			tooltipLevel = 0
 		elseif link == difflink1 then
@@ -4654,7 +4676,7 @@ function RatingBuster:StatSummary(tooltip, lines, link, statModContext)
 			id = "sum"..link
 		end
 	else
-		id = StatLogic:GetDiffID(link, db.global.sumIgnoreEnchant)
+		id = StatLogic:GetDiffID(link, db.global.sumIgnoreEnchant, equippedWith)
 	end
 	if not id then return end
 
@@ -4674,6 +4696,9 @@ function RatingBuster:StatSummary(tooltip, lines, link, statModContext)
 	local statData = {}
 	statData.sum = StatLogic:GetSum(link, nil, statModContext, gems)
 	if not statData.sum then return end
+	if equippedWith then
+		statData.sum = statData.sum + StatLogic:GetSum(equippedWith, nil, statModContext, gems)
+	end
 	if not db.global.calcSum then
 		statData.sum = nil
 	end

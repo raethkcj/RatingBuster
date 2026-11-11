@@ -2653,23 +2653,17 @@ end
 
 -- Returns a unique identification string of the diff calculation,
 -- the identification string is made up of links concatenated together, can be used for cache indexing
----@param item string|GameTooltip itemLink or tooltip of target item
+---@param item string itemLink of target item
 ---@param ignoreEnchant? boolean
+---@param equippedWith? string itemLink
 ---@return string? id A unique identification string of the diff calculation
 ---@return string? link Link of main item
 ---@return string? linkDiff1 Link of compare item 1
 ---@return string? linkDiff2 Link of compare item 2
-function StatLogic:GetDiffID(item, ignoreEnchant)
+function StatLogic:GetDiffID(item, ignoreEnchant, equippedWith)
+	if type(item) ~= "string" then return end
+
 	local name, inventoryType, link, linkDiff1, linkDiff2, _
-	-- Check item
-	if (type(item) == "string") or (type(item) == "number") then
-	elseif type(item) == "table" and type(item.GetItem) == "function" then
-		-- Get the link
-		_, item = item:GetItem()
-		if type(item) ~= "string" then return end
-	else
-		return
-	end
 	-- Check if item is in local cache
 	name, link, _, _, _, _, _, _, inventoryType = C_Item.GetItemInfo(item)
 	if not name then return end
@@ -2699,7 +2693,7 @@ function StatLogic:GetDiffID(item, ignoreEnchant)
 	-- 2h weapon, so we calculate the difference with equipped main hand and off hand
 	elseif inventoryType == "INVTYPE_2HWEAPON" then
 		linkDiff1 = GetInventoryItemLink("player", INVSLOT_MAINHAND) or "NOITEM"
-		linkDiff2= GetInventoryItemLink("player", INVSLOT_OFFHAND) or "NOITEM"
+		linkDiff2 = GetInventoryItemLink("player", INVSLOT_OFFHAND) or "NOITEM"
 	-- Off hand slot, check if we have 2h equipped
 	elseif slotID == INVSLOT_OFFHAND then
 		linkDiff1 = GetInventoryItemLink("player", INVSLOT_MAINHAND) or "NOITEM"
@@ -2727,19 +2721,23 @@ function StatLogic:GetDiffID(item, ignoreEnchant)
 	if linkDiff2 then
 		id = id..linkDiff2
 	end
+	if equippedWith then
+		id = id .. equippedWith
+	end
 
 	return id, link, linkDiff1, linkDiff2
 end
 
 -- Calculates the stat difference from the specified item and your currently equipped items.
----@param item string|GameTooltip itemLink or tooltip of target item
+---@param item string itemLink of target item
 ---@param ignoreEnchant? boolean
 ---@param gemInfo GemInfo
+---@param equippedWith string?
 ---@return StatTable? diff1
 ---@return StatTable? diff2
-function StatLogic:GetDiff(item, ignoreEnchant, gemInfo)
+function StatLogic:GetDiff(item, ignoreEnchant, gemInfo, equippedWith)
 	-- Get DiffID
-	local id, link, linkDiff1, linkDiff2 = self:GetDiffID(item, ignoreEnchant)
+	local id, link, linkDiff1, linkDiff2 = self:GetDiffID(item, ignoreEnchant, equippedWith)
 	if not id then return end
 
 	local diff1, diff2
@@ -2757,6 +2755,9 @@ function StatLogic:GetDiff(item, ignoreEnchant, gemInfo)
 	local itemSum = self:GetSum(link, nil, nil, gemInfo)
 	if not itemSum then return end
 	local inventoryType = itemSum.inventoryType
+	if equippedWith then
+		itemSum = itemSum + self:GetSum(equippedWith, nil, nil, gemInfo)
+	end
 
 	if inventoryType == "INVTYPE_2HWEAPON" and not HasTitansGrip() then
 		local equippedSum1, equippedSum2
@@ -2791,7 +2792,7 @@ function StatLogic:GetDiff(item, ignoreEnchant, gemInfo)
 		del(equippedSum)
 		equippedSum = nil
 		-- Check if item has a second equip slot
-		if linkDiff2 then -- If so
+		if linkDiff2 then
 			-- Get equipped item 2 sum
 			if linkDiff2 == "NOITEM" then
 				equippedSum = newStatTable()
