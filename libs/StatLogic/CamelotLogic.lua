@@ -774,7 +774,7 @@ elseif addon.class == "SHAMAN" then
 			{
 				["trait"] = 104755,
 				["rank"] = {
-					0.50, 1.00, 1.50,
+					0.33, 0.66, 1.00,
 				},
 			},
 		},
