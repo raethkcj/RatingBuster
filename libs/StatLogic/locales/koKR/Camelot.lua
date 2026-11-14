@@ -37,7 +37,7 @@ W["영양가 있는 식사를 해서 포만감을 느끼며, 주문 공격력이
 W["영양가 있는 식사를 해서 포만감을 느끼며, 낚시 숙련도가 증가합니다"] = { [Stats.Intellect] = 1, } -- s1249521
 W["맛있는 음료를 마셔 포만감을 느끼며, 정신력이 증가합니다"] = { [Stats.Spirit] = 1, } -- s1249926
 W["맛있는 음료를 마셔 포만감을 느끼며, 치유력이 증가합니다"] = { [Stats.HealingPower] = 1, } -- s1249927
-W["복용자가 적의 공격을 받으면 빠르게 날아드는 도끼가 공격자를 내리쳐 잠시 지면에 고정시킵니다"] = { [Stats.Armor] = 100, [Stats.FireResistance] = 100, [Stats.NatureResistance] = 100, [Stats.FrostResistance] = 100, [Stats.ShadowResistance] = 100, [Stats.ArcaneResistance] = 100, } -- s1309718
+W["복용자가 적의 공격을 받으면 빠르게 날아드는 도끼가 공격자를 내리쳐 잠시 지면에 고정시킵니다"] = { [Stats.FireResistance] = 100, [Stats.NatureResistance] = 100, [Stats.FrostResistance] = 100, [Stats.ShadowResistance] = 100, [Stats.ArcaneResistance] = 100, } -- s1309718
 W["부서짐"] = { [Stats.AverageWeaponDamage] = -10, } -- e27
 W["최하급 마술사 오일"] = { [Stats.SpellPower] = 8, } -- e2623
 W["최하급 마나 오일"] = { [Stats.GenericManaRegen] = 5, [Stats.HealingPower] = 10, } -- e2624
@@ -82,24 +82,17 @@ W["정밀함"] = { [Stats.CritRating] = 14, } -- e8718
 local L = addon.StatIDLookup
 L["적의 신체를 손상시켜 이동 속도를 %s%만큼, 근접 공격 속도를 %s%만큼, 원거리 공격 속도를 %s%만큼 감소시킵니다. %s초 동안 지속됩니다"] = { false, false, { Stats.RangedHaste, }, false, reduction = true } -- s89
 L["주위 적의 근접 전투력을 %s만큼 감소시킵니다. %s초 동안 지속됩니다"] = { { Stats.AttackPower, }, false, reduction = true } -- s99
-L["방어도가 %s만큼 증가하고 시전자를 공격한 적은 일정 확률로 %s초 동안 이동 속도가 %s%만큼 감소하며 공격 간격이 %s%만큼 늘어날 수 있습니다. 마법사의 갑옷 주문은 동시에 한 종류만 사용할 수 있습니다. %s분 동안 지속됩니다"] = { { Stats.Armor, }, false, false, false, false, } -- s168
-L["%s초에 걸쳐 총 %s의 마나가 회복됩니다. 음료를 마시려면 앉아 있어야 합니다"] = { false, { Stats.GenericManaRegen, }, } -- s430
-L["주위 %s미터 반경에 있는 파티원의 방어도가 %s만큼 상승합니다. 오라는 성기사마다 동시에 하나만 유지할 수 있습니다"] = { false, { Stats.Armor, }, } -- s465
 L["대상의 민첩성을 %s만큼 감소시킵니다"] = { { Stats.Agility, }, reduction = true } -- s474
-L["신성한 기운이 온몸을 감싸 %s분 동안 방어도가 %s만큼 증가합니다. 근접 및 원거리 피해를 %s회 받게 되면 효과가 사라집니다. %s분 동안 지속됩니다"] = { false, { Stats.Armor, }, false, false, } -- s588
-L["방어도가 %s만큼, 암흑 저항력이 %s만큼, %s초당 생명력 회복 속도가 %s만큼 증가합니다. %s분 동안 지속됩니다"] = { { Stats.Armor, }, { Stats.ShadowResistance, }, false, { Stats.HealthRegen, }, false, } -- s706
-L["%s시간 동안 방어도를 %s만큼 증가시킵니다"] = { false, { Stats.Armor, }, } -- s673
-L["방어도가 %s만큼, %s초당 생명력 회복 속도가 %s만큼 증가합니다. %s분 동안 지속됩니다"] = { { Stats.Armor, }, false, { Stats.HealthRegen, }, false, } -- s687
+L["방어도가 %s만큼, %s초당 생명력 회복 속도가 %s만큼 증가합니다. %s분 동안 지속됩니다"] = { false, false, { Stats.HealthRegen, }, false, } -- s687
 L["%s분 동안 대상의 물리 공격력을 %s만큼 감소시킵니다. 흑마법사마다 한 대상에 동시에 하나의 저주만 걸 수 있습니다"] = { false, { Stats.AverageWeaponDamage, }, reduction = true } -- s702
-L["무모함의 저주를 걸어 %s분 동안 대상의 방어도를 %s만큼 감소시킵니다. 이 마법이 지속되는 한 대상은 도망치지 않으며 겁이나 공포 효과를 무시합니다. 흑마법사마다 한 대상에 하나의 저주만 걸 수 있습니다"] = { false, { Stats.Armor, }, reduction = true } -- s704
-L["%s초 동안 대상의 방어도를 %s만큼 감소시킵니다. 효과가 지속되는 동안은 은신이나 투명화가 불가능합니다"] = { false, { Stats.Armor, }, reduction = true } -- s770
+L["방어도가 %s만큼, 암흑 저항력이 %s만큼, %s초당 생명력 회복 속도가 %s만큼 증가합니다. %s분 동안 지속됩니다"] = { false, { Stats.ShadowResistance, }, false, { Stats.HealthRegen, }, false, } -- s706
 L["%s분 동안 힘을 %s만큼 증가시키지만 매 %s초마다 %s의 피해를 입습니다"] = { false, { Stats.Strength, }, false, false, } -- s806
 L["즉시 %s의 생명력을 회복하고 %s초에 걸쳐 %s의 마나를 회복합니다. 음료를 마시려면 앉아 있어야 합니다"] = { false, false, { Stats.GenericManaRegen, }, } -- s833
 L["%s분 동안 대상의 암흑 마법에 대한 저항력을 %s만큼 증가시킵니다"] = { false, { Stats.ShadowResistance, }, } -- s976
 L["무지의 저주를 걸어 매 %s초마다 지능과 정신력을 %s씩 감소시킵니다. 최대 %s까지 감소됩니다. 한 대상에 동시에 하나의 저주만 걸 수 있습니다"] = { false, { Stats.Intellect, Stats.Spirit, }, { Stats.Intellect, }, reduction = true } -- s1010
 L["최대 %s 레벨의 대상 악마를 예속해 시전자의 명령을 따르게 합니다. 예속된 상태에서는 대상 악마의 공격 간격이 %s%만큼 늘어나고 주문 시전 속도가 %s%만큼 감소합니다. 최대 %s분 동안 지속됩니다. 같은 악마를 반복해서 예속할 경우, 시도할 때마다 점점 더 통제하기 어려워집니다"] = { false, false, { Stats.SpellHaste, }, false, reduction = true } -- s1098
 L["회피 확률이 %s%만큼 증가합니다"] = { { Stats.Dodge, }, } -- s1114
-L["%s시간 동안 대상의 방어도를 %s만큼 증가시킵니다"] = { false, { Stats.Armor, }, } -- s1126
+L["%s초에 걸쳐 총 %s의 마나가 회복됩니다. 음료를 마시려면 앉아 있어야 합니다"] = { false, { Stats.GenericManaRegen, }, } -- s1135
 L["%s분 동안 냉기와 암흑 마법에 대한 저항력이 %s만큼 증가합니다"] = { false, { Stats.FrostResistance, Stats.ShadowResistance, }, } -- s1138
 L["%s초 동안 %s미터 내의 모든 적의 근접 전투력을 %s만큼 감소시킵니다"] = { false, false, { Stats.AttackPower, }, reduction = true } -- s1160
 L["대상에 신성한 힘을 불어넣어 %s시간 동안 체력을 %s만큼 증가시킵니다"] = { false, { Stats.Stamina, }, } -- s1243
@@ -131,29 +124,23 @@ L["망토에 영구적으로 마법을 부여해 착용자의 민첩성을 %s만
 L["%s분 동안 적의 정신력을 %s만큼 감소시킵니다"] = { false, { Stats.Spirit, }, reduction = true } -- s3237
 L["%s초 동안 시전자의 무기 막기 확률이 %s%만큼 증가합니다"] = { false, { Stats.Parry, }, } -- s3238
 L["%s초 동안 시전자의 방어 확률이 %s%만큼 증가합니다"] = { false, { Stats.BlockChance, }, } -- s3248
-L["%s초 동안 적의 방어도를 %s만큼 감소시킵니다"] = { false, { Stats.Armor, }, reduction = true } -- s3252
 L["%s분 동안 선택 지역에 있는 모든 적의 힘을 %s만큼, 민첩성을 %s만큼, 지능을 %s만큼 감소시킵니다"] = { false, { Stats.Strength, }, { Stats.Agility, }, { Stats.Intellect, }, reduction = true } -- s3256
-L["%s초 동안 적을 기절시키고 방어도를 %s만큼 감소시킵니다"] = { false, { Stats.Armor, }, reduction = true } -- s3263
 L["적을 불태워 %s의 피해를 입히고 %s초 동안 화염에 대한 저항력을 %s만큼 감소시킵니다"] = { false, false, { Stats.FireResistance, }, reduction = true } -- s3356
 L["%s분 동안 시전자의 힘이 %s만큼 증가합니다"] = { false, { Stats.Strength, }, } -- s3369
 L["%s초 동안 공격력이 %s만큼, 이동 속도가 %s%만큼 증가합니다"] = { false, { Stats.AverageWeaponDamage, }, false, } -- s3385
-L["%s초 동안 대상에게 매 %s초마다 %s의 자연 피해를 입히고 방어도를 %s만큼 감소시킵니다"] = { false, false, false, { Stats.Armor, }, reduction = true } -- s3396
 L["%s초 동안 시전자를 분노로 휩싸이게 해 물리 공격력이 %s만큼 증가합니다. 하지만 공격 속도는 %s%만큼 감소됩니다"] = { false, { Stats.AverageWeaponDamage, }, false, } -- s3416
 L["%s분 동안 적을 감염시켜 받는 물리 피해를 %s만큼 증가시키고 체력을 %s만큼 감소시킵니다. 감염된 적은 공격을 받을 때마다 %s%의 확률로 자신의 주위 아군에게 역병을 퍼뜨리게 됩니다"] = { false, false, { Stats.Stamina, }, false, reduction = true } -- s3436
 L["%s초 동안 시전자의 공격 속도가 %s%만큼 증가하지만 물리 공격력이 %s만큼 감소합니다"] = { false, false, { Stats.AverageWeaponDamage, }, reduction = true } -- s3490
 L["과거의 기억이 시전자를 분노하게 하여 질풍같은 공격을 퍼붓습니다. 시전자의 공격 속도가 %s%만큼 증가하지만 이동 속도는 %s%만큼 감소하며 물리 공격력이 %s만큼 감소합니다. %s초 동안 지속됩니다"] = { false, false, { Stats.AverageWeaponDamage, }, false, reduction = true } -- s3547
 L["%s초 동안 적의 주문 시전 속도를 %s%만큼 지연시킵니다"] = { false, { Stats.SpellHaste, }, reduction = true } -- s3603
 L["적의 눈에 진흙을 던져 %s초 동안 적중률을 %s%만큼 감소시킵니다"] = { false, { Stats.MeleeHit, Stats.RangedHit, }, reduction = true } -- s3650
-L["가격 당했을 때 %s%의 확률로 %s초 동안 방어도를 %s만큼 증가시킵니다"] = { false, false, { Stats.Armor, }, ignoreSum = true } -- s4070
 L["활이나 총에 영구적으로 장착하여 공격력을 %s만큼 증가시킵니다"] = { { Stats.AverageWeaponDamage, }, } -- s3974
 L["대상을 오염된 노움으로 변이시켜 근접 및 주문 공격력을 %s만큼, 이동 속도를 %s%만큼 감소시킵니다. %s초 동안 지속됩니다"] = { { Stats.SpellDamage, }, false, false, reduction = true } -- s4060
 L["냉기 마법에 대한 저항력이 %s만큼 증가합니다"] = { { Stats.FrostResistance, }, } -- s4080
 L["시전자의 회피 확률이 %s%만큼 증가합니다. 취소할 때까지 지속됩니다"] = { { Stats.Dodge, }, } -- s4086
-L["대상을 분노하게 하여 주위를 집중시키고 방어도를 %s만큼 감소시킵니다"] = { { Stats.Armor, }, reduction = true } -- s4101
 L["%s초 동안 주위 파티원의 힘을 %s만큼, 민첩성을 %s만큼 증가시킵니다"] = { false, { Stats.Strength, }, { Stats.Agility, }, } -- s4146
 L["%s초 동안 %s미터 반경에 있는 파티원의 힘을 %s만큼, 민첩성을 %s만큼 증가시킵니다"] = { false, false, { Stats.Strength, }, { Stats.Agility, }, } -- s4147
 L["%s분 동안 최대 생명력을 %s만큼 증가시킵니다"] = { false, { Stats.Health, }, } -- s4148
-L["%s초 동안 방어도를 %s만큼 증가시킵니다"] = { false, { Stats.Armor, }, } -- s4149
 L["민첩성이 %s만큼 증가합니다"] = { { Stats.Agility, }, } -- s4171
 L["체력이 %s만큼 증가합니다"] = { { Stats.Stamina, }, } -- s4187
 L["지능이 %s만큼 증가합니다"] = { { Stats.Intellect, }, } -- s4204
@@ -201,30 +188,26 @@ L["냉기 마법의 공격력이 %s만큼 증가합니다"] = { { Stats.FrostDam
 L["암흑 마법의 공격력이 %s만큼 증가합니다"] = { { Stats.ShadowDamage, }, } -- s4880
 L["활로 치명타를 적중시킬 확률이 %s%만큼 증가합니다"] = { { Stats.MeleeCrit, Stats.RangedCrit, }, } -- s4915
 L["총으로 치명타를 적중시킬 확률이 %s%만큼 증가합니다"] = { { Stats.MeleeCrit, Stats.RangedCrit, }, } -- s4921
-L["%s분 동안 방어도가 %s만큼 증가합니다"] = { false, { Stats.Armor, }, } -- s4941
 L["%s초 동안 매 공격 시 %s의 추가 피해를 입힙니다. 하지만 이동 속도는 %s%만큼 감소되며 공격 속도가 %s%만큼 감소합니다"] = { false, { Stats.AverageWeaponDamage, }, false, false, } -- s4955
 L["%s분 동안 적의 체력을 %s만큼 정신력을 %s만큼 감소시킵니다"] = { false, { Stats.Stamina, }, { Stats.Spirit, }, reduction = true } -- s4974
 L["%s초에 걸쳐 총 %s의 생명력이 회복됩니다. 음식을 먹으려면 앉아 있어야 합니다. 음식을 꾸준히 %s초 이상 먹게 되면 포만감을 느끼게 되고 %s분 동안 체력과 정신력이 %s만큼 증가합니다"] = { false, false, false, false, { Stats.Stamina, }, ignoreSum = true } -- s5004
 L["이 독한 술을 마시면 %s분 동안 힘이 %s만큼 증가하지만 지능은 %s만큼 감소됩니다"] = { false, { Stats.Strength, }, { Stats.Intellect, }, } -- s5020
 L["%s분 동안 생명력이 %s만큼 증가되지만 정신력은 %s만큼 감소됩니다"] = { false, { Stats.Health, }, { Stats.Spirit, }, } -- s5021
-L["%s시간 동안 대상의 방어도를 %s만큼, 모든 능력치를 %s만큼 증가시킵니다"] = { false, { Stats.Armor, }, { Stats.AllStats, }, } -- s5232
-L["%s시간 동안 대상의 방어도를 %s만큼, 모든 능력치를 %s만큼, 모든 저항력을 %s만큼 증가시킵니다"] = { false, { Stats.Armor, }, { Stats.AllStats, }, false, } -- s5234
-L["전사의 외침으로 주위 %s미터 반경에 있는 모든 파티원의 근접 전투력이 %s만큼 증가됩니다. %s분 동안 지속됩니다"] = { false, { Stats.AttackPower, }, false, } -- s5242
+L["%s시간 동안 대상의 방어도를 %s만큼, 모든 능력치를 %s만큼 증가시킵니다"] = { false, false, { Stats.AllStats, }, } -- s5232
+L["%s시간 동안 대상의 방어도를 %s만큼, 모든 능력치를 %s만큼, 모든 저항력을 %s만큼 증가시킵니다"] = { false, false, { Stats.AllStats, }, false, } -- s5234
+L["전사의 외침으로 주위 %s미터 반경에 있는 모든 파티원 또는 공격대원의 근접 전투력이 %s만큼 증가됩니다. %s분 동안 지속됩니다"] = { false, { Stats.AttackPower, }, false, } -- s5242
 L["무기 막기 확률이 %s%만큼 증가합니다"] = { { Stats.Parry, }, } -- s5256
 L["%s초 동안 회피할 확률이 %s%만큼 향상됩니다"] = { false, { Stats.Dodge, }, } -- s5277
 L["%s분 동안 대상의 체력을 %s만큼 증가시킵니다"] = { false, { Stats.Spirit, }, } -- s5321
 L["양손 도끼의 공격력이 %s만큼 증가하고 공격 시 %s% 확률로 %s초 동안 적의 방어도를 %s만큼 감소시킬 수 있습니다"] = { { Stats.AverageWeaponDamage, }, false, false, false, } -- s5341
 L["양손 둔기의 공격력이 %s만큼 증가하고 공격 시 %s% 확률로 적을 %s초 동안 기절시킬 수 있습니다"] = { { Stats.AverageWeaponDamage, }, false, false, } -- s5349
 L["양손 도검의 공격력이 %s만큼 증가하고 무기 막기 확률이 %s%만큼 증가합니다"] = { { Stats.AverageWeaponDamage, }, false, } -- s5356
-L["방어도를 %s만큼 증가시킵니다"] = { { Stats.Armor, }, } -- s5363
 L["%s분 동안 적의 자연 저항력을 %s만큼 감소시킵니다"] = { false, { Stats.NatureResistance, }, reduction = true } -- s5413
 L["%s초 동안 시전자의 회피 확률이 %s%만큼 증가합니다"] = { false, { Stats.Dodge, }, } -- s5426
 L["한손 도끼의 공격력이 %s만큼 증가하고 공격 시 %s% 확률로 %s초 동안 적의 방어도를 %s만큼 감소시킬 수 있습니다"] = { { Stats.AverageWeaponDamage, }, false, false, false, } -- s5429
 L["한손 검의 공격력이 %s만큼 증가하고 무기 막기 확률이 %s%만큼 증가합니다"] = { { Stats.AverageWeaponDamage, }, { Stats.Parry, }, } -- s5449
-L["활의 공격력이 %s만큼 증가합니다"] = { { Stats.AverageWeaponDamage, }, } -- s5749
 L["양손 검의 무기 막기 확률이 %s%만큼 증가합니다"] = { { Stats.Parry, }, } -- s5454
 L["양손 도끼로 치명타를 적중시킬 확률이 %s%만큼 증가합니다"] = { { Stats.MeleeCrit, Stats.RangedCrit, }, } -- s5466
-L["%s초 동안 방어도를 %s%만큼 감소시킵니다"] = { false, { Stats.Armor, }, reduction = true } -- s5480
 L["한손 검으로 치명타를 적중시킬 확률이 %s만큼 증가합니다"] = { { Stats.MeleeCrit, Stats.RangedCrit, }, } -- s5481
 L["한손 검으로 치명타를 적중시킬 확률이 %s%만큼 증가합니다"] = { { Stats.MeleeCrit, Stats.RangedCrit, }, } -- s5482
 L["한손 도끼로 치명타를 적중시킬 확률이 %s%만큼 증가합니다"] = { { Stats.MeleeCrit, Stats.RangedCrit, }, } -- s5509
@@ -239,16 +222,16 @@ L["총의 공격력이 %s만큼 증가하고 공격 시 %s% 확률로 적을 %s�
 L["%s분 동안 물리 공격력이 %s만큼 증가합니다"] = { false, { Stats.AverageWeaponDamage, }, } -- s5665
 L["매 %s초마다 %s의 생명력이 회복됩니다"] = { false, { Stats.HealthRegen, }, } -- s5707
 L["지팡이로 치명타를 적중시킬 확률이 %s%만큼 증가합니다"] = { { Stats.MeleeCrit, Stats.RangedCrit, }, } -- s5715
+L["활의 공격력이 %s만큼 증가합니다"] = { { Stats.AverageWeaponDamage, }, } -- s5742
 L["활의 공격력이 %s만큼 증가하고 공격 시 %s% 확률로 치명상을 입혀 %s초 동안 총 %s의 피해를 입힙니다"] = { { Stats.AverageWeaponDamage, }, false, false, false, } -- s5751
 L["%s초 동안 적의 힘을 %s만큼 감소시키고 민첩성이 %s만큼 감소시킵니다"] = { false, { Stats.Strength, }, { Stats.Agility, }, reduction = true } -- s5781
-L["방패나 버클러를 착용할 경우 방어도가 %s만큼 증가합니다"] = { { Stats.Armor, }, } -- s5786
+L["묽은 맥주를 마시면 %s분 동안 정신력이 %s만큼 증가하고 체력이 %s만큼 감소합니다"] = { false, { Stats.Spirit, }, { Stats.Stamina, }, } -- s5909
 L["자연계열 공격 마법이 극대화 효과를 발휘할 확률이 %s%만큼 증가합니다"] = { { Stats.SpellCrit, }, } -- s5812
 L["화염계열 공격 마법이 극대화 효과를 발휘할 확률이 %s%만큼 증가합니다"] = { { Stats.SpellCrit, }, } -- s5835
 L["대상에 신성한 힘을 불어넣어 %s분 동안 체력을 %s만큼 증가시킵니다"] = { false, { Stats.Stamina, }, } -- s5862
 L["냉기계열 공격 마법이 극대화 효과를 발휘할 확률이 %s%만큼 증가합니다"] = { { Stats.SpellCrit, }, } -- s5866
 L["%s초 동안 적의 공격 적중률을 %s%만큼 감소시킵니다"] = { false, { Stats.MeleeHit, Stats.RangedHit, }, reduction = true } -- s5884
 L["암흑계열 공격 마법이 극대화 효과를 발휘할 확률이 %s%만큼 증가합니다"] = { { Stats.SpellCrit, }, } -- s5896
-L["묽은 맥주를 마시면 %s분 동안 정신력이 %s만큼 증가하고 체력이 %s만큼 감소합니다"] = { false, { Stats.Spirit, }, { Stats.Stamina, }, } -- s5909
 L["연계 포인트 당 무기 막기 확률이 %s%만큼 추가로 증가합니다. %s초 동안 지속됩니다"] = { { Stats.Parry, }, false, } -- s5934
 L["투척 무기의 공격력이 %s만큼 증가합니다"] = { { Stats.AverageWeaponDamage, }, } -- s5952
 L["석궁의 공격력이 %s만큼 증가합니다"] = { { Stats.AverageWeaponDamage, }, } -- s5969
@@ -259,7 +242,6 @@ L["마법봉으로 치명타를 적중시킬 확률이 %s%만큼 증가합니다
 L["%s분 동안 지능이 %s만큼 증가되지만 체력을 %s만큼 감소시킵니다"] = { false, { Stats.Intellect, }, { Stats.Stamina, }, } -- s6114
 L["모든 계열 저항력을 %s만큼 증가시키고 시전 중 %s%의 속도로 마나가 회복됩니다. 마법사의 갑옷 주문은 동시에 한 종류만 사용할 수 있습니다. %s분 동안 지속됩니다"] = { { Stats.FireResistance, Stats.NatureResistance, Stats.FrostResistance, Stats.ShadowResistance, Stats.ArcaneResistance, }, false, false, } -- s6117
 L["%s초 동안 이동 속도를 %s%만큼 증가하며 첫 공격 시 %s의 추가 피해를 입힙니다"] = { false, false, { Stats.AverageWeaponDamage, }, } -- s6268
-L["야수의 생명력을 %s만큼 증가시킵니다"] = { { Stats.Health, }, } -- s6280
 L["파티원의 체력을 %s만큼 증가시킵니다"] = { { Stats.Stamina, }, } -- s6307
 L["야수의 공격력이 %s만큼 증가합니다"] = { { Stats.AverageWeaponDamage, }, } -- s6311
 L["야수의 정신력을 %s만큼 증가시킵니다. 야수 조련으로 익혀야 합니다"] = { { Stats.Spirit, }, } -- s6328
@@ -269,25 +251,21 @@ L["주위 파티원의 모든 근접과 원거리 공격의 피해를 %s만큼 �
 L["날을 예리하게 연마하여 무기의 피해를 %s만큼 증가시킵니다"] = { { Stats.AverageWeaponDamage, }, } -- s6514
 L["적의 눈에 진흙을 던져 %s초 동안 공격 적중률을 %s%만큼 감소시킵니다"] = { false, { Stats.MeleeHit, Stats.RangedHit, }, reduction = true } -- s6530
 L["전갈이 투명한 상태로 변화합니다. 이 상태에선 이동이 불가능하며 시야가 감소됩니다. 이 상태에서 적을 공격하면 %s의 추가 피해를 입힙니다"] = { { Stats.AverageWeaponDamage, }, } -- s6538
-L["적을 사격하여 일반 피해를 입히고 %s초 동안 적의 방어도를 %s만큼 감소시킵니다"] = { false, { Stats.Armor, }, reduction = true } -- s6685
 L["%s초 동안 주위 적의 지능을 %s만큼 감소시킵니다"] = { false, { Stats.Intellect, }, reduction = true } -- s6818
 L["물리 공격력을 %s만큼 증가시키지만 이동 속도를 %s%만큼 감소시킵니다. %s초 동안 지속됩니다"] = { { Stats.AverageWeaponDamage, }, false, false, } -- s6864
 L["%s초 동안 물리 공격력이 %s만큼, 이동 속도가 %s%만큼 증가합니다. 또한, 첫 공격 시 적에게 저주를 걸어 %s분 동안 물리 공격력을 %s만큼, 마법 공격력을 %s만큼 감소시키고 받는 물리 피해를 %s만큼 증가시킵니다"] = { false, { Stats.AverageWeaponDamage, }, false, false, { Stats.AverageWeaponDamage, }, { Stats.SpellDamage, }, false, } -- s6921
-L["%s분 동안 적의 방어도를 %s만큼 감소시킵니다. 이 주문이 걸린 대상은 숨거나 투명해질 수 없습니다"] = { false, { Stats.Armor, }, reduction = true } -- s6950
 L["%s분 동안 적의 힘을 %s만큼 감소시킵니다"] = { false, { Stats.Strength, }, reduction = true } -- s6951
 L["%s분 동안 대상의 힘을 %s만큼 증가시킵니다"] = { false, { Stats.Strength, }, } -- s6957
-L["%s초 동안 시전자의 방어도가 %s만큼 증가합니다"] = { false, { Stats.Armor, }, } -- s7020
 L["주위 파티원의 물리 공격력을 %s만큼 증가시킵니다. 오라는 성기사마다 동시에 하나만 유지할 수 있으며 취소할 때까지 지속됩니다"] = { { Stats.AverageWeaponDamage, }, } -- s7069
 L["%s분 동안 공격 속도를 %s%만큼, 시전 속도를 %s%만큼 감소시킵니다. 공격을 받을 때 %s%의 확률로 같은 마법을 아군에게 퍼뜨립니다"] = { false, false, { Stats.SpellHaste, }, false, reduction = true } -- s7102
 L["%s분 동안 적의 공격 속도를 %s%만큼, 이동 속도를 %s%만큼 감소시키고 시전 시간이 %s%만큼 지연됩니다"] = { false, false, false, { Stats.SpellHaste, }, reduction = true } -- s7127
 L["적에게 돌격합니다. 이동 속도가 증가하며 첫 공격 시 %s의 추가 피해를 입힙니다"] = { { Stats.AverageWeaponDamage, }, } -- s7137
 L["%s초 동안 주위 적의 공격 적중률을 %s%만큼 감소시킵니다"] = { false, { Stats.MeleeHit, Stats.RangedHit, }, reduction = true } -- s7272
+L["자연 계열의 주문과 효과의 공격력이 최대 %s만큼 증가합니다"] = { { Stats.NatureDamage, }, } -- s7690
 L["%s분 동안 적의 힘을 %s만큼, 체력을 %s만큼 감소시킵니다"] = { false, { Stats.Strength, }, { Stats.Stamina, }, reduction = true } -- s7289
-L["방어도를 %s만큼, 냉기 저항력을 %s만큼 증가시킵니다. 시전자를 공격한 적은 일정 확률로 %s초 동안 이동 속도가 %s%만큼 감소하고 공격 간격이 %s%만큼 늘어납니다. 마법사의 갑옷 주문은 동시에 한 종류만 사용할 수 있습니다. %s분 동안 지속됩니다"] = { { Stats.Armor, }, { Stats.FrostResistance, }, false, false, false, false, } -- s7302
+L["방어도를 %s만큼, 냉기 저항력을 %s만큼 증가시킵니다. 시전자를 공격한 적은 일정 확률로 %s초 동안 이동 속도가 %s%만큼 감소하고 공격 간격이 %s%만큼 늘어납니다. 마법사의 갑옷 주문은 동시에 한 종류만 사용할 수 있습니다. %s분 동안 지속됩니다"] = { false, { Stats.FrostResistance, }, false, false, false, false, } -- s7302
 L["주위 파티원의 정신력을 %s만큼 증가시킵니다"] = { { Stats.Spirit, }, } -- s7363
 L["적에게 돌진하여 %s초 동안 이동 불가 상태로 만들고 멧돼지의 다음 공격 근접 전투력이 %s만큼 증가합니다"] = { false, { Stats.AttackPower, }, } -- s7371
-L["적의 방어구를 손상시켜 매 가르기마다 방어도를 %s만큼 감소시킵니다. 위협 수준이 크게 증가합니다. 최대 %s번까지 중복될 수 있습니다. %s초 동안 지속됩니다"] = { { Stats.Armor, }, false, false, reduction = true } -- s7386
-L["자연 계열의 주문과 효과의 공격력이 최대 %s만큼 증가합니다"] = { { Stats.NatureDamage, }, } -- s7690
 L["손목보호구에 영구적으로 마법을 부여해 착용자의 체력을 %s만큼 증가시킵니다"] = { { Stats.Stamina, }, } -- s7418
 L["가슴보호구에 영구적으로 마법을 부여해 착용자의 체력을 %s만큼 증가시킵니다"] = { { Stats.Stamina, }, } -- s7420
 L["손목보호구에 영구적으로 마법을 부여해 착용자의 방어 능력이 %s만큼 증가합니다"] = { { Stats.Defense, }, } -- s7428
@@ -331,29 +309,24 @@ L["%s분 동안 뱀으로 변신합니다. 공격력이 %s만큼 증가하지만
 L["%s분 동안 적의 힘을 %s만큼, 민첩성을 %s만큼, 체력을 %s만큼 감소시킵니다"] = { false, { Stats.Strength, }, { Stats.Agility, }, { Stats.Stamina, }, reduction = true } -- s7997
 L["%s초 동안 뱀으로 변신합니다. 물리 공격력이 %s만큼 증가하지만 주문을 시전하지 못합니다"] = { false, { Stats.AverageWeaponDamage, }, } -- s8041
 L["%s분 동안 정신력이 %s만큼 증가합니다"] = { false, { Stats.Spirit, }, } -- s8068
-L["%s분 동안 대상의 방어도를 %s만큼 증가시킵니다"] = { false, { Stats.Armor, }, } -- s8094
 L["%s분 동안 대상의 정신력을 %s만큼 증가시킵니다"] = { false, { Stats.Spirit, }, } -- s8112
 L["%s분 동안 대상의 민첩성을 %s만큼 증가시킵니다"] = { false, { Stats.Agility, }, } -- s8115
 L["%s분 동안 적의 지능을 %s만큼, 정신력을 %s만큼 감소시킵니다"] = { false, { Stats.Intellect, }, { Stats.Spirit, }, reduction = true } -- s8139
-L["뜨거운 기운이 시전자를 감싸 %s초 동안 공격력을 %s만큼, 방어도를 %s만큼 증가시킵니다"] = { false, { Stats.AverageWeaponDamage, }, { Stats.Armor, }, } -- s8191
+L["뜨거운 기운이 시전자를 감싸 %s초 동안 공격력을 %s만큼, 방어도를 %s만큼 증가시킵니다"] = { false, { Stats.AverageWeaponDamage, }, false, } -- s8191
 L["몸의 크기가 증가하고 힘이 %s만큼 증가합니다. %s분 동안 지속됩니다"] = { { Stats.Strength, }, false, } -- s8212
-L["%s분 동안 주위 적의 방어도를 %s만큼 감소시킵니다"] = { false, { Stats.Armor, }, reduction = true } -- s8245
 L["%s분 동안 주위 파티원의 방어도가 %s만큼 상승합니다. 오라는 성기사마다 동시에 하나만 유지할 수 있습니다"] = { false, { Stats.Armor, }, } -- s8258
 L["%s분 동안 시전자의 공격 속도가 %s%만큼 증가하고 물리 공격력이 %s만큼 증가합니다"] = { false, false, { Stats.AverageWeaponDamage, }, } -- s8269
 L["%s분 동안 대상의 물리 공격력을 %s만큼 감소시킵니다"] = { false, { Stats.AverageWeaponDamage, }, reduction = true } -- s8277
 L["%s분 동안 대상의 물리 공격력을 %s만큼 증가시킵니다"] = { false, { Stats.AverageWeaponDamage, }, } -- s8365
 L["전투력이 %s만큼 증가합니다. %s회의 추가 공격을 가합니다"] = { { Stats.AttackPower, }, false, } -- s8516
 L["%s분 동안 대상의 공격력을 %s만큼 감소시킵니다"] = { false, { Stats.AverageWeaponDamage, }, reduction = true } -- s8552
-L["finishing move that exposes the target for %s초, reducing armor per combo point:\r\n   %s point  : %s armor\r\n   %s points: %s armor\r\n   %s points: %s armor\r\n   %s points: %s armor\r\n   %s points: %s armor"] = { false, false, { Stats.Armor, }, false, false, false, false, false, false, false, false, } -- s8647
 L["적을 약화시켜 %s분 동안 근접 전투력을 %s만큼 감소시키고 해당 대상이 받는 치유 효과를 %s%만큼 감소시킵니다"] = { false, { Stats.AttackPower, }, false, reduction = true } -- s9035
 L["주위 파티원의 근접 전투력이 %s만큼 증가됩니다. %s분 동안 지속됩니다"] = { { Stats.AttackPower, }, false, } -- s9128
 L["전투력 %s"] = { { Stats.AttackPower, Stats.RangedAttackPower, }, } -- e1563
-L["%s분 동안 대상의 방어도를 %s만큼 감소시킵니다"] = { false, { Stats.Armor, }, reduction = true } -- s9176
 L["모든 주문 및 효과에 의한 피해와 치유량이 최대 %s만큼 증가합니다"] = { { Stats.SpellPower, }, } -- s9342
 L["%s초 동안 시전자를 이동 불가 상태로 만들고 물리 공격력을 %s만큼 증가시킵니다"] = { false, { Stats.AverageWeaponDamage, }, } -- s9576
-L["방어도 %s"] = { { Stats.Armor, }, } -- s9760
+L["정신력을 %s만큼 증가시킵니다"] = { { Stats.Spirit, }, } -- s10767
 L["시전자의 생명을 희생하여 %s분 동안 주위 적의 체력을 %s만큼 감소시킵니다"] = { false, { Stats.Stamina, }, reduction = true } -- s10251
-L["방어도가 %s만큼 증가합니다"] = { { Stats.Armor, }, } -- s10342
 L["%s초 동안 방어 숙련도가 %s만큼 증가합니다"] = { false, { Stats.Defense, }, } -- s10351
 L["%s분 동안 적의 공격력을 %s만큼 감소시킵니다"] = { false, { Stats.AverageWeaponDamage, }, reduction = true } -- s10651
 L["힘이 %s만큼 증가합니다. %s분 동안 지속됩니다"] = { { Stats.Strength, }, false, } -- s10667
@@ -362,7 +335,6 @@ L["민첩성이 %s만큼 증가합니다. %s분 동안 지속됩니다"] = { { S
 L["지능이 %s만큼 증가합니다. %s분 동안 지속됩니다"] = { { Stats.Intellect, }, false, } -- s10692
 L["정신력이 %s만큼 증가합니다. %s분 동안 지속됩니다"] = { { Stats.Spirit, }, false, } -- s10693
 L["%s초 동안 주위 아군 기계의 공격 속도를 %s%만큼, 물리 공격력을 %s만큼 증가시킵니다"] = { false, false, { Stats.AverageWeaponDamage, }, } -- s10732
-L["정신력을 %s만큼 증가시킵니다"] = { { Stats.Spirit, }, } -- s10767
 L["%s초 동안 주위 적의 근접 전투력을 %s만큼 감소시킵니다"] = { false, { Stats.AttackPower, }, reduction = true } -- s10968
 L["자신의 모든 주문에 대한 대상의 마법 저항력이 %s만큼 감소하고 비전 주문으로 발생되는 위협 수준이 %s%만큼 감소합니다"] = { { Stats.SpellPenetration, }, false, } -- s11210
 L["암흑에 대한 저항력을 %s만큼 증가시킵니다. 적이 복용자를 공격하게 되면 공격자는 %s%의 확률로 질병에 걸리며 %s초 동안 입는 피해가 %s만큼 증가합니다. %s분 동안 지속됩니다"] = { { Stats.ShadowResistance, }, false, false, false, false, } -- s11371
@@ -371,22 +343,19 @@ L["일반 공격력에 %s의 추가 피해를 입히고 %s분 동안 힘을 %s�
 L["%s분 동안 암흑 마법의 공격력이 최대 %s만큼 증가합니다"] = { false, { Stats.ShadowDamage, }, } -- s11474
 L["술트라제의 분노로 적을 강타하여 대상의 힘을 %s만큼 감소시키고 %s의 암흑 피해를 주며 %s초에 걸쳐 추가로 %s의 피해를 입힙니다"] = { { Stats.Strength, }, false, false, false, reduction = true } -- s11658
 L["최대 %s 레벨의 대상 악마를 예속해 시전자의 명령을 따르게 합니다. 예속 상태에서는 대상 악마의 공격 속도가 %s%만큼 감소하고 주문 시전 시간이 %s%만큼 지연됩니다. 최대 %s분 동안 지속됩니다. 같은 악마에게 반복적으로 사용하면 효과가 일찍 풀릴 가능성이 높아집니다"] = { false, false, { Stats.SpellHaste, }, false, reduction = true } -- s11726
-L["적의 방어구를 관통하여 방어도를 %s만큼 감소시킵니다"] = { { Stats.Armor, }, reduction = true } -- s11791
 L["%s분 동안 주위 적의 힘을 %s만큼 감소시키고 체력을 %s만큼 감소시킵니다"] = { false, { Stats.Strength, }, { Stats.Stamina, }, reduction = true } -- s11892
-L["%s분 동안 주위 적의 시전 시간을 %s%만큼 지연시키고 공격 속도를 %s%만큼 감소시킵니다"] = { false, { Stats.SpellHaste, }, false, reduction = true } -- s12255
-L["적의 방어구를 절단하여 매 가르기마다 방어도를 %s만큼 감소시킵니다. 최대 %s번까지 중복될 수 있습니다. %s초 동안 지속됩니다"] = { { Stats.Armor, }, false, false, } -- s11971
 L["주위 적에게 %s의 자연 피해를 입히고 %s초 동안 공격 적중률을 %s%만큼 감소시킵니다"] = { false, false, { Stats.MeleeHit, Stats.RangedHit, }, reduction = true } -- s11983
 L["%s미터 반경 내의 파티원의 체력을 %s만큼 증가시킵니다"] = { false, { Stats.Stamina, }, } -- s12022
 L["적의 신체를 손상시켜 일반 공격력의 %s의 추가 피해를 입히고 %s초 동안 힘을 %s만큼 감소시킵니다"] = { false, false, { Stats.Strength, }, reduction = true } -- s12166
 L["%s초 동안 시전자의 방어 확률이 %s%만큼 증가합니다. 단, %s회만 방어할 수 있습니다"] = { false, { Stats.BlockChance, }, false, } -- s12169
-L["%s초 동안 모든 저항력이 %s만큼 증가하고 공포에 면역이 됩니다"] = { false, { Stats.FireResistance, Stats.NatureResistance, Stats.FrostResistance, Stats.ShadowResistance, Stats.ArcaneResistance, }, } -- s12733
+L["%s분 동안 주위 적의 시전 시간을 %s%만큼 지연시키고 공격 속도를 %s%만큼 감소시킵니다"] = { false, { Stats.SpellHaste, }, false, reduction = true } -- s12255
 L["방어 숙련도가 %s만큼 증가합니다"] = { { Stats.Defense, }, } -- s12297
 L["방패로 적의 공격을 방어할 확률이 %s%만큼 증가하고, 방패로 공격을 막을 때마다 %s%의 확률로 %s의 분노를 생성합니다"] = { { Stats.BlockChance, }, false, false, } -- s12298
 L["근접 공격의 치명타 및 극대화율이 %s%만큼 증가합니다"] = { { Stats.MeleeCrit, Stats.RangedCrit, }, } -- s12320
 L["%s분 동안 주위 적의 모든 능력치를 %s만큼 감소시킵니다"] = { false, { Stats.AllStats, }, reduction = true } -- s12530
-L["%s분 동안 시전자를 냉기 갑옷으로 감쌉니다. 두꺼운 얼음으로 인해 방어도가 %s만큼 증가하며 근접 공격자의 이동 속도를 %s%만큼, 공격 속도를 %s%만큼 감소시킵니다"] = { false, { Stats.Armor, }, false, false, } -- s12544
 L["%s초 동안 전투력이 %s만큼, 근접 공격 속도가 %s%만큼 증가합니다"] = { false, { Stats.AttackPower, }, false, } -- s12686
 L["평상시 생명력과 마나의 회복 속도를 %s만큼 향상시킵니다"] = { { Stats.GenericManaRegen, }, } -- s12732
+L["%s초 동안 모든 저항력이 %s만큼 증가하고 공포에 면역이 됩니다"] = { false, { Stats.FireResistance, Stats.NatureResistance, Stats.FrostResistance, Stats.ShadowResistance, Stats.ArcaneResistance, }, } -- s12733
 L["%s분 동안 주위 적의 공격력을 %s만큼 감소시킵니다. 흑마법사마다 한 대상에 동시에 하나의 저주만 걸 수 있습니다"] = { false, { Stats.AverageWeaponDamage, }, reduction = true } -- s12741
 L["주위 적을 강제로 악마어로 말하도록 하여 주문의 시전 시간을 %s%만큼 지연시킵니다. 흑마법사마다 한 대상에 동시에 하나의 저주만 걸 수 있습니다. %s초 동안 지속됩니다"] = { { Stats.SpellHaste, }, false, reduction = true } -- s12889
 L["%s초 동안 주위 적의 힘을 %s만큼, 민첩성을 %s만큼 감소시키고 주문을 시전하지 못하도록 만듭니다"] = { false, { Stats.Strength, }, { Stats.Agility, }, reduction = true } -- s12946
@@ -405,11 +374,8 @@ L["방패에 영구적으로 마법을 부여해 착용자의 정신력을 %s만
 L["%s초 동안 대상의 전투력을 %s만큼 감소시킵니다"] = { false, { Stats.GenericAttackPower, }, reduction = true } -- s13490
 L["망토에 영구적으로 마법을 부여해 암흑계 저항력을 %s만큼 증가시킵니다"] = { { Stats.ShadowResistance, }, } -- s13522
 L["%s분 동안 대상의 전투력을 %s만큼 감소시킵니다"] = { false, { Stats.AttackPower, }, reduction = true } -- s13524
-L["부식성 독으로 %s초에 걸쳐 $t초마다 %s의 자연 피해를 입히고 방어도를 %s만큼 감소시킵니다"] = { false, false, { Stats.Armor, }, reduction = true } -- s13526
 L["%s초 동안 적의 전투력을 %s만큼 감소시킵니다"] = { false, { Stats.GenericAttackPower, }, reduction = true } -- s13528
 L["비전 계열의 주문과 효과의 공격력이 최대 %s만큼 증가합니다"] = { { Stats.ArcaneDamage, }, } -- s13590
-L["손목보호구에 영구적으로 마법을 부여해 착용자의 지능을 %s만큼 증가시킵니다"] = { { Stats.Intellect, }, } -- s13622
-L["가슴보호구에 영구적으로 마법을 부여하여 착용자의 모든 능력치를 %s만큼 증가시킵니다"] = { { Stats.AllStats, }, } -- s13626
 L["공격을 회피할 확률이 %s%만큼 증가합니다"] = { { Stats.Dodge, }, } -- s13669
 L["방패로 적의 공격을 방어할 확률이 %s%만큼 증가합니다"] = { { Stats.BlockChance, }, } -- s13674
 L["방패에 영구적으로 마법을 부여해 방어할 확률을 %s%만큼 증가시킵니다"] = { { Stats.BlockChance, }, } -- s13689
@@ -417,13 +383,14 @@ L["무기의 적중률이 %s%만큼 증가합니다"] = { { Stats.MeleeHit, Stat
 L["장착 무기로 치명타를 적중시킬 확률이 %s%만큼 증가합니다"] = { { Stats.MeleeCrit, Stats.RangedCrit, }, } -- s13707
 L["회피율이 %s%만큼 증가합니다"] = { { Stats.Dodge, }, } -- s13712
 L["화염 저항력이 %s만큼 증가하고 %s의 화염 피해를 흡수합니다. %s초 동안 지속됩니다"] = { { Stats.FireResistance, }, false, false, } -- s13744
-L["방어도가 %s만큼, 암흑 마법 저항력이 %s만큼 증가하고 생명력 회복 속도가 향상됩니다. %s분 동안 지속됩니다"] = { { Stats.Armor, }, { Stats.ShadowResistance, }, false, } -- s13787
+L["방어도가 %s만큼, 암흑 마법 저항력이 %s만큼 증가하고 생명력 회복 속도가 향상됩니다. %s분 동안 지속됩니다"] = { false, { Stats.ShadowResistance, }, false, } -- s13787
 L["장갑에 영구적으로 마법을 부여해 착용자의 민첩성을 %s만큼 증가시킵니다"] = { { Stats.Agility, }, } -- s13815
+L["손목보호구에 영구적으로 마법을 부여해 착용자의 지능을 %s만큼 증가시킵니다"] = { { Stats.Intellect, }, } -- s13822
 L["장갑에 영구적으로 마법을 부여해 착용자의 힘을 %s만큼 증가시킵니다"] = { { Stats.Strength, }, } -- s13887
 L["손목보호구에 영구적으로 마법을 부여해 착용자의 방어 숙련도를 %s만큼 증가시킵니다"] = { { Stats.Defense, }, } -- s13931
 L["방패에 영구적으로 마법을 부여해 착용자의 냉기 저항력을 %s만큼 증가시킵니다"] = { { Stats.FrostResistance, }, } -- s13933
+L["가슴보호구에 영구적으로 마법을 부여하여 착용자의 모든 능력치를 %s만큼 증가시킵니다"] = { { Stats.AllStats, }, } -- s13941
 L["장갑에 영구적으로 마법을 부여해 착용자의 공격 속도와 시전 속도를 %s%만큼 증가시킵니다"] = { { Stats.SpellHaste, }, } -- s13948
-L["적의 방어구를 먹어치워 매 효과마다 방어도를 %s만큼 감소시킵니다. %s번까지 중복될 수 있습니다. %s초 동안 지속됩니다"] = { { Stats.Armor, }, false, false, } -- s14120
 L["적을 공격하여 무기 공격력의 %s%(단검을 주무기로 착용 시 %s%)에 해당하는 피해를 입히고 %s초 동안 자신의 회피율이 %s%만큼 증가합니다. 연계 점수 %s점을 생성합니다"] = { false, false, false, { Stats.Dodge, }, false, } -- s14278
 L["%s분 동안 주위 적의 시전 시간을 %s%만큼 지연시킵니다"] = { false, { Stats.SpellHaste, }, reduction = true } -- s14538
 L["화염 저항력 %s"] = { { Stats.FireResistance, }, } -- s14540
@@ -436,23 +403,19 @@ L["신성한 힘이 대상을 감싸 %s시간 동안 정신력을 %s만큼 증�
 L["%s초 동안 시전자의 공격 속도가 %s%만큼 증가하며 물리 공격력이 %s만큼 증가합니다"] = { false, false, { Stats.AverageWeaponDamage, }, } -- s14872
 L["%s초 동안 회피할 확률이 %s%만큼 증가합니다"] = { false, { Stats.Dodge, }, } -- s15087
 L["%s시간 동안 대상의 화염 저항력을 %s만큼 증가시킵니다"] = { false, { Stats.FireResistance, }, } -- s15123
-L["%s초 동안 대상의 방어도를 %s만큼 감소시킵니다"] = { false, { Stats.Armor, }, reduction = true } -- s15280
 L["%s분 동안 대상의 마법 공격력을 %s만큼 증가시킵니다"] = { false, { Stats.SpellDamage, }, } -- s15288
 L["다리나 머리 방어구에 부여하여 마나를 %s만큼 증가시킵니다. 해당 방어구의 다른 마법부여 효과와 중복하여 사용할 수 없습니다"] = { { Stats.Mana, }, } -- s15340
 L["다리나 머리 방어구에 부여하여 생명력을 %s만큼 증가시킵니다. 해당 방어구의 다른 마법부여 효과와 중복하여 사용할 수 없습니다"] = { { Stats.Health, }, } -- s15389
-L["다리나 머리 방어구에 부여하여 방어도를 %s만큼 증가시킵니다. 해당 방어구의 다른 마법부여 효과와 중복하여 사용할 수 없습니다"] = { { Stats.Armor, }, } -- s15391
 L["다리나 머리 방어구에 부여하여 화염 저항력을 %s만큼 증가시킵니다. 해당 방어구의 다른 마법부여 효과와 중복하여 사용할 수 없습니다"] = { { Stats.FireResistance, }, } -- s15394
 L["다리나 머리 방어구에 부여하여 힘을 %s만큼 증가시킵니다. 해당 방어구의 다른 마법부여 효과와 중복하여 사용할 수 없습니다"] = { { Stats.Strength, }, } -- s15397
 L["다리나 머리 방어구에 부여하여 체력을 %s만큼 증가시킵니다. 해당 방어구의 다른 마법부여 효과와 중복하여 사용할 수 없습니다"] = { { Stats.Stamina, }, } -- s15400
 L["다리나 머리 방어구에 부여하여 민첩성을 %s만큼 증가시킵니다. 해당 방어구의 다른 마법부여 효과와 중복하여 사용할 수 없습니다"] = { { Stats.Agility, }, } -- s15402
 L["다리나 머리 방어구에 부여하여 지능을 %s만큼 증가시킵니다. 해당 방어구의 다른 마법부여 효과와 중복하여 사용할 수 없습니다"] = { { Stats.Intellect, }, } -- s15404
 L["다리나 머리 방어구에 부여하여 정신력을 %s만큼 증가시킵니다. 해당 방어구의 다른 마법부여 효과와 중복하여 사용할 수 없습니다"] = { { Stats.Spirit, }, } -- s15406
-L["주위 적의 방어구를 절단하여 매 가르기마다 방어도를 %s만큼 감소시킵니다. 최대 %s번까지 중복될 수 있습니다. %s초 동안 지속됩니다"] = { { Stats.Armor, }, false, false, } -- s15502
 L["%s초 동안 전투력이 %s만큼 증가합니다"] = { false, { Stats.GenericAttackPower, }, } -- s15602
-L["%s분 동안 대상을 냉기 갑옷으로 감쌉니다. 두꺼운 얼음으로 인해 방어도가 %s만큼 증가하며 근접 공격자의 이동 속도를 %s%만큼, 공격 속도를 %s%만큼 감소시킵니다"] = { false, { Stats.Armor, }, false, false, } -- s15784
 L["모든 계열의 마법 저항력이 %s만큼 증가합니다"] = { { Stats.FireResistance, Stats.NatureResistance, Stats.FrostResistance, Stats.ShadowResistance, Stats.ArcaneResistance, }, } -- s15967
 L["치유 주문의 마나 소모량이 %s%만큼 감소하고 적중률은 %s%만큼 증가합니다"] = { false, { Stats.MeleeHit, Stats.RangedHit, Stats.SpellHit, }, } -- s16179
-L["%s분 동안 적의 전투력을 %s만큼 증가시키고 방어도를 %s만큼 감소시킵니다. 저주에 걸린 적은 도망치거나 겁 먹지 않습니다. 흑마법사마다 한 대상에 하나의 저주만 걸 수 있습니다"] = { false, { Stats.AttackPower, }, { Stats.Armor, }, } -- s16231
+L["%s분 동안 적의 전투력을 %s만큼 증가시키고 방어도를 %s만큼 감소시킵니다. 저주에 걸린 적은 도망치거나 겁 먹지 않습니다. 흑마법사마다 한 대상에 하나의 저주만 걸 수 있습니다"] = { false, { Stats.AttackPower, }, false, } -- s16231
 L["방패로 적의 공격을 방어할 확률이 %s%만큼 증가하고 피해 방어량이 %s%만큼 증가합니다"] = { { Stats.BlockChance, }, false, } -- s16253
 L["회피 확률이 추가로 %s%만큼 증가합니다"] = { { Stats.Dodge, }, } -- s16254
 L["%s초 동안 회피율이 %s%만큼 증가합니다"] = { false, { Stats.Dodge, }, } -- s16321
@@ -464,7 +427,6 @@ L["%s분 동안 적의 근접 전투력을 %s만큼, 원거리 전투력을 %s�
 L["적을 불태워 %s의 화염 피해를 입히고 %s초 동안 대상이 받는 화염 피해를 %s만큼 증가시킵니다"] = { false, false, { Stats.FireDamage, }, } -- s16454
 L["적의 이동 속도를 %s%만큼 감소시키고 모든 물리 및 마법 공격력을 %s만큼 감소시킵니다. %s분 동안 지속됩니다"] = { false, { Stats.SpellDamage, }, false, reduction = true } -- s16458
 L["%s분 동안 적의 근접 치명타 적중률을 %s%만큼, 주문의 치명타 적중률을 %s%만큼 감소시킵니다"] = { false, { Stats.MeleeCrit, Stats.RangedCrit, }, { Stats.SpellCrit, }, reduction = true } -- s16460
-L["%s초 동안 방어도가 %s만큼 증가하지만 이 동안은 주문을 사용하거나 공격할 수 없습니다"] = { false, { Stats.Armor, }, } -- s16470
 L["%s분 동안 대상의 암흑 공격력이 %s만큼 증가합니다"] = { false, { Stats.ShadowDamage, }, } -- s16587
 L["힘을 %s만큼 증가시킵니다"] = { { Stats.Strength, }, } -- s16612
 L["%s분 동안 체력이 %s만큼 증가합니다"] = { false, { Stats.Stamina, }, } -- s16617
@@ -475,18 +437,16 @@ L["신성한 힘이 대상을 감싸 %s분 동안 정신력을 %s만큼 증가�
 L["힘이 %s만큼, 체력이 %s만큼 증가하고 거대해집니다. %s분 동안 지속됩니다"] = { { Stats.Strength, }, { Stats.Stamina, }, false, } -- s16883
 L["%s분 동안 마법의 공격력이 %s만큼 증가합니다"] = { false, { Stats.SpellDamage, }, } -- s16889
 L["생명력이 %s만큼 회복되고 %s초 동안 힘이 %s만큼 증가합니다"] = { false, false, { Stats.Strength, }, } -- s16916
-L["적의 방어도를 %s만큼 감소시킵니다. 효과는 %s번까지 중복될 수 있습니다"] = { { Stats.Armor, }, false, reduction = true } -- s16928
 L["표범 변신 상태일 때 이동 속도가 %s%만큼, 회피율이 %s%만큼 증가합니다"] = { false, { Stats.Dodge, }, } -- s17002
 L["민첩성을 %s만큼 증가시킵니다"] = { { Stats.Agility, }, } -- s17013
 L["%s분 동안 근접 전투력을 %s만큼 증가시키고 거대해집니다"] = { false, { Stats.AttackPower, }, } -- s17038
 L["대상의 머리에 부상을 입혀 %s의 물리 피해를 입히고 %s초 동안 모든 주문의 시전 시간을 %s%만큼 증가시킵니다"] = { false, false, { Stats.SpellHaste, }, reduction = true } -- s17148
 L["공격을 받았을 때 공격자에게 %s의 자연 피해를 입히고 %s초 동안 자연 저항력이 %s만큼 증가합니다"] = { false, false, { Stats.NatureResistance, }, } -- s17154
 L["%s시간 동안 대상의 비전 저항력을 %s만큼 증가시킵니다"] = { false, { Stats.ArcaneResistance, }, } -- s17175
+L["방어도 %s"] = { { Stats.Defense, }, } -- s17178
 L["%s분 동안 최대 %s 레벨의 인간형 몬스터를 조종합니다. 매혹된 생명체는 최대 생명력이 %s%만큼 증가합니다"] = { false, false, { Stats.Health, }, } -- s17244
 L["%s분 동안 화염 저항력이 %s만큼 증가하고 근접 공격자에게 %s의 화염 피해를 입힙니다"] = { false, { Stats.FireResistance, }, false, } -- s17275
-L["적의 방어구를 관통하여 방어도를 %s만큼 감소시킵니다. 최대 %s번까지 중첩됩니다"] = { { Stats.Armor, }, false, reduction = true } -- s17315
 L["%s초 동안 적의 시전 시간을 지연시키고 근접 및 원거리 공격 속도를 %s%만큼 감소시킵니다"] = { false, { Stats.SpellHaste, Stats.RangedHaste, }, reduction = true } -- s17331
-L["공격 적중 시 일정 확률로 대상을 움직이지 못하게 만들고 %s초 동안 방어도를 %s만큼 감소시킵니다"] = { false, { Stats.Armor, }, ignoreSum = true, reduction = true } -- s17332
 L["전투 중 공격을 받으면 일정 확률로 %s초 동안 방패 막기 확률이 %s%만큼 증가합니다. 언데드가 공격할 때는 이 효과가 발동할 확률이 %s배만큼 증가합니다"] = { false, { Stats.BlockChance, }, false, ignoreSum = true } -- s17350
 L["방패 막기 확률이 %s%만큼 증가합니다"] = { { Stats.BlockChance, }, } -- s17351
 L["%s초 동안 전투력이 %s만큼 증가합니다. 언데드에 대한 전투력은 %s만큼 추가로 증가합니다"] = { false, { Stats.GenericAttackPower, }, false, } -- s17352
@@ -502,25 +462,22 @@ L["%s시간 동안 모든 마법 주문과 효과의 공격력이 %s만큼 증�
 L["%s시간 동안 모든 계열의 마법 저항이 %s만큼 증가합니다. 영약은 동시에 하나만 사용할 수 있습니다. 이 효과는 죽어도 지속되며 다른 모든 저항력 관련 주문이나 아이템과 중복 적용됩니다"] = { false, { Stats.FireResistance, Stats.NatureResistance, Stats.FrostResistance, Stats.ShadowResistance, Stats.ArcaneResistance, }, } -- s17629
 L["%s초 동안 대상의 시전 시간을 %s%만큼 단축시킵니다"] = { false, { Stats.SpellHaste, }, } -- s17633
 L["시전자를 주기적으로 주위 적의 암흑 저항력을 %s만큼 감소시키는 오라로 감쌉니다. 취소할 때까지 지속됩니다"] = { { Stats.ShadowResistance, }, ignoreSum = true, reduction = true } -- s17695
-L["매 %s초마다 %s의 마나가 회복됩니다"] = { false, { Stats.GenericManaRegen, }, } -- s18378
-L["적과 그 주위의 적의 방어구를 절단하여 매 가르기마다 방어도를 %s만큼 감소시킵니다. 최대 %s번까지 중복될 수 있습니다. %s초 동안 지속됩니다. 최대 %s명만큼 영향을 미칩니다"] = { { Stats.Armor, }, false, false, false, reduction = true } -- s17963
 L["가격 당했을 때 %s%의 확률로 가시가 돋아나 공격자에게 %s의 자연 피해를 입히고 %s초 동안 자연 저항력이 %s만큼 증가합니다"] = { false, false, false, { Stats.NatureResistance, }, ignoreSum = true } -- s18097
 L["%s분 동안 힘이 %s만큼 증가합니다"] = { false, { Stats.Strength, }, } -- s18125
 L["%s초에 걸쳐 총 %s의 마나가 회복됩니다. 음료를 마시려면 앉아 있어야 합니다. 추가로 %s분 동안 정신력이 %s만큼 증가합니다"] = { false, { Stats.GenericManaRegen, }, false, { Stats.Spirit, }, } -- s18140
 L["적중률이 %s%만큼 증가하고 모든 위협 수준 생성량이 %s%만큼 감소합니다"] = { { Stats.SpellHit, Stats.MeleeHit, Stats.RangedHit, }, false, } -- s18174
 L["%s초에 걸쳐 총 %s의 생명력이 회복됩니다. 음식을 먹으려면 앉아 있어야 합니다. 만약 음식을 꾸준히 %s초 이상 먹게 되면 %s분 동안 민첩성이 %s만큼 증가합니다"] = { false, false, false, false, { Stats.Agility, }, ignoreSum = true } -- s18230
 L["%s미터 반경 내의 파티원의 지능을 %s만큼 증가시킵니다"] = { false, { Stats.Intellect, }, } -- s18264
+L["매 %s초마다 %s의 마나가 회복됩니다"] = { false, { Stats.GenericManaRegen, }, } -- s18378
 L["쐐기를 적에게 발사하여 %s초 동안 힘과 민첩성을 %s만큼 감소시킵니다"] = { false, { Stats.Strength, Stats.Agility, }, reduction = true } -- s18545
 L["대상에게 %s초 동안 %s초마다 %s의 암흑 피해를 입히고 %s초 동안 전투력을 %s만큼 감소시킵니다"] = { false, false, false, false, { Stats.AttackPower, }, reduction = true } -- s18633
 L["모든 저항력 %s"] = { { Stats.FireResistance, Stats.NatureResistance, Stats.FrostResistance, Stats.ShadowResistance, Stats.ArcaneResistance, }, } -- s18672
-L["가격 당했을 때 %s%의 확률로 착용자를 뼈로 감싸 %s초 동안 방어도를 %s만큼 증가시킵니다"] = { false, false, { Stats.Armor, }, } -- s18828
-L["%s초 동안 방어도가 %s만큼 증가합니다"] = { false, { Stats.Armor, }, } -- s18946
 L["활성화되면 %s초 동안 회피와 무기 막기 확률이 %s%만큼 증가합니다"] = { false, { Stats.Parry, Stats.Dodge, }, } -- s19263
 L["자신의 적중률이 %s%만큼 증가합니다. 또한 자신에게 시전되는 이동 방해 효과의 지속시간이 %s%만큼 감소합니다"] = { { Stats.MeleeHit, Stats.RangedHit, Stats.SpellHit, }, false, } -- s19290
 L["%s분 동안 적의 시전 시간을 %s%만큼 지연시키고 공격 속도를 %s%만큼 감소시킵니다"] = { false, { Stats.SpellHaste, }, false, reduction = true } -- s19365
 L["%s분 동안 주위 적의 화염 저항력을 %s만큼 감소시킵니다"] = { false, { Stats.FireResistance, }, reduction = true } -- s19366
 L["%s초 동안 지옥사냥개의 피를 오염시킵니다. 지옥사냥개가 근접 공격을 받으면 공격자는 %s초 동안 %s의 근접 전투력을 상실합니다. 효과는 대상마다 %s번까지 중복될 수 있습니다"] = { false, false, { Stats.AttackPower, }, false, ignoreSum = true, reduction = true } -- s19478
-L["%s미터 내에 있는 파티원의 원거리 전투력이 %s만큼 증가합니다. %s분 동안 지속됩니다"] = { false, { Stats.RangedAttackPower, }, false, } -- s19506
+L["%s미터 내에 있는 파티원 또는 공격대원의 원거리 전투력이 %s만큼 증가합니다. %s분 동안 지속됩니다"] = { false, { Stats.RangedAttackPower, }, false, } -- s19506
 L["%s초 동안 모든 저항력이 %s만큼 증가합니다"] = { false, { Stats.FireResistance, Stats.NatureResistance, Stats.FrostResistance, Stats.ShadowResistance, Stats.ArcaneResistance, }, } -- s19638
 L["음식을 꾸준히 %s초 이상 먹으면 포만감을 느끼게 되고 %s분 동안 체력과 정신력이 %s만큼 증가합니다"] = { false, false, { Stats.Stamina, Stats.Spirit, }, } -- s19708
 L["대상에게 힘의 축복을 걸어 %s시간 동안 근접 전투력을 %s만큼 증가시킵니다. 성기사마다 하나의 대상에게 하나의 축복만 효력을 발휘합니다"] = { false, { Stats.AttackPower, }, } -- s19740
@@ -530,21 +487,17 @@ L["주위 %s 미터 반경에 있는 파티원과 공격대원의 냉기 저항�
 L["주위 %s 미터 반경에 있는 파티원과 공격대원의 화염 저항력을 %s만큼 증가시킵니다. 오라는 성기사마다 동시에 하나만 유지할 수 있습니다"] = { false, { Stats.FireResistance, }, } -- s19891
 L["자신의 생명력이 %s만큼 회복되고 %s초 동안 힘이 %s만큼 증가합니다"] = { false, false, { Stats.Strength, }, } -- s20007
 L["망토에 영구적으로 마법을 부여해 모든 저항력을 %s만큼 증가시킵니다"] = { { Stats.FireResistance, Stats.NatureResistance, Stats.FrostResistance, Stats.ShadowResistance, Stats.ArcaneResistance, }, } -- s20014
-L["망토에 영구적으로 마법을 부여해 착용자의 방어도를 %s만큼 증가시킵니다"] = { { Stats.Armor, }, } -- s20015
 L["장화에 영구적으로 마법을 부여해 착용자의 정신력을 %s만큼 증가시킵니다"] = { { Stats.Spirit, }, } -- s20024
 L["양손 무기에 영구적으로 마법을 부여해 착용자의 정신력을 %s만큼 증가시킵니다"] = { { Stats.Spirit, }, } -- s20035
 L["양손 무기에 영구적으로 마법을 부여해 착용자의 지능을 %s만큼 증가시킵니다"] = { { Stats.Intellect, }, } -- s20036
 L["사냥꾼과 %s미터 반경 내에 있는 파티원과 공격대원은 야생의 상을 취해 자연 저항력이 %s만큼 증가합니다. 한 번에 한 상만 취할 수 있습니다"] = { false, { Stats.NatureResistance, }, } -- s20043
+L["방패 막기 확률 %s%만큼 증가\r\n%s회 방패 막기할 때까지 지속"] = { { Stats.BlockChance, }, false, } -- s20128
 L["%s초 동안 성기사를 헌신의 기운으로 감싸 근접 전투력이 %s만큼, 근접 공격 속도가 %s%만큼 증가합니다. 하지만 각 공격의 피해는 약간 저하됩니다. 성기사마다 하나의 문장만 효력을 발휘합니다.\r\n\r\n문장의 에너지를 적에게 폭발시키면 %s초 동안 적이 입는 신성 피해가 %s까지 증가합니다. 매번 공격 시 주문의 지속시간이 초기화됩니다. 성기사마다 하나의 심판만 효력을 발휘합니다"] = { false, { Stats.AttackPower, }, false, false, false, } -- s20162
-L["전체 생명력이 %s%만큼, 적중률이 %s%만큼 증가합니다"] = { false, { Stats.MeleeHit, Stats.RangedHit, Stats.SpellHit, }, } -- s20550
 L["회피율이 %s%만큼, 이동 속도가 %s%만큼 증가합니다. 나이트 엘프 도적과 드루이드는 은신 효과가 %s레벨만큼 증가합니다"] = { { Stats.Dodge, }, false, false, } -- s20582
 L["%s분 동안 체력이 %s만큼 증가하고 받는 물리 피해가 %s만큼 감소합니다. 하지만 힘과 민첩성이 %s만큼 감소하며 받는 마법 피해가 최대 %s만큼 증가합니다"] = { false, { Stats.Stamina, }, false, { Stats.Strength, Stats.Agility, }, false, } -- s20587
 L["지팡이류 숙련도 %s"] = { { Stats.WeaponSkill, }, } -- s20607
-L["대상의 생명력을 %s분에 걸쳐 매 %s초마다 %s만큼 회복시키고 방어도를 %s만큼 증가시킵니다"] = { false, false, false, { Stats.Armor, }, } -- s20655
-L["%s분 동안 대상의 방어도를 %s만큼 감소시킵니다. 이 주문이 걸린 대상은 숨거나 투명해질 수 없습니다"] = { false, { Stats.Armor, }, reduction = true } -- s20656
 L["%s초 동안 최대 %s 레벨의 인간형 몬스터를 조종합니다. 마법 공격력이 %s만큼 물리 공격력이 %s만큼 증가합니다"] = { false, false, { Stats.SpellDamage, }, { Stats.AverageWeaponDamage, }, } -- s20668
-L["%s분 동안 시전자의 방어도가 %s만큼 증가하며 생명력 회복 속도가 증가합니다"] = { false, { Stats.Armor, }, } -- s20798
-L["전투 중 공격을 받으면 %s%%의 확률로 모든 파티원의 방어도를 %s초 동안 %s만큼 증가시킵니다. 요새와 도시에서는 확률이 %s배로 증가합니다"] = { false, false, { Stats.Armor, }, false, ignoreSum = true } -- s20847
+L["소환수의 전투력이 %s만큼 증가합니다"] = { { Stats.GenericAttackPower, }, ignoreSum = true } -- s21938
 L["체력이 %s만큼 증가하고 %s분 동안 술에 취하게 만듭니다"] = { { Stats.Stamina, }, false, } -- s20875
 L["최대 %s 레벨의 대상 악마를 예속해 시전자의 명령을 따르게 합니다. 예속된 상태에서는 대상 악마의 공격 간격이 %s%만큼 늘어나고 주문 시전 속도가 %s%만큼 감소합니다. 최대 %s분 동안 지속됩니다"] = { false, false, { Stats.SpellHaste, }, false, reduction = true } -- s20882
 L["%s초 동안 방패 막기 확률이 %s%만큼 증가하며, 효과가 활성화된 동안 공격을 방패로 막을 때마다 공격자에게 %s의 신성 피해를 입힙니다. 신성한 방패로 입히는 피해는 위협 수준을 %s%만큼 추가로 생성합니다. 막을 때마다 충전 횟수를 %s회 소모합니다. %s회 충전됩니다"] = { false, { Stats.BlockChance, }, false, false, false, false, } -- s20925
@@ -552,7 +505,6 @@ L["%s초 동안 방패 막기 확률이 %s%만큼 증가하며, 효과가 활성
 L["전투력 %s만큼 증가"] = { { Stats.GenericAttackPower, }, } -- s20987
 L["야수의 전투력이 %s만큼 증가합니다"] = { { Stats.GenericAttackPower, }, } -- s20988
 L["원거리 전투력 %s"] = { { Stats.RangedAttackPower, }, } -- s21013
-L["적의 방어구를 으깨서 매 갑옷 으깨기마다 방어도를 %s만큼 감소시킵니다. 최대 %s번까지 적용될 수 있습니다. %s초 동안 지속됩니다"] = { { Stats.Armor, }, false, false, } -- s21055
 L["적에게 어둠의 화살을 발사하여 %s의 암흑 피해를 입히고 %s초 동안 모든 능력치를 %s만큼 감소시킵니다"] = { false, false, { Stats.AllStats, }, reduction = true } -- s21151
 L["%s초 동안 대상의 방어도를 %s만큼 무시하여 공격합니다. 최대 %s번까지 적용될 수 있습니다"] = { false, { Stats.ArmorPenetration, }, false, } -- s21153
 L["사령관 주위에 있으면 매초마다 %s의 생명력과 %s의 마나가 회복됩니다"] = { { Stats.HealthRegen, }, false, } -- s21172
@@ -562,18 +514,17 @@ L["신성 계열의 주문과 효과의 공격력이 최대 %s만큼 증가합�
 L["파티원과 공격대원에게 성스러운 기운을 불어넣어 %s시간 동안 체력을 %s만큼 증가시킵니다"] = { false, { Stats.Stamina, }, } -- s21562
 L["소환수의 체력이 %s만큼 증가하고 모든 계열에 대한 저항력이 %s만큼 증가합니다"] = { { Stats.Stamina, }, false, ignoreSum = true } -- s21741
 L["근접 공격으로 피해를 입힐 시 %s%의 확률로 %s초 동안 대상의 전투력을 %s만큼 감소시킵니다"] = { false, false, { Stats.AttackPower, }, ignoreSum = true, reduction = true } -- s21841
-L["모든 파티원과 공격대원에게 야생의 선물을 선사하여 %s시간 동안 방어도를 %s만큼, 모든 능력치를 %s만큼, 모든 저항력을 %s만큼 증가시킵니다"] = { false, { Stats.Armor, }, { Stats.AllStats, }, false, } -- s21849
+L["모든 파티원과 공격대원에게 야생의 선물을 선사하여 %s시간 동안 방어도를 %s만큼, 모든 능력치를 %s만큼, 모든 저항력을 %s만큼 증가시킵니다"] = { false, false, { Stats.AllStats, }, false, } -- s21849
 L["자연 계열 주문이 치명타로 적중할 확률이 %s%만큼 증가합니다"] = { { Stats.SpellCrit, }, } -- s21870
 L["%s분 동안 냉기 마법의 공격력이 최대 %s만큼 증가합니다"] = { false, { Stats.FrostDamage, }, } -- s21920
 L["소환수의 체력이 %s만큼, 모든 계열의 마법 저항력이 %s만큼 증가합니다"] = { { Stats.Stamina, }, false, ignoreSum = true } -- s21926
 L["무기에 영구적으로 마법을 부여해 냉기 주문 시전 시 최대 %s의 추가 냉기 피해를 입히도록 만듭니다"] = { { Stats.FrostDamage, }, } -- s21931
-L["소환수의 전투력이 %s만큼 증가합니다"] = { { Stats.GenericAttackPower, }, ignoreSum = true } -- s21938
-L["대상에게 %s의 피해를 입히고 방어도를 %s만큼 감소시킵니다"] = { false, { Stats.Armor, }, reduction = true } -- s21961
 L["전투력이 %s만큼 증가합니다"] = { { Stats.GenericAttackPower, }, } -- s21967
 L["전투 중 공격을 받으면 %s%의 확률로 %s분 동안 모든 능력치가 %s만큼 증가합니다"] = { false, false, { Stats.AllStats, }, ignoreSum = true } -- s21969
 L["%s분 동안 모든 능력치가 %s만큼 증가합니다"] = { false, { Stats.AllStats, }, } -- s21970
 L["적을 번개로 강타하여 %s의 자연 피해를 입히고 주위의 적 %s명의 자연 저항력을 %s만큼 감소시킵니다. 또한 선택된 대상은 회오리 바람에 휩싸여 %s초 동안 공격 속도가 %s%만큼 감소됩니다"] = { false, false, { Stats.NatureResistance, }, false, false, reduction = true } -- s21992
 L["가슴보호구에 영구적으로 마법을 부여해 착용자의 생명력을 %s만큼 증가시킵니다"] = { { Stats.Stamina, }, } -- s22089
+L["망토에 영구적으로 마법을 부여해 착용자의 방어도를 %s만큼 증가시킵니다"] = { { Stats.Armor, }, } -- s22092
 L["석궁류 숙련도 %s"] = { { Stats.WeaponSkill, }, } -- s22188
 L["%s분 동안 대상이 입히는 마법 피해를 %s만큼 감소시킵니다"] = { false, { Stats.SpellDamage, }, reduction = true } -- s22371
 L["%s분 동안 무작위로 시전자의 주문 공격력을 %s만큼 증가시킵니다"] = { false, { Stats.SpellDamage, }, } -- s22418
@@ -597,7 +548,7 @@ L["전투력이 %s만큼, 주문 공격력 및 치유량이 최대 %s만큼 증�
 L["다리나 머리 방어구에 부여하여 공격 속도를 %s%만큼 증가시킵니다. 해당 방어구의 다른 마법부여 효과와 중복하여 사용할 수 없습니다"] = { { Stats.RangedHaste, }, } -- s22840
 L["다리나 머리 방어구에 부여하여 치유 효과와 주문의 피해를 %s만큼 증가시킵니다. 해당 방어구의 다른 마법부여 효과와 중복하여 사용할 수 없습니다"] = { { Stats.SpellPower, }, } -- s22844
 L["다리나 머리 방어구에 부여하여 회피율을 %s%만큼 증가시킵니다. 해당 방어구의 다른 마법부여 효과와 중복하여 사용할 수 없습니다"] = { { Stats.Dodge, }, } -- s22846
-L["%s초 동안 착용자의 방어 숙련도를 %s만큼, 방어도를 %s만큼, 전투력을 %s만큼, 용족에 대한 전투력을 추가로 %s만큼 증가시킵니다"] = { false, { Stats.Defense, }, { Stats.Armor, }, { Stats.AttackPower, }, false, } -- s22850
+L["%s초 동안 착용자의 방어 숙련도를 %s만큼, 방어도를 %s만큼, 전투력을 %s만큼, 용족에 대한 전투력을 추가로 %s만큼 증가시킵니다"] = { false, { Stats.Defense, }, false, { Stats.AttackPower, }, false, } -- s22850
 L["일리단의 격노를 흡수하여 악마에 대한 전투력이 %s만큼 증가합니다. 적중률이 %s%만큼, 공격 속도가 %s%만큼 증가합니다"] = { false, { Stats.MeleeHit, Stats.RangedHit, }, false, } -- s22988
 L["대상 파티원 및 공격대원에게 총명한 기운을 불어넣어 %s시간 동안 지능을 %s만큼 증가시킵니다"] = { false, { Stats.Intellect, }, } -- s23028
 L["근접 무기에 영구적으로 마법을 부여해 치유 주문의 효과를 %s만큼 증가시킵니다"] = { { Stats.HealingPower, }, } -- s23144
@@ -606,19 +557,17 @@ L["%s초 동안 적의 근접 전투력을 %s만큼 감소시킵니다"] = { fal
 L["%s초 동안 모든 주문 및 효과에 의한 피해와 치유량이 최대 %s만큼 증가합니다"] = { false, { Stats.SpellPower, }, } -- s23271
 L["주문이 극대화 효과를 낼 확률이 %s%만큼 증가합니다"] = { { Stats.SpellCrit, }, } -- s23440
 L["주문의 치명타 및 극대화율이 %s%만큼, 화염 주문의 공격력이 최대 %s만큼 증가합니다"] = { { Stats.SpellCrit, }, { Stats.FireDamage, }, } -- s23480
-L["increases your off-hand weapon damage by %s% and chance to hit with off-hand attacks by %s%"] = { false, { Stats.MeleeHit, Stats.RangedHit, }, } -- s23584
 L["주문 시전에 성공하면 %s%의 확률로 %s초 동안 정신력이 %s만큼 증가합니다"] = { false, false, { Stats.Spirit, }, } -- s23684
 L["정신을 자극하여 %s초 동안 마법사의 주문 시전 속도가 %s%만큼 단축됩니다"] = { false, { Stats.SpellHaste, }, } -- s23723
 L["성기사에 빛의 기운을 불어넣어 %s초 동안 근접 공격 속도를 %s%만큼 증가시키고 주문의 시전 속도를 %s%만큼 단축시킵니다"] = { false, false, { Stats.SpellHaste, }, } -- s23733
-L["%s초 동안 방어도가 %s만큼 증가하고 원거리 또는 근접 피해를 입을 때마다 %s의 생명력이 회복됩니다"] = { false, { Stats.Armor, }, false, } -- s23780
 L["근접 무기에 영구적으로 마법을 부여해 착용자의 힘을 %s만큼 증가시킵니다"] = { { Stats.Strength, }, } -- s23799
 L["근접 무기에 영구적으로 마법을 부여해 착용자의 민첩성을 %s만큼 증가시킵니다"] = { { Stats.Agility, }, } -- s23800
 L["손목보호구에 영구적으로 마법을 부여해 매 %s초마다 착용자의 마나를 %s만큼 회복시킵니다"] = { false, { Stats.GenericManaRegen, }, } -- s23801
 L["손목보호구에 영구적으로 마법을 부여해 치유 주문의 효과를 최대 %s만큼, 공격 주문의 효과를 최대 %s만큼 증가시킵니다"] = { { Stats.HealingPower, }, { Stats.SpellDamage, }, } -- s23802
 L["근접 무기에 영구적으로 마법을 부여해 착용자의 정신력을 %s만큼 증가시킵니다"] = { { Stats.Spirit, }, } -- s23803
 L["근접 무기에 영구적으로 마법을 부여해 착용자의 지능을 %s만큼 증가시킵니다"] = { { Stats.Intellect, }, } -- s23804
+L["화염 저항력이 %s만큼 증가합니다"] = { { Stats.FireResistance, }, } -- s24445
 L["활성화되면 대상의 주문 및 공격의 치명타 적중률이 %s%만큼 증가합니다"] = { { Stats.MeleeCrit, Stats.RangedCrit, Stats.SpellCrit, }, } -- s23964
-L["화염 저항력이 %s만큼 증가합니다"] = { { Stats.FireResistance, }, } -- s23992
 L["%s초 동안 공격력이 %s만큼 증가합니다"] = { false, { Stats.AverageWeaponDamage, }, } -- s24043
 L["다리나 머리 방어구에 마법을 부여하여 체력을 %s만큼, 방어 숙련도를 %s만큼, 방패의 피해 방어량을 %s만큼 증가시킵니다. 해당 방어구의 다른 마법부여 효과와 중복하여 사용할 수 없습니다"] = { { Stats.Stamina, }, { Stats.Defense, }, false, } -- s24149
 L["다리나 머리 방어구에 마법을 부여하여 체력을 %s만큼, 방어 숙련도를 %s만큼, 모든 치유 주문의 치유량을 최대 %s만큼 증가시킵니다. 해당 방어구의 다른 마법부여 효과와 중복하여 사용할 수 없습니다"] = { { Stats.Stamina, }, { Stats.Defense, }, { Stats.HealingPower, }, } -- s24160
@@ -626,6 +575,7 @@ L["다리나 머리 방어구에 마법을 부여하여 전투력을 %s만큼, �
 L["다리나 머리 방어구에 마법을 부여하여 원거리 전투력을 %s만큼, 체력을 %s만큼, 무기 적중률을 %s%만큼 증가시킵니다. 해당 방어구의 다른 마법부여 효과와 중복하여 사용할 수 없습니다"] = { { Stats.RangedAttackPower, }, { Stats.Stamina, }, { Stats.MeleeHit, Stats.RangedHit, }, } -- s24162
 L["다리나 머리 방어구에 마법을 부여하여 지능을 %s만큼 모든 치유 주문의 치유량과 공격 주문의 피해를 최대 %s만큼 증가시킵니다. 해당 방어구의 다른 마법부여 효과와 중복하여 사용할 수 없습니다"] = { { Stats.Intellect, }, { Stats.SpellPower, }, } -- s24163
 L["다리나 머리 방어구에 마법을 부여하여 모든 주문의 치유량과 피해를 %s만큼 증가시키고 주문의 적중률을 %s%만큼 증가시킵니다. 해당 방어구의 다른 마법부여 효과와 중복하여 사용할 수 없습니다"] = { { Stats.SpellPower, }, { Stats.SpellHit, }, } -- s24164
+L["냉기 저항력이 %s만큼 증가합니다"] = { { Stats.FrostResistance, }, } -- s24446
 L["다리나 머리 방어구에 마법을 부여하여 체력을 %s만큼, 모든 주문 및 효과에 의한 공격력과 치유량을 최대 %s만큼 증가시킵니다. 해당 방어구의 다른 마법부여 효과와 중복하여 사용할 수 없습니다"] = { { Stats.Stamina, }, { Stats.SpellPower, }, } -- s24165
 L["다리나 머리 방어구에 마법을 부여하여 체력을 %s만큼, 마나 회복량을 %s초마다 %s만큼, 모든 치유 주문의 치유량을 최대 %s만큼 증가시킵니다. 해당 방어구의 다른 마법부여 효과와 중복하여 사용할 수 없습니다"] = { { Stats.Stamina, }, false, { Stats.GenericManaRegen, }, { Stats.HealingPower, }, } -- s24167
 L["다리나 머리 방어구에 마법을 부여하여 체력을 %s만큼, 지능을 %s만큼, 모든 치유 주문의 치유량을 최대 %s만큼 증가시킵니다. 해당 방어구의 다른 마법부여 효과와 중복하여 사용할 수 없습니다"] = { { Stats.Stamina, Stats.Intellect, }, false, { Stats.HealingPower, }, } -- s24168
@@ -642,16 +592,16 @@ L["어깨보호구에 영구적으로 마법을 부여해 모든 주문 및 효�
 L["어깨보호구에 영구적으로 마법을 부여해 전투력을 %s만큼 증가시킵니다"] = { { Stats.AttackPower, Stats.RangedAttackPower, }, } -- s24422
 L["적을 강타하여 %s의 피해를 입히고 근접 사정거리에 있는 모든 적의 근접 전투력을 %s만큼 감소시킵니다. %s초 동안 지속됩니다"] = { false, { Stats.AttackPower, }, false, reduction = true } -- s24423
 L["매 %s초마다 %s의 생명력을 회복시키고 힘을 %s만큼 증가시킵니다. %s분 동안 지속됩니다"] = { false, { Stats.HealthRegen, }, { Stats.Strength, }, false, } -- s24427
-L["냉기 저항력이 %s만큼 증가합니다"] = { { Stats.FrostResistance, }, } -- s24446
 L["암흑 저항력이 %s만큼 증가합니다"] = { { Stats.ShadowResistance, }, } -- s24488
 L["자연 저항력이 %s만큼 증가합니다"] = { { Stats.NatureResistance, }, } -- s24492
 L["비전 저항력이 %s만큼 증가합니다"] = { { Stats.ArcaneResistance, }, } -- s24493
 L["%s초 동안 주문이 극대화 효과를 발휘할 확률이 %s%만큼 증가합니다"] = { false, { Stats.SpellCrit, }, } -- s24498
 L["적을 강타하여 %s의 피해를 입히고 근접 사정거리에 있는 모든 적의 전투력을 %s만큼 감소시킵니다. %s초 동안 지속됩니다"] = { false, { Stats.AttackPower, }, false, reduction = true } -- s24577
-L["늑대가 포효를 내질러 주위 %s미터 내 모든 파티원의 근접 전투력을 %s만큼 증가시킵니다. %s분 동안 지속됩니다"] = { false, { Stats.AttackPower, }, false, } -- s24597
+L["늑대가 포효를 내질러 주위 %s미터 내 모든 파티원 또는 공격대원의 근접 전투력을 %s만큼 증가시킵니다. %s분 동안 지속됩니다"] = { false, { Stats.AttackPower, }, false, } -- s24597
 L["%s초 동안 주문 적중률이 %s%만큼 증가합니다"] = { false, { Stats.SpellHit, }, } -- s24610
 L["표범, 광포한 곰, 곰 변신 상태일 때 전투력이 %s만큼 증가합니다"] = { { Stats.AttackPower, }, } -- s24694
 L["%s초에 걸쳐 총 %s의 생명력이 회복됩니다. 음식을 먹으려면 앉아 있어야 합니다. 음식을 꾸준히 %s초 이상 먹게 되면 포만감을 느끼게 되고 %s분 동안 힘이 %s만큼 증가합니다"] = { false, false, false, false, { Stats.Strength, }, ignoreSum = true } -- s24800
+L["주문의 치명타 및 극대화율 %s%만큼 증가"] = { { Stats.SpellCrit, }, } -- s24907
 L["%s초 동안 모든 주문 및 효과에 의한 치유량이 최대 %s만큼 증가합니다"] = { false, { Stats.HealingPower, }, } -- s24998
 L["장갑에 영구적으로 마법을 부여해 암흑 마법의 공격력을 최대 %s만큼 증가시킵니다"] = { { Stats.ShadowDamage, }, } -- s25073
 L["장갑에 영구적으로 마법을 부여해 냉기 마법의 공격력을 최대 %s만큼 증가시킵니다"] = { { Stats.FrostDamage, }, } -- s25074
@@ -665,11 +615,9 @@ L["%s초마다 %s의 마나를 회복하고, 치유량이 최대 %s만큼 증가
 L["매 %s초마다 %s의 마나가 회복되고 치유 주문의 효과가 %s만큼 증가합니다"] = { false, { Stats.GenericManaRegen, }, { Stats.HealingPower, }, } -- s25116
 L["무기에 바르면 주문 공격력과 치유량이 최대 %s만큼 증가합니다. %s분 동안 지속됩니다"] = { { Stats.SpellPower, }, false, } -- s25117
 L["무기에 바르면 매 %s초마다 %s의 마나를 회복합니다. 또한 치유량이 최대 %s만큼 증가합니다. %s분 동안 지속됩니다"] = { { Stats.GenericManaRegen, }, false, { Stats.HealingPower, }, false, } -- s25118
-L["while applied to target weapon it increases spell damage and healing by up to %s. lasts for %s minutes"] = { { Stats.SpellPower, }, false, } -- s25119
 L["무기에 바르면 매 %s초마다 %s의 마나를 회복하고 치유량이 최대 %s만큼 증가합니다. %s분 동안 지속됩니다"] = { false, { Stats.GenericManaRegen, }, { Stats.HealingPower, }, false, } -- s25120
 L["무기에 바르면 주문 공격력과 치유량이 최대 %s만큼 증가하고 주문 극대화 확률이 %s%만큼 증가합니다. %s분 동안 지속됩니다"] = { { Stats.SpellPower, }, { Stats.SpellCrit, }, false, } -- s25122
 L["무기에 바르면 매 %s초마다 %s의 마나를 회복하고 치유 주문의 효과가 최대 %s만큼 증가합니다. %s분 동안 지속됩니다"] = { false, { Stats.GenericManaRegen, }, { Stats.HealingPower, }, false, } -- s25123
-L["목표 적과 그 주위의 적에게 일반 공격력에 추가로 %s의 피해를 입힙니다. 최대 %s개의 대상에게 영향을 미칩니다. 또한 방어도를 %s만큼 감소시킵니다"] = { false, false, { Stats.Armor, }, reduction = true } -- s25174
 L["%s초에 걸쳐 총 %s의 마나가 회복됩니다. 음식을 먹으려면 앉아 있어야 합니다"] = { false, { Stats.GenericManaRegen, }, } -- s25701
 L["자신의 주문에 대한 대상의 화염 저항력을 %s만큼 감소시킵니다"] = { { Stats.FirePenetration, }, } -- s25717
 L["자신의 주문에 대한 대상의 냉기 저항력을 %s만큼 감소시킵니다"] = { { Stats.FrostPenetration, }, } -- s25718
@@ -696,6 +644,7 @@ L["근접 무기에 영구적으로 마법을 부여해 지능을 %s만큼 증�
 L["소환수의 치명타 적중률이 %s%만큼 증가합니다"] = { { Stats.MeleeCrit, Stats.RangedCrit, }, } -- s27042
 L["근접 무기에 영구적으로 마법을 부여해 힘을 %s만큼 증가시킵니다"] = { { Stats.Strength, }, } -- s27093
 L["장갑에 영구적으로 마법을 부여해 치유 마법의 효과를 최대 %s만큼 증가시킵니다"] = { { Stats.HealingPower, }, } -- s27111
+L["%s시간 동안 방어 숙련도가 %s만큼 증가합니다"] = { false, { Stats.Defense, }, } -- s27720
 L["손목보호구에 영구적으로 마법을 부여해 치유 주문의 효과를 %s만큼 증가시킵니다"] = { { Stats.HealingPower, }, } -- s27116
 L["근접 공격 시 일정 확률로 %s초 동안 모든 주문 및 효과에 의한 피해와 치유량이 최대 %s만큼 증가합니다"] = { false, { Stats.SpellDamage, }, ignoreSum = true } -- s27498
 L["전사의 외침으로 주위 %s미터 반경에 있는 모든 파티원의 전투력이 %s만큼 증가됩니다. %s분 동안 지속됩니다"] = { false, { Stats.AttackPower, }, false, } -- s27578
@@ -705,7 +654,6 @@ L["%s분 동안 회피 확률이 %s%만큼 증가합니다"] = { false, { Stats.
 L["%s초 동안 주문의 공격력이 최대 %s만큼, 치유 주문의 치유량이 최대 %s만큼 증가합니다"] = { false, { Stats.SpellDamage, }, { Stats.HealingPower, }, } -- s27675
 L["모든 파티원과 공격대원에게 힘이 깃들어 %s시간 동안 정신력을 %s만큼 증가시킵니다"] = { false, { Stats.Spirit, }, } -- s27681
 L["모든 파티원과 공격대원에게 힘이 깃들어 %s분 동안 암흑 저항력을 %s만큼 증가시킵니다"] = { false, { Stats.ShadowResistance, }, } -- s27683
-L["%s시간 동안 방어 숙련도가 %s만큼 증가합니다"] = { false, { Stats.Defense, }, } -- s27720
 L["%s시간 동안 주문 공격력이 최대 %s만큼 증가합니다"] = { false, { Stats.SpellDamage, }, } -- s27721
 L["%s시간 동안 주문에 의한 치유량이 최대 %s까지 증가합니다"] = { false, { Stats.HealingPower, }, } -- s27722
 L["%s시간 동안 공격 적중률이 %s만큼 증가합니다"] = { false, { Stats.MeleeHit, Stats.RangedHit, }, } -- s27723
@@ -735,12 +683,11 @@ L["%s초 동안 아군 대상의 마나 회복 속도를 매 %s초마다 %s만�
 L["매 주문 시전 시 일정 확률로 현신이 발동하여 %s초 동안 마나 회복 속도가 %s만큼 증가합니다"] = { false, { Stats.GenericManaRegen, }, ignoreSum = true } -- s28802
 L["번개 보호막이 활성화되어 있는 동안 매 %s초마다 %s의 마나가 회복됩니다"] = { false, { Stats.GenericManaRegen, }, ignoreSum = true } -- s28821
 L["%s초 동안 아군 대상의 전투력을 %s만큼 증가시킵니다"] = { false, { Stats.GenericAttackPower, }, } -- s28826
-L["%s초 동안 아군 대상의 방어도를 %s만큼 증가시킵니다"] = { false, { Stats.Armor, }, } -- s28827
-L["어깨보호구에 영구적으로 마법을 부여해 체력을 %s만큼 방어도를 %s만큼 증가시킵니다"] = { { Stats.Stamina, }, { Stats.Armor, }, } -- s29480
 L["%s시간 동안 체력이 %s만큼 증가합니다"] = { false, { Stats.Stamina, }, } -- s29235
 L["모든 마법 저항력이 %s만큼 증가하고, 시전자가 주문에 완전히 저항할 때마다 전체 마나의 %s%를 회복합니다. %s초마다 한 번씩만 발동합니다"] = { { Stats.FireResistance, Stats.NatureResistance, Stats.FrostResistance, Stats.ShadowResistance, Stats.ArcaneResistance, }, false, false, } -- s29441
 L["어깨보호구에 영구적으로 마법을 부여해 모든 주문 및 효과에 의한 피해와 치유량을 최대 %s만큼 증가시키고 주문이 극대화 효과를 발휘할 확률을 %s%만큼 증가시킵니다"] = { { Stats.SpellPower, }, { Stats.SpellCrit, }, } -- s29467
 L["어깨보호구에 영구적으로 마법을 부여해 주문 및 효과에 의한 치유량을 최대 %s만큼 증가시키고 마나 회복 속도를 매 %s초마다 %s만큼 증가시킵니다"] = { { Stats.HealingPower, }, { Stats.GenericManaRegen, }, false, } -- s29475
+L["어깨보호구에 영구적으로 마법을 부여해 체력을 %s만큼 방어도를 %s만큼 증가시킵니다"] = { { Stats.Stamina, }, false, } -- s29480
 L["어깨보호구에 영구적으로 마법을 부여해 전투력을 %s만큼 치명타 적중률을 %s%만큼 증가시킵니다"] = { { Stats.GenericAttackPower, Stats.AttackPower, Stats.RangedAttackPower, }, { Stats.MeleeCrit, Stats.RangedCrit, Stats.SpellCrit, }, } -- s1219512
 L["전투력이 %s만큼 증가하고 매 %s초마다 추가로 %s만큼 증가합니다. %s초 동안 지속됩니다"] = { { Stats.GenericAttackPower, }, false, { Stats.GenericAttackPower, }, false, ignoreSum = true } -- s29602
 L["양손 근접 무기에 영구적으로 마법을 부여해 착용자의 민첩성을 %s만큼 증가시킵니다"] = { { Stats.Agility, }, } -- s30229
@@ -761,16 +708,14 @@ L["저주를 걸어 %s분 동안 대상의 화염과 냉기 마법에 대한 저
 L["대상을 강제로 악마어로 말하도록 하여 주문의 시전 시간을 %s%만큼 지연시킵니다. 흑마법사마다 한 대상에 동시에 하나의 저주만 걸 수 있습니다. %s분 동안 지속됩니다"] = { { Stats.SpellHaste, }, false, reduction = true } -- s402794
 L["대상의 전투력을 %s만큼 감소시킵니다. %s초 동안 지속됩니다"] = { { Stats.GenericAttackPower, }, false, reduction = true } -- s402811
 L["전사의 외침으로 주위 %s미터 반경에 있는 모든 파티원의 체력이 %s만큼 증가됩니다. %s분 동안 지속됩니다"] = { false, { Stats.Stamina, }, false, } -- s403215
-L["시전자를 마의 에너지로 감싸 주문 공격력과 치유량을 %s만큼, 추가로 정신력의 %s%만큼 증가시킵니다. 추가로 매 %s초마다 최대 생명력의 %s%에 해당하는 생명력을 회복합니다. 흑마법사의 갑옷 주문은 동시에 한 종류만 사용할 수 있습니다. %s분 동안 지속됩니다"] = { { Stats.SpellPower, }, false, false, false, false, } -- s403619
-L["방패 막기에 성공할 때마다 최대 마나의 %s%에 해당하는 마나를 회복하고 방어도가 방패 방어도의 %s%만큼 증가합니다. 최대 %s번까지 중첩됩니다. 또한 항상 방패 막기 확률이 %s%만큼, 방패 막기 수치가 %s%만큼 증가합니다.\r\n\r\n추가로 충격 능력을 시전할 때마다 %s|%s을;를; 넘는 방어 숙련 %s점당 주문 공격력이이 %s만큼 증가합니다. %s초 동안 지속됩니다"] = { false, { Stats.Armor, }, false, { Stats.BlockChance, }, false, false, false, false, false, false, } -- s408524
-L["%s초 동안 방어도가 방패 방어도의 %s%만큼 증가합니다. 최대 %s번까지 중첩됩니다"] = { false, { Stats.Armor, }, false, } -- s408525
+L["시전자를 지옥 마력으로 감싸 주문 공격력과 치유량을 %s만큼, 추가로 정신력의 %s%만큼 증가시킵니다. 추가로 매 %s초마다 최대 생명력의 %s%에 해당하는 생명력을 회복합니다. 흑마법사의 갑옷 주문은 동시에 한 종류만 사용할 수 있습니다. %s분 동안 지속됩니다"] = { { Stats.SpellPower, }, false, false, false, false, } -- s403619
+L["방패 막기에 성공할 때마다 최대 마나의 %s%에 해당하는 마나를 회복하고 방어도가 방패 방어도의 %s%만큼 증가합니다. 최대 %s번까지 중첩됩니다. 또한 항상 방패 막기 확률이 %s%만큼, 방패 막기 수치가 %s%만큼 증가합니다.\r\n\r\n추가로 충격 능력을 시전할 때마다 %s|%s을;를; 넘는 방어 숙련 %s점당 주문 공격력이이 %s만큼 증가합니다. %s초 동안 지속됩니다"] = { false, false, false, { Stats.BlockChance, }, false, false, false, false, false, false, } -- s408524
 L["치명타 적중률이 %s%만큼 증가하고 모든 사격 능력의 마나 소모량이 %s%만큼 감소합니다"] = { { Stats.MeleeCrit, Stats.RangedCrit, }, false, } -- s409428
 L["근접 및 원거리 공격이 치명타로 적중하면 %s초 동안 전투력이 현재 민첩성의 %s%만큼 증가합니다"] = { false, { Stats.GenericAttackPower, }, ignoreSum = true } -- s409504
 L["원거리 공격이 치명타로 적중하면 %s초 동안 전투력이 민첩성의 %s%만큼 증가합니다"] = { false, { Stats.GenericAttackPower, }, } -- s409507
 L["모든 주문의 주문 극대화율이 %s%만큼 증가하지만 비주기적인 주문이 극대화 효과를 발휘할 때 기본 마나의 %s%를 추가로 소모합니다"] = { { Stats.SpellCrit, }, false, } -- s412286
 L["자신의 회피 확률이 %s%만큼, 야수의 회피 확률이 %s%만큼 증가합니다. 추가로 측방 강타 능력의 재사용 대기시간이 %s%만큼 감소합니다"] = { { Stats.Dodge, }, false, false, } -- s415428
 L["회피율이 %s%만큼 증가합니다. 또한 회피할 때마다 %s%의 확률로 %s의 분노를 생성합니다"] = { { Stats.Dodge, }, false, false, } -- s417051
-L["고대의 부식성 독을 대상에게 끼얹어 %s초마다 %s의 자연 피해를 입히고 %s초 동안 방어도를 %s만큼 감소시킵니다"] = { false, false, false, { Stats.Armor, }, reduction = true } -- s422996
 L["표범, 곰, 광포한 곰 변신 상태일 때 전투력이 %s만큼 증가합니다"] = { { Stats.AttackPower, }, } -- s423002
 L["즉시 보조 무기로 대상을 공격해 일반 보조 무기 공격력에 해당하는 피해를 입히고 %s초 동안 혹은 무기 막기에 성공할 때까지 무기 막기 확률이 %s%만큼 증가합니다. 맹고쉬 사용 후 %s초 동안 사악한 일격의 기력 소모량이 %s만큼 감소하고 위협 수준을 %s%만큼 추가로 생성하며, 충격 완화 중첩을 부여합니다. 사악한 일격과 절개가 %s%의 추가 피해를 입힙니다. 연계 점수 %s점을 생성합니다.\r\n\r\n맹고쉬는 사악한 일격으로 발동하거나 사악한 일격의 효과를 변경하는 모든 특성 및 효과가 적용됩니다. 맹고쉬의 효과는 맹고쉬의 자원 소모량을 완화하거나 강화하지 않습니다"] = { false, { Stats.Parry, }, false, false, false, false, false, } -- s424919
 L["주문 시전을 빠르게 하여, 주문 시전 속도를 %s%만큼 증가시키고 주문 시전 중 피해로 인한 시전 밀림 효과를 %s%만큼 감소시킵니다. %s초 동안 지속됩니다"] = { { Stats.SpellHaste, }, false, false, } -- s425121
@@ -789,7 +734,6 @@ L["대상 무기에 사용 시 %s분 동안 %s초마다 %s의 마나를 회복�
 L["주문 적중률이 %s%만큼, 근접 및 원거리 공격의 치명타 및 극대화율이 %s%만큼, 전투력이 %s만큼, 주문 공격력이 %s만큼, 이동 속도가 %s%만큼 증가합니다. %s분 동안 지속됩니다"] = { { Stats.SpellHit, }, { Stats.MeleeCrit, Stats.RangedCrit, }, { Stats.GenericAttackPower, }, { Stats.SpellDamage, }, false, false, } -- s430947
 L["주문의 적중률이 %s%만큼 증가합니다"] = { { Stats.SpellHit, }, } -- s430949
 L["비전 마력을 방출해 %s의 비전 피해를 입히고 모든 저항력을 %s만큼 감소시킵니다. 또한 %s초 동안 받는 모든 주문 피해를 %s%만큼 증가시킵니다. %s 레벨 이하의 적에게만 영향을 줍니다"] = { false, { Stats.FireResistance, Stats.FrostResistance, Stats.ShadowResistance, Stats.ArcaneResistance, Stats.NatureResistance, }, false, false, false, reduction = true } -- s434841
-L["방어도가 %s만큼 증가하지만 이동 속도가 %s%만큼 감소합니다. 이 효과는 제거할 수 없으며 %s초 동안 지속됩니다"] = { { Stats.Armor, }, false, false, } -- s435359
 L["장착 무기류 숙련도가 %s만큼 증가합니다"] = { { Stats.WeaponSkill, }, } -- s435535
 L["%s의 마나와 %s의 생명력을 회복합니다. 또한 %s초 동안 전투력이 %s만큼, 모든 주문의 공격력이 %s만큼 증가합니다"] = { false, false, false, { Stats.GenericAttackPower, }, { Stats.SpellDamage, }, } -- s435973
 L["체력이 %s만큼 감소합니다"] = { { Stats.Stamina, }, reduction = true } -- s435974
@@ -806,6 +750,7 @@ L["시전자가 플레이어에게 무기력의 독을 뱉어 %s초 동안 %s초
 L["주문의 치명타 및 극대화율이 %s%만큼, 주문 공격력과 치유량이 %s만큼, 근접 공격 및 원거리 공격 속도가 %s%만큼 증가합니다. %s분 동안 지속됩니다"] = { { Stats.SpellCrit, }, { Stats.SpellPower, }, false, false, } -- s438536
 L["마력 깃든 혁신의 인장이 부여되어 %s분 동안 주문의 공격력과 치유량이 최대 %s만큼, 전투력이 %s만큼 증가합니다. 이 효과는 전투 중이 아닐 때만 부여할 수 있습니다"] = { false, { Stats.SpellPower, }, { Stats.GenericAttackPower, }, } -- s439155
 L["%s분 동안 주문 공격력이 최대 %s만큼 증가합니다"] = { false, { Stats.SpellDamage, }, } -- s439959
+L["대상의 전투력이 %s만큼 감소합니다"] = { { Stats.GenericAttackPower, }, } -- s440667
 L["저주를 걸어 %s분 동안 마법 저항력을 %s만큼 감소시키고, 받는 마법 피해는 %s%만큼 증가시킵니다. 흑마법사마다 한 대상에 동시에 하나의 저주만 걸 수 있습니다"] = { false, { Stats.FireResistance, Stats.NatureResistance, Stats.FrostResistance, Stats.ShadowResistance, Stats.ArcaneResistance, }, false, reduction = true } -- s440892
 L["무기 공격력이 %s만큼 증가합니다"] = { { Stats.AverageWeaponDamage, }, } -- s440981
 L["주문의 적중률이 %s%만큼 증가합니다. 다른 반지 룬과 중복 적용되지 않습니다"] = { { Stats.SpellHit, }, } -- s442893
@@ -866,7 +811,7 @@ L["암흑 주문과 효과에 의한 공격력이 최대 %s만큼 증가합니�
 L["가격 당했을 때 일정 확률로 %s초 동안 공격자를 공포에 질려 달아나도록 만듭니다"] = { { Stats.MeleeCrit, Stats.RangedCrit, }, ignoreSum = true } -- s462229
 L["적에게 무기 공격력의 %s%에 해당하는 피해를 입히고 %s초 동안 방어 숙련을 %s만큼 감소시킵니다"] = { false, false, { Stats.Defense, }, reduction = true } -- s462584
 L["%s초 동안 주문 공격력이 최대 %s만큼, 치유량이 최대 %s만큼 증가합니다"] = { false, { Stats.SpellDamage, }, { Stats.HealingPower, }, } -- s462636
-L["활성화 시 %s초 동안 방어 숙련도가 %s만큼, 방어도가 %s만큼 증가합니다"] = { false, { Stats.Defense, }, { Stats.Armor, }, } -- s463105
+L["활성화 시 %s초 동안 방어 숙련도가 %s만큼, 방어도가 %s만큼 증가합니다"] = { false, { Stats.Defense, }, false, } -- s463105
 L["마력 깃든 흐르는 물의 인장이 부여되어 공격대를 강화해 %s시간 동안 주문의 공격력과 치유량을 최대 %s만큼, 전투력을 %s만큼 증가시킵니다"] = { false, { Stats.SpellPower, }, { Stats.GenericAttackPower, }, } -- s463864
 L["방패에 부여 시 주문 공격력과 치유량이 최대 %s만큼 증가합니다. %s분 동안 지속됩니다"] = { { Stats.SpellPower, }, false, } -- s463868
 L["방패에 영구적으로 마법을 부여해 주문 공격력을 최대 %s만큼, 치유 주문의 치유량을 최대 %s만큼 증가시킵니다"] = { { Stats.SpellDamage, }, { Stats.HealingPower, }, } -- s463871
@@ -933,12 +878,12 @@ L["%s시간 동안 전투력이 %s만큼 증가합니다. 영약은 동시에 �
 L["%s시간 동안 체력이 %s만큼, 방어 숙련도가 %s만큼 증가합니다. 영약은 동시에 하나만 사용할 수 있습니다. 이 효과는 죽어도 지속됩니다"] = { false, { Stats.Stamina, }, { Stats.Defense, }, } -- s1213901
 L["%s시간 동안 민첩성이 %s만큼, 치명타 및 극대화율이 %s%만큼, 자연 저항력이 %s만큼 증가합니다"] = { false, { Stats.Agility, }, { Stats.MeleeCrit, Stats.RangedCrit, }, { Stats.NatureResistance, }, } -- s1213904
 L["%s시간 동안 주문 공격력이 최대 %s만큼, 자연 저항력이 %s만큼 증가합니다"] = { false, { Stats.SpellDamage, }, { Stats.NatureResistance, }, } -- s1213914
-L["%s시간 동안 방어도가 %s만큼, 방어 숙련도가 %s만큼, 자연 저항력이 %s만큼 증가합니다"] = { false, { Stats.Armor, }, { Stats.Defense, }, { Stats.NatureResistance, }, } -- s1213917
+L["%s시간 동안 방어도가 %s만큼, 방어 숙련도가 %s만큼, 자연 저항력이 %s만큼 증가합니다"] = { false, false, { Stats.Defense, }, { Stats.NatureResistance, }, } -- s1213917
 L["두루마리를 읽어 무리의 분노를 일깨웁니다. 공격대를 강화해 %s시간 동안 주문 공격력과 치유량을 최대 %s만큼, 전투력을 %s만큼 증가시킵니다"] = { false, { Stats.SpellPower, }, { Stats.GenericAttackPower, }, } -- s1214001
 L["무기 또는 방패에 바르면 주문 공격력이 최대 %s만큼 증가하고 주문 극대화 확률이 %s%만큼 증가합니다. %s분 동안 지속됩니다"] = { { Stats.SpellPower, }, { Stats.SpellCrit, }, false, } -- s1214004
 L["손목보호구에 영구적으로 마법을 부여해 주문의 공격력을 %s만큼 증가시킵니다"] = { { Stats.SpellPower, }, } -- s1217189
 L["손목보호구에 영구적으로 마법을 부여해 민첩성을 %s만큼 증가시킵니다"] = { { Stats.Agility, }, } -- s1217203
-L["대상을 광기 증폭 상태로 만들어 %s분 동안 근접 전투력을 %s만큼 증가시키지만 방어도를 %s만큼 감소시킵니다. 광기 증폭에 걸린 적은 도망치지 않으며 겁이나 공포 효과를 무시합니다"] = { false, { Stats.AttackPower, }, { Stats.Armor, }, } -- s1218358
+L["대상을 광기 증폭 상태로 만들어 %s분 동안 근접 전투력을 %s만큼 증가시키지만 방어도를 %s만큼 감소시킵니다. 광기 증폭에 걸린 적은 도망치지 않으며 겁이나 공포 효과를 무시합니다"] = { false, { Stats.AttackPower, }, false, } -- s1218358
 L["포효 능력이 절대 빗나가지 않으며 공격이 회피되거나 무기 막기에 막힐 확률이 %s%만큼 감소합니다"] = { { Stats.DodgeReduction, Stats.ParryReduction, }, } -- s1218482
 L["심판의 손길 능력이 절대 빗나가지 않으며 공격이 회피되거나 무기 막기에 막힐 확률이 %s%만큼 감소합니다"] = { { Stats.DodgeReduction, Stats.ParryReduction, }, } -- s1219205
 L["놀리기 능력이 절대 빗나가지 않으며, 공격이 회피되거나 무기 막기에 막힐 확률이 %s%만큼 감소합니다"] = { { Stats.DodgeReduction, Stats.ParryReduction, }, } -- s1219356
@@ -969,12 +914,11 @@ L["음식을 꾸준히 %s초 이상 먹으면 포만감을 느끼게 되고 %s�
 L["음식을 꾸준히 %s초 이상 먹으면 포만감을 느끼게 되고 %s분 동안 민첩성이 %s만큼, 체력이 %s만큼 증가합니다"] = { false, false, { Stats.Agility, }, { Stats.Stamina, }, } -- s1225779
 L["음식을 꾸준히 %s초 이상 먹으면 포만감을 느끼게 되고 %s분 동안 주문 공격력이 %s만큼, 치유력이 %s만큼, 체력이 %s만큼 증가합니다"] = { false, false, { Stats.SpellDamage, }, { Stats.HealingPower, }, { Stats.Stamina, }, } -- s1225780
 L["음식을 꾸준히 %s초 이상 먹으면 포만감을 느끼게 되고 %s분 동안 전투력이 %s만큼, 주문 공격력이 %s만큼, 치유력이 %s만큼, 체력이 %s만큼 증가합니다"] = { false, false, { Stats.AttackPower, }, { Stats.SpellDamage, }, { Stats.HealingPower, }, { Stats.Stamina, }, } -- s1225782
-L["무모함의 저주를 걸어 %s분 동안 근접 전투력을 %s만큼 증가시키고 방어도를 %s만큼 감소시킵니다. 이 마법이 지속되는 한 대상은 도망치지 않으며 겁이나 공포 효과를 무시합니다. 흑마법사마다 한 대상에 하나의 저주만 걸 수 있습니다"] = { false, { Stats.AttackPower, }, { Stats.Armor, }, } -- s1225841
+L["무모함의 저주를 걸어 %s분 동안 근접 전투력을 %s만큼 증가시키고 방어도를 %s만큼 감소시킵니다. 이 마법이 지속되는 한 대상은 도망치지 않으며 겁이나 공포 효과를 무시합니다. 흑마법사마다 한 대상에 하나의 저주만 걸 수 있습니다"] = { false, { Stats.AttackPower, }, false, } -- s1225841
 L["주기적인 효과가 치명타 및 극대화 효과를 발휘하면 %s초 동안 주문 시전 가속이 %s%만큼 증가하고, 역류가 주문 시전 가속을 %s%만큼 추가로 증가시킵니다"] = { false, { Stats.SpellHaste, }, false, ignoreSum = true } -- s1227196
 L["%s의 마나를 회복하고 %s초 동안 주문력이 %s만큼 증가합니다"] = { false, false, { Stats.SpellPower, }, } -- s1231138
-L["%s초 동안 방어 숙련도가 %s만큼, 방어도는 %s만큼 증가합니다"] = { false, { Stats.Defense, }, { Stats.Armor, }, } -- s1231254
+L["%s초 동안 방어 숙련도가 %s만큼, 방어도는 %s만큼 증가합니다"] = { false, { Stats.Defense, }, false, } -- s1231254
 L["대상에게 일반 원거리 공격 사용 시 전투에 대비하여 %s초 동안 방어 숙련도가 %s만큼, 근접 공격 속도는 %s%만큼 증가합니다"] = { false, { Stats.Defense, }, false, ignoreSum = true } -- s1231267
-L["산의 의지를 일깨워 %s초 동안 물리 공격력이 %s%만큼, 방어도가 %s만큼, 크기가 %s%만큼 증가합니다"] = { false, false, { Stats.Armor, }, false, } -- s1231289
 L["%s초 동안 착용자의 힘이 %s만큼 증가합니다"] = { false, { Stats.Strength, }, } -- s1231548
 L["모든 주문과 공격의 주문 극대화 확률과 치명타 적중도가 %s%만큼 증가합니다"] = { { Stats.MeleeCrit, Stats.RangedCrit, Stats.SpellCrit, }, } -- s1232052
 L["%s초 동안 주위 파티원의 방어도가 %s만큼 상승합니다. 오라는 성기사마다 동시에 하나만 유지할 수 있습니다"] = { false, { Stats.Armor, }, } -- s1233344
@@ -992,21 +936,21 @@ L["목걸이에 영구적으로 마법을 부여해 착용자의 주문 공격�
 L["목걸이에 영구적으로 마법을 부여해 착용자의 치유력을 최대 %s만큼, 주문 공격력을 최대 %s만큼 증가시킵니다"] = { { Stats.HealingPower, }, { Stats.SpellDamage, }, } -- s1249058
 L["목걸이에 영구적으로 마법을 부여해 착용자의 민첩성을 %s만큼 증가시킵니다"] = { { Stats.Agility, }, } -- s1249059
 L["%s초 동안 냉기 및 암흑 주문 공격력이 최대 %s만큼 증가합니다. 설원 지역에서는 효과가 %s배로 증가합니다"] = { false, { Stats.FrostDamage, Stats.ShadowDamage, }, false, } -- s1249110
-L["increases attack power by %s for %s초. this effect is doubled in volcanic areas"] = { { Stats.GenericAttackPower, }, false, } -- s1249113
+L["%s초 동안 전투력이 %s만큼 증가합니다. 화산 지역에서는 효과가 %s배로 증가합니다"] = { false, { Stats.GenericAttackPower, }, false, } -- s1249113
 L["전투에서 상급 치유 시전 시 %s초 동안 치유량이 최대 %s만큼, 공격력이 최대 %s만큼 증가합니다"] = { false, { Stats.HealingPower, }, { Stats.SpellDamage, }, ignoreSum = true } -- s1249118
 L["전투에서 치유의 손길 시전 시 %s초 동안 치유량이 최대 %s만큼, 공격력이 최대 %s만큼 증가합니다"] = { false, { Stats.HealingPower, }, { Stats.SpellDamage, }, ignoreSum = true } -- s1249118
 L["전투에서 치유의 물결 시전 시 %s초 동안 치유량이 최대 %s만큼, 공격력이 최대 %s만큼 증가합니다"] = { false, { Stats.HealingPower, }, { Stats.SpellDamage, }, ignoreSum = true } -- s1249118
 L["전투에서 성스러운 빛 시전 시 %s초 동안 치유량이 최대 %s만큼, 공격력이 최대 %s만큼 증가합니다"] = { false, { Stats.HealingPower, }, { Stats.SpellDamage, }, ignoreSum = true } -- s1249118
 L["전투에서 상급 치유, 치유의 손길, 치유의 물결 또는 성스러운 빛 시전 시 %s초 동안 치유량이 최대 %s만큼, 공격력이 최대 %s만큼 증가합니다"] = { false, { Stats.HealingPower, }, { Stats.SpellDamage, }, ignoreSum = true } -- s1249118
 L["%s초 동안 치유량이 최대 %s만큼, 주문 공격력이 최대 %s만큼 증가합니다"] = { false, { Stats.HealingPower, }, { Stats.SpellDamage, }, } -- s1249119
-L["drink to gain %s agility and intellect. lasts for %s분"] = { { Stats.Agility, Stats.Intellect, }, false, } -- s1250918
-L["drink to gain %s maximum health and %s armor. lasts for %s분"] = { { Stats.Health, }, { Stats.Armor, }, false, } -- s1250920
+L["마시면 민첩성 및 지능이 %s만큼 증가합니다. %s분 동안 지속됩니다"] = { { Stats.Agility, Stats.Intellect, }, false, } -- s1250918
+L["마시면 최대 생명력이 %s만큼, 방어도가 %s만큼 증가합니다. %s분 동안 지속됩니다"] = { { Stats.Health, }, false, false, } -- s1250920
 L["마시면 주문 및 효과에 의한 치유량이 최대 %s만큼 증가합니다. %s분 동안 지속됩니다"] = { { Stats.HealingPower, }, false, } -- s1250922
 L["마시면 최대 생명력이 %s만큼 증가합니다. %s분 동안 지속됩니다"] = { { Stats.Health, }, false, } -- s1250928
 L["마시면 %s초마다 생명력을 %s만큼, 마나를 %s만큼 회복합니다. %s분 동안 지속됩니다"] = { false, { Stats.HealthRegen, }, { Stats.GenericManaRegen, }, false, } -- s1250932
 L["마시면 지능이 %s만큼, 치명타 및 극대화율이 %s%만큼 증가합니다. %s분 동안 지속됩니다"] = { { Stats.Intellect, }, false, false, } -- s1250940
 L["마시면 정신력이 %s만큼, 치명타 및 극대화율이 %s%만큼 증가합니다. %s분 동안 지속됩니다"] = { { Stats.Spirit, }, false, false, } -- s1250941
-L["drink to regenerate %s mana every %s sec. lasts for %s분"] = { { Stats.GenericManaRegen, }, false, false, } -- s1250942
+L["마시면 %s초마다 마나를 %s만큼 회복합니다. %s분 동안 지속됩니다"] = { false, { Stats.GenericManaRegen, }, false, } -- s1250942
 L["마시면 주문 공격력이 최대 %s만큼 증가합니다. %s분 동안 지속됩니다"] = { { Stats.SpellDamage, }, false, } -- s1250971
 L["마시면 자연 주문 공격력이 최대 %s만큼 증가합니다. %s분 동안 지속됩니다"] = { { Stats.NatureDamage, }, false, } -- s1250972
 L["마시면 정신력이 %s만큼 증가합니다. %s분 동안 지속됩니다"] = { { Stats.Spirit, }, false, } -- s1250974
@@ -1017,46 +961,37 @@ L["마시면 지능이 %s만큼 증가합니다. %s분 동안 지속됩니다"] 
 L["화염 계열 주문 및 효과의 공격력이 최대 %s만큼 증가합니다"] = { { Stats.FireDamage, }, } -- s1251380
 L["%s초 동안 주문 공격력이 %s만큼 증가합니다"] = { false, { Stats.SpellDamage, }, } -- s1251919
 L["%s초 동안 주문 치유가 %s만큼 증가합니다"] = { false, { Stats.HealingPower, }, } -- s1251942
-L["permanently increase the stamina value by %s and the armor value by %s of an item worn on the chest, legs, hands, or feet"] = { { Stats.Stamina, }, { Stats.Armor, }, } -- s1254738
-L["permanently increase the attack power value by %s and the armor value by %s of an item worn on the chest, legs, hands, or feet"] = { { Stats.GenericAttackPower, Stats.RangedAttackPower, }, { Stats.Armor, }, } -- s1254740
-L["permanently increase the spell power value by %s and the armor value by %s of an item worn on the chest, legs, hands, or feet"] = { { Stats.SpellPower, }, { Stats.Armor, }, } -- s1254742
-L["permanently increase the stamina value by %s and armor value by %s of an item worn on the chest, legs, hands, or feet. only usable on items level %s and above"] = { { Stats.Stamina, }, { Stats.Armor, }, false, } -- s1254747
+L["가슴이나 발, 손, 다리에 착용하는 방어구의 전투력이 %s만큼, 방어도는 %s만큼 영구적으로 증가합니다"] = { { Stats.GenericAttackPower, }, { Stats.Armor, }, } -- s1254740
+L["가슴이나 발, 손, 다리에 착용하는 방어구의 주문력이 %s만큼, 방어도는 %s만큼 영구적으로 증가합니다"] = { { Stats.SpellPower, }, { Stats.Armor, }, } -- s1254742
+L["가슴이나 발, 손, 다리에 착용하는 방어구의 체력이 %s만큼, 방어도는 %s만큼 영구적으로 증가합니다. %s 레벨 이상의 아이템에만 사용할 수 있습니다"] = { { Stats.Stamina, }, { Stats.Armor, }, false, } -- s1254747
 L["주문 및 효과에 의한 치유량이 최대 %s만큼, 주문 및 효과의 공격력은 최대 %s만큼 증가합니다"] = { { Stats.HealingPower, }, { Stats.SpellDamage, }, } -- s1258494
-L["emits a piercing shriek, inflicting %s nature damage and increasing the casting time of all spells by %s% for %s초"] = { false, { Stats.SpellHaste, }, false, reduction = true } -- s1264478
-L["타조가 발을 굴러 거친 먼지구름을 일으켜 %s초 동안 대상의 방어도를 %s만큼 감소시킵니다"] = { false, { Stats.Armor, }, reduction = true } -- s1265899
-L["적에게 부식성 산을 뱉어 중첩 하나당 방어도를 %s만큼 감소시킵니다. 최대 %s번까지 중첩됩니다. %s초 동안 지속됩니다"] = { { Stats.Armor, }, false, false, } -- s1266240
+L["날카로운 소리를 내뿜어 %s의 자연 피해를 입히고 %s초 동안 모든 주문의 시전 시간을 %s%만큼 증가시킵니다"] = { false, false, { Stats.SpellHaste, }, reduction = true } -- s1264478
 L["모래폭풍이 지속되는 동안 민첩성이 %s만큼 증가합니다"] = { { Stats.Agility, }, } -- s1269929
 L["폭염이 지속되는 동안 힘이 %s만큼 증가합니다"] = { { Stats.Strength, }, } -- s1269957
 L["비가 지속되는 동안 정신력이 %s만큼 증가합니다"] = { { Stats.Spirit, }, } -- s1269958
 L["눈폭풍이 지속되는 동안 체력이 %s만큼 증가합니다"] = { { Stats.Stamina, }, } -- s1269960
 L["바람이 지속되는 동안 지능이 %s만큼 증가합니다"] = { { Stats.Intellect, }, } -- s1269966
+L["아군 대상에게 축복을 내려 %s분 동안 근접 전투력을 %s만큼 증가시킵니다. 성기사마다 하나의 대상에게 하나의 축복만 효력을 발휘합니다"] = { false, { Stats.AttackPower, }, } -- s1286253
 L["마법 주문 및 효과로 입히는 피해와 치유량이 최대 %s만큼 증가합니다. 숲 및 초원 지역에서는 효과가 %s배로 증가합니다"] = { { Stats.SpellPower, }, false, } -- s1287561
 L["%s초 동안 모든 능력치가 %s만큼 증가합니다. 숲 및 초원 지역에서는 효과 및 지속시간이 %s배로 증가합니다"] = { false, { Stats.AllStats, }, false, } -- s1287571
 L["%s초 동안 근접 및 원거리 전투력이 %s만큼 증가합니다"] = { false, { Stats.GenericAttackPower, }, } -- s1288015
 L["%s초 동안 공격력과 치유량이 최대 %s만큼 증가합니다"] = { false, { Stats.SpellPower, }, } -- s1288020
 L["%s초 동안 치유량이 최대 %s만큼 증가합니다"] = { false, { Stats.HealingPower, }, } -- s1288021
 L["%s초 동안 원거리 전투력이 %s만큼 증가합니다"] = { false, { Stats.RangedAttackPower, }, } -- s1288024
-L["%s초 동안 적의 방어도와 저항력을 %s만큼 감소시킵니다. 이 주문이 걸린 대상은 숨거나 투명해질 수 없습니다"] = { false, { Stats.Armor, Stats.FireResistance, Stats.NatureResistance, Stats.FrostResistance, Stats.ShadowResistance, Stats.ArcaneResistance, }, reduction = true } -- s1288561
-L["hacks at the current target inflicting %s physical damage and reducing their armor by %s%"] = { false, { Stats.Armor, }, reduction = true } -- s1288908
-L["increases the time between an enemy's attacks by %s% and its casting speed by %s%, adding a %s% chance to spread the contagion to an ally when hit"] = { false, { Stats.SpellHaste, }, false, reduction = true } -- s1289531
+L["%s초 동안 적의 방어도와 저항력을 %s만큼 감소시킵니다. 이 주문이 걸린 대상은 숨거나 투명해질 수 없습니다"] = { false, { Stats.FireResistance, Stats.NatureResistance, Stats.FrostResistance, Stats.ShadowResistance, Stats.ArcaneResistance, }, reduction = true } -- s1288561
+L["적의 공격 간격을 %s%만큼 늘이고 시전 시간을 %s%만큼 증가시킵니다. 공격을 받을 때 %s%의 확률로 같은 질병을 아군에게 퍼뜨립니다"] = { false, { Stats.SpellHaste, }, false, reduction = true } -- s1289531
 L["대상에게 부상을 입혀 %s의 피해를 입히고 %s초 동안 모든 주문의 시전 시간을 %s%만큼 증가시킵니다"] = { false, false, { Stats.SpellHaste, }, reduction = true } -- s1290950
 L["%s초 동안 방패 막기 확률이 %s%만큼 증가합니다. 요새와 도시에서는 효과가 %s배로 증가합니다"] = { false, { Stats.BlockChance, }, false, } -- s1291105
-L["increases the friendly target's armor by %s, all attributes by %s, and all resistances by %s for %s분"] = { { Stats.Armor, }, { Stats.AllStats, }, false, false, } -- s1291335
-L["restores %s mana over %s초. must remain seated while drinking"] = { { Stats.GenericManaRegen, }, false, } -- s1291782
-L["cause party members within %s yds to regenerate %s health every %s sec"] = { false, { Stats.HealthRegen, }, false, } -- s1292142
+L["%s분 동안 아군 대상의 방어도를 %s만큼, 모든 능력치를 %s만큼, 모든 저항력을 %s만큼 증가시킵니다"] = { false, false, { Stats.AllStats, }, false, } -- s1291335
+L["%s미터 내의 파티원을 %s초마다 %s만큼 치유합니다"] = { false, false, { Stats.HealthRegen, }, } -- s1292142
 L["적이 자신의 주문에 저항하면 %s초 동안 %s초마다 %s의 생명력과 %s의 마나를 회복합니다"] = { false, false, { Stats.HealthRegen, }, { Stats.GenericManaRegen, }, ignoreSum = true } -- s1292594
-L["inflict %s fire and %s frost damage, slow the target by %s% for %s초, reduce armor by %s, and inflict %s nature damage every %s sec for %s초"] = { false, false, false, false, { Stats.Armor, }, false, false, false, reduction = true } -- s1292657
 L["비전 및 암흑 계열 주문 및 효과의 공격력이 최대 %s만큼 증가합니다"] = { { Stats.ShadowDamage, Stats.ArcaneDamage, }, } -- s1292705
-L["punctures target's armor, lowering it by %s"] = { { Stats.Armor, }, reduction = true } -- s1293005
-L["피해를 받으면 일정 확률로 %s초 동안 방어도가 %s만큼 증가합니다"] = { false, { Stats.Armor, }, ignoreSum = true } -- s1293342
 L["전투 중 공격받으면 %s%의 확률로 %s초 동안 %s초마다 마나를 %s만큼 회복합니다"] = { false, false, false, { Stats.GenericManaRegen, }, ignoreSum = true } -- s1293701
 L["체력이 %s만큼 증가합니다. 하이잘 산과 하이잘 정상, 지하굴에서 적중률이 %s%만큼 증가합니다.\r\n\r\n%s시간 동안 지속됩니다. 영약은 동시에 하나만 사용할 수 있습니다. 이 효과는 죽어도 지속됩니다"] = { { Stats.Stamina, }, false, false, } -- s1293740
 L["체력이 %s만큼 증가합니다. 하이잘 산과 하이잘 정상, 지하굴에서 치명타 및 극대화율이 %s%만큼 증가합니다.\r\n\r\n%s시간 동안 지속됩니다. 영약은 동시에 하나만 사용할 수 있습니다. 이 효과는 죽어도 지속됩니다"] = { { Stats.Stamina, }, false, false, } -- s1293741
 L["체력이 %s만큼 증가합니다. 하이잘 산과 하이잘 정상, 지하굴에서 공격이 회피되거나 무기 막기에 막힐 확률이 %s%만큼 감소합니다.\r\n\r\n%s시간 동안 지속됩니다. 영약은 동시에 하나만 사용할 수 있습니다. 이 효과는 죽어도 지속됩니다"] = { { Stats.Stamina, }, false, false, } -- s1293742
 L["체력이 %s만큼 증가합니다. 하이잘 산과 하이잘 정상, 지하굴에서 가속이 %s%만큼 증가합니다.\r\n\r\n%s시간 동안 지속됩니다. 영약은 동시에 하나만 사용할 수 있습니다. 이 효과는 죽어도 지속됩니다"] = { { Stats.Stamina, }, false, false, } -- s1293743
 L["%s초 동안 회피율이 %s%만큼 증가합니다. 요새와 도시에서는 효과가 %s배로 증가합니다"] = { false, { Stats.Dodge, }, false, } -- s1293820
-L["전투 중 치유 주문 사용 시 일정 확률로 %s초 동안 아군의 방어도를 %s만큼 증가시킵니다"] = { false, { Stats.Armor, }, ignoreSum = true } -- s1294064
-L["방어도 %s만큼 증가"] = { { Stats.Armor, }, } -- s1294065
 L["지능이 %s%만큼 증가합니다"] = { { Stats.Strength, }, } -- s1294070
 L["도끼류 숙련도가 %s만큼 증가합니다"] = { { Stats.WeaponSkill, }, } -- s1294077
 L["%s초 동안 공격 시 일정 확률로 전투력이 %s만큼 증가하고, 치유 주문 사용 시 일정 확률로 지능이 %s만큼 증가합니다"] = { false, { Stats.GenericAttackPower, }, { Stats.Strength, }, ignoreSum = true } -- s1294087
@@ -1066,24 +1001,23 @@ L["%s초 동안 무기 막기 확률이 %s%만큼 증가합니다"] = { false, {
 L["술트라제의 분노로 적을 채찍질하여 %s초 동안 전투력을 %s만큼 감소시키고 %s의 암흑 피해를 입힙니다. %s초 후에 대상이 추가로 %s의 암흑 피해를 받습니다. 트롤에게는 이 추가 암흑 피해를 %s배로 입힙니다"] = { false, { Stats.GenericAttackPower, }, false, false, false, false, reduction = true } -- s1294430
 L["주문의 적중률이 %s%만큼 증가합니다.\r\n공격 및 능력의 적중률이 %s%만큼 증가합니다.\r\n공격이 회피당할 확률이 %s%만큼 감소합니다.\r\n공격이 무기 막기에 막힐 확률이 %s%만큼 감소합니다"] = { { Stats.SpellHit, }, { Stats.MeleeHit, Stats.RangedHit, }, { Stats.DodgeReduction, }, { Stats.ParryReduction, }, } -- s1294788
 L["%s시간 동안 충직한 쥐 사역마를 소환합니다. 사역마가 있으면 지능이 %s만큼 증가합니다"] = { false, { Stats.Intellect, }, } -- s1296202
-L["reduces target's attack power by %s for %s초"] = { { Stats.GenericAttackPower, }, false, reduction = true } -- s1297082
-L["chance on harmful spell cast to reduce target's attack power by %s for %s초"] = { { Stats.GenericAttackPower, }, false, ignoreSum = true, reduction = true } -- s1297085
+L["해로운 주문 시전 시 일정 확률로 %s초 동안 대상의 전투력을 %s만큼 감소시킵니다"] = { false, { Stats.GenericAttackPower, }, ignoreSum = true, reduction = true } -- s1297085
 L["%s초마다 %s의 마나를 회복합니다"] = { false, { Stats.GenericManaRegen, }, } -- s1297685
-L["increases the ranged attack power of party members within %s yds by %s"] = { false, { Stats.RangedAttackPower, }, } -- s1299346
+L["%s미터 내에 있는 파티원 또는 공격대원의 원거리 전투력이 %s만큼 증가합니다"] = { false, { Stats.RangedAttackPower, }, } -- s1299346
+L["야수의 상을 취해 추적당하지 않고 근접 전투력이 %s만큼 증가합니다. 한 번에 한 상만 취할 수 있습니다"] = { { Stats.AttackPower, }, } -- s1299445
 L["전투 중 공격을 받으면 일정 확률로 %s초 동안 마법 주문 및 효과로 입히는 피해와 치유량이 최대 %s만큼 증가합니다"] = { false, { Stats.SpellDamage, }, ignoreSum = true } -- s1299743
 L["지능이 %s만큼 감소합니다"] = { { Stats.Intellect, }, reduction = true } -- s1302206
 L["%s초 동안 또는 공격을 %s회 회피할 때까지 회피율이 %s%만큼 증가합니다"] = { false, false, { Stats.Dodge, }, } -- s1302264
 L["%s시간 동안 충직한 개구리 사역마를 소환합니다. 사역마가 있으면 지능이 %s만큼 증가합니다"] = { false, { Stats.Intellect, }, } -- s1302285
 L["%s시간 동안 충직한 고양이 사역마를 소환합니다. 사역마가 있으면 지능이 %s만큼 증가합니다"] = { false, { Stats.Intellect, }, } -- s1302303
 L["공격 주문이 적중하면 일정 확률로 대상의 정신을 공격해 %s초 동안 모든 주문의 시전 시간을 %s%만큼 증가시킵니다. 최대 %s번까지 중첩됩니다"] = { false, { Stats.SpellHaste, }, false, ignoreSum = true, reduction = true } -- s1302341
-L["all party members within %s yds are blessed, restoring %s health every %s sec"] = { false, { Stats.HealthRegen, }, false, } -- s1302375
+L["%s미터 내의 모든 파티원이 축복을 받아 %s초마다 %s의 생명력을 회복합니다"] = { false, false, { Stats.HealthRegen, }, } -- s1302375
 L["눈가리개가 눈을 덮고 있어 앞을 전혀 볼 수 없습니다. 공격 적중률이 %s%만큼 감소합니다"] = { { Stats.MeleeHit, Stats.RangedHit, }, reduction = true } -- s1303286
-L["increases your attack speed by %s% and the physical damage you deal by %s for %s분"] = { false, { Stats.AverageWeaponDamage, }, false, } -- s1303979
-L["increases critical chance of spells and attacks by %s%, increases attack power by %s, and increases spell damage and healing by up to %s for %s시간"] = { false, { Stats.GenericAttackPower, }, { Stats.SpellPower, }, false, } -- s1304452
-L["increases hitpoints by %s. %s% haste to melee attacks. %s mana regen every %s sec"] = { { Stats.Health, }, { Stats.SpellHaste, }, { Stats.GenericManaRegen, }, false, } -- s1304594
-L["increases hitpoints by %s. %s% haste to all spells and attacks. %s mana regen every %s sec"] = { { Stats.Health, }, { Stats.SpellHaste, }, { Stats.GenericManaRegen, }, false, } -- s1304678
-L["increases the chance for a melee, ranged, or spell critical by %s% and all attributes by %s for %s시간"] = { false, { Stats.AllStats, }, false, } -- s1304690
-L["increases attack power by %s and spell damage and healing by up to %s"] = { { Stats.GenericAttackPower, }, { Stats.SpellPower, }, } -- s1304759
+L["%s분 동안 공격 속도가 %s%만큼 증가하고 물리 공격력이 %s만큼 증가합니다"] = { false, false, { Stats.AverageWeaponDamage, }, } -- s1303979
+L["%s시간 동안 주문 및 공격의 치명타 및 극대화율이 %s%만큼, 전투력이 %s만큼, 주문 공격력과 치유량이 최대 %s만큼 증가합니다"] = { false, false, { Stats.GenericAttackPower, }, { Stats.SpellPower, }, } -- s1304452
+L["생명력이 %s만큼 증가하며 근접 가속이 %s%만큼 증가합니다. %s초마다 %s의 마나가 회복됩니다"] = { { Stats.Health, }, { Stats.SpellHaste, }, false, { Stats.GenericManaRegen, }, } -- s1304594
+L["생명력이 %s만큼 증가하며 모든 주문 및 공격 가속이 %s%만큼 증가합니다. 매 %s초마다 %s의 마나가 회복됩니다"] = { { Stats.Health, }, { Stats.SpellHaste, }, false, { Stats.GenericManaRegen, }, } -- s1304678
+L["%s시간 동안 근접 공격, 원거리 공격, 주문의 치명타 및 극대화 확률이 %s%만큼 증가\r\n모든 능력치가 %s만큼 증가"] = { false, false, { Stats.AllStats, }, } -- s1304690
 L["카르그라의 눈은 필멸의 영역 너머를 꿰뚫어 보지만 공격 적중률이 %s%만큼 감소합니다"] = { { Stats.MeleeHit, Stats.RangedHit, }, reduction = true } -- s1305855
 L["모든 마법 주문 및 효과에 의한 치유량이 최대 %s만큼, 공격력이 최대 %s만큼 증가합니다. 밤 시간 동안에는 효과가 %s배로 증가합니다"] = { { Stats.HealingPower, }, { Stats.SpellDamage, }, false, } -- s1306158
 L["대상의 화염 저항력을 %s만큼 감소시킵니다"] = { { Stats.FirePenetration, }, } -- s1306572
@@ -1091,11 +1025,9 @@ L["대상의 냉기 저항력을 %s만큼 감소시킵니다"] = { { Stats.Frost
 L["황무지 지역에서 %s초마다 %s의 마나를 회복합니다"] = { false, { Stats.GenericManaRegen, }, } -- s1306632
 L["산악 지역에서 모든 주문 및 효과에 의한 치유량이 최대 %s만큼, 공격력이 최대 %s만큼 증가합니다"] = { { Stats.HealingPower, }, { Stats.SpellDamage, }, } -- s1306699
 L["설원 지역에서 모든 주문 및 효과에 의한 치유량이 최대 %s만큼, 공격력이 최대 %s만큼 증가합니다"] = { { Stats.HealingPower, }, { Stats.SpellDamage, }, } -- s1306905
-L["increases spirit by %s"] = { { Stats.Spirit, }, } -- s1307068
 L["원혼 지역에서 모든 마법 주문 및 효과에 의한 치유량이 최대 %s만큼, 공격력이 최대 %s만큼 증가합니다"] = { { Stats.HealingPower, }, { Stats.SpellDamage, }, } -- s1307334
 L["소지품이 가득 찬 동안 힘이 %s만큼 증가합니다"] = { { Stats.Strength, }, } -- s1307762
 L["모든 마법 주문 및 효과에 의한 치유량이 최대 %s만큼, 공격력이 최대 %s만큼 증가합니다. 낮 시간 동안에는 효과가 %s배로 증가합니다"] = { { Stats.HealingPower, }, { Stats.SpellDamage, }, false, } -- s1308023
-L["healing increased by up to %s and damage done by up to %s for all magical spells and effects"] = { { Stats.HealingPower, }, { Stats.SpellDamage, }, } -- s1308024
 L["모든 마법 주문 및 효과의 공격력과 치유량이 최대 %s만큼 증가합니다. 설원 지역에서는 효과가 %s배로 증가합니다"] = { { Stats.SpellPower, }, false, } -- s1308351
 L["숲과 초원 지역에서 %s초마다 %s의 마나를 회복합니다"] = { false, { Stats.GenericManaRegen, }, } -- s1308531
 L["산악 지역에서 힘이 %s만큼 증가합니다"] = { { Stats.Strength, }, } -- s1308764
@@ -1104,20 +1036,15 @@ L["%s초 동안 전투력이 %s만큼 증가합니다. 악마 대상일 때는 �
 L["원거리 공격 속도가 %s%만큼 증가합니다"] = { { Stats.RangedHaste, }, } -- s1309761
 L["%s분 동안 주문의 신성 공격력이 최대 %s만큼 증가합니다"] = { false, { Stats.HolyDamage, }, } -- s1310077
 L["%s미터 내의 무작위 적을 %s분 동안 사티로스로 변신시킵니다. 대상은 악마어로 말하게 되며 시전 속도가 %s%만큼 감소합니다"] = { false, false, { Stats.SpellHaste, }, reduction = true } -- s1310285
-L["%s분 동안 아군 대상의 방어도를 %s만큼, 모든 능력치를 %s만큼, 모든 저항력을 %s만큼 증가시킵니다"] = { false, { Stats.Armor, }, { Stats.AllStats, }, false, } -- s1310503
-L["increases your pet's chance to dodge by %s% and decreases the time between your pet's attacks by %s% for %s초"] = { { Stats.Dodge, }, false, false, } -- s1310612
-L["increases your chance to hit with your off hand weapon by %s%"] = { { Stats.MeleeHit, Stats.RangedHit, }, } -- s1311022
-L["curses the target for %s분, reducing magic resistances by %s and increasing magic damage taken by %s%. only one curse per warlock can be active on any one target"] = { false, { Stats.FireResistance, Stats.NatureResistance, Stats.FrostResistance, Stats.ShadowResistance, Stats.ArcaneResistance, }, false, reduction = true } -- s1311676
-L["increases intellect by %s at night"] = { { Stats.Intellect, }, } -- s1315330
-L["reduces the target enemy's attack power by %s for %s초"] = { { Stats.GenericAttackPower, }, false, reduction = true } -- s1315767
-L["increase your agility by %s for %s초. if there is an elemental nearby, gain an additional %s"] = { { Stats.Agility, }, false, { Stats.Agility, }, } -- s1315878
+L["%s초 동안 야수의 회피율이 %s%만큼 증가하고, 야수의 공격 간격은 %s%만큼 감소합니다"] = { false, { Stats.Dodge, }, false, } -- s1310612
+L["보조 무기의 적중률이 %s%만큼 증가합니다"] = { { Stats.MeleeHit, Stats.RangedHit, }, } -- s1311022
+L["밤 시간 동안 지능이 %s만큼 증가합니다"] = { { Stats.Intellect, }, } -- s1315330
+L["%s초 동안 민첩성이 %s만큼 증가합니다. 주위에 정령이 있으면 %s만큼 추가로 증가합니다"] = { false, { Stats.Agility, }, { Stats.Agility, }, } -- s1315878
 L["주문이 %s의 마법 저항력을 관통합니다. 숲 및 초원 지역에서는 주문 관통력이 %s만큼 추가로 증가합니다"] = { { Stats.SpellPenetration, }, { Stats.SpellPenetration, }, } -- s1315969
 L["모든 저항력이 %s만큼 증가합니다. 숲 및 초원 지역에서는 모든 저항력이 %s만큼 추가로 증가합니다"] = { { Stats.FireResistance, Stats.NatureResistance, Stats.FrostResistance, Stats.ShadowResistance, Stats.ArcaneResistance, }, { Stats.FireResistance, Stats.NatureResistance, Stats.FrostResistance, Stats.ShadowResistance, Stats.ArcaneResistance, }, } -- s1315989
 L["%s초마다 %s의 마나를 회복합니다. 숲과 초원 지역에서는 %s초마다 %s의 마나를 추가로 회복합니다"] = { false, { Stats.GenericManaRegen, }, false, { Stats.GenericManaRegen, }, } -- s1316053
-L["kicks up dust, inflicting %s physical damage to enemies within %s yds and reducing hit chance with attacks by %s%"] = { false, false, { Stats.MeleeHit, Stats.RangedHit, }, reduction = true } -- s1316382
-L["reduces the movement speed of an enemy by %s%, and reduces all physical and magical damage it deals by %s"] = { false, { Stats.SpellDamage, }, reduction = true } -- s1316489
+L["먼지를 차올려 %s미터 내의 적들에게 %s의 물리 피해를 입히고, 공격 적중률을 %s%만큼 감소시킵니다"] = { false, false, { Stats.MeleeHit, Stats.RangedHit, }, reduction = true } -- s1316382
 L["근접 휘두르기 시 일정 확률로 화가 나서 %s초 동안 힘이 %s만큼 증가합니다"] = { false, { Stats.Strength, }, ignoreSum = true } -- s1317039
-L["increases strength by %s"] = { { Stats.Strength, }, } -- s1317040
 L["전투력이 %s만큼 증가합니다. 숲 및 초원 지역에서는 효과가 %s배로 증가합니다"] = { { Stats.GenericAttackPower, }, false, } -- s1318000
 L["출혈 효과에 걸리면 힘이 %s만큼 증가합니다"] = { { Stats.Strength, }, } -- s1318084
 L["마법 주문 및 효과로 입히는 피해와 치유량이 최대 %s만큼 증가합니다. 습지 및 늪 지역에서는 효과가 %s배로 증가합니다"] = { { Stats.SpellPower, }, false, } -- s1318326
@@ -1134,24 +1061,25 @@ L["전투력이 %s만큼 증가합니다. 언데드 대상에게는 효과가 %s
 L["대상 생물의 주문 적중률이 %s%만큼 증가합니다. 중첩됩니다!"] = { { Stats.SpellHit, }, } -- s1319206
 L["대상 생물의 가속이 %s%만큼 증가합니다. 중첩됩니다!"] = { { Stats.SpellHaste, }, } -- s1319446
 L["모든 마법 주문 및 효과에 의한 치유량이 최대 %s만큼, 공격력이 최대 %s만큼 증가합니다. 요새와 도시에서는 효과가 %s배로 증가합니다"] = { { Stats.HealingPower, }, { Stats.SpellDamage, }, false, } -- s1320330
+L["체력이 $%s만큼 증가합니다"] = { { Stats.Stamina, }, } -- s1324308
+L["피해를 입으면 높은 확률로 %s초 동안 체력이 %s 증가합니다. 최대 %s번까지 중첩됩니다"] = { false, { Stats.Stamina, }, false, ignoreSum = true } -- s1324309
+L["%s의 물리 피해를 주고 모든 능력치를 %s만큼 증가시킵니다"] = { false, { Stats.AllStats, }, } -- s1325508
 L["%s분 동안 적의 체력을 %s만큼 감소시킵니다"] = { false, { Stats.Stamina, }, reduction = true } -- s8014
 L["%s분 동안 주위 적의 지능을 %s만큼 감소시킵니다"] = { false, { Stats.Intellect, }, reduction = true } -- s8267
 L["%s분 동안 적의 주문 시전 속도를 %s%만큼 지연시킵니다"] = { false, { Stats.SpellHaste, }, reduction = true } -- s8272
 L["%s분 동안 전투력이 %s만큼 증가합니다"] = { false, { Stats.GenericAttackPower, }, } -- s16329
-L["%s분 동안 대상의 방어도를 %s만큼, 모든 능력치를 %s만큼, 모든 저항력을 %s만큼 증가시킵니다"] = { false, { Stats.Armor, }, { Stats.AllStats, }, false, } -- s16878
+L["%s분 동안 대상의 방어도를 %s만큼, 모든 능력치를 %s만큼, 모든 저항력을 %s만큼 증가시킵니다"] = { false, false, { Stats.AllStats, }, false, } -- s16878
 L["%s시간 동안 마법의 공격력이 최대 %s까지 증가합니다"] = { false, { Stats.SpellDamage, }, } -- s17539
 L["%s초 동안 대상의 물리 공격력을 %s만큼 감소시킵니다. 흑마법사마다 한 대상에 동시에 하나의 저주만 걸 수 있습니다"] = { false, { Stats.AverageWeaponDamage, }, reduction = true } -- s18267
 L["%s초 동안 대상의 공격력을 %s만큼 감소시킵니다"] = { false, { Stats.AverageWeaponDamage, }, reduction = true } -- s20006
 L["지능이 %s분 동안 %s만큼 증가합니다"] = { false, { Stats.Intellect, }, } -- s22730
 L["주위 파티원의 근접 전투력이 %s만큼 증가됩니다. %s초 동안 지속됩니다"] = { { Stats.AverageWeaponDamage, }, false, } -- s24438
 L["%s분 동안 주위 적의 근접 및 원거리 전투력을 %s만큼 감소시킵니다"] = { false, { Stats.GenericAttackPower, }, reduction = true } -- s28342
-L["%s초 동안 대상의 방어도를 %s만큼 증가시킵니다"] = { false, { Stats.Armor, }, } -- s28790
 L["%s시간 동안 근접 전투력을 %s만큼 증가시키고 거대해집니다"] = { false, { Stats.AttackPower, }, } -- s473469
 L["%s초 동안 주위 적의 모든 능력치를 %s만큼 감소시킵니다"] = { false, { Stats.AllStats, }, reduction = true } -- s1223265
 L["%s초 동안 민첩성이 %s만큼 증가합니다"] = { false, { Stats.Agility, }, } -- s1231406
-L["%s초 동안 정신력이 %s만큼 증가합니다"] = { false, { Stats.Spirit, }, } -- s1291103
-L["대상에게 힘의 축복을 걸어 %s분 동안 근접 전투력을 %s만큼 증가시킵니다. 성기사마다 하나의 대상에게 하나의 축복만 효력을 발휘합니다"] = { false, { Stats.AttackPower, }, } -- s1286253
 L["임프의 마나가 %s초마다 %s만큼 회복됩니다"] = { false, { Stats.GenericManaRegen, }, } -- s1302363
+L["%s초 동안 정신력이 %s만큼 증가합니다"] = { false, { Stats.Spirit, }, } -- s1291103
 L["가슴보호구에 영구적으로 마법을 부여해 착용자의 지능을 %s만큼 증가시키는 법을 배웁니다"] = { { Stats.Intellect, }, } -- i6342
 L["가슴보호구에 일시적으로 마법을 부여해 %s분 동안 착용자의 정신력을 %s만큼 증가시키는 법을 배웁니다"] = { false, { Stats.Spirit, }, } -- i6222
 L["손목보호구에 영구적으로 마법을 부여해 착용자의 정신력을 %s만큼 증가시키는 법을 배웁니다"] = { { Stats.Spirit, }, } -- i6344
@@ -1177,9 +1105,9 @@ L["방패에 영구적으로 마법을 부여해 착용자의 정신력을 %s만
 L["망토에 영구적으로 마법을 부여해 착용자의 방어도를 추가로 %s만큼 증가시키는 방법을 배웁니다"] = { { Stats.Armor, }, } -- i16224
 L["양손 무기에 영구적으로 마법을 부여해 공격력을 %s만큼 증가시키는 법을 배웁니다"] = { { Stats.AverageWeaponDamage, }, } -- i16247
 L["무기에 영구적으로 마법을 부여해 공격력을 %s만큼 증가시키는 법을 배웁니다"] = { { Stats.AverageWeaponDamage, }, } -- i16250
-L["무기에 영구적으로 마법을 부여해 냉기 주문 시전 시 %s의 추가 냉기 피해를 입히도록 만드는 법을 배웁니다"] = { { Stats.FrostDamage, }, } -- i17725
-L["근접 무기에 영구적으로 마법을 부여해 주문의 공격력을 %s만큼 증가시키는 법을 배웁니다"] = { { Stats.SpellPower, }, } -- i18259
-L["근접 무기에 영구적으로 마법을 부여해 치유 주문의 효과를 %s만큼, 주문 공격력을 %s만큼 증가시키는 법을 배웁니다"] = { { Stats.HealingPower, }, { Stats.SpellDamage, }, } -- i18260
+L["무기에 영구적으로 마법을 부여해 냉기 주문 시전 시 최대 %s의 추가 냉기 피해를 입히도록 만드는 법을 배웁니다"] = { { Stats.FrostDamage, }, } -- i17725
+L["근접 무기에 영구적으로 마법을 부여해 주문의 공격력을 최대 %s만큼 증가시키는 법을 배웁니다"] = { { Stats.SpellPower, }, } -- i18259
+L["근접 무기에 영구적으로 마법을 부여해 치유 주문의 효과를 %s만큼, 주문 공격력을 최대 %s만큼 증가시키는 법을 배웁니다"] = { { Stats.HealingPower, }, { Stats.SpellDamage, }, } -- i18260
 L["무기에 영구적으로 마법을 부여해 착용자의 힘을 %s만큼 증가시키는 법을 배웁니다"] = { { Stats.Strength, }, } -- i19444
 L["무기에 영구적으로 마법을 부여해 착용자의 민첩성을 %s만큼 증가시키는 법을 배웁니다"] = { { Stats.Agility, }, } -- i19445
 L["손목보호구에 영구적으로 마법을 부여해 착용자의 마나를 매 %s초마다 %s만큼 회복시키는 법을 배웁니다"] = { false, { Stats.GenericManaRegen, }, } -- i19446
@@ -1253,14 +1181,14 @@ L["마나 %s"] = { { Stats.Mana, }, } -- e1483
 L["생명력 %s"] = { { Stats.Health, }, } -- e1503
 L["마나 %s / 화염 저항력 %s"] = { { Stats.Mana, }, { Stats.FireResistance, }, } -- e1523
 L["생명력 %s / 화염 저항력 %s"] = { { Stats.Health, }, { Stats.FireResistance, }, } -- e1524
-L["방어도 %s / 화염 저항력 %s"] = { { Stats.Armor, }, { Stats.FireResistance, }, } -- e1525
+L["방어도 %s / 화염 저항력 %s"] = { false, { Stats.FireResistance, }, } -- e1525
 L["힘 %s / 화염 저항력 %s"] = { { Stats.Strength, }, { Stats.FireResistance, }, } -- e1526
 L["체력 %s / 화염 저항력 %s"] = { { Stats.Stamina, }, { Stats.FireResistance, }, } -- e1527
 L["민첩성 %s / 화염 저항력 %s"] = { { Stats.Agility, }, { Stats.FireResistance, }, } -- e1528
 L["지능 %s / 화염 저항력 %s"] = { { Stats.Intellect, }, { Stats.FireResistance, }, } -- e1529
 L["정신력 %s / 화염 저항력 %s"] = { { Stats.Spirit, }, { Stats.FireResistance, }, } -- e1530
 L["힘 %s / 체력%s"] = { { Stats.Strength, Stats.Stamina, }, false, } -- e1531
-L["힘 %s / 체력 %s / 방어도 %s / 화염 저항력 %s"] = { { Stats.Strength, Stats.Stamina, }, false, { Stats.Armor, }, { Stats.FireResistance, }, } -- e1532
+L["힘 %s / 체력 %s / 방어도 %s / 화염 저항력 %s"] = { { Stats.Strength, Stats.Stamina, }, false, false, { Stats.FireResistance, }, } -- e1532
 L["지능 %s / 정신력 %s / 마나 %s / 화염 저항력 %s"] = { { Stats.Intellect, Stats.Spirit, }, false, { Stats.Mana, }, { Stats.FireResistance, }, } -- e1543
 L["화염석 %s"] = { { Stats.SpellCrit, }, } -- e1803
 L["방어 %s%"] = { { Stats.BlockChance, }, } -- e1983

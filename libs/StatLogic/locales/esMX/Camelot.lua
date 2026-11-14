@@ -37,7 +37,7 @@ W["una comida nutritiva te ha dejado bien alimentado, lo que aumenta tu daño co
 W["una comida nutritiva te ha dejado bien alimentado, lo que aumenta tu habilidad de pesca"] = { [Stats.Intellect] = 1, } -- s1249521
 W["una bebida deliciosa te ha dejado bien alimentado, lo que aumenta tu espíritu"] = { [Stats.Spirit] = 1, } -- s1249926
 W["una bebida deliciosa te ha dejado bien alimentado, lo que aumenta tu poder de sanación"] = { [Stats.HealingPower] = 1, } -- s1249927
-W["si un enemigo ataca a quien está bebiendo, el atacante recibe un golpe veloz con un hacha que lo inmoviliza en el suelo temporalmente"] = { [Stats.Armor] = 100, [Stats.FireResistance] = 100, [Stats.NatureResistance] = 100, [Stats.FrostResistance] = 100, [Stats.ShadowResistance] = 100, [Stats.ArcaneResistance] = 100, } -- s1309718
+W["si un enemigo ataca a quien está bebiendo, el atacante recibe un golpe veloz con un hacha que lo inmoviliza en el suelo temporalmente"] = { [Stats.FireResistance] = 100, [Stats.NatureResistance] = 100, [Stats.FrostResistance] = 100, [Stats.ShadowResistance] = 100, [Stats.ArcaneResistance] = 100, } -- s1309718
 W["hendido"] = { [Stats.AverageWeaponDamage] = -10, } -- e27
 W["aceite de zahorí menor"] = { [Stats.SpellPower] = 8, } -- e2623
 W["aceite de maná menor"] = { [Stats.GenericManaRegen] = 5, [Stats.HealingPower] = 10, } -- e2624
@@ -82,27 +82,17 @@ W["precisión"] = { [Stats.CritRating] = 14, } -- e8718
 local L = addon.StatIDLookup
 L["inutiliza al objetivo, lo que reduce un %s% su velocidad de movimiento, aumenta un %s% el tiempo entre ataques cuerpo a cuerpo y aumenta un %s% el tiempo entre ataques a distancia. dura %s s"] = { false, false, { Stats.RangedHaste, }, false, reduction = true } -- s89
 L["el druida ruge y disminuye %s p. el poder de ataque cuerpo a cuerpo de los enemigos cercanos. dura %s s"] = { { Stats.AttackPower, }, false, reduction = true } -- s99
-L["aumenta %s p. la armadura.  si un enemigo golpea al taumaturgo, su movimiento puede verse ralentizado un %s% y el tiempo entre sus ataques puede aumentar un %s% durante %s s. un mago solo puede tener un tipo de hechizo de armadura activo a la vez.  dura %s min"] = { { Stats.Armor, }, false, false, false, false, } -- s168
-L["restaura %s p. de maná durante %s s. debes permanecer sentado mientras bebes"] = { { Stats.GenericManaRegen, }, false, } -- s430
-L["otorga %s p. de armadura extra a los miembros del grupo en un radio de %s m. los jugadores solo pueden tener un aura a la vez por cada paladín"] = { { Stats.Armor, }, false, } -- s465
 L["disminuye la agilidad del objetivo en %s p"] = { { Stats.Agility, }, reduction = true } -- s474
-L["una ráfaga de energía sagrada que aumenta %s p. la armadura del taumaturgo. cada golpe de daño cuerpo a cuerpo o a distancia contra el sacerdote resta una carga. dura %s min o hasta que se hayan utilizado %s cargas"] = { { Stats.Armor, }, false, false, } -- s588
-L["una ráfaga de energía sagrada, que aumenta la armadura del taumaturgo en %s p. cada golpe de daño cuerpo a cuerpo o a distancia contra el sacerdote restará una carga. dura %s min o hasta que se hayan usado %s cargas"] = { { Stats.Armor, }, false, false, } -- s602
-L["da %s p. de armadura extra a los miembros del grupo en un radio de %s m. los jugadores solo pueden tener un aura con ellos por paladín a la vez"] = { { Stats.Armor, }, false, } -- s643
-L["aumenta %s p. la armadura durante %s h"] = { { Stats.Armor, }, false, } -- s673
-L["protege al taumaturgo, lo que aumenta la armadura %s p. y la regeneración de salud %s p. de salud cada %s s durante %s min"] = { { Stats.Armor, }, { Stats.HealthRegen, }, false, false, } -- s687
+L["protege al taumaturgo, lo que aumenta la armadura %s p. y la regeneración %s p. de salud cada %s s durante %s min"] = { false, { Stats.HealthRegen, }, false, false, } -- s687
 L["reduce %s p. el daño físico que inflige el objetivo durante %s min. un brujo solo puede tener una maldición activa sobre un mismo objetivo"] = { { Stats.AverageWeaponDamage, }, false, reduction = true } -- s702
-L["lanza sobre el objetivo una maldición de temeridad, lo que disminuye %s p. la armadura del objetivo durante %s min. los enemigos malditos no huyen e ignoran los efectos de miedo y horror. un brujo solo puede tener una maldición activa sobre un mismo objetivo"] = { { Stats.Armor, }, false, reduction = true } -- s704
-L["protege al taumaturgo, lo que aumenta la armadura %s p., la resistencia a las sombras %s p. y la regeneración de salud %s p. de salud cada %s s durante %s min"] = { { Stats.Armor, }, { Stats.ShadowResistance, }, { Stats.HealthRegen, }, false, false, } -- s706
-L["reduce la armadura del objetivo %s p. durante %s s. mientras dura su efecto, el objetivo no puede utilizar el sigilo ni hacerse invisible"] = { { Stats.Armor, }, false, reduction = true } -- s770
-L["disminuye la armadura del objetivo en %s p. durante %s s. mientras dura su efecto, el objetivo no puede utilizar el sigilo ni hacerse invisible"] = { { Stats.Armor, }, false, reduction = true } -- s778
+L["protege al taumaturgo, lo que aumenta la armadura %s p., la resistencia a las sombras %s p. y la regeneración %s p. de salud cada %s s durante %s min"] = { false, { Stats.ShadowResistance, }, { Stats.HealthRegen, }, false, false, } -- s706
 L["aumenta la fuerza %s p. y te inflige %s p. de daño cada %s s durante %s min"] = { { Stats.Strength, }, false, false, false, } -- s806
 L["sana instantáneamente %s p. de daño. también restaura %s p. de maná durante %s s. debes permanecer sentado mientras bebes"] = { false, { Stats.GenericManaRegen, }, false, } -- s833
 L["aumenta la resistencia del objetivo a hechizos de las sombras en %s p. durante %s min"] = { { Stats.ShadowResistance, }, false, } -- s976
 L["lanza sobre el enemigo una maldición de imbecilidad, disminuyendo su intelecto y su espíritu en %s p. cada %s s hasta un total de %s p. cada una. un brujo solo puede tener una maldición activa a la vez sobre un mismo objetivo"] = { { Stats.Intellect, Stats.Spirit, }, false, { Stats.Intellect, }, reduction = true } -- s1010
 L["subyuga al demonio objetivo, de nivel %s como máximo, y lo obliga a seguir tus órdenes. mientras está subyugado, el tiempo entre los ataques del demonio aumenta un %s% y su velocidad de lanzamiento de hechizos se reduce un %s%. dura un máximo de %s min. si subyugas reiteradamente al mismo demonio, cada vez será más difícil de controlar"] = { false, false, { Stats.SpellHaste, }, false, reduction = true } -- s1098
 L["aumenta la probabilidad de esquivar en un %s%"] = { { Stats.Dodge, }, } -- s1114
-L["aumenta %s p. la armadura de un objetivo aliado durante %s h"] = { { Stats.Armor, }, false, } -- s1126
+L["restaura %s p. de maná durante %s s. debes permanecer sentado mientras bebes"] = { { Stats.GenericManaRegen, }, false, } -- s1135
 L["aumenta la resistencia a la escarcha y a las sombras %s p. durante %s min"] = { { Stats.FrostResistance, Stats.ShadowResistance, }, false, } -- s1138
 L["reduce %s p. el poder de ataque cuerpo a cuerpo de todos los enemigos en un radio de %s m durante %s s"] = { { Stats.AttackPower, }, false, false, reduction = true } -- s1160
 L["infunde poder al objetivo y aumenta su aguante en %s p. durante %s h"] = { { Stats.Stamina, }, false, } -- s1243
@@ -137,14 +127,10 @@ L["encanta de forma permanente una capa que aumenta %s p. de agilidad"] = { { St
 L["reduce %s p. el espíritu de un enemigo durante %s min"] = { { Stats.Spirit, }, false, reduction = true } -- s3237
 L["aumenta la probabilidad de parar del taumaturgo un %s% durante %s s"] = { { Stats.Parry, }, false, } -- s3238
 L["aumenta la probabilidad de bloqueo del taumaturgo un %s% durante %s s"] = { { Stats.BlockChance, }, false, } -- s3248
-L["reduce un %s% la armadura de un enemigo durante %s s"] = { { Stats.Armor, }, false, reduction = true } -- s3252
 L["reduce %s p. la fuerza, %s p. la agilidad y %s p. el intelecto de todos los enemigos en el área seleccionada durante %s min"] = { { Stats.Strength, }, { Stats.Agility, }, { Stats.Intellect, }, false, reduction = true } -- s3256
-L["aturde al enemigo y reduce su armadura %s p. durante %s s"] = { { Stats.Armor, }, false, reduction = true } -- s3263
 L["quema a un enemigo, inflige %s p. de daño y reduce su resistencia al fuego %s p. durante %s s"] = { false, { Stats.FireResistance, }, false, reduction = true } -- s3356
 L["aumenta la fuerza del taumaturgo %s p. durante %s min"] = { { Stats.Strength, }, false, } -- s3369
 L["aumenta %s p. el daño físico que inflige el taumaturgo y acelera su velocidad de movimiento un %s% durante %s s"] = { { Stats.AverageWeaponDamage, }, false, false, } -- s3385
-L["reduce %s p. la armadura de un enemigo e inflige %s p. de daño de naturaleza cada %s s durante %s s"] = { { Stats.Armor, }, false, false, false, reduction = true } -- s3396
-L["aumenta tu intelecto en %s p"] = { { Stats.Intellect, }, } -- s4210
 L["llena de ira al taumaturgo durante %s s, aumenta el daño físico que inflige %s p. pero reduciendo el tiempo entre sus ataques un %s%"] = { false, { Stats.AverageWeaponDamage, }, false, } -- s3416
 L["aumenta la probabilidad de bloquear del taumaturgo un %s% durante %s s"] = { { Stats.BlockChance, }, false, } -- s3419
 L["enferma a un enemigo durante %s min, aumenta %s p. el daño físico que recibe y reduce %s p. su aguante. el objetivo enfermo tiene un %s% de probabilidad de propagar su enfermedad a uno de sus aliados cercanos cuando lo golpean en combate"] = { false, false, { Stats.Stamina, }, false, reduction = true } -- s3436
@@ -154,16 +140,14 @@ L["reduce la velocidad de lanzamiento de un enemigo un %s% durante %s s"] = { { 
 L["lanza barro a los ojos del enemigo reduciendo su probabilidad de golpear un %s% durante %s s"] = { { Stats.MeleeHit, Stats.RangedHit, }, false, reduction = true } -- s3650
 L["añade una mira permanente a un arco o arma de fuego que aumenta %s p. el daño que inflige"] = { { Stats.AverageWeaponDamage, }, } -- s3974
 L["transforma al objetivo en un gnomo paria, reduce %s p. su daño cuerpo a cuerpo y con hechizos, y reduce un %s% su índice de movimiento durante %s s"] = { { Stats.SpellDamage, }, false, false, reduction = true } -- s4060
-L["tiene un %s% de probabilidad de aumentar la armadura %s durante %s s al ser golpeado en combate"] = { false, { Stats.Armor, }, false, ignoreSum = true } -- s4070
 L["aumenta tu resistencia a los hechizos de escarcha %s p"] = { { Stats.FrostResistance, }, } -- s4080
 L["aumenta la probabilidad de esquivar del taumaturgo un %s%. dura hasta que se cancela"] = { { Stats.Dodge, }, } -- s4086
-L["enfada al objetivo, atrayendo su atención y disminuyendo el valor de su armadura %s p"] = { { Stats.Armor, }, reduction = true } -- s4101
 L["aumenta %s p. la fuerza de los miembros del grupo cercanos y mejora %s p. su agilidad durante %s s"] = { { Stats.Strength, }, { Stats.Agility, }, false, } -- s4146
 L["aumenta %s p. la fuerza y en %s p. la agilidad de los miembros del grupo situados en un radio de %s m durante %s s"] = { { Stats.Strength, }, { Stats.Agility, }, false, false, } -- s4147
 L["da al usuario %s p. de salud extra durante %s min"] = { { Stats.Health, }, false, } -- s4148
-L["aumenta el valor de la armadura en %s p. durante %s s"] = { { Stats.Armor, }, false, } -- s4149
 L["aumenta tu agilidad en %s p"] = { { Stats.Agility, }, } -- s4171
 L["aguante aumentado en %s p"] = { { Stats.Stamina, }, } -- s4187
+L["aumenta tu intelecto en %s p"] = { { Stats.Intellect, }, } -- s4204
 L["aumenta tu espíritu en %s p"] = { { Stats.Spirit, }, } -- s4222
 L["aumenta el máximo de p. de salud de los aliados de tu grupo en %s p. durante %s min"] = { { Stats.Health, }, false, } -- s4238
 L["aumenta tu salud en %s p"] = { { Stats.Health, }, } -- s4247
@@ -196,11 +180,11 @@ L["aumenta el daño con mazas de dos manos en %s p"] = { { Stats.AverageWeaponDa
 L["aumenta el daño con bastones en %s p"] = { { Stats.AverageWeaponDamage, }, } -- s4488
 L["aumenta el daño con bastones %s p. con una probabilidad del %s% de aturdir al objetivo durante %s s"] = { { Stats.AverageWeaponDamage, }, false, false, } -- s4493
 L["aumenta el daño con bastones en %s p. con una probabilidad del %s% de aturdir al objetivo durante %s s"] = { { Stats.AverageWeaponDamage, }, false, false, } -- s4494
-L["aumenta la resistencia a las sombras en %s p"] = { { Stats.ShadowResistance, }, } -- s4578
 L["aumenta %s p. el daño infligido por el infernal pero reduce un %s% su velocidad de ataque durante %s s"] = { { Stats.AverageWeaponDamage, }, false, false, } -- s4539
 L["aumenta la resistencia al fuego en %s p"] = { { Stats.FireResistance, }, } -- s4547
 L["aumenta la resistencia a la naturaleza %s p"] = { { Stats.NatureResistance, }, } -- s4548
 L["aumenta la resistencia a la escarcha en %s p"] = { { Stats.FrostResistance, }, } -- s4549
+L["aumenta la resistencia a las sombras en %s p"] = { { Stats.ShadowResistance, }, } -- s4550
 L["aumenta la resistencia al fuego en %s p. y da un %s% de probabilidad de rechazar hechizos de fuego hostiles devolviéndoselos al taumaturgo"] = { { Stats.FireResistance, }, false, } -- s4553
 L["aumenta la resistencia a la naturaleza en %s p"] = { { Stats.NatureResistance, }, } -- s4558
 L["aumenta la resistencia a la naturaleza en %s p. y da un %s% de probabilidad de rechazar hechizos de naturaleza hostiles devolviéndoselos al taumaturgo"] = { { Stats.NatureResistance, }, false, } -- s4560
@@ -221,15 +205,14 @@ L["aumenta el daño de los hechizos de las sombras en %s p"] = { { Stats.ShadowD
 L["aumenta la probabilidad de conseguir un golpe crítico con arcos en un %s%"] = { { Stats.MeleeCrit, Stats.RangedCrit, }, } -- s4915
 L["aumenta el daño con armas de fuego en un %s%"] = { { Stats.MeleeCrit, Stats.RangedCrit, }, } -- s4921
 L["aumenta la probabilidad de conseguir un golpe crítico con armas de fuego en un %s%"] = { { Stats.MeleeCrit, Stats.RangedCrit, }, } -- s4923
-L["aumenta la armadura %s p. durante %s min"] = { { Stats.Armor, }, false, } -- s4941
 L["da al taumaturgo %s p. extra de daño por golpe durante %s s pero reduce su velocidad de movimiento un %s% y aumenta el tiempo entre los ataques un %s%"] = { { Stats.AverageWeaponDamage, }, false, false, false, } -- s4955
 L["reduce %s p. el aguante de un enemigo y %s p. su espíritu durante %s min"] = { { Stats.Stamina, }, { Stats.Spirit, }, false, reduction = true } -- s4974
 L["restaura %s p. de salud durante %s s. debes permanecer sentado mientras comes. si comes durante al menos %s s, estarás bien alimentado y ganarás %s p. de aguante y espíritu durante %s min"] = { false, false, false, { Stats.Stamina, }, false, ignoreSum = true } -- s5004
 L["una potente cerveza que aumenta tu fuerza %s p. y reduce tu intelecto %s p. durante %s min"] = { { Stats.Strength, }, { Stats.Intellect, }, false, } -- s5020
 L["aumenta %s p. tu salud pero reduce %s p. tu espíritu durante %s min"] = { { Stats.Health, }, { Stats.Spirit, }, false, } -- s5021
-L["aumenta en %s p. la armadura de un objetivo amistoso y en %s p. todos los atributos durante %s h"] = { { Stats.Armor, }, { Stats.AllStats, }, false, } -- s5232
-L["aumenta en %s p. la armadura de un objetivo amistoso, en %s p. todos los atributos y en %s p. todas las resistencias durante %s h"] = { { Stats.Armor, }, { Stats.AllStats, }, false, false, } -- s5234
-L["el guerrero grita aumentando en %s p. el poder de ataque cuerpo a cuerpo de los miembros del grupo en un radio de %s m. dura %s min"] = { { Stats.AttackPower, }, false, false, } -- s5242
+L["aumenta en %s p. la armadura de un objetivo amistoso y en %s p. todos los atributos durante %s h"] = { false, { Stats.AllStats, }, false, } -- s5232
+L["aumenta en %s p. la armadura de un objetivo amistoso, en %s p. todos los atributos y en %s p. todas las resistencias durante %s h"] = { false, { Stats.AllStats, }, false, false, } -- s5234
+L["el guerrero grita y aumenta %s p. el poder de ataque cuerpo a cuerpo de todos los miembros del grupo o banda en un radio de %s m. dura %s min"] = { { Stats.AttackPower, }, false, false, } -- s5242
 L["aumenta la probabilidad de parar un %s%"] = { { Stats.Parry, }, } -- s5256
 L["aumenta %s p. el aguante"] = { { Stats.Stamina, }, } -- s5257
 L["la probabilidad de esquivar del pícaro aumentará un %s% durante %s s"] = { { Stats.Dodge, }, false, } -- s5277
@@ -238,7 +221,6 @@ L["aumenta el daño con hachas de dos manos en %s p. con una probabilidad del %s
 L["aumenta el daño con mazas de dos manos en %s p. con una probabilidad del %s% de aturdir al objetivo durante %s s"] = { { Stats.AverageWeaponDamage, }, false, false, } -- s5349
 L["aumenta el daño con espadas de dos manos en %s p. y la probabilidad de parar utilizando una en un %s%"] = { { Stats.AverageWeaponDamage, }, false, } -- s5356
 L["aumenta el daño con espadas de dos manos %s p. y la probabilidad de parar utilizando una en un %s%"] = { { Stats.AverageWeaponDamage, }, false, } -- s5361
-L["aumenta la armadura %s p"] = { { Stats.Armor, }, } -- s5363
 L["reduce %s p. la resistencia a la naturaleza de un enemigo durante %s min"] = { { Stats.NatureResistance, }, false, reduction = true } -- s5413
 L["aumenta la probabilidad de esquivar del taumaturgo un %s% durante %s s"] = { { Stats.Dodge, }, false, } -- s5426
 L["aumenta el daño con hachas de dos manos %s p. con una probabilidad del %s% de reducir la armadura del enemigo en %s durante %s s"] = { { Stats.AverageWeaponDamage, }, false, false, false, } -- s5427
@@ -246,7 +228,6 @@ L["aumenta el daño con hachas de una mano en %s p. con una probabilidad del %s%
 L["aumenta el daño con espadas de una mano en %s p. y la probabilidad de parar en un %s%"] = { { Stats.AverageWeaponDamage, }, { Stats.Parry, }, } -- s5449
 L["aumenta la probabilidad de parar al empuñar espadas de dos manos en un %s%"] = { { Stats.Parry, }, } -- s5454
 L["aumenta la probabilidad de conseguir un golpe crítico con hachas de dos manos en un %s%"] = { { Stats.MeleeCrit, Stats.RangedCrit, }, } -- s5466
-L["reduce la armadura un %s% durante %s s"] = { { Stats.Armor, }, false, reduction = true } -- s5480
 L["aumenta la probabilidad de conseguir un golpe crítico con espadas de una mano en %s p"] = { { Stats.MeleeCrit, Stats.RangedCrit, }, } -- s5481
 L["aumenta la probabilidad de conseguir un golpe crítico con espadas de una mano en %s%"] = { { Stats.MeleeCrit, Stats.RangedCrit, }, } -- s5482
 L["aumenta la probabilidad de conseguir un golpe crítico con hachas de una mano un %s%"] = { { Stats.MeleeCrit, Stats.RangedCrit, }, } -- s5509
@@ -267,7 +248,6 @@ L["aumenta la probabilidad de conseguir un golpe crítico con bastones en un %s%
 L["aumenta el daño con arcos en %s p"] = { { Stats.AverageWeaponDamage, }, } -- s5742
 L["aumenta el daño con arcos en %s p. con una probabilidad del %s% de hacer sangrar al objetivo con un daño de %s p. durante %s s"] = { { Stats.AverageWeaponDamage, }, false, false, false, } -- s5751
 L["reduce %s p. la fuerza de un enemigo y %s p. su agilidad durante %s s"] = { { Stats.Strength, }, { Stats.Agility, }, false, reduction = true } -- s5781
-L["aumenta tu armadura en %s p. cuando usas un escudo o rodela"] = { { Stats.Armor, }, } -- s5786
 L["aumenta la probabilidad de conseguir un golpe crítico con magia de naturaleza en un %s%"] = { { Stats.SpellCrit, }, } -- s5812
 L["aumenta la probabilidad de conseguir un golpe crítico con magia de fuego en %s%"] = { { Stats.SpellCrit, }, } -- s5835
 L["aumenta la probabilidad de conseguir un golpe crítico con magia de fuego en un %s%"] = { { Stats.SpellCrit, }, } -- s5840
@@ -289,38 +269,31 @@ L["aumenta la probabilidad de conseguir un golpe crítico con varitas en un %s%"
 L["aumenta tu intelecto %s p., pero reduce tu aguante %s p. durante %s min"] = { { Stats.Intellect, }, { Stats.Stamina, }, false, } -- s6114
 L["aumenta %s p. tu resistencia a toda la magia y permite que un %s% de tu regeneración de maná persista mientras lanzas hechizos. un mago solo puede tener un tipo de hechizo de armadura activo a la vez. dura %s min"] = { { Stats.FireResistance, Stats.NatureResistance, Stats.FrostResistance, Stats.ShadowResistance, Stats.ArcaneResistance, }, false, false, } -- s6117
 L["reduce el poder de ataque cuerpo a cuerpo de todos los enemigos que estén a %s m. en %s p. durante %s s"] = { false, { Stats.AttackPower, }, false, reduction = true } -- s6190
+L["un filo cortante aumenta %s p. el daño infligido con esta arma"] = { { Stats.AverageWeaponDamage, }, } -- s6515
 L["aumenta la velocidad de movimiento del taumaturgo un %s% durante %s s. e inflige %s p. de daño extra en su primer ataque"] = { false, false, { Stats.AverageWeaponDamage, }, } -- s6268
-L["mejora la salud de la mascota %s p"] = { { Stats.Health, }, } -- s6280
 L["aumenta %s p. el aguante de los miembros del grupo"] = { { Stats.Stamina, }, } -- s6307
 L["aumenta el daño infligido por la mascota %s p"] = { { Stats.AverageWeaponDamage, }, } -- s6311
 L["aumenta el espíritu de la mascota %s p. se debe adiestrar mediante la doma de bestias"] = { { Stats.Spirit, }, } -- s6328
 L["aumenta %s p. la resistencia de las mascotas a todos los tipos de magia"] = { { Stats.FireResistance, Stats.NatureResistance, Stats.FrostResistance, Stats.ShadowResistance, Stats.ArcaneResistance, }, } -- s6443
 L["encanta de forma permanente una capa que aumenta %s p. de resistencia a las sombras"] = { { Stats.ShadowResistance, }, } -- s6476
 L["aumenta %s p. el daño físico que infligen los miembros de grupo cercanos durante %s min"] = { { Stats.AverageWeaponDamage, }, false, } -- s6507
-L["un filo cortante aumenta %s p. el daño infligido con esta arma"] = { { Stats.AverageWeaponDamage, }, } -- s6514
 L["lanza tierra a los ojos del enemigo y reduce un %s% su probabilidad de golpear con ataques durante %s s"] = { { Stats.MeleeHit, Stats.RangedHit, }, false, reduction = true } -- s6530
 L["permite a tu escorpión utilizar el sigilo pero no podrá moverse y se reducirá su campo de visión. si el escorpión ataca desde esta posición, causará %s p. de daño extra"] = { { Stats.AverageWeaponDamage, }, } -- s6538
-L["el guerrero grita y aumenta %s p. el poder de ataque cuerpo a cuerpo de todos los miembros del grupo en un radio de %s m. dura %s min"] = { { Stats.AttackPower, }, false, false, } -- s6673
-L["dispara contra un enemigo, le inflige daño normal y reduce %s p. su armadura durante %s s"] = { { Stats.Armor, }, false, reduction = true } -- s6685
 L["reduce %s p. el intelecto de los enemigos cercanos durante %s s"] = { { Stats.Intellect, }, false, reduction = true } -- s6818
 L["aumenta %s p. el daño físico causado por el taumaturgo pero reduce su velocidad de movimiento un %s%. dura %s s"] = { { Stats.AverageWeaponDamage, }, false, false, } -- s6864
 L["aumenta %s p. el daño físico infligido por el taumaturgo y acelera su velocidad de movimiento un %s% durante %s s. además, echa una maldición al enemigo la primera vez que lo alcanza lo que reduce en %s p. el daño físico que cause, en %s p. el daño mágico que inflija y aumenta en %s p. el daño físico que sufra durante %s min"] = { { Stats.AverageWeaponDamage, }, false, false, { Stats.AverageWeaponDamage, }, { Stats.SpellDamage, }, false, false, } -- s6921
-L["reduce %s p. la armadura de un enemigo durante %s min. mientras esté afectado, el objetivo no puede utilizar sigilo ni invisibilidad"] = { { Stats.Armor, }, false, reduction = true } -- s6950
 L["reduce %s p. la fuerza de un enemigo durante %s min"] = { { Stats.Strength, }, false, reduction = true } -- s6951
 L["aumenta la fuerza de un aliado %s p. durante %s min"] = { { Stats.Strength, }, false, } -- s6957
-L["aumenta %s p. la armadura del taumaturgo durante %s s"] = { { Stats.Armor, }, false, } -- s7020
 L["aumenta %s p. el daño físico causado por los miembros del grupo cercanos. los jugadores solo pueden tener un aura activa por paladín a la vez. el aura dura hasta que se cancela"] = { { Stats.AverageWeaponDamage, }, } -- s7069
 L["aumenta el tiempo entre los ataques de los enemigos cercanos un %s% y su velocidad de lanzamiento un %s%. además proporciona un %s% de probabilidad de contagiar a un aliado al ser golpeado. dura %s min"] = { false, { Stats.SpellHaste, }, false, false, reduction = true } -- s7102
 L["aumenta el tiempo entre los ataques de un enemigo un %s%, reduce su velocidad de lanzamiento de hechizos un %s% y reduce su movimiento un %s%. dura %s min"] = { false, { Stats.SpellHaste, }, false, false, reduction = true } -- s7127
 L["carga contra un enemigo, aumenta la velocidad e inflige %s p. de daño extra en el primer ataque"] = { { Stats.AverageWeaponDamage, }, } -- s7137
 L["reduce un %s% la probabilidad de los enemigos cercanos de golpear con ataques durante %s s"] = { { Stats.MeleeHit, Stats.RangedHit, }, false, reduction = true } -- s7272
 L["reduce %s p. la fuerza de un enemigo y %s p. su aguante durante %s min"] = { { Stats.Strength, }, { Stats.Stamina, }, false, reduction = true } -- s7289
-L["aumenta %s p. la armadura y %s p. la resistencia a la escarcha. si un enemigo golpea al taumaturgo, su movimiento puede verse ralentizado un %s% y el tiempo entre sus ataques puede aumentar un %s% durante %s s. un mago solo puede tener un tipo de hechizo de armadura activo a la vez. dura %s min"] = { { Stats.Armor, }, { Stats.FrostResistance, }, false, false, false, false, } -- s7302
+L["aumenta %s p. la armadura y %s p. la resistencia a la escarcha. si un enemigo golpea al taumaturgo, su movimiento puede verse ralentizado un %s% y el tiempo entre sus ataques puede aumentar un %s% durante %s s. un mago solo puede tener un tipo de hechizo de armadura activo a la vez. dura %s min"] = { false, { Stats.FrostResistance, }, false, false, false, false, } -- s7302
 L["aumenta tu espíritu %s p"] = { { Stats.Spirit, }, } -- s7353
 L["aumenta el espíritu de los miembros del grupo cercanos %s p"] = { { Stats.Spirit, }, } -- s7363
 L["carga contra un enemigo, inmovilizándolo durante %s s, y añade %s p. de poder de ataque cuerpo a cuerpo al siguiente ataque del jabalí"] = { false, { Stats.AttackPower, }, } -- s7371
-L["desgarra la armadura del objetivo, reduce %s p. por cada hender armadura e inflige una gran cantidad de amenaza. se puede acumular hasta %s veces. dura %s s"] = { { Stats.Armor, }, false, false, reduction = true } -- s7386
-L["hiende el armadura del objetivo reduciendo %s p. por hender armadura y causando una gran cantidad de amenaza. se puede acumular hasta %s veces. dura %s s"] = { { Stats.Armor, }, false, false, reduction = true } -- s7405
 L["encanta de forma permanente unos brazales para que aumenten %s p. el aguante del portador"] = { { Stats.Stamina, }, } -- s7418
 L["encanta de forma permanente una pieza de armadura de torso para que aumente %s p. el aguante del portador"] = { { Stats.Stamina, }, } -- s7420
 L["encanta de forma permanente unos brazales para que aumenten %s p. la habilidad de defensa del portador"] = { { Stats.Defense, }, } -- s7428
@@ -368,33 +341,28 @@ L["reduce %s p. la agilidad de un enemigo durante %s min"] = { { Stats.Agility, 
 L["cambio a forma de serpiente durante %s min, aumentando el daño de ataque %s p. y el tiempo entre los ataques un %s%"] = { false, { Stats.AverageWeaponDamage, }, false, } -- s7965
 L["reduce la fuerza de un enemigo %s p., la agilidad %s p. y el aguante en %s durante %s min"] = { { Stats.Strength, }, { Stats.Agility, }, { Stats.Stamina, }, false, reduction = true } -- s7997
 L["cambio a forma de serpiente durante %s s. aumentando el daño físico %s p., pero sacrificando la facultad de lanzar hechizos"] = { false, { Stats.AverageWeaponDamage, }, } -- s8041
-L["reduce %s p. el aguante de un enemigo durante %s min"] = { { Stats.Stamina, }, false, reduction = true } -- s8138
 L["aumenta el espíritu %s p. durante %s min"] = { { Stats.Spirit, }, false, } -- s8068
-L["aumenta %s p. la armadura del objetivo durante %s min"] = { { Stats.Armor, }, false, } -- s8091
 L["aumenta %s p. el intelecto del objetivo durante %s min"] = { { Stats.Intellect, }, false, } -- s8096
 L["aumenta %s p. el aguante del objetivo durante %s min"] = { { Stats.Stamina, }, false, } -- s8099
 L["aumenta %s p. el espíritu del objetivo durante %s min"] = { { Stats.Spirit, }, false, } -- s8112
 L["aumenta %s p. la agilidad del objetivo aliado durante %s min"] = { { Stats.Agility, }, false, } -- s8115
 L["aumenta %s p. la fuerza del objetivo durante %s min"] = { { Stats.Strength, }, false, } -- s8118
+L["reduce %s p. el aguante de un enemigo durante %s min"] = { { Stats.Stamina, }, false, reduction = true } -- s8138
 L["reduce el intelecto de un enemigo %s p. y su espíritu %s p. durante %s min"] = { { Stats.Intellect, }, { Stats.Spirit, }, false, reduction = true } -- s8139
-L["una ráfaga de energía colma al taumaturgo, lo que aumenta su daño %s p. y su armadura %s p. durante %s s"] = { { Stats.AverageWeaponDamage, }, { Stats.Armor, }, false, } -- s8191
+L["una ráfaga de energía colma al taumaturgo, lo que aumenta su daño %s p. y su armadura %s p. durante %s s"] = { { Stats.AverageWeaponDamage, }, false, false, } -- s8191
 L["tu tamaño aumenta y tu fuerza sube %s p. para corresponderse con tu tamaño nuevo. dura %s min"] = { { Stats.Strength, }, false, } -- s8212
-L["reduce la armadura de los enemigos cercanos %s p. durante %s min"] = { { Stats.Armor, }, false, reduction = true } -- s8245
 L["otorga %s p. de armadura extra a los miembros del grupo cercanos durante %s min. los jugadores solo pueden tener un aura a la vez por cada paladín"] = { { Stats.Armor, }, false, } -- s8258
 L["aumenta un %s% la velocidad de ataque del taumaturgo y %s p. el daño físico que inflige durante %s min"] = { false, { Stats.AverageWeaponDamage, }, false, } -- s8269
 L["el daño físico causado por el objetivo se reduce %s p. durante %s min"] = { { Stats.AverageWeaponDamage, }, false, reduction = true } -- s8277
 L["aumenta %s p. el daño físico causado por un aliado durante %s min"] = { { Stats.AverageWeaponDamage, }, false, } -- s8365
 L["aumenta %s p. el poder de ataque. otorga %s p. de ataque extra"] = { { Stats.AttackPower, }, false, } -- s8516
 L["daño infligido por el objetivo reducido %s p. durante %s min"] = { { Stats.AverageWeaponDamage, }, false, reduction = true } -- s8552
-L["finishing move that exposes the target for %s s, reducing armor per combo point:\r\n   %s point  : %s armor\r\n   %s points: %s armor\r\n   %s points: %s armor\r\n   %s points: %s armor\r\n   %s points: %s armor"] = { false, false, { Stats.Armor, }, false, false, false, false, false, false, false, false, } -- s8647
 L["debilita al objetivo, lo que reduce %s p. el poder de ataque cuerpo a cuerpo y reduce un %s% la efectividad de cualquier sanación. dura %s min"] = { { Stats.AttackPower, }, false, false, reduction = true } -- s9035
 L["aumenta %s p. el poder de ataque cuerpo a cuerpo de los miembros del grupo cercanos durante %s min"] = { { Stats.AttackPower, }, false, } -- s9128
 L["aumenta %s p. el poder de ataque"] = { { Stats.GenericAttackPower, }, } -- s9136
-L["reduce la armadura del objetivo %s p. durante %s min"] = { { Stats.Armor, }, false, reduction = true } -- s9176
 L["aumenta hasta %s p. el daño y la sanación de los hechizos y efectos mágicos"] = { { Stats.SpellPower, }, } -- s9342
 L["inmoviliza al taumaturgo y aumenta el daño físico que inflige %s p. durante %s s"] = { { Stats.AverageWeaponDamage, }, false, } -- s9576
-L["%s p. de armadura"] = { { Stats.Armor, }, } -- s9760
-L["aumenta %s p. la armadura y %s p. la resistencia a la escarcha. si un enemigo golpea al taumaturgo, su movimiento puede verse ralentizado un %s%, y el tiempo entre sus ataques puede aumentar un %s% durante %s s. un mago solo puede tener un tipo de hechizo de armadura activo a la vez. dura %s min"] = { { Stats.Armor, }, { Stats.FrostResistance, }, false, false, false, false, } -- s10219
+L["aumenta %s p. la armadura y %s p. la resistencia a la escarcha. si un enemigo golpea al taumaturgo, su movimiento puede verse ralentizado un %s%, y el tiempo entre sus ataques puede aumentar un %s% durante %s s. un mago solo puede tener un tipo de hechizo de armadura activo a la vez. dura %s min"] = { false, { Stats.FrostResistance, }, false, false, false, false, } -- s10219
 L["sacrifica la vida del taumaturgo para reducir el aguante de los enemigos cercanos %s p. durante %s min"] = { { Stats.Stamina, }, false, reduction = true } -- s10251
 L["%s p. de defensa durante %s s"] = { { Stats.Defense, }, false, } -- s10351
 L["maldice a un objetivo y reduce el daño que inflige %s p. durante %s min"] = { { Stats.AverageWeaponDamage, }, false, reduction = true } -- s10651
@@ -418,10 +386,9 @@ L["inflige daño normal más %s p. a un enemigo, lo que reduce %s p. su fuerza y
 L["aumenta %s p. tu fuerza durante %s h"] = { { Stats.Strength, }, false, } -- s11405
 L["aumenta %s p. el daño de las sombras con hechizos durante %s min"] = { { Stats.ShadowDamage, }, false, } -- s11474
 L["golpea al enemigo con la ira de sul'thraze. reduce la fuerza %s p. e inflige %s p. de daño de las sombras con %s p. de daño extra durante %s s"] = { { Stats.Strength, }, false, false, false, reduction = true } -- s11658
-L["pincha la armadura del objetivo y la reduce %s p"] = { { Stats.Armor, }, reduction = true } -- s11791
+L["protege al taumaturgo, lo que aumenta la armadura %s p., la resistencia a las sombras %s p. y la regeneración de salud %s p. de salud cada %s s durante %s min"] = { false, { Stats.ShadowResistance, }, { Stats.HealthRegen, }, false, false, } -- s11733
 L["reduce la fuerza de los enemigos cercanos %s p. y su aguante %s p. durante %s min"] = { { Stats.Strength, }, { Stats.Stamina, }, false, reduction = true } -- s11892
 L["reduce la fuerza de un enemigo %s p. y su aguante %s p. durante %s min"] = { { Stats.Strength, }, { Stats.Stamina, }, false, reduction = true } -- s11963
-L["corta la armadura de un enemigo y la reduce %s p. por cada uso de hender armadura. se puede aplicar hasta %s veces. dura %s s"] = { { Stats.Armor, }, false, false, } -- s11971
 L["reduce %s p. el daño físico que inflige un enemigo durante %s min. un brujo solo puede tener una maldición activa sobre cada objetivo"] = { { Stats.AverageWeaponDamage, }, false, reduction = true } -- s11980
 L["inflige %s p. de daño de naturaleza a los enemigos cercanos y reduce un %s% su probabilidad de golpear con ataques durante %s s"] = { false, { Stats.MeleeHit, Stats.RangedHit, }, false, reduction = true } -- s11983
 L["otorga %s p. de aguante extra a los miembros del grupo en un radio de %s m"] = { { Stats.Stamina, }, false, } -- s12022
@@ -433,11 +400,11 @@ L["aumenta %s p. tu habilidad de defensa"] = { { Stats.Defense, }, } -- s12297
 L["aumenta un %s% tu probabilidad de bloquear ataques con tu escudo y te otorga una probabilidad del %s% de generar %s p. de ira cuando bloqueas"] = { { Stats.BlockChance, }, false, false, } -- s12298
 L["mejora un %s% tu probabilidad de asestar un golpe crítico con ataques cuerpo a cuerpo"] = { { Stats.MeleeCrit, Stats.RangedCrit, }, } -- s12320
 L["reduce todos los atributos de los enemigos cercanos %s p. durante %s min"] = { { Stats.AllStats, }, false, reduction = true } -- s12530
-L["reviste al taumaturgo con una capa de escarcha que dura %s min. el hielo incrementa %s p. la armadura, ralentiza el movimiento de los atacantes cuerpo a cuerpo al %s% y aumenta el tiempo entre los ataques un %s%"] = { false, { Stats.Armor, }, false, false, } -- s12544
 L["el poder de ataque aumenta %s p. y la velocidad de ataque cuerpo a cuerpo un %s% durante %s s"] = { { Stats.AttackPower, }, false, false, } -- s12686
 L["aumenta tu velocidad normal de regeneración de salud y maná en %s p"] = { { Stats.GenericManaRegen, }, } -- s12732
 L["aumenta %s p. todas las resistencias y otorga inmunidad al miedo durante %s s"] = { { Stats.FireResistance, Stats.NatureResistance, Stats.FrostResistance, Stats.ShadowResistance, Stats.ArcaneResistance, }, false, } -- s12733
 L["reduce %s p. el daño físico que infligen los enemigos cercanos durante %s min. un brujo solo puede tener una maldición activa sobre cada objetivo"] = { { Stats.AverageWeaponDamage, }, false, reduction = true } -- s12741
+L["encanta de forma permanente un escudo para que aumente %s p. la armadura"] = { { Stats.Armor, }, } -- s13464
 L["obliga a los enemigos próximos a hablar en demoníaco lo que reduce su velocidad para hechizar un %s% durante %s s. cada brujo solo puede tener una maldición activa sobre cada objetivo"] = { { Stats.SpellHaste, }, false, reduction = true } -- s12889
 L["reduce %s p. la fuerza y %s p. la agilidad de los enemigos cercanos durante %s s, e impide que lancen hechizos"] = { { Stats.Strength, }, { Stats.Agility, }, false, reduction = true } -- s12946
 L["aumenta %s p. la defensa, %s p. la resistencia a las sombras y %s p. tu regeneración de salud normal"] = { { Stats.Defense, Stats.HealthRegen, }, { Stats.ShadowResistance, }, false, } -- s12956
@@ -451,18 +418,14 @@ L["encanta de forma permanente un escudo para que aumente %s p. el aguante del p
 L["encanta de forma permanente un arma de combate cuerpo a cuerpo de dos manos para añadir %s p. de espíritu"] = { { Stats.Spirit, }, } -- s13380
 L["encanta de forma permanente una capa para que otorgue %s p. de agilidad"] = { { Stats.Agility, }, } -- s13419
 L["reduces la probabilidad de bloquear de un objetivo un %s% durante %s s"] = { { Stats.BlockChance, }, false, reduction = true } -- s13459
-L["encanta de forma permanente un escudo para que aumente %s p. la armadura"] = { { Stats.Armor, }, } -- s13464
 L["encanta de forma permanente un escudo para que proporcione %s p. de espíritu"] = { { Stats.Spirit, }, } -- s13485
 L["reduce el poder de ataque de un objetivo %s p. durante %s s"] = { { Stats.GenericAttackPower, }, false, reduction = true } -- s13490
 L["encanta de forma permanente un brazal para que aumente %s p. el aguante del portador"] = { { Stats.Stamina, }, } -- s13501
 L["encanta de forma permanente una capa para que aumente %s p. la resistencia a las sombras"] = { { Stats.ShadowResistance, }, } -- s13522
 L["reduce %s p. el poder de ataque del objetivo durante %s min"] = { { Stats.AttackPower, }, false, reduction = true } -- s13524
-L["ácido corrosivo que inflige %s p. de daño de naturaleza cada $t s y reduce la armadura del objetivo %s p. durante %s s"] = { false, { Stats.Armor, }, false, reduction = true } -- s13526
 L["reduce el poder de ataque de un enemigo %s p. durante %s s"] = { { Stats.GenericAttackPower, }, false, reduction = true } -- s13528
 L["encanta de forma permanente un brazal para que aumente %s p. la fuerza del portador"] = { { Stats.Strength, }, } -- s13536
 L["aumenta hasta %s p. el daño que infligen los hechizos y efectos arcanos"] = { { Stats.ArcaneDamage, }, } -- s13590
-L["encanta de forma permanente un brazal para que aumente %s p. el intelecto del portador"] = { { Stats.Intellect, }, } -- s13622
-L["encanta de forma permanente una pieza de armadura de torso para que otorgue %s p. de todas las estadísticas"] = { { Stats.AllStats, }, } -- s13626
 L["encanta de forma permanente un escudo para que otorgue %s p. de aguante"] = { { Stats.Stamina, }, } -- s13631
 L["encanta de forma permanente unas botas para que otorguen %s p. de agilidad"] = { { Stats.Agility, }, } -- s13637
 L["encanta de forma permanente una pieza de armadura de torso para que otorgue %s p. de aguante"] = { { Stats.Stamina, }, } -- s13640
@@ -484,7 +447,7 @@ L["aumenta la probabilidad de conseguir un golpe crítico con armas de puño en 
 L["aumenta un %s% tu probabilidad de esquivar"] = { { Stats.Dodge, }, } -- s13712
 L["aumenta tu probabilidad de parar un %s%"] = { { Stats.Parry, }, } -- s13713
 L["la resistencia al fuego aumenta %s p y absorbe %s p. de daño de fuego. dura %s s"] = { { Stats.FireResistance, }, false, false, } -- s13744
-L["protege al taumaturgo, lo que aumenta %s p. la armadura, %s p. la resistencia a las sombras y la regeneración de salud durante %s min"] = { { Stats.Armor, }, { Stats.ShadowResistance, }, false, } -- s13787
+L["protege al taumaturgo, lo que aumenta %s p. la armadura, %s p. la resistencia a las sombras y la regeneración de salud durante %s min"] = { false, { Stats.ShadowResistance, }, false, } -- s13787
 L["encanta de forma permanente una capa para que proporcione %s p. de resistencia a todo"] = { { Stats.FireResistance, Stats.NatureResistance, Stats.FrostResistance, Stats.ShadowResistance, Stats.ArcaneResistance, }, } -- s13794
 L["encanta de forma permanente unos guantes para que otorguen %s p. de agilidad"] = { { Stats.Agility, }, } -- s13815
 L["encanta de forma permanente unos brazales para que proporcionen %s p. de intelecto"] = { { Stats.Intellect, }, } -- s13822
@@ -499,7 +462,6 @@ L["encanta de forma permanente unas botas para que proporcionen %s p. de agilida
 L["encanta de forma permanente un arma de combate cuerpo a cuerpo de dos manos para que inflija %s p. de daño"] = { { Stats.AverageWeaponDamage, }, } -- s13937
 L["encanta de forma permanente unos brazales para que otorguen %s p. de aguante"] = { { Stats.Stamina, }, } -- s13945
 L["encanta de forma permanente unos guantes para que otorguen una bonificación de %s% de velocidad de ataque y lanzamiento"] = { { Stats.SpellHaste, }, } -- s13948
-L["corroe la armadura de un enemigo, reduciéndola %s p. en cada aplicación. se puede aplicar hasta un máximo de %s veces. dura %s s"] = { { Stats.Armor, }, false, false, } -- s14120
 L["un golpe que inflige un %s% (%s% si se lleva una equipada una daga en la mano principal) de daño con arma y aumenta un %s% durante %s s tu probabilidad de esquivar. otorga %s p. de combo"] = { false, false, { Stats.Dodge, }, false, false, } -- s14278
 L["reduce la velocidad de lanzamiento de los enemigos cercanos un %s% durante %s min"] = { { Stats.SpellHaste, }, false, reduction = true } -- s14538
 L["%s p. de resistencia al fuego"] = { { Stats.FireResistance, }, } -- s14540
@@ -512,12 +474,9 @@ L["imbuye al objetivo de poder sagrado y aumenta su espíritu en %s p. durante %
 L["aumenta un %s% la velocidad de ataque del taumaturgo y aumenta el daño físico que inflige %s p. durante %s s"] = { false, { Stats.AverageWeaponDamage, }, false, } -- s14872
 L["aumenta la probabilidad de esquivar del pícaro un %s% durante %s s"] = { { Stats.Dodge, }, false, } -- s15087
 L["aumenta la resistencia al fuego de un aliado %s p. durante %s h"] = { { Stats.FireResistance, }, false, } -- s15123
-L["reduce la armadura de un enemigo %s p. durante %s min"] = { { Stats.Armor, }, false, reduction = true } -- s15235
-L["reduce la armadura de un objetivo %s p. durante %s s"] = { { Stats.Armor, }, false, reduction = true } -- s15280
 L["aumenta %s p. el daño mágico infligido por un aliado durante %s min"] = { { Stats.SpellDamage, }, false, } -- s15288
 L["añade de forma permanente %s p. de maná a un objeto de la casilla para pierna o cabeza. no se suma a otros encantamientos de la casilla de equipamiento seleccionada"] = { { Stats.Mana, }, } -- s15340
 L["añade de forma permanente %s puntos de salud a un objeto de la casilla para pierna o cabeza. no se suma a otros encantamientos de la casilla de equipamiento seleccionada"] = { { Stats.Health, }, } -- s15389
-L["añade de forma permanente %s p. de armadura a un objeto de la casilla para pierna o cabeza. no se suma a otros encantamientos de la casilla de equipamiento seleccionada"] = { { Stats.Armor, }, } -- s15391
 L["añade de forma permanente %s p. de resistencia al fuego a un objeto de la casilla para pierna o cabeza. no se suma a otros encantamientos de la casilla de equipamiento seleccionada"] = { { Stats.FireResistance, }, } -- s15394
 L["añade de forma permanente %s p. de fuerza a un objeto de la casilla para pierna o cabeza. no se suma a otros encantamientos de la casilla de equipamiento seleccionada"] = { { Stats.Strength, }, } -- s15397
 L["añade de forma permanente %s p. de aguante a un objeto de la casilla para pierna o cabeza. no se suma a otros encantamientos de la casilla de equipamiento seleccionada"] = { { Stats.Stamina, }, } -- s15400
@@ -525,15 +484,13 @@ L["añade de forma permanente %s p. de agilidad a un objeto de la casilla para p
 L["añade de forma permanente %s p. de intelecto a un objeto de la casilla para pierna o cabeza. no se suma a otros encantamientos de la casilla de equipamiento seleccionada"] = { { Stats.Intellect, }, } -- s15404
 L["añade de forma permanente %s p. de espíritu a un objeto de la casilla para pierna o cabeza. no se suma a otros encantamientos de la casilla de equipamiento seleccionada"] = { { Stats.Spirit, }, } -- s15406
 L["obliga a los enemigos próximos a hablar en demoníaco y reduce su velocidad de lanzamiento un %s% durante %s s. cada brujo solo puede tener una maldición activa sobre cada objetivo"] = { { Stats.SpellHaste, }, false, reduction = true } -- s15470
-L["corta a los enemigos cercanos y la reduce %s p. por cada uso de hender armadura. se puede acumular hasta %s veces. dura %s s"] = { { Stats.Armor, }, false, false, } -- s15502
 L["aumenta el poder de ataque %s p. durante %s s"] = { { Stats.GenericAttackPower, }, false, } -- s15602
 L["reduce el poder de ataque cuerpo a cuerpo de los enemigos cercanos %s p. durante %s s"] = { { Stats.AttackPower, }, false, reduction = true } -- s15727
-L["reviste a un aliado con una capa de escarcha que dura %s min. el hielo aumenta la armadura %s p., ralentiza el movimiento de los atacantes cuerpo a cuerpo al %s% y aumenta el tiempo entre los ataques un %s%"] = { false, { Stats.Armor, }, false, false, } -- s15784
 L["reduce todos los atributos de un enemigo %s p. durante %s min"] = { { Stats.AllStats, }, false, reduction = true } -- s15848
 L["aumenta la resistencia a todos los tipos de magia %s p"] = { { Stats.FireResistance, Stats.NatureResistance, Stats.FrostResistance, Stats.ShadowResistance, Stats.ArcaneResistance, }, } -- s15967
 L["reduce el aguante de un enemigo %s p. durante %s s"] = { { Stats.Stamina, }, false, reduction = true } -- s16172
 L["reduce un %s% el costo de maná de tus hechizos de sanación y aumenta un %s% tu probabilidad de golpear"] = { false, { Stats.MeleeHit, Stats.RangedHit, Stats.SpellHit, }, } -- s16179
-L["aumenta %s p. el poder de ataque de un enemigo pero reduce su armadura en %s durante %s min. los enemigos malditos no conocerán los efectos de miedo y no saldrán huyendo despavoridos en combate. cada brujo solo puede tener una maldición activa sobre cada objetivo"] = { { Stats.AttackPower, }, { Stats.Armor, }, false, } -- s16231
+L["aumenta %s p. el poder de ataque de un enemigo pero reduce su armadura en %s durante %s min. los enemigos malditos no conocerán los efectos de miedo y no saldrán huyendo despavoridos en combate. cada brujo solo puede tener una maldición activa sobre cada objetivo"] = { { Stats.AttackPower, }, false, false, } -- s16231
 L["aumenta la probabilidad de bloquear ataques con un escudo en un %s% y aumenta la cantidad bloqueada en un %s%"] = { { Stats.BlockChance, }, false, } -- s16253
 L["aumenta un %s% más tu probabilidad de esquivar"] = { { Stats.Dodge, }, } -- s16254
 L["aumenta un %s% tu probabilidad de esquivar durante %s s"] = { { Stats.Dodge, }, false, } -- s16321
@@ -546,8 +503,6 @@ L["reduce el poder de ataque cuerpo a cuerpo de un enemigo %s p. y su poder de a
 L["golpea a un objetivo, le inflige %s p. de daño de fuego y aumenta %s p. el daño de fuego que le infliges al objetivo durante %s s"] = { false, { Stats.FireDamage, }, false, } -- s16454
 L["reduce la velocidad de movimiento de un enemigo un %s% y reduce el daño físico y mágico que inflige %s p. dura %s min"] = { false, { Stats.SpellDamage, }, false, reduction = true } -- s16458
 L["reduce un %s% la probabilidad de un enemigo de asestar un golpe crítico en un ataque cuerpo a cuerpo y reduce un %s% su probabilidad de asestar un golpe crítico con un hechizo. dura %s min"] = { { Stats.MeleeCrit, Stats.RangedCrit, }, { Stats.SpellCrit, }, false, reduction = true } -- s16460
-L["aumenta la armadura %s p. durante %s s pero impide lanzar otros hechizos y ataques mientras dure"] = { { Stats.Armor, }, false, } -- s16470
-L["reduce la armadura de un enemigo %s p. durante %s min. mientras esté afectado, el objetivo no puede utilizar sigilo ni invisibilidad"] = { { Stats.Armor, }, false, reduction = true } -- s16498
 L["aumenta %s p. el daño de las sombras causado por un aliado durante %s min"] = { { Stats.ShadowDamage, }, false, } -- s16587
 L["aumenta la fuerza %s p"] = { { Stats.Strength, }, } -- s16612
 L["aumenta el aguante %s p. dura %s min"] = { { Stats.Stamina, }, false, } -- s16617
@@ -557,14 +512,12 @@ L["el enemigo sufre la maldición leñogris, que reduce sus resistencias a la ma
 L["imbuye al objetivo de poder sagrado y aumenta su aguante en %s p. durante %s min"] = { { Stats.Stamina, }, false, } -- s16873
 L["imbuye al objetivo de poder sagrado y aumenta su espíritu en %s p. durante %s min"] = { { Stats.Spirit, }, false, } -- s16875
 L["aumenta el intelecto del objetivo %s p. durante %s min"] = { { Stats.Intellect, }, false, } -- s16876
-L["aumenta %s p. la armadura de un objetivo amistoso, %s p. todos los atributos y %s p. todas las resistencias durante %s min"] = { { Stats.Armor, }, { Stats.AllStats, }, false, false, } -- s16878
+L["aumenta %s p. la armadura de un objetivo amistoso, %s p. todos los atributos y %s p. todas las resistencias durante %s min"] = { false, { Stats.AllStats, }, false, false, } -- s16878
 L["aumenta tu fuerza %s p., el aguante %s p. y tu tamaño durante %s min"] = { { Stats.Strength, }, { Stats.Stamina, }, false, } -- s16883
 L["aumenta la salud máxima del jugador %s p. durante %s h"] = { { Stats.Health, }, false, } -- s16884
-L["aumenta la armadura en %s p. durante %s h"] = { { Stats.Armor, }, false, } -- s16887
 L["aumenta el intelecto %s p. durante %s h"] = { { Stats.Intellect, }, false, } -- s16888
 L["aumenta el daño con hechizos %s p. durante %s min"] = { { Stats.SpellDamage, }, false, } -- s16889
 L["restablece %s p. de salud y aumenta %s p. tu fuerza durante %s s"] = { false, { Stats.Strength, }, false, } -- s16916
-L["reduce la armadura de un enemigo %s p. se puede acumular hasta %s veces"] = { { Stats.Armor, }, false, reduction = true } -- s16928
 L["aumenta un %s% tu velocidad de movimiento mientras estás en forma felina y aumenta un %s% tu probabilidad de esquivar"] = { false, { Stats.Dodge, }, } -- s17002
 L["aumenta la agilidad %s p"] = { { Stats.Agility, }, } -- s17013
 L["aumenta %s p. tu poder de ataque cuerpo a cuerpo y tu tamaño durante %s min"] = { { Stats.AttackPower, }, false, } -- s17038
@@ -576,9 +529,7 @@ L["defensa %s p. ¡cómo si hubieras vuelto a nacer!"] = { { Stats.Defense, }, }
 L["aumenta el poder de ataque cuerpo a cuerpo del taumaturgo %s p. durante %s min"] = { { Stats.AttackPower, }, false, } -- s17205
 L["controla a un enemigo humanoide hasta el nivel %s durante %s min y aumenta su salud máxima un %s%"] = { false, false, { Stats.Health, }, } -- s17244
 L["aumenta la resistencia al fuego en %s p. y causa %s p. de daño de fuego a cualquiera que te ataque en un cuerpo a cuerpo durante %s min"] = { { Stats.FireResistance, }, false, false, } -- s17275
-L["pincha la armadura del objetivo y la reduce %s p. se puede aplicar hasta %s veces"] = { { Stats.Armor, }, false, reduction = true } -- s17315
 L["disminuye la velocidad de lanzamiento de los enemigos y aumenta el tiempo entre sus ataques cuerpo a cuerpo y a distancia un %s% durante %s s"] = { { Stats.SpellHaste, Stats.RangedHaste, }, false, reduction = true } -- s17331
-L["probabilidad por golpe: inmoviliza al objetivo y reduce su armadura en %s p. durante %s s"] = { { Stats.Armor, }, false, ignoreSum = true, reduction = true } -- s17332
 L["al recibir un golpe en combate, hay una probabilidad de aumentar un %s% el porcentaje de bloqueo durante %s s. la probabilidad de activar el efecto es %s veces mayor si te golpea un no-muerto"] = { { Stats.BlockChance, }, false, false, ignoreSum = true } -- s17350
 L["la probabilidad de bloqueo aumenta un %s%"] = { { Stats.BlockChance, }, } -- s17351
 L["aumenta %s p. el poder de ataque y %s p. más el poder de ataque contra no-muertos durante %s s"] = { { Stats.GenericAttackPower, }, false, false, } -- s17352
@@ -593,8 +544,6 @@ L["aumenta hasta %s p. el daño que infligen los hechizos y efectos mágicos dur
 L["aumenta %s p. tu resistencia a todas las escuelas de magia durante %s h. solo puedes disfrutar del efecto de un frasco a la vez. el efecto persiste aun después de la muerte y se acumula con todos los demás objetos y hechizos de resistencia"] = { { Stats.FireResistance, Stats.NatureResistance, Stats.FrostResistance, Stats.ShadowResistance, Stats.ArcaneResistance, }, false, } -- s17629
 L["aumenta la velocidad de lanzamiento de un aliado un %s% durante %s s"] = { { Stats.SpellHaste, }, false, } -- s17633
 L["rodea al taumaturgo con un aura que reduce periódicamente %s p. la resistencia a las sombras de los enemigos cercanos. el aura dura hasta que se cancela"] = { { Stats.ShadowResistance, }, ignoreSum = true, reduction = true } -- s17695
-L["corta la armadura de un enemigo y la de sus aliados cercanos. alcanza hasta a %s objetivos. la armadura de un objetivo se reduce %s p. por cada uso de hender armadura. se puede aplicar hasta %s veces. dura %s s"] = { false, { Stats.Armor, }, false, false, reduction = true } -- s17963
-L["corroe la armadura de un enemigo y la reduce %s p. en cada aplicación. puede aplicarse hasta un máximo de %s veces. dura %s s"] = { { Stats.Armor, }, false, false, } -- s18070
 L["cuando recibes un golpe en combate, tiene un %s% de probabilidad de alzar un escudo con espinas que inflige %s p. de daño de naturaleza a los atacantes y aumenta %s p. tu resistencia a la naturaleza durante %s s"] = { false, false, { Stats.NatureResistance, }, false, ignoreSum = true } -- s18097
 L["aumenta %s p. la fuerza durante %s min"] = { { Stats.Strength, }, false, } -- s18125
 L["restaura %s p. de maná durante %s s. debes permanecer sentado mientras bebes. también aumenta tu espíritu %s p. durante %s min"] = { { Stats.GenericManaRegen, }, false, { Stats.Spirit, }, false, } -- s18140
@@ -609,8 +558,6 @@ L["pica al enemigo y reduce su fuerza y agilidad %s p. durante %s s"] = { { Stat
 L["inflige %s p. de daño de las sombras cada %s s durante %s s y disminuye el poder de ataque un %s durante %s s"] = { false, false, false, { Stats.AttackPower, }, false, reduction = true } -- s18633
 L["%s p. todas las resistencias"] = { { Stats.FireResistance, Stats.NatureResistance, Stats.FrostResistance, Stats.ShadowResistance, Stats.ArcaneResistance, }, } -- s18672
 L["aumenta %s p. el poder de ataque durante %s s"] = { { Stats.GenericAttackPower, }, false, } -- s18787
-L["al recibir un golpe en combate hay un %s% de probabilidad de rodear al taumaturgo con hueso aumentando su armadura en %s durante %s s"] = { false, { Stats.Armor, }, false, } -- s18828
-L["aumenta %s p. la armadura durante %s s"] = { { Stats.Armor, }, false, } -- s18946
 L["quema a un enemigo infligiendo %s p. de daño y reduce su resistencia al fuego %s p. durante %s s"] = { false, { Stats.FireResistance, }, false, reduction = true } -- s18958
 L["cuando se activa, aumenta la probabilidad de esquivar y de parar un %s% durante %s s"] = { { Stats.Parry, Stats.Dodge, }, false, } -- s19263
 L["debilita al enemigo objetivo, lo que reduce %s p. el poder de ataque cuerpo a cuerpo y reduce un %s% la efectividad de cualquier sanación. dura %s min"] = { { Stats.AttackPower, }, false, false, reduction = true } -- s19281
@@ -618,7 +565,7 @@ L["aumenta un %s% tu probabilidad de golpe y reduce un %s% la duración de los e
 L["reduce el tiempo de lanzamiento un %s% y aumenta el tiempo entre los ataques en un%s% durante %s min"] = { { Stats.SpellHaste, }, false, false, reduction = true } -- s19365
 L["reduce la resistencia al fuego de los enemigos cercanos %s p. durante %s min"] = { { Stats.FireResistance, }, false, reduction = true } -- s19366
 L["corrompe la sangre del manáfago durante %s s. si el manáfago recibe un golpe cuerpo a cuerpo, el atacante pierde %s p. de poder de ataque cuerpo a cuerpo durante %s s. se acumula hasta %s veces en un objetivo"] = { false, { Stats.AttackPower, }, false, false, ignoreSum = true, reduction = true } -- s19478
-L["aumenta %s p. el poder de ataque a distancia de los miembros del grupo en un radio de %s m. dura %s min"] = { { Stats.RangedAttackPower, }, false, false, } -- s19506
+L["aumenta %s p. el poder de ataque a distancia de todos los miembros del grupo o banda en un radio de %s m. dura %s min"] = { { Stats.RangedAttackPower, }, false, false, } -- s19506
 L["aumenta todas las resistencias %s p. durante %s s"] = { { Stats.FireResistance, Stats.NatureResistance, Stats.FrostResistance, Stats.ShadowResistance, Stats.ArcaneResistance, }, false, } -- s19638
 L["debes permanecer sentado mientras comes. si lo haces durante al menos %s s, estarás bien alimentado y obtendrás %s p. de aguante y espíritu durante %s min"] = { false, { Stats.Stamina, Stats.Spirit, }, false, } -- s19708
 L["coloca una bendición sobre el objetivo aliado que aumenta %s p. el poder de ataque cuerpo a cuerpo durante %s h. los jugadores solo pueden tener una bendición activa por paladín a la vez"] = { { Stats.AttackPower, }, false, } -- s19740
@@ -632,27 +579,22 @@ L["encanta de forma permanente unos brazales para que otorguen %s p. de intelect
 L["encanta de forma permanente unos brazales para que otorguen %s p. de espíritu"] = { { Stats.Spirit, }, } -- s20009
 L["encanta de forma permanente unos brazales para que otorguen %s p. de fuerza"] = { { Stats.Strength, }, } -- s20010
 L["encanta una capa de forma permanente para que otorgue %s p. a todas las resistencias"] = { { Stats.FireResistance, Stats.NatureResistance, Stats.FrostResistance, Stats.ShadowResistance, Stats.ArcaneResistance, }, } -- s20014
-L["encanta de forma permanente una capa para que proporcione %s p. más de armadura"] = { { Stats.Armor, }, } -- s20015
 L["encanta de forma permanente unas botas para que proporcionen %s p. de espíritu"] = { { Stats.Spirit, }, } -- s20024
 L["encanta una pieza de armadura de torso de forma permanente para otorgar %s a todas las estadísticas"] = { { Stats.AllStats, }, } -- s20025
 L["encanta de forma permanente un arma de combate cuerpo a cuerpo para que inflija %s p. más de daño"] = { { Stats.AverageWeaponDamage, }, } -- s20031
 L["el cazador y todos los miembros del grupo y banda que estén en un radio de %s m asumen el aspecto salvaje, lo que aumenta %s p. la resistencia a la naturaleza. solo puede haber un aspecto activo a la vez"] = { false, { Stats.NatureResistance, }, } -- s20043
+L["la probabilidad de bloqueo aumenta un %s%. dura un máximo de %s bloqueos"] = { { Stats.BlockChance, }, false, } -- s20128
 L["colma al paladín del espíritu de un cruzado durante %s s, otorgando %s p. de poder de ataque cuerpo a cuerpo. el paladín ataca un %s% más rápido pero causa menos daño en cada ataque. un paladín solo puede tener un sello activo a la vez.\r\n\r\ndesatar la energía de este sello sentenciará a un enemigo durante %s s, aumentando el daño sagrado recibido en un máximo de %s p. tus golpes cuerpo a cuerpo restablecerán la duración del hechizo. un paladín solo puede tener una sentencia activa a la vez"] = { false, { Stats.AttackPower, }, false, false, false, } -- s20162
-L["la salud total aumenta un %s% y la probabilidad de golpear aumenta un %s%"] = { false, { Stats.MeleeHit, Stats.RangedHit, Stats.SpellHit, }, } -- s20550
+L["¡aumenta %s p. el aguante durante %s min y te emborracha hasta la médula!"] = { { Stats.Stamina, }, false, } -- s20875
 L["aumenta un %s% la probabilidad de esquivar y un %s% la velocidad de movimiento. los pícaros y druidas elfos de la noche tienen menos probabilidades de ser detectados cuando están en modo sigilo como si tuvieran %s nivel más"] = { { Stats.Dodge, }, false, false, } -- s20582
 L["aumenta el aguante %s p. y reduce el daño físico sufrido %s p. durante %s min. sin embargo, reduce la fuerza y la agilidad %s p. y aumenta el daño mágico recibido hasta %s p"] = { { Stats.Stamina, }, false, false, { Stats.Strength, Stats.Agility, }, false, } -- s20587
 L["bastones aumentados %s"] = { { Stats.WeaponSkill, }, } -- s20607
-L["sana a un aliado %s p. de daño cada %s s y aumenta su armadura %s p. durante %s min"] = { false, false, { Stats.Armor, }, false, } -- s20655
 L["controla a un enemigo humanoide hasta el nivel %s durante %s s, aumenta %s p. el daño de magia y %s p. el daño físico que inflige"] = { false, false, { Stats.SpellDamage, }, { Stats.AverageWeaponDamage, }, } -- s20668
-L["aumenta la armadura del taumaturgo %s p y acelera su regeneración de salud durante %s min"] = { { Stats.Armor, }, false, } -- s20798
-L["al recibir un golpe en combate, tiene un %s%% de probabilidad de aumentar %s p. la armadura de todo el grupo durante %s s. esta probabilidad se duplica en bastiones y ciudades"] = { false, { Stats.Armor, }, false, ignoreSum = true } -- s20847
-L["¡aumenta %s p. el aguante durante %s min y te emborracha hasta la médula!"] = { { Stats.Stamina, }, false, } -- s20875
 L["subyuga al demonio objetivo, de nivel %s como máximo, y lo obliga a seguir tus órdenes. mientras está subyugado, el tiempo entre los ataques del demonio aumenta un %s% y su velocidad de lanzamiento de hechizos se reduce un %s%. dura un máximo de %s min"] = { false, false, { Stats.SpellHaste, }, false, reduction = true } -- s20882
 L["aumenta un %s% durante %s s la probabilidad de bloquear e inflige %s p. de daño sagrado por cada ataque bloqueado mientras está activo. el daño que inflige escudo sagrado genera un %s% más de amenaza. cada bloqueo consume una carga. %s cargas"] = { { Stats.BlockChance, }, false, false, false, false, } -- s20925
 L["aumenta un %s% durante %s s la probabilidad de bloquear e inflige %s p. de daño sagrado por cada ataque bloqueado mientras está activo. el daño que inflige escudo sagrado genera un %s% más de amenaza"] = { { Stats.BlockChance, }, false, false, false, } -- s20927
 L["aumenta %s p. el poder de ataque de tu mascota"] = { { Stats.GenericAttackPower, }, } -- s20988
 L["aumenta %s p. el poder de ataque a distancia"] = { { Stats.RangedAttackPower, }, } -- s21013
-L["azota la armadura del enemigo, reduciéndola %s p. con cada machacar armadura. se puede ejecutar un máximo de %s veces. dura %s s"] = { { Stats.Armor, }, false, false, } -- s21055
 L["lanza una descarga de magia oscura al enemigo, lo que inflige %s p. de daño de las sombras y reduce todas las estadísticas %s p. durante %s s"] = { false, { Stats.AllStats, }, false, reduction = true } -- s21151
 L["tus ataques ignoran %s p. de la armadura de tus enemigos durante %s s. este efecto se acumula hasta %s veces"] = { { Stats.ArmorPenetration, }, false, false, } -- s21153
 L["restaura %s p. de salud y %s p. de maná por segundo cuando se está cerca de un comandante"] = { { Stats.HealthRegen, }, false, } -- s21172
@@ -662,13 +604,12 @@ L["aumenta hasta %s p. el daño que infligen los hechizos y efectos sagrados"] =
 L["infunde poder a todos los miembros del grupo y banda y aumenta su aguante %s p. durante %s h"] = { { Stats.Stamina, }, false, } -- s21562
 L["tu mascota gana %s p. de aguante y %s p. de resistencia a los hechizos contra todos los tipos de magia"] = { { Stats.Stamina, }, false, ignoreSum = true } -- s21741
 L["cuando infliges daño cuerpo a cuerpo tienes un %s% de probabilidad de reducir %s p. el poder de ataque de tu víctima durante %s s"] = { false, { Stats.AttackPower, }, false, ignoreSum = true, reduction = true } -- s21841
-L["entrega el don de lo salvaje a todos los miembros del grupo o banda y aumenta la armadura %s p., todos los atributos %s p. y todas las resistencias %s p. durante %s h"] = { { Stats.Armor, }, { Stats.AllStats, }, false, false, } -- s21849
+L["entrega el don de lo salvaje a todos los miembros del grupo o banda y aumenta la armadura %s p., todos los atributos %s p. y todas las resistencias %s p. durante %s h"] = { false, { Stats.AllStats, }, false, false, } -- s21849
 L["mejora tu probabilidad de asestar golpes críticos un %s% con los hechizos de naturaleza"] = { { Stats.SpellCrit, }, } -- s21870
 L["aumenta %s p. el daño de escarcha con hechizos durante %s min"] = { { Stats.FrostDamage, }, false, } -- s21920
 L["aumenta el aguante de tu mascota %s p. y todas las resistencias a los hechizos %s p"] = { { Stats.Stamina, }, false, ignoreSum = true } -- s21926
 L["encanta de forma permanente un arma para que otorgue hasta %s p. más de daño de escarcha cuando se lanzan hechizos de escarcha"] = { { Stats.FrostDamage, }, } -- s21931
 L["aumenta el poder de ataque de tu mascota %s p"] = { { Stats.GenericAttackPower, }, ignoreSum = true } -- s21938
-L["inflige %s p. de daño y reduce su armadura %s p"] = { false, { Stats.Armor, }, reduction = true } -- s21961
 L["el poder de ataque aumenta %s p"] = { { Stats.GenericAttackPower, }, } -- s21967
 L["al recibir un golpe en combate, tiene un %s% de probabilidad de aumentar %s p. todas las estadísticas durante %s min"] = { false, { Stats.AllStats, }, false, ignoreSum = true } -- s21969
 L["aumenta todas las estadísticas %s p. durante %s min"] = { { Stats.AllStats, }, false, } -- s21970
@@ -688,7 +629,6 @@ L["ballestas aumentadas %s p"] = { { Stats.WeaponSkill, }, } -- s22188
 L["disminuye %s p. el daño mágico infligido por el objetivo durante %s min"] = { { Stats.SpellDamage, }, false, reduction = true } -- s22371
 L["aumenta aleatoriamente el daño mágico causado por el taumaturgo hasta %s p. durante %s min"] = { { Stats.SpellDamage, }, false, } -- s22418
 L["reduce el aguante de los enemigos cercanos %s p. durante %s min"] = { { Stats.Stamina, }, false, reduction = true } -- s22420
-L["azota la armadura del enemigo y la reduce %s p. con cada machacar armadura. se puede aplicar hasta %s veces. dura %s s"] = { { Stats.Armor, }, false, false, } -- s22426
 L["añade de forma permanente %s p. de resistencia al fuego a un objeto de la casilla de hombros"] = { { Stats.FireResistance, }, } -- s22593
 L["añade de forma permanente %s p. de resistencia a la escarcha a un objeto de la casilla de hombros"] = { { Stats.FrostResistance, }, } -- s22594
 L["añade de forma permanente %s p. de resistencia a las sombras a un objeto de la ranura de hombros"] = { { Stats.ShadowResistance, }, } -- s22596
@@ -711,7 +651,7 @@ L["aumenta %s p. el poder de ataque y aumenta hasta %s p. el daño con hechizos 
 L["añade de forma permanente un %s% de celeridad a un objeto de la casilla para pierna o cabeza. no se suma a otros encantamientos de la casilla de equipamiento seleccionada"] = { { Stats.RangedHaste, }, } -- s22840
 L["añade de forma permanente %s de sanación o daño con hechizos a un objeto de la casilla para pierna o cabeza. no se suma a otros encantamientos de la casilla de equipamiento seleccionada"] = { { Stats.SpellPower, }, } -- s22844
 L["añade de forma permanente un %s% de posibilidad de esquivar a un objeto de la casilla para pierna o cabeza. no se suma a otros encantamientos de la casilla de equipamiento seleccionada"] = { { Stats.Dodge, }, } -- s22846
-L["otorga al portador %s p. de defensa, %s p. de armadura, %s p. de poder de ataque y %s p. más de poder de ataque contra dragonantes durante %s s"] = { { Stats.Defense, }, { Stats.Armor, }, { Stats.AttackPower, }, false, false, } -- s22850
+L["otorga al portador %s p. de defensa, %s p. de armadura, %s p. de poder de ataque y %s p. más de poder de ataque contra dragonantes durante %s s"] = { { Stats.Defense, }, false, { Stats.AttackPower, }, false, false, } -- s22850
 L["consumido por la furia de illidan: %s p. de bonus de poder de ataque contra demonios, %s% de bonus de probabilidad de golpe, %s% de celeridad cuerpo a cuerpo"] = { false, { Stats.MeleeHit, Stats.RangedHit, }, false, } -- s22988
 L["infunde lucidez al grupo y la banda del objetivo, lo que aumenta su intelecto %s p. durante %s h"] = { { Stats.Intellect, }, false, } -- s23028
 L["encanta de forma permanente un arma de combate cuerpo a cuerpo para añadir hasta %s p. de daño a todos los hechizos"] = { { Stats.SpellPower, }, } -- s23143
@@ -722,11 +662,9 @@ L["aumenta hasta %s p. el daño y la sanación de los hechizos y efectos mágico
 L["mejora un %s% tu probabilidad de asestar un golpe crítico con hechizos"] = { { Stats.SpellCrit, }, } -- s23440
 L["aumenta un %s% tu probabilidad de golpe crítico con hechizos y aumenta hasta %s p. el daño infligido por tus hechizos de fuego"] = { { Stats.SpellCrit, }, { Stats.FireDamage, }, } -- s23480
 L["aumenta un %s% la velocidad de ataque del taumaturgo y el daño físico que inflige %s p. durante %s min"] = { false, { Stats.AverageWeaponDamage, }, false, } -- s23537
-L["increases your off-hand weapon damage by %s% and chance to hit with off-hand attacks by %s%"] = { false, { Stats.MeleeHit, Stats.RangedHit, }, } -- s23584
 L["%s% de probabilidad de que un hechizo que alcance al objetivo aumente tu espíritu hasta %s p. durante %s s"] = { false, { Stats.Spirit, }, false, } -- s23684
 L["acelera la mente y aumenta un %s% la velocidad de lanzamiento del mago durante %s s"] = { { Stats.SpellHaste, }, false, } -- s23723
 L["energiza a un paladín con luz, lo que aumenta un %s% la velocidad de ataque cuerpo a cuerpo y un %s% la de lanzamiento de hechizos durante %s s"] = { false, { Stats.SpellHaste, }, false, } -- s23733
-L["aumenta la armadura %s p. y sana %s p. de daño cada vez que sufres daño a distancia o en ataque cuerpo a cuerpo durante %s s"] = { { Stats.Armor, }, false, false, } -- s23780
 L["encanta de forma permanente un arma de combate cuerpo a cuerpo para que proporcione %s de fuerza"] = { { Stats.Strength, }, } -- s23799
 L["encanta de forma permanente un arma de combate cuerpo a cuerpo para que proporcione %s p. de agilidad"] = { { Stats.Agility, }, } -- s23800
 L["encanta de forma permanente unos brazales para que restauren %s p. de maná cada %s s"] = { { Stats.GenericManaRegen, }, false, } -- s23801
@@ -735,7 +673,6 @@ L["encanta de forma permanente un arma de combate cuerpo a cuerpo para que otorg
 L["encanta de forma permanente un arma de combate cuerpo a cuerpo para que proporcione %s p. de intelecto"] = { { Stats.Intellect, }, } -- s23804
 L["cuando está activo, la probabilidad de golpe crítico con hechizos y ataques aumenta un %s%"] = { { Stats.MeleeCrit, Stats.RangedCrit, Stats.SpellCrit, }, } -- s23964
 L["aumenta el daño infligido %s p. durante %s s"] = { { Stats.AverageWeaponDamage, }, false, } -- s24043
-L["reduce la armadura de un enemigo %s p. e inflige %s p. de daño de naturaleza cada %s s durante %s s"] = { { Stats.Armor, }, false, false, false, reduction = true } -- s24111
 L["añade de forma permanente %s p. de aguante, %s p. de defensa y %s p. de valor de bloqueo de escudo a un objeto de la casilla para pierna o cabeza. no se suma a otros encantamientos de la casilla de equipamiento seleccionada"] = { { Stats.Stamina, }, { Stats.Defense, }, false, } -- s24149
 L["añade de forma permanente %s p. de aguante y %s p. de defensa, y le aumenta hasta %s p. la sanación a un objeto de la casilla para pierna o cabeza. no se suma a otros encantamientos de la casilla de equipamiento seleccionada"] = { { Stats.Stamina, }, { Stats.Defense, }, { Stats.HealingPower, }, } -- s24160
 L["añade de forma permanente %s p. de poder de ataque y un %s% de posibilidad de esquivar a un objeto de la casilla para pierna o cabeza. no se suma a otros encantamientos de la casilla de equipamiento seleccionada"] = { { Stats.AttackPower, }, { Stats.Dodge, }, } -- s24161
@@ -760,12 +697,12 @@ L["golpea a un único enemigo, le inflige %s p. de daño y reduce %s p. el poder
 L["restaura %s p. de salud cada %s s. y aumenta tu fuerza %s p. dura %s min"] = { { Stats.HealthRegen, }, false, { Stats.Strength, }, false, } -- s24427
 L["aumenta la resistencia a lo arcano en %s p"] = { { Stats.ArcaneResistance, }, } -- s24493
 L["aumenta un %s% la probabilidad de golpe crítico de tus hechizos durante %s s"] = { { Stats.SpellCrit, }, false, } -- s24498
-L["armadura aumentada en %s p"] = { { Stats.Armor, }, } -- s24545
 L["golpea a un único enemigo, le inflige %s p. de daño y reduce %s p. el poder de ataque de todos los enemigos que estén dentro del alcance cuerpo a cuerpo durante %s s"] = { false, { Stats.AttackPower, }, false, reduction = true } -- s24577
-L["el lobo aúlla, lo que aumenta %s p. el poder de ataque cuerpo a cuerpo de los miembros del grupo en un radio de %s m. dura %s min"] = { { Stats.AttackPower, }, false, false, } -- s24597
+L["el lobo aúlla y aumenta %s p. el poder de ataque cuerpo a cuerpo de todos los miembros del grupo o banda en un radio de %s m. dura %s min"] = { { Stats.AttackPower, }, false, false, } -- s24597
 L["aumenta un %s% la probabilidad de golpear con hechizos durante %s s"] = { { Stats.SpellHit, }, false, } -- s24610
 L["%s p. de poder de ataque solo en las formas felina, de oso y de oso temible"] = { { Stats.AttackPower, }, } -- s24694
 L["restaura %s p. de salud durante %s s. debes permanecer sentado mientras comes. si comes durante al menos %s s, estarás bien alimentado y ganarás %s p. de fuerza durante %s min"] = { false, false, false, { Stats.Strength, }, false, ignoreSum = true } -- s24800
+L["aumenta un %s% la probabilidad de golpe crítico con hechizos"] = { { Stats.SpellCrit, }, } -- s24907
 L["aumenta hasta %s p. la sanación de los hechizos y efectos mágicos durante %s s"] = { { Stats.HealingPower, }, false, } -- s24998
 L["encanta unos guantes de forma permanente para que aumenten hasta %s p. el daño de las sombras"] = { { Stats.ShadowDamage, }, } -- s25073
 L["encanta unos guantes de forma permanente para que aumenten hasta %s p. el daño de escarcha"] = { { Stats.FrostDamage, }, } -- s25074
@@ -780,11 +717,9 @@ L["restaura %s p. de maná cada %s s y aumenta hasta %s p. la sanación"] = { { 
 L["restaura %s p. de maná cada %s s y aumenta %s p. la sanación realizada"] = { { Stats.GenericManaRegen, }, false, { Stats.HealingPower, }, } -- s25116
 L["cuando se aplica al arma objetivo, aumenta hasta %s p. el daño con hechizos y la sanación. dura %s minutos"] = { { Stats.SpellPower, }, false, } -- s25117
 L["cuando se aplica al arma objetivo, restaura %s p. de maná al taumaturgo cada %s s y aumenta hasta %s p. la sanación realizada. dura %s minutos"] = { { Stats.GenericManaRegen, }, false, { Stats.HealingPower, }, false, } -- s25118
-L["while applied to target weapon it increases spell damage and healing by up to %s. lasts for %s minutes"] = { { Stats.SpellPower, }, false, } -- s25119
 L["cuando se aplica al arma objetivo, restaura %s p. de maná al taumaturgo cada %s s y aumenta hasta %s p. la sanación. dura %s minutos"] = { { Stats.GenericManaRegen, }, false, { Stats.HealingPower, }, false, } -- s25120
 L["cuando se aplica al arma objetivo, aumenta hasta %s p. el daño con hechizos y la sanación, y aumenta un %s% la probabilidad de golpe crítico con hechizos. dura %s minutos"] = { { Stats.SpellPower, }, { Stats.SpellCrit, }, false, } -- s25122
 L["cuando se aplica al arma objetivo, restaura %s p. de maná al taumaturgo cada %s s y aumenta hasta %s p. el efecto de los hechizos de sanación. dura %s minutos"] = { { Stats.GenericManaRegen, }, false, { Stats.HealingPower, }, false, } -- s25123
-L["inflige el daño normal más %s p. a un enemigo y a sus aliados cercanos. afecta hasta a %s objetivos. los golpes también reducen la armadura %s p"] = { false, false, { Stats.Armor, }, reduction = true } -- s25174
 L["restaura %s p. de maná durante %s s. debes permanecer sentado mientras comes"] = { { Stats.GenericManaRegen, }, false, } -- s25701
 L["la resistencia al fuego de los objetivos de tus hechizos se reduce %s p"] = { { Stats.FirePenetration, }, } -- s25717
 L["la resistencia a la escarcha de los objetivos de tus hechizos se reduce %s p"] = { { Stats.FrostPenetration, }, } -- s25718
@@ -850,7 +785,6 @@ L["aumenta la resistencia a las sombras %s p. dura %s s"] = { { Stats.ShadowResi
 L["aumenta la resistencia a lo arcano %s p. dura %s s"] = { { Stats.ArcaneResistance, }, false, } -- s28770
 L["aumenta la resistencia a todos los tipos de magia %s p. durante %s s"] = { { Stats.FireResistance, Stats.NatureResistance, Stats.FrostResistance, Stats.ShadowResistance, Stats.ArcaneResistance, }, false, } -- s28778
 L["aumenta hasta %s p. la sanación de los siguientes %s hechizos durante %s s"] = { { Stats.HealingPower, }, false, false, } -- s28780
-L["aumenta %s p. la armadura de un objetivo amistoso durante %s s"] = { { Stats.Armor, }, false, } -- s28790
 L["aumenta %s p. el poder de ataque de un objetivo amistoso durante %s s"] = { { Stats.GenericAttackPower, }, false, } -- s28791
 L["aumenta hasta %s p. el daño con hechizos y la sanación del objetivo aliado durante %s s"] = { { Stats.SpellDamage, }, false, } -- s28793
 L["aumenta %s p. cada %s s la regeneración de maná de un objetivo amistoso durante %s s"] = { { Stats.GenericManaRegen, }, false, false, } -- s28795
@@ -863,7 +797,7 @@ L["aumenta hasta %s p. la sanación de hechizos mágicos durante %s h"] = { { St
 L["aumenta %s p todas tus resistencias y provoca que todos los hechizos que resistes por completo restauren un %s% de tu maná total. solo puede activarse %s vez por s"] = { { Stats.FireResistance, Stats.NatureResistance, Stats.FrostResistance, Stats.ShadowResistance, Stats.ArcaneResistance, }, false, false, } -- s29441
 L["añade de forma permanente daño y hasta %s p. de daño y sanación de hechizos y efectos mágicos a un objeto de la casilla de hombros, y aumenta un %s% tu probabilidad de asestar un golpe crítico con hechizos"] = { { Stats.SpellPower, }, { Stats.SpellCrit, }, } -- s29467
 L["añade de forma permanente hasta %s p. de sanación de hechizos y efectos mágicos a un objeto de la casilla de hombros y aumenta %s p. de maná cada %s s tu regeneración de maná"] = { { Stats.HealingPower, }, { Stats.GenericManaRegen, }, false, } -- s29475
-L["añade de forma permanente %s p. de aguante y %s p. de armadura a un objeto de la casilla de hombros"] = { { Stats.Stamina, }, { Stats.Armor, }, } -- s29480
+L["añade de forma permanente %s p. de aguante y %s p. de armadura a un objeto de la casilla de hombros"] = { { Stats.Stamina, }, false, } -- s29480
 L["añade de forma permanente %s p. de poder de ataque a un objeto de la casilla de hombros y aumenta un %s% tu probabilidad de asestar un golpe crítico"] = { { Stats.GenericAttackPower, Stats.AttackPower, Stats.RangedAttackPower, }, { Stats.MeleeCrit, Stats.RangedCrit, Stats.SpellCrit, }, } -- s1219512
 L["aumenta el poder de ataque en %s p. y %s p. extra cada %s s. dura %s s"] = { { Stats.GenericAttackPower, }, { Stats.GenericAttackPower, }, false, false, ignoreSum = true } -- s29602
 L["enferma a un enemigo durante %s min, aumentando el daño físico que recibe %s p. y reduce su aguante %s p. el objetivo enfermo tiene un %s% de probabilidad de propagar su enfermedad a uno de sus aliados cercanos al ser golpeado en combate"] = { false, false, { Stats.Stamina, }, false, reduction = true } -- s30081
@@ -881,7 +815,7 @@ L["aumenta tu probabilidad de golpear con doble empuñadura un %s% extra"] = { {
 L["aumenta tu probabilidad de golpear con doble empuñadura en un %s% extra"] = { { Stats.MeleeHit, Stats.RangedHit, }, } -- s30820
 L["aumenta un %s% la probabilidad de golpe crítico con hechizos, un %s% para ataques cuerpo a cuerpo y a distancia, y otorga %s p. de poder de ataque. dura %s h"] = { { Stats.SpellCrit, }, { Stats.MeleeCrit, Stats.RangedCrit, }, { Stats.GenericAttackPower, }, false, } -- s355363
 L["aumenta los puntos de salud en %s. %s% de celeridad por ataques cuerpo a cuerpo. %s p. de regeneración de maná cada %s s"] = { { Stats.Health, }, false, { Stats.GenericManaRegen, }, false, } -- s355366
-L["aumenta %s p. la armadura de un objetivo amistoso, %s p. todos los atributos y %s p. todas las resistencias durante %s h"] = { { Stats.Armor, }, { Stats.AllStats, }, false, false, } -- s364163
+L["aumenta %s p. la armadura de un objetivo amistoso, %s p. todos los atributos y %s p. todas las resistencias durante %s h"] = { false, { Stats.AllStats, }, false, false, } -- s364163
 L["inflige %s p. de daño de las sombras cada %s s.\r\nreduce un %s% tu probabilidad de golpear con hechizos y ataques cuerpo a cuerpo"] = { false, false, { Stats.MeleeHit, Stats.RangedHit, Stats.SpellHit, }, reduction = true } -- s367873
 L["inflige %s p. de daño de naturaleza cada %s s y también aumenta un %s% la probabilidad de golpe crítico con un ataque cuerpo a cuerpo, a distancia o con hechizos durante %s s"] = { false, false, { Stats.MeleeCrit, Stats.RangedCrit, Stats.SpellCrit, }, false, } -- s370337
 L["la salud aumenta un %s% y el daño aumenta un %s%"] = { false, { Stats.SpellDamage, }, } -- s370444
@@ -893,18 +827,15 @@ L["maldice al objetivo durante %s min, lo que reduce su resistencia a las sombra
 L["maldice al objetivo durante %s min, lo que reduce su resistencia al fuego y a la escarcha %s p. y aumenta el daño recibido de fuego y escarcha un %s%. un brujo solo puede tener una maldición activa a la vez sobre un mismo objetivo"] = { false, { Stats.FireResistance, Stats.FrostResistance, }, false, reduction = true } -- s402792
 L["obliga al objetivo a hablar en demoníaco, lo que ralentiza el lanzamiento de todos los hechizos un %s%. solo puede haber una maldición por brujo activa en un objetivo. dura %s min"] = { { Stats.SpellHaste, }, false, reduction = true } -- s402794
 L["reduce el poder de ataque del objetivo en %s p. dura %s s"] = { { Stats.GenericAttackPower, }, false, reduction = true } -- s402811
-L["reduce la armadura de un enemigo en %s p. dura %s s"] = { { Stats.Armor, }, false, reduction = true } -- s402818
 L["el guerrero grita y aumenta el aguante de todos los miembros del grupo en un radio de %s m en %s p. dura %s min"] = { false, { Stats.Stamina, }, false, } -- s403215
 L["rodea al taumaturgo con energía vil que aumenta %s p. el daño con hechizos y la sanación, más otro monto de daño con hechizos y sanación equivalente al %s% de tu espíritu. además, recuperas un %s% de tu salud máxima cada %s s. un brujo solo puede tener un tipo de hechizo de armadura activo a la vez. dura %s min"] = { { Stats.SpellPower, }, false, false, false, false, } -- s403619
-L["cada vez que bloqueas, regeneras una cantidad de maná equivalente al %s% de tu maná máximo y obtienes una cantidad de armadura equivalente al %s% del valor de armadura de tu escudo, que se acumula hasta %s veces. también aumenta un %s% la probabilidad de bloqueo y un %s% el valor de bloqueo.\r\n\r\nademás, cada vez que usas una habilidad de choque, obtienes %s p. de daño con hechizos por cada punto de tu habilidad de defensa por encima de %s. dura %s s"] = { false, { Stats.Armor, }, false, { Stats.BlockChance, }, false, false, false, false, } -- s408524
-L["aumenta la armadura un %s% del valor de armadura de tu escudo durante %s s, se acumula hasta %s veces"] = { { Stats.Armor, }, false, false, } -- s408525
+L["cada vez que bloqueas, regeneras una cantidad de maná equivalente al %s% de tu maná máximo y obtienes una cantidad de armadura equivalente al %s% del valor de armadura de tu escudo, que se acumula hasta %s veces. también aumenta un %s% la probabilidad de bloqueo y un %s% el valor de bloqueo.\r\n\r\nademás, cada vez que usas una habilidad de choque, obtienes %s p. de daño con hechizos por cada punto de tu habilidad de defensa por encima de %s. dura %s s"] = { false, false, false, { Stats.BlockChance, }, false, false, false, false, } -- s408524
 L["aumenta un %s% tu probabilidad de golpe crítico y reduce un %s% el costo de todas tus habilidades de disparo"] = { { Stats.MeleeCrit, Stats.RangedCrit, }, false, } -- s409428
 L["tus golpes críticos cuerpo a cuerpo y a distancia aumentan tu poder de ataque un monto equivalente al %s% de tu agilidad actual durante %s s"] = { { Stats.GenericAttackPower, }, false, ignoreSum = true } -- s409504
 L["tus golpes críticos a distancia aumentan tu poder de ataque un monto equivalente al %s% de tu agilidad durante %s s"] = { { Stats.GenericAttackPower, }, false, } -- s409507
 L["aumenta tu probabilidad de golpe crítico con todos los hechizos un %s%, pero tus golpes críticos con hechizos que no son periódicos ahora tienen un costo de maná adicional de un %s% de tu maná base"] = { { Stats.SpellCrit, }, false, } -- s412286
 L["aumenta un %s% tu probabilidad de esquivar y un %s% la de tu mascota. además, reduce un %s% el tiempo de reutilización de tu habilidad golpe lateral"] = { { Stats.Dodge, }, false, false, } -- s415428
 L["aumenta tu probabilidad de esquivar un %s% y te otorga un %s% de probabilidad de obtener %s p. de ira cada vez que esquivas"] = { { Stats.Dodge, }, false, false, } -- s417051
-L["lanza al objetivo veneno corrosivo ancestral que inflige %s p. de daño de naturaleza cada %s s y reduce la armadura del objetivo %s p. durante %s s"] = { false, false, { Stats.Armor, }, false, reduction = true } -- s422996
 L["atacas instantáneamente con tu arma de la mano izquierda para infligir daño con arma normal, y tu probabilidad de parar un ataque aumenta un %s% durante %s s o hasta que paras un ataque de manera exitosa. durante %s s, después de usar daga de guardamano, golpe siniestro cuesta %s p. menos de energía, genera un %s% más de amenaza, otorga acumulaciones de bravura ante los golpes y tanto golpe siniestro como eviscerar infligen un %s% más de daño. otorga %s p. de combo.\r\n\r\ndaga de guardamano se beneficia de la mayoría de los talentos y efectos que se activan con golpe siniestro o lo modifican. el efecto de daga de guardamano no debilitará ni potenciará daga de guardamano"] = { { Stats.Parry, }, false, false, false, false, false, false, } -- s424919
 L["acelera tu lanzamiento de hechizos, lo que aumenta la velocidad con la que lanzas hechizos un %s% y reduce un %s% el retraso sufrido por los ataques dañinos mientras lanzas hechizos. dura %s s"] = { { Stats.SpellHaste, }, false, false, } -- s425121
 L["te sobrecargas con energía vil, lo que aumenta un %s% tu probabilidad y la de tu mascota de esquivar y un %s% tu probabilidad de asestar golpes críticos con todos tus ataques. dura %s s"] = { { Stats.Dodge, }, false, false, } -- s425463
@@ -925,9 +856,7 @@ L["restaura %s p.de maná cada %s s"] = { { Stats.GenericManaRegen, }, false, } 
 L["aumenta un %s% tu probabilidad de golpear con hechizos"] = { { Stats.SpellHit, }, } -- s430949
 L["aumenta %s p. tu resistencia al fuego durante %s min"] = { { Stats.FireResistance, }, false, } -- s430950
 L["aumenta %s p. tu resistencia a la escarcha durante %s min"] = { { Stats.FrostResistance, }, false, } -- s430951
-L["perfora la armadura del objetivo y la reduce %s p"] = { { Stats.Armor, }, reduction = true } -- s434837
 L["descarga una explosión de energía arcana que inflige %s p. de daño arcano, reduce las resistencias %s p. y aumenta todo el daño con hechizos recibido un %s% durante %s s. solo afecta a los enemigos de niveles inferiores a %s"] = { false, { Stats.FireResistance, Stats.FrostResistance, Stats.ShadowResistance, Stats.ArcaneResistance, Stats.NatureResistance, }, false, false, false, reduction = true } -- s434841
-L["aumenta %s p. la armadura, pero la velocidad de movimiento se reduce un %s%. el efecto no se puede eliminar y dura %s s"] = { { Stats.Armor, }, false, false, } -- s435359
 L["restaura %s p. de maná y %s p. de salud. también aumenta %s p. el poder de ataque y %s p. el daño que infligen todos los hechizos durante %s s"] = { false, false, { Stats.GenericAttackPower, }, { Stats.SpellDamage, }, false, } -- s435973
 L["el lanzamiento de hechizos tiene la probabilidad de aumentar hasta %s p. el daño y la sanación que realizas durante %s s"] = { { Stats.SpellDamage, }, false, ignoreSum = true } -- s435977
 L["aumenta las armas de puño en %s p"] = { { Stats.WeaponSkill, }, } -- s436285
@@ -943,6 +872,7 @@ L["el taumaturgo escupe un veneno aletargante a los jugadores que inflige %s p. 
 L["aumenta un %s% la probabilidad de golpe crítico con hechizos, otorga %s p. de daño y sanación con hechizos y aumenta un %s% la velocidad de ataque cuerpo a cuerpo y a distancia. dura %s minutos"] = { { Stats.SpellCrit, }, { Stats.SpellPower, }, false, false, } -- s438536
 L["otorga un sigilo encantado de innovación que te potencia para aumentar hasta %s p. el daño y la sanación realizados con hechizos, y aumenta el poder de ataque %s p. durante %s min. esto solo aplica fuera de combate"] = { { Stats.SpellPower, }, { Stats.GenericAttackPower, }, false, } -- s439155
 L["aumenta el daño con hechizos un máximo de %s p. durante %s min"] = { { Stats.SpellDamage, }, false, } -- s439959
+L["reduce %s p. el poder de ataque del objetivo"] = { { Stats.GenericAttackPower, }, } -- s440667
 L["maldice al objetivo durante %s min, lo que reduce %s p. sus resistencias a la magia y aumenta un %s% el daño mágico que recibe. un brujo solo puede tener una maldición activa a la vez sobre un mismo objetivo"] = { false, { Stats.FireResistance, Stats.NatureResistance, Stats.FrostResistance, Stats.ShadowResistance, Stats.ArcaneResistance, }, false, reduction = true } -- s440892
 L["daño con arma %s"] = { { Stats.AverageWeaponDamage, }, } -- s440981
 L["aumenta un %s% la probabilidad de golpear con hechizos. no se acumula con otras runas de anillo"] = { { Stats.SpellHit, }, } -- s442893
@@ -1011,7 +941,7 @@ L["imbuye el arma del chamán, aumenta %s p. su poder de ataque cuerpo a cuerpo 
 L["aumenta hasta %s p. el daño infligido con hechizos y efectos mágicos"] = { { Stats.SpellDamage, }, } -- s461697
 L["cuando recibes un golpe en combate, hay una probabilidad de hacer huir aterrorizado al atacante durante %s s"] = { { Stats.MeleeCrit, Stats.RangedCrit, }, ignoreSum = true } -- s462229
 L["inflige un %s% de daño con arma y deja al objetivo desequilibrado, lo que reduce su habilidad de defensa %s p. durante %s s"] = { false, { Stats.Defense, }, false, reduction = true } -- s462584
-L["cuando se activa, otorga al portador %s p. de defensa y %s p. de armadura durante %s s"] = { { Stats.Defense, }, { Stats.Armor, }, false, } -- s463105
+L["cuando se activa, otorga al portador %s p. de defensa y %s p. de armadura durante %s s"] = { { Stats.Defense, }, false, false, } -- s463105
 L["otorga un sigilo encantado de aguas fluidas que te potencia para aumentar hasta %s p. el daño y la sanación realizados con hechizos, y aumenta el poder de ataque %s p. durante %s h"] = { { Stats.SpellPower, }, { Stats.GenericAttackPower, }, false, } -- s463864
 L["cuando se aplica al escudo objetivo, aumenta hasta %s p. el daño y la sanación con hechizos. dura %s minutos"] = { { Stats.SpellPower, }, false, } -- s463868
 L["encanta de forma permanente un escudo que añade hasta %s p. de daño a los hechizos y hasta %s p. de sanación a los hechizos de sanación"] = { { Stats.SpellDamage, }, { Stats.HealingPower, }, } -- s463871
@@ -1040,6 +970,7 @@ L["añade de forma permanente a un objeto de la casilla para pierna o cabeza %s 
 L["añade de forma permanente %s p. de aguante y %s p. de defensa, y aumenta hasta %s p. el daño y la sanación con hechizos a un objeto de la casilla para pierna o cabeza. no se acumula con otros encantamientos de la casilla de equipamiento seleccionada"] = { { Stats.Stamina, }, { Stats.Defense, }, { Stats.SpellPower, }, } -- s468328
 L["añade de forma permanente %s p. de aguante y %s p. de fuerza, y aumenta hasta %s p. el daño y la sanación con hechizos a un objeto de la casilla para pierna o cabeza. no se acumula con otros encantamientos de la casilla de equipamiento seleccionada"] = { { Stats.Stamina, }, { Stats.Strength, }, { Stats.SpellPower, }, } -- s468330
 L["añade de forma permanente %s p. de aguante y %s p. de intelecto, y aumenta hasta %s p. el daño y la sanación con hechizos a un objeto de la casilla para pierna o cabeza. no se acumula con otros encantamientos de la casilla de equipamiento seleccionada"] = { { Stats.Stamina, }, { Stats.Intellect, }, { Stats.SpellPower, }, } -- s468339
+L["aumenta el daño con hechizos hasta %s p"] = { { Stats.SpellDamage, }, } -- s469209
 L["añade de forma permanente %s p. de aguante, %s p. de agilidad y %s p. de defensa a un objeto de la casilla para pierna o cabeza. no se acumula con otros encantamientos de la casilla de equipamiento seleccionada"] = { { Stats.Stamina, }, { Stats.Agility, }, { Stats.Defense, }, } -- s468347
 L["añade de forma permanente %s p. de aguante y %s p. de fuerza, y aumenta hasta %s p. la sanación y el daño con hechizos a un objeto de la casilla para pierna o cabeza. no se acumula con otros encantamientos de la casilla de equipamiento seleccionada"] = { { Stats.Stamina, }, { Stats.Strength, }, { Stats.SpellPower, }, } -- s468351
 L["añade de forma permanente %s p. de aguante y un %s% de probabilidad de golpear, y aumenta hasta %s p. la sanación y el daño con hechizos a un objeto de la casilla para pierna o cabeza. no se acumula con otros encantamientos de la casilla de equipamiento seleccionada"] = { { Stats.Stamina, }, { Stats.MeleeHit, Stats.RangedHit, Stats.SpellHit, }, { Stats.SpellPower, }, } -- s468354
@@ -1054,14 +985,13 @@ L["aumenta hasta %s p. el daño que infligen los efectos y hechizos sagrados"] =
 L["la defensa aumenta %s p"] = { { Stats.Defense, }, } -- s468411
 L["aumenta un %s% tu probabilidad de conseguir un golpe crítico con dagas"] = { { Stats.MeleeCrit, Stats.RangedCrit, }, } -- s468436
 L["aumenta un %s% la probabilidad de golpe crítico de los hechizos durante %s s. si choque y terror está grabado, obtienes un %s% más"] = { { Stats.SpellCrit, }, false, false, } -- s468461
+L["la sanación realizada aumenta hasta %s p"] = { { Stats.HealingPower, }, } -- s469210
 L["aumenta tu probabilidad de golpe crítico un %s% y la velocidad de ataque de tu mascota un %s% durante %s s. este hechizo no afecta a las mascotas temporales ni a los demonios subyugados"] = { { Stats.SpellCrit, Stats.MeleeCrit, Stats.RangedCrit, }, false, false, } -- s468540
 L["aumenta hasta %s p. la sanación de los hechizos y los efectos. este efecto no se acumula con otras runas de anillo"] = { { Stats.HealingPower, }, } -- s468758
 L["restaura %s p. de maná cada %s s. este efecto no se acumula con otras runas de anillo"] = { { Stats.GenericManaRegen, }, false, } -- s468762
 L["aumenta hasta %s p. el daño con hechizos arcanos y de las sombras durante %s s"] = { { Stats.ShadowDamage, Stats.ArcaneDamage, }, false, } -- s468784
 L["aumenta hasta %s p. el daño que infligen los efectos y hechizos de las sombras y arcanos"] = { { Stats.ShadowDamage, Stats.ArcaneDamage, }, } -- s468785
 L["aumenta la probabilidad de efecto crítico un %s%"] = { { Stats.MeleeCrit, Stats.RangedCrit, Stats.SpellCrit, }, } -- s469208
-L["aumenta el daño con hechizos hasta %s p"] = { { Stats.SpellDamage, }, } -- s469209
-L["la sanación realizada aumenta hasta %s p"] = { { Stats.HealingPower, }, } -- s469210
 L["restaura %s p. de salud durante %s s. debes permanecer sentado mientras comes. si comes durante %s segundos, también aumentará tu daño con hechizos %s p. durante %s min"] = { false, false, false, { Stats.SpellDamage, }, false, ignoreSum = true } -- s470362
 L["aumenta la sanación realizada %s p. durante %s min"] = { { Stats.HealingPower, }, false, } -- s470367
 L["restaura %s p. de salud durante %s s. debes permanecer sentado mientras comes. si comes durante %s segundos, también aumentará %s p. tu sanación infligida durante %s min"] = { false, false, false, { Stats.HealingPower, }, false, ignoreSum = true } -- s470369
@@ -1083,13 +1013,13 @@ L["aumenta %s p. el poder de ataque durante %s h. solo puedes disfrutar del efec
 L["aumenta %s p. el aguante y %s p. el valor de defensa durante %s h. solo puedes disfrutar del efecto de un frasco a la vez. el efecto persiste aun después de la muerte"] = { { Stats.Stamina, }, { Stats.Defense, }, false, } -- s1213901
 L["aumenta %s p. la agilidad, un %s% la probabilidad de asestar un golpe crítico y %s p. la resistencia a la naturaleza durante %s h"] = { { Stats.Agility, }, { Stats.MeleeCrit, Stats.RangedCrit, }, { Stats.NatureResistance, }, false, } -- s1213904
 L["aumenta el daño con hechizos hasta un máximo de %s p. y la resistencia a la naturaleza %s p. durante %s h"] = { { Stats.SpellDamage, }, { Stats.NatureResistance, }, false, } -- s1213914
-L["aumenta %s p. la armadura, %s p. la defensa y %s p. la resistencia a la naturaleza durante %s h"] = { { Stats.Armor, }, { Stats.Defense, }, { Stats.NatureResistance, }, false, } -- s1213917
+L["aumenta %s p. la armadura, %s p. la defensa y %s p. la resistencia a la naturaleza durante %s h"] = { false, { Stats.Defense, }, { Stats.NatureResistance, }, false, } -- s1213917
 L["lee el pergamino para invocar la cólera del enjambre y potenciar a tu banda, lo que aumenta hasta %s p. el daño y la sanación realizados con hechizos, y aumenta el poder de ataque %s p. durante %s h"] = { { Stats.SpellPower, }, { Stats.GenericAttackPower, }, false, } -- s1214001
 L["cuando se aplica al arma o al escudo objetivo, aumenta hasta %s p. el daño con hechizos y aumenta un %s% la probabilidad de golpe crítico con hechizos. dura %s minutos"] = { { Stats.SpellPower, }, { Stats.SpellCrit, }, false, } -- s1214004
 L["te otorga una probabilidad de que, cuando tus hechizos dañinos impacten, el daño de tus hechizos y efectos aumente hasta %s p. durante %s s"] = { { Stats.SpellDamage, }, false, ignoreSum = true } -- s1214280
 L["encanta de forma permanente un arma para que añada hasta %s p. de daño a los hechizos"] = { { Stats.SpellPower, }, } -- s1217189
 L["encanta de forma permanente unos brazales para que aumenten tu agilidad en %s p"] = { { Stats.Agility, }, } -- s1217203
-L["provoca un frenesí rabioso al objetivo, lo que aumenta %s p. su poder de ataque cuerpo a cuerpo pero reduce %s p. su armadura durante %s min. los enemigos rabiosos no huirán e ignorarán los efectos de miedo y horror"] = { { Stats.AttackPower, }, { Stats.Armor, }, false, } -- s1218358
+L["provoca un frenesí rabioso al objetivo, lo que aumenta %s p. su poder de ataque cuerpo a cuerpo pero reduce %s p. su armadura durante %s min. los enemigos rabiosos no huirán e ignorarán los efectos de miedo y horror"] = { { Stats.AttackPower, }, false, false, } -- s1218358
 L["tu habilidad bramido nunca falla, y reduce un %s% la probabilidad de que esquiven o paren tus ataques"] = { { Stats.DodgeReduction, Stats.ParryReduction, }, } -- s1218482
 L["tu habilidad mano de expiación nunca falla, y reduce un %s% la probabilidad de que esquiven o paren tus ataques"] = { { Stats.DodgeReduction, Stats.ParryReduction, }, } -- s1219205
 L["tu habilidad burla nunca falla y reduce un %s% la probabilidad de que esquiven o paren tus ataques"] = { { Stats.DodgeReduction, Stats.ParryReduction, }, } -- s1219356
@@ -1110,7 +1040,6 @@ L["encanta un arma de dos manos de forma permanente para que otorgue %s p. de po
 L["encanta un escudo de forma permanente para que otorgue %s p. de aguante"] = { { Stats.Stamina, }, } -- s1219581
 L["encanta una capa de forma permanente para que otorgue %s p. de agilidad"] = { { Stats.Agility, }, } -- s1219587
 L["aumenta %s p. el poder de ataque de un objetivo aliado durante %s s"] = { { Stats.GenericAttackPower, }, false, } -- s1220545
-L["aumenta %s p. la armadura de un objetivo aliado durante %s s"] = { { Stats.Armor, }, false, } -- s1220546
 L["mejora un %s% tu probabilidad de asestar un golpe crítico"] = { { Stats.MeleeCrit, Stats.RangedCrit, Stats.SpellCrit, }, } -- s1220596
 L["encanta de forma permanente un escudo para añadir un %s% de probabilidad de golpe crítico"] = { { Stats.MeleeCrit, Stats.RangedCrit, Stats.SpellCrit, }, } -- s1220623
 L["encanta de forma permanente unos brazales que proporcionan %s p. al poder con hechizos"] = { { Stats.SpellPower, }, } -- s1220624
@@ -1121,13 +1050,12 @@ L["si comes durante al menos %s s, estarás bien alimentado y ganarás %s p. de 
 L["si comes durante al menos %s s, estarás bien alimentado y ganarás %s p. de agilidad y %s p. de aguante durante %s min"] = { false, { Stats.Agility, }, { Stats.Stamina, }, false, } -- s1225779
 L["si comes durante al menos %s s, estarás bien alimentado y ganarás %s p. de daño con hechizos, %s p. de poder de sanación y %s p. de aguante durante %s min"] = { false, { Stats.SpellDamage, }, { Stats.HealingPower, }, { Stats.Stamina, }, false, } -- s1225780
 L["si comes durante al menos %s s, estarás bien alimentado y ganarás %s p. de poder de ataque, %s p. de daño con hechizos, %s p. de poder de sanación y %s p. de aguante durante %s min"] = { false, { Stats.AttackPower, }, { Stats.SpellDamage, }, { Stats.HealingPower, }, { Stats.Stamina, }, false, } -- s1225782
-L["lanza sobre el objetivo una maldición de temeridad, lo que aumenta %s p. su poder de ataque cuerpo a cuerpo pero disminuye %s p. su armadura durante %s min. los enemigos malditos no huirán e ignorarán los efectos de miedo y horror. un brujo solo puede tener una maldición activa a la vez sobre un mismo objetivo"] = { { Stats.AttackPower, }, { Stats.Armor, }, false, } -- s1225841
+L["lanza sobre el objetivo una maldición de temeridad, lo que aumenta %s p. su poder de ataque cuerpo a cuerpo pero disminuye %s p. su armadura durante %s min. los enemigos malditos no huirán e ignorarán los efectos de miedo y horror. un brujo solo puede tener una maldición activa a la vez sobre un mismo objetivo"] = { { Stats.AttackPower, }, false, false, } -- s1225841
 L["tus golpes críticos periódicos otorgan un %s% de celeridad de lanzamiento de hechizos durante %s s, y tu explosión de humo otorga un %s% más de celeridad de lanzamiento de hechizos"] = { { Stats.SpellHaste, }, false, false, ignoreSum = true } -- s1227196
 L["te sanas %s p. de salud y tu fuerza aumenta %s p. durante %s s"] = { false, { Stats.Strength, }, false, } -- s1231124
 L["restaura %s p. de maná y aumenta %s p. el poder con hechizos durante %s s"] = { false, { Stats.SpellPower, }, false, } -- s1231138
-L["aumenta %s p. la defensa y %s p. la armadura durante %s s"] = { { Stats.Defense, }, { Stats.Armor, }, false, } -- s1231254
+L["aumenta %s p. la defensa y %s p. la armadura durante %s s"] = { { Stats.Defense, }, false, false, } -- s1231254
 L["atacar disparando a distancia normal te prepara para la batalla, lo que aumenta %s p. tu defensa y un %s% la velocidad de ataque cuerpo a cuerpo durante %s s"] = { { Stats.Defense, }, false, false, ignoreSum = true } -- s1231267
-L["invoca la voluntad de la montaña, lo que aumenta un %s% el daño físico infligido, %s p. la armadura y un %s% el tamaño durante %s s"] = { false, { Stats.Armor, }, false, false, } -- s1231289
 L["la fuerza aumenta\r\n %s p. durante %s s"] = { { Stats.Strength, }, false, } -- s1231339
 L["la agilidad aumenta %s p. durante %s s"] = { { Stats.Agility, }, false, } -- s1231406
 L["aumenta %s p. la fuerza del portador durante %s s"] = { { Stats.Strength, }, false, } -- s1231548
@@ -1135,7 +1063,6 @@ L["mejora un %s% tu probabilidad de obtener un golpe crítico con todos tus hech
 L["da %s p. más de armadura a los miembros del grupo cercanos durante %s s. los jugadores solo pueden tener un aura activa por paladín a la vez"] = { { Stats.Armor, }, false, } -- s1233344
 L["añade una mira permanente a un arco o arma de fuego que aumenta %s p. el daño que produce"] = { { Stats.AverageWeaponDamage, }, } -- s1235011
 L["aumenta un %s% tu celeridad con hechizos y aumenta hasta %s p. el daño infligido por tus hechizos de las sombras"] = { { Stats.SpellHaste, }, { Stats.FireDamage, Stats.ShadowDamage, }, } -- s1237162
-L["increases attack power by %s for %s s. this effect is doubled in volcanic areas"] = { { Stats.GenericAttackPower, }, false, } -- s1249113
 L["encanta de forma permanente unos brazales para que aumenten hasta %s p. los hechizos de sanación y hasta %s p. los hechizos de daño del portador"] = { { Stats.HealingPower, }, { Stats.SpellDamage, }, } -- s1248459
 L["encanta de forma permanente un brazal para que aumente %s p. la agilidad del portador"] = { { Stats.Agility, }, } -- s1248460
 L["encanta de forma permanente unos brazales para que otorguen %s p. de agilidad"] = { { Stats.Agility, }, } -- s1248497
@@ -1149,20 +1076,21 @@ L["encanta de forma permanente un collar para que aumente hasta %s p. el daño c
 L["encanta de forma permanente un collar para que aumente hasta %s p. la sanación y hasta %s p. el daño con hechizos"] = { { Stats.HealingPower, }, { Stats.SpellDamage, }, } -- s1249058
 L["encanta de forma permanente un collar para que aumente %s p. la agilidad"] = { { Stats.Agility, }, } -- s1249059
 L["aumenta hasta %s p. el daño infligido de escarcha y daño con hechizos de las sombras durante %s s. el efecto se duplica en áreas nevadas"] = { { Stats.FrostDamage, Stats.ShadowDamage, }, false, } -- s1249110
+L["aumenta %s p. el poder de ataque durante %s s. el efecto se duplica en áreas volcánicas"] = { { Stats.GenericAttackPower, }, false, } -- s1249113
 L["cuando lanzas sanación superior en combate, obtienes hasta %s p. de sanación adicional y hasta %s p. más de daño durante %s s"] = { { Stats.HealingPower, }, { Stats.SpellDamage, }, false, ignoreSum = true } -- s1249118
 L["cuando lanzas toque de sanación en combate, obtienes hasta %s p. de sanación adicional y hasta %s p. más de daño durante %s s"] = { { Stats.HealingPower, }, { Stats.SpellDamage, }, false, ignoreSum = true } -- s1249118
 L["cuando lanzas ola de sanación en combate, obtienes hasta %s p. de sanación adicional y hasta %s p. más de daño durante %s s"] = { { Stats.HealingPower, }, { Stats.SpellDamage, }, false, ignoreSum = true } -- s1249118
 L["cuando lanzas luz sagrada en combate, obtienes hasta %s p. de sanación adicional y hasta %s p. más de daño durante %s s"] = { { Stats.HealingPower, }, { Stats.SpellDamage, }, false, ignoreSum = true } -- s1249118
 L["cuando lanzas sanación superior, toque de sanación, ola de sanación o luz sagrada en combate, obtienes hasta %s p. de sanación adicional y hasta %s p. más de daño durante %s s"] = { { Stats.HealingPower, }, { Stats.SpellDamage, }, false, ignoreSum = true } -- s1249118
 L["aumenta hasta %s p. la sanación que realizas y hasta %s p. el daño con hechizos que infliges durante %s s"] = { { Stats.HealingPower, }, { Stats.SpellDamage, }, false, } -- s1249119
-L["drink to gain %s agility and intellect. lasts for %s min"] = { { Stats.Agility, Stats.Intellect, }, false, } -- s1250918
-L["drink to gain %s maximum health and %s armor. lasts for %s min"] = { { Stats.Health, }, { Stats.Armor, }, false, } -- s1250920
+L["bebe para obtener %s p. de agilidad e intelecto. dura %s min"] = { { Stats.Agility, Stats.Intellect, }, false, } -- s1250918
+L["bebe para obtener %s p. de salud máxima y %s p. de armadura. dura %s min"] = { { Stats.Health, }, false, false, } -- s1250920
 L["bebe para aumentar la sanación realizada por hechizos y efectos hasta %s min p. dura %s"] = { false, { Stats.HealingPower, }, } -- s1250922
 L["bebe para aumentar tu salud máxima %s p. dura %s min"] = { { Stats.Health, }, false, } -- s1250928
 L["bebe para recuperar %s p. de salud y %s p. de maná cada %s s. dura %s min"] = { { Stats.HealthRegen, }, { Stats.GenericManaRegen, }, false, false, } -- s1250932
 L["bebe para aumentar tu intelecto %s p. y la probabilidad de golpe crítico un %s%. dura %s min"] = { { Stats.Intellect, }, false, false, } -- s1250940
 L["bebe para aumentar tu espíritu %s p. y la probabilidad de golpe crítico un %s%. dura %s min"] = { { Stats.Spirit, }, false, false, } -- s1250941
-L["drink to regenerate %s mana every %s sec. lasts for %s min"] = { { Stats.GenericManaRegen, }, false, false, } -- s1250942
+L["bebe para regenerar %s p. de maná cada %s s. dura %s min"] = { { Stats.GenericManaRegen, }, false, false, } -- s1250942
 L["bebe para aumentar el daño con hechizos hasta %s p. dura %s min"] = { { Stats.SpellDamage, }, false, } -- s1250971
 L["bebe para aumentar el daño con hechizos de naturaleza hasta %s p. dura %s min"] = { { Stats.NatureDamage, }, false, } -- s1250972
 L["bebe para aumentar tu espíritu %s p. dura %s min"] = { { Stats.Spirit, }, false, } -- s1250974
@@ -1172,14 +1100,11 @@ L["bebe para aumentar tu fuerza %s p. y la probabilidad de golpe crítico un %s%
 L["bebe para aumentar tu intelecto %s p. dura %s min"] = { { Stats.Intellect, }, false, } -- s1250988
 L["aumenta %s p. el daño con hechizos durante %s s"] = { { Stats.SpellDamage, }, false, } -- s1251919
 L["aumenta %s p. la sanación con hechizos durante %s s"] = { { Stats.HealingPower, }, false, } -- s1251942
-L["permanently increase the stamina value by %s and the armor value by %s of an item worn on the chest, legs, hands, or feet"] = { { Stats.Stamina, }, { Stats.Armor, }, } -- s1254738
-L["permanently increase the attack power value by %s and the armor value by %s of an item worn on the chest, legs, hands, or feet"] = { { Stats.GenericAttackPower, Stats.RangedAttackPower, }, { Stats.Armor, }, } -- s1254740
-L["permanently increase the spell power value by %s and the armor value by %s of an item worn on the chest, legs, hands, or feet"] = { { Stats.SpellPower, }, { Stats.Armor, }, } -- s1254742
-L["permanently increase the stamina value by %s and armor value by %s of an item worn on the chest, legs, hands, or feet. only usable on items level %s and above"] = { { Stats.Stamina, }, { Stats.Armor, }, false, } -- s1254747
+L["aumenta de forma permanente en %s p. la armadura y en %s p. el poder de ataque de un objeto de piernas, torso, manos o pies"] = { { Stats.Armor, }, { Stats.GenericAttackPower, }, } -- s1254740
+L["aumenta de forma permanente en %s p. la armadura y en %s p. el poder con hechizos de un objeto de piernas, torso, manos o pies"] = { { Stats.Armor, }, { Stats.SpellPower, }, } -- s1254742
+L["aumenta de forma permanente en %s p. la armadura y en %s p. el aguante de un objeto de piernas, torso, manos o pies. solo se puede aplicar en objetos de nivel %s o superior"] = { { Stats.Armor, }, { Stats.Stamina, }, false, } -- s1254747
 L["aumenta hasta %s p. la sanación realizada con hechizos y efectos, y hasta %s p. el daño que infligen los hechizos y efectos"] = { { Stats.HealingPower, }, { Stats.SpellDamage, }, } -- s1258494
-L["emits a piercing shriek, inflicting %s nature damage and increasing the casting time of all spells by %s% for %s s"] = { false, { Stats.SpellHaste, }, false, reduction = true } -- s1264478
-L["tu zancaalta da una patada y levanta una nube de polvo abrasiva que reduce %s p. la armadura del objetivo durante %s s"] = { { Stats.Armor, }, false, reduction = true } -- s1265899
-L["escupe ácido corrosivo a un enemigo, lo que reduce su armadura %s p. por acumulación. se puede aplicar hasta %s veces. dura %s s"] = { { Stats.Armor, }, false, false, } -- s1266240
+L["emite un chillido penetrante que inflige %s p. de daño de naturaleza y aumenta un %s% durante %s s la velocidad de lanzamiento de todos los hechizos"] = { false, { Stats.SpellHaste, }, false, reduction = true } -- s1264478
 L["aumenta %s p. la agilidad mientras dure la tormenta de arena"] = { { Stats.Agility, }, } -- s1269929
 L["aumenta %s p. la fuerza por la duración de la ola de calor"] = { { Stats.Strength, }, } -- s1269957
 L["aumenta %s p. el espíritu mientras dure la lluvia"] = { { Stats.Spirit, }, } -- s1269958
@@ -1191,34 +1116,24 @@ L["aumenta %s p. todos los atributos durante %s s. el efecto y la duración se d
 L["aumenta %s p. el poder de ataque durante %s min"] = { { Stats.GenericAttackPower, }, false, } -- s1287768
 L["aumenta un %s% tu probabilidad de golpe con hechizos durante %s s"] = { { Stats.SpellHit, }, false, } -- s1287840
 L["aumenta %s p. tu poder de ataque cuerpo a cuerpo y a distancia durante %s s"] = { { Stats.GenericAttackPower, }, false, } -- s1288015
-L["aumenta tu armadura %s p. durante %s s"] = { { Stats.Armor, }, false, } -- s1288016
 L["aumenta tu daño con hechizos y tu sanación hasta %s p durante %s s"] = { { Stats.SpellPower, }, false, } -- s1288020
 L["aumenta la sanación hasta %s p durante %s s"] = { { Stats.HealingPower, }, false, } -- s1288021
 L["aumenta tu poder de ataque a distancia %s p. durante %s s"] = { { Stats.RangedAttackPower, }, false, } -- s1288024
-L["reduce la armadura y las resistencias de un enemigo %s p. durante %s s. mientras esté afectado, el objetivo no puede utilizar sigilo ni invisibilidad"] = { { Stats.Armor, Stats.FireResistance, Stats.NatureResistance, Stats.FrostResistance, Stats.ShadowResistance, Stats.ArcaneResistance, }, false, reduction = true } -- s1288561
-L["hacks at the current target inflicting %s physical damage and reducing their armor by %s%"] = { false, { Stats.Armor, }, reduction = true } -- s1288908
-L["reduce %s p. la armadura de un enemigo durante %s min. mientras esté afectado, el objetivo no puede entrar en sigilo ni invisibilidad"] = { { Stats.Armor, }, false, reduction = true } -- s1289452
-L["increases the time between an enemy's attacks by %s% and its casting speed by %s%, adding a %s% chance to spread the contagion to an ally when hit"] = { false, { Stats.SpellHaste, }, false, reduction = true } -- s1289531
-L["reduces target's attack power by %s for %s s"] = { { Stats.GenericAttackPower, }, false, reduction = true } -- s1297082
+L["reduce la armadura y las resistencias de un enemigo %s p. durante %s s. mientras esté afectado, el objetivo no puede utilizar sigilo ni invisibilidad"] = { { Stats.FireResistance, Stats.NatureResistance, Stats.FrostResistance, Stats.ShadowResistance, Stats.ArcaneResistance, }, false, reduction = true } -- s1288561
+L["aumenta un %s% el tiempo entre los ataques de un enemigo y un %s% su velocidad de lanzamiento. además, tiene un %s% de probabilidad de contagiar a un aliado al recibir un golpe"] = { false, { Stats.SpellHaste, }, false, reduction = true } -- s1289531
 L["inflige %s p. de daño al objetivo, lo que aumenta un %s% el tiempo de lanzamiento de un hechizo durante %s s"] = { false, { Stats.SpellHaste, }, false, reduction = true } -- s1290950
 L["aumenta el espíritu %s p. durante %s s"] = { { Stats.Spirit, }, false, } -- s1291103
 L["aumenta un %s% tu probabilidad de bloquear durante %s s. el efecto se duplica en bastiones y ciudades"] = { { Stats.BlockChance, }, false, } -- s1291105
-L["increases the friendly target's armor by %s, all attributes by %s, and all resistances by %s for %s min"] = { { Stats.Armor, }, { Stats.AllStats, }, false, false, } -- s1291335
-L["restores %s mana over %s s. must remain seated while drinking"] = { { Stats.GenericManaRegen, }, false, } -- s1291782
-L["cause party members within %s yds to regenerate %s health every %s sec"] = { false, { Stats.HealthRegen, }, false, } -- s1292142
+L["aumenta %s p. la armadura de un objetivo aliado, %s p. todos los atributos y %s p. todas las resistencias durante %s min"] = { false, { Stats.AllStats, }, false, false, } -- s1291335
+L["los miembros del grupo en un radio de %s m regeneran %s p. de salud cada %s s"] = { false, { Stats.HealthRegen, }, false, } -- s1292142
 L["si resisten uno de tus hechizos, otorga %s p. de salud y %s p. de maná cada %s s durante %s s"] = { { Stats.HealthRegen, }, { Stats.GenericManaRegen, }, false, false, ignoreSum = true } -- s1292594
-L["inflict %s fire and %s frost damage, slow the target by %s% for %s s, reduce armor by %s, and inflict %s nature damage every %s sec for %s s"] = { false, false, false, false, { Stats.Armor, }, false, false, false, reduction = true } -- s1292657
 L["aumenta hasta %s p. el daño infligido de los hechizos y efectos de las sombras y arcano"] = { { Stats.ShadowDamage, Stats.ArcaneDamage, }, } -- s1292705
-L["punctures target's armor, lowering it by %s"] = { { Stats.Armor, }, reduction = true } -- s1293005
-L["cuando recibe daño, tiene una probabilidad de otorgarte %s p. de armadura durante %s s"] = { { Stats.Armor, }, false, ignoreSum = true } -- s1293342
-L["chance on harmful spell cast to reduce target's attack power by %s for %s s"] = { { Stats.GenericAttackPower, }, false, ignoreSum = true, reduction = true } -- s1297085
 L["un %s% de probabilidad de, al recibir un golpe en combate, obtener %s p. de maná cada %s s durante %s s"] = { false, { Stats.GenericManaRegen, }, false, false, ignoreSum = true } -- s1293701
 L["aumenta %s p. tu aguante. mientras te encuentres en el monte hyjal, la cima hyjal y las cavernas del túmulo, también obtienes un %s% de probabilidad de golpe.\r\n\r\ndura %s h. solo puedes disfrutar del efecto de un frasco a la vez. el efecto persiste aun después de la muerte"] = { { Stats.Stamina, }, false, false, } -- s1293740
 L["aumenta %s p. tu aguante. mientras te encuentres en el monte hyjal, la cima hyjal y las cavernas del túmulo, también obtienes un %s% de probabilidad de golpe crítico.\r\n\r\ndura %s h. solo puedes disfrutar del efecto de un frasco a la vez. el efecto persiste aun después de la muerte"] = { { Stats.Stamina, }, false, false, } -- s1293741
 L["aumenta %s p. tu aguante. mientras te encuentres en el monte hyjal, la cima hyjal y las cavernas del túmulo, la probabilidad de que esquiven o paren tus ataques se reduce un %s%.\r\n\r\ndura %s h. solo puedes disfrutar del efecto de un frasco a la vez. el efecto persiste aun después de la muerte"] = { { Stats.Stamina, }, false, false, } -- s1293742
 L["aumenta %s p. tu aguante. mientras te encuentres en el monte hyjal, la cima hyjal y las cavernas del túmulo, también obtienes un %s% de celeridad.\r\n\r\ndura %s h. solo puedes disfrutar del efecto de un frasco a la vez. el efecto persiste aun después de la muerte"] = { { Stats.Stamina, }, false, false, } -- s1293743
 L["aumenta un %s% tu probabilidad de esquivar durante %s s. el efecto se duplica en bastiones y ciudades"] = { { Stats.Dodge, }, false, } -- s1293820
-L["en combate, tus hechizos de sanación tienen una probabilidad de otorgar %s p. de armadura a un aliado durante %s s"] = { { Stats.Armor, }, false, ignoreSum = true } -- s1294064
 L["aumenta un %s% tu intelecto"] = { { Stats.Strength, }, } -- s1294070
 L["aumenta %s p. tu poder de ataque"] = { { Stats.GenericAttackPower, }, } -- s1294071
 L["tus ataques tienen una probabilidad de aumentar %s p. tu poder de ataque y tus hechizos de sanación tienen una probabilidad de aumentar %s p. tu intelecto durante %s s"] = { { Stats.GenericAttackPower, }, { Stats.Strength, }, false, ignoreSum = true } -- s1294087
@@ -1226,7 +1141,9 @@ L["aumenta un %s% tu probabilidad de parar ataques durante %s s"] = { { Stats.Pa
 L["golpea al enemigo con la ira de sul'thraze, lo que reduce su poder de ataque %s p. durante %s s e inflige %s p. de daño de las sombras. tras %s s, el objetivo recibe %s p. más de daño de las sombras. este daño de las sombras adicional inflige %s veces más daño a los trols"] = { { Stats.GenericAttackPower, }, false, false, false, false, false, reduction = true } -- s1294430
 L["aumenta un %s% tu probabilidad de golpear con hechizos.\r\naumenta un %s% tu probabilidad de golpear con ataques y habilidades.\r\nreduce un %s% la probabilidad de esquivar tus ataques.\r\nreduce un %s% la probabilidad de parar tus ataques"] = { { Stats.SpellHit, }, { Stats.MeleeHit, Stats.RangedHit, }, { Stats.DodgeReduction, }, { Stats.ParryReduction, }, } -- s1294788
 L["invoca una rata fiel como familiar durante %s h. su presencia aumenta tu intelecto %s p"] = { false, { Stats.Intellect, }, } -- s1296202
-L["increases the ranged attack power of party members within %s yds by %s"] = { false, { Stats.RangedAttackPower, }, } -- s1299346
+L["los hechizos dañinos tienen una probabilidad de reducir %s p. el poder de ataque del objetivo durante %s s"] = { { Stats.GenericAttackPower, }, false, ignoreSum = true, reduction = true } -- s1297085
+L["aumenta %s p. el poder de ataque a distancia de todos los miembros del grupo o banda en un radio de %s m"] = { { Stats.RangedAttackPower, }, false, } -- s1299346
+L["asumes el aspecto de una bestia y te vuelves imposible de rastrear. aumenta %s p. el poder de ataque cuerpo a cuerpo. solo puede haber un aspecto activo cada vez"] = { { Stats.AttackPower, }, } -- s1299445
 L["otorga una probabilidad de aumentar el daño y la sanación de los hechizos y efectos mágicos durante hasta un máximo de %s durante %s s al recibir un golpe en combate"] = { { Stats.SpellDamage, }, false, ignoreSum = true } -- s1299743
 L["el espíritu aumenta %s p"] = { { Stats.Spirit, }, } -- s1300943
 L["reduce el intelecto %s p"] = { { Stats.Intellect, }, reduction = true } -- s1302206
@@ -1234,27 +1151,26 @@ L["aumenta un %s% tu probabilidad de esquivar durante %s s o hasta que esquives 
 L["invoca una rana fiel como familiar durante %s h. su presencia aumenta tu intelecto en %s"] = { false, { Stats.Intellect, }, } -- s1302285
 L["invoca un gato fiel como familiar durante %s h. su presencia aumenta tu intelecto %s p"] = { false, { Stats.Intellect, }, } -- s1302303
 L["si asestas un hechizo de daño, hay una probabilidad de asaltar la mente del objetivo, lo que aumenta un %s% el tiempo de lanzamiento de todos los hechizos durante %s s. se acumula hasta %s veces"] = { { Stats.SpellHaste, }, false, false, ignoreSum = true, reduction = true } -- s1302341
-L["all party members within %s yds are blessed, restoring %s health every %s sec"] = { false, { Stats.HealthRegen, }, false, } -- s1302375
+L["todos los miembros del grupo en un radio de %s m están bendecidos y restauran %s p. de salud cada %s s"] = { false, { Stats.HealthRegen, }, false, } -- s1302375
 L["reduce %s p. el poder de ataque cuerpo a cuerpo de un enemigo y %s p. su poder de ataque a distancia durante %s min"] = { { Stats.GenericAttackPower, }, false, false, reduction = true } -- s1302838
-L["los ojos de kargra ven más allá de los reinos mortales, lo que reduce un %s% su probabilidad de golpear con ataques"] = { { Stats.MeleeHit, Stats.RangedHit, }, reduction = true } -- s1305855
 L["una venda le cubre los ojos y es totalmente incapaz de ver, lo que reduce un %s% su probabilidad de golpear con ataques"] = { { Stats.MeleeHit, Stats.RangedHit, }, reduction = true } -- s1303286
-L["increases your attack speed by %s% and the physical damage you deal by %s for %s min"] = { false, { Stats.AverageWeaponDamage, }, false, } -- s1303979
-L["increases critical chance of spells and attacks by %s%, increases attack power by %s, and increases spell damage and healing by up to %s for %s h"] = { false, { Stats.GenericAttackPower, }, { Stats.SpellPower, }, false, } -- s1304452
-L["increases hitpoints by %s. %s% haste to melee attacks. %s mana regen every %s sec"] = { { Stats.Health, }, { Stats.SpellHaste, }, { Stats.GenericManaRegen, }, false, } -- s1304594
-L["increases hitpoints by %s. %s% haste to all spells and attacks. %s mana regen every %s sec"] = { { Stats.Health, }, { Stats.SpellHaste, }, { Stats.GenericManaRegen, }, false, } -- s1304678
-L["increases the chance for a melee, ranged, or spell critical by %s% and all attributes by %s for %s h"] = { false, { Stats.AllStats, }, false, } -- s1304690
-L["increases attack power by %s and spell damage and healing by up to %s"] = { { Stats.GenericAttackPower, }, { Stats.SpellPower, }, } -- s1304759
+L["aumenta un %s% tu velocidad de ataque y %s p. el daño físico que infliges durante %s min"] = { false, { Stats.AverageWeaponDamage, }, false, } -- s1303979
+L["aumenta un %s% la probabilidad de golpe crítico de los hechizos y ataques, aumenta %s p. el poder de ataque y aumenta hasta %s p. el daño y la sanación con hechizos durante %s h"] = { false, { Stats.GenericAttackPower, }, { Stats.SpellPower, }, false, } -- s1304452
+L["aumenta los puntos de salud en %s. %s% de celeridad a los ataques cuerpo a cuerpo. %s p. de regeneración de maná cada %s s"] = { { Stats.Health, }, { Stats.SpellHaste, }, { Stats.GenericManaRegen, }, false, } -- s1304594
+L["aumenta los puntos de salud en %s. %s% de celeridad a todos los hechizos y ataques. %s p. de regeneración de maná cada %s s"] = { { Stats.Health, }, { Stats.SpellHaste, }, { Stats.GenericManaRegen, }, false, } -- s1304678
+L["aumenta un %s% la probabilidad de golpe crítico con un ataque cuerpo a cuerpo, a distancia o con hechizos, y aumenta %s p. todos los atributos durante %s h"] = { false, { Stats.AllStats, }, false, } -- s1304690
+L["aumenta %s p. el poder de ataque y un máximo de %s p. el daño con hechizos y la sanación"] = { { Stats.GenericAttackPower, }, { Stats.SpellPower, }, } -- s1304759
+L["los ojos de kargra ven más allá de los reinos mortales, lo que reduce un %s% su probabilidad de golpear con ataques"] = { { Stats.MeleeHit, Stats.RangedHit, }, reduction = true } -- s1305855
 L["aumenta hasta %s p. la sanación realizada y hasta %s p. el daño que infligen todos los hechizos y efectos mágicos. el efecto se duplica por la noche"] = { { Stats.HealingPower, }, { Stats.SpellDamage, }, } -- s1306158
 L["reduce %s p. la resistencia al fuego del objetivo"] = { { Stats.FirePenetration, }, } -- s1306572
 L["reduce %s p. la resistencia a la escarcha del objetivo"] = { { Stats.FrostPenetration, }, } -- s1306580
 L["restaura %s p. de maná cada %s s en páramos"] = { { Stats.GenericManaRegen, }, false, } -- s1306632
 L["aumenta hasta %s p. la sanación realizada y hasta %s p. el daño que infligen todos los efectos y hechizos mágicos en áreas montañosas"] = { { Stats.HealingPower, }, { Stats.SpellDamage, }, } -- s1306699
 L["aumenta hasta %s p. la sanación realizada y hasta %s p. el daño que infligen todos los efectos y hechizos mágicos en áreas nevadas"] = { { Stats.HealingPower, }, { Stats.SpellDamage, }, } -- s1306905
-L["increases spirit by %s"] = { { Stats.Spirit, }, } -- s1307068
+L["aumenta %s p el espíritu"] = { { Stats.Spirit, }, } -- s1307068
 L["aumenta hasta %s p. la sanación realizada y hasta %s p. el daño que infligen todos los efectos y hechizos mágicos en áreas embrujadas"] = { { Stats.HealingPower, }, { Stats.SpellDamage, }, } -- s1307334
 L["tu fuerza aumenta %s p. mientras el inventario está lleno"] = { { Stats.Strength, }, } -- s1307762
 L["aumenta hasta %s p. la sanación realizada y hasta %s p. el daño que infligen todos los efectos y hechizos mágicos. el efecto se duplica durante el día"] = { { Stats.HealingPower, }, { Stats.SpellDamage, }, } -- s1308023
-L["healing increased by up to %s and damage done by up to %s for all magical spells and effects"] = { { Stats.HealingPower, }, { Stats.SpellDamage, }, } -- s1308024
 L["aumenta hasta %s p. el daño y la sanación de los hechizos y efectos mágicos. el efecto se duplica en áreas nevadas"] = { { Stats.SpellPower, }, } -- s1308351
 L["restaura %s p. de maná cada %s s en áreas de bosques y praderas"] = { { Stats.GenericManaRegen, }, false, } -- s1308531
 L["maldice a un objetivo y reduce %s p. el daño que inflige durante %s min"] = { { Stats.AverageWeaponDamage, }, false, reduction = true } -- s1308704
@@ -1264,21 +1180,20 @@ L["aumenta %s p. el poder de ataque durante %s s. el efecto se duplica contra de
 L["aumenta la velocidad de ataque a distancia un %s%"] = { { Stats.RangedHaste, }, } -- s1309761
 L["aumenta %s p. el daño sagrado con hechizos durante %s min"] = { { Stats.HolyDamage, }, false, } -- s1310077
 L["transforma a un enemigo aleatorio en un radio de %s m en un sátiro durante %s min s. provoca que hable en demoníaco y reduce un %s% su velocidad de lanzamiento"] = { false, false, { Stats.SpellHaste, }, reduction = true } -- s1310285
-L["aumenta %s p. la armadura de un objetivo aliado, %s p. todos los atributos y %s p. todas las resistencias durante %s min"] = { { Stats.Armor, }, { Stats.AllStats, }, false, false, } -- s1310503
-L["increases your pet's chance to dodge by %s% and decreases the time between your pet's attacks by %s% for %s s"] = { { Stats.Dodge, }, false, false, } -- s1310612
-L["increases intellect by %s at night"] = { { Stats.Intellect, }, } -- s1315330
-L["increases your chance to hit with your off hand weapon by %s%"] = { { Stats.MeleeHit, Stats.RangedHit, }, } -- s1311022
-L["curses the target for %s min, reducing magic resistances by %s and increasing magic damage taken by %s%. only one curse per warlock can be active on any one target"] = { false, { Stats.FireResistance, Stats.NatureResistance, Stats.FrostResistance, Stats.ShadowResistance, Stats.ArcaneResistance, }, false, reduction = true } -- s1311676
-L["reduces the target enemy's attack power by %s for %s s"] = { { Stats.GenericAttackPower, }, false, reduction = true } -- s1315767
-L["increase your agility by %s for %s s. if there is an elemental nearby, gain an additional %s"] = { { Stats.Agility, }, false, { Stats.Agility, }, } -- s1315878
+L["aumenta un %s% la probabilidad de esquivar de tu mascota y reduce un %s% el tiempo entre sus ataques durante %s s"] = { { Stats.Dodge, }, false, false, } -- s1310612
+L["aumenta un %s% la probabilidad de golpear con tu arma de mano izquierda"] = { { Stats.MeleeHit, Stats.RangedHit, }, } -- s1311022
+L["maldice al objetivo durante %s min, lo que reduce %s p. las resistencias a la magia y aumenta un %s% el daño mágico que recibe. un brujo solo puede tener una maldición activa a la vez sobre un mismo objetivo"] = { false, { Stats.FireResistance, Stats.NatureResistance, Stats.FrostResistance, Stats.ShadowResistance, Stats.ArcaneResistance, }, false, reduction = true } -- s1311676
+L["el intelecto aumenta %s p. por la noche"] = { { Stats.Intellect, }, } -- s1315330
+L["reduce %s p. el poder de ataque del enemigo objetivo durante %s s"] = { { Stats.GenericAttackPower, }, false, reduction = true } -- s1315767
+L["aumenta %s p. tu agilidad durante %s s. si hay un elemental cerca, obtienes %s p. más"] = { { Stats.Agility, }, false, { Stats.Agility, }, } -- s1315878
 L["tus hechizos perforan %s resistencias mágicas. obtienes %s p. más de perforación con hechizos en áreas de bosques y praderas"] = { { Stats.SpellPenetration, }, { Stats.SpellPenetration, }, } -- s1315969
 L["aumenta %s p. todas las resistencias. obtienes %s p. más de todas las resistencias en áreas de bosques y praderas"] = { { Stats.FireResistance, Stats.NatureResistance, Stats.FrostResistance, Stats.ShadowResistance, Stats.ArcaneResistance, }, { Stats.FireResistance, Stats.NatureResistance, Stats.FrostResistance, Stats.ShadowResistance, Stats.ArcaneResistance, }, } -- s1315989
 L["restaura %s p. de maná cada %s s. restaura %s p. más de maná cada %s s en áreas de bosques y praderas"] = { { Stats.GenericManaRegen, }, false, { Stats.GenericManaRegen, }, false, } -- s1316053
-L["kicks up dust, inflicting %s physical damage to enemies within %s yds and reducing hit chance with attacks by %s%"] = { false, false, { Stats.MeleeHit, Stats.RangedHit, }, reduction = true } -- s1316382
-L["reduces the movement speed of an enemy by %s%, and reduces all physical and magical damage it deals by %s"] = { false, { Stats.SpellDamage, }, reduction = true } -- s1316489
+L["levanta una polvareda que inflige %s p. de daño físico a los enemigos que están en un radio de %s m y reduce un %s% la probabilidad de golpear con ataques"] = { false, false, { Stats.MeleeHit, Stats.RangedHit, }, reduction = true } -- s1316382
 L["probabilidad de enfurecerse con un golpe cuerpo a cuerpo, lo cual aumenta la fuerza %s p. durante %s s"] = { { Stats.Strength, }, false, ignoreSum = true } -- s1317039
-L["increases strength by %s"] = { { Stats.Strength, }, } -- s1317040
+L["aumenta %s p. la fuerza"] = { { Stats.Strength, }, } -- s1317040
 L["%s p. de poder de ataque. el efecto se triplica en áreas de bosques y praderas"] = { { Stats.GenericAttackPower, }, } -- s1318000
+L["aumenta %s p la fuerza"] = { { Stats.Strength, }, } -- s1318070
 L["aumenta %s p. la fuerza cuando estás bajo los efectos de un sangrado"] = { { Stats.Strength, }, } -- s1318084
 L["aumenta hasta %s p. el daño y la sanación de los hechizos y efectos mágicos. el efecto se duplica en marismas y pantanos"] = { { Stats.SpellPower, }, } -- s1318326
 L["%s p. de poder de ataque. en áreas embrujadas, obtiene %s p. más de poder de ataque"] = { { Stats.GenericAttackPower, }, { Stats.GenericAttackPower, }, } -- s1318328
@@ -1295,19 +1210,22 @@ L["aumenta la probabilidad de golpe con hechizos de la criatura objetivo un %s%.
 L["aumenta la fuerza en %s p. durante %s s"] = { { Stats.Strength, }, false, } -- s1319382
 L["aumenta un %s% la celeridad de la criatura objetivo. ¡y se acumula!"] = { { Stats.SpellHaste, }, } -- s1319446
 L["aumenta hasta %s p. la sanación realizada y hasta %s p. el daño que infligen todos los hechizos y efectos mágicos. el efecto se duplica en bastiones y ciudades"] = { { Stats.HealingPower, }, { Stats.SpellDamage, }, } -- s1320330
+L["aumenta un %s% tu probabilidad de golpear con ataques de la mano izquierda"] = { { Stats.MeleeHit, Stats.RangedHit, }, } -- s1323963
+L["aumenta $%s p. el aguante"] = { { Stats.Stamina, }, } -- s1324308
+L["recibir daño te otorga una probabilidad alta de aumentar %s p. tu aguante durante %s s. se acumula hasta %s veces"] = { { Stats.Stamina, }, false, false, ignoreSum = true } -- s1324309
+L["inflige %s p. de daño físico y aumenta %s p. todas las estadísticas"] = { false, { Stats.AllStats, }, } -- s1325508
 L["reduce %s p. el intelecto de los enemigos cercanos durante %s min"] = { { Stats.Intellect, }, false, reduction = true } -- s8267
 L["reduce la velocidad de lanzamiento de un enemigo un %s% durante %s min"] = { { Stats.SpellHaste, }, false, reduction = true } -- s8272
-L["encanta de forma permanente una capa para que otorgue %s p. más de armadura"] = { { Stats.Armor, }, } -- s13746
 L["aumenta %s p. el daño con hechizos durante %s h"] = { { Stats.SpellDamage, }, false, } -- s17539
 L["aumenta %s p. la agilidad durante %s min"] = { { Stats.Agility, }, false, } -- s18192
 L["reduce %s p. el daño físico que inflige un enemigo durante %s s. un brujo solo puede tener una maldición activa sobre cada objetivo"] = { { Stats.AverageWeaponDamage, }, false, reduction = true } -- s18267
-L["aumenta la armadura %s p. durante %s s"] = { { Stats.Armor, }, false, } -- s18826
 L["daño infligido por el objetivo reducido %s p. durante %s s"] = { { Stats.AverageWeaponDamage, }, false, reduction = true } -- s20006
 L["aumenta %s p. el poder de ataque cuerpo a cuerpo de los miembros del grupo cercanos durante %s s"] = { { Stats.AverageWeaponDamage, }, false, } -- s24438
-L["reduce el poder de ataque cuerpo a cuerpo y a distancia de los enemigos cercanos %s p. durante %s min"] = { { Stats.GenericAttackPower, }, false, reduction = true } -- s28342
 L["aumenta %s p. tu poder de ataque cuerpo a cuerpo y tu tamaño durante %s h"] = { { Stats.AttackPower, }, false, } -- s473469
 L["reduce %s p. todos los atributos de los enemigos cercanos durante %s s"] = { { Stats.AllStats, }, false, reduction = true } -- s1223265
+L["reduce %s p. el poder de ataque del objetivo durante %s s"] = { { Stats.GenericAttackPower, }, false, reduction = true } -- s1297082
 L["restaura %s p. de maná cada %s s a tu diablillo"] = { { Stats.GenericManaRegen, }, false, } -- s1302363
+L["reduce el poder de ataque cuerpo a cuerpo y a distancia de los enemigos cercanos %s p. durante %s min"] = { { Stats.GenericAttackPower, }, false, reduction = true } -- s28342
 L["te enseña a encantar de forma permanente una pieza de armadura de torso para que otorgue %s de intelecto"] = { { Stats.Intellect, }, } -- i6342
 L["te enseña a encantar de forma permanente una pieza de armadura de torso para aumentar el espíritu %s p. durante %s minutos"] = { { Stats.Spirit, }, false, } -- i6222
 L["te enseña a encantar de forma permanente un brazal para que otorgue %s de espíritu"] = { { Stats.Spirit, }, } -- i6344
@@ -1367,9 +1285,9 @@ L["te enseña a encantar de forma permanente un arma cuerpo a cuerpo de dos mano
 L["te enseña a encantar de forma permanente un arma cuerpo a cuerpo de dos manos para que aumente %s p. la fuerza"] = { { Stats.Strength, }, } -- i249523
 L["te enseña a encantar de forma permanente un arma cuerpo a cuerpo de dos manos para que aumente hasta %s p. el daño con hechizos y la sanación"] = { { Stats.SpellPower, }, } -- i249525
 L["te enseña a encantar de forma permanente un arma cuerpo a cuerpo de dos manos para que aumente hasta %s p. el poder de sanación y hasta %s p. el daño con hechizos"] = { { Stats.HealingPower, }, { Stats.SpellDamage, }, } -- i249526
-L["te enseña a encantar de forma permanente un arma de mano izquierda para que otorgue %s de intelecto"] = { { Stats.Intellect, }, } -- i274391
-L["te enseña a encantar de forma permanente un arma de mano izquierda para que otorgue %s p. de espíritu"] = { { Stats.Spirit, }, } -- i274392
-L["te enseña a encantar de forma permanente un arma de mano izquierda para que otorgue %s p. de intelecto y %s p. de espíritu"] = { { Stats.Intellect, }, { Stats.Spirit, }, } -- i274393
+L["te enseña a encantar de forma permanente un objeto de mano izquierda para que otorgue %s de intelecto"] = { { Stats.Intellect, }, } -- i274391
+L["te enseña a encantar de forma permanente un objeto de mano izquierda para que otorgue %s de espíritu"] = { { Stats.Spirit, }, } -- i274392
+L["te enseña a encantar de forma permanente un objeto de mano izquierda para que otorgue %s de intelecto y %s de espíritu"] = { { Stats.Intellect, }, { Stats.Spirit, }, } -- i274393
 L["te enseña a encantar de forma permanente un arma cuerpo a cuerpo de dos manos para que aumente %s p. el poder con hechizos"] = { { Stats.SpellPower, }, } -- i274394
 L["te enseña a encantar de forma permanente guantes para que otorguen %s p. de fuerza"] = { { Stats.Strength, }, } -- i274398
 L["te enseña a encantar de forma permanente capas para que otorguen %s p. de agilidad"] = { { Stats.Agility, }, } -- i274399
@@ -1438,7 +1356,7 @@ L["maná %s"] = { { Stats.Mana, }, } -- e1483
 L["ps %s"] = { { Stats.Health, }, } -- e1503
 L["maná/rf %s/%s"] = { { Stats.Mana, }, { Stats.FireResistance, }, } -- e1523
 L["ps/rf %s/%s"] = { { Stats.Health, }, { Stats.FireResistance, }, } -- e1524
-L["pa/rf %s/%s"] = { { Stats.Armor, }, { Stats.FireResistance, }, } -- e1525
+L["pa/rf %s/%s"] = { false, { Stats.FireResistance, }, } -- e1525
 L["frz/rf %s/%s"] = { { Stats.Strength, }, { Stats.FireResistance, }, } -- e1526
 L["agn/rf %s/%s"] = { { Stats.Stamina, }, { Stats.FireResistance, }, } -- e1527
 L["agi/rf %s/%s"] = { { Stats.Agility, }, { Stats.FireResistance, }, } -- e1528
