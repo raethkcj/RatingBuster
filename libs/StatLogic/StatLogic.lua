@@ -28,8 +28,8 @@ do
 		tip.sides.left[i] = _G[leftText .. i]
 		tip.sides.right[i] = _G[rightText .. i]
 		if not tip.sides.left[i] then
-			tip.sides.left[i] = tip:CreateFontString()
-			tip.sides.right[i] = tip:CreateFontString()
+			tip.sides.left[i] = tip:CreateFontString(nil, "ARTWORK", "GameTooltipText")
+			tip.sides.right[i] = tip:CreateFontString(nil, "ARTWORK", "GameTooltipText")
 			tip:AddFontStrings(tip.sides.left[i], tip.sides.right[i])
 		end
 	end
