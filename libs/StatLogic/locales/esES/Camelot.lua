@@ -1052,7 +1052,7 @@ L["añade una mirilla permanente a un arco o arma de fuego que aumenta %s p. el 
 L["encanta de forma permanente unos brazales para que proporcionen %s p. de agilidad"] = { { Stats.Agility, }, } -- s1248500
 L["aumenta un %s% el tiempo entre los ataques de los enemigos cercanos, reduce un %s% su velocidad de movimiento y reduce un %s% su velocidad de lanzamiento de hechizos durante %s s"] = { false, false, { Stats.SpellHaste, }, false, reduction = true } -- s1236220
 L["añade una mira permanente a un arco o arma de fuego que aumenta un %s% su probabilidad de golpear"] = { { Stats.MeleeHit, Stats.RangedHit, }, } -- s1237064
-L["aumenta un %s% tu celeridad con hechizos y hasta %s p. el daño infligido por tus hechizos de las sombras"] = { { Stats.SpellHaste, }, { Stats.FireDamage, Stats.ShadowDamage, }, } -- s1237162
+L["aumenta un %s% tu celeridad con hechizos y hasta %s p. el daño infligido por tus hechizos de las sombras"] = { { Stats.SpellHaste, }, { Stats.ShadowDamage, }, } -- s1237162
 L["encanta de forma permanente unos brazales para otorgar %s p. de agilidad"] = { { Stats.Agility, }, } -- s1248497
 L["aumenta hasta en %s p. el daño con hechizos durante %s min"] = { { Stats.SpellDamage, }, false, } -- s1245244
 L["aumenta %s p. el daño físico durante %s min"] = { { Stats.AverageWeaponDamage, }, false, } -- s1245249

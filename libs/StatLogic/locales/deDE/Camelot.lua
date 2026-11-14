@@ -1046,7 +1046,7 @@ L["erhöht die stärke des trägers %s sek. lang um %s"] = { false, { Stats.Stre
 L["erhöht die kritische trefferchance aller eurer angriffe und zauber um %s%"] = { { Stats.MeleeCrit, Stats.RangedCrit, Stats.SpellCrit, }, } -- s1232052
 L["gewährt gruppenmitgliedern in der nähe %s sek. lang %s bonusrüstung. spieler können pro paladin immer nur jeweils eine aura besitzen"] = { false, { Stats.Armor, }, } -- s1233344
 L["erhöht die zeit zwischen angriffen in der nähe befindlicher feinde um %s%, verlangsamt ihre bewegungsgeschwindigkeit um %s% und verringert zusätzlich ihr zaubertempo um %s%. hält %s sek. lang an"] = { false, false, { Stats.SpellHaste, }, false, reduction = true } -- s1236220
-L["erhöht euer zaubertempo um %s% und erhöht den von euren schattenzaubern verursachten schaden um bis zu %s"] = { { Stats.SpellHaste, }, { Stats.FireDamage, Stats.ShadowDamage, }, } -- s1237162
+L["erhöht euer zaubertempo um %s% und erhöht den von euren schattenzaubern verursachten schaden um bis zu %s"] = { { Stats.SpellHaste, }, { Stats.ShadowDamage, }, } -- s1237162
 L["verzaubert armschienen dauerhaft, sodass sie die intelligenz um %s erhöhen"] = { { Stats.Intellect, }, } -- s1248458
 L["verzaubert armschienen dauerhaft, sodass sie die heilzauber des trägers um bis zu %s und schadenszauber um bis zu %s erhöhen"] = { { Stats.HealingPower, }, { Stats.SpellDamage, }, } -- s1248459
 L["verzaubert armschienen dauerhaft, sodass sie die beweglichkeit des trägers um %s erhöhen"] = { { Stats.Agility, }, } -- s1248460

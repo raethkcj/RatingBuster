@@ -13,7 +13,6 @@ W["so fast!"] = { [Stats.RangedHaste] = 150, [Stats.MeleeHit] = -75, [Stats.Rang
 W["your spirits are lifted"] = { [Stats.Spirit] = 50, } -- s25947
 W["wish a friend some season's greetings!"] = { [Stats.Spirit] = 20, } -- s26004
 W["raise a toast to your friend!"] = { [Stats.Stamina] = 10, [Stats.Stamina] = 10, } -- s29006
-W["combines a bundle of cards, a sack of homemade bread and a stormwind pledge collection into a stormwind gift collection"] = { [Stats.Intellect] = 30, } -- s27664
 W["combines a case of homebrew, an ironforge pledge collection and a parcel of cards into an ironforge gift collection"] = { [Stats.Stamina] = 30, } -- s27665
 W["combines a box of woodcrafts, a darnassus pledge collection and a stack of cards into a darnassus gift collection"] = { [Stats.Agility] = 30, } -- s27666
 W["combines a box of fresh pies, an orgrimmar pledge collection and a package of cards into an orgrimmar gift collection"] = { [Stats.Agility] = 30, } -- s27669
@@ -38,6 +37,7 @@ W["a nutritious meal has made you well fed, increasing your fishing skill"] = { 
 W["a tasty drink has made you well fed, increasing your spirit"] = { [Stats.Spirit] = 1, } -- s1249926
 W["a tasty drink has made you well fed, increasing your healing power"] = { [Stats.HealingPower] = 1, } -- s1249927
 W["if an enemy strikes the imbiber, the attacker is struck by a swift axe, pinning them to the ground temporarily"] = { [Stats.FireResistance] = 100, [Stats.NatureResistance] = 100, [Stats.FrostResistance] = 100, [Stats.ShadowResistance] = 100, [Stats.ArcaneResistance] = 100, } -- s1309718
+W["combines a bundle of cards, a sack of homemade bread and a stormwind pledge collection into a stormwind gift collection"] = { [Stats.Intellect] = 30, } -- s27664
 W["sundered"] = { [Stats.AverageWeaponDamage] = -10, } -- e27
 W["minor wizard oil"] = { [Stats.SpellPower] = 8, } -- e2623
 W["minor mana oil"] = { [Stats.GenericManaRegen] = 5, [Stats.HealingPower] = 10, } -- e2624
@@ -84,7 +84,6 @@ L["cripples the target, reducing movement speed by %s%, increasing time between 
 L["the druid roars, decreasing nearby enemies' melee attack power by %s.  lasts %s sec"] = { { Stats.AttackPower, }, false, reduction = true } -- s99
 L["decreases the target's agility by %s"] = { { Stats.Agility, }, reduction = true } -- s474
 L["protects the caster, increasing armor by %s and increases health regeneration by %s health per %s sec. for %s min"] = { false, { Stats.HealthRegen, }, false, false, } -- s687
-L["physical damage caused by the target is reduced by %s for %s min. only one curse per warlock can be active on any one target"] = { { Stats.AverageWeaponDamage, }, false, reduction = true } -- s702
 L["protects the caster, increasing armor by %s, shadow resistance by %s and increases health regeneration by %s health per %s sec. for %s min"] = { false, { Stats.ShadowResistance, }, { Stats.HealthRegen, }, false, false, } -- s706
 L["increases strength by %s and does %s damage to you every %s sec for %s min"] = { { Stats.Strength, }, false, false, false, } -- s806
 L["instantly heals %s damage.  also restores %s mana over %s sec.  must remain seated while drinking"] = { false, { Stats.GenericManaRegen, }, false, } -- s833
@@ -236,7 +235,6 @@ L["reduces an enemy's chance to hit with attacks by %s% for %s sec"] = { { Stats
 L["increases your chance to critical hit with shadow magic by %s%"] = { { Stats.SpellCrit, }, } -- s5896
 L["this weak beer increases your spirit by %s and decreases your stamina by %s for %s min"] = { { Stats.Spirit, }, { Stats.Stamina, }, false, } -- s5909
 L["decreases target's chance to hit with attacks by %s% for %s sec"] = { { Stats.MeleeHit, Stats.RangedHit, }, false, reduction = true } -- s5917
-L["increases your chance to parry by an additional %s% for each combo point.  lasts %s sec"] = { { Stats.Parry, }, false, } -- s5934
 L["increases your damage with throwing weapons by %s"] = { { Stats.AverageWeaponDamage, }, } -- s5952
 L["increases your damage with crossbows by %s"] = { { Stats.AverageWeaponDamage, }, } -- s5969
 L["increases your chance to critical with crossbows by %s%"] = { { Stats.MeleeCrit, Stats.RangedCrit, }, } -- s5970
@@ -246,7 +244,6 @@ L["increases your damage with wands by %s"] = { { Stats.SpellDamage, }, } -- s60
 L["increases your chance to get a critical with wands by %s%"] = { { Stats.MeleeCrit, Stats.RangedCrit, }, } -- s6094
 L["increases your intellect by %s and decreases your stamina by %s for %s min"] = { { Stats.Intellect, }, { Stats.Stamina, }, false, } -- s6114
 L["increases your resistance to all magic by %s and allows %s% of your mana regeneration to continue while casting.  only one type of armor spell can be active on the mage at any time.  lasts %s min"] = { { Stats.FireResistance, Stats.NatureResistance, Stats.FrostResistance, Stats.ShadowResistance, Stats.ArcaneResistance, }, false, false, } -- s6117
-L["increases the caster's movement speed by %s% for %s sec. and causes it to inflict an additional %s damage on its first attack"] = { false, false, { Stats.AverageWeaponDamage, }, } -- s6268
 L["increases party members' stamina by %s"] = { { Stats.Stamina, }, } -- s6307
 L["increases the damage done by the pet by %s"] = { { Stats.AverageWeaponDamage, }, } -- s6311
 L["increases the pet's spirit by %s.  must be trained using beast training"] = { { Stats.Spirit, }, } -- s6328
@@ -332,7 +329,6 @@ L["gives %s additional armor to nearby party members for %s min. players may onl
 L["increases the caster's attack speed by %s% and the physical damage it deals by %s for %s min"] = { false, { Stats.AverageWeaponDamage, }, false, } -- s8269
 L["physical damage caused by the target is reduced by %s for %s min"] = { { Stats.AverageWeaponDamage, }, false, reduction = true } -- s8277
 L["increases the physical damage dealt by an ally by %s for %s min"] = { { Stats.AverageWeaponDamage, }, false, } -- s8365
-L["attack power increased by %s. granted %s extra attack"] = { { Stats.AttackPower, }, false, } -- s8516
 L["damage caused by the target is reduced by %s for %s min"] = { { Stats.AverageWeaponDamage, }, false, reduction = true } -- s8552
 L["weakens the target enemy, reducing melee attack power by %s and reducing the effectiveness of any healing by %s%. lasts %s min"] = { { Stats.AttackPower, }, false, false, reduction = true } -- s9035
 L["increases the melee attack power of nearby party members by %s for %s min"] = { { Stats.AttackPower, }, false, } -- s9128
@@ -461,7 +457,6 @@ L["increases resistance to all schools of magic by %s"] = { { Stats.FireResistan
 L["reduces the mana cost of your healing spells by %s% and improves your chance to hit by %s%"] = { false, { Stats.MeleeHit, Stats.RangedHit, Stats.SpellHit, }, } -- s16179
 L["increases an enemy's attack power by %s, but reduces its armor by %s for %s min. cursed enemies will ignore fear effects and refuse to flee from combat. only one curse per warlock can be active on any one target"] = { { Stats.AttackPower, }, false, false, } -- s16231
 L["increases your chance to block attacks with a shield by %s% and increases the amount blocked by %s%"] = { { Stats.BlockChance, }, false, } -- s16253
-L["increases your chance to dodge by an additional %s%"] = { { Stats.Dodge, }, } -- s16254
 L["increases your chance to dodge by %s% for %s sec"] = { { Stats.Dodge, }, false, } -- s16321
 L["increase frost resistance by %s for %s min"] = { { Stats.FrostResistance, }, false, } -- s16325
 L["increases fire resistance by %s for %s min"] = { { Stats.FireResistance, }, false, } -- s16326
@@ -550,7 +545,6 @@ L["increases chance to block by %s% for %s sec, and deals %s holy damage for eac
 L["increases your pet's attack power by %s"] = { { Stats.GenericAttackPower, }, } -- s20988
 L["%s ranged attack power"] = { { Stats.RangedAttackPower, }, } -- s21013
 L["sends a shadowy bolt at the enemy causing %s shadow damage and lowering all stats by %s for %s sec"] = { false, { Stats.AllStats, }, false, reduction = true } -- s21151
-L["your attacks ignore %s of your enemies' armor for %s sec. this effect stacks up to %s times"] = { { Stats.ArmorPenetration, }, false, false, } -- s21153
 L["restores %s health and %s mana each second while in the proximity of a commander"] = { { Stats.HealthRegen, }, false, } -- s21172
 L["restores %s health and %s mana each second while in the proximity of a lieutenant"] = { { Stats.HealthRegen, }, false, } -- s21174
 L["decreases your chance to parry an attack by %s%"] = { { Stats.Parry, }, reduction = true } -- s21352
@@ -650,7 +644,6 @@ L["the wolf howls, increasing the melee attack power of all party or raid member
 L["increases the chance to hit with spells by %s% for %s sec"] = { { Stats.SpellHit, }, false, } -- s24610
 L["%s attack power in cat, bear, and dire bear forms only"] = { { Stats.AttackPower, }, } -- s24694
 L["restores %s health over %s sec.  must remain seated while eating.  if you spend at least %s seconds eating you will become well fed and gain %s strength for %s min"] = { false, false, false, { Stats.Strength, }, false, ignoreSum = true } -- s24800
-L["increases spell critical strike chance by %s%"] = { { Stats.SpellCrit, }, } -- s24907
 L["increases healing done by magical spells and effects by up to %s for %s sec"] = { { Stats.HealingPower, }, false, } -- s24998
 L["permanently enchant gloves to increase shadow damage by up to %s"] = { { Stats.ShadowDamage, }, } -- s25073
 L["permanently enchant gloves to increase frost damage by up to %s"] = { { Stats.FrostDamage, }, } -- s25074
@@ -659,7 +652,6 @@ L["permanently enchant gloves to increase the caster's healing spells by up to %
 L["permanently enchant gloves to increase agility by %s"] = { { Stats.Agility, }, } -- s25080
 L["permanently enchant a cloak to give %s nature resistance"] = { { Stats.NatureResistance, }, } -- s25082
 L["permanently enchant a cloak to give a %s% chance to dodge"] = { { Stats.Dodge, }, } -- s25086
-L["increases damage and healing done by magical spells and effects by up to %s.   also increases chance to get a critical hit with spells by %s%"] = { { Stats.SpellPower, }, { Stats.SpellCrit, }, } -- s25113
 L["restores %s mana per %s sec and increases healing by up to %s"] = { { Stats.GenericManaRegen, }, false, { Stats.HealingPower, }, } -- s25114
 L["restores %s mana per %s sec and increases healing done by %s"] = { { Stats.GenericManaRegen, }, false, { Stats.HealingPower, }, } -- s25116
 L["while applied to target weapon it increases spell damage and healing by up to %s. lasts for %s minutes"] = { { Stats.SpellPower, }, false, } -- s25117
@@ -683,7 +675,6 @@ L["decreases the magical resistances of your spell targets by %s"] = { { Stats.S
 L["your lightning bolt, chain lightning, and shock spells have a %s% chance to grant up to %s nature damage to spells for %s sec"] = { false, { Stats.NatureDamage, }, false, ignoreSum = true } -- s26119
 L["increases damage done by nature spells and effects by up to %s for %s sec"] = { { Stats.NatureDamage, }, false, } -- s26121
 L["grants %s% increased spell hit chance for %s sec when one of your spells is resisted"] = { { Stats.SpellHit, }, false, ignoreSum = true } -- s26128
-L["increases spell hit chance by %s% for %s sec. stacks up to %s times"] = { { Stats.SpellHit, }, false, false, } -- s26129
 L["increases damage done by magical spells and effects by up to %s, and decreases the magical resistances of your spell targets by %s for %s sec"] = { { Stats.SpellDamage, }, { Stats.SpellPenetration, }, false, } -- s26166
 L["gives a chance on melee or ranged attack to apply an armor penetration effect on you for %s sec, lowering the target's physical armor by %s to your own attacks. the armor penetration effect can be applied up to %s times"] = { false, { Stats.ArmorPenetration, }, false, ignoreSum = true } -- s26480
 L["inflicts %s% weapon damage and leaves the target unbalanced, reducing their defense skill by %s for %s sec"] = { false, { Stats.Defense, }, false, reduction = true } -- s26613
@@ -837,6 +828,7 @@ L["increases damage done by spells by up to %s, healing done by up to %s, and ma
 L["your holy damage spells cause you to gain %s increased damage and healing power for %s sec"] = { { Stats.HealingPower, }, false, ignoreSum = true } -- s449921
 L["improves your chance to hit with all spells and attacks by %s% while in bear or dire bear forms"] = { { Stats.MeleeHit, Stats.RangedHit, Stats.SpellHit, }, } -- s449926
 L["dealing fire damage causes you to gain %s attack power, stacking up to %s times. lasts %s sec"] = { { Stats.AttackPower, }, false, false, ignoreSum = true } -- s449931
+L["increases spell critical strike chance by %s%"] = { { Stats.SpellCrit, }, } -- s449933
 L["increases damage and healing done by nature spells and effects by up to %s"] = { { Stats.NatureDamage, Stats.HealingPower, }, } -- s449934
 L["chance on spell cast to increase your nature spell damage and healing by up to %s for %s sec"] = { { Stats.NatureDamage, }, false, ignoreSum = true } -- s449935
 L["power infuses the target's party, increasing their stamina by %s for %s hour"] = { { Stats.Stamina, }, false, } -- s450086
@@ -958,7 +950,7 @@ L["agility increased by %s for %s sec"] = { { Stats.Agility, }, false, } -- s123
 L["increases the wielder's strength by %s for %s sec"] = { { Stats.Strength, }, false, } -- s1231548
 L["improves your chance to get a critical strike with all spells and attacks by %s%"] = { { Stats.MeleeCrit, Stats.RangedCrit, Stats.SpellCrit, }, } -- s1232052
 L["gives %s additional armor to nearby party members for %s sec. players may only have one aura on them per paladin at any one time"] = { { Stats.Armor, }, false, } -- s1233344
-L["increases your spell haste by %s% and increases damage done by your shadow spells by up to %s"] = { { Stats.SpellHaste, }, { Stats.FireDamage, Stats.ShadowDamage, }, } -- s1237162
+L["increases your spell haste by %s% and increases damage done by your shadow spells by up to %s"] = { { Stats.SpellHaste, }, { Stats.ShadowDamage, }, } -- s1237162
 L["permanently enchant bracers so they increase the wearer's healing spells by up to %s and damage spells by up to %s"] = { { Stats.HealingPower, }, { Stats.SpellDamage, }, } -- s1248459
 L["permanently enchant a bracer so it increases the wearer's agility by %s"] = { { Stats.Agility, }, } -- s1248460
 L["permanently enchant bracers to give %s agility"] = { { Stats.Agility, }, } -- s1248497
@@ -1106,6 +1098,7 @@ L["stamina increased by $%s"] = { { Stats.Stamina, }, } -- s1324308
 L["taking damage has a high chance to increase your stamina by %s for %s sec, stacking up to %s times"] = { { Stats.Stamina, }, false, false, ignoreSum = true } -- s1324309
 L["inflict %s physical damage and increase all stats by %s"] = { false, { Stats.AllStats, }, } -- s1325508
 L["reduces an enemy's stamina by %s for %s min"] = { { Stats.Stamina, }, false, reduction = true } -- s8014
+L["increases the caster's movement speed by %s% for %s sec. and causes it to inflict an additional %s damage on its first attack"] = { false, false, { Stats.AverageWeaponDamage, }, } -- s8260
 L["reduces the intellect of nearby enemies by %s for %s min"] = { { Stats.Intellect, }, false, reduction = true } -- s8267
 L["reduces an enemy's casting speed by %s% for %s min"] = { { Stats.SpellHaste, }, false, reduction = true } -- s8272
 L["increases spell damage by up to %s for %s hour"] = { { Stats.SpellDamage, }, false, } -- s17539
@@ -1115,10 +1108,18 @@ L["damage caused by the target is reduced by %s for %s sec"] = { { Stats.Average
 L["increases intellect by %s for %s min"] = { { Stats.Intellect, }, false, } -- s22730
 L["increases the melee attack power of nearby party members by %s for %s sec"] = { { Stats.AverageWeaponDamage, }, false, } -- s24438
 L["heals yourself for %s%, and increases your maximum health by %s% for %s sec"] = { { Stats.Health, }, false, false, } -- s467498
+L["increases damage and healing done by magical spells and effects by up to %s.   also increases chance to get a critical hit with spells by %s%"] = { { Stats.SpellPower, }, { Stats.SpellCrit, }, } -- s471402
 L["increases your melee attack power by %s and size for %s hour"] = { { Stats.AttackPower, }, false, } -- s473469
 L["reduces all attributes of nearby enemies by %s for %s sec"] = { { Stats.AllStats, }, false, reduction = true } -- s1223265
 L["increases spirit by %s for %s sec"] = { { Stats.Spirit, }, false, } -- s1291103
 L["restores %s mana per %s sec to your imp"] = { { Stats.GenericManaRegen, }, false, } -- s1302363
+L["increases your chance to parry by an additional %s% for each combo point.  lasts %s sec"] = { { Stats.Parry, }, false, } -- s5934
+L["attack power increased by %s. granted %s extra attack"] = { { Stats.AttackPower, }, false, } -- s8516
+L["increases your chance to dodge by an additional %s%"] = { { Stats.Dodge, }, } -- s16254
+L["your attacks ignore %s of your enemies' armor for %s sec. this effect stacks up to %s times"] = { { Stats.ArmorPenetration, }, false, false, } -- s21153
+L["increases spell hit chance by %s% for %s sec. stacks up to %s times"] = { { Stats.SpellHit, }, false, false, } -- s26129
+L["physical damage caused by the target is reduced by %s for %s min. only one curse per warlock can be active on any one target"] = { { Stats.AverageWeaponDamage, }, false, reduction = true } -- s1108
+L["increases intellect by %s% for %s hour. this effect stacks up to %s times"] = { { Stats.Intellect, }, false, false, } -- s1327736
 L["increases your pet's critical strike chance by $%s%"] = { { Stats.MeleeCrit, Stats.RangedCrit, }, } -- s436689
 L["teaches you how to permanently enchant a piece of chest armor to give %s intellect"] = { { Stats.Intellect, }, } -- i6342
 L["teaches you how to temporarily imbue a piece of chest armor to give %s spirit for %s min"] = { { Stats.Spirit, }, false, } -- i6222

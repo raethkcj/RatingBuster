@@ -922,7 +922,7 @@ L["대상에게 일반 원거리 공격 사용 시 전투에 대비하여 %s초 
 L["%s초 동안 착용자의 힘이 %s만큼 증가합니다"] = { false, { Stats.Strength, }, } -- s1231548
 L["모든 주문과 공격의 주문 극대화 확률과 치명타 적중도가 %s%만큼 증가합니다"] = { { Stats.MeleeCrit, Stats.RangedCrit, Stats.SpellCrit, }, } -- s1232052
 L["%s초 동안 주위 파티원의 방어도가 %s만큼 상승합니다. 오라는 성기사마다 동시에 하나만 유지할 수 있습니다"] = { false, { Stats.Armor, }, } -- s1233344
-L["주문 가속이 %s%만큼, 암흑 주문의 공격력이 최대 %s만큼 증가합니다"] = { { Stats.SpellHaste, }, { Stats.FireDamage, Stats.ShadowDamage, }, } -- s1237162
+L["주문 가속이 %s%만큼, 암흑 주문의 공격력이 최대 %s만큼 증가합니다"] = { { Stats.SpellHaste, }, { Stats.ShadowDamage, }, } -- s1237162
 L["손목보호구에 영구적으로 마법을 부여해 착용자의 치유 주문 효과를 최대 %s만큼, 공격 주문 효과를 최대 %s만큼 증가시킵니다"] = { { Stats.HealingPower, }, { Stats.SpellDamage, }, } -- s1248459
 L["손목보호구에 영구적으로 마법을 부여해 착용자의 치유량을 최대 %s만큼, 공격력을 최대 %s만큼 증가시킵니다"] = { { Stats.HealingPower, }, { Stats.SpellDamage, }, } -- s1248498
 L["양손 근접 무기에 영구적으로 마법을 부여해 착용자의 힘을 %s만큼 증가시킵니다"] = { { Stats.Strength, }, } -- s1248511

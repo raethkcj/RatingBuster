@@ -407,7 +407,7 @@ class DatabaseTable {
 					let build: Build | undefined = await getLatestVersion(project)
 					do {
 						console.log(`Fetching ${fileName}.`)
-						const fetchUrl = `https://wago.tools/db2/${name}/csv?build=${build}&locale=${locale}`
+						const fetchUrl = `https://wago.tools/db2/${name}/csv?build=${build}&locale=${locale}&useHotfixes=1`
 						const response = await fetch(fetchUrl)
 						if (response.ok) {
 							const text = await response.text()

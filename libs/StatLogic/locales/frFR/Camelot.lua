@@ -1112,7 +1112,7 @@ L["augmente les dégâts infligés par les sorts et effets d’ombre de %s au ma
 L["réduit de %s % les chances que vos attaques soient esquivées ou parées"] = { { Stats.DodgeReduction, Stats.ParryReduction, }, } -- s1234807
 L["augmente le temps entre les attaques des ennemis proches de %s %, réduit leur vitesse de déplacement de %s % et réduit leur vitesse d’incantation de %s % pendant %s sec"] = { false, false, { Stats.SpellHaste, }, false, reduction = true } -- s1236220
 L["place définitivement une lunette de visée sur un arc ou une arme à feu, augmentant ses chances de toucher de %s %"] = { { Stats.MeleeHit, Stats.RangedHit, }, } -- s1237064
-L["augmente votre hâte des sorts de %s % et les dégâts infligés par vos sorts d’ombre de %s au maximum"] = { { Stats.SpellHaste, }, { Stats.FireDamage, Stats.ShadowDamage, }, } -- s1237162
+L["augmente votre hâte des sorts de %s % et les dégâts infligés par vos sorts d’ombre de %s au maximum"] = { { Stats.SpellHaste, }, { Stats.ShadowDamage, }, } -- s1237162
 L["augmente les dégâts des sorts de %s au maximum pendant %s min"] = { { Stats.SpellDamage, }, false, } -- s1245244
 L["augmente les dégâts physiques infligés de %s pendant %s min"] = { { Stats.AverageWeaponDamage, }, false, } -- s1245249
 L["enchante définitivement des brassards. ils confèrent un bonus de %s à l’intelligence"] = { { Stats.Intellect, }, } -- s1248458

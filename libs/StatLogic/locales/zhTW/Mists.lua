@@ -2190,6 +2190,9 @@ L["使敵人的護甲值降低%s點，並對其每%s秒造成%s點自然傷害�
 L["提高%s點護甲值，持續%s分鐘。"] = { { Stats.Armor, }, false, } -- s50502
 L["施法速度降低%s%，持續%s秒。"] = { { Stats.SpellHaste, }, false, reduction = true } -- s52430
 L["使敵人的攻擊間隔時間延長%s%，施法速度降低%s%，在被擊中時有%s%的機率對一名盟友散怖腐化傳染。持續%s分鐘。"] = { { Stats.MeleeHaste, }, { Stats.SpellHaste, }, false, false, reduction = true } -- s56707
+L["加速提高%s點，持續%s小時。"] = { { Stats.MeleeHasteRating, Stats.RangedHasteRating, Stats.SpellHasteRating, }, false, } -- s124151
+L["致命一擊提高%s點，持續%s小時。"] = { { Stats.MeleeCritRating, Stats.RangedCritRating, Stats.SpellCritRating, }, false, } -- s124212
+L["閃躲提高%s點，持續%s小時。"] = { { Stats.DodgeRating, }, false, } -- s124214
 L["在%s分鐘內恢復總計%s點法力。喝飲料時必須保持坐姿。"] = { false, { Stats.GenericManaRegen, }, } -- s64356
 L["以高溫衝擊周圍的鐵之傀儡，使其移動速度提高%s點，加速提高%s點。此效果最多可堆疊%s次。堆疊%s次之後，鐵之傀儡將會開始熔化。"] = { false, { Stats.MeleeHaste, }, false, false, } -- s65667
 L["對施法者面前%s碼錐形範圍內的敵人造成%s點冰霜傷害。此外，使目標的攻擊速度降低%s%，持續%s秒。"] = { false, false, { Stats.MeleeHaste, }, false, reduction = true } -- s70116
@@ -2203,9 +2206,6 @@ L["使半徑%s碼範圍內所有隊友的生命力上限提高%s點，持續%s�
 L["提高%s點致命一擊，持續%s分鐘。"] = { { Stats.MeleeCritRating, Stats.RangedCritRating, Stats.SpellCritRating, }, false, } -- s84378
 L["施法者的攻擊速度提高%s%，且其所造成的物理傷害提高%s%，持續%s分鐘。"] = { { Stats.MeleeHaste, }, false, false, } -- s86736
 L["使敵人的近戰攻擊與遠程攻擊間隔時間延長%s%、施法時間延長%s%以及移動速度降低%s%，持續%s秒。"] = { { Stats.SpellHaste, }, false, false, false, reduction = true } -- s110907
-L["加速提高%s點，持續%s小時。"] = { { Stats.MeleeHasteRating, Stats.RangedHasteRating, Stats.SpellHasteRating, }, false, } -- s124151
-L["致命一擊提高%s點，持續%s小時。"] = { { Stats.MeleeCritRating, Stats.RangedCritRating, Stats.SpellCritRating, }, false, } -- s124212
-L["閃躲提高%s點，持續%s小時。"] = { { Stats.DodgeRating, }, false, } -- s124214
 L["使目標的攻擊速度提高%s%和所造成的物理傷害提高%s%，持續%s秒。"] = { { Stats.MeleeHaste, }, false, false, } -- s135851
 L["使施法者的攻擊速度提高%s%，造成的所有傷害提高%s% ，持續%s秒。"] = { { Stats.MeleeHaste, }, false, false, } -- s144369
 L["耐力提高%s點，持續%s秒。"] = { { Stats.Stamina, }, false, } -- s147361
