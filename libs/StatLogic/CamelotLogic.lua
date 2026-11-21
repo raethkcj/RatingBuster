@@ -264,7 +264,7 @@ if addon.class == "DRUID" then
 		["ADD_MANA_REGEN_MOD_NORMAL_MANA_REGEN"] = {
 			-- Talent: Reflection
 			{
-				["trait"] = 104917,
+				["trait"] = 104920,
 				["rank"] = {
 					0.17, 0.33, 0.50,
 				},
@@ -305,7 +305,7 @@ if addon.class == "DRUID" then
 		["ADD_HEALING_MOD_INT"] = {
 			-- Talent: Natural Instinct
 			{
-				["trait"] = 134411,
+				["trait"] = 104950,
 				["rank"] = {
 					0.12, 0.25,
 				},
@@ -340,7 +340,7 @@ if addon.class == "DRUID" then
 		["MOD_STA"] = {
 			-- Talent: Heart of the Wild (Bear Form)
 			{
-				["trait"] = 104939,
+				["trait"] = 104958,
 				["rank"] = {
 					0.04, 0.08, 0.12, 0.16, 0.20,
 				},
@@ -348,7 +348,7 @@ if addon.class == "DRUID" then
 			},
 			-- Talent: Heart of the Wild (Dire Bear Form)
 			{
-				["trait"] = 104939,
+				["trait"] = 104958,
 				["rank"] = {
 					0.04, 0.08, 0.12, 0.16, 0.20,
 				},
@@ -358,7 +358,7 @@ if addon.class == "DRUID" then
 		["MOD_STR"] = {
 			-- Talent: Heart of the Wild (Cat Form)
 			{
-				["trait"] = 104939,
+				["trait"] = 104958,
 				["rank"] = {
 					0.02, 0.04, 0.06, 0.08, 0.10,
 				},
@@ -368,7 +368,7 @@ if addon.class == "DRUID" then
 		["MOD_INT"] = {
 			-- Talent: Heart of the Wild
 			{
-				["trait"] = 104939,
+				["trait"] = 104958,
 				["rank"] = {
 					0.02, 0.04, 0.06, 0.08, 0.10,
 				},
@@ -489,7 +489,7 @@ elseif addon.class == "MAGE" then
 		["ADD_BONUS_ARMOR_MOD_INT"] = {
 			-- Talent: Arcane Resilience
 			{
-				["trait"] = 105809,
+				["trait"] = 105802,
 				["rank"] = {
 					0.25, 0.50, 0.75,
 				},
@@ -573,7 +573,7 @@ elseif addon.class == "PALADIN" then
 		["MOD_STR"] = {
 			-- Talent: Divine Strength
 			{
-				["trait"] = 105328,
+				["trait"] = 113630,
 				["rank"] = {
 					0.02, 0.04, 0.06, 0.08, 0.10,
 				},
@@ -651,7 +651,7 @@ elseif addon.class == "PRIEST" then
 			},
 		},
 		["ADD_HEALING_MOD_SPI"] = {
-			-- Talent: Spiritual Guidance (Rank 5) - 2,14
+			-- Talent: Spiritual Guidance
 			{
 				["trait"] = 105853,
 				["rank"] = {
@@ -855,7 +855,7 @@ elseif addon.class == "WARLOCK" then
 		["MOD_STA"] = {
 			-- Talent: Demonic Embrace
 			{
-				["trait"] = 1059072,
+				["trait"] = 105907,
 				["rank"] = {
 					0.03, 0.06, 0.09, 0.12, 0.15,
 				},
