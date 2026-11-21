@@ -3411,7 +3411,7 @@ local function RemoveBlizzardItemComparisons(tooltip)
 			local fontString = _G[tipTextLeft..i]
 			local text = fontString:GetText()
 			if text then
-				if not isBlizzardComparison and blizzardComparisonPatterns[text] then
+				if not isBlizzardComparison and not issecretvalue(text) and blizzardComparisonPatterns[text] then
 					isBlizzardComparison = true
 					local previousFontString = _G[tipTextLeft .. (i-1)]
 					if previousFontString:GetText():find("^%s*") then
